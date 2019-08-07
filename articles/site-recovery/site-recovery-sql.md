@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/30/2019
+ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 7ee7d6434058da63883f8db0eae6a3f91c778338
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 14fbca6dea735ed1ee13fca20f19379cc2c4d0a9
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325134"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742325"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>为 SQL Server 设置灾难恢复
 
@@ -39,7 +39,7 @@ SQL Server Azure IaaS VM 或本地。| [故障转移群集 (Always On FCI)](http
 SQL Server Azure IaaS VM 或本地。| [数据库镜像 (高性能模式)](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | 强制执行服务所需的时间, 该服务使用镜像服务器作为热备用服务器。 | 复制是异步的。 镜像数据库可能稍微滞后于主体数据库。 Lag 通常很小。 但是, 如果主体服务器或镜像服务器的系统负载过大, 则可能会变得很大。<br/><br/>日志传送可以作为数据库镜像的补充。 这是异步数据库镜像的理想替代方法。
 Azure 上的 SQL as 平台即服务 (PaaS)。<br/><br/>此部署类型包括弹性池和 Azure SQL 数据库服务器。 | 活动异地复制 | 触发故障转移后30秒。<br/><br/>为某个辅助数据库激活故障转移时, 所有其他辅助数据库会自动链接到新的主数据库。 | 5秒的 RPO。<br/><br/>活动异地复制使用 SQL Server 的 Always On 技术。 它通过使用快照隔离以异步方式将主数据库上已提交的事务复制到辅助数据库。<br/><br/>保证辅助数据永远不会有部分事务。
 在 Azure 上配置了活动异地复制的 PaaS 作为 PaaS 的 SQL。<br/><br/>此部署类型包含 SQL 数据库托管实例、弹性池和 SQL 数据库服务器。 | 自动故障转移组 | 一小时的 RTO。 | 5秒的 RPO。<br/><br/>自动故障转移组在活动异地复制的顶层提供组语义。 但使用相同的异步复制机制。
-SQL Server Azure IaaS VM 或本地。| 与 Azure Site Recovery 复制 | RTO 通常小于15分钟。 若要了解详细信息, 请阅读[Site Recovery 提供的 RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 | 一小时的时间, 用于应用程序一致性和5分钟, 用于实现故障一致性。
+SQL Server Azure IaaS VM 或本地。| 与 Azure Site Recovery 复制 | RTO 通常小于15分钟。 若要了解详细信息, 请阅读[Site Recovery 提供的 RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 | 一小时的时间, 用于应用程序一致性和5分钟, 用于实现故障一致性。 如果要寻找更低的 RPO, 请使用其他 BCDR 技术。
 
 > [!NOTE]
 > 使用 Site Recovery 保护 SQL 工作负荷时, 有几个重要的注意事项:

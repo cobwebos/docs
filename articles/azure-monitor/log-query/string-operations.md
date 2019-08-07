@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: f53d3bd64b4f837fe29baa338cd338158d59d95d
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466956"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741462"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用字符串
 
@@ -30,11 +30,11 @@ ms.locfileid: "68466956"
 
 本文介绍如何编辑、比较、搜索字符串以及对其执行其他各种操作。
 
-字符串中的每个字符都有一个与其位置相符的索引号。 第一个字符位于索引 0 处，下一个字符位于索引 1 处，依此类推。 不同的字符串函数使用以下各部分所示的索引号。 下面的许多示例使用 **print** 命令来演示在不使用特定数据源的情况下如何处理字符串。
+字符串中的每个字符都有一个与其位置相符的索引号。 第一个字符位于索引 0, 下一个字符为 1, 依此类推。 不同的字符串函数使用以下各部分所示的索引号。 下面的许多示例使用 **print** 命令来演示在不使用特定数据源的情况下如何处理字符串。
 
 
 ## <a name="strings-and-escaping-them"></a>字符串及其转义
-字符串值包装在单引号或双引号字符中。 反斜杠 (\) 用于将字符转义为其后面的字符，例如，\t 表示 tab（制表符），\n 表示 newline（换行符），\" 表示引号字符本身。
+字符串值包装在单引号或双引号字符中。 反斜杠\\() 用于将字符转义为其后面的字符, 如用于制表符的 \t、用于换行符的 \n 以及\"引号字符本身。
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -129,7 +129,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 
 ## <a name="extract"></a>extract
 
-从给定的字符串中获取正则表达式的匹配项。 （可选）还可将提取的子字符串转换为指定的类型。
+从给定的字符串中获取正则表达式的匹配项。 还可以选择将提取的子字符串转换为指定的类型。
 
 ### <a name="syntax"></a>语法
 

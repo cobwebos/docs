@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell 中的 PowerShell 快速入门 | Microsoft Docs
-description: Cloud Shell 中的 PowerShell 快速入门
+title: Azure Cloud Shell 快速入门 |Microsoft Docs
+description: Azure Cloud Shell 快速入门
 services: Azure
 documentationcenter: ''
 author: maertendmsft
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 36683d04b6f087f1d326458a07b043a0932191f1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199497"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742010"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
 
@@ -32,7 +32,7 @@ ms.locfileid: "60199497"
 
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
 
-1. 在 Azure 门户的顶部导航栏中单击“Cloud Shell”按钮 
+1. 在 Azure 门户的顶部导航栏中单击“Cloud Shell”按钮
 
    ![](media/quickstart-powershell/shell-icon.png)
 
@@ -147,7 +147,7 @@ MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountN
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
 ```
 
-有关详细信息，请参阅[在 Windows 中装载 Azure 文件共享并对其进行访问][azmount]。
+有关详细信息, 请参阅[在 Windows 中装载 Azure 文件共享和访问共享][azmount]。
 
 还可以按如下所示浏览 Azure 文件共享下的目录：
 
@@ -267,7 +267,7 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ### <a name="using-ssh"></a>使用 SSH
 
-按照说明进行操作[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)若要创建新的 VM 配置使用 Azure PowerShell cmdlet。
+按照[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)的说明使用 Azure PowerShell cmdlet 创建新的 VM 配置。
 在调用 `New-AzVM` 以启动部署之前，请将 SSH 公钥添加到 VM 配置。
 新创建的 VM 将包含 `~\.ssh\authorized_keys` 位置中的公钥，从而允许通过无凭据的 SSH 会话连接到 VM。
 
@@ -296,7 +296,7 @@ ssh azureuser@MyVM.Domain.Com
 
 ## <a name="install-custom-modules"></a>安装自定义模块
 
-可以运行 `Install-Module` 安装 [PowerShell 库][gallery]中的模块。
+您可以运行`Install-Module`以从[PowerShell 库][gallery]安装模块。
 
 ## <a name="get-help"></a>Get-Help
 
@@ -334,11 +334,11 @@ Hello World!
 可以创建 PowerShell 配置文件 `profile.ps1`（或 `Microsoft.PowerShell_profile.ps1`）来自定义 PowerShell 环境。
 将配置文件保存在 `$profile.CurrentUserAllHosts`（或 `$profile.CurrentUserAllHosts`）下，以便可以在 Cloud Shell 会话中的每个 PowerShell 中加载该文件。
 
-有关如何创建配置文件，请参阅[关于配置文件][profile]。
+有关如何创建配置文件的信息, 请参阅[关于配置文件][profile]。
 
 ## <a name="use-git"></a>使用 Git
 
-若要在 Cloud Shell 中克隆 Git 存储库，需要创建[个人访问令牌][githubtoken]并将其用作用户名。 创建令牌后，可按如下所示克隆存储库：
+若要在 Cloud Shell 中克隆 Git 存储库, 需要创建[个人访问令牌][githubtoken]并将其用作用户名。 创建令牌后，可按如下所示克隆存储库：
 
 ```azurepowershell-interactive
   git clone https://<your-access-token>@github.com/username/repo.git

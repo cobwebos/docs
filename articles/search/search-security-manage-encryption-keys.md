@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 949628fa52b4b020d70b75f4a0e7895f1e0f8bba
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9d4494cb46bece7402b1284ee6324ca9ff86e0f3
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485323"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779104"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 中使用客户托管密钥的 Azure 搜索加密
 
@@ -23,7 +23,7 @@ ms.locfileid: "67485323"
 >
 > 此功能不适用于免费服务。 必须使用在 2019 年 1 月 1 日或之后创建的可计费搜索服务。 目前不提供 Azure 门户支持。
 
-默认情况下，Azure 搜索使用[服务托管的密钥](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest#data-encryption-models)静态加密用户内容。 可以使用在 Azure Key Vault 中创建和管理的密钥，通过一个附加的加密层来补充默认加密。 本文将会讲解这些步骤。
+默认情况下，Azure 搜索使用[服务托管的密钥](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)静态加密用户内容。 可以使用在 Azure Key Vault 中创建和管理的密钥，通过一个附加的加密层来补充默认加密。 本文将会讲解这些步骤。
 
 通过与 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 的集成来支持服务器端加密。 你可以创建自己的加密密钥并将其存储在 Key Vault 中，或使用 Azure Key Vault 的 API 来生成加密密钥。 使用 Azure Key Vault 还可以审核密钥用法。 
 
@@ -31,7 +31,7 @@ ms.locfileid: "67485323"
 
 可以使用不同 Key Vault 中的不同密钥。 这意味着，单个搜索服务可以托管多个已加密的索引/同义词映射（可能已使用不同的客户托管密钥加密每个索引/同义词映射），以及未使用客户托管密钥加密的索引/同义词映射。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本示例使用以下服务： 
 
@@ -45,7 +45,7 @@ ms.locfileid: "67485323"
 
 ## <a name="1---enable-key-recovery"></a>1 - 启用密钥恢复
 
-此步骤是可选的，但强烈建议执行。 创建 Azure Key Vault 资源后，执行以下 PowerShell 或 Azure CLI 命令，在所选 Key Vault 中启用“软删除”和“清除保护”：     
+此步骤是可选的，但强烈建议执行。 创建 Azure Key Vault 资源后，执行以下 PowerShell 或 Azure CLI 命令，在所选 Key Vault 中启用“软删除”和“清除保护”：   
 
 ```powershell
 $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
@@ -70,13 +70,13 @@ az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --en
 
 1. [登录到 Azure 门户](https://portal.azure.com)并导航到 Key Vault 仪表板。
 
-1. 在左侧导航窗格中选择“密钥”设置，然后单击“+ 生成/导入”。  
+1. 在左侧导航窗格中选择“密钥”设置，然后单击“+ 生成/导入”。
 
-1. 在“创建密钥”  窗格中，从“选项”列表中  ，选择要用于创建密钥的方法。 可以**生成**新密钥、**上传**现有密钥，或使用“备份还原”  选择密钥的备份。
+1. 在“创建密钥”窗格中，从“选项”列表中，选择要用于创建密钥的方法。 可以**生成**新密钥、**上传**现有密钥，或使用“备份还原”选择密钥的备份。
 
 1. 输入密钥的**名称**，并根据需要选择其他密钥属性。
 
-1. 单击“创建”按钮开始部署。 
+1. 单击“创建”按钮开始部署。
 
 请记下密钥标识符 – 它由**密钥值 URI**、**密钥名称**和**密钥版本**构成。 稍后需要使用这些信息来定义 Azure 搜索中已加密的索引。
  
@@ -94,7 +94,7 @@ Azure 搜索支持通过两种方式来分配标识：托管标识，或外部�
 
 1. 若要创建托管标识，请[登录到 Azure 门户](https://portal.azure.com)并打开搜索服务仪表板。 
 
-1. 在左侧导航窗格中单击“标识”，将其状态更改为“开”，然后单击“保存”。   
+1. 在左侧导航窗格中单击“标识”，将其状态更改为“开”，然后单击“保存”。
 
 ![启用托管标识](./media/search-enable-msi/enable-identity-portal.png "启用托管标识")
 
@@ -106,25 +106,25 @@ Azure 搜索支持通过两种方式来分配标识：托管标识，或外部�
 
 1. [登录到 Azure 门户](https://portal.azure.com)并打开 Key Vault 概述页。 
 
-1. 在左侧导航窗格中选择“访问策略”设置，然后单击“+ 新增”。  
+1. 在左侧导航窗格中选择“访问策略”设置，然后单击“+ 新增”。
 
    ![添加新的 Key Vault 访问策略](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "添加新的 Key Vault 访问策略")
 
-1. 单击“选择主体”并选择你的 Azure 搜索服务。  可以根据启用托管标识后显示的名称或对象 ID 来搜索该搜索服务。
+1. 单击“选择主体”并选择你的 Azure 搜索服务。 可以根据启用托管标识后显示的名称或对象 ID 来搜索该搜索服务。
 
    ![选择 Key Vault 访问策略主体](./media/search-manage-encryption-keys/select-key-vault-access-policy-principal.png "选择 Key Vault 访问策略主体")
 
-1. 单击“密钥权限”，然后选择“获取”、“解包密钥”和“包装密钥”。     可以使用 Azure Data Lake Storage 或 Azure 存储模板快速选择所需的权限。 
+1. 单击“密钥权限”，然后选择“获取”、“解包密钥”和“包装密钥”。 可以使用 Azure Data Lake Storage 或 Azure 存储模板快速选择所需的权限。
 
    必须向 Azure 搜索授予以下[访问权限](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations)：
 
-   * 获取 - 可让搜索服务检索 Key Vault 中密钥的公共部分 
-   * 包装密钥 - 可让搜索服务使用密钥来保护内部加密密钥 
-   * 解包密钥 - 可让搜索服务使用密钥来解包内部加密密钥 
+   * 获取 - 可让搜索服务检索 Key Vault 中密钥的公共部分
+   * 包装密钥 - 可让搜索服务使用密钥来保护内部加密密钥
+   * 解包密钥 - 可让搜索服务使用密钥来解包内部加密密钥
 
    ![选择 Key Vault 访问策略密钥权限](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "选择 Key Vault 访问策略密钥权限")
 
-1. 单击“确定”，然后**保存**访问策略更改。 
+1. 单击“确定”，然后**保存**访问策略更改。
 
 > [!Important]
 > Azure 搜索中已加密的内容配置为使用特定**版本**的特定 Azure Key Vault 密钥。 如果你更改密钥或版本，必须先将索引或同义词映射更新为使用新的密钥/版本，**然后**删除以前的密钥/版本。 否则会使该索引或同义词映射变得不可用，因为在失去密钥访问权限后无法解密内容。   
@@ -164,7 +164,7 @@ Azure 搜索支持通过两种方式来分配标识：托管标识，或外部�
 }
 ```
 
-## <a name="example-index-encryption"></a>示例：索引加密
+## <a name="example-index-encryption"></a>例如：索引加密
 [创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)中提供了有关通过 REST API 创建新索引的详细信息。本文的唯一差别在于，需要将加密密钥详细信息指定为索引定义的一部分： 
 
 ```json
@@ -191,7 +191,7 @@ Azure 搜索支持通过两种方式来分配标识：托管标识，或外部�
 ```
 现在，可以发送索引创建请求，然后开始正常使用索引。
 
-## <a name="example-synonym-map-encryption"></a>示例：同义词映射加密
+## <a name="example-synonym-map-encryption"></a>例如：同义词映射加密
 
 [创建同义词映射（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)中提供了有关通过 REST API 创建新同义词映射的详细信息。本文的唯一差别在于，需要将加密密钥详细信息指定为同义词映射定义的一部分： 
 
@@ -239,4 +239,4 @@ Azure 搜索支持通过两种方式来分配标识：托管标识，或外部�
 如果你不熟悉 Azure 安全体系结构，请查看 [Azure 安全文档](https://docs.microsoft.com/azure/security/)，具体而言，是以下文章：
 
 > [!div class="nextstepaction"]
-> [静态数据加密](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+> [静态数据加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

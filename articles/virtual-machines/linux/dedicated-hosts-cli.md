@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 7eda675ed7694e1ad7de90f89282bd7a3cc50ea1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 0c060e2ab94c0a57d4d4dc897702e115cfabd9a0
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700413"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827290"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>预览版：使用 Azure CLI 将 Vm 部署到专用主机
  
@@ -53,7 +53,7 @@ az group create --name myDHResourceGroup --location eastus
 
 您还可以决定使用可用性区域和容错域。 
 
-在此示例中, 我们将使用[az vm host group create](/cli/azure/vm#az-vm-host-group-create)创建使用可用性区域和容错域的主机组。 
+在此示例中, 我们将使用[az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create)创建使用可用性区域和容错域的主机组。 
 
 ```bash
 az vm host group create \
@@ -65,7 +65,7 @@ az vm host group create \
 
 ### <a name="other-examples"></a>其他示例
 
-你还可以使用[az vm host group create](/cli/azure/vm#az-vm-host-group-create)在可用性区域 1 (而不是容错域) 中创建主机组。
+你还可以使用[az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create)在可用性区域 1 (而不是容错域) 中创建主机组。
 
 ```bash
 az vm host group create \
@@ -75,7 +75,7 @@ az vm host group create \
    --platform-fault-domain-count 1 
 ```
  
-以下方法使用[az vm host group create](/cli/azure/vm#az-vm-host-group-create)来通过仅使用容错域创建主机组 (在不支持可用性区域的区域中使用)。 
+以下方法使用[az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create)来通过仅使用容错域创建主机组 (在不支持可用性区域的区域中使用)。 
 
 ```bash
 az vm host group create \
@@ -91,7 +91,7 @@ az vm host group create \
 
 有关主机 Sku 和定价的详细信息, 请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
 
-使用[az vm host create](/cli/azure/vm#az-vm-host-create)创建主机。 如果为主机组设置了容错域计数, 系统会要求你为主机指定容错域。  
+使用[az vm host create](/cli/azure/vm/host#az-vm-host-create)创建主机。 如果为主机组设置了容错域计数, 系统会要求你为主机指定容错域。  
 
 ```bash
 az vm host create \
@@ -126,7 +126,7 @@ az vm create \
 
 ## <a name="check-the-status-of-the-host"></a>检查主机的状态
 
-你可以使用[az vm host get instance view 查看](/cli/azure/vm#az-vm-host-get-instance-view)主机运行状况状态以及仍可部署到主机的虚拟机数。
+你可以使用[az vm host get instance view 查看](/cli/azure/vm/host#az-vm-host-get-instance-view)主机运行状况状态以及仍可部署到主机的虚拟机数。
 
 ```bash
 az vm host get-instance-view \
@@ -260,13 +260,13 @@ az group deployment create \
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
-删除 Vm 后, 你可以使用[az vm host delete](/cli/azure/vm#az-vm-host-delete)删除该主机。
+删除 Vm 后, 你可以使用[az vm host delete](/cli/azure/vm/host#az-vm-host-delete)删除该主机。
 
 ```bash
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
-删除所有主机后, 可以使用[az vm 主机组 delete](/cli/azure/vm#az-vm-host-group-delete)删除该主机组。  
+删除所有主机后, 可以使用[az vm 主机组 delete](/cli/azure/vm/host/group#az-vm-host-group-delete)删除该主机组。  
  
 ```bash
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  

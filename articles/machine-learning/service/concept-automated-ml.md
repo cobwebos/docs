@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: c563278a9d23810a5e6f0adc8082c8cfc5a0510c
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 064fd0e2bf503d917c809aa576bbc332b5b18a77
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358851"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742358"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -91,15 +91,22 @@ ms.locfileid: "68358851"
 
 
 ## <a name="time-series-forecasting"></a>时序预测
-生成预测是任何业务的有机组成部分, 无论是收入、库存、销售还是客户需求。 你可以使用自动 ML 来合并技术和方法, 并获得推荐的高质量时序预测。 
+生成预测是任何业务的有机组成部分, 无论是收入、库存、销售还是客户需求。 你可以使用自动 ML 来合并技术和方法, 并获得推荐的高质量时序预测。
 
-自动时间系列实验被视为多元回归问题。 过去的时间序列值将 "透视" 成为回归量与其他预测值的其他维度。 与传统时序方法不同, 这种方法的优点是, 在定型过程中自然包含多个上下文变量以及它们之间的关系。 自动 ML 会为数据集中的所有项目学习单个但通常在内部分支的模型, 并预测视野。 这样就可以使用更多的数据来估计模型参数, 并使其成为不可见系列。 
+自动时间系列实验被视为多元回归问题。 过去的时间序列值将 "透视" 成为回归量与其他预测值的其他维度。 与传统时序方法不同, 这种方法的优点是, 在定型过程中自然包含多个上下文变量以及它们之间的关系。 自动 ML 会为数据集中的所有项目学习单个但通常在内部分支的模型, 并预测视野。 这样就可以使用更多的数据来估计模型参数, 并使其成为不可见系列。
 
 了解更多详细信息, 并查看[时序预测自动机器学习](how-to-auto-train-forecast.md)的示例。
 
-## <a name="ensemble-models"></a>系综模型
+## <a name="ensemble"></a>系综模型
 
-您可以通过使用自动机器学习, 使用[带有排序系综初始化的 Caruana 系综选择算法](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)来训练系综模型。 系综学习通过合并许多模型而不是使用单个模型来改善机器学习结果和预测性能。 系综迭代作为运行的最后一个迭代显示。
+自动机器学习支持默认情况下启用的系综模型。 系综学习通过组合多个模型 (而不是使用单个模型) 来改进机器学习结果和预测性能。 系综迭代作为运行的最后一个迭代显示。 自动机器学习使用投票和堆栈系综方法来合并模型:
+
+* **投票**: 根据预测类概率的加权平均值 (适用于分类任务) 或预测回归目标 (适用于回归任务) 进行预测。
+* **堆栈**: 堆栈结合了异类模型, 并根据各个模型的输出定型了元模型。 当前默认的元模型 LogisticRegression 用于分类任务, ElasticNet 用于回归/预测任务。
+
+使用已排序的系综初始化的[Caruana 系综选择算法](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)用于决定要在系综中使用的模型。 从较高层次来看, 此算法使用最多5个模型初始化系综, 其中最多有5个模型, 并验证这些模型是否处于最佳分数的 5% 阈值内, 以避免初始系综不佳。 然后, 对于每个系综迭代, 会将一个新模型添加到现有系综, 并计算生成的分数。 如果新模型改进了现有的系综分数, 则会更新系综以包含新模型。
+
+请参阅[如何](how-to-configure-auto-train.md#ensemble)在自动机器学习中更改默认系综设置。
 
 ## <a name="use-with-onnx-in-c-apps"></a>在应用中C#使用 with ONNX
 

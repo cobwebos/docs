@@ -5,35 +5,35 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/04/2018
+ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 714f46b7019b6e64c504c5925ef5eb5539558c2d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8b585a47d3950d232eb3e8047c12ee8949030c95
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673250"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780190"
 ---
-若要使用 Azure 门户在 Resource Manager 部署模型中创建 VNet，请执行以下步骤。 如果是在教程中使用这些步骤，请使用[示例值](#values)。 如果并非在教程中使用这些步骤，请务必将其中的值替换为自己的值。 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
+若要使用 Azure 门户在 Resource Manager 部署模型中创建 VNet，请执行以下步骤。 如果使用这些步骤作为教程, 请使用**示例值**。 如果并非在教程中使用这些步骤，请务必将其中的值替换为自己的值。 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
 
 >[!NOTE]
 >为了让此 VNet 连接到本地位置，需与本地网络管理员协调操作，指定一个 IP 地址范围，将其专用于此虚拟网络。 如果 VPN 连接的两侧存在重复的地址范围，则流量不会按预期的方式路由。 另外，若要将此 VNet 连接到其他 VNet，则地址空间不能与其他 VNet 重叠。 请注意对网络配置进行相应的计划。
 >
->
 
 1. 从浏览器导航到 [Azure 门户](https://portal.azure.com)并使用 Azure 帐户登录。
-2. 单击“创建资源”  。 在“在市场中搜索”  字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”  ，单击打开“虚拟网络”  页。
-3. 从靠近“虚拟网络”页底部的“选择部署模型”列表中，选择“资源管理器”，然后单击“创建”    。 这会打开“创建虚拟网络”页。
+2. 单击“创建资源”。 在“在市场中搜索”字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”，单击打开“虚拟网络”页。
+3. 单击“创建”。 这会打开“创建虚拟网络”页。
+4. 在“创建虚拟网络”页上，配置 VNet 设置。 填写字段时，如果在字段中输入的字符有效，红色感叹号标记会变成绿色对钩标记。 使用以下值：
 
-   ![“创建虚拟网络”页](./media/vpn-gateway-create-virtual-network-portal-include/create-virtual-network.png "“创建虚拟网络”页")
-4. 在“创建虚拟网络”  页上，配置 VNet 设置。 填写字段时，如果在字段中输入的字符有效，红色感叹号标记会变成绿色对钩标记。
+   - **名称**：VNet1
+   - **地址空间**：10.1.0.0/16
+   - **订阅**：确认列出的订阅是你想要使用的订阅。 可以使用下拉列表更改订阅。
+   - **资源组**：TestRG1 (单击 "**新建**" 创建新组)
+   - **位置**：East US
+   - **子网**：前端
+   - **地址范围**：10.1.0.0/24
 
-   - **名称**：输入虚拟网络的名称。 本示例使用 VNet1。
-   - **地址空间**：输入地址空间。 如果有多个要添加的地址空间，请添加第一个地址空间。 可在创建 VNet 后再添加其他地址空间。 请确保指定的地址空间与本地位置的地址空间不重叠。
-   - **订阅**：确认列出的订阅是正确的。 可以使用下拉列表更改订阅。
-   - **资源组**：选择现有的资源组，或键入新资源组的名称以创建新的资源组。 如果要创建新组，请根据计划的配置值来命名资源组。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)。
-   - **位置**：选择 VNet 的位置。 该位置确定要部署到此 VNet 的资源所在的位置。
-   - **子网**：添加首个子网名和子网地址范围。 创建此 VNet 后，可以再添加其他子网和网关子网。 
-
-5. 如果希望能够在仪表板上轻松查找 VNet，请选择“固定到仪表板”  ，并单击“创建”  。 单击“创建”后，会看到仪表板上的磁贴反映了 VNet 的进度  。 创建 VNet 时，该磁贴会更改。
+   ![创建虚拟网络页](./media/vpn-gateway-create-virtual-network-portal-include/create-virtual-network1.png)
+5. 将 DDoS 作为基本、服务终结点和禁用的防火墙保持为禁用状态。
+6. 单击“创建”以创建该 VNet 。

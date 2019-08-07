@@ -5,18 +5,18 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: c0de4d2b9ad0d009b9cd363d19a2de3f29d810d4
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b85fb5417b014041024dd83ca62572282c6edf81
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303454"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841267"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>认知搜索故障排除提示
 
@@ -94,10 +94,10 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 最长运行时间因层而异：免费层为数分钟，收费层为 24 小时（索引编制）。 进行按需处理时，如果处理无法在 24 小时期限内完成，则可改用计划形式，让索引器在计划时间接着上次的工作继续处理。 
 
-对于计划的索引器来说，索引编制会按计划从已知正常的最后一个文档继续开始。 使用定时计划时，索引器可以在计划的一系列时间或日期进行积压图像的处理，直至所有未处理的图像得到处理。 有关计划语法的详细信息，请参阅[步骤 3：创建一个索引](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)或参阅[如何安排 Azure 搜索索引器](search-howto-schedule-indexers.md)。
+对于计划的索引器来说，索引编制会按计划从已知正常的最后一个文档继续开始。 使用定时计划时，索引器可以在计划的一系列时间或日期进行积压图像的处理，直至所有未处理的图像得到处理。 有关计划语法的详细信息，请参阅[步骤 3：Create-a-索引](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)器或参阅[如何为 Azure 搜索计划索引器](search-howto-schedule-indexers.md)。
 
 > [!NOTE]
-> 如果索引器设置为特定计划，但反复失败上相同文档反复地每次它运行，则索引器将开始运行在不太频繁地 （最多每 24 小时至少一次的最大值） 的时间间隔之前已成功使进度 aga在中。  如果你认为你解决任何要停留在某一时间点的索引器会导致了问题，则可以执行的索引器将按需运行，如果可成功地将进度，索引器将其设置计划间隔再次返回。
+> 如果索引器设置为某个计划, 但每次运行时在同一文档上重复失败, 则索引器将以不太频繁的间隔 (最多每24小时至少一次) 运行, 直到它成功完成进度 aga中.  如果你认为已修复了导致索引器停留在某个时间点的任何问题, 则可以执行索引器的按需运行, 如果成功, 则索引器将再次返回到其设置的计划时间间隔。
 
 进行基于门户的索引编制（如快速入门中所述）时，选择“运行一次”索引器选项即可将处理时间限制为 1 小时 (`"maxRunTime": "PT1H"`)。 可能需要延长处理时间至更长。
 
@@ -106,7 +106,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 进行[并行索引编制](search-howto-large-index.md)时，请将数据置于多个容器中，或者置于同一容器的多个虚拟文件夹中， 然后创建多个数据源和索引器对。 所有索引器可以使用同一技术集并写入同一目标搜索索引，因此你的搜索应用不需了解这种分区。
 有关详细信息，请参阅[为大型数据集编制索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 + [快速入门：在门户中创建认知搜索管道](cognitive-search-quickstart-blob.md)
 + [教程：了解认知搜索 REST API](cognitive-search-tutorial-blob.md)
 + [指定数据源凭据](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)

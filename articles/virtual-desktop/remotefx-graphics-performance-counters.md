@@ -2,17 +2,17 @@
 title: 诊断远程桌面中的图形性能问题-Azure
 description: 本文介绍如何使用远程桌面协议会话中的 RemoteFX 图形计数器诊断 Windows 虚拟桌面中图形的性能问题。
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 8cd24861b9d7432a582d1b635b8ffcf0d8d2b9e6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.author: helohr
+ms.openlocfilehash: de849701365438b21244d1e46ae657495d16c307
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233626"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816402"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>诊断远程桌面中的图形性能问题
 
@@ -77,7 +77,7 @@ ms.locfileid: "68233626"
 
 使用 "帧质量" 计数器诊断帧质量问题。 此计数器将输出帧的质量表示为源帧质量的百分比。 质量损失可能是由于 RemoteFX 导致的, 也可能是图形源所固有的。 如果 RemoteFX 导致质量损失, 则问题可能是缺少网络或服务器资源来发送更高保真的内容。
 
-## <a name="mitigation"></a>缓解措施
+## <a name="mitigation"></a>缓解
 
 如果服务器资源导致瓶颈, 请尝试以下方法之一来提高性能:
 

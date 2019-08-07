@@ -5,14 +5,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 08/06/2019
 ms.author: banders
-ms.openlocfilehash: c63447ff0a3329e0cc0dc0605984ae4f26e9c25f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2e595fbee90b710ec6b8090a770d93e688a04818
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359232"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839995"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -38,7 +38,7 @@ ms.locfileid: "68359232"
 
 若要购买计划, 必须在企业中拥有订阅所有者角色 (BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 或即用即付订阅 (MS-BC-OP-NT-AZR-003P 或 MS-bc-op-nt-azr-0023P)。 云解决方案提供商可以使用 Azure 门户或 [合作伙伴中心](/partner-center/azure-reservations) 来购买 Azure 预订。
 
-企业协议 (EA) 客户可以将购买限制为 EA 管理员。 它们通过在 EA 门户中禁用 "**添加保留实例**" 选项来执行此操作。 EA 管理员必须是至少一个 EA 订阅的订阅所有者才能购买预订。 如果企业需要集中式团队购买不同成本中心的预订, 则该选项非常有用。 购买后, 集中式团队可以将成本中心所有者添加到预订中。 然后, 所有者可以将预订的范围限定为其订阅。 中心团队无需拥有订阅所有者访问权限, 即可购买预订。
+企业协议 (EA) 客户可以通过在 EA 门户中禁用 "**添加保留实例**" 选项, 将购买限制为 ea 管理员。 EA 管理员必须是至少一个 EA 订阅的订阅所有者才能购买预订。 如果企业需要集中式团队购买不同成本中心的预订, 则该选项非常有用。 购买后, 集中式团队可以将成本中心所有者添加到预订中。 然后, 所有者可以将预订的范围限定为其订阅。 中心团队无需拥有订阅所有者访问权限, 即可购买预订。
 
 预订折扣仅适用于与通过企业、云解决方案提供商 (CSP) 购买的订阅相关联的资源, 以及使用现用现付费率的各个计划。
 

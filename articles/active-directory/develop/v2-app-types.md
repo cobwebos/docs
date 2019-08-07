@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac3dbd3f2148c14780c380cc0c7f2fab2a41e165
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 6799e604b9e5e2acc3af35e4038ea6f14271d5c8
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482406"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834729"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 标识平台的应用程序类型
 
@@ -34,10 +34,10 @@ Microsoft 标识平台 (v2.0) 终结点支持各种现代应用体系结构的�
 
 ## <a name="the-basics"></a>基础知识
 
-必须注册每个应用使用 Microsoft 标识平台终结点中的新[应用程序注册门户](https://go.microsoft.com/fwlink/?linkid=2083908)。 应用注册过程将收集这些值并将其分配给应用：
+你必须在新的[应用注册门户](https://go.microsoft.com/fwlink/?linkid=2083908)中注册使用 Microsoft 标识平台终结点的每个应用。 应用注册过程将收集这些值并将其分配给应用：
 
 * 用于唯一标识应用的 **应用程序（客户端）ID**
-* 用于将响应定向回应用的重定向 URI 
+* 用于将响应定向回应用的重定向 URI
 * 几个其他特定于方案的值，例如支持的帐户类型
 
 有关详细信息，请了解如何[注册应用](quickstart-register-app.md)。
@@ -51,7 +51,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>单页应用 (JavaScript)
 
-许多新式应用都有一个单页应用前端（主要以 JavaScript 编写）。 通常情况下，可通过使用 Angular、 React 或 Vue 之类的框架进行编写。 Microsoft 标识平台终结点使用 [OAuth 2.0 隐式流](v2-oauth2-implicit-grant-flow.md)来支持这些应用。
+许多新式应用都有一个单页应用前端（主要以 JavaScript 编写）。 通常，该前端是使用 Angular、React 或 Vue 等框架编写的。 Microsoft 标识平台终结点使用 [OAuth 2.0 隐式流](v2-oauth2-implicit-grant-flow.md)来支持这些应用。
 
 在此流中，应用直接从 Microsoft 标识平台授权终结点接收令牌，无需任何服务器到服务器的交换。 所有身份验证逻辑和会话处理完全在 JavaScript 客户端中发生，无需进行额外的页面重定向。
 
@@ -106,7 +106,7 @@ Web API 可让用户通过公开权限（也称为[范围](v2-permissions-and-co
 
 Web API 可以从各种应用接收访问令牌，其中包括 Web 服务器应用、桌面和移动应用、单页应用、服务器端守护程序，甚至其他 Web API。 Web API 的高级流如下所示：
 
-![显示了 web API 身份验证流](./media/v2-app-types/convergence-scenarios-webapi.svg)
+![显示 web API 身份验证流](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
 若要了解如何使用 OAuth2 访问令牌保护 Web API，请查看 [Microsoft 标识平台入门](v2-overview.md#getting-started)部分提供的 Web API 代码示例。
 

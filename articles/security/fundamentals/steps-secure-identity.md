@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 0ccd2ee8b2c9f542eabe7a297f4c99a3993a47e9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c5cdd12c3075d48ff32c40d686b32a650ec43d8e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726741"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779779"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -74,7 +74,7 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 如果组织使用实施直通身份验证或联合身份验证的混合标识解决方案，应该启用密码哈希同步，原因包括以下两点：
 
 * Azure AD 管理系统中的[凭据已泄漏的用户](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)报告会警告用户名和密码对已在“黑暗网络”中透露。 日后遭到攻击的第三方站点上出现的网络钓鱼、恶意软件和密码重用，导致大量的密码泄漏。 Microsoft 会检测其中的许多泄漏凭据，如果它们与你组织中的凭据匹配，则会告诉你 – 但前提是已[启用密码哈希同步](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)！
-* 如果发生本地服务中断（例如，在勒索软件攻击中），可以切换到[使用密码哈希同步的云身份验证](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)。使用此备用身份验证方法，可以继续访问配置为使用 Azure Active Directory 进行身份验证的应用，包括 Office 365。 在这种情况下，解决本地服务中断之前，IT 人员无需采用个人电子邮件帐户来共享数据。
+* 如果发生本地服务中断（例如，在勒索软件攻击中），可以切换到[使用密码哈希同步的云身份验证](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)。使用此备用身份验证方法，可以继续访问配置为使用 Azure Active Directory 进行身份验证的应用，包括 Office 365。 在这种情况下，解决本地服务中断之前，IT 人员无需采用个人电子邮件帐户来共享数据。
 
 详细了解[密码哈希同步](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)的工作原理。
 
@@ -146,7 +146,7 @@ Azure Active Directory 中的许多功能可以自动截获攻击，以消除检
 
 ### <a name="monitor-azure-ad"></a>监视 Azure AD
 
-Microsoft Azure 服务和功能提供可配置的安全审核和日志记录选项，帮助识别安全策略和机制的缺口，并解决这些缺口，以防违规。 可以使用 [Azure 日志记录和审核](https://docs.microsoft.com/azure/security/azure-log-audit)，以及 [Azure Active Directory 门户中的审核活动报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)。
+Microsoft Azure 服务和功能提供可配置的安全审核和日志记录选项，帮助识别安全策略和机制的缺口，并解决这些缺口，以防违规。 可以使用 [Azure 日志记录和审核](https://docs.microsoft.com/azure/security/fundamentals/log-audit)，以及 [Azure Active Directory 门户中的审核活动报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)。
 
 ### <a name="monitor-azure-ad-connect-health-in-hybrid-environments"></a>监视混合环境中的 Azure AD Connect Health
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 69e95a9e6c76da5d502314a7190e99fc10e968f7
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5f51c1166364a3470a1cc943e66d429c32cdc49b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639077"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839475"
 ---
 # <a name="clustering-point-data"></a>聚类数据
 
@@ -35,7 +35,7 @@ var datasource = new atlas.source.DataSource(null, {
 
     //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
-    clusterMaxZoom: 15 
+    clusterMaxZoom: 15
 });
 ```
 
@@ -107,6 +107,16 @@ var datasource = new atlas.source.DataSource(null, {
 
  <iframe height="500" style="width: 100%;" scrolling="no" title="群集区域凸凸" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅 CodePen 上的<a href='https://codepen.io'></a>(<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 的笔<a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>分类区域 Azure Maps 凸</a>凸。
+</iframe>
+
+## <a name="aggregating-data-in-clusters"></a>聚合群集中的数据
+
+通常使用带有群集内点数的符号来表示分类, 但有时需要根据某个指标进一步自定义分类的样式, 如群集中所有点的总收入。 使用分类聚合自定义属性可以使用[聚合表达式](data-driven-style-expressions-web-sdk.md#aggregate-expression)计算来创建和填充。  可以在选项`clusterProperties` `DataSource`中定义群集聚合。
+
+下面的示例使用聚合表达式来计算基于群集中每个数据点的实体类型属性的计数。
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="群集聚合" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅<a href='https://codepen.io'>CodePen</a>上的笔<a href='https://codepen.io/azuremaps/pen/jgYyRL/'>群集聚合</a>按 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤

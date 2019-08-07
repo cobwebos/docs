@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed4e7559ff6c3b76bbdf49b538ffebf3ad09cc58
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0aa63a8f06b71455b7f00d2ce5842f0da851789b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66001221"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835472"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据
 
@@ -98,10 +98,10 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ### <a name="uploading-the-certificate-file"></a>上传证书文件
 
 在客户端应用程序的 Azure 应用注册中：
-1. 选择**证书和机密**。 
-2. 单击**上传证书**，然后选择要上载的证书文件。
-3. 单击“添加”  。
-  后上传证书，则会显示指纹、 开始日期和过期值。 
+1. 选择“证书和机密”。 
+2. 单击“上传证书”，然后选择要上传的证书文件。
+3. 单击“添加”。
+  上传证书后，将显示指纹、开始日期和到期日期值。 
 
 ### <a name="updating-the-application-manifest"></a>更新应用程序清单
 
@@ -113,7 +113,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 还需要提供 GUID 来标识应用程序清单中的密钥 (`$keyId`)。
 
 在客户端应用程序的 Azure 应用注册中：
-1. 选择**清单**以打开应用程序清单。
+1. 选择“清单”以打开应用程序清单。
 2. 使用以下架构将 *keyCredentials* 属性替换为新的证书信息。
 
    ```

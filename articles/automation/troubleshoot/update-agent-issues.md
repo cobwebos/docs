@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 3555ec74b7e7c8a0f7606f24f8c6f2c4fe36b52d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: bbccb9beab374a4a514d527c22b3861f0752d5fd
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477105"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782381"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>了解更新管理中的 Windows 代理检查结果
 
-可能会有许多原因导致计算机在更新管理中不显示“就绪”  。 在更新管理中，可以检查混合辅助角色代理的运行状况以确定潜在问题。 本文介绍如何从 Azure 门户为 Azure 计算机运行故障排除，以及如何为[离线场景](#troubleshoot-offline)下的非 Azure 计算机运行故障排除。
+可能会有许多原因导致计算机在更新管理中不显示“就绪”。 在更新管理中，可以检查混合辅助角色代理的运行状况以确定潜在问题。 本文介绍如何从 Azure 门户为 Azure 计算机运行故障排除，以及如何为[离线场景](#troubleshoot-offline)下的非 Azure 计算机运行故障排除。
 
 下表列出计算机可能处于的三个就绪状态：
 
@@ -27,18 +27,18 @@ ms.locfileid: "67477105"
 * **未配置** - 未找到更新代理或尚未完成载入。
 
 > [!NOTE]
-> 可能有 Azure 门户显示与计算机的当前状态之间稍有延迟。
+> 在 Azure 门户显示的内容和计算机的当前状态之间可能会有轻微的延迟。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-对于 Azure 计算机，通过单击门户中“更新代理准备”  列下的“故障排除”  链接，可以启动“更新代理故障排除”  页。 对于非 Azure 计算机，该链接会转到本文。 请参阅[离线说明](#troubleshoot-offline)来排查非 Azure 计算机问题。
+对于 Azure 计算机，通过单击门户中“更新代理准备”列下的“故障排除”链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，该链接会转到本文。 请参阅[离线说明](#troubleshoot-offline)来排查非 Azure 计算机问题。
 
 ![虚拟机更新管理列表](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> 要检查代理的运行状况，必须运行 VM。 如果 VM 没有运行，屏幕上会显示“启动 VM”按钮  。
+> 要检查代理的运行状况，必须运行 VM。 如果 VM 没有运行，屏幕上会显示“启动 VM”按钮。
 
-在“更新代理故障排除”页上选择“运行检查”，启动故障排除   。 故障排除使用[运行命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本以验证代理依赖项。 完成故障排除时，它会返回检查的结果。
+在“更新代理故障排除”页上选择“运行检查”，启动故障排除。 故障排除使用[运行命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本以验证代理依赖项。 完成故障排除时，它会返回检查的结果。
 
 ![“更新代理故障排除”页面](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -55,15 +55,15 @@ ms.locfileid: "67477105"
 |操作系统  |说明  |
 |---------|---------|
 |Windows Server 2008 R2 RTM、Windows Server 2008 | 仅支持更新评估。         |
-|Windows Server 2008 R2 SP1 和更高版本 |需要 .NET Framework 4.5.1 或更高版本。 （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)）<br/> 需要 Windows PowerShell 4.0 或更高版本。 （[下载 Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)）<br/> 为提高可靠性，建议使用 Windows PowerShell 5.1。  （[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
+|Windows Server 2008 R2 SP1 和更高版本 |需要 .NET Framework 4.6.1 或更高版本。 （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)）<br/> Windows PowerShell 5.1 是必需的。  （[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
 
-### <a name="net-451"></a>.NET 4.5.1
+### <a name="net-461"></a>.NET 4.6.1 +
 
-.NET Framework 检查，用于验证系统是否至少安装了 [.NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653)。
+.NET Framework 检查将验证系统是否至少安装了[.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981) 。
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-WMF 检查，用于验证系统是否具有所需的 Windows Management Framework (WMF) 版本。 [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) 是支持的最低版本。 建议安装 [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) 以提高混合 Runbook 辅助角色的可靠性。
+WMF 检查将验证系统是否具有所需的 Windows Management Framework (WMF) 版本- [Windows Management framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。
 
 ### <a name="tls-12"></a>TLS 1.2
 
@@ -144,7 +144,7 @@ RuleId                      : AutomationAgentServiceConnectivityCheck1
 RuleGroupId                 : connectivity
 RuleName                    : Registration endpoint
 RuleGroupName               : connectivity
-RuleDescription             : 
+RuleDescription             :
 CheckResult                 : Failed
 CheckResultMessage          : Unable to find Workspace registration information in registry
 CheckResultMessageId        : AutomationAgentServiceConnectivityCheck1.Failed.NoRegistrationFound

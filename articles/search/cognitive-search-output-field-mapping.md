@@ -9,13 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 506acee6cd9cd3c50e10f1c45768230564eeaaf1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: cognitive-search
+ms.openlocfilehash: 1fae611c202b77d222436b090f7e0c2f432de1f2
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65022096"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841168"
 ---
 # <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>如何将扩充字段映射到可搜索索引
 
@@ -66,7 +66,7 @@ Content-Type: application/json
 ```
 对于每个输出字段映射，请设置扩充字段的名称 (sourceFieldName)，以及如索引中引用的字段名称 (targetFieldName)。
 
-sourceFieldName 中的路径可以表示一个元素或多个元素。 在上述示例中，```/document/content/sentiment``` 表示单个数字值，而 ```/document/content/organizations/*/description``` 表示多个组织说明。 如果有多个元素，它们将“平展”成包含每个元素的数组。 更具体地说，对于 ```/document/content/organizations/*/description``` 示例，  “描述”字段中的数据在编制索引之前将类似于说明的平面数组：
+sourceFieldName 中的路径可以表示一个元素或多个元素。 在上述示例中，```/document/content/sentiment``` 表示单个数字值，而 ```/document/content/organizations/*/description``` 表示多个组织说明。 如果有多个元素，它们将“平展”成包含每个元素的数组。 更具体地说，对于 ```/document/content/organizations/*/description``` 示例，“描述”字段中的数据在编制索引之前将类似于说明的平面数组：
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]

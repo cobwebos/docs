@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 上安装微焦点 Enterprise Server 4.0 和企业级开发版 4.0 |Microsoft Docs
-description: 重新托管在 IBM z/OS 大型机的工作负荷使用 Micro Focus 开发和测试 Azure 虚拟机 (Vm) 上的环境。
+title: 在 Azure 上安装微聚焦企业服务器4.0 和企业开发人员 4.0 |Microsoft Docs
+description: 使用 Azure 虚拟机 (Vm) 上的微焦点开发和测试环境 Rehost IBM z/OS 大型机工作负荷。
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -11,113 +11,114 @@ ms.topic: conceptual
 ms.date: 05/29/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: de4bdcb14aa1b5aa1f757da7be4db7d93dd13ff0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.service: multiple
+ms.openlocfilehash: a5426c3cd7552b24739f9a20e01d5a4b42bd383c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620298"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834571"
 ---
-# <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>在 Azure 上安装微焦点 Enterprise Server 4.0 和企业级开发版 4.0
+# <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>在 Azure 上安装微聚焦企业服务器4.0 和企业开发人员4。0
 
-本文介绍如何设置[Micro 焦点 Enterprise Server 4.0](https://www.microfocus.com/documentation/enterprise-developer/es30/)并[Micro 焦点企业开发人员 4.0](https://www.microfocus.com/documentation/enterprise-developer/ed_30/)在 Azure 上。
+本文介绍如何在 Azure 上设置与[企业服务器 4.0](https://www.microfocus.com/documentation/enterprise-developer/es30/)和[微聚焦企业开发人员 4.0](https://www.microfocus.com/documentation/enterprise-developer/ed_30/)的微聚焦。
 
-Azure 上的常见工作负荷是一个开发和测试环境。 此方案中很常见，因为它是因此经济高效且易于部署和拆解。 与企业服务器，Micro Focus 已创建的最大大型机重新承载平台之一提供。 可以在成本较低的 x86 上运行 z/OS 的工作负荷在 Azure 中使用 Windows 或 Linux 虚拟机 (Vm) 的平台。
+Azure 上的常见工作负载是开发和测试环境。 这种情况很常见, 因为它非常经济高效且易于部署和拆卸。 企业服务器的微侧重点已创建了一个可用的最大大型机重新承载平台。 可以使用 Windows 或 Linux 虚拟机 (Vm) 在 Azure 上开销较低的 x86 平台上运行 z/OS 工作负荷。
 
-此安装程序将使用从 Azure Marketplace 与 Microsoft SQL Server 2017 已安装运行 Windows Server 2016 映像的 Azure Vm。 此设置也适用于 Azure Stack。
+此安装程序使用已安装 Microsoft SQL Server 2017 的 Azure Marketplace 中运行 Windows Server 2016 映像的 Azure Vm。 此设置还适用于 Azure Stack。
 
-适用于 Enterprise Server 的相应开发环境是企业开发人员，在任一 Microsoft Visual Studio 2017 或更高版本，运行 Visual Studio Community （免费下载），或 Eclipse。 本文介绍如何使用 Windows Server 2016 虚拟机，附带 Visual Studio 2017 或更高版本安装的部署该网站。
+适用于企业服务器的相应开发环境是企业开发人员, 可在 Microsoft Visual Studio 2017 或更高版本、Visual Studio 社区 (免费下载) 或 Eclipse 中运行。 本文介绍如何使用安装了 Visual Studio 2017 或更高版本的 Windows Server 2016 虚拟机来部署它。
 
 ## <a name="prerequisites"></a>系统必备
 
-开始之前，请查看这些系统必备组件：
+在开始之前, 请先查看以下先决条件:
 
 - Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- Micro Focus 软件和有效的许可证 （或试用版许可证）。 如果你是现有的 Micro Focus 客户，请联系 Micro Focus 代表。 否则为[请求试用版](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)。
+- 微聚焦软件和有效许可证 (或试用许可证)。 如果你是现有的微聚焦客户, 请联系你的微侧重点代表。 否则,[请求试用](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)。
 
-- 获取有关的文档[企业服务器和企业开发人员](https://www.microfocus.com/documentation/enterprise-developer/#")。
+- 获取[企业服务器和企业开发人员](https://www.microfocus.com/documentation/enterprise-developer/#")的文档。
 
 > [!NOTE]
-> 最佳做法是设置站点到站点虚拟专用网络 (VPN) 隧道或 jumpbox，以便可以控制对 Azure Vm 的访问。
+> 最佳做法是设置站点到站点虚拟专用网络 (VPN) 隧道或 jumpbox, 以便控制对 Azure Vm 的访问。
 
 ## <a name="install-enterprise-server"></a>安装 Enterprise Server
 
-1. 为了更好的安全性和可管理性，请考虑创建新的资源组，只需为此项目 — 例如， **RGMicroFocusEntServer**。 在 Azure 中使用的第一部分名称来选择要使其更容易发现列表中的资源类型。
+1. 为了获得更好的安全性和可管理性, 请考虑仅为此项目创建新的资源组, 例如**RGMicroFocusEntServer**。 使用 Azure 中名称的第一部分来选择资源类型, 以便更轻松地发现列表。
 
-2. 创建虚拟机。 从 Azure Marketplace 中，选择虚拟机和所需的操作系统。 下面是建议的安装程序：
+2. 创建虚拟机。 从 Azure Marketplace 中, 选择所需的虚拟机和操作系统。 下面是建议的设置:
 
-    - **企业服务器**:选择使用 Windows Server 2016 和 SQL Server 2017 安装 ES2 v3 VM （使用 2 个 Vcpu 和 16 GB 内存）。 此映像是可从 Azure Marketplace。 企业服务器也可以使用 Azure SQL 数据库。
+    - **企业服务器**:选择安装了 Windows Server 2016 和 SQL Server 2017 的 ES2 v3 VM (包含2个个 vcpu 和 16 GB 内存)。 可从 Azure Marketplace 获取此映像。 企业服务器还可以使用 Azure SQL 数据库。
 
-    - **企业级开发版**:选择 B2ms VM （使用 2 个 Vcpu 和 8 GB 内存） 使用 Windows 10 和 Visual Studio 安装。 此映像是可从 Azure Marketplace。
+    - **企业开发人员**:选择安装了 Windows 10 和 Visual Studio 的 B2ms VM (带有2个个 vcpu 和 8 GB 内存)。 可从 Azure Marketplace 获取此映像。
 
-3. 在中**基础知识**部分中，输入你的用户名和密码。 选择**订阅**并**位置/区域**你想要使用的 vm。 选择**RGMicroFocusEntServer**资源组。
+3. 在 "**基本**信息" 部分中, 输入用户名和密码。 选择要用于 Vm 的**订阅**和**位置/区域**。 为资源组选择**RGMicroFocusEntServer** 。
 
-4. 将这两个 Vm 放入同一个虚拟网络，以便它们可以与彼此通信。
+4. 将这两个 Vm 放入同一虚拟网络, 以便它们相互通信。
 
-5. 接受其余的设置的默认值。 请记住的用户名和密码为这些 Vm 的管理员创建。
+5. 接受其余设置的默认值。 请记住为这些 Vm 的管理员创建的用户名和密码。
 
-6. 创建虚拟机后，打开入站的端口 9003，和 80 用于 HTTP 和企业服务器计算机上的 RDP 的 3389 和 3389 开发人员计算机上的。
+6. 创建虚拟机后, 在企业服务器计算机上打开适用于 3389 HTTP 的入站端口9003、86和 80, 并为开发人员计算机打开3389。
 
-7. 若要登录到企业服务器虚拟机，在 Azure 门户中，选择 ES2 v3 VM。 转到**概述**部分，并选择**Connect**以启动一个 RDP 会话。 使用为 VM 创建的凭据登录。
+7. 若要登录到企业服务器虚拟机, 请在 Azure 门户中选择 "ES2 v3 VM"。 请参阅 "**概述**" 部分, 并选择 "**连接**" 以启动 RDP 会话。 使用为 VM 创建的凭据登录。
 
-8. 从 RDP 会话中，加载以下两个文件。 因为使用的 Windows，您可以拖放到 RDP 会话中的文件：
+8. 从 RDP 会话加载以下两个文件。 由于你正在使用 Windows, 因此你可以将文件拖放到 RDP 会话中:
 
-    - **es\_40.exe**，企业服务器安装文件。
+    - **es\_** , 企业服务器安装文件。
 
-    - **mflic**，相应的许可证文件 — 企业服务器不会加载没有它。
+    - **mflic**(相应的许可证文件): 企业服务器将不会加载。
 
-9. 双击该文件以开始安装。 在第一个窗口中，选择安装位置并接受最终用户许可协议。
+9. 双击该文件以开始安装。 在第一个窗口中, 选择安装位置并接受最终用户许可协议。
 
-     ![Micro 焦点 Enterprise Server 安装程序屏幕](media/01-enterprise-server.png)
+     ![微聚焦企业服务器安装屏幕](media/01-enterprise-server.png)
 
-     安装程序完成后，会显示以下消息：
+     安装完成后, 将显示以下消息:
 
-     ![Micro 焦点 Enterprise Server 安装程序屏幕](media/02-enterprise-server.png)
+     ![微聚焦企业服务器安装屏幕](media/02-enterprise-server.png)
 
 ### <a name="check-for-updates"></a>检查更新
 
-安装完成后，请务必检查任何其他更新自多个先决条件，如 MicrosoftC++可再发行组件和.NET Framework 将随企业服务器一起安装。
+安装完成后, 请务必检查是否有任何其他更新, 因为 Microsoft C++可再发行组件和 .NET Framework 与企业服务器一起安装。
 
 ### <a name="upload-the-license"></a>上传许可证
 
-1. 启动微焦点许可证管理。
+1. 开始获得微 "许可管理"。
 
-2. 单击**启动** \> **Micro 焦点许可证管理器** \> **许可证管理**，然后单击**安装**选项卡。选择要上传的许可证格式类型： 16 个字符许可证代码或许可证文件。 例如，对于一个文件中**许可证文件**，浏览到**mflic**文件之前上载到 VM，然后选择**安装许可证**。
+2. 单击 "**开始** \>微" "**许可证管理器** \> **许可证管理**", 然后单击 "**安装**" 选项卡。选择要上传的许可证格式类型: 许可证文件或16个字符的许可代码。 例如, 对于文件, 在 "**许可证文件**" 中, 浏览到以前上传到 VM 的**mflic**文件, 然后选择 "**安装许可证**"。
 
-     ![Micro 焦点许可证管理对话框](media/03-enterprise-server.png)
+     !["微重点许可管理" 对话框](media/03-enterprise-server.png)
 
-3. 验证加载了企业服务器。 尝试启动浏览器中使用此 URL 的企业服务器管理站点 <http://localhost:86/> 。 企业服务器管理页将显示所示。
+3. 验证企业服务器是否已加载。 尝试使用此 URL <http://localhost:86/> 从浏览器启动企业服务器管理站点。 将显示 "企业服务器管理" 页, 如下所示。
 
      ![企业服务器管理页](media/04-enterprise-admin.png)
 
-## <a name="install-enterprise-developer-on-the-developer-machine"></a>开发人员计算机上安装企业级开发版
+## <a name="install-enterprise-developer-on-the-developer-machine"></a>在开发人员计算机上安装企业开发人员
 
-1. 选择前面创建的资源组 (例如， **RGMicroFocusEntServer**)，然后选择的开发人员映像。
+1. 选择前面创建的资源组 (例如, **RGMicroFocusEntServer**), 然后选择 "开发人员映像"。
 
-2. 若要登录到虚拟机，请转到**概述**部分，并选择**Connect**。 此登录将启动一个 RDP 会话。 使用为 VM 创建的凭据登录。
+2. 若要登录到虚拟机, 请单击 "**概述**" 部分, 并选择 "**连接**"。 此登录启动 RDP 会话。 使用为 VM 创建的凭据登录。
 
-3. 从 RDP 会话中，加载以下两个文件 （拖放，如果您喜欢）：
+3. 从 RDP 会话加载以下两个文件 (如有必要, 拖放):
 
-    - **edvs2017.exe**，企业服务器安装文件。
+    - **edvs2017**, 企业服务器安装文件。
 
-    - **mflic**，相应的许可证文件 （企业开发人员不会加载没有它）。
+    - **mflic**(不包含该文件的企业开发人员)。
 
-4. 双击**edvs2017.exe**文件以开始安装。 在第一个窗口中，选择安装位置并接受最终用户许可协议。 如果你想选择**安装 Rumba 9.5**安装可能需要此终端模拟器。
+4. 双击**edvs2017**文件以开始安装。 在第一个窗口中, 选择安装位置并接受最终用户许可协议。 如果需要, 请选择 "**安装 Rumba 9.5** " 以安装此终端模拟器, 你可能需要这样做。
 
-     ![Visual Studio 2017 安装程序对话框中的微焦点企业级开发版](media/04-enterprise-server.png)
+     ![适用于 Visual Studio 2017 的微企业开发人员安装对话框](media/04-enterprise-server.png)
 
-5. 安装程序完成后，会显示以下消息：
+5. 安装完成后, 将显示以下消息:
 
-     ![安装程序成功消息](media/05-enterprise-server.png)
+     ![安装成功消息](media/05-enterprise-server.png)
 
-6. 就像你对企业服务器，请启动 Micro 焦点许可证管理器。 选择**启动** \> **Micro 焦点许可证管理器** \> **许可证管理**，然后单击**安装**选项卡。
+6. 像对企业服务器一样, 启动微版许可证管理器。 选择 "**开始** \> **微集中" "许可证管理器** \> **许可证管理**", 然后单击 "**安装**" 选项卡。
 
-7. 选择要上传的许可证格式类型： 16 个字符许可证代码或许可证文件。 例如，对于一个文件中**许可证文件**，浏览到**mflic**文件之前上载到 VM，然后选择**安装许可证**。
+7. 选择要上传的许可证格式类型: 许可证文件或16个字符的许可代码。 例如, 对于文件, 在 "**许可证文件**" 中, 浏览到以前上传到 VM 的**mflic**文件, 然后选择 "**安装许可证**"。
 
-     ![Micro 焦点许可证管理对话框](media/07-enterprise-server.png)
+     !["微重点许可管理" 对话框](media/07-enterprise-server.png)
 
-在企业级开发版加载后，你的 Azure 上的 Micro Focus 开发和测试环境的部署已完成 ！
+部署企业开发人员时, 在 Azure 上部署微侧重点开发和测试环境已完成!
 
 ## <a name="next-steps"></a>后续步骤
 

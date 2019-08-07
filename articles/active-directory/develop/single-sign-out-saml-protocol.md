@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06fd36935c1f43cc14697748666eccd9e6d31168
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66c509b1b901889241d6837611a2c373750fdb3a
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545966"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834789"
 ---
 # <a name="single-sign-out-saml-protocol"></a>单一注销 SAML 协议
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配�
 发送到 Azure AD 的 `LogoutRequest` 元素需要以下属性：
 
 * `ID` - 此项标识注销请求。 `ID` 的值不能以数字开头。 典型的做法是在 GUID 的字符串表示形式前面追加 **ID**。
-* `Version` - 将此元素的值设置为 **2.0**。 此值是必需的。
+* `Version` - 将此元素的值设置为 **2.0**。 此值是必填项。
 * `IssueInstant` - 这是一个 `DateTime` 字符串，它包含协调世界时 (UTC) 值并采用[往返格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)。 Azure AD 需要此类型的值，但不强制要求。
 
 ### <a name="issuer"></a>颁发者
@@ -72,7 +72,7 @@ Azure AD 在响应 `LogoutRequest` 元素时发送 `LogoutResponse`。 以下摘
 Azure AD 会在 `LogoutResponse` 元素中设置 `ID`、`Version` 和 `IssueInstant` 值。 它还将 `InResponseTo` 元素设置为获取响应的 `LogoutRequest` 的 `ID` 属性值。
 
 ### <a name="issuer"></a>颁发者
-Azure AD 将此值设置为`https://login.microsoftonline.com/<TenantIdGUID>/`其中\<TenantIdGUID > 是 Azure AD 租户的租户 ID。
+Azure AD 将此值设置`https://login.microsoftonline.com/<TenantIdGUID>/`为\<, 其中 TenantIdGUID > 是 Azure AD 租户的租户 ID。
 
 若要评估 `Issuer` 元素的值，请使用应用程序注册期间提供的**应用 ID URI** 值。
 

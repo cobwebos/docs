@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7799b62b2c330610663e361bbb3930340b1ebdaf
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a007e3adb72148cfde1590e996f7df9082159445
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726284"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840494"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
@@ -29,6 +29,9 @@ ms.locfileid: "68726284"
 1. 使用 SDK 获取连接信息。
 1. 确定模型使用的请求数据的类型。
 1. 创建调用 Web 服务的应用程序。
+
+> [!TIP]
+> 本文档中的示例是手动创建的, 而无需使用 OpenAPI (Swagger) 规范。 如果已为部署启用了 OpenAPI 规范, 则可以使用[codegen](https://github.com/swagger-api/swagger-codegen)等工具为你的服务创建客户端库。
 
 ## <a name="connection-information"></a>连接信息
 

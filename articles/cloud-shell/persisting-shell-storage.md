@@ -1,6 +1,6 @@
 ---
-title: 为 Bash in Azure Cloud Shell 持久保存文件 | Microsoft Docs
-description: 演练 Azure Cloud Shell 中的 Bash 如何持久保存文件。
+title: 在 Azure Cloud Shell 中持久保存文件 |Microsoft Docs
+description: 演练 Azure Cloud Shell 如何持久保存文件。
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
-ms.openlocfilehash: 0aa00af543a3d21db9b8ad0ed808a8bff0b534e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f60125123d019cbfa93bfc1b06da7ac90b54e311
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60200137"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742035"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -70,7 +70,7 @@ clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareNam
 ![运行 `clouddrive unmount` 命令](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> 虽然运行此命令不会删除任何资源，但手动删除映射到 Cloud Shell 的资源组、存储帐户或文件共享会清除 `$Home` 目录磁盘映像和文件共享中的任何文件。 此操作不可撤消。
+> 虽然运行此命令不会删除任何资源，但手动删除映射到 Cloud Shell 的资源组、存储帐户或文件共享会清除 `$Home` 目录磁盘映像和文件共享中的任何文件。 此操作无法撤消。
 
 ### <a name="list-clouddrive"></a>列出 `clouddrive`
 若要查明哪些文件共享已装载为 `clouddrive`，请运行 `df` 命令。 
@@ -102,7 +102,7 @@ justin@Azure:~$
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
-请注意:如果需要在文件中定义函数并从 PowerShell cmdlet 调用，则必须包含点运算符。 例如： .\MyFunctions.ps1
+注意:如果需要在文件中定义函数并从 PowerShell cmdlet 调用，则必须包含点运算符。 例如： .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 中的 Bash 快速入门](quickstart.md) <br>

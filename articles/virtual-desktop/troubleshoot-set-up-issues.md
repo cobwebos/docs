@@ -2,17 +2,17 @@
 title: Windows 虚拟桌面租户和主机池创建-Azure
 description: 如何在 Windows 虚拟桌面租户环境的安装过程中排除和解决租户和主机池问题。
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 9e58c3bfc0e74f9aac61085608a843954b0923c0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.author: helohr
+ms.openlocfilehash: 7ab8ec9536af74102d2c9384ea3d0d0503f58f63
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249562"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816492"
 ---
 # <a name="tenant-and-host-pool-creation"></a>创建租户和主机池
 
@@ -51,7 +51,7 @@ ms.locfileid: "68249562"
        + FullyQualifiedErrorId : UnauthorizedAccess,Microsoft.RDInfra.RDPowershell.Tenant.NewRdsTenant
 ```
 
-原因：  未在 Azure Active Directory 中为登录用户分配 "TenantCreator" 角色。
+原因：未在 Azure Active Directory 中为登录用户分配 "TenantCreator" 角色。
 
 **能够**按照[为 Azure Active Directory 租户中的用户分配 TenantCreator 应用程序角色](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant)中的说明进行操作。 按照说明操作后, 你将拥有一个分配给 TenantCreator 角色的用户。
 
@@ -126,7 +126,7 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
 ```
 
-原因：  你使用的订阅的类型无法访问客户尝试部署的区域中的所需功能。 例如, MSDN、免费或教育订阅可能显示此错误。
+原因：你使用的订阅的类型无法访问客户尝试部署的区域中的所需功能。 例如, MSDN、免费或教育订阅可能显示此错误。
 
 **能够**更改你的订阅类型或区域, 使其可以访问所需的功能。
 
@@ -155,7 +155,7 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
  /resourceGroups/demoHostDesktop/providers/Microsoft.Compute/virtualMachines/demo", "resourceType": "Microsoft.Compute/virtualMachines", "resourceName": "demo" } }}
 ```
 
-原因：  提供的密码包含禁止的子字符串 (admin、administrator、root)。
+原因：提供的密码包含禁止的子字符串 (admin、administrator、root)。
 
 **能够**更新用户名或使用其他用户。
 
@@ -181,7 +181,7 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
  "resourceType": "Microsoft.Compute/virtualMachines/extensions", "resourceName": "desktop-1/dscextension" } }}
 ```
 
-原因：  PowerShell DSC 扩展无法获取 VM 上的管理员访问权限。
+原因：PowerShell DSC 扩展无法获取 VM 上的管理员访问权限。
 
 **能够**确认用户名和密码在虚拟机上具有管理访问权限, 然后再次运行 Azure 资源管理器模板。
 
@@ -213,7 +213,7 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 ```
 
-原因：  PowerShell DSC 扩展无法获取 VM 上的管理员访问权限。
+原因：PowerShell DSC 扩展无法获取 VM 上的管理员访问权限。
 
 **能够**确认提供的用户名和密码对虚拟机具有管理访问权限, 然后再次运行 Azure 资源管理器模板。
 
@@ -240,7 +240,7 @@ the referenced resource exists, and that both resources are in the same
 region.\\\",\\r\\n\\\"details\\\": []\\r\\n }\\r\\n}\"\r\n }\r\n ]\r\n }\r\n ]\r\n }\r\n}"}]}
 ```
 
-原因：  资源组名称的一部分用于由模板创建的某些资源。 由于与现有资源匹配的名称, 模板可能会从不同的组中选择现有资源。
+原因：资源组名称的一部分用于由模板创建的某些资源。 由于与现有资源匹配的名称, 模板可能会从不同的组中选择现有资源。
 
 **能够**运行 Azure 资源管理器模板来部署会话主机 Vm 时, 请使订阅资源组名称具有唯一的前两个字符。
 
@@ -267,7 +267,7 @@ resources are in the same region.\\\",\\r\\n \\\"details\\\": []\\r\\n }\\r\\n}\
 }\r\n ]\r\n }\r\n ]\r\n }\r\n\
 ```
 
-原因：  此错误是因为通过 Azure 资源管理器模板创建的 NIC 与 VNET 中的另一个 NIC 具有相同的名称。
+原因：此错误是因为通过 Azure 资源管理器模板创建的 NIC 与 VNET 中的另一个 NIC 具有相同的名称。
 
 **能够**使用其他主机前缀。
 
@@ -286,7 +286,7 @@ be found in the logs located under
 the VM.\\\"
 ```
 
-原因：  此错误是由于静态路由、防火墙规则或 NSG 阻止下载关联到 Azure 资源管理器模板的 zip 文件引起的。
+原因：此错误是由于静态路由、防火墙规则或 NSG 阻止下载关联到 Azure 资源管理器模板的 zip 文件引起的。
 
 **能够**删除阻止的静态路由、防火墙规则或 NSG。 (可选) 在文本编辑器中打开 Azure 资源管理器模板 json 文件, 获取 zip 文件的链接, 并将资源下载到允许的位置。
 
@@ -305,7 +305,7 @@ Following are the first few: PowerShell DSC resource MSFT_ScriptResource failed 
 The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d25b-47e5-8d70-a7493e9dc473" } } }}
 ```
 
-原因：  指定的 Windows 虚拟桌面租户管理员没有有效的角色分配。
+原因：指定的 Windows 虚拟桌面租户管理员没有有效的角色分配。
 
 **能够**创建 Windows 虚拟桌面租户的用户需要登录到 Windows 虚拟桌面 PowerShell, 并为尝试的用户分配角色分配。 如果正在运行 GitHub Azure 资源管理器模板参数, 请使用 PowerShell 命令执行以下说明:
 
@@ -324,14 +324,14 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-原因：  指定的 Windows 虚拟桌面租户管理员要求 Azure 多重身份验证 (MFA) 进行登录。
+原因：指定的 Windows 虚拟桌面租户管理员要求 Azure 多重身份验证 (MFA) 进行登录。
 
 **能够**按照教程中[的步骤, 创建服务主体, 并为其分配 Windows 虚拟桌面租户的角色:在 PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)中创建服务主体和角色分配。 在验证是否可以使用服务主体登录到 Windows 虚拟桌面后, 重新运行 Azure Marketplace 产品/服务或 GitHub Azure 资源管理器模板, 具体取决于所使用的方法。 按照以下说明为方法输入正确的参数。
 
 如果你运行的是 Azure Marketplace 产品/服务, 请提供以下参数的值, 以正确地向 Windows 虚拟桌面进行身份验证:
 
 - Windows 虚拟桌面租户 RDS 所有者:服务主体
-- 应用程序 ID：你创建的新服务主体的应用程序标识
+- 应用程序 ID:你创建的新服务主体的应用程序标识
 - 密码/确认密码:为服务主体生成的密码密码
 - Azure AD 租户 ID:你创建的服务主体的 Azure AD 租户 ID
 

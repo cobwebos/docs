@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
+ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c7c2ba104b4d528cd3f8443e6f5615aa6ab3e672
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7e88b99cf0ecede64d75b36eafdcc88798e2e4a4
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720374"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840445"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -130,7 +130,7 @@ ms.locfileid: "68720374"
 
 * `run(input_data)`：此函数使用模型来基于输入数据预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 也可以处理原始二进制数据。 可以在将数据发送到模型之前或者返回给客户端之前转换数据。
 
-#### <a name="what-is-getmodelpath"></a>什么是 get_model_path？
+#### <a name="what-is-get_model_path"></a>什么是 get_model_path？
 
 注册模型时, 提供用于在注册表中管理该模型的模型名称。 将此名称与模型一起使用[。 get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-)可在本地文件系统上检索模型文件的路径。 如果注册文件夹或文件集合, 此 API 将返回包含这些文件的目录的路径。
 
@@ -142,7 +142,7 @@ ms.locfileid: "68720374"
 model_path = Model.get_model_path('sklearn_mnist')
 ```
 
-#### <a name="optional-automatic-swagger-schema-generation"></a>可有可无自动 Swagger 架构生成
+#### <a name="optional-automatic-schema-generation"></a>可有可无自动生成架构
 
 若要为 web 服务自动生成架构, 请在构造函数中为一个已定义的类型对象提供输入和/或输出的示例, 并使用类型和示例来自动创建该架构。 然后 Azure 机器学习服务在部署期间为 web 服务创建[OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 规范。
 
@@ -153,9 +153,10 @@ model_path = Model.get_model_path('sklearn_mnist')
 * `pyspark`
 * 标准 Python 对象
 
-若要使用架构生成, 请`inference-schema`将包包含在 conda 环境文件中。 下面的示例使用`[numpy-support]` , 因为入口脚本使用 numpy 参数类型: 
+若要使用架构生成, 请`inference-schema`将包包含在 conda 环境文件中。
 
-#### <a name="example-dependencies-file"></a>示例依赖关系文件
+##### <a name="example-dependencies-file"></a>示例依赖关系文件
+
 以下 YAML 是用于推理的 Conda 依赖项文件的一个示例。
 
 ```YAML
@@ -168,14 +169,11 @@ dependencies:
     - inference-schema[numpy-support]
 ```
 
-如果要使用自动生成架构, 则输入脚本**必须**导入`inference-schema`包。 
+如果要使用自动生成架构, 则输入脚本**必须**导入`inference-schema`包。
 
 定义`input_sample` 和`output_sample`变量中的输入和输出示例格式, 表示 web 服务的请求和响应格式。 在`run()`函数的 input 和 output 函数修饰器中使用这些示例。 下面的 scikit-learn 示例使用架构生成。
 
-> [!TIP]
-> 部署服务后, 使用`swagger_uri`属性检索架构 JSON 文档。
-
-#### <a name="example-entry-script"></a>示例条目脚本
+##### <a name="example-entry-script"></a>示例条目脚本
 
 下面的示例演示如何接受并返回 JSON 数据:
 
@@ -216,9 +214,7 @@ def run(data):
         return error
 ```
 
-#### <a name="example-script-with-dictionary-input-support-consumption-from-power-bi"></a>带有字典输入的示例脚本 (支持 Power BI 中使用)
-
-下面的示例演示如何使用数据帧将输入数据定义为 < 键: 值 > 字典。 此方法支持从 Power BI 使用已部署的 web 服务 ([了解有关如何从 Power BI 使用 web 服务的详细信息](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
+下面的示例演示如何使用数据帧将输入数据定义为`<key: value>`字典。 此方法支持从 Power BI 使用已部署的 web 服务 ([了解有关如何从 Power BI 使用 web 服务的详细信息](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
 
 ```python
 import json
@@ -266,6 +262,7 @@ def run(data):
         error = str(e)
         return error
 ```
+
 有关更多示例脚本, 请参阅以下示例:
 
 * Pytorch[https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
@@ -369,6 +366,9 @@ az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.js
 每个已部署的 web 服务都提供 REST API, 因此你可以使用各种编程语言来创建客户端应用程序。 如果已为服务启用密钥身份验证, 则需要提供服务密钥作为请求标头中的令牌。
 如果已为服务启用令牌身份验证, 则需要提供 Azure 机器学习 JWT 令牌作为请求标头中的持有者令牌。
 
+> [!TIP]
+> 部署服务后, 可以检索架构 JSON 文档。 使用部署的 web 服务中的[swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)(如`service.swagger_uri`) 获取本地 web 服务 swagger 文件的 uri。
+
 ### <a name="request-response-consumption"></a>请求-响应消耗
 
 下面是如何在 Python 中调用服务的示例:
@@ -399,6 +399,147 @@ print(response.json())
 
 有关详细信息，请参阅[创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)。
 
+### <a name="web-service-schema-openapi-specification"></a>Web 服务架构 (OpenAPI 规范)
+
+如果在部署中使用了自动生成架构, 则可以使用[swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)获取服务的 OpenAPI 规范的地址。 例如， `print(service.swagger_uri)` 。 使用 GET 请求 (或在浏览器中打开 URI) 来检索规范。
+
+以下 JSON 文档是为部署生成的架构 (OpenAPI 规范) 的示例:
+
+```json
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "myservice",
+        "description": "API specification for the Azure Machine Learning service myservice",
+        "version": "1.0"
+    },
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "For example: Bearer abc123"
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "ServiceHealthCheck",
+                "description": "Simple health check endpoint to ensure the service is up at any given point.",
+                "responses": {
+                    "200": {
+                        "description": "If service is up and running, this response will be returned with the content 'Healthy'",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "application/json": "Healthy"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/score": {
+            "post": {
+                "operationId": "RunMLService",
+                "description": "Run web service's model and get the prediction output",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "serviceInputPayload",
+                        "in": "body",
+                        "description": "The input payload for executing the real-time machine learning service.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The service processed the input correctly and provided a result prediction, if applicable.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ServiceInput": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "example": {
+                "data": [
+                    [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+                ]
+            }
+        },
+        "ServiceOutput": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "format": "double"
+            },
+            "example": [
+                3726.995
+            ]
+        },
+        "ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "status_code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
+```
+
+有关规范的详细信息, 请参阅[开放 API 规范](https://swagger.io/specification/)。
+
+有关可根据规范创建客户端库的实用工具, 请参阅[codegen](https://github.com/swagger-api/swagger-codegen)。
 
 ### <a id="azuremlcompute"></a>批处理推理
 Azure 机器学习计算目标由 Azure 机器学习服务创建和管理。 它们可用于来自 Azure 机器学习管道的批处理预测。

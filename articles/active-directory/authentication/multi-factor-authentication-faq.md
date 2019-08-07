@@ -1,5 +1,5 @@
 ---
-title: Azure 多重身份验证常见问题-Azure Active Directory
+title: Azure 多重身份验证常见问题解答 - Azure Active Directory
 description: 与 Azure 多重身份验证相关的常见问题与解答。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3517f90d97a19740f5be8c2a755532d305522d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46abe367c9047616174a1e43dffd57861e6278e8
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228173"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68811832"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
 
@@ -59,9 +59,9 @@ ms.locfileid: "65228173"
    * 759731 
    * 673801
 
-Microsoft 不保证相同号码传送的短信或基于语音的多重身份验证提示一致。 为了用户的利益，Microsoft 在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 Microsoft 不支持除美国和加拿大的国家/地区的简短代码。
+Microsoft 不保证相同号码传送的短信或基于语音的多重身份验证提示一致。 为了用户的利益，Microsoft 在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 除美国和加拿大以外, Microsoft 不支持国家/地区的短代码。
 
-## <a name="billing"></a>计费
+## <a name="billing"></a>帐单
 
 可以参考多[重身份验证定价页](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)或者有关[如何获取 Azure 多重身份验证](concept-mfa-licensing.md)的文档解答大多数计费问题。
 
@@ -87,17 +87,15 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 在某些情况下，是。
 
-面向 Azure 管理员的多重身份验证提供的免费访问 Microsoft 联机服务，包括 Azure MFA 功能子集[Azure 门户](https://portal.azure.com)和[Microsoft 365 管理中心内](https://admin.microsoft.com). 这项优惠仅适用于 Azure Active Directory 实例中未通过 MFA 许可证、捆绑包或基于使用量的独立提供程序获得完整版 Azure MFA 的全局管理员。 如果管理员使用免费版，用户随后购买完整版 Azure MFA，那么所有全局管理员都会自动提升到付费版。
+面向 Azure 管理员的多重身份验证免费提供 Azure MFA 功能的一个子集, 可免费访问 Microsoft 联机服务, 包括[Azure 门户](https://portal.azure.com)和[Microsoft 365 管理中心](https://admin.microsoft.com)。 这项优惠仅适用于 Azure Active Directory 实例中未通过 MFA 许可证、捆绑包或基于使用量的独立提供程序获得完整版 Azure MFA 的全局管理员。 如果管理员使用免费版，用户随后购买完整版 Azure MFA，那么所有全局管理员都会自动提升到付费版。
 
 面向 Office 365 用户的多重身份验证免费提供一部分 Azure MFA 功能让用户访问 Office 365 服务，包括 Exchange Online 和 SharePoint Online。 如果 Azure Active Directory 的相应实例未通过 MFA 许可证、捆绑包或基于使用量的独立提供程序获得 Azure MFA 完整版本，这项优惠适用于已获得 Office 365 许可证的用户。
 
 **问：组织是否可以随时在“按用户”和“按身份验证”使用量计费模式之间切换？**
 
-如果组织以独立服务的形式（采用基于使用量的计费模式）购买了 MFA，则可以在创建 MFA 提供程序时选择计费模式。 创建 MFA 提供程序后，无法更改计费模式。 不过，可以删除 MFA 提供程序，再创建采用不同计费模型的新提供程序。
+如果组织以独立服务的形式（采用基于使用量的计费模式）购买了 MFA，则可以在创建 MFA 提供程序时选择计费模式。 创建 MFA 提供程序后，无法更改计费模式。 
 
-创建 MFA 提供程序时，它可以链接到的 Azure Active Directory 或"Azure AD 租户。" 如果当前 MFA 提供程序链接到 Azure AD 租户，可以安全地删除 MFA 提供程序，以及创建一个链接到同一 Azure AD 租户。 或者，如果购买了足够多的 MFA、Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证，可以覆盖启用 MFA 的所有用户，则可以删除整个 MFA 提供程序。
-
-如果 MFA 提供程序未  与 Azure AD 租户相关联，或将新的 MFA 提供程序与其他 Azure AD 租户相关联，用户设置和配置选项不会转移到新的 MFA 提供程序。 此外，需要使用通过新 MFA 提供程序生成的激活凭据，重新激活现有 Azure MFA 服务器。 重新激活 MFA 服务器并将其链接到新 MFA 提供程序不会影响电话和短信身份验证，但所有用户不再会收到移动应用通知，除非他们重新激活移动应用。
+如果 MFA 提供程序未与 Azure AD 租户相关联，或将新的 MFA 提供程序与其他 Azure AD 租户相关联，用户设置和配置选项不会转移到新的 MFA 提供程序。 此外，需要使用通过新 MFA 提供程序生成的激活凭据，重新激活现有 Azure MFA 服务器。 重新激活 MFA 服务器并将其链接到新 MFA 提供程序不会影响电话和短信身份验证，但所有用户不再会收到移动应用通知，除非他们重新激活移动应用。
 
 在 [Azure 多重身份验证提供程序入门](concept-mfa-authprovider.md)中了解有关 MFA 提供程序的详细信息。
 
@@ -107,7 +105,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 如果目录中包含*按用户* Azure 多重身份验证提供程序，则可以添加 MFA 许可证。 拥有许可证的用户不会计入基于使用量的按用户计费。 对于没有许可证的用户，仍可通过 MFA 提供程序启用 MFA。 如果为配置为使用多重身份验证的所有用户购买并分配许可证，可以删除 Azure 多重身份验证提供程序。 如果将来的用户数超过许可证数，始终可以创建另一个按用户的 MFA 提供程序。
 
-如果目录中有按身份验证计费的  Azure 多重身份验证提供程序，始终都会按每次身份验证付费，只要 MFA 提供程序已与订阅相关联。 可以将 MFA 许可证分配给用户，但仍要为每个双重验证请求付费，不管该请求是否来自拥有 MFA 许可证的用户。
+如果目录中有按身份验证计费的 Azure 多重身份验证提供程序，始终都会按每次身份验证付费，只要 MFA 提供程序已与订阅相关联。 可以将 MFA 许可证分配给用户，但仍要为每个双重验证请求付费，不管该请求是否来自拥有 MFA 许可证的用户。
 
 **问：组织是否必须使用并同步标识才能使用 Azure 多重身份验证？**
 
@@ -142,15 +140,15 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 > [!NOTE]
 > 适用于 Office 2013 客户端的新式验证
 >
-> 只有不支持新式身份验证的应用才需要应用密码。 Office 2013 客户端支持新式身份验证协议，但需要进行配置。 新式身份验证现可用于运行适用于 Office 2013 年 3 月 2015年或更高版本更新任何客户。 有关详细信息，请参阅博客文章[更新 Office 365 新式身份验证](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)。
+> 只有不支持新式身份验证的应用才需要应用密码。 Office 2013 客户端支持新式身份验证协议，但需要进行配置。 现在, 对于运行三月2015或更高版本的 Office 2013 的任何客户都可以使用新式身份验证。 有关详细信息, 请参阅博客文章[更新的 Office 365 新式身份验证](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)。
 
 **问：我的用户指出，有时他们收不到短信，或者回复了双向短信但验证超时。**
 
-发送短信和接收双向短信回复无法得到保障，因为它们属于可能影响服务可靠性的不可控因素。 这些因素包括目标国家/地区、 移动电话运营商和信号强度。
+发送短信和接收双向短信回复无法得到保障，因为它们属于可能影响服务可靠性的不可控因素。 这些因素包括目标国家/地区、移动电话运营商和信号强度。
 
 如果用户经常无法可靠地接收短信，请告诉他们改用移动应用或电话验证方法。 移动应用可以同时通过手机网络和 Wi-Fi 连接接收通知。 此外，即使设备根本没有信号，也可以生成验证码。 Microsoft 验证器应用适用于 [Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[iOS](https://go.microsoft.com/fwlink/?Linkid=825073) 和 [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)。
 
-如果必须使用短信，建议尽可能使用单向短信，而不要使用双向短信。 单向短信更加可靠，它会阻止用户不会产生从回复短信发送从其他国家/地区的全球短信费用。
+如果必须使用短信，建议尽可能使用单向短信，而不要使用双向短信。 单向短信更加可靠，并可以防止用户由于回复从其他国家/地区发来的短信而产生的全球短信费用。
 
 **问：是否可以更改在系统超时之前，用户必须输入短信中验证代码的时限？**
 
@@ -207,9 +205,9 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 告诉他们按照此过程从移动应用中删除帐户，并重新添加：
 
 1. 转到 [Azure 门户配置文件](https://account.activedirectory.windowsazure.com/profile/)，并使用组织帐户登录。
-2. 选择“其他安全性验证”  。
+2. 选择“其他安全性验证”。
 3. 从移动应用中删除现有帐户。
-4. 单击“配置”  ，并按照说明重新配置移动应用。
+4. 单击“配置”，并按照说明重新配置移动应用。
 
 **问：如果用户在登录非浏览器应用程序时看到 0x800434D4L 错误消息，该怎么办？**
 

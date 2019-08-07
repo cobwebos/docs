@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 9350ee1f04ca881584774afcf415480678d5497d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
-ms.translationtype: HT
+ms.openlocfilehash: d2fadf6d0bf9b7422b6dbf7597a024d22b5d733f
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816999"
+ms.locfileid: "68839328"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
-Azure Monitor 将日志数据存储在 Log Analytics 工作区中, 这是一个 Azure 资源和一个容器, 在其中收集、聚合数据并用作管理边界。 虽然你可以在 Azure 订阅中部署一个或多个工作区, 但你应了解以下几个事项, 以确保你的初始部署遵循我们的指导原则, 以便为你提供经济高效的可管理性和可缩放性满足组织需求的部署。
+Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics 工作区中, 这是一个 Azure 资源和一个容器, 在其中收集、聚合数据并用作管理边界。 虽然你可以在 Azure 订阅中部署一个或多个工作区, 但你应了解以下几个事项, 以确保你的初始部署遵循我们的指导原则, 以便为你提供经济高效的可管理性和可缩放性满足组织需求的部署。
 
 工作区中的数据组织到表中, 每个表都存储不同种类的数据, 并基于生成数据的资源具有自己的唯一属性集。 大多数数据源都将写入到 Log Analytics 工作区中各自的表中。
 
@@ -34,7 +34,7 @@ Log Analytics 工作区可提供：
 * 数据隔离, 方法是根据我们推荐的设计策略之一授予不同的用户访问权限。
 * 设置配置的范围，如[定价层级](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[保留期](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)和[数据上限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)。
 
-本文详细概述了设计因素和注意事项、访问控制概述, 并了解我们为 IT 组织建议的设计实现。
+本文详细介绍了设计和迁移注意事项、访问控制概述以及我们建议为 IT 组织提供的设计实现。
 
 ## <a name="important-considerations-for-an-access-control-strategy"></a>访问控制策略的重要注意事项
 

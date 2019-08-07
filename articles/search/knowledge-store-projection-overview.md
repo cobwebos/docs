@@ -9,13 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
-ms.custom: seomay2019
-ms.openlocfilehash: f1c7278909557dc92f86c5dfc1f190fddf33f607
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: cognitive-search
+ms.openlocfilehash: 39bf5c65cd4577007dfbfe973963849ea663ec16
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540810"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840779"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>在 Azure 搜索中使用知识存储中的投影
 
@@ -52,9 +52,9 @@ Azure 搜索允许通过编制索引功能附带的 AI 认知技能和自定义�
 在单个投影组中投影的所有内容保留数据内部的关系。 关系基于生成的键，每个子节点保留对父节点的引用。 关系不会跨越投影组，在一个投影组中创建的表或对象，与其他投影组中生成的数据没有关系。
 
 ## <a name="input-shaping"></a>输入整形
-获取采用适当形状或结构（表或对象）的数据对于有效利用数据而言至关重要。 根据访问和使用数据的方式塑造或结构化数据的功能，是在技能集中作为“整形程序”公开的关键功能。   
+获取采用适当形状或结构（表或对象）的数据对于有效利用数据而言至关重要。 根据访问和使用数据的方式塑造或结构化数据的功能，是在技能集中作为“整形程序”公开的关键功能。  
 
-如果扩充树中存在与投影架构匹配的对象，则可以更轻松地定义投影。 使用更新的[整形程序技能](cognitive-search-skill-shaper.md)可以从扩充树的不同节点编写对象，并将其指定为新节点下的父级。 使用“整形程序”技能可以定义包含嵌套对象的复杂类型。 
+如果扩充树中存在与投影架构匹配的对象，则可以更轻松地定义投影。 使用更新的[整形程序技能](cognitive-search-skill-shaper.md)可以从扩充树的不同节点编写对象，并将其指定为新节点下的父级。 使用“整形程序”技能可以定义包含嵌套对象的复杂类型。
 
 如果定义的新形状包含需要投影出的所有元素，则你现在可以使用此形状作为投影的源，或作为另一技能的输入。
 
@@ -66,7 +66,7 @@ Azure 搜索允许通过编制索引功能附带的 AI 认知技能和自定义�
 
 ### <a name="defining-a-table-projection"></a>定义表投影
 
-在技能集的 `knowledgeStore` 元素中定义表投影时，请先将扩充树中的某个节点映射到表源。 此节点通常是添加到技能列表的、用于生成需要投影到表的“整形程序”技能的输出。  选择投影的节点可以分片，以投影到多个表。 表定义是要投影的表列表。 
+在技能集的 `knowledgeStore` 元素中定义表投影时，请先将扩充树中的某个节点映射到表源。 此节点通常是添加到技能列表的、用于生成需要投影到表的“整形程序”技能的输出。 选择投影的节点可以分片，以投影到多个表。 表定义是要投影的表列表。 
 
 每个表需要三个属性：
 
@@ -116,7 +116,7 @@ Azure 搜索允许通过编制索引功能附带的 AI 认知技能和自定义�
 
 ## <a name="object-projections"></a>对象投影
 
-对象投影是可以从任何节点寻源的扩充树的 JSON 表示形式。 在许多情况下，可以使用用于创建表投影的同一个“整形程序”技能来生成对象投影。  
+对象投影是可以从任何节点寻源的扩充树的 JSON 表示形式。 在许多情况下，可以使用用于创建表投影的同一个“整形程序”技能来生成对象投影。 
 
 ```json
 {
@@ -167,7 +167,7 @@ Azure 搜索允许通过编制索引功能附带的 AI 认知技能和自定义�
 
 分析时，可以方便地在 Power BI 中浏览数据，只需将 Azure 表存储设置为数据源即可。 可以利用数据内部的关系，十分轻松地基于数据创建一组可视化效果。
 
-或者，如果您需要在数据科学管道中使用丰富的数据，你可以[将数据从 blob 加载到 Pandas 数据帧](../machine-learning/team-data-science-process/explore-data-blob.md)。
+或者, 如果您需要在数据科学管道中使用大量数据, 则可以将[blob 中的数据加载到 Pandas 数据帧](../machine-learning/team-data-science-process/explore-data-blob.md)中。
 
 最后，如果需要从知识存储导出数据，可以使用 Azure 数据工厂提供的连接器来导出数据，然后将其载入所选的数据库。 
 

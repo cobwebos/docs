@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba63f9c04e062741eded9c39e44ba64281931387
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 6646217149cec48ca5fcee59b3dd9d850965c602
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311350"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779921"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的直通身份验证
 
@@ -34,7 +34,7 @@ ms.locfileid: "68311350"
 若要成功完成迁移到直通身份验证的步骤，必须安装 [Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) (Azure AD Connect) 1.1.819.0 或更高版本。 在 Azure AD Connect 1.1.819.0 中，对执行登录转换的方式做了重大更改。 此版本将 AD FS 到云身份验证的迁移所需的总时间从潜在的几个小时减少为几分钟。
 
 > [!IMPORTANT]
-> 过时的文档、工具和博客中可能指出，将域从联合标识转换为托管标识时，必须执行用户转换。 现在不再需要转换用户。  Microsoft 正在努力更新文档和工具以反映这项变化。
+> 过时的文档、工具和博客中可能指出，将域从联合标识转换为托管标识时，必须执行用户转换。 现在不再需要转换用户。 Microsoft 正在努力更新文档和工具以反映这项变化。
 
 若要更新 Azure AD Connect，请完成 [Azure AD Connect：升级到最新版本](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)中的步骤。
 
@@ -48,7 +48,7 @@ ms.locfileid: "68311350"
 
 可通过两种方法从联合标识管理迁移到直通身份验证和无缝单一登录 (SSO)。 所用的方法取决于 AD FS 实例的最初配置方式。
 
-* **Azure AD Connect**。 如果最初使用 Azure AD Connect 配置了 AD FS，则必须使用 Azure AD Connect 向导更改为直通身份验证。 
+* **Azure AD Connect**。 如果最初使用 Azure AD Connect 配置了 AD FS，则必须使用 Azure AD Connect 向导更改为直通身份验证。
 
    ‎当你更改用户登录方法时，Azure AD Connect 会自动运行 **Set-MsolDomainAuthentication** cmdlet。 Azure AD Connect 会自动取消联合 Azure AD 租户中所有已验证的联合域。
 
@@ -62,23 +62,23 @@ ms.locfileid: "68311350"
 #### <a name="verify-current-user-sign-in-settings"></a>验证当前用户登录设置
 
 1. 使用全局管理员帐户登录到 [Azure AD 门户](https://aad.portal.azure.com/)。
-2. 在“用户登录”部分验证以下设置： 
-   * “联合身份验证”设置为“已启用”。  
-   * “无缝单一登录”设置为“已禁用”。  
-   * “直通身份验证”设置为“已禁用”。  
+2. 在“用户登录”部分验证以下设置：
+   * “联合身份验证”设置为“已启用”。
+   * “无缝单一登录”设置为“已禁用”。
+   * “直通身份验证”设置为“已禁用”。
 
    ![Azure AD Connect“用户登录”部分中的设置屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image1.png)
 
 #### <a name="verify-how-federation-was-configured"></a>验证联合身份验证的配置方式
 
-1. 在 Azure AD Connect 服务器上打开 Azure AD Connect。 选择“配置”  。
-2. 在“其他任务”页上，依次选择“查看当前配置”、“下一步”。   <br />
+1. 在 Azure AD Connect 服务器上打开 Azure AD Connect。 选择“配置”。
+2. 在“其他任务”页上，依次选择“查看当前配置”、“下一步”。<br />
  
    ![“其他任务”页上的“查看当前配置”选项屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
-3. 在“查看解决方案”页上，滚动到“Active Directory 联合身份验证服务(AD FS)”。  <br />
+3. 在“查看解决方案”页上，滚动到“Active Directory 联合身份验证服务(AD FS)”。<br />
 
-   * 如果此部分显示了 AD FS 配置，则可以肯定 AD FS 最初是使用 Azure AD Connect 配置的。 可以使用 Azure AD Connect 的“更改用户登录”选项将域从联合标识转换为托管标识。  有关此过程的详细信息, 请参阅部分**选项 A:** 使用 Azure AD Connect 配置直通身份验证”部分。
-   * 如果当前设置中未列出 AD FS，则必须使用 PowerShell 手动将域从联合标识转换为托管标识。 有关该过程的详细信息，请参阅“选项 B：  使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到直通身份验证”部分。
+   * 如果此部分显示了 AD FS 配置，则可以肯定 AD FS 最初是使用 Azure AD Connect 配置的。 可以使用 Azure AD Connect 的“更改用户登录”选项将域从联合标识转换为托管标识。 有关此过程的详细信息, 请参阅部分**选项 A:** 使用 Azure AD Connect 配置直通身份验证”部分。
+   * 如果当前设置中未列出 AD FS，则必须使用 PowerShell 手动将域从联合标识转换为托管标识。 有关该过程的详细信息，请参阅“选项 B：使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到直通身份验证”部分。
 
 ### <a name="document-current-federation-settings"></a>阐述当前联合身份验证设置
 
@@ -124,7 +124,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 从联合标识转换为托管标识之前，请仔细检查目前如何将 AD FS 用于 Azure AD、Office 365 和其他应用程序（信赖方信任）。 具体而言，请考虑下表中所述的场景：
 
-| 如果 | 那么 |
+| If | Then |
 |-|-|
 | 打算对其他这些应用程序（非 Azure AD 和 Office 365）保留使用 AD FS。 | 转换域后，将同时使用 AD FS 和 Azure AD。 考虑用户体验。 在某些情况下，用户可能需要进行身份验证两次，一次是针对 Azure AD（然后用户可以通过 SSO 访问 Office 365 等其他应用程序），另一次是针对仍以信赖方信任方式绑定到 AD FS 的任何应用程序再次进行身份验证。 |
 | AD FS 实例经过重度的自定义，并依赖于 onload.js 文件中的特定自定义设置（例如，你已更改登录体验，使用户只需以 **SamAccountName** 格式输入其用户名而不是用户主体名称 (UPN)；或者组织在登录体验中使用了众多的品牌设计）。 不能在 Azure AD 中复制 onload.js 文件。 | 在继续之前，必须验证 Azure AD 是否可以满足当前自定义要求。 如需更多信息和指导，请参阅有关 AD FS 品牌和 AD FS 自定义的部分。|
@@ -156,7 +156,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 有关详细信息，请参阅[配置已加入混合 Azure AD 的设备](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup)。
 
-#### <a name="branding"></a>品牌
+#### <a name="branding"></a>品牌打造
 
 如果你的组织已[自定义 AD FS 登录页](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization)以使显示的内容与组织更相关，请考虑[在 Azure AD 登录页中使用类似的自定义项](https://docs.microsoft.com/azure/active-directory/customize-branding)。
 
@@ -235,7 +235,7 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 
 #### <a name="option-a-configure-pass-through-authentication-by-using-azure-ad-connect"></a>选项 A：使用 Azure AD Connect 配置直通身份验证
 
-如果最初使用 Azure AD Connect 配置了 AD FS 环境，请使用此方法。 如果最初不是使用 Azure AD Connect 配置了 AD FS 环境，则不能使用此方法。 
+如果最初使用 Azure AD Connect 配置了 AD FS 环境，请使用此方法。 如果最初不是使用 Azure AD Connect 配置了 AD FS 环境，则不能使用此方法。
 
 > [!IMPORTANT]
 > 完成以下步骤后，所有域将从联合标识转换为托管标识。 有关详细信息，请查看[规划迁移方法](#plan-the-migration-method)。
@@ -243,10 +243,10 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 首先更改登录方法：
 
 1. 在 Azure AD Connect 服务器上打开 Azure AD Connect 向导。
-2. 依次选择“更改用户登录”、“下一步”。   
-3. 在“连接到 Azure AD”页上，输入全局管理员帐户的用户名和密码。 
-4. 在“用户登录”页上选中“直通身份验证”单选按钮，选择“启用单一登录”，然后选择“下一步”。    
-5. 在“启用单一登录”页上输入域管理员帐户的凭据，然后选择“下一步”。  
+2. 依次选择“更改用户登录”、“下一步”。 
+3. 在“连接到 Azure AD”页上，输入全局管理员帐户的用户名和密码。
+4. 在“用户登录”页上选中“直通身份验证”单选按钮，选择“启用单一登录”，然后选择“下一步”。
+5. 在“启用单一登录”页上输入域管理员帐户的凭据，然后选择“下一步”。
 
    > [!NOTE]
    > 需要使用域管理员帐户凭据来启用无缝 SSO。 该过程将完成以下操作，而这些操作需要这些提升的权限。 域管理员帐户凭据不存储在 Azure AD Connect 或 Azure AD 中。 域管理员帐户凭据仅用于启用该功能。 成功完成该过程后会丢弃这些凭据。
@@ -255,27 +255,27 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
    > 2. 计算机帐户的 Kerberos 解密密钥与 Azure AD 安全共享。
    > 3. 创建两个 Kerberos 服务主体名称 (SPN) 来表示 Azure AD 登录期间使用的两个 URL。
 
-6. 在“已准备好进行配置”页上，确保已选中“配置完成后启动同步过程”复选框。   然后选择“配置”。 <br />
+6. 在“已准备好进行配置”页上，确保已选中“配置完成后启动同步过程”复选框。 然后选择“配置”。<br />
 
    ![“准备好配置”页的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
-7. 在 Azure AD 门户中，依次选择“Azure Active Directory”、“Azure AD Connect”。  
+7. 在 Azure AD 门户中，依次选择“Azure Active Directory”、“Azure AD Connect”。
 8. 验证以下设置：
-   * “联合身份验证”设置为“已禁用”。  
-   * “无缝单一登录”设置为“已启用”。  
-   * “直通身份验证”设置为“已启用”。  <br />
+   * “联合身份验证”设置为“已禁用”。
+   * “无缝单一登录”设置为“已启用”。
+   * “直通身份验证”设置为“已启用”。<br />
 
    ![显示“用户登录”部分中的设置的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
 
 接下来， 部署附加的身份验证方法：
 
-1. 在 Azure 门户中转到“Azure Active Directory” > “Azure AD Connect”，然后选择“直通身份验证”。   
-2. 在“直通身份验证”页上选择“下载”按钮。  
-3. 在“下载代理”页上选择“接受条款并下载”。  
+1. 在 Azure 门户中转到“Azure Active Directory” > “Azure AD Connect”，然后选择“直通身份验证”。
+2. 在“直通身份验证”页上选择“下载”按钮。
+3. 在“下载代理”页上选择“接受条款并下载”。
 
    随后将开始下载附加的身份验证代理。 在已加入域的服务器上安装辅助身份验证代理。 
 
    > [!NOTE]
-   > 在 Azure AD Connect 工具的“用户登录”部分进行配置更改过程中，始终会在 Azure AD Connect 服务器本身上安装第一个代理。  请在单独的服务器上安装任何附加的身份验证代理。 我们建议提供两到三个附加的身份验证代理。 
+   > 在 Azure AD Connect 工具的“用户登录”部分进行配置更改过程中，始终会在 Azure AD Connect 服务器本身上安装第一个代理。 请在单独的服务器上安装任何附加的身份验证代理。 我们建议提供两到三个附加的身份验证代理。 
 
 4. 运行身份验证代理安装。 在安装过程中，必须输入全局管理员帐户的凭据。
 
@@ -288,7 +288,7 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 跳到[测试和后续步骤](#testing-and-next-steps)。
 
 > [!IMPORTANT]
-> 跳过“选项 B：  使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到直通身份验证”部分。 如果已选择使用“选项 A”将登录方法更改为直通身份验证并启用无缝 SSO，则“选项 B”部分中的步骤不适用。 
+> 跳过“选项 B：使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到直通身份验证”部分。 如果已选择使用“选项 A”将登录方法更改为直通身份验证并启用无缝 SSO，则“选项 B”部分中的步骤不适用。 
 
 #### <a name="option-b-switch-from-federation-to-pass-through-authentication-by-using-azure-ad-connect-and-powershell"></a>选项 B：使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到直通身份验证
 
@@ -297,10 +297,10 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 首先启用直通身份验证：
 
 1. 在 Azure AD Connect 服务器上打开 Azure AD Connect 向导。
-2. 依次选择“更改用户登录”、“下一步”。  
-3. 在“连接到 Azure AD”页上，输入全局管理员帐户的用户名和密码。 
-4. 在“用户登录”页上选择“直通身份验证”按钮。   依次选择“启用单一登录”、“下一步”。  
-5. 在“启用单一登录”页上输入域管理员帐户的凭据，然后选择“下一步”。  
+2. 依次选择“更改用户登录”、“下一步”。
+3. 在“连接到 Azure AD”页上，输入全局管理员帐户的用户名和密码。
+4. 在“用户登录”页上选择“直通身份验证”按钮。 依次选择“启用单一登录”、“下一步”。
+5. 在“启用单一登录”页上输入域管理员帐户的凭据，然后选择“下一步”。
 
    > [!NOTE]
    > 需要使用域管理员帐户凭据来启用无缝 SSO。 该过程将完成以下操作，而这些操作需要这些提升的权限。 域管理员帐户凭据不存储在 Azure AD Connect 或 Azure AD 中。 域管理员帐户凭据仅用于启用该功能。 成功完成该过程后会丢弃这些凭据。
@@ -309,35 +309,35 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
    > 2. 计算机帐户的 Kerberos 解密密钥与 Azure AD 安全共享。
    > 3. 创建两个 Kerberos 服务主体名称 (SPN) 来表示 Azure AD 登录期间使用的两个 URL。
 
-6. 在“已准备好进行配置”页上，确保已选中“配置完成后启动同步过程”复选框。   然后选择“配置”。 <br />
+6. 在“已准备好进行配置”页上，确保已选中“配置完成后启动同步过程”复选框。 然后选择“配置”。<br />
 
    ‎![显示“已准备好进行配置”页和“配置”按钮的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image18.png)<br />
-   选择“配置”时，将执行以下步骤： 
+   选择“配置”时，将执行以下步骤：
 
    1. 安装第一个直通身份验证代理。
    2. 启用直通功能。
    3. 启用无缝 SSO。
 
 7. 验证以下设置：
-   * “联合身份验证”设置为“已启用”。  
-   * “无缝单一登录”设置为“已启用”。  
-   * “直通身份验证”设置为“已启用”。  
+   * “联合身份验证”设置为“已启用”。
+   * “无缝单一登录”设置为“已启用”。
+   * “直通身份验证”设置为“已启用”。
    
    ![显示“用户登录”部分中的设置的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
-8. 选择“直通身份验证”，验证状态是否为“活动”。  <br />
+8. 选择“直通身份验证”，验证状态是否为“活动”。<br />
    
-   如果身份验证代理不处于活动状态，请先完成某些[故障排除步骤](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication)，然后继续在下一步骤进行域转换过程。 在验证直通身份验证代理是否已成功安装并且其在 Azure 门户中的状态显示为“活动”之前，如果转换域，可能存在身份验证中断的风险。 
+   如果身份验证代理不处于活动状态，请先完成某些[故障排除步骤](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication)，然后继续在下一步骤进行域转换过程。 在验证直通身份验证代理是否已成功安装并且其在 Azure 门户中的状态显示为“活动”之前，如果转换域，可能存在身份验证中断的风险。
 
 接下来请部署附加的身份验证代理：
 
-1. 在 Azure 门户中转到“Azure Active Directory” > “Azure AD Connect”，然后选择“直通身份验证”。   
-2. 在“直通身份验证”页上选择“下载”按钮。   
-3. 在“下载代理”页上选择“接受条款并下载”。  
+1. 在 Azure 门户中转到“Azure Active Directory” > “Azure AD Connect”，然后选择“直通身份验证”。
+2. 在“直通身份验证”页上选择“下载”按钮。 
+3. 在“下载代理”页上选择“接受条款并下载”。
  
    随后会开始下载身份验证代理。 在已加入域的服务器上安装辅助身份验证代理。
 
    > [!NOTE]
-   > 在 Azure AD Connect 工具的“用户登录”部分进行配置更改过程中，始终会在 Azure AD Connect 服务器本身上安装第一个代理。  请在单独的服务器上安装任何附加的身份验证代理。 我们建议提供两到三个附加的身份验证代理。
+   > 在 Azure AD Connect 工具的“用户登录”部分进行配置更改过程中，始终会在 Azure AD Connect 服务器本身上安装第一个代理。 请在单独的服务器上安装任何附加的身份验证代理。 我们建议提供两到三个附加的身份验证代理。
  
 4. 运行身份验证代理安装。 在安装过程中，必须输入全局管理员帐户的凭据。<br />
 
@@ -358,11 +358,11 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
  
-3. 在 Azure AD 门户中，选择“Azure Active Directory” > “Azure AD Connect”。  
+3. 在 Azure AD 门户中，选择“Azure Active Directory” > “Azure AD Connect”。
 4. 转换所有联合域后，验证以下设置：
-   * “联合身份验证”设置为“已禁用”。  
-   * “无缝单一登录”设置为“已启用”。  
-   * “直通身份验证”设置为“已启用”。  <br />
+   * “联合身份验证”设置为“已禁用”。
+   * “无缝单一登录”设置为“已启用”。
+   * “直通身份验证”设置为“已启用”。<br />
 
    ![显示“用户登录”部分中的设置的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
 
@@ -378,13 +378,13 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 
 1. 在 InPrivate 模式下打开 Internet Explorer，以避免无缝 SSO 自动将你登录。
 2. 转到 Office 365 登录页 ([https://portal.office.com](https://portal.office.com/))。
-3. 输入用户 UPN，然后选择“下一步”。  请务必输入已从本地 Active Directory 实例同步的，并且事先已使用联合身份验证的混合用户的 UPN。 此时会显示一个页面，可在其中输入用户名和密码：
+3. 输入用户 UPN，然后选择“下一步”。 请务必输入已从本地 Active Directory 实例同步的，并且事先已使用联合身份验证的混合用户的 UPN。 此时会显示一个页面，可在其中输入用户名和密码：
 
    ![显示用于输入用户名的登录页的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
 
    ![显示用于输入密码的登录页的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image28.png)
 
-4. 输入密码并选择“登录”后，将重定向到 Office 365 门户。 
+4. 输入密码并选择“登录”后，将重定向到 Office 365 门户。
 
    ![显示 Office 365 门户的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image29.png)
 
@@ -454,5 +454,5 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 ## <a name="next-steps"></a>后续步骤
 
 * 了解 [Azure AD Connect 设计概念](plan-connect-design-concepts.md)。
-* 选择[适当的身份验证](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)。
+* 选择[适当的身份验证](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)。
 * 了解[支持的拓扑](plan-connect-design-concepts.md)。

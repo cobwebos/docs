@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/06/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896bd7f9af3c319ec4190131036d8aa8ee49bb79
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e15fa8c79663fc2517039124f9be8c1ecd57b8a8
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705433"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837881"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委派应用注册权限
 
@@ -29,7 +29,7 @@ ms.locfileid: "68705433"
 - [限制可以创建应用程序的用户](#restrict-who-can-create-applications)和管理他们创建的应用程序。 默认情况下, 在 Azure AD 中, 所有用户都可以注册应用程序注册并管理他们创建的应用程序的所有方面。 这可以限制为仅允许所选人员具有权限。
 - [将一个或多个所有者分配给应用程序](#assign-application-owners)。 这是一种简单的方法, 可让用户对特定应用程序的 Azure AD 配置的所有方面进行管理。
 - [分配内置管理角色](#assign-built-in-application-admin-roles), 此角色授予对所有应用程序的 Azure AD 中的管理配置的访问权限。 这是向 IT 专家授予管理广泛的应用程序配置权限的建议方法, 而不授予管理与应用程序配置相关的 Azure AD 的其他部分的访问权限。
-- [创建自定义角色](#create-and-assign-a-custom-role), 定义非常具体的权限, 并将其分配给某人作为有限所有者的单个应用程序的作用域, 或者将其分配给受限制的管理员。
+- [创建自定义角色](#create-and-assign-a-custom-role-preview), 定义非常具体的权限, 并将其分配给某人作为有限所有者的单个应用程序的作用域, 或者将其分配给受限制的管理员。
 
 由于两个原因, 请务必考虑使用上述方法之一授予访问权限。 首先, 委派执行管理任务的功能可降低全局管理员开销。 其次, 使用有限权限可以提高安全状况, 并减少未经授权的访问的可能性。 [在 Azure Active Directory 中委托管理权限](roles-concept-delegation.md)中介绍了委托问题和一般准则。
 
@@ -86,16 +86,21 @@ Azure AD 包含一组内置管理员角色, 用于授予访问权限, 以便对�
 > 应用程序管理员和云应用程序管理员可以向应用程序添加凭据, 并使用这些凭据来模拟应用程序的标识。 应用程序的权限可能是对管理员角色权限的提升权限。 当模拟应用程序时, 此角色中的管理员可能会创建或更新用户或其他对象, 具体取决于应用程序的权限。
 > 任何一个角色都不授权管理“条件访问”设置。
 
-## <a name="create-and-assign-a-custom-role"></a>创建和分配自定义角色
+## <a name="create-and-assign-a-custom-role-preview"></a>创建和分配自定义角色 (预览)
 
 创建自定义角色和分配自定义角色是单独的步骤:
 
 - [创建自定义*角色定义*](roles-create-custom.md) , 并[从预设列表中添加对其的权限](roles-custom-available-permissions.md)。 这些是在内置角色中使用的相同权限。
-- [创建*角色分配*](roles-assign-graph.md)以分配自定义角色。
+- [创建*角色分配*](roles-assign-powershell.md)以分配自定义角色。
 
 这种分离使你可以创建单个角色定义, 然后在不同的*范围*内将其分配多次。 可以在组织范围的范围内分配自定义角色, 也可以在单个 Azure AD 对象的范围内分配自定义角色。 对象范围的一个示例是单个应用程序注册。 使用不同的作用域, 可以在组织中的所有应用注册上将同一角色定义分配给 Sally, 然后只 Naveen Contoso Expense 报表应用注册。
 
-有关自定义角色的基础知识的详细信息, 请参阅[自定义角色概述](roles-custom-overview.md), 以及如何[创建自定义角色](roles-create-custom.md)以及如何[分配角色](roles-assign-graph.md)。
+创建和使用自定义角色来委派应用程序管理时的技巧:
+- 自定义角色仅在 Azure AD 门户的最新应用注册边栏选项卡中授予访问权限。 它们不会在旧的应用注册边栏选项卡中授予访问权限。
+- 当 "限制对 Azure AD 管理门户的访问权限" 用户设置设置为 "是" 时, 自定义角色不会授予对 Azure AD 门户的访问权限。
+- 应用注册用户有权使用角色分配, 则只会在 "应用注册" 页上的 "所有应用程序" 选项卡中显示。 它们不会显示在 "拥有的应用程序" 选项卡中。
+
+有关自定义角色的基础知识的详细信息, 请参阅[自定义角色概述](roles-custom-overview.md), 以及如何[创建自定义角色](roles-create-custom.md)以及如何[分配角色](roles-assign-powershell.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

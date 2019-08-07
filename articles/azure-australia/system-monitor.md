@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: b68bdb6d1c349df67943889b511eac87c940b531
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f7f78dbde9810c8786e2344555444efabcc989b0
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571882"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779328"
 ---
 # <a name="system-monitoring-for-security-in-azure-australia"></a>Azure 澳大利亚安全系统监视
 
@@ -74,7 +74,7 @@ Azure 顾问收集的信息为管理员提供以下内容:
 
 是强制执行特定策略还是正在审核策略的影响, 会持续监视策略符合性, 并为管理员提供总体和特定于资源的符合性信息。 向 Azure 安全中心提供 azure 策略符合性数据, 构成安全分数的组成部分。
 
-## <a name="key-design-considerations"></a>关键设计注意事项
+## <a name="key-design-considerations"></a>关键设计考虑因素
 
 实现事件日志策略时, ACSC ISM 突出显示以下注意事项:
 
@@ -108,7 +108,7 @@ ISM 提供了应包含在任何日志记录策略中的事件日志类型的详�
 
 通过部署适用于 Windows 和 Linux 的虚拟机代理, Azure 虚拟机监视功能得到了增强。 这会显著增加收集的日志记录信息的广度。 可以将此代理的部署配置为通过 Azure 安全中心自动执行。
 
-Microsoft 提供有关特定于 Azure 资源的日志及其[架构](https://docs.microsoft.com/azure/security/azure-log-audit)的详细信息。
+Microsoft 提供有关特定于 Azure 资源的日志及其[架构](https://docs.microsoft.com/azure/security/fundamentals/log-audit)的详细信息。
 
 ### <a name="log-retention-and-protection"></a>日志保留和保护
 

@@ -1,6 +1,6 @@
 ---
-title: 管理 Azure 保留项
-description: 了解如何为 Azure 预留更改订阅范围以及管理访问权限。
+title: 管理 Azure 预订
+description: 了解如何管理 Azure 保留项。
 ms.service: billing
 author: bandersmsft
 manager: yashesvi
@@ -8,74 +8,74 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 08/06/2019
 ms.author: banders
-ms.openlocfilehash: 89279387b3630ea654070eef671f131ec757d55f
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: b161fc7cd4faa75dd87613c297c12f1edd862510
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491180"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840048"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
-有关 Azure 购买预订后，你可能需要将预订应用到其他订阅，更改谁可以管理预订，或更改预订的范围。 还可以将预留拆分为两个预留，以将购买的一些实例应用于另一个订阅。
+购买 Azure 保留后, 你可能需要将预订应用于不同的订阅、更改可管理预订的人员或更改预订的作用域。 还可以将预留拆分为两个预留，以将购买的一些实例应用于另一个订阅。
 
-如果购买了 Azure 虚拟机预留实例，则可以更改预留的优化设置。 预留折扣可以应用于同一系列中的 VM，也可以为特定的 VM 大小保留数据中心容量。
+如果已购买 Azure 保留虚拟机实例, 则可以更改保留的优化设置。 预留折扣可以应用于同一系列中的 VM，也可以为特定的 VM 大小保留数据中心容量。 而且, 您应该尝试优化预留, 以使它们完全使用。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="reservation-order-and-reservation"></a>预订订单和保留
+## <a name="reservation-order-and-reservation"></a>预订订单和预订
 
-当你购买的预订时，创建两个对象：**预订订单**并**预订**。
+购买预订时, 会创建两个对象:**预订订单**和**预留**。
 
-在购买时，预订订单具有其下的有一个保留项。 操作，例如拆分、 合并、 部分退款或 exchange 创建下的新保留**预订订单**。
+在购买时, 预订订单下面有一个预订。 拆分、合并、部分退款或 exchange 等操作按照**预订顺序**创建新预订。
 
-若要查看保留顺序，请转到**预订**> 选择保留项，并单击**预订订单 ID**。
+若要查看预订订单, 请前往**预订**> 选择预订, 然后单击**预订订单 ID**。
 
-![显示预订订单 ID 的预订订单详细信息的示例 ](./media/billing-manage-reserved-vm-instance/reservation-order-details.png)
+![显示预订订单 ID 的预订订单详细信息示例 ](./media/billing-manage-reserved-vm-instance/reservation-order-details.png)
 
-保留从其预订订单继承权限。
+预订从其预订顺序继承权限。
 
-## <a name="change-the-reservation-scope"></a>更改预订范围
+## <a name="change-the-reservation-scope"></a>更改保留范围
 
- 预订折扣适用于虚拟机、 SQL 数据库、 Azure Cosmos DB 或与预订匹配并在预订范围中运行的其他资源。 计费上下文依赖于用于购买预订的订阅。
+ 你的预订折扣适用于虚拟机、SQL 数据库、Azure Cosmos DB 或其他资源, 这些资源匹配你的预订并在保留范围中运行。 计费上下文依赖于用于购买预订的订阅。
 
 若要更新预订范围，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”   > “预订”  。
+2. 选择“所有服务” > “预订”。
 3. 选择该预订。
-4. 选择“设置”   > “配置”  。
+4. 选择“设置” > “配置”。
 5. 更改范围。
 
-如果要从“共享”更改为单个范围，只能选择自己是其所有者的订阅。 只能选择与该预订相同的计费上下文中的订阅。
+如果从 "共享" 更改为 "单个作用域", 则只能选择你是其所有者的订阅。 只能选择与该预订相同的计费上下文中的订阅。
 
-企业产品/服务 MS-条-0017 P 或 MS-条-0148 P 或 CSP 订阅类型，作用域仅适用于现用现付费率 （优惠 MS-条-0003 P 或 MS-条-0023 P），使用单独的订阅。
+此范围仅适用于按现用现付费率的各个订阅 (提供 BC-OP-NT-AZR-Ms-azr-0003p 或 BC-OP-NT-AZR-0023P)、Enterprise 提供 MS-BC-OP-NT-AZR-Ms-azr-0017p 或 MS-bc-op-nt-azr-ms-azr-0148p 或 CSP 订阅类型。
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>添加或更改可以管理预订的用户
 
-你可以通过将用户添加到角色预订订单或预订委托预订管理。 默认情况下，将预订订单和帐户管理员的人员具有保留顺序和预订所有者角色。
+可以通过将人员添加到预订订单或预订的角色来委托预留管理。 默认情况下, 放置预订订单和帐户管理员的人员具有预订订单和预订的所有者角色。
 
-你可以管理对预订订单和预订独立于获取预订折扣的订阅的访问。 如果您为某人提供管理预订订单或预订的权限，它不会向其提供管理订阅的权限。 同样，如果您为某人提供管理预订的范围中的订阅的权限，它无法提供管理预订订单或预订的权限。
+您可以独立于获得预订折扣的订阅管理对预订订单和预订的访问。 当你向某人授予管理预订订单或预订的权限时, 它不会向他们授予管理订阅的权限。 同样, 如果你向某人授予了在保留范围中管理订阅的权限, 则不会向他们授予管理预订订单或预订的权限。
 
-若要执行的 exchange 或退款，用户必须有权预订订单。 授予用户权限时，最好以保留顺序，不保留对授予权限。
+若要执行交换或退款, 用户必须对预订订单具有访问权限。 向某人授予权限时, 最好是将权限授予预订顺序, 而不是保留。
 
 
 若要委托预订的访问管理，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”   > “预订”  以列出自己有权访问的预订。
+2. 选择“所有服务” > “预订”以列出自己有权访问的预订。
 3. 选择要将访问权限委托给其他用户的预订。
-4. 选择“访问控制 (IAM)”  。
-5. 选择“添加角色分配”   > “角色”   > “所有者”  。 或者，如果希望提供有限的访问权限，请选择其他角色。
+4. 选择“访问控制 (IAM)”。
+5. 选择“添加角色分配” > “角色” > “所有者”。 或者，如果希望提供有限的访问权限，请选择其他角色。
 6. 键入要添加为“所有者”的用户的电子邮件地址。
-7. 选择用户，再选择“保存”  。
+7. 选择用户，再选择“保存”。
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>将一个预订拆分为两个预订
 
- 购买一个预留中的多个资源实例后，可能会希望将一个预留中的实例分配给其他订阅。 默认情况下，所有实例都有一个范围 - 单个订阅或共享。 例如，已购买 10 个预留实例并将范围指定为订阅 A。现在可能需要将 7 个预留的范围更改为订阅 A，将剩余 3 个预留范围更改为订阅 B。通过拆分预留可以分配实例以进行精细的范围管理。 可以通过选择共享范围来简化分配到订阅。 但出于成本管理或预算目的，可以将数量分配到特定订阅。
+ 购买一个预留中的多个资源实例后，可能会希望将一个预留中的实例分配给其他订阅。 默认情况下，所有实例都有一个范围 - 单个订阅或共享。 例如, 你购买了10个预订实例, 并指定了要作为订阅 A 的作用域。你现在可能想要将7个预订的作用域更改为订阅 A, 并将其余三个预订更改为订阅 B。通过拆分保留, 你可以为粒度范围管理分配实例。 可以通过选择共享范围来简化分配到订阅。 但出于成本管理或预算目的，可以将数量分配到特定订阅。
 
  可以通过 PowerShell、CLI 或通过 API 将一个预订拆分为两个预订。
 
@@ -106,13 +106,9 @@ ms.locfileid: "67491180"
     Update-AzReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
 
-## <a name="cancellations-and-exchanges"></a>取消和更换
+## <a name="cancel-exchange-or-refund-reservations"></a>取消、交换或退款预订
 
-根据预订类型，可能无法取消或更换预订。 有关详细信息，请参阅以下主题中的取消和交换部分：
-
-- [通过 Azure 虚拟机预留实例为虚拟机预付费](..//virtual-machines/windows/prepay-reserved-vm-instances.md#cancellations-and-exchanges)
-- [通过 Azure 预留为 SUSE 软件计划预付费](../virtual-machines/linux/prepay-suse-software-charges.md#cancellation-and-exchanges-not-allowed)
-- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
+您可以取消、交换或退款保留, 但有一些限制。 有关详细信息, 请参阅[Azure 预订的自助服务交换和退款](billing-azure-reservations-self-service-exchange-and-refund.md)。
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>更改预留 VM 实例的优化设置
 
@@ -125,31 +121,62 @@ ms.locfileid: "67491180"
 若要更新预留的优化设置，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”   > “预订”  。
+2. 选择“所有服务” > “预订”。
 3. 选择该预订。
-4. 选择“设置”   > “配置”  。
-5. 更改“优化对象”  设置。
+4. 选择“设置” > “配置”。
+5. 更改“优化对象”设置。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+## <a name="optimize-reservation-use"></a>优化保留使用
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+Azure 保留节省仅因资源使用持续而导致。 当你进行预订购买时, 可以在一年或三年的时间内为资源使用的可能资源使用情况提前支付一项100成本。 尝试最大限度地提高您的预订量, 以尽可能多地使用和节省费用。 以下部分说明如何监视保留并优化其使用。
+
+### <a name="view-reservation-use-in-the-azure-portal"></a>在 Azure 门户中查看预订使用情况
+
+查看保留使用情况的一种方法是在 Azure 门户中。
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+2. 选择 "**所有服务** > [**保留**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)" 并记下预留的**利用率 (%)** 。  
+  ![显示预订列表的图像](./media/billing-manage-reserved-vm-instance/reservation-list.png)
+3. 选择预订。
+4. 查看随时间推移使用的保留趋势。  
+  ![显示保留使用的图像 ](./media/billing-manage-reserved-vm-instance/reservation-utilization-trend.png)
+
+### <a name="view-reservation-use-with-api"></a>使用 API 查看保留使用情况
+
+如果你是企业协议 (EA) 客户, 则可以通过编程方式查看你的组织中的预订的使用方式。 通过使用情况数据获取未使用的预订。 当您查看预订费用时, 请记住, 数据划分为实际成本和摊销成本。 实际成本提供数据来协调每月帐单。 它还具有预订采购成本和预订应用程序详细信息。 摊销成本与实际成本类似, 只不过预留用量的有效价格为按比例分配。 未使用的预订时间显示在摊销成本数据中。 有关 EA 客户的使用情况数据的详细信息, 请参阅[获取企业协议预订成本和使用情况](billing-understand-reserved-instance-usage-ea.md)。
+
+对于其他订阅类型, 请使用 "API[预订摘要"-按预订订单和预订列出](/rest/api/consumption/reservationssummaries/listbyreservationorderandreservation)。
+
+### <a name="optimize-your-reservation"></a>优化你的预订
+
+如果你发现组织的预订正在被充分利用:
+
+- 请确保你的组织创建的虚拟机与保留的 VM 大小相匹配。
+- 确保已启用实例大小灵活性。 有关详细信息，请参阅[管理预留 - 更改预留 VM 实例的优化设置](#change-optimize-setting-for-reserved-vm-instances)。
+- 将预订的作用域更改为 "_共享_", 使其更广泛地应用。 有关详细信息, 请参阅[更改保留范围](#change-the-reservation-scope)。
+- 请考虑交换未使用的数量。 有关详细信息, 请参阅[取消和交换](#cancel-exchange-or-refund-reservations)。
+
+
+## <a name="need-help-contact-us"></a>需要帮助? 请联系我们。
+
+如果你有疑问或需要帮助, 请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
-- [什么是 Azure 的保留项？](billing-save-compute-costs-reservations.md)
+- [Azure 的保留内容是什么？](billing-save-compute-costs-reservations.md)
 
-购买服务计划：
+购买服务计划:
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)
 - [通过 Azure Cosmos DB 保留容量预付 Azure Cosmos DB 资源费用](../cosmos-db/cosmos-db-reserved-capacity.md)
 
-购买的软件计划：
-- [预付款购买的 Red Hat 软件计划从 Azure 保留项](../virtual-machines/linux/prepay-rhel-software-charges.md)
+购买软件计划:
+- [预付 Azure 预订的 Red Hat 软件计划](../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [通过 Azure 预留为 SUSE 软件计划预付费](../virtual-machines/linux/prepay-suse-software-charges.md)
 
-了解折扣和使用情况：
+了解折扣和使用情况:
 - [了解 VM 预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
 - [了解如何应用 Red Hat Enterprise Linux 软件计划折扣](../billing/billing-understand-rhel-reservation-charges.md)
 - [了解如何应用 SUSE Linux Enterprise 软件计划折扣](../billing/billing-understand-suse-reservation-charges.md)

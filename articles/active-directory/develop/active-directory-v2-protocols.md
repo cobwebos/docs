@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7ffef5c3a7c8dd21654b6364013b1718bea1292
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 446d7178973c1d43d55ff89c429b05c2a10118ba
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482989"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835288"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft 标识平台协议
 
@@ -36,19 +36,19 @@ ms.locfileid: "67482989"
 
 几乎在所有的 OAuth 2.0 和 OpenID Connect 流中，都有四个参与交换的对象：
 
-![显示的 OAuth 2.0 角色的关系图](./media/active-directory-v2-flows/protocols-roles.svg)
+![显示 OAuth 2.0 角色的图示](./media/active-directory-v2-flows/protocols-roles.svg)
 
 * **授权服务器**是 Microsoft 标识平台终结点，它负责确保用户的标识、授予和吊销对资源的访问权限，以及颁发令牌。 授权服务器也称为标识提供者 - 它可安全处理与用户信息、用户访问权，以及流中各方彼此间信任关系有关的任何项目。
-* 资源所有者通常是最终用户  。 它是拥有数据的一方，并且有权允许第三方访问该数据或资源。
-* OAuth 客户端是应用，按照其应用程序 ID 进行标识  。 OAuth 客户端通常是与最终用户交互的对象，并向授权服务器请求令牌。 客户端必须获得资源所有者授权才能访问资源。
+* 资源所有者通常是最终用户。 它是拥有数据的一方，并且有权允许第三方访问该数据或资源。
+* OAuth 客户端是应用，按照其应用程序 ID 进行标识。 OAuth 客户端通常是与最终用户交互的对象，并向授权服务器请求令牌。 客户端必须获得资源所有者授权才能访问资源。
 * **资源服务器**是资源或数据所在的位置。 它信任授权服务器安全验证和授权 OAuth 客户端，并使用持有者访问令牌来确保可以授予对资源的访问权限。
 
 ## <a name="app-registration"></a>应用注册
 
-要接受同时个人和工作或学校帐户的每个应用程序必须通过注册**应用注册**方面的经验[Azure 门户](https://aka.ms/appregistrations)它可以注册中使用 OAuth 2.0 的这些用户之前或 OpenID Connect。 应用注册进程会收集一些值并将其分配到应用：
+要接受个人和工作或学校帐户的每个应用都必须通过[Azure 门户](https://aka.ms/appregistrations)中的**应用注册**体验进行注册, 然后才能使用 OAuth 2.0 或 OpenID connect 对这些用户进行签名。 应用注册进程会收集一些值并将其分配到应用：
 
 * 用于唯一标识应用的**应用程序 ID**
-* 一个**重定向 URI** （可选），可用于将响应定向回您的应用程序
+* 可用于将响应定向回到应用的**重定向 URI**（可选）
 * 其他一些特定于方案的值。
 
 请了解如何 [注册应用](quickstart-register-app.md)获取详细信息。
@@ -64,7 +64,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 其中 `{tenant}` 可以接受以下四个不同值之一：
 
-| 值 | 描述 |
+| ReplTest1 | 描述 |
 | --- | --- |
 | `common` | 允许用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure AD 登录应用程序。 |
 | `organizations` | 仅允许用户使用工作/学校帐户从 Azure AD 登录应用程序。 |
@@ -74,7 +74,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 要了解如何与这些终结点进行交互，请在[协议](#protocols)部分中选择特定的应用类型，然后通过访问链接获取更多信息。
 
 > [!TIP]
-> 在 Azure AD 中注册任何应用程序可以使用 Microsoft 标识平台终结点，即使他们不在个人帐户登录。  这样，你便可以将现有的应用程序迁移到 Microsoft 标识平台和 [MSAL](reference-v2-libraries.md)，而无需重新创建应用程序。  
+> 在 Azure AD 中注册的任何应用都可以使用 Microsoft 标识平台终结点, 即使它们没有登录个人帐户也是如此。  这样，你便可以将现有的应用程序迁移到 Microsoft 标识平台和 [MSAL](reference-v2-libraries.md)，而无需重新创建应用程序。  
 
 ## <a name="tokens"></a>令牌
 

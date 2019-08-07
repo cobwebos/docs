@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 07/30/2019
-ms.openlocfilehash: d97c3d47a277ecd8b1de635e3d835f9ee1f42057
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.date: 08/07/2019
+ms.openlocfilehash: 4b66d015e8a182e305a36dacaa2e082288a3e19e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700348"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840541"
 ---
 # <a name="introduction-to-deep-learning-vs-machine-learning"></a>深度学习和机器学习简介
 
@@ -43,9 +43,9 @@ ms.locfileid: "68700348"
 
 下表更详细地比较了这两种方法:
 
-| |机器学习 |深度学习|
+| |所有机器学习 |仅深度学习|
 |---|---|---|
-|  **数据点的数目** | 可以使用用户提供的小数据量 | 需要大量未标记的定型数据, 才能获得简明结论 |
+|  **数据点的数目** | 可以使用用户提供的小数据量 | 需要大量定型数据, 才能获得简明结论 |
 |  **硬件依赖项** | 可在低端计算机上工作。 它不需要大量计算能力 | 取决于高端计算机。 它本身会执行大量的矩阵乘法运算。 可以使用 GPU 有效地优化这些操作 |
 |  **特征化进程** | 需要能够准确地标识和创建用户的功能 | 它从数据中学到高级功能, 并自行创建新功能 |
 |  **学习方法** | 将任务划分为小部分, 然后将接收的结果合并为一个结论 | 以端到端的方式解决问题 |

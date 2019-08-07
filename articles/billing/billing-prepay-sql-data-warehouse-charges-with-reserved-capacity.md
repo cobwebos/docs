@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 08c9f958f5103da9961f4c2d29be97f455cecc4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6ee7a661434bb756c6cf196937229db19d06b373
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359262"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779982"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>为 SQL 数据仓库支付预留容量的费用
 
@@ -61,13 +61,9 @@ SQL 数据仓库预留大小应基于你使用的总计算数据仓库单位 (cD
 8. 选择“购买”。
 9. 选择 "**查看此预订**" 以查看购买状态。
 
-## <a name="cancellations-and-exchanges"></a>取消和更换
+## <a name="cancel-exchange-or-refund-reservations"></a>取消、交换或退款预订
 
-如果需要取消 SQL 数据仓库保留容量, 可能会有 12% 的提前终止费。 退款根据购买价格和当前预留价格中的最低者计算。 每年的退款限制为 $50000.00。 收到的退款为剩余的按比例余额减去 12% 的提前终止费。 若要取消, 请跳到 Azure 门户中的预订, 然后选择 "**退款**"。
-
-如果需要将 SQL 数据仓库保留容量更改为其他区域或术语, 则可以将其与具有相同或更大值的其他保留进行交换。 新订购项目的期限开始日期不是从交换的订购项目延续。 当你创建新预订时, 一年或三年开始。 若要交换, 请在 Azure 门户中打开预订, 然后选择 " **exchange**"。
-
-有关如何交换或退款预订的详细信息, 请参阅[保留交换和退款](billing-azure-reservations-self-service-exchange-and-refund.md)。
+您可以取消、交换或退款保留, 但有一些限制。 有关详细信息, 请参阅[Azure 预订的自助服务交换和退款](billing-azure-reservations-self-service-exchange-and-refund.md)。
 
 预订折扣将自动应用于与 SQL 数据仓库保留容量范围和区域匹配的 SQL 数据仓库实例的数目。 你可以使用[Azure 门户](https://portal.azure.com/)、POWERSHELL、CLI 或通过 API 更新 SQL 数据仓库保留容量的范围。
 

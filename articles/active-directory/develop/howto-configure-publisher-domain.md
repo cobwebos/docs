@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
@@ -17,16 +17,16 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d47075f9e18b299341a98983ffb8a47389fd7063
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 291de1fa9bbb43ff9393a3163d1cd21dd7cd1b01
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540243"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835154"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain-preview"></a>如何：配置应用程序的发布者域（预览）
 
-应用程序的发布者域将在[应用程序的许可提示](application-consent-experience.md)中显示给用户，以告知用户其信息将发送到何处。 在 2019 年 5 月 21 日之后注册的且没有发布者域的多租户应用程序将显示为 **unverified**。 多租户应用程序都支持单个组织目录中; 外部帐户的应用程序例如，支持所有 Azure AD 帐户，或支持所有 Azure AD 帐户和个人 Microsoft 帐户。
+应用程序的发布者域将在[应用程序的许可提示](application-consent-experience.md)中显示给用户，以告知用户其信息将发送到何处。 在 2019 年 5 月 21 日之后注册的且没有发布者域的多租户应用程序将显示为 **unverified**。 多租户应用程序是支持单个组织目录以外的帐户的应用程序;例如, 支持所有 Azure AD 帐户, 或支持所有 Azure AD 帐户和个人 Microsoft 帐户。
 
 ## <a name="new-applications"></a>新应用程序
 
@@ -38,11 +38,11 @@ ms.locfileid: "65540243"
 
 | 租户验证的域 | 发布者域的默认值 |
 |-------------------------|----------------------------|
-| Null | Null |
+| null | null |
 | *.onmicrosoft.com | *.onmicrosoft.com |
 | - *.onmicrosoft.com<br/>- domain1.com<br/>- domain2.com（主要） | domain2.com |
 
-如果未设置多租户应用程序的发布服务器域，或如果设置为域中结束。 onmicrosoft.com，应用程序的许可提示将显示**未经验证**代替发行者域。
+如果未设置多租户应用程序的发布者域, 或者将其设置为以. onmicrosoft.com 结尾的域, 则应用的许可提示将显示未**验证**的发布者域。
 
 ## <a name="grandfathered-applications"></a>祖父应用程序
 
@@ -55,21 +55,21 @@ ms.locfileid: "65540243"
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 如果你的帐户在多个 Azure AD 租户中存在：
-   1. 从页面右上角的菜单中选择你的个人资料，然后选择“切换目录”。 
+   1. 从页面右上角的菜单中选择你的个人资料，然后选择“切换目录”。
    1. 将会话切换到要在其中创建应用程序的 Azure AD 租户。
 
 1. 导航到[“Azure Active Directory”>“应用注册”](https://go.microsoft.com/fwlink/?linkid=2083908)，找到并选择要配置的应用。
 
-   选择应用后，会看到该应用的“概述”页。 
+   选择应用后，会看到该应用的“概述”页。
 
-1. 在应用的“概述”页中，选择“品牌”部分。  
+1. 在应用的“概述”页中，选择“品牌”部分。
 
-1. 找到“发布者域”字段并选择以下选项之一： 
+1. 找到“发布者域”字段并选择以下选项之一：
 
-   - 如果尚未配置域，请选择“配置域”。 
-   - 如果已配置域，请选择“更新域”。 
+   - 如果尚未配置域，请选择“配置域”。
+   - 如果已配置域，请选择“更新域”。
 
-如果应用已在租户中注册，则你会看到两个可供选择的选项卡：“选择已验证的域”和“验证新域”。  
+如果应用已在租户中注册，则你会看到两个可供选择的选项卡：“选择已验证的域”和“验证新域”。
 
 如果应用尚未在租户中注册，则你只会看到用来为应用程序验证新域的选项。
 
@@ -91,11 +91,11 @@ ms.locfileid: "65540243"
 
 1. 将该文件托管在 `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json` 中。 请替换占位符 *{YOUR-DOMAIN-HERE}* ，使之与已验证的域相匹配。
 
-1. 单击“验证并保存域”按钮。 
+1. 单击“验证并保存域”按钮。
 
 ### <a name="to-select-a-verified-domain"></a>选择已验证的域
 
-- 如果租户包含已验证的域，请从“选择已验证的域”下拉列表中选择一个域。 
+- 如果租户包含已验证的域，请从“选择已验证的域”下拉列表中选择一个域。
 
 ## <a name="implications-on-the-app-consent-prompt"></a>对应用许可提示的影响
 
@@ -111,7 +111,7 @@ ms.locfileid: "65540243"
 
 ## <a name="implications-on-redirect-uris"></a>对重定向 URI 的影响
 
-在具有任何工作或学校帐户或个人 Microsoft 帐户的用户登录的应用程序 ([多租户](single-and-multi-tenant-apps.md)) 是受几个限制指定时重定向 Uri。
+在指定重定向 Uri 时, 使用任何工作或学校帐户或个人 Microsoft 帐户 ([多租户](single-and-multi-tenant-apps.md)) 登录用户的应用程序将受到少数限制。
 
 ### <a name="single-root-domain-restriction"></a>单个根域限制
 
@@ -139,7 +139,7 @@ ms.locfileid: "65540243"
 "https://app2.contoso.com",
 ```
 
-### <a name="exceptions"></a>例外
+### <a name="exceptions"></a>Exceptions
 
 以下方案存在单个根域的限制：
 

@@ -10,17 +10,17 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: f10ac45266eefac41f3ba9ac442c3be3f5106ef3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: cognitive-search
+ms.openlocfilehash: ebff47360aa78a7774be50bcce8518f6e30ca073
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388416"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841060"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
-图像分析技能根据图像内容提取一组丰富的可视特征  。 例如，可从图像生成标题栏、生成标记或识别名人和地标。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 
+图像分析技能根据图像内容提取一组丰富的可视特征。 例如，可从图像生成标题栏、生成标记或识别名人和地标。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
@@ -37,9 +37,9 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 | 参数名称     | 描述 |
 |--------------------|-------------|
-| defaultLanguageCode   |  表示要返回的语言的字符串。 该服务以指定的语言返回识别结果。 如果未指定此参数，则默认值为“en”。 <br/><br/>支持的语言为： <br/>en - 英语（默认）  <br/> zh - 简体中文 |
-|visualFeatures |   表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li> categories - 根据认知服务[文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类  。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像  。</li><li>*description* - 用完整的英文句子描述图像内容。</li><li>*faces* - 检测人脸是否存在。 如果存在，则生成位置、性别和年龄。</li><li> *imageType* - 检测图像是剪贴画还是素描。</li><li>  *color* - 确定主题色、主色以及图像是否为黑白。</li><li>*adult* - 检测图片是否具有色情性质（描绘裸体或性行为）。 也检测性暗示内容。</li></ul> 可视特征的名称区分大小写。|
-| 详细信息   | 表示要返回的特定于域的详细信息的一组字符串。 有效的可视特征类型包括： <ul><li>*celebrities* - 识别在图像中检测到的名人。</li><li>*landmarks* - 识别在图像中检测到的地标。</li></ul>
+| defaultLanguageCode   |  表示要返回的语言的字符串。 该服务以指定的语言返回识别结果。 如果未指定此参数，则默认值为“en”。 <br/><br/>支持的语言为： <br/>en - 英语（默认） <br/> zh - 简体中文|
+|visualFeatures |   表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li> categories - 根据认知服务[文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像。</li><li>*description* - 用完整的英文句子描述图像内容。</li><li>*faces* - 检测人脸是否存在。 如果存在，则生成位置、性别和年龄。</li><li> *imageType* - 检测图像是剪贴画还是素描。</li><li>  *color* - 确定主题色、主色以及图像是否为黑白。</li><li>*adult* - 检测图片是否具有色情性质（描绘裸体或性行为）。 也检测性暗示内容。</li></ul> 可视特征的名称区分大小写。|
+| details   | 表示要返回的特定于域的详细信息的一组字符串。 有效的可视特征类型包括： <ul><li>*celebrities* - 识别在图像中检测到的名人。</li><li>*landmarks* - 识别在图像中检测到的地标。</li></ul>
  |
 
 ## <a name="skill-inputs"></a>技能输入
@@ -85,7 +85,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
         }
 ```
-### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>（适用于仅的类别、 说明、 人脸和标记字段） 的示例索引
+### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>示例索引 (仅适用于类别、说明、面部和标签字段)
 ```json
 {
     "fields": [
@@ -297,7 +297,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 }
 
 ```
-### <a name="sample-output-field-mapping-for-the-above-index"></a>示例输出字段映射 （适用于上面的索引）
+### <a name="sample-output-field-mapping-for-the-above-index"></a>示例输出字段映射 (对于以上索引)
 ```json
     "outputFieldMappings": [
         {
@@ -333,7 +333,8 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
                     "originalWidth": 5000,
                     "originalHeight": 3000,
                     "rotationFromOriginal": 90,
-                    "contentOffset": 500
+                    "contentOffset": 500,
+                    "pageNumber": 2
                 }
             }
         }
@@ -494,7 +495,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 | NotSupportedImage | 不受支持的图片，例如儿童色情内容。 |
 | InvalidDetails | 不受支持的特定于域的模型。 |
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [预定义技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)

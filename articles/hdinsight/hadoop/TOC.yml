@@ -56,14 +56,20 @@
       maintainContext: true
     - name: 故障排除
       items:
+        - name: 软锁定 - CPU
+          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
+        - name: InvalidNetworkConfigurationErrorCode - 群集创建失败
+          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+        - name: InvalidNetworkSecurityGroupSecurityRules - 群集创建失败
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: 无法登录到 HDInsight 群集
           href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
         - name: 无法将节点添加到 HDInsight 群集
           href: ./hdinsight-troubleshoot-unable-add-nodes.md
-        - name: InvalidNetworkSecurityGroupSecurityRules - 群集创建失败
-          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: 转换服务主体证书
           href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: 本地 HDFS 在安全模式下停滞
+          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
         - name: Apache Ambari 检测信号问题
           href: ./apache-ambari-troubleshoot-heartbeat-issues.md
 - name: 如何

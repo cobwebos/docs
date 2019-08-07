@@ -5,18 +5,19 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e60eeb601a0a5796609b9c38b7394c2de0610cdf
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423005"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841278"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>如何处理和提取认知搜索方案中的图像中的信息
 
@@ -72,7 +73,8 @@ ms.locfileid: "68423005"
 | originalWidth      | 图像在规范化之前的原始宽度。 |
 | originalHeight      | 图像在规范化之前的原始高度。 |
 | rotationFromOriginal |  在创建规范化图像过程中进行的逆时针旋转（以度为单位）。 值的范围为 0 度到 360 度。 此步骤从图像读取由照相机或扫描仪生成的元数据。 通常为 90 度的倍数。 |
-| contentOffset |从其提取图像的内容字段中的字符偏移。 此字段仅适用于包含嵌入图像的文件。 |
+| contentOffset | 从其提取图像的内容字段中的字符偏移。 此字段仅适用于包含嵌入图像的文件。 |
+| pageNumber | 如果图像是从 PDF 提取或呈现的, 则此字段包含从1开始提取或呈现的 PDF 中的页码。  如果图像不是来自 PDF, 则此字段将为0。  |
 
  *normalized_images* 的示例值：
 ```json
@@ -84,7 +86,8 @@ ms.locfileid: "68423005"
     "originalWidth": 5000,  
     "originalHeight": 3000,
     "rotationFromOriginal": 90,
-    "contentOffset": 500  
+    "contentOffset": 500,
+    "pageNumber": 2
   }
 ]
 ```

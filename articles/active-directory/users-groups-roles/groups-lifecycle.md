@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 08/06/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54418fa90e6c16f34647d0fdb5126bb352dbc7ab
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: HT
+ms.openlocfilehash: 074b9ec06818363a97253a587ac451a38999832f
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774850"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837934"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
-现在可以通过为 Office 365 组设置过期策略来管理其生命周期。 仅可以在 Azure Active Directory (Azure AD) 中为 Office 365 组设置过期策略。
+本文说明如何通过为 Office 365 组设置过期策略来管理这些组的生命周期。 仅可以在 Azure Active Directory (Azure AD) 中为 Office 365 组设置过期策略。
 
 将某个组设置为过期后：
 
@@ -63,8 +63,8 @@ Role | 权限
   - 设置组的生存期（天）。 可以从预设值中任选其一，或自定义一个值（应为 31 天或以上）。
   - 指定当组没有所有者时续订和过期通知应发送到的电子邮件地址。
   - 选择会过期的 Office 365 组。 可以为以下内容设置过期时间:
-    - **全部**Office 365 组和新组
-    - **所选**Office 365 组的列表 (无新组)
+    - **全部**Office 365 组
+    - **所选**Office 365 组的列表
     - **无**以限制所有组的过期时间
   - 设置完成后，选择“保存”来保存设置。
 

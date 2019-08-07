@@ -203,7 +203,7 @@
         - name: Azure SQL 数据库
           href: connector-azure-sql-database.md
         - name: Azure SQL 数据库托管实例
-          href: connector-azure-sql-database-managed-insance.md
+          href: connector-azure-sql-database-managed-instance.md
         - name: Azure SQL 数据仓库
           href: connector-azure-sql-data-warehouse.md
         - name: Azure 表存储
@@ -592,6 +592,8 @@
       items:
         - name: 为什么使用 Azure 数据工厂
           href: data-migration-guidance-overview.md
+        - name: 将数据从 AWS S3 迁移到 Azure
+          href: data-migration-guidance-s3-azure-storage.md
 - name: 引用
   items:
     - name: .NET

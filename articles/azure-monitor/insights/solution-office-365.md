@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: bwren
-ms.openlocfilehash: 3f4b0ad8b7aad01472a76db67f2c07e03e978e41
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d50b3ab68b406db47a4cc8fec081b2fc076071d1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673046"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741655"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -25,11 +25,11 @@ ms.locfileid: "67673046"
 
 
 > [!NOTE]
-> 若要安装和配置 Office 365 解决方案的建议的方法让[Office 365 连接器](../../sentinel/connect-office-365.md)中[Azure Sentinel](../../sentinel/overview.md)而不是使用本文中的步骤。 这是将 Office 365 解决方案和改进的配置体验的更新的版本。 若要连接 Azure AD 日志，可以使用任一[Azure Sentinel Azure AD 连接器](../../sentinel/connect-azure-active-directory.md)或[配置 Azure AD 的诊断设置](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)，它提供更丰富的日志数据与 Office 365 管理日志。 
+> 安装和配置 Office 365 解决方案的建议方法是在[Azure Sentinel](../../sentinel/overview.md)中启用[office 365 连接器](../../sentinel/connect-office-365.md), 而不是使用本文中的步骤。 这是 Office 365 解决方案的更新版本, 具有改进的配置体验。 若要连接 Azure AD 日志, 可以使用[Azure Sentinel Azure AD 连接器](../../sentinel/connect-azure-active-directory.md)或[配置 Azure AD 诊断设置](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), 该设置可提供比 Office 365 管理日志更丰富的日志数据。 
 >
-> 当您[载入 Azure Sentinel](../../sentinel/quickstart-onboard.md)，指定你想安装中的 Office 365 解决方案的 Log Analytics 工作区。 后启用连接器，解决方案将会出现在工作区，并作为任何其他已安装的监视解决方案使用完全相同。
+> 载入[Azure Sentinel](../../sentinel/quickstart-onboard.md)时, 请指定要在其中安装 Office 365 解决方案的 Log Analytics 工作区。 启用连接器后, 该解决方案将在工作区中提供, 并使用与已安装的任何其他监视解决方案完全相同的。
 >
-> Azure 政府云的用户必须安装 Office 365 使用本文中的步骤，因为 Azure Sentinel 在政府版云中尚不可用。
+> Azure 政府云的用户必须按照本文中的步骤安装 Office 365，因为 Azure Sentinel 在政府云中尚不可用。
 
 通过 Office 365 管理解决方案，可在 Azure Monitor 中监视 Office 365 环境。
 
@@ -42,7 +42,7 @@ ms.locfileid: "67673046"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 需要以下各项才能安装和配置此解决方案。
 
@@ -72,7 +72,7 @@ ms.locfileid: "67673046"
 
 从 Office 365 订阅中：
 
-- 用户名：管理帐户的电子邮件地址。
+- 用户名:管理帐户的电子邮件地址。
 - 租户 ID：Office 365 订阅的唯一 ID。
 - 客户端 ID：一个 16 字符的字符串，表示 Office 365 客户端。
 - 客户端密码：进行身份验证所需的已加密字符串。
@@ -82,46 +82,46 @@ ms.locfileid: "67673046"
 第一步是在 Azure Active Directory 中创建管理解决方案将用来访问 Office 365 解决方案的应用程序。
 
 1. 通过 [https://portal.azure.com](https://portal.azure.com/) 登录到 Azure 门户。
-1. 依次选择“Azure Active Directory”和“应用注册”   。
-1. 单击“新建应用程序注册”  。
+1. 依次选择“Azure Active Directory”和“应用注册”。
+1. 单击“新建应用程序注册”。
 
     ![添加应用注册](media/solution-office-365/add-app-registration.png)
-1. 输入应用程序名称和登录 URL   。  名称应是描述性的。  使用`http://localhost`URL 和保持_Web 应用 / API_为**应用程序类型**
+1. 输入应用程序名称和登录 URL。  名称应是描述性的。  使用`http://localhost`作为 URL, 并保留**应用程序类型**的_Web 应用/API_
     
     ![创建应用程序](media/solution-office-365/create-application.png)
-1. 单击“创建”并验证应用程序信息  。
+1. 单击“创建”并验证应用程序信息。
 
     ![已注册的应用](media/solution-office-365/registered-app.png)
 
 ### <a name="configure-application-for-office-365"></a>为 Office 365 配置应用程序
 
-1. 单击“设置”以打开“设置”菜单   。
-1. 选择“属性”  。 将“多租户”更改为“是”   。
+1. 单击“设置”以打开“设置”菜单。
+1. 选择“属性”。 将“多租户”更改为“是”。
 
     ![设置多租户](media/solution-office-365/settings-multitenant.png)
 
-1. 在“设置”菜单中选择“所需权限”，然后单击“添加”    。
-1. 单击“选择 API”，然后单击“Office 365 管理 API”   。 单击“Office 365 管理 API”  。 单击“选择”  。
+1. 在“设置”菜单中选择“所需权限”，然后单击“添加”。
+1. 单击“选择 API”，然后单击“Office 365 管理 API”。 单击“Office 365 管理 API”。 单击“选择”。
 
     ![选择 API](media/solution-office-365/select-api.png)
 
-1. 在“选择权限”下，为“应用程序权限”和“委派的权限”选择以下选项    ：
+1. 在“选择权限”下，为“应用程序权限”和“委派的权限”选择以下选项：
    - 读取组织的服务运行状况信息
    - 读取组织的活动数据
    - 读取组织的活动报表
 
      ![选择 API](media/solution-office-365/select-permissions.png)
 
-1. 依次单击“选择”、“完成”   。
-1. 单击“授予权限”，然后在要求确认时单击“是”   。
+1. 依次单击“选择”、“完成”。
+1. 单击“授予权限”，然后在要求确认时单击“是”。
 
     ![授予权限](media/solution-office-365/grant-permissions.png)
 
 ### <a name="add-a-key-for-the-application"></a>为应用程序添加密钥
 
-1. 在“设置”窗口中选择“密钥”   。
-1. 键入新密钥的说明和持续时间   。
-1. 单击“保存”，然后复制生成的值   。
+1. 在“设置”窗口中选择“密钥”。
+1. 键入新密钥的说明和持续时间。
+1. 单击“保存”，然后复制生成的值。
 
     ![密钥](media/solution-office-365/keys.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "67673046"
 
 若要首次启用管理帐户，必须为应用程序提供管理同意。 可以使用 PowerShell 脚本执行此操作。 
 
-1. 将以下脚本保存为 office365_consent.ps1  。
+1. 将以下脚本保存为 office365_consent.ps1。
 
     ```powershell
     param (
@@ -188,7 +188,7 @@ ms.locfileid: "67673046"
     .\office365_consent.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631- yyyyyyyyyyyy'
     ```
 
-1. 将会显示类似于以下窗口的窗口。 单击“接受”  。
+1. 将会显示类似于以下窗口的窗口。 单击“接受”。
     
     ![管理员同意](media/solution-office-365/admin-consent.png)
 
@@ -196,7 +196,7 @@ ms.locfileid: "67673046"
 
 最后一步是让应用程序订阅 Log Analytics 工作区。 也是使用 PowerShell 脚本执行此操作。
 
-1. 将以下脚本保存为 office365_subscription.ps1  。
+1. 将以下脚本保存为 office365_subscription.ps1。
 
     ```powershell
     param (
@@ -401,7 +401,7 @@ At line:12 char:18
 
 可以使用[删除管理解决方案](solutions.md#remove-a-monitoring-solution)中的过程删除 Office 365 管理解决方案。 但是，这不会停止将数据从 Office 365 收集到 Azure Monitor 中。 请按照下面的过程来取消订阅 Office 365 并停止收集数据。
 
-1. 将以下脚本保存为 office365_unsubscribe.ps1  。
+1. 将以下脚本保存为 office365_unsubscribe.ps1。
 
     ```powershell
     param (
@@ -512,10 +512,10 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-向 Log Analytics 工作区添加 Office 365 解决方案时，“Office 365”磁贴将添加到你的仪表板  。 此磁贴显示环境中计算机数量及其更新符合性的计数和图形表示形式。<br><br>
+向 Log Analytics 工作区添加 Office 365 解决方案时，“Office 365”磁贴将添加到你的仪表板。 此磁贴显示环境中计算机数量及其更新符合性的计数和图形表示形式。<br><br>
 ![Office 365 摘要磁贴](media/solution-office-365/tile.png)  
 
-单击“Office 365”磁贴，打开“Office 365”仪表板   。
+单击“Office 365”磁贴，打开“Office 365”仪表板。
 
 ![Office 365 仪表板](media/solution-office-365/dashboard.png)  
 
@@ -533,7 +533,7 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor 日志记录
 
-对于 Office 365 解决方案在 Azure Monitor 中的 Log Analytics 工作区中创建的所有记录，其类型都是 **OfficeActivity**。   OfficeWorkload 属性确定记录所指的 Office 365 服务 - Exchange、AzureActiveDirectory、SharePoint 或 OneDrive  。  RecordType 属性指定操作的类型  。  每种操作类型的属性都不同，详情请见下表。
+对于 Office 365 解决方案在 Azure Monitor 中的 Log Analytics 工作区中创建的所有记录，其类型都是 **OfficeActivity**。  OfficeWorkload 属性确定记录所指的 Office 365 服务 - Exchange、AzureActiveDirectory、SharePoint 或 OneDrive。  RecordType 属性指定操作的类型。  每种操作类型的属性都不同，详情请见下表。
 
 ### <a name="common-properties"></a>通用属性
 
@@ -541,7 +541,7 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 | 属性 | 说明 |
 |:--- |:--- |
-| Type | OfficeActivity  |
+| Type | OfficeActivity |
 | ClientIP | 记录活动时使用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
 | OfficeWorkload | 记录所指的 Office 365 服务。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Operation | 用户或管理员活动的名称。  |
@@ -569,14 +569,14 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 Active Directory 用户尝试登录时，将创建这些记录。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectoryAccountLogon |
-| Application | 触发帐户登录事件的应用程序，如 Office 15。 |
-| Client | 有关客户端设备、设备操作系统和用于帐户登录事件的设备浏览器的详细信息。 |
-| LoginStatus | 此属性直接从 OrgIdLogon.LoginStatus 获取。 可通过警报算法完成各种关注的登录失败的映射。 |
-| UserDomain | 租户标识信息 (TII)。 | 
+| `OfficeWorkload` | AzureActiveDirectory |
+| `RecordType`     | AzureActiveDirectoryAccountLogon |
+| `Application` | 触发帐户登录事件的应用程序，如 Office 15。 |
+| `Client` | 有关客户端设备、设备操作系统和用于帐户登录事件的设备浏览器的详细信息。 |
+| `LoginStatus` | 此属性直接从 OrgIdLogon.LoginStatus 获取。 可通过警报算法完成各种关注的登录失败的映射。 |
+| `UserDomain` | 租户标识信息 (TII)。 | 
 
 
 ### <a name="azure-active-directory"></a>Azure Active Directory

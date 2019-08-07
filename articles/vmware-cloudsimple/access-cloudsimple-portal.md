@@ -1,29 +1,29 @@
 ---
-title: 访问 Azure 的 VMware 解决方案通过 CloudSimple-门户
-description: 介绍了如何从 Azure 门户的 CloudSimple 门户访问 VMware 解决方案
+title: 通过 CloudSimple 访问 Azure VMware 解决方案-门户
+description: 介绍如何通过 CloudSimple 门户访问 VMware 解决方案 Azure 门户
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/04/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 61c3d37f365034984231c780199e181872c010c6
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 5bb1a4dd9d652481dfe1a2727ee0e5fe7601e96a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544129"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812758"
 ---
-# <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>通过从 Azure 门户的 CloudSimple 门户访问 VMware 解决方案
+# <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>通过 CloudSimple 门户访问 VMware 解决方案 Azure 门户
 
-单一登录支持 CloudSimple 门户的访问权限。 登录到 Azure 门户后，您可以访问 CloudSimple 门户，而无需再次登录。 首次访问 CloudSimple 门户，系统会提示你授权[CloudSimple 服务授权](#consent-to-cloudsimple-service-authorization-application)应用程序。  授权是一次性操作。
+支持单一登录以访问 CloudSimple 门户。 登录到 Azure 门户后, 可以访问 CloudSimple 门户, 而无需再次登录。 首次访问 CloudSimple 门户时, 系统将提示你授权[CloudSimple Service 授权](#consent-to-cloudsimple-service-authorization-application)应用程序。  授权是一次性的操作。
 
 ## <a name="before-you-begin"></a>开始之前
 
-具有内置的用户**所有者**并**参与者**角色可以访问 CloudSimple 门户。  必须在其中部署 CloudSimple 服务的资源组上配置角色。  此外可以 CloudSimple 服务对象上配置角色。  检查你的角色的详细信息，请参阅[查看角色分配](https://docs.microsoft.com/azure/role-based-access-control/check-access)一文。
+具有内置**所有者**和**参与者**角色的用户可以访问 CloudSimple 门户。  必须在部署 CloudSimple 服务的资源组上配置角色。  还可以在 CloudSimple 服务对象上配置角色。  有关检查角色的详细信息, 请参阅[查看角色分配](https://docs.microsoft.com/azure/role-based-access-control/check-access)一文。
 
-如果使用自定义角色，该角色应具有任何以下操作下```Actions```。  自定义角色的详细信息，请参阅[Azure 资源的自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。  如果任何操作的一部分```NotActions```，用户将无法访问 CloudSimple 门户。 
+如果你使用的是自定义角色, 则角色应在下```Actions```具有以下任何操作。  有关自定义角色的详细信息, 请参阅[Azure 资源的自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。  如果任一操作是的一部分```NotActions```, 则用户无法访问 CloudSimple 门户。 
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -32,42 +32,42 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*
 Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 ```
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录  Azure
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="access-the-cloudsimple-portal"></a>访问 CloudSimple 门户
 
-1. 选择“所有服务”  。
+1. 选择“所有服务”。
 
-2. 搜索**CloudSimple 服务**。
+2. 搜索 " **CloudSimple Services**"。
 
-3. 选择你想要创建您的私有云的 CloudSimple 服务。
+3. 选择要在其上创建私有云的 CloudSimple 服务。
 
-4. 上**概述**页上，单击**转到 CloudSimple 门户**。  如果首次从 Azure 门户中访问 CloudSimple 门户，系统会提示授权[CloudSimple 服务授权](#consent-to-cloudsimple-service-authorization-application)应用程序。 
+4. 在 "**概述**" 页上, 单击 **"前往 CloudSimple 门户"** 。  如果你是第一次从 Azure 门户访问 CloudSimple 门户, 则系统会提示你授权[CloudSimple Service 授权](#consent-to-cloudsimple-service-authorization-application)应用程序。 
 
     ![启动 CloudSimple 门户](media/launch-cloudsimple-portal.png)
 
 > [!TIP]
-> 如果直接从 Azure 门户选择私有云的操作 （如创建或扩展私有云），CloudSimple 门户可打开所指示的页。
+> 如果直接从 Azure 门户中选择私有云操作 (如创建或扩展私有云), CloudSimple 门户会打开到指定的页面。
 
-在 CloudSimple 门户中，选择**主页**以显示有关私有云的摘要信息的边栏菜单上。 以及警报和需要注意的任务显示的资源和私有云容量。 常见的任务，请单击页面顶部的命名的图标。
+在 CloudSimple 门户中, 选择侧边菜单上的 "**主页**" 以显示有关私有云的摘要信息。 显示私有云的资源和容量以及需要注意的警报和任务。 对于常见任务, 请单击页面顶部的命名图标。
 
 ![主页](media/cloudsimple-portal-home.png)
 
-## <a name="consent-to-cloudsimple-service-authorization-application"></a>同意 CloudSimple 服务授权应用程序
+## <a name="consent-to-cloudsimple-service-authorization-application"></a>同意 CloudSimple Service Authorization 应用程序
 
-第一次启动 CloudSimple 门户从 Azure 门户 CloudSimple 服务授权应用程序需要您的同意。  选择**接受**授予请求的权限以及访问 CloudSimple 门户。 
+首次从 Azure 门户启动 CloudSimple 门户要求你同意 CloudSimple Service 授权应用程序。  选择 "**接受**" 以授予请求的权限并访问 CloudSimple 门户。 
 
-![同意 CloudSimple 服务授权的管理员](media/cloudsimple-azure-consent.png)
+![同意 CloudSimple 服务授权-管理员](media/cloudsimple-azure-consent.png)
 
-如果您具有全局管理员权限，您可以为你的组织进行许可。  选择**代表你的组织同意**。
+如果你具有全局管理员权限, 则可以同意你的组织。  **代表你的组织选择 "同意"** 。
 
-![同意 CloudSimple 服务授权的全局管理员](media/cloudsimple-azure-consent-global-admin.png)
+![同意 CloudSimple 服务授权-全局管理员](media/cloudsimple-azure-consent-global-admin.png)
 
-如果你的权限不允许对 CloudSimple 门户的访问，请联系你授予所需的权限的租户的全局管理员。  全局管理员可以代表你的组织同意。
+如果你的权限不允许访问 CloudSimple 门户, 请联系你的租户的全局管理员以授予所需的权限。  全局管理员可以代表您的组织同意。
 
-![CloudSimple 服务授权同意-要求管理员](media/cloudsimple-azure-consent-requires-administrator.png)
+![同意 CloudSimple 服务授权-需要管理员](media/cloudsimple-azure-consent-requires-administrator.png)
 
 ## <a name="next-steps"></a>后续步骤
 

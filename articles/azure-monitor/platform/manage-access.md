@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: ce1e107c397f791e4863a90b5622c961d42d6aa5
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
-ms.translationtype: HT
+ms.openlocfilehash: 05b022be3bd460809de77945710ed0bdcd275648
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814207"
+ms.locfileid: "68839311"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure Monitor 中的日志数据和工作区
 
-Azure Monitor 将日志数据存储在 Log Analytics 工作区中，该工作区本质上是一个包含数据和配置信息的容器。 若要管理对日志数据的访问, 可执行与工作区相关的各种管理任务。
+Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics 工作区, 该工作区实质上是包含数据和配置信息的容器。 若要管理对日志数据的访问, 可执行与工作区相关的各种管理任务。
 
 本文介绍如何管理对日志的访问权限, 以及如何管理包含这些日志的工作区, 包括:
 

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: dcfdec0a746406296616456f6e6b8c0eabddf4b5
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 2499842eeb2dd5a8fa845ed364a6aea7418acc8b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478584"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824411"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>创建和使用 Web 应用程序防火墙 v2 自定义规则
 
@@ -227,7 +227,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
             { 
               "matchVariable": "RemoteAddr", 
               "operator": "IPMatch", 
-              "negateCondition": true, 
+              "negateCondition": false, 
               "matchValues": [ 
                 "192.168.5.4/24" 
               ] 
@@ -251,7 +251,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 ## <a name="example-4"></a>示例 4
 
-在此示例中, 你想要阻止请求是在 IP 地址范围*192.168.5.4/24*以外, 还是不能使用用户代理*字符串 (即*, 用户不使用 chrome 浏览器)。 由于此逻辑使用**或**, 因此, 这两个条件在不同的规则中, 如下面的示例中所示。 *myrule1*和*myrule2*都需要匹配才能阻止流量。
+在此示例中, 你想要阻止请求是在 IP 地址范围*192.168.5.4/24*以外, 还是不能使用用户代理字符串 (即 , 用户不使用 chrome 浏览器)。 由于此逻辑使用**或**, 因此, 这两个条件在不同的规则中, 如下面的示例中所示。 *myrule1*和*myrule2*都需要匹配才能阻止流量。
 
 逻辑: **not** (p**和**q) = **not** p**或 not** q。
 

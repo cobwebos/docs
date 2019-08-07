@@ -70,6 +70,8 @@
     - name: 知识库
       href: Concepts/knowledge-base.md
       displayName: 'metadata, pair'
+    - name: 使用 LUIS 和 QnA Maker
+      href: ../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json
     - name: 知识库的开发生命周期
       href: Concepts/development-lifecycle-knowledge-base.md
     - name: 最佳做法

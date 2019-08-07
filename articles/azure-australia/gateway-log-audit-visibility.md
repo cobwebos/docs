@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 5971fe53f52725a88c484edcc9a5a672fceceb07
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 153b9d503dfece404455fbb7e8cb51c51686ec57
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571362"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824291"
 ---
 # <a name="gateway-logging-auditing-and-visibility-in-azure-australia"></a>Azure 澳大利亚的网关日志记录、审核和可见性
 
@@ -149,7 +149,7 @@ VPN 网关是将各种通信引入到 Azure 环境中的潜在入口点, 如到�
 |资源|链接|
 |---|---|
 |VPN 网关文档|[https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway)|
-|澳大利亚政府特定的 VPN 网关指南|[https://aka.ms/AzGovAUSecurity](https://aka.ms/AzGovAUSecurity)|
+|澳大利亚政府特定的 VPN 网关指南|[Azure VPN 网关配置](vpn-gateway.md)|
 |
 
 ### <a name="azure-firewall"></a>Azure 防火墙
@@ -225,7 +225,7 @@ Nsg 控制进出 Azure 中的虚拟网络的流量。 Nsg 应用允许或拒绝�
 
 ### <a name="azure-activity-log"></a>Azure 活动日志
 
-Azure 活动日志是 Azure Monitor 的一部分, 它是一种订阅日志, 可用于深入了解 Azure 中发生的订阅级别事件。 活动日志可帮助确定对订阅中的资源执行的任何写入操作 (PUT、POST、DELETE) 的 "操作内容、 操作人员和操作时间"。 活动日志对于跟踪 Azure 环境中所做的配置更改至关重要。 Azure 活动日志可在 Log Analytics 解决方案中自动使用, 并且可以发送到事件中心或 Azure 存储进行处理或保留。
+Azure 活动日志是 Azure Monitor 的一部分, 它是一种订阅日志, 可用于深入了解 Azure 中发生的订阅级别事件。 活动日志可帮助确定对订阅中的资源执行的任何写入操作 (PUT、POST、DELETE) 的 "操作内容、操作人员和操作时间"。 活动日志对于跟踪 Azure 环境中所做的配置更改至关重要。 Azure 活动日志可在 Log Analytics 解决方案中自动使用, 并且可以发送到事件中心或 Azure 存储进行处理或保留。
 
 |资源|链接|
 |---|---|

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 32da92fb3c5573d24eb18a01a4ede8fe6a0bf36a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3637676a330b324d5620885f0cbe50d4aa68ed51
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567449"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779053"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL 数据库托管实例常见问题 (FAQ)
 
@@ -41,7 +41,7 @@ ms.locfileid: "68567449"
 
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>托管实例是否可以与本地 SQL Server 具有相同的名称？
 
-托管实例的名称必须以*database.windows.net*结尾。 若要使用另一个 DNS 区域而不是默认值,**例如, contoso.com**: 
+托管实例的名称必须以*database.windows.net*结尾。 若要使用另一个 DNS 区域而不是默认值,例如, contoso.com: 
 - 使用 CliConfig 定义别名。 该工具只是一个注册表设置包装器, 因此也可以使用组策略或脚本完成此操作。
 - 将*CNAME*与*TrustServerCertificate = true*选项一起使用。
 
@@ -79,9 +79,9 @@ ms.locfileid: "68567449"
 
 ## <a name="how-do-i-tune-performance-of-my-managed-instance"></a>如何实现优化托管实例的性能吗？ 
 
-常规用途托管实例使用远程存储, 因为数据和日志文件的大小对于性能很重要。 若要优化常规用途服务层性能, 请按照此博客文章中的说明进行操作。
+常规用途托管实例使用远程存储, 因为数据和日志文件的大小对于性能很重要。 有关详细信息, 请参阅[常规用途托管实例性能的日志文件大小的影响](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)。
 
-对于 IO 密集型工作负荷, 请考虑使用第5代硬件, 而不是使用第4代计算密集型工作负荷。 有关详细信息, 请参阅有关在硬件生成之间进行选择的常见问题解答部分。
+对于 IO 密集型工作负荷, 请考虑使用第5代硬件, 而不是使用第4代计算密集型工作负荷。 有关详细信息, 请参阅[如何实现在第4代和第5代之间进行选择](#how-do-i-choose-between-gen-4-and-gen-5-hardware-generation-for-managed-instance)。
 
 如果工作负荷包含大量小事务, 请考虑将连接类型从代理切换到重定向模式。
 

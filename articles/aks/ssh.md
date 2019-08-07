@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
 ms.openlocfilehash: 748abc08c432518be4ce8698713b1df95077c3c1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 08/05/2019
 ms.locfileid: "68722463"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>使用 SSH 连接到 Azure Kubernetes 服务 (AKS) 群集节点以进行维护或故障排除
@@ -24,11 +24,11 @@ ms.locfileid: "68722463"
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-默认情况下, 在创建 AKS 群集时, 将获取或生成 SSH 密钥, 然后将其添加到节点。 本文说明如何指定与创建 AKS 群集时使用的 SSH 密钥不同的 SSH 密钥。 本文还介绍如何确定节点的专用 IP 地址, 并使用 SSH 连接到该地址。 如果不需要指定其他 SSH 密钥, 则可以跳过将 SSH 公钥添加到节点的步骤。
+默认情况下，在创建 AKS 群集时会获取或生成 SSH 密钥，然后将其添加到节点。 本文说明如何指定与创建 AKS 群集时使用的 SSH 密钥不同的 SSH 密钥。 本文还介绍如何确定节点的专用 IP 地址, 并使用 SSH 连接到该地址。 如果不需要指定其他 SSH 密钥, 则可以跳过将 SSH 公钥添加到节点的步骤。
 
-本文还假定你具有 SSH 密钥。 可以使用[macOS 或 Linux][ssh-nix]或[Windows][ssh-windows]创建 SSH 密钥。 如果使用 PuTTY Gen 创建密钥对, 请将密钥对保存为 OpenSSH 格式, 而不是使用默认的 PuTTy 私钥格式 (.ppk 文件)。
+本文还假定你具有 SSH 密钥。 可以使用[macOS 或 Linux][ssh-nix]或[Windows][ssh-windows]创建 SSH 密钥。 如果使用 PuTTY Gen 来创建密钥对，请在保存密钥对时使用 OpenSSH 格式而不是默认的 PuTTy 私钥格式（.ppk 文件）。
 
-还需要安装并配置 Azure CLI 版本2.0.64 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+还需安装并配置 Azure CLI 2.0.64 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>配置基于虚拟机规模集的 AKS 群集以进行 SSH 访问
 
@@ -44,7 +44,7 @@ SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [
 上面的示例将*myResourceGroup*中*myAKSCluster*的群集资源组的名称分配给*CLUSTER_RESOURCE_GROUP*。 然后, 该示例使用*CLUSTER_RESOURCE_GROUP*列出规模集名称并将其分配给*SCALE_SET_NAME*。  
 
 > [!NOTE]
-> 当前只能使用 Azure CLI 将 SSH 密钥添加到 Linux 节点。 如果要使用 SSH 连接到 Windows Server 节点, 请使用创建 AKS 群集时提供的 SSH 密钥, 并跳过下一组用于添加 SSH 公钥的命令。 你仍需要进行故障排除的节点的 IP 地址, 该地址将显示在此部分的最后一个命令中。 或者, 你可以[使用远程桌面协议 (RDP) 连接而不是使用 SSH 连接到 Windows Server 节点][aks-windows-rdp]。
+> SSH 密钥目前只能使用 Azure CLI 添加到 Linux 节点。 如果要使用 SSH 连接到 Windows Server 节点, 请使用创建 AKS 群集时提供的 SSH 密钥, 并跳过下一组用于添加 SSH 公钥的命令。 你仍需要进行故障排除的节点的 IP 地址, 该地址将显示在此部分的最后一个命令中。 或者, 你可以[使用远程桌面协议 (RDP) 连接而不是使用 SSH 连接到 Windows Server 节点][aks-windows-rdp]。
 
 若要将 SSH 密钥添加到虚拟机规模集中的节点, 请使用[az vmss extension set][az-vmss-extension-set]和[az vmss update-实例][az-vmss-update-instances]命令。
 
@@ -106,7 +106,7 @@ Name                      ResourceGroup                                  Locatio
 aks-nodepool1-79590246-0  MC_myResourceGroupAKS_myAKSClusterRBAC_eastus  eastus
 ```
 
-若要向节点添加 SSH 密钥, 请使用[az vm user update][az-vm-user-update]命令。
+若要将 SSH 密钥添加到节点，请使用 [az vm user update][az-vm-user-update] 命令。
 
 ```azurecli-interactive
 az vm user update \
@@ -121,7 +121,7 @@ az vm user update \
 > [!NOTE]
 > 默认情况下，AKS 节点的用户名为 *azureuser*。
 
-将 SSH 公钥添加到节点虚拟机后, 可以使用 SSH 连接到该虚拟机的 IP 地址。 使用[az vm list-IP 地址][az-vm-list-ip-addresses]命令查看 AKS 群集节点的专用 IP 地址。
+将 SSH 公钥添加到节点虚拟机后, 可以使用 SSH 连接到该虚拟机的 IP 地址。 使用 [az vm list-ip-addresses][az-vm-list-ip-addresses] 命令查看 AKS 群集节点的专用 IP 地址。
 
 ```azurecli-interactive
 az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table

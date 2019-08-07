@@ -9,23 +9,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 08/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5167ba170181bed6dc76d4ca3df79306f432eaf2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e139b274ab8a1f7d91d46ec56171b84db4f5025e
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722669"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812832"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
 使用 Azure Active Directory (Azure AD) 时，可以指定有限的管理员以权限较低的角色来管理标识任务。 可以分配管理员来执行各种任务，例如，添加或更改用户、分配管理角色、重置用户密码、管理用户许可证，以及管理域名。 只能在 Azure AD 的用户设置中更改默认用户权限。
 
-全局管理员有权使用所有管理功能。 默认情况下，系统会将注册 Azure 订阅的人员指派为目录的全局管理员角色。 只有全局管理员和特权角色管理员可以委托管理员角色。 为了降低业务风险，我们建议仅将此角色分配给你的公司中的少数人。
+## <a name="limit-the-use-of-global-administrator"></a>限制全局管理员的使用
+
+分配到全局管理员角色的用户可以读取和修改 Azure AD 组织中的每个管理设置。 默认情况下, 会向注册 Azure 订阅的人员分配 Azure AD 组织的全局管理员角色。 只有全局管理员和特权角色管理员才能委派管理员角色。 为了降低业务风险, 我们建议你将此角色分配给组织中尽可能少的人员。
+
+## <a name="best-practices"></a>最佳做法
+
+作为最佳做法, 我们建议你将此角色分配给组织中少于5人的人员。 如果你的组织中有5个以上的用户分配到全局管理员角色, 则可以通过以下方法减少其使用情况。
+
+### <a name="find-the-role-you-need"></a>查找所需的角色
+
+如果从许多角色列表中找不到所需的角色, Azure AD 可以根据角色类别提供较短的列表。 请查看我们的新**类型**筛选器, 以便[Azure AD 角色和管理员](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)仅向你显示所选类型的角色。
+
+### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>由于你分配了 "全局管理员" 角色, 因此存在一个不存在的角色
+
+有可能将一个或多个角色添加到 Azure AD 中, 这些权限在您将某些用户提升为全局管理员时不是一个选项。 随着时间的推移, 我们将推出其他角色来完成只有全局管理员角色才能执行的任务。 可以在以下[可用角色](#available-roles)中查看它们。
 
 ## <a name="assign-or-remove-administrator-roles"></a>分配或删除管理员角色
 

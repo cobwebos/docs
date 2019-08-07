@@ -1,5 +1,5 @@
 ---
-title: 管理和监视 Azure 备份备份的 Azure VM 上的 SQL Server 数据库 |Microsoft Docs
+title: 使用 Azure 备份在 Azure VM 上管理和监视 SQL Server 数据库
 description: 本文介绍如何管理和监视在 Azure VM 上运行的 SQL Server 数据库。
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: c5f61c778849a57d9143580e0e1041c7fe992d52
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7cd916c8e52b40dee3ce2d63d43dc88f09001b32
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639588"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827555"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
 
@@ -120,7 +120,7 @@ Azure 备份在**备份作业**门户中显示所有手动触发的作业。 在
 * 差异备份
 * 日志备份
 
-尽管需要指定仅复制完整备份的保持期, 但其他备份类型的保持期会自动设置为当前时间的30天。 <br/>
+尽管需要指定仅复制完整备份的保持期, 但临时完整备份的保持期将从当前时间自动设置为45天。 <br/>
 有关详细信息, 请参阅[SQL Server 备份类型](backup-architecture.md#sql-server-backup-types)。
 
 ## <a name="unregister-a-sql-server-instance"></a>取消注册 SQL Server 实例

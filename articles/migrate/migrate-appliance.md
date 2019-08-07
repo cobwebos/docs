@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: 6537bfe5df8de298593428fb21448181ad8075fc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663460"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827318"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -42,7 +42,7 @@ Hyper-V VM | 通过 Azure Migrate 评估工具进行 hyper-v VM 评估。 | 下�
 
 **代理** | **详细信息**
 --- | ---
-发现代理 | 收集本地 Vm 的配置数据。
+发现代理 | 收集本地虚拟机的配置数据
 评估代理 | 分析本地环境以收集 VM 性能数据。
 迁移适配器 | 协调 VM 复制, 并协调 Vm 与 Azure 之间的通信。
 迁移网关 | 将复制的 VM 数据发送到 Azure。
@@ -109,7 +109,7 @@ IPv6 地址 | vm.Guest.Net
 读取吞吐量 (MB/秒) | net.received.average
 写入吞吐量 (MB/秒) | net.transmitted.average
 **清单路径详细信息** | 
-姓名 | container.GetType().Name
+名称 | container.GetType().Name
 子对象类型 | container.ChildType
 引用详细信息 | container.MoRef
 父级详细信息 | Container.Parent
@@ -200,8 +200,8 @@ NIC MAC ID (旧 Nic) | MsvmEmulatedEthernetPortSetting 数据 | 地址
 
 - 这会自动发生, 因为默认情况下在设备上启用了自动更新。
 - 您可以更改此默认设置以手动更新代理。
-- 若要禁用自动更新, 请在 HKLM\SOFTWAREMicrosoft\Azure. 中设置注册表项设备自动更新。
-
+- 若要禁用自动更新, 请在注册表编辑器 > HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance, 并将注册表项 "自动更新" 设置为 0 (DWORD)。
+ 
 ### <a name="set-agent-updates-to-manual"></a>将代理更新设置为手动
 
 对于手动更新, 请确保在设备上使用每个过时代理的 "**更新**" 按钮同时更新设备上的所有代理。 你可以随时将更新设置切换回自动更新。

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: d902a65c4e36ff698e486e2af899d055de1afca0
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2756444db010e23f7114e99f474de9ce6614aaee
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638553"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837919"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>在 Azure API 管理中访问和自定义新开发人员门户
 
@@ -77,6 +77,10 @@ ms.locfileid: "68638553"
 公开上市的目标是通过旧门户提供基于方案的功能奇偶校验。 在此之前, 预览版本可能未实现所选功能。
 
 例外情况是旧门户中的*应用程序*和*问题*, 无法在新门户中使用。 如果在旧门户中使用*问题*, 并在新门户中使用它们, 请在[专用 GitHub 问题](https://github.com/Azure/api-management-developer-portal/issues/122)中发布评论。
+
+### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>我发现了 bug, 并且/或者我想请求一项功能。
+
+很好！ 你可以向我们提供反馈、提交功能请求, 或者通过[GitHub 存储库的问题部分](https://github.com/Azure/api-management-developer-portal/issues)提交 bug 报告。 在此过程中, 我们还会感谢你对标记有`community`标签的问题的反馈。
 
 ### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>我想要在环境之间移动新门户的内容。 如何执行此操作, 是否需要与自承载版本配合工作？
 

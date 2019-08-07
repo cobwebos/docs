@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 4888ea8473c50b8774add7a930612c585fc9cbde
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19ccd44888d64967baf82568c1cbb2540f3b3f68
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074349"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780338"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
-有关 [Azure 安全性最佳做法](https://docs.microsoft.com/azure/security/)的详细信息，请参阅 [Azure Service Fabric 安全性最佳做法](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)
+有关 [Azure 安全性最佳做法](https://docs.microsoft.com/azure/security/)的详细信息，请参阅 [Azure Service Fabric 安全性最佳做法](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)
 
 ## <a name="key-vault"></a>Key Vault
 
@@ -188,7 +188,7 @@ principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGr
 az role assignment create --assignee $principalid --role 'Contributor' --scope "/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/<PROVIDER NAME>/<RESOURCE TYPE>/<RESOURCE NAME>"
 ```
 
-在 Service Fabric 应用程序代码中，[获取访问令牌](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)Azure 资源管理器，从而 REST 所有类似于下面：
+在 Service Fabric 应用程序代码中, 为 Azure 资源管理器[获取一个访问令牌](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http), 使其完全类似于以下内容:
 
 ```bash
 access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true | python -c "import sys, json; print json.load(sys.stdin)['access_token']")
@@ -201,17 +201,17 @@ access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-v
 ```bash
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
-## <a name="windows-security-baselines"></a>Windows 安全基准
-[我们建议你实现广泛是已知且经过严格测试，如 Microsoft 安全基准，而不是自己创建基线的符合行业标准配置](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); 一个的预配这些虚拟机上的选项使用 Azure Desired State Configuration (DSC) 扩展处理程序，因为它们均已联机，使它们能够运行生产软件配置 Vm 规模集。
+## <a name="windows-security-baselines"></a>Windows 安全基线
+[我们建议你实现一个行业标准的配置, 该配置被广泛已知并且经过良好测试, 如 Microsoft 安全基线, 而不是自己创建基线](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines);在虚拟机规模集上预配这些虚拟机的选项是使用 Azure Desired State Configuration (DSC) 扩展处理程序, 在虚拟机处于联机状态时对其进行配置, 使其运行生产软件。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
-[Azure 防火墙是一种托管的基于云的网络安全服务，可保护你的 Azure 虚拟网络资源。它使用内置的高可用性和可伸缩性不受限制的云服务是完全有状态防火墙。](https://docs.microsoft.com/azure/firewall/overview); 这样就可以以出站 HTTP/S 将通信限制为指定的完全限定的域名 (FQDN) 包括通配符列表。 此功能不需要 SSL 终止。 其建议利用[Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)终结点的 Windows 更新，并启用 Microsoft Windows update 的网络流量可以流经防火墙。 [部署 Azure 防火墙使用模板](https://docs.microsoft.com/azure/firewall/deploy-template)提供 Microsoft.Network/azureFirewalls 资源模板定义了一个示例。 普遍适用于 Service Fabric 应用程序防火墙规则是允许以下群集虚拟网络：
+[Azure 防火墙是一种托管的基于云的网络安全服务, 可保护 Azure 虚拟网络资源。它是一种具有内置的高可用性和无限制云可伸缩性的完全有状态防火墙即服务。](https://docs.microsoft.com/azure/firewall/overview); 这使得能够将出站 HTTP/S 流量限制为指定的完全限定域名 (FQDN) 列表 (包括通配符)。 此功能不需要 SSL 终止。 建议你将[Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)用于 Windows 更新, 并启用到 Microsoft Windows 更新终结点的网络流量通过防火墙。 [使用模板部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/deploy-template)提供了一个有关 azureFirewalls 资源模板定义的示例。 Service Fabric 应用程序通用的防火墙规则是允许群集虚拟网络执行以下操作:
 
-- *download.microsoft.com
+- \* download.microsoft.com
 - *servicefabric.azure.com
 - *.core.windows.net
 
-这些防火墙规则可补充允许出站网络安全组，将包含 service Fabric 和存储，以允许从虚拟网络的目标。
+这些防火墙规则会将允许的出站网络安全组 (包括 ServiceFabric 和存储) 作为虚拟网络的允许目标。
 
 ## <a name="tls-12"></a>TLS 1.2
 [TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
@@ -251,7 +251,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 > 如果不使用 Windows Defender，请参阅有关配置规则的反恶意软件文档。 Linux 不支持 Windows Defender。
 
 ## <a name="platform-isolation"></a>平台隔离
-默认情况下，Service Fabric 应用程序有权访问 Service Fabric 运行时本身，其表现出不同的形式：[环境变量](service-fabric-environment-variables-reference.md)指向对应于应用程序主机上的文件路径和Fabric 文件、 接受特定于应用程序的请求和客户端的进程间通信终结点的证书的 Fabric 预期应用程序使用自身进行身份验证。 在偶发性中该服务承载本身不受信任的代码，则最好禁用这种访问权限 SF 运行时-除非明确需要。 在应用程序清单的策略部分中使用的以下声明删除到运行时的访问权限： 
+默认情况下，Service Fabric 应用程序会被授予访问 Service Fabric 运行时本身的权限，这本身会通过以下不同形式表明：[环境变量](service-fabric-environment-variables-reference.md)（指向对应于应用程序和 Fabric 文件的主机上的文件路径）、进程间通信终结点（接受应用程序特定请求）和客户端证书（Fabric 希望应用程序使用该证书对自身进行身份验证）。 如果服务托管本身不信任的代码，建议禁用此 SF 运行时访问权限，除非明确需要。 该运行时的访问权限可使用应用程序清单的“策略”部分中的以下声明来删除： 
 
 ```xml
 <ServiceManifestImport>

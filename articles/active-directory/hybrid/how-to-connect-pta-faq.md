@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd41bdfb90e5e8428a747832c10fe23a2cac4560
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c7199cd8e5dbde1f6ff2f5cea56a4191211c853
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109407"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779081"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "67109407"
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>我应选择哪种 Azure AD 登录方法（直通身份验证、密码哈希同步和 Active Directory 联合身份验证服务 (AD FS)）？
 
-请查看[本指南](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)，对比各种 Azure AD 登录方法并了解如何为组织选择正确的登录方法。
+请查看[本指南](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)，对比各种 Azure AD 登录方法并了解如何为组织选择正确的登录方法。
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>传递身份验证是免费功能吗？
 
@@ -37,11 +37,11 @@ ms.locfileid: "67109407"
 
 ## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>能否在 [Microsoft Azure 德国云](https://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure 政府云](https://azure.microsoft.com/features/gov/)中使用直通身份验证？
 
-不。 直通身份验证只能在全球范围内的 Azure AD 实例中使用。
+否。 直通身份验证只能在全球范围内的 Azure AD 实例中使用。
 
 ## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>是否可以在传递身份验证中使用[条件访问](../active-directory-conditional-access-azure-portal.md)？
 
-是的。 所有条件性访问功能，包括 Azure 多重身份验证，都能在直通身份验证。
+是的。 所有条件访问功能 (包括 Azure 多重身份验证) 都使用传递身份验证。
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>传递身份验证是否支持使用“备用 ID”（而非“userPrincipalName”）作为其用户名？
 
@@ -49,11 +49,11 @@ ms.locfileid: "67109407"
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>密码哈希同步是否可以充当直通身份验证的回退？
 
-不。 直通身份验证不  自动故障转移到密码哈希同步。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
+否。 直通身份验证不自动故障转移到密码哈希同步。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
 
-## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>当我从密码哈希同步切换到直通身份验证时，会发生什么情况？
+## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>从密码哈希同步切换到直通身份验证时会发生什么情况？
 
-当 Azure AD Connect 用于切换登录方法从密码哈希同步与直通身份验证时，直通身份验证将成为托管域中用户的主要登录方法。 请注意 Azure AD 上其前面已同步密码哈希同步所有用户的密码哈希仍存储。
+当你使用 Azure AD Connect 将密码哈希同步中的登录方法切换到直通身份验证时, 传递身份验证将成为你的托管域中用户的主登录方法。 请注意, 以前通过密码哈希同步进行同步的所有用户密码哈希仍存储在 Azure AD 上。
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>能否在传递身份验证代理所在的同一台服务器上安装 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)连接器？
 
@@ -86,7 +86,7 @@ ms.locfileid: "67109407"
 是的。 如果在本地环境中启用 Web 代理自动发现 (WPAD)，身份验证代理将自动尝试查找并使用网络中的 Web 代理服务器。
 
 如果环境中未设置 WPAD，则可以添加代理信息（如下所示）以允许直通身份验证代理与 Azure AD 通信：
-- 在服务器上安装直通身份验证代理之前，请在 Internet Explorer 中配置代理信息。 这将允许你完成身份验证代理的安装，但它仍将在管理员门户上显示为“非活动”  。
+- 在服务器上安装直通身份验证代理之前，请在 Internet Explorer 中配置代理信息。 这将允许你完成身份验证代理的安装，但它仍将在管理员门户上显示为“非活动”。
 - 在服务器上，导航到“C:\Program Files\Microsoft Azure AD Connect Authentication Agent”。
 - 编辑“AzureADConnectAuthenticationAgentService”配置文件并添加以下行（将“http\://contosoproxy.com:8080”替换为实际代理地址）：
 
@@ -112,9 +112,9 @@ ms.locfileid: "67109407"
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>如何删除直通身份验证代理？
 
-只要直通身份验证正在运行，它就会保持活动状态，并不断处理用户登录请求。 如果要卸载身份验证代理，请转到“控制面板”->“程序”->“程序和功能”  ，卸载“Microsoft Azure AD Connect 身份验证代理”  和“Microsoft Azure AD Connect 代理更新程序”  程序。
+只要直通身份验证正在运行，它就会保持活动状态，并不断处理用户登录请求。 如果要卸载身份验证代理，请转到“控制面板”->“程序”->“程序和功能”，卸载“Microsoft Azure AD Connect 身份验证代理”和“Microsoft Azure AD Connect 代理更新程序”程序。
 
-如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“直通身份验证”边栏选项卡，将看到显示为“非活动”状态  的身份验证代理。 这是正常情况  。 该身份验证代理在几天后将自动从列表中删除。
+如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“直通身份验证”边栏选项卡，将看到显示为“非活动”状态的身份验证代理。 这是正常情况。 该身份验证代理在几天后将自动从列表中删除。
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>我已使用 AD FS 登录到 Azure AD。 如何将它切换为传递身份验证？
 
@@ -145,7 +145,7 @@ ms.locfileid: "67109407"
 
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>能否在未运行 Azure AD Connect 的服务器上安装第一个传递身份验证代理？
 
-否。不支持该方案。 
+否。不支持该方案。
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>为什么需要仅限云的全局管理员帐户才能启用传递身份验证？
 

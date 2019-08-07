@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 3fd4287c6dd1cc42f419cfa6b252c1d276d1d5a5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7578811c37cd0bbe47821dadacce5fa5974f56cf
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597238"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812730"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>为适用于 Linux 的基于 IoT C 的安全代理部署 Azure 安全中心
 
@@ -33,7 +33,7 @@ ms.locfileid: "68597238"
 > * 卸载代理
 > * 故障排除 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 有关其他平台和代理风格, 请参阅[选择正确的安全代理](how-to-deploy-agent.md)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "68597238"
 
 1. 从[GitHub](https://aka.ms/iot-security-github-c)下载最新版本到您的计算机。
 
-1. 提取包的内容，并导航到 _/Install_ 文件夹。
+1. 提取包的内容, 然后导航到 _/src/installation_文件夹。
 
 1. 通过运行以下命令将运行权限添加到**InstallSecurityAgent 脚本**:
     

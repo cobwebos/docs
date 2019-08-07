@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0602de13fefbf105e69ba42651216fb479c4c86
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 733b0d7650d68bddae60cf524947590c2b689968
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477132"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779363"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>计划单一登录部署
 
@@ -95,7 +95,7 @@ Microsoft 支持在 web 应用程序上捕获用于密码保管的元数据 (捕
 
 选择正确的身份验证方法是设置 Azure AD 混合标识解决方案至关重要的第一个决定。 请实现通过使用 Azure AD Connect（还可在云中预配用户）配置的身份验证方法。
 
-若要选择身份验证方法，需要考虑时间、现有基础结构、复杂性和实现所选内容的成本。 这些因素对每个组织都不同，并可能随时间变化。 你应选择最符合你的特定方案的一个。 有关详细信息, 请参阅[为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)。
+若要选择身份验证方法，需要考虑时间、现有基础结构、复杂性和实现所选内容的成本。 这些因素对每个组织都不同，并可能随时间变化。 你应选择最符合你的特定方案的一个。 有关详细信息, 请参阅[为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)。
 
 ## <a name="plan-your-security-and-governance"></a>规划您的安全和管理 
 
@@ -238,9 +238,9 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 |--------|-------|-----------------------------|
 | 咨询台管理员 | 第1层支持 | 无 |
 | 标识管理员 | 在问题影响时进行配置和调试 Azure AD | 全局管理员 |
-| 应用程序管理员 | 应用程序中的用户证明, 具有权限的用户配置 | 无 |
+| 应用程序管理员 | 应用程序中的用户证明, 具有权限的用户配置 | None |
 | 基础结构管理员 | 证书滚动更新所有者 | 全局管理员 |
-| 业务所有者/利益干系人 | 应用程序中的用户证明, 具有权限的用户配置 | 无 |
+| 业务所有者/利益干系人 | 应用程序中的用户证明, 具有权限的用户配置 | None |
 
 建议使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) 来管理角色, 以便为具有目录权限的用户提供其他审核、控制和访问权限。
 

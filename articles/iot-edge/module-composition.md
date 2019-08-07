@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f4828b59ffa43365f48c002262368d383dfcff05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f275cca664733f19d3f3c5b52d168ffad01cadad
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389370"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839611"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
 每个 IoT Edge 设备至少运行两个模块：$edgeAgent 和 $edgeHub，它们构成了 IoT Edge 运行时。 IoT Edge 设备可以为任意数量的进程运行多个附加模块。 使用部署清单告诉设备要安装哪些模块，以及如何将它们配置为协同工作。 
 
- 部署清单是一个 JSON 文档，用于描述以下内容：
+部署清单是一个 JSON 文档，用于描述以下内容：
 
 * **IoT Edge 代理**模块孪生，其中包含三个组件。 
   * 在设备上运行的每个模块的容器映像。
@@ -35,7 +35,7 @@ ms.locfileid: "66389370"
 
 ## <a name="create-a-deployment-manifest"></a>创建部署清单。
 
-从较高层面讲，部署清单是配置了所需属性的模块孪生的列表。 部署清单告知某个 IoT Edge 设备（或一组设备）要安装哪些模块，以及如何配置这些模块。 部署清单包含每个模块孪生的所需属性。  IoT Edge 设备将报告每个模块的报告属性。  
+从较高层面讲，部署清单是配置了所需属性的模块孪生的列表。 部署清单告知某个 IoT Edge 设备（或一组设备）要安装哪些模块，以及如何配置这些模块。 部署清单包含每个模块孪生的所需属性。 IoT Edge 设备将报告每个模块的报告属性。 
 
 每个部署清单中需要两个模块：`$edgeAgent` 和 `$edgeHub`。 这些模块属于管理 IoT Edge 设备及其上运行的模块的 IoT Edge 运行时。 有关这些模块的详细信息，请参阅[了解 IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
@@ -135,7 +135,7 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 每个路由需要源和接收器，但条件是可用于筛选消息的可选片断。 
 
 
-### <a name="source"></a>source
+### <a name="source"></a>Source
 
 源指定消息来自何处。 IoT Edge 可以路由来自模块或叶设备的消息。 
 
@@ -143,7 +143,7 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 
 源属性可采用以下任何值：
 
-| source | 描述 |
+| Source | 描述 |
 | ------ | ----------- |
 | `/*` | 所有设备到云的消息，或者来自任何模块或叶设备的孪生更改通知 |
 | `/twinChangeNotifications` | 来自任何模块或叶设备的任何孪生更改（报告属性） |
@@ -156,7 +156,7 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 ### <a name="condition"></a>条件
 条件在路由声明中是可选的。 若要将所有消息从源传递到接收器，完全省略 **WHERE** 子句即可。 或者，可以使用 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-routing-query-syntax.md)来筛选满足条件的特定消息或消息类型。 IoT Edge 路由不支持基于孪生标记或属性筛选消息。 
 
-在 IoT Edge 中的模块之间传递的消息与在设备和 Azure IoT 中心之间传递的消息的格式是一样的。 所有消息都是 JSON 格式的，并具备 systemProperties、appProperties 和 body 参数    。 
+在 IoT Edge 中的模块之间传递的消息与在设备和 Azure IoT 中心之间传递的消息的格式是一样的。 所有消息都是 JSON 格式的，并具备 systemProperties、appProperties 和 body 参数。 
 
 可使用以下语法围绕三个参数中的任何一个生成查询： 
 
@@ -237,7 +237,7 @@ IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属
           }
         },
         "modules": {
-          "tempSensor": {
+          "SimulatedTemperatureSensor": {
             "version": "1.0",
             "type": "docker",
             "status": "running",
@@ -264,7 +264,7 @@ IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属
       "properties.desired": {
         "schemaVersion": "1.0",
         "routes": {
-          "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+          "sensorToFilter": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
           "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
         },
         "storeAndForwardConfiguration": {

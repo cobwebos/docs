@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: fbc5b18de093b2c91b17fa310c08a5b02b113a22
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 86350f21f5c530a00560c92cc0ae2fd58c9a2c57
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406517"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780055"
 ---
 # <a name="secure-your-cluster-in-azure-data-explorer"></a>保护 Azure 中的群集数据资源管理器
 
@@ -20,7 +20,7 @@ ms.locfileid: "68406517"
   
 ## <a name="enable-encryption-at-rest"></a>启用静态加密
   
-启用群集上[的静态加密](/azure/security/azure-security-encryption-atrest)可为存储的数据 (静态) 提供数据保护。 
+启用群集上[的静态加密](/azure/security/fundamentals/encryption-atrest)可为存储的数据 (静态) 提供数据保护。 
 
 1. 在 Azure 门户中转到 Azure 数据资源管理器群集资源。 在 "**设置**" 标题下, 选择 "**安全性**"。 
 

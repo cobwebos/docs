@@ -1,6 +1,6 @@
 ---
 title: Azure Cloud Shell 功能 | Microsoft Docs
-description: Azure Cloud Shell 中的 Bash 功能概述
+description: Azure Cloud Shell 中的功能概述
 services: Azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 6b5f0e96b90ee0515c0a86f41c6ee2161d6c54a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1354f7befd8c38537a555e17733f431dd488cf60
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752716"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742053"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
 
@@ -51,15 +51,15 @@ Cloud Shell 中的 PowerShell 在启动时会打开 Azure 驱动器 (`Azure:`)�
 
 ![](media/features-powershell/azure-drive.png)
 
-### <a name="manage-exchange-online"></a>Manage Exchange Online
+### <a name="manage-exchange-online"></a>管理 Exchange Online
 
-PowerShell Cloud Shell 中的包含 Exchange Online 的模块的专用版本。  运行`Connect-EXOPSSession`获取 Exchange cmdlet。
+Cloud Shell 中的 PowerShell 包含 Exchange Online 模块的专用生成。  运行`Connect-EXOPSSession`以获取 Exchange cmdlet。
 
 ![](media/features-powershell/exchangeonline.png)
 
  运行 `Get-Command -Module tmp_*`
 > [!NOTE]
-> 模块名称应以开头`tmp_`，如果具有相同的前缀，已安装模块，还会显示其 cmdlet。 
+> 模块名称应以开头`tmp_`, 如果已使用相同的前缀安装了模块, 则还会显示其 cmdlet。 
 
 ![](media/features-powershell/exchangeonlinecmdlets.png)
 
@@ -69,23 +69,23 @@ Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 C
 
 ## <a name="tools"></a>工具
 
-|类别   |Name   |
+|类别   |名称   |
 |---|---|
 |Linux 工具            |bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
-|Azure 工具            |[Azure CLI](https://github.com/Azure/azure-cli) 和 [Azure 经典 CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [批处理 Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Azure 工具            |[Azure CLI](https://github.com/Azure/azure-cli) 和 [Azure 经典 CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [批处理 Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |文本编辑器           |代码（Cloud Shell 编辑器）<br> vim<br> nano<br> emacs    |
 |源代码管理         |git                    |
 |生成工具            |make<br> maven<br> npm<br> pip         |
 |容器             |[Docker 计算机](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
 |数据库              |MySQL 客户端<br> PostgreSql 客户端<br> [sqlcmd 实用工具](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|其他                  |iPython 客户端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)|
+|其他                  |iPython 客户端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Puppet 螺栓](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)|
 
 ## <a name="language-support"></a>语言支持
 
 |语言   |Version   |
 |---|---|
 |.NET Core  |2.0.0       |
-|Go         |1.9        |
+|转到         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
 |PowerShell |[6.2.0](https://github.com/PowerShell/powershell/releases)       |

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45b28b4d88c670a8b2ec34b93a342f06b80e02d7
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: efe5829ffbe4db304f9ffab0a259ab9d10279b27
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668483"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772686"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -28,7 +28,7 @@ ms.locfileid: "68668483"
 | --- | --- | --- |
 | [基于云的笔记本 VM](#notebookvm) | 入门的最简单方法。 整个 SDK 已安装到你的工作区 VM 中, 笔记本教程已预克隆并可随时运行。 | 缺乏对开发环境和依赖项的控制。 Linux VM 产生的额外成本 (VM 可以在不使用时停止, 以避免收费)。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
 | [本地环境](#local) | 完全控制开发环境和依赖项。 在您选择的任何生成工具、环境或 IDE 中运行。 | 需要更长的时间才能开始。 必须安装必需的 SDK 包, 并且还必须安装环境 (如果尚未安装)。 |
-| [Azure Databricks](#aml-databricks) | 适用于在可扩展的 Apache Spark 平台上运行大规模密集型机器学习工作流。 | 用于试验机器学习或小规模试验和工作流的多余。 Azure Databricks 产生的额外成本。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/databricks/)。 |
+| [Azure Databricks](#aml-databricks) | 适用于在可缩放的 Apache Spark 平台上运行大规模密集型机器学习工作流。 | 用于试验机器学习或小规模试验和工作流的多余。 Azure Databricks 产生的额外成本。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/databricks/)。 |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | 类似于基于云的笔记本 VM (已预装 Python, 并且已预装 SDK), 但预安装了其他热门数据科学和机器学习工具。 易于缩放, 并与其他自定义工具和工作流组合。 | 与基于云的笔记本 VM 相比, 较慢的入门体验。 |
 | [Azure Notebook](#aznotebooks) | 具有 Python 和 SDK 预装的免费和轻型入门体验。 | 与基于云的笔记本 VM 相比, 可提供更强大的 VM。 独立于工作区和其他资源。 |
 
@@ -38,7 +38,7 @@ ms.locfileid: "68668483"
 
 * [Visual Studio Code](#vscode)：如果使用 Visual Studio Code，其中包含了一些可以安装的有用扩展。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。 工作区是您开始使用自己的[基于云的笔记本服务器](#notebookvm)、 [DSVM](#dsvm)、 [Azure Databricks](#aml-databricks)或[Azure Notebooks](#aznotebooks)所需的所有工作区。
 
@@ -72,11 +72,11 @@ Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azu
 
   如果你使用的是代码, VM 将包括教程和示例, 以帮助你了解如何使用 Azure 机器学习服务。 示例笔记本存储在工作区的 Azure Blob 存储帐户中, 使其可在 Vm 之间共享。 运行时, 它们还可以访问工作区的数据存储和计算资源。
 
-+ **简单安装**:随时从 Azure 机器学习工作区中创建一个。 仅提供名称并指定 Azure VM 类型。 立即通过本[快速入门进行试用:通过基于云的 Notebook 服务器开始使用 Azure 机器学习](quickstart-run-cloud-notebook.md)。
++ **简单安装**:随时从 Azure 机器学习工作区中创建一个。 仅提供名称并指定 Azure VM 类型。 请通过本[教程立即试用:设置环境和工作](tutorial-1st-experiment-sdk-setup.md)区。
 
 + **可自定义**。 尽管提供了托管安全的 VM 产品/服务, 但仍保留了对硬件功能的完全访问权限, 并对其进行自定义以满足你的需求。 例如, 快速创建最新的 NVidia V100 支持的 VM, 以执行 novel 神经网络体系结构的分步调试。
 
-若要停止产生笔记本 VM 费用, 请[停止笔记本 vm](quickstart-run-cloud-notebook.md#stop-the-notebook-vm)。
+若要停止产生笔记本 VM 费用, 请[停止笔记本 vm](tutorial-1st-experiment-sdk-setup.md#stop-the-notebook-vm)。 
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
@@ -338,7 +338,7 @@ Azure Databricks 如何与 Azure 机器学习服务一起使用:
 
 Sdk for Databricks, **_无_** 自动机器![学习 Azure 机器学习 sdk for Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-适用**于 Databricks 的**SDK 与自动![机器学习 SDK 一起安装在 Databricks 上的自动机器学习](./media/how-to-configure-environment/automlonadb.jpg)
+适用于 Databricks的 SDK 与自动![机器学习 SDK 一起安装在 Databricks 上的自动机器学习](./media/how-to-configure-environment/automlonadb.jpg)
 
 ### <a name="start-exploring"></a>开始浏览
 

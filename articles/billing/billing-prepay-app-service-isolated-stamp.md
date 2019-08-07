@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 40ccee7a993ce39a9b4c7a86309b0554daa56026
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f122ec2474c09cdd6c9ada4ddc59b1adb44f619f
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298264"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779997"
 ---
 # <a name="prepay-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>预付容量 Azure App Service 与预留容量一起收取的戳记
 
@@ -47,7 +47,7 @@ ms.locfileid: "68298264"
 **购买:**
 
 1. 请参阅[Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D)。
-1. 选择一个订阅。 使用 "**订阅**" 列表选择用于支付预留容量的订阅。 订阅的付款方式支付了预留容量的前期成本。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P），或即用即付（产品/服务编号：BC-OP-NT-AZR-Ms-azr-0003p 或 BC-OP-NT-AZR-0023P) 或 CSP 订阅。
+1. 选择订阅。 使用 "**订阅**" 列表选择用于支付预留容量的订阅。 订阅的付款方式支付了预留容量的前期成本。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P），或即用即付（产品/服务编号：BC-OP-NT-AZR-Ms-azr-0003p 或 BC-OP-NT-AZR-0023P) 或 CSP 订阅。
     - 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。
     - 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。
 1. 选择一个**范围**以选择订阅作用域。
@@ -62,13 +62,9 @@ ms.locfileid: "68298264"
 
 购买后, 请前往[预订](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)以查看购买状态并随时监视。
 
-## <a name="cancellations-and-exchanges"></a>取消和更换
+## <a name="cancel-exchange-or-refund-reservations"></a>取消、交换或退款预订
 
-如果需要取消隔离的戳记预留容量, 可能会提前终止 12%。 退款根据购买价格和当前预留价格中的最低者计算。 每年的退款限制为 $50000.00。 收到的退款为剩余的按比例余额减去 12% 的提前终止费。 若要取消, 请跳到 Azure 门户中的预订, 然后选择 "**退款**"。
-
-如果需要将独立的戳记保留容量移到另一个区域, 则可以将其与具有相同或更大值的另一个预订交换。 新订购项目的期限开始日期不是从交换的订购项目延续。 当你创建新的预订时, 将启动一个三年的期限。 若要交换, 请在 "Azure 门户" 中, 选择要交换的保留, 然后选择 " **exchange**"。
-
-有关如何交换或退款预订的详细信息, 请参阅[保留交换和退款](billing-azure-reservations-self-service-exchange-and-refund.md)。
+您可以取消、交换或退款保留, 但有一些限制。 有关详细信息, 请参阅[Azure 预订的自助服务交换和退款](billing-azure-reservations-self-service-exchange-and-refund.md)。
 
 ## <a name="discount-application-shown-in-usage-data"></a>使用情况数据中显示的折扣应用程序
 

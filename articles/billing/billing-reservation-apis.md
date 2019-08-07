@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 20ed2bcf793ab5c3913ccf66d338e71c1a99a003
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 36bc403c4000e58541f22c2cb44f77a28e81cb72
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478923"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779890"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>适用于 Azure 预留自动化的 API
 
@@ -84,7 +84,7 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 - 确保组织创建的虚拟机数与预留的 VM 大小相匹配。
 - 确保已启用实例大小灵活性。 有关详细信息，请参阅[管理预留 - 更改预留 VM 实例的优化设置](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
 - 将预留范围更改为共享，使其应用得更广。 有关详细信息，请参阅[管理预留 - 更改预留的范围](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)。
-- 交换未使用的数量。 有关详细信息，请参阅[管理预留 - 取消和交换](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges)。
+- 交换未使用的数量。 有关详细信息, 请参阅[管理预订](billing-manage-reserved-vm-instance.md)。
 
 ## <a name="give-access-to-reservations"></a>授予对预留的访问权限
 

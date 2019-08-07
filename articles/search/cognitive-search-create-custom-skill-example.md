@@ -1,57 +1,57 @@
 ---
-title: 例如：使用必应实体搜索 API-Azure 搜索创建自定义的认知技能
-description: 演示如何使用必应实体搜索服务中自定义映射到 Azure 搜索中的认知搜索索引管道的一项技能。
+title: 例如：使用必应实体搜索 API 创建自定义认知技能-Azure 搜索
+description: 演示如何使用在 Azure 搜索中映射到认知搜索索引管道的自定义技能中的 "必应实体搜索服务"。
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 7d90f46ada9b9453b4c1516a4a898456dc73b8e7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a032288338d2d6a53489105790b6862eefadf609
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672141"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841230"
 ---
-# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例如：创建使用必应实体搜索 API 的一项自定义技能
+# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例如：使用必应实体搜索 API 创建自定义技能
 
-在此示例中，了解如何创建 web API 自定义技能。 此技术将接受位置、 公共图形，以及组织中，并返回它们的说明。 该示例使用[Azure Function](https://azure.microsoft.com/services/functions/)包装[必应实体搜索 API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) ，以便实现自定义技能接口。
+在此示例中, 了解如何创建 web API 自定义技能。 此技能将接受位置、公共数字和组织, 并为他们返回说明。 该示例使用[Azure 函数](https://azure.microsoft.com/services/functions/)包装[必应实体搜索 API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/)以便实现自定义技能接口。
 
 ## <a name="prerequisites"></a>系统必备
 
-+ 阅读有关[自定义技能接口](cognitive-search-custom-skill-interface.md)文章如果您不熟悉自定义技能应实现的输入/输出接口。
++ 如果你不熟悉自定义技能应该实现的输入/输出界面, 请阅读有关[自定义技能接口](cognitive-search-custom-skill-interface.md)文章。
 
 + [!INCLUDE [cognitive-services-bing-entity-search-signup-requirements](../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-+ 安装[Visual Studio 2019](https://www.visualstudio.com/vs/)或更高版本，包括 Azure 开发工作负载。
++ 安装[Visual Studio 2019](https://www.visualstudio.com/vs/)或更高版本, 包括 Azure 开发工作负荷。
 
 ## <a name="create-an-azure-function"></a>创建 Azure 函数
 
-尽管此示例中使用 Azure 函数以承载 web API，但它不需要使用。  只要满足[认知技能的接口需求](cognitive-search-custom-skill-interface.md)，采用的方法并不重要。 但是，可通过 Azure Functions 轻松创建自定义技能。
+虽然此示例使用 Azure 函数来承载 web API, 但它不是必需的。  只要满足[认知技能的接口需求](cognitive-search-custom-skill-interface.md)，采用的方法并不重要。 但是，可通过 Azure Functions 轻松创建自定义技能。
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
-1. 在 Visual Studio 中，从“文件”菜单中选择“新建” > “项目”   。
+1. 在 Visual Studio 中，从“文件”菜单中选择“新建” > “项目”。
 
-1. 在“新建项目”对话框中，选择“已安装”，展开“Visual C#” > “云”，选择“Azure Functions”，键入项目的名称，然后选择“确定”      。 函数应用名称必须是作为有效的C#命名空间，因此请勿使用下划线、 连字符或任何其他非字母数字字符。
+1. 在“新建项目”对话框中，选择“已安装”，展开“Visual C#” > “云”，选择“Azure Functions”，键入项目的名称，然后选择“确定”。 函数应用名称必须是有效的C#命名空间, 因此请勿使用下划线、连字符或任何其他非字母数字字符。
 
-1. 选择“Azure Functions v2 (.NET Core)”  。 也可以使用版本 1 执行此操作，但下面的代码基于 v2 模板编写。
+1. 选择“Azure Functions v2 (.NET Core)”。 也可以使用版本 1 执行此操作，但下面的代码基于 v2 模板编写。
 
-1. 选择“HTTP 触发器”作为类型 
+1. 选择“HTTP 触发器”作为类型
 
-1. 对于存储帐户，可选择“无”，因为此函数不需要任何存储  。
+1. 对于存储帐户，可选择“无”，因为此函数不需要任何存储。
 
-1. 选择“确定”以创建函数项目和 HTTP 触发的函数  。
+1. 选择“确定”以创建函数项目和 HTTP 触发的函数。
 
 ### <a name="modify-the-code-to-call-the-bing-entity-search-service"></a>修改代码以调用必应实体搜索服务
 
 Visual Studio 将创建一个项目，并在该项目中创建一个包含所选函数类型的样本代码的类。 方法中的 *FunctionName* 属性设置函数的名称。 *HttpTrigger* 属性指定该函数将由某个 HTTP 请求触发。
 
-现在，将文件 Function1.cs 的所有内容替换为以下代码  ：
+现在，将文件 Function1.cs 的所有内容替换为以下代码：
 
 ```csharp
 using System;
@@ -313,15 +313,15 @@ namespace SampleSkills
 }
 ```
 
-请务必输入您自己*键*中的值`key`常量基于必应实体搜索 API 注册时获取的密钥。
+请确保根据注册必应实体搜索 API 时`key`获得的密钥, 在常量中输入自己的密钥值。
 
-此示例为方便起见单个文件中包括所有必要的代码。 您可以找到在该相同的技能更结构化的版本[电源技能存储库](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)。
+此示例在一个文件中包含所有必要的代码, 以方便使用。 你可以在[power 专业存储库](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)中找到相同技能的更多结构化版本。
 
-当然，您可能会重命名文件从`Function1.cs`到`BingEntitySearch.cs`。
+当然, 您可以将文件从`Function1.cs`重命名为。 `BingEntitySearch.cs`
 
 ## <a name="test-the-function-from-visual-studio"></a>从 Visual Studio 中测试函数
 
-按 F5 运行程序并测试函数行为  。 在这种情况下，我们将使用下面的函数来查找两个实体。 使用 Postman 或 Fiddler 发出如下所示的调用：
+按 F5 运行程序并测试函数行为。 在这种情况下, 我们将使用下面的函数来查找两个实体。 使用 Postman 或 Fiddler 发出如下所示的调用：
 
 ```http
 POST https://localhost:7071/api/EntitySearch
@@ -375,17 +375,17 @@ POST https://localhost:7071/api/EntitySearch
 
 ## <a name="publish-the-function-to-azure"></a>将函数发布到 Azure
 
-函数的行为感到满意后，可以将其发布。
+对函数行为感到满意后, 可以将其发布。
 
-1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”  。 选择“新建” > “发布”   。
+1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”。 选择“新建” > “发布”。
 
-1. 如果尚未将 Visual Studio 连接到 Azure 帐户，请选择“添加帐户...” 
+1. 如果尚未将 Visual Studio 连接到 Azure 帐户，请选择“添加帐户...”
 
-1. 请按照屏幕上的提示操作。 用户需要指定你的应用服务、 Azure 订阅、 资源组、 托管计划和你想要使用的存储帐户的唯一名称。 如果尚不拥有这些资源，可创建新资源组、新托管计划和存储帐户。 完成后，选择“创建” 
+1. 请按照屏幕上的提示操作。 系统会要求您为应用服务、Azure 订阅、资源组、托管计划以及要使用的存储帐户指定唯一名称。 如果尚不拥有这些资源，可创建新资源组、新托管计划和存储帐户。 完成后，选择“创建”
 
 1. 部署完成后，请记下站点 URL。 这是 Azure 中你的函数应用的地址。 
 
-1. 在中[Azure 门户](https://portal.azure.com)，导航到资源组，并查找`EntitySearch`您发布的函数。 在“管理”部分下，应可看到主机密钥  。 对默认主机密钥选择“复制”图标   。  
+1. 在[Azure 门户](https://portal.azure.com)中, 导航到资源组, 然后查找已发布的`EntitySearch`函数。 在“管理”部分下，应可看到主机密钥。 对默认主机密钥选择“复制”图标。  
 
 ## <a name="test-the-function-in-azure"></a>在 Azure 中测试函数
 
@@ -417,10 +417,10 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 }
 ```
 
-此示例应生成相同的结果您之前看到的那样在本地环境中运行该函数时。
+在本地环境中运行函数时, 此示例应生成与之前看到的结果相同的结果。
 
 ## <a name="connect-to-your-pipeline"></a>连接到管道
-现在有了新的自定义技能，可将其添加到技能组合。 下面的示例演示如何调用添加到组织 （这可以进行扩展以还适用于位置和人员） 在文档中描述的技能。 替换为`[your-entity-search-app-name]`与您的应用程序的名称。
+现在有了新的自定义技能，可将其添加到技能组合。 下面的示例演示了如何调用技能来向文档中的组织添加说明 (这可以扩展以同时用于位置和人员)。 将`[your-entity-search-app-name]`替换为您的应用程序的名称。
 
 ```json
 {
@@ -448,7 +448,7 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 }
 ```
 
-在这里，我们要计数上内置[实体识别技能](cognitive-search-skill-entity-recognition.md)位于技能组合并具有丰富具有组织列表中的文档。 有关参考，下面是即可生成我们需要的数据的实体提取技能配置：
+在这里, 我们将计算技能组合中的内置[实体识别技能](cognitive-search-skill-entity-recognition.md), 并使用组织列表丰富文档。 作为参考, 以下是一个实体提取技能配置, 足以生成所需的数据:
 
 ```json
 {
@@ -478,7 +478,7 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 ```
 
 ## <a name="next-steps"></a>后续步骤
-祝贺你！ 创建在第一个自定义扩充器添加了。 现在，可按照相同的模式添加自己的自定义功能。 
+祝贺你！ 已创建第一个自定义扩充器添加。 现在，可按照相同的模式添加自己的自定义功能。 
 
 + [将自定义技能添加到认知搜索管道](cognitive-search-custom-skill-interface.md)
 + [如何定义技能组合](cognitive-search-defining-skillset.md)

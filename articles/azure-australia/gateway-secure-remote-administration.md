@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 827dffc1c7544d9373b5f8d4426ea8c448fa25ab
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1e4c4712312faf2274a4a0737c4fc1f7ce39f98e
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571596"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824191"
 ---
 # <a name="secure-remote-administration-of-your-gateway-in-azure-australia"></a>Azure 澳大利亚的网关远程管理安全
 
@@ -33,7 +33,6 @@ ms.locfileid: "68571596"
 |日志记录和审核   |自动生成、收集和分析来自工作站、服务器、网络设备和跳转框的安全与管理相关的事件将启用检测和尝试的折衷。 自动化使组织能够更快地做出响应, 从而降低泄露的影响。|
 |网络分段和隔离|将网络划分为多个逻辑区域 (例如不同的安全域), 并通过限制从一个区域到另一个区域的数据类型来进一步分离这些逻辑网络, 限制横向移动。 分段可防止攻击者获取对其他资源的访问权限。|
 |跳转框|跳转框是强制的远程访问服务器, 通常 utilising Microsoft 的远程桌面服务或安全外壳 (SSH) 软件。 对于通过从专用主机执行的所有管理操作, 访问关键系统的管理员, 跳转框作为步进点。|
-|
 
 本文提供了有关如何使用上述元素来安全管理在 Azure 中部署的系统的参考体系结构。
 
@@ -77,7 +76,6 @@ ms.locfileid: "68571596"
 |条件访问 |条件性访问策略检查身份验证尝试, 以确保它满足必要的要求, 例如连接的 IP 地址、特权帐户的组成员身份, 以及的管理和符合性状态Intune 报告的特权工作站。 |
 |Privileged Identity Management (PIM) |通过 Azure 门户管理员现在可以为其授权到 PIM 的特权角色激活或请求激活。 PIM 确保特权帐户不具有任何持续的管理权限, 并且仅针对执行管理任务所需的时间的所有特权访问请求。 PIM 还为审核目的提供了所有请求和激活的日志记录。 |
 |标识和访问管理|安全标识了特权帐户并激活角色后, 管理员便可以访问通过标识和访问管理向他们分配了权限的 Azure 订阅和资源。|
-|
 
 如果特权帐户完成了获取 Azure 门户的管理访问权限, 则可以配置对工作负荷的访问, 并可以进行管理连接。
 
@@ -91,7 +89,6 @@ ms.locfileid: "68571596"
 |网络策略服务器 (NPS)|NPS 从 RD 网关接收身份验证请求, 并根据 Active Directory 验证用户名和密码, 然后将请求发送到 Azure Active Directory 以触发 Azure MFA 身份验证请求。|
 |Azure MFA|Azure MFA 向特权帐户的注册移动设备发送身份验证请求。 移动设备由 Intune 管理, 以确保符合安全要求。 管理员必须先使用 PIN 或生物识别系统对移动设备进行身份验证, Microsoft Authenticator 然后才能使用 PIN 或生物识别系统对 Azure MFA 进行身份验证。|
 |跳转服务器|成功通过身份验证后, 会使用传输层安全性 (TLS) 对 RDP 连接进行加密, 然后通过加密 IPSec 隧道发送到 Azure VPN 网关, 通过 RD 网关和转到跳转服务器。 在跳转服务器上, 管理员现在可以通过 RDP 或 SSH 连接到 JIT 请求中指定的虚拟机。|
-|
 
 ## <a name="general-guidance"></a>通用指南
 
@@ -133,7 +130,6 @@ ms.locfileid: "68571596"
 |---|---|
 |特权访问工作站体系结构概述|[https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)|
 |保护特权访问参考资料|[https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)|
-|
 
 ### <a name="mobile-device"></a>移动设备
 
@@ -143,7 +139,6 @@ ms.locfileid: "68571596"
 |---|---|
 |Azure AD 身份验证方法|[https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)|
 |如何使用 Microsoft Authenticator 应用程序|[https://support.microsoft.com/help/4026727/microsoft-account-how-to-use-the-microsoft-authenticator-app](https://support.microsoft.com/help/4026727/microsoft-account-how-to-use-the-microsoft-authenticator-app)|
-|
 
 ### <a name="microsoft-intune"></a>Microsoft Intune
 
@@ -153,7 +148,6 @@ Intune 是企业移动性 + 安全性的组件, 用于管理移动设备和应�
 |---|---|
 |Microsoft Intune 文档|[https://docs.microsoft.com/intune/](https://docs.microsoft.com/intune/)|
 |Intune 中的设备符合性入门|[https://docs.microsoft.com/intune/device-compliance-get-started](https://docs.microsoft.com/intune/device-compliance-get-started)|
-|
 
 ### <a name="group-policy"></a>组策略
 
@@ -162,7 +156,6 @@ Intune 是企业移动性 + 安全性的组件, 用于管理移动设备和应�
 |资源|链接|
 |---|---|
 |允许本地登录组策略设置|[https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/allow-log-on-locally](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/allow-log-on-locally)|
-|
 
 ### <a name="jump-server--bastion-host"></a>跳转服务器/堡垒主机
 
@@ -171,7 +164,6 @@ Intune 是企业移动性 + 安全性的组件, 用于管理移动设备和应�
 |资源|链接|
 |---|---|
 |实现安全的管理主机|[https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-secure-administrative-hosts](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-secure-administrative-hosts)|
-|
 
 ### <a name="just-in-time-jit-access"></a>实时 (JIT) 访问
 
@@ -181,7 +173,6 @@ JIT 是一个 Azure 安全中心功能, 它使用网络安全组 (Nsg) 来阻止
 |---|---|
 |管理实时 (JIT) 访问|[https://docs.microsoft.com/azure/security-center/security-center-just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|
 |自动执行 Azure 实时 VM 访问|[https://blogs.technet.microsoft.com/motiba/2018/06/24/automating-azure-just-in-time-vm-access](https://blogs.technet.microsoft.com/motiba/2018/06/24/automating-azure-just-in-time-vm-access)|
-|
 
 ## <a name="secure-communication"></a>安全通信
 
@@ -194,7 +185,6 @@ JIT 是一个 Azure 安全中心功能, 它使用网络安全组 (Nsg) 来阻止
 |资源 |链接 |
 |---|---|
 |Azure 加密概述–传输中的加密|[https://docs.microsoft.com/azure/security/security-azure-encryption-overview#encryption-of-data-in-transit](https://docs.microsoft.com/azure/security/security-azure-encryption-overview#encryption-of-data-in-transit)|
-|
 
 ### <a name="azure-vpn-gateway"></a>Azure VPN 网关
 
@@ -204,8 +194,7 @@ Azure VPN 网关提供从特权工作站到 Azure 的安全加密连接。 Azure
 |---|---|
 |关于点到站点连接|[https://docs.microsoft.com/azure/vpn-gateway/point-to-site-about](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-about)|
 |Azure VPN 网关加密详细信息|[https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto)|
-|Azure VPN 网关配置|[https://aka.ms/AzGovAUSecurity](https://aka.ms/AzGovAUSecurity)|
-|
+|Azure VPN 网关配置|[Azure VPN 网关配置](vpn-gateway.md)|
 
 ### <a name="remote-desktop-rd-gateway"></a>远程桌面 (RD) 网关
 
@@ -214,7 +203,6 @@ RD 网关是一种安全机制, 用于控制和 authorising 与系统的 RDP 连
 |资源 |链接 |
 |---|---|
 |远程桌面服务体系结构|[https://docs.microsoft.com/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)|
-|
 
 ### <a name="network-security-groups-nsgs"></a>网络安全组 (NSG)
 
@@ -224,7 +212,6 @@ RD 网关是一种安全机制, 用于控制和 authorising 与系统的 RDP 连
 |---|---|
 |Azure 安全组概述|[https://docs.microsoft.com/azure/virtual-network/security-overview](https://docs.microsoft.com/azure/virtual-network/security-overview)|
 |如何：规划虚拟网络|[https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)|
-|
 
 ## <a name="strong-authentication"></a>强身份验证
 
@@ -237,7 +224,6 @@ RD 网关是一种安全机制, 用于控制和 authorising 与系统的 RDP 连
 |资源 |链接 |
 |---|---|
 |Active Directory 域服务概述|[https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)|
-|
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
@@ -249,7 +235,6 @@ Azure AD 是 Azure 的身份验证服务。 它包含云
 |---|---|
 |Azure Active Directory 文档|[https://docs.microsoft.com/azure/active-directory](https://docs.microsoft.com/azure/active-directory)|
 |混合标识文档|[https://docs.microsoft.com/azure/active-directory/hybrid](https://docs.microsoft.com/azure/active-directory/hybrid)|
-|
 
 ### <a name="network-policy-server-nps"></a>网络策略服务器 (NPS)
 
@@ -258,7 +243,6 @@ NPS 是一种身份验证和策略服务器, 可提供高级身份验证和授�
 |资源 |链接 |
 |---|---|
 |网络策略服务器文档|[https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)|
-|
 
 ### <a name="azure-mfa"></a>Azure MFA
 
@@ -268,7 +252,6 @@ Azure MFA 是 Azure Active Directory 中提供的一种身份验证服务, 用�
 |---|---|
 |工作原理：Azure 多重身份验证|[https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)|
 |如何：部署基于云的 Azure 多重身份验证|[https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)|
-|
 
 ## <a name="strong-authorisation"></a>强授权
 
@@ -282,7 +265,6 @@ Azure MFA 是 Azure Active Directory 中提供的一种身份验证服务, 用�
 |---|---|
 |Azure 基于角色的访问控制|[https://docs.microsoft.com/azure/role-based-access-control](https://docs.microsoft.com/azure/role-based-access-control)|
 |了解角色定义|[https://docs.microsoft.com/azure/role-based-access-control/role-definitions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions)|
-|
 
 ### <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PIM)
 
@@ -292,7 +274,6 @@ PIM 是控制特权角色访问权限的 Azure Active Directory 组件。 特权
 |---|---|
 |Privileged Identity Management (PIM) 文档|[https://docs.microsoft.com/azure/active-directory/privileged-identity-management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)|
 |开始使用 PIM|[https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-getting-started](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-getting-started)|
-|
 
 ### <a name="conditional-access"></a>条件访问
 
@@ -302,7 +283,6 @@ PIM 是控制特权角色访问权限的 Azure Active Directory 组件。 特权
 |---|---|
 |条件访问文档|[https://docs.microsoft.com/azure/active-directory/conditional-access](https://docs.microsoft.com/azure/active-directory/conditional-access)|
 |如何：需要将托管设备用于具有条件访问的云应用访问权限|[https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|
-|
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -131,6 +131,8 @@
   items:
     - name: 管理 Azure Monitor
       items:
+        - name: 设计工作区部署
+          href: platform/design-logs-deployment.md
         - name: 角色权限和安全
           href: platform/roles-permissions-security.md
         - name: IP 地址

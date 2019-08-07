@@ -13,33 +13,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 2e3e39ef24d82393d981c0ce276b3338419e0b2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6c245142eea12bcec5ed642ec9bd91a58e10eb0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521774"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68813765"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>对用于容器的 Azure Monitor 进行故障排除
 
 使用用于容器的 Azure Monitor 配置 Azure Kubernetes 服务 (AKS) 群集的监视时，可能会遇到阻止数据收集或报告状态的问题。 本文详细介绍了一些常见问题及其排查步骤。
 
-## <a name="authorization-error-during-onboarding-or-update-operation"></a>在载入或更新操作期间的授权错误
-在启用用于容器的 Azure Monitor 或更新群集，以支持收集指标时，可能会收到错误类似于以下命令：*客户端 < 用户的标识 > 使用对象 id < 用户的 objectId > 不会授权来执行操作 ' Microsoft.Authorization/roleAssignments/write 对作用域*
+## <a name="authorization-error-during-onboarding-or-update-operation"></a>在执行载入或更新操作期间出现授权错误
+为容器启用 Azure Monitor 或更新群集以支持收集度量值时, 可能会收到类似于以下的错误:*客户端 < 用户的标识 > "对象 id" < 用户的 objectId > "无权作用域执行 "Microsoft Authorization/roleAssignments/write" 操作*
 
-在载入或更新过程中，授予**监视指标发布服务器**上群集资源尝试角色分配。 若要启用的容器或更新 Azure Monitor 支持的指标收集用户启动过程必须有权**Microsoft.Authorization/roleAssignments/write** AKS 群集上的权限资源作用域。 只有的成员**所有者**并**用户访问管理员**内置角色授予此权限的访问权限。 如果你的安全策略需要分配粒度级别的权限，我们建议你查看[自定义角色](../../role-based-access-control/custom-roles.md)并将其分配给需要它的用户。 
+在载入或更新过程中，将对群集资源尝试授予“监视指标发布服务器”角色分配。 如果用户要启动为容器启用 Azure Monitor 的过程或用于支持收集指标的更新，则该用户必须可以访问 AKS 群集资源作用域上的 **Microsoft.Authorization/roleAssignments/write** 权限。 只有**所有者**和**用户访问管理员**内置角色的成员才被授权访问此权限。 如果安全策略需要分配粒度级别的权限，我们建议查看[自定义角色](../../role-based-access-control/custom-roles.md)，并将其分配给需要它的用户。 
 
-手动可以从 Azure 门户授予此角色，通过执行以下步骤：
+此外，还可以通过执行以下步骤，在 Azure 门户中手动授予此角色：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
-2. 在 Azure 门户中，单击左上角的“所有服务”  。 在资源列表中，键入**Kubernetes**。 开始键入时，会根据输入筛选该列表。 选择**Azure Kubernetes**。
-3. 在 Kubernetes 群集的列表中，选择列表中的一个。
-2. 从左侧菜单中，单击**访问控制 (IAM)** 。
-3. 选择 **+ 添加**若要添加的角色分配，然后选择**监视指标发布者**角色并在**选择**框中，键入**AKS**到结果只是在群集上的服务主体在订阅中定义的筛选器。 选择从特定于该群集的列表。
-4. 选择“保存”  完成角色分配。 
+2. 在 Azure 门户中，单击左上角的“所有服务”。 在资源列表中，键入 **Kubernetes**。 开始键入时，会根据输入筛选该列表。 选择“Azure Kubernetes”。
+3. 从 Kubernetes 群集列表中选择一个群集。
+2. 在左侧菜单中，单击“访问控制 (IAM)”。
+3. 选择“+ 添加”以添加角色分配，并选择“监视指标发布服务器”角色，然后在“选择”框下键入 **AKS**，以仅根据订阅中定义的群集服务主体筛选结果。 从列表中选择特定于该群集的角色。
+4. 选择“保存”完成角色分配。 
 
 ## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>用于容器的 Azure Monitor 已启用，但未报告任何信息
-如果容器的 Azure Monitor 成功启用和配置，但不能查看状态信息或来自一个日志查询不返回任何结果，您将诊断问题，通过执行以下步骤： 
+如果用于容器的 Azure Monitor 已成功启用和配置，但你无法查看状态信息或日志查询未返回任何结果，你可以按照以下步骤诊断问题： 
 
 1. 通过运行以下命令检查代理状态： 
 
@@ -66,7 +66,7 @@ ms.locfileid: "65521774"
 
 3. 使用以下命令，检查 Pod 的状态，验证它是否正在运行：`kubectl get pods --namespace=kube-system`
 
-    输出应类似于以下示例，omsagent 状态为“正在运行”  ：
+    输出应类似于以下示例，omsagent 状态为“正在运行”：
 
     ```
     User@aksuser:~$ kubectl get pods --namespace=kube-system 
@@ -80,7 +80,7 @@ ms.locfileid: "65521774"
 
 4. 查看代理日志。 部署容器化代理时，它通过运行 OMI 命令执行快速检查，并显示代理和提供程序的版本。 
 
-5. 若要验证代理已成功部署，运行命令： `kubectl logs omsagent-484hw --namespace=kube-system`
+5. 若要验证代理是否已成功部署，请运行以下命令：`kubectl logs omsagent-484hw --namespace=kube-system`
 
     状态应类似于以下示例：
 
@@ -109,13 +109,14 @@ ms.locfileid: "65521774"
 
 下表汇总了使用适用于容器的 Azure Monitor 时可能会遇到的已知错误。
 
-| 错误消息  | 操作 |  
+| 错误消息  | Action |  
 | ---- | --- |  
-| 错误消息 `No data for selected filters`  | 为新创建的群集建立监视数据流可能需要花费一些时间。 等待至少 10 到 15 分钟，数据才会显示为群集。 |   
-| 错误消息 `Error retrieving data` | 为 Azure Kubenetes 服务群集设置运行状况和性能监视时，会在群集与 Azure Log Analytics 工作区之间建立连接。 Log Analytics 工作区用于存储你的群集的所有监视数据。 当 Log Analytics 工作区已删除或丢失时，可能会发生此错误。 通过查看 [管理访问权限](../platform/manage-access.md#view-workspace-details) 来检查你的工作区是否可用。 如果缺少工作区，则需要重新启用群集的监视与 Azure Monitor 的容器。 若要重新启用，你将需要[禁用](container-insights-optout.md)监视群集和[启用](container-insights-enable-new-cluster.md)再次容器的 Azure Monitor。 |  
-| 通过 az aks cli 添加适用于容器的 Azure Monitor 后出现 `Error retrieving data` | 当启用监视使用`az aks cli`，用于容器的 Azure 监视器可能未正确部署。 检查是否部署该解决方案。 若要执行此操作，请转到你的 Log Analytics 工作区，并从左侧的面板中选择“解决方案”来查看该解决方案是否可用。  若要解决此问题，需要按照[如何部署适用于容器的 Azure Monitor](container-insights-onboard.md) 中的说明重新部署该解决方案。 |  
+| 错误消息 `No data for selected filters`  | 为新创建的群集建立监视数据流可能需要花费一些时间。 群集的数据至少需要 10 到 15 分钟才能显示。 |   
+| 错误消息 `Error retrieving data` | 为 Azure Kubenetes 服务群集设置运行状况和性能监视时，会在群集与 Azure Log Analytics 工作区之间建立连接。 Log Analytics 工作区用于存储你的群集的所有监视数据。 删除 Log Analytics 工作区时, 可能会发生此错误。 检查工作区是否已删除, 如果已删除, 你将需要使用容器 Azure Monitor 重新启用对群集的监视, 并指定现有工作区或创建新的工作区。 若要重新启用，将需要对该群集[禁用](container-insights-optout.md)监视，然后再次[启用](container-insights-enable-new-cluster.md)用于容器的 Azure Monitor。 |  
+| 通过 az aks cli 添加适用于容器的 Azure Monitor 后出现 `Error retrieving data` | 当使用 `az aks cli` 启用监视时，可能无法正确部署用于容器的 Azure Monitor。 请检查是否部署了该解决方案。 若要执行此操作，请转到你的 Log Analytics 工作区，并从左侧的面板中选择“解决方案”来查看该解决方案是否可用。 若要解决此问题，需要按照[如何部署适用于容器的 Azure Monitor](container-insights-onboard.md) 中的说明重新部署该解决方案。 |  
 
 为了帮助诊断问题，我们在[此处](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)提供了一个可用的故障排除脚本。  
 
 ## <a name="next-steps"></a>后续步骤
+
 启用监视来捕获 AKS 群集节点和 Pod 的运行状况指标后，可在 Azure 门户中找到这些运行状况指标。 要了解如何将 Azure Monitor 用于容器，请参阅[查看 Azure Kubernetes 服务运行状况](container-insights-analyze.md)。

@@ -5,21 +5,22 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: 149b701d4a1700787656448e2bdd0d92d2a93844
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dff0ffaed49d7e4b7ba8211827a26bc3e9a87d9d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791519"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841115"
 ---
 #   <a name="conditional-skill"></a>条件技能
 
-条件技能可以实现需要使用布尔运算来确定要分配到输出的数据的 Azure 搜索方案。  这些方案包括基于条件进行筛选、分配默认值以及合并数据。
+条件技能可以实现需要使用布尔运算来确定要分配到输出的数据的 Azure 搜索方案。 这些方案包括基于条件进行筛选、分配默认值以及合并数据。
 
 以下伪代码演示条件技能可以实现的功能：
 
@@ -45,14 +46,14 @@ Microsoft.Skills.Util.ConditionalSkill
 
 -   批注路径（表达式中的路径必须以“$(”和“)”分隔）
  <br/>
-    示例：
+    示例:
     ```
         "= $(/document)"
         "= $(/document/content)"
     ```
 
 -  文本（字符串、数字、true、false、null） <br/>
-    示例：
+    示例:
     ```
        "= 'this is a string'"   // string (note the single quotation marks)
        "= 34"                   // number
@@ -61,21 +62,21 @@ Microsoft.Skills.Util.ConditionalSkill
     ```
 
 -  使用比较运算符（==、!=、>=、>、<=、<）的表达式 <br/>
-    示例：
+    示例:
     ```
         "= $(/document/language) == 'en'"
         "= $(/document/sentiment) >= 0.5"
     ```
 
 -   使用布尔运算符（&&、||、!、^）的表达式 <br/>
-    示例：
+    示例:
     ```
         "= $(/document/language) == 'en' && $(/document/sentiment) > 0.5"
         "= !true"
     ```
 
 -   使用数字运算符（+、-、\*、/、%）的表达式 <br/>
-    示例： 
+    示例: 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
         "= $(/document/totalValue) * 1.10"       // multiplication
@@ -89,7 +90,7 @@ Microsoft.Skills.Util.ConditionalSkill
 
 | 输入   | 描述 |
 |-------------|-------------|
-| condition   | 此输入是一个[求值字段](#evaluated-fields)，表示要求值的条件。 此条件应求值为布尔值（*true* 或 *false*）。   <br/>  示例： <br/> "= true" <br/> "= $(/document/language) =='fr'" <br/> "= $(/document/pages/\*/language) == $(/document/expectedLanguage)" <br/> |
+| condition   | 此输入是一个[求值字段](#evaluated-fields)，表示要求值的条件。 此条件应求值为布尔值（*true* 或 *false*）。   <br/>  示例: <br/> "= true" <br/> "= $(/document/language) =='fr'" <br/> "= $(/document/pages/\*/language) == $(/document/expectedLanguage)" <br/> |
 | whenTrue    | 此输入是一个[求值字段](#evaluated-fields)，表示当条件求值为 *true* 时要返回的值。 常量字符串应括在单引号（' 和 '）中返回。 <br/>示例值： <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/> |
 | whenFalse   | 此输入是一个[求值字段](#evaluated-fields)，表示当条件求值为 *false* 时要返回的值。 <br/>示例值： <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/>
 
@@ -114,7 +115,7 @@ Microsoft.Skills.Util.ConditionalSkill
     "outputs": [ { "name": "output", "targetName": "frenchSentences" } ]
 }
 ```
-如果将“/document/frenchSentences”用作另一技能的上下文，仅当“/document/frenchSentences”未设置为 *null* 时，才运行该技能。 
+如果将“/document/frenchSentences”用作另一技能的上下文，仅当“/document/frenchSentences”未设置为 *null* 时，才运行该技能。
 
 
 ### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>示例技能定义 2：为不存在的值设置默认值
@@ -154,7 +155,7 @@ Microsoft.Skills.Util.ConditionalSkill
 ## <a name="transformation-example"></a>转换示例
 ### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>示例技能定义 4：基于单个字段进行数据转换
 
-在此示例中，我们将收到介于 0 和 1 之间的情绪。  我们希望将此值转换为 -1 到 1。 可以使用条件技能来实现这种次要转换。
+在此示例中，我们将收到介于 0 和 1 之间的情绪。 我们希望将此值转换为 -1 到 1。 可以使用条件技能来实现这种次要转换。
 
 在此示例中，我们未使用技能的条件性，因为该条件始终为 *true*。
 

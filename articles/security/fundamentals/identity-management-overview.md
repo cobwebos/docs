@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: ee9f771483b0478ec4b7d1bf92095d9dd07f45ad
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1081fa8c9c7cc64418515aabbb755ecf056196ca
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727235"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826290"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 
@@ -164,7 +164,7 @@ Azure AD 标识保护是一种安全服务，它提供一个综合视图，你�
 
 了解详细信息:
 
-* [Azure AD 标识保护](/azure/active-directory/active-directory-identityprotection.md)
+* [Azure AD 标识保护](/azure/active-directory/identity-protection/overview)
 * [第 9 频道：Azure AD 和标识展示：“标识保护”预览版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>混合标识管理/Azure AD Connect

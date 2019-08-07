@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/27/2019
+ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: ed04c21fc5f3aecb91483dbd1eb7ca5fbf47c3e9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 54686a96385532e17fe0ac6e59058b91b40c1342
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67805964"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742567"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
@@ -72,17 +72,17 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 - 如果未安装 VSS 提供程序，请参阅[安装故障排除文章](vmware-azure-troubleshoot-push-install.md#vss-installation-failures)。
 
 - 如果已禁用 VSS：
-    - 确认 VSS 提供程序服务的启动类型是否设置为“自动”。 
+    - 确认 VSS 提供程序服务的启动类型是否设置为“自动”。
     - 重启以下服务：
         - VSS 服务
         - Azure Site Recovery VSS 提供程序
         - VDS 服务
 
-- 如果你正在运行 SQL 或 Exchange 工作负荷，检查失败的这些应用程序编写器的日志。 在以下文章中捕获经常出现的错误和其解决方法：
-    -  [SQL Server 数据库的自动关闭选项设置为 TRUE](https://support.microsoft.com/help/4504104)
-    - [SQL Server 2008 R2 引发不可重试错误](https://support.microsoft.com/help/4504103)
-    - [在 SQL Server 2016 和 2017年中的已知的问题](https://support.microsoft.com/help/4493364)
-    - [与 Exchange 服务器 2013年和 2016年的常见问题](https://support.microsoft.com/help/4037535)
+- 如果运行的是 SQL 或 Exchange 工作负荷, 请检查这些应用程序编写器的日志中的失败情况。 以下文章中捕获了经常发生的错误和解决方法:
+    -  [SQL Server 数据库的 "自动关闭" 选项设置为 TRUE](https://support.microsoft.com/help/4504104)
+    - [SQL Server 2008 R2 引发不可重试的错误](https://support.microsoft.com/help/4504103)
+    - [SQL Server 2016 和2017中的已知问题](https://support.microsoft.com/help/4493364)
+    - [Exchange Server 2013 和2016常见问题](https://support.microsoft.com/help/4037535)
 
 
 ### <a name="source-machines-with-high-churn-error-78188"></a>源计算机的变动率较高 [错误 78188]
@@ -93,7 +93,13 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 若要解决问题，请执行以下操作：
 - 确保根据源中的变动率要求预配目标存储帐户类型（“标准”或“高级”）。
+- 如果已复制到高级托管磁盘 (asrseeddisk 类型), 请确保磁盘大小支持根据 Site Recovery 限制观察到的变动率。 如果需要, 可以增加 asrseeddisk 的大小。 请按照以下步骤操作：
+    - 导航到受影响的复制计算机的 "磁盘" 边栏选项卡, 并复制副本磁盘名称
+    - 导航到此副本托管磁盘
+    - 你可能会在概述边栏选项卡上看到一个横幅, 指出已生成 SAS URL。 单击此标语并取消导出。 如果看不到横幅, 请忽略此步骤。
+    - 一旦将 SAS URL 吊销, 请在托管磁盘中转到 "配置" 边栏选项卡, 增加大小, 以便 ASR 支持在源磁盘上观察到的变动率
 - 如果观测到的变动率是暂时性的，请等待几个小时，让等待中的数据跟上上传进度并创建恢复点。
+- 如果磁盘包含非关键数据 (如临时日志、测试数据等), 请考虑将此数据移到其他位置, 或者从复制中完全排除此磁盘
 - 如果问题持续出现，请使用 Site Recovery [部署规划器](site-recovery-deployment-planner.md#overview)来帮助规划复制。
 
 ### <a name="source-machines-with-no-heartbeat-error-78174"></a>源计算机无检测信号 [错误 78174]
@@ -133,59 +139,59 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
         
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
 
-## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>错误 ID 78144-没有可用的 'XXX' 分钟内 VM 的应用一致的恢复点
+## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>错误 ID 78144-最近 "XXX" 分钟内没有适用于 VM 的应用一致恢复点
 
-下面列出了一些最常见的问题
+下面列出了其中的一些最常见
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>原因 1：中的已知问题 SQL server 2008/2008 R2 
-**如何修复**:没有已知的问题与 SQL server 2008/2008 R2。 请参阅此知识库文章[Azure Site Recovery 代理或其他非组件 VSS 备份托管 SQL Server 2008 R2 的服务器的失败](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>原因 1：SQL Server 2008/2008 R2 中的已知问题 
+**如何解决**：SQL Server 2008/2008 R2 有一个已知问题。 请参阅此知识库文章：[托管 SQL Server 2008 R2 的服务器的 Azure Site Recovery 代理或其他非组件 VSS 备份失败](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>原因 2：承载具有 AUTO_CLOSE 数据库 SQL Server 实例的任何版本的服务器上的 azure Site Recovery 作业失败 
-**如何修复**:请参阅 Kb[文章](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
-
-
-#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因 3：在 SQL Server 2016 和 2017年中的已知的问题
-**如何修复**:请参阅 Kb[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>原因 2：在使用 AUTO_CLOSE DB 托管任何版本的 SQL Server 实例的服务器上，Azure Site Recovery 作业失败 
+**如何解决**：请参阅知识库[文章](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
 
 
-### <a name="more-causes-due-to-vss-related-issues"></a>由于 VSS 了解更多原因相关的问题：
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因 3：SQL Server 2016 和 2017 中的已知问题
+**如何解决**：请参阅知识库[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
 
-若要进一步排除故障，检查源计算机以获取失败的具体错误代码上的文件：
+
+### <a name="more-causes-due-to-vss-related-issues"></a>更多 VSS 相关问题原因：
+
+若要进一步排查问题，请查看源计算机上的文件，获取故障的具体错误代码：
     
     C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
 
 如何在文件中查找错误？
-通过在编辑器中打开 vacp.log 文件搜索字符串"vacpError"
+在编辑器中打开 vacp.log 文件，搜索字符串“vacpError”
         
     Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
 
-在上面的示例**2147754994**是如下所示，告诉你有关失败的错误代码
+在上面的示例中，**2147754994** 是介绍故障情况的错误代码，如下所示
 
-#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS 编写器未安装-错误 2147221164 
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS 编写器未安装 - 错误 2147221164 
 
-*如何修复*:若要生成应用程序一致性标记，Azure Site Recovery 将使用 Microsoft 卷影复制服务 (VSS)。 它会安装 VSS 提供程序进行其操作来创建应用程序一致性快照。 此 VSS 提供程序安装为服务。 如果未安装 VSS 提供程序服务，应用程序一致性快照创建将失败并出现错误 id 0x80040154"未注册类"。 </br>
-请参阅[一文，了解 VSS 编写器安装的故障排除](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
+*如何解决*：若要生成应用程序一致性标记, Azure Site Recovery 使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务未安装，则应用程序一致性快照创建会失败，并出现 ID 为 0x80040154 的错误“类未注册”。 </br>
+请参阅[有关 VSS 编写器安装故障排除的文章](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
 
-#### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS 编写器已禁用-错误 2147943458
+#### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS 编写器已禁用 - 错误 2147943458
 
-**如何修复**:若要生成应用程序一致性标记，Azure Site Recovery 将使用 Microsoft 卷影复制服务 (VSS)。 它会安装 VSS 提供程序进行其操作来创建应用程序一致性快照。 此 VSS 提供程序安装为服务。 如果禁用 VSS 提供程序服务，则应用程序一致性快照创建将失败并出现错误 id"指定的服务被禁用，不能为 started(0x80070422)"。 </br>
+**如何解决**：若要生成应用程序一致性标记, Azure Site Recovery 使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务已禁用，则应用程序一致性快照创建会失败，并出现 错误“指定的服务已禁用，无法启动(0x80070422)”。 </br>
 
 - 如果已禁用 VSS：
-    - 确认 VSS 提供程序服务的启动类型是否设置为“自动”。 
+    - 确认 VSS 提供程序服务的启动类型是否设置为“自动”。
     - 重启以下服务：
         - VSS 服务
         - Azure Site Recovery VSS 提供程序
         - VDS 服务
 
-####  <a name="vss-provider-notregistered---error-2147754756"></a>VSS 提供程序 NOT_REGISTERED-错误 2147754756
+####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS 提供程序未注册 - 错误 2147754756
 
-**如何修复**:若要生成应用程序一致性标记，Azure Site Recovery 将使用 Microsoft 卷影复制服务 (VSS)。 检查是否安装 Azure Site Recovery VSS 提供程序服务。 </br>
+**如何解决**：若要生成应用程序一致性标记, Azure Site Recovery 使用 Microsoft 卷影复制服务 (VSS)。 检查 Azure Site Recovery VSS 提供程序服务是否已安装。 </br>
 
-- 重试使用以下命令安装提供程序：
+- 使用以下命令重试提供程序安装：
 - 卸载现有的提供程序：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
-- 请重新安装：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
+- 重新安装：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
  
-确认 VSS 提供程序服务的启动类型是否设置为“自动”。 
+确认 VSS 提供程序服务的启动类型是否设置为“自动”。
     - 重启以下服务：
         - VSS 服务
         - Azure Site Recovery VSS 提供程序

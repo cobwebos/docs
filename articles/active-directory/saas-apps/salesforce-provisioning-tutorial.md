@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 712cc5ce62225987f8cc3ea13b5e4fd10a7d5eaf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515762"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825777"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Salesforce 以及取消其预配而需要在 Salesforce 和 Azure AD 中执行的步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在本教程中概述的方案假定已有以下各项：
 
@@ -64,55 +64,58 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 本部分的目的是概述如何对 Salesforce 启用 Active Directory 用户帐户的用户预配。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”  部分。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
-2. 如果已为 Salesforce 配置单一登录，请使用搜索字段搜索 Salesforce 实例。 否则，请选择“添加”  并在应用程序库中搜索“Salesforce”  。 从搜索结果中选择 Salesforce，并将其添加到应用程序列表。
+2. 如果已为 Salesforce 配置单一登录，请使用搜索字段搜索 Salesforce 实例。 否则，请选择“添加”并在应用程序库中搜索“Salesforce”。 从搜索结果中选择 Salesforce，并将其添加到应用程序列表。
 
-3. 选择 Salesforce 实例，然后选择“预配”  选项卡。
+3. 选择 Salesforce 实例，然后选择“预配”选项卡。
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![预配](./media/salesforce-provisioning-tutorial/provisioning.png)
 
-5. 在“管理员凭据”  部分中，提供以下配置设置：
+5. 在“管理员凭据”部分中，提供以下配置设置：
 
-    a. 在“管理员用户名”  文本框中，键入在 Salesforce.com 中已分配“系统管理员”  配置文件的 Salesforce 帐户名称。
+    a. 在“管理员用户名”文本框中，键入在 Salesforce.com 中已分配“系统管理员”配置文件的 Salesforce 帐户名称。
 
-    b. 在“管理员密码”  文本框中，键入此帐户的密码。
+    b. 在“管理员密码”文本框中，键入此帐户的密码。
 
-6. 若要获取 Salesforce 安全令牌，请打开新选项卡并登录到同一个 Salesforce 管理员帐户。 在页面右上角单击你的名字，然后单击“设置”  。
+6. 若要获取 Salesforce 安全令牌，请打开新选项卡并登录到同一个 Salesforce 管理员帐户。 在页面右上角单击你的名字，然后单击“设置”。
 
     ![启用自动用户设置](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")
 
-7. 在左侧导航窗格中，单击“我的个人信息”  展开相关部分，然后单击“重置我的安全令牌”  。
+7. 在左侧导航窗格中，单击“我的个人信息”展开相关部分，然后单击“重置我的安全令牌”。
   
     ![启用自动用户设置](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")
 
-8. 在“重置安全令牌”  页上，单击“重置安全令牌”按钮  。
+8. 在“重置安全令牌”页上，单击“重置安全令牌”按钮。
 
     ![启用自动用户设置](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")
 
 9. 查看与此管理员帐户关联的电子邮件收件箱。 查找来自 Salesforce.com 的包含新安全令牌的电子邮件。
 
-10. 复制令牌，转到 Azure AD 窗口，然后将令牌粘贴到“机密令牌”  字段中。
+10. 复制令牌，转到 Azure AD 窗口，然后将令牌粘贴到“机密令牌”字段中。
 
 11. 如果 Salesforce 实例在 Salesforce 政府云中，则应输入**租户 URL**。 否则，它是可选项。 使用格式“https://\<your-instance\>.my.salesforce.com”输入租户 URL，并将“\<your-instance\>”替换为 Salesforce 实例的名称。
 
-12. 在 Azure 门户中，单击“测试连接”  以确保 Azure AD 可以连接到 Salesforce 应用。
+12. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 Salesforce 应用。
 
-13. 在“通知电子邮件”  字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
+13. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-14. 单击“保存”  。  
+14. 单击“保存”。  
 
-15. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Salesforce”  。
+15. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Salesforce”。
 
-16. 在“属性映射”  部分中，查看将从 Azure AD 同步到 Salesforce 的用户属性。 请注意，选为“匹配”  属性的属性将用于匹配 Salesforce 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+16. 在“属性映射”部分中，查看将从 Azure AD 同步到 Salesforce 的用户属性。 请注意，选为“匹配”属性的属性将用于匹配 Salesforce 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-17. 若要为 Salesforce 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”  更改为“启用” 
+17. 若要为 Salesforce 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-18. 单击“保存”  。
+18. 单击“保存”。
 
-这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Salesforce。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”  部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Salesforce 应用执行的所有操作。
+> [!NOTE]
+> 在 Salesforce 应用程序中设置用户后, 管理员需要为其配置特定于语言的设置。 有关语言配置的更多详细信息, 请参阅[此](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)文。
+
+这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Salesforce。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Salesforce 应用执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 

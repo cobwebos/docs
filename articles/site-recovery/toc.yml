@@ -23,7 +23,7 @@
           href: azure-to-azure-tutorial-failover-failback.md
         - name: 运行故障回复
           href: azure-to-azure-tutorial-failback.md
-    - name: 移动 Azure VM
+    - name: 移动
       items:
         - name: 将 Azure VM 移动到另一区域
           href: azure-to-azure-tutorial-migrate.md
@@ -31,6 +31,8 @@
           href: move-Azure-VMs-AVset-Azone.md
         - name: 在“政府”区域和“公用”区域之间移动 Azure VM
           href: region-move-cross-geos.md
+        - name: 将保管库移动到不同的区域
+          href: move-vaults-across-regions.md
     - name: VMware VM 灾难恢复到 Azure
       items:
         - name: 准备 Azure
@@ -365,8 +367,6 @@
               href: service-updates-how-to.md
             - name: 删除保管库
               href: delete-vault.md
-            - name: 将保管库移动到不同的区域
-              href: move-vaults-across-regions.md
     - name: 应用的灾难恢复
       items:
         - name: 为本地应用设置灾难恢复到 Azure
@@ -441,6 +441,8 @@
       items:
         - name: 排查 Azure VM 复制问题
           href: azure-to-azure-troubleshoot-errors.md
+        - name: 排查 Azure VM 连接性问题
+          href: azure-to-azure-troubleshoot-network-connectivity.md
         - name: 排查正在进行的复制的问题
           href: azure-to-azure-troubleshoot-replication.md
         - name: 排查出行服务问题

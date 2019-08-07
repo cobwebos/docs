@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d3d4679703f6d98cb2062144cfde7d11fe44130c
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386817"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817200"
 ---
 ## <a name="application-performance-indicators"></a>应用程序性能指标
 
@@ -268,6 +268,9 @@ Azure 高级存储提供8个 GA 磁盘大小和三个目前处于预览阶段的
 
 *ReadWrite*  
 默认情况下，OS 磁盘已启用 ReadWrite 缓存。 我们最近还增加了对在数据磁盘上进行 ReadWrite 缓存的支持。 如果使用的是 ReadWrite 缓存，则必须使用正确的方法将数据从缓存写入到永久性磁盘中。 例如，SQL Server 会自行将缓存数据写入永久性存储磁盘。 对不负责保留所需数据的应用程序使用 ReadWrite 缓存可能会在 VM 崩溃时导致数据丢失。
+
+*无*  
+目前只能在数据磁盘上进行**任何**支持。 OS 磁盘不支持此方法。 如果在 OS 磁盘上设置 "**无**", 则将在内部覆盖此设置, 并将其设置为**ReadOnly**。
 
 举例来说，可以通过执行以下操作将这些准则应用到在高级存储上运行的 SQL Server：
 

@@ -1,50 +1,51 @@
 ---
-title: 威胁检测 - Azure SQL 数据库 | Microsoft Docs
-description: 威胁检测会检测异常的数据库活动，这些活动指示单一数据库或弹性池中存在对数据库的潜在安全威胁。
+title: 高级威胁防护 - Azure SQL 数据库 | Microsoft Docs
+description: 高级威胁防护可检测异常的数据库活动, 指出单一数据库或弹性池中数据库的潜在安全威胁。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-ms.date: 02/08/2019
-ms.openlocfilehash: 5549d016978e8bf9491c3745e335e3c4c793212c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/05/2019
+ms.openlocfilehash: 755a3b391cb7b4909169b034cc8d89892ec2ed05
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566326"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816545"
 ---
-# <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>针对单一数据库或共用数据库的 Azure SQL 数据库威胁检测
+# <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>适用于单个或共用数据库的 Azure SQL 数据库高级威胁防护
 
-针对单一数据库或共用数据库的[威胁检测](sql-database-threat-detection-overview.md)可以检测异常活动，这些活动指示对数据库的异常和可能有害的访问或利用企图。 威胁检测可以识别**潜在的 SQL 注入**、**来自异常位置或数据中心的访问**、**来自陌生主体或可能有害的应用程序的访问**以及**暴力攻击 SQL 凭据** - 请在[威胁检测警报](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)中查看更多详细信息。
+针对单个和共用数据库的[高级威胁防护](sql-database-threat-detection-overview.md)可检测异常活动, 这些活动表明访问或利用数据库的异常和潜在有害尝试。 高级威胁防护可以识别**潜在的 SQL 注入**、**从异常位置或数据中心进行访问**、**从不熟悉的主体或潜在有害的应用程序访问**和**暴力破解 SQL 凭据**-请参阅[高级威胁防护警报](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)中的更多详细信息。
 
 你可以通过[电子邮件通知](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event)或 [Azure 门户](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)接收有关检测到的威胁的通知
 
-[威胁检测](sql-database-threat-detection-overview.md)是[高级数据安全](sql-database-advanced-data-security.md) (ADS) 产品/服务（它是高级 SQL 安全功能的一个统一包）的一部分。 可通过中心 SQL ADS 门户访问和管理威胁检测。 高级数据安全包按每个逻辑服务器 15 美元/月来计费，前 30 天免费。
+[高级威胁防护](sql-database-threat-detection-overview.md)是[高级的数据安全](sql-database-advanced-data-security.md)(ADS) 产品/服务的一部分, 它是高级 SQL 安全功能的统一包。 可通过中心 SQL ADS 门户访问和管理高级威胁防护。
 
-## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>在 Azure 门户中为数据库设置威胁检测
+## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>在 Azure 门户中设置高级威胁防护
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中启动 Azure 门户。
 2. 导航到要保护的 Azure SQL 数据库服务器的配置页。 在安全设置中，选择“高级数据安全”。
 3. 在“高级数据安全”配置页：
 
    - 在服务器上启用高级数据安全。
-   - 在“威胁检测设置”中的“发送警报到”文本框中，提供检测到异常数据库活动时收到安全警报的电子邮件列表。
+   - 在“高级威胁防护设置”中的“发送警报到”文本框中，提供检测到异常数据库活动时接收安全警报的电子邮件列表。
   
-   ![设置威胁检测](./media/sql-database-threat-detection/set_up_threat_detection.png)
+   ![设置高级威胁防护](./media/sql-database-threat-detection/set_up_threat_detection.png)
 
-## <a name="set-up-threat-detection-using-powershell"></a>使用 PowerShell 设置威胁检测
+   > [!NOTE]
+   > 屏幕截图中的价格并不总是反映当前价格, 而是一个示例。
 
-有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
+## <a name="set-up-advanced-threat-protection-using-powershell"></a>使用 PowerShell 设置高级威胁防护
+
+有关脚本示例, 请参阅[使用 PowerShell 配置审核和高级威胁防护](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[威胁检测](sql-database-threat-detection-overview.md)。
-- 详细了解[托管实例中的威胁检测](sql-database-managed-instance-threat-detection.md)。  
+- 详细了解[高级威胁防护](sql-database-threat-detection-overview.md)。
+- 详细了解[托管实例中的高级威胁防护](sql-database-managed-instance-threat-detection.md)。  
 - 详细了解[高级数据安全](sql-database-advanced-data-security.md)。
 - 详细了解[审核](sql-database-auditing.md)
 - 详细了解 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)

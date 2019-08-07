@@ -5,21 +5,23 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 05/16/2019
+ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: da4bc51cdd8cdfad8212ee5a288f03874f673c2c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678194"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817199"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>策略:适用于目录中的用户
 
 如果你希望在你的目录中为可以请求此访问包的用户提供策略, 请执行以下步骤。  **目录中的用户**是指内部用户和外部用户, 这些用户以前已被邀请到目录, 无论是通过他们请求使用其他访问包的权利管理, 还是受 Azure AD B2B 邀请。 定义策略时, 可以指定单个用户或更常见的用户组。 例如, 你的组织可能已有一个组, 例如 "**所有员工**"。  如果为可请求访问的用户在策略中添加该组, 则该组的任何成员都可以请求访问。
 
 1. 在 "**可请求访问的用户**" 部分中,**为目录中的用户**选择。
+
+    请注意, "目录" 设置中的 "用户" 包含已添加到目录**中**的成员用户和来宾用户。 如果只想包括成员用户而不包含 guest 用户, 请**在目录中**选择 "用户", 然后选择一个成员用户组。 如有必要, 可以创建成员用户的动态组 (userType-eq "成员")。 有关详细信息, 请参阅[Azure Active Directory 中组的动态成员身份规则](../articles/active-directory/users-groups-roles/groups-dynamic-membership.md)。
 
 1. 在 "**选择用户和组**" 部分中, 单击 "**添加用户和组**"。
 

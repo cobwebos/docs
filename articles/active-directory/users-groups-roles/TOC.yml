@@ -128,8 +128,6 @@
           href: directory-assign-admin-roles.md
         - name: 查看和分配角色
           href: directory-manage-roles-portal.md
-        - name: 在图形 API 中分配自定义角色
-          href: roles-assign-powershell.md
         - name: 自定义角色预览版
           items:
             - name: 自定义角色预览版
@@ -142,6 +140,8 @@
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
             - name: 在图形 API 中分配自定义角色
               href: roles-assign-graph.md
+            - name: 使用 PowerShell 分配自定义角色
+              href: roles-assign-powershell.md
             - name: 自定义角色预览权限
               href: roles-custom-available-permissions.md
             - name: 委托应用管理权限

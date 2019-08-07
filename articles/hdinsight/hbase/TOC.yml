@@ -27,6 +27,8 @@
       href: ../hdinsight-version-release.md
     - name: 故障排除
       items:
+        - name: Apache HBase REST 无响应
+          href: ./hbase-troubleshoot-rest-not-spending.md
         - name: 区域服务器上的 CPU 使用率居高不下
           href: ./hbase-troubleshoot-pegged-cpu-region-server.md
         - name: “hbase hbck”命令超时

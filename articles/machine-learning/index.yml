@@ -27,64 +27,31 @@ sections:
         style: cards
         type: list
   - items:
-      - text: 进行设置并开始使用 Azure 机器学习服务：
+      - text: 进行设置并开始使用 Azure 机器学习服务。
         type: paragraph
-      - text: <b>快速入门：</b>
-        type: paragraph
-      - items:
-          - html: <a href="service/quickstart-run-cloud-notebook">在云中运行试验</a>（不需要进行安装）
-          - html: <a href="service/quickstart-run-local-notebook">使用本地 Notebook 服务器运行试验</a>（本地 SDK 安装）
-        style: unordered
-        type: list
-      - text: <b>教程：在 Azure 门户中训练并部署你的第一个自动 ML 模型：</b>
+      - text: 使用 Azure 门户（一种易于使用的无代码界面）训练、部署和管理 ML 模型：
         type: paragraph
       - items:
+          - html: <a href="service/ui-tutorial-automobile-price-train-score">在可视界面的拖放 UI 中训练第一个试验</a>
           - html: <a href="service/tutorial-first-experiment-automated-ml">使用自动机器学习训练并部署你的第一个分类模型</a>
         style: unordered
         type: list
-      - text: <b>教程：通过 SDK 训练你的第一个 ML 模型：</b>
+      - text: 在脚本和笔记本中使用 Python SDK 训练、部署和管理 ML 模型：
         type: paragraph
       - items:
-          - html: 第 1 部分：<a href="service/tutorial-1st-experiment-sdk-setup">设置环境和工作区</a>
-          - html: 第 2 部分：<a href="service/tutorial-1st-experiment-sdk-train">训练你的第一个模型</a>
+          - html: <a href="service/tutorial-1st-experiment-sdk-setup">设置环境并训练第一个 ML 试验</a>
+          - html: <a href="service/tutorial-train-models-with-aml">训练和部署图像分类模型</a>
+          - html: <a href="service/tutorial-data-prep">准备数据并使用自动 ML 来预测出租车费用</a>
         style: unordered
         type: list
-      - text: <b>教程：使用可视界面训练并部署第一次试验：</b>
-        type: paragraph
-      - items:
-          - html: 第 1 部分：<a href="service/ui-tutorial-automobile-price-train-score">训练回归模型</a>
-          - html: 第 2 部分：<a href="service/ui-tutorial-automobile-price-deploy">部署模型</a>
-        style: unordered
-        type: list
-      - text: <b>教程：使用 SDK 进行 MNIST 数据的图像分类：</b>
-        type: paragraph
-      - items:
-          - html: 第 1 部分：<a href="service/tutorial-train-models-with-aml">训练自己的模型</a>
-          - html: 第 2 部分：<a href="service/tutorial-deploy-models-with-aml">部署该模型</a>
-        style: unordered
-        type: list
-      - text: <b>教程：使用 SDK 预测出租车行程费用：</b>
-        type: paragraph
-      - items:
-          - html: 第 1 部分：<a href="service/tutorial-data-prep">准备建模的数据</a>
-          - html: 第 2 部分：<a href="service/tutorial-auto-train-models">让自动化 ML 为你训练模型</a>
-        style: unordered
-        type: list
-      - text: <b>教程：使用可视界面预测汽车价格：</b>
-        type: paragraph
-      - items:
-          - html: 第 1 部分：<a href="service/ui-tutorial-automobile-price-train-score">预测汽车价格</a>
-          - html: 第 2 部分：<a href="service/ui-tutorial-automobile-price-deploy">部署回归模型</a>
-        style: unordered
-        type: list
-      - text: <b>使用模型：</b>
+      - text: 使用模型：
         type: paragraph
       - items:
           - html: <a href="service/how-to-consume-web-service">使用请求-响应模型</a>
           - html: <a href="service/how-to-run-batch-predictions">使用 ML 管道进行批量预测</a>
         style: unordered
         type: list
-    title: 快速入门和教程
+    title: 分步教程
   - items:
       - className: cardsM
         columns: 2

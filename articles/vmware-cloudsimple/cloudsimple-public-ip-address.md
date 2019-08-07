@@ -1,35 +1,35 @@
 ---
-title: VMware 解决方案 CloudSimple-Azure 公共 IP 地址
-description: 了解公共 IP 地址上通过 CloudSimple VMware 解决方案及其优势
+title: VMware 解决方案 (按 CloudSimple)-Azure 公共 IP 地址
+description: 通过 CloudSimple 了解公共 IP 地址及其对 VMware 解决方案的好处
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f57b7397f4a2d288cd2b8b55cf23b2d635aa5f8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29d2bdb75a7f4409e6b3ffee2608cfe7adde6b1f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209565"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812521"
 ---
 # <a name="cloudsimple-public-ip-address-overview"></a>CloudSimple 公共 IP 地址概述
 
-公共 IP 地址允许 internet 资源的通信入站，私有云资源的专用 IP 地址。 专用 IP 地址是虚拟机或软件负载均衡器。 在私有云 vCenter 的专用 IP 地址。 公共 IP 地址，可公开到 internet 在私有云上运行的服务。
+使用公共 IP 地址, internet 资源可以与专用 IP 地址的私有云资源进行入站通信。 专用 IP 地址是虚拟机或软件负载平衡器。 专用 IP 地址在私有云 vCenter 上。 公共 IP 地址可让你将在私有云上运行的服务公开到 internet。
 
-公共 IP 地址专门用于专用 IP 地址，直到取消该分配。 公共 IP 地址只能分配到一个专用 IP 地址。
+公共 IP 地址专用于专用 IP 地址, 直到你取消分配该地址。 公共 IP 地址只能分配给一个专用 IP 地址。
 
-始终与公共 IP 地址相关联的资源使用的公共 IP 地址进行 internet 访问。 默认情况下，仅使用出站 internet 访问允许公共 IP 地址。  上的公共 IP 地址的传入流量将被拒绝。  若要允许入站的流量，请创建的特定端口的公共 IP 地址的防火墙规则。
+与公共 IP 地址关联的资源始终使用公共 IP 地址进行 internet 访问。 默认情况下, 仅允许对公共 IP 地址进行出站 internet 访问。  拒绝公共 IP 地址上的传入流量。  若要允许入站流量, 请为特定端口创建公共 IP 地址的防火墙规则。
 
 ## <a name="benefits"></a>优点
 
-使用公共 IP 地址进行入站通信提供了：
+使用公共 IP 地址进行入站通信提供:
 
-* 分布式的拒绝服务 (DDoS) 攻击防护。 这种保护会自动启用的公共 IP 地址。
-* 始终可用的流量监控和实时风险缓解常见网络级别攻击。 这些防御措施都由 Microsoft 在线服务使用的相同防御。
-* 整个 Azure 全球网络的规模。 在网络可用来分散和缓解跨区域攻击流量。  
+* 分布式拒绝服务 (DDoS) 攻击防护。 自动为公共 IP 地址启用此保护。
+* 始终开启流量监视和常见网络级别攻击的实时缓解措施。 这些防御措施与 Microsoft 联机服务使用的防御方法相同。
+* Azure 全球网络的整个缩放。 网络可用于跨区域分发和缓解攻击流量。  
 
 ## <a name="next-steps"></a>后续步骤
 

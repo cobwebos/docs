@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: danlep
-ms.openlocfilehash: 5100418651e24d74ad747e8c436ffce53c899a92
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e41bcaff8faef2c4eaec9ae852955d4b7ce354b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68500895"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839912"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>使用云本机 Buildpack 从应用生成并推送映像
 
@@ -44,11 +44,13 @@ Azure CLI 命令`az acr pack build`使用[Buildpacks](https://buildpacks.io/)中
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --builder cloudfoundry/cnb:bionic \
+    --pull --builder cloudfoundry/cnb:bionic \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
 此示例生成`node-app` `1.0`带有标记的图像, 并将其推送到*myregistry*容器注册表。 此处, 将目标注册表名称显式预置到映像名称。 如果未指定, 则会自动将注册表 URL 附加到映像名称之前。
+
+`--pull`参数指定命令提取最新的生成器图像。
 
 命令输出显示生成和推送映像的进度。 
 
@@ -80,7 +82,7 @@ az acr pack build \
 
 此示例生成`java-app`用命令的运行 ID 标记的映像, 并将其推送到*myregistry*容器注册表。
 
-`--pull`参数指定命令提取最新的生成器图像, 这是必需的, 因为 Heroku 生成器图像不是由 ACR 任务缓存的。
+`--pull`参数指定命令提取最新的生成器图像。
 
 命令输出显示生成和推送映像的进度。 
 
