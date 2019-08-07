@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca011ec7185b084de6d1d346556c1c270c7aee3
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: HT
+ms.openlocfilehash: e6148f6f9d449dc5aa55da2f041119a8b706491b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546074"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835098"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>使用 MSAL 获取和缓存令牌
 客户端可以使用[访问令牌](access-tokens.md)安全调用受 Azure 保护的 Web API。 可以使用 Microsoft 身份验证库 (MSAL) 通过多种方法获取令牌。 有些方法需要用户通过 Web 浏览器进行交互。 而有些方法则不需要任何用户交互。 一般情况下，获取令牌的方法取决于应用程序是公共客户端应用程序（桌面或移动应用）还是机密客户端应用程序（Web 应用、Web API，或类似于 Windows 服务的后台程序应用程序）。
@@ -39,7 +39,7 @@ MSAL 在获取令牌后会缓存令牌。  在通过其他方式获取令牌之�
 在 MSAL 中也可以访问 v1.0 资源。 有关详细信息，请阅读 [v1.0 应用程序的范围](msal-v1-app-scopes.md)。
 
 ### <a name="request-specific-scopes-for-a-web-api"></a>请求 Web API 的特定范围
-当应用程序需要使用资源 API 的特定权限请求令牌时，你需要采用以下格式传递包含 API 应用 ID URI 的范围：*&lt;应用 ID URI&gt;/&lt;范围&gt;*
+当应用程序需要使用资源 API 的特定权限请求令牌时，你需要采用以下格式传递包含 API 应用 ID URI 的范围： *&lt;应用 ID URI&gt;/&lt;范围&gt;*
 
 Microsoft Graph API 的范围示例：`https://graph.microsoft.com/User.Read`
 
@@ -48,7 +48,7 @@ Microsoft Graph API 的范围示例：`https://graph.microsoft.com/User.Read`
 （仅适用于 Microsoft Graph API）范围值 `user.read` 将映射为 `https://graph.microsoft.com/User.Read` 格式，两者可以换用。
 
 > [!NOTE]
-> 某些 Web API（例如 Azure 资源管理器 API (https://management.core.windows.net/)）要求在访问令牌的受众声明 (aud) 中使用尾随的“/”。 在这种情况下，必须以 https://management.core.windows.net//user_impersonation 形式（请注意双斜杠）传递范围，使令牌在 API 中有效。
+> 某些 Web API（例如 Azure 资源管理器 API (https://management.core.windows.net/) ）要求在访问令牌的受众声明 (aud) 中使用尾随的“/”。 在这种情况下，必须以 https://management.core.windows.net//user_impersonation 形式（请注意双斜杠）传递范围，使令牌在 API 中有效。
 
 ### <a name="request-dynamic-scopes-for-incremental-consent"></a>请求增量许可的动态范围
 使用 v1.0 生成应用程序时，必须注册应用程序所需的完整权限集（静态范围），让用户在登录时许可这些权限。 在 v2.0 中，可根据需要使用范围参数请求其他权限。 这些范围称为动态范围，可让用户提供范围的增量许可。
