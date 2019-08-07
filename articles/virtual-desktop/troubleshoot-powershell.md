@@ -2,17 +2,17 @@
 title: Windows 虚拟桌面 PowerShell-Azure
 description: 如何在设置 Windows 虚拟桌面租户环境时对 PowerShell 问题进行故障排除。
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 41c3c25962d5cb0d608a226ed77408460446bfa5
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.author: helohr
+ms.openlocfilehash: 7c5a15790c3a88e9aa3921d6cc2626576aedaa64
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248201"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816370"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows 虚拟桌面 PowerShell
 
@@ -32,7 +32,7 @@ ms.locfileid: "68248201"
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
 ```
 
-原因：  使用的用户名已分配给不同类型的应用组。 不能将用户分配到同一会话主机池下的远程桌面和远程应用组。
+原因：使用的用户名已分配给不同类型的应用组。 不能将用户分配到同一会话主机池下的远程桌面和远程应用组。
 
 **能够**如果用户需要远程应用和远程桌面, 请创建不同的主机池或授予用户对远程桌面的访问权限, 这将允许使用会话主机 VM 上的任何应用程序。
 
@@ -42,7 +42,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName “Desktop Application Group” -UserPrincipalName <UserPrincipalName>
 ```
 
-原因：  在绑定到 Windows 虚拟桌面租户的 Azure Active Directory 中找不到由-UserPrincipalName 指定的用户。
+原因：在绑定到 Windows 虚拟桌面租户的 Azure Active Directory 中找不到由-UserPrincipalName 指定的用户。
 
 **能够**确认以下列表中的项。
 
@@ -66,7 +66,7 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 Get-RdsDiagnosticActivities -Deployment -username <username>
 ```
 
-原因：  使用-Deployment 开关。
+原因：使用-Deployment 开关。
 
 **修复:** -部署交换机只能由部署管理员使用。 这些管理员通常是远程桌面服务/Windows 虚拟桌面团队的成员。 将-Deployment 开关替换为-TenantName \<TenantName >。
 
