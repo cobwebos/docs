@@ -208,7 +208,7 @@ Oracle 链接服务支持以下属性:
 | partitionNames | 需要复制的物理分区的列表。 <br>当 partition 选项为`PhysicalPartitionsOfTable`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfTabularPartitionName`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 | partitionColumnName | 指定**整数类型**的源列名称, 将由范围分区用于并行复制。 如果未指定此参数, 则将自动检测该表的主键, 并将其用作分区列。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionColumnName`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 | partitionUpperBound | 要向其复制数据的分区列的最大值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionUpbound`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
-| PartitionLowerBound | 要向其复制数据的分区列的最小值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionLowbound`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
+| partitionLowerBound | 要向其复制数据的分区列的最小值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionLowbound`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 
 **示例: 使用不带分区的基本查询复制数据**
 
