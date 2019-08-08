@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 5f2a959bcea533174feedb324cecf20ca12bd39b
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 75b774a59d3a2a94f1f1132a79c26dcca7b4b6f7
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137205"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780787"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中创建 Apache Kafka 群集
 
@@ -40,8 +40,8 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
     | 属性 | 值 |
     | --- | --- |
-    | 订阅 | Azure 订阅。 |
-    | 资源组 | 在其中创建群集的资源组。 |
+    | Subscription | Azure 订阅。 |
+    | Resource group | 在其中创建群集的资源组。 |
     | 位置 | 在其中创建群集的 Azure 区域。 |
     | 群集名称 | Kafka 群集的名称。 |
     | 群集登录用户名 | 此帐户名用于登录到群集上托管的基于 HTTP 的服务。 |
@@ -67,7 +67,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
     连接后，显示的信息类似于以下文本：
     
-    ```text
+    ```output
     Authorized uses only. All activity may be monitored and reported.
     Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
     
@@ -85,7 +85,6 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
     Welcome to Kafka on HDInsight.
     
     Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-    ssuhuser@hn0-mykafk:~$
     ```
 
 ## <a id="getkafkainfo"></a>获取 Apache Zookeeper 主机和代理主机信息
