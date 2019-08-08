@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: fca459291fbf25c5404427fdcfc96947c52a1e74
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 05b870fb0d836a89be2a7212436c5c6f91982837
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544301"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705454"
 ---
 # <a name="quickstart-query-for-facts"></a>快速入门：查询事实
 
@@ -31,7 +32,7 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
 ```
 
-**响应：**`subjectName` 字段包含显示事实时可用作标签的用户查询的显示版本。 如果查询字符串是 valentines+2016，则必应可能将其更改为“Valentine's Day 2016”。 说明字段包含事实。
+**响应：** `subjectName` 字段包含显示事实时可用作标签的用户查询的显示版本。 如果查询字符串是 valentines+2016，则必应可能将其更改为“Valentine's Day 2016”。 说明字段包含事实。
 
 ```
 {
@@ -69,7 +70,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 
 ```
 
-**响应：**`value/description` 字段包含查询请求的知识或信息。
+**响应：** `value/description` 字段包含查询请求的知识或信息。
 
 ```
   "facts": {

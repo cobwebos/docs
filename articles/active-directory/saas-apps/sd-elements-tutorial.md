@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e6deb8b31559b8c5add06f1771cd69df0c1f136
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0272de238055151e73c13687f25745c3f402eb4
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091347"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>教程：Azure Active Directory 与 SD Elements 集成
 
@@ -112,13 +112,13 @@ ms.locfileid: "67091347"
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [SD Elements 客户端支持团队](mailto:support@sdelements.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. SD Elements 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****   ****  。
+5. SD Elements 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
     ![image](common/edit-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ：
 
-    | 名称 |  源属性|
+    | Name |  源属性|
     | --- | --- |
     | 电子邮件 |user.mail |
     | 名 |user.givenname |

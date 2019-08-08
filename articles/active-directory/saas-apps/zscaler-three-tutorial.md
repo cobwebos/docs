@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e68e7004858cf750bbe6186861442da1f9c6cdf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fba7498f724c13297d05fc66fc57e331f096188
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67085884"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825653"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>教程：Azure Active Directory 与 Zscaler Three 的集成
 
@@ -109,13 +109,13 @@ ms.locfileid: "67085884"
 
     在“登录 URL”文本框中，键入 URL：`https://login.zscalerthree.net/sfc_sso` 
 
-5. Zscaler Three 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****   ****  。
+5. Zscaler Three 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
     ![image](common/edit-attribute.png)
 
 6. 除了上述属性，Zscaler Three 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
-    | 名称 | 源属性 |
+    | Name | 源属性 |
     | ---------| ------------ |
     | memberOf     | user.assignedroles |
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 1024f0c09d6ab67b412a8f65d8964f3ac9d43254
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67b4d4842bfa330e51244cee0d9ad8ad0ab6a24f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087790"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825959"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veracode"></a>教程：Azure Active Directory 与 Veracode 集成
 
@@ -107,13 +107,13 @@ ms.locfileid: "67087790"
 
     ![Veracode 域和 URL 单一登录信息](common/preintegrated.png)
 
-5. Veracode 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****   ****  。
+5. Veracode 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
     ![image](common/edit-attribute.png)
 
 6. 除了上述属性，Veracode 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ---------------| --------------- |
     | 名 |User.givenname |
     | 姓 |User.surname |

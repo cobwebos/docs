@@ -10,12 +10,13 @@ ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 73b8980b0ea2d1adbd814026f026358e25dcbb55
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ROBOTS: NOINDEX
+ms.openlocfilehash: a654dd966c40b5b079f92b910ade52f4eda10344
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502951"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704757"
 ---
 # <a name="what-is-project-acoustics"></a>什么是项目音响效果？
 项目音响效果是 3D 交互式体验的波形音效引擎。 它可对复杂场景中的衍射、传送门和混响效果进行建模而无需手动区域标记。 它还包括游戏引擎和音频中间件集成。 项目音响效果的原理类似于静态照明：脱机烘焙出具体的物理数据以提供物理基线，并将轻型运行时与表达式设计控件结合使用来满足艺术需要。

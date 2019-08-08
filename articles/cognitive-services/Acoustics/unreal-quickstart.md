@@ -10,12 +10,13 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: a78df2d4d84487399da10ca722550639a92e71bf
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ROBOTS: NOINDEX
+ms.openlocfilehash: 06023b2758d09fe8ebe7c1301ef1a03d9c54aa41
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798143"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704773"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>项目音响效果 Unreal/Wwise 快速入门
 在本快速入门中，将使用为 Unreal Engine 和 Wwise 提供的示例内容来试验项目音响效果设计控件。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: ed8e63a49702e8ba951990f8d7ff19b8f058fa74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9ef179c1a93d8b2f97c47eb4c68d0312d55d3d1
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089407"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>教程：Azure Active Directory 与 Tableau Server 集成
 
@@ -120,7 +120,7 @@ ms.locfileid: "67089407"
 
 6. 在“用户属性和声明”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤   ：
 
-    | 名称 | 源属性 | 命名空间 |
+    | Name | 源属性 | 命名空间 |
     | ---------------| --------------- | ----------- |
     | username | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | | |
@@ -186,7 +186,7 @@ ms.locfileid: "67089407"
     h. 单击“保存” 
 
     > [!NOTE]
-    > 客户必须上传 Tableau Server SAML SSO 配置中的任何证书，SSO 流程中会将其忽略。 如果需要帮助在 Tableau Server 上配置 SAML，请参阅此文：[配置 SAML](https://onlinehelp.tableau.com/v2018.2/server/en-us/saml_config_steps_tsm_ui.htm)。
+    > 客户必须上传 Tableau Server SAML SSO 配置中的任何证书，SSO 流程中会将其忽略。 如果需要帮助在 Tableau Server 上配置 SAML，请参阅此文：[配置 SAML](https://help.tableau.com/current/server/en-gb/saml_config_steps_tsm_ui.htm)。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

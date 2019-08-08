@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22421d88d5d0b426b641c04cd8797c26d216c502
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 47af0a43e4d081f50fedf685d46347f0f36233fd
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086691"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825620"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wrike"></a>教程：Azure Active Directory 与 Wrike 集成
 
@@ -104,7 +104,7 @@ ms.locfileid: "67086691"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分，若要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为该应用已预先集成到 Azure。   ****  
+4. 在“基本 SAML 配置”部分，若要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为该应用已预先集成到 Azure。  
 
     ![Wrike 域和 URL 单一登录信息](common/preintegrated.png)
 
