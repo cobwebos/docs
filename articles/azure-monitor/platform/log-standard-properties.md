@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/18/2019
 ms.author: bwren
 ms.openlocfilehash: b9a4a0a18e120a2843e23d44b03c0fe53b0d84fc
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 08/08/2019
 ms.locfileid: "68370673"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准属性
@@ -51,7 +51,7 @@ exceptions
 | sort by timestamp asc 
 ```
 
-## <a name="timereceived"></a>\_TimeReceived
+## <a name="_timereceived"></a>\_TimeReceived
 TimeReceived 属性包含 Azure 云中 Azure Monitor 摄取点接收记录的日期和时间。  **\_** 这对于识别数据源和云之间的延迟问题非常有用。 例如, 可能是网络问题导致延迟, 同时从代理发送数据。 有关更多详细信息, 请参阅[Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
 
 以下查询提供代理中事件记录的平均延迟 (按小时)。 这包括从代理到云中的时间, 以及记录可用于日志查询的总时间。
@@ -77,11 +77,11 @@ search *
 | summarize count() by Type
 
 ```
-## <a name="itemid"></a>\_ItemId
+## <a name="_itemid"></a>\_ItemId
 ItemId 属性保存记录的唯一标识符。  **\_**
 
 
-## <a name="resourceid"></a>\_ResourceId
+## <a name="_resourceid"></a>\_ResourceId
 **\_ResourceId** 属性包含与记录关联的资源的唯一标识符。 这为你提供了一个标准属性，用于将查询范围限定为仅来自特定资源的记录，或者跨多个表联接相关数据。
 
 对于 Azure 资源， **_ResourceId** 的值是 [Azure 资源 ID URL](../../azure-resource-manager/resource-group-template-functions-resource.md)。 该属性目前仅限于 Azure 资源，但它将扩展到 Azure 之外的资源，例如本地计算机。
@@ -127,7 +127,7 @@ union withsource = tt *
 
 请谨慎使用这些 `union withsource = tt *` 查询，因为跨数据类型执行扫描的开销很大。
 
-## <a name="isbillable"></a>\_IsBillable
+## <a name="_isbillable"></a>\_IsBillable
 **\_IsBillable** 属性指定是否对引入的数据进行计费。 **\_IsBillable** 等于 _false_ 的数据是免费收集的，不会向你的 Azure 帐户收费。
 
 ### <a name="examples"></a>示例
@@ -154,7 +154,7 @@ union withsource = tt *
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
 ```
 
-## <a name="billedsize"></a>\_BilledSize
+## <a name="_billedsize"></a>\_BilledSize
 **\_BilledSize** 属性指定 **\_IsBillable** 为 true 时将向 Azure 帐户计费的数据字节大小。
 
 
