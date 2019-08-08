@@ -47,7 +47,8 @@
 - name: 操作指南
   items:
     - name: 处理搜索词突出显示
-      href: hit-highlighting.md
+      href: ../Bing-Web-Search/hit-highlighting.md
+      maintainContext: true
     - name: 对新闻进行分页
       href: paging-news.md
     - name: 调整和裁剪缩略图

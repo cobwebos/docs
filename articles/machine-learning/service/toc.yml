@@ -9,11 +9,6 @@
     - name: 服务的工作原理
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
-- name: 设置
-  items:
-    - name: 创建工作区
-      displayName: install sdk workspace
-      href: setup-create-workspace.md
 - name: 教程
   items:
     - name: Python SDK

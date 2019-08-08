@@ -1,7 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 中的访问控制概述 | Microsoft Docs
 description: 了解 Azure Data Lake Storage Gen2 中访问控制的工作原理
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 112d3b18df8205aac173eafb8f8e30ed6c32e048
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: aa2cfbee6feeacf46003fdc244f0aeea5df0f41a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249076"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847344"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
@@ -24,11 +23,11 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-RBAC 使用角色分配对服务主体有效地应用权限集。  *安全主体*是一个对象, 表示用户、组、服务主体或在请求访问 Azure 资源的 AZURE ACTIVE DIRECTORY (AD) 中定义的托管标识。
+RBAC 使用角色分配对服务主体有效地应用权限集。 *安全主体*是一个对象, 表示用户、组、服务主体或在请求访问 Azure 资源的 AZURE ACTIVE DIRECTORY (AD) 中定义的托管标识。
 
-一般情况下，这些 Azure 资源限制为顶级资源（例如：Azure 存储帐户）。 对于 Azure 存储, 进而 Azure Data Lake Storage Gen2, 此机制已扩展到容器 (文件系统) 资源。
+一般情况下，这些 Azure 资源限制为顶级资源（例如：Azure 存储帐户）。 就 Azure 存储以及随后的 Azure Data Lake Storage Gen2 而言，此机制已扩展到容器（文件系统）资源。
 
-若要了解如何将角色分配给存储帐户范围内的安全主体, 请参阅在[Azure 门户中使用 RBAC 授予对 Azure blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+若要了解如何为存储帐户范围内的安全主体分配角色，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>角色分配对文件和目录级访问控制列表的影响
 
@@ -37,7 +36,7 @@ RBAC 使用角色分配对服务主体有效地应用权限集。  *安全主体
 通过某个[内置角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)或某个自定义角色授予安全主体 RBAC 数据权限后，在授权请求时首先评估这些权限。 如果请求的操作由安全主体的 RBAC 分配授权，则立即解析授权，不执行额外的 ACL 检查。 或者，如果安全主体没有 RBAC 分配或请求的操作与分配的权限不匹配，则通过执行 ACL 检查来确定安全主体是否有权执行请求的操作。
 
 > [!NOTE]
-> 如果为安全主体分配了“存储 Blob 数据所有者”内置角色，则会将安全主体视为“超级用户”并向其授予对所有转变操作（包括设置目录或文件的所有者，以及设置他们不是所有者的目录或文件的 ACL）的完全访问权限。  超级用户访问是唯一获准的更改资源所有者的方式。
+> 如果为安全主体分配了“存储 Blob 数据所有者”内置角色，则会将安全主体视为“超级用户”并向其授予对所有转变操作（包括设置目录或文件的所有者，以及设置他们不是所有者的目录或文件的 ACL）的完全访问权限。 超级用户访问是唯一获准的更改资源所有者的方式。
 
 ## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>共享密钥和共享访问签名 (SAS) 身份验证
 
@@ -49,7 +48,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 ## <a name="access-control-lists-on-files-and-directories"></a>文件和目录上的访问控制列表
 
-可将安全主体关联到文件和目录的访问级别。 这些关联在访问控制列表 (ACL) 中捕获。  存储帐户中的每个文件和目录都有一个访问控制列表。
+可将安全主体关联到文件和目录的访问级别。 这些关联在访问控制列表 (ACL) 中捕获。 存储帐户中的每个文件和目录都有一个访问控制列表。
 
 如果在存储帐户级别将角色分配到某个安全主体，则可以使用访问控制列表授予该安全主体对特定文件和目录的提升访问权限。
 
@@ -65,11 +64,11 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 |REST API    |[路径 - 更新](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
-> 如果安全主体是服务主体，则必须使用该服务主体的对象 ID，而不能使用相关应用注册的对象 ID。  若要获取服务主体的对象 ID，请打开 Azure CLI，然后使用此命令：`az ad sp show --id <Your App ID> --query objectId`。 请务必将 `<Your App ID>` 占位符替换为应用注册的应用 ID。
+> 如果安全主体是服务主体，则必须使用该服务主体的对象 ID，而不能使用相关应用注册的对象 ID。 若要获取服务主体的对象 ID，请打开 Azure CLI，然后使用此命令：`az ad sp show --id <Your App ID> --query objectId`。 请务必将 `<Your App ID>` 占位符替换为应用注册的应用 ID。
 
 ### <a name="types-of-access-control-lists"></a>访问控制列表的类型
 
-访问控制列表有两种类型：访问 ACL 和默认 ACL。  
+访问控制列表有两种类型：访问 ACL 和默认 ACL。
 
 访问 ACL 控制对某个对象的访问权限。 文件和目录都具有访问 ACL。
 
@@ -82,20 +81,20 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 ### <a name="levels-of-permission"></a>权限级别
 
-文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和目录使用这些权限    ：
+文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和目录使用这些权限：
 
-|            |    文件     |   Directory |
+|            |    文件     |   目录 |
 |------------|-------------|----------|
-| **读取 (R)** | 可以读取文件内容 | 需有“读取”和“执行”权限才能列出目录内容   |
-| **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在目录中创建子项   |
+| **读取 (R)** | 可以读取文件内容 | 需有“读取”和“执行”权限才能列出目录内容 |
+| **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在目录中创建子项 |
 | **执行 (X)** | 不表示 Data Lake Storage Gen2 上下文中的任何内容 | 需要遍历目录的子项 |
 
 > [!NOTE]
-> 如果你只使用 Acl (无 RBAC) 授予权限, 则若要授予服务主体对文件的读取或写入访问权限, 你将需要为文件系统以及文件夹层次结构中的每个文件夹授予服务主体**执行**权限。导致文件。
+> 如果仅使用 ACL（无 RBAC）授予权限，则要授予服务主体对文件的读或写访问权限，需要授予服务主体对文件系统以及通向该文件的文件夹层次结构中每个文件夹的 **EXECUTE** 权限。
 
 #### <a name="short-forms-for-permissions"></a>权限的简短形式
 
-**RWX** 用于表示“读取 + 写入 + 执行”。  还有更精简的数字形式，“读取=4”，“写入=2”，“执行=1”，其总和表示各种不同的权限。    下面是一些示例。
+**RWX** 用于表示“读取 + 写入 + 执行”。 还有更精简的数字形式，“读取=4”，“写入=2”，“执行=1”，其总和表示各种不同的权限。 下面是一些示例。
 
 | 数字形式 | 简短形式 |      含义     |
 |--------------|------------|------------------------|
@@ -147,11 +146,11 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 * 更改所拥有文件的拥有组，前提是该拥有用户也是目标组的成员。
 
 > [!NOTE]
-> 拥有用户无法更改某个文件或目录的拥有用户  。 只有超级用户可以更改文件或目录的拥有用户。
+> 拥有用户无法更改某个文件或目录的拥有用户。 只有超级用户可以更改文件或目录的拥有用户。
 
 #### <a name="the-owning-group"></a>拥有组
 
-在 POSIX ACL 中，每个用户都与“主组”关联  。 例如，用户“Alice”可能属于“finance”组。 Alice 还可能属于多个组, 但一个组始终被指定为其主要组。 在 POSIX 中，当 Alice 创建文件时，该文件的拥有组设置为她的主组，在本例中为“finance”。 否则，所有者组的行为类似于为其他用户/组分配的权限。
+在 POSIX ACL 中，每个用户都与“主组”关联。 例如，用户“Alice”可能属于“finance”组。 Alice 还可能属于多个组, 但一个组始终被指定为其主要组。 在 POSIX 中，当 Alice 创建文件时，该文件的拥有组设置为她的主组，在本例中为“finance”。 否则，所有者组的行为类似于为其他用户/组分配的权限。
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>为新的文件或目录分配拥有组
 
@@ -236,7 +235,7 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 
 #### <a name="umask"></a>umask
 
-创建文件或目录时，umask 用于修改默认 ACL 在子项上的设置方式。 umask 是父目录上一个 9 位的值，它包含“拥有用户”、“拥有组”和“其他”的 RWX 值    。
+创建文件或目录时，umask 用于修改默认 ACL 在子项上的设置方式。 umask 是父目录上一个 9 位的值，它包含“拥有用户”、“拥有组”和“其他”的 RWX 值。
 
 Azure Data Lake Storage Gen2 的 umask 是设置为 007 的常量值。 此值将转换为：
 
@@ -246,7 +245,7 @@ Azure Data Lake Storage Gen2 的 umask 是设置为 007 的常量值。 此值�
 | umask.owning_group  |    0         |   `---`      | 对于拥有组，将父项的默认 ACL 复制到子项的访问 ACL | 
 | umask.other         |    7         |   `RWX`      | 对于其他，删除子项的访问 ACL 的所有权限 |
 
-Azure Data Lake Storage Gen2 的 umask 值实际上表示无论默认 ACL 作何指示，默认情况下永远不会在新子项上传输“其他”的值  。 
+Azure Data Lake Storage Gen2 的 umask 值实际上表示无论默认 ACL 作何指示，默认情况下永远不会在新子项上传输“其他”的值。 
 
 以下伪代码显示了在为子项创建 ACL 时如何应用 umask。
 
@@ -308,7 +307,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>如何为服务主体正确设置 ACL？
 
-为服务主体定义 ACL 时，必须使用所创建应用注册的服务主体的对象 ID (OID)。  请务必注意，注册的应用在特定的 Azure AD 租户中具有独立的服务主体。 注册的应用会在 Azure 门户中显示一个 OID，但服务主体具有另一个（不同的）OID。 
+为服务主体定义 ACL 时，必须使用所创建应用注册的服务主体的对象 ID (OID)。 请务必注意，注册的应用在特定的 Azure AD 租户中具有独立的服务主体。 注册的应用会在 Azure 门户中显示一个 OID，但服务主体具有另一个（不同的）OID。
 
 若要获取服务主体的对应于应用注册的 OID，可以使用 `az ad sp show` 命令。 指定应用程序 ID 作为参数。 以下示例获取服务主体的 OID，该 OID 对应于应用 ID 为 18218b12-1895-43e9-ad80-6e8fc1ea88ce 的应用注册。 在 Azure CLI 中运行以下命令：
 
@@ -317,7 +316,7 @@ $ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 <<OID will be displayed>>
 ```
 
-获取服务主体的正确 OID 后，转到存储资源管理器的“管理访问权限”页，以添加该 OID 并为其分配适当的的权限。  请务必选择“保存”。 
+获取服务主体的正确 OID 后，转到存储资源管理器的“管理访问权限”页，以添加该 OID 并为其分配适当的的权限。 请务必选择“保存”。
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 是否支持 ACL 继承？
 
