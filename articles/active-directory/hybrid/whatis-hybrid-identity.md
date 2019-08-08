@@ -13,12 +13,12 @@ ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c43238d44b2309d105ef14e696a5a16848d0b58
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65896831"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779851"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>什么是使用 Azure Active Directory 的混合标识？
 
@@ -36,7 +36,7 @@ Microsoft 的标识解决方案涵盖了本地功能和基于云的功能。  �
 
 这些身份验证方法还提供[单一登录](how-to-connect-sso.md)功能。  单一登录可使连接到企业网络的企业设备上的用户自动登录。
 
-有关详细信息，请参阅[为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)。 
+有关详细信息，请参阅[为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)。 
 
 ## <a name="common-scenarios-and-recommendations"></a>常见方案和建议 
 

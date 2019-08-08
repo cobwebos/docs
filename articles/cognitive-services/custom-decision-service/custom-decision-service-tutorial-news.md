@@ -10,16 +10,17 @@ ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: d8ddafe20ff93e7ae4d51e2180bbd40447729234
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ROBOTS: NOINDEX
+ms.openlocfilehash: f7eafed9db25fba904d98ddea652671dc45aa01d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983026"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707221"
 ---
 # <a name="tutorial-article-personalization-for-contextual-decision-making"></a>教程：帮助作出上下文决策的文章个性化
 
-此教程重点介绍如何在网页首页中个性化文章选择。 例如，自定义 AI 决策服务会影响首页中的“多个”文章列表。 页面可能是仅涵盖政治和体育的新闻网站。 它将显示排名前三的文章列表：政治、体育和最新。
+此教程重点介绍如何在网页首页中个性化文章选择。 例如，自定义 AI 决策服务会影响首页中的“多个”  文章列表。 页面可能是仅涵盖政治和体育的新闻网站。 它将显示排名前三的文章列表：政治、体育和最新。
 
 ## <a name="applications-and-action-sets"></a>应用程序和操作集
 
@@ -50,13 +51,13 @@ ms.locfileid: "55983026"
 
 ## <a name="register-a-new-app"></a>注册新应用
 
-1. 注册 [Microsoft 帐户](https://portal.ds.microsoft.com/)。 在功能区上，单击“我的门户”。
+1. 注册 [Microsoft 帐户](https://portal.ds.microsoft.com/)。 在功能区上，单击“我的门户”  。
 
-2. 要注册一个应用程序，请单击“新建应用”按钮。
+2. 要注册一个应用程序，请单击“新建应用”  按钮。
 
     ![自定义 AI 决策服务门户](./media/custom-decision-service-tutorial/portal.png)
 
-3. 在“应用程序 ID”文本框中输入应用程序的唯一名称。 如果其他客户已使用此名称，系统会要求你选择其他应用程序 ID。 选中“高级”复选框，然后针对 Azure 存储帐户输入[连接字符串](../../storage/common/storage-configure-connection-string.md)。 通常情况下，对所有应用程序使用相同的存储帐户。
+3. 在“应用程序 ID”  文本框中输入应用程序的唯一名称。 如果其他客户已使用此名称，系统会要求你选择其他应用程序 ID。 选中“高级”  复选框，然后针对 Azure 存储帐户输入[连接字符串](../../storage/common/storage-configure-connection-string.md)。 通常情况下，对所有应用程序使用相同的存储帐户。
 
     ![“新建应用”对话框](./media/custom-decision-service-tutorial/new-app-dialog.png)
 
@@ -64,9 +65,9 @@ ms.locfileid: "55983026"
 
     ![应用列表](./media/custom-decision-service-tutorial/apps.png)
 
-    通过单击“应用”按钮，可以返回此列表。
+    通过单击“应用”  按钮，可以返回此列表。
 
-4. 在“新建应用”对话框中，指定操作源。 此外，通过单击“源”按钮，然后单击“新建源”按钮，也可以指定操作源。 输入新建源的“名称”、提供它的“URL”和“刷新时间”。 刷新时间指定自定义 AI 决策服务应刷新源的频率。
+4. 在“新建应用”  对话框中，指定操作源。 此外，通过单击“源”  按钮，然后单击“新建源”  按钮，也可以指定操作源。 输入新建源的“名称”  、提供它的“URL”  和“刷新时间”  。 刷新时间指定自定义 AI 决策服务应刷新源的频率。
 
     ![“新建源”对话框](./media/custom-decision-service-tutorial/new-feed-dialog.png)
 
@@ -74,7 +75,7 @@ ms.locfileid: "55983026"
 
     ![源列表](./media/custom-decision-service-tutorial/feeds.png)
 
-    通过单击“源”按钮，可以返回此列表。
+    通过单击“源”  按钮，可以返回此列表。
 
 ## <a name="use-the-apis"></a>使用 API
 

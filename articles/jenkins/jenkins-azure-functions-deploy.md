@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 02/23/2019
-ms.openlocfilehash: bd8fa10ca0a9809891efc67ff930ab01d502eda9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1ee5a8d5f55422c9f8a0f20f3c6eb039f080dc2d
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117075"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815732"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>使用 Jenkins Azure Functions 插件部署到 Azure Functions
 
@@ -33,7 +33,7 @@ ms.locfileid: "58117075"
 
 以下步骤演示如何使用 Azure CLI 创建 Java 函数：
 
-1. 创建资源组，将 &lt;resource_group> 占位符替换资源组名称。
+1. 创建资源组，将 &lt;resource_group>  占位符替换资源组名称。
 
     ```cli
     az group create --name <resource_group> --location eastus
@@ -49,12 +49,6 @@ ms.locfileid: "58117075"
 
     ```cli
     az functionapp create --resource-group <resource_group> --consumption-plan-location eastus --name <function_app> --storage-account <storage_account>
-    ```
-    
-1. 更新到版本 2.x，将占位符替换为适当的值。
-
-    ```cli
-    az functionapp config appsettings set --name <function_app> --resource-group <resource_group> --settings FUNCTIONS_EXTENSION_VERSION=~2
     ```
 
 ## <a name="prepare-jenkins-server"></a>准备 Jenkins 服务器
@@ -93,7 +87,7 @@ ms.locfileid: "58117075"
 
 1. [登录到 GitHub 存储库获取奇数或偶数示例应用](https://github.com/VSChina/odd-or-even-function.git)。
 
-1. 在 GitHub 的右上角，选择“分叉”。
+1. 在 GitHub 的右上角，选择“分叉”。 
 
 1. 遵照提示选择 GitHub 帐户并完成分叉。
 
@@ -103,9 +97,9 @@ ms.locfileid: "58117075"
 
 1. 在 Jenkins 仪表板中，创建一个管道。
 
-1. 启用“为运行准备环境”。
+1. 启用“为运行准备环境”  。
 
-1. 在“内容属性”中添加以下环境变量，将占位符替换为环境的相应值：
+1. 在“内容属性”  中添加以下环境变量，将占位符替换为环境的相应值：
 
     ```
     AZURE_CRED_ID=<service_principal_credential_id>
@@ -113,7 +107,7 @@ ms.locfileid: "58117075"
     FUNCTION_NAME=<function_name>
     ```
     
-1. 在“管道”->“定义”部分中，选择“来自 SCM 的管道脚本”。
+1. 在“管道”->“定义”部分中，选择“来自 SCM 的管道脚本”   。
 
 1. 输入 GitHub 分叉的 URL 和要在 [JenkinsFile 示例](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile)中使用的脚本路径 ("doc/resources/jenkins/JenkinsFile")。
 
@@ -143,7 +137,7 @@ ms.locfileid: "58117075"
 
 1. 首先，通过 [Azure Functions HTTP 触发器和绑定](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys)一文中的说明获取授权密钥。
 
-1. 在浏览器中，输入应用的 URL。 将占位符替换为适当的值并为 &lt;input_number> 指定数值作为 Java 函数的输入。
+1. 在浏览器中，输入应用的 URL。 将占位符替换为适当的值并为 &lt;input_number>  指定数值作为 Java 函数的输入。
 
     ```
     https://<function_app>.azurewebsites.net/api/HttpTrigger-Java?code=<authorization_key>&number=<input_number>

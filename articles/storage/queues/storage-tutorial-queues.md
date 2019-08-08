@@ -1,20 +1,19 @@
 ---
 title: 教程 - 使用 Azure 存储队列 - Azure 存储
 description: 有关如何使用 Azure 队列服务创建队列以及插入、获取和删除消息的教程。
-services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 04/24/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
-ms.date: 04/24/2019
-ms.openlocfilehash: 08ef140eb860637cc0c09619abe7051cc007e99f
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.reviewer: cbrooks
+ms.openlocfilehash: c8e1d5c1c11c4fdf902c7be7bc03be298e93a8b9
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540296"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721144"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>教程：使用 Azure 存储队列
 

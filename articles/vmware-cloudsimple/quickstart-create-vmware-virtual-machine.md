@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/11/2019
 ms.topic: quickstart
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b430efbc931d72de4b095a7eac4c1e7ca496b1b9
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: dd4faf6df54d478654c59ffc18bf8c5873d576b9
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393492"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816652"
 ---
 # <a name="quickstart-consume-vmware-vms-on-azure"></a>快速入门：使用 Azure 上的 VMware VM
 

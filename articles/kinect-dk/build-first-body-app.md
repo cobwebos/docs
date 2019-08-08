@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, sdk, 人体, 跟踪, 关节, 应用程序, 第一个
-ms.openlocfilehash: 6a3329dccba1afeb8725716bfa5593150632f846
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 50e53ccc643287fc8317917ec371ee4bed04e239
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423123"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827061"
 ---
 # <a name="quickstart-build-your-first-azure-kinect-body-tracking-application"></a>快速入门：生成第一个 Azure Kinect 人体跟踪应用程序
 
@@ -56,7 +56,7 @@ ms.locfileid: "68423123"
 可在以下页面上找到有关 Azure Kinect 深度模式的详细信息：[硬件规范](hardware-specification.md)和 [k4a_depth_mode_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___enumerations_ga3507ee60c1ffe1909096e2080dd2a05d.html#ga3507ee60c1ffe1909096e2080dd2a05d) 枚举。
 
 ```C
-k4a_device_t device = nullptr;
+k4a_device_t device = NULL;
 k4a_device_open(0, &device);
 
 // Start camera. Make sure depth camera is enabled.

@@ -6,16 +6,15 @@ manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
-ms.topic: tutorial
+ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: laobri
-ms.custom: seodec2018
-ms.openlocfilehash: 2a4d7435383f740dc386a740062e66cd2d3585b0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: e8baa2ae5f60926f46be577a02d3c23ad6b77b79
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798912"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828462"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -268,7 +267,7 @@ ms.locfileid: "67798912"
 
 ## <a name="clean-up"></a>清理
 
-在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组，以删除整个资源集。
+在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
 可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
 

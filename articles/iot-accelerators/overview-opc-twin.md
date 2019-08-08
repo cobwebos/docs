@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d58dc18d5513259d5c01f7ddcc54736796e5c824
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c0d824e23a98aa14081fbd21bd6a9fbec5d583e0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603625"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815939"
 ---
 # <a name="what-is-opc-twin"></a>什么是 OPC 孪生？
 
@@ -42,4 +42,4 @@ OPC 孪生可与通过 REST API 以任何编程语言编写的应用程序配合
 了解 OPC 孪生及其用途后，建议接下来完成以下步骤：
 
 > [!div class="nextstepaction"]
-> [什么是 OPC 保管库](overview-opc-twin-architecture.md)
+> [什么是 OPC 保管库](overview-opc-vault.md)
