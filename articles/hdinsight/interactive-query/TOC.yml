@@ -24,10 +24,10 @@
       maintainContext: true
     - name: 故障排除
       items:
-        - name: OutOfMemoryError 异常
-          items:
-            - name: 超过 GC 开销限制
-              href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: 超过 GC 开销限制
+          href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Apache Ambari Tez 视图加载缓慢
+          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Apache Hive 视图中未显示错误消息
           href: ./interactive-query-troubleshoot-error-message-hive-view.md
         - name: 无法访问 Apache Hive 视图

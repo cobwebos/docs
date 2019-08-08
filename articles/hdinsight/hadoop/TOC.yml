@@ -56,6 +56,8 @@
       maintainContext: true
     - name: 故障排除
       items:
+        - name: 磁盘空间不足
+          href: ./hdinsight-troubleshoot-out-disk-space.md
         - name: 软锁定 - CPU
           href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
         - name: InvalidNetworkConfigurationErrorCode - 群集创建失败
@@ -72,6 +74,8 @@
           href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
         - name: Apache Ambari 检测信号问题
           href: ./apache-ambari-troubleshoot-heartbeat-issues.md
+        - name: Apache Ambari 显示主机和服务已关闭
+          href: ./apache-ambari-troubleshoot-down-hosts-services.md
 - name: 如何
   items:
     - name: 使用 Apache Hadoop 沙盒
