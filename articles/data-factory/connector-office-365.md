@@ -87,7 +87,7 @@ Office 365 链接服务支持以下属性：
 | connectVia | 用于连接到数据存储的 Integration Runtime。  如果未指定，则使用默认 Azure Integration Runtime。 | 否 |
 
 >[!NOTE]
-> office365TenantId  和 servicePrincipalTenantId  之间的差异和提供的相应值：
+> office365TenantId 和 servicePrincipalTenantId 之间的差异和提供的相应值：
 >- 如果你是一名企业开发人员，开发便于自己组织使用的针对 Office 365 数据的应用程序，则应该为这两个属性提供相同的租户 ID，即你的组织 AAD 租户 ID。
 >- 如果你是为客户开发应用程序的 ISV 开发人员，那么 office365TenantId 将是客户的（应用程序安装程序）AAD 租户 ID，servicePrincipalTenantId 则为公司的 AAD 租户 ID。
 
@@ -332,7 +332,7 @@ Office 365 链接服务支持以下属性：
 
 ### <a name="office-365-as-source"></a>Office 365 即源
 
-要从 Office 365 复制数据，请将复制活动中的源类型设置为“Office365Source”  。 复制活动源  部分不支持其他属性。
+要从 Office 365 复制数据，请将复制活动中的源类型设置为“Office365Source”。 复制活动源部分不支持其他属性。
 
 **示例：**
 
