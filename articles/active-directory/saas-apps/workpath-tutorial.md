@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 39f62b82ed2716099a63e363c87fbac65d02ffb0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d8d077dbc467dc06ebbe0d93001a363c624a1e1
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086809"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826000"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workpath"></a>教程：Azure Active Directory 与 Workpath 集成
 
@@ -120,13 +120,13 @@ ms.locfileid: "67086809"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Workpath 客户端支持团队](https://help.workpath.com/)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-6. Workpath 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****   ****  。
+6. Workpath 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
     ![image](common/edit-attribute.png)
 
 7. 除了上述属性，Workpath 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ------------------- | -------------------- |    
     | first_name | user.givenname |
     | last_name | user.surname |
