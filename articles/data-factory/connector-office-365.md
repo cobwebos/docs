@@ -69,7 +69,7 @@ ADF Office 365 连接器和 Microsoft Graph 数据连接在不同类型的数据
 - [Python SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
 - [REST API](quickstart-create-data-factory-rest-api.md)
-- [Azure 资源管理器模板](quickstart-create-data-factory-resource-manager-template.md)。 
+- [Azure Resource Manager 模板](quickstart-create-data-factory-resource-manager-template.md)。 
 
 对于特定于 Office 365 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
