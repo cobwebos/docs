@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库托管实例的 T-SQL 差异 | Microsoft Docs
+title: Azure SQL 数据库托管实例 T-sql 差异 |Microsoft Docs
 description: 本文介绍了 Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 services: sql-database
 ms.service: sql-database
@@ -11,21 +11,21 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fd029c1e7b67d308e3e1fdbedbdc90ea430b4f5b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 822b8bd1d0f5be854b6d345d68fcdb680b2ef1c4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567254"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882567"
 ---
-# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
+# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 
-本文汇总并解释了 Azure SQL 数据库托管实例与本地 SQL Server 数据库引擎之间的语法和行为差异。 其中讨论了以下主题：<a name="Differences"></a>
+本文总结并说明了 Azure SQL 数据库托管实例与本地 SQL Server 数据库引擎之间的语法和行为之间的差异。 其中讨论了以下主题：<a name="Differences"></a>
 
 - [可用性](#availability)包括 [Always-On](#always-on-availability) 和[备份](#backup)方面的差异。
 - [安全性](#security)包括[审核](#auditing)、[证书](#certificates)、[凭据](#credential)、[加密提供程序](#cryptographic-providers)、[登录名和用户名](#logins-and-users)以及[服务密钥和服务主密钥](#service-key-and-service-master-key)方面的差异。
 - [配置](#configuration)包括[缓冲池扩展](#buffer-pool-extension)、[排序规则](#collation)、[兼容性级别](#compatibility-levels)、[数据库镜像](#database-mirroring)、[数据库选项](#database-options)、[SQL Server 代理](#sql-server-agent)以及[表选项](#tables)方面的差异。
-- [功能](#functionalities)包括 [BULK INSERT/OPENROWSET](#bulk-insert--openrowset)、[CLR](#clr)、[DBCC](#dbcc)、[分布式事务](#distributed-transactions)、[已扩展事件](#extended-events)、[外部库](#external-libraries)、[文件流和文件表](#filestream-and-filetable)、[全文语义搜索](#full-text-semantic-search)、[链接服务器](#linked-servers)、[Polybase](#polybase)、[复制](#replication)、[还原](#restore-statement)、[Service Broker](#service-broker)、[存储过程、函数和触发器](#stored-procedures-functions-and-triggers)方面的差异。
+- [功能](#functionalities)包括[BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc),[分布式事务](#distributed-transactions),[扩展事件](#extended-events),[外部库](#external-libraries), [filestream 和 FileTable](#filestream-and-filetable),[全文语义搜索](#full-text-semantic-search)、[链接服务器](#linked-servers)、 [PolyBase](#polybase)、[复制](#replication)、[还原](#restore-statement)、 [Service Broker](#service-broker)、[存储过程、函数和触发器](#stored-procedures-functions-and-triggers)。
 - [环境设置](#Environment), 如 vnet 和子网配置。
 - [在托管实例中行为不同的功能](#Changes)。
 - [暂时性的限制和已知问题](#Issues)。
@@ -38,7 +38,7 @@ ms.locfileid: "68567254"
 
 ### <a name="always-on-availability"></a>Always On
 
-[高可用性](sql-database-high-availability.md)内置在托管实例中，用户无法控制。 不支持以下语句：
+[高可用性](sql-database-high-availability.md)内置于托管实例中, 不能由用户控制。 不支持以下语句：
 
 - [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
 - [CREATE AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql)
@@ -81,7 +81,7 @@ ms.locfileid: "68567254"
 
 在审核 Azure SQL 数据库和 SQL Server 中的数据库方面，主要差异是：
 
-- 使用 Azure SQL 数据库中的托管实例部署选项时，审核将在服务器级别执行。 在 Azure Blob 存储中存储 `.xel` 日志文件。
+- 使用 Azure SQL 数据库中的托管实例部署选项, 审核在服务器级别工作。 在 Azure Blob 存储中存储 `.xel` 日志文件。
 - 使用 Azure SQL 数据库中的单一数据库和弹性池部署选项，审核是在数据库一级执行。
 - 在本地 SQL Server 或虚拟机中，审核在服务器级别执行。 在文件系统或 Windows 事件日志中存储事件。
  
@@ -133,7 +133,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 支持使用 `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY` 和 `FROM SID` 创建的 SQL 登录名。 请参阅 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql)。
 - 支持使用 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 语法或 [CREATE USER FROM LOGIN [Azure AD 登录名]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 语法创建的 Azure Active Directory (Azure AD) 服务器主体（登录名）（公共预览版）。 这些登录名是在服务器级别创建的。
 
-    托管实例支持使用语法 `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` 的 Azure AD 数据库主体。 此功能也称为 Azure AD 包含的数据库用户。
+    托管实例通过语法`CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`支持 Azure AD 数据库主体。 此功能也称为 Azure AD 包含的数据库用户。
 
 - 不支持使用 `CREATE LOGIN ... FROM WINDOWS` 语法创建的 Windows 登录名。 使用 Azure Active Directory 登录名和用户。
 - 创建实例的 Azure AD 用户具有[不受限制的管理特权](sql-database-manage-logins.md#unrestricted-administrative-accounts)。
@@ -154,26 +154,26 @@ WITH PRIVATE KEY (<private_key_options>)
 
 - Azure AD 服务器主体（登录名）的公共预览版限制：
 
-  - 托管实例的 Active Directory 管理员限制：
+  - Active Directory 托管实例的管理员限制:
 
     - 用于设置托管实例的 Azure AD 管理员不可用于在托管实例中创建 Azure AD 服务器主体（登录名）。 必须使用充当 `sysadmin` 角色的 SQL Server 帐户创建第一个 Azure AD 服务器主体（登录名）。 Azure AD 服务器主体（登录名）的正式版推出后，即会去除这种暂时性限制。 如果尝试使用 Azure AD 管理员帐户创建登录名，将会看到以下错误：`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-      - 目前，在 master 数据库中创建的第一个 Azure AD 登录名必须由充当 `sysadmin` 角色的标准 SQL Server 帐户（非 Azure AD）使用 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER 创建。 正式版推出后，将去除此限制。 然后，可以使用托管实例的 Active Directory 管理员身份创建初始的 Azure AD 登录名。
+      - 目前，在 master 数据库中创建的第一个 Azure AD 登录名必须由充当 `sysadmin` 角色的标准 SQL Server 帐户（非 Azure AD）使用 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER 创建。 正式版推出后，将去除此限制。 然后, 可以使用托管实例的 Active Directory 管理员创建初始 Azure AD 登录名。
     - 与 SQL Server Management Studio 或 SqlPackage 配合使用的 DacFx（导出/导入）不支持 Azure AD 登录名。 Azure AD 服务器主体（登录名）的正式版推出后，即会去除这种限制。
     - 将 Azure AD 服务器主体（登录名）与 SQL Server Management Studio 配合使用：
 
       - 不支持为使用任何经过身份验证的登录名的 Azure AD 登录名编写脚本。
       - IntelliSense 无法识别 CREATE LOGIN FROM EXTERNAL PROVIDER 语句，将显示红色下划线。
 
-- 只有服务器级主体登录名（由托管实例预配进程创建）、服务器角色的成员（例如 `securityadmin` 或 `sysadmin`）或者在服务器级别拥有 ALTER ANY LOGIN 权限的其他登录名可以在托管实例的 master 数据库中创建 Azure AD 服务器主体（登录名）。
+- 只有服务器级别主体登录名由托管实例预配过程创建, 服务器角色的成员 ( `securityadmin`如或`sysadmin`) 或服务器级别的 ALTER ANY login 权限的其他登录名可以创建 Azure AD托管实例的 master 数据库中的服务器主体 (登录名)。
 - 如果登录名是 SQL 主体，则只有属于 `sysadmin` 角色的登录名才能使用 create 命令来为 Azure AD 帐户创建登录名。
-- Azure AD 登录名必须是用于 Azure SQL 数据库托管实例的同一目录中的 Azure AD 成员。
+- Azure AD 登录名必须是用于 Azure SQL 数据库托管实例的同一目录中的 Azure AD 的成员。
 - 从 SQL Server Management Studio 18.0 预览版 5 开始，Azure AD 服务器主体（登录名）将显示在对象资源管理器中。
 - 允许 Azure AD 服务器主体（登录名）与 Azure AD 管理员帐户重叠。 解析主体以及将权限应用到托管实例时，Azure AD 服务器主体（登录名）优先于 Azure AD 管理员。
 - 在身份验证期间，将应用以下顺序来解析身份验证主体：
 
     1. 如果 Azure AD 帐户存在并直接映射到 Azure AD 服务器主体（登录名）（以类型“E”的形式存在于 sys.server_principals 中），则授予访问权限并应用 Azure AD 服务器主体（登录名）的权限。
     2. 如果 Azure AD 帐户是映射到 Azure AD 服务器主体（登录名）的 Azure AD 组的成员（以类型“X”的形式存在于 sys.server_principals 中），则授予访问权限并应用 Azure AD 组登录名的权限。
-    3. 如果 Azure AD 帐户是在门户中配置的、托管实例的特殊 Azure AD 管理员（不存在于托管实例系统视图中），则应用托管实例的 Azure AD 管理员的特殊固定权限（传统模式）。
+    3. 如果 Azure AD 帐户为托管实例配置的特殊门户 Azure AD 管理员, 这在托管实例系统视图中不存在, 则对托管实例的 Azure AD 管理员 (旧模式) 应用特殊固定的权限。
     4. 如果 Azure AD 帐户存在并直接映射到数据库中的 Azure AD 用户（以类型“E”的形式存在于 sys.database_principals 中），则授予访问权限并应用 Azure AD 数据库用户的权限。
     5. 如果 Azure AD 帐户是映射到数据库中 Azure AD 用户的 Azure AD 组的成员（以类型“X”的形式存在于 sys.database_principals 中），则授予访问权限并应用 Azure AD 组登录名的权限。
     6. 如果某个 Azure AD 登录映射到 Azure AD 用户帐户或 Azure AD 组帐户并解析为用户身份验证，则应用此 Azure AD 登录名中的所有权限。
@@ -276,7 +276,7 @@ WITH PRIVATE KEY (<private_key_options>)
 ### <a name="sql-server-agent"></a>SQL Server 代理
 
 - 当前在托管实例中不支持启用和禁用 SQL Server 代理。 SQL 代理始终运行。
-- SQL Server 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。 
+- SQL Server 代理设置为只读。 托管实例`sp_set_agent_properties`不支持该过程。 
 - 作业(Job)
   - 支持 T-SQL 作业步骤。
   - 支持以下复制作业：
@@ -320,7 +320,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ## <a name="functionalities"></a>功能
 
-### <a name="bulk-insert--openrowset"></a>批量插入/openrowset
+### <a name="bulk-insert--openrowset"></a>Bulk insert/OPENROWSET
 
 由于托管实例无法访问文件共享和 Windows 文件夹，必须从 Azure Blob 存储导入文件：
 
@@ -399,13 +399,44 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="replication"></a>复制
 
-[事务复制](sql-database-managed-instance-transactional-replication.md)可用于托管实例上的公共预览版, 但有一些限制:
-- Al 类型的复制参与者 (发布服务器、分发服务器、请求订阅服务器和推送订阅服务器) 可以置于托管实例上, 但不能将发布服务器和分发服务器放置在不同的实例上。
-- 支持事务、快照和双向复制类型。 不支持合并复制、对等复制和可更新订阅。
-- 托管实例可以与 SQL Server 的最新版本通信。 请在[此处](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)查看受支持的版本。
-- 事务复制有一些[额外的网络要求](sql-database-managed-instance-transactional-replication.md#requirements)。
+- 支持快照和双向复制类型。 不支持合并复制、对等复制和可更新订阅。
+- [事务复制](sql-database-managed-instance-transactional-replication.md)可用于托管实例上的公共预览版, 但有一些限制:
+    - 所有类型的复制参与者 (发布服务器、分发服务器、请求订阅服务器和推送订阅服务器) 都可放置在托管实例上, 但不能将发布服务器和分发服务器放置在不同的实例上。
+    - 托管实例可以与 SQL Server 的最新版本通信。 请在[此处](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)查看受支持的版本。
+    - 事务复制有一些[额外的网络要求](sql-database-managed-instance-transactional-replication.md#requirements)。
 
 有关配置复制的信息, 请参阅[复制教程](replication-with-sql-database-managed-instance.md)。
+
+
+如果对[故障转移组](sql-database-auto-failover-group.md)中的数据库启用了复制, 则托管实例管理员必须清除旧主副本上的所有发布, 并在发生故障转移后在新的主副本上重新配置这些发布。 在此方案中, 需要执行以下活动:
+
+1. 停止在数据库上运行的所有复制作业 (如果存在)。
+2. 通过在发布服务器数据库上运行以下脚本, 删除发布服务器上的订阅元数据:
+
+   ```sql
+   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
+   ```             
+ 
+1. 删除订阅服务器上的订阅元数据。 在订阅服务器实例的订阅数据库中运行以下脚本:
+
+   ```sql
+   EXEC sp_subscription_cleanup
+      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
+      @publisher_db = N'<publisher database>', 
+      @publication = N'<name of publication>'; 
+   ```                
+
+1. 通过在发布的数据库中运行以下脚本, 强制删除发布服务器中的所有复制对象:
+
+   ```sql
+   EXEC sp_removedbreplication
+   ```
+
+1. 强制删除原始主实例中的旧分发服务器 (如果故障回复到用于建立分发服务器的旧主实例)。 在旧的分发服务器托管实例中的 master 数据库上运行以下脚本:
+
+   ```sql
+   EXEC sp_dropdistributor 1,1
+   ```
 
 ### <a name="restore-statement"></a>RESTORE 语句 
 
@@ -467,7 +498,7 @@ WITH PRIVATE KEY (<private_key_options>)
 ## <a name="Environment"></a>环境约束
 
 ### <a name="subnet"></a>Subnet
-- 在为托管实例保留的子网中, 不能放置任何其他资源 (例如虚拟机)。 将这些资源置于其他子网中。
+-  不能将任何其他资源 (例如虚拟机) 放入部署了托管实例的子网中。 使用其他子网部署这些资源。
 - 子网必须具有足够数量的可用[IP 地址](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 最小值为 16, 但建议至少在子网中包含32个 IP 地址。
 - [无法将服务终结点与托管实例的子网相关联](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 创建虚拟网络时，请务必禁用“服务终结点”选项。
 - 在某个区域中, 可以部署的 Vcore 和实例类型有一些[限制和限制](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)。
@@ -476,7 +507,7 @@ WITH PRIVATE KEY (<private_key_options>)
 ### <a name="vnet"></a>VNET
 - 可以使用资源模型-不支持 VNet 的经典模型来部署 VNet。
 - 创建托管实例后, 不支持将托管实例或 VNet 移到另一个资源组或订阅。
-- 某些服务 (如应用服务环境、逻辑应用和托管实例, 用于异地复制、事务复制或通过链接服务器) 无法访问不同区域中的托管实例, 如果它们的 Vnet 使用[global对等互连](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。 你可以通过 VNet 网关经由 ExpressRoute 或 VNet-to-VNet 连接到这些资源。
+- 某些服务 (如应用服务环境、逻辑应用和托管实例, 用于异地复制、事务复制或通过链接服务器) 无法访问不同区域中的托管实例, 如果它们的 Vnet 使用[global对等互连](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。 可以通过 ExpressRoute 或 vnet 到 vnet 网关连接到这些资源。
 
 ## <a name="Changes"></a>行为更改
 
@@ -494,11 +525,11 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="tempdb-size"></a>TEMPDB 大小
 
-在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 在“业务关键”层级上，最大 `tempdb` 大小根据实例存储大小受到限制。 `tempdb`在常规用途和业务关键层上, 日志文件大小限制为 120 GB。 `tempdb` 数据库始终拆分为 12 个数据文件。 无法更改每个文件的最大大小, 并且无法将新文件添加`tempdb`到。 如果中`tempdb`的每个核心需要超过 24 GB, 或者它们产生的日志超过 120GB, 则某些查询可能会返回错误。 `tempdb`当实例启动或故障转移时, 始终会重新创建为空数据库, 在中所做的`tempdb`任何更改都不会保留。 
+在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 业务关键层`tempdb`上的最大大小受实例存储大小的限制。 `Tempdb`在常规用途和业务关键层上, 日志文件大小限制为 120 GB。 `tempdb` 数据库始终拆分为 12 个数据文件。 无法更改每个文件的最大大小, 并且无法将新文件添加`tempdb`到。 如果中的`tempdb`每个核心需要超过 24 gb, 或者它们产生超过 120 gb 的日志数据, 则某些查询可能会返回错误。 `Tempdb`当实例启动或故障转移时, 始终会重新创建为空数据库, 在中`tempdb`所做的任何更改都不会保留。 
 
 ### <a name="cant-restore-contained-database"></a>无法还原包含的数据库
 
-托管实例无法还原[包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)。 在托管实例无法对现有包含的数据库执行时间点还原。 此问题即将得到解决。 在此期间，我们建议从托管实例上的数据库中删除包含选项。 不要对生产数据库使用包含选项。 
+托管实例无法还原[包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)。 现有包含数据库的时点还原不适用于托管实例。 同时, 我们建议您从放置在托管实例上的数据库中删除包含选项。 不要对生产数据库使用包含选项。 
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小型数据库文件超出存储空间
 
@@ -506,7 +537,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 每个“常规用途”托管实例都为 Azure 高级磁盘空间保留了最多 35 TB 存储空间。 每个数据库文件放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35 TB 的 Azure 存储大小限制。
 
-例如，“常规用途”托管实例可将一个大小为 1.2 TB 的文件放在 4 TB 的磁盘上。 它还可以将 248 个文件（每个大小为 1 GB）放在单独的 128 GB 磁盘上。 在本示例中：
+例如, 一个常规用途的托管实例可能有一个大文件, 大小为 1.2 TB, 大小为 4 TB 的磁盘。 它还可能具有248个文件, 每个文件都位于单独的 128 GB 磁盘上。 在本示例中：
 
 - 分配的磁盘存储总大小为 1 x 4 TB + 248 x 128 GB = 35 TB。
 - 实例上的数据库的总预留空间为 1 x 1.2 TB + 248 x 1 GB = 1.4 TB。
@@ -543,13 +574,13 @@ SQL Server 代理使用的数据库邮件配置文件必须名为 `AzureManagedI
 
 ### <a name="error-logs-arent-persisted"></a>不保留错误日志
 
-托管实例中可用的错误日志不会持久保留，并且它们的大小不包括在最大存储限制中。 在发生故障转移时可能会自动清除错误日志。
+托管实例中可用的错误日志不会持久保存, 它们的大小不会包括在最大存储限制内。 在发生故障转移时可能会自动清除错误日志。
 
 ### <a name="error-logs-are-verbose"></a>错误日志是详细的
 
-托管实例在错误日志中记录详细信息，其中许多信息都不相关。 将来，错误日志中的信息量将减少。
+托管实例在错误日志中记录详细信息，其中许多信息都不相关。 
 
-**解决方法：** 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息，请参阅[托管实例 – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)。
+**解决方法：** 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息, 请参阅[托管实例– sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)。
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>跨同一实例中的两个数据库的事务范围不受支持
 
@@ -597,7 +628,7 @@ using (var scope = new TransactionScope())
 ### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>时间点还原遵循源实例上设置的时区
 
 时间点还原目前按源实例的时区 (而不是按照 UTC) 来解释要还原到的时间。
-有关更多详细信息, 请查看[托管实例时区已知问题](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues)。
+有关更多详细信息, 请查看[托管实例时区的已知问题](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues)。
 
 ## <a name="next-steps"></a>后续步骤
 

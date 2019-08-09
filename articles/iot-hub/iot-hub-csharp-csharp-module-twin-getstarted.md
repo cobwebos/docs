@@ -6,38 +6,38 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: ea42a459365848386082470deb5120e09cb92421
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: e5d2e485283f71b27bb5e93330a54e1b987044c4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668155"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883824"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>IoT 中心模块标识和模块克隆入门 (.NET)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [模块标识和模块孪生](iot-hub-devguide-module-twins.md)类似于 Azure IoT 中心设备标识和设备孪生，但提供更精细的粒度。 Azure IoT 中心设备标识和设备孪生允许后端应用程序配置设备并提供设备条件的可见性，而模块标识和模块孪生为设备的各个组件提供这些功能。 在支持多个组件的设备上（例如基于操作系统的设备或固件设备），它允许每个部件拥有独立的配置和条件。
+> [模块标识和模块孪生](iot-hub-devguide-module-twins.md)类似于 Azure IoT 中心设备标识和设备孪生，但提供更精细的粒度。 尽管 Azure IoT 中心设备标识和设备克隆使后端应用程序可以配置设备并提供设备条件的可见性, 但模块标识和模块克隆为设备的单个组件提供这些功能。 在具有多个组件 (例如基于操作系统的设备或固件设备) 的支持设备上, 模块标识和模块孪生允许为每个组件提供独立的配置和条件。
 
 在本教程结束时，会获得两个 .NET 控制台应用：
 
-* **CreateIdentities**，用于创建设备标识、模块标识和相关的安全密钥，以连接设备和模块客户端。
+* **CreateIdentities**。 此应用将创建设备标识、模块标识和关联的安全密钥以连接设备和模块客户端。
 
-* **UpdateModuleTwinReportedProperties**，用于将更新的模块孪生报告属性发送到 IoT 中心。
+* **UpdateModuleTwinReportedProperties**。 此应用将更新的模块克隆报告属性发送到 IoT 中心。
 
 > [!NOTE]
 > 有关 Azure IoT SDK 的信息（可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-要完成本教程，需要以下各项：
+若要完成本教程，需要具备以下先决条件：
 
 * Visual Studio。
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
+* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="create-an-iot-hub"></a>创建 IoT 中心
+## <a name="create-a-hub"></a>创建中心
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -53,21 +53,25 @@ ms.locfileid: "68668155"
 
 在本节中，将在更新模块孪生报告属性的模拟设备上创建 .NET 控制台应用。
 
-1. **创建 Visual Studio 项目：** 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到现有解决方案。 确保 .NET Framework 版本为 4.6.1 或更高。 将项目命名为“UpdateModuleTwinReportedProperties”。
+在开始之前, 请获取模块连接字符串。 登录到 [Azure 门户](https://portal.azure.com/)。 导航到中心, 然后选择 " **IoT 设备**"。 查找**为 myfirstdevice**。 选择 "**为 myfirstdevice** " 将其打开, 然后选择 " **myFirstModule** " 将其打开。 在 "**模块标识详细信息**" 中, 如果需要, 请在下面的过程中复制**连接字符串 (主键)** 。
 
-    ![创建 Visual Studio 项目](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.png)
+   ![Azure 门户模块详细信息](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-2. **安装最新的 Azure IoT 中心 .NET 设备 SDK：** 模块标识和模块孪生为公共预览版。 仅在 IoT 中心预发行设备 SDK 中提供它。 在 Visual Studio 中，打开“工具”>“NuGet 包管理器”>“管理解决方案的 NuGet 包”。 搜索 Microsoft.Azure.Devices.Client。 确保已选中“包括预发行版”复选框。 选择最新版本并安装。 现在可以访问所有模块功能。 
+1. 在 Visual Studio 中, 选择 "**文件** > " "**新建** > **项目**", 将新项目添加到解决方案。 在 "创建新项目" 中, 选择 "**控制台应用 (.NET Framework)** ", 然后选择 "**下一步**"。
 
-    ![安装 Azure IoT 中心 .NET 服务 SDK V1.16.0-preview-005](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
+1. 将项目命名为“UpdateModuleTwinReportedProperties”。 对于 "**解决方案**", 选择 "**添加到解决方案**"。 确保 .NET Framework 版本为 4.6.1 或更高。
 
-3. **获取模块连接字符串**--现在, 如果你登录到[Azure 门户](https://portal.azure.com/)。 导航到 IoT 中心并单击 IoT 设备。 查找并打开 myFirstDevice，可以看到 myFirstModule 已成功创建。 复制模块连接字符串。 下一步将需要它。
+    ![创建 Visual Studio 项目](./media/iot-hub-csharp-csharp-module-twin-getstarted/configure-update-twins-csharp1.png)
 
-    ![Azure 门户模块详细信息](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.png)
+1. 选择 "**创建**" 以创建项目。
 
-4. **创建 UpdateModuleTwinReportedProperties 控制台应用**
+1. 在 Visual Studio 中, 打开 "**工具** > " "**nuget 包管理器** > " "**管理解决方案的 NuGet 包**"。 选择“浏览”按钮。
 
-    在 Program.cs 文件顶部添加以下 `using` 语句：
+1. 搜索并选择 " **Microsoft**", 然后选择 "**安装**"。
+
+    ![安装 Azure IoT 中心 .NET 服务 SDK 当前版本](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
+
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -76,11 +80,10 @@ ms.locfileid: "68668155"
     using Newtonsoft.Json;
     ```
 
-    将以下字段添加到 Program 类。 将占位符值替换为模块连接字符串。
+1. 将以下字段添加到 Program 类。 将占位符值替换为模块连接字符串。
 
     ```csharp
-    private const string ModuleConnectionString = 
-      "<Your module connection string>";
+    private const string ModuleConnectionString = "<Your module connection string>";
     private static ModuleClient Client = null;
     static void ConnectionStatusChangeHandler(ConnectionStatus status, 
       ConnectionStatusChangeReason reason)
@@ -90,7 +93,7 @@ ms.locfileid: "68668155"
     }
     ```
 
-    将以下方法“OnDesiredPropertyChanged”添加到“Program”类：
+1. 将以下方法“OnDesiredPropertyChanged”添加到“Program”类：
 
     ```csharp
     private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, 
@@ -108,7 +111,7 @@ ms.locfileid: "68668155"
         }
     ```
 
-    最后，在 **Main** 方法中添加以下行：
+1. 将以下行添加到**Main**方法:
 
     ```csharp
     static void Main(string[] args)
@@ -148,7 +151,7 @@ ms.locfileid: "68668155"
 
     此代码示例演示如何检索模块孪生和借助 AMQP 协议更新报告属性。 在公开预览版中，我们仅支持通过 AMQP 进行模块孪生操作。
 
-5. 除上述“Main”方法外，还可添加以下代码块将事件从模块发送到 IoT 中心：
+1. 或者, 你可以将这些语句添加到**Main**方法, 以便从你的模块向 IoT 中心发送事件。 将这些行置于块`try catch`的下方。
 
     ```csharp
     Byte[] bytes = new Byte[2];
@@ -161,11 +164,20 @@ ms.locfileid: "68668155"
 
 ## <a name="run-the-apps"></a>运行应用
 
-现在可以运行应用了。 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目”。 选择“多个启动项目”，然后选择“启动”作为控制台应用的操作。 然后按 F5 启动应用。
+现在可以运行应用了。
+
+1. 在 Visual Studio 的**解决方案资源管理器**中, 右键单击解决方案, 然后选择 "**设置启动项目**"。
+
+1. 在 "**通用属性**" 下, 选择 "**启动项目"。**
+
+1. 选择 "**多个启动项目**", 然后选择 "**启动**" 作为应用的 "操作", 然后选择 **"确定"** 以接受更改。
+
+1. 按**F5**启动应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 
 * [设备管理入门](iot-hub-node-node-device-management-get-started.md)
+
 * [IoT Edge 入门](../iot-edge/tutorial-simulate-device-linux.md)

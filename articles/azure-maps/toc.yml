@@ -105,6 +105,8 @@
               href: clustering-point-data-web-sdk.md
             - name: 使用数据驱动样式表达式
               href: data-driven-style-expressions-web-sdk.md
+            - name: 如何使用图像模板
+              href: how-to-use-image-templates-web-sdk.md
             - name: 覆盖图像
               href: map-add-image-layer.md
             - name: 添加图块层

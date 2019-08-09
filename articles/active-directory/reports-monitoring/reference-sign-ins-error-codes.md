@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 05/08/2019
+ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6972c91a18f9deb240871d8c64a14647474d9d78
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 4cbaa8f22335da083506a76ad1a791576b109a00
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377276"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879772"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登录活动报告错误代码 
 
@@ -127,6 +127,7 @@ ms.locfileid: "68377276"
 |50177|直通用户不支持外部质询。|
 |50178|直通用户不支持会话控制。|
 |50180|需要 Windows 集成身份验证。 为租户启用无缝 SSO。|
+|50201|当应向用户提供其他信息时, 会在登录过程中向用户显示此消息提示中断。|
 |51001|本地安全标识符中不存在域提示 - 本地 UPN。|
 |51004|用户帐户在目录中不存在。|
 |51006|需要 Windows 集成身份验证。 用户使用通过声明缺少的会话令牌登录。 请求用户重新登录。|
@@ -181,6 +182,9 @@ ms.locfileid: "68377276"
 |500121| 在强身份验证请求期间, 身份验证失败。|
 |500133| 断言不在其有效时间范围内。 确保访问令牌在用于用户断言或请求新令牌之前没有过期。|
 |530021|应用程序不符合条件访问已批准应用要求。|
+|530032|被安全策略阻止。| 
+|700016|在目录 "{tenantName}" 中找不到标识符为 "{appIdentifier}" 的应用程序。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 你可能已将身份验证请求发送到错误的租户。|
+|900432|跨云请求不支持机密客户端。|
 |7000218|请求正文必须包含以下参数: "client_assertion" 或 "client_secret"。|
 
 

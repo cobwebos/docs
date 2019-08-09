@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: d0e24d7621218ccac23842072a5f08be94c80d9d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 92bd53fd0426f896eff8dc63b690167db3ee700b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840583"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884107"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>用于将 Azure VM 从一个区域复制到另一个区域的支持矩阵
 
@@ -197,7 +197,7 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持 VM 磁盘
 存储空间 | 支持 |
 静态加密 (SSE) | 支持 | SSE 是存储帐户的默认设置。   
-适用于 Windows OS 的 Azure 磁盘加密 (ADE) | 支持 |
+适用于 Windows OS 的 Azure 磁盘加密 (ADE) | 支持具有托管磁盘的 Vm。 不支持使用非托管磁盘的 Vm |
 适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 不支持 |
 热添加 | 支持 | 使用托管磁盘的 VM 支持对添加到已复制 Azure VM 的数据磁盘启用复制。
 热删除磁盘 | 不支持 | 如果在 VM 上删除数据磁盘，需要先禁用复制然后重新为 VM 启用复制。

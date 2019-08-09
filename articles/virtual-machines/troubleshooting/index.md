@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: 47db174042f7dd2e9d1bd1503c8e8b8f635b4dbe
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1db5829abd52a1b010d38dd8e9151ab2df3f1de5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705754"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854410"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>排查 Azure 虚拟问题
 
@@ -34,10 +34,14 @@ ms.locfileid: "67705754"
     - [SSH 故障排除](troubleshoot-ssh-connection.md)
     - [详细 SSH 故障排除步骤](detailed-troubleshoot-ssh-connection.md)
     - [常见错误消息](error-messages.md)
-    - [Windows VM 性能问题](performance-diagnostics.md  )
-    - [如何使用 PerfInsights](how-to-use-perfInsights.md)
-    - [性能诊断扩展](performance-diagnostics-vm-extension.md)
 - [脱机安装 Windows VM 代理](install-vm-agent-offline.md)
+- 排查 VM 性能问题
+    - [VM 性能问题](performance-diagnostics.md)
+    - Windows
+        - [如何使用 PerfInsights](how-to-use-perfinsights.md)
+        - [性能诊断扩展](performance-diagnostics-vm-extension.md)
+    - Linux
+        - [如何使用 PerfInsights](how-to-use-perfinsights-linux.md)
 - 重新部署 VM
     - [Linux](redeploy-to-new-node-linux.md)
     - [Windows](redeploy-to-new-node-windows.md)

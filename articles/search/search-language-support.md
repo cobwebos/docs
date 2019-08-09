@@ -6,15 +6,14 @@ manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: 403febfcb54194602051aaebe2952265c0675e9d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 5383ad44f665ce809772143e23817932c3e2b7e6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854391"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883889"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>如何在 Azure 搜索中为多种语言创建索引
 
@@ -27,7 +26,7 @@ Azure 搜索提供了来自 Lucene 和 Microsoft 的大量所选语言分析器,
 语言分析器在创建字段时指定。 向现有字段定义添加分析器需要覆盖 (和重新加载) 索引, 或者创建一个与原始字段相同的新字段, 但使用分析器赋值。 然后, 您可以在方便时删除未使用的字段。
 
 1. 登录到[Azure 门户](https://portal.azure.com)并找到搜索服务。
-1. 在服务仪表板顶部的命令栏中单击“添加索引”  即可启动新的索引，或打开现有索引，在添加至现有索引的新字段上设置分析器。
+1. 在服务仪表板顶部的命令栏中单击“添加索引”即可启动新的索引，或打开现有索引，在添加至现有索引的新字段上设置分析器。
 1. 通过提供名称来启动字段定义。
 1. 选择 "Edm" 数据类型。 只有字符串字段可以进行全文搜索。
 1. 设置可**搜索**属性以启用 Analyzer 属性。 字段必须基于文本, 才能使用语言分析器。
@@ -35,7 +34,7 @@ Azure 搜索提供了来自 Lucene 和 Microsoft 的大量所选语言分析器,
 
 ![在字段定义期间分配语言分析器](media/search-language-support/select-analyzer.png "在字段定义期间分配语言分析器")
 
-默认情况下, 所有可搜索字段均使用与语言无关的[标准 Lucene 分析器](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)。 若要查看受支持分析器的完整列表, 请参阅[将语言分析器添加到 Azure 搜索索引](index-add-language-analyzers.md)。
+默认情况下, 所有可搜索字段均使用与语言无关的[标准 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)。 若要查看受支持分析器的完整列表, 请参阅[将语言分析器添加到 Azure 搜索索引](index-add-language-analyzers.md)。
 
 在门户中, 分析器旨在按原样使用。 如果需要自定义或筛选器和 tokenizer 的特定配置, 应在代码中[创建自定义分析器](index-add-custom-analyzers.md)。 门户不支持选择或配置自定义分析器。
 

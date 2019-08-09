@@ -1,24 +1,24 @@
 ---
 title: 使用 IoT 中心 C SDK 针对受限制设备进行 Azure IoT 中心开发 | Microsoft Docs
 description: 开发人员指南：指导如何使用 Azure IoT SDK 针对受限制设备进行开发。
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.author: yizhon
-ms.openlocfilehash: 7788bca621a59ec8cdfe36edf73a99efca8c460c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: robinsh
+ms.openlocfilehash: d69fe6b845d3af04e42ee91daa9359dcb9a88fc5
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61320839"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880966"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>使用 Azure IoT C SDK 针对受限制设备进行开发
 
 Azure IoT 中心 C SDK 使用 ANSI C (C99) 编写，因而非常适合用于运行各种平台，磁盘和内存占用都很小。 建议 RAM 至少为 64 KB，但具体内存占用取决于使用的协议、打开的连接数以及目标平台。
 > [!NOTE]
-> * Azure IoT C SDK 会定期发布资源消耗信息来帮助进行开发。  请访问我们[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)并查看最新的基准。
+> * Azure IoT C SDK 会定期发布资源消耗信息, 以帮助进行开发。  请访问我们的[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)并查看最新的基准。
 >
 
 C SDK 可通过 apt-get、NuGet 和 MBED 以程序包的形式提供。 若要以受限制设备为目标，则可能需要为目标平台在本地构建 SDK。 本文档演示如何使用 [cmake](https://cmake.org/) 删除特定功能，从而缩小 C SDK 占用的空间。 此外，本文档讨论使用受限制设备的最佳编程模型。
@@ -27,13 +27,13 @@ C SDK 可通过 apt-get、NuGet 和 MBED 以程序包的形式提供。 若要�
 
 针对受限制设备构建 C SDK。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 请按照本 [C SDK 设置指南](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)准备用于构建 C SDK 的开发环境。 在开始执行使用 cmake 进行构建的步骤前，可调用 cmake 标记来删除未使用的功能。
 
 ### <a name="remove-additional-protocol-libraries"></a>删除其他协议库
 
-C SDK 目前支持五个协议：MQTT、 基于 WebSocket 的 AMQPs、 基于 AMQP WebSocket，以及 HTTPS MQTT。 大多数方案需要在客户端上运行一到两个协议，因此可从 SDK 中删除未使用的协议库。 有关为方案选择适当通信协议的其他信息，请参阅[选择 IoT 中心通信协议](iot-hub-devguide-protocols.md)。 例如，MQTT 是一种轻量级协议，通常更适合用于受限制设备。
+C SDK 目前支持五个协议:MQTT、MQTT over websocket、AMQPs、AMQP over WebSocket 和 HTTPS。 大多数方案需要在客户端上运行一到两个协议，因此可从 SDK 中删除未使用的协议库。 有关为方案选择适当通信协议的其他信息，请参阅[选择 IoT 中心通信协议](iot-hub-devguide-protocols.md)。 例如，MQTT 是一种轻量级协议，通常更适合用于受限制设备。
 
 可以使用以下 cmake 命令删除 AMQP 和 HTTP 库：
 
@@ -73,7 +73,7 @@ strip -s <Path_to_executable>
 
 C SDK 具有可选的 [C SDK 序列化程序](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer)，它允许使用声明式映射表来定义方法和设备孪生属性。 序列化程序旨在简化开发，但也会增加开销，因而对于受限制设备而言不是最优选择。 在这种情况下，请考虑使用原始客户端 API，并使用轻量级分析程序（例如 [parson](https://github.com/kgabis/parson)）分析 JSON。
 
-### <a name="use-the-lower-layer-ll"></a>使用较低层 (_LL_)
+### <a name="use-the-lower-layer-_ll_"></a>使用较低层 (_LL_)
 
 C SDK 支持两种编程模型。 其中一组拥有具有 _LL_ 中缀的 API，该中缀代表较低层。 这组 API 权重更轻且不会启动工作线程，这意味着用户必须手动控制调度。 例如，对于设备客户端，可在此[头文件](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h)中找到 _LL_ API。 
 

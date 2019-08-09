@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 1c8bdd0ca715b6dfd00dc9876a074c61711990af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/08/2019
+ms.openlocfilehash: b6e9a340a1fdcbe3ee24b8c81d171ade04c63139
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67117806"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880037"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight 发行说明
 
@@ -22,7 +22,7 @@ ms.locfileid: "67117806"
 > [!IMPORTANT]  
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 版本控制文章](hdinsight-component-versioning.md)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。
 
@@ -38,14 +38,14 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和
 - Apache Hadoop 3.1.1
 - Apache HBase 2.0.0
 - Apache Hive 3.1.0
-- Apache Kafka 1.1.1
+- Apache Kafka 1.1.1, 2.1。0
 - Apache Mahout 0.9.0+
 - Apache Oozie 4.2.0
 - Apache Phoenix 4.7.0
 - Apache Pig 0.16.0
 - Apache Ranger 0.7.0
 - Apache Slider 0.92.0
-- Apache Spark 2.3.2
+- Apache Spark 2.3.1, 2.4。0
 - Apache Sqoop 1.4.7
 - Apache TEZ 0.9.1
 - Apache Zeppelin 0.8.0
@@ -61,7 +61,7 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和
 |---|---|
 | Ambari | [Ambari 修补程序信息](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
 | Hadoop | [Hadoop 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
-| HBase | [HBase 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
+| Hbase | [HBase 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
 | Hive  | 此版本提供 Hive 3.1.0，但不提供其他 Apache 修补程序。  |
 | Kafka | 此版本提供 Kafka 1.1.1，但不提供其他 Apache 修补程序。 |
 | Oozie | [Oozie 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |

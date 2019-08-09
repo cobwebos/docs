@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 287902c149fd3a8732ce9ce95b05b0d9fa36147b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: eece1520a4b7e3bf37e1d209c58b5019921fdb98
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816600"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884385"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -26,7 +26,7 @@ ms.locfileid: "68816600"
 
 * **存储帐户**：对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户容量的详细信息，请参阅[可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
-* **共享**：文件存储共享是 Azure 中的 SMB 文件共享。 所有目录和文件都必须在父共享中创建。 一个帐户可以包含无限数量的共享，一个共享可以存储无限数量的文件，直到达到文件共享的 5TiB 总容量为止。
+* **共享**：文件存储共享是 Azure 中的 SMB 文件共享。 所有目录和文件都必须在父共享中创建。 一个帐户可以包含无限数量的共享, 一个共享可以存储无限数量的文件, 直到达到文件共享的总容量。 对于标准文件共享, 总容量最多为 5 TiB (GA) 或 100 TiB (预览版), 适用于高级文件共享, 总容量为 100 TiB。
 
 * **目录**：可选的目录层次结构。
 

@@ -65,13 +65,19 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: 常见错误消息
   href: error-messages.md
-- name: Windows VM 性能问题
+- name: VM 性能问题
   href: performance-diagnostics.md
   items:
-    - name: 如何使用 PerfInsights
-      href: how-to-use-perfInsights.md
-    - name: 性能诊断扩展
-      href: performance-diagnostics-vm-extension.md
+    - name: Windows
+      items:
+        - name: 如何使用 PerfInsights
+          href: how-to-use-perfinsights.md
+        - name: 性能诊断扩展
+          href: performance-diagnostics-vm-extension.md
+    - name: Linux
+      items:
+        - name: 如何使用 PerfInsights
+          href: how-to-use-perfinsights-linux.md
 - name: 脱机安装 Windows VM 代理
   href: install-vm-agent-offline.md
 - name: 重新部署 VM

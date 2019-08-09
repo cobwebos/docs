@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 743f15c13a2e4fe7215229145b49fd87a32a1f18
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 1c6a0ce3e4e8d098d2bc048a331b0ae0cb5c6b13
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663281"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881386"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -144,6 +144,39 @@ public void ConfigureServices(IServiceCollection services)
 
 > [!IMPORTANT]
 > 请确保传入和传出配置完全相同。
+
+#### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>为 Web 应用启用 W3C 分布式跟踪支持
+
+此功能在中`Microsoft.ApplicationInsights.JavaScript`。 此项默认禁用。 若要启用它, `distributedTracingMode`请使用 config。提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测的服务进行后向兼容:
+
+- **NPM 安装程序 (如果使用代码段设置, 则忽略)**
+
+  ```javascript
+  import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
+
+  const appInsights = new ApplicationInsights({ config: {
+    instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
+    distributedTracingMode: DistributedTracingModes.W3C
+    /* ...Other Configuration Options... */
+  } });
+  appInsights.loadAppInsights();
+  ```
+  
+- **代码段设置 (如果使用 NPM 安装程序则忽略)**
+
+  ```
+  <script type="text/javascript">
+  var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){i[e]=function(){var n=arguments;i.queue.push(function(){i[e].apply(i,n)})}}var i={config:e};i.initialize=!0;var a=document,t=window;setTimeout(function(){var n=a.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",a.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{i.cookie=a.cookie}catch(e){}i.queue=[],i.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var o="Track"+r[0];if(n("start"+o),n("stop"+o),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var s=t[r];t[r]=function(e,n,a,t,o){var c=s&&s(e,n,a,t,o);return!0!==c&&i["_"+r]({message:e,url:n,lineNumber:a,columnNumber:t,error:o}),c},e.autoExceptionInstrumented=!0}return i}
+  (
+    {
+      instrumentationKey:"INSTRUMENTATION_KEY",
+      distributedTracingMode: 2 // DistributedTracingModes.W3C
+      /* ...Other Configuration Options... */
+    }
+  );
+  window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+  </script>
+  ```
 
 ## <a name="opentracing-and-application-insights"></a>OpenTracing 和 Application Insights
 

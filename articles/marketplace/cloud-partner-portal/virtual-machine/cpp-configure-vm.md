@@ -1,5 +1,5 @@
 ---
-title: 将 Microsoft Azure 托管 VM 配置为 Azure Marketplace
+title: 为 Azure Marketplace 配置 Microsoft Azure 托管的 VM
 description: 介绍如何调整、更新和通用化 Azure 中托管的 VM。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 0637491a1d7799bcaef594123aab53f89690c86f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 1270dff0bcb8de117247a454ab9c144250cfb17c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654028"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880358"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>配置 Azure 托管的 VM
 
@@ -22,7 +22,7 @@ ms.locfileid: "67654028"
 ## <a name="sizing-the-vhds"></a>调整 VHD 大小
 
 <!--TD: Check if the following assertion is true. I didn't understand the original content. -->
-如果选择了某一操作系统 （和可选的其他服务），使用预配置的 Vm，则已选取的标准 Azure VM 大小，如中所述[虚拟机 Sku 选项卡](./cpp-skus-tab.md)。使用预先配置的 OS 启动解决方案是建议的方法。  但是，若要手动安装 OS，则必须在 VM 映像中调整主要 VHD 的大小：
+如果选择了一个预配置了操作系统的 Vm (以及其他服务), 则已选择了标准 Azure VM 大小, 如[虚拟机 sku 选项卡](./cpp-skus-tab.md)中所述。使用预先配置的 OS 启动解决方案是建议的方法。  但是，若要手动安装 OS，则必须在 VM 映像中调整主要 VHD 的大小：
 
 - 对于 Windows，操作系统 VHD 应创建为 127-128 GB 的固定格式 VHD。 
 - 对于 Linux，此 VHD 应创建为 30-50 GB 的固定格式 VHD。
@@ -36,7 +36,7 @@ ms.locfileid: "67654028"
 
 操作系统 VM 的基础映像包含截至发布日期为止的最新更新。 在发布创建的操作系统 VHD 之前，请务必使用所有最新的安全和维护修补程序来更新 OS 和所有已安装的服务。
 
-对于 Windows Server 2016，请运行“检查更新”命令。   对于旧版 Windows，请参阅[如何通过 Windows 更新获取更新](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update)。  Windows 更新将自动安装最新的关键/重要安全更新。
+对于 Windows Server 2016，请运行“检查更新”命令。  对于旧版 Windows，请参阅[如何通过 Windows 更新获取更新](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update)。  Windows 更新将自动安装最新的关键/重要安全更新。
 
 对于 Linux 分发版，通常可以通过命令行工具或图形实用工具来下载和安装更新。  例如，Ubuntu Linux 提供 [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) 命令和[更新管理器](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html)工具用于更新 OS。
 
@@ -57,7 +57,7 @@ ms.locfileid: "67654028"
 
 ## <a name="generalize-the-image"></a>通用化映像
 
-Azure 市场中的所有映像必须可采用一般形式重复使用。 若要实现这种可重用性，必须将操作系统 VHD 通用化，此操作会从 VM 中删除所有特定于实例的标识符以及软件驱动程序。 
+Azure 市场中的所有映像必须可采用一般形式重复使用。 若要实现这种可重用性，必须将操作系统 VHD 通用化，此操作会从 VM 中删除所有特定于实例的标识符以及软件驱动程序。
 
 ### <a name="windows"></a>Windows
 
@@ -66,11 +66,11 @@ Windows OS 磁盘已使用 [sysprep 工具](https://docs.microsoft.com/windows-h
 > [!WARNING]
 >  由于运行 sysprep 后更新可能自动运行，因此，在部署 VM 之前应将其关闭。  此关闭操作可避免后续更新对 VHD OS 或安装的服务做出特定于实例的更改。
 
-有关运行 sysprep 的详细信息，请参阅[通用化 VHD 的步骤](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
+有关运行 sysprep 的详细信息, 请参阅[通用化 VHD 的步骤](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
 
 ### <a name="linux"></a>Linux
 
-以下两步过程将通用化 Linux VM，并将其重新部署为单独的 VM。  有关详细信息，请参阅[如何创建虚拟机或 VHD 的映像](../../../virtual-machines/linux/capture-image.md)。 
+以下两步骤过程通用化 Linux VM, 并将其重新部署为单独的 VM。 这两个步骤只是过程的基本要素。 有关这两个步骤及其必须完成的原因的详细信息, 请参阅[如何创建虚拟机或 VHD 的映像](../../../virtual-machines/linux/capture-image.md)。 为了为你的 Azure Marketplace 产品/服务创建 VHD, 你可以在到达 "从捕获的映像创建 VM" 部分时停止。
 
 #### <a name="remove-the-azure-linux-agent"></a>删除 Azure Linux 代理
 1.  使用 SSH 客户端连接到 Linux VM。
@@ -95,4 +95,4 @@ Windows OS 磁盘已使用 [sysprep 工具](https://docs.microsoft.com/windows-h
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 VM 后，即可[从虚拟硬盘部署虚拟机](./cpp-deploy-vm-vhd.md)。
+VM 通用化后, 已解除分配, 并且已创建 VM 的映像, 你可以[从虚拟硬盘部署虚拟机](./cpp-deploy-vm-vhd.md)。

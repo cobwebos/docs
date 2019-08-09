@@ -1,18 +1,18 @@
 ---
 title: Azure IoT 设备 SDK 平台支持 | Microsoft Docs
 description: 概念 - Azure IoT 设备 SDK 支持的平台的列表
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: yizhon
-ms.openlocfilehash: 7bcc1bf6b734abe202c5fec5d515604f4bf8e4a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: robinsh
+ms.openlocfilehash: 356962c76bf942c56ace0798ac3cca3d815bc507
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60398699"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883103"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Azure IoT SDK 平台支持
 
@@ -32,13 +32,13 @@ Microsoft 支持各种操作系统/平台/框架，后者可以通过 Azure IoT 
 * .NET Standard 1.3（包含 .NET Core 2.1 和 .NET Framework 4.7）
 * Xamarin iOS、Android、UWP
 
-## <a name="supported-platforms"></a>支持的平台
+## <a name="supported-platforms"></a>受支持的平台
 
 有几个支持的平台。
 
 ### <a name="c-sdk"></a>C SDK
 
-| 操作系统                  | Arch | 编译器             | TLS 库       |
+| OS                  | Arch | 编译器             | TLS 库       |
 |---------------------|------|----------------------|-------------------|
 | Ubuntu 16.04 LTS    | X64  | gcc-5.4.0            | openssl  - 1.0.2g |
 | Ubuntu 18.04 LTS    | X64  | gcc-7.3              | WolfSSL – 1.13    |
@@ -50,7 +50,7 @@ Microsoft 支持各种操作系统/平台/框架，后者可以通过 Azure IoT 
 
 ### <a name="python-sdk"></a>Python SDK
 
-| 操作系统                  | Arch | 编译器   | TLS 库 |
+| OS                  | Arch | 编译器   | TLS 库 |
 |---------------------|------|------------|-------------|
 | Windows Server 2016 | x86  | Python 2.7 | openssl     |
 | Windows Server 2016 | x64  | Python 2.7 | openssl     |
@@ -62,23 +62,23 @@ Microsoft 支持各种操作系统/平台/框架，后者可以通过 Azure IoT 
 
 ### <a name="net-sdk"></a>.NET SDK
 
-| 操作系统                  | Arch | 框架            | 标准          |
+| OS                  | Arch | 框架            | 标准          |
 |---------------------|------|----------------------|-------------------|
 | Ubuntu 16.04 LTS    | X64  | .NET Core 2.1        | .NET Standard 2.0 |
 | Windows Server 2016 | X64  | .NET Core 2.1        | .NET Standard 2.0 |
 | Windows Server 2016 | X64  | .NET Framework 4.7   | .NET Standard 2.0 |
-| Windows Server 2016 | X64  | .NET Framework 4.5.1 | 不适用               |
+| Windows Server 2016 | X64  | .NET Framework 4.5.1 | 不可用               |
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
-| 操作系统                                           | Arch | Node 版本 |
+| OS                                           | Arch | Node 版本 |
 |----------------------------------------------|------|--------------|
 | Ubuntu 16.04 LTS（使用 node 6 docker 映像） | X64  | Node 6       |
 | Windows Server 2016                          | X64  | Node 6       |
 
 ### <a name="java-sdk"></a>Java SDK
 
-| 操作系统                  | Arch | Java 版本 |
+| OS                  | Arch | Java 版本 |
 |---------------------|------|--------------|
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |

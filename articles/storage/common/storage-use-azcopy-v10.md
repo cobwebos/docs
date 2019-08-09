@@ -4,15 +4,15 @@ description: AzCopy 是一个命令行实用工具, 可用于在存储帐户之�
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 9dc53867cb780b2c40e76cc6f24f7e6cf882b407
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0c30225e9b5412fe1515e8503d1134dcad44871f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844865"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879977"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -259,7 +259,9 @@ azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?s
 
 ## <a name="use-azcopy-in-a-script"></a>在脚本中使用 AzCopy
 
-随着时间的推移, AzCopy[下载链接](#download-and-install-azcopy)将指向新版本的 AzCopy。 如果脚本下载 AzCopy, 则在较新版本的 AzCopy 修改脚本所依赖的功能时, 脚本可能会停止工作。 
+### <a name="obtain-a-static-download-link"></a>获取静态下载链接
+
+随着时间的推移, AzCopy[下载链接](#download-and-install-azcopy)将指向新版本的 AzCopy。 如果脚本下载 AzCopy, 则在较新版本的 AzCopy 修改脚本所依赖的功能时, 脚本可能会停止工作。
 
 若要避免这些问题, 请获取 AzCopy 当前版本的静态 (无变化) 链接。 这样一来, 你的脚本每次运行时都将下载相同的 AzCopy 版本。
 
@@ -280,9 +282,13 @@ azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?s
 | **Linux** | `wget -O azcopyv10.tar https://azcopyvnext.azureedge.net/release20190301/azcopy_linux_amd64_10.0.8.tar.gz tar -xf azcopyv10.tar --strip-components=1 ./azcopy` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
+### <a name="escape-special-characters-in-sas-tokens"></a>转义 SAS 令牌中的特殊字符
+
+在具有`.cmd`扩展名的批处理文件中, 必须对 SAS 令牌中显示`%`的字符进行转义。 为此, 可以在 SAS 令牌字符串`%`中的现有`%`字符旁边添加一个添加字符。
+
 ## <a name="use-azcopy-in-storage-explorer"></a>在存储资源管理器中使用 AzCopy
 
-如果要利用 AzCopy 的性能优势, 但更喜欢使用存储资源管理器而不是命令行来与文件交互, 请在存储资源管理器中启用 AzCopy。 
+如果要利用 AzCopy 的性能优势, 但更喜欢使用存储资源管理器而不是命令行来与文件交互, 请在存储资源管理器中启用 AzCopy。
 
 在存储资源管理器中, 选择 "**预览**->"**以改进 Blob 上传和下载**。
 

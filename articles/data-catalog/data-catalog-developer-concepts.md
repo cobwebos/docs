@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 81e17e1e450e45e4c163ca8231a47deeb8b9ed2c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 21b7c4e17d976a0a4099a926823f51eab1dba98d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734684"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879081"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure 数据目录开发人员概念
 Microsoft **Azure 数据目录** 是一种完全托管的云服务，提供了数据源发现和众包数据源元数据的功能。 开发人员可通过其 REST API 使用此服务。 了解在服务中实现的概念对于开发人员能成功与 **Azure 数据目录**集成非常重要。
@@ -19,7 +19,7 @@ Microsoft **Azure 数据目录** 是一种完全托管的云服务，提供了�
 ## <a name="key-concepts"></a>关键概念
 **Azure 数据目录**概念模型基于四个关键概念:**目录**、**用户**、**资产**和**批注**。
 
-![概念][1]
+![数据目录概念](./media/data-catalog-developer-concepts/concept2.png)
 
 *图 1 - Azure 数据目录简化概念模型*
 
@@ -286,7 +286,7 @@ ChangeOwnership、ChangeVisibility、ViewPermissions</td></tr><tr><td>参与者<
 > 
 
 **正文**
-
+```json
     {
         "roles": [
             {
@@ -299,9 +299,11 @@ ChangeOwnership、ChangeVisibility、ViewPermissions</td></tr><tr><td>参与者<
             }
         ]
     }
+```
 
   **分配所有者并限制现有根项的可见性**:**PUT** https:\//api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
+```json
     {
         "roles": [
             {
@@ -343,11 +345,8 @@ ChangeOwnership、ChangeVisibility、ViewPermissions</td></tr><tr><td>参与者<
             }
         ]
     }
+```
 
 > [!NOTE]
 > 在 PUT 中, 无需在正文中指定项负载:PUT 可用于仅更新角色和/或权限。
 > 
-> 
-
-<!--Image references-->
-[1]: ./media/data-catalog-developer-concepts/concept2.png

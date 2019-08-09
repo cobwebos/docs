@@ -1,26 +1,25 @@
 ---
 title: Azure 操作方法 - 如何将不同的证明机制与 Azure 中的设备预配服务客户端 SDK 配合使用
 description: Azure 操作方法 - 如何将不同的证明机制与 Azure 中的设备预配服务客户端 SDK 配合使用
-author: yzhong94
-ms.author: yizhon
+author: robinsh
+ms.author: robinsh
 ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: af59ccc6d14dce49d06e178aac3ecafc29bd982c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7dd93298c96842e4e5417a0b2ba023bb71a4e7ba
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61248124"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884436"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>如何将不同的证明机制与用于 C 的设备预配服务客户端 SDK 配合使用
 
 本文展示了如何将不同的[证明机制](concepts-security.md#attestation-mechanism)与用于 C 的设备预配服务客户端 SDK 配合使用。可以使用物理设备，也可以使用模拟器。 预配服务支持下述两类证据机制的身份验证：X.509 和受信任的平台模块 (TPM)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 根据[创建和预配模拟设备](./quick-create-simulated-device.md)指南中“准备开发环境”部分的说明准备开发环境。
 
@@ -148,9 +147,9 @@ cmake -Ddps_auth_type=tpm_simulator ..
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
-2. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务  。
-   - X **.** 509 单个注册：在“预配服务摘要”边栏选项卡上，选择“管理注册”  。 选择“单个注册”选项卡，单击顶部的“添加”按钮。   选择 **X**.**509** 作为标识证明*机制*，根据边栏选项卡的要求上传叶证书。 完成后，单击“保存”按钮  。 
-   - X **.** 509 组注册：在“预配服务摘要”边栏选项卡上，选择“管理注册”  。 选择“组注册”选项卡，单击顶部的“添加”按钮。   选择 **X**.**509** 作为标识证明*机制*，输入组名和证书名称，根据边栏选项卡的要求上传 CA/中间证书。 完成后，单击“保存”按钮  。 
+2. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务。
+   - X **.** 509 单个注册：在“预配服务摘要”边栏选项卡上，选择“管理注册”。 选择“单个注册”选项卡，单击顶部的“添加”按钮。 选择 **X**.**509** 作为标识证明*机制*，根据边栏选项卡的要求上传叶证书。 完成后，单击“保存”按钮。 
+   - X **.** 509 组注册：在“预配服务摘要”边栏选项卡上，选择“管理注册”。 选择“组注册”选项卡，单击顶部的“添加”按钮。 选择 **X**.**509** 作为标识证明*机制*，输入组名和证书名称，根据边栏选项卡的要求上传 CA/中间证书。 完成后，单击“保存”按钮。 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>使用自定义证明机制为设备启用身份验证（可选）
 

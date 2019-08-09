@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 5bddcb89d26566bd2024cbde086b6e35ddaf94ef
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a630ceb1748f38dc169a4ebabcbb4e021de4273c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567186"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881560"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视性能 Azure SQL 数据库
 
@@ -28,7 +28,7 @@ SQL 数据库部分支持三种类别的动态管理视图：
 - 与执行相关的动态管理视图。
 - 与事务相关的动态管理视图。
 
-有关动态管理视图的详细信息，请参阅 SQL Server 联机丛书中的[动态管理视图和功能 (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx)。
+有关动态管理视图的详细信息，请参阅 SQL Server 联机丛书中的[动态管理视图和功能 (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx)。 
 
 ## <a name="permissions"></a>权限
 
@@ -237,7 +237,7 @@ GO
 
 ## <a name="identify-tempdb-performance-issues"></a>识别 `tempdb` 性能问题
 
-识别 IO 性能问题时，与 `tempdb` 问题最相关的等待类型是 `PAGELATCH_*`（而不是 `PAGEIOLATCH_*`）。 但是，出现 `PAGELATCH_*` 等待并不总是意味着发生了 `tempdb` 争用。  这种等待可能还意味着，由于并发请求面向相同的数据页面，发生了用户对象数据页面争用。 若要进一步确认 `tempdb` 争用，请使用 [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 确认 wait_resource 值是否以 `2:x:y` 开头，其中，`tempdb` 是数据库 ID，`x` 是文件 ID，`y` 是页面 ID。  
+识别 IO 性能问题时，与 `tempdb` 问题最相关的等待类型是 `PAGELATCH_*`（而不是 `PAGEIOLATCH_*`）。 但是，出现 `PAGELATCH_*` 等待并不总是意味着发生了 `tempdb` 争用。  这种等待可能还意味着，由于并发请求面向相同的数据页面，发生了用户对象数据页面争用。 若要进一步`tempdb`确认争用, 请使用[sys.databases _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)来确认`2:x:y` wait_resource 值以的开头, 其中2是`tempdb`数据库 id, `x`是文件 id, `y`是页面 id。  
 
 对于 tempdb 争用，常用的方法是减少依赖于 `tempdb` 的重写应用程序代码。  常见的 `tempdb` 使用区域包括：
 
@@ -334,7 +334,7 @@ ORDER BY start_time ASC;
 
 如果最相关等待类型为 `RESOURCE_SEMAHPORE`，但你未遇到 CPU 使用率偏高的问题，则可能是出现了内存授予等待问题。
 
-### <a name="determine-if-a-resourcesemahpore-wait-is-a-top-wait"></a>确定 `RESOURCE_SEMAHPORE` 等待是否为最相关的等待
+### <a name="determine-if-a-resource_semahpore-wait-is-a-top-wait"></a>确定 `RESOURCE_SEMAHPORE` 等待是否为最相关的等待
 
 使用以下查询来确定 `RESOURCE_SEMAHPORE` 等待是否为最相关的等待
 
@@ -512,7 +512,7 @@ WHERE c.session_id = @@SPID;
 - [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 - [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdmdbresourcestats"></a>sys.dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 可以在每个 SQL 数据库中使用 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) 视图。 **Sys.dm_db_resource_stats** 视图显示相对于服务层级的最新资源使用数据。 CPU、数据 IO、日志写入以及内存的平均百分比每 15 秒记录一次，并保留 1 小时。
 
@@ -533,7 +533,7 @@ FROM sys.dm_db_resource_stats;
 
 有关其他查询，请参阅 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) 中的示例。
 
-### <a name="sysresourcestats"></a>sys.resource_stats
+### <a name="sysresource_stats"></a>sys.resource_stats
 
 **master** 数据库中的 [Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 视图包含可帮助监视 SQL 数据库在特定服务层级和计算大小的性能。 每 5 分钟收集一次数据，并且会保留大约 14 天。 此视图可用于 SQL 数据库使用资源的方式的长期历史分析。
 

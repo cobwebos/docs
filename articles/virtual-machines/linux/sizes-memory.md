@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/16/2019
+ms.date: 08/08/2019
 ms.author: jonbeck
-ms.openlocfilehash: fdcfe2f78177dba7810c668d280f4f3f5127deb7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1ca122a9a160901aa27c53faa2ab1da7a1c740dd
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708827"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881607"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>内存优化虚拟机大小
 
@@ -43,4 +43,4 @@ ms.locfileid: "67708827"
 
 * 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
 
-* 了解如何[创建和管理 Linux Vm 使用 Azure CLI](tutorial-manage-vm.md)
+* 了解如何[使用 Azure CLI 创建和管理 Linux VM](tutorial-manage-vm.md)

@@ -60,6 +60,8 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
         - name: Node.js
           href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
+    - name: KDD 2019 中有关 SR-CNN 的白皮书
+      href: 'https://arxiv.org/abs/1906.03821'
 - name: 资源
   items:
     - name: 定价

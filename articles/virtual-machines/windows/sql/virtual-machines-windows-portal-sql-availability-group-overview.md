@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: b9977965dc076ec36aa90680a1732b6640b1e41a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4a65465528ea2ffd8ba7af705d92efbb23a96d9e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60325795"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883464"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>介绍 Azure 虚拟机上的 SQL Server Always On 可用性组 #
 
@@ -36,6 +36,8 @@ Azure 虚拟机中可用性组的主要区别是 Azure 虚拟机需要[负载均
 
 此外，在 Azure IaaS VM 来宾故障转移群集上，我们建议每个服务器（群集节点）使用一个 NIC 和一个子网。 Azure 网络具有物理冗余，这使得在 Azure IaaS VM 来宾群集上不需要额外的 NIC 和子网。 虽然群集验证报告将发出警告，指出节点只能在单个网络上访问，但在 Azure IaaS VM 来宾故障转移群集上可以安全地忽略此警告。 
 
+若要提高冗余性和高可用性, SQL Server Vm 应位于同一[可用性集](virtual-machines-windows-portal-sql-availability-group-prereq.md#create-availability-sets)或不同的[可用性区域](/azure/availability-zones/az-overview)中。 
+
 |  | Windows Server 版本 | SQL Server 版本 | SQL Server 版本 | WSFC 仲裁配置 | 使用多区域进行灾难恢复 | 多子网支持 | 支持现有 AD | 使用具有多个区域的相同区域进行灾难恢复 | Dist-AG 支持，没有 AD 域 | Dist-AG 支持，没有群集 |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
 | [SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Ent | 云见证 | 否 | 是 | 是 | 是 | 否 | 否 |
@@ -46,18 +48,18 @@ Azure 虚拟机中可用性组的主要区别是 Azure 虚拟机需要[负载均
 
 准备好在 Azure 虚拟机上生成 SQL Server 可用性组时，请参阅这些教程。
 
-## <a name="manually-with-azure-cli"></a>使用 Azure CLI 手动
-使用 Azure CLI 配置和部署某一可用性组是推荐的选项，因为它是在简单性和部署速度方面的最佳。 使用 Azure CLI、 将 SQL Server Vm 加入到群集中，在 Windows 故障转移群集的创建，以及创建侦听器和内部负载均衡器可以实现在 30 分钟内。 此选项仍需要手动创建可用性组，但可自动执行所有其他必需的配置步骤。 
+## <a name="manually-with-azure-cli"></a>手动与 Azure CLI
+建议使用 Azure CLI 来配置和部署可用性组, 因为它是最简单的部署和部署速度。 在 Azure CLI 中, Windows 故障转移群集的创建、将 SQL Server Vm 加入到群集, 以及创建侦听器和内部负载均衡器都可以在30分钟内实现。 此选项仍需要手动创建可用性组, 但会自动执行所有其他必要的配置步骤。 
 
-有关详细信息，请参阅[使用 Azure SQL VM CLI 为 Azure VM 上的 SQL Server 中配置 Always On 可用性组](virtual-machines-windows-sql-availability-group-cli.md)。 
+有关详细信息, 请参阅[使用 AZURE SQL VM CLI 在 AZURE VM 上配置 SQL Server Always On 可用性组](virtual-machines-windows-sql-availability-group-cli.md)。 
 
-## <a name="automatically-with-azure-quickstart-templates"></a>自动使用 Azure 快速入门模板
-Azure 快速入门模板利用 SQL 虚拟机资源提供程序来部署 Windows 故障转移群集、 SQL Server Vm 加入该、 创建侦听器和配置内部负载均衡器。 此选项仍需要手动创建可用性组和内部负载均衡器 (ILB)，但可自动执行并简化了所有其他必需的配置步骤 （包括配置 ILB）。 
+## <a name="automatically-with-azure-quickstart-templates"></a>自动通过 Azure 快速入门模板
+Azure 快速入门模板利用 SQL VM 资源提供程序来部署 Windows 故障转移群集, 将 SQL Server Vm 加入到该群集, 创建侦听器, 并配置内部负载均衡器。 此选项仍需要手动创建可用性组和内部负载均衡器 (ILB), 但会自动执行并简化所有其他必要的配置步骤 (包括 ILB 的配置)。 
 
-有关详细信息，请参阅[使用 Azure 快速入门模板为 Azure VM 上的 SQL Server 中配置 Always On 可用性组](virtual-machines-windows-sql-availability-group-quickstart-template.md)。
+有关详细信息, 请参阅[使用 Azure 快速入门模板为 AZURE VM 上的 SQL Server 配置 Always On 可用性组](virtual-machines-windows-sql-availability-group-quickstart-template.md)。
 
 
-## <a name="automatically-with-an-azure-portal-template"></a>自动使用 Azure 门户模板
+## <a name="automatically-with-an-azure-portal-template"></a>使用 Azure 门户模板自动
 
 [在 Azure VM 中自动配置 Always On 可用性组 - Resource Manager](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 

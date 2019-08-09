@@ -1,19 +1,19 @@
 ---
 title: 适用于 C 语言的 Azure IoT 设备 SDK - 序列化程序 | Microsoft 文档
 description: 如何使用 Azure IoT 设备 SDK 中面向 C 语言的序列化程序库创建与 IoT 中心通信的设备应用。
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
-ms.author: yizhon
-ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: robinsh
+ms.openlocfilehash: a18f52f0d0979477ff8d6de6745694676f4b4d0e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399185"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883152"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关序列化程序的详细信息
 
@@ -64,7 +64,7 @@ END_NAMESPACE(WeatherStation);
 
 在使用**序列化程序**库创建的模型中支持以下数据类型：
 
-| Type | 描述 |
+| type | 描述 |
 | --- | --- |
 | double |双精度浮点数 |
 | int |32 位整数 |
@@ -78,7 +78,7 @@ END_NAMESPACE(WeatherStation);
 | ascii\_char\_ptr |ASCII 字符串 |
 | EDM\_DATE\_TIME\_OFFSET |日期时间偏移 |
 | EDM\_GUID |GUID |
-| EDM\_BINARY |binary |
+| EDM\_BINARY |二进制 |
 | DECLARE\_STRUCT |复杂数据类型 |
 
 我们从最后一种数据类型开始。 **DECLARE\_STRUCT** 允许定义作为其他基元类型的分组的复杂数据类型。 这些分组可让我们定义如下所示的模型：
@@ -194,7 +194,7 @@ EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
 {"aDouble":1.100000000000000, "aInt":2, "aFloat":3.000000, "aLong":4, "aInt8":5, "auInt8":6, "aInt16":7, "aInt32":8, "aInt64":9, "aBool":true, "aAsciiCharPtr":"ascii string 1", "aDateTimeOffset":"2015-09-14T21:18:21Z", "aGuid":"00010203-0405-0607-0809-0A0B0C0D0E0F", "aBinary":"AQID"}
 ```
 
-请注意，序列化采用 JSON，这是由**序列化程序**库生成的格式。 此外请注意，序列化 JSON 对象的每个成员与我们的模型中定义的 **TestType** 成员相匹配。 值也与代码中使用的值完全匹配。 但请注意，二进制数据采用 base64 编码："AQID"是 base64 编码的 {0x01，0x02，0x03}。
+请注意，序列化采用 JSON，这是由**序列化程序**库生成的格式。 此外请注意，序列化 JSON 对象的每个成员与我们的模型中定义的 **TestType** 成员相匹配。 值也与代码中使用的值完全匹配。 但请注意, 二进制数据是 base64 编码的:"AQID" 是 {0x01, 0x02, 0x03} 的 base64 编码。
 
 此示例演示使用**序列化程序**库的优点 - 它支持我们将 JSON 发送到云中，而无需在应用程序中显式处理序列化。 我们只需考虑如何在模型中设置数据事件的值，然后调用简单的 API 将这些事件发送到云。
 
@@ -233,7 +233,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-请注意，该模型包含两个数据事件：**温度**并**湿度**。 与上述示例不同，每个事件的类型是使用 **DECLARE\_STRUCT** 定义的结构。 **TemperatureEvent** 包括温度测量和时间戳；**HumidityEvent** 包含湿度度量和时间戳。 此模型可让我们以自然的方式为上述方案的数据建模。 将事件发送到云时，将发送温度/时间戳对或湿度/时间戳对。
+请注意, 该模型包含两个数据事件:**温度**和**湿度**。 与上述示例不同，每个事件的类型是使用 **DECLARE\_STRUCT** 定义的结构。 **TemperatureEvent** 包括温度测量和时间戳；**HumidityEvent** 包含湿度度量和时间戳。 此模型可让我们以自然的方式为上述方案的数据建模。 将事件发送到云时，将发送温度/时间戳对或湿度/时间戳对。
 
 可以使用类似于下面的代码将温度事件发送到云：
 
@@ -514,7 +514,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 {"Name" : "", "Parameters" : "" }
 ```
 
-要将发送具有两个属性的序列化的 JSON 对象：**名称**是操作 （消息） 的名称和**参数**包含该操作的参数。
+正在发送一个具有两个属性的序列化的 JSON 对象:**Name**是操作 (消息) 的名称,**参数**包含该操作的参数。
 
 例如，要调用 **SetAirResistance**，可以将以下消息发送给设备：
 

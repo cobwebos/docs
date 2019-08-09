@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ebb1723a9a2b2d069a1766d4f78151f2b684c5b9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 797caae3caaca14c10481cb58654c45b4bed55ae
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464664"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884318"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>迁移到群集配置的基于角色的细化访问权限
 
@@ -155,14 +155,14 @@ ms.locfileid: "68464664"
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>将 HDInsight 群集操作员角色分配添加到用户
 
-具有 "[参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)" 或 "[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)" 角色的用户可以将[HDInsight 群集操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)角色分配给你希望对敏感 HDInsight 群集配置值具有读/写访问权限的用户 (如群集网关凭据)和存储帐户密钥)。
+拥有 "[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)" 角色的用户可以将[HDInsight 群集操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)角色分配给要对敏感 HDInsight 群集配置值具有读/写访问权限的用户 (如群集网关凭据和存储帐户密钥)。
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
 
 添加此角色分配的最简单方法是在 Azure CLI 中使用 `az role assignment create` 命令。
 
 > [!NOTE]
-> 此命令必须由具有“参与者”或“所有者”角色的用户运行，因为只有他们才能授予这些权限。 `--assignee` 是要将 HDInsight 群集操作员角色分配到的用户的电子邮件地址。
+> 此命令必须由拥有 "所有者" 角色的用户运行, 因为它只能授予这些权限。 `--assignee`是要将 HDInsight 群集操作员角色分配到的用户的服务主体或电子邮件地址的名称。 如果收到权限不足错误, 请参阅下面的常见问题解答。
 
 #### <a name="grant-role-at-the-resource-cluster-level"></a>在资源（群集）级别授予角色
 
@@ -185,3 +185,23 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
 或者，可以使用 Azure 门户将 HDInsight 群集操作员角色分配添加到用户。 请参阅文档[使用 RBAC 和 Azure 门户管理对 Azure 资源的访问 - 添加角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)。
+
+## <a name="faq"></a>常见问题
+
+### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>更新 API 请求和/或工具后, 为什么会出现 403 (禁止) 响应？
+
+群集配置现在位于细化的基于角色的访问控制中, 需要`Microsoft.HDInsight/clusters/configurations/*`访问这些配置的权限。 若要获取此权限, 请将 HDInsight 群集操作员、参与者或所有者角色分配给尝试访问配置的用户或服务主体。
+
+### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>在运行 Azure CLI 命令将 HDInsight 群集操作员角色分配给另一个用户或服务主体时, 为什么看不到 "权限不足, 无法完成操作"？
+
+除了拥有 "所有者" 角色外, 执行该命令的用户或服务主体还需要有足够的 AAD 权限来查找工作负责人的对象 Id。 此消息指示 AAD 权限不足。 尝试将`-–assignee` `–assignee-object-id`参数替换为, 并提供工作负责人的对象 ID 作为参数而不是名称 (对于托管标识, 则提供主体 id)。 有关详细信息, 请参阅[az role 赋值创建文档](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)的可选参数部分。
+
+如果仍然不起作用, 请与 AAD 管理员联系以获取正确的权限。
+
+### <a name="what-will-happen-if-i-take-no-action"></a>如果我不执行任何操作, 会发生什么情况？
+
+和将不再返回任何信息, 并且调用将不再返回敏感参数,例如存储帐户密钥或群集密码。`GET /configurations/{configurationName}` `POST /configurations/gateway` `GET /configurations` 这同样适用 SDK 方法和 PowerShell cmdlet。
+
+如果使用上面提到的 Visual Studio、VSCode、IntelliJ 或 Eclipse 的工具中的旧版本, 则在更新之前, 这些工具将不再工作。
+
+有关更多详细信息, 请参阅本文档中适用于你的方案的相应部分。

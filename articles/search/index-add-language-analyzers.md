@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: deea16b8670623acd2ae92ba62f579f5474d12ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88d229d33f549755479d7e1c7cf012d0391bccbb
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65790904"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881510"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>向 Azure 搜索索引添加语言分析器
 
-语言分析器是特定类型的[文本分析器](search-analyzers.md)，可以使用目标语言的语言规则执行词法分析  。 每个可搜索字段都有一个“分析器”属性  。 如果索引包含翻译的字符串，例如针对英文文本和中文文本的单独字段，则可在每个字段上指定语言分析器，以便访问这些分析器的丰富语言功能。  
+语言分析器是特定类型的[文本分析器](search-analyzers.md)，可以使用目标语言的语言规则执行词法分析。 每个可搜索字段都有一个“分析器”属性。 如果索引包含翻译的字符串，例如针对英文文本和中文文本的单独字段，则可在每个字段上指定语言分析器，以便访问这些分析器的丰富语言功能。  
 
 Azure 搜索支持 35 个受 Lucene 支持的分析器，以及 Office 和必应中使用的专有 Microsoft 自然语言处理技术支持的 50 个分析器。
 
@@ -48,7 +48,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 
 ## <a name="configuring-analyzers"></a>配置分析器
 
-语言分析器按原样使用。 对于索引定义中的每个字段，可将分析器属性设置为用于指定语言和语言学堆栈（Microsoft 或 Lucene）的分析器名称  。 将在为该字段编入索引和搜索时应用相同的分析器。 例如，可以为在同一个索引中并行存在的英语、法语和西班牙语酒店说明使用单独的字段。 或者，可以使用 indexAnalyzer 和 searchAnalyzer 代替“分析器”，以在索引或查询时具有不同的分析规则    。 
+语言分析器按原样使用。 对于索引定义中的每个字段，可将分析器属性设置为用于指定语言和语言学堆栈（Microsoft 或 Lucene）的分析器名称。 将在为该字段编入索引和搜索时应用相同的分析器。 例如，可以为在同一个索引中并行存在的英语、法语和西班牙语酒店说明使用单独的字段。 或者，可以使用 indexAnalyzer 和 searchAnalyzer 代替“分析器”，以在索引或查询时具有不同的分析规则。 
 
 使用 **searchFields** 查询参数指定在查询中针对哪个特定于语言的字段进行搜索。 可在[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)中查看包含分析器属性的查询示例。 
 
@@ -63,7 +63,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |--------------|-----------------------------|--------------------------|  
 |阿拉伯语|ar.microsoft|ar.lucene|  
 |亚美尼亚语||hy.lucene|  
-|Bangla|bn.microsoft||  
+|孟加拉语|bn.microsoft||  
 |巴斯克语||eu.lucene|  
 |保加利亚语|bg.microsoft|bg.lucene|  
 |加泰罗尼亚语|ca.microsoft|ca.lucene|  
@@ -118,9 +118,9 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |乌尔都语|ur.microsoft||  
 |越南语|vi.microsoft||  
 
- 名称带有 **Lucene** 批注的所有分析器都由 [Apache Lucene 的语言分析器](https://lucene.apache.org/core/4_9_0/core/overview-summary.html )提供支持。
+ 名称带有 **Lucene** 批注的所有分析器都由 [Apache Lucene 的语言分析器](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )提供支持。
 
-## <a name="see-also"></a>另请参阅  
+## <a name="see-also"></a>请参阅  
  [创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)  
  [AnalyzerName Class](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)（AnalyzerName 类）  
  [Video: module 7 of Azure Search MVA presentation](https://channel9.msdn.com/Series/Adding-Microsoft-Azure-Search-to-Your-Websites-and-Apps/07)（视频：Azure 搜索 MVA 演示文稿的模块 7）。  

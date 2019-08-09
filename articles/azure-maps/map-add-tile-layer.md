@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e288e03b9e2c02ba963595f192dea7225c6d5762
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: d872cd78b3fd04512fcaee706e54bffa1cf9fcc1
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638985"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882089"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>将图块层添加到地图
 
 本文介绍如何在地图上覆盖图块层。 通过图块层可以在 Azure Maps 基本地图图块顶部附加图像。 可在[缩放级别和图块网格](zoom-levels-and-tile-grid.md)文档中找到有关 Azure Maps 图块系统的详细信息。
 
-图块层将从服务器加载图块。 这些图像可以使用图块层能理解的命名约定或动态生成图像的动态服务（像服务器上的任何其他图像一样）进行预呈现和存储。 Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) 类支持以下三个不同的图块服务命名约定； 
+图块层从服务器的磁贴中加载。 这些图像可以使用图块层能理解的命名约定或动态生成图像的动态服务（像服务器上的任何其他图像一样）进行预呈现和存储。 Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)类支持三个不同的平铺服务命名约定: 
 
 * X、Y、缩放表示法 - 基于缩放级别，x 是列，y 是图块网格中图块的行位置。
 * Quadkey 表示法 - 将 x、y、缩放信息合并到单个字符串值（即图块的唯一标识符）中。
@@ -40,7 +40,7 @@ ms.locfileid: "68638985"
 
 ## <a name="add-a-tile-layer"></a>添加图块层
 
- 此示例演示如何创建指向一组使用 x、y、缩放图块系统的图块的图块层。 此图块层源自[爱荷华州立大学的 Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) 的气象雷达图覆盖。
+ 此示例演示如何创建指向一组使用 x、y、缩放图块系统的图块的图块层。 此图块层源自[爱荷华州立大学的 Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) 的气象雷达图覆盖。 
 
 <br/>
 
@@ -53,7 +53,7 @@ ms.locfileid: "68638985"
 
 ## <a name="customize-a-tile-layer"></a>自定义图块层
 
-图块层只有几个样式选项。 以下工具可用来试用这些选项。
+图块层类具有许多样式选项。 以下工具可用来试用这些选项。
 
 <br/>
 

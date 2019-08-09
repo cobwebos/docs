@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7b9a24161c76f9fbb0993ffb6719c1ea1b51dc55
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 846b4d95c7eb32af7c1c0ff42c2526612075a033
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775703"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882412"
 ---
 # <a name="move-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery-services"></a>通过 Azure Site Recovery 服务将 SQL Server VM 移到 Azure 中的另一个区域
 
@@ -54,7 +54,7 @@ ms.locfileid: "68775703"
 - 对于 Linux VM，请遵循 Linux 分销商提供的指导，在 VM 上获取最新的受信任根证书和证书吊销列表。 
 - 请确保未使用身份验证代理来控制要移动的 Vm 的网络连接。 
 - 如果尝试移动的 VM 无法访问 internet, 或使用防火墙代理来控制出站访问, 请检查要求。 
-- 标识源网络布局以及 your'e 当前使用的所有资源。 这包括但不限于负载均衡器、网络安全组 (NSG) 和公共 IP。 
+- 确定源网络布局和当前正在使用的所有资源。 这包括但不限于负载均衡器、网络安全组 (NSG) 和公共 IP。 
 
 ### <a name="prepare-the-target-region"></a>准备目标区域
 

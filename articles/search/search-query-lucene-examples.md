@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: affe9084c488984747c4bafca5b8e9536cd6dba8
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 53a1f09fcc9897f4def565a9119ad97ca365cae3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485423"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882751"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>使用“完整”Lucene 搜索语法（Azure 搜索中的高级查询）的查询示例
 
@@ -35,11 +35,11 @@ Lucene 分析器支持复杂的查询构造，比如字段范围查询、模糊�
 
 ### <a name="set-the-request-header"></a>设置请求标头
 
-1. 在请求标头中，将“Content-Type”设为 `application/json`  。
+1. 在请求标头中，将“Content-Type”设为 `application/json`。
 
-2. 添加 api-key，并将其设为此字符串：`252044BE3886FE4A8E3BAA4F595114BB`  。 它是托管“纽约工作岗位”索引的沙盒搜索服务的查询密钥。
+2. 添加 api-key，并将其设为此字符串：`252044BE3886FE4A8E3BAA4F595114BB`。 它是托管“纽约工作岗位”索引的沙盒搜索服务的查询密钥。
 
-指定请求标头后，只需更改“search=”字符串即可在本文中的各项查询中重复使用  。 
+指定请求标头后，只需更改“search=”字符串即可在本文中的各项查询中重复使用。 
 
   ![Postman 请求标头](media/search-query-lucene-examples/postman-header.png)
 
@@ -51,15 +51,15 @@ Lucene 分析器支持复杂的查询构造，比如字段范围查询、模糊�
 
 URL 组合具备以下元素：
 
-+ `https://azs-playground.search.windows.net/` 是由 Azure 搜索开发团队维护的沙盒搜索服务  。 
-+ `indexes/nycjobs/` 是该服务的索引集合中的“纽约工作岗位”索引  。 请求中需同时具备服务名称和索引。
-+ `docs` 是包含所有可搜索内容的文档集合  。 请求标头中提供的查询 api-key 仅适用于针对文档集合的读取操作。
-+ `api-version=2019-05-06` 设置了 api-version（每个请求都需具备此参数）  。
-+ `search=*` 是查询字符串，此元素在初始查询中为 NULL，返回前 50 个结果（此为默认情况）  。
++ `https://azs-playground.search.windows.net/` 是由 Azure 搜索开发团队维护的沙盒搜索服务。 
++ `indexes/nycjobs/` 是该服务的索引集合中的“纽约工作岗位”索引。 请求中需同时具备服务名称和索引。
++ `docs` 是包含所有可搜索内容的文档集合。 请求标头中提供的查询 api-key 仅适用于针对文档集合的读取操作。
++ `api-version=2019-05-06` 设置了 api-version（每个请求都需具备此参数）。
++ `search=*` 是查询字符串，此元素在初始查询中为 NULL，返回前 50 个结果（此为默认情况）。
 
 ## <a name="send-your-first-query"></a>发送自己的第一个查询
 
-进行验证，将以下请求粘贴至 GET 并单击“发送”  。 结果以详细的 JSON 文档形式返回。 将返回整个文档，这样就可以查看所有字段和所有值。
+进行验证，将以下请求粘贴至 GET 并单击“发送”。 结果以详细的 JSON 文档形式返回。 将返回整个文档，这样就可以查看所有字段和所有值。
 
 将此 URL 作为验证步骤粘贴到 REST 客户端中并查看文档结构。
 
@@ -67,25 +67,25 @@ URL 组合具备以下元素：
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-查询字符串 `search=*` 是一个未指定的搜索，它与 NULL 或空搜索等效  。 它是可以执行的最简单搜索。
+查询字符串 `search=*` 是一个未指定的搜索，它与 NULL 或空搜索等效。 它是可以执行的最简单搜索。
 
-可选择将 `$count=true` 添加到 URL，以便返回一个符合搜索条件的文档的计数  。 在空搜索字符串上，这就是索引中的所有文档（在“纽约工作岗位”例子中，数量约为 2800）。
+可选择将 `$count=true` 添加到 URL，以便返回一个符合搜索条件的文档的计数。 在空搜索字符串上，这就是索引中的所有文档（在“纽约工作岗位”例子中，数量约为 2800）。
 
 ## <a name="how-to-invoke-full-lucene-parsing"></a>如何调用完整 Lucene 分析
 
-添加 queryType=full 可调用完整查询语法，替代默认的简单查询语法  。 
+添加 queryType=full 可调用完整查询语法，替代默认的简单查询语法。 
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&search=*
 ```
 
-本文中的所有示例都指定了 queryType=full  搜索参数，指明由 Lucene 查询分析程序处理完整语法。 
+本文中的所有示例都指定了 queryType=full 搜索参数，指明由 Lucene 查询分析程序处理完整语法。 
 
-## <a name="example-1-query-scoped-to-a-list-of-fields"></a>示例 1：将查询范围限定为字段列表
+## <a name="example-1-query-scoped-to-a-list-of-fields"></a>示例 1:将查询范围限定为字段列表
 
 第一个示例并非特定于 Lucene，但我们将先使用它来介绍第一个基本查询概念：字段范围。 此示例将整个查询和响应的范围限定为几个特定的字段。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
 
-出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位  。 **searchFields** 参数将查询执行限制为 business_title 字段，**select** 指定响应中包含的字段。
+出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位。 **searchFields** 参数将查询执行限制为 business_title 字段，**select** 指定响应中包含的字段。
 
 ### <a name="partial-query-string"></a>部分查询字符串
 
@@ -213,14 +213,14 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 ### <a name="full-urls"></a>完整 URL
 
-在“before”查询中，搜索包含术语“computer analyst”的作业时，你会发现没有同时包含“computer”和“analyst”的结果，但“computer”作业排在结果顶部     。
+在“before”查询中，搜索包含术语“computer analyst”的作业时，你会发现没有同时包含“computer”和“analyst”的结果，但“computer”作业排在结果顶部。
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
   ![...前提升术语](media/search-query-lucene-examples/termboostingbefore.png)
 
-在“after”查询中，请重试该搜索，如果两个词都不存在，此时会提升包含术语“analyst”而非“computer”的结果   。 
+在“after”查询中，请重试该搜索，如果两个词都不存在，此时会提升包含术语“analyst”而非“computer”的结果。 
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
@@ -231,14 +231,14 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 术语提升不同于计分配置文件，因为计分配置文件提升某些字段，而非特定术语。 以下示例有助于解释这些差异。
 
-请考虑在某个字段中提升匹配项的计分配置文件，例如 musicstoreindex 示例中的“流派”  。 术语提升可用于进一步提升高于其他术语的某些搜索词。 例如“rock^2 electronic”将提升在“流派”  字段（高于搜索中的其他搜索字段）中包含搜索词的文档。 另外，由于术语提升值 (2) 的原因，包含搜索词“rock”的文档的排名要比包含搜索词“electronic”的要高。
+请考虑在某个字段中提升匹配项的计分配置文件，例如 musicstoreindex 示例中的“流派”。 术语提升可用于进一步提升高于其他术语的某些搜索词。 例如“rock^2 electronic”将提升在“流派”字段（高于搜索中的其他搜索字段）中包含搜索词的文档。 另外，由于术语提升值 (2) 的原因，包含搜索词“rock”的文档的排名要比包含搜索词“electronic”的要高。
 
 在设置因素级别时，提升系数越高，术语相对于其他搜索词的相关性也越大。 默认情况下，提升系数是 1。 虽然提升系数必须是整数，但可以小于 1（例如 0.2）。
 
 
 ## <a name="example-6-regex"></a>示例 6：正则表达式
 
-正则表达式搜索基于正斜杠“/”之间的内容查找匹配项，如在 [RegExp 类](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html)中所记录的那样。
+正则表达式搜索基于正斜杠“/”之间的内容查找匹配项，如在 [RegExp 类](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所记录的那样。
 
 ### <a name="partial-query-string"></a>部分查询字符串
 

@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp 文件的性能基准 |Microsoft Docs
-description: 介绍 Azure NetApp 文件在卷级别的性能基准测试结果。
+title: Azure NetApp 文件的性能基准测试结果 |Microsoft Docs
+description: 描述卷级别的 Azure NetApp 文件的性能基准测试结果。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,52 +12,52 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 14081daf1f45a84bc8ad19bf0239db1281d9e624
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1d6b43110046f26d8c8070b19587366588eee7b6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449506"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881753"
 ---
-# <a name="performance-benchmarks-for-azure-netapp-files"></a>Azure NetApp 文件的性能基准
+# <a name="performance-benchmark-test-results-for-azure-netapp-files"></a>Azure NetApp 文件的性能基准测试结果
 
-本文介绍 Azure NetApp 文件在卷级别的性能基准测试结果。 
+本文介绍了卷级别的 Azure NetApp 文件的性能基准测试的结果。 
 
 ## <a name="sample-application-used-for-the-tests"></a>用于测试的示例应用程序
 
-使用 Azure NetApp 文件的示例应用程序运行性能测试。 应用程序具有以下特征： 
+使用 Azure NetApp 文件的示例应用程序运行性能测试。 应用程序具有以下特征: 
 
-* 针对云构建的基于 Linux 的应用程序
-* 可以缩放以线性方式与添加虚拟机 (Vm) 以根据需要增加计算能力
-* 需要快速的 data lake 的可访问性
-* 具有有时是随机的并且有时顺序的 I/O 模式 
-    * 一个随机图案大量的 I/O 要求较低的延迟。 
-    * 顺序模式需要大量的带宽。 
+* 为云构建的基于 Linux 的应用程序
+* 可以通过添加的虚拟机 (Vm) 线性缩放, 以根据需要增加计算能力
+* 需要快速访问 data lake
+* 具有有时随机且有时为顺序的 i/o 模式 
+    * 随机模式对于大量 i/o 需要低延迟。 
+    * 顺序模式需要大量带宽。 
 
-## <a name="about-the-workload-generator"></a>有关工作负荷生成器
+## <a name="about-the-workload-generator"></a>关于工作负荷生成器
 
-结果来自 Vdbench 摘要文件。 [Vdbench](https://www.oracle.com/technetwork/server-storage/vdbench-downloads-1901681.html)是一个命令行实用工具，生成用于验证存储性能的磁盘 I/O 工作负荷。 使用的客户端-服务器配置为可缩放。  它包括单个混合母版/客户端和 14 的专用客户端 Vm。
+结果来自 Vdbench 摘要文件。 [Vdbench](https://www.oracle.com/technetwork/server-storage/vdbench-downloads-1901681.html)是一个命令行实用工具, 用于生成用于验证存储性能的磁盘 i/o 工作负荷。 使用的客户端-服务器配置是可缩放的。  它包括单个混合主/客户端和14个专用客户端 Vm。
 
-## <a name="about-the-tests"></a>有关测试
+## <a name="about-the-tests"></a>关于测试
 
-这些测试旨在识别示例应用程序可能具有的限制和响应时间达到的限制该曲线。  
+这些测试旨在确定示例应用程序可能具有的限制以及向上弯曲到限制的响应时间。  
 
-运行以下测试： 
+运行以下测试: 
 
-* 100 %8 KiB 随机读取
-* 100 %8 KiB 随机写入
-* 100 %64 KiB 顺序读取
-* 100 %64 KiB 顺序写入
-* 50 %64 KiB 顺序读取，50 %64 KiB 顺序写入
-* 50 %8 KiB 随机读取，50 %8 KiB 随机写入
+* 100% 8-KiB 随机读取
+* 100% 8-KiB 随机写入
+* 100% 64-KiB 顺序读取
+* 100% 64-KiB 顺序写入
+* 50% 64-KiB 顺序读取, 50% 64-KiB 顺序写入
+* 50% 8-KiB 随机读取, 50% 8-KiB 随机写入
 
 ## <a name="bandwidth"></a>带宽
 
-Azure 的 NetApp 文件提供多个[服务级别](azure-netapp-files-service-levels.md)。 每个服务级别提供了不同数量的每个 TiB 的预配的容量 （卷配额） 的带宽。 卷的带宽限制是预配基于服务级别和卷配额的组合。 带宽限制是确定的实际吞吐量会意识到量只有一个因素。  
+Azure NetApp 文件提供多个[服务级别](azure-netapp-files-service-levels.md)。 每个服务级别为预配容量的每个 TiB 提供不同的带宽量 (卷配额)。 根据服务级别与卷配额的组合设置卷的带宽限制。 带宽限制只是确定要实现的实际吞吐量量的一个因素。  
 
-目前，4500 MiB 是通过工作负荷对在测试中的单个卷的最高吞吐量。  具有高级服务级别，70.31 TiB 的卷配额将预配足够的带宽来实现此吞吐量为每个以下计算： 
+目前, 4500 MiB 是工作负荷在测试中针对单个卷实现的最高吞吐量。  使用 "高级" 服务级别时, 70.31 TiB 的卷配额将预配足够的带宽, 以根据以下计算实现此吞吐量: 
 
 ![带宽公式](../media/azure-netapp-files/azure-netapp-files-bandwidth-formula.png)
 
@@ -65,31 +65,31 @@ Azure 的 NetApp 文件提供多个[服务级别](azure-netapp-files-service-lev
 
 ## <a name="throughput-intensive-workloads"></a>吞吐量密集型工作负荷
 
-吞吐量测试使用 Vdbench 和 12xD32s V3 存储 Vm 的组合。 在测试中的示例卷来实现以下的吞吐量数字：
+吞吐量测试使用 Vdbench 和 12xD32s V3 存储 Vm 的组合。 测试中的示例卷实现了以下吞吐量数字:
 
 ![吞吐量测试](../media/azure-netapp-files/azure-netapp-files-throughput-test.png)
 
-## <a name="io-intensive-workloads"></a>O 密集的工作负载
+## <a name="io-intensive-workloads"></a>I/o 密集型工作负荷
 
-I/O 测试使用 Vdbench 和 12xD32s V3 存储 Vm 的组合。 在测试中的示例卷来实现以下的 I/O 数量：
+I/o 测试使用的是 Vdbench 和 12xD32s V3 存储 Vm 的组合。 测试中的示例卷实现了以下 i/o 号:
 
-![I/O 测试](../media/azure-netapp-files/azure-netapp-files-io-test.png)
+![I/o 测试](../media/azure-netapp-files/azure-netapp-files-io-test.png)
 
-## <a name="latency"></a>Latency
+## <a name="latency"></a>延迟
 
-在测试 Vm 和 Azure NetApp 文件卷之间的距离会对 I/O 性能的影响。  下面的图表比较了与延迟响应曲线的两组不同的 Vm 的 IOPS。  一组 Vm 是 Azure NetApp 文件附近和另一组较远。  更多组 Vm 增加延迟时间会影响在给定级别的并行度来实现的 IOPS 量。  无论如何，读取卷可以超过 300,000 IOPS，如下图所示： 
+测试 Vm 与 Azure NetApp 文件卷之间的距离会影响 i/o 性能。  下图比较了两组不同 Vm 的 IOPS 与延迟响应曲线。  一组 Vm 位于 Azure NetApp 文件附近, 而另一组 Vm 会进一步消失。  增加的 Vm 集的延迟会对在给定的并行级别实现的 IOPS 量产生影响。  无论如何, 针对卷的读取可以超过 300000 IOPS, 如下所示: 
 
 ![延迟研究](../media/azure-netapp-files/azure-netapp-files-latency-study.png)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
-易受延迟影响工作负荷 （数据库） 可以具有一个毫秒级响应时间。 事务处理性能可以超过 300 k IOPS 为单个卷。
+受延迟影响的工作负荷 (数据库) 的响应时间为1毫秒。 对于单个卷, 事务性能可以超过30万个的 IOPS。
 
-（适用于流式处理和图像处理） 的吞吐量敏感型应用程序可以具有 4.5GiB / 秒的吞吐量。
+与吞吐量相关的应用程序 (适用于流式处理和映像) 可以具有 4.5 GiB/s 吞吐量。
 
 ## <a name="example-scripts"></a>示例脚本
 
-下面的示例脚本是仅用于演示目的。  它们不用于生产目的。  
+下面的示例脚本仅用于演示目的。  它们不用于生产目的。  
 
     #
     #This script makes the following assumptions about the environment

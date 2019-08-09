@@ -14,31 +14,31 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 3b901f7aba40f3548a259d36b83fedca0ff2a5c2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 18dbc60c1a29fbc26f4bbc73faa58aeafc66c32f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781290"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880095"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>设置 Azure 和 Oracle 云基础结构之间的直接互连  
 
 为了创建[集成的多云体验](oracle-oci-overview.md)(预览版), Microsoft 和 Oracle 通过[ExpressRoute](../../../expressroute/expressroute-introduction.md)和[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)提供 Azure 与 oracle 云基础结构 (OCI) 之间的直接互连。 通过 ExpressRoute 和 FastConnect 互连, 客户可以在两个云之间体验低延迟、高吞吐量、专用直接连接。
 
 > [!IMPORTANT]
-> Microsoft Azure 和 OCI 之间的连接处于预览阶段。 若要在 Azure 与 OCI 之间实现低延迟连接, 必须先将 Azure 订阅列入允许列表才能实现此功能。
+> Microsoft Azure 和 OCI 之间的连接处于预览阶段。 若要在 Azure 与 OCI 之间实现低延迟连接, 必须先将 Azure 订阅列入允许列表才能实现此功能。 你必须通过使用你的订阅 ID 向发送电子oracleconnect@microsoft.com邮件来注册预览。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 你还可以联系 Microsoft 代表, 为此预览版启用此功能。 此预览版在提供时没有服务级别协议, 不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息, 请参阅 Microsoft Azure 预览版的[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 下图显示了互连的高级概述:
 
 ![跨云网络连接](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * 若要在 Azure 和 OCI 之间建立连接, 必须具有有效的 Azure 订阅和活动的 OCI 租户。
 
 * 仅当 Azure ExpressRoute 对等互连位置与 OCI FastConnect 在同一对等位置中时, 才可以进行连接。 请参阅[预览版限制](oracle-oci-overview.md#preview-limitations)。
 
-* 你的 Azure 订阅必须列入允许列表才能获得此预览版功能。 请联系你的 Microsoft 代表, 为你的订阅启用此功能。
+* 你的 Azure 订阅必须列入允许列表才能获得此预览版功能。
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>配置 ExpressRoute 与 FastConnect 之间的直接连接
 

@@ -5,26 +5,27 @@ author: arduppal
 manager: mchad
 ms.author: arduppal
 ms.reviewer: arduppal
-ms.date: 06/19/2019
+ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5932d51ecaca3c827ae6de268711c7f4d1b28d0a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: a40389ca378826aef1b6aa136f8f5d69783c638e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640654"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881216"
 ---
-# <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>通过 IoT Edge 上的 Azure Blob 存储（预览版）在边缘存储数据
+# <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>在 IoT Edge 上通过 Azure Blob 存储将数据存储在边缘
 
 IoT Edge 上的 Azure Blob 存储在边缘提供了[块 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) 存储解决方案。 IoT Edge 设备上的 blob 存储模块的行为类似于 Azure 块 blob 服务, 不同之处在于块 blob 存储在本地 IoT Edge 设备上。 你可以使用相同的 Azure 存储 SDK 方法或已经习惯的块 blob API 调用来访问 blob。 本文说明与 IoT Edge 容器中的 Azure Blob 存储相关的概念，该容器在 IoT Edge 设备上运行 Blob 服务。
 
-此模块适用于以下情况: 需要在本地存储数据, 直至数据可被处理或传输到云。 此数据可以是视频、图像、财务数据、医院数据或任何其他非结构化数据。
-
-> [!NOTE]
-> IoT Edge 上的 Azure Blob 存储现为[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+此模块适用于方案:
+* 需要将数据存储在本地, 直到其可以处理或传输到云。 此数据可以是视频、图像、财务数据、医院数据或任何其他非结构化数据。
+* 当设备位于具有有限连接性的位置时。
+* 如果要在本地处理数据以获取对数据的低延迟访问, 以便能够尽快响应突发。
+* 当你想要降低带宽成本并避免将 tb 的数据传输到云时。 你可以在本地处理数据, 并仅将已处理的数据发送到云。
 
 观看视频以了解快速简介
 > [!VIDEO https://www.youtube.com/embed/QhCYCvu3tiM]
@@ -60,16 +61,11 @@ Azure IoT Edge 设备：
 
 - 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 IoT Edge 设备。
 
-- IoT Edge 模块上的 Azure Blob 存储支持以下设备配置：
-
-  | 操作系统 | AMD64 | ARM32v7 | ARM64 |
-  | ---------------- | ----- | ----- | ---- |
-  | Raspbian-stretch | 否 | 是 | 否 |  
-  | Ubuntu Server 16.04 | 是 | 否 | 是 |
-  | Ubuntu Server 18.04 | 是 | 否 | 是 |
-  | Windows 10 IoT 企业版 17763 | 是 | 否 | 否 |
-  | Windows Server 2019 内部版本 17763 | 是 | 否 | 否 |
-  
+- 有关支持的操作系统和体系结构的列表, 请参阅[Azure IoT Edge 支持的系统](support.md#operating-systems)。 IoT Edge 模块上的 Azure Blob 存储支持以下体系结构:
+    - Windows AMD64
+    - Linux AMD64
+    - Linux ARM32
+    - Linux ARM64 (预览版)
 
 云资源：
 
@@ -103,8 +99,11 @@ Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)�
 | retainWhileUploading | true、false | 默认情况下，它设置为 `true`。在 deleteAfterMinutes 分钟过后，它会保留上传到云存储的 Blob。 可以将它设置为 `false`。在 deleteAfterMinutes 分钟过后，它会删除数据。 注意:要使此属性生效，应将 uploadOn 设置为 true| `deviceAutoDeleteProperties__retainWhileUploading={false,true}` |
 
 ## <a name="using-smb-share-as-your-local-storage"></a>使用 SMB 共享作为本地存储
-在 Windows 主机上部署此模块的 windows 容器时, 可以提供 SMB 共享作为本地存储路径。
-可以在运行`New-SmbGlobalMapping` Windows 的 IoT 设备上运行 PowerShell 命令以映射到本地的 SMB 共享。 请确保 IoT 设备可以读取/写入远程 SMB 共享。
+在 Windows 主机上部署此模块的 Windows 容器时, 可以提供 SMB 共享作为本地存储路径。
+
+请确保 SMB 共享和 IoT 设备位于相互信任的域中。
+
+可以在运行`New-SmbGlobalMapping` Windows 的 IoT 设备上运行 PowerShell 命令以映射到本地的 SMB 共享。
 
 下面是配置步骤:
 ```PowerShell
@@ -112,12 +111,44 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 例如： <br>
-`$creds = Get-Credentials` <br>
+`$creds = Get-Credential` <br>
 `New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G: `
 
 此命令将使用凭据向远程 SMB 服务器进行身份验证。 然后, 将远程共享路径映射到 G: 驱动器号 (可以是任何其他可用的驱动器号)。 IoT 设备现在已将数据卷映射到 G: 驱动器上的路径。 
 
-对于部署, 的值`<storage directory bind>`可以是**G:/ContainerData: C:/BlobRoot**。
+请确保 IoT 设备中的用户可以读取/写入远程 SMB 共享。
+
+对于部署, 的值`<storage mount>`可以是**G:/ContainerData: C:/BlobRoot**。 
+
+## <a name="granting-directory-access-to-container-user-on-linux"></a>授予对 Linux 上的容器用户的目录访问权限
+如果在 Linux 容器的 "创建" 选项中使用了 "用于存储的[卷装入](https://docs.docker.com/storage/volumes/)", 则无需执行任何额外的步骤, 但如果使用了[bind 装载](https://docs.docker.com/storage/bind-mounts/), 则需要执行这些步骤才能正确运行该服务。
+
+按照最低权限原则将用户的访问权限限制为用户执行其工作所需的最低权限, 此模块包括用户 (name: absie, ID:11000) 和用户组 (name: absie, ID:11000)。 如果容器以**root**身份启动 (默认用户为**root**用户), 则我们的服务将作为低特权**absie**用户启动。 
+
+此行为会使主机路径的权限配置对服务的访问权限进行正确的绑定, 否则服务将崩溃, 并出现拒绝访问错误。 目录绑定中使用的路径需要容器用户可访问 (示例: absie 11000)。 可以通过在主机上执行以下命令来授予容器用户对目录的访问权限:
+
+```terminal
+sudo chown -R 11000:11000 <blob-dir> 
+sudo chmod -R 700 <blob-dir> 
+```
+
+例如：<br>
+`sudo chown -R 11000:11000 /srv/containerdata` <br>
+`sudo chmod -R 700 /srv/containerdata `
+
+
+如果需要以非**absie**的用户身份运行服务, 则可以在部署清单中的 "user" 属性下的 createOptions 中指定自定义用户 ID。 在这种情况下, 需要使用默认或根组`0`ID。
+
+```json
+“createOptions”: { 
+  “User”: “<custom user ID>:0” 
+} 
+```
+现在, 授予容器用户对目录的访问权限
+```terminal
+sudo chown -R <user ID>:<group ID> <blob-dir> 
+sudo chmod -R 700 <blob-dir> 
+```
 
 ## <a name="configure-log-files"></a>配置日志文件
 
@@ -142,9 +173,9 @@ Azure Blob 存储文档包括多种语言的快速入门示例代码。 可以�
 以下快速入门示例使用 IoT Edge 也同样支持的语言，因此，你可以将它们作为 IoT Edge 模块与 Blob 存储模块一起部署：
 
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Java](../storage/blobs/storage-quickstart-blobs-java.md)
+- [Java](../storage/blobs/storage-quickstart-blobs-java-v10.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-- [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md)
+- [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>通过 Azure 存储资源管理器连接到本地存储
 
@@ -239,3 +270,5 @@ IoT Edge 上的 Blob 存储模块使用 Azure 存储 Sdk, 并且与适用于块 
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[在 IoT Edge 上部署 Azure Blob 存储](how-to-deploy-blob.md)
+
+在[IoT Edge 博客上的 Azure Blob 存储](https://aka.ms/abs-iot-blogpost)中随时了解最新的更新和公告

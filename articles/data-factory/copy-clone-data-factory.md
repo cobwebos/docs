@@ -11,12 +11,12 @@ ms.date: 01/09/2019
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 96ea8142e2f7794d3c15c6efb436eafa585bc8fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e4d204e9bcf601bf968f06b5d9df3f36414bd5a5
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780917"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884194"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>在 Azure 数据工厂中复制或克隆数据工厂
 
@@ -36,11 +36,11 @@ ms.locfileid: "60780917"
 
 1. 作为先决条件，你需要从 Azure 门户创建目标数据工厂。
 
-1. 如果必须在源工厂 SelfHosted IntegrationRuntime，需要预先它创建具有相同目标工厂中的名称。 如果你想要共享 SelfHosted IRs 之间不同的工厂，可以使用已发布的模式[此处](author-visually.md#best-practices-for-git-integration)。
+1. 如果源工厂中有 SelfHosted IntegrationRuntime，则需要在目标工厂中使用相同的名称预先创建它。 如果要在不同工厂之间共享 SelfHosted IRs, 可以使用[此处](source-control.md#best-practices-for-git-integration)发布的模式。
 
 1. 如果你处于 GIT 模式下，则每次从门户发布时，工厂的资源管理器模板都会保存到存储库的 adf_publish 分支中的 GIT 中。
 
-1. 对于其他场景，可以通过单击门户中的“导出资源管理器模板”按钮下载资源管理器模板  。
+1. 对于其他场景，可以通过单击门户中的“导出资源管理器模板”按钮下载资源管理器模板。
 
 1. 下载资源管理器模板之后，可以通过标准的资源管理器模板部署方法将其部署。
 

@@ -4,21 +4,20 @@ description: 将分析器分配到索引中的可搜索文本字段，以将默�
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/08/2019
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
-ms.custom: seodec2018
-ms.openlocfilehash: f76d944f614f07a4428d4e4100f6a08a375d96dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da1d39c23106b2218700e7a2707b824e240448d3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65795798"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883043"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>用于 Azure 搜索中文本处理的分析器
 
-分析器是[全文搜索引擎](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理  。 不同的分析器根据具体的方案以不同的方式处理文本。 语言分析器使用语言规则处理文本，以提高搜索质量；其他分析器执行其他基本任务，例如，将字符转换为小写。 
+分析器是[全文搜索引擎](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理。 不同的分析器根据具体的方案以不同的方式处理文本。 语言分析器使用语言规则处理文本，以提高搜索质量；其他分析器执行其他基本任务，例如，将字符转换为小写。 
 
 语言分析器是用得最多的类型，Azure 搜索索引中的每个可搜索字段都分配有默认的语言分析器。 下面是文本分析过程中的典型语言转换：
 
@@ -31,7 +30,7 @@ ms.locfileid: "65795798"
 
 ## <a name="default-analyzer"></a>默认分析器  
 
-Azure 搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)，该分析器按照[“Unicode 文本分段”](https://unicode.org/reports/tr29/)规则将文本分解成多个元素。 此外，标准分析器将所有字符转换为其小写形式。 已编入索引的文档和搜索词在索引和查询处理期间完成分析。  
+Azure 搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)，该分析器按照[“Unicode 文本分段”](https://unicode.org/reports/tr29/)规则将文本分解成多个元素。 此外，标准分析器将所有字符转换为其小写形式。 已编入索引的文档和搜索词在索引和查询处理期间完成分析。  
 
 将会针对每个可搜索字段使用此分析器。 你可以逐字段替代默认值。 替代的分析器可以是[语言分析器](index-add-language-analyzers.md)、[自定义分析器](index-add-custom-analyzers.md)，也可以是[可用分析器列表](index-add-custom-analyzers.md#AnalyzerTable)中的预定义分析器。
 
@@ -42,8 +41,8 @@ Azure 搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https
 
 | 类别 | 描述 |
 |----------|-------------|
-| [标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
-| 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace       。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
+| [标准 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
+| 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
 |[自定义分析器](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 称为结合了现有元素的用户定义配置，由一个 tokenizer（必需）和可选的筛选器（字符或词元）组成。|
 
 某些预定义分析器（例如 **Pattern** 或 **Stop**）支持有限的一组配置选项。 若要设置这些选项，请有效地创建一个自定义分析器，其中包括某个预定义分析器，以及[预定义分析器参考](index-add-custom-analyzers.md#AnalyzerTable)中所述的一个替代选项。 对于任何自定义配置，请为新配置提供一个名称，例如 *myPatternAnalyzer*，以便将它与 Lucene Pattern 分析器区分开来。
@@ -58,7 +57,7 @@ Azure 搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https
 
 不允许将 **analyzer** 或 **indexAnalyzer** 分配到实际已创建的字段。 如有任何疑问，请查看下表，其中列出了需要重新生成的操作详情以及原因。
  
- | 场景 | 影响 | Steps |
+ | 应用场景 | 影响 | 步骤 |
  |----------|--------|-------|
  | 添加新字段 | 轻微 | 如果字段尚不存在于架构中，则不需要进行任何字段修订，因为索引中尚不存在字段的物理形式。 可以使用 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) 将新字段添加到现有索引，使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 来填充字段。|
  | 将 **analyzer** 或 **indexAnalyzer** 添加到现有的已编制索引的字段。 | [rebuild](search-howto-reindex.md) | 该字段的倒排索引必须从头开始重新创建，并且必须对这些字段的内容重新编制索引。 <br/> <br/>对于正在开发中的索引，[删除](https://docs.microsoft.com/rest/api/searchservice/delete-index)并[创建](https://docs.microsoft.com/rest/api/searchservice/create-index)索引，以获得新的字段定义。 <br/> <br/>对于生产环境中的索引，可以创建一个新字段来提供修改后的定义并开始使用该字段取代旧字段，以推迟重新生成。 使用 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) 合并新字段，使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 填充该字段。 之后在计划索引服务中，可清除索引以删除过时字段。 |
@@ -345,7 +344,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 + [配置自定义分析器](index-add-custom-analyzers.md)，针对单个字段尽量简化处理或者进行专门处理。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
  [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

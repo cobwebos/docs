@@ -1,7 +1,7 @@
 ---
-title: 将 MLflow 与 Azure 机器学习服务结合使用
+title: 使用 MLflow
 titleSuffix: Azure Machine Learning service
-description: 将 MLflow 与 Azure 机器学习 service 结合使用, 记录指标和项目并将模型部署到生产。
+description: 设置 MLflow 与 Azure 机器学习以记录指标 & 项目, 并从 Databricks、本地环境或 VM 环境部署模型。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b59797e60585876764e8c9e1276e4fd36571b18
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: dd451f4c7ada3c062862098d4cda5314152be0c0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856017"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881999"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>通过 MLflow 和 Azure 机器学习 service (预览版) 跟踪指标和部署模型
 
@@ -49,18 +49,15 @@ ms.locfileid: "68856017"
 |监视模型性能||✓|  |   |
 | 检测数据偏差 |   | ✓ |   | ✓ |
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * [安装 MLflow。](https://mlflow.org/docs/latest/quickstart.html)
 * 在本地计算机上[安装 AZURE 机器学习 sdk](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 。 Sdk 为 MLflow 提供连接以访问工作区。
 * [创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
+## <a name="track-local-runs"></a>跟踪本地运行
 
-## <a name="track-experiment-runs"></a>跟踪试验运行
-
-通过 Azure 机器学习 service 的 MLflow 跟踪, 你可以将记录的指标和项目从本地和远程运行存储到 Azure 机器学习工作区中。
-
-### <a name="local-runs"></a>本地运行
+通过 Azure 机器学习 service 的 MLflow 跟踪, 你可以将记录的指标和项目从本地运行存储到 Azure 机器学习工作区中。
 
 `azureml-contrib-run`安装包以使用 MLflow 跟踪, 并在 Jupyter Notebook 或代码编辑器中本地运行试验 Azure 机器学习。
 
@@ -97,7 +94,9 @@ with mlflow.start_run():
     mlflow.log_metric('alpha', 0.03)
 ```
 
-### <a name="remote-runs"></a>远程运行
+## <a name="track-remote-runs"></a>跟踪远程运行
+
+通过 Azure 机器学习 service 的 MLflow 跟踪, 你可以将记录的指标和项目从远程运行存储到 Azure 机器学习工作区中。
 
 远程运行使你可以在更强大的计算 (例如启用 GPU 的虚拟机或机器学习计算群集) 上训练模型。 请参阅[设置模型定型的计算目标](how-to-set-up-training-targets.md), 了解不同的计算选项。
 
@@ -138,11 +137,13 @@ with mlflow.start_run():
 run = exp.submit(src)
 ```
 
-### <a name="mlflow-with-azure-databricks-runs"></a>Azure Databricks 运行的 MLflow
+## <a name="track-azure-databricks-runs"></a>跟踪 Azure Databricks 运行
+
+通过 Azure 机器学习 service 的 MLflow 跟踪, 你可以将记录的指标和 Databrick 中的项目存储到 Azure 机器学习工作区中。
 
 若要使用 Azure Databricks 运行 Mlflow 试验, 需要首先创建[Azure Databricks 工作区和群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。 在群集中, 请确保从 PyPi 安装*mlflow*库, 以确保群集有权访问所需的函数和类。
 
-#### <a name="install-libraries"></a>安装库
+### <a name="install-libraries"></a>安装库
 
 若要在群集上安装库, 请导航到 "**库**" 选项卡, 然后单击 "**安装新**"
 
@@ -152,7 +153,7 @@ run = exp.submit(src)
 
  ![mlflow 与 azure 机器学习示意图](media/how-to-use-mlflow/install-libraries.png)
 
-#### <a name="notebook-and-workspace-set-up"></a>笔记本和工作区设置
+### <a name="set-up-your-notebook-and-workspace"></a>设置笔记本和工作区
 
 设置群集后, 请导入你的实验笔记本, 将其打开, 并将你的群集附加到其中。
 
@@ -181,7 +182,7 @@ ws = Workspace.get(name=workspace_name,
                    resource_group=resource_group)
 
 ```
-#### <a name="set-mlflow-tracking-uri"></a>设置 MLflow 跟踪 URI
+### <a name="link-mlflow-tracking-to-your-workspace"></a>将跟踪链接 MLflow 到你的工作区
 实例化工作区后, 设置 MLflow 跟踪 URI。 这样, 便可以将 MLflow 跟踪链接到 Azure 机器学习工作区。 此后, 你的所有实验都将位于托管 Azure 机器学习跟踪服务中。
 
 ```python

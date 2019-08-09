@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/05/2019
+ms.date: 08/07/2019
 ms.author: magoedte
-ms.openlocfilehash: d2fadf6d0bf9b7422b6dbf7597a024d22b5d733f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1c2416d9fb1d45116bb6594b29863c1fe8f524a3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839328"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883200"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -32,7 +32,7 @@ Log Analytics 工作区可提供：
 
 * 数据存储的地理位置。
 * 数据隔离, 方法是根据我们推荐的设计策略之一授予不同的用户访问权限。
-* 设置配置的范围，如[定价层级](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[保留期](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)和[数据上限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)。
+* 配置设置的范围, 如[定价层](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[保留](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)和[数据上限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)。
 
 本文详细介绍了设计和迁移注意事项、访问控制概述以及我们建议为 IT 组织提供的设计实现。
 
@@ -47,7 +47,7 @@ Log Analytics 工作区可提供：
 如今, IT 组织采用集中式、分散式或两种结构之间的混合模型。 因此, 以下工作区部署模型通常用于映射到其中一个组织结构:
 
 * **集中式**:所有日志都存储在中央工作区中并由单个团队进行管理, Azure Monitor 提供按团队区分的访问。 在此方案中, 可以轻松管理、跨资源搜索和交叉关联日志。 工作区可能会显著增加, 具体取决于从订阅中的多个资源收集的数据量, 以及维护对不同用户的访问控制的额外管理开销。
-* **分散**:每个团队都在他们拥有和管理的资源组中创建了自己的工作区, 并按资源隔离了日志数据。 在这种情况下, 工作区可以保持安全, 而访问控制与资源访问保持一致, 但难以交叉关联日志。 需要广泛查看多个资源的用户无法以有意义的方式分析数据。
+* **分散**:每个团队都在其自己的资源组中创建了自己的工作区, 并管理了日志数据, 并按资源隔离了日志数据。 在这种情况下, 工作区可以保持安全, 而访问控制与资源访问保持一致, 但难以交叉关联日志。 需要广泛查看多个资源的用户无法以有意义的方式分析数据。
 * **混合**:安全审核遵从性要求会进一步使此方案复杂化, 因为许多组织都同时实施这两种部署模型。 这通常会导致复杂、昂贵且难以维护的配置, 并在日志覆盖范围内出现缺口。
 
 当使用 Log Analytics 代理收集数据时, 需要了解以下各项, 以便规划代理部署:
@@ -84,7 +84,7 @@ Log Analytics 工作区可提供：
 
     ![从工作区 Log Analytics 上下文](./media/design-logs-deployment/query-from-workspace.png)
 
-* **资源上下文**:当你访问特定资源、资源组或订阅的工作区时, 例如, 当你从 Azure 门户中的资源菜单中选择**日志**时, 只能在你有权访问的所有表中查看该资源的日志。 在此模式下，只能查询与该资源关联的数据。 此模式还启用粒度 RBAC。
+* **资源上下文**:当你访问特定资源、资源组或订阅的工作区时, 例如, 当你从 Azure 门户中的资源菜单中选择**日志**时, 只能查看你有权访问的所有表中的资源的日志。 在此模式下，只能查询与该资源关联的数据。 此模式还启用粒度 RBAC。
 
     ![从资源 Log Analytics 上下文](./media/design-logs-deployment/query-from-resource.png)
 
@@ -106,16 +106,16 @@ Azure Monitor 根据你执行日志搜索的上下文, 自动确定正确的模�
 |:---|:---|:---|
 | 每种模式适合哪类用户？ | 集中管理。 需要配置数据收集的管理员，以及需要访问各种资源的用户。 目前还需要访问 Azure 外部资源的日志。 | 应用程序团队。 受监视 Azure 资源的管理员。 |
 | 用户需要哪些权限才能查看日志？ | 对工作区的权限。 请参阅[管理帐户和用户](manage-access.md#manage-accounts-and-users)中的“工作区权限”。 | 对资源的读取访问权限。 请参阅[管理帐户和用户](manage-access.md#manage-accounts-and-users)中的“资源权限”。 权限可以继承（例如，从包含资源组继承），也可以直接分配给资源。 系统会自动分配对资源日志的权限。 |
-| 权限范围是什么？ | 工作区。 有权访问工作区的用户可以通过他们有权访问的表查询该工作区中的所有日志。 请参阅[表访问控制](manage-access.md#table-level-rbac) | Azure 资源。 用户可以从任何工作区查询日志以获取他们有权访问的特定资源、资源组或订阅, 但不能查询其他资源的日志。 |
+| 权限范围是什么？ | 工作区。 具有工作区访问权限的用户可以从他们有权访问的表中查询工作区中的所有日志。 请参阅[表访问控制](manage-access.md#table-level-rbac) | Azure 资源。 用户可以从任何工作区查询日志以获取他们有权访问的特定资源、资源组或订阅, 但不能查询其他资源的日志。 |
 | 用户如何访问日志？ | <ul><li>从**Azure Monitor**菜单启动**日志**。</li></ul> <ul><li>从**Log Analytics 工作区**启动**日志**。</li></ul> <ul><li>Azure Monitor[工作簿](../visualizations.md#workbooks)中。</li></ul> | <ul><li>从 Azure 资源的菜单启动**日志**</li></ul> <ul><li>从**Azure Monitor**菜单启动**日志**。</li></ul> <ul><li>从**Log Analytics 工作区**启动**日志**。</li></ul> <ul><li>Azure Monitor[工作簿](../visualizations.md#workbooks)中。</li></ul> |
 
 ## <a name="access-control-mode"></a>访问控制模式
 
-"*访问控制" 模式*是每个工作区的一项设置, 用于定义为该工作区确定权限的方式。
+"*访问控制" 模式*是每个工作区的一项设置, 用于定义如何确定工作区的权限。
 
 * **需要工作区权限**：此控制模式不允许精细的 RBAC。 用户若要访问工作区，必须获得对该工作区或特定表的权限。
 
-    如果用户在工作区的上下文模式下访问工作区, 则他们有权访问他们已被授予访问权限的任何表中的所有数据。 如果用户按照资源上下文模式访问工作区, 则他们只能访问已被授予访问权限的任何表中该资源的数据。
+    如果用户访问工作区上下文模式下的工作区, 则他们可以访问他们已被授予访问权限的任何表中的所有数据。 如果用户按照资源上下文模式访问工作区, 则他们只能访问已被授予访问权限的任何表中该资源的数据。
 
     这是在 2019 年 3 月之前创建的所有工作区的默认设置。
 
@@ -127,6 +127,8 @@ Azure Monitor 根据你执行日志搜索的上下文, 自动确定正确的模�
 
     > [!NOTE]
     > 如果用户对工作区只有资源权限, 则只有在将工作区访问模式设置为**使用资源或工作区权限**的情况下, 用户才能使用资源上下文模式访问工作区。
+
+若要了解如何在门户中使用 PowerShell 或使用资源管理器模板更改访问控制模式, 请参阅[定义访问控制模式](manage-access.md#define-access-control-mode)。
 
 ## <a name="recommendations"></a>推荐
 

@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effe48c859e711f0efc41c1a4d651e5d15d5ada9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 8d7a039f25339d91d77d5b6924674ea36a16c15b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382614"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880819"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>添加非 Microsoft 帐户
 
@@ -168,6 +168,9 @@ ms.locfileid: "68382614"
     此时，页面更改为显示 QR 码。 请勿关闭此页。
 
 5. 打开 Microsoft Authenticator 应用，选择右上角“自定义和控制”图标中的“添加帐户”，再选择“其他帐户(Google、Facebook 等)”。
+
+    >[!Note]
+    >如果这是你第一次设置 Microsoft Authenticator 应用程序, 你可能会收到询问是允许应用程序访问你的相机 (iOS) 还是允许应用拍摄图片并录制视频 (Android) 的提示。 你必须选择 "**允许**", 以便验证器应用可以访问你的相机, 以便在下一步中对 QR 代码进行图片。 如果不允许相机, 仍可以设置验证器应用, 但需要手动添加代码信息。 有关如何手动添加代码的信息, 请参阅请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
 
 6. 使用设备的照相机扫描电脑上“选择如何接收验证码”页显示的 QR 码。
 

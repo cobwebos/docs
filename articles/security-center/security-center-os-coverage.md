@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 02d993d760338356fa29ee58a03215e14d6583f1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7cd1d451b49faf2f8e3ad38f4ff780256ef2dc5d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295606"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883598"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure 安全中心支持的平台和功能
 
@@ -89,7 +89,7 @@ ms.locfileid: "68295606"
 |安全配置|✔|✔|✔|✔|✔|✔|免费|
 |Endpoint protection 评估|✔|✔|✔|X|X|X|免费|
 |JIT VM 访问|✔|X|X|✔|X|X|标准|
-|自适应应用程序控制|✔|X|✔|✔|X|✔|标准|
+|自适应应用程序控件|✔|X|✔|✔|X|✔|标准|
 |FIM|✔|✔|✔|✔|✔|✔|标准|
 |磁盘加密评估|✔|✔|X|✔|✔|X|免费|
 |第三方部署|✔|X|X|✔|X|X|免费|
@@ -108,15 +108,17 @@ ms.locfileid: "68295606"
 
 有关为每个保护生成建议的时间的信息, 请参阅[Endpoint Protection 评估和建议](security-center-endpoint-protection.md)。
 
-| 终结点保护| 平台 | 安全中心安装 | 安全中心发现 |
+| Endpoint Protection| 平台 | 安全中心安装 | 安全中心发现 |
 |------|------|-----|-----|
 | Windows Defender (Microsoft Antimalware)| Windows Server 2016| 否，内置到 OS| 是 |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2（请参阅以下备注） | 通过扩展 | 是 |
 | Trend Micro – 所有版本 | Windows Server 系列  | 否 | 是 |
 | Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |
 | McAfee v10+ | Windows Server 系列  | 否 | 是 |
-| Kaspersky| Windows Server 系列  | 否 | 否  |
-| Sophos| Windows Server 系列  | 否 | 否  |
+| McAfee v10+ | Linux 服务器系列  | 否 | 是 **\*** |
+| Sophos V9.x +| Linux 服务器系列  | 否 | 是的 **\***  |
+
+ **\*** 覆盖状态和支持数据当前仅可用于与受保护订阅关联的 Log Analytics 工作区中, 而不会在 Azure 安全中心门户中反映出来。
 
 > [!NOTE]
 > - 在 Windows Server 2008 R2 虚拟机上检测 System Center Endpoint Protection (SCEP) 需要在 PowerShell 3.0（或更高版本）之后安装 SCEP。
@@ -130,26 +132,26 @@ ms.locfileid: "68295606"
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
 |Azure Blob 存储帐户|✔| ✔|
-|应用程序服务|✔| ✔|
+|应用服务|✔| ✔|
 |云服务|✔| X|
-|VNet|✔| NA|
-|子网|✔| NA|
-|NIC|✔| NA|
-|NSG|✔| NA|
+|VNet|✔| 不可用|
+|子网|✔| 不可用|
+|NIC|✔| 不可用|
+|NSG|✔| 不可用|
 |订阅|✔ **| ✔|
-|Batch|✔| NA|
-|Service Fabric|✔| NA|
-|自动化帐户|✔| NA|
-|负载均衡|✔| NA|
-|搜索|✔| NA|
-|服务总线|✔| NA|
-|流分析|✔| NA|
-|事件中心|✔| NA|
-|逻辑应用|✔| NA|
-|存储帐户|✔| NA|
-|Redis|✔| NA|
-|Data Lake Analytics|✔| NA|
-|密钥保管库|✔| NA|
+|批|✔| 不可用|
+|Service Fabric|✔| 不可用|
+|自动化帐户|✔| 不可用|
+|负载均衡器|✔| 不可用|
+|搜索|✔| 不可用|
+|服务总线|✔| 不可用|
+|流分析|✔| 不可用|
+|事件中心|✔| 不可用|
+|逻辑应用|✔| 不可用|
+|存储帐户|✔| 不可用|
+|Redis|✔| 不可用|
+|Data Lake Analytics|✔| 不可用|
+|密钥保管库|✔| 不可用|
 
 
 

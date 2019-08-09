@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2019
+ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 833d0d0b17f7cc22b2ab37b4e225c1a8cce9c592
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9dcc5fa201c08ca4b1e65b8aae88118731eba427
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385545"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881070"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -133,6 +133,10 @@ SNAT 端口是根据[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 
 UDP SNAT 端口由与 TCP SNAT 端口不同的算法管理。  负载均衡器对 UDP 使用称为“端口受限锥形 NAT”的算法。  无论目标 IP 地址、端口如何，每个流都会使用一个 SNAT 端口。
 
+#### <a name="snat-port-reuse"></a>SNAT 端口重用
+
+端口释放后, 可根据需要使用该端口。  可以将 SNAT 端口视为从最低到最高的顺序, 适用于给定方案, 第一个可用的 SNAT 端口用于新连接。 
+ 
 #### <a name="exhaustion"></a>耗尽
 
 如果 SNAT 端口资源已经耗尽，那么在现有流释放 SNAT 端口之前出站流会失败。 当流关闭时，负载均衡器将回收 SNAT 端口，并使用 [4 分钟空闲超时](#idletimeout)回收空闲流中的 SNAT 端口。

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a33b7263cd7a3b2f5e39ce9d24df11a7d6283c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5c6e3ef74ea2d77ba03526e05145fe6faa61c050
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688602"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882062"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>备份和还原已加密的 Azure VM
 
@@ -153,11 +153,12 @@ Azure VM 需要拥有只读访问权限才能备份密钥和机密以及关联�
 1. [还原 VM 磁盘](backup-azure-arm-restore-vms.md#restore-disks)。
 2. 然后执行以下操作之一：
     - 使用执行还原操作期间生成的模板来自定义 VM 设置，并触发 VM 部署。 [了解详细信息](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)。
-    - 使用 PowerShell 从已还原的磁盘创建新的 VM。 [了解详细信息](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
+    - 使用 PowerShell 从还原的磁盘创建新 VM。 [了解详细信息](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
+    - 对于 Linux Vm, 请重置 ADE 扩展, 使数据磁盘已打开并装入。 
 
 ## <a name="next-steps"></a>后续步骤
 
-如果遇到任何问题，请查看
+如果遇到任何问题, 请查看以下文章:
 
 - 备份和还原已加密的 Azure VM 时出现的[常见错误](backup-azure-vms-troubleshoot.md)。
 - [Azure VM 代理/备份扩展](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)问题。

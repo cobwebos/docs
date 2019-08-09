@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 46e3780c7fc6e6a2481e774b89bfb69510865db3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 5c0bc97e5a5b362ea78f82ea99bb967a9607093a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734616"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882492"
 ---
 # <a name="document-data-sources"></a>记录数据源
 ## <a name="introduction"></a>简介
@@ -23,7 +23,7 @@ ms.locfileid: "68734616"
 
 标记和说明非常适合简单批注。 但是，为了帮助数据使用者更好地了解数据源的用法和数据源的业务方案，专家可以提供完整且详尽的文档。 记录数据源很简单。 选择数据资产或容器，并选择“文档”。
 
-![](media/data-catalog-documentation/data-catalog-documentation.png)
+![数据目录中的文档选项卡](media/data-catalog-documentation/data-catalog-documentation.png)
 
 ## <a name="documenting-data-assets"></a>记录数据资产
 **Azure 数据目录**文档的优点让可以使用数据目录作为内容存储库，创建完整的数据资产叙述。 可以浏览描述容器和表的详细内容。 如果其他内容存储库中已有内容（例如 SharePoint 或文件共享），可以添加资产文档链接来参考现有内容。 此功能使现有文档更容易被发现。
@@ -31,9 +31,8 @@ ms.locfileid: "68734616"
 > [!NOTE]
 > 文档不包括在搜索索引中。
 >
->
 
-![](media/data-catalog-documentation/data-catalog-documentation2.png)
+![文档选项卡和到 web 链接的超链接](media/data-catalog-documentation/data-catalog-documentation2.png)
 
 文档级别范围可以从描述数据资产的特性和值到容器中表架构的详细说明。 应根据业务需求提供相应的文档级别。 但通常情况下，记录数据资产存在以下几种利弊：
 

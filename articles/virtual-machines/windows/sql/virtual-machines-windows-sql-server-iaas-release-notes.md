@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: a482e599914e8b91a237f4395e9c0c47ea84ad59
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 61bf9d53b5ceda9420ae594680466a70b1e3d0cd
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846074"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882318"
 ---
 # <a name="release-notes-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上 SQL Server 的发行说明
 
@@ -41,7 +41,7 @@ Azure 允许你使用内置 SQL Server 的映像部署虚拟机 (VM)。 本文�
 | --- | --- |
 | **新 SQL IaaS 安装模式** | 现在可以在[轻型模式下](virtual-machines-windows-sql-server-agent-extension.md)安装 SQL Server IaaS 扩展, 以避免重新启动 SQL Server 服务。  |
 | **修改 SQL Server 版本** | 你现在可以更改 SQL Server VM 的[edition 属性](virtual-machines-windows-sql-change-edition.md)。 |
-| **对 SQL VM 资源提供程序的更改** | 你可以使用新的 SQL IaaS 模式[向 SQL VM 资源提供程序注册你的 SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-the-sql-vm-resource-provider) 。 此功能包括[Windows 2008 映像](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)。|
+| **对 SQL VM 资源提供程序的更改** | 你可以使用新的 SQL IaaS 模式[向 SQL VM 资源提供程序注册你的 SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md) 。 此功能包括[Windows 2008 映像](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)。|
 | **使用 Azure 混合权益自带许可证映像** | 从 Azure Marketplace 部署的自带许可证现在可以[将其许可证类型切换为即用即付](virtual-machines-windows-sql-ahb.md#remarks)。| 
 | &nbsp; | &nbsp; |
 

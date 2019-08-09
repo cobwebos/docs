@@ -4,7 +4,6 @@
   items:
     - name: 什么是 HDInsight 中的 Apache Hadoop？
       href: apache-hadoop-introduction.md
-      maintainContext: true
 - name: 快速入门
   items:
     - name: 创建 Apache Hadoop 群集 - 门户
@@ -15,47 +14,37 @@
 - name: 教程
   items:
     - name: 创建按需群集
-      href: ../hdinsight-hadoop-create-linux-clusters-adf.md
-      maintainContext: true
+      href: ../hdinsight-hadoop-create-linux-clusters-adf.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
 - name: 示例
   items:
     - name: .NET 示例
-      href: ../hdinsight-sdk-dotnet-samples.md
-      maintainContext: true
+      href: ../hdinsight-sdk-dotnet-samples.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: Java 示例
-      href: ../hdinsight-sdk-java-samples.md
-      maintainContext: true
+      href: ../hdinsight-sdk-java-samples.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: Python 示例
-      href: ../hdinsight-sdk-python-samples.md
-      maintainContext: true
+      href: ../hdinsight-sdk-python-samples.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
 - name: 概念
   items:
     - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
-      href: ../hdinsight-cluster-availability.md
-      maintainContext: true
+      href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
-      maintainContext: true
+      href: ../hdinsight-version-release.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: HDInsight 中的 Apache Hadoop 体系结构
-      href: ../hdinsight-hadoop-architecture.md
-      maintainContext: true
+      href: ../hdinsight-hadoop-architecture.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: HDInsight 中的 Apache Hadoop 组件
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
+      href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 群集容量规划
-      href: ../hdinsight-capacity-planning.md
-      maintainContext: true
+      href: ../hdinsight-capacity-planning.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 可用性和可靠性
-      href: ../hdinsight-high-availability-linux.md
-      maintainContext: true
+      href: ../hdinsight-high-availability-linux.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 比较存储选项
-      href: ../hdinsight-hadoop-compare-storage-options.md
-      maintainContext: true
+      href: ../hdinsight-hadoop-compare-storage-options.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 了解托管标识
-      href: ../hdinsight-managed-identities.md
-      maintainContext: true
+      href: ../hdinsight-managed-identities.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 故障排除
       items:
+        - name: 群集创建失败
+          href: ./hdinsight-troubleshoot-cluster-creation-fails.md
         - name: 磁盘空间不足
           href: ./hdinsight-troubleshoot-out-disk-space.md
         - name: 软锁定 - CPU
@@ -83,36 +72,32 @@
     - name: 使用群集存储
       items:
         - name: 使用 Azure 存储
-          href: ../hdinsight-hadoop-use-blob-storage.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-use-blob-storage.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用 Azure Data Lake Storage Gen2
-          href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用 Azure Data Lake Storage Gen1
-          href: ../hdinsight-hadoop-use-data-lake-store.md
-          maintainContext: true
-    - name: 使用 Apache Hadoop 执行批量查询
-      items:
-        - name: 将 Apache Hive 与 Apache Hadoop 配合使用
-          href: hdinsight-use-hive.md
+          href: ../hdinsight-hadoop-use-data-lake-store.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
+        - name: 使用 Apache Hadoop 执行批量查询
           items:
-            - name: 使用用于 VSCode 的 Spark & Hive 工具
-              href: ../hdinsight-for-vscode.md
-              maintainContext: true
-            - name: 使用用于 Visual Studio 的 HDInsight 工具
-              href: apache-hadoop-use-hive-visual-studio.md
-            - name: 使用 Apache Hive 视图
-              href: apache-hadoop-use-hive-ambari-view.md
-            - name: 使用 Apache Hive Beeline
-              href: apache-hadoop-use-hive-beeline.md
-            - name: 使用 REST API
-              href: apache-hadoop-use-hive-curl.md
-            - name: 使用 Azure PowerShell
-              href: apache-hadoop-use-hive-powershell.md
-            - name: 使用用于 .NET 的 SDK
-              href: apache-hadoop-use-hive-dotnet-sdk.md
-        - name: 将 Java UDF 与 Hive 配合使用
-          href: apache-hadoop-hive-java-udf.md
+            - name: 将 Apache Hive 与 Apache Hadoop 配合使用
+              href: hdinsight-use-hive.md
+              items:
+                - name: 使用用于 VSCode 的 Spark & Hive 工具
+                  href: ../hdinsight-for-vscode.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
+                - name: 使用用于 Visual Studio 的 HDInsight 工具
+                  href: apache-hadoop-use-hive-visual-studio.md
+                - name: 使用 Apache Hive 视图
+                  href: apache-hadoop-use-hive-ambari-view.md
+                - name: 使用 Apache Hive Beeline
+                  href: apache-hadoop-use-hive-beeline.md
+                - name: 使用 REST API
+                  href: apache-hadoop-use-hive-curl.md
+                - name: 使用 Azure PowerShell
+                  href: apache-hadoop-use-hive-powershell.md
+                - name: 使用用于 .NET 的 SDK
+                  href: apache-hadoop-use-hive-dotnet-sdk.md
+                - name: 将 Java UDF 与 Hive 配合使用
+                  href: apache-hadoop-hive-java-udf.md
         - name: 将 MapReduce 与 Apache Hadoop 配合使用
           href: hdinsight-use-mapreduce.md
           items:
@@ -141,8 +126,7 @@
         - name: 大规模提取、转换和加载
           href: apache-hadoop-etl-at-scale.md
         - name: 使用空边缘节点
-          href: ../hdinsight-apps-use-edge-node.md
-          maintainContext: true
+          href: ../hdinsight-apps-use-edge-node.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 处理和分析 JSON 文档
           href: using-json-in-hive.md
         - name: '使用 C# 用户定义的函数'
@@ -150,30 +134,25 @@
         - name: 将 Python 与 Apache Hive 和 Apache Pig 配合使用
           href: python-udf-hdinsight.md
         - name: 创建非交互式身份验证 .NET HDInsight 应用程序
-          href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
-          maintainContext: true
+          href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 使用 HDInsight 工具
       items:
         - name: 适用于 Visual Studio 的工具
-          href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md
-          maintainContext: true
+          href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 适用于 VSCode 的工具
-          href: ../hdinsight-for-vscode.md
-          maintainContext: true
+          href: ../hdinsight-for-vscode.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 适用于 IntelliJ 的工具
-          href: ../spark/apache-spark-intellij-tool-plugin.md
+          href: ../spark/apache-spark-intellij-tool-plugin.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 适用于 Eclipse 的工具
-          href: ../spark/apache-spark-eclipse-tool-plugin.md
+          href: ../spark/apache-spark-eclipse-tool-plugin.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: Data Lake 工具与 Hortonworks 沙盒
-          href: ../hdinsight-hadoop-emulator-visual-studio.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-emulator-visual-studio.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 分析大数据
       items:
         - name: 使用 Power Query 进行分析
           href: apache-hadoop-connect-excel-power-query.md
         - name: 将 Power BI 连接到交互式查询
-          href: ../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
-          maintainContext: true
+          href: ../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 将 Power BI 连接到 Apache Hadoop
           href: apache-hadoop-connect-hive-power-bi.md
         - name: 将 Excel 连接到 Apache Hadoop
@@ -181,104 +160,77 @@
         - name: 使用 Apache Hive JDBC 驱动程序进行连接
           href: apache-hadoop-connect-hive-jdbc-driver.md
         - name: 分析存储的推文
-          href: ../hdinsight-analyze-twitter-data-linux.md
-          maintainContext: true
+          href: ../hdinsight-analyze-twitter-data-linux.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用 Apache Mahout 生成建议
           href: apache-hadoop-mahout-linux-mac.md
         - name: 分析 Application Insights 遥测日志
           href: ../spark/apache-spark-analyze-application-insight-logs.md
-          maintainContext: true
         - name: 适用于 HDInsight 的高级分析
           href: apache-hadoop-deep-dive-advanced-analytics.md
         - name: HDInsight 中的机器学习
-          href: ../hdinsight-machine-learning-overview.md
-          maintainContext: true
+          href: ../hdinsight-machine-learning-overview.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: HDInsight 中的大规模流式处理
-          href: ../hdinsight-streaming-at-scale-overview.md
-          maintainContext: true
+          href: ../hdinsight-streaming-at-scale-overview.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 扩展群集
       items:
         - name: 安装 HDInsight 应用
-          href: ../hdinsight-apps-install-applications.md
-          maintainContext: true
+          href: ../hdinsight-apps-install-applications.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用 Bootstrap 自定义群集
-          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用脚本操作自定义群集
-          href: ../hdinsight-hadoop-customize-cluster-linux.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-customize-cluster-linux.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 开发脚本操作
-          href: ../hdinsight-hadoop-script-actions-linux.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-script-actions-linux.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 添加 Apache Hive 库
-          href: ../hdinsight-hadoop-add-hive-libraries.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-add-hive-libraries.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用 Apache Giraph
-          href: ../hdinsight-hadoop-giraph-install-linux.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-giraph-install-linux.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用 Hue
-          href: ../hdinsight-hadoop-hue-linux.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-hue-linux.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用 Apache Zeppelin
-          href: ../hdinsight-apache-spark-zeppelin-notebook.md
-          maintainContext: true
+          href: ../hdinsight-apache-spark-zeppelin-notebook.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 构建 HDInsight 应用程序
           items:
             - name: 安装自定义应用
-              href: ../hdinsight-apps-install-custom-applications.md
-              maintainContext: true
+              href: ../hdinsight-apps-install-custom-applications.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
             - name: 使用 REST 安装应用
               href: 'https://msdn.microsoft.com/library/mt706515.aspx'
             - name: 将 HDInsight 应用发布到 Azure 市场
-              href: ../hdinsight-apps-publish-applications.md
-              maintainContext: true
+              href: ../hdinsight-apps-publish-applications.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 安全
       items:
         - name: 将 SSH 与 HDInsight 配合使用
-          href: ../hdinsight-hadoop-linux-use-ssh-unix.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-linux-use-ssh-unix.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用 SSH 隧道
-          href: ../hdinsight-linux-ambari-ssh-tunnel.md
-          maintainContext: true
+          href: ../hdinsight-linux-ambari-ssh-tunnel.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 限制数据访问
-          href: ../hdinsight-storage-sharedaccesssignature-permissions.md
-          maintainContext: true
+          href: ../hdinsight-storage-sharedaccesssignature-permissions.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 授权用户访问 Apache Ambari 视图
-          href: ../hdinsight-authorize-users-to-ambari.md
-          maintainContext: true
+          href: ../hdinsight-authorize-users-to-ambari.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 迁移
       items:
         - name: 动机和权益
           href: apache-hadoop-on-premises-migration-motivation.md
-          maintainContext: true
         - name: 最佳做法 - 体系结构
           href: apache-hadoop-on-premises-migration-best-practices-architecture.md
-          maintainContext: true
         - name: 最佳做法 - 基础结构
           href: apache-hadoop-on-premises-migration-best-practices-infrastructure.md
-          maintainContext: true
         - name: 最佳做法 - 存储
           href: apache-hadoop-on-premises-migration-best-practices-storage.md
-          maintainContext: true
         - name: 最佳做法 - 数据迁移
           href: apache-hadoop-on-premises-migration-best-practices-data-migration.md
-          maintainContext: true
         - name: 最佳做法 - 安全和 DevOps
           href: apache-hadoop-on-premises-migration-best-practices-security-devops.md
-          maintainContext: true
     - name: 管理
       items:
         - name: 创建 HDInsight 群集
-          href: ../hdinsight-hadoop-provision-linux-clusters.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-provision-linux-clusters.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
           items:
             - name: 使用 Azure 门户
-              href: ../hdinsight-hadoop-create-linux-clusters-portal.md
-              maintainContext: true
+              href: ../hdinsight-hadoop-create-linux-clusters-portal.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
             - name: 使用 Azure 资源管理器模板
               displayName: 'resource manager template, arm template, resource manager group'
-              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
-              maintainContext: true
+              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
             - name: 使用用于 .NET 的 SDK
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
             - name: 使用用于 Python 的 SDK
@@ -286,17 +238,15 @@
             - name: 使用用于 Java 的 SDK
               href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster'
             - name: 使用 Azure PowerShell
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
-              maintainContext: true
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
             - name: 使用 cURL 和 Azure REST API
-              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
               maintainContext: true
             - name: 使用 Azure CLI
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
               maintainContext: true
         - name: 管理 HDInsight 群集
-          href: ../hdinsight-administer-use-portal-linux.md
-          maintainContext: true
+          href: ../hdinsight-administer-use-portal-linux.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
           items:
             - name: 使用用于 .NET 的 SDK
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management'
@@ -307,45 +257,33 @@
             - name: 使用用于 Go 的 SDK（预览版）
               href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
             - name: 使用 Azure PowerShell
-              href: ../hdinsight-administer-use-powershell.md
-              maintainContext: true
+              href: ../hdinsight-administer-use-powershell.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
             - name: 使用 Azure CLI
-              href: ../hdinsight-administer-use-command-line.md
-              maintainContext: true
+              href: ../hdinsight-administer-use-command-line.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用 Apache Ambari Web UI 管理群集
-          href: ../hdinsight-hadoop-manage-ambari.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-manage-ambari.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
           items:
             - name: 使用 Apache Ambari Web UI 优化群集
-              href: ../hdinsight-changing-configs-via-ambari.md
-              maintainContext: true
+              href: ../hdinsight-changing-configs-via-ambari.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
             - name: 使用 Apache Ambari REST API
-              href: ../hdinsight-hadoop-manage-ambari-rest-api.md
-              maintainContext: true
+              href: ../hdinsight-hadoop-manage-ambari-rest-api.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 删除群集
-          href: ../hdinsight-delete-cluster.md
-          maintainContext: true
+          href: ../hdinsight-delete-cluster.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 手动缩放群集
-          href: ../hdinsight-scaling-best-practices.md
-          maintainContext: true
+          href: ../hdinsight-scaling-best-practices.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 自动缩放群集
-          href: ../hdinsight-autoscale-clusters.md
-          maintainContext: true
+          href: ../hdinsight-autoscale-clusters.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用外部元数据存储
-          href: ../hdinsight-use-external-metadata-stores.md
+          href: ../hdinsight-use-external-metadata-stores.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
           maintainContext: true
         - name: 管理 HDInsight 群集的日志
-          href: ../hdinsight-log-management.md
-          maintainContext: true
+          href: ../hdinsight-log-management.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 添加存储帐户
-          href: ../hdinsight-hadoop-add-storage.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-add-storage.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 上传 Apache Hadoop 作业的数据
-          href: ../hdinsight-upload-data.md
-          maintainContext: true
+          href: ../hdinsight-upload-data.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 将多个 HDInsight 群集与 Data Lake Storage 配合使用
-          href: ../hdinsight-multiple-clusters-data-lake-store.md
-          maintainContext: true
+          href: ../hdinsight-multiple-clusters-data-lake-store.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用 Apache Sqoop 导入和导出数据
           href: hdinsight-use-sqoop.md
           items:
@@ -358,112 +296,84 @@
             - name: 使用 Azure PowerShell 运行
               href: apache-hadoop-use-sqoop-powershell.md
         - name: 使数据分析管道可操作化
-          href: ../hdinsight-operationalize-data-pipeline.md
-          maintainContext: true
+          href: ../hdinsight-operationalize-data-pipeline.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 为工作流使用 Apache Oozie
-          href: ../hdinsight-use-oozie-linux-mac.md
-          maintainContext: true
+          href: ../hdinsight-use-oozie-linux-mac.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 群集及服务端口和 URI
-          href: ../hdinsight-hadoop-port-settings-for-services.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-port-settings-for-services.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 迁移到 Resource Manager 开发工具
-          href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-development-using-azure-resource-manager.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 将 HDInsight 群集升级到更新的版本
-          href: ../hdinsight-upgrade-cluster.md
-          maintainContext: true
+          href: ../hdinsight-upgrade-cluster.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 为 HDInsight 群集修补 OS
-          href: ../hdinsight-os-patching.md
-          maintainContext: true
+          href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 故障排除
-      href: ../hdinsight-troubleshoot-guide.md
-      maintainContext: true
+      href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
       items:
         - name: 排查 HDInsight 群集速度慢或故障问题
-          href: ../hdinsight-troubleshoot-failed-cluster.md
-          maintainContext: true
+          href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: Apache Hadoop HDFS 故障排除
-          href: ../hdinsight-troubleshoot-hdfs.md
-          maintainContext: true
+          href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: Apache HIVE 故障排除
-          href: ../hdinsight-troubleshoot-hive.md
-          maintainContext: true
+          href: ../hdinsight-troubleshoot-hive.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: Apache Hadoop YARN 故障排除
-          href: ../hdinsight-troubleshoot-yarn.md
-          maintainContext: true
+          href: ../hdinsight-troubleshoot-yarn.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 资源
           items:
             - name: 有关在 Linux 上使用 HDInsight 的信息
-              href: ../hdinsight-hadoop-linux-information.md
-              maintainContext: true
+              href: ../hdinsight-hadoop-linux-information.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
             - name: Apache Hadoop 内存和性能
-              href: ../hdinsight-hadoop-stack-trace-error-messages.md
-              maintainContext: true
+              href: ../hdinsight-hadoop-stack-trace-error-messages.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
             - name: 访问 Linux 上的 Apache Hadoop YARN 应用程序日志
-              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
-              maintainContext: true
+              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
             - name: 为 Apache Hadoop 服务启用堆转储
-              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
-              maintainContext: true
+              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
             - name: 了解和解决 WebHCat 错误
-              href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
-              maintainContext: true
+              href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
             - name: 通过 Apache Hive 设置解决内存不足错误
-              href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
-              maintainContext: true
+              href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
             - name: 优化 Apache Hive 查询
-              href: ../hdinsight-hadoop-optimize-hive-query.md
-              maintainContext: true
+              href: ../hdinsight-hadoop-optimize-hive-query.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
 - name: 企业就绪情况
   items:
     - name: 企业安全性
       items:
         - name: 概述
-          href: ../domain-joined/hdinsight-security-overview.md
-          maintainContext: true
+          href: ../domain-joined/hdinsight-security-overview.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 企业安全性计划
-          href: ../domain-joined/apache-domain-joined-architecture.md
-          maintainContext: true
+          href: ../domain-joined/apache-domain-joined-architecture.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 在 HDInsight 中配置企业安全性
-          href: ../domain-joined/apache-domain-joined-configure.md
-          maintainContext: true
+          href: ../domain-joined/apache-domain-joined-configure.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用 Azure AD DS 在 HDInsight 中配置企业安全性
-          href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md
-          maintainContext: true
+          href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 配置 Apache Hive 策略
-          href: ../domain-joined/apache-domain-joined-run-hive.md
-          maintainContext: true
+          href: ../domain-joined/apache-domain-joined-run-hive.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用企业安全性管理群集
-          href: ../domain-joined/apache-domain-joined-manage.md
-          maintainContext: true
+          href: ../domain-joined/apache-domain-joined-manage.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 保护数据
-      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
-      maintainContext: true
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 网络访问
       items:
         - name: HDInsight 虚拟网络体系结构
-          href: ../hdinsight-virtual-network-architecture.md
+          href: ../hdinsight-virtual-network-architecture.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 为 HDInsight 计划 VNET
-          href: ../hdinsight-plan-virtual-network-deployment.md
+          href: ../hdinsight-plan-virtual-network-deployment.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 为 HDInsight 创建 VNET
-          href: ../hdinsight-create-virtual-network.md
+          href: ../hdinsight-create-virtual-network.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: NSG 和 UDR 所需的 IP 地址
-          href: ../hdinsight-management-ip-addresses.md
+          href: ../hdinsight-management-ip-addresses.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用防火墙限制出站流量
-          href: ../hdinsight-restrict-outbound-traffic.md
+          href: ../hdinsight-restrict-outbound-traffic.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 将 HDInsight 与本地网络相连
-          href: ../connect-on-premises-network.md
-          maintainContext: true
+          href: ../connect-on-premises-network.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 使用 Azure Monitor 日志进行监视
       items:
         - name: 使用 Azure Monitor 日志
-          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 将查询与 Azure Monitor 日志配合使用
-          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-          maintainContext: true
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 监视群集性能
-          href: ../hdinsight-key-scenarios-to-monitor.md
+          href: ../hdinsight-key-scenarios-to-monitor.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
           maintainContext: true
         - name: 分析 Apache Hadoop 日志
           href: apache-hadoop-debug-jobs.md
@@ -480,7 +390,7 @@
     - name: 用于 Java 的 SDK
       href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable'
     - name: 用于 Go 的 SDK
-      href: ../hdinsight-go-sdk-overview.md
+      href: ../hdinsight-go-sdk-overview.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: .NET (Apache HBase)
       href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
     - name: REST
@@ -493,18 +403,15 @@
 - name: 资源
   items:
     - name: 将 .NET 解决方案迁移到 Linux 群集
-      href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
-      maintainContext: true
+      href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: 发行说明
       items:
         - name: 当前发行说明
-          href: ../hdinsight-release-notes.md
-          maintainContext: true
+          href: ../hdinsight-release-notes.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 已存档的发行说明
-          href: ../hdinsight-release-notes-archive.md
-          maintainContext: true
+          href: ../hdinsight-release-notes-archive.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: 迁移到群集配置的基于角色的细化访问权限
-          href: ../hdinsight-migrate-granular-access-cluster-configurations.md
+          href: ../hdinsight-migrate-granular-access-cluster-configurations.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: 在论坛上获取帮助
@@ -516,5 +423,4 @@
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 适用于 HDInsight 的 Windows 工具
-      href: ../hdinsight-hadoop-windows-tools.md
-      maintainContext: true
+      href: ../hdinsight-hadoop-windows-tools.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json

@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 5e707fb004af7bbce915baf4b059514fcae8e52b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7dd053e3a9824ac0817db528b8b053666e1ded04
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725923"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881815"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建来宾配置策略
 
@@ -321,6 +321,14 @@ New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.w
 
 发布更新包的最简单方法是重复本文中所述的过程, 并提供更新的版本号。
 这将保证所有属性都已正确更新。
+
+## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>将 Windows 组策略内容转换为 Azure 策略来宾配置
+
+审核 Windows 计算机时, 来宾配置是 PowerShell Desired 状态配置语法的实现。
+DSC 社区已发布工具, 用于将导出的组策略模板转换为 DSC 格式。
+通过将此工具与上述来宾配置 cmdlet 结合使用, 你可以转换 Windows 组策略内容并打包/发布它以供 Azure 策略审核。
+有关使用该工具的详细信息, 请参阅[文章快速入门:将组策略转换为](/powershell/dsc/quickstarts/gpo-quickstart)DSC。
+内容转换完成后, 创建 pakcage 并将其发布为 Azure 策略的步骤与任何 DSC 内容相同。
 
 ## <a name="optional-signing-guest-configuration-packages"></a>可选：为来宾配置包签名
 

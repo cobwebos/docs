@@ -1,6 +1,6 @@
 ---
-title: 将与 Oracle 云基础结构集成 Microsoft Azure |Microsoft Docs
-description: 了解将与数据库在 Oracle 云基础结构 (OCI) 在 Microsoft Azure 上运行的 Oracle 应用集成的解决方案。
+title: 将 Microsoft Azure 与 Oracle 云基础结构集成 |Microsoft Docs
+description: 了解将 Microsoft Azure 上运行的 Oracle 应用与 Oracle 云基础结构中的数据库 (OCI) 集成的解决方案。
 services: virtual-machines-linux
 documentationcenter: ''
 author: romitgirdhar
@@ -15,66 +15,66 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: fcdd46ea60ea53088ffacd7d13693b16a208d527
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 309c481c0ebf0e6061524a12356e67394e5db8d2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707468"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880829"
 ---
-# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>集成 Microsoft Azure 和 Oracle 云基础结构 （预览版） 的 oracle 应用程序解决方案
+# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>集成 Microsoft Azure 和 Oracle 云基础结构 (预览版) 的 oracle 应用程序解决方案
 
-Microsoft 和 Oracle 合作提供低延迟、 高吞吐量跨云连接，让您充分利用最佳的两个云。 
+Microsoft 和 Oracle 合作提供低延迟、高吞吐量跨云连接, 使你能够充分利用这两个云。 
 
-使用此跨云连接，可以分区的多层应用程序运行在 Oracle 云基础结构 (OCI) 的数据库层和应用程序和 Microsoft Azure 上的其他层。 体验是类似于单一云中运行整个解决方案堆栈。 
+使用此跨云连接, 可以对多层应用程序进行分区, 以便在 Oracle 云基础结构 (OCI) 上运行数据库层, 并 Microsoft Azure 上的应用程序和其他层。 经验类似于在单个云中运行整个解决方案堆栈。 
 
 > [!IMPORTANT]
-> 此跨云功能目前处于预览状态，而有些[限制](#preview-limitations)。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> 此跨云功能目前处于预览阶段, 但有一些[限制](#preview-limitations)。 若要在 Azure 与 OCI 之间实现低延迟连接, 必须首先为此功能列出 Azure 订阅。 你必须通过使用你的订阅 ID 向发送电子oracleconnect@microsoft.com邮件来注册预览。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 你还可以联系 Microsoft 代表, 为此预览版启用此功能。 此预览版在提供时没有服务级别协议, 不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息, 请参阅 Microsoft Azure 预览版的[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
-如果想在部署完全在 Azure 基础结构上的 Oracle 解决方案，请参阅[Oracle VM 映像和 Microsoft Azure 上的部署](oracle-vm-solutions.md)。
+如果你有兴趣完全在 Azure 基础结构上部署 Oracle 解决方案, 请参阅[Microsoft Azure 上的 ORACLE VM 映像及其部署](oracle-vm-solutions.md)。
 
 ## <a name="scenario-overview"></a>方案概述
 
-跨云连接提供了有关您在享受 OCI 中的托管的数据库服务的优势的 Azure 虚拟机上运行 Oracle 的行业领先的应用程序和你自己的自定义应用程序，解决方案。 
+跨云连接为您提供了一种解决方案, 用于在 Azure 虚拟机上运行 Oracle 业界领先的应用程序和您自己的自定义应用程序, 同时在 OCI 中享受托管数据库服务的优势。 
 
-可以在跨云配置中运行的应用程序包括：
+可在跨云配置中运行的应用程序包括:
 
 * 电子商务套件
 * JD Edwards EnterpriseOne
 * PeopleSoft
 * Oracle 零售应用程序
-* Oracle Hyperion 财务管理
+* Oracle Hyperion 金融管理
 
-下图是已连接解决方案的高级概述。 为简单起见，该图显示仅应用层和数据层。 具体取决于应用程序体系结构，解决方案可以包括在 Azure 中的更多层，如 web 层。 有关详细信息，请参阅以下部分。
+下图是连接解决方案的高级概述。 为简单起见, 关系图只显示应用层和数据层。 根据应用程序的体系结构, 你的解决方案可以在 Azure 中包含其他层, 如 web 层。 有关详细信息，请参阅以下部分。
 
 ![Azure OCI 解决方案概述](media/oracle-oci-overview/crosscloud.png)
 
 ## <a name="preview-limitations"></a>预览版限制
 
-* 在预览版中的跨云连接被限制为 Azure 美国东部 (eastus) 区域和 OCI 阿什本 (我们-阿什本-1) 区域。
+* 预览版中的跨云连接仅限于 Azure 美国东部 (eastus) 区域和 OCI 阿什本 (美国-阿什本-1) 区域。
 
 ## <a name="networking"></a>网络
 
-企业客户通常选择多元化并通过各种业务和操作的原因的多个云部署工作负荷。 若要使多样化，客户互连云网络使用 internet，IPSec VPN 或使用通过你的本地网络的云提供程序的直接连接解决方案。 实现互连云网络可以在时间、 资金、 设计、 采购、 安装、 测试和操作中需要大量投资。 
+企业客户常常出于各种业务和操作原因选择多元化并部署多个云上的工作负载。 若要多元化, 客户需要通过 internet、IPSec VPN 或通过本地网络使用云提供商的直接连接解决方案来互连云网络。 互连云网络可能需要大量的时间、资金、设计、采购、安装、测试和操作方面的投资。 
 
-若要解决这些客户面临的挑战，Oracle 和 Microsoft 已启用集成多云体验。 跨云网络建立的连接[ExpressRoute](../../../expressroute/expressroute-introduction.md)线路在 Microsoft Azure 中使用[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) OCI 中的线路。 此连接是可能的 Azure ExpressRoute 对等互连位置所在接近或 OCI FastConnect 与相同的对等互连位置中。 此设置可以安全、 快速之间进行连接而不需要中间服务提供程序的两个云。
+为了解决这些客户面临的难题, Oracle 和 Microsoft 已经实现了集成的多云体验。 跨云网络是通过将 Microsoft Azure 中的[ExpressRoute](../../../expressroute/expressroute-introduction.md)线路与 OCI 中的[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)线路连接起来建立的。 在 Azure ExpressRoute 对等互连位置位于与 OCI FastConnect 相同的对等位置中时, 可以进行此连接。 此设置允许在两个云之间进行安全的快速连接, 无需使用中间服务提供商。
 
-使用 ExpressRoute 和 FastConnect，客户可以对等互连使用 OCI 中的虚拟云网络在 Azure 中的虚拟网络的专用 IP 地址空间不重叠。 对等互连两个网络允许虚拟网络进行通信 OCI 虚拟云网络中的资源，就好像它们是在同一网络中的资源。
+使用 ExpressRoute 和 FastConnect, 客户可以将 Azure 中的虚拟网络与 OCI 中的虚拟云网络对等互连, 前提是专用 IP 地址空间不重叠。 对等互连这两种网络允许虚拟网络中的资源与 OCI 虚拟云网络中的资源通信, 就好像它们都在同一网络中。
 
 ## <a name="network-security"></a>网络安全
 
-网络安全是任何企业应用程序中，一个重要组件，并是此多云解决方案的核心。 通过 ExpressRoute 和 FastConnect 任何流量通过专用网络上。 此配置允许 Azure 虚拟网络与 Oracle 虚拟云网络之间安全通信。 不需要提供 Azure 中的任何虚拟机的公共 IP 地址。 同样，无需在 OCI 的 internet 网关。 所有通信都都通过计算机的专用 IP 地址。
+网络安全是任何企业应用程序的重要组成部分, 是此多云解决方案的核心。 经由 ExpressRoute 和 FastConnect 的任何流量通过专用网络传递。 此配置允许在 Azure 虚拟网络和 Oracle 虚拟云网络之间进行安全通信。 无需向 Azure 中的任何虚拟机提供公共 IP 地址。 同样, 在 OCI 中不需要 internet 网关。 所有通信都通过计算机的专用 IP 地址进行。
 
-此外，您可以设置[安全列表](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)OCI 虚拟云网络和安全规则 (附加到 Azure[网络安全组](../../../virtual-network/security-overview.md))。 使用这些规则来控制虚拟网络中的计算机之间的流量。 计算机级别、 子网级别，以及虚拟网络级别，可以添加网络安全规则。
+此外, 还可以在 OCI 虚拟云网络和安全规则 (附加到 Azure[网络安全组](../../../virtual-network/security-overview.md)) 上设置[安全列表](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)。 使用这些规则来控制虚拟网络中的计算机之间的流量。 可以在计算机级别、子网级别以及虚拟网络级别添加网络安全规则。
  
 ## <a name="identity"></a>标识
 
-标识是关系的一个 Microsoft 和 Oracle 数据库之间的关键所在。 完成了大量的工作集成[Oracle 标识云服务](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html)(IDC) 与[Azure Active Directory](../../../active-directory/index.yml) (Azure AD)。 Azure AD 是 Microsoft 的基于云的标识和访问管理服务。 它可帮助你的用户登录并访问各种资源。 Azure AD 还可以管理你的用户及其权限。
+标识是 Microsoft 与 Oracle 之间合作关系的核心支柱之一。 将[Oracle 标识云服务](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html)(IDCS) 与[Azure Active Directory](../../../active-directory/index.yml) (Azure AD) 集成的工作已完成。 Azure AD 是 Microsoft 的基于云的标识和访问管理服务。 它可帮助用户登录和访问各种资源。 Azure AD 还允许管理用户及其权限。
 
-目前，这种集成，可在一个中心位置，这是 Azure Active Directory 中管理。 Azure AD 与相应的 Oracle directory 同步目录中的任何更改，并用于实现单一登录以跨云的 Oracle 解决方案。
+目前, 这种集成使你可以在一个中心位置进行管理, Azure Active Directory。 Azure AD 将目录中的任何更改与相应的 Oracle 目录同步, 并用于单一登录到跨云 Oracle 解决方案。
 
 ## <a name="next-steps"></a>后续步骤
 
-开始使用[跨云网络](configure-azure-oci-networking.md)Azure 与 OCI 之间。 
+开始在 Azure 与 OCI 之间使用[跨云网络](configure-azure-oci-networking.md)。 
 
-有关详细信息和有关 OCI 白皮书，请参阅[Oracle 云](https://docs.cloud.oracle.com/iaas/Content/home.htm)文档。
+有关 OCI 的详细信息和白皮书, 请参阅[Oracle 云](https://docs.cloud.oracle.com/iaas/Content/home.htm)文档。

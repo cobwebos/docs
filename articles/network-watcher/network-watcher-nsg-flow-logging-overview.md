@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 5c156e30f4fa0270082cd1108958c3472130a460
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1401e378daa0c0a9258858840653899e76c9421c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640829"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881775"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -57,7 +57,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
             * **flows** - 流的集合
                 * **mac** - VM 的 NIC 的 MAC 地址，用于收集流
                 * **flowTuples** - 一个字符串，包含逗号分隔格式的流元组的多个属性
-                    * **Time Stamp** - 此值为时间戳，表示流的发生时间，采用 UNIX EPOCH 格式
+                    * **时间戳**-此值是在 UNIX epoch 格式中出现流时的时间戳
                     * **Source IP** - 源 IP
                     * **Destination IP** - 目标 IP
                     * **Source Port** - 源端口

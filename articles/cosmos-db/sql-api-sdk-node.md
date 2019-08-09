@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 1cb6889305e5f6bce5728039712a1834dc2e9353
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ead98e12cbf417ae1218320a8814df0222f07172
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626734"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883684"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -39,9 +39,212 @@ ms.locfileid: "60626734"
 | 示例 | [Node.js 代码示例](sql-api-nodejs-samples.md)
 | 入门教程 | [JavaScript SDK 入门](sql-api-nodejs-get-started.md)
 | Web 应用教程 | [使用 Azure Cosmos DB 创建 Node.js Web 应用程序](sql-api-nodejs-application.md)
-| 当前受支持的平台 | [Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/) - 要求 SDK 版本 2.0.0 及更高版本。<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
+| 当前受支持的平台 | Node.js [v12. x](https://nodejs.org/en/blog/release/v12.7.0/) SDK 版本 3.x. x. x<br/>Node.js [V10](https://nodejs.org/en/blog/release/v10.6.0/)版本 3.x. x. x<br/>Node.js [V8](https://nodejs.org/en/blog/release/v8.16.0/)版本 3.x. x. x<br/>Node.js [v6. x](https://nodejs.org/en/blog/release/v6.10.3/) SDK 版本2。x<br/>Node.js [v 4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)-SDK 版本1。x<br/> Node.js [v 0.12](https://nodejs.org/en/blog/release/v0.12.0/)-SDK 版本1。x<br/> Node.js [v 0.10](https://nodejs.org/en/blog/release/v0.10.0/)-SDK 版本1。x
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="3.1.0"/>3.1.0</a>
+* 将默认 ResponseContinuationTokenLimitInKB 设置为1kb。 默认情况下, 我们会将此限制为 1kb, 以避免长标头 (node.js 具有全局标头大小限制)。 用户可以将此字段设置为允许使用更长的标头, 这有助于后端优化查询执行。
+* 删除 disableSSLVerification。 此选项包含[#388](https://github.com/Azure/azure-cosmos-js/pull/388)中所述的新替代项
+
+### <a name="3.0.4"/>3.0.4</a>
+* 允许 initialHeaders 显式设置分区键标头
+* 使用包 json # 文件来阻止发布外来文件
+* 修复旧版本节点上的路由映射排序错误 + v8
+* 当用户提供部分重试选项时修复 bug
+
+### <a name="3.0.3"/>3.0.3</a>
+* 阻止 Webpack 解析调用的模块时需要
+
+### <a name="3.0.2"/>3.0.2</a>
+* 修复长时间的 bug, 其中对于聚合查询, 其中的 ru 始终报告为0
+
+### <a name="3.0.0"/>3.0.0</a>
+
+🎉 v3 版本! 🎉很多新功能、bug 修复和一些重大更改。 此版本的主要目标:
+
+* 实现主要的新功能
+  * 不同查询
+  * 限制/偏移查询
+  * 用户可取消请求
+* 更新到最新的 Cosmos REST API 版本, 其中所有容器的规模都无限制
+* 更轻松地在浏览器中使用 Cosmos
+* 更好地适应新的 Azure JS SDK 准则
+
+#### <a name="migration-guide-for-breaking-changes"></a>重大更改的迁移指南
+##### <a name="improved-client-constructor-options"></a>改进的客户端构造函数选项
+
+构造函数选项已简化:
+
+* 已将 masterKey 重命名为 key 并移至顶级
+* 之前的属性在选项上。 auth 已移到顶层
+
+``` js
+// v2
+const client = new CosmosClient({
+    endpoint: "https://your-database.cosmos.azure.com",
+    auth: {
+        masterKey: "your-primary-key"
+    }
+})
+
+// v3
+const client = new CosmosClient({
+    endpoint: "https://your-database.cosmos.azure.com",
+    key: "your-primary-key"
+})
+```
+
+##### <a name="simplified-queryiterator-api"></a>简化的 QueryIterator API
+在 v2 中, 可以通过多种不同的方法来迭代或检索查询中的结果。 我们已尝试简化 v3 API 并删除类似或重复的 Api:
+
+* 删除 iterator。 next () 和 iterator。 current ()。 使用 fetchNext () 获取结果页。
+* 删除 iterator ()。 请改用异步迭代器。
+* executeNext () 已重命名为 fetchNext ()
+* toArray () 已重命名为 fetchAll ()
+* 页面现在是正确的响应对象, 而不是纯 JS 对象
+* const container = client。 container (containerId)
+
+``` js
+// v2
+container.items.query('SELECT * from c').toArray()
+container.items.query('SELECT * from c').executeNext()
+container.items.query('SELECT * from c').forEach(({ body: item }) => { console.log(item.id) })
+
+// v3
+container.items.query('SELECT * from c').fetchAll()
+container.items.query('SELECT * from c').fetchNext()
+for await(const { result: item } in client.databases.readAll().getAsyncIterator()) {
+    console.log(item.id)
+}
+```
+
+##### <a name="fixed-containers-are-now-partitioned"></a>固定容器现在已分区
+Cosmos 服务现在支持所有容器上的分区键, 包括以前创建为固定容器的分区键。 V3 SDK 更新为实现此更改的最新 API 版本, 但不会中断。 如果没有为操作提供分区键, 则默认为适用于所有现有容器和文档的系统密钥。
+
+##### <a name="upsert-removed-for-stored-procedures"></a>已为存储过程删除 Upsert
+不允许对非分区集合进行以前的 upsert, 但使用 API 版本更新时, 所有集合都已分区, 因此我们完全删除了它。
+
+##### <a name="item-reads-will-not-throw-on-404"></a>项读取在404上不会引发
+const container = client。 container (containerId)
+
+``` js
+// v2
+try {
+    container.items.read(id, undefined)
+} catch (e) {
+    if (e.code === 404) { console.log('item not found') }
+}
+
+// v3
+const { result: item }  = container.items.read(id, undefined)
+if (item === undefined) { console.log('item not found') }
+```
+
+##### <a name="default-multi-region-write"></a>默认多区域写入
+如果 Cosmos 配置支持, SDK 现在会写入多个区域。 这是以前选择的行为。
+
+##### <a name="proper-error-objects"></a>适当的错误对象
+失败的请求现在引发正确的错误或错误子类。 以前, 它们会引发纯 JS 对象。
+
+#### <a name="new-features"></a>新增功能
+##### <a name="user-cancelable-requests"></a>用户可取消的请求
+通过在内部进行提取, 可以使用浏览器 AbortController API 来支持用户可取消的操作。 如果有多个请求可能正在进行 (例如跨分区查询) 的操作, 则将取消所有操作请求。 新式浏览器用户已有 AbortController。 Node.js 用户将需要使用填充代码库
+
+``` js
+ const controller = new AbortController()
+ const {result: item} = await items.query('SELECT * from c', { abortSignal: controller.signal});
+ controller.abort()
+```
+
+##### <a name="set-throughput-as-part-of-dbcontainer-create-operation"></a>在 db/容器创建操作过程中设置吞吐量
+``` js
+const { database }  = client.databases.create({ id: 'my-database', throughput: 10000 })
+database.containers.create({ id: 'my-container', throughput: 10000 })
+```
+
+##### <a name="azurecosmos-sign"></a>@azure/cosmos-sign
+标头令牌生成已拆分为新库@azure/cosmos-sign。 直接调用 REST API Cosmos 的任何人都可以使用它来使用我们在内部@azure/cosmos调用的相同代码对标头进行签名。
+
+##### <a name="uuid-for-generated-ids"></a>生成的 Id 的 UUID
+v2 具有用于生成项 Id 的自定义代码。 我们已切换到众所周知且维护的社区库 uuid。
+
+##### <a name="connection-strings"></a>连接字符串
+现在可以传递从 Azure 门户复制的连接字符串:
+
+``` js
+const client = new CosmosClient("AccountEndpoint=https://test-account.documents.azure.com:443/;AccountKey=c213asdasdefgdfgrtweaYPpgoeCsHbpRTHhxuMsTaw==;")
+Add DISTINCT and LIMIT/OFFSET queries (#306)
+ const { results } = await items.query('SELECT DISTINCT VALUE r.name FROM ROOT').fetchAll()
+ const { results } = await items.query('SELECT * FROM root r OFFSET 1 LIMIT 2').fetchAll()
+```
+
+#### <a name="improved-browser-experience"></a>改善了浏览器体验
+尽管可以在浏览器中使用 v2 SDK, 但这并不是理想的体验。 需要填充代码多个 node.js 内置库并使用 Webpack 或包裹等捆绑程序。 对于浏览器用户, v3 SDK 使全新体验变得更好。
+
+* 将请求内部替换为 fetch (#245)
+* 删除缓冲区的用法 (#330)
+* 删除节点内置使用情况以支持通用包/Api (#328)
+* 切换到节点中止-控制器 (#294)
+
+#### <a name="bug-fixes"></a>Bug 修复
+* 修复产品/服务读取并返回产品/服务测试 (#224)
+* 修复为 enableendpointdiscovery (#207)
+* 修复分页结果上缺少的 ru (#360)
+* 展开 SQL 查询参数类型 (#346)
+* 向 ItemDefinition 添加 ttl (#341)
+* 修复 CP 查询指标 (#311)
+* 将 activityId 添加到 FeedResponse (#293)
+* 将 _ts type 从 string 切换到 number (#252) (#295)
+* 修复请求费用聚合 (#289)
+* 允许空字符串分区键 (#277)
+* 将字符串添加到冲突查询类型 (#237)
+* 将 uniqueKeyPolicy 添加到容器 (#234)
+
+#### <a name="engineering-systems"></a>工程系统
+并非总是最明显的更改, 但可以帮助我们的团队更快地交付更好的代码。
+
+* 为生产生成使用汇总 (#104)
+* 更新到 Typescript 3.5 (#327)
+* 转换为 TS 项目引用。 提取测试文件夹 (#270)
+* 启用 noUnusedLocals 和 noUnusedParameters (#275)
+* 用于 CI 生成的 Azure Pipelines YAML (#298)
+
+### <a name="2.1.5"/>2.1.5</a>
+* 无代码更改。 修复了在2.1.4 包中包含一些额外文件的问题。
+
+### <a name="2.1.4"/>2.1.4</a>
+* 修复重试策略内的区域故障转移
+* Fix ChangeFeed hasMoreResults 属性
+* 开发依赖项更新
+* 添加 PolicheckExclusions
+
+### <a name="2.1.3"/>2.1.3</a>
+* 将 _ts type 从 string 切换到 number
+* 修复默认索引测试
+* 向后移植 uniqueKeyPolicy 到 v2
+* 演示和演示调试修补程序
+
+### <a name="2.1.2"/>2.1.2</a>
+* 向后移植提供 v3 分支中的修补程序
+* 修复 executeNext () 类型签名中的 bug
+* 拼写错误修复
+
+### <a name="2.1.1"/>2.1.1</a>
+* 构建重构。 允许在生成时拉取 SDK 版本。
+
+### <a name="2.1.0"/>2.1.0</a>
+#### <a name="new-features"></a>新功能
+* 添加了 ChangeFeed 支持 (#196)
+* 添加了用于索引的 MultiPolygon 数据类型 (#191)
+* 向构造函数添加 "key" 属性作为 masterKey 的别名 (#202)
+
+#### <a name="fixes"></a>修复项
+* 修复 bug, 其中 next () 在迭代器上返回错误的值
+
+#### <a name="engineering-improvements"></a>工程改进
+* 添加 typescript 消耗的集成测试 (#199)
+* 启用直接从 GitHub 安装 (#194)
 
 ### <a name="2.0.5"/>2.0.5</a>
 * 添加节点代理类型的接口。 Typescript 用户不再需要安装 @types/node 作为依赖项
@@ -183,7 +386,7 @@ ms.locfileid: "60626734"
 
 ### <a name="1.2.0"/>1.2.0</a>
 * 添加对地理空间索引的支持。
-* 验证所有资源的 ID 属性。 资源的 ID 不能包含 ？、/、#、&#47;&#47;、字符或以空格结尾。
+* 验证所有资源的 ID 属性。 资源的 id 不能包含？、/、# &#47; &#47;、、字符或以空格结尾。
 * 将新标头“索引转换进度”添加到 ResourceResponse。
 
 ### <a name="1.1.0"/>1.1.0</a>
@@ -204,7 +407,7 @@ ms.locfileid: "60626734"
 * GA SDK。
 
 ## <a name="release--retirement-dates"></a>发布和停用日期
-Microsoft 至少会在停用 SDK 前提前 12 个月  发出通知，以便顺利转换为更高版本/受支持版本。
+Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。
 
@@ -250,9 +453,9 @@ Microsoft 至少会在停用 SDK 前提前 12 个月  发出通知，以便顺�
 | [1.0.1](#1.0.1) |2015年 5 月 15日 |--- |
 | [1.0.0](#1.0.0) |2015 年 4 月 8 日 |--- |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。
 

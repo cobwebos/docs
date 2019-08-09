@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 912bda010ddcf9b02506df14f06fb0650271a53b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 20d5131c773e2a9f7b6830725ccd934786d6dd67
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382977"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880949"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>设置安全信息以使用验证器应用（预览）
 
@@ -64,6 +64,9 @@ ms.locfileid: "68382977"
     ![“设置验证器应用”页](media/security-info/securityinfo-myprofile-setupauthapp.png)
 
 6. 打开 Microsoft Authenticator 应用，选择允许通知（如果出现相关提示），通过右上角的“自定义和控制”图标中选择“添加帐户”，然后选择“工作或学校帐户”。
+
+    >[!Note]
+    >如果这是你第一次设置 Microsoft Authenticator 应用程序, 你可能会收到询问是允许应用程序访问你的相机 (iOS) 还是允许应用拍摄图片并录制视频 (Android) 的提示。 你必须选择 "**允许**", 以便验证器应用可以访问你的相机, 以便在下一步中对 QR 代码进行图片。 如果不允许相机, 仍可以设置验证器应用, 但需要手动添加代码信息。 有关如何手动添加代码的信息, 请参阅请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
 
 7. 返回到计算机上的“设置帐户”页，然后选择“下一步”。
 

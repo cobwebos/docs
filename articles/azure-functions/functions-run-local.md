@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 16e12021a65a09376293f28efe9a6e9ef74ef5c2
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f0f00745f2f7781bda0e636167b1cf1a4045f7cd
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839568"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881372"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -446,11 +446,25 @@ func deploy
 
 ## <a name="monitoring-functions"></a>监视函数
 
-若要监视函数的执行, 推荐的方法是将与 Azure 应用程序 Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，当你使用 Azure CLI 创建函数应用时，Azure 的函数应用中的集成并未完成。
+若要监视函数的执行, 推荐的方法是将与 Azure 应用程序 Insights 集成。 你还可以将执行日志流式传输到你的本地计算机。 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+
+### <a name="enable-application-insights-integration"></a>启用 Application Insights 集成
+
+在 Azure 门户中创建函数应用时, 默认情况下将为你执行 Application Insights 集成。 但是，当你使用 Azure CLI 创建函数应用时，Azure 的函数应用中的集成并未完成。
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+### <a name="enable-streaming-logs"></a>启用流式传输日志
+
+你可以在本地计算机上的命令行会话中查看函数正在生成的日志文件流。 
+
+#### <a name="native-streaming-logs"></a>本机流式处理日志
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
+
+这种类型的流式处理日志要求你为 function app[启用 Application Insights 集成](#enable-application-insights-integration)。   
+
+
 ## <a name="next-steps"></a>后续步骤
 
 Azure Functions Core Tools 是[开源工具且托管在 GitHub 上](https://github.com/azure/azure-functions-cli)。  

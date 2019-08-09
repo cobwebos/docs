@@ -2,17 +2,17 @@
 title: 如何使用 Azure IoT 中心设备 SDK 管理连接和可靠的消息传送
 description: 了解如何在使用 Azure IoT 中心设备 SDK 时改善设备连接和消息传送
 services: iot-hub
-author: yzhong94
-ms.author: yizhon
+author: robinsh
+ms.author: robinsh
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
-ms.openlocfilehash: 838d0cd4f40666bc3fced22a607b9f94f27b08d3
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: e881dffbd1f286047ffcff226eb3dede7a138a0c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67535501"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884341"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>使用 Azure IoT 中心设备 SDK 管理连接和可靠的消息传送
 
@@ -28,7 +28,7 @@ ms.locfileid: "67535501"
 
 * [C/Python/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
 
-* [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/requirements/retrypolicy.md)
+* [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/retrypolicy.md)
 
 * [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 
@@ -36,7 +36,7 @@ ms.locfileid: "67535501"
 
 ## <a name="designing-for-resiliency"></a>复原设计
 
-IoT 设备通常依赖非连续或不稳定的网络连接（例如，GSM 或卫星）。 当设备与基于云的服务交互时，由于间歇性服务可用性和基础设施级别故障或暂时性故障，可能会发生错误。 在设备运行的应用程序必须管理连接、 重新连接和发送和接收消息的重试逻辑的机制。 此外，重试策略要求在很大程度上取决于设备的 IoT 方案、上下文和功能。
+IoT 设备通常依赖非连续或不稳定的网络连接（例如，GSM 或卫星）。 当设备与基于云的服务交互时，由于间歇性服务可用性和基础设施级别故障或暂时性故障，可能会发生错误。 在设备上运行的应用程序必须管理连接、重新连接以及用于发送和接收消息的重试逻辑的机制。 此外，重试策略要求在很大程度上取决于设备的 IoT 方案、上下文和功能。
 
 Azure IoT 中心设备 SDK 旨在简化从云到设备和从设备到云的连接及通信。 这些 SDK 提供了一种连接到 Azure IoT 中心的可靠方式以及一组用于发送和接收消息的全面选项。 开发人员还可以修改现有实现，以针对给定方案自定义更好的重试策略。
 
@@ -44,7 +44,7 @@ Azure IoT 中心设备 SDK 旨在简化从云到设备和从设备到云的连�
 
 ## <a name="connection-and-retry"></a>连接和重试
 
-管理连接时，本部分提供的重新连接，然后重试模式的概述。 它详细介绍了在设备应用程序中使用不同重试策略的实现指南，并列出了设备 SDK 中的相关 API。
+本部分概述了管理连接时可用的重新连接和重试模式。 它详细介绍了在设备应用程序中使用不同重试策略的实现指南，并列出了设备 SDK 中的相关 API。
 
 ### <a name="error-patterns"></a>错误模式
 
@@ -83,7 +83,7 @@ SDK 提供三种重试策略：
 
 ### <a name="retry-policy-apis"></a>重试策略 API
 
-   | SDK 中 IsInRole 中的声明 | SetRetryPolicy 方法 | 策略实现 | 实施指南 |
+   | SDK | SetRetryPolicy 方法 | 策略实现 | 实施指南 |
    |-----|----------------------|--|--|
    |  C/Python/iOS  | [IOTHUB_CLIENT_RESULT IoTHubClient_SetRetryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/2018-05-04/iothub_client/inc/iothub_client.h#L188)        | **默认**：[IOTHUB_CLIENT_RETRY_EXPONENTIAL_BACKOFF](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**自定义：** 使用可用的 [retryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**不重试：** [IOTHUB_CLIENT_RETRY_NONE](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)  | [C/Python/iOS 实现](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#)  |
    | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclientconfig.setretrypolicy?view=azure-java-stable)        | **默认**：[ExponentialBackoffWithJitter 类](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**自定义：** 实现 [RetryPolicy 接口](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java)<BR>**不重试：** [NoRetry 类](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Java 实现](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |

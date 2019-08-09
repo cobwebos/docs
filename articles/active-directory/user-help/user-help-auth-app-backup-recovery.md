@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4148d8a3b44336677ba028807aadbae424b7223
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ba99001159277d9d221910cafa4f5165ae2bd812
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382504"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880758"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用备份和恢复帐户凭据
 
@@ -93,6 +93,8 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
     ![Microsoft Authenticator 应用，允许扫描 QR 码](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
+    >如果这是你第一次设置 Microsoft Authenticator 应用程序, 你可能会收到询问是允许应用程序访问你的相机 (iOS) 还是允许应用拍摄图片并录制视频 (Android) 的提示。 你必须选择 "**允许**", 以便验证器应用可以访问你的相机, 以便在下一步中对 QR 代码进行图片。 如果不允许相机, 仍可以设置验证器应用, 但需要手动添加代码信息。 有关如何手动添加代码的信息, 请参阅请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
+    >
     >有关如何获取 QR 码的详细信息，请参阅 [Microsoft Authenticator 应用入门](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)或[设置安全信息以使用验证器应用](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)，具体取决于管理员是否已启用安全信息。
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>排查备份和恢复问题

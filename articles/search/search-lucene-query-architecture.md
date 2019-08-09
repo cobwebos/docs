@@ -7,15 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: bc183cb8ac2155b8dd31dc603d70506ad3d5e20a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e54bc91ff60ce4f3c2340282410923225601df4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65797486"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883910"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 
@@ -240,9 +239,9 @@ Spacious,||air-condition*+"Ocean view"
 
 要在倒排索引中生成字词，搜索引擎将针对文档内容执行词法分析，这类似于查询处理期间执行的操作：
 
-1. 根据分析器的配置，执行将文本输入传递给分析器、转换为小写、去除标点等操作  。 
-2. 令牌是文本分析的输出  。
-3. 将词语添加到索引  。
+1. 根据分析器的配置，执行将文本输入传递给分析器、转换为小写、去除标点等操作。 
+2. 令牌是文本分析的输出。
+3. 将词语添加到索引。
 
 我们经常（但不是非要这样做）使用相同的分析器来执行搜索和索引编制操作，使查询词看上去更像是索引中的字词。
 
@@ -255,7 +254,7 @@ Spacious,||air-condition*+"Ocean view"
 
 | 术语 | 文档列表 |
 |------|---------------|
-| atman | 第 |
+| atman | 1 |
 | beach | 2 |
 | hotel | 1, 3 |
 | ocean | 4  |
@@ -263,35 +262,35 @@ Spacious,||air-condition*+"Ocean view"
 | resort | 3 |
 | retreat | 4 |
 
-在标题字段中，只有“酒店”显示在以下两个文档中  ：1、3。
+在标题字段中，只有“酒店”显示在以下两个文档中：1、3。
 
 对于**说明**字段，索引如下所示：
 
 | 术语 | 文档列表 |
 |------|---------------|
 | air | 3
-| and | 4
-| beach | 第
+| 与 | 4
+| beach | 1
 | conditioned | 3
 | comfortable | 3
-| distance | 第
+| distance | 1
 | island | 2
 | kauaʻi | 2
 | located | 2
 | north | 2
 | ocean | 1, 2, 3
 | of | 2
-| on |2
+| 开 |2
 | quiet | 4
 | rooms  | 1, 3
 | secluded | 4
 | shore | 2
-| spacious | 第
+| spacious | 1
 | the | 1, 2
-| 至 | 第
+| to | 1
 | view | 1, 2, 3
-| walking | 第
-| 替换为 | 3
+| walking | 1
+| 和 | 3
 
 
 **根据编制索引的字词匹配查询词**
@@ -351,7 +350,7 @@ search=Spacious, air-condition* +"Ocean view"
 }
 ~~~~
 
-文档 1 与查询的匹配程度最高，因为其说明字段中同时出现了字词 *spacious* 和所需的短语 *ocean view*。 后面的两个文档仅匹配短语 *ocean view*。 你可能会感到惊讶，尽管文档 2 和 3 都匹配相同的查询短语，但它们的相关性评分却不相同。 这是因为，评分公式除了包含 TF/IDF 以外，还包含其他组成部分。 在本例中，为文档 3 分配的评分略高，因为其说明更短。 请学习 [Lucene 的实际评分公式](https://lucene.apache.org/core/4_0_0/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html)，了解字段长度和其他因素如何影响相关性评分。
+文档 1 与查询的匹配程度最高，因为其说明字段中同时出现了字词 *spacious* 和所需的短语 *ocean view*。 后面的两个文档仅匹配短语 *ocean view*。 你可能会感到惊讶，尽管文档 2 和 3 都匹配相同的查询短语，但它们的相关性评分却不相同。 这是因为，评分公式除了包含 TF/IDF 以外，还包含其他组成部分。 在本例中，为文档 3 分配的评分略高，因为其说明更短。 请学习 [Lucene 的实际评分公式](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html)，了解字段长度和其他因素如何影响相关性评分。
 
 某些查询类型（通配符、前缀、正则表达式）始终会给文档总评分贡献一个常量分数。 这样，便可以在结果中包含通过查询扩展找到的匹配项，但不会影响排名。 
 
@@ -393,7 +392,7 @@ Internet 搜索引擎取得的成功提高了人们对私有数据运行全文�
 
 + [配置自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)，针对特定的字段尽量简化处理或者进行专门处理。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

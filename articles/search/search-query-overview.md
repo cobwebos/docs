@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 422e9209609eac19b7952557674c99789d9f6088
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c2d40865857bc3ea8367199ed29e0220a0e7c557
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485183"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882600"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>如何在 Azure 搜索中撰写查询
 
@@ -51,7 +51,7 @@ ms.locfileid: "67485183"
 
 + **`queryType`** 设置分析器，在 Azure 搜索中，该分析器可以是[默认的简单查询分析器](search-query-simple-examples.md)（最适合用于全文搜索），也可以是[完整的 Lucene 查询分析器](search-query-lucene-examples.md)（用于正则表达式、邻近搜索、模糊和通配符搜索等高级查询构造）。
 
-+ **`search`** 提供匹配条件（通常是文本，但往往附带布尔运算符）。 包含单个独立字词的查询称为字词查询。  由括在引号中的多个部分组成的查询称为关键短语查询。  搜索可以是未定义的（例如 **`search=*`** ），但搜索更有可能包含字词、短语和运算符，如以下示例中所示。
++ **`search`** 提供匹配条件（通常是文本，但往往附带布尔运算符）。 包含单个独立字词的查询称为字词查询。 由括在引号中的多个部分组成的查询称为关键短语查询。 搜索可以是未定义的（例如 **`search=*`** ），但搜索更有可能包含字词、短语和运算符，如以下示例中所示。
 
 + **`searchFields`** 是可选的，用于将查询执行限制为特定的字段。
 
@@ -67,9 +67,9 @@ ms.locfileid: "67485183"
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>索引如何启用查询操作
 
-索引设计和查询设计在 Azure 搜索中紧密耦合。 需要提前知道的一个重要事实是，包含每个字段中属性的索引架构确定了可以生成的查询类型。  
+索引设计和查询设计在 Azure 搜索中紧密耦合。 需要提前知道的一个重要事实是，包含每个字段中属性的索引架构确定了可以生成的查询类型。 
 
-字段中的索引属性设置允许的操作 - 字段在索引中是否可搜索、在结果中是否可检索、是否可排序、是否可筛选，等等。     在示例查询字符串中，只有 `"$orderby": "daysOnMarket"` 可以正常工作，因为 daysOnMarket 字段在索引架构中标记为可排序。  
+字段中的索引属性设置允许的操作 - 字段在索引中是否可搜索、在结果中是否可检索、是否可排序、是否可筛选，等等。 在示例查询字符串中，只有 `"$orderby": "daysOnMarket"` 可以正常工作，因为 daysOnMarket 字段在索引架构中标记为可排序。 
 
 ![房地产示例的索引定义](./media/search-query-overview/realestate-sample-index-definition.png "房地产示例的索引定义")
 
@@ -96,7 +96,7 @@ ms.locfileid: "67485183"
 
 Azure 搜索基于 Apache Lucene ，提供两种查询分析器选择，分别用于处理典型查询和专用查询。 使用简单分析器的请求是通过[简单查询语法](query-simple-syntax.md)构建的。由于在自由格式文本查询中具有速度和效率优势，这种语法已选作默认语法。 此语法支持多种常用的搜索运算符，包括 AND、OR、NOT、短语、后缀和优先运算符。
 
-在将 `queryType=full` 添加到请求时所启用的[完整 Lucene 查询语法](query-Lucene-syntax.md#bkmk_syntax)公开作为 [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 的一部分开发的、已被广泛采用的且富有表达能力的查询语言。 完整语法扩展了简单语法。 为简单语法编写的任何查询在完整 Lucene 分析器下运行。 
+在将 `queryType=full` 添加到请求时所启用的[完整 Lucene 查询语法](query-Lucene-syntax.md#bkmk_syntax)公开作为 [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 的一部分开发的、已被广泛采用的且富有表达能力的查询语言。 完整语法扩展了简单语法。 为简单语法编写的任何查询在完整 Lucene 分析器下运行。 
 
 以下示例演示了一个要点：采用不同 queryType 设置的同一个查询会产生不同的结果。 在第一个查询中，`^3` 被视为搜索字词的一部分。
 
@@ -116,10 +116,10 @@ queryType=full&search=mountain beach garden ranch^3&searchFields=description&$co
 
 Azure 搜索支持广泛的查询类型。 
 
-| 查询类型 | 使用情况 | 示例和详细信息 |
+| 查询类型 | 用法 | 示例和详细信息 |
 |------------|--------|-------------------------------|
-| 自由格式文本搜索 | 搜索参数和任一分析器| 全文搜索在索引中所有可搜索字段内扫描一个或多个字词，其工作原理与 Google 或必应等搜索引擎相同。  简介中的示例属于全文搜索。<br/><br/>全文搜索默认使用标准 Lucene 分析器来执行文本分析，以将字词设为小写，并删除“the”等干扰词。 可将默认设置替代为可以修改文本分析的[非英语分析器](index-add-language-analyzers.md#language-analyzer-list)或[专用的与语言无关的分析器](index-add-custom-analyzers.md#AnalyzerTable)。 例如，将整个字段内容视为单个标记的[关键字](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)。 此分析器可用于邮政编码、ID 和某些产品名称等数据。 | 
-| 筛选的搜索 | [OData 筛选表达式](query-odata-filter-orderby-syntax.md)和任一分析器 | 筛选器查询对索引中的所有可筛选字段计算布尔表达式  。 与搜索不同，筛选器查询与字段内容完全匹配，包括字符串字段的大小写区分。 另一项差别在于，筛选器查询以 OData 语法表示。 <br/>[筛选表达式示例](search-query-simple-examples.md#example-3-filter-queries) |
+| 自由格式文本搜索 | 搜索参数和任一分析器| 全文搜索在索引中所有可搜索字段内扫描一个或多个字词，其工作原理与 Google 或必应等搜索引擎相同。 简介中的示例属于全文搜索。<br/><br/>全文搜索默认使用标准 Lucene 分析器来执行文本分析，以将字词设为小写，并删除“the”等干扰词。 可将默认设置替代为可以修改文本分析的[非英语分析器](index-add-language-analyzers.md#language-analyzer-list)或[专用的与语言无关的分析器](index-add-custom-analyzers.md#AnalyzerTable)。 例如，将整个字段内容视为单个标记的[关键字](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)。 此分析器可用于邮政编码、ID 和某些产品名称等数据。 | 
+| 筛选的搜索 | [OData 筛选表达式](query-odata-filter-orderby-syntax.md)和任一分析器 | 筛选器查询对索引中的所有可筛选字段计算布尔表达式。 与搜索不同，筛选器查询与字段内容完全匹配，包括字符串字段的大小写区分。 另一项差别在于，筛选器查询以 OData 语法表示。 <br/>[筛选表达式示例](search-query-simple-examples.md#example-3-filter-queries) |
 | 地理搜索 | 字段中的 [Edm.GeographyPoint 类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)、筛选表达式和任一分析器 | 存储在字段中的具有 Edm.GeographyPoint 的坐标用于“附近查找”或基于地图的搜索控件。 <br/>[地理搜索示例](search-query-simple-examples.md#example-5-geo-search)|
 | 范围搜索 | 筛选表达式和简单分析器 | 在 Azure 搜索中，范围查询是使用筛选器参数生成的。 <br/>[范围筛选器示例](search-query-simple-examples.md#example-4-range-filters) | 
 | [字段化搜索](query-lucene-syntax.md#bkmk_fields) | 搜索参数和完整分析器 | 针对单个字段生成复合查询表达式。 <br/>[字段化搜索示例](search-query-lucene-examples.md#example-2-fielded-search) |
@@ -160,9 +160,9 @@ Azure 搜索可轻松对搜索结果进行分页。 使用 **`top`** 和 **`skip
 
 
 ### <a name="hit-highlighting"></a>突出显示
-在 Azure 搜索中，使用 **`highlight`** 、 **`highlightPreTag`** 和 **`highlightPostTag`** 参数可轻松强调搜索结果中与搜索查询相匹配的确切部分。 可以指定应强调其匹配文本的可搜索  字段，还可指定要附加到 Azure 搜索所返回匹配文本的开头和结尾的精确字符串标记。
+在 Azure 搜索中，使用 **`highlight`** 、 **`highlightPreTag`** 和 **`highlightPostTag`** 参数可轻松强调搜索结果中与搜索查询相匹配的确切部分。 可以指定应强调其匹配文本的可搜索字段，还可指定要附加到 Azure 搜索所返回匹配文本的开头和结尾的精确字符串标记。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [Azure 搜索中全文搜索的工作原理（查询分析体系结构）](search-lucene-query-architecture.md)
 + [搜索资源管理器](search-explorer.md)

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: fe8d46c897ef68563f2e0e5a1da106174ae504c5
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 763b3961bfd621f05ab5cd021526b0d6d109c020
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424083"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881711"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -42,6 +42,7 @@ ms.locfileid: "68424083"
 |  单个卷的最小大小    |    100 GiB    |    否    |
 |  单个卷的最大分配配额 *   |   92 TiB   |    否   |
 |  单个卷的最大大小 *     |    100 TiB    |    否       |
+|  每个卷的最大文件数 (inode)     |    50000000    |    否    |    
 
 \* 可以手动创建卷, 或调整其大小以最大化 92 TiB。 但是, 在超额方案中, 卷可能增长到100的 TiB。 有关容量超额的详细信息, 请参阅[Azure NetApp 文件的成本模型](azure-netapp-files-cost-model.md)。 
 

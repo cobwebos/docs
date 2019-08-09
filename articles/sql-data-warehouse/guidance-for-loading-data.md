@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 05/31/2019
+ms.date: 08/08/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: bb170b53946a014d4aa69ce628c2e4bef7459b93
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: a1433139695eb59fa3fd721852fae3181b8f892b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595589"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882480"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>将数据加载到 Azure SQL 数据仓库中的最佳做法
 
@@ -69,8 +69,8 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 例如，考虑为部门 A 使用数据库架构 schema_A，为部门 B 使用 schema_B；让数据库用户 user_A 和 user_B 分别作为部门 A 和 B 中加载的 PolyBase 用户。 两个用户均已被授予“控制”数据库权限。 架构 A 和架构 B 的创建者现在使用 DENY 锁定其架构：
 
 ```sql
-   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
-   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
+   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
+   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
 ```
 
 现在 user_A 和 user_B 被锁在其他部门的架构之外。
@@ -88,9 +88,12 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 - 若要确保加载用户有足够的内存来实现最大压缩率，请使用属于中大型资源类的加载用户。 
 - 加载足够的行，以便完全填充新的行组。 在大容量加载期间，数据会以 1,048,576 行为一个完整的行组直接压缩到列存储中。 不到 102,400 行的加载会将行发送到增量存储中以 B 树索引的形式保存。 如果加载的行太少，这些行可能会全部进入增量存储中，不会立即压缩成列存储格式。
 
+## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SQLBulkCopy API 或 BCP 时增加批大小
+如前所述, 通过 PolyBase 加载可提供 SQL 数据仓库的最大吞吐量。 如果无法使用 PolyBase 加载并且必须使用 SQLBulkCopy API (或 BCP), 则应考虑增加批大小以提高吞吐量。 
+
 ## <a name="handling-loading-failures"></a>处理加载失败
 
-使用外部表的加载可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。  此消息表示外部数据包含脏记录。 如果数据类型和列数目与外部表的列定义不匹配，或数据不符合指定的外部文件格式，则会将数据记录视为脏记录。 
+使用外部表的加载可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。 此消息表示外部数据包含脏记录。 如果数据类型和列数目与外部表的列定义不匹配，或数据不符合指定的外部文件格式，则会将数据记录视为脏记录。 
 
 若要解决脏记录问题，请确保外部表和外部文件格式定义正确，并且外部数据符合这些定义。 如果外部数据记录的子集是脏的，可以通过使用 CREATE EXTERNAL TABLE 中的拒绝选项，选择拒绝这些查询记录。
 
@@ -102,7 +105,7 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 ## <a name="creating-statistics-after-the-load"></a>创建加载后的统计信息
 
-为了改进查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。  可以手动进行此类也可以让[自动创建统计信息](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)。
+为了改进查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。  这可以手动完成, 也可以启用[自动创建统计信息](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)。
 
 有关统计信息的详细说明，请参阅[统计信息](sql-data-warehouse-tables-statistics.md)。 以下示例演示如何针对 Customer_Speed 表的五个列创建统计信息。
 
@@ -128,7 +131,7 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1'
-``` 
+```
 
 将密钥从密钥 1 轮换为密钥 2
 
@@ -143,6 +146,3 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 - 若要详细了解 PolyBase 以及如何设计提取、加载和转换 (ELT) 过程，请参阅[为 SQL 数据仓库设计 ELT](design-elt-data-loading.md)。
 - 如需加载教程，请参阅[使用 PolyBase 将数据从 Azure Blob 存储加载到 Azure SQL 数据仓库](load-data-from-azure-blob-storage-using-polybase.md)。
 - 若要监视数据加载，请参阅[使用 DMV 监视工作负荷](sql-data-warehouse-manage-monitor.md)。
-
-
-

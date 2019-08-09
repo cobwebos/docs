@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5dc1c3fb7ae12c36a8c1fe383290435c03ee0c4
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 906ab4da941c6a0e1bc98f2f724141c719d04b89
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741370"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879425"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：计划 Azure AD 加入实现
 
@@ -24,7 +24,7 @@ ms.locfileid: "68741370"
 
 本文介绍计划 Azure AD 联接实现所需信息。
  
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 本文假设读者已阅读 [Azure Active Directory 中的设备管理简介](../device-management-introduction.md)。
 
@@ -75,6 +75,10 @@ Azure AD 联接适用于托管环境和联合环境。
  `/adfs/services/trust/13/certificatemixed`
 
 如果标识提供者不支持这些协议，则 Azure AD 联接无法本机运行。 从 Windows 10 1809 开始，你的用户可使用基于 SAML 的标识提供者通过 [Windows 10 上的 Web 登录](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)登录到 Azure AD 联接设备。 目前, web 登录是一项预览功能, 不建议用于生产部署。
+
+>[!NOTE]
+> 目前, Azure AD 联接不适用于使用[外部身份验证提供程序配置的 AD FS 2019 作为主要身份验证方法](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary)。 Azure AD 联接默认为密码身份验证作为主要方法, 这会导致此方案中的身份验证失败
+
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>智能卡和基于证书的身份验证
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 05b022be3bd460809de77945710ed0bdcd275648
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839311"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881431"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure Monitor 中的日志数据和工作区
 
@@ -32,7 +32,17 @@ Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics �
 
 * 如何使用 Azure RBAC 向需要访问工作区中特定表中的日志数据的用户授予访问权限。
 
-## <a name="define-access-control-mode-in-azure-portal"></a>在 Azure 门户中定义访问控制模式
+## <a name="define-access-control-mode"></a>定义访问控制模式
+
+你可以从 "Azure 门户" 或 "Azure PowerShell 的工作区上查看配置的访问控制模式。  你可以使用以下受支持的方法之一来更改此设置:
+
+* Azure 门户
+
+* Azure PowerShell
+
+* Azure 资源管理器模板
+
+### <a name="configure-from-the-azure-portal"></a>从 Azure 门户配置
 
 可以在工作区“概述”页上的“Log Analytics 工作区”菜单中查看当前的工作区访问控制模式。 
 
@@ -45,7 +55,7 @@ Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics �
 
 ![更改工作区访问模式](media/manage-access/change-access-control-mode.png)
 
-## <a name="define-access-control-mode-using-powershell"></a>使用 PowerShell 定义访问控制模式
+### <a name="configure-using-powershell"></a>使用 PowerShell 进行配置
 
 使用以下命令检查订阅中所有工作区的访问控制模式：
 
@@ -89,7 +99,7 @@ else
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
 
-## <a name="define-access-mode-using-resource-manager-template"></a>使用资源管理器模板定义访问模式
+### <a name="configure-using-a-resource-manager-template"></a>使用资源管理器模板进行配置
 
 若要在 Azure 资源管理器模板中配置访问模式，请将工作区中的 **enableLogAccessUsingOnlyResourcePermissions** 功能标志设置为以下值之一。
 
@@ -134,7 +144,7 @@ Log Analytics 读者角色的成员可以：
 
 Log Analytics 读者角色包括以下 Azure 操作：
 
-| type    | 权限 | 描述 |
+| 类型    | 权限 | 描述 |
 | ------- | ---------- | ----------- |
 | Action | `*/read`   | 能够查看所有 Azure 资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置。 <br> 对于工作区, 它允许完全无限制的权限来读取工作区设置并对数据执行查询。 请参阅上面更细化的选项。 |
 | Action | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 不推荐使用, 无需将其分配给用户。 |

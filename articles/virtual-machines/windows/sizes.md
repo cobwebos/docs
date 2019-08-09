@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/02/2019
+ms.date: 08/08/2019
 ms.author: jonbeck
-ms.openlocfilehash: 78b0de43652aba20563e2712e249e18ccd18c407
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 91c6d0446d47e118a4e607ff985e06ff5e43e1f7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710081"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884052"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure 中 Windows 虚拟机的大小
 
 本文介绍可用于运行 Windows 应用和工作负荷的 Azure 虚拟机的可用大小和选项。 此外，还提供在计划使用这些资源时要考虑的部署注意事项。  本文也适用于 [Linux 虚拟机](../linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 
-| type                     | 大小           |    描述       |
+| 类型                     | 大小           |    描述       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [常规用途](sizes-general.md)          | B, Dsv3, Dv3, DSv2, Dv2, Av2, DC  | CPU 与内存之比平衡。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 |
+| [常规用途](sizes-general.md)          | B、Dsv3、Dv3、Dasv3、Dav3、DSv2、Dv2、Av2、DC  | CPU 与内存之比平衡。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 |
 | [计算优化](sizes-compute.md)        | Fsv2           | 高 CPU 与内存之比。 适用于中等流量的 Web 服务器、网络设备、批处理和应用程序服务器。        |
-| [内存优化](sizes-memory.md)         | Esv3, Ev3, Mv2, M, DSv2, Dv2  | 高内存与 CPU 之比。 适用于关系数据库服务器、中到大型规模的缓存和内存中分析。                 |
+| [内存优化](sizes-memory.md)         | Esv3、Ev3、Easv3、Eav3、Mv2、M、DSv2、Dv2  | 高内存与 CPU 之比。 适用于关系数据库服务器、中到大型规模的缓存和内存中分析。                 |
 | [存储优化](sizes-storage.md)        | Lsv2                | 较高的磁盘吞吐量和 IO，是大数据、SQL、NoSQL 数据库、数据仓库和大型事务数据库的理想之选。  |
-| [GPU](sizes-gpu.md)            | NC、 NCv2、 NCv3、 ND、 NDv2 （预览版），NV，NVv3 （预览版） | 针对大量图形绘制和视频编辑的专用虚拟机，以及带有深度学习功能的模型定型和推断 (ND)。 可选择单个或多个 GPU。       |
-| [高性能计算](sizes-hpc.md) | HB，混合连接，H | 速度最快、功能最强大的 CPU 虚拟机具有可选的高吞吐量网络接口 (RDMA)。 |
+| [GPU](sizes-gpu.md)            | NC、NCv2、NCv3、ND、NDv2 (预览版)、NV、NVv3 (预览版) | 针对大量图形绘制和视频编辑的专用虚拟机，以及带有深度学习功能的模型定型和推断 (ND)。 可选择单个或多个 GPU。       |
+| [高性能计算](sizes-hpc.md) | HB-ACCT-WC、HC、H | 速度最快、功能最强大的 CPU 虚拟机具有可选的高吞吐量网络接口 (RDMA)。 |
 
 
 <br> 
