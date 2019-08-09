@@ -5,17 +5,17 @@ description: 此视觉对象接口示例试验显示了对变动的二进制分�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 172089d5371d8c3e38a2a22b3285b5eb180baf00
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: a0b3e3de604e7c59ea6a06bd59007964c98e0057
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742287"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845985"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>示例 5-分类:预测变动率、亲和力和向上销售 
 
