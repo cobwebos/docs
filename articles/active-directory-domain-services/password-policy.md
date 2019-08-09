@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 8829f16e580d0b926781ce0a3e9f8e6a63cf3110
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 30f4558339bbfddd2296cd1cb918c6ef8999b67e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853779"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879197"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>托管域中的密码和帐户锁定策略
 本文介绍托管域中的默认密码策略。 此外，还介绍如何配置这些策略。
@@ -38,7 +38,8 @@ ms.locfileid: "68853779"
     * 帐户锁定持续时间
     * 允许的失败登录尝试次数
     * 多长时间后重置失败登录尝试计数
-
+    
+FGPP 仅影响直接在 Azure AD DS 中创建的用户。 从 Azure AD 同步到 Azure AD DS 托管域的云用户和域用户不受密码复杂性设置的影响。 FGPP 通过 Azure AD DS 托管域中的组关联进行分发, 并且你所做的任何更改将在下次用户登录时应用。 更改策略不会解除对已锁定的用户帐户的锁定。
 
 ## <a name="default-fine-grained-password-policy-settings-on-a-managed-domain"></a>托管域中的默认精细密码策略设置
 以下屏幕截图演示了在某个 Azure AD 域服务托管域中配置的默认精细密码策略。

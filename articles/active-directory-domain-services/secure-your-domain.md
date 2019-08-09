@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: iainfou
-ms.openlocfilehash: e94cd9ca049cfdfd2321ce046714506ed1f23390
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 923ecae9dc649b8f5cdcfd447b78fdec0805927a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483283"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879152"
 ---
 # <a name="secure-your-azure-ad-domain-services-managed-domain"></a>保护 Azure AD 域服务托管域
 本文可帮助你保护托管域。 你可以禁用弱密码套件和 NTLM 凭据哈希同步。
@@ -36,9 +36,12 @@ ms.locfileid: "67483283"
 
 ## <a name="disable-weak-cipher-suites-and-ntlm-credential-hash-synchronization"></a>禁用弱密码套件和 NTLM 凭据哈希同步
 使用以下 PowerShell 脚本可以：
+
 1. 禁用托管域上的 NTLM v1 支持。
 2. 禁止从本地 AD 进行 NTLM 密码哈希同步。
 3. 禁用托管域上的 TLS v1。
+
+如果收到一条错误消息`Get-AzResource` , 指出该*DomainServices*资源不存在, 请[提升你的访问权限, 以管理所有 Azure 订阅和管理组](../role-based-access-control/elevate-access-global-admin.md)。
 
 ```powershell
 // Login to your Azure AD tenant
@@ -58,7 +61,7 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySetti
 ```
 
 > [!IMPORTANT]
-> 如果已在 Azure AD 域服务实例上禁用 NTLM 密码哈希同步用户 （和服务帐户） 无法执行 LDAP 简单绑定。  禁用 NTLM 密码哈希同步的详细信息，请阅读[确保 Azure AD 域服务托管的域的安全](secure-your-domain.md)。
+> 如果在 Azure AD 域服务实例上禁用了 NTLM 密码哈希同步, 则用户 (和服务帐户) 无法执行 LDAP 简单绑定。  有关禁用 NTLM 密码哈希同步的详细信息, 请阅读[保护 Azure AD 域服务托管域](secure-your-domain.md)。
 >
 >
 

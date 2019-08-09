@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd03e2b98b1fd1a2a45b5feecc963bcfc7bfe83c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 489ff1824c4bc45ee7ed31e9c96377975a32baa4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499882"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879241"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory 智能锁定
 
@@ -31,7 +31,7 @@ ms.locfileid: "68499882"
 
 使用 AD FS 2016 和 AF FS 2019 的联合部署可使用[AD FS Extranet 锁定和 Extranet 智能锁定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)实现类似的好处。
 
-智能锁定始终对所有 Azure AD 客户启用，其这些默认设置提供了合适的安全性和可用性组合。 要使用组织特定的值自定义智能锁定设置，需要向用户提供 Azure AD Basic 或更高版本的许可证。
+智能锁定始终对所有 Azure AD 客户启用，其这些默认设置提供了合适的安全性和可用性组合。 自定义智能锁定设置 (其中包含特定于你组织的值) 需要为你的用户付费 Azure AD 许可证。
 
 使用智能锁定不保证真正的用户永远不会被锁定。当智能锁定锁定用户帐户时，我们会尽最大努力来确保不锁定真正的用户。 锁定服务会尽力确保不良参与者无法访问真正的用户帐户。  
 
@@ -42,7 +42,7 @@ ms.locfileid: "68499882"
 
 使用[直通身份验证](../hybrid/how-to-connect-pta.md)时，需要确保：
 
-* Azure AD 的锁定阈值小于 Active Directory 的帐户锁定阈值。 请设置此值，以便使 Active Directory 的帐户锁定阈值至少长于 Azure AD 锁定阈值的二倍或三倍。 
+* Azure AD 的锁定阈值小于Active Directory 的帐户锁定阈值。 请设置此值，以便使 Active Directory 的帐户锁定阈值至少长于 Azure AD 锁定阈值的二倍或三倍。 
 * Azure AD 锁定持续时间设置的时间必须长于 Active Directory 重置帐户锁定计数器的持续时间。 请注意, Azure AD 持续时间以秒为单位, 而 AD 持续时间设置为分钟。 
 
 例如, 如果你希望 Azure AD 计数器高于 AD, 则 Azure AD 为120秒 (2 分钟), 而本地 AD 设置为1分钟 (60 秒)。
@@ -63,7 +63,7 @@ ms.locfileid: "68499882"
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>管理 Azure AD 智能锁定值
 
-根据组织的要求，可能需要自定义智能锁定值。 要使用组织特定的值自定义智能锁定设置，需要向用户提供 Azure AD Basic 或更高版本的许可证。
+根据组织的要求，可能需要自定义智能锁定值。 自定义智能锁定设置 (其中包含特定于你组织的值) 需要为你的用户付费 Azure AD 许可证。
 
 要检查或修改组织的智能锁定值，请按以下步骤操作：
 

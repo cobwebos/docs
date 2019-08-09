@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779649"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879260"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>本地 Azure AD 密码保护 - 常见问题解答
 
@@ -33,6 +33,8 @@ ms.locfileid: "68779649"
 **问：非公有云是否支持本地 Azure AD 密码保护？**
 
 不支持 - 只有公有云才支持本地 Azure AD 密码保护。 对于何时可在非公有云中使用，我们没有具体的日程表。
+
+即使在非公有云中, Azure AD 门户也允许修改本地特定的 "Windows Server Active Directory 的密码保护" 配置;此类更改将持久保存, 但不会生效。 如果使用非公有云凭据, 则不支持注册本地代理代理或林, 任何此类注册尝试将始终失败。
 
 **问：如何将 Azure AD 密码保护权益应用到我的一部分本地用户？**
 
@@ -64,7 +66,7 @@ Active Directory 支持测试密码以查看是否通过了域的当前密码复
 
 **问：如何在 Active Directory 级别修改策略的内容？**
 
-不受支持。 只能使用 Azure AD 管理门户管理策略。 另请参阅前面的问题。
+不受支持。 仅可使用 Azure AD 门户管理策略。 另请参阅前面的问题。
 
 **问：为何需要使用 DFSR 进行 sysvol 复制？**
 
@@ -118,15 +120,15 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 **问：为什么在本地 Active Directory 环境中安装代理后, 自定义智能锁定仍不起作用？**
 
-自定义智能锁定仅在 Azure 中受支持。 即使安装了代理, 对 Azure 管理门户中的自定义智能锁定设置的更改也不会影响本地 Active Directory 环境。
+仅 Azure AD 支持自定义智能锁定。 即使安装了代理, 对 Azure AD 门户中的自定义智能锁定设置的更改也不会影响本地 Active Directory 环境。
 
 **问：System Center Operations Manager 管理包是否适用于 Azure AD 密码保护？**
 
 否。
 
-**问：即使已将策略配置为处于审核模式, Azure 为何仍会拒绝弱密码？**
+**问：即使已将策略配置为处于审核模式, 为什么 Azure AD 仍拒绝弱密码？**
 
-仅本地 Active Directory 环境支持审核模式。 计算密码时, Azure 隐式始终处于 "强制" 模式。
+仅本地 Active Directory 环境支持审核模式。 当计算密码时, Azure AD 隐式始终处于 "强制" 模式。
 
 ## <a name="additional-content"></a>其他内容
 
