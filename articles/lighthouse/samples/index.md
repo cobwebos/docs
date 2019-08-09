@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.topic: sample
 ms.date: 07/11/2019
 ms.author: jenhayes
-ms.openlocfilehash: c0266bd3c88dccc8b0413e617bb4a5fcadbf3720
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: b363fcdb752522db07642e625837e03429244f47
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67971344"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884292"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse 示例
 
@@ -27,7 +27,7 @@ ms.locfileid: "67971344"
 | [deploy-azure-mgmt-services](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/deploy-azure-mgmt-services) | 创建 Azure 管理服务，将它们链接在一起并部署其他解决方案。 |
 | [deploy-azure-security-center](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/deploy-azure-security-center) | 在目标 Azure 订阅内启用并配置 Azure 安全中心。 |
 | [marketplace-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management) | 根据发布到市场的托管服务产品，将客户的订阅载入到 Azure 委派资源管理。 |
-| [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management) | 将客户的一个或多个资源组载入到 Azure 委派资源管理。 |
+| [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) | 将客户的一个或多个资源组载入到 Azure 委派资源管理。 |
 
 ## <a name="next-steps"></a>后续步骤
 

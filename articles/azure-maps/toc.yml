@@ -133,12 +133,14 @@
       items:
         - name: Android 地图控件入门
           href: how-to-use-android-map-control-library.md
+        - name: 更改地图的样式
+          href: set-android-map-styles.md
         - name: 添加符号层
           href: how-to-add-symbol-to-android-map.md
         - name: 添加形状
           href: how-to-add-shapes-to-android-map.md
-        - name: 更改地图的样式
-          href: set-android-map-styles.md
+        - name: 添加图块层
+          href: how-to-add-tile-layer-android-map.md
 - name: 引用
   items:
     - name: API 和参数扩展

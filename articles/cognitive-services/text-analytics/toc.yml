@@ -26,7 +26,7 @@
           href: quickstarts/python.md
         - name: Ruby
           href: quickstarts/ruby.md
-    - name: SDK 中 IsInRole 中的声明
+    - name: Client
       items:
         - name: 'C#'
           href: quickstarts/csharp.md

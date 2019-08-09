@@ -14,7 +14,6 @@
     - name: 创建 Apache Spark 群集 - Azure CLI
       href: apache-spark-create-cluster-cli.md
     - name: 创建 Apache Spark 群集 - 模板
-      displayName: 'resource manager template, arm template, resource manager group'
       href: apache-spark-jupyter-spark-sql.md
 - name: 教程
   items:
@@ -50,30 +49,6 @@
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
       href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
-    - name: 故障排除
-      items:
-        - name: OutOfMemoryError 异常
-          href: ./apache-spark-troubleshoot-outofmemory.md
-        - name: Apache Spark 作业失败 - NoClassDefFoundError
-          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
-        - name: Apache Spark 作业失败 - InvalidClassException
-          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
-        - name: 缓慢 Apache Spark 作业 - listStatus
-          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
-        - name: 缓慢 Apache Spark 作业 - 存储容器
-          href: ./apache-spark-troubleshoot-job-slowness-container.md
-        - name: IllegalArgumentException 异常
-          href: ./apache-spark-troubleshoot-illegalargumentexception.md
-        - name: Apache Spark 流式处理应用程序停止
-          href: ./apache-spark-troubleshoot-application-stops.md
-        - name: RpcTimeoutException 异常
-          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
-        - name: 阻止跨源 API
-          href: ./apache-spark-troubleshoot-blocking-cross-origin.md
-        - name: Kryo 序列化失败
-          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
-        - name: Apache Spark 事件日志 - RequestBodyTooLarge
-          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: 如何
   items:
     - name: 使用群集存储
@@ -226,7 +201,6 @@
                 - name: 使用 Azure 门户
                   href: ../hdinsight-hadoop-create-linux-clusters-portal.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: 使用 Azure 资源管理器模板
-                  displayName: 'resource manager template, arm template, resource manager group'
                   href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: 使用用于 .NET 的 SDK
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
@@ -329,6 +303,30 @@
                   href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: 优化 Apache Hive 查询
                   href: ../hdinsight-hadoop-optimize-hive-query.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: 故障排除
+      items:
+        - name: OutOfMemoryError 异常
+          href: ./apache-spark-troubleshoot-outofmemory.md
+        - name: Apache Spark 作业失败 - NoClassDefFoundError
+          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
+        - name: Apache Spark 作业失败 - InvalidClassException
+          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
+        - name: 缓慢 Apache Spark 作业 - listStatus
+          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
+        - name: 缓慢 Apache Spark 作业 - 存储容器
+          href: ./apache-spark-troubleshoot-job-slowness-container.md
+        - name: IllegalArgumentException 异常
+          href: ./apache-spark-troubleshoot-illegalargumentexception.md
+        - name: Apache Spark 流式处理应用程序停止
+          href: ./apache-spark-troubleshoot-application-stops.md
+        - name: RpcTimeoutException 异常
+          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
+        - name: 阻止跨源 API
+          href: ./apache-spark-troubleshoot-blocking-cross-origin.md
+        - name: Kryo 序列化失败
+          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
+        - name: Apache Spark 事件日志 - RequestBodyTooLarge
+          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: 引用
   items:
     - name: 代码示例
@@ -350,7 +348,6 @@
     - name: REST API (Apache Spark)
       href: /rest/api/hdinsightspark/
     - name: 资源管理器模板
-      displayName: 'resource manager template, arm template, resource manager group'
       href: /azure/templates/microsoft.hdinsight/allversions
 - name: 资源
   items:

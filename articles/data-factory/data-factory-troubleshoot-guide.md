@@ -11,7 +11,7 @@ ms.author: abnarain
 ms.reviewer: craigg
 ms.openlocfilehash: c76242c176ba4f4c9ffc0d6934f6b645743d77f4
 ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/16/2019
 ms.locfileid: "68234583"
@@ -26,12 +26,12 @@ ms.locfileid: "68234583"
 | -------------- | ----------------------------------------------------- | --------------------------------------------------------------| :----------------------------------------------------------- |
 | 3200           | 错误403。                                                    | Databricks 访问令牌已过期。                         | 默认情况下, Databricks 访问令牌的有效期为90天。  创建新的令牌并更新链接的服务。 |
 | 3201           | 缺少必填字段: settings. notebook_task. notebook_path | 错误的创作:未正确指定笔记本路径。 | 在 Databricks 活动中指定笔记本路径。 |
-| 3201           | 群集 .。。不存在。                                 | 创作错误:Databricks 群集不存在或已被删除。 | 验证 Databricks 群集是否存在。 |
-| 3201           | Python 文件 URI 无效 ...。请访问 Databricks 用户指南以获取支持的 URI 方案。 | 创作不当。                                                | 请为工作区寻址方案指定绝对路径, 或者`dbfs:/folder/subfolder/foo.py`为存储在 Databricks 文件系统中的文件指定绝对路径。 |
+| 3201           | 群集   ... 不存在。                                 | 创作错误:Databricks 群集不存在或已被删除。 | 验证 Databricks 群集是否存在。 |
+| 3201           | Python 文件 URI 无效 ...请访问 Databricks 用户指南以获取支持的 URI 方案。 | 创作不当。                                                | 请为工作区寻址方案指定绝对路径, 或者`dbfs:/folder/subfolder/foo.py`为存储在 Databricks 文件系统中的文件指定绝对路径。 |
 | 3201           | {0}LinkedService 应将 domain 和 accessToken 作为必需属性。 | 创作不当。                                                | 验证[链接的服务定义](compute-linked-services.md#azure-databricks-linked-service)。 |
 | 3201           | {0}LinkedService 应指定要创建的现有群集 ID 或新群集信息。 | 创作不当。                                                | 验证[链接的服务定义](compute-linked-services.md#azure-databricks-linked-service)。 |
 | 3201           | 节点类型 Standard_D16S_v3 不受支持。 支持的节点类型: Standard_DS3_v2, Standard_DS4_v2, Standard_DS5_v2, Standard_D8s_v3, Standard_D16s_v3, Standard_D32s_v3, Standard_D64s_v3, Standard_D3_v2, Standard_D8_v3, Standard_D16_v3, Standard_D32_v3, Standard_D64_v3, Standard_D12_v2, Standard_D13_v2,Standard_D14_v2, Standard_D15_v2, Standard_DS12_v2, Standard_DS13_v2, Standard_DS14_v2, Standard_DS15_v2, Standard_E8s_v3, Standard_E16s_v3, Standard_E32s_v3, Standard_E64s_v3, Standard_L4s, Standard_L8s, Standard_L16s, Standard_L32s,Standard_F4s, Standard_F8s, Standard_F16s, Standard_H16, Standard_F4s_v2, Standard_F8s_v2, Standard_F16s_v2, Standard_F32s_v2, Standard_F64s_v2, Standard_F72s_v2, Standard_NC12, Standard_NC24, Standard_NC6s_v3, Standard_NC12s_v3, Standard_NC24s_v3, Standard_L8s_v2, Standard_L16s_v2, Standard_L32s_v2, Standard_L64s_v2, Standard_L80s_v2. | 创作不当。                                                | 请参阅错误消息。                                          |
-| 3201           | Notebook_path 无效: .。。目前仅支持绝对路径。 路径必须以 "/" 开头。 | 创作不当。                                                | 请参阅错误消息。                                          |
+| 3201           | Notebook_path 无效: ...目前仅支持绝对路径。 路径必须以 "/" 开头。 | 创作不当。                                                | 请参阅错误消息。                                          |
 | 3202           | 过去3600秒内已创建1000个作业, 超过了速率限制: 1000每3600秒创建一次作业。 | 一小时内运行的 Databricks 太多。                         | 检查使用此 Databricks 工作区的所有管道的作业创建速率。  如果管道启动了太多的 Databricks, 则将一些管道迁移到新的工作区。 |
 | 3202           | 无法分析请求对象:应为 JSON 映射字段 base_parameters 设置 "key" 和 "value", 获取了 "key:" ... "" 是. | 创作错误:没有为参数提供值。         | 检查管道 JSON 并确保 baseParameters 笔记本中的所有参数都指定一个非空值。 |
 | 3202           | 用户: `SimpleUserContext{userId=..., name=user@company.com, orgId=...}`无权访问群集。 | 不允许生成访问令牌的用户访问在链接服务中指定的 Databricks 群集。 | 确保用户在工作区中具有所需的权限。   |
@@ -76,9 +76,9 @@ ms.locfileid: "68234583"
 | 2502         | 无法访问用户存储帐户;请检查存储帐户设置。 | 存储帐户名称或访问密钥不正确。       | 验证链接的服务中的存储帐户名称和访问密钥。 |
 | 2504         | 操作返回的状态代码 "BadRequest" 无效。     | 自定义活动的 folderPath 中的文件太多。 ResourceFiles 的总大小不能超过32768个字符。 | 删除不必要的文件。 或对其进行压缩, 并添加解压缩命令来提取它们。 例如, 使用`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;  $folder\yourProgram.exe` |
 | 2505         | 除非使用帐户密钥凭据, 否则无法创建共享访问签名。 | 自定义活动只支持使用访问密钥的存储帐户。 | 请参阅错误说明。                                            |
-| 2507         | 文件夹路径不存在或为空: ...。            | 位于指定路径的存储帐户中不存在任何文件。       | 文件夹路径必须包含要运行的可执行文件。 |
+| 2507         | 文件夹路径不存在或为空: ...            | 位于指定路径的存储帐户中不存在任何文件。       | 文件夹路径必须包含要运行的可执行文件。 |
 | 2508         | 资源文件夹中有重复的文件。               | 具有相同名称的多个文件位于 folderPath 的不同子文件夹中。 | 自定义活动在 folderPath 下平展文件夹结构。  如果需要保留文件夹结构, 请压缩文件, 并使用解压缩命令将这些文件解压缩到 Azure Batch 中。 例如, 使用`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;   $folder\yourProgram.exe` |
-| 2509         | 批处理 url .。。无效;它必须采用 Uri 格式。         | 批处理 Url 必须与`https://mybatchaccount.eastus.batch.azure.com` | 请参阅错误说明。                                            |
+| 2509         | 批处理 url ... 无效;它必须采用 Uri 格式。         | 批处理 Url 必须与`https://mybatchaccount.eastus.batch.azure.com` | 请参阅错误说明。                                            |
 | 2510         | 发送请求时出错。               | 批处理 URL 无效。                                         | 验证批处理 URL。                                            |
 
 ## <a name="hdinsight"></a>HDInsight
@@ -91,7 +91,7 @@ ms.locfileid: "68234583"
 | 2300         | Hadoop 作业提交失败。 作业: ..., 群集: .../ 错误：任务已取消。 | 作业提交超时。                         | 此问题可能是常规 HDInsight 连接或网络连接。 首先确认 HDInsight Ambari UI 可从任何浏览器获得。 确认凭据仍然有效。 如果使用自承载集成运行时 (IR), 请确保从安装自承载 IR 的 VM 或计算机中执行此操作。 然后尝试再次从数据工厂提交作业。 如果仍失败, 请与数据工厂团队联系以获取支持。 |
 | 2300         | 未经许可 Ambari 用户名或密码不正确  <br/><br/>未经许可 用户管理员在 Ambari 中被锁定。   <br/><br/>403-禁止访问:访问被拒绝。 | HDInsight 的凭据不正确或已过期。 | 更正凭据并重新部署链接服务。 首先, 请确保凭据在 HDInsight 上起作用, 方法是在任何浏览器上打开群集 URI 并尝试登录。 如果凭据不起作用, 则可以从 Azure 门户重置它们。 |
 | 2300、2310 | 502 - Web 服务器在充当网关或代理服务器时收到了无效响应。       <br/>网关错误。 | 此错误来自 HDInsight。                               | 此错误来自 HDInsight 群集。 有关详细信息, 请参阅[AMBARI UI 502 错误](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)、[连接到 spark Thrift 服务器时出现502错误](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)、 [502 连接到 spark Thrift 服务器的错误](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)和[排查应用程序网关中的网关错误](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502)。 |
-| 2300         | Hadoop 作业提交失败。 作业: ..., 群集: .。。错误: {\"错误\":\"无法为提交作业请求提供服务, 因为 templeton 服务正在忙于太多提交作业请求。 请等待一段时间, 然后重试该操作。 请参阅配置 templeton 以配置并发请求。  <br/><br/>Hadoop 作业提交失败。 任务161da5d4-6fa8-4ef4-a240-6b6428c5ae2f, 群集: `https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/`。   错误: {\"error\":\"IOException: yarn. YarnException:。:未能将 application_1561147195099_3730 提交到 YARN: AccessControlException:Joblauncher 已有500应用程序, 无法接受应用程序的提交: application_1561147195099_3730 \ | 同时提交到 HDInsight 的作业太多。 | 请考虑限制提交到 HDInsight 的并发作业的数目。 如果作业正在由同一活动提交, 则请参阅数据工厂活动并发性。 更改触发器, 使并发管道运行随时间而分散。 如错误的建议, 请`templeton.parallellism.job.submit`参阅 HDInsight 文档进行调整。 |
+| 2300         | Hadoop 作业提交失败。 作业: ..., 群集: ...错误: {\"错误\":\"无法为提交作业请求提供服务, 因为 templeton 服务正在忙于太多提交作业请求。 请等待一段时间, 然后重试该操作。 请参阅配置 templeton 以配置并发请求。  <br/><br/>Hadoop 作业提交失败。 任务161da5d4-6fa8-4ef4-a240-6b6428c5ae2f, 群集: `https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/`。   错误: {\"error\":\"IOException: yarn. YarnException:。:未能将 application_1561147195099_3730 提交到 YARN: AccessControlException:Joblauncher 已有500应用程序, 无法接受应用程序的提交: application_1561147195099_3730 \ | 同时提交到 HDInsight 的作业太多。 | 请考虑限制提交到 HDInsight 的并发作业的数目。 如果作业正在由同一活动提交, 则请参阅数据工厂活动并发性。 更改触发器, 使并发管道运行随时间而分散。 如错误的建议, 请`templeton.parallellism.job.submit`参阅 HDInsight 文档进行调整。 |
 | 2303、2347 | Hadoop 作业失败, 退出代码为 "5"。 有关更wasbs://adfjobs@adftrialrun.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr多详细信息, 请参阅 ""。  <br/><br/>Hive 执行失败, 错误代码为 "UserErrorHiveOdbcCommandExecutionFailure"。   有关更wasbs://adfjobs@eclsupplychainblobd.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out多详细信息, 请参阅 ""。 | 作业已提交到 HDInsight, 在 HDInsight 上失败。 | 已成功将作业提交到 HDInsight。 群集上的失败。 打开 HDInsight Ambari UI 中的作业和日志, 或从存储中打开该文件, 如错误消息所述。 文件显示错误详细信息。 |
 | 2328         | 处理请求时出现内部服务器错误。 请重试请求或联系支持人员。 | 此错误按需在 HDInsight 中发生。                              | 当 HDInsight 设置失败时, 此错误来自 HDInsight 服务。 联系 HDInsight 团队并提供按需群集名称。 |
 | 2310         | java.lang.NullPointerException                               | 将作业提交到 Spark 群集时, 会发生此错误。      | 此异常来自 HDInsight。 它隐藏了实际问题。 请联系 HDInsight 团队寻求支持。 为它们提供群集名称和活动运行时间范围。 |
@@ -137,7 +137,7 @@ ms.locfileid: "68234583"
 
    c. 如果需要, 请添加标头和请求正文。
 
-   d. 选择“执行”  。
+   d. 选择“执行”。
 
 9. 再次打开流量捕获, 并在页面上完成有问题的事务。
 
