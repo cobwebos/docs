@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e4ed781544d3cd11e8494e40589676adf57a9c75
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1827bfdbebaf1ffa17c7c631a94aa8fc6471d13b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405115"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854104"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>配置必应自定义搜索体验
 
@@ -129,7 +129,7 @@ ms.locfileid: "68405115"
 > [!NOTE]
 > 用户搜索查询之间的所有比较以及固定项的搜索查询不区分大小写。
 
-| ReplTest1 | 描述                                                                          |
+| 值 | 描述                                                                          |
 |---------------|----------------------------------------------------------------------------------|
 | 开头为 | 如果用户的查询字符串以固定项的查询字符串开头，则固定项为匹配项 |
 | 结尾为   | 如果用户的查询字符串以固定项的查询字符串结尾，则固定项为匹配项。  |
@@ -159,5 +159,5 @@ ms.locfileid: "68405115"
 
 - [调用自定义搜索](./search-your-custom-view.md)
 - [配置托管 UI 体验](./hosted-ui.md)
-- [使用修饰标记来突出显示文本](./hit-highlighting.md)
+- [使用修饰标记来突出显示文本](../bing-web-search/hit-highlighting.md)
 - [网页](./page-webpages.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5d8cd7799dd23dabc2cbb423e82b8c7203b7bed
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834629"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851780"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>以受控方式验证混合 Azure AD 加入
 
@@ -72,7 +72,7 @@ ms.locfileid: "68834629"
       1. 密钥路径:**SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. 值名称:**TenantName**
       1. 值类型:**REG_SZ**
-      1. 值数据:如果你使用的是联合环境 (如 AD FS), 则已验证的**域名**。 已验证的域名 "" 或你的 onmicrosoft.com 域名例如, `contoso.onmicrosoft.com`如果你使用的是托管环境
+      1. 值数据:如果你使用的是联合环境 (如 AD FS), 则已验证的**域名**。 已验证的**域名**或你的 onmicrosoft.com 域名例如, `contoso.onmicrosoft.com`如果你使用的是托管环境
    1. 单击 **“确定”**
 1. 关闭新创建的 GPO 的编辑器
 1. 将新创建的 GPO 链接到包含已加入域的计算机的所需 OU, 该 OU 属于你的受控推出群体

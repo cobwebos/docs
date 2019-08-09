@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 1bf8c22c2c7c8e8aaab35a4663652300a341c99c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 04c77a82d08e2559d4ce29d49d56d6b7a5edfca5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571044"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856131"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
 
@@ -26,9 +26,9 @@ ms.locfileid: "68571044"
 
 有关 ACI 的配额和区域可用性的详细信息, 请参阅[Azure 容器实例的配额和区域可用性](https://docs.microsoft.com/azure/container-instances/container-instances-quotas)一文。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
-- Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。
+- Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
 
 - 已在工作区中注册的机器学习模型。 如果没有已注册的模型, 请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 

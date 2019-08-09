@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 55722c35dddcbf8a20f4f51958170938225e87e5
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 2b59797e60585876764e8c9e1276e4fd36571b18
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668391"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856017"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>通过 MLflow 和 Azure 机器学习 service (预览版) 跟踪指标和部署模型
 
@@ -49,10 +49,12 @@ ms.locfileid: "68668391"
 |监视模型性能||✓|  |   |
 | 检测数据偏差 |   | ✓ |   | ✓ |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * [安装 MLflow。](https://mlflow.org/docs/latest/quickstart.html)
-* [在本地计算机上安装 Azure 机器学习 PYTHON SDK, 并创建 Azure 机器学习工作区](setup-create-workspace.md#sdk)。 SDK 为 MLflow 提供连接以访问工作区。
+* 在本地计算机上[安装 AZURE 机器学习 sdk](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 。 Sdk 为 MLflow 提供连接以访问工作区。
+* [创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
+
 
 ## <a name="track-experiment-runs"></a>跟踪试验运行
 
@@ -154,7 +156,7 @@ run = exp.submit(src)
 
 设置群集后, 请导入你的实验笔记本, 将其打开, 并将你的群集附加到其中。
 
-下面的代码应在实验笔记本中。 这将获取用于实例化你的工作区的 Azure 订阅的详细信息。 这假定你已有一个资源组和 Azure 机器学习工作区, 否则你可以[创建它们](setup-create-workspace.md#portal)。 
+下面的代码应在实验笔记本中。 这将获取用于实例化你的工作区的 Azure 订阅的详细信息。 这假定你已有一个资源组和 Azure 机器学习工作区, 否则你可以[创建它们](how-to-manage-workspace.md)。 
 
 ```python
 import mlflow

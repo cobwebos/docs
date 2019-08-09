@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: jureid
-ms.openlocfilehash: 701b35d99cb98009ec0116c23eaeab94ff967f51
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d6ae863aed629f5f5b1497d5a6e0f8108f4703c8
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678938"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848712"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>以编程方式创建 Azure Enterprise 订阅（预览版）
 
@@ -69,7 +69,7 @@ Azure 使用有访问权限的所有注册帐户列表做出响应：
 }
 ```
 
-使用 `principalName` 属性标识想要对其收取订阅费用的帐户。 `name`复制该帐户的。 例如, 如果你想要在SignUpEngineering@contoso.com注册帐户下创建订阅, 则需要复制。 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` 这是注册帐户的对象 ID。 将此值粘贴到某个位置, 以便在下一步`enrollmentAccountObjectId`中将其用作。
+使用 `principalName` 属性标识想要对其收取订阅费用的帐户。 `name`复制该帐户的。 例如, 如果你想要在SignUpEngineering@contoso.com注册帐户下创建订阅, 则需要复制。 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` 此标识符是注册帐户的对象 ID。 将此值粘贴到某个位置, 以便在下一步`enrollmentAccountObjectId`中将其用作。
 
 ## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -117,7 +117,7 @@ Azure 会使用你有权访问的注册帐户列表进行响应:
 ]
 ```
 
-使用 `principalName` 属性标识想要对其收取订阅费用的帐户。 `name`复制该帐户的。 例如, 如果你想要在SignUpEngineering@contoso.com注册帐户下创建订阅, 则需要复制。 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` 这是注册帐户的对象 ID。 将此值粘贴到某个位置, 以便在下一步`enrollmentAccountObjectId`中将其用作。
+使用 `principalName` 属性标识想要对其收取订阅费用的帐户。 `name`复制该帐户的。 例如, 如果你想要在SignUpEngineering@contoso.com注册帐户下创建订阅, 则需要复制。 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` 此标识符是注册帐户的对象 ID。 将此值粘贴到某个位置, 以便在下一步`enrollmentAccountObjectId`中将其用作。
 
 ---
 
@@ -146,7 +146,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| 元素名称  | 必填 | 类型   | 描述                                                                                               |
+| 元素名称  | 必填 | type   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `offerType`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
@@ -201,7 +201,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>对创建 Azure Enterprise 订阅的 API 限制
 
 - 仅 Azure Enterprise 订阅可以使用此 API 进行创建。
-- 每个注册帐户有200个订阅限制。 之后, 只能通过帐户中心创建订阅。 如果要通过 API 创建更多订阅, 请创建另一个注册帐户。
+- 每个注册帐户有200个订阅限制。 之后, 只能通过帐户中心创建该帐户的更多订阅。 如果要通过 API 创建更多订阅, 请创建另一个注册帐户。
 - 如果用户不是帐户所有者, 但通过 RBAC 添加到注册帐户, 则不能使用帐户中心创建订阅。
 - 不能选择要在其中创建订阅的租户。 订阅始终在帐户所有者的主租户中进行创建。 若要将订阅移到不同的租户，请参阅[更改订阅租户](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 

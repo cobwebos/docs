@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: c664b089f316255fabc4c8dc36b291d7d63e6280
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 675ad278cb8bdc0ced4eff3bd77572f44c9808fc
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173451"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857327"
 ---
 在本部分中，更新现有移动应用后端项目中的代码，以便在每次添加新项目时发送推送通知。 此过程由 Azure 通知中心的[模板](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)功能提供支持，允许跨平台推送。 各种客户端使用模板注册推送通知，因此只需单个通用推送即可将内容发送到所有客户端平台。
 
@@ -17,8 +17,8 @@ ms.locfileid: "67173451"
 
 ### <a name="dotnet"></a>.NET 后端项目
 
-1. 在 Visual Studio 中，右键单击服务器项目。 然后选择“管理 NuGet 包”。  搜索 `Microsoft.Azure.NotificationHubs`，并选择“安装”  。 此过程将安装通知中心库，以便从后端发送通知。
-2. 在服务器项目中，打开“控制器” > “TodoItemController.cs”。   然后，添加以下 using 语句：
+1. 在 Visual Studio 中，右键单击服务器项目。 然后选择“管理 NuGet 包”。 搜索 `Microsoft.Azure.NotificationHubs`，并选择“安装”。 此过程将安装通知中心库，以便从后端发送通知。
+2. 在服务器项目中，打开“控制器” > “TodoItemController.cs”。 然后，添加以下 using 语句：
 
     ```csharp
     using System.Collections.Generic;
@@ -70,7 +70,7 @@ ms.locfileid: "67173451"
 
 ### <a name="nodejs"></a>Node.js 后端项目
 
-1. 如果尚未执行此操作，请[下载快速入门后端项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)，或使用 [Azure 门户中的在线编辑器](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。
+1. 设置后端项目。
 2. 将 todoitem.js 文件中的现有代码替换为以下代码：
 
     ```javascript

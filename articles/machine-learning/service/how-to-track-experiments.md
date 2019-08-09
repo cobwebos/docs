@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: edc0da77fc1c2813c2485fca18d50952e3060db8
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: f7cd0125de886eed4b3e5c31503fdd4b7cbb76dd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370474"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847824"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>训练过程中的日志指标运行 Azure 机器学习
 
@@ -49,7 +49,7 @@ ms.locfileid: "68370474"
 ## <a name="set-up-the-workspace"></a>设置工作区
 添加日志记录和提交试验之前，必须设置工作区。
 
-1. 加载工作区。 若要了解有关设置工作区配置的详细信息, 请按照[创建 Azure 机器学习服务工作区](setup-create-workspace.md#sdk)中的步骤操作。
+1. 加载工作区。 若要了解有关设置工作区配置的详细信息, 请参阅[工作区配置文件](how-to-configure-environment.md#workspace)。
 
    ```python
    from azureml.core import Experiment, Run, Workspace
@@ -58,7 +58,7 @@ ms.locfileid: "68370474"
    ws = Workspace.from_config()
    ```
   
-## <a name="option-1-use-startlogging"></a>选项 1：使用 start_logging
+## <a name="option-1-use-start_logging"></a>选项 1：使用 start_logging
 
 **start_logging** 可创建笔记本等方案中使用的交互式运行。 试验中会话期间记录的任何指标都会添加到运行记录中。
 

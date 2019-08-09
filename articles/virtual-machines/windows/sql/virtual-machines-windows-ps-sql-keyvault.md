@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 13d698cfbc0241248a77fd5f3b148a9393320c64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7de54f7da8cef5942a8d8f41031eaf3e2565580
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076004"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846249"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>在 Azure 虚拟机上配置 SQL Server 的 Azure Key Vault 集成 (Resource Manager)
 
@@ -50,20 +50,20 @@ SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](https://m
 
 ![SQL Azure 密钥保管库集成](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 
-预配的详细演练，请参阅[预配 SQL Server 虚拟机在 Azure 门户中](virtual-machines-windows-portal-sql-server-provision.md)。
+有关预配的详细演练, 请参阅[在 Azure 门户中预配 SQL Server 虚拟机](virtual-machines-windows-portal-sql-server-provision.md)。
 
 ### <a name="existing-vms"></a>现有 VM
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-对于现有的 SQL Server 虚拟机，打开你[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)，然后选择**安全**下**设置**。 选择**启用**若要启用 Azure 密钥保管库集成。 
+对于现有 SQL Server 虚拟机, 请打开[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource), 然后选择 "**设置**" 下的 "**安全性**"。 选择 "**启用**" 以启用 Azure Key Vault 集成。 
 
 ![现有 VM 的 SQL AKV 集成](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
 
-完成后，选择**Apply**底部的按钮**安全**页后，可以保存所做的更改。
+完成后, 选择 "**安全**" 页底部的 "**应用**" 按钮保存所做的更改。
 
 > [!NOTE]
-> 我们在此处创建的凭据名称会更高版本映射到 SQL 登录名。 这允许 SQL 登录名访问密钥保管库。 
+> 此处创建的凭据名称将在稍后映射到 SQL 登录名。 这允许 SQL 登录名访问密钥保管库。 
 
 
 > [!NOTE]

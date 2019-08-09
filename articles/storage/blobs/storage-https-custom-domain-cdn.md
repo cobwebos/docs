@@ -1,20 +1,19 @@
 ---
 title: 在 Azure CDN 中使用自定义域通过 HTTPS 访问 Blob
 description: 了解如何将 Azure CDN 与 Blob 存储进行集成以使用自定义域通过 HTTPS 访问 Blob
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: normesta
-ms.reviewer: seguler
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: da3a6dcb0d125ac4666bc375e843c57cf12fb2fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ad599182191e41ea43d38260692a7ab46e1af6f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148405"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845000"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>在 Azure CDN 中使用自定义域通过 HTTPS 访问 Blob
 
@@ -33,7 +32,7 @@ Azure 内容分发网络 (Azure CDN) 现在支持针对自定义域名使用 HTT
     本文将引导你在 Azure 门户中创建存储帐户（如果尚未执行此操作）。
 
     > [!NOTE]  
-    > 若要在 Azure 存储的静态网站支持预览期添加存储 Web 终结点，请在“源类型”下拉列表中选择“自定义源”。   在 Azure 门户中，需要通过 Azure CDN 配置文件（而不是直接在存储帐户中）这样做。
+    > 若要在 Azure 存储的静态网站支持预览期添加存储 Web 终结点，请在“源类型”下拉列表中选择“自定义源”。 在 Azure 门户中，需要通过 Azure CDN 配置文件（而不是直接在存储帐户中）这样做。
 
 2.  [将 Azure CDN 内容映射到自定义域](../../cdn/cdn-map-content-to-custom-domain.md)。
 

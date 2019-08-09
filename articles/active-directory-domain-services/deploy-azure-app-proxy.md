@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: eca421697081310b1bf245172b3ff125e11c8728
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: b3fb5d665380bc15b61d3b4b7913a992915f9afb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234175"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853841"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域上部署 Azure AD 应用程序代理
 Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问的本地应用程序，帮助用户为远程辅助角色提供支持。 使用 Azure AD 域服务，现在可以将本地运行的旧版应用程序提升并转移到 Azure 基础结构服务。 然后，可以使用 Azure AD 应用程序代理发布这些应用程序，以允许组织中的用户进行安全远程访问。
@@ -44,16 +44,13 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
 1. 在 [Azure 门户](https://portal.azure.com)中，以管理员身份登录。
 
-2. 单击“Azure Active Directory”  以显示目录概述。 单击“企业应用程序”。 
+2. 单击“Azure Active Directory”以显示目录概述。 单击“企业应用程序”。
 
-    ![选择 Azure AD 目录](./media/app-proxy/app-proxy-enable-start.png)
-3. 单击“应用程序代理”  。 如果没有 Azure AD Basic 或 Azure AD Premium 订阅，将看到用于启用试用版的选项。 将“启用应用程序代理?”  切换到“启用”  ，并单击“保存”  。
+3. 单击“应用程序代理”。
 
-    ![启用应用代理](./media/app-proxy/app-proxy-enable-proxy-blade.png)
-4. 若要下载连接器，请单击“连接器”  按钮。
+4. 若要下载连接器，请单击“连接器”按钮。
 
-    ![下载连接器](./media/app-proxy/app-proxy-enabled-download-connector.png)
-5. 在下载页上，接受许可条款和隐私协议，并单击“下载”  按钮。
+5. 在下载页上，接受许可条款和隐私协议，并单击“下载”按钮。
 
     ![确认下载](./media/app-proxy/app-proxy-enabled-confirm-download.png)
 
@@ -75,7 +72,7 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
     ![接受条款以安装](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. 在安装期间，系统会提示将连接器注册到 Azure AD 目录的应用程序代理。
-   * 提供 **Azure AD 全局管理员凭据**。 全局管理员租户可能不同于 Microsoft Azure 凭据。
+   * 提供**Azure AD 的应用程序管理员凭据**。 你的应用程序管理员租户可能与 Microsoft Azure 凭据不同。
    * 用于注册连接器的管理员帐户必须属于已启用应用程序代理服务的同一目录。 例如，如果租户域为 contoso.com，则管理员应该为 admin@contoso.com 或该域上的任何其他有效别名。
    * 如果已为要安装连接器的服务器启用“IE 增强的安全配置”，则可能无法显示注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作。 确保 Internet Explorer 增强的安全性已关闭。
    * 如果连接器注册不成功，请参阅 [故障排除应用程序代理](../active-directory/manage-apps/application-proxy-troubleshoot.md)。

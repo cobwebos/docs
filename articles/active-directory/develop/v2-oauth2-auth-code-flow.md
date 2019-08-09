@@ -16,14 +16,14 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8244707ec44b9afc51d5f2c21c3e95ff0692cfb
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: abdf60d92f51fdb34f36599aa7f4019b2adb8475
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482342"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852230"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -64,11 +64,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数    | 必需/可选 | 描述 |
 |--------------|-------------|--------------|
-| `tenant`    | 必填    | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
-| `client_id`   | 必填    | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。  |
-| `response_type` | 必填    | 必须包括授权代码流的 `code`。       |
-| `redirect_uri`  | 必填 | 应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `https://login.microsoftonline.com/common/oauth2/nativeclient`。   |
-| `scope`  | 必填    | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  有关`/authorize`阶段的请求，这可以涵盖多个资源，使应用能够获取同意的情况下以多个 web 想要调用的 Api。 |
+| `tenant`    | 必需    | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
+| `client_id`   | 必需    | Azure 门户的**应用程序 (客户端) ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。  |
+| `response_type` | 必需    | 必须包括授权代码流的 `code`。       |
+| `redirect_uri`  | 必需 | 应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `https://login.microsoftonline.com/common/oauth2/nativeclient`。   |
+| `scope`  | 必需    | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  `/authorize`对于请求的这一阶段, 这可能涵盖多个资源, 允许应用获得要调用的多个 web api 的许可。 |
 | `response_mode`   | 建议 | 指定将生成的令牌送回到应用程序所应该使用的方法。 可以是以下值之一：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 在重定向 URI 上提供代码作为查询字符串参数。 如果要使用隐式流请求 ID 令牌，则不能使用 [OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只是请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 有关详细信息，请参阅 [OpenID Connect 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)。  |
 | `state`                 | 建议 | 同样随令牌响应返回的请求中所包含的值。 它可以是你想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 在发出身份验证请求出现之前，此值对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
 | `prompt`  | 可选    | 表示需要的用户交互类型。 此时唯一有效值为 `login``none` 和 `consent`。<br/><br/>- `prompt=login` 将强制用户在该请求上输入其凭据，从而使单一登录无效。<br/>- `prompt=none` 则相反 - 它确保不对用户显示任何交互式提示。 如果请求无法通过单一登录静默完成，则 Microsoft 标识平台终结点将返回 `interaction_required` 错误。<br/>- `prompt=consent` 在用户登录后将触发 OAuth 同意对话框，要求用户向应用授予权限。 |
@@ -147,16 +147,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> 尝试在 Postman 中执行此请求！ (别忘了替换`code`) [![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> 尝试在 Postman 中执行此请求！ (请不要忘记替换`code`) [ ![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 | 参数  | 必需/可选 | 描述     |
 |------------|-------------------|----------------|
-| `tenant`   | 必填   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
-| `client_id` | 必填  | 应用程序 （客户端） ID [Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给您的应用程序。 |
-| `grant_type` | 必填   | 必须是授权代码流的 `authorization_code`。   |
-| `scope`      | 必填   | 范围的空格分隔列表。 在此阶段中请求的范围必须相当于或为第一个阶段中所请求的范围子集。 作用域必须是从单个资源，以及 OIDC 作用域 (`profile`， `openid`， `email`)。 有关范围的更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
-| `code`          | 必填  | 在流的第一个阶段中获取的 authorization_code。 |
-| `redirect_uri`  | 必填  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
+| `tenant`   | 必需   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
+| `client_id` | 必需  | [Azure 门户–应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序 (客户端) ID。 |
+| `grant_type` | 必需   | 必须是授权代码流的 `authorization_code`。   |
+| `scope`      | 必需   | 范围的空格分隔列表。 在此阶段中请求的范围必须相当于或为第一个阶段中所请求的范围子集。 作用域必须全部来自单个资源, 以及 OIDC 作用域 (`profile`、 `openid`、 `email`)。 有关范围的更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
+| `code`          | 必需  | 在流的第一个阶段中获取的 authorization_code。 |
+| `redirect_uri`  | 必需  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
 | `client_secret` | Web 应用所需 | 在应用程序注册门户中为应用程序创建的应用程序机密。 不应在本机应用中使用应用程序机密，因为 client_secrets 不能可靠地存储在设备上。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。  在发送客户端密码之前必须对其进行 URL 编码。  |
 | `code_verifier` | 可选  | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 
@@ -228,7 +228,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 已经成功获取 `access_token`，现在可以通过在 `Authorization` 标头中包含令牌，在 Web API 的请求中使用令牌。
 
 > [!TIP]
-> 在 Postman 中执行此请求！ (替换`Authorization`标头第一个) [![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> 在 Postman 中执行此请求！ (先替换`Authorization`标头) [ ![, 尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 GET /v1.0/me/messages
@@ -259,16 +259,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> 尝试在 Postman 中执行此请求！ (别忘了替换`refresh_token`) [![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> 尝试在 Postman 中执行此请求！ (请不要忘记替换`refresh_token`) [ ![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 > 
 
 | 参数     |                | 描述        |
 |---------------|----------------|--------------------|
-| `tenant`        | 必填     | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。   |
-| `client_id`     | 必填    | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。 |
-| `grant_type`    | 必填    | 必须是授权代码流的此阶段的 `refresh_token`。 |
-| `scope`         | 必填    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于或者为原始 authorization_code 请求阶段中所请求的范围子集。 如果这个请求中指定的范围遍及多个资源服务器，Microsoft 标识平台终结点将返回第一个范围内所指定资源的令牌。 有关范围的更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
-| `refresh_token` | 必填    | 在流的第二个阶段获取的 refresh_token。 |
+| `tenant`        | 必需     | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。   |
+| `client_id`     | 必需    | Azure 门户的**应用程序 (客户端) ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
+| `grant_type`    | 必需    | 必须是授权代码流的此阶段的 `refresh_token`。 |
+| `scope`         | 必需    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于或者为原始 authorization_code 请求阶段中所请求的范围子集。 如果这个请求中指定的范围遍及多个资源服务器，Microsoft 标识平台终结点将返回第一个范围内所指定资源的令牌。 有关范围的更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
+| `refresh_token` | 必需    | 在流的第二个阶段获取的 refresh_token。 |
 | `client_secret` | Web 应用所需 | 在应用程序注册门户中为应用程序创建的应用程序机密。 它不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。 |
 
 #### <a name="successful-response"></a>成功的响应

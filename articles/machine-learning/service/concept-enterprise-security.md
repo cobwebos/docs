@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
-ms.openlocfilehash: f0fb6f0d2b2579679ee8a6ec43b3241377701d48
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/07/2019
+ms.openlocfilehash: d1ad89943f6acfec6e42199ef399643be12e2b8b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780902"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856238"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Azure 机器学习服务的企业安全性
 
@@ -176,12 +176,24 @@ Azure 机器学习服务使用与工作区关联 Key Vault 实例来存储各种
 * 密码到 Azure 容器存储库实例
 * 数据存储的连接字符串。
 
-用于计算目标 (如 HDI HDInsight 和 VM) 的 SSH 密码和密钥存储在与 Microsoft 订阅关联的单独 Key Vault 中。 Azure 机器学习服务将存储用户提供的任何密码或密钥, 而是生成、授权并存储自己的 SSH 密钥, 以便连接到 VM/HDInsight 来运行试验。
+用于计算目标 (如 HDI HDInsight 和 VM) 的 SSH 密码和密钥存储在与 Microsoft 订阅关联的单独 Key Vault 中。 Azure 机器学习服务不会存储用户提供的任何密码或密钥, 而是生成、授权并存储自己的 SSH 密钥, 以便连接到 VM/HDInsight 来运行试验。
 每个工作区都有一个关联的系统分配的托管标识 (与工作区具有相同的名称), 可以访问 Key Vault 中的所有密钥、机密和证书。
 
 ## <a name="monitoring"></a>监视
 
-用户可以在工作区查看活动日志, 以查看在工作区中执行的各种操作, 并获取基本信息, 如操作名称、事件的启动事件、时间戳等。
+### <a name="metrics"></a>指标
+
+Azure Monitor 指标可用于查看和监视 Azure 机器学习服务工作区的指标。 在[Azure 门户](https://portal.azure.com)中, 选择工作区, 然后使用 "__指标__" 链接。
+
+![显示工作区的示例指标的屏幕截图](./media/enterprise-readiness/workspace-metrics.png)
+
+指标包括有关运行、部署和注册的信息。
+
+有关详细信息，请参阅 [Azure Monitor 中的指标](/azure/azure-monitor/platform/data-platform-metrics)。
+
+### <a name="activity-log"></a>活动日志
+
+你可以在工作区中查看活动日志, 以查看在工作区中执行的各种操作, 并获取基本信息, 如操作名称、事件启动者、时间戳等。
 
 以下屏幕截图显示工作区的活动日志:
 

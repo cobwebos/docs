@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 064fd0e2bf503d917c809aa576bbc332b5b18a77
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 3fb4d953f575dcf6582f9f1c8c2a725971134159
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742358"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856256"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -66,6 +66,9 @@ ms.locfileid: "68742358"
 ## <a name="preprocessing"></a>预处理
 
 在每个自动机器学习试验中, 均使用默认方法对数据进行预处理, 并可选择通过高级预处理进行预处理。
+
+> [!NOTE]
+> 自动机器学习预处理步骤 (功能规范化、处理丢失的数据、将文本转换为数字等) 成为基础模型的一部分。 使用模型进行预测时, 在训练过程中应用的相同预处理步骤会自动应用于输入数据。
 
 ### <a name="automatic-preprocessing-standard"></a>自动预处理 (标准)
 

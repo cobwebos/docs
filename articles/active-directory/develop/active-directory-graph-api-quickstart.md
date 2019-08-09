@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: sureshja
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2ae83b655bfe607b1061168649ec74f02ab4064
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 85c3a1953ce34ab6bf60111715d9d8972a4682ba
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483181"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853389"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>如何：使用 Azure AD 图形 API
 
@@ -65,11 +65,11 @@ Azure Active Directory (Azure AD) 图形 API 通过 OData REST API 终结点提�
 
 以下屏幕截图是导航到 Azure AD 图形资源管理器，登录并输入 `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6` 以显示已登录用户目录中的所有用户时会看到的输出：
 
-![在 Azure AD 图形 API 资源管理器中的示例输出](./media/active-directory-graph-api-quickstart/graph_explorer.png)
+![Azure AD 图形 API 资源管理器中的示例输出](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
-**加载 Azure AD 图形资源管理器**：若要加载工具，请导航到 [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)。 单击“登录”  ，并使用 Azure AD 帐户凭据登录，以针对租户运行 Azure AD 图形资源管理器。 如果针对自己的租户运行 Azure AD 图形资源管理器，则你或管理员需要在登录期间表示同意。 如果拥有 Office 365 订阅，则会自动拥有 Azure AD 租户。 用于登录 Office 365 的凭据事实上就是 Azure AD 帐户，可以在 Azure AD 图形资源管理器中使用这些凭据。
+**加载 Azure AD 图形资源管理器**：若要加载工具，请导航到 [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)。 单击“登录”，并使用 Azure AD 帐户凭据登录，以针对租户运行 Azure AD 图形资源管理器。 如果针对自己的租户运行 Azure AD 图形资源管理器，则你或管理员需要在登录期间表示同意。 如果拥有 Office 365 订阅，则会自动拥有 Azure AD 租户。 用于登录 Office 365 的凭据事实上就是 Azure AD 帐户，可以在 Azure AD 图形资源管理器中使用这些凭据。
 
-**运行查询**：要运行查询，请在请求文本框中键入查询，然后单击“获取”  或单击 Enter  键。 结果会显示在响应框中。 例如，`https://graph.windows.net/myorganization/groups?api-version=1.6` 将列出已登录用户目录中的所有组对象。
+**运行查询**：要运行查询，请在请求文本框中键入查询，然后单击“获取”或单击 Enter 键。 结果会显示在响应框中。 例如，`https://graph.windows.net/myorganization/groups?api-version=1.6` 将列出已登录用户目录中的所有组对象。
 
 请注意，Azure AD 图形资源管理器具有以下功能与限制：
 
@@ -91,9 +91,9 @@ Azure Active Directory (Azure AD) 图形 API 通过 OData REST API 终结点提�
 
 **编写和运行查询**：完成以下步骤：
 
-1. 打开 Fiddler Web 调试器并切换到“编辑器”  选项卡。
-2. 由于要创建新的安全组，因此请从下拉菜单中选择“发布”  作为 HTTP 方法。 有关对组对象的操作和权限的详细信息，请参阅 [Azure AD Graph REST API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)中的[组](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#group-entity)。
-3. 在“发布”  旁边的字段中，键入以下请求 URL：`https://graph.windows.net/{mytenantdomain}/groups?api-version=1.6`。
+1. 打开 Fiddler Web 调试器并切换到“编辑器”选项卡。
+2. 由于要创建新的安全组，因此请从下拉菜单中选择“发布”作为 HTTP 方法。 有关对组对象的操作和权限的详细信息，请参阅 [Azure AD Graph REST API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)中的[组](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#group-entity)。
+3. 在“发布”旁边的字段中，键入以下请求 URL：`https://graph.windows.net/{mytenantdomain}/groups?api-version=1.6`。
    
    > [!NOTE]
    > 必须将 {mytenantdomain} 替换成自己的 Azure AD 目录的域名。
@@ -109,7 +109,7 @@ Azure Active Directory (Azure AD) 图形 API 通过 OData REST API 终结点提�
    > [!NOTE]
    > 将 &lt;your access token&gt; 替换为 Azure AD 目录的访问令牌。
 
-5. 在“请求正文”  字段中键入以下 JSON：
+5. 在“请求正文”字段中键入以下 JSON：
    
     ```
         {

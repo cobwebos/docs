@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 0e7c6fe10467bb68417172dc95fef874d37fc97b
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: f0f89275006498c0ff4883f259d7e76f723b922b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696240"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851318"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>使用 Azure API 管理进行高级请求限制
 限制传入请求是 Azure API 管理的重要功能。 通过控制请求的速率或传输的请求/数据总量，API 管理让 API 提供程序能够保护其 API 不被滥用，为不同的 API 产品层创造价值。
@@ -29,7 +29,7 @@ ms.locfileid: "68696240"
 
 ## <a name="custom-key-based-throttling"></a>基于自定义密钥的限制
 
-> 注意:此`rate-limit-by-key`策略在 Azure API 管理的消耗层中不可用。 
+> 注意:当在`quota-by-key` Azure API 管理的消耗层中时,和策略不可用。`rate-limit-by-key` 
 
 新的[基于密钥的速率限制](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey)和[基于密钥的配额](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey)策略提供更灵活的流量控制解决方案。 使用这些新策略可以定义表达式，识别用于跟踪流量使用的密钥。 最好是举一个例子来演示其工作原理。 
 

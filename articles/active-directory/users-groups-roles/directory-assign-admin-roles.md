@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e139b274ab8a1f7d91d46ec56171b84db4f5025e
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a4d692110a304cbfbbfda69bb2b10e3a065b2450
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812832"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851527"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -200,9 +200,7 @@ ms.locfileid: "68812832"
   > [!NOTE]
   > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Power BI 服务管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“Power BI 管理员”。
 
-* **[特权身份验证管理员](#privileged-authentication-administrator)** ：具有此角色的用户可以为所有用户 (包括全局管理员) 设置或重置非密码凭据, 并可以更新所有用户的密码。 特权身份验证管理员可以强制用户重新注册现有非密码凭据（例如 MFA、FIDO），以及撤销“在设备上记住 MFA”（所有用户下次登录时提示执行 MFA）。 特权身份验证管理员可以：
-  * 强制用户针对现有非密码凭据（例如 MFA、FIDO）重新注册
-  * 撤销“在设备上记住 MFA”（下次登录时提示执行 MFA）
+* **[特权身份验证管理员](#privileged-authentication-administrator)** ：具有此角色的用户可以为所有用户 (包括全局管理员) 设置或重置非密码凭据, 并可以更新所有用户的密码。 特权身份验证管理员可以强制用户重新注册现有非密码凭据（例如 MFA、FIDO），以及撤销“在设备上记住 MFA”（所有用户下次登录时提示执行 MFA）。
 
 * **[特权角色管理员](#privileged-role-administrator)** ：具有此角色的用户可以管理角色分配以及 Azure AD Privileged Identity Management 中的 Azure Active Directory。 此外, 此角色还允许管理 Privileged Identity Management 和管理单元的所有方面。
 

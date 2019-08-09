@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: defbd1275e24217c235caaef15dc8f7a55ad8613
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: cdcf701c6356303c84d3f79ee4230271f64ace78
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296571"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854238"
 ---
 # <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>将异常探测器容器部署到 Azure 容器实例
 
-了解如何将认知服务[异常检测](../anomaly-detector-container-howto.md)容器容器部署到 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)。 此过程演示如何创建异常探测器资源。 然后讨论如何拉取关联的容器映像。 最后, 我们重点介绍了从浏览器中执行这两个业务流程的能力。 使用容器可以将开发人员的注意力转向管理基础结构, 而不是专注于应用程序开发。
+了解如何将认知服务[异常检测](../anomaly-detector-container-howto.md)容器容器部署到 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)。 此过程演示如何创建异常探测器资源。 然后讨论如何拉取关联的容器映像。 最后，我们重点介绍了从浏览器中执行这两个业务流程的能力。 使用容器可以将开发人员的注意力从管理基础结构转移到应用程序开发上。
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
@@ -35,4 +35,8 @@ ms.locfileid: "68296571"
 
 [!INCLUDE [API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
-[!INCLUDE [Containers Next Steps](../../containers/includes/containers-next-steps.md)]
+## <a name="next-steps"></a>后续步骤
+
+* 查看[安装并运行](../anomaly-detector-container-configuration.md)容器以拉取容器映像并运行容器
+* 查看[配置容器](../anomaly-detector-container-configuration.md)了解配置设置
+* [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

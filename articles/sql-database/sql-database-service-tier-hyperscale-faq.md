@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 70ba6c5507cf31732d679a61c3e185a520b4c5f3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 94894126be98f0d3d4d404d97d0a4a39fff2e665
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566663"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847392"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>关于 Azure SQL“超大规模”数据库的常见问题解答
 
@@ -44,7 +44,7 @@ ms.locfileid: "68566663"
 - “业务关键”服务层级适用于需优先考虑 IO 延迟的业务工作负荷。
 
 | | 资源类型 | 常规用途 |  超大规模 | 业务关键型 |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
 | **最适用于** |全部|  大多数业务工作负荷。 提供以预算导向的、均衡的计算和存储选项。 | 数据容量要求高且能够流畅地自动缩放存储和流畅缩放计算的数据应用程序。 | 事务率较高、延迟 IO 最低的 OLTP 应用程序。 使用多个独立副本，提供最高级别的故障恢复能力。|
 |  **资源类型** ||单一数据库/弹性池/托管实例 | 单一数据库 | 单一数据库/弹性池/托管实例 |
 | **计算大小**|单一数据库/弹性池* | 1 - 80 个 vCore | 1 - 80 个 vCore* | 1 - 80 个 vCore |
@@ -55,7 +55,7 @@ ms.locfileid: "68566663"
 | **IO 吞吐量** | 单一数据库** | 每个 vCore 提供 500 IOPS，最大 7000 IOPS | 超大规模是具有多个级别的缓存的多层体系结构。 有效 IOPs 将取决于工作负荷。 | 5000 IOPS，最大 200,000 IOPS|
 | | 托管实例 | 取决于文件大小 | 不可用 | 托管实例：取决于文件大小|
 |**可用性**|全部|1 个副本，无读取扩展副本，无本地缓存 | 多个副本，最多 15 个读取扩展副本，部分本地缓存 | 3 个副本，1 个读取扩展副本，区域冗余 HA，完整的本地缓存 |
-|**备份**|全部|RA-GRS，7-35 天（默认为 7 天）| RA-GRS，7-35 天（默认为 7 天），恒定的时间时点恢复 (PITR) | RA-GRS，7-35 天（默认为 7 天） |
+|**备份**|全部|RA-GRS，7-35 天（默认为 7 天）| GRS, 7 天, 固定时间点恢复 (PITR) | RA-GRS，7-35 天（默认为 7 天） |
 
 \* “超大规模”服务层级中不支持弹性池
 

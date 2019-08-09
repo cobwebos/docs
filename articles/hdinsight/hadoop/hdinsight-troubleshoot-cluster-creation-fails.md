@@ -1,0 +1,86 @@
+---
+title: 排查 Azure HDInsight 群集创建失败问题
+description: 了解如何排查 Azure HDInsight 的群集创建问题。
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.custom: hdinsightactive
+ms.topic: troubleshooting
+ms.date: 08/06/2019
+ms.openlocfilehash: c7092b2cbcef01ef71261b6f5498cde56a40c358
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857243"
+---
+# <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>排查 Azure HDInsight 群集创建失败问题
+
+以下问题是导致群集创建失败的最常见的根本原因:
+
+- 权限问题
+- 资源策略限制
+- 防火墙
+- 资源锁
+- 组件版本不受支持
+- 存储帐户名称限制
+- 服务中断
+
+## <a name="permissions-issues"></a>权限问题
+
+如果使用 Data Lake Storage 第2代, 请确保分配给 HDInsight 群集的用户分配的托管标识在 " **存储 Blob 数据参与者**" 角色或 "**存储 blob 数据所有者" 角色**中。 有关完整的安装说明, 请参阅[将 Azure Data Lake Storage Gen2 与 Azure HDInsight 群集配合使用](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account)。
+
+如果使用 Data Lake Storage 第1代, 请参阅[此处](../hdinsight-hadoop-use-data-lake-store.md)的设置和配置说明。 HBase 群集不支持 Data Lake Storage 第1代, 在 HDInsight 版本4.0 中不受支持。
+
+如果使用 Azure 存储, 请确保在创建群集期间存储帐户名称有效。
+
+## <a name="resource-policy-restrictions"></a>资源策略限制
+
+基于订阅的 Azure 策略可以拒绝创建公共 IP 地址。 创建 HDInsight 群集需要两个公共 IP。  
+
+通常, 以下策略可能会影响群集创建:
+
+* 禁止在订阅中创建 IP 地址 & 负载平衡器的策略。
+* 阻止创建存储帐户的策略。
+* 禁止删除网络资源的策略 (IP 地址/Load 均衡器)。
+
+## <a name="firewalls"></a>防火墙
+
+虚拟网络或存储帐户上的防火墙可以拒绝与 HDInsight 管理 IP 地址的通信。
+
+允许来自下表中的 IP 地址的流量。
+
+| 源 IP 地址 | 目标 | Direction |
+|---|---|---|
+| 168.61.49.99 | *: 443 | 入站 |
+| 23.99.5.239 | *: 443 | 入站 |
+| 168.61.48.131 | *: 443 | 入站 |
+| 138.91.141.162 | *: 443 | 入站 |
+
+还要添加特定于创建群集的区域的 IP 地址。 有关每个 Azure 区域的地址列表, 请参阅[HDInsight 管理 IP 地址](../hdinsight-management-ip-addresses.md)。
+
+如果你使用的是快速路由或你自己的自定义 DNS 服务器, 请参阅为[Azure HDInsight 规划虚拟网络-连接多个网络](../hdinsight-plan-virtual-network-deployment.md#multinet)。
+
+## <a name="resources-locks"></a>资源锁  
+
+确保[你的虚拟网络和资源组](../../azure-resource-manager/resource-group-lock-resources.md)没有任何锁。  
+
+## <a name="unsupported-component-versions"></a>组件版本不受支持
+
+确保你使用的是[受支持版本的 Azure HDInsight](../hdinsight-component-versioning.md)和解决方案中的任何[Apache Hadoop 组件](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。  
+
+## <a name="storage-account-name-restrictions"></a>存储帐户名称限制
+
+存储帐户名称不能超过24个字符, 并且不能包含特殊字符。 这些限制也适用于存储帐户中的默认容器名称。
+
+## <a name="service-outages"></a>服务中断
+
+检查[Azure 状态](https://status.azure.com/status)以了解任何潜在的中断或服务问题。
+
+## <a name="next-steps"></a>后续步骤
+
+* [使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md)
+* [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
+* [将 Azure 存储与 Azure HDInsight 群集配合使用](../hdinsight-hadoop-use-blob-storage.md)
+* [使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集](../hdinsight-hadoop-provision-linux-clusters.md)

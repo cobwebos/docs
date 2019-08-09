@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
 ms.openlocfilehash: 16f88790d96a1e46f60db368f69155b3ad7afbef
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 08/08/2019
 ms.locfileid: "67797494"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP applications 上的 Azure VM 上 SAP NetWeaver 的高可用性
@@ -54,7 +54,7 @@ ms.locfileid: "67797494"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 本文介绍如何部署虚拟机、配置虚拟机、安装群集框架，以及安装高可用性 SAP NetWeaver 7.50 系统。
-在示例配置和安装命令等内容中，使用了 ASCS 实例编号 00、ERS 实例编号 02 和 SAP 系统 ID NW1。 在示例中的资源 （例如虚拟机、 虚拟网络） 名称假定使用了[聚合模板][template-converged]与 SAP 系统 ID NW1 创建的资源。
+在示例配置和安装命令等内容中，使用了 ASCS 实例编号 00、ERS 实例编号 02 和 SAP 系统 ID NW1。 示例中的资源名称 (例如虚拟机、虚拟网络) 假设你已将[聚合模板][template-converged]与 SAP 系统 ID NW1 一起使用来创建资源。
 
 请先阅读以下 SAP 说明和文档
 
@@ -73,11 +73,11 @@ ms.locfileid: "67797494"
 * SAP 说明 [1984787] 包含有关 SUSE Linux Enterprise Server 12 的一般信息。
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
-* [Azure 虚拟机规划和实施适用于 Linux 上的 SAP][planning-guide]
-* [适用于 Linux 上的 SAP 的 azure 虚拟机部署][deployment-guide]
-* [适用于 Linux 上的 SAP 的 azure 虚拟机 DBMS 部署][dbms-guide]
-* [SUSE SAP HA 最佳实践指南][suse-ha-guide]指南包含所需的所有信息来设置 Netweaver HA 和 SAP HANA 系统复制的本地。 请使用上述指南作为常规基准。 它们提供更多详细信息。
-* [SUSE High Availability Extension 12 SP3 发行说明][suse-ha-12sp3-relnotes]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
+* [SUSE SAP HA 最佳实践指南][suse-ha-guide]本指南包含在本地设置 Netweaver HA 和 SAP HANA 系统复制所需的所有信息。 请使用上述指南作为常规基准。 它们提供更多详细信息。
+* [SUSE 高可用性扩展 12 SP3 发行说明][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>概述
 
@@ -88,7 +88,7 @@ ms.locfileid: "67797494"
 NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据库使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要负载均衡器才能使用虚拟 IP 地址。 以下列表显示 (A)SCS 和 ERS 负载均衡器的配置。
 
 > [!IMPORTANT]
-> 多 SID 群集的 SAP ASCS/ERS 为 SUSE Linux Azure Vm 中的来宾操作系统原样**不支持**。 多 SID 群集描述多个具有一个 Pacemaker 群集中不同的 Sid 的 SAP ASCS/ERS 实例的安装
+> **不支持**将 SAP ASCS/ERS 的多 SID 群集与 SUSE Linux 作为 Azure vm 中的来宾操作系统。 多 SID 群集介绍在一个 Pacemaker 群集中安装具有不同 Sid 的多个 SAP ASCS/ERS 实例
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -99,7 +99,7 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 * 探测端口
   * 端口 620&lt;nr&gt;
 * 加载 
-* 均衡规则
+* 平衡规则
   * 32&lt;nr&gt; TCP
   * 36&lt;nr&gt; TCP
   * 39&lt;nr&gt; TCP
@@ -125,7 +125,7 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>设置高度可用的 NFS 服务器
 
-SAP NetWeaver 要求对传输和配置文件目录使用共享存储。 读取[SUSE Linux Enterprise Server 上的 Azure Vm 上的 NFS 的高可用性][nfs-ha]如何为 SAP NetWeaver 设置 NFS 服务器。
+SAP NetWeaver 要求对传输和配置文件目录使用共享存储。 有关如何为 SAP NetWeaver 设置 NFS 服务器的详细 SUSE Linux Enterprise Server, 请参阅[Azure vm 上的 NFS 的高可用性][nfs-ha]。
 
 ## <a name="setting-up-ascs"></a>设置 (A)SCS
 
@@ -137,8 +137,8 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
 
-1. 打开[ASCS/SCS 多 SID 模板][template-multisid-xscs] or the [converged template][template-converged] on the Azure portal. 
-   The ASCS/SCS template only creates the load-balancing rules for the SAP NetWeaver ASCS/SCS and ERS (Linux only) instances whereas the converged template also creates the load-balancing rules for a database (for example Microsoft SQL Server or SAP HANA). If you plan to install an SAP NetWeaver based system and you also want to install the database on the same machines, use the [converged template][template-converged]。
+1. 在 Azure 门户上打开[ASCS/SCS 多 SID 模板][template-multisid-xscs]或[聚合模板][template-converged]。 
+   ASCS/SCS 模板只为 SAP NetWeaver ASCS/SCS 和 ERS (仅限 Linux) 实例创建负载均衡规则, 而聚合模板还为数据库创建负载均衡规则 (例如 Microsoft SQL Server 或 SAP HANA)。 如果打算安装基于 SAP NetWeaver 的系统, 同时想要在同一台计算机上安装数据库, 请使用[聚合模板][template-converged]。
 1. 输入以下参数
    1. 资源前缀（仅限于 ASCS/SCS 多 SID 模板）  
       输入想要使用的前缀。 此值将用作所要部署的资源的前缀。
@@ -157,7 +157,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    9. 管理员用户名和管理员密码  
       创建可用于登录计算机的新用户。
    10. 子网 ID  
-   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;    
+   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -206,10 +206,10 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          * 重复上述步骤，为 ERS 创建运行状况探测（例如 621**02** 和 **nw1-aers-hp**）
    1. 负载均衡规则
       1. ASCS 的 32**00** TCP
-         1. 打开负载均衡器，选择负载均衡规则并单击添加
+         1. 打开负载均衡器, 选择 "负载均衡规则", 并单击 "添加"
          1. 输入新的负载均衡器规则的名称（例如 **nw1-lb-3200**）
          1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **nw1-ascs-frontend**）
-         1. 将协议保留为“TCP”，输入端口 **3200** 
+         1. 将协议保留为“TCP”，输入端口 **3200**
          1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
@@ -219,7 +219,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          * 针对 ASCS ERS 的端口 33**02**、5**02**13、5**02**14、5**02**16 和 TCP 重复上述步骤
 
 > [!IMPORTANT]
-> 不要启用 TCP 放置在 Azure 负载均衡器之后的 Azure Vm 上的时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数设置**net.ipv4.tcp_timestamps**到**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.tcp _timestamps**设置为**0**。 有关详细信息, 请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 
@@ -227,7 +227,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 ### <a name="installation"></a>安装
 
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2    。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2。
 
 1. **[A]** 安装 SUSE 连接器
 
@@ -257,7 +257,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    Summary        : SUSE High Availability Setup for SAP Products
    ```
 
-1. [A] 更新 SAP 资源代理   
+1. [A] 更新 SAP 资源代理  
    
    如本文中所述，使用新配置需要安装资源代理包的修补程序。 可以通过以下命令检查是否已安装了修补程序
 
@@ -277,7 +277,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo zypper in -t patch SUSE-SLE-HA-12-SP2-2017-886=1
    </code></pre>
 
-1. [A] 设置主机名称解析 
+1. [A] 设置主机名称解析
 
    可以使用 DNS 服务器，或修改所有节点上的 /etc/hosts。 此示例演示如何使用 /etc/hosts 文件。
    请替换以下命令中的 IP 地址和主机名
@@ -299,7 +299,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 ## <a name="prepare-for-sap-netweaver-installation"></a>准备 SAP Netweaver 安装
 
-1. [A] 创建共享目录 
+1. [A] 创建共享目录
 
    <pre><code>sudo mkdir -p /sapmnt/<b>NW1</b>
    sudo mkdir -p /usr/sap/trans
@@ -314,7 +314,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo chattr +i /usr/sap/<b>NW1</b>/ERS<b>02</b>
    </code></pre>
 
-1. [A] 配置 autofs 
+1. [A] 配置 autofs
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -339,7 +339,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo service autofs restart
    </code></pre>
 
-1. [A] 配置交换文件 
+1. [A] 配置交换文件
 
    <pre><code>sudo vi /etc/waagent.conf
    
@@ -398,7 +398,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    #      vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started nw1-cl-0</b>
    </code></pre>
 
-1. [1] 安装 SAP NetWeaver ASCS   
+1. [1] 安装 SAP NetWeaver ASCS  
 
    使用映射到适用于 ASCS 的负载均衡器前端配置的 IP 地址（例如 <b>nw1-ascs</b>、<b>10.0.0.7</b>）以及用于负载均衡器探测的实例编号（例如 <b>00</b>）的虚拟主机名，在第一个节点上以 root 身份安装 SAP NetWeaver ASCS。
 
@@ -457,7 +457,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    #      vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       <b>Started nw1-cl-1</b>
    </code></pre>
 
-1. [2] 安装 SAP Netweaver ERS 
+1. [2] 安装 SAP Netweaver ERS
 
    使用映射到适用于 ERS 的负载均衡器前端配置的 IP 地址（例如 <b>nw1-ers</b>、<b>10.0.0.8</b>）以及用于负载均衡器探测的实例编号（例如 <b>02</b>）的虚拟主机名，在第二个节点上以 root 身份安装 SAP NetWeaver ERS。
 
@@ -476,7 +476,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    </code></pre>
 
 
-1. [1] 调整 ASCS/SCS 和 ERS 实例配置文件 
+1. [1] 调整 ASCS/SCS 和 ERS 实例配置文件
  
    * ASCS/SCS 配置文件
 
@@ -510,9 +510,9 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    # Autostart = 1
    </code></pre>
 
-1. [A] 配置 Keep Alive 
+1. [A] 配置 Keep Alive
 
-   SAP NetWeaver 应用程序服务器和 ASCS/SCS 之间的通信是通过软件负载均衡器进行路由的。 负载均衡器在可配置的超时之后将断开非活动连接。 为了防止出现此情况，需要在 SAP NetWeaver ASCS/SCS 配置文件中设置一个参数，并更改 Linux 系统设置。 读取[SAP 说明 1410736][1410736]有关详细信息。
+   SAP NetWeaver 应用程序服务器和 ASCS/SCS 之间的通信是通过软件负载均衡器进行路由的。 负载均衡器在可配置的超时之后将断开非活动连接。 为了防止出现此情况，需要在 SAP NetWeaver ASCS/SCS 配置文件中设置一个参数，并更改 Linux 系统设置。 有关详细信息,[请参阅 SAP 说明 1410736][1410736] 。
 
    在上一步中已添加了 ASCS/SCS 配置文件参数 enque/encni/set_so_keepalive。
 
@@ -520,13 +520,13 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo sysctl net.ipv4.tcp_keepalive_time=120
    </code></pre>
 
-1. [A] 在安装后配置 SAP 用户 
+1. [A] 在安装后配置 SAP 用户
 
    <pre><code># Add sidadm to the haclient group
    sudo usermod -aG haclient <b>nw1</b>adm
    </code></pre>
 
-1. [1] 将 ASCS 和 ERS SAP 服务添加到 sapservice 文件 
+1. [1] 将 ASCS 和 ERS SAP 服务添加到 sapservice 文件
 
    将 ASCS 服务入口添加到第二个节点，并将 ERS 服务入口复制到第一个节点。
 
@@ -534,9 +534,9 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo ssh <b>nw1-cl-1</b> "cat /usr/sap/sapservices" | grep ERS<b>02</b> | sudo tee -a /usr/sap/sapservices
    </code></pre>
 
-1. [1] 创建 SAP 群集资源 
+1. [1] 创建 SAP 群集资源
 
-如果使用排队服务器 1 体系结构 (ENSA1)，定义的资源，如下所示：
+如果使用排入服务器1体系结构 (ENSA1), 请按如下所示定义资源:
 
    <pre><code>sudo crm configure property maintenance-mode="true"
    
@@ -564,8 +564,8 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
-  SAP 引入了对排队服务器 2，包括复制，从 SAP NW 7.52 开始支持。 从 ABAP 平台 1809年开始，默认情况下安装排队服务器 2。 请参阅 SAP 注释[2630416](https://launchpad.support.sap.com/#/notes/2630416) for 排入队列 server 2 的支持。
-如果使用排队服务器 2 体系结构 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html))，定义的资源，如下所示：
+  SAP 在 SAP NW 7.52 中引入了对排队服务器 2 (包括复制) 的支持。 从 ABAP 平台1809开始, 默认情况下会安装排队服务器2。 有关排队服务器2支持, 请参阅 SAP 说明[2630416](https://launchpad.support.sap.com/#/notes/2630416) 。
+如果使用排队服务器2体系结构 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), 请按如下所示定义资源:
 
 <pre><code>sudo crm configure property maintenance-mode="true"
    
@@ -591,7 +591,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
-  如果您是从较旧版本进行升级并切换到排队服务器 2，请参阅 SAP 注释[2641019](https://launchpad.support.sap.com/#/notes/2641019)。 
+  如果从较旧版本升级并切换到排队服务器 2, 请参阅 SAP 说明[2641019](https://launchpad.support.sap.com/#/notes/2641019)。 
 
    请确保群集状态正常，并且所有资源都已启动。 资源在哪个节点上运行并不重要。
 
@@ -710,7 +710,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 ## <a name="install-database"></a>安装数据库
 
-在此示例中，SAP NetWeaver 安装在 SAP HANA 上。 可以使用每个受支持的数据库完成此安装。 有关如何在 Azure 中安装 SAP HANA 的详细信息，请参阅[SAP HANA 的高可用性在 Azure 虚拟机 (Vm)][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533]。
+在此示例中，SAP NetWeaver 安装在 SAP HANA 上。 可以使用每个受支持的数据库完成此安装。 有关如何在 Azure 中安装 SAP HANA 的详细信息, 请参阅. For a list of supported databases, see [SAP Note 1928533][1928533] [Azure 虚拟机 (vm) 上 SAP HANA 的高可用性][sap-hana-ha]。
 
 1. 运行 SAP 数据库实例安装
 
@@ -756,7 +756,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
      DATABASE: <b>HN1</b>
    </code></pre>
 
-   输出显示，默认条目的 IP 地址正在指向虚拟机而不是负载均衡器的 IP 地址。 需将此条目更改为指向负载均衡器的虚拟主机名。 请确保使用相同端口（上述输出中为“30313”）和数据库名称（上述输出中为“HN1”）   ！
+   输出显示，默认条目的 IP 地址正在指向虚拟机而不是负载均衡器的 IP 地址。 需将此条目更改为指向负载均衡器的虚拟主机名。 请确保使用相同端口（上述输出中为“30313”）和数据库名称（上述输出中为“HN1”）！
 
    <pre><code>su - <b>nw1</b>adm
    hdbuserstore SET DEFAULT <b>nw1-db:30313@HN1</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>
@@ -999,7 +999,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   通过编辑事务 su01 中的用户等方式创建一个排队锁。 在其中运行 ASCS 实例的节点上运行以下命令作为 \<sapsid>adm。 这些命令将停止 ASCS 实例并重新启动该实例。 如果使用排队服务器 1 体系结构，被应排入队列锁在此测试中会丢失。 如果使用排队服务器 2 体系结构，将保留排入队列。 
+   通过编辑事务 su01 中的用户等方式创建一个排队锁。 在其中运行 ASCS 实例的节点上运行以下命令作为 \<sapsid>adm。 这些命令将停止 ASCS 实例并重新启动该实例。 如果使用排队服务器1体系结构, 则应在此测试中丢失排队锁。 如果使用排队服务器2体系结构, 则将保留排队。 
 
    <pre><code>nw1-cl-1:nw1adm 54> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1199,8 +1199,8 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 虚拟机规划和实施适用于 SAP][planning-guide]
-* [适用于 SAP 的 azure 虚拟机部署][deployment-guide]
-* [适用于 SAP 的 azure 虚拟机 DBMS 部署][dbms-guide]
+* [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
+* [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
-* 若要了解如何建立高可用性以及 Azure Vm 上的 SAP HANA 的灾难恢复计划，请参阅[SAP HANA 的高可用性在 Azure 虚拟机 (Vm)][sap-hana-ha]
+* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复, 请参阅[Azure 虚拟机 (vm) 上的 SAP HANA 的高可用性][sap-hana-ha]

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d721e750ddb77ba293643ad978cecf4bd2dbac0
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618806"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851713"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理中的自定义域
 
@@ -36,7 +36,7 @@ ms.locfileid: "68618806"
 
 ## <a name="configure-a-custom-domain"></a>配置自定义域
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 
 配置自定义域之前，请确保根据以下要求做好准备： 
 - 一个[已添加到 Azure Active Directory 的经验证的域](../fundamentals/add-custom-domain.md)。
@@ -87,7 +87,7 @@ ms.locfileid: "68618806"
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 Azure AD 身份验证对已发布应用[启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)。
-* [启用](application-proxy-integrate-with-sharepoint-server.md)已发布应用的条件性访问。
+* [启用](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/technical-reference#cloud-apps-assignments)已发布应用的条件性访问。
 * [将自定义域名添加到 Azure AD](../fundamentals/add-custom-domain.md)
 
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/01/2019
-ms.openlocfilehash: 11e8b26c81d3a8f672abbeafc153df73d063cb6e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 84de9d53b19f5aa9b73570aa0d115d204e8b6596
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68612231"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848220"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure App Service (预览版)
 
@@ -34,7 +34,7 @@ ms.locfileid: "68612231"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建工作区一](setup-create-workspace.md)文。
+* Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建工作区一](how-to-manage-workspace.md)文。
 * 已在工作区中注册的经过训练的机器学习模型。 如果没有模型, 请使用[图像分类教程: 训练模型](tutorial-train-models-with-aml.md)训练和注册。
 * 从模型创建的 Docker 映像。 如果没有图像, 请使用[映像分类: 部署模型](tutorial-deploy-models-with-aml.md)创建一个。
 

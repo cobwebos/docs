@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1f6aaa4f1b8f58f7cd6c1f02f424614d33863fc5
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a5d281598bc905914b71f40d556cfa0b16a46485
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815874"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847657"
 ---
 # <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Azure 机器学习服务, 大规模定型和注册 TensorFlow 模型
 
@@ -25,7 +25,7 @@ TensorFlow 是一个开源计算框架, 通常用于创建深层神经网络 (DN
 
 无论是从头开始开发 TensorFlow 模型, 还是将[现有模型](how-to-deploy-existing-model.md)引入云中, Azure 机器学习服务都可以帮助您构建生产就绪模型。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 在以下任一环境中运行此代码:
 
@@ -36,8 +36,8 @@ TensorFlow 是一个开源计算框架, 通常用于创建深层神经网络 (DN
  
  - 你自己的 Jupyter 笔记本服务器
 
-     - [安装适用于 Python 的 Azure 机器学习 SDK](setup-create-workspace.md#sdk)
-    - [创建工作区配置文件](setup-create-workspace.md#write-a-configuration-file)
+    - [安装 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
     - [下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)`mnist-tf.py`和`utils.py`
      
     你还可以在 GitHub 示例页上找到本指南的已完成[Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb)。 此笔记本包含扩展的部分, 涵盖智能超参数优化、模型部署和笔记本小组件。

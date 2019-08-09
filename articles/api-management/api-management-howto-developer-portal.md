@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 2756444db010e23f7114e99f474de9ce6614aaee
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 27d5dcc99db040036ba296911aa33d8a312bb23f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837919"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851514"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>在 Azure API 管理中访问和自定义新开发人员门户
 
@@ -95,10 +95,6 @@ ms.locfileid: "68837919"
 ### <a name="why-doesnt-the-interactive-developer-console-work"></a>为什么交互开发人员控制台不起作用？
 
 它可能与 CORS 相关。 交互式控制台从浏览器发出客户端 API 请求。 可以通过在 API 上添加[CORS 策略](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS)来解决 CORS 问题。 您可以手动指定所有参数 (例如, 原为 https://contoso.com) 或使用通配符`*` 值。
-
-### <a name="where-can-i-file-bugs"></a>在哪里可以记录 bug？
-
-[在 GitHub 存储库中](http://aka.ms/apimdevportal)。
 
 ## <a name="next-steps"></a>后续步骤
 

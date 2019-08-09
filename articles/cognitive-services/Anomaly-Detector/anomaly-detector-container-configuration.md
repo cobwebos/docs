@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 617a8fc823b7c40d047e5825dc31b095da132f29
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 886c93871a719770cbcbbcef2f536fd7515da34e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321453"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854214"
 ---
 # <a name="configure-anomaly-detector-containers"></a>配置异常探测器容器
 
@@ -25,7 +25,7 @@ ms.locfileid: "68321453"
 
 此容器具有以下配置设置：
 
-|需要|设置|用途|
+|必填|设置|用途|
 |--|--|--|
 |是|[ApiKey](#apikey-configuration-setting)|用于跟踪账单信息。|
 |否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
@@ -59,7 +59,7 @@ ms.locfileid: "68321453"
 
 * Azure 门户：**异常探测器**概述, 标记`Endpoint`
 
-|需要| 名称 | 数据类型 | 描述 |
+|必填| 名称 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>例如：<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
 
@@ -134,3 +134,8 @@ ms.locfileid: "68321453"
   Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
+
+## <a name="next-steps"></a>后续步骤
+
+* [将异常探测器容器部署到 Azure 容器实例](how-to/deploy-anomaly-detection-on-container-instances.md)
+* [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

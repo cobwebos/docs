@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 99217106c456adcc338138190be2060b0c9a195b
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2fe3e222da265614ff64e3d913f6514398abf32b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772677"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847676"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>大规模定型 Pytorch 深度学习模型, Azure 机器学习
 
@@ -39,8 +39,8 @@ ms.locfileid: "68772677"
  
  - 你自己的 Jupyter 笔记本服务器
 
-    - [安装适用于 Python 的 Azure 机器学习 SDK](setup-create-workspace.md#sdk)
-    - [创建工作区配置文件](setup-create-workspace.md#write-a-configuration-file)
+    - [安装 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
     - [下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)`pytorch_train.py`
      
     你还可以在 GitHub 示例页上找到本指南的已完成[Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch/train-hyperparameter-tune-deploy-with-pytorch.ipynb)。 此笔记本包含扩展的部分, 涵盖智能超参数优化、模型部署和笔记本小组件。

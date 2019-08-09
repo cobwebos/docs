@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 4a745648f1b7abac7267d51cac9e1fe642ae13d8
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779662"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853683"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -290,7 +290,9 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 
 ## <a name="upgrading-the-proxy-agent"></a>升级代理程序
 
-当 Azure AD 密码保护代理软件的较新版本可用时, 可以通过运行最新版本的`AzureADPasswordProtectionProxySetup.exe`软件安装程序来完成升级。 不需要卸载当前版本的代理软件, 安装程序将执行就地升级。 升级代理软件时, 不需要重新启动。 可以使用标准 MSI 过程自动执行软件升级, 例如: `AzureADPasswordProtectionProxySetup.exe /quiet`。
+当 Azure AD 密码保护代理软件的较新版本可用时, 可以通过运行最新版本的`AzureADPasswordProtectionProxySetup.exe`软件安装程序来完成升级。 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57071)提供了该软件的最新版本。
+
+不需要卸载当前版本的代理软件, 安装程序将执行就地升级。 升级代理软件时, 不需要重新启动。 可以使用标准 MSI 过程自动执行软件升级, 例如: `AzureADPasswordProtectionProxySetup.exe /quiet`。
 
 代理程序支持自动升级。 自动升级使用与代理服务并行安装的 Microsoft Azure AD 连接代理更新程序服务。 自动升级默认情况下启用, 并且可以使用 AzureADPasswordProtectionProxyConfiguration cmdlet 启用或禁用。 可以使用 AzureADPasswordProtectionProxyConfiguration cmdlet 查询当前设置。 Microsoft 建议自动升级保持启用状态。
 
@@ -298,7 +300,9 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 
 ## <a name="upgrading-the-dc-agent"></a>升级 DC 代理
 
-如果有较新版本的 Azure AD 密码保护 DC 代理软件, 则可通过运行最新版本的`AzureADPasswordProtectionDCAgentSetup.msi`软件包来完成升级。 不需要卸载最新版本的 DC 代理软件, 安装程序将执行就地升级。 升级 DC 代理软件时, 始终需要重新启动, 这是由核心 Windows 行为引起的。 
+如果有较新版本的 Azure AD 密码保护 DC 代理软件, 则可通过运行最新版本的`AzureADPasswordProtectionDCAgentSetup.msi`软件包来完成升级。 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57071)提供了该软件的最新版本。
+
+不需要卸载最新版本的 DC 代理软件, 安装程序将执行就地升级。 升级 DC 代理软件时, 始终需要重新启动, 这是由核心 Windows 行为引起的。 
 
 可以使用标准 MSI 过程自动执行软件升级, 例如: `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`。
 

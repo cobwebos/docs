@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 7a1685622c44666eed6dac328772f6dba1418371
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3af96fd03ed8e9878c3418e66cfcf24c7f30088c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66398229"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845778"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 到 Azure 的灾难恢复体系结构
 
@@ -27,7 +27,7 @@ ms.locfileid: "66398229"
 
 下面的表和图提供了在 Hyper-V 主机不受 VMM 托管时用于将 Hyper-V 复制到 Azure 的组件的概要视图。
 
-组件  | **要求** | **详细信息**
+组件 | **要求** | **详细信息**
 --- | --- | ---
 **Azure** | Azure 订阅、Azure 存储帐户和 Azure 网络。 | 从本地 VM 工作负载复制的数据存储在存储帐户中。 从本地站点运行故障转移时，使用复制的工作负载数据创建 Azure VM。<br/><br/> 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
 **Hyper-V** | 在 Site Recovery 部署期间，将 Hyper-V 主机和群集收集到 Hyper-V 站点。 在每个独立 Hyper-V 主机或每个 Hyper-V 群集节点上安装 Azure Site Recovery 提供程序和恢复服务代理。 | 提供程序通过 Internet 使用 Site Recovery 来安排复制。 恢复服务代理处理数据复制。<br/><br/> 来自提供程序和代理的通信都是安全且经过加密的。 Azure 存储中的复制数据也已加密。
@@ -44,7 +44,7 @@ ms.locfileid: "66398229"
 
 下面的表和图提供了在 Hyper-V 主机托管在 VMM 云中时用于将 Hyper-V 复制到 Azure 的组件的概要视图。
 
-组件  | **要求** | **详细信息**
+组件 | **要求** | **详细信息**
 --- | --- | ---
 **Azure** | Azure 订阅、Azure 存储帐户和 Azure 网络。 | 从本地 VM 工作负载复制的数据存储在存储帐户中。 从本地站点运行故障转移时，使用复制的数据创建 Azure VM。<br/><br/> 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
 **VMM 服务器** | VMM 服务器上有一个或多个包含 Hyper-V 主机的云。 | 在 VMM 服务器上安装 Site Recovery 提供程序，以便协调通过 Site Recovery 进行的复制，并在恢复服务保管库中注册服务器。
@@ -67,10 +67,10 @@ ms.locfileid: "66398229"
 
 ### <a name="enable-protection"></a>启用保护
 
-1. 为 Hyper-V VM 启用保护以后，就会在 Azure 门户中或本地启动“启用保护”  。
+1. 为 Hyper-V VM 启用保护以后，就会在 Azure 门户中或本地启动“启用保护”。
 2. 该作业先检查计算机是否符合先决条件，再调用 [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx)，以使用用户配置的设置来设置复制。
 3. 该作业通过调用 [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) 方法启动初始复制，以便初始化完整的 VM 复制，并将 VM 的虚拟磁盘发送到 Azure。
-4. 可以在“作业”选项卡中监视作业。     ![作业列表](media/hyper-v-azure-architecture/image1.png) ![启用保护性向下钻取](media/hyper-v-azure-architecture/image2.png)
+4. 可以在“作业”选项卡中监视作业。    ![作业列表](media/hyper-v-azure-architecture/image1.png) ![启用保护性向下钻取](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>初始数据复制
@@ -84,7 +84,7 @@ ms.locfileid: "66398229"
 
 ### <a name="finalize-protection-process"></a>完成保护过程
 
-1. 初始复制完成后，“在虚拟机上完成保护”  作业将运行。 该作业会配置网络和其他复制后设置以便保护 VM。
+1. 初始复制完成后，“在虚拟机上完成保护”作业将运行。 该作业会配置网络和其他复制后设置以便保护 VM。
 2. 在此阶段，可以检查 VM 设置以确保它已为故障转移做好准备。 可针对 VM 运行灾难恢复钻取（测试故障转移）来检查它是否按预期进行故障转移。 
 
 
@@ -105,7 +105,7 @@ ms.locfileid: "66398229"
     - 它使用固定块区块算法，其中源文件和目标文件被分到固定区块。
     - 会针对每个区块生成校验和。 这些校验和将进行比较，以确定源文件中的哪些区块需要应用到目标文件。
 2. 重新同步完成后，应会恢复正常增量复制。
-3. 如果你不希望等待默认非工作时间的重新同步，可手动重新同步 VM。 例如，在发生中断时。 为此，请在 Azure 门户中选择“VM”>“重新同步”  。
+3. 如果你不希望等待默认非工作时间的重新同步，可手动重新同步 VM。 例如，在发生中断时。 为此，请在 Azure 门户中选择“VM”>“重新同步”。
 
     ![手动重新同步](./media/hyper-v-azure-architecture/image4-site.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "66398229"
 
 **类别** | **详细信息**
 --- | ---
-**不可恢复的错误** | 不尝试执行任何重试操作。 VM 状态为“严重”，并且需要管理员干预。 <br/><br/> 这些错误示例包括 VHD 链断裂、副本 VM 的状态无效、网络身份验证错误、授权错误以及“找不到 VM”错误（适用于独立 Hyper-V 服务器）。
+**不可恢复的错误** | 不尝试执行任何重试操作。 VM 状态为“严重”，并且需要管理员干预。<br/><br/> 这些错误示例包括 VHD 链断裂、副本 VM 的状态无效、网络身份验证错误、授权错误以及“找不到 VM”错误（适用于独立 Hyper-V 服务器）。
 **可恢复的错误** | 使用从第一次尝试开始增大重试间隔时间（1、2、4、8、10 分钟）的指数退避算法，在到达复制间隔时间后重试。 如果错误仍然存在，则每隔 30 分钟重试一次。 其中的一些示例包括网络错误、磁盘空间不足错误和内存不足的情况。
 
 

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/11/2019
-ms.openlocfilehash: f51c6bdc6cb2e381d5d5b855bf2f87b07d7fc180
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 0025f488f6a9b0af4e05a8bdf3ddf36c089d4d9f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638421"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856120"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>使用自定义 Docker 映像部署模型
 
@@ -40,8 +40,8 @@ Azure 机器学习服务提供了一个默认 Docker 映像, 因此你无需担�
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习服务工作组。 有关详细信息, 请参阅[创建工作区一](setup-create-workspace.md)文。
-* Azure 机器学习 SDK。 有关详细信息, 请参阅[创建工作区](setup-create-workspace.md#sdk)一文中的 Python SDK 部分。
+* Azure 机器学习服务工作组。 有关详细信息, 请参阅[创建工作区一](how-to-manage-workspace.md)文。
+* [AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * 可在 internet 上访问的[Azure 容器注册表](/azure/container-registry)或其他 Docker 注册表。

@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4bc035ba061a65f6770136240d8867f82858e67e
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 545860a394c7eac953c1cbacc9dd05fc3737f6c1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772731"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856173"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 
@@ -32,7 +32,7 @@ ms.locfileid: "68772731"
 
 若要使用数据存储，首先需要一个[工作区](concept-workspace.md)。
 
-首先，请[创建新工作区](setup-create-workspace.md#sdk)或检索现有的工作区：
+首先，请[创建新工作区](how-to-manage-workspace.md)或检索现有的工作区：
 
 ```Python
 import azureml.core

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ba5d5d3aaa6a83dbcc5e5072872bca0fcd22bbf9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3bce4922a33648f5d7c0d211dba126f35603239b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638721"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849284"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>将符号层添加到地图
 
@@ -30,7 +30,7 @@ ms.locfileid: "68638721"
 
 上述第一个代码块构造 Map 对象。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-在第二个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 包含[点](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)几何图形的 [特征] 由 [Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) 类包装（因此更容易更新），并在创建后添加到数据源。
+在第二个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 包含[点](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)几何图形的 GeoJSON[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature)由[Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)类包装, 以便更轻松地进行更新, 并将其创建和添加到数据源。
 
 第三个代码块创建[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)，并在单击鼠标时使用 shape 类的 [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) 方法更新点的坐标。
 
@@ -47,6 +47,9 @@ ms.locfileid: "68638721"
 
 <iframe height='500' scrolling='no' title='自定义符号图像图标' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>自定义符号图像图标</a>文章。
 </iframe>
+
+> [!TIP]
+> Azure Maps web SDK 提供了几个可自定义的图像模板, 你可以将其用于符号层。 有关详细信息, 请参阅[如何使用图像模板](how-to-use-image-templates-web-sdk.md)文档。
 
 ## <a name="customize-a-symbol-layer"></a>自定义符号层 
 
@@ -80,6 +83,9 @@ ms.locfileid: "68638721"
 
 > [!div class="nextstepaction"]
 > [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [如何使用映像模板](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [添加形状](map-add-shape.md)

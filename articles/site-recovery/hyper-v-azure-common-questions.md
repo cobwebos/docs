@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 06/30/2019
+ms.date: 08/07/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 36c109e083873e9c4ec63ebe34f5c5c0cfb6eeb1
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: a6d38a9196d640ebc823b4f25e089cc04193212b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491806"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845754"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常见问题 - Hyper-V 到 Azure 的灾难恢复
 
@@ -27,9 +27,9 @@ ms.locfileid: "67491806"
 ### <a name="how-do-i-pay-for-azure-vms"></a>Azure VM 如何计费？
 在复制期间，数据将复制到 Azure 存储，因此，VM 不会产生任何费用。 故障转移到 Azure 时，Site Recovery 会自动创建 Azure IaaS 虚拟机。 然后，在 Azure 中使用的计算资源会产生费用。
 
-### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>将复制到常规用途 v2 存储帐户时有成本的任何差异吗？
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>复制到常规用途 v2 存储帐户时, 开销是否有任何变化？
 
-通常会产生在 GPv2 存储帐户，由于 Azure Site Recovery 是大量的事务的事务成本的增加。 [阅读更多](../storage/common/storage-account-upgrade.md#pricing-and-billing)来估计此更改。
+你通常会发现, GPv2 存储帐户产生的事务成本会增加, 因为 Azure Site Recovery 的事务量很高。 [阅读更多](../storage/common/storage-account-upgrade.md#pricing-and-billing)以估算更改。
 
 ## <a name="azure"></a>Azure
 
@@ -180,7 +180,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 
 
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 ### <a name="what-access-does-site-recovery-need-to-hyper-v-hosts"></a>Site Recovery 需要对 Hyper-V 主机拥有哪些访问权限？
 

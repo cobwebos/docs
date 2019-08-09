@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 06194537a0c0cce3a52510e6f426a9c2904387b2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9cf39230d6a2c615925222b6545a091a4be941ac
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694338"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847981"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 
@@ -31,9 +31,9 @@ ms.locfileid: "68694338"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。
+* Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
 
-* 安装了 Azure 机器学习 SDK 的 Python 开发环境。 有关详细信息, 请参阅创建工作区一文中的[PYTHON SDK](setup-create-workspace.md#sdk)部分。
+* 安装了 Azure 机器学习 SDK 的 Python 开发环境。 有关详细信息, 请参阅[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
 
 * 使用 GPU 的已注册模型。
 
@@ -48,7 +48,7 @@ ms.locfileid: "68694338"
 若要连接到现有工作区, 请使用以下代码:
 
 > [!IMPORTANT]
-> 此代码段需要将工作区配置保存到当前目录或其父项。 有关创建工作区并将配置保存到文件的详细信息, 请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。
+> 此代码段需要将工作区配置保存到当前目录或其父项。 有关创建工作区的详细信息, 请参阅[创建和管理 Azure 机器学习服务工作区](how-to-manage-workspace.md)。   有关将配置保存到文件的详细信息, 请参阅[创建工作区配置文件](how-to-configure-environment.md#workspace)。
 
 ```python
 from azureml.core import Workspace

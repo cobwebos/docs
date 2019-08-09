@@ -1,20 +1,19 @@
 ---
-title: '使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 中管理数据 '
+title: 使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 中管理数据
 description: 本快速入门介绍如何使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 帐户中创建文件系统，以及目录和文件。 接下来，介绍如何将文件下载到本地计算机，以及如何查看目录中的所有文件。
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
-ms.custom: mvc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: normesta
-ms.openlocfilehash: 38cc0533d3e993dd90a037ee6a504c2dcd575e6f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.reviewer: stewu
+ms.openlocfilehash: 3450de26c12d91f4be00fe39bd5703564c786190
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360854"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855613"
 ---
 # <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 帐户中管理数据
 

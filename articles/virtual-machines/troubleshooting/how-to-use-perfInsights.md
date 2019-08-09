@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 26301e9a8aef29f1ff786f4fcd28b806eb10b8df
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318269"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846729"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
@@ -72,18 +72,18 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 此方案运行特殊的性能计数器捕获和网络跟踪。 捕获包括所有的“服务器消息块 (SMB) 客户端共享”计数器。 以下是一些关键的 SMB 客户端共享性能计数器，属于捕获的一部分：
 
-| 类型      | **SMB 客户端共享计数器** |
+| 类型     | **SMB 客户端共享计数器** |
 |--------------|-------------------------------|
 | IOPS         | 数据请求/秒             |
 |              | 读取请求/秒             |
 |              | 写入请求/秒            |
-| Latency      | 平均秒数/数据请求         |
+| 延迟      | 平均秒数/数据请求         |
 |              | 平均秒数/读取操作                 |
 |              | 平均秒数/写入操作                |
 | IO 大小      | 平均字节/数据请求       |
 |              | 平均字节/读取               |
 |              | 平均字节/写入              |
-| Throughput   | 数据字节/秒                |
+| 吞吐量   | 数据字节/秒                |
 |              | 读取字节/秒                |
 |              | 写入字节/秒               |
 | 队列长度 | 平均读取队列长度        |
@@ -109,7 +109,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 | 系统信息                | 是                        | 是                                | 是                      | 是                  | 是                  |
 | 卷映射                        | 是                        | 是                                | 是                      | 是                  | 是                  |
 | 磁盘映射                          | 是                        | 是                                | 是                      | 是                  | 是                  |
-| 正在运行的任务                     | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 正在运行任务                     | 是                        | 是                                | 是                      | 是                  | 是                  |
 | 存储可靠性计数器      | 是                        | 是                                | 是                      | 是                  | 是                  |
 | 存储信息               | 是                        | 是                                | 是                      | 是                  | 是                  |
 | Fsutil 输出                     | 是                        | 是                                | 是                      | 是                  | 是                  |
@@ -132,10 +132,10 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 在后台运行基于规则的引擎即可收集数据并诊断当前的性能问题。 当前支持以下规则：
 
-- HighCpuUsage 规则：检测高 CPU 使用率，并显示在这些期间的使用者。
-- HighDiskUsage 规则：检测高的磁盘使用情况上的物理磁盘，并在这些期间显示磁盘使用者。
-- HighResolutionDiskMetric 规则：显示个每个物理磁盘每 50 毫秒的 IOPS、 吞吐量和 I/O 延迟指标。 此规则有助于快速确定磁盘限制期间。
-- HighMemoryUsage 规则：检测高内存使用率，并在这些期间显示顶部的内存使用者。
+- HighCpuUsage 规则:检测 CPU 使用率高的期间, 并显示在这些时间段内的 CPU 使用率最高的使用者。
+- HighDiskUsage 规则:检测物理磁盘上的高磁盘使用时间, 并在这些时间段内显示顶级的磁盘使用情况。
+- HighResolutionDiskMetric 规则:显示每个物理磁盘每50毫秒的 IOPS、吞吐量和 i/o 延迟指标。 此规则有助于快速确定磁盘限制期间。
+- HighMemoryUsage 规则:检测高内存使用率, 并显示在这些时间段内的最高内存使用情况。
 
 > [!NOTE] 
 > 目前支持包含 .NET Framework 4.5 或更高版本的 Windows 版本。
@@ -167,7 +167,7 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
 
 -  此工具必须在有性能问题的 VM 上运行。 
 
--  支持以下操作系统：Windows Server 2008 R2、 Windows Server 2012、 Windows Server 2012 R2 和 Windows Server 2016;Windows 8.1 和 Windows 10。
+-  支持以下操作系统：Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016;Windows 8.1 和 Windows 10。
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>在生产 VM 上运行该工具时可能会出现的问题
 
@@ -192,9 +192,9 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
 
 1. 下载 [PerfInsights.zip](https://aka.ms/perfinsightsdownload)。
 
-2. 取消阻止 PerfInsights.zip 文件。 为此，请右键单击 PerfInsights.zip 文件，并选择“属性”。  在“常规”  选项卡上，选择“取消阻止”  ，然后选择“确定”  。 这可以确保运行工具时不会出现其他任何安全提示。  
+2. 取消阻止 PerfInsights.zip 文件。 为此，请右键单击 PerfInsights.zip 文件，并选择“属性”。 在“常规”选项卡上，选择“取消阻止”，然后选择“确定”。 这可以确保运行工具时不会出现其他任何安全提示。  
 
-    ![PerfInsights 的“属性”屏幕截图，其中突出显示了“解除锁定”](media/how-to-use-perfInsights/unlock-file.png)
+    ![PerfInsights 的“属性”屏幕截图，其中突出显示了“解除锁定”](media/how-to-use-perfInsights/pi-unlock-file.png)
 
 3.  将压缩的 PerfInsights.zip 文件展开到临时驱动器（默认情况下，通常为 D 驱动器）中。 
 
@@ -204,7 +204,7 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
     cd <the path of PerfInsights folder>
     PerfInsights
     ```
-    ![PerfInsights 命令行输出的屏幕截图](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
+    ![PerfInsights 命令行输出的屏幕截图](media/how-to-use-perfInsights/pi-commandline.png)
     
     运行 PerfInsights 方案的基本语法是：
     
@@ -230,31 +230,31 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics /sa <StorageAccountName> /sk <StorageAccountKey>
     ```
 
-    可以使用 /list 命令查找所有可用方案和选项  ：
+    可以使用 /list 命令查找所有可用方案和选项：
     
     ```
     PerfInsights /list
     ```
 
     >[!Note]
-    >运行方案之前，PerfInsights 会提示用户同意共享诊断信息并同意 EULA。 使用“/AcceptDisclaimerAndShareDiagnostics”选项跳过这些提示  。 
+    >运行方案之前，PerfInsights 会提示用户同意共享诊断信息并同意 EULA。 使用“/AcceptDisclaimerAndShareDiagnostics”选项跳过这些提示。 
     >
-    >如果具有 Microsoft 的活跃支持票证，以及根据所合作的支持工程师的请求正在运行的 PerfInsights，请确保使用 /sr 选项提供支持票证编号  。
+    >如果具有 Microsoft 的活跃支持票证，以及根据所合作的支持工程师的请求正在运行的 PerfInsights，请确保使用 /sr 选项提供支持票证编号。
     >
-    >默认情况下，PerfInsights 将尝试将其更新到最新版本（如果可用）。 使用 /SkipAutoUpdate 或 /sau 参数跳过自动更新   。  
+    >默认情况下，PerfInsights 将尝试将其更新到最新版本（如果可用）。 使用 /SkipAutoUpdate 或 /sau 参数跳过自动更新。  
     >
-    >如果未指定持续时间开关 /d  ，PerfInsights 会在你运行慢速 VM 分析、Azure 文件分析和高级方案时提示重现此问题。 
+    >如果未指定持续时间开关 /d，PerfInsights 会在你运行慢速 VM 分析、Azure 文件分析和高级方案时提示重现此问题。 
 
-完成跟踪或操作后，PerfInsights 所在的文件夹中会出现一个新文件。 该文件的名称为 PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip  。 可以将此文件发送给支持代理进行分析，或打开 zip 文件里的报告以查看结果和建议。
+完成跟踪或操作后，PerfInsights 所在的文件夹中会出现一个新文件。 该文件的名称为 PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip。 可以将此文件发送给支持代理进行分析，或打开 zip 文件里的报告以查看结果和建议。
 
 ## <a name="review-the-diagnostics-report"></a>查看诊断报告
 
-在 PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip 文件中，可以找到一份 HTML 报告，其中详细说明了 PerfInsights 的发现结果  。 要查看该报告，请展开 PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip 文件，然后打开 PerfInsights Report.html 文件   。
+在 PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip 文件中，可以找到一份 HTML 报告，其中详细说明了 PerfInsights 的发现结果。 要查看该报告，请展开 PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip 文件，然后打开 PerfInsights Report.html 文件。
 
-选择“发现”  选项卡。
+选择“发现”选项卡。
 
-![PerfInsights 报告的屏幕截图](media/how-to-use-perfInsights/findingtab.png)
-![PerfInsights 报告的屏幕截图](media/how-to-use-perfInsights/findings.PNG)
+![PerfInsights 报告的屏幕截图](media/how-to-use-perfInsights/pi-finding-tab.png)
+![PerfInsights 报告的屏幕截图](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > 分类为“高”的发现结果是可能会导致性能问题发生的已知问题。 分类为“中等”的发现结果表示配置不是最佳，不一定会导致性能问题发生。 分类“低”的发现结果只是参考性陈述。
@@ -263,36 +263,36 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
 
 ### <a name="storage-tab"></a>存储选项卡
 
-“结果”部分显示有关存储的各种发现结果和建议。 
+“结果”部分显示有关存储的各种发现结果和建议。
 
-“磁盘映射”和“卷映射”部分描述了逻辑卷与物理磁盘的相互关系。  
+“磁盘映射”和“卷映射”部分描述了逻辑卷与物理磁盘的相互关系。
 
 物理磁盘透视图（“磁盘映射”）中的表格显示了磁盘上运行的所有逻辑卷。 在以下示例中，**PhysicalDrive2** 运行多个分区中创建的两个逻辑卷（J 和 H）：
 
-![磁盘选项卡的屏幕截图](media/how-to-use-perfInsights/disktab.png)
+![磁盘选项卡的屏幕截图](media/how-to-use-perfInsights/pi-disk-tab.png)
 
 卷透视图（“卷映射”）中的表格显示了每个逻辑卷下的所有物理磁盘。 请注意，对于 RAID/动态磁盘，可以在多个物理磁盘上运行一个逻辑卷。 在以下示例中，*C:\\mount* 是配置为 *SpannedDisk* 的装载点，位于物理磁盘 2 和 3 上：
 
-![卷选项卡的屏幕截图](media/how-to-use-perfInsights/volumetab.png)
+![卷选项卡的屏幕截图](media/how-to-use-perfInsights/pi-volume-tab.png)
 
 ### <a name="sql-tab"></a>SQL 选项卡
 
-如果目标 VM 托管了任何 SQL Server 实例，则报告中会显示名为“SQL”的另一个选项卡： 
+如果目标 VM 托管了任何 SQL Server 实例，则报告中会显示名为“SQL”的另一个选项卡：
 
-![“SQL”选项卡的屏幕截图](media/how-to-use-perfInsights/sqltab.png)
+![“SQL”选项卡的屏幕截图](media/how-to-use-perfInsights/pi-sql-tab.png)
 
-此部分包含“结果”选项卡，及其对应于 VM 上托管的每个 SQL Server 实例的其他选项卡。 
+此部分包含“结果”选项卡，及其对应于 VM 上托管的每个 SQL Server 实例的其他选项卡。
 
-“结果”选项卡包含找到的所有 SQL 相关性能问题列表和建议。 
+“结果”选项卡包含找到的所有 SQL 相关性能问题列表和建议。
 
 以下示例中显示了 **PhysicalDrive0**（运行 C 驱动器）。 之所以显示此项，是因为 **modeldev** 和 **modellog** 文件位于 C 驱动器上，并且属于不同的类型（例如，一个为数据文件，一个为事务日志）。
 
-![日志信息的屏幕截图](media/how-to-use-perfInsights/loginfo.png)
+![日志信息的屏幕截图](media/how-to-use-perfInsights/pi-log-info.png)
 
 SQL Server 的特定实例的选项卡包含一个常规部分，其中显示了所选实例的基本信息。 该选项卡还包含其他部分，用于显示设置、配置和用户选项等高级信息。
 
 ### <a name="diagnostic-tab"></a>诊断选项卡
-“诊断”选项卡包含有关在运行 PerfInsights 过程中，计算机上的 CPU、磁盘和内存消耗量最高的几个组件的信息。  还可以在其中找到有关系统可能缺少的关键修补程序、任务列表和重要系统事件的信息。 
+“诊断”选项卡包含有关在运行 PerfInsights 过程中，计算机上的 CPU、磁盘和内存消耗量最高的几个组件的信息。 还可以在其中找到有关系统可能缺少的关键修补程序、任务列表和重要系统事件的信息。 
 
 ## <a name="references-to-the-external-tools-used"></a>所用外部工具参考
 
@@ -310,9 +310,9 @@ Xperf 是一个命令行工具，用于通过 Windows 性能工具包捕获跟�
 
 以下屏幕截图显示了你可能会收到的消息示例：
 
-![Microsoft 支持部门发送的示例消息屏幕截图](media/how-to-use-perfInsights/supportemail.png)
+![Microsoft 支持部门发送的示例消息屏幕截图](media/how-to-use-perfInsights/pi-support-email.png)
 
 请遵照消息中的说明访问文件传输工作区。 为了提高安全性，首次使用时必须更改密码。
 
-登录后，可以找到一个对话框，用于上传 PerfInsights 收集的 PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip 文件  。
+登录后，可以找到一个对话框，用于上传 PerfInsights 收集的 PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip 文件。
 

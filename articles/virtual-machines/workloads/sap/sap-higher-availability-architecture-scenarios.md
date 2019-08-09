@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d99f704d05dea88f7fa29afea99cbbdb00d09c24
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4668d5e7872c677f20c2395b5927d83c69775926
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709872"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855197"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>利用 Azure 基础结构 VM 重启来实现 SAP 系统的“更高可用性”
 
@@ -217,7 +217,7 @@ ms.locfileid: "67709872"
 如果决定不在 Linux（目前仅支持 SUSE Linux Enterprise Server [SLES] 12 和更高版本）上使用 Windows Server 故障转移群集 (WSFC) 或 Pacemaker 等功能，则可利用 Azure 虚拟机重启。 它可以保护 SAP 系统不受 Azure 物理服务器基础结构和整个基础 Azure 平台的计划和非计划停机的影响。
 
 > [!NOTE]
-> Azure VM 重启主要是保护 VM 而不是应用程序。  虽然 VM 重启不提供 SAP 应用程序的高可用性，但确实提供某种程度的基础结构可用性。 它还间接提供 SAP 系统的“更高可用性”。 此外，对于在计划内或计划外主机故障后重启 VM 所需的时间，没有 SLA，因此这种方法的高可用性不适用于 SAP 系统的关键组件。 例如，ASCS/SCS 实例或数据库管理系统 (DBMS) 可能是关键组件。
+> Azure VM 重启主要是保护 VM 而不是应用程序。 虽然 VM 重启不提供 SAP 应用程序的高可用性，但确实提供某种程度的基础结构可用性。 它还间接提供 SAP 系统的“更高可用性”。 此外，对于在计划内或计划外主机故障后重启 VM 所需的时间，没有 SLA，因此这种方法的高可用性不适用于 SAP 系统的关键组件。 例如，ASCS/SCS 实例或数据库管理系统 (DBMS) 可能是关键组件。
 >
 >
 
@@ -239,25 +239,25 @@ Azure 托管磁盘自动放置在其附加到的虚拟机的容错域中。 如�
 
 * SAP 应用程序服务器的高可用性
 
-    SAP 应用程序服务器实例是冗余组件。 每个 SAP 应用程序服务器实例都部署在自己的 VM 上，该 VM 运行在另一 Azure 容错和升级域中。 有关详细信息，请参阅[容错域][planning-guide-3.2.1]and [Upgrade domains][planning-guide-3.2.2]部分。 
+    SAP 应用程序服务器实例是冗余组件。 每个 SAP 应用程序服务器实例都部署在自己的 VM 上，该 VM 运行在另一 Azure 容错和升级域中。 有关详细信息, 请参阅[容错域][planning-guide-3.2.1]和[升级域][planning-guide-3.2.2]部分。 
 
-    可以使用 Azure 可用性集来确保此配置。 有关详细信息，请参阅[Azure 可用性集][planning-guide-3.2.3]部分。 
+    可以使用 Azure 可用性集来确保此配置。 有关详细信息, 请参阅[Azure 可用性集][planning-guide-3.2.3]部分。 
 
     当 Azure 容错或升级域可能出现计划内或计划外的不可用情况时，将导致有限数目的 VM 及其 SAP 应用程序服务器实例不可用。
 
-    每个 SAP 应用程序服务器实例都放置在自己的 Azure 存储帐户中。 某个 Azure 存储帐户可能出现不可用情况时，只会导致一个 VM 及其 SAP 应用程序服务器实例不可用。 不过请注意，一个 Azure 订阅中的 Azure 存储帐户数目有限。 若要确保在 VM 重新启动后自动启动 ASCS/SCS 实例，是中所述的 ASCS/SCS 实例启动配置文件中设置的 Autostart 参数[对 SAP 实例使用 Autostart][planning-guide-11.5]部分。
+    每个 SAP 应用程序服务器实例都放置在自己的 Azure 存储帐户中。 某个 Azure 存储帐户可能出现不可用情况时，只会导致一个 VM 及其 SAP 应用程序服务器实例不可用。 不过请注意，一个 Azure 订阅中的 Azure 存储帐户数目有限。 若要确保在 VM 重新启动后自动启动 ASCS/SCS 实例, 请在 "对[SAP 实例使用 Autostart][planning-guide-11.5] " 部分所述的 ASCS/scs 实例启动配置文件中设置自动启动参数。
   
-    有关详细信息，请参阅[高可用性 SAP 应用程序服务器][planning-guide-11.4.1]。
+    有关详细信息, 请参阅[SAP 应用程序服务器的高可用性][planning-guide-11.4.1]。
 
     即使使用托管磁盘，这些磁盘也会存储在 Azure 存储帐户中，并可能在出现存储中断时不可用。
 
-* SAP ASCS/SCS 实例的  更高可用性
+* SAP ASCS/SCS 实例的更高可用性
 
-    在此方案中，使用 Azure VM 重新启动，来保护已安装 SAP ASCS/SCS 实例的 VM。 如果 Azure 服务器发生计划内或计划外的停机，则在另一个可用的服务器上重启 VM。 如前所述，在此 ASCS/SCS 实例方案中，Azure VM 重启主要是保护 VM 而不是应用程序。  通过 VM 重启，可以间接实现 SAP ASCS/SCS 实例的“更高可用性”。 
+    在此方案中，使用 Azure VM 重新启动，来保护已安装 SAP ASCS/SCS 实例的 VM。 如果 Azure 服务器发生计划内或计划外的停机，则在另一个可用的服务器上重启 VM。 如前所述，在此 ASCS/SCS 实例方案中，Azure VM 重启主要是保护 VM 而不是应用程序。 通过 VM 重启，可以间接实现 SAP ASCS/SCS 实例的“更高可用性”。 
 
-    若要确保在 VM 重新启动后自动启动 ASCS/SCS 实例，Autostart 参数中设置 ASCS/SCS 实例启动配置文件，如中所述[对 SAP 实例使用 Autostart][planning-guide-11.5]部分。 此设置意味着，在单个 VM 上作为单一故障点 (SPOF) 运行的 ASCS/SCS 实例将决定整个 SAP 布局的可用性。
+    若要确保在 VM 重新启动后自动启动 ASCS/SCS 实例, 请在 ASCS/SCS 实例启动配置文件中设置自动启动参数, 如[使用适用于 SAP 实例的 Autostart][planning-guide-11.5]部分中所述。 此设置意味着，在单个 VM 上作为单一故障点 (SPOF) 运行的 ASCS/SCS 实例将决定整个 SAP 布局的可用性。
 
-* DBMS 服务器的  更高可用性
+* DBMS 服务器的更高可用性
 
     就像在前述 SAP ASCS/SCS 实例用例中一样，可以使用 Azure VM 重启来保护已安装 DBMS 软件的 VM，并通过 VM 重启实现 DBMS 软件的“更高可用性”。
   
@@ -280,8 +280,7 @@ SAP 提供了一项设置，用于在启动 VM 中的 OS 后立即启动 SAP 实
 
   * [Start or stop SAP along with your Unix Server Start/Stop](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)（在 Unix 服务器启动/停止时也启动或停止 SAP）
   * [Starting and stopping SAP NetWeaver management agents](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)（启动和停止 SAP NetWeaver 管理代理）
-  * [How to enable autostart of the HANA database](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)（如何启用 HANA 数据库的自动启动）
 
 ## <a name="next-steps"></a>后续步骤
 
-有关完整的 SAP NetWeaver 应用程序感知高可用性的信息，请参阅[Azure IaaS 上的 SAP 应用程序高可用性][sap-high-availability-architecture-scenarios-sap-app-ha]。
+有关完整的 SAP NetWeaver 应用程序感知高可用性的信息, 请参阅[Azure IaaS 上的 sap 应用程序高可用性][sap-high-availability-architecture-scenarios-sap-app-ha]。

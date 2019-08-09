@@ -15,16 +15,16 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c4c9b2470960a3d0b2fa337f2d8d3542c1242d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ad3cd612200dc33fe37036146b00f52073403ecc
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834655"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852046"
 ---
-# <a name="supported-account-types"></a>支持的帐户类型
+# <a name="supported-account-types"></a>受支持的帐户类型
 
 本文介绍了应用程序支持的帐户类型（有时称为受众）
 
@@ -34,14 +34,14 @@ ms.locfileid: "68834655"
 
 在 Microsoft Azure 公共云中，大多数类型的应用都可以使用任何受众登录用户：
 
-- 如果你正在编写业务线 (LOB) 应用程序，则可以在自己的组织中登录用户。 此类应用程序有时被命名为“单租户”  。
+- 如果你正在编写业务线 (LOB) 应用程序，则可以在自己的组织中登录用户。 此类应用程序有时被命名为“单租户”。
 - 如果你为 ISV，则可以编写一个应用程序来登录用户：
 
-  - 在任何组织中。 这样的应用程序被命名为“多租户”Web 应用程序  。 你有时会看到它使用工作或学校帐户登录用户。
+  - 在任何组织中。 这样的应用程序被命名为“多租户”Web 应用程序。 你有时会看到它使用工作或学校帐户登录用户。
   - 使用工作、学校或个人 Microsoft 帐户。
   - 仅使用个人 Microsoft 帐户。
     > [!NOTE]
-    > 目前，Microsoft 标识平台通过为“工作、学校或 Microsoft 个人帐户”注册应用，仅支持个人 Microsoft 帐户，然后，在构建应用程序（例如 `https://login.onmicrosoftonline.com/consumers`）时，通过指定 Azure AD 权限来限制应用程序代码中的登录  。
+    > 目前，Microsoft 标识平台通过为“工作、学校或 Microsoft 个人帐户”注册应用，仅支持个人 Microsoft 帐户，然后，在构建应用程序（例如 `https://login.onmicrosoftonline.com/consumers`）时，通过指定 Azure AD 权限来限制应用程序代码中的登录。
 
 - 如果你正在为消费者应用程序编写业务，还可以借助 Azure AD B2C 使用其社交身份登录用户。
 

@@ -3,20 +3,20 @@ title: 包含音效模拟的设计概念
 titlesuffix: Azure Cognitive Services
 description: 此概念性概述介绍了项目噪音如何将声音模拟并入声音设计过程。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: c7e6f17d3e7b9712dd853bcf309bb73fa10ac156
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 11e1e3f45b5198ddedb6c31fcd354185adef445d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704841"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854296"
 ---
 # <a name="project-acoustics-design-process-concepts"></a>项目噪声设计过程概念
 

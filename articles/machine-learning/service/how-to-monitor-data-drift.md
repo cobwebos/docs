@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 9852ec450b6da3814a3bd2bfc6aae7d19acaf584
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c5484c37d89cc9ae880bbe17987bb47f3114b8a4
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370392"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847891"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service (AKS) 的模型上检测数据偏差 (预览)
 
@@ -46,12 +46,14 @@ ms.locfileid: "68370392"
 
 - Azure 订阅。 如果没有, 请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
-- 已安装 Azure 机器学习服务工作区，以及适用于 Python 的 Azure 机器学习 SDK。 按照[创建 Azure 机器学习服务工作区](setup-create-workspace.md#sdk)中的说明执行以下操作：
+- 安装的适用于 Python 的 Azure 机器学习 SDK。 使用[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)中的说明执行以下操作:
 
     - 创建 Miniconda 环境
     - 安装用于 Python 的 Azure 机器学习 SDK
-    - 创建工作区
-    - 编写工作区配置文件 (aml_config/.config)。
+
+- [Azure 机器学习服务工作区](how-to-manage-workspace.md)。
+
+- 工作区[配置文件](how-to-configure-environment.md#workspace)。
 
 - 使用以下命令安装数据偏移 SDK:
 
@@ -195,6 +197,6 @@ old_training_dataset.diff(new_training_dataset)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用数据偏移的完整示例, 请参阅[AZURE ML 数据偏移笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/data-drift/azure-ml-datadrift.ipynb)。 本 Jupyter Notebook 演示如何使用[Azure 开放式数据集](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets)来训练模型预测天气、将其部署到 AKS, 并监视数据偏移。 
+* 有关使用数据偏移的完整示例, 请参阅[AZURE ML 数据偏移笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb)。 本 Jupyter Notebook 演示如何使用[Azure 开放式数据集](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets)来训练模型预测天气、将其部署到 AKS, 并监视数据偏移。 
 
 * 随着数据偏移的公开上市, 我们将非常感谢你的问题、意见或建议。 使用以下产品反馈按钮! 

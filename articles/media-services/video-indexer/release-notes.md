@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: juliako
-ms.openlocfilehash: fd67e867b5eac58838551ac29e1fca5e860b15ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: b627a78edef1c0b0fe6b3ed011678145aea397ae
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414211"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845881"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -27,6 +27,16 @@ ms.locfileid: "68414211"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+## <a name="july-2019"></a>2019年7月
+
+### <a name="editor-as-a-widget"></a>作为小组件的编辑器
+
+视频索引器 AI 编辑器现在作为要嵌入到客户应用程序的小组件提供。
+
+### <a name="update-custom-language-model-from-closed-caption-file-from-the-portal"></a>从门户更新隐藏式字幕文件中的自定义语言模型
+
+在门户的 "自定义" 页中, 客户可以提供 VTT、SRT 和 TTML 文件格式作为语言模型的输入。
 
 ## <a name="june-2019"></a>2019 年 7 月
 

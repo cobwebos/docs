@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 35f29e425fc471e4df4a037ef312af0fd041dcd7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: da8e82652b5406cb4e5fe6438f721e3394a4cd96
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699784"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854595"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
@@ -55,10 +55,11 @@ API | 使用时机 | 说明
 可以在任意类型的 .NET 应用程序（包括 Azure 云服务或 Web 应用，以及桌面和移动应用程序）中使用 Azure 存储客户端库。 为简单起见，我们在本指南中使用控制台应用程序。
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>使用 NuGet 安装所需包
-为完成此教程，需要在项目中引用两个包：
+若要完成本教程, 需要在项目中引用这些包:
 
 * [适用于 .NET 的 Microsoft Azure 存储通用库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)：使用此包能够以编程方式访问存储帐户中的公共资源。
 * [适用于 .NET 的 Microsoft Azure 存储 Blob 库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)：使用此包能够以编程方式访问存储帐户中的 Blob 资源。
+* [适用于 .net 的 Microsoft Azure 存储文件库](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/):此程序包提供对存储帐户中文件资源的编程访问。
 * [适用于 .NET 的 Microsoft Azure 配置管理器库](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)：此包提供用于分析配置文件中连接字符串的类，而不考虑应用程序在何处运行。
 
 可以使用 NuGet 获取这两个包。 请执行以下步骤：

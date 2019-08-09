@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: juliako
-ms.openlocfilehash: c730f41d1dbc48c6622d0a2ba43c32dd1a96c24c
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: f4a859f1e63866a50167031569dca05de3e9af27
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311806"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856307"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -33,6 +33,14 @@ ms.locfileid: "68311806"
 > 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或支持的 SDK 之一。
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
+
+## <a name="august-2019"></a>2019年8月
+
+### <a name="south-africa-regional-pair-is-open-for-media-services"></a>已为 Media Services 打开了南非区域对 
+
+媒体服务现已在南部北部和南非非洲地区推出。
+
+有关详细信息, 请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
 
 ## <a name="july-2019"></a>2019年7月
 
@@ -191,7 +199,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 
 #### <a name="new-transform-object"></a>新转换对象
 
-新转换对象简化编码模型  。 通过新对象，可以轻松创建和共享编码资源管理器模板和预设。 
+新转换对象简化编码模型。 通过新对象，可以轻松创建和共享编码资源管理器模板和预设。 
 
 #### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory 身份验证和 RBAC
 
@@ -246,11 +254,11 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 .NET SDK 中提供了以下功能:
 
-* 转换和作业，用于对媒体内容来进行编码或分析   。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
+* 转换和作业，用于对媒体内容来进行编码或分析。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
 * **流式处理定位符**，用于发布内容并将其流式传输到最终用户设备
 * **流式处理策略**和**内容密钥策略**，用于在传送内容时配置密钥传递和内容保护 (DRM)。
 * **实时事件**和**实时输出**，用于配置实时传送视频流内容的引入和归档。
-* 资产，用于在 Azure 存储中存储和发布媒体内容  。 
+* 资产，用于在 Azure 存储中存储和发布媒体内容。 
 * **流式处理终结点**，用于配置和缩放实时和点播媒体内容的动态打包、加密和流式处理。
 
 ### <a name="known-issues"></a>已知问题

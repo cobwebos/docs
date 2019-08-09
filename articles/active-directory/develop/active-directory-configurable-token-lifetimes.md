@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: ryanwi
-ms.custom: aaddev, annaba
+ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ddb4db501808a2866e3697064e6527b8bf62bb
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1f6aa209b6e99be406634e01be47c6dd9572d62a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835432"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853438"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 中可配置的令牌生存期（预览版）
 
@@ -204,7 +204,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 * 为调用 Web API 的本机应用创建策略
 * 管理高级策略
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果是 Azure AD 新手，我们建议在继续学习这些示例之前，先了解[如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。  
 
 若要开始，请执行以下步骤：

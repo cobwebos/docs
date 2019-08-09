@@ -1,19 +1,19 @@
 ---
 title: Azure Data Lake Storage 上的多协议访问 |Microsoft Docs
 description: 使用 Blob Api 和应用程序将 Blob Api 与 Azure Data Lake Storage Gen2 配合使用。
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: normesta
-ms.openlocfilehash: f384fb738fe719b8e622e8d61502e6acba2bbf31
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.reviewer: stewu
+ms.openlocfilehash: cc0191a9484a09ed12e0ca0cde4d51681e44ec5f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314378"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855537"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage 上的多协议访问
 
@@ -28,7 +28,7 @@ Blob Api 现在适用于具有分层命名空间的帐户。 这将使工具、�
 
 如果在 Data Lake Storage 上注册多协议访问的预览, 则可以使用整个工具、应用程序和服务生态系统来处理所有数据。 这包括 azure[流分析](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction)、 [IOT 中心](https://docs.microsoft.com/azure/iot-hub/)、 [Power BI](https://docs.microsoft.com/power-bi/desktop-data-sources)等 azure 服务。 
 
-这还包括第三方工具和应用程序。 您可以将它们指向具有分层命名空间的帐户, 而无需修改它们。 即使应用程序调用 Blob Api, 这些应用程序也能*正常工作,* 因为 Blob api 现在可以对具有分层命名空间的帐户中的数据进行操作。
+这还包括第三方工具和应用程序。 您可以将它们指向具有分层命名空间的帐户, 而无需修改它们。 即使应用程序调用 blob api, 这些应用程序也能正常工作, 因为 Blob api 现在可以对具有分层命名空间的帐户中的数据进行操作。
 
 > [!NOTE]
 > 若要查看限制, 请参阅[已知问题](data-lake-storage-known-issues.md)一文。

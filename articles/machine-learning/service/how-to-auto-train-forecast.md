@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 34902aa23339b62920f918ae19b410a99e226a0e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 793474495f3ab3ef06a17b48d15c2f91d0677365
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358811"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848160"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
@@ -27,17 +27,17 @@ ms.locfileid: "68358811"
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
 
-你可以使用自动 ML 来合并技术和方法, 并获得推荐的高质量时序预测。 自动时间系列实验被视为多元回归问题。 过去的时间序列值将 "透视" 成为回归量与其他预测值的其他维度。 
+你可以使用自动 ML 来合并技术和方法, 并获得推荐的高质量时序预测。 自动时间系列实验被视为多元回归问题。 过去的时间序列值将 "透视" 成为回归量与其他预测值的其他维度。
 
 与传统时序方法不同, 这种方法的优点是, 在定型过程中自然包含多个上下文变量以及它们之间的关系。 在实际预测应用程序中, 多个因素可能会影响预测。 例如, 在预测销售额时, 历史趋势的交互、汇率和价格都相互合作推动了销售结果。 另一个好处是, 回归模型中的所有最新创新都立即适用于预测。
 
-您可以[配置](#config)未来预测应扩展的时间 (预测范围) 以及滞后时间和更多时间。 自动 ML 会为数据集中的所有项目学习单个但通常在内部分支的模型, 并预测视野。 这样就可以使用更多的数据来估计模型参数, 并使其成为不可见系列。 
+您可以[配置](#config)未来预测应扩展的时间 (预测范围) 以及滞后时间和更多时间。 自动 ML 会为数据集中的所有项目学习单个但通常在内部分支的模型, 并预测视野。 这样就可以使用更多的数据来估计模型参数, 并使其成为不可见系列。
 
-从定型数据中提取的功能扮演着重要的角色。 而且, 自动 ML 会执行标准预处理步骤并生成附加的时序功能, 以捕获季节性效果并最大程度地提高预测准确性。 
+从定型数据中提取的功能扮演着重要的角色。 而且, 自动 ML 会执行标准预处理步骤并生成附加的时序功能, 以捕获季节性效果并最大程度地提高预测准确性。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。
+* Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
 * 本文假设基本熟悉如何设置自动化机器学习试验。 按照[教程](tutorial-auto-train-models.md)或操作[方法](how-to-configure-auto-train.md), 查看基本的自动化机器学习试验设计模式。
 
 ## <a name="preparing-data"></a>准备数据
@@ -106,9 +106,13 @@ time_series_settings = {
     "grain_column_names": ["store"],
     "max_horizon": 50,
     "target_lags": 2,
-    "target_rolling_window_size": 10
+    "target_rolling_window_size": 10,
+    "preprocess": True,
 }
 ```
+
+> [!NOTE]
+> 自动机器学习预处理步骤 (功能规范化、处理丢失的数据、将文本转换为数字等) 成为基础模型的一部分。 使用模型进行预测时, 在训练过程中应用的相同预处理步骤会自动应用于输入数据。
 
 现在, 创建一个`AutoMLConfig`标准对象, `forecasting`指定任务类型, 然后提交试验。 模型完成后, 检索最佳的运行迭代。
 

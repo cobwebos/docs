@@ -3,16 +3,16 @@ title: Azure 文件常见问题解答 (FAQ) | Microsoft Docs
 description: 查看有关 Azure 文件的常见问题解答。
 author: roygara
 ms.service: storage
-ms.date: 01/02/2019
+ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 622a033b73ace93e98cfa0d5179002c78ec49b35
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e14fcbd81a562b8d6451bb89a479c6675569403a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704487"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854534"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -151,7 +151,7 @@ ms.locfileid: "68704487"
     在 Azure 文件同步代理版本 3 之前，Azure 文件同步阻止将分层文件移到服务器终结点之外但位于服务器终结点所在卷上的其他位置。 复制操作、非分层文件的移动操作以及将分层文件移到其他卷的操作不受影响。 这种行为的原因在于以下隐含假设：文件资源管理器和其他 Windows API 在同一卷上的移动操作是（近乎）即时重命名操作。 这意味着，移动会使文件资源管理器或其他移动方法（如命令行或 PowerShell）看起来没有响应，而 Azure 文件同步会从云中召回数据。 从 [Azure 文件同步代理版本 3.0.12.0](storage-files-release-notes.md#supported-versions) 开始，Azure 文件同步将允许将分层文件移到服务器终结点之外。 我们通过允许分层文件作为服务器终结点之外的分层文件存在，然后在后台召回该文件以避免前面提到的负面影响。 这意味着在同一卷上的移动是即时的，在移动完成后，我们要完成将文件召回到磁盘的所有工作。 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
-  **我在服务器上遇到 Azure 文件同步问题（同步、云分层等）。是否应删除并重新创建服务器终结点？**  
+  **服务器上的 Azure 文件同步 (同步、云分层等) 出现问题。是否应删除并重新创建服务器终结点？**  
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
@@ -168,35 +168,27 @@ ms.locfileid: "68704487"
     
 ## <a name="security-authentication-and-access-control"></a>安全性、身份验证和访问控制
 * <a id="ad-support"></a>
-**Azure 文件是否支持基于 Active Directory 的身份验证和访问控制？**  
+**Azure 文件是否支持基于标识的身份验证和访问控制？**  
     
-    是的，Azure 文件支持使用 Azure Active Directory (Azure AD)（预览版）进行基于标识的身份验证和访问控制。 通过 SMB 为 Azure 文件启用 Azure Active Directory 身份验证，可利用 Azure Active Directory 域服务，让已加入域的 VM 能够使用 Azure AD 凭据访问共享、目录和文件。 有关详细信息，请参阅[通过 SMB 为 Azure 文件启用 Azure Active Directory 身份验证（预览版）概述](storage-files-active-directory-overview.md)。 
+    是的, Azure 文件支持 Azure AD 域服务 (Azure AD DS) 利用基于标识的身份验证和访问控制。 使用 Azure 文件的 SMB Azure AD DS 身份验证, 可让已加入域的 Windows Vm Azure AD Windows Vm 使用 Azure AD 凭据访问共享、目录和文件。 有关更多详细信息, 请参阅[Azure 文件概述 Azure Active Directory 域服务 (AZURE AD DS) 身份验证支持 SMB 访问](storage-files-active-directory-overview.md)。 
 
     Azure 文件还提供了另外两种方法来管理访问控制：
 
     - 你可以使用共享访问签名 (SAS) 生成在指定时间间隔内有效的具有特定权限的令牌。 例如，可以生成在 10 分钟后到期、对特定文件具有只读访问权限的令牌。 只要拥有此有效令牌，就可以在 10 分钟内拥有对给定文件的只读访问权限。 目前，仅通过 REST API 或客户端库支持共享的访问签名密钥。 你必须使用存储帐户密钥通过 SMB 装载 Azure 文件共享。
 
     - Azure 文件同步会保留所有自定义 ACL 或 DACL（无论基于 Active Directory 或本地目录），并复制到其同步到的所有服务器终结点。 由于 Windows 服务器已经可以使用 Active Directory 进行身份验证，因此，在全面支持基于 Active Directory 的身份验证和实现对 ACL 的支持前，Azure 文件同步是一个有效的临时选择。
-
-* <a id="ad-support-regions"></a>
-**通过 SMB 为 Azure 文件启用 Azure AD 预览版是否可在所有 Azure 区域使用？**
-
-    预览版在所有公共区域中都可用。
-
-* <a id="ad-support-on-premises"></a>
-**通过 SMB 为 Azure 文件启用 Azure AD 身份验证（预览版）是否支持从本地计算机使用 Azure AD 进行身份验证？**
-
-    不支持。Azure 文件不支持在预览版中从本地计算机使用 Azure AD 进行身份验证。
+    
+    若要全面表示 Azure 存储服务支持的所有协议, 可以参阅[授权访问 Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
 
 * <a id="ad-support-devices"></a>
-**通过 SMB 为 Azure 文件启用 Azure AD 身份验证（预览版）是否支持使用 Azure AD 凭据从加入的设备或者注册了 Azure AD 的设备进行 SMB 访问？**
+**Azure 文件 Azure AD DS 身份验证是否支持使用连接到 Azure AD 的设备中的 Azure AD 凭据进行 SMB 访问？**
 
     不支持。不支持该方案。
 
 * <a id="ad-support-rest-apis"></a>
 **是否有支持获取/设置/复制目录/文件 NTFS ACL 的 REST API？**
 
-    预览版不支持 REST API 获取、设置或复制针对目录或文件的 NTFS ACL。
+    目前, 我们不支持 REST Api 获取、设置或复制目录或文件的 NTFS Acl。
 
 * <a id="ad-vm-subscription"></a>
 **我是否可以从不同订阅下的 VM 使用 Azure AD 凭据访问 Azure 文件？**
@@ -204,17 +196,17 @@ ms.locfileid: "68704487"
     如果部署了文件共享的订阅与 VM 所加入到的 Azure AD 域服务部署相同的 Azure AD 租户相关联，则可以使用相同的 Azure AD 凭据访问 Azure 文件存储。 限制不是针对订阅，而是针对关联的 Azure AD 租户的。    
     
 * <a id="ad-support-subscription"></a>
-**我是否可以使用与文件共享关联的主租户之外的 Azure AD 租户为 Azure 文件启用通过 SMB 进行 Azure AD 身份验证？**
+**能否使用不同于与文件共享关联的主租户的 Azure AD 租户来启用 Azure 文件 Azure AD DS 身份验证？**
 
-    不可以。Azure 文件仅支持 Azure AD 与文件共享驻留在同一订阅中的 Azure AD 租户集成。 只有一个订阅可以与 Azure AD 租户相关联。
+    不能, Azure 文件仅支持与与文件共享位于同一订阅中的 Azure AD 租户 Azure AD DS 集成。 只有一个订阅可以与 Azure AD 租户相关联。
 
 * <a id="ad-linux-vms"></a>
-**通过 SMB 为 Azure 文件启用 Azure AD 身份验证（预览版）是否支持 Linux VM？**
+**Azure 文件 Azure AD DS 身份验证是否支持 Linux Vm？**
 
-    不支持。预览版不支持从 Linux VM 进行身份验证。
+    否, 不支持从 Linux Vm 进行身份验证。
 
 * <a id="ad-aad-smb-afs"></a>
-**我是否可以在 Azure 文件同步管理的文件共享上利用通过 SMB 启用 AD 身份验证功能？**
+**能否在 Azure 文件同步管理的文件共享上利用 Azure 文件 Azure AD DS 身份验证？**
 
     不可以。Azure 文件不支持在由 Azure 文件同步管理的文件共享上保留 NTFS ACL。Azure 文件同步将保留转自本地文件服务器的文件 ACL。针对 Azure 文件本机配置的任何 NTFS ACL 都将由 Azure 文件同步服务所覆盖。 此外，Azure 文件不支持使用 Azure AD 凭据进行身份验证，以访问 Azure 文件同步服务管理的文件共享。
 
@@ -289,7 +281,7 @@ ms.locfileid: "68704487"
     快照按标准事务和标准存储收费。 快照在本质上是递增的。 基本快照即是共享本身。 所有的后续快照均是递增的，并且只会存储与之前快照的不同之处。 这意味着，如果工作负荷改动极小，则帐单上显示的增量更改也很小。 有关标准 Azure 文件的定价信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。 目前，查看共享快照已用大小的方法是比较计费的容量与使用的容量。 我们致力于开发改进报告的工具。
 
 * <a id="ntfs-acls-snaphsots"></a>
-**目录和文件上的 NTFS ACL 是否保留在共享快照中？**
+**目录和文件上的 NTFS ACL 是否保留在共享快照中？**  
     目录和文件上的 NTFS ACL 会保留在共享快照中。
 
 ### <a name="create-share-snapshots"></a>创建共享快照

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/17/2019
-ms.openlocfilehash: 0721542811709e9b938fea3f31bc2a0a28ecdc74
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: b23d54cb74bea7eaaea5f55bd491bed40381ee2b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358770"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848187"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 
@@ -25,7 +25,7 @@ ms.locfileid: "68358770"
 
 ## <a name="prerequisites"></a>系统必备
 
-* Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建工作区一](setup-create-workspace.md)文。
+* Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建工作区一](how-to-manage-workspace.md)文。
 
 * [AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 

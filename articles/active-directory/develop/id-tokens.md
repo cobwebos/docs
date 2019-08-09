@@ -14,25 +14,25 @@ ms.topic: conceptual
 ms.date: 04/13/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25408b2120a9ac9f38e7959ef8e9dbbb34df7c2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85145d4a81eb4d12910758e01dda675ea378a46b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962565"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853181"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 标识平台 ID 令牌
 
 `id_tokens` 是在 [OpenID Connect](v1-protocols-openid-connect-code.md) 流中发送到客户端应用程序的。 它们可以一起发送来代替访问令牌，可供客户端用来对用户进行身份验证。
 
-## <a name="using-the-idtoken"></a>使用 id_token
+## <a name="using-the-id_token"></a>使用 id_token
 
 ID 令牌应该用来验证某个用户是否符合其声称的身份，以及用来获取该用户的其他有用信息 - 它不应该用来替代[访问令牌](access-tokens.md)进行授权。 它提供的声明可以用于应用程序内部的用户体验、数据库键控以及提供客户端应用程序访问权限。
 
-## <a name="claims-in-an-idtoken"></a>id_token 中的声明
+## <a name="claims-in-an-id_token"></a>id_token 中的声明
 
 Microsoft 标识的 `id_tokens` 为 [JWT](https://tools.ietf.org/html/rfc7519)，这意味着它们由标头、有效负载和签名部分组成。 可以使用标头和签名来验证令牌的真实性，而有效负载则包含客户端请求的用户信息。 除非另有说明，否则此处列出的所有声明均出现在 v1.0 和 v2.0 令牌中。
 
@@ -57,13 +57,13 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |声明 | 格式 | 描述 |
 |-----|--------|-------------|
 |`typ` | 字符串 - 始终为“JWT” | 指示令牌是 JWT。|
-|`alg` | String | 指示用于对令牌签名的算法。 示例：“RS256” |
+|`alg` | String | 指示用于对令牌签名的算法。 例如：“RS256” |
 |`kid` | String | 用于对此令牌进行签名的公钥的指纹。 已在 v1.0 和 v2.0 `id_tokens` 中发出。 |
 |`x5t` | String | 与 `kid` 相同（在用法和值方面）。 但是，这是在 v1.0 `id_tokens` 中仅出于兼容目的而发出的旧式声明。 |
 
 ### <a name="payload-claims"></a>有效负载声明
 
-此列表显示了默认情况下位于 most id_tokens 中的声明（另外说明的除外）。  但是，可以使用您的应用程序[可选声明](active-directory-optional-claims.md)请求在 id_token 中的其他声明。  这些可能涵盖从`groups`声明到用户的名称的信息。
+此列表显示了默认情况下位于 most id_tokens 中的声明（另外说明的除外）。  但是, 你的应用可以使用[可选的声明](active-directory-optional-claims.md)来请求 id_token 中的其他声明。  这些信息可以从`groups`声明到有关用户名称的信息。
 
 |声明 | 格式 | 描述 |
 |-----|--------|-------------|
@@ -89,7 +89,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`uti` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 应忽略。 |
 |`ver` | 字符串，1.0 或 2.0 | 指示 id_token 的版本。 |
 
-## <a name="validating-an-idtoken"></a>验证 id_token
+## <a name="validating-an-id_token"></a>验证 id_token
 
 验证 `id_token` 与[验证访问令牌](access-tokens.md#validating-tokens)的第一步类似 - 客户端应验证是否是正确的颁发者发送回令牌且令牌未遭篡改。 由于 `id_tokens` 始终是 JWT，因此可以使用许多现有的库来验证这些令牌 - 建议使用这其中的一个库来验证，而不要自行进行验证。
 
@@ -102,4 +102,4 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[访问令牌](access-tokens.md)
-* 自定义的声明中使用你的 id_token[可选声明](active-directory-optional-claims.md)。
+* 使用[可选声明](active-directory-optional-claims.md)自定义 id_token 中的声明。

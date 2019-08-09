@@ -8,14 +8,30 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f732ab6ceb17dcd013c6d032ef3943f6ad9bef71
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 759422ea8c327ae67278354217dac4c60b32f7a9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782354"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850321"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
+
+本文详细介绍了 runbook 的常见问题以及如何解决这些问题。
+
+## <a name="steps-to-troubleshoot-runbooks"></a>对 runbook 进行故障排除的步骤
+
+如果在 Azure Automation 中执行 runbook 时出现错误, 则可以使用以下步骤来帮助诊断问题。
+
+1. **确保你的 runbook 脚本在本地计算机上成功执行:** 参阅[PowerShell 文档](/powershell/scripting/overview)或[Python 文档](https://docs.python.org/3/), 了解语言参考和学习模块。
+
+   在本地执行脚本可以发现和解决常见错误, 如:
+
+   - **缺少模块**
+   - **语法错误**
+   - **逻辑错误**
+
+2. **确保节点和自动化工作区具有所需的模块:** 如果你的 runbook 导入任何模块, 请使用[导入模块](../shared-resources/modules.md#import-modules)中列出的步骤确保它们可用于你的自动化帐户。 有关详细信息, 请参阅[模块故障排除](shared-resources.md#modules)。
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>使用 Azure 自动化 Runbook 时遇到的身份验证错误
 

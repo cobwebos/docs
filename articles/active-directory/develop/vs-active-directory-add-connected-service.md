@@ -1,12 +1,10 @@
 ---
 title: 在 Visual Studio 中使用连接服务添加 Azure Active Directory
 description: 使用 Visual Studio 中的“添加连接服务”对话框添加 Azure Active Directory
-services: active-directory
-ms.subservice: develop
 author: ghogen
 manager: douge
 ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
-ms.prod: visual-studio-dev15
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.custom: aaddev, vs-azure
 ms.workload: azure-vs
@@ -15,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd83b78537f526f5131a6eea585427ecefef0d1
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c5988dc676abfc86e06c56ffb5c68d6f581c231e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320784"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852086"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>在 Visual Studio 中使用连接服务添加 Azure Active Directory
 
@@ -30,7 +28,7 @@ ms.locfileid: "68320784"
 
 目前，Active Directory 连接服务不支持 ASP.NET Core 应用程序。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - Azure 帐户：如果没有 Azure 帐户，可以[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 - **Visual Studio 2015** 或更高版本。 [立即下载 Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
@@ -39,25 +37,25 @@ ms.locfileid: "68320784"
 
 1. 在 Visual Studio 中，创建或打开 ASP.NET MVC 项目或 ASP.NET Web API 项目。 可以使用 MVC、Web API、单页应用程序、Azure API 应用、Azure 移动应用和 Azure 移动服务模板。
 
-1. 选择“项目”>“添加连接服务...”  菜单命令，或双击解决方案资源管理器中项目下的“连接的服务”  节点。
+1. 选择“项目”>“添加连接服务...”菜单命令，或双击解决方案资源管理器中项目下的“连接的服务”节点。
 
-1. 在“连接服务”  页，选择“使用 Azure Active Directory 进行身份验证”  。
+1. 在“连接服务”页，选择“使用 Azure Active Directory 进行身份验证”。
 
     ![“连接服务”页](./media/vs-azure-active-directory/connected-services-add-active-directory.png)
 
-1. 在“简介”  页上，选择“下一步”  。 如果在此页上看到错误，请参阅[使用 Azure Active Directory 连接服务诊断错误](vs-active-directory-error.md)。
+1. 在“简介”页上，选择“下一步”。 如果在此页上看到错误，请参阅[使用 Azure Active Directory 连接服务诊断错误](vs-active-directory-error.md)。
 
     ![“简介”页](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. 在“单一登录”  页上，从“域”  下拉列表中选择域。 该列表包含在 Visual Studio 的“帐户设置”对话框（“文件”>“帐户设置...”  ）中列出的帐户可以访问的所有域。如果没有找到要查找的域，作为替代方法，可以输入域名，如 `mydomain.onmicrosoft.com`。 可以选择用于创建 Azure Active Directory 应用的选项，也可以使用现有 Azure Active Directory 应用中的设置。 完成后，选择“下一步”  。
+1. 在“单一登录”页上，从“域”下拉列表中选择域。 该列表包含在 Visual Studio 的“帐户设置”对话框（“文件”>“帐户设置...”）中列出的帐户可以访问的所有域。如果没有找到要查找的域，作为替代方法，可以输入域名，如 `mydomain.onmicrosoft.com`。 可以选择用于创建 Azure Active Directory 应用的选项，也可以使用现有 Azure Active Directory 应用中的设置。 完成后，选择“下一步”。
 
     ![“单一登录”页](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 
-1. 在“目录访问权限”  页上，根据需要选择“读取目录数据”  。 开发人员通常会选择此选项。
+1. 在“目录访问权限”页上，根据需要选择“读取目录数据”。 开发人员通常会选择此选项。
 
     ![“目录访问权限”页](./media/vs-azure-active-directory/configure-azure-ad-wizard-3.png)
 
-1. 选择“完成”  以开始对项目进行修改，从而启用 Azure AD 身份验证。 Visual Studio 在此期间会显示进度：
+1. 选择“完成”以开始对项目进行修改，从而启用 Azure AD 身份验证。 Visual Studio 在此期间会显示进度：
 
     ![Active Directory 连接服务进度](./media/vs-azure-active-directory/active-directory-connected-service-output.png)
 

@@ -4,14 +4,14 @@ description: 解答有关 Azure Migrate 的常见问题
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: bf591306220b2c8c1e6c8166686836d96432fc7d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372485"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856279"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -71,7 +71,8 @@ Azure Migrate 设备收集的数据存储在创建迁移项目时指定的 Azure
 
 ### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-servers"></a>是否可以将同一台设备连接到多个 vCenter 服务器？
 
-是的, 可以使用单个 Azure Migrate 设备来发现多个 vCenter 服务器, 但不能同时使用。 你需要再运行一次发现。
+否。 设备与 vCenter Server 之间存在一对一的映射。 如果必须在多个 vCenter 服务器上发现 Vm, 则需要部署多个设备。 
+
 
 ### <a name="i-changed-my-machine-size-can-i-rerun-an-assessment"></a>我更改了计算机的大小。 能否重新运行评估？
 

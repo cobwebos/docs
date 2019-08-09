@@ -16,12 +16,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 47a068ac6a7941c8ce71cf5c6745d2958c75fe74
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 55d040e96b92f73a632fd415220f9cf135335736
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736597"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851008"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
 
@@ -173,9 +173,9 @@ when making changes in one don't forget the other two.
 
    ![Web 作业列表](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-## <a name="cron-expressions"></a>CRON 表达式
+## <a name="ncrontab-expressions"></a>NCRONTAB 表达式
 
-可以在门户中输入 [CRON 表达式](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)，或者在 Web 作业 .zip 文件的根目录中包含一个 `settings.job` 文件，如以下示例中所示：
+可以在门户中输入[NCRONRAB 表达式](../azure-functions/functions-bindings-timer.md#ncrontab-expressions), 也可以在 web `settings.job`作业 *.zip*文件的根目录中包含一个文件, 如以下示例中所示:
 
 ```json
 {

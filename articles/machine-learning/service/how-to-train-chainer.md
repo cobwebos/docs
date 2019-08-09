@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: f95a7efd8b9303db0a9ba98c1be32e13d0c5e984
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 91ac8b596373963aeba00c1932dfde5d76f27bd0
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780886"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856031"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Azure 机器学习服务, 大规模定型和注册 Chainer 模型
 
@@ -38,9 +38,9 @@ ms.locfileid: "68780886"
 
 - 你自己的 Jupyter 笔记本服务器
 
-    - [安装适用于 Python 的 Azure 机器学习 SDK](setup-create-workspace.md#sdk)
-    - [创建工作区配置文件](setup-create-workspace.md#write-a-configuration-file)
-    - 下载示例脚本文件[chainer_mnist. py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py)
+    - [安装 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
+    - 下载示例脚本文件[chainer_mnist. py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py)。
      - 你还可以在 GitHub 示例页上找到本指南的完整[Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)。 此笔记本包含扩展的部分, 涵盖智能超参数优化、模型部署和笔记本小组件。
 
 ## <a name="set-up-the-experiment"></a>设置试验

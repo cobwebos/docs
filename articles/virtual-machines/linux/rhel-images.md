@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: f7ae82b0376489e21b35e4e94dce32805bea69c6
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7d34e480dd3cf90f1948e83ea1d18c04f1dcdce2
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708379"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854442"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure 中的 Red Hat Enterprise Linux 映像
 本文介绍 Azure 市场中可用的 Red Hat Enterprise Linux (RHEL) 映像以及与其命名和保留相关的策略。
@@ -63,9 +63,9 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 > 一般情况下，通过比较版本来确定最新版本时应遵循 [CompareTo 方法](https://msdn.microsoft.com/library/a5ts8tb6.aspx)的规则。
 
 ### <a name="current-naming-convention"></a>当前的命名约定
-当前发布的所有 RHEL 映像均使用即用即付模型，并连接到 [Azure 中的 Red Hat 更新基础结构 (RHUI)](https://aka.ms/rhui-update)。 对于 RHEL 7 系列映像所在的磁盘分区方案已采用新的命名约定 (raw、 LVM) 而不是版本 SKU 中指定。 RHEL 映像版本将包含 7 原始或 7 LVM。 RHEL 6 系列的命名目前尚未更改。
+当前发布的所有 RHEL 映像均使用即用即付模型，并连接到 [Azure 中的 Red Hat 更新基础结构 (RHUI)](https://aka.ms/rhui-update)。 RHEL 7 系列映像采用了新的命名约定, 其中在 SKU 而不是版本中指定了磁盘分区方案 (原始、LVM)。 RHEL 映像版本包含 7-RAW 或 7-LVM。 RHEL 6 系列的命名目前尚未更改。
 
-将有两种类型的 RHEL 7 映像 Sku 在此命名约定：列出的次版本的 Sku 和不的 Sku。 如果想要使用 7 原始或 7 LVM SKU，可以指定你想要部署的版本中的 RHEL 次要版本。 如果选择"最新"版本，你将预配 RHEL 的最新次要版本。
+此命名约定中将有2种类型的 RHEL 7 映像 Sku:列出次要版本和 Sku 的 Sku。 如果要使用 7-RAW 或 7-LVM SKU, 可以指定要在版本中部署的 RHEL 次要版本。 如果选择 "最新版本", 则将预配 RHEL 的最新次要版本。
 
 >[!NOTE]
 > 在 RHEL for SAP 映像集中，RHEL 版本保持不变。 因此，它们的命名约定在 SKU 中包含特定版本。
@@ -73,58 +73,58 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 >[!NOTE]
 > RHEL 6 映像集未改用新的命名约定。
 
-## <a name="extended-update-support-eus"></a>扩展的更新支持 (EUS)
-因为年 4 月 2019年的 RHEL 映像是可用的附加到扩展更新的支持 (EUS) 存储库默认情况下。 中提供了更多详细信息 RHEL EUS [Red Hat 文档](https://access.redhat.com/articles/rhel-eus)。
+## <a name="extended-update-support-eus"></a>扩展更新支持 (EUS)
+从2019年4月起, 默认情况下, RHEL 映像可用于附加到扩展更新支持 (EUS) 存储库。 有关 RHEL EUS 的更多详细信息, 请[参阅 Red Hat 的文档](https://access.redhat.com/articles/rhel-eus)。
 
-提供了有关如何在虚拟机切换到 EUS 和有关 EUS 支持生命周期结束日期的更多详细信息说明[此处](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)。
+[此处](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)提供了有关如何将 VM 切换到 EUS 的说明, 以及有关 EUS 支持的更多详细信息。
 
 >[!NOTE]
-> RHEL 附加程序不支持 EUS。 这意味着，如果您正在安装从 RHEL Extras 通道通常可用的包，您将不能为此，在 EUS。 详细介绍了 Red Hat Extras 产品生命周期[此处](https://access.redhat.com/support/policy/updates/extras/)。
+> RHEL 附加上不支持 EUS。 这意味着, 如果你要安装的包通常在 RHEL 额外通道中可用, 则在 EUS 上将无法执行此操作。 [此处](https://access.redhat.com/support/policy/updates/extras/)详细介绍了 Red Hat 额外产品生命周期。
 
-### <a name="for-customers-that-want-to-use-eus-images"></a>对于想要使用 EUS 映像的客户：
-想要使用附加到 EUS 存储库的映像的客户应使用包含 RHEL 次要版本号在 SKU 中的 RHEL 映像。 这些映像将原始分区 (即不 LVM)。
+### <a name="for-customers-that-want-to-use-eus-images"></a>对于想要使用 EUS 映像的客户:
+如果客户想要使用附加到 EUS 存储库的映像, 则应在 SKU 中使用包含 RHEL 次版本号的 RHEL 映像。 这些映像将是原始分区 (即非 LVM)。
 
-例如，可能会看到以下 2 个 RHEL 7.4 映像可用：
+例如, 你可能会看到以下 2 RHEL 7.4 映像可用:
 ```bash
 RedHat:RHEL:7-RAW:7.4.2018010506
 RedHat:RHEL:7.4:7.4.2019041718
 ```
-在这种情况下，`RedHat:RHEL:7.4:7.4.2019041718`默认情况下，将到 EUS 存储库中附加和`RedHat:RHEL:7-RAW:7.4.2018010506`将附加到非 EUS 存储库默认情况下。
+在这种情况`RedHat:RHEL:7.4:7.4.2019041718`下, 默认情况下将附加到 EUS 存储`RedHat:RHEL:7-RAW:7.4.2018010506`库, 并且默认情况下将附加到非 EUS 存储库。
 
-### <a name="for-customers-that-dont-want-to-use-eus-images"></a>对于不想要使用 EUS 映像的客户：
-如果不想使用默认情况下连接到 EUS 的映像，部署使用不包含次要版本号在 SKU 中的映像。
+### <a name="for-customers-that-dont-want-to-use-eus-images"></a>对于不希望使用 EUS 映像的客户:
+如果不想使用默认情况下连接到 EUS 的映像, 请使用不包含 SKU 中的次要版本号的映像进行部署。
 
-#### <a name="rhel-images-with-eus"></a>使用 EUS RHEL 映像
-下表将适用于 RHEL 映像包含在 SKU 中的次要版本。
+#### <a name="rhel-images-with-eus"></a>具有 EUS 的 RHEL 映像
+下表适用于在 SKU 中包含次要版本的 RHEL 映像。
 
 >[!NOTE]
-> 在撰写本文时，只有 RHEL 7.4 和更高版本的次要版本具有 EUS 支持。 EUS 不再支持 rhel < = 7.3。
+> 撰写本文时, 只有 RHEL 7.4 和更高版本的 EUS 支持。 RHEL < 不再支持 EUS = 7.3。
 
 次版本 |EUS 图像示例              |EUS 状态                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
-RHEL 7.4      |RedHat:RHEL:7.4:7.4.2019041718 | 映像发布 2019 年 4 月和更高版本将默认情况下是 EUS|
-RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | 映像发布 2019 年 6 月和更高版本将默认情况下是 EUS |
-RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | 映像发布 2019 年 5 和更高版本将默认情况下是 EUS  |
-RHEL 8.0      |不可用                            | 当前没有 EUS 映像当前可用                 |
+RHEL 7。4      |RedHat: RHEL: 7.4: 7.4.2019041718 | 默认情况下, 将 EUS 2019 年4月版和更高版本发布的映像|
+RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | 默认情况下, 将 EUS 2019 年6月发布的映像 |
+RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | 默认情况下, 发布的映像可能为 2019, 以后将 EUS  |
+RHEL 8。0      |不可用                            | 当前没有 EUS 当前图像可用                 |
 
 
-## <a name="list-of-rhel-images-available"></a>提供 RHEL 映像的列表
+## <a name="list-of-rhel-images-available"></a>可用的 RHEL 映像列表
 以下产品/服务和 SKU 目前可用于一般用途：
 
-产品/服务| SKU | 分区 | 设置 | 说明
+套餐| SKU | 分区 | 预配 | 说明
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 7-RAW    | RAW    | Linux 代理 | RHEL 7 系列的图像。 <br> 默认情况下，不相连 EUS 存储库。
-|             | 7-LVM    | LVM    | Linux 代理 | RHEL 7 系列的图像。 <br> 默认情况下，不相连 EUS 存储库。
-|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7 系列的图像。 <br> 默认情况下，不相连 EUS 存储库。
+RHEL          | 7-RAW    | RAW    | Linux 代理 | RHEL 7 系列映像。 <br> 默认情况下未附加到 EUS 存储库。
+|             | 7-LVM    | LVM    | Linux 代理 | RHEL 7 系列映像。 <br> 默认情况下未附加到 EUS 存储库。
+|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7 系列映像。 <br> 默认情况下未附加到 EUS 存储库。
 |             | 6.7      | RAW    | Linux 代理 | RHEL 6.7 映像，旧的命名约定
 |             | 6.8      | RAW    | Linux 代理 | RHEL 6.8 同上
 |             | 6.9      | RAW    | Linux 代理 | RHEL 6.9 同上
 |             | 6.10     | RAW    | Linux 代理 | RHEL 6.10 同上
 |             | 7.2      | RAW    | Linux 代理 | RHEL 7.2 同上
 |             | 7.3      | RAW    | Linux 代理 | RHEL 7.3 同上
-|             | 7.4      | RAW    | Linux 代理 | 适用于 RHEL 7.4 如上所示的相同。 <br> 默认情况下从 2019 年 4 月开始附加到 EUS 存储库
-|             | 7.5      | RAW    | Linux 代理 | 如上所示适用于 RHEL 7.5 相同。 <br> 默认情况下从 2019 年 6 月开始附加到 EUS 存储库
-|             | 7.6      | RAW    | Linux 代理 | 适用于 RHEL 7.6 如上所示的相同。 <br> 默认情况下从 2019 年 5 开始附加到 EUS 存储库
+|             | 7.4      | RAW    | Linux 代理 | RHEL 7.4 与上面相同。 <br> 默认情况下附加到 EUS 存储库, 2019 年4月
+|             | 7.5      | RAW    | Linux 代理 | RHEL 7.5 与上面相同。 <br> 默认情况下附加到 EUS 存储库, 截至2019年6月
+|             | 7.6      | RAW    | Linux 代理 | RHEL 7.6 与上面相同。 <br> 默认情况下, 附加到 EUS 存储库, 可能为2019
 RHEL-SAP      | 7.4      | LVM    | Linux 代理 | 用于 SAP HANA 和 Business Apps 的 RHEL 7.4
 |             | 7.5      | LVM    | Linux 代理 | 用于 SAP HANA 和 Business Apps 的 RHEL 7.5
 RHEL-SAP-HANA | 6.7      | RAW    | Linux 代理 | 用于 SAP HANA 的 RHEL 6.7
@@ -132,6 +132,12 @@ RHEL-SAP-HANA | 6.7      | RAW    | Linux 代理 | 用于 SAP HANA 的 RHEL 6.7
 |             | 7.3      | LVM    | Linux 代理 | 用于 SAP HANA 的 RHEL 7.3
 RHEL-SAP-APPS | 6.8      | RAW    | Linux 代理 | 用于 SAP Business Applications 的 RHEL 6.8
 |             | 7.3      | LVM    | Linux 代理 | 用于 SAP Business Applications 的 RHEL 7.3
+RHEL-HA       | 7.4      | RAW    | Linux 代理 | RHEL 7.4 与 HA 加载项
+|             | 7.5      | RAW    | Linux 代理 | RHEL 7.5 与 HA 加载项
+|             | 7.6      | RAW    | Linux 代理 | RHEL 7.6 与 HA 加载项
+RHEL-SAP-HA   | 7.4      | RAW    | Linux 代理 | RHEL 7.4 for SAP 与 HA 附加项
+|             | 7.5      | RAW    | Linux 代理 | RHEL 7.5 for SAP 与 HA 附加项
+|             | 7.6      | RAW    | Linux 代理 | RHEL 7.6 for SAP 与 HA 附加项
 
 ### <a name="old-naming-convention"></a>旧的命名约定
 在发生上文所述的命名约定更改之前，RHEL 7 系列映像和 RHEL 6 系列映像一直在其 SKU 中使用特定版本。

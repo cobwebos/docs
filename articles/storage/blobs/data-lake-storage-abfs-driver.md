@@ -1,7 +1,6 @@
 ---
 title: 适用于 Azure Data Lake Storage Gen2 的 Azure Blob 文件系统驱动程序
 description: ABFS Hadoop Filesystem 驱动程序
-services: storage
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -9,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 50d39aa3c6341e61e383c5584ab2992e3fea3189
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: ece85feff3c6eff9fc2348de70842204986952d5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278092"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855625"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure Blob FileSystem 驱动程序 (ABFS)：用于 Hadoop 的专用 Azure 存储驱动程序
 

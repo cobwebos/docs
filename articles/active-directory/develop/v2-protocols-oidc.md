@@ -16,14 +16,14 @@ ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7d4164bd1a412c69c3b5adfe20cf83d699d2b4
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 69aa2da29e18f99e75e09d8f21814b71cc95ef72
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304794"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852142"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 标识平台和 OpenID Connect 协议
 
@@ -32,7 +32,7 @@ OpenID Connect 是在 OAuth 2.0 基础上构建的身份验证协议，可用于
 > [!NOTE]
 > Microsoft 标识平台终结点并非支持所有 Azure Active Directory (Azure AD) 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](active-directory-v2-limitations.md)。
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，使其可用作*身份验证*协议，这样一来，用户可使用 OAuth 执行单一登录。 OpenID Connect 引入了 ID 令牌  的概念，ID 令牌是一种可让客户端验证用户标识的安全令牌。 ID 令牌还可获取用户的基本个人资料信息。 由于 OpenID Connect 扩展了 OAuth 2.0，因此应用可安全获取访问令牌  ，访问令牌可用于访问[授权服务器](active-directory-v2-protocols.md#the-basics)保护的资源。 Microsoft 标识平台终结点还允许向 Azure AD 注册了的第三方应用为受保护资源（例如 Web API）颁发访问令牌。 有关如何设置应用程序以颁发访问令牌的详细信息，请参阅[如何向 Microsoft 标识平台终结点注册应用](quickstart-register-app.md)。 如果要构建在服务器上托管并通过浏览器访问的 [web 应用程序](v2-app-types.md#web-apps)，建议使用 OpenID Connect。
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，使其可用作*身份验证*协议，这样一来，用户可使用 OAuth 执行单一登录。 OpenID Connect 引入了 ID 令牌的概念，ID 令牌是一种可让客户端验证用户标识的安全令牌。 ID 令牌还可获取用户的基本个人资料信息。 由于 OpenID Connect 扩展了 OAuth 2.0，因此应用可安全获取访问令牌，访问令牌可用于访问[授权服务器](active-directory-v2-protocols.md#the-basics)保护的资源。 Microsoft 标识平台终结点还允许向 Azure AD 注册了的第三方应用为受保护资源（例如 Web API）颁发访问令牌。 有关如何设置应用程序以颁发访问令牌的详细信息，请参阅[如何向 Microsoft 标识平台终结点注册应用](quickstart-register-app.md)。 如果要构建在服务器上托管并通过浏览器访问的 [web 应用程序](v2-app-types.md#web-apps)，建议使用 OpenID Connect。
 
 ## <a name="protocol-diagram-sign-in"></a>协议图：登录
 
@@ -48,11 +48,11 @@ OpenID Connect 描述了元数据文档，该文档包含了应用执行登录�
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
 > [!TIP]
-> 试试看！ 单击 [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) 可查看 `common` 租户配置。
+> 试用! 单击 [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) 可查看 `common` 租户配置。
 
 `{tenant}` 可采用四个值的其中之一：
 
-| 值 | 描述 |
+| ReplTest1 | 描述 |
 | --- | --- |
 | `common` |同时拥有个人 Microsoft 帐户和工作或学校帐户的用户 Azure AD 可以登录到应用程序。 |
 | `organizations` |仅拥有工作/学校帐户的用户可以从 Azure AD 登录到应用程序。 |
@@ -112,7 +112,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数 | 条件 | 描述 |
 | --- | --- | --- |
-| `tenant` | 需要 | 可以使用请求路径中的 `{tenant}` 值来控制哪些用户可以登录到该应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参见[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
+| `tenant` | 必填 | 可以使用请求路径中的 `{tenant}` 值来控制哪些用户可以登录到该应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参见[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | `client_id` | 必填 | Azure 门户的**应用程序 (客户端) ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
 | `response_type` | 必填 | 必须包含 OpenID Connect 登录的 `id_token`。 它可能还包括其他 `response_type` 值，例如 `code`。 |
 | `redirect_uri` | 建议 | 应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 其必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 如果不存在该 URL，终结点将随机选取一个已注册的 redirect_uri，以将用户发回到其中。 |

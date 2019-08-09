@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: da68c0ae1dc92f5b854c30c90b93856248c43281
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 105cbf173a9abe1adf0999f63740d47b3da51a29
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828353"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856292"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>用于 Hyper-V 评估和迁移的支持矩阵
 
@@ -27,9 +27,9 @@ ms.locfileid: "68828353"
 **部署** | **详细***
 --- | ---
 **评估本地 Hyper-v Vm** | [设置](tutorial-prepare-hyper-v.md)第一次评估。<br/><br/> [运行](scale-hyper-v-assessment.md)大规模评估。
-**将 Hyper-V VM 迁移到 Azure** | [尝试](tutorial-migrate-hyper-v.md)迁移到 Azure。
+**将 Hyper-V VM 迁移到 Azure** | [尝试](tutorial-migrate-hyper-v.md)迁移到 Azure。 
 
-
+Azure Migrate 服务器迁移不支持迁移使用 System Center Virtual Machine Manager (VMM) 管理的 Hyper-v 服务器。 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate 项目
 
@@ -182,4 +182,4 @@ Hyper-v 主机/Vm | HTTPS 端口443上的出站连接, 用于将 VM 复制数据
 
 ## <a name="next-steps"></a>后续步骤
 
-[准备用于迁移的 HYPER-V VM 评估](tutorial-prepare-hyper-v.md)。
+[准备用于迁移的 HYPER-V VM](tutorial-prepare-hyper-v.md) 迁移。

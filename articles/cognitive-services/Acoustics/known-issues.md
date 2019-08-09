@@ -3,20 +3,20 @@ title: Project Acoustics 插件的已知问题
 titlesuffix: Azure Cognitive Services
 description: 针对 Project Acoustics 使用设计器预览时，可能会遇到以下已知问题。
 services: cognitive-services
-author: kylestorck
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kylsto
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: df5a4ce62af0405ffab8f711fb40b3d92083a3a4
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: a70d9ea1090f1c518f804dd28f3461918af965cd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706661"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854285"
 ---
 # <a name="project-acoustics-known-issues"></a>项目噪声已知问题
 针对 Project Acoustics 使用设计器预览时，可能会遇到以下已知问题。

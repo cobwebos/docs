@@ -1,19 +1,18 @@
 ---
 title: 使用 AzCopy v10 将数据复制或移到 Azure 存储 | Microsoft Docs
 description: AzCopy 是一个命令行实用工具, 可用于在存储帐户之间复制数据。 本文将帮助你下载 AzCopy, 连接到你的存储帐户, 然后传输文件。
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7ad5be0c7774beacaa15fcca0646c78e2d328ba4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9dc53867cb780b2c40e76cc6f24f7e6cf882b407
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699851"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844865"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -22,7 +21,7 @@ AzCopy 是一个命令行实用工具, 可用于在存储帐户中复制 blob �
 > [!NOTE]
 > AzCopy **V10**是当前支持的 AzCopy 版本。
 >
-> 如果需要**使用 AzCopy 的**, 请参阅本文的[使用 AzCopy 的早期版本](#previous-version)部分。
+> 如果需要使用 AzCopy 的, 请参阅本文的[使用 AzCopy 的早期版本](#previous-version)部分。
 
 <a id="download-and-install-azcopy" />
 

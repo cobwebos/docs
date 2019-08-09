@@ -1,6 +1,6 @@
 ---
-title: 自动执行管理任务 Azure 虚拟机上使用 SQL Server IaaS 代理扩展 |Microsoft Docs
-description: 本文介绍如何管理可以自动执行特定 SQL Server 管理任务的 SQL Server 代理扩展。 这些任务包括自动备份、自动修补和 Azure 密钥保管库集成。
+title: 使用 SQL Server IaaS 代理扩展在 Azure 虚拟机上自动完成管理任务 |Microsoft Docs
+description: 本文介绍如何管理 SQL Server IaaS 代理扩展, 该扩展自动执行特定 SQL Server 管理任务。 其中包括自动备份、自动修补和 Azure Key Vault 集成。
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -16,45 +16,48 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 41023103dc30d16f599e847f9d324bc7bb4be11c
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: d95760745dc3554bc63271cedc63dcf3bf017c5c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798053"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855222"
 ---
-# <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-iaas-agent-extension"></a>自动执行管理任务 Azure 虚拟机上使用 SQL Server IaaS 代理扩展
+# <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理扩展在 Azure 虚拟机上自动执行管理任务
 > [!div class="op_single_selector"]
 > * [资源管理器](virtual-machines-windows-sql-server-agent-extension.md)
 > * [经典](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
 
-SQL Server IaaS 代理扩展 (SqlIaasExtension) 在 Azure 虚拟机上运行，以自动执行管理任务。 本文提供的概述和支持的扩展插件以及有关安装、 状态和删除说明的服务。
+SQL Server IaaS 代理扩展 (SqlIaasExtension) 在 Azure 虚拟机上运行，以自动执行管理任务。 本文概述了该扩展支持的服务。 本文还提供了有关安装、状态和删除扩展的说明。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-若要查看这篇文章的经典版，请参阅[适用于 SQL Server 经典 VM 的 SQL Server 代理扩展](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)。
+若要查看本文的经典版本, 请参阅[SQL Server vm 的 SQL Server IaaS 代理扩展 (经典)](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)。
 
-有三个 SQL 可管理性模式的 SQL IaaS 扩展：**完整**，**轻型**，和**NoAgent**。 
+对于 SQL Server IaaS 扩展, 有三种可管理性模式: 
 
-- **完整**模式提供了所有功能，但需要重新启动 SQL Server 和 SA 权限。 这是默认情况下安装，应使用用于管理 SQL Server VM 的单个实例的选项。 
+- **完整**模式提供所有功能, 但需要重新启动 SQL Server 和系统管理员权限。 这是默认情况下安装的选项。 使用它来管理包含单个实例的 SQL Server VM。 
 
-- **轻型**不需要重新启动 SQL Server，但仅支持更改许可证类型和版本的 SQL Server。 此选项应为用于 SQL Server Vm 的多个实例，或参与故障转移群集实例 (FCI) 中。 
+- **轻型**不需要重新启动 SQL Server, 但它仅支持更改 SQL Server 的许可证类型和版本。 SQL Server 对于具有多个实例的 Vm 或参与故障转移群集实例 (FCI) 的 Vm, 请使用此选项。 
 
-- **NoAgent**是专用于 SQL Server 2008 和 Windows Server 2008 上安装 SQL Server 2008 R2。 有关利用`NoAgent`模式为 Windows Server 2008 映像，请参阅[Windows Server 2008 注册](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008r2-on-windows-server-2008-vms)。 
+- **NoAgent**专用于在 Windows Server 2008 上安装 SQL Server 2008 和 SQL Server 2008 R2。 有关为 Windows Server 2008 映像使用此模式的信息, 请参阅[Windows server 2008 注册](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)。 
 
 ## <a name="supported-services"></a>支持的服务
 SQL Server IaaS 代理扩展支持以下管理任务：
 
 | 管理功能 | 描述 |
 | --- | --- |
-| **SQL 自动备份** |对 VM 中 SQL Server 的默认实例或[已正确安装的](virtual-machines-windows-sql-server-iaas-faq.md#administration)命名实例自动执行所有数据库的备份计划。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动备份 (Resource Manager)](virtual-machines-windows-sql-automated-backup.md)。 |
-| **SQL 自动修补** |配置维护时段，可在此时段对 VM 进行重要的 Windows 更新，避开工作负荷的高峰期。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)](virtual-machines-windows-sql-automated-patching.md)。 |
-| **Azure 密钥保管库集成** |可在 SQL Server VM 上自动安装和配置 Azure Key Vault。 有关详细信息，请参阅 [为 Azure VM 上的 SQL Server 配置 Azure 密钥保管库集成 (Resource Manager)](virtual-machines-windows-ps-sql-keyvault.md)。 |
+| **SQL Server 自动备份** |对 VM 中 SQL Server 的默认实例或[已正确安装的](virtual-machines-windows-sql-server-iaas-faq.md#administration)命名实例自动执行所有数据库的备份计划。 有关详细信息, 请参阅[Azure 虚拟机中 SQL Server 的自动备份 (资源管理器)](virtual-machines-windows-sql-automated-backup.md)。 |
+| **SQL Server 自动修补** |配置维护时段，可在此时段对 VM 进行重要的 Windows 更新，避开工作负荷的高峰期。 有关详细信息, 请参阅[在 Azure 虚拟机中自动修补 SQL Server (资源管理器)](virtual-machines-windows-sql-automated-patching.md)。 |
+| **Azure Key Vault 集成** |可在 SQL Server VM 上自动安装和配置 Azure Key Vault。 有关详细信息, 请参阅为[Azure 虚拟机上的 SQL Server 配置 Azure Key Vault 集成 (资源管理器)](virtual-machines-windows-ps-sql-keyvault.md)。 |
 
-一旦安装和运行，SQL Server IaaS 代理扩展便可使这些管理功能在 Azure 门户中虚拟机的 SQL Server 面板上获得，也可通过 Azure PowerShell for SQL Server 市场映像和 Azure PowerShell 获得，以手动安装扩展。 
+安装并运行 SQL Server Iaas 代理扩展后, 它将使管理功能可用:
+
+* 在 Azure 门户的虚拟机的 SQL Server 面板中, 通过 Azure Marketplace 上的 SQL Server 映像 Azure PowerShell。
+* 通过 Azure PowerShell 扩展的手动安装。 
 
 ## <a name="prerequisites"></a>先决条件
-在 VM 上使用 SQL Server IaaS 代理扩展的要求：
+下面是在 VM 上使用 SQL Server IaaS 代理扩展的要求:
 
 **操作系统**：
 
@@ -80,9 +83,9 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 
-## <a name="change-management-modes"></a>更改的管理模式
+## <a name="change-management-modes"></a>更改管理模式
 
-可以使用 PowerShell 来查看你的 SQL IaaS 代理的当前模式： 
+你可以使用 PowerShell 查看 SQL Server IaaS 代理的当前模式: 
 
   ```powershell-interactive
      //Get the SqlVirtualMachine
@@ -90,100 +93,99 @@ SQL Server IaaS 代理扩展支持以下管理任务：
      $sqlvm.Properties.sqlManagement
   ```
 
-具有 SQL Server vm *NoAgent*或*轻型*IaaS 安装扩展，你可以升级到的模式*完整*使用 Azure 门户。 不能降级-若要执行此操作，将需要完全卸载 SQL IaaS 扩展和重新安装它。 
+对于安装了 NoAgent 或轻型 IaaS 扩展的 SQL Server Vm, 可以使用 Azure 门户将模式升级为 full。 无法降级。 要执行此操作, 你需要完全卸载 SQL Server IaaS 扩展并再次安装。 
 
-升级代理模式设置为对*完整*，执行以下操作： 
+若要将代理模式升级到完整模式: 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 导航到您[SQL 虚拟机](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)资源。 
-1. 选择你的 SQL Server 虚拟机，然后选择**概述**。 
-1. 对于包含的 SQL Vm *NoAgent*或*轻型*IaaS 模式下，选择为消息**许可证类型和版本更新仅适用于 SQL IaaS 扩展**。
+1. 中转到[SQL 虚拟机](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)资源。 
+1. 选择 SQL Server 虚拟机, 然后选择 "**概述**"。 
+1. 对于 NoAgent 或轻型 IaaS 模式下的 SQL Server Vm, 请选择 " **SQL IaaS 扩展消息仅提供许可证类型" 和 "版本更新**"。
 
-    ![启动模式更改从门户](media/virtual-machines-windows-sql-server-agent-extension/change-sql-iaas-mode-portal.png)
+   ![用于从门户更改模式的选择](media/virtual-machines-windows-sql-server-agent-extension/change-sql-iaas-mode-portal.png)
 
-1. 同意**重新启动 SQL Server 服务**通过选中该复选框，并选择**确认**升级您的 IaaS 模式为 full。 
+1. 选中 "**我同意在虚拟机上重新启动 SQL Server 服务**" 复选框, 然后选择 "**确认**" 将 IaaS 模式升级到 full。 
 
-    ![启用完全管理 IaaS 扩展](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
+    ![确认在虚拟机上重新启动 SQL Server 服务的复选框](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
 
 ##  <a name="installation"></a>安装
-注册与 SQL Server VM 时安装了 SQL IaaS 扩展[SQL 虚拟机资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider)。 但是，如有必要，SQL IaaS 代理也可以安装使用手动*完整*或*轻型*模式安装。 
+当你向[SQL VM 资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-the-sql-vm-resource-provider)注册你的 SQL Server VM 时, 会安装 SQL Server IaaS 扩展。 如有必要, 可以使用 full 或轻型模式手动安装 SQL Server IaaS 代理。 
 
-*完整*预配使用 Azure 门户的 SQL Server 虚拟机库映像之一时，会自动安装 SQL Server IaaS 代理扩展。 
+当你通过使用 Azure 门户预配其中一个 SQL Server 虚拟机 Azure Marketplace 映像时, 将自动安装完整模式下的 SQL Server IaaS 代理扩展。 
 
-### <a name="full-mode-installation"></a>完整模式安装
-*完整*SQL IaaS 扩展提供了完整的 SQL Server VM 上的单个实例的可管理性。 如果有默认实例，则此扩展可以用于该默认实例，不支持对其他实例进行管理。 如果没有默认实例，而是只有一个命名实例，则会管理命名实例。 如果没有默认实例，但是有多个命名实例，则此扩展无法安装。 
+### <a name="install-in-full-mode"></a>以完整模式安装
+SQL Server IaaS 扩展的完整模式为 SQL Server VM 上的单个实例提供完全可管理性。 如果有一个默认实例, 则该扩展将与默认实例一起使用, 并且它不支持管理其他实例。 如果没有默认实例, 但只有一个命名实例, 则它将管理该命名实例。 如果没有默认实例, 并且有多个命名实例, 则将无法安装该扩展。 
 
-安装*完整*SQL IaaS 的模式将重新启动 SQL Server 服务。 若要避免重新启动 SQL Server 服务，请安装*轻型*改为模式使用有限的可管理性。 
-
-安装 SQL IaaS 代理*完整*模式下使用 PowerShell:
+使用 PowerShell 通过完整模式安装 SQL Server IaaS 代理:
 
   ```powershell-interactive
-     // Get the existing  Compute VM
+     // Get the existing compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register SQL VM with 'Full' SQL IaaS agent
+     // Register the SQL Server VM with 'Full' SQL Server IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='Full'}  
   
   ```
 
-| 参数 | 可接受的值                        |
+| 参数 | 可接受值                        |
 | :------------------| :-------------------------------|
-| **sqlServerLicenseType** | `'AHUB'`或 `'PAYG'`     |
+| **sqlServerLicenseType** | `AHUB` 或 `PAYG`     |
 | &nbsp;             | &nbsp;                          |
 
 
-> [!WARNING]
-> - 如果尚未安装该扩展，安装**完整**扩展将重新启动 SQL Server 服务。 使用**轻型**模式以避免重新启动 SQL Server 服务。 
-> - 更新 SQL IaaS 扩展不会重启 SQL Server 服务。 
+> [!NOTE]
+> 如果尚未安装该扩展, 则安装完全扩展将重新启动 SQL Server 服务。 若要避免重新启动 SQL Server 服务, 请改为安装具有有限可管理性的轻型模式。
+> 
+> 更新 SQL Server IaaS 扩展不会重新启动 SQL Server 服务。 
 
-#### <a name="install-on-a-vm-with-a-single-named-sql-server-instance"></a>在具有单个命名 SQL Server 实例的 VM 上安装
-如果卸载默认实例和 IaaS 扩展重新安装，SQL IaaS 扩展将使用命名实例适用于 SQL Server 中。
+### <a name="install-on-a-vm-with-a-single-named-sql-server-instance"></a>在具有单个命名 SQL Server 实例的 VM 上安装
+如果卸载了默认实例并且重新安装了 IaaS 扩展, 则 SQL Server IaaS 扩展将与 SQL Server 上的命名实例一起使用。
 
-若要使用 SQL Server 的命名实例，请执行以下操作：
-   1. 从市场部署 SQL Server VM。 
-   1. 在 [Azure 门户](https://portal.azure.com)中卸载 IaaS 扩展。
+若要使用 SQL Server 的命名实例:
+   1. 从 Azure Marketplace 部署 SQL Server VM。 
+   1. 从[Azure 门户](https://portal.azure.com)卸载 IaaS 扩展。
    1. 在 SQL Server VM 中彻底卸载 SQL Server。
    1. 在 SQL Server VM 中将 SQL Server 与命名实例一起安装。 
-   1. 在 Azure 门户中安装 IaaS 扩展。  
+   1. 从 Azure 门户安装 IaaS 扩展。  
 
 
-### <a name="install-in-lightweight-mode"></a>在轻量级模式下安装
-轻量级模式下不会重启你的 SQL Server 服务，但它提供了有限的功能。 
+### <a name="install-in-lightweight-mode"></a>在轻型模式下安装
+轻型模式不会重新启动 SQL Server 服务, 但它提供的功能有限。 
 
-安装 SQL IaaS 代理*轻型*模式下使用 PowerShell:
+使用 PowerShell 通过轻型模式安装 SQL Server IaaS 代理:
 
 
   ```powershell-interactive
      // Get the existing  Compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register SQL VM with 'Lightweight' SQL IaaS agent
+     // Register the SQL Server VM with the 'Lightweight' SQL IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  
   
   ```
 
-| 参数 | 可接受的值                        |
+| 参数 | 可接受值                        |
 | :------------------| :-------------------------------|
-| **sqlServerLicenseType** | `'AHUB'`或 `'PAYG'`     |
+| **sqlServerLicenseType** | `AHUB` 或 `PAYG`     |
 | &nbsp;             | &nbsp;                          |
 
 
-## <a name="get-status-of-sql-iaas-extension"></a>获取 SQL IaaS 扩展状态
-验证是否已安装扩展的方法之一是在 Azure 门户中查看代理状态。 在虚拟机窗口中选择“所有设置”，并单击“扩展”。   应看到列出“SqlIaasExtension”扩展。 
+## <a name="get-the-status-of-the-sql-server-iaas-extension"></a>获取 SQL Server IaaS 扩展的状态
+验证是否已安装扩展的方法之一是在 Azure 门户中查看代理状态。 在 "虚拟机" 窗口中选择 "**所有设置**", 然后选择 "**扩展**"。 应看到列出“SqlIaasExtension”扩展。
 
-![Azure 门户中的 SQL Server IaaS 代理扩展](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
+![Azure 门户中 SQL Server IaaS 代理扩展的状态](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 
-也可以使用 **Get-AzVMSqlServerExtension** Azure PowerShell cmdlet。
+还可以使用**AzVMSqlServerExtension** Azure PowerShell cmdlet:
 
    ```powershell-interactive
    Get-AzVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
    ```
 
-上一个命令确认已安装代理并提供常规状态信息。 还可使用以下命令获取有关自动备份和修补的特定状态信息。
+上一个命令确认已安装代理并提供常规状态信息。 可以使用以下命令获取有关自动备份和修补的特定状态信息:
 
    ```powershell-interactive
     $sqlext = Get-AzVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
@@ -192,18 +194,18 @@ SQL Server IaaS 代理扩展支持以下管理任务：
    ```
 
 ## <a name="removal"></a>删除
-在 Azure 门户中，可以通过单击虚拟机属性的“扩展”窗口中的省略号来卸载扩展。  然后单击“删除”  。
+在 Azure 门户中, 可以通过选择虚拟机属性的 "**扩展**" 窗口中的省略号来卸载扩展。 然后选择“删除”。
 
-![在 Azure 门户中卸载 SQL Server IaaS 代理扩展](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
+![正在卸载 Azure 门户中的 SQL Server IaaS 代理扩展](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
 
-也可以使用 **Remove-AzVMSqlServerExtension** PowerShell cmdlet。
+还可以使用**AzVMSqlServerExtension** PowerShell cmdlet:
 
    ```powershell-interactive
     Remove-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension"
    ```
 
 ## <a name="next-steps"></a>后续步骤
-开始使用扩展支持的服务之一。 有关详细信息，请参阅文章中引用[支持的服务](#supported-services)本文的部分。
+开始使用扩展支持的服务之一。 有关详细信息, 请参阅本文的支持的[服务](#supported-services)部分中提到的文章。
 
-有关在 Azure 虚拟机中运行 SQL Server 的详细信息，请参阅 [Azure 虚拟机中的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)。
+有关在 Azure 虚拟机上运行 SQL Server 的详细信息, 请参阅[Azure 虚拟机上 SQL Server 的内容](virtual-machines-windows-sql-server-iaas-overview.md)。
 

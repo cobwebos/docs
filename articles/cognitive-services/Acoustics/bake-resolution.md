@@ -3,20 +3,20 @@ title: 项目噪声制作解决方案
 titlesuffix: Azure Cognitive Services
 description: 此概念概述介绍了收录噪声时的粗糙分辨率和精细分辨率之间的差异。
 services: cognitive-services
-author: KyleStorck
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: kylsto
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: e237a010bfecc038816c1eedf94e2f94b1e12472
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: d8eb3b2cbaf7b4e842d8338eefde756f6d381111
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704874"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854344"
 ---
 # <a name="project-acoustics-bake-resolution"></a>项目噪声制作解决方案
 此概念概述介绍了收录噪声时的粗糙分辨率和精细分辨率之间的差异。 在收录工作流的探测步骤中选择此设置。

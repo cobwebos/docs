@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: 7c4c4ff611b35cac9aa8be1a9697a0d11bc4dc8b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9bd56984f088ab16fc5d80c588afce2cdc31240b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815966"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848116"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>安全地在 Azure 虚拟网络中运行试验和推理
 
@@ -25,9 +25,9 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
 
 本文提供了有关**高级安全设置**的详细信息, 对于基本或实验性用例, 不是必需的。 本文中的各节提供了不同方案的配置信息, 但不需要按顺序或整体完成。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-如果还没有 Azure 机器学习服务[工作区](setup-create-workspace.md), 请创建一个。 本文档假定你熟悉 Azure 虚拟网络和一般的 IP 网络。 本文档假定你已创建要用于计算资源的虚拟网络和子网。 如果你不熟悉 Azure 虚拟网络, 请阅读以下文章了解该服务:
+如果还没有 Azure 机器学习服务[工作区](how-to-manage-workspace.md), 请创建一个。 本文档假定你熟悉 Azure 虚拟网络和一般的 IP 网络。 本文档假定你已创建要用于计算资源的虚拟网络和子网。 如果你不熟悉 Azure 虚拟网络, 请阅读以下文章了解该服务:
 
 * [IP 寻址](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
 * [安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)
@@ -36,7 +36,7 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
 
 ## <a name="storage-account-for-your-workspace"></a>工作区的存储帐户
 
-若要为虚拟网络中的工作区使用默认的 Azure 存储帐户, 请使用以下步骤:
+若要在虚拟网络中使用工作区的 Azure 存储帐户, 请使用以下步骤:
 
 1. 创建试验计算, 例如 在虚拟网络后机器学习计算, 或将试验计算附加到工作区 (例如) HDInsight 群集或虚拟机。 有关详细信息, 请参阅[使用机器学习计算](#use-machine-learning-compute)和使用本文档中[的虚拟机或 HDInsight 群集](#use-a-virtual-machine-or-hdinsight-cluster)部分
 2. 前往附加到工作区的存储。 ![显示附加到 Azure 机器学习服务工作区的 Azure 存储的 Azure 门户图像](./media/how-to-enable-virtual-network/workspace-storage.png)
@@ -55,7 +55,9 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
 > [!IMPORTANT]
 > __只有执行试验时__, Azure 机器学习服务的__默认存储帐户__才能放置在虚拟网络中。
 >
-> 对于__试验的非默认存储帐户__, 或者如果要使用存储帐户进行__推理__, 则必须具有__对存储帐户的不受限制的访问权限__。
+> 还可以将__非默认存储帐户__放置在虚拟网络中, 但__仅用于试验__。
+>
+> 用于__推理__的默认或非默认存储帐户必须对__存储帐户具有不受限制的访问权限__。
 >
 > 如果不确定是否已修改这些设置，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)中的“更改默认网络访问规则”。 使用这些步骤可以在推断过程中或在模型评分时允许来自所有网络的访问。
 

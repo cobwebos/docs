@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 78a531c769612af0597e732f0dc539286dd7cdac
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 3158ebddf6ffe5594c9daf0fd9f3e3fe980c0b24
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489877"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845667"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -31,7 +31,7 @@ ms.locfileid: "68489877"
 
 ## <a name="on-premises-servers"></a>本地服务器
 
-**服务器** | **要求** | **详细信息**
+**服务** | **要求** | **详细信息**
 --- | --- | ---
 Hyper-V（不使用 Virtual Machine Manager 运行） |  Windows Server 2019、Windows Server 2016 （包括服务器核心安装）、包含最新更新的 Windows Server 2012 R2 | 如果已使用 Azure Site Recovery 配置 Windows Server 2012 R2 和/或 SCVMM 2012 R2 并计划升级 OS，请遵循指南[文档](upgrade-2012R2-to-2016.md)。 
 Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，Windows Server 2019 主机应在 Virtual Machine Manager 2019 中托管。 同样，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中托管。<br/><br/>

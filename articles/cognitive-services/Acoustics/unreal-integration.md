@@ -3,20 +3,20 @@ title: 项目噪声 Unreal 和 Wwise 集成
 titlesuffix: Azure Cognitive Services
 description: 本操作指南介绍项目中的 Unreal 和 Wwise 插件与项目的集成。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5511dd6b9a7d77c0988a94fef747a30d25bb4fc3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 3fe9a28a99ea8becbfc40e1e64d1f5b109caace3
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706628"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854372"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>项目噪声 Unreal 和 Wwise 集成
 本操作说明提供项目噪声插件包到现有 Unreal 和 Wwise 游戏项目的详细集成步骤。 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 08/07/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 113e178d39ec776b63a0b38c55035f3493586ea2
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: f3aea108ed87debac56b18b5959d492f2bcb291d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233870"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853604"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>与来宾用户的 AD FS 和第三方提供程序的直接联合 (预览)
 |     |
@@ -46,7 +46,7 @@ ms.locfileid: "68233870"
 ## <a name="limitations"></a>限制
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD 中的 DNS 验证域
-仅允许直接联盟 Azure AD 中***未***进行 DNS 验证的域。 允许直接联合身份验证 (通过电子邮件验证或 "病毒") Azure AD 租户, 因为未对其进行 DNS 验证。
+要与联合的域在 Azure AD 中不得进行 DNS 验证。 允许你设置与非托管 (电子邮件验证或 "病毒") Azure AD 租户的直接联合, 因为未对其进行 DNS 验证。
 ### <a name="authentication-url"></a>身份验证 URL
 仅当身份验证 URL 的域与目标域匹配或者身份验证 URL 是这些允许的标识提供者之一 (此列表可能会更改) 时, 才允许直接联合身份验证:
 -   accounts.google.com
@@ -66,7 +66,7 @@ ms.locfileid: "68233870"
 目前最多支持1000个联合关系。 此限制包括[内部联合](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)和直接联合。
 ## <a name="frequently-asked-questions"></a>常见问题
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>是否可以设置与非托管 (电子邮件验证) 租户所在的域的直接联合？ 
-是的。 如果未验证域并且租户尚未完成[管理员接管](../users-groups-roles/domains-admin-takeover.md), 则可以设置直接联合。 未经管理或通过电子邮件验证的租户, 当用户兑换 B2B 邀请或使用当前不存在的域对 Azure AD 执行自助注册时, 会创建租户。 你可以设置与这些域的直接联合。 如果尝试通过 DNS 验证的域设置直接联合身份验证, 请在 "Azure 门户" 或 "通过 PowerShell" 中看到一个错误。
+是的。 如果未验证域并且租户尚未完成[管理员接管](../users-groups-roles/domains-admin-takeover.md), 可以设置与该域的直接联合。 未经管理或通过电子邮件验证的租户, 当用户兑换 B2B 邀请或使用当前不存在的域对 Azure AD 执行自助注册时, 会创建租户。 你可以设置与这些域的直接联合。 如果尝试通过 DNS 验证的域设置直接联合身份验证, 请在 "Azure 门户" 或 "通过 PowerShell" 中看到一个错误。
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>如果同时启用了直接联合身份验证和电子邮件一次性密码身份验证, 则哪个方法优先？
 与合作伙伴组织建立直接联合时, 它将优先于该组织中的新来宾用户的电子邮件一次性密码身份验证。 如果来宾用户在设置直接联合之前使用一次性密码身份验证兑换了邀请, 则他们将继续使用一次性密码身份验证。 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>是否由于部分同步的租户导致了直接联合地址登录问题？
@@ -90,16 +90,16 @@ Azure AD B2B 可以配置为与使用 SAML 协议的标识提供者联合, 该�
 
 来自 IdP 的 SAML 2.0 响应的必需属性:
 
-|特性  |ReplTest1  |
+|特性  |值  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|目标受众     |`urn:federation:MicrosoftOnline`         |
+|受众     |`urn:federation:MicrosoftOnline`         |
 |颁发者     |合作伙伴 IdP 的颁发者 URI, 例如`http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
 IdP 颁发的 SAML 2.0 令牌所需的声明:
 
-|特性  |值  |
+|特性  |ReplTest1  |
 |---------|---------|
 |NameID 格式     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -119,7 +119,7 @@ Azure AD B2B 可以配置为与使用 WS 送单协议的标识提供者联合, �
 |特性  |ReplTest1  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
-|目标受众     |`urn:federation:MicrosoftOnline`         |
+|受众     |`urn:federation:MicrosoftOnline`         |
 |颁发者     |合作伙伴 IdP 的颁发者 URI, 例如`http://www.example.com/exk10l6w90DHM0yi...`         |
 
 IdP 颁发的 WS-AT 令牌所需的声明:
@@ -131,14 +131,14 @@ IdP 颁发的 WS-AT 令牌所需的声明:
 
 ## <a name="step-2-configure-direct-federation-in-azure-ad"></a>步骤 2：在 Azure AD 中配置直接联合 
 接下来, 你将配置与 Azure AD 中的步骤1中配置的标识提供程序的联合。 可以使用 Azure AD 门户或 PowerShell。 直接联合身份验证策略生效之前可能需要5-10 分钟。 在此期间, 不要尝试兑换直接联盟域的邀请。 需要以下属性：
-- Partner IdP 的颁发者 URI
+- 合作伙伴 IdP 的颁发者 URI
 - 合作伙伴 IdP 的被动身份验证终结点 (仅支持 https)
 - 证书
 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>在 Azure AD 门户中配置直接联合
 
-1. 转到 [Azure 门户](https://portal.azure.com/)。 在左窗格中选择“Azure Active Directory”  。 
-2. 选择“组织关系”。 
+1. 转到 [Azure 门户](https://portal.azure.com/)。 在左窗格中选择“Azure Active Directory”。 
+2. 选择“组织关系”。
 3. 选择 "**标识提供者**", 然后选择 "**新建 SAML/WS-送 IdP**"。
 
     ![显示用于添加新 SAML 或 WS-ADDRESSING IdP 的按钮的屏幕截图](media/direct-federation/new-saml-wsfed-idp.png)
@@ -151,7 +151,7 @@ IdP 颁发的 WS-AT 令牌所需的声明:
 6. 您可以上载元数据文件以填充元数据详细信息。 如果选择手动输入元数据, 请输入以下信息:
    - 合作伙伴 IdP 的域名
    - 合作伙伴 IdP 的实体 ID
-   - 合作伙伴 IdP 的被动请求者终结点
+   - 合作伙伴 IdP 的被动请求程序终结点
    - 证书
    > [!NOTE]
    > 元数据 URL 是可选的, 但我们强烈建议这样做。 如果提供元数据 URL, Azure AD 可以在签名证书过期时自动续订该证书。 如果出于任何原因在过期时间之前旋转证书, 或者未提供元数据 URL, 则 Azure AD 将无法续订该证书。 在这种情况下, 你将需要手动更新签名证书。
@@ -185,8 +185,8 @@ IdP 颁发的 WS-AT 令牌所需的声明:
  
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>如何实现编辑直接联合身份验证关系？
 
-1. 转到 [Azure 门户](https://portal.azure.com/)。 在左窗格中选择“Azure Active Directory”  。 
-2. 选择“组织关系”。 
+1. 转到 [Azure 门户](https://portal.azure.com/)。 在左窗格中选择“Azure Active Directory”。 
+2. 选择“组织关系”。
 3. 选择**标识提供者**
 4. 在 " **SAML/WS 送纸标识提供**者" 下, 选择提供程序。
 5. 在 "标识提供者详细信息" 窗格中, 更新值。
@@ -196,11 +196,11 @@ IdP 颁发的 WS-AT 令牌所需的声明:
 ## <a name="how-do-i-remove-direct-federation"></a>如何实现删除直接联合？
 你可以删除直接联合身份验证设置。 如果这样做, 已经兑换邀请的直接联合来宾用户将无法登录。 不过, 你可以通过从目录中删除并 reinviting 资源来向用户授予对资源的访问权限。 在 Azure AD 门户中删除与标识提供者的直接联合:
 
-1. 转到 [Azure 门户](https://portal.azure.com/)。 在左窗格中选择“Azure Active Directory”  。 
-2. 选择“组织关系”。 
+1. 转到 [Azure 门户](https://portal.azure.com/)。 在左窗格中选择“Azure Active Directory”。 
+2. 选择“组织关系”。
 3. 选择 "**标识提供者**"。
 4. 选择标识提供程序, 然后选择 "**删除**"。 
-5. 选择“是”  以确认删除。 
+5. 选择“是”以确认删除。 
 
 使用 PowerShell 删除与标识提供者的直接联合:
 1. 安装最新版本的 Azure AD PowerShell for Graph 模块 ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。

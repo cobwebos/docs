@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: ecf38543b2c4e5187aa5c6593c3bccf6668b8a8a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8829f16e580d0b926781ce0a3e9f8e6a63cf3110
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472762"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853779"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>托管域中的密码和帐户锁定策略
 本文介绍托管域中的默认密码策略。 此外，还介绍如何配置这些策略。
@@ -69,7 +69,7 @@ ms.locfileid: "67472762"
 可以在托管域中创建自定义的 FGPP 并将其应用到特定的组。 此配置将有效地覆盖针对托管域配置的默认 FGPP。
 
 > [!TIP]
-> 只有“AAD DC 管理员”组的成员有权创建自定义的精细密码策略。 
+> 只有“AAD DC 管理员”组的成员有权创建自定义的精细密码策略。
 >
 >
 
@@ -80,14 +80,14 @@ ms.locfileid: "67472762"
 * 为托管域配置默认的密码生存期设置。
 
 在托管域中创建自定义的 FGPP：
-1. 登录到用于管理该托管域的 Windows VM。 如果你没有帐户，请按照说明[管理的 Azure AD 域服务域](manage-domain.md)。
-2. 在该 VM 上启动“Active Directory 管理中心”。 
+1. 登录到用于管理托管域的 Windows VM (必须至少为 Windows Server 2012 R2)。 如果没有, 请按照说明来[管理 Azure AD 域服务域](manage-domain.md)。
+2. 在该 VM 上启动“Active Directory 管理中心”。
 3. 单击域名（例如“contoso100.com”）。
-4. 双击“系统”打开“系统容器”。 
-5. 双击“密码设置容器”。 
+4. 双击“系统”打开“系统容器”。
+5. 双击“密码设置容器”。
 6. 此时会看到托管域的名为 **AADDSSTFPSO** 的默认内置 FGPP。 不能修改此内置 FGPP。 但是，可以创建新的自定义 FGPP 来覆盖默认 FGPP。
-7. 在右侧的“任务”面板中，依次单击“新建”、“密码设置”。   
-8. 在“创建密码设置”对话框中，指定要在自定义 FGPP 中应用的自定义密码设置。  请记得正确设置优先顺序，以覆盖默认 FGPP。
+7. 在右侧的“任务”面板中，依次单击“新建”、“密码设置”。
+8. 在“创建密码设置”对话框中，指定要在自定义 FGPP 中应用的自定义密码设置。 请记得正确设置优先顺序，以覆盖默认 FGPP。
 
    ![创建自定义 FGPP](./media/how-to/custom-fgpp.png)
 
@@ -96,19 +96,19 @@ ms.locfileid: "67472762"
    >
    >
 
-9. 在“直接应用到”中，单击“添加”按钮。   在“选择用户或组”对话框中，单击“位置”按钮。  
+9. 在“直接应用到”中，单击“添加”按钮。 在“选择用户或组”对话框中，单击“位置”按钮。
 
-   ![选择“用户和组”](./media/how-to/fgpp-applies-to.png)
+   ![选择用户和组](./media/how-to/fgpp-applies-to.png)
 
-10. 在“位置”对话框中，展开域名并单击“AADDC 用户”。   现在，可以从内置用户 OU 中选择要对其应用 FGPP 的组。
+10. 在“位置”对话框中，展开域名并单击“AADDC 用户”。 现在，可以从内置用户 OU 中选择要对其应用 FGPP 的组。
 
     ![选择该组所属的 OU](./media/how-to/fgpp-container.png)
 
-11. 键入该组的名称，然后单击“检查名称”按钮以验证该组是否存在。 
+11. 键入该组的名称，然后单击“检查名称”按钮以验证该组是否存在。
 
     ![选择要应用 FGPP 的组](./media/how-to/fgpp-apply-group.png)
 
-12. 该组的名称将显示在“直接应用到”部分。  单击“确定”按钮保存这些更改。 
+12. 该组的名称将显示在“直接应用到”部分。 单击“确定”按钮保存这些更改。
 
     ![已应用 FGPP](./media/how-to/fgpp-applied.png)
 

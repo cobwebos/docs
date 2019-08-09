@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 384cd2df9c629a73095cc55f4f6d65aa6a727225
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9deb369dc812616cd7256bbab4101531ca08f127
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360961"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847925"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>在 Azure 机器学习服务中启用日志记录
 
@@ -27,7 +27,7 @@ ms.locfileid: "68360961"
 > * 部署的模型
 > * Python `logging` 设置
 
-[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。 有关 SDK 的详细信息, 请使用[指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。 有关 SDK 的详细信息, 请使用[指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
 ## <a name="training-models-and-compute-target-logging"></a>训练模型和计算目标日志记录
 

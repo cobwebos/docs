@@ -1,88 +1,88 @@
 ---
-title: 回归：预测价格和比较算法
+title: 分析预测价格和比较算法
 titleSuffix: Azure Machine Learning service
-description: 本文介绍如何构建复杂的机器学习试验，而无需编写一行代码使用直观的界面。 了解如何训练和比较多个回归模型来预测一辆汽车的价格基于技术功能
+description: 本文说明如何在不使用可视界面编写代码的情况下生成复杂的机器学习试验。 了解如何定型和比较多个回归模型, 以根据技术特征预测汽车的价格
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: aa0a1fc2acdc9687030040c23cdb1781e9529169
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 28af7b814a8d214c3529ecb12ffe25ede78b1cb6
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605694"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855936"
 ---
-# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>示例 2-回归：预测价格和比较算法
+# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>示例 2-回归:预测价格和比较算法
 
-了解如何构建复杂的机器学习试验，而无需编写一行代码使用直观的界面。 此示例训练和比较多个回归模型来预测一辆汽车的价格基于其技术功能。 为使您能够同时处理自己的机器学习问题在此试验中所做的选择，我们将提供基本原理。
+了解如何在不编写代码的情况下使用可视界面构建复杂的机器学习试验。 本示例训练和比较多个回归模型, 以根据其技术特征预测汽车的价格。 我们将为在此试验中做出的选择提供理由, 以便您可以解决自己的机器学习问题。
 
-如果你刚开始使用机器学习，可以看一看[基本版本](ui-sample-regression-predict-automobile-price-basic.md)的此试验中查看基本回归试验。
+如果只是开始使用机器学习, 则可以查看此实验的[基本版本](ui-sample-regression-predict-automobile-price-basic.md), 以了解基本的回归实验。
 
-下面是此实验的已完成关系图：
+下面是此试验的完成关系图:
 
-[![实验的关系图](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![试验图](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. 选择**打开**示例 2 实验的按钮：
+4. 为示例2试验选择 "**打开**" 按钮:
 
     ![打开试验](media/ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
 
-## <a name="experiment-summary"></a>实验摘要
+## <a name="experiment-summary"></a>试验摘要
 
-我们使用以下步骤来生成试验：
+我们使用以下步骤来构建试验:
 
 1. 获取数据。
 1. 预先处理数据。
-1. 训练该模型。
-1. 测试、 评估和比较模型。
+1. 训练模型。
+1. 测试、评估和比较模型。
 
 ## <a name="get-the-data"></a>获取数据
 
-在此试验中，我们将使用**汽车价格数据 （原始）** 数据集，这是从 UCI 机器学习存储库。 此数据集包含 26 个列包含有关汽车，包括制造商、 型号、 价格、 车辆功能 （如气缸数）、 MPG、 和保险风险评分的信息。 本实验的目标是预测汽车的价格。
+在此实验中, 我们使用来自 UCI 机器学习存储库的 "**汽车价格数据 (原始)** " 数据集。 此数据集包含26列, 其中包含有关汽车的信息, 包括品牌、型号、价格、车辆功能 (如柱面数)、MPG 和保险风险评分。 此实验的目的是预测汽车的价格。
 
-## <a name="pre-process-the-data"></a>预处理数据
+## <a name="pre-process-the-data"></a>预先处理数据
 
-主数据准备任务包括执行数据清理、 集成、 转换、 缩短，原本和离散化或量化。 在可视化界面，您可以找到模块来执行这些操作和其他数据预先处理中的任务**数据转换**组在左侧面板中。
+主要的数据准备任务包括数据清除、集成、转换、缩减、离散化或量化。 在 visual interface 中, 可以在左侧面板的 "**数据转换**" 组中找到用于执行这些操作和其他数据预处理任务的模块。
 
-在此试验中，我们将使用**选择数据集中的列**模块，以排除规范化损失具有多个缺失值。 然后，我们使用**清理缺失数据**删除具有缺失值的行。 这有助于创建干净的定型数据集。
+在此实验中, 我们将使用 "**选择数据集中的列**" 模块来排除具有多个缺失值的规范化损失。 然后, 使用 "**清理缺失数据**" 删除包含缺失值的行。 这有助于创建一组清晰的定型数据。
 
 ![数据预处理](media/ui-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
 
 ## <a name="train-the-model"></a>训练模型
 
-机器学习问题而有所不同。 常见的机器学习任务包括分类，聚类分析，回归和推荐器系统，其中每个可能需要不同的算法。 所选的算法通常取决于用例的要求。 在选择一种算法后，您需要调整其参数来定型更准确的模型。 然后需要评估准确性、 清晰度和效率等度量值所基于的所有模型。
+机器学习问题有所不同。 常见的机器学习任务包括分类、群集、回归和推荐器系统, 其中每个系统都可能需要不同的算法。 选择的算法通常取决于用例的要求。 选取算法后, 需要优化其参数, 以训练更准确的模型。 然后, 需要基于指标 (如准确性、intelligibility 和效率) 评估所有模型。
 
-由于本实验的目标是预测汽车价格，并且因为标签列 （价格） 包含实数，回归模型是一个不错的选择。 考虑到，许多功能是相对较小 （小于 100），这些功能不是稀疏，则很可能是非线性的决策边界。
+由于此试验的目的是预测汽车价格, 并且由于标签列 (价格) 包含实数, 因此回归模型是一个不错的选择。 考虑到功能数量相对较小 (小于 100), 并且这些功能不是稀疏的, 决策边界可能是非线性的。
 
-若要比较的不同算法的性能，我们使用两个非线性算法**提升决策树回归**并**决策林回归**、 生成模型。 这两种算法具有参数，您可以更改，但我们对于此试验中使用的默认值。
+为了比较不同算法的性能, 我们使用两个非线性算法,**提升决策树回归**和**决策林回归**, 以生成模型。 这两种算法都具有可更改的参数, 但我们使用此试验的默认值。
 
-我们使用**拆分数据**模块来将输入的数据随机划分，以便训练数据集包含 70%的原始数据和测试数据集包含 30%的原始数据。
+我们使用**拆分数据**模块随机划分输入数据, 以便定型数据集包含 70% 的原始数据, 并且测试数据集包含 30% 的原始数据。
 
-## <a name="test-evaluate-and-compare-the-models"></a>测试、 评估和比较模型
+## <a name="test-evaluate-and-compare-the-models"></a>测试、评估和比较模型
 
-我们使用两个不同的随机选择的数据集来训练和测试模型，在上一部分中所述。 我们将数据集拆分，并使用不同的数据集来训练和测试模型，以便执行更客观的模型的评估。
+我们使用两个不同的随机选择的数据集来训练模型, 然后测试模型, 如前一部分中所述。 我们拆分数据集并使用不同的数据集来定型和测试模型, 以使模型的评估更具目标。
 
-训练模型后，我们使用**评分模型**并**评估模型**模块来生成预测的结果和评估模型。 **评分模型**使用经过训练的模型生成测试数据集的预测。 我们然后传递到分数**评估模型**生成评估指标。
+在对模型进行定型后, 我们使用**评分模型**并**评估模型**模块以生成预测结果并对模型进行评估。 **评分模型**通过使用训练的模型生成测试数据集的预测。 然后, 将评分传递到**评估模型**以生成评估指标。
 
-在此试验中，我们使用的两个实例**评估模型**来比较两个对的模型。
+在此实验中, 我们使用两个 "**评估模型**" 实例来比较两个模型对。
 
-首先，我们将训练数据集上的两种算法进行比较。
-其次，我们将进行比较测试数据集上的两种算法。
+首先, 比较定型数据集上的两种算法。
+其次, 比较测试数据集上的两种算法。
 下面是结果：
 
 ![比较结果](media/ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
 
-这些结果显示，与生成的模型**提升决策树回归**具有较低的根生成的模型比均方根误差**决策林回归**。
+这些结果表明, 使用**提升决策树回归**生成的模型具有低于**决策林回归**构建模型的根平均平方误差。
 
-这两种算法比在定型数据集上不可见的测试数据集上具有较低的错误。
+与不可见的测试数据集相比, 这两种算法在定型数据集上的错误更小。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -90,10 +90,10 @@ ms.locfileid: "67605694"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解可用于可视化界面的其他示例：
+浏览可用于可视界面的其他示例:
 
-- [示例 1-回归：预测汽车的价格](ui-sample-regression-predict-automobile-price-basic.md)
-- [示例 3-分类：预测信用风险](ui-sample-classification-predict-credit-risk-basic.md)
-- [示例 4-分类：预测信用风险 （成本敏感）](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [示例 5-分类：预测客户流失](ui-sample-classification-predict-churn.md)
-- [示例 6-分类：预测航班延误](ui-sample-classification-predict-flight-delay.md)
+- [示例 1-回归:预测汽车的价格](ui-sample-regression-predict-automobile-price-basic.md)
+- [示例 3-分类:预测信用风险](ui-sample-classification-predict-credit-risk-basic.md)
+- [示例 4-分类:预测信用风险 (区分成本)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [示例 5-分类:预测改动](ui-sample-classification-predict-churn.md)
+- [示例 6-分类:预测航班延迟](ui-sample-classification-predict-flight-delay.md)

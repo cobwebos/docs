@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a64bad11f5b83ddd7f6d7236ffed4ff4a6e39c2c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fb4fa92d8b3c174cdf9b3695f8564cc11c1ad291
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561861"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851745"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
 
@@ -66,7 +66,7 @@ Azure 订阅与 Azure Active Directory (Azure AD) 建立了信任关系，即该
     订阅目录将发生更改并会显示一条成功消息。
 
     ![有关目录更改的成功消息](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
-4. 使用**目录切换**器来切换到新目录。 所有内容可能需要几个小时才能正常显示。 如果看起来太长, 请确保查看已移动订阅的**全局订阅筛选器**, 以确保它不只是隐藏。
+4. 使用**目录切换**器来切换到新目录。 所有内容可能需要几个小时才能正常显示。 如果看起来太长, 请检查已移动订阅的**全局订阅筛选器**, 以确保它不会被隐藏。 你可能需要注销 Azure 门户并重新登录才能查看新目录。 
 
     !["目录切换器" 页, 包含示例信息](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 

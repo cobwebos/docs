@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: 31a367fcde909f393efa4fea65b25716f95c56ee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: dbdd088e5a78a4f78eec27b5ee74856c6aecc209
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828434"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847907"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>利用 Dataset 类浏览和准备数据 (预览版)
 
@@ -25,13 +25,13 @@ ms.locfileid: "68828434"
 > [!Important]
 > 某些数据集类 (预览版) 与[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包 (GA) 有依赖关系。 尽管可以使用 GA'ed[数据准备函数](how-to-transform-data.md)直接执行转换函数, 但如果要生成新的解决方案, 我们建议使用本文中所述的数据集包包装。 Azure 机器学习数据集 (预览版) 可让你不仅转换数据, 而且还允许[快照数据](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_snapshot.datasetsnapshot?view=azure-ml-py)和存储已[版本控制的数据集定义](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py)。 数据集是数据准备 SDK 的下一个版本, 它提供了用于在 AI 解决方案中管理数据集的扩展功能。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要浏览和准备你的数据, 你将需要:
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
-* Azure 机器学习服务工作区。 请参阅[创建 Azure 机器学习服务工作区](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)。
+* Azure 机器学习服务工作区。 请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
 
 * 用于 Python 的 Azure 机器学习 SDK (版本1.0.21 或更高版本), 其中包含 azureml 数据集包。 若要安装或更新到最新版本的 SDK, 请参阅[安装或更新 sdk](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
@@ -256,7 +256,7 @@ ds_def = ds_def.assert_value('Longitude', (value <= 180) & (value >= -87), error
 ds_def.get_profile()
 ```
 
-||类型|Min|Max|Count|缺失计数|非缺失计数|缺失百分比|错误计数|空计数|0.1% 分位|1% 分位|5% 分位|25% 分位|50% 分位|75% 分位|95% 分位|99% 分位|99.9% 分位|平均值|标准偏差|Variance|倾斜|峰度
+||type|Min|Max|Count|缺失计数|非缺失计数|缺失百分比|错误计数|空计数|0.1% 分位|1% 分位|5% 分位|25% 分位|50% 分位|75% 分位|95% 分位|99% 分位|99.9% 分位|平均值|标准偏差|Variance|倾斜|峰度
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
 id|FieldType.INTEGER|1.04986e+07|1.05351e+07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e+07|1.04992e+07|1.04986e+07|1.05166e+07|1.05209e+07|1.05259e+07|1.05351e+07|1.05351e+07|1.05351e+07|1.05195e+07|12302.7|1.51358e+08|-0.495701|-1.02814
 逮捕|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||

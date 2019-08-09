@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 59ce6719c117db53b02ed6594de219010ee08ee6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e6f6c41e5de4f4a053748dfb08dc57e8acac32e5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828232"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848226"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -67,7 +67,7 @@ ms.locfileid: "68828232"
 + <a href="#web-service-deployments">Web 服务</a>
 + <a href="#iot-module-deployments">IoT 模块</a>
 + <a href="#ml-pipelines">ML 管道</a>
-+ <a href="#logging">Logging</a>
++ <a href="#logging">日志记录</a>
 
 > [!NOTE]
 > 本文定义了 Azure 机器学习服务使用的术语和概念，但未定义 Azure 平台的术语和概念。 有关 Azure 平台术语的详细信息，请参阅 [Microsoft Azure 词汇表](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)。
@@ -236,5 +236,5 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 若要开始使用 Azure 机器学习服务，请参阅：
 
 * [什么是 Azure 机器学习服务？](overview-what-is-azure-ml.md)
-* [创建 Azure 机器学习服务工作区](setup-create-workspace.md)
+* [创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)
 * [教程（第 1 部分）：训练模型](tutorial-train-models-with-aml.md)

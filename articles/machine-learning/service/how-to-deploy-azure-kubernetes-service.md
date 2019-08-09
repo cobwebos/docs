@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: deb6482c0419a5872ccf86f0014adbecc7be6c9d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 4a0aab2ca2f0bbcee07f09124e68c3623d16004d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694388"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848149"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes Service 群集
 
@@ -36,9 +36,9 @@ ms.locfileid: "68694388"
 > [!IMPORTANT]
 > 创建或附件过程是一次性任务。 将 AKS 群集连接到工作区后, 可以将其用于部署。 如果不再需要 AKS 群集, 可以分离或删除它。 Detatched 或删除后, 将无法再部署到群集。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-- Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。
+- Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
 
 - 已在工作区中注册的机器学习模型。 如果没有已注册的模型, 请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
@@ -61,6 +61,9 @@ ms.locfileid: "68694388"
 创建或附加 AKS 群集是工作区的一次过程。 可以将此群集重复用于多个部署。 如果删除群集或包含该群集的资源组, 则下次需要部署时, 必须创建新群集。 可以将多个 AKS 群集附加到工作区。
 
 如果要创建 AKS 群集以进行__开发__、__验证__和__测试__, 而不是生产, 则可以将__群集目的__指定为进行开发__测试__。
+
+> [!WARNING]
+> 如果设置`cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, 则创建的群集不适用于生产级别的流量, 可能会增加推理时间。 开发/测试群集也不保证容错能力。 对于开发/测试群集, 建议至少2个虚拟 Cpu。
 
 以下示例演示如何使用 SDK 和 CLI 创建新的 AKS 群集:
 
@@ -85,7 +88,7 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> 对于 [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)，如果为 agent_count 和 vm_size 选择自定义值，则需要确保 agent_count 乘以 vm_size 的结果大于或等于 12 个虚拟 CPU。 例如，如果对 vm_size 使用“Standard_D3_v2”（有 4 个虚拟 CPU），则应该为 agent_count 选择 3 或更大的数字。
+> 对于[`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), 如果你为`agent_count`和`vm_size`选择`agent_count` `cluster_purpose` 了自`DEV_TEST`定义值, 并且不是, 则需要确保乘以大于或等于12个虚拟cpu。`vm_size` 例如, 如果使用的是`vm_size`具有4个虚拟 cpu 的 "Standard_D3_v2", 则应`agent_count`选择3个或更多的。
 >
 > Azure 机器学习 SDK 不支持缩放 AKS 群集。 若要缩放群集中的节点, 请在 Azure 门户中使用 AKS 群集的 UI。 只能更改节点计数, 而不能更改群集的 VM 大小。
 
@@ -118,7 +121,7 @@ az ml computetarget create aks -n myaks
 >
 > 如果未设置`cluster_purpose`参数或设置`cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, 则群集必须有至少12个可用的虚拟 cpu。
 >
-> 如果设置`cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`了, 则群集不需要具有12个虚拟 cpu。 但是, 为开发/测试配置的群集不适用于生产级别的流量, 可能会增加推理时间。
+> 如果设置`cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`了, 则群集不需要具有12个虚拟 cpu。 建议至少2个虚拟 Cpu 用于开发/测试。 但是, 为开发/测试配置的群集不适用于生产级别的流量, 可能会增加推理时间。 开发/测试群集也不保证容错能力。
 
 有关使用 Azure CLI 或门户创建 AKS 群集的详细信息, 请参阅以下文章:
 

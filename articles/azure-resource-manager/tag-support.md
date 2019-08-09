@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0e8df116a82f73af2348651a91aee3c34a595c45
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 452230a263e623f53346fcdb8cf310e73f171aee
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814096"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848606"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。 标记为“支持标记”的列指示资源类型是否具有标记的属性。 标记为“在成本报表中标记”的列指示该资源类型是否将标记传递给成本报表。
@@ -857,9 +857,8 @@ ms.locfileid: "68814096"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | services | 是 |是 |
-> | services/projects | 是 |是 |
-> | slots | 是 |是 |
+> | services | 否 |否 |
+> | services/projects | 否 |否 |
 
 ## <a name="microsoftdatashare"></a>DataShare
 

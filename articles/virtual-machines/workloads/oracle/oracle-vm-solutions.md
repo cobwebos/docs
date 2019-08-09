@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: f13c7e6db2bf13c0547ee8689e22c9f04fe6d511
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 44fb955c4539a3330386c38a7798c9f3c3fed2d9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826757"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846053"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM 映像及其在 Microsoft Azure 上的部署
 
@@ -91,7 +91,7 @@ Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故�
 
 本教程[在 azure 上实施 Oracle 数据防护](configure-oracle-dataguard.md), 指导你完成 azure 上的基本设置过程。  
 
-有了 Oracle 数据防护，可以通过一个虚拟机中的主数据库、另一个虚拟机中的辅助（备用）数据库和它们之间的单向复制设置实现高可用性。 结果是对数据库副本的读取访问权限。 使用 Oracle GoldenGate，可以配置两个数据库之间的双向复制。 若要了解如何使用这些工具为数据库设置高可用性解决方案，请参阅 Oracle 网站上的[活动数据防护](https://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html)和 [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) 文档。 如果需要对数据库副本的读写访问权限，可以使用 [Oracle 活动数据防护](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)。
+有了 Oracle 数据防护，可以通过一个虚拟机中的主数据库、另一个虚拟机中的辅助（备用）数据库和它们之间的单向复制设置实现高可用性。 结果是对数据库副本的读取访问权限。 使用 Oracle GoldenGate，可以配置两个数据库之间的双向复制。 若要了解如何使用这些工具为数据库设置高可用性解决方案，请参阅 Oracle 网站上的[活动数据防护](https://www.oracle.com/database/technologies/high-availability/dataguard.html)和 [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) 文档。 如果需要对数据库副本的读写访问权限，可以使用 [Oracle 活动数据防护](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)。
 
 本教程[在 azure 上实施 Oracle GoldenGate](configure-oracle-golden-gate.md)指导你完成 azure 上的基本设置过程。
 

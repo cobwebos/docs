@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 05/21/2019
-ms.openlocfilehash: fc3f88e627e0ce19195f6df947d4f11f5f8a73ae
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.date: 08/06/2019
+ms.openlocfilehash: cb1fd8e98a5eba350774ff6ccb8f86dcd3e4d734
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772751"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856197"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>什么是 Azure 机器学习服务工作区？
 
@@ -65,6 +65,9 @@ ms.locfileid: "68772751"
 + 查看机器学习项目, 如试验、管道、模型和部署。
 + 跟踪和监视模型。
 
+
+
+
 ## <a name="workspace-management"></a>工作区管理
 
 你还可以执行以下工作区管理任务:
@@ -76,7 +79,14 @@ ms.locfileid: "68772751"
 | 管理工作区访问    | **&check;**   | |  **&check;**    |
 | 创建笔记本 VM | **&check;**   | |     |
 
-通过[创建工作区](setup-create-workspace.md)开始使用服务。
+### <a name='create-workspace'></a>创建工作区
+
+有多种方法可以创建工作区。
+
+* 使用 " [Azure 门户](how-to-manage-workspace.md)" 单击界面, 逐步完成每个步骤。
+* 使用用于[python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace)从 Python 脚本或木星笔记本动态创建工作区
+* 需要使用企业安全标准自动执行或自定义创建时, 请使用[Azure 资源管理器模板](how-to-create-workspace-template.md)或[Azure 机器学习 CLI](reference-azure-machine-learning-cli.md) 。
+* 如果使用 Visual Studio Code, 请使用[VS Code 扩展](how-to-vscode-tools.md#get-started-with-azure-machine-learning)。
 
 ## <a name="resources"></a>关联的资源
 
@@ -95,6 +105,6 @@ ms.locfileid: "68772751"
 若要开始使用 Azure 机器学习服务，请参阅：
 
 + [Azure 机器学习服务概述](overview-what-is-azure-ml.md)
-+ [创建工作区](setup-create-workspace.md)
++ [创建工作区](how-to-manage-workspace.md)
 + [管理工作区](how-to-manage-workspace.md)
 + [教程：训练模型](tutorial-train-models-with-aml.md)

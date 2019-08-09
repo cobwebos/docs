@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: bfe7f975539c76c1d369d111729820f4d0ada470
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: b4f2bf5c762b6f93c2d23714d860e8261f6756d1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775067"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847694"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>使用 Azure 机器学习 service 定型和注册 Keras 分类模型
 
@@ -28,7 +28,7 @@ Keras 是一种高级神经网络 API, 能够运行其他流行的 DNN 框架, �
 
 有关机器学习和深度学习之间的差异的信息, 请参阅[概念文章](concept-deep-learning-vs-machine-learning.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 在以下任一环境中运行此代码:
 
@@ -39,8 +39,8 @@ Keras 是一种高级神经网络 API, 能够运行其他流行的 DNN 框架, �
 
  - 你自己的 Jupyter 笔记本服务器
 
-     - [安装适用于 Python 的 Azure 机器学习 SDK](setup-create-workspace.md#sdk)
-    - [创建工作区配置文件](setup-create-workspace.md#write-a-configuration-file)
+    - [安装 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
     - [下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)`mnist-keras.py`和`utils.py`
 
     你还可以在 GitHub 示例页上找到本指南的已完成[Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb)。 此笔记本包含扩展的部分, 涵盖智能超参数优化、模型部署和笔记本小组件。

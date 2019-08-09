@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 8d107aed75904c27b9ed231d50c884f96318a324
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e3f6ad4338863fcbb35bad4f286b71993cf6fa2a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321434"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854831"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>安装并运行异常探测器容器
 
@@ -30,13 +30,13 @@ ms.locfileid: "68321434"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 使用异常探测器容器之前, 必须满足以下先决条件:
 
 |必填|用途|
 |--|--|
-|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br>  在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
+|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
 |异常探测器资源 |若要使用这些容器，必须具有：<br><br>用于获取关联的 API 密钥和终结点 URI 的 Azure_异常探测器_资源。 这两个值都可用于 Azure 门户的**异常探测器**"概述" 和 "密钥" 页, 并且是启动容器所必需的。<br><br>**{API_KEY}** :"**密钥**" 页上有两个可用的资源键之一<br><br>**{ENDPOINT_URI}** :"**概述**" 页中提供的终结点|
 
@@ -170,7 +170,7 @@ ApiKey={API_KEY}
 
 如果运行启用了输出[装入点](anomaly-detector-container-configuration.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。 
 
-## <a name="billing"></a>计费
+## <a name="billing"></a>帐单
 
 异常探测器容器使用 Azure 帐户上的_异常探测器_资源将计费信息发送到 azure。 
 
@@ -198,4 +198,5 @@ ApiKey={API_KEY}
 ## <a name="next-steps"></a>后续步骤
 
 * 查看[配置容器](anomaly-detector-container-configuration.md)了解配置设置
+* [将异常探测器容器部署到 Azure 容器实例](how-to/deploy-anomaly-detection-on-container-instances.md)
 * [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

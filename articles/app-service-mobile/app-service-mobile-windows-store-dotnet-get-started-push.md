@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 3ea2b336f647d9a27baaeeb489895b8f67d2e2d9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7455ad33660a0af004a3a3ad982e929fc4b3031e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445615"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851124"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>向 Windows 应用添加推送通知
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-push)今天。
+> Visual Studio App Center 正在为移动应用开发的新的和集成的服务进行投资。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后, 开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况, 并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务, 以便在云中持久保存和同步应用程序数据。 立即查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-push) 。
 >
 
 ## <a name="overview"></a>概述
@@ -43,19 +43,19 @@ ms.locfileid: "67445615"
 
 需要将应用提交到 Microsoft Store，然后配置服务器项目与 [Windows 通知服务 (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) 集成，以发送推送。
 
-1. 在 Visual Studio 解决方案资源管理器中，右键单击 UWP 应用项目，单击“应用商店”   > “将应用与应用商店关联...”  。
+1. 在 Visual Studio 解决方案资源管理器中，右键单击 UWP 应用项目，单击“应用商店” > “将应用与应用商店关联...”。
 
     ![将应用与 Microsoft Store 相关联](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
-2. 在向导中，单击“下一步”  ，使用 Microsoft 帐户登录，在“保留新应用名称”  中键入应用的名称，并单击“保留”  。
-3. 成功创建应用注册后，选择新应用名称，再依次单击“下一步”  和“关联”  。 这会将所需的 Microsoft Store 注册信息添加到应用程序清单中。
+2. 在向导中，单击“下一步”，使用 Microsoft 帐户登录，在“保留新应用名称”中键入应用的名称，并单击“保留”。
+3. 成功创建应用注册后，选择新应用名称，再依次单击“下一步”和“关联”。 这会将所需的 Microsoft Store 注册信息添加到应用程序清单中。
 4. 导航到[应用程序注册门户](https://apps.dev.microsoft.com/)，并使用 Microsoft 帐户登录。 单击上一步中关联的 Windows 应用商店应用。
-5. 在注册页中，记下“应用程序机密”  和“包 SID”  下的值，后面将使用这些值配置移动应用后端。
+5. 在注册页中，记下“应用程序机密”和“包 SID”下的值，后面将使用这些值配置移动应用后端。
 
     ![将应用与 Microsoft Store 相关联](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
-   > 客户端密钥和程序包 SID 是重要的安全凭据。 请勿将这些值告知任何人或随应用程序分发它们。 将“应用程序 ID”  与机密配合使用来配置 Microsoft 帐户身份验证。
+   > 客户端密钥和程序包 SID 是重要的安全凭据。 请勿将这些值告知任何人或随应用程序分发它们。 将“应用程序 ID”与机密配合使用来配置 Microsoft 帐户身份验证。
 
 [App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) 还提供了有关为推送通知配置 UWP 应用的说明。
 
@@ -69,8 +69,8 @@ ms.locfileid: "67445615"
 
 ### <a name="dotnet"></a>.NET 后端项目
 
-1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”  ，搜索 Microsoft.Azure.NotificationHubs，并单击“安装”  。 这会安装通知中心客户端库。
-2. 展开“控制器”  ，打开 TodoItemController.cs，并添加以下 using 语句：
+1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”，搜索 Microsoft.Azure.NotificationHubs，并单击“安装”。 这会安装通知中心客户端库。
+2. 展开“控制器”，打开 TodoItemController.cs，并添加以下 using 语句：
 
     ```csharp
     using System.Collections.Generic;
@@ -119,7 +119,7 @@ ms.locfileid: "67445615"
 4. 重新发布服务器项目。
 
 ### <a name="nodejs"></a>Node.js 后端项目
-1. 如果尚未执行此操作，请[下载快速入门项目](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)或使用 [Azure 门户中的在线编辑器](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。
+1. 设置后端项目。
 2. 将 todoitem.js 文件中的现有代码替换为以下内容：
 
     ```javascript

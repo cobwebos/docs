@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6fe08c15de7ea388a5194054791eb394dc2f6e01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: de0eb685e212b59705d8d659cbe9627338697e9d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840600"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854521"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -94,7 +94,7 @@ if ($installType -ne "Server Core") {
 Azure 文件同步的部署过程首先会将一个“存储同步服务”资源放入所选订阅的资源组中。 我们建议尽量少预配这些资源。 将在服务器与此资源之间创建信任关系，一个服务器只能注册到一个存储同步服务。 因此，我们建议根据需要部署尽量多的存储同步服务，以隔离服务器组。 请记住，不同存储同步服务中的服务器不能彼此同步。
 
 > [!Note]
-> 存储同步服务已从其部署到的订阅和资源组继承访问权限。 我们建议仔细检查谁有权访问该服务。 具有写访问权限的实体可以开始从已注册到此存储同步服务的服务器同步新的文件集，使数据流向这些实体可以访问的 Azure 存储。
+> 存储同步服务将从它已部署到的订阅和资源组继承访问权限。 我们建议仔细检查谁有权访问该服务。 具有写访问权限的实体可以开始从已注册到此存储同步服务的服务器同步新的文件集，使数据流向这些实体可以访问的 Azure 存储。
 
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 若要部署存储同步服务, 请单击 " [Azure 门户](https://portal.azure.com/)", 再单击 "*创建资源*", 然后搜索 Azure 文件同步。在搜索结果中，选择“Azure 文件同步”，然后选择“创建”，打开“部署存储同步”选项卡。
@@ -164,7 +164,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 可从 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?linkid=858257)下载代理。 下载完成后，双击 MSI 包，开始安装 Azure 文件同步代理。
 
 > [!Important]  
-> 如果要对故障转移群集使用 Azure 文件同步，则 必须在群集中的每个节点上安装 Azure 文件同步代理。 必须注册群集中的每个节点才能使用 Azure 文件同步。
+> 如果要对故障转移群集使用 Azure 文件同步，则 必须在群集中的每个节点上安装 Azure 文件同步代理。 群集中的每个节点都必须注册才能使用 Azure 文件同步。
 
 建议执行以下操作：
 - 保留默认安装路径(C:\Program Files\Azure\StorageSyncAgent)，以简化故障排除和服务器维护。

@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: cec1a74938690a4f781ea7850fdd6d649550b3eb
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 5e780c1a1d18954d0b3e9413e26f478e4ea3a8b1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494914"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856109"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务将模型部署为 FPGA 上的 Web 服务
 
@@ -38,7 +38,7 @@ ms.locfileid: "68494914"
 > [!IMPORTANT]
 > 若要优化滞后时间和吞吐量, 将数据发送到 FPGA 模型的客户端应位于上述某个区域 (即模型部署到的区域) 中。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。  如果没有, 请在开始前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -63,7 +63,7 @@ ms.locfileid: "68494914"
 
     如果没有配额, 则提交请求[https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)。
 
-- 已安装 Azure 机器学习服务工作区，以及适用于 Python 的 Azure 机器学习 SDK。 有关详细信息, 请参阅[创建工作区](setup-create-workspace.md)。
+- 已安装 Azure 机器学习服务工作区，以及适用于 Python 的 Azure 机器学习 SDK。 有关详细信息, 请参阅[创建工作区](how-to-manage-workspace.md)。
  
 - 用于硬件加速模型的 Python SDK:
 

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98c04c50bc4a52e9b2e4e267895fdd94888885f5
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: e76a747f7e1d7ca7056edf5b69df0677aeff96a1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775165"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856000"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>构建 scikit-learn-通过 Azure 机器学习 service 大规模了解模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "68775165"
 
 无论你是要从头开始培训机器学习 scikit-learn 模型, 还是将现有模型引入到云中, 都可以使用 Azure 机器学习来使用弹性云计算资源来横向扩展开源培训作业。 可以通过 Azure 机器学习来构建、部署、版本和监视生产级模型。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 在以下任一环境中运行此代码:
  - Azure 机器学习笔记本 VM-无需下载或安装
@@ -35,8 +35,8 @@ ms.locfileid: "68775165"
 
  - 你自己的 Jupyter 笔记本服务器
 
-    - [安装适用于 Python 的 Azure 机器学习 SDK](setup-create-workspace.md#sdk)
-    - [创建工作区配置文件](setup-create-workspace.md#write-a-configuration-file)
+    - [安装 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
     - 下载数据集和示例脚本文件 
         - [iris 数据集](https://archive.ics.uci.edu/ml/datasets/iris)
         - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn)
@@ -133,7 +133,7 @@ except ComputeTargetException:
 
 ## <a name="create-a-scikit-learn-estimator"></a>创建 scikit-learn-了解估计器
 
-[Scikit-learn 估计器](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py)提供了一种简单的方法来启动计算目标上的 scikit-learn 培训作业。 它通过[`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)类实现, 该类可用于支持单节点 CPU 定型。
+[Scikit-learn 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py)提供了一种简单的方法来启动计算目标上的 scikit-learn 培训作业。 它通过[`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)类实现, 该类可用于支持单节点 CPU 定型。
 
 如果训练脚本需要额外的 pip 或 conda 包来运行, 则可以通过`pip_packages`和`conda_packages`参数传递包, 从而将包安装在生成的 docker 映像中。
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5380713af17a751ab695fee90895b4f6b0d2369b
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: f19454868ad7be21777d725f61e09a84f6c7a313
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542813"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854728"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>必应 Web 搜索 API 响应结构和答案类型  
 
@@ -123,7 +123,7 @@ The following shows an example of how you might display the webpage in a search 
 
 使用 `displayText` 查询字符串和 `webSearchUrl`URL 可以创建一个超链接，用于将用户转到相关查询的必应搜索结果页。 也可以在自己的 Web 搜索 API 查询中使用 `text` 查询字符串，并自行显示结果。
 
-有关如何处理 `displayText` 中突出显示的标记的信息，请参阅[匹配项突出显示](./hit-highlighting.md)。
+有关如何处理 `displayText` 中突出显示的标记的信息，请参阅[匹配项突出显示](../bing-web-search/hit-highlighting.md)。
 
 下面演示了在 Bing.com 中使用相关查询的示例。
 
@@ -222,9 +222,9 @@ The following shows an example of how you might display articles in a search res
 
 如果用户输入数学表达式或单位转换查询，响应可能包含 [Computation](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#computation) 应答。 `computation` 应答包含规范化表达式及其结果。
 
-单位转换查询是将一个单位转换为另一个单位的查询。 例如，“10 米是多少英尺？”或“1/4 杯有多少汤匙？”  
+单位转换查询是将一个单位转换为另一个单位的查询。 例如，“10 米是多少英尺？”或“1/4 杯有多少汤匙？”
 
-下面显示了“10 米是多少英尺？”的 `computation` 应答 
+下面显示了“10 米是多少英尺？”的 `computation` 应答
 
 ```json
 "computation": {
@@ -292,7 +292,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 |符号|描述|
 |------------|-----------------|
-|+|加|
+|+|添加|
 |-|减|
 |/|除|
 |*|乘|
@@ -328,11 +328,11 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 ## <a name="timezone-answer"></a>TimeZone 应答
 
-如果用户输入时间或日期查询，响应可能包含 [TimeZone](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) 应答。 此应答支持隐式或显式查询。 隐式查询（例如，“现在是几点”）基于用户的位置返回本地时间。  显式查询（例如，“西雅图现在是几点”）返回华盛顿州西雅图的本地时间。 
+如果用户输入时间或日期查询，响应可能包含 [TimeZone](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) 应答。 此应答支持隐式或显式查询。 隐式查询（例如，“现在是几点”）基于用户的位置返回本地时间。 显式查询（例如，“西雅图现在是几点”）返回华盛顿州西雅图的本地时间。
 
 `timeZone` 应答提供位置的名称、指定位置的当前 UTC 日期和时间，以及 UTC 时差。 如果位置边界处于多个时区内，则该应答包含该边界内所有时区的当前 UTC 日期和时间。 例如，由于佛罗里达州跨两个时区，因此该应答包含这两个时区的本地日期和时间。  
 
-如果查询请求的状态或国家/地区的时间，必应确定主要城市位置的地理边界内，并返回它在`primaryCityTime`字段。 如果边界包含多个时区，则在 `otherCityTimes` 字段中返回剩余的时区。
+如果查询请求省/市/自治区或国家/地区的时间, 必应确定该位置的地理边界内的主要城市, 并将`primaryCityTime`其返回到字段中。 如果边界包含多个时区，则在 `otherCityTimes` 字段中返回剩余的时区。
 
 下面显示了返回 `timeZone` 应答的示例查询。
 
@@ -431,7 +431,7 @@ Query: What time is it in the U.S.
 }, ...
 ```
 
-## <a name="response-headers"></a>响应标头
+## <a name="response-headers"></a>响应头
 
 来自必应 Web 搜索 API 的响应可能包含以下标头：
 
@@ -477,6 +477,6 @@ CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-web-sea
 
 * 查看[请求限制](throttling-requests.md)文档。  
 
-## <a name="see-also"></a>另请参阅  
+## <a name="see-also"></a>请参阅  
 
 * [必应 Web 搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

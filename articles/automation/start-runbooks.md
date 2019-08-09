@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 13af62c52750b1a3684351156b981112b7f7b748
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a42ba0a385b73032e3d4045094bc88613016b849
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477561"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850345"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>在 Azure 自动化中启动 Runbook
 
@@ -36,11 +36,11 @@ ms.locfileid: "67477561"
 
 ## <a name="start-a-runbook-with-the-azure-portal"></a>使用 Azure 门户启动 Runbook
 
-1. 在 Azure 门户中，选择“自动化”  ，并单击自动化帐户的名称。
-2. 在“中心”菜单中选择“Runbook”。 
-3. 在“Runbook”页上，选择 Runbook 并单击“启动”   。
+1. 在 Azure 门户中，选择“自动化”，并单击自动化帐户的名称。
+2. 在“中心”菜单中选择“Runbook”。
+3. 在“Runbook”页上，选择 Runbook 并单击“启动”。
 4. 如果 Runbook 包含参数，则系统会提示在文本框中提供每个参数的值。 有关参数的详细信息，请参阅 [Runbook 参数](#runbook-parameters)。
-5. 在“作业”  页上，可以查看 runbook 作业的状态。
+5. 在“作业”页上，可以查看 runbook 作业的状态。
 
 ## <a name="start-a-runbook-with-powershell"></a>使用 PowerShell 启动 Runbook
 
@@ -187,3 +187,4 @@ jsmith
 
 * 本文中的 Runbook 体系结构提供了在本地和 Azure 中使用混合 Runbook 辅助角色管理资源的 Runbook 的高级概述。 若要了解如何在数据中心执行自动化 Runbook，请参阅[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)。
 * 若要详细了解如何创建模块化 Runbook，以供其他 Runbook 用于特定或常用函数，请参阅[子 Runbook](automation-child-runbooks.md)。
+* 有关 PowerShell 的详细信息, 包括语言参考和学习模块, 请参阅[Powershell 文档](https://docs.microsoft.com/en-us/powershell/scripting/overview)。

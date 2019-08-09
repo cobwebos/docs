@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249dfeeb231c61b05af2e89f0dc02822cc18e627
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 15f7e830079c224e9e15dd45d14c1741376f8762
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702175"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851702"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中向企业应用分配用户或组
 
@@ -29,34 +29,36 @@ ms.locfileid: "67702175"
 ## <a name="assign-a-user-to-an-app---portal"></a>将用户分配到应用 - 门户
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 选择“所有服务”  ，在文本框中输入 Azure Active Directory，并选择“Enter”  。
-1. 选择“企业应用程序”。 
-1. 在“企业应用程序 - 所有应用程序”  窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
-1. 在 ***appname*** 窗格（即标题中包含所选应用的名称的窗格）中，选择“用户和组”  。
-1. 在“appname - 用户和组”窗格中，选择“添加用户”。  
-1. 上**添加分配**窗格中，选择**用户和组**。
+1. 选择“所有服务”，在文本框中输入 Azure Active Directory，并选择“Enter”。
+1. 选择“企业应用程序”。
+1. 在“企业应用程序 - 所有应用程序”窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
+1. 在 ***appname*** 窗格（即标题中包含所选应用的名称的窗格）中，选择“用户和组”。
+1. 在“appname - 用户和组”窗格中，选择“添加用户”。
+1. 在 "**添加分配**" 窗格中, 选择 "**用户和组**"。
 
    ![将用户或组分配给应用](./media/assign-user-or-group-access-portal/assign-users.png)
 
-1. 上**用户和组**窗格中，从列表中选择一个或多个用户或组，然后选择**选择**窗格底部的按钮。
-1. 在“添加分配”窗格中选择“角色”   。 然后，在**选择角色**窗格中，选择一个角色将应用到所选的用户或组，然后选择**确定**窗格的底部。
-1. 在“添加分配”窗格中，选择窗格底部的“分配”按钮。   已分配用户或组的权限将是该企业应用的选定角色所定义的权限。
+1. 在 "**用户和组**" 窗格中, 从列表中选择一个或多个用户或组, 然后选择窗格底部的 "**选择**" 按钮。
+1. 在“添加分配”窗格中选择“角色”。 然后, 在 "**选择角色**" 窗格中, 选择要应用于所选用户或组的角色, 然后在窗格底部选择 **"确定"** 。
+1. 在“添加分配”窗格中，选择窗格底部的“分配”按钮。 已分配用户或组的权限将是该企业应用的选定角色所定义的权限。
 
 ## <a name="allow-all-users-to-access-an-app---portal"></a>允许所有用户访问某个应用 - 门户
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 选择“所有服务”  ，在文本框中输入 Azure Active Directory，并选择“Enter”  。
-1. 选择“企业应用程序”。 
-1. 在“企业应用程序”  窗格中，选择“所有应用程序”  。 随后会列出你可以管理的应用。
-1. 在“企业应用程序 - 所有应用程序”  窗格中，选择一个应用。
-1. 在“appname”窗格上，选择“属性”  。
-1. 在“appname - 属性”窗格上，将“需要进行用户分配?”设置设置为“否”。   
+1. 选择“所有服务”，在文本框中输入 Azure Active Directory，并选择“Enter”。
+1. 选择“企业应用程序”。
+1. 在“企业应用程序”窗格中，选择“所有应用程序”。 随后会列出你可以管理的应用。
+1. 在“企业应用程序 - 所有应用程序”窗格中，选择一个应用。
+1. 在“appname”窗格上，选择“属性”。
+1. 在“appname - 属性”窗格上，将“需要进行用户分配?”设置设置为“否”。 
 
-“需要进行用户分配?”选项  ：
+“需要进行用户分配?”选项：
 
-- 不会影响应用程序出现在应用程序访问面板上。 要在访问面板上显示应用程序，需要为应用程序分配相应的用户或组。
-- 仅适用于为 SAML 单一登录配置的云应用程序以及使用应用程序代理配置的本地应用程序。 请参阅[应用程序的单一登录](what-is-single-sign-on.md)。
-- 需要用户许可某应用程序。 管理员可以为所有用户授予许可。  请参阅[配置最终用户对应用程序的许可方式](configure-user-consent.md)。
+- 如果将此选项设置为 "是", 则必须先将用户分配到此应用程序, 然后才能访问该应用程序。
+- 如果将此选项设置为 "否", 则会向直接导航到应用程序深层链接 URL 或应用程序 URL 的任何用户授予访问权限
+- 不会影响应用程序是否显示在应用程序访问面板上。 要在访问面板上显示应用程序，需要为应用程序分配相应的用户或组。
+- 仅适用于为 SAML 单一登录配置的云应用程序、使用 Azure Active Directory 预身份验证的应用程序代理应用程序或直接 Azure AD 在使用 OAuth 2.0/用户或管理员同意该应用程序后, OpenID Connect 身份验证。 请参阅[应用程序的单一登录](what-is-single-sign-on.md)。 请参阅[配置最终用户对应用程序的许可方式](configure-user-consent.md)。
+- 当为任何其他单一登录模式配置应用程序时, 此选项不起作用。
 
 ## <a name="assign-a-user-to-an-app---powershell"></a>将用户分配到应用 - PowerShell
 
@@ -109,7 +111,7 @@ ms.locfileid: "67702175"
 
 1. 运行命令 `$sp.AppRoles`，显示可用于 Workplace Analytics 应用程序的角色。 在此示例中，我们要为 Britta Simon 分配“分析员”（访问权限受限）角色。
 
-   ![显示用户使用 Workplace Analytics 角色可用的角色](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
+   ![显示可供用户使用工作区分析角色使用的角色](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
 1. 将角色名称分配到 `$app_role_name` 变量。
 

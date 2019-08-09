@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5dee966f8664bc14d81004e625ad9632066ffcb2
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: adca67152c33f4c6a3ec272b63c4c8157a777f36
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742308"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856192"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
 
@@ -215,6 +215,9 @@ automl_config = AutoMLConfig(task="classification")
 在每个自动机器学习试验中, 你的数据将[自动缩放并规范化](concept-automated-ml.md#preprocess), 以帮助算法正常执行。  但是, 还可以启用其他预处理/特征化, 例如缺失值插补法、编码和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#preprocess)。
 
 若要启用此特征化, `"preprocess": True`请[ `AutoMLConfig`为类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)指定。
+
+> [!NOTE]
+> 自动机器学习预处理步骤 (功能规范化、处理丢失的数据、将文本转换为数字等) 成为基础模型的一部分。 使用模型进行预测时, 在训练过程中应用的相同预处理步骤会自动应用于输入数据。
 
 ### <a name="time-series-forecasting"></a>时序预测
 对于时序预测任务类型, 你有其他要定义的参数。

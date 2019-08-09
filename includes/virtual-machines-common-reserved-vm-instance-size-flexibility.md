@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
-ms.openlocfilehash: 05820cc5f7b7d61d83f73ea5b62b05f8712e0997
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 790fb39c3d8964c053ffe1d7ee04418fcbc0913c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172916"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857320"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>虚拟机预留实例的虚拟机大小灵活性
 
@@ -38,7 +38,7 @@ ms.locfileid: "67172916"
 
 ## <a name="b-series"></a>B 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_B1s | 1 |
 |Standard_B2s|4|
@@ -47,7 +47,7 @@ ms.locfileid: "67172916"
 
 ## <a name="b-series-high-memory"></a>高内存 B 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_B1ms |1|
 |Standard_B2ms|4|
@@ -58,7 +58,7 @@ ms.locfileid: "67172916"
 
 ## <a name="d-series"></a>D 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_D1|1|
 |Standard_D2|2|
@@ -69,7 +69,7 @@ ms.locfileid: "67172916"
 
 ## <a name="d-series-high-memory"></a>高内存 D 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_D11|1|
 |Standard_D12|2|
@@ -80,7 +80,7 @@ ms.locfileid: "67172916"
 
 ## <a name="ds-series"></a>Ds 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 |Standard_DS1|1|
 |Standard_DS2|2|
@@ -91,7 +91,7 @@ ms.locfileid: "67172916"
 
 ## <a name="ds-series-high-memory"></a>高内存 Ds 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 |Standard_DS11|1|
 |Standard_DS12|2|
@@ -102,7 +102,7 @@ ms.locfileid: "67172916"
 
 ## <a name="dsv2-series"></a>DSv2-series
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 |Standard_DS1_v2|1|
 |Standard_DS2_v2|2|
@@ -114,7 +114,7 @@ ms.locfileid: "67172916"
 
 ## <a name="dsv2-series-high-memory"></a>高内存 DSv2 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 |Standard_DS11_v2|1|
 |Standard_DS11-1_v2|1|
@@ -131,9 +131,17 @@ ms.locfileid: "67172916"
 
 有关详细信息，请参阅[前几代虚拟机大小](../articles/virtual-machines/windows/sizes-previous-gen.md)。
 
+## <a name="dsv2-high-memory-isolated-series"></a>DSv2 High Memory 独立主机
+
+| Size | 比率|
+|---|---|
+|Standard_DS15i_v2|1|
+
+有关详细信息，请参阅[前几代虚拟机大小](../articles/virtual-machines/windows/sizes-previous-gen.md)。
+
 ## <a name="dsv3-series"></a>DSv3 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 |Standard_D2s_v3|1|
 |Standard_D4s_v3|2|
@@ -146,7 +154,7 @@ ms.locfileid: "67172916"
 
 ## <a name="dv2-series"></a>Dv2 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 |Standard_D1_v2|1|
 |Standard_D2_v2|2|
@@ -158,7 +166,7 @@ ms.locfileid: "67172916"
 
 ## <a name="dv2-series-high-memory"></a>高内存 Dv2 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 |Standard_D11_v2|1|
 |Standard_D12_v2|2|
@@ -168,9 +176,18 @@ ms.locfileid: "67172916"
 
 有关详细信息，请参阅[前几代虚拟机大小](../articles/virtual-machines/windows/sizes-previous-gen.md)。
 
+## <a name="dv2--high-memory-isolated-series"></a>Dv2 High Memory 独立主机
+
+| Size | 比率|
+|---|---|
+|Standard_D15i_v2|1|
+
+有关详细信息，请参阅[前几代虚拟机大小](../articles/virtual-machines/windows/sizes-previous-gen.md)。
+
+
 ## <a name="dv3-series"></a>Dv3 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_D2_v3|1|
 |Standard_D4_v3|2|
@@ -183,7 +200,7 @@ ms.locfileid: "67172916"
 
 ## <a name="esv3-series"></a>ESv3 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 |Standard_E2s_v3|1|
 |Standard_E4s_v3|2|
@@ -204,11 +221,17 @@ ms.locfileid: "67172916"
 
 有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#esv3-series)。
 
+## <a name="esv3-series-isolated-series"></a>ESv3 系列隔离系列
+
+| Size | 比率|
+|---|---|
+|Standard_E64is_v3|1|
+
 ## <a name="ev3-series"></a>Ev3 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
-| Standard_E2_v3|1|
+|Standard_E2_v3|1|
 |Standard_E4_v3|2|
 |Standard_E8_v3|4|
 |Standard_E16_v3|8|
@@ -218,9 +241,17 @@ ms.locfileid: "67172916"
 
 有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#ev3-series)。
 
+## <a name="ev3-series-isolated-series"></a>Ev3 系列隔离系列
+
+| Size | 比率|
+|---|---|
+|Standard_E64i_v3|1|
+
+有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#ev3-series)。
+
 ## <a name="f-series"></a>F 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_F1|1|
 |Standard_F2|2|
@@ -232,7 +263,7 @@ Standard_F16|16|
 
 ## <a name="fs-series"></a>FS 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_F1s|1|
 |Standard_F2s|2|
@@ -244,7 +275,7 @@ Standard_F16|16|
 
 ## <a name="fsv2-series"></a>Fsv2 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 |Standard_F2s_v2|1|
 |Standard_F4s_v2|2|
@@ -258,7 +289,7 @@ Standard_F16|16|
 
 ## <a name="h-series"></a>H 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_H8|1|
 |Standard_H16|2|
@@ -267,27 +298,80 @@ Standard_F16|16|
 
 ## <a name="h-series-high-memory"></a>高内存 H 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_H8m|1|
 |Standard_H16m|2|
 
 有关详细信息，请参阅[高性能计算 VM 大小](../articles/virtual-machines/windows/sizes-hpc.md)。
 
-## <a name="ls-series"></a>Ls 系列
 
-| 大小 | 比率|
+## <a name="hcs-series"></a>HCS 系列
+
+| Size | 比率|
 |---|---|
-| Standard_L4s|1|
-|Standard_L8s|2|
-|Standard_L16s|4|
-|Standard_L32s|8|
+|Standard_HC44rs|1|
+
+有关详细信息，请参阅[高性能计算 VM 大小](../articles/virtual-machines/windows/sizes-hpc.md)。
+
+## <a name="hbs-series"></a>HBS 系列
+
+| Size | 比率|
+|---|---|
+|Standard_HB60rs|1|
+
+有关详细信息，请参阅[高性能计算 VM 大小](../articles/virtual-machines/windows/sizes-hpc.md)。
+
+## <a name="hbs-series"></a>HBS 系列
+
+| Size | 比率|
+|---|---|
+|Standard_HB60rs|1|
+
+有关详细信息，请参阅[高性能计算 VM 大小](../articles/virtual-machines/windows/sizes-hpc.md)。
+
+## <a name="h-series-low-latency-series"></a>H 系列低延迟系列
+
+| Size | 比率|
+|---|---|
+|Standard_H16r|1|
 
 有关详细信息，请参阅[存储优化虚拟机大小](../articles/virtual-machines/windows/sizes-storage.md)。
 
+## <a name="h-series-high-memory-low-latency-series"></a>H 系列高内存低延迟-系列
+
+| Size | 比率|
+|---|---|
+|Standard_H16mr|1|
+
+有关详细信息，请参阅[存储优化虚拟机大小](../articles/virtual-machines/windows/sizes-storage.md)。
+
+## <a name="h-series"></a>H 系列
+
+| Size | 比率|
+|---|---|
+|Standard_H8|1|
+|Standard_H16|2|
+
+有关详细信息，请参阅[存储优化虚拟机大小](../articles/virtual-machines/windows/sizes-storage.md)。
+
+## <a name="lsv2-series-series"></a>LSv2 系列系列
+
+| Size | 比率|
+|---|---|
+|Standard_L8s_v2|1|
+|Standard_L16s_v2|2|
+|Standard_L32s_v2|4|
+|Standard_L48s_v2|6|
+|Standard_L64s_v2|8|
+|Standard_L80s_v2|10|
+|Standard_L96s_v2|12|
+
+有关详细信息，请参阅[存储优化虚拟机大小](../articles/virtual-machines/windows//sizes-storage.md#lsv2-series)。
+
 ## <a name="m-series"></a>M 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_M64s|1|
 |Standard_M128s|2|
@@ -296,7 +380,7 @@ Standard_F16|16|
 
 ## <a name="m-series-fractional"></a>分布式 M 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_M16s|1|
 |Standard_M32s|2|
@@ -305,7 +389,7 @@ Standard_F16|16|
 
 ## <a name="m-series-fractional-high-memory"></a>分布式高内存 M 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 |Standard_M8ms|1|
 |Standard_M8-2ms|1|
@@ -321,18 +405,18 @@ Standard_F16|16|
 
 ## <a name="m-series-fractional-large"></a>分布式大型 M 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
-| Standard_M32ls|1|
+|Standard_M32ls|1|
 |Standard_M64ls|2|
 
 有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#m-series)。
 
 ## <a name="m-series-high-memory"></a>高内存 M 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
-| Standard_M64ms|1|
+|Standard_M64ms|1|
 |Standard_M64-16ms|1|
 |Standard_M64-32ms|1|
 |Standard_M128ms|2|
@@ -341,11 +425,37 @@ Standard_F16|16|
 
 有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#m-series)。
 
+## <a name="ms-series-fractional-tiny"></a>MS 系列部分细微
+
+| Size | 比率|
+|---|---|
+|Standard_M32ls|1|
+
+有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#m-series)。
+
+## <a name="msv2-series-high-memory-series"></a>MSv2 系列高内存系列
+
+| Size | 比率|
+|---|---|
+|Standard_M208ms_v2|1|
+|Standard_M416ms_v2|2|
+
+有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#m-series)。
+
+## <a name="msv2-series"></a>MSv2 系列
+
+| Size | 比率|
+|---|---|
+|Standard_M208s_v2|1|
+|Standard_M416s_v2|2|
+
+有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#m-series)。
+
 ## <a name="nc-series"></a>NC 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
-| Standard_NC6|1|
+|Standard_NC6|1|
 |Standard_NC12|2|
 |Standard_NC24|4|
 
@@ -353,7 +463,7 @@ Standard_F16|16|
 
 ## <a name="ncv2-series"></a>NCv2 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_NC6s_v2|1|
 |Standard_NC12s_v2|2|
@@ -363,7 +473,7 @@ Standard_F16|16|
 
 ## <a name="ncv3-series"></a>NCv3 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_NC6s_v3|1|
 |Standard_NC12s_v3|2|
@@ -373,7 +483,7 @@ Standard_F16|16|
 
 ## <a name="nd-series"></a>ND 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_ND6s|1|
 |Standard_ND12s|2|
@@ -383,12 +493,51 @@ Standard_F16|16|
 
 ## <a name="nv-series"></a>NV 系列
 
-| 大小 | 比率|
+| Size | 比率|
 |---|---|
 | Standard_NV6|1|
 |Standard_NV12|2|
 |Standard_NV24|4|
 
-有关详细信息，请参阅 [GPU 优化虚拟机大小](../articles/virtual-machines/windows//sizes-gpu.md#nv-series)。
+## <a name="nvsv3-series"></a>NVSv3 系列
+
+| Size | 比率|
+|---|---|
+|Standard_NV12s_v3|1|
+|Standard_NV24s_v3|2|
+|Standard_NV48s_v3|4|
+
+## <a name="nds-series-low-latency-series"></a>NDS 系列低延迟系列
+
+| Size | 比率|
+|---|---|
+|Standard_ND24rs|1|
+
+## <a name="ncsv3-series-low-latency-series"></a>NCSv3 系列低延迟系列
+
+| Size | 比率|
+|---|---|
+|Standard_NC24rs_v3|1|
+
+有关详细信息，请参阅 [GPU 优化虚拟机大小](../articles/virtual-machines/windows//sizes-gpu.md#ncv3-series)。
+
+## <a name="ncsv2-series-low-latency-series"></a>NCSv2 系列低延迟系列
+
+| Size | 比率|
+|---|---|
+|Standard_NC24rs_v2|1|
+
+有关详细信息，请参阅 [GPU 优化虚拟机大小](../articles/virtual-machines/windows//sizes-gpu.md#ncv2-series)。
+
+## <a name="nc-series-low-latency-series"></a>NC 系列低延迟系列
+
+| Size | 比率|
+|---|---|
+|Standard_NC24r|1|
+
+有关详细信息，请参阅 [GPU 优化虚拟机大小](../articles/virtual-machines/windows//sizes-gpu.md#ncv2-series)。
+
+
+
 
 

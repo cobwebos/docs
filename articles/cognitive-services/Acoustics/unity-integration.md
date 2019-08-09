@@ -3,20 +3,20 @@ title: 项目噪声 Unity 集成和部署
 titlesuffix: Azure Cognitive Services
 description: 本操作说明解释如何将项目噪声 Unity 插件集成到 Unity 项目中。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1a90f6102d35dc1a3bb97c840f2955b54f35bbad
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: dffef5062e89ef725abcfda187f5e6159c676b9c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706644"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854324"
 ---
 # <a name="project-acoustics-unity-integration"></a>项目噪声 Unity 集成
 本操作说明解释如何将项目噪声 Unity 插件集成到 Unity 项目中。

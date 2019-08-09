@@ -8,17 +8,15 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 18615cf737eedcd188fd59d2aa98482210b9333a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc614626131236361246664a1bcef34f82b54ec5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991593"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848469"
 ---
 # <a name="expressroute-virtual-network-gateway-and-fastpath"></a>ExpressRoute 虚拟网络网关和 FastPath
-若要在 Azure 虚拟网络与本地网络通过 ExpressRoute 连接，必须先创建虚拟网络网关。 虚拟网络网关有两个用途： exchange 之间的网络和路由网络流量的 IP 路由。 此文章介绍了网关类型、 网关 Sku 和按 sku 列出的估计的性能。 此文章还介绍了 ExpressRoute[快速](#fastpath)，一项功能，可以使网络流量从本地网络绕过虚拟网络网关，以提高性能。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+若要通过 ExpressRoute 连接 Azure 虚拟网络和本地网络, 必须先创建虚拟网络网关。 虚拟网络网关有两个用途: exchange IP 路由网络之间的路由和路由网络流量。 本文介绍了各 SKU 的网关类型、网关 Sku 和估计性能。 本文还介绍了 ExpressRoute [FastPath](#fastpath), 这是一项功能, 可让你的本地网络中的网络流量绕过虚拟网络网关, 从而提高性能。
 
 ## <a name="gateway-types"></a>网关类型
 
@@ -60,13 +58,13 @@ ms.locfileid: "65991593"
 新的网关 SKU 还支持其他部署选项，以最好地满足你的需求。 使用新网关 SKU 创建虚拟网络网关时，还可以选择在特定区域中部署网关。 这称为区域网关。 部署区域网关时，网关的所有实例都部署在同一可用性区域中。
 
 ## <a name="fastpath"></a>FastPath
-ExpressRoute 虚拟网络网关用于交换网络路由和路由网络流量。 快速旨在提高您的本地网络与虚拟网络之间的数据路径性能。 启用时，快速的网络流量将直接发送到虚拟网络中的虚拟机绕过网关。 
+ExpressRoute 虚拟网络网关旨在交换网络路由和路由网络流量。 FastPath 旨在提高本地网络与虚拟网络之间的数据路径性能。 启用后, FastPath 会将网络流量直接发送到虚拟网络中的虚拟机, 绕过网关。 
 
-上提供了快速[ExpressRoute 直接](expressroute-erdirect-about.md)仅。 换而言之，可以启用此功能仅当你[将虚拟网络连接](expressroute-howto-linkvnet-arm.md)到 ExpressRoute 线路的 ExpressRoute 直接端口上创建。 快速仍需要虚拟网络网关创建用于交换虚拟网络与本地网络之间的路由。 超高性能或 ErGw3AZ 必须是虚拟网络网关。
+FastPath 仅可用于[ExpressRoute 直接](expressroute-erdirect-about.md)访问。 换句话说, 仅当你[将虚拟网络连接](expressroute-howto-linkvnet-arm.md)到在 expressroute 直接端口上创建的 expressroute 线路时, 才能启用此功能。 FastPath 仍要求创建一个虚拟网络网关, 以在虚拟网络和本地网络之间交换路由。 虚拟网络网关必须为超高性能或 ErGw3AZ。
 
-快速不支持以下功能：
-* 网关子网上的 UDR： 如果将 UDR 应用于虚拟网络从你的本地网络的网络流量将继续发送到虚拟网络网关的网关子网。
-* VNet 对等互连： 如果你有其他虚拟网络对等互连与连接到 ExpressRoute 从本地网络到其他虚拟网络"（即所谓分支"Vnet) 的网络流量将继续发送到虚拟网络网关。 解决方法是直接连接到 ExpressRoute 线路的所有虚拟网络。
+FastPath 不支持以下功能:
+* 网关子网中的 UDR: 如果将 UDR 应用到虚拟网络的网关子网, 则来自本地网络的网络流量将继续发送到虚拟网络网关。
+* VNet 对等互连: 如果有其他虚拟网络与连接到 ExpressRoute 的虚拟网络对等互连, 则会将网络流量从本地网络传输到其他虚拟网络 (即所谓的 "轮辐" Vnet), 并将继续发送到虚拟网络关子. 解决方法是直接将所有虚拟网络连接到 ExpressRoute 线路。
 
 ## <a name="resources"></a>REST API 和 PowerShell cmdlet
 有关将 REST API 和 PowerShell cmdlet 用于虚拟网络网关配置的其他技术资源和特定语法要求，请参阅以下页面：
@@ -83,4 +81,4 @@ ExpressRoute 虚拟网络网关用于交换网络路由和路由网络流量。 
 
 有关配置区域冗余型网关的详细信息，请参阅[创建区域冗余型虚拟网络网关](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md)。
 
-请参阅[链接到 ExpressRoute 的虚拟网络](expressroute-howto-linkvnet-arm.md)有关如何启用快速详细信息。 
+有关如何启用 FastPath 的详细信息, 请参阅[将虚拟网络链接到 ExpressRoute](expressroute-howto-linkvnet-arm.md) 。 

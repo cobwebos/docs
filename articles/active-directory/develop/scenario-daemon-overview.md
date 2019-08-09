@@ -1,6 +1,6 @@
 ---
-title: 守护程序应用程序调用 web Api （概述）-Microsoft 标识平台
-description: 了解如何构建守护程序调用 web Api
+title: 用于调用 Web API 的守护程序应用（概述）- Microsoft 标识平台
+description: 了解如何构建用于调用 Web API 的守护程序应用
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578b7cdb38b7df3fab5885d773354a36f76a4cfb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b86841cc6889eb8e716df3f6d1ac9bc7b158992
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65075875"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852722"
 ---
-# <a name="scenario-daemon-application-that-calls-web-apis"></a>场景：后台应用程序调用 web Api
+# <a name="scenario-daemon-application-that-calls-web-apis"></a>方案:用于调用 Web API 的守护程序应用程序
 
-了解您需要构建一个调用 web Api 的后台程序应用程序。
+了解在构建用于调用 Web API 的守护程序应用程序时需要的所有项目。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="overview"></a>概述
 
-你的应用程序可以获取令牌以调用 web API 代表本身 （而不是代表用户）。 此方案非常有用的守护程序应用程序。 它使用标准 OAuth 2.0[客户端凭据](v2-oauth2-client-creds-grant-flow.md)授予。
+应用程序可以获取一个令牌，代表自身（而不是用户）调用 Web API。 此方案适用于守护程序应用程序。 它使用标准 OAuth 2.0 [客户端凭据](v2-oauth2-client-creds-grant-flow.md)授予。
 
 ![守护程序应用](./media/scenario-daemon-app/daemon-app.svg)
 
-下面是一些示例的守护程序应用的用例：
+下面是介绍守护程序应用用例的一些例子：
 
-- 使用预配或管理用户，或进行批处理的目录中的进程的 web 应用程序
-- 例如，（在 Windows、 windows 服务） 或 Linux 上的守护程序进程的桌面应用程序执行批处理作业或在后台运行的操作系统服务
-- Web Api，需要处理不特定于用户的目录
+- 用于预配或管理用户，或者在目录中执行批处理的 Web 应用程序
+- 执行批处理作业的桌面应用程序（例如 Windows 上的 Windows 服务，或 Linux 上的守护程序进程），或者在后台运行的操作系统服务
+- 需操作目录而非特定用户的 Web API
 
-还有一种非守护程序应用程序在其中使用客户端凭据的常见情况： 即使它们代表用户执行操作，他们需要出于技术原因访问 web API 或使用其标识的资源。 例如，为缓存访问密钥保管库或 Azure SQL 数据库中的机密。
+另一种常见的情况是非守护程序应用程序使用客户端凭据：出于技术方面的原因，即使是在代表用户进行操作，它们也需要使用其标识来访问 Web API 或资源。 例如，访问 KeyVault 或用于缓存的 Azure SQL 数据库中的机密。
 
-获取其自己的身份进行的令牌的应用程序：
+获取其自身标识的令牌的应用程序具有以下特点：
 
-- 是机密客户端应用程序。 这些应用，假设他们访问独立于用户，资源需要证明其身份。 它们也是相当敏感应用程序，它们需要由 Azure Active Directory (Azure AD) 租户管理员批准。
-- 已与 Azure AD 中注册的机密 （应用程序密码或证书）。 在调用 Azure AD 以获取令牌的过程，传入的是此密钥。
+- 是机密客户端应用程序。 这些应用是以独立方式访问用户的资源，因此需证明其身份。 它们还是相当敏感的应用，需获得 Azure Active Directory (Azure AD) 租户管理员的批准。
+- 已将机密（应用程序密码或证书）注册到 Azure AD。 该机密是在调用 Azure AD 以获取令牌的过程中传入的。
 
-## <a name="specifics"></a>详细信息
+## <a name="specifics"></a>详情
 
 > [!IMPORTANT]
 >
-> - 用户交互不能与后台程序应用程序。 后台应用程序需要其自己的标识。 此类型的应用程序请求访问令牌通过使用其应用程序标识并提供了自己的应用程序 ID、 凭据 （密码或证书） 和应用程序 ID URI 向 Azure AD。 身份验证成功后，守护程序从 Microsoft 标识平台终结点，然后用于调用 web API （并根据需要刷新） 接收访问令牌 （和刷新令牌）。
-> - 由于用户交互不是可能的不会可以增量许可。 需要在应用程序注册配置所有所需的 API 权限和应用程序的代码只是请求以静态方式定义的权限。 这也意味着后台程序应用程序不支持增量许可。
+> - 用户无法与守护程序应用程序进行交互。 守护程序应用程序需要其自己的标识 此类型的应用程序通过以下方式来请求访问令牌：使用其应用程序标识并向 Azure AD 提供其应用程序 ID、凭据（密码或证书）以及应用程序 ID URI。 在身份验证成功后，守护程序应用程序会从 Microsoft 标识平台终结点收到一个访问令牌（和一个刷新令牌），并将使用该令牌来调用 Web API（将会根据需要刷新该令牌）。
+> - 由于不可能进行用户交互，因此不能使用增量许可。 所有必需的 API 权限需要在应用程序注册时进行配置，应用程序代码会直接以静态方式请求定义的权限。 这也意味着守护程序应用程序不会支持增量许可。
 
-对于开发人员，此方案的端到端体验有以下几个方面：
+对于开发人员来说，此方案的端到端体验具有以下特点：
 
-- 守护程序应用程序仅可在 Azure AD 租户中。 它没有意义生成尝试操作 Microsoft 个人帐户的后台应用程序。 如果您的业务线 (LOB) 应用程序开发人员，您将在租户中创建守护程序应用程序。 如果你是 ISV，你可能想要创建的多租户后台应用程序。 它将需要由每个租户管理员同意
-- 期间[应用程序注册](./scenario-daemon-app-registration.md)，则**回复 URI**不需要。 您需要与 Azure AD 共享机密或证书，你需要请求应用程序的权限并授予管理员同意才可以使用这些应用程序权限。
-- [应用程序配置](./scenario-daemon-app-configuration.md)需要与 Azure AD 应用程序注册期间提供共享的客户端凭据。
-- [作用域](scenario-daemon-acquire-token.md#scopes-to-request)用于获取包含流必须是静态的作用域的客户端凭据的令牌。
+- 守护程序应用程序只能在 Azure AD 租户中使用。 构建尝试操作 Microsoft 个人帐户的后台应用程序并无意义。 如果你是业务线 (LOB) 应用开发人员，则需在租户中创建守护程序应用。 如果你是 ISV，则需创建多租户守护程序应用程序， 但需获得每个租户管理员的许可。
+- 在[应用程序注册](./scenario-daemon-app-registration.md)期间，“回复 URI”不是必需的。 你需要与 Azure AD 共享机密或证书，并需请求应用程序权限以及授予使用这些应用权限所需的管理员许可。
+- [应用程序配置](./scenario-daemon-app-configuration.md)需提供客户端凭据，这些凭据是在应用程序注册期间与 Azure AD 共享的。
+- 用于通过客户端凭据流获取令牌的[作用域](scenario-daemon-acquire-token.md#scopes-to-request)必须是静态作用域。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [守护程序应用-应用注册](./scenario-daemon-app-registration.md)
+> [守护程序应用 - 应用注册](./scenario-daemon-app-registration.md)

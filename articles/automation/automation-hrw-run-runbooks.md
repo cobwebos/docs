@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 88e3c0514861da0bd11acffd26cced54717e4418
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6f41263bfb930d3aab41fd8ace86cd6afb0ace26
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478488"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850573"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
@@ -26,7 +26,7 @@ ms.locfileid: "67478488"
 
 [在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md) 介绍了用于启动 Runbook 的不同方法。 混合 Runbook 辅助角色增加了一个 **RunOn** 选项，可以在其中指定混合 Runbook 辅助角色组的名称。 指定组时，会由该组中的辅助角色检索和运行 runbook。 如果未指定此选项，则会在 Azure 自动化中正常运行 runbook。
 
-在 Azure 门户中启动 runbook 时，会看到一个“运行位置”选项，可以在其中选择“Azure”或“混合辅助角色”    。 如果选择“混合辅助角色”  ，则可以从下拉列表中选择该组。
+在 Azure 门户中启动 runbook 时，会看到一个“运行位置”选项，可以在其中选择“Azure”或“混合辅助角色”。 如果选择“混合辅助角色”，则可以从下拉列表中选择该组。
 
 使用 **RunOn** 参数。 可以使用以下命令，通过 Windows PowerShell 在名为 MyHybridGroup 的混合 Runbook 辅助角色组中启动一个名为 Test-Runbook 的 Runbook。
 
@@ -71,10 +71,10 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 1. 创建具有本地资源访问权限的[凭据资产](automation-credentials.md)。
 2. 在 Azure 门户中打开自动化帐户。
-3. 选择“混合辅助角色组”  磁贴，并选择组。
-4. 选择“所有设置”  ，并选择“混合辅助角色组设置”  。
-5. 将“运行身份”  从“默认”  更改为“自定义”  。
-6. 选择凭据，并单击“保存”  。
+3. 选择“混合辅助角色组”磁贴，并选择组。
+4. 选择“所有设置”，并选择“混合辅助角色组设置”。
+5. 将“运行身份”从“默认”更改为“自定义”。
+6. 选择凭据，并单击“保存”。
 
 ### <a name="managed-identities-for-azure-resources"></a>Azure 资源的托管标识
 
@@ -179,7 +179,7 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 ```
 
 > [!IMPORTANT]
-> Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名   。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Add-AzureRmAccount，或更新自动化帐户中的模块   。
+> Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Add-AzureRmAccount，或更新自动化帐户中的模块。
 
 将 *Export-RunAsCertificateToHybridWorker* Runbook 保存到装有 `.ps1` 扩展的计算机。 将其导入自动化帐户中，对 Runbook 进行编辑，将变量 `$Password` 的值更改成自己的密码。 发布并运行 runbook。 以混合辅助角色组为目标，该组使用运行方式帐户运行 runbook 并对其进行身份验证。 作业流会汇报某个操作尝试将证书导入本地计算机存储，并尾随多个行。 此行为取决于订阅中定义的自动化帐户数以及身份验证是否成功。
 
@@ -271,7 +271,7 @@ sudo gpg --generate-key
 
 GPG 将指导你完成创建密钥对的步骤。 需要提供名称、电子邮件地址、过期时间、通行短语，并等待计算机拥有足够的熵用于生成密钥。
 
-由于 GPG 目录使用 sudo 生成，需要将其所有者更改为 `nxautomation`。 
+由于 GPG 目录使用 sudo 生成，需要将其所有者更改为 `nxautomation`。
 
 运行以下命令，更改所有者。
 
@@ -312,3 +312,4 @@ gpg –-clear-sign <runbook name>
 * 若要详细了解其他可用于启动 Runbook 的方法，请参阅[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md)。
 * 若要了解如何通过不同过程使用文本编辑器在 Azure 自动化中处理 PowerShell runbook，请参阅[在 Azure 自动化中编辑 runbook](automation-edit-textual-runbook.md)
 * 如果 runbook 未成功完成，请查看 [runbook 执行失败](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)相关故障排除指南。
+* 有关 PowerShell 的详细信息, 包括语言参考和学习模块, 请参阅[Powershell 文档](https://docs.microsoft.com/en-us/powershell/scripting/overview)。

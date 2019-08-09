@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 39317c0448168bc2ed8fdd0455a210254887d496
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 3acae8f7d34bb02905e6e8d479b7de5ccab1bb7a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655393"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850979"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>应用程序网关的后端运行状况、诊断日志和指标
 
@@ -38,12 +38,12 @@ ms.locfileid: "67655393"
 
 ### <a name="view-back-end-health-through-the-portal"></a>通过门户查看后端运行状况
 
-门户中会自动提供后端运行状况。 在现有应用程序网关中，选择“监视”   > “后端运行状况”  。 
+门户中会自动提供后端运行状况。 在现有应用程序网关中，选择“监视” > “后端运行状况”。 
 
-此页面将列出后端池中的每个成员（无论是 NIC、IP，还是 FQDN）。 将显示后端池名称、端口、后端 HTTP 设置名称和运行状况。 运行状况的有效值为“正常”  、“不正常”  和“未知”  。
+此页面将列出后端池中的每个成员（无论是 NIC、IP，还是 FQDN）。 将显示后端池名称、端口、后端 HTTP 设置名称和运行状况。 运行状况的有效值为“正常”、“不正常”和“未知”。
 
 > [!NOTE]
-> 如果后端运行状况显示为“未知”  ，请确保 NSG 规则、用户定义的路由 (UDR) 或虚拟网络中的自定义 DNS 没有阻止对后端的访问。
+> 如果后端运行状况显示为“未知”，请确保 NSG 规则、用户定义的路由 (UDR) 或虚拟网络中的自定义 DNS 没有阻止对后端的访问。
 
 ![后端运行状况][10]
 
@@ -131,7 +131,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="enable-logging-through-the-azure-portal"></a>通过 Azure 门户启用日志记录
 
-1. 在 Azure 门户中找到资源，然后选择“诊断设置”  。
+1. 在 Azure 门户中找到资源，然后选择“诊断设置”。
 
    对于应用程序网关，提供 3 种日志：
 
@@ -139,15 +139,15 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
    * 性能日志
    * 防火墙日志
 
-2. 若要开始收集数据，请选择“启用诊断”  。
+2. 若要开始收集数据，请选择“启用诊断”。
 
    ![启用诊断][1]
 
-3. “诊断设置”  页提供用于诊断日志的设置。 本示例使用 Log Analytics 存储日志。 也可使用事件中心和存储帐户保存诊断日志。
+3. “诊断设置”页提供用于诊断日志的设置。 本示例使用 Log Analytics 存储日志。 也可使用事件中心和存储帐户保存诊断日志。
 
    ![启动配置过程][2]
 
-5. 键入设置的名称，确认设置，然后选择“保存”。 
+5. 键入设置的名称，确认设置，然后选择“保存”。
 
 ### <a name="activity-log"></a>活动日志
 
@@ -155,7 +155,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="access-log"></a>访问日志
 
-只有在每个应用程序网关实例上启用了访问日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 V1 的下面的示例中所示，将以 JSON 格式记录应用程序网关的每个访问：
+只有在每个应用程序网关实例上启用了访问日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录, 如 v1 中的以下示例所示:
 
 |ReplTest1  |描述  |
 |---------|---------|
@@ -172,52 +172,8 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |sentBytes| 发送的数据包大小（以字节为单位）。|
 |timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
 |sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
-```json
-{
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
-    "operationName": "ApplicationGatewayAccess",
-    "time": "2017-04-26T19:27:38Z",
-    "category": "ApplicationGatewayAccessLog",
-    "properties": {
-        "instanceId": "ApplicationGatewayRole_IN_0",
-        "clientIP": "191.96.249.97",
-        "clientPort": 46886,
-        "httpMethod": "GET",
-        "requestUri": "/phpmyadmin/scripts/setup.php",
-        "requestQuery": "X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.4.0.4&X-AzureApplicationGateway-LOG-ID=874f1f0f-6807-41c9-b7bc-f3cfa74aa0b1&SERVER-STATUS=404",
-        "userAgent": "-",
-        "httpStatus": 404,
-        "httpVersion": "HTTP/1.0",
-        "receivedBytes": 65,
-        "sentBytes": 553,
-        "timeTaken": 205,
-        "sslEnabled": "off"
-    }
-}
-```
-对于应用程序网关 WAF v2，日志显示更多的信息：
-
-|ReplTest1  |描述  |
-|---------|---------|
-|instanceId     | 为请求服务的应用程序网关实例。        |
-|clientIP     | 请求的初始 IP。        |
-|clientPort     | 请求的起始端口。       |
-|httpMethod     | 请求使用的 HTTP 方法。       |
-|requestUri     | 已收到请求的 URI。        |
-|RequestQuery     | **Server-Routed**：请求已发送至后端池实例。</br>**X-AzureApplicationGateway-LOG-ID**：用于请求的相关 ID。 它可用于排查后端服务器上的流量问题。 </br>**SERVER-STATUS**：应用程序网关接收从后端的 HTTP 响应代码。       |
-|UserAgent     | HTTP 请求标头中的用户代理。        |
-|httpStatus     | 从应用程序网关返回到客户端的 HTTP 状态代码。       |
-|httpVersion     | 请求的 HTTP 版本。        |
-|receivedBytes     | 接收的数据包大小（以字节为单位）。        |
-|sentBytes| 发送的数据包大小（以字节为单位）。|
-|timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
-|sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
-|sslCipher| 所使用的 SSL 通信 （如果已启用 SSL） 密码套件。|
-|sslProtocol| （如果启用了 SSL） 所使用的 SSL 协议。|
-|serverRouted| 后端服务器的应用程序网关将路由到请求。|
-|serverStatus| 后端服务器的 HTTP 状态代码。|
-|serverResponseLatency| 从后端服务器响应延迟。|
-|host| 列出请求的主机标头中的地址。|
+|主机| 向后端服务器发送请求时所用的主机名。 如果正在重写后端主机名, 则此名称将反映该主机名。|
+|originalHost| 应用程序网关从客户端收到请求时使用的主机名。|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -238,12 +194,58 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
         "sentBytes": 553,
         "timeTaken": 205,
         "sslEnabled": "off",
+        "host": "www.contoso.com",
+        "originalHost": "www.contoso.com"
+    }
+}
+```
+对于应用程序网关和 WAF v2, 日志显示了一些详细信息:
+
+|值  |描述  |
+|---------|---------|
+|instanceId     | 为请求服务的应用程序网关实例。        |
+|clientIP     | 请求的初始 IP。        |
+|clientPort     | 请求的起始端口。       |
+|httpMethod     | 请求使用的 HTTP 方法。       |
+|requestUri     | 已收到请求的 URI。        |
+|UserAgent     | HTTP 请求标头中的用户代理。        |
+|httpStatus     | 从应用程序网关返回到客户端的 HTTP 状态代码。       |
+|httpVersion     | 请求的 HTTP 版本。        |
+|receivedBytes     | 接收的数据包大小（以字节为单位）。        |
+|sentBytes| 发送的数据包大小（以字节为单位）。|
+|timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
+|sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
+|sslCipher| 用于 SSL 通信的密码套件 (如果已启用 SSL)。|
+|sslProtocol| 使用的 SSL 协议 (如果已启用 SSL)。|
+|serverRouted| 应用程序网关将请求路由到的后端服务器。|
+|serverStatus| 后端服务器的 HTTP 状态代码。|
+|serverResponseLatency| 后端服务器响应的延迟。|
+|主机| 请求的主机标头中列出的地址。|
+```json
+{
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "operationName": "ApplicationGatewayAccess",
+    "time": "2017-04-26T19:27:38Z",
+    "category": "ApplicationGatewayAccessLog",
+    "properties": {
+        "instanceId": "appgw_1",
+        "clientIP": "191.96.249.97",
+        "clientPort": 46886,
+        "httpMethod": "GET",
+        "requestUri": "/phpmyadmin/scripts/setup.php",
+        "userAgent": "-",
+        "httpStatus": 404,
+        "httpVersion": "HTTP/1.0",
+        "receivedBytes": 65,
+        "sentBytes": 553,
+        "timeTaken": 205,
+        "sslEnabled": "off",
         "sslCipher": "",
         "sslProtocol": "",
         "serverRouted": "104.41.114.59:80",
         "serverStatus": "200",
         "serverResponseLatency": "0.023",
-        "host": "52.231.230.101"
+        "host": "www.contoso.com",
     }
 }
 ```
@@ -253,13 +255,13 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有在每个应用程序网关实例上启用了性能日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 每隔 1 分钟生成性能日志数据。 将记录以下数据：
 
 
-|ReplTest1  |描述  |
+|值  |描述  |
 |---------|---------|
 |instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，每个实例有一行性能数据。        |
 |healthyHostCount     | 后端池中运行正常的主机数。        |
 |unHealthyHostCount     | 后端池中运行不正常的主机数。        |
 |requestCount     | 服务的请求数。        |
-|latency | 从实例到请求服务后端的请求的平均延迟（以毫秒为单位）。 |
+|延迟 | 从实例到请求服务后端的请求的平均延迟（以毫秒为单位）。 |
 |failedRequestCount| 失败的请求数。|
 |throughput| 自最后一个日志后的平均吞吐量，以每秒字节数为单位。|
 
@@ -290,7 +292,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有为每个应用程序网关启用了防火墙日志，才会生成此日志，如上述步骤所示。 此日志还需在应用程序网关上配置 Web 应用程序防火墙。 数据存储在启用日志记录时指定的存储帐户中。 将记录以下数据：
 
 
-|ReplTest1  |描述  |
+|值  |描述  |
 |---------|---------|
 |instanceId     | 正在为其生成防火墙数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。         |
 |clientIp     |   请求的初始 IP。      |
@@ -299,7 +301,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |ruleSetType     | 规则集类型。 可用值为 OWASP。        |
 |ruleSetVersion     | 使用的规则集版本。 可用值为 2.2.9 和 3.0。     |
 |ruleId     | 触发事件的规则 ID。        |
-|message     | 触发事件的用户友好信息。 详细信息部分提供了更多详细信息。        |
+|消息     | 触发事件的用户友好信息。 详细信息部分提供了更多详细信息。        |
 |action     |  针对请求执行的操作。 可用值为“阻止”和“允许”。      |
 |site     | 为其生成日志的站点。 目前，由于规则为全局性规则，所以仅列出了“全局”站点。|
 |details     | 触发事件的详细信息。        |
@@ -358,7 +360,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 我们发布了一个资源管理器模板，用于安装和运行应用程序网关访问日志的常用 [GoAccess](https://goaccess.io/) 日志分析器。 GoAccess 提供了宝贵的 HTTP 流量统计信息，例如唯一访问者、请求的文件、主机、操作系统、浏览器和 HTTP 状态代码等。 有关更多详细信息，请参阅 [GitHub 的资源管理器模板文件夹中的自述文件](https://aka.ms/appgwgoaccessreadme)。
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 
 指标是某些 Azure 资源的一项功能，可在此查看门户中的性能计数器。 应用程序网关支持以下指标：
 
@@ -379,7 +381,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
    可以按每个后端池进行筛选来显示特定后端池中正常的/不正常的主机数。
 
-浏览到应用程序网关，并在“监视”下选择“指标”   。 若要查看可用值，请选择“指标”下拉列表  。
+浏览到应用程序网关，并在“监视”下选择“指标”。 若要查看可用值，请选择“指标”下拉列表。
 
 在下图中可以看到过去 30 分钟显示的三个指标的示例：
 
@@ -393,17 +395,17 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 以下示例指导创建警报规则，以在吞吐量违反阈值时给管理员发送电子邮件：
 
-1. 选择**添加指标警报**以打开**添加规则**页。 也可以访问此页上，从指标页。
+1. 选择 "**添加指标警报**" 以打开 "**添加规则**" 页。 你还可以从 "指标" 页访问此页。
 
    ![“添加指标警报”按钮][6]
 
-2. 上**添加规则**页上，填写名称、 条件和通知部分，然后选择**确定**。
+2. 在 "**添加规则**" 页上, 填写 "名称"、"条件" 和 "通知" 部分, 然后选择 **"确定"** 。
 
-   * 在“条件”  选择器中，选择以下四个值之一：**大于**、**大于或等于**、**小于**、**小于或等于**。
+   * 在“条件”选择器中，选择以下四个值之一：**大于**、**大于或等于**、**小于**、**小于或等于**。
 
-   * 在“时间段”  选择器中，选择 5 分钟到 6 小时之间的一个时间段。
+   * 在“时间段”选择器中，选择 5 分钟到 6 小时之间的一个时间段。
 
-   * 如果选择“电子邮件所有者、参与者和读者”  ，则电子邮件将基于有权访问该资源的用户动态发送。 否则，可以在“其他管理员电子邮件”  框中提供用户名单并以逗号分隔。
+   * 如果选择“电子邮件所有者、参与者和读者”，则电子邮件将基于有权访问该资源的用户动态发送。 否则，可以在“其他管理员电子邮件”框中提供用户名单并以逗号分隔。
 
    ![添加规则页][7]
 

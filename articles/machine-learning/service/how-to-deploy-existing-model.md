@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: 4534f7e5bba2e34316be3376e2627c15c20ba81f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694372"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847993"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>将现有模型用于 Azure 机器学习服务
 
@@ -32,14 +32,14 @@ ms.locfileid: "68694372"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建工作区](setup-create-workspace.md)。
+* Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建工作区](how-to-manage-workspace.md)。
 
     > [!TIP]
     > 本文中的 Python 示例假设`ws`将变量设置为 Azure 机器学习服务工作区。
     >
     > CLI 示例使用和`myworkspace` `myresourcegroup`的占位符。 将这些名称替换为你的工作区的名称以及包含它的资源组。
 
-* Azure 机器学习 SDK。 有关详细信息, 请参阅[创建工作区](setup-create-workspace.md#sdk)的 Python SDK 部分。
+* [AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)和[机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)。
 

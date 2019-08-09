@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: cgronlun
+ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: eb6ae11bb4ffb39d9e9bcc692f17559fa2cde674
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a5db2c1c40c9c6f5c05205b9b2c652d2e23cf229
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720239"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848243"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>在 Azure 门户中创建、浏览和部署自动化机器学习试验 (预览版)
 
@@ -28,7 +28,7 @@ ms.locfileid: "68720239"
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
-* Azure 机器学习服务工作区。 请参阅[创建 Azure 机器学习服务工作区](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)。
+* Azure 机器学习服务工作区。 请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
 
 ## <a name="get-started"></a>开始使用
 
@@ -112,7 +112,7 @@ ms.locfileid: "68720239"
 功能| 正在汇总的列的名称。
 配置文件| 基于推断类型的行内可视化。 例如, 字符串、布尔值和日期具有值计数, 而小数 (数字) 则具有近似的直方图。 这使你可以快速了解数据的分布情况。
 类型分发| 列中类型的行内值计数。 Null 是其自己的类型, 因此此可视化效果可用于检测奇值或缺失值。
-类型|推断列的类型。 可能的值包括: 字符串、布尔值、日期和小数。
+type|推断列的类型。 可能的值包括: 字符串、布尔值、日期和小数。
 最小值| 列的最小值。 对于类型不具有固有顺序 (例如布尔值) 的功能, 将显示空白项。
 最大| 列的最大值。 
 Count| 列中缺失和缺失条目的总数。
