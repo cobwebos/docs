@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: d32beaa51471ccab19804122bfbcb33a6b1a5e3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4bcd07cf7549029d09f5acd58fdf8f92fffed74
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60203004"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945288"
 ---
-# <a name="detect-popular-brands-in-images"></a>检测图像中的流行品牌
+# <a name="detect-popular-brands-in-images"></a>检测图像中的常用品牌
 
 品牌检测是[对象检测](concept-object-detection.md)的一种专用模式，使用包含全球数千个徽标的数据库来标识图像或视频中的商业品牌。 可以使用此功能来执行特定的操作，例如，发现哪些品牌在社交媒体上最受欢迎，或者哪些品牌在社交产品排名上最靠前。
 
@@ -29,65 +29,47 @@ ms.locfileid: "60203004"
 
 以下 JSON 响应表明计算机视觉在示例图像中检测品牌时所返回的内容。
 
-![上面有 Microsoft 标签和徽标的灰色运动衫](./Images/gray-shirt-logo.jpg)
-
-```json
-{
-   "brands":[
-      {
-         "name":"Microsoft",
-         "confidence":0.706,
-         "rectangle":{
-            "x":470,
-            "y":862,
-            "w":338,
-            "h":327
-         }
-      }
-   ],
-   "requestId":"5fda6b40-3f60-4584-bf23-911a0042aa13",
-   "metadata":{
-      "width":2286,
-      "height":1715,
-      "format":"Jpeg"
-   }
-}
-```
-在某些情况下，品牌检测程序会挑选徽标图像和风格化品牌名称作为两个单独徽标。
-
 ![上面有 Microsoft 标签的徽标的红色衬衫](./Images/red-shirt-logo.jpg)
 
 ```json
-{
-   "brands":[
-      {
-         "name":"Microsoft",
-         "confidence":0.657,
-         "rectangle":{
-            "x":436,
-            "y":473,
-            "w":568,
-            "h":267
-         }
-      },
-      {
-         "name":"Microsoft",
-         "confidence":0.85,
-         "rectangle":{
-            "x":101,
-            "y":561,
-            "w":273,
-            "h":263
-         }
+"brands":[  
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":20,
+         "y":97,
+         "w":62,
+         "h":52
       }
-   ],
-   "requestId":"10dcd2d6-0cf6-4a5e-9733-dc2e4b08ac8d",
-   "metadata":{
-      "width":1286,
-      "height":1715,
-      "format":"Jpeg"
    }
-}
+]
+```
+
+在某些情况下，品牌检测程序会挑选徽标图像和风格化品牌名称作为两个单独徽标。
+
+![上面有 Microsoft 标签和徽标的灰色运动衫](./Images/gray-shirt-logo.jpg)
+
+```json
+"brands":[  
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":58,
+         "y":106,
+         "w":55,
+         "h":46
+      }
+   },
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":58,
+         "y":86,
+         "w":202,
+         "h":63
+      }
+   }
+]
 ```
 
 ## <a name="use-the-api"></a>使用 API

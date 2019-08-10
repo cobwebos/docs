@@ -8,15 +8,15 @@ ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 5122a5a88f5a0d67799930999236f2993bc43f8f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b80c32fea0d62bb5800a677ff30cb0787e83afa2
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609757"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945840"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -179,7 +179,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>为什么分配给我应用的终结点密钥多于我分配的？
 为方便起见，每个 LUIS 应用在终结点列表中都有创作/初学者密钥。 此密钥仅允许命中终结点几次，因此你可以试用 LUIS。  
 
-如果应用在 LUIS 正式发布 (GA) 之前已存在，则会自动分配订阅中的 LUIS 终结点密钥。 这样做是为了方便 GA 迁移。 Azure 门户中的任何新 LUIS 终结点密钥都_不_会自动分配给 LUIS。
+如果应用在 LUIS 正式发布 (GA) 之前已存在，则会自动分配订阅中的 LUIS 终结点密钥。 这样做是为了方便 GA 迁移。 Azure 门户中的任何新 LUIS 终结点密钥都 _会自动分配给 LUIS。
 
 ## <a name="key-management"></a>密钥管理
 

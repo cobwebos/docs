@@ -1,5 +1,5 @@
 ---
-title: 描述图像 - 计算机视觉
+title: 映像说明-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 与计算机视觉 API 的图像描述功能相关的概念。
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 91618b211fdd869daf74491b175d6359ffa3f30c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dcf61c642a9f8ad7aa68d72736ce8fdb0e9a6e3c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368369"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945262"
 ---
 # <a name="describe-images-with-human-readable-language"></a>使用人类可读语言描述图像
 
-计算机视觉可以分析图像并生成描述其内容的人工可读的句子。 该算法实际返回基于不同视觉功能的多个描述，且每个描述都有一个可信度分数。 最终输出是按可信度从高到低排列的描述的列表。
+计算机视觉可以分析图像并生成描述其内容的人工可读的句子。 该算法实际上基于不同的视觉功能返回多个说明, 并为每个说明提供置信度分数。 最终输出是按可信度从高到低排列的描述的列表。
 
 ## <a name="image-description-example"></a>图像说明示例
 

@@ -1,5 +1,5 @@
 ---
-title: 将内容标记应用于图像 - 计算机视觉
+title: 内容标记-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 了解与计算机视觉 API 的图像标记功能相关的概念。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: aeb03566a650fe46286d77913e0d36dcbb19f436
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad01751f7f7c573352c8fd15cc0f8cc2ebbbe700
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759667"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945110"
 ---
 # <a name="applying-content-tags-to-images"></a>将内容标记应用于图像
 

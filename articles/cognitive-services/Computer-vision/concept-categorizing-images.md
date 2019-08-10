@@ -1,5 +1,5 @@
 ---
-title: 对图像进行分类 - 计算机视觉
+title: 图像分类-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 了解与计算机视觉 API 的图像分类功能相关的概念。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 257da397e11843ee96e93f7b3e9bc5ada29822cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2b9b8da550d80b027da919ba0834e43e2c83d4b4
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60203253"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945315"
 ---
 # <a name="categorize-images-by-subject-matter"></a>按主题对图像进行分类
 
@@ -53,7 +53,7 @@ ms.locfileid: "60203253"
 
 下表说明了典型的图像集以及计算机视觉为每个图像返回的类别。
 
-| Image | 类别 |
+| 图像 | 类别 |
 |-------|----------|
 | ![四个人一起摆出一家人的姿势](./Images/family_photo.png) | people_group |
 | ![一只小狗坐在草地上](./Images/cute_dog.png) | animal_dog |

@@ -1,5 +1,5 @@
 ---
-title: 检测特定于域的内容 - 计算机视觉
+title: 特定于域的内容-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 了解如何指定图像分类域以返回有关图像的更多详细信息。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e4b64e00f71768a8821c83a73b019f77089e1b3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368063"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946329"
 ---
 # <a name="detect-domain-specific-content"></a>检测特定于域的内容
 
@@ -100,7 +100,7 @@ ms.locfileid: "60368063"
 
 目前，计算机视觉支持以下特定于域的模型：
 
-| Name | 描述 |
+| 名称 | 描述 |
 |------|-------------|
 | celebrities | 名人识别，支持属于 `people_` 类别的图像 |
 | landmarks | 地标识别，支持属于 `outdoor_` 或 `building_` 类别的图像 |

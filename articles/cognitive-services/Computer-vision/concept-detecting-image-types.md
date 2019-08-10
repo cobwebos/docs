@@ -1,5 +1,5 @@
 ---
-title: 检测图像类型 - 计算机视觉
+title: 映像类型检测-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 与计算机视觉 API 的图像类型检测功能相关的概念。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e89fd977129113fa88af1acccd6b05f0bbe90243
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368273"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945209"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>使用计算机视觉检测图像类型
 
@@ -26,10 +26,10 @@ ms.locfileid: "60368273"
 
 计算机视觉可分析图像，并通过 0-3 的量表对图像为剪贴画的可能性进行评级，如下表中所示。
 
-| 值 | 含义 |
+| ReplTest1 | 含义 |
 |-------|---------|
 | 0 | 非剪贴画 |
-| 第 | 不明确 |
+| 1 | 不明确 |
 | 2 | 正常剪贴画 |
 | 3 | 良好剪贴画 |
 
