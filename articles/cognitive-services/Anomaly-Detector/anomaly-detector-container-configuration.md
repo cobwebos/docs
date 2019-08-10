@@ -10,18 +10,18 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 886c93871a719770cbcbbcef2f536fd7515da34e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a2f743b2b7e63df8b81a1024b20e3e27a3f247a9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854214"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932998"
 ---
 # <a name="configure-anomaly-detector-containers"></a>配置异常探测器容器
 
 使用`docker run`命令参数配置**异常探测器**容器运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
-# <a name="configuration-settings"></a>配置设置
+## <a name="configuration-settings"></a>配置设置
 
 此容器具有以下配置设置：
 
@@ -41,7 +41,7 @@ ms.locfileid: "68854214"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值, 并且值必须是为[`Billing`](#billing-configuration-setting)配置设置指定的_异常探测器_资源的有效密钥。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值, 并且值必须是为[`Billing`](#billing-configuration-setting)配置设置指定的 _资源的有效密钥。
 
 可以在以下位置找到此设置：
 
@@ -53,13 +53,13 @@ ms.locfileid: "68854214"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-此`Billing`设置指定 Azure 上的_异常探测器_资源的终结点 URI, 该 URI 用于计量容器的计费信息。 您必须为此配置设置指定一个值, 并且该值必须是 Azure 上_异常探测器_资源的有效终结点 URI。
+此`Billing`设置指定 Azure 上的 _资源的终结点 URI, 该 URI 用于计量容器的计费信息。 您必须为此配置设置指定一个值, 并且该值必须是 Azure 上 _资源的有效终结点 URI。
 
 可以在以下位置找到此设置：
 
 * Azure 门户：**异常探测器**概述, 标记`Endpoint`
 
-|必填| 名称 | 数据类型 | 描述 |
+|必填| 姓名 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>例如：<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
 

@@ -27,6 +27,14 @@
     - name: 索引
       displayName: 'list, examples'
       href: ./samples/index.md
+    - name: IRS 1075
+      items:
+        - name: 概述
+          displayName: 'standards, irs, 1075'
+          href: ./samples/irs-1075/index.md
+        - name: 控制映射
+          displayName: 'standards, irs, 1075'
+          href: ./samples/irs-1075/control-mapping.md
     - name: ISO 27001
       items:
         - name: 概述

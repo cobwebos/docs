@@ -8,21 +8,21 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 04f0944173df59989745ee9167984b493f202b14
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1e170b86f573112cc5bc8dddd6f080921ef29d2d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638228"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932939"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>将实体添加到示例话语 
 
 示例表述是用户问题或命令的文本示例。 若要教授语言理解 (LUIS)，需将[示例表述](luis-concept-utterance.md)添加到[意向](luis-concept-intent.md)。
 
-通常先将示例话语添加到意向，然后创建实体并在“意向”页  上标记话语。 若要先创建实体，请参阅[添加实体](luis-how-to-add-entities.md)。
+通常先将示例话语添加到意向，然后创建实体并在“意向”页上标记话语。 若要先创建实体，请参阅[添加实体](luis-how-to-add-entities.md)。
 
 ## <a name="marking-entities-in-example-utterances"></a>在示例话语中标记实体
 
@@ -32,13 +32,13 @@ ms.locfileid: "68638228"
 
 ## <a name="add-a-simple-entity"></a>添加简单实体
 
-在以下过程中，请在“意向”  页的以下话语中创建并标记自定义实体：
+在以下过程中，请在“意向”页的以下话语中创建并标记自定义实体：
 
 ```text
 Are there any SQL server jobs?
 ```
 
-1. 在话语中选择 `SQL server`，将其标记为简单实体。 在显示的实体下拉框中，可以选择现有的实体，也可以添加新的实体。 若要添加新的实体，请在文本框中键入其名称 `Job`，然后选择“创建新实体”  。
+1. 在话语中选择 `SQL server`，将其标记为简单实体。 在显示的实体下拉框中，可以选择现有的实体，也可以添加新的实体。 若要添加新的实体，请在文本框中键入其名称 `Job`，然后选择“创建新实体”。
 
     ![输入实体名称的屏幕截图](./media/luis-how-to-add-example-utterances/create-simple-entity.png)
 
@@ -47,7 +47,7 @@ Are there any SQL server jobs?
     > * 如果是单个单词，请直接将其选中。 
     > * 对于一组两个或更多单词，依次选择第一个单词和最后一个单词。
 
-1. 在“需要创建什么类型的实体?”弹出对话框中，验证实体名称并选择简单实体类型，然后选择“完成”。   
+1. 在“需要创建什么类型的实体?”弹出对话框中，验证实体名称并选择简单实体类型，然后选择“完成”。
 
     [短语列表](luis-concept-feature.md)通常用于提升简单实体的信号。
 
@@ -57,13 +57,13 @@ Are there any SQL server jobs?
 
 对于公司的部门列表，可以使用规范化值：`Accounting` 和 `Human Resources`。 每个规范化的名称都有同义词。 对于部门，这些同义词可以包含任何部门首字母缩写、编号或俚语。 创建实体时，不需了解所有值。 可以在查看真实的用户表述后使用同义词添加更多值。
 
-1. 在“意向”  页面上的示例话语中，选择要包含在新列表中的单词或短语。 当实体下拉列表出现时，请在顶部文本框中输入新列表实体的名称，然后选择“创建新实体”  。   
+1. 在“意向”页面上的示例话语中，选择要包含在新列表中的单词或短语。 当实体下拉列表出现时，请在顶部文本框中输入新列表实体的名称，然后选择“创建新实体”。   
 
-1. 在“要创建哪种类型的实体?”弹出框中，为实体命名并选择“列表”作为类型。   添加此列表项的同义词，然后选择“完成”。  
+1. 在“要创建哪种类型的实体?”弹出框中，为实体命名并选择“列表”作为类型。 添加此列表项的同义词，然后选择“完成”。 
 
     ![输入列表实体同义词的屏幕截图](./media/luis-how-to-add-example-utterances/hr-create-list-2.png)
 
-    若要添加更多的列表项或项同义词，可以标记其他话语，也可以在左侧导航区域的“实体”中编辑实体。  [编辑](luis-how-to-add-entities.md#add-list-entities)实体时，可以选择输入其他具有相应同义词的项，也可以选择导入一个列表。 
+    若要添加更多的列表项或项同义词，可以标记其他话语，也可以在左侧导航区域的“实体”中编辑实体。 [编辑](luis-how-to-add-entities.md#add-list-entities)实体时，可以选择输入其他具有相应同义词的项，也可以选择导入一个列表。 
 
 ## <a name="add-a-composite-entity"></a>添加复合实体
 
@@ -73,7 +73,7 @@ Are there any SQL server jobs?
 
 1. 若要将子实体包装到复合实体中，请在复合实体的话语中选择**第一个**标记的实体（最左侧）。 此时会出现一个下拉列表，显示该选择操作所做的选择。
 
-1. 从下拉列表中选择“包装进复合实体”  。 
+1. 从下拉列表中选择“包装进复合实体”。 
 
 1. 选择复合实体的最后一个单词（最右侧）。 请注意，复合实体带有绿线。 这是复合实体的可视指示器，应该位于复合实体中从最左侧子实体到最右侧子实体的所有单词之下。
 
@@ -81,7 +81,7 @@ Are there any SQL server jobs?
 
     正确包装实体后，会在整个短语下显示绿线。
 
-1. 在“要创建哪种类型的实体?”弹出框中验证复合实体详细信息，然后选择“完成”。  
+1. 在“要创建哪种类型的实体?”弹出框中验证复合实体详细信息，然后选择“完成”。
 
     ![“实体详细信息”弹出窗口的屏幕截图](./media/luis-how-to-add-example-utterances/hr-create-composite-3.png)
 
@@ -105,7 +105,7 @@ Are there any SQL server jobs?
 
 在话语中选择带红色下划线的单词。 
 
-实体框将显示“实体状态”，如果出现预测差异，则会显示一个红色感叹号。  若要在“实体状态”中查看有关标记实体与预测实体之间的差异的信息，请选择“实体状态”，然后选择右侧的项。 
+实体框将显示“实体状态”，如果出现预测差异，则会显示一个红色感叹号。 若要在“实体状态”中查看有关标记实体与预测实体之间的差异的信息，请选择“实体状态”，然后选择右侧的项。
 
 ![实体状态选择的屏幕截图](./media/luis-how-to-add-example-utterances/entity-prediction-error-correction.png)
 
@@ -133,7 +133,7 @@ Are there any SQL server jobs?
 
 可以从“意向”页上的话语中删除机器学习的实体标签。 如果实体不是机器学习的，则不能将其从表述中删除。 如果需要从表述中删除非机器学习实体，则需从整个应用中删除实体。 
 
-如果需要从表述中删除机器学习实体标签，请在表述中选择实体。 然后，在显示的实体下拉框中选择“删除标签”。 
+如果需要从表述中删除机器学习实体标签，请在表述中选择实体。 然后，在显示的实体下拉框中选择“删除标签”。
 
 ### <a name="add-a-prebuilt-entity-label"></a>添加预生成的实体标签
 
@@ -159,4 +159,4 @@ Are there any SQL server jobs?
 
 ## <a name="next-steps"></a>后续步骤
 
-在“意向”  中标记话语后，就可以创建[复合实体](luis-how-to-add-entities.md)了。
+在“意向”中标记话语后，就可以创建[复合实体](luis-how-to-add-entities.md)了。

@@ -7,19 +7,19 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
-ms.openlocfilehash: c55e2f8b1685893ecc813c0d5d94e894f66fb186
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be622c5636c253c48bec4d67fba58319262c2603
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390455"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883562"
 ---
 # <a name="web-search-endpoint"></a>Web 搜索终结点
 
- “Web 搜索 API”返回网页、新闻、图像、视频和[实体](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)。 实体包含有关人员、地点或主题的摘要信息。
+“Web 搜索 API”返回网页、新闻、图像、视频和[实体](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)。 实体包含有关人员、地点或主题的摘要信息。
 
 ## <a name="endpoint"></a>终结点
 
@@ -39,7 +39,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/search
 
 ## <a name="next-steps"></a>后续步骤
 
-必应  API 支持根据其类型返回结果的搜索操作。 所有搜索终结点均将结果作为 JSON 响应对象返回。  所有终结点均支持按经度、纬度和搜索半径返回特定语言和位置的查询。
+必应 API 支持根据其类型返回结果的搜索操作。 所有搜索终结点均将结果作为 JSON 响应对象返回。  所有终结点均支持按经度、纬度和搜索半径返回特定语言和位置的查询。
 
 若要完整了解每个终结点支持的参数，请参阅每种类型对应的参考页面。
 有关使用 Web 搜索 API 的基本请求的示例，请参阅[搜索 Web 快速入门](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/search-the-web)。

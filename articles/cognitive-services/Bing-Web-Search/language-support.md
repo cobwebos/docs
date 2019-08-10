@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 18b124ca7f6f270488fa8e010d2b1c0404f8e9e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384776"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882674"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>必应 Web 搜索 API 的语言和区域支持
 
@@ -23,7 +23,7 @@ ms.locfileid: "66384776"
 
 可以使用 `cc` 查询参数指定国家或地区。 指定国家或地区后，必须使用[`Accept-Language` 标头](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)指定一个或多个语言代码。 使用[市场表](#markets)获取每个市场支持的语言列表。
 
-或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场  。 指定市场的同时指定国家或地区和首选语言。 可以显式使用 `setLang` 查询参数设置语言。
+或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场。 指定市场的同时指定国家或地区和首选语言。 可以显式使用 `setLang` 查询参数设置语言。
 
 ## <a name="countriesregions"></a>国家/地区
 
@@ -40,9 +40,9 @@ ms.locfileid: "66384776"
 |芬兰|FI|
 |法国|FR|
 |德国|DE|
-|中国香港特别行政区|HK|
+|香港特别行政区|HK|
 |印度|IN|
-|印度尼西亚|ID|
+|印度尼西亚|id|
 |意大利|IT|
 |日本|JP|
 |韩国|KR|
@@ -83,7 +83,7 @@ ms.locfileid: "66384776"
 |芬兰|芬兰语|fi-FI|
 |法国|法语|fr-FR|
 |德国|德语|de-DE|
-|中国香港特别行政区|繁体中文|zh-HK|
+|香港特别行政区|繁体中文|zh-HK|
 |印度|英语|en-IN|
 |印度尼西亚|英语|en-ID|
 |意大利|意大利语|it-IT|
@@ -108,7 +108,7 @@ ms.locfileid: "66384776"
 |中国台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
 |英国|英语|en-GB|
-|美国|英语|en-US|
+|美国|英语|zh-CN|
 |美国|西班牙语|es-US|
 
 ## <a name="next-steps"></a>后续步骤

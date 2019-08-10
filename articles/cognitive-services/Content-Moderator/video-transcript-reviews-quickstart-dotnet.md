@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 7bbdfb995ab6c819b0782a30e2ade4df4e5e0551
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f3f93824eb021e0fb75e1a6b81935292379d50e5
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564244"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883074"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>使用 .NET 创建视频脚本评论
 
@@ -25,7 +25,7 @@ ms.locfileid: "68564244"
 - 向评论中添加已审查的脚本
 - 发布评论
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - 如果尚未这样做, 请登录或在内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上创建帐户。
 - 本文假定你已[审查视频](video-moderation-api.md)，并在评论工具中[创建了视频评论](video-reviews-quickstart-dotnet.md)以便进行人工决策。 你现在想要在评论工具中添加已审查的视频脚本。
@@ -154,7 +154,7 @@ public static ContentModeratorClient NewClient()
 **CreateVideoReviews** 具有以下必需参数：
 1. 一个字符串，包含应为“application/json”的 MIME 类型。 
 1. 内容审查器团队名称。
-1. **IList\<CreateVideoReviewsBodyItem >** 对象。 每个 CreateVideoReviewsBodyItem  对象表示一次视频审查。 本快速入门一次创建一条评论。
+1. **IList\<CreateVideoReviewsBodyItem >** 对象。 每个 CreateVideoReviewsBodyItem 对象表示一次视频审查。 本快速入门一次创建一条评论。
 
 **CreateVideoReviewsBodyItem** 具有多个属性。 至少应设置以下属性：
 - Content。 要评论的视频的 URL。

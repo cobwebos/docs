@@ -8,23 +8,23 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 28f8a15922a3a3e4e3b464b86bdfea07d329a848
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 11a2040e674a0ee38fbce8b21097f058fe603da2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638270"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881931"
 ---
 # <a name="manage-account-and-authoring-key"></a>管理帐户和创作密钥
 
-LUIS 帐户信息的两个关键部分是用户帐户和创作密钥。 登录信息在 [account.microsoft.com](https://account.microsoft.com) 上进行管理。 创作密钥在 [LUIS](luis-reference-regions.md) 门户的“设置”  页面上进行管理。
+LUIS 帐户信息的两个关键部分是用户帐户和创作密钥。 登录信息在 [account.microsoft.com](https://account.microsoft.com) 上进行管理。 创作密钥在 [LUIS](luis-reference-regions.md) 门户的“设置”页面上进行管理。
 
 ## <a name="authoring-key"></a>创作密钥
 
-使用“设置”页面上的这个区域特定的单个创作密钥，可通过 [LUIS](luis-reference-regions.md) 门户和[创作 API](https://go.microsoft.com/fwlink/?linkid=2092087) 创作所有应用  。 为方便起见，创作密钥每月可执行[有限](luis-boundaries.md)数量的终结点查询。
+使用“设置”页面上的这个区域特定的单个创作密钥，可通过 [LUIS](luis-reference-regions.md) 门户和[创作 API](https://go.microsoft.com/fwlink/?linkid=2092087) 创作所有应用。 为方便起见，创作密钥每月可执行[有限](luis-boundaries.md)数量的终结点查询。
 
 [![LUIS 设置页](./media/luis-how-to-account-settings/account-settings.png)](./media/luis-how-to-account-settings/account-settings.png#lightbox)
 

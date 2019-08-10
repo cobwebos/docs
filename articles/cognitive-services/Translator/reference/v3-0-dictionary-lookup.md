@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 9a06c8e3b50c3f54971694f8d3924a3a5ba5f071
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0bbdba343888bc91521245d0c9a0e4eaa87c5538
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595041"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932003"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>文本翻译 API 3.0：字典查找
 
@@ -140,13 +140,9 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 此示例演示如何在西班牙语中查找英语字词 `fly` 的替代翻译。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
 ```
-
----
 
 响应正文是（为清楚起见已缩写）：
 
@@ -191,13 +187,9 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?ap
 
 此示例演示当查找的字词在有效的字典对中不存在时会发生什么情况。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"
 ```
-
----
 
 由于在字典中未找到该字词，响应正文包含一个空 `translations` 列表。
 

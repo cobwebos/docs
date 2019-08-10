@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 54c295c353e83c5d7068c30952d1cbf125788f60
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
-ms.translationtype: HT
+ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404984"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883706"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>使用必应实体 API 搜索实体
 
@@ -189,7 +189,7 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
 > [!NOTE]
 > 实体响应支持多个市场，但 Places 响应仅支持美国业务位置。 
 
-本地感知型实体查询（例如“我附近的餐馆”  ）需要用户的位置才能提供准确结果。 请求应始终使用 X-Search-Location 和 X-MSEdge-ClientIP 标头来指定用户的位置。 如果必应认为查询可以利用用户的位置，它会将 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 的 `askUserForLocation` 字段设置为 **true**。 
+本地感知型实体查询（例如“我附近的餐馆”）需要用户的位置才能提供准确结果。 请求应始终使用 X-Search-Location 和 X-MSEdge-ClientIP 标头来指定用户的位置。 如果必应认为查询可以利用用户的位置，它会将 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 的 `askUserForLocation` 字段设置为 **true**。 
 
 ```json
 {
@@ -296,7 +296,7 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
 
 ![许可证属性](../media/cognitive-services-bing-entities-api/licenseattribution.png)
 
-你显示的许可证通知必须包括指向包含许可证相关信息的网站的超链接。 通常会将许可证名称作为超链接。 例如，如果声明是“文本需 CC-BY-SA 许可证”  ，且 CC-BY-SA 是许可证名称，则让 CC-BY-SA 成为超链接。
+你显示的许可证通知必须包括指向包含许可证相关信息的网站的超链接。 通常会将许可证名称作为超链接。 例如，如果声明是“文本需 CC-BY-SA 许可证”，且 CC-BY-SA 是许可证名称，则让 CC-BY-SA 成为超链接。
 
 ### <a name="link-and-text-attribution"></a>链接和文本属性
 

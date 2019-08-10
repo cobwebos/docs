@@ -6,15 +6,15 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 36d87ee9db68c47ee96519cb6b04ff24478427d6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9030d85ff5bc83bb54f4a67a9f319a1670a6c2ad
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423399"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881845"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>必应当地企业搜索 API v7 参考
 
@@ -94,7 +94,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="error"></a>Error  
 定义已发生的错误。  
   
-|元素|描述|type|  
+|元素|描述|类型|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />code|用于标识错误类别的错误代码。 如需可能的代码的列表，请参阅[错误代码](#error-codes)。|String|  
 |<a name="error-message" />message|对错误的说明。|String|  
@@ -117,7 +117,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="license"></a>许可证  
 定义文本或照片的使用许可证。  
   
-|名称|ReplTest1|类型|  
+|姓名|ReplTest1|类型|  
 |----------|-----------|----------|  
 |name|许可证的名称。|String|  
 |url|为用户提供许可证详细信息的网站的 URL。<br /><br /> 使用名称和 URL 创建超链接。|String|  
@@ -126,7 +126,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="link"></a>链接  
 定义超链接的组件。  
   
-|姓名|值|type|  
+|姓名|ReplTest1|类型|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
 |text|显示文本。|String|  
@@ -140,7 +140,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 注意，发布者可能提供其名称和/或网站。  
   
-|名称|值|类型|  
+|名称|ReplTest1|类型|  
 |----------|-----------|----------|  
 |name|发布者名称。|String|  
 |url|发布者网站的 URL。<br /><br /> 请注意，发布者可能未提供网站。|String|  
@@ -150,7 +150,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="place"></a>位置  
 定义有关餐厅或酒店等当地企业的信息。  
   
-|名称|ReplTest1|类型|  
+|姓名|ReplTest1|类型|  
 |----------|-----------|----------|  
 |_type|类型提示，可设置为以下值之一：<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>餐厅</ul><li>|String|  
 |地址|实体所在位置的邮政地址。|PostalAddress|  
@@ -164,7 +164,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="querycontext"></a>QueryContext  
 定义必应用于请求的查询上下文。  
   
-|元素|描述|类型|  
+|元素|描述|type|  
 |-------------|-----------------|----------|  
 |adultIntent|一个布尔值，表示指定的查询是否有成人意向。 如果查询有成人意向，则此值为 **true**，否则为 **false**。|Boolean|  
 |alterationOverrideQuery|一个查询字符串，用于强制必应使用原始字符串。 例如，如果查询字符串为 *saling downwind*，则替代查询字符串为 *+saling downwind*。 记住将查询字符串编码，编码后的字符串为 *%2Bsaling+downwind*。<br /><br /> 只有在原始查询字符串包含拼写错误的情况下，才会包含此字段。|String|  
@@ -188,7 +188,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="rankingitem"></a>RankingItem
 定义要显示的搜索结果项。
 
-|姓名|ReplTest1|类型|  
+|名称|ReplTest1|类型|  
 |-------------|-----------------|----------|
 |resultIndex|要显示答案中的项的从零开始的索引。 如果项不包含此字段，则显示答案中的所有项。 例如，显示“新闻”答案中的所有新闻文章。|整数|
 |answerType|一个答案，包含要显示的项。 例如，新闻。<br /><br />使用此类型查找 SearchResponse 对象中的答案。 此类型是 SearchResponse 字段的名称。<br /><br /> 不过，只有在此对象包含值字段的情况下，才使用答案类型；否则，请忽略它。|String|
@@ -198,7 +198,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="rankingresponse"></a>RankingResponse  
 定义应将内容置于搜索结果页的何处以及应采用什么顺序。  
   
-|名称|ReplTest1|  
+|姓名|ReplTest1|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|要显示在主线中的搜索结果。|  
 |<a name="ranking-pole" />pole|要获得最明显的处理（例如，显示在主线和边栏上方）的搜索结果。|  
@@ -209,7 +209,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 请注意，如果该服务怀疑存在拒绝服务攻击，则请求会成功（HTTP 状态代码为“200 正常”），但响应正文将为空。  
   
-|名称|ReplTest1|类型|  
+|名称|ReplTest1|type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 SearchResponse。|String|  
 |places|与搜索查询相关的实体列表。|JSON 对象|  

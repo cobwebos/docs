@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: 8a8b0e18c1db7a2e2fc08819aa2f2d64d650ded6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c4598e5e99012694a798e44c0d37e9578486751b
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321355"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932111"
 ---
 # <a name="configure-speech-service-containers"></a>配置语音服务容器
 
@@ -23,7 +23,7 @@ ms.locfileid: "68321355"
 
 使用`docker run`命令参数配置**语音**容器运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
-# <a name="configuration-settings"></a>配置设置
+## <a name="configuration-settings"></a>配置设置
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "68321355"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值, 并且值必须是为[`Billing`](#billing-configuration-setting)配置设置指定的_语音_资源的有效键。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值, 并且值必须是为[`Billing`](#billing-configuration-setting)配置设置指定的 _资源的有效键。
 
 可以在以下位置找到此设置：
 
@@ -44,13 +44,13 @@ ms.locfileid: "68321355"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-此`Billing`设置指定 Azure 上用于计量容器的计费信息的_语音_资源的终结点 URI。 您必须为此配置设置指定一个值, 并且该值必须是 Azure 上的_语音_资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+此`Billing`设置指定 Azure 上用于计量容器的计费信息的 _资源的终结点 URI。 您必须为此配置设置指定一个值, 并且该值必须是 Azure 上的 _资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
 * Azure 门户：**语音**概述, 标记`Endpoint`
 
-|必填| 名称 | 数据类型 | 描述 |
+|必填| 姓名 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>例如：<br>`Billing=https://westus.api.cognitive.microsoft.com/sts/v1.0` |
 
@@ -90,9 +90,9 @@ ms.locfileid: "68321355"
 * **行继续符**：以下各部分中的 Docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
 * **参数顺序**：除非很熟悉 Docker 容器，否则不要更改参数顺序。
 
-将 {_argument_name_} 替换为为你自己的值：
+将 { _} 替换为为你自己的值：
 
-| 占位符 | 值 | 格式或示例 |
+| 占位符 | ReplTest1 | 格式或示例 |
 |-------------|-------|---|
 |{API_KEY} | 语音资源的 API 密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 |{ENDPOINT_URI} | 终结点值 (包括区域)。|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|

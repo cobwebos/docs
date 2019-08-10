@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 581ab488337cfecae3f5dd97610c7f92c75af8b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ec45f182e24f44c2222d64f18e2aa0aeea845727
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564336"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882347"
 ---
 # <a name="create-human-reviews-rest"></a>创建人工审阅 (REST)
 
@@ -25,7 +25,7 @@ ms.locfileid: "68564336"
 
 - 登录或创建内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上的帐户。
 
-## <a name="create-a-review"></a>创建审阅
+## <a name="create-a-review"></a>创建评审
 
 若要创建评审, 请在 " **[查看-创建](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API 参考" 页上, 选择用于关键区域的按钮 (可在 "[查看工具](https://contentmoderator.cognitive.microsoft.com/)" 的 "**凭据**" 页上的 "终结点 URL" 中找到此项)。 这会启动 API 控制台, 你可以在其中轻松构造和运行 REST API 调用。
 
@@ -139,7 +139,7 @@ ms.locfileid: "68564336"
 
 ![足球的审查工具图像](images/test-drive-review-5.PNG)
 
-## <a name="get-review-details"></a>获取评审详细信息
+## <a name="get-review-details"></a>获取评论详细信息
 
 若要检索有关现有评审的详细信息, 请转到 "[审阅-获取](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2)API 参考" 页, 然后选择你所在区域的按钮 (你的密钥的管理区域)。
 

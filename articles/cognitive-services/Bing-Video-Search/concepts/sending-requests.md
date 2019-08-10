@@ -7,15 +7,15 @@ author: aahi
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahill
-ms.openlocfilehash: 892220a08480b6b6b1b246967f225422c8c5a105
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
-ms.translationtype: HT
+ms.openlocfilehash: ba2036c58ae54cc665623e63129ecea6c530b27d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500746"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68878983"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>向必应视频搜索 API 发送搜索请求
 
@@ -27,7 +27,7 @@ ms.locfileid: "68500746"
 
 如果提供供用户输入搜索词的搜索框，请使用[必应自动推荐 API](../../bing-autosuggest/get-suggested-search-terms.md) 来改进体验。 此 API 根据用户键入的部分搜索词返回建议的查询字符串。
 
-在用户输入搜索词以后，URL 会在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) 查询参数之前对搜索词进行编码。 例如，如果用户输入 sailing dinghies，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`  。
+在用户输入搜索词以后，URL 会在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) 查询参数之前对搜索词进行编码。 例如，如果用户输入 sailing dinghies，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
 
 ## <a name="sending-a-request"></a>发送请求
 

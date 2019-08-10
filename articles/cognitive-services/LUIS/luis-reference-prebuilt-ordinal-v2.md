@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 972f75fd1c977e79a2fa70c44bb3069e2c69a2c5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1579c50f2dcf78e350ce014ffb1516cec4ac85b3
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563411"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933485"
 ---
 # <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的序号 V2 预生成实体
 序号 V2 扩展了[序号](luis-reference-prebuilt-ordinal.md)以提供相关引用，如 `next`、`last` 和 `previous`。 这些无法使用序号预生成实体提取。

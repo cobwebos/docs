@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 7/01/2019
 ms.author: aahi
-ms.openlocfilehash: b0b26c771f19edeb45fd4fb6aa3f24c335d0f51e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6604e5d5b3b77955c9e5f78df5d2a5b804bf09ef
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562704"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883581"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>向必应视觉搜索 API 发送搜索查询
 
@@ -73,7 +73,7 @@ ms.locfileid: "68562704"
 
 以下是请求应指定的查询参数。 至少应包括`mkt`查询参数:
 
-| 名称 | 值 | type | 必填 |
+| 名称 | ReplTest1 | type | 必填 |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | 表示结果来源的双字符国家/地区代码。<br /><br /> 如果设置此参数，则还必须指定 [Accept-language](#acceptlanguage) 标头。 必应使用从语言列表中找到的第一个受支持语言，并将语言与指定的国家/地区代码相结合以确保从哪个市场返回结果。 如果语言列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场。 或者，可以将聚合或默认市场用于结果，而不是指定一个。<br /><br /> 仅当指定多个语言时，才可以使用此查询参数和 `Accept-Language` 查询参数；否则，应使用 `mkt` 和 `setLang` 查询参数。<br /><br /> 此参数和 [mkt](#mkt) 查询参数相互排斥&mdash;不可同时指定两者。 | String | 否       |
 | <a name="mkt" />mkt   | 产生结果的市场。 <br /><br /> **注意：** 如果已知, 应始终指定市场。 指定市场有助于必应路由请求，并返回适当的最佳响应。<br /><br /> 此参数和 [cc](#cc) 查询参数相互排斥&mdash;不可同时指定两者。 | String | 是      |

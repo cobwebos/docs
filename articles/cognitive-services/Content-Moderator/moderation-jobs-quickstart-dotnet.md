@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: d98c88a6e1d6dfa23f53c32c85c013b4cf2c468d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c291a914ae9e76ce548df2a52523d60b69f0a7b0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565602"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882714"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>定义和使用审核作业 (.NET)
 
@@ -26,7 +26,7 @@ ms.locfileid: "68565602"
 - 跟踪和获取评审的最终状态
 - 将评审结果提交给回调 URL
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - 登录或创建内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上的帐户。
 
@@ -81,7 +81,7 @@ using System.Threading;
 添加以下代码来为订阅创建内容审查器客户端。
 
 > [!IMPORTANT]
-> 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
+> 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey字段。
 
 ```csharp
 /// <summary>

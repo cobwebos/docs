@@ -7,21 +7,21 @@ author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5b73436153427019a7d0d2c641f50592a385f19c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 065d3cd80f93753eb91571d4ada4fe7151258ec0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564556"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882659"
 ---
 # <a name="create-human-reviews"></a>创建人审查
 
 在本指南中, 你将了解如何在审阅工具网站上设置[评论](../review-api.md#reviews)。 查看存储并显示要评估的人的内容。 审查人员可以更改应用的标记, 并根据需要应用自己的自定义标记。 当用户完成评审后, 结果将发送到指定的回调终结点, 并从网站中删除内容。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - 登录或创建内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上的帐户。
 
@@ -34,7 +34,7 @@ ms.locfileid: "68564556"
 
     图像显示自动审核过程所分配的任何标签。 通过查看工具提交的图像对其他审阅者不可见。
 
-1. 或者, 将 "**评论**" 移到 "显示滑块" (1) 以调整屏幕上显示的图像的数量。 单击标记**或未** **标记**的按钮 (2) 以相应地对图像进行排序。 单击标签面板 (3) 以打开或关闭它。
+1. 或者, 将 "**评论**" 移到 "显示滑块" (1) 以调整屏幕上显示的图像的数量。 单击标记或未**标记**的按钮 (2) 以相应地对图像进行排序。 单击标签面板 (3) 以打开或关闭它。
 
     ![Chrome 浏览器显示带有标记图片的审阅工具以供审阅](images/review-images-2.png)
 

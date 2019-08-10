@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: dffef5062e89ef725abcfda187f5e6159c676b9c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 54bc98e0ddba0292c6a5dbb07f2bbdfce6a1cb45
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854324"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933139"
 ---
 # <a name="project-acoustics-unity-integration"></a>项目噪声 Unity 集成
 本操作说明解释如何将项目噪声 Unity 插件集成到 Unity 项目中。
@@ -32,6 +32,10 @@ ms.locfileid: "68854324"
     ![Unity 导入包菜单的屏幕截图](media/import-package.png)  
 
 * 选择 ProjectAcoustics.unitypackage
+
+* 单击 "**导入**" 按钮, 将 Unity 包集成到项目中  
+
+    ![Unity 导入包对话框的屏幕截图](media/import-dialog.png)  
 
 如果要将插件导入现有的项目，项目根目录下可能已具有 mcs.rsp 文件，该文件指定 C# 编译器选项。 需要将该文件与 Project Acoustics 插件附带的 mcs.rsp 文件的内容合并。
 

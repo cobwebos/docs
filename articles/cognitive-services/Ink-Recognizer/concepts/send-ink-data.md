@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 23431a6171f9ce4d2550ee62ac84679ce36126de
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
-ms.translationtype: HT
+ms.openlocfilehash: a5fe77ace5f745911bb9085dd6996a8d21fe265f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721751"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879039"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>将墨迹数据发送到墨迹识别器 API 
 

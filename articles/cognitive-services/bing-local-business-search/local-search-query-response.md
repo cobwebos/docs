@@ -6,15 +6,15 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
-ms.openlocfilehash: 5a26324f22ed46d0c06ecb0eb7ecaf74f589051e
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
-ms.translationtype: HT
+ms.openlocfilehash: 1938bb0464eee458e7320cba4bf713a67c298d27
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423436"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882866"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>发送和使用必应当地企业搜索 API 查询和响应
 
@@ -60,7 +60,7 @@ API 返回的 JSON 结果包含以下属性：
 * entityPresentationInfo
 * 地区
 * id
-* 名称
+* name
 * routeablePoint
 * telephone
 * url

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a70d9ea1090f1c518f804dd28f3461918af965cd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 37084480423de90f50beced187eda202b39f8bf1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854285"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933068"
 ---
 # <a name="project-acoustics-known-issues"></a>项目噪声已知问题
 针对 Project Acoustics 使用设计器预览时，可能会遇到以下已知问题。
@@ -24,10 +24,6 @@ ms.locfileid: "68854285"
 ## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>重命名场景时丢失声学参数
 
 如果重命名场景, 则属于该场景的所有声音参数都不会自动传输到新场景。 不过, 它们仍会存在于旧的资产文件中。 在场景文件旁边的“编辑器”目录内查找 SceneName_AcousticParameters.asset 文件。 重命名文件以反映新的场景名称。
-
-## <a name="unity-crashes-when-closing-project"></a>关闭项目时，Unity 崩溃
-
-在最新版本的 Unity (2018.2+) 上，存在一个已知 bug，在关闭项目时 Unity 会崩溃。 这由[此 Unity 问题](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project)跟踪。
 
 ## <a name="deploying-to-android-from-some-unity-versions"></a>从某些 Unity 版本部署到 Android
 

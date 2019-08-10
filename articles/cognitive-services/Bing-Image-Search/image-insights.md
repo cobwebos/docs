@@ -8,15 +8,15 @@ manager: nitinme
 ms.assetid: 0BCD936E-D4C0-472D-AE40-F4B2AB6912D5
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8521566087690523359b753b800268e75437a257
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f84c6329c2a4dd0a9ad9e81f3700c9e31de95a2a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384271"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883434"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>使用必应图像搜索 API 获取图像见解
 
@@ -374,7 +374,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="finding-visually-similar-products"></a>查找视觉类似的产品  
 
-查找包含以可视方式类似于原始图像中找到的产品的产品的映像，请将[模块](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)查询 SimilarProducts 的参数。  
+若要查找包含与在原始图像中找到的产品外观相似的产品的图像, 请将 "[模块](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)" 查询参数设置为 "SimilarProducts"。  
 
 以下请求演示如何获取视觉类似产品的图像。 此请求使用 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 查询参数来标识在前面的一个请求中返回的原始图像。 若要提高相关性，则应包括用户的查询字符串。  
 

@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3fe9a28a99ea8becbfc40e1e64d1f5b109caace3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 47f39e8dcd96ea3bdba564df348e9b89a6b036ba
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854372"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933160"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>项目噪声 Unreal 和 Wwise 集成
 本操作说明提供项目噪声插件包到现有 Unreal 和 Wwise 游戏项目的详细集成步骤。 
 
 所需软件：
-* [Unreal 引擎](https://www.unrealengine.com/)4.20 或4.21
+* [Unreal 引擎](https://www.unrealengine.com/)4.20 +
 * [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1。\*
 * [适用于 Unreal 的 Wwise 插件](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * 如果你使用的是 Wwise SDK 的直接集成, 而不是使用 Wwise Unreal 插件, 请参阅项目噪声 Unreal 插件并调整 Wwise API 调用。
@@ -52,7 +52,7 @@ ms.locfileid: "68854372"
 
 * 选择下载的包中包含的 `AcousticsWwisePlugin\ProjectAcoustics` 目录。 它包含 Wwise 混音器插件捆绑包。
 
-* Wwise 将安装该插件。 项目噪声现在应显示在 Wwise 的 "已安装的插件" 列表中。
+* Wwise 将安装该插件。 项目噪声现在应显示在 Wwise 的 "已安装的插件" 列表中。  
 ![项目噪声安装后 Wwise 安装的插件列表的屏幕截图](media/unreal-integration-post-mixer-plugin-install.png)
 
 ## <a name="2-redeploy-wwise-into-your-game"></a>2.(重新) 将 Wwise 部署到游戏中
@@ -81,9 +81,13 @@ ms.locfileid: "68854372"
 
     ![Windows 资源管理器窗口的屏幕截图突出显示提供的脚本以修补 Wwise](media/patch-wwise-script.png)
 
-* 如果没有安装 DirectX SDK，则需要在 `[UProject]\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` 中注释掉包含 DXSDK_DIR 的行
+* 如果没有安装 DirectX SDK，则根据所用的 Wwise 版本，可能需要在 `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` 中注释掉包含 `DXSDK_DIR` 的行：
 
     ![显示注释掉 DXSDK 的代码编辑器的屏幕截图](media/directx-sdk-comment.png)
+
+* 如果使用 Visual Studio 2019 进行编译, 若要解决与 Wwise 的链接错误, 请手动编辑中`VSVersion` `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`的默认值`vc150`以:
+
+    ![显示 VSVersion 更改为 microsoft.vc150 的代码编辑器的屏幕截图](media/vsversion-comment.png)
 
 ## <a name="5-build-game-and-check-python-is-enabled"></a>5.生成游戏和检查 Python 已启用
 
@@ -117,7 +121,7 @@ ms.locfileid: "68854372"
 
 * 然后, 中转到 "混音器插件" 选项卡, 并将项目噪声混音器插件添加到总线
 
-    ![Screenshow 的 Wwise 总线显示如何添加项目噪声混音器插件](media/add-mixer-plugin.png)
+    ![显示如何添加项目噪声混音器插件的 Wwise 总线屏幕截图](media/add-mixer-plugin.png)
 
 ### <a name="actor-mixer-hierarchy-setup"></a>执行组件-混合器层次结构设置
 * 出于性能原因, 项目噪声同时向所有源应用音频 DSP。 这要求插件作为混音器插件运行。 Wwise 要求将混音器插件置于输出总线上, 尽管输出总线通常携带干燥输出信号。 项目噪声要求在上`Project Acoustics Bus`携带湿信号时, 通过 aux 总线来路由晾干信号。 以下过程支持逐步迁移到此信号流。
@@ -159,7 +163,7 @@ ms.locfileid: "68854372"
 
 * 现在, 将融入声音数据资产分配到 "噪声空间" 执行组件上的噪声数据槽。 你的场景现在已有噪声!
 
-    ![Unreal editor howing 的 "噪声资产分配" 的屏幕截图](media/acoustics-asset-assign.png)
+    ![显示噪声资产分配的 Unreal 编辑器屏幕截图](media/acoustics-asset-assign.png)
 
 * 现在, 添加一个空参与者并执行以下操作:
 
@@ -167,7 +171,7 @@ ms.locfileid: "68854372"
 
 1. 向执行组件添加一个噪声音频组件。 此组件扩展 Wwise 音频组件的功能, 以用于项目噪声。
 2. 默认情况下, "开始播放" 框处于选中状态, 这将触发级别启动上关联的 Wwise 事件。
-3. 使用 "显示噪声参数" 复选框可以打印有关源的屏幕上的调试信息。
+3. 使用 "显示噪声参数" 复选框可以打印有关源的屏幕上的调试信息。  
     ![启用了调试值的声音源上 Unreal 编辑器噪声面板的屏幕截图](media/debug-values.png)
 4. 为每个常见的 Wwise 工作流分配 Wwise 事件
 5. 确保已关闭 "使用空间音频"。 此时, 如果对特定音频组件使用项目噪声, 则不能同时使用 Wwise 的空间音频引擎来进行噪声。

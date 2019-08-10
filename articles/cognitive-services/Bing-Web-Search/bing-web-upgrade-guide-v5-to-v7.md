@@ -8,21 +8,21 @@ manager: nitinme
 ms.assetid: E8827BEB-4379-47CE-B67B-6C81AD7DAEB1
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: e3d78a1b7488e7489b02e34e9733a5d741213855
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2133cd59c524112ae8a77c0a20cbce1d1336a38d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384893"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881307"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>从必应 Web 搜索 API v5 升级到 v7
 
 此升级指南介绍了必应 Web 搜索 API 的版本 5 与版本 7 之间的更改。 本指南有助于发现需要更新为使用版本 7 的应用部分。
 
-## <a name="breaking-changes"></a>重大变化
+## <a name="breaking-changes"></a>中断性变更
 
 ### <a name="endpoints"></a>终结点
 
@@ -42,7 +42,7 @@ ms.locfileid: "66384893"
 |代码|SubCode|描述
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出现任何子代码条件，必应就会返回 ServerError。 如果 HTTP 状态代码为 500，则响应将包括这些错误。
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误是 HttpNotAllowed，则 HTTP 状态代码为 410。
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误是 HttpNotAllowed，则 HTTP 状态代码为 410。
 |RateLimitExceeded||只要超过每秒查询数 (QPS) 或每月查询数 (QPM) 配额，必应就会返回 RateLimitExceeded。<br/><br/>如果超过 QPS，必应返回 HTTP 状态代码 429；如果超过 QPM，必应返回 HTTP 状态代码 403。
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|当必应无法验证调用方身份时，必应会返回 InvalidAuthorization。 例如，缺少 `Ocp-Apim-Subscription-Key` 头或订阅密钥无效。<br/><br/>如果指定多个身份验证方法，便会发生冗余。<br/><br/>如果错误是 InvalidAuthorization，HTTP 状态代码为 401。
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|当调用方无权访问资源时，必应会返回 InsufficientAuthorization。 如果订阅密钥已禁用或过期，则会发生此错误。 <br/><br/>如果错误是 InsufficientAuthorization，则 HTTP 状态代码为 403。
@@ -68,7 +68,7 @@ InvalidAuthorizationMethod|InvalidAuthorization
 MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
 ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
 InsufficientScope|InsufficientAuthorization
-已阻止|InvalidRequest.Blocked
+阻止|InvalidRequest.Blocked
 
 
 ## <a name="non-breaking-changes"></a>非重大变化  
@@ -81,7 +81,7 @@ InsufficientScope|InsufficientAuthorization
 
 - 添加 [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) 查询参数。 使用此参数指定希望响应包含的答案数。 答案根据排名进行选择。 例如，如果将此参数设置为三 (3)，则响应将包括排名前三位的答案。  
 
-- 添加 [promote](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查询参数。 使用此参数和 `answerCount` 可以显式包含一个或多个答案类型，无论其排名如何。 例如，要将视频和图像升级到响应中，你需要将升级设置为“视频、图片”  。 要升级的答案列表不计入 `answerCount` 限制。 例如，如果 `answerCount` 为 2 且 `promote` 设置为“视频，图像”  ，则响应可能包括网页、新闻、视频和图片。
+- 添加 [promote](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查询参数。 使用此参数和 `answerCount` 可以显式包含一个或多个答案类型，无论其排名如何。 例如，要将视频和图像升级到响应中，你需要将升级设置为“视频、图片”。 要升级的答案列表不计入 `answerCount` 限制。 例如，如果 `answerCount` 为 2 且 `promote` 设置为“视频，图像”，则响应可能包括网页、新闻、视频和图片。
 
 ### <a name="object-changes"></a>对象更改
 

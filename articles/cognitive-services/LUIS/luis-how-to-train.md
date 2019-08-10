@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 6d85aee498f178fa708d3997c65509e2f7241157
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: b3841c9d60cf275e423024fc66c15582f95c0a10
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637902"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932754"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>训练 LUIS 应用的有效版本 
 
@@ -33,9 +33,9 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 若要在 [LUIS 门户中](https://www.luis.ai)启动迭代过程，首先需要将 LUIS 应用训练至少一次。 在训练之前，请确保每个意向具有至少一个陈述。
 
-1. 在“我的应用”页面上选择应用名称以访问应用  。 
+1. 在“我的应用”页面上选择应用名称以访问应用。 
 
-2. 在应用中，在顶部的面板中选择“训练”。  
+2. 在应用中，在顶部的面板中选择“训练”。 
 
 3. 训练完成后，浏览器顶部会显示一个绿色的通知栏。
 
@@ -58,7 +58,7 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 ## <a name="training-with-the-rest-apis"></a>使用 REST API 进行训练
 
-在 LUIS 门户中进行训练是单个步骤，只需按下“训练”  按钮。 使用 REST API 进行训练是一个两步过程。 第一个步骤是通过 HTTP POST [请求训练](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)。 然后通过 HTTP Get 请求[训练状态](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)。 
+在 LUIS 门户中进行训练是单个步骤，只需按下“训练”按钮。 使用 REST API 进行训练是一个两步过程。 第一个步骤是通过 HTTP POST [请求训练](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)。 然后通过 HTTP Get 请求[训练状态](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)。 
 
 若要了解训练是何时完成的，必须对状态进行轮询，直至所有模型都成功训练。 
 

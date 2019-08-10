@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 74b0ad4b5d8a16c8d46fcf6de67c46dab29ba51d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6ec258bc52513772716fa8fe1078653575c923f3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564287"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882020"
 ---
 # <a name="create-video-reviews-using-net"></a>使用 .NET 创建视频审查
 
@@ -27,7 +27,7 @@ ms.locfileid: "68564287"
 - 获取审查状态和详细信息
 - 发布评论
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - 登录或创建内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上的帐户。
 - 本文假定[已审查视频（请见快速入门）](video-moderation-api.md)并已获取响应数据。 你需要它来为人工审查器创建基于帧的审查。
@@ -166,7 +166,7 @@ public static ContentModeratorClient NewClient()
 **CreateVideoReviews** 具有以下必需参数：
 1. 一个字符串，包含应为“application/json”的 MIME 类型。 
 1. 内容审查器团队名称。
-1. **IList\<CreateVideoReviewsBodyItem >** 对象。 每个 CreateVideoReviewsBodyItem  对象表示一次视频审查。 本快速入门一次创建一条评论。
+1. **IList\<CreateVideoReviewsBodyItem >** 对象。 每个 CreateVideoReviewsBodyItem 对象表示一次视频审查。 本快速入门一次创建一条评论。
 
 **CreateVideoReviewsBodyItem** 具有多个属性。 至少应设置以下属性：
 - Content。 要评论的视频的 URL。

@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 4b97c52ec0ed076e1ab8aeada90f430b8ed87514
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c7b3d9b66d74f16dc0938c888456d673b9cd4b77
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854797"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882888"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>如何：对时序数据使用异常探测器 API  
 

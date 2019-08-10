@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 67f3634141e58cebc22ea643852c09c5d8d9328b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 0ab6e4854a96b4434ebb6c0b3649a1955568ba45
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638068"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932796"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>将活动的已训练应用发布到过渡或生产终结点
 
@@ -26,7 +26,7 @@ ms.locfileid: "68638068"
 
 ## <a name="publishing"></a>正在发布
 
-若要发布到终结点，请在右上方的面板中选择“发布”  。 
+若要发布到终结点，请在右上方的面板中选择“发布”。 
 
 ![右上方的导航栏](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
@@ -40,11 +40,11 @@ ms.locfileid: "68638068"
 
 ![“发布”弹出窗口，其中包含指向终结点的链接](./media/luis-how-to-publish-app/publish-success.png)
 
-如果需要终结点 URL，请选择该链接。 还可以通过在顶部菜单中选择“管理”  ，然后在左侧菜单中选择“密钥和终结点”来访问终结点 URL  。 
+如果需要终结点 URL，请选择该链接。 还可以通过在顶部菜单中选择“管理”，然后在左侧菜单中选择“密钥和终结点”来访问终结点 URL。 
 
 ## <a name="configuring-publish-settings"></a>配置发布设置
 
-通过在右上方导航栏中选择“管理”  ，然后选择“发布设置”  来配置发布设置。 
+通过在右上方导航栏中选择“管理”，然后选择“发布设置”来配置发布设置。 
 
 ![发布设置](./media/luis-how-to-publish-app/publish-settings.png)
 

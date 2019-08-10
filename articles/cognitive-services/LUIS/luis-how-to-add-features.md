@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 0ce1fb182320b04aebb45b0f848d8c8f6c965fd9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: f51f5a8583a73219ffb419c76fcd009d102f6ffb
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638155"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932917"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>使用短语列表来增强字词列表的信号
 
@@ -30,30 +30,30 @@ ms.locfileid: "68638155"
 
 LUIS 允许每个应用最多有 10 个短语列表。 
 
-1. 单击“我的应用”页上的名称打开应用，单击“构建”，然后单击应用左侧面板中的“短语列表”    。 
+1. 单击“我的应用”页上的名称打开应用，单击“构建”，然后单击应用左侧面板中的“短语列表”。 
 
-1. 在“短语列表”页上，单击“新建短语列表”   。 
+1. 在“短语列表”页上，单击“新建短语列表”。 
  
-1. 在 "**添加短语列表**" 对话框中, `Cities`键入作为短语列表的名称。 在“值”框中，键入短语列表的值  。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter  。
+1. 在 "**添加短语列表**" 对话框中, `Cities`键入作为短语列表的名称。 在“值”框中，键入短语列表的值。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter。
 
     ![添加短语列表“城市”](./media/luis-add-features/add-phrase-list-cities.png)
 
-1. LUIS 可以建议相关值，用于添加到短语列表。 单击“建议”，获取一组与添加的值在语义上相关的建议值  。 可以单击任何建议的值，或单击“全部添加”添加所有值  。
+1. LUIS 可以建议相关值，用于添加到短语列表。 单击“建议”，获取一组与添加的值在语义上相关的建议值。 可以单击任何建议的值，或单击“全部添加”添加所有值。
 
     ![短语列表建议的值 - 全部添加](./media/luis-add-features/related-values.png)
 
-1. 如果添加的短语列表值是可交换使用的替代值，则单击“这些值可以交换”  。
+1. 如果添加的短语列表值是可交换使用的替代值，则单击“这些值可以交换”。
 
     ![短语列表建议的值 - 选择可互换框](./media/luis-add-features/interchangeable.png)
 
-1. 单击“完成”  。 将“城市”短语列表添加到“短语列表”页  。
+1. 单击“完成”。 将“城市”短语列表添加到“短语列表”页。
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> 可以在“短语列表”  页上，删除或取消激活上下文工具栏中的短语列表。
+> 可以在“短语列表”页上，删除或取消激活上下文工具栏中的短语列表。
 
 ## <a name="next-steps"></a>后续步骤
 

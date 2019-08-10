@@ -7,15 +7,15 @@ author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 8564095cc84a3f124ca41efd2e19787cd16902ab
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 22955ba4b885b264210dc8788f2a410b785b28b4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564128"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883968"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>将模型与预测 API 配合使用
 
@@ -28,7 +28,7 @@ ms.locfileid: "68564128"
 
 从[自定义影像服务网页](https://customvision.ai)，选择你的项目，然后选择“性能”选项卡。
 
-若要将图像提交到预测 API, 首先需要发布迭代进行预测, 这可以通过选择 "__发布__" 并为已发布的迭代指定名称来完成。 这会使你的模型可通过自定义视觉 Azure 资源的预测 API 进行访问。
+若要将图像提交到预测 API, 首先需要发布迭代进行预测, 这可以通过选择 " __" 并为已发布的迭代指定名称来完成。 这会使你的模型可通过自定义视觉 Azure 资源的预测 API 进行访问。
 
 ![显示 "性能" 选项卡, 并在 "发布" 按钮的周围显示一个红色矩形。](./media/use-prediction-api/unpublished-iteration.png)
 
@@ -38,16 +38,16 @@ ms.locfileid: "68564128"
 
 ## <a name="get-the-url-and-prediction-key"></a>获取 URL 和预测密钥
 
-在您的模型发布后, 您可以通过选择 "__预测 URL__" 来检索所需的信息。 这将打开一个对话框, 其中包含有关使用预测 API 的信息, 包括__预测 URL__和__预测键__。
+在您的模型发布后, 您可以通过选择 " __" 来检索所需的信息。 这将打开一个对话框, 其中包含有关使用预测 API 的信息, 包括 __和 __。
 
 !["性能" 选项卡显示在 "预测 URL" 按钮周围显示一个红色矩形。](./media/use-prediction-api/published-iteration-prediction-url.png)
 
 ![将显示 "性能" 选项卡, 并在 "预测 URL" 值周围显示一个红色矩形, 用于使用图像文件和预测键值。](./media/use-prediction-api/prediction-api-info.png)
 
 > [!TIP]
-> 你__还__可以在 "__密钥__" 边栏选项卡下的 " [Azure 门户](https://portal.azure.com)" 页中找到与项目关联的 Azure 资源自定义视觉。
+> 你还可以在 " __" 边栏选项卡下的 " [Azure 门户](https://portal.azure.com)" 页中找到与项目关联的 Azure 资源自定义视觉。
 
-在本指南中, 你将使用本地映像, 因此,**如果你有一个图像文件**到临时位置, 请复制下的 URL。 同时复制相应的__预测密钥__值。
+在本指南中, 你将使用本地映像, 因此,**如果你有一个图像文件**到临时位置, 请复制下的 URL。 同时复制相应的 __值。
 
 ## <a name="create-the-application"></a>创建应用程序
 

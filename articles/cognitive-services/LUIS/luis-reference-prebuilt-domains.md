@@ -8,22 +8,22 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: ce043e23a0384a74fd5d2c9dd514045578ef836d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6e701396191ec8bf66ece0e2858b9f32857e7b17
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563460"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933589"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUIS 应用的预构建的域参考
 此参考提供有关[预构建的域](luis-how-to-use-prebuilt-domains.md)的信息，这些参考是 LUIS 提供的意向和实体的预构建集合。
 
 相比之下，[自定义域](luis-how-to-start-new-app.md)从无意向和模型开始。 可将任何预构建的域意向和实体添加到自定义模型中。
 
-# <a name="supported-domains-across-cultures"></a>各个区域支持的域
+## <a name="supported-domains-across-cultures"></a>各个区域支持的域
 
 唯一支持的区域性为英语。 
 
@@ -54,7 +54,7 @@ The table below summarizes the currently supported domains. Support for English 
 
 |实体类型|description|
 |--|--|
-|Calendar|日历是关于个人会议和约会的任何内容, 而_不_是公共活动 (如世界杯计划、西雅图活动日历) 或常规日历 (如今天今天的那天, 开始的时间, 何时是劳动日)。|
+|Calendar|日历是关于个人会议和约会的任何内容, 而 _是公共活动 (如世界杯计划、西雅图活动日历) 或常规日历 (如今天今天的那天, 开始的时间, 何时是劳动日)。|
 |通信|请求通话、发送短信或即时消息、查找并添加联系人，以及各种其他通信相关的请求（通常为传出请求）。 仅限联系人姓名的查询不属于通信域。|
 |Email|电子邮件是通信域的子域。 它主要包含通过电子邮件发送和接收消息的请求。|
 |家庭自动化|家庭自动化域提供与控制智能家居设备相关的意向和实体。 它主要支持与灯光和空调相关的控制命令，但对于其他电器提供某些通用化功能。|

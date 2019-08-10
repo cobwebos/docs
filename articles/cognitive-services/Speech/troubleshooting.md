@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e70e7b79be7dd4ea55c56898eaf8007d25732366
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f222d9d4cf6c56dea0832938dcb132cf711491bc
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60513984"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934063"
 ---
 # <a name="troubleshooting-bing-speech"></a>必应语音故障排除
 
@@ -48,12 +48,12 @@ ms.locfileid: "60513984"
 
 #### <a name="verify-that-your-subscription-key-is-valid"></a>验证订阅密钥是否有效
 
-可运行以下命令进行验证。 请注意将 YOUR_SUBSCRIPTION_KEY 替换为自己的订阅密钥  。 如果订阅密钥有效，将在响应中收到 JSON Web 令牌 (JWT) 形式的授权令牌。 否则，响应会出错。
+可运行以下命令进行验证。 请注意将 YOUR_SUBSCRIPTION_KEY 替换为自己的订阅密钥。 如果订阅密钥有效，将在响应中收到 JSON Web 令牌 (JWT) 形式的授权令牌。 否则，响应会出错。
 
 > [!NOTE]
 > 将 `YOUR_SUBSCRIPTION_KEY` 替换为自己的订阅密钥。
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -89,7 +89,7 @@ curl -v -X POST "https://api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Co
 > [!NOTE]
 > 将 `YOUR_AUDIO_FILE` 替换为预先录制的音频文件的路径，并将 `YOUR_ACCESS_TOKEN` 替换为上一步中返回的授权令牌。
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 

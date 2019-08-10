@@ -1,21 +1,21 @@
 ---
 title: Azure Active Directory (Azure AD) 身份验证
 titleSuffix: Azure Cognitive Services
-description: 沉浸式读者 SDK 参考
+description: 本文将介绍如何使用自定义子域创建新的沉浸式读者资源, 然后在 Azure 租户中配置 Azure AD。
 services: cognitive-services
 author: rwaller
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: de6a29e1c4c102aa7d4038185c1635544ba9dfe2
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5a03c377a275fff489f1fb8371f9905411b67960
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688796"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881547"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>将 Azure Active Directory (Azure AD) 身份验证用于沉浸式读者服务
 
