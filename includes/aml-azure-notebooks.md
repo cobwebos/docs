@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: ba2c8b01861c0ecbc9adeebfcb184cff1b81e816
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b53d3d6ad5471cfe4ce105a3aace3bc55390a610
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173568"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843139"
 ---
-* 完成[快速入门：通过基于云的笔记本服务器开始使用 Azure 机器学习](../articles/machine-learning/service/quickstart-run-cloud-notebook.md)，以创建工作区并启动笔记本网页。 
+* 在开始本教程之前完成[教程：设置环境和工作区](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md)，以创建工作区并启动笔记本网页。 
 

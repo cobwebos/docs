@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: b462f0c427020b1422b91fbd7ac34e3023e546b8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 998471d99a785eeff39ef7c99e60e1d9b49e0d7a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677868"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725835"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>教程：设置 Azure 时序见解预览环境
 
@@ -62,7 +62,7 @@ ms.locfileid: "68677868"
 
     [![“创建设备模拟解决方案”页](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-## <a name="create-a-time-series-insights-preview-payg-environment"></a>创建时序见解预览 PAYG 环境
+## <a name="create-a-preview-payg-environment"></a>创建预览版 PAYG 环境
 
 本部分介绍如何创建 Azure 时序见解预览版环境，并使用 [Azure 门户](https://portal.azure.com/)将其连接到由 IoT 解决方案加速器创建的 IoT 中心。
 
@@ -130,7 +130,9 @@ ms.locfileid: "68677868"
 
    如果未列出你的凭据，则必须授予自己访问该环境的权限。 若要详细了解如何设置权限，请参阅[授予数据访问权限](./time-series-insights-data-access.md)。
 
-## <a name="stream-data-into-your-environment"></a>将数据流式传输到你的环境中
+## <a name="stream-data"></a>流式传输数据
+
+现已部署了时序见解环境，请将数据流式传输到该环境进行分析。
 
 1. 导航回 [Azure IoT 解决方案加速器页](https://www.azureiotsolutions.com/Accelerators)。 在解决方案加速器仪表板中找到你的解决方案。 然后选择“启动”： 
 
@@ -158,7 +160,7 @@ ms.locfileid: "68677868"
 
     [![Azure IoT 模拟仪表板](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
-## <a name="analyze-data-in-your-environment"></a>在环境中分析数据
+## <a name="analyze-data"></a>分析数据
 
 在此部分，使用 [Azure 时序见解预览资源管理器](./time-series-insights-update-explorer.md)对时序数据进行基本的分析。
 

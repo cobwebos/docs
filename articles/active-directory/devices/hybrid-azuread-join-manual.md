@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8babf2a6a4f4a15c6d2979ea0d5ce558dfb0cd6a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6c9de4a9b72e446a7d2b6687af380ee910b58980
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052145"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741292"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备
 
@@ -83,7 +83,7 @@ Azure AD Connect：
 | 配置服务连接点 | ![勾选标记][1] | ![勾选标记][1] | ![勾选标记][1] |
 | 设置声明颁发 |     | ![勾选标记][1] | ![勾选标记][1] |
 | 启用非 Windows 10 设备 |       |        | ![勾选标记][1] |
-| 验证联接的设备 | ![勾选标记][1] | ![勾选标记][1] | [勾选标记][1] |
+| 验证联接的设备 | ![勾选标记][1] | ![勾选标记][1] | [检查][1] |
 
 ## <a name="configure-a-service-connection-point"></a>配置服务连接点
 
@@ -174,10 +174,19 @@ cmdlet：
 
 Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证服务托管的 WS-Trust 活动终结点（版本 1.3 或 2005）进行身份验证。
 
+使用 AD FS 时，需要启用以下 WS-Trust 终结点
+- `/adfs/services/trust/2005/windowstransport`
+- `/adfs/services/trust/13/windowstransport`
+- `/adfs/services/trust/2005/usernamemixed`
+- `/adfs/services/trust/13/usernamemixed`
+- `/adfs/services/trust/2005/certificatemixed`
+- `/adfs/services/trust/13/certificatemixed`
+
+> [!WARNING]
+> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 只能作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust WIndows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。  
+
 > [!NOTE]
-> 使用 AD FS 时，必须启用 **adfs/services/trust/13/windowstransport** 或 **adfs/services/trust/2005/windowstransport**。 如果使用的是 Web 身份验证代理，还要确保已通过该代理发布了此终结点。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。  
->
-> 如果不使用 AD FS 作为本地联合身份验证服务，请按供应商的说明操作，确保供应商支持 WS-Trust 1.3 或 2005 终结点，并且已通过元数据交换文件 (MEX) 发布这些终结点。
+>如果不使用 AD FS 作为本地联合身份验证服务，请按供应商的说明操作，确保供应商支持 WS-Trust 1.3 或 2005 终结点，并且已通过元数据交换文件 (MEX) 发布这些终结点。
 
 若要完成设备注册，Azure DRS 收到的令牌中必须存在以下声明。 Azure DRS 会根据该信息的部分内容在 Azure AD 中创建设备对象。 然后，Azure AD Connect 使用该信息将新建的设备对象与本地计算机帐户相关联。
 

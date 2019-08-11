@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 05/02/2019
+ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1ec9db2b026dd1853eceb1f110878d6b2beb4d4
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5323c996b8d974c9db11a508503f767cfee80301
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678020"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828105"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
@@ -29,7 +29,7 @@ Azure 机器学习服务是一项云服务，可以使用它来训练、部署�
 
 ## <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
-Azure 机器学习服务提供了一个基于云的环境，你可以使用这一环境来准备数据、培训、测试、部署、管理和跟踪机器学习模型。 开始在本地计算机上训练，然后横向扩展到云。 此服务完全支持开源技术（例如 PyTorch、TensorFlow 和 scikit-learn），可以用于任何类型的机器学习，从经典机器学习到深度学习、监督式学习和非监督式学习，不一而足。 
+Azure 机器学习服务提供了一个基于云的环境，你可以使用这一环境来准备数据、培训、测试、部署、管理和跟踪机器学习模型。 开始在本地计算机上训练，然后横向扩展到云。 此服务完全支持开源技术（例如 PyTorch、TensorFlow 和 scikit-learn），可以用于任何类型的机器学习，从经典机器学习到深度学习、监督式学习和非监督式学习，不一而足。
 
 使用如下所示的丰富工具浏览并准备数据、训练并测试模型，以及对其进行部署：
 + [可视界面](ui-tutorial-automobile-price-train-score.md)：可以在其中拖放模块，以便构建试验，然后部署模型
@@ -55,20 +55,25 @@ Azure 机器学习服务提供了一个基于云的环境，你可以使用这�
 若要进行无代码训练，请尝试：
 
 + 适用于拖放试验和部署的可视界面
-    
+
     ![适用于 Azure 机器学习服务的可视界面](media/overview-what-is-azure-ml/visual-interface.png)
 
 + 适用于自动 ML 试验的 Azure 门户选项
 
 ### <a name="operationalization-mlops"></a>操作化 (MLOps)
 
-有了正确的模型以后，即可轻松地将其用在 Web 服务中、IoT 设备上或 Power BI 中。 有关详细信息，请参阅有关[部署方式及位置](how-to-deploy-and-where.md)的文章。 
+有了正确的模型以后，即可轻松地将其用在 Web 服务中、IoT 设备上或 Power BI 中。 有关详细信息，请参阅有关[部署方式及位置](how-to-deploy-and-where.md)的文章。
 
-然后，可以使用[适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 或 [Azure 门户](https://portal.azure.com/)来管理已部署的模型。 
+然后，可以使用[适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 或 [Azure 门户](https://portal.azure.com/)来管理已部署的模型。
 
 可以使用这些模型[实时](how-to-consume-web-service.md)返回预测，或者在有大量数据的情况下[异步](how-to-run-batch-predictions.md)返回预测。
 
-使用高级[机器学习管道](concept-ml-pipelines.md)，可以在每一步（从数据准备、模型训练和评估一直到部署）进行协作。
+使用高级[机器学习管道](concept-ml-pipelines.md)，可以在每一步（从数据准备、模型训练和评估一直到部署）进行协作。 使用 Pipelines 可以：
+
+* 自动完成云中的端到端机器学习过程
+* 重用组件，并仅在需要时重新运行步骤
+* 在每个步骤中使用不同的计算资源
+* 运行批量评分任务
 
 若要开始使用 Azure 机器学习服务，请参阅[后续步骤](#next-steps)。
 
@@ -86,7 +91,7 @@ Azure 机器学习服务提供 SDK **和**可视界面（预览版），可以�
 |界面的模块| 很多 | 常用模块的初始集|
 |训练计算目标| 专用计算目标，仅限 CPU 支持| 支持 Azure 机器学习计算、GPU 或 CPU。<br/>（其他在 SDK 中受支持的计算）|
 |部署计算目标| 专用 Web 服务格式，不可自定义 | 企业安全选项和 Azure Kubernetes 服务。 <br/>（SDK 中支持的[其他计算](how-to-deploy-and-where.md)） |
-|自动化模型训练和超参数优化 | 否 | 在可视界面中尚不支持。 <br/> （在 SDK 和 Azure 门户中受支持。） | 
+|自动化模型训练和超参数优化 | 否 | 在可视界面中尚不支持。 <br/> （在 SDK 和 Azure 门户中受支持。） |
 
 参考以下教程试用可视界面（预览版）：[教程：使用可视界面预测汽车价格](ui-tutorial-automobile-price-train-score.md)。
 
@@ -103,8 +108,8 @@ Azure 机器学习服务提供 SDK **和**可视界面（预览版），可以�
 
 - [创建机器学习服务工作区](setup-create-workspace.md)以开始使用。
 
-- 按照完整的教程进行操作： 
-  + [使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md) 
+- 按照完整的教程进行操作：
+  + [使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)
   + [准备数据并使用自动化机器学习来自动训练回归模型](tutorial-data-prep.md)
 
 - 了解[机器学习管道](/azure/machine-learning/service/concept-ml-pipelines)，以便生成、优化和管理机器学习方案。

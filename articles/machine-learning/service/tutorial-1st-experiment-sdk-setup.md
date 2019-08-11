@@ -1,7 +1,7 @@
 ---
 title: 教程：设置环境和工作区。
 titleSuffix: Azure Machine Learning service
-description: 在本教程中，你将完成端到端的步骤，以开始使用 Jupyter Notebook 中运行的 Azure 机器学习 Python SDK。
+description: 在本系列教程中，你将完成端到端的步骤，以开始在 Jupyter Notebook 中运行 Azure 机器学习 Python SDK。  第一部分介绍如何创建一个云笔记本服务器环境，以及如何创建一个工作区来管理试验和机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: e17d9286453aeb5c7eac688555177c2c42faad21
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: b3fdcfbb9869c0199c91f5bbc6ca1f02fec996cf
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668594"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828674"
 ---
 # <a name="tutorial-setup-environment-and-workspace"></a>教程：设置环境和工作区
 
@@ -25,7 +25,7 @@ ms.locfileid: "68668594"
 
 > [!div class="checklist"]
 > * 创建要在下一篇教程中使用的机器学习工作区。
-> * 创建云笔记本服务器环境。
+> * 创建笔记本 VM（这是一个基于云的 Jupyter 笔记本服务器），其中预安装并预配置了 Azure 机器学习 Python SDK。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,14 +49,12 @@ ms.locfileid: "68668594"
 
 1. 选择“+新建”，创建一个笔记本 VM。 
 
-     ![选择“新建 VM”](./media/quickstart-run-cloud-notebook/add-workstation.png)
+     ![选择“新建 VM”](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
 
 1. 为 VM 提供一个名称。 然后选择“创建”  。
 
     > [!NOTE]
     > 笔记本 VM 名称必须为 2 到 16 个字符。 有效字符为字母、数字和 - 字符。  名称还必须在 Azure 订阅中独一无二。
-
-    ![创建新 VM](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. 等待状态更改为“正在运行”。 
 
@@ -66,7 +64,7 @@ ms.locfileid: "68668594"
 
 1. 在 VM 的“URI”列中选择“Jupyter”。  
 
-    ![启动 Jupyter 笔记本服务器](./media/quickstart-run-cloud-notebook/start-server.png)
+    ![启动 Jupyter 笔记本服务器](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
     此链接启动笔记本服务器并在新的浏览器标签页中打开 Jupyter 笔记本网页。此链接将仅适用于创建 VM 的人。 工作区的每个用户必须创建自己的 VM。
 
@@ -87,7 +85,7 @@ ms.locfileid: "68668594"
 
 1. 在工作区中，选择“笔记本 VM”。 
 
-   ![停止 VM 服务器](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![停止 VM 服务器](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. 从列表中选择 VM。
 

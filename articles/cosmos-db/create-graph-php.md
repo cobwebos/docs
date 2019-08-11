@@ -8,12 +8,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 15d312ff4dfdb789cb0d9ee85941ea8760ddb08f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480596"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736649"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>快速入门：在 Azure Cosmos DB 中使用 PHP 和 Azure 门户创建图形数据库
 
@@ -113,7 +113,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     ```php
     $db = new Connection([
-        'host' => 'testgraphacct.graphs.azure.com',
+        'host' => 'testgraphacct.gremlin.cosmosdb.azure.com',
         'username' => '/dbs/<db>/colls/<coll>',
         'password' => 'your_primary_key'
         ,'port' => '443'
@@ -123,9 +123,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ]);
     ```
 
-3. 如果图形数据库帐户是在 2017 年 12 月 20 日或之后创建的，请将主机名中的 `graphs.azure.com` 更改为 `gremlin.cosmosdb.azure.com`。
-
-4. 将连接对象中的 `username` 参数更改为你的数据库和图形名称。 如果使用了建议值 `sample-database` 和 `sample-graph`，则它应如以下代码所示：
+3. 将连接对象中的 `username` 参数更改为你的数据库和图形名称。 如果使用了建议值 `sample-database` 和 `sample-graph`，则它应如以下代码所示：
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
@@ -133,7 +131,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     ```php
     $db = new Connection([
-        'host' => 'testgraphacct.graphs.azure.com',
+        'host' => 'testgraphacct.gremlin.cosmosdb.azure.com',
         'username' => '/dbs/sample-database/colls/sample-graph',
         'password' => 'your_primary_key',
         'port' => '443'
@@ -143,7 +141,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ]);
     ```
 
-5. 在 Azure 门户中，使用“复制”按钮复制主密钥，并将它粘贴到密码参数中的 `your_primary_key` 位置。
+4. 在 Azure 门户中，使用“复制”按钮复制主密钥，并将它粘贴到密码参数中的 `your_primary_key` 位置。
 
     现在，连接对象初始化应该类似于下面的代码：
 
@@ -159,7 +157,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ]);
     ```
 
-6. 保存 `connect.php` 文件。
+5. 保存 `connect.php` 文件。
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 
@@ -206,13 +204,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 4. 输入标签“人员”  。
 
-5. 单击“添加属性”  ，添加下列所有属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
+5. 单击“添加属性”  ，添加下列所有属性。 注意，可以在图形中为每个人创建唯一属性。 仅 **id** 键是必需的。
 
-    key|值|说明
+    密钥 | 值 | 说明
     ----|----|----
-    id|ashley|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
-    gender|女| 
-    技术 | java | 
+    **id** | ashley | 顶点的唯一标识符。 如果未指定 id，将为你生成一个。
+    **性别** | 女 | 
+    **技术** | java | 
 
     > [!NOTE]
     > 在本快速入门中，将创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
@@ -224,12 +222,12 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 8. 输入标签“人员”  。
 
 9. 单击“添加属性”  ，添加下列所有属性：
-
-    key|值|说明
+    
+    密钥 | 值 | 说明
     ----|----|----
-    id|rakesh|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
-    gender|男| 
-    学校|MIT| 
+    **id** | rakesh | 顶点的唯一标识符。 如果未指定 id，将为你生成一个。
+    **性别** | 男 | 
+    **学校** | MIT | 
 
 10. 单击“确定”。  
 

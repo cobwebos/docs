@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b16d928e2e4fc4b5376d30b81eb39e5a46e54b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b7cb8d6ab34a632e36ea2fd1c87005a038bc523
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098031"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823712"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>教程：Azure Active Directory 与 LinkedIn Elevate 集成
 
@@ -120,13 +120,13 @@ ms.locfileid: "67098031"
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=elevate&applicationInstanceId=<InstanceId>`
 
-6. LinkedIn Elevate 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 与 **user.userprincipalname**相映射。 LinkedIn Elevate 应用程序要求 nameidentifier 与 **user.mail** 相映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
+6. LinkedIn Elevate 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 LinkedIn Elevate 应用程序要求 nameidentifier 与 **user.mail** 相映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
 
     ![image](common/edit-attribute.png)
 
-7. 除上述属性以外，LinkedIn Elevate 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以添加 SAML 令牌属性，如下表中所示： ****  
+7. 除上述属性以外，LinkedIn Elevate 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以添加 SAML 令牌属性，如下表中所示： 
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | -------| -------------|
     | department | user.department |
 

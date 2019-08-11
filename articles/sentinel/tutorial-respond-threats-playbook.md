@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/25/2019
 ms.author: rkarlin
-ms.openlocfilehash: cdfe22b67585221e2d7e17f47c6a09ba929d68ef
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cd3288e308308729cf9b97e3c699d489857840a8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599015"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780372"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>教程：在 Azure Sentinel 预览版中设置自动威胁响应
 
@@ -90,7 +90,7 @@ ms.locfileid: "68599015"
 
 要按需运行 playbook：
 
-1. 在“案例”页面中，选择一个案例并单击“查看完整详细信息”   。
+1. 在“事件”页中，选择一个事件并单击“查看完整详细信息”   。
 
 2. 在“警报”选项卡中，单击要对其运行 playbook 的警报，然后一直滚动到右侧，单击“查看 playbook”，再选择要从订阅上可用 playbook 列表运行的 playbook    。 
 

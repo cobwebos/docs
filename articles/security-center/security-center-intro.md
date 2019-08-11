@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 28e85f2e9caacc0cc30dcc1a073414c34bc2ab0e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7bd18ab0cedf94f0ecc08c3523a608a8d554e6b2
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064325"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827916"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -34,7 +34,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 -   **日益复杂的攻击**  - 无论在何处运行工作负荷，所面临的攻击都会变得越来越复杂。 必须要确保你的公有云工作负荷的安全，这些实际上是面向 Internet 的工作负荷，如果不遵循安全最佳做法，可能会使你更易受到攻击。
 
--   **安全技能短缺**  - 安全警报和警报系统的数量远远超过了确保你的环境受到保护所需的具有必要背景和经验的管理员数量。 及时了解最新的攻击是一项持续的挑战，因此在安全领域不断变化的情况下不可能保持现状。
+-   **安全技能短缺**  - 安全警报和警报系统的数量超过了具有确保你的环境受到保护所需的必要背景和经验的管理员数量。 及时了解最新的攻击是一项持续的挑战，因此在安全领域不断变化的情况下不可能保持现状。
 
 为了帮助你应对这些挑战，安全中心提供了为你实现以下目的的工具：
 
@@ -126,9 +126,9 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 
 安全中心包含有助于在 Azure SQL 中执行对数据进行自动分类的功能。 还可以获取跨 Azure SQL 和存储服务对潜在漏洞进行的评估，以及有关如何缓解这些问题的建议。
 
-### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>保护 IoT 和混合云工作负荷（预览版）
+### <a name="protect-iot-and-hybrid-cloud-workloads"></a>保护 IoT 和混合云工作负荷
 
-适用于 IoT（物联网）的 Azure 安全中心可跨 Edge、本地、Azure 和其他云中运行的工作负荷提供统一的可见性和控制、自适应威胁防护以及智能威胁检测和响应，从而简化混合工作负荷保护。 有关详细信息，请参阅[适用于 IoT 的 Azure 安全中心（预览版）](https://docs.microsoft.com/azure/asc-for-iot/)。
+适用于 IoT（物联网）的 Azure 安全中心可跨 Edge、本地、Azure 和其他云中运行的工作负荷提供统一的可见性和控制、自适应威胁防护以及智能威胁检测和响应，从而简化混合工作负荷保护。 有关详细信息，请参阅[适用于 IoT 的 Azure 安全中心](https://docs.microsoft.com/azure/asc-for-iot/)。
 
 ## <a name="get-secure-faster"></a>更快地获取安全性
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 2c1013829a7e6e94712e22ae235a47490c8c5eaa
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3e56792673c33ac641ce23213f2b3662b889ec2a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677664"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725662"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>教程：探索 Azure 时序见解 JavaScript 客户端库
 
@@ -40,14 +40,14 @@ ms.locfileid: "68677664"
 
 * 本教程使用浏览器的“开发人员工具”功能  。 现代 Web 浏览器（[Microsoft Edge](/microsoft-edge/devtools-guide)、[Chrome](https://developers.google.com/web/tools/chrome-devtools/)、[Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)、[Safari](https://developer.apple.com/safari/tools/) 等）通常可以通过键盘上的 F12 热键访问“Web 检查器视图”  。 访问该视图的另一种方法是右键单击网页，然后选择“检查元素”  。
 
-## <a name="video"></a>视频
+## <a name="review-video"></a>查看视频
 
 在本视频中，我们将介绍开源时序见解 JavaScript SDK：
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
 
-## <a name="time-series-insights-sample-application"></a>时序见解示例应用程序
+## <a name="sample-application"></a>示例应用程序
 
 整篇教程都使用免费的托管时序见解示例应用来探索应用程序背后的源代码和时序见解 JavaScript 客户端库。 通过使用示例应用，你将了解如何在 JavaScript 中与时序见解进行交互并通过图表和图形可视化数据。
 
@@ -100,7 +100,7 @@ ms.locfileid: "68677664"
 
    [![正文脚本](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png#lightbox)
 
-## <a name="time-series-insights-javascript-client-library-concepts"></a>时序见解 JavaScript 客户端库概念
+## <a name="javascript-client-library"></a>JavaScript 客户端库
 
 时序见解客户端库 (*tsiclient.js*) 为两个重要的 JavaScript 功能提供抽象：
 
@@ -231,7 +231,7 @@ ms.locfileid: "68677664"
 
 [![基于相同数据的多个图表类型](media/tutorial-explore-js-client-lib/tcs-multiple-chart-types-from-the-same-data.png)](media/tutorial-explore-js-client-lib/tcs-multiple-chart-types-from-the-same-data.png#lightbox)
 
-## <a name="advanced-features"></a>高级功能
+## <a name="learn-about-advanced-features"></a>了解高级功能
 
 时序见解客户端库具有一些其他功能，你可以使用它们创造性地实现数据可视化。
 

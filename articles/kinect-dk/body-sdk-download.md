@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装, 人体, 跟踪
-ms.openlocfilehash: 4374a812fa83beef5fd0ab46a4a2da8228cc6d28
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 32942b7f6446fe54d477e5ea5fd891001a3f2213
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453120"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840049"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>下载 Azure Kinect 人体跟踪 SDK
 
@@ -28,12 +28,35 @@ ms.locfileid: "67453120"
 
 版本       | 下载
 --------------|----------
-0.9.0 | [msi](https://download.microsoft.com/download/F/D/E/FDE380A1-6E63-4571-94F3-F3744E9EE85A/Azure%20Kinect%20Body%20Tracking%20SDK%200.9.0.msi)
+0.9.1 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100063) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.1)
+0.9.0 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=58402) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.0)
+
+## <a name="linux-installation-instructions"></a>Linux 安装说明
+
+目前，唯一支持的分发版是 Ubuntu 18.04。 若要请求对其他分发版的支持，请参阅[此页](https://aka.ms/azurekinectfeedback)。
+
+首先，需要遵照[此处](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software)的说明，配置 [Microsoft 的包存储库](https://packages.microsoft.com/)。
+
+`libk4abt<major>.<minor>-dev` 包中包含标头以及要针对 `libk4abt` 生成的 CMake 文件。
+`libk4abt<major>.<minor>` 包中包含运行依赖于 `libk4abt` 的可执行文件以及示例查看器所需的共享对象。
+
+基本教程需要 `libk4abt<major>.<minor>-dev` 包。 若要安装该包，请运行
+
+`sudo apt install libk4abt0.9-dev`
+
+如果该命令成功，则表示 SDK 可供使用。
 
 > [!NOTE]
-> 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect Body Tracking SDK 0.9.0”。 你将要在此路径中查找文章中参考的示例。
+> 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect Body Tracking SDK 0.9.1”。 你将要在此路径中查找文章中参考的示例。
 
 ## <a name="change-log"></a>更改日志
+
+### <a name="v091"></a>v0.9.1
+* [Bug 修复] 修复了销毁跟踪器时的内存泄漏
+* [Bug 修复] 改进了缺少依赖项的错误消息
+* [Bug 修复] 创建第二个跟踪器实例时失败而不崩溃
+* [Bug 修复] 记录器环境变量现在可正常工作
+* Linux 支持
 
 ### <a name="v090"></a>v0.9.0
 

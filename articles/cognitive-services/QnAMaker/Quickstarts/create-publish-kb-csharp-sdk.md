@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/10/2019
+ms.date: 08/06/2019
 ms.author: diberry
-ms.openlocfilehash: af3de85cb2d32b4828a4641318f66f91c9254e24
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 686bdf834efd637db49a7b51dc2bf7effa1eb4cb
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563013"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839967"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>快速入门：适用于 .NET 的 QnA Maker 客户端库
 
@@ -26,6 +26,7 @@ ms.locfileid: "68563013"
 * 创建知识库 
 * 管理知识库
 * 发布知识库
+* 从知识库生成答案
 
 [参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/) | [C# 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)
 
@@ -68,7 +69,6 @@ Build succeeded.
 ...
 ```
 
-
 ### <a name="install-the-sdk"></a>安装 SDK
 
 在应用程序目录中，使用以下命令安装适用于 .NET 的 QnA Maker 客户端库：
@@ -99,6 +99,7 @@ QnA Maker 客户端是 [QnAMakerClient](https://docs.microsoft.com/dotnet/api/mi
 * [发布知识库](#publish-a-knowledge-base)
 * [删除知识库](#delete-a-knowledge-base)
 * [获取操作的状态](#get-status-of-an-operation)
+* [从知识库生成答案](#generate-an-answer-from-the-knowledge-base)
 
 ## <a name="add-the-dependencies"></a>添加依赖项
 
@@ -106,7 +107,7 @@ QnA Maker 客户端是 [QnAMakerClient](https://docs.microsoft.com/dotnet/api/mi
 
 [!code-csharp[Using statements](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=Dependencies)]
 
-## <a name="authenticate-the-client"></a>验证客户端
+## <a name="authenticate-the-client-for-authoring-the-knowledge-base"></a>对用于创作知识库的客户端进行身份验证
 
 在 **main** 方法中，为资源的 Azure 密钥创建变量，该变量从名为 `QNAMAKER_SUBSCRIPTION_KEY` 的环境变量拉取。 如果在启动应用程序后创建了环境变量，则需要关闭并重新加载运行它的编辑器、IDE 或 shell 以访问该变量。 稍后会创建这些方法。
 
@@ -115,6 +116,14 @@ QnA Maker 客户端是 [QnAMakerClient](https://docs.microsoft.com/dotnet/api/mi
 如果密钥不在 `westus` 区域，则按此示例代码所示更改 **Endpoint** 变量的位置。 此位置可以在 Azure 门户的 QnA Maker 资源的“概览”页上找到。 
 
 [!code-csharp[Authorization to resource key](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=Authorization)]
+
+## <a name="authenticate-the-runtime-for-generating-an-answer"></a>对用于生成答案的运行时进行身份验证
+
+在 **main** 方法中，为资源的 Azure 密钥创建变量，该变量从名为 `QNAMAKER_ENDPOINT_HOSTNAME` 和 `QNAMAKER_ENDPOINT_KEY` 的环境变量拉取。 发布知识库时，将返回这些值。 发布后，可以在 QnA Maker 门户的“设置”  页上找到这些设置。 
+
+创建 [QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) 来查询知识库，以通过主动学习生成答案或训练。
+
+[!code-csharp[Authenticate the runtime](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=EndpointKey)]
 
 ## <a name="create-a-knowledge-base"></a>创建知识库
 
@@ -148,6 +157,13 @@ QnA Maker 客户端是 [QnAMakerClient](https://docs.microsoft.com/dotnet/api/mi
 
 [!code-csharp[Publish a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=PublishKB&highlight=2)]
 
+## <a name="generate-an-answer-from-the-knowledge-base"></a>从知识库生成答案
+
+使用 [RuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient.knowledgebase?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_QnAMakerClient_Knowledgebase).[GenerateAnswerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions.generateanswerasync?view=azure-dotnet) 方法从已发布的知识库生成答案。 此方法接受知识库 ID 和 [QueryDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.querydto?view=azure-dotnet)。 访问 QueryDTO 的其他属性，例如要在聊天机器人中使用的 [Top](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.querydto.top?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_Models_QueryDTO_Top) 和 [Context](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.querydto.context?view=azure-dotnet)。 
+
+[!code-csharp[Generate an answer from a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=GenerateAnswer&highlight=2)]
+
+
 ## <a name="delete-a-knowledge-base"></a>删除知识库
 
 使用 [DeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.deleteasync?view=azure-dotnet) 方法与知识库 ID 参数删除知识库。 
@@ -169,6 +185,8 @@ QnA Maker 客户端是 [QnAMakerClient](https://docs.microsoft.com/dotnet/api/mi
 ```dotnet
 dotnet run
 ```
+
+[此快速入门的源代码](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.css)在 QnA Maker C# 示例 GitHub 存储库中提供。
 
 ## <a name="clean-up-resources"></a>清理资源
 

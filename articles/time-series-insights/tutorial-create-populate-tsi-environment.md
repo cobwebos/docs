@@ -9,12 +9,12 @@ ms.date: 07/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 921528c50bae03b67800bf3ccab8b5cd9bb704f6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4c81daa1f55167fa868c69f3bff388dbaa4887cd
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677751"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725742"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>教程：创建 Azure 时序见解环境
 
@@ -34,7 +34,7 @@ ms.locfileid: "68677751"
 
 * 所用的 Azure 登录帐户还必须是订阅的“所有者”角色的成员。  有关详细信息，请参阅[使用基于角色的访问控制和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
 
-## <a name="video"></a>视频
+## <a name="review-video"></a>查看视频
 
 ### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-time-series-insights-br"></a>了解如何使用 Azure IoT 解决方案加速器生成数据和开始使用时序见解。 </br>
 
@@ -116,7 +116,7 @@ Azure IoT 中心是本教程中的所有设备（模拟设备或物理设备）�
 
    [![时序见解环境部署成功](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
 
-## <a name="run-device-simulation-to-stream-data"></a>运行设备模拟以流式传输数据
+## <a name="run-device-simulation"></a>运行设备模拟
 
 既然部署和初始配置已完成，请使用[由加速器创建的模拟设备](#create-a-device-simulation)中的数据填充时序见解环境。
 

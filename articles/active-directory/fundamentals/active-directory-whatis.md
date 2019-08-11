@@ -10,12 +10,12 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3087f0ac69126c6d509eee77abe15cc35319dfb
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: eda457747a6a3e374e7fdea571f64446e15ded21
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693924"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774175"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？
 
@@ -33,7 +33,7 @@ Azure AD 适用于：
 
 - **IT 管理员。** 作为 IT 管理员，你可以使用 Azure AD 根据业务要求控制用户对你的应用和应用资源的访问。 例如，可以使用 Azure AD 要求用户在访问重要的组织资源时进行多重身份验证。 另外，还可以使用 Azure AD 在现有 Windows Server AD 和云应用（包括 Office 365）之间自动完成用户预配。 最终可以利用 Azure AD 提供的强大工具自动保护用户标识和凭据，实现访问管理要求。 若要开始尝试，请注册 [30 天 Azure Active Directory Premium 免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
 
-- **应用开发人员。** 作为应用开发人员，你可以通过 Azure AD 以基于标准的方式向应用添加单一登录 (SSO) 功能，使之能够与用户的预先存在的凭据配合使用。 另外还可以通过 Azure AD 提供的 API 来构建个性化应用体验，充分使用现有的组织数据。 若要开始尝试，请注册 [30 天 Azure Active Directory Premium 免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 有关详细信息，还可以参阅[针对开发人员的 Azure Active Directory](../develop/index.yml)。
+- **应用开发人员。** 作为应用开发人员，你可以使用 Azure AD 作为一种基于标准的方法，将单一登录 (SSO) 添加到应用中，从而允许它使用用户预先存在的凭据。 另外还可以通过 Azure AD 提供的 API 来构建个性化应用体验，充分使用现有的组织数据。 若要开始尝试，请注册 [30 天 Azure Active Directory Premium 免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 有关详细信息，还可以参阅[针对开发人员的 Azure Active Directory](../develop/index.yml)。
 
 - **Microsoft 365、Office 365、Azure 或 Dynamics CRM Online 订阅者。** 作为订阅者，你已在使用 Azure AD。 每个 Microsoft 365、Office 365、Azure 和 Dynamics CRM Online 租户都会自动成为 Azure AD 租户。 你可以立即开始管理用户对集成云应用的访问。
 

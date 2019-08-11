@@ -8,12 +8,12 @@ ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: bd50fb4a28aa0ab71c1fb0aeba772a2bd7d1df9d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4d9af918c222107cfca5863309efb391b8e6d2e0
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677728"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720866"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>教程：创建 Azure 时序见解单页 Web 应用
 
@@ -38,7 +38,7 @@ ms.locfileid: "68677728"
 
 * 适用于 Visual Studio 的 IIS Express、Web 部署和 Azure 云服务核心工具组件。 通过修改 Visual Studio 安装来添加组件。
 
-## <a name="application-design"></a>应用程序设计
+## <a name="understand-application-design"></a>了解应用程序设计
 
 时序见解示例 SPA 是本教程中使用的设计和代码的基础。 代码使用时序见解 JavaScript 客户端库。 时序见解客户端库提供两个主要 API 类别的抽象：
 
@@ -48,11 +48,11 @@ ms.locfileid: "68677728"
 
 本教程还会使用示例应用程序时序见解环境中的数据。 有关时序见解示例应用程序的结构以及它如何使用时序见解客户端库的详细信息，请参阅教程[探索 Azure 时序见解 JavaScript 客户端库](tutorial-explore-js-client-lib.md)。
 
-## <a name="register-the-application-with-azure-ad"></a>将应用程序注册到 Azure AD
+## <a name="register-with-azure-ad"></a>注册到 Azure AD
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
-## <a name="build-and-publish-the-web-application"></a>生成并发布 Web 应用程序
+## <a name="build-and-publish"></a>生成并发布
 
 1. 创建一个存储应用程序项目文件的目录。 然后访问以下每个 URL。 右键单击页面右上角的“原始”  链接，然后选择“另存为”  以将文件保存在项目目录中。
 
@@ -101,7 +101,7 @@ ms.locfileid: "68677728"
       <link rel="stylesheet" type="text/css" href="../../dist/tsiclient.css"> -->
       ```
 
-   1. 若要配置应用以使用 Azure AD 应用注册 ID，请更改 `clientID` 值以使用[注册应用程序以使用 Azure AD](#register-the-application-with-azure-ad) 时在**步骤 3** 中复制的**应用程序 ID**。 如果已在 Azure AD 中创建了**注销 URL**，请将该值设置为 `postLogoutRedirectUri` 值。
+   1. 若要配置应用以使用 Azure AD 应用注册 ID，请更改 `clientID` 值以使用[注册应用程序以使用 Azure AD](#register-with-azure-ad) 时在**步骤 3** 中复制的**应用程序 ID**。 如果已在 Azure AD 中创建了**注销 URL**，请将该值设置为 `postLogoutRedirectUri` 值。
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 
@@ -141,9 +141,9 @@ ms.locfileid: "68677728"
 
 错误代码/条件 | 说明
 ---------------------| -----------
-AADSTS50011：  未为应用程序注册回复地址。 | Azure AD 注册缺少“回复 URL”  属性。 转到 Azure AD 应用程序注册的“设置”   >   “回复 URL”。 验证[注册应用程序以使用 Azure AD](#register-the-application-with-azure-ad) 时，可以选择在**步骤 2** 中指定的**重定向 URI** 是否存在。
-AADSTS50011：*在请求中指定的回复 URL 与为以下应用程序配置的回复 URL 不匹配：'\<Application ID GUID>'。* | 在[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的**步骤 6** 中指定的 `postLogoutRedirectUri` 必须与 Azure AD 应用程序注册中“设置”   > “回复 URL”  下指定的值匹配。 务必还要更改“目标 URL”  的值，以按照[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的**步骤 5** 使用 https  。
-Web 应用程序会加载，但登录页是未设置样式的纯文本页面，背景为白色。 | 验证在[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的**步骤 4** 中论述的路径是否正确。 如果 Web 应用程序找不到 .css 文件，则页面无法正确设置样式。
+AADSTS50011：  未为应用程序注册回复地址。 | Azure AD 注册缺少“回复 URL”  属性。 转到 Azure AD 应用程序注册的“设置”   >   “回复 URL”。 验证在[注册应用程序以使用 Azure AD](#register-with-azure-ad) 时，可以选择在**步骤 2** 或**步骤 4** 中指定的**重定向 URI** 是否存在。
+AADSTS50011：*在请求中指定的回复 URL 与为以下应用程序配置的回复 URL 不匹配：'\<Application ID GUID>'。* | 在[生成并发布 Web 应用程序](#build-and-publish)的**步骤 6.b** 中指定的 `postLogoutRedirectUri` 必须与 Azure AD 应用程序注册中“设置”   > “回复 URL”  下指定的值匹配。 |
+Web 应用程序会加载，但登录页是未设置样式的纯文本页面，背景为白色。 | 验证在[生成并发布 Web 应用程序](#build-and-publish)的**步骤 6** 中论述的路径是否正确。 如果 Web 应用程序找不到 .css 文件，则页面无法正确设置样式。
 
 ## <a name="clean-up-resources"></a>清理资源
 

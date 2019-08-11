@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6c94ca3a82095736ef7d242987d1fbf66a825950
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: f6304c554858a29e8c6c886bcdec3b51efd635b6
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306504"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840095"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>教程：为 Linux 设备开发和部署 Node.js IoT Edge 模块
 
@@ -108,7 +108,7 @@ ms.locfileid: "66306504"
 
 ### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
-每个模板都附带示例代码，该代码从 **tempSensor** 模块提取模拟传感器数据并将其路由到 IoT 中心。 在此部分，请添加代码，以便让 NodeModule 分析消息，然后再发送它们。 
+每个模板都附带示例代码，该代码从 **SimulatedTemperatureSensor** 模块提取模拟传感器数据并将其路由到 IoT 中心。 在此部分，请添加代码，以便让 NodeModule 分析消息，然后再发送它们。 
 
 1. 在 VS Code 资源管理器中，打开 **modules** > **NodeModule** > **app.js**。
 
@@ -212,7 +212,7 @@ ms.locfileid: "66306504"
 
 3. 选择 **config** 文件夹中的 **deployment.json** 文件，然后单击“选择 Edge 部署清单”。  不要使用 deployment.template.json 文件。
 
-4. 单击“刷新”按钮。 此时会看到新的 **NodeModule** 在运行，此外还有 **TempSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 在运行。
+4. 单击“刷新”按钮。 此时应看到新的 **NodeModule** 与 **SimulatedTemperatureSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 一起运行。
 
 ## <a name="view-generated-data"></a>查看生成的数据
 

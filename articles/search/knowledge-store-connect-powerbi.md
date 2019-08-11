@@ -4,16 +4,17 @@ description: 使用 Azure 门户中的导入数据向导创建知识存储，然
 author: heidisteen
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: 04b04e8080590aa6e9fe1c17369e83fa5bb6b894
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 518a96ae8ace5c9630d594fe70487635b6ec1d2c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668216"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840843"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>使用 Power BI 创建 Azure 搜索知识存储并进行连接
 
@@ -156,7 +157,7 @@ ms.locfileid: "68668216"
 
 1. 在 Power Query 命令栏的最左侧单击“关闭并应用”。 
 
-1. 验证 Power BI 是否能够识别知识存储在数据中创建的关系。 在左侧导航窗格中单击“关系”磁贴。 所有三个表都应该相关。
+1. 验证 Power BI 是否能够识别知识存储在数据中创建的关系。 在左侧导航窗格中单击“关系”磁贴。 所有三个表都应该相关。 编辑关系，并确保“交叉筛选器方向”设置为“双向”，这将确保在应用筛选器时，刷新所有视觉对象。
 
    ![验证关系](media/knowledge-store-howto-powerbi/powerbi-relationships.png "验证关系")
 

@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b77b44856e9623235051470bc087885765ee12c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 872c6f0af9695628f2821c8859d0b582534efd45
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080432"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840074"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库存储边缘中的数据
 
@@ -219,7 +219,7 @@ ms.locfileid: "67080432"
 
 6. 在解决方案文件夹中，打开 **deployment.template.json** 文件。 
 
-7. 找到 **modules** 节。 应会看到三个模块。 模块 *tempSensor* 默认已包含在新解决方案中，提供与其他模块配合使用的测试数据。 模块 *sqlFunction* 是最初使用新代码创建和更新的模块。 最后，模块 *sql* 是从 Azure 市场导入的。 
+7. 找到 **modules** 节。 应会看到三个模块。 模块 *SimulatedTemperatureSensor* 默认已包含在新解决方案中，并提供与其他模块配合使用的测试数据。 模块 *sqlFunction* 是最初使用新代码创建和更新的模块。 最后，模块 *sql* 是从 Azure 市场导入的。 
 
    >[!Tip]
    >在部署清单的环境变量中，为 SQL Server 模块设置了默认密码。 每当在生产环境中创建 SQL Server 容器时，都应该[更改默认的系统管理员密码](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker)。
@@ -244,7 +244,7 @@ ms.locfileid: "67080432"
 
 告知 Visual Studio Code 生成解决方案时，它首先获取部署模板中的信息，然后在名为 **config** 的新文件夹中生成 deployment.json 文件。然后，它在集成终端运行两个命令，即 `docker build` 和 `docker push`。 这两个命令会生成代码，将模块容器化，然后将代码推送到在初始化解决方案时指定的容器注册表。 
 
-可以验证 sqlFunction 模块是否已成功推送到容器注册表。 在 Azure 门户中，导航到容器注册表。 选择“存储库”并搜索 **sqlFunction**。  另外两个模块 tempSensor 和 sql 不会推送到容器注册表，因为已指向这些模块在 Microsoft 注册表中的存储库。
+可以验证 sqlFunction 模块是否已成功推送到容器注册表。 在 Azure 门户中，导航到容器注册表。 选择“存储库”并搜索 **sqlFunction**。  另外两个模块 SimulatedTemperatureSensor 和 sql 不会推送到容器注册表，因为你已经在 Microsoft 注册表中指向它们的存储库。
 
 ## <a name="deploy-the-solution-to-a-device"></a>将解决方案部署到设备
 
@@ -268,7 +268,7 @@ ms.locfileid: "67080432"
 
 ## <a name="create-the-sql-database"></a>创建 SQL 数据库
 
-对设备应用部署清单时，会运行三个模块。 tempSensor 模块生成模拟环境数据。 sqlFunction 模块会提取数据并针对数据库设置其格式。 本部分介绍如何设置用于存储温度数据的 SQL 数据库。 
+对设备应用部署清单时，会运行三个模块。 SimulatedTemperatureSensor 模块生成模拟环境数据。 sqlFunction 模块会提取数据并针对数据库设置其格式。 本部分介绍如何设置用于存储温度数据的 SQL 数据库。 
 
 在 IoT Edge 设备上运行以下命令。 这些命令连接到在你的设备上运行的 **sql** 模块，并创建数据库和表来存放发送到它的温度数据。 
 

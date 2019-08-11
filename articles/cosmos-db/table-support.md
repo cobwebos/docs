@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 表 API 和 Azure 存储表如何协同工�
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 11/15/2017
+ms.date: 08/05/2019
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: c7c9caad6c454b90a6d50932450922a03bbc1944
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 71bc5d73a7b5bc83dc1ac835c80ac1b14d5113e9
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604183"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814697"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>使用 Azure 表存储 API 和 Azure Cosmos DB 进行开发
 
@@ -41,9 +41,9 @@ Azure Cosmos DB 表 API 和 Azure 表存储通过其 SDK 共享相同的表数�
 Azure 表存储的以下 SDK 可用于开发：
 
 - [WindowsAzure.Storage .NET SDK](https://www.nuget.org/packages/WindowsAzure.Storage/)。 该库使你能够使用存储表服务。
-- [Python SDK](table-sdk-python.md)。 用于 Python 的 Azure Cosmos DB 表 SDK 也支持存储表服务。
+- [Python SDK](https://github.com/Azure/azure-cosmos-table-python)。 用于 Python 的 Azure Cosmos DB 表 SDK 支持表存储服务（由于 Azure 表存储和 Cosmos DB 的表 API 共享相同的特性和功能，因此为了分解我们的 SDK 开发工作，我们建议使用此 SDK）。
 - [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java)。 此 Azure 存储 SDK 提供了一个 Java 客户端库来使用 Azure 表存储。
-- [Node.js SDK](table-sdk-nodejs.md)。 此 SDK 提供了一个 Node.js 包和一个浏览器兼容的 JavaScript 客户端库来使用存储表服务。
+- [Node.js SDK](https://github.com/Azure/azure-storage-node)。 此 SDK 提供了一个 Node.js 包和一个浏览器兼容的 JavaScript 客户端库来使用存储表服务。
 - [AzureRmStorageTable PowerShell 模块](https://www.powershellgallery.com/packages/AzureRmStorageTable)。 此 PowerShell 模块包含 cmdlet 以使用存储表。
 - [适用于 C++ 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-cpp/)。 此库使你能够针对 Azure 存储构建应用程序。
 - [适用于 Ruby 的 Azure 存储表客户端库](https://github.com/azure/azure-storage-ruby/tree/master/table)。 此项目提供了一个 Ruby 包，使用该包可轻松访问 Azure 存储表服务。

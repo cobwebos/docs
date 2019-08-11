@@ -7,15 +7,15 @@ ms.date: 06/10/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: a06504438340f62d5b338165cb8b159459ae35dc
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: e63ad75effb03cf9dd5eb5c66b142cce629ea290
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467079"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736236"
 ---
-# <a name="back-up-azure-file-shares"></a>备份 Azure 文件共享
-本文介绍如何使用 Azure 门户备份和还原 [Azure 文件共享](../storage/files/storage-files-introduction.md)。
+# <a name="back-up-azure-file-shares-in-the-azure-portal"></a>在 Azure 门户中备份 Azure 文件共享
+本教程介绍如何使用 Azure 门户备份 [Azure 文件共享](../storage/files/storage-files-introduction.md)。
 
 本指南介绍如何：
 > [!div class="checklist"]

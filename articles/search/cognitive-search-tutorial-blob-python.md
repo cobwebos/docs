@@ -1,20 +1,21 @@
 ---
-title: Python 教程：在索引管道中调用认知服务 API - Azure 搜索
+title: Python 教程：在 AI 扩充管道中调用认知服务 - Azure 搜索
 description: 本教程通过一个示例分步说明如何使用 Jupyter Python 笔记本在 Azure 搜索中完成数据提取、自然语言和图像 AI 处理。 提取的数据会编制索引并通过查询轻松访问。
 manager: cgronlun
 author: LisaLeib
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: b7f1baa473ca28db696835a7b0895f1603c74770
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: af355ec353e12c30723597927883cb23dfa31e71
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359404"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840924"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python 教程：在 Azure 搜索索引管道中调用认知服务 API
 

@@ -1,5 +1,5 @@
 ---
-title: 教程：在索引管道中调用认知服务 REST API - Azure 搜索
+title: REST 教程：在 AI 扩充管道中调用认知服务 - Azure 搜索
 description: 本教程通过一个例子逐步说明如何使用 Postman 和 REST API 在 Azure 搜索索引中完成数据提取、自然语言和图像 AI 处理，以便基于 JSON Blob 实现数据提取和转换。
 manager: pablocas
 author: luiscabrer
@@ -9,13 +9,13 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: cedcc1be5525cc6932ff168e6549de84fa02a4ca
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.subservice: cognitive-search
+ms.openlocfilehash: d431f0ced5b417e178e064dca347ae8d78f14e5d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669099"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840873"
 ---
 # <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>REST 教程：在 Azure 搜索索引管道中调用认知服务 API
 

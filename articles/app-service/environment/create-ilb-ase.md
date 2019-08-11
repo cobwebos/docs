@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 05/28/2019
+ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5b05755502ad5836a21080a122d2e1721825f10c
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 4b41772a4e904603309f45244cf4df22af876a32
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734689"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812741"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
 
@@ -109,14 +109,14 @@ ILB ASE 上同时支持函数和 Web 作业，但对于与其配合使用的门�
 
 - 为 *&lt;ASE 名称&gt;.appserviceenvironment.net* 创建一个区域
 - 在该区域中创建一条指向* ILB IP 地址的 A 记录 
-- 在 *&lt;ASE 名称&gt;.scm.appserviceenvironment.net* 中创建名为 scm 的区域
+- 在 *&lt;ASE 名称&gt;.appserviceenvironment.net* 中创建名为 scm 的区域
 - 在 scm 区域中创建一条指向 ILB IP 地址的 A 记录
 
 ## <a name="publish-with-an-ilb-ase"></a>使用 ILB ASE 发布
 
 创建的每个应用都有两个终结点。 ILB ASE 中包含 *&lt;应用名称&gt;.&lt;ILB ASE 域&gt;* 和 *&lt;应用名称&gt;.scm.&lt;ILB ASE 域&gt;* 。 
 
-SCM 站点名称能将用户带到 Kudu 控制台，在 Azure 门户中称为**高级门户**。 Kudu 控制台允许查看环境变量、浏览磁盘、使用控制台等等。 有关详细信息，请参阅[用于 Azure 应用服务的 Kudu 控制台][Kudu]。 
+SCM 站点名称能将用户带到 Kudu 控制台，在 Azure 门户中称为**高级门户**。 Kudu 控制台允许查看环境变量、浏览磁盘、使用控制台等等。 有关详细信息，请参阅 [Azure 应用服务的 Kudu 控制台][Kudu]。 
 
 如果生成代理可访问 Internet 并与 ILB ASE 在同一网络上，则基于 Internet 的 CI 系统（例如 GitHub 和 Azure DevOps）仍将使用 ILB ASE。 因此，如果在 ILB ASE 所在的 VNET 上（不同的子网属正常情况）创建生成代理，Azure DevOps 将能从 Azure DevOps git 中拉取代码并部署到 ILB ASE。 如果不想创建自己的生成代理，则需要使用利用拉取模型的 CI 系统，如 Dropbox。
 

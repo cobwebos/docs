@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Dev Spaces 和 Visual Studio 在 AKS 中进行 .NET Core 开发
+title: 通过 Azure Dev Spaces 在 AKS 上使用 Visual Studio 和 .NET Core 进行调试和循环访问
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
@@ -12,14 +12,14 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm,
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: bb23de0dfe2d717ee2e41d69eec211f1fde26687
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ece47c86fba6bc975a4146f596fa001014352a4f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707187"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725842"
 ---
-# <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio"></a>快速入门：使用 Azure Dev Spaces 在 Kubernetes 中进行 .NET Core 开发 (Visual Studio)
+# <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>快速入门：通过 Azure Dev Spaces 在 Kubernetes 上使用 Visual Studio 和 .NET Core 进行调试和循环访问
 
 本指南介绍如何：
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 080d1d68c2f2fb757bb51471b91a807b2f00fa2d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7fade5e73d7c571cea46c91cb952b590aca4b3c2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709523"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780301"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
 
@@ -51,6 +51,9 @@ ms.locfileid: "67709523"
 ### <a name="deprovision-the-vm"></a>取消设置 VM 
 
 取消设置可通过删除特定于计算机的信息通用化 VM。 通过此通用化，可从单个映像中部署多个 VM。 在取消预配期间，主机名将重置为“localhost.localdomain”  。 还会删除 SSH 主机密钥、名称服务器配置、根密码和缓存的 DHCP 租约。
+
+> [!WARNING]
+> 取消预配 VM 并将其标记为“已通用化”将导致源 VM 不可用，并且无法重新启动。 
 
 若要取消设置 VM，请使用 Azure VM 代理 (waagent)。 Azure VM 代理安装在 VM 上，并管理预配及其与 Azure 结构控制器的交互。 有关详细信息，请参阅 [Azure Linux 代理用户指南](../extensions/agent-linux.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: 将 SQL Server 数据库备份到 Azure | Microsoft Docs
+title: 教程 - 将 SQL Server 数据库备份到 Azure
 description: 本教程介绍如何将 SQL Server 备份到 Azure，
 author: dcurwin
 manager: carmonm
@@ -7,18 +7,18 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 99e1e8194594d204a5080287794362dbe028a1f5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 729eb0d77cee85356e359dc475f4e439b8236ebb
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688427"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736553"
 ---
-# <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
+# <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>在 Azure VM 中备份 SQL Server 数据库
 
 
 
-本文介绍如何将 Azure VM 上运行的 SQL Server 数据库备份到 Azure 备份恢复服务保管库。 在本文中，学习如何：
+本教程介绍如何将 Azure VM 上运行的 SQL Server 数据库备份到 Azure 备份恢复服务保管库。 在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 创建并配置保管库。

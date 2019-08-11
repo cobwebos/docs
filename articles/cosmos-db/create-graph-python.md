@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: 18f54e64498c7809e662ceb71d1e497a0f275ad6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 545f679b11295485567a817d144225b361a262ce
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480446"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815199"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>快速入门：在 Azure Cosmos DB 中使用 Python 和 Azure 门户创建图形数据库
 
@@ -173,13 +173,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>查看并添加示例数据
 
-现在可以回到数据资源管理器，查看添加到图形的顶点，并添加其他数据点。
+插入顶点和边后，现在可以返回数据资源管理器，查看添加到图中的顶点，并添加其他数据点。
 
 1. 单击“数据资源管理器”  ，展开“sample-graph”  ，再依次单击“图形”  和“应用筛选器”  。 
 
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
 
-2. 在“结果”列表中，请注意添加到图形的新用户。  选择“ben”。请注意，他们已连接到 robin。  可以通过拖放操作来移动顶点，也可以通过滚动鼠标滚轮进行缩放，并能用双箭头放大图形。 
+2. 在“结果”  列表中，请注意，图中添加了三个新用户。 可以通过拖放操作来移动顶点，也可以通过滚动鼠标滚轮进行缩放，并能用双箭头放大图形。 
 
    ![在 Azure 门户数据资源管理器的图形中的新顶点](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
 
@@ -193,6 +193,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     key|值|说明
     ----|----|----
+    pk|/pk| 
     id|ashley|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
     gender|女| 
     技术 | java | 
@@ -210,6 +211,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     key|值|说明
     ----|----|----
+    pk|/pk| 
     id|rakesh|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
     gender|男| 
     学校|MIT| 

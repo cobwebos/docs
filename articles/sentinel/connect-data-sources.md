@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9f64497cdf27729cebc243deca1def9ff1e5c680
-ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
+ms.openlocfilehash: 4928657aa9052b50faf1f326cc09797c5aaf69bb
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673866"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780503"
 ---
 # <a name="connect-data-sources"></a>连接数据源
 
@@ -54,7 +54,7 @@ Azure Sentinel 支持以下数据连接方法：
     - [Office 365](connect-office-365.md)
     - [Azure AD 审核日志和登录](connect-azure-active-directory.md)
     - [Azure 活动](connect-azure-activity.md)
-    - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
+    - [Azure AD 标识保护](connect-azure-ad-Identity-protection.md)
     - [Azure 安全中心](connect-azure-security-center.md)
     - [Azure 信息保护](connect-azure-information-protection.md)
     - [Azure 高级威胁防护](connect-azure-atp.md)

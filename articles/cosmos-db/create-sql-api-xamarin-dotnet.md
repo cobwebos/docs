@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 079f25cf9333b7ca090b5a3390d193b757117c1c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 3c2e9ad080c3b3f54040db9a57897847f4c5a52a
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986379"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828047"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入门：通过 Azure Cosmos DB SQL API 帐户使用 Xamarin 生成 ToDo 应用
 
@@ -120,7 +120,7 @@ ToDoItems 解决方案中的代码包含：
 * 需将 [Microsoft.Azure.DocumentDb.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) NuGet 包添加到所有项目。
 * azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Models 文件夹中的 `ToDoItem` 类为上面创建的 **Items** 集合中的文档建模。 请注意，属性命名区分大小写。
 * azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Services 文件夹中的 `CosmosDBService` 类将通信封装到 Azure Cosmos DB。
-* `CosmosDBService` 类中有一个 `DocumentClient` 类型的变量。 `DocumentClient` 用于针对 Azure Cosmos DB 帐户配置和执行请求，在第 31 行实例化。
+* `CosmosDBService` 类中有一个 `DocumentClient` 类型的变量。 `DocumentClient` 用于针对 Azure Cosmos DB 帐户配置和执行请求，并进行实例化：
 
     ```csharp
     docClient = new DocumentClient(new Uri(APIKeys.CosmosEndpointUrl), APIKeys.CosmosAuthKey);
@@ -128,26 +128,7 @@ ToDoItems 解决方案中的代码包含：
 
 * 查询集合中的文档时，使用 `DocumentClient.CreateDocumentQuery<T>` 方法，如下面的 `CosmosDBService.GetToDoItems` 函数所示：
 
-    ```csharp
-    public async static Task<List<ToDoItem>> GetToDoItems()
-    {
-        var todos = new List<ToDoItem>();
-
-        var todoQuery = docClient.CreateDocumentQuery<ToDoItem>(
-                                UriFactory.CreateDocumentCollectionUri(databaseName, collectionName),
-                                .Where(todo => todo.Completed == false)
-                                .AsDocumentQuery();
-
-        while (todoQuery.HasMoreResults)
-        {
-            var queryResults = await todoQuery.ExecuteNextAsync<ToDoItem>();
-
-            todos.AddRange(queryResults);
-        }
-
-        return todos;
-    }
-    ```
+   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
 
     `CreateDocumentQuery<T>` 采用的 URI 指向在上一部分创建的集合。 还可以指定 LINQ 运算符，例如 `Where` 子句。 在这种情况下，仅返回尚未完成的待办事项。
 
@@ -158,46 +139,23 @@ ToDoItems 解决方案中的代码包含：
 > [!TIP]
 > 多个在 Azure Cosmos DB 集合和文档上运行的函数采用 URI 作为参数，以便指定集合或文档的地址。 此 URI 使用 `URIFactory` 类进行构造。 数据库、集合和文档的 URI 均可通过此类来创建。
 
-* 第 107 行中的 `ComsmosDBService.InsertToDoItem` 函数演示如何插入新的文档：
+* `ComsmosDBService.InsertToDoItem` 函数演示如何插入新文档：
 
-    ```csharp
-    public async static Task InsertToDoItem(ToDoItem item)
-    {
-        ...
-        await docClient.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), item);
-        ...
-    }
-    ```
+   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
 
     指定了文档集合 URI 以及要插入的项。
 
-* 第 124 行的 `CosmosDBService.UpdateToDoItem` 函数演示如何将现有的文档替换为新的文档：
+* `CosmosDBService.UpdateToDoItem` 函数演示如何将现有文档替换为新文档：
 
-    ```csharp
-    public async static Task UpdateToDoItem(ToDoItem item)
-    {
-        ...
-        var docUri = UriFactory.CreateDocumentUri(databaseName, collectionName, item.Id);
-
-        await docClient.ReplaceDocumentAsync(docUri, item);
-    }
-    ```
+   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
 
     此处需要新的 URI 来唯一标识要替换的文档，而获得该 URI 的方法是先使用 `UriFactory.CreateDocumentUri`，然后向其传递数据库和集合的名称以及文档的 ID。
 
     `DocumentClient.ReplaceDocumentAsync` 将通过 URI 标识的文档替换为已指定为参数的文档。
 
-* 第 115 行的 `CosmosDBService.DeleteToDoItem` 函数演示了如何删除某个项：
+* `CosmosDBService.DeleteToDoItem` 函数演示了如何删除某个项：
 
-    ```csharp
-    public async static Task DeleteToDoItem(ToDoItem item)
-    {
-        ...
-        var docUri = UriFactory.CreateDocumentUri(databaseName, collectionName, item.Id);
-
-        await docClient.DeleteDocumentAsync(docUri);
-    }
-    ```
+   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
 
     再次请注意这个在创建后传递给 `DocumentClient.DeleteDocumentAsync` 函数的唯一的文档 URI。
 

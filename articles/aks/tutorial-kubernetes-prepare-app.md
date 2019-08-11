@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 2b4ba646a037b2f5561dabf97dee14454c07c573
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ff93d006b7599eaa3f97c33efb047ce480c301c
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614226"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740953"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>教程：准备用于 Azure Kubernetes 服务 (AKS) 的应用程序
 
@@ -34,7 +34,7 @@ ms.locfileid: "67614226"
 
 本教程假定你基本了解核心 Docker 概念，如容器、容器映像和 `docker` 命令。 有关容器的入门基础知识，请参阅 [Docker 入门][docker-get-started]。
 
-若要完成本教程，需要运行 Linux 容器的本地 Docker 开发环境。 Docker 提供在 [Mac][docker-for-mac], [Windows][docker-for-windows] 或 [Linux][docker-for-linux] 系统上配置 Docker 的包。
+若要完成本教程，需要运行 Linux 容器的本地 Docker 开发环境。 Docker 提供的包可在 [Mac][docker-for-mac]、[Windows][docker-for-windows] 或 [Linux][docker-for-linux] 系统上配置 Docker。
 
 Azure Cloud Shell 不包含完成这些教程的每个步骤所需的 Docker 组件。 因此，我们建议使用完整的 Docker 开发环境。
 
@@ -103,7 +103,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 docker-compose down
 ```
 
-删除本地应用程序以后，你就有了一个包含 Azure 投票应用程序的 Docker 映像 *azure-front-front*，可以在下一教程中使用。
+删除本地应用程序以后，你就有了一个包含 Azure 投票应用程序的 Docker 映像 azure-vote-front  ，可以在下一教程中使用。
 
 ## <a name="next-steps"></a>后续步骤
 

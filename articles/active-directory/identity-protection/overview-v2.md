@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5d82f665cc837e5dbd2d7efbf16c7ae94e1b2b7
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 2987f8fb116bfcbb1698335c3aca6f1fd8eb633e
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333917"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717288"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Azure Active Directory 标识保护（已刷新）是什么？
 
 “标识保护”体验已经过刷新，以更好地保护组织的标识。 此刷新后的体验提供了：
 
-- 经重新设计的管理体验，围绕与你最相关的风险 - 用户风险和登录风险
+- 重新设计的管理体验，围绕与用户风险和登录风险最相关的风险
 - 功能强大的调查体验，支持筛选、排序和智能下载
 - 改进的用户风险计算，帮助你将工作重点放在最可能遭到入侵的用户上
 - 新的 API 支持，可以编程方式访问风险数据

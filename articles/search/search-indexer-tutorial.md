@@ -1,5 +1,5 @@
 ---
-title: 教程：在 C# 代码示例中为 Azure SQL 数据库中的数据编制索引 - Azure 搜索
+title: C# 教程：为 Azure SQL 数据库中的数据编制索引 - Azure 搜索
 description: 本 C# 代码示例演示如何连接到 Azure SQL 数据库、提取可搜索的数据，并将其加载到 Azure 搜索索引中。
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bb082fb83f8c2521b0deabced6f851e62b785e8f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c88ff0d7e408e03216707ff9282d640fb7d28500
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485385"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840691"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C# 教程：使用 Azure 搜索索引器搜索 Azure SQL 数据库
 

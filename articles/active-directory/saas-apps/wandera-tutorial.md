@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/04/2019
+ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e556ce95107e820dc04d34c05bea3a2840aab7e8
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: d4f5004571c849d90b7d811906684e66c10ee487
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798524"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825277"
 ---
 # <a name="tutorial-integrate-wandera-with-azure-active-directory"></a>教程：将 Wandera 与 Azure Active Directory 集成
 
@@ -37,7 +37,7 @@ ms.locfileid: "67798524"
 
 若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有订阅，可以从[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月免费试用版。
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 Wandera 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
@@ -66,9 +66,9 @@ ms.locfileid: "67798524"
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
 2. **[配置 Wandera SSO](#configure-wandera-sso)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Wandera 测试用户](#create-wandera-test-user)** - 在 Wandera 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+5. **[创建 Wandera 测试用户](#create-wandera-test-user)** - 在 Wandera 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -88,7 +88,7 @@ ms.locfileid: "67798524"
     > [!NOTE]
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Wandera 客户端支持团队](https://www.wandera.com/about-wandera/contact/#supportsection)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中找到“元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
@@ -106,11 +106,31 @@ ms.locfileid: "67798524"
 
 ### <a name="configure-wandera-sso"></a>配置 Wandera SSO
 
-若要在 **Wandera** 端配置单一登录，需要将下载的“元数据 XML”  以及从 Azure 门户复制的相应 URL 发送给 [Wandera 支持团队](https://www.wandera.com/about-wandera/contact/#supportsection)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 若要在 Wandera 中自动执行配置，需要通过单击“安装扩展”  来安装**我的应用安全登录浏览器扩展**。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 Wandera”  会定向到 Wandera 应用程序。 在此处，请提供管理员凭据以登录到 Wandera。 浏览器扩展会自动配置应用程序，并自动执行步骤 3-4。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 Wandera，请打开新的 Web 浏览器窗口，以管理员身份登录 Wandera 公司站点，并执行以下步骤：
+
+4. 在页面的右上角，单击“设置”   > “管理”   > “单一登录”  ，然后选中“启用 SAML 2.0”  选项以执行以下步骤。
+
+    ![Wandera 配置](./media/wandera-tutorial/config01.png)
+
+    a. 单击**或手动输入必填字段**。
+
+    b. 在“IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
+
+    c. 在记事本中打开“联合元数据 XML”，复制其内容并将其粘贴到“IdP 公共 X.509 证书”  文本框中。
+
+    d. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-在本部分中，将在 Azure 门户中创建一个名为 B.Simon 的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
 1. 选择屏幕顶部的“新建用户”  。
@@ -134,13 +154,13 @@ ms.locfileid: "67798524"
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B. Simon”，然后单击屏幕底部的“选择”按钮    。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-wandera-test-user"></a>创建 Wandera 测试用户
 
-在本部分中，将在 Wandera 中创建一个名为 Britta Simon 的用户。 请与  [Wandera 支持团队](https://www.wandera.com/about-wandera/contact/#supportsection)协作，将用户添加到 Wandera 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Wandera 中创建名为 B.Simon 的用户。 请与  [Wandera 支持团队](https://www.wandera.com/about-wandera/contact/#supportsection)协作，将用户添加到 Wandera 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-sso"></a>测试 SSO
 

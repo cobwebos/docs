@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb4ce8cbbfec58d9c7980954691fd6c71266d23
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 7eae1c9a42547c73cc42868bac1f1f484b6354fa
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588038"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717400"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skytap"></a>教程：Azure Active Directory 与 Skytap 集成
 
@@ -191,7 +191,7 @@ ms.locfileid: "67588038"
 
 ### <a name="create-skytap-test-user"></a>创建 Skytap 测试用户
 
-在此部分中，在 Skytap 中创建用户“Britta Simon”。 请与  [Skytap 支持团队](mailto:support@skytap.com)协作，将用户添加到 Skytap 平台中。 使用单一登录前，必须先创建并激活用户。
+在此部分中，在 Skytap 中创建用户“Britta Simon”。 Skytap 帐户中的任何 Admininstrator 或 User Manager 都可以创建用户。 有关如何执行此操作的详细信息，请参阅 Skytap 的帮助文件： https://help.skytap.com/users-create.html
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 
