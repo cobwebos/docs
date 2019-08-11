@@ -7,14 +7,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
-ms.date: 10/04/2018
+ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1f80d7e63d994f0e3eb3733b99afaa1b056f4686
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7682670131b0ef50a1480285bc379b634169e49e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804900"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840626"
 ---
 # <a name="publish-an-azure-managed-application-definition"></a>发布 Azure 托管应用程序定义
 
@@ -41,7 +41,7 @@ az group create --name appDefinitionGroup --location westcentralus
 若要获取标识的对象 ID，请在以下命令中提供用户主体名称：
 
 ```azurecli-interactive
-userid=$(az ad user show --upn-or-object-id example@contoso.org --query objectId --output tsv)
+userid=$(az ad user show --id example@contoso.org --query objectId --output tsv)
 ```
 
 接下来，需要获取希望将其访问权限授予用户的 RBAC 内置角色的角色定义 ID。 以下命令展示了如何获取“Owner”角色的角色定义 ID：
@@ -69,9 +69,9 @@ az managedapp definition create \
 前述示例中使用的部分参数包括：
 
 * **resource-group**：在其中创建托管应用程序定义的资源组的名称。
-* lock-level：在托管资源组上放置的锁的类型。 它防止客户对此资源组执行不良操作。 当前，ReadOnly 是唯一受支持的锁级别。 当指定了 ReadOnly 时，客户只能读取托管资源组中存在的资源。 授予对托管资源组的访问权限的发布者标识不受该锁控制。
-* authorizations：描述用于授予对托管资源组权限的主体 ID 和角色定义 ID。 它是以 `<principalId>:<roleDefinitionId>` 格式指定的。 如果需要多个值，请以 `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` 格式指定它们。 请以空格分隔这些值。
-* **package-file-uri**：包含所需文件的 .zip 包的位置。 该包必须包含 **mainTemplate.json** 和 **createUiDefinition.json** 文件。 mainTemplate.json 定义作为托管应用程序的一部分创建的 Azure 资源。 该模板与常规资源管理器模板并没有不同。 createUiDefinition.json：生成用户界面，供用户通过门户创建托管应用程序。
+* **lock-level**：在托管资源组上放置的锁的类型。 它防止客户对此资源组执行不良操作。 当前，ReadOnly 是唯一受支持的锁级别。 当指定了 ReadOnly 时，客户只能读取托管资源组中存在的资源。 授予对托管资源组的访问权限的发布者标识不受该锁控制。
+* **authorizations**：描述用于授予对托管资源组权限的主体 ID 和角色定义 ID。 它是以 `<principalId>:<roleDefinitionId>` 格式指定的。 如果需要多个值，请以 `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` 格式指定它们。 请以空格分隔这些值。
+* **package-file-uri**：包含所需文件的 .zip 包的位置。 该包必须包含 **mainTemplate.json** 和 **createUiDefinition.json** 文件。  mainTemplate.json 定义作为托管应用程序的一部分创建的 Azure 资源。 该模板与常规资源管理器模板并没有不同。  createUiDefinition.json：生成用户界面，供用户通过门户创建托管应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 

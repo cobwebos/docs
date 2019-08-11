@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, 访问, 深度, sdk, 人体, 跟踪, 关节, 设置, cuda, nvidia
-ms.openlocfilehash: 6d610e62a7c9df33559f7f2cedceec27651e1cca
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f555ef8aa9bedadb0a361083e16c39eadf4d4229
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451418"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840408"
 ---
 # <a name="quickstart-set-up-azure-kinect-body-tracking"></a>快速入门：设置 Azure Kinect 人体跟踪
 
@@ -24,30 +24,9 @@ ms.locfileid: "67451418"
 
 ## <a name="install-software"></a>安装软件
 
-### <a name="cuda-100httpsdevelopernvidiacomcuda-100-download-archive"></a>[CUDA 10.0](https://developer.nvidia.com/cuda-10.0-download-archive)
-
-遵照屏幕上的提示安装 CUDA 10.0 和所有修补程序。
-
->[!NOTE]
-> 如果使用“快速”选项安装失败，请选择“自定义”安装选项并单击“下一步”。
-> 然后展开“CUDA”标记，并取消选择“Visual Studio 集成”。
-
-![CUDA 安装图像 1](./media/quickstarts/install-cuda1.png)![CUDA 安装图像 2](./media/quickstarts/install-cuda2.png)
-
-### <a name="cudnn-v75x-for-cuda-100httpsdevelopernvidiacomrdpcudnn-archive"></a>[cuDNN v7.5.x for CUDA 10.0](https://developer.nvidia.com/rdp/cudnn-archive)
-
-使用开发人员计划成员身份登录到 NVIDIA 开发人员网站，并下载 `cudnn64_7.dll`。 确保将 DLL 路径添加到“环境变量 - 路径”：
-1. 启动“控制面板”-> 选择“系统和安全性”->“系统”->“高级系统设置”
-
-    ![设置系统路径 1](./media/quickstarts/install-system-path1.png)
-
-2. 选择“环境变量”-> 双击“系统变量”块下的“路径”变量 -> 确保存在包含 `cudnn64_7.dll` 的路径。
-
-    ![设置系统路径 2](./media/quickstarts/install-system-path2.png)
-
 ### <a name="install-the-latest-nvidia-driverhttpswwwnvidiacomdownloadindexaspxlangen-us"></a>[安装最新的 NVIDIA 驱动程序](https://www.nvidia.com/Download/index.aspx?lang=en-us)
 
-CUDA 10.0 安装旧版的 NVIDIA 图形驱动程序。 请下载并安装显卡的最新 NVIDIA 驱动程序。
+请下载并安装显卡的最新 NVIDIA 驱动程序。 旧版驱动程序可能与随人体跟踪 SDK 一起重新分发的 CUDA 二进制文件不兼容。
 
 ### <a name="visual-c-redistributable-for-visual-studio-2015httpswwwmicrosoftcomen-usdownloaddetailsaspxid48145"></a>[Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145)
 

@@ -3,18 +3,18 @@ title: 创建 Azure IoT Central 应用程序 | Microsoft Docs
 description: 创建新的 Azure IoT Central 应用程序。 使用应用程序模板创建试用版或即用即付应用程序。
 author: viv-liu
 ms.author: viviali
-ms.date: 06/07/2019
+ms.date: 08/02/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: 07b062bd39177f283bd38ed6b687b590c5c4fb46
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+manager: corywink
+ms.openlocfilehash: 4ce0606558cad981b183282bee026bdcef6b0cdd
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066024"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815787"
 ---
 # <a name="create-an-azure-iot-central-application"></a>创建 Azure IoT Central 应用程序
 
@@ -39,8 +39,6 @@ ms.locfileid: "67066024"
 
       可在 [Azure IoT Central 定价页](https://azure.microsoft.com/pricing/details/iot-central/)上了解定价详细信息。
 
-1. 选择一个友好的应用程序名称，例如 **Contoso IoT**。 Azure IoT Central 将会生成唯一的 URL 前缀。 可将此 URL 前缀更改为更容易记住的内容。
-
 1. 选择应用程序模板。 应用程序模板可能包含入门所需的预定义项目（例如设备模板和仪表板）。
 
     | 应用程序模板 | 说明 |
@@ -49,7 +47,9 @@ ms.locfileid: "67066024"
     | 示例 Devkit       | 创建一个应用程序，其中的设备模板可以用来连接 MXChip 或 Raspberry Pi 设备。 如果你是在这其中任一设备上进行试验的设备开发人员，请使用此模板。 |
     | 自定义应用程序   | 创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。 |
 
-1. 选择“创建”  。
+1. 输入一个友好的应用程序名称，例如 **Contoso IoT**。 Azure IoT Central 将会生成唯一的 URL 前缀。 可将此 URL 前缀更改为更容易记住的内容。
+
+1. 单击“创建”。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 110dcb1531390b207ae741af07fe0ad18964aae1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521914"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816136"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>快速入门：将 Linux 计算机载入到安全中心
-载入 Azure 订阅之后，可以通过预配 Linux 代理为在 Azure 外部（例如，在本地或在其他云中）运行的 Linux 资源启用安全中心。
+加入 Azure 订阅之后，可以通过预配代理为在 Azure 外部（例如，在本地或在其他云中）运行的 Linux 资源启用安全中心。 该代理称为 Microsoft Monitoring Agent (MMA)，但它也称为 OMS 代理。
 
-本快速入门展示了如何在 Linux 计算机上安装 Linux 代理。
+本快速入门展示了如何在 Linux 计算机上安装该代理。
 
 ## <a name="prerequisites"></a>先决条件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
@@ -35,18 +35,18 @@ ms.locfileid: "59521914"
 ## <a name="add-new-linux-computer"></a>添加新的 Linux 计算机
 
 1. 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)。
-2. 在 **Microsoft Azure** 菜单上选择“安全中心”。 此时会打开“安全中心 - 概览”。
+2. 在 **Microsoft Azure** 菜单上选择“安全中心”  。 此时会打开“安全中心 - 概览”。 
 
    ![安全中心概述][2]
 
-3. 在“安全中心”主菜单下，选择“入门”。
-4. 选择“入门”选项卡。![入门][3]
+3. 在“安全中心”主菜单下，选择“入门”  。
+4. 选择“入门”  选项卡。![入门][3]
 
-5. 单击“添加新的非 Azure 计算机”下的“配置”，将显示 Log Analytics 工作区列表。 该列表包含启用自动预配时由安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
+5. 单击“添加新的非 Azure 计算机”  下的“配置”  ，将显示 Log Analytics 工作区列表。 该列表包含启用自动预配时由安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
 
     ![添加非 Azure 计算机](./media/quick-onboard-linux-computer/non-azure.png)
 
-6. 在“直接代理”页面上，在“下载和板载 Agent for Linux”下，选择“复制”按钮以复制 *wget* 命令。
+6. 在“直接代理”  页面上，在“下载和板载 Agent for Linux”  下，选择“复制”  按钮以复制 *wget* 命令。
 
 7. 打开记事本并粘贴此命令。 将此文件保存到可以从你的 Linux 计算机访问的位置。
 
@@ -57,15 +57,15 @@ ms.locfileid: "59521914"
 
    ![安装代理][5]
 
-可在以下位置找到适用于 Linux 的安全中心代理的日志：/var/opt/microsoft/omsagent/\<workspace id>/log/
+可在以下位置找到该代理的日志：  /var/opt/microsoft/omsagent/\<workspace id>/log/
 
   ![代理的日志][6]
 
 在一段时间后（可能需要多达 30 分钟），新的 Linux 计算机将显示在安全中心内。
 
-现在，可以从单个位置监视 Azure VM 和非 Azure 计算机了。 在“计算”下，可以概览所有 VM 和计算机以及建议。 每一列代表一组建议。 颜色表示 VM 或计算机针对该建议的当前安全状态。 安全中心还会在“安全警报”中显示针对这些计算机的任何检测。
+现在，可以从单个位置监视 Azure VM 和非 Azure 计算机了。 在“计算”  下，可以概览所有 VM 和计算机以及建议。 每一列代表一组建议。 颜色表示 VM 或计算机针对该建议的当前安全状态。 安全中心还会在“安全警报”中显示针对这些计算机的任何检测。
 
-  ![计算边栏选项卡][7] -“计算”边栏选项卡上提供了两种类型的图标：
+  ![计算边栏选项卡][7] -“计算”  边栏选项卡上提供了两种类型的图标：
 
   ![icon1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) 非 Azure 计算机
 

@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ba3cf3e77e5414804e881e0cddb151fb14fb7fd5
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: abb8b6bed6766ff0ea85eab1434014a057af4ca3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669536"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843142"
 ---
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
 
 使用 Visual Studio Code 可以将函数项目直接发布到 Azure。 在此过程中，将在 Azure 订阅中创建函数应用和相关的资源。 函数应用为函数提供了执行上下文。 该项目将打包并部署到 Azure 订阅中的新函数应用。
 
-默认情况下，Visual Studio 会创建函数应用创建所需的所有 Azure 资源。 这些资源的名称基于所选的函数应用名称。 如果需要完全控制已创建的资源，则可以改为[使用高级选项发布](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options)。
+默认情况下，Visual Studio Code 会创建函数应用创建所需的所有 Azure 资源。 这些资源的名称基于所选的函数应用名称。 如果需要完全控制已创建的资源，则可以改为[使用高级选项发布](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options)。
 
 本部分假设你正在 Azure 中创建新的函数应用。
 
