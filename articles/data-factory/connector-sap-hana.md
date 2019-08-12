@@ -61,7 +61,7 @@ SAP HANA 链接的服务支持以下属性：
 | type | type 属性必须设置为：**SapHana** | 是 |
 | connectionString | 使用**基本身份验证**或**Windows 身份验证**来指定连接到 SAP HANA 所需的信息。 请参阅以下示例。<br>在 "连接字符串" 中, 服务器/端口是必需的 (默认端口为 30015), 使用基本身份验证时, 用户名和密码是必需的。 有关其他高级设置, 请参阅[SAP HANA ODBC 连接属性](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>你还可以将密码放在 Azure Key Vault 中, 并从连接字符串中提取密码配置。 有关更多详细信息, 请参阅[Azure Key Vault 文章中的存储凭据](store-credentials-in-key-vault.md)。 | 是 |
 | userName | 使用 Windows 身份验证时, 指定用户名。 示例： `user@domain.com` | 否 |
-| 密码 | 指定用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
+| password | 指定用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
 **示例: 使用基本身份验证**
@@ -141,7 +141,7 @@ SAP HANA 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**SapHanaTable** | 是 |
 | schema | SAP HANA 数据库中的架构的名称。 | 否（如果指定了活动源中的“query”） |
-| 表 | SAP HANA 数据库中的表的名称。 | 否（如果指定了活动源中的“query”） |
+| table | SAP HANA 数据库中的表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例：**
 
@@ -176,7 +176,7 @@ SAP HANA 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**SapHanaSource** | 是 |
-| 查询 | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | 是 |
+| query | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | 是 |
 | packetSize | 指定将数据拆分为多个块的网络数据包大小 (Kb)。 如果要复制大量数据, 则在大多数情况下, 增加数据包大小可能会提高 SAP HANA 的读取速度。 调整数据包大小时, 建议执行性能测试。 | 否。<br>默认值为 2048 (2MB)。 |
 
 **示例：**
@@ -224,27 +224,27 @@ SAP HANA 链接的服务支持以下属性：
 | BINARY             | Byte[]                         |
 | BINTEXT            | String                         |
 | BLOB               | Byte[]                         |
-| 型               | Byte                           |
+| BOOL               | Byte                           |
 | CLOB               | String                         |
-| 日期               | 日期时间                       |
+| DATE               | DateTime                       |
 | DECIMAL            | Decimal                        |
 | DOUBLE             | Double                         |
 | FLOAT              | Double                         |
 | INTEGER            | Int32                          |
 | NCLOB              | String                         |
 | NVARCHAR           | String                         |
-| REAL               | 单身                         |
-| SECONDDATE         | 日期时间                       |
+| REAL               | Single                         |
+| SECONDDATE         | DateTime                       |
 | SHORTTEXT          | String                         |
 | SMALLDECIMAL       | Decimal                        |
 | SMALLINT           | Int16                          |
 | STGEOMETRYTYPE     | Byte[]                         |
 | STPOINTTYPE        | Byte[]                         |
 | TEXT               | String                         |
-| 时间               | TimeSpan                       |
+| TIME               | TimeSpan                       |
 | TINYINT            | Byte                           |
 | VARCHAR            | String                         |
-| TIMESTAMP          | 日期时间                       |
+| TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
 
 ## <a name="next-steps"></a>后续步骤
