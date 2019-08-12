@@ -247,11 +247,11 @@
               href: devtest-lab-mandatory-artifacts.md
         - name: 与 CI/CD 集成
           items:
-            - name: 将实验室集成到 Azure DevOps CI/CD 管道中
-              href: devtest-lab-integrate-ci-cd-vsts.md
-            - name: 将环境集成到 Azure DevOps CI/CD 管道中
+            - name: 将实验室集成到 Azure Pipelines CI/CD 管道中
+              href: devtest-lab-integrate-ci-cd.md
+            - name: 将环境集成到 Azure Pipelines CI/CD 管道中
               href: integrate-environments-devops-pipeline.md
-            - name: 在 Azure DevOps 生成和发布管道中使用开发测试实验室
+            - name: 在 Azure Pipelines 生成和发布管道中使用开发测试实验室
               href: use-devtest-labs-build-release-pipelines.md
         - name: 报告实验室的使用情况
           href: report-usage-across-multiple-labs-subscriptions.md

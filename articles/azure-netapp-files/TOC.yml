@@ -21,11 +21,11 @@
       href: azure-netapp-files-metrics.md
     - name: 性能
       items:
-        - name: Azure NetApp 文件的性能基准
-          href: azure-netapp-files-performance-benchmarks.md
         - name: Azure NetApp 文件的性能考虑因素
           href: azure-netapp-files-performance-considerations.md
-        - name: 使用 Azure NetApp 文件时的卷性能和指标的基准测试
+        - name: Azure NetApp 文件的性能基准测试结果
+          href: azure-netapp-files-performance-benchmarks.md
+        - name: Azure NetApp 文件的性能基准测试建议
           href: azure-netapp-files-performance-metrics-volumes.md
     - name: Azure NetApp 文件的成本模型
       href: azure-netapp-files-cost-model.md

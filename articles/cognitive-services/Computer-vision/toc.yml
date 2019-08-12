@@ -107,25 +107,25 @@
       href: Tutorials/storage-lab-tutorial.md
 - name: 概念
   items:
-    - name: 标记图像
+    - name: 内容标记
       href: concept-tagging-images.md
-    - name: 检测对象
+    - name: 对象检测
       href: concept-object-detection.md
-    - name: 检测品牌
+    - name: 品牌检测
       href: concept-brand-detection.md
-    - name: 对图像进行分类
+    - name: 图像分类
       href: concept-categorizing-images.md
-    - name: 描述图像
+    - name: 图像说明
       href: concept-describing-images.md
-    - name: 检测人脸
+    - name: 人脸检测
       href: concept-detecting-faces.md
-    - name: 检测图像类型
+    - name: 图像类型检测
       href: concept-detecting-image-types.md
-    - name: 检测特定领域的内容
+    - name: 特定于域的内容
       href: concept-detecting-domain-content.md
-    - name: 检测配色方案
+    - name: 配色方案检测
       href: concept-detecting-color-schemes.md
-    - name: 生成缩略图
+    - name: 智能裁剪的缩略图
       href: concept-generating-thumbnails.md
     - name: 识别打印文本和手写文本
       href: concept-recognizing-text.md

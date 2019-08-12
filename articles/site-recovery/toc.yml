@@ -155,6 +155,8 @@
           items:
             - name: 准备网络以进行 Azure VM 灾难恢复
               href: azure-to-azure-about-networking.md
+            - name: 自定义目标 Azure VM 的网络配置
+              href: azure-to-azure-customize-networking.md
             - name: 设置网络映射并在故障转移后保留 IP 地址
               href: azure-to-azure-network-mapping.md
             - name: 有关故障转移后保留 IP 地址的示例

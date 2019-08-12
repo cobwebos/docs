@@ -7,12 +7,12 @@ ms.service: blueprints
 ms.topic: sample
 ms.date: 06/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: c5541eab6707bab12fb75f4d0eaf8bae1f025ebb
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: e1bafdaa2883afb44aa3c609c0ccba0ce9d0a4ab
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816039"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934168"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -22,6 +22,7 @@ ms.locfileid: "68816039"
 
 |  |  |
 |---------|---------|
+|[IRS 1075](./irs-1075/index.md)| 提供用于符合 IRS 1075 的规范措施。|
 | [ISO 27001](./iso27001/index.md) | 提供用于符合 ISO 27001 的规范措施。 |
 | [ISO 27001 共享服务](./iso27001-shared/index.md) | 提供了一组符合标准的基础结构模式和策略防护机制，以便帮助通过 ISO 27001 认证。 |
 | [ISO 27001 应用服务环境/SQL 数据库工作负荷](./iso27001-ase-sql-workload/index.md) | 为 [ISO 27001 共享服务](./iso27001-shared/index.md)蓝图示例提供了其他基础结构。 |

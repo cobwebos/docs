@@ -25,14 +25,6 @@
       href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
-    - name: 故障排除
-      items:
-        - name: Apache HBase REST 无响应
-          href: ./hbase-troubleshoot-rest-not-spending.md
-        - name: 区域服务器上的 CPU 使用率居高不下
-          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
-        - name: “hbase hbck”命令超时
-          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
 - name: 如何
   items:
     - name: 使用群集存储
@@ -167,8 +159,25 @@
         - name: 为 HDInsight 群集修补 OS
           href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: 故障排除
-      href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
       items:
+        - name: 排查资源问题
+          href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: Apache Phoenix 视图中没有数据
+          href: ./hbase-troubleshoot-phoenix-no-data.md
+        - name: BindException - 地址已在使用
+          href: ./hbase-troubleshoot-bindexception-address-use.md
+        - name: Apache HBase 无法启动
+          href: ./hbase-troubleshoot-start-fails.md
+        - name: 区域服务器问题
+          href: ./hbase-troubleshoot-unassigned-regions.md
+        - name: Apache Phoenix 连接问题
+          href: ./hbase-troubleshoot-phoenix-connectivity.md
+        - name: Apache HBase REST 无响应
+          href: ./hbase-troubleshoot-rest-not-spending.md
+        - name: 区域服务器上的 CPU 使用率居高不下
+          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
+        - name: “hbase hbck”命令超时
+          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
         - name: 排查 HDInsight 群集速度慢或故障问题
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
         - name: Apache Hadoop HDFS 故障排除

@@ -2,9 +2,9 @@
   href: index.yml
 - name: SQL 数据库服务
   items:
-    - name: 什么是 SQL 数据库
+    - name: 什么是 SQL 数据库？
       href: sql-database-technical-overview.md
-    - name: 选择 Azure SQL 版本
+    - name: 我应该选择哪个 SQL 选项？
       href: sql-database-paas-vs-sql-server-iaas.md
     - name: 发行说明
       href: sql-database-release-notes.md
@@ -280,14 +280,18 @@
               href: sql-vulnerability-assessment.md
             - name: 高级威胁防护
               href: sql-database-threat-detection-overview.md
-        - name: 服务器级别 IP 防火墙规则
+        - name: 网络安全
           items:
-            - name: 创建和管理
+            - name: 网络访问控制概述
+              href: sql-database-networkaccess-overview.md
+            - name: 基于 IP 的防火墙
               href: sql-database-firewall-configure.md
-            - name: 虚拟网络终结点
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: 虚拟网络终结点 - PowerShell
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: 虚拟网络防火墙规则
+              items:
+                - name: 虚拟网络终结点
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: 虚拟网络终结点 - PowerShell
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
         - name: 访问控制
           items:
             - name: 访问控制

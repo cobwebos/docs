@@ -6,7 +6,7 @@
     - name: 什么是 Azure 机器学习服务？
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: 服务的工作原理
+    - name: 体系结构和术语
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: 教程
@@ -216,6 +216,8 @@
         - name: 在何处以及如何部署
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
+        - name: Notebook VM
+          href: how-to-deploy-local-container-notebook-vm.md
         - name: Azure 容器实例
           href: how-to-deploy-azure-container-instance.md
         - name: Azure Kubernetes 服务
@@ -256,9 +258,9 @@
     - name: 创建可重用的工作流
       displayName: pipelines
       items:
-        - name: 创建机器学习管道
+        - name: ML 管道：批处理、计算、重复使用、共享
           href: how-to-create-your-first-pipeline.md
-        - name: 将 ML 工作流的 CI/CD 与 Azure Pipelines 配合使用
+        - name: 用于 CI/CD 的 Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: 管理资源配额

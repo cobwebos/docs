@@ -23,6 +23,12 @@
       href: quickstarts/get-started-android.md
     - name: 创建 HoloLens 应用
       href: quickstarts/get-started-hololens.md
+    - name: 创建 Xamarin 应用
+      items:
+        - name: Android
+          href: quickstarts/get-started-xamarin-android.md
+        - name: iOS
+          href: quickstarts/get-started-xamarin-ios.md
 - name: 教程
   items:
     - name: 在 Unity 中共享

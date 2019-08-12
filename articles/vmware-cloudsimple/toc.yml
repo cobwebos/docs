@@ -62,6 +62,8 @@
           items:
             - name: 预配节点
               href: create-nodes.md
+            - name: 删除节点
+              href: delete-nodes.md
         - name: 管理私有云资源
           items:
             - name: 创建私有云
@@ -76,6 +78,8 @@
               href: azure-subscription-mapping.md
             - name: 提升特权
               href: escalate-private-cloud-privileges.md
+            - name: 删除私有云
+              href: delete-private-cloud.md
         - name: 监视 CloudSimple 活动
           href: 'https://docs.azure.cloudsimple.com/activity/'
         - name: 设置私有云网络
