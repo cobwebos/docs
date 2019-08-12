@@ -211,14 +211,14 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 | SAP ABAP 类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| C（字符串） | String |
-| I（整数） | Int32 |
-| F（浮点数） | Double |
-| D（日期） | String |
-| T（时间） | String |
-| P（BCD 打包，货币，小数，Qty） | Decimal |
+| C (String) | String |
+| I (integer) | Int32 |
+| F (Float) | Double |
+| D (Date) | String |
+| T (Time) | String |
+| P (BCD Packed, Currency, Decimal, Qty) | Decimal |
 | N (Numc) | String |
-| X（二进制，原始） | String |
+| X (Binary and Raw) | String |
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
