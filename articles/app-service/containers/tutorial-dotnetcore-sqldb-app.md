@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4837867188721b13b3f4cb64245ae85a1e32fe50
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: a4774431b6a6e37ee9e175e161813936a71cdee9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656626"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824701"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用
 
@@ -132,7 +132,7 @@ az sql server create --name <server-name> --resource-group myResourceGroup --loc
 使用 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) 命令创建 [Azure SQL 数据库服务器级防火墙规则](../../sql-database/sql-database-firewall-configure.md)。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
 
 ```azurecli-interactive
-az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 ### <a name="create-a-database"></a>创建数据库
@@ -169,7 +169,7 @@ Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-u
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)] 
 
-### <a name="configure-an-environment-variable"></a>配置环境变量
+### <a name="configure-connection-string"></a>配置连接字符串
 
 若要为 Azure 应用设置连接字符串，请使用 Cloud Shell 中的 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 在下列命令中，将 \<app-name> 和 \<connection-string> 参数替换为先前创建的连接字符串   。
 
@@ -177,13 +177,21 @@ Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-u
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
 ```
 
-接下来，将 `ASPNETCORE_ENVIRONMENT` 应用设置设置为_生产_。 由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，你可以了解应用是否正在 Azure 中运行。
+在 ASP.NET Core 中，可以通过标准模式使用此命名连接字符串 (`MyDbConnection`)，就像在 appsettings.json  中指定的任何连接字符串一样。 在本例中，`MyDbConnection` 也在 appsettings.json  中定义。 在应用服务中运行时，应用服务中定义的连接字符串优先于 appsettings.json  中定义的连接字符串。 此代码在本地开发过程中使用 appsettings.json  值，相同的代码在部署时使用应用服务值。
+
+若要了解如何在代码中引用连接字符串，请参阅[在生产环境中连接到 SQL 数据库](#connect-to-sql-database-in-production)。
+
+### <a name="configure-environment-variable"></a>配置环境变量
+
+接下来，将 `ASPNETCORE_ENVIRONMENT` 应用设置设置为 _。 由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，你可以了解应用是否正在 Azure 中运行。
 
 以下示例在 Azure 应用中配置 `ASPNETCORE_ENVIRONMENT` 应用设置。 替换 \<app-name> 占位符  。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
 ```
+
+若要了解如何在代码中引用环境变量，请参阅[在生产环境中连接到 SQL 数据库](#connect-to-sql-database-in-production)。
 
 ### <a name="connect-to-sql-database-in-production"></a>在生产环境中连接到 SQL 数据库
 
@@ -209,7 +217,7 @@ else
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
 ```
 
-如果此代码检测到当前正在生产中运行（指 Azure 环境），则会使用先前配置的连接字符串连接到 SQL 数据库。 有关如何在应用服务中访问应用设置的信息，请参阅[访问环境变量](configure-language-dotnetcore.md#access-environment-variables)。
+如果此代码检测到当前正在生产环境中运行（指 Azure 环境），则会使用已配置的连接字符串连接到 SQL 数据库。 有关如何在应用服务中访问应用设置的信息，请参阅[访问环境变量](configure-language-dotnetcore.md#access-environment-variables)。
 
 在 Azure 中运行时可利用 `Database.Migrate()` 调用，因为它会根据迁移配置自动创建 .NET Core 应用所需的数据库。
 
@@ -270,7 +278,7 @@ http://<app-name>.azurewebsites.net
 
 ### <a name="update-your-data-model"></a>更新数据模型
 
-在代码编辑器中打开 _Models\Todo.cs_。 将以下属性添加到 `ToDo` 类：
+在代码编辑器中打开 _Models\Todo.cs_ 。 将以下属性添加到 `ToDo` 类：
 
 ```csharp
 public bool Done { get; set; }
@@ -294,7 +302,7 @@ dotnet ef database update
 
 为使用 `Done` 属性，需要对代码做一些更改。 简单起见，本教程中将仅更改 `Index` 和 `Create` 视图，以便在操作过程中查看属性。
 
-打开 _Controllers\TodosController.cs_。
+打开 _Controllers\TodosController.cs_ 。
 
 找到 `Create()` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如以下代码所示：
 
@@ -302,7 +310,7 @@ dotnet ef database update
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
 ```
 
-打开 _Views\Todos\Create.cshtml_。
+打开 _Views\Todos\Create.cshtml_ 。
 
 在 Razor 代码中，应能看到用于 `Description` 的 `<div class="form-group">` 元素，以及另一个用于 `CreatedDate` 的 `<div class="form-group">` 元素。 紧跟在这两个元素之后，添加另一个用于 `Done` 的 `<div class="form-group">` 元素：
 
@@ -316,7 +324,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 </div>
 ```
 
-打开 _Views\Todos\Index.cshtml_。
+打开 _Views\Todos\Index.cshtml_ 。
 
 搜索空的 `<th></th>` 元素。 在此元素的正上方，添加下列 Razor 代码：
 

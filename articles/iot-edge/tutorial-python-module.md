@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: d75e4c3e2b6f28dfbde670406854ac87790dd090
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 55cdb70a02aae62a69f4fc930f4c6ee385a24702
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850116"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839545"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>教程：为 Linux 设备开发和部署 Python IoT Edge 模块
 
@@ -108,7 +108,7 @@ ms.locfileid: "67850116"
 
 ### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
-每个模板包含示例代码，该代码从 **tempSensor** 模块提取模拟传感器数据并将其路由到 IoT 中心。 在此节中，请添加代码，以便扩展用于分析消息的 **PythonModule**，然后再发送它们。 
+每个模板都包含示例代码，该代码从 **SimulatedTemperatureSensor** 模块提取模拟传感器数据并将其路由到 IoT 中心。 在此节中，请添加代码，以便扩展用于分析消息的 **PythonModule**，然后再发送它们。 
 
 1. 在 VS Code 资源管理器中，打开 **modules** > **PythonModule** > **main.py**。
 
@@ -168,7 +168,7 @@ ms.locfileid: "67850116"
         print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
     ```
 
-6. 在 **HubManager 类中**，向 **__init__** 方法添加新的一行，以初始化刚添加的 **module_twin_callback** 函数：
+6. 在 **HubManager 类中**，向 ** __** 方法添加新的一行，以初始化刚添加的 **module_twin_callback** 函数：
 
     ```python
     # Sets the callback when a module twin's desired properties are updated.
@@ -224,7 +224,7 @@ ms.locfileid: "67850116"
 
 3. 选择 **config** 文件夹中的 **deployment.json** 文件，然后单击“选择 Edge 部署清单”。  不要使用 deployment.template.json 文件。
 
-4. 单击“刷新”按钮。 此时会看到新的 **PythonModule** 在运行，此外还有 **TempSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 在运行。 
+4. 单击“刷新”按钮。 此时应看到新的 **PythonModule** 与 **SimulatedTemperatureSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 一起运行。 
 
 ## <a name="view-generated-data"></a>查看生成的数据
 

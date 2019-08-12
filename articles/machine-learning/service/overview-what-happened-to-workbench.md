@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: a164276d41d182c5b439efc691d80693f1ac831e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2bc036fcde7ac541dbf7d8511f82080e52135777
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360131"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772622"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
@@ -120,8 +120,8 @@ run = exp.submit(source_directory=script_folder,
 
 了解 [Azure 机器学习服务的最新体系结构](concept-azure-machine-learning-architecture.md)。 
 
-有关该服务的概述，请阅读[什么是 Azure 机器学习服务？](overview-what-is-azure-ml.md)
+有关该服务的概述，请阅读[什么是 Azure 机器学习服务？](overview-what-is-azure-ml.md)。
 
-有关说明如何运行脚本以及使用最新版本的 Azure 机器学习服务探索脚本的运行历史记录的快速入门，请尝试 [Azure 机器学习服务入门](quickstart-run-cloud-notebook.md)。
+使用由两部分（[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)和[训练第一个模型](tutorial-1st-experiment-sdk-train.md)）组成的教程创建第一个试验
 
 有关此工作流的更深入体验，请参阅[完整教程](tutorial-train-models-with-aml.md)，其中包含使用 Azure 机器学习服务训练和部署模型的详细步骤。 
