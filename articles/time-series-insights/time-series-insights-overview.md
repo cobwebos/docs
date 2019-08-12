@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: overview
-ms.date: 04/26/2019
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce18b0060fe0bd0f9d5a8308fe1358e300c04441
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c0c65f364e9e72d87d6618944ab296354e03a1fc
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165632"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736180"
 ---
 # <a name="what-is-azure-time-series-insights"></a>什么是 Azure 时序见解？
 
@@ -33,7 +33,7 @@ Azure 时序见解用于存储、可视化和查询大量时序数据（例如 I
 
 如果构建供内部使用或供外部客户使用的应用程序，则可将时序见解用作后端。 可以使用它来索引、存储和聚合时序数据。 若要在此之上构建自定义可视化效果和用户体验，请使用[客户端 SDK](tutorial-explore-js-client-lib.md)。 时序见解还配备了多个[查询 API](how-to-shape-query-json.md) 以启用这些自定义方案。
 
-时序数据表示资产或过程是如何随时间变化的。 时序数据按时间戳进行索引，时间是用于组织此类数据的最有意义的轴。 时序数据通常按顺序到达，因此通常被视为插入，而不是数据库的更新。
+时序数据表示资产或过程是如何随时间变化的。 时序数据按时间戳进行索引，时间是用于组织此类数据的最有意义的轴。 时序数据通常按顺序到达，因此被视为插入，而不是数据库的更新。
 
 在大型卷中存储、索引、查询、分析和可视化时序数据可能很具挑战性。
 Azure 时序见解会捕获每一个新事件并将其存储为一行，所做的更改可以在一段时间内进行有效的度量。 因此，可以通过回顾过去的见解来预测未来的更改。
