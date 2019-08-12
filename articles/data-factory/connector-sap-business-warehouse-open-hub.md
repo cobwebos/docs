@@ -71,7 +71,7 @@ ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和
 
 - 设置 3.13 或更高版本的自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
 
-- 从 SAP 的网站下载 **64 位 [SAP .NET Connector 3.0](https://support.sap.com/en/product/connectors/msnet.html)** ，将其安装在自承载 IR 计算机上。 安装时，请在可选的安装步骤窗口中确保选择“将程序集安装到 GAC”选项，如下图所示。  
+- 从 SAP 的网站下载 **64 位 [SAP .NET Connector 3.0](https://support.sap.com/en/product/connectors/msnet.html)** ，将其安装在自承载 IR 计算机上。 安装时，请在可选的安装步骤窗口中确保选择“将程序集安装到 GAC”选项，如下图所示。 
 
     ![安装 SAP .NET Connector](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
@@ -80,7 +80,7 @@ ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和
     - RFC 和 SAP BW 的授权。 
     - “执行”授权对象“S_SDSAUTH”的活动的权限。
 
-- 将 SAP Open Hub Destination 类型创建为“数据库表”（勾选“技术密钥”选项）。   另外还建议取消选中“从表中删除数据”，虽然这不是必需的操作。 利用 DTP（直接执行或集成到现有进程链中）将数据从所选源对象（例如多维数据集）移到 Open Hub Destination 表。
+- 将 SAP Open Hub Destination 类型创建为“数据库表”（勾选“技术密钥”选项）。  另外还建议取消选中“从表中删除数据”，虽然这不是必需的操作。 利用 DTP（直接执行或集成到现有进程链中）将数据从所选源对象（例如多维数据集）移到 Open Hub Destination 表。
 
 ## <a name="getting-started"></a>入门
 
@@ -172,7 +172,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 ### <a name="sap-bw-open-hub-as-source"></a>将 SAP BW Open Hub 作为源
 
-若要从 SAP BW Open Hub 复制数据，请将复制活动中的源类型设置为“SapOpenHubSource”  。 复制活动的 **source** 节中没有其他特定于类型的必需属性。
+若要从 SAP BW Open Hub 复制数据，请将复制活动中的源类型设置为“SapOpenHubSource”。 复制活动的 **source** 节中没有其他特定于类型的必需属性。
 
 **示例：**
 

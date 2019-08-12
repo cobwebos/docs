@@ -306,7 +306,7 @@ Salesforce 链接服务支持以下属性。
 * **SOQL 示例**：`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL 示例**：`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformedquerytruncated"></a>MALFORMED_QUERY:Truncated 错误
+### <a name="error-of-malformed_querytruncated"></a>MALFORMED_QUERY:Truncated 错误
 
 如果遇到“MALFORMED_QUERY:Truncated”错误，通常是因为在数据中存在 JunctionIdList 类型列，而 Salesforce 在支持此类具有大量行的数据方面存在限制。 若要缓解这种情况，请尝试排除 JunctionIdList 列或限制要复制的行数（可以将其划分为多个复制活动运行）。
 

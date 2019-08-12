@@ -36,13 +36,13 @@ ms.locfileid: "68253107"
 
 可以在任何数据流表达式中使用参数。 参数以 $ 开头并且是不可变的。 您将在 "参数" 选项卡下的 "表达式生成器" 中找到可用参数的列表。
 
-数据流![参数表达式]数据流(media/data-flow/parameter-expression.png "参数表达式")
+数据流![参数表达式](media/data-flow/parameter-expression.png "数据流 参数表达式")
 
 ## <a name="use-parameters-in-your-data-flow"></a>在数据流中使用参数
 
 * 您可以使用转换表达式中的参数值。 您可以在 "表达式生成器" 的 "参数" 选项卡下找到参数列表。 ![使用数据流参数](media/data-flow/params9.png "使用数据流参数")
 
-* 参数还用于为源和接收器转换设置配置动态值。 单击 "可配置" 字段内部时, 将显示 "添加动态上下文" 链接。 单击此处将转到表达式生成器, 可在其中使用参数来使用动态值。 数据流![动态内容]数据流(media/data-flow/params6.png "动态内容")
+* 参数还用于为源和接收器转换设置配置动态值。 单击 "可配置" 字段内部时, 将显示 "添加动态上下文" 链接。 单击此处将转到表达式生成器, 可在其中使用参数来使用动态值。 数据流![动态内容](media/data-flow/params6.png "数据流 动态内容")
 
 ## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>设置管道中的映射数据流参数
 
@@ -61,7 +61,7 @@ ms.locfileid: "68253107"
 
 每个映射数据流可以包含管道和数据流表达式参数的任意组合。 
 
-数据流![参数示例]数据流(media/data-flow/parameter-example.png "参数示例")
+数据流![参数示例](media/data-flow/parameter-example.png "数据流 参数示例")
 
 
 
