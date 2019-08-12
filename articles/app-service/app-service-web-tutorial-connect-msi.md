@@ -1,6 +1,6 @@
 ---
 title: 使用托管标识确保 Azure SQL 数据库连接的安全 - Azure 应用服务 | Microsoft Docs
-description: 了解如何使用托管标识让数据库连接更安全，以及如何将此应用到其他 Azure 服务。
+description: 了解如何使用托管标识让数据库连接更安全，以及如何将此方法应用到其他 Azure 服务。
 services: app-service\web
 documentationcenter: dotnet
 author: cephalin
@@ -11,25 +11,33 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 06/21/2019
+ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 31535642526c608ad0ae29e5c0e3c93368e184ad
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 2cf5e0f6da52670d383a1d1508dc7bcc7847831f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481020"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824549"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接的安全
 
-[应用服务](overview.md)在 Azure 中提供高度可缩放、自修补的 Web 托管服务。 它还为应用提供[托管标识](overview-managed-identity.md)，这是一项统包解决方案，可以确保安全地访问 [Azure SQL 数据库](/azure/sql-database/)和其他 Azure 服务。 应用服务中的托管标识可以让应用更安全，因为不需在应用中存储机密，例如连接字符串中的凭据。 在本教程中，请将托管标识添加到在[教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)。 完成后，示例应用就可以安全地连接到 SQL 数据库，不需用户名和密码。
+[应用服务](overview.md)在 Azure 中提供高度可缩放、自修补的 Web 托管服务。 它还为应用提供[托管标识](overview-managed-identity.md)，这是一项统包解决方案，可以确保安全地访问 [Azure SQL 数据库](/azure/sql-database/)和其他 Azure 服务。 应用服务中的托管标识可以让应用更安全，因为不需在应用中存储机密，例如连接字符串中的凭据。 在本教程中，你要将托管标识添加到在以下教程之一中生成的示例 Web 应用： 
+
+- [教程：使用 SQL 数据库在 Azure 中生成 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)
+- [教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用](app-service-web-tutorial-dotnetcore-sqldb.md)
+
+完成后，示例应用就可以安全地连接到 SQL 数据库，不需用户名和密码。
 
 > [!NOTE]
-> 此方案目前受 .NET Framework 4.7.2 及更高版本的支持。 [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) 支持此方案，但它尚未包括在应用服务的默认映像中。 
+> 本教程所述的步骤支持以下版本：
+> 
+> - .NET Framework 4.7.2 和更高版本。
+> - .NET Core 2.2 和更高版本。
 >
 
-学习如何：
+学习内容：
 
 > [!div class="checklist"]
 > * 启用托管标识
@@ -44,9 +52,9 @@ ms.locfileid: "67481020"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文从你在[教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)。 如果尚未学习该教程，请先学习该教程。 也可调整这些步骤，使用 SQL 数据库来构建自己的 ASP.NET 应用。
+本文从你在[教程：使用 SQL 数据库在 Azure 中生成 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)或[教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用](app-service-web-tutorial-dotnetcore-sqldb.md)。 请先完成这两篇教程之一（如果尚未完成）。 也可调整这些步骤，使用 SQL 数据库来生成自己的 .NET 应用。
 
-若要使用 SQL 数据库作为后端调试应用程序，请确保已经[允许从计算机连接客户端](app-service-web-tutorial-dotnet-sqldatabase.md#allow-client-connection-from-your-computer)。
+若要使用 SQL 数据库作为后端调试应用程序，请确保已经允许从计算机连接客户端。 否则，请遵循[使用 Azure 门户管理服务器级 IP 防火墙规则](../sql-database/sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal)中的步骤添加客户端 IP。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -79,12 +87,19 @@ az sql server ad-admin create --resource-group myResourceGroup --server-name <se
 
 现已准备好将 SQL 数据库作为后端，使用 Azure AD 身份验证来开发和调试应用程序。
 
-## <a name="modify-aspnet-project"></a>修改 ASP.NET 项目
+## <a name="modify-your-project"></a>修改项目
+
+要对项目执行的步骤取决于它是 ASP.NET 项目还是 ASP.NET Core 项目。
+
+- [修改 ASP.NET](#modify-aspnet)
+- [修改 ASP.NET Core](#modify-aspnet-core)
+
+### <a name="modify-aspnet"></a>修改 ASP.NET
 
 在 Visual Studio 中，打开包管理器控制台，并添加 NuGet 包 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)：
 
 ```powershell
-Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.2.0
+Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.0
 ```
 
 在 Web.config 中，从文件顶部开始工作并进行以下更改  ：
@@ -107,7 +122,57 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.2.0
 
 - 找到名为 `MyDbConnection` 的连接字符串，并将其 `connectionString` 值替换为 `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`。 将 \<server-name> 和 \<db-name> 替换为你的服务器名称和数据库名称   。
 
-键入 `Ctrl+F5`，再次运行该应用。 浏览器中相同的 CRUD 应用程序现使用 Azure AD 身份验证直接连接到 Azure SQL 数据库。 此设置使你能够运行数据库迁移。 稍后，将更改部署到应用服务时，相同的设置将用于应用的托管标识。
+这就是连接到 SQL 数据库所要完成的所有准备工作。 在 Visual Studio 中调试时，代码将使用[设置 Visual Studio](#set-up-visual-studio) 中配置的 Azure AD 用户。 稍后你将设置 SQL 数据库服务器，以允许应用服务应用的托管标识建立连接。
+
+键入 `Ctrl+F5`，再次运行该应用。 浏览器中相同的 CRUD 应用程序现使用 Azure AD 身份验证直接连接到 Azure SQL 数据库。 此设置使你能够从 Visual Studio 运行数据库迁移。
+
+### <a name="modify-aspnet-core"></a>修改 ASP.NET Core
+
+在 Visual Studio 中，打开包管理器控制台，并添加 NuGet 包 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)：
+
+```powershell
+Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.0
+```
+
+[ASP.NET Core 和 SQL 数据库教程](app-service-web-tutorial-dotnetcore-sqldb.md)中完全未使用 `MyDbConnection` 连接字符串，因为本地开发环境使用 Sqlite 数据库文件，而 Azure 生产环境使用应用服务中的连接字符串。 使用 Active Directory 身份验证时，最好是让这两种环境使用相同的连接字符串。 在 *appsettings.json* 中，请将 `MyDbConnection` 连接字符串的值替换为：
+
+```json
+"Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
+```
+
+在 *Startup.cs* 中，删除前面添加的代码节：
+
+```csharp
+// Use SQL Database if in Azure, otherwise, use SQLite
+if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+    services.AddDbContext<MyDatabaseContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+else
+    services.AddDbContext<MyDatabaseContext>(options =>
+            options.UseSqlite("Data Source=localdatabase.db"));
+
+// Automatically perform database migration
+services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
+```
+
+并将其替换为以下代码：
+
+```csharp
+services.AddDbContext<MyDatabaseContext>(options => {
+    options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection"));
+});
+```
+
+接下来，使用 SQL 数据库的访问令牌提供实体框架数据库上下文。 在 *Data\MyDatabaseContext.cs* 中，将以下代码添加到空的 `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` 构造函数的大括号中：
+
+```csharp
+var conn = (System.Data.SqlClient.SqlConnection)Database.GetDbConnection();
+conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
+```
+
+这就是连接到 SQL 数据库所要完成的所有准备工作。 在 Visual Studio 中调试时，代码将使用[设置 Visual Studio](#set-up-visual-studio) 中配置的 Azure AD 用户。 稍后你将设置 SQL 数据库服务器，以允许应用服务应用的托管标识建立连接。
+
+键入 `Ctrl+F5`，再次运行该应用。 浏览器中相同的 CRUD 应用程序现使用 Azure AD 身份验证直接连接到 Azure SQL 数据库。 此设置使你能够从 Visual Studio 运行数据库迁移。
 
 ## <a name="use-managed-identity-connectivity"></a>使用托管标识连接性
 
@@ -167,7 +232,7 @@ GO
 
 ### <a name="modify-connection-string"></a>修改连接字符串
 
-请记住，在 `Web.config` 中所做的同一更改适用于托管标识，因此只需删除应用中的现有连接字符串，该字符串由 Visual Studio 在首次部署应用时创建。 使用以下命令，但将 \<app-name> 替换为应用名称  。
+请记住，在 *Web.config* 或 *appsettings.json* 中所做的相同更改适用于托管标识，因此只需删除应用服务中的现有连接字符串，该字符串由 Visual Studio 在首次部署应用时创建。 使用以下命令，但将 \<app-name> 替换为应用名称  。
 
 ```azurecli-interactive
 az webapp config connection-string delete --resource-group myResourceGroup --name <app-name> --setting-names MyDbConnection
@@ -177,11 +242,20 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 现在，剩下的操作是将更改发布到 Azure。
 
-在“解决方案资源管理器”  中，右键单击 “DotNetAppSqlDb”  项目，并选择“发布”  。
+**如果你是在学完[教程：使用 SQL 数据库在 Azure 中生成 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)** 后转到本教程，请在 Visual Studio 中发布更改。 在“解决方案资源管理器”  中，右键单击 “DotNetAppSqlDb”  项目，并选择“发布”  。
 
 ![从解决方案资源管理器发布](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-在发布页中单击“发布”。  当新网页显示待办事项列表时，表明应用使用了托管标识连接到数据库。
+在发布页中单击“发布”。  
+
+**如果你是在学完[教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用](app-service-web-tutorial-dotnetcore-sqldb.md)** 后转到本教程，请运行以下命令使用 Git 发布更改：
+
+```bash
+git commit -am "configure managed identity"
+git push azure master
+```
+
+当新网页显示待办事项列表时，表明应用使用了托管标识连接到数据库。
 
 ![Code First 迁移后的 Azure 应用](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 

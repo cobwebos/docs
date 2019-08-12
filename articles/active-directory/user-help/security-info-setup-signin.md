@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/13/2019
+ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c20256fb712d9381ba2adc90e2e68ce4fdc8911a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: d4ca21ecf7ad0707ad33220a8e8c2700638f8e25
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382775"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824819"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>根据登录页提示设置安全信息（预览）
 
@@ -75,7 +75,7 @@ ms.locfileid: "68382775"
 
 8. 在 Microsoft Authenticator 应用中确认通知，然后选择“下一步”。 
 
-    ![成功通知，指出正在连接应用和帐户](media/security-info/securityinfo-prompt-auth-app-success.png).
+    ![成功通知，指出正在连接应用和帐户](media/security-info/securityinfo-prompt-auth-app-success.png)
 
     在使用双重验证或密码重置时，安全信息默认会更新为使用 Microsoft Authenticator 应用来验证你的身份。
 
@@ -98,6 +98,40 @@ ms.locfileid: "68382775"
 12. 查看“成功”页，以确认成功为安全信息设置了 Microsoft Authenticator 应用和手机（短信或电话呼叫）验证方法，然后选择“完成”。  
 
     ![向导中的“成功完成”页](media/security-info/securityinfo-prompt-setup-success.png)
+
+    >[!Note]
+    >如果你的组织要求使用应用密码，此向导中可能会显示一个额外的部分，可在其中设置密码。 如果看到名为“应用密码”的第三个部分，则必须填写该部分，然后才能完成向导。  有关如何添加应用密码的步骤，请参阅本文的[管理应用密码](#manage-your-app-passwords)部分。
+
+### <a name="manage-your-app-passwords"></a>管理应用密码
+
+某些应用（例如 Outlook 2010）不支持双重验证。 缺少这种支持意味着，如果你在组织中使用双重验证，该应用将不会正常工作。 若要解决此问题，可以创建一个与普通密码不同的自动生成的密码，并在每个非浏览器应用中使用该密码。
+
+>[!Note]
+>如果向导中未显示此选项，则表示管理员尚未设置此选项。 如果未设置此项，但你知道需要使用应用密码，可以遵循[“安全信息（预览）”页中的“设置应用密码”](security-info-app-passwords.md)中所述的步骤。
+
+使用应用密码时，请务必记住：
+
+- 应用密码是自动生成的，并且只能为每个应用输入一次。
+
+- 每个用户的密码限制为 40 个。 如果在达到该限制后尝试创建密码，系统会提示删除现有的密码，然后才能创建新密码。
+
+- 对每个设备（而不是每个应用）使用一个应用密码。 例如，为笔记本电脑上的所有应用创建一个密码，然后为台式机上的所有应用创建另一个密码。
+
+#### <a name="to-add-app-passwords-in-the-sign-in-wizard"></a>在登录向导中添加应用密码
+
+1. 完成向导的前面部分后，选择“下一步”并完成“应用密码”部分。  
+
+2. 键入需要密码的应用的名称（例如 `Outlook 2010`），然后选择“下一步”。 
+
+    ![在向导中添加应用密码名称](media/security-info/app-password-app-password.png)
+
+3. 复制“应用密码”屏幕中的密码代码，并将其粘贴到应用（在本示例中为 Outlook 2010）的“密码”区域中。  
+
+    ![“应用密码”页，其中包含要复制的密码](media/security-info/app-password-copy-password.png)
+
+4. 复制密码并将其粘贴到应用中后，返回到此向导以确认所有登录方法信息正确，然后选择“完成”。 
+
+    ![“应用密码”页，其中包含完成通知](media/security-info/app-password-complete.png)
 
 ## <a name="next-steps"></a>后续步骤
 
