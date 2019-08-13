@@ -63,8 +63,6 @@
       href: samples-resource-manager-templates.md
 - name: 概念
   items:
-    - name: 应用服务的工作方式
-      href: app-service-how-works-readme.md
     - name: 应用服务计划
       href: overview-hosting-plans.md
     - name: OS 功能

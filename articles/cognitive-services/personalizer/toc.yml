@@ -8,9 +8,12 @@
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
 - name: 快速入门
   items:
-    - name: 创建和使用反馈循环
+    - name: '使用 C#'
       href: csharp-quickstart-commandline-feedback-loop.md
       displayName: 'code, sample, quickstart, c#'
+    - name: 使用 Python
+      href: python-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, python'
 - name: 概念
   items:
     - name: 个性化体验创建服务的工作原理

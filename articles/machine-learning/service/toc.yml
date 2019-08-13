@@ -258,7 +258,7 @@
     - name: 创建可重用的工作流
       displayName: pipelines
       items:
-        - name: ML 管道：批处理、计算、重复使用、共享
+        - name: ML 管道
           href: how-to-create-your-first-pipeline.md
         - name: 用于 CI/CD 的 Azure Pipelines
           displayName: 'continuous, integration, delivery'
