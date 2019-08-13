@@ -1,28 +1,33 @@
 - name: 应用程序管理文档
   href: index.yml
-- name: 应用程序管理和单一登录
+- name: 概述
   expanded: true
   items:
-    - name: 概述
-      expanded: true
-      items:
-        - name: 什么是应用程序管理？
-          href: what-is-application-management.md
-    - name: 快速入门
-      items:
-        - name: 添加库应用程序 - 门户
-          href: add-application-portal.md
-        - name: 查看租户应用 - 门户
-          href: view-applications-portal.md
-    - name: 教程
-      items:
-        - name: SaaS 应用程序教程
-          href: /azure/active-directory/saas-apps/
-    - name: 概念
+    - name: 云应用管理和单一登录是什么？
+      href: what-is-application-management.md
+    - name: 自动用户预配是什么？
+      href: user-provisioning.md
+    - name: 本地应用的应用程序代理是什么？
+      href: what-is-application-proxy.md
+- name: 快速入门
+  items:
+    - name: 从库中添加云应用
+      href: add-application-portal.md
+    - name: 查看企业应用程序
+      href: view-applications-portal.md
+- name: 教程
+  items:
+    - name: SaaS 应用教程
+      href: /azure/active-directory/saas-apps/
+    - name: 添加通过应用程序代理访问的本地应用
+      href: application-proxy-add-on-premises-application.md
+- name: 概念
+  items:
+    - name: 云应用和单一登录
       items:
         - name: 计划云应用集成
           items:
-            - name: 添加应用时发生的情况
+            - name: 应用集成入门
               href: plan-an-application-integration.md
             - name: 开发人员指南
               href: developer-guidance-for-integrating-applications.md
@@ -56,9 +61,34 @@
               href: tenant-restrictions.md
             - name: 配置 SAML 令牌加密（预览版）
               href: howto-saml-token-encryption.md
-        - name: 最终用户门户
-          href: end-user-experiences.md
-    - name: 操作指南
+            - name: 最终用户门户
+              href: end-user-experiences.md
+    - name: 自动用户预配
+      items:
+        - name: 对启用 SCIM 的应用自动执行预配
+          href: use-scim-to-provision-users-and-groups.md
+    - name: 本地应用的应用程序代理
+      items:
+        - name: 应用程序代理
+          href: application-proxy.md
+        - name: 计划应用程序代理部署
+          href: application-proxy-deployment-plan.md
+        - name: 连接器
+          href: application-proxy-connectors.md
+        - name: 连接器组
+          href: application-proxy-connector-groups.md
+        - name: 安全
+          href: application-proxy-security.md
+        - name: 网络拓扑
+          href: application-proxy-network-topology.md
+        - name: 高可用性和负载均衡
+          href: application-proxy-high-availability-load-balancing.md
+        - name: 比较远程访问解决方案
+          href: application-proxy-migration.md
+- name: 操作指南
+  expanded: true
+  items:
+    - name: 云应用和单一登录
       items:
         - name: 添加云应用
           items:
@@ -182,36 +212,7 @@
                   href: access-panel-extension-problem-installing.md
                 - name: 使用自助服务应用访问权限时出错
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: 资源
-      items:
-        - name: Azure 反馈论坛
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN 论坛
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: 定价
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: 服务更新
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: 堆栈溢出
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: 视频
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
-- name: 自动用户预配
-  items:
-    - name: 概述
-      expanded: true
-      items:
-        - name: 什么是预配？
-          href: user-provisioning.md
-    - name: 教程
-      items:
-        - name: SaaS 应用程序教程
-          href: /azure/active-directory/saas-apps/
-    - name: 概念
-      items:
-        - name: 对启用 SCIM 的应用自动执行预配
-          href: use-scim-to-provision-users-and-groups.md
-    - name: 操作指南
+    - name: 自动用户预配
       items:
         - name: 配置用户设置
           items:
@@ -223,8 +224,6 @@
               href: configure-automatic-user-provisioning-portal.md
             - name: 自定义应用程序属性
               href: Customize-application-attributes.md
-            - name: 为属性映射编写表达式
-              href: functions-for-customizing-application-data.md
             - name: 范围筛选器
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: 检查预配状态
@@ -245,50 +244,7 @@
               href: application-provisioning-config-problem-no-users-provisioned.md
             - name: 预配了错误的用户 - 库应用
               href: application-provisioning-config-problem-wrong-users-provisioned.md
-    - name: 资源
-      items:
-        - name: Azure 反馈论坛
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN 论坛
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: 定价
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: 服务更新
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: 堆栈溢出
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: 视频
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
-- name: 本地应用的应用程序代理
-  items:
-    - name: 概述
-      expanded: true
-      items:
-        - name: 什么是应用程序代理？
-          href: what-is-application-proxy.md
-    - name: 教程
-      items:
-        - name: 添加本地应用 - 门户
-          href: application-proxy-add-on-premises-application.md
-    - name: 概念
-      items:
-        - name: 应用程序代理
-          href: application-proxy.md
-        - name: 计划应用程序代理部署
-          href: application-proxy-deployment-plan.md
-        - name: 连接器
-          href: application-proxy-connectors.md
-        - name: 连接器组
-          href: application-proxy-connector-groups.md
-        - name: 安全
-          href: application-proxy-security.md
-        - name: 网络拓扑
-          href: application-proxy-network-topology.md
-        - name: 高可用性和负载均衡
-          href: application-proxy-high-availability-load-balancing.md
-        - name: 比较远程访问解决方案
-          href: application-proxy-migration.md
-    - name: 操作指南
+    - name: 本地应用的应用程序代理
       items:
         - name: 配置连接器
           items:
@@ -376,21 +332,27 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: 应用程序代理中的 CORS 问题
               href: application-proxy-understand-cors-issues.md
-    - name: 引用
+- name: 引用
+  items:
+    - name: 自动用户预配
+      items:
+        - name: 为属性映射编写表达式
+          href: functions-for-customizing-application-data.md
+    - name: 本地应用的应用程序代理
       items:
         - name: 应用程序代理版本历史记录
           href: application-proxy-release-version-history.md
-    - name: 资源
-      items:
-        - name: Azure 反馈论坛
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN 论坛
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: 定价
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: 服务更新
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: 堆栈溢出
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: 视频
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
+- name: 资源
+  items:
+    - name: Azure 反馈论坛
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

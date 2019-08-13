@@ -9,10 +9,14 @@
   items:
     - name: '使用 C#'
       href: Quickstart.md
+    - name: 使用 Swift (iOS)
+      href: ios-quickstart.md
 - name: 教程
   items:
     - name: 启动沉浸式阅读器 (Node.js)
       href: tutorial.md
+    - name: 图片到沉浸式阅读器 (Swift)
+      href: ios-picture-immersive-reader-tutorial.md
 - name: 操作说明
   items:
     - name: Azure Active Directory 身份验证
@@ -21,6 +25,8 @@
   items:
     - name: SDK 参考
       href: reference.md
+    - name: iOS SDK 参考
+      href: ios-reference.md
 - name: 资源
   items:
     - name: Azure 路线图

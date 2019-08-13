@@ -137,6 +137,8 @@
           items:
             - name: 访问层级
               href: storage-blob-storage-tiers.md
+            - name: 将存档存储中的数据解除冻结
+              href: storage-blob-rehydration.md
             - name: 管理 Azure Blob 存储生命周期
               href: storage-lifecycle-management-concepts.md
         - name: 性能和缩放

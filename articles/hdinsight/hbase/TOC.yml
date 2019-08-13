@@ -162,6 +162,8 @@
       items:
         - name: 排查资源问题
           href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: 在连接重置后出现存储异常
+          href: ./hbase-troubleshoot-storage-exception-reset.md
         - name: Apache Phoenix 视图中没有数据
           href: ./hbase-troubleshoot-phoenix-no-data.md
         - name: BindException - 地址已在使用

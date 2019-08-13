@@ -197,6 +197,8 @@
       items:
         - name: 应用程序模型
           href: service-fabric-application-model.md
+        - name: 创建应用程序模型模板
+          href: service-fabric-concept-resource-model.md
         - name: 应用程序和服务清单
           href: service-fabric-application-and-service-manifests.md
         - name: 应用程序和服务清单示例
@@ -350,6 +352,10 @@
           href: service-fabric-diagnostics-partners.md
     - name: 与 API 管理集成
       href: service-fabric-api-management-overview.md
+    - name: 应用资源模型
+      href: service-fabric-concept-resource-model.md
+    - name: 托管标识
+      href: concepts-managed-identity.md
 - name: 操作指南
   items:
     - name: 设置开发环境
@@ -741,6 +747,26 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: 对本地群集进行故障排除
           href: service-fabric-troubleshoot-local-cluster-setup.md
+    - name: 将托管标识用于 Service Fabric 应用
+      items:
+        - name: 群集设置
+          items:
+            - name: 将现有群集配置为启用托管标识
+              href: configure-existing-cluster-enable-managed-identity-token-service.md
+            - name: 将新 Azure Service Fabric 群集配置为启用托管标识
+              href: configure-new-azure-service-fabric-enable-managed-identity.md
+        - name: 应用程序设置
+          items:
+            - name: 如何部署具有托管标识的应用程序
+              items:
+                - name: 如何部署具有系统分配的托管标识的应用程序
+                  href: how-to-deploy-service-fabric-application-system-assigned-managed-identity.md
+                - name: 如何部署具有用户分配的托管标识的应用程序
+                  href: how-to-deploy-service-fabric-application-user-assigned-managed-identity.md
+        - name: 通过 Service Fabric 应用程序代码使用 MITS
+          href: how-to-managed-identity-service-fabric-app-code.md
+        - name: 授予对其他 Azure 资源的访问权限
+          href: how-to-grant-access-other-resources.md
 - name: 引用
   items:
     - name: Azure PowerShell

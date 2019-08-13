@@ -1,56 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure AD Identity Governance 文档
+### YamlMime:Landing
+title: Azure Active Directory Identity Governance 文档
+summary: 借助 Azure Active Directory (Azure AD) Identity Governance，能够保护、监视和审核对关键资产的访问，同时确保员工的工作效率。
 metadata:
-  document_id: null
-  title: Azure Active Directory Identity Governance 文档 | Microsoft Docs
-  description: 了解跨员工和合作伙伴的标识生命周期治理、访问权限生命周期治理和安全管理。
-  services: active-directory
   author: msaburnley
+  description: 了解如何保护、监视和审核对关键资产的访问，同时确保员工的工作效率。
   manager: daveba
-  ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 04/18/2019
   ms.author: ajburnle
-abstract:
-  description: Azure Active Directory (Azure AD) Identity Governance 使组织可以跨员工和合作伙伴治理标识生命周期、治理访问权限生命周期以及保护管理。
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-identity-governance.png
-      width: 200
-    title: '治理对资源的访问 (1: 17:24)'
-    href: 'https://www.youtube.com/embed/aY7A0Br8u5M'
-    width: 200
-sections:
-  - title: Identity Governance
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/identity-governance-overview">Identity Governance 是什么？</a>
-  - title: 权利管理（预览版）
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/entitlement-management-overview">Azure AD 权利管理是什么？</a>
-          - html: <a href="/azure/active-directory/governance/entitlement-management-access-package-first">教程 - 创建第一个访问包</a>
-          - html: <a href="/azure/active-directory/governance/entitlement-management-access-package-edit">编辑和管理现有访问包</a>
-  - title: 访问评审
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/access-reviews-overview">Azure AD 访问评审是什么？</a>
-          - html: <a href="/azure/active-directory/governance/create-access-review">创建组或应用的访问评审</a>
-          - html: <a href="/azure/active-directory/governance/perform-access-review">评审对组或应用的访问权限</a>
-  - title: 使用条款
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">需要使用条款？</a>
+  ms.collection: na
+  ms.date: 08/08/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: fa7577ea7ef212242a903b20d44db80c22c55842
+  ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/12/2019
+  ms.locfileid: "68949550"
+landingContent:
+- title: 了解 Identity Governance
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure AD Identity Governance？
+      url: identity-governance-overview.md
+  - linkListType: learn
+    links:
+    - text: 监管对资源的访问
+      url: https://www.youtube.com/watch?v=bFfowdpApu4&list=PLQXpv_NQsPIBg3op2xONM9KgwlayFDue6
+- title: 监管对组、应用和站点的访问的生命周期
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD 权利管理是什么？ （预览版）
+      url: entitlement-management-overview.md
+  - linkListType: tutorial
+    links:
+    - text: 创建你的首个访问包，以帮助用户请求他们所需的访问权限
+      url: entitlement-management-access-package-first.md
+  - linkListType: how-to-guide
+    links:
+    - text: 编辑和管理现有访问包
+      url: entitlement-management-access-package-edit.md
+- title: 再次验证对组、应用和特权角色的访问权限
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD 访问评审是什么？
+      url: access-reviews-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建访问评审以确保用户不会保留过多的访问权限
+      url: create-access-review.md
+    - text: 评审对组或应用的访问权限
+      url: perform-access-review.md
+- title: 使用户有资格获得特权角色
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure AD Privileged Identity Management？
+      url: ../privileged-identity-management/pim-configure.md
+- title: 确保用户看到免责声明
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 要求用户在使用应用时同意使用条款
+      url: ../conditional-access/terms-of-use.md
