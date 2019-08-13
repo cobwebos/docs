@@ -45,7 +45,7 @@ Shopify 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为：“Shopify” | 是 |
-| 主机 | Shopify 服务器的终结点。 （即，mystore.myshopify.com）  | 是 |
+| host | Shopify 服务器的终结点。 （即，mystore.myshopify.com）  | 是 |
 | accessToken | 可用于访问 Shopify 的数据的 API 访问令牌。 如果处于脱机模式，该令牌不会过期。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
