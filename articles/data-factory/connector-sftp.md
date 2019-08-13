@@ -52,8 +52,8 @@ SFTP 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Sftp**。 |是 |
-| 主机 | SFTP 服务器的名称或 IP 地址。 |是 |
-| 端口 | SFTP 服务器侦听的端口。<br/>允许的值是：整数，默认值是 22。 |否 |
+| host | SFTP 服务器的名称或 IP 地址。 |是 |
+| port | SFTP 服务器侦听的端口。<br/>允许的值是：整数，默认值是 22。 |否 |
 | skipHostKeyValidation | 指定是否要跳过主机密钥验证。<br/>允许的值为：true、false（默认）。  | 否 |
 | hostKeyFingerprint | 指定主机密钥的指纹。 | 是（如果“skipHostKeyValidation”设置为 false）。  |
 | authenticationType | 指定身份验证类型。<br/>允许值包括：**Basic**、**SshPublicKey**。 有关其他属性和 JSON 示例，请分别参阅[使用基本身份验证](#using-basic-authentication)和[使用 SSH 公钥身份验证](#using-ssh-public-key-authentication)部分。 |是 |
