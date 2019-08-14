@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91cc2707034eabf85afae70278f2448b77d3ee14
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 413df402d5acc878130a47821efd5fa3a512257d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608069"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931938"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>基准策略:阻止旧身份验证 (预览)
 
@@ -36,8 +36,8 @@ ms.locfileid: "68608069"
 你需要先了解你的用户是否具有使用旧身份验证的应用程序, 以及它如何影响你的整个目录, 然后才能在目录中阻止旧身份验证。 Azure AD 登录日志可用于了解你是否正在使用旧身份验证。
 
 1. 导航到**Azure 门户** > **Azure Active Directory** > **登录**。
-1. 如果未通过单击 "客户端应用"**列** > 来显示 "客户端应用" 列, 则添加**它。**
-1. 按**客户端应用** > 筛选**其他客户端**, 然后单击 "**应用**"。
+1. 如果未通过单击 "客户端应用"**列** > 来显示 "客户端应用" 列, 则添加它。
+1. **添加筛选器** > **客户端应用**> 选择**其他客户端**的所有选项, 然后单击 "**应用**"。
 
 筛选只显示旧版身份验证协议进行的登录尝试。 单击每次登录尝试都将显示其他详细信息。 "**基本信息**" 选项卡下的 "**客户端应用**" 字段将指示使用的是旧的身份验证协议。
 

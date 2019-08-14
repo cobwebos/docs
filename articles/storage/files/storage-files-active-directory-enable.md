@@ -4,14 +4,14 @@ description: 了解如何通过 Azure Active Directory 域服务, 为 Azure 文�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 08/08/2019
 ms.author: rogarana
-ms.openlocfilehash: 060c47cc25d04bccc253bcebf6479d660621f6d2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2b5ebc9f35dd207e8e530b7d74acc5517125fbf4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855329"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935004"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>启用 Azure 文件的通过 SMB Azure Active Directory 域服务身份验证
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -142,7 +142,16 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 > [!IMPORTANT]
 > 对文件共享的完全管理控制（包括将角色分配给标识的控制权限）需要使用存储帐户密钥。 Azure AD 凭据不支持管理控制。
 
-您可以使用 Azure PowerShell 或 Azure CLI 将内置角色分配给用户的 Azure AD 标识, 以便授予共享级权限。
+你可以使用 Azure 门户、PowerShell 或 Azure CLI 将内置角色分配给用户的 Azure AD 标识, 以便授予共享级别权限。
+
+#### <a name="azure-portal"></a>Azure 门户
+若要将 RBAC 角色分配到 Azure AD 标识, 请使用[Azure 门户](https://portal.azure.com), 请执行以下步骤:
+
+1. 在 Azure 门户中, 请前往文件共享, 或[在 Azure 文件中创建文件共享](storage-how-to-create-file-share.md)。
+2. 选择“访问控制 (IAM)”。
+3. 选择 "**添加角色分配**"
+4. 在 "**添加角色分配**" 边栏选项卡中, 从 "**角色**" 列表中选择适当的内置角色 (存储文件数据 smb 共享读取器、存储文件数据 smb 共享参与者)。 将 "**分配访问权限**" 选项保留为默认设置:**Azure AD 用户、组或服务主体**。 按名称或电子邮件地址选择目标 Azure AD 标识。
+5. 选择 "**保存**" 以完成角色分配操作。
 
 #### <a name="powershell"></a>PowerShell
 

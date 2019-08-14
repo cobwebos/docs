@@ -8,18 +8,18 @@ ms.topic: reference
 ms.date: 07/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a958c33e173c881a3ad09a49fe9f71ddb0c9df56
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 38ce44f486616e4ab94e8332884005a187e31008
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508946"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932416"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>使用 PowerShell 管理 Azure Analysis Services
 
 本文介绍用于执行 Azure Analysis Services 服务器和数据管理任务的 PowerShell cmdlet。 
 
-服务器资源管理任务，如创建或删除服务器、 挂起或恢复服务器操作，或更改服务级别 （层） 使用 Azure Analysis Services cmdlet。 用于管理数据库的其他任务（如添加或删除角色成员、处理或分区）使用与 SQL Server Analysis Services 相同的 SqlServer 模块中包含的 cmdlet。
+服务器资源管理任务，如创建或删除服务器、暂停或恢复服务器操作，或使用 Azure Analysis Services cmdlet 更改服务级别（层级）。 用于管理数据库的其他任务（如添加或删除角色成员、处理或分区）使用与 SQL Server Analysis Services 相同的 SqlServer 模块中包含的 cmdlet。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -31,19 +31,19 @@ ms.locfileid: "67508946"
 
 ## <a name="resource-and-server-operations"></a>资源和服务器操作 
 
-安装模块- [Az.AnalysisServices](https://www.powershellgallery.com/packages/Az.AnalysisServices)   
-文档- [Az.AnalysisServices 引用](/powershell/module/az.analysisservices)
+安装模块 - [Az.AnalysisServices](https://www.powershellgallery.com/packages/Az.AnalysisServices)   
+文档 - [Az.AnalysisServices reference](/powershell/module/az.analysisservices)
 
 ## <a name="database-operations"></a>数据库操作
 
-Azure Analysis Services 数据库操作与 SQL Server Analysis Services 使用相同的 SqlServer 模块。 但是，Azure Analysis Services 并非支持所有 cmdlet。 
+Azure Analysis Services 数据库操作使用与 SQL Server Analysis Services 相同的 SqlServer 模块。 但是，Azure Analysis Services 并非支持所有 cmdlet。 
 
 SqlServer 模块提供任务特定的数据库管理 cmdlet，以及接受表格模型脚本语言 (TMSL) 查询或脚本的常规用途 Invoke-ASCmd cmdlet。 Azure Analysis Services 支持 SqlServer 模块中的以下 cmdlet。
 
-安装模块- [SqlServer](https://www.powershellgallery.com/packages/SqlServer)   
-文档- [SqlServer 引用](/powershell/module/sqlserver)
+安装模块 - [SqlServer](https://www.powershellgallery.com/packages/SqlServer)   
+文档 - [SqlServer 参考](/powershell/module/sqlserver)
 
-### <a name="supported-cmdlets"></a>支持的 cmdlet
+### <a name="supported-cmdlets"></a>受支持的 cmdlet
 
 |Cmdlet|描述|
 |------------|-----------------| 
@@ -64,4 +64,4 @@ SqlServer 模块提供任务特定的数据库管理 cmdlet，以及接受表格
 * [下载 SQL Server PowerShell 模块](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [下载 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
 * [PowerShell 库中的 SqlServer 模块](https://www.powershellgallery.com/packages/SqlServer)    
-* [Tabular Model Programming for Compatibility Level 1200 and higher](/sql/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)（适用于兼容级别 1200 或更高级别的表格模型编程）
+* [Tabular Model Programming for Compatibility Level 1200 and higher](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)（适用于兼容级别 1200 或更高级别的表格模型编程）

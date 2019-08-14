@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 80610168e0d293b65626da71ee349f25e456576b
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 93b3c7671a5beb4b3a451fe0efd13b9f48e00436
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774573"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941807"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置共享映像库
 开发测试实验室现在支持[共享映像库](../virtual-machines/windows/shared-image-galleries.md)功能。 它允许实验室用户在创建实验室资源的同时从共享位置访问映像。 它还可以帮助围绕自定义托管 VM 映像生成结构和组织。 共享映像库功能支持:
@@ -36,7 +36,7 @@ ms.locfileid: "68774573"
 ## <a name="considerations"></a>注意事项
 - 一次只能将一个共享映像库附加到实验室。 如果要附加其他库, 则需要分离现有库, 并附加另一个库。 
 - 开发测试实验室当前不支持通过实验室向库上传图像。 
-- 使用共享映像库映像创建虚拟机时, 开发测试实验室始终使用此映像的最新发布版本。
+- 使用共享映像库映像创建虚拟机时, 开发测试实验室始终使用此映像的最新发布版本。 但是, 如果映像有多个版本, 则用户可以在虚拟机创建期间转到 "高级设置" 选项卡, 选择从早期版本创建计算机。  
 - 尽管开发测试实验室会自动尽力确保共享图像库将图像复制到实验室所在的区域, 但并不总是这样。 若要避免用户在从这些映像中创建 Vm 时遇到问题, 请确保已将映像复制到实验室的区域。 "
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户

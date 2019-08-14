@@ -11,16 +11,15 @@ ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 08d74f866fe28a4c424ba504795b4a22f09785ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fff70cc0c80d26d5454e54e43a6ef6c0b39b5cac
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337317"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941730"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的部署问题：常见问题 (FAQ)
 
@@ -50,12 +49,12 @@ ms.locfileid: "60337317"
 
 若要帮助解决这种分配失败，请参阅[云服务分配失败：解决方法](cloud-services-allocation-failures.md#solutions)。
 
-若要检查你的区域中可用的大小，请参阅[Microsoft Azure:区域的可用产品](https://azure.microsoft.com/regions/services)。
+若要检查您的区域中可用的大小[, 请参阅 Microsoft Azure:可用产品 (按](https://azure.microsoft.com/regions/services)区域)。
 
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>为什么我的订阅或服务的限制/配额/约束有时会导致部署云服务失败？
 如果需要分配的资源超过服务所在区域/数据中心级别允许的默认或最大配额，则云服务部署可能会失败。 有关详细信息，请参阅[云服务限制](../azure-subscription-service-limits.md#azure-cloud-services-limits)。
 
-还可以在门户上跟踪订阅的当前使用情况/配额：Azure 门户 = > 订阅 = >\<相应订阅 > = >"使用情况 + 配额"。
+还可以在门户上跟踪订阅的当前使用情况/配额：Azure 门户 = > 订阅 = > \<相应的订阅 > = > "使用情况 + 配额"。
 
 资源使用情况/相关消耗信息也可以通过 Azure 计费 API 检索。 请参阅 [Azure 资源使用状况 API（预览）](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview)。
 

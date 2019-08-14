@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 0c07cbd9fef865f3fc7b782210ef44094df9f629
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 9ab09c7215827369b3e1fc449af68be307881f51
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779832"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928016"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 ##  <a name="introduction"></a>简介
@@ -54,7 +54,7 @@ Microsoft Azure 同时针对恶意和非恶意用户提供了隔离，并向架�
 每个 Azure AD 目录都是独特的，独立于其他 Azure AD 目录。 就像公司办公大楼是组织特有的安全资产一样，根据设计，Azure AD 目录也是仅供组织使用的安全资产。 Azure AD 体系结构隔离了客户数据和身份信息，避免混合存放。 这意味着，一个 Azure AD 目录的用户和管理员不可能意外或恶意性地访问另一目录中的数据。
 
 ### <a name="azure-tenancy"></a>Azure 租户
-Azure 租户（Azure 订阅）是指 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 中的“客户/账单”关系和唯一的[租户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant)。 Microsoft Azure 中的租户级别隔离是使用 Azure Active Directory 及其提供的[基于角色的控制](https://docs.microsoft.com/azure/role-based-access-control/overview)实现的。 每个 Azure 订阅都会与一个 Azure Active Directory (AD) 目录关联。
+Azure 租户（Azure 订阅）是指 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 中的“客户/账单”关系和唯一的[租户](../../active-directory/develop/quickstart-create-new-tenant.md)。 Microsoft Azure 中的租户级别隔离是使用 Azure Active Directory 及其提供的[基于角色的控制](../../role-based-access-control/overview.md)实现的。 每个 Azure 订阅都会与一个 Azure Active Directory (AD) 目录关联。
 
 该目录中的用户、组和应用程序可以管理 Azure 订阅中的资源。 可以使用 Azure 门户、Azure 命令行工具及 Azure 管理 API 来分配这些访问权限。 从逻辑上讲，Azure AD 租户是使用安全边界隔离的，这样，任何客户都不能访问或入侵联合租户，而无论其行为是恶意的还是偶然的。 在“裸机”服务器上运行的 Azure AD 是在分隔的网络段中隔离的，主机级别数据包筛选和 Windows 防火墙在该网络段中阻止不需要的连接和流量。
 
@@ -71,7 +71,7 @@ Azure 租户（Azure 订阅）是指 [Azure Active Directory](https://docs.micro
 
 - Azure AD 用户无权访问物理资产或位置，因此他们不可能绕过下述逻辑 RBAC 策略检查。
 
-为了满足诊断和维护需求，需要使用采用实时特权提升系统的操作模型。 Azure AD Privileged Identity Management (PIM) 引入了有资格管理员的概念。[有资格管理员](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)应是不时（但不是每天）需要特权访问的用户。 该角色处于非活动状态，直到用户需要访问权限，然后他们完成激活过程，并在预定的时间内成为活动管理员。
+为了满足诊断和维护需求，需要使用采用实时特权提升系统的操作模型。 Azure AD Privileged Identity Management (PIM) 引入了有资格管理员的概念。[有资格管理员](../../active-directory/privileged-identity-management/pim-configure.md)应是不时（但不是每天）需要特权访问的用户。 该角色处于非活动状态，直到用户需要访问权限，然后他们完成激活过程，并在预定的时间内成为活动管理员。
 
 ![Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
 
@@ -82,7 +82,7 @@ Azure Active Directory 在其自己受保护的容器中托管每个租户，使
 即使多个 Azure Active Directory 租户的元数据存储在同一个物理磁盘中，除目录服务定义的容器外，各容器之间仍没有任何关系，而目录服务是由租户管理员指定的。
 
 ### <a name="azure-role-based-access-control-rbac"></a>Azure 基于角色的访问控制 (RBAC)
-[Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 提供针对 Azure 的精细访问权限管理，有助于共享 Azure 订阅中提供的各种组件。 借助 Azure RBAC，可分隔组织内的职责，并根据用户进行作业的需求授予访问权限。 可以仅允许某些操作，而不是向每个人提供对 Azure 订阅或资源不受限制的权限。
+[Azure 基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 提供针对 Azure 的精细访问权限管理，有助于共享 Azure 订阅中提供的各种组件。 借助 Azure RBAC，可分隔组织内的职责，并根据用户进行作业的需求授予访问权限。 可以仅允许某些操作，而不是向每个人提供对 Azure 订阅或资源不受限制的权限。
 
 Azure RBAC 有三种适用于所有资源类型的基本角色：
 
@@ -96,16 +96,16 @@ Azure RBAC 有三种适用于所有资源类型的基本角色：
 
 Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例如，虚拟机参与者角色允许用户创建和管理虚拟机。 但不会向用户授予对虚拟机连接的 Azure 虚拟网络或子网的访问权限。
 
-[RBAC 内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)列出了 Azure 中可用的角色。 它指定每个内置角色向用户授予的操作和范围。 若要定义自己的角色以便进一步控制，请参阅如何生成 [Azure RBAC 中的自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。
+[RBAC 内置角色](../../role-based-access-control/built-in-roles.md)列出了 Azure 中可用的角色。 它指定每个内置角色向用户授予的操作和范围。 若要定义自己的角色以便进一步控制，请参阅如何生成 [Azure RBAC 中的自定义角色](../../role-based-access-control/custom-roles.md)。
 
 Azure Active Directory 的其他部分功能包括:
 - 使用 Azure AD 即可对 SaaS 应用程序启用 SSO，不管这些应用程序在何处托管。 某些应用程序会与 Azure AD 联合起来进行身份验证，其他应用程序则使用密码 SSO。 联合应用程序还可以支持用户预配和[密码存储](https://www.techopedia.com/definition/31415/password-vault)。
 
-- 对 [Azure 存储](https://azure.microsoft.com/services/storage/)中的数据进行访问可以通过身份验证来控制。 每个存储帐户都有一个主密钥（[存储帐户密钥](https://docs.microsoft.com/azure/storage/storage-create-storage-account)，简称 SAK）和一个辅助密钥（共享访问签名，简称 SAS）。
+- 对 [Azure 存储](https://azure.microsoft.com/services/storage/)中的数据进行访问可以通过身份验证来控制。 每个存储帐户都有一个主密钥（[存储帐户密钥](../../storage/common/storage-create-storage-account.md)，简称 SAK）和一个辅助密钥（共享访问签名，简称 SAS）。
 
-- Azure AD 通过联合身份验证（使用 [Active Directory 联合身份验证服务](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-azure-adfs)）、同步以及本地目录复制方式提供标识即服务。
+- Azure AD 通过联合身份验证（使用 [Active Directory 联合身份验证服务](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)）、同步以及本地目录复制方式提供标识即服务。
 
-- [Azure 多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication)是多重身份验证服务，它要求用户使用移动应用、手机或短信验证登录。 它可以与 Azure AD 配合使用，帮助通过 Azure 多重身份验证服务器来保护本地资源；它还用于使用 SDK 的自定义应用程序和目录。
+- [Azure 多重身份验证](../../active-directory/authentication/multi-factor-authentication.md)是多重身份验证服务，它要求用户使用移动应用、手机或短信验证登录。 它可以与 Azure AD 配合使用，帮助通过 Azure 多重身份验证服务器来保护本地资源；它还用于使用 SDK 的自定义应用程序和目录。
 
 - [Azure AD 域服务](https://azure.microsoft.com/services/active-directory-ds/)可让用户将 Azure 虚拟机加入一个 Active Directory 域，且无需部署域控制器。 用户可以使用其公司的 Active Directory 凭据登录到这些虚拟机中，并使用组策略管理已加入域的虚拟机，以便在所有 Azure 虚拟机上强制实施安全基准措施。
 
@@ -140,7 +140,7 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 * Standard_D15_v2
 * Standard_F72s_v2
 
-你可以在[此处](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)了解有关每个独立大小。
+你可以在[此处](../../virtual-machines/windows/sizes-memory.md)了解有关每个独立大小。
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>根 VM 和来宾 VM 之间的 Hyper-V 和根 OS 隔离
 Azure 的计算平台以计算机虚拟化为基础，这意味着所有客户代码都在 Hyper-V 虚拟机中执行。 在每个 Azure 节点（或网络终结点）上，都有一个虚拟机监控程序在硬件上直接运行，并将节点分为数目不定的来宾虚拟机 (VM)。
@@ -215,12 +215,12 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 ![使用存储访问控制的隔离](./media/isolation-choices/azure-isolation-fig9.png)
 
-可以通过 [SAS（共享访问签名）](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1)令牌来控制**对 Azure 存储数据（包括表）的访问权限**，该令牌可授予限定的访问权限。 SAS 是根据查询模板 (URL) 创建的，且使用 [SAK（存储帐户密钥）](https://msdn.microsoft.com/library/azure/ee460785.aspx)进行签名。 可以将该[签名 URL](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) 提供给另一个进程（即委托进程），后者随后可以填充查询的详细信息并发出存储服务请求。 使用 SAS，可以向客户端授予基于时间的访问权限，无需泄露存储帐户的密钥。
+可以通过 [SAS（共享访问签名）](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)令牌来控制**对 Azure 存储数据（包括表）的访问权限**，该令牌可授予限定的访问权限。 SAS 是根据查询模板 (URL) 创建的，且使用 [SAK（存储帐户密钥）](https://msdn.microsoft.com/library/azure/ee460785.aspx)进行签名。 可以将该[签名 URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 提供给另一个进程（即委托进程），后者随后可以填充查询的详细信息并发出存储服务请求。 使用 SAS，可以向客户端授予基于时间的访问权限，无需泄露存储帐户的密钥。
 
 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
 
 ### <a name="ip-level-storage-isolation"></a>IP 级别存储隔离
-可以为受信任客户端建立防火墙，定义 IP 地址范围。 使用 IP 地址范围，只有 IP 地址在定义范围内的客户端才可以连接到 [Azure 存储](https://docs.microsoft.com/azure/storage/storage-security-guide)。
+可以为受信任客户端建立防火墙，定义 IP 地址范围。 使用 IP 地址范围，只有 IP 地址在定义范围内的客户端才可以连接到 [Azure 存储](../../storage/common/storage-security-guide.md)。
 
 可通过网络机制防止未经授权的用户访问 IP 存储数据，该机制用于分配到 IP 存储的专用流量或专用流量隧道。
 
@@ -233,23 +233,23 @@ Azure 提供了以下加密类型来保护数据：
 #### <a name="encryption-in-transit"></a>传输中加密
 传输中加密是通过网络传输数据时用于保护数据的一种机制。 在 Azure 存储中，可以使用以下加密方式来保护数据：
 
--   [传输级别加密](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
+-   [传输级别加密](../../storage/common/storage-security-guide.md)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
 
 -   [线路加密](../../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares)，例如 Azure 文件共享的 SMB 3.0 加密。
 
--   [客户端加密](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
+-   [客户端加密](../../storage/common/storage-security-guide.md)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
 
 #### <a name="encryption-at-rest"></a>静态加密
-对许多组织而言，[静态数据加密](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)是实现数据隐私性、合规性和数据所有权的必要措施。 有三项 Azure 功能可提供“静态”数据加密：
+对许多组织而言，[静态数据加密](isolation-choices.md)是实现数据隐私性、合规性和数据所有权的必要措施。 有三项 Azure 功能可提供“静态”数据加密：
 
--   [存储服务加密](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
+-   [存储服务加密](../../storage/common/storage-security-guide.md)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
 
--   [客户端加密](https://docs.microsoft.com/azure/storage/storage-security-guide#client-side-encryption)也提供静态加密功能。
+-   [客户端加密](../../storage/common/storage-security-guide.md)也提供静态加密功能。
 
--   [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
+-   [Azure 磁盘加密](../azure-security-disk-encryption-overview.md)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
 
 #### <a name="azure-disk-encryption"></a>Azure 磁盘加密
-适用于虚拟机 (VM) 的 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)通过使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中控制的密钥和策略加密 VM 磁盘（包括引导磁盘和数据磁盘），帮助解决企业的安全和符合性要求。
+适用于虚拟机 (VM) 的 [Azure 磁盘加密](../azure-security-disk-encryption-overview.md)通过使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中控制的密钥和策略加密 VM 磁盘（包括引导磁盘和数据磁盘），帮助解决企业的安全和符合性要求。
 
 适用于 Windows 的磁盘加密解决方案是基于 [Microsoft BitLocker 驱动器加密](https://technet.microsoft.com/library/cc732774.aspx)技术，Linux 解决方案基于 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)。
 
@@ -293,7 +293,7 @@ SQL 数据库是 Microsoft 云中的关系型数据库服务，它基于行业�
 
 ### <a name="sql-azure-application-model"></a>SQL Azure 应用程序模型
 
-[Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) 数据库是一项基于云的关系型数据库服务，是根据 SQL Server 技术构建的。 它提供由 Microsoft 在云端托管的多租户数据库服务，该服务高度可用并且可缩放。
+[Microsoft SQL Azure](../../sql-database/sql-database-single-database-get-started.md) 数据库是一项基于云的关系型数据库服务，是根据 SQL Server 技术构建的。 它提供由 Microsoft 在云端托管的多租户数据库服务，该服务高度可用并且可缩放。
 
 从应用程序的角度来看，SQL Azure 提供以下层次结构：每个级别都包含以下一对多的级别。
 
@@ -344,9 +344,9 @@ Azure 部署具有多层网络隔离。 下图显示了 Azure 提供给客户的
 
 ![网络隔离](./media/isolation-choices/azure-isolation-fig13.png)
 
-**流量隔离：** [虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)是 Azure 平台上的流量隔离边界。 一个虚拟网络中的虚拟机 (VM) 无法与不同虚拟网络中的 VM 直接通信，即使这两个虚拟网络是由同一个客户所创建。 隔离是一个非常关键的属性，可确保客户 VM 与通信在虚拟网络中保持私密性。
+**流量隔离：** [虚拟网络](../../virtual-network/virtual-networks-overview.md)是 Azure 平台上的流量隔离边界。 一个虚拟网络中的虚拟机 (VM) 无法与不同虚拟网络中的 VM 直接通信，即使这两个虚拟网络是由同一个客户所创建。 隔离是一个非常关键的属性，可确保客户 VM 与通信在虚拟网络中保持私密性。
 
-[子网](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)基于 IP 范围在虚拟网络中提供额外的隔离层。 使用虚拟网络中的 IP 地址，可以将虚拟网络划分成多个子网，以方便进行组织和提高安全性。 部署到 VNet 的子网（不管是相同的子网还是不同的子网）中的 VM 和 PaaS 角色实例可以互相通信，不需任何额外的配置。 还可以配置[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)，以便根据 NSG 的访问控制列表 (ACL) 中配置的规则允许或拒绝到某个 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。
+[子网](../../virtual-network/virtual-networks-overview.md)基于 IP 范围在虚拟网络中提供额外的隔离层。 使用虚拟网络中的 IP 地址，可以将虚拟网络划分成多个子网，以方便进行组织和提高安全性。 部署到 VNet 的子网（不管是相同的子网还是不同的子网）中的 VM 和 PaaS 角色实例可以互相通信，不需任何额外的配置。 还可以配置[网络安全组 (NSG)](../../virtual-network/virtual-networks-overview.md)，以便根据 NSG 的访问控制列表 (ACL) 中配置的规则允许或拒绝到某个 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。
 
 ## <a name="next-steps"></a>后续步骤
 

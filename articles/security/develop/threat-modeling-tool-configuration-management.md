@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: dbe3526444bc35815dd4323a3a5290696619e3f9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 986bed758229d639bb40d0803f7be4a89a0f6e49
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728349"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934815"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -563,7 +563,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |
-| **参考**              | [IoT 中心设备管理概述](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[如何更新设备固件](https://docs.microsoft.com/azure/iot-hub/tutorial-firmware-update) |
+| **参考**              | [IoT 中心设备管理概述](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[如何更新设备固件](../../iot-hub/tutorial-firmware-update.md) |
 | **步骤** | LWM2M 是开放移动联盟为 IoT 设备管理提供的协议。 借助 Azure IoT 设备管理可以使用设备作业来与物理设备交互。 请确保云网关实施相应的过程，定期使用 Azure IoT 中心设备管理将设备和其他配置数据保持最新状态。 |
 
 ## <a id="controls-policies"></a>确保根据组织的策略在设备上配置终结点安全控制

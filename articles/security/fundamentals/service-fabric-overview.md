@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 75888d9da0d8a6e76e787b7d3867e94eefff337e
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ca2f346950d84fda736437f439efc5d35e342799
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726569"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934575"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric 安全性概述
-[Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 解决了开发和管理云应用程序的难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放且可靠的工作负荷。
+[Azure Service Fabric](../../service-fabric/service-fabric-overview.md) 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 解决了开发和管理云应用程序的难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放且可靠的工作负荷。
 
 本文概述 Service Fabric 部署的安全注意事项。
 
@@ -41,7 +41,7 @@ Azure Service Fabric 协调跨计算机群集的服务。 必须保护群集以�
 
 创建群集时，Service Fabric 将使用指定的 X.509 服务器证书。 有关这些证书是什么以及如何获取或创建这些证书的概述，请参阅[使用证书](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates)。
 
-证书安全性是在通过 Azure 门户、Azure 资源管理器模板或独立的 JSON 模板创建群集时配置的。 可以指定一个主要证书和一个可选的辅助证书（用于证书滚动更新）。 指定的主证书和辅助证书应不同于为[客户端到节点安全性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)指定的管理员客户端证书和只读客户端证书。
+证书安全性是在通过 Azure 门户、Azure 资源管理器模板或独立的 JSON 模板创建群集时配置的。 可以指定一个主要证书和一个可选的辅助证书（用于证书滚动更新）。 指定的主证书和辅助证书应不同于为[客户端到节点安全性](../../service-fabric/service-fabric-cluster-security.md)指定的管理员客户端证书和只读客户端证书。
 
 ### <a name="client-to-node-security"></a>客户端到节点安全性
 使用客户端标识配置客户端到节点安全性。 若要在客户端与群集之间建立信任关系，必须对群集进行配置，使其知道可以信任哪些客户端标识。
@@ -59,11 +59,11 @@ Service Fabric 针对连接到 Service Fabric 群集的客户端支持两种访�
 
 客户端如果使用管理员证书连接到群集，则拥有管理功能的完全访问权限。 客户端如果使用只读的用户客户端证书连接到群集，则只拥有管理功能的只读访问权限。 换言之，这些证书用于基于角色的访问控制 (RBAC)。
 
-若要了解如何在群集中配置证书安全性，请参阅[使用 Azure 资源管理器模板设置群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)。
+若要了解如何在群集中配置证书安全性，请参阅[使用 Azure 资源管理器模板设置群集](../../service-fabric/service-fabric-cluster-creation-via-arm.md)。
 
 #### <a name="client-to-node-azure-active-directory-security"></a>Azure Active Directory 客户端到节点安全性
 
-在 Azure 上运行的群集也可以使用 Azure Active Directory (Azure AD) 来保护对管理终结点的访问。 若要了解如何创建必要的 Azure Active Directory 项目，如何在创建群集期间填充这些项目，以及如何连接这些群集，请参阅[使用 Azure 资源管理器模板设置群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)。
+在 Azure 上运行的群集也可以使用 Azure Active Directory (Azure AD) 来保护对管理终结点的访问。 若要了解如何创建必要的 Azure Active Directory 项目，如何在创建群集期间填充这些项目，以及如何连接这些群集，请参阅[使用 Azure 资源管理器模板设置群集](../../service-fabric/service-fabric-cluster-creation-via-arm.md)。
 
 通过 Azure AD，组织（称为租户）可管理用户对应用程序的访问。 提供有基于 Web 登录 UI 的应用程序和采用本地客户端体验的应用程序。
 
@@ -74,7 +74,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 对于使用 Windows Server 2012 R2 和 Active Directory 的独立 Windows Server 群集，建议结合使用 Windows 安全性和组托管服务帐户 (gMSA)。 否则，可以结合使用 Windows 安全性和 Windows 帐户。
 
 ## <a name="understand-monitoring-and-diagnostics-in-service-fabric"></a>了解 Service Fabric 中的监视和诊断
-[监视和诊断](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview)对任何环境中的开发、测试和部署应用程序和服务都至关重要。 监视和诊断有助于确保应用程序和服务在本地开发环境或生产环境中按预期运行，实现监视和诊断时，Service Fabric 解决方案效果最佳。
+[监视和诊断](../../service-fabric/service-fabric-diagnostics-overview.md)对任何环境中的开发、测试和部署应用程序和服务都至关重要。 监视和诊断有助于确保应用程序和服务在本地开发环境或生产环境中按预期运行，实现监视和诊断时，Service Fabric 解决方案效果最佳。
 
 从安全角度来看，监视和诊断的主要目标是：
 
@@ -84,13 +84,13 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
 监视和诊断的工作流分为三个步骤：
 
-1.  **事件生成**：事件生成同时包括基础结构（群集）级别和应用程序/服务级别的事件（日志、跟踪、自定义事件）。 请参阅[基础结构级别事件](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-infra)和[应用程序级别事件](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app)，了解所含内容及如何添加进一步检测。
+1.  **事件生成**：事件生成同时包括基础结构（群集）级别和应用程序/服务级别的事件（日志、跟踪、自定义事件）。 请参阅[基础结构级别事件](../../service-fabric/service-fabric-diagnostics-event-generation-infra.md)和[应用程序级别事件](../../service-fabric/service-fabric-diagnostics-event-generation-app.md)，了解所含内容及如何添加进一步检测。
 
-2.  **事件聚合**：需要先收集和聚合生成的事件才能显示这些事件。 通常建议使用 [Azure 诊断](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad)（类似于基于代理的日志集合）或 [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow)（进程内日志集合）。
+2.  **事件聚合**：需要先收集和聚合生成的事件才能显示这些事件。 通常建议使用 [Azure 诊断](../../service-fabric/service-fabric-diagnostics-event-aggregation-wad.md)（类似于基于代理的日志集合）或 [EventFlow](../../service-fabric/service-fabric-diagnostics-event-aggregation-eventflow.md)（进程内日志集合）。
 
-3.  **分析**：需可视化事件并能够以某种格式访问事件，以便进行分析和显示。 有多个平台可用于监视和诊断数据的分析和可视化。 建议[Azure Monitor 日志](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms)和[Azure 应用程序 Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) , 因为它们与 Service Fabric 很好地集成。
+3.  **分析**：需可视化事件并能够以某种格式访问事件，以便进行分析和显示。 有多个平台可用于监视和诊断数据的分析和可视化。 建议[Azure Monitor 日志](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md)和[Azure 应用程序 Insights](../../service-fabric/service-fabric-diagnostics-event-analysis-appinsights.md) , 因为它们与 Service Fabric 很好地集成。
 
-还可使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) 来监视构建 Service Fabric 群集时所在的许多 Azure 资源。
+还可使用 [Azure Monitor](../../azure-monitor/overview.md) 来监视构建 Service Fabric 群集时所在的许多 Azure 资源。
 
 监视器是一个独立的服务，可以监视各个服务的运行状况和负载，并报告运行状况模型层次结构中任何组件的运行状况。 使用监视器有助于防止出现基于单个服务的视图所检测不到的错误。 
 
@@ -109,17 +109,17 @@ X.509 数字证书通常用于验证客户端与服务器。 它们还用于对�
 |ServerCertificate| 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 可以使用两个服务器证书：一个主要证书，一个用于升级的辅助证书。|
 |ClientCertificateThumbprints|  这是要在经过身份验证的客户端上安装的一组证书。|
 |ClientCertificateCommonNames|  这是 CertificateCommonName 的第一个客户端证书的通用名称。 CertificateIssuerThumbprint 是此证书颁发者的指纹。|
-|ReverseProxyCertificate|   若要保护[反向代理](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)，可以选择指定此证书。|
+|ReverseProxyCertificate|   若要保护[反向代理](../../service-fabric/service-fabric-reverseproxy.md)，可以选择指定此证书。|
 
-有关保护证书的详细信息，请参阅[使用 X.509 证书保护 Windows 上的独立群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security)。
+有关保护证书的详细信息，请参阅[使用 X.509 证书保护 Windows 上的独立群集](../../service-fabric/service-fabric-windows-cluster-x509-security.md)。
 
 ## <a name="understand-role-based-access-control"></a>了解基于角色的访问控制
-可在创建群集时为每个角色提供不同的标识（包括证书），从而指定管理员和用户客户端角色。 若要详细了解默认访问控制设置以及如何更改默认设置，请参阅 [Service Fabric 客户端的基于角色的访问控制](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security-roles)。
+可在创建群集时为每个角色提供不同的标识（包括证书），从而指定管理员和用户客户端角色。 若要详细了解默认访问控制设置以及如何更改默认设置，请参阅 [Service Fabric 客户端的基于角色的访问控制](../../service-fabric/service-fabric-cluster-security-roles.md)。
 
 ## <a name="secure-standalone-clusters-by-using-windows-security"></a>使用 Windows 安全性保护独立群集
 为了防止有人未经授权访问某个 Service Fabric 群集，必须保护该群集。 当群集运行生产工作负荷时，安全性就尤为重要。 在 ClusterConfig.JSON 文件中使用 Windows 安全性配置节点到节点和客户端到节点的安全性。
 
-如果需要在 gMSA 下运行 Service Fabric，可通过设置 [ClustergMSAIdentity](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-windows-security) 来配置节点到节点安全性。 若要在节点之间建立信任关系，这些节点必须能够相互识别。
+如果需要在 gMSA 下运行 Service Fabric，可通过设置 [ClustergMSAIdentity](../../service-fabric/service-fabric-windows-cluster-windows-security.md) 来配置节点到节点安全性。 若要在节点之间建立信任关系，这些节点必须能够相互识别。
 
 如果希望在 Active Directory 域内使用计算机组，可通过设置 ClusterIdentity 来配置节点到节点安全性。 有关详细信息，请参阅[在 Active Directory 中创建计算机组](https://msdn.microsoft.com/library/aa545347)。
 
@@ -132,14 +132,14 @@ X.509 数字证书通常用于验证客户端与服务器。 它们还用于对�
 ### <a name="manage-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的机密
 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。
 
-可以使用 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 来管理密钥和机密。 但是，在应用程序中使用机密与特定的云平台无关。 可将应用程序部署到在任意位置托管的群集。 此流程包括四个主要步骤：
+可以使用 [Azure Key Vault](../../key-vault/key-vault-whatis.md) 来管理密钥和机密。 但是，在应用程序中使用机密与特定的云平台无关。 可将应用程序部署到在任意位置托管的群集。 此流程包括四个主要步骤：
 
 1.  获取数据加密证书。
 2.  在群集中安装证书。
 3.  在部署应用程序时使用证书加密机密值，并将其注入服务的 Settings.xml 配置文件。
 4.  通过使用相同的加密证书进行解密，从 Settings.xml 中读取加密值。
 
-有关详细信息，请参阅[管理 Service Fabric 应用程序中的机密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management)。
+有关详细信息，请参阅[管理 Service Fabric 应用程序中的机密](../../service-fabric/service-fabric-application-secret-management.md)。
 
 ### <a name="configure-security-policies-for-an-application"></a>配置应用程序的安全策略
 Azure Service Fabric 安全性能够保护群集中以不同用户帐户运行的应用程序。 Service Fabric 安全性还有助于在部署时使用用户帐户来保护应用程序所用的资源，例如文件、目录和证书。 这样，即使在共享托管环境中，也可确保运行的应用程序更安全。
@@ -153,8 +153,8 @@ Azure Service Fabric 安全性能够保护群集中以不同用户帐户运行�
 -   为 HTTP 和 HTTPS 终结点分配安全访问策略
 
 ## <a name="secure-communication-for-services"></a>保护服务的通信
-安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先构建的通信堆栈和工具，可用来提高安全性。 有关详细信息，请参阅[保护服务的服务远程通信](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication)。
+安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先构建的通信堆栈和工具，可用来提高安全性。 有关详细信息，请参阅[保护服务的服务远程通信](../../service-fabric/service-fabric-reliable-services-secure-communication.md)。
 
 ## <a name="next-steps"></a>后续步骤
-- 有关群集安全性的概念信息，请参阅[使用 Azure 资源管理器创建 Service Fabric 群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)和[使用 Azure 门户创建 Service Fabric 群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)。
-- 若要了解有关 Service Fabric 中群集安全性的详细信息，请参阅 [Service Fabric 群集安全方案](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
+- 有关群集安全性的概念信息，请参阅[使用 Azure 资源管理器创建 Service Fabric 群集](../../service-fabric/service-fabric-cluster-creation-via-arm.md)和[使用 Azure 门户创建 Service Fabric 群集](../../service-fabric/service-fabric-cluster-creation-via-portal.md)。
+- 若要了解有关 Service Fabric 中群集安全性的详细信息，请参阅 [Service Fabric 群集安全方案](../../service-fabric/service-fabric-cluster-security.md)。

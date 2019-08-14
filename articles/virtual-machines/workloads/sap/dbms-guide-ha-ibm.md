@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: 754eb063f82344e72bece8fb0ac5708dbc8ab791
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0da426a9302ce72b5359df15d3f8e244fc1766a0
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249131"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935358"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -133,7 +133,7 @@ HADR 只是一种复制功能。 它没有故障检测, 也没有自动接管或
 | 虚拟网络/子网定义 | 用于 IBM Db2 和 Azure 负载均衡器的 Vm 的部署位置。 可以是现有的, 也可以是新创建的。 |
 | 托管 IBM Db2 LUW 的虚拟机 | VM 大小、存储、网络、IP 地址。 |
 | IBM Db2 数据库的虚拟主机名和虚拟 IP| 用于 SAP 应用程序服务器连接的虚拟 IP 或主机名。 **virt-hostname**, **virt-ip**。 |
-| Azure 防护 | Azure 防护或 SBD 防护 (强烈建议)。 防止出现裂脑情况的方法。 |
+| Azure 防护 | Azure 防护或 SBD 防护 (强烈建议)。 避免裂脑情况的方法。 |
 | SBD VM | SBD 虚拟机大小, 存储, 网络。 |
 | Azure 负载均衡器 | 使用的是基本或标准 (推荐), 用于 Db2 数据库的探测端口 (我们的建议 62500)**探测端口**。 |
 | 名称解析| 名称解析在环境中的工作方式。 强烈建议使用 DNS 服务。 可以使用本地主机文件。 |
@@ -144,7 +144,7 @@ HADR 只是一种复制功能。 它没有故障检测, 也没有自动接管或
 
 IBM Db2 LUW 的资源代理包含在 SAP 应用程序 SUSE Linux Enterprise Server 中。 对于本文档中所述的设置, 必须为 SAP 应用程序使用 SUSE Linux 服务器。 Azure Marketplace 包含可用于部署新的 Azure 虚拟机的 SUSE Enterprise Server for SAP Applications 12 的映像。 选择 Azure VM Marketplace 中的 VM 映像时, 通过 Azure Marketplace 提供的各种支持或服务模型。 
 
-### <a name="hosts-dns-updates"></a>主机DNS 更新
+### <a name="hosts-dns-updates"></a>主机:DNS 更新
 创建所有主机名 (包括虚拟主机名) 的列表, 并更新您的 DNS 服务器, 以便为主机名解析启用适当的 IP 地址。 如果 DNS 服务器不存在, 或者你无法更新和创建 DNS 条目, 则需要使用参与此方案的各个 Vm 的本地主机文件。 如果使用的是主机文件条目, 请确保将条目应用到 SAP 系统环境中的所有 Vm。 但是, 我们建议你使用理想情况下扩展到 Azure 中的 DNS
 
 
@@ -404,10 +404,10 @@ sudo crm configure property maintenance-mode=false</pre></code>
 # <a name="full-list-of-resources"></a>完整的资源列表:
 
 #  <a name="stonith-sbd----stonithexternalsbd-started-azibmdb02"></a>stonith-sbd (stonith: external/sbd):已启动 azibmdb02
-#  <a name="resource-group-gipdb2ptrptr"></a>资源组: g_ip_db2ptr_PTR
-#      <a name="rscipdb2ptrptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR (ocf:: 检测信号: IPaddr2):     已启动 azibmdb02
-#      <a name="rscncdb2ptrptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (ocf:: 检测信号: 任何内容):    已启动 azibmdb02
-#  <a name="masterslave-set-msldb2db2ptrptr-rscdb2db2ptrptr"></a>Master/从属集: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
+#  <a name="resource-group-g_ip_db2ptr_ptr"></a>资源组: g_ip_db2ptr_PTR
+#      <a name="rsc_ip_db2ptr_ptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR (ocf:: 检测信号: IPaddr2):     已启动 azibmdb02
+#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (ocf:: 检测信号: 任何内容):    已启动 azibmdb02
+#  <a name="masterslave-set-msl_db2_db2ptr_ptr-rsc_db2_db2ptr_ptr"></a>Master/从属集: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
 #      <a name="masters--azibmdb02-"></a>Master: [azibmdb02]
 #      <a name="slaves--azibmdb01-"></a>从属节点: [azibmdb01]
 </pre>
@@ -425,7 +425,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    b. 输入新前端 IP 池的名称 (例如, **Db2 连接**)。
 
-   c. 将 "**分配**" 设置为 "**静态**", 并输入在**开头定义的**"ip 地址"。
+   c. 将 "**分配**" 设置为 "**静态**", 并输入在开头定义的 "ip 地址"。
 
    d. 选择“确定”。
 

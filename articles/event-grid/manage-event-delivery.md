@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/06/2019
 ms.author: spelluru
-ms.openlocfilehash: a1b49fd3a2a85377a56c92aefd1b0056f91895b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 63bae62ed89bd0bbc167a88274002d1fa1e9b86d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119560"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933371"
 ---
 # <a name="dead-letter-and-retry-policies"></a>死信与重试策略
 
@@ -25,7 +25,9 @@ ms.locfileid: "66119560"
 若要设置死信位置，需要一个存储帐户来保存无法传递到终结点的事件。 这些示例获取现有存储帐户的资源 ID。 它们创建一个事件订阅，该事件订阅使用该存储帐户中的容器作为死信终结点。
 
 > [!NOTE]
-> 在本文中，在运行命令之前，请在存储中创建一个存储帐户和一个 blob 容器。
+> - 在本文中，在运行命令之前，请在存储中创建一个存储帐户和一个 blob 容器。
+> - 事件网格服务在此容器中创建 blob。 Blob 的名称将包含事件网格订阅的名称, 其中所有字母都大写。 例如, 如果订阅的名称是 "我的 Blob-订阅", 则死信 blob 的名称将包含我的 BLOB 订阅 (myblobcontainer/MY BLOB-订阅/2019/8/8/5/111111111-111111111111)。 此行为可防止 Azure 服务之间的大小写之间的差异。
+
 
 ### <a name="azure-cli"></a>Azure CLI
 

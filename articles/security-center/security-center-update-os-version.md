@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: a17bc3cf8c8f1ffbb2a91e17944bfc1c203f439d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60905818"
 ---
 # <a name="update-os-version-in-azure-security-center"></a>在 Azure 安全中心更新 OS 版本
@@ -30,11 +30,11 @@ ms.locfileid: "60905818"
 > 
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”边栏选项卡  中，选择“更新 OS 版本”  。
+1. 在“建议”边栏选项卡中，选择“更新 OS 版本”。
    ![更新 OS 版本][1]
-2. 这会打开“更新 OS 版本”  边栏选项卡。 按照此边栏选项卡中的步骤更新 OS 版本。
+2. 这会打开“更新 OS 版本”边栏选项卡。 按照此边栏选项卡中的步骤更新 OS 版本。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 本文档演示如何实现安全中心建议“更新 OS 版本”。 若要了解有关云服务和更新云服务的 OS 版本的详细信息，请参阅：
 
 * [云服务概述](../cloud-services/cloud-services-choose-me.md)

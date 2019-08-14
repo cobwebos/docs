@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: 34484c309cb186aabec519e54269fefae316165e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5f44e9b386f5d05b75f6fdf6cf8b55360e4c5dae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639906"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954783"
 ---
 # <a name="delete-a-recovery-services-vault"></a>删除恢复服务保管库
 
@@ -51,7 +51,7 @@ ms.locfileid: "68639906"
 
 若要停止保护并删除备份数据，请执行以下操作：
 
-1. 从门户 >**恢复服务保管库** > **备份项**选择云中受保护的项 (例如 AzureVirtual 机、azure 存储 (azure 文件)、SQL 没有 Azure VM 等)。
+1. 从门户 >**恢复服务保管库** > **备份项**选择云中受保护的项 (例如 AzureVirtual 机、azure 存储 (azure 文件)、azure VM 上的 SQL 等)。
 
     ![选择备份类型](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
@@ -131,7 +131,7 @@ ms.locfileid: "68639906"
 
   ![安全 PIN](./media/backup-azure-delete-vault/security-pin.png)
 
-- 在“修改备份进度”向导中，会看到“删除的备份数据会保留 14 天。该时间过后，备份数据会被永久删除。”  
+- 在 "**修改备份进度**" 向导中, 你*将看到已删除的备份数据将保留14天。* 该时间过后，备份数据会被永久删除。”  
 
     ![删除备份基础结构](./media/backup-azure-delete-vault/deleted-backup-data.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "68639906"
 
     ![删除磁盘上的和联机的副本](./media/backup-azure-delete-vault/remove-replica-on-disk-and-online.png)
 
-**方法 2**：启动 **MABS 管理**控制台。 在“选择数据保护方法”部分，取消选择“我需要在线保护”。
+**方法 2**：启动 **MABS 管理**控制台。 在 "**选择数据保护方法**" 部分, 取消选择 "**我需要在线保护**"。
 
   ![选择数据保护方法](./media/backup-azure-delete-vault/data-protection-method.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "68639906"
 
 - 在“概要”窗格中的保管库菜单内，确认是否未列出任何“备份项”、“备份管理服务器”或“复制的项”。 如果有备份项, 请参阅 "[开始之前](#before-you-start)" 部分。
 - 重试[从门户删除保管库](#delete-the-recovery-services-vault)。
-- 如果删除了所有依赖项，但仍收到“保管库删除错误”，请使用 ARMClient 工具执行以下步骤：
+- 如果删除了所有依赖项, 但仍收到*保管库删除错误*, 请使用 ARMClient 工具执行以下步骤:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

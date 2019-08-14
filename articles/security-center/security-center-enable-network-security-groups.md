@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 14b7cc8f8162574380ca21ac515af8b7d3d5ded9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60911401"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>在 Azure 安全中心启用网络安全组
@@ -32,20 +32,20 @@ Azure 安全中心建议启用网络安全组 (NSG)（如果尚未启用）。 N
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”  边栏选项卡，选择在子网或在虚拟机上“启用网络安全组”  。
+1. 在“建议”边栏选项卡，选择在子网或在虚拟机上“启用网络安全组”。
    ![启用网络安全组][1]
-2. 这会打开子网或虚拟机的“配置缺少的网络安全组”  边栏选项卡，具体取决于所选的建议。 选择一个用于配置 NSG 的子网或虚拟机。
+2. 这会打开子网或虚拟机的“配置缺少的网络安全组”边栏选项卡，具体取决于所选的建议。 选择一个用于配置 NSG 的子网或虚拟机。
 
    ![配置子网的 NSG][2]
 
    ![配置 VM 的 NSG][3]
-3. 在“选择网络安全组”  边栏选项卡中，选择一个现有的 NSG 或选择“新建”  以创建一个 NSG。
+3. 在“选择网络安全组”边栏选项卡中，选择一个现有的 NSG 或选择“新建”以创建一个 NSG。
 
    ![选择网络安全组][4]
 
 如果创建 NSG，请按照[管理网络安全组](../virtual-network/manage-network-security-group.md)中的步骤创建 NSG 并设置安全规则。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 本文档演示如何实现安全中心建议，为子网或虚拟机“启用网络安全组”。 若要了解有关启用 NSG 的详细信息，请参阅以下内容：
 
 * [什么是网络安全组 (NSG)？](../virtual-network/security-overview.md)

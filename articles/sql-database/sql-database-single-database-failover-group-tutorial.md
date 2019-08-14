@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: d11dd72c65ea32fb5a262f325bdcad0b5a8ab863
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6cf688750ac73763c7f0da4eea152cf6bf0c8285
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566654"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935025"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>教程：将 Azure SQL 数据库单一数据库添加到故障转移组
 
@@ -29,20 +29,20 @@ ms.locfileid: "68566654"
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="azure-portaltabazure-portal"></a>[Azure 门户](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 若要完成本教程，请确保做好以下准备： 
 
 - Azure 订阅。 如果还没有帐户, 请[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 若要完成本教程, 请确保具有以下各项:
 
 - Azure 订阅。 如果还没有帐户, 请[创建一个免费帐户](https://azure.microsoft.com/free/)。
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 若要完成本教程, 请确保具有以下各项:
 
 - Azure 订阅。 如果还没有帐户, 请[创建一个免费帐户](https://azure.microsoft.com/free/)。
@@ -57,7 +57,7 @@ ms.locfileid: "68566654"
 ## <a name="2---create-the-failover-group"></a>2-创建故障转移组 
 在此步骤中, 将在现有的 Azure SQL server 和另一个区域中的新 Azure SQL server 之间创建[故障转移组](sql-database-auto-failover-group.md)。 然后将示例数据库添加到故障转移组。 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure 门户](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 创建故障转移组, 并使用 Azure 门户向其添加单个数据库。 
 
 
@@ -90,7 +90,7 @@ ms.locfileid: "68566654"
     ![将 SQL DB 添加到故障转移组](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 创建故障转移组, 并将你的单一数据库添加到其中。 
 
    > [!NOTE]
@@ -146,7 +146,7 @@ ms.locfileid: "68566654"
    Write-host "Successfully added the database to the failover group..." 
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 使用 AZ CLI 创建故障转移组, 并将你的单一数据库添加到其中。 
 
    > [!NOTE]
@@ -182,6 +182,7 @@ ms.locfileid: "68566654"
       --partner-server $drServerName \
       --resource-group $resourceGroupName \
       --server $serverName \
+      --add-db $databaseName
       --failover-policy Automatic
    ```
 
@@ -190,7 +191,7 @@ ms.locfileid: "68566654"
 ## <a name="3---test-failover"></a>3-测试故障转移 
 在此步骤中, 你将故障转移组故障转移到辅助服务器, 然后使用 Azure 门户故障回复。 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure 门户](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 使用 Azure 门户的测试故障转移。 
 
 1. 导航到[Azure 门户](https://portal.azure.com)中的**SQL** server 服务器。 
@@ -207,7 +208,7 @@ ms.locfileid: "68566654"
 1. 查看现在是主服务器, 哪台服务器是辅助服务器。 如果故障转移成功, 这两台服务器应该已经交换角色。 
 1. 再次选择 "**故障转移**", 将服务器故障回复到其最初的角色。 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 进行测试故障转移。 
 
 
@@ -262,7 +263,7 @@ ms.locfileid: "68566654"
    Write-host "Failed failover group to successfully to back to" $serverName
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 使用 AZ CLI 测试故障转移。 
 
 
@@ -319,7 +320,7 @@ ms.locfileid: "68566654"
 ## <a name="clean-up-resources"></a>清理资源 
 通过删除资源组来清理资源。 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure 门户](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 使用 Azure 门户删除资源组。 
 
 
@@ -327,7 +328,7 @@ ms.locfileid: "68566654"
 1. 选择 "**删除资源组**" 以删除组中的所有资源以及资源组本身。 
 1. 在文本框中键入资源组`myResourceGroup`的名称, 然后选择 "**删除**" 以删除该资源组。  
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 删除资源组。 
 
 
@@ -341,7 +342,7 @@ ms.locfileid: "68566654"
    Write-host "Resource group removed =" $resourceGroupName
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 使用 AZ CLI 删除资源组。 
 
 
@@ -361,15 +362,15 @@ ms.locfileid: "68566654"
 
 ## <a name="full-scripts"></a>完整脚本
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!code-azurecli-interactive[main](../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Create SQL Database")]
 
-# <a name="azure-portaltabazure-portal"></a>[Azure 门户](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 没有可用于 Azure 门户的脚本。
  
 ---

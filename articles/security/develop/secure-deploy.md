@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: dd86e6bf571dd67da00aee63eadff031a1040ff7
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728739"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934887"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>在 Azure 上部署安全应用程序
 本文介绍了在部署云应用程序时要考虑的安全活动和控制措施。 本文介绍了在 Microsoft[安全开发生命周期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的发布和响应阶段中要考虑的安全问题和概念。 其目标是帮助你定义可用于部署更安全的应用程序的活动和 Azure 服务。
@@ -40,7 +40,7 @@ ms.locfileid: "68728739"
 
 Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 在这些攻击中常见的是 SQL 注入式攻击和跨站点脚本攻击。 在应用程序代码中阻止这些攻击可能会很困难。 它可能需要严格的维护、修补和监视应用程序拓扑的多个层。 集中式 WAF 有助于提高安全性管理的安全性。 WAF 解决方案还可以通过在中央位置修补已知漏洞, 而不是保护每个单独的 web 应用程序, 从而对安全威胁做出反应。
 
-[Azure 应用程序网关 WAF](https://docs.microsoft.com/azure/application-gateway/waf-overview)提供对 web 应用程序的集中保护, 并受到常见的攻击和漏洞的影响。 WAF 基于[OWASP 核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)3.0 或2.2.9 中的规则。
+[Azure 应用程序网关 WAF](../../application-gateway/waf-overview.md)提供对 web 应用程序的集中保护, 并受到常见的攻击和漏洞的影响。 WAF 基于[OWASP 核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)3.0 或2.2.9 中的规则。
 
 ### <a name="create-an-incident-response-plan"></a>创建事件响应计划
 
@@ -71,13 +71,13 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 #### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 Application Insights 会自动检测性能异常。 它包含功能强大的分析工具, 可帮助你诊断问题并了解用户对你的应用程序的实际操作。 Application Insights 有助于持续提高性能与可用性。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 Application Insights 会自动检测性能异常。 它包含功能强大的分析工具, 可帮助你诊断问题并了解用户对你的应用程序的实际操作。 Application Insights 有助于持续提高性能与可用性。
 
 #### <a name="azure-security-center"></a>Azure 安全中心
 
-[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)可帮助预防、检测和响应威胁, 同时提高 Azure 资源 (包括 web 应用程序) 的安全性。 Azure 安全中心可帮助检测可能被忽略的威胁。 它与各种安全解决方案一起工作。
+[Azure 安全中心](../../security-center/security-center-intro.md)可帮助预防、检测和响应威胁, 同时提高 Azure 资源 (包括 web 应用程序) 的安全性。 Azure 安全中心可帮助检测可能被忽略的威胁。 它与各种安全解决方案一起工作。
 
-安全中心的免费层仅为 Azure 资源提供有限的安全性。 [安全中心标准层](https://docs.microsoft.com/azure/security-center/security-center-onboarding)将这些功能扩展到本地资源和其他云。
+安全中心的免费层仅为 Azure 资源提供有限的安全性。 [安全中心标准层](../../security-center/security-center-onboarding.md)将这些功能扩展到本地资源和其他云。
 安全中心标准可帮助你:
 
   - 查找并修复安全漏洞。

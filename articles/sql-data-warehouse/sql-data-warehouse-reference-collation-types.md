@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: af88d2f0ce0e26fe67dda265b59684083c133dd5
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 598ad4c103035ec2d94015e1f8e12194d1b723fc
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297588"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935102"
 ---
 # <a name="database-collation-support-for-azure-sql-data-warehouse"></a>对 Azure SQL 数据仓库的数据库排序规则支持
 
@@ -26,7 +26,7 @@ ms.locfileid: "68297588"
 
 例如, 如果要将默认排序规则更改为区分大小写, 只需将排序规则从 SQL_Latin1_General_CP1_CI_AS 重命名为 SQL_Latin1_General_CP1_CS_AS。 
 
-#<a name="list-of-unsupported-collation-types"></a>不受支持的排序规则类型的列表
+## <a name="list-of-unsupported-collation-types"></a>不受支持的排序规则类型的列表
 *   Japanese_Bushu_Kakusu_140_BIN
 *   Japanese_Bushu_Kakusu_140_BIN2
 *   Japanese_Bushu_Kakusu_140_CI_AI_VSS

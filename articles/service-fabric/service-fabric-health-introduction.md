@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: d0ef9f34d6b657a063e50b0f144197c41905e809
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60949120"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 运行状况监视简介
@@ -74,7 +74,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 * **确定**。 实体正常。 没有针对它或其子项（如果适用）报告已知问题。
 * **警告**。 实体存在一些问题，但仍可正常运行。 例如，存在延迟，但尚未造成任何功能性问题。 在某些情况下，警告条件可能无需外部干预即可自行修复。 在这些情况下，运行状况报告可唤醒意识并提供对正在发生的事情的可见性。 在其他情况下，警告条件可能会在无需用户干预的情况下降级为严重问题。
 * **错误**。 实体不正常。 应采取行动修复实体的状态，因为它无法正常运行。
-* **未知**。 运行状况存储中不存在实体。 此结果可以从合并来自多个组件的结果的分布式查询中获取。 例如，获取节点列表查询发送到 FailoverManager、ClusterManager 和 HealthManager，获取应用程序列表查询发送到 ClusterManager 和 HealthManager      。 这些查询会合并来自多个系统组件的结果。 如果其他系统组件返回运行状况存储中不存在的实体，则合并结果包含未知运行状况。 实体不在存储中，因为运行状况报告尚未得到处理或该实体在删除后已被清理。
+* **未知**。 运行状况存储中不存在实体。 此结果可以从合并来自多个组件的结果的分布式查询中获取。 例如，获取节点列表查询发送到 FailoverManager、ClusterManager 和 HealthManager，获取应用程序列表查询发送到 ClusterManager 和 HealthManager。 这些查询会合并来自多个系统组件的结果。 如果其他系统组件返回运行状况存储中不存在的实体，则合并结果包含未知运行状况。 实体不在存储中，因为运行状况报告尚未得到处理或该实体在删除后已被清理。
 
 ## <a name="health-policies"></a>运行状况策略
 运行状况存储应用运行状况策略，以便基于实体的报告及其子项来确定该实体是否正常。
@@ -229,7 +229,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 * 仅针对在最后 X 分钟内更改的条件发出警报。 如果在指定时间之前，报告已处于“错误”状态，则可以忽略它，因为之前已对它发出指示。
 * 如果属性在“警告”和“错误”之间切换，则确定它处于不正常状态（即不“正常”）的时长。 例如，当属性处于不正常状态超过 5 分钟时发出警报，可以转化为（HealthState != 正常并且立即 - LastOkTransitionTime > 5 分钟）。
 
-## <a name="example-report-and-evaluate-application-health"></a>示例：报告和评估应用程序运行状况
+## <a name="example-report-and-evaluate-application-health"></a>例如：报告和评估应用程序运行状况
 下列示例在源 **MyWatchdog** 中的应用程序 **fabric:/WordCount** 上通过 PowerShell 发送运行状况报告。 运行状况报告包含有关“错误”运行状况状态下的运行状况属性可用性的信息，含无限 TimeToLive。 然后，它会查询应用程序运行状况，此查询会返回已聚合运行状况状态错误和运行状况事件列表中已报告的运行状况事件。
 
 ```powershell

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: db3f5aca0240c19f67d5d0775148d5eec76daa03
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3c4bdb3d46e4630257c2567cf2003ebede00b71e
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726984"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934771"
 ---
 # <a name="azure-network-security"></a>Azure 网络安全
 
@@ -55,9 +55,9 @@ Microsoft Azure 包括可靠的网络基础结构以支持应用程序和服务�
 
 ![Azure 网络大图](./media/network-security/azure-network-security-fig-1.png)
 
-利用 [Azure 网络基础结构](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-networking-guidelines)，可以安全地将 Azure 资源通过虚拟网络 (VNet) 相互连接。 VNet 是自己的网络在云中的表示形式。 VNet 是对专用于订阅的 Azure 云网络进行的逻辑隔离。 可将 VNet 连接到本地网络。
+利用 [Azure 网络基础结构](../../virtual-machines/windows/infrastructure-example.md)，可以安全地将 Azure 资源通过虚拟网络 (VNet) 相互连接。 VNet 是自己的网络在云中的表示形式。 VNet 是对专用于订阅的 Azure 云网络进行的逻辑隔离。 可将 VNet 连接到本地网络。
 
-Azure 支持通过 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 使用专用 WAN 链路连接本地网络和 Azure 虚拟网络。 Azure 和站点之间的链接使用专用连接，不需要通过公共 Internet。 如果 Azure 应用程序在多个数据中心运行，则可以使用 [Azure 流量管理器](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)智能地跨应用程序实例路由来自用户的请求。 如果可以通过 Internet 访问未在 Azure 中运行的服务，还可以将流量路由到这些服务。
+Azure 支持通过 [ExpressRoute](../../expressroute/expressroute-introduction.md) 使用专用 WAN 链路连接本地网络和 Azure 虚拟网络。 Azure 和站点之间的链接使用专用连接，不需要通过公共 Internet。 如果 Azure 应用程序在多个数据中心运行，则可以使用 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)智能地跨应用程序实例路由来自用户的请求。 如果可以通过 Internet 访问未在 Azure 中运行的服务，还可以将流量路由到这些服务。
 
 ## <a name="enterprise-view-of-azure-networking-components"></a>Azure 网络组件的企业视图
 Azure 有许多与网络安全话题相关的网络组件。 我们将介绍这些网络组件，并重点说明与之相关的安全问题。
@@ -77,11 +77,11 @@ Azure 有许多与网络安全话题相关的网络组件。 我们将介绍这�
 
 ### <a name="basic-network-connectivity"></a>基本网络连接
 
-利用 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)服务，可以安全地将 Azure 资源通过虚拟网络 (VNet) 相互连接。 VNet 是自己的网络在云中的表示形式。 VNet 是对专用于订阅的 Azure 网络基础结构进行的逻辑隔离。 还可使用站点到站点 VPN 和专用 [WAN 链路](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)将 VNet 连接到其他 VNet 和本地网络。
+利用 [Azure 虚拟网络](../../virtual-network/virtual-networks-overview.md)服务，可以安全地将 Azure 资源通过虚拟网络 (VNet) 相互连接。 VNet 是自己的网络在云中的表示形式。 VNet 是对专用于订阅的 Azure 网络基础结构进行的逻辑隔离。 还可使用站点到站点 VPN 和专用 [WAN 链路](../../expressroute/expressroute-introduction.md)将 VNet 连接到其他 VNet 和本地网络。
 
 ![基本网络连接](./media/network-security/azure-network-security-fig-2.png)
 
-虽然可以使用 VM 在 Azure 中托管服务器，但问题是如何将这些 VM 连接到网络。 答案就是将 VM 连接到 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。
+虽然可以使用 VM 在 Azure 中托管服务器，但问题是如何将这些 VM 连接到网络。 答案就是将 VM 连接到 [Azure 虚拟网络](../../virtual-network/virtual-networks-overview.md)。
 
 Azure 虚拟网络类似于有自己的虚拟化平台解决方案（例如 Microsoft Hyper-V 或 VMware）的本地虚拟网络。
 
@@ -89,7 +89,7 @@ Azure 虚拟网络类似于有自己的虚拟化平台解决方案（例如 Micr
 
 VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可与 VNet 之间的每个资源进行通信。 可使用以下两个中任意一个选项或使用这两个选项相互连接 VNet：
 
-- **对等互连：** 使连接到相同 Azure 位置中不同 Azure VNet 的资源可相互进行通信。 VNet 之间的带宽和延迟相同，就像资源是连接到同一个 VNet 一样。 若要详细了解对等互连，请阅读[虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
+- **对等互连：** 使连接到相同 Azure 位置中不同 Azure VNet 的资源可相互进行通信。 VNet 之间的带宽和延迟相同，就像资源是连接到同一个 VNet 一样。 若要详细了解对等互连，请阅读[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)。
 
   ![对等](./media/network-security/azure-network-security-fig-3.png)
 
@@ -120,7 +120,7 @@ VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可
 
 **隔离**
 
-VNet 之间彼此[隔离](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。 可以为使用相同 [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 地址块的开发、测试和生产创建单独的 VNet。 相反地，也可以创建使用不同 CIDR 地址的多个 VNet 并将网络连接在一起。 可将一个 VNet 分为多个子网。
+VNet 之间彼此[隔离](../../virtual-network/virtual-networks-overview.md)。 可以为使用相同 [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 地址块的开发、测试和生产创建单独的 VNet。 相反地，也可以创建使用不同 CIDR 地址的多个 VNet 并将网络连接在一起。 可将一个 VNet 分为多个子网。
 
 Azure 为连接到 VNet 的 VM 和[云服务](https://azure.microsoft.com/services/cloud-services/)角色实例提供内部名称解析。 可选择配置 VNet 来使用自己的 DNS 服务器，而不使用 Azure 内部名称解析。
 
@@ -130,35 +130,35 @@ Azure 为连接到 VNet 的 VM 和[云服务](https://azure.microsoft.com/servic
 
 -   将 VNet 细分为一个或多个子网，并向每个子网分配一部分 VNet 地址空间。
 
--   使用 Azure 提供的名称解析或指定自己的 DNS 服务器以供连接到 VNet 的资源使用。 若要详细了解 VNet 中的名称解析，请阅读 [VM 和云服务的名称解析](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)。
+-   使用 Azure 提供的名称解析或指定自己的 DNS 服务器以供连接到 VNet 的资源使用。 若要详细了解 VNet 中的名称解析，请阅读 [VM 和云服务的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
 **Internet 连接**
 
-默认情况下，连接到 VNet 的所有 [Azure 虚拟机 (VM)](https://docs.microsoft.com/azure/virtual-machines/windows/) 和云服务角色实例都具有 Internet 访问权限。 根据需要，还可对特定资源启用入站访问。 根据需要，还可对特定资源启用入站访问。
+默认情况下，连接到 VNet 的所有 [Azure 虚拟机 (VM)](../../virtual-machines/windows/index.yml) 和云服务角色实例都具有 Internet 访问权限。 根据需要，还可对特定资源启用入站访问。 根据需要，还可对特定资源启用入站访问。
 
 默认情况下，连接到 VNet 的所有资源都具有 Internet 出站连接。 资源的专用 IP 地址是由 Azure 基础结构转换到公共 IP 地址中的源网络地址 (SNAT)。 可通过实现自定义路由和流量筛选更改默认连接。 若要详细了解出站 Internet 连接，请阅读[了解 Azure 中的出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-若要从 Internet 入站通信到 Azure 资源或出站通信到不具 SNAT 的 Internet，则必须向资源分配一个公共 IP 地址。 若要详细了解公共 IP 地址，请阅读[公共 IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)。
+若要从 Internet 入站通信到 Azure 资源或出站通信到不具 SNAT 的 Internet，则必须向资源分配一个公共 IP 地址。 若要详细了解公共 IP 地址，请阅读[公共 IP 地址](../../virtual-network/virtual-network-public-ip-address.md)。
 
 **Azure 资源连接**
 
-云服务和 VM 等 [Azure 资源](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)可连接到同一 VNet。 即使资源在不同的子网中，也可使用专用 IP 地址连接彼此。 Azure 提供子网、VNet 和本地网络之间的默认路由，因此无需配置和管理路由。
+云服务和 VM 等 [Azure 资源](../../virtual-network/virtual-networks-overview.md)可连接到同一 VNet。 即使资源在不同的子网中，也可使用专用 IP 地址连接彼此。 Azure 提供子网、VNet 和本地网络之间的默认路由，因此无需配置和管理路由。
 
-可将多个 Azure 资源连接到 VNet，例如虚拟机 (VM)、云服务、应用服务环境和虚拟机规模集。 VM 通过网络接口 (NIC) 连接到 VNet 中的子网。 若要详细了解 NIC，请阅读[网络接口](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface)。
+可将多个 Azure 资源连接到 VNet，例如虚拟机 (VM)、云服务、应用服务环境和虚拟机规模集。 VM 通过网络接口 (NIC) 连接到 VNet 中的子网。 若要详细了解 NIC，请阅读[网络接口](../../virtual-network/virtual-network-network-interface.md)。
 
 **VNet 连接**
 
-[VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) 之间可相互连接，因此，连接到任何 VNet 的资源都可与任何其他 VNet 上的所有资源进行通信。
+[VNet](../../virtual-network/virtual-networks-overview.md) 之间可相互连接，因此，连接到任何 VNet 的资源都可与任何其他 VNet 上的所有资源进行通信。
 
 VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可与 VNet 之间的每个资源进行通信。 可使用以下两个中任意一个选项或使用这两个选项相互连接 VNet：
 
-- **对等互连：** 使连接到相同 Azure 位置中不同 Azure VNet 的资源可相互进行通信。 VNet 之间的带宽和延迟相同，就像资源是连接到同一个 VNet 一样。若要详细了解对等互连，请阅读[虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
+- **对等互连：** 使连接到相同 Azure 位置中不同 Azure VNet 的资源可相互进行通信。 VNet 之间的带宽和延迟相同，就像资源是连接到同一个 VNet 一样。若要详细了解对等互连，请阅读[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)。
 
 - **VNet 到 VNet连接：** 可使资源连接到相同或不同 Azure 位置中的不同 Azure VNet。 与对等互连不同，VNet 之间的带宽有一定限制，因为流量必须流经 Azure VPN 网关。 若要详细了解如何通过 VNet 到 VNet 连接进行 VNet 连接， 请阅读[配置 VNet 到 VNet 连接](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 **本地连接**
 
-可通过网络和 Azure 之间的专用网络连接或基于 Internet 的站点到站点 VPN 连接将 VNet 连接到[本地](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)网络。
+可通过网络和 Azure 之间的专用网络连接或基于 Internet 的站点到站点 VPN 连接将 VNet 连接到[本地](../../virtual-network/virtual-networks-overview.md)网络。
 
 可组合使用以下任何选项将本地网络连接到 VNet：
 
@@ -166,15 +166,15 @@ VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可
 
 - **站点到站点 VPN：** 在 VPN 设备和 Azure VPN 网关之间建立连接。 此连接类型可使授权的任何本地资源访问 VNet。 此连接是一个 IPsec/IKE VPN，该 VPN 通过 Internet 在本地设备和 Azure VPN 网关之间提供加密通信。 由于流量遍历 Internet，因此站点到站点连接的延迟不可预测。
 
-- **Azure ExpressRoute：** 通过 ExpressRoute 合作伙伴在网络和 Azure 之间建立连接。 此连接是专用连接。 流量不会遍历 Internet。 由于流量未遍历 Internet，因此 ExpressRoute 连接的延迟可预测。 若要详细了解以前的所有连接选项，请阅读[连接拓扑图](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- **Azure ExpressRoute：** 通过 ExpressRoute 合作伙伴在网络和 Azure 之间建立连接。 此连接是专用连接。 流量不会遍历 Internet。 由于流量未遍历 Internet，因此 ExpressRoute 连接的延迟可预测。 若要详细了解以前的所有连接选项，请阅读[连接拓扑图](../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 **流量筛选**
 
-可以按源 IP 地址和端口、目标 IP 地址和端口以及协议，对 VM 和云服务角色实例[网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)进行入站和出站筛选。
+可以按源 IP 地址和端口、目标 IP 地址和端口以及协议，对 VM 和云服务角色实例[网络流量](../../virtual-network/virtual-networks-overview.md)进行入站和出站筛选。
 
 可使用以下两个选项中任意一个或同时使用这两个方案筛选子网之间的网络流量：
 
-- **网络安全组 (NSG)：** 每个 NSG 可包含多个入站和出站安全规则，通过这些规则可按源和目标 IP 地址、端口和协议筛选流量。 可将 NSG 应用到一个 VM 中的每个 NIC。 也可将 NSG 应用到 NIC 或其他 Azure 资源所连接的子网。 若要详细了解 NSG，请阅读[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。
+- **网络安全组 (NSG)：** 每个 NSG 可包含多个入站和出站安全规则，通过这些规则可按源和目标 IP 地址、端口和协议筛选流量。 可将 NSG 应用到一个 VM 中的每个 NIC。 也可将 NSG 应用到 NIC 或其他 Azure 资源所连接的子网。 若要详细了解 NSG，请阅读[网络安全组](../../virtual-network/virtual-network-vnet-plan-design-arm.md)。
 
 - **虚拟网络设备：** 虚拟网络设备是运行软件的 VM，软件可执行网络功能，例如防火墙。 请查看 Azure 市场中的可用 NVA 列表。 NVA 也可用于提供 WAN 优化和其他网络流量功能。 NVA 通常与用户定义路由或 BGP 路由配合使用。 还可使用 NVA 筛选 VNet 之间的流量。
 
@@ -184,7 +184,7 @@ VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可
 
 默认情况下，Azure 会创建路由表，这些路由表可使连接到 VNet 中任何子网的资源相互进行通信。 可使用以下两个选项中任意一个或同时使用二者替代 Azure 创建的默认路由：
 
-- **用户定义的路由：** 可创建自定义路由表，其中包含可对每个子网控制流量路由到位置的路由。 若要详细了解用户定义路由，请阅读[用户定义路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。
+- **用户定义的路由：** 可创建自定义路由表，其中包含可对每个子网控制流量路由到位置的路由。 若要详细了解用户定义路由，请阅读[用户定义路由](../../virtual-network/virtual-networks-udr-overview.md)。
 
 - **BGP 路由：** 如果使用 Azure VPN 网关或 ExpressRoute 连接将 VNet 连接到本地网络，则可将 BGP 路由传播到 VNet。
 
@@ -201,12 +201,12 @@ VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可
 
 #### <a name="internet-connectivity"></a>Internet 连接
 
-顾名思义，Internet 连接允许用户向虚拟网络中的工作负荷公开各种公共终结点，以便能够从 Internet 访问这些工作负荷。 可以通过以下方式公开这些工作负荷：使用[面向 Internet 的负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)，或者只需向 VM 分配公共 IP 地址。 这样一来，Internet 上的任何内容都有可能访问该虚拟机，当然，前提是主机防火墙、[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) 和[用户定义路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)允许这样做。
+顾名思义，Internet 连接允许用户向虚拟网络中的工作负荷公开各种公共终结点，以便能够从 Internet 访问这些工作负荷。 可以通过以下方式公开这些工作负荷：使用[面向 Internet 的负载均衡器](../../load-balancer/load-balancer-overview.md#publicloadbalancer)，或者只需向 VM 分配公共 IP 地址。 这样一来，Internet 上的任何内容都有可能访问该虚拟机，当然，前提是主机防火墙、[网络安全组 (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md) 和[用户定义路由](../../virtual-network/virtual-networks-udr-overview.md)允许这样做。
 
 在此方案中，可以公开需要向 Internet 公开并且能够从任意位置或特定位置（具体取决于工作负荷的配置）连接到 Internet 的应用程序。
 
 #### <a name="point-to-site-vpn-or-site-to-site-vpn"></a>点到站点 VPN 或站点到站点 VPN
-这两种 VPN 属于同一类别。 它们都要求 VNet 具有 VPN 网关，用户可以使用工作站的 VPN 客户端（作为[点到站点配置](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)的一部分）连接到该网关，也可以配置本地 [VPN 设备](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)，使其能够终止站点到站点 VPN。 这样一来，本地设备就可以连接到 VNet 中的资源。
+这两种 VPN 属于同一类别。 它们都要求 VNet 具有 VPN 网关，用户可以使用工作站的 VPN 客户端（作为[点到站点配置](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)的一部分）连接到该网关，也可以配置本地 [VPN 设备](../../vpn-gateway/vpn-gateway-about-vpn-devices.md)，使其能够终止站点到站点 VPN。 这样一来，本地设备就可以连接到 VNet 中的资源。
 
 通过点到站点 (P2S) 配置，可以使单台客户端计算机与虚拟网络建立安全的连接。 P2S 是基于 SSTP（安全套接字隧道协议）的 VPN 连接。
 
@@ -219,7 +219,7 @@ P2S 连接不需要 VPN 设备或面向公众的 IP 地址。 可从客户端计
 ![站点到站点 VPN](./media/network-security/azure-network-security-fig-6.png)
 
 > [!Note]
-> 有关点到站点连接的详细信息，请参阅[点到站点常见问题解答](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal)。
+> 有关点到站点连接的详细信息，请参阅[点到站点常见问题解答](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)。
 
 使用站点到站点 VPN 网关连接，通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道将本地网络连接到 Azure 虚拟网络。
 
@@ -230,7 +230,7 @@ P2S 连接不需要 VPN 设备或面向公众的 IP 地址。 可从客户端计
 如果希望跨界连接具有突出的安全或性能级别，建议对跨界连接使用 Azure ExpressRoute。 ExpressRoute 是你本地位置与 Exchange 托管提供商之间专用的 WAN 链接。 因为这是电信运营商连接，所以数据不会通过 Internet 传输，也不会出现 Internet 通信固有的潜在风险。
 
 > [!Note]
-> 有关 VPN 网关的详细信息，请参阅[关于 VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
+> 有关 VPN 网关的详细信息，请参阅[关于 VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)。
 
 #### <a name="dedicated-wan-link"></a>专用 WAN 链路
 使用 Microsoft Azure ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Azure。
@@ -240,9 +240,9 @@ ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连�
 ![ 专用 WAN 链路](./media/network-security/azure-network-security-fig-7.png)
 
 > [!Note]
-> 有关如何使用 ExpressRoute 将网络连接到 Microsoft 的信息，请参阅 [ExpressRoute 连接模型](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)和 [ExpressRoute 技术概述](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)。
+> 有关如何使用 ExpressRoute 将网络连接到 Microsoft 的信息，请参阅 [ExpressRoute 连接模型](../../vpn-gateway/vpn-gateway-about-vpngateways.md)和 [ExpressRoute 技术概述](../../expressroute/expressroute-introduction.md)。
 
-与站点到站点 VPN 选项一样，ExpressRoute 也允许连接到不止一个 VNet 中的资源。 事实上，根据 SKU，可以连接到 10 个 VNet。 如果有[高级外接程序](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)，可以根据带宽连接到最多 100 个 VNet。 若要详细了解这些连接类型的外观，请阅读[连接拓扑图](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+与站点到站点 VPN 选项一样，ExpressRoute 也允许连接到不止一个 VNet 中的资源。 事实上，根据 SKU，可以连接到 10 个 VNet。 如果有[高级外接程序](../../expressroute/expressroute-faqs.md)，可以根据带宽连接到最多 100 个 VNet。 若要详细了解这些连接类型的外观，请阅读[连接拓扑图](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ### <a name="security-controls"></a>安全控件
 Azure 虚拟网络提供一种与其他虚拟网络隔离的安全逻辑网络，并支持本地网络上使用的多种安全控件。 客户使用子网创建自己的结构：他们使用自己的专用 IP 地址范围，配置路由表、网络安全组、访问控制列表 (ACL)、网关和虚拟设备，以在云中运行其工作负荷。
@@ -309,11 +309,11 @@ NSG 附带了一些应当注意的内置规则。 这些是：
 
 -   通过 VPN 网关从一个 VNet 到另一个 VNet。
 
--   通过 VNet 对等互连（[服务链](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)）从一个 VNet 到另一个 VNet。
+-   通过 VNet 对等互连（[服务链](../../virtual-network/virtual-network-peering-overview.md)）从一个 VNet 到另一个 VNet。
 
 -   通过 VPN 网关从 VNet 到本地网络。
 
-许多企业有严格的安全性和合规性要求，要求在本地检查所有网络数据包，以实施特定策略。 Azure 提供一种称为[强制隧道](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling)的机制，该机制通过创建自定义路由或通过[边界网关协议 (BGP)](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) 播发，
+许多企业有严格的安全性和合规性要求，要求在本地检查所有网络数据包，以实施特定策略。 Azure 提供一种称为[强制隧道](../../vpn-gateway/vpn-gateway-about-forced-tunneling.md)的机制，该机制通过创建自定义路由或通过[边界网关协议 (BGP)](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) 播发，
 
 在 Azure 中，可通过虚拟网络用户定义路由 (UDR) 配置强制隧道。 将流量重定向到本地站点，这是 Azure VPN 网关的默认路由。
 
@@ -369,7 +369,7 @@ Azure 网络安全设备可增强 VNet 安全性和网络功能。众多供应�
 
 #### <a name="application-gateway"></a>应用程序网关
 
-[Microsoft Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)是以服务形式提供应用程序传递控制器 (ADC) 的专用虚拟设备。
+[Microsoft Azure 应用程序网关](../../application-gateway/overview.md)是以服务形式提供应用程序传递控制器 (ADC) 的专用虚拟设备。
 
  ![应用程序网关](./media/network-security/azure-network-security-fig-11.png)
 
@@ -384,13 +384,13 @@ Azure 网络安全设备可增强 VNet 安全性和网络功能。众多供应�
 -   能够在单个应用程序网关后面托管多个网站
 
 
-[Web 应用程序防火墙 (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) 也作为应用程序网关的一部分提供。 它为 Web 应用程序提供保护，帮助抵御常见 Web 漏洞和攻击。 可以将应用程序网关配置为面向 Internet 的网关、仅限内部的网关或这两者的组合。
+[Web 应用程序防火墙 (WAF)](../../application-gateway/waf-overview.md) 也作为应用程序网关的一部分提供。 它为 Web 应用程序提供保护，帮助抵御常见 Web 漏洞和攻击。 可以将应用程序网关配置为面向 Internet 的网关、仅限内部的网关或这两者的组合。
 
 可以在检测或保护模式下运行应用程序网关 WAF。 常见的用例是让管理员在检测模式下运行，以观察流量是否存在恶意模式。 一旦检测到潜在攻击，就转向保护模式，阻止可疑的传入流量。
 
  ![应用程序网关](./media/network-security/azure-network-security-fig-12.png)
 
-此外，应用程序网关 WAF 还可以使用与 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) 和 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成的实时 WAF 日志来跟踪 WAF 警报和轻松监视趋势，帮助监视 Web 应用程序免受攻击。
+此外，应用程序网关 WAF 还可以使用与 [Azure Monitor](../../azure-monitor/overview.md) 和 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成的实时 WAF 日志来跟踪 WAF 警报和轻松监视趋势，帮助监视 Web 应用程序免受攻击。
 
 JSON 格式化的日志直接进入客户的存储帐户。 你对这些日志具有完全控制权，并且可以应用自己的保留策略。
 
@@ -402,7 +402,7 @@ JSON 格式化的日志直接进入客户的存储帐户。 你对这些日志�
 
  ![Azure Web 应用程序防火墙 (WAF)](./media/network-security/azure-network-security-fig-13.png)
 
-集中式 [Web 应用程序防火墙 (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) 可以抵御 Web 攻击，并简化安全管理，无需进行任何应用程序更改。
+集中式 [Web 应用程序防火墙 (WAF)](../../application-gateway/waf-overview.md) 可以抵御 Web 攻击，并简化安全管理，无需进行任何应用程序更改。
 
 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 可将现有应用程序网关轻松转换为支持 Web 应用程序防火墙的应用程序网关。
 
@@ -427,9 +427,9 @@ JSON 格式化的日志直接进入客户的存储帐户。 你对这些日志�
 
 可以将 Azure 负载均衡器配置为：
 
--   对传入到虚拟机的 Internet 流量进行负载均衡。 此配置称为[面向 Internet 的负载均衡](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)。
+-   对传入到虚拟机的 Internet 流量进行负载均衡。 此配置称为[面向 Internet 的负载均衡](../../load-balancer/load-balancer-overview.md#publicloadbalancer)。
 
--   对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为 [负载均衡](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)。
+-   对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为 [负载均衡](../../load-balancer/load-balancer-overview.md#internalloadbalancer)。
 
 -   将外部流量转发到特定的虚拟机。
 
@@ -443,15 +443,15 @@ JSON 格式化的日志直接进入客户的存储帐户。 你对这些日志�
 
 使用 Microsoft Azure 流量管理器，可以控制用户流量在不同数据中心内的服务终结点上的分布。 流量管理器支持的服务终结点包括 Azure VM、Web 应用和云服务。 也可将流量管理器用于外部的非 Azure 终结点。
 
-流量管理器根据[流量路由方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods)和终结点的运行状况，使用域名系统 (DNS) 将客户端请求定向到最合适的终结点。 流量管理器提供多种流量路由方法来满足不同的应用程序需求、终结点运行状况[监视](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)和自动故障转移。 流量管理器能够灵活应对故障，包括整个 Azure 区域的故障。
+流量管理器根据[流量路由方法](../../traffic-manager/traffic-manager-routing-methods.md)和终结点的运行状况，使用域名系统 (DNS) 将客户端请求定向到最合适的终结点。 流量管理器提供多种流量路由方法来满足不同的应用程序需求、终结点运行状况[监视](../../traffic-manager/traffic-manager-monitoring.md)和自动故障转移。 流量管理器能够灵活应对故障，包括整个 Azure 区域的故障。
 
 使用 Azure 流量管理器可以控制流量在应用程序终结点之间的分布。 终结点可以是托管在 Azure 内部或外部的任何面向 Internet 的服务。
 
 流量管理器具有两大优势：
 
--   根据某个[流量路由方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods)对流量进行分布。
+-   根据某个[流量路由方法](../../traffic-manager/traffic-manager-routing-methods.md)对流量进行分布。
 
--   [连续监视终结点运行状况](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)，在终结点发生故障时自动进行故障转移。
+-   [连续监视终结点运行状况](../../traffic-manager/traffic-manager-monitoring.md)，在终结点发生故障时自动进行故障转移。
 
 当客户端尝试连接到某个服务时，必须先将该服务的 DNS 名称解析成 IP 地址。 然后，客户端就可以连接到该 IP 地址以访问相关服务。 流量管理器根据流量路由方法的规则，使用 DNS 将客户端导向到特定的服务终结点。 客户端直接连接到选定的终结点。 流量管理器不是代理或网关。 流量管理器看不到流量在客户端与服务之间传递。
 
@@ -461,11 +461,11 @@ Azure 网络验证旨在确保 Azure 网络如配置的那样正常运行，并�
 
 Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
 
--   [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+-   [Azure 安全中心](../../security-center/security-center-intro.md)
 
--   [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
+-   [Azure Monitor](../../azure-monitor/overview.md)
 
--   [Azure 网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
+-   [Azure 网络观察程序](../../network-watcher/network-watcher-monitoring-overview.md)
 
 -   [Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
 
@@ -498,7 +498,7 @@ Resource Manager 提供多种优势：
 -   可以通过查看一组共享标记的资源的成本来理清组织的帐单。
 
 > [!Note]
-> Resource Manager 提供了一种新方法来部署和管理解决方案。 如果使用早期的部署模型并想了解这些更改，请参阅[了解 Resource Manager 部署和经典部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)。
+> Resource Manager 提供了一种新方法来部署和管理解决方案。 如果使用早期的部署模型并想了解这些更改，请参阅[了解 Resource Manager 部署和经典部署](../../azure-resource-manager/resource-manager-deployment-model.md)。
 
 ## <a name="azure-network-logging-and-monitoring"></a>Azure 网络日志记录和监视
 
@@ -512,7 +512,7 @@ Azure 提供许多用于监视、防止、检测和响应网络安全事件的�
 
 ### <a name="network-watcher"></a>网络观察程序
 
-[网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)：网络观察程序中的功能提供基于方案的监视。 此服务包括数据包捕获、下一跃点、IP 流验证、安全组视图和 NSG 流日志。 与单独网络资源的监视不同，方案级监视提供网络资源的端到端视图。
+[网络观察程序](../../network-watcher/network-watcher-monitoring-overview.md)：网络观察程序中的功能提供基于方案的监视。 此服务包括数据包捕获、下一跃点、IP 流验证、安全组视图和 NSG 流日志。 与单独网络资源的监视不同，方案级监视提供网络资源的端到端视图。
 
  ![网络观察程序](./media/network-security/azure-network-security-fig-15.png)
 
@@ -522,7 +522,7 @@ Azure 提供许多用于监视、防止、检测和响应网络安全事件的�
 
 #### <a name="topology"></a>拓扑
 
-[拓扑](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview)返回虚拟网络中的网络资源图。 此图描绘了资源之间的相互关系以表示端到端网络连接。 在门户中，拓扑基于每个虚拟网络返回资源对象。 网络观察程序区域外部资源之间的关系用线条绘出（即使这些关系不会显示在资源组中）。 在门户视图中返回的资源是绘制的网络组件的子集。 若要查看网络资源的完整列表，可以使用 [PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-powershell) 或 [REST](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-rest)。
+[拓扑](../../network-watcher/view-network-topology.md)返回虚拟网络中的网络资源图。 此图描绘了资源之间的相互关系以表示端到端网络连接。 在门户中，拓扑基于每个虚拟网络返回资源对象。 网络观察程序区域外部资源之间的关系用线条绘出（即使这些关系不会显示在资源组中）。 在门户视图中返回的资源是绘制的网络组件的子集。 若要查看网络资源的完整列表，可以使用 [PowerShell](../../network-watcher/view-network-topology.md) 或 [REST](../../network-watcher/view-network-topology.md)。
 
 返回资源时，会在两种关系下为资源之间的连接建模。
 
@@ -532,49 +532,49 @@ Azure 提供许多用于监视、防止、检测和响应网络安全事件的�
 
 #### <a name="variable-packet-capture"></a>可变数据包捕获
 
-使用网络观察程序[可变数据包捕获](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)，可以创建数据包捕获会话，跟踪进出虚拟机的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。
+使用网络观察程序[可变数据包捕获](../../network-watcher/network-watcher-packet-capture-overview.md)，可以创建数据包捕获会话，跟踪进出虚拟机的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。
 
 数据包捕获是通过网络观察程序远程启动的虚拟机扩展。 此功能可减轻手动在所需虚拟机上运行数据包捕获的负担，从而可节省宝贵的时间。 可以通过门户、PowerShell、CLI 或 REST API 触发数据包捕获。 触发数据包捕获方式的一个示例是使用虚拟机警报。
 
 #### <a name="ip-flow-verify"></a>IP 流验证
 
-[IP 流验证](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview)基于 5 元组信息检查是允许还是拒绝进出虚拟机的数据包。 这些信息包括方向、协议、本地 IP、远程 IP、本地端口和远程端口。 如果数据包被安全组拒绝，则返回拒绝数据包的规则的名称。 虽然可以选择任何源或目标 IP，此功能可帮助管理员快速诊断与 Internet 的连接问题以及与本地环境的连接问题。
+[IP 流验证](../../network-watcher/network-watcher-ip-flow-verify-overview.md)基于 5 元组信息检查是允许还是拒绝进出虚拟机的数据包。 这些信息包括方向、协议、本地 IP、远程 IP、本地端口和远程端口。 如果数据包被安全组拒绝，则返回拒绝数据包的规则的名称。 虽然可以选择任何源或目标 IP，此功能可帮助管理员快速诊断与 Internet 的连接问题以及与本地环境的连接问题。
 
 “IP 流验证”针对虚拟机的网络接口。 然后，将基于网络接口的配置设置验证流量流。 此功能可用于确认网络安全组中的规则是否正在阻止进出虚拟机的入口或出口流量。
 
 #### <a name="next-hop"></a>下一跃点
 
-确定 Azure 网络结构中路由的数据包的[下一跃点](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)，以便诊断任何错误配置的用户定义路由。 来自 VM 的流量将基于与 NIC 关联的有效路由发送到目标。 “下一跃点”功能可获取来自特定虚拟机和 NIC 的数据包的下一跃点类型和 IP 地址。 这可帮助确定是将数据包定向到目标，还是将流量定向到黑洞。
+确定 Azure 网络结构中路由的数据包的[下一跃点](../../network-watcher/network-watcher-next-hop-overview.md)，以便诊断任何错误配置的用户定义路由。 来自 VM 的流量将基于与 NIC 关联的有效路由发送到目标。 “下一跃点”功能可获取来自特定虚拟机和 NIC 的数据包的下一跃点类型和 IP 地址。 这可帮助确定是将数据包定向到目标，还是将流量定向到黑洞。
 
 “下一跃点”功能也返回与下一跃点关联的路由表。 查询下一跃点时，如果路由定义为用户定义的路由，则将返回该路由。 否则，“下一跃点”功能返回“系统路由”。
 
 #### <a name="security-group-view"></a>安全组视图
 
-获取在 VM 上应用的有效安全规则。 网络安全组可以在子网级别或 NIC 级别关联。 在子网级别关联时，网络安全组将应用于子网中的所有 VM 实例。 网络[安全组视图](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview)针对虚拟机返回在 NIC 和子网级别关联的所有已配置 NSG 和规则，以供深入了解配置。 此外，VM 中的每个 NIC 将返回有效的安全规则。 使用网络安全组视图，可以评估网络漏洞的 VM，如打开端口。 还可以基于[已配置规则和有效安全规则之间的比较](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-auditing-powershell)，验证网络安全组是否按预期方式工作。
+获取在 VM 上应用的有效安全规则。 网络安全组可以在子网级别或 NIC 级别关联。 在子网级别关联时，网络安全组将应用于子网中的所有 VM 实例。 网络[安全组视图](../../network-watcher/network-watcher-security-group-view-overview.md)针对虚拟机返回在 NIC 和子网级别关联的所有已配置 NSG 和规则，以供深入了解配置。 此外，VM 中的每个 NIC 将返回有效的安全规则。 使用网络安全组视图，可以评估网络漏洞的 VM，如打开端口。 还可以基于[已配置规则和有效安全规则之间的比较](../../network-watcher/network-watcher-nsg-auditing-powershell.md)，验证网络安全组是否按预期方式工作。
 
 #### <a name="nsg-flow-logging"></a>NSG 流日志记录
 
  使用网络安全组的流日志可以捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
 
-[网络安全组流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)是网络观察程序的一项功能，可用于查看有关通过网络安全组的入口和出口 IP 流量的信息。
+[网络安全组流日志](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)是网络观察程序的一项功能，可用于查看有关通过网络安全组的入口和出口 IP 流量的信息。
 
 #### <a name="virtual-network-gateway-and-connection-troubleshooting"></a>虚拟网络网关和连接故障排除
 
-网络观察程序提供了许多功能，因为它关系到了解 Azure 中的网络资源。 其中一项功能就是资源故障排除。 可以通过 PowerShell、CLI 或 REST API 调用[资源故障排除](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)。 调用后，网络观察程序会检查虚拟网络网关或连接的运行状况，并返回查找结果。
+网络观察程序提供了许多功能，因为它关系到了解 Azure 中的网络资源。 其中一项功能就是资源故障排除。 可以通过 PowerShell、CLI 或 REST API 调用[资源故障排除](../../network-watcher/network-watcher-troubleshoot-manage-rest.md)。 调用后，网络观察程序会检查虚拟网络网关或连接的运行状况，并返回查找结果。
 
 本部分逐步讲解如何完成当前可用于资源故障排除的各种管理任务。
 
--   [排查虚拟网络网关问题](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)
+-   [排查虚拟网络网关问题](../../network-watcher/network-watcher-troubleshoot-manage-rest.md)
 
--   [排查连接问题](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)
+-   [排查连接问题](../../network-watcher/network-watcher-troubleshoot-manage-rest.md)
 
 #### <a name="network-subscription-limits"></a>网络订阅限制
 
-[网络订阅限制](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)提供区域中订阅内每个网络资源的用量详细信息，以及可用资源数上限。
+[网络订阅限制](../../network-watcher/network-watcher-monitoring-overview.md)提供区域中订阅内每个网络资源的用量详细信息，以及可用资源数上限。
 
 #### <a name="configuring-diagnostics-log"></a>配置诊断日志
 
-网络观察程序提供[诊断日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)视图。 此视图包含所有支持诊断日志记录的网络资源。 从此视图中，可以快速方便地启用和禁用网络资源。
+网络观察程序提供[诊断日志](../../network-watcher/network-watcher-monitoring-overview.md)视图。 此视图包含所有支持诊断日志记录的网络资源。 从此视图中，可以快速方便地启用和禁用网络资源。
 
 ### <a name="network-resource-level-monitoring"></a>网络资源级监视
 
@@ -585,7 +585,7 @@ Azure 提供许多用于监视、防止、检测和响应网络安全事件的�
 记录网络配置过程中执行的操作。 这些审核日志对于制定各种合规性策略至关重要。 可在 Azure 门户中查看，或者使用 Power BI 等 Microsoft 工具或第三方工具检索这些日志。 可通过门户、PowerShell、CLI 和 REST API 获取审核日志。
 
 > [!Note]
-> 有关审核日志的详细信息，请参阅[使用资源管理器审核操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
+> 有关审核日志的详细信息，请参阅[使用资源管理器审核操作](../../azure-resource-manager/resource-group-audit.md)。
 针对所有网络资源执行的操作都有相应的审核日志。
 
 
@@ -594,19 +594,19 @@ Azure 提供许多用于监视、防止、检测和响应网络安全事件的�
 指标是在一段时间内收集的性能度量值与计数器。 指标目前适用于应用程序网关。 使用指标可以基于阈值触发警报。 默认情况下，Azure 应用程序网关会监视其后端池中所有资源的运行状况，并自动从池中删除任何被视为不正常的资源。 应用程序网关持续监视不正常的实例，一旦这些实例恢复可用状态并能响应运行状况探测，应用程序网关就会将它们添加回到正常的后端池中。 应用程序网关发送的运行状况探测所针对的端口与后端 HTTP 设置中定义的端口相同。 此配置可确保探测所测试的端口即是客户用来连接到后端的端口。
 
 > [!Note]
-> 请参阅 [Application Gateway Diagnostics](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview)（应用程序网关诊断），了解如何使用指标创建警报。
+> 请参阅 [Application Gateway Diagnostics](../../application-gateway/application-gateway-probe-overview.md)（应用程序网关诊断），了解如何使用指标创建警报。
 
 #### <a name="diagnostic-logs"></a>诊断日志
 
-定期事件和自发事件由网络资源和登录存储帐户创建, 发送到事件中心, 或者 Azure Monitor 日志。 这些日志提供对资源运行状况的见解。 可以在 Power BI 和 Azure Monitor 日志等工具中查看这些日志。 若要了解如何查看诊断日志, 请访问[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)。
+定期事件和自发事件由网络资源和登录存储帐户创建, 发送到事件中心, 或者 Azure Monitor 日志。 这些日志提供对资源运行状况的见解。 可以在 Power BI 和 Azure Monitor 日志等工具中查看这些日志。 若要了解如何查看诊断日志, 请访问[Azure Monitor 日志](../../azure-monitor/insights/azure-networking-analytics.md)。
 
-诊断日志适用于[负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log)、[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)、路由和[应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)。
+诊断日志适用于[负载均衡器](../../load-balancer/load-balancer-monitor-log.md)、[网络安全组](../../virtual-network/virtual-network-nsg-manage-log.md)、路由和[应用程序网关](../../application-gateway/application-gateway-diagnostics.md)。
 
 网络观察程序提供诊断日志视图。 此视图包含所有支持诊断日志记录的网络资源。 从此视图中，可以快速方便地启用和禁用网络资源。
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)是 Azure 中的一项服务, 用于监视云和本地环境, 使其保持其可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
+[Azure Monitor 日志](../../log-analytics/log-analytics-queries.md)是 Azure 中的一项服务, 用于监视云和本地环境, 使其保持其可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
 
 Azure Monitor 日志提供了以下用于监视网络的解决方案:
 
@@ -617,7 +617,7 @@ Azure Monitor 日志提供了以下用于监视网络的解决方案:
 -   Azure 网络安全组分析
 
 #### <a name="network-performance-monitor-npm"></a>网络性能监视器 (NPM)
-[网络性能监视器](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor)管理解决方案是一个网络监视解决方案，它监视网络的运行状况、可用性和可访问性。
+[网络性能监视器](../../azure-monitor/insights/network-performance-monitor.md)管理解决方案是一个网络监视解决方案，它监视网络的运行状况、可用性和可访问性。
 
 它用来监视以下项之间的连接：
 
@@ -644,7 +644,7 @@ Azure Monitor 日志提供了以下用于监视网络的解决方案:
 
 #### <a name="azure-network-security-group-analytics-in-azure-monitor-logs"></a>Azure Monitor 日志中的 Azure 网络安全组分析
 
-[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)支持以下日志：
+[网络安全组](../../virtual-network/virtual-network-nsg-manage-log.md)支持以下日志：
 
 - **NetworkSecurityGroupEvent：** 包含根据 MAC 地址向 VM 和实例角色应用的 NSG 规则条目。 每隔 60 秒收集一次这些规则的状态。
 
@@ -653,7 +653,7 @@ Azure Monitor 日志提供了以下用于监视网络的解决方案:
 ## <a name="next-steps"></a>后续步骤
 阅读一些深度安全性主题，了解有关安全性的更多信息：
 
--   [网络安全组 (Nsg) 的 Azure Monitor 日志](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
+-   [网络安全组 (Nsg) 的 Azure Monitor 日志](../../virtual-network/virtual-network-nsg-manage-log.md)
 
 -   [推动云瓦解的网络创新](https://azure.microsoft.com/blog/networking-innovations-that-drive-the-cloud-disruption/)
 

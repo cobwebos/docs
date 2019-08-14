@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7cccd36c619e58b8dedb9a52e70c478dc7b857c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5d255662f7db12537365f57eb71355ca2e11cc51
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707919"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947255"
 ---
 # <a name="vertically-scale-windows-vms-with-azure-automation"></a>使用 Azure 自动化垂直缩放 Windows VM
 
@@ -37,26 +37,27 @@ ms.locfileid: "67707919"
 3. 将 Webhook 添加到 Runbook
 4. 添加针对虚拟机的警报
 
+
 ## <a name="scale-limitations"></a>规模限制
 
-由于第一个虚拟机的大小有限制，它可以调整到的大小可能会由于当前虚拟机部署到的群集的其他大小而受到限制。 在本文中使用的已发布自动化 Runbook 中，我们将遵循这种限制，只在以下 VM 大小对的范围内进行缩放。 这意味着，Standard_D1v2 虚拟机不会突然间扩展到 Standard_G5，或者突然间缩减到 Basic_A0。 也不支持受约束的虚拟机大小增加/减少。 
+由于第一个虚拟机的大小有限制，它可以调整到的大小可能会由于当前虚拟机部署到的群集的其他大小而受到限制。 在本文中使用的已发布自动化 Runbook 中，我们将遵循这种限制，只在以下 VM 大小对的范围内进行缩放。 这意味着，Standard_D1v2 虚拟机不会突然间扩展到 Standard_G5，或者突然间缩减到 Basic_A0。 还不支持约束的虚拟机大小增加/减少。 
 
 可以选择在以下大小对之间缩放：
 
 * [A 系列](#a-series)
-* [B-Series](#b-series)
+* [B 系列](#b-series)
 * [D 系列](#d-series)
 * [E 系列](#e-series)
 * [F 系列](#f-series)
-* [G-Series](#g-series)
+* [G 系列](#g-series)
 * [H 系列](#h-series)
 * [L 系列](#l-series)
-* [M-Series](#m-series)
+* [M 系列](#m-series)
 * [N 系列](#n-series)
 
 ### <a name="a-series"></a>A 系列
 
-| 初始大小 | 纵向扩展大小 | 
+| 初始大小 | 扩展大小 | 
 | --- | --- |
 | Basic_A0 | Basic_A1 |
 | Basic_A1 | Basic_A2 |
@@ -78,7 +79,7 @@ ms.locfileid: "67707919"
 
 ### <a name="b-series"></a>B 系列
 
-| 初始大小 | 纵向扩展大小 | 
+| 初始大小 | 扩展大小 | 
 | --- | --- |
 | Standard_B1s | Standard_B2s |
 | Standard_B1ms | Standard_B2ms |
@@ -87,7 +88,7 @@ ms.locfileid: "67707919"
 
 ### <a name="d-series"></a>D 系列
 
-| 初始大小 | 纵向扩展大小 | 
+| 初始大小 | 扩展大小 | 
 | --- | --- |
 | Standard_D1 | Standard_D2 |
 | Standard_D2 | Standard_D3 |
@@ -129,7 +130,7 @@ ms.locfileid: "67707919"
 
 ### <a name="e-series"></a>E 系列
 
-| 初始大小 | 纵向扩展大小 | 
+| 初始大小 | 扩展大小 | 
 | --- | --- |
 | Standard_E2_v3 | Standard_E4_v3 |
 | Standard_E4_v3 | Standard_E8_v3 |
@@ -146,7 +147,7 @@ ms.locfileid: "67707919"
 
 ### <a name="f-series"></a>F 系列
 
-| 初始大小 | 纵向扩展大小 | 
+| 初始大小 | 扩展大小 | 
 | --- | --- |
 | Standard_F1 | Standard_F2 |
 | Standard_F2 | Standard_F4 |
@@ -165,7 +166,7 @@ ms.locfileid: "67707919"
 
 ### <a name="g-series"></a>G 系列
 
-| 初始大小 | 纵向扩展大小 | 
+| 初始大小 | 扩展大小 | 
 | --- | --- |
 | Standard_G1 | Standard_G2 |
 | Standard_G2 | Standard_G3 |
@@ -178,14 +179,14 @@ ms.locfileid: "67707919"
 
 ### <a name="h-series"></a>H 系列
 
-| 初始大小 | 纵向扩展大小 | 
+| 初始大小 | 扩展大小 | 
 | --- | --- |
 | Standard_H8 | Standard_H16 |
 | Standard_H8m | Standard_H16m |
 
 ### <a name="l-series"></a>L 系列
 
-| 初始大小 | 纵向扩展大小 | 
+| 初始大小 | 扩展大小 | 
 | --- | --- |
 | Standard_L4s | Standard_L8s |
 | Standard_L8s | Standard_L16s |
@@ -197,7 +198,7 @@ ms.locfileid: "67707919"
 
 ### <a name="m-series"></a>M 系列
 
-| 初始大小 | 纵向扩展大小 | 
+| 初始大小 | 扩展大小 | 
 | --- | --- |
 | Standard_M8ms | Standard_M16ms |
 | Standard_M16ms | Standard_M32ms |
@@ -210,7 +211,7 @@ ms.locfileid: "67707919"
 
 ### <a name="n-series"></a>N 系列
 
-| 初始大小 | 纵向扩展大小 | 
+| 初始大小 | 扩展大小 | 
 | --- | --- |
 | Standard_NC6 | Standard_NC12 |
 | Standard_NC12 | Standard_NC24 |
@@ -224,6 +225,7 @@ ms.locfileid: "67707919"
 | Standard_NV12 | Standard_NV24 |
 | Standard_NV6s_v2 | Standard_NV12s_v2 |
 | Standard_NV12s_v2 | Standard_NV24s_v2 |
+| Standard_NV12s_v3 |Standard_NV48s_v3 |
 
 ## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>将 Azure 自动化设置为访问虚拟机
 要做的第一件事就是创建一个 Azure 自动化帐户来托管用于缩放虚拟机的 Runbook。 最近，自动化服务引入了“运行方式帐户”功能，使用该功能可以很轻松地代表用户设置服务主体来自动运行 Runbook。 可以在以下文章中阅读有关此功能的详细信息：

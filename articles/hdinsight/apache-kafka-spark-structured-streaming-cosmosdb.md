@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: c2f3d882ac01427ea017d4f9b81edc3c64cc932d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2d2f56f2a0686b23a3a907686dcee0760d37365
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728713"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947070"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>将 Apache Spark 结构化流式处理与 Apache Kafka 和 Azure Cosmos DB 配合使用
 
@@ -44,7 +44,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 1. 使用以下按钮登录到 Azure，并在 Azure 门户中打开模板。
     
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank">
-    <img src="https://azuredeploy.net/deploybutton.png"/>
+    <img src="https://azuredeploy.net/deploybutton.png" alt="Deploy to Azure"/>
     </a>
 
     Azure 资源管理器模板位于此项目的 GitHub 存储库中 ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb))。
@@ -65,7 +65,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
      > [!IMPORTANT]  
      > 本示例使用的结构化流式处理笔记本需要 Spark on HDInsight 3.6。 如果使用早期版本的 Spark on HDInsight，则使用笔记本时会收到错误消息。
 
-2. 使用以下信息填充“自定义部署”部分中的条目  ：
+2. 使用以下信息填充“自定义部署”部分中的条目：
    
     ![HDInsight 自定义部署](./media/apache-kafka-spark-structured-streaming-cosmosdb/parameters.png)
 
@@ -77,7 +77,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * **Cosmos DB 帐户名**：此值用作 Cosmos DB 帐户的名称。
 
-    * **基群集名称**：此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 myhdi 将创建名为 spark-myhdi 的 Spark 群集和名为 kafka-myhdi 的 Kafka 群集    。
+    * **基群集名称**：此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 myhdi 将创建名为 spark-myhdi 的 Spark 群集和名为 kafka-myhdi 的 Kafka 群集。
 
     * **群集版本**：HDInsight 群集版本。
 
@@ -92,16 +92,16 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * **SSH 密码**：Spark 和 Kafka 群集的 SSH 用户的密码。
 
-3. 阅读“条款和条件”  ，并选择“我同意上述条款和条件”  。
+3. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 
-4. 最后，选择“购买”  。 创建群集大约需要 20 分钟时间。
+4. 最后，选择“购买”。 创建群集大约需要 20 分钟时间。
 
 > [!IMPORTANT]  
 > 创建群集、虚拟网络和 Cosmos DB 帐户最多可能需要 45 分钟时间。
 
 ## <a name="create-the-cosmos-db-database-and-collection"></a>创建 Cosmos DB 数据库和集合
 
-本文档使用的项目在 Cosmos DB 中存储数据。 运行代码之前，必须首先在 Cosmos DB 实例中创建数据库和集合   。 还必须检索文档终结点，以及用于对 Cosmos DB 的请求进行身份验证的密钥  。 
+本文档使用的项目在 Cosmos DB 中存储数据。 运行代码之前，必须首先在 Cosmos DB 实例中创建数据库和集合。 还必须检索文档终结点，以及用于对 Cosmos DB 的请求进行身份验证的密钥。 
 
 可使用 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 执行此操作。 以下脚本将创建名为 `kafkadata` 的数据库和名为 `kafkacollection` 的集合。 然后，将返回主键。
 
@@ -188,15 +188,15 @@ curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUST
 
     出现提示时，输入创建群集时使用的群集登录名（管理员）和密码。
 
-2. 在页面右上角，使用“上传”按钮将“Stream-taxi-data-to-kafka.ipynb”文件上传到群集   。 选择“打开”开始上传  。
+2. 在页面右上角，使用“上传”按钮将“Stream-taxi-data-to-kafka.ipynb”文件上传到群集。 选择“打开”开始上传。
 
-3. 在笔记本列表中找到“Stream-taxi-data-to-kafka.ipynb”项，然后选择其旁边的“上传”按钮   。
+3. 在笔记本列表中找到“Stream-taxi-data-to-kafka.ipynb”项，然后选择其旁边的“上传”按钮。
 
 4. 重复步骤 1-3 加载 __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ 笔记本。
 
 ## <a name="load-taxi-data-into-kafka"></a>将出租车数据加载到 Kafka 中
 
-上传文件后，选择“Stream-taxi-data-to-kafka.ipynb”项打开笔记本  。 按照笔记本中的步骤将数据加载到 Kafka 中。
+上传文件后，选择“Stream-taxi-data-to-kafka.ipynb”项打开笔记本。 按照笔记本中的步骤将数据加载到 Kafka 中。
 
 ## <a name="process-taxi-data-using-spark-structured-streaming"></a>使用 Spark 结构化流式处理来处理出租车数据
 

@@ -1,18 +1,18 @@
 ---
-title: 将 VM 从 Vhd 部署为 Azure Marketplace
+title: 从适用于 Azure Marketplace 的 Vhd 部署 VM
 description: 介绍如何从 Azure 部署的 VHD 注册 VM。
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: a393620f28d45ec494c4e899f01e7e9a92b3ceba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/08/2019
+ms.author: evansma
+ms.openlocfilehash: 1aa946c813de41423d4fb2ba5b3aa5274db90f39
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938288"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934969"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>从 VHD 部署 VM
 
@@ -45,13 +45,13 @@ ms.locfileid: "64938288"
 
 部署 VM 后，即可[认证 VM 映像](./cpp-certify-vm.md)。
 
-1. 单击“新建”并搜索“模板部署”，然后选择“在编辑器中生成自己的模板”。     <br/>
+1. 单击“新建”并搜索“模板部署”，然后选择“在编辑器中生成自己的模板”。  <br/>
    ![在 Azure 门户中生成 VHD 部署模板](./media/publishvm_021.png)
 
-1. 复制此 [JSON 模板](./cpp-deploy-json-template.md)并将其粘贴到编辑器中，然后单击“保存”。  <br/>
+1. 复制此 [JSON 模板](./cpp-deploy-json-template.md)并将其粘贴到编辑器中，然后单击“保存”。 <br/>
    ![在 Azure 门户中保存 VHD 部署模板](./media/publishvm_022.png)
 
-1. 提供显示的“自定义部署”属性页的参数值。 
+1. 提供显示的“自定义部署”属性页的参数值。
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
@@ -59,7 +59,7 @@ ms.locfileid: "64938288"
    |  -------------              |   ---------------                                                            |
    | 用户存储帐户名称   | 通用化 VHD 所在的存储帐户名称                    |
    | 用户存储容器名称 | 通用化 VHD 所在的容器名称                          |
-   | 公共 IP 的 DNS 名称      | 公共 IP DNS 名称                                                           |
+   | 公共 IP 的 DNS 名称      | 公共 IP DNS 名称。 DNS 名称为 VM, 一旦部署该产品/服务, 你将在 Azure 门户中定义此名称。  |
    | 管理员用户名             | 新 VM 的管理员帐户的用户名                                  |
    | 管理员密码              | 新 VM 的管理员帐户的密码                                  |
    | OS 类型                     | VM 操作系统：`Windows` \| `Linux`                                    |
@@ -73,9 +73,9 @@ ms.locfileid: "64938288"
    | VHD URL                     | 完整的 OS 磁盘 VHD URL                                                     |
    |  |  |
             
-1. 提供这些值后，单击“购买”。  
+1. 提供这些值后，单击“购买”。 
 
-Azure 将开始部署：使用指定的非托管 VHD 在指定的存储帐户路径中创建新 VM。  可以单击 Azure 门户左侧的“虚拟机”，在门户中跟踪进度。   创建 VM 后，状态将从 `Starting` 更改为 `Running`。 
+Azure 将开始部署：使用指定的非托管 VHD 在指定的存储帐户路径中创建新 VM。  可以单击 Azure 门户左侧的“虚拟机”，在门户中跟踪进度。  创建 VM 后，状态将从 `Starting` 更改为 `Running`。 
 
 
 ### <a name="deploy-a-vm-from-powershell"></a>从 PowerShell 部署 VM

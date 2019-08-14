@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: rkarlin
 ms.openlocfilehash: 0a889de79b6a5921007614dac8d610c1be0222d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60704484"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure 安全中心与 Azure SQL 数据库服务
@@ -36,7 +36,7 @@ ms.locfileid: "60704484"
 
 除帮助保护 SQL 数据库资源外，安全中心还可安全监视和管理 Azure 虚拟机、云服务、应用服务和虚拟网络等。 在[此处](security-center-intro.md)了解有关安全中心的详细信息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 使用订阅启用安全中心的免费层。 了解有关安全中心免费层和标准层的详细信息，请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
 安全中心支持基于角色的访问。 若要了解 Azure 中有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Azure Active Directory 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。 安全中心常见问题提供有关[如何在安全中心处理权限](security-center-faq.md#permissions)的信息。
@@ -75,7 +75,7 @@ ms.locfileid: "60704484"
 
 若要查看 Azure 资源的建议，请选择“安全中心”边栏选项卡上的“**建议**”磁贴。 在“**建议**”边栏选项卡上选择某个建议，以查看详细信息。 在此示例中，我们选择**在 SQL 服务器上启用审核与威胁检测**。
 
-![建议][4]
+![推荐][4]
 
 如下所示，安全中心会显示未启用审核与威胁检测的 SQL 服务器。 启用审核后，可以配置威胁检测设置和电子邮件设置，以接收安全警报。 威胁检测会在检测到异常的数据库活动时发出警报，指出数据库有潜在的安全威胁。 警报在安全中心仪表板中显示。
 ![审核和威胁检测][5]

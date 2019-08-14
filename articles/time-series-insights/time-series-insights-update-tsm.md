@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3e6e8ae76c0ae6f688dd4a039b34c52af16b6e0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a740d8ee0eb50cfa01f36bd8f5590a58e1e6627
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244029"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931915"
 ---
 # <a name="time-series-model"></a>时序模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "66244029"
 
 时序模型在查询和导航中发挥着至关重要的作用，因为它们可将设备和非设备实体上下文化。 保存在时序模型中的数据利用其中存储的公式来推动时序查询计算。
 
-[![时间时序模型概述](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
+[![时序模型类型](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
 
 ## <a name="key-capabilities"></a>关键功能
 
@@ -33,21 +33,21 @@ ms.locfileid: "66244029"
 
 * 创作和管理计算或公式、利用标量函数转换数据、聚合操作，等等。
 * 定义父子关系以实现导航和引用，并提供时序遥测的上下文。
-* 定义与实例字段的实例部分相关联的属性，并使用这些属性来创建层次结构。 
+* 定义与实例字段的实例部分相关联的属性，并使用这些属性来创建层次结构。
 
 ## <a name="entity-components"></a>实体组件
 
-时序模型具有三个核心组件：
+时序模型包含三个核心组件：
 
-* <a href="#time-series-model-types">时间时序模型类型</a>
-* <a href="#time-series-model-hierarchies">时间时序模型层次结构</a>
-* <a href="#time-series-model-instances">时间时序模型实例</a>
+* <a href="#time-series-model-types">时序模型类型</a>
+* <a href="#time-series-model-hierarchies">时序模型层次结构</a>
+* <a href="#time-series-model-instances">时序模型实例</a>
 
-若要指定时序模型，来组织 Azure 时序见解数据组合这些组件。
+组合这些组件可以指定时序模型以及组织 Azure 时序见解数据。
 
 ## <a name="time-series-model-types"></a>时序模型类型
 
-时序模型类型可帮助你定义用于执行计算的变量或公式。  类型与特定的时序见解实例相关联。 一个类型可以包含一个或多个变量。 例如，某个时序见解实例的类型为“温度传感器”，其中包括变量“平均温度”、“最小温度”和“最大温度”。     当数据开始流入时序见解时，我们将创建默认类型。 可在模型设置中检索和更新默认类型。 默认类型只包含一个用于统计事件数目的变量。
+时序模型类型可帮助你定义用于执行计算的变量或公式。 类型与特定的时序见解实例相关联。 一个类型可以包含一个或多个变量。 例如，某个时序见解实例的类型为“温度传感器”，其中包括变量“平均温度”、“最小温度”和“最大温度”。 当数据开始流入时序见解时，我们将创建默认类型。 可在模型设置中检索和更新默认类型。 默认类型只包含一个用于统计事件数目的变量。
 
 ### <a name="time-series-model-type-json-example"></a>时序模型类型 JSON 示例
 
@@ -78,24 +78,24 @@ ms.locfileid: "66244029"
 
 ### <a name="variables"></a>变量
 
-时序见解类型包含变量，这些变量是基于事件中的值执行的计算。 时序见解变量定义包含公式和计算规则。 变量定义包括种类、值、筛选器、化简和边界。      变量存储在时序模型的类型定义中，可以通过查询 API 以内联方式提供，以重写存储的定义。
+时序见解类型包含变量，这些变量是基于事件中的值执行的计算。 时序见解变量定义包含公式和计算规则。 变量定义包括种类、值、筛选器、化简和边界。 变量存储在时序模型的类型定义中，可以通过查询 API 以内联方式提供，以重写存储的定义。
 
 以下矩阵充当变量定义的图例：
 
-[![变量定义表类型](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
+[![类型变量定义表](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
 
 | 定义 | 描述 |
 | --- | ---|
-| 变量种类 |  *数值*并*聚合*支持类型 |
+| 变量种类 |  支持“数字”和“聚合”类型 |
 | 变量筛选器 | 变量筛选器指定一个可选的筛选器子句，用于根据条件限制计算中考虑的行数。 |
-| 变量值 | 变量值应在计算中使用。 有关的数据点有问题，请参阅相关字段。 |
+| 变量值 | 变量值应在计算中使用。 要引用的相关数据点的相关字段。 |
 | 变量聚合 | 变量的聚合函数可以实现一部分计算。 时序见解支持正则聚合（即 *min*、*max*、*avg*、*sum* 和 *count*）。 |
 
 ## <a name="time-series-model-hierarchies"></a>时序模型层次结构
 
 层次结构通过指定属性名称及其关系来组织实例。 可以创建一个或多个层次结构。 它们不需要是当前数据部分，但每个实例应映射到一个层次结构。 一个时序模型实例可以映射到一个或多个层次结构。
 
-层次结构按“层次结构 ID”、“名称”和“源”定义。    层次结构具有路径，即，用户想要创建的层次结构的自上而下的父子顺序。 父子属性映射实例字段。 
+层次结构按“层次结构 ID”、“名称”和“源”定义。 层次结构具有路径，即，用户想要创建的层次结构的自上而下的父子顺序。 父子属性映射实例字段。
 
 ### <a name="time-series-model-hierarchy-json-example"></a>时序模型层次结构 JSON 示例
 
@@ -124,7 +124,7 @@ ms.locfileid: "66244029"
  H1 = [“building”, “floor”, “room”]
 ```
 
-根据实例字段，层次结构属性和值如下表中所示： 
+根据实例字段，层次结构属性和值如下表中所示：
 
 | 时序 ID | 实例字段 |
 | --- | --- |
@@ -134,17 +134,17 @@ ms.locfileid: "66244029"
 | ID4 | “building” = “1000”, “floor” = “10”  |
 | ID5 | “building”、“floor”和“room”均未设置 |
 
-在前面的示例中， **ID1**并**ID4**显示为 H1 Azure 时序见解资源管理器中的层次结构的一部分，其余部分进行分类下*无父级实例*因为它们不符合指定的数据层次结构。
+在前面的示例中，**ID1** 和 **ID4** 显示为 Azure 时序见解资源管理器中层次结构 H1 的一部分，剩余的字段分类在“无父级实例”下，因为它们不符合指定的数据层次结构。
 
 ## <a name="time-series-model-instances"></a>时序模型实例
 
 实例是时序本身。 在大多数情况下，*deviceId* 或 *assetId* 是环境中资产的唯一标识符。 实例具有关联的描述性信息，称为实例属性。 实例属性最起码包括层次结构信息。 实例属性还可以包括有用的描述性数据，例如制造商、操作员或上次检修日期。
 
-实例按 *typeId*、*timeSeriesId*、*name*、*description*、*hierarchyIds* 和 *instanceFields* 定义。 每个实例只映射到一个类型以及一个或多个层次结构。  实例从层次结构继承所有属性，可以添加其他 *instanceFields* 以进一步定义实例属性。
+实例按 *typeId*、*timeSeriesId*、*name*、*description*、*hierarchyIds* 和 *instanceFields* 定义。 每个实例只映射到一个类型以及一个或多个层次结构。 实例从层次结构继承所有属性，可以添加其他 *instanceFields* 以进一步定义实例属性。
 
 *instanceFields* 是实例的属性，并且是定义实例的任何静态数据。 它们定义层次结构或非层次结构属性的值，同时还支持索引，以便能够执行搜索操作。
 
-*名称*属性是可选的区分大小写。 如果 *name* 不可用，则默认为时序 ID。 如果提供了 *name*，仍将在 Well（资源管理器中图表下方的网格）中提供时序 ID。
+*name* 属性可选，区分大小写。 如果 *name* 不可用，则默认为时序 ID。 如果提供了 *name*，仍将在 Well（资源管理器中图表下方的网格）中提供时序 ID。
 
 ### <a name="time-series-model-instance-json-example"></a>时序模型实例 JSON 示例
 

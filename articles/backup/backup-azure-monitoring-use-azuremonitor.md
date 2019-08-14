@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: de13518173f21a0a802c37eb7be3cd6c4926d884
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ffc245402965cdcd62bb210d79bd95db5444f964
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689195"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954618"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
@@ -212,7 +212,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 - 在所有解决方案中，在完成临时备份作业和还原作业后，会立即推送这些作业。
 - 对于除 SQL 备份以外的所有解决方案，在完成计划的备份作业后，会立即推送这些作业。
 - 对于 SQL 备份，由于日志备份可每隔 15 分钟发生，所有已完成的计划备份作业的信息（包括日志）将每隔 6 小时进行批处理和推送。
-- 在所有解决方案中，备份项、策略、恢复点、存储等其他信息每天至少推送一次。
+- 在所有解决方案中, 其他信息 (如备份项、策略、恢复点、存储等)*每日推送至少一次。*
 - 备份配置发生更改（例如更改策略或编辑策略）会触发所有相关备份信息的推送。
 
 ## <a name="using-the-recovery-services-vaults-activity-logs"></a>使用恢复服务保管库的活动日志
@@ -238,7 +238,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
    ![新建预警规则](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-此处的资源是恢复服务保管库本身。 必须针对要在其中通过活动日志接收通知的所有保管库重复相同的步骤。 条件中不包含阈值、期限或频率，因为此警报基于事件。 生成相关的活动日志后，会立即引发警报。
+此处的资源是恢复服务保管库本身。 对于要通过活动日志通知的所有保管库, 重复执行相同的步骤。 条件中不包含阈值、期限或频率，因为此警报基于事件。 生成相关的活动日志后，会立即引发警报。
 
 ## <a name="using-log-analytics-to-monitor-at-scale"></a>使用 Log Analytics 进行大规模监视
 

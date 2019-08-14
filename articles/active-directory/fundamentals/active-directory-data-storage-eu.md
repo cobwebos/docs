@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33704c3392726ccd12ca0fd74f26465a54697e11
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 178f81cf42e5c57be4a0b69ada6560d46951a3a3
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722133"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942844"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中的欧洲客户标识数据存储
 标识数据由 Azure AD 存储在地理位置, 在订阅 Microsoft Online services (如 Office 365 和 Azure) 时, 该地址基于组织提供的地址。 若要了解标识数据的存储位置, 可以使用 Microsoft 信任中心的 "[你的数据位于何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) " 部分。
@@ -43,6 +43,15 @@ Azure AD B2B 用兑换链接来存储邀请, 并在美国数据中心重定向 U
 ## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Microsoft Azure Active Directory 域服务 (Azure AD DS)
 
 Azure AD DS 将用户数据存储在客户选择的 Azure 虚拟网络所在的同一位置。 因此，如果该网络位于欧洲外部，则会复制数据并将其存储在欧洲外部。
+
+## <a name="federation-in-microsoft-exchange-server-2013"></a>Microsoft Exchange Server 2013 中的联合身份验证
+    
+- 应用程序标识符 (AppID)-Azure Active Directory authentication 系统生成的唯一编号, 用于标识 Exchange 组织。
+- 应用程序的已批准联合域列表
+- 应用程序的令牌签名公钥 
+
+有关 Microsoft Exchange server 中的联合的详细信息, 请[参阅联合:Exchange 2013 帮助](https://docs.microsoft.com/exchange/federation-exchange-2013-help)文章。
+
 
 ## <a name="other-considerations"></a>其他注意事项
 

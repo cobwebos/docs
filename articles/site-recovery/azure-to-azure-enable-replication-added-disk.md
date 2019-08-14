@@ -1,5 +1,5 @@
 ---
-title: 为磁盘添加到由 Azure Site Recovery 复制 Azure VM 启用复制 |Microsoft Docs
+title: 为添加到 Azure VM 的磁盘启用复制 Azure Site Recovery |Microsoft Docs
 description: 本文介绍如何为添加到 Azure VM 的磁盘启用复制，该 Azure VM 已使用 Azure Site Recovery 启用灾难恢复
 services: site-recovery
 author: asgang
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: asgang
-ms.openlocfilehash: 4a262a3a0c32516988890a6afc6eef34d8655c89
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 068464b8a3919d833418c8f3916ccf5c54835c6f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671875"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934548"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>为添加到 Azure VM 的磁盘启用复制
 
@@ -40,9 +40,9 @@ ms.locfileid: "67671875"
 
 若要为添加的磁盘启用复制，请执行以下操作：
 
-1. 在保管库 >“复制的项”  中，单击已向其添加磁盘的 VM。
-2. 单击“磁盘”  ，然后选择要为其启用复制的数据磁盘（这些磁盘具有“未受保护”  状态）。
-3.  在“磁盘详细信息”  中，单击“启用复制”  。
+1. 在保管库 >“复制的项”中，单击已向其添加磁盘的 VM。
+2. 单击“磁盘”，然后选择要为其启用复制的数据磁盘（这些磁盘具有“未受保护”状态）。
+3.  在“磁盘详细信息”中，单击“启用复制”。
 
     ![为添加的磁盘启用复制](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
 
@@ -50,6 +50,6 @@ ms.locfileid: "67671875"
 
 
 
-# <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 [详细了解](site-recovery-test-failover-to-azure.md)如何运行测试故障转移。

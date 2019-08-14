@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: e76a747f7e1d7ca7056edf5b69df0677aeff96a1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5c44f4ed5cd6488520bf6dd99f502f33049b9b17
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856000"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963002"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>构建 scikit-learn-通过 Azure 机器学习 service 大规模了解模型
 
@@ -192,12 +192,12 @@ model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何使用 scikit-learn 训练和注册机器学习、分类模型-了解 Azure 机器学习服务。
 
-* 若要了解如何部署模型, 请继续学习我们的[模型部署](how-to-deploy-and-where.md)一文。
+本文介绍了如何在 Azure 机器学习服务上定型并注册 Keras 模型。 若要了解如何部署模型, 请继续学习我们的模型部署一文。
 
-* [优化超参数](how-to-tune-hyperparameters.md)。
-
-* [在定型期间跟踪运行指标](how-to-track-experiments.md)。
-
-* 了解有关[深度学习与机器学习](concept-deep-learning-vs-machine-learning.md)的详细信息。
+> [!div class="nextstepaction"]
+> [部署模型的方式和位置](how-to-deploy-and-where.md)
+* [在训练期间跟踪运行指标](how-to-track-experiments.md)
+* [优化超参数](how-to-tune-hyperparameters.md)
+* [部署定型的模型](how-to-deploy-and-where.md)
+* [Azure 中的分布式深层学习培训参考体系结构](/azure/architecture/reference-architectures/ai/training-deep-learning)

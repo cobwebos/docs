@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 30c2eb2964f11b729b0ffaf58c532d5189cdc2cd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 38c850f167287fe5e1a444c8670e359c4d2b6b90
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727772"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934837"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>没有密码的世界 Azure Active Directory
 
 这就是用密码分解关系的时候了。 过去, 密码是很好的, 但在今天的数字工作区中, 他们就成为了黑客的一个相对简单的攻击媒介。 黑客喜欢密码, 如果您认为 Azure Active Directory (Azure AD) 中经常拒绝的密码包括年份、月份、季节或本地体育团队等术语, 则很难看出为什么会出现这种情况。 而且,[研究](https://aka.ms/passwordguidance)表明, 针对密码管理的传统建议 (例如, 长度要求、复杂性要求和更改频率) 出于各种与人力性质相关的原因而适得其反。
 
-通常用于泄露用户帐户的三种类型的攻击包括密码喷涂、网络钓鱼和破坏性重播。 Azure AD 功能 (如[智能锁定](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)、[禁止密码](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises)和[密码保护](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises)) 可帮助防范这类攻击。 同样, 实现[多重身份验证](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)(MFA) 或双重验证, 通过要求第二种形式的身份验证提供额外的安全性。 但在长时间运行中, 无密码解决方案是确保最安全的身份验证方法的最佳解决方案。
+通常用于泄露用户帐户的三种类型的攻击包括密码喷涂、网络钓鱼和破坏性重播。 Azure AD 功能 (如[智能锁定](../../active-directory/authentication/howto-password-smart-lockout.md)、[禁止密码](../../active-directory/authentication/concept-password-ban-bad-on-premises.md)和[密码保护](../../active-directory/authentication/concept-password-ban-bad-on-premises.md)) 可帮助防范这类攻击。 同样, 实现[多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)(MFA) 或双重验证, 通过要求第二种形式的身份验证提供额外的安全性。 但在长时间运行中, 无密码解决方案是确保最安全的身份验证方法的最佳解决方案。
 
 本文旨在帮助你了解和实现 Microsoft 的无密码解决方案, 并帮助你在以下一个或多个选项之间进行选择:
 
@@ -109,7 +109,7 @@ Windows Hello 企业版提供了一种方便的登录体验, 用于对用户进�
 
 [MICROSOFT PIN 重置服务](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset)是 Azure AD 中的一项功能, 使用户能够根据需要重置其 PIN。 使用组策略、Microsoft Intune 或兼容的 MDM, 管理员可以配置 Windows 10 设备以安全地使用 Microsoft PIN 重置服务, 该服务使用户可以通过设置或在锁定屏幕上重置其忘记的 PIN, 而无需重新注册。
 
-有时用户必须回退到使用密码。 [自助服务密码重置](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)(SSPR) 是另一项 Azure AD 功能, 使用户能够重置其密码, 而无需联系 IT 员工。 在使用服务之前, 用户必须注册以进行自助密码重置。 注册过程中, 用户选择一个或多个由其组织启用的身份验证方法。 SSPR 使用户无论在何处或是当天的时间, 都可以快速地取消阻止并继续工作。 通过允许用户取消阻止其自身, 你的组织可以降低大多数常见密码相关问题的非生产时间和高支持成本。
+有时用户必须回退到使用密码。 [自助服务密码重置](../../active-directory/authentication/howto-sspr-deployment.md)(SSPR) 是另一项 Azure AD 功能, 使用户能够重置其密码, 而无需联系 IT 员工。 在使用服务之前, 用户必须注册以进行自助密码重置。 注册过程中, 用户选择一个或多个由其组织启用的身份验证方法。 SSPR 使用户无论在何处或是当天的时间, 都可以快速地取消阻止并继续工作。 通过允许用户取消阻止其自身, 你的组织可以降低大多数常见密码相关问题的非生产时间和高支持成本。
 
 ## <a name="passwordless-sign-in-with-microsoft-authenticator"></a>无密码登录 Microsoft Authenticator
 
@@ -125,9 +125,9 @@ Windows Hello 企业版提供了一种方便的登录体验, 用于对用户进�
 
 * 已为最终用户启用 Azure 多重身份验证
 
-* 用户通过使用 Microsoft Intune 或第三方移动设备管理 (MDM) 解决方案来注册其设备的功能
+* 建议用户使用 Microsoft Intune 或第三方移动设备管理 (MDM) 解决方案来注册其设备, 以便简化应用程序的部署
 
-假如满足了这些要求, 管理员就可以使用[Windows PowerShell](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#enable-my-users)在租户中启用无密码手机登录。 在租户中启用手机登录后, 最终用户可以选择使用手机登录, 方法是在应用的**帐户**屏幕上选择其工作或学校帐户, 然后选择 "**启用手机登录**"。
+假如满足了这些要求, 管理员就可以使用[Windows PowerShell](../../active-directory/authentication/howto-authentication-passwordless-phone.md)在租户中启用无密码手机登录。 在租户中启用手机登录后, 最终用户可以选择使用手机登录, 方法是在应用的**帐户**屏幕上选择其工作或学校帐户, 然后选择 "**启用手机登录**"。
 
 假设管理员已启用无密码登录, 则最终用户需要满足以下要求:
 
@@ -137,9 +137,9 @@ Windows Hello 企业版提供了一种方便的登录体验, 用于对用户进�
 
 * 将推送通知添加到应用的工作或学校帐户
 
-若要避免锁定帐户, 或者必须在新设备上重新创建帐户, 建议使用 Microsoft Authenticator 将[帐户凭据备份](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-backup-recovery)到云中。 备份后，还可以使用该应用在新设备上恢复信息，从而避免潜在的锁定或重新创建帐户。
+若要避免锁定帐户, 或者必须在新设备上重新创建帐户, 建议使用 Microsoft Authenticator 将[帐户凭据备份](../../active-directory/user-help/user-help-auth-app-backup-recovery.md)到云中。 备份后，还可以使用该应用在新设备上恢复信息，从而避免潜在的锁定或重新创建帐户。
 
-由于大多数用户习惯于只使用密码进行身份验证, 因此你的组织必须培训有关此过程的用户。 对于使用 Microsoft Authenticator 应用登录相关的任何[问题](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#known-issues), 认知度可能会降低用户呼叫技术支持的可能性。
+由于大多数用户习惯于只使用密码进行身份验证, 因此你的组织必须培训有关此过程的用户。 对于使用 Microsoft Authenticator 应用登录相关的任何[问题](../../active-directory/authentication/howto-authentication-passwordless-phone.md), 认知度可能会降低用户呼叫技术支持的可能性。
 
 > [!NOTE]
 > 如果漫游用户所在的位置没有 Internet 连接, 则可能是此解决方案的潜在故障点。 FIDO2 安全密钥和 Windows Hello 企业版不受相同限制。
@@ -150,9 +150,9 @@ Windows Hello 企业版提供了一种方便的登录体验, 用于对用户进�
 
 必须由管理员和最终用户执行步骤, 然后才能将 Microsoft Authenticator 应用用作无密码解决方案, 以便登录到 Azure AD 帐户。
 
-首先, 管理员需要在使用 Windows PowerShell 的租户中将[应用作为凭据启用](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#enable-my-users)。 管理员还需要为最终用户启用 Azure 多重身份验证 (Azure MFA), 并将 Microsoft Authenticator 应用程序配置为[验证方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings#verification-methods)之一。
+首先, 管理员需要在使用 Windows PowerShell 的租户中将[应用作为凭据启用](../../active-directory/authentication/howto-authentication-passwordless-phone.md)。 管理员还需要为最终用户启用 Azure 多重身份验证 (Azure MFA), 并将 Microsoft Authenticator 应用程序配置为[验证方法](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods)之一。
 
-最终用户将需要[下载并安装](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)Microsoft Authenticator 应用, 并[设置其帐户](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)以使用 Microsoft Authenticator 应用作为验证方法之一。
+最终用户将需要[下载并安装](../../active-directory/user-help/user-help-auth-app-download-install.md)Microsoft Authenticator 应用, 并[设置其帐户](../../active-directory/user-help/security-info-setup-auth-app.md)以使用 Microsoft Authenticator 应用作为验证方法之一。
 
 > [!VIDEO https://www.youtube.com/embed/uWbkLuI4g30]
 
@@ -184,7 +184,7 @@ Windows Hello 企业版提供了一种方便的登录体验, 用于对用户进�
 
 #### <a name="user-manages-their-passwordless-sign-in-with-microsoft-authenticator-credentials"></a>用户通过 Microsoft Authenticator 凭据管理他们的无密码登录
 
-通过[组合注册](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined), 用户可以注册并获得 Azure 多重身份验证和自助密码重置的好处。 用户通过导航到["我的配置文件" 页](https://aka.ms/mysecurityinfo)来注册和管理这些设置。 除了启用 SSPR, 组合注册还支持多种身份验证方法和操作。
+通过[组合注册](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md), 用户可以注册并获得 Azure 多重身份验证和自助密码重置的好处。 用户通过导航到["我的配置文件" 页](https://aka.ms/mysecurityinfo)来注册和管理这些设置。 除了启用 SSPR, 组合注册还支持多种身份验证方法和操作。
 
 ## <a name="fido2-security-keys"></a>FIDO2 安全密钥
 
@@ -228,7 +228,7 @@ WebAuthN 定义了一个 API, 该 API 支持通过 web 应用和服务进行强�
 
 虽然管理员可以[手动预配密钥](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)并将其分发给最终用户, 但在 Windows 10 锁屏上设置和启用 FIDO2 凭据提供程序将通过[Intune](https://docs.microsoft.com/intune/windows-enrollment-methods)提供支持。 管理员还需要使用[Azure 门户](https://portal.azure.com/)将硬件令牌设备启用为无密码身份验证方法。
 
-部署 FIDO2 安全密钥还要求用户使用[组合注册](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)注册其密钥。 通过组合注册, 用户可以注册一次, 并获得 Azure 多重身份验证和单一登录密码重置 (SSPR) 的好处。
+部署 FIDO2 安全密钥还要求用户使用[组合注册](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)注册其密钥。 通过组合注册, 用户可以注册一次, 并获得 Azure 多重身份验证和单一登录密码重置 (SSPR) 的好处。
 
 除了选择硬件令牌作为默认多重身份验证方法外, 还建议选择其他验证选项。
 
@@ -342,5 +342,5 @@ FIDO2 安全密钥提供安全的身份验证, 而不考虑其外观。 安全�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [无密码](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)概述
+* [无密码](../../active-directory/authentication/concept-authentication-passwordless.md)概述
 * [如何在 Azure AD 中启用无密码](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)

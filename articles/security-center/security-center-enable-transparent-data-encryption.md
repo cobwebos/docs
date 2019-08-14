@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: d5ddec40a1b20e377ec18ce871018f674557e7b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60703974"
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>启用 Azure 安全中心的透明数据加密
@@ -32,18 +32,18 @@ ms.locfileid: "60703974"
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”边栏选项卡  中，选择“启用透明数据加密”  。
+1. 在“建议”边栏选项卡中，选择“启用透明数据加密”。
    ![启用透明数据加密][1]
-2. “在 SQL 数据库上启用透明数据加密”  边栏选项卡。 选择要启用 TDE 的SQL 数据库。
+2. “在 SQL 数据库上启用透明数据加密”边栏选项卡。 选择要启用 TDE 的SQL 数据库。
    ![选择要启用 TDE 的 SQL DB][2]
-3. 在“透明数据加密”  边栏选项卡上，在数据加密下选择“开启”  ，并边栏选项卡顶部功能区中选择“保存”  。
+3. 在“透明数据加密”边栏选项卡上，在数据加密下选择“开启”，并边栏选项卡顶部功能区中选择“保存”。
    ![打开 TDE][3]
 
-   在所选 SQL 数据库上启用 TDE 后，“加密状态”  将更改为“已加密”  。    
+   在所选 SQL 数据库上启用 TDE 后，“加密状态”将更改为“已加密”。    
 
    ![加密状态][4]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 本文演示如何实现安全中心建议“启用透明数据加密”。 若要了解有关 SQL TDE 的详细信息，请参阅以下内容：
 
 * [使用 Azure SQL 数据库的透明数据加密](https://msdn.microsoft.com/library/dn948096)

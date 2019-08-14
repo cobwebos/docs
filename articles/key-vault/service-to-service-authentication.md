@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: d34c94ccca47d29afc4f3d83bec58db737be270c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f6a95f56b7b617b42c1cec9f64aae73b88b813da
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840418"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934344"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -270,21 +270,21 @@ AzureServiceTokenProvider 在默认安装位置查找 Azure CLI。 如果找不�
 
 #### <a name="unauthorized-access-access-denied-forbidden-etc-error"></a>未经授权的访问、拒绝访问、禁止访问等。错误
  
-使用的主体没有访问尝试访问的资源的权限。 根据你是在本地开发计算机上运行该示例还是在 Azure 中将其部署到应用服务, 授予你的用户帐户或应用服务的 MSI "参与者" 对所需资源的访问权限。 某些资源 (例如 key vault) 还具有其自己的[访问策略](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies), 你可以使用它们授予对主体 (用户、应用、组等) 的访问权限。
+使用的主体没有访问尝试访问的资源的权限。 根据你是在本地开发计算机上运行该示例还是在 Azure 中将其部署到应用服务, 授予你的用户帐户或应用服务的 MSI "参与者" 对所需资源的访问权限。 某些资源 (例如 key vault) 还具有其自己的[访问策略](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies), 你可以使用它们授予对主体 (用户、应用、组等) 的访问权限。
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>部署到 Azure App Service 时遇到的常见问题
 
 #### <a name="managed-identity-is-not-setup-on-the-app-service"></a>未在应用服务上设置托管标识
  
-使用[Kudu 调试控制台](https://azure.microsoft.com/en-us/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)检查环境变量 MSI_ENDPOINT 和 MSI_SECRET 是否存在。 如果这些环境变量不存在, 则不会在应用服务上启用托管标识。 
+使用[Kudu 调试控制台](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)检查环境变量 MSI_ENDPOINT 和 MSI_SECRET 是否存在。 如果这些环境变量不存在, 则不会在应用服务上启用托管标识。 
  
 ### <a name="common-issues-when-deployed-locally-with-iis"></a>在本地与 IIS 一起部署时遇到的常见问题
 
 #### <a name="cant-retrieve-tokens-when-debugging-app-in-iis"></a>在 IIS 中调试应用时无法检索令牌
 
 默认情况下, AppAuth 在 IIS 的不同用户上下文中运行, 因此不具有使用开发人员标识检索访问令牌的权限。 可以将 IIS 配置为在用户上下文中运行, 步骤如下:
-- 将 web 应用的应用程序池配置为以当前用户帐户身份运行。 请在[此处](https://docs.microsoft.com/en-us/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities)查看详细信息
-- 将 "setProfileEnvironment" 配置为 "True"。 请参阅[此处](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)的详细信息。 
+- 将 web 应用的应用程序池配置为以当前用户帐户身份运行。 请在[此处](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities)查看详细信息
+- 将 "setProfileEnvironment" 配置为 "True"。 请参阅[此处](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)的详细信息。 
 
     - 中转到%windir%\System32\inetsrv\config\applicationHost.config
     - 搜索 "setProfileEnvironment"。 如果设置为 "False", 则将其更改为 "True"。 如果该元素不存在, 请将其作为属性添加到 processModel 元素 (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment), 并将其设置为 "True"。

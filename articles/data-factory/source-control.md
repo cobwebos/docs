@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 91c0ad260c16ac09fd764246d31f99d481f8f147
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: fd8168b5786f669de0c5c2109c9e02b43c62c582
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886827"
+ms.locfileid: "68933659"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 
@@ -243,7 +243,7 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 
 如果发布分支与主分支不同步并且包含过期资源 (尽管最近发布), 请尝试执行以下步骤:
 
-1. 删除当前的 Git 存储库/
+1. 删除当前的 Git 存储库
 1. 用相同的设置重新配置 Git, 但请确保已选择 "**将现有的数据工厂资源导入存储库**", 然后选择 "**新建分支**"
 1. 从协作分支中删除所有资源
 1. 创建用于将更改合并到协作分支的拉取请求 

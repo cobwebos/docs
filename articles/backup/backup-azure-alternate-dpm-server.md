@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: e3d38e9b5e1b9b9f827476acf7e2e2ecab632424
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0a6d1fd73d99cf15137e937dbfe2336d49a63d90
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688815"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955046"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>从 Azure 备份服务器恢复数据
 可使用 Azure 备份服务器恢复已备份到恢复服务保管库的数据。 用于执行此操作的过程已集成到 Azure 备份服务器管理控制台中，且与其他 Azure 备份组件的恢复工作流类似。
@@ -45,7 +45,7 @@ ms.locfileid: "68688815"
     将在底部窗格中显示文件和文件夹的列表，可以浏览这些文件和文件夹并将其恢复到任何位置。
 
     ![外部 DPM 服务器恢复点](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. 右键单击相应的项目，并单击“**恢复**”。
+5. 右键单击相应的项目, 然后单击 "**恢复**"。
 
     ![外部 DPM 恢复](./media/backup-azure-alternate-dpm-server/recover.png)
 6. 查看“**恢复所选内容**”。 验证要恢复的备份副本的数据和时间，以及创建备份副本时所依据的源。 如果所选内容不正确，请单击“**取消**”，导航回恢复选项卡，并选择适当的恢复点。 如果所选内容正确无误，请单击“**下一步**”。
@@ -57,7 +57,7 @@ ms.locfileid: "68688815"
 8. 选择与“**创建副本**”、“**跳过**”或“**覆盖**”相关的选项。
 
    * **创建副本**- 在存在名称冲突时创建文件副本。
-   * **跳过**- 存在名称冲突时，不恢复保留了原始文件的文件。
+   * **Skip** -如果存在名称冲突, 则不恢复保留原始文件的文件。
    * **覆盖**- 存在名称冲突时，覆盖文件的现有副本。
 
      选择与“**还原安全**”相对应的选项。 可以应用进行数据恢复的目标计算机的安全设置，也可以应用在创建恢复点时适用于产品的安全设置。

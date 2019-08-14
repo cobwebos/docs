@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 928b0bcfb32d1a319c811d00fc84a37f85702895
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c163e3cce862640d43f8696dca4eeef29f2ae12a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857323"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912289"
 ---
 下表列出了特定于 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
@@ -36,6 +36,8 @@ ms.locfileid: "68857323"
 | 每个事件中心的使用者组数 |实体 | - |1 |20 |
 | 每个命名空间的 AMQP 连接数 |命名空间 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |100 |5,000|
 | 事件数据的最长保留期限 |实体 | - |1 天 |1-7 天 |
+|启用 Apache Kafka 命名空间|命名空间 |使用 Kafka 协议的事件中心命名空间流应用程序 |否 | 是 |
+|捕获 |实体 | 启用后, 同一个流上的微批处理 |否 |是 |
 
 
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>事件中心专用层-配额和限制

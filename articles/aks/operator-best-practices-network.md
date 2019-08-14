@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: mlearned
 ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67614749"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络连接和安全的最佳做法
@@ -32,8 +32,8 @@ ms.locfileid: "67614749"
 
 虚拟网络为 AKS 节点和客户提供了用于访问应用程序的基本链接。 将 AKS 群集部署到虚拟网络有两种不同的方法：
 
-* **Kubenet 网络**-Azure 在部署群集时管理虚拟网络资源, 并使用[Kubenet][kubenet] Kubernetes 插件。
-* **AZURE CNI 网络**-部署到现有的虚拟网络中, 并使用[Azure 容器网络接口 (CNI)][cni-networking] Kubernetes 插件。 Pod 接收可以路由到其他网络服务或本地资源的各个 Ip。
+* **Kubenet 网络** - Azure 在部署群集时管理虚拟网络资源，并使用 [kubenet][kubenet] Kubernetes 插件。
+* **Azure CNI 网络** - 部署到现有的虚拟网络，并使用 [Azure 容器网络接口 (CNI)][cni-networking] Kubernetes 插件。 Pod 接收可以路由到其他网络服务或本地资源的各个 Ip。
 
 容器网络接口 (CNI) 是与供应商无关的协议，允许容器运行时将向网络提供程序发出请求。 Azure CNI 将 IP 地址分配给 Pod 和节点，并在接到现有的 Azure 虚拟网络时提供 IP 地址管理 (IPAM) 功能。 每个节点和 Pod 资源接收 Azure 虚拟网络中的 IP 地址，与其他资源或服务通信不需要其他路由。
 
@@ -45,11 +45,11 @@ ms.locfileid: "67614749"
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-有关 AKS 服务主体委派的详细信息, 请参阅[委派对其他 Azure 资源的访问权限][sp-delegation]。
+有关 AKS 服务主体委托的详细信息，请参阅[委托对其他 Azure 资源的访问权限][sp-delegation]。
 
 每个节点和 Pod 在接收自己的 IP 地址时，请规划 AKS 子网的地址范围。 子网必须大到足以为每个部署的节点、Pod 和网络资源提供 IP 地址。 每个 AKS 群集必须位于自己的子网中。 要允许连接到 Azure 中的本地网络或对等互连网络，请勿使用与现有网络资源重叠的 IP 地址范围。 每个节点使用 kubenet 和 Azure CNI 网络运行的 Pod 数量存在默认限制。 若要处理纵向扩展事件或群集升级，还需要可在分配的子网中使用的其他 IP 地址。 如果使用 Windows Server 容器 (当前在 AKS 中为预览版), 则此额外的地址空间尤其重要, 因为这些节点池需要升级才能应用最新的安全修补程序。 有关 Windows Server 节点的详细信息, 请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
 
-若要计算所需的 IP 地址, 请参阅[在 AKS 中配置 AZURE CNI 网络][advanced-networking]。
+若要计算所需的 IP 地址，请参阅[在 AKS 中配置 Azure CNI 网络][advanced-networking]。
 
 ### <a name="kubenet-networking"></a>Kubenet 网络
 
@@ -99,16 +99,16 @@ spec:
          servicePort: 80
 ```
 
-入口控制器是在 AKS 节点上运行的守护程序并监视传入请求。 然后根据入口资源中定义的规则分配流量。 最佳常见的入口控制器基于 [NGINX]。 AKS 不会限制你使用特定控制器, 因此可以使用其他控制器, 如[等高线][contour]、 [HAProxy][haproxy]或[Traefik][traefik]。
+入口控制器是在 AKS 节点上运行的守护程序并监视传入请求。 然后根据入口资源中定义的规则分配流量。 最佳常见的入口控制器基于 [NGINX]。 AKS 不会限制你使用特定控制器，因此可以使用其他控制器，例如 [Contour][contour]、[HAProxy][haproxy] 或 [Traefik][traefik]。
 
-入口控制器必须在 Linux 节点上计划。 Windows Server 节点 (当前在 AKS 中为预览版) 不应运行入口控制器。 使用 YAML 清单中的节点选择器或 Helm 图表部署来指示该资源应在基于 Linux 的节点上运行。 有关详细信息, 请参阅[使用节点选择器控制在 AKS 中计划 pod 的位置][concepts-node-selectors]。
+必须在 Linux 节点上计划入口控制器。 Windows Server 节点 (当前在 AKS 中为预览版) 不应运行入口控制器。 使用 YAML 清单中的节点选择器或 Helm 图表部署来指示该资源应在基于 Linux 的节点上运行。 有关详细信息, 请参阅[使用节点选择器控制在 AKS 中计划 pod 的位置][concepts-node-selectors]。
 
 入口有许多方案，包括以下操作指南：
 
 * [创建具有外部网络连接的基本入口控制器][aks-ingress-basic]
 * [创建使用内部、专用网络和 IP 地址的入口控制器][aks-ingress-internal]
-* [创建使用自己的 TLS 证书的入口控制器][aks-ingress-own-tls]
-* 创建一个入口控制器, 该控制器使用我们的加密来自动生成[包含动态公共 ip 地址][aks-ingress-tls]或[具有静态公共 IP 地址][aks-ingress-static-tls]的 TLS 证书
+* [创建使用你自己的 TLS 证书的入口控制器][aks-ingress-own-tls]
+* 创建一个使用 Let's Encrypt 的入口控制器，以自动生成[具有动态公共 IP 地址][aks-ingress-tls]或[具有静态公共 IP 地址][aks-ingress-static-tls]的 TLS 证书
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>使用 Web 应用程序防火墙 (WAF) 保护流量
 
@@ -158,11 +158,11 @@ AKS 中的大多数操作都可以使用 Azure 管理工具或通过 Kubernetes 
 
 ![使用堡垒主机或跳转盒连接到 AKS 节点](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
 
-堡垒主机的管理网络也应受到保护。 使用[Azure ExpressRoute][expressroute]或[VPN 网关][vpn-gateway]连接到本地网络, 并使用网络安全组控制访问。
+堡垒主机的管理网络也应受到保护。 使用 [Azure ExpressRoute][expressroute] 或 [VPN 网关][vpn-gateway]连接到本地网络，并使用网络安全组控制访问。
 
 ## <a name="next-steps"></a>后续步骤
 
-本文重点介绍网络连接性和安全性。 有关 Kubernetes 中的网络基础知识的详细信息, 请参阅[Azure Kubernetes Service 中应用程序的网络概念 (AKS)][aks-concepts-network]
+本文重点介绍网络连接性和安全性。 有关 Kubernetes 中的网络基础知识的详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 中应用程序的网络概念][aks-concepts-network]
 
 <!-- LINKS - External -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md

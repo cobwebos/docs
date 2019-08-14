@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e741e8d4d68c9862aaabffaccb86740a3e1e9b8a
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3524f34773f4627dff478ee7cc9cbff9f674bf8e
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694164"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931769"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
@@ -48,7 +48,7 @@ ms.locfileid: "68694164"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |通常是来自源对象的属性的名称。 |
 | **suffix** |必填 |String |要附加到源值末尾的字符串。 |
@@ -90,7 +90,7 @@ ms.locfileid: "68694164"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |通常是属性的名称。 |
 | **start** |必填 |整数 |**source** 字符串中的索引，子字符串应从此处开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
@@ -104,7 +104,7 @@ ms.locfileid: "68694164"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String | 通常是名字或姓氏属性。 |
 
@@ -169,7 +169,7 @@ ms.locfileid: "68694164"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |String | 要评估的唯一值生成规则的列表。 |
 
@@ -194,7 +194,7 @@ ms.locfileid: "68694164"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | type | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |要更新的 **source** 值。 |
 | **delimiter** |必填 |String |指定将用来拆分字符串的字符（示例：“,”） |
@@ -207,7 +207,7 @@ ms.locfileid: "68694164"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | type | 说明 |
+| 姓名 | 必选/重复 | type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |要更新的 **source** 值。 |
 
@@ -219,7 +219,7 @@ ms.locfileid: "68694164"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 姓名 | 必选/重复 | type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |要更新的 **source** 值。 |
 | **defaultValue** |可选 |String |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
@@ -234,7 +234,7 @@ ms.locfileid: "68694164"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 姓名 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |通常是来自源对象的属性的名称 |
 | **区域性** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
@@ -366,7 +366,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
     SelectUniqueValue( 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com")
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
     )
 

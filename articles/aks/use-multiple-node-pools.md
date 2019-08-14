@@ -5,18 +5,21 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 05/17/2019
+ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 72f34d9711e1ba4658288bfdeb847632d32d0fcf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e9b654fc49a953f8fdbc9125c6f12486e0ab7b13
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68478324"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949491"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>预览-创建和管理 Azure Kubernetes 服务中群集的多个节点池 (AKS)
 
 在 Azure Kubernetes Service (AKS) 中, 相同配置的节点组合在一起成为*节点池*。 这些节点池包含运行应用程序的基础 Vm。 初始节点数及其大小 (SKU) 是在创建 AKS 群集时定义的, 该群集创建*默认节点池*。 若要支持具有不同计算或存储需求的应用程序, 可以创建其他节点池。 例如, 使用这些附加的节点池为计算密集型应用程序或高性能 SSD 存储提供 Gpu。
+
+> [!NOTE]
+> 利用此功能, 可以更好地控制如何创建和管理多个节点池。 因此, 创建/更新/删除需要单独的命令。 以前通过`az aks create`或`az aks update`使用 managedCluster API 进行群集操作, 并且是更改控制平面和单节点池的唯一选项。 此功能通过 agentPool API 为代理池公开单独的操作集, 并要求使用`az aks nodepool`命令集在单个节点池上执行操作。
 
 本文介绍如何在 AKS 群集中创建和管理多个节点池。 此功能目前处于预览状态。
 
@@ -113,14 +116,15 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="add-a-node-pool"></a>添加节点池
 
-在上一步中创建的群集具有单个节点池。 让我们使用[az aks node pool add][az-aks-nodepool-add]命令添加另一个节点池。 以下示例创建一个名为*mynodepool*的节点池, 运行*3*个节点:
+在上一步中创建的群集具有单个节点池。 让我们使用[az aks nodepool add][az-aks-nodepool-add]命令添加另一个节点池。 以下示例创建一个名为*mynodepool*的节点池, 运行*3*个节点:
 
 ```azurecli-interactive
 az aks nodepool add \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --node-count 3
+    --node-count 3 \
+    --kubernetes-version 1.12.6
 ```
 
 若要查看节点池的状态, 请使用[az aks node pool list][az-aks-nodepool-list]命令并指定资源组和群集名称:
@@ -174,10 +178,10 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 
 将节点升级到指定的版本需要几分钟时间。
 
-最佳做法是, 应将 AKS 群集中的所有节点池升级到相同的 Kubernetes 版本。 升级各个节点池的功能使你能够在节点池之间执行滚动升级和计划箱以维护应用程序运行时间。
+最佳做法是, 应将 AKS 群集中的所有节点池升级到相同的 Kubernetes 版本。 升级各个节点池的功能使你能够在节点池之间执行滚动升级和计划 pod, 以维持上述约束中的应用程序正常运行时间。
 
 > [!NOTE]
-> Kubernetes 使用标准[语义版本](https://semver.org/)控制方案。 版本号表示为*x.x*, 其中*x*是主要版本, *y*是次版本, *z*是修补程序版本。 例如, 在版本*1.12.6*中, 1 表示主版本, 12 表示次版本, 6 表示修补程序版本。 在群集创建过程中, 会设置控制平面和初始节点池的 Kubernetes 版本。 将所有其他节点池添加到群集时, 将设置其 Kubernetes 版本。 Kubernetes 版本可能在节点池之间以及节点池和控制平面之间有所不同, 但以下限制适用:
+> Kubernetes 使用标准的[语义化版本控制](https://semver.org/)方案。 版本号表示为*x.x*, 其中*x*是主要版本, *y*是次版本, *z*是修补程序版本。 例如, 在版本*1.12.6*中, 1 表示主版本, 12 表示次版本, 6 表示修补程序版本。 在群集创建过程中, 会设置控制平面和初始节点池的 Kubernetes 版本。 将所有其他节点池添加到群集时, 将设置其 Kubernetes 版本。 Kubernetes 版本可能在节点池之间以及节点池和控制平面之间有所不同, 但以下限制适用:
 > 
 > * 节点池版本必须与控制平面具有相同的主版本。
 > * 节点池版本可能比控制平面版本少1个次要版本。
@@ -185,7 +189,7 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 > 
 > 若要升级控件平面的 Kubernetes 版本, 请使用`az aks upgrade`。 如果群集只有一个节点池, 则该`az aks upgrade`命令还将升级节点池的 Kubernetes 版本。
 
-## <a name="scale-a-node-pool"></a>缩放节点池
+## <a name="scale-a-node-pool-manually"></a>手动缩放节点池
 
 当应用程序工作负荷需求改变时, 可能需要扩展节点池中的节点数。 节点数可以向上或向下缩放。
 
@@ -214,6 +218,10 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 ```
 
 完成缩放操作需要几分钟时间。
+
+## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>通过启用群集来自动缩放特定节点池自动缩放程序
+
+AKS 提供了一个单独的预览功能, 可使用称为[群集自动缩放程序](cluster-autoscaler.md)的组件自动缩放节点池。 此组件是一个 AKS 外接程序, 可为每个节点池启用每个节点池的唯一最小和最大刻度计数。 了解如何[使用每个节点池的群集自动缩放程序](cluster-autoscaler.md#enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools)。
 
 ## <a name="delete-a-node-pool"></a>删除节点池
 
@@ -437,6 +445,29 @@ az group deployment create \
 ```
 
 根据资源管理器模板中定义的节点池设置和操作, 更新 AKS 群集可能需要几分钟时间。
+
+## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>为节点池中的每个节点分配公共 IP
+
+AKS 节点不需要自己的公共 IP 地址进行通信。 但某些情况下, 可能需要节点池中的节点具有其自己的公共 IP 地址。 例如游戏, 控制台需要直接连接到云虚拟机以最大程度地减少跃点。 为此, 可以注册单独的预览功能 "节点公共 IP (预览版)"。
+
+```azurecli-interactive
+az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
+```
+
+注册成功后, 按照[上述](##manage-node-pools-using-a-resource-manager-template)相同说明部署 Azure 资源管理器模板, 并在 agentPoolProfiles 上添加以下布尔值属性 "enableNodePublicIP"。 将此`true`值设置为, 默认情况下它将`false`设置为 (如果未指定)。 这只是一个创建时的属性, 需要的最低 API 版本为2019-06-01。 这可同时适用于 Linux 和 Windows 节点池。
+
+```
+"agentPoolProfiles":[  
+    {  
+      "maxPods": 30,
+      "osDiskSizeGB": 0,
+      "agentCount": 3,
+      "agentVmSize": "Standard_DS2_v2",
+      "osType": "Linux",
+      "vnetSubnetId": "[parameters('vnetSubnetId')]"
+      "enableNodePublicIP":true
+    }
+```
 
 ## <a name="clean-up-resources"></a>清理资源
 

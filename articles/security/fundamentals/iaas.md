@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: 5e449ae33b19b27c3ea50d982ed84f681a0beb8f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c04d5fc5b455c798ffc8cb4a88948deaea0cf348
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727271"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927932"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 本文介绍了 VM 和操作系统的安全最佳做法。
@@ -79,7 +79,7 @@ ms.locfileid: "68727271"
 
 Microsoft 反恶意软件包括实时保护、计划扫描、恶意软件修正、签名更新、引擎更新、示例报告和排除事件收集等功能。 对于与生产环境分开托管的环境，可以使用反恶意软件扩展来帮助保护 VM 和云服务。
 
-可将 Microsoft 反恶意软件和合作伙伴解决方案与 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/)集成，以方便部署和内置检测（警报和事件）。
+可将 Microsoft 反恶意软件和合作伙伴解决方案与 [Azure 安全中心](../../security-center/index.yml)集成，以方便部署和内置检测（警报和事件）。
 
 **最佳做法**：安装反恶意软件解决方案，以防范恶意软件。   
 **详细信息**：[安装 Microsoft 合作伙伴解决方案或 Microsoft 反恶意软件](../../security-center/security-center-install-endpoint-protection.md)

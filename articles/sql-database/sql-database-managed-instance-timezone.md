@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 07/05/2019
-ms.openlocfilehash: 33c844374d6d2b8e64cde6c7c9633e54a292d95f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/12/2019
+ms.openlocfilehash: 515e971214244cdd14955cc269a5f005cb93734f
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567282"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967924"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL 数据库托管实例中的时区
 
@@ -83,10 +83,7 @@ ms.locfileid: "68567282"
 
 ### <a name="point-in-time-restore"></a>时间点还原
 
-<del>执行时点还原时, 还原到的时间将解释为 UTC 时间。 此设置可避免因夏令时和其可能发生的更改而产生的歧义。<del>
-
- >[!WARNING]
-  > 当前行为并不在上面的语句的行内, 并且还原到的时间将按从其执行自动数据库备份的源托管实例的时区解释。 我们正在努力更正此行为, 以将给定的时间点解释为 UTC 时间。 有关更多详细信息, 请参阅[已知问题](sql-database-managed-instance-timezone.md#known-issues)。
+执行时间点还原时，要还原到的时间将解释为 UTC 时间。 这样, 就可以避免因夏令时而产生的任何歧义, 并避免其发生更改。
 
 ### <a name="auto-failover-groups"></a>自动故障转移组
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 0683c065285a6ddf8d966bbd3d22e88c39b34d5c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 640900458eccc36afe58cb148ffd7b94b43be879
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728806"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934916"
 ---
 # <a name="develop-a-secure-web-app"></a>开发安全的 web 应用
 
@@ -52,16 +52,16 @@ ms.locfileid: "68728806"
 
 该体系结构包括以下组件:
 
-- [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/)。 为应用程序体系结构提供网关和防火墙。
-- [Linux 上的 Azure Web 应用](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)。 提供容器运行时, 用于在 Linux 环境中运行 Python 应用。
-- [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)。 存储并加密应用的机密, 并管理其周围的访问策略创建。
+- [Azure 应用程序网关](../../application-gateway/index.yml)。 为应用程序体系结构提供网关和防火墙。
+- [Linux 上的 Azure Web 应用](../../app-service/containers/app-service-linux-intro.md)。 提供容器运行时, 用于在 Linux 环境中运行 Python 应用。
+- [Azure Key Vault](../../key-vault/index.yml)。 存储并加密应用的机密, 并管理其周围的访问策略创建。
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/)。 安全地存储应用的数据。
-- [Azure 安全中心](https://docs.microsoft.com/azure/security-center/)和[Azure 应用程序见解](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)。 提供对应用程序操作的监视和警报。
+- [Azure 安全中心](../../security-center/index.yml)和[Azure 应用程序见解](../../azure-monitor/app/app-insights-overview.md)。 提供对应用程序操作的监视和警报。
 
 ## <a name="threat-model"></a>威胁模型
 威胁建模是识别业务和应用程序的潜在安全威胁的过程, 然后确保适当的缓解计划已准备就绪。
 
-此示例使用[Microsoft Threat Modeling Tool](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)实现安全示例应用的威胁建模。 通过绘制组件和数据流的关系图, 你可以在开发过程的早期确定问题和威胁。 这会在以后节省时间和资金。
+此示例使用[Microsoft Threat Modeling Tool](threat-modeling-tool.md)实现安全示例应用的威胁建模。 通过绘制组件和数据流的关系图, 你可以在开发过程的早期确定问题和威胁。 这会在以后节省时间和资金。
 
 这是示例应用的威胁模型:
 
@@ -130,7 +130,7 @@ Azure Database for PostgreSQL 会自动将 PostgreSQL 数据库中的数据加�
 若要在包含安全功能的示例应用程序中部署资源, 需要为一些高级功能付费。 随着应用规模和 Azure 提供的免费层和试用版的升级, 你的成本可能会增加。 使用 Azure[定价计算器](https://azure.microsoft.com/pricing/calculator/)估算成本。
 
 ## <a name="deploy-the-solution"></a>部署解决方案
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>先决条件
 若要启动并运行应用程序, 需要安装以下工具:
 
 - 用于修改和查看应用程序代码的代码编辑器。[Visual Studio Code](https://code.visualstudio.com/)为开源选项。
@@ -349,19 +349,19 @@ $$ LANGUAGE PLPGSQL;
 ```
 
 
-有关如何为 PostgreSQL 设置 SSL 和证书颁发机构 (CA) 验证的详细信息, 请参阅[在 Azure Database for PostgreSQL 中配置 ssl 连接](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security)。
+有关如何为 PostgreSQL 设置 SSL 和证书颁发机构 (CA) 验证的详细信息, 请参阅[在 Azure Database for PostgreSQL 中配置 ssl 连接](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)。
 
 根证书包含在容器中。 获取证书所采取的步骤如下:
 
 1. 从[证书颁发机构](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)下载证书文件。
-2. [在计算机上下载并安装 OpenSSL](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security)。
+2. [在计算机上下载并安装 OpenSSL](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)。
 3. 解码证书文件:
 
    ```powershell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-若要详细了解如何配置 SSL security for PostgreSQL, 请[配置 Ssl 连接安全性](https://docs.microsoft.com/en-gb/azure/postgresql/concepts-ssl-connection-security)。
+若要详细了解如何配置 SSL security for PostgreSQL, 请[配置 Ssl 连接安全性](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)。
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>在 Linux 上部署 Azure Web 应用
 你可以在 Azure App Service 上轻松构建 Linux 服务, 因为 Azure 为 Python、Ruby、 C#和 Java 等广泛使用的语言提供了一组预构建的容器和映像。 Azure 还支持自定义容器, 它几乎可以在 Azure App Service 平台上运行所有编程语言。

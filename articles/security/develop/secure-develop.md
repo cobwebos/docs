@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1b2e6e0aa74c06afea09a67dbdf65ca47727b72e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c1c7dd0bd017852144139a841ff609dabf0f1a27
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780563"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928061"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 本文介绍了在开发云应用程序时要考虑的安全活动和控制措施。 介绍了在 Microsoft[安全开发生命周期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的实施和验证阶段中要考虑的安全问题和概念。 其目标是帮助你定义可用于开发更安全的应用程序的活动和 Azure 服务。
@@ -89,7 +89,7 @@ Azure Marketplace 提供[开发人员工具](https://azuremarketplace.microsoft.
 
 若要防御暴力破解和基于字典的猜测, 你必须实施强密码策略, 以确保用户创建复杂密码 (例如, 12 个字符的最小长度并要求字母数字和特殊字符)。
 
-您可以使用标识框架来创建和强制实施密码策略。 Azure AD B2C 提供[内置策略](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow)、[自助密码重置](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)等功能, 从而帮助你进行密码管理。
+您可以使用标识框架来创建和强制实施密码策略。 Azure AD B2C 提供[内置策略](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow)、[自助密码重置](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)等功能, 从而帮助你进行密码管理。
 
 若要防御默认帐户的攻击, 请验证所有密钥和密码是否可替换, 并确保在安装资源后生成或替换它们。
 
@@ -99,9 +99,9 @@ Azure Marketplace 提供[开发人员工具](https://azuremarketplace.microsoft.
 
 如果你的应用程序允许上[传文件](https://www.owasp.org/index.php/Unrestricted_File_Upload), 请考虑你可以对此风险活动采取一些预防措施。 在许多攻击中, 第一步是在受到攻击的系统中获取一些恶意代码。 使用文件上传可帮助攻击者实现此目的。 OWASP 提供验证文件的解决方案, 以确保要上载的文件是安全的。
 
-反恶意软件防护有助于识别和删除病毒、间谍软件和其他恶意软件。 可安装 [Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/fundamentals/antimalware)或 Microsoft 合作伙伴的终结点保护解决方案（[Trend Micro](https://www.trendmicro.com/azure/)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) 和 [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)）。
+反恶意软件防护有助于识别和删除病毒、间谍软件和其他恶意软件。 可安装 [Microsoft 反恶意软件](../fundamentals/antimalware.md)或 Microsoft 合作伙伴的终结点保护解决方案（[Trend Micro](https://www.trendmicro.com/azure/)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) 和 [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)）。
 
-[Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/fundamentals/antimalware)包括实时保护、计划扫描、恶意软件修正、签名更新、引擎更新、示例报告以及排除事件收集等功能。 可将 Microsoft 反恶意软件和合作伙伴解决方案与 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-partner-integration)集成，以方便部署和内置检测（警报和事件）。
+[Microsoft 反恶意软件](../fundamentals/antimalware.md)包括实时保护、计划扫描、恶意软件修正、签名更新、引擎更新、示例报告以及排除事件收集等功能。 可将 Microsoft 反恶意软件和合作伙伴解决方案与 [Azure 安全中心](../../security-center/security-center-partner-integration.md)集成，以方便部署和内置检测（警报和事件）。
 
 ### <a name="dont-cache-sensitive-content"></a>不缓存敏感内容
 
@@ -117,7 +117,7 @@ Azure Marketplace 提供[开发人员工具](https://azuremarketplace.microsoft.
 通过[Tinfoil security](https://www.tinfoilsecurity.com/)支持的漏洞扫描可用于 Azure App Service Web Apps。 [通过应用服务的 Tinfoil security 扫描](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)为开发人员和管理员提供了快速、集成且经济的方法来发现和解决漏洞, 使恶意执行组件可以利用它们。
 
 > [!NOTE]
-> 你还可以将[Tinfoil security 与 Azure AD 集成](https://docs.microsoft.com/azure/active-directory/saas-apps/tinfoil-security-tutorial)。 将 Tinfoil Security 与 Azure AD 集成可提供以下优势:
+> 你还可以将[Tinfoil security 与 Azure AD 集成](../../active-directory/saas-apps/tinfoil-security-tutorial.md)。 将 Tinfoil Security 与 Azure AD 集成可提供以下优势:
 >  - 在 Azure AD 中, 可以控制谁有权访问 Tinfoil Security。
 >  - 你的用户可以使用其 Azure AD 帐户自动登录到 Tinfoil Security (单一登录)。
 >  - 你可以在一个中心位置 (Azure 门户) 管理你的帐户。
@@ -128,7 +128,7 @@ Azure Marketplace 提供[开发人员工具](https://azuremarketplace.microsoft.
 
 DAST 不同于静态应用程序安全测试 (SAST)。 当代码未执行时, SAST 工具会分析源代码或编译的代码版本, 以找出安全漏洞。
 
-执行 DAST, 最好是使用安全专业人员 ([渗透测试人员](https://docs.microsoft.com/azure/security/fundamentals/pen-testing)或漏洞取值函数) 的帮助。 如果安全性专业人员不可用, 则可以使用 web 代理扫描程序和一些培训来亲自执行 DAST。 在初期插入 DAST 扫描器, 以确保不会将明显的安全问题引入代码。 有关 web 应用程序漏洞扫描程序的列表, 请参阅[OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools)站点。
+执行 DAST, 最好是使用安全专业人员 ([渗透测试人员](../fundamentals/pen-testing.md)或漏洞取值函数) 的帮助。 如果安全性专业人员不可用, 则可以使用 web 代理扫描程序和一些培训来亲自执行 DAST。 在初期插入 DAST 扫描器, 以确保不会将明显的安全问题引入代码。 有关 web 应用程序漏洞扫描程序的列表, 请参阅[OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools)站点。
 
 ### <a name="perform-fuzz-testing"></a>执行模糊测试
 
@@ -144,7 +144,7 @@ DAST 不同于静态应用程序安全测试 (SAST)。 当代码未执行时, SA
 
 ### <a name="perform-security-penetration-testing"></a>执行安全渗透测试
 
-确保应用程序的安全与测试任何其他功能一样重要。 将[渗透测试](https://docs.microsoft.com/azure/security/fundamentals/pen-testing)作为生成和部署过程的标准部分。 在部署的应用程序上计划定期安全测试和漏洞扫描, 并监视开放端口、终结点和攻击。
+确保应用程序的安全与测试任何其他功能一样重要。 将[渗透测试](../fundamentals/pen-testing.md)作为生成和部署过程的标准部分。 在部署的应用程序上计划定期安全测试和漏洞扫描, 并监视开放端口、终结点和攻击。
 
 ### <a name="run-security-verification-tests"></a>运行安全验证测试
 

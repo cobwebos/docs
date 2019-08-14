@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 747b279b38ec3b73f19194825195f1b3450d4514
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 38383685f74020f5208d42df4428f896931fbe2a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834857"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931789"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能 
 
@@ -49,7 +49,7 @@ ms.locfileid: "68834857"
 
 **生效日期**：2019年7月26日
 
-**受影响的终结点**：[1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)版和 v2.0[版](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+**受影响的终结点**：[1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)版和 v2.0[版](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
 
 **受影响的协议**：[客户端凭据 (仅限应用的令牌)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 
@@ -69,7 +69,7 @@ ms.locfileid: "68834857"
 
 ### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>重定向 Uri 现在可以包含查询字符串参数
 
-**生效日期**：2019年7月22日
+**生效日期**：2019 年 7 月 22 日
 
 **受影响的终结点**：v1.0 和 v2.0
 

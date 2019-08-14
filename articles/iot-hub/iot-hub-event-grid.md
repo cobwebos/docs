@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 73a9aebfd0c5338f63927860ce3f6c57b20428a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a357e403aba64a5d05e359bf1186b01f73146758
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754777"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934101"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
@@ -23,9 +23,9 @@ ms.locfileid: "66754777"
 
 ![Azure 事件网格体系结构](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
-## <a name="regional-availability"></a>区域可用性
+## <a name="regional-availability"></a>适用区域
 
-事件网格集成适用于支持事件网格的区域中的 IoT 中心。 设备遥测事件的所有设备事件都已公开上市。 设备遥测事件处于公共预览状态，在除美国东部、 美国西部、 欧洲西部的所有区域均提供[Azure 政府版](/azure/azure-government/documentation-government-welcome)， [Azure 中国 21Vianet](/azure/china)，和[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/). 有关区域的最新列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
+事件网格集成适用于支持事件网格的区域中的 IoT 中心。 除设备遥测事件外的所有设备事件均已公开发布。 设备遥测事件处于公共预览阶段, 在美国东部、美国西部、西欧、 [Azure 政府](/azure/azure-government/documentation-government-welcome)版、 [Azure 中国世纪互联](/azure/china)和[azure 德国](https://azure.microsoft.com/global-infrastructure/germany/)以外的所有区域提供。 有关区域的最新列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
 
 ## <a name="event-types"></a>事件类型
 
@@ -43,7 +43,7 @@ IoT 中心将发布以下事件类型：
 
 ## <a name="event-schema"></a>事件架构
 
-IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 可通过检查 eventType 属性是否以“Microsoft.Devices”开头来标识 IoT 中心事件  。 有关如何使用事件网格事件属性的详细信息，请参阅[事件网格事件架构](../event-grid/event-schema.md)。
+IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 可通过检查 eventType 属性是否以“Microsoft.Devices”开头来标识 IoT 中心事件。 有关如何使用事件网格事件属性的详细信息，请参阅[事件网格事件架构](../event-grid/event-schema.md)。
 
 ### <a name="device-connected-schema"></a>设备已连接架构
 
@@ -166,7 +166,7 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
 
 IoT 中心事件订阅可以根据事件类型、数据内容和使用者（即设备名称）来筛选事件。
 
-事件网格启用了基于事件类型、使用者和数据内容的[筛选](../event-grid/event-filtering.md)。 创建事件网格订阅时，可以选择订阅所选择的 IoT 事件。 事件网格中的使用者筛选器基于“开头为”（前缀）和“结尾为”（后缀）匹配进行筛选   。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。
+事件网格启用了基于事件类型、使用者和数据内容的[筛选](../event-grid/event-filtering.md)。 创建事件网格订阅时，可以选择订阅所选择的 IoT 事件。 事件网格中的使用者筛选器基于“开头为”（前缀）和“结尾为”（后缀）匹配进行筛选。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。
 
 IoT 事件使用者使用的格式：
 
@@ -174,9 +174,9 @@ IoT 事件使用者使用的格式：
 devices/{deviceId}
 ```
 
-事件网格还允许基于每个事件的属性（包括数据内容）进行筛选。 这允许你选择基于遥测消息的内容传送哪些事件。 请参阅[高级筛选](../event-grid/event-filtering.md#advanced-filtering)来查看示例。
+事件网格还允许基于每个事件的属性（包括数据内容）进行筛选。 这允许你选择基于遥测消息的内容传送哪些事件。 请参阅[高级筛选](../event-grid/event-filtering.md#advanced-filtering)来查看示例。 对于遥测消息正文的筛选, 必须在消息[系统属性](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)中将 contentType 设置为 JSON, 将 contentEncoding 设置为 utf-8。
 
-对于非遥测事件，例如 DeviceConnected、DeviceDisconnected、DeviceCreated 和 DeviceDeleted，在创建订阅时，可以使用事件网格筛选。 对于遥测事件，除了在事件网格中进行筛选之外，用户还可以通过消息路由查询基于设备孪生、消息属性和正文进行筛选。 我们将根据你对设备遥测的事件网格订阅在 IoT 中心内创建一个默认[路由](iot-hub-devguide-messages-d2c.md)。 此单一路由可以处理你的所有事件网格订阅。 若要在发送遥测数据之前筛选消息，可以更新你的[路由查询](iot-hub-devguide-routing-query-syntax.md)。 请注意，只有当消息正文为 JSON 时，才能将路由查询应用于消息正文。
+对于非遥测事件，例如 DeviceConnected、DeviceDisconnected、DeviceCreated 和 DeviceDeleted，在创建订阅时，可以使用事件网格筛选。 对于遥测事件，除了在事件网格中进行筛选之外，用户还可以通过消息路由查询基于设备孪生、消息属性和正文进行筛选。 我们将根据你对设备遥测的事件网格订阅在 IoT 中心内创建一个默认[路由](iot-hub-devguide-messages-d2c.md)。 此单一路由可以处理你的所有事件网格订阅。 若要在发送遥测数据之前筛选消息，可以更新你的[路由查询](iot-hub-devguide-routing-query-syntax.md)。 请注意，只有当消息正文为 JSON 时，才能将路由查询应用于消息正文。 还必须将 contentType 设置为 JSON, 并将 contentEncoding 设置为消息[系统属性](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)中的 utf-8。
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>设备已连接和设备已断开连接事件的限制
 

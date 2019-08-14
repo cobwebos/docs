@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 4b66d015e8a182e305a36dacaa2e082288a3e19e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 186ba03142e01c4b9340fc5b492621cc17575104
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840541"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934288"
 ---
 # <a name="introduction-to-deep-learning-vs-machine-learning"></a>深度学习和机器学习简介
 
@@ -78,7 +78,7 @@ ms.locfileid: "68840541"
 
 ## <a name="what-are-artificial-neural-networks"></a>什么是人工神经网络？
 
-人工神经网络是一种深度学习模型, 可通过人类大脑过程信息的生物处理方式网络来激发。 当前正在使用多种类型的人工神经网络。 下面讨论最受欢迎的人工神经网络 typologies。
+人工神经网络由已连接节点的层构成。 深度学习模型使用具有大量层的神经网络。 下面讨论最受欢迎的人工神经网络 typologies。
 
 ### <a name="feedforward-neural-network"></a>Feedforward 神经网络
 
