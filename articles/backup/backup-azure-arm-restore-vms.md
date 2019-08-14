@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 126e33d4bedb56eb479361f16c02e7e167e49392
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 41e01531535fe41fa894f8de3181a56885ab3bcf
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736696"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955071"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -29,8 +29,8 @@ Azure 备份提供多种方法用于还原 VM。
 **还原选项** | **详细信息**
 --- | ---
 **创建新 VM** | 从还原点快速创建并正常运行一个基本的 VM。<br/><br/> 可以为 VM 指定名称，选择要将其放入的资源组和虚拟网络 (VNet)，并为还原的 VM 指定存储帐户。
-**还原磁盘** | 还原某个 VM 磁盘，然后使用它来创建新的 VM。<br/><br/> Azure 备份提供一个模板来帮助你自定义和创建 VM。 <br/><br> 还原作业会生成一个模板，可以下载该模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> 磁盘将复制到指定的存储帐户。<br/><br/> 或者，可将磁盘附加到现有 VM，或使用 PowerShell 创建新的 VM。<br/><br/> 若要自定义 VM、添加在备份时不存在的配置设置，或添加必须使用模板或 PowerShell 配置的设置，则此选项非常有用。
-**替换现有** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 必须存在当前 VM。 若已删除 VM，则无法使用该选项。<br/><br/> Azure 备份将在替换磁盘前创建现有 VM 的快照，并将其存储在指定的暂存位置中。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 该快照将复制到保管库，并根据保留策略予以保留。 <br/><br/> 未加密的托管 VM 支持替换现有。 非托管磁盘、[通用 VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) 或[使用自定义映像创建的 VM](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) 不支持此选项。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br/><br/>
+**还原磁盘** | 还原 VM 磁盘, 然后可以使用该磁盘创建新的 VM。<br/><br/> Azure 备份提供一个模板来帮助你自定义和创建 VM。 <br/><br> 还原作业会生成一个模板，可以下载该模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> 磁盘将复制到指定的存储帐户。<br/><br/> 或者，可将磁盘附加到现有 VM，或使用 PowerShell 创建新的 VM。<br/><br/> 若要自定义 VM、添加在备份时不存在的配置设置，或添加必须使用模板或 PowerShell 配置的设置，则此选项非常有用。
+**替换现有** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 必须存在当前 VM。 如果已删除此选项, 则不能使用此选项。<br/><br/> Azure 备份将在替换磁盘前创建现有 VM 的快照，并将其存储在指定的暂存位置中。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 该快照将复制到保管库，并根据保留策略予以保留。 <br/><br/> 未加密的托管 VM 支持替换现有。 非托管磁盘、[通用 VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) 或[使用自定义映像创建的 VM](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) 不支持此选项。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br/><br/>
 
 
 > [!NOTE]
@@ -45,7 +45,7 @@ Azure 备份提供多种方法用于还原 VM。
 - **创建 VM**：在创建新的 VM 时，该 VM 将放置于指定的存储帐户中。
 - **还原磁盘**：当你还原磁盘时，该磁盘将复制到指定的存储帐户。 还原作业会生成一个模板，你可以下载该模板，并使用它来指定自定义的 VM 设置。 此模板放置于指定的存储帐户中。
 - **替换磁盘**：当你替换现有 VM 上的磁盘时，Azure 备份会在替换该磁盘前创建现有 VM 的快照。 该快照存储在指定的暂存位置（存储帐户）中。 此存储帐户用于在还原过程中临时存储快照，我们建议创建一个新帐户来执行此存储操作，该帐户随后可以被轻松删除。
-- **存储帐户位置**：存储帐户必须与保管库位于同一个区域中。 仅显示这些帐户。 如果该位置中没有任何存储帐户，你需要创建一个存储帐户。
+- **存储帐户位置**:存储帐户必须与保管库位于同一个区域中。 仅显示这些帐户。 如果该位置中没有任何存储帐户，你需要创建一个存储帐户。
 - **存储类型**：不支持 Blob 存储。
 - **存储冗余**：不支持区域冗余存储 (ZRS)。 帐户的复制和冗余信息显示在帐户名之后的括号内。 
 - **高级存储**：
@@ -55,7 +55,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 ## <a name="before-you-start"></a>开始之前
 
-若要还原 VM（创建新的 VM），请确保对“还原 VM”操作具有正确的基于角色的访问控制 (RBAC) [权限](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)。
+若要还原虚拟机 (创建新的 VM), 请确保为还原 VM 操作提供了正确的基于角色的访问控制 (RBAC)[权限](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)。
 
 如果没有权限，则可以[还原磁盘](#restore-disks)，然后在该磁盘还原后，可以[使用模板](#use-templates-to-customize-a-restored-vm)（在执行还原操作的过程中生成）来创建新的 VM。
 
@@ -86,7 +86,7 @@ Azure 备份提供多种方法用于还原 VM。
 作为[还原选项](#restore-options)之一，你可以使用基本的设置从还原点快速创建 VM。
 
 1. 在“还原配置” > “新建 > 还原类型”中，选择“创建虚拟机”。
-2. 在“虚拟机名称”中，指定订阅中不存在的 VM。
+2. 在 "**虚拟机名称**" 中, 指定订阅中不存在的虚拟机。
 3. 在“资源组”中，为新 VM 选择现有资源组，或创建具有全局唯一名称的新资源组。 如果分配的名称已存在，则 Azure 将为该组分配与 VM 相同的名称。
 4. 在“虚拟网络”中，选择将放置 VM 的 VNet。 将显示与订阅关联的所有 VNet。 选择子网。 默认情况下选择第一个子网。
 5. 在“存储位置”中，为该 VM 指定存储帐户。 [了解详细信息](#storage-accounts)。
@@ -174,7 +174,7 @@ Azure 备份提供多种方法用于还原 VM。
 
     ![保管库中的 VM 列表](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
 
-2. 若要监视还原进度，请单击状态为“正在进行”的任何还原作业。 此时会出现进度栏，其中显示了有关还原进度的信息：
+2. 若要监视还原进度，请单击状态为“正在进行”的任何还原作业。 此时将显示进度栏, 其中显示了有关还原进度的信息:
 
     - **还原估计所需时间**：最初提供完成还原操作所需的时间。 随着操作的不断进行，该时间会不断减少，还原操作完成后，将显示为 0。
     - **还原百分比**。 显示还原操作的完成百分比。

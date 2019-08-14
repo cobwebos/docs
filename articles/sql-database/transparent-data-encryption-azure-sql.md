@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 04/19/2019
-ms.openlocfilehash: 1d5baf4b7f8a28638c5dbd50fb407035a5b9ea89
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/12/2019
+ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566118"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967904"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL 数据库和数据仓库的透明数据加密
 
@@ -37,7 +37,7 @@ ms.locfileid: "68566118"
 Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还原。
 
 > [!IMPORTANT]
-> 默认情况下，会使用服务托管的透明数据加密将所有新建的 SQL 数据库加密。 默认情况下，Azure SQL 托管实例数据库、2017 年 5 月之前创建的现有 SQL 数据库以及通过还原、异地复制和数据库副本创建的 SQL 数据库均不加密。
+> 默认情况下, 使用服务托管的透明数据加密对所有新创建的 SQL 数据库和托管实例的数据库进行加密。 默认情况下, 不会加密在2017年5月之前创建的现有 SQL 数据库和通过还原、异地复制和数据库副本创建的 SQL 数据库。 默认情况下, 不会加密在2019年2月之前创建的现有托管实例数据库。 通过还原创建托管实例数据库将从源继承加密状态。
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>客户管理的透明数据加密 - 创建自己的密钥
 

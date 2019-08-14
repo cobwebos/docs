@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d7a039f25339d91d77d5b6924674ea36a16c15b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e1521d2b3d47667466636a1ac15f107826e40942
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880819"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942934"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>添加非 Microsoft 帐户
 
@@ -33,6 +33,9 @@ ms.locfileid: "68880819"
 1. 先登录帐户，再使用设备或电脑启用双因素验证。
 
 2. 将帐户添加到 Microsoft Authenticator 应用。 在此过程中，系统可能会要求扫描 QR 码。
+
+    >[!Note]
+    >如果这是你第一次设置 Microsoft Authenticator 应用程序, 你可能会收到询问是允许应用程序访问你的相机 (iOS) 还是允许应用拍摄图片并录制视频 (Android) 的提示。 你必须选择 "**允许**", 以便验证器应用可以访问你的相机, 以便在下一步中对 QR 代码进行图片。 如果不允许相机, 仍可以设置验证器应用, 但需要手动添加代码信息。 有关如何手动添加代码的信息, 请参阅请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
 
 本文介绍的是 Facebook 帐户、Google 帐户、GitHub 帐户和 Amazon 帐户的添加过程，但对于其他任何应用（如 Instagram、Netflix 或 Adobe），此过程都是一样的。
 
@@ -168,9 +171,6 @@ ms.locfileid: "68880819"
     此时，页面更改为显示 QR 码。 请勿关闭此页。
 
 5. 打开 Microsoft Authenticator 应用，选择右上角“自定义和控制”图标中的“添加帐户”，再选择“其他帐户(Google、Facebook 等)”。
-
-    >[!Note]
-    >如果这是你第一次设置 Microsoft Authenticator 应用程序, 你可能会收到询问是允许应用程序访问你的相机 (iOS) 还是允许应用拍摄图片并录制视频 (Android) 的提示。 你必须选择 "**允许**", 以便验证器应用可以访问你的相机, 以便在下一步中对 QR 代码进行图片。 如果不允许相机, 仍可以设置验证器应用, 但需要手动添加代码信息。 有关如何手动添加代码的信息, 请参阅请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
 
 6. 使用设备的照相机扫描电脑上“选择如何接收验证码”页显示的 QR 码。
 

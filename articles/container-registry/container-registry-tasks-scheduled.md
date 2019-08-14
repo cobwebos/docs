@@ -8,16 +8,16 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 680f0268e85d41f8061dc96db1779ab6c22b944a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 6237b8056262abe1f8cea28bebd6b3bad97e0f7e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310548"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967584"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>按定义的计划运行 ACR 任务
 
-本文介绍如何按计划运行[ACR 任务](container-registry-tasks-overview.md)。 通过设置一个或多个*计时器触发器*来计划任务。 
+本文介绍如何按计划运行[ACR 任务](container-registry-tasks-overview.md)。 通过设置一个或多个*计时器触发器*来计划任务。
 
 计划任务适用于如下方案:
 
@@ -29,18 +29,18 @@ ms.locfileid: "68310548"
 
 ## <a name="about-scheduling-a-task"></a>关于计划任务
 
-* **使用 cron 表达式触发**-任务的计时器触发器使用*cron 表达式*。 表达式是一个字符串, 其中包含五个字段, 用于指定要触发任务的分钟、小时、日、月和日。 支持频率为每分钟一次。 
+* **使用 cron 表达式触发**-任务的计时器触发器使用*cron 表达式*。 表达式是一个字符串, 其中包含五个字段, 用于指定要触发任务的分钟、小时、日、月和日。 支持频率为每分钟一次。
 
   例如, 表达式`"0 12 * * Mon-Fri"`会在每个工作日的中午 UTC 触发任务。 请参阅本文稍后所述的[详细信息](#cron-expressions)。
-* **多个计时器触发器**-允许将多个计时器添加到任务, 前提是计划不同。 
+* **多个计时器触发器**-允许将多个计时器添加到任务, 前提是计划不同。
     * 创建任务时指定多个计时器触发器, 或稍后添加它们。
     * 选择性地命名触发器以便于管理, 或者 ACR 任务将提供默认的触发器名称。
-    * 如果计时器计划每次重叠, 则 ACR 任务会在计划的时间为每个计时器触发任务。 
+    * 如果计时器计划每次重叠, 则 ACR 任务会在计划的时间为每个计时器触发任务。
 * **其他任务触发器**-在计时器触发的任务中, 还可以基于[源代码提交](container-registry-tutorial-build-task.md)或[基本映像更新](container-registry-tutorial-base-image-update.md)启用触发器。 与其他 ACR 任务一样, 你也可以[手动触发][az-acr-task-run]计划任务。
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>使用计时器触发器创建任务
 
-使用[az acr task create][az-acr-task-create]命令创建任务时, 可以选择添加计时器触发器。 `--schedule`添加参数并为计时器传递 cron 表达式。 
+使用[az acr task create][az-acr-task-create]命令创建任务时, 可以选择添加计时器触发器。 `--schedule`添加参数并为计时器传递 cron 表达式。
 
 作为一个简单的示例, 下面的命令将从`hello-world`每天 21:00 UTC 开始, 从 Docker 中心运行映像。 该任务在没有源代码上下文的情况下运行。
 
@@ -86,8 +86,8 @@ This message shows that your installation appears to be working correctly.
 在计划的时间之后, 运行[az acr task list-][az-acr-task-list-runs] run 命令, 以验证计时器是否按预期触发任务:
 
 ```azurecli
-az acr task list runs --name mytask --registry myregistry --output table
-``` 
+az acr task list-runs --name mytask --registry myregistry --output table
+```
 
 当计时器成功时, 输出类似于以下内容:
 
@@ -98,7 +98,7 @@ RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURAT
 cf2b      mytask   linux       Succeeded  Timer      2019-06-28T21:00:23Z  00:00:06
 cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00:06
 ```
-            
+
 ## <a name="manage-timer-triggers"></a>管理计时器触发器
 
 使用[az acr task timer][az-acr-task-timer]命令可以管理 acr 任务的计时器触发器。
@@ -150,7 +150,7 @@ az acr task timer list --name mytask --registry myregistry
 ]
 ```
 
-### <a name="remove-a-timer-trigger"></a>删除计时器触发器 
+### <a name="remove-a-timer-trigger"></a>删除计时器触发器
 
 使用[az acr task timer remove][az-acr-task-timer-remove]命令从任务中删除计时器触发器。 下面的示例从*mytask*中删除*timer2*触发器:
 
@@ -174,11 +174,11 @@ ACR 任务使用[NCronTab](https://github.com/atifaziz/NCrontab)库来解释 cro
 
 每个字段可以具有下列类型之一的值：
 
-|type  |示例  |何时触发  |
+|类型  |示例  |何时触发  |
 |---------|---------|---------|
 |一个具体值 |<nobr>"5 * * * *"</nobr>|每小时的时间晚5分钟|
 |所有值 (`*`)|<nobr>"* 5 * * *"</nobr>|一小时中每分钟开始 5:00 UTC (每日60次)|
-|一个范围（`-` 运算符）|<nobr>"0 1-3 * * *"</nobr>|每天3次, 1:00, 2:00, 3:00 UTC|  
+|一个范围（`-` 运算符）|<nobr>"0 1-3 * * *"</nobr>|每天3次, 1:00, 2:00, 3:00 UTC|
 |一组值（`,` 运算符）|<nobr>"20, 30, 40 * * * *"</nobr>|每小时3次, 20 分钟, 30 分钟, 超过40分钟|
 |一个间隔值（`/` 运算符）|<nobr>"*/10 * * * *"</nobr>|每小时6次, 在10分钟, 20 分钟后, 过去一小时
 

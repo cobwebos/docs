@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b3e4cc5ba4bc0173721947bd1e1a680ca7b3a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85783339c7d1348f598f924f14d9b40cd0c8cd22
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60869824"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967168"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>教程：使用 Azure Active Directory 为 ServiceNow 配置自动用户预配
 
@@ -30,7 +30,7 @@ ms.locfileid: "60869824"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 ServiceNow 的集成，需做好以下准备：
 
@@ -44,8 +44,7 @@ ms.locfileid: "60869824"
 测试本教程中的步骤应遵循以下建议：
 
 - 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
-
+- 如果没有 Azure AD 试用环境, 可以获取[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="assigning-users-to-servicenow"></a>将用户分配到 ServiceNow
 
@@ -57,6 +56,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 > [!IMPORTANT]
 >*   建议将单个 Azure AD 用户分配到 ServiceNow 以测试预配配置。 其他用户和/或组可以稍后分配。
 >*   将用户分配到 ServiceNow 时，必须选择有效用户角色。 “默认访问权限”角色不可用于预配。
+>*   有关如何在 Azure AD 中创建和配置角色的详细信息, 请参阅此[链接](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)
 
 ## <a name="enable-automated-user-provisioning"></a>启用自动化用户预配
 
@@ -67,39 +67,39 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="configure-automatic-user-account-provisioning"></a>配置用户帐户自动预配
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分  。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
-1. 如果已为 ServiceNow 配置单一登录，请使用搜索字段搜索 ServiceNow 实例。 否则，请选择“添加”并在应用程序库中搜索“ServiceNow”   。 从搜索结果中选择 ServiceNow，并将其添加到应用程序列表。
+1. 如果已为 ServiceNow 配置单一登录，请使用搜索字段搜索 ServiceNow 实例。 否则，请选择“添加”并在应用程序库中搜索“ServiceNow”。 从搜索结果中选择 ServiceNow，并将其添加到应用程序列表。
 
-1. 选择 ServiceNow 实例，然后选择“预配”选项卡  。
+1. 选择 ServiceNow 实例，然后选择“预配”选项卡。
 
-1. 将预配模式  设置为“自动”  。 
+1. 将预配模式设置为“自动”。 
 
     ![预配](./media/servicenow-provisioning-tutorial/provisioning.png)
 
 1. 在“管理员凭据”部分中，执行以下步骤：
    
-    a. 在“ServiceNow 实例名称”  文本框中，键入 ServiceNow 实例名称。
+    a. 在“ServiceNow 实例名称”文本框中，键入 ServiceNow 实例名称。
 
-    b. 在“ServiceNow 管理员用户名”  文本框中，键入管理员的用户名。
+    b. 在“ServiceNow 管理员用户名”文本框中，键入管理员的用户名。
 
-    c. 在“ServiceNow 管理员密码”  文本框中，键入管理员的密码。
+    c. 在“ServiceNow 管理员密码”文本框中，键入管理员的密码。
 
-1. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 ServiceNow 应用  。 如果连接失败，请确保 ServiceNow 帐户具有团队管理员权限，并重试“管理员凭据”  步骤。
+1. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 ServiceNow 应用。 如果连接失败，请确保 ServiceNow 帐户具有团队管理员权限，并重试“管理员凭据”步骤。
 
-1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框  。
+1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框。
 
-1. 单击“保存”  。
+1. 单击“保存”。
 
-1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 ServiceNow”  。
+1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 ServiceNow”。
 
-1. 在“属性映射”部分中，查看从 Azure AD 同步到 ServiceNow 的用户属性  。 选为“匹配”属性的特性用于匹配 ServiceNow 中的用户帐户以执行更新操作  。 选择“保存”按钮以提交任何更改。
+1. 在“属性映射”部分中，查看从 Azure AD 同步到 ServiceNow 的用户属性。 选为“匹配”属性的特性用于匹配 ServiceNow 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-1. 若要为 ServiceNow 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改  为“启用” 
+1. 若要为 ServiceNow 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-1. 单击“保存”  。
+1. 单击“保存”。
 
-此操作会对“用户和组”部分中分配到 ServiceNow 的任何用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”  部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 ServiceNow 应用执行的所有操作。
+此操作会对“用户和组”部分中分配到 ServiceNow 的任何用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 ServiceNow 应用执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 

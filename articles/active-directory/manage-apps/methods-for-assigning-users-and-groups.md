@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8163b2261601b701913e07d703f5db0ac6fa7c0
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 13c9003baaca11dce5a2192a8183674faddfa6dc
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688077"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967299"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>向 Azure Active Directory 中的应用程序分配用户和组
 本文介绍如何将用户或组分配到 Azure Active Directory (Azure AD) 中的应用程序。 首先必须将用户分配给应用程序，然后管理员才能授予这些用户访问权限以执行以下操作：
@@ -82,7 +82,7 @@ ms.locfileid: "68688077"
 
 15. 单击“分配”按钮，将应用程序分配给选定用户。
 
-在一段很短的时间后，所选用户能够使用解决方案描述部分中所述的方法启动这些应用程序。
+一小段时间后, 所选用户将能够使用解决方案描述部分中所述的方法启动这些应用程序。
 
 ## <a name="assign-groups"></a>分配组
 
@@ -120,7 +120,7 @@ ms.locfileid: "68688077"
 
 15. 单击“分配”按钮，将应用程序分配给所选组。
 
-在一段很短的时间后，所选组中的用户能够使用解决方案描述部分中所述的方法启动这些应用程序。 如果是动态组，则这些分配组中的用户显示分配时可能会出现一些额外的处理延迟。
+一小段时间后, 所选组中的用户将能够使用解决方案描述部分中所述的方法启动这些应用程序。 如果是动态组，则这些分配组中的用户显示分配时可能会出现一些额外的处理延迟。
 
 ## <a name="enable-self-service-application-access"></a>启用自助应用程序访问
 
@@ -165,7 +165,7 @@ ms.locfileid: "68688077"
 
 完成自助应用程序配置后，用户可以导航到其[应用程序访问面板](https://myapps.microsoft.com/)，单击“+添加”按钮以查找已启用自助访问的应用。 业务审批人还可以在其[应用程序访问面板](https://myapps.microsoft.com/)中看到通知。 可以启用电子邮件，在用户请求需要审批人批准的应用程序的访问权限时，向审批人发送电子邮件通知。 
 
-这些批准仅支持单个审批工作流，这意味着如果指定了多个审批人，任何一个审批人都可以批准对该应用程序的访问。
+这些批准仅支持单个审批工作流，意味着如果指定多个审批人，任何一个审批人都可以批准对该应用程序的访问。
 
 ## <a name="next-steps"></a>后续步骤
 [使用应用程序代理为应用提供单一登录](application-proxy-configure-single-sign-on-with-kcd.md)

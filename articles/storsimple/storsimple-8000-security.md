@@ -14,14 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 734b0cf9373ea98ab33c06b45ad53b46a3355dd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31c432b884ce92c508dd7f893c12ba13acff28e8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62117019"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963519"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概述
 
@@ -236,7 +238,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **问：** 我丢失了服务数据加密密钥。 我该怎么办？
 
-**答:** 请联系 Microsoft 支持。 支持部门可以登录到设备上的支持会话并帮助你获取密钥（前提是至少一台设备为联机状态）。 获取服务数据加密密钥后，应立即更改该密钥以保证仅自己知道新的密钥。 有关说明，请转到：
+**答:** 请与 Microsoft 技术支持联系。 支持部门可以登录到设备上的支持会话并帮助你获取密钥（前提是至少一台设备为联机状态）。 获取服务数据加密密钥后，应立即更改该密钥以保证仅自己知道新的密钥。 有关说明，请转到：
 
 * [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
@@ -256,7 +258,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 * [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [为 StorSimple 设备配置 CHAP](storsimple-8000-configure-chap.md)
 
-**问：** 我想要将 StorSimple Snapshot Manager 密码提供给连接到 StorSimple 设备的主机，但却想不起该密码。 我该怎么办？
+**问：** 我想要将 StorSimple Snapshot Manager 密码提供给连接到 StorSimple 设备的主机，但却想不起该密码。 我可以做什么?
 
 **答:** 如果忘记了密码，应该创建一个新密码。 然后务必通知所有现有用户密码已更改，要求他们更新客户端以使用新密码。 有关说明，请转到：
 

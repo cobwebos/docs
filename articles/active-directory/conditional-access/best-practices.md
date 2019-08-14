@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08be09f7bee3aa17ff9d1baae4271e994fa235cb
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248883"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963445"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问的最佳做法
 
@@ -35,11 +35,11 @@ ms.locfileid: "68248883"
 
 若要使策略发挥作用，必须进行下列配置：
 
-| 对象           | 方式                                  | Why |
+| 内容           | 方式                                  | Why |
 | :--            | :--                                  | :-- |
-| 云应用  |选择一个或多个应用。  | 条件性访问策略的目标是使你能够控制授权用户访问云应用的方式。|
-| 用户和组  | 至少选择一个已经授权的用户或组来访问所选云应用。 | 永远不会触发未分配用户和组的条件性访问策略。 |
-| 访问控制  | 至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。 |
+| 云应用 |选择一个或多个应用。  | 条件性访问策略的目标是使你能够控制授权用户访问云应用的方式。|
+| 用户和组 | 至少选择一个已经授权的用户或组来访问所选云应用。 | 永远不会触发未分配用户和组的条件性访问策略。 |
+| 访问控制 | 至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。 |
 
 ## <a name="what-you-should-know"></a>要点
 
@@ -50,7 +50,8 @@ ms.locfileid: "68248883"
 所有策略都是在两个阶段中强制实施的：
 
 - 在**第一个**阶段中，将对所有策略进行评估并收集不满足的所有访问控制。 
-- 在**第二个**阶段中，将提示你去满足尚未满足的要求。 如果任何一个策略阻止访问, 则会阻止并且不会提示你满足其他策略控制。 如果策略阻止你, 则系统会提示你按以下顺序满足其他策略控制:
+
+- 在**第二个**阶段中，将提示你去满足尚未满足的要求。 如果任何一个策略阻止访问, 则会阻止并且不会提示你满足其他策略控制。 如果没有任何策略阻止你, 则系统会提示你按以下顺序满足其他策略控制:
 
    ![顺序](./media/best-practices/06.png)
     

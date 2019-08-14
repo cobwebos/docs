@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 08/09/2019
 ms.author: victorh
-ms.openlocfilehash: 89b50cff2d46f8c92c09653aeaac49551c97e9c6
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 9a3cdb846921c2d73dd2cca5d679663c1ba9e192
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314467"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946898"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS 别名记录概述
 
@@ -29,7 +29,7 @@ Azure DNS 区域中的以下记录类型支持别名记录集：
 
 ## <a name="capabilities"></a>功能
 
-- **从 DNS A/AAAA 记录集指向公共 IP 资源**。 可以创建一个 A/AAAA 记录集，并使其成为指向公共 IP 资源的别名记录集。 如果公共 IP 地址更改或被删除, 则 DNS 记录集会自动更改。 这可以避免出现指向不正确 IP 地址的无关联 DNS 记录。
+- **从 DNS A/AAAA 记录集指向公共 IP 资源**。 你可以创建/AAAA 记录集, 并将其设置为指向公共 IP 资源 (标准或基本) 的别名记录集。 如果公共 IP 地址更改或被删除, 则 DNS 记录集会自动更改。 这可以避免出现指向不正确 IP 地址的无关联 DNS 记录。
 
    每个资源当前限制为20个别名记录集。
 

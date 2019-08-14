@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 0c30225e9b5412fe1515e8503d1134dcad44871f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6b127738d4be79c30d1791d7313c0f8f7eacaf36
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879977"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985137"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -241,7 +241,7 @@ azcopy login --identity --identity-resource-id "<resource-id>"
 azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
-若要了解有关 SAS 令牌以及如何获取 SAS 令牌的详细信息, 请参阅[使用共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)。
+若要了解有关 SAS 令牌以及如何获取 SAS 令牌的详细信息, 请参阅[使用共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)。
 
 ## <a name="transfer-files"></a>传输文件
 

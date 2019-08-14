@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ce326d7284e22a8734f6be671a277795ba659522
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 6cbddfc5e529bc48e08407796024e5232d1a22e8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720529"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966367"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 复制数据
-> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 >
 > * [版本 1](v1/data-factory-onprem-teradata-connector.md)
 > * [当前版本](connector-teradata.md)
@@ -41,9 +41,11 @@ ms.locfileid: "68720529"
 >
 > 在发布自承载集成运行时 v 3.18 之后, Azure 数据工厂将升级 Teradata 连接器。 仍支持使用以前的 Teradata 连接器的任何现有工作负荷。 不过, 对于新的工作负荷, 最好使用新的工作负荷。 请注意, 新路径需要一组不同的链接服务、数据集和复制源。 有关配置的详细信息, 请参阅以下各节。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-如果你的 Teradata 不可公开访问, 则需要设置[自承载集成运行时](create-self-hosted-integration-runtime.md)。 集成运行时提供内置的 Teradata 驱动程序, 从版本3.18 开始。 无需手动安装任何驱动程序。 驱动程序需要自承载C++集成运行时计算机上的 "Visual 可再发行2012更新 4"。 如果尚未安装, 请从[此处](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)下载。
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+集成运行时提供内置的 Teradata 驱动程序, 从版本3.18 开始。 无需手动安装任何驱动程序。 驱动程序需要自承载C++集成运行时计算机上的 "Visual 可再发行2012更新 4"。 如果尚未安装, 请从[此处](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)下载。
 
 对于早于3.18 的任何自承载集成运行时版本, 请在集成运行时计算机上安装[Teradata 的 .Net Data Provider for](https://go.microsoft.com/fwlink/?LinkId=278886)14 或更高版本。 
 
@@ -61,9 +63,9 @@ Teradata 链接服务支持以下属性:
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为**Teradata**。 | 是 |
 | connectionString | 指定连接到 Teradata 数据库实例所需的信息。 请参阅以下示例。<br/>你还可以将密码放在 Azure Key Vault 中, 并将`password`配置从连接字符串中提取出来。 有关更多详细信息, 请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
-| userName | 指定连接到 Teradata 数据库的用户名。 当使用 Windows 身份验证时适用。 | 否 |
-| 密码 | 指定为 "用户名" 指定的用户帐户的密码。 你还可以选择[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 <br>当使用 Windows 身份验证或在 Key Vault 中引用密码进行基本身份验证时适用。 | 否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 需要自承载集成运行时, 如[先决条件](#prerequisites)中所述。 |是 |
+| username | 指定连接到 Teradata 数据库的用户名。 当使用 Windows 身份验证时适用。 | 否 |
+| password | 指定为 "用户名" 指定的用户帐户的密码。 你还可以选择[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 <br>当使用 Windows 身份验证或在 Key Vault 中引用密码进行基本身份验证时适用。 | 否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |是 |
 
 **使用基本身份验证的示例**
 
@@ -140,7 +142,7 @@ Teradata 链接服务支持以下属性:
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为`TeradataTable`。 | 是 |
-| 数据库 | Teradata 数据库的名称。 | 否（如果指定了活动源中的“query”） |
+| database | Teradata 数据库的名称。 | 否（如果指定了活动源中的“query”） |
 | 表 | Teradata 数据库中的表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例：**
@@ -184,11 +186,10 @@ Teradata 链接服务支持以下属性:
 
 本部分提供 Teradata 源支持的属性列表。 有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)。 
 
-### <a name="teradata-as-a-source-type"></a>Teradata 作为源类型
+### <a name="teradata-as-source"></a>以 Teradata 作为源
 
-> [!TIP]
->
-> 若要通过使用数据分区有效地从 Teradata 加载数据, 请参阅[并行复制 From Teradata](#parallel-copy-from-teradata)部分。
+>[!TIP]
+>若要通过使用数据分区有效地从 Teradata 加载数据, 请参阅[并行复制 From Teradata](#parallel-copy-from-teradata)部分。
 
 若要从 Teradata 复制数据, 复制活动**源**部分支持以下属性:
 
@@ -200,7 +201,7 @@ Teradata 链接服务支持以下属性:
 | partitionSettings | 指定数据分区设置的组。 <br>当 partition 选项不`None`为时应用。 | 否 |
 | partitionColumnName | 指定**整数类型**的源列名称, 将由范围分区用于并行复制。 如果未指定此参数, 则将自动检测该表的主键, 并将其用作分区列。 <br>当 partition 选项为`Hash`或`DynamicRange`时应用。 如果使用查询来检索源数据, 请在 where 子句`?AdfHashPartitionCondition`中`?AdfRangePartitionColumnName`使用挂钩或。 请参阅[并行复制 From Teradata](#parallel-copy-from-teradata)部分中的示例。 | 否 |
 | partitionUpperBound | 要向其复制数据的分区列的最大值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在`?AdfRangePartitionUpbound` WHERE 子句中挂接。 有关示例, 请参阅[从 Teradata 并行复制](#parallel-copy-from-teradata)部分。 | 否 |
-| PartitionLowerBound | 要向其复制数据的分区列的最小值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionLowbound`中挂接。 有关示例, 请参阅[从 Teradata 并行复制](#parallel-copy-from-teradata)部分。 | 否 |
+| partitionLowerBound | 要向其复制数据的分区列的最小值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionLowbound`中挂接。 有关示例, 请参阅[从 Teradata 并行复制](#parallel-copy-from-teradata)部分。 | 否 |
 
 > [!NOTE]
 >
@@ -294,7 +295,7 @@ Teradata 链接服务支持以下属性:
 | ByteInt |Int16 |
 | 字符 |String |
 | Clob |String |
-| Date |日期时间 |
+| Date |DateTime |
 | Decimal |Decimal |
 | Double |Double |
 | Graphic |不受支持。 在源查询中应用显式强制转换。 |
@@ -321,8 +322,8 @@ Teradata 链接服务支持以下属性:
 | SmallInt |Int16 |
 | Time |TimeSpan |
 | Time With Time Zone |TimeSpan |
-| 时间戳 |日期时间 |
-| Timestamp With Time Zone |日期时间 |
+| 时间戳 |DateTime |
+| Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |
 | VarChar |String |
 | VarGraphic |不受支持。 在源查询中应用显式强制转换。 |

@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: cd53e1386d9d6f2a38beb1661554c8cc9116169d
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494863"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950140"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器查询 Azure Data Lake 中的数据 (预览版)
 
@@ -45,8 +45,11 @@ Azure 数据资源管理器与 Azure Blob 存储和 Azure Data Lake Storage Gen2
     dataformat=csv (h@'http://storageaccount.blob.core.windows.net/container1;secretKey') 
     with (compressed = true)  
     ```
-
-    此查询创建每日分区*container1/yyyy/MM/dd/all_exported_blobs*。 更精细的分区需要提高性能。 例如, 对具有每月分区表的外部表进行查询时, 其性能比包含月度分区表的查询更好。
+    
+    > [!NOTE]
+    > * 更精细的分区需要提高性能。 例如, 对于具有每月分区表的外部表的查询, 性能比包含月度分区表的查询更好。
+    > * 使用分区定义外部表时, 存储结构应是相同的。
+例如, 如果使用 yyyy/MM/dd 格式 (默认值) 将表定义为 DateTime 分区, 则 URI 存储文件路径应为*container1/yyyy/MM/dd/all_exported_blobs*。 
 
 1. 外部表显示在 Web UI 的左窗格中
 
@@ -56,7 +59,7 @@ Azure 数据资源管理器与 Azure Blob 存储和 Azure Data Lake Storage Gen2
 
 您可以使用 json 格式创建外部表。 有关详细信息, 请参阅[外部表命令](/azure/kusto/management/externaltables)
 
-1. 使用命令创建名为 ExternalTableJson 的表:  `.create external table`
+1. 使用命令创建名为 ExternalTableJson 的表: `.create external table`
 
     ```kusto
     .create external table ExternalTableJson (rownumber:int, rowguid:guid) 

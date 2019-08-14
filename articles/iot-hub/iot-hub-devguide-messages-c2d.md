@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 4b8df538110f6c0b17a1ed37a2a6063a5b89a6e4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d4a51a44b48e94669e92a9d525c1b0966df53c18
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880986"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68964132"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>从 IoT 中心发送云到设备的消息
 
@@ -82,10 +82,6 @@ IoT 中心服务向设备发送消息时，该服务会将消息状态设置为�
 
 如果 **Ack** 值为 *full*，且未收到反馈消息，则意味着反馈消息已过期。 该服务无法了解原始消息的经历。 实际上，服务应该确保它可以在反馈过期之前对其进行处理。 最长过期时间是两天，因此当发生故障时，有时间让服务再次运行。
 
-> [!NOTE]
-> 删除设备后, 也会删除任何挂起的反馈。
->
-
 如[终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点 */messages/servicebound/feedback* 以消息方式传送反馈。 接收反馈的语义与云到设备消息的语义相同。 可能的话，消息反馈将放入单个消息中，其格式如下：
 
 | 属性     | 描述 |
@@ -125,6 +121,12 @@ IoT 中心服务向设备发送消息时，该服务会将消息状态设置为�
   ...
 ]
 ```
+
+**已删除设备的挂起反馈**
+
+删除设备时, 也会删除任何挂起的反馈。 设备反馈按批次发送。 如果设备在确认收到消息后和下一次反馈批次准备时, 在 "窄" 窗口 (通常不到1秒) 内删除设备, 则不会进行反馈。
+
+你可以通过等待一段时间等待等待反馈在删除设备之前到达, 来解决此问题。 删除设备后, 应假定会丢失相关的消息反馈。
 
 ## <a name="cloud-to-device-configuration-options"></a>云到设备的配置选项
 

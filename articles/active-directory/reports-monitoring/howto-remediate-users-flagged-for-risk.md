@@ -2,7 +2,7 @@
 title: 在 Azure Active Directory 门户中标记为有风险的用户 |Microsoft Docs
 description: 了解 Azure Active Directory 门户中“标记为风险用户”的用户的安全报告
 services: active-directory
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d02c5484ea4cce2953eac6b1b7b26a17c142bc
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d1412cacd453de01f1937fbcf5e712afdac88def
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276549"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989698"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>修正 Azure Active Directory 门户中“标记为风险用户”的用户
 
@@ -48,12 +48,12 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 若要访问 Microsoft 365 管理中心中**标记为风险**报告的用户:
 
-1.  在左侧导航菜单中，选择“管理中心”  。 
-2.  选择“Azure AD”  。
+1.  在左侧导航菜单中，选择“管理中心”。 
+2.  选择“Azure AD”。
 3.  登录到 **Azure Active Directory 管理中心**。
-4.  如果页面顶部显示一个横幅，要求“查看新门户”，请选择相应的链接。 
-4.  在左侧导航菜单中，选择“Azure Active Directory”。  
-5.  在导航窗格中，从“安全性”部分中选择“已标记为存在风险的用户”。  
+4.  如果页面顶部显示一个横幅，要求“查看新门户”，请选择相应的链接。
+4.  在左侧导航菜单中，选择“Azure Active Directory”。 
+5.  在导航窗格中，从“安全性”部分中选择“已标记为存在风险的用户”。
 
 ## <a name="remediation-actions"></a>修正操作
 

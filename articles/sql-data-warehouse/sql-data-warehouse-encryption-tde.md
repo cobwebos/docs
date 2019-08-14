@@ -11,10 +11,10 @@ ms.date: 04/30/2019
 ms.author: kavithaj
 ms.reviewer: rortloff
 ms.openlocfilehash: e756049110f7d4a81950abf6ebbe73edb3e3ca0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "65143158"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>SQL 数据仓库中的透明数据加密 (TDE) 入门
@@ -33,20 +33,20 @@ ms.locfileid: "65143158"
 若要为 SQL 数据仓库启用 TDE，请遵循以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com)中打开数据库
-2. 在数据库边栏选项卡中，单击“设置”  按钮
-3. 选择“透明数据加密”选项  ![][1]
-4. 选择“打开”  设置![][2]
-5. 选择“保存”  
+2. 在数据库边栏选项卡中，单击“设置”按钮
+3. 选择“透明数据加密”选项![][1]
+4. 选择“打开”设置![][2]
+5. 选择“保存”
    ![][3]  
 
 ## <a name="disabling-encryption"></a>禁用加密
 若要为 SQL 数据仓库禁用 TDE，请遵循以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com)中打开数据库
-2. 在数据库边栏选项卡中，单击“设置”  按钮
-3. 选择“透明数据加密”  选项![][1]
-4. 选择“关闭”设置  ![][4]
-5. 选择“保存”  
+2. 在数据库边栏选项卡中，单击“设置”按钮
+3. 选择“透明数据加密”选项![][1]
+4. 选择“关闭”设置![][4]
+5. 选择“保存”
    ![][5]  
 
 ## <a name="encryption-dmvs"></a>加密 DMV

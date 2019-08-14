@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: c56b979bf5a4f1e0868dd0542cb71c2da6a85df7
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 17ad99d372bbca1d82c5c3701751da1b009764ee
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494476"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967841"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project-250-beta"></a>Java web 项目中的 Application Insights 入门 (2.5.0)
 
@@ -319,7 +319,6 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 [apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#trackexception
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[eclipse]: ../../azure-monitor/learn/java-quick-start.md
 [javalogs]: java-trace-logs-25-beta.md
 [metrics]: ../../azure-monitor/app/metrics-explorer.md
 [usage]: javascript.md

@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/14/2019
-ms.openlocfilehash: c98247b0ba8b670a59dec9aa3ec87e949f1dda78
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.date: 08/12/2019
+ms.openlocfilehash: 928a85c9d03148198fe3e965636740812ce732f7
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147924"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976285"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
 使用只读副本功能可将数据从 Azure Database for PostgreSQL 服务器复制到只读服务器。 可将主服务器中的数据复制到最多 5 个副本。 副本是使用 PostgreSQL 引擎的本机复制技术以异步方式更新的。
-
-> [!IMPORTANT]
-> 可以在主服务器所在的区域或所选的任何其他 Azure 区域创建只读副本。 跨区域复制目前为公共预览版。
 
 副本是新的服务器，可以像管理普通的 Azure Database for PostgreSQL 服务器一样对其进行管理。 每个只读副本按照预配计算资源的 vCore 数量以及每月 GB 存储量计费。
 
@@ -33,14 +30,39 @@ ms.locfileid: "67147924"
 
 只读副本功能使用 PostgreSQL 本机异步复制。 该功能不适用于同步复制方案。 主服务器与副本之间存在明显的延迟。 副本上的数据最终将与主服务器上的数据保持一致。 对于能够适应这种延迟的工作负荷，可以使用此功能。
 
-只读副本可以增强灾难恢复计划。 首先需在不同于主区域的 Azure 区域中设置一个副本。 如果发生区域灾难，可以停止将数据复制到该副本，然后将工作负荷重定向到其中。 停止复制以后，副本就可以开始接受写入和读取操作。 在[停止复制](#stop-replication)部分了解详细信息。 
+## <a name="cross-region-replication"></a>跨区域复制
+可以在主服务器所在的不同区域中创建读取副本。 跨区域复制有助于进行灾难恢复规划或使数据更接近用户的情况。
+
+> [!IMPORTANT]
+> 跨区域复制目前为公共预览版。
+
+可以在任何[Azure Database for PostgreSQL 区域](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)中拥有主服务器。  主服务器可以在其配对区域或通用副本区域中拥有副本。
+
+### <a name="universal-replica-regions"></a>通用副本区域
+无论主服务器位于何处, 始终可以在以下任何区域中创建读取副本。 下面是通用副本区域:
+
+澳大利亚东部、澳大利亚东南部、美国中部、东亚、美国东部、美国东部2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部、美国西部2。
+
+
+### <a name="paired-regions"></a>配对区域
+除通用副本区域外, 还可以在主服务器的 Azure 配对区域中创建读取副本。 如果你不知道区域对, 可以从[Azure 配对区域一文](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)了解详细信息。
+
+如果你使用跨区域副本进行灾难恢复计划, 则建议在配对区域中创建副本, 而不是在另一个区域中创建。 配对区域避免同时进行更新, 并划分物理隔离和数据驻留的优先级。  
+
+但是, 有一些限制: 
+
+* 区域可用性：Azure Database for PostgreSQL 在美国西部2、法国中部、阿拉伯联合酋长国北部和德国中部提供。 但是, 它们的配对区域不可用。
+    
+* 单向对:某些 Azure 区域仅在一个方向上配对。 这些区域包括印度西部、巴西南部和 US Gov 弗吉尼亚州。 
+   这意味着印度西部的主服务器可以在印度南部创建副本。 但是, 印度南部的主服务器无法在印度西部创建副本。 这是因为西部印度的次要区域是印度南部地区, 而印度南部的次要区域不是西印度。
+
 
 ## <a name="create-a-replica"></a>创建副本
 主服务器的 `azure.replication_support` 参数必须设置为 **REPLICA**。 更改此参数后，需要重启服务器才能使更改生效。 （`azure.replication_support` 参数仅适用于“常规用途”和“内存优化”层）。
 
 启动“创建副本”工作流时，将创建空白的 Azure Database for PostgreSQL 服务器。 新服务器中填充了主服务器上的数据。 创建时间取决于主服务器上的数据量，以及自上次每周完整备份以来所经历的时间。 具体所需时间从几分钟到几小时不等。
 
-每个副本可用于存储[自动增长](concepts-pricing-tiers.md#storage-auto-grow)。 增长功能允许及时了解数据复制到它，并防止中断超出存储错误引起的复制中的副本。
+每个副本都启用了存储[自动增长](concepts-pricing-tiers.md#storage-auto-grow)。 自动增长功能允许副本与复制到它的数据保持同步，并防止由于存储空间不足错误而导致的复制中断。
 
 只读副本功能使用 PostgreSQL 的物理复制，而不使用逻辑复制。 使用复制槽位的流复制是默认的操作模式。 必要时，使用日志传送来跟上进度。
 
@@ -60,11 +82,11 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 在提示符下，输入用户帐户的密码。
 
 ## <a name="monitor-replication"></a>监视复制
-Azure Database for PostgreSQL 提供用于监视复制的两个指标。 两个指标**跨副本数上限延隔**并**副本滞后**。 若要了解如何查看这些指标，请参阅**监视副本**一部分[读取副本操作指南文章](howto-read-replicas-portal.md)。
+Azure Database for PostgreSQL 提供了两个用于监视复制的指标。 这两个指标是**副本的最大滞后时间**和**副本滞后时间**。 若要了解如何查看这些指标，请参阅[只读副本操作指南文章](howto-read-replicas-portal.md)的“监视副本”部分。
 
-**跨副本数上限延隔**指标显示在主机和大多数滞后复制副本之间 （字节） 之间的延迟。 此指标仅适用于主服务器。
+“副本的最大滞后时间”指标显示主服务器与滞后时间最长的副本之间的滞后时间（以字节为单位）。 此指标仅适用于主服务器。
 
-**副本滞后**度量值显示的时间，因为最后一个重播事务。 如果主服务器上未发生任何事务，则该指标会反映此滞后时间。 此指标是可用于仅副本服务器。 从计算副本滞后`pg_stat_wal_receiver`视图：
+“副本滞后时间”指标显示的是自上次重放事务以来所经历的时间。 如果主服务器上未发生任何事务，则该指标会反映此滞后时间。 此指标仅适用于副本服务器。 “副本滞后时间”是从 `pg_stat_wal_receiver` 视图计算得出的：
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
@@ -107,7 +129,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 本部分汇总了有关只读副本功能的注意事项。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 创建只读副本之前，必须将主服务器上的 `azure.replication_support` 参数设置为 **REPLICA**。 更改此参数后，需要重启服务器才能使更改生效。 `azure.replication_support` 参数仅适用于“常规用途”和“内存优化”层。
 
 ### <a name="new-replicas"></a>新副本
@@ -123,8 +145,8 @@ PostgreSQL 要求只读副本上的 `max_connections` 参数值大于或等于�
 
 在不遵守限制的情况下尝试更新服务器值会导致出错。
 
-### <a name="maxpreparedtransactions"></a>max_prepared_transactions
-[PostgreSQL 需要](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS)的值`max_prepared_transactions`大于或等于主值; 否则为在只读副本上的参数，该副本不会开始。 如果你想要更改`max_prepared_transactions`master，首先将其更改副本上。
+### <a name="max_prepared_transactions"></a>max_prepared_transactions
+[PostgreSQL 要求](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS)只读副本上的 `max_prepared_transactions` 参数值大于或等于主服务器上的值，否则副本不会启动。 如果要更改主服务器上的 `max_prepared_transactions`，请先在副本上进行相应更改。
 
 ### <a name="stopped-replicas"></a>停止的副本
 如果停止主服务器与只读副本之间的复制，副本会重启以应用更改。 已停止的副本将成为可接受读取和写入的独立服务器。 独立服务器不能再次成为副本。

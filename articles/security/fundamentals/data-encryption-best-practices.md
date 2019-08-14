@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 4df024f9ff37121df4d9be51ae1fa540028ddd3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727431"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934743"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳做法
 本文介绍了针对数据安全和加密的最佳做法。
@@ -97,7 +97,7 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 
 保护传输中的数据应该是数据保护策略中不可或缺的部分。 由于数据将从许多位置来回移动，因此我们一般建议始终使用 SSL/TLS 协议来交换不同位置的数据。 在某些情况下，可能需要使用 VPN 隔离本地与云基础结构之间的整个信道。
 
-对于在本地基础结构与 Azure 之间移动的数据，请考虑适当的防护措施，例如 HTTPS 或 VPN。 通过公共 Internet 在 Azure 虚拟网络和本地位置之间发送加密流量时，请使用 [Azure VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/)。
+对于在本地基础结构与 Azure 之间移动的数据，请考虑适当的防护措施，例如 HTTPS 或 VPN。 通过公共 Internet 在 Azure 虚拟网络和本地位置之间发送加密流量时，请使用 [Azure VPN 网关](../../vpn-gateway/index.yml)。
 
 以下是特定于使用 Azure VPN 网关、SSL/TLS 和 HTTPS 的最佳做法。
 

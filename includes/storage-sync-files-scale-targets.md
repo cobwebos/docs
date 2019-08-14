@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 46bf9851ccf8877885d9f98a023aa95ebdc533bc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e7aa2b4389fe60eed80b15aff04d6f7fcbc7b013
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857322"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968826"
 ---
 | Resource | 目标 | 硬限制 |
 |----------|--------------|------------|
@@ -23,7 +23,7 @@ ms.locfileid: "68857322"
 | 每个同步组的云终结点数 | 1 个云终结点 | 是 |
 | 每个同步组的服务器终结点数 | 50 个服务器终结点 | 否 |
 | 每个服务器的服务器终结点数 | 30 个服务器终结点 | 是 |
-| 每个同步组的文件系统对象数（目录和文件） | 2500 万个对象 | 否 |
+| 每个同步组的文件系统对象数（目录和文件） | 50000000对象 | 否 |
 | 目录中的最大文件系统对象（目录和文件）数 | 5000000对象 | 是 |
 | 最大对象（目录和文件）安全描述符大小 | 64 KiB | 是 |
 | 文件大小 | 100 GiB | 否 |

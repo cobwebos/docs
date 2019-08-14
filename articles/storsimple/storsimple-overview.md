@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 5a3800cfdf36bdc2e042eec860310a508204ba11
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876451"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965120"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合云存储解决方案
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>概述
 欢迎使用 Microsoft Azure StorSimple，它是集成的存储解决方案，用于管理本地设备与 Microsoft Azure 云存储之间的存储任务。 StorSimple 是一种经济高效、易于管理的存储区域网络 (SAN) 解决方案，可以消除与企业存储和数据保护相关的很多问题和开支。 它使用专有的 StorSimple 8000 系列设备，与云服务集成，并提供一套管理工具用于无缝查看包括云存储在内的所有企业存储。 （Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 如果使用的是 StorSimple 5000/7000 系列设备，请转到 [StorSimple 帮助](http://onlinehelp.storsimple.com/)。）
 
@@ -96,7 +99,7 @@ StorSimple 云设备提供两种型号：8010 设备（以前称为 1100 型）�
 
 有关 StorSimple 云设备的详细信息，请转到[在 Azure 中部署和管理 StorSimple 云设备](storsimple-8000-cloud-appliance-u2.md)。
 
-## <a name="storsimple-device-manager-service"></a>StorSimple Device Manager 服务
+## <a name="storsimple-device-manager-service"></a>StorSimple 设备管理器服务
 Microsoft Azure StorSimple 提供一个基于 Web 的用户界面（StorSimple 设备管理器服务），可用于集中管理数据中心和云存储。 可以使用 StorSimple Device Manager 服务执行以下任务：
 
 * 配置 StorSimple 设备的系统设置。
@@ -217,7 +220,7 @@ Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减�
 | 备份 |主目标备份 |是* |StorSimple 设备专用于此工作负荷时，支持 |Update 3 及更高版本 |
 | 备份 |辅助目标备份 |是* |StorSimple 设备专用于此工作负荷时，支持 |Update 3 及更高版本 |
 
-是&#42; - 应该应用解决方案的指导原则和限制。 
+是&#42; - 应该应用解决方案的指导原则和限制。
 
 StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorSimple，这些工作负荷将产生不支持的配置。
 
@@ -234,17 +237,17 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 | 应用场景 | 工作负荷 | 支持 | 限制 | Version |
 | --- | --- | --- | --- | --- |
-| 常规 |Express Route |是 | |所有版本 |
+| 常规 |快速路由 |是 | |所有版本 |
 | 常规 |DataCore FC |是* |受 DataCore SANsymphony 支持 |所有版本 |
 | 常规 |DFSR |是* |仅本地固定卷支持 |所有版本 |
 | 常规 |索引 |是* |对于分层卷，仅支持元数据索引（非数据）。<br>对于本地固定卷，支持完整索引。 |所有版本 |
 | 常规 |防病毒 |是* |对于分层卷，仅支持扫描打开和关闭。<br> 对于本地固定卷，支持完全扫描。 |所有版本 |
 
-是&#42; - 应该应用解决方案的指导原则和限制。 
+是&#42; - 应该应用解决方案的指导原则和限制。
 
 下面是可以配合 StorSimple 用来构建解决方案的其他软件的列表。
 
-| 工作负荷类型 | 与 StorSimple 配合使用的软件 | 支持的版本|链接到解决方案指南| 
+| 工作负载类型 | 与 StorSimple 配合使用的软件 | 支持的版本|链接到解决方案指南| 
 | --- | --- | --- | --- |
 | 备份目标 |Veeam |Veeam v9 和更高版本 |[用作备份目标的 StorSimple 与 Veaam 的集成](storsimple-configure-backup-target-veeam.md)|
 | 备份目标 |Veritas Backup Exec |Backup Exec 16 和更高版本 |[用作备份目标的 StorSimple 与 Backup Exec 的集成](storsimple-configure-backup-target-using-backup-exec.md)|
@@ -278,7 +281,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 | 动态磁盘镜像 |对动态磁盘上逻辑磁盘卷的复制。 |
 | 动态磁盘 |一种磁盘卷格式，可使用逻辑磁盘管理器 (LDM) 在多个物理磁盘中存储和管理数据。 可扩大动态磁盘，以提供更多可用空间。 |
 | 扩展磁盘组 (EBOD) 机箱 |Microsoft Azure StorSimple 设备的辅助机箱，其中包含用于其他存储的额外硬盘驱动器。 |
-| FAT 预配 |常规的存储预配，其中，存储空间根据预期需求分配（且通常超出当前需求）。 另请参阅“精简预配”  。 |
+| FAT 预配 |常规的存储预配，其中，存储空间根据预期需求分配（且通常超出当前需求）。 另请参阅“精简预配”。 |
 | 硬盘驱动器 (HDD) |使用旋转盘片来存储数据的驱动器。 |
 | 混合云存储 |使用本地资源和异地资源的存储体系结构，包括云存储。 |
 | Internet 小型计算机系统接口 (iSCSI) |一种基于存储网络标准的 Internet 协议 (IP)，用于链接数据存储设备或设施。 |
@@ -299,10 +302,10 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 | 固态硬盘 (SSD) |不包含任何移动部件的磁盘；例如，U 盘。 |
 | 存储帐户 |一组访问凭据，该凭据链接到给定云服务提供商的存储帐户。 |
 | StorSimple Adapter for SharePoint |Microsoft Azure StorSimple 组件，用于将 StorSimple 存储和数据保护透明地扩展到 SharePoint 服务器场。 |
-| StorSimple Device Manager 服务 |Azure 门户的扩展，用于管理 Azure StorSimple 本地设备和虚拟设备。 |
+| StorSimple 设备管理器服务 |Azure 门户的扩展，用于管理 Azure StorSimple 本地设备和虚拟设备。 |
 | StorSimple 快照管理器 |Microsoft 管理控制台 (MMC) 管理单元，用于管理 Microsoft Azure StorSimple 中的备份和还原操作。 |
 | 执行备份 |一种允许用户对卷执行交互备份的功能。 它是另一种手动备份卷的方法，而不是通过已定义的策略自动备份。 |
-| 精简预配 |一种优化存储系统使用可用存储空间效率的方法。 在精简预配中，根据每个用户在任何给定时间所需的最小空间，为多个用户分配存储。 另请参阅 FAT 预配  。 |
+| 精简预配 |一种优化存储系统使用可用存储空间效率的方法。 在精简预配中，根据每个用户在任何给定时间所需的最小空间，为多个用户分配存储。 另请参阅 FAT 预配。 |
 | 分层 |在逻辑分组中，根据当前使用情况、期限以及与其他数据的关系对数据进行排列。 StorSimple 自动排列层中的数据。 |
 | 卷 |逻辑存储区，以驱动器的形式表示。 StorSimple 卷对应于主机装载​​的卷，包括通过使用 iSCSI 和 StorSimple 设备发现的卷。 |
 | 卷容器 |卷和应用到卷的设置的一个分组。 StorSimple 设备中的所有卷都分组到卷容器。 卷容器设置包括存储帐户、使用关联加密密钥将数据发送到云所采用的加密设置，以及涉及云的操作所消耗的带宽。 |

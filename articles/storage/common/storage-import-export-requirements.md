@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4d002a82e3968e0462e5f6e775ec147669c01b0d
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 448d416ce4915aeae048639f6021197ed8c1d334
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147956"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967875"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 
@@ -33,7 +33,7 @@ ms.locfileid: "67147956"
 
 |平台 |Version |
 |---------|---------|
-|.NET framework    | 4.5.1       |
+|.NET Framework    | 4.5.1       |
 | BitLocker        |  _          |
 
 
@@ -41,7 +41,7 @@ ms.locfileid: "67147956"
 
 Azure 导入/导出服务支持以下类型的存储帐户：
 
-- 标准常规用途 v2 存储帐户 （推荐用于大多数方案）
+- 标准常规用途 v2 存储帐户（建议用于大多数方案）
 - Blob 存储帐户
 - 常规用途 v1 存储帐户（经典部署或 Azure 资源管理器部署） 
 
@@ -72,11 +72,15 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 下面列出的存储类型均受支持，可与 Azure 导入/导出服务配合使用。
 
 
-|磁盘类型  |大小  |支持 |不支持  |
-|---------|---------|---------|---------|
-|SSD    |   2.5"      |SATA III          |  USB       |
-|HDD     |  2.5"<br>3.5"       |SATA II、SATA III         |带有内置 USB 适配器的外部 HDD <br> 外部 HDD 外壳内的磁盘         |
+|磁盘类型  |Size  |支持 |
+|---------|---------|---------|
+|SSD    |   2.5"      |SATA III          | 
+|HDD     |  2.5"<br>3.5"       |SATA II、SATA III         |
 
+不支持以下磁盘类型:
+- USBs.
+- 带有内置 USB 适配器的外部 HDD。
+- 外部 HDD 的大小写中的磁盘。
 
 单个导入/导出作业可以有：
 - 最多 10 个 HDD/SSD。

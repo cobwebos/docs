@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 18b5b941716fd2c6664c37f9e7c1ab2a37d07a88
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: da7dbdee4a376d88219a7a621ed7e3867873a37c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720650"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967391"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
-本文概述如何使用 Azure 数据工厂中的复制活动从 SAP 表复制数据。 有关详细信息, 请参阅[复制活动概述](copy-activity-overview.md)。
+本文概述如何使用 Azure 数据工厂中的复制活动从 SAP 表复制数据。 有关详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -67,7 +67,7 @@ SAP BW 开放式中心链接服务支持以下属性:
 
 | 属性 | 说明 | 必填 |
 |:--- |:--- |:--- |
-| `type` | 属性必须设置为`SapTable`。 `type` | 是 |
+| `type` | `type` 属性必须设置为 `SapTable`。 | 是 |
 | `server` | SAP 实例所在的服务器的名称。<br/>使用连接到 SAP 应用程序服务器。 | 否 |
 | `systemNumber` | SAP 系统的系统编号。<br/>使用连接到 SAP 应用程序服务器。<br/>允许的值:用字符串表示的两位十进制数。 | 否 |
 | `messageServer` | SAP 消息服务器的主机名。<br/>使用连接到 SAP 消息服务器。 | 否 |
@@ -175,7 +175,7 @@ SAP BW 开放式中心链接服务支持以下属性:
 
 | 属性 | 说明 | 必填 |
 |:--- |:--- |:--- |
-| `type` | 属性必须设置为`SapTableResource`。 `type` | 是 |
+| `type` | `type` 属性必须设置为 `SapTableResource`。 | 是 |
 | `tableName` | 要从中复制数据的 SAP 表的名称。 | 是 |
 
 ### <a name="example"></a>示例
@@ -201,13 +201,13 @@ SAP BW 开放式中心链接服务支持以下属性:
 
 有关用于定义活动的各节和属性的完整列表, 请参阅[管道](concepts-pipelines-activities.md)。 以下部分提供 SAP 表源支持的属性列表。
 
-### <a name="sap-table-as-a-source"></a>SAP 表作为源
+### <a name="sap-table-as-source"></a>SAP 表作为源
 
 若要从 SAP 表中复制数据, 支持以下属性:
 
 | 属性                         | 说明                                                  | 必填 |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| `type`                             | 属性必须设置为`SapTableSource`。 `type`         | 是      |
+| `type`                             | `type` 属性必须设置为 `SapTableSource`。         | 是      |
 | `rowCount`                         | 要检索的行数。                              | 否       |
 | `rfcTableFields`                   | 要从 SAP 表复制的字段 (列)。 例如， `column0, column1` 。 | 否       |
 | `rfcTableOptions`                  | 用于筛选 SAP 表中的行的选项。 例如， `COLUMN0 EQ 'SOMEVALUE'` 。 另请参阅本文后面的 SAP 查询运算符表。 | 否       |
@@ -223,7 +223,7 @@ SAP BW 开放式中心链接服务支持以下属性:
 <br/>
 >`maxPartitionsNumber` `partitionLowerBound` `partitionUpperBound`作为示例, 使用以下公式计算每个分区中的行数: (和之间的总行数)/。 `partitionOnInt` `partitionOption`<br/>
 <br/>
->若要并行运行分区以提高复制速度, 强烈建议对`maxPartitionsNumber` `parallelCopies`属性的值进行多个设置。 有关详细信息, 请参阅[并行复制](copy-activity-performance.md#parallel-copy)。
+>若要并行加载数据分区以提高副本速度, 并行度由复制活动的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 例如, 如果将设置`parallelCopies`为 4, 则数据工厂会同时基于指定的分区选项和设置生成并运行四个查询, 每个查询将从 SAP 表中检索部分数据。 强烈建议您创建`maxPartitionsNumber` `parallelCopies`属性值的倍数。
 
 在`rfcTableOptions`中, 可以使用以下常见 SAP 查询运算符来筛选行:
 
@@ -269,7 +269,8 @@ SAP BW 开放式中心链接服务支持以下属性:
             },
             "sink": {
                 "type": "<sink type>"
-            }
+            },
+            "parallelCopies": 4
         }
     }
 ]
@@ -292,4 +293,4 @@ SAP BW 开放式中心链接服务支持以下属性:
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 数据工厂中的复制活动支持作为源和接收器的数据存储列表, 请参阅支持的[数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+如果需要一系列可供 Azure 数据工厂中的复制活动用作源和接收器的数据存储，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

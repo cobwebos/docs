@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b819a990b9f607aaf70bf2e16a5857de3f7306cc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 320e92e45f319e394b5a38b3f1e8ef3f314920b8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827492"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966347"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的获取元数据活动
 
@@ -138,8 +138,8 @@ GetMetadata 活动将数据集作为必要输入，并输出可用作活动输�
 -------- | ----------- | --------
 fieldList | 列出了所需元数据信息的类型。 有关受支持的元数据，请参阅[元数据选项](#metadata-options)部分中的详细信息。 | 是 
 dataset | 引用数据集，其元数据活动将由获取源数据活动检索。 有关受支持的连接器，请参阅[支持的功能](#supported-capabilities)部分；有关数据集语法详细信息，请参考连接器主题。 | 是
-formatSettings | 使用格式类型数据集时应用 (Parquet, DelimitedText)。 | 否
-storeSettings | 使用格式类型数据集时应用 (Parquet, DelimitedText)。 | 否
+formatSettings | 使用格式类型数据集时应用。 | 否
+storeSettings | 使用格式类型数据集时应用。 | 否
 
 ## <a name="sample-output"></a>示例输出
 

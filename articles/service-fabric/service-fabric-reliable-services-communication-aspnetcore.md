@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 638c06e1854504dcb7ff34b1d9df56694556c421
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9648307bb7278f36686d8a53be90c2d9ef7159e1
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939791"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016699"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services 中的 ASP.NET Core
 
@@ -43,7 +43,7 @@ ASP.NET Core 和 Service Fabric 应用都可以在 .NET Core 或完整的 .NET F
 
 在 Service Fabric 中，服务的一个或多个实例和/或副本在*服务主机进程*（运行服务代码的可执行文件）中运行。 服务作者拥有服务主机进程，Service Fabric 为服务作者激活并监视此进程。
 
-传统的 ASP.NET（最高为 MVC 5）通过 System.Web.dll 与 IIS 紧密耦合。 ASP.NET Core 在 Web 服务器和 Web 应用程序之间提供分隔。 这种隔离使 Web 应用程序能够在不同的 Web 服务器之间移植。 此外，还允许 Web 服务器自我托管  。 这意味着，你可以在自己的进程（而不是由 IIS 等专用 Web 服务器软件拥有的进程）中启动 Web 服务器。
+传统的 ASP.NET（最高为 MVC 5）通过 System.Web.dll 与 IIS 紧密耦合。 ASP.NET Core 在 Web 服务器和 Web 应用程序之间提供分隔。 这种隔离使 Web 应用程序能够在不同的 Web 服务器之间移植。 此外，还允许 Web 服务器自我托管。 这意味着，你可以在自己的进程（而不是由 IIS 等专用 Web 服务器软件拥有的进程）中启动 Web 服务器。
 
 若要合并 Service Fabric 服务和 ASP.NET，无论是作为来宾可执行文件或是在 Reliable Service 中，必须能够在服务主机进程内启动 ASP.NET。 可借助 ASP.NET Core 的自托管功能执行此操作。
 
@@ -63,11 +63,11 @@ Reliable Service 实例由派生自 `StatelessService` 或 `StatefulService` 的
 
 这两种通信侦听器都能提供采用以下参数的构造函数：
  - **`ServiceContext serviceContext`** ：这是包含有关运行中服务的信息的 `ServiceContext` 对象。
- - **`string endpointName`** ：这是 ServiceManifest.xml 中 `Endpoint` 配置的名称。 它是两个通信侦听器的主要不同之处。 HTTP.sys 需要 `Endpoint` 配置，而 Kestrel 不需要  。
+ - **`string endpointName`** ：这是 ServiceManifest.xml 中 `Endpoint` 配置的名称。 它是两个通信侦听器的主要不同之处。 HTTP.sys 需要 `Endpoint` 配置，而 Kestrel 不需要。
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`** ：这是实现的 lambda，在其中创建和返回 `IWebHost`。 它允许按平时一样在 ASP.NET Core 应用程序中使用的方法配置 `IWebHost`。 lambda 提供生成的 URL，具体取决于使用的 Service Fabric 集成选项和你提供的 `Endpoint` 配置。 然后，可以修改 URL 或使用它来启动 Web 服务器。
 
 ## <a name="service-fabric-integration-middleware"></a>Service Fabric 集成中间件
-`Microsoft.ServiceFabric.AspNetCore` NuGet 包中包含`UseServiceFabricIntegration`扩展方法`IWebHostBuilder`，它将 Service Fabric – 可识别的中间件。 此中间件将 Kestrel 或 HTTP.sys `ICommunicationListener` 配置为向 Service Fabric 命名服务注册唯一的服务 URL。 然后，它验证客户端请求，以确保客户端连接到适当的服务。 
+NuGet 包包含添加 Service Fabric 感知中间件`IWebHostBuilder`的扩展方法。`UseServiceFabricIntegration` `Microsoft.ServiceFabric.AspNetCore` 此中间件将 Kestrel 或 HTTP.sys `ICommunicationListener` 配置为向 Service Fabric 命名服务注册唯一的服务 URL。 然后，它验证客户端请求，以确保客户端连接到适当的服务。 
 
 为了防止客户端错误地连接到错误的服务，必须执行此步骤。 这是因为，在 Service Fabric 等共享主机环境中，多个 Web 应用程序可在同一物理机或虚拟机上运行，但不使用唯一的主机名。 后续部分将对此方案进行详细说明。
 
@@ -96,7 +96,7 @@ Reliable Service 实例由派生自 `StatelessService` 或 `StatefulService` 的
 
 ![Service Fabric ASP.NET Core 集成][2]
 
-Kestrel 和 HTTP.sys `ICommunicationListener` 实现以完全相同的方式使用此机制。 尽管 HTTP.sys 可使用底层 **HTTP.sys** 端口共享功能基于唯一 URL 路径内部区分请求，但 HTTP.sys `ICommunicationListener` 实现不使用此功能  。 这是因为，它会导致上述方案中出现 HTTP 503 和 HTTP 404 错误状态代码。 这进而使客户端难以确定错误原因，因为 HTTP 503 和 HTTP 404 通常用于指示其他错误。 
+Kestrel 和 HTTP.sys `ICommunicationListener` 实现以完全相同的方式使用此机制。 尽管 HTTP.sys 可使用底层 **HTTP.sys** 端口共享功能基于唯一 URL 路径内部区分请求，但 HTTP.sys `ICommunicationListener` 实现不使用此功能。 这是因为，它会导致上述方案中出现 HTTP 503 和 HTTP 404 错误状态代码。 这进而使客户端难以确定错误原因，因为 HTTP 503 和 HTTP 404 通常用于指示其他错误。 
 
 因此，Kestrel 和 HTTP.sys `ICommunicationListener` 实现会在 `UseServiceFabricIntegration` 扩展方法提供的中间件上执行标准化。 因而客户端只需对 HTTP 410 响应执行服务终结点重新解析操作。
 
@@ -195,7 +195,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
   </Resources>
 ```
 
-`Endpoint` 配置分配的动态端口仅为每个主机进程提供一个端口  。 当前的 Service Fabric 托管模型允许在同一进程中托管多个服务实例和/或副本。 这意味着，通过 `Endpoint` 配置分配时，每个实例/副本共享相同的端口。 多个 **HTTP.sys** 实例可以使用底层 **HTTP.sys** 端口共享功能共享一个端口。 但 `HttpSysCommunicationListener` 不支持此做法，因为这会增大客户端请求的复杂性。 对于使用动态端口，Kestrel 是建议的 Web 服务器。
+`Endpoint` 配置分配的动态端口仅为每个主机进程提供一个端口。 当前的 Service Fabric 托管模型允许在同一进程中托管多个服务实例和/或副本。 这意味着，通过 `Endpoint` 配置分配时，每个实例/副本共享相同的端口。 多个 **HTTP.sys** 实例可以使用底层 **HTTP.sys** 端口共享功能共享一个端口。 但 `HttpSysCommunicationListener` 不支持此做法，因为这会增大客户端请求的复杂性。 对于使用动态端口，Kestrel 是建议的 Web 服务器。
 
 ## <a name="kestrel-in-reliable-services"></a>Reliable Services 中的 Kestrel
 可以通过导入 **Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet 包来使用 Reliable Services 中的 Kestrel。 此包包含 `KestrelCommunicationListener`（`ICommunicationListener` 的实现）。 `KestrelCommunicationListener` 允许使用 Kestrel 作为 Web 服务器在 Reliable Service 内部创建 ASP.NET Core WebHost。
@@ -257,7 +257,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 此示例中为 WebHost 依赖关系注入容器提供 `IReliableStateManager` 的单一实例。 这不是必需的，但通过此操作，可在 MVC 控制器操作方法中使用 `IReliableStateManager` 和 Reliable Collections。
 
-有状态服务中不会为 `KestrelCommunicationListener` 提供`Endpoint` 配置名称  。 后续部分会对此进行详细说明。
+有状态服务中不会为 `KestrelCommunicationListener` 提供`Endpoint` 配置名称。 后续部分会对此进行详细说明。
 
 ### <a name="configure-kestrel-to-use-https"></a>将 Kestrel 配置为使用 HTTPS
 如要在服务中为 Kestrel 启用 HTTPS，需要设置多个侦听选项。 将 `ServiceInstanceListener` 更新为使用 *EndpointHttps* 终结点和侦听特定端口（例如端口 443）。 配置使用 Kestrel Web 服务器的 Web 主机时，须将 Kestrel 配置为针对所有网络接口上的 IPv6 地址进行侦听： 
@@ -330,7 +330,7 @@ new KestrelCommunicationListener(serviceContext, "ServiceEndpoint", (url, listen
 如果 ServiceManifest.xml 不使用 `Endpoint` 配置，请在 `KestrelCommunicationListener` 构造函数中省略此名称。 在此情况下，将使用动态端口。 有关详细信息，请参阅下一部分。
 
 #### <a name="use-kestrel-with-a-dynamic-port"></a>将 Kestrel 和动态端口配合使用
-Kestrel 无法使用 ServiceManifest.xml 的 `Endpoint` 配置中的自动端口分配。 这是因为，`Endpoint` 配置中的自动端口分配将为每个主机进程分配唯一端口，并且单个主机进程可以包含多个 Kestrel 实例  。 此方案不可行，因为 Kestrel 不支持端口共享。 因此，必须在唯一端口上打开每个 Kestrel 实例。
+Kestrel 无法使用 ServiceManifest.xml 的 `Endpoint` 配置中的自动端口分配。 这是因为，`Endpoint` 配置中的自动端口分配将为每个主机进程分配唯一端口，并且单个主机进程可以包含多个 Kestrel 实例。 此方案不可行，因为 Kestrel 不支持端口共享。 因此，必须在唯一端口上打开每个 Kestrel 实例。
 
 要将 Kestrel 和动态端口分配配合使用，请全省略 ServiceManifest.xml 中的 `Endpoint` 配置，并且不要将终结点名称传递到 `KestrelCommunicationListener` 构造函数，如下所示：
 
@@ -400,7 +400,7 @@ public Startup()
 {
     ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
     var builder = new ConfigurationBuilder()        
-        .AddServiceFabricConfiguration(activationContext, (options) => options.DecryptValue = true); // set flag to decrypt the value
+        .AddServiceFabricConfiguration(activationContext, (options) => options.DecryptValue = false); // set flag to decrypt the value
     Configuration = builder.Build();
 }
 ```
@@ -480,7 +480,7 @@ Service Fabric 配置提供程序还支持配置更新。 可以使用 ASP.NET C
 | --- | --- | --- |
 | Web 服务器 | Kestrel | Windows 和 Linux 都支持 Kestrel，因此它是首选的 Web 服务器。 |
 | 端口配置 | 静态 | 应在 ServiceManifest.xml 的 `Endpoints` 配置中配置已知静态端口，例如为 HTTP 配置 80 或为 HTTPS 配置 443。 |
-| ServiceFabricIntegrationOptions | 无 | 配置 Service Fabric 集成中间件时应使用 `ServiceFabricIntegrationOptions.None` 选项，以使服务不会验证传入请求是否具有唯一标识符。 应用程序的外部用户不会知道中间件使用的唯一标识信息。 |
+| ServiceFabricIntegrationOptions | None | 配置 Service Fabric 集成中间件时应使用 `ServiceFabricIntegrationOptions.None` 选项，以使服务不会验证传入请求是否具有唯一标识符。 应用程序的外部用户不会知道中间件使用的唯一标识信息。 |
 | 实例计数 | -1 | 在典型用例中，应将实例计数设置设置为 *-1*。 这样，便可以在从负载均衡器接收流量的所有节点上使用某个实例。 |
 
 如果多个外部公开的服务共享同一组节点，可通过唯一且稳定的 URL 路径使用 HTTP.sys。 可以通过修改配置 IWebHost 时提供的 URL 来实现此目的。 请注意，这仅适用于 HTTP.sys。

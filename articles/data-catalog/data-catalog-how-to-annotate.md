@@ -6,15 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 708c62971a20a7071accf7591a4e2914f7dbd9f3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736357"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950265"
 ---
-# <a name="how-to-annotate-data-sources"></a>如何批注数据源
+# <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中批注数据源
+
 ## <a name="introduction"></a>简介
+
 **Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，“数据目录”旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 数据源在“数据目录”中注册时，该服务将复制数据源的元数据并为其建立索引，但事情并未就此结束。 用户可使用数据目录提供自己的描述性元数据（例如说明和标记）补充从数据源中提取的元数据并让数据源更易于理解。
 
 ## <a name="annotation-and-crowdsourcing"></a>批注和众包

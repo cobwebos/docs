@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 61f0b42731f98dc772a588e5840af6e8535af118
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 7b07fee46bce4c7b80346eb0b4c0fccd5245d87f
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781096"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946870"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure 安全性与合规性蓝图：FedRAMP 分析
 
@@ -44,7 +44,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 ![用于 FedRAMP 参考体系的分析示意图](images/fedramp-analytics-reference-architecture.png?raw=true "用于 FedRAMP 参考体系的分析示意图")
 
 ### <a name="roles"></a>角色
-该分析蓝图概述的方案包括以下三种常规用户类型：操作用户、SQL/数据管理员和系统工程师。 Azure 基于角色的访问控制 (RBAC) 可通过内置自定义角色实现精确的访问管理。 这些资源可用于配置[基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)以及概述和实现[预定义的角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)。
+该分析蓝图概述的方案包括以下三种常规用户类型：操作用户、SQL/数据管理员和系统工程师。 Azure 基于角色的访问控制 (RBAC) 可通过内置自定义角色实现精确的访问管理。 这些资源可用于配置[基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)以及概述和实现[预定义的角色](../../role-based-access-control/built-in-roles.md)。
 
 #### <a name="systems-engineer"></a>系统工程师
 系统工程师拥有 Azure 客户订阅，并通过 Azure 门户配置解决方案的部署。
@@ -80,11 +80,11 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 **Power BI**：[Power BI](https://docs.microsoft.com/power-bi/service-azure-and-power-bi)为尝试从其数据处理工作中提取更多见解的客户提供分析和报告功能。
 
 ### <a name="networking"></a>网络
-**网络安全组**：[Nsg](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)设置为管理已部署的资源和服务定向的流量。 网络安全组设置为默认拒绝方案，并且仅允许预配置访问控制列表 (ACL) 中包含的流量。
+**网络安全组**：[Nsg](../../virtual-network/virtual-network-vnet-plan-design-arm.md)设置为管理已部署的资源和服务定向的流量。 网络安全组设置为默认拒绝方案，并且仅允许预配置访问控制列表 (ACL) 中包含的流量。
 
 每个 NSG 都打开了特定的端口和协议，以便解决方案能够安全正确地工作。 此外，为每个 NSG 启用了以下配置：
   - [诊断日志和事件](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)已启用并存储在存储帐户中
-  - [Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)连接到 NSG 的诊断日志。
+  - [Azure Monitor 日志](../../azure-monitor/insights/azure-networking-analytics.md)连接到 NSG 的诊断日志。
 
 ### <a name="data-at-rest"></a>静态数据
 该体系结构通过加密、数据库审核和其他措施保护静态数据。
@@ -93,38 +93,38 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
  - 数据复制的默认设置为“异地冗余存储(GRS)”，以便在主要区域外的单独数据中心中异步存储客户数据。 这可确保主要数据中心全损事件的数据恢复。
  - 还可以通过 Azure 存储帐户配置“本地冗余存储(LRS)”。 LRS 复制存储缩放单元中的数据，此单元的托管区域与客户创建帐户的区域相同。 为确保在主要存储缩放单元失败时不会出现备份数据丢失情况，需同时复制所有数据。
 
-**Azure 存储** 为满足加密静态数据要求，此参考体系结构中部署的所有服务都利用 [Azure 存储](https://azure.microsoft.com/services/storage/)，以便通过[存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)存储数据。
+**Azure 存储** 为满足加密静态数据要求，此参考体系结构中部署的所有服务都利用 [Azure 存储](https://azure.microsoft.com/services/storage/)，以便通过[存储服务加密](../../storage/common/storage-service-encryption.md)存储数据。
 
 **Azure 磁盘加密**
-[Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)利用 Windows 的 BitLocker 功能，为 OS 和数据磁盘提供卷加密。 此解决方案与 Azure Key Vault 集成，可帮助控制和管理磁盘加密密钥。
+[Azure 磁盘加密](../azure-security-disk-encryption-overview.md)利用 Windows 的 BitLocker 功能，为 OS 和数据磁盘提供卷加密。 此解决方案与 Azure Key Vault 集成，可帮助控制和管理磁盘加密密钥。
 
 **Azure SQL 数据库** Azure SQL 数据库实例使用以下数据库安全措施：
 -   使用 [AD 身份验证和授权](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)可在一个中心位置集中管理数据库用户和其他 Microsoft 服务的标识。
--   [SQL 数据库审核](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started)跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。
+-   [SQL 数据库审核](../../sql-database/sql-database-auditing.md)跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。
 -   SQL 数据库配置为使用[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)，它执行数据和日志文件的实时加密和解密，以保护静态信息。 TDE 可确保存储的数据免遭他人未经授权的访问。
 -   在授予相应的权限前，[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)会阻止对数据库服务器的所有访问。 防火墙基于每个请求的起始 IP 地址授予数据库访问权限。
--   [SQL 威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started)在潜在威胁发生时启动对它们的检测和响应，方式为提供可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问模式的安全性警报。
+-   [SQL 威胁检测](../../sql-database/sql-database-threat-detection.md)在潜在威胁发生时启动对它们的检测和响应，方式为提供可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问模式的安全性警报。
 -   [Always Encrypted 列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)可以确保敏感数据永远不会在数据库系统中以明文形式显示。 启用数据加密后，只有具有密钥访问权限的客户端应用程序或应用服务器才能访问明文数据。
 -   [SQL 数据库动态数据掩码](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)可以在参考体系结构部署完毕之后再完成。 客户将需要调整动态数据掩码设置以遵循其数据库架构。
 
 ### <a name="logging-and-audit"></a>日志记录和审核
-[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) 生成完整显示的监视数据（包括活动日志、指标和诊断数据），使用户可以全面了解系统运行状况。  
-[Azure Monitor 日志](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)提供了大量日志记录: 系统和用户活动以及系统运行状况。 它收集并分析 Azure 和本地环境中的资源生成的数据。
-- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供对订阅中资源执行的操作的深入信息。
-- **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储、表和队列的日志。
+[Azure Monitor](../../azure-monitor/overview.md) 生成完整显示的监视数据（包括活动日志、指标和诊断数据），使用户可以全面了解系统运行状况。  
+[Azure Monitor 日志](../azure-security-disk-encryption-overview.md)提供了大量日志记录: 系统和用户活动以及系统运行状况。 它收集并分析 Azure 和本地环境中的资源生成的数据。
+- **活动日志**：[活动日志](../../azure-monitor/platform/activity-logs-overview.md)提供对订阅中资源执行的操作的深入信息。
+- **诊断日志**：[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储、表和队列的日志。
 - **防火墙日志**：应用程序网关提供完整的诊断和访问日志。 防火墙日志适用于已启用 WAF 的应用程序网关资源。
 - **日志存档**：所有诊断日志写入到集中式的加密 Azure 存储帐户，并根据定义的保留期（2 天）存档。 这些日志连接到 Azure Monitor 日志以便进行处理、存储和仪表板报告。
 
 此外，以下监视解决方案作为此体系结构的一部分包括在内：
 -   [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)：Azure 自动化解决方案用于存储、运行和管理 runbook。
--   [安全和审核](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)：“安全和审核”仪表板通过提供有关安全域、值得注意的问题、检测、威胁智能和常见安全性查询的指标，提供对资源安全状态的高级见解。
--   [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署的服务器基础结构的优先建议列表。
--   [Azure 活动日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
+-   [安全和审核](../../security-center/security-center-intro.md)：“安全和审核”仪表板通过提供有关安全域、值得注意的问题、检测、威胁智能和常见安全性查询的指标，提供对资源安全状态的高级见解。
+-   [SQL 评估](../../azure-monitor/insights/sql-assessment.md)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署的服务器基础结构的优先建议列表。
+-   [Azure 活动日志](../../azure-monitor/platform/collect-activity-logs.md)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
 
 ### <a name="identity-management"></a>身份管理
--   使用 Azure AD 对应用程序执行身份验证。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。 此外，数据库列加密使用 Azure AD 对访问 Azure SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅如何[保护 SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
--   [Azure Active Directory 标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)会检测到影响组织标识的潜在漏洞，配置自动化的措施来应对所检测到的与组织标识相关的可疑操作，调查可疑的事件以采取相应的措施予以解决。
--   [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) 可在 Azure 中实现极有针对性的访问管理。 订阅访问仅限于订阅管理员。
+-   使用 Azure AD 对应用程序执行身份验证。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)。 此外，数据库列加密使用 Azure AD 对访问 Azure SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅如何[保护 SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
+-   [Azure Active Directory 标识保护](../../active-directory/identity-protection/overview.md)会检测到影响组织标识的潜在漏洞，配置自动化的措施来应对所检测到的与组织标识相关的可疑操作，调查可疑的事件以采取相应的措施予以解决。
+-   [Azure 基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 可在 Azure 中实现极有针对性的访问管理。 订阅访问仅限于订阅管理员。
 
 若要详细了解 Azure SQL 数据库安全功能的用法，请参阅 [Contoso Clinic 演示应用程序](https://github.com/Microsoft/azure-sql-security-sample)示例。
 
@@ -137,7 +137,7 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 需要配置 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或安全 VPN 隧道，以安全地建立与作为此数据分析参考体系结构的一部分部署的资源的连接。 ExpressRoute 连接并不绕过 Internet，并且与通过 Internet 的典型连接相比，这些连接可靠性更高、速度更快、延迟时间更短且安全性更高。 通过适当设置 ExpressRoute 或 VPN，客户可以在传输过程中为数据添加一层保护。
 
 ### <a name="azure-active-directory-setup"></a>Azure Active Directory 设置
-[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 对于管理部署以及预配与环境交互的人员的访问至关重要。 只需[单击四下](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express)，即可将现有 Windows Server Active Directory 与 AAD 集成。 客户还可以通过将部署的 Active Directory 基础结构作为 AAD 林的子域，将部署的 Active Directory 基础结构（域控制器）绑定到现有 AAD。
+[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 对于管理部署以及预配与环境交互的人员的访问至关重要。 只需[单击四下](../../active-directory/hybrid/how-to-connect-install-express.md)，即可将现有 Windows Server Active Directory 与 AAD 集成。 客户还可以通过将部署的 Active Directory 基础结构作为 AAD 林的子域，将部署的 Active Directory 基础结构（域控制器）绑定到现有 AAD。
 
 ### <a name="additional-services"></a>其他服务
 #### <a name="iaas---vm-considerations"></a>IaaS-VM 注意事项
@@ -149,11 +149,11 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 - **恢复服务保管库**：[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)存储备份数据并保护此体系结构中的所有 Azure 虚拟机配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM，从而缩短还原时间。
 
 ##### <a name="monitoring-solutions"></a>监视解决方案
--   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
--   [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)：反恶意软件解决方案用于报告恶意软件、威胁和防护状态。
--   [更新管理](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)：更新管理解决方案允许客户管理操作系统安全更新，包括可用更新的状态以及安装所需更新的过程。
--   [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
--   [更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)：更改跟踪解决方案使得客户能够轻松识别环境中的更改。
+-   [AD 评估](../../azure-monitor/insights/ad-assessment.md)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
+-   [反恶意软件评估](../../security-center/security-center-install-endpoint-protection.md)：反恶意软件解决方案用于报告恶意软件、威胁和防护状态。
+-   [更新管理](../../automation/automation-update-management.md)：更新管理解决方案允许客户管理操作系统安全更新，包括可用更新的状态以及安装所需更新的过程。
+-   [代理运行状况](../../monitoring/monitoring-solution-agenthealth.md)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
+-   [更改跟踪](../../automation/change-tracking.md)：更改跟踪解决方案使得客户能够轻松识别环境中的更改。
 
 ##### <a name="security"></a>安全性
 - **恶意软件防护**：用于虚拟机的 [Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/fundamentals/antimalware)提供实时保护功能，当已知的恶意软件或不需要的软件试图在受保护的虚拟机上进行安装或运行时，它使用可配置的警报帮助识别和删除病毒、间谍软件和其他恶意软件。

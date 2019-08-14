@@ -10,20 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ae8b2bb7cce545ab9c0aa0c9d4d682089cc482ab
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a8265496c475566ec7a87a19eab6d975838e9da4
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827482"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966392"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
 ## <a name="overview"></a>概述
 
-> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-data-movement-activities.md)
 > * [当前版本](copy-activity-overview.md)
 
@@ -33,7 +33,7 @@ ms.locfileid: "68827482"
 
 复制活动在[集成运行时](concepts-integration-runtime.md)上执行。 对于不同的数据复制方案, 可以利用不同风格的 Integration Runtime:
 
-* 在两个可公开访问的数据存储间复制数据时，复制活动可由 **Azure 集成运行时**授权，该活动安全可靠、可缩放并可[全局访问](concepts-integration-runtime.md#integration-runtime-location)。
+* 当在两个数据存储之间复制数据时, 可以从任何 Ip 通过 internet 公开访问这些数据, 因此, 可以通过**Azure Integration Runtime**安全、可靠、可缩放且[全局可用](concepts-integration-runtime.md#integration-runtime-location)的复制活动。
 * 当从本地数据存储或位于具有访问控制的网络（如 Azure 虚拟网络）中的数据存储中复制数据，或将数据复制到此处时，需要安装**自承载集成运行时**来授权数据复制。
 
 集成运行时需要与每个源数据存储和接收器数据存储相关联。 了解复制活动如何[决定使用哪个 IR](concepts-integration-runtime.md#determining-which-ir-to-use) 的详细信息。
@@ -193,7 +193,7 @@ ms.locfileid: "68827482"
 | usedDataIntegrationUnits | 复制期间的有效数据集成单位。 | Int32 值 |
 | usedParallelCopies | 复制期间的有效 parallelCopies。 | Int32 值 |
 | redirectRowPath | 在“redirectIncompatibleRowSettings”下配置的 blob 存储中跳过的不兼容行的日志路径。 请参阅下面的示例。 | 文本（字符串） |
-| executionDetails | 有关复制活动经历的各个阶段、相应步骤、持续时间、使用的配置等内容的更多详细信息。不建议分析此节，因为它有可能发生更改。<br/><br/>ADF 还会报告每个步骤`detailedDurations`所用的详细持续时间 (以秒为单位):<br/>- **排队持续时间**(`queuingDuration`):在集成运行时中实际开始复制活动之前的时间。 如果使用自承载 IR 并且此值很大, 则建议检查 IR 容量和使用情况, 并根据工作负荷进行扩展/缩减。 <br/>- **复制前脚本持续时间**(`preCopyScriptDuration`):在接收器数据存储中执行复制前脚本所花费的时间。 在配置复制前脚本时应用。 <br/>- **第一字节的时间**(`timeToFirstByte`):集成运行时接收源数据存储中第一个字节的时间。 应用于非基于文件的源。 如果此值较大, 则建议检查并优化查询或服务器。<br/>- **传输持续时间**(`transferDuration`):获取第一个字节后集成运行时将所有数据从源复制到接收器的时间。 | 阵列 |
+| executionDetails | 有关复制活动经历的各个阶段、相应步骤、持续时间、使用的配置等内容的更多详细信息。不建议分析此节，因为它有可能发生更改。<br/><br/>ADF 还会报告每个步骤`detailedDurations`所用的详细持续时间 (以秒为单位)。 这些步骤的持续时间是排他的, 仅适用于给定复制活动运行的应用将显示:<br/>- **排队持续时间**(`queuingDuration`):在集成运行时中实际开始复制活动之前经过的时间。 如果使用自承载 IR 并且此值很大, 则建议检查 IR 容量和使用情况, 并根据工作负荷进行扩展/缩减。 <br/>- **复制前脚本持续时间**(`preCopyScriptDuration`):从 IR 和复制活动完成到在接收器数据存储中执行复制前脚本的复制活动之间经过的时间。 在配置复制前脚本时应用。 <br/>- **第一字节的时间**(`timeToFirstByte`):上一步结束与从源数据存储接收第一个字节的 IR 之间经过的时间。 应用于非基于文件的源。 如果此值较大, 则建议检查并优化查询或服务器。<br/>- **传输持续时间**(`transferDuration`):上一步结束与 IR 之间经过的时间, 将所有数据从源传输到接收器。 | 阵列 |
 | perfRecommendation | 复制性能优化提示。 有关详细信息, 请参阅[性能和优化](#performance-and-tuning)部分。 | 阵列 |
 
 ```json

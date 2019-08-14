@@ -10,15 +10,15 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 41cd46bc-c479-43fa-96e5-d6c83e4e6d89
 caps.latest.revision: 55
-author: jpconnock
-ms.author: jeconnoc
-manager: timlt
-ms.openlocfilehash: 90a11c5bb81a0d29f5f8a1c1696732453aa4b1ab
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+author: georgewallace
+ms.author: gwallace
+manager: gwallace
+ms.openlocfilehash: ac1cce61a9b9b22c079066147d6a318f778999db
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "62095398"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945878"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure 云服务定义 WorkerRole 架构
 Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处理。
@@ -163,7 +163,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 下表介绍了 `Setting` 元素的属性。
 
-| 特性 | 类型 | 描述 |
+| 特性 | type | 描述 |
 | --------- | ---- | ----------- |
 |name|string|必需。 配置设置的唯一名称。|
 
@@ -180,7 +180,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 下表介绍了 `LocalStorage` 元素的属性。
 
-| 特性 | 类型 | 描述 |
+| 特性 | type | 描述 |
 | --------- | ---- | ----------- |
 |name|string|必需。 本地存储的唯一名称。|
 |cleanOnRoleRecycle|boolean|可选。 指示重启角色时是否应清理本地存储。 默认值为 `true`。|
@@ -207,7 +207,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 | --------- | ---- | ----------- |
 |name|string|必需。 外部终结点的唯一名称。|
 |protocol|string|必需。 外部终结点的传输协议。 对于辅助角色，可能的值为 `HTTP`、`HTTPS`、`UDP` 或 `TCP`。|
-|端口|int|必需。 外部终结点的端口。 可以指定所选的任意端口号，但为服务中每个角色指定的端口号必须唯一。<br /><br /> 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。|
+|port|int|必需。 外部终结点的端口。 可以指定所选的任意端口号，但为服务中每个角色指定的端口号必须唯一。<br /><br /> 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。|
 |证书|string|HTTPS 终结点需要。 由 `Certificate` 元素定义的证书的名称。|
 |localPort|int|可选。 指定用于终结点上内部连接的端口。 `localPort` 属性将终结点上的外部端口映射到角色上的内部端口。 这在以下情况下非常有用：角色必须与端口上的内部组件而非为外部公开的组件进行通信。<br /><br /> 如果未指定，则 `localPort` 的值与 `port` 属性相同。 将 `localPort` 的值设置为“*”会自动分配可使用运行时 API 发现的未分配端口。<br /><br /> 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。<br /><br /> 仅当使用 Azure SDK 1.3 或更高版本时，才提供 `localPort` 属性。|
 |ignoreRoleInstanceStatus|boolean|可选。 当此属性的值设置为 `true` 时，会忽略服务的状态，并且负载均衡器不会删除该终结点。 此值设置为 `true` 对调试服务的繁忙实例非常有用。 默认值为 `false`。 **注意：** 即使角色不处于就绪状态，终结点仍可接收流量。|
@@ -222,7 +222,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 | --------- | ---- | ----------- |
 |name|string|必需。 内部终结点的唯一名称。|
 |protocol|string|必需。 内部终结点的传输协议。 可能的值为 `HTTP`、`TCP`、`UDP` 或 `ANY`。<br /><br /> `ANY` 的值指定允许任何协议、任何端口。|
-|端口|int|可选。 用于终结点上内部负载均衡连接的端口。 负载均衡的终结点使用两个端口。 用于公共 IP 地址的端口，以及用于专用 IP 地址的端口。 通常这些端口的设置相同，但可以选择使用不同的端口。<br /><br /> 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。<br /><br /> 仅当使用 Azure SDK 1.3 或更高版本时，才提供 `Port` 属性。|
+|port|int|可选。 用于终结点上内部负载均衡连接的端口。 负载均衡的终结点使用两个端口。 用于公共 IP 地址的端口，以及用于专用 IP 地址的端口。 通常这些端口的设置相同，但可以选择使用不同的端口。<br /><br /> 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。<br /><br /> 仅当使用 Azure SDK 1.3 或更高版本时，才提供 `Port` 属性。|
 
 ##  <a name="InstanceInputEndpoint"></a> InstanceInputEndpoint
 `InstanceInputEndpoint` 元素描述辅助角色的实例输入终结点。 实例输入终结点通过使用负载均衡器中的端口转接，关联到特定的角色实例。 每个实例输入终结点映射到一系列可能端口中的特定端口。 此元素是 `AllocatePublicPortFrom` 元素的父级。
@@ -231,7 +231,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 下表介绍了 `InstanceInputEndpoint` 元素的属性。
 
-| 特性 | type | 描述 |
+| 特性 | 类型 | 描述 |
 | --------- | ---- | ----------- |
 |name|string|必需。 终结点的唯一名称。|
 |localPort|int|必需。 指定需要所有角色实例均对其侦听才能接收负载均衡器转发的传入流量的内部端口。 可能的值介于 1 和 65535（含）之间。|
@@ -251,7 +251,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 | 特性 | type | 描述 |
 | --------- | ---- | ----------- |
-|端口|int|必需。 内部终结点的端口。 其效果与将 `FixedPortRange` min 和 max 设置为相同的端口一样。<br /><br /> 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。|
+|port|int|必需。 内部终结点的端口。 其效果与将 `FixedPortRange` min 和 max 设置为相同的端口一样。<br /><br /> 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。|
 
 ##  <a name="FixedPortRange"></a> FixedPortRange
 `FixedPortRange` 元素指定分配给内部终结点或实例输入终结点的端口的范围，并设置用于在终结点上建立负载均衡连接的端口。
@@ -276,7 +276,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 下表介绍了 `Certificate` 元素的属性。
 
-| 特性 | 类型 | 描述 |
+| 特性 | type | 描述 |
 | --------- | ---- | ----------- |
 |name|string|必需。 此证书的名称，用于与 HTTPS `InputEndpoint` 元素关联时进行引用。|
 |storeLocation|string|必需。 本地计算机上的证书存储位置，可在其中找到此证书。 可能的值为 `CurrentUser` 和 `LocalMachine`。|
@@ -295,7 +295,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 下表介绍了 `Import` 元素的属性。
 
-| 特性 | 类型 | 描述 |
+| 特性 | type | 描述 |
 | --------- | ---- | ----------- |
 |moduleName|string|必需。 要导入的模块的名称。 有效的导入模块为：<br /><br /> -   RemoteAccess<br />-   RemoteForwarder<br />-   Diagnostics<br /><br /> 借助 RemoteAccess 和 RemoteForwarder 模块，可配置远程桌面连接的角色实例。 有关详细信息，请参阅[启用远程桌面连接](cloud-services-role-enable-remote-desktop-new-portal.md)。<br /><br /> 借助 Diagnostics 模块，可收集角色实例的诊断数据|
 
@@ -320,7 +320,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 下表描述 `Variable` 元素的属性：
 
-| 特性 | type | 描述 |
+| 特性 | 类型 | 描述 |
 | --------- | ---- | ----------- |
 |name|string|必需。 要设置的环境变量的名称。|
 |value|string|可选。 要为环境变量设置的值。 必须包含 value 属性或 `RoleInstanceValue` 元素。|
@@ -330,7 +330,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 下表介绍了 `RoleInstanceValue` 元素的属性。
 
-| 特性 | type | 描述 |
+| 特性 | 类型 | 描述 |
 | --------- | ---- | ----------- |
 |XPath|string|可选。 实例的部署设置的位置路径。 有关详细信息，请参阅[带有 XPath 的配置变量](cloud-services-role-config-xpath.md)。<br /><br /> 必须包含 value 属性或 `RoleInstanceValue` 元素。|
 
@@ -347,9 +347,9 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 下表介绍了 `NetFxEntryPoint` 元素的属性。
 
-| 特性 | type | 描述 |
+| 特性 | 类型 | 描述 |
 | --------- | ---- | ----------- |
-|assemblyName|string|必需。 包含入口点的程序集的路径和文件名称。 该路径相对于文件夹 \\%ROLEROOT%\Approot（请勿在 `commandLine` 中指定 \\%ROLEROOT%\Approot，它是假定的）   。 **%ROLEROOT%** 是由 Azure 维护的环境变量，表示角色的根文件夹位置。 \\%ROLEROOT%\Approot 文件夹表示角色的应用程序文件夹  。|
+|assemblyName|string|必需。 包含入口点的程序集的路径和文件名称。 该路径相对于文件夹 \\%ROLEROOT%\Approot（请勿在 `commandLine` 中指定 \\%ROLEROOT%\Approot，它是假定的）。 **%ROLEROOT%** 是由 Azure 维护的环境变量，表示角色的根文件夹位置。 \\%ROLEROOT%\Approot 文件夹表示角色的应用程序文件夹。|
 |targetFrameworkVersion|string|必需。 在其上生成程序集的 .NET Framework 的版本。 例如， `targetFrameworkVersion="v4.0"` 。|
 
 ##  <a name="ProgramEntryPoint"></a> ProgramEntryPoint
@@ -360,9 +360,9 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 下表介绍了 `ProgramEntryPoint` 元素的属性。
 
-| 特性 | 类型 | 描述 |
+| 特性 | type | 描述 |
 | --------- | ---- | ----------- |
-|commandLine|string|必需。 要执行的程序的路径、文件名和任何命令行参数。 该路径相对于文件夹 %ROLEROOT%\Approot（请勿在 commandLine 中指定 %ROLEROOT%\Approot，它是假定的）   。 %ROLEROOT% 是由 Azure 维护的环境变量，它表示角色的根文件夹位置  。 %ROLEROOT%\Approot 文件夹表示角色的应用程序文件夹  。<br /><br /> 程序结束后会回收该角色，所以通常会将程序设置为继续运行，而不是启动后运行有限的任务。|
+|commandLine|string|必需。 要执行的程序的路径、文件名和任何命令行参数。 该路径相对于文件夹 %ROLEROOT%\Approot（请勿在 commandLine 中指定 %ROLEROOT%\Approot，它是假定的）。 %ROLEROOT% 是由 Azure 维护的环境变量，它表示角色的根文件夹位置。 %ROLEROOT%\Approot 文件夹表示角色的应用程序文件夹。<br /><br /> 程序结束后会回收该角色，所以通常会将程序设置为继续运行，而不是启动后运行有限的任务。|
 |setReadyOnProcessStart|boolean|必需。 指定角色实例是否等待命令行程序表明它已启动。 此时，此值必须设置为 `true`。 保留将该值设置为 `false` 这一操作，供将来使用。|
 
 ##  <a name="Startup"></a> Startup
@@ -381,7 +381,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 下表介绍了 `Task` 元素的属性。
 
-| 特性 | 类型 | 描述 |
+| 特性 | type | 描述 |
 | --------- | ---- | ----------- |
 |commandLine|string|必需。 包含要运行的命令的脚本（如 CMD 文件）。 启动命令和批处理文件必须以 ANSI 格式保存。 在文件开头设置字节顺序标记的文件格式无法得到正确处理。|
 |executionContext|string|指定在其中运行脚本的上下文。<br /><br /> -   `limited` [默认] – 使用与托管进程的角色相同的特权运行。<br />-   `elevated` – 使用管理员特权运行。|
@@ -401,7 +401,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 | 特性 | type | 描述 |
 | --------- | ---- | ----------- |
-|destination|string|必需。 内容放置在 Azure 虚拟机上的位置。 此位置相对于文件夹 %ROLEROOT%\Approot  。|
+|destination|string|必需。 内容放置在 Azure 虚拟机上的位置。 此位置相对于文件夹 %ROLEROOT%\Approot。|
 
 此元素是 `SourceDirectory` 元素的父元素。
 
@@ -412,7 +412,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 下表介绍了 `SourceDirectory` 元素的属性。
 
-| 特性 | 类型 | 描述 |
+| 特性 | type | 描述 |
 | --------- | ---- | ----------- |
 |path|string|必需。 内容将复制到 Azure 虚拟机的本地目录的相对或绝对路径。 支持扩展目录路径中的环境变量。|
 

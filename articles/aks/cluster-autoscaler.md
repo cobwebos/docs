@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 09610782f211b4cfb80a1291b73ab543328376a3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ef3e9a9c68ca524b7f7f86c92130a10952a9f065
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68424181"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949604"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>预览-自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 上的应用程序需求
 
@@ -28,7 +28,7 @@ ms.locfileid: "68424181"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文要求运行 Azure CLI 版本2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+本文要求运行 Azure CLI 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
@@ -102,7 +102,7 @@ az provider register --namespace Microsoft.ContainerService
 > [!IMPORTANT]
 > 群集自动缩放程序是 Kubernetes 组件。 虽然 AKS 群集对节点使用虚拟机规模集，但请勿在 Azure 门户中或使用 Azure CLI 手动启用或编辑规模集自动缩放设置。 让 Kubernetes 群集自动缩放程序管理所需的规模设置。 有关详细信息, 请参阅可否[修改节点资源组中的 AKS 资源？](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group)
 
-以下示例创建一个具有虚拟机规模集的 AKS 群集。 它还会在群集的节点池中启用群集自动缩放程序, 并将最小值设置为*1* , 最大值为*3*个节点:
+以下示例创建一个具有虚拟机规模集支持的单节点池的 AKS 群集。 它还会在群集的节点池中启用群集自动缩放程序, 并将最小值设置为*1* , 最大值为*3*个节点:
 
 ```azurecli-interactive
 # First create a resource group
@@ -124,9 +124,24 @@ az aks create \
 
 创建群集并配置群集自动缩放程序设置需要几分钟时间。
 
-### <a name="enable-the-cluster-autoscaler-on-an-existing-node-pool-in-an-aks-cluster"></a>在 AKS 群集中的现有节点池上启用群集自动缩放程序
+### <a name="update-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-a-single-node-pool"></a>使用单个节点池更新群集中现有节点池上的群集自动缩放程序
 
-可以在 AKS 群集中的节点池上启用群集自动缩放程序, 该群集满足 "[开始之前](#before-you-begin)" 部分中所述的要求。 使用[az aks nodepool update][az-aks-nodepool-update]命令在节点池中启用群集自动缩放程序。
+可以在满足 "[开始之前](#before-you-begin)" 部分中所述的要求的群集上更新以前的群集自动缩放程序设置。 使用[az aks update][az-aks-update]命令在群集上使用*单个*节点池启用群集自动缩放程序。
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --update-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 5
+```
+
+然后, 可以通过`az aks update --enable-cluster-autoscaler`或`az aks update --disable-cluster-autoscaler`命令启用或禁用群集自动缩放程序。
+
+### <a name="enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools"></a>在具有多个节点池的群集中的现有节点池上启用群集自动缩放程序
+
+群集自动缩放程序还可用于启用了[多节点池预览功能](use-multiple-node-pools.md)。 可以在包含多个节点池的 AKS 群集中的单个节点池上启用群集自动缩放程序, 并满足前面 "[开始之前](#before-you-begin)" 部分中所述的要求。 使用[az aks nodepool update][az-aks-nodepool-update]命令启用单个节点池上的群集自动缩放程序。
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -138,7 +153,7 @@ az aks nodepool update \
   --max-count 3
 ```
 
-上述示例在*myAKSCluster*的*mynodepool*节点池中启用了群集自动缩放程序, 并将最小值设置为*1* , 最大值为*3*个节点。 如果最小节点计数大于节点池中现有的节点数, 则需要几分钟时间来创建其他节点。
+然后, 可以通过`az aks nodepool update --enable-cluster-autoscaler`或`az aks nodepool update --disable-cluster-autoscaler`命令启用或禁用群集自动缩放程序。
 
 ## <a name="change-the-cluster-autoscaler-settings"></a>更改群集自动缩放程序设置
 

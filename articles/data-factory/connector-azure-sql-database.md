@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 905d208dccf54ac34e3f832d4d0c5b98a6121757
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 2b4d636737dbd75829c9555e340f79c3c867910d
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827514"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967564"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本:"]
@@ -262,18 +262,18 @@ Azure SQL 数据库链接服务支持以下属性：
 
 ### <a name="azure-sql-database-as-the-source"></a>Azure SQL 数据库作为源
 
-若要从 Azure SQL 数据库复制数据, 请将复制活动源中的**type**属性设置为 " **SqlSource**"。 复制活动源部分支持以下属性：
+若要从 Azure SQL 数据库复制数据, 复制活动**源**部分支持以下属性:
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的**type**属性必须设置为**SqlSource**。 | 是 |
+| type | 复制活动源的**type**属性必须设置为**AzureSqlSource**。 对于向后兼容性, 仍支持 "SqlSource" 类型。 | 是 |
 | sqlReaderQuery | 此属性使用自定义 SQL 查询来读取数据。 例如 `select * from MyTable`。 | 否 |
 | sqlReaderStoredProcedureName | 从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 | 否 |
 | storedProcedureParameters | 存储过程的参数。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写相匹配。 | 否 |
 
 **需要注意的要点：**
 
-- 如果为**SqlSource**指定**sqlReaderQuery** , 则复制活动对 Azure SQL 数据库源运行此查询以获取数据。 也可通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程，前提是存储过程使用参数。
+- 如果为**AzureSqlSource**指定**sqlReaderQuery** , 则复制活动对 Azure SQL 数据库源运行此查询以获取数据。 也可通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程，前提是存储过程使用参数。
 - 如果未指定**sqlReaderQuery**或**sqlReaderStoredProcedureName**, 则使用在数据集 JSON 的 "结构" 部分定义的列来构造查询。 针对 Azure `select column1, column2 from mytable` SQL 数据库运行查询。 如果数据集定义没有“structure”，则会从表中选择所有列。
 
 #### <a name="sql-query-example"></a>SQL 查询示例
@@ -297,7 +297,7 @@ Azure SQL 数据库链接服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "AzureSqlSource",
                 "sqlReaderQuery": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -329,7 +329,7 @@ Azure SQL 数据库链接服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "AzureSqlSource",
                 "sqlReaderStoredProcedureName": "CopyTestSrcStoredProcedureWithParameters",
                 "storedProcedureParameters": {
                     "stringData": { "value": "str3" },
@@ -368,11 +368,11 @@ GO
 > [!TIP]
 > 详细了解将[数据加载到 AZURE SQL 数据库的最佳做法](#best-practice-for-loading-data-into-azure-sql-database)中所支持的写入行为、配置和最佳实践。
 
-若要将数据复制到 Azure SQL 数据库, 请将复制活动接收器中的**type**属性设置为 " **SqlSink**"。 复制活动接收器部分中支持以下属性：
+若要将数据复制到 Azure SQL 数据库, 请在复制活动**接收器**部分中支持以下属性:
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的**type**属性必须设置为**SqlSink**。 | 是 |
+| type | 复制活动接收器的**type**属性必须设置为**AzureSqlSink**。 对于向后兼容性, 仍支持 "SqlSink" 类型。 | 是 |
 | writeBatchSize | *每批*插入到 SQL 表中的行数。<br/> 允许的值为 **integer**（行数）。 默认情况下, Azure 数据工厂会根据行大小动态确定相应的批大小。 | 否 |
 | writeBatchTimeout | 超时前等待批插入操作完成的时间。<br/> 允许的值为 **timespan**。 例如, "00:30:00" (30 分钟)。 | 否 |
 | preCopyScript | 指定在将数据写入 Azure SQL 数据库之前要运行的复制活动的 SQL 查询。 每次运行复制仅调用该查询一次。 使用此属性清理预加载的数据。 | 否 |
@@ -405,7 +405,7 @@ GO
                 "type": "<source type>"
             },
             "sink": {
-                "type": "SqlSink",
+                "type": "AzureSqlSink",
                 "writeBatchSize": 100000
             }
         }
@@ -439,7 +439,7 @@ GO
                 "type": "<source type>"
             },
             "sink": {
-                "type": "SqlSink",
+                "type": "AzureSqlSink",
                 "sqlWriterStoredProcedureName": "CopyTestStoredProcedureWithParameters",
                 "storedProcedureTableTypeParameterName": "MyTable",
                 "sqlWriterTableType": "MyTableType",
@@ -553,7 +553,7 @@ END
 
     ```json
     "sink": {
-        "type": "SqlSink",
+        "type": "AzureSqlSink",
         "SqlWriterStoredProcedureName": "spOverwriteMarketing",
         "storedProcedureTableTypeParameterName": "Marketing",
         "SqlWriterTableType": "MarketingType",
