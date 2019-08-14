@@ -35,6 +35,8 @@
       href: powershell-samples.md
     - name: Azure CLI
       href: cli-samples.md
+    - name: 资源管理器模板
+      href: resource-manager-template-samples.md
 - name: 概念
   items:
     - name: 基础
@@ -95,9 +97,6 @@
           href: tutorial-manage-web-traffic-powershell.md
         - name: Azure CLI
           href: tutorial-manage-web-traffic-cli.md
-        - name: 模板
-          displayName: 'ARM, Resource Manager, template'
-          href: create-vmss-template.md
     - name: 配置内部负载均衡器
       items:
         - name: Azure 门户

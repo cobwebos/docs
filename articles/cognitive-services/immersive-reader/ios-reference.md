@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: t-meroa
-ms.openlocfilehash: 47c2d772a3428594c84d3fe5e18262b5e5ab86f4
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: acdaaf0bf08644053e86343ae4b002002fee6a84
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951009"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966596"
 ---
 # <a name="immersive-reader-sdk-reference"></a>沉浸式读者 SDK 参考
 
@@ -102,5 +102,5 @@ struct Error {
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[GitHub 上的沉浸式读者 IOS SDK](https://github.com/microsoft/immersive-reader-sdk/iOS)
+* 了解[GitHub 上的沉浸式读者 IOS SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS)
 * [快速入门：创建启动沉浸式读者 (Swift) 的 iOS 应用](./ios-quickstart.md)

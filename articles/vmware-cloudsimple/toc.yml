@@ -83,7 +83,7 @@
             - name: 删除私有云
               href: delete-private-cloud.md
         - name: 监视 CloudSimple 活动
-          href: 'https://docs.azure.cloudsimple.com/activity/'
+          href: monitor-activity.md
         - name: 设置私有云网络
           items:
             - name: 创建并管理 VLAN 和子网

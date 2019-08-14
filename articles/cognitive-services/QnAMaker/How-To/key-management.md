@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b9be1db9be1d4dd57994e101c07ed430425a5912
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b0b82f37b76a6bca6d84a05bc48b7ae9986fb76b
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447422"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967685"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>如何管理 QnA Maker 中的密钥
 
@@ -34,7 +34,7 @@ QnA Maker 服务处理两种密钥：**订阅密钥**和**终结点密钥**。
 
     ![QnA Maker 资源列表](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
 
-2. 转到“密钥”  。
+2. 转到“密钥”。
 
     ![订阅密钥](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
@@ -42,7 +42,7 @@ QnA Maker 服务处理两种密钥：**订阅密钥**和**终结点密钥**。
 
 可以从 [QnA Maker 门户](https://qnamaker.ai)管理终结点密钥。
 
-1. 登录 [QnA Maker 门户](https://qnamaker.ai)，转到你的个人资料，然后单击“服务设置”  。
+1. 登录 [QnA Maker 门户](https://qnamaker.ai)，转到你的个人资料，然后单击“服务设置”。
 
     ![终结点密钥](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 

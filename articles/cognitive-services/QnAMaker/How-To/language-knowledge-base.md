@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: diberry
-ms.openlocfilehash: 1203748b43ea5911d4717f451bca2cbe82753386
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 26792246267ced6d9fff50fe4fea11cc8d280d6a
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447420"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966675"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>QnA Maker 的知识库内容的语言支持
 QnA Maker 支持多种语言版本的知识库内容。 但是，每个 QnA Maker 服务应保留一种语言。 面向特定的 QnA Maker 服务创建的第一个知识库会设置该服务的语言。 有关支持的语言的完整列表，请参阅[此处](../Overview/languages-supported.md)。
@@ -24,19 +24,19 @@ QnA Maker 支持多种语言版本的知识库内容。 但是，每个 QnA Make
 
 1. 导航到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择  “资源组”并导航到已部署 QnA Maker 服务的资源组，然后选择  “Azure 搜索”资源。
+2. 选择“资源组”并导航到已部署 QnA Maker 服务的资源组，然后选择“Azure 搜索”资源。
 
     ![选择“Azure 搜索”资源](../media/qnamaker-how-to-language-kb/select-azsearch.png)
 
-3. 选择 testkb  索引。 此 Azure 搜索索引始终是第一个创建的索引，其中包含该服务中所有知识库的已保存内容。 
+3. 选择 testkb 索引。 此 Azure 搜索索引始终是第一个创建的索引，其中包含该服务中所有知识库的已保存内容。 
 
     ![选择测试知识库](../media/qnamaker-how-to-language-kb/select-testkb.png)
 
-4. 选择显示 testkb 详细信息的“字段”  部分。
+4. 选择显示 testkb 详细信息的“字段”部分。
 
     ![选择字段](../media/qnamaker-how-to-language-kb/selectfields.png)
 
-5. 选中“分析器”对应的框  以查看语言详细信息。
+5. 选中“分析器”对应的框以查看语言详细信息。
 
     ![选择分析器](../media/qnamaker-how-to-language-kb/select-analyzer.png)
 

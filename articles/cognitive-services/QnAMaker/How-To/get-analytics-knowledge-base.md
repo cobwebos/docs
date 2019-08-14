@@ -8,15 +8,15 @@ manager: nitinme
 displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5c729065076f5dc9f25189632f42ed565a72df8a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 961bb7d5f64fa6d6cafa4730a5849abb4b82478f
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563095"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967699"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>获取有关知识库的分析
 

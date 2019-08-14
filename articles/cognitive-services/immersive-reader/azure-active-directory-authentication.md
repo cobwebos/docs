@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 5a03c377a275fff489f1fb8371f9905411b67960
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e4b792a04b4926fdb56f37c089e73b90cde905d3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881547"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990145"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>将 Azure Active Directory (Azure AD) 身份验证用于沉浸式读者服务
 
@@ -134,5 +134,7 @@ ms.locfileid: "68881547"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[教程](./tutorial.md)，了解使用沉浸式阅读器 SDK 还可以做什么
-* 探索[沉浸式阅读器 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沉浸式阅读器 SDK 参考](./reference.md)
+* 查看[node.js 教程](./tutorial-nodejs.md), 了解使用 node.js 可以通过沉浸式读者 SDK 执行的其他操作
+* 查看[Python 教程](./tutorial-python.md), 了解使用 Python 的沉浸式读者 SDK 可以执行的其他操作
+* 查看[swift 教程](./tutorial-ios-picture-immersive-reader.md), 了解如何使用 swift 来处理沉浸式读者 SDK
+* 浏览[沉浸式阅读器 SDK ](https://github.com/microsoft/immersive-reader-sdk)和[沉浸式阅读器 SDK 参考](./reference.md)
