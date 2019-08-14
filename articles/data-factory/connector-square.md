@@ -45,7 +45,7 @@ Square 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Square** | 是 |
-| 主机 | Square 实例的 URL。 （即 mystore.mysquare.com）  | 是 |
+| host | Square 实例的 URL。 （即 mystore.mysquare.com）  | 是 |
 | clientId | 与 Square 应用程序关联的客户端 ID。  | 是 |
 | clientSecret | 与 Square 应用程序关联的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | redirectUri | 在 Square 应用程序仪表板中分配重定向 URL。 （即，http:\//localhost:2500）  | 是 |
