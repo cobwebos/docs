@@ -127,8 +127,14 @@
               href: active-directory-b2c-setup-goog-app.md
             - name: LinkedIn
               href: active-directory-b2c-setup-li-app.md
+            - name: QQ
+              href: active-directory-b2c-setup-qq-app.md
             - name: Twitter
               href: active-directory-b2c-setup-twitter-app.md
+            - name: 微信
+              href: active-directory-b2c-setup-wechat-app.md
+            - name: 微博
+              href: active-directory-b2c-setup-weibo-app.md
             - name: 一般标识提供者
               href: active-directory-b2c-setup-oidc-idp.md
         - name: 令牌和会话管理
@@ -221,6 +227,8 @@
           items:
             - name: 使用 Application Insights 收集日志
               href: active-directory-b2c-troubleshoot-custom.md
+            - name: 策略验证
+              href: active-directory-b2c-guide-troubleshooting-custom.md
         - name: 使用情况分析
           href: active-directory-b2c-custom-guide-eventlogger-appins.md
         - name: 引用

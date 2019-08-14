@@ -19,10 +19,6 @@
 - name: 概念
   expanded: false
   items:
-    - name: 采用条件访问
-      href: howto-conditional-access-adoption-kit.md
-    - name: 基线保护策略
-      href: concept-baseline-protection.md
     - name: 条件
       href: conditions.md
     - name: 位置条件
@@ -33,6 +29,8 @@
       href: service-dependencies.md
     - name: 假设分析工具
       href: what-if-tool.md
+    - name: 基线保护策略
+      href: concept-baseline-protection.md
 - name: 操作指南
   expanded: true
   items:
@@ -40,16 +38,6 @@
       href: plan-conditional-access.md
     - name: 最佳做法
       href: best-practices.md
-    - name: 基线策略
-      items:
-        - name: 要求管理员进行 MFA
-          href: howto-baseline-protect-administrators.md
-        - name: 最终用户保护
-          href: howto-baseline-protect-end-users.md
-        - name: 阻止传统身份验证
-          href: howto-baseline-protect-legacy-auth.md
-        - name: 要求将 MFA 用于服务管理
-          href: howto-baseline-protect-azure.md
     - name: 阻止传统身份验证
       href: block-legacy-authentication.md
     - name: 用于 MFA 注册的条件访问
@@ -68,6 +56,18 @@
       href: howto-conditional-access-session-lifetime.md
     - name: 迁移经典策略
       href: policy-migration.md
+    - name: 基线策略
+      items:
+        - name: 要求管理员进行 MFA
+          href: howto-baseline-protect-administrators.md
+        - name: 最终用户保护
+          href: howto-baseline-protect-end-users.md
+        - name: 阻止传统身份验证
+          href: howto-baseline-protect-legacy-auth.md
+        - name: 要求将 MFA 用于服务管理
+          href: howto-baseline-protect-azure.md
+    - name: 采用条件访问
+      href: howto-conditional-access-adoption-kit.md
     - name: 故障排除
       items:
         - name: 使用 What If 工具排查问题
