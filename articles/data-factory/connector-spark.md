@@ -45,7 +45,7 @@ Spark 链接服务支持以下属性：
 | host | Spark 服务器的 IP 地址或主机名  | 是 |
 | port | Spark 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
 | serverType | Spark 服务器的类型。 <br/>允许值包括：SharkServer、SharkServer2、SparkThriftServer    | 否 |
-| thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许值包括：二进制、SASL、HTTP    | 否 |
+| thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许值包括：Binary、SASL、HTTP    | 否 |
 | authenticationType | 用于访问 Spark 服务器的身份验证方法。 <br/>允许值包括：Anonymous、Username、UsernameAndPassword、WindowsAzureHDInsightService     | 是 |
 | username | 用于访问 Spark 服务器的用户名。  | 否 |
 | password | 用户所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
