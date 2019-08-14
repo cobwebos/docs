@@ -91,23 +91,27 @@
               href: choose-map-style.md
             - name: 将控件添加到地图
               href: map-add-controls.md
+            - name: 创建数据源
+              href: create-data-source-web-sdk.md
             - name: 添加符号层
               href: map-add-pin.md
-            - name: 添加弹出项
-              href: map-add-popup.md
             - name: 添加气泡层
               href: map-add-bubble-layer.md
-            - name: 添加形状
+            - name: 添加线条层
+              href: map-add-line-layer.md
+            - name: 添加多边形层
               href: map-add-shape.md
             - name: 添加热度地图层
               href: map-add-heat-map-layer.md
+            - name: 添加弹出项
+              href: map-add-popup.md
             - name: 群集点数据
               href: clustering-point-data-web-sdk.md
             - name: 使用数据驱动样式表达式
               href: data-driven-style-expressions-web-sdk.md
             - name: 如何使用图像模板
               href: how-to-use-image-templates-web-sdk.md
-            - name: 覆盖图像
+            - name: 添加图像层
               href: map-add-image-layer.md
             - name: 添加图块层
               href: map-add-tile-layer.md
@@ -139,6 +143,8 @@
           href: how-to-add-symbol-to-android-map.md
         - name: 添加形状
           href: how-to-add-shapes-to-android-map.md
+        - name: 显示功能信息
+          href: display-feature-information-android.md
         - name: 添加图块层
           href: how-to-add-tile-layer-android-map.md
 - name: 引用

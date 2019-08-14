@@ -45,7 +45,7 @@ sections:
     items:
       - type: paragraph
         text: |
-          可以使用语音 SDK（<a href="releasenotes.md">发行说明</a>）将以下功能（以及更多功能）添加到应用&colon; 
+          可以使用语音 SDK（<a href="releasenotes.md">发行说明</a>）将以下功能（以及更多功能）添加到应用&colon;
           <div class="row"><div class="column"><ul>
           <li><b><a href="speech-to-text.md">语音转文本</a></b> (speech-recognition/SR)</li>
           <li><b><a href="speech-devices-sdk-create-kws.md">自定义唤醒词</a></b> (keyword-spotter/KWS)</li>
@@ -253,10 +253,9 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="speech-to-text-sample.md">语音转文本 (SR)</a><br/>
-          - html: <a href="intent.md">意向识别</a><br/>
-          - html: <a href="translation.md">翻译</a>
-          - html: <a href="quickstart-text-to-speech-dotnet-windows.md">文本转语音</a><br/>
+          - html: '<a href="how-to-recognize-intents-from-speech-csharp.md">使用 LUIS、C# 识别语音意向</a><br/>'
+          - html: '<a href="tutorial-voice-enable-your-bot-speech-sdk.md">使用语音 SDK、C# 为机器人启用语音</a><br/>'
+          - html: <a href="../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json">生成 Flask 应用以翻译文本和合成语音 (REST)</a><br/>
   - title: 示例
     items:
       - type: paragraph

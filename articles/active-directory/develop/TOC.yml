@@ -295,6 +295,8 @@
               href: v2-oauth2-device-code.md
             - name: OAuth 2.0 资源所有者密码凭据授予
               href: v2-oauth-ropc.md
+            - name: OAuth 2.0 SAML 持有者断言流
+              href: v2-saml-bearer-assertion.md
             - name: 签名密钥滚动更新
               href: active-directory-signing-key-rollover.md
             - name: ID 令牌

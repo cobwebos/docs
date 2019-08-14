@@ -14,9 +14,11 @@
 - name: 教程
   items:
     - name: 启动沉浸式阅读器 (Node.js)
-      href: tutorial.md
+      href: tutorial-nodejs.md
+    - name: 启动沉浸式阅读器 (Python)
+      href: tutorial-python.md
     - name: 图片到沉浸式阅读器 (Swift)
-      href: ios-picture-immersive-reader-tutorial.md
+      href: tutorial-ios-picture-immersive-reader.md
 - name: 操作说明
   items:
     - name: Azure Active Directory 身份验证

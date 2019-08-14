@@ -51,7 +51,9 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="tutorial.md">使用 Node.js 启动沉浸式阅读器</a>
+          - html: <a href="tutorial-nodejs.md">使用 Node.js 启动沉浸式阅读器</a>
+          - html: <a href="tutorial-python.md">使用 Python 启动沉浸式阅读器</a>
+          - html: <a href="tutorial-ios-picture-immersive-reader.md">使用 Swift 启动沉浸式阅读器</a>
   - title: 引用
     items:
       - type: list

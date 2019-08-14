@@ -191,6 +191,12 @@
     - name: 故障排除
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
       items:
+        - name: Apache Tez 应用程序挂起
+          href: ./interactive-query-troubleshoot-tez-hangs.md
+        - name: Apache Hive LLAP 查询性能
+          href: ./interactive-query-troubleshoot-query-performance.md
+        - name: 减速器运行速度缓慢
+          href: ./interactive-query-troubleshoot-slow-reducer.md
         - name: Apache Hive 视图超时
           href: ./interactive-query-troubleshoot-view-time-out.md
         - name: 创建表时出现权限错误
