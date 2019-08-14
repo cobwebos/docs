@@ -2,19 +2,18 @@
 title: 排查 Azure 数据工厂问题 |Microsoft Docs
 description: 了解如何对 Azure 数据工厂中的外部控制活动进行故障排除。
 services: data-factory
-author: abnarain
-manager: craigg
+author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 6/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: c76242c176ba4f4c9ffc0d6934f6b645743d77f4
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
-ms.translationtype: HT
+ms.openlocfilehash: 1995ce2a91bfbc115f80c99687cc84b52ef614ec
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234583"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950111"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
 
@@ -71,11 +70,11 @@ ms.locfileid: "68234583"
 
 | 错误代码 | 错误消息                                                | 描述                                                  | 建议                          |
 | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2500         | 遇到意外的异常, 执行失败。             | 无法启动命令, 或程序返回了错误代码。 | 确保可执行文件存在。 如果程序已启动, 请确保将*stdout*和*stderr*上传到存储帐户。 最好在代码中发出详细日志进行调试。 |
+| 2500         | 遇到意外的异常，且执行失败。             | 无法启动命令, 或程序返回了错误代码。 | 确保可执行文件存在。 如果程序已启动, 请确保将*stdout*和*stderr*上传到存储帐户。 最好在代码中发出详细日志进行调试。 |
 | 2501         | 无法访问用户批处理帐户;请检查 batch 帐户设置。 | 批处理访问密钥或池名称不正确。            | 验证链接的服务中的池名称和批处理访问密钥。 |
 | 2502         | 无法访问用户存储帐户;请检查存储帐户设置。 | 存储帐户名称或访问密钥不正确。       | 验证链接的服务中的存储帐户名称和访问密钥。 |
 | 2504         | 操作返回的状态代码 "BadRequest" 无效。     | 自定义活动的 folderPath 中的文件太多。 ResourceFiles 的总大小不能超过32768个字符。 | 删除不必要的文件。 或对其进行压缩, 并添加解压缩命令来提取它们。 例如, 使用`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;  $folder\yourProgram.exe` |
-| 2505         | 除非使用帐户密钥凭据, 否则无法创建共享访问签名。 | 自定义活动只支持使用访问密钥的存储帐户。 | 请参阅错误说明。                                            |
+| 2505         | 除非使用帐户密钥凭据，否则无法创建共享访问签名。 | 自定义活动只支持使用访问密钥的存储帐户。 | 请参阅错误说明。                                            |
 | 2507         | 文件夹路径不存在或为空: ...            | 位于指定路径的存储帐户中不存在任何文件。       | 文件夹路径必须包含要运行的可执行文件。 |
 | 2508         | 资源文件夹中有重复的文件。               | 具有相同名称的多个文件位于 folderPath 的不同子文件夹中。 | 自定义活动在 folderPath 下平展文件夹结构。  如果需要保留文件夹结构, 请压缩文件, 并使用解压缩命令将这些文件解压缩到 Azure Batch 中。 例如, 使用`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;   $folder\yourProgram.exe` |
 | 2509         | 批处理 url ... 无效;它必须采用 Uri 格式。         | 批处理 Url 必须与`https://mybatchaccount.eastus.batch.azure.com` | 请参阅错误说明。                                            |
@@ -87,13 +86,13 @@ ms.locfileid: "68234583"
 
 | 错误代码 | 错误消息                                                | 描述                                                  | 建议                           |
 | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2300、2310 | Hadoop 作业提交失败。 错误：无法解析远程名称”的问题。 <br/><br/>找不到群集。 | 提供的群集 URI 无效。                              | 请确保未删除群集, 并且提供的 URI 是正确的。 在浏览器中打开 URI 时, 应会看到 Ambari UI。 如果群集位于虚拟网络中, 则 URI 应为专用 URI。 若要打开它, 请使用同一虚拟网络中的 VM。 有关详细信息, 请参阅[直接连接到 Apache Hadoop 服务](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services)。 |
-| 2300         | Hadoop 作业提交失败。 作业: ..., 群集: .../ 错误：任务已取消。 | 作业提交超时。                         | 此问题可能是常规 HDInsight 连接或网络连接。 首先确认 HDInsight Ambari UI 可从任何浏览器获得。 确认凭据仍然有效。 如果使用自承载集成运行时 (IR), 请确保从安装自承载 IR 的 VM 或计算机中执行此操作。 然后尝试再次从数据工厂提交作业。 如果仍失败, 请与数据工厂团队联系以获取支持。 |
-| 2300         | 未经许可 Ambari 用户名或密码不正确  <br/><br/>未经许可 用户管理员在 Ambari 中被锁定。   <br/><br/>403-禁止访问:访问被拒绝。 | HDInsight 的凭据不正确或已过期。 | 更正凭据并重新部署链接服务。 首先, 请确保凭据在 HDInsight 上起作用, 方法是在任何浏览器上打开群集 URI 并尝试登录。 如果凭据不起作用, 则可以从 Azure 门户重置它们。 |
+| 2300、2310 | Hadoop 作业提交失败。 错误：无法解析远程名称。 <br/><br/>找不到群集。 | 提供的群集 URI 无效。                              | 请确保未删除群集, 并且提供的 URI 是正确的。 在浏览器中打开 URI 时, 应会看到 Ambari UI。 如果群集位于虚拟网络中, 则 URI 应为专用 URI。 若要打开它, 请使用同一虚拟网络中的 VM。 有关详细信息, 请参阅[直接连接到 Apache Hadoop 服务](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services)。 |
+| 2300         | Hadoop 作业提交失败。 作业: ...，群集: .../。 错误：任务已取消。 | 作业提交超时。                         | 此问题可能是常规 HDInsight 连接或网络连接。 首先确认 HDInsight Ambari UI 可从任何浏览器获得。 确认凭据仍然有效。 如果使用自承载集成运行时 (IR), 请确保从安装自承载 IR 的 VM 或计算机中执行此操作。 然后尝试再次从数据工厂提交作业。 如果仍失败, 请与数据工厂团队联系以获取支持。 |
+| 2300         | 未授权: Ambari 用户名或密码不正确  <br/><br/>未授权: 用户管理员在 Ambari 中被锁定。   <br/><br/>403-禁止访问:拒绝访问。 | HDInsight 的凭据不正确或已过期。 | 更正凭据并重新部署链接服务。 首先, 请确保凭据在 HDInsight 上起作用, 方法是在任何浏览器上打开群集 URI 并尝试登录。 如果凭据不起作用, 则可以从 Azure 门户重置它们。 |
 | 2300、2310 | 502 - Web 服务器在充当网关或代理服务器时收到了无效响应。       <br/>网关错误。 | 此错误来自 HDInsight。                               | 此错误来自 HDInsight 群集。 有关详细信息, 请参阅[AMBARI UI 502 错误](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)、[连接到 spark Thrift 服务器时出现502错误](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)、 [502 连接到 spark Thrift 服务器的错误](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)和[排查应用程序网关中的网关错误](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502)。 |
-| 2300         | Hadoop 作业提交失败。 作业: ..., 群集: ...错误: {\"错误\":\"无法为提交作业请求提供服务, 因为 templeton 服务正在忙于太多提交作业请求。 请等待一段时间, 然后重试该操作。 请参阅配置 templeton 以配置并发请求。  <br/><br/>Hadoop 作业提交失败。 任务161da5d4-6fa8-4ef4-a240-6b6428c5ae2f, 群集: `https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/`。   错误: {\"error\":\"IOException: yarn. YarnException:。:未能将 application_1561147195099_3730 提交到 YARN: AccessControlException:Joblauncher 已有500应用程序, 无法接受应用程序的提交: application_1561147195099_3730 \ | 同时提交到 HDInsight 的作业太多。 | 请考虑限制提交到 HDInsight 的并发作业的数目。 如果作业正在由同一活动提交, 则请参阅数据工厂活动并发性。 更改触发器, 使并发管道运行随时间而分散。 如错误的建议, 请`templeton.parallellism.job.submit`参阅 HDInsight 文档进行调整。 |
-| 2303、2347 | Hadoop 作业失败, 退出代码为 "5"。 有关更wasbs://adfjobs@adftrialrun.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr多详细信息, 请参阅 ""。  <br/><br/>Hive 执行失败, 错误代码为 "UserErrorHiveOdbcCommandExecutionFailure"。   有关更wasbs://adfjobs@eclsupplychainblobd.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out多详细信息, 请参阅 ""。 | 作业已提交到 HDInsight, 在 HDInsight 上失败。 | 已成功将作业提交到 HDInsight。 群集上的失败。 打开 HDInsight Ambari UI 中的作业和日志, 或从存储中打开该文件, 如错误消息所述。 文件显示错误详细信息。 |
-| 2328         | 处理请求时出现内部服务器错误。 请重试请求或联系支持人员。 | 此错误按需在 HDInsight 中发生。                              | 当 HDInsight 设置失败时, 此错误来自 HDInsight 服务。 联系 HDInsight 团队并提供按需群集名称。 |
+| 2300         | Hadoop 作业提交失败。 作业: ..., 群集: ...错误: {\"错误\":\"无法为提交作业请求提供服务，因为 templeton 服务正忙于处理过多的提交作业请求。 请等待一段时间，然后重试该操作。 请参阅配置 templeton 以配置并发请求。  <br/><br/>Hadoop 作业提交失败。 作业:161da5d4-6fa8-4ef4-a240-6b6428c5ae2f, 群集: `https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/`。   错误: {\"错误\":\"java.io.IOException: org.apache.hadoop.yarn.exceptions.YarnException:无法将 application_1561147195099_3730 提交到 YARN: org.apache.hadoop.security.AccessControlException:队列 root.joblauncher 已包含 500 个应用程序，无法接受应用程序提交: application_1561147195099_3730\ | 同时提交到 HDInsight 的作业太多。 | 请考虑限制提交到 HDInsight 的并发作业的数目。 如果作业正在由同一活动提交, 则请参阅数据工厂活动并发性。 更改触发器，将并发管道运行分散到不同的时间。 如错误的建议, 请`templeton.parallellism.job.submit`参阅 HDInsight 文档进行调整。 |
+| 2303、2347 | Hadoop 作业失败并返回了退出代码 "5"。 有关更多详细信息，请参阅“wasbs://adfjobs@adftrialrun.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr”。  <br/><br/>Hive 执行失败并返回了错误代码 'UserErrorHiveOdbcCommandExecutionFailure'。   有关更wasbs://adfjobs@eclsupplychainblobd.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out多详细信息, 请参阅 ""。 | 作业已提交到 HDInsight, 在 HDInsight 上失败。 | 已成功将作业提交到 HDInsight。 群集上的失败。 打开 HDInsight Ambari UI 中的作业和日志, 或从存储中打开该文件, 如错误消息所述。 文件显示错误详细信息。 |
+| 2328         | 处理请求时发生内部服务器错误。 请重试请求或联系支持人员。 | 此错误按需在 HDInsight 中发生。                              | 当 HDInsight 设置失败时, 此错误来自 HDInsight 服务。 联系 HDInsight 团队并提供按需群集名称。 |
 | 2310         | java.lang.NullPointerException                               | 将作业提交到 Spark 群集时, 会发生此错误。      | 此异常来自 HDInsight。 它隐藏了实际问题。 请联系 HDInsight 团队寻求支持。 为它们提供群集名称和活动运行时间范围。 |
 |              | 所有其他错误                                             |                                                              | 请参阅使用 HDInsight 和[HDINSIGHT 常见问题](https://hdinsight.github.io/)[进行故障排除](../hdinsight/hdinsight-troubleshoot-guide.md)。 |
 
@@ -106,7 +105,7 @@ ms.locfileid: "68234583"
 | 2108         | 无效的 HttpMethod: "..."。                                    | Web 活动不支持在活动有效负载中指定的 HTTP 方法。 | 支持的 HTTP 方法有 PUT、POST、GET 和 DELETE。 |
 | 2108         | 无效的服务器错误500。                                     | 终结点上的内部错误。                               | 使用 Fiddler 或 Postman 检查 URL 的功能。 |
 | 2108         | 未经授权的401。                                             | 请求上缺少有效身份验证。                      | 令牌可能已过期。 提供有效的身份验证方法。 使用 Fiddler 或 Postman 检查 URL 的功能。 |
-| 2108         | 禁用403。                                                | 缺少所需的权限。                                 | 检查访问的资源的用户权限。 使用 Fiddler 或 Postman 检查 URL 的功能。  |
+| 2108         | 禁用403。                                                | 缺少所需的权限。                                 | 检查用户对所要访问的资源的权限。 使用 Fiddler 或 Postman 检查 URL 的功能。  |
 | 2108         | 错误的请求400。                                              | 无效的 HTTP 请求。                                         | 检查请求的 URL、谓词和正文。 使用 Fiddler 或 Postman 来验证该请求。  |
 | 2108         | 未找到404。                                                | 找不到该资源。                                       | 使用 Fiddler 或 Postman 来验证该请求。  |
 | 2108         | 服务不可用。                                          | 服务不可用。                                       | 使用 Fiddler 或 Postman 来验证该请求。  |

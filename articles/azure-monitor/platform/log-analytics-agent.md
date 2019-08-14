@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 653355af7dcb0b30c3deb444fcfe4b4ff76e7e77
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6c8f9c98d645f60ea9281d1ca2aa15731c9c1e80
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424116"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954996"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>用 Log Analytics agent 收集日志数据
 
@@ -34,13 +34,21 @@ Azure Log Analytics 代理，前称为 Microsoft Monitoring Agent (MMA) 或 OMS 
 
 适用于 Linux 和 Windows 的代理通过 TCP 端口 443 与 Azure Monitor 服务进行出站通信；如果计算机通过防火墙或代理服务器连接以通过 Internet 进行通信，请查看以下要求来了解所需的网络配置。 如果 IT 安全策略不允许网络上的计算机连接到 Internet，则可以设置 [Log Analytics 网关](gateway.md)并将代理配置为通过该网关连接到 Azure Monitor 日志。 然后，代理可以接收配置信息，并发送根据已在工作区中启用的数据收集规则和监视解决方案收集的数据。 
 
-如果使用 System Center Operations Manager 2012 R2 或更高版本监视计算机，该计算机可以与 Azure Monitor 服务进行多宿主连接，以便收集数据并将数据转发到该服务，且仍受 [Operations Manager](../../azure-monitor/platform/om-agents.md) 监视。 对于 Linux 计算机，代理不像 Windows 代理那样包含运行状况服务组件，信息由管理服务器代表它收集和处理。 由于 Linux 计算机与 Operations Manager 的监视方式不同，因此它们不会直接接收配置或收集数据，而是像 Windows 代理管理的系统那样通过管理组转发。 因此, Linux 计算机不支持此方案 Operations Manager 报告到, 你需要将 Linux 计算机配置为按两个步骤向[Operations Manager 管理组](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)和 Log Analytics 工作区报告。
+当使用 Log Analytics 代理收集数据时, 需要了解以下各项, 以便规划代理部署:
 
-Windows 代理最多可以向四个 Log Analytics 工作区报告，而 Linux 代理只支持向单个工作区报告。  
+* 若要从 Windows 代理收集数据, 你可以[将每个代理配置为向一个或多个工作区报告](agent-windows.md), 即使它向 System Center Operations Manager 管理组报告。 Windows 代理最多可报告四个工作区。
+* Linux 代理不支持多宿主, 只能向单个工作区进行报告。
+
+如果使用 System Center Operations Manager 2012 R2 或更高版本:
+
+* 每个 Operations Manager 管理组只能[连接到一个工作区](om-agents.md)。
+* 向管理组报告的 Linux 计算机必须配置为直接报告到 Log Analytics 工作区。 如果 Linux 计算机已直接向工作区报告并想要使用 Operations Manager 进行监视, 请按照以下步骤向[Operations Manager 管理组报告](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)。
+* 你可以在 Windows 计算机上安装 Log Analytics Windows 代理, 并将其报告为与工作区集成的 Operations Manager 和其他工作区。
 
 适用于 Linux 和 Windows 的代理不仅适用于连接到 Azure Monitor, 还支持 Azure 自动化以托管混合 Runbook 辅助角色和其他服务, 如[更改跟踪](../../automation/change-tracking.md)、[更新管理](../../automation/automation-update-management.md)和[Azure 安全中心](../../security-center/security-center-intro.md). 有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)。  
 
 ## <a name="supported-windows-operating-systems"></a>支持的 Windows 操作系统
+
 Windows 代理官方支持以下版本的 Windows 操作系统：
 
 * Windows Server 2019
@@ -125,9 +133,9 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 |--------|-------------|
 |Protocol | https |
 |用户 | 用于代理身份验证的可选用户名 |
-|密码 | 用于代理身份验证的可选密码 |
+|password | 用于代理身份验证的可选密码 |
 |proxyhost | 代理服务器/Log Analytics 网关的地址或 FQDN |
-|端口 | 代理服务器/Log Analytics 网关的可选端口号 |
+|port | 代理服务器/Log Analytics 网关的可选端口号 |
 
 例如： `https://user01:password@proxy01.contoso.com:30443`
 

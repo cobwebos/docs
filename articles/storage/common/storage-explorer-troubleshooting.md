@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: fd34ab7cd899549962663e8cee8ee2121c39c49e
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 96a8eab57f1714eed4831bea01508e9140d1dfad
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840385"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934991"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -22,7 +22,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 
 ## <a name="role-based-access-control-permission-issues"></a>基于角色的访问控制权限问题
 
-[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 是通过将权限集组合成“角色”，来提供对 Azure 资源的精细访问管理。  可遵循以下建议在存储资源管理器中正常运行 RBAC。
+[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 是通过将权限集组合成“角色”，来提供对 Azure 资源的精细访问管理。 可遵循以下建议在存储资源管理器中正常运行 RBAC。
 
 ### <a name="what-do-i-need-to-see-my-resources-in-storage-explorer"></a>需要满足哪些条件才能在存储资源管理器中查看我的资源？
 
@@ -39,7 +39,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 存储资源管理器还可以使用帐户密钥对请求进行身份验证。 可以使用权限更高的角色（例如“参与者”角色）来获取密钥的访问权限。
 
 > [!NOTE]
-> 访问密钥向其任何持有者授予不受限制的权限。 因此，通常不建议它们分发给用户帐户。 如果需要撤消访问密钥，可以通过 [Azure 门户](https://portal.azure.com/)重新生成访问密钥。
+> 访问密钥向其任何持有者授予不受限制的权限。 因此，通常不建议将其分发给帐户用户。 如果需要撤消访问密钥，可以通过 [Azure 门户](https://portal.azure.com/)重新生成访问密钥。
 
 #### <a name="data-roles"></a>数据角色
 
@@ -47,7 +47,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>为何需要管理层角色才能在存储资源管理器中查看我的资源？
 
-Azure 存储提供两个访问层：“管理”和“数据”。   订阅和存储帐户是通过管理层访问的。 容器、Blob 和其他数据资源是通过数据层访问的。 例如，若要从 Azure 获取存储帐户的列表，应向管理终结点发送请求。 若要列出帐户中的 Blob 容器，应向相应的服务终结点发送请求。
+Azure 存储提供两个访问层：“管理”和“数据”。 订阅和存储帐户是通过管理层访问的。 容器、Blob 和其他数据资源是通过数据层访问的。 例如，若要从 Azure 获取存储帐户的列表，应向管理终结点发送请求。 若要列出帐户中的 Blob 容器，应向相应的服务终结点发送请求。
 
 RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读取者”角色授予对管理层资源的只读访问权限。
 
@@ -55,7 +55,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 在存储资源管理器中，可以通过收集连接到 Azure 资源所需的信息，来轻松访问资源。 例如，若要显示 Blob 容器，存储资源管理器会向 Blob 服务终结点发送“列出容器”请求。 若要获取该终结点，存储资源管理器会搜索你有权访问的订阅和存储帐户列表。 但是，若要查找订阅和存储帐户，存储资源管理器还需要有权访问管理层。
 
-如果您没有授予任何管理层的权限的角色，存储资源管理器无法获取它需要连接到数据层的信息。
+如果没有授予任何管理层权限的角色, 存储资源管理器无法获取连接到数据层所需的信息。
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>如果我无法从管理员获取管理层权限，该怎么办？
 
@@ -71,7 +71,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 当存储资源管理器看到自签名或不受信任的证书时，无法再判断收到的 HTTPS 消息是否被更改。 如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
 
 1. 获取证书的 Base-64 编码 X.509 (.cer) 副本
-2. 单击“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开 .cer 文件   
+2. 单击“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开 .cer 文件
 
 此问题还有可能是由于存在多个证书（根证书和中间证书）造成的。 必须添加这两个证书才能解决错误。
 
@@ -81,12 +81,12 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html)（任意轻量版本应该都满足要求）
     * Mac 和 Linux：应包含在操作系统中
 2. 运行 Open SSL
-    * Windows：打开安装目录，单击“/bin/”，然后双击“openssl.exe”。  
-    * Mac 和 Linux：从终端运行“openssl”。 
+    * Windows：打开安装目录，单击“/bin/”，然后双击“openssl.exe”。
+    * Mac 和 Linux：从终端运行“openssl”。
 3. 执行 `s_client -showcerts -connect microsoft.com:443`
 4. 查找自签名证书。 如果不确定哪些证书是自签名证书，请查看使用者 `("s:")` 和证书颁发者 `("i:")` 相同的任意位置。
-5. 找到任何自签名证书后，将每个证书中从“-----BEGIN CERTIFICATE-----”（含）到“-----END CERTIFICATE-----”（含）的部分复制和粘贴到新的 .cer 文件。  
-6. 打开存储资源管理器，单击“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开创建的 .cer 文件。   
+5. 找到任何自签名证书后，将每个证书中从“-----BEGIN CERTIFICATE-----”（含）到“-----END CERTIFICATE-----”（含）的部分复制和粘贴到新的 .cer 文件。
+6. 打开存储资源管理器，单击“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开创建的 .cer 文件。
 
 如果通过上述步骤无法找到任何自签名证书，请通过反馈工具联系我们以获取更多帮助。 也可选择通过命令行使用 `--ignore-certificate-errors` 标志启动存储资源管理器。 使用此标志启动后，存储资源管理器将忽略证书错误。
 
@@ -115,9 +115,9 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 2. 从计算机中删除 .IdentityService 文件夹。 在 Windows 中，该文件夹位于 `C:\users\<username>\AppData\Local`。 对于 Mac 和 Linux，可以在用户目录的根目录中找到该文件夹。
 3. 如果使用的是 Mac 或 Linux，则还需要从 OS 的密钥存储中删除 Microsoft.Developer.IdentityService 条目。 在 Mac 上，密钥存储是“Gnome Keychain”应用程序。 对于 Linux，该应用程序通常称为“Keyring”，但名称可能会有所不同，具体取决于分发版。
 
-### <a name="conditional-access"></a>条件性访问
+### <a name="conditional-access"></a>条件访问
 
-在 Windows 10、 Linux 或 macOS 上使用存储资源管理器时，不支持条件性访问。 这是因为存储资源管理器使用的 AAD 库中的限制。
+如果在 Windows 10、Linux 或 macOS 上使用存储资源管理器, 则不支持条件访问。 这是因为存储资源管理器使用的 AAD 库有限制。
 
 ## <a name="mac-keychain-errors"></a>Mac 密钥链错误
 
@@ -131,7 +131,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
     ![image](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
 5. 启动存储资源管理器。
-6. 应出现一个弹出窗口，其中显示“服务中心想要访问密钥链”。 如果是这样，请输入 Mac 管理员帐户密码，然后单击“始终允许”  （如果“始终允许”  不可用，则单击“允许”  ）。
+6. 应出现一个弹出窗口，其中显示“服务中心想要访问密钥链”。 如果是这样，请输入 Mac 管理员帐户密码，然后单击“始终允许”（如果“始终允许”不可用，则单击“允许”）。
 7. 请尝试登录。
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>常规登录故障排除步骤
@@ -148,11 +148,11 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 如果成功登录后无法检索订阅，请尝试以下故障排除方法：
 
-* 验证你的帐户是否有权访问所需的订阅。 可以通过登录到门户正在尝试使用的 Azure 环境中验证你的访问权限。
-* 请确保你已登录中使用正确的 Azure 环境 （Azure、 Azure 中国 21Vianet、 Azure Germany、 Azure 美国政府或自定义环境）。
+* 验证你的帐户是否有权访问所需的订阅。 可以通过登录到尝试使用的 Azure 环境的门户，来验证是否能够访问这些订阅。
+* 请确保已使用正确的 Azure 环境 (Azure、Azure 中国世纪互联、Azure 德国、Azure 美国政府或自定义环境) 登录。
 * 如果使用代理，请确保已正确配置存储资源管理器代理。
 * 尝试移除并重新添加帐户。
-* 如果有“更多信息”链接，请查看针对失败的租户报告的错误消息。 如果 you'ren 不确定应如何处理错误消息，请参阅然后到可随时[打开在 GitHub 上](https://github.com/Microsoft/AzureStorageExplorer/issues)。
+* 如果有“更多信息”链接，请查看针对失败的租户报告的错误消息。 如果 you'ren't 确定如何处理你看到的错误消息, 则可随意[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
 ## <a name="cant-remove-attached-account-or-storage-resource"></a>无法删除附加的帐户或存储资源
 
@@ -244,22 +244,22 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 You can also download the application .tar.gz file, but you'll have to install dependencies manually. -->
 
 > [!IMPORTANT]
-> 存储资源管理器中提供。 有关 Ubuntu 发行版仅支持 tar.gz 下载。 其他发行版未验证，可能需要替代或其他包。
+> 仅 Ubuntu 发行版支持 .tar.gz 下载中提供的存储资源管理器。 其他发行版尚未经过验证，可能需要替代包或附加包。
 
-这些包在 Linux 上的存储资源管理器的最常见要求是：
+这些包是 Linux 上存储资源管理器的最常见要求：
 
-* [.NET core 2.0 运行时](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET Core 2.0 运行时](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
 * `libgconf-2-4`
 * `libgnome-keyring0` 或 `libgnome-keyring-dev`
 * `libgnome-keyring-common`
 
 > [!NOTE]
-> 存储资源管理器 1.7.0 及更低版本需要 .NET Core 2.0。 如果已安装的.NET Core 的较新版本，则您将需要[修补存储资源管理器](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果运行存储资源管理器 1.8.0 或更高版本，则最高应该能使用 .NET Core 2.2。 高于 2.2 的版本目前尚未验证其使用情况。
+> 存储资源管理器 1.7.0 及更低版本需要 .NET Core 2.0。 如果安装了更高版本的 .NET Core，则需[修补存储资源管理器](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果运行存储资源管理器 1.8.0 或更高版本，则最高应该能使用 .NET Core 2.2。 高于 2.2 的版本目前尚未验证其使用情况。
 
 # <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
 
 1. 下载存储资源管理器。
-2. 安装[.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current)。
+2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current)。
 3. 运行下面的命令：
    ```bash
    sudo apt-get install libgconf-2-4 libgnome-keyring0
@@ -268,7 +268,7 @@ You can also download the application .tar.gz file, but you'll have to install d
 # <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. 下载存储资源管理器。
-2. 安装[.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current)。
+2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current)。
 3. 运行下面的命令：
    ```bash
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
@@ -277,7 +277,7 @@ You can also download the application .tar.gz file, but you'll have to install d
 # <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. 下载存储资源管理器
-2. 安装[.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current)。
+2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current)。
 3. 运行下面的命令：
    ```bash
    sudo apt install libgnome-keyring-dev
@@ -286,18 +286,19 @@ You can also download the application .tar.gz file, but you'll have to install d
 # <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. 下载存储资源管理器
-2. 安装[.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current)。
+2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current)。
 3. 运行下面的命令：
    ```bash
    sudo apt install libgnome-keyring-dev
    ```
+---
 
 ### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>修补适用于 .NET Core 更高版本的存储资源管理器
 
-存储资源管理器 1.7.0 或更低版本，可能需要修补的存储资源管理器使用的.NET Core 版本。
+对于存储资源管理器 1.7.0 或更早版本，可能需要修补存储资源管理器使用的 .NET Core 版本。
 
-1. [从 Nuget](https://www.nuget.org/packages/StreamJsonRpc/1.5.43) 中下载 StreamJsonRpc 版本 1.5.43。 查找的页面右侧的"下载包"链接。
-2. 下载包后, 更改其文件扩展名从`.nupkg`到`.zip`。
+1. [从 Nuget](https://www.nuget.org/packages/StreamJsonRpc/1.5.43) 中下载 StreamJsonRpc 版本 1.5.43。 在页面的右侧找到“下载包”链接。
+2. 下载该包后，将其文件扩展名从 `.nupkg` 更改为 `.zip`。
 3. 将包解压缩。
 4. 打开 `streamjsonrpc.1.5.43/lib/netstandard1.1/` 文件夹。
 5. 将 `StreamJsonRpc.dll` 复制到存储资源管理器文件夹中的以下位置：

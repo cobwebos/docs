@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 6fb989632d3165ac5e54e540aae4385fc2258c85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e94c4f179174a3957aef8828687ebf1fbb299903
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66256904"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967424"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据
 
@@ -65,7 +65,7 @@ ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和
 
 为了进行正常的增量处理，不允许将来自不同 DTP 的请求 ID 置于同一 Open Hub 表中。 因此，不得为单个 Open Hub 目标 (OHD) 创建多个 DTP。 需要从同一 InfoProvider 进行完全提取和增量提取时，应该为同一 InfoProvider 创建两个 OHD。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要使用此 SAP Business Warehouse Open Hub 连接器，需要：
 
@@ -82,7 +82,7 @@ ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和
 
 - 将 SAP Open Hub Destination 类型创建为“数据库表”（勾选“技术密钥”选项）。  另外还建议取消选中“从表中删除数据”，虽然这不是必需的操作。 利用 DTP（直接执行或集成到现有进程链中）将数据从所选源对象（例如多维数据集）移到 Open Hub Destination 表。
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>开始使用
 
 > [!TIP]
 >
@@ -99,7 +99,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapOpenHub** | 是 |
-| server | SAP BW 实例所驻留的服务器的名称。 | 是 |
+| 服务器 | SAP BW 实例所驻留的服务器的名称。 | 是 |
 | systemNumber | SAP BW 系统的系统编号。<br/>允许值：用字符串表示的两位十进制数。 | 是 |
 | clientId | SAP W 系统中的客户端的客户端 ID。<br/>允许值：用字符串表示的三位十进制数。 | 是 |
 | language | SAP 系统使用的语言。 | 否（默认值为 **EN**）|
@@ -174,6 +174,8 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从 SAP BW Open Hub 复制数据，请将复制活动中的源类型设置为“SapOpenHubSource”。 复制活动的 **source** 节中没有其他特定于类型的必需属性。
 
+若要加快数据加载速度, 可以在复制[`parallelCopies`](copy-activity-performance.md#parallel-copy)活动上设置, 以并行从 SAP BW 打开的中心加载数据。 例如, 如果将设置`parallelCopies`为 4, 则数据工厂会同时执行四个 RFC 调用, 并且每个 rfc 调用都将从 SAP BW 打开的中心表中检索部分数据, 并按 DTP 请求 id 和包 id 进行分区。 这适用于唯一 DTP 请求 ID + 包 ID 的数量大于的值`parallelCopies`时。
+
 **示例：**
 
 ```json
@@ -199,7 +201,8 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
             },
             "sink": {
                 "type": "<sink type>"
-            }
+            },
+            "parallelCopies": 4
         }
     }
 ]

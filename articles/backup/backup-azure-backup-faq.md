@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c41381dd3e53c80e74da3dc0d0a08e1ac83daec6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 415a25dbe63b8942509827cd8434cc0f50fde87a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827635"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954813"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 本文回答有关 Azure 备份服务的常见问题。
@@ -27,7 +27,7 @@ ms.locfileid: "68827635"
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>保管库中可保护的数据源/项有多少？ 
 在保管库中的所有工作负荷 (IaaS VM、SQL、AFS 等) 上, 最多可以保护2000数据源/项。<br>  
-例如, 如果你已经在保管库中保护了 500 Vm 和 400 Azure 文件共享, 则只能1100保护其中的 SQL 数据库。 
+例如, 如果你已经在保管库中保护了 500 Vm 和400个 Azure 文件共享, 则只能1100保护其中的 SQL 数据库。 
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>可以为每个保管库创建多少个策略？ 
 每个保管库最多只能有200个策略。
@@ -36,7 +36,7 @@ ms.locfileid: "68827635"
 设置备份时，你想要一起恢复的服务器数据应使用相同密码。 如果要将恢复隔离到一个特定服务器或多个服务器，仅使用该服务器的密码。 例如，人力资源服务器可能使用一个加密通行短语，会计结算服务器使用另一个通行短语，而存储服务器使用第三个通行短语。
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>是否可以在订阅之间移动我的保管库？
-是的。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
+是的。 若要移动恢复服务保管库, 请参阅此[文](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>是否可以将备份数据移动到另一个保管库？
 否。 保管库中存储的备份数据无法移动到不同的保管库。
@@ -45,7 +45,7 @@ ms.locfileid: "68827635"
 否。 仅在存储任何备份之后，恢复服务保管库才可更改存储选项。
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>是否可以对备份到恢复服务保管库的 VM 执行项级别还原 (ILR)？
-- 由 Azure VM 备份支持的 Azure VM 支持 ILR。 有关详细信息，请参见[文章](backup-azure-restore-files-from-vm.md)
+- 由 Azure VM 备份支持的 Azure VM 支持 ILR。 有关详细信息, 请参阅[文章](backup-azure-restore-files-from-vm.md)
 - Azure 备份服务器或 System Center DPM 备份的本地 Vm 的在线恢复点不支持 ILR。
 
 
@@ -54,7 +54,7 @@ ms.locfileid: "68827635"
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>在哪里可以找到有关 Azure VM 备份的 Azure 备份代理的常见问题？
 
 - 有关在 Azure VM 上运行的代理，请阅读此[常见问题解答](backup-azure-vm-backup-faq.md)。
-- 有关用于备份 Azure 文件夹的代理，阅读此[常见问题解答](backup-azure-file-folder-backup-faq.md)。
+- 对于用于备份 Azure 文件文件夹的代理, 请阅读以下[常见问题解答](backup-azure-file-folder-backup-faq.md)。
 
 
 ## <a name="general-backup"></a>常规备份
@@ -125,7 +125,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 - Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。
 - 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。
-- 下一次备份作业将是以前备份的数据的增量。 增量备份仅传输新增或更改的数据，这相当于更好地利用带宽。
+- 下一次备份作业将是以前备份的数据的增量。 增量备份仅传输新数据或更改的数据, 这等同于更好地利用带宽。
 
 如果取消了 Azure VM 的备份作业，则已传输的数据会被忽略。 下次备份作业将传输上次成功的备份作业之后的增量数据。
 
@@ -138,7 +138,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 是的，可以自定义策略。 例如，可以配置每周和每日保留期要求，但不能配置每年和每月保留期要求。
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>是否可以对备份计划和保留策略使用不同时间？
-否。 只能在备份时间点应用保留策略。 例如，此图显示了中午 12 点和下午 6 点创建的备份保留策略。
+否。 只能在备份时间点应用保留策略。 例如, 此图显示了在12am 和下午6点创建的备份的保留策略。
 
 ![计划备份和保持](./media/backup-azure-backup-faq/Schedule.png)
 

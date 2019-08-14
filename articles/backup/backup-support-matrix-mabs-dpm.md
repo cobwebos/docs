@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: c4d01c3c72669f7fbfd5b2d8df0678cc0675ccde
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7f890ddf7aff63189a720f3d604b00610af7a933
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639564"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949847"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -55,7 +55,7 @@ DPM 和 MABS 支持备份各种应用、服务器和客户端操作系统。 它
 **方案** | **代理** | **Location**
 --- | --- | ---
 **备份本地计算机/工作负荷** | DPM/MABS 保护代理在要备份的计算机上运行。<br/><br/> DPM/MABS 服务器上的 MARS 代理。<br/> 启用此功能所需的 Microsoft Azure 恢复服务代理或 Azure 备份代理的最低版本为 2.0.8719.0。  | DPM/MABS 必须在本地运行。
-**Azure VM/工作负荷的备份** | 受保护计算机上的 DPM/MABS 保护代理。<br/><br/> DPM/MABS 服务器上的 MARS 代理。 | DPM/MABS 必须在 Azure VM 上运行。
+
 
 ## <a name="supported-deployments"></a>支持的部署
 
@@ -166,9 +166,9 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 **Windows Server 2012 R2（Datacenter 和 Standard）**<br/><br/> 64/32 位 | MABS v3、v2 | 本地/Azure VM。 | **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> **Azure VMprotection**：卷/共享/文件夹/文件。<br/><br/> 支持已删除重复数据的卷。 |
 **Windows Server 2012 SP1（Datacenter 和 Standard）**<br/><br/> 64/32 位 | MABS v3、v2 <br/><br/> 必须安装 [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)。 | 本地/Azure VM。 | **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> **Azure VM 保护**：卷/共享/文件夹/文件。<br/><br/> 支持已删除重复数据的卷。 |
 **Windows 2008 R2 SP1（Standard 和 Enterprise）**<br/><br/> 64/32 位 | MABS v3、v2 支持。<br/><br/> 必须安装 [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)。 | 本地/Azure VM。 |   **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> **Azure VM 保护**：卷/共享/文件夹/文件。<br/><br/> 支持已删除重复数据的卷。 |
-**Windows 2008 R2（Standard 和 Enterprise）**<br/><br/> 64/32 位 | 对于 MABS v2/v3，OS 必须运行 SP1。 | 本地/Azure VM。 | **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> **Azure VM 保护**：卷/共享/文件夹/文件。<br/><br/> 支持已删除重复数据的卷。 |
-**Windows Server 2008 SP2**<br/><br/> 64/32 位 | MABS v2、v3 | 如果将 MABS 部署为 VMware VM，则支持 MABS v2、v3。<br/><br/> 不支持 Azure VM 上运行的 MABS。 | 卷/共享/文件夹/文件；系统状态/裸机。 |
-**Windows Storage Server 2008** | MABS v2、v3 | 用作本地物理服务器/Hyper-V VM 的 MABS。 <br/><br/> 不支持 Azure VM 上运行的 MABS。 | 卷/共享/文件夹/文件；系统状态/裸机。
+**Windows 2008 R2（Standard 和 Enterprise）**<br/><br/> 64/32 位 | 对于 MABS v3, v2 操作系统必须运行 SP1。 | 本地/Azure VM。 | **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> **Azure VM 保护**：卷/共享/文件夹/文件。<br/><br/> 支持已删除重复数据的卷。 |
+**Windows Server 2008 SP2**<br/><br/> 64/32 位 | MABS v3、v2 | 当 MABS 部署为 VMware VM 时, 支持 MABS v2。<br/><br/> 不支持 Azure VM 上运行的 MABS。 | 卷/共享/文件夹/文件；系统状态/裸机。 |
+**Windows Storage Server 2008** | MABS v3、v2 | 用作本地物理服务器/Hyper-V VM 的 MABS。 <br/><br/> 不支持 Azure VM 上运行的 MABS。 | 卷/共享/文件夹/文件；系统状态/裸机。
 **SQL Server 2017** | MABS v3 | 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。 |
 **SQL Server 2016/2016 SP1** | MABS v3、v2 | 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。 |
 **SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | MABS v3、v2 | 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。 |
@@ -195,7 +195,7 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 **Windows 2008 R2（Standard 和 Enterprise）**<br/><br/> 64/32 位 | 本地。<br/><br/> 无法将 DPM 安装为 VMware VM。<br/><br/> 不支持 Azure VM 上运行的 DPM。 | **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。
 **Windows Server 2008 SP2**<br/><br/> 64/32 位 | 仅限本地。<br/><br/> 支持作为 VMware VM 运行的 DPM。 不支持作为物理服务器或 Hyper-V VM 运行。 | 卷/共享/文件夹/文件；系统状态/裸机。
 **Windows Storage Server 2008** | 在本地作为物理服务器或 Hyper-V VM 运行的 DPM。 | 卷/共享/文件夹/文件；系统状态/裸机。
-**SQL Server 2017** | DPM SAC；运行更新汇总 5 或更高版本的 DPM 2016。<br/><br/> 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。
+**SQL Server 2017** | DPM SAC;运行更新汇总5或更高版本的 DPM 2016。<br/><br/> 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。
 **SQL Server 2016 SP1** | 不支持 DPM 2012 R2；支持 DPM SAC，以及运行更新汇总 4 或更高版本的 DPM 2016。<br/><br/> 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。
 **SQL Server 2016** | 不支持 DPM 2012 R2。 支持 DPM SAC，以及运行更新汇总 2 和更高版本的 DPM 2016。<br/><br/> 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。
 **SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | 包含运行更新汇总 4 和更高版本的 DPM 2012 R2 的 SQL Server 2014。<br/><br/> 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。

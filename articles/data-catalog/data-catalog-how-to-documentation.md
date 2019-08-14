@@ -6,14 +6,15 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 5c0bc97e5a5b362ea78f82ea99bb967a9607093a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e9e9013d354585d04f205feb93a84d94c0f05905
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882492"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950190"
 ---
-# <a name="document-data-sources"></a>记录数据源
+# <a name="how-to-document-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中记录数据源
+
 ## <a name="introduction"></a>简介
 **Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，**Azure 数据目录**旨在帮助人们发现、了解,和使用数据源，并帮助组织从其现有数据中获取更多价值。
 

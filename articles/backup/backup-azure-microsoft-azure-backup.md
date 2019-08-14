@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: d815b471b0a1d7842118c7ac0b5e1665b8fb3c1e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0f7d9961b41ece23630584146e4eb777969e771a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879943"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954741"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 > [!div class="op_single_selector"]
@@ -155,7 +155,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 1. 单击“**Microsoft Azure 备份**”以启动安装向导。
 
     ![Microsoft Azure 备份安装向导](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
-2. 在“欢迎”屏幕上单击“**下一步**”按钮。 随后将转到“*先决条件检查*”部分。 在此屏幕上单击“检查”，以确定是否符合 Azure 备份服务器的硬件和软件先决条件。 如果完全符合所有先决条件，将看到一条指明计算机符合要求的消息。 单击“**下一步**”按钮。
+2. 在欢迎屏幕上, 单击 "**下一步**" 按钮。 随后将转到“*先决条件检查*”部分。 在此屏幕上单击“检查”，以确定是否符合 Azure 备份服务器的硬件和软件先决条件。 如果完全符合所有先决条件，将看到一条指明计算机符合要求的消息。 单击“**下一步**”按钮。
 
     ![Azure 备份服务器 - 欢迎页和先决条件检查](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 3. Microsoft Azure 备份服务器需要 SQL Server Enterprise。 此外，如果你不想使用自己的 SQL，Azure 备份服务器安装包还会根据需要随附相应的 SQL Server 二进制文件。 在开始全新安装 Azure 备份服务器时，应该选择“**在此安装程序中安装新的 SQL Server 实例**”，并单击“**检查并安装**”按钮。 成功安装必备组件后，单击“**下一步**”。

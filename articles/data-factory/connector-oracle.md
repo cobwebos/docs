@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 079a0721e77174215c7256eecbe9bc522256f0b8
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 142c99b2471a9010a00bf9b5d50549c5e84548f1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881480"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966463"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
-> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-oracle-connector.md)
 > * [当前版本](connector-oracle.md)
 
@@ -33,11 +33,13 @@ ms.locfileid: "68881480"
 具体而言, 此 Oracle 连接器支持:
 
 - 以下版本的 Oracle 数据库:
-  - Oracle 12c R1 (12.1)
-  - Oracle 11g R1, R2 (11.1, 11.2)
-  - Oracle 10g R1, R2 (10.1, 10.2)
-  - Oracle 9i R1, R2 (9.0.1, 9.2)
-  - Oracle 8i R3 (8.1.7)
+    - Oracle 18c R1 (18.1) 及更高版本
+    - Oracle 12c R1 (12.1) 及更高版本
+    - Oracle 11g R1 (11.1) 及更高版本
+    - Oracle 10g R1 (10.1) 及更高版本
+    - Oracle 9i R2 (9.2) 及更高版本
+    - Oracle 8i R3 (8.1.7) 及更高版本
+    - Oracle Database Cloud Exadata Service
 - 使用基本或 OID 身份验证复制数据。
 - 从 Oracle 源进行并行复制。 有关详细信息, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。
 
@@ -46,7 +48,9 @@ ms.locfileid: "68881480"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要从无法公开访问的 Oracle 数据库复制数据, 需要设置[自承载集成运行时](create-self-hosted-integration-runtime.md)。 集成运行时提供内置的 Oracle 驱动程序。 因此，在从/向 Oracle 复制数据时不需要手动安装驱动程序。
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
+
+集成运行时提供内置的 Oracle 驱动程序。 因此，在从/向 Oracle 复制数据时不需要手动安装驱动程序。
 
 ## <a name="get-started"></a>开始使用
 
@@ -62,7 +66,7 @@ Oracle 链接服务支持以下属性:
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **Oracle**。 | 是 |
 | connectionString | 指定连接到 Oracle 数据库实例所需的信息。 <br/>将此字段标记为 `SecureString`，以便安全地将其存储在数据工厂中。 你还可以将密码放在 Azure Key Vault 中, 并将`password`配置从连接字符串中提取出来。 有关更多详细信息, 请参阅以下示例并[将凭据存储在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 <br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称**来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可以使用自承载集成运行时或 Azure 集成运行时 (如果数据存储可公开访问)。 如果未指定此属性, 则此属性将使用默认的 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!TIP]
 >如果收到错误 "TNSNAMES.ORA-01025:UPI 参数超出范围 ", 并且 Oracle 版本为 8i, 请将添加`WireProtocolMode=1`到连接字符串。 然后重试。
@@ -191,11 +195,10 @@ Oracle 链接服务支持以下属性:
 
 本部分提供 Oracle 源和接收器支持的属性列表。 有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)。 
 
-### <a name="oracle-as-a-source-type"></a>以 Oracle 作为源类型
+### <a name="oracle-as-source"></a>Oracle 作为源
 
-> [!TIP]
->
-> 若要使用数据分区有效地从 Oracle 加载数据, 请参阅[从 oracle 进行并行复制](#parallel-copy-from-oracle)。
+>[!TIP]
+>若要使用数据分区有效地从 Oracle 加载数据, 请参阅[从 oracle 进行并行复制](#parallel-copy-from-oracle)。
 
 若要从 Oracle 复制数据, 请将复制活动中的源类型`OracleSource`设置为。 复制活动的 **source** 节支持以下属性。
 
@@ -242,7 +245,7 @@ Oracle 链接服务支持以下属性:
 ]
 ```
 
-### <a name="oracle-as-a-sink-type"></a>以 Oracle 作为接收器类型
+### <a name="oracle-as-sink"></a>Oracle 作为接收器
 
 若要向 Oracle 复制数据, 请将复制活动中的接收器类型`OracleSink`设置为。 复制活动 **sink** 节支持以下属性。
 
@@ -342,7 +345,7 @@ Oracle 链接服务支持以下属性:
 | BLOB |Byte[]<br/>（仅支持 Oracle 10g 和更高版本） |
 | CHAR |String |
 | CLOB |String |
-| 日期 |日期时间 |
+| DATE |DateTime |
 | FLOAT |Decimal, String（如果精度 > 28） |
 | INTEGER |Decimal, String（如果精度 > 28） |
 | LONG |String |
@@ -353,7 +356,7 @@ Oracle 链接服务支持以下属性:
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
-| TIMESTAMP |日期时间 |
+| TIMESTAMP |DateTime |
 | TIMESTAMP WITH LOCAL TIME ZONE |String |
 | TIMESTAMP WITH TIME ZONE |String |
 | UNSIGNED INTEGER |数量 |

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 75916655f1b46cd1b84220cba9db441d54486927
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 875c2002d477a95b44ad1491cb716e2ef70697e7
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735661"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954850"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 将 SharePoint 场备份到 Azure
 使用 System Center Data Protection Manager (DPM) 将 SharePoint 场备份到 Microsoft Azure，其方法与备份其他数据源极为类似。 Azure 备份提供灵活的备份计划来创建每日、每周、每月或每年备份点，并提供适用于各种备份点的保留策略选项。 利用 DPM，不仅可以存储本地磁盘副本以实现快速的恢复时间目标 (RTO)，还可以将副本存储到 Azure 以进行经济高效的长期保留。
@@ -43,7 +43,7 @@ DPM 以 LocalSystem 帐户的形式运行。 若要备份 SQL Server 数据库�
 如果 SharePoint 场有使用 SQL Server 别名配置的 SQL Server 数据库，请在 DPM 将要保护的前端 Web 服务器上安装 SQL Server 客户端组件。
 
 ### <a name="sharepoint-server"></a>SharePoint Server
-尽管性能取决于许多因素，例如 SharePoint 场的大小，但一般做法是使用一台 DPM 服务器来保护 25 TB 的 SharePoint 场。
+尽管性能取决于许多因素, 例如 SharePoint 场的大小, 但一般原则是, 一台 DPM 服务器可以保护 25 TB 的 SharePoint 场。
 
 ### <a name="dpm-update-rollup-5"></a>DPM 更新汇总 5
 要开始在 Azure 上保护 SharePoint 场，需要安装 DPM 更新汇总 5 或更高版本。 如果使用 SQL AlwaysOn 配置 SharePoint 场，更新汇总 5 将提供在 Azure 上保护该场的功能。

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 5dcbb2c25511277eaf46d6c9f4afc007a180f8a6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: f5ddd9928194c477d8f8b6f4c9569a8fe58f39d3
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827872"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967377"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 SQL Server
 > [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本:"]
@@ -44,7 +44,7 @@ ms.locfileid: "68827872"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用从不可公开访问的 SQL Server 数据库复制数据, 需要设置自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)。 集成运行时提供内置 SQL Server 数据库驱动程序。 将数据从或复制到 SQL Server 数据库时, 无需手动安装任何驱动程序。
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>开始使用
 
@@ -62,7 +62,7 @@ SQL Server 链接服务支持以下属性:
 | connectionString |使用 SQL 身份验证或 Windows 身份验证来指定连接到 SQL Server 数据库所需的**connectionString**信息。 请参阅以下示例。<br/>将此字段标记为**SecureString**以将其安全地存储在 Azure 数据工厂中。 还可以在 Azure Key Vault 中输入密码。 如果它是 SQL 身份验证, 请`password`将配置从连接字符串中提取出来。 有关详细信息, 请参阅表后面的 JSON 示例, 并[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
 | userName |如果使用 Windows 身份验证, 请指定用户名。 例如，**domainname\\username**。 |否 |
 | password |指定为 "用户名" 指定的用户帐户的密码。 将此字段标记为**SecureString**以将其安全地存储在 Azure 数据工厂中。 或者，可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 |否 |
-| connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 如果数据存储可公开访问, 则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!TIP]
 >如果遇到错误代码为 "UserErrorFailedToConnectToSqlServer" 的错误和消息, 如 "数据库的会话限制为 XXX 并已达到", 请将添加`Pooling=false`到连接字符串, 然后重试。

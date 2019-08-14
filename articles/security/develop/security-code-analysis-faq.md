@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1fc5e83c2c46a7da2a4b56879a2d596405fd8bee
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8038b7bd60ac771c798a1a8645022b0bf9e142a9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718309"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934843"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 有问题？ 有关详细信息, 请查看下面的常见问题解答。
@@ -137,12 +137,12 @@ ms.locfileid: "68718309"
 
 #### <a name="what-are-recommended-secrets-management-guidelines"></a>建议使用哪些机密管理指导原则？ 
 尽管及时检测硬编码的机密并降低风险非常有用, 但如果有可能导致机密无法完全签入, 则更是如此。 在这方面, Microsoft 已将 CredScan 代码分析器作为[Microsoft DevLabs extension](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio) For Visual Studio 的一部分发布。 在早期预览版中, 它为开发人员提供了在其代码中检测潜在机密的内嵌体验, 使他们能够实时解决这些问题。 有关详细信息, 请参阅[此](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)博客, 了解如何安全地在云中管理机密。 下面是一些其他资源, 可帮助你以安全的方式管理机密并访问应用程序内的敏感信息: 
- - [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)
- - [Azure Active Directory](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)
+ - [Azure Key Vault](../../key-vault/index.yml)
+ - [Azure Active Directory](../../sql-database/sql-database-aad-authentication.md)
  - [Azure AD 托管服务标识](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
- - [Azure 资源的托管服务标识 (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
- - [Azure 托管服务标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
- - [Microsoft.azure.services.appauthentication 库](https://docs.microsoft.com/azure/key-vault/service-to-service-authentication)
+ - [Azure 资源的托管服务标识 (MSI)](../../active-directory/managed-identities-azure-resources/overview.md)
+ - [Azure 托管服务标识](../../app-service/overview-managed-identity.md)
+ - [Microsoft.azure.services.appauthentication 库](../../key-vault/service-to-service-authentication.md)
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>我是否可以编写自己的自定义 searchers？
 

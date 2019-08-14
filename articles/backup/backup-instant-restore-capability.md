@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0f31320a638dd4741d940d0b459575b66149b829
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: f2485786f323bc6d19d39f4da6ffa7cab14bbb4c
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698412"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951838"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
@@ -24,7 +24,7 @@ ms.locfileid: "68698412"
 
 * 可以使用执行备份作业期间创建的用于恢复的快照，而无需等待完成将数据传输到保管库的操作。 它缩短了快照在触发还原之前复制到保管库的等待时间。
 * 通过在本地保留快照，缩短备份和还原时间，默认可在本地保留两天。 此默认快照保留期值可配置为 1 到 5 天的任何值。
-* 最大支持 4 TB 的磁盘。 Azure 备份不建议重设磁盘大小。
+* 最大支持 4 TB 的磁盘。 Azure 备份不建议调整磁盘大小。 若要注册 Azure 备份的有限公共预览版, 大磁盘支持大于 4 TB 和最大为 30 TB 的磁盘, 请参阅[AZURE VM 备份概述](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)。
 * 支持标准 SSD 磁盘、标准 HDD 磁盘和高级 SSD 磁盘。
 * 在还原时, 能够使用非托管 Vm 的原始存储帐户 (每个磁盘)。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作。
 * 对于使用高级存储的 Vm 的备份, 使用 "即时还原", 我们建议分配总分配存储空间的*50%* 可用空间 (**仅限**第一次备份需要)。 第一次备份完成后, 不需要 50% 的可用空间。

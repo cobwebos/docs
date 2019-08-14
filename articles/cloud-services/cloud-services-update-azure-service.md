@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 10d919b21e05195e8a7b6b351a742a4f9a57ee2b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: ae9d124391a1b17187ca98964874f681352498da
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360703"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945353"
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新云服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "68360703"
 ## <a name="update-an-azure-service"></a>更新 Azure 服务
 Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD) 是角色实例的逻辑集，将以组的方式进行更新。  Azure 每次更新一个 UD 的一个云服务，使其他 UD 中的实例能够继续处理流量。
 
-升级域的默认数量为 5 个。 可以在服务定义文件 (.csdef) 中包含 upgradeDomainCount 属性以指定不同数量的升级域。 有关 upgradeDomainCount 属性的详细信息，请参阅 [WebRole 架构](/previous-versions/azure/reference/gg557553(v=azure.100))或 [WorkerRole 架构](/previous-versions/azure/reference/gg557552(v=azure.100))。
+升级域的默认数量为 5 个。 可以在服务定义文件 (.csdef) 中包含 upgradeDomainCount 属性以指定不同数量的升级域。 有关 upgradeDomainCount 属性的详细信息, 请参阅[Azure 云服务定义架构 (. 文件)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)。
 
 在为服务中的一个或多个角色执行就地更新时，Azure 会根据所属的升级域更新角色实例集。 Azure 更新给定升级域中的所有实例（停止这些实例，更新这些实例并将它们重新联机），然后移到下一个域上。 通过仅停止在当前升级域中运行的实例，Azure 确保在执行更新时会对运行的服务造成的影响降到最低。 有关详细信息，请参阅本文后面的[如何进行更新](#howanupgradeproceeds)。
 

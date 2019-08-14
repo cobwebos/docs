@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9e5c894cedcbfd006d9406ce2c07fc0b17033d7c
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 88bca1a799d55ba59c8f5d2263f3219cfb66700e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781041"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946718"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-nist-sp-800-171"></a>Azure 安全性和符合性蓝图 - 符合 NIST SP 800-171 的 IaaS Web 应用程序
 
@@ -74,8 +74,8 @@ ms.locfileid: "68781041"
 
 此解决方案使用以下配置将 VM 创建为已加入域的守护主机：
 -   [反恶意软件扩展](https://docs.microsoft.com/azure/security/fundamentals/antimalware)。
--   [Azure 诊断扩展](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)。
--   使用 Key Vault 的 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)。
+-   [Azure 诊断扩展](../../virtual-machines/windows/extensions-diagnostics-template.md)。
+-   使用 Key Vault 的 [Azure 磁盘加密](../azure-security-disk-encryption-overview.md)。
 -   [自动关闭策略](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)，在不使用 VM 时可减少其资源消耗量。
 -   已启用 [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard)，以便凭据和其他机密在与运行操作系统相隔离的受保护环境中运行。
 
@@ -84,7 +84,7 @@ ms.locfileid: "68781041"
 
 **网络安全组**：此解决方案在具有单独子网的体系结构中部署资源, 在虚拟网络中进行 web、数据库、Active Directory 和管理。 这些子网在逻辑上通过应用于各个子网的 NSG 规则分开。 这些规则会限制子网间的流量，仅限于系统和管理功能所必需的流量。
 
-请参阅使用此解决方案部署的 [NSG](https://github.com/Azure/fedramp-iaas-webapp/blob/master/nestedtemplates/virtualNetworkNSG.json) 的配置。 组织可以根据[此文档](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)中的说明编辑之前的文件，以对 NSG 进行配置。
+请参阅使用此解决方案部署的 [NSG](https://github.com/Azure/fedramp-iaas-webapp/blob/master/nestedtemplates/virtualNetworkNSG.json) 的配置。 组织可以根据[此文档](../../virtual-network/virtual-network-vnet-plan-design-arm.md)中的说明编辑之前的文件，以对 NSG 进行配置。
 
 每个子网有一个专用的 NSG：
 - 一个 NSG 用于应用程序网关 (LBNSG)
@@ -99,9 +99,9 @@ ms.locfileid: "68781041"
 ### <a name="data-at-rest"></a>静态数据
 体系结构通过多种措施值保护静态数据。 这些措施包括加密和数据库审核。
 
-**Azure 存储**：为了满足静态数据加密要求，所有[存储](https://azure.microsoft.com/services/storage/)均使用[存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)。 此功能有助于保护数据，以支持 NIST SP 800-171 定义的组织安全承诺和符合性要求。
+**Azure 存储**：为了满足静态数据加密要求，所有[存储](https://azure.microsoft.com/services/storage/)均使用[存储服务加密](../../storage/common/storage-service-encryption.md)。 此功能有助于保护数据，以支持 NIST SP 800-171 定义的组织安全承诺和符合性要求。
 
-**Azure 磁盘加密**：磁盘加密用于加密 Windows IaaS VM 磁盘。 [磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)使用 Windows 的 BitLocker 功能，为操作系统和数据磁盘提供卷加密。 此解决方案与密钥保管库集成，用于控制和管理磁盘加密密钥。
+**Azure 磁盘加密**：磁盘加密用于加密 Windows IaaS VM 磁盘。 [磁盘加密](../azure-security-disk-encryption-overview.md)使用 Windows 的 BitLocker 功能，为操作系统和数据磁盘提供卷加密。 此解决方案与密钥保管库集成，用于控制和管理磁盘加密密钥。
 
 **SQL Server**：SQL Server 实例使用以下数据库安全措施：
 -   [SQL Server 审核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-2017)跟踪数据库事件并将其写入到审核日志。
@@ -113,10 +113,10 @@ ms.locfileid: "68781041"
 ### <a name="identity-management"></a>身份管理
 以下技术在 Azure 环境中提供用于管理数据访问的功能：
 -   [Azure AD](https://azure.microsoft.com/services/active-directory/) 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 此解决方案的所有用户（包括访问 SQL Server 实例的用户）均在 Azure AD 中创建。
--   使用 Azure AD 对应用程序执行身份验证。 有关详细信息，请参阅如何[将应用程序与 Azure AD 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。
--   管理员可以使用 [Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) 定义细致的访问权限，以仅授予用户执行作业所需的访问量。 无需向每个用户授予 Azure 资源的不受限权限，管理员可以只允许使用特定的操作来访问数据。 订阅访问仅限于订阅管理员。
-- 客户可以使用 [Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) 最大限度地减少有权访问特定资源的用户数量。 管理员可以使用 Azure AD Privileged Identity Management 来发现、限制和监视特权标识及其对资源的访问。 此外，还可以根据需要，使用此功能来实施按需、实时的管理性访问。
-- [Azure Active Directory 标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)可检测到影响组织标识的潜在漏洞。 它将自动响应配置为检测与组织标识相关的可疑操作。 它还会调查可疑事件，以采取适当的措施进行解决。
+-   使用 Azure AD 对应用程序执行身份验证。 有关详细信息，请参阅如何[将应用程序与 Azure AD 集成](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
+-   管理员可以使用 [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) 定义细致的访问权限，以仅授予用户执行作业所需的访问量。 无需向每个用户授予 Azure 资源的不受限权限，管理员可以只允许使用特定的操作来访问数据。 订阅访问仅限于订阅管理员。
+- 客户可以使用 [Azure Active Directory Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md) 最大限度地减少有权访问特定资源的用户数量。 管理员可以使用 Azure AD Privileged Identity Management 来发现、限制和监视特权标识及其对资源的访问。 此外，还可以根据需要，使用此功能来实施按需、实时的管理性访问。
+- [Azure Active Directory 标识保护](../../active-directory/identity-protection/overview.md)可检测到影响组织标识的潜在漏洞。 它将自动响应配置为检测与组织标识相关的可疑操作。 它还会调查可疑事件，以采取适当的措施进行解决。
 
 ### <a name="security"></a>安全性
 **机密管理**：解决方案使用[Key Vault](https://azure.microsoft.com/services/key-vault/)来管理密钥和机密。 Key Vault 帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Key Vault 功能帮助客户保护数据：
@@ -144,12 +144,12 @@ ms.locfileid: "68781041"
 **Azure 应用程序网关**：该体系结构通过使用配置了 web 应用程序防火墙的应用程序网关和启用了 OWASP 规则集, 降低了安全漏洞的风险。 其他功能包括：
 
 - [端到端 SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)。
-- 启用 [SSL 卸载](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)。
+- 启用 [SSL 卸载](../../application-gateway/create-ssl-portal.md)。
 - 禁用 [TLS v1.0 和 v1.1](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)。
-- [Web 应用程序防火墙](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview)（保护模式）。
+- [Web 应用程序防火墙](../../application-gateway/waf-overview.md)（保护模式）。
 - 结合 OWASP 3.0 规则集的[保护模式](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal)。
 - 启用[诊断日志记录](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)。
-- [自定义运行状况探测](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-gateway-portal)。
+- [自定义运行状况探测](../../application-gateway/quick-create-portal.md)。
 - [安全中心](https://azure.microsoft.com/services/security-center)和 [Azure 顾问](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations)提供额外的保护和通知。 安全中心还提供信誉系统。
 
 ### <a name="business-continuity"></a>业务连续性
@@ -163,18 +163,18 @@ ms.locfileid: "68781041"
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
-- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
+- **活动日志**：[活动日志](../../azure-monitor/platform/activity-logs-overview.md)提供对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
+- **诊断日志**：[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
 
 **Azure Monitor 日志**：这些日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中, 以便进行处理、存储和仪表板报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Azure Monitor 日志集成。 客户可以使用 Kusto 查询访问其安全事件数据, 并将其与其他服务中的数据合并。
 
-以下 Azure[监视解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)包括在此体系结构中:
--   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。
-- [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案为客户提供了特定于已部署服务器基础结构的建议优先级列表。
-- [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告部署的代理数量及其地理分布状况。 此外，它还报告未响应代理数量和提交操作数据的代理数量。
--   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
+以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中:
+-   [Active Directory 评估](../../azure-monitor/insights/ad-assessment.md)：Active Directory 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。
+- [SQL 评估](../../azure-monitor/insights/sql-assessment.md)：SQL 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案为客户提供了特定于已部署服务器基础结构的建议优先级列表。
+- [代理运行状况](../../monitoring/monitoring-solution-agenthealth.md)：代理运行状况解决方案报告部署的代理数量及其地理分布状况。 此外，它还报告未响应代理数量和提交操作数据的代理数量。
+-   [Activity Log Analytics](../../azure-monitor/platform/collect-activity-logs.md)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
 
-**Azure 自动化**：[自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)可以存储、运行和管理 Runbook。 在此解决方案中，Runbook 可帮助从 SQL Server 中收集日志。 客户可以使用自动化[更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)解决方案轻松识别环境中的更改。
+**Azure 自动化**：[自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)可以存储、运行和管理 Runbook。 在此解决方案中，Runbook 可帮助从 SQL Server 中收集日志。 客户可以使用自动化[更改跟踪](../../automation/change-tracking.md)解决方案轻松识别环境中的更改。
 
 **Azure Monitor**：[Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 可以帮助用户跟踪性能、维护安全和确定趋势。 组织可以使用它来审核、创建警报并存档数据。 此外，他们还可以跟踪 Azure 资源中的 API 调用。
 

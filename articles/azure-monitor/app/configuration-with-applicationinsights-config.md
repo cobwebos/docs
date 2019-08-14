@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: fe71f4e89fb7e1b6ff3e4f59894a933fbb011692
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 02ad74e5b1f8b86a0072b413db2a572f8ed92781
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881412"
+ms.locfileid: "68932150"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
 Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 通过调整配置文件, 可以启用或禁用遥测模块和初始值设定项, 并为其中一些参数设置参数。
 
-配置文件名为 `ApplicationInsights.config` 或 `ApplicationInsights.xml`，具体取决于应用程序的类型。 [安装大多数版本的 SDK][start]时, 会自动将其添加到你的项目中。SDK 会在项目`ApplicationInsights.config`根文件夹中创建文件, 并在将编译复制到 bin 文件夹时创建文件。 还可以通过[在 IIS 服务器上状态监视器][redfield]来将其添加到 web 应用。 如果使用 azure[网站的扩展](azure-web-apps.md)或[azure VM 和虚拟机规模集的扩展](azure-vm-vmss-apps.md), 则会忽略配置文件。
+配置文件名为 `ApplicationInsights.config` 或 `ApplicationInsights.xml`，具体取决于应用程序的类型。 [安装大多数版本的 SDK][start] 时，系统会自动将配置文件添加到项目。 默认情况下, 在使用支持**Add > Application Insights 遥测**的 Visual Studio 模板项目中的自动体验时, 将在项目根文件夹中创建 applicationinsights.config 文件, 并在将编译复制到bin 文件夹。 还可以通过[在 IIS 服务器上状态监视器][redfield]来将其添加到 web 应用。 如果使用 azure[网站的扩展](azure-web-apps.md)或[azure VM 和虚拟机规模集的扩展](azure-vm-vmss-apps.md), 则会忽略配置文件。
 
 没有等效的文件可以控制[网页中的 SDK][client]。
 

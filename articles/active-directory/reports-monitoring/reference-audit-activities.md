@@ -3,7 +3,7 @@ title: Azure Active Directory (Azure AD) 审核活动参考 | Microsoft Docs
 description: 大致了解可以在 Azure Active Directory (Azure AD) 的审核日志中记录的审核活动。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/24/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66dd017e8f78f1e93c96262b42dc084c165cdef7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a687823d1344ca11864523cb9187f48d7373fd41
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60285491"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989632"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 审核活动参考
 
@@ -40,7 +40,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 本文列出了可以在审核日志中记录的审核活动。
 
-## <a name="access-reviews"></a>访问评审
+## <a name="access-reviews"></a>访问审阅
 
 |审核类别|activities|
 |---|---|
@@ -66,10 +66,10 @@ Azure AD 中的报告体系结构由以下部分组成：
 |访问评审|更新访问评审|
 |访问评审|更新 Azure AD 访问评审加入状态|
 |访问评审|更新访问评审邮件通知设置|
-|访问评审|更新访问评审再评计数设置|
-|访问评审|更新以天为单位的访问评审再评持续时间设置|
-|访问评审|更新访问评审再评结束类型设置|
-|访问评审|更新访问评审再评类型设置|
+|访问评审|更新访问评审定期模式计数设置|
+|访问评审|更新以天为单位的访问评审定期模式持续时间设置|
+|访问评审|更新访问评审定期模式结束类型设置|
+|访问评审|更新访问评审定期模式类型设置|
 |访问评审|更新访问评审提醒设置|
 |访问评审|更新程序|
 |访问评审|更新请求审核|
@@ -135,117 +135,117 @@ Azure AD 中的报告体系结构由以下部分组成：
 |应用程序管理|AdminPolicyDatas-SetResources|
 |应用程序管理|AdminUserJourneys-GetResources|
 |应用程序管理|AdminUserJourneys-RemoveResources|
-|Authentication|AdminUserJourneys-SetResources|
-|Authentication|创建 IdentityProvider|
-|Authentication|创建 V1 应用程序|
-|Authentication|创建 V2 应用程序|
-|Authentication|在租户中创建自定义域|
-|授权|创建新的 AdminUserJourney|
-|授权|创建本地化资源 json|
-|授权|创建新的自定义 IDP|
-|授权|创建新的 IDP|
-|授权|创建或更新 B2C 目录资源|
-|授权|创建策略|
-|授权|创建 trustFramework 策略|
-|授权|创建前缀可配置的 trustFramework 策略|
-|授权|创建用户属性|
-|授权|CreateTrustFrameworkPolicy|
-|授权|创建或更新新的 AdminUserJourney|
-|授权|删除 IDP|
-|授权|删除 IdentityProvider|
-|授权|删除 V1 应用程序|
-|授权|删除 V2 应用程序|
-|授权|删除 V2 应用程序授权|
-|授权|删除 B2C 目录资源|
-|授权|删除 CPIM 密钥容器|
-|授权|删除 trustFramework 策略|
-|授权|删除用户属性|
-|授权|启用 B2C 功能|
-|授权|获取订阅中的 B2C 目录资源|
-|授权|获取自定义 IDP|
-|授权|获取 IDP|
-|授权|获取 V1 和 V2 应用程序|
-|授权|获取 V1 应用程序|
-|授权|获取 V1 应用程序|
-|授权|获取 V2 应用程序|
-|授权|获取 V2 应用程序|
-|授权|获取 B2C 目录资源|
-|授权|获取租户中自定义域的列表|
-|授权|获取用户旅程|
-|授权|获取用户旅程允许的应用程序声明|
-|授权|获取用户旅程允许的自断言声明|
-|授权|获取允许的自断言策略声明|
-|授权|获取可用的输出声明列表|
-|授权|获取用户旅程的内容定义|
-|授权|获取特定管理流的 IDP|
-|授权|获取 JWK 格式的密钥容器活动密钥元数据|
-|授权|获取所有管理流的列表|
-|授权|获取所有用户的所有管理流的标记列表|
-|授权|获取用户的租户列表|
-|授权|获取本地帐户的自断言声明|
-|授权|获取本地化资源 json|
-|授权|获取 Microsoft.AzureActiveDirectory 资源提供程序的操作|
-|授权|获取策略|
-|授权|获取策略|
-|授权|获取租户的资源属性|
-|授权|获取受支持的 IDP 列表|
-|授权|获取用户旅程的受支持的 IDP 列表|
-|授权|获取租户信息|
-|授权|获取租户允许的功能|
-|授权|获取租户定义的自定义 IDP 列表|
-|授权|获取租户定义的 IDP 列表|
-|授权|获取租户定义的本地 IDP 列表|
-|授权|获取用户的租户详细信息，以便创建资源|
-|授权|获取租户列表|
-|授权|获取 tenantDomains|
-|授权|获取默认的 CPIM 支持的区域性|
-|授权|获取管理流的详细信息|
-|授权|获取此租户的 UserJourneys 的列表|
-|授权|获取 CPIM 支持的可用区域性的集合|
-|授权|获取 trustFramework 策略|
-|授权|获取 XML 格式的 trustFramework 策略|
-|授权|获取用户属性|
-|授权|获取用户属性|
-|授权|获取用户旅程列表|
-|授权|GetIEFPolicies|
-|授权|GetIdentityProviders|
-|授权|GetTrustFrameworkPolicy|
-|授权|获取 jwk 格式的 CPIM 密钥容器|
-|授权|获取租户中密钥容器的列表|
-|授权|获取租户的类型|
-|授权|MigrateTenantMetadata|
-|授权|修补 IdentityProvider|
-|授权|PutTrustFrameworkPolicy|
-|授权|PutTrustFrameworkpolicy|
-|授权|删除用户旅程|
-|授权|还原 CPIM 密钥容器备份|
-|授权|检索 V2 应用程序授权|
-|授权|检索当前租户中的 V2 应用程序服务主体|
-|授权|更新自定义 IDP|
-|授权|更新 IDP|
-|授权|更新本地 IDP|
-|授权|更新 V1 应用程序|
-|授权|更新 V2 应用程序|
-|授权|更新 V2 应用程序授权|
-|授权|更新策略|
-|授权|更新用户属性|
-|授权|上传 CPIM 加密密钥|
-|授权|用户授权：对租户功能集禁用了 API|
-|授权|用户授权：为用户授予了“租户管理员”访问权限|
-|授权|用户授权：为用户授予了“已验证用户”访问权限|
-|授权|验证是否已启用 B2C 功能|
-|授权|验证是否已启用功能|
-|授权|创建程序|
-|授权|删除程序|
-|授权|链接程序控件|
-|授权|载入到 Azure AD 访问评审|
-|授权|取消链接程序控件|
-|授权|更新程序|
-|授权|禁用桌面 SSO|
-|授权|禁用特定域的桌面 SSO|
-|授权|禁用应用程序代理|
-|授权|禁用直通身份验证|
-|授权|启用桌面 SSO|
+|身份验证|AdminUserJourneys-SetResources|
+|身份验证|创建 IdentityProvider|
+|身份验证|创建 V1 应用程序|
+|身份验证|创建 V2 应用程序|
+|身份验证|在租户中创建自定义域|
+|Authorization|创建新的 AdminUserJourney|
+|Authorization|创建本地化资源 json|
+|Authorization|创建新的自定义 IDP|
+|Authorization|创建新的 IDP|
+|Authorization|创建或更新 B2C 目录资源|
+|Authorization|创建策略|
+|Authorization|创建 trustFramework 策略|
+|Authorization|创建前缀可配置的 trustFramework 策略|
+|Authorization|创建用户属性|
+|Authorization|CreateTrustFrameworkPolicy|
+|Authorization|创建或更新新的 AdminUserJourney|
+|Authorization|删除 IDP|
+|Authorization|删除 IdentityProvider|
+|Authorization|删除 V1 应用程序|
+|Authorization|删除 V2 应用程序|
+|Authorization|删除 V2 应用程序授权|
+|Authorization|删除 B2C 目录资源|
+|Authorization|删除 CPIM 密钥容器|
+|Authorization|删除 trustFramework 策略|
+|Authorization|删除用户属性|
+|Authorization|启用 B2C 功能|
+|Authorization|获取订阅中的 B2C 目录资源|
+|Authorization|获取自定义 IDP|
+|Authorization|获取 IDP|
+|Authorization|获取 V1 和 V2 应用程序|
+|Authorization|获取 V1 应用程序|
+|Authorization|获取 V1 应用程序|
+|Authorization|获取 V2 应用程序|
+|Authorization|获取 V2 应用程序|
+|Authorization|获取 B2C 目录资源|
+|Authorization|获取租户中自定义域的列表|
+|Authorization|获取用户旅程|
+|Authorization|获取用户旅程允许的应用程序声明|
+|Authorization|获取用户旅程允许的自断言声明|
+|Authorization|获取允许的自断言策略声明|
+|Authorization|获取可用的输出声明列表|
+|Authorization|获取用户旅程的内容定义|
+|Authorization|获取特定管理流的 IDP|
+|Authorization|获取 JWK 格式的密钥容器活动密钥元数据|
+|Authorization|获取所有管理流的列表|
+|Authorization|获取所有用户的所有管理流的标记列表|
+|Authorization|获取用户的租户列表|
+|Authorization|获取本地帐户的自断言声明|
+|Authorization|获取本地化资源 json|
+|Authorization|获取 Microsoft.AzureActiveDirectory 资源提供程序的操作|
+|Authorization|获取策略|
+|Authorization|获取策略|
+|Authorization|获取租户的资源属性|
+|Authorization|获取受支持的 IDP 列表|
+|Authorization|获取用户旅程的受支持的 IDP 列表|
+|Authorization|获取租户信息|
+|Authorization|获取租户允许的功能|
+|Authorization|获取租户定义的自定义 IDP 列表|
+|Authorization|获取租户定义的 IDP 列表|
+|Authorization|获取租户定义的本地 IDP 列表|
+|Authorization|获取用户的租户详细信息，以便创建资源|
+|Authorization|获取租户列表|
+|Authorization|获取 tenantDomains|
+|Authorization|获取默认的 CPIM 支持的区域性|
+|Authorization|获取管理流的详细信息|
+|Authorization|获取此租户的 UserJourneys 的列表|
+|Authorization|获取 CPIM 支持的可用区域性的集合|
+|Authorization|获取 trustFramework 策略|
+|Authorization|获取 XML 格式的 trustFramework 策略|
+|Authorization|获取用户属性|
+|Authorization|获取用户属性|
+|Authorization|获取用户旅程列表|
+|Authorization|GetIEFPolicies|
+|Authorization|GetIdentityProviders|
+|Authorization|GetTrustFrameworkPolicy|
+|Authorization|获取 jwk 格式的 CPIM 密钥容器|
+|Authorization|获取租户中密钥容器的列表|
+|Authorization|获取租户的类型|
+|Authorization|MigrateTenantMetadata|
+|Authorization|修补 IdentityProvider|
+|Authorization|PutTrustFrameworkPolicy|
+|Authorization|PutTrustFrameworkpolicy|
+|Authorization|删除用户旅程|
+|Authorization|还原 CPIM 密钥容器备份|
+|Authorization|检索 V2 应用程序授权|
+|Authorization|检索当前租户中的 V2 应用程序服务主体|
+|Authorization|更新自定义 IDP|
+|Authorization|更新 IDP|
+|Authorization|更新本地 IDP|
+|Authorization|更新 V1 应用程序|
+|Authorization|更新 V2 应用程序|
+|Authorization|更新 V2 应用程序授权|
+|Authorization|更新策略|
+|Authorization|更新用户属性|
+|Authorization|上传 CPIM 加密密钥|
+|Authorization|用户授权：对租户功能集禁用了 API|
+|Authorization|用户授权：为用户授予了“租户管理员”访问权限|
+|Authorization|用户授权：为用户授予了“已验证用户”访问权限|
+|Authorization|验证是否已启用 B2C 功能|
+|Authorization|验证是否已启用功能|
+|Authorization|创建程序|
+|Authorization|删除程序|
+|Authorization|链接程序控件|
+|Authorization|载入到 Azure AD 访问评审|
+|Authorization|取消链接程序控件|
+|Authorization|更新程序|
+|Authorization|禁用桌面 SSO|
+|Authorization|禁用特定域的桌面 SSO|
+|Authorization|禁用应用程序代理|
+|Authorization|禁用直通身份验证|
+|Authorization|启用桌面 SSO|
 |目录管理|启用特定域的桌面 SSO|
 |目录管理|启用应用程序代理|
 |目录管理|启用直通身份验证|
@@ -256,17 +256,17 @@ Azure AD 中的报告体系结构由以下部分组成：
 |目录管理|获取租户信息|
 |目录管理|获取租户允许的功能|
 |目录管理|获取 tenantDomains|
-|密钥|获取租户的类型|
-|密钥|验证是否已启用 B2C 功能|
-|密钥|验证是否已启用功能|
-|密钥|将合作伙伴添加到公司|
-|密钥|添加未验证的域|
-|密钥|添加已验证的域|
-|密钥|创建公司|
-|密钥|创建公司设置|
-|密钥|删除公司设置|
-|密钥|降级合作伙伴|
-|密钥|目录已删除|
+|Key|获取租户的类型|
+|Key|验证是否已启用 B2C 功能|
+|Key|验证是否已启用功能|
+|Key|将合作伙伴添加到公司|
+|Key|添加未验证的域|
+|Key|添加已验证的域|
+|Key|创建公司|
+|Key|创建公司设置|
+|Key|删除公司设置|
+|Key|降级合作伙伴|
+|Key|目录已删除|
 |其他|目录已永久删除|
 |其他|目录已计划删除|
 |Resource|将公司提升为合作伙伴|
@@ -291,7 +291,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 |Resource|更新域|
 |Resource|验证域|
 |Resource|验证电子邮件验证域|
-|Resource|登记|
+|Resource|加入|
 |Resource|更新警报设置|
 |Resource|更新每周摘要设置|
 |Resource|对目录禁用密码写回|
@@ -318,7 +318,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 |Resource|添加成员|
 |Resource|创建组|
 |Resource|删除组|
-|Resource|删除成员|
+|Resource|移除成员|
 |Resource|更新组|
 |Resource|批准要求加入组的挂起请求|
 |Resource|取消要求加入组的挂起请求|
@@ -464,7 +464,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 |用户管理|从模板添加角色|
 |用户管理|将带有范围的成员添加到角色|
 |用户管理|从角色中删除符合条件的成员|
-|用户管理|从角色中删除成员|
+|用户管理|删除角色中的成员|
 |用户管理|从角色定义中删除角色分配|
 |用户管理|从角色中删除带有范围的成员|
 |用户管理|更新角色|

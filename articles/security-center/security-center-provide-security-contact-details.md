@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/9/2018
+ms.date: 08/09/2019
 ms.author: rkarlin
-ms.openlocfilehash: b6babf7d5d5a0f5796efa9418044366c6a135ed9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae7c130df40ea0553bd9e3ae117534fe98466f26
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60909256"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68934893"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>在 Azure 安全中心提供安全联系人详细信息
 Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（如果尚未提供）。 如果 Microsoft 安全响应中心 (MSRC) 发现用户的客户数据被某方非法访问或未经授权访问，Microsoft 会使用该信息联系用户。 MSRC 会执行 Azure 网络和基础结构的选择安全监视，并接收来自第三方的威胁情报和恶意投诉。
@@ -33,28 +33,28 @@ Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（�
 - 每封电子邮件都包含一个警报，而不是警报的聚合
  
 例如，如果已发送电子邮件消息提醒你有关 RDP 攻击的信息，则即使有其他警报触发，你也不会在同一天收到有关 RDP 攻击的其他电子邮件。 
- 
 
 > [!NOTE]
 > 本文档将使用示例部署介绍该服务。  这并非一份循序渐进的指南。
->
->
 
-## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”  下，选择“提供安全联系人详细信息”  。
-   ![提供安全联系人][1]
-2. 选择要对其提供联系人信息的 Azure 订阅。
-3. 这将打开“电子邮件通知”  。
+## 为警报设置电子邮件通知<a name="email"></a>
+
+1. 从门户中, 选择 "**定价 & 设置**"。
+1. 单击订阅。
+1. 单击“电子邮件通知”。
+
+> [!NOTE]
+> 如果要实施建议, 请在 "**建议**" 下选择 "**提供安全联系人详细信息**", 选择要在其上提供联系人信息的 Azure 订阅。 这将打开“电子邮件通知”。
 
    ![提供安全联系人详细信息][2]
 
    * 输入安全联系人的电子邮件地址或地址，用逗号隔开。 输入的电子邮件地址数量无限制。
    * 输入一个安全联系人的国际电话号码。
-   * 若要接收有关于高严重级别警报的电子邮件，请打开选项“通过电子邮件向我发送警报”  。
+   * 若要接收有关于高严重级别警报的电子邮件，请打开选项“通过电子邮件向我发送警报”。
    * 以后，可选择向订阅所有者发送电子邮件通知。 当前此选项处于灰色状态。
-   * 选择“保存”  将安全联系人信息应用到订阅。
+   * 选择“保存”将安全联系人信息应用到订阅。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。

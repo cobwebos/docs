@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 4ebc48f8bd35487275f797ffc8e2b5b4d8101a71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
-ms.translationtype: HT
+ms.openlocfilehash: 37bdcb48dcd37bf81aac8f5c2e1213d7f0deb327
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839783"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966437"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从 SFTP 服务器复制数据
-> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-sftp-connector.md)
 > * [当前版本](connector-sftp.md)
 
@@ -38,6 +38,10 @@ ms.locfileid: "68839783"
 
 - 使用**基本**或 **SshPublicKey** 身份验证复制文件。
 - 按原样复制文件，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析文件。
+
+## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>开始使用
 
@@ -57,7 +61,7 @@ SFTP 链接的服务支持以下属性：
 | skipHostKeyValidation | 指定是否要跳过主机密钥验证。<br/>允许的值为：true、false（默认）。  | 否 |
 | hostKeyFingerprint | 指定主机密钥的指纹。 | 是（如果“skipHostKeyValidation”设置为 false）。  |
 | authenticationType | 指定身份验证类型。<br/>允许值包括：**Basic**、**SshPublicKey**。 有关其他属性和 JSON 示例，请分别参阅[使用基本身份验证](#using-basic-authentication)和[使用 SSH 公钥身份验证](#using-ssh-public-key-authentication)部分。 |是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 ### <a name="using-basic-authentication"></a>使用基本身份验证
 
@@ -66,7 +70,7 @@ SFTP 链接的服务支持以下属性：
 | 属性 | 说明 | 必填 |
 |:--- |:--- |:--- |
 | userName | 有权访问 SFTP 服务器的用户。 |是 |
-| 密码 | 用户 (userName) 的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| password | 用户 (userName) 的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 
 **示例：**
 

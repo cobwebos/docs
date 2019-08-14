@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82e40f756e0d8e0b5627b7c8856bd25fa98adbcb
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506977"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932295"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 
 使用支持 REST 调用的任何编程语言，可以针对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
 
-数据刷新操作可能需要一段时间，具体取决于多种因素，包括数据卷、使用分区的优化级别，等等。在传统上，这些操作是使用现有方法调用的，例如，使用 [TOM](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)（表格对象模型）、[PowerShell](https://docs.microsoft.com/sql/analysis-services/powershell/analysis-services-powershell-reference) cmdlet，或 [TMSL](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)（表格模型脚本语言）。 但是，这些方法可能需要通常不可靠的且长时间运行的 HTTP 连接。
+数据刷新操作可能需要一段时间，具体取决于多种因素，包括数据卷、使用分区的优化级别，等等。在传统上，这些操作是使用现有方法调用的，例如，使用 [TOM](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)（表格对象模型）、[PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) cmdlet，或 [TMSL](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)（表格模型脚本语言）。 但是，这些方法可能需要通常不可靠的且长时间运行的 HTTP 连接。
 
 使用 Azure Analysis Services 的 REST API 能够以异步方式执行数据刷新操作。 如果使用 REST API，则不需要从客户端应用程序建立长时间运行的 HTTP 连接。 还有其他内置功能可以确保可靠性，例如自动重试和分批提交。
 
@@ -57,7 +57,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 所有调用必须使用 Authorization 标头中的有效 Azure Active Directory (OAuth 2) 令牌进行身份验证，并且必须满足以下要求：
 
@@ -94,17 +94,17 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 }
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 不需要指定参数。 将应用默认值。
 
-| Name             | 类型  | 描述  |默认  |
+| 名称             | 类型  | 描述  |默认  |
 |------------------|-------|--------------|---------|
-| `Type`           | Enum  | 要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
+| `Type`           | Enum  | 要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
 | `CommitMode`     | Enum  | 确定是要分批提交对象，还是只在完成时才提交。 模式包括：default、transactional、partialBatch。  |  transactional       |
-| `MaxParallelism` | Int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
+| `MaxParallelism` | Int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
 | `RetryCount`     | Int   | 指示操作在失败之前要重试的次数。      |     0    |
-| `Objects`        | Array | 要处理的对象数组。 每个对象包含：“table”（处理整个表时），或者“table”和“partition”（处理分区时）。 如果未指定任何对象，则会刷新整个模型。 |   处理整个模型      |
+| `Objects`        | 阵列 | 要处理的对象数组。 每个对象包含：“table”（处理整个表时），或者“table”和“partition”（处理分区时）。 如果未指定任何对象，则会刷新整个模型。 |   处理整个模型      |
 
 CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个小时的初始加载时，将会使用 CommitMode。 如果在成功提交一个或多个批之后刷新操作失败，则成功提交的批将保留已提交状态（不会回滚已成功提交的批）。
 
@@ -201,7 +201,7 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 1.  克隆或下载存储库。 打开 RestApiSample 解决方案。
 2.  找到 **client.BaseAddress = …** 行 并提供自己的[基 URL](#base-url)。
 
-该代码示例使用[服务主体](#service-principal)身份验证。
+此代码示例使用[服务主体](#service-principal)身份验证。
 
 ### <a name="service-principal"></a>服务主体
 
@@ -212,7 +212,7 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 3.  运行示例。
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [示例](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: a8ba5727dea214343e7696ff3193aba13922be03
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: b10283c2946d01101b941d53b6bf03be3a12e99e
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689455"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954917"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>使用 REST API 跟踪备份和还原作业
 
-Azure 备份服务会触发在各种情况下在后台运行的作业，例如触发备份、执行还原操作以及禁用备份。 可以使用作业的 ID 跟踪这些作业。
+Azure 备份服务在各种情况下触发后台运行的作业, 例如触发备份、还原操作、禁用备份。 可以使用作业的 ID 跟踪这些作业。
 
 ## <a name="fetch-job-information-from-operations"></a>从操作中提取作业信息
 
-操作（例如触发备份）将始终返回 jobID。 例如:[触发器备份 REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3)的最终响应如下所示:
+操作（例如触发备份）将始终返回 jobID。 例如：[触发器备份 REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3)的最终响应如下所示:
 
 ```http
 {

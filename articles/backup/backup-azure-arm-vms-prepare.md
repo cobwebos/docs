@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9a6ea961f7433f511ef22a6ac9aaefa51b5df8aa
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 1f8086580d60d13251052636d4d771855e9605a5
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663690"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954954"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -138,7 +138,7 @@ ms.locfileid: "68663690"
 如果已选择创建新的备份策略，请填写策略设置。
 
 1. 在“策略名称”中指定有意义的名称。
-2. 在“备份计划”中指定何时创建备份。 可为 Azure VM 创建每日或每周备份。
+2. 在 "**备份计划**" 中, 指定何时进行备份。 可为 Azure VM 创建每日或每周备份。
 2. 在“即时还原”中，指定要在本地将用于即时还原的快照保留多长时间。
     - 还原时，已备份的 VM 磁盘将通过网络从存储复制到恢复存储位置。 使用即时还原时，可以利用在执行备份作业期间创建的存储于本地的快照，而无需等待将备份数据传输到保管库。
     - 可将用于即时还原的快照保留一到五天。 默认设置为两天。
@@ -164,12 +164,12 @@ ms.locfileid: "68663690"
 
 ## <a name="verify-backup-job-status"></a>验证备份作业状态
 
-对于每个 VM 备份，备份作业详细信息包含 2 个阶段：“快照”阶段和跟随其后的“将数据传输到保管库”阶段。<br/>
-“快照”阶段保证随同磁盘一起存储的恢复点可用于“即时还原”，并且可用时间最长可达 5 天，具体视用户配置的快照保留期而定。 “将数据传输到保管库”阶段在保管库中创建一个恢复点，以实现长期保留。 仅当“快照”阶段完成后，“将数据传输到保管库”阶段才启动。
+每个 VM 备份的备份作业详细信息包括两个阶段:**快照**阶段, 后跟 "将**数据传输到保管库**" 阶段。<br/>
+快照阶段保证与磁盘一起存储的恢复点的可用性, 以便进行**即时还原**, 并且最多可使用5天, 具体取决于用户配置的快照保持期。 将数据传输到保管库会在保管库中创建恢复点, 以实现长期保留。 仅当“快照”阶段完成后，“将数据传输到保管库”阶段才启动。
 
   ![备份作业状态](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
 
-有两个“子任务”正在后台运行，一个子任务用于前端备份作业，该备份作业可从“备份作业”详细信息边栏选项卡进行查看，如下所示：
+后端上运行了两**个子任务**, 一个用于前端备份作业, 可以按如下所示从 "**备份作业**详细信息" 边栏选项卡中进行检查:
 
   ![备份作业状态](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
 

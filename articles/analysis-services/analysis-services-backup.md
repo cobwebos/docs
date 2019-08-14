@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 15d2d0a043271da18d7884b684ffe8cf5c1f4dc8
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 2e751d45e4b76852426d454f8d29196c01396504
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619205"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932463"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 
@@ -72,7 +72,7 @@ ms.locfileid: "68619205"
 
 
 ### <a name="powershell"></a>PowerShell
-使用 [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) cmdlet。
+使用 [Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) cmdlet。
 
 ## <a name="restore"></a>还原
 还原时，备份文件必须在已为服务器配置的存储帐户中。 如果需要将备份文件从本地位置移到存储帐户，请使用 [Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)或 [AzCopy](../storage/common/storage-use-azcopy.md) 命令行实用工具。 
@@ -99,7 +99,7 @@ ms.locfileid: "68619205"
 
 ### <a name="powershell"></a>PowerShell
 
-使用 [Restore-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/restore-asdatabase-cmdlet) cmdlet.
+使用 [Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) cmdlet.
 
 
 ## <a name="related-information"></a>相关信息

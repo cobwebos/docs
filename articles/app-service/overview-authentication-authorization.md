@@ -4,7 +4,7 @@ description: 概念性参考和概述：Azure 应用服务的身份验证/授权
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: gwallace
 editor: ''
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 53733774968f94ac95d9b3fea6d8fcb422b4e02c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 12ad82b0dda628c3a8cef7712322500c7a33517c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515172"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953835"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 
@@ -119,29 +119,23 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ## <a name="authorization-behavior"></a>授权行为
 
-在 [Azure 门户](https://portal.azure.com)中，可以使用多种行为配置应用服务授权。
+在[Azure 门户](https://portal.azure.com)中, 当传入请求未经过身份验证时, 你可以使用多种行为配置应用服务授权。
 
 ![](media/app-service-authentication-overview/authorization-flow.png)
 
 以下标题介绍了选项。
 
-### <a name="allow-all-requests-default"></a>允许所有请求（默认设置）
+### <a name="allow-anonymous-requests-no-action"></a>允许匿名请求(无操作)
 
-身份验证和授权不由应用服务管理（禁用）。 
+此选项会将未经身份验证的流量授权到你的应用程序代码。 对于经过身份验证的请求，应用服务还会在 HTTP 标头中一起传递身份验证信息。 
 
-如果不需要身份验证和授权，或者想要编写自己的身份验证和授权代码，请选择此选项。
+使用此选项可以更灵活地处理匿名请求。 例如，可以向用户[提供多个登录提供程序](app-service-authentication-how-to.md#use-multiple-sign-in-providers)。 但是，必须编写代码。 
 
 ### <a name="allow-only-authenticated-requests"></a>仅允许经过身份验证的请求
 
 选项为“使用 \<提供程序> 登录”。 应用服务将所有匿名请求重定向到所选提供程序的 `/.auth/login/<provider>`。 如果匿名请求来自本机移动应用，则返回的响应为 `HTTP 401 Unauthorized`。
 
 使用此选项不需要在应用中编写任何身份验证代码。 可以通过检查用户的声明来处理精细授权，例如角色特定的授权（请参阅[访问用户声明](app-service-authentication-how-to.md#access-user-claims)）。
-
-### <a name="allow-all-requests-but-validate-authenticated-requests"></a>允许所有请求，但验证已经过身份验证的请求
-
-选项为“允许匿名请求”。 此选项将在应用服务中启用身份验证和授权，但会推迟对应用程序代码所做的授权决策。 对于经过身份验证的请求，应用服务还会在 HTTP 标头中一起传递身份验证信息。 
-
-使用此选项可以更灵活地处理匿名请求。 例如，可以向用户[提供多个登录提供程序](app-service-authentication-how-to.md#use-multiple-sign-in-providers)。 但是，必须编写代码。 
 
 ## <a name="more-resources"></a>更多资源
 

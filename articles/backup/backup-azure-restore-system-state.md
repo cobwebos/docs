@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: dacurwin
-ms.openlocfilehash: 6dc478f569b94450921e56c05b148bae357fef8e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 70cd7a1e77e6154b6406c82344b82f230eeb7b3c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689125"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954645"
 ---
 # <a name="restore-system-state-to-windows-server"></a>将系统状态还原为 Windows Server
 
@@ -171,7 +171,7 @@ ms.locfileid: "68689125"
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>解决系统状态还原失败的问题
 
-如果未成功完成上一过程（即应用系统状态），请使用 Windows 恢复环境 (Win RE) 恢复 Windows 服务器。 以下步骤介绍如何使用 Win RE 进行恢复。 仅当 Windows Server 在系统状态还原后无法正常启动时使用此选项。 以下过程将清除非系统数据，务必谨慎使用。
+如果未成功完成上一过程（即应用系统状态），请使用 Windows 恢复环境 (Win RE) 恢复 Windows 服务器。 以下步骤介绍如何使用 Win RE 进行恢复。 仅当 Windows Server 在系统状态还原后无法正常启动时, 才使用此选项。 以下过程将清除非系统数据，务必谨慎使用。
 
 1. 将 Windows Server 引导到 Windows 恢复环境 (Win RE)。
 

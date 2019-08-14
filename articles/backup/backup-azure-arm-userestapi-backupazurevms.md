@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 7a69fc7c9077fa10ddf808f1cd953f6739eabe20
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 701972c32f3e80682e2a20d04b02bcd555532e08
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688727"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954981"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
 
-本文介绍如何通过 REST API 使用 Azure API 来管理 Azure VM 的备份。 按本文所述，通过 REST API 为先前未受保护的 Azure VM 首次配置保护、为受保护的 Azure VM 触发按需备份以及修改备份 VM 的备份属性。
+本文介绍如何通过 REST API 使用 Azure API 来管理 Azure VM 的备份。 第一次为之前未受保护的 Azure VM 配置保护, 为受保护的 Azure VM 触发按需备份, 并通过 REST API 修改已备份 VM 的备份属性, 如此处所述。
 
 有关创建新保管库和策略的信息，请参阅[创建保管库](backup-azure-arm-userestapi-createorupdatevault.md)和[创建策略](backup-azure-arm-userestapi-createorupdatepolicy.md) REST API 教程。
 
@@ -214,7 +214,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（正常）。
 
-|姓名  |类型  |描述  |
+|名称  |类型  |描述  |
 |---------|---------|---------|
 |200 正常     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  确定       |
 |202 已接受     |         |     已接受    |
@@ -393,7 +393,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="changing-the-policy-of-protection"></a>更改保护策略
 
-若更改受保护 VM 的策略，可以使用与[启用保护](#enabling-protection-for-the-azure-vm)相同的格式。 只需在[请求正文](#example-request-body)中提供新的策略 ID 并提交请求即可。 例如:若要将 testVM 的策略从 "DefaultPolicy" 更改为 "ProdPolicy", 请在请求正文中提供 "ProdPolicy" id。
+若更改受保护 VM 的策略，可以使用与[启用保护](#enabling-protection-for-the-azure-vm)相同的格式。 只需在[请求正文](#example-request-body)中提供新的策略 ID 并提交请求即可。 例如：若要将 testVM 的策略从 "DefaultPolicy" 更改为 "ProdPolicy", 请在请求正文中提供 "ProdPolicy" ID。
 
 ```http
 {
@@ -445,7 +445,7 @@ DELETE 操作是一种[异步操作](https://docs.microsoft.com/azure/azure-reso
 
 它将返回两个响应：202 (接受): 创建另一个操作, 然后在该操作完成时执行 204 (NoContent)。
 
-|名称  |类型  |描述  |
+|姓名  |类型  |描述  |
 |---------|---------|---------|
 |204 无内容     |         |  无内容       |
 |202 已接受     |         |     已接受    |

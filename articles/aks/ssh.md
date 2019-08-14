@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 748abc08c432518be4ce8698713b1df95077c3c1
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e0b7154e3c4d6a6f493aac93ffcbcc424a67c300
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68722463"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932316"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>使用 SSH 连接到 Azure Kubernetes 服务 (AKS) 群集节点以进行维护或故障排除
 
@@ -37,7 +37,7 @@ ms.locfileid: "68722463"
 使用[az aks show][az-aks-show]命令获取 aks 群集的资源组名称, 然后使用[az vmss list][az-vmss-list]命令获取规模集的名称。
 
 ```azurecli-interactive
-CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
@@ -94,7 +94,7 @@ aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67
 使用[az aks show][az-aks-show]命令获取 aks 群集的资源组名称, 然后使用[az vm list][az-vm-list]命令列出群集的 Linux 节点的虚拟机名称。
 
 ```azurecli-interactive
-CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 

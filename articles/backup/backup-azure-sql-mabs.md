@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 5e91d63f4479d0677c57342cb1b726e33a45bb86
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 72de5857786f284bfc4afda1db093d5343bd7a43
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689088"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954476"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
 本文将引导使用 Microsoft Azure 备份服务器 (MABS) 来完成 SQL Server 数据库的备份配置步骤。
@@ -44,7 +44,7 @@ ms.locfileid: "68689088"
     ![数据保护方法 - 短期磁盘和在线 Azure](./media/backup-azure-backup-sql/pg-name.png)
 7. 在“**指定短期目标**”屏幕中，提供创建磁盘备份点所需的输入。
 
-    在这里我们可以看到，“**保留期**”设置为“*5 天*”，“**同步频率**”设置为“*每 15 分钟一次*”，这也是进行备份的频率。 “**快速完整备份**”设置为“*晚上 8:00*”。
+    在这里, 我们看到 "**保持期**" 设置为 " *5 天*", "**同步频率**" 设置为每*15 分钟*一次, 这是执行备份的频率。 “**快速完整备份**”设置为“*晚上 8:00*”。
 
     ![短期目标](./media/backup-azure-backup-sql/pg-shortterm.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "68689088"
 ## <a name="recover-a-sql-server-database-from-azure"></a>从 Azure 恢复 SQL Server 数据库
 若要从 Azure 中恢复受保护的实体（SQL Server 数据库），必须执行以下步骤。
 
-1. 打开 DPM 服务器管理控制台。 导航到“**恢复**”工作区，可以在其中查看通过 DPM 备份的服务器。 浏览所需的数据库（在本示例中为 ReportServer$MSDPM2012）。 选择“**恢复方式**”，例如“**在线**”。
+1. 打开 DPM 服务器管理控制台。 导航到“**恢复**”工作区，可以在其中查看通过 DPM 备份的服务器。 浏览所需的数据库（在本示例中为 ReportServer$MSDPM2012）。 选择以**联机状态**结束的时间的**恢复**。
 
     ![选择恢复点](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 2. 右键单击数据库名称，并单击“**恢复**”。

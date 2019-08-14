@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
 ms.openlocfilehash: 232468d9b3466759d7af2b7be68a1f553ced6e6d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68348641"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
@@ -442,7 +442,7 @@ Daemon 状态: corosync: active/disabled pacemaker: active/disabled pcsd: active
 
    b. 输入新前端 IP 池的名称 (例如, **Db2 连接**)。
 
-   c. 将 "**分配**" 设置为 "**静态**", 并输入在**开头定义的**"ip 地址"。
+   c. 将 "**分配**" 设置为 "**静态**", 并输入在开头定义的 "ip 地址"。
 
    d. 选择“确定”。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ab633ca47f684688019b1313de61571252760a20
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60497414"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967747"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 
@@ -34,7 +34,7 @@ ms.locfileid: "60497414"
 - [Azure DevOps Projects](../devops-project/overview.md) 提供一种简化的体验，在其中可以使用现有的代码和 Git 存储库，或者选择一个示例应用程序，来与 Azure 建立持续集成 (CI) 和持续交付 (CD) 管道。
 - 使用 [DevOps 发布管道中的持续监视](../azure-monitor/app/continuous-monitoring.md)可以基于监视数据限制或回滚部署。
 - 使用 [Status Monitor](../azure-monitor/app/monitor-performance-live-website-now.md) 可以配合 Azure Application Insights 检测 Windows 上的实时 .NET 应用，而无需修改或重新部署代码。
-- 如果你有权访问应用程序的代码，则可以通过安装适用于 [.NET](../azure-monitor/learn/quick-monitor-portal.md)、[Java](../azure-monitor/learn/java-quick-start.md)、[Node.js](../azure-monitor/learn/nodejs-quick-start.md)或[其他任何编程语言](../azure-monitor/app/platforms.md)的 Azure Monitor Application Insights SDK，使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 启用完全监视。 这样可以指定与应用程序和业务相关的自定义事件、指标或页面视图。
+- 如果你有权访问应用程序的代码，则可以通过安装适用于 [.NET](../azure-monitor/learn/quick-monitor-portal.md)、[Java](../azure-monitor/app/java-get-started.md)、[Node.js](../azure-monitor/learn/nodejs-quick-start.md)或[其他任何编程语言](../azure-monitor/app/platforms.md)的 Azure Monitor Application Insights SDK，使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 启用完全监视。 这样可以指定与应用程序和业务相关的自定义事件、指标或页面视图。
 
 
 

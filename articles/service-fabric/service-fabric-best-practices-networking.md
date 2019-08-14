@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "66237328"
 ---
 # <a name="networking"></a>网络
@@ -72,7 +72,7 @@ ms.locfileid: "66237328"
 
 * 使用反向代理（例如 [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) 或 [Service Fabric 反向代理](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)）公开常用的应用程序端口，例如 80 或 443。
 
-* 有关，不能请求从 Azure 云存储的基本层有以无线方式空隙机上托管的 Windows 容器使用覆盖外层行为[-允许 nondistributable 项目](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines)Docker 守护程序中的标志。
+* 对于托管在无法从 Azure 云存储中拉取基本层的气隙计算机上的 Windows 容器，可通过在 Docker 守护程序中使用 [--allow-nondistributable-artifacts](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) 标志来重写外部层行为。
 
 ## <a name="next-steps"></a>后续步骤
 

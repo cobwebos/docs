@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: dacurwin
-ms.openlocfilehash: a59cff3b2edc4d5b94cc0a44472665c95652f868
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 1d3dc50d141a4e1d2864a56aff5c3adb3d2ca0b1
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736676"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954859"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 通过脱机种子设定，Azure 备份可以使用磁盘将脱机备份数据上传到 Azure。
@@ -93,7 +93,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
 4. 在向导的“确认”页上，单击“备份”。 初始备份将写入到设置过程中指定的暂存区域。
 
-   ![确认已准备好立即备份](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
+   ![确认你现在已准备好进行备份](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
     操作完成后，暂存位置已准备就绪，可用于准备磁盘。
 

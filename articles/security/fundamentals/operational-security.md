@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a2c186fab28c96fa743e7bbf1701dba9de3f742d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 69b25f22d448436db5e906a3b56b5e50ec412b40
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726937"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934680"
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
 ## <a name="introduction"></a>简介
@@ -41,17 +41,17 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
 
 本白皮书概述了 Microsoft 在 Microsoft Azure 云平台中的 Azure 操作安全性方法，并介绍了以下服务：
-1.  [Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
+1.  [Azure Monitor](../../azure-monitor/index.yml)
 
-2.  [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+2.  [Azure 安全中心](../../security-center/security-center-intro.md)
 
-3.  [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
+3.  [Azure Monitor](../../azure-monitor/overview.md)
 
-4.  [Azure 网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
+4.  [Azure 网络观察程序](../../network-watcher/network-watcher-monitoring-overview.md)
 
 5.  [Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
 
-6.  [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
+6.  [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
 
 
 ## <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure 监视日志
@@ -100,21 +100,21 @@ Azure Monitor 服务使用以下方法安全地管理你的基于云的数据:
 Azure 备份中的受保护数据存储在位于特定地理区域的备份保管库。 数据在同一区域内复制，并且根据保管库类型，可能还会复制到其他区域以进一步实现复原。
 
 ### <a name="management-solutions"></a>管理解决方案
-[Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)是 Microsoft 的基于云的 IT 管理解决方案, 可帮助你管理和保护本地和云基础结构。
+[Azure Monitor](../../security-center/security-center-intro.md)是 Microsoft 的基于云的 IT 管理解决方案, 可帮助你管理和保护本地和云基础结构。
 
 
-[管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是一组预打包的逻辑, 可使用一个或多个 Azure Monitor 服务实现特定的管理方案。 可从 Microsoft 和合作伙伴那里获取不同的解决方案, 你可以轻松地将其添加到你的 Azure 订阅, 以提高你在 Azure Monitor 中的投资价值。 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 市场或快速启动模板将它们提供给用户。
+[管理解决方案](../../monitoring/monitoring-solutions.md)是一组预打包的逻辑, 可使用一个或多个 Azure Monitor 服务实现特定的管理方案。 可从 Microsoft 和合作伙伴那里获取不同的解决方案, 你可以轻松地将其添加到你的 Azure 订阅, 以提高你在 Azure Monitor 中的投资价值。 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 市场或快速启动模板将它们提供给用户。
 
 
 ![管理解决方案](./media/operational-security/azure-operational-security-fig4.png)
 
-[更新管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)就是使用多个服务提供更多功能的解决方案的一个好例子。 此解决方案使用适用于 Windows 和 Linux 的[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)代理来收集有关每个代理上所需的更新的信息。 它将此数据写入 Azure Monitor 日志存储库, 可在其中使用包含的仪表板对其进行分析。
+[更新管理解决方案](../../automation/automation-update-management.md)就是使用多个服务提供更多功能的解决方案的一个好例子。 此解决方案使用适用于 Windows 和 Linux 的[Azure Monitor 日志](../../log-analytics/log-analytics-queries.md)代理来收集有关每个代理上所需的更新的信息。 它将此数据写入 Azure Monitor 日志存储库, 可在其中使用包含的仪表板对其进行分析。
 
-创建部署时，可以使用 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)中的 runbook 来安装所需的更新。 可在管理门户中管理整个过程，无需担心如何获取基础详细信息。
+创建部署时，可以使用 [Azure 自动化](../../automation/automation-intro.md)中的 runbook 来安装所需的更新。 可在管理门户中管理整个过程，无需担心如何获取基础详细信息。
 
 ## <a name="azure-security-center"></a>Azure 安全中心
 
-Azure 安全中心可帮助保护 Azure 资源。 它为 Azure 订阅提供集成的安全监控和策略管理。 在该服务中，不仅可以针对 Azure 订阅定义策略，还可针对[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)定义策略，这样可以提高精细度。
+Azure 安全中心可帮助保护 Azure 资源。 它为 Azure 订阅提供集成的安全监控和策略管理。 在该服务中，不仅可以针对 Azure 订阅定义策略，还可针对[资源组](../../azure-resource-manager/resource-group-overview.md#resource-groups)定义策略，这样可以提高精细度。
 
 ### <a name="security-policies-and-recommendations"></a>安全策略和建议
 
@@ -165,7 +165,7 @@ Azure 安全中心收集故障转储文件的临时副本并对其进行分析�
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-利用[Azure Monitor 日志安全](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)和审核解决方案, 它可以主动监视所有资源, 这有助于最大程度地降低安全事件的影响。 Azure Monitor 日志安全和审核具有可用于监视资源的安全域。 安全域支持快速访问用于安全监视的选项，详细介绍了以下域：
+利用[Azure Monitor 日志安全](../../security-center/security-center-monitoring.md)和审核解决方案, 它可以主动监视所有资源, 这有助于最大程度地降低安全事件的影响。 Azure Monitor 日志安全和审核具有可用于监视资源的安全域。 安全域支持快速访问用于安全监视的选项，详细介绍了以下域：
 
 -   恶意软件评估
 -   更新评估
@@ -195,11 +195,11 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 例如，Windows 事件系统日志是适用于 VM 的一个诊断日志类别，而 Blob、表和队列日志是适用于存储帐户的诊断日志类别。
 
-诊断日志不同于[活动日志（以前称为“审核日志”或“操作日志”）](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)。 活动日志提供针对订阅中的资源执行的操作的深入信息。 诊断日志提供资源本身执行的操作的深入信息。
+诊断日志不同于[活动日志（以前称为“审核日志”或“操作日志”）](../../azure-monitor/platform/activity-logs-overview.md)。 活动日志提供针对订阅中的资源执行的操作的深入信息。 诊断日志提供资源本身执行的操作的深入信息。
 
 ### <a name="metrics"></a>指标
 
-在 Azure 监视器中可以使用遥测来查看 Azure 上的工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的指标（也称为性能计数器）。 Azure Monitor 提供多种方式来配置和使用这些[指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)，以便进行监视与故障排除。 指标是重要的遥测来源，允许执行以下任务：
+在 Azure 监视器中可以使用遥测来查看 Azure 上的工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的指标（也称为性能计数器）。 Azure Monitor 提供多种方式来配置和使用这些[指标](../../monitoring/monitoring-data-collection.md)，以便进行监视与故障排除。 指标是重要的遥测来源，允许执行以下任务：
 
 -   通过在门户图表上绘制资源（例如 VM、网站或逻辑应用）的指标并将该图表固定到仪表板，来**跟踪资源的性能**。
 
@@ -213,13 +213,13 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
-这是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用各种不同源的诊断扩展。 目前支持的有 [Azure 云服务 Web 和辅助角色](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service)、运行 Microsoft Windows 的 [Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/overview)，以及 [Service Fabric](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)。 其他 Azure 服务都有自身不同的诊断扩展。
+这是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用各种不同源的诊断扩展。 目前支持的有 [Azure 云服务 Web 和辅助角色](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)、运行 Microsoft Windows 的 [Azure 虚拟机](../../virtual-machines/windows/overview.md)，以及 [Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md)。 其他 Azure 服务都有自身不同的诊断扩展。
 
 ## <a name="azure-network-watcher"></a>Azure 网络观察程序
 
 审核网络安全性对于检测网络漏洞以及确保符合 IT 安全和监管治理模型至关重要。 使用安全组视图，用户可以检索配置的网络安全组和安全规则，以及有效的安全规则。 应用规则列表后，可以确定打开的端口并评估网络漏洞。
 
-[网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)是一个区域性服务，可用于在网络级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。 此服务包括数据包捕获、下一跃点、IP 流验证、安全组视图和 NSG 流日志。 与单独网络资源的监视不同，方案级监视提供网络资源的端到端视图。
+[网络观察程序](../../network-watcher/network-watcher-monitoring-overview.md)是一个区域性服务，可用于在网络级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。 此服务包括数据包捕获、下一跃点、IP 流验证、安全组视图和 NSG 流日志。 与单独网络资源的监视不同，方案级监视提供网络资源的端到端视图。
 
 ![Azure 网络观察程序](./media/operational-security/azure-operational-security-fig8.png)
 
@@ -240,15 +240,15 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 [存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)可存储一些指标，这些指标包括有关存储服务请求的聚合事务统计信息和容量数据。 在 API 操作级别以及存储服务级别报告事务，并在存储服务级别报告容量。 度量值数据可用于分析存储服务使用情况，诊断对存储服务所发出请求的问题以及提高使用服务的应用程序的性能。
 
-[Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)执行日志记录并为存储帐户提供指标数据。 可以使用此数据跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。 存储分析日志记录可用于 [Blob、队列和表服务](https://docs.microsoft.com/azure/storage/storage-introduction)。 存储分析记录成功和失败的存储服务请求的详细信息。
+[Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)执行日志记录并为存储帐户提供指标数据。 可以使用此数据跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。 存储分析日志记录可用于 [Blob、队列和表服务](../../storage/common/storage-introduction.md)。 存储分析记录成功和失败的存储服务请求的详细信息。
 
 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。 仅在针对服务终结点发出请求时才会创建日志条目。 例如，如果存储帐户的 Blob 终结点中存在活动，而表或队列终结点中没有该活动，则仅创建与 Blob 服务有关的日志。
 
-若要使用存储分析，必须为每个要监视的服务单独启用它。 可以在 [Azure 门户](https://portal.azure.com/)中启用它；有关详细信息，请参阅[在 Azure 门户中监视存储帐户](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account)。 还可以通过 REST API 或客户端库以编程方式启用存储分析。 使用“设置服务属性”操作分别为每项服务启用存储分析。
+若要使用存储分析，必须为每个要监视的服务单独启用它。 可以在 [Azure 门户](https://portal.azure.com/)中启用它；有关详细信息，请参阅[在 Azure 门户中监视存储帐户](../../storage/common/storage-monitor-storage-account.md)。 还可以通过 REST API 或客户端库以编程方式启用存储分析。 使用“设置服务属性”操作分别为每项服务启用存储分析。
 
 聚合数据存储在众所周知的 Blob（用于日志记录）和众所周知的表（用于度量）中，可以使用 BLOB 服务和表服务 API 对其进行访问。
 
-存储分析对存储数据的数量限制为 20 TB，这与存储帐户的总限制无关。 所有日志都以[块 Blob](https://docs.microsoft.com/azure/storage/storage-analytics) 的形式存储在一个名为 $logs 的容器中，该容器是在为存储帐户启用存储分析时自动创建的。
+存储分析对存储数据的数量限制为 20 TB，这与存储帐户的总限制无关。 所有日志都以[块 Blob](../../storage/common/storage-analytics.md) 的形式存储在一个名为 $logs 的容器中，该容器是在为存储帐户启用存储分析时自动创建的。
 
 存储分析执行的以下操作都是计费的：
 
@@ -260,7 +260,7 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 > 为了获得最佳性能，需要限制附加到虚拟机的、重度使用的磁盘数，以避免可能的性能限制。 只要不是在同一时间重度使用所有磁盘，存储帐户就可以支持更多的磁盘。
 
 > [!Note]
-> 有关存储帐户限制的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](https://docs.microsoft.com/azure/storage/storage-scalability-targets)。
+> 有关存储帐户限制的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../../storage/common/storage-scalability-targets.md)。
 
 
 将记录以下类型的已获得验证的匿名请求。
@@ -281,9 +281,9 @@ Azure AD 还包含整套标识管理功能，例如多重身份验证、设备�
 
 -   利用安全报告和监视来监视应用程序使用情况并防止企业受到严重威胁。
 
-Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报表和审核报表。 [Azure Active Directory 审核报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)可帮助客户识别其 Azure Active Directory 中发生的特权操作。 特权操作包括提升更改（例如，创建角色或密码重置）、更改策略配置（例如密码策略）或更改目录配置（例如，对域联合身份验证设置的更改）。
+Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报表和审核报表。 [Azure Active Directory 审核报告](../../active-directory/active-directory-reporting-azure-portal.md)可帮助客户识别其 Azure Active Directory 中发生的特权操作。 特权操作包括提升更改（例如，创建角色或密码重置）、更改策略配置（例如密码策略）或更改目录配置（例如，对域联合身份验证设置的更改）。
 
-报告提供了事件名称的审核记录、操作执行者、更改影响的目标资源，以及日期和时间 (UTC)。 客户可以根据[查看审核日志](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)中所述，通过 [Azure 门户](https://portal.azure.com/)检索其 Azure Active Directory 的审核事件列表。 下面是包含的报表列表：
+报告提供了事件名称的审核记录、操作执行者、更改影响的目标资源，以及日期和时间 (UTC)。 客户可以根据[查看审核日志](../../active-directory/reports-monitoring/overview-reports.md)中所述，通过 [Azure 门户](https://portal.azure.com/)检索其 Azure Active Directory 的审核事件列表。 下面是包含的报表列表：
 
 | 安全报表  | 活动报表| 审核报表 |
 | :------------- | :-------------| :-------------|
@@ -299,14 +299,14 @@ Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报�
 
 
 
-对于应用程序（如 SIEM 系统、审核）和商业智能工具而言，这些报表的数据可能非常有用。 Azure AD 报告 [API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started) 通过一组基于 REST 的 API，提供对该数据的编程访问权限。 可从各种编程语言和工具中调用这些 API。
+对于应用程序（如 SIEM 系统、审核）和商业智能工具而言，这些报表的数据可能非常有用。 Azure AD 报告 [API](../../active-directory/active-directory-reporting-api-getting-started-azure-portal.md) 通过一组基于 REST 的 API，提供对该数据的编程访问权限。 可从各种编程语言和工具中调用这些 API。
 
 Azure AD 审核报告中的事件将保留 180 天。
 
 > [!Note]
-> 有关保留报告的详细信息，请参阅 [Azure Active Directory 报告保留策略](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-retention)。
+> 有关保留报告的详细信息，请参阅 [Azure Active Directory 报告保留策略](../../active-directory/reports-monitoring/reference-reports-data-retention.md)。
 
-对于想要更长时间存储其[审核事件](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-audit-events)的客户，可以使用报告 API 定期将审核事件提取到独立的数据存储中。
+对于想要更长时间存储其[审核事件](../../active-directory/active-directory-reporting-activity-audit-logs.md)的客户，可以使用报告 API 定期将审核事件提取到独立的数据存储中。
 
 ## <a name="summary"></a>总结
 
@@ -341,5 +341,5 @@ Microsoft 在设计其服务和软件时始终关注安全性，确保其云基�
 
 使用 Microsoft 安全数据和分析来执行更智能和有效的威胁检测。
 
-- [Azure 安全中心规划和操作](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide) 提供一系列步骤和任务，用户可以按照这些步骤和任务，根据组织的安全要求和云管理模型优化安全中心的使用。
+- [Azure 安全中心规划和操作](../../security-center/security-center-planning-and-operations-guide.md) 提供一系列步骤和任务，用户可以按照这些步骤和任务，根据组织的安全要求和云管理模型优化安全中心的使用。
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 169ce73ead52d6a275f13f084c681e14c89ab606
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 293af600f4bd58efe8383d019ca3d17f724f242c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689354"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933330"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 本文介绍了如何使用恢复服务保管库为 Azure 备份配置报表。 还介绍了如何使用 Power BI 访问报表。 完成这些步骤后，可以直接转到 Power BI 来查看、自定义和创建报表。
@@ -37,7 +37,7 @@ ms.locfileid: "68689354"
 - 注册资源提供程序 Microsoft.insights（如果尚未注册）。 将订阅用于存储帐户和恢复服务保管库，以便报表数据可以流向存储帐户。 要执行此步骤，请转到 Azure 门户，选择“订阅” > “资源提供程序”，并找到此提供程序以进行注册。
 
 ## <a name="configure-storage-account-for-reports"></a>配置报表的存储帐户
-请按照下列步骤操作，使用 Azure 门户配置恢复服务保管库的存储帐户。 这是一次性配置。 配置存储帐户后，可以直接转到 Power BI 以查看内容包和使用报表。
+请按照下列步骤操作，使用 Azure 门户配置恢复服务保管库的存储帐户。 这是一次性配置。 配置存储帐户后, 可以直接使用 Power BI 查看模板应用并使用报表。
 
 1. 如果已打开恢复服务保管库，请转到下一步。 如果未打开恢复服务保管库，则在 Azure 门户中，选择“所有服务”。
 
@@ -80,11 +80,11 @@ ms.locfileid: "68689354"
 如果要自定义和共享报表，请创建工作区并执行以下步骤
 
 1. [登录](https://powerbi.microsoft.com/landing/signin/) Power BI。
-2. 选择“获取数据”。 在“用于创建自己内容的更多方法”中，选择“服务内容包”。 按照 [Power BI 文档](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/)中的步骤连接到服务。
+2. 导航到 "**应用" > 从 Microsoft Appsource 获取更多应用**。 按照 [Power BI 文档](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/)中的步骤连接到服务。
 
 3. 在“搜索”栏中，输入“Azure 备份”，然后选择“立即获取”。
 
-      ![获取内容包](./media/backup-azure-configure-reports/content-pack-get.png)
+      ![获取模板应用](./media/backup-azure-configure-reports/template-app-get.png)
 4. 输入在上一步骤 5 中配置的存储帐户的名称，并选择“下一步”。
 
     ![输入存储帐户名称](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
@@ -96,11 +96,11 @@ ms.locfileid: "68689354"
 
     ![正在导入内容包](./media/backup-azure-configure-reports/content-pack-importing-data.png) <br/>
 
-    导入完成后，将看到“成功”通知。 如果存储帐户中的数据量很大，内容包导入时间可能会稍长一点。
+    导入完成后，将看到“成功”通知。 如果存储帐户中的数据量很大, 则导入模板应用可能需要更长的时间。
 
     ![成功导入内容包](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
 
-7. 成功导入数据后，“Azure 备份”内容包便会显示在导航窗格的“应用”中。 在“仪表板”、“报表”和“数据集”下，该列表现在显示了 Azure 备份。
+7. 成功导入数据后, 在导航窗格中的 "**应用**" 中将显示**Azure 备份**模板应用。 在“仪表板”、“报表”和“数据集”下，该列表现在显示了 Azure 备份。
 
 8. 单击“仪表板”下的“Azure 备份”，显示一组固定的关键报表。
 
@@ -117,10 +117,10 @@ ms.locfileid: "68689354"
 | 错误详细信息 | 解决 |
 | --- | --- |
 | 为备份报表设置存储帐户后，“存储帐户”仍显示“未配置”。 | 如果已成功配置存储帐户，报表数据将忽略此问题而流入该帐户。 若要解决此问题，请转到 Azure 门户并选择“所有服务” > “诊断设置” > “恢复服务保管库” > “编辑设置”。 删除以前配置的设置，然后在同一边栏选项卡中创建新设置。 此时，在“名称”框中，选择“服务”。 现在，应会显示配置的存储帐户。 |
-|在 Power BI 中导入 Azure 备份内容包后，会显示“404- 未找到容器”错误消息。 | 如上所述，在恢复服务保管库中配置报表后，必须等待 24 小时，Power BI 中才会正确显示报表。 如果在 24 小时内尝试访问报表，将收到此错误消息，因为尚不存在完整的数据，无法显示有效报表。 |
+|在 Power BI 中导入 Azure 备份模板应用后, 出现 "找不到 404-容器" 错误消息。 | 如上所述，在恢复服务保管库中配置报表后，必须等待 24 小时，Power BI 中才会正确显示报表。 如果在 24 小时内尝试访问报表，将收到此错误消息，因为尚不存在完整的数据，无法显示有效报表。 |
 
 ## <a name="next-steps"></a>后续步骤
-配置存储帐户并导入 Azure 备份内容包后，下一步是自定义这些报表，并使用报表数据模型创建报表。 有关详细信息，请参阅以下文章。
+配置存储帐户并导入 Azure 备份模板应用后, 接下来的步骤是自定义报表并使用报表数据模型来创建报表。 有关详细信息，请参阅以下文章。
 
 * [使用 Azure 备份报表数据模型](backup-azure-reports-data-model.md)
 * [在 Power BI 中筛选报表](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)

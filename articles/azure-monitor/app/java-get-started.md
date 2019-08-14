@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: d3edfa1ca63560f447d2c9ea3da3588e069b7af1
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 27610280bafa6d8e9e33f84af2d3e9f6c2c9ea5c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226824"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967819"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
@@ -91,7 +91,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 ```
 
 #### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>如果使用 Eclipse 创建动态 Web 项目...
-使用[用于 Java 的 Application Insights SDK 插件][eclipse]。 注意：虽然使用此插件可以通过 Application Insights 更快地完成启动和运行操作（假定未使用 Maven/Gradle），但它不是一个依赖项管理系统。 因此，更新此插件不会自动更新项目中的 Application Insights 库。
+使用适用于 Java 的 Application Insights SDK 插件。 注意：虽然使用此插件可以通过 Application Insights 更快地完成启动和运行操作（假定未使用 Maven/Gradle），但它不是一个依赖项管理系统。 因此，更新此插件不会自动更新项目中的 Application Insights 库。
 
 * *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`version:'2.0.n'`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
 * *若要更新到新的 SDK*，请刷新项目的依赖项。
@@ -100,11 +100,11 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 请下载[最新版本](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)，将所需文件复制到项目中，替换以前的版本。
 
 ### <a name="questions"></a>问题...
-*  `-core` 与 `-web` 组件之间有怎样的关系？
+* `-core` 与 `-web` 组件之间有怎样的关系？
   * `applicationinsights-core` 提供单纯的 API。 始终需要此组件。
   * `applicationinsights-web` 提供用于跟踪 HTTP 请求计数和响应时间的指标。 如果不想要自动收集此遥测数据，可以忽略此组件。 例如，如果想要编写自己的组件。
   
-*  应怎样将 SDK 更新到最新版本？
+* 应怎样将 SDK 更新到最新版本？
   * 如果使用 Gradle 或 Maven...
     * 请更新生成文件，对最新版本进行指定，或者使用 Gradle/Maven 的通配符语法，以便自动包括最新的版本。 然后，请刷新项目的依赖项。 在上面的 [Gradle](#gradle-setup) 或 [Maven](#maven-setup) 的示例中，可以看到通配符语法。
   * 如果是手动管理依赖项...
@@ -381,7 +381,7 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 [AI-Agent.xml](java-agent.md) 文件中定义了传出 SDK 配置。
 
 ## <a name="performance-counters"></a>性能计数器
-打开“调查”、“指标”，查看一系列性能计数器   。
+打开“调查”、“指标”，查看一系列性能计数器。
 
 ![已选中进程专用字节的指标窗格的屏幕截图](./media/java-get-started/011-perf-counters.png)
 
@@ -456,7 +456,7 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 
 [详细了解如何设置可用性 Web 测试。][availability]
 
-## <a name="questions-problems"></a>有疑问？ 遇到问题？
+## <a name="questions-problems"></a>问题? 遇到问题？
 [Java 故障排除](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>后续步骤
@@ -473,7 +473,6 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 [apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#trackexception
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[eclipse]: ../../azure-monitor/learn/java-quick-start.md
 [javalogs]: java-trace-logs.md
 [metrics]: ../../azure-monitor/app/metrics-explorer.md
 [usage]: javascript.md

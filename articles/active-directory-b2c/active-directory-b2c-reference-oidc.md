@@ -11,12 +11,12 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6b5157a71ce15d4dfd199b6826be22235e61df97
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0e60bedcf1324b443d9b9cd34e8dc695fdb0b372
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848533"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931759"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -76,14 +76,14 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | 参数 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
-| response_type | 是 | 必须包含 OpenID Connect 的 ID 令牌。 如果 Web 应用程序还需要使用令牌来调用 Web API，则可以使用 `code+id_token`。 |
-| redirect_uri | 否 | 应用程序的 `redirect_uri` 参数，应用程序可在此发送及接收身份验证响应。 它必须完全匹配在 Azure 门户中注册的其中一个 `redirect_uri` 参数，但必须经过 URL 编码。 |
-| 范围 | 是 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 `offline_access` 范围对 Web 应用程序是可选的。 它表示应用程序需要使用刷新令牌来长期访问资源。 |
-| response_mode | 否 | 将生成的授权代码发回到应用程序所用的方法。 这可以是 `query`、`form_post` 或 `fragment`。  建议使用 `form_post` 响应模式以获得最佳安全性。 |
-| 省/自治区/直辖市 | 否 | 同时随令牌响应返回的请求中所包含的值。 它可以是用户想要的任何内容的字符串。 随机生成的唯一值通常用于防止跨站点请求伪造攻击。 该状态也用于在身份验证请求出现之前，在应用程序中编码用户的状态信息，例如用户之前所在的页面。 |
 | nonce | 是 | 由应用程序生成且包含在请求中的值，以声明方式包含在生成的 ID 令牌中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串，可用以识别请求的来源。 |
 | p | 是 | 运行的用户流。 它是在 Azure AD B2C 租户中创建的用户流的名称。 用户流的名称应以 `b2c\_1\_` 开头。 |
+| response_type | 是 | 必须包含 OpenID Connect 的 ID 令牌。 如果 Web 应用程序还需要使用令牌来调用 Web API，则可以使用 `code+id_token`。 |
+| 范围 | 是 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 `offline_access` 范围对 Web 应用程序是可选的。 它表示应用程序需要使用刷新令牌来长期访问资源。 |
 | prompt | 否 | 需要的用户交互类型。 此时唯一有效的值为 `login`，这会强制用户在该请求上输入其凭据。 |
+| redirect_uri | 否 | 应用程序的 `redirect_uri` 参数，应用程序可在此发送及接收身份验证响应。 它必须完全匹配在 Azure 门户中注册的其中一个 `redirect_uri` 参数，但必须经过 URL 编码。 |
+| response_mode | 否 | 将生成的授权代码发回到应用程序所用的方法。 这可以是 `query`、`form_post` 或 `fragment`。  建议使用 `form_post` 响应模式以获得最佳安全性。 |
+| 省/自治区/直辖市 | 否 | 同时随令牌响应返回的请求中所包含的值。 它可以是用户想要的任何内容的字符串。 随机生成的唯一值通常用于防止跨站点请求伪造攻击。 该状态也用于在身份验证请求出现之前，在应用程序中编码用户的状态信息，例如用户之前所在的页面。 |
 
 此时，要求用户完成工作流。 用户可能需要输入其用户名和密码、用社交标识登录，或注册目录。 可能还可任何其他若干步骤，具体取决于如何定义用户流。
 
@@ -169,13 +169,13 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | 参数 | 必填 | 描述 |
 | --------- | -------- | ----------- |
-| p | 是 | 用于获取授权代码的用户流。 无法在此请求中使用不同的用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
-| client_id | 是 | Azure 门户分配给应用程序的[应用程序 ID](https://portal.azure.com/) 。 |
-| grant_type | 是 | 授予类型，该类型必须是授权代码流的 `authorization_code`。 |
-| 范围 | 否 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 id_token 参数的形式使用户登录并获取有关用户的数据。 它可以用于为应用程序的后端 Web API 获取令牌，该令牌使用和客户端相同的应用程序 ID 表示。 `offline_access` 范围表示应用程序需要使用刷新令牌来长期访问资源。 |
-| code | 是 | 在用户流的开头获取的授权代码。 |
-| redirect_uri | 是 | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
+| client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
 | client_secret | 是 | 在 [Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 此应用程序密码是重要的安全项目。 应将其安全地存储在服务器上。 请定期更新此客户端机密。 |
+| code | 是 | 在用户流的开头获取的授权代码。 |
+| grant_type | 是 | 授予类型，该类型必须是授权代码流的 `authorization_code`。 |
+| p | 是 | 用于获取授权代码的用户流。 无法在此请求中使用不同的用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
+| redirect_uri | 是 | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
+| 范围 | 否 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 id_token 参数的形式使用户登录并获取有关用户的数据。 它可以用于为应用程序的后端 Web API 获取令牌，该令牌使用和客户端相同的应用程序 ID 表示。 `offline_access` 范围表示应用程序需要使用刷新令牌来长期访问资源。 |
 
 成功的令牌响应如下所示：
 
@@ -236,13 +236,13 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 | 参数 | 必填 | 描述 |
 | --------- | -------- | ----------- |
-| p | 是 | 用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
-| client_id | 是 | Azure 门户分配给应用程序的[应用程序 ID](https://portal.azure.com/) 。 |
-| grant_type | 是 | 授予类型，必须是此授权代码流部分的刷新令牌。 |
-| 范围 | 否 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 它可以用于向应用程序的后端 Web API 发送令牌，该令牌使用和客户端相同的应用程序 ID 表示。 `offline_access` 范围表示应用程序需要使用刷新令牌来长期访问资源。 |
-| redirect_uri | 否 | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
-| refresh_token | 是 | 在流的第二部分获取的原始刷新令牌。 必须在授权和令牌请求中使用范围 `offline_access`，才能接收刷新令牌。 |
+| client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
 | client_secret | 是 | 在 [Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 此应用程序密码是重要的安全项目。 应将其安全地存储在服务器上。 请定期更新此客户端机密。 |
+| grant_type | 是 | 授予类型，必须是此授权代码流部分的刷新令牌。 |
+| refresh_token | 是 | 在流的第二部分获取的原始刷新令牌。 必须在授权和令牌请求中使用范围 `offline_access`，才能接收刷新令牌。 |
+| p | 是 | 用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
+| redirect_uri | 否 | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
+| 范围 | 否 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 它可以用于向应用程序的后端 Web API 发送令牌，该令牌使用和客户端相同的应用程序 ID 表示。 `offline_access` 范围表示应用程序需要使用刷新令牌来长期访问资源。 |
 
 成功的令牌响应如下所示：
 

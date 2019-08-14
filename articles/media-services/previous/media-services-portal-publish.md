@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 2639d47a6c9d8da53c9d6bccde0d317698d5d9fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f242018abfb15cea1b76cbcaad00942ec25d78d
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61127834"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69015074"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>在 Azure 门户中发布内容  
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.locfileid: "61127834"
 * **流式处理 (OnDemandOrigin) 定位符**。 流式处理定位符用于自适应流式处理。 自适应流式处理的示例包括 Apple HTTP Live Streaming (HLS)、Microsoft 平滑流式处理，以及经 HTTP 的动态自适应流式处理（DASH，也称 MPEG-DASH）。 要创建流式处理定位符，资产必须包括一个 .ism 文件。 例如， http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest 。
 * **渐进式（共享访问签名）定位符**。 渐进式定位符用于通过渐进式下载来传输视频。
 
-要生成 HLS 流 URL，请将 (format=m3u8-aapl) 附加到 URL： 
+要生成 HLS 流 URL，请将 (format=m3u8-aapl) 附加到 URL：
 
     {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
@@ -48,7 +48,7 @@ ms.locfileid: "61127834"
 
     {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest
 
-要生成 MPEG DASH 流式处理 URL，请将 (format=mpd-time-csf) 附加到 URL： 
+要生成 MPEG DASH 流式处理 URL，请将 (format=mpd-time-csf) 附加到 URL：
 
     {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
 
@@ -70,26 +70,26 @@ ms.locfileid: "61127834"
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>使用门户发布资产
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 选择“设置”   > “资产”  。 选择想要发布的资产。
-3. 选择“发布”按钮  。
+2. 选择“设置” > “资产”。 选择想要发布的资产。
+3. 选择“发布”按钮。
 4. 选择定位符类型。
 5. 选择 **添加** 。
    
     ![发布视频](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
-URL 将添加到“已发布 URL”  列表。
+URL 将添加到“已发布 URL”列表。
 
 ## <a name="play-content-in-the-portal"></a>在门户中播放内容
 可以在 Azure 门户中的内容播放器上测试视频。
 
-选择视频，然后选择“播放”按钮  。
+选择视频，然后选择“播放”按钮。
 
 ![在 Azure 门户中播放视频](./media/media-services-portal-vod-get-started/media-services-play.png)
 
 请注意以下事项：
 
 * 确保视频已发布。
-* Azure 门户媒体播放器从默认的流式处理终结点播放。 若要从非默认流式处理终结点播放，请选择并复制该 URL，然后将其粘贴到其他播放器中。 例如，可以在 [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) 上测试视频。
+* Azure 门户媒体播放器从默认的流式处理终结点播放。 若要从非默认流式处理终结点播放，请选择并复制该 URL，然后将其粘贴到其他播放器中。 例如，可以在 [Azure Media Player](https://aka.ms/azuremediaplayer) 上测试视频。
 * 用于进行流式处理的流式处理终结点必须处于运行状态。  
 
 ## <a name="provide-feedback"></a>提供反馈

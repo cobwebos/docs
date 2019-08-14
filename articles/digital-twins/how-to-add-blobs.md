@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 08/09/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: c61544ce10c5a7d16b3ffc0009039e27f5feecb1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 61c09435606612377781fb382d2d31144e96b07b
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670801"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965946"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>将 Blob 添加到 Azure 数字孪生中的对象
 
@@ -51,14 +51,14 @@ JSON Blob 元数据符合以下模型：
   }
 ```
 
-| 特性 | type | 描述 |
+| 特性 | 类型 | 描述 |
 | --- | --- | --- |
 | **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
-| **名称** |字符串 | Blob 的用户友好名称 |
-| **type** | 字符串 | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
-| **typeId** | Integer | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
+| **名称** |String | Blob 的用户友好名称 |
+| **type** | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
+| **typeId** | 整数 | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
 | **subtype** | String | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
-| **subtypeId** | Integer | Blob 的子类型 ID - 不能使用 *subtype* 和 *subtypeId* |
+| **subtypeId** | 整数 | Blob 的子类型 ID - 不能使用 *subtype* 和 *subtypeId* |
 | **description** | String | Blob 的自定义说明 |
 | **sharing** | String | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
 
@@ -110,17 +110,17 @@ Swagger 文档完整详细地介绍了这些模型架构。
 
 | 特性 | type | 描述 |
 | --- | --- | --- |
-| **id** | 字符串 | Blob 的唯一标识符 |
+| **id** | String | Blob 的唯一标识符 |
 | **名称** |String | Blob 的用户友好名称 |
-| **parentId** | 字符串 | 要与 Blob 关联的父实体（空间、设备或用户） |
-| **type** | 字符串 | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
-| **typeId** | Integer | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
+| **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
+| **type** | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
+| **typeId** | 整数 | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
 | **subtype** | String | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
-| **subtypeId** | Integer | Blob 的子类型 ID - 不能使用 *subtype* 和 *subtypeId* |
-| **sharing** | 字符串 | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
+| **subtypeId** | 整数 | Blob 的子类型 ID - 不能使用 *subtype* 和 *subtypeId* |
+| **sharing** | String | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
 | **description** | String | Blob 的自定义说明 |
-| **contentInfos** | Array | 指定包括版本的非结构化元数据信息 |
-| **fullName** | 字符串 | Blob 的全名 |
+| **contentInfos** | 阵列 | 指定包括版本的非结构化元数据信息 |
+| **fullName** | String | Blob 的全名 |
 | **spacePaths** | String | 空间路径 |
 
 Blob 元数据始终提供为具有 **Content-Type** `application/json` 的第一个区块，或提供为 `.json` 文件。 文件数据在第二个区块中提供，可以是任何受支持的 MIME 类型。
@@ -191,7 +191,7 @@ curl
  -H "Authorization: Bearer YOUR_TOKEN"
  -H "Accept: application/json"
  -H "Content-Type: multipart/form-data"
- -F "meta={\"ParentId\": \"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\": \"A well chosen description\", \"Sharing\": \"None\"};type=application/json"
+ -F "meta={\"ParentId\":\"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob\",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\":\"A well chosen description\",\"Sharing\":\"None\"};type=application/json"
  -F "text=PATH_TO_FILE;type=text/plain"
 ```
 
@@ -245,11 +245,11 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 
 对同一个终结点发出 PATCH 请求会更新元数据说明并创建 Blob 的版本。 HTTP 请求是通过 PATCH 方法以及任何所需的元和多部分表单数据发出的。
 
-### <a name="users"></a>用户
+### <a name="users"></a>位用户
 
 可将 Blob 附加到用户模型（例如，关联个人资料图片）。 下图显示了相关的用户 API 终结点和所有必需的路径参数（例如 `id`）：
 
-[![用户的 blob](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
+[![用户 blob](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
 
 例如，若要提取附加到某个用户的 Blob，请向以下项发出包含所有必需表单数据的经身份验证的 HTTP GET 请求：
 

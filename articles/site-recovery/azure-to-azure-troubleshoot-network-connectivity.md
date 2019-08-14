@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: asgang
-ms.openlocfilehash: 5ed57c93f73eb9a9e972a683f1068692a5963e54
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8e1350a22554bab257e8c99954c2beaa357de2ff
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816960"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934521"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure 到 Azure VM 网络连接问题疑难解答
 
@@ -28,11 +28,11 @@ login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行�
 *.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery IP”。
 *.servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery 监视 IP”。
 
-# <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL 或 IP 范围的出站连接（错误代码 151037 或 151072）
+## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL 或 IP 范围的出站连接（错误代码 151037 或 151072）
 
 ## <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>问题 1：未能向 Site Recovery 注册 Azure 虚拟机 (151195) </br>
 - **可能的原因** </br>
-  - 由于 DNS 解析失败, 无法建立与 Site Recovery 终结点的连接。
+  - 由于 DNS 解析失败而无法建立到 Site Recovery 终结点的连接。
   - 在重新保护期间，对虚拟机进行故障转移但无法从 DR 区域访问 DNS 服务器时经常会出现此问题。
 
 - **解决方法**
@@ -112,10 +112,10 @@ login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行�
                 *[proxy]*</br>
                 *Address=http://1.2.3.4*</br>
                 *Port=567*</br>
-  4. Azure Site Recovery 移动服务代理仅支持***未经身份验证的代理***。
+  4. Azure Site Recovery 移动服务代理仅支持未经身份验证的代理。
 
 ### <a name="fix-the-problem"></a>解决问题
-若要允许[所需的 url](azure-to-azure-about-networking.md#outbound-connectivity-for-urls)或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), 请按照[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)中的步骤进行操作。
+若要允许[所需 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)，请按照[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)中的步骤进行操作。
 
 
 ## <a name="next-steps"></a>后续步骤

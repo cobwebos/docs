@@ -1,62 +1,62 @@
 ---
-title: 迁移 Azure 应用程序网关和 Web 应用程序防火墙从 v1 到 v2
-description: 本文介绍如何从 v1 到 v2 迁移 Azure 应用程序网关和 Web 应用程序防火墙
+title: 将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
+description: 本文介绍如何将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/18/2019
+ms.date: 08/10/2019
 ms.author: victorh
-ms.openlocfilehash: 0fd605d7d502970dccd37da1f3f70fdadb1094a1
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: c4bc0ec2bf15a29962909f14f55854c06f0a6561
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550454"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932502"
 ---
-# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>迁移 Azure 应用程序网关和 Web 应用程序防火墙从 v1 到 v2
+# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
 
-[Azure 应用程序网关和 Web 应用程序防火墙 (WAF) v2](application-gateway-autoscaling-zone-redundant.md)现已推出，提供其他功能，例如自动缩放和可用性区域冗余。 但是，现有 v1 网关不会自动升级到 v2。 如果你想要将迁移从 v1 到 v2，请按照本文中的步骤。
+[Azure 应用程序网关和 Web 应用程序防火墙 (WAF) v2](application-gateway-autoscaling-zone-redundant.md)现在可用, 提供其他功能, 例如自动缩放和可用性-区域冗余。 但是，现有 v1 网关不会自动升级到 v2。 如果要从 v1 迁移到 v2, 请按照本文中的步骤进行操作。
 
-在迁移中有两个阶段：
+迁移分为两个阶段:
 
-1. 迁移的配置
+1. 迁移配置
 2. 迁移客户端流量
 
-本文介绍如何配置迁移。 客户端流量迁移各不相同，具体取决于你的特定环境。 但是，一些高级的常规建议[提供了](#migrate-client-traffic)。
+本文介绍了配置迁移。 客户端流量迁移因特定环境而异。 不过,[还提供了](#migrate-client-traffic)一些高级建议。
 
 ## <a name="migration-overview"></a>迁移概述
 
-提供了 Azure PowerShell 脚本执行以下操作：
+可执行以下操作的 Azure PowerShell 脚本:
 
-* 您指定的虚拟网络子网中创建新的 Standard_v2 或 WAF_v2 网关。
-* 无缝地将复制到新创建的 Standard_V2 或 WAF_V2 网关 v1 标准或 WAF 网关与关联的配置。
+* 在指定的虚拟网络子网中创建新的 Standard_v2 或 WAF_v2 网关。
+* 将与 v1 标准或 WAF 网关关联的配置无缝复制到新创建的 Standard_V2 或 WAF_V2 网关。
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* 新 v2 网关具有新的公共和专用 IP 地址。 它不能移动与现有 v1 到 v2 的无缝的网关相关联的 IP 地址。 但是，你可以分配现有 （未分配） 公用或专用 IP 地址到新 v2 网关。
-* V1 网关所在的位置在虚拟网络中，必须为另一个子网提供 IP 地址空间。 该脚本不能在任何已有 v1 网关的现有子网中创建 v2 网关。 但是，如果已有现有的子网的第 2 版网关，仍可能正常工作提供足够的 IP 地址空间。
-* 若要迁移的 SSL 配置，必须指定使用 v1 网关中的所有 SSL 证书。
-* 如果必须为 V1 网关启用了 FIPS 模式，它不会迁移到新的 v2 网关。 V2 不支持 FIPS 模式。
-* v2 不支持 IPv6，因此在启用了 IPv6 v1 网关不会迁移。 如果运行该脚本，可能无法完成。
-* 如果 v1 网关仅专用 IP 地址，该脚本将创建一个公共 IP 地址和专用 IP 地址的新 v2 网关。 第 2 版网关当前不支持仅使用专用 IP 地址。
+* 新的 v2 网关具有新的公共和专用 IP 地址。 不能将与现有 v1 网关关联的 IP 地址无缝地移动到 v2。 但是, 可以将现有的 (未分配的) 公用或专用 IP 地址分配给新的 v2 网关。
+* 你必须为你的 v1 网关所在的虚拟网络中的另一个子网提供 IP 地址空间。 此脚本无法在已有 v1 网关的任何现有子网中创建 v2 网关。 但是, 如果现有子网已具有 v2 网关, 则在提供足够的 IP 地址空间时, 该网关可能仍会运行。
+* 若要迁移 SSL 配置, 必须指定 v1 网关上使用的所有 SSL 证书。
+* 如果已为 V1 网关启用 FIPS 模式, 则不会将其迁移到新的 v2 网关。 V2 不支持 FIPS 模式。
+* v2 不支持 IPv6, 因此启用了 IPv6 的 v1 网关不会迁移。 如果运行该脚本, 则它可能无法完成。
+* 如果 v1 网关只有专用 IP 地址, 则该脚本将创建一个公共 IP 地址和一个专用 IP 地址, 以用于新的 v2 网关。 v2 网关当前不支持专用 IP 地址。
 
 ## <a name="download-the-script"></a>下载脚本
 
-下载中的迁移脚本[PowerShell 库](https://www.powershellgallery.com/packages/AzureAppGWMigration)。
+从[PowerShell 库](https://www.powershellgallery.com/packages/AzureAppGWMigration)下载迁移脚本。
 
 ## <a name="use-the-script"></a>使用脚本
 
-有两个选项，具体取决于你的本地 PowerShell 环境设置和首选项：
+根据本地 PowerShell 环境的设置和首选项, 有两个选项可供选择:
 
-* 如果您没有安装，Azure Az 模块或不介意卸载 Azure Az 模块，最佳选择是使用`Install-Script`选项来运行脚本。
-* 如果需要保留 Azure Az 模块，最好的方法就是下载该脚本并直接运行。
+* 如果尚未安装 azure az 模块, 或不介意卸载 azure az 模块, 最佳选择是使用`Install-Script`选项运行脚本。
+* 如果需要保留 Azure Az 模块, 最佳做法是下载并直接运行该脚本。
 
-若要确定你是否正在安装的 Azure Az 模块，请运行`Get-InstalledModule -Name az`。 如果看不到任何已安装 Az 模块，则可以使用`Install-Script`方法。
+若要确定是否安装了 Azure Az 模块, 请运行`Get-InstalledModule -Name az`。 如果看不到任何已安装的 Az 模块, 则可以使用`Install-Script`方法。
 
-### <a name="install-using-the-install-script-method"></a>使用安装脚本方法进行安装
+### <a name="install-using-the-install-script-method"></a>使用安装脚本方法安装
 
-若要使用此选项，不能在计算机上安装的 Azure Az 模块。 如果安装这些功能，下面的命令将显示错误。 可以卸载 Azure Az 模块，或使用另一个选项来手动下载该脚本并运行它。
+若要使用此选项, 你必须在计算机上未安装 Azure Az 模块。 如果已安装, 则以下命令将显示错误。 可以卸载 Azure Az 模块, 也可以使用其他选项手动下载并运行该脚本。
   
 使用以下命令运行该脚本：
 
@@ -64,17 +64,17 @@ ms.locfileid: "67550454"
 
 此命令还会安装所需的 Az 模块。  
 
-### <a name="install-using-the-script-directly"></a>直接使用该脚本进行安装
+### <a name="install-using-the-script-directly"></a>直接使用脚本安装
 
-如果有安装某些 Azure Az 模块并在不能卸载它们 （或不想要卸载它们），则可以手动下载脚本使用**手动下载**脚本下载链接中的选项卡。 该脚本被下载为原始 nupkg 文件。 若要从此 nupkg 文件安装脚本，请参阅[手动包下载](https://docs.microsoft.com/powershell/gallery/how-to/working-with-packages/manual-download)。
+如果你安装了某些 Azure Az 模块并且无法卸载它们 (或不想卸载它们), 可以使用脚本下载链接中的 "**手动下载**" 选项卡手动下载该脚本。 此脚本将作为原始 nupkg 文件下载。 若要安装此 nupkg 文件中的脚本, 请参阅[手动包下载](https://docs.microsoft.com/powershell/gallery/how-to/working-with-packages/manual-download)。
 
 若要运行该脚本，请执行以下操作：
 
 1. 使用`Connect-AzAccount`连接到 Azure。
 
-1. 使用`Import-Module Az`Az 模块导入。
+1. 使用`Import-Module Az`导入 Az 模块。
 
-1. 运行`Get-Help AzureAppGWMigration.ps1`检查所需的参数：
+1. 运行`Get-Help AzureAppGWMigration.ps1`以检查所需的参数:
 
    ```
    AzureAppGwMigration.ps1
@@ -84,25 +84,25 @@ ms.locfileid: "67550454"
     -sslCertificates <comma-separated SSLCert objects as above>
     -trustedRootCertificates <comma-separated Trusted Root Cert objects as above>
     -privateIpAddress <private IP string>
-    -publicIpResourceName <public IP name string>
+    -publicIpResourceId <public IP name string>
     -validateMigration -enableAutoScale
    ```
 
-   脚本的参数：
-   * **资源 Id: [字符串]:所需**-这是你的现有标准 v1 或 WAF v1 网关的 Azure 资源 ID。 若要查找此字符串值，导航到 Azure 门户中，选择你的应用程序网关或 WAF 的资源，并单击**属性**网关的链接。 资源 ID 位于该页面上。
+   脚本的参数:
+   * **resourceId: [String]:必需** -这是适用于现有标准 v1 或 WAF v1 网关的 Azure 资源 ID。 若要查找此字符串值, 请导航到 Azure 门户, 选择应用程序网关或 WAF 资源, 并单击网关的 "**属性**" 链接。 资源 ID 位于该页上。
 
-     此外可以运行以下 Azure PowerShell 命令获取资源 ID:
+     你还可以运行以下 Azure PowerShell 命令来获取资源 ID:
 
      ```azurepowershell
      $appgw = Get-AzApplicationGateway -Name <v1 gateway name> -ResourceGroupName <resource group Name> 
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [字符串]:所需**-这是包含新 v2 网关的新子网的 IP 地址空间，已分配 （或想要分配）。 这必须在 CIDR 表示法中指定。 例如：10.0.0.0/24. 不需要提前创建此子网。 该脚本创建它，如果不存在。
-   * **appgwName: [字符串]:可选**。 这是一个字符串，指定要用作新 Standard_v2 或 WAF_v2 网关的名称。 如果不提供此参数，现有的 v1 网关的名称将使用带有后缀 *_v2*追加。
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]:可选**。  必须将以逗号分隔列表的 PSApplicationGatewaySslCertificate 对象的创建用于表示从 v1 网关的 SSL 证书上载到新 v2 网关。 对于每个配置为使用标准 v1 或 WAF v1 网关将 SSL 证书，可以创建一个新的 PSApplicationGatewaySslCertificate 对象通过`New-AzApplicationGatewaySslCertificate`命令如下所示。 为你的 SSL 证书文件并将密码需要的路径。
+   * **subnetAddressRange: [String]:必需** -这是为包含新 v2 网关的新子网分配 (或要分配) 的 IP 地址空间。 这必须以 CIDR 表示法指定。 例如：10.0.0.0/24。 无需提前创建此子网。 如果不存在, 脚本将为你创建它。
+   * **appgwName: [String]:可选**。 这是你指定为新的 Standard_v2 或 WAF_v2 网关的名称的字符串。 如果未提供此参数, 则会将现有 v1 网关的名称与追加的后缀 *_v2*一起使用。
+   * **Azure: [PSApplicationGatewaySslCertificate]:可选**。  你创建的 PSApplicationGatewaySslCertificate 对象列表以逗号分隔, 你创建的这些对象用于表示你的 v1 网关中的 SSL 证书。 对于为标准 v1 或 WAF v1 网关配置的每个 SSL 证书, 可以通过此处显示的`New-AzApplicationGatewaySslCertificate`命令创建新的 PSApplicationGatewaySslCertificate 对象。 你需要 SSL 证书文件的路径和密码。
 
-       此参数才是可选的如果没有为 v1 网关或 WAF 配置的 HTTPS 侦听程序。 如果必须至少一个 HTTPS 侦听程序安装程序，则必须指定此参数。
+       仅当没有为 v1 网关或 WAF 配置 HTTPS 侦听器时, 此参数才是可选的。 如果至少安装了一个 HTTPS 侦听器, 则必须指定此参数。
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,16 +114,16 @@ ms.locfileid: "67550454"
         -Password $password
       ```
 
-      可以传入`$mySslCert1, $mySslCert2`（以逗号分隔） 在前面的示例作为此参数在脚本中的值。
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]:可选**。 创建用于表示 PSApplicationGatewayTrustedRootCertificate 对象的以逗号分隔列表[受信任的根证书](ssl-overview.md)从 v2 网关后端实例的身份验证。  
+      您可以在上面`$mySslCert1, $mySslCert2`的示例中将作为此参数的值传入 (逗号分隔)。
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]:可选**。 一个逗号分隔列表, 其中列出了你创建的 PSApplicationGatewayTrustedRootCertificate 对象, 用于表示从 v2 网关对后端实例进行身份验证的[受信任根证书](ssl-overview.md)。  
 
-      若要创建的 PSApplicationGatewayTrustedRootCertificate 对象的列表，请参阅[新建 AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)。
-   * **privateIpAddress: [字符串]:可选**。 特定专用 IP 地址，你想要关联到新的 v2 网关。  这必须是从同一个 VNet 分配给新 v2 网关。 如果这未指定，脚本会 v2 网关分配专用 IP 地址。
-    * **publicIpResourceId: [String]:可选**。 你想要分配给新 v2 网关的订阅中的公共 IP 地址 (标准 SKU) 资源的 resourceId。 如果未指定，脚本将分配同一资源组中的新公共 IP。 名称是 v2 网关的名称与 *-IP*追加。
-   * **validateMigration: [开关]:可选**。 如果你想要在第 2 版网关创建并配置复制后执行一些基本的配置比较验证的脚本，请使用此参数。 默认情况下不进行任何验证。
-   * **enableAutoScale: [开关]:可选**。 如果你想要在新 v2 网关上启用自动缩放，在创建后的脚本，请使用此参数。 默认情况下，禁用自动缩放。 你可以始终手动启用它更高版本上新创建的第 2 版网关。
+      若要创建 PSApplicationGatewayTrustedRootCertificate 对象列表, 请参阅[AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)。
+   * **privateIpAddress: [String]:可选**。 要关联到新 v2 网关的特定专用 IP 地址。  此配置必须来自为新 v2 网关分配的同一 VNet。 如果未指定, 则脚本将为 v2 网关分配专用 IP 地址。
+    * **publicIpResourceId: [String]:可选**。 你的订阅中要分配给新 v2 网关的公共 IP 地址 (标准 SKU) 资源的 resourceId。 如果未指定此项, 则脚本将在同一资源组中分配一个新的公共 IP。 名称是附加了 *-IP*的 v2 网关的名称。
+   * **validateMigration: [开关]:可选**。 如果希望脚本在创建 v2 网关和配置副本后执行一些基本配置比较验证, 请使用此参数。 默认情况下, 不执行任何验证。
+   * **enableAutoScale: [开关]:可选**。 如果希望脚本在创建新 v2 网关后启用自动缩放, 请使用此参数。 默认情况下, 自动缩放处于禁用状态。 稍后, 你始终可以在新创建的 v2 网关上手动启用它。
 
-1. 运行该脚本使用适当的参数。 可能需要 5 至 7 分钟时间才能完成。
+1. 使用适当的参数运行该脚本。 完成此操作可能需要5到7分钟。
 
     **示例**
 
@@ -141,53 +141,57 @@ ms.locfileid: "67550454"
 
 ## <a name="migrate-client-traffic"></a>迁移客户端流量
 
-首先，仔细检查该脚本成功创建新的 v2 网关具有完全的配置从 v1 网关迁移过来。 可以从 Azure 门户对此进行验证。
+首先, 请仔细检查脚本是否已成功创建了一个新的 v2 网关, 并从 v1 网关上迁移了完全相同的配置。 可以从 Azure 门户验证此验证。
 
-此外，作为手动测试发送少量的流量通过 v2 网关。
+此外, 通过 v2 网关发送少量流量作为手动测试。
   
-下面是几种方案，其中在当前应用程序网关 （标准） 可能会收到客户端流量，并为每个我们建议：
+在以下几种情况下, 当前应用程序网关 (标准) 可能会接收客户端流量, 并为每个应用程序网关提供建议:
 
-* **与标准 v1 或 WAF v1 网关相关联的自定义的 DNS 区域 (例如，contoso.com) 到 （使用 A 记录） 的前端 IP 地址指向**。
+* **一个自定义 DNS 区域 (例如, contoso.com), 指向与标准 v1 或 WAF v1 网关关联的前端 IP 地址 (使用 A 记录)** 。
 
-    可以更新你的 DNS 记录以指向 Standard_v2 应用程序网关相关联的前端 IP 或 DNS 标签。 具体取决于你的 DNS 记录上配置的 TTL，它可能需要一些时间对您的所有客户端流量，以迁移到新的 v2 网关。
-* **自定义的 DNS 区域 (例如，contoso.com) 指向 DNS 标签 (例如： *myappgw.eastus.cloudapp.azure.com*使用 CNAME 记录) 与 v1 网关关联**。
+    可以更新 DNS 记录, 使其指向与 Standard_v2 应用程序网关关联的前端 IP 或 DNS 标签。 根据 DNS 记录上配置的 TTL, 可能需要一段时间才能将所有客户端流量迁移到新的 v2 网关。
+* **一个自定义 dns 区域 (例如 contoso.com), 指向与 v1 网关关联的 dns 标签 (例如: *myappgw.eastus.cloudapp.azure.com* , 使用 CNAME 记录)** 。
 
-   有两种选择：
+   您有两种选择:
 
-  * 如果您的应用程序网关上使用公共 IP 地址，则可以执行受控精细迁移使用流量管理器配置文件以增量方式将流量 （加权的流量路由方法） 路由到新的 v2 网关。
+  * 如果你在应用程序网关上使用公共 IP 地址, 则可以使用流量管理器配置文件执行受控的粒度迁移, 以将流量 (加权流量路由方法) 增量路由到新的 v2 网关。
 
-    您可以执行此操作通过添加到 v1 和 v2 应用程序网关的 DNS 标签[流量管理器配置文件](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)，并因此 Traffic Manager 域 （例如，在自定义 DNS 记录 (例如，www.contoso.com)contoso.trafficmanager.net)。
-  * 或者，可以更新你的自定义域的 DNS 记录以指向新的 v2 应用程序网关的 DNS 标签。 具体取决于你的 DNS 记录上配置的 TTL，它可能需要一些时间对您的所有客户端流量，以迁移到新的 v2 网关。
-* **你的客户端连接到前端的应用程序网关的 IP 地址**。
+    为此, 可以将 v1 和 v2 应用程序网关的 DNS 标签添加到[流量管理器配置文件](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method), 并将自定义 DNS 记录 (例如, Www.contoso.com) CNAMEing 到流量管理器域 (例如, contoso.trafficmanager.net).
+  * 或者, 你可以将自定义域 DNS 记录更新为指向新的 v2 应用程序网关的 DNS 标签。 根据 DNS 记录上配置的 TTL, 可能需要一段时间才能将所有客户端流量迁移到新的 v2 网关。
+* **你的客户端连接到你的应用程序网关的前端 IP 地址**。
 
-   更新客户端可以使用与新创建的 v2 应用程序网关相关联的 IP 地址。 我们建议不要直接使用 IP 地址。 请考虑使用 DNS 名称标签 (例如，yourgateway.eastus.cloudapp.azure.com) 与应用程序网关，你可以给你自己自定义 DNS 区域 (例如，contoso.com) 的 CNAME。
+   更新客户端以使用与新创建的 v2 应用程序网关关联的 IP 地址。 建议你不要直接使用 IP 地址。 请考虑使用与你的应用程序网关关联的 DNS 名称标签 (例如, yourgateway.eastus.cloudapp.azure.com), 可以将其 CNAME 到你自己的自定义 DNS 区域 (例如, contoso.com)。
 
 ## <a name="common-questions"></a>常见问题
 
-### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>是否有要迁移的配置从 v1 到 v2 的 Azure PowerShell 脚本的任何限制？
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell 脚本是否存在将配置从 v1 迁移到 v2 的任何限制？
 
-是的。 请参阅[需要注意的问题/限制](#caveatslimitations)。
+是的。 请参阅[注意事项/限制](#caveatslimitations)。
 
-### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>这篇文章和 Azure PowerShell 脚本是适用于应用程序网关 WAF 产品和的？ 
+### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>这篇文章和 Azure PowerShell 脚本是否适用于应用程序网关 WAF 产品？ 
 
 是的。
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Azure PowerShell 脚本不会还切换到新创建的第 2 版网关我 v1 的网关的流量通过？
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Azure PowerShell 脚本还会将通信从我的 v1 网关切换到新创建的 v2 网关吗？
 
-否。 Azure PowerShell 脚本只会迁移配置。 实际流量迁移是您有责任在您的控件。
+否。 Azure PowerShell 脚本仅迁移配置。 实际的流量迁移是您在控制中的责任。
 
-### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>是通过 Azure PowerShell 脚本创建的新 v2 网关大小进行适当调整以处理所有当前由我 v1 的网关的流量？
+### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Azure PowerShell 脚本所创建的新 v2 网关是否经过适当调整以处理当前由 v1 网关提供的所有通信？
 
-Azure PowerShell 脚本使用适当的大小来处理您现有的 v1 网关上的流量创建新的 v2 网关。 默认情况下，禁用自动缩放，但在运行该脚本时，可以启用自动缩放。
+Azure PowerShell 脚本使用适当的大小创建一个新的 v2 网关, 以处理现有 v1 网关上的流量。 默认情况下, 自动缩放处于禁用状态, 但你可以在运行脚本时启用自动缩放。
 
-### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>我配置了我 v1 的网关将日志发送到 Azure 存储。 该脚本是否复制 v2 还为此配置？
+### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>我配置了 v1 网关, 以将日志发送到 Azure 存储。 脚本是否也将此配置复制到 v2？
 
-不。 该脚本不会复制 v2 的此配置。 到已迁移的第 2 版网关必须单独添加日志配置。
+否。 此脚本不会复制 v2 的此配置。 必须将日志配置单独添加到迁移的 v2 网关。
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我遇到了一些使用此脚本的问题。 如何获得帮助？
+### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>此脚本是否支持上传到 Azure KeyVault 的证书？
+
+否。 此脚本当前不支持 KeyVault 中的证书。 但是, 在将来的版本中会考虑这一点。
+
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>使用此脚本时, 我遇到了一些问题。 如何获取帮助？
   
-可以发送电子邮件至appgwmigrationsup@microsoft.com、 打开支持案例与 Azure 支持，或同时利用这两者。
+你可以向发送电子邮件appgwmigrationsup@microsoft.com、使用 Azure 支持提供支持案例, 或同时执行这两项操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解有关应用程序网关 v2](application-gateway-autoscaling-zone-redundant.md)
+[了解应用程序网关 v2](application-gateway-autoscaling-zone-redundant.md)

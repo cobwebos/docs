@@ -6,18 +6,18 @@ author: JasonWHowell
 ms.author: jasonh
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: cdf90029d02680de4ce55e33b3ed0fe810d70b4c
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 7d0e27802745dda62f87e412053650907e9b812c
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775249"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950158"
 ---
 # <a name="azure-data-catalog-developer-samples"></a>Azure 数据目录开发人员示例
 
 开始使用数据目录 REST API 开发 Azure 数据目录应用。 数据目录 REST API 是基于 REST 的 API，提供对数据目录资源的编程访问，以编程方式注册、批注和搜索数据资产。
 
-以下是我们在 GitHub 的示例：
+## <a name="samples-available-on-githubcom"></a>GitHub.com 上提供的示例
 
 * [Azure 数据目录入门](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/)
   

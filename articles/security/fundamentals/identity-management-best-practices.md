@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 46850ad430aa5fb8ad25a71515bdd640855350c2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727260"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934693"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 本文介绍一系列 Azure 标识管理和访问控制安全最佳实践。 这些最佳做法衍生自我们的 [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) 经验和客户经验。
@@ -84,8 +84,8 @@ ms.locfileid: "68727260"
 **详细信息**：使用正确的功能支持身份验证:
 
   - 员工 Azure AD
-  - 为来宾用户和外部合作伙伴[AZURE AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/)
-  - [Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/)控制客户在使用应用程序时如何注册、登录和管理其配置文件
+  - 为来宾用户和外部合作伙伴[AZURE AD B2B](../../active-directory/b2b/index.yml)
+  - [Azure AD B2C](../../active-directory-b2c/index.yml)控制客户在使用应用程序时如何注册、登录和管理其配置文件
 
 未将其本地标识与云标识集成的组织在管理帐户方面可能开销更大。 这种开销增加了出错和安全漏洞的可能性。
 

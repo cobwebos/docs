@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1e14e9819f4b3344d0f0155ac5c15337a45952dc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c739a6e79cab14ecc8e5a4be23c551d2774cbbd8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828050"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933979"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>使用 Striim 将数据迁移到 Azure Cosmos DB Cassandra API 帐户
 
 Azure marketplace 中的 Striim 映像提供从数据仓库和数据库到 Azure 的持续实时数据移动。 在移动数据时, 可以执行内联的非规范化、数据转换、启用实时分析和数据报告方案。 Striim 可以轻松地开始将企业数据移动到 Azure Cosmos DB Cassandra API。 Azure 提供了一种 marketplace 产品, 可让你轻松地部署 Striim 并将数据迁移到 Azure Cosmos DB。 
 
-本文介绍如何使用 Striim 将数据从**Oracle 数据库**迁移到**Azure Cosmos DB Cassnadra API 帐户**。
+本文介绍如何使用 Striim 将数据从**Oracle 数据库**迁移到**Azure Cosmos DB Cassandra API 帐户**。
 
 ## <a name="prerequisites"></a>先决条件
 

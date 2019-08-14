@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: dacurwin
-ms.openlocfilehash: c53e2c383739b717a5ce94c872b4616bbd1b3f26
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 88adf54ab26055f97534abb4d56d098079116248
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639936"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954936"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -38,10 +38,10 @@ ms.locfileid: "68639936"
 
 ### <a name="before-you-start"></a>开始之前
 
-- 如果不想使用 HTTPS，可以[对所有 VMware 服务器禁用 HTTPS 证书验证](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
+- 如果不想使用 HTTPS, 则可以[为所有 VMware 服务器禁用 https 证书验证](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
 - 通常，你会使用 vSphere Web 客户端从 Azure 备份服务器计算机上的浏览器连接到 vCenter/ESXi 服务器。 首次执行此操作时，连接并不安全，会显示以下消息。
 - 必须了解 Azure 备份服务器处理备份的方式。
-    - Azure 备份服务器首先将数据备份到本地磁盘存储。 对于保护的数据，Azure 备份服务器将使用存储池，即，Azure 备份服务器用来存储磁盘恢复点的一组磁盘和卷。 该存储池可以是直接附加存储 (DAS)、光纤通道 SAN，或者 iSCSI 存储设备或 SAN。 必须确保为 VMware VM 数据的本地备份提供足够的存储空间。
+    - Azure 备份服务器首先将数据备份到本地磁盘存储。 对于保护的数据，Azure 备份服务器将使用存储池，即，Azure 备份服务器用来存储磁盘恢复点的一组磁盘和卷。 该存储池可以是直接附加存储 (DAS)、光纤通道 SAN，或者 iSCSI 存储设备或 SAN。 务必确保有足够的存储空间来存储 VMware VM 数据的本地备份。
     - 然后，Azure 备份服务器会从本地磁盘存储备份到 Azure。
     - 获取测算所需存储空间量的[帮助](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need)。 该信息适用于 DPM，但也适用于 Azure 备份服务器。
 
@@ -289,7 +289,7 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 1. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。 然后单击“下一步”。
 
     - 选择某个文件夹时，也会选择该文件夹中的 VM 或子文件夹进行备份。 可以取消选中不想要备份的文件夹或 VM。
-1. 如果 VM 或文件夹已在备份，则无法选择它。 这可以确保不会为 VM 创建重复的恢复点。 .
+1. 如果 VM 或文件夹已在备份，则无法选择它。 这可以确保不会为 VM 创建重复的恢复点。
 
      ![选择组成员](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
@@ -301,7 +301,7 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 1. 在“指定短期目标”中，指定要在磁盘中备份数据多长时间。
    - 在“保留期”中，指定保留磁盘恢复点的天数。
    - 在“同步频率”中，指定创建磁盘恢复点的频率。
-       - 如果不想要设置备份间隔，可以选中“紧靠在恢复点之前”，以便计划每个恢复点之前的那一刻运行备份。
+       - 如果不想设置备份间隔, 则可以在**恢复点之前**进行检查, 以便在计划每个恢复点之前运行备份。
        - 短期备份是完整备份而不是增量备份。
        - 单击“修改”以更改执行短期备份的时间/日期。
 
@@ -354,7 +354,7 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
 
-若要备份 vSphere 6.7，请执行以下操作：
+若要备份 vSphere 6.7, 请执行以下操作:
 
 - 在 DPM 服务器上启用 TLS 1.2
   >[!Note]

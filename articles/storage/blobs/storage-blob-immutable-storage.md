@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: c0b4a83b2c950683926be7fb3be3b0cbe977fef8
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618400"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941952"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>在 Azure Blob 存储中存储业务关键型数据
 
@@ -80,8 +80,8 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 |---------|---------|---------|
 |Blob 的有效保留时间间隔尚未到期，并且/或者法定保留已设置     |不可变：不可删除和写入         | 放置 Blob<sup>1</sup>、放置块<sup>1</sup>、放置块列表<sup>1</sup>、删除容器、删除 Blob、设置 Blob 元数据、放置页、设置 Blob 属性、快照 Blob、增量复制 Blob、追加块         |
 |Blob 的有效保留时间间隔尚未到期     |仅仅不可写入（允许删除操作）         |放置 Blob<sup>1</sup>、放置块<sup>1</sup>、放置块列表<sup>1</sup>、设置 Blob 元数据、放置页、设置 Blob 属性、快照 Blob、增量复制 Blob、追加块         |
-|清除了所有法定保留，未在容器上设置任何基于时间的保留策略     |可变         |None         |
-|未创建任何 WORM 策略（基于时间的保留或法定保留）     |可变         |无         |
+|清除了所有法定保留，未在容器上设置任何基于时间的保留策略     |可变         |无         |
+|未创建任何 WORM 策略（基于时间的保留或法定保留）     |可变         |None         |
 
 <sup>1</sup> 应用程序允许这些操作创建新的 Blob 一次。 不允许针对不可变容器中的现有 Blob 路径执行任何后续覆盖操作。
 
@@ -175,7 +175,7 @@ Az.Storage 模块支持不可变存储。  若要启用该功能，请执行以�
 
 **此功能是只适用于块 Blob，还是也适用于页 Blob 和追加 Blob？**
 
-不可变存储可以用于任何 Blob 类型，但我们建议主要将其用于块 Blob。 与块 Blob 不同，页 Blob 和追加 Blob 需先在 WORM 容器外部创建，然后复制到容器中。 将这些 Blob 复制到 WORM 容器中后，就不再允许对追加 Blob 执行追加操作，也不允许对页 Blob 进行更改。
+不可变存储可与任何 blob 类型一起使用, 因为它是在容器级别设置的, 但我们建议你将蠕虫用于主要存储块 blob 的容器。 与块 blob 不同, 任何新的页 blob 和追加 blob 都需要在蠕虫容器外部创建, 然后复制到中。 将这些 Blob 复制到 WORM 容器中后，就不再允许对追加 Blob 执行追加操作，也不允许对页 Blob 进行更改。 因此, 强烈建议在为任何活动的虚拟机存储 Vhd (页 blob) 的容器上设置蠕虫策略, 因为它会锁定 VM 磁盘。
 
 **是否需要创建新的存储帐户才能使用此功能？**
 

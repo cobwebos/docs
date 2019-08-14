@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 6e425eba3159f8840e1a7960f6a6c3171b1ba163
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 9409beea3f22fd7ff09fe49838a37d9ff0b485f6
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850413"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975916"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -85,9 +85,9 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
         这是将在其中创建 SMB 服务器计算机帐户的组织单位 (OU) 的 LDAP 路径。 即 OU = 第二级, OU = 第一级。 
     * 凭据, 包括**用户名**和**密码**
 
-    ![联接 Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![加入 Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
-3. 单击“加入”  。  
+3. 单击“加入”。  
 
     此时将显示创建的 Active Directory 连接。
 
@@ -99,7 +99,7 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 
     ![导航到卷](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
-2. 单击“+ 添加卷”  以创建卷。  
+2. 单击“+ 添加卷”以创建卷。  
     此时将显示 "创建卷" 窗口。
 
 3. 在 "创建卷" 窗口中, 单击 "**创建**", 并为以下字段提供信息:   
@@ -114,7 +114,7 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
     * **配额**  
         指定分配给卷的逻辑存储量。  
 
-        “可用配额”  字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
+        “可用配额”字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
 
     * **虚拟网络**  
         指定要从中访问卷的 Azure 虚拟网络 (Vnet)。  
@@ -125,7 +125,7 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
         指定要用于卷的子网。  
         你指定的子网必须委派给 Azure NetApp 文件。 
         
-        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。  然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”  来为 Azure NetApp 文件委派子网。 在每个 Vnet 中, 只能将一个子网委托给 Azure NetApp 文件。   
+        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。 然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”来为 Azure NetApp 文件委派子网。 在每个 Vnet 中, 只能将一个子网委托给 Azure NetApp 文件。   
  
         ![创建卷](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
@@ -148,4 +148,6 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 
 * [为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)
+* [SMB 常见问题解答](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
 * [了解 Azure 服务的虚拟网络集成](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [使用 Azure CLI 安装新的 Active Directory 林](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

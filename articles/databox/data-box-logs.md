@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 309dc8e1fd15ae4088ed6ee87bdbb8aa4d636951
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848572"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934201"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box 和 Azure Data Box Heavy 的跟踪与事件日志记录
 
@@ -197,7 +197,7 @@ BOM 或清单文件还会复制到 Azure 存储帐户。 可以使用 BOM 或清
 
 在将数据上传到 Azure 的过程中, 会创建一个复制日志。
 
-### <a name="copylog"></a>Copylog
+### <a name="copy-log"></a>复制日志
 
 对于每个处理的订单, Data Box 服务在关联的存储帐户中创建复制日志。 复制日志包含已上传的文件总数以及从 Data Box 到你的 Azure 存储帐户的数据复制期间误码的文件数。
 
@@ -252,6 +252,8 @@ BOM 或清单文件还会复制到 Azure 存储帐户。 可以使用 BOM 或清
 ### <a name="upload-completed-with-warnings"></a>上传已完成, 但出现警告
 
 如果你的数据具有不符合 Azure 命名约定的容器/blob/文件名, 并已将这些名称修改为将数据上载到 Azure, 则上传到 Azure 完成时会出现警告。
+
+![已完成但出现警告时在概述边栏选项卡中复制日志的路径](media/data-box-logs/copy-log-path-3.png)
 
 下面是复制日志的示例, 其中不符合 Azure 命名约定的容器在数据上传到 Azure 的过程中已重命名。
 

@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: e07d976ba1d4fbb77a995056b3596967b686200b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 912a063a5a831f2eade4678719723a56548b57ee
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839834"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967530"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器复制数据
-> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 >
 > * [版本 1](v1/data-factory-ftp-connector.md)
 > * [当前版本](connector-ftp.md)
@@ -40,6 +40,10 @@ ms.locfileid: "68839834"
 - 使用 **Basic** 或 **Anonymous** 身份验证复制文件。
 - 按原样复制文件，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析文件。
 
+## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 ## <a name="get-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -53,14 +57,14 @@ FTP 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**FtpServer**。 | 是 |
-| 主机 | 指定 FTP 服务器的名称或 IP 地址。 | 是 |
-| 端口 | 指定 FTP 服务器侦听的端口。<br/>允许的值是：整数，默认值是 21。 | 否 |
+| host | 指定 FTP 服务器的名称或 IP 地址。 | 是 |
+| port | 指定 FTP 服务器侦听的端口。<br/>允许的值是：整数，默认值是 21。 | 否 |
 | enableSsl | 指定是否通过 SSL/TLS 通道使用 FTP。<br/>允许的值是：true（默认）、false。 | 否 |
 | enableServerCertificateValidation | 指定在通过 SSL/TLS 通道使用 FTP 时，是否启用服务器 SSL 证书验证。<br/>允许的值是：true（默认）、false。 | 否 |
 | authenticationType | 指定身份验证类型。<br/>允许值包括：**Basic**、**Anonymous** | 是 |
 | userName | 指定有权访问 FTP 服务器的用户。 | 否 |
-| 密码 | 指定用户 (userName) 的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| password | 指定用户 (userName) 的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
 >FTP 连接器支持在不使用加密或使用显式 SSL/TLS 加密的情况下访问 FTP 服务器；不支持隐式 SSL/TLS 加密。

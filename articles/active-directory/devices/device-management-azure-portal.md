@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f64beb80d1a11930fee74e669675b39087cade0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 03c9f0908d8b5290dc4585a330a7ea78a6577ab9
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562234"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942950"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 门户管理设备标识
 
@@ -116,7 +116,7 @@ Azure AD 门户提供了一个用于管理设备标识的中心位置。 可以�
 
 ### <a name="manage-an-intune-device"></a>管理 Intune 设备
 
-Intune 管理员可以管理标记为“Microsoft Intune”的设备。
+Intune 管理员可以管理标记为“Microsoft Intune”的设备。 如果设备未向注册 Microsoft Intune "管理" 选项将灰显。
 
 ![管理 Intune 设备](./media/device-management-azure-portal/31.png)
 

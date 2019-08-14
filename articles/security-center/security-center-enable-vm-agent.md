@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 12934ad53050d16b89dd5b4175ca19a24d1ec4d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60916256"
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>在 Azure 安全中心启用 VM 代理
@@ -32,12 +32,12 @@ ms.locfileid: "60916256"
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”边栏选项卡  中，选择“启用 VM 代理”  。
+1. 在“建议”边栏选项卡中，选择“启用 VM 代理”。
    ![启用 VM 代理][1]
-2. 这会打开边栏选项卡“缺少 VM 代理或 VM 代理未响应”  。 此边栏选项卡列出了需要 VM 代理的 VM。 按照边栏选项卡上的说明来安装 VM 代理。
+2. 这会打开边栏选项卡“缺少 VM 代理或 VM 代理未响应”。 此边栏选项卡列出了需要 VM 代理的 VM。 按照边栏选项卡上的说明来安装 VM 代理。
    ![缺少 VM 代理][2]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。

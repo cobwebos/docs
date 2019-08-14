@@ -10,35 +10,38 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4d70fe3f3f19723cd37080ae09dce97bfd8f3d34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 080c1933f88d9e824969a42212de2eacd0f62e14
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511697"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927286"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com
 
 在你的 Azure Active Directory (Azure AD) B2C 应用程序中设置用于注册和登录的标识提供者时，需要指定一个重定向URL。 过去使用的是 login.microsoftonline.com，现在应当使用 b2clogin.com。
 
+> [!NOTE]
+> 可以在 b2clogin.com 中使用 JavaScript 客户端代码 (当前为预览版)。 如果你使用 login.microsoftonline.com, 则将从自定义页面中删除你的 JavaScript 代码。 其他安全限制还适用于 login.microsoftonline.com, 例如从自定义页中删除 HTML 窗体元素。 
+
 使用 b2clogin.com 可以提供更多优势，例如：
 
 - Microsoft 服务在 cookie 标头中使用的空间就会减少。
-- URL 不再包括对 Microsoft 的引用。 例如，`https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`。
+- URL 不再包括对 Microsoft 的引用。 例如， `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp` 。
 
->[!NOTE]
-> 可以按如下所示使用租户名称和租户 GUID:
-> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (这仍然引用`onmicrosoft.com`)
-> * `https://your-tenant-name.b2clogin.com/your-tenant-guid` （在此情况下没有 Microsoft 引用所有）
+> [!NOTE]
+> 你可以同时使用租户名称和租户 GUID, 如下所示:
+> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`(仍引用`onmicrosoft.com`)
+> * `https://your-tenant-name.b2clogin.com/your-tenant-guid`(在这种情况下, 不存在对 Microsoft 的引用)
 >
-> 但是，不能使用_的自定义域_为你的 Azure Active Directory B2C 租户，例如`https://your-tenant-name.b2clogin.com/your-custom-domain-name`会_不_工作。
+> 但是, 你不能使用 Azure Active Directory B2C 租户的_自定义域_, 例如`https://your-tenant-name.b2clogin.com/your-custom-domain-name`将_不_起作用。
 
 使用 b2clogin.com 时，考虑可能需要更改的这些设置：
 
 - 将标识提供者应用程序中的重定向 URL 设置为使用 b2clogin.com。 
 - 将 Azure AD B2C 应用程序设置为将 b2clogin.com 用于用户流引用和令牌终结点。 
 - 如果使用的是 MSAL，则需要将 **ValidateAuthority** 属性设置为 `false`。
-- 请确保更改[用户界面自定义](active-directory-b2c-ui-customization-custom-dynamic.md)的 CORS 设置中定义的任何“允许的源”  。  
+- 请确保更改[用户界面自定义](active-directory-b2c-ui-customization-custom-dynamic.md)的 CORS 设置中定义的任何“允许的源”。  
 
 ## <a name="change-redirect-urls"></a>更改重定向 URL
 

@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: bbf682df2df7a8cdc9fedb36aa4244fc5c0e9488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29418345aaa8042e50b1297541cac3af0a3c1504
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244000"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935207"
 ---
 # <a name="data-querying"></a>数据查询
 
@@ -35,7 +35,7 @@ Azure 时序见解预览版允许通过公共 Surface API 对存储在环境中�
 
 支持以下核心 API。
 
-[![时间序列查询概述](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
+[![时序查询概述](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
 ## <a name="environment-apis"></a>环境 API
 
@@ -75,8 +75,8 @@ Azure 时序见解预览版允许通过公共 Surface API 对存储在环境中�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何[存储和入口](./time-series-insights-update-storage-ingress.md)Azure 时间系列 Insights 预览版中。
+- 详细了解 Azure 时序见解预览版中的[存储和流入量](./time-series-insights-update-storage-ingress.md)。
 
-- 读取时间系列 Insights 预览版[数据建模](./time-series-insights-update-tsm.md)一文。
+- 阅读 Azure 时序见解预览版[数据建模](./time-series-insights-update-tsm.md)一文。
 
-- 发现[选择时间序列 ID 时的最佳做法](./time-series-insights-update-how-to-id.md)。
+- 找到[有关选择时序 ID 的最佳做法](./time-series-insights-update-how-to-id.md)。

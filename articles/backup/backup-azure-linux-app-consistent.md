@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/12/2018
 ms.author: dacurwin
-ms.openlocfilehash: dae2268abc3771e43d717c65c19eed37b9f48e8e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: bb764cfa14b4bc8e53f25629961a1baecd6a6c1f
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689256"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954693"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM 的应用程序一致性备份
 
@@ -24,7 +24,7 @@ ms.locfileid: "68689256"
 
 该框架提供一个选项，用于在创建 VM 快照时运行自定义的操作前脚本和操作后脚本。 前脚本在创建 VM 快照前的那一刻运行，后脚本在创建 VM 快照后立即运行。 使用前脚本和后脚本可在创建 VM 快照时灵活控制应用程序和环境。
 
-前脚本可以调用本机应用程序 API 来使 IO 处于静默状态并将内存中内容刷新到磁盘。 这些操作可确保快照是应用程序一致的。 后脚本使用本机应用程序 API 来解冻 IO，使应用程序能够在创建 VM 快照后恢复正常操作。
+前脚本可以调用本机应用程序 API 来使 IO 处于静默状态并将内存中内容刷新到磁盘。 这些操作可确保快照是应用程序一致的。 后脚本使用本机应用程序 Api 来解冻 Io, 使应用程序能够在 VM 快照后恢复正常操作。
 
 ## <a name="steps-to-configure-pre-script-and-post-script"></a>配置操作前脚本和操作后脚本的步骤
 

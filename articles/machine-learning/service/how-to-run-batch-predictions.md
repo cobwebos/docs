@@ -1,5 +1,5 @@
 ---
-title: 对大数据运行批量预测
+title: 对包含管道的大型数据运行批预测
 titleSuffix: Azure Machine Learning service
 description: 了解如何使用 Azure 机器学习服务对大量数据进行异步批量预测。
 services: machine-learning
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 689ee003e0923a65d3ca3f2d13c1a2d05c299dbd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 97b66bff0e6413b7774a054a01a0dc73649c9cce
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358726"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68962984"
 ---
-# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务对大型数据集运行批量预测
+# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>对包含 Azure 机器学习管道的大型数据集运行批处理预测
 
-本文介绍如何使用 Azure 机器学习服务异步对大量数据进行预测。
+本文介绍如何使用 Azure 机器学习 service 通过 ML 管道对大量数据进行异步预测。
 
 批量预测（或批量评分）可以针对异步应用程序空前未有的吞吐量进行经济有效的推理。 批量预测管道可以进行缩放，以便在数 TB 生产数据的基础上进行推理。 批量预测针对高吞吐量的即发即弃预测进行优化，适用于大量的数据。
 
@@ -358,7 +358,4 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解此方面的端到端运行机制，请尝试 [GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines) 中的批量评分笔记本。
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
-
+若要查看此端到端工作, 请在[GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)中尝试使用 batch 计分笔记本, 或访问[Azure 体系结构中心](/azure/architecture/reference-architectures/ai/batch-scoring-python)来查看示例解决方案体系结构。
