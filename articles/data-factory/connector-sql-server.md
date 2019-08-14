@@ -61,7 +61,7 @@ SQL Server 链接服务支持以下属性:
 | type | type 属性必须设置为 **SqlServer**。 | 是 |
 | connectionString |使用 SQL 身份验证或 Windows 身份验证来指定连接到 SQL Server 数据库所需的**connectionString**信息。 请参阅以下示例。<br/>将此字段标记为**SecureString**以将其安全地存储在 Azure 数据工厂中。 还可以在 Azure Key Vault 中输入密码。 如果它是 SQL 身份验证, 请`password`将配置从连接字符串中提取出来。 有关详细信息, 请参阅表后面的 JSON 示例, 并[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
 | userName |如果使用 Windows 身份验证, 请指定用户名。 例如，**domainname\\username**。 |否 |
-| 密码 |指定为 "用户名" 指定的用户帐户的密码。 将此字段标记为**SecureString**以将其安全地存储在 Azure 数据工厂中。 或者，可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 |否 |
+| password |指定为 "用户名" 指定的用户帐户的密码。 将此字段标记为**SecureString**以将其安全地存储在 Azure 数据工厂中。 或者，可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 |否 |
 | connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 如果数据存储可公开访问, 则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!TIP]
