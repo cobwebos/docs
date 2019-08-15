@@ -45,8 +45,8 @@ ms.locfileid: "68499849"
 
 持久性浏览器会话允许用户在关闭并重新打开其浏览器窗口后保持登录。
 
-浏览器会话暂留 Azure AD 默认值允许个人设备上的用户通过显示 "保持登录状态" 来选择是否持久保存会话 身份验证成功后的提示。 如果使用 AD FS 单一登录设置[](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
-)一文中的指南在 AD FS 中配置了浏览器持久性, 我们将遵守该策略并同时保留 Azure AD 会话。 你还可以配置租户中的用户是否能看到 "保持登录？" 通过使用[自定义 Azure AD 登录页](../fundamentals/customize-branding.md)一文中的指南, 在 Azure 门户中更改 "公司品牌" 窗格中的相应设置来提示。
+浏览器会话暂留 Azure AD 默认值允许个人设备上的用户通过显示 "保持登录状态" 来选择是否持久保存会话 身份验证成功后的提示。 如果使用 AD FS 单一登录设置 [文中的指南在 AD FS 中配置了浏览器持久性](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+) , 我们将遵守该策略并同时保留 Azure AD 会话。 你还可以配置租户中的用户是否能看到 "保持登录？" 通过使用[自定义 Azure AD 登录页](../fundamentals/customize-branding.md)一文中的指南, 在 Azure 门户中更改 "公司品牌" 窗格中的相应设置来提示。
 
 ## <a name="configuring-authentication-session-controls"></a>配置身份验证会话控件
 

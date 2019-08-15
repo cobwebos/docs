@@ -122,7 +122,7 @@ ms.locfileid: "68774295"
 * 在 "**高级**" 下的 "使用**托管磁盘**" 下选择 **"是"** 。
 
    > [!NOTE]
-   > Microsoft 建议为 SQL Server 使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关详细信息，请参阅 [Azure 托管磁盘概述][../managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息, 请参阅 [为可用性集中的 Vm 使用托管磁盘] (.。。/manage-availability.md。
+   > Microsoft 建议为 SQL Server 使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关详细信息，请参阅 [Azure 托管磁盘概述][../managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息, 请参阅 [为可用性集中的 Vm 使用托管磁盘] (../manage-availability.md。
 
 ![SQL VM 磁盘设置](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
