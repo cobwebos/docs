@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 5c1376c7d1afe9c9702cfb43a146ac1cd17d6e58
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 17cb1091d34c8c0800d0b4dd1f9044fee0ef313f
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428344"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946458"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>教程：从 Apache Storm on Azure HDInsight 写入到 Apache Hadoop HDFS
 
@@ -42,7 +42,7 @@ ms.locfileid: "67428344"
 
 ### <a name="example-configuration"></a>示例配置
 
-以下 YAML 摘自示例中包含的 `resources/writetohdfs.yaml` 文件。 此文件定义对 Apache Storm 使用 [Flux](https://storm.apache.org/releases/1.1.2/flux.html) 框架的 Storm 拓扑。
+以下 YAML 摘自示例中包含的 `resources/writetohdfs.yaml` 文件。 此文件定义对 Apache Storm 使用 [Flux](https://storm.apache.org/releases/current/flux.html) 框架的 Storm 拓扑。
 
 ```yaml
 components:

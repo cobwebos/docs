@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 9966164ec1b6a37538a24d2ef8cb80007e6f6d29
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 659c4cb3a6f0d50176875b76eeb2784c711eafd1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698230"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967144"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>使用自定义根 CA 生成 Azure 应用程序网关自签名证书
 
@@ -29,7 +29,7 @@ ms.locfileid: "68698230"
 - 创建由您的自定义 CA 签名的自签名证书
 - 将自签名的根证书上传到应用程序网关, 对后端服务器进行身份验证
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - **运行 Windows 或 Linux 的计算机上的[OpenSSL](https://www.openssl.org/)** 
 
@@ -150,7 +150,7 @@ CSR 是申请证书时向 CA 提供的公钥。 CA 颁发此特定请求的证�
 
 ### <a name="nginx"></a>NGINX
 
-以下配置是[NGINX server block](http://nginx.org/docs/http/configuring_https_servers.html) with SSL 配置的示例:
+以下配置是[NGINX server block](https://nginx.org/docs/http/configuring_https_servers.html) with SSL 配置的示例:
 
 ![带 SSL 的 NGINX](media/self-signed-certificates/nginx-ssl.png)
 

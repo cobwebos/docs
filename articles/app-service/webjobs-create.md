@@ -2,26 +2,22 @@
 title: 使用 WebJobs 运行后台任务 - Azure 应用服务
 description: 了解如何使用 WebJobs 在 Azure 应用服务 Web 应用、API 应用或移动应用中运行后台任务。
 services: app-service
-documentationcenter: ''
 author: ggailey777
 manager: jeconnoc
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 55d040e96b92f73a632fd415220f9cf135335736
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 66c1b62dc94fc071d3b04fc0d4e89220df74d1f8
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851008"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945804"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
 
@@ -165,7 +161,7 @@ when making changes in one don't forget the other two.
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
    | **类型** | 触发 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
    | **触发器** | 已计划 | 要使计划可靠运行，请启用 Always On 功能。 Always On 仅在基本、标准和高级定价层中提供。|
-   | **CRON 表达式** | 0 0/20 * * * * | 以下部分介绍了 [CRON 表达式](#cron-expressions)。 |
+   | **CRON 表达式** | 0 0/20 * * * * | 以下部分介绍了 [CRON 表达式](#ncrontab-expressions)。 |
 
 4. 单击 **“确定”** 。
 

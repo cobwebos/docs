@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 14bf7dc62bb97cb14232660db6d0649e3d77d4fa
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 2c43a3c046243c4802fb433f3b755cee158002b6
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662939"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950560"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -56,7 +56,7 @@ ms.locfileid: "68662939"
 
    ![安全中心概述](./media/security-center-partner-integration/overview.png)
 
-在“安全解决方案”下，可以查看集成式 Azure 安全解决方案的运行状况信息，并执行基本的管理任务。 还可以连接其他类型的安全数据源，例如通用事件格式 (CEF) 的 Azure Active Directory 标识保护警报和防火墙日志。
+在“安全解决方案”下，可以查看集成式 Azure 安全解决方案的运行状况信息，并执行基本的管理任务。
 
 ### <a name="connected-solutions"></a>已连接的解决方案
 
@@ -97,8 +97,6 @@ ms.locfileid: "68662939"
 在解决方案下选择“连接”，以便集成安全中心，获取有关安全警报的通知。
 
 ![已发现的解决方案](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
-
-安全中心还发现部署在订阅中的那些能够转发常见事件格式 (CEF) 日志的解决方案。 了解如何[连接安全解决方案](quick-security-solutions.md)，以便将使用 CEF 日志的安全解决方案连接到安全中心。
 
 ### <a name="add-data-sources"></a>添加数据源
 

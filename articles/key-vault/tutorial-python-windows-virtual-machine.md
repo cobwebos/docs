@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: cdc540f2f6fa834a97c4c405276414f29672e5c7
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: ae9aaea91f62a7e79835e65a5a9f9c76017afdb1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876670"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934383"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>教程：将 Azure Key Vault 与通过 Python 编写的 Windows 虚拟机配合使用
 
@@ -103,9 +103,9 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 可以使用以下方法之一创建虚拟机：
 
-* [Azure CLI](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli)
-* [PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
-* [Azure 门户](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
+* [Azure CLI](../virtual-machines/windows/quick-create-cli.md)
+* [PowerShell](../virtual-machines/windows/quick-create-powershell.md)
+* [Azure 门户](../virtual-machines/windows/quick-create-portal.md)
 
 ## <a name="assign-an-identity-to-the-vm"></a>为 VM 分配标识
 在此步骤中，请通过在 Azure CLI 中运行以下命令，为虚拟机创建系统分配的标识：
@@ -132,7 +132,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ## <a name="log-on-to-the-virtual-machine"></a>登录到虚拟机
 
-若要登录到虚拟机，请遵照[连接并登录到运行 Windows 的 Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)中的说明操作。
+若要登录到虚拟机，请遵照[连接并登录到运行 Windows 的 Azure 虚拟机](../virtual-machines/windows/connect-logon.md)中的说明操作。
 
 ## <a name="create-and-run-a-sample-python-app"></a>创建并运行示例 Python 应用
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: b3ebd8b6f65ec86d338932579f5d4ccec6a90be3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e92c2e58122556f90b25f070fff9e6e6616b0257
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704734"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976845"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET Standard API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -31,8 +31,13 @@ ms.locfileid: "68704734"
 |**快速入门**|[快速入门](create-table-dotnet.md)|
 |**教程**|[教程](tutorial-develop-table-dotnet.md)|
 |**当前受支持的框架**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
+|**报告问题**|[报告问题](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name104104"></a><a name="1.0.4"/>1.0.4
+* Bug 修复
+* 提供 RestExecutorConfiguration 的 HttpClientTimeout 选项。
 
 ### <a name="a-name104-preview104-preview"></a><a name="1.0.4-preview"/>1.0.4-预览
 * Bug 修复
@@ -71,6 +76,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.0.4](#1.0.4) |Auguest 12, 2019 |--- |
 | [1.0.4-预览](#1.0.4-preview) |2019年7月26日 |--- |
 | 1.0.2-预览版 |5月2日, 2019 |--- |
 | [1.0.1](#1.0.1) |2019年4月19日 |--- |
@@ -86,4 +92,4 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>请参阅
-若要了解有关 Azure Cosmos DB 表 API 的详细信息，请参阅 [Azure Cosmos DB 表 API 简介](table-introduction.md)。 
+若要了解有关 Azure Cosmos DB 表 API 的详细信息，请参阅 [Azure Cosmos DB 表 API 简介](table-introduction.md)。

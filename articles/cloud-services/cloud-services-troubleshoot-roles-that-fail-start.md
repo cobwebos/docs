@@ -9,18 +9,17 @@ editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e1ae9ca6106a6a55e0cfc933ad47a5944ed5abb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653343"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945398"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
 以下是一些与无法启动的 Azure 云服务角色相关的常见问题和解决方案。
@@ -54,7 +53,7 @@ DLL 或程序集缺失的症状可能为：
     ```xml
     <customErrors mode="Off" />
     ```
-4. 保存文件。
+4. 保存该文件。
 5. 重新打包并重新部署服务。
 
 重新部署服务后，会看到错误消息，其中包含缺失的程序集或 DLL 的名称。
@@ -64,7 +63,7 @@ DLL 或程序集缺失的症状可能为：
 
 1. 确保安装了 Azure SDK 1.3 或更高版本。
 2. 在使用 Visual Studio 部署解决方案的过程中，启用远程桌面。 有关详细信息，请参阅[使用 Visual Studio 为 Azure 云服务中的角色启用远程桌面连接](cloud-services-role-enable-remote-desktop-visual-studio.md)。
-3. 在 Microsoft Azure 门户中，一旦实例显示“就绪”状态，则远程连接到该实例  。 有关通过云服务使用远程桌面的详细信息，请参阅[远程连接到角色实例](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)。
+3. 在 Microsoft Azure 门户中，一旦实例显示“就绪”状态，则远程连接到该实例。 有关通过云服务使用远程桌面的详细信息，请参阅[远程连接到角色实例](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)。
 5. 使用在远程桌面配置期间指定的凭据登录到虚拟机。
 6. 打开命令窗口。
 7. 键入 `IPconfig`。
@@ -75,8 +74,8 @@ DLL 或程序集缺失的症状可能为：
 现在，导航到网站将返回更明确的错误消息：
 
 * '/' 应用程序中出现服务器错误。
-* 说明:当前 web 请求的执行期间出现未经处理的异常。 请检查堆栈跟踪信息，以了解有关该错误以及代码中导致错误的出处的详细信息。
-* 异常详细信息：System.IO.FIleNotFoundException:无法加载文件或程序集 Microsoft.WindowsAzure.StorageClient，版本 = 1.1.0.0，区域性 = 中性，PublicKeyToken = 31bf856ad364e35 或其某个依赖项。 系统找不到指定的文件。
+* 描述:执行当前 web 请求期间发生未处理的异常。 请检查堆栈跟踪信息，以了解有关该错误以及代码中导致错误的出处的详细信息。
+* 异常详细信息：System.IO.FIleNotFoundException:无法加载文件或程序集 "Windowsazure.storage. StorageClient, Version = 1.1.0.0, Culture = 中立, PublicKeyToken = 31bf856ad364e35" 或其依赖项之一。 系统找不到指定文件。
 
 例如：
 
@@ -117,7 +116,7 @@ DLL 或程序集缺失的症状可能为：
 1. 在 Visual Studio 中打开解决方案。
 2. 在“**解决方案资源管理器**”中，打开 **References** 文件夹。
 3. 单击错误中标识的程序集。
-4. 在“属性”窗格中，找到“复制本地属性”并将值设置为“True”    。
+4. 在“属性”窗格中，找到“复制本地属性”并将值设置为“True”。
 5. 重新部署云服务。
 
 确认所有错误均已更正后，可以在不选中“**为 .NET 4 角色启用 IntelliTrace**”复选框的情况下部署服务。

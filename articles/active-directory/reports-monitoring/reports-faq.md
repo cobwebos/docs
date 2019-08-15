@@ -3,7 +3,7 @@ title: Azure Active Directory 报告常见问题解答 | Microsoft Docs
 description: 有关 Azure Active Directory 报告的常见问题解答。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
@@ -13,29 +13,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09270d89ecaff02716d9916527d21ba2c5d30716
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a9b1144e3ef1f1a49c39d694f465653da5881cb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107541"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987931"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>有关 Azure Active Directory 报告的常见问题解答
 
 本文包括了对 Azure Active Directory (Azure AD) 报告常见问题的解答。 有关详细信息，请参阅 [Azure Active Directory 报告](overview-reports.md)。 
 
-## <a name="getting-started"></a>入门 
+## <a name="getting-started"></a>开始使用 
 
-**问：我目前使用`https://graph.windows.net/<tenant-name>/reports/`请求 Azure AD 审核和集成的应用程序使用情况 Api 以编程方式报告到我们的报告系统的终结点。我应当切换到什么？**
+**问：我目前使用`https://graph.windows.net/<tenant-name>/reports/`终结点 api 以编程方式将 Azure AD 审核和集成的应用程序使用情况报表纳入我们的报表系统。我应当切换到什么？**
 
-**答:** 请查看 [API 参考](https://developer.microsoft.com/graph/)，了解如何[使用 API 访问活动报告](concept-reporting-api.md)。 此终结点有两个报告（“审核”和“登录”），它们提供了你在旧的 API 终结点中获取的所有数据。   此新的终结点还有一个登录报告，其中包含可用来获取应用使用情况、设备使用情况和用户登录信息的 Azure AD Premium 许可证。
+**答:** 请查看 [API 参考](https://developer.microsoft.com/graph/)，了解如何[使用 API 访问活动报告](concept-reporting-api.md)。 此终结点有两个报告（“审核”和“登录”），它们提供了你在旧的 API 终结点中获取的所有数据。 此新的终结点还有一个登录报告，其中包含可用来获取应用使用情况、设备使用情况和用户登录信息的 Azure AD Premium 许可证。
 
 ---
 
-**问：我目前使用`https://graph.windows.net/<tenant-name>/reports/`终结点 Api 以编程方式将 Azure AD 安全报告 （特定类型的检测，例如已泄漏的凭据或来自匿名 IP 地址的登录） 拉取到我们的报告系统。我应当切换到什么？**
+**问：我目前使用`https://graph.windows.net/<tenant-name>/reports/`终结点 api 来以编程方式将 Azure AD 安全报告 (如泄漏的凭据或来自匿名 IP 地址的登录) 提取到我们的报告系统中。我应当切换到什么？**
 
 **答:** 可以使用 [“标识保护”风险事件 API](../identity-protection/graph-get-started.md) 通过 Microsoft Graph 访问安全检测。 此新格式在如何查询数据方面提供了更大的灵活性，可以使用高级筛选、字段选择和其他手段；并且此新格式将风险事件标准化为一种类型，以便更轻松地集成到 SIEM 和其他数据收集工具中。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 不过，[新 API 使用的是 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，后者是 O365 或 Azure AD 之类的 API 的 Microsoft 标准。 因此，需要做的工作可以扩展当前 MS Graph 投资或者帮助开始向此新的标准平台进行转换。
 
@@ -61,7 +61,7 @@ ms.locfileid: "67107541"
 
 **问：若要查看到 Azure 门户的活动登录或通过 API 获取数据，是否需要是全局管理员？**
 
-**答:** 否。如果你是租户的安全读取者  或安全管理员  ，也可以通过门户或 API 访问报告数据。 当然，**全局管理员**也有权访问这些数据。
+**答:** 否。如果你是租户的安全读取者或安全管理员，也可以通过门户或 API 访问报告数据。 当然，**全局管理员**也有权访问这些数据。
 
 ---
 
@@ -73,10 +73,10 @@ ms.locfileid: "67107541"
 
 **答:** 下表列出了活动日志的数据保留期。 有关详细信息，请参阅 [Azure AD 报告的数据保留策略](reference-reports-data-retention.md)。
 
-| 报表                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| 报告                 | Azure AD 免费版 | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
 | 审核日志             | 7 天        | 30 天             | 30 天             |
-| 登录               | 不适用           | 30 天             | 30 天             |
+| 登录               | 不可用           | 30 天             | 30 天             |
 | Azure MFA 使用情况        | 30 天       | 30 天             | 30 天             |
 
 ---
@@ -89,7 +89,7 @@ ms.locfileid: "67107541"
 
 **问：是否可以通过 Azure 门户获取 Office 365 活动日志信息？**
 
-**答:** 尽管 Office 365 活动和 Azure AD 活动日志共享大量的目录资源，如果需要 Office 365 活动日志的完整视图则应转到[Microsoft 365 管理中心内](https://admin.microsoft.com)若要获取 Office 365 活动日志信息。
+**答:** 尽管 Office 365 活动和 Azure AD 活动日志共享大量的目录资源, 但如果需要 Office 365 活动日志的完整视图, 则应转到[Microsoft 365 管理中心](https://admin.microsoft.com)以获取 Office 365 活动日志信息。
 
 ---
 
@@ -101,11 +101,11 @@ ms.locfileid: "67107541"
 
 **问：可从 Azure 门户下载多少条记录？**
 
-**答:** 最多可从 Azure 门户下载 5000 条记录。 记录按最近时间  进行排序，默认情况下获取的是最近 5000 条记录。
+**答:** 最多可从 Azure 门户下载 5000 条记录。 记录按最近时间进行排序，默认情况下获取的是最近 5000 条记录。
 
 ---
 
-## <a name="risky-sign-ins"></a>有风险的登录
+## <a name="risky-sign-ins"></a>风险登录
 
 **问：“标识保护”中存在风险事件，但登录报告中未显示相应的登录。** 这是正常情况吗？
 
@@ -115,7 +115,7 @@ ms.locfileid: "67107541"
 
 **问：如何了解 Azure 门户中被标记为存在风险的用户或登录的原因？**
 
-**答:** 如果使用的是 Azure AD Premium  订阅，可以选择单击“已标记为存在风险的用户”中的用户或选择“有风险的登录”报告中的记录来了解潜在风险事件的详细信息   。 如果使用的是 **Free** 或 **Basic** 订阅，则可以查看有风险的用户和有风险的登录报告，但无法查看潜在风险事件的信息。
+**答:** 如果使用的是 Azure AD Premium 订阅，可以选择单击“已标记为存在风险的用户”中的用户或选择“有风险的登录”报告中的记录来了解潜在风险事件的详细信息。 如果使用的是 **Free** 或 **Basic** 订阅，则可以查看有风险的用户和有风险的登录报告，但无法查看潜在风险事件的信息。
 
 ---
 
@@ -131,11 +131,11 @@ ms.locfileid: "67107541"
 
 ---
 
-## <a name="conditional-access"></a>条件性访问
+## <a name="conditional-access"></a>条件访问
 
 **问：此功能有什么新内容？**
 
-**答:** 客户现在可以进行条件性访问策略是通过所有登录报表故障排除。 客户可以查看条件访问状态和深入了解应用于单一登录和每个策略的结果的策略的详细信息。
+**答:** 客户现在可以通过 "所有登录" 报告对条件访问策略进行故障排除。 客户可以查看条件访问状态, 并深入了解应用于登录的策略的详细信息以及每个策略的结果。
 
 **问：如何开始使用？**
 
@@ -143,29 +143,29 @@ ms.locfileid: "67107541"
 
 * 导航到 [Azure门户](https://portal.azure.com)中的登录报告。
 * 单击要进行故障排除的登录。
-* 导航到**条件性访问**选项卡。在这里，可以查看影响登录的所有策略以及每个策略的结果。 
+* 导航到 "**条件性访问**" 选项卡。在这里，可以查看影响登录的所有策略以及每个策略的结果。 
     
 **问：条件性访问状态的所有可能值有哪些？**
 
-**答:** 条件性访问状态可以具有以下值：
+**答:** 条件访问状态可以具有以下值:
 
 * **未应用**：这表示在范围内没有针对用户和应用程序的 CA 策略。 
 * **成功**：这表示在范围内存在针对用户和应用程序的 CA 策略，并且已成功满足 CA 策略。 
 * **失败**：这表示在范围内存在针对用户和应用程序的 CA 策略，但不满足 CA 策略。 
     
-**问：条件性访问策略结果的所有可能值有哪些？**
+**问：条件访问策略结果的所有可能值有哪些？**
 
-**答:** 条件性访问策略可以具有以下结果：
+**答:** 条件性访问策略可以具有以下结果:
 
 * **成功**：成功满足策略。
 * **失败**：不满足策略。
 * **未应用**：这可能是因为不符合策略条件。
 * **未启用**：这是由于策略处于禁用状态。 
     
-**问：所有登录报告中的策略名称与 CA 中的策略名称不匹配。为什么？**
+**问：所有登录报告中的策略名称与 CA 中的策略名称不匹配。为什么?**
 
 **答:** 所有登录报告中的策略名称均基于登录时的 CA 策略名称。 如果你后来（即登录后）更新了策略名称，则这可能与 CA 中的策略名称不一致。
 
-**问：由于条件访问策略，而被阻止我登录，但登录活动报告显示，登录成功。为什么？**
+**问：由于条件访问策略, 登录已被阻止, 但登录活动报告显示登录成功。为什么?**
 
-**答:** 当前登录报表可能不会显示为 Exchange ActiveSync 方案准确的结果时应用条件性访问。 时，可能会情况下在报表中的登录结果显示在成功登录，但登录实际上失败，因为条件性访问策略。 
+**答:** 当前, 在应用条件访问时, 登录报告不会显示 Exchange ActiveSync 方案的准确结果。 在某些情况下, 当报表中的登录结果显示成功登录时, 但由于条件性访问策略而导致登录实际失败。 

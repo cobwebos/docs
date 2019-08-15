@@ -11,19 +11,18 @@ ms.assetid: 529157eb-e4a1-4388-aa2b-09e8b923af74
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: d1f24c3661a23496d1873f12ce46083bf5258269
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7830b2a5d065f54029839d250e35f3e1b3da2200
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61435472"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945479"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>对在 Azure 中部署云服务时的分配失败进行故障排除
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 将实例部署到云服务或者添加新的 Web 角色或辅助角色实例时，Microsoft Azure 会分配计算资源。 在执行这些操作时，甚至在达到 Azure 订阅限制之前，有时可能会收到错误。 本文说明一些常见分配故障的原因，并建议可能的补救方法。 规划服务的部署时，本信息可能也有用。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Maps 显示搜索结果 | Microsoft Docs
-description: 如何使用 Azure Maps 执行搜索请求并在 Javascript 地图上显示结果
+description: 如何使用 Azure Maps 执行搜索请求, 然后在 Azure Maps Web SDK 上显示结果。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 22b677ef4b21d3869e39d600910c271c935934ca
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7c4c78e1d21754d42391a3762e9f7ed199a7376b
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638656"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975964"
 ---
 # <a name="show-search-results-on-the-map"></a>在地图上显示搜索结果
 

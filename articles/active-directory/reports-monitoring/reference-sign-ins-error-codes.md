@@ -3,7 +3,7 @@ title: Azure Active Directory 门户中的登录活动报告错误代码 | Micro
 description: 登录活动报告错误代码参考。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 08/08/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cbaa8f22335da083506a76ad1a791576b109a00
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4c5f7e45a1e1daa5d8504db2506a79e88c28bcc1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879772"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989599"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登录活动报告错误代码 
 

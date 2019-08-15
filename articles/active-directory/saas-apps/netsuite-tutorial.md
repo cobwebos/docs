@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2600989273d6ebfe4319a048cc65c8c3ff9ecdbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e462197bac854004aaf2d2f0f96e121ed081581a
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096321"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967240"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>教程：Azure Active Directory 与 NetSuite 集成
 
@@ -122,7 +122,7 @@ ms.locfileid: "67096321"
     `https://<tenant-name>.na2.sandbox.NetSuite.com/saml2/acs`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [NetSuite 客户端支持团队](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)，获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [NetSuite 客户端支持团队](https://www.netsuite.com/portal/services/support-services/suitesupport.shtml)，获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. NetSuite 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
@@ -130,7 +130,7 @@ ms.locfileid: "67096321"
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ：
     
-    | 名称 | 源属性 | 
+    | Name | 源属性 | 
     | ---------------| --------------- |
     | 帐户  | `account id` |
 
