@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: e43b8c951d8c7d5d60904fe49d8639efaba5c89f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 529a8b6136a5d9c69b044df2614644bdbd4fd4f4
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775845"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012042"
 ---
 共享映像库是一种可以帮助你围绕托管映像构建结构和组织的服务。 共享映像库提供以下功能：
 
@@ -73,7 +73,7 @@ ms.locfileid: "68775845"
 
 ## <a name="regional-support"></a>区域支持
 
-下表列出了源区域。 所有公共区域都可以是目标区域, 但是若要复制到澳大利亚中部和澳大利亚中部 2, 需要订阅白名单。 要请求允许列表，请转到： https://azure.microsoft.com/en-au/global-infrastructure/australia/contact/
+下表列出了源区域。 所有公共区域都可以是目标区域, 但是若要复制到澳大利亚中部和澳大利亚中部 2, 需要订阅白名单。 要请求允许列表，请转到： https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 
 | 源区域 |
@@ -179,7 +179,7 @@ ms.locfileid: "68775845"
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
 - [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [Go](https://docs.microsoft.com/go/azure/)
+- [Go](https://docs.microsoft.com/azure/go/)
 
 ## <a name="templates"></a>模板
 

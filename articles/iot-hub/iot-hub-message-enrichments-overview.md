@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 8e24489ad2909879b035a08316e66788034e99bc
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 5ef1749217dd8980892d7bf933cbe1412929fbbd
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377197"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976979"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>设备到云 IoT 中心消息的消息扩充（预览版）
 
@@ -29,9 +29,9 @@ ms.locfileid: "68377197"
 
 * 要对其应用扩充的一个或多个[终结点](iot-hub-devguide-endpoints.md)。
 
-键可以是任意字符串。
+**该键**是一个字符串。 密钥只能包含字母数字字符或以下特殊字符: 连字符 (`-`)、下划线 (`_`) 和句点 (`.`)。
 
-值的示例如下：
+**该值**可以是以下任一示例:
 
 * 任意静态字符串。 不允许条件、逻辑、操作和函数等动态值。 例如，如果你开发由多个客户使用的 SaaS 应用程序，可为每个客户分配一个标识符，并使该标识符在应用程序中可用。 当该应用程序运行时，IoT 中心会使用客户的标识符来戳记设备遥测消息，从而可为每个客户以不同的方式处理消息。
 

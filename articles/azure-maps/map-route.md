@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Maps 显示路线 | Microsoft Docs
-description: 如何在 Javascript 地图上显示两个位置之间的路线
+description: 如何使用 Azure Maps Web SDK 在地图上的两个位置之间显示方向。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 65f8337585e0a4d1077897274fd07505024af22c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cf997d4ae120f3e9309892b112f9954bde97bc76
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638963"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976490"
 ---
 # <a name="show-directions-from-a-to-b"></a>显示从 A 到 B 的路线
 
@@ -39,7 +39,7 @@ ms.locfileid: "68638963"
 
 某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。 第五个代码块创建符号层并将其添加到地图中。
 
-第六个代码块查询 Azure Maps 路由服务, 该服务是[服务模块](how-to-use-services-module.md)的一部分。 RouteURL 的[calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods)方法用于获取起点和终点之间的路线。 然后使用`geojson.getFeatures()`方法提取响应中的 GeoJSON 功能集合, 并将其添加到数据源。 然后，它将响应呈现为地图上的路线。 有关向地图添加线条的详细信息，请参阅[在地图上添加线条](./map-add-shape.md#addALine)。
+第六个代码块查询 Azure Maps 路由服务, 该服务是[服务模块](how-to-use-services-module.md)的一部分。 RouteURL 的[calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods)方法用于获取起点和终点之间的路线。 然后使用`geojson.getFeatures()`方法提取响应中的 GeoJSON 功能集合, 并将其添加到数据源。 然后，它将响应呈现为地图上的路线。 有关向地图添加线条的详细信息，请参阅[在地图上添加线条](map-add-line-layer.md)。
 
 最后一个代码块使用地图的[setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)属性设置地图的界限。
 
@@ -62,7 +62,7 @@ ms.locfileid: "68638963"
 
 下一个代码块从起点和终点之间创建 `SouthWest` 和 `NorthEast` 点，并使用地图的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 属性设置地图的边界。
 
-最后一个代码块使用[FETCH api](https://fetch.spec.whatwg.org/)向[Azure Maps 路由 api](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)发出搜索请求。 然后分析响应。 如果响应成功, 则通过连接这些点将纬度和经度信息用于创建一条直线。 然后, 将行数据添加到数据源, 以在地图上呈现路由。 有关说明，可以参阅[在地图上添加线条](./map-add-shape.md#addALine)。
+最后一个代码块使用[FETCH api](https://fetch.spec.whatwg.org/)向[Azure Maps 路由 api](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)发出搜索请求。 然后分析响应。 如果响应成功, 则通过连接这些点将纬度和经度信息用于创建一条直线。 然后, 将行数据添加到数据源, 以在地图上呈现路由。 有关说明，可以参阅[在地图上添加线条](map-add-line-layer.md)。
 
 路线查询、数据源、符号和线条层以及照相机边界在地图的[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)中进行创建和设置，以确保在地图完全加载后才显示结果。
 

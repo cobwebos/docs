@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: e4906bf9f2aead69c315ddb7b2e3b10489378d87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c115bf0ad21e905e998692fbbc175f5aa52b86d
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259069"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014246"
 ---
 # <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>教程：使用 Azure IoT 中心消息扩充（预览版）
 
@@ -30,7 +30,7 @@ ms.locfileid: "66259069"
 > * 运行一个应用，用于模拟向中心发送消息的 IoT 设备。
 > * 查看结果，并验证消息扩充是否按预期方式运行。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -65,11 +65,11 @@ ms.locfileid: "66259069"
 
 有几个资源名称必须全局唯一，例如 IoT 中心名称和存储帐户名称。 为方便运行脚本，这些资源名称的后面追加了名为 *randomValue* 的随机字母数字值。 randomValue 在脚本的顶部生成一次，并根据需要追加到整个脚本中的资源名称。 如果不想要使用随机后缀，可将其设置为空字符串或特定值。
 
-如果尚未这样做，打开[的 Bash Cloud Shell 窗口。](https://shell.azure.com)。 打开已解压缩的存储库中的脚本，使用 Ctrl-A 选择其整个内容，然后按 Ctrl-C 复制这些内容。 也可以复制以下 CLI 脚本，或者直接在 Cloud Shell 中将其打开。 右键单击命令行并选择“粘贴”，在 Azure Cloud Shell 窗口中粘贴该脚本。 该脚本每次运行一条语句。 脚本停止运行后，按 **Enter** 确保运行最后一条命令。 以下代码块显示了使用的脚本，并提供了注释用于解释脚本的作用。
+如果尚未执行此操作, 请打开[Bash 的 Cloud Shell 窗口。](https://shell.azure.com) 打开已解压缩的存储库中的脚本，使用 Ctrl-A 选择其整个内容，然后按 Ctrl-C 复制这些内容。 也可以复制以下 CLI 脚本，或者直接在 Cloud Shell 中将其打开。 右键单击命令行并选择“粘贴”，在 Azure Cloud Shell 窗口中粘贴该脚本。 该脚本每次运行一条语句。 脚本停止运行后，按 **Enter** 确保运行最后一条命令。 以下代码块显示了使用的脚本，并提供了注释用于解释脚本的作用。
 
 下面是脚本创建的资源。 **Enriched** 表示该资源用于扩充的消息。 **Original** 表示该资源用于未扩充的消息。
 
-| 名称 | 值 |
+| 名称 | ReplTest1 |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | 容器名称 | original  |
@@ -250,10 +250,10 @@ az iot hub route create \
 
 2. 将这些值添加到 ContosoStorageEndpointEnriched 终结点的列表。
 
-   | 名称 | 值 | 终结点（下拉列表） |
+   | 姓名 | ReplTest1 | 终结点（下拉列表） |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
-   | 设备位置 | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
+   | Msds-devicelocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
    |customerID | 6ce345b8-1e4a-411e-9398-d34587459a3a | AzureStorageContainers > ContosoStorageEndpointEnriched |
 
    > [!NOTE]
@@ -312,10 +312,10 @@ az iot hub route create \
 查看已扩充的消息时，应会看到带有中心名称、位置和客户 ID 的“我的 IoT 中心”，如下所示：
 
 ```json
-{"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage","my IoT Hub":"contosotesthubmsgen3276","device location":"$twin.tags.location","customerID":"6ce345b8-1e4a-411e-9398-d34587459a3a"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
+{"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage","my IoT Hub":"contosotesthubmsgen3276","devicelocation":"$twin.tags.location","customerID":"6ce345b8-1e4a-411e-9398-d34587459a3a"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
 ```
 
-下面是一条未扩充的消息。 此处未显示“我的 IoT 中心”、“设备位置”和“客户 ID”，因为此终结点未启用扩充。
+下面是一条未扩充的消息。 "我的 IoT 中心"、"msds-devicelocation" 和 "customerID" 不显示在此处, 因为此终结点没有根据。
 
 ```json
 {"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}

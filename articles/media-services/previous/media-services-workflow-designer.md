@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 0ade52d3ae9714f2b370308253e455bcde7ac7a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: anilmur
+ms.reviewer: juliako;johndeu
+ms.openlocfilehash: 246a1461973dba129a5b1d12be8a09703eb99267
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825126"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69015973"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>使用工作流设计器创建高级编码工作流  
 ## <a name="overview"></a>概述
@@ -88,6 +89,6 @@ ms.locfileid: "60825126"
 
 如果需要支持或对在工作流设计器工具中创建自定义工作流有疑问，请发送电子邮件到 mepd@microsoft.com。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [Azure 高级编码器工作流设计器培训视频](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 

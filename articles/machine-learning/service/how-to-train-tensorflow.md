@@ -1,38 +1,38 @@
 ---
-title: 训练和注册 TensorFlow 模型
+title: 使用 TensorFlow 训练深度学习神经网络
 titleSuffix: Azure Machine Learning service
-description: 本文介绍如何使用 Azure 机器学习服务训练和注册 TensorFlow 模型。
+description: 了解如何使用 Azure 机器学习服务大规模运行 TensorFlow 训练脚本。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
-ms.date: 06/10/2019
+ms.date: 08/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5d281598bc905914b71f40d556cfa0b16a46485
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 41ebca7bd4ea299bda7e2d7a95edced583866527
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847657"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966793"
 ---
-# <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Azure 机器学习服务, 大规模定型和注册 TensorFlow 模型
+# <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 TensorFlow 深度学习模型
 
-本文介绍如何使用 Azure 机器学习服务训练和注册 TensorFlow 模型。 它使用常用的[MNIST 数据集](http://yann.lecun.com/exdb/mnist/), 通过使用[TensorFlow Python 库](https://www.tensorflow.org/overview)生成的深度神经网络对手写数字进行分类。
+本文介绍如何使用 Azure 机器学习的[TensorFlow 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)类, 按比例运行你的[TensorFlow](https://www.tensorflow.org/overview)训练脚本。 此示例训练并注册 TensorFlow 模型, 以便使用深层神经网络 (DNN) 对手写数字进行分类。
 
-TensorFlow 是一个开源计算框架, 通常用于创建深层神经网络 (DNN)。 使用 Azure 机器学习服务, 可以使用弹性云计算资源快速扩大开源培训作业。 还可以跟踪定型运行、版本模型、部署模型, 等等。
+无论是从头开发 TensorFlow 模型还是将[现有模型](how-to-deploy-existing-model.md)引入云中, 都可以使用 Azure 机器学习来横向扩展开源定型作业, 以生成、部署、版本和监视生产级模型.
 
-无论是从头开始开发 TensorFlow 模型, 还是将[现有模型](how-to-deploy-existing-model.md)引入云中, Azure 机器学习服务都可以帮助您构建生产就绪模型。
+了解有关[深度学习与机器学习](concept-deep-learning-vs-machine-learning.md)的详细信息。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 在以下任一环境中运行此代码:
 
  - Azure 机器学习笔记本 VM-无需下载或安装
 
      - 在开始本教程之前完成[教程：设置环境和工作](tutorial-1st-experiment-sdk-setup.md)区, 创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
-    - 在笔记本服务器上的 "示例" 文件夹中, 通过导航到以下目录来查找已完成且扩展的笔记本: 操作**方法 > 培训-深度学习 > 超参数-tensorflow**文件夹。 
+    - 在笔记本服务器上的示例深度学习文件夹中, 通过导航到以下目录查找已完成且扩展的笔记本: 操作**方法 > 培训-深入了解-使用深度学习 > 超参数-tensorflow**folder. 
  
  - 你自己的 Jupyter 笔记本服务器
 
@@ -73,7 +73,7 @@ from azureml.core.compute_target import ComputeTargetException
 ws = Workspace.from_config()
 ```
 
-### <a name="create-an-experiment"></a>创建试验
+### <a name="create-a-deep-learning-experiment"></a>创建深度学习试验
 
 创建试验和文件夹来保存训练脚本。 在此示例中, 创建一个名为 "mnist" 的实验。
 
@@ -292,5 +292,9 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 本文介绍了如何培训和注册 TensorFlow 模型。 若要了解如何将模型部署到启用了 GPU 的群集, 请继续学习 GPU 模型部署一文。
 
-[如何为推断部署 gpu](how-to-deploy-inferencing-gpus.md)
-[如何监视 Tensorboard](how-to-monitor-tensorboard.md)
+> [!div class="nextstepaction"]
+> [部署模型的方式和位置](how-to-deploy-and-where.md)
+* [在训练期间跟踪运行指标](how-to-track-experiments.md)
+* [优化超参数](how-to-tune-hyperparameters.md)
+* [部署定型的模型](how-to-deploy-and-where.md)
+* [Azure 中的分布式深层学习培训参考体系结构](/azure/architecture/reference-architectures/ai/training-deep-learning)

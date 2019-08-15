@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 105cbf173a9abe1adf0999f63740d47b3da51a29
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 00f222472a9b41c7f95ae90bdca57f13175b2b5d
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856292"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952125"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>用于 Hyper-V 评估和迁移的支持矩阵
 
@@ -61,8 +61,8 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅�
 | **支持**                | **详细信息**               
 | :-------------------       | :------------------- |
 | **主机部署**       | Hyper-v 主机可以是独立的, 也可以部署到群集中。 |
-| **权限**           | 你需要在 Hyper-v 主机上具有管理员权限。 |
-| **主机操作系统** | Windows Server 2016 或 Windows Server 2012 R2。<br/> 无法评估位于运行 Windows Server 2019 的 Hyper-v 主机上的 Vm。 |
+| **权限**           | 你需要在 Hyper-v 主机上具有管理员权限。 <br/> 或者, 如果不想分配管理员权限, 请创建本地或域用户帐户, 并将用户添加到这些组-远程管理用户、Hyper-v 管理员和性能监视器用户。 |
+| **主机操作系统** | Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/> 无法评估位于运行 Windows Server 2012 的 Hyper-v 主机上的 Vm。 |
 | **PowerShell 远程处理**   | 必须在每个主机上启用。 |
 | **Hyper-v 副本**       | 如果使用 Hyper-v 副本 (或具有具有相同 VM 标识符的多个 Vm), 并使用 Azure Migrate 发现原始 Vm 和复制的 Vm, 则 Azure Migrate 生成的评估可能不准确。 |
 
@@ -72,13 +72,8 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅�
 | **支持**                  | **详细信息**               
 | :----------------------------- | :------------------- |
 | **操作系统** | Azure 支持的所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统。 |
-| **权限**           | 需要在要评估的每个 Hyper-v VM 上都有管理员权限。 |
 | **Integration Services**       | [Hyper-v Integration Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)必须在你评估的 vm 上运行, 才能捕获操作系统信息。 |
-| **UEFI 启动**                  | 迁移不支持具有 UEFI 引导的 Vm。 |
-| **加密磁盘/卷**    | 不支持对具有加密磁盘/卷的 Vm 进行迁移。 |
-| **RDM/传递磁盘**      | 如果 Vm 具有 RDM 或传递磁盘, 则这些磁盘不会复制到 Azure。 |
-| **NFS**                        | 不会复制装载为 Vm 上的卷的 NFS 卷。 |
-| **目标磁盘**                | Azure Migrate 评估建议仅将 Azure Vm 迁移到托管磁盘。 |
+
 
 
 ## <a name="assessment-appliance-requirements"></a>评估-设备要求
@@ -103,8 +98,8 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅�
 **URL** | **详细信息**  
 --- | ---
 *.portal.azure.com | 导航到 Azure 门户
-*.windows.net | 登录到 Azure 订阅
-*.microsoftonline.com | 为设备到服务通信创建 Azure Active Directory 应用程序。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | 登录到 Azure 订阅
+*.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备到服务通信创建 Azure Active Directory 应用程序。
 management.azure.com | 为设备到服务通信创建 Azure Active Directory 应用程序。
 dc.services.visualstudio.com | 日志记录和监视
 *.vault.azure.net | 在设备与服务之间通信时管理 Azure Key Vault 中的机密。
@@ -119,7 +114,7 @@ https://download.microsoft.com/download/* | 允许从 Microsoft 下载站点下�
 
 **设备** | **Connection**
 --- | ---
-**本** | TCP 端口3389上的入站连接, 允许到设备的远程桌面连接。<br/> 端口44368上的入站连接, 使用 URL 远程访问设备管理应用程序:``` https://<appliance-ip-or-name>:44368 ```<br/> 端口443上的出站连接, 将发现和性能元数据发送到 Azure Migrate。
+**本** | TCP 端口3389上的入站连接, 允许到设备的远程桌面连接。<br/> 端口44368上的入站连接, 使用 URL 远程访问设备管理应用程序:``` https://<appliance-ip-or-name>:44368 ```<br/> 端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
 **Hyper-v 主机/群集** | WinRM 端口 5985 (HTTP) 和 5986 (HTTPS) 上的入站连接, 使用通用信息模型 (CIM) 会话拉取 Hyper-v Vm 的配置和性能元数据。
 
 ## <a name="migration-hyper-v-host-requirements"></a>迁移-Hyper-v 主机要求

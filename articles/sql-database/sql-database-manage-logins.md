@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: 3a59e276c3ec9717634c8f0f3634b7337ebc47d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9dae1e3864f5f1cf745bfe9b0872f15f61471a1c
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567707"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014501"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>控制和授予对 SQL 数据库和 SQL 数据仓库的数据库访问权限
 
@@ -45,7 +45,7 @@ ms.locfileid: "68567707"
 
   也可以将某个 Azure Active Directory 帐户（个人帐户或安全组帐户）配置为管理员。 配置 Azure AD 管理员是选择性的，但如果需要使用 Azure AD 帐户连接到 SQL 数据库，则必须配置 Azure AD 管理员。 有关配置 Azure Active Directory 访问权限的详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)和 [SQL 数据库和 SQL 数据仓库针对 Azure AD MFA 的 SSMS 支持](sql-database-ssms-mfa-authentication.md)。
 
-**服务器管理员**和 **Azure AD 管理员**帐户具有以下特征：
+**服务器管理员**和**Azure AD 管理员**帐户具有以下特征:
 
 - 只有这些帐户才能自动连接到服务器上的任何 SQL 数据库。 （其他帐户若要连接到用户数据库，它们必须是数据库的所有者，或者在用户数据库中具有相应的用户帐户。）
 - 这些帐户将以 `dbo` 用户的身份进入用户数据库，在用户数据库中拥有所有权限。 （用户数据库的所有者也以 `dbo` 用户的身份进入数据库。） 

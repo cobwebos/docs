@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 21b7c4e17d976a0a4099a926823f51eab1dba98d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 80adc98255cfc9145d583ac775bbc490d599234e
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879081"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976830"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure 数据目录开发人员概念
 Microsoft **Azure 数据目录** 是一种完全托管的云服务，提供了数据源发现和众包数据源元数据的功能。 开发人员可通过其 REST API 使用此服务。 了解在服务中实现的概念对于开发人员能成功与 **Azure 数据目录**集成非常重要。
@@ -19,7 +19,7 @@ Microsoft **Azure 数据目录** 是一种完全托管的云服务，提供了�
 ## <a name="key-concepts"></a>关键概念
 **Azure 数据目录**概念模型基于四个关键概念:**目录**、**用户**、**资产**和**批注**。
 
-![数据目录概念](./media/data-catalog-developer-concepts/concept2.png)
+![Azure 数据目录概念模型插图](./media/data-catalog-developer-concepts/concept2.png)
 
 *图 1 - Azure 数据目录简化概念模型*
 
@@ -76,7 +76,7 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 如“关键概念”部分中所述，**Azure 数据目录**对象模型包括项（可为资产或批注）。 项具有属性，为可选或必须。 某些属性适用于所有项。 某些属性适用于所有资产。 某些属性仅适用于特定资产类型。
 
 ### <a name="system-properties"></a>系统属性
-<table><tr><td><b>属性名称</b></td><td>数据类型<b></b></td><td><b>注释</b></td></tr><tr><td>timestamp</td><td>日期时间</td><td>最后一次修改项的时间。 此字段是由服务器在插入项以及每次更新项时生成的。 此属性的值在发布操作的输入上被忽略。</td></tr><tr><td>id</td><td>Uri</td><td>项的绝对 url（只读）。 它是项唯一可寻址 URI。  此属性的值在发布操作的输入上被忽略。</td></tr><tr><td>type</td><td>String</td><td>资产的类型（只读）。</td></tr><tr><td>etag</td><td>String</td><td>对应于该版本的项的字符串，其可用于在目录中执行更新项的操作时可用于乐观并发控制。 “*”可用于匹配任何值。</td></tr></table>
+<table><tr><td><b>属性名称</b></td><td>数据类型<b></b></td><td><b>注释</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>最后一次修改项的时间。 此字段是由服务器在插入项以及每次更新项时生成的。 此属性的值在发布操作的输入上被忽略。</td></tr><tr><td>id</td><td>Uri</td><td>项的绝对 url（只读）。 它是项唯一可寻址 URI。  此属性的值在发布操作的输入上被忽略。</td></tr><tr><td>type</td><td>String</td><td>资产的类型（只读）。</td></tr><tr><td>etag</td><td>String</td><td>对应于该版本的项的字符串，其可用于在目录中执行更新项的操作时可用于乐观并发控制。 “*”可用于匹配任何值。</td></tr></table>
 
 ### <a name="common-properties"></a>通用属性
 这些属性适用于所有根资产类型和所有批注类型。

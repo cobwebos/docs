@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: ed7e53570127f12dbe41932481a3286a78865dde
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 70107311b189e1692b902812c4ccbbd91c3695a1
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828276"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952116"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>用于 VMware 评估和迁移的支持矩阵
 
@@ -90,8 +90,8 @@ Azure Migrate 设备需要连接到 internet。
 **URL** | **详细信息**  
 --- | --- |
 *.portal.azure.com  | 导航到 Azure 门户中的 Azure Migrate。
-*.windows.net | 登录到 Azure 订阅。
-*.microsoftonline.com | 为设备创建 Active Directory 应用程序, 以便与 Azure Migrate 服务通信。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | 登录到 Azure 订阅。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备创建 Active Directory 应用程序, 以便与 Azure Migrate 服务通信。
 management.azure.com | 为设备创建 Active Directory 应用程序, 以便与 Azure Migrate 服务通信。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.vault.azure.net | 管理 Azure Key Vault 中的机密。
@@ -104,7 +104,7 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 
 **设备** | **Connection**
 --- | ---
-设备 | TCP 端口3389上的入站连接, 允许到设备的远程桌面连接。<br/><br/> 端口44368上的入站连接, 使用 URL 远程访问设备管理应用程序:```https://<appliance-ip-or-name>:44368``` <br/><br/>端口443上的出站连接, 将发现和性能元数据发送到 Azure Migrate。
+设备 | TCP 端口3389上的入站连接, 允许到设备的远程桌面连接。<br/><br/> 端口44368上的入站连接, 使用 URL 远程访问设备管理应用程序:```https://<appliance-ip-or-name>:44368``` <br/><br/>端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
 vCenter Server | TCP 端口443上的入站连接, 使设备能够收集配置和性能元数据以进行评估。 <br/><br/> 默认情况下, 设备会在端口443上连接到 vCenter。 如果 vCenter 服务器侦听其他端口, 则可以在设置发现时修改端口。
 
 
@@ -175,8 +175,8 @@ Azure Migrate 设备需要 internet 连接到 internet。
 **URL** | **详细信息**  
 --- | ---
 *.portal.azure.com | 导航到 Azure 门户中的 Azure Migrate。
-*.windows.net | 登录到 Azure 订阅。
-*.microsoftonline.com | 为设备创建 Active Directory 应用程序, 以便与 Azure Migrate 服务通信。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | 登录到 Azure 订阅。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备创建 Active Directory 应用程序, 以便与 Azure Migrate 服务通信。
 management.azure.com | 为设备创建 Active Directory 应用程序, 以便与 Azure Migrate 服务通信。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.vault.azure.net | 管理 Azure Key Vault 中的机密。

@@ -1,5 +1,5 @@
 ---
-title: 管道：优化机器学习工作流
+title: 什么是 ML 管道
 titleSuffix: Azure Machine Learning service
 description: 本文介绍通过适用于 Python 的 Azure 机器学习 SDK 生成的机器学习管道，以及使用管道的优势。 数据科学家使用机器学习(ML)管道来生成、优化和管理自己的机器学习工作流。
 services: machine-learning
@@ -11,18 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9965dbbca939f566048312af921061a188ee50d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 22d1da4c194b392993b37b16ab20673120c3362e
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884239"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951803"
 ---
-# <a name="build-reusable-ml-pipelines-in-azure-machine-learning-service"></a>在 Azure 机器学习服务中生成可重用的 ML 管道
+# <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>什么是 ML 管道 Azure 机器学习服务？
 
-本文介绍了通过适用于 Python 的 Azure 机器学习 SDK 生成的机器学习管道，以及使用管道的优势。
-
-## <a name="what-are-machine-learning-pipelines"></a>什么是机器学习管道？
+了解你可以通过 Azure 机器学习 service 构建和管理的机器学习管道。 
 
 使用机器学习 (ML) 管道，数据科学家、数据工程师和 IT 专业人员可以按以下内容涉及的步骤进行协作：
 + 数据准备，例如规范化和转换
@@ -30,7 +28,7 @@ ms.locfileid: "68884239"
 + 模型评估
 + 部署
 
-下图显示了一个示例管道进程:
+了解如何[创建你的第一个管道](how-to-create-your-first-pipeline.md)。
 
 ![Azure 机器学习服务中的机器学习管道](./media/concept-ml-pipelines/pipeline-flow.png)
 
@@ -47,9 +45,7 @@ Azure 云提供多个其他管道, 每个都有不同的用途。 下表列出�
 
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>为何使用 Azure 机器学习来生成管道？
 
-可以使用[适用于 Python 的 Azure 机器学习 SDK](#the-python-sdk-for-pipelines) 来创建 ML 管道并提交和跟踪单个管道运行。
-
-使用管道，可以在简洁性、速度、可移植性和重用性方面优化工作流。 当通过 Azure 机器学习构建管道时, 可以专注于专业技能、机器学习, 而不是在基础结构和自动化上。
+机器学习管道通过速度、可移植性和重复使用优化工作流, 使你可以专注于专业技能、机器学习, 而不是在基础结构和自动化上。
 
 管道是从多个**步骤**构造的, 这些步骤是管道中的不同计算单元。 每个步骤都可以独立运行并使用独立的计算资源。 这允许多个数据科学家在同一时间同时处理同一管道, 而不会产生过多的计算资源, 同时还可以轻松地对每个步骤使用不同的计算类型/大小。
 
@@ -73,20 +69,20 @@ Azure 云提供多个其他管道, 每个都有不同的用途。 下表列出�
 
 ## <a name="the-python-sdk-for-pipelines"></a>用于管道的 Python SDK
 
-使用 Python 来创建 ML 管道。 没有数据依赖项存在时，Azure 机器学习 SDK 提供的命令性构造用于对管道中的步骤进行序列化和并行化操作。 可以在 Jupyter 笔记本或其他首选 IDE 中与它交互。
+[使用 PYTHON SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)在首选 IDE 或 Jupyter 笔记本中创建 ML 管道。 没有数据依赖项存在时，Azure 机器学习 SDK 提供的命令性构造用于对管道中的步骤进行序列化和并行化操作。 
 
-可以使用声明性数据依赖项来优化任务。 此 SDK 包含用于常见任务（如数据传输和模型发布）的预构建模块框架。 通过实施可以跨管道重用的自定义步骤，可以扩展此框架来为你自己的约定建模。 还可以直接通过此 SDK 管理计算目标和存储资源。
+可以使用声明性数据依赖项来优化任务。 此 SDK 包含用于常见任务（如数据传输和模型发布）的预构建模块框架。 可以通过实现可在管道间重用的自定义步骤, 来扩展框架, 从而为自己的约定建模。 还可以直接通过此 SDK 管理计算目标和存储资源。
 
-可以将管道另存为模板并部署到某个 REST 终结点，以便对批量评分或重新训练作业进行计划。
+将管道另存为模板, 并将其部署到 REST 终结点以进行批处理计分或重新训练作业。
 
-若要了解如何生成自己的实现，请查看[适用于管道的 Python SDK 参考文档](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)以及下一部分中的 Notebook。
-
-## <a name="example-notebooks"></a>示例笔记本
-
-以下笔记本演示了 Azure 机器学习中的管道：[how-to-use-azureml/machine-learning-pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)。
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+具有 Azure 机器学习的管道的两个 Python 包: [azureml-管线-核心](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)和[azureml-管道-步骤](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/?view=azure-ml-py)。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[创建你的第一个管道](how-to-create-your-first-pipeline.md)。
++ 了解如何[创建你的第一个管道](how-to-create-your-first-pipeline.md)。
+
++ 了解如何[对大型数据运行批预测](how-to-run-batch-predictions.md)。
+
++ 阅读[有关管道的 SDK 参考文档](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)
+
++ 试用 Jupyter 笔记本展示[Azure 机器学习管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)的示例。 了解如何[运行笔记本来浏览此服务](samples-notebooks.md)。

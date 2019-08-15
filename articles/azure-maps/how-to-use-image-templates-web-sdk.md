@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 1ca29fafae1269b21f4e39a9d2594f84af035d25
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9b1543ca37c636f4a82ff9ada3dfe212fa9b8d0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856684"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976670"
 ---
-# <a name="how-to-use-image-templates"></a>如何使用映像模板
+# <a name="how-to-use-image-templates"></a>如何使用图像模板
 
 可以在 Azure Maps web SDK 中使用 HTML 标记和各种层:
 
@@ -108,7 +108,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 如果你的应用程序使用具有不同图标的相同图标, 或者如果你要创建添加其他图像模板的模块, 则可以使用以下静态函数在`atlas` Azure Maps web SDK 中轻松添加和检索这些图标:名称.
 
-| 名称 | 返回类型 | 描述 | 
+| 姓名 | 返回类型 | 描述 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 向塔命名空间添加自定义 SVG 图像模板。 |
 |  `getImageTemplate(templateName: string, scale?: number)`| string | 按名称检索 SVG 模板。 |
@@ -203,7 +203,10 @@ SVG 图像模板支持以下占位符值:
 > [添加符号层](map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [添加形状](map-add-shape.md)
+> [添加线条层](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [添加多边形层](map-add-shape.md)
 
 > [!div class="nextstepaction"]
 > [添加 HTML 标记](map-add-bubble-layer.md)

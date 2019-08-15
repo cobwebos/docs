@@ -1,9 +1,9 @@
 ---
-title: Azure Active Directory 门户中的报表使用情况和见解 |Microsoft Docs
-description: Azure Active Directory 门户中的使用情况和见解的报表简介
+title: Azure Active Directory 门户中的使用情况和 insights 报告 |Microsoft Docs
+description: Azure Active Directory 门户中的使用情况和见解报表简介
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 3fba300d-18fc-4355-9924-d8662f563a1f
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 05/13/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3fe1e72d277bffd4bc9b38ac377e33b341967e17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c6723c28bf6ab8af112763a6485bc89b46409c6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65806351"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989862"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的使用情况和见解报告
 
-与使用情况和见解的报表，可以获取登录数据的应用程序为中心的视图。 您可以找到以下问题的答案：
+使用 "使用情况和 insights" 报表, 你可以获取以应用程序为中心的登录数据的视图。 你可以找到以下问题的答案:
 
-*   什么是顶部使用我的组织中的应用程序？
-*   哪些应用程序具有最失败的登录名？ 
-*   每个应用程序的顶部登录错误有哪些？
+*   我的组织中使用最多的应用程序是什么？
+*   哪些应用程序的登录失败最多？ 
+*   每个应用程序的最常见登录错误是什么？
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>先决条件 
 
-若要从使用情况和见解报表访问的数据，需要：
+若要访问使用情况报表和 insights 报表中的数据, 需要:
 
 * Azure AD 租户
-* Azure AD 高级版 (P1/P2) 许可证，若要查看登录数据
-* 全局管理员、 安全管理员、 安全读者或报表读取器角色中的用户。 此外，任何用户 （非管理员） 可以访问其自己的登录名。 
+* 用于查看登录数据的 Azure AD 高级 (P1/P2) 许可证
+* 全局管理员、安全管理员、安全读者或报表读者角色中的用户。 此外, 任何用户 (非管理员) 都可以访问自己的登录。 
 
 ## <a name="access-the-usage-and-insights-report"></a>访问使用情况和见解报告
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
-2. 选择正确的目录，然后选择**Azure Active Directory** ，然后选择**企业应用程序**。
-3. 从**活动**部分中，选择**根据使用情况和见解**以打开该报表。 
+2. 选择正确的目录, 然后选择 " **Azure Active Directory** ", 然后选择 "**企业应用程序**"。
+3. 从 "**活动**" 部分中, 选择 "**使用情况 & insights** " 以打开报表。 
 
 ![使用情况和见解报表](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>使用报表
 
-使用情况和见解报表显示具有一个或多个登录的应用程序的列表中尝试，并允许您要作为排序依据的成功登录、 失败的登录名、 和的成功率数。
+使用情况和 insights 报表显示具有一次或多次尝试登录的应用程序列表, 并允许你按成功登录的次数、失败的登录次数和成功率进行排序。
 
-单击负载更列表的底部，可在页上查看其他应用程序。 可以选择要查看范围内使用过的所有应用程序的日期范围。
+单击列表底部的 "加载更多", 可以在页面上查看其他应用程序。 您可以选择日期范围来查看在该范围内使用的所有应用程序。
 
-此外可以在特定的应用程序上设置焦点。 选择**查看登录活动**若要查看登录活动中不同的应用程序，以及最常发生的错误的时间。  
+你还可以在特定应用程序上设置焦点。 选择 "**查看登录活动**" 可查看一段时间内应用程序的登录活动, 以及最常见的错误。  
 
-当应用程序使用情况图中选择某一天时，你会获取应用程序的登录活动的详细的列表。  
+当你在 "应用程序使用情况" 图中选择一天时, 将获取该应用程序的登录活动的详细列表。  
 
 ![使用情况和见解报表](./media/concept-usage-insights-report/usage-and-insights-report.png)
 

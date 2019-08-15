@@ -3,7 +3,7 @@ title: Azure AD 报告 API 入门 | Microsoft Docs
 description: 如何开始使用 Azure Active Directory 报告 API
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ff3e530dae3a6db4b7c84292a25e83c11000baf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c30669c8f5aeefc14db42a32d87f333419758327
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60286784"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989866"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -34,7 +34,7 @@ Azure Active Directory 提供了各种[报告](overview-reports.md)，其中包�
 
 如果遇到问题，请参阅[如何获取对 Azure Active Directory 的支持](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要访问报告 API，无论是否需要用户干预，都需要：
 

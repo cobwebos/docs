@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: a8196370a93a6ce8eed83002397c2f09efbc777f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358581"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016047"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS 履单 Api, 版本2 
 
@@ -282,7 +282,7 @@ Response Body:
           "term": { //This gives the free trial term start and end date
             "startDate": "2019-05-31",
             "endDate": "2019-06-29",
-            "termUnit": "P1M"
+            "termUnit": "P1M" //where P1M: Monthly, P1Y: Yearly 
         },
 }
 ```
@@ -573,7 +573,7 @@ Request Body:
 合作伙伴发起了对 SaaS 订阅的取消订阅调用。<br>
 
 代码:400<br>
-删除订阅,**删除不在**中`allowedCustomerOperations`。
+删除订阅, 删除不在中`allowedCustomerOperations`。
 
 代码:403<br>
 未授权。 身份验证令牌未提供或无效, 或者请求尝试访问不属于当前发布服务器的获取。
@@ -789,6 +789,8 @@ Response body:
 ## <a name="implementing-a-webhook-on-the-saas-service"></a>在 SaaS 服务上实现 webhook
 
 发布者必须在此 SaaS 服务中实现 webhook, 以主动向用户通知其服务中的更改。 SaaS 服务应在对 webhook 通知执行操作之前调用操作 API 进行验证和授权。
+
+为了确保安全通信, Microsoft 在调用过程中将 Azure Active Directory JWT 令牌包含在授权标头中。 建议使用 SaaS 提供程序来验证 JWT 令牌, 如[Microsoft 标识平台访问令牌](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)一文中所述, 确保只接受有效的调用。
 
 ```json
 {

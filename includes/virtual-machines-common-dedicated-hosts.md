@@ -8,26 +8,13 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 438f450efe207999947795878a9815fca64f45ca
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68702920"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976628"
 ---
-Azure 专用主机是一项服务, 可提供物理服务器, 这些服务器可以承载一个或多个虚拟机-专用于一个 Azure 订阅。 专用主机是数据中心中使用的物理服务器, 作为资源提供。 你可以在区域、可用性区域和容错域中预配专用主机。 然后, 你可以将 Vm 直接置于预配的主机中, 这种配置最适合你的需求。
-
-> [!IMPORTANT]
-> Azure 专用主机目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-> **已知预览版限制**
-> - 虚拟机规模集目前在专用主机上不受支持。
-> - 预览版初始版本支持以下 VM 系列:DSv3 和 ESv3。 
-> - 预览期间, 你将无法调整部署到专用主机的虚拟机的大小。
-> - 对维护功能的控制是一种有限的预览。 首先获取此[提名调查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u), 尝试一下。  
-> 在预览期间, 我们不会提供预留容量选项。 
-
 ## <a name="benefits"></a>优点 
 
 保留整个主机具有以下优势:

@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4e21fdef5be09148f001ab6f66f87dd270ccf54
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4430e2115e4282ba7bb618184139a845547a06ed
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618267"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967093"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>委托 Azure AD 的权限管理 (预览) 中的任务
 
@@ -86,7 +86,7 @@ ms.locfileid: "68618267"
 | [将目录所有者或访问包管理器添加到目录](#add-a-catalog-owner-or-an-access-package-manager) |  | :heavy_check_mark: |  |  |
 | [在目录中创建新的访问包](entitlement-management-access-package-create.md) |  | :heavy_check_mark:  | :heavy_check_mark:  |  |
 | [管理访问包中的资源角色](entitlement-management-access-package-edit.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [指定可以请求访问包的人员](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
+| [创建和编辑策略](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [直接将用户分配到访问包](entitlement-management-access-package-edit.md#directly-assign-a-user) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [查看谁具有访问包的分配](entitlement-management-access-package-edit.md#view-who-has-an-assignment) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [查看访问包的请求](entitlement-management-access-package-edit.md#view-requests) |  | :heavy_check_mark: | :heavy_check_mark: |  |

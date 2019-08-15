@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/08/2019
-ms.openlocfilehash: bc9b6053e6e2f920b826b3c14c6820b71e129aef
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 7c6b85bd1f5935fb3722f82efcdfc921fc9cb2ec
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882815"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990538"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 
@@ -23,7 +23,7 @@ ms.locfileid: "68882815"
 
 出于安全考虑, 可能需要更改 Azure 存储帐户的访问密钥。 重新生成访问密钥时, 必须将 Azure 机器学习更新为使用新密钥。 Azure 机器学习可以将存储帐户同时用于模型存储和数据存储。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建工作区一](how-to-manage-workspace.md)文。
 
@@ -84,17 +84,13 @@ for name, ds in datastores.items():
         az login
         ```
 
-    1. 若要安装 Azure 机器学习扩展, 请使用以下命令:
-
-        ```azurecli-interactive
-        az extension add -n azure-cli-ml 
-        ```
-
     1. 若要将工作区更新为使用新密钥, 请使用以下命令。 将`myworkspace`替换为 Azure 机器学习工作区名称, 将`myresourcegroup`替换为包含工作区的 Azure 资源组的名称。
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
         ```
+
+        [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
 
         此命令会自动同步工作区使用的 Azure 存储帐户的新密钥。
 

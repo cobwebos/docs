@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 6f76d6aed8dc5eed3dbf673b265c404f27b0536d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2b96d968cb1ad2ec903dbf9788e1fbae22bd2b7d
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557167"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69014969"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 动态加密和密钥传递服务
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "60557167"
 >  
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 借助媒体服务，可以传送使用 AES 加密的 HTTP Live Streaming (HLS) 和平滑流（使用 128 位加密密钥）。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。 如果需要媒体服务来加密资产，则需要将加密密钥与资产相关联，并配置密钥的授权策略。 当播放器请求流时，媒体服务将使用指定的密钥通过 AES 加密来动态加密内容。 为解密流，播放器从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
@@ -135,7 +135,7 @@ ms.locfileid: "60557167"
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 ```
 
-可以使用 [Azure 媒体服务播放器](https://amsplayer.azurewebsites.net/azuremediaplayer.html)来测试流。
+可以使用 [Azure 媒体服务播放器](https://aka.ms/azuremediaplayer)来测试流。
 
 ## <a id="client_request"></a>客户端如何从密钥传送服务请求密钥？
 在上一步骤中，构造了指向清单文件的 URL。 客户端需要从流清单文件提取必要的信息，以便向密钥传送服务发出请求。
@@ -159,7 +159,7 @@ ms.locfileid: "60557167"
 
 对于 HLS，根清单将划分成段文件。 
 
-例如，根清单是： http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl)。 它包含段文件名的列表。
+例如, 根清单是: http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3)。 它包含段文件名的列表。
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ ms.locfileid: "60557167"
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-如果在打开其中一个段文件在文本编辑器 (例如，http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl)，它包含 #EXT-X-键，它指示文件已加密。
+如果在文本编辑器中打开某个段文件 (例如, http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369)/Manifest (视频, 格式 = m3u8-aapl-v3-流式处理 m3u8-aapl-v3),它包含 #EXT-X 键, 这表示文件已加密。
 
     #EXTM3U
     #EXT-X-VERSION:4

@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 411f5912a2fb83b97fa02ab9b91cee14c3f6cd1b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 6cd88a58df4334180174fae9f0e651b5281e320e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840304"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966551"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从文件系统复制数据
-> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-file-system-connector.md)
 > * [当前版本](connector-file-system.md)
 
@@ -40,9 +40,9 @@ ms.locfileid: "68840304"
 - 使用 Windows身份验证复制文件。
 - 按原样复制文件，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析/生成文件。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-要从/向不可公开访问的文件系统复制数据，需要设置自我托管集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>开始使用
 
@@ -57,10 +57,10 @@ ms.locfileid: "68840304"
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**FileServer**。 | 是 |
-| 主机 | 指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\"”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 | 是 |
+| host | 指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\"”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 | 是 |
 | userid | 指定有权访问服务器的用户的 ID。 | 是 |
-| 密码 | 设置用户的密码 (userid)。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| password | 设置用户的密码 (userid)。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>链接服务和数据集定义示例
 

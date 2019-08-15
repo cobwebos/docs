@@ -1,5 +1,5 @@
 ---
-title: 分类预测信用风险 (区分成本)
+title: '视觉对象接口示例 #4:用于预测信用风险的分类 (区分成本)'
 titleSuffix: Azure Machine Learning service
 description: 本文介绍如何使用可视界面构建复杂的机器学习试验。 你将了解如何实现自定义 Python 脚本并比较多个模型, 以选择最佳选项。
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 942d6fa6db7ee2fc07fd11d3448ac7ec96c3bd43
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ee4b67c82ef2bf5a1ef9c060687cc1c937328e66
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845977"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990433"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>示例 4-分类:预测信用风险 (区分成本)
 

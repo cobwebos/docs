@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1ae61af2ad857068950e2b2cdb6f058a33f57186
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 52fcd0d928ecbce5c617ff6a27175fccb8fd96f6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477574"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990238"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
-源代码管理，可使在自动化帐户中的 runbook 与您的脚本在 GitHub 或 Azure 存储库源控件存储库中保持最新。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试或生产自动化帐户。 这样可以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。 源代码管理与自动化的集成支持从源代码管理存储库进行单向同步。
+源代码管理使你能够在你的 GitHub 或 Azure Repos 源代码管理存储库中, 使你的自动化帐户中的 runbook 保持最新。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试或生产自动化帐户。 这样可以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。 源代码管理与自动化的集成支持从源代码管理存储库进行单向同步。
 
 Azure 自动化支持三种类型的源代码管理：
 
@@ -30,30 +30,30 @@ Azure 自动化支持三种类型的源代码管理：
 
 * 源代码管理存储库（GitHub 或 Azure Repos）
 * 一个[运行方式帐户](manage-runas-account.md)
-* 请确保您具有[最新的 Azure 模块](automation-update-azure-modules.md)在自动化帐户中
+* 确保已在自动化帐户中安装[最新的 Azure 模块](automation-update-azure-modules.md)
 
 > [!NOTE]
 > 源代码管理同步作业以自动化帐户用户身份运行，并且按与其他自动化作业相同的费率计费。
 
 ## <a name="configure-source-control---azure-portal"></a>配置源代码管理 - Azure 门户
 
-在你的自动化帐户中选择“源代码管理”  ，然后单击“+ 添加” 
+在你的自动化帐户中选择“源代码管理”，然后单击“+ 添加”
 
 ![选择“源代码管理”](./media/source-control-integration/select-source-control.png)
 
-选择“源代码管理类型”  ，单击“身份验证”  。 此时会打开一个提示登录的浏览器窗口，请遵照提示完成身份验证。
+选择“源代码管理类型”，单击“身份验证”。 此时会打开一个提示登录的浏览器窗口，请遵照提示完成身份验证。
 
-在“源代码管理摘要”  页上，填写信息并单击“保存”。  下表显示了可用字段的说明。
+在“源代码管理摘要”页上，填写信息并单击“保存”。 下表显示了可用字段的说明。
 
 |属性  |描述  |
 |---------|---------|
 |源代码管理名称     | 源代码管理的易记名称。 *此名称只能包含字母和数字。*        |
 |源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
-|存储库     | 存储库或项目的名称。 将返回前 200 个存储库。 若要搜索存储库，请在字段中键入名称，然后单击“在 GitHub 中搜索”。 |
+|存储库     | 存储库或项目的名称。 将返回前 200 个存储库。 若要搜索存储库，请在字段中键入名称，然后单击“在 GitHub 中搜索”。|
 |分支     | 要从源文件中提取的分支。 分支目标确定不适用于 TFVC 源代码管理类型。          |
 |文件夹路径     | 包含要同步的 runbook 的文件夹。示例：/Runbooks </br>*只会同步指定文件夹中的 Runbook。不支持递归。*        |
 |自动同步<sup>1</sup>     | 在源代码管理存储库中提交时打开或关闭自动同步         |
-|发布 Runbook     | 如果设置为“打开”  ，在从源代码管理同步 Runbook 后，它们将自动发布。         |
+|发布 Runbook     | 如果设置为“打开”，在从源代码管理同步 Runbook 后，它们将自动发布。         |
 |描述     | 用于提供其他详细信息的一个文本字段        |
 
 <sup>1</sup> 只有项目管理员才能在配置源代码管理与 Azure 存储库的集成时启用自动同步。
@@ -118,11 +118,11 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 
 <sup>1</sup>只有在启用了自动同步时才需要“服务连接”权限。
 
-## <a name="syncing"></a>同步
+## <a name="syncing"></a>正在同步
 
-从“源代码管理”页上的表格中选择源。  单击“开始同步”  以开始同步过程。
+从“源代码管理”页上的表格中选择源。 单击“开始同步”以开始同步过程。
 
-可以通过单击“同步作业”选项卡来查看当前同步作业或之前的同步作业的状态。  在“源代码管理”  下拉列表中，选择一个源代码管理。
+可以通过单击“同步作业”选项卡来查看当前同步作业或之前的同步作业的状态。在“源代码管理”下拉列表中，选择一个源代码管理。
 
 ![同步状态](./media/source-control-integration/sync-status.png)
 
@@ -161,17 +161,24 @@ Source Control Sync Summary:
 ========================================================================================================
 ```
 
-在“源代码管理同步作业摘要”页上选择“所有日志”可以查看其他日志。   这些附加的日志条目可帮助你排查使用源代码管理时可能遇到的问题。
+在“源代码管理同步作业摘要”页上选择“所有日志”可以查看其他日志。 这些附加的日志条目可帮助你排查使用源代码管理时可能遇到的问题。
 
 ## <a name="disconnecting-source-control"></a>断开连接源代码管理
 
-若要从源代码管理存储库断开连接，请在你的自动化帐户中的“帐户设置”下打开“源代码管理”。  
+若要从源代码管理存储库断开连接，请在你的自动化帐户中的“帐户设置”下打开“源代码管理”。
 
-选择要删除的源代码管理。 在“源代码管理摘要”  页面上，单击“删除”。 
+选择要删除的源代码管理。 在“源代码管理摘要”页面上，单击“删除”。
 
 ## <a name="encoding"></a>编码
 
 如果有多个人正在使用不同的编辑器编辑你的源代码管理存储库中的 Runbook，可能会遇到编码问题。 这种情况可能会导致 Runbook 中出现错误的字符。 有关详细信息，请参阅[编码问题的常见原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
+
+## <a name="updating-the-access-token"></a>更新访问令牌
+
+当前无法从门户更新源代码管理中的访问令牌。 个人访问令牌过期或吊销后, 可以通过以下方式使用新的访问令牌来更新源代码管理:
+
+* 通过[REST Api](https://docs.microsoft.com/en-us/rest/api/automation/sourcecontrol/update)。
+* 使用[AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
 

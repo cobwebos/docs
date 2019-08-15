@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: b7386cbbe18d7e05c2fbffb96f6214b468956192
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d3586c571c2d70034f10cb3e1efd9242d6a1023
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66151706"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986959"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>使用 Windows 上的 IoT Edge 运行 Linux 容器
 
@@ -24,7 +24,7 @@ ms.locfileid: "66151706"
 
 本文列出了在 Windows x64 (AMD/Intel) 系统上使用 Linux 容器安装 Azure IoT Edge 运行时的步骤。 若要详细了解 IoT Edge 运行时安装程序，包括有关所有安装参数的详细信息，请参阅 [在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 参考本部分检查你的 Windows 设备是否支持 IoT Edge，并在安装之前为容器引擎准备好该设备。 
 
@@ -49,7 +49,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 ## <a name="install-iot-edge-on-a-new-device"></a>在新设备上安装 IoT Edge
 
 >[!NOTE]
->Azure IoT Edge 软件程序包受制于程序包中的许可条款（位于 LICENSE 目录中）。 使用程序包之前请阅读这些许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用包。
+>Azure IoT Edge 软件程序包受制于程序包中的许可条款（位于 LICENSE 目录中）。 使用程序包之前请阅读这些许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用程序包。
 
 某个 PowerShell 脚本将下载并安装 Azure IoT Edge 安全守护程序。 然后，安全守护程序将启动两个运行时模块中的第一个，即 IoT Edge 代理，以便能够远程部署其他模块。 
 
@@ -81,7 +81,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 4. 此时，IoT Core 设备可能会自动重启。 其他 Windows 10 或 Windows Server 设备可能会提示你重启。 如果是这样，请立即重启设备。 设备准备就绪后，再次以管理员身份运行 PowerShell。
 
-5. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时  。 该命令默认为使用设备连接字符串进行手动预配。 再次将 Linux 声明为所需的容器操作系统。 
+5. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用设备连接字符串进行手动预配。 再次将 Linux 声明为所需的容器操作系统。 
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -106,7 +106,8 @@ Get-Service iotedge
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-列出正在运行的模块。 完成新的安装后，应会看到唯一运行的模块是 **edgeAgent**。 [部署 IoT Edge 模块](how-to-deploy-modules-portal.md)后，将会看到其他模块。 
+列出正在运行的模块。 完成新的安装后，应会看到唯一运行的模块是 **edgeAgent**。 首次[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)后, 其他系统模块**edgeHub**也会在设备上启动。 
+
 
 ```powershell
 iotedge list

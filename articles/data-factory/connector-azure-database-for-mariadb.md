@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: cd46e99b89b4081dcf0d67509edaabf168da4ba0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cb783630b32b4cc28d4e4f1cfb33027da3b8d2e0
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387878"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966567"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure Database for MariaDB 复制数据 
 
@@ -29,7 +29,7 @@ ms.locfileid: "60387878"
 
 Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -43,7 +43,7 @@ Azure Database for MariaDB 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**MariaDB** | 是 |
 | connectionString | 连接到 Azure Database for MariaDB 的连接字符串。 可以从“Azure 门户”->“Azure Database for MariaDB”->“连接字符串”->“ADO.NET”中找到它。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -99,11 +99,11 @@ Azure Database for MariaDB 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Azure Database for MariaDB 数据集支持的属性列表。
 
-要从 Azure Database for MariaDB 复制数据，请将数据集的 type 属性设置为“MariaDBTable”  。 支持以下属性：
+要从 Azure Database for MariaDB 复制数据，请将数据集的 type 属性设置为“MariaDBTable”。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：MariaDBTable  | 是 |
+| type | 数据集的 type 属性必须设置为：MariaDBTable | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -128,7 +128,7 @@ Azure Database for MariaDB 链接服务支持以下属性：
 
 ### <a name="azure-database-for-mariadb-as-source"></a>Azure Database for MariaDB 作为源
 
-要从 Azure Database for MariaDB 复制数据，请将复制活动中的源类型设置为“MariaDBSource”  。 复制活动源  部分支持以下属性：
+要从 Azure Database for MariaDB 复制数据，请将复制活动中的源类型设置为“MariaDBSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

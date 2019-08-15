@@ -4,14 +4,14 @@ description: 了解如何为 Azure Cosmos 容器和数据库设置预配的吞�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/12/2019
 ms.author: rimman
-ms.openlocfilehash: 2bcd428e2de90251d4d64111b1c3e6b6f812ac4c
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 146cc9e89959035ca211a036be4730b59cae8c0b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467626"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987395"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和数据库上预配吞吐量
 
@@ -40,7 +40,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 ## <a name="set-throughput-on-a-database"></a>对数据库设置吞吐量
 
-对 Azure Cosmos 数据库预配吞吐量时，在该数据库中的所有容器之间共享吞吐量。 一种例外是在数据库中的特定容器上指定了预配的吞吐量。 在容器之间共享数据库级预配吞吐量相当于在计算机群集上托管数据库。 由于数据库中的所有容器共享一台计算机上的可用资源，因此，任何特定容器的性能自然不可预测。 若要了解如何在数据库上配置预配吞吐量，请参阅[在 Azure Cosmos 数据库上配置预配吞吐量](how-to-provision-database-throughput.md)。
+在 Azure Cosmos 数据库上预配吞吐量时, 将在数据库中的所有容器 (称为共享数据库容器) 之间共享吞吐量。 一种例外是在数据库中的特定容器上指定了预配的吞吐量。 在容器之间共享数据库级预配吞吐量相当于在计算机群集上托管数据库。 由于数据库中的所有容器共享一台计算机上的可用资源，因此，任何特定容器的性能自然不可预测。 若要了解如何在数据库上配置预配吞吐量，请参阅[在 Azure Cosmos 数据库上配置预配吞吐量](how-to-provision-database-throughput.md)。
 
 在 Azure Cosmos 数据库上设置吞吐量可保证随时能够获得该数据库的预配吞吐量。 由于数据库中的所有容器共享预配的吞吐量，因此，Azure Cosmos DB 不会针对该数据库中的特定容器提供任何可预测的吞吐量保证。 特定容器可获得的吞吐量部分取决于：
 
@@ -60,7 +60,9 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 如果逻辑分区上的工作负荷消耗的吞吐量超过了分配给特定逻辑分区的吞吐量，操作将受到速率限制。 出现速率限制时，可以增大整个数据库的吞吐量，或重试操作。 有关分区的详细信息，请参阅[逻辑分区](partition-data.md)。
 
-可在单个物理分区中托管多个属于不同容器的逻辑分区，这些容器共享预配给数据库的吞吐量。 尽管容器的单个逻辑分区始终划归到物理分区，但可以在“R”物理分区中映射和托管“C”容器中共享数据库预配吞吐量的“L”逻辑分区。 
+在数据库上预配的吞吐量可由该数据库内的容器共享。 最多25个容器可以共享在数据库上预配的吞吐量。 除25个容器外, 对于在该数据库中创建的每个新容器, 都可以与数据库中已有的其他集合共享一部分数据库吞吐量。 可以共享的吞吐量取决于数据库中预配的容器数。 
+
+如果工作负荷涉及删除和重新创建数据库中的所有集合, 建议删除空数据库, 并在创建集合之前重新创建新数据库。
 
 下图显示了物理分区如何托管属于数据库中不同容器的一个或多个逻辑分区：
 
@@ -78,6 +80,9 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 * “K”RU 吞吐量在 A、C、D、E 这四个容器之间共享。提供给 A、C、D 或 E 的确切吞吐量各不相同。 每个容器的吞吐量没有 SLA 的保障。
 * 保证名为 B 的容器始终可以获得“P”RU 吞吐量。 该容器有 SLA 的保障。
 
+> [!NOTE]
+> 具有预配吞吐量的容器无法转换为共享数据库容器。 与此相反, 共享数据库容器不能转换为具有专用的吞吐量。
+
 ## <a name="update-throughput-on-a-database-or-a-container"></a>在数据库或容器上更新吞吐量
 
 创建 Azure Cosmos 容器或数据库后，可以更新预配的吞吐量。 对于可以在数据库或容器上配置的最大预配吞吐量，没有任何限制。 最小预配吞吐量取决于以下因素： 
@@ -90,7 +95,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 使用 .NET SDK 时，可以通过 [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) 方法检索容器或数据库的最小吞吐量。 
 
-可以随时缩放容器或数据库的预配吞吐量。 执行缩放操作以增加吞吐量时, 可能需要较长的时间, 因为系统任务需要设置所需的资源。 可以在 Azure 门户中或使用 Sdk 以编程方式检查缩放操作的状态。 使用 .net SDK 时, 可以使用`DocumentClient.ReadOfferAsync`方法获取缩放操作的状态。
+可以随时缩放容器或数据库的预配吞吐量。 执行缩放操作以增加吞吐量时，由于系统任务的原因，可能需要更长的时间来预配所需的资源。 可以在 Azure 门户中检查缩放操作的状态，也可以使用 SDK 以编程方式检查。 使用 .net SDK 时, 可以使用`DocumentClient.ReadOfferAsync`方法获取缩放操作的状态。
 
 ## <a name="comparison-of-models"></a>模型比较
 

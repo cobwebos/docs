@@ -3,7 +3,7 @@ title: 对 Azure Active Directory 报告 API 中的错误进行故障排除 | Mi
 description: 针对调用 Azure Active Directory 报告 API 时遇到的错误提供相应解决方案。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 0030c5a4-16f0-46f4-ad30-782e7fea7e40
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b517204fb650020bdebf8172186f30fff58f722
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e6f1f34dcece9acb20d0db091152b24b26cb9fa2
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60285011"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989534"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>对 Azure Active Directory 报告 API 中的错误进行故障排除
 
@@ -40,7 +40,7 @@ ms.locfileid: "60285011"
 
 ### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>错误：无法从 AD Graph 执行 Premium 许可证检查 
 
-如果尝试使用 Graph 浏览器访问登录时收到此错误消息，请在左侧导航栏中选择帐户下方的“修改权限”，然后选择“Tasks.ReadWrite”和“Directory.Read.All”    。 
+如果尝试使用 Graph 浏览器访问登录时收到此错误消息，请在左侧导航栏中选择帐户下方的“修改权限”，然后选择“Tasks.ReadWrite”和“Directory.Read.All”。 
 
 ![修改权限 UI](./media/troubleshoot-graph-api/modify-permissions.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "60285011"
 
 ### <a name="error-user-is-not-in-the-allowed-roles"></a>错误：用户不是允许的角色 
 
-如果在尝试使用 API 访问审核日志或登录时看到此错误消息，请确保帐户属于 Azure Active Directory 租户中的“安全读取者”或“报表读取者”角色   。 
+如果在尝试使用 API 访问审核日志或登录时看到此错误消息，请确保帐户属于 Azure Active Directory 租户中的“安全读取者”或“报表读取者”角色。 
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>错误：应用程序缺少 AAD“读取目录数据”权限 
 

@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: cf1cba6f6d26d66fc560c86ea42459fa276cc880
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ba09496ed8c110e3bf0e431da20f09c82d5ea0b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66114910"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985590"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
 本文回答了有关 Azure 存储迁移的常见问题。 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
-如何创建一个脚本来将文件从一个容器复制到另一个容器？ 
+如何创建一个脚本来将文件从一个容器复制到另一个容器？
 
 若要在容器之间复制文件，可以使用 AzCopy。 请参阅以下示例：
 
@@ -37,7 +37,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 **在相同区域内同一个存储帐户上的两个文件共享之间复制数据是否有任何费用？**
 
-不。 此过程不会产生任何费用。
+否。 此过程不会产生任何费用。
 
 **如何实现将整个存储帐户备份到其他存储帐户？**
 
@@ -62,13 +62,13 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 运行此命令后，容器文件会移到目标存储帐户。
 
 > [!NOTE]
-> 从一个 Azure blob 复制到另一个时，AzCopy CLI 不能与 Pattern 开关一起使用  。
+> 从一个 Azure blob 复制到另一个时，AzCopy CLI 不能与 Pattern 开关一起使用。
 >
-> 可以直接复制和编辑 AzCopy cmd，然后交叉检查以确保 Pattern 与源匹配  。 此外，请确保 /S  通配符有效。 有关详细信息，请参阅 [AzCopy 参数](storage-use-azcopy.md)。
+> 可以直接复制和编辑 AzCopy cmd，然后交叉检查以确保 Pattern 与源匹配。 此外，请确保 /S通配符有效。 有关详细信息，请参阅 [AzCopy 参数](storage-use-azcopy.md)。
 
-如何将数据从一个存储容器复制到另一个？ 
+如何将数据从一个存储容器复制到另一个？
 
-执行以下步骤:
+请执行以下步骤：
 
 1.  在目标 blob 中创建容器（文件夹）。
 
@@ -86,11 +86,11 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 你可以使用 AzCopy，并在任务计划程序中创建任务。 使用 AzCopy 批处理脚本将文件上传到 Azure 存储帐户。 有关详细信息，请参阅[如何配置和运行云服务的启动任务](../../cloud-services/cloud-services-startup-tasks.md)。
 
-如何在订阅之间移动存储帐户？ 
+如何在订阅之间移动存储帐户？
 
 使用 AzCopy 在订阅之间移动存储帐户。 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)和[使用 AzCopy on Linux 传输数据](storage-use-azcopy-linux.md)。
 
-如何将大约 10 TB 的数据移动到另一个区域的存储？ 
+如何将大约 10 TB 的数据移动到另一个区域的存储？
 
 请使用 AzCopy 移动数据。 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)和[使用 AzCopy on Linux 传输数据](storage-use-azcopy-linux.md)。
 
@@ -102,11 +102,11 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 请使用 AzCopy 移动数据。 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)和[使用 AzCopy on Linux 传输数据](storage-use-azcopy-linux.md)。
 
-如何在虚拟机上映射容器文件夹？ 
+如何在虚拟机上映射容器文件夹？
 
 使用 Azure 文件共享。
 
-如何备份 Azure 文件存储？ 
+如何备份 Azure 文件存储？
 
 没有任何备份解决方案。 但是 Azure 文件也支持异步复制。 因此，可复制文件：
 
@@ -116,11 +116,11 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)。
 
-如何将托管磁盘移动到另一个存储帐户？ 
+如何将托管磁盘移动到另一个存储帐户？
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-执行以下步骤:
+请执行以下步骤：
 
 1.  停止托管磁盘附加到的虚拟机。
 
@@ -164,11 +164,11 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 请使用 AzCopy 下载数据。 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)和[使用 AzCopy on Linux 传输数据](storage-use-azcopy-linux.md)。
 
-如何将存储帐户的辅助位置更改为欧洲区域？ 
+如何将存储帐户的辅助位置更改为欧洲区域？
 
 创建存储帐户时，可以为帐户选择主要区域。 选择次要区域是根据主要区域确定的且无法更改。 有关详细信息，请参阅[异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy.md)。
 
-我在哪里可以获得有关 Azure 存储服务加密 (SSE) 的更多信息？   
+我在哪里可以获得有关 Azure 存储服务加密 (SSE) 的更多信息？  
   
 请参阅以下文章：
 
@@ -181,7 +181,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 请使用 AzCopy 下载数据。 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)和[使用 AzCopy on Linux 传输数据](storage-use-azcopy-linux.md)。
 
 
-如何在存储帐户中加密数据？ 
+如何在存储帐户中加密数据？
 
 在存储帐户中启用加密后，不加密现有数据。 若要加密现有数据，必须再次将数据上传到存储帐户。
 
@@ -193,15 +193,15 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 **将存储帐户的复制从异地冗余存储更改到本地冗余存储是否有先决条件？**
 
-不。 
+否。 
 
-如何访问 Azure 文件冗余存储？ 
+如何访问 Azure 文件冗余存储？
 
 读取访问异地冗余存储需要访问冗余存储。 但是，Azure 文件仅支持本地冗余存储和不允许只读访问的标准异地冗余存储。 
 
 **如何从高级存储帐户移动到标准存储帐户？**
 
-执行以下步骤:
+请执行以下步骤：
 
 1.  创建标准存储帐户。 （或在订阅中使用现有标准存储帐户。）
 
@@ -213,7 +213,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
         /SourceKey:key1 /DestKey:key2 /S 
 
-    要仅复制一个磁盘，请在 Pattern 中提供磁盘名称  ：
+    要仅复制一个磁盘，请在 Pattern 中提供磁盘名称：
 
         AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
@@ -236,11 +236,11 @@ Azure 文件共享上不允许使用高级存储。
 
 **如何实现从经典存储帐户迁移到 Azure 资源管理器存储帐户？**
 
-可以使用“Move-AzStorageAccount”cmdlet  。 此 cmdlet 有多个步骤（验证、准备、提交）。 移动之前，可先进行验证。
+可以使用“Move-AzStorageAccount”cmdlet。 此 cmdlet 有多个步骤（验证、准备、提交）。 移动之前，可先进行验证。
 
 如果有虚拟机，则在迁移存储帐户数据之前，还需要执行其他步骤。 有关详细信息，请参阅[使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md)。
 
-如何将数据从 Azure 存储帐户下载到基于 Linux 的计算机，或者从 Linux 计算机上传数据？ 
+如何将数据从 Azure 存储帐户下载到基于 Linux 的计算机，或者从 Linux 计算机上传数据？
 
 你可以使用 Azure CLI。
 
@@ -252,7 +252,7 @@ Azure 文件共享上不允许使用高级存储。
 
       azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
 
-怎样才能让其他人访问我的存储资源？ 
+怎样才能让其他人访问我的存储资源？
 
 让其他人访问存储资源：
 
@@ -262,13 +262,13 @@ Azure 文件共享上不允许使用高级存储。
 
 -   更改访问策略以允许匿名访问。 有关详细信息，请参阅[授予对容器和 Blob 的匿名用户权限](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
 
-AzCopy 安装在什么位置？ 
+AzCopy 安装在什么位置？
 
--   如果从 Microsoft Azure 存储命令行访问 AzCopy，请键入 AzCopy  。 命令行与 AzCopy 一起安装。
+-   如果从 Microsoft Azure 存储命令行访问 AzCopy，请键入 AzCopy。 命令行与 AzCopy 一起安装。
 
--   如果你安装的是 32 位版本，它将位于：%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\AzCopy  。
+-   如果你安装的是 32 位版本，它将位于：%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\AzCopy。
 
--   如果你安装的是 64 位版本，它将位于：%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy  。
+-   如果你安装的是 64 位版本，它将位于：%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy。
 
 **对于复制的存储帐户（如区域冗余存储、异地冗余存储或读取访问异地冗余存储），如何访问存储在次要区域中的数据？**
 
@@ -276,13 +276,13 @@ AzCopy 安装在什么位置？
 
 -   如果使用的是读取访问异地冗余存储，可以随时从次要区域访问数据。 使用以下方法之一：  
       
-    - **AzCopy**：为 URL 中的存储帐户名追加“-secondary”以访问辅助终结点  。 例如：  
+    - **AzCopy**：为 URL 中的存储帐户名追加“-secondary”以访问辅助终结点。 例如：  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **SAS 令牌**：使用 SAS 令牌访问终结点中的数据。 有关详细信息，请参阅[使用共享访问签名](storage-dotnet-shared-access-signature-part-1.md)。
+    - **SAS 令牌**：使用 SAS 令牌访问终结点中的数据。 有关详细信息，请参阅[使用共享访问签名](storage-sas-overview.md)。
 
-**如何结合使用我的存储帐户和 HTTPS 自定义域？例如，如何使"https:\//mystorageaccountname.blob.core.windows.net/images/image.gif"显示为"https:\//www.contoso.com/images/image.gif"？**
+**如何结合使用我的存储帐户和 HTTPS 自定义域？例如, 如何使 "https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" 显示为 "https:\//www.contoso.com/images/image.gif"？**
 
 使用自定义域的存储帐户当前不支持 SSL。
 但你可以使用非 HTTPS 自定义域。 有关详细信息，请参阅[为 Blob 存储终结点配置自定义域名](../blobs/storage-custom-domain-name.md)。
@@ -291,12 +291,12 @@ AzCopy 安装在什么位置？
 
 使用 FTP 无法直接访问存储帐户。 但是，你可以设置 Azure 虚拟机，然后在虚拟机上安装 FTP 服务器。 可让 FTP 服务器将文件存储在 Azure 文件共享上或虚拟机可用的数据磁盘上。
 
-如果你只想下载数据而不需要使用存储资源管理器或类似的应用程序，则可以使用 SAS 令牌。 有关详细信息，请参阅[使用共享访问签名](storage-dotnet-shared-access-signature-part-1.md)。
+如果你只想下载数据而不需要使用存储资源管理器或类似的应用程序，则可以使用 SAS 令牌。 有关详细信息，请参阅[使用共享访问签名](storage-sas-overview.md)。
 
 **如何将 Blob 从一个存储帐户复制到另一个存储帐户？**
 
  可以使用我们的 [Blob 迁移脚本](../scripts/storage-common-transfer-between-storage-accounts.md)。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
+## <a name="need-help-contact-support"></a>需要帮助? 联系支持人员。
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

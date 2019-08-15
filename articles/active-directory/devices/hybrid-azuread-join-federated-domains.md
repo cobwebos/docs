@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05c81b5cde9e9c64d2d69bea1d14a18394f31e2a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: de9b50267e0b5c453a8f2a3df607ad7730acd277
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774600"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879442"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 加入
 
@@ -91,6 +91,8 @@ ms.locfileid: "68774600"
 > 如果使用 WinHTTP 设置在计算机上配置代理设置，则无法连接到所配置的代理的任何计算机将无法连接到 Internet。
 
 如果组织需要通过经身份验证的出站代理访问 Internet，则必须确保 Windows 10 计算机能够成功验证出站代理的身份。 由于 Windows 10 计算机使用计算机上下文运行设备注册，因此必须使用计算机上下文配置出站代理身份验证。 根据配置要求使用相应的出站代理提供程序。
+
+若要验证设备是否能够访问系统帐户下的上述 Microsoft 资源，可以使用[测试设备注册连接](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0)脚本。
 
 ## <a name="configure-hybrid-azure-ad-join"></a>配置混合 Azure AD 联接
 

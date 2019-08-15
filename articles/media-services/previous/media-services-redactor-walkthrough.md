@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: rli; juliako;
-ms.openlocfilehash: 3e4844c3174e41ca7f6f5667a2777aba11f70f11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: ril
+ms.reviewer: juliako
+ms.openlocfilehash: 3f40c69900b0d7f1c3bf446c1153e21dd7fd4d1b
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60874839"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69014938"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒体分析进行面部修订演练
 
@@ -71,7 +72,7 @@ ms.locfileid: "60874839"
     ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. （可选）编辑 annotations.json 文件，例如增加边界框边界。 
-4. 右键单击第一步中的输出资产，选择“Redactor”，在“修正”  模式下运行。 
+4. 右键单击第一步中的输出资产，选择“Redactor”，在“修正”模式下运行。 
 
     ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 

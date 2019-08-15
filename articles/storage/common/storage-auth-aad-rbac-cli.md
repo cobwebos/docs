@@ -9,12 +9,12 @@ ms.date: 07/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8219e795bb9ab4fc0d479b71e6a93fe6300037d0
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 2e29dfde651addb58b767d04bd34e8e5441d54c8
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514900"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986738"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>在 Azure CLI 中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限
 
@@ -54,23 +54,23 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 ## <a name="assign-an-rbac-role-to-a-security-principal"></a>向安全主体分配 RBAC 角色
 
-若要将 RBAC 角色分配到安全主体, 请使用[az role assign create](/cli/azure/role/assignment#az-role-assignment-create)命令。 命令的格式因分配范围而异。 下面的示例演示如何将角色分配给不同范围内的用户, 但你可以使用相同的命令为任何安全主体分配角色。
+若要向安全主体分配 RBAC 角色，请使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 命令。 命令的格式因分配范围而异。 以下示例显示如何在各种范围内为用户分配角色，但可以使用相同的命令将角色分配给任何安全主体。
 
 ### <a name="container-scope"></a>容器范围
 
 若要分配容器范围的角色，请为 `--scope` 参数指定一个包含容器范围的字符串。 容器的范围采用以下格式：
 
 ```
-/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
+/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container>
 ```
 
-以下示例为用户分配**存储 Blob 数据参与者**角色，其范围为名为 *sample-container* 的容器。 请务必将括号中的示例值和占位符值替换为你自己的值： 
+下面的示例将**存储 Blob 数据参与者**角色分配给用户, 其作用域为容器的级别。 请务必将括号中的示例值和占位符值替换为你自己的值：
 
 ```azurecli-interactive
 az role assignment create \
     --role "Storage Blob Data Contributor" \
     --assignee <email> \
-    --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/sample-container"
+    --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container>"
 ```
 
 ### <a name="queue-scope"></a>队列范围
@@ -78,16 +78,16 @@ az role assignment create \
 若要分配队列范围的角色，请为 `--scope` 参数指定一个包含队列范围的字符串。 队列的范围采用以下格式：
 
 ```
-/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
+/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue>
 ```
 
-以下示例为用户分配**存储队列数据参与者**角色，其范围为名为 *sample-queue* 的队列。 请务必将括号中的示例值和占位符值替换为你自己的值： 
+下面的示例将**存储队列数据参与者**角色分配给用户, 范围为队列的级别。 请务必将括号中的示例值和占位符值替换为你自己的值：
 
 ```azurecli-interactive
 az role assignment create \
     --role "Storage Queue Data Contributor" \
     --assignee <email> \
-    --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/sample-queue"
+    --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue>"
 ```
 
 ### <a name="storage-account-scope"></a>存储帐户范围
@@ -98,24 +98,24 @@ az role assignment create \
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-以下示例演示如何在存储帐户级别向用户分配**存储 Blob 数据读取者**角色。 请务必将示例值替换为你自己的值： 
+以下示例演示如何在存储帐户级别向用户分配“存储 Blob 数据读取者”角色。 请确保将示例值替换为你自己的值: \
 
 ```azurecli-interactive
 az role assignment create \
     --role "Storage Blob Data Reader" \
     --assignee <email> \
-    --scope "/subscriptions/<subscription-id>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/storagesamples"
+    --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
 ### <a name="resource-group-scope"></a>资源组范围
 
-若要分配资源组范围的角色，请为 `--resource-group` 参数指定资源组名称或 ID。 以下示例在资源组级别向用户分配“存储队列数据读取者”角色。 请务必将括号中的示例值和占位符值替换为你自己的值： 
+若要分配资源组范围的角色，请为 `--resource-group` 参数指定资源组名称或 ID。 以下示例在资源组级别向用户分配“存储队列数据读取者”角色。 请务必将括号中的示例值和占位符值替换为你自己的值：
 
 ```azurecli-interactive
 az role assignment create \
     --role "Storage Queue Data Reader" \
     --assignee <email> \
-    --resource-group sample-resource-group
+    --resource-group <resource-group>
 ```
 
 ### <a name="subscription-scope"></a>订阅范围
@@ -132,7 +132,7 @@ az role assignment create \
 az role assignment create \
     --role "Storage Blob Data Reader" \
     --assignee <email> \
-    --scope "/subscriptions/<subscription-id>"
+    --scope "/subscriptions/<subscription>"
 ```
 
 ## <a name="next-steps"></a>后续步骤

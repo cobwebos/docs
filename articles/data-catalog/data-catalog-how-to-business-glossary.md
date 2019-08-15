@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6ecb481245484332221e45b8f27c776291ea532d
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 1065abecb1f0ef57eb13b1ec3f194f07ae01eaee
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736413"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976794"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>为管控标记设置业务术语表
 
@@ -36,11 +36,11 @@ Azure 数据目录可用于发现数据源，使用户能够轻松发现和理�
 
 可通过数据目录门户导航菜单中的“术语表”选项访问业务术语表。  
 
-![访问业务术语表](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
+![数据目录-访问业务术语表](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
 数据目录管理员和作为术语表管理员角色的成员可以在业务术语表中创建、编辑和删除术语表术语。 所有数据目录用户都可以查看术语定义，并可以使用术语表术语对资产进行标记。
 
-![添加新的术语表术语](./media/data-catalog-how-to-business-glossary/02-new-term.png)
+![数据目录-添加新的术语表术语](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>创建术语表术语
 

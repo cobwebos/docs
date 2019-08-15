@@ -1,20 +1,22 @@
 ---
 title: 适用于 Azure 数据目录的键盘快捷方式
-description: 本文介绍 Azure 数据目录的键盘快捷方式。
+description: 本文显示了可以在 Azure 数据目录中使用的键盘快捷方式的列表。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 499067f33bddbede6510f61e2cb5da3fb33a5e7c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 72d1ce0ded61b1143f99769319892981f3cd1c10
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736303"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014455"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>适用于 Azure 数据目录的键盘快捷方式
+
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>适用于数据目录数据源注册工具的键盘快捷方式
+
 ### <a name="general-keyboard-shortcuts"></a>常规键盘快捷方式
 | 操作 | 按 |
 | --- | --- |

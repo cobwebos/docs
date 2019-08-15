@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: dacurwin
-ms.openlocfilehash: 07faf03ee9b12d1bf4a200de47d6df714c2248d9
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 72ab33cd280892ac6de827986e21e04672e58960
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737150"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951851"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM 备份概述
 
@@ -138,6 +138,50 @@ Azure 备份根据备份计划创建快照。
 数据磁盘 2 | 4095 GB | 0 GB
 
 此示例中，VM 的实际大小为 17 GB + 30 GB + 0 GB = 47 GB。 此受保护实例大小 (47 GB) 成为按月计费的基础。 随着 VM 中数据量的增长，用于计费的受保护实例大小也会相应变化。
+
+<a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
+## <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>有限公共预览版:磁盘大小最多为 30 TB 的 VM 备份
+
+Azure 备份现在支持对大小高达 30 TB 的更大且功能更强大的[Azure 托管磁盘](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/)进行有限的公共预览。 此预览版提供托管虚拟机的生产级别支持。
+
+你可以无缝注册预览, 而不会对正在进行的备份产生任何影响。 在预览版中注册订阅后, 应成功备份所有磁盘大小最多为 30 TB 的虚拟机。 若要注册预览版:
+ 
+从权限提升的 PowerShell 终端执行以下 cmdlet：
+
+1. 登录到 Azure 帐户。
+
+    ```powershell
+    PS C:> Login-AzureRmAccount
+    ```
+
+2. 选择要注册以进行升级的订阅:
+
+    ```powershell
+    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+    ```
+3. 在预览计划中注册此订阅: 
+
+    ```powershell
+    PS C:> Register-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices
+    ```
+
+    等待30分钟以便在预览中注册订阅。 
+
+ 4. 若要检查状态, 请运行以下 cmdlet:
+
+    ```powershell
+    PS C:> Get-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices 
+    ```
+5. 如果订阅显示为 "已注册", 请运行以下命令:
+    
+    ```powershell
+    PS C:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+    ```
+
+> [!NOTE]
+> 此预览版不支持大小超过 4 TB 的加密 Vm。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

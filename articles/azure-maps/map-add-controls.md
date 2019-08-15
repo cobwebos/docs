@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Maps 中添加地图控件 | Microsoft Docs
+title: 向 Azure Maps 添加控件 |Microsoft Docs
 description: 如何在 Azure Maps 中向地图添加缩放控件、绕 X 轴旋转控件、旋转控件和样式选取器。
 author: walsehgal
 ms.author: v-musehg
@@ -8,70 +8,109 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7a504b8df199a3a461d5eb4e5b7238462b4c438f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7267f77ed3d296ac586dcfd0f525b94d5e6eb7a0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638775"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976220"
 ---
-# <a name="add-map-controls-to-azure-maps"></a>将地图控件添加到 Azure Maps
+# <a name="add-controls-to-a-map"></a>向地图添加控件
 
-本文展示了如何向地图添加地图控件。 还将了解如何创建包含所有控件和一个[样式选取器](https://docs.microsoft.com/azure/azure-maps/choose-map-style)的地图。
+本文介绍如何将控件添加到地图中。 还将了解如何创建包含所有控件和一个[样式选取器](https://docs.microsoft.com/azure/azure-maps/choose-map-style)的地图。
 
 ## <a name="add-zoom-control"></a>添加缩放控件
+
+缩放控件添加了用于放大和缩小地图的按钮。下面的代码示例创建[ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol)类的一个实例, 并将其添加到地图的右下角。
+
+```javascript
+//Construct a zoom control and add it to the map.
+map.controls.add(new atlas.control.ZoomControl(), {
+    position: 'bottom-right'
+});
+```
+
+下面是上述功能的完整运行代码示例。
+
+<br/>
 
 <iframe height='500' scrolling='no' title='添加缩放控件' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 发布的 Pen <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>添加缩放控件</a>。
 </iframe>
 
-第一个代码块使用匿名身份验证机制创建地图对象。 有关如何创建地图的说明，请参阅[创建地图](./map-create.md)。
-
-缩放控件增加了放大和缩小地图的功能。 第二个代码块使用 atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) 创建一个缩放控件对象，并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。 缩放控件位于地图**事件侦听器**内，以确保它在地图完全加载后加载。
-
 ## <a name="add-pitch-control"></a>添加绕 X 轴旋转控件
+
+螺距控件添加倾斜的按钮, 以相对于水平位置进行地图。 下面的代码示例创建[PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol)类的一个实例, 并将其添加到地图的右上角。
+
+```javascript
+//Construct a pitch control and add it to the map.
+map.controls.add(new atlas.control.PitchControl(), {
+    position: 'top-right'
+});
+```
+
+下面是上述功能的完整运行代码示例。
+
+<br/>
 
 <iframe height='500' scrolling='no' title='添加绕 X 轴旋转控件' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 发布的 Pen <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>添加绕 X 轴旋转控件</a>。
 </iframe>
 
-第一个代码块使用匿名身份验证机制创建地图对象。 有关如何创建地图的说明，请参阅[创建地图](./map-create.md)。
-
-绕 X 轴旋转控件增加了更改地图俯仰角的功能。 第二个代码块使用 atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) 创建一个绕 X 轴旋转控件对象，并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。 绕 X 轴旋转控件位于地图**事件侦听器**内，以确保它在地图完全加载后加载。
-
 ## <a name="add-compass-control"></a>添加指南针控件
+
+指南针控件添加了用于旋转地图的按钮。 下面的代码示例创建一个[罗盘控件](/javascript/api/azure-maps-control/atlas.control.compasscontrol)类的实例, 并将其添加到地图的左下角。
+
+```javascript
+//Construct a compass control and add it to the map.
+map.controls.add(new atlas.control.Compass(), {
+    position: 'bottom-left'
+});
+```
+
+下面是上述功能的完整运行代码示例。
+
+<br/>
 
 <iframe height='500' scrolling='no' title='添加旋转控件' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 发布的 Pen <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>添加旋转控件</a>。
 </iframe>
 
-第一个代码块使用匿名身份验证机制创建地图对象。 有关如何创建地图的说明，请参阅[创建地图](./map-create.md)。
-
-第二个代码块使用 atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) 创建一个指南针控件对象。 它还可使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将指南针控件添加到地图中。 指南针控件位于地图**事件侦听器**内，以确保它在地图完全加载后加载。
-
 ## <a name="a-map-with-all-controls"></a>包含所有控件的地图
+
+下面的代码示例将样式选择器、缩放、间距和罗盘控件添加到地图的右下角。 请注意它们如何自动堆积。 控件对象在脚本中的顺序决定了它们在地图上的显示顺序。 若要更改控件在地图上的顺序，可以更改它们在脚本中的顺序。
+
+<br/>
 
 <iframe height='500' scrolling='no' title='包含所有控件的地图' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 发布的 Pen <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>包含所有控件的地图</a>。
 </iframe>
 
-第一个代码块使用匿名身份验证机制创建地图对象。 有关如何创建地图的说明，请参阅[创建地图](./map-create.md)。
+样式选取器控件由[StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol)类定义。 有关使用样式选取器控件的详细信息, 请参阅[选择地图样式](choose-map-style.md)。
 
-第二个代码块使用 atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) 创建一个指南针控件对象并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。
+## <a name="customize-controls"></a>自定义控件
 
-第三个代码块使用 atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) 创建一个缩放控件对象并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。
+下面是一个工具, 用于测试用于自定义控件的各种选项。
 
-第四个代码块使用atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) 创建一个绕 X 轴旋转控件对象并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。
+<br/>
 
-最后一个代码块通过使用 atlas [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) 创建一个样式选取器对象并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。 所有控件对象都添加到地图**事件侦听器**中，以确保它们在地图完全加载之后加载。
+<iframe height="700" style="width: 100%;" scrolling="no" title="导航控件选项" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅<a href='https://codepen.io'>CodePen</a>上的 "笔<a href='https://codepen.io/azuremaps/pen/LwBZMx/'>导航控件选项</a>" Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)。
+</iframe>
 
-控件对象在脚本中的顺序决定了它们在地图上的显示顺序。 若要更改控件在地图上的顺序，可以更改它们在脚本中的顺序。
+如果要创建自定义的导航控件, 请创建一个从`atlas.Control`类扩展的类, 或创建一个 HTML 元素, 并将其放置在地图 div 上方。 使此 UI 控件调用 maps `setCamera`函数以移动地图。 
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [罗盘控件](/javascript/api/azure-maps-control/atlas.control.compasscontrol)
 
 > [!div class="nextstepaction"]
-> [Atlas](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest)
+> [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) 
+
+> [!div class="nextstepaction"]
+> [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) 
+
+> [!div class="nextstepaction"]
+> [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) 
 
 有关完整代码，请参阅以下文章：
 
@@ -80,3 +119,13 @@ ms.locfileid: "68638775"
 
 > [!div class="nextstepaction"]
 > [添加弹出项](./map-add-popup.md)
+
+> [!div class="nextstepaction"]
+> [添加线条层](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [添加多边形层](map-add-shape.md)
+
+> [!div class="nextstepaction"]
+> [添加气泡层](map-add-bubble-layer.md)
+

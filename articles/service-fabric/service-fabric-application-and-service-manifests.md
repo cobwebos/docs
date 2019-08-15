@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/19/2018
+ms.date: 8/12/2019
 ms.author: atsenthi
-ms.openlocfilehash: e5fb28b176ce14a9b871b2a6a775e0017fcc993d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5e452bf3dc9f35c345a5f27af829904b4839ece
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052667"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977125"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric 应用程序和服务清单
 本文介绍如何使用 ApplicationManifest.xml 和 ServiceManifest.xml 文件定义 Service Fabric 应用程序和服务并对其进行版本控制。  有关更多详细示例，请参阅[应用程序和服务清单示例](service-fabric-manifest-examples.md)。  这些清单文件的 XML 架构记录在 [ServiceFabricServiceModel.xsd 架构文档](service-fabric-service-model-schema.md)中。
@@ -72,9 +72,9 @@ ms.locfileid: "67052667"
 
 **ServiceTypes** 声明此清单中的 **CodePackages** 支持哪些服务类型。 当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。 生成的进程应在运行时注册所支持的服务类型。 在清单级别而不是代码包级别声明服务类型。 因此，当存在多个代码包时，每当系统查找任何一种声明的服务类型时，它们都会被激活。
 
-**EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 **SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 *LocalSystem* 帐户）相同的凭据先于任何其他入口点运行。  提供单独的设置入口点可避免长时间使用高特权运行服务主机。 由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。 如果进程总是终止或出现故障，则监视并重启所产生的过程（再次从“SetupEntryPoint”开始  ）。  
+**EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 **SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 *LocalSystem* 帐户）相同的凭据先于任何其他入口点运行。  提供单独的设置入口点可避免长时间使用高特权运行服务主机。 由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。 如果进程总是终止或出现故障，则监视并重启所产生的过程（再次从“SetupEntryPoint”开始）。  
 
-“SetupEntryPoint”的典型使用场景是在服务启动之前运行可执行文件，或使用提升的权限来执行操作时  。 例如：
+“SetupEntryPoint”的典型使用场景是在服务启动之前运行可执行文件，或使用提升的权限来执行操作时。 例如：
 
 * 设置和初始化服务可执行文件所需的环境变量。 这并不限于通过 Service Fabric 编程模型编写的可执行文件。 例如，npm.exe 需要配置一些环境变量来部署 node.js 应用程序。
 * 通过安装安全证书设置访问控制。
@@ -83,7 +83,7 @@ ms.locfileid: "67052667"
 
 **EnvironmentVariables**（上一示例中未设置），提供为此代码包设置的环境变量列表。 环境变量可以在 `ApplicationManifest.xml` 中重写，以便为不同的服务实例提供不同的值。 
 
-**DataPackage**（上一示例中未设置），声明一个由 Name 属性命名的文件夹，该文件夹中包含进程会在运行时使用的任意静态数据  。
+**DataPackage**（上一示例中未设置），声明一个由 Name 属性命名的文件夹，该文件夹中包含进程会在运行时使用的任意静态数据。
 
 **ConfigPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含 *Settings.xml* 文件。 此设置文件包含用户定义的键值对设置部分，进程可在运行时读回这些设置。 升级期间，如果仅更改了 **ConfigPackage** **版本**，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 下面是 *Settings.xml* 文件的一个示例：
 
@@ -96,8 +96,12 @@ ms.locfileid: "67052667"
 </Settings>
 ```
 
-Service Fabric 服务**终结点**是 Service Fabric 资源的示例。 Service Fabric 资源可以是声明/更改，而无需更改已编译的代码。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定 Service Fabric 资源的访问  。 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 详细了解[指定或替代终结点资源](service-fabric-service-manifest-resources.md)。
+Service Fabric 服务“终结点”是 Service Fabric 资源的一个示例。 无需更改已编译的代码，即可声明/更改 Service Fabric 资源。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定 Service Fabric 资源的访问。 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 详细了解[指定或替代终结点资源](service-fabric-service-manifest-resources.md)。
 
+ 
+> [!WARNING]
+> 设计静态端口不应与 Clustermanifest.xml 中指定的应用程序端口范围重叠。 如果指定静态端口, 请将其分配到应用程序端口范围外, 否则将导致端口冲突。 使用 release 6.5 CU2, 我们将在检测到此类冲突时发出**运行状况警告**, 但允许部署与发货6.5 行为保持同步。 但是, 我们可能会阻止应用程序在下一个主要版本中进行部署。
+>
 
 <!--
 For more information about other features supported by service manifests, refer to the following articles:
@@ -147,6 +151,7 @@ For more information about other features supported by service manifests, refer 
     <Service Name="VotingWeb" ServicePackageActivationMode="ExclusiveProcess">
       <StatelessService ServiceTypeName="VotingWebType" InstanceCount="[VotingWeb_InstanceCount]">
         <SingletonPartition />
+         <PlacementConstraints>(NodeType==NodeType0)</PlacementConstraints
       </StatelessService>
     </Service>
   </DefaultServices>
@@ -163,13 +168,15 @@ For more information about other features supported by service manifests, refer 
 
 **Certificates**（上一示例中未设置），声明用于[设置 HTTPS 终结点](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service)或用于[加密应用程序清单中的机密](service-fabric-application-secret-management.md)的证书。
 
-**策略**（未设置在前面的示例） 介绍了日志收集，[默认运行方式](service-fabric-application-runas-security.md)，[运行状况](service-fabric-health-introduction.md#health-policies)，和[安全访问](service-fabric-application-runas-security.md)策略，以在设置应用程序级别，包括是否服务有权访问 Service Fabric 运行时。
+**放置约束**是定义服务运行位置的语句。 这些语句附加到您为一个或多个节点属性选择的各个服务。 有关详细信息, 请参阅[放置约束和节点属性语法](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)
+
+**Policies**（在前面的示例中未设置）描述要在应用程序级别设置的日志收集、[默认运行方式帐户](service-fabric-application-runas-security.md)、[运行状况](service-fabric-health-introduction.md#health-policies)和[安全访问](service-fabric-application-runas-security.md)策略，包括服务是否可以访问 Service Fabric 运行时。
 
 > [!NOTE] 
-> 默认情况下，Service Fabric 应用程序有权访问接受特定于应用程序的请求和环境变量指向包含构造和特定于应用程序的文件在主机上的文件路径的终结点的窗体中的 Service Fabric 运行时. 请考虑在应用程序托管不受信任的代码 （即代码其 provenance 为未知的或应用程序所有者知道不能将安全地执行） 时禁用此访问权限。 有关详细信息，请参阅[在 Service Fabric 中的安全最佳实践](service-fabric-best-practices-security.md#platform-isolation)。 
+> 默认情况下，Service Fabric 应用程序可以通过以下形式访问 Service Fabric 运行时：终结点（接受应用程序特定请求）和环境变量（指向包含 Fabric 和应用程序特定文件的主机上的文件路径）。 在应用程序托管不受信任的代码（即其出处未知或应用程序所有者知道其执行起来不安全）时，请考虑禁止进行此访问。 有关详细信息，请参阅 [Service Fabric 中的安全最佳做法](service-fabric-best-practices-security.md#platform-isolation)。 
 >
 
-**Principals**（上一示例中未设置），描述[运行服务并确保服务资源安全](service-fabric-application-runas-security.md)所需的安全主体（用户或组）。  Policies 部分中会引用 Principals  。
+**Principals**（上一示例中未设置），描述[运行服务并确保服务资源安全](service-fabric-application-runas-security.md)所需的安全主体（用户或组）。  Policies 部分中会引用 Principals。
 
 
 

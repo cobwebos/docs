@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 8300baa1afa3e6c738cee4c2a2517463c2af1e88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4430b14a93bb4cf2ccf43881ad061590f8e6815
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978856"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976679"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
@@ -195,7 +195,7 @@ ms.locfileid: "65978856"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -448,7 +448,7 @@ az group deployment create \
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -647,7 +647,7 @@ az group deployment create \
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -859,7 +859,7 @@ az group deployment create \
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -942,7 +942,7 @@ az group deployment create \
 
 ## <a name="template-for-metric-alert-that-monitors-multiple-resources"></a>用于监视多个资源的指标警报的模板
 
-上一部分中已介绍了一些示例 Azure 资源管理器模板，它们用来创建用于监视单个资源的指标警报。 Azure Monitor 现在支持使用单个指标警报规则监视多个资源。 此预览版功能当前只能通过 Azure 资源管理器模板和 REST API 使用，并且仅支持在虚拟机上使用。
+上一部分中已介绍了一些示例 Azure 资源管理器模板，它们用来创建用于监视单个资源的指标警报。 Azure Monitor 现在支持使用单个指标警报规则监视多个资源。 此功能目前仅在 Azure 公有云中受支持, 并且仅适用于虚拟机和 Databox Edge 设备。
 
 动态阈值警报规则还可以帮助一次为数百个指标系列（甚至不同类型）创建定制阈值，从而减少需要管理的警报规则。
 
@@ -1177,7 +1177,7 @@ az group deployment create \
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -1494,7 +1494,7 @@ az group deployment create \
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -1796,7 +1796,7 @@ az group deployment create \
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -2110,7 +2110,7 @@ az group deployment create \
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -2409,7 +2409,7 @@ az group deployment create \
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -2726,7 +2726,7 @@ az group deployment create \
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {

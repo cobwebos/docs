@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: iainfou
-ms.openlocfilehash: df0b3d27eec478280a33be831a2431eccdf05a74
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: cbc5bee0f4cc59f59af6e3f57219279cd8fcb030
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483385"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988583"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>使用安全 LDAP (LDAPS) 绑定到 Azure AD 域服务托管域
 
@@ -31,20 +31,20 @@ ms.locfileid: "67483385"
 ## <a name="task-5-bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>任务 5：使用 LDP.exe 通过 LDAP 绑定到托管域
 可使用远程服务器管理工具包中包含的 LDP.exe 工具，通过 LDAP 进行绑定和搜索。
 
-首先，打开 LDP 并连接到托管域。 单击“连接”  ，再单击菜单中的“连接...”  。 指定托管域的 DNS 域名。 指定用于连接的端口。 对于 LDAP 连接，请使用端口 389。 对于 LDAPS 连接，请使用端口 636。 单击“确定”  按钮，连接到托管域。
+首先，打开 LDP 并连接到托管域。 单击“连接”，再单击菜单中的“连接...”。 指定托管域的 DNS 域名。 指定用于连接的端口。 对于 LDAP 连接，请使用端口 389。 对于 LDAPS 连接，请使用端口 636。 单击“确定”按钮，连接到托管域。
 
-接下来，绑定到托管域。 单击“连接”  ，再单击菜单中的“绑定...”  。 提供属于“AAD DC 管理员”组的用户帐户的凭据。
+接下来，绑定到托管域。 单击“连接”，再单击菜单中的“绑定...”。 提供属于“AAD DC 管理员”组的用户帐户的凭据。
 
 > [!IMPORTANT]
-> 如果已在 Azure AD 域服务实例上禁用 NTLM 密码哈希同步用户 （和服务帐户） 无法执行 LDAP 简单绑定。  禁用 NTLM 密码哈希同步的详细信息，请阅读[确保 Azure AD 域服务托管的域的安全](secure-your-domain.md)。
+> 如果在 Azure AD 域服务实例上禁用了 NTLM 密码哈希同步, 则用户 (和服务帐户) 无法执行 LDAP 简单绑定。  有关禁用 NTLM 密码哈希同步的详细信息, 请阅读[保护 Azure AD 域服务托管域](secure-your-domain.md)。
 >
 >
 
-选择“视图”  ，然后选择菜单中的“树”  。 将“基 DN”字段留空，再单击“确定”。 导航到想要搜索的容器，右键单击该容器，再选择“搜索”。
+选择“视图”，然后选择菜单中的“树”。 将“基 DN”字段留空，再单击“确定”。 导航到想要搜索的容器，右键单击该容器，再选择“搜索”。
 
 > [!TIP]
-> - 从 Azure AD 同步的用户和组存储在“AADDC 用户”  组织单位中。 此组织单位的搜索路径类似于 ```OU=AADDC Users,DC=CONTOSO100,DC=COM```。
-> - 加入托管域的计算机的计算机帐户存储在“AADDC 计算机”  组织单位中。 此组织单位的搜索路径类似于 ```OU=AADDC Computers,DC=CONTOSO100,DC=COM```。
+> - 从 Azure AD 同步的用户和组存储在“AADDC 用户”组织单位中。 此组织单位的搜索路径类似于 ```OU=AADDC Users,DC=CONTOSO100,DC=COM```。
+> - 加入托管域的计算机的计算机帐户存储在“AADDC 计算机”组织单位中。 此组织单位的搜索路径类似于 ```OU=AADDC Computers,DC=CONTOSO100,DC=COM```。
 >
 >
 
@@ -72,7 +72,7 @@ ms.locfileid: "67483385"
 * [Azure AD 域服务 - 入门指南](create-instance.md)
 * [管理 Azure AD 域服务域](manage-domain.md)
 * [LDAP 查询基础知识](https://docs.microsoft.com/windows/desktop/ad/creating-a-query-filter)
-* [Azure AD 域服务的管理组策略](manage-group-policy.md)
+* [管理 Azure AD 域服务组策略](manage-group-policy.md)
 * [网络安全组](../virtual-network/security-overview.md)
 * [创建网络安全组](../virtual-network/tutorial-filter-network-traffic.md)
 

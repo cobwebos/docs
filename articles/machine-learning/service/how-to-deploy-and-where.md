@@ -11,21 +11,21 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 7e88b99cf0ecede64d75b36eafdcc88798e2e4a4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a92cb0f3da5058e7ffeee6f47e8cfa26ae291005
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840445"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990558"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
-了解如何在 Azure 云中将机器学习模型部署为 web 服务, 或将其部署到 IoT Edge 设备。 
+了解如何在 Azure 云中将机器学习模型部署为 web 服务, 或将其部署到 IoT Edge 设备。
 
 无论[在何处部署](#target)模型, 工作流都是相似的:
 
 1. 注册模型。
-1. 准备部署 (指定资产、使用情况、计算目标)
+1. 准备部署 (指定资产、使用情况、计算目标)。
 1. 将模型部署到计算目标。
 1. 测试已部署的模型, 也称为 "web 服务"。
 
@@ -33,26 +33,57 @@ ms.locfileid: "68840445"
 
 ## <a name="prerequisites"></a>先决条件
 
+- Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
+
 - 模型。 如果没有训练的模型, 则可以使用该模型 &[本教程](https://aka.ms/azml-deploy-cloud)中提供的依赖项文件。
 
 - [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、 [Azure 机器学习 Python SDK](https://aka.ms/aml-sdk)或[Azure 机器学习 Visual Studio Code 扩展](how-to-vscode-tools.md)。
 
+## <a name="connect-to-your-workspace"></a>连接到你的工作区
+
+下面的代码演示如何使用缓存到本地开发环境中的信息连接到 Azure 机器学习服务工作区:
+
+**使用 SDK**
+
+```python
+from azureml.core import Workspace
+ws = Workspace.from_config(path=".file-path/ws_config.json")
+```
+
+有关使用 SDK 连接到工作区的详细信息, 请参阅适用于[Python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace)。
+
+**使用 CLI**
+
+使用 CLI 时, 请使用`-w`或`--workspace-name`参数指定命令的工作区。
+
+**使用 VS Code**
+
+使用 VS Code 时, 使用图形界面选择工作区。 有关详细信息, 请参阅 VS Code 扩展文档中的 "[部署和管理模型](how-to-vscode-tools.md#deploy-and-manage-models)"。
+
 ## <a id="registermodel"></a>注册模型
 
-构成模型的一个或多个文件的已注册模型逻辑容器。 例如, 如果您有一个存储在多个文件中的模型, 则可以在工作区中将其注册为一个模型。 注册后, 可以下载或部署已注册的模型, 并接收已注册的所有文件。
+已注册的模型是组成模型的一个或多个文件的逻辑容器。 例如, 如果您有一个存储在多个文件中的模型, 则可以在工作区中将其注册为一个模型。 注册后, 可以下载或部署已注册的模型, 并接收已注册的所有文件。
 
-机器学习模型注册到 Azure 机器学习工作区中。 模型可以来自 Azure 机器学习或可以来自其他位置。 下面的示例演示如何从文件注册模型:
+> [!TIP]
+> 注册模型时, 需要提供云位置的路径 (从定型运行) 或本地目录。 此路径只是在注册过程中查找要上载的文件;它不需要与条目脚本中使用的路径匹配。 有关详细信息, 请参阅[什么是 get_model_path](#what-is-get_model_path)。
+
+机器学习模型注册到 Azure 机器学习工作区中。 模型可以来自 Azure 机器学习或可以来自其他位置。 下面的示例演示如何注册模型:
 
 ### <a name="register-a-model-from-an-experiment-run"></a>从试验运行注册模型
 
-+ **Scikit-learn-使用 SDK 了解示例**
+本节中的代码片段演示如何从定型运行注册模型:
+
+> [!IMPORTANT]
+> 这些代码片段假设您之前已经执行了定型运行, 并且有权访问`run`对象 (SDK 示例) 或运行 ID 值 (CLI 示例)。 有关定型模型的详细信息, 请参阅[为模型定型创建和使用计算目标](how-to-set-up-training-targets.md)。
+
++ **使用 SDK**
+
   ```python
   model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
   print(model.name, model.id, model.version, sep='\t')
   ```
 
-  > [!TIP]
-  > 若要在模型注册中包含多个文件`model_path` , 请将设置为包含这些文件的目录。
+  `model_path`引用模型的云位置。 在此示例中, 使用单个文件的路径。 若要在模型注册中包含多个文件`model_path` , 请将设置为包含这些文件的目录。
 
 + **使用 CLI**
 
@@ -60,42 +91,47 @@ ms.locfileid: "68840445"
   az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid
   ```
 
-  > [!TIP]
-  > 若要在模型注册中包含多个文件`--asset-path` , 请将设置为包含这些文件的目录。
+  [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
+
+  `--asset-path`引用模型的云位置。 在此示例中, 使用单个文件的路径。 若要在模型注册中包含多个文件`--asset-path` , 请将设置为包含这些文件的目录。
 
 + **使用 VS Code**
 
   使用具有[VS Code](how-to-vscode-tools.md#deploy-and-manage-models)扩展的任何模型文件或文件夹注册模型。
 
-### <a name="register-an-externally-created-model"></a>注册外部创建的模型
+### <a name="register-a-model-from-a-local-file"></a>从本地文件注册模型
+
+您可以通过提供模型的**本地路径**来注册模型。 可以提供文件夹或单个文件。 您可以使用此方法注册培训了 Azure 机器学习服务的两个模型, 然后将其下载或在 Azure 机器学习外训练的模型。
 
 [!INCLUDE [trusted models](../../../includes/machine-learning-service-trusted-model.md)]
 
-您可以通过提供模型的**本地路径**来注册外部创建的模型。 可以提供文件夹或单个文件。
-
 + **Python SDK 的 ONNX 示例:**
-  ```python
-  onnx_model_url = "https://www.cntk.ai/OnnxModels/mnist/opset_7/mnist.tar.gz"
-  urllib.request.urlretrieve(onnx_model_url, filename="mnist.tar.gz")
-  !tar xvzf mnist.tar.gz
-  
-  model = Model.register(workspace = ws,
-                         model_path ="mnist/model.onnx",
-                         model_name = "onnx_mnist",
-                         tags = {"onnx": "demo"},
-                         description = "MNIST image classification CNN from ONNX Model Zoo",)
-  ```
 
-  > [!TIP]
-  > 若要在模型注册中包含多个文件`model_path` , 请将设置为包含这些文件的目录。
+    ```python
+    import os
+    import urllib.request
+    from azureml.core import Model
+    # Download model
+    onnx_model_url = "https://www.cntk.ai/OnnxModels/mnist/opset_7/mnist.tar.gz"
+    urllib.request.urlretrieve(onnx_model_url, filename="mnist.tar.gz")
+    os.system('tar xvzf mnist.tar.gz')
+    # Register model
+    model = Model.register(workspace = ws,
+                            model_path ="mnist/model.onnx",
+                            model_name = "onnx_mnist",
+                            tags = {"onnx": "demo"},
+                            description = "MNIST image classification CNN from ONNX Model Zoo",)
+    ```
+
+  若要在模型注册中包含多个文件`model_path` , 请将设置为包含这些文件的目录。
 
 + **使用 CLI**
+
   ```azurecli-interactive
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
 
-  > [!TIP]
-  > 若要在模型注册中包含多个文件`-p` , 请将设置为包含这些文件的目录。
+  若要在模型注册中包含多个文件`-p` , 请将设置为包含这些文件的目录。
 
 **时间估计**：大约 10 秒。
 
@@ -157,7 +193,7 @@ model_path = Model.get_model_path('sklearn_mnist')
 
 ##### <a name="example-dependencies-file"></a>示例依赖关系文件
 
-以下 YAML 是用于推理的 Conda 依赖项文件的一个示例。
+以下 YAML 是用于推理的 Conda 依赖项文件的一个示例:
 
 ```YAML
 name: project_environment
@@ -269,7 +305,97 @@ def run(data):
 * TensorFlow[https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
 * Keras[https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * ONNX[https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
-* 对二进制数据进行评分:[如何使用 web 服务](how-to-consume-web-service.md)
+
+<a id="binary"></a>
+
+#### <a name="binary-data"></a>二进制数据
+
+如果模型接受二进制数据（如映像），则必须修改用于部署的 `score.py` 文件以接受原始 HTTP 请求。 若要接受原始数据, 请`AMLRequest`在输入脚本中使用类, 并`@rawhttp`将修饰器`run()`添加到函数。
+
+下面是一个`score.py`接受二进制数据的示例:
+
+```python
+from azureml.contrib.services.aml_request import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+
+def init():
+    print("This is init()")
+
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real world solution, you would load the data from reqBody
+        # and send to the model. Then return the response.
+
+        # For demonstration purposes, this example just returns the posted data as the response.
+        return AMLResponse(reqBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> 类位于`azureml.contrib`命名空间中。 `AMLRequest` 此命名空间中的任务在我们努力改进服务时经常发生变化。 因此，此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持。
+>
+> 如果需要在本地开发环境中对此进行测试, 可以使用以下命令安装组件:
+>
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
+<a id="cors"></a>
+
+#### <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享 (CORS)
+
+跨域资源共享是一种允许网页上的资源从另一个域请求的方式。 CORS 基于与客户端请求一起发送的 HTTP 标头, 并随服务响应一起返回。 有关 CORS 和有效标头的详细信息, 请参阅维基百科上的[跨域资源共享](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
+
+若要配置模型部署以支持 CORS, 请在`AMLResponse`条目脚本中使用类。 此类允许您设置响应对象的标头。
+
+下面的示例从输入`Access-Control-Allow-Origin`脚本中设置响应的标头:
+
+```python
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real world solution, you would load the data from reqBody
+        # and send to the model. Then return the response.
+
+        # For demonstration purposes, this example
+        # adds a header and returns the request body
+        resp = AMLResponse(reqBody, 200)
+        resp.headers['Access-Control-Allow-Origin'] = "http://www.example.com"
+        return resp
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> 类位于`azureml.contrib`命名空间中。 `AMLResponse` 此命名空间中的任务在我们努力改进服务时经常发生变化。 因此，此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持。
+>
+> 如果需要在本地开发环境中对此进行测试, 可以使用以下命令安装组件:
+>
+> ```shell
+> pip install azureml-contrib-services
+> ```
 
 ### <a name="2-define-your-inferenceconfig"></a>2.定义 InferenceConfig
 
@@ -328,7 +454,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 ### <a id="local"></a>本地部署
 
-若要在本地部署, 你需要在本地计算机上**安装 Docker** 。
+若要在本地部署, 你需要在本地计算机上安装 Docker。
 
 #### <a name="using-the-sdk"></a>使用 SDK
 
@@ -352,6 +478,10 @@ az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.js
 [!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]
 
 有关详细信息, 请参阅[az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)参考。
+
+### <a id="notebookvm"></a>NotebookVM web 服务 (开发测试)
+
+请参阅[将模型部署到笔记本 vm](how-to-deploy-local-container-notebook-vm.md)。
 
 ### <a id="aci"></a>Azure 容器实例 (开发测试)
 
@@ -580,7 +710,10 @@ Azure 机器学习计算目标由 Azure 机器学习服务创建和管理。 它
 
     ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
 
-有关示例项目和示例, 请查看[MLOps 存储库](https://github.com/Microsoft/MLOps)
+有关更多示例项目和示例, 请参阅以下示例存储库:
+
+* [https://github.com/Microsoft/MLOps](https://github.com/Microsoft/MLOps)
+* [https://github.com/Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
 ## <a name="clean-up-resources"></a>清理资源
 若要删除已部署的 Web 服务，请使用 `service.delete()`。

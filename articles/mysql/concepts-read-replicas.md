@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/30/2019
-ms.openlocfilehash: 2d70e1b5434b2fb263d1f4587888d4758fac2828
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/12/2019
+ms.openlocfilehash: 00cace13a1d3db2bca45791960ca9bf2fb9260bd
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225356"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976899"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -34,7 +34,32 @@ ms.locfileid: "66225356"
 
 只读副本功能使用 MySQL 本机异步复制。 该功能不适用于同步复制方案。 主服务器与副本之间存在明显的延迟。 副本上的数据最终将与主服务器上的数据保持一致。 对于能够适应这种延迟的工作负荷，可以使用此功能。
 
-只读副本可以增强灾难恢复计划。 如果没有区域性灾难并且主服务器不可用，可以将定向到另一个区域中的副本工作负荷。 若要执行此操作，首先让通过停止复制函数接受写入的副本。 然后可以通过更新连接字符串来重定向应用程序。 在[停止复制](#stop-replication)部分了解详细信息。
+## <a name="cross-region-replication"></a>跨区域复制
+可以在主服务器所在的不同区域中创建读取副本。 跨区域复制有助于进行灾难恢复规划或使数据更接近用户的情况。
+
+> [!IMPORTANT]
+> 跨区域复制目前为公共预览版。
+
+可以在任何[Azure Database for MySQL 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)中拥有主服务器。  主服务器可以在其配对区域或通用副本区域中拥有副本。
+
+### <a name="universal-replica-regions"></a>通用副本区域
+无论主服务器位于何处, 始终可以在以下任何区域中创建读取副本。 下面是通用副本区域:
+
+澳大利亚东部、澳大利亚东南部、美国中部、东亚、美国东部、美国东部2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部、美国西部2。
+
+
+### <a name="paired-regions"></a>配对区域
+除通用副本区域外, 还可以在主服务器的 Azure 配对区域中创建读取副本。 如果你不知道区域对, 可以从[Azure 配对区域一文](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)了解详细信息。
+
+如果你使用跨区域副本进行灾难恢复计划, 则建议在配对区域中创建副本, 而不是在另一个区域中创建。 配对区域避免同时进行更新, 并划分物理隔离和数据驻留的优先级。  
+
+但是, 有一些限制: 
+
+* 区域可用性：Azure Database for MySQL 在美国西部2、法国中部、阿拉伯联合酋长国北部和德国中部提供。 但是, 它们的配对区域不可用。
+    
+* 单向对:某些 Azure 区域仅在一个方向上配对。 这些区域包括印度西部、巴西南部和 US Gov 弗吉尼亚州。 
+   这意味着印度西部的主服务器可以在印度南部创建副本。 但是, 印度南部的主服务器无法在印度西部创建副本。 这是因为西部印度的次要区域是印度南部地区, 而印度南部的次要区域不是西印度。
+
 
 ## <a name="create-a-replica"></a>创建副本
 
@@ -42,7 +67,7 @@ ms.locfileid: "66225356"
 
 启动“创建副本”工作流时，将创建空白的 Azure Database for MySQL 服务器。 新服务器中填充了主服务器上的数据。 创建时间取决于主服务器上的数据量，以及自上次每周完整备份以来所经历的时间。 具体所需时间从几分钟到几小时不等。
 
-每个副本可用于存储[自动增长](concepts-pricing-tiers.md#storage-auto-grow)。 增长功能允许及时了解数据复制到它，并防止中断超出存储错误引起的复制中的副本。
+每个副本都启用了存储[自动增长](concepts-pricing-tiers.md#storage-auto-grow)。 自动增长功能允许副本与复制到它的数据保持同步，并防止由于存储空间不足错误而导致的复制中断。
 
 了解如何[在 Azure 门户中创建只读副本](howto-read-replicas-portal.md)。
 
@@ -62,11 +87,11 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 ## <a name="monitor-replication"></a>监视复制
 
-Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。  此指标仅适用于副本。
+Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。 此指标仅适用于副本。
 
 此指标是使用 MySQL 的 `SHOW SLAVE STATUS` 命令中提供的 `seconds_behind_master` 指标计算的。
 
-设置警报来通知你的复制延迟时达到不可接受的工作负荷的值。
+请设置警报，以便在复制滞后时间达到工作负荷不可接受的值时收到通知。
 
 ## <a name="stop-replication"></a>停止复制
 

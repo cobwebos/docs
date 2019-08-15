@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: cenkdin;juliako
-ms.openlocfilehash: 8baff356e1a4916bcc21b28f422a6e98342c0d34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.openlocfilehash: bc7c8a059e1e17b7b280a7061206b10ed6c530aa
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869447"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69015843"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>如何使用 .NET 通过本地编码器执行实时传送视频流
 > [!div class="op_single_selector"]
@@ -29,16 +29,16 @@ ms.locfileid: "64869447"
 > 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 本教程会逐步演示如何使用 Azure 媒体服务 .NET SDK 创建为实现直通传送而配置的**频道**。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 以下是完成本教程所需具备的条件：
 
 * 一个 Azure 帐户。
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
-* 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。  
+* 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。 
 * 设置开发环境。 有关详细信息，请参阅[设置环境](media-services-set-up-computer.md)。
 * 网络摄像机。 例如， [Telestream Wirecast 编码器](https://www.telestream.net/wirecast/overview.htm)。
 

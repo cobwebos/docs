@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: cdd1c8348acac37acbe8ad15199f3953bfe95a8e
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: e07a436ee18a216bab569d299e534e729996db19
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370657"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990158"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间
 Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于日志数据在收集后需要多长时间才可供使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
@@ -90,7 +90,7 @@ Azure Monitor 的首要任务是确保不会丢失任何客户数据，因此系
 ### <a name="ingestion-latency-delays"></a>引入延迟延迟
 可以通过将[ingestion_time ()](/azure/kusto/query/ingestiontimefunction)函数的结果与_TimeGenerated_属性进行比较来度量特定记录的滞后时间。 此数据可用于各种聚合，以查找引入延迟的行为方式。 检查引入时间的某些百分位数，以获取大量数据的见解。 
 
-例如，以下查询将显示哪些计算机当天的引入时间最长： 
+例如, 以下查询将显示在之前8小时内哪些计算机的引入时间最长: 
 
 ``` Kusto
 Heartbeat
@@ -101,7 +101,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
  
-如果想要在一段时间内对特定计算机的引入时间向下钻取，请使用以下可直观显示图形中的数据的查询： 
+如果要在一段时间内向下钻取特定计算机的引入时间, 请使用以下查询, 该查询还直观显示了图形中过去一天的数据: 
 
 ``` Kusto
 Heartbeat 

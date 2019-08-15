@@ -6,25 +6,25 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/28/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8375f4c54dc436ecf0694ec5f629c81d3591594d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72f8c3ed0658765827c4a9b0669c08fefd9044f
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234181"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016333"
 ---
 # <a name="create-a-storage-account"></a>创建存储帐户
 
 Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为你的 Azure 存储数据提供了一个唯一的命名空间，可以从世界上的任何位置通过 HTTP 或 HTTPS 访问该命名空间。 Azure 存储帐户中的数据是持久的，高度可用、安全且可大规模缩放。
 
-本操作指南文章介绍如何创建存储帐户使用[Azure 门户](https://portal.azure.com/)， [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)， [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)，或[Azure 资源管理器模板](../../azure-resource-manager/resource-group-overview.md)。  
+本操作指南文章介绍了如何使用[Azure 门户](https://portal.azure.com/)、 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)、 [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)或[Azure 资源管理器模板](../../azure-resource-manager/resource-group-overview.md)创建存储帐户。  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
@@ -40,16 +40,16 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 可以登录到 Azure，然后采用以下两种方式之一运行 Azure CLI 命令：
 
-- Azure Cloud Shell 中，可以运行从 Azure 门户中的 CLI 命令。
+- 可以在 Azure Cloud Shell 中的 Azure 门户内运行 CLI 命令。
 - 可以安装 CLI 并在本地运行 CLI 命令。
 
 ### <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
-Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 Azure CLI 是预安装和配置为使用与你的帐户。 单击**Cloud Shell**在 Azure 门户的右上部分的菜单上的按钮：
+Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 Azure CLI 已预安装并配置为与帐户一起使用。 单击 Azure 门户右上部分菜单上的 " **Cloud Shell** " 按钮:
 
 [![Cloud Shell](./media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
-该按钮会启动交互式 shell，可用于运行本操作指南文章中所述的步骤：
+此按钮会启动交互式 shell, 你可以使用它来运行本操作指南文章中所述的步骤:
 
 [![显示门户中 Cloud Shell 窗口的屏幕截图](./media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
@@ -63,7 +63,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 A
 
 ---
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录  Azure
 
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
@@ -79,9 +79,9 @@ Connect-AzAccount
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要启动 Azure Cloud Shell，请登录到[Azure 门户](https://portal.azure.com)。
+若要启动 Azure Cloud Shell, 请登录到[Azure 门户](https://portal.azure.com)。
 
-若要登录到本地安装的 cli，运行[az 登录](/cli/azure/reference-index#az-login)命令：
+若要登录到本地安装的 CLI，请运行 [az login](/cli/azure/reference-index#az-login) 命令：
 
 ```cli
 az login
@@ -89,7 +89,7 @@ az login
 
 # <a name="templatetabtemplate"></a>[模板](#tab/template)
 
-不适用
+不可用
 
 ---
 
@@ -99,7 +99,7 @@ az login
 
 每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 本文介绍如何创建新资源组。
 
-可以使用常规用途 v2 存储帐户访问所有 Azure 存储服务：Blob、文件、队列、表和磁盘  。 本文所述的步骤将创建常规用途 v2 存储帐户，但创建任何类型的存储帐户的步骤都相似。
+可以使用常规用途 v2 存储帐户访问所有 Azure 存储服务：Blob、文件、队列、表和磁盘。 本文所述的步骤将创建常规用途 v2 存储帐户，但创建任何类型的存储帐户的步骤都相似。
 
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
@@ -138,9 +138,11 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 |复制选项  |SkuName 参数  |
 |---------|---------|
 |本地冗余存储 (LRS)     |Standard_LRS         |
-|区域冗余存储 (ZRS)     |Standard_ZRS         |
-|异地冗余存储 (GRS)     |Standard_GRS         |
+|区域冗余存储(ZRS)     |Standard_ZRS         |
+|异地冗余存储(GRS)     |Standard_GRS         |
 |读取访问异地冗余存储 (GRS)     |Standard_RAGRS         |
+|区域冗余存储 (GZRS) (预览版)    |Standard_GZRS         |
+|读取访问区域冗余存储 (GZRS) (预览版)    |Standard_RAGZRS         |
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -176,13 +178,15 @@ az storage account create \
 |复制选项  |sku 参数  |
 |---------|---------|
 |本地冗余存储 (LRS)     |Standard_LRS         |
-|区域冗余存储 (ZRS)     |Standard_ZRS         |
-|异地冗余存储 (GRS)     |Standard_GRS         |
+|区域冗余存储(ZRS)     |Standard_ZRS         |
+|异地冗余存储(GRS)     |Standard_GRS         |
 |读取访问异地冗余存储 (GRS)     |Standard_RAGRS         |
+|区域冗余存储 (GZRS) (预览版)    |Standard_GZRS         |
+|读取访问区域冗余存储 (GZRS) (预览版)    |Standard_RAGZRS         |
 
 # <a name="templatetabtemplate"></a>[模板](#tab/template)
 
-可以使用 Azure Powershell 或 Azure CLI 来部署资源管理器模板以创建存储帐户。 在本操作指南文章中所用的模板是从[Azure 资源管理器快速入门模板](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要运行脚本，请选择“试用”  打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  。
+可以使用 Azure Powershell 或 Azure CLI 来部署资源管理器模板以创建存储帐户。 本操作指南文章中使用的模板来自[Azure 资源管理器快速入门模板](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要运行脚本，请选择“试用”打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -219,9 +223,9 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 若要使用 Azure 门户删除资源组，请执行以下操作：
 
-1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。 
-2. 找到要删除的资源组，右键单击列表右侧的“更多”按钮 ( **...** )。 
-3. 选择“删除资源组”并进行确认。 
+1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。
+2. 找到要删除的资源组，右键单击列表右侧的“更多”按钮 ( **...** )。
+3. 选择“删除资源组”并进行确认。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 

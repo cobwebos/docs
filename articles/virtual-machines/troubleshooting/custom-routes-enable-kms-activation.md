@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 6557649eb1b97ad4d88876906737f8249e18b958
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877fae66584ec24fb6e62b20d66ded36157b824
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399807"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990351"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>在强制隧道方案中，Windows 激活失败
 
@@ -52,6 +52,9 @@ Azure 全球云的 KMS 服务器的 IP 地址为 23.102.135.246。 其 DNS 名�
 ### <a name="for-resource-manager-vms"></a>对于资源管理器 VM
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+
+> [!NOTE] 
+> 激活使用公共 IP 地址, 并受标准 SKU 负载平衡器配置的影响。 仔细查看[Azure 中的出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections), 了解要求。
 
 1. 打开 Azure PowerShell，然后[登录到 Azure 订阅](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
 2. 运行以下命令：

@@ -1,9 +1,9 @@
 ---
-title: Azure Monitor 中的 azure Active Directory 活动日志 |Microsoft Docs
-description: 在 Azure Monitor 中介绍了 Azure Active Directory 活动日志
+title: Azure Monitor 中的 Azure Active Directory 活动日志 |Microsoft Docs
+description: Azure Active Directory 中的活动日志简介 Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/22/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d38035031c32c512a55293ba125fdcc4535b9833
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e8fb570d328c7391c269d4a2aa91c69003b1cfc8
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204382"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989893"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor 中的 azure AD 活动日志
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD 中的活动日志 Azure Monitor
 
-可以将 Azure Active Directory (Azure AD) 活动日志路由到多个终结点的长时间术语保持期、 数据见解。 此功能可以：
+可以将 Azure Active Directory (Azure AD) 活动日志路由到多个终结点, 以实现长期保留和数据见解。 此功能可让你:
 
 * 将 Azure AD 活动日志存档到 Azure 存储帐户，以便长期保留数据
 * 使用常用的安全信息和事件管理 (SIEM) 工具（例如 Splunk 和 QRadar）将 Azure AD 活动日志流式传输到 Azure 事件中心进行分析。
@@ -48,14 +48,14 @@ ms.locfileid: "67204382"
 > 目前不支持 B2C 相关的审核和登录活动日志。
 >
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-若要使用此功能，需满足以下条件：
+若要使用此功能，需满足以下条件:
 
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * 在 Azure 门户中访问 Azure AD 审核日志所需的 Azure AD Free、Basic、Premium 1 或 Premium 2 [许可证](https://azure.microsoft.com/pricing/details/active-directory/)。 
 * Azure AD 租户。
-* 一个是 Azure AD 租户的全局管理员或安全管理员的用户。  
+* 一个是 Azure AD 租户的全局管理员或安全管理员的用户。
 * 在 Azure 门户中访问 Azure AD 登录日志所需的 Azure AD Premium 1 或 Premium 2 [许可证](https://azure.microsoft.com/pricing/details/active-directory/)。 
 
 根据审核日志数据要路由到的位置，需满足以下条件之一:
@@ -103,16 +103,16 @@ ms.locfileid: "67204382"
 | 日志类别 | 用户数 | 每秒事件数 | 每五分钟时间间隔的事件数 | 每个时间间隔的数据量 | 每个时间间隔的消息数 | 每月消息数 | 每月成本（估算） |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | 审核 | 100,000 | 18 | 5,400 | 10.8 MB | 43 | 371,520 | $10.83 |
-| 审核 | 1,000 | 0.1 | 52 | 104 KB | 第 | 8,640 | $10.80 |
+| 审核 | 1,000 | 0.1 | 52 | 104 KB | 1 | 8,640 | $10.80 |
 | 登录 | 1,000 | 178 | 53,400 | 106.8&nbsp;MB | 418 | 3,611,520 | $11.06 |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Azure Monitor 日志成本注意事项
 
 
 
-| 日志类别       | 用户数 | 每日事件数 | 每月 （30 天） 的事件 | 每月以美元 (est)。 |
+| 日志类别       | 用户数 | 每日事件数 | 每月事件数 (30 天) | 每月成本 (est) |
 | :--                | ---             | ---            | ---                        | --:                          |
-| 审核和登录名 | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
+| 审核和登录 | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
 | 审核              | 100,000         | 1,500,000      | 45,000,000                 |  $246.66                     |
 | 登录           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
 
@@ -149,7 +149,7 @@ ms.locfileid: "67204382"
 
 ---
 
-**问：如果管理员更改诊断设置的保持期，会发生什么情况？**
+**问：如果管理员更改了诊断设置的保持期, 会发生什么情况？**
 
 **答**：新的保留策略将应用于更改后收集的日志。 策略更改前收集的日志将不会受到影响。
 

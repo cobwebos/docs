@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2019
+ms.date: 07/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2d0697567bfd2fcf95a1fe6ebf246646af5650c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0f1c66126a1aa9a6ebf6f78ac6fb1ba37ba41829
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564894"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985412"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>使用 Azure 资源的 Azure Active Directory 和托管标识授予对 blob 和队列的访问权限
 
@@ -50,17 +50,7 @@ Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../activ
 
 此代码示例演示如何从 Azure AD 获取 OAuth 2.0 令牌, 并使用它来授权创建块 blob 的请求。 若要使此示例正常工作, 请首先按照前面几节中所述的步骤进行操作。
 
-适用于 .NET 的[Microsoft Azure 应用程序身份验证](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)客户端库 (预览版) 可简化从代码中获取和续订令牌的过程。 应用身份验证客户端库自动管理身份验证。 库使用开发人员的凭据在本地开发期间进行身份验证。 在本地开发期间使用开发人员凭据更安全，因为不需创建 Azure AD 凭据，或者不需在开发人员之间共享凭据。 稍后将解决方案部署到 Azure 后, 库会自动切换到使用应用程序凭据。
-
-### <a name="install-packages"></a>安装包
-
-若要使用 Azure 存储应用程序中的应用身份验证库, 请从[Nuget](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)安装最新的预览版包, 并安装适用于 .Net 和 azure Blob 存储客户端库的最新[azure 存储空间客户端](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)库[适用于 .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)。 将以下**using**语句添加到代码中:
-
-```csharp
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.Azure.Storage.Auth;
-using Microsoft.Azure.Storage.Blob;
-```
+[!INCLUDE [storage-app-auth-lib-include](../../../includes/storage-app-auth-lib-include.md)]
 
 ### <a name="add-the-callback-method"></a>添加回调方法
 
