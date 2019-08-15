@@ -25,6 +25,8 @@
       items:
         - name: 设置地理围栏
           href: tutorial-geofence.md
+        - name: 空间分析
+          href: tutorial-iot-hub-maps.md
 - name: 概念
   items:
     - name: 使用 Azure Maps 进行身份验证

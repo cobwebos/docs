@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: de2e848bd587f3b9bf2efe3fa8df3710e24243e4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 11eae0e3bae501cdf39d7fe1d5d39524c1f83e6c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241386"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036005"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>教程：创建链接的 Azure 资源管理器模板
 
@@ -227,7 +227,7 @@ echo "Linked template URI with SAS token: $templateURI"
 4. 记下 shell 窗格末尾的两个值（资源组名称和链接模板 URI）。 稍后在本教程中需要用到这些值。
 5. 选择“退出焦点模式”，关闭 shell 窗格。 
 
-在实践中，请在部署主模板时生成一个 SAS 令牌，让该 SAS 令牌在更短的时间范围内到期，以增强安全性。 有关详细信息，请参阅[在部署期间提供 SAS 令牌](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment)。
+在实践中，请在部署主模板时生成一个 SAS 令牌，让该 SAS 令牌在更短的时间范围内到期，以增强安全性。 有关详细信息，请参阅[在部署期间提供 SAS 令牌](./secure-template-with-sas-token.md#provide-sas-token-during-deployment)。
 
 ## <a name="call-the-linked-template"></a>调用链接的模板
 
@@ -327,7 +327,7 @@ echo "Linked template URI with SAS token: $templateURI"
 若要改进项目，请对已完成的项目进行下述其他更改：
 
 1. 修改主模板 (azuredeploy.json)，使之通过参数获取链接模板 URI 值。
-2. 请在部署主模板时生成 SAS 令牌，而不是在上传链接模板时生成该令牌。 有关详细信息，请参阅[在部署期间提供 SAS 令牌](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment)。
+2. 请在部署主模板时生成 SAS 令牌，而不是在上传链接模板时生成该令牌。 有关详细信息，请参阅[在部署期间提供 SAS 令牌](./secure-template-with-sas-token.md#provide-sas-token-during-deployment)。
 
 ## <a name="next-steps"></a>后续步骤
 
