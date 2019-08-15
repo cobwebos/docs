@@ -93,7 +93,7 @@ ms.locfileid: "67434643"
 
 ### <a name="add-the-suggest-action-to-the-controller"></a>添加对控制器的 Suggest 操作
 
-1. 在主控制器中，添加 Suggest  操作（即添加在 Page ** **操作之后）。
+1. 在主控制器中，添加 **Suggest** 操作（即添加在 **Page** 操作之后）。
 
     ```cs
         public async Task<ActionResult> Suggest(bool highlights, bool fuzzy, string term)
@@ -125,7 +125,7 @@ ms.locfileid: "67434643"
         }
     ```
 
-    Top  参数指定要返回的结果数（如果未指定，默认值为 5）。 Azure 索引上指定了一个 _，该索引在数据设置完毕后完成，但不是由类似于本教程中的客户端应用来完成。 在此例中，建议器称名为“sg”，它搜索 HotelName  字段 - 别无其他了。 
+    Top  参数指定要返回的结果数（如果未指定，默认值为 5）。 Azure 索引上指定了一个_建议器_，该索引在数据设置完毕后完成，但不是由类似于本教程中的客户端应用来完成。 在此例中，建议器称名为“sg”，它搜索 HotelName  字段 - 别无其他了。 
 
     模糊匹配允许输出中包含“近似结果”。 如果 highlights  参数设置为 true，则输出中会添加粗体的 HTML 标记。 在下一节中，我们会将这两个参数设置为 true。
 
@@ -140,7 +140,7 @@ ms.locfileid: "67434643"
 
     ![键入“po”后显示了两条建议](./media/tutorial-csharp-create-first-app/azure-search-suggest-po.png)
 
-    请注意，输入的字母 _是某个词的起始部分，而不只是这个词的一部分。
+    请注意，输入的字母_必须_是某个词的起始部分，而不只是这个词的一部分。
 
 4. 在视图脚本中，将 &fuzzy  设置为 true，并再次运行该应用。 现在，输入“po”。 请注意，这时搜索会假定你写错了一个字母！
  
