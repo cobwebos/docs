@@ -33,7 +33,7 @@ ms.locfileid: "61473053"
 具体而言，此 Sybase 连接器支持：
 
 - SAP Sybase SQL 随处 (ASA) **版本 16 和更高版本**；不支持智能和 ASE。
-- 使用**基本**或 **Windows** 身份验证复制数据。
+- 使用**Basic**或 **Windows** 身份验证复制数据。
 
 ## <a name="prerequisites"></a>必备组件
 
