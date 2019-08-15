@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 8/14/2019
 ms.author: rkarlin
-ms.openlocfilehash: b5aae5f8e7195cfea7817b9e40e6f28d47fc3eff
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 138efd7cba80e288c4f8831b45272f4e46c8ee3f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780407"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036234"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>使用 Azure Sentinel Preview 的有用资源
 
@@ -41,8 +41,12 @@ Azure 逻辑应用连接器:<https://docs.microsoft.com/connectors/>
 | PaloAlto| 配置 CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
 | PluralSight | Kusto 查询语言课程| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 
+## <a name="blogs-and-forums"></a>博客和论坛
+
+将你的问题发布到 Azure Sentinel 的[TechCommunity 空间](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)。
+
+查看[TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog)和[Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)的 Azure Sentinel 博客文章。
+
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中, 你获得了在使用 Azure Sentinel 时非常有用的资源列表。 若要了解有关 Azure Sentinel 的详细信息, 请参阅以下内容:
-
-* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)。 查找关于 Azure 安全性及合规性的博客文章。
+在本文档中, 你获得了在使用 Azure Sentinel 时非常有用的资源列表。 你会在[Microsoft Azure 安全和合规性博客](https://blogs.msdn.com/b/azuresecurity/)上找到有关 Azure 安全性和符合性的其他信息。

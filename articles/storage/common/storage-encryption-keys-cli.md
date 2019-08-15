@@ -9,18 +9,22 @@ ms.date: 06/24/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 925b69e064e260a78a102a068f052ad7d396c380
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 837e3be209da1fe42ced9e4a23a75c46612cebd2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357063"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036626"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>通过 Azure CLI 配置客户管理的密钥用于 Azure 存储加密
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
 本文介绍如何使用 Azure CLI 配置包含客户管理的密钥的 Key Vault。
+
+> [!IMPORTANT]
+> 将客户管理的密钥用于 Azure 存储加密需要为 Key Vault 配置两个必需的属性：“软删除”和“不要清除”。 在 Azure 门户中创建新的 Key Vault 时，默认会启用这些属性。 但是，如果需要针对现有的 Key Vault 启用这些属性，必须使用 PowerShell 或 Azure CLI。
+> 仅支持 RSA 密钥和密钥大小2048。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>将标识分配到存储帐户
 
@@ -37,11 +41,11 @@ az storage account update \
     --assign-identity
 ```
 
-有关使用 Azure CLI 配置系统分配的托管的标识的详细信息，请参阅[配置管理使用 Azure CLI 在 Azure VM 上的 Azure 资源的标识](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)。
+有关使用 Azure CLI 配置系统分配的托管标识的详细信息, 请参阅[使用 Azure CLI 在 AZURE VM 上配置 azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)。
 
 ## <a name="create-a-new-key-vault"></a>创建新的 Key Vault
 
-必须为用来存储客户管理的密钥（用于 Azure 存储加密）的 Key Vault 启用两项密钥保护设置：“软删除”和“不要清除”。   若要在启用这些设置的情况下使用 PowerShell 或 Azure CLI 创建新的 Key Vault，请执行以下命令。 请记得将括号中的占位符值替换为你自己的值。 
+必须为用来存储客户管理的密钥（用于 Azure 存储加密）的 Key Vault 启用两项密钥保护设置：“软删除”和“不要清除”。 若要在启用这些设置的情况下使用 PowerShell 或 Azure CLI 创建新的 Key Vault，请执行以下命令。 请记得将括号中的占位符值替换为你自己的值。 
 
 若要使用 Azure CLI 创建新的 Key Vault，请调用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create)。 请记得将括号中的占位符值替换为你自己的值。
 
@@ -73,7 +77,7 @@ az keyvault set-policy \
     --key-permissions get recover unwrapKey wrapKey
 ```
 
-## <a name="create-a-new-key"></a>新建密钥
+## <a name="create-a-new-key"></a>创建新密钥
 
 接下来，在 Key Vault 中创建密钥。 若要创建密钥，请调用 [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create)。 请记得将括号中的占位符值替换为你自己的值。
 

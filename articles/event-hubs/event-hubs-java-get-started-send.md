@@ -1,5 +1,5 @@
 ---
-title: 使用 Java 发送和接收事件-Azure 事件中心 |Microsoft Docs
+title: 使用 Java 在 Azure 事件中心之间发送数据
 description: 本文提供了创建 Java 应用程序的演练，该应用程序用于将事件发送到 Azure 事件中心。
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -7,15 +7,15 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.custom: seodec18
+ms.custom: seodec18, seo-java-august2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 00107d99f69fcec086f9692a5ba31a9d9970d089
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c85d69b823956a5cf5e7f9d6dfa3c39b918cd465
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848514"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034805"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-java"></a>使用 Java 将事件发送到 Azure 事件中心或从其接收事件
 
@@ -26,7 +26,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 > [!NOTE]
 > 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要具备以下先决条件：
 

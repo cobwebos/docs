@@ -8,34 +8,33 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: d0a7199ff0e9cb17c3fbc179a9b37a6620f521f9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d5563dc2d1b2caaa85645b037d6bf93426cc0b23
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544664"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035266"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 管理属于服务分区的副本。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
 | deployed | 获取部署在 Service Fabric 节点上的副本的详细信息。 |
 | deployed-list | 获取部署在 Service Fabric 节点上的副本的列表。 |
-| health | 获取 Service Fabric 有状态服务副本或无状态服务实例的运行状况。 |
-| info | 获取有关 Service Fabric 分区的副本的信息。 |
-| list | 获取有关 Service Fabric 服务分区的副本的信息。 |
+| 运行状况 | 获取 Service Fabric 有状态服务副本或无状态服务实例的运行状况。 |
+| 信息 | 获取有关 Service Fabric 分区的副本的信息。 |
+| 列表 | 获取有关 Service Fabric 服务分区的副本的信息。 |
 | remove | 删除节点上运行的服务副本。 |
 | report-health | 发送有关 Service Fabric 副本的运行状况报告。 |
-| restart | 重启节点上运行的持久性服务的服务副本。 |
+| 重新启动 | 重启节点上运行的持久性服务的服务副本。 |
 
 ## <a name="sfctl-replica-deployed"></a>sfctl replica deployed
 获取部署在 Service Fabric 节点上的副本的详细信息。

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: ef3e9a9c68ca524b7f7f86c92130a10952a9f065
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: dc5e862109a766f708338ebddb91a75ffc550306
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949604"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031911"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>预览-自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 上的应用程序需求
 
@@ -21,7 +21,7 @@ ms.locfileid: "68949604"
 本文演示如何在 AKS 群集中启用和管理群集自动缩放程序。 群集自动缩放程序只能在 AKS 群集上以预览进行测试。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助服务, 选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中, 这些功能并不用于生产。 公共预览版中的功能低于 "最大努力" 支持。 仅在太平洋时区 (PST) 期间, AKS 技术支持团队提供协助。 有关其他信息, 请参阅以下支持文章:
+> AKS 预览功能是可选的自助服务。 预览按 "原样" 提供, 并从服务级别协议和有限担保中排除。 AKS 预览版是以最大努力为基础的客户支持部分覆盖的。 因此, 这些功能并不用于生产。 有关其他信息, 请参阅以下支持文章:
 >
 > * [AKS 支持策略][aks-support-policies]
 > * [Azure 支持常见问题][aks-faq]

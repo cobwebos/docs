@@ -8,31 +8,30 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 4b5cbb4a24b61de7e64a52ef950deedab3eec263
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dab844246d99b0ab80e1e86219c2064c79e74e4f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837260"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035118"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 创建、删除和管理 Docker Compose 应用程序。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
-| create | 创建 Service Fabric compose 部署。 |
-| list | 获取在 Service Fabric 群集中创建的 compose 部署列表。 |
-| remove | 从群集中删除现有的 Service Fabric compose 部署。 |
-| status | 获取有关 Service Fabric compose 部署的信息。 |
-| 升级 | 开始升级 Service Fabric 群集中的 compose 部署。 |
+| 创建 | 创建 Service Fabric compose 部署。 |
+| 列表 | 获取在 Service Fabric 群集中创建的 compose 部署列表。 |
+| 删除 | 从群集中删除现有的 Service Fabric compose 部署。 |
+| 状态 | 获取有关 Service Fabric compose 部署的信息。 |
+| upgrade | 开始升级 Service Fabric 群集中的 compose 部署。 |
 | upgrade-rollback | 开始在 Service Fabric 群集中回退 compose 部署升级。 |
 | upgrade-status | 获取在此 Service Fabric Compose 部署中执行的最新升级的详细信息。 |
 

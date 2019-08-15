@@ -1,5 +1,5 @@
 ---
-title: 什么是 Azure AD 权限管理？ (预览)-Azure Active Directory
+title: Azure AD 权利管理是什么？ (预览)-Azure Active Directory
 description: 大致了解 Azure Active Directory 的权利管理, 以及如何使用它来管理内部和外部用户对组、应用程序和 SharePoint Online 站点的访问权限。
 services: active-directory
 documentationCenter: ''
@@ -16,14 +16,14 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12452b4e9cc6caa64d4c81a310fbccb5d1717817
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d93a20494886bb7d563439e2699f60bedb646dcd
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678160"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032541"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>什么是 Azure AD 权限管理？ (预览)
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD 权利管理是什么？ (预览)
 
 > [!IMPORTANT]
 > Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
@@ -33,6 +33,10 @@ ms.locfileid: "68678160"
 组织中的员工需要访问各种组、应用程序和站点才能执行其作业。 管理此访问具有挑战性。 在大多数情况下, 没有用户需要的项目的所有资源的列表。 项目经理非常了解所需的资源、所涉及的人员以及项目的持续时间。 但是, 项目经理通常无权批准或向他人授予访问权限。 当你尝试使用外部个人或公司时, 此方案会变得更加复杂。
 
 Azure Active Directory (Azure AD) 权利管理可以帮助您管理对组、应用程序和 SharePoint Online 站点的访问权限, 以供内部用户和组织外部的用户使用。
+
+此视频概述了权利管理及其业务价值:
+
+>[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 
 ## <a name="why-use-entitlement-management"></a>为什么要使用权利管理？
 

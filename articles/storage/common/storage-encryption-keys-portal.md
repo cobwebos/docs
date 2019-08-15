@@ -9,12 +9,12 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: baabc5a8e1d063cb51a3edea3a7218591e85aa1a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8ec6b1e90eb6638c99ca43715c5e8bea6e48c22
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154152"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030955"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-the-azure-portal"></a>通过 Azure 门户配置客户管理的密钥用于 Azure 存储加密
 
@@ -24,14 +24,15 @@ ms.locfileid: "65154152"
 
 
 > [!IMPORTANT]
-> 将客户管理的密钥用于 Azure 存储加密需要为 Key Vault 配置两个必需的属性：“软删除”和“不要清除”。   在 Azure 门户中创建新的 Key Vault 时，默认会启用这些属性。 但是，如果需要针对现有的 Key Vault 启用这些属性，必须使用 PowerShell 或 Azure CLI。
+> 将客户管理的密钥用于 Azure 存储加密需要为 Key Vault 配置两个必需的属性：“软删除”和“不要清除”。 在 Azure 门户中创建新的 Key Vault 时，默认会启用这些属性。 但是，如果需要针对现有的 Key Vault 启用这些属性，必须使用 PowerShell 或 Azure CLI。
+> 仅支持 RSA 密钥和密钥大小2048。
 
 ## <a name="enable-customer-managed-keys"></a>启用客户管理的密钥
 
 若要在 Azure 门户中启用客户管理的密钥，请执行以下步骤：
 
 1. 导航到存储帐户。
-1. 在存储帐户的“设置”  边栏选项卡上，单击“加密”  。 选择“使用自己的密钥”  选项，如下图所示。
+1. 在存储帐户的“设置”边栏选项卡上，单击“加密”。 选择“使用自己的密钥”选项，如下图所示。
 
     ![显示加密选项的门户屏幕截图](./media/storage-encryption-keys-portal/ssecmk1.png)
 
@@ -43,12 +44,12 @@ ms.locfileid: "65154152"
 
 若要将某个密钥指定为 URI，请执行下列步骤：
 
-1. 若要在 Azure 门户中查找密钥 URI，请导航到 Key Vault，然后选择“密钥”设置。  选择所需的密钥，然后单击该密钥以查看其设置。 复制“密钥标识符”字段的值（提供 URI）。 
+1. 若要在 Azure 门户中查找密钥 URI，请导航到 Key Vault，然后选择“密钥”设置。 选择所需的密钥，然后单击该密钥以查看其设置。 复制“密钥标识符”字段的值（提供 URI）。
 
     ![显示 Key Vault 密钥 URI 的屏幕截图](media/storage-encryption-keys-portal/key-uri-portal.png)
 
-1. 在存储帐户的“加密”设置中，选择“输入密钥 URI”选项。  
-1. 在“密钥 URI”  字段中，指定 URI。
+1. 在存储帐户的“加密”设置中，选择“输入密钥 URI”选项。
+1. 在“密钥 URI”字段中，指定 URI。
 
    ![显示如何输入密钥 URI 的屏幕截图](./media/storage-encryption-keys-portal/ssecmk2.png)
 
@@ -56,7 +57,7 @@ ms.locfileid: "65154152"
 
 若要指定 Key Vault 中的密钥，请先请确保有一个包含密钥的 Key Vault。 若要指定 Key Vault 中的密钥，请执行以下步骤：
 
-1. 选择“从 Key Vault 中选择”  选项。
+1. 选择“从 Key Vault 中选择”选项。
 2. 选择包含要使用的密钥的 Key Vault。
 3. 从 Key Vault 中选择密钥。
 
@@ -64,9 +65,9 @@ ms.locfileid: "65154152"
 
 ## <a name="update-the-key-version"></a>更新密钥版本
 
-创建密钥的新版本时，需将存储帐户更新为使用新版本。 执行以下步骤:
+创建密钥的新版本时，需将存储帐户更新为使用新版本。 请执行以下步骤：
 
-1. 导航到你的存储帐户，并显示“加密”设置。 
+1. 导航到你的存储帐户，并显示“加密”设置。
 1. 指定新密钥版本的 URI。 或者，可以再次选择 Key Vault 和密钥以更新版本。
 
 ## <a name="next-steps"></a>后续步骤

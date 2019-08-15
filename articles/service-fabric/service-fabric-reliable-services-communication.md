@@ -8,18 +8,18 @@ manager: chackdan
 editor: BharatNarasimman
 ms.assetid: 36217988-420e-409d-b0a4-e0e875b6eac8
 ms.service: service-fabric
-ms.devlang: multiple
+ms.devlang: csharp, java
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 15b45cadc69830827952d87ffc2315b06b07b02c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d3deb7f3b7e7fb6334525886c6d5b8787a8f940
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62124977"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036773"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>如何使用 Reliable Services 通信 API
 “Azure Service Fabric 即平台”完全不受服务间通信的影响。 所有协议和堆栈（从 UDP 到 HTTP）都可接受。 至于服务应以哪种方式通信，完全由服务开发人员选择。 Reliable Services 应用程序框架提供了一些内置的通信堆栈和 API，可用于生成自定义通信组件。
@@ -96,7 +96,7 @@ public class MyStatefulService : StatefulService
 }
 ```
 
-在这两种情况下，都会返回侦听器的集合。 这可让服务通过多个侦听器，可能使用不同的协议在多个终结点上侦听。 例如，可能有 HTTP 侦听器和单独的 WebSocket 侦听器。 当客户端请求服务实例或分区的侦听地址时，每个侦听器将获取一个名称，生成的“名称 : 地址”  对集合以 JSON 对象的形式表示。
+在这两种情况下，都会返回侦听器的集合。 这可让服务通过多个侦听器，可能使用不同的协议在多个终结点上侦听。 例如，可能有 HTTP 侦听器和单独的 WebSocket 侦听器。 当客户端请求服务实例或分区的侦听地址时，每个侦听器将获取一个名称，生成的“名称 : 地址”对集合以 JSON 对象的形式表示。
 
 在无状态服务中，重写将返回 ServiceInstanceListeners 的集合。 `ServiceInstanceListener` 包含一个函数，用于创建 `ICommunicationListener(C#) / CommunicationListener(Java)` 并为其提供名称。 对于有状态服务，重写将返回 ServiceReplicaListeners 集合。 这与无状态服务稍有不同，因为 `ServiceReplicaListener` 可以选择在辅助副本上打开 `ICommunicationListener`。 不仅可以在服务中使用多个通信侦听器，而且还可以指定哪些侦听器要在辅助副本上接受请求，以及哪些侦听器只能在主副本上进行侦听。
 

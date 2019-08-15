@@ -8,35 +8,34 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: d4fec5d8131d269d3df229360066452c37a92430
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5d9728db919f15eda49602f2619f1c27fbb42b57
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60837481"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036544"
 ---
 # <a name="sfctl-application"></a>sfctl application
 创建、删除和管理应用程序及应用程序类型。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
-| create | 使用指定说明创建 Service Fabric 应用程序。 |
-| delete | 删除现有 Service Fabric 应用程序。 |
+| 创建 | 使用指定说明创建 Service Fabric 应用程序。 |
+| 删除 | 删除现有 Service Fabric 应用程序。 |
 | deployed | 获取部署在 Service Fabric 节点上的应用程序的相关信息。 |
 | deployed-health | 获取部署在 Service Fabric 节点上的应用程序的运行状况。 |
 | deployed-list | 获取部署在 Service Fabric 节点上的应用程序的列表。 |
-| health | 获取 Service Fabric 应用程序运行状况。 |
-| info | 获取 Service Fabric 应用程序的相关信息。 |
-| list | 获取在 Service Fabric 群集中创建且与指定的筛选器匹配的应用程序列表。 |
-| load | 获取 Service Fabric 应用程序的相关加载信息。 |
+| 运行状况 | 获取 Service Fabric 应用程序运行状况。 |
+| 信息 | 获取 Service Fabric 应用程序的相关信息。 |
+| 列表 | 获取在 Service Fabric 群集中创建且与指定的筛选器匹配的应用程序列表。 |
+| 负载 | 获取 Service Fabric 应用程序的相关加载信息。 |
 | manifest | 获取描述应用程序类型的清单。 |
 | provision | 使用外部存储中的 .sfpkg 包或使用映像存储中的应用程序包向群集预配或注册 Service Fabric 应用程序类型。 |
 | report-health | 发送有关 Service Fabric 应用程序的运行状况报告。 |

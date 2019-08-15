@@ -9,12 +9,12 @@ ms.date: 08/06/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f75b472a49dfb360ccda21e73286880fcd506153
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: b8d627fd905741c76dd34eb4270f49d46b93abb1
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990762"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036099"
 ---
 # <a name="create-an-account-sas-with-net"></a>使用 .NET 创建帐户 SAS
 
@@ -94,7 +94,7 @@ static void UseAccountSAS(string sasToken)
 }
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="next-steps"></a>后续步骤
 
 - [使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)
 - [创建帐户 SAS](/rest/api/storageservices/create-account-sas)

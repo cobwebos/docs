@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: b088b4d0e21819411c7329f3cb1e6ca9761665fd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610197"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035344"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -67,9 +67,11 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 是的。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)。 子网地址空间不能相互重叠。
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>使用这些子网中的 IP 地址是否有任何限制？
-是的。 Azure 在每个子网中保留 5 个 IP 地址。 这些地址是 x.x.x.0-x.x.x.3 和子网的最后一个地址。    
-- x.x.x.0 和子网的最后一个地址是为了符合协议而进行保留。
-- 在每个子网中都为 Azure 服务保留了 x.x.x.1-x.x.x.3。
+是的。 Azure 在每个子网中保留 5 个 IP 地址。 这些地址是 x.x.x.0-x.x.x.3 和子网的最后一个地址。 在每个子网中都为 Azure 服务保留了 x.x.x.1-x.x.x.3。   
+- x.x.x.x. x:网络地址
+- x.x.x.x. x:由 Azure 为默认网关保留
+- x.x. x. x. x. x. x. x. x. x. 3:由 Azure 保留以将 Azure DNS Ip 映射到 VNet 空间
+- x.x.x.x. x:网络广播地址
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>VNet 和子网的最小和最大容量是多少？
 支持的最小子网为 /29，最大为 /8（使用 CIDR 子网定义）。

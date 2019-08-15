@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 7d3586c571c2d70034f10cb3e1efd9242d6a1023
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986959"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034190"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>使用 Windows 上的 IoT Edge 运行 Linux 容器
 
@@ -30,9 +30,7 @@ ms.locfileid: "68986959"
 
 ### <a name="supported-windows-versions"></a>支持的 Windows 版本
 
-包含 Linux 容器的 Azure IoT Edge 可在以下版本的 Windows 上运行： 
-* Windows 10 周年更新（内部版本 14393）或更高版本
-* Windows Server 2016 或更高版本
+与 Linux 容器 Azure IoT Edge 可以在满足[Docker 桌面要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的任何 Windows 版本上运行
 
 有关最新版 IoT Edge 包含的功能的详细信息，请参阅 [Azure IoT Edge 发行说明](https://github.com/Azure/azure-iotedge/releases)。
 

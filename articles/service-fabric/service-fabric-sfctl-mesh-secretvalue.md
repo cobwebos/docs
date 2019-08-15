@@ -8,28 +8,27 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 3f8e46f063d3e725e2174fd907169f3e0167586a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5200c40afe62ce3a236a3a16b59b64deb8d24ced
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836937"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035929"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 获取和删除网格机密值资源。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
-| delete | 删除已命名机密资源的指定值。 |
-| list | 列出指定的机密资源的所有值的名称。 |
+| 删除 | 删除已命名机密资源的指定值。 |
+| 列表 | 列出指定的机密资源的所有值的名称。 |
 | show | 检索机密资源的指定版本的值。 |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl mesh secretvalue delete

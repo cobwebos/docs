@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: b96d933385c67600c9d553cc8755c4e734427a67
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 6c4d143bdaee0818d32b846a38a63eb48f69f717
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018870"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034020"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>预览-使用 Azure CLI 在 Azure Kubernetes Service (AKS) 群集上创建 Windows Server 容器
 
@@ -35,7 +35,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 创建可运行 Windows Server 容器的群集后, 必须添加其他节点池。 稍后的步骤中介绍了添加其他节点池, 但首先需要启用一些预览功能。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助服务, 选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中, 这些功能并不用于生产。 公共预览版中的功能低于 "最大努力" 支持。 仅在太平洋时区 (PST) 期间, AKS 技术支持团队提供协助。 有关其他信息, 请参阅以下支持文章:
+> AKS 预览功能是可选的自助服务。 预览按 "原样" 提供, 并从服务级别协议和有限担保中排除。 AKS 预览版是以最大努力为基础的客户支持部分覆盖的。 因此, 这些功能并不用于生产。 有关其他信息, 请参阅以下支持文章:
 >
 > * [AKS 支持策略][aks-support-policies]
 > * [Azure 支持常见问题][aks-faq]

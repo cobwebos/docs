@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: c8b17c4a2c58595d12a88ed3aff6c928b56f5e2c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1c60c4b868854952771ba297107904762a2357d8
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990801"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032986"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>使用 Azure CLI (预览版) 为容器或 blob 创建用户委托 SAS
 
@@ -113,7 +113,7 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 > [!NOTE]
 > 用户委托 SAS 不支持使用存储访问策略定义权限。
 
-## <a name="see-also"></a>请参阅
+## <a name="next-steps"></a>后续步骤
 
 - [创建用户委派 SAS (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)
 - [获取用户委派密钥操作](/rest/api/storageservices/get-user-delegation-key)

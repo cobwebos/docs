@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: barclayn
-ms.openlocfilehash: c91c8de35dcf3f1bc8fd5f41bd2356336c3fe450
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 89acc86526d1017e97efbf1812e02cfb6a240953
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927964"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035427"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -298,7 +298,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | 事件网格                       | 是                | -                  | -                  |
 | API 管理                   | 是                | -                  | -                  |
 | IoT 服务                 |                    |                    |                    |
-| IoT 中心                          | -                  | -                  | 是                |
+| IoT 中心                          | 是                | -                  | 是                |
 | **管理和管理**    |                    |                    |                    |
 | Azure Site Recovery              | 是                | 是，RSA 2048 位  | 是                |
 | **许可证**                        |                    |                    |                    |

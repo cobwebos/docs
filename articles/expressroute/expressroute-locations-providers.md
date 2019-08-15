@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/09/2019
+ms.date: 08/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: bd0ed971b84baae3b85badfcc669bbad657d1551
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: ae397c077ac87618b646883f9125c9da2df81bfd
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018950"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036569"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -101,7 +101,7 @@ ExpressRoute 位置 (有时称为 "对等互连位置" 或 "满足我的位置")
 | **都柏林** | Equinix | 北欧 | Colt、eir、Equinix、Interxion、Megaport |
 | **法兰克福** | Interxion | 不适用 | 反 CIX, Interxion, 橙色 |
 | **香港特别行政区** | Equinix | 东亚 | Aryaka networks、网络, 英国电信, CenturyLink 云连接, 首席电信, 中国电信全局, Equinix, Megaport, NTT 通信, 橙色, PCCW 全局有限, Tata 通信, Telia 载波, Verizon |
-| **约翰内斯堡** | Teraco | 南非北部 | 英国电信, Internet 解决方案-云连接, 液体电信, Teraco |
+| **约翰内斯堡** | Teraco | 南非北部 | 英国电信, Internet 解决方案-云连接, 液体电信, 橙色, Teraco |
 | **吉隆坡** | TIME dotCom | 不适用 | TIME dotCom |
 | **拉斯维加斯** | 开关 | 不适用 | CenturyLink Cloud Connect、Megaport |
 | **伦敦** | Equinix | 英国南部 | AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Telehouse - KDDI、Telenor、Telia Carrier、Verizon、Vodafone、Zayo |

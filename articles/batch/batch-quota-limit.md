@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 312f6746cb02aa66b0e7f8b47cb10e52558fa542
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 118a36587667c815489ddad03426b5cfcfee7382
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323162"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036675"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -42,7 +42,7 @@ ms.locfileid: "68323162"
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>用户订阅模式中的核心配额
 
-如果创建了 Batch 帐户，并将池分配模式设置为“用户订阅”  ，则会以不同的方式应用配额。 在此模式下，会在创建池后直接在订阅中创建 Batch VM 和其他资源。 Azure Batch 核心配额不会应用到在此模式下创建的帐户。 对于此类帐户，将应用订阅中的区域计算核心数和其他资源的配额。 在 [Azure 订阅和服务的限制、配额和约束](../azure-subscription-service-limits.md)中详细了解这些配额。
+如果创建了 Batch 帐户，并将池分配模式设置为“用户订阅”，则会以不同的方式应用配额。 在此模式下，会在创建池后直接在订阅中创建 Batch VM 和其他资源。 Azure Batch 核心配额不会应用到在此模式下创建的帐户。 对于此类帐户，将应用订阅中的区域计算核心数和其他资源的配额。 在 [Azure 订阅和服务的限制、配额和约束](../azure-subscription-service-limits.md)中详细了解这些配额。
 
 ## <a name="pool-size-limits"></a>池大小限制
 
@@ -70,6 +70,7 @@ ms.locfileid: "68323162"
 | 每个应用程序的应用程序包数 | 40 |
 | 每个池的应用程序包数 | 10 |
 | 最长任务生存期 | 180 天<sup>1</sup> |
+| 每个计算节点的[装载](virtual-file-mount.md) | 10 |
 
 <sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 180 天。 已完成的任务保留7天;不能在最大生存期内完成的任务数据不可访问。
 
@@ -77,8 +78,8 @@ ms.locfileid: "68323162"
 
 可在 [Azure 门户][portal]中查看批处理帐户配额。
 
-1. 在门户中选择“Batch 帐户”  ，并选择所需的 Batch 帐户。
-1. 在 Batch 帐户的菜单上选择“配额”  。
+1. 在门户中选择“Batch 帐户”，并选择所需的 Batch 帐户。
+1. 在 Batch 帐户的菜单上选择“配额”。
 1. 显示当前应用于 Batch 帐户的配额
 
     ![Batch 帐户配额][account_quotas]
@@ -89,21 +90,21 @@ ms.locfileid: "68323162"
 
 ### <a name="increase-cores-quota-in-batch"></a>提高 Batch 中的核心数配额 
 
-1. 在门户仪表板上选择“帮助 + 支持”  磁贴，或单击门户右上角的问号 ( **?** )。
-1. 选择“新建支持请求”   > “基本”  。
-1. 在“基本信息”  中：
+1. 在门户仪表板上选择“帮助 + 支持”磁贴，或单击门户右上角的问号 ( **?** )。
+1. 选择“新建支持请求” > “基本”。
+1. 在“基本信息”中：
    
     a. **问题类型** > **服务和订阅限制(配额)**
    
     b. 选择订阅。
    
-    c. “配额类型”   > “Batch” 
+    c. “配额类型” > “Batch”
       
     选择“**下一步**”。
     
-1. 在“详细信息”  中：
+1. 在“详细信息”中：
       
-    a. 在“提供详细信息”中，指定位置、配额类型和 Batch 帐户。 
+    a. 在“提供详细信息”中，指定位置、配额类型和 Batch 帐户。
     
     ![批处理配额增加][quota_increase]
 
@@ -115,19 +116,19 @@ ms.locfileid: "68323162"
     * **按区域**  
         适用于某个区域中所有 Batch 帐户的值，包括单个订阅中单个区域的 Batch 帐户数。
 
-    低优先级配额是所有 VM 系列中的单个值。 如果需要受约束的 SKU，必须选择“低优先级核心数”，并包括要请求的 VM 系列。 
+    低优先级配额是所有 VM 系列中的单个值。 如果需要受约束的 SKU，必须选择“低优先级核心数”，并包括要请求的 VM 系列。
 
-    b. 根据[业务影响情况][support_sev]选择“严重性”  。
+    b. 根据[业务影响情况][support_sev]选择“严重性”。
 
     选择“**下一步**”。
 
-1. 在“联系人信息”  中：
+1. 在“联系人信息”中：
    
-    a. 选择“首选联系方法”  。
+    a. 选择“首选联系方法”。
    
     b. 输入并确认所需的联系人详细信息。
    
-    选择“创建  ”，提交支持请求。
+    选择“创建”，提交支持请求。
 
 提交支持请求后，Azure 支持人员将与你取得联系。 配额请求可能会在数分钟内完成，也可能需要长达两个工作日才能完成。
 
@@ -139,7 +140,7 @@ ms.locfileid: "68323162"
 * 一个[公共 IP 地址](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * 一个[负载均衡器](../load-balancer/load-balancer-overview.md)
 
-在包含创建 Batch 池时提供的虚拟网络的订阅中分配这些资源。 这些资源受订阅的[资源配额](../azure-subscription-service-limits.md)限制。 如果计划在虚拟网络中部署大型池，请检查订阅的这些资源配额。 如果需要，请在 Azure 门户中选择“帮助和支持”，请求增大配额  。
+在包含创建 Batch 池时提供的虚拟网络的订阅中分配这些资源。 这些资源受订阅的[资源配额](../azure-subscription-service-limits.md)限制。 如果计划在虚拟网络中部署大型池，请检查订阅的这些资源配额。 如果需要，请在 Azure 门户中选择“帮助和支持”，请求增大配额。
 
 
 ## <a name="related-topics"></a>相关主题

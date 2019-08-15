@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 4a0aab2ca2f0bbcee07f09124e68c3623d16004d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6949f46345a5520ec3e09508b6d81994f9a7deb5
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848149"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036204"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes Service 群集
 
@@ -212,12 +212,56 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 有关详细信息, 请参阅[az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)参考。 
 
-## <a name="using-vs-code"></a>使用 VS Code
+### <a name="using-vs-code"></a>使用 VS Code
 
 有关使用 VS Code 的信息, 请参阅[通过 VS Code 扩展部署到 AKS](how-to-vscode-tools.md#deploy-and-manage-models)。
 
 > [!IMPORTANT] 
 > 通过 VS Code 部署要求提前创建或将 AKS 群集附加到工作区。
+
+## <a name="web-service-authentication"></a>Web 服务身份验证
+
+部署到 Azure Kubernetes 服务时, 默认情况下启用__基于密钥的__身份验证。 还可以启用__令牌__身份验证。 令牌身份验证要求客户端使用 Azure Active Directory 帐户来请求身份验证令牌, 该令牌用于向部署的服务发出请求。
+
+若要__禁用__身份验证, `auth_enabled=False`请在创建部署配置时设置参数。 下面的示例使用 SDK 禁用身份验证:
+
+```python
+deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, auth_enabled=False)
+```
+
+有关从客户端应用程序进行身份验证的信息, 请参阅[使用部署为 web 服务的 Azure 机器学习模型](how-to-consume-web-service.md)。
+
+### <a name="authentication-with-keys"></a>密钥身份验证
+
+如果启用密钥身份验证, 则可以使用`get_keys`方法检索主要和辅助身份验证密钥:
+
+```python
+primary, secondary = service.get_keys()
+print(primary)
+```
+
+> [!IMPORTANT]
+> 如果需要重新生成密钥, 请使用[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
+
+### <a name="authentication-with-tokens"></a>带令牌的身份验证
+
+若要启用令牌身份验证, `token_auth_enabled=True`请在创建或更新部署时设置参数。 下面的示例使用 SDK 启用令牌身份验证:
+
+```python
+deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, token_auth_enabled=True)
+```
+
+如果启用令牌身份验证, 则可以使用`get_token`方法检索 JWT 令牌和令牌的过期时间:
+
+```python
+token, refresh_by = service.get_token()
+print(token)
+```
+
+> [!IMPORTANT]
+> 需要在令牌`refresh_by`时间之后请求新令牌。
+>
+> Microsoft 强烈建议在 Azure Kubernetes Service 群集所在的同一区域中创建 Azure 机器学习工作区。 若要使用令牌进行身份验证, web 服务将调用创建 Azure 机器学习工作区的区域。 如果工作区的区域不可用, 则即使群集与工作区位于不同的区域, 也无法获取 web 服务的令牌。 这实际上会导致 Azure AD 身份验证不可用, 直到工作区的区域再次可用。 此外, 群集区域与工作区区域之间的距离越大, 提取令牌所需的时间就越长。
 
 ## <a name="update-the-web-service"></a>更新 Web 服务
 

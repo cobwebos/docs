@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7d94c3ba4eaf34a2229b7331599e7c59b5f1dee7
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4cf4f87e42508c60cd9195cb8d1e4127134f64aa
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990970"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034934"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限
 
@@ -125,7 +125,7 @@ SAS 通常适用于用户需要在存储帐户中读取和写入其数据的服�
 
 - [使用 .NET 创建帐户 SAS](storage-account-sas-create-dotnet.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="next-steps"></a>后续步骤
 
 - [使用共享访问签名委托访问权限 (REST API)](/rest/api/storageservices/delegate-access-with-shared-access-signature)
 - [创建用户委派 SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas)

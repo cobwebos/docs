@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 7dcf962345a2453fca52825c4be33a439d25df54
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 5049a35b943c68d1a05d1435113226d83dc5ecf4
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740932"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031761"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service (AKS) 中的授权 IP 地址范围进行预览-安全访问 API 服务器
 
@@ -21,7 +21,7 @@ ms.locfileid: "68740932"
 本文介绍如何使用 API 服务器授权的 IP 地址范围来限制对控制平面的请求。 此功能目前处于预览状态。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助服务, 选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中, 这些功能并不用于生产。 公共预览版中的功能低于 "最大努力" 支持。 仅在太平洋时区 (PST) 期间, AKS 技术支持团队提供协助。 有关其他信息, 请参阅以下支持文章:
+> AKS 预览功能是可选的自助服务。 预览按 "原样" 提供, 并从服务级别协议和有限担保中排除。 AKS 预览版是以最大努力为基础的客户支持部分覆盖的。 因此, 这些功能并不用于生产。 有关其他信息, 请参阅以下支持文章:
 >
 > * [AKS 支持策略][aks-support-policies]
 > * [Azure 支持常见问题][aks-faq]

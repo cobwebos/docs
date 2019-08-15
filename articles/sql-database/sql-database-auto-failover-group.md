@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/18/2019
-ms.openlocfilehash: 5d79edc4db07a2c5916725efc312d9f94fe985dc
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 05e16a67e6b01ce3bd1f03f0649baa1358414ea7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640091"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035060"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
@@ -133,9 +133,13 @@ ms.locfileid: "68640091"
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>有关将故障转移组与单一数据库和弹性池配合使用的最佳做法
 
-自动故障转移组必须在主要 SQL 数据库服务器上进行配置，并会将它连接到不同 Azure 区域中的辅助 SQL 数据库服务器。  组可以包含这些服务器中的所有或部分数据库。 下图演示了使用多个数据库和自动故障转移组的异地冗余云应用程序的典型配置。
+自动故障转移组必须在主要 SQL 数据库服务器上进行配置，并会将它连接到不同 Azure 区域中的辅助 SQL 数据库服务器。 组可以包含这些服务器中的所有或部分数据库。 下图演示了使用多个数据库和自动故障转移组的异地冗余云应用程序的典型配置。
 
 ![自动故障转移](./media/sql-database-auto-failover-group/auto-failover-group.png)
+
+> [!NOTE]
+> 有关将单个数据库添加到故障转移组的详细分步教程, 请参阅[将单一数据库添加到故障转移组](sql-database-single-database-failover-group-tutorial.md)。 
+
 
 在设计具有业务连续性的服务时，请遵循以下一般准则：
 
@@ -167,12 +171,17 @@ ms.locfileid: "68640091"
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>将故障转移组用于托管实例的最佳做法
 
-自动故障转移组必须在主要实例上进行配置，需将其连接到不同 Azure 区域中的辅助实例。  实例中的所有数据库将复制到辅助实例。 下图演示了使用托管实例和自动故障转移组的异地冗余云应用程序的典型配置。
+> [!IMPORTANT]
+> 托管实例的自动故障转移组功能以公共预览版提供。
+
+自动故障转移组必须在主要实例上进行配置，需将其连接到不同 Azure 区域中的辅助实例。  实例中的所有数据库将复制到辅助实例。 
+
+下图演示了使用托管实例和自动故障转移组的异地冗余云应用程序的典型配置。
 
 ![自动故障转移](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
-> [!IMPORTANT]
-> 托管实例的自动故障转移组功能以公共预览版提供。
+> [!NOTE]
+> 有关将托管实例添加到使用故障转移组的详细分步教程, 请参阅[将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)。 
 
 如果你的应用程序将托管实例用作数据层, 请在设计业务连续性时遵循以下通用准则:
 
@@ -367,6 +376,10 @@ ms.locfileid: "68640091"
 
 ## <a name="next-steps"></a>后续步骤
 
+- 有关详细教程, 请参阅
+    - [将单一数据库添加到故障转移组](sql-database-single-database-failover-group-tutorial.md)
+    - [将弹性池添加到故障转移组](sql-database-elastic-pool-failover-group-tutorial.md)
+    - [将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)
 - 示例脚本请参阅：
   - [使用 PowerShell 为 Azure SQL 数据库中的单个数据库配置活动异地复制](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [使用 PowerShell 为 Azure SQL 数据库中的池数据库配置活动异地复制](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)

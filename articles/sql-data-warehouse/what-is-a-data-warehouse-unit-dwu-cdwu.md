@@ -11,28 +11,28 @@ ms.date: 05/30/2019
 ms.author: martinle
 ms.reviewer: igorstan
 mscustom: sqlfreshmay19
-ms.openlocfilehash: d20a600951a0fe586e981adf12127072df1b744c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 282fab70e3b6d1fcf81814b2dd599259e2396fb3
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428011"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036057"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)
 
 针对选择理想数目的数据仓库单位（DWU、cDWU）来优化价格和性能以及如何更改单位数提供了建议。
 
-## <a name="what-are-data-warehouse-units"></a>什么是数据仓库单位
+## <a name="what-are-data-warehouse-units"></a>什么是数据仓库单位？
 
-Azure SQL 数据仓库，将 CPU、 内存和 IO 捆绑到称为数据仓库单位 (Dwu) 的计算缩放单位中。 DWU 表示抽象、规范化的计算资源和性能度量值。 对服务级别的更改会改变可供系统，这反过来又会调整性能和成本，您的系统的 Dwu 数目。
+Azure SQL 数据仓库 CPU、内存和 IO 将捆绑到称为数据仓库单位 (DWU) 的计算规模单位中。 DWU 表示抽象、规范化的计算资源和性能度量值。 更改服务级别会改变系统可用的 DWU 数量，从而调整系统的性能和成本。
 
-对于更高的性能，可以增加数据仓库单位的数。 对于更低的性能，降低数据仓库单位。 存储和计算成本分别计费，因此更改数据仓库单位数不会影响存储成本。
+若要提高性能，可以增加数据仓库单位的数量。 若要降低性能，可以减少数据仓库单位数。 存储和计算成本分别计费，因此更改数据仓库单位数不会影响存储成本。
 
 数据仓库单位性能基于这些数据仓库负载指标：
 
-- 如何快速标准数据仓库查询可以扫描大量行，然后执行复杂聚合。 这是一种 I/O 和 CPU 密集型操作。
-- 如何快速数据仓库可以引入数据从 Azure 存储 Blob 或 Azure Data Lake。 这是一种网络和 CPU 密集型操作。
-- 如何快速[ `CREATE TABLE AS SELECT` ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 命令可以复制表。 此操作涉及从存储读取数据、将数据分配到设备的节点上，以及重新将数据写入到存储。 这是一种 CPU、IO 和网络密集型操作。
+- 标准数据仓库查询扫描大量行并执行复杂聚合的速度。 这是一种 I/O 和 CPU 密集型操作。
+- 数据仓库从 Azure 存储 Blob 或 Azure Data Lake 引入数据的速度。 这是一种网络和 CPU 密集型操作。
+- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 命令复制表的速度。 此操作涉及从存储读取数据、将数据分配到设备的节点上，以及重新将数据写入到存储。 这是一种 CPU、IO 和网络密集型操作。
 
 增加 DWU：
 
@@ -46,7 +46,7 @@ Azure SQL 数据仓库，将 CPU、 内存和 IO 捆绑到称为数据仓库单�
   > [!NOTE]
   > Azure SQL 数据仓库 Gen2 最近添加了额外的扩展功能，以支持低至 100 cDWU 的计算层。 当前在 Gen1 上需要较低计算层的现有数据仓库现可升级到当前可用区域中的 Gen2，无需额外成本。  如果你的区域尚不支持，仍可升级到支持的区域。 有关详细信息，请参阅[升级到 Gen2](upgrade-to-latest-generation.md)。
 
-在 T-SQL 的 SERVICE_OBJECTIVE 设置确定的服务级别和数据仓库性能层。
+在 T-SQL 中，SERVICE_OBJECTIVE 设置确定了数据仓库的服务级别和性能层。
 
 ```sql
 --Gen1
@@ -58,8 +58,8 @@ WITH
 
 --Gen2
 CREATE DATABASE myComputeSQLDW
-WITH
-(    SERVICE_OBJECTIVE = 'DW1000c'
+(Edition = 'Datawarehouse'
+ ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```
@@ -73,13 +73,13 @@ WITH
 
 DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库时暂停计算。 这些操作均可按需进行。 第 2 代还会在计算节点上使用基于本地磁盘的缓存以提高性能。 缩放或暂停系统时，缓存将失效，因此在达到最佳性能前，缓存需要预热一段时间。  
 
-增加数据库单位时，将以线性方式增加计算资源。 第 2 代可提供最佳查询性能和最大规模。 第 2 代系统还使大多数使用缓存。
+增加数据库单位时，将以线性方式增加计算资源。 第 2 代可提供最佳查询性能和最大规模。 Gen2 系统还最大限度利用了缓存。
 
 ### <a name="capacity-limits"></a>容量限制
 
 每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../sql-database/sql-database-what-is-a-dtu.md) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
 
-## <a name="how-many-data-warehouse-units-do-i-need"></a>需要多少个数据仓库单位
+## <a name="how-many-data-warehouse-units-do-i-need"></a>我需要多少个数据仓库单位？
 
 合适的数据仓库单位数很大程度上取决于工作负荷及已加载到系统的数据量。
 
@@ -87,7 +87,7 @@ DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库�
 
 1. 首先选择一个较小的 DWU。
 2. 在测试数据加载到系统中时，监视应用程序性能，将所选 DWU 数目与观测到的性能变化进行比较。
-3. 确认峰值活动周期的其他要求。 显示重要的工作负荷峰值和谷值在活动中的可能需要缩放频繁。
+3. 确认峰值活动周期的其他要求。 显示活动中重要峰值和谷值的工作负荷可能需要频繁缩放。
 
 SQL 数据仓库是一个向外扩展系统，可预配大量计算和查询大量数据。 要查看其真正的缩放功能（尤其是针对较大的 DWU），建议在缩放的同时对数据集进行缩放，确保可向 CPU 提供足够的数据。 对于规模测试，建议至少使用 1 TB。
 
@@ -124,11 +124,11 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 更改 DWU 或 cDWU：
 
-1. 打开 [Azure 门户](https://portal.azure.com)，打开数据库，并单击“缩放”  。
+1. 打开 [Azure 门户](https://portal.azure.com)，打开数据库，并单击“缩放”。
 
-2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置  。
+2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置。
 
-3. 单击“ **保存**”。 此时会显示确认消息。 单击“是”  以确认或“否”  以取消。
+3. 单击“保存”。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -159,7 +159,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 ### <a name="rest-apis"></a>REST API
 
-若要更改 DWU，请使用[创建或更新数据库 REST API](/rest/api/sql/databases/createorupdate)。 下面的示例的数据库 MySQLDW，托管在服务器 MyServer 上将服务级别目标设置为 DW1000。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要更改 DWU，请使用[创建或更新数据库 REST API](/rest/api/sql/databases/createorupdate)。 下面的示例将托管在服务器 MyServer 上的数据库 MySQLDW 的服务级别目标设置为 DW1000。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -203,14 +203,14 @@ AND       major_resource_id = 'MySQLDW'
 ;
 ```
 
-此 DMV 返回有关 SQL 数据仓库，例如操作和操作，这是 IN_PROGRESS 或完成状态的各种管理操作的信息。
+此 DMV 返回针对 SQL 数据仓库的各种管理操作的相关信息，例如操作和操作状态（IN_PROGRESS 或 COMPLETED）。
 
 ## <a name="the-scaling-workflow"></a>缩放工作流
 
-当你启动缩放操作时，系统首先终止所有打开的会话，回滚任何打开的事务以确保一致的状态。 对于缩放操作，缩放仅在此事务回退完成后才会发生。  
+启动缩放操作时，系统首先终止所有打开的会话，回退所有打开的事务以确保状态一致。 对于缩放操作，缩放仅在此事务回退完成后才会发生。  
 
-- 对于向上缩放操作，系统分离所有计算节点，预配的额外计算节点，然后重新连接到存储层。
-- 对于缩减操作，系统将分离的所有计算节点，然后重新附加到存储层只有所需的节点。
+- 对于增加操作，系统会分离所有计算节点，预配额外计算节点，然后重新附加到存储层。
+- 对于减少操作，系统会分离所有计算节点，然后仅将所需节点重新附加到存储层。
 
 ## <a name="next-steps"></a>后续步骤
 

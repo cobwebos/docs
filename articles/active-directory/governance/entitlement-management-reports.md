@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d33b4751b421f5af1536af9a88d15e060ab59bdb
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 2420fc25795ec74939649fb8a17ead7c8cfdd1df
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489066"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032438"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>查看 Azure AD 授权管理 (预览版) 中的报告和日志
 
@@ -29,6 +29,12 @@ ms.locfileid: "68489066"
 > Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+"用户分配" 报表和 Azure Active Directory 审核日志提供了有关目录中用户的其他详细信息。 作为管理员, 你可以查看用户有权访问的资源并查看请求日志以供审核, 或确定用户请求的状态。 本文介绍如何使用 "用户分配" 报表和 Azure AD 审核日志。
+
+观看以下视频, 了解如何使用权利管理来管理 Azure Active Directory 中的用户的访问权限:
+
+>[!VIDEO https://www.youtube.com/embed/omtNJ7ySjS0]
 
 ## <a name="view-resources-a-user-has-access-to"></a>查看用户有权访问的资源
 

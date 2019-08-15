@@ -8,29 +8,28 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 7bb399472d7e0ab14e6399fc8652d2eb132a866a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 305b1e11841dd2da4aa6c0bdeb3df2c76addad87
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837301"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036510"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 选择、管理和操作 Service Fabric 群集。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
 | code-versions | 获取 Service Fabric 群集中预配的结构代码版本的列表。 |
 | config-versions | 获取 Service Fabric 群集中预配的结构配置版本的列表。 |
-| health | 获取 Service Fabric 群集的运行状况。 |
+| 运行状况 | 获取 Service Fabric 群集的运行状况。 |
 | manifest | 获取 Service Fabric 群集清单。 |
 | operation-cancel | 取消用户造成的错误操作。 |
 | operation-list | 获取根据提供的输入筛选的、用户造成的错误操作列表。 |
@@ -40,7 +39,7 @@ ms.locfileid: "60837301"
 | 选择 | 连接到 Service Fabric 群集终结点。 |
 | show-connection | 显示此 sfctl 实例连接到的 Service Fabric 群集。 |
 | unprovision | 取消预配 Service Fabric 群集的代码包或配置包。 |
-| 升级 | 开始升级 Service Fabric 群集的代码或配置版本。 |
+| upgrade | 开始升级 Service Fabric 群集的代码或配置版本。 |
 | upgrade-resume | 使群集升级转移到下一个升级域。 |
 | upgrade-rollback | 回滚 Service Fabric 群集的升级。 |
 | upgrade-status | 获取当前群集升级的进度。 |
@@ -140,7 +139,7 @@ ms.locfileid: "60837301"
 ## <a name="sfctl-cluster-operation-cancel"></a>sfctl cluster operation-cancel
 取消用户造成的错误操作。
 
-以下 Api 启动可能会使用 CancelOperation 取消的错误操作\:StartDataLoss、 StartQuorumLoss、 StartPartitionRestart、 startnodetransition 启动。 如果 force 为 false，则会正常停止并清理用户造成的指定操作。  如果 force 为 true，则会中止命令，并可能留下一些内部状态。  请谨慎将 force 指定为 true。 除非先在 force 设置为 false 的情况下对相同的 test 命令调用此 API，或者 test 命令已包含值为 OperationState.RollingBack 的 OperationState，否则，不允许在 force 设置为 true 的情况下调用此 API。 
+以下 api 启动可以通过使用 CancelOperation\: StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition 取消的错误操作。 如果 force 为 false，则会正常停止并清理用户造成的指定操作。  如果 force 为 true，则会中止命令，并可能留下一些内部状态。  请谨慎将 force 指定为 true。 除非先在 force 设置为 false 的情况下对相同的 test 命令调用此 API，或者 test 命令已包含值为 OperationState.RollingBack 的 OperationState，否则，不允许在 force 设置为 true 的情况下调用此 API。 
 
 澄清\: OperationState.RollingBack 表示系统将会/正在清理由于执行该命令而导致的内部系统状态。  如果 test 命令导致数据丢失，则系统不会还原数据。  例如，如果先调用 StartDataLoss，再调用此 API，则系统只会清理由于运行该命令而导致的内部状态。 如果命令的执行时间很长，导致数据丢失，则系统不会还原目标分区的数据。 
 

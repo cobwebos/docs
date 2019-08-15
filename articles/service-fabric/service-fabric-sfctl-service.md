@@ -8,37 +8,36 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: e0454d0124efba04434884fbac9056c5e324710d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e215ab6d3ee56f2cccdd5887c240d9046327f110
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556366"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035216"
 ---
 # <a name="sfctl-service"></a>sfctl service
 创建、删除和管理服务、服务类型与服务包。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
 | app-name | 获取服务的 Service Fabric 应用程序名称。 |
 | code-package-list | 获取部署在 Service Fabric 节点上的代码包的列表。 |
-| create | 创建指定的 Service Fabric 服务。 |
-| delete | 删除现有的 Service Fabric 服务。 |
+| 创建 | 创建指定的 Service Fabric 服务。 |
+| 删除 | 删除现有的 Service Fabric 服务。 |
 | deployed-type | 获取有关 Service Fabric 群集中节点上部署的应用程序的指定服务类型的信息。 |
 | deployed-type-list | 获取列表，其中包含有关 Service Fabric 群集中节点上部署的应用程序中的服务类型的信息。 |
 | description | 获取现有 Service Fabric 服务的说明。 |
 | get-container-logs | 获取 Service Fabric 节点上部署的容器的容器日志。 |
-| health | 获取指定 Service Fabric 服务的运行状况。 |
-| info | 获取有关属于 Service Fabric 应用程序的特定服务的信息。 |
-| list | 获取属于根据应用程序 ID 指定的应用程序的所有服务的相关信息 |
+| 运行状况 | 获取指定 Service Fabric 服务的运行状况。 |
+| 信息 | 获取有关属于 Service Fabric 应用程序的特定服务的信息。 |
+| 列表 | 获取属于根据应用程序 ID 指定的应用程序的所有服务的相关信息 |
 | manifest | 获取描述服务类型的清单。 |
 | package-deploy | 将与指定服务清单关联的包下载到指定节点上的映像缓存。 |
 | package-health | 获取针对 Service Fabric 节点和应用程序部署的特定应用程序的服务包运行状况的相关信息。 |
@@ -48,7 +47,7 @@ ms.locfileid: "60556366"
 | report-health | 发送有关 Service Fabric 服务的运行状况报告。 |
 | resolve | 解析 Service Fabric 分区。 |
 | type-list | 获取列表，其中包含有关 Service Fabric 群集中预配的应用程序类型支持的服务类型的信息。 |
-| update | 使用给定的更新说明更新指定的服务。 |
+| 更新 | 使用给定的更新说明更新指定的服务。 |
 
 ## <a name="sfctl-service-app-name"></a>sfctl service app-name
 获取服务的 Service Fabric 应用程序名称。

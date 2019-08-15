@@ -8,25 +8,24 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: xml
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 85a3066095cfc30da19b06d26f41bdc156f85832
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10419240f730a6b68f1161f158f7f903a98a9933
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718217"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035603"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric 应用程序和服务清单示例
 本部分包含应用程序和服务清单的示例。 这些示例并非用来展示重要方案，而是用来展示可用的各种设置以及如何使用它们。 
 
 下面是所显示的功能以及它们所属的示例清单的索引。
 
-|Feature|清单|
+|功能|清单|
 |---|---|
 |[资源调控](service-fabric-resource-governance.md)|[Reliable Services 应用程序清单](service-fabric-manifest-example-reliable-services-app.md#application-manifest)、[容器应用程序清单](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[以本地管理帐户身份运行服务](service-fabric-application-runas-security.md)|[Reliable Services 应用程序清单](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|

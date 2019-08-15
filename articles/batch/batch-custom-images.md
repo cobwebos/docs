@@ -1,21 +1,21 @@
 ---
-title: 基于自定义映像预配 Azure Batch 池 | Microsoft Docs
-description: 基于自定义映像创建 Batch 池，以预配包含应用程序所需的软件和数据的计算节点。 自定义映像是配置计算节点以运行 Batch 工作负载的高效方法。
+title: 使用共享映像库创建池-Azure Batch |Microsoft Docs
+description: 使用共享映像库创建 Batch 池, 以将自定义映像设置为包含应用程序所需的软件和数据的计算节点。 自定义映像是配置计算节点以运行 Batch 工作负载的高效方法。
 services: batch
 author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 08/14/2019
 ms.author: lahugh
-ms.openlocfilehash: d8bda817231ec0a5a733d5e586e49639c62ea177
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882830"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036688"
 ---
-# <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>使用自定义映像创建虚拟机池
+# <a name="use-the-shared-image-gallery-to-create-a-pool"></a>使用共享映像库创建池
 
 使用虚拟机配置创建 Azure Batch 池时，需指定一个虚拟机 (VM) 映像，为池中每个计算节点提供操作系统。 你可以使用受支持的 Azure Marketplace 映像创建虚拟机池, 或者使用[共享映像库](../virtual-machines/windows/shared-image-galleries.md)创建自定义映像。
 

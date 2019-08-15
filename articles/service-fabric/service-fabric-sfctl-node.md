@@ -8,32 +8,31 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 1e5b5876fa6277d1bad0989c543de667f75a066c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d41f978dd6a87287d8743e321acf35ff4909544
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258734"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034987"
 ---
 # <a name="sfctl-node"></a>sfctl node
 管理构成群集的节点。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
-| disable | 根据指定的停用意图停用 Service Fabric 群集节点。 |
-| enable | 激活当前已停用的 Service Fabric 群集节点。 |
-| health | 获取 Service Fabric 节点的运行状况。 |
-| info | 获取有关 Service Fabric 群集中特定节点的信息。 |
-| list | 获取 Service Fabric 群集中的节点的列表。 |
-| load | 获取 Service Fabric 节点的负载信息。 |
+| 禁用 | 根据指定的停用意图停用 Service Fabric 群集节点。 |
+| 启用 | 激活当前已停用的 Service Fabric 群集节点。 |
+| 运行状况 | 获取 Service Fabric 节点的运行状况。 |
+| 信息 | 获取有关 Service Fabric 群集中特定节点的信息。 |
+| 列表 | 获取 Service Fabric 群集中的节点的列表。 |
+| 负载 | 获取 Service Fabric 节点的负载信息。 |
 | remove-state | 告知 Service Fabric，节点上的保留状态已被永久删除或丢失。 |
 | report-health | 发送有关 Service Fabric 节点的运行状况报告。 |
 | restart | 重启 Service Fabric 群集节点。 |
@@ -181,7 +180,7 @@ ms.locfileid: "66258734"
 
 这意味着无法恢复该节点的保留状态。 如果硬盘已擦除干净或者硬盘崩溃，通常会出现这种情况。 节点必须已关闭，此操作才能成功。 此操作让 Service Fabric 知道该节点上的副本不再存在，并且 Service Fabric 应停止等待这些副本恢复。 如果未删除节点上的状态并且节点能够以原状态恢复，则不要运行此 cmdlet。
 
-要对于种子节点，使用此 cmdlet 从 Service Fabric 6.5 开始请将种子节点更改为常规 （非种子） 节点，然后调用此 cmdlet 可删除节点状态。 如果种子节点出现故障后，Azure 上运行群集，Service Fabric 将尝试自动将其更改为非种子节点。 若要使它发生这种情况，请确保主节点类型中的非种子节点数不是短于种子节点下的数。 如有必要，将更多节点添加到要实现此目的的主节点类型。 独立群集，如果不希望列表种子节点可恢复对其状态保持不变，请从群集删除节点，请参阅[从 Service Fabric 独立群集中删除节点](/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes) 
+自 Service Fabric 6.5 起，若要将此 cmdlet 用于种子节点，请将这些种子节点更改为常规节点（非种子节点），然后调用此 cmdlet 以删除节点状态。 如果群集正在 Azure 上运行，当种子节点发生故障后，Service Fabric 将尝试自动将其更改为非种子节点。 若要实现这一点，请确保主节点类型中的非种子节点数不少于“发生故障”的种子节点数。 如有必要，请将更多节点添加到主节点类型以实现这一目标。 对于独立群集，如果“发生故障”的种子节点在其状态保持不变的情况下预计不会恢复正常，请从该群集中删除此节点。有关该操作的信息，请参阅[从 Service Fabric 独立群集中删除节点](/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes) 
 
 ### <a name="arguments"></a>参数
 

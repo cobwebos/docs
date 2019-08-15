@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 0507b3cb64b4b12bac92cc6bc90120ab4ec56dee
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5dd241fed757669cf8bccd96a1de948e8d73a021
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568748"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033270"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教程：将 Azure SQL 数据库弹性池添加到故障转移组
 
@@ -76,11 +76,11 @@ ms.locfileid: "68568748"
 1. 选择 " **SQL 服务器**", 然后选择在第1部分中创建的服务器。
 1. 选择 "**设置**" 窗格下的 "**故障转移组**", 然后选择 "**添加组**" 以创建新的故障转移组。 
 
-    ![添加新的故障转移组](media/sql-database-elastic-pool-create-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![添加新的故障转移组](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. 在 "**故障转移组**" 页上, 输入或选择以下值, 然后选择 "**创建**":
     - **故障转移组名称**:键入一个唯一的故障转移组名称, 如`failovergrouptutorial`。 
-    - **辅助服务器**:选择 "*配置所需设置*" 选项, 然后选择 "**创建新服务器**"。 或者, 您可以选择已有的服务器作为辅助服务器。 输入以下值后, 选择 "**选择**"。 
+    - **辅助服务器**:选择 "*配置所需设置*" 选项, 然后选择 "**创建新服务器**"。 或者, 您可以选择已有的服务器作为辅助服务器。 为新的辅助服务器输入以下值后, 选择 "**选择**"。 
         - **服务器名称**：键入辅助服务器的唯一名称, 例如`mysqlsecondary`。 
         - **服务器管理员登录名**：类别`azureuser`
         - **密码**：键入符合密码要求的复杂密码。
@@ -91,9 +91,9 @@ ms.locfileid: "68568748"
     
        ![为故障转移组创建辅助服务器](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
 
-1. 选择辅助服务器后, "组" 选项**中的数据库**将变为 "已解锁"。 选择它以**选择要添加的数据库**, 然后选择在第2部分中创建的弹性池。 应该会出现一条警告消息, 提示你在辅助服务器上创建弹性池。 选择警告, 然后选择 **"确定"** , 在辅助服务器上创建弹性池。 
+1. 选择**组中的数据库**, 然后选择在第2部分中创建的弹性池。 应该会出现一条警告消息, 提示你在辅助服务器上创建弹性池。 选择警告, 然后选择 **"确定"** , 在辅助服务器上创建弹性池。 
         
-    ![将 SQL DB 添加到故障转移组](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![将弹性池添加到故障转移组](media/sql-database-elastic-pool-create-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
 1. 选择 "**选择**", 将弹性池设置应用到故障转移组, 然后选择 "**创建**" 以创建故障转移组。 如果将弹性池添加到故障转移组, 则将自动启动异地复制过程。 
 

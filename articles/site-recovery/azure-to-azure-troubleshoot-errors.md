@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: asgang
-ms.openlocfilehash: 1e0450554597d99aa99d6df51f22bfc90c0d92ad
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 4d8ba44cdd5161a1a5ff108837cb57af4cd98835
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798563"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034788"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -40,7 +40,7 @@ ms.locfileid: "67798563"
 
 如果 VM 上没有所有最新的受信任根证书，则“启用复制”作业可能会失败。 如果没有证书，来自 VM 的 Site Recovery 服务调用的身份验证和授权会失败。 系统会显示失败的“启用复制”Site Recovery 作业的错误消息：
 
-**错误代码** | 可能的原因  | **建议**
+**错误代码** | 可能的原因 | **建议**
 --- | --- | ---
 151066<br></br>**消息**：Site Recovery 配置失败。 | 计算机上没有授权和身份验证所需的受信任的根证书。 | - 对于运行 Windows 操作系统的 VM，请确保虚拟机上存在受信任的根证书。 有关信息，请参阅[配置受信任的根和不允许的证书](https://technet.microsoft.com/library/dn265983.aspx)。<br></br>- 对于运行 Linux 操作系统的 VM，请按照 Linux 操作系统版本分销商发布的受信任根证书指南操作。
 
@@ -156,7 +156,7 @@ ms.locfileid: "67798563"
 
 ### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>问题 1：未能向 Site Recovery 注册 Azure 虚拟机 (151195) </br>
 - **可能的原因** </br>
-  - 无法连接由于 DNS 解析失败的 Site Recovery 终结点。
+  - 由于 DNS 解析失败而无法建立到 Site Recovery 终结点的连接。
   - 在重新保护期间，对虚拟机进行故障转移但无法从 DR 区域访问 DNS 服务器时经常会出现此问题。
 
 - **解决方法**
@@ -175,7 +175,7 @@ ms.locfileid: "67798563"
       - 如果将来要向 Azure Active Directory (AAD) 添加新地址，则需要创建新的 NSG 规则。
 
 > [!NOTE]
-> 如果虚拟机位于**标准**内部负载均衡器之后，则默认情况下无法访问 O365 IP，即 默认情况下 login.microsoftonline.com。 请将其更改为**基本**内部负载均衡器类型或创建[此文](https://aka.ms/lboutboundrulescli)中提到的出站访问权限。
+> 如果虚拟机位于**标准**内部负载均衡器之后，则默认情况下无法访问 O365 IP，即 默认情况下, login.microsoftonline.com。 请将其更改为**基本**内部负载均衡器类型或创建[此文](https://aka.ms/lboutboundrulescli)中提到的出站访问权限。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>问题 3：Site Recovery 配置失败 (151197)
 - **可能的原因** </br>
@@ -187,29 +187,29 @@ ms.locfileid: "67798563"
 
 ### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>问题 4：当网络流量通过本地代理服务器时 A2A 复制失败 (151072)
 - **可能的原因** </br>
-  - 自定义代理设置无效，Azure Site Recovery 移动服务代理没有自动的检测到 IE 中的代理设置
+  - 自定义代理设置无效，并且 Azure Site Recovery 移动服务代理未在 IE 中自动检测到代理设置
 
 
 - **解决方法**
   1. 移动服务代理通过 Windows 上的 IE 和 Linux 上的 /etc/environment 检测代理设置。
-  2. 如果想要设置 Azure Site Recovery 移动服务代理，则可以提供 ProxyInfo.conf 位于中的代理详细信息：</br>
+  2. 如果只想对 Azure Site Recovery 移动服务设置代理，可在位于以下路径的 ProxyInfo.conf 中提供代理详细信息：</br>
      - ***Linux*** 上的 ``/usr/local/InMage/config/``
      - ***Windows*** 上的 ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
   3. ProxyInfo.conf 应包含采用以下 INI 格式的代理设置。</br>
                 *[proxy]*</br>
                 *Address=http://1.2.3.4*</br>
                 *Port=567*</br>
-  4. Azure Site Recovery 移动服务代理仅支持***未经过身份验证代理***。
+  4. Azure Site Recovery 移动服务代理仅支持未经身份验证的代理。
 
 
 ### <a name="fix-the-problem"></a>解决问题
-若要允许[所需的 Url](azure-to-azure-about-networking.md#outbound-connectivity-for-urls)或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)，按照中的步骤[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)。
+若要允许[所需 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)，请按照[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)中的步骤进行操作。
 
 ## <a name="disk-not-found-in-the-machine-error-code-150039"></a>在计算机中找不到磁盘（错误代码 150039）
 
 必须初始化附加到 VM 的新磁盘。
 
-**错误代码** | **可能的原因** | 建议 
+**错误代码** | **可能的原因** | 建议
 --- | --- | ---
 150039<br></br>**消息**：Azure data disk (DiskName) (DiskURI) with logical unit number (LUN) (LUNValue) was not mapped to a corresponding disk being reported from within the VM that has the same LUN value.（具有逻辑单元号 (LUN) (LUNValue) 的 Azure 数据磁盘 (DiskName) (DiskURI) 未映射到具有相同 LUN 值的 VM 报告的相应磁盘。） | - 新数据磁盘已附加到 VM，但该磁盘未初始化。</br></br>- VM 内的数据磁盘未正确报告磁盘附加到 VM 时的 LUN 值。| 请确保数据磁盘已初始化，然后重试操作。</br></br>对于 Windows：[附加并初始化新的磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)。</br></br>对于 Linux：[在 Linux 中初始化新的数据磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)。
 
@@ -234,40 +234,40 @@ ms.locfileid: "67798563"
 ![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
 
 
-## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information--error-code-150225"></a>从保管库已完成，但信息 （错误代码 150225） 中删除虚拟机
-虚拟机的保护时，Azure Site Recovery 源虚拟机上创建一些链接。 当您删除保护或禁用复制时，Azure Site Recovery 清除作业的一部分删除下面的链接。 在虚拟机具有资源锁的情况下作业获取完成的信息。 它指示已从恢复服务保管库中删除虚拟机，但一些过时的链接无法在源计算机从清理。
+## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information--error-code-150225"></a>已完成从保管库删除虚拟机的操作，但出现错误信息（错误代码为 150225）
+在保护虚拟机时，Azure Site Recovery 会在源虚拟机上创建一些链接。 去除保护或禁用复制时，Azure Site Recovery 会在完成清理作业的过程中删除这些链接。 如果虚拟机存在资源锁定，则此作业在完成时会显示错误信息。 它会告知用户，虚拟机已从恢复服务保管库中删除，但某些过期链接无法从源计算机中清除。
 
-如果不想在以后再次保护此虚拟机，则可以忽略此警告。 但是，如果您需要更高版本保护此虚拟机然后你应该清理链接中执行以下步骤所述。 
+如果不打算在以后再次保护此虚拟机，可以忽略此警告。 但是，如果必须在以后保护此虚拟机，则应清理这些链接，如以下步骤所述。 
 
-**如果您不干净然后：**
+**如果不进行清理，则会出现以下情况：**
 
-1.  启用恢复服务保管库中的复制期间，虚拟机将不会列出。 
-2.  如果你尝试保护 VM**虚拟机 > 设置 > 灾难恢复**它将失败，出现错误"*无法启用复制，由于 VM上现有的过时的资源链接*".
+1.  通过恢复服务启用复制时，不会列出虚拟机。 
+2.  如果尝试通过“虚拟机>“设置”>“灾难恢复”来保护 VM，则会失败并出现“无法启用复制，因为 VM 上存在过期的资源链接”错误。
 
 
 ### <a name="fix-the-problem"></a>解决问题
 
 >[!NOTE]
 >
->Azure Site Recovery 不会删除源虚拟机或执行以下步骤时以任何方式影响它。
+>在执行以下步骤时，Azure Site Recovery 不会删除源虚拟机或以任何方式影响它。
 >
 
-1. 从 VM 或 VM 中删除该锁的资源组。 例如：以下 VM 名称"MoveDemo"具有需要删除的资源锁。
+1. 删除 VM 或 VM 资源组的锁。 例如：VM 名称“MoveDemo”下的资源锁需删除。
 
    ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
-2. 下载脚本[删除过时的 Azure Site Recovery 配置](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)。
-3. 执行脚本*Cleanup-stale-asr-config-Azure-VM.ps1*。
-4. 提供订阅 ID，VM 资源组和 VM 名称作为参数。
-5. 如果要求提供 Azure 凭据，请提供，并检查该脚本获取执行无任何错误。 
+2. 下载脚本：[删除过期的 Azure Site Recovery 配置](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)。
+3. 执行脚本 *Cleanup-stale-asr-config-Azure-VM.ps1*。
+4. 提供订阅 ID、VM 资源组和 VM 名称作为参数。
+5. 如果系统要求提供 Azure 凭据，请提供该凭据，并检查脚本是否已成功执行。 
 
 
-## <a name="replication-cannot-be-enabled-because-of-the-existing-stale-resource-links-on-the-vm-error-code-150226"></a>无法启用复制，由于 VM （错误代码 150226） 上的现有过时的资源链接
+## <a name="replication-cannot-be-enabled-because-of-the-existing-stale-resource-links-on-the-vm-error-code-150226"></a>无法启用复制，因为 VM 上存在过期的资源链接（错误代码为 150226）
 
-**原因：虚拟机的配置已过期从右向左，从以前的 Site Recovery 保护**
+原因：**虚拟机的配置已过时，是上一次 Site Recovery 保护遗留下来的**
 
 在以下情况中，过时配置可能会留在 Azure VM 上：
 
-- 使用 Site Recovery 启用 Azure VM 的复制，然后禁用复制，但**源 VM 具有资源锁**。
+- 你使用 Site Recovery 为 Azure VM 启用了复制，然后又禁用复制，但**源 VM 存在资源锁**。
 - 使用 Site Recovery 为 Azure VM 启用复制，然后删除 Site Recovery 保管库，而不在 VM 上明确禁用复制。
 - 使用 Site Recovery 为 Azure VM 启用复制，然后删除包含 Site Recovery 保管库的资源组，而不在 VM 上明确禁用复制。
 
@@ -275,24 +275,24 @@ ms.locfileid: "67798563"
 
 >[!NOTE]
 >
->Azure Site Recovery 不会删除源虚拟机或执行以下步骤时以任何方式影响它。
+>在执行以下步骤时，Azure Site Recovery 不会删除源虚拟机或以任何方式影响它。
 
 
-1. 从 VM 或 VM 中删除该锁的资源组，如果有的话。 例如：  以下 VM 名称"MoveDemo"具有需要删除的资源锁。
+1. 删除 VM 或 VM 资源组的锁（如果有）。 例如：VM 名称“MoveDemo”下的资源锁需删除。
    
    ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
-2. 下载脚本[删除过时的 Azure Site Recovery 配置](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)。
-3. 执行脚本*Cleanup-stale-asr-config-Azure-VM.ps1*。
-4. 提供订阅 ID，VM 资源组和 VM 名称作为参数。
-5. 如果要求提供 Azure 凭据，请提供，并检查该脚本获取执行无任何错误。  
+2. 下载脚本：[删除过期的 Azure Site Recovery 配置](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)。
+3. 执行脚本 *Cleanup-stale-asr-config-Azure-VM.ps1*。
+4. 提供订阅 ID、VM 资源组和 VM 名称作为参数。
+5. 如果系统要求提供 Azure 凭据，请提供该凭据，并检查脚本是否已成功执行。  
 
-## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>无法查看"启用复制"中的选定内容的 Azure VM 或资源组
+## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>无法在“启用复制”中看到要选择的 Azure VM 或资源组
 
  **原因 1：资源组和源虚拟机位于不同的位置**
  
-Azure Site Recovery 当前源区域的资源组和虚拟机的要求应放置在同一位置。 如果不是这样您将无法保护期间找到的虚拟机或资源组。 
+Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同一位置。 如果不是这种情况，那么在保护期间将无法找到虚拟机或资源组。 
 
-**解决方法是**，可以启用从虚拟机而不是恢复服务保管库的复制。 转到源 VM > 属性 > 灾难恢复和启用复制。
+**一种解决方法是**，从 VM 而不是从恢复服务保管库启用复制。 转到“源 VM”>“属性”>“灾难恢复”并启用复制。
 
 **原因 2：资源组不是所选订阅的一部分**
 
@@ -305,22 +305,22 @@ Azure Site Recovery 当前源区域的资源组和虚拟机的要求应放置在
 - 使用 Site Recovery 为 Azure VM 启用复制，然后删除 Site Recovery 保管库，而不在 VM 上明确禁用复制。
 - 使用 Site Recovery 为 Azure VM 启用复制，然后删除包含 Site Recovery 保管库的资源组，而不在 VM 上明确禁用复制。
 
-- 使用 Site Recovery 启用 Azure VM 的复制，然后禁用复制，但源 VM 具有资源锁。
+- 你使用 Site Recovery 为 Azure VM 启用了复制，然后又禁用复制，但源 VM 存在资源锁。
 
 ### <a name="fix-the-problem"></a>解决问题
 
 > [!NOTE]
 >
-> 请确保在使用以下脚本之前更新“AzureRM.Resources”模块。 Azure Site Recovery 不会删除源虚拟机或执行以下步骤时以任何方式影响它。
+> 请确保在使用以下脚本之前更新“AzureRM.Resources”模块。 在执行以下步骤时，Azure Site Recovery 不会删除源虚拟机或以任何方式影响它。
 >
 
-1. 从 VM 或 VM 中删除该锁的资源组，如果有的话。 例如：  以下 VM 名称"MoveDemo"具有需要删除的资源锁。
+1. 删除 VM 或 VM 资源组的锁（如果有）。 例如：VM 名称“MoveDemo”下的资源锁需删除。
 
    ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
-2. 下载脚本[删除过时配置](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)。
-3. 执行脚本*Cleanup-stale-asr-config-Azure-VM.ps1*。
-4. 提供订阅 ID，VM 资源组和 VM 名称作为参数。
-5. 如果要求提供 Azure 凭据，请提供，并检查该脚本获取执行无任何错误。
+2. 下载脚本：[删除过期的配置](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)。
+3. 执行脚本 *Cleanup-stale-asr-config-Azure-VM.ps1*。
+4. 提供订阅 ID、VM 资源组和 VM 名称作为参数。
+5. 如果系统要求提供 Azure 凭据，请提供该凭据，并检查脚本是否已成功执行。
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>无法选择虚拟机进行保护
  **原因 1：虚拟机安装的某些扩展处于失败或无响应状态** <br>
@@ -329,18 +329,18 @@ Azure Site Recovery 当前源区域的资源组和虚拟机的要求应放置在
 
 ## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>VM 的预配状态无效（错误代码 150019）
 
-若要在 VM 上启用复制，预配状态应为“已成功”  。 可以通过执行以下步骤来检查 VM 状态。
+若要在 VM 上启用复制，预配状态应为“已成功”。 可以通过执行以下步骤来检查 VM 状态。
 
-1.  从 Azure 门户的“所有服务”  中选择“资源浏览器”  。
-2.  展开“订阅”  列表并选择你的订阅。
+1.  从 Azure 门户的“所有服务”中选择“资源浏览器”。
+2.  展开“订阅”列表并选择你的订阅。
 3.  展开 **ResourceGroups** 列表并选择 VM 的资源组。
-4.  展开“资源”  列表并选择你的虚拟机
+4.  展开“资源”列表并选择你的虚拟机
 5.  在右侧的“实例”视图中检查 **provisioningState** 字段。
 
 ### <a name="fix-the-problem"></a>解决问题
 
-- 如果 **provisioningState** 是“失败”  ，请联系支持人员并提供详细信息，以便进行故障排除。
-- 如果 **provisioningState** 是“正在更新”  ，可以部署其他扩展。 检查 VM 上是否有任何正在进行的操作，等待这些操作完成，然后重试失败的 Site Recovery 的“启用复制”  作业。
+- 如果 **provisioningState** 是“失败”，请联系支持人员并提供详细信息，以便进行故障排除。
+- 如果 **provisioningState** 是“正在更新”，可以部署其他扩展。 检查 VM 上是否有任何正在进行的操作，等待这些操作完成，然后重试失败的 Site Recovery 的“启用复制”作业。
 
 ## <a name="unable-to-select-target-virtual-network---network-selection-tab-is-grayed-out"></a>无法选择目标虚拟网络 - 网络选择选项卡灰显。
 
@@ -379,14 +379,14 @@ Azure Site Recovery 当前源区域的资源组和虚拟机的要求应放置在
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>启用保护失败，因为 GRUB 配置中提到了设备名，而不是 UUID（错误代码 151126）
 
 **可能的原因：** </br>
-GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/boot/grub2/grub.cfg”或“/etc/default/grub”）可能包含参数“root”和“resume”的值作为实际设备名而非 UUID   。 Site Recovery 要求 UUID 方法，因为设备名可能会在 VM 重启时发生更改，由于故障转移时 VM 可能不会出现相同的名称，从而导致问题。 例如： </br>
+GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/boot/grub2/grub.cfg”或“/etc/default/grub”）可能包含参数“root”和“resume”的值作为实际设备名而非 UUID。 Site Recovery 要求 UUID 方法，因为设备名可能会在 VM 重启时发生更改，由于故障转移时 VM 可能不会出现相同的名称，从而导致问题。 例如： </br>
 
 
-- 以下行来自 GRUB 文件 /boot/grub2/grub.cfg  。 <br>
+- 以下行来自 GRUB 文件 /boot/grub2/grub.cfg。 <br>
   *linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
 
 
-- 以下行来自 GRUB 文件 /boot/grub/menu.lst  
+- 以下行来自 GRUB 文件 /boot/grub/menu.lst
   *kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
 
 如果发现上面的粗体字符串，GRUB 具有参数“root”和“resume”的实际设备名，而不是 UUID。
@@ -403,43 +403,43 @@ GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/
    ```blkid /dev/sda2```<br>
    ```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```<br>
+   ```
 
 
 
-1. Now replace the device name with its UUID in the format like "root=UUID=\<UUID>". For example, if we replace the device names with UUID for root and resume parameter mentioned above in the files "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub: then the lines in the files looks like. <br>
+1. 现在请将设备名替换为设备 UUID，格式类似于“root=UUID=\<UUID>”。 例如，对于上述在“/boot/grub2/grub.cfg”、“/boot/grub2/grub.cfg”或“/etc/default/grub”文件中提到的 root 和 resume 参数，如果将设备名称替换为 UUID，则文件中的行将类似于： <br>
    *kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
-1. Restart the protection again
+1. 再次重启保护
 
-## Enable protection failed as device mentioned in the GRUB configuration doesn't exist(error code 151124)
-**Possible Cause:** </br>
-The GRUB configuration files ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub") may contain the parameters "rd.lvm.lv" or "rd_LVM_LV" to indicate the LVM device that should be discovered at the time of booting. If these LVM devices doesn't exist, then the protected system itself will not boot and stuck in the boot process. Even the same will be observed with the failover VM. Below are few examples:
+## <a name="enable-protection-failed-as-device-mentioned-in-the-grub-configuration-doesnt-existerror-code-151124"></a>启用保护失败，因为 GRUB 配置中所述的设备不存在（错误代码 151124）
+**可能的原因：** </br>
+GRUB 配置文件 ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub") 可能包含参数“rd.lvm.lv”或“rd_LVM_LV”，指示在启动时应发现的 LVM 设备。 如果这些 LVM 设备不存在，则受保护的系统本身不会启动，而是停滞在启动过程。 甚至在故障转移 VM 上也会出现相同的问题。 下面是几个示例：
 
-Few examples: </br>
+几个示例： </br>
 
-1. The following line is from the GRUB file **"/boot/grub2/grub.cfg"** on RHEL7. </br>
+1. 以下代码行摘自 RHEL7 上的 GRUB 文件 **"/boot/grub2/grub.cfg"** 。 </br>
    *linux16 /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel=128M\@64M **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet LANG=en_US.UTF-8*</br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".
-1. The following line is from the GRUB file **"/etc/default/grub"** on RHEL7 </br>
+   此处的突出显示部分指明，GRUB 必须在卷组“rootvg”中检测到名为 **“root”** 和 **“swap”** 的两个 LVM 设备。
+1. 以下代码行摘自 RHEL7 上的 GRUB 文件 **"/etc/default/grub"** </br>
    *GRUB_CMDLINE_LINUX="crashkernel=auto **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet"*</br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".
-1. The following line is from the GRUB file **"/boot/grub/menu.lst"** on RHEL6 </br>
+   此处的突出显示部分指明，GRUB 必须在卷组“rootvg”中检测到名为 **“root”** 和 **“swap”** 的两个 LVM 设备。
+1. 以下代码行摘自 RHEL6 上的 GRUB 文件 **"/boot/grub/menu.lst"** </br>
    *kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=rootvg/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=rootvg/lv_swap rd_NO_DM rhgb quiet* </br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".<br>
+   此处的突出显示部分指明，GRUB 必须在卷组“rootvg”中检测到名为 **“root”** 和 **“swap”** 的两个 LVM 设备。<br>
 
-**How to Fix:**<br>
+**如何修复：**<br>
 
-If the LVM device doesn't exist, fix either by creating it or remove the parameter for the same from the GRUB configuration files and then retry the enable protection. </br>
+如果 LVM 设备不存在，解决方法是创建该设备，或者从 GRUB 配置文件中删除该设备对应的参数，然后重试启用保护。 </br>
 
-## Site Recovery mobility service update completed with warnings ( error code 151083)
-Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  Site Recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
-**Please note** that this is just a warning and existing replication keeps on working even after the new agent update. You can choose to reboot anytime you want to get the benefits of new filter driver but if you don't reboot than also old filter driver keeps on working. Apart from filter driver, **benefits of  any other enhancements and fixes in mobility service get realized without any reboot when the agent gets updated.**  
+## <a name="site-recovery-mobility-service-update-completed-with-warnings--error-code-151083"></a>Site Recovery 移动服务更新完成，但出现警告（错误代码为 151083）
+Site Recovery 移动服务有多个组件，其中一个称为筛选器驱动程序。 筛选器驱动程序只有在系统重启时才会加载到系统内存中。 每当 Site Recovery 移动服务更新涉及到筛选器驱动程序的更改时，我们都会更新计算机，但仍会发出警告，指出某些修复措施需要重启。 这意味着，仅当已加载新的筛选器驱动程序（只有在系统重新启动时才能发生）时，才能实现筛选器驱动程序的修复。<br>
+**请注意**这只是一条警告，即使在新代理更新后，现有的复制也能保持正常工作。 可以选择在需要使用新筛选器驱动程序的时候重启，但如果不重启，则旧筛选器驱动程序仍可继续使用。 除了筛选器驱动程序以外，**在更新代理后，无需重新启动，移动服务中也能获得其他任何增强和修复。**  
 
 
-## Protection couldn't be enabled as replica managed disk 'diskname-replica' already exists without expected tags in the target resource group( error code 150161
+## <a name="protection-couldnt-be-enabled-as-replica-managed-disk-diskname-replica-already-exists-without-expected-tags-in-the-target-resource-group-error-code-150161"></a>无法启用保护，因为副本托管磁盘“diskname-replica”已存在，但目标资源组中不包含预期的标记（错误代码 150161）
 
-**Cause**: It can occur if the  virtual machine was protected earlier in the past and during disabling the replication, replica disk was not cleaned due to some reason.</br>
-**How to fix:**
-Delete the mentioned replica disk in the error message and restart the failed protection job again.
+**原因**：如果虚拟机过去受保护，而在禁止复制期间，某种原因导致副本磁盘未能清理，则可能会出现此错误。</br>
+**如何修复：** 删除错误消息中提到的副本磁盘，然后再次重启失败的保护作业。
 
-## Next steps
-[Replicate Azure virtual machines](site-recovery-replicate-azure-to-azure.md)
+## <a name="next-steps"></a>后续步骤
+[复制 Azure 虚拟机](site-recovery-replicate-azure-to-azure.md)

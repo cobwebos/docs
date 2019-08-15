@@ -107,6 +107,8 @@
       items:
         - name: 使用 DMS 进行联机迁移
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
+        - name: 添加到故障转移组
+          href: sql-database-managed-instance-failover-group-tutorial.md
         - name: 配置事务复制
           href: replication-with-sql-database-managed-instance.md
     - name: SQL 数据库中的安全性

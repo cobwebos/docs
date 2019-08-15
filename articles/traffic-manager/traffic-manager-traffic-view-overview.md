@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 39d6090b14a16f505413154df2a78d42b3fb3f3c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 5b451378fcc14106cb8731a89bcf6ccf415d0a92
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333713"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035467"
 ---
 # <a name="traffic-manager-traffic-view"></a>流量管理器流量视图
 
@@ -44,6 +44,8 @@ ms.locfileid: "68333713"
 ## <a name="visual-overview"></a>视觉概览
 
 导航到“流量管理器”页中的“流量视图”部分时，会看到一个地理图，其中包含流量视图见解。 该图提供了有关用户群以及流量管理器配置文件终结点的信息。
+
+![流量管理器流量视图地理视图][1]
 
 ### <a name="user-base-information"></a>用户群信息
 
@@ -94,3 +96,5 @@ ms.locfileid: "68333713"
 - 详细了解流量管理器支持的[流量路由方法](traffic-manager-routing-methods.md)
 - 了解如何[创建流量管理器配置文件](traffic-manager-create-profile.md)
 
+<!--Image references-->
+[1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

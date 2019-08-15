@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
-ms.openlocfilehash: 232468d9b3466759d7af2b7be68a1f553ced6e6d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c649b93284a48df705d389f4de728d83f793af04
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68348641"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036637"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -517,11 +517,11 @@ j2ee/dbhost = db-virt-hostname
 使用 J2EE 配置工具检查或更新 JDBC URL。 由于 J2EE 配置工具是图形工具, 因此需要安装 X server:
  
 1. 登录到 J2EE 实例的主应用程序服务器并执行以下操作:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>
+     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
 1.在左框架中, 选择 "**安全存储**"。
 1.在右侧框中, 选择密钥 jdbc/pool/\<SAPSID>/url。
 1.将 JDBC URL 中的主机名更改为虚拟主机名。
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>
+     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
 1.选择 "**添加**"。
 1.若要保存所做的更改, 请在左上角选择磁盘图标。
 1.关闭配置工具。

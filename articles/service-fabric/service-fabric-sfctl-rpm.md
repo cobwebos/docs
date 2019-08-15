@@ -8,29 +8,28 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 04080d75042bfa8a07533336936165e0abef051b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f40451087aba5af5b02625ad3ac1ca6231d976c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556349"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035872"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 查询并向修复管理器服务发送命令。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
 | approve-force | 强制批准给定的修复任务。 |
-| delete | 删除已完成的修复任务。 |
-| list | 获取与给定筛选器匹配的修复任务列表。 |
+| 删除 | 删除已完成的修复任务。 |
+| 列表 | 获取与给定筛选器匹配的修复任务列表。 |
 
 ## <a name="sfctl-rpm-approve-force"></a>sfctl rpm approve-force
 强制批准给定的修复任务。

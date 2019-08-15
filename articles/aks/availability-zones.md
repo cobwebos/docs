@@ -2,17 +2,17 @@
 title: 使用 Azure Kubernetes 服务中的可用性区域 (AKS)
 description: 了解如何创建在 Azure Kubernetes Service (AKS) 中跨可用性区域分发节点的群集
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: iainfou
-ms.openlocfilehash: 52df1438913983a80ece487b49d0d6bd7821b636
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.author: mlearned
+ms.openlocfilehash: 4c2058072df4fcb068257c3e265dfe365c6d7e65
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019438"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033148"
 ---
 # <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>预览-创建使用可用性区域的 Azure Kubernetes 服务 (AKS) 群集
 
@@ -23,7 +23,7 @@ Azure Kubernetes Service (AKS) 群集跨底层 Azure 计算基础结构的逻辑
 本文介绍如何创建 AKS 群集, 以及如何在可用性区域之间分发节点组件。 此功能目前处于预览状态。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助服务, 选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中, 这些功能并不用于生产。 公共预览版中的功能低于 "最大努力" 支持。 仅在太平洋时区 (PST) 期间, AKS 技术支持团队提供协助。 有关其他信息, 请参阅以下支持文章:
+> AKS 预览功能是可选的自助服务。 预览按 "原样" 提供, 并从服务级别协议和有限担保中排除。 AKS 预览版是以最大努力为基础的客户支持部分覆盖的。 因此, 这些功能并不用于生产。 有关其他信息, 请参阅以下支持文章:
 >
 > * [AKS 支持策略][aks-support-policies]
 > * [Azure 支持常见问题][aks-faq]

@@ -8,28 +8,27 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: feec5c4796c025c1707b4eb93bfe34b8d384ef3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e92fbc3856bba69db11aba6ad5d85e814bf30a81
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60694515"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035051"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh network
 获取和删除网格网络资源。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
-| delete | 删除网络资源。 |
-| list | 列出所有网络资源。 |
+| 删除 | 删除网络资源。 |
+| 列表 | 列出所有网络资源。 |
 | show | 获取具有给定名称的网络资源。 |
 
 ## <a name="sfctl-mesh-network-delete"></a>sfctl mesh network delete

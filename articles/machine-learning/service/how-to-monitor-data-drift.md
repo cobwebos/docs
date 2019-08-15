@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: c5484c37d89cc9ae880bbe17987bb47f3114b8a4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9593a5802300da8baa1e518f14885637db2068f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847891"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036186"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service (AKS) 的模型上检测数据偏差 (预览)
 
@@ -162,9 +162,9 @@ datadrift.disable_schedule()
 
 ![Azure 门户数据偏移配置](media/how-to-monitor-data-drift/drift_config.png)
 
-## <a name="view-results-in-azure-ml-workspace-ui"></a>在 Azure ML 工作区 UI 中查看结果
+## <a name="view-results-in-azure-portal"></a>查看 Azure 门户中的结果
 
-若要在 Azure ML 工作区 UI 中查看结果, 请导航到 "模型" 页。 在模型的 "详细信息" 选项卡上, 将显示数据偏移配置。 现在可以使用 "数据偏移 (预览)" 选项卡, 直观显示数据偏差指标。 
+若要在[Azure 门户](https://portal.azure.com)中查看工作区中的结果, 请导航到 "模型" 页。 在模型的 "详细信息" 选项卡上, 将显示数据偏移配置。 现在可以使用 "数据偏移 (预览)" 选项卡, 直观显示数据偏差指标。 
 
 ![Azure 门户数据偏移](media/how-to-monitor-data-drift/drift_ui.png)
 

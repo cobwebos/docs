@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 5412b83d8dfe92c6a24e717fb371c8963b808566
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 86b5e4b6bcf65c2174fa3d3743551813ce2f8b1b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990788"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034741"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>使用 PowerShell (预览版) 为容器或 blob 创建用户委托 SAS
 
@@ -32,11 +32,6 @@ ms.locfileid: "68990788"
 
     - 使用“设置”下的“应用和功能”设置从 Windows 中删除以前安装的所有 Azure PowerShell。
     - 从中 `%Program Files%\WindowsPowerShell\Modules`删除所有 Azure 模块。
-    - 由于默认情况下 PowerShell 会加载最新的 Az 模块, 因此在启动控制台时, 可能需要显式加载1.3.1 模块。 若要显式加载预览模块, 请运行[import-module](/powershell/module/microsoft.powershell.core/import-module)命令:
-
-        ```powershell
-        Import-Module Az.Storage -RequiredVersion 1.3.1
-        ```
 
 1. 确保已安装 PowerShellGet 最新版本。 打开 Windows PowerShell 窗口，然后运行以下命令以安装最新版本：
 
@@ -55,10 +50,21 @@ ms.locfileid: "68990788"
 1. 安装支持用户委托 SAS 的 Azure 存储预览模块:
 
     ```powershell
-    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.3.1-preview –AllowPrerelease –AllowClobber –Force
+    Install-Module Az.Storage `
+        –Repository PSGallery `
+        -RequiredVersion 1.3.1-preview `
+        –AllowPrerelease `
+        –AllowClobber `
+        –Force
     ```
 
 1. 关闭并重新打开 PowerShell 窗口。
+
+由于默认情况下 PowerShell 会加载最新的 Az 模块, 因此在启动控制台时, 可能需要显式加载1.3.1 模块。 若要显式加载预览模块, 请运行[import-module](/powershell/module/microsoft.powershell.core/import-module)命令:
+
+```powershell
+Import-Module Az.Storage -RequiredVersion 1.3.1
+```
 
 有关安装 Azure PowerShell 的详细信息, 请参阅[通过 PowerShellGet 安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 
@@ -142,8 +148,7 @@ New-AzStorageBlobSASToken -Context $ctx `
 返回的用户委托 SAS URI 将类似于:
 
 ```
-https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-11-09&sr=b&sig=4f6QzTteEZmrEMXWn7iEeI27vHrX13zVmL6rk2MbiyA%3D&skoid=e5981635-dcf0-4279-ab7b-ca1cbdf4a5c7&sktid=72f988bf-86f1-41af-91ab
--2d7cd011db47&skt=2019-08-06T21%3A16%3A54Z&ske=2019-08-07T07%3A00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=racwd
+https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-11-09&sr=b&sig=<sig>&skoid=<skoid>&sktid=<sktid>&skt=2019-08-06T21%3A16%3A54Z&ske=2019-08-07T07%3A00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=racwd
 ```
 
 > [!NOTE]
@@ -160,7 +165,7 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
     -StorageAccountName <storage-account>
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="next-steps"></a>后续步骤
 
 - [创建用户委派 SAS (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)
 - [获取用户委派密钥操作](/rest/api/storageservices/get-user-delegation-key)

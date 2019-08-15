@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ff6755f1391ff19e65df669fb51967a904f4f
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 99f31c5928273973a9089ae9ef1fd184cdb78bbb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707560"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033418"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory 中的应用程序注册子类型和权限
 
@@ -46,12 +46,12 @@ ms.locfileid: "68707560"
 
 ### <a name="create-and-delete"></a>创建和删除
 
-有两个权限可用于授予创建应用注册的能力:
+有两个权限可用于授予创建应用程序注册的能力, 每个权限都有不同的行为:
 
-- **microsoft 目录/应用程序/createAsOwner**
-- **microsoft. 目录/应用程序/创建**
+- **microsoft 目录/应用程序/createAsOwner**:分配此权限会导致将创建者添加为所创建的应用注册的第一个所有者, 并且创建的应用注册将计入创建者的250创建对象配额。
+- **应用程序策略/create**:如果分配此权限, 则不会将创建者添加为所创建的应用注册的第一个所有者, 并且创建的应用注册将不会在创建者的250创建对象配额的情况下进行计数。 请谨慎使用此权限, 因为在达到目录级配额之前, 不会阻止代理人创建应用注册。 如果同时分配了这两个权限, 则此权限优先。
 
-如果同时分配了这两个权限, 则创建权限将优先。 尽管 createAsOwner 权限不会自动添加创建者作为第一个所有者, 但当使用图形 Api 或 PowerShell cmdlet 时, 可以在创建应用注册期间指定所有者。
+如果同时分配了这两个权限, 则/create 权限将优先。 尽管/createAsOwner 权限不会自动添加创建者作为第一个所有者, 但当使用图形 Api 或 PowerShell cmdlet 时, 可以在创建应用注册期间指定所有者。
 
 Create 权限: 授予访问**新注册**命令的权限。
 

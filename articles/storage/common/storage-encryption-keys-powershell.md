@@ -9,18 +9,22 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: be876b370cd476bee2af7d90a9f0433fd80de3b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c9adf1c00503ec7f1cbf4a3405c303eea2d2292
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233677"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034885"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>通过 PowerShell 配置客户管理的密钥用于 Azure 存储加密
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
 本文介绍如何使用 PowerShell 配置包含客户管理的密钥的 Key Vault。
+
+> [!IMPORTANT]
+> 将客户管理的密钥用于 Azure 存储加密需要为 Key Vault 配置两个必需的属性：“软删除”和“不要清除”。 在 Azure 门户中创建新的 Key Vault 时，默认会启用这些属性。 但是，如果需要针对现有的 Key Vault 启用这些属性，必须使用 PowerShell 或 Azure CLI。
+> 仅支持 RSA 密钥和密钥大小2048。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>将标识分配到存储帐户
 
@@ -34,11 +38,11 @@ $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
     -AssignIdentity
 ```
 
-有关使用 PowerShell 配置系统分配的托管的标识的详细信息，请参阅[配置托管在使用 PowerShell 为 Azure VM 上的 Azure 资源的标识](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)。
+有关使用 PowerShell 配置系统分配的托管标识的详细信息, 请参阅[使用 powershell 在 AZURE VM 上配置 azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)。
 
 ## <a name="create-a-new-key-vault"></a>创建新的 Key Vault
 
-若要使用 PowerShell 创建新的 Key Vault，请调用 [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)。 必须为用来存储客户管理的密钥（用于 Azure 存储加密）的 Key Vault 启用两项密钥保护设置：“软删除”和“不要清除”。   
+若要使用 PowerShell 创建新的 Key Vault，请调用 [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)。 必须为用来存储客户管理的密钥（用于 Azure 存储加密）的 Key Vault 启用两项密钥保护设置：“软删除”和“不要清除”。 
 
 请记得将括号中的占位符值替换为你自己的值。 
 
@@ -63,7 +67,7 @@ Set-AzKeyVaultAccessPolicy `
     -PermissionsToKeys wrapkey,unwrapkey,get,recover
 ```
 
-## <a name="create-a-new-key"></a>新建密钥
+## <a name="create-a-new-key"></a>创建新密钥
 
 接下来，在 Key Vault 中创建新密钥。 若要创建新密钥，请调用 [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
 

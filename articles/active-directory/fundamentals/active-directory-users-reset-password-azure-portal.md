@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382ffab090613a2b14ce710a45be10b4c36e5222
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561739"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032666"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>使用 Azure Active Directory 重置用户的密码
 
@@ -43,7 +43,8 @@ ms.locfileid: "68561739"
 
 3. 在“重置密码”页面中，选择“重置密码”。
 
-    临时密码是自动为用户生成的。
+    > [!Note]
+    > 使用 Azure Active Directory 时, 将为用户自动生成一个临时密码。 使用本地 Active Directory 时, 将为用户创建密码。
 
 4. 复制密码并将其提供给用户。 在下次登录过程中，用户需要更改密码。
 

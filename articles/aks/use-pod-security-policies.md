@@ -7,19 +7,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
-ms.openlocfilehash: c398567dd3383f4b0b4fd2eaa4b474d1e95b7575
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 374e86409be08f1f9859b3e325dda57080b89dbf
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67613894"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034000"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览-在 Azure Kubernetes Service (AKS) 中使用 pod 安全策略保护群集
 
 若要提高 AKS 群集的安全性, 可以限制可计划的 pod。 请求不允许的资源的 pod 无法在 AKS 群集中运行。 使用 pod 安全策略定义此访问权限。 本文介绍如何在 AKS 中使用 pod 安全策略来限制 pod 的部署。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助服务, 选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中, 这些功能并不用于生产。 公共预览版中的功能低于 "最大努力" 支持。 仅在太平洋时区 (PST) 期间, AKS 技术支持团队提供协助。 有关其他信息, 请参阅以下支持文章:
+> AKS 预览功能是可选的自助服务。 预览按 "原样" 提供, 并从服务级别协议和有限担保中排除。 AKS 预览版是以最大努力为基础的客户支持部分覆盖的。 因此, 这些功能并不用于生产。 有关其他信息, 请参阅以下支持文章:
 >
 > * [AKS 支持策略][aks-support-policies]
 > * [Azure 支持常见问题][aks-faq]
@@ -67,7 +67,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="overview-of-pod-security-policies"></a>Pod 安全策略概述
 
-在 Kubernetes 群集中, 当要创建资源时, 会使用一个许可控制器来截获对 API 服务器的请求。 然后, 该许可控制器可以根据一组规则*验证*资源请求 *, 或改变*资源来更改部署参数。
+在 Kubernetes 群集中, 当要创建资源时, 会使用一个许可控制器来截获对 API 服务器的请求。 然后, 该许可控制器可以根据一组规则*验证*资源请求, 或改变资源来更改部署参数。
 
 *PodSecurityPolicy*是一种许可控制器, 用于验证 pod 规范是否满足定义的要求。 这些要求可能会限制使用特权容器、访问某些类型的存储, 或者容器可以运行的用户或组。 如果尝试部署的资源的 pod 规范不满足 pod 安全策略中所述的要求, 则会拒绝该请求。 此功能可控制可在 AKS 群集中计划的 pod, 防止出现一些可能的安全漏洞或权限升级。
 
@@ -97,7 +97,7 @@ az aks update \
 
 启用 pod 安全策略时, AKS 将创建两个名为 "*特权*" 和 "*受限制*" 的默认策略。 请勿编辑或删除这些默认策略。 应创建自己的策略来定义要控制的设置。 首先, 让我们看一下这些默认策略是如何影响 pod 部署的。
 
-若要查看可用的策略, 请使用[kubectl get psp][kubectl-get]命令, 如以下示例中所示。 作为默认*限制*策略的一部分, 用户*被拒绝特权*箱升级的特权, 用户*MustRunAsNonRoot*。
+若要查看可用的策略, 请使用[kubectl get psp][kubectl-get]命令, 如以下示例中所示。 作为默认*限制*策略的一部分, 用户被拒绝特权箱升级的特权, 用户*MustRunAsNonRoot*。
 
 ```console
 $ kubectl get psp
