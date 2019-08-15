@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: e9b654fc49a953f8fdbc9125c6f12486e0ab7b13
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: ffdb11420e239125ac3320964a7071c2ab2bdc7e
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949491"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019125"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>预览-创建和管理 Azure Kubernetes 服务中群集的多个节点池 (AKS)
 
@@ -90,7 +90,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-若要开始, 请创建具有单个节点池的 AKS 群集。 以下示例使用[az group create][az-group-create]命令在*eastus*区域中创建名为*myResourceGroup*的资源组。 然后, 使用[az AKS create][az-aks-create]命令创建名为*myAKSCluster*的 AKS 群集。 *1.13.5*的*kubernetes 版本*用于说明如何在以下步骤中更新节点池。 可以指定任何[受支持的 Kubernetes 版本][supported-versions]。
+若要开始, 请创建具有单个节点池的 AKS 群集。 以下示例使用[az group create][az-group-create]命令在*eastus*区域中创建名为*myResourceGroup*的资源组。 然后, 使用[az AKS create][az-aks-create]命令创建名为*myAKSCluster*的 AKS 群集。 *1.13.9*的*kubernetes 版本*用于说明如何在以下步骤中更新节点池。 可以指定任何[受支持的 Kubernetes 版本][supported-versions]。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -103,7 +103,7 @@ az aks create \
     --enable-vmss \
     --node-count 1 \
     --generate-ssh-keys \
-    --kubernetes-version 1.13.5
+    --kubernetes-version 1.13.9
 ```
 
 创建群集需要几分钟时间。
@@ -124,56 +124,96 @@ az aks nodepool add \
     --cluster-name myAKSCluster \
     --name mynodepool \
     --node-count 3 \
-    --kubernetes-version 1.12.6
+    --kubernetes-version 1.12.7
 ```
 
 若要查看节点池的状态, 请使用[az aks node pool list][az-aks-nodepool-list]命令并指定资源组和群集名称:
 
 ```azurecli-interactive
-az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster -o table
+az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
 以下示例输出显示已成功地在节点池中有三个节点创建了*mynodepool* 。 在上一步中创建 AKS 群集时, 创建的默认*nodepool1*的节点计数为*1*。
 
 ```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
+$ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 
-AgentPoolType            Count    MaxPods    Name        OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup    VmSize
------------------------  -------  ---------  ----------  ---------------------  --------------  --------  -------------------  ---------------  ---------------
-VirtualMachineScaleSets  3        110        mynodepool  1.13.5                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
-VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
+[
+  {
+    ...
+    "count": 3,
+    ...
+    "name": "mynodepool",
+    "orchestratorVersion": "1.12.7",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  },
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
 ```
 
 > [!TIP]
-> 如果在添加节点池时未指定*OrchestratorVersion*或*VmSize* , 则将基于 AKS 群集的默认值创建节点。 在此示例中, 为 Kubernetes 版本*1.13.5*和*Standard_DS2_v2*的节点大小。
+> 如果在添加节点池时未指定*OrchestratorVersion*或*VmSize* , 则将基于 AKS 群集的默认值创建节点。 在此示例中, 为 Kubernetes 版本*1.13.9*和*Standard_DS2_v2*的节点大小。
 
 ## <a name="upgrade-a-node-pool"></a>升级节点池
 
-在第一步中创建 AKS 群集时, 指定了`--kubernetes-version` *1.13.5*的。 这会为控制平面和初始节点池设置 Kubernetes 版本。 可以通过不同的命令来升级控制平面和节点池的 Kubernetes 版本。 命令用于升级控制平面, `az aks nodepool upgrade`而用于升级单个节点池。 `az aks upgrade`
+在第一步中创建 AKS 群集时, 指定了`--kubernetes-version` *1.13.9*的。 这会为控制平面和初始节点池设置 Kubernetes 版本。 可以通过不同的命令来升级控制平面和节点池的 Kubernetes 版本。 命令用于升级控制平面, `az aks nodepool upgrade`而用于升级单个节点池。 `az aks upgrade`
 
-让我们将*mynodepool*升级到 Kubernetes *1.13.7*。 使用[az aks 节点池升级][az-aks-nodepool-upgrade]命令升级节点池, 如以下示例中所示:
+让我们将*mynodepool*升级到 Kubernetes *1.13.9*。 使用[az aks 节点池升级][az-aks-nodepool-upgrade]命令升级节点池, 如以下示例中所示:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --kubernetes-version 1.13.7 \
+    --kubernetes-version 1.13.9 \
     --no-wait
 ```
 
 > [!Tip]
-> 若要将控制面升级到*1.13.7*, `az aks upgrade -k 1.13.7`请运行。
+> 若要将控制面升级到*1.14.5*, `az aks upgrade -k 1.14.5`请运行。
 
-使用[az aks node pool list][az-aks-nodepool-list]命令再次列出节点池的状态。 以下示例显示*mynodepool*处于*1.13.7*的*升级*状态:
+使用[az aks node pool list][az-aks-nodepool-list]命令再次列出节点池的状态。 以下示例显示*mynodepool*处于*1.13.9*的*升级*状态:
 
 ```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
-AgentPoolType            Count    MaxPods    Name        OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup    VmSize
------------------------  -------  ---------  ----------  ---------------------  --------------  --------  -------------------  ---------------  ---------------
-VirtualMachineScaleSets  3        110        mynodepool  1.13.7                 100             Linux     Upgrading            myResourceGroup  Standard_DS2_v2
-VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
+[
+  {
+    ...
+    "count": 3,
+    ...
+    "name": "mynodepool",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Upgrading",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  },
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Succeeded",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
 ```
 
 将节点升级到指定的版本需要几分钟时间。
@@ -209,12 +249,34 @@ az aks nodepool scale \
 使用[az aks node pool list][az-aks-nodepool-list]命令再次列出节点池的状态。 下面的示例显示*mynodepool*处于*缩放*状态, 其新计数为*5*个节点:
 
 ```console
-$ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster -o table
+$ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
 
-AgentPoolType            Count    MaxPods    Name        OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup    VmSize
------------------------  -------  ---------  ----------  ---------------------  --------------  --------  -------------------  ---------------  ---------------
-VirtualMachineScaleSets  5        110        mynodepool  1.13.7                 100             Linux     Scaling              myResourceGroup  Standard_DS2_v2
-VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
+[
+  {
+    ...
+    "count": 5,
+    ...
+    "name": "mynodepool",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Scaling",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  },
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Succeeded",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
 ```
 
 完成缩放操作需要几分钟时间。
@@ -237,12 +299,34 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name myn
 以下来自[az aks node pool list][az-aks-nodepool-list]命令的示例输出显示: *mynodepool*处于*删除*状态:
 
 ```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
-AgentPoolType            Count    MaxPods    Name        OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup    VmSize
------------------------  -------  ---------  ----------  ---------------------  --------------  --------  -------------------  ---------------  ---------------
-VirtualMachineScaleSets  5        110        mynodepool  1.13.7                 100             Linux     Deleting             myResourceGroup  Standard_DS2_v2
-VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
+[
+  {
+    ...
+    "count": 5,
+    ...
+    "name": "mynodepool",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Deleting",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  },
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Succeeded",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
 ```
 
 删除节点和节点池需要几分钟时间。
@@ -268,12 +352,34 @@ az aks nodepool add \
 以下来自[az aks node pool list][az-aks-nodepool-list]命令的示例输出显示*gpunodepool*正在*创建*具有指定*VmSize*的节点:
 
 ```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
-AgentPoolType            Count    MaxPods    Name         OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup    VmSize
------------------------  -------  ---------  -----------  ---------------------  --------------  --------  -------------------  ---------------  ---------------
-VirtualMachineScaleSets  1        110        gpunodepool  1.13.5                 100             Linux     Creating             myResourceGroup  Standard_NC6
-VirtualMachineScaleSets  1        110        nodepool1    1.13.5                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "gpunodepool",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "vmSize": "Standard_NC6",
+    ...
+  },
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Succeeded",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
 ```
 
 成功创建*gpunodepool*需要几分钟时间。
@@ -286,8 +392,8 @@ VirtualMachineScaleSets  1        110        nodepool1    1.13.5                
 $ kubectl get nodes
 
 NAME                                 STATUS   ROLES   AGE     VERSION
-aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.13.5
-aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.5
+aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.13.9
+aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.9
 ```
 
 Kubernetes 计划程序能够使用排斥和容许来限制可在节点上运行的工作负荷。
@@ -364,7 +470,7 @@ Events:
 创建模板 (例如) `aks-agentpools.json` , 并粘贴下面的示例清单。 此示例模板配置以下设置:
 
 * 将名为*myagentpool*的*Linux*代理池更新为运行三个节点。
-* 将节点池中的节点设置为运行 Kubernetes 版本*1.13.5*。
+* 将节点池中的节点设置为运行 Kubernetes 版本*1.13.9*。
 * 将节点大小定义为*Standard_DS2_v2*。
 
 根据需要编辑这些值, 以更新、添加或删除节点池:
@@ -429,7 +535,7 @@ Events:
             "storageProfile": "ManagedDisks",
       "type": "VirtualMachineScaleSets",
             "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
-            "orchestratorVersion": "1.13.5"
+            "orchestratorVersion": "1.13.9"
       }
     }
   ]
@@ -454,7 +560,7 @@ AKS 节点不需要自己的公共 IP 地址进行通信。 但某些情况下, 
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-注册成功后, 按照[上述](##manage-node-pools-using-a-resource-manager-template)相同说明部署 Azure 资源管理器模板, 并在 agentPoolProfiles 上添加以下布尔值属性 "enableNodePublicIP"。 将此`true`值设置为, 默认情况下它将`false`设置为 (如果未指定)。 这只是一个创建时的属性, 需要的最低 API 版本为2019-06-01。 这可同时适用于 Linux 和 Windows 节点池。
+注册成功后, 按照[上述](#manage-node-pools-using-a-resource-manager-template)相同说明部署 Azure 资源管理器模板, 并在 agentPoolProfiles 上添加以下布尔值属性 "enableNodePublicIP"。 将此`true`值设置为, 默认情况下它将`false`设置为 (如果未指定)。 这只是一个创建时的属性, 需要的最低 API 版本为2019-06-01。 这可同时适用于 Linux 和 Windows 节点池。
 
 ```
 "agentPoolProfiles":[  
@@ -464,7 +570,7 @@ az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerSe
       "agentCount": 3,
       "agentVmSize": "Standard_DS2_v2",
       "osType": "Linux",
-      "vnetSubnetId": "[parameters('vnetSubnetId')]"
+      "vnetSubnetId": "[parameters('vnetSubnetId')]",
       "enableNodePublicIP":true
     }
 ```

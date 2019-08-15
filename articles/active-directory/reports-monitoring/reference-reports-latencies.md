@@ -3,7 +3,7 @@ title: Azure Active Directory 报告延迟 | Microsoft Docs
 description: 了解在 Azure 门户中显示报告事件所花费的时间
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 05/13/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4d02f9e99acb68db126ccde465f73cc2294e06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f57f09f146e542768c83fa034f0b4e65bc6b2ae
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65594015"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987932"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
 
@@ -41,7 +41,7 @@ ms.locfileid: "65594015"
 > **延迟 (95%)** 是指报告 95% 的日志所用的时间，**延迟 (99%)** 是指报告 99% 的日志所用的时间。 
 >
 
-| 报表 | 延迟 (95%) |延迟 (99%)|
+| 报告 | 延迟 (95%) |延迟 (99%)|
 | :-- | --- | --- |
 | 审核日志 | 2 分钟  | 5 分钟  |
 | 登录 | 2 分钟  | 5 分钟 |
@@ -59,23 +59,23 @@ ms.locfileid: "65594015"
 
 下表列出了安全报表的延迟信息。
 
-| 报表 | 最小值 | 平均值 | 最大值 |
+| 报告 | 最低要求 | Average | 最大值 |
 | :-- | --- | --- | --- |
 | 有风险的用户          | 5 分钟   | 15 分钟  | 2 小时  |
-| 有风险的登录         | 5 分钟   | 15 分钟  | 2 小时  |
+| 风险登录         | 5 分钟   | 15 分钟  | 2 小时  |
 
 ## <a name="risk-events"></a>风险事件
 
-Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 检测到的每个可疑操作都存储在称为“风险事件”  的记录中。
+Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 检测到的每个可疑操作都存储在称为**风险事件**的记录中。
 
 下表列出了风险事件的延迟信息。
 
-| 报表 | 最小值 | 平均值 | 最大值 |
+| 报告 | 最低要求 | Average | 最大值 |
 | :-- | --- | --- | --- |
 | 从匿名 IP 地址登录 |5 分钟 |15 分钟 |2 小时 |
 | 从不熟悉的位置登录 |5 分钟 |15 分钟 |2 小时 |
-| 具有已泄漏凭据的用户 |2 小时 |4 小时 |8 小时 |
-| 不可能前往异常位置 |5 分钟 |1 小时 |8 小时  |
+| 凭据泄漏的用户 |2 小时 |4 小时 |8 小时 |
+| 不可能前往这些异常位置 |5 分钟 |1 小时 |8 小时  |
 | 从受感染的设备登录 |2 小时 |4 小时 |8 小时  |
 | 从具有可疑活动的 IP 地址登录 |2 小时 |4 小时 |8 小时  |
 

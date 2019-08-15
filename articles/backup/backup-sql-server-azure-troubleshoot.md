@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 323470adfe56ee20fe0fb64aeba38b6af4330351
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c456dfec72f98dc4ae06f1d7d5d9fb461182d579
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827599"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018979"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 备份排查 SQL Server 数据库备份问题
 
@@ -163,7 +163,7 @@ ms.locfileid: "68827599"
 
 文件的总字符串大小不仅取决于文件的数量, 还取决于文件的名称和路径。 对于每个数据库文件, 获取逻辑文件名和物理路径。 您可以使用以下 SQL 查询:
 
-```
+```sql
 SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files mf
                INNER JOIN sys.databases db ON db.database_id = mf.database_id
                WHERE db.name = N'<Database Name>'"
@@ -171,13 +171,13 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 现在, 按以下格式排列它们:
 
-```
+```json
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
 以下是一个示例：
 
-```
+```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
 ```
 
@@ -188,7 +188,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 在还原操作过程中, 你可以通过将包含数据库文件映射的 JSON 文件放置到目标还原路径, 来覆盖目标还原文件路径。 创建一个`database_name.json`文件并将其放置在*C:\Program Files\Azure Backup\bin\plugins\SQL*中的位置。
 
 文件的内容应采用以下格式:
-```
+```json
 [
   {
     "Path": "<Restore_Path>",
@@ -205,7 +205,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 以下是一个示例：
 
-```
+```json
 [
   {
    "Path": "F:\\Data\\testdb2_1546408741449456.mdf",
@@ -222,7 +222,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 在上述内容中, 可以使用以下 SQL 查询获取数据库文件的逻辑名称:
 
-```
+```sql
 SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"

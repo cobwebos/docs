@@ -3,7 +3,7 @@ title: Azure Monitor 中的 Azure Active Directory 登录日志架构 |Microsoft
 description: 描述在 Azure Monitor 中使用的 Azure AD 登录日志架构
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e7ae7e90642a6adfd35e71765e2753334660c56
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 7a82cc4da3b9f4f0c654c95b9889a8bf73fd8ec5
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261867"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989612"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解释中的 Azure AD 登录日志架构 Azure Monitor
 
-本文介绍 Azure Monitor 中的 Azure Active Directory (Azure AD) 登录日志架构。 与登录相关的大多数信息都在 `records` 对象的 Properties 属性下提供  。
+本文介绍 Azure Monitor 中的 Azure Active Directory (Azure AD) 登录日志架构。 与登录相关的大多数信息都在 `records` 对象的 Properties 属性下提供。
 
 
 ```json
@@ -143,15 +143,15 @@ ms.locfileid: "68261867"
 
 ## <a name="field-descriptions"></a>字段说明
 
-| 字段名 | 描述 |
+| 字段名称 | 描述 |
 |------------|-------------|
 | Time | 日期和时间 (UTC)。 |
 | resourceId | 此值未映射，可以放心地忽略此字段。  |
-| OperationName | 对于登录，此值始终为“登录活动”  。 |
+| OperationName | 对于登录，此值始终为“登录活动”。 |
 | OperationVersion | 客户端请求的 REST API 版本。 |
-| 类别 | 对于登录，此值始终为“登录”  。 | 
+| 类别 | 对于登录，此值始终为“登录”。 | 
 | TenantId | 与日志关联的租户 GUID。 |
-| ResultType | 登录操作的结果，可以是“成功”或“失败”   。 | 
+| ResultType | 登录操作的结果，可以是“成功”或“失败”。 | 
 | ResultSignature | 包含登录操作的错误代码（如果有）。 |
 | ResultDescription | 提供登录操作的错误说明。 |
 | riskDetail | riskDetail | 提供风险用户、登录或风险事件的特定状态背后的 "原因"。 可能的值包括: `none`、 `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordReset` `adminConfirmedSigninSafe` 、`adminDismissedAllRiskForUser`、、、 、、、和`aiConfirmedSigninSafe` 。`unknownFutureValue` `userPerformedSecuredPasswordChange` `userPassedMFADrivenByRiskBasedPolicy` `adminConfirmedSigninCompromised` 值`none`表示尚未对用户执行任何操作或目前未登录。 <br>**注意：** 此属性的详细信息需要 Azure AD Premium P2 许可证。 其他许可证返回值`hidden`。 |
@@ -163,7 +163,7 @@ ms.locfileid: "68261867"
 | CallerIpAddress | 发出请求的客户端的 IP 地址。 | 
 | CorrelationId | 客户端所传递的可选 GUID。 此值可帮助将客户端操作与服务器端操作关联，并且在跟踪跨服务的日志时非常有用。 |
 | 标识 | 发出请求时提供的令牌中的标识。 可以是用户帐户、系统帐户或服务主体。 |
-| 级别 | 提供消息的类型。 对于审核，它始终是“信息”  。 |
+| 级别 | 提供消息的类型。 对于审核，它始终是“信息”。 |
 | Location | 提供登录活动的位置。 |
 | 属性 | 列出与登录关联的所有属性。有关详细信息，请参阅 [Microsoft Graph API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)。 为提高可读性，此架构使用登录资源中的相同属性名。
 

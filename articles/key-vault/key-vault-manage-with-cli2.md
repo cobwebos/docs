@@ -2,19 +2,18 @@
 title: 使用 CLI 管理 Azure 密钥保管库 - Azure 密钥保管库 | Microsoft Docs
 description: 使用本文通过 Azure CLI 自动执行密钥保管库中的常见任务
 services: key-vault
-author: barclayn
-manager: barbkess
-tags: azure-resource-manager
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 01/10/2019
-ms.author: barclayn
-ms.openlocfilehash: d7d76458601b2afecafc1313e334215bf08b6545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 08/12/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 952126b76b00ff472181c72b1fd7b1a0e1b14e40
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713824"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976349"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 管理密钥保管库 
 
@@ -39,7 +38,7 @@ ms.locfileid: "64713824"
 有关 Azure Key Vault 的概述，请参阅[什么是 Azure Key Vault？](key-vault-whatis.md)
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要使用本文中的 Azure CLI 命令，必须准备好以下各项：
 
@@ -128,7 +127,7 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 此命令的输出会显示创建的 Key Vault 的属性。 两个最重要的属性是：
 
-* **name**：在本示例中，名称为 ContosoKeyVault。 将在其他 Key Vault 命令中使用此名称。
+* **名称**：在本示例中，名称为 ContosoKeyVault。 将在其他 Key Vault 命令中使用此名称。
 * **vaultUri**：在本示例中，URI 为 https://contosokeyvault.vault.azure.net 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 到目前为止，尚未授权其他任何人。

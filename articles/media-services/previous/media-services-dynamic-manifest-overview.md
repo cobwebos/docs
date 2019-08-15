@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: cenkd;juliako
-ms.openlocfilehash: 68eeb40e905d089601208d9fc181042c7b434843
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.openlocfilehash: 1234263fa800a17d0a5c235df54ca2751e3094bb
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956803"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69015849"
 ---
 # <a name="filters-and-dynamic-manifests"></a>筛选器和动态清单
 
-> [!div class="op_single_selector" title1="选择正在使用的媒体服务的版本："]
+> [!div class="op_single_selector" title1="选择你使用的媒体服务的版本:"]
 > * [第 2 版](media-services-dynamic-manifest-overview.md)
 > * [第 3 版](../latest/filters-dynamic-manifest-overview.md)
 
@@ -176,7 +176,7 @@ ms.locfileid: "65956803"
 2. 还可以修改资产的开始时间和结束时间。 为此，可以创建一个本地筛选器并设置开始/结束时间。 
 3. 希望能够将这些筛选器组合起来（如果不组合的话，则需要将质量筛选添加到进行修改的筛选器上，这会导致筛选器的使用更加困难）。
 
-为了组合筛选器，需要在清单/播放列表 URL 中设置筛选器名称，用分号对名称进行分隔。 假设你有一个名为 MyMobileDevice  的筛选器，用于筛选质量，另外还有一个名为 MyStartTime  的筛选器，用于设置具体的开始时间。 可以将它们组合成下面这样：
+为了组合筛选器，需要在清单/播放列表 URL 中设置筛选器名称，用分号对名称进行分隔。 假设你有一个名为 MyMobileDevice 的筛选器，用于筛选质量，另外还有一个名为 MyStartTime 的筛选器，用于设置具体的开始时间。 可以将它们组合成下面这样：
 
     http://teststreaming.streaming.mediaservices.windows.net/3d56a4d-b71d-489b-854f-1d67c0596966/64ff1f89-b430-43f8-87dd-56c87b7bd9e2.ism/Manifest(filter=MyMobileDevice;MyStartTime)
 
@@ -195,7 +195,7 @@ ms.locfileid: "65956803"
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [将内容传送到客户概述](media-services-deliver-content-overview.md)
 
 [renditions1]: ./media/media-services-dynamic-manifest-overview/media-services-rendition-filter.png

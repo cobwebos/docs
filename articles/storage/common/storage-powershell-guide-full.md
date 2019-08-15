@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 082033cebc68fc97f7cff9ce80eb02acbbf5f4b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac210a03f8b1a0a5f7fff07cbc68b4cd6bc98632
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65145878"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016348"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>对 Azure 存储 使用 Azure PowerShell
 
-Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 针对 Azure 存储，将这些 cmdlet 划分为两个类别 -- 控制平面和数据平面。 控制平面 cmdlet 用于管理存储帐户，即创建存储帐户、设置属性、删除存储帐户、轮换访问密钥等。 数据平面 cmdlet 用于管理存储帐户中  存储的数据。 例如，上传 blob、创建文件共享以及将消息添加到队列。
+Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 针对 Azure 存储，将这些 cmdlet 划分为两个类别 -- 控制平面和数据平面。 控制平面 cmdlet 用于管理存储帐户，即创建存储帐户、设置属性、删除存储帐户、轮换访问密钥等。 数据平面 cmdlet 用于管理存储帐户中存储的数据。 例如，上传 blob、创建文件共享以及将消息添加到队列。
 
 本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 学习如何：
 
@@ -42,7 +42,7 @@ Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure �
 
 有关存储帐户的详细信息，请参阅[存储简介](storage-introduction.md)和[关于 Azure 存储帐户](storage-create-storage-account.md)。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录  Azure
 
 运行 `Connect-AzAccount` 命令以登录 Azure 订阅，并按照屏幕上的说明操作。
 
@@ -127,13 +127,13 @@ SKU 名称指示用于存储帐户的复制类型，如 LRS（本地冗余存储
 
 若要更改存储帐户的设置，请使用 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount)。 虽然无法更改存储帐户的位置或该帐户所在的资源组，但可以更改许多其他属性。 下面列出一些可使用 PowerShell 更改的属性。
 
-* 分配给存储帐户的自定义域  。
+* 分配给存储帐户的自定义域。
 
-* 分配给存储帐户的标记  。 标记通常用于分类资源以进行计费。
+* 分配给存储帐户的标记。 标记通常用于分类资源以进行计费。
 
-* SKU  是存储帐户的复制设置，例如 LRS（对于本地冗余存储）。 例如，可能会从标准\_LRS 更改为标准\_GRS 或标准\_RAGRS。 请注意，无法将 Standard\_ZRS 或 Premium\_LRS 更改为其他 SKU，反之亦然。
+* SKU 是存储帐户的复制设置，例如 LRS（对于本地冗余存储）。 例如，可能会从标准\_LRS 更改为标准\_GRS 或标准\_RAGRS。 请注意, 不能将\_标准的 ZRS\_、standard GZRS\_、standard RAGZRS 或\_Premium LRS 更改为其他 sku, 或将其他 sku 更改为这些 sku。
 
-* Blob 存储帐户的访问层  。 将访问层的值设置为“热”  或“冷”  ，并允许用户通过选择符合存储帐户使用方式的访问层来最大限度地降低成本。 有关详细信息，请参阅[热、冷存储层和存档存储层](../blobs/storage-blob-storage-tiers.md)。
+* Blob 存储帐户的访问层。 将访问层的值设置为“热”或“冷”，并允许用户通过选择符合存储帐户使用方式的访问层来最大限度地降低成本。 有关详细信息，请参阅[热、冷存储层和存档存储层](../blobs/storage-blob-storage-tiers.md)。
 
 * 仅允许 HTTPS 流量。
 
@@ -189,9 +189,9 @@ Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccou
 
 [Azure 存储分析](storage-analytics.md)由[存储分析度量值](/rest/api/storageservices/about-storage-analytics-metrics)和[存储分析日志记录](/rest/api/storageservices/about-storage-analytics-logging)组成。
 
-存储分析度量值  用于收集 Azure 存储帐户的度量值，可用于监视存储帐户的运行情况。 可针对 blob、文件、表和队列启用度量值。
+存储分析度量值用于收集 Azure 存储帐户的度量值，可用于监视存储帐户的运行情况。 可针对 blob、文件、表和队列启用度量值。
 
-存储分析日志记录  在服务器端执行，可用于记录对存储帐户的成功和失败请求的相关详细信息。 使用这些日志，可以查看针对表、队列和 Blob 的读取、写入和删除操作的详细信息，以及请求失败的原因。 日志记录不可用于 Azure 文件。
+存储分析日志记录在服务器端执行，可用于记录对存储帐户的成功和失败请求的相关详细信息。 使用这些日志，可以查看针对表、队列和 Blob 的读取、写入和删除操作的详细信息，以及请求失败的原因。 日志记录不可用于 Azure 文件。
 
 可以使用 [Azure 门户](https://portal.azure.com)或 PowerShell 配置监视，也可以使用存储客户端库以编程方式配置监视。
 
@@ -223,7 +223,7 @@ Azure Cosmos DB 表 API 提供了用于表存储的高级功能，如统包全�
 大多数人为其全球 Azure 部署使用了 Azure 公有云。 但出于主权等方面的原因，还存在一些独立的 Microsoft Azure 部署。 这些独立部署称为“环境”。 可用环境如下：
 
 * [Azure 政府云](https://azure.microsoft.com/features/gov/)
-* [由中国 21Vianet 运营的 azure 中国 21Vianet 云](http://www.windowsazure.cn/)
+* [中国世纪互联运营的 Azure 中国世纪互联云](http://www.windowsazure.cn/)
 * [Azure 德国云](../../germany/germany-welcome.md)
 
 有关如何使用 PowerShell 访问这些云及其存储的信息，请参阅[使用 PowerShell 管理 Azure 独立云中的存储](storage-powershell-independent-clouds.md)。

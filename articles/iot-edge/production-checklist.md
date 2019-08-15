@@ -1,32 +1,32 @@
 ---
 title: 准备设备和部署以用于生产 - Azure IoT Edge | Microsoft Docs
-description: 了解如何将 Azure IoT Edge 解决方案从开发环境转移到生产环境，包括在设备上设置相应的证书，并为将来的代码更新创建部署计划。
+description: 了解如何从开发到生产中获取 Azure IoT Edge 解决方案, 包括使用适当的证书设置设备, 并为未来的代码更新制定部署计划。
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/28/2018
+ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: cb72949c0bb543885498b1b997fa0b4a644c204a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45c802fb42088be1eecd7c711c6693d325252c91
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956967"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985787"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
 如果已准备好将 IoT Edge 解决方案从开发环境转移到生产环境，请确保对其进行适当的配置，使其持续保持良好的性能。
 
-本文中提供的信息并非面面俱到。 为帮助你优先处理某些任务，每个部分首先会提供一些列表，将准备工作划分为两个部分：转移到生产环境之前要实施的“重要说明”，以及需要知道的“有用提示”。  
+本文中提供的信息并不完全相同。 为帮助你优先处理某些任务，每个部分首先会提供一些列表，将准备工作划分为两个部分：转移到生产环境之前要实施的“重要说明”，以及需要知道的“有用提示”。
 
 ## <a name="device-configuration"></a>设备配置
 
-IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计算机、服务器上运行的虚拟机，等等。 可通过物理方式或虚拟连接来访问设备，而设备也有可能长时间处于隔离状态。 无论设备处于哪种状态，都需要确保对其进行适当的配置，使其保持良好的性能。 
+IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计算机、服务器上运行的虚拟机，等等。 可通过物理方式或虚拟连接来访问设备，而设备也有可能长时间处于隔离状态。 无论采用哪种方式, 都要确保将其配置为相应工作。 
 
-* 重要说明 
+* **重要说明**
     * 安装生产证书
     * 创建设备管理计划
     * 使用 Moby 作为容器引擎
@@ -52,15 +52,15 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 * IoT Edge 守护程序
 * CA 证书
 
-有关更新 IoT Edge 守护程序的步骤，请参阅[更新 IoT Edge 运行时](how-to-update-iot-edge.md)。 更新 IoT Edge 守护程序的当前方法需要通过物理方式或 SSH 访问 IoT Edge 设备。 若要更新许多设备，请考虑在脚本中添加更新步骤，或使用 Ansible 等自动化工具来执行大规模的更新。
+有关详细信息, 请参阅[更新 IoT Edge 运行时](how-to-update-iot-edge.md)。 更新 IoT Edge 守护程序的当前方法需要通过物理方式或 SSH 访问 IoT Edge 设备。 如果有多个要更新的设备, 请考虑将更新步骤添加到脚本或使用 Ansible 等自动化工具。
 
 ### <a name="use-moby-as-the-container-engine"></a>使用 Moby 作为容器引擎
 
-任何 IoT Edge 设备上都必须安装容器引擎。 生产环境中仅支持 Moby 引擎。 其他容器引擎（例如 Docker）确实也能在 IoT Edge 上正常运行，但最好是将其用于开发。 与 Azure IoT Edge 配合使用时，可以重新分配 Moby 引擎，Microsoft 将为此引擎提供服务。 不支持在 IoT Edge 设备上使用其他容器引擎。
+容器引擎是任何 IoT Edge 设备的必备组件。 生产环境中仅支持 Moby 引擎。 其他容器引擎（例如 Docker）确实也能在 IoT Edge 上正常运行，但最好是将其用于开发。 与 Azure IoT Edge 配合使用时，可以重新分配 Moby 引擎，Microsoft 将为此引擎提供服务。
 
 ### <a name="choose-upstream-protocol"></a>选择上游协议
 
-可为 Edge 代理和 Edge 中心配置协议（因此也包括所用的端口），使上游能够与 IoT 中心通信。 默认协议为 AMQP，但可以根据网络设置更改协议。 
+对于与 IoT 中心的上游通信, 可以同时为 IoT Edge 代理和 IoT Edge 中心配置协议 (以及使用的端口)。 默认协议为 AMQP，但可以根据网络设置更改协议。 
 
 两个运行时模块都包含 **UpstreamProtocol** 环境变量。 该变量的有效值为： 
 
@@ -69,7 +69,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 * MQTTWS
 * AMQPWS
 
-请在设备本身上的 config.yaml 文件中配置 Edge 代理的 UpstreamProtocol 变量。 例如，如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面，则你可能需要将 Edge 代理配置为使用基于 WebSocket 的 AMQP (AMQPWS)，这样才能与 IoT 中心建立初始连接。 
+在设备自身上的 yaml 文件中配置 IoT Edge 代理的 UpstreamProtocol 变量。 例如, 如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面, 则你可能需要将 IoT Edge 代理配置为使用 AMQP over WebSocket (AMQPWS) 来建立与 IoT 中心的初始连接。 
 
 IoT Edge 设备建立连接后，请务必在将来的部署中继续为两个运行时模块配置 UpstreamProtocol 变量。 [将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)中提供了此过程的示例。
 
@@ -77,42 +77,49 @@ IoT Edge 设备建立连接后，请务必在将来的部署中继续为两个�
 
 * **有用提示**
     * 与上游协议保持一致
-    * 减少 Edge 中心使用的内存空间
+    * 为系统模块设置主机存储
+    * 减少 IoT Edge 集线器使用的内存空间
     * 不要使用模块映像的调试版本
 
 ### <a name="be-consistent-with-upstream-protocol"></a>与上游协议保持一致
 
-如果将 IoT Edge 设备上的 Edge 代理配置为使用其他协议而不是默认的 AMQP，则应该在所有后续部署中声明同一协议。 例如，如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面，则你可能已将设备配置为通过基于 WebSocket 的 AMQP (AMQPWS) 进行连接。 将模块部署到设备时，如果不为 Edge 代理和 Edge 中心配置相同的 APQPWS 协议，则默认的 AMQP 将会替代设置，并阻止你重新连接。 
+如果你将 IoT Edge 设备上的 IoT Edge 代理配置为使用不同于默认 AMQP 的协议, 则在将来的所有部署中都应声明相同的协议。 例如，如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面，则你可能已将设备配置为通过基于 WebSocket 的 AMQP (AMQPWS) 进行连接。 将模块部署到设备时, 为 IoT Edge 代理和 IoT Edge 中心配置相同的 APQPWS 协议, 否则, 默认 AMQP 将覆盖设置, 并阻止你再次连接。 
 
-只需为 Edge 代理和 Edge 中心模块配置 UpstreamProtocol 环境变量即可。 其他任何模块将采用运行时模块中设置的任何协议。 
+只需为 IoT Edge 代理和 IoT Edge 中心模块配置 UpstreamProtocol 环境变量。 其他任何模块将采用运行时模块中设置的任何协议。 
 
 [将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)中提供了此过程的示例。
 
-### <a name="reduce-memory-space-used-by-edge-hub"></a>减少 Edge 中心使用的内存空间
+### <a name="set-up-host-storage-for-system-modules"></a>为系统模块设置主机存储
 
-如果部署的受限设备的可用内存有限，可将 Edge 中心配置为以更低的容量运行，并使用更少的磁盘空间。 不过，这些配置确实会限制 Edge 中心的性能，因此，请根据具体的解决方案找到适当的平衡点。 
+IoT Edge 集线器和代理模块使用本地存储来维护状态, 并在模块、设备和云之间启用消息传递。 为了获得更好的可靠性和性能, 请将系统模块配置为使用主机文件系统上的存储。
+
+有关详细信息, 请参阅[主机存储系统模块](offline-capabilities.md#host-storage-for-system-modules)。
+
+### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>减少 IoT Edge 集线器使用的内存空间
+
+如果要部署的受限制设备具有可用的内存, 则可以将 IoT Edge 集线器配置为以更精简的容量运行, 并使用较少的磁盘空间。 不过, 这些配置会限制 IoT Edge 集线器的性能, 因此请找到适合您的解决方案的适当平衡。 
 
 #### <a name="dont-optimize-for-performance-on-constrained-devices"></a>在受限的设备上不要进行性能优化
 
-Edge 中心默认已进行性能优化，因此它会尝试分配较大的内存区块。 在 Raspberry Pi 等小型设备上，此配置可能会影响稳定性。 如果部署的设备的资源受限，建议在 Edge 中心将 **OptimizeForPerformance** 环境变量设置为 **false**。 
+默认情况下, IoT Edge 中心已针对性能进行了优化, 因此它会尝试分配大块内存。 在 Raspberry Pi 等小型设备上，此配置可能会影响稳定性。 如果要部署具有受约束资源的设备, 则可能需要在 IoT Edge 中心将**OptimizeForPerformance**环境变量设置为**false** 。 
 
 有关详细信息，请参阅[资源受限设备的稳定性问题](troubleshoot.md#stability-issues-on-resource-constrained-devices)。
 
 #### <a name="disable-unused-protocols"></a>禁用未使用的协议
 
-优化 Edge 中心的性能并减少其内存用量的另一种方法是，针对解决方案中未使用的所有协议禁用协议头。 
+若要优化 IoT Edge 集线器的性能并降低内存使用率, 另一种方法是关闭不在解决方案中使用的任何协议的协议头。 
 
-协议头的配置方式是在部署清单中为 Edge 中心模块设置布尔环境变量。 三个变量如下：
+通过在部署清单中设置 IoT Edge 中心模块的布尔环境变量来配置协议头。 三个变量如下：
 
 * **amqpSettings__enabled**
 * **mqttSettings__enabled**
 * **httpSettings__enabled**
 
-所有三个变量都带有两条下划线，可设置为 true 或 false。  
+所有三个变量都带有两条下划线，可设置为 true 或 false。 
 
 #### <a name="reduce-storage-time-for-messages"></a>减少消息的存储时间
 
-如果出于任何原因无法将消息传送到 IoT 中心，Edge 中心模块会暂时存储消息。 可以配置在未送达的消息过期之前，Edge 中心保存这些消息的时间长短。 如果设备上的内存不足，可在 Edge 中心模块孪生中减小 **timeToLiveSecs** 值。 
+如果由于任何原因无法将消息传送到 IoT 中心, IoT Edge 中心模块会暂时存储消息。 可以配置在使消息过期之前, IoT Edge 集线器在未传递的消息上保留多长时间。 如果设备上存在内存问题, 可以降低 IoT Edge 中心模块克隆中的**timeToLiveSecs**值。 
 
 timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。 
 
@@ -122,7 +129,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ## <a name="container-management"></a>容器管理
 
-* 重要说明 
+* **重要说明**
     * 管理对容器注册表的访问
     * 使用标记管理版本
 
@@ -134,26 +141,26 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ### <a name="use-tags-to-manage-versions"></a>使用标记管理版本
 
-标记是可用于区分版本的 docker 容器的 docker 概念。 标记是附加在容器存储库末尾的后缀（如 **1.0**）。 例如 **mcr.microsoft.com/azureiotedge-agent:1.0**。 标记是可变的，随时可能更改为指向另一容器，因此，团队应该议定一种约定，以便今后在更新模块映像时遵循。 
+标记是一个 docker 概念, 可用于区分 docker 容器的各个版本。 标记是附加在容器存储库末尾的后缀（如 **1.0**）。 例如 **mcr.microsoft.com/azureiotedge-agent:1.0**。 标记是可变的，随时可能更改为指向另一容器，因此，团队应该议定一种约定，以便今后在更新模块映像时遵循。 
 
 标记还可帮助你针对 IoT Edge 设备强制实施更新。 将模块的更新版本推送到容器注册表时，请递增标记。 然后，使用递增的标记将新部署推送到设备。 容器引擎将递增的标记识别为新版本，并将最新模块版本提取到设备。 
 
 有关标记约定的示例，请参阅[更新 IoT Edge 运行时](how-to-update-iot-edge.md#understand-iot-edge-tags)，了解 IoT Edge 如何使用滚动更新标记和特定标记来跟踪版本。 
 
-## <a name="networking"></a>联网
+## <a name="networking"></a>网络
 
 * **有用提示**
     * 检查出站/入站配置
-    * 将连接加入允许列表
+    * 允许来自 IoT Edge 设备的连接
     * 配置为通过代理进行通信
 
 ### <a name="review-outboundinbound-configuration"></a>检查出站/入站配置
 
 Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大多数 IoT Edge 方案，只需建立三个连接。 容器引擎需要连接到保存模块映像的一个或多个容器注册表。 IoT Edge 运行时需要连接到 IoT 中心，以检索设备配置信息，以及发送消息和遥测数据。 如果使用自动预配，则 IoT Edge 守护程序需要连接到设备预配服务。 有关详细信息，请参阅[防火墙和端口配置规则](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment)。
 
-### <a name="whitelist-connections"></a>将连接加入允许列表
+### <a name="allow-connections-from-iot-edge-devices"></a>允许来自 IoT Edge 设备的连接
 
-如果网络设置要求显式将从 IoT Edge 设备建立的连接加入允许列表，请查看以下 IoT Edge 组件列表：
+如果网络设置要求明确允许从 IoT Edge 设备进行的连接, 请查看以下 IoT Edge 组件列表:
 
 * **IoT Edge 代理**可能通过 WebSocket 来与 IoT 中心建立持久性 AMQP/MQTT 连接。 
 * **IoT Edge 中心**可能通过 WebSocket 来与 IoT 中心建立一个持久性 AMQP 连接或多个 MQTT 连接。 
@@ -165,7 +172,7 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 此清单可作为防火墙规则的入手点：
 
-   | URL（\* = 通配符） | 出站 TCP 端口 | 使用情况 |
+   | URL（\* = 通配符） | 出站 TCP 端口 | 用法 |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft 容器注册表 |
    | global.azure-devices-provisioning.net  | 443 | DPS 访问（可选） |
@@ -212,7 +219,7 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 将此信息添加（或附加）到名为 `daemon.json` 的文件，然后将此文件放到设备平台上的适当位置。
 
-| 平台 | 位置 |
+| 平台 | Location |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |

@@ -10,18 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: d1ad89943f6acfec6e42199ef399643be12e2b8b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856238"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946405"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Azure 机器学习服务的企业安全性
 
 在本文中, 你将了解 Azure 机器学习服务中可用的安全功能。
 
-使用云服务时, 最佳做法是仅将访问权限限制为需要它的用户。 首先了解服务使用的身份验证和授权模型。 你可能还希望限制网络访问, 或将本地网络中的资源安全地加入到云中。 数据加密也是非常重要的, 无论是静态的还是在服务之间移动数据。 最后, 您需要能够监视服务并生成所有活动的审核日志。
+使用云服务时, 最佳做法是仅将访问权限限制为需要它的用户。 首先了解服务使用的身份验证和授权模型。 你可能还希望限制网络访问, 或通过云安全地加入本地网络中的资源。 数据加密也是非常重要的, 无论是静态的还是在服务之间移动数据。 最后, 您需要能够监视服务并生成所有活动的审核日志。
 
 ## <a name="authentication"></a>身份验证
 
@@ -29,7 +29,7 @@ ms.locfileid: "68856238"
 
 * 客户端登录 Azure AD, 并获取 Azure 资源管理器令牌。  完全支持用户和服务主体。
 * 客户端将令牌提供给 Azure 资源管理器 & 所有 Azure 机器学习服务
-* Azure 机器学习服务向用户计算提供 Azure 机器学习令牌。 例如, 机器学习计算。 在运行完成后, 用户计算使用此 Azure 机器学习令牌回调到 Azure 机器学习服务 (限制作用域)。
+* Azure 机器学习服务向用户计算提供 Azure 机器学习令牌。 例如, 机器学习计算。 在运行完成后, 用户计算使用此标记回拨到 Azure 机器学习服务 (限制作用域)。
 
 ![显示身份验证在 Azure 机器学习服务中的工作方式的屏幕截图](./media/enterprise-readiness/authentication.png)
 
@@ -151,7 +151,7 @@ Azure 机器学习服务将快照、输出和日志存储在 Azure Blob 存储�
 
 #### <a name="cosmos-db"></a>Cosmos DB
 
-Azure 机器学习服务可将指标和元数据存储到 Azure 机器学习服务管理的 Microsoft 订阅中的 Cosmos DB。 使用 Microsoft 托管密钥以静态加密存储在 Cosmos DB 中的所有数据。
+Azure 机器学习服务可将指标和元数据存储到 Azure 机器学习服务管理的 Microsoft 订阅中的 Cosmos DB。 Cosmos DB 中存储的所有数据都使用 Microsoft 托管密钥进行静态加密。
 
 #### <a name="azure-container-registry-acr"></a>Azure 容器注册表 (ACR)
 
@@ -159,8 +159,8 @@ Azure 机器学习服务可将指标和元数据存储到 Azure 机器学习服�
 
 #### <a name="machine-learning-compute"></a>机器学习计算
 
-每个计算节点的 OS 磁盘存储在 Azure 存储中, 使用 Microsoft 托管密钥在 Azure 机器学习服务存储帐户中进行加密。 此计算是暂时的, 当没有排队的排队时, 通常会缩小群集。 底层虚拟机已取消预配, 操作系统磁盘已删除。 OS 磁盘不支持 Azure 磁盘加密。
-每个虚拟机还具有一个本地临时磁盘用于操作系统操作。 还可以选择使用此磁盘来暂存定型数据。 此磁盘未加密。
+每个计算节点的 OS 磁盘存储在 Azure 存储中, 使用 Azure 机器学习服务存储帐户中的 Microsoft 托管密钥进行加密。 此计算目标是暂时的, 并且当没有排队的运行时, 通常会缩减群集。 底层虚拟机已取消预配, 操作系统磁盘已删除。 OS 磁盘不支持 Azure 磁盘加密。
+每个虚拟机还具有一个本地临时磁盘用于操作系统操作。 还可以选择使用磁盘来暂存定型数据。 磁盘未加密。
 若要深入了解 Azure 中的静态加密如何工作, 请参阅[Azure 静态数据加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)。
 
 ### <a name="encryption-in-transit"></a>传输中加密
@@ -199,7 +199,12 @@ Azure Monitor 指标可用于查看和监视 Azure 机器学习服务工作区�
 
 ![显示工作区下的活动日志的屏幕截图](./media/enterprise-readiness/workspace-activity-log.png)
 
-评分请求详细信息存储在 AppInsights 中, 在创建工作区时在用户的订阅中创建。 其中包括 HTTPMethod、UserAgent、ComputeType、RequestUrl、StatusCode、RequestId、Duration 等等字段。
+评分请求详细信息存储在应用程序见解中, 这是在创建工作区时在用户的订阅中创建的。 记录的信息包括 HTTPMethod、UserAgent、ComputeType、RequestUrl、StatusCode、RequestId、Duration 等等字段。
+
+> [!IMPORTANT]
+> Azure 机器学习工作区中的某些操作不会将信息记录到活动日志。 例如, 启动定型运行或注册模型。
+>
+> 其中的一些操作显示在工作区的 "__活动__" 区域中, 但并不表示启动了活动的人员。
 
 ## <a name="data-flow-diagram"></a>数据流关系图
 
@@ -220,7 +225,7 @@ Azure Monitor 指标可用于查看和监视 Azure 机器学习服务工作区�
 ### <a name="save-source-code-training-scripts"></a>保存源代码 (训练脚本)
 
 下图显示了代码快照工作流。
-与 Azure 机器学习服务工作区关联的是目录 (试验), 其中包含源代码 (训练脚本)。  它们存储在客户的本地计算机和云中 (在客户的订阅下的 Azure Blob 存储中)。 这些代码快照用于执行或检查历史审核。
+与 Azure 机器学习服务工作区关联的是目录 (试验), 其中包含源代码 (训练脚本)。  这些脚本存储在客户的本地计算机和云中 (在客户的订阅下的 Azure Blob 存储中)。 代码快照用于执行或检查历史审核。
 
 ![显示创建工作区工作流的屏幕截图](./media/enterprise-readiness/code-snapshot.png)
 
@@ -233,12 +238,12 @@ Azure Monitor 指标可用于查看和监视 Azure 机器学习服务工作区�
 * 你可以选择托管计算 (例如 机器学习计算) 或非托管计算 (例如 VM) 来运行您的培训作业。 以下两种方案都说明了数据流:
 * (VM/HDInsight-在 Microsoft 订阅中 Key Vault 中使用 SSH 凭据进行访问)Azure 机器学习服务在以下计算目标上运行管理代码:
 
-   1. 准备环境。 (请注意, Docker 也是适用于 VM 和本地的选项。 请参阅以下步骤, 机器学习计算来了解如何在 docker 容器上运行试验。)
+   1. 准备环境。 (Docker 也是适用于 VM 和本地的选项。 请参阅以下步骤, 机器学习计算来了解如何在 docker 容器上运行试验。)
    1. 下载代码。
    1. 设置环境变量和配置。
    1. 运行用户脚本 (上面提到的代码快照)。
 
-* (机器学习计算–使用工作区托管标识访问)请注意, 由于机器学习计算是托管计算, 因此它由 Microsoft 管理, 因此它在 Microsoft 订阅下运行。
+* (机器学习计算–使用工作区管理的标识访问)由于机器学习计算是托管计算, 因此它由 Microsoft 管理, 因此它在 Microsoft 订阅下运行。
 
    1. 如果需要, 将启动远程 Docker 构造。
    1. 将管理代码写入用户 Azure 文件共享。
@@ -259,7 +264,7 @@ Azure Monitor 指标可用于查看和监视 Azure 机器学习服务工作区�
 * 用户使用模型、分数文件和其他模型依赖项创建图像
 * Docker 映像将创建并存储在 ACR 中
 * Webservice 使用上面创建的映像部署到计算目标 (ACI/AKS)
-* 评分请求详细信息存储在 AppInsights 中, 后者位于用户的订阅中
+* 评分请求详细信息存储在应用程序见解中, 这是用户的订阅
 * 遥测还会推送到 Microsoft/Azure 订阅
 
 ![显示创建工作区工作流的屏幕截图](./media/enterprise-readiness/inferencing.png)

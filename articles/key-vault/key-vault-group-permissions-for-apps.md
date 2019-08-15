@@ -3,18 +3,18 @@ title: 向多个应用程序授予 Azure 密钥保管库的访问权限 - Azure 
 description: 了解如何为多个应用程序授予密钥保管库的访问权限
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 01/07/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: b1d0b0948e089d41f460ac2a54150ee51333f87c
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
-ms.translationtype: MT
+ms.openlocfilehash: 07ee544057ffeb0a5859cc771b124523ec79c9c0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64721995"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976403"
 ---
 # <a name="grant-several-applications-access-to-a-key-vault"></a>授予多个应用程序访问密钥保管库的权限
 
@@ -26,7 +26,7 @@ ms.locfileid: "64721995"
 2. 将应用程序的所有关联服务主体添加到安全组。
 3. 授予安全组访问 Key Vault 的权限。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 以下是先决条件：
 * [安装 Azure PowerShell](/powershell/azure/overview)。

@@ -1,6 +1,6 @@
 ---
 title: Azure 应用服务诊断概述 | Microsoft Docs
-description: 了解如何使用你的应用使用应用服务诊断排查问题。
+description: 了解如何通过应用服务诊断排查应用问题。
 keywords: 应用服务, azure 应用服务, 诊断, 支持, web 应用, 故障排除, 自助服务
 services: app-service
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: f2f798be85e9c3aeb8d4b54cba89d8be059427e0
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 50caa666245b0401c2c584f0a357ca6bfa53230c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147347"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945623"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure 应用服务诊断概述
 
@@ -32,83 +32,87 @@ ms.locfileid: "67147347"
 
 ## <a name="open-app-service-diagnostics"></a>打开应用服务诊断
 
-若要访问应用服务诊断，请导航到你的应用服务 web 应用或应用服务环境[Azure 门户](https://portal.azure.com)。 在左侧导航栏中，单击“诊断并解决问题”。 
+若要访问应用服务诊断, 请导航到应用服务 web 应用或[Azure 门户](https://portal.azure.com)中的应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。
 
-对于 Azure Functions 中，导航到 function app 中，然后在顶部导航栏中，单击**平台功能**，然后选择**诊断并解决问题**从**资源管理**部分。
+对于 "Azure Functions", 导航到 function app, 然后在顶部导航栏中, 单击 "**平台功能**", 然后从 "**资源管理**" 部分选择 "**诊断和解决问题**"。
 
-在应用服务诊断主页中，可以选择在每个主页磁贴中使用关键字适合您的应用程序的问题的类别。 此外，此页是在哪里可以找到**诊断工具**用于 Windows 的应用程序。 请参阅[诊断工具 （仅适用于 Windows 应用）](#diagnostic-tools-only-for-windows-app)。
+在应用服务诊断主页中, 可以通过使用每个主页磁贴中的关键字, 选择最能描述应用问题的类别。 此外, 还可以在此页中找到 Windows 应用的**诊断工具**。 请参阅[诊断工具 (仅适用于 Windows 应用)](#diagnostic-tools-only-for-windows-app)。
 
 ![主页](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
 
 ## <a name="interactive-interface"></a>交互式接口
 
-一旦选择主页类别最适合于您的应用程序的问题，应用服务诊断交互式界面，精灵，可以指导您完成诊断和解决您的应用程序问题。 提供的精灵磁贴快捷方式可用于查看完整诊断报告的问题类别感兴趣。 磁贴快捷方式提供了直接访问诊断指标的方式。
+选择最适合你的应用程序问题的 "主页" 类别后, 应用服务诊断的交互式界面精灵可以指导你完成诊断和解决应用的问题。 可以使用精灵提供的磁贴快捷方式查看感兴趣的问题类别的完整诊断报告。 磁贴快捷方式为您提供了一种访问诊断指标的直接方式。
 
 ![磁贴快捷方式](./media/app-service-diagnostics/tile-shortcuts-2.png)
 
-单击这些磁贴上后，可以看到与磁贴中所述的问题相关的主题列表。 这些主题提供完整报表中值得注意信息的片段。 您可以单击任意这些主题以调查进一步的问题。 此外，你可以单击**查看完整报告**浏览单个页面上的所有主题。
+单击这些磁贴后, 可以看到与磁贴中所述问题相关的主题列表。 这些主题提供完整报告的重要信息片段。 您可以单击这些主题中的任何一种, 进一步调查问题。 此外, 还可以单击 "**查看完整报表**" 来浏览单个页面上的所有主题。
 
 ![主题](./media/app-service-diagnostics/application-logs-insights-3.png)
 
-![查看完整报告](./media/app-service-diagnostics/view-full-report-4.png)
+![查看完整报表](./media/app-service-diagnostics/view-full-report-4.png)
 
 ## <a name="diagnostic-report"></a>诊断报告
 
-选择要进一步调查此问题通过单击一个主题后，可以查看关于该主题通常补充，使用图表和 markdown 的更多详细信息。 诊断报表可用于查明您的应用程序的问题的强大工具。
+通过单击某个主题选择进一步调查问题后, 可以查看有关该主题的更多详细信息, 这些详细信息通常使用图形和 markdown 来补充。 诊断报告是一种功能强大的工具, 可用于查明应用的问题。
 
 ![诊断报告](./media/app-service-diagnostics/full-diagnostic-report-5.png)
 
 ## <a name="health-checkup"></a>运行状况检查
 
-如果不知道什么是与您的应用程序错误或不知道从何处着手排查问题，运行状况检查是一个良好起点。 运行状况检查分析您的应用程序为您提供快速的交互式概述，指出内容处于正常状态，什么是错，告诉您查找要调查此问题的位置。 使用其智能交互式界面可逐步完成故障排除的过程。 运行状况检查的 Windows 应用和 web 应用程序向下诊断精灵体验集成的 Linux 应用的报表。
+如果您不知道您的应用程序的问题, 或者不知道从何处着手排查您的问题, 则运行状况检查是一个不错的开端。 运行状况检查会分析你的应用程序, 以便为你快速、交互式地概述如何确定运行状况和错误, 并告诉你在何处查找问题。 使用其智能交互式界面可逐步完成故障排除的过程。 运行状况检查与适用于 Linux 应用的 Windows 应用和 web 应用的精灵体验集成。
 
-### <a name="health-checkup-graphs"></a>运行状况检查关系图
+### <a name="health-checkup-graphs"></a>运行状况检查图
 
-运行状况检查中有四个不同的图形。
+运行状况检查有四个不同的关系图。
 
-- **请求和错误：** 显示过去 24 小时内 HTTP 服务器错误以及发出的请求数的关系图。
-- **应用程序性能：** 为不同的百分位组最近 24 小时之内显示响应时间的关系图。
-- **CPU 使用情况：** 最近 24 小时之内显示每个实例的 CPU 使用率总体百分比的关系图。  
-- **内存使用情况：** 最近 24 小时之内显示每个实例的整体百分比的物理内存使用量的关系图。
+- **请求和错误:** 显示过去24小时内发出的请求数以及 HTTP 服务器错误的图表。
+- **应用程序性能:** 显示过去24小时内各个百分位组的响应时间的图表。
+- **CPU 使用率:** 显示过去24小时内每个实例的总 CPU 使用率的图表。  
+- **内存使用率:** 显示过去24小时内每个实例的总物理内存使用百分比的图表。
 
 ![运行状况检查](./media/app-service-diagnostics/health-checkup-6.png)
 
-### <a name="investigate-application-code-issues-only-for-windows-app"></a>调查应用程序代码问题 （仅适用于 Windows 应用程序）
+### <a name="investigate-application-code-issues-only-for-windows-app"></a>调查应用程序代码问题 (仅适用于 Windows 应用)
 
-因为许多应用问题与应用程序代码中的问题相关，所以应用服务诊断集成了 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 来突出显示异常和依赖项问题，以便与所选故障时间进行关联。 Application Insights 提供单独启用。
+因为许多应用问题与应用程序代码中的问题相关，所以应用服务诊断集成了 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 来突出显示异常和依赖项问题，以便与所选故障时间进行关联。 必须单独启用 Application Insights。
 
 ![Application Insights](./media/app-service-diagnostics/application-insights-7.png)
 
-若要查看 Application Insights 异常和依赖项，请选择**下的 web 应用**或**web 应用运行速度缓慢**磁贴快捷方式。
+若要查看 Application Insights 异常和依赖项, 请选择 "**关闭 web 应用**" 或 " **web 应用慢速**磁贴快捷方式"。
 
-### <a name="troubleshooting-steps-only-for-windows-app"></a>（仅适用于 Windows 应用） 的故障排除步骤
+### <a name="troubleshooting-steps-only-for-windows-app"></a>故障排除步骤 (仅适用于 Windows 应用)
 
-如果检测到问题的特定问题类别与过去 24 小时内，你可以查看完整诊断报告，并应用服务诊断可能会提示你查看更多故障排除建议和针对多引导式体验下的一步。
+如果在过去24小时内检测到具有特定问题类别的问题, 则可以查看完整的诊断报告, 应用服务诊断可能会提示你查看更多的故障排除建议和后续步骤, 以获得更多引导式体验。
 
-![Application Insights 和故障排除和后续步骤](./media/app-service-diagnostics/troubleshooting-and-next-steps-8.png)
+![Application Insights 和疑难解答及后续步骤](./media/app-service-diagnostics/troubleshooting-and-next-steps-8.png)
 
-## <a name="diagnostic-tools-only-for-windows-app"></a>诊断工具 （仅适用于 Windows 应用程序）
+## <a name="diagnostic-tools-only-for-windows-app"></a>诊断工具 (仅适用于 Windows 应用)
 
-诊断工具包括更高级的诊断工具，帮助调查应用程序代码问题，以便运行缓慢、 连接字符串和的详细信息。 并主动工具，可帮助您缓解与 CPU 使用情况、 请求和内存的问题。
+诊断工具包括更高级的诊断工具, 可帮助您调查应用程序代码问题、缓慢、连接字符串等。 和预防性工具, 可帮助你缓解 CPU 使用情况、请求数和内存问题。
 
 ### <a name="proactive-cpu-monitoring"></a>主动 CPU 监视
 
-主动 CPU 监视提供了一种简单主动的方法来执行操作时为你的应用在应用程序或子进程正在占用高的 CPU 资源。 可以设置自己的 CPU 阈值规则，以暂时缓解高 CPU 问题，直到找到意外的问题的真正原因。
+主动 CPU 监视为你的应用程序或子进程消耗高 CPU 资源时, 提供一种简单且主动的方式来执行操作。 你可以设置自己的 CPU 阈值规则, 以暂时降低 CPU 严重问题, 直到发现意外问题的真正原因。
 
 ![主动 CPU 监视](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
-### <a name="proactive-auto-healing"></a>主动预防性自动修复
+### <a name="auto-healing-and-proactive-auto-healing"></a>自动修复和主动自动修复
 
-类似于主动监视 CPU，主动预防性自动修复提供了缓解您的应用程序的意外的行为的简单、 主动方法。 您可以设置规则根据请求计数、 缓慢的请求、 内存限制和触发缓解操作的 HTTP 状态代码。 此工具可以用于暂时缓解意外的行为，直至找到问题的真正原因。 主动预防性自动修复的详细信息，请访问[宣布推出新的自动修复应用服务诊断中的体验](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html)。
+自动修复是应用遇到意外行为时可以采取的缓解措施。 您可以基于请求计数、慢速请求、内存限制和 HTTP 状态代码设置自己的规则, 以触发缓解操作。 使用此工具可暂时降低意外行为, 直到找到根本原因。
 
-![主动预防性自动修复](./media/app-service-diagnostics/proactive-auto-healing-10.png)
+![自动修复](./media/app-service-diagnostics/auto-healing-10.png)
 
-## <a name="change-analysis-only-for-windows-app"></a>更改分析 （仅适用于 Windows 应用程序）
+与主动 CPU 监视一样, 主动自动修复是一种用于缓解应用程序意外行为的关键解决方案。 当应用服务确定应用处于不可恢复的状态时, 主动自动修复会重启应用。 有关详细信息, 请参阅[在应用服务诊断中发布新的自动修复体验](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html)。
 
-在快节奏的开发环境中，有时可能会很难跟踪的对您的应用程序所做的所有更改，并允许单独 pinpoint 上导致不正常的行为的更改。 更改分析可帮助你缩小以便排除体验对你的应用所做的更改。 更改分析中找到**应用程序更改**并且还如嵌入在诊断报告**应用程序崩溃**以便可以与其他指标同时使用它。
+## <a name="navigator-and-change-analysis-only-for-windows-app"></a>导航器和更改分析 (仅适用于 Windows 应用)
 
-更改分析必须使用功能之前启用。 更改分析的详细信息，请访问[宣布推出应用服务诊断中的新更改分析体验](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html)。
+在具有持续集成并且应用具有许多依赖项的大型团队中, 可能很难确定导致行为不正常的特定更改。 导航器通过自动渲染应用的依赖项映射和同一订阅中的所有资源, 帮助查看应用的拓扑。 导航器使你可以查看应用及其依赖项所做的更改的合并列表, 并缩小导致不正常行为的更改范围。 它可通过主页磁贴**导航器**进行访问, 在首次使用前需要启用。 有关详细信息, 请参阅[利用导航器了解应用的依赖项](https://azure.github.io/AppService/2019/08/06/Bring-visibility-to-your-app-and-its-dependencies-with-Navigator.html)。
 
-![更改分析默认页](./media/app-service-diagnostics/change-analysis-default-page-11.png)
+![导航器默认页](./media/app-service-diagnostics/navigator-default-page-11.png)
 
 ![差异视图](./media/app-service-diagnostics/diff-view-12.png)
+
+可以通过磁贴快捷方式、**应用程序更改**和**应用程序**在**可用性和性能**方面的崩溃来访问应用更改的更改分析, 使你可以同时与其他指标一起使用。 在使用此功能之前, 必须首先启用它。 有关详细信息, 请参阅发布[应用服务诊断中的新更改分析体验](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html)。
+
+通过在标题中添加 "[诊断]", 在[UserVoice](https://feedback.azure.com/forums/169385-web-apps)上发布你的问题或反馈。

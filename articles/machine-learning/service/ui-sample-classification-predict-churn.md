@@ -1,5 +1,5 @@
 ---
-title: 分类预测流失 + 亲和力 + 向上销售
+title: '视觉对象接口示例 #5:用于预测流失的分类 + 亲和力 + 向上销售'
 titleSuffix: Azure Machine Learning service
 description: 此视觉对象接口示例试验显示了对变动的二进制分类器预测, 这是客户关系管理 (CRM) 的常见任务。
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: a0b3e3de604e7c59ea6a06bd59007964c98e0057
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a2eabdd601fcf350d2076d33882e3d90255fee92
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845985"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016467"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>示例 5-分类:预测变动率、亲和力和向上销售 
 
@@ -29,7 +29,7 @@ ms.locfileid: "68845985"
 
 ![试验图](./media/ui-sample-classification-predict-churn/experiment-graph.png)
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

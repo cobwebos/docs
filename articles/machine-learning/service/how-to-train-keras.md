@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4f2bf5c762b6f93c2d23714d860e8261f6756d1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e7646330d9d89d5257a991b5095b7b6814aa3ba9
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847694"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966821"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>使用 Azure 机器学习 service 定型和注册 Keras 分类模型
 
@@ -28,7 +28,7 @@ Keras 是一种高级神经网络 API, 能够运行其他流行的 DNN 框架, �
 
 有关机器学习和深度学习之间的差异的信息, 请参阅[概念文章](concept-deep-learning-vs-machine-learning.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 在以下任一环境中运行此代码:
 
@@ -207,3 +207,7 @@ for f in run.get_file_names():
 
 > [!div class="nextstepaction"]
 > [部署模型的方式和位置](how-to-deploy-and-where.md)
+* [在训练期间跟踪运行指标](how-to-track-experiments.md)
+* [优化超参数](how-to-tune-hyperparameters.md)
+* [部署定型的模型](how-to-deploy-and-where.md)
+* [Azure 中的分布式深层学习培训参考体系结构](/azure/architecture/reference-architectures/ai/training-deep-learning)

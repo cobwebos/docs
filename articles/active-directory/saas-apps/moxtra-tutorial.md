@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: f22f70c587556793c2b02fc79fa6175584b0c5cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f64597d8da183a24bcf87543a448442052e5f77
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096644"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944270"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxtra"></a>教程：Azure Active Directory 与 Moxtra 的集成
 
@@ -106,13 +106,13 @@ ms.locfileid: "67096644"
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://www.moxtra.com/service/#login`
 
-5. Moxtra 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****   ****  。
+5. Moxtra 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
     ![image](common/edit-attribute.png)
 
 6. 除了上述属性，Moxtra 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示： 
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ------------------- | -------------------- |    
     | 名 | user.givenname |
     | 姓 | user.surname |

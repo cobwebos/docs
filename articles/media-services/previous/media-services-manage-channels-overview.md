@@ -14,17 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c5dd0146fe59e7dc85787f146b10cfde7d6addb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45089c77ff2fed7ea5903333514f4d4edbad7cb3
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64867896"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "69015547"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>使用媒体服务实时传送视频流概述
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>概述
 
@@ -51,11 +51,11 @@ ms.locfileid: "64867896"
 
 ## <a name="streaming-endpoints-channels-programs"></a>流式处理终结点、频道、节目
 
-在 Azure 媒体服务中，“频道”  、“程序”  和“流式处理终结点”  处理所有实时传送视频流功能，包括引入、格式化、DVR、安全性、可伸缩性和冗余。
+在 Azure 媒体服务中，“频道”、“程序”和“流式处理终结点”处理所有实时传送视频流功能，包括引入、格式化、DVR、安全性、可伸缩性和冗余。
 
 **频道** 表示用于处理实时流内容的管道。 通道可以通过以下方式接收实时输入流：
 
-* 本地实时编码器将多比特率 RTMP 或平滑流式处理（零碎的 MP4）发送到经配置可以进行直通传送的频道    。 **直通**传送是指引入的流会直接通过**频道**，而不会经过任何进一步的处理。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek 和 Tricaster 转码器。  实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 收到请求时，媒体服务会将该流传递给客户。
+* 本地实时编码器将多比特率 RTMP 或平滑流式处理（零碎的 MP4）发送到经配置可以进行直通传送的频道。 **直通**传送是指引入的流会直接通过**频道**，而不会经过任何进一步的处理。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek 和 Tricaster 转码器。  实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 收到请求时，媒体服务会将该流传递给客户。
 
   > [!NOTE]
   > 需要长时间处理多个事件，并且已经在本地编码器上进行了投入时，可以使用直通这种最经济的方法来实时传送视频流。 请参阅 [定价](https://azure.microsoft.com/pricing/details/media-services/) 详细信息。
@@ -72,7 +72,7 @@ ms.locfileid: "64867896"
 
 可以通过下表来了解媒体服务中支持的两种通道类型的比较情况
 
-| Feature | 直通通道 | 标准通道 |
+| 功能 | 直通通道 | 标准通道 |
 | --- | --- | --- |
 | 单比特率输入在云中被编码为多比特率 |否 |是 |
 | 最大分辨率，层数 |1080p，8 层，60+fps |720p，6 层，30 fps |
@@ -114,7 +114,7 @@ ms.locfileid: "64867896"
 
 创建通道时，可以使用以下格式之一指定允许的 IP 地址：具有 4 个数字、CIDR 地址范围的 IpV4 地址。
 
-### <a name="program"></a>节目
+### <a name="program"></a>计划
 [节目](https://docs.microsoft.com/rest/api/media/operations/program)用于控制实时流中片段的发布和存储。 频道管理节目。 频道和节目的关系非常类似于传统媒体，频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。
 可以通过设置 **ArchiveWindowLength** 属性，指定希望保留多少小时的节目录制内容。 此值的设置范围是最短 5 分钟，最长 25 小时。
 
@@ -162,7 +162,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>相关主题
-[Azure 媒体服务分片 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
+[Azure 媒体服务分片 MP4 实时引入规范](../media-services-fmp4-live-ingest-overview.md)
 
 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)
 

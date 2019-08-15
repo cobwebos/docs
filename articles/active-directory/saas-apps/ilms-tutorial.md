@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b2e012a4ce8ac4a9a5afb895d545beb0a0b8946
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50097aec1c4a003d3494029e8f25bb13b564f207
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100622"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944026"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>教程：将 iLMS 与 Azure Active Directory 集成
 
@@ -88,14 +88,14 @@ ms.locfileid: "67100622"
 
     在“登录 URL”文本框中，粘贴从 iLMS 管理门户上“SAML 设置”的“服务提供程序”部分中复制的、采用 `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx` 模式的“终结点(URL)”值   
 
-1. 要启用 JIT 预配，iLMS 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
+1. 要启用 JIT 预配，iLMS 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
     > [!NOTE]
     > 必须在 iLMS 中启用“创建不可识别的用户帐户”才能映射这些属性。  遵照[此处](https://support.inspiredelearning.com/help/adding-updating-and-managing-users#just-in-time-provisioning-with-saml-single-signon)的说明获取有关属性配置的思路。
 
 1. 除了上述属性，iLMS 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | --------|------------- |
     | division | user.department |
     | region | user.state |

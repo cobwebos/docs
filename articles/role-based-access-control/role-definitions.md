@@ -15,12 +15,12 @@ ms.date: 06/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 9f5f9b3595074c26c80c824052727e962b01162a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: ece5d8f9733dde57c2990bfbb6bb90305d8bc37d
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275048"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977192"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>了解 Azure 资源的角色定义
 
@@ -28,7 +28,7 @@ ms.locfileid: "67275048"
 
 ## <a name="role-definition-structure"></a>角色定义结构
 
-*角色定义*是权限的集合。 它有时简称为“角色”  。 角色定义列出可以执行的操作，例如读取、写入和删除。 它还可以列出不能执行的操作，或者与基础数据相关的操作。 角色定义具有以下结构：
+*角色定义*是权限的集合。 它有时简称为“角色”。 角色定义列出可以执行的操作，例如读取、写入和删除。 它还可以列出不能执行的操作，或者与基础数据相关的操作。 角色定义具有以下结构：
 
 ```
 Name
@@ -52,8 +52,8 @@ AssignableScopes []
 | ------------------- | ------------------- |
 | `*` | 通配符授予对与字符串匹配的所有操作的访问权限。 |
 | `read` | 允许读取操作 (GET)。 |
-| `write` | 启用写操作 （PUT 或 PATCH）。 |
-| `action` | 使自定义操作，例如重新启动虚拟机 (POST)。 |
+| `write` | 允许写入操作（PUT 或 PATCH）。 |
+| `action` | 允许自定义操作，如重启虚拟机 (POST)。 |
 | `delete` | 允许删除操作 (DELETE)。 |
 
 下面是 JSON 格式的[参与者](built-in-roles.md#contributor)角色定义。 `Actions` 下的通配符 (`*`) 操作表示分配给此角色的主体可以执行所有操作，换句话说，它可以管理所有内容。 这包括将来定义的操作，因为 Azure 会添加新的资源类型。 `NotActions` 下的操作会从 `Actions` 中减去。 就[参与者](built-in-roles.md#contributor)角色而言，`NotActions` 去除了此角色管理资源访问权限以及分配资源访问权限的能力。
@@ -90,7 +90,7 @@ AssignableScopes []
 
 数据不会继承管理访问权限。 此分隔可防止带通配符 (`*`) 的角色无限制地访问数据。 例如，如果用户对订阅具有[读取者](built-in-roles.md#reader)角色，则他们可以查看存储帐户，但他们默认无法查看基础数据。
 
-以前，基于角色的访问控制不用于数据操作。 数据操作的授权根据资源提供程序的不同而异。 用于管理操作的同一个基于角色的访问控制授权模型已扩展到数据操作。
+以前，基于角色的访问控制不用于数据操作。 数据操作的授权根据资源提供程序的不同而异。 用于管理操作的同一基于角色的访问控制授权模型已扩展到数据操作。
 
 为了支持数据操作，已将新的数据属性添加到角色定义结构。 数据操作在 `DataActions` 和 `NotDataActions` 属性中指定。 通过添加这些数据属性，可在管理与数据之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `DataActions` 和 `NotDataActions` 中指定的一些数据操作：
 
@@ -163,7 +163,7 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 或更高版本 |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 或更高版本 |
 | [Azure for .NET](/dotnet/azure/) | 2.8.0-preview 或更高版本 |
-| [Azure SDK for Go](/go/azure/azure-sdk-go-install) | 15.0.0 或更高版本 |
+| [Azure SDK for Go](/azure/go/azure-sdk-go-install) | 15.0.0 或更高版本 |
 | [Azure for Java](/java/azure/) | 1.9.0 或更高版本 |
 | [Azure for Python](/python/azure) | 0.40.0 或更高版本 |
 | [用于 Ruby 的 Azure SDK](https://rubygems.org/gems/azure_sdk) | 0.17.1 或更高版本 |
@@ -172,7 +172,7 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 - 2018-07-01
 
-## <a name="actions"></a>操作
+## <a name="actions"></a>个操作
 
 `Actions` 权限指定该角色允许执行的管理操作。 它是操作字符串的集合，可标识 Azure 资源提供程序的安全对象操作。 下面是一些可以在 `Actions` 中使用的管理操作的示例。
 
@@ -213,16 +213,16 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes`属性指定具有此角色定义可用的作用域 （订阅、 资源组或资源）。 您可以使该角色可用于分配订阅或需要这样做，资源组中，而不影响的订阅或资源组的其余部分的用户体验。 必须使用至少一个订阅、资源组或资源 ID。
+`AssignableScopes` 属性指定具有此角色定义的范围（订阅、资源组或资源）。 可以让角色只在需要它的订阅或资源组中进行分配，而不影响其他订阅或资源组的用户体验。 必须使用至少一个订阅、资源组或资源 ID。
 
 内置角色已将 `AssignableScopes` 设置为根范围 (`"/"`)。 根范围指示角色可供在所有范围中进行分配。 有效的可分配范围的示例包括：
 
-| 场景 | 示例 |
+| 应用场景 | 示例 |
 |----------|---------|
 | 角色可供在单个订阅中进行分配 | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
 | 角色可供在两个订阅中进行分配 | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
 | 角色只能在网络资源组中进行分配 | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| 角色是可用于所有作用域中的分配 （适用于仅为内置角色） | `"/"` |
+| 角色可以在所有范围中进行分配（仅适用于内置角色） | `"/"` |
 
 有关自定义角色的 `AssignableScopes` 的信息，请参阅 [Azure 资源的自定义角色](custom-roles.md)。
 

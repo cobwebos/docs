@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 62f73f17d598cb2a22ef57d3ec0bcf91b8852298
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 77f04b9688be2a7b7343bac05b24a3fcd4e0fcde
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728786"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019704"
 ---
 # <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
@@ -24,9 +24,11 @@ Azure 网络 Msp 是一套专用的托管服务提供商, 可解决云和混合�
 
 客户可以在 Azure Marketplace 中或从 MSP 直接购买 MSP 托管服务产品/服务。 Msp 可以使用 Azure Lighthouse 在客户的订阅和资源组中部署和管理 Azure 网络资源。
 
-## <a name="msp"></a>MSP 合作伙伴
+## <a name="msp"></a>Azure 网络 MSP 合作伙伴
 
 使用此部分中的链接, 了解有关 Azure 网络 MSP 合作伙伴提供的托管云网络服务的详细信息。 如果你的云网络服务合作伙伴未在以下部分中列出, 请提供提供商联系我们。 他们可以通过向 ManagedVirtualWAN@microsoft.com 发送电子邮件来与我们联系。 
+
+[ANS 组 UK](https://www.ans.co.uk/)
 
 [Aryaka networks、网络](https://www.aryaka.com/)
 
@@ -43,6 +45,8 @@ Azure 网络 Msp 是一套专用的托管服务提供商, 可解决云和混合�
 [ixreach](https://www.ixreach.com/)
 
 [Megaport](https://www.megaport.com/)
+
+[Oncore 云服务]( https://www.oncore.cloud/services/ue-for-expressroute/)
 
 [Tata 通信](https://www.tatacommunications.com/)
 

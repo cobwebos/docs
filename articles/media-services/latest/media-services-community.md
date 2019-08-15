@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务社区概述 | Microsoft Docs
-description: 此 Azure 媒体服务社区页讨论了不同的方法可以提出问题、 提供反馈，并获取有关媒体服务的更新。
+description: 此 Azure 媒体服务社区页面讨论了你可以提出问题、提供反馈和获取有关媒体服务的更新的不同方式。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6a3c02c1f14c37317a03cb6ebe63bcddc92f3253
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8d3a26d015c129a04e54ba9633aa5d1ccfcacf8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710168"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "69016108"
 ---
 # <a name="azure-media-services-community"></a>Azure 媒体服务社区  
 
-此 Azure 媒体服务社区页讨论了不同的方法可以提出问题、 提供反馈，并获取有关媒体服务的更新。
+此 Azure 媒体服务社区页面讨论了你可以提出问题、提供反馈和获取有关媒体服务的更新的不同方式。
 
 ## <a name="provide-feedback-and-make-suggestions"></a>提供反馈和建议
 
@@ -32,7 +32,7 @@ ms.locfileid: "64710168"
 
 ### <a name="twitter"></a>Twitter
 
-可以使用[ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) twitter 句柄，请与我们联系，或在 Twitter 上关注更新。 使用[ @AzureSupport ](https://twitter.com/azuresupport) twitter 句柄，以请求在 Twitter 上的支持。  
+你可以使用[@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter 句柄与我们联系或关注 twitter 上的更新。 [@AzureSupport](https://twitter.com/azuresupport)使用 twitter 句柄请求 twitter 上的支持。  
 
 ### <a name="online-forums"></a>在线论坛
 
@@ -48,16 +48,7 @@ ms.locfileid: "64710168"
 
 ## <a name="contact-the-team"></a>与团队联系
 
-Azure 媒体服务主要支持电子邮件是： **amshelp\@microsoft.com**。
-
-下表列出了功能子团队的电子邮件：
-
-| Feature | Email |
-| --- | --- |
-| Azure Media Player |ampinfo@microsoft.com |
-| Azure 媒体资源管理器 |amse@microsoft.com |
-| 工作流设计器 |mepd@microsoft.com |
-| 实时传送视频流和打包 |amslived@microsoft.com |
+Azure 媒体服务主要支持电子邮件: **amshelp\@microsoft.com**。
 
 ## <a name="next-steps"></a>后续步骤
 

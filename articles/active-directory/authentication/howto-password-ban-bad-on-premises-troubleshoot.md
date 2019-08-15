@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07c035f4823ea8c8eaa96ca9bda22450246811cd
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cb4d3e35ae743dbae4c049f515d61b3042e7efe
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779622"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952807"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD 密码保护故障排除
 
@@ -41,6 +41,8 @@ ms.locfileid: "68779622"
 1. 代理主机正在阻止对代理服务侦听的 RPC 终结点 (动态或静态) 的访问
 
    Azure AD 密码保护代理安装程序会自动创建 Windows 防火墙入站规则, 该规则允许访问 Azure AD 密码保护代理服务侦听的任何入站端口。 如果以后删除或禁用此规则, DC 代理将无法与代理服务通信。 如果已禁用内置 Windows 防火墙而不是另一个防火墙产品, 则必须将该防火墙配置为允许 Azure AD 密码保护代理服务访问所侦听的任何入站端口。 如果代理服务已配置为侦听特定的静态 RPC 端口 (使用`Set-AzureADPasswordProtectionProxyConfiguration` cmdlet), 则此配置可能更具体。
+
+1. 代理主机未配置为允许域控制器登录到计算机。 此行为是通过 "从网络访问此计算机" 用户权限分配来控制的。 林中所有域中的所有域控制器都必须被授予此权限。 此设置通常会被约束为更大的网络强化工作量。
 
 ## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>代理服务无法与 Azure 通信
 

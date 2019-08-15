@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: b6f1198334d8bd4ba58b4fbba02942fc8c54c578
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 35cb408473da8c6397c5034ae20ac0a50b0953ea
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442867"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>教程：Azure Active Directory 与 EBSCO 集成
 
@@ -124,7 +124,7 @@ ms.locfileid: "67442867"
 
     o   **Profile** = 客户端可以定制链接，以将用户定向到特定的配置文件（具体取决于从 EBSCO 购买的产品）。 可以输入特定的配置文件 ID。 主 ID 是 eds (EBSCO Discovery Service) 和 ehost（EBSOCOhost 数据库）。 [此处](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile)提供了相同操作的说明。
 
-6. EBSCO 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****   ****  。
+6. EBSCO 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
     ![image](common/edit-attribute.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "67442867"
 
 7. 除上述属性以外，EBSCO 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示： 
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ---------------| --------------- |    
     | FirstName   | user.givenname |
     | LastName   | user.surname |

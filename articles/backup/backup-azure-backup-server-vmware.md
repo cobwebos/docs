@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: dacurwin
-ms.openlocfilehash: 88adf54ab26055f97534abb4d56d098079116248
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 9ae21e2bf71789d0b0dd19e3dd7a65ad10fae241
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954936"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018970"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -102,10 +102,10 @@ ms.locfileid: "68954936"
 
 ### <a name="disable-https-certificate-validation"></a>禁用 HTTPS 证书验证
 
-如果你在组织中创建了安全边界并且不想要在 VMware 服务器与 Azure 备份服务器计算机之间使用 HTTPS 协议，请按如下所述禁用 HTTPS：
+如果你的组织内有安全边界, 并且不希望在 VMware 服务器与 Azure 备份服务器计算机之间使用 HTTPS 协议, 请按如下所示禁用 HTTPS: 
 1. 将以下文本复制并粘贴到 .txt 文件中。
 
-      ```
+      ```text
       Windows Registry Editor Version 5.00
       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
       "IgnoreCertificateValidation"=dword:00000001
@@ -221,7 +221,7 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
     ![Azure 备份服务器的“管理凭据”对话框](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
-4. 在“添加凭据”中，输入新凭据的名称和说明，并指定在 VMware 服务器上定义的用户名和密码。 名称 *Contoso Vcenter credential* 用于标识此过程中的凭据。 如果 VMware 服务器和 Azure 备份服务器不在同一个域中，请在用户名中指定域。
+4. 在 "**添加凭据**" 中, 输入新凭据的名称和描述, 并指定你在 VMware 服务器上定义的用户名和密码。 名称 *Contoso Vcenter credential* 用于标识此过程中的凭据。 如果 VMware 服务器和 Azure 备份服务器不在同一个域中，请在用户名中指定域。
 
     ![Azure 备份服务器的“添加凭据”对话框](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
@@ -286,7 +286,7 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
 1. 在“选择保护组类型”页面上选择“服务器”，然后单击“下一步”。 将出现“选择组成员”页面。
 
-1. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。 然后单击“下一步”。
+1. 在 "**选择组成员**" 中, 选择要备份的 vm (或 vm 文件夹)。 然后单击“下一步”。
 
     - 选择某个文件夹时，也会选择该文件夹中的 VM 或子文件夹进行备份。 可以取消选中不想要备份的文件夹或 VM。
 1. 如果 VM 或文件夹已在备份，则无法选择它。 这可以确保不会为 VM 创建重复的恢复点。

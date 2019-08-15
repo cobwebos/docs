@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 22fa0ba52c346b8331fd6895cf87f3e15ee68ac6
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: bd0ed971b84baae3b85badfcc669bbad657d1551
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950091"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018950"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -123,7 +123,7 @@ ExpressRoute 位置 (有时称为 "对等互连位置" 或 "满足我的位置")
 | **圣保罗** | Equinix | 巴西南部 | Aryaka Networks、Ascenty Data Centers、British Telecom、Equinix、Level 3 Communications、Neutrona Networks、Orange、Tata Communications、Telefonica、UOLDIVEO |
 | **西雅图** | Equinix | 美国西部 2 | Aryaka networks、网络, Equinix, Level 3 通信, Megaport, Telus, Zayo |
 | **首尔** | KINX | 韩国中部 | KINX、LG CNS、Sejong Telecom |
-| **硅谷** | Equinix | 美国西部 | Aryaka networks、网络, & T NetBond, 英国电信, CenturyLink Cloud Connect, Comcast, Coresite, Equinix, InterCloud, IX 到, 数据包, PacketFabric, Level 3 通信, Megaport, 橙色, 冲刺, Tata 通信, Telia 载波, Verizon, Zayo |
+| **硅谷** | Equinix | 美国西部 | Aryaka networks、网络, 在 & T NetBond, 英国电信, CenturyLink Cloud Connect, Comcast, Coresite, Equinix, InterCloud, Internet2, IX 到, 数据包, PacketFabric, Level 3 通信, Megaport, 橙色, 冲刺, Tata 通信, Telia 运营商,Verizon、Zayo |
 | **硅 Valley2** | Coresite | 美国西部 | Coresite | 
 | **新加坡** | Equinix | 东南亚 | Aryaka Networks、AT&T NetBond、British Telecom、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Telstra Corporation、Verizon、Vodafone |
 | **新加坡 2** | Global Switch | 东南亚 | Colt、Epsilon Global communication、Megaport、SingTel |

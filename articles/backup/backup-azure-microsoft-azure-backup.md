@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 0f7d9961b41ece23630584146e4eb777969e771a
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: eb9908fc7b2d4ecd8af8c2b4a65ab43352035ec5
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954741"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018894"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 > [!div class="op_single_selector"]
@@ -173,9 +173,9 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     **使用 SQL 2017 时的 SSRS 配置**
 
-    使用自己的 SQL 2017 实例时，需要手动配置 SSRS。 配置 SSRS 后，请确保 SSRS 的 *IsInitialized* 属性设置为 *True*。 如果此属性设置为 True，MABS 将假设已配置 SSRS，因此会跳过 SSRS 配置。
+    使用自己的 SQL 2017 实例时, 需要手动配置 SSRS。 配置 SSRS 后，请确保 SSRS 的 *IsInitialized* 属性设置为 *True*。 如果此属性设置为 True，MABS 将假设已配置 SSRS，因此会跳过 SSRS 配置。
 
-    对 SSRS 配置使用以下值：
+    对 SSRS 配置使用以下值： 
 
         - Service Account: ‘Use built-in account’ should be Network Service
         - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>

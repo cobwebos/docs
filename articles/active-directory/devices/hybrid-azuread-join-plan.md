@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: cad2568702909274030d3c7c6469a7e4cbf670c4
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779458"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989260"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
@@ -101,7 +101,7 @@ ms.locfileid: "68779458"
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>基于标识基础结构选择方案
 
-混合 Azure AD 联接适用于、托管和联合环境。  
+混合 Azure AD 联接适用于、托管和联合环境, 具体取决于 UPN 是可路由还是不可路由。 有关支持的方案, 请参阅表的底部。  
 
 ### <a name="managed-environment"></a>托管环境
 
@@ -111,10 +111,10 @@ ms.locfileid: "68779458"
 
 ### <a name="federated-environment"></a>联合环境
 
-联合环境应具有支持以下要求的标识提供者。 如果你有使用 Active Directory 联合身份验证服务 (AD FS) 的联合环境, 则已支持以下要求。
+联合环境应具有支持以下要求的标识提供者。 如果已有使用 Active Directory 联合身份验证服务 (AD FS) 的联合环境，则已经支持以下要求。
 
-- **WIAORMULTIAUTHN 声明:** 为 Windows 下层设备执行混合 Azure AD 联接需要此声明。
-- **WS 信任协议:** 需要此协议来对 Windows 当前混合 Azure AD 与 Azure AD 进行联接的设备进行身份验证。 使用 AD FS 时, 需要启用以下 WS-TRUST 终结点:`/adfs/services/trust/2005/windowstransport`  
+- **WIAORMULTIAUTHN 声明：** 此声明是为 Windows 下层设备执行混合Azure AD 加入所必需的。
+- **WS-Trust 协议：** 使用 Azure AD 对当前已加入混合 Azure AD 的 Windows 设备进行身份验证时需要此协议。 使用 AD FS 时，需要启用以下 WS-Trust 终结点：`/adfs/services/trust/2005/windowstransport`  
 `/adfs/services/trust/13/windowstransport`  
   `/adfs/services/trust/2005/usernamemixed` 
   `/adfs/services/trust/13/usernamemixed`
@@ -122,7 +122,7 @@ ms.locfileid: "68779458"
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **Adfs/services/trust/2005/windowstransport**或**adfs/services/trust/13/windowstransport**只应启用为面向 intranet 的终结点, 而不能通过 Web 应用程序代理作为面向外的终结点公开。 若要详细了解如何禁用 WS-TRUST WIndows 终结点, 请参阅在[代理上禁用 Ws-trust windows 终结点](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。
+> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 只能作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust WIndows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。
 
 > [!NOTE]
 > Azure AD 不支持托管域中的智能卡或证书。

@@ -8,12 +8,12 @@ ms.reviewer: yijwan
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 人体, 跟踪, 联接
-ms.openlocfilehash: a115f0e6cae8fea1dd87a2c8426ff23cc49f60d6
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 97d355bb05961ca369fde77af7f4d739c8f96bf8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876642"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68964054"
 ---
 # <a name="get-body-tracking-results"></a>获取人体跟踪结果
 
@@ -37,7 +37,7 @@ if (K4A_RESULT_SUCCEEDED != k4a_device_get_calibration(device, device_config.dep
 }
 
 k4abt_tracker_t tracker = NULL;
-if (K4A_RESULT_SUCCEEDED != k4abt_tracker_create(&sensor_calibration, &tracker), "Body tracker initialization failed!")
+if (K4A_RESULT_SUCCEEDED != k4abt_tracker_create(&sensor_calibration, &tracker))
 {
     printf("Body tracker initialization failed!\n");
     return 0;

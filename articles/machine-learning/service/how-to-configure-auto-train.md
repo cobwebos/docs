@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: adca67152c33f4c6a3ec272b63c4c8157a777f36
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6e29e0f89d9270a143d48cf6e85b479813e19d9d
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856192"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013649"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
 
@@ -72,6 +72,11 @@ automl_config = AutoMLConfig(task="classification")
 自动化机器学习支持驻留在本地桌面上或云中（例如 Azure Blob 存储）的数据。 可将数据读取成 scikit-learn 支持的数据格式。 可将数据读取成：
 * Numpy 数组 X（特征）和 y（目标变量，也称为标签）
 * Pandas 数据帧
+
+>[!Important]
+> 定型数据的要求:
+>* 数据必须为表格格式。
+>* 要预测的值 (目标列) 必须在数据中存在。
 
 示例:
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 04/10/2018
+ms.date: 08/06/2019
 ms.author: sngun
-ms.openlocfilehash: 57da4fcb6fb1a91477b6c31387ab06205be8138c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ec2c943bfaecc1170889b1a7247d7532700d47bc
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044648"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990126"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>快速入门：使用 Node.js 和 Azure Cosmos DB 生成表 API 应用
 
@@ -80,7 +80,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。 
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“连接字符串”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“连接字符串”  。 
 
     ![在“连接字符串”窗格中查看并复制所需的连接字符串信息](./media/create-table-nodejs/connection-string.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 分类预测信用风险
+title: '视觉对象接口示例 #3:用于预测信用风险的分类'
 titleSuffix: Azure Machine Learning service
 description: 了解如何生成机器学习分类器, 而无需使用可视界面编写单行代码。
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d1b3b8fa61492f3cf18e44e3e3046f32ea9c9b03
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7565f94910d0e926682a72af42b02059fe7295ea
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855988"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990056"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>示例 3-分类:预测信用风险
 

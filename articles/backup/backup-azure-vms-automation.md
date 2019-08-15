@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1cbd0f649bd5e89c1ed424604697afa179964175
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 23492133035f27aa3e1217269022565e0ff217a9
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689020"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018756"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -217,7 +217,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 定义保护策略后，仍然必须为项目启用策略。 请使用 [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 来启用保护。 启用保护需要两个对象 - 项和策略。 将策略与保管库关联之后，会在策略计划中定义的时间触发备份工作流。
 
 > [!IMPORTANT]
-> 当使用 PS 同时为多个 Vm 启用备份时, 请确保单个策略没有超过100个关联的 Vm。 这是[建议的最佳做法](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy)。 目前, 如果有超过100个 Vm, 但计划在将来添加该检查, 则 PS 客户端不会显式阻止。
+> 当使用 PS 同时为多个 Vm 启用备份时, 请确保单个策略没有超过100个关联的 Vm。 这是[建议的最佳做法](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy)。 目前，如果有超过 100 个 VM，PS 客户端不会显式阻止，但计划在将来添加检查。
 
 以下示例使用策略 NewPolicy 启用对项目 V2VM 的保护。 示例会基于 VM 是否加密以及加密类型而有所不同。
 
@@ -312,7 +312,7 @@ $bkpPol.SnapshotRetentionInDays=7
 PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ````
 
-默认值为 2，用户可以将值设置为 1 到 5。 每周备份策略的保留期设置为 5，不能更改。
+默认值为 2，用户可以将值设置为 1 到 5。 对于每周备份策略, 时间段设置为 5, 并且无法更改。
 
 ### <a name="trigger-a-backup"></a>触发备份
 
@@ -340,7 +340,7 @@ V2VM              Backup              InProgress          4/23/2016             
 
 ### <a name="change-policy-for-backup-items"></a>更改备份项的策略
 
-用户可以修改现有策略，也可以将备份项的策略从 Policy1 更改为 Policy2。 若要切换备份项的策略，只需提取相关策略并备份项，并使用 [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) 命令以备份项作为参数。
+用户可以修改现有策略，也可以将备份项的策略从 Policy1 更改为 Policy2。 若要为备份的项切换策略, 请提取相关策略并备份项, 并将[AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0)命令和备份项用作参数。
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -511,7 +511,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob
 > [!NOTE]
 > 还原磁盘后，现在可以获得一个部署模板，你可以直接使用该模板创建新的 VM。 没有更多的不同的 PS cmdlet 来创建加密/非加密的托管/非托管 VM。
 
-生成的作业详细信息提供可以查询和部署的模板 URI。
+生成的作业详细信息为模板 URI 指定可查询和部署。
 
 ```powershell
    $properties = $details.properties
@@ -653,7 +653,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
 
    * **具有 Azure AD 的托管加密 VM（BEK 和 KEK）** - 对于具有 Azure AD 的托管加密 VM（使用 BEK 和 KEK 加密），将附加还原的托管磁盘。 有关详细信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
-   * **不具有 Azure AD 的托管加密 VM（仅限 BEK）** - 对于不具有 Azure AD 的托管加密 VM（仅使用 BEK 加密），如果源 keyVault/密码不可用，可使用[从 Azure 备份恢复点还原非加密虚拟机](backup-azure-restore-key-secret.md)中的过程，将密码还原到密钥保管库。然后执行以下脚本在已还原的 OS 磁盘上设置加密详细信息（此步骤不需要数据磁盘）。 可以从已还原的 keyVault 提取 $dekurl。
+   * 不**Azure AD (仅限 BEK) 的托管和加密的 vm** -对于未 Azure AD 的托管的加密 vm (仅使用 BEK 加密), 如果源**keyVault/机密不可用**, 请使用[还原Azure 备份恢复点中的非加密虚拟机](backup-azure-restore-key-secret.md)。 然后执行以下脚本在已还原的 OS 磁盘上设置加密详细信息（此步骤不需要数据磁盘）。 可以从已还原的 keyVault 提取 $dekurl。
 
      仅当源 keyVault/密码不可用时，才需要执行下面的脚本。  
 
@@ -667,7 +667,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
 
      密码可用且在 OS 磁盘上设置加密详细信息后，若要附加还原的托管磁盘，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
-   * **不具有 Azure AD 的托管加密 VM（BEK和 KEK）** - 对于不具有 Azure AD 的托管加密 VM（使用 BEK 和 KEK 加密），如果源 keyVault/密钥/密码不可用，可使用[从 Azure 备份恢复点还原非加密虚拟机](backup-azure-restore-key-secret.md)中的过程，将密钥和密码还原到密钥保管库。 然后执行以下脚本在已还原的 OS 磁盘上设置加密详细信息（此步骤不需要数据磁盘）。 可以从已还原的 keyVault 提取 $dekurl 和 $kekurl。
+   * 不**带 Azure AD (BEK 和 KEK) 的托管和加密的 vm** -对于不带 Azure AD (使用 BEK & KEK) 的托管的加密 vm, 如果**未提供源 keyVault/密钥/机密**, 请使用中的过程将密钥和机密还原到密钥保管库[从 Azure 备份恢复点还原非加密的虚拟机](backup-azure-restore-key-secret.md)。 然后执行以下脚本在已还原的 OS 磁盘上设置加密详细信息（此步骤不需要数据磁盘）。 可以从已还原的 keyVault 提取 $dekurl 和 $kekurl。
 
    仅当源 keyVault/密钥/密码不可用时，才需要执行下面的脚本。
 
@@ -720,7 +720,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
 
    * **对于不具有 Azure AD 的 VM** - 使用以下命令手动对数据磁盘启用加密。
 
-     如果在命令执行期间出现请求 AADClientID，则需要更新 Azure PowerShell。
+     如果在命令执行期间请求 AADClientID, 则需要更新 Azure PowerShell。
 
      **仅限 BEK**
 
@@ -806,7 +806,7 @@ OsType  Password        Filename
 Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe
 ```
 
-在要在它上面恢复文件的计算机上运行此脚本。 要执行该脚本，必须输入提供的密码。 附加磁盘后，使用 Windows 文件资源管理器浏览新的卷和文件。 有关详细信息，请参阅备份文章[从 Azure 虚拟机备份恢复文件](backup-azure-restore-files-from-vm.md)。
+在要在它上面恢复文件的计算机上运行此脚本。 要执行该脚本，必须输入提供的密码。 附加磁盘后，使用 Windows 文件资源管理器浏览新的卷和文件。 有关详细信息, 请参阅备份文章[从 Azure 虚拟机备份恢复文件](backup-azure-restore-files-from-vm.md)。
 
 ### <a name="unmount-the-disks"></a>卸载磁盘
 

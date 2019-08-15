@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: willzhan;juliako
-ms.openlocfilehash: 5c86a49cd9dc26f724de12ed2e5e77e645e4ab53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: willzhan
+ms.reviewer: juliako
+ms.openlocfilehash: d15bfcfbae3b24e1a9b29dc74f9b41a979e63ae9
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466589"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69014686"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系统的混合设计 
 
@@ -126,7 +127,7 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 * 源 URL： https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
 * PlayReady LA_URL（DASH 和平滑流式处理）： https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 总而言之，Azure 媒体服务 DRM 组件非常灵活，只需根据本主题中所述适当配置内容密钥和资产传送策略，即可在混合方案中使用这些组件。
 

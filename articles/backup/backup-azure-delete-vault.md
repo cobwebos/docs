@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5f44e9b386f5d05b75f6fdf6cf8b55360e4c5dae
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 9c63170b60a871182042acab8a35e505c603f260
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954783"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018888"
 ---
 # <a name="delete-a-recovery-services-vault"></a>删除恢复服务保管库
 
@@ -47,15 +47,15 @@ ms.locfileid: "68954783"
 
 ## <a name="delete-protected-items-in-cloud"></a>删除云中受保护的项
 
-在继续操作之前，请阅读 **[此部分](#before-you-start)** ，以了解依赖项和保管库删除过程。
+在继续阅读 **[本](#before-you-start)** 部分之前, 请先了解依赖关系和保管库删除过程。
 
 若要停止保护并删除备份数据，请执行以下操作：
 
-1. 从门户 >**恢复服务保管库** > **备份项**选择云中受保护的项 (例如 AzureVirtual 机、azure 存储 (azure 文件)、azure VM 上的 SQL 等)。
+1. 从 "门户" > "**恢复服务保管库** > **备份项**", 选择 "云中的受保护项" (例如 AzureVirtual 机、azure 存储 (azure 文件)、azure VM 上的 SQL, 等等)。
 
     ![选择备份类型](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
-2. 右键单击备份项, 具体取决于备份项是否受保护, 或者菜单将显示 "**停止备份**" 还是 "**删除备份数据**"。
+2. 右键单击备份项。 根据备份项是否受保护, 菜单将显示 "**停止备份**" 或 "**删除备份数据**"。
 
     - 对于 "**停止备份**", 请从下拉选择 "**删除备份数据**"。 输入备份项的**名称**("区分大小写"), 选择 "**原因**", 输入 "**注释**", 然后单击 "**停止备份**"。
 
@@ -126,7 +126,7 @@ ms.locfileid: "68954783"
 - 系统会提示输入安全 PIN。 若要生成该 PIN，请执行以下步骤：
   - 登录到 Azure 门户。
   - 浏览到“恢复服务保管库” > “设置” > “属性”。
-  - 单击“安全 PIN”下的“生成”。 复制此 PIN。（此 PIN 的有效时间仅为五分钟）
+  - 单击“安全 PIN”下的“生成”。 复制此 PIN。 (此 PIN 仅有效五分钟。)
 - 在管理控制台（客户端应用）中粘贴此 PIN 并单击“确定”。
 
   ![安全 PIN](./media/backup-azure-delete-vault/security-pin.png)
@@ -202,12 +202,12 @@ ms.locfileid: "68954783"
 
 1. 使用订阅 ID、资源组名称和保管库名称运行以下命令。 当你运行该命令时, 如果你没有任何依赖关系, 它将删除该保管库。
 
-   ```
+   ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
 2. 如果该保管库不是空的，则会出现错误“由于此保管库中存在现有资源，因此无法将其删除”。 若要删除保管库中受保护的项/容器，请执行以下操作：
 
-   ```
+   ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 

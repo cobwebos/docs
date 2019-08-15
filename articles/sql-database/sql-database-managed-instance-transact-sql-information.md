@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
-ms.date: 07/07/2019
+ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 822b8bd1d0f5be854b6d345d68fcdb680b2ef1c4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1581a62f0999cf502feaad31d2c884f4d171e770
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882567"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019659"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 
@@ -309,12 +309,12 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="tables"></a>表
 
-不支持以下表：
+不支持以下表类型:
 
-- `FILESTREAM`
-- `FILETABLE`
-- `EXTERNAL TABLE`
-- `MEMORY_OPTIMIZED` 
+- [FILESTREAM](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server)
+- [FILETABLE](https://docs.microsoft.com/sql/relational-databases/blob/filetables-sql-server)
+- [外部表](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)Polybase
+- [MEMORY_OPTIMIZED](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)(仅在常规用途层中不受支持)
 
 有关如何创建和更改表的信息，请参阅 [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) 和 [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)。
 
@@ -468,10 +468,13 @@ WITH PRIVATE KEY (<private_key_options>)
 
 限制： 
 
+- 可能会还原损坏的数据库的备份, 具体取决于损坏的类型, 但在修复损坏之前, 不会执行自动备份。 请确保在源实例`DBCC CHECKDB`上运行, 并使用备份`WITH CHECKSUM`来避免此问题。
+- 无法在托管实例还原包含本文档中所述的任何限制的数据库`FILESTREAM` `FILETABLE`文件(例如或对象)。 `.BAK`
 - 无法还原包含多个备份集的 `.BAK` 文件。 
 - 无法还原包含多个日志文件的 `.BAK` 文件。
-- 如果 .bak 包含 `FILESTREAM` 数据，还原将会失败。
-- 在“常规用途”实例上，无法还原包含数据库且这些数据库中具有活动内存中对象的备份。 有关 restore 语句的信息，请参阅 [RESTORE 语句](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)。
+- 如果备份包含的数据库大于8TB、活动内存中 OLTP 对象或280以上的文件, 则不能在常规用途实例上还原。 
+- 如果备份包含的数据库大于4TB 或内存中 OLTP 对象, 但其总大小大于[资源限制](sql-database-managed-instance-resource-limits.md)中所述的大小, 则无法在业务关键实例上还原。
+有关 restore 语句的信息，请参阅 [RESTORE 语句](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)。
 
 ### <a name="service-broker"></a>服务代理
 
@@ -548,11 +551,6 @@ WITH PRIVATE KEY (<private_key_options>)
 
 可以使用系统视图[识别剩余文件的数目](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1)。 如果即将达到此限制，请尝试[使用 DBCC SHRINKFILE 语句清空并删除一些小型文件](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file)，或者切换到[没有此限制的“业务关键”层级](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
 
-### <a name="incorrect-configuration-of-the-sas-key-during-database-restore"></a>在还原数据库期间不正确地配置了 SAS 密钥
-
-如果 `CREDENTIAL` 中的共享访问签名不正确，读取 .bak 文件的 `RESTORE DATABASE` 可能会不断重试读取 .bak 文件，并在较长一段时间后返回错误。 请在还原数据库之前执行 RESTORE HEADERONLY，确保 SAS 密钥正确。
-确保从使用 Azure 门户生成的 SAS 密钥中删除前导 `?`。
-
 ### <a name="tooling"></a>工具
 
 访问托管实例时，SQL Server Management Studio 和 SQL Server Data Tools 可能会出现一些问题。
@@ -624,11 +622,6 @@ using (var scope = new TransactionScope())
 不能在使用服务托管透明数据加密 (TDE) 加密的数据库上执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服务托管的 TDE 强制使用内部 TDE 密钥对备份进行加密。 无法导出该密钥，因此无法还原备份。
 
 **解决方法：** 使用自动备份和时间点还原，或者改用[客户托管 (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key)。 也可以在数据库上禁用加密。
-
-### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>时间点还原遵循源实例上设置的时区
-
-时间点还原目前按源实例的时区 (而不是按照 UTC) 来解释要还原到的时间。
-有关更多详细信息, 请查看[托管实例时区的已知问题](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues)。
 
 ## <a name="next-steps"></a>后续步骤
 

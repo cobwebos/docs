@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: c91c09da31e4ecf42257b8f9c86f25c6ec39b9df
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734641"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976772"
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何连接到数据源
 ## <a name="introduction"></a>简介
@@ -28,7 +28,7 @@ ms.locfileid: "68734641"
 
 使用列表视图时，菜单会显示在门户窗口顶部的搜索栏。
 
- ![从搜索栏在报表管理器中打开 SQL Server Reporting Services 报表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![在报表管理器中打开 SQL Server Reporting Services 报表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
 ## <a name="supported-client-applications"></a>支持的客户端应用程序
 在 Azure 数据目录门户中为数据源 使用“打开方式...”菜单时，正确的客户端应用程序必须安装在客户端计算机上。

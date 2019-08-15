@@ -11,12 +11,12 @@ ms.date: 10/18/2018
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: bf4dc55d0ec17daf4c611563dd7aee3a06aa192b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 32edacb7dd66274757359c4eb0e8c169995026ce
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384756"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019523"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>如何运行管道的触发器来响应事件
 
@@ -49,10 +49,7 @@ ms.locfileid: "68384756"
 5. 从 "Azure 订阅" 下拉列表中选择存储帐户, 或使用其存储帐户资源 ID 手动进行选择。 选择要发生事件的容器。 容器选择是可选的, 但是请注意, 选择所有容器可能会导致大量事件。
 
    > [!NOTE]
-   > 事件触发器目前仅支持版本2存储帐户 (通用)。
-
-   > [!NOTE]
-   > 由于 Azure 事件网格限制, Azure 数据工厂每个存储帐户最多仅支持500事件触发器。
+   > 事件触发器目前仅支持 Azure Data Lake Storage Gen2 和通用版本2存储帐户。 由于 Azure 事件网格限制, Azure 数据工厂每个存储帐户最多仅支持500事件触发器。
 
 6. **Blob 路径以开头**, **blob 路径**以属性结尾, 可用于指定要为其接收事件的容器、文件夹和 blob 名称。 事件触发器需要至少定义这些属性中的一个。 可以为“Blob 路径开头为”和“Blob路径结尾为”属性使用各种模式，如本文中后面的示例所示。
 

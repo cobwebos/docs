@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7cd916c8e52b40dee3ce2d63d43dc88f09001b32
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827555"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019034"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
 
@@ -92,9 +92,9 @@ Azure 备份在**备份作业**门户中显示所有手动触发的作业。 在
 
 > [!NOTE]
 >
-有关 "删除数据" 选项的详细信息, 请参阅以下 FAQ:
-* [如果从 autoprotected 实例中删除数据库, 备份会发生什么情况呢？](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
-* [如果我确实停止了 autoprotected 数据库的备份操作, 会出现什么情况？](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>有关 "删除数据" 选项的详细信息, 请参阅下面的常见问题解答:
+>* [如果从 autoprotected 实例中删除数据库, 备份会发生什么情况呢？](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>* [如果我确实停止了 autoprotected 数据库的备份操作, 会出现什么情况？](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
 
@@ -145,7 +145,7 @@ Azure 备份在**备份作业**门户中显示所有手动触发的作业。 在
 
 有时, VM 上的工作负荷扩展可能会因为某种原因而受到影响。 在这种情况下, 在 VM 上触发的所有操作都将开始失败。 然后, 你可能需要在 VM 上重新注册该扩展。 **重新注册**操作会重新安装 VM 上的工作负荷备份扩展, 以便继续操作。  <br>
 
-建议谨慎使用此选项;当在具有正常扩展的 VM 上触发时, 此操作会导致扩展重新启动。 这可能会导致所有正在进行的作业失败。 请在触发重新注册操作之前检查是否有一个或多个[症状](backup-sql-server-azure-troubleshoot.md#re-registration-failures)。
+请谨慎使用此选项;当在具有正常扩展的 VM 上触发时, 此操作会导致扩展重新启动。 这可能会导致所有正在进行的作业失败。 请在触发重新注册操作之前检查是否有一个或多个[症状](backup-sql-server-azure-troubleshoot.md#re-registration-failures)。
 
 ## <a name="next-steps"></a>后续步骤
 

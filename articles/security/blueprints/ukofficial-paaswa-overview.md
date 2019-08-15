@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 54bf4512785941ae1d09ae1436deefc032ec0037
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c0163b5280de942491f2174aa371fa7cc83d5984
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780656"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946518"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与合规性蓝图：适用于英国官方工作负荷的 PaaS Web 应用程序托管
 
@@ -27,7 +27,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 英国国家网络安全中心 (NCSC) 对此蓝图进行了审查，并与 NCSC 14 云安全原则保持一致。
 
-该体系结构使用 Azure [平台即服务](https://azure.microsoft.com/overview/what-is-paas/)组件来提供一个环境，使客户能够避免购买软件许可证、管理基础的应用程序体系结构和中间件或开发工具以及其他资源的费用和复杂性。 客户管理他们开发的应用程序和服务，专注于提供业务价值，而 Microsoft Azure 管理其他 Azure 资源（例如虚拟机、存储和网络），将架构管理的[更多责任分工](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility)放到 Azure 平台上。 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)提供自动缩放和高可用性，支持 Windows 和 Linux，并允许从 GitHub、Azure DevOps 或任何 Git 存储库作为默认服务进行自动部署。 通过使用应用服务，开发人员可以专注于创造商业价值，而无需管理基础结构的开销。 可以构建新的 Java、 PHP、 Node.js、 Python、 HTML 或 C# web 应用程序领域，也可以将现有的云或本地 Web 应用程序迁移到 Azure 应用服务 （尽管需要进行彻底的尽职调查和测试以确认性能）。
+该体系结构使用 Azure [平台即服务](https://azure.microsoft.com/overview/what-is-paas/)组件来提供一个环境，使客户能够避免购买软件许可证、管理基础的应用程序体系结构和中间件或开发工具以及其他资源的费用和复杂性。 客户管理他们开发的应用程序和服务，专注于提供业务价值，而 Microsoft Azure 管理其他 Azure 资源（例如虚拟机、存储和网络），将架构管理的[更多责任分工](../fundamentals/paas-deployments.md)放到 Azure 平台上。 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)提供自动缩放和高可用性，支持 Windows 和 Linux，并允许从 GitHub、Azure DevOps 或任何 Git 存储库作为默认服务进行自动部署。 通过使用应用服务，开发人员可以专注于创造商业价值，而无需管理基础结构的开销。 可以构建新的 Java、 PHP、 Node.js、 Python、 HTML 或 C# web 应用程序领域，也可以将现有的云或本地 Web 应用程序迁移到 Azure 应用服务 （尽管需要进行彻底的尽职调查和测试以确认性能）。
 
 此蓝图侧重于提供安全基础，[平台即服务](https://azure.microsoft.com/overview/what-is-paas/)基于 Web 的界面，适用于公共和后台用户。 此蓝图设计方案会考虑使用 Azure 托管的基于 Web 的服务，公共用户可以安全地提交、查看和管理敏感数据；后台或政府运营商也可以安全地处理公共用户提交的敏感数据。 此方案的用例可能包括：
 
@@ -72,18 +72,18 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 #### <a name="identity-and-authentication"></a>标识和身份验证
 
-此蓝图确保通过目录和身份管理服务保护对资源的访问。 此体系结构充分利用[标识作为安全边界](https://docs.microsoft.com/azure/security/security-paas-deployments)。 
+此蓝图确保通过目录和身份管理服务保护对资源的访问。 此体系结构充分利用[标识作为安全边界](../fundamentals/paas-deployments.md)。 
 
 以下技术在 Azure 环境中提供标识管理功能：
 
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 解决方案的所有用户（包括访问 SQL 数据库的用户）都在 Azure Active Directory 中创建。
-- 使用 Azure AD 执行面向 Web 应用程序的操作员的身份验证和 Azure 资源管理的访问。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。
+- 使用 Azure AD 执行面向 Web 应用程序的操作员的身份验证和 Azure 资源管理的访问。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
 - 数据库列加密使用 Azure AD 对访问 Azure SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅 [Always Encrypted：保护 SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
 - 为面向 Web 应用程序的用户配置公共访问。 要通过 Active Directory 或社交网络标识提供者创建并验证帐户，可根据需要集成 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/)。
-- [Azure Active Directory 标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)可以检测潜在漏洞，为风险帐户提供建议，以增强组织标识的安全状况，配置对检测到的与组织标识相关的可疑操作的自动响应，调查可疑事件并采取适当措施解决这些问题。
+- [Azure Active Directory 标识保护](../../active-directory/identity-protection/overview.md)可以检测潜在漏洞，为风险帐户提供建议，以增强组织标识的安全状况，配置对检测到的与组织标识相关的可疑操作的自动响应，调查可疑事件并采取适当措施解决这些问题。
 - [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 可在 Azure 中实现极有针对性的访问管理。 订阅访问仅限于订阅管理员，Azure Key Vault 访问仅限于需要密钥管理访问权限的用户。
-- 通过利用 [Azure Active Directory 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)，客户可以根据具体情况（如位置、设备、状态和登录风险），对其环境中的应用程序或用户实施额外的安全控制。
-- [Azure DDoS 防护](https://docs.microsoft.com/azure/security/security-paas-deployments#security-advantages-of-a-paas-cloud-service-model)与应用程序设计最佳做法相结合，提供针对 DDoS 攻击的防御，具有始终在线的流量监控，以及对常见网络级攻击的实时缓解。 通过 PaaS 体系结构，平台级 DDoS 防护对客户而言是透明的且被集成到平台中，但需要注意的是，应用程序安全设计责任在于客户。
+- 通过利用 [Azure Active Directory 条件访问](../../active-directory/active-directory-conditional-access-azure-portal.md)，客户可以根据具体情况（如位置、设备、状态和登录风险），对其环境中的应用程序或用户实施额外的安全控制。
+- [Azure DDoS 防护](../fundamentals/paas-deployments.md#security-advantages-of-a-paas-cloud-service-model)与应用程序设计最佳做法相结合，提供针对 DDoS 攻击的防御，具有始终在线的流量监控，以及对常见网络级攻击的实时缓解。 通过 PaaS 体系结构，平台级 DDoS 防护对客户而言是透明的且被集成到平台中，但需要注意的是，应用程序安全设计责任在于客户。
 
 #### <a name="data-in-transit"></a>传输中的数据
 
@@ -112,14 +112,14 @@ Azure 应用服务为使用 Java、PHP、Node.js Python、HTML 和 C# 开发的 
 - [标准](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)应用服务计划层
 - 多个应用服务[部署槽位](https://docs.microsoft.com/azure/app-service/deploy-staging-slots)：开发、预览、QA、UAT 和生产（默认槽位）。
 - [Azure 资源的托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity)连接到 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)（这还可以用于提供 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)的访问权限） 
-- 集成 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps)来监视性能
-- [诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
-- 指标[警报](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) 
+- 集成 [Azure Application Insights](../../azure-monitor/app/azure-web-apps.md)来监视性能
+- [诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md) 
+- 指标[警报](../../azure-monitor/app/alerts.md) 
 - [Azure API 应用](https://azure.microsoft.com/services/app-service/api/) 
 
 #### <a name="azure-sql-database"></a>Azure SQL 数据库
 
-SQL 数据库是 Microsoft Azure 中通用的关系数据库托管服务，支持关系数据、JSON、空间和 XML 等结构。 SQL 数据库提供托管的单一 SQL 数据库、[弹性池](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)中的托管 SQL 数据库以及 SQL [管理实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)（公共预览版）。 它可以实现[动态可缩放性能](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers)，并提供[列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)（用于极端分析和报告）和[内存中 OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory)（用于极端事务处理）等选项。 Microsoft 可无缝处理 SQL 代码库的所有修补和更新，并避开底层基础结构的所有管理。
+SQL 数据库是 Microsoft Azure 中通用的关系数据库托管服务，支持关系数据、JSON、空间和 XML 等结构。 SQL 数据库提供托管的单一 SQL 数据库、[弹性池](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)中的托管 SQL 数据库以及 SQL [管理实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)（公共预览版）。 它可以实现[动态可缩放性能](../../sql-database/sql-database-purchase-models.md)，并提供[列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)（用于极端分析和报告）和[内存中 OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory)（用于极端事务处理）等选项。 Microsoft 可无缝处理 SQL 代码库的所有修补和更新，并避开底层基础结构的所有管理。
 
 此蓝图中的 Azure SQL 数据库
 
@@ -130,7 +130,7 @@ Azure SQL 数据库实例使用以下数据库安全措施：
 - [Azure AD 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)，可以在一个中心位置集中管理数据库用户和其他 Microsoft 服务的标识。 集中 ID 管理提供一个单一位置来管理数据库用户，并简化权限管理。
 - 使用 Azure Active Directory 进行数据库管理
 - [审核日志](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)（写入到存储帐户）
-- 指标[警报](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)，提醒失败的 DB 连接
+- 指标[警报](../../azure-monitor/app/alerts.md)，提醒失败的 DB 连接
 - [SQL 威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)
 - [Always Encrypted 列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)
 
@@ -147,7 +147,7 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 #### <a name="data-at-rest"></a>静态数据
 
-通过[存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)写入 Azure 存储的所有数据都通过 256 位 AES 加密进行加密，这是可用的最强块密码之一。 可以将 Microsoft 管理的加密密钥与 SSE 一起使用，也可以使用[自己的加密密钥](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)。
+通过[存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)写入 Azure 存储的所有数据都通过 256 位 AES 加密进行加密，这是可用的最强块密码之一。 可以将 Microsoft 管理的加密密钥与 SSE 一起使用，也可以使用[自己的加密密钥](../../storage/common/storage-encryption-keys-portal.md)。
 
 可以使用[虚拟网络规则](https://docs.microsoft.com/azure/storage/common/storage-network-security)通过[虚拟网络服务终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)保护存储帐户。
 
@@ -181,7 +181,7 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 #### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 用于监视实时 Web 应用程序，它将自动检测性能异常、分析性能、诊断问题以及了解用户与应用交互的方式。 Application Insights 可部署在本地或云中托管的各种平台上（包括 .NET、Node.js 和 Java EE）。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 用于监视实时 Web 应用程序，它将自动检测性能异常、分析性能、诊断问题以及了解用户与应用交互的方式。 Application Insights 可部署在本地或云中托管的各种平台上（包括 .NET、Node.js 和 Java EE）。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。
 
 #### <a name="application-insights-in-this-blueprint"></a>此蓝图中的 Application Insights
 
@@ -195,7 +195,7 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) 可收集指标、活动日志和诊断日志，为 Azure 服务启用核心监视。 Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的基础结构指标和日志。
+使用 [Azure Monitor](../../azure-monitor/overview.md) 可收集指标、活动日志和诊断日志，为 Azure 服务启用核心监视。 Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的基础结构指标和日志。
 
 ## <a name="threat-model"></a>威胁模型
 

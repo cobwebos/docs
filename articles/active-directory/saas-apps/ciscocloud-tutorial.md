@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251d3738cb5b18cfe98878b857b91a3689fb81a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9aa77b539d91d328736dca2b0f7d040f6b4b5f5
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105618"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>教程：Azure Active Directory 与 Cisco Cloud 集成
 
@@ -118,13 +118,13 @@ ms.locfileid: "67105618"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Cisco Cloud 客户端支持团队](mailto:cpr-ops@cisco.com)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-6. Cisco Cloud 应用程序需要特定格式的 SAML 断言，这需要向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
+6. Cisco Cloud 应用程序需要特定格式的 SAML 断言，这需要向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
     ![image](common/edit-attribute.png)
 
 7. 除了上述属性外，Cisco Cloud 应用程序还需要另外几个属性在 SAML 响应中传回。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | -----------| ------------|
     | country    | user.country |
     | company    | user.companyname |
@@ -209,7 +209,7 @@ ms.locfileid: "67105618"
 
 ### <a name="create-cisco-cloud-test-user"></a>创建 Cisco Cloud 测试用户
 
-在本部分中，将在 Cisco Cloud 中创建一个名为 Britta Simon 的用户。 与  [Cisco Cloud 支持团队](mailto:cpr-ops@cisco.com)协作，将用户添加到 Cisco Cloud 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Cisco Cloud 中创建一个名为 Britta Simon 的用户。 与 [Cisco Cloud 支持团队](mailto:cpr-ops@cisco.com)协作，在 Cisco Cloud 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: dacurwin
-ms.openlocfilehash: 70cd7a1e77e6154b6406c82344b82f230eeb7b3c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 83c4d8a90bf9ae348026c14beaec4975636b29b5
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954645"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018792"
 ---
 # <a name="restore-system-state-to-windows-server"></a>将系统状态还原为 Windows Server
 
@@ -124,9 +124,9 @@ ms.locfileid: "68954645"
 
 1. 使用以下命令在目录服务修复模式下重新启动服务器。 在提升的命令提示符中：
 
-    ```
-    PS C:\> Bcdedit /set safeboot dsrepair
-    PS C:\> Shutdown /r /t 0
+    ```cmd
+    Bcdedit /set safeboot dsrepair
+    Shutdown /r /t 0
     ```
 
 2. 重新启动后，打开 Windows Server 备份管理单元。 如果不知道该管理单元的安装位置，请在计算机或服务器中搜索“Windows Server 备份”。
@@ -189,14 +189,14 @@ ms.locfileid: "68954645"
 
 5. 在管理员模式下打开命令提示符后，运行以下命令获取系统状态备份版本。
 
-    ```
+    ```cmd
     Wbadmin get versions -backuptarget:<Volume where WindowsImageBackup folder is copied>:
     ```
     ![获取系统状态备份版本](./media/backup-azure-restore-system-state/winre-4.png)
 
 6. 运行以下命令获取备份中的所有可用卷。
 
-    ```
+    ```cmd
     Wbadmin get items -version:<copy version from above step> -backuptarget:<Backup volume>
     ```
 
@@ -204,7 +204,7 @@ ms.locfileid: "68954645"
 
 7. 以下命令恢复属于系统状态备份一部分的所有卷。 请注意，此步骤仅恢复属于系统状态一部分的关键卷。 将清除所有非系统数据。
 
-    ```
+    ```cmd
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
      ![获取系统状态备份版本](./media/backup-azure-restore-system-state/winre-6.png)

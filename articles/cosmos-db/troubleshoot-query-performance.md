@@ -1,6 +1,6 @@
 ---
-title: 诊断和排查查询问题时使用 Azure Cosmos DB
-description: 了解如何识别、 诊断和排查 Azure Cosmos DB SQL 查询问题。
+title: 诊断和排查使用 Azure Cosmos DB 时遇到的查询问题
+description: 了解如何识别、诊断和排查 Azure Cosmos DB SQL 查询问题。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: troubleshooting
@@ -8,62 +8,66 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 079e8677febfe6683d4f0e60a0e7ba6b06ea549d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: a713ed69dc9c35e16b1cc5d9ad9819d53e2e1efe
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835840"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986171"
 ---
-# <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Azure Cosmos DB 的查询性能故障排除
-这篇文章介绍如何识别、 诊断和排查 Azure Cosmos DB SQL 查询问题。 若要获得最佳性能的 Azure Cosmos DB 查询，请执行以下故障排除步骤。 
+# <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>排查 Azure Cosmos DB 的查询性能问题
+本文介绍如何识别、诊断和排查 Azure Cosmos DB SQL 查询问题。 若要实现 Azure Cosmos DB 查询的最佳性能，请执行以下故障排除步骤。 
 
-## <a name="collocate-clients-in-same-azure-region"></a>将同一 Azure 区域中的客户端并置 
-通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅[Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/#services)一文。
+## <a name="collocate-clients-in-same-azure-region"></a>将客户端并置在同一 Azure 区域 
+通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/#services)一文。
 
 ## <a name="check-consistency-level"></a>检查一致性级别
-[一致性级别](consistency-levels.md)可能会影响性能和费用。 请确保您的一致性级别适用于给定的方案。 有关更多详细信息，请参阅[选择一致性级别](consistency-levels-choosing.md)。
+[一致性级别](consistency-levels.md)可能会影响性能和费用。 请确保一致性级别适合给定的方案。 有关更多详细信息，请参阅[选择一致性级别](consistency-levels-choosing.md)。
+
+## <a name="log-sql-query-in-storage-account"></a>在存储帐户中记录 Sql 查询
+[利用诊断日志中的 SQL API 查询日志](logging.md#turn-on-logging-in-the-azure-portal), 可以在所选的存储帐户中记录模糊查询。 这使你可以查看诊断日志并使用多个 ru 查找查询, 并使用活动 id 在 QueryRuntimeStatistics 中匹配。 
+
 
 ## <a name="log-query-metrics"></a>日志查询指标
-使用`QueryMetrics`来解决速度缓慢或昂贵的查询。 
+使用 `QueryMetrics` 排查速度缓慢或开销较高的查询。 
 
-  * 设置`FeedOptions.PopulateQueryMetrics = true`具有`QueryMetrics`在响应中。
-  * `QueryMetrics` 类具有一个已重载`.ToString()`函数可调用以获取的字符串表示形式的`QueryMetrics`。 
-  * 可以使用度量值派生的其他项中的以下见解： 
+  * 设置 `FeedOptions.PopulateQueryMetrics = true` 以在响应中包含 `QueryMetrics`。
+  * `QueryMetrics` 类包含一个重载的 `.ToString()` 函数，调用该函数可以获取 `QueryMetrics` 的字符串表示形式。 
+  * 可以利用这些指标来派生以下和其他见解： 
   
-      * 是否在查询管道的任何特定组件花费了异常长时间才能完成 （在数百毫秒或更多的顺序）。 
+      * 完成查询管道的任意特定组件是否异常地花费了很长时间（数百毫秒或更长时间）。 
 
-          * 看看`TotalExecutionTime`。
-          * 如果`TotalExecutionTime`查询的是早于端到端执行时间，则客户端或网络中所花费的时间。 仔细检查并置的客户端和 Azure 区域。
+          * 查看 `TotalExecutionTime`。
+          * 如果查询的 `TotalExecutionTime` 小于从头到尾完成执行所花费的时间，则表示时间花费在客户端或网络上。 反复检查客户端和 Azure 区域是否并置在一起。
       
-      * 在文档中是否没有误报分析 （如果输出文档数是要少得多比检索文档计数）。  
+      * 分析的文档中是否存在误报（如果“输出文档计数”比“检索到的文档计数”小得多）。  
 
-          * 看看`Index Utilization`。
-          * `Index Utilization` = (返回的文档数 / 加载的文档)
-          * 如果返回的文档数远远小于加载数，然后与正在分析的假正值。
-          * 限制要检索带有较窄的筛选器的文档数。  
+          * 查看 `Index Utilization`。
+          * `Index Utilization` = (返回的文档数/加载的文档数)
+          * 如果返回的文档数比加载的文档数小得多，则表示正在分析误报。
+          * 使用范围更窄的筛选器限制检索的文档数。  
 
-      * 取得了不错的个别往返过程 (请参阅`Partition Execution Timeline`的字符串表示形式从`QueryMetrics`)。 
-      * 是否在查询占用高的请求费用。 
+      * 各个往返行程的开销如何（查看 `QueryMetrics` 字符串表示形式中的 `Partition Execution Timeline`）。 
+      * 查询是否消耗了较多的请求单位。 
 
 有关更多详细信息，请参阅[如何获取 SQL 查询执行指标](profile-sql-api-query.md)一文。
       
-## <a name="tune-query-feed-options-parameters"></a>优化查询源的选项参数 
-可以通过请求的优化查询性能[馈送选项](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet)参数。 请尝试设置以下选项：
+## <a name="tune-query-feed-options-parameters"></a>优化查询源选项参数 
+可以通过请求的[源选项](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet)参数优化查询性能。 尝试设置以下选项：
 
-  * 设置`MaxDegreeOfParallelism`为-1，然后在不同的值之间的比较性能。 
-  * 设置`MaxBufferedItemCount`为-1，然后在不同的值之间的比较性能。 
-  * 设置`MaxItemCount`为-1。
+  * 先将 `MaxDegreeOfParallelism` 设置为 -1，然后比较不同值的性能。 
+  * 先将 `MaxBufferedItemCount` 设置为 -1，然后比较不同值的性能。 
+  * 将 `MaxItemCount` 设置为 -1。
 
-在比较不同的值的性能，请尝试值，例如 2、 4、 8、 16 和其他人。
+比较不同值的性能时，请尝试 2、4、8、16 等值。
  
-## <a name="read-all-results-from-continuations"></a>从延续中读取所有结果
-如果您认为您未获得所有结果，请确保完全清空延续任务。 换而言之，请继续标记有更多文档，以生成读取结果。
+## <a name="read-all-results-from-continuations"></a>读取延续值的所有结果
+如果认为自己没有获得所有结果，请确保将延续值清空完毕。 换而言之，只要延续标记会生成更多文档，就继续读取结果。
 
-完全清空可以实现与以下模式之一：
+可以通过以下模式之一实现完全清空：
 
-  * 延续不为空时，请继续处理结果。
-  * 继续处理而查询具有更多结果。 
+  * 在延续值不为空的情况下继续处理结果。
+  * 只要查询还有结果，就继续处理。 
 
     ```csharp
     // using AsDocumentQuery you get access to whether or not the query HasMoreResults
@@ -79,14 +83,14 @@ ms.locfileid: "67835840"
     }
     ```
 
-## <a name="choose-system-functions-that-utilize-index"></a>选择利用索引的系统函数
-如果表达式可以转换为字符串值的范围，然后它可以利用索引;否则，不能。 
+## <a name="choose-system-functions-that-utilize-index"></a>选择使用索引的系统函数
+如果表达式可以转换为一系列字符串值，则它可以使用索引，否则不可使用索引。 
 
-下面是可以利用索引的字符串函数的列表： 
+下面是可以使用索引的字符串函数的列表： 
     
   * STARTSWITH(str_expr, str_expr) 
   * LEFT(str_expr, num_expr) = str_expr 
-  * SUBSTRING(str_expr, num_expr, num_expr) = str_expr, but only if first num_expr is 0 
+  * SUBSTRING(str_expr, num_expr, num_expr) = str_expr，但前提是第一个 num_expr 为 0 
     
     下面是几个查询示例： 
     
@@ -108,9 +112,9 @@ ms.locfileid: "67835840"
 
     ```
 
-  * 避免在筛选器中的系统函数 （或 WHERE 子句） 的不是由索引。 此类系统函数的一些示例包括 Contains、 右上、 较低。
+  * 避免在筛选器（或 WHERE 子句）中使用索引不为其提供服务的系统函数。 此类系统函数的示例包括 Contains、Upper、Lower。
   * 请尽量将查询编写为使用基于分区键的筛选器。
-  * 若要实现高性能查询，请避免在筛选器中调用大写/小写。 相反，规范化大小写的插入时的值。 对于每个值插入的值与所需的大小写，或插入的原始值和所需的大小写的值。 
+  * 若要实现高性能查询，请避免在筛选器中调用 UPPER/LOWER。 插入时应该规范化值的大小写。 对于每个值，请使用所需的大小写插入该值，或者同时插入原始值以及使用所需大小写的值。 
 
     例如：
     
@@ -120,9 +124,9 @@ ms.locfileid: "67835840"
 
     ```
     
-    这种情况下，应用商店"JOE"首字母大写，或存储"Joe"的原始值和"JOE"。 
+    在本例中，请存储全大写的“JOE”，或者同时存储“Joe”（原始值）和“JOE”。 
     
-    如果 JSON 数据大小写规范化查询变得：
+    如果已规范化 JSON 数据大小写，则查询将变为：
     
     ```sql
 
@@ -130,45 +134,45 @@ ms.locfileid: "67835840"
 
     ```
 
-    第二个查询将为更高的性能，因为它不需要为了比较这些值与"JOE"对每个值执行转换。
+    第二个查询的性能更高，因为在将值与“JOE”进行比较时，它不需要对每个值执行转换。
 
-有关更多的系统函数的详细信息请参阅[系统函数](sql-query-system-functions.md)一文。
+如需更多系统函数详细信息，请参阅[系统函数](sql-query-system-functions.md)一文。
 
-## <a name="check-indexing-policy"></a>检查索引编制策略
-若要验证的当前[索引策略](index-policy.md)最佳选择：
+## <a name="check-indexing-policy"></a>检查索引策略
+若要验证当前[索引策略](index-policy.md)是否已优化，请执行以下操作：
 
-  * 请确保在查询中使用的所有 JSON 路径都包含在索引策略从而可以更快地读取。
-  * 排除在查询中未用于多个高性能写入的路径。
+  * 确保将查询中使用的所有 JSON 路径包括在索引策略中，以加快读取速度。
+  * 排除不在查询中使用的路径，以提高写入性能。
 
-有关更多详细信息，请参阅[如何为管理索引策略](how-to-manage-indexing-policy.md)一文。
+有关更多详细信息，请参阅[如何管理索引策略](how-to-manage-indexing-policy.md)一文。
 
-## <a name="spatial-data-check-ordering-of-points"></a>空间数据：检查点的顺序
+## <a name="spatial-data-check-ordering-of-points"></a>空间数据：检查点顺序
 多边形内的点必须以逆时针顺序指定。 以顺时针顺序指定的多边形表示其中的区域倒转。
 
 ## <a name="optimize-join-expressions"></a>优化 JOIN 表达式
-`JOIN` 表达式可以扩展到大型跨产品。 在可能的对较小的搜索查询空间通过更窄的筛选器。
+`JOIN` 表达式可扩展成大型叉积。 如果可能，请通过范围更窄的筛选器针对较小的搜索空间进行查询。
 
-多值子查询可以优化`JOIN`通过将谓词推送后每个选择多表达式而不中的所有交叉联接后的表达式`WHERE`子句。 有关详细的示例，请参阅[优化联接表达式](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions)一文。
+多值子查询可以通过在 `WHERE` 子句中的每个 select-many 表达式后面（而不是所有 cross-join 后面）推送谓词，来优化 `JOIN` 表达式。 有关详细示例，请参阅[优化 Join 表达式](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions)一文。
 
 ## <a name="optimize-order-by-expressions"></a>优化 ORDER BY 表达式 
-`ORDER BY` 如果这些字段为稀疏或不包含在索引策略中，查询性能可能会受到影响。
+如果字段是稀疏的或未包含在索引策略中，则 `ORDER BY` 查询性能可能会降低。
 
-  * 对于如时间的稀疏字段，请使用筛选器减少尽可能多地搜索空间。 
-  * 单一属性`ORDER BY`，包括在索引策略中的属性。 
-  * 为多个属性`ORDER BY`表达式，定义[组合索引](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes)对字段进行排序。  
+  * 对于时间之类的稀疏字段，请使用筛选器尽量减小搜索空间。 
+  * 对于单属性 `ORDER BY`，请在索引策略中包含属性。 
+  * 对于多属性 `ORDER BY` 表达式，请在排序字段中定义[组合索引](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes)。  
 
-## <a name="many-large-documents-being-loaded-and-processed"></a>正在加载和处理的许多大型文档
-时间和所需的查询的 Ru 不只依赖于响应的大小，它们也是依赖于可通过查询处理管道的工作。 完成的整个查询处理管道工作的大量时间和 ru 数成比例增加。 为大型文档执行更多的工作，因此更多时间和 Ru 所需加载和处理大型文档。
+## <a name="many-large-documents-being-loaded-and-processed"></a>正在加载和处理许多大型文档
+查询所需的时间和 RU 不仅取决于响应大小，而且还取决于查询处理管道完成的工作。 时间和 RU 根据整个查询处理管道完成的工作量成比例增加。 对于大型文档需要执行更多的工作，因此加载和处理大型文档所需的时间和 RU 更多。
 
-## <a name="low-provisioned-throughput"></a>低预配的吞吐量
-请确保预配的吞吐量可以处理工作负荷。 增加 RU 预算为受影响的集合。
+## <a name="low-provisioned-throughput"></a>预配吞吐量较低
+确保预配的吞吐量可以处理工作负荷。 提高受影响集合的 RU 预算。
 
-## <a name="try-upgrading-to-the-latest-sdk-version"></a>请尝试升级到最新 SDK 版本
-若要确定最新 SDK，请参阅[SDK 下载和发行说明](sql-api-sdk-dotnet.md)一文。
+## <a name="try-upgrading-to-the-latest-sdk-version"></a>尝试升级到最新 SDK 版本
+若要确定最新 SDK 版本是什么，请参阅 [SDK 下载和发行说明](sql-api-sdk-dotnet.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文档如何测量每个查询的 Ru，获取执行统计信息来优化您的查询，和的详细信息：
+参阅以下文档了解如何度量每个查询的 RU、获取用于优化查询的执行统计信息，等等：
 
-* [获取 SQL 查询执行指标使用.NET SDK](profile-sql-api-query.md)
+* [使用 .NET SDK 获取 SQL 查询执行指标](profile-sql-api-query.md)
 * [优化 Azure Cosmos DB 的查询性能](sql-api-sql-query-metrics.md)
-* [.NET SDK 的性能提示](performance-tips.md)
+* [.NET SDK 性能提示](performance-tips.md)

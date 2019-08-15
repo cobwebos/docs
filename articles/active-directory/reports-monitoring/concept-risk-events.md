@@ -3,7 +3,7 @@ title: Azure Active Directory 风险事件 | Microsoft Docs
 description: 本文详细概述了风险事件。
 services: active-directory
 keywords: azure active directory 标识保护, 安全性, 风险, 风险级别, 漏洞, 安全策略
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e50cc4ca9c98cb6a8e0f19cfcf6c1f86f1949beb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5711d900653ae7786899ce1c53f22cf181f5b8bf
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107697"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988275"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
 
@@ -31,7 +31,7 @@ ms.locfileid: "67107697"
 
  - **Azure AD 报告** - 风险事件属于 Azure AD 的安全报告。 有关详细信息，请参阅[风险用户安全报告](concept-user-at-risk.md)和[有风险的登录安全报告](concept-risky-sign-ins.md)。
 
- - **Azure AD Identity Protection** - 风险事件也是 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 的报告功能的一部分。
+ - **Azure AD 标识保护** - 风险事件也是 [Azure Active Directory 标识保护](../active-directory-identityprotection.md)的报告功能的一部分。
 
 此外，还可以使用[“标识保护”风险事件 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) 通过 Microsoft Graph 以编程方式访问安全检测。 有关详细信息，请参阅 [Azure Active Directory 标识保护和 Microsoft Graph 入门](../identity-protection/graph-get-started.md)。 
 
@@ -47,14 +47,14 @@ ms.locfileid: "67107697"
 ![风险事件](./media/concept-risk-events/91.png)
 
 > [!IMPORTANT]
-> 有时，可能会在[登录报表](concept-sign-ins.md)中发现没有相应登录输入的风险事件。 这是因为“标识保护”评估“交互式”和“非交互式”登录的风险，而登录报表只显示交互式登录   。
+> 有时，可能会在[登录报表](concept-sign-ins.md)中发现没有相应登录输入的风险事件。 这是因为“标识保护”评估“交互式”和“非交互式”登录的风险，而登录报表只显示交互式登录。
 
 从检测到的风险事件获得的见解会绑定到 Azure AD 订阅。 
 
 * 使用 **Azure AD Premium P2 版本**时，可以获取有关所有基础检测的最详细的信息。 
-* 与**Azure AD Premium P1 版本**的高级检测 （如不熟悉登录属性） 不受你的许可证，将显示在名称下**中检测到其他风险的登录**. 此外，隐藏的风险级别和风险详细信息字段。
+* 使用**Azure AD Premium P1 edition**, 高级检测 (例如不熟悉的登录属性) 不会包含在你的许可证中, 并会在**检测到其他风险**的名称下显示。 此外, 风险级别和风险详细信息字段已隐藏。
 
-已检测的风险事件表示保护身份的一个重要方面，您还可以选择手动解决它们或通过配置条件性访问策略实施自动的响应。 有关详细信息，请参阅 [Azure Active Directory 标识保护](../active-directory-identityprotection.md)。
+尽管风险事件的检测已经代表了保护身份的一个重要方面, 但你也可以选择手动解决这些问题, 或通过配置条件访问策略来实现自动响应。 有关详细信息，请参阅 [Azure Active Directory 标识保护](../active-directory-identityprotection.md)。
 
 ## <a name="risk-event-types"></a>风险事件类型
 
@@ -65,7 +65,7 @@ Microsoft 对检测过程的持续投入使得：
 - 现有风险事件的检测精度有所改进 
 - 将来会添加新的风险事件类型
 
-### <a name="leaked-credentials"></a>已泄漏凭据
+### <a name="leaked-credentials"></a>泄漏的凭据
 
 当网络犯罪分子泄露合法用户的有效密码时，他们通常会共享这些凭据。 共享方式通常为将凭据公开发布在暗网或粘贴网站上，或者在黑市上交易或出售凭据。 Microsoft 泄露凭据服务通过监控公网和暗网并与以下机构合作获取用户名/密码对：
 
@@ -74,13 +74,13 @@ Microsoft 对检测过程的持续投入使得：
 - Microsoft 安全团队
 - 其他受信任的来源 
 
-当服务获取用户名/密码对时，将根据 AAD 用户当前的有效凭据进行检查。 当找到匹配项时，意味着用户的密码已泄露，并且创建已泄露凭据风险事件  。
+当服务获取用户名/密码对时，将根据 AAD 用户当前的有效凭据进行检查。 当找到匹配项时，意味着用户的密码已泄露，并且创建已泄露凭据风险事件。
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>从匿名 IP 地址登录
 
 这一风险事件类型标识的是从匿名代理 IP 地址成功登录的用户。 这些代理通常是想要隐藏其设备 IP 地址的用户才会使用，他们可能意图不良。
 
-### <a name="impossible-travel-to-atypical-locations"></a>不可能前往异常位置
+### <a name="impossible-travel-to-atypical-locations"></a>不可能前往这些异常位置
 
 此风险事件类型可标识从相距遥远的地理位置进行的两次登录，根据用户以往的行为，其中至少有一个位置属于异常。 除了若干其他因素外，此机器学习算法还考虑两次登录之间相隔的时间以及用户从第一个位置前往第二个位置所需的时间，因为这指示有不同的用户在使用相同的凭据。
 
@@ -139,25 +139,25 @@ Microsoft 对检测过程的持续投入使得：
 
 ![风险级别](./media/concept-risk-events/01.png)
 
-### <a name="leaked-credentials"></a>已泄漏凭据
+### <a name="leaked-credentials"></a>泄漏的凭据
 
-已泄漏凭据事件归类为“高”，因为它们明确表示向攻击者提供用户名和密码。 
+已泄漏凭据事件归类为“高”，因为它们明确表示向攻击者提供用户名和密码。
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>从匿名 IP 地址登录
 
-此风险事件类型的风险级别为“中等”，因为使用匿名 IP 无法明显指示帐户受到威胁。  我们建议立即联系用户，验证他们是否使用了匿名 IP 地址。
+此风险事件类型的风险级别为“中等”，因为使用匿名 IP 无法明显指示帐户受到威胁。 我们建议立即联系用户，验证他们是否使用了匿名 IP 地址。
 
 
-### <a name="impossible-travel-to-atypical-locations"></a>不可能前往异常位置
+### <a name="impossible-travel-to-atypical-locations"></a>不可能前往这些异常位置
 
-不可能前往通常是一个出色的指示器，可指示黑客已能够成功登录。 但是，当用户使用新设备或使用组织中其他用户通常不使用的 VPN 前往时，可能会发生误报。 容易产生误报的另一个源头是误将服务器 IP 作为客户端 IP 传递的应用程序，这可能会让登录看起来像是从托管应用程序后端的数据中心发起的（这些数据中心通常是 Microsoft 数据中心，所以登录看起来像是从 Microsoft 拥有的 IP 地址发起的）。 由于这些误报，此风险事件的风险级别为“中等”。 
+不可能前往通常是一个出色的指示器，可指示黑客已能够成功登录。 但是，当用户使用新设备或使用组织中其他用户通常不使用的 VPN 前往时，可能会发生误报。 容易产生误报的另一个源头是误将服务器 IP 作为客户端 IP 传递的应用程序，这可能会让登录看起来像是从托管应用程序后端的数据中心发起的（这些数据中心通常是 Microsoft 数据中心，所以登录看起来像是从 Microsoft 拥有的 IP 地址发起的）。 由于这些误报，此风险事件的风险级别为“中等”。
 
 > [!TIP]
 > 可以通过配置[命名位置](../active-directory-named-locations.md)减少此风险事件类型的误报数量。 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>从不熟悉的位置登录
 
-不熟悉的位置可明显指示攻击者能够使用被盗的标识。 当用户旅行，试用新设备或使用新 VPN 时，可能发生误报。 由于这些误报，此事件类型的风险级别为“中等”。 
+不熟悉的位置可明显指示攻击者能够使用被盗的标识。 当用户旅行，试用新设备或使用新 VPN 时，可能发生误报。 由于这些误报，此事件类型的风险级别为“中等”。
 
 ### <a name="sign-ins-from-infected-devices"></a>从受感染的设备登录
 
@@ -169,11 +169,11 @@ Microsoft 对检测过程的持续投入使得：
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>从具有可疑活动的 IP 地址登录
 
-我们建议联系用户，验证他们实际上是否已从标记为可疑的 IP 地址登录。 这一事件类型的风险级别是“中等”  ，因为可能有多台设备在使用同一 IP 地址，但其中只有部分设备可能执行了可疑活动。 
+我们建议联系用户，验证他们实际上是否已从标记为可疑的 IP 地址登录。 这一事件类型的风险级别是“中等”，因为可能有多台设备在使用同一 IP 地址，但其中只有部分设备可能执行了可疑活动。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * [“有风险的用户”安全报告](concept-user-at-risk.md)
 * [“有风险的登录”安全报告](concept-risky-sign-ins.md)
-* [Azure AD Identity Protection](../active-directory-identityprotection.md)。
+* [Azure AD 标识保护](../active-directory-identityprotection.md)。

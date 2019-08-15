@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdaaab8257d3a79130902e1ba0466f9cf15484f4
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 240d962d56e4a2dc0758f3170c51b343d22ef98d
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147125"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944577"
 ---
 # <a name="tutorial-integrate-check-point-cloudguard-dome9-arc-with-azure-active-directory"></a>教程：将 Check Point CloudGuard Dome9 Arc 与 Azure Active Directory 集成
 
@@ -94,13 +94,13 @@ ms.locfileid: "67147125"
     > [!NOTE]
     > 这些不是实际值。 使用实际的回复 URL 和登录 URL 更新这些值。 联系[ Check Point CloudGuard Dome9 Arc ](mailto:Dome9@checkpoint.com)客户支持团队获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-6. Check Point CloudGuard Dome9 Arc 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
+6. Check Point CloudGuard Dome9 Arc 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
     ![image](common/edit-attribute.png)
 
 7. 除上述属性外，Check Point CloudGuard Dome9 Arc 应用程序还希望在 SAML 响应中传回更多属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示： 
 
-    | 名称 |  源属性|
+    | Name |  源属性|
     | ---------------| --------------- |
     | memberof | user.assignedroles |
 
@@ -158,7 +158,7 @@ ms.locfileid: "67147125"
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-在本部分中，你将在 Azure 门户中创建一个名为 B.Simon 的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
 1. 选择屏幕顶部的“新建用户”  。

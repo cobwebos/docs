@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7cd0125de886eed4b3e5c31503fdd4b7cbb76dd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847824"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946382"
 ---
-# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>训练过程中的日志指标运行 Azure 机器学习
+# <a name="log-metrics-during-training-runs"></a>训练运行期间的日志指标
 
 通过跟踪试验和监视指标来增强模型的创建过程。 在本文中, 了解如何将日志记录添加到训练脚本、提交试验运行、监视运行, 以及查看 Azure 机器学习 service 中运行的结果。
+
+> [!NOTE]
+> Azure 机器学习服务还可能在定型期间记录来自其他源的信息, 如 AutoML 或运行定型作业的 Docker 容器。 未记录这些日志。 如果遇到问题, 请与 Microsoft 支持部门联系, 他们可以在故障排除过程中使用这些日志。
 
 ## <a name="list-of-training-metrics"></a>训练指标列表 
 
@@ -221,7 +224,7 @@ ms.locfileid: "68847824"
 
 ## <a name="manage-a-run"></a>管理运行
 
-"[开始"、"监视" 和 "取消训练](how-to-manage-runs.md)" 这篇文章重点介绍了如何管理试验的特定 Azure 机器学习工作流。
+"[启动"、"监视" 和 "取消" 训练运行](how-to-manage-runs.md)一文重点介绍了如何管理试验的特定 Azure 机器学习工作流。
 
 ## <a name="view-run-details"></a>查看运行详细信息
 

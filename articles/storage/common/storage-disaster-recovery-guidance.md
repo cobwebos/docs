@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f9d68af12f6b2e98c77d0bd1b65a82c69588f203
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7785c6b5c575bf862b1ba0edccc75fc1c6031b08
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147622"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015642"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure 存储中的灾难恢复和存储帐户故障转移（预览版）
 
@@ -37,8 +37,11 @@ Azure 存储支持异地冗余存储帐户故障转移（预览版）。 通过�
 
 其他 Azure 存储冗余选项包括，跨一个区域中的可用性区域复制数据的区域冗余存储 (ZRS)，以及在一个区域中的一个数据中心内复制数据的本地冗余存储 (LRS)。 可以将配置了 ZRS 或 LRS 的存储帐户转换为使用 GRS 或 RA-GRS。 为帐户配置异地冗余存储会产生额外费用。 有关详细信息，请参阅 [Azure 存储复制](storage-redundancy.md)。
 
+> [!NOTE]
+> 区域冗余存储 (GZRS) 和读取访问权限异地冗余存储 (RA-GZRS) 目前处于预览阶段, 但在与客户管理的帐户故障转移相同的区域中尚不可用。 出于此原因, 客户当前无法通过 GZRS 和 RA GZRS 帐户来管理帐户故障转移事件。 在预览期间, Microsoft 将管理影响 GZRS/GZRS 帐户的任何故障转移事件。
+
 > [!WARNING]
-> 异地冗余存储有数据丢失风险。 数据是异步复制到次要区域。也就是说，数据写入主要区域与数据写入次要区域之间存在延迟。 在服务中断的情况下，对主终结点执行、但尚未复制到辅助终结点的写入操作将会丢失。 
+> 异地冗余存储有数据丢失风险。 数据是异步复制到次要区域。也就是说，数据写入主要区域与数据写入次要区域之间存在延迟。 在服务中断的情况下，对主终结点执行、但尚未复制到辅助终结点的写入操作将会丢失。
 
 ## <a name="design-for-high-availability"></a>旨在实现高可用性
 
@@ -96,7 +99,7 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 如果强制执行故障转移，主要区域中的所有数据就会在次要区域成为新的主要区域且存储帐户配置为本地冗余时丢失。 当故障转移发生时，已复制到次要区域的所有数据都会保留。 不过，任何写入主要区域、但尚未复制到次要区域的数据会永久丢失。 
 
-“上次同步时间”  属性表示，最近一次保证已将主要区域中的数据写入次要区域的时间。 上次同步时间之前写入的所有数据都已复制到次要区域中，而在上次同步时间之后写入的数据则可能尚未写入次要区域并发生丢失。 在发生服务中断时，使用此属性可估计启动帐户故障转移可能会造成的数据丢失量。 
+“上次同步时间”属性表示，最近一次保证已将主要区域中的数据写入次要区域的时间。 上次同步时间之前写入的所有数据都已复制到次要区域中，而在上次同步时间之后写入的数据则可能尚未写入次要区域并发生丢失。 在发生服务中断时，使用此属性可估计启动帐户故障转移可能会造成的数据丢失量。 
 
 最佳做法是，将应用程序设计为，可以使用上次同步时间来评估预期数据丢失。 例如，若要记录所有写入操作，可以比较上次写入操作时间与上次同步时间，以确定哪些写入操作尚未同步到次要区域。
 
@@ -106,7 +109,7 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 为存储帐户重新配置异地冗余后，可以启动另一个故障转移，从新的主要区域故障回复到新的次要区域。 在这种情况下，故障转移发生前的原始主要区域重新成为主要区域，并配置为本地冗余。 故障转移完成后的主要区域（即原始次要区域）中的所有数据都会丢失。 如果在故障回复前存储帐户中的大部分数据都尚未复制到新的次要区域，可能会出现大量数据丢失。 
 
-为了避免大量数据丢失，请在故障回复前检查“上次同步时间”  属性的值。 若要评估预期数据丢失，请比较上次同步时间与数据上次写入新的主要区域时间。 
+为了避免大量数据丢失，请在故障回复前检查“上次同步时间”属性的值。 若要评估预期数据丢失，请比较上次同步时间与数据上次写入新的主要区域时间。 
 
 ## <a name="initiate-an-account-failover"></a>启动帐户故障转移
 
@@ -114,7 +117,7 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 ## <a name="about-the-preview"></a>关于此预览版
 
-对于所有结合使用 GRS 或 RA-GRS 和 Azure 资源管理器部署的客户，可使用帐户故障转移（预览版）。 支持常规用途 v1、常规用途 v2 和 Blob 存储帐户类型。 目前，帐户故障转移适用于下面这些区域：
+对于在 Azure 资源管理器部署中使用 GRS 或 GRS 的所有客户, 可通过预览版使用帐户故障转移。 支持常规用途 v1、常规用途 v2 和 Blob 存储帐户类型。 目前，帐户故障转移适用于下面这些区域：
 
 - 美国西部 2
 - 美国中西部
@@ -153,7 +156,7 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 1. 开始前，先记下所有非托管磁盘的名称、逻辑单元号 (LUN) 和附加到的 VM。 此操作可便于在故障转移完成后更轻松地重新附加磁盘。 
 2. 关闭 VM。
 3. 删除 VM，但保留非托管磁盘的 VHD 文件。 记下 VM 删除时间。
-4. 等到“上次同步时间”  已更新且晚于 VM 删除时间。 这一步很重要，因为如果在故障转移发生时辅助终结点尚未使用 VHD 文件完全更新，那么 VM 可能无法在新的主要区域中正常运行。
+4. 等到“上次同步时间”已更新且晚于 VM 删除时间。 这一步很重要，因为如果在故障转移发生时辅助终结点尚未使用 VHD 文件完全更新，那么 VM 可能无法在新的主要区域中正常运行。
 5. 启动帐户故障转移。
 6. 等到帐户故障转移完成，且次要区域已成为新的主要区域。
 7. 在新的主要区域中创建 VM，并重新附加 VHD。
@@ -168,7 +171,7 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 - 无法对使用 Azure Data Lake Storage Gen2 分层命名空间的存储帐户执行故障转移。
 - 无法对包含已存档 blob 的存储帐户执行故障转移。 请在你不打算执行故障转移的单独存储帐户中维护已存档 blob。
 - 无法对包含高级块 blob 的存储帐户执行故障转移。 支持高级块 blob 的存储帐户暂不支持异地冗余。
-- 完成故障转移后如果最初启用了以下功能将停止工作：[事件订阅](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview)，[生命周期策略](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)，[存储分析日志记录](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging)。
+- 故障转移完成后, 以下功能将在初始启用时停止工作:[事件订阅](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview)、[生命周期策略](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)[存储分析日志记录](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging)。
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>除了故障转移外，还可以复制数据
 
@@ -178,7 +181,7 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 
 在由于重大灾难而导致区域丢失的极端情况下，Microsoft 可能会启动区域故障转移。 在此情况下，不需要采取任何操作。 在 Microsoft 托管的故障转移完成之前，你对存储帐户不拥有写入访问权限。 如果存储帐户已配置 RA-GRS，应用程序可以从次要区域读取数据。 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [启动帐户故障转移（预览版）](storage-initiate-account-failover.md)
 * [使用 RA-GRS 设计高度可用的应用程序](storage-designing-ha-apps-with-ragrs.md)

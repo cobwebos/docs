@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 1885a6220f14de234710b6980b5d3b6a6172bb7e
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: d1876977d819b50569b6f07242af91fb1d6832ee
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810851"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934320"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -108,7 +108,7 @@ Locations         : {}
 # Log in first with az login if you're not using Cloud Shell
 
 az account set –subscription <subscriptionId>
-az provider show –namespace "Microsoft.ManagedServices" –-output table
+az provider show --namespace "Microsoft.ManagedServices" --output table
 ```
 
 这应会返回如下结果：
@@ -156,16 +156,16 @@ Microsoft.ManagedServices  Registered
 # Log in first with az login if you're not using Cloud Shell
 
 # To retrieve the objectId for an Azure AD group
-az ad group list –-query "[?displayName == '<yourGroupName>'].objectId" –-output tsv
+az ad group list --query "[?displayName == '<yourGroupName>'].objectId" --output tsv
 
 # To retrieve the objectId for an Azure AD user
-az ad user show –-upn-or-object-id "<yourUPN>" –-query "objectId" –-output tsv
+az ad user show --upn-or-object-id "<yourUPN>" –-query "objectId" --output tsv
 
 # To retrieve the objectId for an SPN
-az ad sp list –-query "[?displayName == '<spDisplayName>'].objectId" –-output tsv
+az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output tsv
 
 # To retrieve role definition IDs
-az role definition list –-name "<roleName>" | grep name
+az role definition list --name "<roleName>" | grep name
 ```
 
 ## <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板

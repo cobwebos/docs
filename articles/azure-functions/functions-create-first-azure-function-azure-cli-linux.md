@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 857646bb1b9b317f1e51218d258616e775056b43
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 84e05b7afa2746587f2ea5008d493730ccbfad7e
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442282"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950036"
 ---
 # <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>使用 Core Tools 和 Azure CLI（预览版）创建第一个托管在 Linux 上的函数
 
@@ -38,34 +38,7 @@ Azure Functions 用于在[无服务器](https://azure.com/serverless) Linux 环�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-local-function-app-project"></a>创建本地函数应用项目
-
-从命令行运行以下命令，以便在当前本地目录的 `MyFunctionProj` 文件夹中创建一个函数应用项目。 也会在 `MyFunctionProj` 中创建一个 GitHub 存储库。
-
-```bash
-func init MyFunctionProj
-```
-
-当系统提示时，请使用箭头键从下面的语言选项中选择一个辅助角色运行时：
-
-+ `dotnet`：创建一个 .NET 类库项目 (.csproj)。
-+ `node`：创建一个 JavaScript 或 TypeScript 项目。 出现提示时，选择“`JavaScript`”。
-+ `python`：创建 Python 项目。 有关 Python 函数，请参阅 [Python 快速入门](functions-create-first-function-python.md)。
-
-执行命令后，看到的内容如以下输出所示：
-
-```output
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
-```
-
-使用以下命令导航到新的 `MyFunctionProj` 项目文件夹。
-
-```bash
-cd MyFunctionProj
-```
+[!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>启用扩展捆绑包
 

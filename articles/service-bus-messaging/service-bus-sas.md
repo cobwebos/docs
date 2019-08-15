@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: a14e03c21de0b5388040943fbe5e9434271b567f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2cd7c8e24571f66fa73ceaa9a70ce33d6105e9c
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258817"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69017741"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 
-共享访问签名  (SAS) 是服务总线消息传送的主要安全机制。 本文介绍 SAS、其工作原理以及如何以平台无关的方式使用它们。
+共享访问签名 (SAS) 是服务总线消息传送的主要安全机制。 本文介绍 SAS、其工作原理以及如何以平台无关的方式使用它们。
 
 SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名空间或消息传递实体（中继、队列或主题）中配置这些保护。 授权规则具有与特定权限关联的名称，并包含一个加密密钥对。 通过服务总线 SDK 或者在自己的代码中使用规则名称和密钥可以生成 SAS 令牌。 然后，客户端可将令牌传递给服务总线，以证明请求的操作获得授权。
 
@@ -51,17 +51,17 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 
 一个命名空间或实体策略最多可以包含 12 个共享访问授权规则，为三组规则提供空间。其中每个规则涵盖了基本权限，以及“发送”和“侦听”权限的组合。 根据此项限制，很明显 SAS 策略存储并不适合用作用户或服务帐户存储。 如果应用程序需要根据用户或服务标识授予服务总线的访问权限，应实现安全令牌服务，以便在执行身份验证和访问检查后颁发 SAS 令牌。
 
-将为授权规则分配主要密钥和辅助密钥。   它们是加密形式的强密钥。 请不要遗失或透漏这些密钥 - 它们在 [Azure 门户][Azure portal]中始终可用。 可以使用其中一个生成的密钥，并且随时可以重新生成密钥。 如果重新生成或更改策略中的密钥，以前基于该密钥颁发的所有令牌会立即失效。 但是，基于此类令牌创建的现有连接将继续工作，直到该令牌过期。
+将为授权规则分配主要密钥和辅助密钥。 它们是加密形式的强密钥。 请不要遗失或透漏这些密钥 - 在 [Azure 门户][Azure portal]中总要用到它们。 可以使用其中一个生成的密钥，并且随时可以重新生成密钥。 如果重新生成或更改策略中的密钥，以前基于该密钥颁发的所有令牌会立即失效。 但是，基于此类令牌创建的现有连接将继续工作，直到该令牌过期。
 
-创建服务总线命名空间时，系统会自动为该命名空间创建名为 **RootManageSharedAccessKey** 的策略规则。 此策略具有整个命名空间的“管理”权限。 建议将此规则视为 **root** 管理帐户，且不要在应用程序中使用它。 可以通过门户上命名空间的“配置”  选项卡、Powershell 或 Azure CLI 创建更多策略规则。
+创建服务总线命名空间时，系统会自动为该命名空间创建名为 **RootManageSharedAccessKey** 的策略规则。 此策略具有整个命名空间的“管理”权限。 建议将此规则视为 **root** 管理帐户，且不要在应用程序中使用它。 可以通过门户上命名空间的“配置”选项卡、Powershell 或 Azure CLI 创建更多策略规则。
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>共享访问签名身份验证的配置
 
-可以在服务总线命名空间、队列，或主题上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 规则。 当前不支持在服务总线订阅上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)，但是可以使用命名空间或主题上配置的规则来确保安全访问订阅。 有关说明此过程的工作示例，请参阅 [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)（将共享访问签名 (SAS) 身份验证与服务总线订阅配合使用）示例。
+可以在服务总线命名空间、队列，或主题上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 规则。 当前不支持在服务总线订阅上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)，但是可以使用命名空间或主题上配置的规则来确保安全访问订阅。 有关说明此过程的工作示例, 请参阅[管理 Azure 服务总线队列](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule)示例。
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
-在此图中，manageRuleNS  、sendRuleNS  和 listenRuleNS  授权规则适用于队列 Q1 和主题 T1，而 listenRuleQ  和 sendRuleQ  仅适用于队列 Q1，sendRuleT  仅适用于主题 T1。
+在此图中，manageRuleNS、sendRuleNS 和 listenRuleNS 授权规则适用于队列 Q1 和主题 T1，而 listenRuleQ 和 sendRuleQ 仅适用于队列 Q1，sendRuleT 仅适用于主题 T1。
 
 ## <a name="generate-a-shared-access-signature-token"></a>生成共享访问签名令牌
 
@@ -88,7 +88,7 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 资源 URI 是向其声明访问权限的服务总线资源的完整 URI。 例如，`http://<namespace>.servicebus.windows.net/<entityPath>` 或 `sb://<namespace>.servicebus.windows.net/<entityPath>`；即，`http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`。 
 
-**URI 必须是[百分比编码](https://msdn.microsoft.com/library/4fkewx0t.aspx)。**
+**URI 必须按[百分比编码](/dotnet/api/system.web.httputility.urlencode?view=netframework-4.8)。**
 
 用于签名的共享访问授权规则必须在此 URI 指定的实体上，或由其分层父级之一进行配置。 例如，前面的示例中的 `http://contoso.servicebus.windows.net/contosoTopics/T1` 或 `http://contoso.servicebus.windows.net`。
 
@@ -104,8 +104,8 @@ SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的
 
 下面所述的方案包括配置授权规则、生成 SAS 令牌和客户端授权。
 
-有关演示配置和使用 SAS 授权的服务总线应用程序的完整工作示例，请参阅 [Shared Access Signature authentication with Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)（服务总线的共享访问签名身份验证）。 演示如何使用为保护服务总线订阅而在命名空间或主题上配置的 SAS 授权规则的相关示例位于此处：[将共享访问签名 (SAS) 身份验证与服务总线订阅配合使用](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)。
-
+有关演示配置和使用 SAS 授权的服务总线应用程序的完整工作示例, 请参阅 GitHub 存储库中的以下示例:[管理 Azure 服务总线队列](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule)。
+ 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>访问实体上的共享访问授权规则
 
 使用服务总线 .NET Framework 库，可通过相应 [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) 或 [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription) 中的 [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) 集合，访问在服务总线队列或主题上配置的 [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象。
@@ -183,9 +183,9 @@ ContentType: application/atom+xml;type=entry;charset=utf-8
 
 在前一部分中，已介绍如何使用 SAS 令牌配合 HTTP POST 请求将数据发送到服务总线。 如你所了解，可以使用高级消息队列协议 (AMQP) 访问服务总线。在许多方案中，都会出于性能原因而将该协议用作首选协议。 文档[基于 AMQP 声明的安全性版本 1.0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc)（自 2013 年以来以有效草案版推出，不过 Azure 现在能够很好地支持它）中介绍了如何配合 AMQP 使用 SAS 令牌。
 
-开始将数据发送到服务总线之前，发布者必须将 AMQP 消息中的 SAS 令牌发送到正确定义的名为 $cbs 的 AMQP 节点（可以将它视为一个由服务使用的“特殊”队列，用于获取和验证所有 SAS 令牌）  。 发布者必须在 AMQP 消息中指定 **ReplyTo** 字段；这是服务向发布者回复令牌验证结果（发布者与服务之间的简单请求/回复模式）时所在的节点。 根据 AMQP 1.0 规范中有关“动态创建远程节点”的论述，此回复节点是“在运行中”创建的。 在检查 SAS 令牌有效之后，发布者可以继续将数据发送到服务。
+开始将数据发送到服务总线之前，发布者必须将 AMQP 消息中的 SAS 令牌发送到正确定义的名为 $cbs 的 AMQP 节点（可以将它视为一个由服务使用的“特殊”队列，用于获取和验证所有 SAS 令牌）。 发布者必须在 AMQP 消息中指定 **ReplyTo** 字段；这是服务向发布者回复令牌验证结果（发布者与服务之间的简单请求/回复模式）时所在的节点。 根据 AMQP 1.0 规范中有关“动态创建远程节点”的论述，此回复节点是“在运行中”创建的。 在检查 SAS 令牌有效之后，发布者可以继续将数据发送到服务。
 
-以下步骤演示如何发送 SAS 令牌与 AMQP 协议使用[AMQP.NET Lite](https://github.com/Azure/amqpnetlite)库。 如果您不能使用官方 （例如在 WinRT、.NET Compact Framework、.NET Micro Framework 和 Mono） 的服务总线 SDK 开发在 C 中这很有用\#。 当然，此库对于帮助了解基于声明的安全性如何在 AMQP 级别工作非常有用，就如同可以了解它如何在 HTTP 级别工作一样（使用 HTTP POST 请求并在“Authorization”标头内部发送 SAS 令牌）。 如果不需要此类有关 AMQP 的深入知识，您可以使用正式服务总线 SDK 与.NET Framework 应用程序，将为您完成。
+以下步骤演示如何使用[AMQP.NET Lite](https://github.com/Azure/amqpnetlite)库通过 AMQP 协议发送 SAS 令牌。 如果你不能使用官方的服务总线 SDK (例如, 在 WinRT、.NET Compact Framework、.NET 微框架和 Mono 上) 在 C\#中进行开发, 则此方法很有用。 当然，此库对于帮助了解基于声明的安全性如何在 AMQP 级别工作非常有用，就如同可以了解它如何在 HTTP 级别工作一样（使用 HTTP POST 请求并在“Authorization”标头内部发送 SAS 令牌）。 如果不需要此类有关 AMQP 的深入知识, 可以将官方的服务总线 SDK 用于 .NET Framework 应用程序, 这将为你执行此操作。
 
 ### <a name="c35"></a>C&#35;
 
@@ -238,7 +238,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-`PutCbsToken()` 方法接收代表服务的 TCP 连接的 connection  （[AMQP .NET Lite 库](https://github.com/Azure/amqpnetlite)提供的 AMQP Connection 类实例），以及表示要发送的 SAS 令牌的 sasToken  参数。
+`PutCbsToken()` 方法接收代表服务的 TCP 连接的 connection（[AMQP .NET Lite 库](https://github.com/Azure/amqpnetlite)提供的 AMQP Connection 类实例），以及表示要发送的 SAS 令牌的 sasToken 参数。
 
 > [!NOTE]
 > 请务必在 **SASL 身份验证机制设置为 ANONYMOUS** 的情况下创建连接（而不是在不需要发送 SAS 令牌时使用的包含用户名与密码的默认 PLAIN）。
@@ -247,7 +247,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 
 接下来，发布者将创建两个 AMQP 链接来发送 SAS 令牌和接收来自服务的回复（此令牌验证结果）。
 
-AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌是消息的正文（使用其构造函数）。 “ReplyTo”属性设置为用于在接收方链接上接收验证结果的节点名称（可以根据需要更改其名称，该节点将由服务动态创建）  。 服务使用最后三个应用程序/自定义属性来指示它需要执行哪种类型的操作。 如 CBS 草案规范中所述，这些属性必须是**操作名称** ("put-token")、**令牌类型**（在本例中为 `servicebus.windows.net:sastoken`），以及要应用令牌的**受众的“名称”** （整个实体）。
+AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌是消息的正文（使用其构造函数）。 “ReplyTo”属性设置为用于在接收方链接上接收验证结果的节点名称（可以根据需要更改其名称，该节点将由服务动态创建）。 服务使用最后三个应用程序/自定义属性来指示它需要执行哪种类型的操作。 如 CBS 草案规范中所述，这些属性必须是**操作名称** ("put-token")、**令牌类型**（在本例中为 `servicebus.windows.net:sastoken`），以及要应用令牌的**受众的“名称”** （整个实体）。
 
 在发送方链接上发送 SAS 令牌后，发布者必须在接收方链接上读取回复。 回复是一个简单的 AMQP 消息，其中包含一个名为 **"status-code"** 的应用程序属性，该属性可以包含与 HTTP 状态代码相同的值。
 
@@ -255,7 +255,7 @@ AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌�
 
 下表显示对服务总线资源进行各种操作所需的访问权限。
 
-| Operation | 所需声明 | 声明范围 |
+| 操作 | 所需声明 | 声明范围 |
 | --- | --- | --- |
 | **命名空间** | | |
 | 在命名空间上配置授权规则 |管理 |任何命名空间地址 |

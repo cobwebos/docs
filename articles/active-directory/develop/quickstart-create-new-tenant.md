@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d7ff28d65c68c25613d1f61c00a6132ae93fdf6
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 703976e328eabb891e76459785484d929e2c5d3b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962502"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853139"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>快速入门：设置开发环境
 
@@ -55,7 +55,7 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 > [!TIP]
 > 如果需要查找租户 ID，可执行以下操作：
 > * 将鼠标指针悬停在帐户名上以获取目录/租户 ID，或
-> * 在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”
+> * 在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID” 
 
 如果没有任何与帐户关联的现有租户，则帐户名下面会显示一个 GUID；另外，除非按照下一节的步骤操作，否则无法执行注册应用等操作。
 
@@ -63,9 +63,9 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 
 如果还没有 Azure AD 租户或想要为开发创建新租户，请遵循[目录创建体验](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)。 必须提供以下信息才能创建新租户：
 
-- 组织名称
+-  组织名称
 - **初始域** - 这将包括在 *.onmicrosoft.com 中。 稍后你可以更详细地自定义域。
-- 国家或地区
+-  国家或地区
 
 > [!NOTE]
 > 对租户进行命名时，请使用字母数字字符。 不允许使用特殊字符。 名称不得超过 256 个字符。
@@ -77,5 +77,5 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 ## <a name="next-steps"></a>后续步骤
 
 * 尝试编写快速入门代码并开始对用户进行身份验证。 
-* 有关更多深入的代码示例，请参阅文档的“教程”部分。
+* 有关更多深入的代码示例，请参阅文档的“教程”部分  。
 * 想要将应用部署到云？ 请查看[将容器部署到 Azure](https://docs.microsoft.com/azure/index#pivot=products&panel=containers)。 

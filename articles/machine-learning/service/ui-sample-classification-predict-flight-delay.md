@@ -1,5 +1,5 @@
 ---
-title: 分类预测航班延误
+title: '视觉对象接口示例 #6:用于预测航班延迟的分类'
 titleSuffix: Azure Machine Learning service
 description: 本文介绍如何使用拖放视觉对象接口和自定义 R 代码生成机器学习模型, 以预测航班延误。
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: f2ef5fd17d6c6a91fa5f3c5d62700b68c5fbca24
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4c0a990ae3f45fc7b08c157f180d8ecf805c24e6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855966"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990026"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>示例 6-分类:使用 R 预测航班延迟
 

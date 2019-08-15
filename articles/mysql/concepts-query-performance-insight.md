@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 05d6de31dbc3ff5bbf9365098ceae4c840bf116b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f6c74582760d77ae4318739c74f77d0bcd0501fe
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882795"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950366"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的 Query Performance Insight
 
 **适用于：** Azure Database for MySQL 5。7
 
-> [!NOTE]
+> [!IMPORTANT]
 > Query Performance Insight 处于预览阶段。
 
 Query Performance Insight 可帮助你快速确定运行时间最长的查询、它们如何随时间的推移而变化，以及哪些等待因素会影响它们。

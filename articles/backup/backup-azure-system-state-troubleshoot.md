@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 55af6d17f18efd11fe2d6f89b9b87ca9f407ec25
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 26ba811eba1a25dacddd04814f8e0d2805360920
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688661"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018778"
 ---
 # <a name="troubleshoot-system-state-backup"></a>系统状态备份故障排除
 
@@ -25,7 +25,7 @@ ms.locfileid: "68688661"
 
 - [确保 Microsoft Azure 恢复服务 (MARS) 代理是最新版](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [确保在 MARS 代理和 Azure 之间存在网络连接](https://aka.ms/AB-A4dp50)
-- 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 根据需要重启，然后重试此操作
+- 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 如有必要, 请重新启动并重试该操作
 - [确保在暂存文件夹位置有 5-10% 的可用卷空间](https://aka.ms/AB-AA4dwtt)
 - [检查其他进程或防病毒软件是否正在干扰 Azure 备份](https://aka.ms/AB-AA4dwtk)
 - [计划的备份失败，但手动备份成功](https://aka.ms/ScheduledBackupFailManualWorks)
@@ -45,14 +45,14 @@ ms.locfileid: "68688661"
 
 ## <a name="pre-requisite"></a>先决条件
 
-在对 Azure 备份进行系统状态备份故障排除之前, 请确保执行以下先决条件检查。  
+在对 Azure 备份进行系统状态备份故障排除之前, 请执行以下先决条件检查。  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>验证是否已安装 Windows Server 备份
 
 确保在服务器上安装并启用 Windows Server 备份。 若要检查安装状态, 请运行以下 PowerShell 命令:
 
- ```
- PS C:\> Get-WindowsFeature Windows-Server-Backup
+ ```powershell
+Get-WindowsFeature Windows-Server-Backup
  ```
 如果输出显示 "**可用**"**安装状态**, 则表示 Windows server backup 功能可用于安装但未安装在服务器上。 但是, 如果未安装 Windows Server 备份, 请使用以下方法之一来安装它。
 
@@ -60,13 +60,13 @@ ms.locfileid: "68688661"
 
 若要使用 PowerShell 安装 Windows Server 备份, 请运行以下命令:
 
-  ```
-  PS C:\> Install-WindowsFeature -Name Windows-Server-Backup
+  ```powershell
+  Install-WindowsFeature -Name Windows-Server-Backup
   ```
 
 **方法 2：使用服务器管理器安装 Windows Server 备份**
 
-若要使用服务器管理器安装 Windows Server 备份, 请执行以下操作:
+若要使用服务器管理器安装 Windows Server 备份, 请执行以下步骤:
 
 1. 在**服务器管理**器中, 单击 "**添加角色和功能**"。 此时将显示 "**添加角色和功能向导**"。
 
@@ -126,7 +126,7 @@ Microsoft 软件卷影复制提供程序 (SWPRV) | 手动
     - 通过从提升的 PowerShell 运行`Get-WBJob`命令来定期检查作业状态        
     - 备份作业完成后, 请通过运行`Get-WBJob -Previous 1`命令检查作业的最终状态
 
-如果作业失败, 它将指示一个 WSB 问题, 这会导致 MARS 代理系统状态备份失败。
+如果作业失败, 它表示将导致 MARS 代理系统状态备份失败的 WSB 问题。
 
 ## <a name="common-errors"></a>常见错误
 
@@ -141,7 +141,7 @@ Microsoft 软件卷影复制提供程序 (SWPRV) | 手动
 
 | 症状 | 解决
 | -- | --
-| -MARS 代理失败, 并出现以下错误消息:备份失败, 因为卷影副本卷由于包含系统文件的卷上的磁盘空间不足而无法增长 <br/><br/> -Volsnap 系统事件日志中出现以下错误/警告日志:"卷 C: 上的磁盘空间不足, 无法为 C 的卷影副本存储扩展副本存储: 由于此故障, 卷 C: 的所有卷影副本都存在被删除的风险" | -释放事件日志中突出显示的卷中的空间, 以便在备份过程中有足够的空间来使卷影副本增长 <br/><br/> -虽然配置卷影副本空间, 但可以限制用于卷影复制的空间量, 有关详细信息, 请参阅此[文](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)
+| -MARS 代理失败, 并出现以下错误消息:备份失败, 因为卷影副本卷由于包含系统文件的卷上的磁盘空间不足而无法增长 <br/><br/> -Volsnap 系统事件日志中出现以下错误/警告日志:"卷 C: 上的磁盘空间不足, 无法为 C 的卷影副本存储扩展副本存储: 由于此故障, 卷 C: 的所有卷影副本都存在被删除的风险" | -释放事件日志中突出显示的卷中的空间, 以便在备份过程中有足够的空间来使卷影副本增长 <br/><br/> -在配置卷影副本空间时, 可以限制用于卷影复制的空间量。 有关详细信息, 请参阅此[文](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)
 
 
 ### <a name="efi-partition-locked"></a>已锁定 EFI 分区

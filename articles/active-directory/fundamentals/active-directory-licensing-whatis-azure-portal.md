@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a89443062f7d5cc697e83cc4039d0f3a47ad3077
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561843"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987150"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>什么是 Azure Active Directory 中的条件访问?
 
@@ -32,7 +32,7 @@ Microsoft 付费云服务（如 Office 365、企业移动性 + 安全性、Dynam
 ## <a name="licensing-requirements"></a>许可要求
 必须具有以下许可证之一才能使用基于组的许可：
 
-- Azure AD Basic 及更高版本的付费或试用订阅
+- Azure AD Premium P1 和更高版本的付费或试用订阅
 
 - Office 365 企业版 E3 或 Office 365 A3 或 office 365 GCC 和更高版本
 

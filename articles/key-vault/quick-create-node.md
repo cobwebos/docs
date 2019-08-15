@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 5e8c29e033d895e24047754e686420fb4db86142
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ca6289b1af02a54d8c66d5a9835e24f61c58559
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236637"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934458"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>快速入门：使用 Node Web 应用在 Azure Key Vault 中设置和检索机密 
 
@@ -24,7 +24,7 @@ ms.locfileid: "65236637"
 * 在密钥保管库中存储机密。
 * 从密钥保管库检索机密。
 * 创建 Azure Web 应用程序。
-* 为 Web 应用启用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)。
+* 为 Web 应用启用[托管标识](../active-directory/managed-service-identity/overview.md)。
 * 授予所需的权限，让 Web 应用程序从密钥保管库读取数据。
 
 在继续操作之前，请确保熟悉 [Key Vault 的基本概念](key-vault-whatis.md#basic-concepts)。
@@ -81,7 +81,7 @@ az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGr
 
 我们将添加机密以帮助说明这是如何工作的。 可以存储需要安全保存的，但同时也要提供给应用程序使用的 SQL 连接字符串或其他任何信息。 在本教程中，密码名为 **AppSecret**，将在其中存储 **MySecret** 的值。
 
-键入以下命令，在名为 **AppSecret** 的密钥保管库中创建机密。 此机密将存储值“MySecret”。
+键入以下命令，在名为 **AppSecret** 的密钥保管库中创建机密。 此机密将存储值“MySecret”。 
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
@@ -166,7 +166,7 @@ npm install
 az webapp identity assign --name <app_name> --resource-group "<YourResourceGroupName>"
 ```
 
-此命令等同于转到门户并在 Web 应用程序属性中将“标识/系统分配”设置切换为“打开”。
+此命令等同于转到门户并在 Web 应用程序属性中将“标识/系统分配”设置切换为“打开”   。
 
 ### <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>为应用程序分配从 Key Vault 读取机密的权限
 

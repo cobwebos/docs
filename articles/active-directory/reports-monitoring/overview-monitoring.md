@@ -3,7 +3,7 @@ title: 什么是 Azure Active Directory 监视？ | Microsoft Docs
 description: 简要介绍 Azure Active Directory 监视。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 21102a52c6aa7ae97f3b1c2d671a341f19615a8e
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009017"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988204"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>什么是 Azure Active Directory 监视？
 
@@ -40,13 +40,13 @@ ms.locfileid: "60009017"
 
 ## <a name="diagnostic-settings-configuration"></a>诊断设置配置
 
-若要配置 Azure AD 活动日志的监视设置，请先登录到 [Azure 门户](https://portal.azure.com)，然后选择“Azure Active Directory”。 在这里，可以通过两种方式访问诊断设置配置页：
+若要配置 Azure AD 活动日志的监视设置，请先登录到 [Azure 门户](https://portal.azure.com)，然后选择“Azure Active Directory”。  在这里，可以通过两种方式访问诊断设置配置页：
 
-* 在“监视”部分选择“诊断设置”。
+* 在“监视”部分选择“诊断设置”   。
 
     ![诊断设置](./media/overview-monitoring/diagnostic-settings.png)
     
-* 选择“审核日志”或“登录”，然后选择“导出设置”。 
+* 选择“审核日志”或“登录”，然后选择“导出设置”    。 
 
     ![导出设置](./media/overview-monitoring/export-settings.png)
 

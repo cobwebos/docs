@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 104c208c1e651f67679327fa8c7a56b65c33fd24
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2735656226210e14b2d6f6a08bbe2c5ccb550dd6
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098177"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944241"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>教程：Azure Active Directory 与 Learningpool Act 的集成
 
@@ -118,13 +118,13 @@ ms.locfileid: "67098177"
     > [!NOTE]
     > 标识符非实际值。 请使用实际标识符更新此值。 请联系 [Learningpool Act 客户端支持团队](https://www.learningpool.com/support)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. Learningpool Act 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
+5. Learningpool Act 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
     ![image](common/edit-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ： 
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ------------------- | -------------------- |
     | urn:oid:1.2.840.113556.1.4.221 | user.userprincipalname |
     | urn:oid:2.5.4.42 | user.givenname |

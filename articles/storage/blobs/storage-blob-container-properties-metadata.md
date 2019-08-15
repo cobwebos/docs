@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: tamram
-ms.openlocfilehash: bd745c54fb659729b1e31f9975b2e4e0b6a97a83
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 35883b0c34503ca16f2b10fc061f94af514e10a9
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68235244"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986915"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>通过 .NET 管理容器属性和元数据
 
@@ -24,10 +24,10 @@ Blob 容器除了支持系统属性和用户定义的元数据之外, 还支持�
 
 - **用户定义的元数据**：用户定义的元数据由你为 Blob 存储资源指定的一个或多个名称/值对组成。 您可以使用元数据来存储资源的其他值。 元数据值仅用于你自己的目的，不会影响资源的行为方式。
 
-检索 Blob 存储资源的属性和元数据值的过程分为两个步骤。 必须先通过调用 FetchAttributes 或 FetchAttributesAsync 方法显式提取这些值，然后才能读取   。 此规则的例外情况是, **Exists**和**ExistsAsync**方法会调用所涵盖的相应**FetchAttributes**方法。 调用这些方法之一时, 无需调用**FetchAttributes**。
+检索 Blob 存储资源的属性和元数据值的过程分为两个步骤。 必须先通过调用 FetchAttributes 或 FetchAttributesAsync 方法显式提取这些值，然后才能读取。 此规则的例外情况是, **Exists**和**ExistsAsync**方法会调用所涵盖的相应**FetchAttributes**方法。 调用这些方法之一时, 无需调用**FetchAttributes**。
 
 > [!IMPORTANT]
-> 如果发现尚未填充存储资源的属性或元数据值，请检查代码是否调用了 FetchAttributes 或 FetchAttributesAsync 方法   。
+> 如果发现尚未填充存储资源的属性或元数据值，请检查代码是否调用了 FetchAttributes 或 FetchAttributesAsync 方法。
 
 元数据名称/值对是有效的 HTTP 标头，因此应当遵循所有控制 HTTP 标头的限制。 元数据名称必须是有效的 HTTP 标头名称和有效的 C# 标识符，只能包含 ASCII 字符，并且应当区分大小写。 包含非 ASCII 字符的元数据值应当是 Base64 编码的或 URL 编码的。
 
@@ -96,7 +96,7 @@ public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
 }
 ```
 
-要检索元数据，请对 blob 或容器调用 FetchAttributes 或 FetchAttributesAsync 方法以填充 Metadata 集合，然后读取值，如下面的示例所示    。
+要检索元数据，请对 blob 或容器调用 FetchAttributes 或 FetchAttributesAsync 方法以填充 Metadata 集合，然后读取值，如下面的示例所示。
 
 ```csharp
 public static async Task ReadContainerMetadataAsync(CloudBlobContainer container)
@@ -125,7 +125,7 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 }
 ```
 
-[!INCLUDE [storage-blob-dotnet-resources](../../../includes/storage-blob-dotnet-resources.md)]
+[!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
 ## <a name="see-also"></a>请参阅
 

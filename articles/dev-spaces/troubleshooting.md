@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 2434507ac89d631bb96ae9633403075801879a37
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277404"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019650"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -32,7 +32,7 @@ ms.locfileid: "68277404"
 
 ## <a name="debugging-services-with-multiple-instances"></a>使用多个实例调试服务
 
-目前，Azure Dev Spaces 在调试单个实例或 Pod 时的效果最佳。 azds.yaml 文件包含，表示 Kubernetes 针对服务运行的 Pod 数的设置 replicaCount  。 如果你通过更改 replicaCount 将应用配置为针对给定服务运行多个 Pod，调试程序会附加到第一个 Pod（当按字母顺序列出时）。 如果回收原始 Pod，调试程序会附加到其他 pod，这可能会导致意外行为发生。
+目前，Azure Dev Spaces 在调试单个实例或 Pod 时的效果最佳。 azds.yaml 文件包含，表示 Kubernetes 针对服务运行的 Pod 数的设置 replicaCount。 如果你通过更改 replicaCount 将应用配置为针对给定服务运行多个 Pod，调试程序会附加到第一个 Pod（当按字母顺序列出时）。 如果回收原始 Pod，调试程序会附加到其他 pod，这可能会导致意外行为发生。
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>错误“无法创建 Azure Dev Spaces 控制器”
 
@@ -73,13 +73,13 @@ azds up --verbose --output json
 
 在 Visual Studio 中：
 
-1. 打开“工具”>“选项”  ，在“项目和解决方案”  下，选择“生成并运行”  。
-2. 将“MSBuild 项目生成输出详细级别”  的设置更改为“详细”  或“诊断”  。
+1. 打开“工具”>“选项”，在“项目和解决方案”下，选择“生成并运行”。
+2. 将“MSBuild 项目生成输出详细级别”的设置更改为“详细”或“诊断”。
 
     ![“工具选项”对话框的屏幕截图](media/common/VerbositySetting.PNG)
     
 ### <a name="multi-stage-dockerfiles"></a>多阶段 Dockerfile：
-使用多阶段 Dockerfile 时，看到错误消息“无法启动服务”  。 在这种情况下，详细输出包含以下文本：
+使用多阶段 Dockerfile 时，看到错误消息“无法启动服务”。 在这种情况下，详细输出包含以下文本：
 
 ```cmd
 $ azds up -v
@@ -97,7 +97,7 @@ Service cannot be started.
 出现此错误的原因是，AKS 节点运行的旧版 Docker 不支持多阶段生成。 为了避免多阶段生成，请重写 Dockerfile。
 
 ### <a name="rerunning-a-service-after-controller-re-creation"></a>在重新创建控制器后重新运行服务
-如果尝试在删除并重新创建与此群集关联的 Azure Dev Spaces 控制器后重新运行服务，看到错误消息“无法启动服务”  。 在这种情况下，详细输出包含以下文本：
+如果尝试在删除并重新创建与此群集关联的 Azure Dev Spaces 控制器后重新运行服务，看到错误消息“无法启动服务”。 在这种情况下，详细输出包含以下文本：
 
 ```cmd
 Installing Helm chart...
@@ -113,7 +113,7 @@ Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already ex
 
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>对与 Dev Spaces 服务关联的公用 URL 进行 DNS 名称解析失败
 
-可以将 `--public` 开关指定为 `azds prep` 命令，或选中 Visual Studio 内的 `Publicly Accessible` 复选框，从而配置服务的公共 URL 终结点。 当你在 Dev Spaces 中运行服务时，公共 DNS 名称自动注册。 如果此 DNS 名称未注册，你在连接到公共 URL 时，在 Web 浏览器中看到“无法显示网页”  或“无法访问网站”  错误消息。
+可以将 `--public` 开关指定为 `azds prep` 命令，或选中 Visual Studio 内的 `Publicly Accessible` 复选框，从而配置服务的公共 URL 终结点。 当你在 Dev Spaces 中运行服务时，公共 DNS 名称自动注册。 如果此 DNS 名称未注册，你在连接到公共 URL 时，在 Web 浏览器中看到“无法显示网页”或“无法访问网站”错误消息。
 
 ### <a name="try"></a>请尝试：
 
@@ -123,9 +123,9 @@ Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already ex
 azds list-uris
 ```
 
-如果某个 URL 处于“挂起”  状态，则意味着该 Dev Spaces 仍然在等待 DNS 注册完成。 有时，注册需要几分钟的时间才能完成。 Dev Spaces 还为每个服务打开一个本地主机隧道，在等待 DNS 注册时你可以使用该隧道。
+如果某个 URL 处于“挂起”状态，则意味着该 Dev Spaces 仍然在等待 DNS 注册完成。 有时，注册需要几分钟的时间才能完成。 Dev Spaces 还为每个服务打开一个本地主机隧道，在等待 DNS 注册时你可以使用该隧道。
 
-如果 URL 保持“挂起”  状态超过 5 分钟，可能表明创建公共终结点的外部 DNS Pod 有问题，或获取公共终结点的 nginx 入口控制器 Pod 有问题。 可以使用以下命令删除这些 Pod。 AKS 自动重新创建已删除的 Pod。
+如果 URL 保持“挂起”状态超过 5 分钟，可能表明创建公共终结点的外部 DNS Pod 有问题，或获取公共终结点的 nginx 入口控制器 Pod 有问题。 可以使用以下命令删除这些 Pod。 AKS 自动重新创建已删除的 Pod。
 
 ```cmd
 kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
@@ -167,14 +167,14 @@ kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-in
     ```
 
 ## <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>警告“由于语言不受支持，无法生成 Dockerfile”
-Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语言之一编写的代码的目录中运行 azds prep  时，Azure Dev Spaces 将自动为你创建相应的 Dockerfile。
+Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语言之一编写的代码的目录中运行 azds prep 时，Azure Dev Spaces 将自动为你创建相应的 Dockerfile。
 
-仍可以将 Azure Dev Spaces 与其他语言编写的代码一起使用，但需要在第一次运行 azds up  前手动创建 Dockerfile。
+仍可以将 Azure Dev Spaces 与其他语言编写的代码一起使用，但需要在第一次运行 azds up 前手动创建 Dockerfile。
 
 ### <a name="try"></a>请尝试：
 如果应用使用 Azure Dev Spaces 本身不支持的语言编写，你需要提供相应的 Dockerfile，以生成运行代码的容器映像。 Docker 提供[关于编写 Dockerfile 的最佳做法列表](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)和 [Dockerfile 参考](https://docs.docker.com/engine/reference/builder/)，有助于编写满足你需求的 Dockerfile。
 
-一旦有了相应的 Dockerfile，就可以继续运行 azds up  以在 Azure Dev Spaces 中运行应用程序。
+一旦有了相应的 Dockerfile，就可以继续运行 azds up 以在 Azure Dev Spaces 中运行应用程序。
 
 ## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>“上游连接错误或者在标头之前存在断开连接/重置设置”错误
 可能会在尝试访问服务时看到此错误。 例如，可能会在浏览器中访问服务的 URL 时看到此错误。 
@@ -186,7 +186,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 
 ### <a name="try"></a>请尝试：
 1. 如果容器正在生成/部署过程中，则可等待 2-3 秒，然后尝试再次访问服务。 
-1. 检查端口配置。 指定的端口号应在下面的所有资产中都完全相同  ：
+1. 检查端口配置。 指定的端口号应在下面的所有资产中都完全相同：
     * **Dockerfile：** 通过 `EXPOSE` 指令指定。
     * **[Helm 图表](https://docs.helm.sh)：** 通过服务的 `externalPort` 和 `internalPort` 值（通常位于 `values.yml` 文件中）指定。
     * 在应用程序代码（例如，Node.js 的 `var server = app.listen(80, function () {...}` ）中打开的任何端口
@@ -250,7 +250,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 可以在 https://github.com/sgreenmsft/buildcontextsample 中找到一个示例
 
 ## <a name="microsoftdevspacesregisteraction-authorization-error"></a>“Microsoft.DevSpaces/register/action”授权错误
-必须对 Azure 订阅拥有“所有者”  或“参与者”  访问权限，才能管理 Azure Dev Spaces。 如果尝试管理 Dev Spaces，但对相关 Azure 订阅不拥有“所有者”  或“参与者”  访问权限，可能会看到此错误。
+必须对 Azure 订阅拥有“所有者”或“参与者”访问权限，才能管理 Azure Dev Spaces。 如果尝试管理 Dev Spaces，但对相关 Azure 订阅不拥有“所有者”或“参与者”访问权限，可能会看到此错误。
 `The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.`
 
 ### <a name="reason"></a>Reason
@@ -263,7 +263,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 az provider register --namespace Microsoft.DevSpaces
 ```
 
-## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Dev Spaces 在执行“正在等待容器映像生成...”  步骤（使用 AKS 虚拟节点）时超时
+## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Dev Spaces 在执行“正在等待容器映像生成...”步骤（使用 AKS 虚拟节点）时超时
 
 ### <a name="reason"></a>Reason
 当你尝试使用 Dev 空间运行配置为在[AKS 虚拟节点](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)上运行的服务时, 将发生此超时。 Dev Spaces 暂不支持在虚拟节点上生成或调试服务。
@@ -283,7 +283,7 @@ Container image build failed
 上面的命令显示, 将服务的 pod 分配给*虚拟节点*, 即虚拟节点。
 
 ### <a name="try"></a>请尝试：
-将服务的 Helm 图表更新为，删除任何允许在虚拟节点上运行服务的 nodeSelector  和/或 tolerations  值。 这些值通常是在图表的 `values.yaml` 文件中进行定义。
+将服务的 Helm 图表更新为，删除任何允许在虚拟节点上运行服务的 nodeSelector 和/或 tolerations 值。 这些值通常是在图表的 `values.yaml` 文件中进行定义。
 
 如果要通过 Dev Spaces 生成/调试的服务在 VM 节点上运行，仍可使用已启用虚拟节点功能的 AKS 群集。 这是默认配置。
 
@@ -311,15 +311,15 @@ Container image build failed
 在 AKS 群集中的某个命名空间上启用 Dev Spaces 时，会在该命名空间内运行的每个 Pod 中安装一个名为 _mindaro-proxy_ 的附加容器。 此容器会拦截对 Pod 中服务的调用，这是 Dev Spaces 团队开发功能不可或缺的一部分；但它可能会干扰在这些 Pod 中运行的某些服务。 众所周知, 会干扰为 Redis 运行的 Azure 缓存, 从而导致在主/辅助通信中出现连接错误和故障。
 
 ### <a name="try"></a>请尝试：
-可以将受影响的 Pod 移到群集内未  启用 Dev Spaces 的命名空间。 应用的其余部分可以继续在已启用 Dev Spaces 的命名空间内运行。 Dev Spaces 不会在未启用 Dev Spaces 的命名空间内安装 _mindaro-proxy_ 容器。
+可以将受影响的 Pod 移到群集内未启用 Dev Spaces 的命名空间。 应用的其余部分可以继续在已启用 Dev Spaces 的命名空间内运行。 Dev Spaces 不会在未启用 Dev Spaces 的命名空间内安装 _mindaro-proxy_ 容器。
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure Dev Spaces 似乎没有使用我的现有 Dockerfile 来生成容器
 
 ### <a name="reason"></a>Reason
-Azure Dev Spaces 可以配置为指向项目中的特定 _Dockerfile_。 如果 Azure Dev Spaces 看起来并未使用预期的 Dockerfile  来生成容器，可能需要显式指示 Azure Dev Spaces 要使用哪个 Dockerfile。 
+Azure Dev Spaces 可以配置为指向项目中的特定 _Dockerfile_。 如果 Azure Dev Spaces 看起来并未使用预期的 Dockerfile 来生成容器，可能需要显式指示 Azure Dev Spaces 要使用哪个 Dockerfile。 
 
 ### <a name="try"></a>请尝试：
-打开 Azure Dev Spaces 在项目中生成的 azds.yaml  文件。 使用 configurations->develop->build->dockerfile  指令指向要使用的 Dockerfile：
+打开 Azure Dev Spaces 在项目中生成的 azds.yaml 文件。 使用 configurations->develop->build->dockerfile 指令指向要使用的 Dockerfile：
 
 ```
 ...
@@ -390,7 +390,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
     * 对于 "*角色*", 请选择 "*参与者*" 或 "*所有者*"。
     * 对于 "*分配访问权限*", 选择*Azure AD 用户、组或服务主体*。
     * 对于要向其授予权限的用户,*请选择*"搜索"。
-1. 单击“保存”  。
+1. 单击“保存”。
 
 ## <a name="controller-create-failing-due-to-controller-name-length"></a>由于控制器名称长度, 控制器创建失败
 
@@ -445,7 +445,14 @@ azure-cli                         2.0.60 *
 
 ### <a name="reason"></a>Reason
 
-在开发环境中运行服务时, 会将该服务的 pod[与用于检测的附加容器注入](how-dev-spaces-works.md#prepare-your-aks-cluster)。 这些容器未定义资源请求或限制, 这将导致为 pod 禁用水平 pod 自动缩放程序。
+当你在开发环境中运行服务时, 该服务的 pod 会[注入额外的用于检测的容器](how-dev-spaces-works.md#prepare-your-aks-cluster), 并且 pod 中的所有容器都需要为水平 Pod 自动缩放设置资源限制和请求。 
+
+
+可以通过将`azds.io/proxy-resources`批注添加到 pod 规范, 为注入的容器 (devspaces) 应用资源请求和限制。应将该值设置为一个 JSON 对象, 该对象表示代理的容器规范的资源部分。
 
 ### <a name="try"></a>尝试
-在未启用 Dev 空间的命名空间中运行水平 pod 自动缩放程序。
+
+下面是要应用于 pod 规范的代理资源批注的示例。
+```
+azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
+```
