@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 6d05b6ac49b372caff1bdc2f03358598fcc1afba
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 8c983772f58c1ea01db175b47225ccfafa515b96
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737088"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951978"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -72,8 +72,8 @@ MARS 代理需要以下 URL 的访问权限：
 
 在本地计算机和 Azure VM 上运行的某些操作系统中，可以使用 MARS 代理直接备份到 Azure。 所有操作系统必须是 64 位，并且应该运行最新的服务包和更新。 下表汇总了这些操作系统：
 
-**操作系统** | **文件/文件夹** | **系统状态**
---- | --- | ---
+**操作系统** | **文件/文件夹** | **系统状态** 
+--- | --- | --- 
 Windows 10（Enterprise、Pro、Home） | 是 | 否
 Windows 8.1（Enterprise、Pro）| 是 |否
 Windows 8（Enterprise、Pro） | 是 | 否

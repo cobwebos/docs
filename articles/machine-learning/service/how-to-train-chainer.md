@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 91ac8b596373963aeba00c1932dfde5d76f27bd0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bc14ba2bcaa80236717c062abd1dc8a63b58305c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856031"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966836"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Azure 机器学习服务, 大规模定型和注册 Chainer 模型
 
@@ -27,7 +27,7 @@ ms.locfileid: "68856031"
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 在以下任一环境中运行此代码:
 
@@ -214,3 +214,5 @@ for f in run.get_file_names():
 * [优化超参数](how-to-tune-hyperparameters.md)
 
 * [在训练期间跟踪运行指标](how-to-track-experiments.md)
+
+* [在 Azure 中查看分布式深层学习培训的参考体系结构](/azure/architecture/reference-architectures/ai/training-deep-learning)

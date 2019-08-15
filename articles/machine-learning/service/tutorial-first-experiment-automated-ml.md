@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 07/23/2019
-ms.openlocfilehash: 1d2a0c9e1531ace16335ea57acaccedfe2c1a3c8
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7ef19db472b30d82f14a5dd650cb8f4cb1f3ed3a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815893"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990076"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-train-and-deploy-your-first-classification-model-preview"></a>教程：使用自动机器学习来训练和部署第一个分类模型 (预览)
 
@@ -32,7 +32,7 @@ ms.locfileid: "68815893"
 > * 查看定型运行详细信息。
 > * 部署模型。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://aka.ms/AMLFree)。
 
@@ -95,7 +95,7 @@ ms.locfileid: "68815893"
     并发| 选择**5**作为并发迭代的最大数目。
 
    >[!NOTE]
-   > 对于此实验, 我们未设置指标或最大迭代阈值。 我们也不会阻止测试算法。
+   > 对于此试验, 我们不会为每个迭代阈值设置指标或最大核心数。 我们也不会阻止测试算法。
 
 1. 选择 "**启动**" 以运行试验。
 

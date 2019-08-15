@@ -5,21 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5fefe469bfac4816a67c6ceb344f12c1e52de60c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f4e36edf86823453e663ed875c7d5e4ffdc2e524
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550451"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016434"
 ---
-# <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序
+# <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>用于构建高度可用的 Azure 存储应用程序的区域冗余存储 (ZRS)
+
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
 
 ## <a name="support-coverage-and-regional-availability"></a>支持覆盖范围和区域可用性
+
 ZRS 目前支持标准的常规用途 v2 帐户类型。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。
 
 ZRS 适用于块 Blob、非磁盘页 Blob、文件、表和队列。
@@ -45,6 +47,7 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 - 托管磁盘不支持 ZRS。 可以将标准 SSD 托管磁盘的快照和映像存储在标准 HDD 存储上, 并在[LRS 和 ZRS 选项之间进行选择](https://azure.microsoft.com/pricing/details/managed-disks/)。
 
 ## <a name="what-happens-when-a-zone-becomes-unavailable"></a>当一个区域不可用时，会发生什么情况？
+
 即使某个区域不可用，也仍可访问你的数据进行读写操作。 Microsoft 建议持续遵循暂时性故障处理的做法。 这些做法包括结合指数退让实施重试策略。
 
 当某个区域不可用时，Azure 会执行网络更新，例如 DNS 重新指向。 如果完成更新之前访问数据，这些更新可能会影响应用程序。
@@ -52,6 +55,7 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 如果多个区域永久受到影响，在发生区域性的灾难时，ZRS 可能无法保护数据。 如果区域只是暂时不可用，则 ZRS 可以提供数据复原能力。 为了在发生区域性灾难时提供保护，Microsoft 建议使用异地冗余存储 (GRS)。 有关 GRS 的详细信息，请参阅[异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy-grs.md)。
 
 ## <a name="converting-to-zrs-replication"></a>转换为 ZRS 复制
+
 在 LRS、GRS 和 RA-GRS 之间来回迁移的过程非常直接。 使用 Azure 门户或存储资源提供程序 API 可以更改帐户的冗余类型。 然后，Azure 会相应地复制数据。 
 
 将数据迁移到 ZRS 需要其他策略。 ZRS 迁移涉及到将数据从单个存储阵列物理迁移到某个区域中的多个阵列。
@@ -61,14 +65,14 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 - 手动将现有帐户中的数据复制或移动到新的 ZRS 帐户。
 - 请求实时迁移。
 
-Microsoft 强烈建议执行手动迁移。 手动迁移比实时迁移更灵活。 使用手动迁移可以控制时间。
+如果需要在特定日期完成迁移, 请考虑执行手动迁移。 手动迁移比实时迁移更灵活。 使用手动迁移可以控制时间。
 
 若要执行手动迁移，可使用以下选项：
 - 使用现有的工具（例如 AzCopy）、某个 Azure 存储客户端库或可靠的第三方工具。
 - 如果你熟悉 Hadoop 或 HDInsight，可将源和目标 (ZRS) 帐户附加到群集。 然后使用 DistCp 等工具来并行化数据复制过程。
 - 使用某个 Azure 存储客户端库生成自己的工具。
 
-手动迁移可能导致应用程序关闭。 如果应用程序需要高可用性，则还可以使用 Microsoft 提供的实时迁移选项。 实时迁移属于就地迁移。 
+手动迁移可能导致应用程序关闭。 如果应用程序需要高可用性，则还可以使用 Microsoft 提供的实时迁移选项。 实时迁移是一种就地迁移, 无需停机。 
 
 在实时迁移过程中，在源与目标存储阵列之间迁移数据时，可以使用自己的存储帐户。 在迁移过程中, 你可以使用与往常相同的持久性和可用性 SLA。
 
@@ -137,9 +141,9 @@ ZRS 经典版仅适用于常规用途 V1 (GPv1) 存储帐户中的块 Blob。 �
 
 若要向/从 LRS、ZRS 经典版、GRS 或 RA-GRS 帐户手动迁移 ZRS 帐户数据，请使用以下工具之一：AzCopy、Azure 存储资源管理器、Azure PowerShell 或 Azure CLI。 此外，可以使用某个 Azure 存储客户端库生成自己的迁移解决方案。
 
-你还可以在门户中将 ZRS 经典帐户升级到 ZRS, 或使用 ZRS 提供的区域中的 Azure PowerShell 或 Azure CLI。
+你还可以在门户中将 ZRS 经典帐户升级到 ZRS, 或使用 ZRS 提供的区域中的 Azure PowerShell 或 Azure CLI。 若要升级到 Azure 门户中的 ZRS, 请导航到该帐户的 "**配置**" 部分, 然后选择 "**升级**":
 
-若要升级到门户中的 ZRS, 请前往该帐户的 "配置" 部分, 然后选择 "升级":![将 ZRS 经典升级到门户中的 ZRS](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.jpg)
+![将 ZRS 经典升级到门户中的 ZRS](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.png)
 
 若要使用 PowerShell 升级到 ZRS, 请调用以下命令:
 ```powershell

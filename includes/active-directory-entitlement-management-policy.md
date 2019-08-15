@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 154d71c9cbc109834a5854b46c3e6584dcefa7eb
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817199"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968829"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>策略:适用于目录中的用户
 
@@ -35,7 +35,7 @@ ms.locfileid: "68817199"
 
 ### <a name="policy-for-users-not-in-your-directory"></a>策略:对于不在你的目录中的用户
 
-如果你希望在你的目录中的用户不能请求此访问包, 请执行以下步骤。 **不在你的目录中的用户**指的是另一个 Azure AD 目录中的用户, 可能尚未邀请到你的目录。  必须将目录配置为允许在**组织关系协作限制**设置中使用。
+如果你希望在你的目录中的用户不能请求此访问包, 请执行以下步骤。 **不在你的目录中的用户**指的是另一个 Azure AD 目录中的用户, 可能尚未邀请到你的目录。 目前只能从组织中添加具有 Azure AD 的用户。 必须将目录配置为允许在**组织关系协作限制**设置中使用。
 
 > [!NOTE]
 > 将为你的请求已获批准或自动批准的用户创建来宾外部用户帐户。 将邀请来宾, 但不会收到邀请电子邮件。 相反, 在传递其访问包分配时, 他们将收到一封电子邮件。 默认情况下, 当来宾用户不再具有任何访问包分配时, 因为他们的上次分配已过期或已被取消, 则将阻止该来宾用户帐户登录并随后将其删除。 如果希望来宾用户无限期地保留在目录中, 你可以更改你的授权管理配置的设置。

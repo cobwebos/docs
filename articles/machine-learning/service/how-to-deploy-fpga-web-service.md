@@ -1,5 +1,5 @@
 ---
-title: 在 FPGA 上部署模型
+title: 什么是 FPGA-如何部署
 titleSuffix: Azure Machine Learning service
 description: 了解如何使用 Azure 机器学习服务在 FPGA 上运行的模型部署 web 服务, 以实现超低延迟推理。
 services: machine-learning
@@ -11,18 +11,49 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5e780c1a1d18954d0b3e9413e26f478e4ea3a8b1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ff4259c438fec448ba510e4c248de6f4acc184ab
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856109"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990490"
 ---
-# <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务将模型部署为 FPGA 上的 Web 服务
+# <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什么是现场可编程的入口阵列 (FPGA) 以及如何部署
 
-您可以使用 Azure 机器学习硬件加速模型将模型部署为[现场可编程入口阵列 (fpga)](concept-accelerate-with-fpgas.md)上的 web 服务。 使用 Fpga 可提供超高延迟推理, 即使只使用一批。 推理或模型计分是部署模型用于预测的阶段, 最常见的是生产数据。
+本文介绍了现场可编程的入口数组 (FPGA), 并演示了如何使用 Azure 机器学习服务将模型部署到 Azure FPGA。 
 
-当前提供了以下模型：
+FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的层次结构。 这种互连可以在生产之后以不同方式来配置块。 与其他芯片相比，FPGA 既有可编程性，又有很好的性能。
+
+## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGA 与CPU、GPU 和 ASIC 的对比
+
+下面的示意图和表将 FPGA 与其他处理器进行了比较。
+
+![Azure 机器学习服务 FPGA 比较示意图](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+
+|处理器||描述|
+|---|:-------:|------|
+|特定于应用程序的集成电路|ASIC|自定义电路（例如 Google 的 TensorFlow 处理器单元 (TPU)）的效率最高。 它们不能根据需求的变化重新配置。|
+|现场可编程门阵列|FPGA|FPGA（例如 Azure 上提供的那些）提供接近于 ASIC 的性能。 它们也是灵活的，并且可以在一段时间后重新配置以实现新逻辑。|
+|图形处理单元|GPU|进行 AI 计算时的常用选择。 GPU 提供并行处理功能，在进行图形渲染时速度快于 CPU。|
+|中央处理单元|CPU|常规用途处理器，其性能无法胜任图形和视频处理。|
+
+Azure 上的 Fpga 基于 Intel 的 FPGA 设备, 数据科学家和开发人员使用该设备加速实时 AI 计算。 这种启用了 FPGA 的体系结构提供了高性能、灵活性和可伸缩性，可以在 Azure 上使用。
+
+Fpga 可以实现实时推理 (或模型评分) 请求的低延迟。 不需要使用异步请求（批处理）。 批处理可能导致延迟，因为需要处理更多的数据。 神经处理单元的实现不需要批处理;因此, 与 CPU 和 GPU 处理器相比, 延迟时间可能会更低一些。
+
+### <a name="reconfigurable-power"></a>可反复配置的功能
+可以针对不同类型的机器学习模型反复配置 FPGA。 利用这种灵活性，可以更轻松地根据最优化的数值精度和所用内存模型来加速应用程序。 由于 FPGA 可以反复配置，因此可以跟上快速变化的 AI 算法的要求。
+
+## <a name="whats-supported-on-azure"></a>Azure 支持的操作
+Microsoft Azure 是世界上在 FPGA 中的最大云投资。 使用这种支持 FPGA 的体系结构，受训的神经网络就可以快速运行并降低延迟。 Azure 可以在 Fpga 上并行处理预先训练的深层神经网络 (DNN), 以横向扩展你的服务。 DNNs 可以预先训练，可以作为深度特征化器来传输学习内容，或者使用更新的权重进行优化。
+
+Azure 上的 Fpga 支持:
+
++ 图像分类和识别方案
++ TensorFlow 部署
++ Intel FPGA 硬件 
+
+目前提供以下 DNN 模型:
   - ResNet 50
   - ResNet 152
   - DenseNet-121
@@ -38,7 +69,25 @@ ms.locfileid: "68856109"
 > [!IMPORTANT]
 > 若要优化滞后时间和吞吐量, 将数据发送到 FPGA 模型的客户端应位于上述某个区域 (即模型部署到的区域) 中。
 
-## <a name="prerequisites"></a>先决条件
+**Azure vm 的 PBS 系列**包含 Intel Arria 10 fpga。 检查 Azure 配额分配时, 它将显示为 "标准 PBS 系列个 vcpu"。 PB6 VM 具有六个个 vcpu 和一个 FPGA, 并且它将在将模型部署到 FPGA 时由 Azure ML 自动进行设置。 它仅与 Azure ML 一起使用, 并且不能运行任意轨道。 例如, 你将无法通过轨道将 FPGA 与进行刷新, 以进行加密、编码等。
+
+### <a name="scenarios-and-applications"></a>方案和应用
+
+Azure Fpga 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评估、必应搜索排名、软件定义网络 (SDN) 加速，以便将 CPU 解放出来完成其他任务，同时降低延迟。
+
+以下方案使用 Fpga:
++ [自动化光学检查系统](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
+
++ [地表覆盖制图](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
+
+
+
+## <a name="example-deploy-models-on-fpgas"></a>例如：在 FPGA 上部署模型 
+
+你可以使用 Azure 机器学习硬件加速模型将模型部署为 Fpga 上的 web 服务。 使用 Fpga 可提供超高延迟推理, 即使只使用一批。 推理或模型计分是部署模型用于预测的阶段, 最常见的是生产数据。
+
+
+### <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。  如果没有, 请在开始前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -71,11 +120,8 @@ ms.locfileid: "68856109"
     pip install --upgrade azureml-accel-models
     ```
 
-## <a name="sample-notebooks"></a>示例笔记本
 
-为方便起见, 示例[笔记本](https://aka.ms/aml-accel-models-notebooks)适用于以下示例和其他示例。
-
-## <a name="create-and-containerize-your-model"></a>创建模型并容器化
+## <a name="1-create-and-containerize-models"></a>1.创建和容器化模型
 
 本文档将介绍如何创建 TensorFlow 图来预处理输入图像、如何在 FPGA 上使用 ResNet 50 使其成为特征化器, 然后通过针对 ImageNet 数据集定型的分类器来运行这些功能。
 
@@ -86,6 +132,8 @@ ms.locfileid: "68856109"
 * 部署模型
 * 使用已部署的模型
 * 删除已部署的服务
+
+使用[适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 创建服务定义。 服务定义是一个文件，用于根据 TensorFlow 来描述图形（输入、特征化器、分类器）的管道。 部署命令会自动将定义和图压缩到 ZIP 文件中，然后将 ZIP 文件上传到 Azure Blob 存储。 DNN 已部署为在 FPGA 上运行。
 
 ### <a name="load-azure-ml-workspace"></a>加载 Azure ML 工作区
 
@@ -197,7 +245,7 @@ print(output_tensors)
 
 ### <a name="register-model"></a>注册模型
 
-[注册](./concept-model-management-and-deployment.md)创建的模型。  添加标记和有关模型的其他元数据有助于跟踪定型模型。
+在 Azure Blob 存储中结合使用 SDK 和 ZIP 文件来[注册](./concept-model-management-and-deployment.md)模型。 添加标记和有关模型的其他元数据有助于跟踪定型模型。
 
 ```python
 from azureml.core.model import Model
@@ -267,7 +315,7 @@ for i in Image.list(workspace=ws):
         i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
 ```
 
-## <a name="model-deployment"></a>模型部署
+## <a name="2-deploy-to-cloud-or-edge"></a>2.部署到云或边缘
 
 ### <a name="deploy-to-the-cloud"></a>部署到云
 
@@ -369,15 +417,23 @@ registered_model.delete()
 converted_model.delete()
 ```
 
-## <a name="deploy-to-a-local-edge-server"></a>部署到本地边缘服务器
+### <a name="deploy-to-a-local-edge-server"></a>部署到本地边缘服务器
 
 所有[Azure Data Box Edge 设备](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
 )都包含用于运行模型的 FPGA。  在 FPGA 上, 一次只能运行一个模型。  若要运行不同的模型, 只需部署一个新的容器。 有关说明和示例代码, 请参阅[此 Azure 示例](https://github.com/Azure-Samples/aml-hardware-accelerated-models)。
 
 ## <a name="secure-fpga-web-services"></a>保护 FPGA Web 服务
 
-有关如何保护 FPGA Web 服务的信息，请参阅[保护 Web 服务](how-to-secure-web-service.md)文档。
+若要保护 FPGA web 服务, 请参阅[安全 web 服务](how-to-secure-web-service.md)文档。
 
-## <a name="pbs-family-vms"></a>PBS 系列 Vm
+## <a name="next-steps"></a>后续步骤
 
-Azure Vm 的 PBS 系列包含 Intel Arria 10 Fpga。  检查 Azure 配额分配时, 它将显示为 "标准 PBS 系列个 vcpu"。  PB6 VM 具有六个个 vcpu 和一个 FPGA, 并且它将在将模型部署到 FPGA 时由 Azure ML 自动进行设置。  它仅与 Azure ML 一起使用, 并且不能运行任意轨道。  例如, 你将无法通过轨道将 FPGA 与进行刷新, 以进行加密、编码等。 
+查看以下笔记本、视频和博客:
+
++ 几个[示例笔记本](https://aka.ms/aml-accel-models-notebooks)。
+
++ [“超大规模”硬件：ML at scale on top of Azure + FPGA :Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)（超大规模的硬件：基于 Azure + FPGA 的大规模机器学习：Build 2018（视频））
+
++ [Inside the Microsoft FPGA-based configurable cloud (video)](https://channel9.msdn.com/Events/Build/2017/B8063)（深入了解基于 Microsoft FPGA 的可配置云（视频））
+
++ [用于实时 AI 的 Project Brainwave：项目主页](https://www.microsoft.com/research/project/project-brainwave/)

@@ -11,16 +11,16 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 064d55b96c8817f4b7ccc5f0925eeecfaf310424
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0d64bd150a43666679253f8244d80411e25dfdcd
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550523"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935055"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>使用 PowerShell 创建弹性作业代理
 
-使用[弹性作业](sql-database-job-automation-overview.md#elastic-database-jobs)，可以跨多个数据库并行运行一个或多个 Transact-SQL (T-SQL) 脚本。
+使用[弹性作业](sql-database-job-automation-overview.md#elastic-database-jobs-preview)，可以跨多个数据库并行运行一个或多个 Transact-SQL (T-SQL) 脚本。
 
 本教程介绍跨多个数据库运行查询所需的步骤：
 

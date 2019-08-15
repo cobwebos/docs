@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 561c4458f942dc524f7de8df5b4385a1eaa1f6a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80eb3d60eb4c40e726d53d5fb876a6a118d119cb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106283"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944943"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-betterworks"></a>教程：Azure Active Directory 与 BetterWorks 集成
 
@@ -119,13 +119,13 @@ ms.locfileid: "67106283"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [BetterWorks 客户端支持团队](mailto:support@betterworks.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-6. BetterWorks 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****   ****  。
+6. BetterWorks 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
     ![image](common/edit-attribute.png)
 
 7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ： 
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ----- |  ------------ |
     | saml_token | bd189cf6-1701-11e6-8f90-d26992eca2a5 |
 
@@ -217,7 +217,7 @@ ms.locfileid: "67106283"
 
 ### <a name="create-betterworks-test-user"></a>创建 BetterWorks 测试用户
 
-在本部分中，在 BetterWorks 中创建名为 Britta Simon 的用户。 在  [BetterWorks 支持团队](mailto:support@betterworks.com)的配合下，将用户添加到 BetterWorks 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分中，在 BetterWorks 中创建名为 Britta Simon 的用户。 请与 [BetterWorks 支持团队](mailto:support@betterworks.com)协作，以将用户添加到 BetterWorks 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fbeb6dc425709d26768a6185828b900a37c88fb6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 99773b83f15ea4b386c1078eed510fc233322f0f
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68235036"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985685"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>使用 .NET 在 Azure 存储中创建或删除容器
 
@@ -183,7 +183,7 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
 }
 ```
 
-[!INCLUDE [storage-blob-dotnet-resources](../../../includes/storage-blob-dotnet-resources.md)]
+[!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
 ## <a name="see-also"></a>请参阅
 

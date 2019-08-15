@@ -1,5 +1,5 @@
 ---
-title: 分析预测价格
+title: '视觉对象接口示例 #1: 回归以预测价格'
 titleSuffix: Azure Machine Learning service
 description: 了解如何构建机器学习模型来预测汽车的价格, 无需编写单行代码。
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 95373bdd58332f49307004067cdd04b9c313b935
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0c86955e0b10111bf9b6db0d884b73867a4467c5
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845956"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990408"
 ---
 # <a name="sample-1---regression-predict-price"></a>示例 1-回归:预测价格
 
@@ -34,7 +34,7 @@ ms.locfileid: "68845956"
 
 ![试验图](media/ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

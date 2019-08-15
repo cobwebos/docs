@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e6f6c41e5de4f4a053748dfb08dc57e8acac32e5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ea5e476680b07a6a7ba2b57e94f1f0b99cc10987
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848226"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990088"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -49,12 +49,16 @@ ms.locfileid: "68848226"
 + 用[Azure 机器学习 VS Code 扩展](how-to-vscode-tools.md)在 Visual Studio Code 中编写代码
 + 在不编写代码的情况下, 可以使用[Azure 机器学习服务的可视界面 (预览版)](ui-concept-visual-interface.md)来执行工作流步骤。
 
-## <a name="glossary-of-concepts"></a>概念术语表
+> [!NOTE]
+> 本文定义了 Azure 机器学习服务使用的术语和概念，但未定义 Azure 平台的术语和概念。 有关 Azure 平台术语的详细信息，请参阅 [Microsoft Azure 词汇表](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)。
+
+## <a name="glossary"></a>术语表
 
 + <a href="#workspaces">空间</a>
 + <a href="#experiments">试验</a>
 + <a href="#models">机型</a>
 + <a href="#run-configurations">运行配置</a>
++ [估算](#estimators)
 + <a href="#datasets-and-datastores">数据集 & 数据存储</a>
 + <a href="#compute-targets">计算目标</a>
 + <a href="#training-scripts">训练脚本</a>
@@ -69,19 +73,9 @@ ms.locfileid: "68848226"
 + <a href="#ml-pipelines">ML 管道</a>
 + <a href="#logging">日志记录</a>
 
-> [!NOTE]
-> 本文定义了 Azure 机器学习服务使用的术语和概念，但未定义 Azure 平台的术语和概念。 有关 Azure 平台术语的详细信息，请参阅 [Microsoft Azure 词汇表](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)。
-
-
 ### <a name="workspaces"></a>工作区
 
-[工作区](concept-workspace.md)是 Azure 机器学习服务的顶级资源。 它提供了一个集中的位置来处理使用 Azure 机器学习服务时创建的所有项目。
-
-下图演示了工作区的分类：
-
-[![工作区分类](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
-
-有关工作区的详细信息, 请参阅[什么是 Azure 机器学习工作区？](concept-workspace.md)。
+[工作区](concept-workspace.md)是 Azure 机器学习服务的顶级资源。 它提供了一个集中的位置来处理使用 Azure 机器学习服务时创建的所有项目。 可以与他人共享工作区。 有关工作区的详细说明, 请参阅[什么是 Azure 机器学习工作区？](concept-workspace.md)。
 
 ### <a name="experiments"></a>试验
 
@@ -97,7 +91,7 @@ ms.locfileid: "68848226"
 
 Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何主流机器学习框架, 如 Scikit-learn、XGBoost、PyTorch、TensorFlow 和 Chainer。
 
-有关定型模型的示例, 请参阅[教程:使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。
+有关使用 scikit-learn 和估计器为模型定型的示例, 请参阅[教程:使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。
 
 **模型注册表**将跟踪 Azure 机器学习服务工作区中的所有模型。
 
@@ -119,6 +113,19 @@ Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何�
 运行配置可以保存到包含训练脚本的目录内的文件中，或构造为内存中对象以及用于提交运行。
 
 有关示例运行配置，请参阅[选择并使用计算目标来训练模型](how-to-set-up-training-targets.md)。
+
+### <a name="estimators"></a>估算
+
+为了便于通过常用框架进行模型训练, 估计器类使你能够轻松构造运行配置。 您可以创建和使用一般[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交使用您选择的任何学习框架的培训脚本 (如 scikit-learn)。
+
+对于 PyTorch、TensorFlow 和 Chainer 任务, Azure 机器学习还提供相应的[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)和[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)估算以简化使用这些框架的操作。
+
+有关详细信息，请参阅以下文章：
+
+* [用估算训练 ML 模型](how-to-train-ml-models.md)。
+* [Azure 机器学习, 按比例为 Pytorch 深度学习模型定型](how-to-train-pytorch.md)。
+* [Azure 机器学习服务, 按比例定型并注册 TensorFlow 模型](how-to-train-tensorflow.md)。
+* [Azure 机器学习服务, 按比例定型并注册 Chainer 模型](how-to-train-chainer.md)。
 
 ### <a name="datasets-and-datastores"></a>数据集和数据存储
 
@@ -152,7 +159,6 @@ Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何�
 * 在运行之前包含脚本的目录的快照
 
 提交脚本以训练模型时，会生成运行。 运行可以有零次或多次子级运行。 例如，顶级运行可以有两次子级运行，其中每个可以有其自己的子级运行。
-
 
 ### <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
 

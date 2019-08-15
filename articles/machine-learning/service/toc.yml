@@ -103,7 +103,7 @@
     - name: 安全
       items:
         - name: 企业安全概述
-          displayName: authorization authentication encryption
+          displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
         - name: 管理用户和角色
           href: how-to-assign-roles.md
@@ -216,8 +216,10 @@
         - name: Notebook VM
           href: how-to-deploy-local-container-notebook-vm.md
         - name: Azure 容器实例
+          displayName: aci
           href: how-to-deploy-azure-container-instance.md
         - name: Azure Kubernetes 服务
+          displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
         - name: GPU 推理
           href: how-to-deploy-inferencing-gpus.md

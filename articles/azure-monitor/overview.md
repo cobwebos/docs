@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 836a17051aee4e6a9ac3089f60da30673783e408
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a80f99bc37d3a92a794a78f1f47ce32fbaae75a3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875971"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989168"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -38,7 +38,7 @@ Azure Monitor 收集的所有数据属于以下两种基本类型之一：[指�
 
 Azure 门户中的“概述”页会直接显示 Azure Monitor 针对许多 Azure 资源收集的数据。 例如，在查看任一虚拟机时，多个图表会显示性能指标。 单击任一图形会在 Azure 门户上的[指标资源管理器](platform/metrics-charts.md)中打开数据，可在其中绘制多个指标在不同时间段的值的图表。  可以通过交互方式查看图表，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
 
-![度量值](media/overview/metrics.png)
+![指标](media/overview/metrics.png)
 
 可以使用[查询](log-query/log-query-overview.md)来分析 Azure Monitor 收集的日志数据，这些查询可以快速检索、合并和分析所收集的数据。  您可以使用 Azure 门户中的[Log Analytics](log-query/portals.md)创建和测试查询, 然后使用这些工具直接分析数据, 或者保存用于[可视化](visualizations.md)或[警报规则](platform/alerts-overview.md)的查询。
 
@@ -66,7 +66,7 @@ Azure Monitor 可以使用[数据收集器 API](platform/data-collector-api.md) 
 
 
 
-## <a name="insights"></a>洞察力
+## <a name="insights"></a>见解
 仅当能够有利于洞察计算环境的操作时，监视数据才有作用。 Azure Monitor 包含多种功能和工具，可以提供应用程序及其依赖的其他资源的有用见解。 [监视解决方案](insights/solutions.md)和 [Application Insights](app/app-insights-overview.md) 与[用于容器的 Azure Monitor](insights/container-insights-overview.md) 等功能在应用程序和特定 Azure 服务的不同方面提供深入见解。 
 
 ### <a name="application-insights"></a>Application Insights
@@ -74,12 +74,12 @@ Azure Monitor 可以使用[数据收集器 API](platform/data-collector-api.md) 
 
 ![App Insights](media/overview/app-insights.png)
 
-### <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
+### <a name="azure-monitor-for-containers"></a>适用于容器的 Azure Monitor
 [用于容器的 Azure Monitor](insights/container-insights-overview.md) 功能旨在监视部署到 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 它通过指标 API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 容器日志也会被收集。  从 Kubernetes 群集启用监视后，将通过适用于 Linux 的 Log Analytics 代理的容器化版本自动收集这些指标和日志。
 
 ![容器运行状况](media/overview/container-insights.png)
 
-### <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor
+### <a name="azure-monitor-for-vms"></a>适用于 VM 的 Azure Monitor
 [用于 VM 的 Azure Monitor](insights/vminsights-overview.md) 分析 Windows 和 Linux VM 的性能与运行状况，包括其不同的进程以及与其他资源和外部进程之间的相互依赖关系，可以大规模监视 Azure 虚拟机 (VM)。 该解决方案支持监视本地或其他云提供程序中托管的 VM 的性能和应用程序依赖项。  
 
 
@@ -146,3 +146,4 @@ Azure Monitor 中的警报规则使用[操作组](platform/action-groups.md)，�
 * [指标和日志](platform/data-platform.md)，以了解由 Azure Monitor 收集的数据。
 * [数据源](platform/data-sources.md)，了解应用程序的不同组件如何发送遥测数据。
 * [日志查询](log-query/log-query-overview.md)，以便分析所收集的数据。
+* 监视云应用程序和服务的[最佳做法](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。

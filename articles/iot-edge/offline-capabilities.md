@@ -2,19 +2,18 @@
 title: 脱机操作设备 - Azure IoT Edge | Microsoft Docs
 description: 了解 IoT Edge 设备和模块如何能够长时间在无 Internet 连接的情况下操作，以及 IoT Edge 如何使常规 IoT 设备也能脱机操作。
 author: kgremban
-manager: philmea
 ms.author: kgremban
-ms.date: 06/04/2019
+ms.date: 08/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4a46128d3b0e77ff7921e1f4875c318a95309769
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6d82b353f8b485b4441853b7ff8e70e7d69f4d6a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598602"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986985"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能
 
@@ -137,43 +136,71 @@ az iot hub device-identity add-children \
 }
 ```
 
-### <a name="additional-offline-storage"></a>其他脱机存储
+### <a name="host-storage-for-system-modules"></a>系统模块的主机存储
 
-默认情况下，消息存储在 IoT Edge 中心的容器文件系统中。 如果存储空间不足以满足你的脱机需求，可以在 IoT Edge 设备上使用本地存储。 为 IoT Edge 中心创建一个环境变量，以便指向容器中的存储文件夹。 然后，使用创建选项将存储文件夹绑定到主机上的文件夹。 
+默认情况下, 消息和模块状态信息存储在 IoT Edge 中心的本地容器文件系统中。 为了提高可靠性, 尤其是在脱机操作时, 还可以在主机 IoT Edge 设备上存储存储。
 
-可以在 Azure 门户的“配置高级 Edge 运行时设置”部分配置环境变量和 IoT Edge 中心模块的创建选项。 或者，可以直接在部署清单中进行配置。 
+若要在主机系统上设置存储, 请为指向容器中的存储文件夹的 IoT Edge 中心和 IoT Edge 代理创建环境变量。 然后，使用创建选项将存储文件夹绑定到主机上的文件夹。 
+
+可以在 Azure 门户的“配置高级 Edge 运行时设置”部分配置环境变量和 IoT Edge 中心模块的创建选项。 
+
+1. 对于 IoT Edge 中心和 IoT Edge 代理, 添加一个名为**storageFolder**的环境变量, 指向模块中的一个目录。
+1. 对于 IoT Edge 集线器和 IoT Edge 代理, 添加 "绑定", 将主计算机上的本地目录连接到模块中的一个目录。 例如： 
+
+   ![为本地存储添加创建选项和环境变量](./media/offline-capabilities/offline-storage.png)
+
+或者, 你可以在部署清单中直接配置本地存储。 例如： 
 
 ```json
-"edgeHub": {
-    "type": "docker",
-    "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": {
-            "HostConfig": {
-                "Binds": ["<HostStoragePath>:<ModuleStoragePath>"],
-                "PortBindings": {
-                    "8883/tcp": [{"HostPort":"8883"}],
-                    "443/tcp": [{"HostPort":"443"}],
-                    "5671/tcp": [{"HostPort":"5671"}]
+"systemModules": {
+    "edgeAgent": {
+        "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+            "createOptions": {
+                "HostConfig": {
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath>"]
                 }
+            }
+        },
+        "type": "docker",
+        "env": {
+            "storageFolder": {
+                "value": "<ModuleStoragePath>"
             }
         }
     },
-    "env": {
-        "storageFolder": {
-            "value": "<ModuleStoragePath>"
-        }
-    },
-    "status": "running",
-    "restartPolicy": "always"
+    "edgeHub": {
+        "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+            "createOptions": {
+                "HostConfig": {
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath"],
+                    "PortBindings":{"5671/tcp":[{"HostPort":"5671"}],"8883/tcp":[{"HostPort":"8883"}],"443/tcp":[{"HostPort":"443"}]}}}
+        },
+        "type": "docker",
+        "env": {
+            "storageFolder": {
+                "value": "<ModuleStoragePath>"
+            }
+        },
+        "status": "running",
+        "restartPolicy": "always"
+    }
 }
 ```
 
-将 `<HostStoragePath>` 和 `<ModuleStoragePath>` 替换为你的主机和模块存储路径；主机和模块存储路径都必须是绝对路径。 在创建选项中，将主机和模块存储路径绑定在一起。 然后，创建指向模块存储路径的环境变量。  
+将`<HostStoragePath>` 和`<ModuleStoragePath>`替换为主机和模块存储路径; 这两个值必须是绝对路径。 
 
 例如，`"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` 表示主机系统上的目录 /etc/iotedge/storage 映射到容器上的目录 /iotedge/storage/。 或是对于 Windows 系统的另一个示例，`"Binds":["C:\\temp:C:\\contemp"]` 表示主机系统上的目录 C:\\temp 映射到容器上的目录 C:\\contemp。 
 
-你还可以从 [docker 文档](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)中找到有关创建选项的更多详细信息。
+在 Linux 设备上, 请确保 IoT Edge 集线器的用户配置文件 "UID 1000" 具有主机系统目录的 "读取"、"写入" 和 "执行" 权限。 这些权限是必需的, 以便 IoT Edge 中心可以将消息存储在目录中, 并在以后检索这些消息。 (IoT Edge 代理以 root 身份运行, 因此无需其他权限。)管理 Linux 系统上的目录权限有多种方法, 包括使用`chown`更改目录所有者, 然后`chmod`更改权限。 例如：
+
+```bash
+sudo chown 1000 <HostStoragePath>
+sudo chmod 700 <HostStoragePath>
+```
+
+可以在[docker 文档](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)中找到有关创建选项的更多详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

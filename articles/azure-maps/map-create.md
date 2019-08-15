@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Maps 创建地图 | Microsoft Docs
-description: 如何创建 JavaScript 地图
+description: 如何使用 Azure Maps Web SDK 创建地图。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9f1188fcf2aa24791ca5181f5c94a1b0f6b15dc1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 932c244ff41e757413a05cde019ee7ee1a82232d
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882064"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976121"
 ---
 # <a name="create-a-map"></a>创建地图
 
@@ -22,7 +22,7 @@ ms.locfileid: "68882064"
 
 ## <a name="loading-a-map"></a>加载映射
 
-若要加载地图, 请创建[map 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)的新实例。 当初始化映射时, 将使用一个 DIV 元素 ID 来呈现映射, 并在传入映射时使用一组选项。 如果未在`atlas`命名空间上指定默认身份验证信息, 则在加载地图时, 需要在映射选项中指定此信息。 地图以异步方式加载多个资源以提高性能。 因此, 在创建映射实例之后, 将`ready`或`load`事件附加到映射, 然后添加与该事件处理程序中的映射进行交互的任何其他代码。 当映射的资源足以以编程方式交互时, 就会触发事件。`ready` 在初始映射视图完全加载完成后引发事件。`load` 
+若要加载地图, 请创建[map 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)的新实例。 初始化映射时, 会传入一个 DIV 元素 ID, 用于呈现映射和在加载映射时要使用的一组选项。 如果未在`atlas`命名空间上指定默认身份验证信息, 则在加载地图时, 需要在映射选项中指定此信息。 地图以异步方式加载多个资源以提高性能。 因此, 在创建映射实例之后, 将`ready`或`load`事件附加到映射, 然后添加与该事件处理程序中的映射进行交互的任何其他代码。 当映射的资源足以以编程方式交互时, 就会触发事件。`ready` 在初始映射视图完全加载完成后引发事件。`load` 
 
 <br/>
 
@@ -51,7 +51,7 @@ ms.locfileid: "68882064"
 
 ### <a name="set-the-camera"></a>设置相机
 
-在下面的代码中, 将创建一个[地图对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)并设置中心和缩放选项。 地图属性 (如中心和缩放级别) 是[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)的一部分。
+在下面的代码中, 将创建一个[地图对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)并设置中心和缩放选项。 地图属性 (如中心) 和缩放级别是[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)的一部分。
 
 <br/>
 
@@ -104,3 +104,6 @@ ms.locfileid: "68882064"
 
 > [!div class="nextstepaction"]
 > [向地图添加控件](map-add-controls.md)
+
+> [!div class="nextstepaction"]
+> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)

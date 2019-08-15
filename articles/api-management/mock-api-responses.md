@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8840c85e35a371b8c7a0a76dbee6353a20b212be
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205304"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881115"
 ---
 # <a name="mock-api-responses"></a>模拟 API 响应
 
@@ -79,7 +79,7 @@ ms.locfileid: "67205304"
 5. 从列表中选择“200 OK”。 
 6. 在右侧的“表示形式”标题下，选择“+ 添加表示形式”。  
 7. 在搜索框中输入“application/json”，选择“application/json”内容类型。  
-8. 在“示例”文本框中，输入 `{ 'sampleField' : 'test' }`。 
+8. 在“示例”文本框中，输入 `{ "sampleField" : "test" }`。 
 9. 选择“创建”  。
 
 ## <a name="enable-response-mocking"></a>启用响应模拟

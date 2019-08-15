@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 153b9d503dfece404455fbb7e8cb51c51686ec57
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: b7a9f28d06b5e921b5f1b8defa151641bb039940
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824291"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990213"
 ---
 # <a name="gateway-logging-auditing-and-visibility-in-azure-australia"></a>Azure 澳大利亚的网关日志记录、审核和可见性
 
@@ -113,7 +113,7 @@ ACSC 信息安全手册 (ISM) 中定义了英联邦系统的整体安全要求�
 |---|---|
 |澳大利亚法规和政策符合性文档|[https://aka.ms/au-irap](https://aka.ms/au-irap)|
 |Azure 产品-澳大利亚地区和非区域|[https://azure.microsoft.com/global-infrastructure/services/?regions=non-regional, 澳大利亚中部、澳大利亚中部-2、澳大利亚-东部、澳大利亚-东南部](https://azure.microsoft.com/global-infrastructure/services/?regions=non-regional,australia-central,australia-central-2,australia-east,australia-southeast)|
-|Microsoft Azure 安全和审核日志管理白皮书|[https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf](http://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf)|
+|Microsoft Azure 安全和审核日志管理白皮书|[https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf)|
 |Microsoft Monitoring Agent 配置|[https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)|
 |
 
@@ -125,7 +125,7 @@ ACSC 信息安全手册 (ISM) 中定义了英联邦系统的整体安全要求�
 
 在进行任何分析、警报或报告之前, 必须生成必需的日志。 Azure 日志分为控制/管理日志、数据平面日志和处理事件。
 
-|type|描述|
+|类型|描述|
 |---|---|
 |控制/管理日志|提供有关 Azure 资源管理器操作的信息|
 |数据平面日志|提供有关作为 Azure 资源使用的一部分引发的事件的信息, 例如虚拟机中的日志和通过 Azure Monitor 提供的诊断日志|

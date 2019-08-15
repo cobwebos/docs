@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a745648f1b7abac7267d51cac9e1fe642ae13d8
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c0b15c9730f7e469fde8fabd1bc4cbcd28efa66c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853683"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953018"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -60,6 +60,7 @@ ms.locfileid: "68853683"
     |`https://login.microsoftonline.com`|身份验证请求|
     |`https://enterpriseregistration.windows.net`|Azure AD 密码保护功能|
 
+* 为密码保护承载代理服务的所有计算机必须配置为允许域控制器登录到代理服务。 这是通过 "从网络访问此计算机" 权限分配来控制的。
 * 承载密码保护的代理服务的所有计算机必须配置为允许出站 TLS 1.2 HTTP 流量。
 * 一个全局管理员帐户, 用于注册包含 Azure AD 的密码保护和林的代理服务。
 * 在目录林根级域中具有 Active Directory 域管理员权限的帐户, 用于向 Azure AD 注册 Windows Server Active Directory 林。

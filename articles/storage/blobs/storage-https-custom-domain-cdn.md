@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 3ad599182191e41ea43d38260692a7ab46e1af6f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f3386d04cd3316b38a094524d0d5d4f3c5ab36bb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845000"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986839"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>在 Azure CDN 中使用自定义域通过 HTTPS 访问 Blob
 
@@ -40,7 +40,7 @@ Azure 内容分发网络 (Azure CDN) 现在支持针对自定义域名使用 HTT
 
 ## <a name="shared-access-signatures"></a>共享访问签名
 
-默认情况下，Blob 存储终结点不允许进行匿名读取访问。 如果 Blob 存储终结点配置为不允许进行匿名读取访问，请在向自定义域发出的每个请求中提供一个[共享访问签名](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)令牌。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](storage-manage-access-to-resources.md)。
+默认情况下，Blob 存储终结点不允许进行匿名读取访问。 如果 Blob 存储终结点配置为不允许进行匿名读取访问，请在向自定义域发出的每个请求中提供一个[共享访问签名](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)令牌。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](storage-manage-access-to-resources.md)。
 
 Azure CDN 不遵守添加到共享访问签名令牌的任何限制。 例如，所有共享访问签名令牌都会过期。 从 Azure CDN 边缘节点中清除内容之前，仍可以使用已过期的共享访问签名来访问该内容。 可以通过设置缓存响应标头来控制数据在 Azure CDN 上的缓存时间。 有关操作方法，请参阅[管理 Azure CDN 中 Azure 存储 Blob 的过期问题](../../cdn/cdn-manage-expiration-of-blob-content.md)。
 

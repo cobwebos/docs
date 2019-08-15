@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: milanga;juliako;
-ms.openlocfilehash: 0fcacf68f4b41ed8945a6a40d7da125aef499947
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: milanga
+ms.openlocfilehash: e7a99ffdd42c02e5a18dc14c4774b428232b8293
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825517"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69015984"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒体视频缩略图创建视频摘要  
 ## <a name="overview"></a>概述
@@ -27,7 +28,7 @@ ms.locfileid: "60825517"
 
 **Azure Media Video Thumbnail** MP 目前以预览版提供。
 
-本文详细介绍 Azure Media Video Thumbnail，并演示如何将它与用于 .NET 的媒体服务 SDK 配合使用  。
+本文详细介绍 Azure Media Video Thumbnail，并演示如何将它与用于 .NET 的媒体服务 SDK 配合使用。
 
 ## <a name="limitations"></a>限制
 

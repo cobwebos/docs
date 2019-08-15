@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 710d64b445953ae3124830931c8cbb9315d32b83
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 3594d9670e8fb94b053479352fb88997caa16db6
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875714"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016475"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
 
@@ -76,8 +76,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1.  将**执行 R 脚本**模块添加到试验中。
 
-    > [!NOTE]
-    > 传递到**执行 r 脚本**模块的所有数据都转换为 R `data.frame`格式。
+  
 
 1. 连接脚本所需的任何输入。 输入是可选的, 可以包含数据和其他 R 代码。
 
@@ -90,10 +89,33 @@ azureml_main <- function(dataframe1, dataframe2){
 1. 在 " **R 脚本**" 文本框中, 键入或粘贴有效的 R 脚本。
 
     为了帮助你入门, " **R 脚本**" 文本框中预先填充了可以编辑或替换的示例代码。
+    
+```R
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
 
-    * 脚本必须包含名`azureml_main`为的函数, 这是此模块的入口点。
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
 
-    * 入口点函数最多可以包含两个输入参数: `Param<dataframe1>`和`Param<dataframe2>`
+  # If a zip file is connected to the third input port, it is
+  # unzipped under "./Script Bundle". This directory is added
+  # to sys.path.
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+ * 脚本必须包含名`azureml_main`为的函数, 这是此模块的入口点。
+
+ * 入口点函数最多可以包含两个输入参数: `Param<dataframe1>`和`Param<dataframe2>`
+ 
+   > [!NOTE]
+    > 传递给 "**执行 R 脚本**" 模块的数据被引用`dataframe1`为`dataframe2`和, 这不同于`dataset2`Azure 机器学习 studio (studio 引用为`dataset1`)。 请检查以确保在脚本中正确 referneced 输入数据。  
  
     > [!NOTE]
     >  现有 R 代码可能需要稍作更改才能在视觉界面试验中运行。 例如, 你以 CSV 格式提供的输入数据应显式转换为数据集, 然后才能在代码中使用它。 R 语言中使用的数据和列类型也不同于可视界面中所使用的数据和列类型的某些方式。
@@ -244,15 +266,15 @@ azureml_main <- function(dataframe1, dataframe2){
 | bindrcpp     | 0.2.2      | 
 | bitops       | 1.0-6      | 
 | 启动         | 1.3-22     | 
-| Broom        | 0.5.2      | 
+| broom        | 0.5.2      | 
 | callr        | 3.2.0      | 
 | 字        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
-| class        | 7.3-15     | 
+| 类        | 7.3-15     | 
 | cli          | 1.1.0      | 
 | clipr        | 0.6.0      | 
-| cluster      | 2.0.7-1    | 
+| 群集      | 2.0.7-1    | 
 | codetools    | 0.2-16     | 
 | colorspace   | 1.4-1      | 
 | 编译程序     | 3.5.1      | 
@@ -280,7 +302,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | gplots       | 3.0.1.1    | 
 | 图形图像     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| 格         | 3.5.1      | 
+| 网格         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
 | 尚未        | 2.1.0      | 
@@ -299,7 +321,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | lazyeval     | 0.2.2      | 
 | lubridate    | 1.7.4      | 
 | magrittr     | 1.5        | 
-| markdown     | 第          | 
+| markdown     | 1          | 
 | 成批         | 7.3-51.4   | 
 | 矩阵       | 1.2-17     | 
 | 方法      | 3.5.1      | 

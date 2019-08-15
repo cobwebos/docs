@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: 5e7a3d849f726ae4dbbd559d541464404e427775
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2080d283c6cb7466dcb4847a81d76a4c3109217a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717070"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012054"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>从 Azure CLI 创建 Azure 容器实例资源
 
-以下 YAML 定义 Azure 容器实例资源。 复制并将内容粘贴到新文件，名为`my-aci.yaml`和注释的值将替换为自己。 请参阅 [模板 format] [模板共振峰] 的有效 YAML。 请参阅[容器存储库和映像][repositories-and-images]可用映像名称和其相应的存储库。
+下面的 YAML 定义 Azure 容器实例资源。 将内容复制并粘贴到名为`my-aci.yaml`的新文件中, 并用自己的值替换注释值。 有关有效的 YAML, 请参阅[模板格式][template-format]。 有关可用映像名称及其相应的存储库, 请参阅[容器存储库和映像][repositories-and-images]。
 
 ```YAML
 apiVersion: 2018-10-01
@@ -58,18 +58,18 @@ type: Microsoft.ContainerInstance/containerGroups
 ```
 
 > [!NOTE]
-> 并非所有位置都有相同的 CPU 和内存可用性。 请参阅[位置和资源][location-to-resource]每个位置和 OS 的容器的可用资源的列表中的表。
+> 并非所有位置都具有相同的 CPU 和内存可用性。 有关每个位置和 OS 的容器可用资源列表, 请参阅 "[位置和资源][location-to-resource]" 表。
 
-我们将依赖于为我们创建的 YAML 文件[ `az container create` ][azure-container-create]命令。 从 Azure CLI 中，执行`az container create`命令替换`<resource-group>`用您自己。 此外，有关保护 YAML 中的值的部署请参阅[保护值][secure-values]。
+我们将依赖于为[`az container create`][azure-container-create]命令创建的 YAML 文件。 在 Azure CLI 中, 执行`az container create`命令, 将替换为你自己的。 `<resource-group>` 此外, 为了保护 YAML 部署中的值, 请参阅[安全值][secure-values]。
 
 ```azurecli
 az container create -g <resource-group> -f my-aci.yaml
 ```
 
-该命令的输出是`Running...`如果有效，一段时间后输出更改为一个表示新创建的 ACI 资源的 JSON 字符串。 容器映像的多个可能不可用的一段时间，但现已部署资源。
+如果在某些情况下输出`Running...`更改为表示新创建的 ACI 资源的 JSON 字符串, 则该命令的输出为有效。 容器映像不太可能在一段时间内不可用, 但现在已部署资源。
 
 > [!TIP]
-> 请特别注意到公共预览版 Azure 认知服务产品/服务的位置根据 YAML 将需要相应地调整以匹配位置。
+> 请密切注意公共预览版 Azure 认知服务产品的位置, 因为需要相应地调整 YAML 来匹配位置。
 
 [azure-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
 [template-format]: https://docs.microsoft.com/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format

@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: a5db2c1c40c9c6f5c05205b9b2c652d2e23cf229
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2f6d45613120d02dd96a9fe0a14ce388d20cf0c6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848243"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990584"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>在 Azure 门户中创建、浏览和部署自动化机器学习试验 (预览版)
 
@@ -66,6 +66,10 @@ ms.locfileid: "68848243"
 1. 选择存储容器。
 
 1. 从存储容器中选择数据文件, 或将本地计算机上的文件上传到容器中。 公共预览版仅支持本地文件上传和 Azure Blob 存储帐户。
+    >[!Important]
+    > 定型数据的要求:
+    >* 数据必须为表格格式。
+    >* 要预测的值 (目标列) 必须在数据中存在。
 
     [![选择数据文件](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
 
@@ -112,7 +116,7 @@ ms.locfileid: "68848243"
 功能| 正在汇总的列的名称。
 配置文件| 基于推断类型的行内可视化。 例如, 字符串、布尔值和日期具有值计数, 而小数 (数字) 则具有近似的直方图。 这使你可以快速了解数据的分布情况。
 类型分发| 列中类型的行内值计数。 Null 是其自己的类型, 因此此可视化效果可用于检测奇值或缺失值。
-type|推断列的类型。 可能的值包括: 字符串、布尔值、日期和小数。
+类型|推断列的类型。 可能的值包括: 字符串、布尔值、日期和小数。
 最小值| 列的最小值。 对于类型不具有固有顺序 (例如布尔值) 的功能, 将显示空白项。
 最大| 列的最大值。 
 Count| 列中缺失和缺失条目的总数。
@@ -173,7 +177,7 @@ Variance| 此列的数据超出其平均值的度量值。
     + 选项 2：若要从此试验部署特定的模型迭代, 请向下钻取到模型以打开其运行详细信息页, 然后选择 "部署模型"。
 1. 填充 "**部署模型**" 窗格,
 
-    字段| 值
+    字段| ReplTest1
     ----|----
     部署名称| 输入部署的唯一名称。
     部署说明| 输入说明以更好地识别此部署的用途。

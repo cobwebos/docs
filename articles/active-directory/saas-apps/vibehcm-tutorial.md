@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 8d1f974b7fea72bede2ead2e9d971419d5e83cb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4267b75be72c1d162b4abaf7184afcdd02c38720
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087530"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943106"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>教程：Azure Active Directory 与 Vibe HCM 的集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "67087530"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分，若要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为该应用已预先集成到 Azure。   ****  
+4. 在“基本 SAML 配置”部分，若要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为该应用已预先集成到 Azure。  
 
     ![Vibe HCM 域和 URL 单一登录信息](common/preintegrated.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "67087530"
 
 ### <a name="create-vibe-hcm-test-user"></a>创建 Vibe HCM 测试用户
 
-在本部分中，将在 Vibe HCM 中创建一个名为“Britta Simon”的用户。 请与  [Vibe HCM 支持团队](mailto:support@vibehcm.com)协作，在 Vibe HCM 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Vibe HCM 中创建一个名为“Britta Simon”的用户。 与 [Vibe HCM 支持团队](mailto:support@vibehcm.com)合作，在 Vibe HCM 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

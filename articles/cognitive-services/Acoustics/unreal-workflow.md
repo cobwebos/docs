@@ -3,20 +3,20 @@ title: 项目音响效果 Unreal 设计教程
 titlesuffix: Azure Cognitive Services
 description: 本教程介绍了在 Unreal 和 Wwise 中项目音响效果的设计工作流。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5061370f43947341bb05bc30fa596604bc27ce74
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 817a11171c5b4b4ef205e5fbb04f9b6d6d85b248
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706571"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854246"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>项目音响效果 Unreal/Wwise 设计教程
 本教程介绍了在 Unreal 和 Wwise 中项目音响效果的设计设置和工作流。

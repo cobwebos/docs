@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Maps 添加弹出窗口 | Microsoft Docs
-description: 如何向 Javascript 地图添加弹出窗口
+description: 如何将 popup 添加到 Azure Maps Web SDK。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: caf661faf00d1d32664b7958a14a8719a37ab36e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: cde6c745034d0963bd372e36e6e5a046113c202b
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882101"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976548"
 ---
 # <a name="add-a-popup-to-the-map"></a>向地图添加弹出窗口
 
@@ -22,9 +22,61 @@ ms.locfileid: "68882101"
 
 ## <a name="understand-the-code"></a>了解代码
 
-<a id="addAPopup"></a>
-
 下面的代码使用符号层向地图添加一个`name`点`description`功能, 该功能具有和属性。 创建了[Popup 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)的实例, 但未将其显示出来。 当鼠标悬停在符号标记上时, 鼠标事件会添加到符号层, 以触发打开和关闭弹出窗口。 当悬停标记符号时, 将用标记的`position`位置更新 popup 的属性, `content`并用`name`一些 HTML 来更新选项, 这些 HTML 用于包装要悬停`description`的点功能的和属性。 然后, 使用其`open`功能在地图上显示弹出窗口。
+
+```javascript
+//Define an HTML template for a custom popup content laypout.
+var popupTemplate = '<div class="customInfobox"><div class="name">{name}</div>{description}</div>';
+
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
+
+dataSource.add(new atlas.data.Feature(new atlas.data.Point([-122.1333, 47.63]), {
+  name: 'Microsoft Building 41', 
+  description: '15571 NE 31st St, Redmond, WA 98052'
+}));
+
+//Create a layer to render point data.
+var symbolLayer = new atlas.layer.SymbolLayer(dataSource);
+
+//Add the polygon and line the symbol layer to the map.
+map.layers.add(symbolLayer);
+
+//Create a popup but leave it closed so we can update it and display it later.
+popup = new atlas.Popup({
+  pixelOffset: [0, -18],
+  closeButton: false
+});
+
+//Add a hover event to the symbol layer.
+map.events.add('mouseover', symbolLayer, function (e) {
+  //Make sure that the point exists.
+  if (e.shapes && e.shapes.length > 0) {
+    var content, coordinate;
+    var properties = e.shapes[0].getProperties();
+    content = popupTemplate.replace(/{name}/g, properties.name).replace(/{description}/g, properties.description);
+    coordinate = e.shapes[0].getCoordinates();
+
+    popup.setOptions({
+      //Update the content of the popup.
+      content: content,
+
+      //Update the popup's position with the symbol's coordinate.
+      position: coordinate
+
+    });
+    //Open the popup.
+    popup.open(map);
+  }
+});
+
+map.events.add('mouseleave', symbolLayer, function (){
+  popup.close();
+});
+```
+
+下面是上述功能的完整运行代码示例。
 
 <br/>
 
@@ -33,7 +85,7 @@ ms.locfileid: "68882101"
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>重复使用具有多个点的弹出窗口
 
-如果有大量的点, 并且只想要一次显示一个弹出窗口, 最佳方法是创建一个弹出窗口并重复使用它, 而不是为每个点功能创建一个弹出窗口。 通过重复使用弹出式窗口, 应用程序创建的 DOM 元素数量大大降低, 从而提供更好的性能。 下面的示例创建3个点特征。 单击其中任何一个特征时，都会显示一个弹出窗口，其中包含该点特征的内容。
+如果有大量的点, 并且只想要一次显示一个弹出窗口, 最佳方法是创建一个弹出窗口并重复使用它, 而不是为每个点功能创建一个弹出窗口。 通过重复使用弹出式窗口, 应用程序创建的 DOM 元素数量大大降低, 从而提供更好的性能。 下面的示例创建了3个点特征。 单击其中任何一个特征时，都会显示一个弹出窗口，其中包含该点特征的内容。
 
 <br/>
 
@@ -79,4 +131,7 @@ ms.locfileid: "68882101"
 > [添加 HTML 标记](./map-add-custom-html.md)
 
 > [!div class="nextstepaction"]
-> [添加形状](./map-add-shape.md)
+> [添加线条层](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [添加多边形层](map-add-shape.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: eece1520a4b7e3bf37e1d209c58b5019921fdb98
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 7591cefddd6e7217c885293a2f5c878d7a82e158
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884385"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015942"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -155,7 +155,7 @@ Azure 备份适用于高级文件共享, Azure Kubernetes 服务支持版本1.13
 
 ## <a name="file-share-redundancy"></a>文件共享冗余
 
-Azure 文件标准共享支持三个数据冗余选项: 本地冗余存储 (LRS)、区域冗余存储 (ZRS) 和异地冗余存储 (GRS)。
+Azure 文件标准共享支持三个数据冗余选项: 本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和异地冗余存储 (GZRS) (预览版)。
 
 Azure 文件 premium 共享仅支持本地冗余存储 (LRS)。
 
@@ -186,6 +186,7 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 
 确定要使用哪个复制选项时，请记住以下几点：
 
+* 地域冗余存储 (GZRS) (预览版) 通过在三个 Azure 可用性区域之间同步复制数据, 然后将数据异步复制到次要区域, 提供高可用性和最大持久性。 你还可以启用对次要区域的读取访问权限。 GZRS 设计为在给定的一年内提供至少 99.99999999999999% (16 个 9) 的对象持久性。 有关 GZRS 的详细信息, 请参阅[区域冗余存储以获得高可用性和最大持续性 (预览版)](../common/storage-redundancy-gzrs.md)。
 * 区域冗余存储 (ZRS) 通过同步复制提供高可用性, 对于某些方案, 可能是比 GRS 更好的选择。 有关 ZRS 的详细信息，请参阅 [ZRS](../common/storage-redundancy-zrs.md)。
 * 对于异步复制，从数据写入到主要区域到数据复制到次要区域，这之间存在延迟。 发生区域性灾难时，如果无法从主要区域中恢复数据，则尚未复制到次要区域的更改可能会丢失。
 * 使用 GRS 时，副本不可用于读取或写入访问，除非 Microsoft 启动到次要区域的故障转移。 如果发生故障转移，则在故障转移完成后，你将具有对该数据的读取和写入访问权限。 有关详细信息，请参阅[灾难恢复指南](../common/storage-disaster-recovery-guidance.md)。
@@ -198,7 +199,7 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 
 - Azure 预览版[条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)适用于处于预览阶段的大型文件共享, 包括与 Azure 文件同步部署一起使用。
 - 要求您创建一个新的常规用途存储帐户 (无法扩展现有存储帐户)。
-- 在将订阅接受到较大的文件共享预览后, 创建的任何新存储帐户都不能进行 LRS/ZRS 到 GRS 帐户转换。
+- 在将订阅接受到较大的文件共享预览后, 创建的任何新存储帐户都不能进行 LRS/ZRS 到 GRS/GZRS 帐户转换。
 
 
 ### <a name="regional-availability"></a>适用区域
@@ -214,7 +215,7 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 |西欧     |LRS、ZRS|否    |是|
 |美国西部 2       |LRS、ZRS|否    |是|
 
-\* 对于没有门户支持的区域, 你仍可以使用 PowerShell 或 Azure 命令行接口 (CLI) 来创建大于 5 TiB 的共享。 Altenatively, 在不指定配额的情况下通过门户创建新的共享。 这会创建默认大小为 100 TiB 的共享, 稍后可通过 PowerShell 或 Azure CLI 进行更新。
+\* 对于没有门户支持的区域, 你仍可以使用 PowerShell 或 Azure 命令行接口 (CLI) 来创建大于 5 TiB 的共享。 或者, 通过门户创建新的共享, 而无需指定配额。 这会创建默认大小为 100 TiB 的共享, 稍后可通过 PowerShell 或 Azure CLI 进行更新。
 
 若要帮助我们确定新的区域和功能的优先级, 请填写此[调查](https://aka.ms/azurefilesatscalesurvey)。
 

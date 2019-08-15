@@ -2,18 +2,17 @@
 title: 了解 Azure IoT 中心配额和限制 | Microsoft Docs
 description: 开发人员指南 - 介绍适用于 IoT 中心的配额和预期限制行为。
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/17/2019
-ms.openlocfilehash: 1c19696b10584bc55989b9270978486d7f5aa157
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 08/08/2019
+ms.openlocfilehash: 184cdaddc638461d50f322292d5cfaf28ab93093
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326730"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950529"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -72,7 +71,7 @@ ms.locfileid: "68326730"
 
 ### <a name="traffic-shaping"></a>流量整形
 
-为了应对突发流量，IoT 中心可在有限的一段时间内接受超出限制的请求。 其中的前几个请求会立即得到处理。 但是，如果请求数持续违反限制，IoT 中心会开始将请求放入队列，并以限制速率对其进行处理。 此效应称为“流量整形”。  此外，此队列的大小受到限制。 如果违反限制的情况持续出现，队列最终将会填满，而 IoT 中心会开始拒绝请求并引发 `429 ThrottlingException`。
+为了应对突发流量，IoT 中心可在有限的一段时间内接受超出限制的请求。 其中的前几个请求会立即得到处理。 但是，如果请求数持续违反限制，IoT 中心会开始将请求放入队列，并以限制速率对其进行处理。 此效应称为“流量整形”。 此外，此队列的大小受到限制。 如果违反限制的情况持续出现，队列最终将会填满，而 IoT 中心会开始拒绝请求并引发 `429 ThrottlingException`。
 
 例如，如果你使用模拟设备每秒将 200 条设备到云的消息发送到 S1 IoT 中心（它限制为每秒发送 100 条 D2C 消息）。 在前一两分钟，消息会立即得到处理。 但是，由于设备发送的消息数持续超过限制，IoT 中心随后将每秒处理 100 条消息，并将剩余的消息放入队列。 此时你会注意到延迟增大。 最终，在队列填满后，你会开始收到 `429 ThrottlingException`，并且 [IoT 中心指标](iot-hub-metrics.md)中的“限制错误数”会开始增加。
 
@@ -82,7 +81,7 @@ ms.locfileid: "68326730"
 
 ### <a name="device-connections-throttle"></a>设备连接限制
 
-“设备连接”  限制控制与 IoT 中心建立新设备连接的速率。 “设备连接”  限制不控制同时连接的最大设备数。 “设备连接”速率限制取决于为 IoT 中心预配的单位数  。
+“设备连接”限制控制与 IoT 中心建立新设备连接的速率。 “设备连接”限制不控制同时连接的最大设备数。 “设备连接”速率限制取决于为 IoT 中心预配的单位数。
 
 例如，如果购买的是单一 S1 单位，则限制为每秒 100 个连接。 因此, 若要连接100000设备, 至少需要1000秒 (大约16分钟)。 但是，同时连接的设备数可与用户在标识注册表中注册的设备数相同。
 
@@ -96,7 +95,8 @@ IoT 中心强制实施的其他操作限制：
 | 文件上传 | 每个设备10个并发文件上传。 |
 | 作业<sup>1</sup> | 最大并发作业数为 1（对于“免费”层和 S1）、5（对于 S2）和 10（对于 S3）。 但是，所有层的最大并发[设备导入/导出作业数](iot-hub-bulk-identity-mgmt.md)为 1。 <br/>作业历史记录最多保留 30 天。 |
 | 额外终结点 | 付费 SKU 中心可能有 10 个额外终结点。 免费 SKU 中心可能有 1 个额外终结点。 |
-| 消息路由规则 | 付费 SKU 中心可包含 100 条路由规则。 免费 SKU 中心可包含 5 条路由规则。 |
+| 消息路由查询 | 付费 SKU 中心可能有100路由查询。 免费 SKU 中心可能有五个路由查询。 |
+| 消息扩充 | 付费 SKU 中心最多可以有10条消息根据。 免费 SKU 中心最多可以有2条消息根据。|
 | 设备到云的消息传递 | 最大消息大小为 256 KB |
 | 云到设备的消息传递<sup>1</sup> | 最大消息大小为 64 KB。 要传递的最大挂起消息数为每个设备50。 |
 | 直接方法<sup>1</sup> | 直接方法有效负载的最大大小为 128 KB。 |
@@ -110,7 +110,7 @@ IoT 中心强制实施的其他操作限制：
 
 无论何时，都可通过[增加 IoT 中心内的预配单位数](iot-hub-upgrade.md)来提高配额或限制。
 
-## <a name="latency"></a>Latency
+## <a name="latency"></a>延迟
 
 IoT 中心致力于降低所有操作的延迟。 但是，由于网络条件和其他不可预测因素，它不能保证特定的延迟。 在设计解决方案时，应该：
 

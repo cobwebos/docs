@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a007e3adb72148cfde1590e996f7df9082159445
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 873f45a6cce85669581037c4c398a52b1ebd6d68
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840494"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966855"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
@@ -80,6 +80,7 @@ Azure 机器学习提供了两种方法来控制对 web 服务的访问。
 |---|---|---|
 |Key|默认情况下禁用| 默认情况下启用|
 |令牌| 不可用| 默认情况下禁用 |
+
 #### <a name="authentication-with-keys"></a>密钥身份验证
 
 为部署启用身份验证时，会自动创建身份验证密钥。
@@ -98,7 +99,6 @@ print(primary)
 
 > [!IMPORTANT]
 > 如需重新生成密钥，请使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)。
-
 
 #### <a name="authentication-with-tokens"></a>带令牌的身份验证
 
@@ -155,50 +155,17 @@ REST API 预期请求正文是采用以下结构的 JSON 文档：
             ]
         ]
 }
-``` 
+```
 
 Web 服务可以接受一个请求中的多个数据集。 它会返回包含响应数组的 JSON 文档。
 
 ### <a name="binary-data"></a>二进制数据
 
-如果模型接受二进制数据（如映像），则必须修改用于部署的 `score.py` 文件以接受原始 HTTP 请求。 下面是一个`score.py`接受二进制数据的示例:
+有关如何在服务中启用对二进制数据的支持的信息, 请参阅[二进制数据](how-to-deploy-and-where.md#binary)。
 
-```python
-from azureml.contrib.services.aml_request import AMLRequest, rawhttp
-from azureml.contrib.services.aml_response import AMLResponse
+### <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享 (CORS)
 
-
-def init():
-    print("This is init()")
-
-
-@rawhttp
-def run(request):
-    print("This is run()")
-    print("Request: [{0}]".format(request))
-    if request.method == 'GET':
-        # For this example, just return the URL for GETs
-        respBody = str.encode(request.full_path)
-        return AMLResponse(respBody, 200)
-    elif request.method == 'POST':
-        reqBody = request.get_data(False)
-        # For a real world solution, you would load the data from reqBody
-        # and send to the model. Then return the response.
-
-        # For demonstration purposes, this example just returns the posted data as the response.
-        return AMLResponse(reqBody, 200)
-    else:
-        return AMLResponse("bad request", 500)
-```
-
-> [!IMPORTANT]
-> `azureml.contrib` 命名空间会频繁更改，因为我们正在改进服务。 因此，此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持。
->
-> 如果需要在本地开发环境中对此进行测试，可以使用以下命令安装 `contrib` 命名空间中的组件：
-> 
-> ```shell
-> pip install azureml-contrib-services
-> ```
+有关在服务中启用 CORS 支持的信息, 请参阅[跨域资源共享](how-to-deploy-and-where.md#cors)。
 
 ## <a name="call-the-service-c"></a>调用服务 (C#)
 
@@ -528,3 +495,7 @@ Power BI 支持 Azure 机器学习 web 服务的使用, 使用预测来丰富 Po
 若要生成 Power BI 中使用的 web 服务, 架构必须支持 Power BI 所需的格式。 [了解如何创建 Power BI 支持的架构](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi)。
 
 部署 web 服务后, 可通过 Power BI 数据流来利用它。 [了解如何从 Power BI 使用 Azure 机器学习 web 服务](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
+
+## <a name="next-steps"></a>后续步骤
+
+若要查看 Python 和深度学习模型的实时评分的参考体系结构, 请参阅[Azure 体系结构中心](/azure/architecture/reference-architectures/ai/realtime-scoring-python)。

@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d1bce7575272b7df185c4e261685d989f49436c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 4e7b3905295e619c5a9500f80b5c43126b919e2f
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716541"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946464"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure 机器学习服务的已知问题和故障排除
 
@@ -71,7 +71,7 @@ Tensor Flow 自动化机器学习当前不支持 Tensor 流版本1.13。 安装�
 
 ### <a name="experiment-charts"></a>试验图
 
-自动 ML 试验迭代中所示的二元分类图 (精度召回、ROC、增益曲线等) 在正确中不呈现在用户界面中, 因为4/12。 图表绘图当前显示的是反转结果, 在这种情况下, 较低的结果显示更好的模型。 正在调查解决方案。
+自4/12 以来, 自动 ML 试验迭代中显示的二进制分类图表 (精度召回、ROC、增益曲线等) 在用户界面中无法正确呈现。 图表绘图当前显示的是反转结果, 在这种情况下, 较低的结果显示更好的模型。 正在调查解决方案。
 
 ## <a name="databricks"></a>Databricks
 
@@ -134,6 +134,15 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 如果在请求帮助时可以提供诊断信息，有时会很有帮助。 若要查看某些日志, 请访问[Azure 门户](https://portal.azure.com)并访问工作区, 并选择 "**工作区" > 试验 > 运行 > 日志**。
 
+> [!NOTE]
+> Azure 机器学习服务在定型期间记录来自各种来源的信息, 例如 AutoML 或运行训练作业的 Docker 容器。 其中许多日志没有记录。 如果遇到问题, 请与 Microsoft 支持部门联系, 他们可以在故障排除过程中使用这些日志。
+
+## <a name="activity-logs"></a>活动日志
+
+Azure 机器学习工作区中的某些操作不会将信息记录到__活动日志__。 例如, 启动定型运行或注册模型。
+
+其中的一些操作显示在工作区的 "__活动__" 区域中, 但并不表示启动了活动的人员。
+
 ## <a name="resource-quotas"></a>资源配额
 
 了解使用 Azure 机器学习时可能遇到的[资源配额](how-to-manage-quotas.md)。
@@ -154,6 +163,6 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 ## <a name="overloaded-azurefile-storage"></a>重载的 AzureFile 存储
 
-如果收到错误消息 "无法将项目文件上传到 AzureFile 中的工作目录, 因为存储已重载", 请应用以下解决方法。
+如果收到错误`Unable to upload project files to working directory in AzureFile because the storage is overloaded`, 请应用以下解决方法。
 
 如果对其他工作负荷 (如数据传输) 使用文件共享, 则建议使用 blob, 以便可以自由地使用文件共享来提交运行。 你还可以在两个不同的工作区之间拆分工作负荷。

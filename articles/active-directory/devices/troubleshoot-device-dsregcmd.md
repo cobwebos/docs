@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189e4f280e8aba28c4d1af449aa8a3428e303911
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 4aa8f9a7c6807a2f9505559ea13fb0b4f410346d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298407"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987172"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>使用 dsregcmd.exe 命令对设备进行故障排除
 
@@ -28,7 +28,7 @@ ms.locfileid: "68298407"
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | 设备状态 |
 | ---   | ---   | ---   | ---   |
-| 是 | 否 | 否 | Azure AD 联接 |
+| 是 | 否 | 否 | 已联接 Azure AD |
 | 否 | 否 | 是 | 已加入域 |
 | 是 | 否 | 是 | 已加入混合广告 |
 | 否 | 是 | 是 | 已联接本地 DRS |
@@ -198,7 +198,7 @@ ms.locfileid: "68298407"
 
 本部分将执行各种测试来帮助诊断联接失败。 本节还包括上一个 (？) 的详细信息。 此信息包括错误阶段、错误代码、服务器请求 ID、服务器响应 http 状态、服务器响应错误消息。
 
-- **用户上下文:** -运行诊断的上下文。 可能的值：系统, 未提升的用户, 提升的用户。 
+- **用户上下文:** -运行诊断的上下文。 可能的值:系统, 未提升的用户, 提升的用户。 
 
    > [!NOTE]
    > 由于实际联接是在系统上下文中执行的, 因此在系统上下文中运行诊断最接近实际联接方案。 若要在系统上下文中运行诊断, 必须在提升的命令提示符下运行 dsregcmd.exe/status 命令。
@@ -295,6 +295,9 @@ ms.locfileid: "68298407"
 ## <a name="ngc-prerequisite-check"></a>NGC 先决条件检查
 
 本部分将执行系统必备组件检查以预配 NGC 密钥。 
+
+> [!NOTE]
+> 如果用户已成功配置了 NGC 凭据, 则可能不会在 dsregcmd.exe/status 中看到 NGC 必备组件检查详细信息。
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>示例 NGC 先决条件检查输出
 

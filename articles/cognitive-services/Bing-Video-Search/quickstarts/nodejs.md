@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: ab3d1e71515df80b5bdba1edf8cd16ba3ed6b0a9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 786302b882fbd59932af17ccc6a390fa41b30ac9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500121"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932956"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>快速入门：使用必应视频搜索 REST API 和 Node.js 来搜索视频
 
@@ -75,7 +75,7 @@ ms.locfileid: "68500121"
        });
        ```
 
-# <a name="create-and-send-the-search-request"></a>创建并发送搜索请求
+## <a name="create-and-send-the-search-request"></a>创建并发送搜索请求
 
 1. 创建一个名为 `bing_video_search()` 的函数。 为请求添加参数，包括主机名和标头。 将搜索词编码并通过 `?q=` 参数将其追加到路径参数。 然后通过 `req.end()` 发送请求。
 

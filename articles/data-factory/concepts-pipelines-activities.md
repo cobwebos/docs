@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 63a86fb9498c7c1b1cd527accca84c83a28e01c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e34dae5570c64ec2c9fdc478ba8ec1bf4bce9d2
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65788673"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976745"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -59,6 +59,8 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [自定义代码](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks
+[Databricks Jar 活动](transform-data-databricks-jar.md) | Azure Databricks
+[Databricks Python 活动](transform-data-databricks-python.md) | Azure Databricks
 
 有关详细信息，请参阅[数据转换活动](transform-data.md)一文。
 
@@ -94,12 +96,12 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 }
 ```
 
-标记 | 描述 | Type | 需要
+标记 | 描述 | 类型 | 必填
 --- | ----------- | ---- | --------
 name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
 description | 指定描述管道用途的文本。 | String | 否
-activities | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
-parameters | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | List | 否
+activities | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | 阵列 | 是
+参数 | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | List | 否
 
 ## <a name="activity-json"></a>活动 JSON
 **activities** 节中可定义有一个或多个活动。 有两种主要类型的活动：执行和控制活动。
@@ -127,7 +129,7 @@ parameters | **参数**部分可在在管道内定义一个或多个参数，使
 
 下表描述了活动 JSON 定义中的属性：
 
-标记 | 描述 | 需要
+标记 | 描述 | 必填
 --- | ----------- | ---------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
 description | 描述活动用途的文本 | 是
@@ -168,12 +170,12 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 }
 ```
 
-JSON 名称 | 描述 | 允许的值 | 必选
+JSON 名称 | 描述 | 允许值 | 必填
 --------- | ----------- | -------------- | --------
-timeout | 指定活动运行的超时。 | Timespan | 不。 默认超时为 7 天。
-retry | 最大重试次数 | Integer | 不。 默认值为 0
-retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 不。 默认为 30 秒
-secureOutput | 当设置为 true 时，来自活动的输出被视为安全的，不会记录到监视中。 | Boolean | 不。 默认值为 false。
+超时 | 指定活动运行的超时。 | 时间范围 | 否。 默认超时为 7 天。
+重试 | 最大重试次数 | 整数 | 否。 默认值为 0
+retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | 整数 | 否。 默认为 30 秒
+secureOutput | 当设置为 true 时，来自活动的输出被视为安全的，不会记录到监视中。 | Boolean | 否。 默认值为 false。
 
 ### <a name="control-activity"></a>控制活动
 控制活动具有以下顶级结构：
@@ -192,7 +194,7 @@ secureOutput | 当设置为 true 时，来自活动的输出被视为安全的�
 }
 ```
 
-标记 | 描述 | 需要
+标记 | 描述 | 必填
 --- | ----------- | --------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul>
 description | 描述活动用途的文本 | 是
@@ -212,7 +214,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 - 活动 B 对活动 A 具有依赖项条件“完成”：如果活动 A 的最终状态为“成功”或“失败”，则活动 B 运行
 - 活动 B 对活动 A 具有依赖项条件“跳过”：如果活动 A 的最终状态为“跳过”，则活动 B 运行。 在活动 X -> 活动 Y -> 活动 Z 的情况下出现跳过，其中每个活动仅在以前的活动成功后才运行。 如果活动 X 失败，则活动 Y 的状态为“跳过”，因为它从不执行。 类似，活动 Z 的状态也为“跳过”。
 
-#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>示例：活动 2 是否运行取决于活动 1 是否成功运行
+#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>例如：活动 2 是否运行取决于活动 1 是否成功运行
 
 ```json
 {

@@ -1,5 +1,5 @@
 ---
-title: 分析预测价格和比较算法
+title: '视觉对象接口示例 #3: 回归到价格和比较算法'
 titleSuffix: Azure Machine Learning service
 description: 本文说明如何在不使用可视界面编写代码的情况下生成复杂的机器学习试验。 了解如何定型和比较多个回归模型, 以根据技术特征预测汽车的价格
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 28af7b814a8d214c3529ecb12ffe25ede78b1cb6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d05a601196ec4a5349a0acb4763098d9716c17f5
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855936"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990006"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>示例 2-回归:预测价格和比较算法
 

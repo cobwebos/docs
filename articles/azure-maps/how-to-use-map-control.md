@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5fdbd8092abcc51fc03e8b00106b7e25ec4be905
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a152f32ef7d68686539b7d6edee57db8a5da9553
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839373"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976245"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps map 控件
 
@@ -102,7 +102,7 @@ ms.locfileid: "68839373"
     </script>
     ```
 
-    有关详细信息, 请参阅[Azure Maps 的身份验证](azure-maps-authentication.md), 了解更多详细信息。
+    有关详细信息, 请参阅[Azure Maps 的身份验证](azure-maps-authentication.md)文档。
 
 6. （可选）在页面的头部添加以下元标记元素，你会发现这比较有用：
 
@@ -214,3 +214,11 @@ map = new atlas.Map('myMap', {
 
 > [!div class="nextstepaction"]
 > [选择地图样式](choose-map-style.md)
+
+将更多数据添加到地图:
+
+> [!div class="nextstepaction"]
+> [创建地图](map-create.md)
+
+> [!div class="nextstepaction"]
+> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)

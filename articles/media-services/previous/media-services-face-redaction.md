@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;
-ms.openlocfilehash: 1fe003ae13bc5f195932f4f140e17c4dc2791959
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.openlocfilehash: e350b6ed90324e7ed645d85c046fd74c0a089452
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61247324"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016021"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订 
 ## <a name="overview"></a>概述
@@ -29,7 +29,7 @@ ms.locfileid: "61247324"
 ## <a name="face-redaction-modes"></a>面部修订模式
 面部修订的工作方式是：检测每一帧视频中的面部，并跟踪之前和之后的面部对象，以便同一个人在其他角度也模糊显示。 自动编修过程很复杂，并且无法始终生成 100% 符合要求的输出，因此，媒体分析提供了几种修改最终输出的方式。
 
-除了完全自动模式外，还可使用双步工作流通过 ID 列表选择/取消选择找到的面部。 此外，为了对每一帧进行任意调整，MP 使用 JSON 格式的元数据文件。 此工作流拆分为“分析”  和“修订”  模式。 可将这两个模式组合为在一个作业中运行两项任务的单个过程；此模式称为“组合”  。
+除了完全自动模式外，还可使用双步工作流通过 ID 列表选择/取消选择找到的面部。 此外，为了对每一帧进行任意调整，MP 使用 JSON 格式的元数据文件。 此工作流拆分为“分析”和“修订”模式。 可将这两个模式组合为在一个作业中运行两项任务的单个过程；此模式称为“组合”。
 
 ### <a name="combined-mode"></a>组合模式
 这会自动生成经过编修的 mp4，而无需任何手动输入。
@@ -135,7 +135,7 @@ ms.locfileid: "61247324"
 
 ## <a name="blur-types"></a>模糊类型
 
-在“合并”或“修订”模式下，可通过 JSON 输入配置在 5 种不同的模糊模式中选择   ：“低”、“中”、“高”、“框”和“黑色”      。 默认情况下使用“中”  。
+在“合并”或“修订”模式下，可通过 JSON 输入配置在 5 种不同的模糊模式中选择：“低”、“中”、“高”、“框”和“黑色”。 默认情况下使用“中”。
 
 可以查找以下模糊类型的示例。
 
@@ -157,9 +157,9 @@ ms.locfileid: "61247324"
 
 ![高](./media/media-services-face-redaction/blur3.png)
 
-#### <a name="box"></a>Box
+#### <a name="box"></a>框
 
-![Box](./media/media-services-face-redaction/blur4.png)
+![框](./media/media-services-face-redaction/blur4.png)
 
 #### <a name="black"></a>黑色
 

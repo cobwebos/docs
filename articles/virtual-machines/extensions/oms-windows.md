@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: roiyz
-ms.openlocfilehash: 43da116753723470efddc92bffc11038a80a35fb
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 700d8c6ea1527598591aa4300a977f80085e04b0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827051"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990366"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Azure Monitor 虚拟机扩展
 
@@ -35,12 +35,12 @@ Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Wind
 有关受支持的 Windows 操作系统的详细信息, 请参阅[Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)文章。
 
 ### <a name="agent-and-vm-extension-version"></a>代理和 VM 扩展版本
-下表提供了 Windows Azure Monitor VM 扩展版本和每个版本 Log Analytics 代理捆绑包的映射。 
+下表提供每次发布的 Windows Azure Monitor VM 扩展和 Log Analytics 代理捆绑包的版本映射。 
 
-| Log Analytics Windows 代理捆绑版本 | Azure Monitor Windows VM 扩展版本 | 发布日期 | 发行说明 |
+| Log Analytics Windows 代理捆绑包版本 | Azure Monitor Windows VM 扩展版本 | 发布日期 | 发行说明 |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18011 | 1.0.18011 | 2019年7月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> MaxExpressionDepth 已增加到10000 </li></ul> |
-| 10.20.18001 | 1.0.18001 | 2019 年 7 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> 添加了在建立代理连接时禁用默认凭据的功能 (对 WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH 的支持) </li></ul>|
+| 10.20.18001 | 1.0.18001 | 2019 年 7 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> 添加了在建立代理连接时禁用默认凭据的功能（支持 WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH） </li></ul>|
 | 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>次要稳定性修复 </li></ul> |
 | 10.19.10006 | 不适用 | 2018 年 12 月 | <ul><li> 次要稳定性修复 </li></ul> | 
 | 8.0.11136 | 不适用 | 2018 年 9 月 |  <ul><li> 添加了对 VM 移动时检测资源 ID 更改的支持 </li><li> 添加了对使用非扩展安装时报告资源 ID 的支持 </li></ul>| 
@@ -166,7 +166,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
 $ProtectedSettings = @{"workspaceKey" = "myWorkspaceKey"}
 
-Set-AzVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
+Set-AzVMExtension -ExtensionName "MicrosoftMonitoringAgent" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.EnterpriseCloud.Monitoring" `

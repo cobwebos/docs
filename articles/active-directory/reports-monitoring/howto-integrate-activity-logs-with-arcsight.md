@@ -1,9 +1,9 @@
 ---
-title: 如何将 Azure Active Directory 日志集成与使用 Azure Monitor ArcSight |Microsoft Docs
-description: 了解如何将 Azure Active Directory 日志与 ArcSight 使用 Azure Monitor 集成
+title: 如何使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成 |Microsoft Docs
+description: 了解如何使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: b37bef0d-982e-4e28-86b2-6c61ca524ae1
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/19/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a265637274f396497da37706391bf44e0c9107
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6e4f0f81c5f135e885fe06d4fb4fa67514e8781b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437016"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988159"
 ---
-# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>将 Azure Active Directory 日志与 ArcSight 使用 Azure Monitor 集成
+# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成
 
 [Micro Focus ArcSight](https://software.microfocus.com/products/siem-security-information-event-management/overview) 是一种安全信息和事件管理 (SIEM) 解决方案，可帮助检测和响应平台中的安全威胁。 现在可以使用适用于 Azure AD 的 ArcSight 连接器，通过 Azure Monitor 将 Azure Active Directory (Azure AD) 日志路由到 ArcSight。 此功能允许使用 ArcSight 监视租户中是否存在安全泄漏。  
 
 在本文中，你会了解如何使用 Azure Monitor 将 Azure AD 日志路由到 ArcSight。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-若要使用此功能，需满足以下条件：
+若要使用此功能，需满足以下条件:
 * 包含 Azure AD 活动日志的 Azure 事件中心。 了解如何[将活动日志流式传输到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 
 * ArcSight Syslog NG 守护程序 SmartConnector (SmartConnector) 或 ArcSight 负载均衡器的已配置实例。 如果事件发送到 ArcSight 负载均衡器，则它们会因此由负载均衡器发送到 SmartConnector。
 
@@ -40,14 +40,14 @@ ms.locfileid: "60437016"
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>将 Azure AD 日志与 ArcSight 集成
 
-1. 首先，完成配置指南“先决条件”  部分中的步骤。 此部分包括下列步骤：
-    * 在 Azure 中设置用户权限，以确保某个用户具有“所有者”  角色，可部署和配置连接器。
+1. 首先，完成配置指南“先决条件”部分中的步骤。 此部分包括下列步骤：
+    * 在 Azure 中设置用户权限，以确保某个用户具有“所有者”角色，可部署和配置连接器。
     * 在具有 Syslog NG 守护程序 SmartConnector 的服务器上打开端口，以便可从 Azure 访问它。 
     * 部署会运行 Windows PowerShell 脚本，因此必须启用 PowerShell 以在要部署连接器的计算机上运行脚本。
 
-2. 按照配置指南“部署连接器”  部分中的步骤来部署连接器。 此部分会演示如何下载和提取连接器、配置应用程序属性以及从提取的文件夹运行部署脚本。 
+2. 按照配置指南“部署连接器”部分中的步骤来部署连接器。 此部分会演示如何下载和提取连接器、配置应用程序属性以及从提取的文件夹运行部署脚本。 
 
-3. 按照“在 Azure 中验证部署”  部分中的步骤来确保连接器已设置并正常工作。 验证以下各项：
+3. 按照“在 Azure 中验证部署”部分中的步骤来确保连接器已设置并正常工作。 验证以下各项：
     * 在 Azure 订阅中创建了必要的 Azure 函数。
     * Azure AD 日志流式传输到正确的目标。 
     * 部署中的应用程序设置保留在 Azure Function App 的“应用程序设置”中。 

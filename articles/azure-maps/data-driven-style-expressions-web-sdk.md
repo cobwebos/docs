@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 18d8f2a974fb192578163f71a57d00824ae6b0fa
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 507af54b8b4c2e7c67538a1a25a040c7ee5fdfd5
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839458"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976316"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>数据驱动样式表达式 (Web SDK)
 
@@ -65,7 +65,8 @@ Azure Maps Web SDK 支持多种类型, 这些类型可在其自身或与其他�
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": {     
+    "properties": { 
+        "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
@@ -310,6 +311,28 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
         //Specify a default value to return if no match is found.
         'black'
+    ]
+});
+```
+
+下面的示例使用 match 表达式来执行 "in array" 或 "array contains" 类型筛选器, 在这种情况下, 筛选 ID 值在允许 Id 列表中的数据。 使用带有筛选器的表达式时, 结果必须是布尔值。
+
+```javascript
+var layer = new atlas.layer.BubbleLayer(datasource, null, {
+    filter: [
+        'match',  
+
+        //Get the property to match.
+        ['get', 'id'],  
+
+         //List of values to match.
+        [24, 53, 98], 
+
+        //If there is a match, return true.
+        true,
+    
+        //Otherwise return false.
+        false
     ]
 });
 ```
@@ -634,7 +657,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 });
 ```
 
-[查看实时示例](map-add-shape.md#line-stroke-gradient)
+[查看实时示例](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>文本字段格式表达式
 
@@ -816,8 +839,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 > [!div class="nextstepaction"] 
 > [添加气泡层](map-add-bubble-layer.md)
 
-> [!div class="nextstepaction"] 
-> [添加形状](map-add-shape.md)
+> [!div class="nextstepaction"]
+> [添加线条层](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [添加多边形层](map-add-shape.md)
 
 > [!div class="nextstepaction"] 
 > [添加热度地图层](map-add-heat-map-layer.md)
