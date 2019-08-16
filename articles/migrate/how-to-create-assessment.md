@@ -46,7 +46,7 @@ ms.locfileid: "68229097"
     ![评估](./media/how-to-create-assessment/assess.png)
 
 2. 在 "**评估服务器**" 中, 指定评估的名称。
-3. 单击“全部查看”查看评估属性  。
+3. 单击“全部查看”查看评估属性。
 
     ![评估属性](./media/how-to-create-assessment//view-all.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "68229097"
     ![创建评估](./media/how-to-create-assessment//assessment-create.png)
 
 6. 创建评估后, 请在 "**服务器** >  **" 中查看 Azure Migrate:服务器评估** > **评估**。
-7. 单击“导出评估”，将评估下载为 Excel 文件。 
+7. 单击“导出评估”，将评估下载为 Excel 文件。
 
 
 

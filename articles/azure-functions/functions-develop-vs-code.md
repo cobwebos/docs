@@ -10,7 +10,7 @@ ms.date: 04/11/2019
 ms.author: glenga
 ms.openlocfilehash: 17550e148ea61eb69a20fc6a3215dfb63b65f18e
 ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/28/2019
 ms.locfileid: "67452691"
@@ -224,7 +224,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 1. 如果未登录，则系统会提示你**登录到 Azure**。 还可以**创建免费 Azure 帐户**。 在成功从浏览器登录后，返回到 Visual Studio Code。
 
-1. 如果你有多个订阅，请为函数应用**选择一个订阅**，然后选择“+ 在 Azure 中创建新的函数应用”  。
+1. 如果你有多个订阅，请为函数应用**选择一个订阅**，然后选择“+ 在 Azure 中创建新的函数应用”。
 
 1. 以下提示操作，提供以下信息：
 
@@ -238,7 +238,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
     | 选择存储帐户 | 新建存储帐户 | 在下一步的提示符下，新的存储帐户的类型的全局唯一名称由 function app 和按 Enter 键。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 此外可以选择现有帐户。 |
     | 选择新的资源的位置 | region | 选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)中的位置。 |
 
-    创建函数应用并应用了部署包之后，会显示一个通知。 在此通知中选择“查看输出”  以查看创建和部署结果，其中包括你创建的 Azure 资源。
+    创建函数应用并应用了部署包之后，会显示一个通知。 在此通知中选择“查看输出”以查看创建和部署结果，其中包括你创建的 Azure 资源。
 
 ## <a name="republish-project-files"></a>重新发布项目文件
 
@@ -294,9 +294,9 @@ Functions 运行时为 HTTP 和 webhook 以外的所有触发器类型在内部�
 
 若要设置存储帐户连接字符串，请执行以下操作：
 
-1. 在 Visual Studio 中，打开“Cloud Explorer”，展开“存储帐户” > “你的存储帐户”，然后选择“属性面板”并复制“主连接字符串”值。     
+1. 在 Visual Studio 中，打开“Cloud Explorer”，展开“存储帐户” > “你的存储帐户”，然后选择“属性面板”并复制“主连接字符串”值。
 
-2. 在项目内，打开 local.settings.json 项目文件，并将“AzureWebJobsStorage”键的值设置为复制的连接字符串。 
+2. 在项目内，打开 local.settings.json 项目文件，并将“AzureWebJobsStorage”键的值设置为复制的连接字符串。
 
 3. 重复上述步骤，将唯一键添加到函数所需的其他任何连接的 **Values** 数组。
 
