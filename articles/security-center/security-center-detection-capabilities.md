@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: ac3d1a55a707349873132befb25a38358b563138
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bb54221dedc3bfd5ddc84098d5309d26abcfa305
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875563"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515576"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure 安全中心检测功能
 本文档讨论了 Azure 安全中心的高级检测功能，帮助用户确定以 Microsoft Azure 资源（包括 Windows 和 Linux）为目标的活跃威胁，了解进行快速响应所需的知识。
@@ -47,7 +47,7 @@ Microsoft 安全研究人员始终在不断地寻找威胁。 得益于 Microsof
 * **行为分析**：运用已知模式发现恶意行为。
 * **异常检测**：使用统计分析生成历史基线。 如果出现与已知基线偏离的情况，并且这些情况符合潜在攻击载体的行为，则会发出警报。
 
-### <a name="threat-intelligence"></a>威胁情报
+### <a name="threat-intelligence"></a>威胁智能
 Microsoft 提供大量的全球威胁情报。 遥测数据的来源包括：Azure、Office 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC)。 研究人员也会收到在主要的云服务提供者之间共享的威胁情报信息，以及通过第三方的威胁情报源订阅的此类信息。 Azure 安全中心可能会在分析该信息后发出警报，提醒用户注意来自行为不端攻击者的威胁。 示例包括：
 
 * **与恶意 IP 地址的出站通信**: 到已知的僵尸网络或暗网的出站流量可能表示资源已泄露, 攻击者正在尝试对该系统或盗取数据执行命令。 Azure 安全中心会将网络流量与 Microsoft 的全球威胁数据库进行对比，如果检测到与恶意 IP 地址的通信，则会向用户发出警报。
@@ -83,7 +83,7 @@ Azure 安全中心建立了安全研究和数据科学团队，持续监视威�
 
 * [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md)
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Azure 安全中心按类型划分的安全警报](security-center-alerts-type.md)
+* [Azure 安全中心的安全警报](security-center-alerts-overview.md)
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md) （Azure 安全中心的安全运行状况监视）- 了解如何监视 Azure 资源的运行状况。
 * [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) （通过 Azure 安全中心监视合作伙伴解决方案）- 了解如何监视合作伙伴解决方案的运行状况。
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。

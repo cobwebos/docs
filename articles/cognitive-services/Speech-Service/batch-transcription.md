@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: e98ac335f475e4a6db6b17d5954512f5749e6aec
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 101cfacf071292d00556656b0df9c6bf9c15f414
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881158"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515884"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
@@ -90,7 +90,7 @@ Batch 听录 API 支持以下格式：
 | `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `None`（禁用标点）、`dictated`（表示使用显式标点）、`automatic`（允许解码器处理标点）或 `dictatedandautomatic`（表示使用专用标点符号或自动使用标点）。 |
  | `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 |
  | `AddSentiment` | 指定应将情绪添加到查询文本中。 接受`true`的值允许每个查询文本的情绪`false`和 (默认值) 禁用。 |
- | `AddDiarization` | 指定应在输入上执行 diarization alalysis, 该输入应是包含两个声音的 mono 通道。 接受`true`的值使 diarization 和`false` (默认值) 可以禁用它。 还需要`AddWordLevelTimestamps`将设置为 true。|
+ | `AddDiarization` | 指定应对输入执行的 diarization 分析应为单声道通道, 该输入应为包含两个声音的 mono 通道。 接受`true`的值使 diarization 和`false` (默认值) 可以禁用它。 还需要`AddWordLevelTimestamps`将设置为 true。|
 
 ### <a name="storage"></a>存储
 

@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
+ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 873f45a6cce85669581037c4c398a52b1ebd6d68
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9b7157cd58abc7f1fecf288e72b0232c8a67b7ee
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966855"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512580"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
 将 Azure 机器学习模型部署为 Web 服务可创建 REST API。 可将数据发送到此 API，并接收模型返回的预测。 本文档介绍了如何使用 C#、Go、Java 和 Python 为 Web 服务创建客户端。
 
-将映像部署到 Azure 容器实例、Azure Kubernetes 服务或现场可编程入口阵列 (FPGA) 时, 可以创建 web 服务。 你将基于已注册的模型和评分文件创建映像。 你将使用 [Azure 机器学习 SDK](https://aka.ms/aml-sdk) 检索用来访问 Web 服务的 URI。 如果启用了身份验证，则还可以使用该 SDK 来获取身份验证密钥。
+将映像部署到 Azure 容器实例、Azure Kubernetes 服务或现场可编程入口阵列 (FPGA) 时, 可以创建 web 服务。 你将基于已注册的模型和评分文件创建映像。 你将使用 [Azure 机器学习 SDK](https://aka.ms/aml-sdk) 检索用来访问 Web 服务的 URI。 如果启用了身份验证, 则还可以使用 SDK 获取身份验证密钥或令牌。
 
 用于创建使用机器学习 Web 服务的客户端的常规工作流为：
 
@@ -81,6 +81,8 @@ Azure 机器学习提供了两种方法来控制对 web 服务的访问。
 |Key|默认情况下禁用| 默认情况下启用|
 |令牌| 不可用| 默认情况下禁用 |
 
+将请求发送到使用密钥或令牌保护的服务时, 请使用__Authorization__标头传递密钥或令牌。 密钥或令牌的格式必须为`Bearer <key-or-token>`, 其中`<key-or-token>`是密钥或令牌值。
+
 #### <a name="authentication-with-keys"></a>密钥身份验证
 
 为部署启用身份验证时，会自动创建身份验证密钥。
@@ -112,7 +114,7 @@ print(primary)
 如果启用了令牌身份验证, 则可以使用`get_token`方法来检索持有者令牌, 并确保令牌过期时间:
 
 ```python
-token, refresh_by = service.get_tokens()
+token, refresh_by = service.get_token()
 print(token)
 ```
 
@@ -193,9 +195,9 @@ namespace MLWebServiceClient
     {
         static void Main(string[] args)
         {
-            // Set the scoring URI and authentication key
+            // Set the scoring URI and authentication key or token
             string scoringUri = "<your web service URI>";
-            string authKey = "<your key>";
+            string authKey = "<your key or token>";
 
             // Set the data to be sent to the service.
             // In this case, we are sending two sets of data to be scored.
@@ -309,8 +311,8 @@ var exampleData = []Features{
 
 // Set to the URI for your service
 var serviceUri string = "<your web service URI>"
-// Set to the authentication key (if any) for your service
-var authKey string = "<your key>"
+// Set to the authentication key or token (if any) for your service
+var authKey string = "<your key or token>"
 
 func main() {
     // Create the input data from example data
@@ -364,8 +366,8 @@ public class App {
     public static void sendRequest(String data) {
         // Replace with the scoring_uri of your service
         String uri = "<your web service URI>";
-        // If using authentication, replace with the auth key
-        String key = "<your key>";
+        // If using authentication, replace with the auth key or token
+        String key = "<your key or token>";
         try {
             // Create the request
             Content content = Request.Post(uri)
@@ -438,8 +440,8 @@ import json
 
 # URL for the web service
 scoring_uri = '<your web service URI>'
-# If the service is authenticated, set the key
-key = '<your key>'
+# If the service is authenticated, set the key or token
+key = '<your key or token>'
 
 # Two sets of data to score, so we get two results back
 data = {"data":

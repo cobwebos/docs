@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 6aa729e4f32769ec50632bea582c8b69c7c0ce91
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: bcaf2918c92ec7b8223d394290a1d7c624fc451c
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642132"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509239"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>使用 Azure 托管标识的 ACR 任务中的外部身份验证 
 
@@ -107,7 +107,7 @@ steps:
 
 ### <a name="create-task"></a>创建任务
 
-通过执行以下[az acr task create][az-acr-task-create]命令创建任务*dockerhubtask* 。 任务上下文是本地系统, 命令引用工作目录中的文件`dockerhubtask.yaml` 。 `--assign-identity`参数传递用户分配的标识的资源 ID。 
+通过执行以下[az acr task create][az-acr-task-create]命令创建任务*dockerhubtask* 。 该任务在没有源代码上下文的情况下运行, 并且该命令引用`dockerhubtask.yaml`工作目录中的文件。 `--assign-identity`参数传递用户分配的标识的资源 ID。 
 
 ```azurecli
 az acr task create \
@@ -126,7 +126,7 @@ az acr task create \
 
 ### <a name="create-task"></a>创建任务
 
-通过执行以下[az acr task create][az-acr-task-create]命令创建任务*dockerhubtask* 。 任务上下文是本地系统, 命令引用工作目录中的文件`dockerhubtask.yaml` 。  不`--assign-identity`带值的参数可对任务启用系统分配的标识。  
+通过执行以下[az acr task create][az-acr-task-create]命令创建任务*dockerhubtask* 。 该任务在没有源代码上下文的情况下运行, 并且该命令引用`dockerhubtask.yaml`工作目录中的文件。 不`--assign-identity`带值的参数可对任务启用系统分配的标识。  
 
 ```azurecli
 az acr task create \

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 21fe92bf4a33dc44545f1bd54c718db6c0a38532
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a334b19fe4dd819a6e4c391e49d934bf5955a567
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843140"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516063"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -143,7 +143,48 @@ GPT 分区仅可在数据磁盘上使用，而不可在操作系统磁盘上使�
 
 **哪些磁盘类型支持快照？**
 
-高级 SSD、标准 SSD 和标准 HDD 支持快照。 对于这三种磁盘类型, 所有磁盘大小 (包括最大为 32 TiB 的磁盘) 都支持快照。 Ultra Ssd 不支持快照。
+高级 SSD、标准 SSD 和标准 HDD 支持快照。 对于这三种磁盘类型, 所有磁盘大小 (包括最大为 32 TiB 的磁盘) 都支持快照。 超磁盘不支持快照。
+
+## <a name="ultra-disks"></a>超磁盘
+
+**哪些区域当前支持超磁盘？**
+- 美国东部 2
+- 东南亚
+- 北欧
+
+**什么 VM 系列当前支持超磁盘？**
+- ESv3
+- DSv3
+
+**我应该如何将我的 ultra 磁盘吞吐量设置为？**
+如果不确定如何将磁盘吞吐量设置为, 则建议首先假定 IO 大小为 16 KiB, 并在监视应用程序时调整性能。 公式为:以 MBps 为单位的吞吐量 = IOPS * 16/1000。
+
+**我将我的磁盘配置为 40000 IOPS, 但只看到 12800 IOPS, 为何我看不到磁盘的性能？**
+除了磁盘限制外, 还会在 VM 级别施加 IO 限制。 请确保所使用的 VM 大小能够支持磁盘上配置的级别。 有关 VM 施加的 IO 限制的详细信息, 请参阅[Azure 中 Windows 虚拟机的大小](../articles/virtual-machines/windows/sizes.md)。
+
+**是否可以对超磁盘使用缓存级别？**
+不能, 超磁盘不支持其他磁盘类型支持的不同缓存方法。 将磁盘缓存设置为 "无"。
+
+**是否可以将超磁盘附加到现有 VM？**
+也许, 你的 VM 必须位于支持 Ultra 磁盘的区域和可用性区域对中。 有关详细信息, 请参阅[超磁盘](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md)入门。
+
+**能否使用超磁盘作为 VM 的 OS 磁盘？**
+不能, 仅支持将专用磁盘作为数据磁盘, 并且仅支持为4K 本地磁盘。
+
+**是否可以将现有磁盘转换为超磁盘？**
+不可以, 但你可以将日期从现有磁盘迁移到超磁盘。 若要将现有磁盘迁移到超磁盘, 请将这两个磁盘附加到同一个 VM, 并将磁盘的数据从一个磁盘复制到另一个磁盘或利用第三方解决方案进行数据迁移。
+
+**能否为超磁盘创建快照？**
+不, 快照尚不可用。
+
+**Azure 备份是否可用于超磁盘？**
+不, Azure 备份支持尚不可用。
+
+**是否可以将超磁盘附加到在可用性集中运行的 VM？**
+不能, 目前尚不支持。
+
+**是否可以使用超磁盘为 Vm 启用 Azure Site Recovery (ASR)？**
+不, 对于超磁盘, 尚不支持 ASR。
 
 ## <a name="standard-ssd-disks"></a>标准 SSD 盘
 

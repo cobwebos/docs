@@ -3,7 +3,7 @@ title: 开始使用 Azure 存储和 Visual Studio 连接服务（WebJob 项目�
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 Azure WebJobs 项目中使用 Azure 表存储
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 061a6c46-0592-4e5d-aced-ab7498481cde
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 481c2f1eaf20e317c8efa4f21f337f4073af898f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 8875f680c8bb83c2375d6fe767f376cbb35d5a0a
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260749"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510667"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure 存储入门（Azure WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -66,15 +66,15 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 如果想要直接使用 Azure 存储 API，则可以向方法签名添加 **CloudStorageAccount** 参数。
 
 ## <a name="real-time-monitoring"></a>实时监视
-因为数据入口函数通常处理大量数据，WebJobs SDK 仪表板提供了实时监视的数据。 “调用日志”  部分告诉你函数是否仍在运行。
+因为数据入口函数通常处理大量数据，WebJobs SDK 仪表板提供了实时监视的数据。 “调用日志”部分告诉你函数是否仍在运行。
 
 ![Ingress 函数正在运行](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
 
-“调用详细信息”页在运行时报告函数的进度（写入的实体数），并且提供了用来中止函数的机会。 
+“调用详细信息”页在运行时报告函数的进度（写入的实体数），并且提供了用来中止函数的机会。
 
 ![Ingress 函数正在运行](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
 
-该函数完成时，“调用详细信息”页会报告写入的行数。 
+该函数完成时，“调用详细信息”页会报告写入的行数。
 
 ![Ingress 函数已完成](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
@@ -121,7 +121,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 此示例中的 **Person** 类并非必须实现 **ITableEntity**。
 
 ## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>如何直接使用 .NET 存储 API 处理表
-还可以将 Table  属性和 CloudTable  对象一起使用，更灵活地处理表。
+还可以将 Table 属性和 CloudTable 对象一起使用，更灵活地处理表。
 
 下面的代码示例使用 **CloudTable** 对象将单个实体添加到 *Ingress* 表中。
 

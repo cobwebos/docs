@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: b228dfd92fe389d196a65f7152ef22751842f4bb
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 24ad0f2e917420c327577851cabc9e5bdbad2825
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640273"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515671"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>数据流的接收器转换
 
@@ -79,13 +79,16 @@ ms.locfileid: "68640273"
 
 选择数据库设置:
 
+![显示 SQL 接收器选项的 "设置" 选项卡](media/data-flow/alter-row2.png "SQL 选项")
+
 * **更新方法**:默认为允许插入。 如果要停止从源插入新行, 请清除 "**允许插入**"。 若要更新、upsert 或删除行, 请首先添加一个更改行转换, 以标记这些操作的行。 
 * **重新创建表**:请在数据流结束之前删除或创建目标表。
 * **截断表**:在数据流完成之前, 从目标表中删除所有行。
 * **批大小**：输入一个数字以将写入内容装桶成区块。 对于大型数据加载, 请使用此选项。 
 * **启用暂存**:在将 Azure 数据仓库作为接收器数据集加载时使用 PolyBase。
+* **Pre 和 POST SQL 脚本**:输入将在写入接收器数据库之前 (预处理) 和之后 (后处理) 数据执行的多行 SQL 脚本
 
-![显示 SQL 接收器选项的 "设置" 选项卡](media/data-flow/alter-row2.png "SQL 选项")
+![pre 和 POST SQL 处理脚本](media/data-flow/prepost1.png "SQL 处理脚本")
 
 > [!NOTE]
 > 在 "数据流" 中, 可以将数据工厂定向到在目标数据库中创建新的表定义。 若要创建表定义, 请在接收器转换中设置具有新表名称的数据集。 在 SQL 数据集的表名称下方, 选择 "**编辑**", 然后输入新的表名称。 然后, 在接收器转换中启用 "**允许架构偏移**"。 将 "**导入架构**" 设置为 "**无**"。

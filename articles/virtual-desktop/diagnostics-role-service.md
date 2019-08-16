@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f5869cbb51cf1c968ee8ca1e2286416fd263d647
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: d6cde04d122d20c4aad5920c29995d9d33165163
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68224638"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515523"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>确定诊断功能的问题
 
@@ -153,7 +153,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
 |8000|InvalidAuthorizationRoleScope|输入的角色名称与任何现有角色名称都不匹配。 请检查角色名称中的拼写错误, 然后重试。 |
 |8001|UserNotFound |输入的用户名与任何现有用户名都不匹配。 查看拼写错误, 然后重试。|
 |8005|UserNotFoundInAAD |输入的用户名与任何现有用户名都不匹配。 查看拼写错误, 然后重试。|
-|8008|TenantConsentRequired|请按照[此处](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service)的说明为你的租户提供许可。|
+|8008|TenantConsentRequired|请按照[此处](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop)的说明为你的租户提供许可。|
 
 ### <a name="external-connection-error-codes"></a>外部连接错误代码
 

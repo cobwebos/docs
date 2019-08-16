@@ -3,8 +3,8 @@ title: Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET Core) 入门 | M
 description: 使用 Visual Studio 连接服务连接到存储帐户之后，如何在 Visual Studio 的 ASP.NET Core 项目中开始使用 Azure Blob 存储
 services: storage
 documentationcenter: ''
-author: camsoper
-manager: wpickett
+author: ghogen
+manager: jillfra
 editor: ''
 ms.service: storage
 ms.workload: web
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
-ms.author: casoper
-ms.openlocfilehash: f8de7f7a263a087abb16ed48d05b2cae9834b4ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: ghogen
+ms.openlocfilehash: 8ae82548d4976e505dae055445c71a5c12cbf263
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110500"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516171"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET Core)
 
@@ -33,7 +33,7 @@ Azure Blob 存储是一种将非结构化数据作为对象或 Blob 存储在云
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 
@@ -45,27 +45,27 @@ Azure Blob 存储是一种将非结构化数据作为对象或 Blob 存储在云
 
 1. 打开 Visual Studio。
 
-1. 从主菜单中，选择“文件”   > “新建”   > “项目”  。
+1. 从主菜单中，选择“文件” > “新建” > “项目”。
 
-1. 在“新建项目”  对话框中，选择“Web”   > “ASP.NET Core Web 应用程序”   > “AspNetCoreStorage”  。 然后选择“确定”。 
+1. 在“新建项目”对话框中，选择“Web” > “ASP.NET Core Web 应用程序” > “AspNetCoreStorage”。 然后选择“确定”。
 
     ![Visual Studio“新建项目”对话框的屏幕截图](./media/vs-storage-aspnet-core-getting-started-blobs/new-project.png)
 
-1. 在“新建 ASP.NET Core Web 应用程序”  对话框中，选择“.NET Core”   > “ASP.NET Core 2.0”   > “Web 应用程序(模型-视图-控制器)”  。 然后选择“确定”。 
+1. 在“新建 ASP.NET Core Web 应用程序”对话框中，选择“.NET Core” > “ASP.NET Core 2.0” > “Web 应用程序(模型-视图-控制器)”。 然后选择“确定”。
 
     ![“新建 ASP.NET Core Web 应用程序”对话框的屏幕截图](./media/vs-storage-aspnet-core-getting-started-blobs/new-mvc.png)
 
 ### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>使用连接服务连接到 Azure 存储帐户
 
-1. 在“解决方案资源管理器”  中，右键单击项目。
+1. 在“解决方案资源管理器”中，右键单击项目。
 
-2. 从上下文菜单中，选择“添加”   > “连接服务”  。
+2. 从上下文菜单中，选择“添加” > “连接服务”。
 
-1. 在“连接服务”  对话框中，选择“使用 Azure 存储的云存储”  ，并选择“配置”  。
+1. 在“连接服务”对话框中，选择“使用 Azure 存储的云存储”，并选择“配置”。
 
     ![“连接服务”对话框屏幕截图](./media/vs-storage-aspnet-core-getting-started-blobs/connected-services.png)
 
-1. 在“Azure 存储”  对话框中，选择要在本教程中使用的 Azure 存储帐户。 若要创建新的 Azure 存储帐户，请选择“创建新的存储帐户”  并填写表单。 选择现有存储帐户或创建新的存储帐户后，选择“添加”。  Visual Studio 将会安装 Azure 存储的 NuGet 包，并将一个存储连接字符串添加到 **appsettings.json**。
+1. 在“Azure 存储”对话框中，选择要在本教程中使用的 Azure 存储帐户。 若要创建新的 Azure 存储帐户，请选择“创建新的存储帐户”并填写表单。 选择现有存储帐户或创建新的存储帐户后，选择“添加”。 Visual Studio 将会安装 Azure 存储的 NuGet 包，并将一个存储连接字符串添加到 **appsettings.json**。
 
 > [!TIP]
 > 若要了解如何使用 [Azure 门户](https://portal.azure.com)创建存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
@@ -75,17 +75,17 @@ Azure Blob 存储是一种将非结构化数据作为对象或 Blob 存储在云
 
 ### <a name="create-an-mvc-controller"></a>创建 MVC 控制器 
 
-1. 在**解决方案资源管理器**中，右键单击“控制器”  。
+1. 在**解决方案资源管理器**中，右键单击“控制器”。
 
-2. 从上下文菜单中，选择“添加”   > “控制器”  。
+2. 从上下文菜单中，选择“添加” > “控制器”。
 
     ![解决方案资源管理器的屏幕截图](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-menu.png)
 
-1. 在“添加基架”对话框中，选择“MVC 控制器 - 空”，并选择“添加”。   
+1. 在“添加基架”对话框中，选择“MVC 控制器 - 空”，并选择“添加”。
 
     ![“添加基架”对话框的屏幕截图](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller.png)
 
-1. 在“添加空 MVC 控制器”  对话框中，将控制器命名为“BlobsController”  ，然后选择“添加”  。
+1. 在“添加空 MVC 控制器”对话框中，将控制器命名为“BlobsController”，然后选择“添加”。
 
     ![“添加空 MVC 控制器”对话框的屏幕截图](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-name.png)
 
@@ -172,15 +172,15 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
     }
     ```
 
-1. 在**解决方案资源管理器**中，右键单击“视图”  文件夹。
+1. 在**解决方案资源管理器**中，右键单击“视图”文件夹。
 
-2. 从上下文菜单中，选择“添加” > “新建文件夹”。   将新文件夹命名为 *Blobs*。 
+2. 从上下文菜单中，选择“添加” > “新建文件夹”。 将新文件夹命名为 *Blobs*。 
 
-1. 在**解决方案资源管理器**中，展开“视图”  文件夹并右键单击“Blob”  。
+1. 在**解决方案资源管理器**中，展开“视图”文件夹并右键单击“Blob”。
 
-4. 从上下文菜单中，选择“添加” > “视图”。  
+4. 从上下文菜单中，选择“添加” > “视图”。
 
-1. 在“添加视图”  对话框中，输入 **CreateBlobContainer** 作为视图名称，并选择“添加”  。
+1. 在“添加视图”对话框中，输入 **CreateBlobContainer** 作为视图名称，并选择“添加”。
 
 1. 打开 `CreateBlobContainer.cshtml`，并按以下代码片段所示对其进行修改：
 
@@ -194,7 +194,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
     Creation of @ViewBag.BlobContainerName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. 在**解决方案资源管理器**中，展开“视图” > “共享”文件夹，并打开 `_Layout.cshtml`。  
+1. 在**解决方案资源管理器**中，展开“视图” > “共享”文件夹，并打开 `_Layout.cshtml`。
 
 1. 查看未排序的列表，如下所示：`<ul class="nav navbar-nav">`。  在列表中最后一个 `<li>` 元素的后面，添加以下 HTML 中以添加另一个导航菜单项：
 
@@ -202,7 +202,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
     <li><a asp-area="" asp-controller="Blobs" asp-action="CreateBlobContainer">Create blob container</a></li>
     ```
 
-1. 运行应用程序，并选择“创建 Blob 容器”  ，可以看到与以下屏幕截图类似的结果：
+1. 运行应用程序，并选择“创建 Blob 容器”，可以看到与以下屏幕截图类似的结果：
   
     ![“创建 blob 容器”的屏幕截图](./media/vs-storage-aspnet-core-getting-started-blobs/create-blob-container-results.png)
 
@@ -264,7 +264,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
     }
     ```
 
-1. 在**解决方案资源管理器**中，展开“视图” > “共享”文件夹，并打开 `_Layout.cshtml`。  
+1. 在**解决方案资源管理器**中，展开“视图” > “共享”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在列表中最后一个 `<li>` 元素的后面，添加以下 HTML 中以添加另一个导航菜单项：
 
@@ -272,13 +272,13 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
     <li><a asp-area="" asp-controller="Blobs" asp-action="UploadBlob">Upload blob</a></li>
     ```
 
-1. 运行该应用程序，并选择“上传 Blob”  。 此时应显示文字“success!”  。
+1. 运行该应用程序，并选择“上传 Blob”。 此时应显示文字“success!” 。
     
     ![成功验证的屏幕截图](./media/vs-storage-aspnet-core-getting-started-blobs/upload-blob.png)
   
 ## <a name="list-the-blobs-in-a-blob-container"></a>列出 Blob 容器中的 Blob
 
-本部分说明如何列出 Blob 容器中的 Blob。 示例代码引用在[创建 Blob 容器](#create-a-blob-container)部分创建的 test-blob-container  。
+本部分说明如何列出 Blob 容器中的 Blob。 示例代码引用在[创建 Blob 容器](#create-a-blob-container)部分创建的 test-blob-container。
 
 1. 打开 `BlobsController.cs` 文件。
 
@@ -355,11 +355,11 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
     }
     ```
 
-1. 在**解决方案资源管理器**中，展开“视图”  文件夹并右键单击“Blob”  。
+1. 在**解决方案资源管理器**中，展开“视图”文件夹并右键单击“Blob”。
 
-2. 从上下文菜单中，选择“添加” > “视图”。  
+2. 从上下文菜单中，选择“添加” > “视图”。
 
-1. 在“添加视图”对话框中，输入 `ListBlobs` 作为视图名称，并选择“添加”。  
+1. 在“添加视图”对话框中，输入 `ListBlobs` 作为视图名称，并选择“添加”。
 
 1. 打开 `ListBlobs.cshtml`，将内容替换为以下代码：
 
@@ -379,7 +379,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
     </ul>
     ```
 
-1. 在**解决方案资源管理器**中，展开“视图” > “共享”文件夹，并打开 `_Layout.cshtml`。  
+1. 在**解决方案资源管理器**中，展开“视图” > “共享”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在列表中最后一个 `<li>` 元素的后面，添加以下 HTML 中以添加另一个导航菜单项：
 
@@ -387,13 +387,13 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
     <li><a asp-area="" asp-controller="Blobs" asp-action="ListBlobs">List blobs</a></li>
     ```
 
-1. 运行应用程序，并选择“列出 blob”  ，可以看到与以下屏幕截图类似的结果：
+1. 运行应用程序，并选择“列出 blob”，可以看到与以下屏幕截图类似的结果：
   
     ![“列出 blob”的屏幕截图](./media/vs-storage-aspnet-core-getting-started-blobs/listblobs.png)
 
 ## <a name="download-blobs"></a>下载 Blob
 
-本部分演示了如何下载 blob。 可以将其保存到本地存储中或将其内容读取到一个字符串中。 示例代码引用在[创建 Blob 容器](#create-a-blob-container)部分创建的 test-blob-container  。
+本部分演示了如何下载 blob。 可以将其保存到本地存储中或将其内容读取到一个字符串中。 示例代码引用在[创建 Blob 容器](#create-a-blob-container)部分创建的 test-blob-container。
 
 1. 打开 `BlobsController.cs` 文件。
 
@@ -444,7 +444,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
     }
     ```
 
-1. 在**解决方案资源管理器**中，展开“视图” > “共享”文件夹，并打开 `_Layout.cshtml`。  
+1. 在**解决方案资源管理器**中，展开“视图” > “共享”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在列表中最后一个 `<li>` 元素的后面，添加以下 HTML 中以添加另一个导航菜单项：
 
@@ -452,7 +452,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
     <li><a asp-area="" asp-controller="Blobs" asp-action="DownloadBlob">Download blob</a></li>
     ```
 
-1. 运行该应用程序，并选择“下载 Blob”  下载 Blob。 `CloudBlobContainer.GetBlockBlobReference` 方法调用中指定的 Blob 会将内容下载到 `File.OpenWrite` 方法调用中指定的位置。 浏览器中应会显示  文字“success!”。 
+1. 运行该应用程序，并选择“下载 Blob”下载 Blob。 `CloudBlobContainer.GetBlockBlobReference` 方法调用中指定的 Blob 会将内容下载到 `File.OpenWrite` 方法调用中指定的位置。 浏览器中应会显示 文字“success!”。 
 
 ## <a name="delete-blobs"></a>删除 Blob
 
@@ -501,7 +501,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
     }
     ```
 
-1. 在**解决方案资源管理器**中，展开“视图” > “共享”文件夹，并打开 `_Layout.cshtml`。  
+1. 在**解决方案资源管理器**中，展开“视图” > “共享”文件夹，并打开 `_Layout.cshtml`。
 
 1. 在列表中最后一个 `<li>` 元素的后面，添加以下 HTML 中以添加另一个导航菜单项：
 
@@ -509,7 +509,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 本文档�
     <li><a asp-area="" asp-controller="Blobs" asp-action="DeleteBlob">Delete blob</a></li>
     ```
 
-1. 运行该应用程序，并选择“删除 Blob”删除 `CloudBlobContainer.GetBlockBlobReference` 方法调用中指定的 Blob。  浏览器中应会显示  文字“success!”。 选择浏览器的“后退”按钮，并选择“列出 Blob”以验证该 Blob 是否不再在容器中。  
+1. 运行该应用程序，并选择“删除 Blob”删除 `CloudBlobContainer.GetBlockBlobReference` 方法调用中指定的 Blob。 浏览器中应会显示 文字“success!”。 选择浏览器的“后退”按钮，并选择“列出 Blob”以验证该 Blob 是否不再在容器中。
 
 ## <a name="next-steps"></a>后续步骤
 

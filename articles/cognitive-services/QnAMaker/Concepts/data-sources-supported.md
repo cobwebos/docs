@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/15/2019
 ms.author: diberry
-ms.openlocfilehash: 78c75e69be5521660937e34da0d7261dba1de385
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a3e1853e587f2f1632641cbb896eba59f8dc9455
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955275"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515782"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker 内容的数据源
 
@@ -133,9 +133,21 @@ Answer2
 
 将忽略源文件中的任何其他列。
 
+### <a name="example-of-structured-excel-file"></a>结构化 Excel 文件的示例
+
 下面是结构化 QnA *.xls* 文件的示例，包含 HTML 内容：
 
  ![知识库的结构化常见问题解答 Excel 示例](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Excel 文件中单个答案的替代问题示例
+
+下面是结构化的 QnA 文件的一个示例, 其中有几个替代问题可用于单个答案:
+
+ ![Excel 文件中单个答案的替代问题示例](../media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+
+导入文件后, 问题和答案对在知识库中显示, 如下所示:
+
+ ![导入到知识库中的单个答案的替代问题的屏幕截图](../media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
 ## <a name="structured-data-format-through-import"></a>通过导入提供的结构化数据格式
 

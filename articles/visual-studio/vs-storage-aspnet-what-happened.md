@@ -1,9 +1,9 @@
 ---
 title: 我的 ASP.NET 项目发生了什么情况？ | Microsoft Docs
-description: 介绍将 Azure 存储添加到 ASP.NET 项目使用 Visual Studio 连接服务后，会发生什么情况
+description: 介绍使用 Visual Studio 连接服务将 Azure 存储添加到 ASP.NET 项目后会发生的情况
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: e1fe1b6d-4e3d-476d-8b2f-f7ade050515e
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: e0e065b23581f297ee4ae2288a6e437da461a19f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 74db2e1e15c282f4393715c67561b2ed61bbcdfb
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362095"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512063"
 ---
 # <a name="what-happened-to-my-aspnet-project-visual-studio-azure-storage-connected-service"></a>我的 ASP.NET 项目（Visual Studio Azure 存储连接服务）发生了什么情况？
 ## <a name="references-added"></a>已添加引用

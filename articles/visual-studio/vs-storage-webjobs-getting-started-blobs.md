@@ -3,7 +3,7 @@ title: 开始使用 Blob 存储和 Visual Studio 连接服务（WebJob 项目）
 description: 在使用 Visual Studio 连接服务连接到 Azure 存储后，如何开始使用 WebJob 项目中的 Blob 存储
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 324c9376-0225-4092-9825-5d1bd5550058
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,18 +12,18 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e951fde7e47ccfcce5f64db4ef27ac767d63480
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122917"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510657"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>概述
-本文章提供 C# 代码示例，用于演示如何在创建或更新 Azure blob 后触发进程。 这些代码示例使用 [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 版本 1.x。 使用 Visual Studio 的“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，将相应的 .NET 引用添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。 
+本文章提供 C# 代码示例，用于演示如何在创建或更新 Azure blob 后触发进程。 这些代码示例使用 [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 版本 1.x。 使用 Visual Studio 的“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，将相应的 .NET 引用添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。
 
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>如何在创建或更新 Blob 后触发函数
 本部分说明如何使用 **BlobTrigger** 属性。
@@ -138,13 +138,13 @@ ms.locfileid: "62122917"
         }
 
 ## <a name="how-to-handle-poison-blobs"></a>如何处理有害 Blob
-当 **BlobTrigger** 函数失败时，如果失败是暂时性错误导致的，则 SDK 会再次调用该函数。 如果失败是由 Blob 的内容导致的，则该函数每次尝试处理 Blob 时都会失败。 默认情况下，对于给定的 Blob，SDK 调用一个函数最多 5 次。 如果第五次尝试失败，SDK 会将消息添加到名为 webjobs-blobtrigger-poison  的队列中。
+当 **BlobTrigger** 函数失败时，如果失败是暂时性错误导致的，则 SDK 会再次调用该函数。 如果失败是由 Blob 的内容导致的，则该函数每次尝试处理 Blob 时都会失败。 默认情况下，对于给定的 Blob，SDK 调用一个函数最多 5 次。 如果第五次尝试失败，SDK 会将消息添加到名为 webjobs-blobtrigger-poison 的队列中。
 
 最大尝试次数是可配置的。 处理有害 blob 和有害队列消息时使用相同的 **MaxDequeueCount** 设置。
 
 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
-* FunctionId (格式 *{WebJob name}* 。函数。 *{Function name}* ，例如：WebJob1.Functions.CopyBlob)
+* FunctionId (格式为 *{WebJob 名称}* 。函数. *{Function name}* , 例如:WebJob1.Functions.CopyBlob)
 * BlobType（"BlockBlob" 或 "PageBlob"）
 * ContainerName
 * BlobName
@@ -193,7 +193,7 @@ WebJobs SDK 确保没有为相同的新 blob 或更新 blob 多次调用 **BlobT
 
 Blob 回执存储在 AzureWebJobsStorage 连接字符串指定的 Azure 存储帐户中名为 *azure-webjobs-hosts* 的容器中。 Blob 回执包含以下信息：
 
-* 为 blob 调用的函数 (" *{WebJob name}* 。函数。 *{Function name}* "，例如："WebJob1.Functions.CopyBlob")
+* 为 blob 调用的函数 (" *{WebJob 名称}* "。函数. *{Function name}* ", 例如:".Functions. CopyBlob")
 * 容器名称
 * Blob 类型（"BlockBlob" 或 "PageBlob"）
 * Blob 名称

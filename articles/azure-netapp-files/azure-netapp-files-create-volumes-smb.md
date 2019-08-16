@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 9409beea3f22fd7ff09fe49838a37d9ff0b485f6
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 3cd60f390f0233e2923660fc39675b5a307d8d8f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975916"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515416"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -59,6 +59,18 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
     |    安全 LDAP        |    636       |    TCP           |
     |    安全 LDAP        |    3269      |    TCP           |
     |    w32time            |    123       |    UDP           |
+
+* 目标 Active Directory 域服务的站点拓扑必须遵循最佳做法, 尤其是 azure VNet 部署 azure NetApp 文件的位置。  
+
+    必须将 Azure NetApp 文件部署到的虚拟网络的地址空间添加到新的或现有的 Active Directory 站点 (其中, Azure NetApp 文件可访问的域控制器)。 
+
+* 指定的 DNS 服务器必须可从 Azure NetApp 文件的[委托子网](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)访问。  
+
+    请参阅[Azure NetApp 文件的准则网络规划](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)以获取支持的网络拓扑。
+
+    网络安全组 (Nsg) 和防火墙必须具有适当配置的规则, 以允许 Active Directory 和 DNS 流量请求。
+
+    请参阅设计有关 AD 站点和服务[的站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
 
 ## <a name="create-an-active-directory-connection"></a>创建 Active Directory 连接
 
@@ -117,15 +129,15 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
         “可用配额”字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
 
     * **虚拟网络**  
-        指定要从中访问卷的 Azure 虚拟网络 (Vnet)。  
+        指定要从中访问卷的 Azure 虚拟网络 (VNet)。  
 
-        你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件服务。 还可以通过 Express Route 从本地网络访问该卷。   
+        指定的 VNet 必须具有委托给 Azure NetApp 文件的子网。 只能从同一 VNet 或通过 VNet 对等互连中的同一区域中的 VNet 访问 Azure NetApp 文件服务。 还可以通过 Express Route 从本地网络访问该卷。   
 
     * **子网**  
         指定要用于卷的子网。  
         你指定的子网必须委派给 Azure NetApp 文件。 
         
-        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。 然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”来为 Azure NetApp 文件委派子网。 在每个 Vnet 中, 只能将一个子网委托给 Azure NetApp 文件。   
+        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。 然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”来为 Azure NetApp 文件委派子网。 在每个 VNet 中, 只能将一个子网委托给 Azure NetApp 文件。   
  
         ![创建卷](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     

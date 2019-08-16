@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 8fac70e7e5125ae86b2b5ce13041bbf1fd067bbe
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07fa7f3df5274ae88c93deac75093ead3f32f036
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642067"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509094"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>使用 Azure 托管标识的 ACR 任务中的跨注册表身份验证 
 
@@ -76,7 +76,7 @@ steps:
 
 ### <a name="create-task"></a>创建任务
 
-通过执行以下[az acr task create][az-acr-task-create]命令创建任务*helloworldtask* 。 任务上下文是本地系统, 命令引用工作目录中的文件`helloworldtask.yaml` 。 `--assign-identity`参数传递用户分配的标识的资源 ID。 
+通过执行以下[az acr task create][az-acr-task-create]命令创建任务*helloworldtask* 。 该任务在没有源代码上下文的情况下运行, 并且该命令引用`helloworldtask.yaml`工作目录中的文件。 `--assign-identity`参数传递用户分配的标识的资源 ID。 
 
 ```azurecli
 az acr task create \
@@ -95,7 +95,7 @@ az acr task create \
 
 ### <a name="create-task"></a>创建任务
 
-通过执行以下[az acr task create][az-acr-task-create]命令创建任务*helloworldtask* 。 任务上下文是本地系统, 命令引用工作目录中的文件`helloworldtask.yaml` 。 不`--assign-identity`带值的参数可对任务启用系统分配的标识。 
+通过执行以下[az acr task create][az-acr-task-create]命令创建任务*helloworldtask* 。 该任务在没有源代码上下文的情况下运行, 并且该命令引用`helloworldtask.yaml`工作目录中的文件。 不`--assign-identity`带值的参数可对任务启用系统分配的标识。 
 
 ```azurecli
 az acr task create \

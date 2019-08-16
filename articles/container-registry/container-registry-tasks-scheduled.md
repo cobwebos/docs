@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 6237b8056262abe1f8cea28bebd6b3bad97e0f7e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a4a1099d90b619be383d440067a692c51a2430ac
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967584"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509070"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>按定义的计划运行 ACR 任务
 
@@ -48,9 +48,9 @@ ms.locfileid: "68967584"
 az acr task create \
   --name mytask \
   --registry myregistry \
-  --context /dev/null \
   --cmd hello-world \
-  --schedule "0 21 * * *"
+  --schedule "0 21 * * *" \
+  --context /dev/null
 ```
 
 运行[az acr task show][az-acr-task-show]命令以查看计时器触发器是否已配置。 默认情况下, 基本映像更新触发器也处于启用状态。
@@ -176,11 +176,11 @@ ACR 任务使用[NCronTab](https://github.com/atifaziz/NCrontab)库来解释 cro
 
 |类型  |示例  |何时触发  |
 |---------|---------|---------|
-|一个具体值 |<nobr>"5 * * * *"</nobr>|每小时的时间晚5分钟|
-|所有值 (`*`)|<nobr>"* 5 * * *"</nobr>|一小时中每分钟开始 5:00 UTC (每日60次)|
-|一个范围（`-` 运算符）|<nobr>"0 1-3 * * *"</nobr>|每天3次, 1:00, 2:00, 3:00 UTC|
-|一组值（`,` 运算符）|<nobr>"20, 30, 40 * * * *"</nobr>|每小时3次, 20 分钟, 30 分钟, 超过40分钟|
-|一个间隔值（`/` 运算符）|<nobr>"*/10 * * * *"</nobr>|每小时6次, 在10分钟, 20 分钟后, 过去一小时
+|一个具体值 |<nobr>`"5 * * * *"`</nobr>|每小时的时间晚5分钟|
+|所有值 (`*`)|<nobr>`"* 5 * * *"`</nobr>|一小时中每分钟开始 5:00 UTC (每日60次)|
+|一个范围（`-` 运算符）|<nobr>`"0 1-3 * * *"`</nobr>|每天3次, 1:00, 2:00, 3:00 UTC|
+|一组值（`,` 运算符）|<nobr>`"20,30,40 * * * *"`</nobr>|每小时3次, 20 分钟, 30 分钟, 超过40分钟|
+|一个间隔值（`/` 运算符）|<nobr>`"*/10 * * * *"`</nobr>|每小时6次, 在10分钟, 20 分钟后, 过去一小时
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -198,6 +198,8 @@ ACR 任务使用[NCronTab](https://github.com/atifaziz/NCrontab)库来解释 cro
 
 
 ## <a name="next-steps"></a>后续步骤
+
+有关使用计划任务清理注册表中的存储库的示例, 请参阅[自动清除 Azure 容器注册表](container-registry-auto-purge.md)中的映像。
 
 有关由源代码提交或基本映像更新触发的任务的示例, 请参阅[ACR 任务教程系列](container-registry-tutorial-quick-task.md)。
 

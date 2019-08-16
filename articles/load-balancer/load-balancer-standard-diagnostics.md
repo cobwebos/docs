@@ -1,7 +1,7 @@
 ---
-title: Azure 标准负载均衡器诊断
+title: Azure 标准负载均衡器诊断, 其中包含指标、警报和资源运行状况
 titlesuffix: Azure Load Balancer
-description: 使用可用的指标和运行状况信息进行 Azure 标准负载均衡器诊断。
+description: 使用可用指标、警报和资源运行状况信息诊断 Azure 标准负载均衡器。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -11,21 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2019
+ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: e0329f5f975b67460796bf7dd9429752549a3483
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b241f753c0de6e14282c679c5aec3c32be68e348
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274479"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516253"
 ---
-# <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>标准负载均衡器的指标和运行状况诊断
+# <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>标准负载均衡器诊断和指标、警报和资源运行状况
 
-Azure 标准负载均衡器公布 Azure 标准负载均衡器为资源提供以下诊断功能：
-* **多维指标**：通过 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 为公共和内部负载均衡器配置提供新的多维诊断功能。 可以监视、管理负载均衡器资源以及排查其问题。
+Azure 标准负载均衡器公开以下诊断功能:
 
-* **资源运行状况**：Azure 门户中的“负载均衡器”页和 Monitor 中的“资源运行状况”页会显示标准负载均衡器的公共负载均衡器配置的“资源运行状况”部分。
+* **多维度量值和警报**:通过[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)为标准负载均衡器配置提供新的多维诊断功能。 你可以监视、管理标准负载均衡器资源并对其进行故障排除。
+
+* **资源运行状况**："Azure 门户" 和 "资源运行状况" 页 (位于 "监视" 下) 中的 "负载均衡器" 页公开标准负载均衡器的资源运行状况部分。 
 
 本文概要介绍这些功能，以及如何对标准负载均衡器使用这些功能。
 
@@ -75,7 +76,7 @@ VIP 可用性指标描述区域中用于计算 VM 所在主机的数据路径的
 若要获取标准负载均衡器资源的数据路径可用性, 请执行以下操作:
 1. 确保选择正确的负载均衡器资源。 
 2. 在 "**指标**" 下拉列表中, 选择 "**数据路径可用性**"。 
-3. 在“聚合”  下拉列表中，选择“平均”  。 
+3. 在“聚合”下拉列表中，选择“平均”。 
 4. 此外, 在前端 IP 地址或前端端口上添加一个筛选器, 该筛选器具有所需前端 IP 地址或前端端口, 然后按所选维度进行分组。
 
 ![VIP 探测](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
@@ -92,7 +93,7 @@ VIP 可用性探测会出于原因而失败：
 
 出于诊断目的, 可以将[数据路径可用性指标与运行状况探测状态一起](#vipavailabilityandhealthprobes)使用。
 
-在大多数情况下，可以使用“平均值”作为聚合。 
+在大多数情况下，可以使用“平均值”作为聚合。
 
 #### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>VIP 的后端实例是否正在响应探测？
 
@@ -106,7 +107,7 @@ VIP 可用性探测会出于原因而失败：
 - 针对不在侦听、无响应或者使用错误协议的端口配置运行状况探测。 如果服务使用直接服务器返回（DSR 或浮动 IP）规则，请确保服务侦听 NIC IP 配置的 IP 地址，而不仅仅是侦听使用前端 IP 地址配置的环回地址。
 - 网络安全组、VM 的来宾 OS 防火墙或应用层筛选器不允许你的探测。
 
-在大多数情况下，可以使用“平均值”作为聚合。 
+在大多数情况下，可以使用“平均值”作为聚合。
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>如何检查出站连接统计信息？ 
 
@@ -115,8 +116,8 @@ VIP 可用性探测会出于原因而失败：
 如果失败连接数量大于零，则表示 SNAT 端口已耗尽。 必须进一步调查，确定失败的可能原因。 SNAT 端口耗尽的表现形式是无法建立[出站流](https://aka.ms/lboutbound)。 请查看有关出站连接的文章，以了解相关的场景和运行机制，并了解如何缓解并尽量避免 SNAT 端口耗尽的情况。 
 
 若要获取 SNAT 连接统计信息，请执行以下操作：
-1. 选择“SNAT 连接”作为指标类型，并选择“总和”作为聚合。   
-2. 根据不同行中显示的成功和失败 SNAT 连接计数的“连接状态”进行分组。  
+1. 选择“SNAT 连接”作为指标类型，并选择“总和”作为聚合。 
+2. 根据不同行中显示的成功和失败 SNAT 连接计数的“连接状态”进行分组。 
 
 ![SNAT 连接](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
@@ -127,7 +128,7 @@ VIP 可用性探测会出于原因而失败：
 
 “SYN 数据包”指标描述收到或发送的、与特定前端关联的 TCP SYN 数据包数量（适用于[出站流](https://aka.ms/lboutbound)）。 可以使用此指标了解对服务发起的 TCP 连接尝试。
 
-在大多数情况下，可以使用“总计”作为聚合。 
+在大多数情况下，可以使用“总计”作为聚合。
 
 ![SYN 连接](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
@@ -138,10 +139,10 @@ VIP 可用性探测会出于原因而失败：
 
 字节和数据包计数器指标描述服务发送或收到的字节和数据包数量，根据前端显示信息。
 
-在大多数情况下，可以使用“总计”作为聚合。 
+在大多数情况下，可以使用“总计”作为聚合。
 
 获取字节或数据包计数统计信息：
-1. 选择“字节计数”和/或“数据包计数”作为指标类型，并选择“平均值”作为聚合。    
+1. 选择“字节计数”和/或“数据包计数”作为指标类型，并选择“平均值”作为聚合。 
 2. 执行下列操作之一：
    * 在特定的前端 IP、前端端口、后端 IP 或后端端口应用筛选器。
    * 不使用任何筛选器获取负载均衡器资源的总体统计信息。
@@ -170,19 +171,16 @@ VIP 可用性探测会出于原因而失败：
 
 ## <a name = "ResourceHealth"></a>资源运行状况
 
-可以通过“Monitor”>“服务运行状况”下面的现有“资源运行状况”公开标准负载均衡器资源的运行状况。  
-
->[!NOTE]
->负载均衡器的资源运行状况目前仅适用于标准负载均衡器的“公共”配置。 内部负载均衡器资源或者负载均衡器资源的基本 SKU 不会公开资源运行状况。
+可以通过“Monitor”>“服务运行状况”下面的现有“资源运行状况”公开标准负载均衡器资源的运行状况。
 
 若要查看公共标准负载均衡器资源的运行状况，请执行以下步骤：
-1. 选择“Monitor”   >   “服务运行状况”。
+1. 选择“Monitor” > “服务运行状况”。
 
    ![“Monitor”页](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
    *图：Azure Monitor 中的“服务运行状况”链接*
 
-2. 选择“资源运行状况”，然后确保正确选择“订阅 ID”和“资源类型 = 负载均衡器”。   
+2. 选择“资源运行状况”，然后确保正确选择“订阅 ID”和“资源类型 = 负载均衡器”。
 
    ![资源运行状况](./media/load-balancer-standard-diagnostics/LBHealth3.png)
 
@@ -198,13 +196,9 @@ VIP 可用性探测会出于原因而失败：
 
 | 资源运行状况 | 描述 |
 | --- | --- |
-| 可用 | 公共标准负载均衡器资源正常且可用。 |
-| 不可用 | 公共标准负载均衡器资源不正常。 选择“Azure Monitor” > “指标”来诊断运行状况。  <br>（状态为“不可用”可能还意味着资源没有与公共标准负载均衡器连接。）  |
-| Unknown | 尚未更新公共标准负载均衡器资源的资源运行状况。<br>（状态为“未知”可能还意味着资源没有与公共标准负载均衡器连接。）   |
-
-## <a name="limitations"></a>限制 
-
-- 数据路径可用性 (VIP 可用性) 对内部负载均衡器前端不可用。
+| 可用 | 标准负载均衡器资源正常且可用。 |
+| 不可用 | 标准负载均衡器资源不正常。 选择“Azure Monitor” > “指标”来诊断运行状况。<br>("*不可用*" 状态也可能表示资源未与标准负载均衡器连接。) |
+| 未知 | 尚未更新标准负载均衡器资源的资源运行状况状态。<br>(*未知*状态还可能意味着资源未与标准负载均衡器连接。)  |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -212,5 +206,3 @@ VIP 可用性探测会出于原因而失败：
 - 详细了解[负载均衡器出站连接](https://aka.ms/lboutbound)。
 - 了解有关 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 的信息。
 - 了解有关 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) 的信息，以及[如何通过 REST API 检索指标](/rest/api/monitor/metrics/list)。
-
-

@@ -6,21 +6,21 @@ ms.topic: include
 ms.date: 06/19/2019
 ms.author: mathoma
 ms.openlocfilehash: eff121cfaf4473607110de4553a9bb8021990caf
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 08/15/2019
 ms.locfileid: "68444677"
 ---
-在此步骤中, 将创建资源组和 Azure SQL 数据库单一数据库。 
+在此步骤中，将创建资源组和 Azure SQL 数据库单一数据库。 
 
 > [!IMPORTANT]
-> 请确保将防火墙规则设置为使用你在其上执行本文中的步骤的计算机的公共 IP 地址。 数据库级防火墙规则会自动复制到辅助服务器。
+> 请务必设置防火墙规则，以使用本文中执行步骤的计算机的公共 IP 地址。 数据库级防火墙规则会自动复制到辅助服务器。
 >
 > 有关详细信息，请参阅[创建数据库级防火墙规则](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)，或参阅[创建服务器级防火墙](../articles/sql-database/sql-database-server-level-firewall-rule.md)，确定用于计算机的服务器级防火墙规则的 IP 地址。  
 
 # <a name="azure-portaltabazure-portal"></a>[Azure 门户](#tab/azure-portal)
-使用 Azure 门户创建资源组和单个数据库。 
+使用 Azure 门户创建资源组和单一数据库。 
 
 1. 在 Azure 门户的左上角选择“创建资源”。
 2. 选择“数据库”，然后选择“SQL 数据库”打开“创建 SQL 数据库”页。
@@ -80,7 +80,7 @@ ms.locfileid: "68444677"
 
 [!INCLUDE [updated-for-az](updated-for-az.md)]
 
-使用 PowerShell 创建资源组和单个数据库。 
+使用 PowerShell 创建资源组和单一数据库。 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -130,7 +130,7 @@ ms.locfileid: "68444677"
    ```
 
 # <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
-使用 AZ CLI 创建资源组和单个数据库。 
+使用 AZ CLI 创建资源组和单一数据库。 
 
 
    ```azurecli-interactive

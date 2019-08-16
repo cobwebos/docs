@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5710ccfe5d6450714e029827a795b484b1bcd2b4
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: eee881e6d4e446e07867261545a90dfacaa93712
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716664"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512211"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教程：将标识提供程序添加到 Azure Active Directory B2C 应用程序
 
@@ -32,7 +32,7 @@ ms.locfileid: "68716664"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
 
@@ -86,7 +86,7 @@ ms.locfileid: "68716664"
 1. 选择 "**产品**" 旁边的加号, 然后在 " **Facebook 登录**" 下, 选择 "**设置**"。
 1. 在左侧菜单中的 " **Facebook 登录**" 下, 选择 "**设置**"。
 1. 在“有效的 OAuth 重定向 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称。 选择页面底部的 "**保存更改**"。
-1. 若要使 Facebook 应用程序可用于 Azure AD B2C, 请单击页面右上角的**状态**选择器,**将其打开**, 使应用程序成为公共应用程序, 然后单击 "**确认**"。 此时，“状态”应从“开发”变为“实时”。
+1. 若要使 Facebook 应用程序可用于 Azure AD B2C, 请单击页面右上角的**状态**选择器, 将其打开 , 使应用程序成为公共应用程序, 然后单击 "**确认**"。 此时，“状态”应从“开发”变为“实时”。
 
 ## <a name="add-the-identity-providers"></a>添加标识提供程序
 
@@ -98,7 +98,7 @@ ms.locfileid: "68716664"
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 1. 选择“标识提供者”，然后选择“添加”。
 1. 输入“名称”。 例如，输入“Contoso Azure AD”。
-1. 选择 "**标识提供者类型**", 选择 " **OpenID connect (预览版)** ", 然后单击 **"确定"** 。
+1. 选择 "**标识提供者类型**", 选择 " **OpenID connect**", 然后单击 **"确定"** 。
 1. 单击“设置此标识提供者”
 1. 对于 "**元数据 url**", 请输入以下`your-AD-tenant-domain` url, 并将替换为 Azure AD 租户的域名。
 

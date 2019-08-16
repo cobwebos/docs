@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09590fbd340ac3945f05346f99254ec0b76dcd76
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 475b692a29edf5cdd05552e7b5c3dc5fde210275
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834992"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512526"
 ---
 # <a name="logging"></a>日志记录
 用于生成日志消息的 Microsoft 身份验证库 (MSAL) 应用，这些消息可以用来诊断问题并提供详细信息。 应用可以通过数行代码配置日志记录，并可对详细程度以及是否记录个人和组织数据进行自定义控制。 建议设置 MSAL 日志记录回调，并提供一种允许用户在遇到身份验证问题时提交日志的方法。
@@ -32,7 +32,7 @@ ms.locfileid: "68834992"
 MSAL 的记录器允许捕获多个级别的详细信息：
 
 - 错误：指示出现问题并已生成错误。 用于调试并确定问题。
-- 警告：出问题的事件，应用需要该事件的更多信息。 不一定会出现错误或故障，只是为了诊断和指出问题。
+- 警告:出问题的事件，应用需要该事件的更多信息。 不一定会出现错误或故障，只是为了诊断和指出问题。
 - 信息：MSAL 将要记录的事件可为用户提供信息，不一定用于调试。
 - 详细：默认。 MSAL 会记录大量的信息，让用户全面且详细地了解库的具体行为。
 
@@ -40,6 +40,10 @@ MSAL 的记录器允许捕获多个级别的详细信息：
 默认情况下，MSAL 记录器不捕获任何高度敏感的个人或组织数据。 该库提供相关选项，允许你自行决定是否记录个人和组织数据。
 
 ## <a name="logging-in-msalnet"></a>在 MSAL.NET 中进行日志记录
+
+ > [!NOTE]
+ > 有关 MSAL.NET 的详细信息, 请查看[MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)。 获取 MSAL.NET 日志记录的示例。 
+ 
 在 MSAL 3.x 中，日志记录是在创建应用时使用 `.WithLogging` 生成器修饰符按应用程序设置的。 该方法采用以下可选参数：
 
 - *Level*：用于确定你需要哪种级别的日志记录。 将其设置为“Errors”时，就只会获得错误

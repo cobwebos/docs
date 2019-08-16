@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a713ed69dc9c35e16b1cc5d9ad9819d53e2e1efe
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d0dd9a371c4912cae0e74b214c673c629fc1ff55
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986171"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515814"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>排查 Azure Cosmos DB 的查询性能问题
 本文介绍如何识别、诊断和排查 Azure Cosmos DB SQL 查询问题。 若要实现 Azure Cosmos DB 查询的最佳性能，请执行以下故障排除步骤。 
@@ -24,11 +24,12 @@ ms.locfileid: "68986171"
 ## <a name="check-consistency-level"></a>检查一致性级别
 [一致性级别](consistency-levels.md)可能会影响性能和费用。 请确保一致性级别适合给定的方案。 有关更多详细信息，请参阅[选择一致性级别](consistency-levels-choosing.md)。
 
-## <a name="log-sql-query-in-storage-account"></a>在存储帐户中记录 Sql 查询
-[利用诊断日志中的 SQL API 查询日志](logging.md#turn-on-logging-in-the-azure-portal), 可以在所选的存储帐户中记录模糊查询。 这使你可以查看诊断日志并使用多个 ru 查找查询, 并使用活动 id 在 QueryRuntimeStatistics 中匹配。 
+## <a name="log-the-executed-sql-query"></a>记录已执行的 SQL 查询 
 
+可以在存储帐户或诊断日志表中记录已执行的 SQL 查询。 [利用诊断日志中的 SQL 查询日志](logging.md#turn-on-logging-in-the-azure-portal), 可以在所选的存储帐户中记录模糊查询。 这使你可以查看使用更多 ru 的日志和查找查询。 稍后, 您可以使用活动 id 来匹配 QueryRuntimeStatistics 中的实际查询。 对于安全用途和查询参数名称, 将对查询进行模糊处理, 其中, where 子句中的值与实际名称和值不同。 你可以使用日志记录到存储帐户来保留所执行查询的长期保留。  
 
 ## <a name="log-query-metrics"></a>日志查询指标
+
 使用 `QueryMetrics` 排查速度缓慢或开销较高的查询。 
 
   * 设置 `FeedOptions.PopulateQueryMetrics = true` 以在响应中包含 `QueryMetrics`。

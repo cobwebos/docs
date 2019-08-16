@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6f86a8465bcbd3d88ffb7909cac53c3fd38c3af6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: f7fbfbe5ae5d2ba4148d94768a1109f566151170
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489435"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69513791"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
 
@@ -148,13 +148,13 @@ PCI DSS 版本 3.1 认证要求禁用传输层安全性 (TLS) 1.0。 当前，�
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 该异常是由于混合连接管理器存在问题而导致，该问题现已修复。 请务必[更新混合连接管理器](https://go.microsoft.com/fwlink/?LinkID=841308)以解决此问题。
 
-## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何实现添加 URL 重写规则？
+## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何添加 URL 重写规则？
 
-若要添加 URL 重写规则, 请创建一个 web.config 文件, 其中包含**wwwroot**文件夹中的相关配置条目。 有关详细信息, 请[参阅 Azure 应用 Services:了解 URL 重](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)写。
+若要添加 URL 重写规则，请使用 **wwwroot** 文件夹中的相关配置条目创建一个 web.config 文件。 有关详细信息，请参阅 [Azure 应用服务：了解 URL 重写](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>如何控制应用服务的入站流量？
 
@@ -167,7 +167,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>如何在应用服务 Web 应用中阻止端口？
 
-在应用服务共享租户环境中，由于基础结构的性质，因此无法阻止特定端口。 TCP 端口 4016、4018 和 4020 也可以打开以用于 Visual Studio 远程调试。
+在应用服务共享租户环境中，由于基础结构的性质，因此无法阻止特定端口。 对于 Visual Studio 远程调试, TCP 端口4020、4022和4024也可能已打开。
 
 在应用服务环境中，可完全控制入站和出站流量。 可以使用网络安全组限制或阻止特定端口。 有关应用服务环境的详细信息，请参阅[应用服务环境简介](https://azure.microsoft.com/blog/introducing-app-service-environment/)。
 
@@ -251,7 +251,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>如何对应用服务应用执行渗透测试？
 
-若要执行渗透测试，请[提交请求](https://portal.msrc.microsoft.com/en-us/engage/pentest)。
+若要执行渗透测试，请[提交请求](https://portal.msrc.microsoft.com/engage/pentest)。
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>如何为使用流量管理器的应用服务 Web 应用配置自定义域名？
 
