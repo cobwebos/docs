@@ -143,7 +143,7 @@ Teradata 链接服务支持以下属性:
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为`TeradataTable`。 | 是 |
 | database | Teradata 数据库的名称。 | 否（如果指定了活动源中的“query”） |
-| 表 | Teradata 数据库中的表的名称。 | 否（如果指定了活动源中的“query”） |
+| table | Teradata 数据库中的表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例：**
 
