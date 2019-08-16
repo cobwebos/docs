@@ -66,7 +66,11 @@
         - name: 锁定容器映像
           href: container-registry-image-lock.md
         - name: 删除容器映像
-          href: container-registry-delete.md
+          items:
+            - name: 删除映像数据 - CLI
+              href: container-registry-delete.md
+            - name: 自动清除标记和清单（预览版）
+              href: container-registry-auto-purge.md
         - name: 升级经典注册表
           href: container-registry-upgrade.md
         - name: 使用 ACR webhook

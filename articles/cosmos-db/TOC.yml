@@ -648,6 +648,8 @@
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: 排查 Azure Cosmos DB 触发器问题
           href: troubleshoot-changefeed-functions.md
+        - name: 更改源处理器开始时间
+          href: how-to-configure-change-feed-start-time.md
     - name: 将内置分析功能与 Apache Spark 配合使用
       items:
         - name: Azure Databricks Spark 连接器

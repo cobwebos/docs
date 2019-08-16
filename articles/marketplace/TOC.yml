@@ -439,20 +439,38 @@
           href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: 创建新套餐
       items:
-        - name: 产品/服务创建清单
-          href: ./partner-center-portal/offer-creation-checklist.md
-        - name: 创建 SaaS 产品/服务
-          href: ./partner-center-portal/create-new-saas-offer.md
-        - name: SaaS 按流量计费
-          href: ./partner-center-portal/saas-metered-billing.md
+        - name: Dynamics 365 产品/服务
           items:
-            - name: Azure 市场计量服务 API - 常见问题解答
-              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-            - name: Azure 市场计量服务 API
-              href: ./partner-center-portal/marketplace-metering-service-apis.md
-        - name: SaaS 履行 API
-          href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+            - name: 创建 Dynamics 365 for Customer Engagement & PowerApps 产品/服务
+              href: ./partner-center-portal/create-new-customer-engagement-offer.md
+            - name: Dynamics 365 for Operations 产品/服务
+              href: ./partner-center-portal/create-new-operations-offer.md
+            - name: Dynamics 365 Business Central 产品/服务
+              href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: SaaS 产品/服务
           items:
+            - name: SaaS 产品/服务创建清单
+              href: ./partner-center-portal/offer-creation-checklist.md
+            - name: 创建 SaaS 产品/服务
+              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: SaaS 按流量计费
+              href: ./partner-center-portal/saas-metered-billing.md
+              items:
+                - name: Azure 市场计量服务 API - 常见问题解答
+                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+                - name: Azure 市场计量服务 API
+                  href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: SaaS 履行 API
+              href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+              items:
+                - name: 注册 SaaS 应用程序
+                  href: ./partner-center-portal/pc-saas-registration.md
+                - name: SaaS 履行 API v2
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+                - name: SaaS 履行 API v1（已弃用）
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+                - name: SaaS 履行 API - 常见问题解答
+                  href: ./partner-center-portal/saas-fulfillment-apis-faq.md
             - name: 注册 SaaS 应用程序
               href: ./partner-center-portal/pc-saas-registration.md
             - name: SaaS 履行 API v2

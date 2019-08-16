@@ -10,7 +10,7 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 将许可证分配给用户
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: 使用资源范围分配角色
+    - name: 授权执行无限次应用注册
       href: roles-quickstart-app-registration-limits.md
     - name: 设置组过期策略
       href: groups-quickstart-expiration.md

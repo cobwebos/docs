@@ -79,10 +79,12 @@
           href: batch-pool-vm-sizes.md
         - name: 配置对计算节点的访问权限
           href: pool-endpoint-configuration.md
-        - name: 使用自定义映像创建池
+        - name: 使用共享映像库创建池
           href: batch-custom-images.md
         - name: 在虚拟网络中创建池
           href: batch-virtual-network.md
+        - name: 装载虚拟文件系统
+          href: virtual-file-mount.md
         - name: 装载 Azure 文件共享
           href: pool-file-shares.md
         - name: 使用 RDMA 或 GPU 实例

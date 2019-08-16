@@ -121,11 +121,7 @@
           displayName: 'deployment,rollback on error,redeploy'
           href: resource-group-template-deploy-rest.md
         - name: 使用 SAS 令牌保护模板
-          items:
-            - name: 使用 Azure CLI
-              href: resource-manager-cli-sas-token.md
-            - name: 使用 Azure PowerShell
-              href: resource-manager-powershell-sas-token.md
+          href: secure-template-with-sas-token.md
         - name: 部署到多个资源组或订阅
           href: resource-manager-cross-resource-group-deployment.md
     - name: CI/CD

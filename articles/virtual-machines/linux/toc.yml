@@ -478,7 +478,7 @@
           items:
             - name: 使用写入加速器
               href: how-to-enable-write-accelerator.md
-            - name: 启用超级 SSD
+            - name: 使用超级磁盘
               href: disks-enable-ultra-ssd.md
             - name: 对磁盘进行基准检验
               href: disks-benchmarks.md

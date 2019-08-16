@@ -5,23 +5,23 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: e80322cda671e2145cf3e65aa1457f1fa1827737
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 08/12/2019
+ms.openlocfilehash: c803de599f6be98512b15e927c6d15f1c7d95ff1
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759261"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515737"
 ---
-# <a name="ingest-sample-data-into-azure-data-explorer"></a>将示例数据引入 Azure 数据资源管理器
+# <a name="quickstart-ingest-sample-data-into-azure-data-explorer"></a>快速入门：将示例数据引入 Azure 数据资源管理器
 
 本文介绍如何将示例数据引入（加载）到 Azure 数据资源管理器数据库。 有[多种方法可以引入数据](ingest-data-overview.md)；本文重点介绍适用于测试目的的基本方法。
 
 > [!NOTE]
-> 如果你完成了[快速入门：使用 Azure 数据资源管理器 Python 库引入数据](python-ingest-data.md)，则已拥有此数据。
+> 如果你已完成[使用 Azure 数据资源管理器 Python 库引入数据](python-ingest-data.md)，则已拥有此数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [测试群集和数据库](create-cluster-database-portal.md)
 
@@ -56,11 +56,6 @@ StormEvents  示例数据集包含[美国国家环境信息中心](https://www.n
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [快速入门：在 Azure 数据资源管理器中查询数据](web-query-data.md)
-
-> [!div class="nextstepaction"]
-> [编写查询](write-queries.md)
-
-> [!div class="nextstepaction"]
-> [Azure 数据资源管理器数据引入](ingest-data-overview.md)
+* 请参阅 [Azure 数据资源管理器数据引入](ingest-data-overview.md)详细了解引入方法。
+* [快速入门：在 Azure 数据资源管理器 Web UI 中查询数据](web-query-data.md)。
+* 使用 Kusto 查询语言[编写查询](write-queries.md)。

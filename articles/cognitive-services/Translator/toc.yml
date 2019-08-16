@@ -9,77 +9,17 @@
     - name: 快速入门
       items:
         - name: 翻译文本
-          items:
-            - name: 'C#、REST'
-              href: quickstart-csharp-translate.md
-            - name: Go、REST
-              href: quickstart-go-translate.md
-            - name: Java、REST
-              href: quickstart-java-translate.md
-            - name: Node.js、REST
-              href: quickstart-nodejs-translate.md
-            - name: Python、REST
-              href: quickstart-python-translate.md
+          href: quickstart-translate.md
         - name: 直译文本
-          items:
-            - name: 'C#、REST'
-              href: quickstart-csharp-transliterate.md
-            - name: Go、REST
-              href: quickstart-go-transliterate.md
-            - name: Java、REST
-              href: quickstart-java-transliterate.md
-            - name: Node.js、REST
-              href: quickstart-nodejs-transliterate.md
-            - name: Python、REST
-              href: quickstart-python-transliterate.md
-        - name: 确定语言
-          items:
-            - name: 'C#、REST'
-              href: quickstart-csharp-detect.md
-            - name: Go、REST
-              href: quickstart-go-detect.md
-            - name: Java、REST
-              href: quickstart-java-detect.md
-            - name: Node.js、REST
-              href: quickstart-nodejs-detect.md
-            - name: Python、REST
-              href: quickstart-python-detect.md
+          href: quickstart-transliterate.md
+        - name: 检测语言
+          href: quickstart-detect.md
         - name: 查找字词翻译
-          items:
-            - name: 'C#、REST'
-              href: quickstart-csharp-dictionary.md
-            - name: Go、REST
-              href: quickstart-go-dictionary.md
-            - name: Java、REST
-              href: quickstart-java-dictionary.md
-            - name: Node.js、REST
-              href: quickstart-nodejs-dictionary.md
-            - name: Python、REST
-              href: quickstart-python-dictionary.md
+          href: quickstart-dictionary.md
         - name: 获取支持的语言
-          items:
-            - name: 'C#、REST'
-              href: quickstart-csharp-languages.md
-            - name: Go、REST
-              href: quickstart-go-languages.md
-            - name: Java、REST
-              href: quickstart-java-languages.md
-            - name: Node.js、REST
-              href: quickstart-nodejs-languages.md
-            - name: Python、REST
-              href: quickstart-python-languages.md
+          href: quickstart-languages.md
         - name: 确定句子长度
-          items:
-            - name: 'C#、REST'
-              href: quickstart-csharp-sentences.md
-            - name: Go、REST
-              href: quickstart-go-sentences.md
-            - name: Java、REST
-              href: quickstart-java-sentences.md
-            - name: Node.js、REST
-              href: quickstart-nodejs-sentences.md
-            - name: Python、REST
-              href: quickstart-python-sentences.md
+          href: quickstart-sentences.md
     - name: 教程
       items:
         - name: '使用 C# 创建 WPF 应用程序以用于文本翻译'
