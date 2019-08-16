@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9744a4b7bc5d2e9ce22bfa14ea33a2b11dacda85
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 359773dad53f333b2f052dd5b5481645c72746da
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612454"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533933"
 ---
 # <a name="reset-a-vpn-gateway"></a>重置 VPN 网关
 
@@ -24,7 +24,7 @@ VPN 网关由在活动备用配置中运行的两个 VM 实例组成。 重置�
 
 发出重置网关命令后，会立即重新启动 Azure VPN 网关的当前活动实例。 从活动实例（正在重新启动）故障转移到备用实例期间会有一个短暂的时间间隔。 该时间间隔应不超过 1 分钟。
 
-如果在首次重新启动后未恢复连接，再次发出同一命令以重新启动第二个 VM 实例（新活动网关）。 如果连续请求两次重新启动，则重新启动这两个 VM 实例（活动和备用）的时间可能会略长一些。 这将导致 VPN 连接，最多 30 到 45 分钟的 Vm 可以完成重新启动的长的时间间隔。
+如果在首次重新启动后未恢复连接，再次发出同一命令以重新启动第二个 VM 实例（新活动网关）。 如果连续请求两次重新启动，则重新启动这两个 VM 实例（活动和备用）的时间可能会略长一些。 这种情况会导致 VPN 连接出现较长的时间间隔，VM 需要最多 30 到 45 分钟才能完成重新启动。
 
 在两次重新启动之后，如果仍然存在跨界连接问题，请从 Azure 门户提出支持请求。
 
@@ -48,7 +48,7 @@ VPN 网关由在活动备用配置中运行的两个 VM 实例组成。 重置�
 2. 在虚拟网络网关的边栏选项卡上，单击“重置”。
 
    ![“重置 VPN 网关”边栏选项卡](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
-3. 在“重置”边栏选项卡上，单击“重置”按钮  。
+3. 在“重置”边栏选项卡上，单击“重置”按钮。
 
 ## <a name="ps"></a>PowerShell
 
@@ -56,7 +56,7 @@ VPN 网关由在活动备用配置中运行的两个 VM 实例组成。 重置�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-用于重置网关的 cmdlet 是 Reset-AzVirtualNetworkGateway  。 进行重置前，请确保拥有最新版本的 [PowerShell Az cmdlet](https://docs.microsoft.com/powershell/module/az.network)。 以下示例将重置 TestRG1 资源组中名为 VNet1GW 的虚拟网络网关：
+用于重置网关的 cmdlet 是 Reset-AzVirtualNetworkGateway。 进行重置前，请确保拥有最新版本的 [PowerShell Az cmdlet](https://docs.microsoft.com/powershell/module/az.network)。 以下示例将重置 TestRG1 资源组中名为 VNet1GW 的虚拟网络网关：
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
@@ -65,11 +65,11 @@ Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 
 结果：
 
-收到返回结果时，可假定网关重置成功。 但返回结果没有明确指出重置成功。 如要仔细查看历史记录，确定网关重置发生的确切时间，可在 [Azure 门户](https://portal.azure.com)中查看该信息。 在门户中，导航到“GatewayName”->“资源运行状况”  。
+收到返回结果时，可假定网关重置成功。 但返回结果没有明确指出重置成功。 如要仔细查看历史记录，确定网关重置发生的确切时间，可在 [Azure 门户](https://portal.azure.com)中查看该信息。 在门户中，导航到“GatewayName”->“资源运行状况”。
 
 ### <a name="resetclassic"></a>经典部署模型
 
-用于重置网关的 cmdlet 是 Reset-AzureVNetGateway  。 进行重置前，请确保拥有最新版本的 [Service Management (SM) PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets)。 下面的示例为名为“ContosoVNet”的虚拟网络重置了网关：
+用于重置网关的 cmdlet 是 Reset-AzureVNetGateway。 用于服务管理的 Azure PowerShell cmdlet 必须在桌面上本地安装。 不能使用 Azure Cloud Shell。 进行重置前，请确保拥有最新版本的 [Service Management (SM) PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets)。 下面的示例为名为“ContosoVNet”的虚拟网络重置了网关：
 
 ```powershell
 Reset-AzureVNetGateway –VnetName “ContosoVNet”
@@ -96,4 +96,4 @@ az network vnet-gateway reset -n VNet5GW -g TestRG5
 
 结果：
 
-收到返回结果时，可假定网关重置成功。 但返回结果没有明确指出重置成功。 如要仔细查看历史记录，确定网关重置发生的确切时间，可在 [Azure 门户](https://portal.azure.com)中查看该信息。 在门户中，导航到“GatewayName”->“资源运行状况”  。
+收到返回结果时，可假定网关重置成功。 但返回结果没有明确指出重置成功。 如要仔细查看历史记录，确定网关重置发生的确切时间，可在 [Azure 门户](https://portal.azure.com)中查看该信息。 在门户中，导航到“GatewayName”->“资源运行状况”。

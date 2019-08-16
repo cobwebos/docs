@@ -3,7 +3,7 @@ title: 适用于 .NET 的 Microsoft 身份验证库中的 AD FS 支持 |Microsof
 description: 了解适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 中的 Active Directory 联合身份验证服务 (AD FS) 支持。
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: jmprieur
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13e1f80f3a0a10466ead60d828d28aa9916fe26b
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: beb1bcc4599a891b8748b63c5e7c5c09f5acdac7
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302692"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532687"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET 中的 Active Directory 联合身份验证服务支持
 Windows Server 中的 Active Directory 联合身份验证服务 (AD FS) 可用于向正在开发的应用程序添加 OpenID Connect 和基于 OAuth 2.0 的身份验证和授权。 然后, 这些应用程序可以根据 AD FS 直接对用户进行身份验证。 有关详细信息, 请阅读[开发人员 AD FS 方案](/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)。

@@ -3,7 +3,7 @@ title: Xamarin Android 注意事项（适用于 .NET 的 Microsoft 身份验证�
 description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的具体注意事项。
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff55853c859008690548b161451a24941a597d3a
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 465902cf6ef6db1d867f7cc986da8c9e06e4fbbf
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277905"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532474"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>与 MSAL.NET 配合使用时特定于 Xamarin Android 的注意事项
 本文介绍将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的具体注意事项。
@@ -128,6 +128,6 @@ var authResult = AcquireTokenInteractive(scopes)
 
 如需更多详细信息和示例，请参阅以下示例的 readme.md 文件的[特定于 Android 的注意事项](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations)段落：
 
-| 示例 | 平台 | 描述 |
+| 样本 | 平台 | 描述 |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | 一个简单的 Xamarin Forms 应用，它展示了如何使用 MSAL 通过 AADD v2.0 终结点对 MSA 和 Azure AD 进行身份验证，以及如何使用生成的令牌访问 Microsoft Graph。 <br>![拓扑](media/msal-net-xamarin-android-considerations/topology.png) |

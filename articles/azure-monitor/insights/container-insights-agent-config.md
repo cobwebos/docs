@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.date: 08/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 12010aaa7bc90bd200264549ad3efb79f46576c6
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 2b601825a58fe5739a43df607067acc8d629c5f4
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867648"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558896"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>配置用于容器的 Azure Monitor 的代理数据收集
 
@@ -27,17 +27,17 @@ ms.locfileid: "67867648"
 本文演示如何根据要求创建 ConfigMap 和配置数据收集。
 
 >[!NOTE]
->目前, 对 Prometheus 的支持是公共预览版中的一项功能。
+>目前，对 Prometheus 的支持是公共预览版中的一项功能。
 >
 
-## <a name="configure-your-cluster-with-custom-data-collection-settings"></a>使用自定义数据收集设置配置群集
+## <a name="configmap-file-settings-overview"></a>ConfigMap 文件设置概述
 
 我们已提供一个模板 ConfigMap 文件，你可以使用自定义内容轻松编辑此文件，而无需从头开始创建。 在开始之前，请查看有关 [ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) 的 Kubernetes 文档，并熟悉如何创建、配置和部署 ConfigMap。 这样，就可以按命名空间或者在整个群集中筛选 stderr 和 stdout，以及筛选在所有群集 pod/节点中运行的任何容器的环境变量。
 
 >[!IMPORTANT]
->从容器工作负载收集 stdout、stderr 和环境变量所支持的最低代理版本为 ciprod06142019 或更高版本。 抓取 Prometheus 指标支持的最低代理版本为 ciprod07092019 或更高版本。 若要验证您的代理版本, 请从 "**节点**" 选项卡中选择一个节点, 然后在 "**代理图像标记**" 属性的 "属性" 窗格中说明值。  
+>支持从容器工作负荷收集 stdout、stderr 和环境变量的最低代理版本为 ciprod06142019 或以上。 支持擦除 Prometheus 指标的最低代理版本为 ciprod07092019 或以上。 若要验证代理版本，请在“节点”选项卡中选择一个节点，然后在属性窗格中记下“代理映像标记”属性的值。  
 
-### <a name="overview-of-configurable-data-collection-settings"></a>可配置的数据收集设置概述
+### <a name="data-collection-settings"></a>数据收集设置
 
 下面是可以配置的用于控制数据收集的设置。
 
@@ -51,30 +51,42 @@ ms.locfileid: "67867648"
 |`[log_collection_settings.stderr] exclude_namespaces =` |String |逗号分隔的数组 |不收集其 stderr 日志的 Kubernetes 命名空间数组。 仅当 `log_collection_settings.stdout.enabled` 设置为 `true` 时，此设置才会生效。 如果未在 ConfigMap 中指定，默认值为 `exclude_namespaces = ["kube-system"]`。 |
 | `[log_collection_settings.env_var] enabled =` |Boolean | true 或 false | 此设置控制是否启用环境变量收集。 如果设置为 `false`，则不会收集所有群集 pod/节点中运行的任何容器的环境变量。 如果未在 ConfigMap 中指定，默认值为 `enabled = true`。 |
 
-## <a name="overview-of-configurable-prometheus-scraping-settings"></a>可配置的 Prometheus 抓取设置概述
+### <a name="prometheus-scraping-settings"></a>Prometheus 抓取设置
+
+![Prometheus 的容器监视体系结构](./media/container-insights-agent-config/monitoring-kubernetes-architecture.png)
+
+容器 Azure Monitor 提供无缝体验, 可通过以下表中所示的多个抓取 Prometheus 度量值的集合。 通过在单个 ConfigMap 文件中指定的一组设置收集指标, 该文件与用于配置容器工作负荷中的 stdout、stderr 和环境变量的集合的文件相同。 
 
 从 Prometheus 中的抓取度量值是从以下两个角度之一执行的:
 
-* 群集范围内的 HTTP URL, 并从列出的服务终结点、k8s 服务 (如 kube 和 kube) 以及特定于应用程序的 pod 批注发现目标。 将在 ConfigMap 部分 *[Prometheus data_collection_settings]* 中定义在此上下文中收集的指标。
-* 整个节点-HTTP URL, 并从所列出的服务终结点中发现目标。 将在 ConfigMap 部分 *[Prometheus_data_collection_settings]* 中定义在此上下文中收集的指标。
+* 群集范围 - 获取 HTTP URL，并从列出的服务终结点、k8s 服务（例如 kube-dns 和 kube-state-metrics）以及特定于应用程序的 pod 批注发现目标。 将在 ConfigMap 节 *[Prometheus data_collection_settings.cluster]* 中定义此上下文中收集的指标。
+* 节点范围 - 获取 HTTP URL，并从列出的服务终结点发现目标。 将在 ConfigMap 节 *[Prometheus_data_collection_settings.node]* 中定义此上下文中收集的指标。
 
-|范围 | Key | 数据类型 | 值 | 描述 |
+| 终结点 | 范围 | 示例 |
+|----------|-------|---------|
+| Pod 批注 | 群集范围 | 批注 <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000" <br>prometheus.io/scheme: "http"` |
+| Kubernetes 服务 | 群集范围 | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
+| url/端点 | 每节点和/或群集范围 | `http://myurl:9101/metrics` |
+
+如果指定了 URL, 则容器 Azure Monitor 仅擦除终结点。 指定 Kubernetes 服务时, 服务名称将与群集 DNS 服务器一起解析, 以获取 IP 地址, 然后将解析的服务擦除。
+
+|范围 | Key | 数据类型 | ReplTest1 | 描述 |
 |------|-----|-----------|-------|-------------|
-| 群集范围 | | | | 指定以下三种方法中的任意一种, 以擦除指标的终结点。 |
-| | `urls` | String | 逗号分隔的数组 | HTTP 终结点 (指定了 IP 地址或有效的 URL 路径)。 例如：`urls=[$NODE_IP/metrics]`。 ($NODE _IP 是容器参数的特定 Azure Monitor, 可以使用而不是节点 IP 地址。 必须全部大写。) |
-| | `kubernetes_services` | String | 逗号分隔的数组 | Kubernetes 服务的数组, 用于擦除 kube 指标的指标。 例如,`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`。|
-| | `monitor_kubernetes_pods` | Boolean | true 或 false | 如果在群集`true`范围的设置中设置为, 则容器代理 Azure Monitor 将在整个群集中擦除 Kubernetes pod, 以获得以下 Prometheus 批注:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boolean | true 或 false | 启用抓取的。 |
-| | `prometheus.io/scheme` | String | http 或 https | 默认为废弃 over HTTP。 如果需要, 将设置`https`为。 | 
-| | `prometheus.io/path` | String | 逗号分隔的数组 | 要从中提取指标的 HTTP 资源路径。 如果度量值路径不`/metrics`为, 请在此批注中定义它。 |
-| | `prometheus.io/port` | String | 9102 | 指定要侦听的端口。 如果未设置端口, 则它将默认为9102。 |
-| 节点范围 | `urls` | String | 逗号分隔的数组 | HTTP 终结点 (指定了 IP 地址或有效的 URL 路径)。 例如：`urls=[$NODE_IP/metrics]`。 ($NODE _IP 是容器参数的特定 Azure Monitor, 可以使用而不是节点 IP 地址。 必须全部大写。) |
-| 节点范围或群集范围内的 | `interval` | String | 60s | 收集间隔默认值为一分钟 (60 秒)。 可以将 *[prometheus_data_collection_settings]* 和/或 *[prometheus_data_collection_settings]* 的集合修改为时间单位, 例如 ns、us (或Âμs)、ms、s、m、h。 |
-| 节点范围或群集范围内的 | `fieldpass`<br> `fielddrop`| String | 逗号分隔的数组 | 您可以通过设置 allow (`fieldpass`) 和禁止 (`fielddrop`) 列表来指定要收集或不从终结点收集的某些指标。 必须先设置允许列表。 |
+| 群集范围 | | | | 指定以下三种方法中的任何一种，以擦除指标的终结点。 |
+| | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
+| | `kubernetes_services` | String | 逗号分隔的数组 | 用于从 kube-state-metrics 擦除指标的 Kubernetes 服务数组。 例如 `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`。|
+| | `monitor_kubernetes_pods` | Boolean | true 或 false | 如果在群集范围设置中将此项设置为 `true`，则容器代理的 Azure Monitor 将在整个群集中擦除以下 Prometheus 批注的 Kubernetes pod：<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Boolean | true 或 false | 启用 pod 擦除。 `monitor_kubernetes_pods` 必须设置为 `true`。 |
+| | `prometheus.io/scheme` | String | http 或 https | 默认为通过 HTTP 擦除。 如有必要, 将`https`设置为。 | 
+| | `prometheus.io/path` | String | 逗号分隔的数组 | 要从中提取指标的 HTTP 资源路径。 如果指标路径不是 `/metrics`，请使用此批注定义它。 |
+| | `prometheus.io/port` | String | 9102 | 指定要侦听的端口。 如果未设置端口，则默认为 9102。 |
+| 节点范围 | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
+| 节点范围或群集范围 | `interval` | String | 60s | 收集间隔默认为 1 分钟（60 秒）。 可以将 *[prometheus_data_collection_settings]* 和/或 *[prometheus_data_collection_settings]* 的集合修改为时间单位, 例如 ns、us (或Âμs)、ms、s、m、h。 |
+| 节点范围或群集范围 | `fieldpass`<br> `fielddrop`| String | 逗号分隔的数组 | 可以通过设置允许 (`fieldpass`) 和禁止 (`fielddrop`) 列表，来指定要从终结点收集或不收集的特定指标。 必须先设置允许列表。 |
 
-ConfigMap 是一个全局列表, 只能有一个 ConfigMap 应用于代理。 不能将其他 ConfigMap overruling 到集合中。
+ConfigMap 是一个全局列表，只能将一个 ConfigMap 应用到代理。 不能使用推翻收集规则的其他 ConfigMap。
 
-### <a name="configure-and-deploy-configmaps"></a>使用 ConfigMap 进行配置和部署
+## <a name="configure-and-deploy-configmaps"></a>使用 ConfigMap 进行配置和部署
 
 执行以下步骤，以配置 ConfigMap 配置文件并将其部署到群集。
 
@@ -82,8 +94,51 @@ ConfigMap 是一个全局列表, 只能有一个 ConfigMap 应用于代理。 �
 1. 使用自定义内容编辑 ConfigMap yaml 文件。
 
     - 若要排除特定命名空间的 stdout 日志收集，可以参考以下示例配置键/值：`[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`。
+    
     - 若要禁用特定容器的环境变量收集，请设置键/值 `[log_collection_settings.env_var] enabled = true` 以全局启用变量收集，然后遵循[此处](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container)所述的步骤完成特定容器的配置。
+    
     - 若要在群集范围禁用 stderr 日志收集，请参考以下示例配置键/值：`[log_collection_settings.stderr] enabled = false`。
+    
+    - 下面的示例演示如何从 URL 群集范围、代理的 DameonSet 节点范围以及指定 pod 批注配置 ConfigMap 文件度量值
+
+        - 从群集中的特定 URL 擦除 Prometheus 指标。
+
+        ```
+         prometheus-data-collection-settings: |- 
+         # Custom Prometheus metrics data collection settings
+         [prometheus_data_collection_settings.cluster] 
+         interval = "1m"  ## Valid time units are ns, us (or µs), ms, s, m, h.
+         fieldpass = ["metric_to_pass1", "metric_to_pass12"] ## specify metrics to pass through 
+         fielddrop = ["metric_to_drop"] ## specify metrics to drop from collecting
+         urls = ["http://myurl:9101/metrics"] ## An array of urls to scrape metrics from
+        ```
+
+        - 在群集中的每个节点上运行的擦除 Prometheus 指标。
+
+        ```
+         prometheus-data-collection-settings: |- 
+         # Custom Prometheus metrics data collection settings 
+         [prometheus_data_collection_settings.node] 
+         interval = "1m"  ## Valid time units are ns, us (or µs), ms, s, m, h. 
+         # Node level scrape endpoint(s). These metrics will be scraped from agent's DaemonSet running in every node in the cluster 
+         urls = ["http://$NODE_IP:9103/metrics"] 
+         fieldpass = ["metric_to_pass1", "metric_to_pass2"] 
+         fielddrop = ["metric_to_drop"] 
+        ```
+
+        - 通过指定 pod 批注擦除 Prometheus 指标。
+
+        ```
+         prometheus-data-collection-settings: |- 
+         # Custom Prometheus metrics data collection settings
+         [prometheus_data_collection_settings.cluster] 
+         interval = "1m"  ## Valid time units are ns, us (or µs), ms, s, m, h
+         monitor_kubernetes_pods = true #replicaset will scrape Kubernetes pods for the following prometheus annotations: 
+          - prometheus.io/scrape:"true" #Enable scraping for this pod 
+          - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+          - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
+          - prometheus.io/port:"8000" #If port is not 9102 use this annotation
+        ```
 
 1. 运行以下 kubectl 命令创建 ConfigMap：`kubectl apply -f <configmap_yaml_file.yaml>`。
     
@@ -91,14 +146,14 @@ ConfigMap 是一个全局列表, 只能有一个 ConfigMap 应用于代理。 �
     
     配置更改可能需要几分钟时间才能完成并生效，群集中的所有 omsagent pod 将会重启。 所有 omsagent pod 的重启是轮流式的重启，而不是一次性全部重启。 重启完成后，系统会显示包含结果的消息，如下所示：`configmap "container-azm-ms-agentconfig" created`。
 
-若要验证是否已成功应用配置，请使用以下命令查看代理 pod 的日志：`kubectl logs omsagent-fdf58 -n=kube-system`。 如果 omsagent pod 出现配置错误, 输出将显示类似于以下内容的错误:
+若要验证是否已成功应用配置，请使用以下命令查看代理 pod 的日志：`kubectl logs omsagent-fdf58 -n=kube-system`。 如果 omsagent pod 存在配置错误，输出中会显示如下所示的错误：
 
 ``` 
 ***************Start Config Processing******************** 
 config::unsupported/missing config schema version - 'v21' , using defaults
 ```
 
-还可以查看与应用 Prometheus 的配置更改相关的错误。  可以使用相同`kubectl logs`的命令, 也可以从实时日志中的日志。 实时日志显示类似于以下内容的错误:
+还可以查看有关对 Prometheus 应用配置更改的错误。  使用相同的 `kubectl logs` 命令从代理 pod 中的日志收集，或者从实时日志收集。 实时日志显示类似于以下内容的错误:
 
 ```
 2019-07-08T18:55:00Z E! [inputs.prometheus]: Error in plugin: error making HTTP request to http://invalidurl:1010/metrics: Get http://invalidurl:1010/metrics: dial tcp: lookup invalidurl on 10.0.0.10:53: no such host
@@ -108,7 +163,7 @@ config::unsupported/missing config schema version - 'v21' , using defaults
 
 ## <a name="applying-updated-configmap"></a>应用已更新的 ConfigMap
 
-如果已将 ConfigMap 部署到群集, 并且想要使用较新的配置对其进行更新, 只需编辑以前使用的 ConfigMap 文件, 然后使用与之前`kubectl apply -f <configmap_yaml_file.yaml`相同的命令进行应用。
+如果已将 ConfigMap 部署到群集, 并且想要使用较新的配置对其进行更新, 则可以编辑以前使用的 ConfigMap 文件, 然后使用与之前`kubectl apply -f <configmap_yaml_file.yaml`相同的命令来应用。
 
 配置更改可能需要几分钟时间才能完成并生效，群集中的所有 omsagent pod 将会重启。 所有 omsagent pod 的重启是轮流式的重启，而不是一次性全部重启。 重启完成后，系统会显示包含结果的消息，如下所示：`configmap "container-azm-ms-agentconfig" updated`。
 
@@ -133,7 +188,7 @@ omsagent pod 上以 pod 注释 (schema-versions) 的形式提供了支持的配�
 
 ## <a name="review-prometheus-data-usage"></a>查看 Prometheus 数据使用情况
 
-若要确定每个指标大小的引入量 (以 GB 为单位), 以了解它是否很高, 请提供以下查询。
+若要确定每个指标大小 (GB) 的每日引入量以了解其是否偏高，请提供以下查询。
 
 ```
 InsightsMetrics 
@@ -143,11 +198,11 @@ InsightsMetrics
 | order by VolumeInGB desc
 | render barchart
 ```
-输出将显示类似于以下内容的结果:
+输出将显示类似于以下内容的结果：
 
-![数据引入卷的日志查询结果](./media/container-insights-agent-config/log-query-example-usage-03.png)
+![数据引入量的日志查询结果](./media/container-insights-agent-config/log-query-example-usage-03.png)
 
-若要估计每个指标的大小 (GB) 是一个月来了解工作区中收到的数据引入量是否很高, 请提供以下查询。
+若要估算月份中的每个指标大小 (GB) 以了解工作区中收到的引入数据量是否偏高，请提供以下查询。
 
 ```
 InsightsMetrics 
@@ -158,11 +213,11 @@ InsightsMetrics
 | render barchart
 ```
 
-输出将显示类似于以下内容的结果:
+输出将显示类似于以下内容的结果：
 
-![数据引入卷的日志查询结果](./media/container-insights-agent-config/log-query-example-usage-02.png)
+![数据引入量的日志查询结果](./media/container-insights-agent-config/log-query-example-usage-02.png)
 
-使用[Azure Monitor 日志管理使用情况和成本](../platform/manage-cost-storage.md)中提供了有关如何监视数据使用情况和分析成本的详细信息。
+[使用 Azure Monitor 日志管理使用情况和成本](../platform/manage-cost-storage.md)中提供了有关如何监视数据使用情况和分析成本的更多信息。
 
 ## <a name="next-steps"></a>后续步骤
 

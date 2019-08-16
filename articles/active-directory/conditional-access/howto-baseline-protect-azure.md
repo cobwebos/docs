@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab2aa4415345747a0e87b90ef0a7ee770ef3465
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: e8095b4fa6e52b7c34cedaea35b129ab68dddc65
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608123"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532957"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>基准策略:需要 MFA 进行服务管理 (预览版)
 
@@ -32,21 +32,21 @@ ms.locfileid: "68608123"
 
 在租户中启用此策略后, 登录到 Azure 管理资源的所有用户将面临多重身份验证的挑战。 如果用户未注册 MFA, 用户将需要使用 Microsoft Authenticator 的应用进行注册, 然后才能继续操作。
 
-若要使用[Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)执行交互式登录, 请使用[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet。
+若要使用[Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)执行交互式登录, 请使用[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet。
 
 ```PowerShell
 Connect-AzAccount
 ```
 
-在运行时，此 cmdlet 将显示一个令牌字符串。 若要登录, 请复制此字符串, 并将 [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)其粘贴到  浏览器中。 PowerShell 会话在进行身份验证后就会连接到 Azure。
+在运行时，此 cmdlet 将显示一个令牌字符串。 若要登录, 请复制此字符串, 并将[https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)其粘贴到浏览器中。 PowerShell 会话在进行身份验证后就会连接到 Azure。
 
-若要使用[Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)执行交互式登录, 请运行 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令。
+若要使用[Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)执行交互式登录, 请运行[az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)命令。
 
 ```azurecli
 az login
 ```
 
-如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则, 需要打开浏览器页面并按照命令行上的说明在浏览器中导航到 [https://aka.ms/devicelogin](https://aka.ms/devicelogin)后输入授权代码。 之后, 请在浏览器中用帐户凭据登录。
+如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则, 需要打开浏览器页面并按照命令行上的说明在浏览器中导航到[https://aka.ms/devicelogin](https://aka.ms/devicelogin)后输入授权代码。 之后, 请在浏览器中用帐户凭据登录。
 
 ## <a name="deployment-considerations"></a>部署注意事项
 
@@ -58,11 +58,11 @@ az login
 
 若要启用此策略并保护管理员:
 
-1. 以全局管理员、安全管理员或条件访问管理员身份登录到 **Azure 门户** 。
+1. 以全局管理员、安全管理员或条件访问管理员身份登录到**Azure 门户**。
 1. 浏览到**Azure Active Directory** > **条件性访问**。
 1. 在策略列表中, 选择 **"基准策略":需要对服务管理 (预览版)** 进行 MFA。
 1. 将 "**启用策略**" 设置为 "**立即使用策略**"。
-1. 单击 " **保存**"。
+1. 单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 

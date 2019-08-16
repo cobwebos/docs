@@ -7,16 +7,18 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7dd053e3a9824ac0817db528b8b053666e1ded04
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881815"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543510"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建来宾配置策略
 
 来宾配置使用[Desired State configuration](/powershell/dsc) (DSC) 资源模块来创建用于审核 Azure 虚拟机的配置。 DSC 配置定义虚拟机应处于的状态。 如果评估配置失败, 则会触发策略影响**审核**, 并且虚拟机被视为**不符合**。
+
+[Azure 策略来宾配置](/azure/governance/policy/concepts/guest-configuration)只能用于审核虚拟机内的设置。 虚拟机内的设置的修正功能尚不可用。
 
 使用以下操作创建自己的配置, 以验证 Azure 虚拟机的状态。
 

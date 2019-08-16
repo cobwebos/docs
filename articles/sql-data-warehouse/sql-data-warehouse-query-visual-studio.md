@@ -2,20 +2,20 @@
 title: 连接到 Azure SQL 数据仓库 - VSTS | Microsoft 文档
 description: 使用 Visual Studio 查询 SQL 数据仓库。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.date: 08/15/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5c0867252023378347e55d673260f28a7bf2ccc4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: aea2b3229dd793bc31adc0038763e09340a5f85a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479450"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534773"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 连接到 SQL 数据仓库
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "68479450"
 > 
 > 
 
-使用 Visual Studio 只需几分钟便可查询 Azure SQL 数据仓库。 此方法使用 Visual Studio 中的 SQL Server Data Tools (SSDT) 扩展。 
+使用 Visual Studio 只需几分钟便可查询 Azure SQL 数据仓库。 此方法使用 Visual Studio 2019 中的 SQL Server Data Tools (SSDT) 扩展。 
 
 ## <a name="prerequisites"></a>先决条件
 要使用本教程，需要：
@@ -37,7 +37,7 @@ ms.locfileid: "68479450"
 * 完全限定的 SQL Server 名称。 若要查找此名称，请参阅 [连接到 SQL 数据仓库][Connect to SQL Data Warehouse]。
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1.连接到 SQL 数据仓库
-1. 打开 Visual Studio 2013 或 2015。
+1. 打开 Visual Studio 2019。
 2. 打开 SQL Server 对象资源管理器。 为此，请选择“视图” > “SQL Server 对象资源管理器”。
    
     ![SQL Server 对象资源管理器][1]

@@ -9,18 +9,18 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: cf063311e5559ddf5706df397ce744a726610000
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 5be247e8bb999ee5306d10e67c46c7273953dc71
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667345"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534702"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>在多台 VM 上启用更新管理、更改跟踪和清单解决方案
 
 Azure 自动化提供了解决方案来管理操作系统安全性更新、跟踪更改以及列出计算机上所安装项的清单。 可以通过多种方式来载入计算机，可以[通过虚拟机](automation-onboard-solutions-from-vm.md)、[通过自动化帐户](automation-onboard-solutions-from-automation-account.md)、在浏览虚拟机时或通过 [Runbook](automation-onboard-solutions.md) 载入解决方案。 本文介绍了在 Azure 中浏览虚拟机时如何载入这些解决方案。
 
-## <a name="sign-in-to-azure"></a>登录  Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 登录 Azure (https://portal.azure.com )
 
@@ -45,7 +45,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ### <a name="resource-group-limit"></a> 载入限制
 
-你可以用于载入的资源组的数量受限于[资源管理器部署限制](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md)。 资源管理器部署（不要与更新部署混淆）的限制为每个部署 5 个资源组。 为确保载入的完整性，这些资源组中有 2 个保留用来配置 Log Analytics 工作区、自动化帐户和相关资源。 剩下的 3 个资源组供你选择用于部署。
+你可以用于载入的资源组的数量受限于[资源管理器部署限制](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md)。 资源管理器部署, 不会与更新部署混淆, 每个部署只能有5个资源组。 为确保载入的完整性，这些资源组中有 2 个保留用来配置 Log Analytics 工作区、自动化帐户和相关资源。 剩下的 3 个资源组供你选择用于部署。 此限制仅适用于同时加入, 而不适用于自动化解决方案可以管理的资源组数。
 
 你还可以使用用于载入的 runbook, 有关详细信息, 请参阅[Azure 自动化的内置更新和更改跟踪解决方案](automation-onboard-solutions.md)。
 
@@ -117,7 +117,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 **原因**：此错误表明你尝试载入的 VM 向另一个工作区报告。
 
-**解决方案**；单击“用作配置”来更改目标自动化帐户和 Log Analytics 工作区。
+**解决方案**：单击“用作配置”来更改目标自动化帐户和 Log Analytics 工作区。
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM 向此订阅中不可用的工作区进行报告
 
@@ -127,7 +127,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 * 不再存在，或者
 * 位于你无权访问的资源组中
 
-**解决方案**；找到与 VM 向其报告的工作区关联的自动化帐户，并通过更改作用域配置来载入虚拟机。
+**解决方案**：找到与 VM 向其报告的工作区关联的自动化帐户，并通过更改作用域配置来载入虚拟机。
 
 ### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>VM 操作系统版本或分发版不受支持
 
@@ -139,13 +139,13 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 **原因**：使用经典部署模型的虚拟机不受支持。
 
-**解决方案**；将虚拟机迁移到资源管理器部署模型。 若要了解如何执行此操作，请参阅[迁移经典部署模型资源](../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
+**解决方案**：将虚拟机迁移到资源管理器部署模型。 若要了解如何执行此操作，请参阅[迁移经典部署模型资源](../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
 
 ### <a name="vm-is-stopped-deallocated"></a>VM 已停止。 （已解除分配）
 
 **原因**：虚拟机未处于“正在运行”状态。
 
-**解决方案**；为了将 VM 载入到解决方案，VM 必须处于运行状态。 单击“启动 VM”内联链接来启动 VM 且不离开页面。
+**解决方案**：为了将 VM 载入到解决方案，VM 必须处于运行状态。 单击“启动 VM”内联链接来启动 VM 且不离开页面。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2c66da6717018237aebaf5fdaf803a8ac98f82be
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 028f289092a0183072ab0ba0be29f9d1f79781bc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344676"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534327"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>设置在团队数据科学过程中使用的数据科学环境
 团队数据科学过程使用各种数据科学环境来完成数据的存储、处理和分析。 它们包括 Azure Blob 存储、几种类型的 Azure 虚拟机、HDInsight (Hadoop) 群集和 Azure 机器学习工作区。 关于要使用的环境类型的决策具体取决于要建模的数据类型和数量以及云中数据的目标目的地。 
@@ -37,4 +37,3 @@ ms.locfileid: "60344676"
 - [Windows DSVM](../data-science-virtual-machine/provision-vm.md)
 - [Ubuntu DSVM](../data-science-virtual-machine/dsvm-ubuntu-intro.md)
 - [CentOS DSVM](../data-science-virtual-machine/linux-dsvm-intro.md)
-- [深度学习 VM](../data-science-virtual-machine/provision-deep-learning-dsvm.md)

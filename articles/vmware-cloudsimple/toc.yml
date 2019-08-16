@@ -87,15 +87,15 @@
         - name: 设置私有云网络
           items:
             - name: 创建并管理 VLAN 和子网
-              href: 'https://docs.azure.cloudsimple.com/create-vlan-subnet/'
+              href: create-vlan-subnet.md
             - name: 设置防火墙表和规则
-              href: 'https://docs.azure.cloudsimple.com/firewall/'
+              href: firewall.md
             - name: 分配公共 IP 地址
-              href: 'https://docs.azure.cloudsimple.com/public-ips/'
+              href: public-ips.md
             - name: 设置 VPN 连接
-              href: 'https://docs.azure.cloudsimple.com/vpn-gateway/'
+              href: vpn-gateway.md
             - name: 获取虚拟网络连接到 CloudSimple 时的对等机信息
-              href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
+              href: virtual-network-connection.md
             - name: 访问完成管理任务所需的 vSphere 客户端提升特权
               href: 'https://docs.azure.cloudsimple.com/vsphere-access/'
         - name: 管理 CloudSimple 门户帐户
@@ -127,17 +127,17 @@
         - name: 私有云网络
           items:
             - name: 本地与私有云之间的 VPN 连接
-              href: 'https://docs.azure.cloudsimple.com/set-up-vpn/'
+              href: set-up-vpn.md
             - name: 通过 ExpressRoute 进行的本地网络连接
               href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
             - name: 通过 ExpressRoute 进行的 Azure 虚拟网络连接
-              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'
+              href: azure-expressroute-connection.md
         - name: VMware 平台
           items:
             - name: 了解私有云权限模型
               href: 'https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/'
             - name: vCenter 标识源
-              href: 'https://docs.azure.cloudsimple.com/set-vcenter-identity/'
+              href: set-vcenter-identity.md
             - name: 将 Azure 应用程序网关与 VMware VM 配合使用
               href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
             - name: 将私有云 vCenter 服务器配置为 vRealize 自动化终结点
@@ -153,13 +153,13 @@
             - name: VMware Horizon 解决方案指南
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: 为私有云配置 vSAN 加密
-              href: 'https://docs.azure.cloudsimple.com/vsan-encryption/'
+              href: vsan-encryption.md
             - name: CloudSimple 私有云上的 Oracle RAC 部署
               href: 'https://docs.azure.cloudsimple.com/oracle-rac/'
         - name: Azure 核心集成
           items:
             - name: 私有云 vCenter 上的 Azure AD 标识源
-              href: 'https://docs.azure.cloudsimple.com/azure-ad/'
+              href: azure-ad.md
             - name: 通过 ExpressRoute 进行的本地网络连接
               href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
             - name: 通过 ExpressRoute 进行的 Azure 虚拟网络连接

@@ -3,17 +3,17 @@ title: Azure VMware 解决方案 (按 CloudSimple)-私有云 VMware 组件
 description: 介绍如何在私有云上安装 VMware 组件
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 89bc9c07ae74da1a4269a505627a7626e478ef99
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 26f58a38ac3abe9c6e2a3c6254190dffc4a51eb9
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812178"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543707"
 ---
 # <a name="private-cloud-vmware-components"></a>私有云 VMware 组件
 
@@ -47,11 +47,11 @@ vCenter server 设备 (VCSA) 通过 CloudSimple 为 VMware 解决方案提供身
 
 ### <a name="vcenter-single-sign-on"></a>vCenter 单一登录
 
-VCSA 上的嵌入式平台服务控制器与**VCenter 单一登录域**相关联。  域名为**cloudsimple**。  系统会创建 **CloudOwner@cloudsimple.com** 一个默认用户以访问 vCenter。  可以为 vCenter 添加本地/Azure active directory[标识源](https://docs.azure.cloudsimple.com/set-vcenter-identity/)。
+VCSA 上的嵌入式平台服务控制器与**VCenter 单一登录域**相关联。  域名为**cloudsimple**。  系统会创建 **CloudOwner@cloudsimple.com** 一个默认用户以访问 vCenter。  可以为 vCenter 添加本地/Azure active directory[标识源](set-vcenter-identity.md)。
 
 ## <a name="vsan-storage"></a>vSAN 存储
 
-私有云是在群集的本地完全配置的所有闪存 vSAN 存储中创建的。  使用 vSAN 数据存储创建 vSphere 群集需要使用同一 SKU 的至少三个节点。  默认情况下, 在 vSAN 数据存储中启用了重复数据删除和压缩。  在 vSphere 群集的每个节点上创建两个磁盘组。 每个磁盘组都包含一个缓存磁盘和三个容量磁盘。
+私有云是在群集的本地完全配置的所有闪存 vSAN 存储中创建的。  使用 vSAN 数据存储创建 vSphere 群集需要使用同一 SKU 的至少三个节点。  默认情况下, 会在 vSAN 数据存储上启用重复数据删除和压缩。  在 vSphere 群集的每个节点上创建两个磁盘组。 每个磁盘组都包含一个缓存磁盘和三个容量磁盘。
 
 在 vSphere 群集上创建一个默认的 vSAN 存储策略, 并将其应用于 vSAN 数据存储。  此策略确定如何在数据存储中设置和分配 VM 存储对象, 以确保所需的服务级别。  存储策略定义了 "**容错 (FTT)** " 和 "**失败" 容错方法**。  你可以创建新的存储策略并将其应用到 Vm。 若要维护 SLA, 必须在 vSAN 数据存储上维护 25% 的备用容量。  
 

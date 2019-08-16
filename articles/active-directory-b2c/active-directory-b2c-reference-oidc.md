@@ -1,5 +1,5 @@
 ---
-title: 使用 OpenID Connect 进行 Web 登录 - Azure Active Directory B2C | Microsoft Docs
+title: 通过 OpenID Connect 进行 Web 登录-Azure Active Directory B2C
 description: 使用 Azure Active Directory B2C 中的 OpenID Connect 身份验证协议生成 Web 应用程序。
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 08/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0e60bedcf1324b443d9b9cd34e8dc695fdb0b372
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f6188f5c5bdd256ee84c5e7dc8632e5c067ceca5
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931759"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541720"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -32,7 +32,7 @@ Azure AD B2C 扩展了标准 OpenID Connect 协议，使其功能远远超出了
 
 当 Web 应用程序需要对用户进行身份验证并运行用户流时，它可以将用户定向到 `/authorize` 终结点。 用户可以根据用户流执行操作。
 
-在此请求中，客户端指示在 `scope` 参数中需要从用户获取的权限以及要在 `p` 参数中运行的用户流。 以下部分中提供了三个示例（带换行符以便阅读），每个示例使用不同的用户流。 要了解每个请求的工作原理，请尝试将请求粘贴到浏览器并运行它。 如果你有一个租户并已创建了用户流，则可将 `fabrikamb2c` 替换为该租户的名称。 还需要替换`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`。 将此客户端 ID 替换为你创建的应用程序注册的应用程序 ID。 还将策略名称`b2c_1_sign_in`更改为你在租户中拥有的策略名称。 
+在此请求中，客户端指示在 `scope` 参数中需要从用户获取的权限以及要在 `p` 参数中运行的用户流。 以下部分中提供了三个示例（带换行符以便阅读），每个示例使用不同的用户流。 要了解每个请求的工作原理，请尝试将请求粘贴到浏览器并运行它。 如果你有一个租户并已创建了用户流，则可将 `fabrikamb2c` 替换为该租户的名称。 还需要替换`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`。 将此客户端 ID 替换为你创建的应用程序注册的应用程序 ID。 还将策略名称`b2c_1_sign_in`更改为你在租户中拥有的策略名称。
 
 #### <a name="use-a-sign-in-user-flow"></a>使用登录用户流
 ```
@@ -121,7 +121,7 @@ error=access_denied
 
 ## <a name="validate-the-id-token"></a>验证 ID 令牌
 
-仅收到一个 ID 令牌并不表示可以对用户进行身份验证。 根据应用程序的要求验证 ID 令牌的签名和令牌中的声明。 Azure AD B2C 使用 [JSON Web 令牌 (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) 和公钥加密对令牌进行签名并验证其是否有效。 有许多开放源代码库可用于验证 JWT，具体取决于首选语言。 我们建议使用这些库，而不是实施自己的验证逻辑。 
+仅收到一个 ID 令牌并不表示可以对用户进行身份验证。 根据应用程序的要求验证 ID 令牌的签名和令牌中的声明。 Azure AD B2C 使用 [JSON Web 令牌 (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) 和公钥加密对令牌进行签名并验证其是否有效。 有许多开放源代码库可用于验证 JWT，具体取决于首选语言。 我们建议使用这些库，而不是实施自己的验证逻辑。
 
 Azure AD B2C 具有 OpenID Connect 元数据终结点，允许应用程序在运行时获取有关 Azure AD B2C 的信息。 此信息包括终结点、令牌内容和令牌签名密钥。 B2C 租户中的每个用户流都有一个 JSON 元数据文档。 例如，`fabrikamb2c.onmicrosoft.com` 中 `b2c_1_sign_in` 用户流的元数据文档位于：
 
@@ -155,7 +155,7 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点，允许应用程序在运
 
 如果仅需要 Web 应用程序运行用户流，则可以跳过下面几个部分。 这些部分仅适用于需要对 Web API 进行验证的调用，以及受到 Azure AD B2C 保护的 Web 应用程序。
 
-通过将 `POST` 请求发送到 `/token` 终结点，可以将获取的授权代码（通过 `response_type=code+id_token` 获取）兑换为所需资源的令牌。 在 Azure AD B2C 中，可以像往常一样通过在请求中指定其他 API 的范围来[为这些 API 请求访问令牌](active-directory-b2c-access-tokens.md#request-a-token)。
+通过将 `POST` 请求发送到 `/token` 终结点，可以将获取的授权代码（通过 `response_type=code+id_token` 获取）兑换为所需资源的令牌。 在 Azure AD B2C 中, 可以通过在请求中指定其作用域, 照常[请求其他 api 的访问令牌](active-directory-b2c-access-tokens.md#request-a-token)。
 
 还可以按照将应用的客户端 ID 用作所请求范围（这将导致具有该客户端 ID 的访问令牌作为“受众”）的约定，为应用自己的后端 Web API 请求访问令牌：
 
@@ -283,18 +283,24 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 如果想要从应用程序中注销用户，只是清除应用程序的 Cookie 或者结束与用户的会话是不够的。 需将用户重定向到 Azure AD B2C 进行注销。如果没有这么做，那么用户可能可以在应用程序中重新进行身份验证，且无需再次输入其凭据。
 
-只需将用户重定向到前面所述的 OpenID Connect 元数据文档中列出的 `end_session` 终结点：
+若要注销用户, 请将用户重定向到`end_session`前面所述的 OpenID connect 元数据文档中列出的终结点:
 
 ```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
-p=b2c_1_sign_in
-&post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
 | 参数 | 必填 | 描述 |
 | --------- | -------- | ----------- |
-| p | 是 | 想要用于从应用程序中注销用户的用户流。 |
+| 组织 | 是 | Azure AD B2C 租户的名称 |
+| 政策 | 是 | 想要用于从应用程序中注销用户的用户流。 |
+| id_token_hint| 否 | 以前颁发的 ID 令牌, 作为有关最终用户当前通过身份验证的会话与客户端的提示传递到注销终结点。 |
 | post_logout_redirect_uri | 否 | 用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |
+| 省/自治区/直辖市 | 否 | 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用程序需验证请求和响应中的 `state` 值是否相同。 |
 
-将用户定向到 `end_session` 终结点会清除用户的某些 Azure AD B2C 的单一登录状态，但是不会将用户从其社交标识提供者 (IDP) 会话中注销。 如果用户在后续登录中选择相同的 IDP，他们将重新进行身份验证，且无需输入其凭据。 如果用户想要从应用程序中注销, 则不一定意味着他们要注销其 Facebook 帐户。 但是, 如果使用了本地帐户, 用户的会话便会正确结束。
+### <a name="require-id-token-hint-in-logout-request"></a>注销请求中需要 ID 令牌提示
 
+注销后, 用户将被重定向到`post_logout_redirect_uri`参数中指定的 URI, 而不考虑已为应用程序指定的回复 url。 但是, 如果传递了`id_token_hint`有效的, 则 Azure AD B2C 在执行重定向`post_logout_redirect_uri`之前, 验证的值是否与应用程序的一个已配置重定向 uri 相匹配。 如果没有为应用程序配置匹配的答复 URL, 将显示一条错误消息, 并且不会重定向用户。
+
+### <a name="external-identity-provider-session"></a>外部标识提供者会话
+
+将用户定向到 `end_session` 终结点会清除用户的某些 Azure AD B2C 的单一登录状态，但是不会将用户从其社交标识提供者 (IDP) 会话中注销。 如果用户在后续登录中选择相同的 IDP, 则会重新进行身份验证, 而无需输入其凭据。 如果用户想要从应用程序中注销, 则不一定意味着他们要注销其 Facebook 帐户。 但是, 如果使用了本地帐户, 用户的会话便会正确结束。

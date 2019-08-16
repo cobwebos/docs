@@ -3,8 +3,8 @@ title: Red Hat 更新基础结构 | Microsoft Docs
 description: 了解用于 Microsoft Azure 中按需 Red Hat Enterprise Linux 实例的 Red Hat 更新基础结构
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: asinn826
+manager: BorisB2015
 editor: ''
 ms.assetid: f495f1b4-ae24-46b9-8d26-c617ce3daf3a
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: efc76616151776bc2f766f92ff9503413c6037d0
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: ac3b29e3cd6cbaf0a8a34f442c55b386f150e018
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774271"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543785"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -31,22 +31,52 @@ ms.locfileid: "68774271"
 可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。
 
 ## <a name="important-information-about-azure-rhui"></a>有关 Azure RHUI 的重要信息
+
 * Azure RHUI 是支持在 Azure 中创建的所有 RHEL PAYG Vm 的更新基础结构。 这不会阻止你向订阅管理器或附属或其他更新源注册 PAYG RHEL Vm, 但使用 PAYG VM 执行此操作将导致间接双重计费。 有关详细信息, 请参阅以下要点。
 * RHEL PAYG 映像价格涵盖了 Azure 托管 RHUI 的访问权限。 从 Azure 托管的 RHUI 注销 PAYG RHEL VM 不会将虚拟机转换为自带许可 (BYOL) 类型的 VM。 如果向另一更新源注册同一 VM，可能会产生间接双倍费用。 第一次你需要支付 Azure RHEL 软件费。 第二次你需要支付之前已购买的 Red Hat 订阅费。 如果你始终需要使用 Azure 托管的 RHUI 以外的更新基础结构, 请考虑注册使用[RHEL BYOS 映像](https://aka.ms/rhel-byos)。
-* RHUI 的默认行为是在运行`sudo yum update`时将 RHEL VM 升级到最新次要版本。
-
-    例如，如果从 RHEL 7.4 PAYG 映像预配 VM 并运行 `sudo yum update`，最终会获得 RHEL 7.6 VM（RHEL7 系列中的最新次要版本）。
-
-    若要避免此行为, 可以切换到[扩展更新支持通道](#rhel-eus-and-version-locking-rhel-vms), 或根据[创建和上载适用于 Azure 的 Red Hat 虚拟机一](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)文中所述构建自己的映像。 如果你构建自己的映像, 则需要将其连接到不同的更新基础结构 ([直接连接到 Red hat 内容传送服务器](https://access.redhat.com/solutions/253273)或[red hat 卫星服务器](https://access.redhat.com/products/red-hat-satellite))。
-
-
 
 * Azure 中的 RHEL SAP PAYG 映像（RHEL for SAP、RHEL for SAP HANA 以及 RHEL for SAP Business Application）已根据 SAP 认证需要，连接到保留在特定 RHEL 次要版本上的专用 RHUI 通道。
 
-* 对 Azure 托管的 RHUI 的访问限制为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)内的 VM。 若要通过本地网络基础结构代理所有 VM 流量，可能需要为 RHEL PAYG VM 设置用户定义的路由才能访问 Azure RHUI。
+* 对 Azure 托管的 RHUI 的访问限制为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)内的 VM。 若要通过本地网络基础结构代理所有 VM 流量，可能需要为 RHEL PAYG VM 设置用户定义的路由才能访问 Azure RHUI。 如果是这种情况, 则需要为_所有_RHUI IP 地址添加用户定义的路由。
+
+## <a name="image-update-behavior"></a>图像更新行为
+
+自2019年4月起, Azure 提供 RHEL 映像, 默认情况下连接到扩展更新支持 (EUS) 存储库, 默认情况下连接到常规 (非 EUS) 存储库的 RHEL 映像。 有关 RHEL EUS 的更多详细信息, 请参阅 Red Hat 的[版本生命周期文档](https://access.redhat.com/support/policy/updates/errata)和[EUS 文档](https://access.redhat.com/articles/rhel-eus)。 的`sudo yum update`默认行为取决于从预配的 RHEL 映像, 因为不同的映像连接到不同的存储库。
+
+有关完整映像列表, 请使用`az vm image list --publisher redhat --all` Azure CLI 运行。
+
+### <a name="images-connected-to-non-eus-repositories"></a>连接到非 EUS 存储库的映像
+
+如果从连接到非 EUS 存储库的 RHEL 映像预配 VM, 则在运行`sudo yum update`时, 会升级到最新的 RHEL 次要版本。 例如, 如果从 rhel 7.4 PAYG 映像预配 VM 并运行`sudo yum update`, 最终会获得 rhel 7.7 VM (RHEL7 系列中的最新次要版本)。
+
+连接到 EUS 存储库的映像不会在 SKU 中包含次版本号。 SKU 是 URN 中的第三个元素 (映像的完整名称)。 例如, 以下所有映像均附加到非 EUS 存储库:
+
+```text
+RedHat:RHEL:7-LVM:7.4.2018010506
+RedHat:RHEL:7-LVM:7.5.2018081518
+RedHat:RHEL:7-LVM:7.6.2019062414
+RedHat:RHEL:7-RAW:7.4.2018010506
+RedHat:RHEL:7-RAW:7.5.2018081518
+RedHat:RHEL:7-RAW:7.6.2019062120
+```
+
+请注意, Sku 为 7-LVM 或 7-RAW。 在这些映像的版本 (URN 中的第四个元素) 中指出了次版本。
+
+### <a name="images-connected-to-eus-repositories"></a>连接到 EUS 存储库的映像
+
+如果从连接到 EUS 存储库的 RHEL 映像预配 VM, 则在运行`sudo yum update`时将不会升级到最新的 RHEL 次要版本。 这是因为连接到 EUS 存储库的图像也被版本锁定为特定的次要版本。
+
+连接到 EUS 存储库的映像将在 SKU 中包含次版本号。 例如, 以下所有映像均附加到 EUS 存储库:
+
+```text
+RedHat:RHEL:7.4:7.4.2019062107
+RedHat:RHEL:7.5:7.5.2019062018
+RedHat:RHEL:7.6:7.6.2019062116
+```
 
 ## <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS 和版本锁定 RHEL VM
-某些客户可能希望将其 RHEL VM 锁定在特定的 RHEL 次版本。 可以通过对存储库进行更新以指向扩展的更新支持存储库来将 RHEL VM 的版本锁定到特定的次版本。 还可以撤消 EUS 版本锁定操作。
+
+一些客户可能希望在预配 VM 后将其 RHEL Vm 锁定到某个 RHEL 次要版本。 可以通过对存储库进行更新以指向扩展的更新支持存储库来将 RHEL VM 的版本锁定到特定的次版本。 还可以撤消 EUS 版本锁定操作。
 
 >[!NOTE]
 > RHEL 附加上不支持 EUS。 这意味着, 如果你要安装的包通常在 RHEL 额外通道中可用, 则在 EUS 上将无法执行此操作。 [此处](https://access.redhat.com/support/policy/updates/extras/)详细介绍了 Red Hat 额外产品生命周期。
@@ -55,12 +85,13 @@ ms.locfileid: "68774271"
 * RHEL 7.4 EUS 支持于8月 2019 31 日结束
 * RHEL 7.5 EUS 支持于年4月 30 2020 日结束
 * RHEL 7.6 EUS 支持于10月31日结束, 2020
+* RHEL 7.7 EUS 支持于8月30日结束, 2021
 
 ### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>将 RHEL VM 切换到 EUS (版本-锁定到特定的次版本)
 使用以下说明将 RHEL VM 锁定到特定次要版本 (以 root 身份运行):
 
 >[!NOTE]
-> 这仅适用于 EUS 可用的 RHEL 版本。 在撰写本文时，这包括 RHEL 7.2-7.6。 有关更多详细信息，请访问 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)页。
+> 这仅适用于 EUS 可用的 RHEL 版本。 撰写本文时, 这包括 RHEL 7.2-7.7。 有关更多详细信息，请访问 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)页。
 
 1. 禁用非 EUS 存储库：
     ```bash

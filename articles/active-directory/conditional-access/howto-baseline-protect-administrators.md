@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213540a5b6c77146155365133f2cca08eea25351
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b00b061b1763d4b4e7236d8dc9ac1eedf7f923bc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608159"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533023"
 ---
 # <a name="baseline-policy-require-mfa-for-admins-preview"></a>基准策略:要求对管理员进行 MFA (预览)
 
 对特权帐户具有访问权限的用户对你的环境具有不受限制的访问权限。 鉴于这些帐户具有的权利，应当特别小心地对待它们。 增强对特权帐户的保护的一种常用方法是要求在使用这些帐户登录时进行更强的帐户验证。 在 Azure Active Directory 中，可以通过要求进行多重身份验证 (MFA) 来实现更强的帐户验证。
 
-**要求对管理员的 mfa (预览)**  是一项[基准策略](concept-baseline-protection.md), 需要在每次登录时使用 mfa:
+**要求对管理员的 mfa (预览)** 是一项[基准策略](concept-baseline-protection.md), 需要在每次登录时使用 mfa:
 
 * 全局管理员
 * SharePoint 管理员
@@ -52,11 +52,11 @@ ms.locfileid: "68608159"
 
 若要启用此策略并保护管理员:
 
-1. 以全局管理员、安全管理员或条件访问管理员身份登录到 **Azure 门户** 。
+1. 以全局管理员、安全管理员或条件访问管理员身份登录到**Azure 门户**。
 1. 浏览到**Azure Active Directory** > **条件性访问**。
 1. 在策略列表中, 选择 **"基准策略":要求对管理员 (预览版)** 进行 MFA。
 1. 将 "**启用策略**" 设置为 "**立即使用策略**"。
-1. 单击 " **保存**"。
+1. 单击“保存”。
 
 > [!WARNING]
 > 将来如果此策略处于预览阶段,**会自动启用策略**。 我们删除了此选项, 以最大程度地减少对用户的影响。 如果在可用时选择了此选项, 则**不**会自动使用 "策略"。 如果他们想要使用此基准策略, 请参阅以上步骤以启用它。

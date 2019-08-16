@@ -5,19 +5,19 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/02/2019
-ms.openlocfilehash: a8351f13f015ca53e72bbff41152e46690fdc7bc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 08/15/2019
+ms.openlocfilehash: f6ff654b8e51dfaf2697df69c7f220d41346c2bc
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855729"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543479"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 的 OutOfMemoryError 异常
 
 本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时的故障排除步骤和可能的解决方法。
 
-## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>方案:Apache Spark 的 OutOfMemoryError 异常
+## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>场景：Apache Spark 的 OutOfMemoryError 异常
 
 ### <a name="issue"></a>问题
 
@@ -53,13 +53,13 @@ java.lang.OutOfMemoryError
 
 ### <a name="cause"></a>原因
 
-此异常的最可能原因是没有足够的堆内存。 当 Spark 应用程序作为执行程序或驱动程序运行时, 需要有足够的 Java 虚拟机 (JVM) 堆内存。
+此异常的最可能原因是未将足够的堆内存分配给 Java 虚拟机 (JVM)。 这些 Jvm 作为执行程序或驱动程序作为 Apache Spark 应用程序的一部分启动。
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 1. 确定 Spark 应用程序将要处理的数据大小上限。 根据输入数据的最大大小、转换输入数据时生成的中间数据, 以及进一步转换中间数据时生成的输出数据, 对大小进行估计。 如果初始估计值不足, 请略微增加大小, 然后循环访问直到内存错误下降。
 
-1. 请确保要使用的 HDInsight 群集具有足够的内存和核心资源，以便能够适应 Spark 应用程序。 若要确定资源是否足够，可以在群集的 YARN UI 的“群集指标”部分中查看“已用内存与内存总计”以及“已用 VCore 与 VCore 总计”的值。
+1. 请确保要使用的 HDInsight 群集具有足够的内存和核心资源，以便能够适应 Spark 应用程序。 为此, 可查看群集的 YARN UI 的 "群集指标" 部分, 了解所**使用的内存**值与使用的**内存总计**和**vcore**的值。
 
     ![yarn 核心内存视图](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
@@ -89,7 +89,7 @@ java.lang.OutOfMemoryError
 
 ---
 
-## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>方案:尝试打开 Apache Spark history 服务器时出现 Java 堆空间错误
+## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>场景：尝试打开 Apache Spark history 服务器时出现 Java 堆空间错误
 
 ### <a name="issue"></a>问题
 
@@ -113,7 +113,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 可以通过在 spark 配置中编辑`SPARK_DAEMON_MEMORY`属性并重新启动所有服务来增加 spark 历史记录服务器内存。
 
@@ -129,7 +129,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 ---
 
-## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>方案:Livy 服务器无法在 Apache Spark 群集上启动
+## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>场景：Livy 服务器无法在 Apache Spark 群集上启动
 
 ### <a name="issue"></a>问题
 
@@ -199,7 +199,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 当大量作业通过 Livy 提交时, 作为 Livy 服务器的高可用性的一部分, 将这些会话状态存储在 ZK 中 (在 HDInsight 群集上), 并在 Livy 服务重新启动时恢复这些会话。 在意外终止后重新启动时, Livy 将为每个会话创建一个线程, 并累计一定数量的待恢复会话, 从而导致创建的线程太多。
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 使用以下详细步骤删除所有条目。
 

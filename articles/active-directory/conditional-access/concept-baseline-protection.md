@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819b2f3c54d97639eceae9aed60fdd5da2e7b3ef
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 572371f4abec413be5a2320c7d69d8126f26924f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608184"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533055"
 ---
 # <a name="what-are-baseline-policies"></a>什么是基准策略？
 
@@ -41,7 +41,7 @@ ms.locfileid: "68608184"
 
 由于管理员帐户具有的强大功能和访问权限, 你应特别小心对待它们。 改善特权帐户保护的一种常见方法是在使用登录时需要更强大的帐户验证形式。 在 Azure Active Directory 中, 你可以通过要求管理员注册并使用 Azure 多重身份验证来获取更强的帐户验证。
 
-["需要对管理员的 MFA (预览版)](howto-baseline-protect-administrators.md) " 是需要对以下目录角色进行多重身份验证 (MFA) 的基准策略, 被认为是最特权的 Azure AD 角色:
+"[需要对管理员的 MFA (预览版)](howto-baseline-protect-administrators.md) " 是需要对以下目录角色进行多重身份验证 (MFA) 的基准策略, 被认为是最特权的 Azure AD 角色:
 
 * 全局管理员
 * SharePoint 管理员
@@ -52,7 +52,7 @@ ms.locfileid: "68608184"
 * 帐务管理员
 * 用户管理员
 
-如果你的组织在脚本或代码中使用这些帐户, 请考虑将它们替换为 [托管标识](../managed-identities-azure-resources/overview.md)。
+如果你的组织在脚本或代码中使用这些帐户, 请考虑将它们替换为[托管标识](../managed-identities-azure-resources/overview.md)。
 
 ### <a name="end-user-protection-preview"></a>最终用户保护 (预览版)
 
@@ -87,11 +87,11 @@ ms.locfileid: "68608184"
 
 启用基线策略:
 
-1. 以全局管理员、安全管理员或条件访问管理员身份登录到 **Azure 门户** 。
+1. 以全局管理员、安全管理员或条件访问管理员身份登录到**Azure 门户**。
 1. 浏览到**Azure Active Directory** > **条件性访问**。
 1. 在策略列表中, 选择要启用的基准策略。
 1. 将 "**启用策略**" 设置为 **"开"** 。
-1. 单击 "保存"。
+1. 单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 

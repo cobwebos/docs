@@ -1,6 +1,6 @@
 ---
-title: 基于 Azure 应用程序 Insights 日志的指标 |Microsoft Docs
-description: 本文列出了支持的聚合和维度 Azure 应用程序见解指标。 基于日志的指标的详细信息包括底层 Kusto 查询语句。
+title: 基于 Azure Application Insights 日志的指标 | Microsoft Docs
+description: 本文列出了 Azure Application Insights 指标以及支持的聚合与维度。 基于日志的指标的详细信息包括底层 Kusto 查询语句。
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,47 +8,47 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: d4b7a214af23d69f1217d84e9401de230cd358b0
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 903fd2309949036b62fb4975596fb645c021d06d
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877358"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535033"
 ---
-# <a name="application-insights-log-based-metrics"></a>基于日志的指标 Application Insights
+# <a name="application-insights-log-based-metrics"></a>基于 Application Insights 日志的指标
 
-Application Insights 基于日志的指标, 可让你分析受监视应用的运行状况, 创建功能强大的仪表板, 并配置警报。 有两种指标:
+使用基于 Application Insights 日志的指标可以分析受监视应用的运行状况、创建功能强大的仪表板，以及配置警报。 有两种类型的指标：
 
-* 场景后面[基于日志的指标](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)将从存储的事件转换为[Kusto 查询](https://docs.microsoft.com/azure/kusto/query/)。
-* [标准指标](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)存储为预先聚合的时间序列。
+* [基于日志的指标](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)在幕后转换为存储的事件中的 [Kusto 查询](https://docs.microsoft.com/azure/kusto/query/)。
+* [标准指标](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)存储为预先聚合的时序。
 
-由于*标准指标*是在收集过程中预聚合的, 因此它们在查询时具有更好的性能。 这使它们成为仪表板建设和实时警报的更好选择。 *基于日志的指标*具有更多的维度, 这使它们成为数据分析和即席诊断的高级选项。 使用[命名空间选择器](metrics-getting-started.md#create-your-first-metric-chart)在[指标资源管理器](metrics-getting-started.md)中切换基于日志的指标和标准指标。
+由于标准指标在收集期间会预先聚合，因此它们在查询时具有更好的性能。 因此它们更适合在仪表板和实时警报中显示。 基于日志的指标具有更多的维度，因此，它们特别适合用于数据分析和即席诊断。 在[指标资源管理器](metrics-getting-started.md)中使用[命名空间选择器](metrics-getting-started.md#create-your-first-metric-chart)可以在基于日志的指标与标准指标之间切换。
 
-## <a name="interpret-and-use-queries-from-this-article"></a>解释并使用本文中的查询
+## <a name="interpret-and-use-queries-from-this-article"></a>本文中的查询的解释和用法
 
-本文列出了支持的聚合和维度的指标。 基于日志的指标的详细信息包括底层 Kusto 查询语句。 为方便起见, 每个查询使用时间粒度、图表类型和有时拆分维度的默认值, 这简化了在 Log Analytics 无需修改的情况下使用查询。
+本文列出了指标以及支持的聚合与维度。 基于日志的指标的详细信息包括底层 Kusto 查询语句。 为方便起见，每个查询对时间粒度、图表类型使用默认值，有时还会拆分维度，这简化了查询在 Log Analytics 中的使用，而无需进行任何修改。
 
-在[指标资源管理器](metrics-getting-started.md)中绘制相同的指标时, 没有默认值-根据图表设置动态调整查询:
+在[指标资源管理器](metrics-getting-started.md)中绘制同一指标的图表时，不会使用默认值 - 查询会根据图表设置动态调整：
 
-- 所选**时间范围**将转换为其他*where timestamp ...* 子句, 以仅从所选时间范围选取事件。 例如, 显示最近24小时内的数据的图表, 该查询包括 *| where timestamp > 之前 (24 h)* 。
+- 所选的“时间范围”将转换为额外的 *where timestamp ...* 子句，以便仅选取所选时间范围内的事件。 例如，对于显示最近 24 小时数据的图表，查询将包含 *| where timestamp > ago(24 h)* 。
 
 - 所选**时间粒度**会置于最终*汇总 ...by bin (timestamp, [时间粒度])* 子句。
 
-- 所有选定的**筛选器**维度都转换为其他*where*子句。
+- 任何所选“筛选器”维度将转换为额外的 *where* 子句。
 
-- 所选**拆分图表**维度转换为额外的汇总属性。 例如, 如果按*位置*拆分图表, 并使用5分钟的时间粒度进行绘制, 则*汇总子句汇总* *...按 bin (时间戳、5 m)、位置*。
+- 所选的“拆分图表”维度将转换为额外的 summarize 属性。 例如, 如果按*位置*拆分图表, 并使用5分钟的时间粒度进行绘制, 则*汇总子句汇总* *...按 bin (时间戳、5 m)、位置*。
 
 > [!NOTE]
-> 如果你不熟悉 Kusto 查询语言, 则首先将 Kusto 语句复制并粘贴到 Log Analytics 查询窗格, 而不做任何修改。 单击 "**运行**" 以查看基本图表。 当你开始了解查询语言的语法时, 你可以开始进行少量的修改并查看更改的影响。 浏览你自己的数据是开始实现[Log Analytics](../../azure-monitor/log-query/get-started-portal.md)和[Azure Monitor](../../azure-monitor/overview.md)的全部功能的好办法。
+> 如果你不熟悉 Kusto 查询语言，请先复制 Kusto 语句并将其粘贴到 Log Analytics 查询窗格，而无需进行任何修改。 单击“运行”查看基本图表。 对查询语言的语法有一定的了解后，可以开始进行少量的修改，并查看更改造成的影响。 探索自己的数据是开始实现 [Log Analytics](../../azure-monitor/log-query/get-started-portal.md) 和 [Azure Monitor](../../azure-monitor/overview.md) 的全部功能的好办法。
 
 ## <a name="availability-metrics"></a>可用性指标
 
-可用性类别中的指标使你可以查看 web 应用程序的运行状况, 如世界各地所述。 [配置可用性测试](../../azure-monitor/app/monitor-web-app-availability.md), 开始使用此类别中的任何指标。
+参考“可用性”类别中的指标可以了解在世界各地预测到的 Web 应用程序运行状况。 [配置可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)，以开始使用此类别中的任何指标。
 
 ### <a name="availability-availabilityresultsavailabilitypercentage"></a>可用性 (availabilityResults/availabilityPercentage)
-*可用性*指标显示未检测到任何问题的 web 测试运行的百分比。 可能的最小值为 0, 表示所有 web 测试运行均已失败。 100的值表示所有 web 测试都通过了验证条件。
+“可用性”指标显示未检测到任何问题的 Web 测试运行的百分比。 可能的最小值为 0，表示所有 Web 测试运行均失败。 值 100 表示所有 Web 测试运行都符合验证条件。
 
-|计量单位|支持的聚合|支持的维度|
+|度量单位|支持的聚合|支持的维度|
 |---|---|---|---|---|---|
 |百分比|Average|运行位置、测试名称|
 
@@ -60,11 +60,11 @@ availabilityResults
 
 ### <a name="availability-test-duration-availabilityresultsduration"></a>可用性测试持续时间 (availabilityResults/duration)
 
-"*可用性测试持续时间*" 指标显示运行 web 测试所花的时间。 对于[多步骤 web 测试](../../azure-monitor/app/availability-multistep.md), 指标反映所有步骤的总执行时间。
+“可用性测试持续时间”指标显示运行 Web 测试所花费的时间。 对于[多步骤 Web 测试](../../azure-monitor/app/availability-multistep.md)，该指标反映所有步骤的总执行时间。
 
-|计量单位|支持的聚合|支持的维度|
+|度量单位|支持的聚合|支持的维度|
 |---|---|---|---|---|---|
-|毫秒|平均值、最小值、最大值|运行位置、测试名称、测试结果
+|毫秒|Average、Min、Max|运行位置、测试名称、测试结果
 
 ```Kusto
 availabilityResults
@@ -76,9 +76,9 @@ availabilityResults
 
 ### <a name="availability-tests-availabilityresultscount"></a>可用性测试 (availabilityResults/count)
 
-"*可用性测试*" 指标反映 Azure Monitor 运行的 web 测试的计数。
+“可用性测试”指标反映 Azure Monitor 执行的 Web 测试运行计数。
 
-|计量单位|支持的聚合|支持的维度|
+|度量单位|支持的聚合|支持的维度|
 |---|---|---|---|---|---|
 |Count|Count|运行位置、测试名称、测试结果|
 
@@ -90,16 +90,16 @@ availabilityResults
 
 ## <a name="browser-metrics"></a>浏览器指标
 
-浏览器指标由真实最终用户浏览器 Application Insights 的 JavaScript SDK 收集。 它们可让用户更深入地了解你的 web 应用程序的体验。 通常不会对浏览器度量值进行采样, 这意味着它们与服务器端度量值相比, 它们的使用速率是更高的精度, 而这可能会通过采样进行扭曲。
+浏览器指标由 Application Insights JavaScript SDK 从实际的最终用户浏览器收集。 它们提供 Web 应用用户体验的深入见解。 通常不会对浏览器指标采样，这意味着，在用量数字方面，与服务器端指标相比，它们提供的精度更高，而后者的采样可能会导致结果有偏差。
 
 > [!NOTE]
-> 若要收集浏览器指标, 必须通过[Application Insights JAVASCRIPT SDK 代码段](../../azure-monitor/app/javascript.md#add-the-sdk-script-to-your-app-or-web-pages)来检测你的应用程序。
+> 若要收集浏览器指标, 必须通过[Application Insights JAVASCRIPT SDK](../../azure-monitor/app/javascript.md)来检测你的应用程序。
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>浏览器页面加载时间 (browserTimings/totalDuration)
 
-|计量单位|支持的聚合|预聚合维度|
+|度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
-|毫秒|平均值、最小值、最大值|无|
+|毫秒|Average、Min、Max|无|
 
 ```Kusto
 browserTimings
@@ -113,9 +113,9 @@ browserTimings
 
 ### <a name="client-processing-time-browsertimingprocessingduration"></a>客户端处理时间 (browserTiming/processingDuration)
 
-|计量单位|支持的聚合|预聚合维度|
+|度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
-|毫秒|平均值、最小值、最大值|无|
+|毫秒|Average、Min、Max|None|
 
 ```Kusto
 browserTimings
@@ -129,9 +129,9 @@ browserTimings
 
 ### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>页面加载网络连接时间 (browserTimings/networkDuration)
 
-|计量单位|支持的聚合|预聚合维度|
+|度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
-|毫秒|平均值、最小值、最大值|无|
+|毫秒|Average、Min、Max|None|
 
 ```Kusto
 browserTimings
@@ -145,9 +145,9 @@ browserTimings
 
 ### <a name="receiving-response-time-browsertimingsreceiveduration"></a>接收响应时间 (browserTimings/receiveDuration)
 
-|计量单位|支持的聚合|预聚合维度|
+|度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
-|毫秒|平均值、最小值、最大值|无|
+|毫秒|Average、Min、Max|None|
 
 ```Kusto
 browserTimings
@@ -159,11 +159,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="send-request-time-browsertimingssendduration"></a>Send request time (browserTimings/sendDuration)
+### <a name="send-request-time-browsertimingssendduration"></a>发送请求时间 (browserTimings/sendDuration)
 
-|计量单位|支持的聚合|预聚合维度|
+|度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
-|毫秒|平均值、最小值、最大值|无|
+|毫秒|Average、Min、Max|None|
 
 ```Kusto
 browserTimings
@@ -175,17 +175,17 @@ browserTimings
 | render timechart
 ```
 
-## <a name="failure-metrics"></a>故障指标
+## <a name="failure-metrics"></a>失败指标
 
-**故障**中的指标显示处理请求、依赖项调用和引发的异常的问题。
+“失败”中的指标显示处理请求、依赖项调用的问题，以及引发的异常。
 
-### <a name="browser-exceptions-exceptionsbrowser"></a>浏览器异常 (异常/浏览器)
+### <a name="browser-exceptions-exceptionsbrowser"></a>浏览器异常数 (exceptions/browser)
 
-此指标反映在浏览器中运行的应用程序代码引发的异常的数量。 度量值仅包括使用```trackException()``` Application Insights API 调用跟踪的异常。
+此指标反映浏览器中运行的应用程序代码引发的异常数。 该指标仅包含使用 ```trackException()``` Application Insights API 调用跟踪的异常。
 
-|计量单位|支持的聚合|预聚合维度|说明|
+|度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|Count|Count|无|基于日志的版本使用**Sum**聚合|
+|Count|Count|无|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 exceptions
@@ -194,13 +194,13 @@ exceptions
 | render barchart
 ```
 
-### <a name="dependency-call-failures-dependenciesfailed"></a>依赖项调用失败 (依赖关系/失败)
+### <a name="dependency-call-failures-dependenciesfailed"></a>依赖项调用失败数 (dependencies/failed)
 
 失败的依赖项调用数。
 
-|计量单位|支持的聚合|预聚合维度|说明|
+|度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|Count|Count|无|基于日志的版本使用**Sum**聚合|
+|Count|Count|None|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 dependencies
@@ -209,13 +209,13 @@ dependencies
 | render barchart
 ```
 
-### <a name="exceptions-exceptionscount"></a>异常 (异常/计数)
+### <a name="exceptions-exceptionscount"></a>异常数 (exceptions/count)
 
-每次将异常记录到 Application Insights 时, 都会调用 SDK 的[trackException () 方法](../../azure-monitor/app/api-custom-events-metrics.md#trackexception)。 异常指标显示记录的异常的数量。
+每当你将异常记录到 Application Insights 时，都会调用 SDK 的 [trackException() 方法](../../azure-monitor/app/api-custom-events-metrics.md#trackexception)。 “异常数”指标显示记录的异常数。
 
-|计量单位|支持的聚合|预聚合维度|说明|
+|度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|Count|Count|云角色名称、云角色实例、设备类型|基于日志的版本使用**Sum**聚合|
+|Count|Count|云角色名称、云角色实例、设备类型|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 exceptions
@@ -225,11 +225,11 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>失败的请求数 (请求/失败)
 
-标记为*失败*的跟踪服务器请求的计数。 默认情况下, Application Insights SDK 会自动将返回 HTTP 响应代码5xx 或4xx 的每个服务器请求标记为失败的请求。 可以通过在[自定义遥测初始值设定](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)项中修改请求遥测项的*success*属性来自定义此逻辑。
+标记为失败的受跟踪服务器请求计数。 默认情况下，Application Insights SDK 会自动将返回 HTTP 响应代码 5xx 或 4xx 的每个服务器请求标记为失败的请求。 可以通过在[自定义遥测初始化表达式](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)中修改请求遥测项的 *success* 属性来自定义此逻辑。
 
-|计量单位|支持的聚合|预聚合维度|说明|
+|度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|Count|Count|云角色实例, 云角色名称, 实际或综合流量, 请求性能, 响应代码|基于日志的版本使用**Sum**聚合|
+|Count|Count|云角色实例、云角色名称、实际或综合流量、请求性能、响应代码|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 requests
@@ -238,13 +238,13 @@ requests
 | render barchart
 ```
 
-### <a name="server-exceptions-exceptionsserver"></a>服务器异常 (异常/服务器)
+### <a name="server-exceptions-exceptionsserver"></a>服务器异常数 (exceptions/server)
 
-此指标显示服务器异常的数目。
+此指标显示服务器异常数。
 
-|计量单位|支持的聚合|预聚合维度|说明|
+|度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|Count|Count|云角色名称、云角色实例|基于日志的版本使用**Sum**聚合|
+|Count|Count|云角色名称、云角色实例|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 exceptions
@@ -255,7 +255,7 @@ exceptions
 
 ## <a name="performance-counters"></a>性能计数器
 
-使用**性能计数器**类别中的度量值来访问[Application Insights 收集的系统性能计数器](../../azure-monitor/app/performance-counters.md)。
+使用“性能计数器”类别中的指标可以访问 [Application Insights 收集的系统性能计数器](../../azure-monitor/app/performance-counters.md)。
 
 ### <a name="available-memory-performancecountersavailablememory"></a>可用内存 (performanceCounters/availableMemory)
 
@@ -297,7 +297,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="http-requests-in-application-queue-performancecountersrequestsinqueue"></a>应用程序队列中的 HTTP 请求 (performanceCounters/requestsInQueue)
+### <a name="http-requests-in-application-queue-performancecountersrequestsinqueue"></a>应用程序队列中的 HTTP 请求数 (performanceCounters/requestsInQueue)
 
 ```Kusto
 performanceCounters
@@ -309,11 +309,11 @@ performanceCounters
 
 ### <a name="process-cpu-performancecountersprocesscpupercentage"></a>进程 CPU (performanceCounters/processCpuPercentage)
 
-指标显示托管应用的进程所消耗的总处理器容量。
+该指标显示托管受监视应用的进程消耗的处理器总容量。
 
-|计量单位|支持的聚合|支持的维度|
+|度量单位|支持的聚合|支持的维度|
 |---|---|---|
-|百分比|平均值、最小值、最大值|云角色实例
+|百分比|Average、Min、Max|云角色实例
 
 ```Kusto
 performanceCounters
@@ -325,9 +325,9 @@ performanceCounters
 
 ### <a name="process-io-rate-performancecountersprocessiobytespersecond"></a>进程 IO 速率 (performanceCounters/processIOBytesPerSecond)
 
-|计量单位|支持的聚合|支持的维度|
+|度量单位|支持的聚合|支持的维度|
 |---|---|---|
-|每秒字节数|平均值、最小值、最大值|云角色实例
+|每秒字节数|Average、Min、Max|云角色实例
 
 ```Kusto
 performanceCounters
@@ -337,13 +337,13 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-private-bytes-performancecountersprocessprivatebytes"></a>处理专用字节数 (performanceCounters/processPrivateBytes)
+### <a name="process-private-bytes-performancecountersprocessprivatebytes"></a>进程专用字节数 (performanceCounters/processPrivateBytes)
 
-监视的进程为其数据分配的非共享内存量。
+受监视进程为其数据分配的非共享内存量。
 
-|计量单位|支持的聚合|支持的维度|
+|度量单位|支持的聚合|支持的维度|
 |---|---|---|
-|字节|平均值、最小值、最大值|云角色实例
+|字节|Average、Min、Max|云角色实例
 
 ```Kusto
 performanceCounters
@@ -355,14 +355,14 @@ performanceCounters
 
 ### <a name="processor-time-performancecountersprocessorcpupercentage"></a>处理器时间 (performanceCounters/processorCpuPercentage)
 
-监视的服务器实例上运行的*所有*进程的 CPU 使用率。
+受监视服务器实例上运行的所有进程的 CPU 消耗量。
 
-|计量单位|支持的聚合|支持的维度|
+|度量单位|支持的聚合|支持的维度|
 |---|---|---|
-|百分比|平均值、最小值、最大值|云角色实例
+|百分比|Average、Min、Max|云角色实例
 
 >[!NOTE]
-> 处理器时间指标不适用于 Azure 应用服务中托管的应用程序。 使用[进程 CPU](#process-cpu-performancecountersprocesscpupercentage)指标跟踪应用服务中托管的 web 应用程序的 CPU 使用率。
+> 处理器时间指标不适用于 Azure 应用服务中托管的应用程序。 使用 [进程 CPU](#process-cpu-performancecountersprocesscpupercentage) 指标可以跟踪应用服务中托管的 Web 应用程序的 CPU 利用率。
 
 ```Kusto
 performanceCounters
@@ -374,9 +374,9 @@ performanceCounters
 
 ## <a name="server-metrics"></a>服务器指标
 
-### <a name="dependency-calls-dependenciescount"></a>依赖项调用 (依赖项/计数)
+### <a name="dependency-calls-dependenciescount"></a>依赖项调用数 (dependencies/count)
 
-此指标与依赖项调用的数目有关。
+此指标与依赖项调用数相关。
 
 ```Kusto
 dependencies
@@ -384,7 +384,7 @@ dependencies
 | render barchart
 ```
 
-### <a name="dependency-duration-dependenciesduration"></a>依赖项持续时间 (依赖项/持续时间)
+### <a name="dependency-duration-dependenciesduration"></a>依赖项持续时间 (dependencies/duration)
 
 此指标是指依赖项调用的持续时间。
 
@@ -399,9 +399,9 @@ dependencies
 | render timechart
 ```
 
-### <a name="server-requests-requestscount"></a>服务器请求数 (请求数/计数)
+### <a name="server-requests-requestscount"></a>服务器请求数 (requests/count)
 
-此指标反映了你的 web 应用程序收到的传入服务器请求数。
+此指标反映 Web 应用程序收到的传入服务器请求数。
 
 ```Kusto
 requests
@@ -409,9 +409,9 @@ requests
 | render barchart
 ```
 
-### <a name="server-response-time-requestsduration"></a>服务器响应时间 (请求/持续时间)
+### <a name="server-response-time-requestsduration"></a>服务器响应时间 (requests/duration)
 
-此指标反映了服务器处理传入请求所需的时间。
+此指标反映服务器处理传入请求所花费的时间。
 
 ```Kusto
 requests
@@ -426,9 +426,9 @@ requests
 
 ## <a name="usage-metrics"></a>使用指标
 
-### <a name="page-view-load-time-pageviewsduration"></a>页面视图加载时间 (pageViews/duration)
+### <a name="page-view-load-time-pageviewsduration"></a>页面查看次数加载时间 (pageViews/duration)
 
-此指标是指加载 PageView 事件所花的时间量。
+此指标是指加载 PageView 事件所花费的时间。
 
 ```Kusto
 pageViews
@@ -441,9 +441,9 @@ pageViews
 | render barchart
 ```
 
-### <a name="page-views-pageviewscount"></a>页面视图 (pageViews/count)
+### <a name="page-views-pageviewscount"></a>页面查看次数 (pageViews/count)
 
-通过 TrackPageView () Application Insights API 记录的 PageView 事件的计数。
+使用 TrackPageView () Application Insights API 记录的 PageView 事件计数。
 
 ```Kusto
 pageViews
@@ -451,9 +451,9 @@ pageViews
 | render barchart
 ```
 
-### <a name="sessions-sessionscount"></a>会话 (会话数/计数)
+### <a name="sessions-sessionscount"></a>会话数 (sessions/count)
 
-此指标是指不同会话 Id 的计数。
+此指标是指不同会话 ID 的计数。
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings
@@ -462,9 +462,9 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | render barchart
 ```
 
-### <a name="traces-tracescount"></a>跟踪 (跟踪/计数)
+### <a name="traces-tracescount"></a>跟踪数 (traces/count)
 
-通过 TrackTrace () Application Insights API 调用记录的跟踪语句的计数。
+使用 TrackTrace () Application Insights API 调用记录的跟踪语句计数。
 
 ```Kusto
 traces
@@ -472,9 +472,9 @@ traces
 | render barchart
 ```
 
-### <a name="users-userscount"></a>用户 (用户/计数)
+### <a name="users-userscount"></a>用户数 (users/count)
 
-访问应用程序的不同用户的数量。 使用遥测采样和筛选可能会显著影响此指标的准确性。
+访问应用程序的不同用户的数目。 使用遥测采样和筛选可能会显著影响此指标的准确性。
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings
@@ -483,9 +483,9 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | render barchart
 ```
 
-### <a name="users-authenticated-usersauthenticated"></a>经过身份验证的用户 (用户/身份验证)
+### <a name="users-authenticated-usersauthenticated"></a>经过身份验证的用户数 (users/authenticated)
 
-在应用程序中进行身份验证的不同用户的数量。
+在应用程序中进行身份验证的不同用户的数目。
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings

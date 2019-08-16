@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a334b19fe4dd819a6e4c391e49d934bf5955a567
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516063"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541429"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -172,7 +172,7 @@ GPT 分区仅可在数据磁盘上使用，而不可在操作系统磁盘上使�
 不能, 仅支持将专用磁盘作为数据磁盘, 并且仅支持为4K 本地磁盘。
 
 **是否可以将现有磁盘转换为超磁盘？**
-不可以, 但你可以将日期从现有磁盘迁移到超磁盘。 若要将现有磁盘迁移到超磁盘, 请将这两个磁盘附加到同一个 VM, 并将磁盘的数据从一个磁盘复制到另一个磁盘或利用第三方解决方案进行数据迁移。
+不可以, 但你可以将数据从现有磁盘迁移到超磁盘。 若要将现有磁盘迁移到超磁盘, 请将这两个磁盘附加到同一个 VM, 并将磁盘的数据从一个磁盘复制到另一个磁盘或利用第三方解决方案进行数据迁移。
 
 **能否为超磁盘创建快照？**
 不, 快照尚不可用。

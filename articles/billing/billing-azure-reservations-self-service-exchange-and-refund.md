@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 5e38684500520d4565835456b94200aea399c938
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814111"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543022"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预订的自助服务交换和退款
 
@@ -60,11 +60,6 @@ Azure 预订提供了灵活性, 有助于满足不断发展的需求。 可以�
 
 Azure 具有以下用于取消、交换和退款的策略。
 
-**取消策略**
-
-- 如果取消预留, 可能会提前终止 12%。
-- 你为取消而收到的退款是余额提前的余额减去 12% 的提前终止费。 若要取消, 请跳到 Azure 门户中的预订, 然后选择 "**退款**"。
-
 **Exchange 策略**
 
 - 可以返回多个现有保留来购买同一类型的新预订。 不能为另一种类型交换保留。 例如, 你不能返回 VM 预留来购买 SQL 保留。
@@ -77,10 +72,12 @@ Azure 具有以下用于取消、交换和退款的策略。
 - 交换没有惩罚或年度限制。
 
 **退款策略**
+- 如果取消预留, 可能会提前终止 12%。
+- 你为取消而收到的退款是余额提前的余额减去 12% 的提前终止费。 若要取消, 请跳到 Azure 门户中的预订, 然后选择 "**退款**"。
 - 在12个月的滚动窗口中, 总退款金额不能超过 $50000 美元。
 - 根据购买价格的最低价格或预订的当前价格计算退款。
 - 只有预订所有者才能处理退款。 [了解如何添加或更改可以管理预订的用户](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
-- 尽管惩罚目前并未收费, 但 Microsoft 仍保留对任何退货收取 12% 损失的权利。
+- Microsoft 保留在任何退货中收取 12% 损失的权利。 此处罚目前并未收费, 但会在将来收费。
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>适用于高级存储的 Exchange 非高级存储
 

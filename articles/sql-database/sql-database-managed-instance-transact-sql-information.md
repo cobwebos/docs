@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1581a62f0999cf502feaad31d2c884f4d171e770
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 44b98b55bfa2d0424831f6cf612f66dbcdc8a6d9
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019659"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543691"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 
@@ -339,9 +339,9 @@ WITH PRIVATE KEY (<private_key_options>)
 
 托管实例不支持 SQL Server 中启用的未记录 DBCC 语句。
 
-- 不支持 `Trace flags`。 请参阅[跟踪标志](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql)。
-- 不支持 `DBCC TRACEOFF`。 请参阅 [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql)。
-- 不支持 `DBCC TRACEON`。 请参阅 [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql)。
+- 仅支持有限数量的全局`Trace flags` 。 不支持会话`Trace flags`级别。 请参阅[跟踪标志](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql)。
+- [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql)和[dbcc TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql)使用有限数量的全局跟踪标志。
+- 无法使用带有选项 REPAIR_ALLOW_DATA_LOSS、REPAIR_FAST 和 REPAIR_REBUILD 的[DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) , 因为无法在模式中`SINGLE_USER`设置数据库-请参阅[ALTER database 差异](#alter-database-statement)。 潜在的数据库损坏由 Azure 支持团队处理。 如果你注意到应修复的数据库损坏, 请联系 Azure 支持。
 
 ### <a name="distributed-transactions"></a>分布式事务
 

@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 1d9fc20055fe3adb571b5a77330cc6537998cb5f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688319"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534470"
 ---
 # <a name="immersive-reader-sdk-reference"></a>沉浸式读者 SDK 参考
 
@@ -71,8 +71,9 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 | MIME 类型 | 描述 |
 | --------- | ----------- |
-| 文本/无格式 | 纯文本。 |
+| text/plain | 纯文本。 |
 | application/mathml+xml | 数学标记语言 (MathML)。 [了解详细信息](https://developer.mozilla.org/en-US/docs/Web/MathML)。
+| application/vnd.apple.mpegurl. vnd.openxmlformats-officedocument.spreadsheetml.sheet. wordprocessingml | Microsoft Word .docx 格式的文档。
 
 ### <a name="options"></a>选项
 
@@ -104,7 +105,8 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | ---- | ----------- |
 | BadArgument | 提供的参数无效, 有关`message`详细信息, 请参阅。 |
 | 超时 | 沉浸式读取器无法在指定的超时内加载。 |
-| TokenExpired| 提供的令牌已过期。 |
+| TokenExpired | 提供的令牌已过期。 |
+| 已终止 | 超出了调用速率限制。 |
 
 ## <a name="launching-the-immersive-reader"></a>启动沉浸式阅读器
 

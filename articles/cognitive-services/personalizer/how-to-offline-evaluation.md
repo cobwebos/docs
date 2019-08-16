@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f14403422e2c783d75634bb929d8c2130bd505b6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a8a75601daf36ca21ea56a5930219d7d467f0c85
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663876"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557821"
 ---
 # <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>如何使用脱机评估分析学习循环
 
@@ -30,9 +30,9 @@ ms.locfileid: "68663876"
 ## <a name="prerequisites"></a>先决条件
 
 1. 必须配置了一个个性化体验创建服务循环
-1. 个性化体验创建服务循环日志中必须至少包含 50,000 个事件，这样才能生成有意义的评估结果。
+1. Personalizer 循环必须具有包含一定数量的数据-作为大概, 我们在其日志中 recommmend 至少50000事件, 以获得有意义的评估结果。
 
-（可选）还可以事先导出学习策略文件，以便在同一项评估中进行比较和测试。 
+（可选）还可以事先导出学习策略文件，以便在同一项评估中进行比较和测试。
 
 ## <a name="steps-to-start-a-new-offline-evaluation"></a>启动新脱机评估的步骤
 

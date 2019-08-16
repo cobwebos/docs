@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 025e45b86fa3a6020652ae9756ceace5b51daa55
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d2d52d2faf9122b7dc87f71ac7b1be53eaa99878
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516199"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534982"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>使用 Azure 前门服务的 web 应用程序防火墙配置 IP 限制规则
 本文介绍如何使用 Azure CLI、Azure PowerShell 或 Azure 资源管理器模板在 web 应用程序防火墙 (WAF) 中为 Azure 前门服务配置 IP 限制规则。
@@ -56,7 +56,7 @@ az network front-door waf-policy create \
 -  将*IPAllowPolicyExampleCLI*替换为前面创建的唯一策略。
 -  将*ip*地址范围-1 替换为你自己的范围。
 
-首先, 为在上一步中创建的策略创建 IP 允许规则。 请注意 **--需要延迟**, 因为规则必须具有匹配条件才能在下一步中添加。
+首先, 为在上一步中创建的策略创建 IP 允许规则。 注意 **--** 要求使用延迟, 因为规则必须至少包含一个匹配条件。 
 
 ```azurecli
 az network front-door waf-policy rule create \

@@ -9,12 +9,12 @@ ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7296760a177b949d2f921e11b28105ca6eb67fee
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 892076954535d880f9081a269215cb7e2a0a8dce
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036288"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541858"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio 2019 开发和调试适用于 Azure IoT Edge 的模块
 
@@ -99,19 +99,19 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
    ![创建新项目](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. 在“添加 IoT Edge 应用程序和模块”窗口中，选择“C# 模块”或“C 模块”，然后指定模块名称和模块映像存储库。 Visual Studio 使用“localhost:5000/<模块名\>自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器类似于  **_\<注册表名称\>_ . azurecr.io**。 仅替换字符串中的**localhost: 5000**部分, 使最终结果看起来像 **\<*注册表名称*\>。 azurecr.io/ _\<您的模块名称\>_** 。 默认的模块名称为 IoTEdgeModule1
+1. 在“添加 IoT Edge 应用程序和模块”窗口中，选择“C# 模块”或“C 模块”，然后指定模块名称和模块映像存储库。 Visual Studio 使用“localhost:5000/<模块名\>自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器类似于  **_\<注册表名称\>_ . azurecr.io**。 仅替换字符串中的**localhost: 5000**部分, 使最终结果看起来像 **\<*注册表名称*\>。 azurecr.io/ _\<您的模块名称\>_** 。 默认模块名称为**IotEdgeModule1**
 
    ![添加应用程序和模块](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
 1. 选择“确定”创建包含使用 C# 或 C 的模块的 Azure IoT Edge 解决方案。
 
-现在，解决方案中已有 **AzureIoTEdgeApp1.Linux.Amd64** 项目或 **AzureIoTEdgeApp1.Windows.Amd64** 项目，还有 **IoTEdgeModule1** 项目。 每个 **AzureIoTEdgeApp1** 项目包含一个 `deployment.template.json` 文件，此文件定义了要为 IoT Edge 解决方案生成和部署的模块，并定义了模块之间的路由。 默认解决方案具有**SimulatedTemperatureSensor**模块和**IoTEdgeModule1**模块。 **SimulatedTemperatureSensor**模块将模拟数据生成到**IoTEdgeModule1**模块, 而**IoTEdgeModule1**模块中的默认代码直接传输消息到 Azure IoT 中心。
+现在, 你已经有了**AzureIoTEdgeApp1**项目或**AzureIoTEdgeApp1**项目, 并且还在解决方案中创建了一个**IotEdgeModule1**项目。 每个 **AzureIoTEdgeApp1** 项目包含一个 `deployment.template.json` 文件，此文件定义了要为 IoT Edge 解决方案生成和部署的模块，并定义了模块之间的路由。 默认解决方案具有**tempSensor**模块和**IotEdgeModule1**模块。 **TempSensor**模块将模拟数据生成到**IotEdgeModule1**模块, 而**IotEdgeModule1**模块中的默认代码直接传输消息到 Azure IoT 中心。
 
-**IoTEdgeModule1** 项目是一个 .NET Core 2.1 控制台应用程序（如果它是 C# 模块）。 它包含 IoT Edge 设备通过 Windows 容器或 Linux 容器运行时所需的 Docker 文件。 `module.json` 文件描述模块的元数据。 在 `Program.cs` 或 `main.c` 文件中可以找到将 Azure IoT 设备 SDK 用作依赖项的实际模块代码。
+如果是C#模块, 则 IotEdgeModule1 项目是 .net Core 2.1 控制台应用程序。 它包含 IoT Edge 设备通过 Windows 容器或 Linux 容器运行时所需的 Docker 文件。 `module.json` 文件描述模块的元数据。 在 `Program.cs` 或 `main.c` 文件中可以找到将 Azure IoT 设备 SDK 用作依赖项的实际模块代码。
 
 ## <a name="develop-your-module"></a>开发模块
 
-解决方案附带的默认模块代码位于 **IoTEdgeModule1** > **Program.cs** (C#) 或 **main.c** (C) 中。 将设置模块和 `deployment.template.json` 文件，使你能够生成解决方案，将其推送到容器注册表，然后部署到设备以开始测试，而无需修改任何代码。 生成模块是为了从源 (在本例中为模拟数据的**SimulatedTemperatureSensor**模块) 输入数据并将其传递给 Azure IoT 中心。
+解决方案附带的默认模块代码位于**IotEdgeModule1** > **Program.cs** (对于C#) 或**main. c** (c)。 将设置模块和 `deployment.template.json` 文件，使你能够生成解决方案，将其推送到容器注册表，然后部署到设备以开始测试，而无需修改任何代码。 生成该模块仅为简单从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 Azure IoT 中心。
 
 准备好使用自己的代码自定义模块模板时，请使用 [Azure IoT 中心 SDK](../iot-hub/iot-hub-devguide-sdks.md) 生成模块，以解决 IoT 解决方案的关键需求，例如安全性、设备管理和可靠性。
 
@@ -134,7 +134,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
 通常，需要先测试和调试每个模块，然后再在具有多个模块的整个解决方案中运行此模块。
 
-1. 右键单击“IoTEdgeModule1”并从上下文菜单中选择“设为启动项目”。
+1. 右键单击**IotEdgeModule1** , 然后从上下文菜单中选择 "**设为启动项目**"。
 
    ![设置启动项目](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
@@ -165,16 +165,16 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
 开发完单个模块之后，需要运行并调试具有多个模块的整个解决方案。
 
-1. 右键单击“AzureIoTEdgeApp1”并选择“添加” > “新 IoT Edge 模块”，向解决方案添加另一个模块。 第二个模块的默认名称为 IoTEdgeModule2，用于充当另一个管道模块。
+1. 右键单击“AzureIoTEdgeApp1”并选择“添加” > “新 IoT Edge 模块”，向解决方案添加另一个模块。 第二个模块的默认名称为**IotEdgeModule2** , 它将作为另一个管道模块。
 
-1. 打开文件 `deployment.template.json`，会看到 IoTEdgeModule2 已添加到“模块”部分中。 将 routes 部分替换为以下内容。 如果自定义了模块名，请确保更新这些名称以匹配模块名。
+1. 打开该文件`deployment.template.json` , 你将看到**IotEdgeModule2**已添加到 "**模块**" 部分。 将 routes 部分替换为以下内容。 如果自定义了模块名，请确保更新这些名称以匹配模块名。
 
     ```json
         "routes": {
-          "IoTEdgeModule1ToIoTHub": "FROM /messages/modules/IoTEdgeModule1/outputs/* INTO $upstream",
-          "sensorToIoTEdgeModule1": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule1/inputs/input1\")",
-          "IoTEdgeModule2ToIoTHub": "FROM /messages/modules/IoTEdgeModule2/outputs/* INTO $upstream",
-          "sensorToIoTEdgeModule2": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule2/inputs/input1\")"
+          "IotEdgeModule1ToIoTHub": "FROM /messages/modules/IotEdgeModule1/outputs/* INTO $upstream",
+          "sensorToIotEdgeModule1": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule1/inputs/input1\")",
+          "IotEdgeModule2ToIoTHub": "FROM /messages/modules/IotEdgeModule2/outputs/* INTO $upstream",
+          "sensorToIotEdgeModule2": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule2/inputs/input1\")"
         },
     ```
 
@@ -232,7 +232,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
    > [!NOTE]
    > 不得选择 `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json`
 
-1. 单击 "刷新" 按钮, 查看随**SimulatedTemperatureSensor**模块一起运行的新模块, 并 **$edgeAgent**和 **$edgeHub**。
+1. 单击 "刷新" 按钮, 查看随**tempSensor**模块一起运行的新模块, 并 **$edgeAgent**和 **$edgeHub**。
 
 ## <a name="view-generated-data"></a>查看生成的数据
 

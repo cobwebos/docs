@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 9d973cb2ac210e912d93941a2f81889557379f43
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 032a907e45e007cb51357300e4bbf3c7afb40dde
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67625979"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542880"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装和使用 Istio
 
@@ -40,7 +40,9 @@ ms.locfileid: "67625979"
 
 本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.11` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。
 
-需要使用 [Helm][helm] 按照这些说明安装 Istio。 建议在群集中正确安装并配置版本 `2.12.2` 或更高版本。 安装 Helm 时如需帮助，请参阅 [AKS Helm 安装指南][helm-install]。 还必须计划在 Linux 节点上运行所有 Istio。
+需要使用 [Helm][helm] 按照这些说明安装 Istio。 建议在群集中正确安装并配置版本 `2.12.2` 或更高版本。 安装 Helm 时如需帮助，请参阅 [AKS Helm 安装指南][helm-install]。 所有 Istio Pod 也必须按计划在 Linux 节点上运行。
+
+请确保已阅读[Istio 性能和可扩展性](https://istio.io/docs/concepts/performance-and-scalability/)文档, 以了解在 AKS 群集中运行 Istio 所需的其他资源要求。 核心和内存要求将因你的特定工作负荷而异。 选择适当数量的节点和 VM 大小, 以适合您的设置。
 
 本文将 Istio 安装指南分为多个独立步骤。 最终结果的结构与官方 Istio 安装[指南][istio-install-helm]相同。
 
@@ -152,7 +154,7 @@ echo "source ~/completions/istioctl.bash" >> ~/.bashrc
 
 ### <a name="windows"></a>Windows
 
-若要在 Windows 上的基于 **Powershell** 的 shell 中安装 Istio `istioctl` 客户端二进制文件，请使用以下命令。 这些命令将`istioctl`客户端二进制文件复制到 Istio 文件夹中, 然后通过将`PATH`其立即用于 (在当前 shell 中) 和永久 (跨 shell 重启)。 运行这些命令不需要提升的 (管理员) 权限, 并且无需重新启动 shell。
+若要在 Windows 上的基于 **Powershell** 的 shell 中安装 Istio `istioctl` 客户端二进制文件，请使用以下命令。 这些命令可将 `istioctl` 客户端二进制文件复制到某个 Istio 文件夹，然后你就可以通过 `PATH` 将其设置为立即可用（在当前 shell 中）或永久可用（跨 shell 重启）。 不需要提升的（管理员）特权即可运行这些命令，不需重启 shell。
 
 ```powershell
 # Copy istioctl.exe to C:\Istio
@@ -345,7 +347,7 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
 `istio` Helm 图表会部署大量的对象。 上述 `helm install` 命令的输出会显示对象列表。 部署 Istio 组件可能需要 4 到 5 分钟才能完成，具体取决于群集环境。
 
 > [!NOTE]
-> 必须将所有 Istio pod 计划为在 Linux 节点上运行。 如果你有 Windows Server 节点池以及群集上的 Linux 节点池, 请验证是否已将所有 Istio pod 计划在 Linux 节点上运行。
+> 所有 Istio Pod 必须按计划在 Linux 节点上运行。 如果群集上除了 Linux 节点池还有 Windows Server 节点池，请验证所有 Istio Pod 是否已计划在 Linux 节点上运行。
 
 此时，已将 Istio 部署到 AKS 群集。 为确保成功部署 Istio，让我们转到[验证 Istio 安装](#validate-the-istio-installation)部分。
 
@@ -543,7 +545,7 @@ kubectl get crds -o name | Select-String -Pattern 'istio.io' |% { kubectl delete
 
 也可以使用 [Istio Bookinfo 应用程序示例][istio-bookinfo-example]关注其他方案。
 
-若要了解如何使用 Application Insights 和 Istio 监视 AKS 应用程序, 请参阅下面的 Azure Monitor 文档:
+若要了解如何使用 Application Insights 和 Istio 来监视 AKS 应用程序，请参阅以下 Azure Monitor 文档：
 - [Kubernetes 托管应用程序的零检测应用程序监视][app-insights]
 
 <!-- LINKS - external -->

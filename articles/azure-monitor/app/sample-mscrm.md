@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 6119f1116d255f7cd2a2bfc20e86eeca9e5dfe82
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 470f723782ca29409549e0df8e900edf86cd446e
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60523488"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534292"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>演练：使用 Application Insights 为 Microsoft Dynamics CRM Online 启用遥测
 本文演示如何使用 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 从 [Microsoft Dynamics CRM Online](https://www.dynamics.com/) 获取遥测数据。 我们将引导完成向应用程序添加 Application Insights 脚本、捕获数据和数据可视化的完整过程。
@@ -38,7 +38,7 @@ ms.locfileid: "60523488"
     ![依次单击“+”、“开发人员服务”、“Application Insights”。](./media/sample-mscrm/01.png)
 
     选择 ASP.NET 作为应用程序类型。
-3. 按照说明[获取应用的 JavaScript SDK 脚本](../../azure-monitor/app/javascript.md#set-up-application-insights-for-your-web-page)，复制 JavaScript 代码片段并确保将检测密钥替换为 Application Insights 资源的正确值。
+3. 按照说明[获取应用的 JavaScript SDK 脚本](../../azure-monitor/app/javascript.md)，复制 JavaScript 代码片段并确保将检测密钥替换为 Application Insights 资源的正确值。
 
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>在 Microsoft Dynamics CRM 中创建 JavaScript Web 资源
 1. 打开 CRM Online 实例并使用管理员特权登录。
@@ -52,7 +52,7 @@ ms.locfileid: "60523488"
 
     ![“新建 Web 资源”对话框](./media/sample-mscrm/07.png)
 
-    为它指定名称、选择“脚本 (JScript)”  ，并打开文本编辑器。
+    为它指定名称、选择“脚本 (JScript)”，并打开文本编辑器。
 
     ![打开文本编辑器](./media/sample-mscrm/00004.png)
 2. 从之前已配置检测密钥的 Application Insights JavaScript SDK 复制代码。 复制时，请确保忽略脚本标记。 请参阅以下屏幕截图：
@@ -95,7 +95,7 @@ ms.locfileid: "60523488"
 
 ![异常列表](./media/sample-mscrm/18.png)
 
-#### <a name="usage"></a>使用情况
+#### <a name="usage"></a>用法
 ![用户、会话和页面视图](./media/sample-mscrm/19.png)
 
 ![会话图表](./media/sample-mscrm/20.png)
@@ -123,7 +123,7 @@ ms.locfileid: "60523488"
 
 ![每个会话的页面数](./media/sample-mscrm/30.png)
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 [浏览示例代码](https://dynamicsandappinsights.codeplex.com/)。
 
 ## <a name="power-bi"></a>Power BI
@@ -132,7 +132,7 @@ ms.locfileid: "60523488"
 ## <a name="sample-microsoft-dynamics-crm-solution"></a>Microsoft Dynamics CRM 解决方案示例
 [此处是在 Microsoft Dynamics CRM 中实现的示例解决方案](https://dynamicsandappinsights.codeplex.com/)。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解详情
 * [什么是 Application Insights？](../../azure-monitor/app/app-insights-overview.md)
 * [适用于网页的 Application Insights](../../azure-monitor/app/javascript.md)
 * [更多示例和演练](../../azure-monitor/app/app-insights-overview.md)

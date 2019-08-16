@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: cfffc29a467a89416964564b9c55a73cbf77377d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8d90d71b8d29d26f09ef617ddd56ce91eb4e5e2e
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601299"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541431"
 ---
 本部分提供了有关先前几代虚拟机大小的信息。 这些大小仍可使用，但有新的大小可供使用。 
 
@@ -55,36 +55,13 @@ ACU：210 - 250
 | Standard_F8s |8 |16 |32 |32 |32000 / 256 (96) |25600 / 384 |8 / 6000 |
 | Standard_F16s |16 |32 |64 |64 |64000 / 512 (192) |51200 / 768 |8 / 12000 |
 
-MBps = 每秒 10^6 字节，GiB = 1024^3 字节。
+Mbps = 每秒 10^6 字节，GiB = 1024^3 字节。
 
 <sup>1</sup> Fs 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)。  
 
-## <a name="ls-series"></a>Ls 系列
+## <a name="nvv2-series"></a>NVv2 系列
 
-Ls-系列提供多达 32 个 vCPU，使用的是 [Intel® Xeon® 处理器 E5 v3 系列](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)。 Ls 系列与 G/GS-系列拥有相同的 CPU 性能，并且每个 vCPU 附带 8 GiB 内存。
-
-Ls 系列不支持创建本地缓存以增加持久数据磁盘可实现的 IOPS。 本地磁盘的高吞吐量和 IOPS 使 Ls 系列 Vm 非常适合于 NoSQL 存储, 例如 Apache Cassandra 和 MongoDB, 可跨多个 Vm 复制数据, 从而在单个 VM 发生故障时保持持久性。
-
-ACU：180-240
-
-高级存储：支持
-
-高级存储缓存：不受支持
- 
-| Size          | vCPU | 内存 (GiB) | 临时存储 (GiB) | 最大数据磁盘数 | 临时存储的最大吞吐量 (IOPS / MBps) | 非缓存磁盘的最大吞吐量 (IOPS / MBps) | 最大 NIC 数/预期网络带宽 (Mbps) | 
-|----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
-| Standard_L4s   | 4  | 32  | 678   | 16 | 20000 / 200 | 5000 / 125  | 2 / 4000  | 
-| Standard_L8s   | 8  | 64  | 1388 | 32 | 40000 / 400 | 10000 / 250 | 4 / 8000  | 
-| Standard_L16s  | 16 | 128 | 2807 | 64 | 80000 / 800 | 20000 / 500 | 8 / 16000 | 
-| Standard_L32s&nbsp;<sup>1</sup> | 32   | 256  | 5630 | 64   | 160000/1600   | 40000 / 1000     | 8 / 20000 | 
-
-Ls 系列 VM 可能的最大磁盘吞吐量可能受限于任何附加磁盘的数量、大小和条带化。 有关详细信息，请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)。
-
-<sup>1</sup> 实例对于专用于单个客户的硬件独立。
-
-## <a name="nvv2-series-preview"></a>NVv2 系列（预览版）
-
-**更新的大小建议**：[NVv3 系列 (预览)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
+**更新的大小建议**：[NVv3 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series-preview-1)
 
 NVv2 系列虚拟机采用 Intel Broadwell CPU，由 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 NVIDIA GRID 技术提供支持。 此类虚拟机面向 GPU 加速图形应用程序和虚拟桌面，客户希望利用这些应用和桌面直观呈现数据、模拟要查看的结果、处理 CAD 或渲染和流式处理内容。 此外，这些虚拟机还能运行编码和渲染等单精度工作负荷。 NVv2 虚拟机支持高级存储，且与之前的 NV 系列相比，系统内存 (RAM) 翻了一番。  
 
@@ -95,13 +72,3 @@ NVv2 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可
 | Standard_NV6s_v2 |6 |112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
 | Standard_NV12s_v2 |12 |224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
 | Standard_NV24s_v2 |24 |448 |1280 | 4 | 32 | 32 | 8 | 4 | 100 |
-
-### <a name="standard-a0---a4-using-cli-and-powershell"></a>使用 CLI 和 PowerShell 的标准 A0 - A4
-
-在经典部署模型中，CLI 和 PowerShell 中的一些 VM 大小名称略有不同：
-
-* Standard_A0 是特小型
-* Standard_A1 是小型
-* Standard_A2 是中型
-* Standard_A3 是大型
-* Standard_A4 是超大型

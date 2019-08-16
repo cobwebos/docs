@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 6cbddfc5e529bc48e08407796024e5232d1a22e8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 134302bffdadc27cf202a43e7dc4cc94704bb5b3
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966367"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557862"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -33,7 +33,7 @@ ms.locfileid: "68966367"
 
 具体而言，此 Teradata 连接器支持：
 
-- Teradata**版本14.10、15.0、15.10、16.0、16.10 和 16.20**。
+- Teradata **版本 14.10、15.0、15.10、16.0、16.10 和 16.20**。
 - 使用**基本**或**Windows**身份验证复制数据。
 - 从 Teradata 源进行并行复制。 有关详细信息, 请参阅[从 Teradata 并行复制](#parallel-copy-from-teradata)部分。
 
@@ -49,7 +49,7 @@ ms.locfileid: "68966367"
 
 对于早于3.18 的任何自承载集成运行时版本, 请在集成运行时计算机上安装[Teradata 的 .Net Data Provider for](https://go.microsoft.com/fwlink/?LinkId=278886)14 或更高版本。 
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -64,7 +64,7 @@ Teradata 链接服务支持以下属性:
 | type | Type 属性必须设置为**Teradata**。 | 是 |
 | connectionString | 指定连接到 Teradata 数据库实例所需的信息。 请参阅以下示例。<br/>你还可以将密码放在 Azure Key Vault 中, 并将`password`配置从连接字符串中提取出来。 有关更多详细信息, 请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
 | username | 指定连接到 Teradata 数据库的用户名。 当使用 Windows 身份验证时适用。 | 否 |
-| password | 指定为 "用户名" 指定的用户帐户的密码。 你还可以选择[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 <br>当使用 Windows 身份验证或在 Key Vault 中引用密码进行基本身份验证时适用。 | 否 |
+| password | 指定为用户名指定的用户帐户的密码。 此外，还可以选择[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 <br>当使用 Windows 身份验证或在 Key Vault 中引用密码进行基本身份验证时适用。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |是 |
 
 **使用基本身份验证的示例**
@@ -137,13 +137,13 @@ Teradata 链接服务支持以下属性:
 
 本部分提供 Teradata 数据集支持的属性列表。 有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)。
 
-若要从 Teradata 复制数据, 支持以下属性:
+从 Teradata 复制数据时，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为`TeradataTable`。 | 是 |
 | database | Teradata 数据库的名称。 | 否（如果指定了活动源中的“query”） |
-| table | Teradata 数据库中的表的名称。 | 否（如果指定了活动源中的“query”） |
+| 表 | Teradata 数据库中的表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例：**
 
@@ -191,16 +191,16 @@ Teradata 链接服务支持以下属性:
 >[!TIP]
 >若要通过使用数据分区有效地从 Teradata 加载数据, 请参阅[并行复制 From Teradata](#parallel-copy-from-teradata)部分。
 
-若要从 Teradata 复制数据, 复制活动**源**部分支持以下属性:
+从 Teradata 复制数据时，复制活动的 **source** 节支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为`TeradataSource`。 | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时, 需要在查询中挂接任何对应的内置分区参数。 有关示例, 请参阅[从 Teradata 并行复制](#parallel-copy-from-teradata)部分。 | 否 (如果指定了数据集中的表) |
-| partitionOptions | 指定用于从 Teradata 加载数据的数据分区选项。 <br>允许值为:**无**(默认值)、**哈希**和**DynamicRange**。<br>启用`None`分区选项后, 还会在复制活动上[`parallelCopies`](copy-activity-performance.md#parallel-copy)配置设置。 这将确定并行加载 Teradata 数据库中的数据的并行度。 例如, 你可以将此设置为4。 | 否 |
-| partitionSettings | 指定数据分区设置的组。 <br>当 partition 选项不`None`为时应用。 | 否 |
-| partitionColumnName | 指定**整数类型**的源列名称, 将由范围分区用于并行复制。 如果未指定此参数, 则将自动检测该表的主键, 并将其用作分区列。 <br>当 partition 选项为`Hash`或`DynamicRange`时应用。 如果使用查询来检索源数据, 请在 where 子句`?AdfHashPartitionCondition`中`?AdfRangePartitionColumnName`使用挂钩或。 请参阅[并行复制 From Teradata](#parallel-copy-from-teradata)部分中的示例。 | 否 |
-| partitionUpperBound | 要向其复制数据的分区列的最大值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在`?AdfRangePartitionUpbound` WHERE 子句中挂接。 有关示例, 请参阅[从 Teradata 并行复制](#parallel-copy-from-teradata)部分。 | 否 |
+| query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时, 需要在查询中挂接任何对应的内置分区参数。 有关示例, 请参阅[从 Teradata 并行复制](#parallel-copy-from-teradata)部分。 | 否（如果指定了数据集中的表） |
+| partitionOptions | 指定用于从 Teradata 加载数据的数据分区选项。 <br>允许的值为：**None**（默认值）、**Hash** 和 **DynamicRange**。<br>启用`None`分区选项后, 还会在复制活动上[`parallelCopies`](copy-activity-performance.md#parallel-copy)配置设置。 这将确定并行加载 Teradata 数据库中的数据的并行度。 例如, 你可以将此设置为4。 | 否 |
+| partitionSettings | 指定数据分区的设置组。 <br>当 partition 选项不`None`为时应用。 | 否 |
+| partitionColumnName | 指定并行复制范围分区使用的源列（**整数类型**）的名称。 如果未指定此参数, 则将自动检测该表的主键, 并将其用作分区列。 <br>当 partition 选项为`Hash`或`DynamicRange`时应用。 如果使用查询来检索源数据, 请在 where 子句`?AdfHashPartitionCondition`中`?AdfRangePartitionColumnName`使用挂钩或。 请参阅[从 Teradata 进行并行复制](#parallel-copy-from-teradata)部分中的示例。 | 否 |
+| partitionUpperBound | 要向其复制数据的分区列的最大值。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据, 则在`?AdfRangePartitionUpbound` WHERE 子句中挂接。 有关示例, 请参阅[从 Teradata 并行复制](#parallel-copy-from-teradata)部分。 | 否 |
 | partitionLowerBound | 要向其复制数据的分区列的最小值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionLowbound`中挂接。 有关示例, 请参阅[从 Teradata 并行复制](#parallel-copy-from-teradata)部分。 | 否 |
 
 > [!NOTE]
@@ -239,7 +239,7 @@ Teradata 链接服务支持以下属性:
 ]
 ```
 
-## <a name="parallel-copy-from-teradata"></a>从 Teradata 并行复制
+## <a name="parallel-copy-from-teradata"></a>从 Teradata 进行并行复制
 
 数据工厂 Teradata 连接器提供内置数据分区, 用于并行复制 Teradata 中的数据。 可以在复制活动的**源表**上查找数据分区选项。
 
@@ -251,11 +251,11 @@ Teradata 链接服务支持以下属性:
 
 | 应用场景                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 大表的完全加载。                                   | **Partition 选项**:代码. <br><br/>在执行期间, 数据工厂会自动检测 PK 列, 对其应用哈希, 并按分区复制数据。 |
-| 使用自定义查询加载大量数据。                 | **Partition 选项**:代码.<br>**查询**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`。<br>**分区列**:指定用于应用哈希分区的列。 如果未指定, 数据工厂会自动检测在 Teradata 数据集中指定的表的 PK 列。<br><br>在执行期间, 数据工厂`?AdfHashPartitionCondition`将替换为哈希分区逻辑, 并将发送到 Teradata。 |
-| 使用自定义查询加载大量数据, 使用一个整数列, 其中包含均匀分布的范围分区值。 | **分区选项**:动态范围分区。<br>**查询**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**:指定用于对数据进行分区的列。 可以对具有整数数据类型的列进行分区。<br>**分区上限**和**分区下限**:指定是否要针对分区列进行筛选, 以便仅检索下限和上限之间的数据。<br><br>在执行期间, 数据工厂`?AdfRangePartitionColumnName`会`?AdfRangePartitionUpbound`将、 `?AdfRangePartitionLowbound`和替换为每个分区的实际列名称和值范围, 并将发送到 Teradata。 <br>例如, 如果将 "ID" 列的下限设置为 1, 将上限设置为 80, 并将 "并行副本" 设置为 "4", 则数据工厂将按4个分区检索数据。 它们的 Id 分别介于 [1, 20]、[21, 40]、[41、60] 和 [61, 80] 之间。 |
+| 大表的完全加载。                                   | **分区选项**：哈希。 <br><br/>在执行期间, 数据工厂会自动检测 PK 列, 对其应用哈希, 并按分区复制数据。 |
+| 使用自定义查询加载大量数据。                 | **分区选项**：哈希。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`。<br>**分区列**：指定用于应用哈希分区的列。 如果未指定, 数据工厂会自动检测在 Teradata 数据集中指定的表的 PK 列。<br><br>在执行期间, 数据工厂`?AdfHashPartitionCondition`将替换为哈希分区逻辑, 并将发送到 Teradata。 |
+| 使用自定义查询加载大量数据, 使用一个整数列, 其中包含均匀分布的范围分区值。 | **分区选项**：动态范围分区。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**：指定用于对数据进行分区的列。 可以对具有整数数据类型的列进行分区。<br>**分区上限**和**分区下限**：指定是否要针对分区列进行筛选, 以便仅检索下限和上限之间的数据。<br><br>在执行期间, 数据工厂`?AdfRangePartitionColumnName`会`?AdfRangePartitionUpbound`将、 `?AdfRangePartitionLowbound`和替换为每个分区的实际列名称和值范围, 并将发送到 Teradata。 <br>例如, 如果将 "ID" 列的下限设置为 1, 将上限设置为 80, 并将 "并行副本" 设置为 "4", 则数据工厂将按4个分区检索数据。 它们的 Id 分别介于 [1, 20]、[21, 40]、[41、60] 和 [61, 80] 之间。 |
 
-**示例: 具有哈希分区的查询**
+**示例：使用哈希分区进行查询**
 
 ```json
 "source": {
@@ -268,7 +268,7 @@ Teradata 链接服务支持以下属性:
 }
 ```
 
-**示例: 包含动态范围分区的查询**
+**示例：使用动态范围分区进行查询**
 
 ```json
 "source": {
@@ -314,11 +314,11 @@ Teradata 链接服务支持以下属性:
 | Interval Year |不受支持。 在源查询中应用显式强制转换。 |
 | Interval Year To Month |不受支持。 在源查询中应用显式强制转换。 |
 | 数量 |Double |
-| Period (Date) |不受支持。 在源查询中应用显式强制转换。 |
-| 时间段 (时间) |不受支持。 在源查询中应用显式强制转换。 |
-| Period (时间与时区) |不受支持。 在源查询中应用显式强制转换。 |
-| Period (时间戳) |不受支持。 在源查询中应用显式强制转换。 |
-| Period (带有时区的时间戳) |不受支持。 在源查询中应用显式强制转换。 |
+| 期间（日期） |不受支持。 在源查询中应用显式强制转换。 |
+| 期间（时间） |不受支持。 在源查询中应用显式强制转换。 |
+| 期间（带时区的时间） |不受支持。 在源查询中应用显式强制转换。 |
+| 期间（时间戳） |不受支持。 在源查询中应用显式强制转换。 |
+| 期间（带时区的时间戳） |不受支持。 在源查询中应用显式强制转换。 |
 | SmallInt |Int16 |
 | Time |TimeSpan |
 | Time With Time Zone |TimeSpan |

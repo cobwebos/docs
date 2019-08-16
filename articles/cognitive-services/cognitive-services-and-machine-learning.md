@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/15/2019
 ms.author: diberry
-ms.openlocfilehash: d7049c729140591717782b191f970f4295140cb8
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 570429a2d5332e7d951271b36b79d9d16df174c0
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697928"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535203"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 
@@ -131,6 +131,10 @@ _利用_服务, 你可以提供数据来增强其自身的数据。 服务可能
 |--|--|
 |[自定义视觉](./custom-vision-service/home.md)|适用于 Android 的 Tensorflow[导出](./Custom-Vision-Service/export-model-python.md), CoreML for IOS11, ONNX FOR Windows ML|
 
+## <a name="learn-more"></a>了解详情
+
+* [体系结构指南-Microsoft 的机器学习产品有哪些？](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
+* [机器学习-深度学习和机器学习简介](../machine-learning/service/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>后续步骤
 

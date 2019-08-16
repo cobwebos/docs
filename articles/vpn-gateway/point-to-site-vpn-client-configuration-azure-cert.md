@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 624c1648bc709e1ca6ee9c4120350a606df67df5
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 79e7027d308d389aa672d164de91df61b1142e32
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035781"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534168"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -126,12 +126,12 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 ### <a name="install"></a>安装和配置
 
-以下说明是通过 Ubuntu 17.0.4 上的 strongSwan 5.5.1 创建的。 Ubuntu 16.0.10 不支持 strongSwan GUI。 如果想要使用 Ubuntu 16.0.10，则必须使用[命令行](#linuxinstallcli)。 以下示例可能与你看到的屏幕不同，具体取决于所用的 Linux 和 strongSwan 版本。
+以下说明是在 Ubuntu 18.0.4 上创建的。 Ubuntu 16.0.10 不支持 strongSwan GUI。 如果想要使用 Ubuntu 16.0.10，则必须使用[命令行](#linuxinstallcli)。 以下示例可能与你看到的屏幕不同，具体取决于所用的 Linux 和 strongSwan 版本。
 
-1. 打开**终端**并运行示例中的命令，安装 **strongSwan** 及其网络管理器。 如果收到与 *libcharon-extra-plugins* 相关的错误，请将此参数替换为“strongswan-plugin-eap-mschapv2”。
+1. 打开**终端**并运行示例中的命令，安装 **strongSwan** 及其网络管理器。
 
    ```
-   sudo apt-get install strongswan libcharon-extra-plugins moreutils iptables-persistent network-manager-strongswan
+   sudo apt install network-manager-strongswan
    ```
 2. 选择“网络管理器”图标（向上箭头/向下箭头），然后选择“编辑连接”。
 

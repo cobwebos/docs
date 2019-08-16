@@ -2,25 +2,18 @@
 title: 旧式 Azure 虚拟网络 VPN 网关 SKU | Microsoft Docs
 description: 如何使用旧式虚拟网络网关 SKU；“基本”、“标准”和“高性能”。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/10/2019
+ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 00f1677e2691f9be5bb4584b07ca00340a52b1e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c745258929d495c1e568a156690f569de9f0e36
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056434"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533908"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>使用虚拟网络网关 SKU（旧式 SKU）
 
@@ -30,7 +23,7 @@ ms.locfileid: "67056434"
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
-您可以查看中的旧版网关定价**虚拟网络网关**部分中，它位于上[ExpressRoute 定价页](https://azure.microsoft.com/pricing/details/expressroute)。
+可以在 "**虚拟网络网关**" 部分 (位于[ExpressRoute 定价页](https://azure.microsoft.com/pricing/details/expressroute)上) 中查看旧版网关定价。
 
 ## <a name="agg"></a>按 SKU 列出的估计聚合吞吐量
 
@@ -42,15 +35,9 @@ ms.locfileid: "67056434"
 
 ## <a name="resize"></a>重设网关大小
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 可以在同一 SKU 系列内将网关大小重设到某个网关 SKU。 例如，如果具有标准 SKU，则可重设大小为高性能 SKU。 但不能在旧式 SKU 和新式 SKU 系列之间重设 VPN 网关大小。 例如，不能从标准 SKU 调整为 VpnGw2 SKU 或从标准 SKU 调整为 VpnGw1。
 
-若要重设经典部署模型的网关大小，请使用以下命令：
-
-```powershell
-Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
-```
+### <a name="resource-manager"></a>资源管理器
 
 若要使用 PowerShell 重设资源管理器部署模型的网关大小，请使用以下命令：
 
@@ -58,7 +45,16 @@ Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerfor
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
+
 还可以在 Azure 门户中重设网关大小。
+
+### <a name="classicresize"></a>传统型
+
+若要调整经典部署模型的网关大小, 必须使用服务管理 PowerShell cmdlet。 请使用以下命令：
+
+```powershell
+Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
+```
 
 ## <a name="change"></a>更改到新式网关 SKU
 

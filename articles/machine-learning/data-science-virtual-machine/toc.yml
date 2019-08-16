@@ -19,9 +19,7 @@
       href: dsvm-ubuntu-intro.md
     - name: 创建 CentOS DSVM
       href: linux-dsvm-intro.md
-    - name: 创建深度学习 VM
-      href: provision-deep-learning-dsvm.md
-    - name: 创建地理 AI DSVM
+    - name: 创建地理 AI 数据科学 VM
       href: provision-geo-ai-dsvm.md
 - name: 概念
   items:

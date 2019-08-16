@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: a92cb0f3da5058e7ffeee6f47e8cfa26ae291005
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5c0c3ade3fd089a4819b8836b07e249fc32c06e0
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990558"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543609"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -149,12 +149,25 @@ ws = Workspace.from_config(path=".file-path/ws_config.json")
 
 ## <a name="prepare-to-deploy"></a>准备部署
 
-若要部署为 web 服务, 您必须创建一个推理配置 (`InferenceConfig`) 和一个部署配置。 推理或模型计分是部署模型用于预测的阶段, 最常见的是生产数据。 在推理配置中, 你指定为模型提供服务所需的脚本和依赖项。 在 "部署配置" 中, 指定如何为计算目标提供模型的详细信息。
+部署模型需要执行以下几项操作:
 
-> [!IMPORTANT]
-> Azure 机器学习 SDK 不为 web 服务或 IoT Edge 部署提供访问数据存储或数据集的方法。 如果需要部署的模型来访问在部署外部存储的数据, 例如在 Azure 存储帐户中, 则必须使用相关的 SDK 开发自定义代码解决方案。 例如,[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)。
->
-> 可能适用于你的方案的另一种方法是[批处理预测](how-to-run-batch-predictions.md), 这在评分时提供对数据存储的访问。
+* 一个__项脚本__。 此脚本接受请求, 使用模型为请求评分, 并返回结果。
+
+    > [!IMPORTANT]
+    > 条目脚本特定于模型;它必须了解传入请求数据的格式、模型所需的数据格式, 以及返回给客户端的数据的格式。
+    >
+    > 如果请求数据的格式不能由您的模型使用, 则该脚本可以将其转换为可接受的格式。 它还可能在将响应返回给客户端之前对其进行转换。
+
+    > [!IMPORTANT]
+    > Azure 机器学习 SDK 不为 web 服务或 IoT Edge 部署提供访问数据存储或数据集的方法。 如果需要部署的模型来访问在部署外部存储的数据, 例如在 Azure 存储帐户中, 则必须使用相关的 SDK 开发自定义代码解决方案。 例如,[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)。
+    >
+    > 可能适用于你的方案的另一种方法是[批处理预测](how-to-run-batch-predictions.md), 这在评分时提供对数据存储的访问。
+
+* 运行条目脚本或模型所需的**依赖项**(如帮助程序脚本或 Python/Conda 包)
+
+* 托管已部署模型的计算目标的__部署配置__。 此配置描述运行模型所需的内存和 CPU 需求等因素。
+
+这些实体封装为__推理配置__和__部署配置__。 推理配置引用入口脚本和其他依赖项。 这些配置是在使用 SDK 时以编程方式定义的, 在使用 CLI 执行部署时作为 JSON 文件进行定义。
 
 ### <a id="script"></a> 1.& 依赖项定义条目脚本
 
@@ -399,9 +412,13 @@ def run(request):
 
 ### <a name="2-define-your-inferenceconfig"></a>2.定义 InferenceConfig
 
-推理配置介绍了如何配置模型以便进行预测。 下面的示例演示如何创建推理配置。 此配置指定运行时、入口脚本和 (可选) conda 环境文件:
+推理配置介绍了如何配置模型以便进行预测。 此配置不是你的输入脚本的一部分;它引用您的条目脚本, 并用于查找部署所需的所有资源。 它稍后在实际部署模型时使用。
+
+下面的示例演示如何创建推理配置。 此配置指定运行时、入口脚本和 (可选) conda 环境文件:
 
 ```python
+from azureml.core.model import InferenceConfig
+
 inference_config = InferenceConfig(runtime="python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
@@ -431,7 +448,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 ### <a name="3-define-your-deployment-configuration"></a>3.定义部署配置
 
-在部署之前, 必须定义部署配置。 __部署配置特定于将托管 web 服务的计算目标__。 例如, 在本地部署时, 必须指定服务接受请求的端口。
+在部署之前, 必须定义部署配置。 __部署配置特定于将托管 web 服务的计算目标__。 例如, 在本地部署时, 必须指定服务接受请求的端口。 部署配置不是你的输入脚本的一部分。 它用于定义将托管模型和条目脚本的计算目标的特征。
 
 你可能还需要创建计算资源。 例如, 如果你还没有与工作区关联的 Azure Kubernetes 服务。
 
@@ -442,6 +459,12 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 | 本地 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure 容器实例 | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes 服务 | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+
+可以从`azureml.core.webservice`以下项导入用于本地、ACI 和 AKS web 服务的每个类:
+
+```python
+from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
+```
 
 > [!TIP]
 > 在将模型部署为服务之前, 您可能需要对其进行分析, 以确定最佳的 CPU 和内存要求。 可以使用 SDK 或 CLI 分析模型。 有关详细信息, 请参阅[配置文件 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)和[az ml 模型配置文件](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)参考。
@@ -459,6 +482,8 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 #### <a name="using-the-sdk"></a>使用 SDK
 
 ```python
+from azureml.core.webservice import LocalWebservice, Webservice
+
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
 service.wait_for_deployment(show_output = True)

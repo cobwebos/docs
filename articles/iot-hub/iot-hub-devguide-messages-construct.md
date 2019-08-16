@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: dd45c68fb7d7a7226d18dd1afc508b3dbf7b770b
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9a62001f168e0577ea07ad030923a4d0398e50af
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950440"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534974"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -49,14 +49,15 @@ IoT 中心消息由以下部分组成：
 
 ## <a name="system-properties-of-d2c-iot-hub-messages"></a>**D2C** IoT 中心消息的系统属性
 
-| 属性 | 描述  |用户可设置？|路由查询的关键字|
+| 属性 | 描述  |用户可设置？|关键字 </br>路由查询|
 | --- | --- | --- | --- |
-| message-id |用户可设置的，用于请求-答复模式的消息标识符。 格式:ASCII 7 位字母数字字符 + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。  | 是 | MessageId |
-| iothub-enqueuedtime |IoT 中心收到[设备到云](iot-hub-devguide-d2c-guidance.md)消息的日期和时间。 | 否 | EnqueuedTime |
-| user-id |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 | 是 | UserId |
-| iothub-connection-device-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **deviceId**。 | 否 | DeviceId |
-| iothub-connection-auth-generation-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 generationId（根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)）。 | 否 |DeviceGenerationId |
-| iothub-connection-auth-method |由 IoT 中心对设备到云的消息设置的身份验证方法。 此属性包含用于验证发送消息的设备的身份验证方法的相关信息。| 否 | AuthMethod |
+| message-id |用户可设置的，用于请求-答复模式的消息标识符。 格式:ASCII 7 位字母数字字符 + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。  | 是 | messageId |
+| iothub-enqueuedtime |IoT 中心收到[设备到云](iot-hub-devguide-d2c-guidance.md)消息的日期和时间。 | 否 | enqueuedTime |
+| user-id |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 | 是 | userId |
+| iothub-connection-device-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **deviceId**。 | 否 | connectionDeviceId |
+| iothub-模块 id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的**moduleId** 。 | 否 | 为 connectionmoduleid |
+| iothub-connection-auth-generation-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的**connectionDeviceGenerationId** (根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties))。 | 否 |connectionDeviceGenerationId |
+| iothub-connection-auth-method |由 IoT 中心对设备到云的消息设置的身份验证方法。 此属性包含用于验证发送消息的设备的身份验证方法的相关信息。| 否 | connectionAuthMethod |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT 中心消息的系统属性
 

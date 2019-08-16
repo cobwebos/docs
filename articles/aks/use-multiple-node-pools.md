@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: e6ba6aeaeadb2359c4b30efa35471ca62dcc6b41
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 514098368c38c6d61bc192f5ba0f0450dc05776c
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033976"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533473"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>预览-创建和管理 Azure Kubernetes 服务中群集的多个节点池 (AKS)
 
@@ -35,7 +35,7 @@ ms.locfileid: "69033976"
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要使用多个 nodepools, 需要*aks* CLI 扩展版本0.4.1 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展, 然后使用[az extension update][az-extension-update]命令检查是否有任何可用更新:
+若要使用多个节点池, 需要*aks* CLI 扩展版本0.4.1 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展, 然后使用[az extension update][az-extension-update]命令检查是否有任何可用更新:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -167,6 +167,9 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 
 ## <a name="upgrade-a-node-pool"></a>升级节点池
 
+> [!NOTE]
+> 群集或节点池上的升级和缩放操作是互相排斥的。 不能同时升级和缩放群集或节点池。 相反, 每个操作类型必须在目标资源上完成, 然后才能在该相同资源上发出下一个请求。 有关详细信息, 请参阅[故障排除指南](https://aka.ms/aks-pending-upgrade)。
+
 在第一步中创建 AKS 群集时, 指定了`--kubernetes-version` *1.13.9*的。 这会为控制平面和初始节点池设置 Kubernetes 版本。 可以通过不同的命令来升级控制平面和节点池的 Kubernetes 版本。 命令用于升级控制平面, `az aks nodepool upgrade`而用于升级单个节点池。 `az aks upgrade`
 
 让我们将*mynodepool*升级到 Kubernetes *1.13.9*。 使用[az aks 节点池升级][az-aks-nodepool-upgrade]命令升级节点池, 如以下示例中所示:
@@ -283,7 +286,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
 
 ## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>通过启用群集来自动缩放特定节点池自动缩放程序
 
-AKS 提供了一个单独的预览功能, 可使用称为[群集自动缩放程序](cluster-autoscaler.md)的组件自动缩放节点池。 此组件是一个 AKS 外接程序, 可为每个节点池启用每个节点池的唯一最小和最大刻度计数。 了解如何[使用每个节点池的群集自动缩放程序](cluster-autoscaler.md#enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools)。
+AKS 提供了一个单独的预览功能, 可使用称为[群集自动缩放程序](cluster-autoscaler.md)的功能自动缩放节点池。 此功能是一个 AKS 外接程序, 可对每个节点池启用每个节点池的唯一最小和最大刻度计数。 了解如何[使用每个节点池的群集自动缩放程序](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)。
 
 ## <a name="delete-a-node-pool"></a>删除节点池
 
@@ -553,6 +556,9 @@ az group deployment create \
 根据资源管理器模板中定义的节点池设置和操作, 更新 AKS 群集可能需要几分钟时间。
 
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>为节点池中的每个节点分配公共 IP
+
+> [!NOTE]
+> 在预览期间, 由于可能存在与 VM 预配冲突的负载均衡器规则, 因此*在 AKS (预览版) 中*将此功能与标准负载均衡器 SKU 一起使用的限制。 在预览中, 如果需要为每个节点分配一个公共 IP, 请使用*基本负载均衡器 SKU* 。
 
 AKS 节点不需要自己的公共 IP 地址进行通信。 但某些情况下, 可能需要节点池中的节点具有其自己的公共 IP 地址。 例如游戏, 控制台需要直接连接到云虚拟机以最大程度地减少跃点。 为此, 可以注册单独的预览功能 "节点公共 IP (预览版)"。
 

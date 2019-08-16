@@ -3,7 +3,7 @@ title: 适用于 .NET 的 Microsoft 身份验证库中的 Web 浏览器 | Azure
 description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的具体注意事项。
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: jmprieur
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb04a30719f7603610b323a4bb271666371ba97
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: e1285c5c61cee25e387ca5fb598f0e062088e549
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276853"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532499"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>使用 MSAL.NET 中的 Web 浏览器
 完成交互式身份验证需要使用 Web 浏览器。 默认情况下, MSAL.NET 在 Xamarin 和 Xamarin 上支持[系统 web 浏览器](#system-web-browser-on-xamarinios-xamarinandroid)。 不过, 你也可以根据你的要求 (UX, 在[xamarin](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios)和[xamarin Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)应用中使用单一登录 (SSO)、安全性) 来[启用嵌入的 Web 浏览器](#enable-embedded-webviews-on-ios-and-android)。 甚至可以根据 Android 中是否存在 Chrome 或支持 Chrome 自定义标签页的浏览器，[动态选择](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)要使用的 Web 浏览器。 MSAL.NET 仅支持 .NET Core 桌面应用程序中的系统浏览器。
@@ -46,7 +46,7 @@ MSAL.NET 是一个多框架库, 它具有框架特定的代码, 用于在 UI 控
 
 通常, 建议使用平台默认设置, 这通常是系统浏览器。 系统浏览器可以更好地记住以前登录的用户。 如果需要更改此行为, 请使用`WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>速览
+### <a name="at-a-glance"></a>概览
 
 | 框架        | 集成 | 系统 | 默认 |
 | ------------- |-------------| -----| ----- |

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/15/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 022b16669791b9b9cce066b3dd17c70b33569cc0
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 8cd63913c0e96d496aa617369601c1dd121b4b46
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955237"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542841"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>QnA Maker 知识库是什么？
 
@@ -59,6 +59,70 @@ QnA Maker 知识库包含一组问题/答案 (QnA) 对和与每个 QnA 对关联
 
 使用的功能包括但不限于 word 级语义、语料库中的术语级别重要性, 以及深入了解的语义模型, 以确定两个文本字符串之间的相似性和相关性。
 
+## <a name="http-request-and-response-with-endpoint"></a>带有终结点的 HTTP 请求和响应
+发布知识库时, 该服务会创建一个基于 REST 的 HTTP**终结点, 该终结点**可以集成到应用程序中, 通常是一个聊天机器人。 
+
+### <a name="the-user-query-request-to-generate-an-answer"></a>用于生成答案的用户查询请求
+
+**用户查询**是最终用户要求使用知识库的问题, 例如`How do I add a collaborator to my app?`。 查询通常采用自然语言格式或表示问题的几个关键字, 如`help with collaborators`。 查询将从客户端应用程序中的 HTTP**请求**发送到你的知识。
+
+```json
+{
+    "question": "qna maker and luis",
+    "top": 6,
+    "isTest": true,
+    "scoreThreshold": 20,
+    "strictFilters": [
+    {
+        "name": "category",
+        "value": "api"
+    }],
+    "userId": "sd53lsY="
+}
+```
+
+可以通过设置[scoreThreshold](./confidence-score.md#choose-a-score-threshold)、 [top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)和[stringFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)等属性来控制响应。
+
+结合使用[会话内容](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context)和[多个功能](../how-to/multiturn-conversation.md), 可以将会话内容保持在一起, 以细化问题和答案。
+
+### <a name="the-response-from-a-call-to-generate-answer"></a>调用生成答案的响应
+
+HTTP**响应**是基于给定用户查询的最佳匹配项从知识库中检索到的答案。 响应包括答案和预测分数。 如果您要求使用`top`属性, 则可以获得多个顶级答案, 其中每个都有一个分数。 
+
+```json
+{
+    "answers": [
+        {
+            "questions": [
+                "What is the closing time?"
+            ],
+            "answer": "10.30 PM",
+            "score": 100,
+            "id": 1,
+            "source": "Editorial",
+            "metadata": [
+                {
+                    "name": "restaurant",
+                    "value": "paradise"
+                },
+                {
+                    "name": "location",
+                    "value": "secunderabad"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### <a name="test-and-production-knowledge-base"></a>测试和生产知识库
+知识库是通过 QnA Maker 创建、维护和使用的问题和答案的存储库。 每个 QnA Maker 层均可用于多个知识库。
+
+知识库有两种状态 -“测试”和“已发布”。 
+
+**测试知识库**是要编辑、保存和测试的版本, 以确保响应的准确性和完整性。 对测试知识库所做的更改不会影响应用程序/聊天机器人的最终用户。 测试知识库`test`在 HTTP 请求中称为。 
+
+**已发布的知识库**是在聊天机器人/应用程序中使用的版本。 发布知识库的操作会将测试知识库的内容置于知识库的已发布版本中。 由于已发布的知识库是应用程序通过终结点使用的版本，因此应注意确保内容正确且经过良好测试。 已发布的知识库`prod`在 HTTP 请求中称为。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -68,3 +132,11 @@ QnA Maker 知识库包含一组问题/答案 (QnA) 对和与每个 QnA 对关联
 ## <a name="see-also"></a>请参阅
 
 [QnA Maker 概述](../Overview/overview.md)
+
+创建和编辑知识库: 
+* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [.Net SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+
+生成的答案: 
+* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [.Net SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

@@ -1,19 +1,19 @@
 ---
-title: VMware 解决方案中通过 CloudSimple 的 Vlan 和子网-Azure
+title: Azure VMware 解决方案中通过 CloudSimple 的 Vlan 和子网
 description: 了解 CloudSimple 私有云中的 Vlan 和子网
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6659c50b79237907cf596d65e0ba9fb72113246
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7af191893d6b3cf1c38e5ff44a7a8a04509347a8
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812475"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543796"
 ---
 # <a name="vlans-and-subnets-overview"></a>Vlan 和子网概述
 
@@ -23,7 +23,7 @@ CloudSimple 提供了每个区域的网络, 其中部署了 CloudSimple 服务�
 
 ## <a name="vlans"></a>VLAN
 
-每个私有云创建 Vlan (第2层网络)。  第2层流量保持在私有云的边界内, 使你能够隔离私有云中的本地流量。  在私有云上创建的 VLAN 只能用于在该私有云中创建分布式端口组。  在私有云上创建的 VLAN 自动在连接到私有云的主机的所有交换机上进行配置。
+为每个私有云创建 VLAN (第2层网络)。  第2层流量保持在私有云的边界内, 使你能够隔离私有云中的本地流量。  在私有云上创建的 VLAN 只能用于在该私有云中创建分布式端口组。  在私有云上创建的 VLAN 自动在连接到私有云的主机的所有交换机上进行配置。
 
 ## <a name="subnets"></a>子网
 
@@ -33,17 +33,17 @@ CloudSimple 提供了每个区域的网络, 其中部署了 CloudSimple 服务�
 
 ## <a name="vspherevsan-subnets-cidr-range"></a>vSphere/vSAN 子网 CIDR 范围
 
-私有云是作为由 vCenter 服务器管理的隔离 VMware 堆栈 (ESXi 主机、vCenter、vSAN 和 NSX) 环境创建的。  管理组件部署在为**vSphere/vSAN 子网 CIDR**选择的网络中。  在部署过程中, 网络 CIDR 范围分为不同的子网。
+私有云是作为由 vCenter 服务器管理的隔离 VMware 堆栈 (ESXi 主机、vCenter、vSAN 和 NSX) 环境创建的。  管理组件部署在为 vSphere/vSAN 子网 CIDR 选择的网络中。  在部署过程中, 网络 CIDR 范围分为不同的子网。
 
-最小 vSphere/vSAN 子网 CIDR 范围前缀: **/24**最大 VSphere/vSAN 子网 cidr 范围前缀: **/21**
+* 最小 vSphere/vSAN 子网 CIDR 范围前缀: **/24**
+* 最大 vSphere/vSAN 子网 CIDR 范围前缀: **/21**
 
-> [!CAUTION]
-> VSphere/vSAN CIDR 范围中的 IP 地址保留供私有云基础结构使用。 请勿在任何虚拟机上使用此范围内的 IP 地址。
-
+> [!IMPORTANT]
+> VSphere/vSAN CIDR 范围中的 IP 地址保留供私有云基础结构使用。  请勿在任何虚拟机上使用此范围内的 IP 地址。
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/vSAN 子网 CIDR 范围限制
 
-选择 vSphere/vSAN 子网 CIDR 范围大小会影响私有云的大小。  下表显示了根据 vSphere/vSAN 子网 CIDR 的大小可拥有的最大节点数。
+选择 vSphere/vSAN 子网 CIDR 范围大小会影响私有云的大小。  下表显示了根据 vSphere/vSAN 子网 CIDR 的大小, 可以拥有的最大节点数。
 
 | 指定的 vSphere/vSAN 子网 CIDR 前缀长度 | 节点数上限 |
 |---------------------------------------------------|-------------------------|
@@ -54,19 +54,19 @@ CloudSimple 提供了每个区域的网络, 其中部署了 CloudSimple 服务�
 
 ### <a name="management-subnets-created-on-a-private-cloud"></a>在私有云上创建的管理子网
 
-在创建私有云时, 将创建以下管理子网。 
+在创建私有云时, 将创建以下管理子网。
 
-* **系统管理**-VLAN 和子网, 适用于 ESXi 主机的管理网络、DNS 服务器、vCenter 服务器。
-* **Vmotion** -VLAN 和子网, 适用于 ESXi 主机的 VMotion 网络。
-* **Vsan** -VLAN 和子网, 适用于 ESXi 主机的 VSAN 网络。
-* **NsxtEdgeUplink1** -vlan 和子网, 用于向外部网络提供 vlan 上行链路。
-* **NsxtEdgeUplink2** -vlan 和子网, 用于向外部网络提供 vlan 上行链路。
-* **NsxtEdgeTransport** -用于传输区域的 VLAN 和子网控制 NSX 中第2层网络的范围。
-* **NsxtHostTransport** -用于主机传输区域的 VLAN 和子网。
+* **系统管理**。 VLAN 和子网, 适用于 ESXi 主机的管理网络、DNS 服务器、vCenter 服务器。
+* **VMotion**。 VLAN 和子网, 用于 ESXi 主机的 vMotion 网络。
+* **VSAN**。 VLAN 和 ESXi 主机的 vSAN 网络的子网。
+* **NsxtEdgeUplink1**。 Vlan 和子网, 用于向外部网络提供 VLAN 上行链路。
+* **NsxtEdgeUplink2**。 Vlan 和子网, 用于向外部网络提供 VLAN 上行链路。
+* **NsxtEdgeTransport**。 传输区域的 VLAN 和子网控制 NSX 中第2层网络的范围。
+* **NsxtHostTransport**。 用于主机传输区域的 VLAN 和子网。
 
 ### <a name="management-network-cidr-range-breakdown"></a>管理网络 CIDR 范围细目
 
-指定的 vSphere/vSAN 子网 CIDR 范围分为多个子网。  下表显示了允许的前缀细目的示例。  该示例使用**192.168.0.0**作为 CIDR 范围。
+指定的 vSphere/vSAN 子网 CIDR 范围分为多个子网。  下表显示了允许的前缀细目的示例。  该示例使用192.168.0.0 作为 CIDR 范围。
 
 例如：
 
@@ -82,4 +82,4 @@ CloudSimple 提供了每个区域的网络, 其中部署了 CloudSimple 服务�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建和管理 Vlan 和子网](https://docs.azure.cloudsimple.com/create-vlan-subnet/)
+* [创建和管理 Vlan 和子网](create-vlan-subnet.md)

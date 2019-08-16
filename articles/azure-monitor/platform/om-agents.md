@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 2ea17a4363218351eb6e5ba0678435f3707e4ab9
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663738"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543050"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -40,7 +40,7 @@ ms.locfileid: "68663738"
 
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 Log Analytics 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 Operations Manager 管理组配置为通过 Log Analytics 网关与 Azure Monitor 通信的详细信息和步骤，请参阅[使用 Log Analytics 网关将计算机连接到 Azure Monitor](../../azure-monitor/platform/gateway.md)。  
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请查看以下要求。
 
@@ -65,12 +65,12 @@ ms.locfileid: "68663738"
 >[!NOTE]
 >最近对 Azure API 所做的最新会阻止客户在其管理组与 Azure Monitor 之间成功配置首次集成。 对于已将其管理组与该服务进行集成的客户，除非需要重新配置现有连接，否则他们不受影响。  
 >已为以下版本的 Operations Manager 发布了新的管理包：
->  
->* 对于 System Center Operations Manager 1801，请从[此处](https://www.microsoft.com/download/details.aspx?id=57173)下载管理包  
->* 对于 System Center 2016 - Operations Manager，请从[此处](https://www.microsoft.com/download/details.aspx?id=57172)下载管理包  
->* 对于 System Center Operations Manager 2012 R2，请从[此处](https://www.microsoft.com/download/details.aspx?id=57171)下载管理包  
->
->此管理包更新不适用于 System Center Operations Manager 1807，后者是版本 1801 的更新版本，而不是产品的完整版本。   
+> - 对于 System Center Operations Manager 2019, 将随 Operations Manager 版本提供管理包。
+>- Operations Manager 1801 管理包还适用于 Operations Manager 1807。
+>- 对于 System Center Operations Manager 1801, 请从[此处](https://www.microsoft.com/download/details.aspx?id=57173)下载管理包。
+>- Operations Manager, 请从[此处](https://www.microsoft.com/download/details.aspx?id=57172)下载管理包。2016  
+>- 对于 System Center Operations Manager 2012 R2, 请从[此处](https://www.microsoft.com/download/details.aspx?id=57171)下载管理包。  
+
 
 ### <a name="network"></a>网络
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afcd9c9d3191caeabe182f499b5fd80cd8e1d8dd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 131d38f6154e7a6e2f3175838b084e47e17ec582
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608148"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532940"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>基准策略:最终用户保护 (预览版)
 
@@ -64,11 +64,11 @@ ms.locfileid: "68608148"
 
 若要启用此策略并保护用户:
 
-1. 以全局管理员、安全管理员或条件访问管理员身份登录到 **Azure 门户** 。
+1. 以全局管理员、安全管理员或条件访问管理员身份登录到**Azure 门户**。
 1. 浏览到**Azure Active Directory** > **条件性访问**。
 1. 在策略列表中, 选择 **"基准策略":最终用户保护 (预览版)** 。
 1. 将 "**启用策略**" 设置为 "**立即使用策略**"。
-1. 单击 " **保存**"。
+1. 单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 

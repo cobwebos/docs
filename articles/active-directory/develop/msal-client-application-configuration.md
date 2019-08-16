@@ -3,7 +3,7 @@ title: 客户端应用程序配置（Microsoft 身份验证库）| Azure
 description: 了解 Microsoft 身份验证库 (MSAL) 中公共客户端和机密客户端应用程序的配置选项。
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767f7362a6c46d864ba17f23f6506bf6cdb71414
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 6fedca8dfb60d976723508bb89cab7d5b6dda1b9
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304726"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532918"
 ---
 # <a name="application-configuration-options"></a>应用程序配置选项
 
@@ -53,15 +53,15 @@ ms.locfileid: "68304726"
 - Active Directory 联合身份验证服务 (AD FS) 机构。 请参阅[AD FS 支持](https://aka.ms/msal-net-adfs-support)。
 
 Azure AD 云颁发机构有两个组成部分：
-- 标识提供者实例 
-- 应用的登录受众 
+- 标识提供者实例
+- 应用的登录受众
 
 可将实例和受众连接到一起，以颁发机构 URL 的形式提供。 在 MSAL 3.*x* 以前的 MSAL.NET 版本中，必须根据想要面向的云和登录受众自行构成颁发机构。  下图显示了颁发机构 URL 的构成方式：
 
 ![如何构成颁发机构 URL](media/msal-client-application-configuration/authority.png)
 
 ## <a name="cloud-instance"></a>云实例
-实例用于指定应用是要从 Azure 公有云还是国家/地区云将用户登录。  在代码中使用 MSAL 可以通过枚举或者将 URL 作为 `Instance` 成员（如果知道该成员）传递给[国家/地区云实例](authentication-national-cloud.md#azure-ad-authentication-endpoints)，来设置 Azure 云实例。
+实例用于指定应用是要从 Azure 公有云还是国家/地区云将用户登录。 在代码中使用 MSAL 可以通过枚举或者将 URL 作为 `Instance` 成员（如果知道该成员）传递给[国家/地区云实例](authentication-national-cloud.md#azure-ad-authentication-endpoints)，来设置 Azure 云实例。
 
 如果同时指定 `Instance` 和 `AzureCloudInstance`，MSAL.NET 将引发显式异常。
 
@@ -129,7 +129,7 @@ Azure AD 云颁发机构有两个组成部分：
 
 对于守护程序应用，不需要指定重定向 URI。
 
-## <a name="client-secret"></a>客户端机密
+## <a name="client-secret"></a>客户端密码
 此选项指定机密客户端应用的客户端机密。 此机密 (应用密码) 由应用程序注册门户提供, 或在使用 PowerShell AzureAD、PowerShell AzureRM 或 Azure CLI 的应用注册期间提供给 Azure AD。
 
 ## <a name="logging"></a>日志记录

@@ -6,8 +6,6 @@
       href: security-center-intro.md
     - name: 安全中心支持的平台和功能
       href: security-center-os-coverage.md
-    - name: 终结点保护评估和建议
-      href: security-center-endpoint-protection.md
 - name: 快速入门
   expanded: true
   items:
@@ -45,6 +43,24 @@
       href: security-center-incident-response.md
     - name: 跨租户管理
       href: security-center-cross-tenant-management.md
+    - name: 威胁检测警报
+      items:
+        - name: 安全警报概述
+          href: security-center-alerts-overview.md
+        - name: VM 和服务器的威胁检测
+          href: security-center-alerts-iaas.md
+        - name: 云原生计算的威胁检测
+          href: security-center-alerts-compute.md
+        - name: 数据服务的威胁检测
+          href: security-center-alerts-data-services.md
+        - name: Azure 服务层的威胁检测
+          href: security-center-alerts-service-layer.md
+        - name: 与 Azure 安全产品集成
+          href: security-center-alerts-integration.md
+        - name: 云智能警报关联（事件）
+          href: security-center-alerts-cloud-smart.md
+        - name: 警报验证（EICAR 测试文件）
+          href: security-center-alert-validation.md
 - name: 操作指南
   items:
     - name: 提高安全分数
@@ -105,42 +121,16 @@
           href: security-center-file-integrity-monitoring.md
         - name: 自适应网络强化
           href: security-center-adaptive-network-hardening.md
-    - name: 威胁检测警报
-      items:
-        - name: 安全警报概述
-          href: security-center-alerts-overview.md
-        - name: VM 和服务器的威胁检测
-          href: security-center-alerts-iaas.md
-        - name: 云原生计算的威胁检测
-          href: security-center-alerts-compute.md
-        - name: 数据服务的威胁检测
-          href: security-center-alerts-data-services.md
-        - name: Azure 服务层的威胁检测
-          href: security-center-alerts-service-layer.md
-        - name: 与 Azure 安全产品集成
-          href: security-center-alerts-integration.md
-        - name: 云智能警报关联（事件）
-          href: security-center-alerts-cloud-smart.md
-        - name: 警报验证（EICAR 测试文件）
-          href: security-center-alert-validation.md
     - name: 存档
       items:
         - name: 应用磁盘加密
           href: security-center-apply-disk-encryption.md
         - name: 应用系统更新
           href: security-center-apply-system-updates.md
-        - name: 为存储帐户启用加密
-          href: security-center-enable-encryption-for-storage-account.md
-        - name: 启用 VM 代理
-          href: security-center-enable-vm-agent.md
         - name: 安装终结点保护
           href: security-center-install-endpoint-protection.md
         - name: 在系统更新后重启
           href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
-        - name: 修正安全配置
-          href: security-center-remediate-os-vulnerabilities.md
-        - name: 更新 OS 版本
-          href: security-center-update-os-version.md
         - name: 未安装漏洞评估
           href: security-center-vulnerability-assessment-recommendations.md
         - name: 添加 Web 应用程序防火墙
@@ -191,6 +181,8 @@
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 功能和 API 停用（2019 年 7 月）
       href: security-center-features-retirement-july2019.md
+    - name: 终结点保护评估和建议
+      href: security-center-endpoint-protection.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

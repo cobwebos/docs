@@ -1,6 +1,6 @@
 ---
-title: 支持基于 OWIN 的 web 应用程序中的多个令牌颁发者-Azure Active Directory B2C
-description: 了解如何使 .NET web 应用程序支持多个域颁发的令牌。
+title: 将基于 OWIN 的 web Api 迁移到 b2clogin.com-Azure Active Directory B2C
+description: 了解如何在将应用程序迁移到 b2clogin.com 时, 启用 .NET web API 以支持多个令牌颁发者颁发的令牌。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,21 +10,23 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 31ab19b8b3adbef1f0ea573af13b98750d278db8
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a8a6b4f90fe3f1e60341cc59e7d81870c82e843b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716732"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533769"
 ---
-# <a name="support-multiple-token-issuers-in-an-owin-based-web-application"></a>支持基于 OWIN 的 web 应用程序中的多个令牌颁发者
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>将基于 OWIN 的 web API 迁移到 b2clogin.com
 
-本文介绍一种在 web 应用中启用多个令牌颁发者支持的技术, 以及实现[.net 的开放 Web 接口 (OWIN)](http://owin.org/)的 api。 将 Azure Active Directory (Azure AD) B2C 应用程序从*login.microsoftonline.com*迁移到*b2clogin.com*时, 支持多个令牌终结点非常有用。
+本文介绍了在实现[.net 的开放 Web 界面 (OWIN)](http://owin.org/)的 web api 中启用多个令牌颁发者支持的方法。 将 Azure Active Directory B2C (Azure AD B2C) Api 及其应用程序从*login.microsoftonline.com*迁移到*b2clogin.com*时, 支持多个令牌终结点非常有用。
 
-以下各节提供了一个示例, 演示如何在 web 应用程序中启用多个颁发者, 以及如何使用[MICROSOFT OWIN][katana]中间件组件 (Katana) 的相应 web API。 尽管代码示例特定于 Microsoft OWIN 中间件, 但一般方法应该适用于其他 OWIN 库。
+通过在接受 b2clogin.com 和 login.microsoftonline.com 颁发的令牌的 API 中添加支持, 你可以分阶段迁移 web 应用程序, 然后从 API 中删除 login.microsoftonline.com 颁发的令牌支持。
+
+以下各节提供了一个示例, 说明如何在使用[MICROSOFT OWIN][katana]中间件组件 (Katana) 的 web API 中启用多个颁发者。 尽管代码示例特定于 Microsoft OWIN 中间件, 但一般方法应该适用于其他 OWIN 库。
 
 > [!NOTE]
-> 本文适用于当前已部署的应用程序, `login.microsoftonline.com`以及要迁移到推荐`b2clogin.com`的终结点的应用程序的 Azure AD B2C 客户。 如果要设置新应用程序, 请按指示使用[b2clogin.com](b2clogin.md) 。
+> 本文适用于当前已部署的 api 和应用程序, 以及要迁移`login.microsoftonline.com`到建议`b2clogin.com`终结点的应用程序的 Azure AD B2C 客户。 如果要设置新应用程序, 请按指示使用[b2clogin.com](b2clogin.md) 。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,7 +36,7 @@ ms.locfileid: "68716732"
 
 ## <a name="get-token-issuer-endpoints"></a>获取令牌颁发者终结点
 
-首先需要获取你要在应用程序中支持的每个颁发者的令牌颁发者终结点 Uri。 若要获取 Azure AD B2C 租户支持的*b2clogin.com*和*login.microsoftonline.com*终结点, 请在 Azure 门户中使用以下过程。
+首先需要获取要在 API 中支持的每个颁发者的令牌颁发者终结点 Uri。 若要获取 Azure AD B2C 租户支持的*b2clogin.com*和*login.microsoftonline.com*终结点, 请在 Azure 门户中使用以下过程。
 
 首先选择一个现有的用户流:
 

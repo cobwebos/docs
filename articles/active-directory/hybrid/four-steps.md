@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0630e62a08314612cb08b5cb26b5a1563de4f40b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 8d4eb5b4c634fe495a0ed149016d862defc2eb45
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779698"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532442"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 进行强身份验证的四个步骤
 
@@ -227,7 +227,7 @@ Azure AD Connect 和 AD FS 是关键组件, 可能会中断生命周期管理和
 
 当你开始在组织中使用更可靠的标识基础时, 建议你打印以下清单以供参考。
 
-### <a name="today"></a>今日焦点
+### <a name="today"></a>今天
 
 |完成了吗？|项|
 |:-|:-|

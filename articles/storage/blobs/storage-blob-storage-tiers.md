@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 8f180308133ffba12cc3bffb19130aa7a129da9f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 48c6d6ed60045d906fcb711bd07ab492b6bbf488
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952910"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543682"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 存储：热、冷、存档访问层
 
@@ -80,6 +80,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性。 此属�
 ### <a name="blob-rehydration"></a>Blob 解除冻结
 
 [!INCLUDE [storage-blob-rehydrate-include](../../../includes/storage-blob-rehydrate-include.md)]
+若要了解详细信息, 请参阅[存档层中的解除冻结 blob 数据](storage-blob-rehydration.md)。  
 
 ## <a name="account-level-tiering"></a>帐户级别分层
 
@@ -164,11 +165,13 @@ Blob 存储生命周期管理提供了一种基于规则的丰富策略, 可用�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 若要导航到存储帐户中的 Blob：请依次选择“所有资源”、存储帐户、容器、Blob。
+1. 若要导航到存储帐户中的 Blob，请依次选择“所有资源”、存储帐户、容器、Blob。
 
-1. 在“Blob 属性”边栏选项卡中选择“访问层”下拉菜单，选择“热”、“冷”或“存档”访问层。
+1. 在 " **Blob 属性**" 边栏选项卡中, 选择 "**更改层**" 按钮打开层边栏选项卡。
 
-1. 单击边栏选项卡顶部的“保存”。
+1. 选择 "**热**"、"**冷**" 或 "**存档**" 访问层。 如果 blob 目前处于存档状态, 并且想要解除冻结到联机层, 则还可以选择 "**标准**" 或 "**高**" 的 "解除冻结" 优先级。
+
+1. 单击边栏选项卡底部的“确定”。
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
@@ -245,6 +248,8 @@ Azure 门户、PowerShell 和 CLI 工具以及 .NET、Java、Python 和 Node.js 
 [按区域查看热层、冷层和存档层](https://azure.microsoft.com/regions/#services)
 
 [管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)
+
+[了解存档层中的解除冻结 blob 数据](storage-blob-rehydration.md)
 
 [通过启用 Azure 存储度量值来评估当前存储帐户的使用情况](../common/storage-enable-and-view-metrics.md)
 

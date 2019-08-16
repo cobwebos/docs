@@ -12,14 +12,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5093b74484cd04a0c0c7afed8e2ebc725af033f5
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 33078439e8f055d746fad9949a9b0d7651e120f7
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249831"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543820"
 ---
-# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>什么是适用于 Azure 虚拟网络的 IPv6？ （预览版）
+# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>什么是适用于 Azure 虚拟网络的 IPv6？ (预览)
 
 使用适用于 Azure 虚拟网络 (VNet) 的 IPv6, 可以在 Azure 中使用 IPv6 和 IPv4 连接在虚拟网络中托管应用程序, 以及与 Internet 建立连接。 由于公共 IPv4 地址耗尽, 新的移动网络和物联网 (IoT) 通常是在 IPv6 上构建的。 即使是长期建立的 ISP 和移动网络也被转换为 IPv6。 仅适用于 IPv4 的服务在现有和新兴市场中都可以发现其自身。 双堆栈 IPv4/IPv6 连接可让 Azure 托管服务通过全球可用的双堆积服务来实现这种技术缺口, 这些服务可轻松地与现有 IPv4 和这些新的 IPv6 设备和网络连接。
 
@@ -48,7 +48,9 @@ Azure 虚拟网络 IPv6 权益:
 
 - Azure 客户可以定义自己的 IPv6 虚拟网络地址空间来满足其应用程序、客户的需求, 或者无缝集成到其本地 IP 空间。
 - 使用双堆栈子网的双堆栈 (IPv4 和 IPv6) 虚拟网络, 应用程序可以连接到其虚拟网络或 Internet 中的 IPv4 和 IPv6 资源。
-- 通过网络安全组的 IPv6 规则保护资源
+    > [!IMPORTANT]
+    > IPv6 的子网的大小必须完全相同/64。  如果决定启用子网到本地网络的路由, 这可确保兼容性, 因为某些路由器只能接受/64 IPv6 路由。  
+- 通过网络安全组的 IPv6 规则保护你的资源。
 - 自定义在虚拟网络中通过用户定义的路由对 IPv6 通信进行路由, 尤其是在利用网络虚拟设备来增强应用程序时。
 - 允许 Internet 客户端使用其所选协议, 通过 Azure DNS 对 IPv6 (AAAA) 记录的支持, 无缝访问双 stack 应用程序。 
 - 针对可复原、可缩放应用程序创建的标准 IPv6 公共负载均衡器支持，其中包括：
@@ -67,7 +69,7 @@ Azure 虚拟网络的 IPv6 预览版本具有以下限制:
 - 预览版的网络观察程序支持仅限于 NSG 流日志和网络数据包捕获。
 - 预览不支持虚拟网络对等互连 (突破或全局)。
 - 使用标准 IPv6 外部负载平衡器时, 以下限制适用: 
-  - 出站规则可以引用多个前端公共 Ip, 但**不得引用 IPv6**公共前缀。 IP 公共前缀仅支持 IPv4 前缀。
+  - 出站规则可以引用多个前端公共 Ip, 但不得引用 IPv6 公共前缀。 IP 公共前缀仅支持 IPv4 前缀。
   - IPv6 负载均衡规则**不**能使用*浮动 IP*功能。 仅在 IPv4 中支持对后端实例使用端口。
 - Azure 公共 IP 地址前缀功能不支持保留面向 Internet 的 IPv6 地址块。
 

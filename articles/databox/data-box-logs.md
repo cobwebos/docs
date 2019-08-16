@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934201"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535173"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box 和 Azure Data Box Heavy 的跟踪与事件日志记录
 
@@ -64,7 +64,7 @@ Data Box 或 Data Box Heavy 订单会经历以下步骤：订购、设置、数�
 
 - 当 Data Box 抵达你的所在地时处于锁定状态。 可以使用 Azure 门户中根据订单提供的设备凭据。  
 
-    如果已安装 Data Box，你可能需要知道谁访问过设备凭据。 若要了解谁访问过“设备凭据”边栏选项卡，可以查询活动日志。  涉及到访问“设备详细信息”>“凭据”边栏选项卡的任何操作都会作为 `ListCredentials` 操作记录到活动日志。
+    如果已安装 Data Box，你可能需要知道谁访问过设备凭据。 若要了解谁访问过“设备凭据”边栏选项卡，可以查询活动日志。  涉及到访问“设备详细信息”>“凭据”边栏选项卡的任何操作都会作为 `ListCredentials` 操作记录到活动日志。
 
     ![查询活动日志](media/data-box-logs/query-activity-log-1.png)
 
@@ -76,7 +76,7 @@ Data Box 或 Data Box Heavy 订单会经历以下步骤：订购、设置、数�
 
 ### <a name="errorxml-file"></a>Error.xml 文件
 
-请确保复制作业已完成且未出错。 如果复制过程中出错，请从“连接和复制”页下载日志。 ****  
+请确保复制作业已完成且未出错。 如果复制过程中出错，请从“连接和复制”页下载日志。
 
 - 如果将未经 512 字节对齐的文件复制到 Data Box 上的托管磁盘文件夹，该文件不会作为页 Blob 上传到临时存储帐户。 日志中会出现错误。 请删除该文件，并复制经过 512 字节对齐的文件。
 - 如果复制了 VHDX、动态 VHD 或差异 VHD（不支持这些文件），将在日志中看到错误。
@@ -203,7 +203,7 @@ BOM 或清单文件还会复制到 Azure 存储帐户。 可以使用 BOM 或清
 
 在上传到 Azure 期间，会执行循环冗余检查 (CRC) 计算。 系统会比较从数据复制开始到完成数据上传为止的 CRC。 如果 CRC 不匹配，则表示相应的文件无法上传。
 
-默认情况下，日志将写入一个名为  `copylog` 的容器中。 使用以下命名约定存储日志：
+默认情况下，日志将写入一个名为 `copylog` 的容器中。 使用以下命名约定存储日志：
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`。
 
@@ -354,7 +354,7 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>下载订单历史记录
 
-Azure 门户提供订单历史记录。 如果订单处理和设备清理（从磁盘中擦除数据）已完成，请转到设备订单，然后导航到“订单详细信息”。此时会看到“下载订单历史记录”选项。 ****   有关详细信息，请参阅[下载订单历史记录](data-box-portal-admin.md#download-order-history)。
+Azure 门户提供订单历史记录。 如果订单已完成并且设备清除 (磁盘中的数据擦除) 已完成, 则转到你的设备顺序并导航到 "**订单详细信息**"。 “下载订单历史记录”选项可用。 有关详细信息，请参阅[下载订单历史记录](data-box-portal-admin.md#download-order-history)。
 
 滚动浏览订单历史记录时，可以看到：
 

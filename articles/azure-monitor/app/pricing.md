@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/13/2019
 ms.author: dalek
-ms.openlocfilehash: abf23eda2474ecbcfcaf0dadb26327225213a9a6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4029a9e46b9c9bb7cbd677deff4a172d8fc982f8
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989231"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534593"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -92,7 +92,7 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 可通过以下操作降低数据量：
 
 * 使用[采样](../../azure-monitor/app/sampling.md)。 此项技术会降低数据速率，而无需倾斜指标。 你仍然可以在“搜索”中的相关项之间导航。 在服务器应用中，采样会自动运行。
-* [限制可在每个页面视图中报告的 Ajax 调用数](../../azure-monitor/app/javascript.md#detailed-configuration)或关闭 Ajax 报告。
+* [限制可在每个页面视图中报告的 Ajax 调用数](../../azure-monitor/app/javascript.md#configuration)或关闭 Ajax 报告。
 * [编辑 ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 关闭不需要的集合模块。 例如，用户可能认为不再需要性能计数器或依赖项数据。
 * 在单独的检测密钥之间拆分遥测。 
 * 预先聚合指标。 如果将对 TrackMetric 的调用放在应用中，则可通过使用重载降低流量，这种重载接受对一批度量值的平均偏差和标准偏差的计算结果。 也可使用[预先聚合包](https://www.myget.org/gallery/applicationinsights-sdk-labs)。

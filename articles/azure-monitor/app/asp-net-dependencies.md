@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: c2f115564c81f38dd437f1d3ff1e33d7d162a42f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 858508e949f8a880498e1a3d983dc76224010c31
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326447"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534616"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
 
@@ -90,7 +90,7 @@ ms.locfileid: "68326447"
 
 ## <a name="tracking-ajax-calls-from-web-pages"></a>跟踪来自网页的 AJAX 调用
 
-对于网页，Application Insights JavaScript SDK 将按[此处](javascript.md#ajax-performance)所述，以依赖项的形式自动收集 AJAX 调用。 本文档重点介绍来自服务器组件的依赖项。
+对于网页, Application Insights JavaScript SDK 会自动将 AJAX 调用作为依赖项收集。
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>使用高级 SQL 跟踪获取完整的 SQL 查询
 
@@ -113,7 +113,7 @@ ms.locfileid: "68326447"
 
 * [应用程序地图](app-map.md)直观显示应用与相邻组件之间的依赖关系。
 * [事务诊断](transaction-diagnostics.md)显示统一的关联服务器数据。
-* [“浏览器”选项卡](javascript.md#ajax-performance)显示从用户浏览器发出的 AJAX 调用。
+* [“浏览器”选项卡](javascript.md)显示从用户浏览器发出的 AJAX 调用。
 * 单击缓慢或失败的请求可以检查其依赖性调用。
 * [Analytics](#logs-analytics) 可用于查询依赖性数据。
 
@@ -123,13 +123,13 @@ ms.locfileid: "68326447"
 
 ### <a name="tracing-from-requests-to-dependencies"></a>从发往依赖项的请求开始跟踪
 
-打开“性能”选项卡，导航到顶部的操作旁边的“依赖项”选项卡。  
+打开“性能”选项卡，导航到顶部的操作旁边的“依赖项”选项卡。
 
 单击整个选项卡下面的某个**依赖项名称**。 选择一个依赖项后，右侧会显示该依赖项的持续时间分布图。
 
 ![在“性能”选项卡中，单击顶部的“依赖项”选项卡，然后单击图表中的某个依赖项名称](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-单击右下方的蓝色“示例”按钮，然后单击某个示例以查看端到端的事务详细信息。 
+单击右下方的蓝色“示例”按钮，然后单击某个示例以查看端到端的事务详细信息。
 
 ![单击示例查看端到端的事务详细信息](./media/asp-net-dependencies/3-end-to-end.png)
 
@@ -137,15 +137,15 @@ ms.locfileid: "68326447"
 
 不知道时间花到哪去了？ [Application Insights 探查器](../../azure-monitor/app/profiler.md)将跟踪对实时站点的 HTTP 调用，并显示代码中有哪些函数花费了最长的时间。
 
-## <a name="failed-requests"></a>失败的请求
+## <a name="failed-requests"></a>失败的请求数
 
 失败的请求还可能与依赖项的失败调用相关联。
 
-我们可以转到左侧的“失败”选项卡，然后单击顶部的“依赖项”选项卡。  
+我们可以转到左侧的“失败”选项卡，然后单击顶部的“依赖项”选项卡。
 
 ![单击失败的请求图表](./media/asp-net-dependencies/4-fail.png)
 
-在此处可以查看失败的依赖项计数。 若要获取有关某个失败依赖项的更多详细信息，请尝试单击底部表中的依赖项名称。 可以单击右下方的蓝色“依赖项”按钮获取端到端的事务详细信息。 
+在此处可以查看失败的依赖项计数。 若要获取有关某个失败依赖项的更多详细信息，请尝试单击底部表中的依赖项名称。 可以单击右下方的蓝色“依赖项”按钮获取端到端的事务详细信息。
 
 ## <a name="logs-analytics"></a>日志（分析）
 

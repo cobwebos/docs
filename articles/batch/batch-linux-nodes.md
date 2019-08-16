@@ -16,10 +16,10 @@ ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b4b381ff1f68935084e3dd30865cf539d4abbd16
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 08/16/2019
 ms.locfileid: "68323513"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>在 Batch 池中预配 Linux 计算节点
@@ -217,8 +217,8 @@ ImageReference imageReference = new ImageReference(
 
 | **发布者** | **产品** | **映像 SKU** | **版本** | **节点代理 SKU ID** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| 批处理 | rendering-centos73 | 呈现 | latest | batch.node.centos 7 |
-| 批处理 | rendering-windows2016 | 呈现 | latest | batch.node.windows amd64 |
+| 或批处理 | rendering-centos73 | 呈现 | latest | batch.node.centos 7 |
+| 或批处理 | rendering-windows2016 | 呈现 | latest | batch.node.windows amd64 |
 | 规范 | UbuntuServer | 16.04-LTS | latest | batch.node.ubuntu 16.04 |
 | 规范 | UbuntuServer | 14.04.5-LTS | latest | batch.node.ubuntu 14.04 |
 | Credativ | Debian | 9 | latest | batch.node.debian 9 |

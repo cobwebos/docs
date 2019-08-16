@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 8216aee1c27fd5bcb722648aa6380044e1431452
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.date: 08/15/2019
+ms.author: v-mohabe
+ms.openlocfilehash: df4f51f97798048b28c0193dbc61e07fc55c9adc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662472"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535072"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-retired"></a>自定义 Azure 安全中心中的 OS 安全配置 (已停用)
 
@@ -317,4 +317,4 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
 - [安全中心的常见配置标识符和基线规则](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。
 - 安全中心使用通用配置枚举 (CCE) 将唯一标识符分配到配置规则。 有关详细信息，请参阅 [CCE](https://nvd.nist.gov/config/cce/index)。
-- [补救安全配置](security-center-remediate-os-vulnerabilities.md)介绍了当 OS 配置与建议的安全配置规则不匹配时如何解决漏洞。
+- [补救安全配置](security-center-virtual-machine-protection.md)介绍了当 OS 配置与建议的安全配置规则不匹配时如何解决漏洞。

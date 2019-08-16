@@ -3,22 +3,22 @@ title: Azure 中的 Red Hat Enterprise Linux 映像 | Microsoft Docs
 description: 了解 Microsoft Azure 中的 Red Hat Enterprise Linux 映像
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: asinn826
+manager: BorisB2015
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 6/6/2019
+ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: 7d34e480dd3cf90f1948e83ea1d18c04f1dcdce2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 25b0ccfa5ed2b7b9ff031565fe7f14b1477769c4
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854442"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543848"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure 中的 Red Hat Enterprise Linux 映像
 本文介绍 Azure 市场中可用的 Red Hat Enterprise Linux (RHEL) 映像以及与其命名和保留相关的策略。
@@ -99,13 +99,15 @@ RedHat:RHEL:7.4:7.4.2019041718
 
 >[!NOTE]
 > 撰写本文时, 只有 RHEL 7.4 和更高版本的 EUS 支持。 RHEL < 不再支持 EUS = 7.3。
+>
+> 有关 RHEL EUS 可用性的详细信息, 请参阅[此处](https://access.redhat.com/support/policy/updates/errata)。
 
 次版本 |EUS 图像示例              |EUS 状态                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7。4      |RedHat: RHEL: 7.4: 7.4.2019041718 | 默认情况下, 将 EUS 2019 年4月版和更高版本发布的映像|
 RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | 默认情况下, 将 EUS 2019 年6月发布的映像 |
 RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | 默认情况下, 发布的映像可能为 2019, 以后将 EUS  |
-RHEL 8。0      |不可用                            | 当前没有 EUS 当前图像可用                 |
+RHEL 8。0      |不可用                            | Red Hat 中没有可用的 EUS                               |
 
 
 ## <a name="list-of-rhel-images-available"></a>可用的 RHEL 映像列表

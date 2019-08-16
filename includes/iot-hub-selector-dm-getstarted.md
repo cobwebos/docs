@@ -4,12 +4,12 @@ ms.author: wesmc
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 60c0c700dde5afda2ca93a92b334cbc4f0134043
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 239ea2eb4d5bc8d326d5ca503a18b149252dc1be
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667990"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558741"
 ---
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
@@ -24,7 +24,9 @@ ms.locfileid: "68667990"
 使用直接方法可从云中的后端应用启动设备管理操作（例如重新启动、恢复出厂设置以及固件更新）。 设备负责以下操作：
 
 * 处理从 IoT 中心发送的方法请求。
+
 * 在设备上启动相应的设备特定操作。
+
 * 通过向 IoT 中心 *报告的属性*，提供状态更新。
 
 可以使用云中的后端应用运行设备克隆查询，以报告设备管理操作的进度。

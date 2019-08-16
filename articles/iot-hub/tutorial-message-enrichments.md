@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 2c115bf0ad21e905e998692fbbc175f5aa52b86d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 77d900844705bb86ce4bcfeda31d6ee765cb8d45
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014246"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535005"
 ---
 # <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>教程：使用 Azure IoT 中心消息扩充（预览版）
 
@@ -69,7 +69,7 @@ ms.locfileid: "69014246"
 
 下面是脚本创建的资源。 **Enriched** 表示该资源用于扩充的消息。 **Original** 表示该资源用于未扩充的消息。
 
-| 名称 | ReplTest1 |
+| 姓名 | ReplTest1 |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | 容器名称 | original  |
@@ -84,7 +84,7 @@ ms.locfileid: "69014246"
 
 ```azurecli-interactive
 # This command retrieves the subscription id of the current Azure account.
-# This field is used when setting up the routing rules.
+# This field is used when setting up the routing queries.
 subscriptionID=$(az account show --query id -o tsv)
 
 # Concatenate this number onto the resources that have to be globally unique.
@@ -269,7 +269,7 @@ az iot hub route create \
 
 ## <a name="send-messages-to-the-iot-hub"></a>将消息发送到 IoT 中心
 
-为终结点配置消息扩充后，请运行模拟设备应用程序，以将消息发送到 IoT 中心。 为中心设置了可实现以下目的的规则：
+为终结点配置消息扩充后，请运行模拟设备应用程序，以将消息发送到 IoT 中心。 已设置中心, 其设置可实现以下目的:
 
 * 路由到存储终结点 ContosoStorageEndpointOriginal 的消息不会扩充，将会存储在存储容器 `original` 中。
 

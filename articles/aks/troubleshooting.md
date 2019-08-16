@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 1668e0b3b155804496b190f2ba66d220ba0dd219
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381948"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533517"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -86,10 +86,12 @@ ms.locfileid: "68381948"
 
 *此故障排除帮助是从 https://aka.ms/aks-pending-upgrade*
 
-如果当前正在执行升级操作，或者过去尝试了升级，但随后升级失败，则群集操作会受到限制。 若要诊断此问题，请运行 `az aks show -g myResourceGroup -n myAKSCluster -o table` 检索群集上的详细状态。 根据结果：
+具有单个节点池的群集或具有[多个节点池](use-multiple-node-pools.md)的群集的升级和缩放操作是互斥的。 不能同时升级和缩放群集或节点池。 相反, 每个操作类型必须在目标资源上完成, 然后才能在该相同资源上发出下一个请求。 因此, 操作会在活动升级或缩放操作发生或尝试后失败时受到限制。 
 
-* 如果群集正在升级，请等到该操作终止。 如果升级成功，请重试先前失败的操作。
-* 如果群集升级失败，请遵循上面所述的步骤
+为了帮助诊断问题, 请`az aks show -g myResourceGroup -n myAKSCluster -o table`运行以检索群集上的详细状态。 根据结果：
+
+* 如果群集正在升级，请等到该操作终止。 如果该操作成功, 请再次重试先前失败的操作。
+* 如果群集升级失败, 请按照上一部分中所述的步骤进行操作。
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>是否可以将我的群集移动到其他订阅，或者说，是否可以将包含我的群集的订阅移动到新租户？
 
