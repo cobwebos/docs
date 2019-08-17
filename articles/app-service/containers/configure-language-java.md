@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 825379c04c22b3f13e651455c490a58ad47169d8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b71cf55944c1049fa2c3ddca79f02a8b75b9b2ec
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967161"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563014"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux Java 应用
 
@@ -139,7 +139,7 @@ jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
 
 优化应用程序堆设置时，请查看应用服务计划详细信息，并考虑多个应用程序和部署槽位方面的需求，以得出最佳内存分配。
 
-如果要部署 JAR 应用程序, 该应用程序应命名为*app.config* , 以便内置映像可以正确地识别你的应用。 (Maven 插件会自动进行此重命名。)如果你不希望将 JAR 重命名为*app.config*, 则可以使用命令上传 shell 脚本来运行 JAR。 然后, 将此脚本的完整路径粘贴到门户的 "配置" 部分中的 "[启动文件](app-service-linux-faq.md#built-in-images)" 文本框中。
+如果要部署 JAR 应用程序, 该应用程序应命名为*app.config* , 以便内置映像可以正确地识别你的应用。 (Maven 插件会自动进行此重命名。)如果你不希望将 JAR 重命名为*app.config*, 则可以使用命令上传 shell 脚本来运行 JAR。 然后, 将此脚本的完整路径粘贴到门户的 "配置" 部分中的 "[启动文件](app-service-linux-faq.md#built-in-images)" 文本框中。 启动脚本不会从放置它的目录中运行。 因此, 在启动脚本中始终使用绝对路径引用文件 (例如: `java -jar /home/myapp/myapp.jar`)。
 
 ### <a name="turn-on-web-sockets"></a>启用 Web 套接字
 

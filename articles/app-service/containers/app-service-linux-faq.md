@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ec571555415a912a31b094722bd47f67210a0372
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 10452590c9415291cb2a5913aeef5c8a00cdfe12
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617351"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562996"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -41,13 +41,13 @@ ms.locfileid: "67617351"
 
 | 堆栈           | 预期值                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | 要启动 JAR 应用程序的命令 (例如， `java -jar my-app.jar --server.port=80`) |
-| Tomcat Wildfly | 一个脚本才能执行任何必要的配置的位置 (例如， `/home/site/deployments/tools/startup_script.sh`)          |
+| Java SE         | 用于启动 JAR 应用的命令 (例如`java -jar my-app.jar --server.port=80`) |
+| Tomcat、Wildfly | 用于执行任何所需配置的脚本的位置 (例如, `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | PM2 配置文件或脚本文件                                |
-| .NET Core       | 作为已编译的 DLL 名称 `dotnet <myapp>.dll`                                 |
-| Ruby            | 你想要初始化应用的 Ruby 脚本                     |
+| .NET Core       | 已编译的 DLL 名称`dotnet <myapp>.dll`                                 |
+| Ruby            | 要用于初始化应用的 Ruby 脚本                     |
 
-启动内置的 Docker 容器，但你的应用程序代码已启动后执行这些命令或脚本。
+这些命令或脚本在内置 Docker 容器启动后, 但在启动应用程序代码之前执行。
 
 ## <a name="management"></a>管理
 
@@ -60,12 +60,12 @@ ms.locfileid: "67617351"
 是的，可以通过源代码管理 (SCM) 站点实现此操作。
 
 > [!NOTE]
-> 还可以使用 SSH、SFTP 或 Visual Studio Code（用于实时调试 Node.js 应用）直接从本地开发计算机连接到应用容器。 有关详细信息，请参阅[远程调试和通过 SSH 登录到 Linux 上的应用服务](https://aka.ms/linux-debug)。
+> 还可以使用 SSH、SFTP 或 Visual Studio Code（用于实时调试 Node.js 应用）直接从本地开发计算机连接到应用容器。 有关详细信息，请参阅[远程调试和通过 SSH 登录到 Linux 上的应用服务](https://azure.github.io/AppService/2018/05/07/New-SSH-Experience-and-Remote-Debugging-for-Linux-Web-Apps.html)。
 >
 
 **如何通过 SDK 或 Azure 资源管理器模板创建 Linux 应用服务计划？**
 
-应将应用服务的“保留”  字段设置为 *true*。
+应将应用服务的“保留”字段设置为 *true*。
 
 ## <a name="continuous-integration-and-deployment"></a>持续集成和部署
 
@@ -85,7 +85,7 @@ ms.locfileid: "67617351"
 
 如果 Linux Web 应用的 Git 部署失败，可选择以下选项之一部署应用程序代码：
 
-- 使用持续交付（预览版）功能：可以在 Azure DevOps Git 存储库或要使用 Azure 持续交付的 GitHub 存储库中存储应用的源代码。 有关详细信息，请参阅[如何为 Linux Web 应用配置持续交付](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
+- 使用持续交付（预览版）功能：可以在 Azure DevOps Git 存储库或 GitHub 存储库中存储应用的源代码, 以使用 Azure 持续交付。 有关详细信息，请参阅[如何为 Linux Web 应用配置持续交付](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
 
 - 使用 [ZIP 部署 API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)：要使用此 API，请[通过 SSH 连接到 Web 应用](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support)，并转到要在其中部署代码的文件夹。 运行以下代码：
 
@@ -119,7 +119,7 @@ const io = require('socket.io')(server,{
 
 **我使用的是我自己的自定义容器。我希望平台将 SMB 共享装载到 `/home/` 目录。**
 
-如果`WEBSITES_ENABLE_APP_SERVICE_STORAGE`设置为**未指定**，或者设置为*true*，则`/home/`目录**将共享**跨规模实例和编写的文件**将保持不变**在重启后。 显式设置`WEBSITES_ENABLE_APP_SERVICE_STORAGE`到*false*将禁用装载。
+如果`WEBSITES_ENABLE_APP_SERVICE_STORAGE` **未指定**设置或将其设置为 true `/home/` , 则将跨缩放实例**共享**该目录, 并且写入**的文件将**在重新启动后保持。 显式设置`WEBSITES_ENABLE_APP_SERVICE_STORAGE`为*false*将禁用装入。
 
 **自定义容器需要很长时间才能启动，并且平台在它完成启动之前便重启了容器。**
 
@@ -153,16 +153,16 @@ SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件
 
 不需要，平台会处理共享前端上的 HTTPS 终止。
 
-## <a name="multi-container-with-docker-compose"></a>多容器 docker Compose
+## <a name="multi-container-with-docker-compose"></a>多容器与 Docker Compose
 
 **如何将 Azure 容器注册表 (ACR) 配置为用于多容器？**
 
-若要将 ACR 用于多容器，**所有容器映像**都必须托管在同一台 ACR 注册表服务器上。 一旦它们位于相同的注册表服务器上，你将需要创建应用程序设置，然后更新 Docker Compose 配置文件包含 ACR 映像名称。
+若要将 ACR 用于多容器，**所有容器映像**都必须托管在同一台 ACR 注册表服务器上。 一旦它们位于同一注册表服务器上, 你将需要创建应用程序设置, 然后更新 Docker Compose 配置文件以包含 ACR 映像名称。
 
 创建以下应用程序设置：
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (完整 URL，例如： `https://<server-name>.azurecr.io`)
+- DOCKER_REGISTRY_SERVER_URL (完整 URL, 例如: `https://<server-name>.azurecr.io`)
 - DOCKER_REGISTRY_SERVER_PASSWORD（在 ACR 设置中启用管理员访问权限）
 
 在配置文件内引用 ACR 映像，如下例所示：

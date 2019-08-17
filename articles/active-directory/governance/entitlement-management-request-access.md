@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b5be74b0734a27b02030e2c6995b43ef0c02162
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678111"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562183"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>请求访问 Azure AD 授权管理 (预览版) 中的访问包
 
@@ -29,6 +29,10 @@ ms.locfileid: "68678111"
 > Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+利用 Azure AD 的权利管理, 访问包可以一次性设置资源和策略, 并在访问包的生命周期内自动管理访问权限。 
+
+访问包管理器可以配置策略, 以要求用户有权访问程序包。 需要访问访问包的用户可以提交请求以获取访问权限。 本文介绍如何提交访问请求。
 
 ## <a name="sign-in-to-the-my-access-portal"></a>登录到 "我的 Access" 门户
 

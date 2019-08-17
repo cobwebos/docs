@@ -8,34 +8,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b87a4e2889e9e65a3173a4c11d9c92a33e8e70b7
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ad7905244ca190badf73c9a812a8f72282cbcdf3
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816244"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563188"
 ---
 # <a name="activity-management-overview"></a>活动管理概述
 
-CloudSimple 跟踪可能影响私有云功能的所有活动。 这些活动包括警报、事件、任务和审核活动。 [活动页面](https://docs.azure.cloudsimple.com/activity/)汇总了当前的所有活动, 并允许你向下钻取以获取更多详细信息。
+CloudSimple 跟踪可能影响私有云环境功能的所有活动。 活动包括警报、事件、任务和审核活动。 [活动页面](monitor-activity.md)汇总了当前的所有活动, 并允许你向下钻取以获取更多详细信息。
 
 ## <a name="events"></a>事件
 
-事件跟踪 CloudSimple 门户上的用户和系统活动。  事件显示与特定资源关联的活动和影响的严重性。  可以从 CloudSimple 门户查看事件。
+事件跟踪 CloudSimple 门户上的用户和系统活动。 事件显示与特定资源关联的活动和影响的严重性。  可以从 CloudSimple 门户查看事件。
 
 ## <a name="alerts"></a>警报
 
-警报是 CloudSimple 环境中任何重要活动的通知。  影响计费或用户访问的事件显示为警报。  可以从 CloudSimple 门户确认发出的警报。
+警报是 CloudSimple 环境中任何重要活动的通知。 影响计费或用户访问的事件显示为警报。  可以从 CloudSimple 门户确认警报。
 
 ## <a name="tasks"></a>任务
 
-任务跟踪任何用户操作, 需要超过30秒才能完成。  可以从 CloudSimple 门户监视任务的进度。  已完成的任务显示完成任务所需的总时间。
+任务跟踪完成时间超过30秒的任何用户操作。 可以从 CloudSimple 门户监视任务的进度。  对于已完成的任务, 此信息包括完成的总时间。
 
 ## <a name="audit"></a>审核
 
-审核日志跟踪用户执行的操作。  日志包含用户为操作提供的参数。  你可以使用审核日志来监视所有用户的用户活动。
+审核日志跟踪用户操作。 审核日志包含为用户提供的操作的参数。  你可以使用审核日志来监视所有用户的用户活动。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [查看帐户摘要](https://docs.azure.cloudsimple.com/account/)
-* [查看使用日志](https://docs.azure.cloudsimple.com/usage/)
+* [查看帐户摘要](account.md)

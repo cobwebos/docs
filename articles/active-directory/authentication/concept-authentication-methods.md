@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22c25c0a2b2f48baa3b57a8ad39ed4514c884826
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d18c74e908f6d5c4c3d2eefb0518add380fa1324
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533143"
+ms.locfileid: "69561315"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
@@ -31,7 +31,7 @@ Microsoft 强烈建议管理员允许用户选择超过最小所需数量的身�
 | 密码 | MFA 和 SSPR |
 | 安全问题 | 仅限 SSPR |
 | 电子邮件地址 | 仅限 SSPR |
-| Microsoft Authenticator 应用 | MFA 和 SSPR 公共预览版 |
+| Microsoft Authenticator 应用 | MFA 和 SSPR |
 | OATH 硬件令牌 | MFA 和 SSPR 公共预览版 |
 | 短信 | MFA 和 SSPR |
 | 语音呼叫 | MFA 和 SSPR |
@@ -41,7 +41,7 @@ Microsoft 强烈建议管理员允许用户选择超过最小所需数量的身�
 
 |     |
 | --- |
-| 将 MFA 和 SSPR 的 OATH 硬件令牌和移动应用通知或移动应用代码用作 Azure AD 自助密码重置方法是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| 适用于 MFA 和 SSPR 的 OATH 硬件令牌是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 ## <a name="password"></a>密码

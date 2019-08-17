@@ -1,5 +1,5 @@
 ---
-title: CreateUiDefitinion Azure 托管应用程序的创建体验 |Microsoft Docs
+title: CreateUiDefinition Azure 托管应用程序的创建体验 |Microsoft Docs
 description: 介绍了如何为 Azure 托管应用程序创建 UI 定义
 services: managed-applications
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 292f2995e7ff1f56c306b8c9859bdb323f21762d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1ee6d9332a2be5ccb22b7571b348e2e0aae78fb2
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847595"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563562"
 ---
-# <a name="createuidefitinionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefitinion Azure 托管应用程序的创建体验
+# <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition Azure 托管应用程序的创建体验
 
 本文档介绍了在创建托管应用程序时 Azure 门户用来定义用户界面的**createUiDefinition**文件的核心概念。
 

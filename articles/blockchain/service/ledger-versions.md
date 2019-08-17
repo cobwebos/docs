@@ -1,6 +1,6 @@
 ---
-title: Azure 区块链服务支持分类帐版本、 修补和升级
-description: 在 Azure 区块链服务，包括有关修补和系统管理系统和用户管理升级策略中的受支持的分类帐版本的概述。
+title: Azure 区块链 Service 支持的分类帐版本、修补和升级
+description: Azure 区块链服务中支持的分类帐版本的概述, 包括有关系统修补和系统管理的和用户管理的升级的策略。
 services: azure-blockchain
 keywords: 区块链
 author: PatAltimore
@@ -10,33 +10,33 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 53f65ec91a1e0f1e5a6322f0125bf83cd3e400b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cded49f14ae90f84b18c0a37059677c6c1fed99
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399107"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562787"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>支持的 Azure 区块链服务分类帐版本
 
-Azure 区块链服务使用基于以太坊[仲裁](https://www.goquorum.com/developers)为已知参与方，标识为联盟 Azure 区块链服务中的组中的专用事务的处理而设计的分类帐。
+Azure 区块链服务使用基于以太坊的[仲裁](https://www.goquorum.com/developers)分类帐在一组已知的参与者 (在 Azure 区块链服务中标识为协会) 中处理专用交易。
 
-目前，Azure 区块链服务支持[仲裁 2.2.1 版本](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.1)并[Tessera 事务管理器](https://github.com/jpmorganchase/tessera)。
+目前, Azure 区块链服务支持[仲裁版本 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3)和[Tessera 事务管理器](https://github.com/jpmorganchase/tessera)。
 
 ## <a name="managing-updates-and-upgrades"></a>管理更新和升级
 
-仲裁中的版本控制通过主要、 次要和修补程序版本。 例如，如果仲裁版本 2.0.1，发布类型将按以下方式分类：
+仲裁中的版本控制通过主要、次要和修补程序版本完成。 例如, 如果仲裁版本为 2.0.1, 则版本类型将按如下方式分类:
 
-|主版本 | Minor  | 修补程序  |
+|主版本 | 次版本  | 修补程序  |
 | :--- | :----- | :----- |
-| 2 | 0 | 第 | 
+| 2 | 0 | 1 | 
 
-可从仲裁的 30 天内 azure 区块链服务到正在运行的现有成员自动更新仲裁的修补程序的版本。
+Azure 区块链服务会自动将仲裁的修补程序版本更新为30天内的现有运行成员, 使其可从仲裁获得。
 
-## <a name="availability-of-new-ledger-versions"></a>新的分类帐版本
+## <a name="availability-of-new-ledger-versions"></a>新分类帐版本的可用性
 
-Azure 区块链服务的仲裁制造商提供可用的 60 天内提供的最新主版本号和次版本仲裁分类帐。 为财团预配新的成员和联盟时可以选择提供了最多四个次要版本。 目前不支持从升级为主要或次要版本。
+在从仲裁制造商处获取的60天内, Azure 区块链服务提供仲裁分类帐的最新主要和次要版本。 在预配新成员和协会时, 最多可为 consortia 提供四个次要版本。 当前不支持从升级到主要或次要版本。
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure 区块链服务中的限制](limits.md)
+[Azure 区块链服务中的限制](limits.md)

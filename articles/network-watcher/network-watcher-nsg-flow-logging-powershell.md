@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: eb48ffcc0ef0f6113e3880fc34f70ffd165ddd99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c34ed9c5f1b5e422ba9e4e0b12fbaf833c8a4a7c
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730313"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563467"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>使用 PowerShell 配置网络安全组流日志
 
@@ -90,6 +90,8 @@ Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
+> [!IMPORTANT]
+> 目前存在一个问题: 网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)不会根据保留策略设置从 Blob 存储中自动删除。 如果你有现有的非零保留策略, 我们建议你定期删除超出保留期的存储 blob, 以避免产生任何费用。 有关如何删除 NSG 流日志存储的详细信息, 请参阅[删除 NSG 流日志存储 blob](network-watcher-delete-nsg-flow-log-blobs.md)。
 
 有关日志结构的信息，请访问[网络安全组流日志概述](network-watcher-nsg-flow-logging-overview.md)
 

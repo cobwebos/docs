@@ -8,27 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a8e99da05f71cb01744111b41c301b11a0969057
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: eca3e316d866814f6727dd8ef2c3fa490a551383
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812710"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563163"
 ---
 # <a name="azure-network-connections-overview"></a>Azure 网络连接概述
 
 在区域中创建 CloudSimple 服务时, 该服务会:
 
-* 创建 Azure ExpressRoute 线路, 并将其附加到该区域中的服务
-* 允许使用 Azure ExpressRoute 从 CloudSimple 区域网络连接到 Azure 虚拟网络或本地网络
-* 在你的私有云环境中提供在你的 Azure 订阅或本地网络中运行的访问服务
+* 创建 Azure ExpressRoute 线路, 并将其附加到该区域中的服务。
+* 使用 Azure ExpressRoute 将 CloudSimple 区域网络连接到 Azure 虚拟网络或本地网络。
+* 提供对你的 Azure 订阅中运行的服务或你的私有云环境中的本地网络的访问。
 
-连接为:
-
-* 安全
-* 专用
-* 高带宽
-* 低延迟
+ExpressRoute 连接的带宽较低, 延迟较低。
 
 ## <a name="benefits"></a>优点
 
@@ -40,9 +35,9 @@ Azure 网络连接允许:
 
 ## <a name="azure-virtual-network-connection"></a>Azure 虚拟网络连接
 
-私有云可以使用 ExpressRoute 连接到 Azure 资源。  可以使用此连接从私有云访问 Azure 订阅中运行的不同资源。  此连接可让你将私有云网络扩展到 Azure 虚拟网络。
+私有云可以使用 ExpressRoute 连接到 Azure 资源。  ExpressRoute 连接允许从私有云访问 Azure 订阅中运行的资源。  此连接可让你将私有云网络扩展到 Azure 虚拟网络。
 
-![Azure ExpressRoute 与虚拟网络的连接](media/cloudsimple-azure-network-connection.png)
+[![Azure ExpressRoute 与虚拟网络的连接](media/cloudsimple-azure-network-connection.png)
 
 ## <a name="expressroute-connection-to-on-premises-network"></a>到本地网络的 ExpressRoute 连接
 
@@ -52,5 +47,5 @@ Azure 网络连接允许:
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取用于 CloudSimple 连接的 Azure 虚拟网络的对等互连信息](https://docs.azure.cloudsimple.com/virtual-network-connection)
-* [使用 ExpressRoute 从本地连接到 CloudSimple](https://docs.azure.cloudsimple.com/on-premises-connection)
+* [使用 ExpressRoute 将 Azure 虚拟网络连接到 CloudSimple](virtual-network-connection.md)
+* [使用 ExpressRoute 从本地连接到 CloudSimple](on-premises-connection.md)

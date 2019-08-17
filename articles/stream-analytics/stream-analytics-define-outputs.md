@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: a0da13e82811d500dee50c2231500245c7e011a6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3b242ff8ee3e635493cd501cf37ffc7c78a57d91
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383446"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563316"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -82,7 +82,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 | 存储帐户     | 存储帐户的名称（正在向该存储帐户发送输出）。               |
 | 存储帐户密钥 | 与存储帐户关联的密钥。                              |
 | 存储容器   | 对存储在 Azure Blob 服务中的 blob 进行逻辑分组。 将 blob 上传到 Blob 服务时，必须为该 blob 指定一个容器。 |
-| 路径模式 | 可选。 用于写入指定容器中的 blob 的文件路径模式。 <br /><br /> 在路径模式中，可以选择使用数据时间变量的一个或多个实例指定 blob 写入的频率： <br /> {date}、{time} <br /><br />可以使用自定义 blob 分区从事件数据中指定一个自定义 {field} 名称来对 blob 进行分区。 字段名称是字母数字，并且可以包含空格、连字符和下划线。 对自定义字段的限制包括以下内容： <ul><li>字段名称不区分大小写。 例如，服务无法区分列“ID”和列“id”。</li><li>不允许嵌套字段。 在作业查询中改用别名来“平展”字段。</li><li>不能使用表达式作为字段名称。</li></ul> <br />通过此功能可以在路径中使用自定义日期/时间格式说明符配置。 一次只能指定一个自定义日期和时间格式，并用 {datetime:\<specifier>} 关键字括起来。 \<specifier> 允许的输入为 yyyy、MM、M、dd、d、HH、H、mm、m、ss 或 s。 可以在路径中多次使用 {datetime:\<specifier>} 关键字以构成自定义的日期/时间配置。 <br /><br />示例: <ul><li>示例 1：cluster1/logs/{date}/{time}</li><li>示例 2：cluster1/logs/{date}</li><li>示例 3：cluster1/{client_id}/{date}/{time}</li><li>示例 4：cluster1/{datetime:ss}/{myField}，其中查询是：SELECT data.myField AS myField FROM Input;</li><li>示例 5：cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />创建的文件夹结构的时间戳遵循 UTC 而不是本地时间。<br /><br />文件命名采用以下约定： <br /><br />{路径前缀模式}/schemaHashcode_Guid_Number.extension<br /><br />示例输出文件：<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />有关此功能的详细信息，请参阅 [Azure 流分析自定义 blob 输出分区](stream-analytics-custom-path-patterns-blob-storage-output.md)。 |
+| 路径模式 | 可选。 用于写入指定容器中的 blob 的文件路径模式。 <br /><br /> 在路径模式中，可以选择使用数据时间变量的一个或多个实例指定 blob 写入的频率： <br /> {date}、{time} <br /><br />可以使用自定义 blob 分区从事件数据中指定一个自定义 {field} 名称来对 blob 进行分区。 字段名称是字母数字，并且可以包含空格、连字符和下划线。 对自定义字段的限制包括以下内容： <ul><li>字段名称不区分大小写。 例如，服务无法区分列“ID”和列“id”。</li><li>不允许嵌套字段。 在作业查询中改用别名来“平展”字段。</li><li>不能使用表达式作为字段名称。</li></ul> <br />通过此功能可以在路径中使用自定义日期/时间格式说明符配置。 一次只能指定一个自定义日期和时间格式，并用 {datetime:\<specifier>} 关键字括起来。 \<specifier> 允许的输入为 yyyy、MM、M、dd、d、HH、H、mm、m、ss 或 s。 可以在路径中多次使用 {datetime:\<specifier>} 关键字以构成自定义的日期/时间配置。 <br /><br />例如： <ul><li>示例 1：cluster1/logs/{date}/{time}</li><li>示例 2：cluster1/logs/{date}</li><li>示例 3：cluster1/{client_id}/{date}/{time}</li><li>示例 4：cluster1/{datetime:ss}/{myField}，其中查询是：SELECT data.myField AS myField FROM Input;</li><li>示例 5：cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />创建的文件夹结构的时间戳遵循 UTC 而不是本地时间。<br /><br />文件命名采用以下约定： <br /><br />{路径前缀模式}/schemaHashcode_Guid_Number.extension<br /><br />示例输出文件：<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />有关此功能的详细信息，请参阅 [Azure 流分析自定义 blob 输出分区](stream-analytics-custom-path-patterns-blob-storage-output.md)。 |
 | 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 例如：YYYY/MM/DD |
 | 时间格式 | 可选。 如果在前缀路径中使用时间令牌，可以指定组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV、Avro 和 Parquet。 |
@@ -271,6 +271,9 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions �
 
 当 Azure 流分析收到 Azure 函数发出的 413 ("http 请求实体过大") 异常时, 它将减少其发送到 Azure Functions 的批的大小。 在 Azure Function 代码中，使用此异常以确保 Azure 流分析不会发送过大的批。 此外, 请确保函数中使用的最大批处理计数和大小值与在流分析门户中输入的值一致。
 
+> [!NOTE]
+> 在测试连接过程中, 流分析会将空的批发送到 Azure Functions, 以测试两个是否工作之间的连接。 请确保函数应用处理空的批处理请求, 以确保测试连接通过。
+
 此外, 在某个时间范围内没有事件登陆的情况下, 不会生成任何输出。 因此, 不会调用**computeResult**函数。 此行为与内置窗口化聚合函数一致。
 
 ## <a name="custom-metadata-properties-for-output"></a>用于输出的自定义元数据属性 
@@ -302,7 +305,7 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions �
 | Azure SQL 数据库 | 是, 需要启用。 | 基于查询中的 PARTITION BY 子句。 | 如果启用了 "继承分区" 选项, 则会按照[完全可并行化查询](stream-analytics-scale-jobs.md)的输入分区进行。 若要详细了解如何在将数据加载到 Azure SQL 数据库时获得更好的写入吞吐量性能, 请参阅 azure[流分析输出到 AZURE Sql database](stream-analytics-sql-output-perf.md)。 |
 | Azure Blob 存储 | 是 | 使用路径模式中的事件字段的 {date} 和 {time} 标记。 选择日期格式, 如 YYYY/MM/DD、DD/MM/YYYY 或 MM-DD。 HH 用于时间格式。 可以通过单个自定义事件属性 {fieldname} 或 {datetime:\<specifier>} 对 blob 输出进行分区。 | 按照[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 | Azure 事件中心 | 是 | 是 | 按分区对齐方式变化。<br /> 如果事件中心输出的分区键与上游 (上一个) 查询步骤相同, 则写入器的数量与事件中心输出中的分区数相同。 每个编写器都使用[EventHubSender 类](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)将事件发送到特定分区。 <br /> 当事件中心输出的分区键与上游 (上一个) 查询步骤不一致时, 写入器数与该前一步骤中的分区数相同。 每个编写器都使用**EventHubClient**中的[SendBatchAsync 类](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)将事件发送到所有输出分区。 |
-| Power BI | 否 | 无 | 不适用。 |
+| Power BI | 否 | None | 不适用。 |
 | Azure 表存储 | 是 | 任何输出列。  | 按照[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 | Azure 服务总线主题 | 是 | 自动选择。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。| 与输出主题中的分区数量相同。  |
 | Azure 服务总线队列 | 是 | 自动选择。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。| 与输出队列中的分区数量相同。 |

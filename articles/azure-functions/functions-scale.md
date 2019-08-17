@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 94ef85836ef524b34cd1c51e4eda83695bc70507
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 348cd0eccc66adb29a7564bbbeca99fffec28957
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443942"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562857"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -51,7 +51,7 @@ ms.locfileid: "68443942"
 | | 消耗量计划 | 高级计划 | 专用计划 |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | GA | 预览 | GA |
-| Linux | 预览 | 预览 | GA |
+| Linux | GA | 预览 | GA |
 
 ## <a name="consumption-plan"></a>消耗量计划
 

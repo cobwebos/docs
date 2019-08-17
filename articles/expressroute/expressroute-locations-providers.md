@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: ae397c077ac87618b646883f9125c9da2df81bfd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: cce14a2f6e7f8aeca6c7f716d66520cef9484dde
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036569"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562634"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -188,7 +188,7 @@ ExpressRoute 位置 (有时称为 "对等互连位置" 或 "满足我的位置")
 ## <a name="c1partners"></a>通过其他服务提供商建立的连接
 | **Location** | **Exchange** | **连接提供商** |
 | --- | --- | --- |
-| **阿姆斯特丹** | Equinix、Interxion、Level 3 通信、Telecity | BICS、CloudXpress、Eurofiber、Fastweb s.p.a、、Kalaam 电信巴林 b. C、MainOne、Nianet、Post、Proximus、TDC Erhverv、电信 Italia 火花、Telekom Deutschland GmbH、Telia |
+| **阿姆斯特丹** | Equinix、Interxion、Level 3 通信、Telecity | BICS、CloudXpress、Eurofiber、Fastweb s.p.a、、、Kalaam 电信巴林 b. C、MainOne、Nianet、电信 Proximus、Erhverv、TDC Italia、电信 Telekom 火花、Deutschland GmbH Telia、 |
 | **亚特兰大** | Equinix| 王冠城堡
 | **开普敦** | Teraco | MTN |
 | **芝加哥** | Equinix| 王冠城堡, Windstream |

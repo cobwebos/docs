@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906ab4da941c6a0e1bc98f2f724141c719d04b89
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c739e827589a9fd6adeb10255f869acef29a4f16
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879425"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562209"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：计划 Azure AD 加入实现
 
@@ -69,7 +69,8 @@ Azure AD 联接适用于托管环境和联合环境。
 
 - **WS-Fed：** 将设备联接到 Azure AD 时需要此协议。
 - **WS-Trust：** 登录到 Azure AD 联接设备时需要此协议。
-使用 AD FS 时, 需要启用以下 WS-TRUST 终结点:`/adfs/services/trust/2005/usernamemixed`
+
+使用 AD FS 时，需要启用以下 WS-Trust 终结点：`/adfs/services/trust/2005/usernamemixed`
  `/adfs/services/trust/13/usernamemixed`
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`

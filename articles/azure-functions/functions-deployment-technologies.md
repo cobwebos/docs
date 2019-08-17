@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 7f931a72eab534bc2856e9e545b684d2b8ae7a60
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 88b6fbbd68f1f98e50ec0f04336a022dc1580a73
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444025"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562914"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -31,7 +31,7 @@ Azure Functions 支持跨平台的本地开发以及使用 Windows 和 Linux 作
 
 每种计划有不同的行为。 并非所有部署技术都适用于每种风格的 Azure Functions。 下图显示了操作系统和托管计划的每个组合所支持的部署技术:
 
-| 部署技术 | Windows 消耗计划 | Windows 高级计划（预览版） | Windows 专用计划  | Linux 消耗计划（预览版） | Linux 专用计划 |
+| 部署技术 | Windows 消耗计划 | Windows 高级计划（预览版） | Windows 专用计划  | Linux 消耗计划 | Linux 专用计划 |
 |-----------------------|:-------------------:|:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
 | 外部包 URL<sup>1</sup> |✔|✔|✔|✔|✔|
 | 压缩部署 |✔|✔|✔| |✔|
@@ -70,7 +70,7 @@ Azure Functions 中提供了以下部署方法。
 >
 >如果使用 Azure Blob 存储，请结合[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 使用专用容器，使 Functions 能够访问该包。 每当应用程序重启时，都会提取内容的副本。 引用必须在应用程序的整个生存期内有效。
 
->__何时使用：__ 对于消耗计划（预览版）中的、在 Linux 上运行的 Azure Functions，外部包 URL 是唯一受支持的部署方法。 更新函数应用引用的包文件时，必须[手动同步触发器](#trigger-syncing)，以告知 Azure 你的应用程序已更改。
+>__何时使用：__ 对于在消耗计划中运行 Linux 的 Azure Functions, 外部包 URL 是唯一受支持的部署方法。 更新函数应用引用的包文件时，必须[手动同步触发器](#trigger-syncing)，以告知 Azure 你的应用程序已更改。
 
 ### <a name="zip-deploy"></a>压缩部署
 
@@ -151,7 +151,7 @@ Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行
 
 下表显示了支持门户编辑的操作系统和语言：
 
-| | Windows 消耗计划 | Windows 高级计划（预览版） | Windows 专用计划 | Linux 消耗计划（预览版） | Linux 高级版 (预览)| Linux 专用计划 |
+| | Windows 消耗计划 | Windows 高级计划（预览版） | Windows 专用计划 | Linux 消耗计划 | Linux 高级版 (预览)| Linux 专用计划 |
 |-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
 | C# | | | | | |
 | C# 脚本 |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|

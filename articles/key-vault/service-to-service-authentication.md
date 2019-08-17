@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: f6a95f56b7b617b42c1cec9f64aae73b88b813da
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 30c99ae4150e0bd4645488b5bf75b8bbac0ee66f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934344"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562443"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -132,7 +132,7 @@ az account list
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>使用托管标识或用户分配标识运行应用程序 
 
-在启用托管标识的 Azure 应用服务或 Azure VM 上运行代码时，库自动使用托管标识。 
+在启用托管标识的 Azure 应用服务或 Azure VM 上运行代码时，库自动使用托管标识。 不需要更改代码, 但托管标识必须具有密钥保管库的*get*权限。 可以通过密钥保管库的*访问策略*为托管标识*获取*权限。
 
 或者, 您可以使用用户分配的标识进行身份验证。 有关用户分配的标识的详细信息, 请参阅[关于 Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。 若要使用用户分配的标识进行身份验证, 需要在连接字符串中指定用户分配的标识的客户端 ID。 连接字符串在下面的[连接字符串支持](#connection-string-support)部分中指定。
 

@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: 06f2db708385c4c3fbf8d005b701b633ac52776a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 420ac45b7d3b5e97772b1aa712ba6b8442ac1de2
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559135"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562759"
 ---
 # <a name="use-with-kubernetes-and-helm"></a>与 Kubernetes 和 Jenkins 配合使用
 
 在本地管理语音容器的一个选项是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 定义语音到文本和文本到语音的容器映像, 我们将创建一个 Kubernetes 包。 此包将部署到本地的 Kubernetes 群集。 最后, 我们将探讨如何测试已部署的服务和各种配置选项。 有关在没有 Kubernetes 业务流程的情况下运行 Docker 容器的详细信息, 请参阅[安装和运行语音服务容器](speech-container-howto.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 在本地使用语音容器之前的先决条件如下:
 
@@ -95,7 +95,7 @@ containerpreview      kubernetes.io/dockerconfigjson        1         30s
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-接下来, 我们将配置 Helm 图表值。 将以下 YAML 复制并粘贴到名为`config-values.yaml`的文件中。 有关自定义**认知服务语音本地 Helm 图表**的详细信息, 请参阅[自定义 Helm 图表](#customize-helm-charts)。 将和`billing` `apikey`值替换为自己的值。
+接下来, 我们将配置 Helm 图表值。 将以下 YAML 复制并粘贴到名为`config-values.yaml`的文件中。 有关自定义**认知服务语音本地 Helm 图表**的详细信息, 请参阅[自定义 Helm 图表](#customize-helm-charts)。 将`# {ENDPOINT_URI}` 和`# {API_KEY}`注释替换为您自己的值。
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -113,8 +113,8 @@ speechToText:
       - containerpreview # Or an existing secret
     args:
       eula: accept
-      billing: # < Your billing URL >
-      apikey: # < Your API Key >
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
 
 # text-to-speech configurations
 textToSpeech:
@@ -129,8 +129,8 @@ textToSpeech:
       - containerpreview # Or an existing secret
     args:
       eula: accept
-      billing: # < Your billing URL >
-      apikey: # < Your API Key >
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
 ```
 
 > [!IMPORTANT]
