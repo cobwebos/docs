@@ -238,7 +238,7 @@
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
     - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL'
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMySQL'
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: 视频

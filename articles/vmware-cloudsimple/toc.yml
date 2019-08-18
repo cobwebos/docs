@@ -101,11 +101,9 @@
         - name: 管理 CloudSimple 门户帐户
           items:
             - name: 查看帐户摘要
-              href: 'https://docs.azure.cloudsimple.com/account/'
+              href: account.md
             - name: 查看用户列表
-              href: 'https://docs.azure.cloudsimple.com/users/'
-            - name: 查看使用情况日志
-              href: 'https://docs.azure.cloudsimple.com/usage/'
+              href: users.md
             - name: 设置到私有云的虚拟网络连接
               href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
             - name: 编辑用户配置文件
@@ -129,7 +127,7 @@
             - name: 本地与私有云之间的 VPN 连接
               href: set-up-vpn.md
             - name: 通过 ExpressRoute 进行的本地网络连接
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: 通过 ExpressRoute 进行的 Azure 虚拟网络连接
               href: azure-expressroute-connection.md
         - name: VMware 平台

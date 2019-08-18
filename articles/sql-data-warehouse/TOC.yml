@@ -22,20 +22,6 @@
       href: release-notes-10-0-10106-0.md
     - name: 第 2 代区域升级计划
       href: gen2-migration-schedule.md
-    - name: 已存档的发行说明
-      items:
-        - name: 2018 年 9 月
-          href: release-notes-september-2018.md
-        - name: 2018 年 8 月
-          href: release-notes-august-2018.md
-        - name: 2018 年 7 月
-          href: release-notes-july-2018.md
-        - name: 2018 年 6 月
-          href: release-notes-june-2018.md
-        - name: 2018 年 5 月
-          href: release-notes-may-2018.md
-        - name: 2018 年 4 月
-          href: release-notes-april-2018.md
 - name: 快速入门
   expanded: true
   items:
