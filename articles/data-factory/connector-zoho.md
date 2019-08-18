@@ -45,7 +45,7 @@ Zoho 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为：**Zoho** | 是 |
-| 终结点 | Zoho 服务器的终结点 (`crm.zoho.com/crm/private`)。 | 是 |
+| endpoint | Zoho 服务器的终结点 (`crm.zoho.com/crm/private`)。 | 是 |
 | accessToken | 用于 Zoho 身份验证的访问令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
