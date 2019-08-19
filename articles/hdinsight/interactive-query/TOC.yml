@@ -193,6 +193,8 @@
       items:
         - name: Apache Tez 应用程序挂起
           href: ./interactive-query-troubleshoot-tez-hangs.md
+        - name: Apache Ambari Tez 视图加载缓慢
+          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Apache Hive LLAP 查询性能
           href: ./interactive-query-troubleshoot-query-performance.md
         - name: 减速器运行速度缓慢
@@ -203,24 +205,14 @@
           href: ./interactive-query-troubleshoot-permission-error-create-table.md
         - name: 超过 GC 开销限制
           href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
-        - name: Apache Ambari Tez 视图加载缓慢
-          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Apache Hive 视图中未显示错误消息
           href: ./interactive-query-troubleshoot-error-message-hive-view.md
         - name: 无法访问 Apache Hive 视图
           href: ./interactive-query-troubleshoot-inaccessible-hive-view.md
         - name: ZooKeeperHiveClientException - HiveServer2 配置
           href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
-        - name: Apache Hive LLAP 查询性能
-          href: ./interactive-query-troubleshoot-query-performance.md
         - name: 排查 HDInsight 群集速度慢或故障问题
           href: ../hdinsight-troubleshoot-failed-cluster.md
-        - name: Apache Hadoop HDFS 故障排除
-          href: ../hdinsight-troubleshoot-hdfs.md
-        - name: Apache HIVE 故障排除
-          href: ../hdinsight-troubleshoot-hive.md
-        - name: Apache Hadoop YARN 故障排除
-          href: ../hdinsight-troubleshoot-yarn.md
         - name: Apache Hadoop HDFS 故障排除
           href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
         - name: Apache HIVE 故障排除

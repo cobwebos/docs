@@ -6,8 +6,6 @@
   items:
     - name: 什么是数据科学 VM？
       href: overview.md
-    - name: 什么是深度学习 VM？
-      href: deep-learning-dsvm-overview.md
     - name: 什么是地理 AI 数据科学 VM？
       href: geo-ai-dsvm-overview.md
 - name: 快速入门
@@ -23,8 +21,6 @@
       href: provision-geo-ai-dsvm.md
 - name: 概念
   items:
-    - name: 发现 DSVM
-      href: dsvm-tools-overview.md
     - name: 深度学习和人工智能框架
       href: dsvm-deep-learning-ai-frameworks.md
     - name: 编程语言
@@ -49,8 +45,6 @@
       href: vm-do-ten-things.md
     - name: 使用 Linux DSVM
       href: linux-dsvm-walkthrough.md
-    - name: 使用深度学习 VM
-      href: use-deep-learning-dsvm.md
     - name: 使用地理 AI DSVM
       href: use-geo-ai-dsvm.md
     - name: 创建自动缩放的 DSVM 池
