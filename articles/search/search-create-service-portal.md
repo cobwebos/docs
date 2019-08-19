@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/09/2019
+ms.date: 08/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d0d1dbb81f00f500f3eb95c605ed0c15c634f624
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0649fea0b598ffaaaf2611c9d1324174105ee5d4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706826"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931540"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>在门户中创建 Azure 搜索服务
 
@@ -40,11 +40,26 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 
 ![导航到 Azure 搜索资源](./media/search-create-service-portal/find-search3.png "Azure 搜索的导航路径")
 
-## <a name="name-the-service-and-url-endpoint"></a>对服务和 URL 终结点进行命名
+## <a name="select-a-subscription"></a>选择一个订阅
 
-服务名称是 URL 终结点的一部分，API 调用针对此终结点发出：`https://your-service-name.search.windows.net`。 在 **URL** 字段中输入服务名称。
+如果有多个订阅，则选择一个同样具有数据或文件存储服务的订阅。 Azure 搜索可以自动检测 Azure 表和 Blob 存储、SQL 数据库和 Azure Cosmos DB，以通过[*索引器*](search-indexer-overview.md)编制索引，但仅限于同一订阅中的服务。
 
-例如，如果希望终结点为 `https://my-app-name-01.search.windows.net`，则输入 `my-app-name-01`。
+## <a name="set-a-resource-group"></a>设置资源组
+
+资源组是必需的，它用于全方面地管理所有资源，包括成本管理。 一个资源组可以包含一个服务，也可以包含同时使用的多个服务。 例如，如果使用 Azure 搜索为 Azure Cosmos DB 数据库编制索引，则可以将这两个服务纳入同一个资源组进行管理。 
+
+若不将资源合并到单个组中，或现有资源组中包含的资源用于不相关的解决方案，请新建一个仅用于 Azure 搜索资源的资源组。 
+
+使用该服务时，可以跟踪当前成本和预计的汇总成本（如屏幕截图中所示），或者向下滚动以查看各个资源的费用。
+
+![在资源组级别管理成本](./media/search-create-service-portal/resource-group-cost-management.png "在资源组级别管理成本")
+
+> [!TIP]
+> 删除资源组也会删除其中的服务。 对于使用多个服务项目的原型，将它们放在同一资源组中可在项目结束后更加轻松地进行清理。
+
+## <a name="name-the-service"></a>为服务命名
+
+在“实例详细信息”中的“URL”字段内提供服务名称。  该名称是 URL 终结点的一部分，API 调用针对此终结点发出：`https://your-service-name.search.windows.net`。 例如，如果希望终结点为 `https://myservice.search.windows.net`，则输入 `myservice`。
 
 服务名称要求：
 
@@ -54,41 +69,31 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 * 前两个字符或最后一个字符不能为短划线（“-”）
 * 任何位置都不能有连续的短划线（“--”）
 
-## <a name="select-a-subscription"></a>选择一个订阅
-
-如果有多个订阅，则选择一个同样具有数据或文件存储服务的订阅。 Azure 搜索可以自动检测 Azure 表和 Blob 存储、SQL 数据库和 Azure Cosmos DB，以通过[*索引器*](search-indexer-overview.md)编制索引，但仅限于同一订阅中的服务。
-
-## <a name="select-a-resource-group"></a>选择资源组
-
-资源组是结合使用的 Azure 服务和资源的集合。 例如，如果使用 Azure 搜索编制 SQL 数据库索引，则这两个服务应属于同一资源组。
-
-若不将资源合并到单个组中，或现有资源组中包含的资源用于不相关的解决方案，请新建一个仅用于 Azure 搜索资源的资源组。
-
 > [!TIP]
-> 删除资源组也会删除其中的服务。 对于使用多个服务项目的原型，将它们放在同一资源组中可在项目结束后更加轻松地进行清理。
+> 如果你认为今后会用到多个服务，我们建议根据命名约定在服务名称中包含区域（或位置）。 同一区域中的服务可以免费交换数据，因此，如果 Azure 搜索位于美国西部，而你在美国西部还有其他服务，则在决定如何合并或附加资源时，使用类似于 `mysearchservice-westus` 的名称就无需导航到属性页。
 
-## <a name="select-a-location"></a>选择一个位置
+## <a name="choose-a-location"></a>选择位置
 
 作为 Azure 服务，Azure 搜索可托管在世界各地的数据中心中。 支持的区域列表可在[定价页](https://azure.microsoft.com/pricing/details/search/)中找到。 
 
-如果你正在为由另一项 Azure 服务（Azure 存储、Azure Cosmos DB、Azure SQL 数据库）提供的数据编制索引，我们建议你在同一区域中创建 Azure 搜索服务以避免产生带宽费用。 当服务位于同一区域时，出站数据不收费。
+为多个服务选择同一位置可以最大程度地减少或避免带宽费用。 例如，在为另一 Azure 服务（Azure 存储、Azure Cosmos DB、Azure SQL 数据库）提供的数据编制索引时，在同一区域中创建 Azure 搜索服务可以避免带宽费用（当服务位于同一区域时，出站数据不会产生费用）。
 
-如果你使用的是认知服务 AI 扩充，请在你的认知服务资源所在的区域中创建服务。 *将 Azure 搜索和认知服务归置在同一区域中是 AI 扩充的必要条件*。
+此外，如果你使用的是认知搜索 AI 扩充，请在认知服务资源所在的区域中创建服务。 *将 Azure 搜索和认知服务归置在同一区域中是 AI 扩充的必要条件*。
 
 > [!Note]
 > 印度中部目前无法提供新服务。 对于已在印度中部的服务，你可以无限制地纵向扩展，并且你的服务在该区域是完全受支持的。 对此区域的限制是临时的，仅限于新服务。 如果该限制不再适用，我们将删除此说明。
 
-## <a name="select-a-pricing-tier-sku"></a>选择定价层 (SKU)
+## <a name="choose-a-pricing-tier-sku"></a>选择定价层 (SKU)
 
 [Azure 搜索当前以多个定价层提供](https://azure.microsoft.com/pricing/details/search/)：免费、基本或标准。 每个层都有自己的[容量和限制](search-limits-quotas-capacity.md)。 有关相关指南，请参阅[选择定价层或 SKU](search-sku-tier.md)。
 
-通常为生产性工作负荷选择“标准”，但大多数客户会从“免费”服务开始。
+“基本”和“标准”是生产工作负荷的最常用选项，但大多数客户会从“免费”服务开始。 各个层之间的主要差别在于分区大小和速度，以及可创建的对象数限制。
 
-创建服务后，便无法更改定价层。 如果以后需要更高或较低的层，则需要重新创建该服务。
+请记住，创建服务后无法更改定价层。 如果以后需要更高或较低的层，则需要重新创建该服务。
 
 ## <a name="create-your-service"></a>创建服务
 
-输入创建服务所需的输入内容。 
+提供所需的输入后，继续创建服务。 
 
 ![查看和创建服务](./media/search-create-service-portal/new-service3.png "查看和创建服务")
 
@@ -98,7 +103,7 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 
 ## <a name="get-a-key-and-url-endpoint"></a>获取密钥和 URL 终结点。
 
-除非是使用门户访问新服务，否则在访问新服务时，需要提供 URL 终结点和身份验证 API 密钥。
+除非使用门户访问新服务，否则以编程方式访问新服务需要提供 URL 终结点和身份验证 API 密钥。
 
 1. 在服务概览页的右侧找到并复制 URL 终结点。
 
@@ -141,7 +146,7 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 * 对于在全球部署的应用程序，可能需要在多个区域运行 Azure 搜索实例，以尽量减少应用程序国际流量的延迟。
 
 > [!NOTE]
-> 在 Azure 搜索中，无法分离索引工作负荷和查询工作负荷；因此永远无需为分离的工作负荷创建多个服务。 查询索引时，始终是在创建该索引时所在的服务中查询（不能在一个服务中创建索引，然后将其复制到另一个服务）。
+> 在 Azure 搜索中，无法分离索引操作和查询操作；因此永远无需为分离的工作负荷创建多个服务。 查询索引时，始终是在创建该索引时所在的服务中查询（不能在一个服务中创建索引，然后将其复制到另一个服务）。
 
 无需为实现高可用性添加第二个服务。 在同一服务中使用 2 个或更多个副本，便可实现查询的高可用性。 副本更新是连续的，这意味着当服务更新推出时，至少有一个副本能正常工作。有关运行时间的详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
 

@@ -1,5 +1,5 @@
 ---
-title: 了解如何将 Azure Redis 缓存与 Java 配合使用的快速入门 | Microsoft Docs
+title: 快速入门：将 Azure Redis 缓存与 Java 配合使用
 description: 本快速入门将创建一个使用 Azure Redis 缓存的新 Java 应用
 services: cache
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 01fb6f66ce71599a70a127a2b73eba6f848bf365
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: mvc, seo-java-august2019
+ms.openlocfilehash: 230bd4c0d53404ca5ac8d7e1385e8b0533880ca7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324140"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881139"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>快速入门：将 Azure Redis 缓存与 Java 配合使用
 
@@ -147,13 +147,13 @@ mvn exec:java -D exec.mainClass=example.demo.App
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
 >
 
-登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。 
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
 
-在“按名称筛选...”文本框中键入资源组的名称  。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”   。
+1. 在“按名称筛选”文本框中键入资源组的名称  。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，选择“...”，然后选择“删除资源组”   。
 
-![删除](./media/cache-java-get-started/cache-delete-resource-group.png)
+   ![删除](./media/cache-java-get-started/cache-delete-resource-group.png)
 
-系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”  。
+1. 系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后选择“删除”  。
 
 片刻之后，将会删除该资源组及其包含的所有资源。
 

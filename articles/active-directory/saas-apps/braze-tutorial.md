@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8d4a4bd21e0f7a7f483e139beb1840b5c3cc7f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3a32548bdafa999fe72e8b2f8e3b80961ebe3c9a
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165091"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032900"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-braze"></a>教程：Azure Active Directory 与 Braze 集成
 
@@ -115,7 +115,7 @@ ms.locfileid: "67165091"
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.braze.com/sign_in`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Braze 客户端支持团队](mailto:support@braze.com)，获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 对于子域，使用 Braze 实例 URL 中列出的协调子域。 例如，如果实例为 US-01，则 URL 为 https://dashboard-01.braze.com 。 这意味着子域将为“dashboard-01”。
 
 6. Braze 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
@@ -123,7 +123,7 @@ ms.locfileid: "67165091"
 
 7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ：
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | -----| --------------- |
     | 电子邮件 | user.userprincipalname |
     | first_name| user.givenname|
@@ -164,7 +164,7 @@ ms.locfileid: "67165091"
 
 ### <a name="configure-braze-single-sign-on"></a>配置 Braze 单一登录
 
-若要在 Braze  端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Braze 支持团队](mailto:support@braze.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Braze** 端配置单一登录，需要确保 Braze 帐户管理员已为帐户启用 SAML SSO。 启用后，可以转到“公司设置”>“安全设置”，并将 SAML SSO 部分切换为“打开”。 在此部分中，需要复制和粘贴下载的**证书(Base64)** ，并添加 SAML 名称。 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -218,7 +218,7 @@ ms.locfileid: "67165091"
 
 ### <a name="create-braze-test-user"></a>创建 Braze 测试用户
 
-在本部分中，将在 Braze 中创建一个名为“Britta Simon”的用户。 与  [Braze 支持团队](mailto:support@braze.com)协作，将用户添加到 Braze 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Braze 中创建一个名为“Britta Simon”的用户。 可以将用户添加到 Braze 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -1,18 +1,19 @@
 ---
 title: Azure Key Vault - 如何将软删除与 CLI 配合使用
 description: 使用 CLI 代码剪辑进行软删除的用例示例
+services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 02/01/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aa9b89b9afec069e97236b7652e0f1d37644f5cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: aef4061a8349e6602ac4394cb31bbe76b6cb63c0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640474"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976293"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
@@ -21,17 +22,17 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 - 支持 Key Vault 的可恢复删除
 - 支持密钥保管库对象、密钥、机密和证书的可恢复删除
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Azure CLI - 如果环境没有此设置，请参阅[使用 Azure CLI 管理 Key Vault](key-vault-manage-with-cli2.md)。
 
 有关 CLI Key Vault 的特定参考信息，请参阅 [Azure CLI Key Vault 参考](https://docs.microsoft.com/cli/azure/keyvault)。
 
-## <a name="required-permissions"></a>所需权限
+## <a name="required-permissions"></a>所需的权限
 
 Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，如下所示：
 
-| Operation | 描述 | 用户权限 |
+| Operation | 说明 | 用户权限 |
 |:--|:--|:--|
 |列出|列出已删除的密钥保管库。|Microsoft.KeyVault/deletedVaults/read|
 |恢复|还原已删除的密钥保管库。|Microsoft.KeyVault/vaults/write|
@@ -94,7 +95,7 @@ az keyvault delete --name ContosoVault
 ```azurecli
 az keyvault list-deleted
 ```
-- *ID*可用于恢复或清除时识别资源。 
+- ID 可用于在恢复或清除时识别资源  。 
 - 资源 ID是此保管库的原始资源 ID  。 由于此密钥保管库现在处于已删除状态，因此该资源 ID 不存在任何资源。 
 - “计划清除日期”表示如果不采取任何操作，将永久删除保管库  。 用于计算“计划清除日期”的默认保留期是 90 天  。
 
@@ -195,7 +196,7 @@ az keyvault set-policy --name ContosoVault --key-permissions get create delete l
 > [!IMPORTANT]
 > 清除密钥保管库或其包含的对象之一将永久删除它，这意味着无法恢复！
 
-清除函数用于永久删除 key vault 对象或整个密钥保管库，以前已软删除。 如前一部分中所示，启用了软删除功能的密钥保管库中存储的对象可能会经历多个状态：
+清除功能用于永久删除以前已软删除的密钥保管库对象或整个密钥保管库。 如前一部分中所示，启用了软删除功能的密钥保管库中存储的对象可能会经历多个状态：
 
 - **活动**：删除之前。
 - **已软删除**：删除之后，能够列出和恢复为活动状态。
@@ -227,7 +228,7 @@ az keyvault purge --location westus --name ContosoVault
 
 启用清除保护时，在长达 90 天的保留期到期之前，不能清除处于已删除状态的保管库或对象。 仍可以恢复此类保管库或对象。 此功能可增加保障，在保留期到期之前，永远不会永久删除保管库或对象。
 
-只有启用了软删除，才能启用清除保护。 
+仅当也启用了软删除时，才能启用清除保护。 
 
 若要在创建保管库时同时启用软删除和清除保护，请使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) 命令：
 

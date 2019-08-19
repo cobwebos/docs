@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1688651466ba6748e1254c9d33bb24435602868b
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 76ba284ec1a30322a24c762a1829b399f2583c6c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489167"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032921"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>教程：在 Azure AD 权利管理（预览版）中创建第一个访问包
 
@@ -44,7 +44,9 @@ ms.locfileid: "68489167"
 > * 演示内部用户如何请求该访问包
 > * 审批访问请求
 
-如果你没有 Azure AD Premium P2 或企业移动性 + 安全性 E5 许可证，请创建一个免费的[企业移动性 + 安全性 E5 试用版](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)。
+有关部署 Azure Active Directory 权利管理过程（包括创建第一个访问包）的分步演示，请观看以下视频：
+
+>[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,6 +54,8 @@ ms.locfileid: "68489167"
 
 - Azure AD Premium P2
 - 企业移动性 + 安全性 (EMS) E5 许可证
+
+如果你没有 Azure AD Premium P2 或企业移动性 + 安全性 E5 许可证，请创建一个免费的[企业移动性 + 安全性 E5 试用版](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)。
 
 ## <a name="step-1-set-up-users-and-group"></a>步骤 1：设置用户和组
 

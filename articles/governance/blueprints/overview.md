@@ -7,12 +7,12 @@ ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 5f403ee7d2bf4a0730ceaa9b5a95b3e7b11f3695
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: be7e3043172f988a429bbf02dec08bfbbc1a70b7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428770"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848437"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Azure 蓝图服务概述
 
@@ -79,7 +79,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 ## <a name="blueprint-assignment"></a>蓝图分配
 
-可将蓝图的每个已发布版本分配给现有订阅   。 在门户中，该蓝图默认使用最新发布的版本   。 若存在项目参数（或蓝图参数），则在分配过程中定义参数。
+可将蓝图的每个已发布版本（最大名称长度为 90 个字符）分配给现有订阅   。 在门户中，该蓝图默认使用最新发布的版本   。 若存在项目参数（或蓝图参数），则在分配过程中定义参数。
 
 ## <a name="permissions-in-azure-blueprints"></a>Azure 蓝图中的权限
 
@@ -110,6 +110,17 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 > [!NOTE]
 > 如果使用系统分配的托管标识，则 Azure 蓝图的服务主体需要在分配的订阅上具有**所有者**角色才能启用部署。 若使用门户，则会自动为部署授予和撤消此角色。 若使用 REST API，则必须手动授予此角色，但在部署完成后仍会自动撤消此角色。 如果使用用户分配的托管标识，则只有创建蓝图分配的用户才需要“所有者”  权限。
+
+## <a name="naming-limits"></a>命名限制
+
+下面是某些字段存在的限制列表：
+
+|Object|字段|允许的字符|最大 Length|
+|-|-|-|-|
+|蓝图|Name|字母、数字、连字符和句点|48|
+|蓝图|版本|字母、数字、连字符和句点|20|
+|蓝图分配|Name|字母、数字、连字符和句点|90|
+|蓝图项目|Name|字母、数字、连字符和句点|48|
 
 ## <a name="video-overview"></a>视频概述
 

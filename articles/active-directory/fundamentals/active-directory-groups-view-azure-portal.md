@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd3719e63b19066d61647b90ccae03ed841f3c6c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b4f2f6e86ce076e7c0464609252b027499a8307
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561894"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942883"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -53,7 +53,7 @@ ms.locfileid: "68561894"
 3. 选择“创建”  。
 
 ## <a name="create-a-new-user"></a>创建新用户
-创建名为 _Alain Charon_ 的新用户。 在将某个用户添加为组成员之前，该用户必须事先存在。 有关创建用户的详细信息，请参阅[如何添加或删除用户](add-users-azure-active-directory.md)。
+创建名为 _Alain Charon_ 的新用户。 在将某个用户添加为组成员之前，该用户必须事先存在。 首先查看“自定义域名”选项卡，以获取要在其中创建用户的经过验证的域名。 有关创建用户的详细信息，请参阅[如何添加或删除用户](add-users-azure-active-directory.md)。
 
 1. 依次选择“Azure Active Directory”、“用户”、“新建用户”。   
 

@@ -3,18 +3,17 @@ title: Azure IoT 中心简介 | Microsoft Docs
 description: 了解 Azure IoT 中心。 此 IoT 服务针对可缩放数据引入、设备管理和安全性而构建。
 author: nberdy
 ms.author: nberdy
-ms.date: 07/04/2018
+ms.date: 08/08/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
-manager: briz
-ms.openlocfilehash: 6dadd746bccd028a2b81a980d99ab47ec9e6e2a3
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726731"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950466"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？
 
@@ -26,7 +25,7 @@ IoT 中心的功能有助于生成可缩放且功能完整的 IoT 解决方案�
 
 ## <a name="scale-your-solution"></a>缩放解决方案
 
-IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件以支持 IoT 工作负载。 IoT 中心提供多种服务级别，最大限度地满足你的缩放需求。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/iot-hub/)。
+IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件以支持 IoT 工作负载。 有关缩放 IoT 中心的详细信息，请参阅 [IoT 中心缩放](iot-hub-scaling.md?branch=release-iotbasic)。 若要详细了解 IoT 中心提供的多层服务以及如何最好地满足可伸缩性需求，请查看[定价页](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
 ## <a name="secure-your-communications"></a>保护通信
 
@@ -50,7 +49,7 @@ IoT 中心为发送数据的设备提供保护信道。
 
 内置的消息路由功能可以灵活地设置基于规则的自动消息扇出：
 
-* 使用消息路由控制中心发送设备遥测的位置。
+* 使用[消息路由](iot-hub-devguide-messages-d2c.md)控制中心发送设备遥测的位置。
 
 * 无需支付额外费用，即可将消息路由到多个终结点。
 
@@ -110,7 +109,7 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 
 ## <a name="quotas-and-limits"></a>配额和限制
 
-每个 Azure 订阅都有默认的配额限制以防止服务滥用，并且这些限制可能会影响 IoT 解决方案的作用域。 每个订阅的当前限制是每个订阅 50 个 IoT 中心。 可以通过联系支持人员，请求增加配额。 有关配额限制的更多详细信息，请参阅：
+每个 Azure 订阅都有默认的配额限制以防止服务滥用，并且这些限制可能会影响 IoT 解决方案的作用域。 每个订阅的当前限制是每个订阅 50 个 IoT 中心。 可以通过联系支持人员，请求增加配额。 有关详细信息，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。 有关配额限制的详细信息，请参阅以下文章之一：
 
 * [Azure 订阅服务限制](../azure-subscription-service-limits.md)
 

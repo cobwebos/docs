@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5bf49538823ea50bca197a78ec54d4ddcae1ff
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: e078cb7daa787b9fe5e8bc996b36f0fef198f41c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708440"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879676"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>教程：将 Carbonite Endpoint Backup 与 Azure Active Directory 集成
 
@@ -125,27 +125,35 @@ ms.locfileid: "68708440"
 
 ### <a name="configure-carbonite-endpoint-backup-sso"></a>配置 Carbonite Endpoint Backup SSO
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Carbonite Endpoint Backup 公司站点。
+1. 若要在 Carbonite Endpoint Backup 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”   。
 
-1. 在左侧窗格中单击“公司”。 
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 Carbonite Endpoint Backup”  会将你定向到 Carbonite Endpoint Backup 应用程序。 在此处，请提供管理员凭据以登录到 Carbonite Endpoint Backup。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 Carbonite Endpoint Backup，请打开新的 Web 浏览器窗口，以管理员身份登录 Carbonite Endpoint Backup 公司站点，并执行以下步骤：
+
+4. 在左侧窗格中单击“公司”。 
 
     ![Carbonite Endpoint Backup 配置 ](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
-1. 单击“单一登录”。 
+5. 单击“单一登录”。 
 
     ![Carbonite Endpoint Backup 配置 ](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
-1. 单击“启用”，然后单击“编辑设置”进行配置。  
+6. 单击“启用”，然后单击“编辑设置”进行配置。  
 
     ![Carbonite Endpoint Backup 配置 ](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
-1. 在“单一登录”设置页上执行以下步骤： 
+7. 在“单一登录”设置页上执行以下步骤： 
 
     ![Carbonite Endpoint Backup 配置 ](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
-    1. 在“标识提供者名称”文本框中，输入标识提供者的名称，例如 **Microsoft Azure AD**。 
+    1. 在“标识提供者名称”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。  
 
-    1. 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。  
+    1. 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
     1. 单击“选择文件”，上传从 Azure 门户下载的“Certificate(Base64)”文件。  
 

@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: b929d0c0da2a812a1c8595536f09931e4edd0fd9
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: f8488195ed9e115843c2dc551af52d5da010ffe7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594916"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036707"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教程：使用 WPF 创建翻译应用
 
-在本教程中，你将生成一个使用 Azure 认知服务通过单个订阅密钥进行文本翻译、语言检测和拼写检查的 [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2017) 应用。 具体而言，该应用将调用文本翻译和[必应拼写检查](https://azure.microsoft.com/services/cognitive-services/spell-check/)中的 API。
+在本教程中，你将生成一个使用 Azure 认知服务通过单个订阅密钥进行文本翻译、语言检测和拼写检查的 [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) 应用。 具体而言，该应用将调用文本翻译和[必应拼写检查](https://azure.microsoft.com/services/cognitive-services/spell-check/)中的 API。
 
 什么是 WPF？ WPF 是可以创建桌面客户端应用的 UI 框架。 WPF 开发平台支持广泛的应用开发功能，包括应用模型、资源、控件、图形、布局、数据绑定、文档和安全性。 它是 .NET Framework 的一个子集，因此，如果你以前曾经在 .NET Framework 中使用 ASP.NET 或 Windows 窗体生成过应用，则应会熟悉该编程体验。 WPF 使用可扩展应用标记语言 (XAML) 为应用编程提供声明性模型，后续部分将提供相关介绍。
 
@@ -50,7 +50,7 @@ ms.locfileid: "68594916"
 
 * 一个 Azure 认知服务订阅。 [获取认知服务密钥](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#multi-service-resource)。
 * 一台 Windows 计算机
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) - Community 或 Enterprise 版
+* [Visual Studio 2019](https://www.visualstudio.com/downloads/) - Community 或 Enterprise 版
 
 > [!NOTE]
 > 对于本教程，我们建议在美国西部区域创建订阅。 否则，在完成本练习的过程中，需要在代码中更改终结点和区域。  
@@ -59,11 +59,13 @@ ms.locfileid: "68594916"
 
 要做的第一件事是在 Visual Studio 中设置项目。
 
-1. 打开 Visual Studio。 然后选择“文件”>“新建”>“项目”。 
-2. 在左侧面板中，找到并选择“Visual C#”。  然后在中间面板中选择“WPF 应用(.NET Framework)”。 
-   ![在 Visual Studio 中创建 WPF 应用](media/create-wpf-project-visual-studio.png)
-3. 将项目命名为 `MSTranslatorTextDemo`，将框架版本设置为 **.NET Framework 4.5.2 或更高版本**，然后单击“确定”  。
-4. 现已创建项目。 你会注意到，有两个选项卡已打开：`MainWindow.xaml` 和 `MainWindow.xaml.cs`。 在整个教程中，我们会将代码添加到这两个文件。 第一个文件用于应用的用户界面；第二个文件用于调用文本翻译和必应拼写检查。
+1. 打开 Visual Studio。 选择“创建新项目”。 
+1. 在“创建新项目”中，找到并选择“WPF 应用(.NET Framework)”。   可以在“语言”中选择“C#”，缩小选项范围。 
+1. 选择“下一步”，然后将项目命名为 `MSTranslatorTextDemo`。 
+1. 将框架版本设置为“.NET Framework 4.7.2”或更高版本，然后选择“创建”。  
+   ![在 Visual Studio 中输入名称和框架版本](media/name-wpf-project-visual-studio.png)
+
+现已创建项目。 你会注意到，有两个选项卡已打开：`MainWindow.xaml` 和 `MainWindow.xaml.cs`。 在整个教程中，我们会将代码添加到这两个文件。 我们将修改应用的用户界面的 `MainWindow.xaml`。 我们将修改用于调用文本翻译和必应拼写检查的 `MainWindow.xaml.cs`。
    ![检查环境](media/blank-wpf-project.png)
 
 在下一部分，我们会将程序集和 NuGet 包添加到项目以实现附加的功能，例如 JSON 分析。
@@ -76,28 +78,31 @@ ms.locfileid: "68594916"
 
 将程序集添加到项目，以序列化和反序列化对象，以及管理 HTTP 请求和响应。
 
-1. 在 Visual Studio 的解决方案资源管理器中找到你的项目（在右侧面板中）。 右键单击该项目，然后选择“添加”>“引用...”打开“引用管理器”。  
-   ![添加程序集引用](media/add-assemblies-sample.png)
-2. “程序集”选项卡列出了可供引用的所有 .NET Framework 程序集。 使用屏幕右上方的搜索栏来搜索这些引用，并将其添加到项目：
+1. 在 Visual Studio 的解决方案资源管理器中找到你的项目。 右键单击项目，然后选择“添加”>“引用”，打开“引用管理器”。  
+1. “程序集”选项卡列出了可供引用的所有 .NET Framework 程序集。  使用右上方的搜索栏来搜索引用。
+   ![添加程序集引用](media/add-assemblies-2019.png)
+1. 为项目选择以下引用：
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
    * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
-   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web)
+   * System.Web.Extensions
    * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
-3. 添加对项目的这些引用后，可以单击“确定”关闭“引用管理器”。  
+1. 添加对项目的这些引用后，可以单击“确定”关闭“引用管理器”。  
 
 > [!NOTE]
-> 若要详细了解程序集引用，请参阅[如何：使用引用管理器添加或删除引用](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2017)。
+> 若要详细了解程序集引用，请参阅[如何：使用引用管理器添加或删除引用](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019)。
 
 ### <a name="install-newtonsoftjson"></a>安装 NewtonSoft.Json
 
 我们的应用将使用 NewtonSoft.Json 来反序列化 JSON 对象。 遵照以下说明安装相应的包。
 
-1. 在 Visual Studio 的解决方案资源管理器中找到你的项目，并右键单击该项目。 选择“管理 NuGet 包...”。 
-2. 找到并选择“浏览”选项卡。 
-3. 在搜索栏中键入 [NewtonSoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)。
-   ![找到并安装 NewtonSoft.Json](media/add-nuget-packages.png)
-4. 选择该包并单击“安装”。 
-5. 安装完成后，关闭该选项卡。
+1. 在 Visual Studio 的解决方案资源管理器中找到你的项目，并右键单击该项目。 选择“管理 NuGet 包”。 
+1. 找到并选择“浏览”选项卡。 
+1. 在搜索栏中输入 [NewtonSoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)。
+
+    ![找到并安装 NewtonSoft.Json](media/nuget-package-manager.png)
+
+1. 选择该包并单击“安装”。 
+1. 安装完成后，关闭该选项卡。
 
 ## <a name="create-a-wpf-form-using-xaml"></a>使用 XAML 创建 WPF 窗体
 
@@ -124,7 +129,7 @@ ms.locfileid: "68594916"
 将代码添加到项目。
 
 1. 在 Visual Studio 中，选择 `MainWindow.xaml` 对应的选项卡。
-2. 将以下代码复制到项目中并保存。
+1. 将以下代码复制到项目中，然后选择“文件”>“保存 MainWindow.xaml”以保存所做的更改。 
    ```xaml
    <Window x:Class="MSTranslatorTextDemo.MainWindow"
            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -159,7 +164,7 @@ ms.locfileid: "68594916"
        </Grid>
    </Window>
    ```
-3. 现在，Visual Studio 中应会显示该应用的用户界面预览， 如上图所示。
+现在，Visual Studio 中应会显示该应用的用户界面预览， 如上图所示。
 
 窗体现已准备就绪。 接下来，让我们编写一些代码来使用文本翻译和必应拼写检查。
 
@@ -179,7 +184,7 @@ ms.locfileid: "68594916"
 整个项目封装在 `MainWindow : Window` 类中。 让我们先添加代码以设置订阅密钥、为文本翻译和必应拼写检查声明终结点，并初始化应用。
 
 1. 在 Visual Studio 中，选择 `MainWindow.xaml.cs` 对应的选项卡。
-2. 将预先填充的 `using` 语句替换为以下内容。  
+1. 将预先填充的 `using` 语句替换为以下内容。  
    ```csharp
    using System;
    using System.Windows;
@@ -191,7 +196,7 @@ ms.locfileid: "68594916"
    using System.Text;
    using Newtonsoft.Json;
    ```
-3. 找到 `MainWindow : Window` 类，并将其替换为以下代码：
+1. 找到 `MainWindow : Window` 类，并将其替换为以下代码：
    ```csharp
    {
        // This sample uses the Cognitive Services subscription key for all services. To learn more about
@@ -241,16 +246,16 @@ ms.locfileid: "68594916"
    // In the following sections, we'll add code below this.
    }
    ```
-   1. 添加认知服务订阅密钥并保存。
+1. 添加认知服务订阅密钥并保存。
 
 在此代码块中，我们已声明两个成员变量，其中包含有关可用翻译语言的信息：
 
 | 变量 | Type | 说明 |
 |----------|------|-------------|
-|`languageCodes` | 字符串数组 |缓存语言代码。 Translator 服务使用短代码（例如英语为 `en`）来标识语言。 |
+|`languageCodes` | 字符串数组 |缓存的语言代码。 Translator 服务使用短代码（例如英语为 `en`）来标识语言。 |
 |`languageCodesAndTitles` | 排序的字典 | 将用户界面中的“友好”名称映射回 API 中使用的短代码。 始终按字母顺序排序，不考虑大小写。 |
 
-然后，在 `MainWindow` 构造函数中，我们添加了使用 `HandleExceptions` 的错误处理机制。 这可以确保在异常未经处理时提供警报。 然后运行检查，以确认提供的订阅密钥长度是否为 32 个字符。 如果该密钥小于/大于 32 个字符，将引发错误。
+然后，在 `MainWindow` 构造函数中，我们添加了使用 `HandleExceptions` 的错误处理机制。 此错误处理可以确保在异常未经处理时提供警报。 然后运行检查，以确认提供的订阅密钥长度是否为 32 个字符。 如果该密钥小于/大于 32 个字符，将引发错误。
 
 如果密钥至少长度正确，则 `InitializeComponent()` 调用通过定位、加载和实例化主应用窗口的 XAML 说明来运转用户界面。
 
@@ -323,7 +328,7 @@ ms.locfileid: "68594916"
 
 ## <a name="populate-language-drop-down-menus"></a>填充语言下拉菜单
 
-用户界面是使用 XAML 定义的，因此除了调用 `InitializeComponent()` 以外，不需要执行过多的操作即可对其进行设置。 需要做的一件事是使用 `PopulateLanguageMenus()` 方法将友好的语言名称添加到“翻译源语言”和“翻译目标语言”下拉菜单。  
+用户界面是使用 XAML 定义的，因此除了调用 `InitializeComponent()` 以外，不需要执行过多的操作即可对其进行设置。 需要做的一件事是将友好的语言名称添加到“翻译源语言”和“翻译目标语言”下拉菜单。   `PopulateLanguageMenus()` 方法用于添加这些名称。
 
 1. 在 Visual Studio 中，打开 `MainWindow.xaml.cs` 对应的选项卡。
 2. 将以下代码添加到项目中的 `GetLanguagesForTranslate()` 方法下面：
@@ -413,7 +418,7 @@ ms.locfileid: "68594916"
 
 ## <a name="spell-check-the-source-text"></a>对源文本执行拼写检查
 
-现在，我们将创建一个方法，用于通过必应拼写检查 API 对源文本执行拼写检查。 这可以确保文本翻译 API 返回准确的翻译。 单击“翻译”按钮时，对源文本所做的任何更正将连同翻译请求一起传递。 
+现在，我们将创建一个方法，用于通过必应拼写检查 API 对源文本执行拼写检查。 拼写检查可以确保文本翻译 API 返回准确的翻译。 单击“翻译”按钮时，对源文本所做的任何更正将连同翻译请求一起传递。 
 
 1. 在 Visual Studio 中，打开 `MainWindow.xaml.cs` 对应的选项卡。
 2. 将以下代码添加到项目中的 `DetectLanguage()` 方法下面：
@@ -480,7 +485,7 @@ private string CorrectSpelling(string text)
 要做的最后一件事是，创建一个在用户界面中单击“翻译”按钮时要调用的方法。 
 
 1. 在 Visual Studio 中，打开 `MainWindow.xaml.cs` 对应的选项卡。
-2. 将以下代码添加到项目中的 `CorrectSpelling()` 方法下面并保存：  
+1. 将以下代码添加到项目中的 `CorrectSpelling()` 方法下面并保存：  
    ```csharp
    // ***** PERFORM TRANSLATION ON BUTTON CLICK
    private async void TranslateButton_Click(object sender, EventArgs e)
@@ -537,7 +542,7 @@ private string CorrectSpelling(string text)
        {
            request.Method = HttpMethod.Post;
            request.RequestUri = new Uri(uri);
-           request.Content = new StringContent(requestBody, Encoding.UTF8, "app/json");
+           request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
            request.Headers.Add("Ocp-Apim-Subscription-Key", COGNITIVE_SERVICES_KEY);
            request.Headers.Add("Ocp-Apim-Subscription-Region", "westus");
            request.Headers.Add("X-ClientTraceId", Guid.NewGuid().ToString());

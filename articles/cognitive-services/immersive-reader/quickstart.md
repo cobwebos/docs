@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 978b56f5c38a154c79544c7deb5d49396b1deff9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0d67385975db13539c28745eede4fb288a0daedd
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688866"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989139"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>快速入门：创建用于启动沉浸式阅读器的 Web 应用 (C#)
 
@@ -223,5 +223,7 @@ namespace QuickstartSampleWebApp.Controllers
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[教程](./tutorial.md)，了解使用沉浸式阅读器 SDK 还可以做什么
-* 探索[沉浸式阅读器 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沉浸式阅读器 SDK 参考](./reference.md)
+* 查看 [Node.js 教程](./tutorial-nodejs.md)，了解通过 Node.js 使用沉浸式阅读器 SDK 还可以做什么
+* 查看 [Python 教程](./tutorial-python.md)，了解通过 Python 使用沉浸式阅读器 SDK 还可以做什么
+* 查看 [iOS 教程](./tutorial-ios-picture-immersive-reader.md)，了解通过 Swift 使用沉浸式阅读器 SDK 还可以做什么
+* 浏览[沉浸式阅读器 SDK ](https://github.com/microsoft/immersive-reader-sdk)和[沉浸式阅读器 SDK 参考](./reference.md)

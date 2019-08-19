@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.openlocfilehash: 4a99acaaae0c0efee61d97605a81d74549e02509
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 72e509a9a7f820c26895bdfac9216b0373729f6c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569201"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947102"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>快速入门：使用 Node.js 查询 Azure SQL 数据库
 
@@ -56,13 +56,13 @@ ms.locfileid: "68569201"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
+2. 转到“SQL 数据库”或“SQL 托管实例”页。  
 
 3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称    。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标  。 
 
 ## <a name="create-the-project"></a>创建项目
 
-打开命令提示符，然后创建一个名为 sqltest 的文件夹  。 导航到已创建的文件夹，并运行以下命令：
+打开命令提示符，然后创建一个名为 sqltest 的文件夹  。 打开已创建的文件夹，并运行以下命令：
 
   ```bash
   npm init -y

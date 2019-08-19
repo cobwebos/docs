@@ -7,18 +7,18 @@ author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: conceptual
+ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
-ms.openlocfilehash: 16f75095c7e4461c84a1fea28cc620c49b6c5bca
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.openlocfilehash: fc3a4bb1fad836d8f3dadd5a06169b705ef4d4fc
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565687"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881257"
 ---
-# <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>通过 REST API 和 Java 使用计算机视觉功能
+# <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>将计算机视觉功能与 REST API 和 Java 一起使用
 
 本教程展示 Azure 认知服务计算机视觉 REST API 的功能。
 
@@ -34,13 +34,13 @@ ms.locfileid: "68565687"
 > * 读取图像中的印刷体文本
 > * 读取图像中的手写文本
 
-Java Swing 形式的应用程序已编写好，但尚无功能。 在本教程中，你将添加特定于计算机视觉 REST API 的代码，以补全应用程序的功能。
+Java Swing 表单应用程序已编写完毕，但不具备功能。 在本教程中，你将添加特定于计算机视觉 REST API 的代码，以补全应用程序的功能。
 
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="platform-requirements"></a>平台要求
 
-本教程是采用 NetBeans IDE 开发的。 具体而言，Java SE 版的 NetBeans 可[在此处下载](https://netbeans.org/downloads/index.html)。
+本教程是采用 NetBeans IDE 开发的。 具体而言，Java SE 版的 NetBeans 可[在此处下载](https://netbeans.org/downloads/index.html)  。
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>订阅计算机视觉 API 并获得订阅密钥
 
@@ -51,30 +51,30 @@ Java Swing 形式的应用程序已编写好，但尚无功能。 在本教程�
 ### <a name="download-the-project"></a>下载项目
 
 1. 转到[认知服务 Java 计算机视觉教程](https://github.com/Azure-Samples/cognitive-services-java-computer-vision-tutorial)存储库。
-1. 单击“克隆”或“下载”按钮。
-1. 单击“下载 ZIP”，下载教程项目的 .zip 文件。
+1. 单击“克隆”或“下载”按钮  。
+1. 单击“下载 ZIP”，下载教程项目的 .zip 文件  。
 
 无需提取 .zip 文件的内容，因为 NetBeans 从 .zip 文件导入项目。
 
 ### <a name="import-the-tutorial-project"></a>导入教程项目
 
-将 cognitive-services-java-computer-vision-tutorial-master.zip 文件导入 NetBeans。
+将 cognitive-services-java-computer-vision-tutorial-master.zip 文件导入 NetBeans  。
 
-1. 在 NetBeans 中单击“文件” > “导入项目” > “从 ZIP...”。随即出现“从 ZIP 导入项目”对话框。
-1. 在“ZIP 文件:”字段中，单击“浏览”按钮找到 cognitive-services-java-computer-vision-tutorial-master.zip 文件，然后单击“打开”。
-1. 单击“从 ZIP 导入项目”对话框中的“导入”。
-1. 在“项目”面板中，展开“ComputerVision” > “源包” > &lt;默认包&gt;。 
-   某些版本的 NetBeans 使用“src”而不是“源包” > &lt;默认包&gt;。 在这种情况下，展开“src”。
-1. 双击“MainFrame.java”，将文件加载到 NetBeans 编辑器。 随即出现 MainFrame.java 文件的“设计”选项卡。
-1. 单击“源”选项卡查看 Java 源代码。
+1. 在 NetBeans 中单击“文件” > “导入项目” > “从 ZIP...”    。随即出现“从 ZIP 导入项目”对话框  。
+1. 在“ZIP 文件:”字段中，单击“浏览”按钮找到 cognitive-services-java-computer-vision-tutorial-master.zip 文件，然后单击“打开”     。
+1. 单击“从 ZIP 导入项目”对话框中的“导入”   。
+1. 在“项目”面板中，展开“ComputerVision” > “源包” > &lt;默认包&gt;     。 
+   某些版本的 NetBeans 使用“src”而不是“源包” > &lt;默认包&gt;    。 在这种情况下，展开“src”  。
+1. 双击“MainFrame.java”，将文件加载到 NetBeans 编辑器  。 随即出现 MainFrame.java 文件的“设计”选项卡   。
+1. 单击“源”选项卡查看 Java 源代码  。
 
 ### <a name="build-and-run-the-tutorial-project"></a>生成并运行教程项目
 
-1. 按 F6 生成并运行教程应用程序。
+1. 按 F6 生成并运行教程应用程序  。
 
     在教程应用程序中，单击选项卡以显示该功能的窗格。 按钮的方法为空，因此不执行任何操作。
 
-    窗口底部是字段“订阅密钥”和“订阅区域”。 必须使用有效的订阅密钥和该订阅密钥正确的区域填充这些字段。 要获取订阅密钥，请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。 如果是通过该链接获取的免费试用版的订阅密钥，则默认区域 **westcentralus** 是订阅密钥的正确区域。
+    窗口底部是字段“订阅密钥”和“订阅区域”   。 必须使用有效的订阅密钥和该订阅密钥正确的区域填充这些字段。 要获取订阅密钥，请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。 如果是通过该链接获取的免费试用版的订阅密钥，则默认区域 **westcentralus** 是订阅密钥的正确区域。
 
 1. 退出教程应用程序。
 
@@ -88,11 +88,11 @@ Java Swing 形式的应用程序已编写好，但尚无功能。 在本教程�
 
 要完成教程应用程序的分析功能，请执行以下步骤：
 
-#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>为分析按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>为“分析”按钮添加事件处理程序代码
 
-analyzeImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 AnalyzeImage 方法来分析图像。 当 AnalyzeImage 返回时，该方法会在“响应”文本区域中显示格式化的 JSON 响应，从 JSONObject 中提取第一个标题，并显示标题以及标题正确的可信度。
+analyzeImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 AnalyzeImage 方法来分析图像   。 当 AnalyzeImage 返回时，该方法会在“响应”文本区域中显示格式化的 JSON 响应，从 JSONObject 中提取第一个标题，并显示标题以及标题正确的可信度    。
 
-将以下代码复制粘贴到 analyzeImageButtonActionPerformed 方法。
+将以下代码复制粘贴到 analyzeImageButtonActionPerformed 方法  。
 
 > [!NOTE]
 > NetBeans 不允许粘贴到方法定义行 (```private void```) 或该方法的右大括号。 要复制代码，请复制方法定义和右大括号之间的代码行，并将其粘贴到方法的内容中。
@@ -143,9 +143,9 @@ analyzeImageButtonActionPerformed 事件处理程序方法将表单清空、显�
 
 #### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
-AnalyzeImage 方法包装 REST API 调用以分析图像。 该方法返回描述图像的 JSONObject，或者如果出现错误，则返回 null。
+AnalyzeImage 方法包装 REST API 调用以分析图像  。 该方法返回描述图像的 JSONObject，或者如果出现错误，则返回 null   。
 
-复制 AnalyzeImage 方法并将其粘贴到 analyzeImageButtonActionPerformed 方法的正下方。
+复制 AnalyzeImage 方法并将其粘贴到 analyzeImageButtonActionPerformed 方法的正下方   。
 
 ```java
     /**
@@ -204,7 +204,7 @@ AnalyzeImage 方法包装 REST API 调用以分析图像。 该方法返回描�
 
 #### <a name="run-the-analyze-function"></a>运行 Analyze 函数
 
-按 F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入图像 URL 进行分析，然后单击“分析图像”按钮以分析图像并查看结果。
+按 F6 运行应用程序  。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 输入图像 URL 进行分析，然后单击“分析图像”按钮以分析图像并查看结果  。
 
 ### <a name="recognize-a-landmark"></a>识别地标
 
@@ -214,9 +214,9 @@ AnalyzeImage 方法包装 REST API 调用以分析图像。 该方法返回描�
 
 #### <a name="add-the-event-handler-code-for-the-form-button"></a>为表单按钮添加事件处理程序代码
 
-landmarkImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 LandmarkImage 方法来分析图像。 当 LandmarkImage 返回时，该方法会在“响应”文本区域中显示格式化的 JSON 响应，然后从 JSONObject 中提取第一个地标名称并在窗口中显示该名称以及正确识别地标的可信度。
+landmarkImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 LandmarkImage 方法来分析图像   。 当 LandmarkImage 返回时，该方法会在“响应”文本区域中显示格式化的 JSON 响应，然后从 JSONObject 中提取第一个地标名称并在窗口中显示该名称以及正确识别地标的可信度    。
 
-将以下代码复制粘贴到 landmarkImageButtonActionPerformed 方法。
+将以下代码复制粘贴到 landmarkImageButtonActionPerformed 方法  。
 
 > [!NOTE]
 > NetBeans 不允许粘贴到方法定义行 (```private void```) 或该方法的右大括号。 要复制代码，请复制方法定义和右大括号之间的代码行，并将其粘贴到方法的内容中。
@@ -267,9 +267,9 @@ landmarkImageButtonActionPerformed 事件处理程序方法将表单清空、显
 
 #### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
-LandmarkImage 方法包装 REST API 调用以分析图像。 该方法返回描述图像中找到的地标的 JSONObject，或者如果出现错误，则返回 null。
+LandmarkImage 方法包装 REST API 调用以分析图像  。 该方法返回描述图像中找到的地标的 JSONObject，或者如果出现错误，则返回 null   。
 
-复制 LandmarkImage 方法并将其粘贴到 landmarkImageButtonActionPerformed 方法的正下方。
+复制 LandmarkImage 方法并将其粘贴到 landmarkImageButtonActionPerformed 方法的正下方   。
 
 ```java
      /**
@@ -328,7 +328,7 @@ LandmarkImage 方法包装 REST API 调用以分析图像。 该方法返回描�
 
 #### <a name="run-the-landmark-function"></a>运行 landmark 函数
 
-按 F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 单击“地标”选项卡，输入地标图像的 URL，然后单击“分析图像”按钮以分析图像并查看结果。
+按 F6 运行应用程序  。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 单击“地标”选项卡，输入地标图像的 URL，然后单击“分析图像”按钮以分析图像并查看结果   。
 
 ### <a name="recognize-celebrities"></a>识别名人
 
@@ -336,11 +336,11 @@ LandmarkImage 方法包装 REST API 调用以分析图像。 该方法返回描�
 
 要完成教程应用程序的名人功能，请执行以下步骤：
 
-#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>为名人按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>为“名人”按钮添加事件处理程序代码
 
-celebritiesImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 CelebritiesImage 方法来分析图像。 当 CelebritiesImage 返回时，该方法会在“响应”文本区域中显示格式化的 JSON 响应，然后从 JSONObject 中提取第一个名人姓名并在窗口中显示该姓名以及正确识别名人的可信度。
+celebritiesImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 CelebritiesImage 方法来分析图像   。 当 CelebritiesImage 返回时，该方法会在“响应”文本区域中显示格式化的 JSON 响应，然后从 JSONObject 中提取第一个名人姓名并在窗口中显示该姓名以及正确识别名人的可信度    。
 
-将以下代码复制粘贴到 celebritiesImageButtonActionPerformed 方法。
+将以下代码复制粘贴到 celebritiesImageButtonActionPerformed 方法  。
 
 > [!NOTE]
 > NetBeans 不允许粘贴到方法定义行 (```private void```) 或该方法的右大括号。 要复制代码，请复制方法定义和右大括号之间的代码行，并将其粘贴到方法的内容中。
@@ -391,9 +391,9 @@ celebritiesImageButtonActionPerformed 事件处理程序方法将表单清空、
 
 #### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
-CelebritiesImage 方法包装 REST API 调用以分析图像。 该方法返回描述图像中找到的名人的 JSONObject，或者如果出现错误，则返回 null。
+CelebritiesImage 方法包装 REST API 调用以分析图像  。 该方法返回描述图像中找到的名人的 JSONObject，或者如果出现错误，则返回 null   。
 
-复制 CelebritiesImage 方法并将其粘贴到 celebritiesImageButtonActionPerformed 方法的正下方。
+复制 CelebritiesImage 方法并将其粘贴到 celebritiesImageButtonActionPerformed 方法的正下方   。
 
 ```java
      /**
@@ -452,19 +452,19 @@ CelebritiesImage 方法包装 REST API 调用以分析图像。 该方法返回�
 
 #### <a name="run-the-celebrities-function"></a>运行 celebrities 函数
 
-按 F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 单击“名人”选项卡，输入名人图像的 URL，然后单击“分析图像”按钮以分析图像并查看结果。
+按 F6 运行应用程序  。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 单击“名人”选项卡，输入名人图像的 URL，然后单击“分析图像”按钮以分析图像并查看结果   。
 
 ### <a name="intelligently-generate-a-thumbnail"></a>智能生成缩略图
 
-计算机视觉的缩略图功能可通过图像生成缩略图。 通过使用“智能裁剪”功能，缩略图功能将识别图像中的兴趣区域并集中于此区域创建缩略图，进而生成视觉上更美观的缩略图。
+计算机视觉的缩略图功能可通过图像生成缩略图。 通过使用“智能裁剪”功能，缩略图功能将识别图像中的兴趣区域并集中于此区域创建缩略图，进而生成视觉上更美观的缩略图  。
 
 要完成教程应用程序的缩略图功能，请执行以下步骤：
 
-#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>为缩略图按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>为“缩略图”按钮添加事件处理程序代码
 
-thumbnailImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 getThumbnailImage 方法来创建缩略图。 当 getThumbnailImage 返回时，该方法会显示生成的缩略图。
+thumbnailImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 getThumbnailImage 方法来创建缩略图   。 当 getThumbnailImage 返回时，该方法会显示生成的缩略图  。
 
-将以下代码复制粘贴到 thumbnailImageButtonActionPerformed 方法。
+将以下代码复制粘贴到 thumbnailImageButtonActionPerformed 方法  。
 
 > [!NOTE]
 > NetBeans 不允许粘贴到方法定义行 (```private void```) 或该方法的右大括号。 要复制代码，请复制方法定义和右大括号之间的代码行，并将其粘贴到方法的内容中。
@@ -508,9 +508,9 @@ thumbnailImageButtonActionPerformed 事件处理程序方法将表单清空、�
 
 #### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
-getThumbnailImage 方法包装 REST API 调用以分析图像。 该方法返回包含缩略图的 BufferedImage，或者如果出现错误，则返回 null。 在 jsonError 字符串数组的第一个元素中将返回错误消息。
+getThumbnailImage 方法包装 REST API 调用以分析图像  。 该方法返回包含缩略图的 BufferedImage，或者如果出现错误，则返回 null   。 在 jsonError 字符串数组的第一个元素中将返回错误消息  。
 
-复制以下 getThumbnailImage 方法，并将其粘贴到 thumbnailImageButtonActionPerformed 方法的正下方。
+复制以下 getThumbnailImage 方法，并将其粘贴到 thumbnailImageButtonActionPerformed 方法的正下方   。
 
 ```java
      /**
@@ -575,7 +575,7 @@ getThumbnailImage 方法包装 REST API 调用以分析图像。 该方法返回
 
 #### <a name="run-the-thumbnail-function"></a>运行 thumbnail 函数
 
-按 F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 单击“缩略图”选项卡，输入图像 URL，然后单击“生成缩略图”按钮以分析图像并查看结果。
+按 F6 运行应用程序  。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 单击“缩略图”选项卡，输入图像 URL，然后单击“生成缩略图”按钮以分析图像并查看结果   。
 
 ### <a name="read-printed-text-ocr"></a>读取印刷体文本 (OCR)
 
@@ -585,9 +585,9 @@ getThumbnailImage 方法包装 REST API 调用以分析图像。 该方法返回
 
 #### <a name="add-the-event-handler-code-for-the-ocr-button"></a>为 OCR 按钮添加事件处理程序代码
 
-ocrImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 OcrImage 方法来分析图像。 当 OcrImage 返回时，该方法会在“响应”文本区域中以格式化 JSON 的形式显示检测到的文本。
+ocrImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 OcrImage 方法来分析图像   。 当 OcrImage 返回时，该方法会在“响应”文本区域中以格式化 JSON 的形式显示检测到的文本   。
 
-将以下代码复制粘贴到 ocrImageButtonActionPerformed 方法。
+将以下代码复制粘贴到 ocrImageButtonActionPerformed 方法  。
 
 > [!NOTE]
 > NetBeans 不允许粘贴到方法定义行 (```private void```) 或该方法的右大括号。 要复制代码，请复制方法定义和右大括号之间的代码行，并将其粘贴到方法的内容中。
@@ -625,9 +625,9 @@ ocrImageButtonActionPerformed 事件处理程序方法将表单清空、显示 U
 
 #### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
-OcrImage 方法包装 REST API 调用以分析图像。 该方法返回从调用返回的 JSON 数据的 JSONObject，或者如果出现错误，则返回 null。
+OcrImage 方法包装 REST API 调用以分析图像  。 该方法返回从调用返回的 JSON 数据的 JSONObject，或者如果出现错误，则返回 null   。
 
-复制以下 OcrImage 方法并将其粘贴到 ocrImageButtonActionPerformed 方法的正下方。
+复制以下 OcrImage 方法并将其粘贴到 ocrImageButtonActionPerformed 方法的正下方   。
 
 ```java
      /**
@@ -686,7 +686,7 @@ OcrImage 方法包装 REST API 调用以分析图像。 该方法返回从调用
 
 #### <a name="run-the-ocr-function"></a>运行 OCR 函数
 
-按 F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 单击“OCR”选项卡，输入印刷体文本图像的 URL，然后单击“读取图像”按钮以分析图像并查看结果。
+按 F6 运行应用程序  。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 单击“OCR”选项卡，输入印刷体文本图像的 URL，然后单击“读取图像”按钮以分析图像并查看结果   。
 
 ### <a name="read-handwritten-text-handwriting-recognition"></a>读取手写文本（识别手写体）
 
@@ -694,11 +694,11 @@ OcrImage 方法包装 REST API 调用以分析图像。 该方法返回从调用
 
 要完成教程应用程序的手写体识别功能，请执行以下步骤：
 
-#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>为手写按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>为“手写”按钮添加事件处理程序代码
 
-handwritingImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 HandwritingImage 方法来分析图像。 当 HandwritingImage 返回时，该方法会在“响应”文本区域中以格式化 JSON 的形式显示检测到的文本。
+handwritingImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 HandwritingImage 方法来分析图像   。 当 HandwritingImage 返回时，该方法会在“响应”文本区域中以格式化 JSON 的形式显示检测到的文本   。
 
-将以下代码复制粘贴到 handwritingImageButtonActionPerformed 方法。
+将以下代码复制粘贴到 handwritingImageButtonActionPerformed 方法  。
 
 > [!NOTE]
 > NetBeans 不允许粘贴到方法定义行 (```private void```) 或该方法的右大括号。 要复制代码，请复制方法定义和右大括号之间的代码行，并将其粘贴到方法的内容中。
@@ -736,11 +736,11 @@ handwritingImageButtonActionPerformed 事件处理程序方法将表单清空、
 
 #### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
-HandwritingImage 方法包装分析图像时所需的两个 REST API 调用。 由于手写体识别非常耗时，因此分两步执行。 第一个调用提交图像进行分析；第二个调用检索完成处理时检测到的文本。
+HandwritingImage 方法包装分析图像时所需的两个 REST API 调用  。 由于手写体识别非常耗时，因此分两步执行。 第一个调用提交图像进行分析；第二个调用检索完成处理时检测到的文本。
 
-检索文本后，HandwritingImage 方法返回描述文本和文本位置的 JSONObject，或者如果出现错误，则返回 null。
+检索文本后，HandwritingImage 方法返回描述文本和文本位置的 JSONObject，或者如果出现错误，则返回 null    。
 
-复制以下 HandwritingImage 方法并将其粘贴到 handwritingImageButtonActionPerformed 方法的正下方。
+复制以下 HandwritingImage 方法并将其粘贴到 handwritingImageButtonActionPerformed 方法的正下方   。
 
 ```java
      /**
@@ -844,10 +844,10 @@ HandwritingImage 方法包装分析图像时所需的两个 REST API 调用。 �
 
 #### <a name="run-the-handwriting-function"></a>运行 handwriting 函数
 
-按 F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 单击“读取手写文本”选项卡，输入手写文本图像的 URL，然后单击“读取图像”按钮以分析图像并查看结果。
+按 F6 运行应用程序  。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 单击“读取手写文本”选项卡，输入手写文本图像的 URL，然后单击“读取图像”按钮以分析图像并查看结果   。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本指南中，已使用计算机视觉 REST API 和 Java 来测试了许多可用的图像分析功能。 接下来，请参阅参考文档以了解有关所涉及 API 的更多信息。
+在本指南中，你使用了计算机视觉 REST API 和 Java 来测试多种可用的图像分析功能。 接下来，请参阅参考文档以了解有关所涉及 API 的更多信息。
 
 - [计算机视觉 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)

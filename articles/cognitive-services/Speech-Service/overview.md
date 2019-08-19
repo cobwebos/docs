@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d722d7e2886008aa5aa3acff8095fcf35ac38d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4ea6f04dbfd18a6e561a255988ba0465b9e017be
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554173"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967611"
 ---
 # <a name="what-are-the-speech-services"></a>什么是语音服务？
 
-Azure 语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用[语音 SDK](speech-sdk-reference.md)、[语音设备 SDK](https://aka.ms/sdsdk-quickstart) 或 [REST API](rest-apis.md) 可以轻松在应用程序、工具和设备中启用语音。
+语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用[语音 SDK](speech-sdk-reference.md)、[语音设备 SDK](https://aka.ms/sdsdk-quickstart) 或 [REST API](rest-apis.md) 可以轻松在应用程序、工具和设备中启用语音。
 
 > [!IMPORTANT]
 > 语音服务已替代必应语音 API、语音翻译和自定义语音。 有关迁移说明，请参阅*操作指南 > 迁移*。
@@ -41,14 +41,14 @@ Azure 语音服务在单个 Azure 订阅中统合了语音转文本、文本转�
 
 了解 Azure 语音服务的新增功能。
 
+* 2019 年 8 月
+  * **新教程**：[使用语音 SDK、C# 为机器人启用语音](tutorial-voice-enable-your-bot-speech-sdk.md)
 * 2019 年 7 月
-    * 发布了语音 SDK 1.6.0。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
+  * 发布了语音 SDK 1.6.0。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
 * 2019 年 5 月 - [会话听录](conversation-transcription-service.md)、[呼叫中心听录](call-center-transcription.md)和[语音优先虚拟助手](voice-first-virtual-assistants.md)的文档现已提供。
 * 2019 年 5 月
-    * 发布了语音 SDK 1.5.1。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
-    * 发布了语音 SDK 1.5.0。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
-* 2019 年 4 月 - 发布了语音 SDK 1.4.0，支持在 Windows 和 Linux 上使用 C++、C# 和 Java 进行文本到语音转换（Beta 版本）。 另外，SDK 现在对于 Linux 上的 C++ 和 C# 支持 MP3 和 Opus/Ogg 音频格式。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
-* 2019 年 3 月 - 现在有一个新的用于文本到语音转换 (TTS) 的终结点可用，可以返回特定区域中可用语音的完整列表。 另外，TTS 现在支持新区域。 有关详细信息，请参阅[文本到语音转换 API 参考 (REST)](rest-text-to-speech.md)。
+  * 发布了语音 SDK 1.5.1。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
+  * 发布了语音 SDK 1.5.0。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
 
 ## <a name="try-speech-services"></a>试用语音服务
 
@@ -67,6 +67,7 @@ Azure 语音服务在单个 Azure 订阅中统合了语音转文本、文本转�
 有机会使用语音服务后，请尝试学习有关如何使用语音 SDK 和 LUIS 从语音中识别意向的教程。
 
 * [教程：使用适用于 C# 的语音 SDK 和 LUIS 从语音中识别意向](how-to-recognize-intents-from-speech-csharp.md)
+* [教程：使用语音 SDK、C# 为机器人启用语音](tutorial-voice-enable-your-bot-speech-sdk.md)
 * [教程：生成 Flask 应用以翻译文本、分析情绪以及将翻译后的文本合成为语音 - REST](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
 ## <a name="get-sample-code"></a>获取示例代码
@@ -76,6 +77,7 @@ GitHub 中提供了每个 Azure 语音服务的示例代码。 这些示例涵�
 * [语音转文本、文本转语音和语音翻译示例 (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 * [批量听录示例 (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 * [文本转语音示例 (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+* [语音优先虚拟助手示例 (SDK)](https://aka.ms/csspeech/samples)
 
 ## <a name="customize-your-speech-experience"></a>自定义语音体验
 

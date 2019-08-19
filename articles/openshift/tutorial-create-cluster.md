@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/14/2019
-ms.openlocfilehash: 9fd37a8343858f44719fe4422b3b9994db42f8af
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 4c186787af08a565dc100dfbd79d166688d89d8f
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672471"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013443"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>教程：创建 Azure Red Hat OpenShift 群集
 
@@ -140,7 +140,7 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 ```
 
 > [!NOTE]
-> 如果有错误指出主机名不可用，原因可能是群集名称不唯一。 尝试删除原始应用注册，并使用不同的群集名称重新执行[创建新应用注册] (howto-aad-app-configuration.md#create-a-new-app-registration) 中的步骤（省略创建新用户和安全组的步骤）。
+> 如果有错误指出主机名不可用，原因可能是群集名称不唯一。 尝试删除原始应用注册，并使用不同的群集名称重新执行[创建新应用注册](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)中的步骤（省略创建新用户和安全组的步骤）。
 
 `az openshift create` 将在几分钟后完成。
 

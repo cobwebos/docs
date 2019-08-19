@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07341c1ad30f1242bdff430826fdc82c45e09dac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07b0f8112f724c857ffb46378f7aa7ef605b9bbb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086075"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943288"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>教程：Azure Active Directory 与 Zscaler Beta 的集成
 
@@ -112,13 +112,13 @@ ms.locfileid: "67086075"
     > [!NOTE]
     > 此值不是真实值。 请使用实际的“登录 URL”值更新此值。 若要获取此值，请联系 [Zscaler Beta 客户端支持团队](https://www.zscaler.com/company/contact)。
 
-5. Zscaler Beta 应用程序需要特定格式的 SAML 断言。 必须将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。 选择“编辑”打开“用户属性”对话框。 ****   
+5. Zscaler Beta 应用程序需要特定格式的 SAML 断言。 必须将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。 选择“编辑”  以打开“用户属性”  对话框。
 
     ![“用户属性”对话框](common/edit-attribute.png)
 
 6. Zscaler Beta 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以添加 SAML 令牌属性，如下表所示。  
     
-    | 名称 | 源属性 | 
+    | Name | 源属性 | 
     | ---------------| --------------- |
     | memberOf  | user.assignedroles |
 

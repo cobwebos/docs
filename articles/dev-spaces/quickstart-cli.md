@@ -11,10 +11,10 @@ description: 使用 Azure Dev Spaces 在 AKS 上部署微服务
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: 39fb7658140a2eda948cd0dc0e58d71b0b9a053b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67710670"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>快速入门：使用 Azure Dev Spaces 在 Kubernetes 上开发应用程序
@@ -72,7 +72,7 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="prepare-the-application"></a>准备应用程序
 
-若要在 Azure Dev Spaces 上运行应用程序，需要 Dockerfile 和 Helm 图表。 对于某些语言，如 [Java][java-quickstart], [.NET core][netcore-quickstart] 和 [Node.js][nodejs-quickstart]，Azure Dev Spaces 客户端工具可以生成所需的所有资产。 对于其他许多语言，如 Go、PHP 和 Python，只要你可以提供有效的 Dockerfile，该客户端工具就可以生成 Helm 图表。
+若要在 Azure Dev Spaces 上运行应用程序，需要 Dockerfile 和 Helm 图表。 对于某些语言，如 [Java][java-quickstart]、 [.NET core][netcore-quickstart] 和 [Node.js][nodejs-quickstart]，Azure Dev Spaces 客户端工具可以生成所需的所有资产。 对于其他许多语言，如 Go、PHP 和 Python，只要你可以提供有效的 Dockerfile，该客户端工具就可以生成 Helm 图表。
 
 使用 `azds prep` 命令生成 Docker 和 Helm 图表资产，以便在 Kubernetes 中运行应用程序：
 

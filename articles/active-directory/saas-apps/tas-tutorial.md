@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 279f6970c34acbfea645366f7e965c830873fdbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: efd64830c0d9afa83838adef96cf1c103b4485e8
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089179"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>教程：Azure Active Directory 与 TAS 集成
 
@@ -150,7 +150,7 @@ ms.locfileid: "67089179"
 
     c. 在“输入 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    d. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容，然后将其粘贴到“输入证书”框中 ****  。
+    d. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容，然后将其粘贴到“输入证书”框中  。
 
     e. 在“输入新 IP”文本框中，键入 IP 地址  。
 
@@ -216,7 +216,7 @@ ms.locfileid: "67089179"
 
 ### <a name="create-tas-test-user"></a>创建 TAS 测试用户
 
-在本部分中，将在 TAS 中创建一个名为“Britta Simon”的用户。 请与 [TAS 支持团队](mailto:support@combtas.com)合作，在 TAS 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 TAS 中创建一个名为“Britta Simon”的用户。 请与 [TAS 支持团队](mailto:support@combtas.com)协作，将用户添加到 TAS 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

@@ -11,12 +11,12 @@ ms.author: sihhu
 ms.reviewer: trbye
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6692f64dc7e7fa2799f9095af39171a2ddc0e76d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 241c84212132ee90e71291758e094cb4a115f2e2
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360919"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018080"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>教程：为回归建模准备数据
 
@@ -56,7 +56,7 @@ ms.locfileid: "68360919"
 
 执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。  完成这些步骤后，运行 **tutorials/regression-part1-data-prep.ipynb** Notebook。
 
-1. 完成 [Azure 机器学习 Python 快速入门](setup-create-workspace.md#sdk)中的安装步骤，创建 Miniconda 环境并安装 SDK。  如果愿意，可以跳过**创建工作区**部分，但是本教程系列的[第 2 部分](tutorial-auto-train-models.md)将需要使用工作区。
+1. 完成 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 中的安装步骤。
 1. 安装 SDK 时，会自动安装 `azureml-dataprep` 包。
 1. 克隆 [GitHub 存储库](https://aka.ms/aml-notebooks)。
 
@@ -100,10 +100,11 @@ import azureml.dataprep as dprep
 
 ```python
 from IPython.display import display
-dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 
-green_path = "/".join([dataset_root, "green-small/*"])
-yellow_path = "/".join([dataset_root, "yellow-small/*"])
+green_path = "https://dprepdata.blob.core.windows.net/demo/green-small/*"
+yellow_path = "https://dprepdata.blob.core.windows.net/demo/yellow-small/*"
+
+# (optional) Download and view a subset of the data: https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 green_df_raw = dprep.read_csv(
     path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
@@ -113,9 +114,6 @@ yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 display(green_df_raw.head(5))
 display(yellow_df_raw.head(5))
 ```
-
-> [!Note]
-> 此同一示例中的 URL 不是完整的 URL， 而是引用 blob 中的 demo 文件夹。 某些数据的完整 URL 为 https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 `Dataflow` 对象类似于数据帧，表示针对数据执行的一系列松散评估的不可变操作。 可以通过调用不同的转换并筛选可用方法来添加操作。 在 `Dataflow` 中添加操作后，始终会获得新的 `Dataflow` 对象。
 
@@ -156,7 +154,7 @@ green_df = (green_df_raw
                 "Trip_distance": "distance"
             })
             .keep_columns(columns=useful_columns))
-green_df.head(5)
+display(green_df.head(5))
 ```
 
 <div>
@@ -290,7 +288,7 @@ yellow_df = (yellow_df_raw
                  "trip_distance": "distance"
              })
              .keep_columns(columns=useful_columns))
-yellow_df.head(5)
+display(yellow_df.head(5))
 ```
 
 针对绿色出租车数据调用 `append_rows()` 函数，以追加黄色出租车数据。 此时会创建新的组合 dataframe。

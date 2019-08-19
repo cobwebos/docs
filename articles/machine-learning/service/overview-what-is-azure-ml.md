@@ -1,6 +1,5 @@
 ---
-title: 什么是
-titleSuffix: Azure Machine Learning service
+title: 什么是 Azure 机器学习服务？
 description: Azure 机器学习服务概述 - 这是一个集成式的端到端数据科学解决方案，能够让专业数据科学家以云规模开发、试验和部署高级分析应用程序。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5323c996b8d974c9db11a508503f767cfee80301
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 1dea5e174c66685f889595ab15b3edf57dd02493
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828105"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018232"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
@@ -50,15 +49,15 @@ Azure 机器学习服务提供了一个基于云的环境，你可以使用这�
 
 也可使用 SDK [自动完成模型训练和优化](tutorial-auto-train-models.md)。
 
-### <a name="code-free--low-code-experience"></a>无代码/低代码体验
+### <a name="ui-based-low-code-experience"></a>基于 UI 的低代码体验
 
 若要进行无代码训练，请尝试：
 
-+ 适用于拖放试验和部署的可视界面
++ 在易于使用的界面中创建[自动 ML 试验](tutorial-first-experiment-automated-ml.md)。
++ [在可视界面中进行拖放试验](ui-tutorial-automobile-price-train-score.md)。
+  ![适用于 Azure 机器学习服务的可视界面](media/overview-what-is-azure-ml/visual-interface.png)
 
-    ![适用于 Azure 机器学习服务的可视界面](media/overview-what-is-azure-ml/visual-interface.png)
 
-+ 适用于自动 ML 试验的 Azure 门户选项
 
 ### <a name="operationalization-mlops"></a>操作化 (MLOps)
 
@@ -106,7 +105,7 @@ Azure 机器学习服务提供 SDK **和**可视界面（预览版），可以�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建机器学习服务工作区](setup-create-workspace.md)以开始使用。
+- [创建机器学习服务工作区](how-to-manage-workspace.md)以开始使用。
 
 - 按照完整的教程进行操作：
   + [使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)

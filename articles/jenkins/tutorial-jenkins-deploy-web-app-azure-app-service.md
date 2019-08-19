@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Jenkins 从 GitHub 部署到 Azure 应用服务
+title: 教程：使用 Jenkins 从 GitHub 部署到 Azure 应用服务
 description: 设置 Jenkins 以便从 GitHub 持续集成 (CI) 和持续部署 (CD) 到适用于 Java Web 应用的 Azure 应用服务
 services: jenkins
 ms.service: jenkins
@@ -8,12 +8,13 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 019c4a8f77f2664c68dcc6499fb2f27cc0d1447c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: seo-java-august2019
+ms.openlocfilehash: 955ce9724d576e56766ab3d87a374a65e4ca5c0e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326924"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967125"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>教程：使用 Jenkins 持续集成和部署从 GitHub 部署到 Azure 应用服务
 
@@ -76,7 +77,7 @@ ms.locfileid: "68326924"
 
 1. [登录到 Spring Boot 示例应用的 GitHub 存储库](https://github.com/spring-guides/gs-spring-boot)。 
 
-1. 在 GitHub 的右上角，选择“分叉”。 
+1. 在 GitHub 的右上角，选择“创建分支”。 
 
    ![从 GitHub 分叉示例存储库](media/tutorial-jenkins-deploy-web-app-azure-app-service/fork-github-repo.png)
 
@@ -170,7 +171,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
    | **租户 ID** | <*yourAzureActiveDirectoryTenant-ID*> | Azure Active Directory 租户的 `tenant` GUID 值 | 
    | **ID** | <*yourAzureServicePrincipalName*> | Azure 服务主体的 `displayName` 值 | 
 
-1. 若要确认服务主体是否正常工作，请选择“验证服务主体”。  完成后，选择“确定”  。
+1. 若要确认服务主体是否正常工作，请选择“验证服务主体”。  完成后，请选择“确定”  。
 
 接下来，创建用于生成和部署应用的 Jenkins 管道。
 
@@ -182,7 +183,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
    ![选择“新建项”](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
-1. 为管道作业提供一个名称（例如“My-Java-Web-App”），然后选择“管道”。  在底部选择“确定”。   
+1. 为管道作业提供一个名称（例如“My-Java-Web-App”），然后选择“管道”。  在底部选择“确定”  。  
 
    ![选择“管道”](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 

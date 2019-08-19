@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1184e282c8dc52cb616bcc47068d96fe61651da9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53711a80f35177c911b754a0ce3f189ac106adb2
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088875"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943306"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>教程：Azure Active Directory 与 TextMagic 的集成
 
@@ -114,7 +114,7 @@ ms.locfileid: "67088875"
 
 6. 除了上述属性，TextMagic 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 |   源属性| 命名空间  |
+    | Name |   源属性| 命名空间  |
     | --------------- | --------------- | --------------- |
     | company | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | firstName               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
@@ -166,13 +166,13 @@ ms.locfileid: "67088875"
 
     ![TextMagic 配置](./media/textmagic-tutorial/config2.png)
 
-    a. 在“标识提供者实体 ID:”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值 ****   **** 。
+    a. 在“标识提供者实体 ID:”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
 
-    b. 在“标识提供者 SSO URL:”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 ****   **** 。
+    b. 在“标识提供者 SSO URL:”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    c. 在“标识提供者 SLO URL:”文本框中，粘贴从 Azure 门户复制的“注销 URL”值 ****   **** 。
+    c. 在“标识提供者 SLO URL:”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
 
-    d. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后粘贴到“公用 x509 证书:”文本框   ****  。
+    d. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后粘贴到“公用 x509 证书:”文本框   。
 
     e. 单击“ **保存**”。
 

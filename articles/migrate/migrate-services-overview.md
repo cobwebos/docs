@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5409ed799454a6bb64077ee884065fc518556142
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 03918976935f9071ba2a7951e29195118943a8ef
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227807"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845834"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -50,7 +50,7 @@ Azure Migrate 可帮助你迁移到 Azure。 Azure Migrate 提供了一个中心
 
 ### <a name="selecting-an-isv-tool"></a>选择 ISV 工具
 
-将 ISV 工具添加到 Azure Migrate 项目后，通过获取许可证或注册免费试用版（根据 ISV 策略）即可开始使用该工具。 每个工具中都有一个用于连接到 Azure Migrate 的选项。 按照工具说明和文档操作，将该工具与 Azure Migrate 连接起来。
+将 ISV 工具添加到 Azure Migrate 项目后，通过获取许可证或注册免费试用版（根据 ISV 策略）即可开始使用该工具。 每个工具中都有一个用于连接到 Azure Migrate 的选项。 按照工具说明和文档操作，将该工具与 Azure Migrate 连接起来。 ISV 工具的许可符合 ISV 许可模型。
 
 ## <a name="azure-migrate-server-assessment"></a>Azure Migrate 服务器评估
 

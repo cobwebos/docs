@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd06eafca2c508bc73fa2b327235621797be417c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: f558b33079821efcf56731eb95073e0170a72795
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274194"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943553"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>教程：将 Otsuka Shokai 与 Azure Active Directory 集成
 
@@ -80,13 +80,13 @@ ms.locfileid: "67274194"
 
 1. 在“设置 SAML 单一登录”页上，应用程序已预先配置，所需的 URL 中已预先填充“Azure”。  用户需要单击“保存”  按钮来保存配置。
 
-1. Otsuka Shokai 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 与 **user.userprincipalname**相映射。 Otsuka Shokai 应用程序要求将  **nameidentifier** 与  **user.objectid** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射 ****  。
+1. Otsuka Shokai 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Otsuka Shokai 应用程序要求通过 **user.objectid** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。 
 
     ![image](common/edit-attribute.png)
 
 1. 除了上述属性，Otsuka Shokai 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ---------------| --------------- |
     | Appid | `<Application ID>` |
 

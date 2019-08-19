@@ -5,15 +5,15 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: include
-ms.date: 06/28/2019
+ms.date: 08/12/2019
 ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: 324f41055cf333081f308a3ff533ff7df6b33038
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: fc2e2fc05de66de6f428e6b8ca7c94f82003ba2a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "67479159"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012046"
 ---
 >[!NOTE]
 >本部分提供有关[新的 Azure AD 应用注册](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的说明。 如果仍有旧的本机应用注册，则可以使用该注册，只要它受支持就可以。 此外，如果出于某种原因，以新方式注册应用在设置中不起作用，你可以尝试创建旧的本机 AAD 应用。 请阅读[将 Azure 数字孪生应用注册到 Azure Active Directory 旧版](../articles/digital-twins/how-to-use-legacy-aad.md)以获取更多说明。 
@@ -37,9 +37,18 @@ ms.locfileid: "67479159"
 
     ![Azure Active Directory 应用程序 ID](./media/digital-twins-permissions/aad-app-reg-app-id.png)
 
-1. 打开用于应用注册的“API 权限”窗格  。 选择“添加权限”按钮  。 在“请求 API 权限”  窗格中，选择“我的组织使用的 API”  选项卡，然后搜索“Azure 智能空间”  。 选择“Azure 智能空间服务”  API。
+1. 打开用于应用注册的“API 权限”窗格  。 选择“添加权限”按钮  。 在“请求 API 权限”  窗格中，选择“我的组织使用的 API”  选项卡，然后搜索：
+    
+    1. **Azure 数字孪生**。 选择 **Azure 数字孪生** API。
 
-    ![搜索 API](./media/digital-twins-permissions/aad-app-search-api.png)
+        ![搜索“API”或“Azure 数字孪生”](./media/digital-twins-permissions/aad-aap-search-api-dt.png)
+
+    1. 或者，搜索“Azure 智能空间”  。 选择“Azure 智能空间服务”  API。
+
+        ![搜索 Azure 智能空间的 API](./media/digital-twins-permissions/aad-app-search-api.png)
+
+    > [!NOTE]
+    > 搜索时显示的确切名称可能会因你所属的 Azure 租户而异。
 
 1. 所选的 API 在同一个“请求 API 权限”窗格中显示为“Azure 数字孪生”   。 选择“读取 (1)”下拉列表  ，然后选中“Read.Write”复选框  。 选择“添加权限”按钮  。
 

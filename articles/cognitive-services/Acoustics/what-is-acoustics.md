@@ -3,20 +3,20 @@ title: 项目音响效果概述
 titlesuffix: Azure Cognitive Services
 description: 项目音响效果是 3D 交互式体验的音效引擎，将烘焙生成的波物理模拟与交互式设计控件相集成。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a654dd966c40b5b079f92b910ade52f4eda10344
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: f0685b65ce9204221e93a1ea4aa47a5e09eaac9f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704757"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932978"
 ---
 # <a name="what-is-project-acoustics"></a>什么是项目音响效果？
 项目音响效果是 3D 交互式体验的波形音效引擎。 它可对复杂场景中的衍射、传送门和混响效果进行建模而无需手动区域标记。 它还包括游戏引擎和音频中间件集成。 项目音响效果的原理类似于静态照明：脱机烘焙出具体的物理数据以提供物理基线，并将轻型运行时与表达式设计控件结合使用来满足艺术需要。
@@ -40,11 +40,17 @@ ms.locfileid: "68704757"
 * **烘培：** 本地运行一个分析步骤，会基于上面所做的选择对场景执行体素化操作和其他几何分析。 会在编辑器中直观显示结果来验证场景设置。 在提交烘焙时，会向 Azure 发送 voxel 数据，并取回音效游戏资产。
 * **运行时：** 将资产加载到自己的级别，且已准备好侦听所在级别中的音效。 使用基于源的精细化控件在编辑器中实时设计音效。 还可以从级别脚本驱动控件。
 
-## <a name="platforms"></a>平台
+## <a name="runtime-platforms"></a>运行时平台
 当前可以将项目音响效果运行时插件部署到以下平台：
 * Windows
+* MacOS
 * Android
 * Xbox One
+
+## <a name="editor-platforms"></a>编辑器平台
+“项目音响效果”编辑器插件适用于以下平台：
+* Windows
+* MacOS（仅限 Unity）
 
 ## <a name="download"></a>下载
 * [项目音响效果 Unity 插件和示例](https://www.microsoft.com/en-us/download/details.aspx?id=57346)

@@ -1,5 +1,5 @@
 ---
-title: 教程：教程：Azure Active Directory 与 Cisco Webex 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Cisco Webex 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 08/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bf8b4d696a3784988a92fc24de1ae6964786e07
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 99e6839443a75376224fe6a1007802b6b948a395
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836448"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989466"
 ---
-# <a name="tutorial-integrate-cisco-webex-with-azure-active-directory"></a>教程：将 Cisco Webex 与 Azure Active Directory 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex 集成
 
 本教程介绍如何将 Cisco Webex 与 Azure Active Directory (Azure AD) 集成。 将 Cisco Webex 与 Azure AD 集成后，可以：
 
@@ -42,7 +42,7 @@ ms.locfileid: "67836448"
 
 ## <a name="scenario-description"></a>方案描述
 
-本教程在测试环境中配置并测试 Azure AD SSO。 Cisco Webex 支持 **SP 和 IDP** 发起的 SSO，并支持**自动**用户预配。
+本教程在测试环境中配置并测试 Azure AD SSO。 Cisco Webex 支持 **SP** 发起的 SSO，并支持**自动**用户预配。
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>从库中添加 Cisco Webex
 
@@ -55,18 +55,18 @@ ms.locfileid: "67836448"
 1. 在“从库中添加”部分的搜索框中，键入“Cisco Webex”   。
 1. 从结果面板中选择“Cisco Webex”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on-for-cisco-webex"></a>配置和测试 Cisco Webex 的 Azure AD 单一登录
 
 使用名为 B.Simon 的测试用户配置和测试 Cisco Webex 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 Cisco Webex 相关用户之间建立链接关系。
 
 若要配置和测试 Cisco Webex 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B.Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，使 B.Simon 能够使用 Azure AD 单一登录。
 2. **[配置 Cisco Webex](#configure-cisco-webex)** ，以在应用程序端配置 SSO 设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B.Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，使 B.Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Cisco Webex 测试用户](#create-cisco-webex-test-user)** ，以在 Cisco Webex 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
+    1. **[创建 Cisco Webex 测试用户](#create-cisco-webex-test-user)** ，以在 Cisco Webex 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
@@ -81,7 +81,7 @@ ms.locfileid: "67836448"
 4. 在“基本 SAML 配置”  部分中，通过执行以下步骤上传已下载的**服务提供程序元数据**文件并配置应用程序：
 
     >[!Note]
-    >你将从 **Cisco Webex** 门户获取服务提供程序元数据文件。 
+    >你将从“配置 Cisco Webex”  部分获取服务提供商元数据文件，本教程稍后将对此进行说明。 
 
     a. 单击“上传元数据文件”  。
 
@@ -91,7 +91,7 @@ ms.locfileid: "67836448"
 
     在“登录 URL”文本框中，粘贴上传 SP 元数据文件后自动填充的“回复 URL”值。  
 
-5. Cisco Webex 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标添加属性。 
+5. Cisco Webex 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
 
     ![image](common/edit-attribute.png)
 
@@ -127,24 +127,6 @@ ms.locfileid: "67836448"
 
    ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="configure-cisco-webex"></a>配置 Cisco Webex
-
-1. 使用完整管理员凭据登录到 [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/)。
-
-2. 选择“设置”，在“身份验证”部分下单击“修改”。   
-
-    ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
-  
-3. 选择“集成第三方标识提供者。(高级)”  ，然后转到下一个屏幕。
-
-4. 在“导入 Idp 元数据”页上，将 Azure AD 元数据文件拖放到页面上，或者使用文件浏览器选项找到并上传 Azure AD 元数据文件。  然后，选择“元数据中需要由证书颁发机构签名的证书(更安全)”并单击“下一步”。  
-
-    ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
-
-5. 选择“测试 SSO 连接”，当新的浏览器标签页打开时，通过登录使用 Azure AD 进行身份验证。 
-
-6. 返回到 **Cisco Cloud Collaboration Management** 浏览器标签页。如果测试成功，则选择“此测试成功。  启用单一登录”，并单击“下一步”。 
-
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -174,9 +156,27 @@ ms.locfileid: "67836448"
 1. 在“用户和组”对话框中，选择“用户”列表中的“B.Simon”，然后单击屏幕底部的“选择”按钮    。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
+## <a name="configure-cisco-webex"></a>配置 Cisco Webex
+
+1. 使用完整管理员凭据登录到 [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/)。
+
+2. 选择“设置”，在“身份验证”部分下单击“修改”。   
+
+    ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
+  
+3. 选择“集成第三方标识提供者。(高级)”  ，然后转到下一个屏幕。
+
+4. 在“导入 Idp 元数据”页上，将 Azure AD 元数据文件拖放到页面上，或者使用文件浏览器选项找到并上传 Azure AD 元数据文件。  然后，选择“元数据中需要由证书颁发机构签名的证书(更安全)”并单击“下一步”。  
+
+    ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
+
+5. 选择“测试 SSO 连接”，当新的浏览器标签页打开时，通过登录使用 Azure AD 进行身份验证。 
+
+6. 返回到 **Cisco Cloud Collaboration Management** 浏览器标签页。如果测试成功，则选择“此测试成功。  启用单一登录”，并单击“下一步”。 
+
 ### <a name="create-cisco-webex-test-user"></a>创建 Cisco Webex 测试用户
 
-在本部分中，将在 Cisco Webex 中创建一个名为 Britta Simon 的用户。 在本部分中，将在 Cisco Webex 中创建一个名为 Britta Simon 的用户。
+在本部分中，将在 Cisco Webex 中创建一个名为 B.Simon 的用户。 在本部分中，将在 Cisco Webex 中创建一个名为 B.Simon 的用户。
 
 1. 使用完整管理员凭据转到 [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/)。
 
@@ -196,11 +196,11 @@ ms.locfileid: "67836448"
 
     c. 在“电子邮件地址”文本框中，键入用户的电子邮件地址，例如 b.simon@contoso.com。 
 
-5. 单击加号以添加 Britta Simon。 然后单击“下一步”。 
+5. 单击加号以添加 B.Simon。 然后单击“下一步”。 
 
 6. 在“为用户添加服务”窗口中，单击“保存”，并单击“完成”。   
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 选择访问面板中的 Cisco Webex 磁贴时，应当会自动登录到设置了 SSO 的 Cisco Webex。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
@@ -211,3 +211,5 @@ ms.locfileid: "67836448"
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [通过 Azure AD 试用 Cisco Webex](https://aad.portal.azure.com)

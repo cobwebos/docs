@@ -5,24 +5,23 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: aragra, lenalepa, sureshja
+ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e8b0e17248dff3c53b96fd240a7566f09b22fae
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 937fca5698378a8c877b4a981557f87d06170e9a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482685"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879344"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：将客户端应用程序配置为访问 Web API
 
@@ -39,6 +38,8 @@ ms.locfileid: "67482685"
 本快速入门介绍如何将应用配置为执行以下操作：
 
 * [将重定向 URL 添加到应用程序](#add-redirect-uris-to-your-application)
+* [配置应用程序的高级设置](#configure-advanced-settings-for-your-application)
+* [修改支持的帐户类型](#modify-supported-account-types)
 * [将凭据添加到 Web 应用程序](#add-credentials-to-your-web-application)
 * [添加用于访问 Web API 的权限](#add-permissions-to-access-web-apis)
 
@@ -58,35 +59,90 @@ ms.locfileid: "67482685"
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  ，然后选择“应用注册”。 
 1. 找到并选择要配置的应用程序。 选择应用以后，会看到应用程序的“概览”页或主注册页。 
-1. 按步骤将应用程序配置为访问 Web API： 
+1. 按步骤将应用程序配置为访问 Web API：
     * [将重定向 URL 添加到应用程序](#add-redirect-uris-to-your-application)
+    * [配置应用程序的高级设置](#configure-advanced-settings-for-your-application)
+    * [修改支持的帐户类型](#modify-supported-account-types)
     * [将凭据添加到 Web 应用程序](#add-credentials-to-your-web-application)
     * [添加用于访问 Web API 的权限](#add-permissions-to-access-web-apis)
 
 ## <a name="add-redirect-uris-to-your-application"></a>将重定向 URL 添加到应用程序
 
-[![为 Web 和公共客户端应用添加自定义重定向 URI](./media/quickstart-update-azure-ad-app-preview/authentication-redirect-uris-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-redirect-uris-expanded.png#lightbox)
-
 若要将重定向 URI 添加到应用程序，请执行以下步骤：
 
 1. 在应用的“概览”页中，选择“身份验证”部分。  
-
 1. 若要为 Web 和公共客户端应用程序添加自定义重定向 URI，请执行以下步骤：
-
    1. 找到“重定向 URI”  部分。
    1. 选择要生成的应用程序的类型：“Web”或“公共客户端(移动和桌面)”。  
    1. 输入应用程序的重定向 URI。
       * 对于 Web 应用程序，请提供应用程序的基 URL。 例如，`http://localhost:31544` 可以是本地计算机上运行的 Web 应用程序的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。
-      * 对于公共应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 https://MyFirstApp 。
+      * 对于公共应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 `https://MyFirstApp`。
 
 1. 若要从建议用于公共客户端（移动、桌面）的重定向 URI 中进行选择，请执行以下步骤：
-
     1. 找到“建议用于公共客户端(移动、桌面)的重定向 URI”部分。 
     1. 通过复选框选择适用于应用程序的重定向 URI。
 
-## <a name="add-credentials-to-your-web-application"></a>将凭据添加到 Web 应用程序
+> [!NOTE]
+> 尝试新的“身份验证设置”体验，在其中可以根据要面向的平台或设备配置应用程序的设置。 
+>
+> 若要查看此视图，请从默认的“身份验证”页面视图中选择“试用新体验”。  
+>
+> ![单击“试用新体验”以查看平台配置视图](./media/quickstart-update-azure-ad-app-preview/authentication-try-new-experience-cropped.png)
+>
+> 此时会转到[新的“平台配置”页](#configure-platform-settings-for-your-application)。 
 
-[![添加证书和客户端机密](./media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets-expanded.png)](./media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets-expanded.png#lightbox)
+### <a name="configure-advanced-settings-for-your-application"></a>配置应用程序的高级设置
+
+根据要注册的应用程序，可能需要配置其他一些设置，例如：
+
+* **注销 URL**
+* 对于单页应用，可以启用“隐式授权”，并选择希望授权终结点颁发的令牌。 
+* 对于“默认客户端类型”部分中使用 Windows 集成身份验证、设备代码流或用户名/密码获取令牌的桌面应用，请将“将应用程序视为公共客户端”设置配置为“是”。   
+* 对于使用 Live SDK 来与 Microsoft 帐户服务集成的传统应用，请配置“Live SDK 支持”。  新应用不需要此设置。
+* **默认客户端类型**
+
+### <a name="modify-supported-account-types"></a>修改支持的帐户类型
+
+“支持的帐户类型”指定哪些用户可以使用该应用程序或访问 API。 
+
+在最初注册应用程序时[配置支持的帐户类型](quickstart-register-app.md)后，只能在以下情况下使用应用程序清单编辑器更改此设置：
+
+* 将帐户类型从 **AzureADMyOrg** 或 **AzureADMultipleOrgs** 更改为 **AzureADandPersonalMicrosoftAccount**，或反之。
+* 将帐户类型从 **AzureADMyOrg** 更改为 **AzureADMultipleOrgs**，或反之。
+
+若要更改现有应用注册支持的帐户类型：
+
+* 参阅[配置应用程序清单](reference-app-manifest.md)并更新 `signInAudience` 密钥。
+
+## <a name="configure-platform-settings-for-your-application"></a>配置应用程序的平台设置
+
+[![根据平台或设备配置应用的设置](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
+
+若要根据面向的平台或设备配置应用程序设置：
+
+1. 在“平台配置”页上选择“添加平台”，并从可用选项中进行选择。  
+
+   ![显示“配置平台”页](./media/quickstart-update-azure-ad-app-preview/authentication-platform-configurations-configure-platforms.png)
+
+1. 根据所选的平台输入设置信息。
+
+   | 平台                | 选项              | 配置设置            |
+   |-------------------------|----------------------|-----------------------------------|
+   | **Web 应用程序**    | **Web**              | 输入应用程序的“重定向 URI”。  |
+   | **移动应用程序** | **iOS**              | 输入应用的“捆绑 ID”（可在 XCode 中的 info.plist 内找到，或者在“生成设置”中找到）。  添加捆绑 ID 可自动创建应用程序的重定向 URI。 |
+   |                         | **Android**          | * 提供应用的**包名称**（可在 AndroidManifest.xml 文件中找到）。<br/>* 生成并输入**签名哈希**。 添加签名哈希可自动创建应用程序的重定向 URI。  |
+   | **桌面 + 设备**   | **桌面 + 设备** | * 可选。 为桌面和设备生成应用时，请选择**建议的重定向 URI** 之一。<br/>* 可选。 输入一个**自定义重定向 URI**，用作 Azure AD 在响应身份验证请求时将用户重定向到的位置。 例如，对于要交互的 .NET Core 应用程序，请使用 `https://localhost`。 |
+
+   > [!IMPORTANT]
+   > 对于不使用最新 MSAL 库或不使用中介的移动应用程序，必须在“桌面 + 设备”中为这些应用程序配置重定向 URI。 
+
+1. 根据所选的平台，可能还可以配置其他设置。 对于“Web”应用，可以： 
+    * 添加更多重定向 URI
+    * 配置“隐式授权”，以选择希望由授权终结点颁发的令牌： 
+        * 对于单页应用，请同时选择“访问令牌”和“ID 令牌”  
+        * 对于 Web 应用，请选择“ID 令牌” 
+
+## <a name="add-credentials-to-your-web-application"></a>将凭据添加到 Web 应用程序
 
 若要向 Web 应用程序添加凭据，请执行以下操作：
 
@@ -109,8 +165,6 @@ ms.locfileid: "67482685"
 > 保存配置更改后，最右边的列会包含客户端机密值。 **请务必复制此值**，以便在客户端应用程序代码中使用，因为退出此页后将无法访问此密钥。
 
 ## <a name="add-permissions-to-access-web-apis"></a>添加用于访问 Web API 的权限
-
-[![显示可以添加 API 权限的屏幕](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png)](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png#lightbox)
 
 若要添加从客户端访问资源 API 的权限，请执行以下操作：
 

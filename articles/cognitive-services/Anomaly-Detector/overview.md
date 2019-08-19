@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 80e0984deff83726fd96a462a1ae8a4375db9d2e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 70cb4a008391ad55562bc55fb45d877988e68643
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721608"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854777"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什么是异常检测器 API？
 
@@ -38,15 +38,22 @@ ms.locfileid: "67721608"
 
 ## <a name="demo"></a>演示
 
-若要快速开始使用异常检测器 API，请尝试一个可以在浏览器中运行的[在线演示版](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)。 该演示版在 Web 托管的 Jupyter 笔记本中运行，演示如何发送 API 请求并将结果可视化。
+查看此[交互式演示](https://aka.ms/adDemo)以了解异常检测器的工作原理。
+若要运行演示，需要创建一个异常检测器资源，并获取 API 密钥和终结点。
 
-若要运行此演示版，请完成以下步骤：
+## <a name="notebook"></a>Notebook
 
-1. 获取一个有效的异常检测器 API 订阅密钥和一个 API 终结点。 以下部分提供注册说明。 
-2. 登录，然后单击右上角的“克隆”。
-3. 单击“在免费计算上运行” 
-4. 选择适用于此示例的某个笔记本。
-5. 向 `subscription_key` 变量添加有效的异常检测器 API 订阅密钥。 将 `endpoint` 变量更改为你的终结点。 例如： `https://westus2.api.cognitive.microsoft.com`
+若要了解如何调用异常检测器API，请试用此 [Azure Notebook](https://aka.ms/adNotebook)。 这个 Web 托管的 Jupyter Notebook 演示如何发送 API 请求和直观显示结果。
+
+若要运行此 Notebook，请完成以下步骤：
+
+1. 获取一个有效的异常检测器 API 订阅密钥和一个 API 终结点。 以下部分提供注册说明。
+1. 登录，然后单击右上角的“克隆”。
+1. 在完成克隆操作之前，请取消选中对话框中的“公共”选项，否则你的笔记本（包括任何订阅密钥）将是公共的。
+1. 单击“在免费计算上运行” 
+1. 选择其中一个笔记本。
+1. 向 `subscription_key` 变量添加有效的异常检测器 API 订阅密钥。 
+1. 将 `endpoint` 变量更改为你的终结点。 例如： `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. 单击顶部菜单栏中的“单元格”，然后单击“全部运行”  。 
 
 ## <a name="workflow"></a>工作流
@@ -62,6 +69,13 @@ ms.locfileid: "67721608"
 1. 获取时序数据并将其转换为有效的 JSON 格式。 在准备数据时使用[最佳做法](concepts/anomaly-detection-best-practices.md)，以便获取最佳结果。
 1. 向包含你的数据的异常检测器 API 发送请求。
 1. 通过分析返回的 JSON 消息处理 API 响应。
+
+## <a name="algorithms"></a>算法
+
+* 请参考此技术博客[介绍 Azure 异常检测器 API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)，了解底层算法。
+* 有关 Microsoft 开发的尖端 SR-CNN 算法，请参阅此文 [Microsoft 的时序异常检测服务](https://arxiv.org/abs/1906.03821)（KDD 2019 接受）。
+
+> [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: be6a402673fd2d3ba01451c6ea04e723cbdfa292
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 5b2e2c51eaa878ba0ce8bc31c001575acebe6919
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597504"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967550"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB 简介：表 API
 
@@ -58,8 +58,8 @@ ms.locfileid: "68597504"
 * [在 .NET 中使用表 API 进行开发](tutorial-develop-table-dotnet.md)
 * [使用表 API 查询表数据](tutorial-query-table.md)
 * [了解如何使用表 API 设置 Azure Cosmos DB 全局分发](tutorial-global-distribution-table.md)
-* [Azure Cosmos DB 表 .NET API](table-sdk-dotnet.md)
-* [Azure Cosmos DB 表 Java API](table-sdk-java.md)
-* [Azure Cosmos DB 表 Node.js API](table-sdk-nodejs.md)
+* [Azure Cosmos DB 表 .NET Standard SDK](table-sdk-dotnet-standard.md)
+* [Azure Cosmos DB 表 .NET SDK](table-sdk-dotnet.md)
+* [Azure Cosmos DB 表 Java SDK](table-sdk-java.md)
+* [Azure Cosmos DB 表 Node.js SDK](table-sdk-nodejs.md)
 * [用于 Python 的 Azure Cosmos DB 表 SDK](table-sdk-python.md)
-

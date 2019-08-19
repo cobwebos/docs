@@ -1,5 +1,5 @@
 ---
-title: 为用于容器的 Web 应用生成自定义映像 - Azure 应用服务 | Microsoft Docs
+title: 从专用注册表生成自定义映像并在应用服务中运行
 description: 如何对用于容器的 Web 应用使用自定义 Docker 映像。
 keywords: azure 应用服务、web 应用、linux、docker、容器
 services: app-service
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b48ec72a1f0a4178dad66ed31c544399e90c5293
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 6ef739b61c07dae1631a704a70a3a5543d9d8a3d
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484503"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015603"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>教程：从专用注册表生成自定义映像并在应用服务中运行
 
@@ -292,20 +292,20 @@ SSH 实现容器和客户端之间的安全通信。 若要启用到容器的 SS
 
 * [入口脚本](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/init.sh#L5)启动 SSH 服务器。
 
-      ```bash
-      #!/bin/bash
-      service ssh start
+    ```bash
+    #!/bin/bash
+    service ssh start
     ```
 
-### Open SSH connection to container
+### <a name="open-ssh-connection-to-container"></a>打开到容器的 SSH 连接
 
-SSH connection is available only through the Kudu site, which is accessible at `https://<app-name>.scm.azurewebsites.net`.
+只能通过 Kudu 站点（可以通过 `https://<app-name>.scm.azurewebsites.net` 访问）使用 SSH 连接。
 
-To connect, browse to `https://<app-name>.scm.azurewebsites.net/webssh/host` and sign in with your Azure account.
+若要进行连接，请浏览到 `https://<app-name>.scm.azurewebsites.net/webssh/host` 并使用 Azure 帐户登录。
 
-You are then redirected to a page displaying an interactive console.
+接着会被重定向到显示交互式控制台的页面。
 
-You may wish to verify that certain applications are running in the container. To inspect the container and verify running processes, issue the `top` command at the prompt.
+可能需要验证某些特定的应用程序正在容器中运行。 若要检查容器并验证正在运行的进程，请在系统提示时发出 `top` 命令。
 
 ```bash
 top

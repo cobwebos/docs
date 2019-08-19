@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 3d418d9f18c98e1b6fdf39924ab41dae77fba291
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 062b815315d7bcdd5d55a86c2447a0b21295e8b6
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204754"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014093"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>教程：在 Windows 虚拟桌面预览版中创建租户
 
@@ -42,17 +42,25 @@ ms.locfileid: "67204754"
 
 向该服务授予权限：
 
-1. 打开浏览器并连接到 [Windows 虚拟桌面许可页](https://rdweb.wvd.microsoft.com)。
-2. 对于“许可选项” > “服务器应用”，请输入 Azure Active Directory 租户名称或目录 ID，然后选择“提交”。   
-        
-   对于云解决方案提供商客户，该 ID 是合作伙伴门户中显示的客户 Microsoft ID。 对于企业客户，该 ID 位于“Azure Active Directory” > “属性” > “目录 ID”下。   
-3. 使用全局管理员帐户登录到 Windows 虚拟桌面许可页。 例如，如果你所在的组织是 Contoso，则你的帐户可能是 admin@contoso.com 或 admin@contoso.onmicrosoft.com。  
-4. 选择“接受”  。
-5. 等待一分钟。
-6. 返回到 [Windows 虚拟桌面许可页](https://rdweb.wvd.microsoft.com)。
-7. 转到“许可选项” > “客户端应用”，输入相同的 Azure Active Directory 租户名称或目录 ID，然后选择“提交”    。
-8. 像在前面的步骤 3 中一样，以全局管理员的身份登录到 Windows 虚拟桌面许可页。
-9. 选择“接受”  。
+1. 打开浏览器并开始使用 [Windows 虚拟桌面服务器应用](https://login.microsoftonline.com/common/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback)的管理员同意流。
+   > [!NOTE]
+   > 如果你管理客户并需要为客户的目录授予管理员同意，请在浏览器中输入以下 URL，并将 {tenant} 替换为客户的 Azure AD 域名。 例如，如果客户的组织已注册了 Azure AD 域名 contoso.onmicrosoft.com，请将 {tenant} 替换为 contoso.onmicrosoft.com。
+   >```
+   >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
+   >```
+
+2. 使用全局管理员帐户登录到 Windows 虚拟桌面许可页。 例如，如果你所在的组织是 Contoso，则你的帐户可能是 admin@contoso.com 或 admin@contoso.onmicrosoft.com。  
+3. 选择“接受”  。
+4. 等待一分钟，以便 Azure AD 可以记录同意。
+5. 打开浏览器并开始使用 [Windows 虚拟桌面客户端应用](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback)的管理员同意流。
+   >[!NOTE]
+   > 如果你管理客户并需要为客户的目录授予管理员同意，请在浏览器中输入以下 URL，并将 {tenant} 替换为客户的 Azure AD 域名。 例如，如果客户的组织已注册了 Azure AD 域名 contoso.onmicrosoft.com，请将 {tenant} 替换为 contoso.onmicrosoft.com。
+   >```
+   > https://login.microsoftonline.com/{tenant}/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
+   >```
+
+6. 像在步骤 2 中一样，以全局管理员的身份登录到 Windows 虚拟桌面许可页。
+7. 选择“接受”  。
 
 ## <a name="assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant"></a>将 TenantCreator 应用程序角色分配到 Azure Active Directory 租户中的用户
 

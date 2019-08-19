@@ -1,18 +1,19 @@
 ---
 title: Azure Key Vault - 如何将软删除与 PowerShell 配合使用
 description: 使用 PowerShell 代码段进行软删除的用例示例
+services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 03/19/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ecc87e03a80ce10bedbe26b3ebb452ec704eefcb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 6a24f2dd52c3ac3c51df54bf5c01c7b31ca16147
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60461359"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985755"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
 
@@ -21,7 +22,7 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 - 支持 Key Vault 的可恢复删除
 - 支持密钥保管库对象、密钥、机密和证书的可恢复删除
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -34,11 +35,11 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 
 有关适用于 PowerShell 的密钥保管库特定引用信息，请参阅 [Azure 密钥保管库 PowerShell 引用](/powershell/module/az.keyvault)。
 
-## <a name="required-permissions"></a>所需权限
+## <a name="required-permissions"></a>所需的权限
 
 Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，如下所示：
 
-| Operation | 描述 | 用户权限 |
+| Operation | 说明 | 用户权限 |
 |:--|:--|:--|
 |列出|列出已删除的密钥保管库。|Microsoft.KeyVault/deletedVaults/read|
 |恢复|还原已删除的密钥保管库。|Microsoft.KeyVault/vaults/write|
@@ -49,6 +50,9 @@ Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，�
 ## <a name="enabling-soft-delete"></a>启用软删除
 
 启用“软删除”以允许恢复已删除的密钥保管库或存储在密钥保管库的对象。
+
+> [!IMPORTANT]
+> 在密钥保管库上启用“软删除”是不可逆的操作。 将软删除属性设置为“true”后，将无法更改或删除该属性。  
 
 ### <a name="existing-key-vault"></a>现有的密钥保管库
 
@@ -101,7 +105,7 @@ Remove-AzKeyVault -VaultName 'ContosoVault'
 Get-AzKeyVault -InRemovedState 
 ```
 
-- *ID*可用于恢复或清除时识别资源。 
+- ID 可用于在恢复或清除时识别资源  。 
 - 资源 ID是此保管库的原始资源 ID  。 由于此密钥保管库现在处于已删除状态，因此该资源 ID 不存在任何资源。 
 - “计划清除日期”表示如果不采取任何操作，将永久删除保管库  。 用于计算“计划清除日期”的默认保留期是 90 天  。
 
@@ -202,7 +206,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@conto
 > [!IMPORTANT]
 > 清除密钥保管库或其包含的对象之一将永久删除它，这意味着无法恢复！
 
-清除函数用于永久删除 key vault 对象或整个密钥保管库，以前已软删除。 如前一部分中所示，启用了软删除功能的密钥保管库中存储的对象可能会经历多个状态：
+清除功能用于永久删除以前已软删除的密钥保管库对象或整个密钥保管库。 如前一部分中所示，启用了软删除功能的密钥保管库中存储的对象可能会经历多个状态：
 - **活动**：删除之前。
 - **已软删除**：删除之后，能够列出和恢复为活动状态。
 - **已永久删除**：清除之后，不能恢复。
@@ -234,7 +238,7 @@ Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 
 启用清除保护时，在长达 90 天的保留期到期之前，不能清除处于已删除状态的保管库或对象。 仍可以恢复此类保管库或对象。 此功能可增加保障，在保留期到期之前，永远不会永久删除保管库或对象。
 
-只有启用了软删除，才能启用清除保护。 
+仅当也启用了软删除时，才能启用清除保护。 
 
 若要在创建保管库时同时启用软删除和清除保护，请使用 [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) cmdlet：
 
@@ -253,4 +257,4 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ## <a name="other-resources"></a>其他资源
 
 - 有关 Key Vault 软删除功能的概述，请参阅 [Azure Key Vault 软删除概述](key-vault-ovw-soft-delete.md)。
-- 有关 Azure 密钥保管库用法的一般概述，请参阅[什么是 Azure 密钥保管库？](key-vault-overview.md)。ate = Succeeded}
+- 有关 Azure 密钥保管库使用情况的综述，请参阅[什么是 Azure 密钥保管库？](key-vault-overview.md).ate=Succeeded}

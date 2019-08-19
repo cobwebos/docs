@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: b3fdcfbb9869c0199c91f5bbc6ca1f02fec996cf
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 70fee90fb82618a409d2566a3235ad8ca42e1760
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828674"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934414"
 ---
-# <a name="tutorial-setup-environment-and-workspace"></a>教程：设置环境和工作区
+# <a name="tutorial-set-up-environment-and-workspace"></a>教程：设置环境和工作区
 
 在本教程中，你将完成端到端的步骤，以开始使用 Jupyter Notebook 中运行的 Azure 机器学习 Python SDK。 本教程是**由两个部分组成的系列教程的第一部分**，介绍如何设置和配置 Python 环境，以及如何创建工作区来管理试验模型和机器学习模型。 [**第二部分**](tutorial-1st-experiment-sdk-train.md)是在本文的基础上编写的，介绍如何训练多个机器学习模型，以及如何使用 Azure 门户和 SDK 来管理模型。
 
@@ -25,7 +25,7 @@ ms.locfileid: "68828674"
 
 > [!div class="checklist"]
 > * 创建要在下一篇教程中使用的机器学习工作区。
-> * 创建笔记本 VM（这是一个基于云的 Jupyter 笔记本服务器），其中预安装并预配置了 Azure 机器学习 Python SDK。
+> * 创建一个基于云的 Jupyter 笔记本 VM，其中已安装并预配置了 Azure 机器学习 Python SDK。
 
 ## <a name="prerequisites"></a>先决条件
 

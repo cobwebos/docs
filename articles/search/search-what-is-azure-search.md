@@ -1,33 +1,44 @@
 ---
 title: Azure 搜索简介 - Azure 搜索
-description: Azure 搜索是 Microsoft 提供的完全托管云搜索服务。 查看功能说明、开发工作流、Azure 搜索与其他 Microsoft 搜索产品相比如何，以及操作说明入门。
-manager: cgronlun
+description: Azure 搜索是 Microsoft 提供的完全托管云搜索服务。 查看功能说明、开发工作流、与其他 Microsoft 搜索产品的比较，以及入门方法。
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 08/13/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 7a12c9153332e9d6fc70512bc55fe0a53f7c78fc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: eefa0eb5d1e15df34089d7baa3241cbbed4724c2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827153"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034846"
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
-Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 查询执行是通过用户定义的索引进行的。
 
-+ 生成仅包含你数据的搜索索引，这些数据源自多种内容类型和平台。 
+Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 自定义代码将调用数据引入（索引编制）、发出查询请求并处理响应。 搜索体验是使用 Azure 搜索中的功能在客户端代码中定义的，而查询是通过你创建、拥有并存储在 Azure 搜索中的持久索引执行的。
 
-+ 利用 AI 扩充从图像文件中提取文本和特征，或从原始文本中提取实体和关键短语。
+![Azure 搜索体系结构](media/search-what-is-azure-search/azure-search-diagram.png "Azure 搜索体系结构")
 
-+ 使用分面导航和筛选器、同义词、自动完成和文本分析创建直观的搜索体验，以获取“你是不是要搜索”自动更正的搜索词。 通过函数和提升逻辑来实现相关性优化。
-
-+ 创建适用于特定用例的搜索应用。 地理位置搜索支持“附近查找”体验。 通过用于非英语全文搜索的语言分析器，支持多语言搜索。
+<!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
++ Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.
++ Create intuitive search experiences with facet navigation and filters, synonyms, autocomplete, and text analysis for "did you mean" autocorrected search terms. Get relevance tuning through functions and boosting logic.
++ Create search apps for specific use-cases. Geo-search supports a "find near me" experience. Multi-lingual search is supported through language analyzers for non-English full text search. -->
 
 功能通过简单的 [REST API](/rest/api/searchservice/) 或 [.NET SDK](search-howto-dotnet-sdk.md) 公开，消除了信息检索固有的复杂性。 除了 API，Azure 门户还通过原型制作和查询索引工具，提供管理和内容管理支持。 因为服务在云中运行，所以基础结构和可用性由 Microsoft 管理。
+
+## <a name="when-to-use-azure-search"></a>何时使用 Azure 搜索
+
+Azure 搜索非常适合以下应用方案：
+
++ 将异构内容类型整合成单个专用的可搜索索引。 查询始终基于你创建并连同文档一起加载的索引，索引始终驻留在云中的 Azure 搜索服务上。 可以在索引中填充来自任何源或平台的 JSON 文档流。 或者，对于源自 Azure 的内容，可以使用索引器将数据提取到索引中。  索引定义和管理/所有权是使用 Azure 搜索的重要原因。
+
++ 轻松实现搜索相关的功能。 Azure 搜索 API 简化了查询构造、分面导航、筛选器（包括地理空间搜索）、同义词映射、自动提示查询和相关性优化。 使用内置功能可以满足最终用户对搜索体验的预期，使其觉得该体验类似于商用 Web 搜索引擎。
+
++ 为非结构化文本编制索引，或者从图像文件中提取文本和信息。 Azure 搜索的认知搜索功能将 AI 处理添加到了索引管道中。 一些常见用例包括对扫描的文档进行 OCR 识别、在大型文档中进行实体识别和关键短语提取、语言检测和文本翻译，以及情绪分析。
+
++ 使用 Azure 搜索的自定义和语言分析器可以满足语言要求。 如果你使用非英语内容，Azure 搜索支持 Lucene 分析器和 Microsoft 的自然语言处理器。 还可以配置分析器以实现原始内容的专业处理，例如筛选出标注字符。
 
 <a name="feature-drilldown"></a>
 
@@ -101,6 +112,7 @@ Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 A
 + 在索引层的 Azure 数据集成（爬网程序）
 + 用于集中管理的 Azure 门户
 + Azure 可伸缩性、可靠性和世界一流的可用性
++ 对原始数据进行 AI 处理，使其更易于搜索，包括识别图像中的文本，或查找非结构化内容中的模式。
 + 语言分析和自定义分析，提供分析器，用于支持以 56 种语言进行可靠的全文搜索
 + [对以搜索为中心的应用通用的核心功能](#feature-drilldown)：评分、分面、建议、同义词、地理搜索，等等。
 

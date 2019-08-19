@@ -15,13 +15,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/16/2018
-ms.openlocfilehash: 8a19f414f31c307111edad876ed973ff4027d907
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.date: 08/13/2019
+ms.openlocfilehash: 6d79bfa8f390d145bfd963b40497030140a3d135
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591929"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013603"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>在 Azure 上预配适用于 Linux (Ubuntu) 的数据科学虚拟机
 
@@ -86,32 +86,35 @@ ms.locfileid: "68591929"
 以下步骤用于创建适用于 Linux 的数据科学虚拟机的实例：
 
 1. 导航到 [Azure 门户](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu)上的虚拟机列表。 如果你尚未登录到 Azure 帐户，系统可能会提示你登录。 
-1. 单击底部的“创建”  打开向导。![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
-1. 以下部分提供用于创建 Microsoft 数据科学虚拟机的向导中每个步骤的输入（在上一图片的右侧枚举）。 以下是配置每个步骤所需的输入：
+1. 单击“创建”  以显示向导。
+    ![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
+1. 以下部分提供用于创建 Microsoft 数据科学虚拟机的向导中每个步骤的输入。 以下是配置每个步骤所需的输入：
 
-   a. **基本信息**：
-
-   * **名称**：要创建的数据科学服务器的名称。
-   * **VM 磁盘类型**：如果希望使用固态硬盘 (SSD)，请选择“高级 SSD”  。 否则，请选择“标准 HDD”  。 
-   * **用户名**：第一个帐户登录 ID。
-   * **密码**：第一个帐户密码（可以使用 SSH 公钥而非密码）。
-   * **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
-   * **资源组**：可以创建新组或使用现有组。
-   * **位置**：选择最合适的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近物理位置以实现最快的网络访问。
-
-   b. **大小**：
-
-   * 选择能满足功能需求和成本约束的服务器类型。 为基于 GPU 的 VM 实例选择 NC 或 ND 类 VM。 [可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/) 页列出了具有 GPU 的区域。
-
-   c. **设置**：
-
-   * 大多数情况下，只需使用默认值。 若考虑使用非默认值，请将鼠标悬停在信息链接上获取特定字段的帮助。
-
-   d. **汇总**：
-
-   * 验证输入的所有信息是否正确。 此时会显示使用条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 若要开始预配，请单击“创建”  。 
-
-预配大约需要 5 分钟。 预配的状态在 Azure 门户上显示。
+    a. **基本信息**：
+    
+    * **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
+    * **资源组**：可以创建新组或使用现有组。
+    * **虚拟机名称**：待创建的数据科学服务器的名称。
+    * **区域**：选择最合适的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近物理位置以实现最快的网络访问。
+    * **可用性选项**：若要在可用性集/区域中使用此 VM，请设置此选项，否则保留默认值。
+    * **映像**：保留默认值
+    * **大小**：选择能满足功能需求和成本约束的服务器类型。 为基于 GPU 的 VM 实例选择 NC 或 ND 系列 VM。 
+    * **用户名**：管理员用户名
+    * **SSH 公钥**：单行格式的 RSA 公钥（可以使用密码而不是 SSH 密钥）。
+    
+    b. **磁盘**：
+    
+    * **OS 磁盘类型**：如果希望使用固态硬盘 (SSD)，请选择“高级 SSD”  。 否则，请选择“标准 HDD”  。
+    
+    c. 对于其余设置，只需使用默认值即可。 若考虑使用非默认值，请将鼠标悬停在信息链接上获取特定字段的帮助。
+    
+    最后，选择“查看 + 创建” 
+    
+    d. **查看 + 创建**：
+    
+    * 验证通过后，请检查输入的所有信息是否正确。 此时会显示使用条款的链接。 除计算“大小”输入中选择的服务器大小所产生的费用外，VM 不产生其他任何费用。 若要开始预配，请单击“创建”  。
+    
+    预配大约需要 5 分钟。 预配的状态在 Azure 门户上显示。
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>如何访问适用于 Linux 的数据科学虚拟机
 

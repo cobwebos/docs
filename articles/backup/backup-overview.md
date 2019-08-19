@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: a4fbfeb96d2316ce6af100cb16fcbf0d13f230f2
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 526c60916854d4918607a1fd1b887ac9d27cd1c7
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737119"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950012"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什么是 Azure 备份服务？
 
@@ -55,7 +55,7 @@ Azure 备份和 Azure Site Recovery 服务有助于企业实现业务连续性�
 
 **目标** | **详细信息** | **比较**
 --- | --- | ---
-**数据备份/保留** | 可以根据符合性要求，将备份数据保留和存储数天、数月甚至数年。 | 可以通过 Azure 备份之类的备份解决方案细致地选取要备份的数据，并对备份和保留策略进行优化。<br/><br/> Site Recovery 不允许这样细致的优化。
+**数据备份/保留** | 从合规的角度来看，如有必要，可以将备份数据保留和存储数天、数月甚至数年。 | 可以通过 Azure 备份之类的备份解决方案细致地选取要备份的数据，并对备份和保留策略进行优化。<br/><br/> Site Recovery 不允许这样细致的优化。
 **恢复点目标 (RPO)** | 在需要执行恢复的情况下可接受的数据丢失量。 | 备份的 RPO 的可变性更高。<br/><br/> VM 备份的 RPO 通常为一天，而数据库备份的 RPO 可以低至 15 分钟。<br/><br/> Site Recovery 提供的 RPO 低是因为复制持续且频繁，因此源和副本之间的差异小。
 **恢复时间目标 (RTO)** |完成恢复或还原所需的时间量。 | 由于 RPO 较大，备份解决方案需要处理的数据量通常更多，这会导致 RTO 较长。 例如，根据从异地转送磁带所需的时间，从磁带还原数据可能需要数天的时间。
 
@@ -66,7 +66,7 @@ Azure 备份可以备份本地计算机和 Azure VM。
 **计算机** | **备份方案**
 --- | ---
 **本地备份** |  1) 在本地 Windows 计算机上运行 Azure 备份 Microsoft Azure 恢复服务 (MARS) 代理，以备份单个文件和系统状态。 <br/><br/>2) 将本地计算机备份到备份服务器（System Center Data Protection Manager (DPM) 或 Microsoft Azure 备份服务器 (MABS)），然后将备份服务器配置为备份到 Azure 中的 Azure 备份恢复服务保管库。
-**Azure VM** | 1) 为单个 Azure VM 启用备份。 启用备份时，Azure 备份会在 VM 上运行的 Azure VM 代理中安装一个扩展。 该代理备份整个 VM。<br/><br/> 2) 在 Azure VM 上运行 MARS 代理。 若要备份 VM 上的单个文件和文件夹，此功能将十分有用。<br/><br/> 3) 将 Azure VM 备份到 Azure 中运行的 DPM 服务器或 MABS。 然后使用 Azure 备份将 DPM 服务器/MABS 备份到保管库。
+**Azure VM** | 1) 为单个 Azure VM 启用备份。 启用备份时，Azure 备份会在 VM 上运行的 Azure VM 代理中安装一个扩展。 该代理备份整个 VM。<br/><br/> 2) 在 Azure VM 上运行 MARS 代理。 若要备份 VM 上的单个文件和文件夹，此功能将十分有用。<br/><br/> 
 
 
 ## <a name="why-use-a-backup-server"></a>为何要使用备份服务器？
@@ -116,7 +116,7 @@ Azure 备份针对每个受保护实例实施 9999 个恢复点（也称为备�
 - 受保护的实例是计算机、服务器（物理或虚拟）或配置为向 Azure 备份数据的工作负荷。 保存数据的备份副本时，将保护实例。
 - 数据的备份副本是保护项。 如果源数据丢失或损坏，备份副本可还原源数据。
 
-下表显示了每个组件的最大备份频率。备份策略配置决定了恢复点的消耗速度。 例如，如果每天创建一个恢复点，可以保留恢复点 27 年，27 年后配额会耗尽。如果每月创建一个恢复点，可以保留恢复点 833 年。备份服务未针对恢复点实施过期时间限制。
+下表显示了每个组件的最大备份频率。 备份策略配置确定了恢复点的消耗速度。 例如，如果每天创建一个恢复点，可以保留恢复点 27 年，27 年后配额会耗尽。如果每月创建一个恢复点，可以保留恢复点 833 年。备份服务未针对恢复点实施过期时间限制。
 
 |  | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
 | --- | --- | --- | --- | --- |

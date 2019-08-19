@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: trbye
-ms.date: 04/11/2019
+ms.date: 08/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: bbb9653173925e1443504aa3f2e9c5e6edbfc486
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 060257ef144309e37208db80c7731ed96b995b2c
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371034"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990475"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>教程：通过自动化机器学习来构建回归模型
 
@@ -54,7 +54,7 @@ ms.locfileid: "68371034"
 
 从以下任一部分获取所有这些必备组件。
 
-* 使用[工作区中的云 Notebook 服务器](#azure) 
+* 使用[工作区中的云 Notebook 服务器](#azure)
 * 使用[自己的 Notebook 服务器](#server)
 
 ### <a name="azure"></a>使用工作区中的云 Notebook 服务器
@@ -688,6 +688,9 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    **automl_settings)
 ```
 
+> [!NOTE]
+> 自动机器学习预处理步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，训练期间应用的相同预处理步骤将自动应用于输入数据。
+
 ### <a name="train-the-automatic-regression-model"></a>训练自动回归模型
 
 启动要在本地运行的试验。 将定义的 `automated_ml_config` 对象传递到试验。 将输出设置为 `True`，以查看试验的进度：
@@ -764,7 +767,7 @@ RunDetails(local_run).show()
 ```
 local_run.get_portal_url()
 ```
-  
+
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>选项 2：获取并检查 Python 中的所有运行迭代
 

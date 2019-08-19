@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 61946f77ddffe999e55acd09e3957d91c621492b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 557f07f3e99365bbfca7f0b0d70c0c0cd928c2e6
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103234"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944388"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eplatform"></a>教程：Azure Active Directory 与 ePlatform 的集成
 
@@ -117,13 +117,13 @@ ms.locfileid: "67103234"
 
     ![复制指纹值](common/copy-thumbprint.png)
 
-7. ePlatform 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****   ****  。
+7. ePlatform 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
     ![image](common/edit-attribute.png)
 
 8. 除上述属性以外，ePlatform 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 | 源属性 |
+    | Name | 源属性 |
     | ---------------| --------------- |
     | upn | user.userprincipalname |
 
@@ -212,7 +212,7 @@ ms.locfileid: "67103234"
 
 ### <a name="create-eplatform-test-user"></a>创建 ePlatform 测试用户
 
-在本部分，我们将在 ePlatform 中创建名为 Britta Simon 的用户。 在  [ePlatform 支持团队](https://help.eplatform.co/hc/en-us)的配合下，将用户添加到 ePlatform 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 ePlatform 中创建名为 Britta Simon 的用户。 请与 [ePlatform 支持团队](https://help.eplatform.co/hc/en-us)协作，将用户添加到 ePlatform 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

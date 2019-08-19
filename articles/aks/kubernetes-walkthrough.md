@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/20/2019
 ms.author: mlearned
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 2079144cf6cb36870645d3182aabdecccfcbadd0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 8a5fb9313fca2a8d787d0fbde47401f6d3e1d229
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615075"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68880680"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -100,12 +100,12 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 
 ## <a name="run-the-application"></a>运行应用程序
 
-Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本快速入门中，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 此清单包含两个 [Kubernetes 部署][kubernetes-deployment] - one for the sample Azure Vote Python applications, and the other for a Redis instance. Two [Kubernetes Services][kubernetes-service] 还会创建 - 一个内部服务用于 Redis 实例，一个外部服务用于从 Internet 访问 Azure Vote 应用程序。 在本快速入门中，请手动创建应用程序清单并将其部署到 AKS 群集。
+Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本快速入门中，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 此清单包括两个 [Kubernetes 部署][kubernetes-deployment] - 一个用于 Azure Vote Python 示例应用程序，另一个用于 Redis 实例。 此外，还会创建两个 [Kubernetes 服务][kubernetes-service] - 一个内部服务用于 Redis 实例，一个外部服务用于从 Internet 访问 Azure Vote 应用程序。
 
 > [!TIP]
-> 在更实际的方案中，可以使用 [Azure Dev Spaces][azure-dev-spaces] 直接在 AKS 群集中快速地循环访问代码并对其进行调试。 可以跨 OS 平台和开发环境使用 Dev Spaces，并可与团队中的他人进行协作。 创建名为 `azure-vote.yaml` 的文件，并将其复制到以下 YAML 定义中。
+> 在本快速入门中，请手动创建应用程序清单并将其部署到 AKS 群集。 在更实际的方案中，可以使用 [Azure Dev Spaces][azure-dev-spaces] 直接在 AKS 群集中快速地循环访问代码并对其进行调试。 可以跨 OS 平台和开发环境使用 Dev Spaces，并可与团队中的他人进行协作。
 
-如果使用 Azure Cloud Shell，则可以使用 `vi` 或 `nano` 来创建此文件，就像在虚拟或物理系统中操作一样： 使用 [kubectl apply][kubectl-apply] 命令部署应用程序，并指定 YAML 清单的名称：
+创建名为 `azure-vote.yaml` 的文件，并将其复制到以下 YAML 定义中。 如果使用 Azure Cloud Shell，则可以使用 `vi` 或 `nano` 来创建此文件，就像在虚拟或物理系统中操作一样：
 
 ```yaml
 apiVersion: apps/v1
@@ -192,13 +192,13 @@ spec:
     app: azure-vote-front
 ```
 
-以下示例输出显示已成功创建了部署和服务：
+使用 [kubectl apply][kubectl-apply] 命令部署应用程序，并指定 YAML 清单的名称：
 
 ```azurecli-interactive
 kubectl apply -f azure-vote.yaml
 ```
 
-测试应用程序
+以下示例输出显示已成功创建了部署和服务：
 
 ```output
 deployment "azure-vote-back" created
@@ -207,79 +207,79 @@ deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
-## <a name="test-the-application"></a>应用程序运行时，Kubernetes 服务将向 Internet 公开应用程序前端。
+## <a name="test-the-application"></a>测试应用程序
 
-此过程可能需要几分钟才能完成。 若要监视进度，请将 [kubectl get service][kubectl-get] 命令与 `--watch` 参数配合使用。
+应用程序运行时，Kubernetes 服务将向 Internet 公开应用程序前端。 此过程可能需要几分钟才能完成。
 
-最初，*azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending*。
+若要监视进度，请将 [kubectl get service][kubectl-get] 命令与 `--watch` 参数配合使用。
 
 ```azurecli-interactive
 kubectl get service azure-vote-front --watch
 ```
 
-当 *EXTERNAL-IP* 地址从 *pending* 更改为实际公共 IP 地址时，请使用 `CTRL-C` 停止 `kubectl` 监视进程。
+最初，*azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending*。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-以下示例输出显示向服务分配了有效的公共 IP 地址： 若要查看 Azure Vote 应用的实际效果，请打开 Web 浏览器并转到服务的外部 IP 地址。
+当 *EXTERNAL-IP* 地址从 *pending* 更改为实际公共 IP 地址时，请使用 `CTRL-C` 停止 `kubectl` 监视进程。 以下示例输出显示向服务分配了有效的公共 IP 地址：
 
 ```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-浏览到 Azure Vote 的图像
+若要查看 Azure Vote 应用的实际效果，请打开 Web 浏览器并转到服务的外部 IP 地址。
 
-![监视运行状况和日志](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
-## <a name="monitor-health-and-logs"></a>创建 AKS 群集时，即已为容器启用了 Azure Monitor 来捕获群集节点和 Pod 的运行状况指标。
+## <a name="monitor-health-and-logs"></a>监视运行状况和日志
 
-Azure 门户提供这些运行状况指标。 若要查看 Azure Vote Pod 的当前状态、运行时间和资源使用情况，请完成以下步骤：
+创建 AKS 群集时，即已为容器启用了 Azure Monitor 来捕获群集节点和 Pod 的运行状况指标。 Azure 门户提供这些运行状况指标。
 
-将 Web 浏览器打开到 Azure 门户 [https://portal.azure.com][azure-portal] 的位置。
+若要查看 Azure Vote Pod 的当前状态、运行时间和资源使用情况，请完成以下步骤：
 
+1. 将 Web 浏览器打开到 Azure 门户 [https://portal.azure.com][azure-portal] 的位置。
 1. 选择资源组（例如 *myResourceGroup*），然后选择 AKS 群集（例如 *myAKSCluster*）。
-1. 在左侧的“监视”  下，选择“见解” 
-1. 在顶部，选择“+ 添加筛选器” 
-1. 选择“命名空间”  作为属性，然后选择“\<除 kube-system 之外的所有项\>” 
-1. 选择查看“容器”  。
-1. 将显示 *azure-vote-back* 和 *azure-vote-front* 容器，如下面的示例中所示：
+1. 在左侧的“监视”  下，选择“见解”  。
+1. 在顶部，选择“+添加筛选器”  。
+1. 选择“命名空间”  作为属性，然后选择“\<除 kube-system 之外的所有项\>”  。
+1. 选择“容器”  。
 
-查看在 AKS 中运行的容器的运行状况
+将显示 *azure-vote-back* 和 *azure-vote-front* 容器，如下面的示例中所示：
 
-![若要查看 `azure-vote-back` Pod 的日志，请选择“在分析中查看”选项，然后单击容器列表右侧的“查看容器日志”链接   。](media/kubernetes-walkthrough/monitor-containers.png)
+![查看在 AKS 中运行的容器的运行状况](media/kubernetes-walkthrough/monitor-containers.png)
 
-这些日志包括容器中的 *stdout* 和 *stderr* 流。 查看 AKS 中的容器日志
+若要查看 `azure-vote-back` Pod 的日志，请选择“在分析中查看”选项，然后选择容器列表右侧的“查看容器日志”链接   。 这些日志包括容器中的 *stdout* 和 *stderr* 流。
 
-![删除群集](media/kubernetes-walkthrough/monitor-container-logs.png)
+![查看 AKS 中的容器日志](media/kubernetes-walkthrough/monitor-container-logs.png)
 
-## <a name="delete-the-cluster"></a>如果不再需要群集，可以使用 [az group delete][az-group-delete] 命令删除资源组、容器服务及所有相关资源。
+## <a name="delete-the-cluster"></a>删除群集
 
-删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。
+如果不再需要群集，可以使用 [az group delete][az-group-delete] 命令删除资源组、容器服务及所有相关资源。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。 获取代码
+> 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。
 
-## <a name="get-the-code"></a>本快速入门使用预先创建的容器映像创建了 Kubernetes 部署。
+## <a name="get-the-code"></a>获取代码
 
-GitHub 上提供了相关的应用程序代码、Dockerfile 和 Kubernetes 清单文件。 后续步骤
+本快速入门使用预先创建的容器映像创建了 Kubernetes 部署。 GitHub 上提供了相关的应用程序代码、Dockerfile 和 Kubernetes 清单文件。
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>在本快速入门中，部署了 Kubernetes 群集，并向该群集部署了多容器应用程序。
+## <a name="next-steps"></a>后续步骤
 
-还可以[访问 AKS 群集的 Kubernetes Web 仪表板][kubernetes-dashboard]。 若要详细了解 AKS 并演练部署示例的完整代码，请继续阅读“Kubernetes 群集”教程。
+在本快速入门中，部署了 Kubernetes 群集，并向该群集部署了多容器应用程序。 还可以[访问 AKS 群集的 Kubernetes Web 仪表板][kubernetes-dashboard]。
 
-[AKS 教程][aks-tutorial]
+若要详细了解 AKS 并演练部署示例的完整代码，请继续阅读“Kubernetes 群集”教程。
 
 > [!div class="nextstepaction"]
-> <bpt id="p1">[</bpt>AKS tutorial<ept id="p1">][aks-tutorial]</ept>
+> [AKS 教程][aks-tutorial]
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git

@@ -3,27 +3,27 @@ title: 使用 Unreal 的项目音响效果快速入门
 titlesuffix: Azure Cognitive Services
 description: 使用示例内容，在 Unreal 和 Wwise 中试验项目音响效果设计控件，并部署到 Windows 桌面。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 06023b2758d09fe8ebe7c1301ef1a03d9c54aa41
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 927ce403130460c302f546038ff3a0c3a16e0368
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704773"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933020"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>项目音响效果 Unreal/Wwise 快速入门
 在本快速入门中，将使用为 Unreal Engine 和 Wwise 提供的示例内容来试验项目音响效果设计控件。
 
-所需软件：
-* [Unreal Engine](https://www.unrealengine.com/) 4.21
-* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6
+使用示例内容时的软件要求：
+* [Unreal Engine](https://www.unrealengine.com/) 4.22
+* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2019.1.2
 
 ## <a name="download-the-sample-package"></a>下载示例包
 下载[项目音响效果 Unreal + Wwise 示例包](https://www.microsoft.com/download/details.aspx?id=58090)。 示例包中包含 Unreal Engine 项目、该 Unreal 项目的 Wwise 项目以及项目音响效果 Wwise 插件。
@@ -55,12 +55,16 @@ ms.locfileid: "68704773"
 
     ![显示注释掉 DXSDK 的代码编辑器的屏幕截图](media/directx-sdk-comment.png)
 
+* 如果使用 Visual Studio 2019 进行编译，要解决 Wwise 的链接错误，请手动将 `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` 中的默认 `VSVersion` 值编辑为 `vc150`：
+
+    ![显示 VSVersion 已更改为 vc150 的代码编辑器的屏幕截图](media/vsversion-comment.png)
+
 ### <a name="open-the-unreal-project"></a>打开 Unreal 项目。 
 它会要求你重新生成模块；单击“是”。
 
 >如果因生成故障打开项目失败，请检查是否已将项目音响效果 Wwise 插件安装到项目音响效果示例项目中使用的相同版本的 Wwise。
 
->如果不使用 [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6，你将需要重新生成声音库，然后才能在示例项目中播放音频。
+>如果使用早于 2019.1 的 [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 版本，将无法使用项目音响效果示例项目生成声音库。  需要将 Wwise 版本 2019.1 集成到示例项目中才能正常使用。
 
 ## <a name="experiment-with-project-acoustics-design-controls"></a>试验项目音响效果设计控件
 通过单击 Unreal 编辑器中的播放按钮，侦听场景的声音效果。 在桌面上，使用 W、A、S、D 和鼠标进行移动。 若要查看更多控件的键盘快捷方式，请按 **F1**。 下面是一些要尝试的设计活动：

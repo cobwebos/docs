@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Workplace by Facebook 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 Workplace by Facebook 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Workplace by Facebook 间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4328c6b5b85050ae5caf30fd4d321e50428f10b9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: fe02e9d6c3fa69e0ccd88057e10edb6ea1c6e0d0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68825324"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986048"
 ---
-# <a name="tutorial-integrate-workplace-by-facebook-with-azure-active-directory"></a>教程：将 Workplace by Facebook 与 Azure Active Directory 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workplace by Facebook 集成
 
 本教程介绍如何将 Workplace by Facebook 与 Azure Active Directory (Azure AD) 集成。 将 Workplace by Facebook 与 Azure AD 集成后，可以：
 
@@ -64,20 +64,20 @@ ms.locfileid: "68825324"
 1. 在结果面板中选择“Workplace by Facebook”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-workplace-by-facebook"></a>配置和测试 Workplace by Facebook 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置并测试 Workplace by Facebook 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Workplace by Facebook 中的相关用户之间建立链接关系。
 
 若要配置并测试 Workplace by Facebook 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 2. **[配置 Workplace by Facebook SSO](#configure-workplace-by-facebook-sso)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Workplace by Facebook 测试用户](#create-workplace-by-facebook-test-user)** - 在 Workplace by Facebook 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+    1. **[创建 Workplace by Facebook 测试用户](#create-workplace-by-facebook-test-user)** - 在 Workplace by Facebook 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -104,7 +104,37 @@ ms.locfileid: "68825324"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="configure-workplace-by-facebook-sso"></a>配置 Workplace by Facebook SSO
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
+
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 选择屏幕顶部的“新建用户”  。
+1. 在“用户”属性中执行以下步骤  ：
+   1. 在“名称”  字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+   1. 单击“创建”。 
+
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分，你将通过授予 B.Simon 访问 Workplace by Facebook 的权限，使其能够使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在应用程序列表中，选择“Workplace by Facebook”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+
+   ![“用户和组”链接](common/users-groups-blade.png)
+
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+
+    ![“添加用户”链接](common/add-assign-user.png)
+
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-workplace-by-facebook-sso"></a>配置 Workplace by Facebook SSO
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录 Workplace by Facebook 公司站点。
   
@@ -152,36 +182,6 @@ ms.locfileid: "68825324"
 
 你也可以使用此按钮强制为所有用户重置 SAML：现在需要对所有用户进行 SAML 身份验证。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分，你将通过授予 B.Simon 访问 Workplace by Facebook 的权限，使其能够使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Workplace by Facebook”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
-1. 在“添加分配”对话框中，单击“分配”按钮。  
-
 ### <a name="create-workplace-by-facebook-test-user"></a>创建 Workplace by Facebook 测试用户
 
 在本部分，你将在 Workplace by Facebook 中创建名为 B.Simon 的用户。 Workplace by Facebook 支持默认启用的实时预配。
@@ -191,7 +191,7 @@ ms.locfileid: "68825324"
 >[!Note]
 >如需手动创建用户，请联系 [Workplace by Facebook 客户端支持团队](https://workplace.fb.com/faq/)
 
-### <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -228,4 +228,6 @@ ms.locfileid: "68825324"
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [配置用户预配](workplacebyfacebook-provisioning-tutorial.md)
+
+- [通过 Azure AD 试用 Workplace by Facebook](https://aad.portal.azure.com)
 

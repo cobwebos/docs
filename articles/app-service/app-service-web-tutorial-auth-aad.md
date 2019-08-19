@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/07/2018
+ms.date: 08/14/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fff2469269d8f60f837f0af444e16928a9212bb0
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ad0c510244c78fa3bdba41690c2284d0650c4b55
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67866583"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019347"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -218,7 +218,7 @@ git push frontend master
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>启用针对后端应用的身份验证和授权
 
-在 [Azure 门户](https://portal.azure.com)中打开后端应用的管理页，方法是在左侧菜单中单击“资源组”   > “myAuthResourceGroup”   > “\<back-end-app-name>”  。
+在 [Azure 门户](https://portal.azure.com)中打开后端应用的管理页，方法是在左侧菜单中单击“资源组”   > “myAuthResourceGroup”   > “\<back-end-app-name>”   。
 
 ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
 
@@ -236,15 +236,15 @@ git push frontend master
 
 看到包含消息`Successfully saved the Auth Settings for <back-end-app-name> App`的通知后，刷新页面。
 
-再次单击“Azure Active Directory”，然后单击“管理应用程序”。  
+再次单击“Azure Active Directory”，然后单击“Azure AD 应用”。  
 
-在 AD 应用程序的管理页面中，将“应用程序 ID”复制到记事本。  稍后需要用到此值。
+将 Azure AD 应用程序的**客户端 ID** 复制到记事本。 稍后需要用到此值。
 
 ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/get-application-id-back-end.png)
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>启用针对前端应用的身份验证和授权
 
-遵循前端应用的步骤进行操作，但跳过最后一步。 对于前端应用，不需要“应用程序 ID”。  让“Azure Active Directory 设置”页保持打开状态。 
+遵循前端应用的步骤进行操作，但跳过最后一步。 对于前端应用，不需要客户端 ID。
 
 根据需要导航到 `http://<front-end-app-name>.azurewebsites.net`。 现在你会被定向到安全登录页。 登录后仍无法从后端应用访问数据，因为仍需执行三项操作：
 
@@ -259,21 +259,19 @@ git push frontend master
 
 启用对两种应用的身份验证和授权以后，即可通过 AD 应用程序对每种应用提供支持。 在此步骤中，请为前端应用授予代表用户访问后端的权限。 （严格说来就是，请为前端的  AD 应用程序授予代表用户访问后端的  AD 应用程序的权限。）
 
-此时，你应该位于前端应用的“Azure Active Directory 设置”页。  否则，请返回到该页。 
-
-单击“管理权限”   > “添加”   >   “选择 API”。
+从门户的左侧菜单中，选择“Azure Active Directory”   > “应用注册”   > “拥有的应用程序”   > “\<front-end-app-name>”   > “API 权限”  。
 
 ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
 
-在“选择 API”页中，键入后端应用的 AD 应用程序名称，该名称与默认的后端应用名称相同。  在列表中选中该名称，然后单击“选择”  。
+选择“添加权限”  ，然后选择“我的 API”   > “\<back-end-app-name>”  。
 
-选择“访问 \<AD-application-name>”旁边的复选框。   单击“选择” > “完成”。  
+在后端应用的“请求 API 权限”  页中，选择“委托的权限”  和“user_impersonation”  ，然后选择“添加权限”  。
 
 ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>对应用服务进行配置，使之返回可用的访问令牌
 
-前端应用现在有了必需的权限。 在此步骤中，请配置应用服务身份验证和授权，以便获取可以用来访问后端的访问令牌。 执行此步骤时，需要后端的应用程序 ID，该 ID 是在[启用针对后端应用的身份验证和授权](#enable-authentication-and-authorization-for-back-end-app)中复制的。
+现在，前端应用具有以登录用户身份访问后端应用所需的权限。 在此步骤中，请配置应用服务身份验证和授权，以便获取可以用来访问后端的访问令牌。 执行此步骤时，需要后端的客户端 ID，该 ID 是从[为后端应用启用身份验证和授权](#enable-authentication-and-authorization-for-back-end-app)复制的。
 
 登录到 [Azure 资源浏览器](https://resources.azure.com)。 在页面顶部单击“读/写”  ，以便启用编辑 Azure 资源的功能。
 
@@ -281,10 +279,10 @@ git push frontend master
 
 在左侧浏览器中，单击“订阅”   >    \<your-subscription>  > “resourceGroups”   > “myAuthResourceGroup”   > “提供程序”   > “Microsoft.Web”   > “站点”   >  \<front-end-app-name>    > “配置”   > “authsettings”  。
 
-在“authsettings”  视图中，单击“编辑”  。 将 `additionalLoginParams` 设置为以下 JSON 字符串，使用复制的应用程序 ID。 
+在“authsettings”  视图中，单击“编辑”  。 使用复制的客户端 ID 将 `additionalLoginParams` 设置为以下 JSON 字符串。 
 
 ```json
-"additionalLoginParams": ["response_type=code id_token","resource=<back_end_application_id>"],
+"additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
 ```
 
 ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/additional-login-params-front-end.png)
@@ -293,13 +291,13 @@ git push frontend master
 
 现在已配置好了应用。 前端现在可以通过适当的访问令牌访问后端了。
 
-若要了解如何为其他提供程序完成此配置，请参阅[刷新标识提供者令牌](app-service-authentication-how-to.md#refresh-identity-provider-tokens)。
+若要了解如何为其他提供程序配置访问令牌，请参阅[刷新标识提供者令牌](app-service-authentication-how-to.md#refresh-identity-provider-tokens)。
 
 ## <a name="call-api-securely-from-server-code"></a>通过服务器代码安全地调用 API
 
 在此步骤中，请允许以前修改过的服务器代码对后端 API 进行经身份验证的调用。
 
-现在，前端应用已经有了必需的权限，并且还将后端的应用程序 ID 添加到了登录参数中， 因此可以获取访问令牌，通过后端应用进行身份验证。 应用服务可以将此令牌提供给服务器代码，方法是将 `X-MS-TOKEN-AAD-ACCESS-TOKEN` 标头注入每个经身份验证的请求（请参阅[在应用代码中检索令牌](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)）。
+现在，前端应用已经有了必需的权限，并且还将后端的客户端 ID 添加到了登录参数中， 因此可以获取访问令牌，通过后端应用进行身份验证。 应用服务可以将此令牌提供给服务器代码，方法是将 `X-MS-TOKEN-AAD-ACCESS-TOKEN` 标头注入每个经身份验证的请求（请参阅[在应用代码中检索令牌](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)）。
 
 > [!NOTE]
 > 所有支持的语言都可以注入这些标头。 对于每种相应的语言，可以使用标准模式来访问它们。
@@ -317,7 +315,7 @@ public override void OnActionExecuting(ActionExecutingContext context)
 }
 ```
 
-此代码将标准的 HTTP 标头 `Authorization: Bearer <access_token>` 添加到所有远程 API 调用。 在 ASP.NET Core MVC 请求执行管道中，`OnActionExecuting` 刚好在相应的操作方法（例如 `GetAll()`）执行之前执行，因此每个传出 API 调用现在都提供访问令牌。
+此代码将标准的 HTTP 标头 `Authorization: Bearer <access-token>` 添加到所有远程 API 调用。 在 ASP.NET Core MVC 请求执行管道中，`OnActionExecuting` 刚好在相应的操作方法（例如 `GetAll()`）执行之前执行，因此每个传出 API 调用现在都提供访问令牌。
 
 保存所有更改。 在本地终端窗口中，使用以下 Git 命令将所做的更改部署到前端应用：
 

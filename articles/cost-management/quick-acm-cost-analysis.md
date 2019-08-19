@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: d07a52a3cd07c69b9b7e2ef43331ddd9fb455b10
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 2ca0c0741ea543b30695303d473389979f2e1045
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827828"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855052"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -128,7 +128,7 @@ ms.locfileid: "67827828"
 
 ![显示资源组名称的当前视图的完整数据](./media/quick-acm-cost-analysis/full-data-set.png)
 
-当按特定的属性对成本进行分组时，将按从最高到最低的顺序显示排名前 10 的成本贡献因素。 如果有 10 个以上的组，则会在“其他”组中显示前九个成本贡献因素  。 此组涵盖所有剩余组。 按标记分组时，将显示“无标记”组，用于表示未应用标记键的成本  。 **非标记**总是位于最后，即使非标记成本高于标记成本。 如果存在 10 个或更多个标记值，则非标记成本将会列在“其他”中。 
+当按特定的属性对成本进行分组时，将按从最高到最低的顺序显示排名前 10 的成本贡献因素。 如果成本贡献因素超过 10 个，则会显示排名前九的成本贡献因素和一个“其他”  组，该组表示合并的所有剩余组。 按标记分组时，将显示“无标记”组，用于表示未应用标记键的成本  。 **非标记**总是位于最后，即使非标记成本高于标记成本。 如果存在 10 个或更多个标记值，则非标记成本将会列在“其他”中。  切换到表视图并将粒度更改为“无”  ，以查看成本从最高到最低排名的所有值。
 
 经典虚拟机、网络和存储资源不共享详细的计费数据。 当对成本进行分组时，它们合并为**经典服务**。
 

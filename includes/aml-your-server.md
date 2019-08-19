@@ -9,18 +9,23 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: ce8b117a3cbe0e3a5c4265729ccf5c0264241013
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 6c93d1243db1b3c4277a54cf71e10f6bbc648d26
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391787"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846013"
 ---
-1. 按照[创建 Azure 机器学习服务工作区](../articles/machine-learning/service/setup-create-workspace.md#portal)中的说明执行以下操作：
-    * 创建 Miniconda 环境
+- 安装了适用于 Python 的 Azure 机器学习 SDK。 按照 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 中的说明执行以下操作：
+
+
+1. 按照 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 中的说明执行以下操作：
+    * 创建 Miniconda 环境[创建和管理 Azure 机器学习服务工作区]
     * 安装用于 Python 的 Azure 机器学习 SDK
-    * 创建工作区
-    * 写入工作区配置文件 (aml_config/config.json  )。
+
+1. 创建 [Azure 机器学习服务工作区](../articles/machine-learning/service/how-to-manage-workspace.md)。
+
+1. 编写一个[配置文件](../articles/machine-learning/service/how-to-configure-environment.md#workspace) 文件 (**aml_config/config.json**)。
 
 1. 克隆 [GitHub 存储库](https://aka.ms/aml-notebooks)。
 

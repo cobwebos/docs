@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: 7b27637ca63ec69d7f4c33f05e7c037d67676b2d
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 04162f074dba05ac6492c16acb446912296cd673
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828296"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952101"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>使用“Azure Migrate:服务器评估”评估 VMware VM
 
@@ -180,8 +180,39 @@ ms.locfileid: "68828296"
 
 ### <a name="scoping-discovery"></a>限定发现范围
 
-可以通过限制访问用于发现的 vCenter 帐户，来限定发现范围。 可将范围设置为 vCenter Server 数据中心、群集、群集文件夹、主机、主机文件夹或单个 VM。 
+可以通过限制访问用于发现的 vCenter 帐户，来限定发现范围。 可将范围设置为 vCenter Server 数据中心、群集、群集文件夹、主机、主机文件夹或单个 VM。
 
+若要设置范围，需要执行以下步骤：
+1.  创建 vCenter 用户帐户。
+2.  定义具有所需特权的新角色。 （<em>无代理服务器迁移需要</em>）
+3.  为用户帐户分配对 vCenter 对象的权限。
+
+**创建 vCenter 用户帐户**
+1.  以 vCenter Server 管理员身份登录到 vSphere Web 客户端。
+2.  单击“管理” > “SSO 用户和组” > “用户”选项卡。   
+3.  单击“新建用户”图标。 
+4.  填写所需的信息以创建新用户，然后单击“确定”。 
+
+**定义具有所需权限的新角色**（<em>无代理服务器迁移需要</em>）
+1.  以 vCenter Server 管理员身份登录到 vSphere Web 客户端。
+2.  浏览到“管理” > “角色管理器”。  
+3.  从下拉菜单中选择你的 vCenter Server。
+4.  单击“创建角色”操作。 
+5.  键入新角色的名称。 （例如 <em>Azure_Migrate</em>）。
+6.  将这些[权限](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions)分配到新定义的角色。
+7.  单击“确定”。 
+
+**分配对 vCenter 对象的权限**
+
+可通过两种方法为分配了角色的 vCenter 用户帐户分配对 vCenter 中 inventory 对象的权限。
+- 对于“服务器评估”，必须为 vCenter 用户帐户应用对要发现的 VM 所在的所有父对象的“只读”角色。  需要包括层次结构中的所有父对象（主机、主机文件夹、群集、群集文件夹）直到数据中心。 这些权限将传播到层次结构中的子对象。 
+
+    同样，对于“服务器迁移”，必须为 vCenter 用户帐户应用对要迁移的 VM 所在的所有父对象的用户定义的、分配了这些[特权](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions)的角色（可命名为 <em>Azure_Migrate</em>）。
+
+![分配权限](./media/tutorial-assess-vmware/assign-perms.png)
+
+- 替代方法是在数据中心级别分配用户帐户和角色，再将其传播到子对象。 然后，对于不想要发现/迁移的每个对象（例如 VM），为帐户提供“无访问权限”角色。  此配置很繁琐。 它会意外公开访问控制，因为系统会自动为每个新建的子对象授予从父对象继承的访问权限。 因此，建议使用第一种方法。
+ 
 > [!NOTE]
 > 目前，如果在 vCenter VM 文件夹级别授予 vCenter 帐户的访问权限，则服务器评估无法发现 VM。 若要按 VM 文件夹限定发现范围，确保在 VM 级别为 vCenter 帐户分配只读访问权限即可实现此目的。  下面提供了有关如何执行此操作的说明：
 >

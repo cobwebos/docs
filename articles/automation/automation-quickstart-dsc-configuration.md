@@ -11,14 +11,14 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0be78b444c9af9c5c0a818d790982670d2b68ee8
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 2c01172bf22fb286f790543b02a4c1e482b05fe7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477605"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850563"
 ---
-# <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>使用 Desired State Configuration 配置 Linux 虚拟机
+# <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>使用 Desired State Configuration 配置虚拟机
 
 启用 Desired State Configuration (DSC) 即可管理和监视 Windows 和 Linux 服务器的配置。 可以标识或自动更正不符合所需配置的配置。 本快速入门逐步介绍了如何使用 DSC 载入 Linux VM 并部署 LAMP 堆栈。
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7312821320084c766f5b3357fe64c061df83673b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 647ab76760d0c5ce5315a60d0a671163b902be0f
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827643"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954542"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -74,8 +74,8 @@ Azure 备份最近已宣布对 [EOS SQL Sever](https://docs.microsoft.com/azure/
 - 无法保护包含大量文件的数据库。 支持的最大文件数约为 1000  。  
 - 在一个保管库中最多可以备份约 2000 个 SQL Server 数据库  。 如果有大量数据库，可创建多个保管库。
 - 一次最多可配置 50 个数据库的备份；此限制有助于优化备份负载  。
-- 我们支持最高 2TB 大小的数据库；对于超过此大小的数据库，可能会出现性能问题  。
-- 若要了解每个服务器可以保护多少个数据库，我们需要考虑带宽、VM 大小、备份频率、数据库大小等因素。[下载](http://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)资源规划器，它根据 VM 资源和备份策略提供每个服务器可以具有的大致数据库数。
+- 我们支持最高 2 TB 大小的数据库；对于超过此大小的数据库，可能会出现性能问题  。
+- 若要了解每个服务器可以保护多少个数据库，我们需要考虑带宽、VM 大小、备份频率、数据库大小等因素。[下载](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)资源规划器，它根据 VM 资源和备份策略提供每个服务器可以具有的大致数据库数。
 - 对于可用性组，将基于几个因素从不同节点获取备份。 下面概述了可用性组的备份行为。
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Always On 可用性组的备份行为
@@ -83,7 +83,7 @@ Azure 备份最近已宣布对 [EOS SQL Sever](https://docs.microsoft.com/azure/
 建议只在 AG 的一个节点上配置备份。 应该始终在主节点所在的区域配置备份。 换句话说，必须始终确保主节点存在于进行备份配置的区域。 如果 AG 的所有节点位于进行备份配置的区域，则没有任何可担心的事情。
 
 **对于跨区域 AG**
-- 不管备份首选项如何，备份都不会发生在那些与备份配置不在同一区域的节点中。 这是因为跨区域备份不受支持。 如果只有 2 个节点，而辅助节点位于另一区域，则在这种情况下，备份会继续在主节点中进行（除非备份首选项为“仅限辅助节点”）。
+- 不管备份首选项如何，备份都不会发生在那些与备份配置不在同一区域的节点中。 这是因为跨区域备份不受支持。 如果只有两个节点，而辅助节点位于另一区域，则在这种情况下，备份会继续在主节点中进行（除非备份首选项为“仅限辅助节点”）。
 - 如果故障转移与备份配置不在同一区域进行，则已故障转移的区域中的节点上的备份会失败。
 
 根据备份首选项和备份类型（完整/差异/日志/仅复制完整），从特定节点（主要/次要）获取备份。

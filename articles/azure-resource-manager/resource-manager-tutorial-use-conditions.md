@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0d27eef8ee2c70449bacaced0de89bdc5e6989ff
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: b997451a25f8a093491a322376db95ea53165893
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357813"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989158"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>教程：在 Azure 资源管理器模板中使用条件
 
@@ -163,7 +163,7 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > 如果 **newOrExisting** 为 **new**，但具有指定存储帐户名称的存储帐户已存在，则部署将会失败。
 
-请尝试创建 **newOrExisting** 设置为“existing”的另一个部署，并指定现有存储帐户。 若要提前创建存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
+通过将 **newOrExisting** 设置为“existing”并指定现有存储帐户来尝试进行另一个部署。 若要提前创建存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

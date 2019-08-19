@@ -9,22 +9,35 @@ ms.topic: include
 ms.date: 10/20/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 74e14e36b1ac0979da31203a2d16e2396ed821d0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: dcfa65c655d1508510282fe66e90e4076278b29b
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172724"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949961"
 ---
 ## <a name="run-the-function-locally"></a>在本地运行函数
 
-以下命令用于启动函数应用。 此应用使用 Azure 中的 Azure Functions 运行时来运行。
+以下命令用于启动函数应用。 此应用使用 Azure 中的 Azure Functions 运行时来运行。 启动命令因项目语言而异。
 
-```bash
-func host start --build
+### <a name="c"></a>C\#
+
+```command
+func start --build
 ```
 
-若要编译 C# 项目，`--build` 选项是必需的。 不需对 JavaScript 项目使用此选项。
+### <a name="javascript"></a>JavaScript
+
+```command
+func start
+```
+
+### <a name="typescript"></a>TypeScript
+
+```command
+npm install
+npm start     
+```
 
 Functions 主机启动时，会写入类似于以下输出的内容。为了可读性，这些输出已经被截断：
 

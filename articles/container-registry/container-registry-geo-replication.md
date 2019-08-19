@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview
 ms.date: 05/24/2019
 ms.author: stevelas
-ms.openlocfilehash: e17b70843fcda1d183de1b81a98da53138835340
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 2fffa3b063969cbe68fb9a405f4198f15b3f9809
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309593"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845204"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -60,7 +60,7 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 * 跨所有区域管理单个注册表：`contoso.azurecr.io`
 * 管理多个映像部署的单个配置，因为所有区域使用同一个映像 URL：`contoso.azurecr.io/public/products/web:1.2`
-* 推送到单个注册表，而 ACR 管理异地复制。 你可以配置区域性 [Webhook](container-registry-webhook.md) 来通知你特定副本中的事件。
+* 推送到单个注册表，而 ACR 管理异地复制。 可以配置区域性 [Webhook](container-registry-webhook.md) 来通知你特定副本中的事件。
 
 ## <a name="configure-geo-replication"></a>配置异地复制
 

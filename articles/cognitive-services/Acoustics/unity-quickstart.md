@@ -3,20 +3,20 @@ title: 使用 Unity 的项目音响效果快速入门
 titlesuffix: Azure Cognitive Services
 description: 使用示例内容，在 Unity 中试验项目音响效果设计控件，并部署到 Windows 桌面。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 93eb44bf91bc2c8346660a4d770ee6d83501c3ae
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 0ea020ca76381a4ae5d6b6e480c94e63f9aa2dab
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706602"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933132"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>项目音响效果 Unity 快速入门
 使用 Unity 的项目音响效果示例内容来试验模拟支持的设计控件。
@@ -38,16 +38,35 @@ ms.locfileid: "68706602"
 
 * 选择 ProjectAcoustics.unitypackage 
 
+* 单击“导入”  按钮将 Unity 包集成到项目中  
+  
+    ![Unity 导入包对话框的屏幕截图](media/import-dialog.png)  
+
 如果要将包导入到现有项目中，请参阅 [Unity 集成](unity-integration.md)以获取其他步骤和说明。
+
+>[!NOTE] 
+>导入完成后，控制台日志中会显示几个错误。  继续执行下一步并重启 Unity。
 
 ## <a name="restart-unity"></a>重启 Unity
 音效工具包的制作部分需要 .NET 4.x 脚本编写运行时版本。 包导入将更新 Unity 播放器设置。 重启 Unity，使此设置生效。
 
 可以通过打开“播放器设置”来验证此设置是否生效  ：
 
-![Unity 播放器设置面板的屏幕截图](media/player-settings.png)
+![Unity 播放器设置面板的屏幕截图](media/player-settings.png)  
 
-![选中了 .NET 4.5 的 Unity 播放器设置面板的屏幕截图](media/net45.png)
+![选中了 .NET 4.5 的 Unity 播放器设置面板的屏幕截图](media/net45.png)  
+
+>[!NOTE]
+>屏幕截图取自 Unity 2018.x。 新版本的 Unity 可能会有所不同。
+
+## <a name="open-the-project-acoustics-bake-window"></a>打开项目音响效果烘焙窗口
+选择“Window”，再从 Unity 菜单中选择“音效”  ：
+
+![Unity 编辑器的屏幕截图，突出显示了“音效”窗口菜单选项](media/window-acoustics.png)
+
+将出现一个名为“音响效果”  的新浮动窗口。  在此窗口中设置音响效果模拟属性。
+
+![Unity 编辑器的屏幕截图，其中打开了“音响效果”窗口](media/unity-editor-plugin-window.png)  
 
 ## <a name="experiment-with-design-controls"></a>试验设计控件
 打开 ProjectAcousticsSample 文件夹中的示例场景，然后单击 Unity 编辑器中的“播放”按钮  。 使用 W、A、S、D 和鼠标进行移动。 若要比较有音响效果和没有音响效果的场景声音，请按下 **R** 按钮，直到覆盖文本变成红色，并显示“音响效果:已禁用”。 若要查看更多控件的键盘快捷方式，请按 **F1**。 通过右键单击以选择要执行的操作，然后左键单击以执行操作，也可以使用控件。
@@ -56,7 +75,7 @@ ms.locfileid: "68706602"
 
 ![Unity AcousticsAdjust 脚本的屏幕截图](media/acoustics-adjust.png)
 
-以下介绍一些可以使用提供的控件生成的效果。 有关每个控件的详细信息，请参阅[项目音响效果 Unity 设计教程](unreal-workflow.md)。
+以下介绍一些可以使用提供的控件生成的效果。 有关每个控件的详细信息，请参阅[项目音响效果 Unity 设计教程](unity-workflow.md)。
 
 ### <a name="modify-distance-based-attenuation"></a>修改基于距离的衰减
 项目音响效果 Unity 空间音响插件提供的音频 DSP 遵守内置于 Unity 编辑器的基于距离的按源衰减  。 针对基于距离的衰减的控件位于“三维声音设置”下的声源“检查器”面板的“音频源”组件中    ：

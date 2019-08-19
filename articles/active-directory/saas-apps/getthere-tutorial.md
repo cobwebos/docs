@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 499b7f5761c97f6986ca0291af2242d694b609d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a7c1a59e3b0650badd75a1170a4daaa6561bd23c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101739"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945062"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getthere"></a>教程：Azure Active Directory 与 GetThere 集成
 
@@ -120,13 +120,13 @@ ms.locfileid: "67101739"
     | `https://gtx2-gcte2.getthere.net/login/saml/ssoaasvalidate.act` |
     | `https://wx1.getthere.net/login/saml/ssoaavalidate.act` |
 
-5. GetThere 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
+5. GetThere 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
     ![image](common/edit-attribute.png)
 
 6. 除了上述属性，GetThere 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 |  源属性 |  命名空间 |
+    | Name |  源属性 |  命名空间 |
     | ---------------| --------------- | --------------- |
     | Sitename | “根据组织提供值” | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sitename |
     | 用户名 |  user.mail | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/username |
@@ -220,7 +220,7 @@ ms.locfileid: "67101739"
 
 ### <a name="create-getthere-test-user"></a>创建 GetThere 测试用户
 
-在本部分中，将在 GetThere 中创建一个名为 Britta Simon 的用户。 请与 [GetThere 支持团队](mailto:dataintegration@sabre.com)合作，将用户添加到 GetThere 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 GetThere 中创建一个名为 Britta Simon 的用户。 请与 [GetThere 支持团队](mailto:dataintegration@sabre.com)协作，将用户添加到 GetThere 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

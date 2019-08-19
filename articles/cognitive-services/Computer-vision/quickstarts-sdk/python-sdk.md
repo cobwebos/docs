@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: c03568ece97bdaad86f4564debf9f3b2fa14c6ed
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67786647"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>适用于 Python 的 Azure 认知服务计算机视觉 SDK
@@ -38,7 +38,7 @@ ms.locfileid: "67786647"
 ## <a name="prerequisites"></a>先决条件
 
 * [Python 3.6+][python]
-* 免费的[计算机视觉密钥][computervision_resource]and associated endpoint. You need these values when you create the instance of the [ComputerVisionClient][ref_computervisionclient]客户端对象。 使用以下其中一种方法获取这些值。
+* 免费的[计算机视觉密钥][computervision_resource]和关联的终结点。 创建 [ComputerVisionClient][ref_computervisionclient] 客户端对象的实例时需要使用这些值。 使用以下其中一种方法获取这些值。
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>如果你没有 Azure 订阅
 
@@ -84,7 +84,7 @@ source cogsrv-vision-env/bin/activate
 
 ### <a name="install-the-sdk"></a>安装 SDK
 
-安装用于 Python 的 Azure 认知服务计算机视觉 SDK [包][pypi_computervision]（with [pip][pip]）：
+安装包含 [pip][pip] 的适用于 Python 的 Azure 认知服务计算机视觉 SDK [包][pypi_computervision]：
 
 ```Bash
 pip install azure-cognitiveservices-vision-computervision
@@ -154,7 +154,7 @@ client = ComputerVisionClient(endpoint, credentials)
 
 ### <a name="analyze-an-image"></a>分析图像
 
-可以使用 [`analyze_image`][ref_computervisionclient_analyze_image] 分析图像以了解特定功能. Use the [`visual_features`][ref_computervision_model_visualfeatures] 属性可设置要对该图像执行的分析的类型。 常用值为 `VisualFeatureTypes.tags` 和 `VisualFeatureTypes.description`。
+可以使用 [`analyze_image`][ref_computervisionclient_analyze_image] 分析图像中的某些特征。 使用 [`visual_features`][ref_computervision_model_visualfeatures] 属性设置针对图像执行的分析类型。 常用值为 `VisualFeatureTypes.tags` 和 `VisualFeatureTypes.description`。
 
 ```Python
 url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
@@ -286,7 +286,7 @@ image.save('thumbnail.jpg')
 
 ### <a name="general"></a>常规
 
-与 [ComputerVisionClient][ref_computervisionclient] 交互时，client object using the Python SDK, the [`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception] 类用于返回错误。 服务返回的错误对应于返回给 REST API 请求的相同 HTTP 状态代码。
+使用 Python SDK 与 [ComputerVisionClient][ref_computervisionclient] 客户端对象交互时，将使用 [`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception] 类返回错误。 服务返回的错误对应于返回给 REST API 请求的相同 HTTP 状态代码。
 
 例如，如果你尝试使用无效的密钥分析图像，则会返回 `401` 错误。 以下代码片段通过捕获异常并显示有关错误的其他信息来妥善处理该[错误][ref_httpfailure]。
 
@@ -312,7 +312,7 @@ except HTTPFailure as e:
 
 ### <a name="handle-transient-errors-with-retries"></a>使用重试处理暂时性错误
 
-使用 [ComputerVisionClient][ref_computervisionclient] client, you might encounter transient failures caused by [rate limits][computervision_request_units]，或者网络中断等其他暂时性问题。 有关如何处理此类故障的信息，请参阅云设计模式指南中的[重试模式][azure_pattern_retry]，以及相关的[断路器模式][azure_pattern_circuit_breaker]。
+使用 [ComputerVisionClient][ref_computervisionclient] 客户端时，可能会遇到服务强制实施的[速率限制][computervision_request_units]所导致的暂时性错误，或者网络中断等其他暂时性问题。 有关如何处理此类故障的信息，请参阅云设计模式指南中的[重试模式][azure_pattern_retry]，以及相关的[断路器模式][azure_pattern_circuit_breaker]。
 
 ## <a name="next-steps"></a>后续步骤
 

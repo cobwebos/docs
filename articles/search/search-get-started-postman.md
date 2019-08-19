@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.author: heidist
-ms.openlocfilehash: 5ad1708475200475669c5de8f4fbd316f04ebd04
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e3912e90762977bc801279fde481fc26516e51a6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840788"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882639"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 将谓词更改为“PUT”。 
 
-2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`。
+2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`。
 
 3. 在请求正文中提供索引定义（下方提供了可直接复制的代码）。
 
@@ -298,6 +298,7 @@ https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/
 
 ## <a name="next-steps"></a>后续步骤
 
-REST 客户端对于即席探索很有用，但在了解 REST API 工作原理以后，则可继续代码操作。 有关后续步骤，请参阅以下链接：
+现在你已了解如何执行核心任务，你可以继续使用其他 REST API 调用来获得更高级的功能，例如索引器或[设置认知搜索管道](cognitive-search-tutorial-blob.md)。 在下一步中，我们建议你访问以下链接：
 
-+ [快速入门：使用 .NET SDK 创建索引](search-get-started-dotnet.md)
+> [!div class="nextstepaction"]
+> [REST 教程：在 Azure 搜索中为半结构化数据 (JSON Blob) 编制索引以及搜索此类数据](search-semi-structured-data.md)

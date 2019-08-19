@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 52dee0ee60c111c56c42e0452f8f8750ea9ea4e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 117b6d53a3392e8a4f75d5d1966e3f48fb66d5ce
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66167483"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966410"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -77,7 +77,7 @@ ms.locfileid: "66167483"
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>在 Azure SQL 数据库中创建数据源表
 1. 启动 **SQL Server Management Studio**，连接到 Azure SQL Server。 
-2. 在“服务器资源管理器”中，右键单击你的**数据库**，然后选择“新建查询”。
+2. 在“服务器资源管理器”中  ，右键单击你的**数据库**，然后选择“新建查询”  。
 3. 针对 Azure SQL 数据库运行以下 SQL 命令，创建名为 `data_source_table` 的表作为数据源存储。  
     
     ```sql
@@ -191,7 +191,7 @@ ms.locfileid: "66167483"
     The specified Data Factory name 'ADFIncCopyChangeTrackingTestFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。
-* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-linked-services"></a>创建链接服务
@@ -216,7 +216,7 @@ ms.locfileid: "66167483"
         }
     }
     ```
-2. 在 **Azure PowerShell** 中切换到 **C:\ADFTutorials\IncCopyChgTrackingTutorial** 文件夹。
+2. 在 **Azure PowerShell** 中切换到 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹。
 3. 运行 **Set-AzDataFactoryV2LinkedService** cmdlet 来创建链接服务：**AzureStorageLinkedService**。 在以下示例中，传递 **ResourceGroupName** 和 **DataFactoryName** 参数的值。 
 
     ```powershell
@@ -235,7 +235,7 @@ ms.locfileid: "66167483"
 ### <a name="create-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
 在此步骤中，将 Azure SQL 数据库链接到数据工厂。
 
-1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 server、database name **、&lt;user id&gt; 和 &lt;password&gt;** 分别替换为自己的 Azure SQL Server 名称、数据库名称、用户 ID 和密码，然后保存文件。 
+1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 **&lt;server&gt;、&lt;database name **、&lt;user id&gt; 和 &lt;password&gt;** 分别替换为自己的 Azure SQL Server 名称、数据库名称、用户 ID 和密码，然后保存文件。 
 
     ```json
     {
@@ -370,7 +370,7 @@ ms.locfileid: "66167483"
     ```
 
     创建 table_store_ChangeTracking_version 表，这是先决条件的部分要求。
-2.  运行 Set-AzDataFactoryV2Dataset cmdlet 以创建数据集：WatermarkDataset
+2.  运行 Set-AzDataFactoryV2Dataset cmdlet 以创建数据集：ChangeTrackingDataset
     
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
@@ -445,22 +445,22 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 ### <a name="monitor-the-full-copy-pipeline"></a>监视完整的复制管道
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击“所有服务”，使用关键字 `data factories` 进行搜索，然后选择“数据工厂”。 
+2. 单击“所有服务”，使用关键字 `data factories` 进行搜索，然后选择“数据工厂”。   
 
     ![数据工厂菜单](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
 3. 在数据工厂列表中搜索**你的数据工厂**，然后选择它来启动“数据工厂”页。 
 
     ![搜索你的数据工厂](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png)
-4. 在“数据工厂”页中，单击“监视和管理”磁贴。 
+4. 在“数据工厂”页中，单击“监视和管理”磁贴。  
 
     ![“监视和管理”磁贴](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
-5. **数据集成应用程序**在单独的选项卡中启动。可以看到所有**管道运行**及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 单击“参数”列中的链接即可查看传递至管道的参数。 如果有错误，在“错误”列可以看到链接。 单击“操作”列中的链接。 
+5. **数据集成应用程序**在单独的选项卡中启动。可以看到所有**管道运行**及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。   单击“参数”列中的链接即可查看传递至管道的参数。 如果有错误，在“错误”  列可以看到链接。 单击“操作”列中的链接。  
 
     ![管道运行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
-6. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有**活动运行**。 
+6. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有  **活动运行**。 
 
     ![活动运行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
-7. 若要切换回“管道运行”视图，请单击“管道”，如图所示。 
+7. 若要切换回“管道运行”  视图，请单击“管道”  ，如图所示。 
 
 
 ### <a name="review-the-results"></a>查看结果
@@ -633,13 +633,13 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>监视增量复制管道
-1. 在**数据集成应用程序**中，刷新“管道运行”视图。 确认在列表中看到 IncrementalCopyPipeline。 单击“操作”列中的链接。  
+1. 在**数据集成应用程序**中，刷新“管道运行”  视图。 确认在列表中看到 IncrementalCopyPipeline。 单击“操作”列中的链接。   
 
     ![管道运行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
-2. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有**活动运行**。 
+2. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有  **活动运行**。 
 
     ![活动运行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
-3. 若要切换回“管道运行”视图，请单击“管道”，如图所示。 
+3. 若要切换回“管道运行”  视图，请单击“管道”  ，如图所示。 
 
 ### <a name="review-the-results"></a>查看结果
 可以在 `adftutorial` 容器的 `incchgtracking` 文件夹中看到第二个文件。 

@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: 677d9b5a8ca837288755ab098fbccd8a5b7ddacd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f4d2afd65ec06c331498ce974e933fe08c8e67dd
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567860"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935191"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用数据库作业自动完成管理任务
 
@@ -44,7 +44,7 @@ Azure SQL 数据库允许创建和计划可针对一个或多个数据库定期�
 在 Azure SQL 数据库中可以使用以下作业计划技术：
 
 - **SQL 代理作业**是经典的且经过实战检验的 SQL Server 作业计划组件，可在托管实例中使用。 SQL 代理作业在单一数据库中不可用。
-- **弹性数据库作业**是针对一个或多个 Azure SQL 数据库执行自定义作业的作业计划服务。
+- **弹性数据库作业（预览）** 是针对一个或多个 Azure SQL 数据库执行自定义作业的作业计划服务。
 
 值得注意的是，SQL 代理（可以在本地使用以及作为 SQL 数据库托管实例的一部分使用）与数据库弹性作业代理（适用于 Azure SQL 数据库中的单一数据库和 SQL 数据仓库中的数据库）之间存在一些差异。
 
@@ -94,7 +94,7 @@ SQL 代理允许创建不同类型的作业步骤，例如，用于针对数据�
 
 ### <a name="job-notifications"></a>作业通知
 
-当作业成功完成或失败时，SQL 代理作业可让你接收通知。 可以通过电子邮件接收电子邮件通知。
+当作业成功完成或失败时，SQL 代理作业可让你接收通知。 可以通过电子邮件接收通知。
 
 首先，需要设置用于发送电子邮件通知的电子邮件帐户，然后将该帐户分配到名为 `AzureManagedInstance_dbmail_profile` 的电子邮件配置文件，如以下示例中所示：
 
@@ -158,17 +158,17 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 在 SQL Server 中可用的某些 SQL 代理功能在托管实例中不受支持：
 - SQL 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。
-- 目前，托管实例不支持启用/禁用代理。 SQL 代理始终运行。
+- 目前，托管实例不支持启用/禁用 SQL 代理。 SQL 代理始终运行。
 - 部分支持通知
   - 不支持寻呼机。
   - 不支持 NetSend。
-  - 尚不支持警报。
+  - 不支持警报。
 - 不支持代理。
 - 不支持事件日志。
 
 有关 SQL Server 代理的信息，请参阅 [SQL Server 代理](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)。
 
-## <a name="elastic-database-jobs"></a>弹性数据库作业
+## <a name="elastic-database-jobs-preview"></a>弹性数据库作业（预览版）
 
 使用**弹性数据库作业**，可以按计划或按需跨大量数据库并行运行一个或多个 T-SQL 脚本。
 
@@ -248,7 +248,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 ![目标组示例](media/elastic-jobs-overview/targetgroup-examples2.png)
 
-**示例 5** 和示例 6  演示高级方案，其中的 Azure SQL Server、弹性池和数据库可以使用包括和排除规则进行组合。<br>
+**示例 5** 和**示例 6** 演示高级方案，其中的 Azure SQL Server、弹性池和数据库可以使用包括和排除规则进行组合。<br>
 **示例 7** 表明分片映射中的分片也可在作业运行时进行评估。
 
 #### <a name="job"></a>作业

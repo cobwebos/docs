@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Node.js 调用文本分析 API
+title: 快速入门：适用于 Node.js 的文本分析客户端库 | Microsoft Docs
 titleSuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你快速开始使用文本分析 API。
 services: cognitive-services
@@ -10,86 +10,124 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/30/2019
 ms.author: shthowse
-ms.openlocfilehash: 9b8a713d58d5753e04de050e0bc961b5e8388123
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8590acbbd6001c1f214589298e454c1e75f93d67
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697478"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883536"
 ---
-# <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Node.js 调用文本分析认知服务
+# <a name="quickstart-text-analytics-client-library-for-nodejs"></a>快速入门：适用于 Node.js 的文本分析客户端库
 <a name="HOLTop"></a>
 
-根据本快速入门中的说明，开始使用用于 Node.js 的文本分析 SDK 来分析语言。 虽然[文本分析](//go.microsoft.com/fwlink/?LinkID=759711) REST API 与大多数编程语言兼容，但该 SDK 提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js) 上找到此示例的源代码。
+适用于 Node.js 的文本分析客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。 
 
-有关 API 的技术文档，请参阅 [API 定义](//go.microsoft.com/fwlink/?LinkID=759346)。
+使用适用于 Node.js 的文本分析客户端库执行：
+
+* 情绪分析
+* 语言检测
+* 实体识别
+* 关键短语提取
+
+[参考文档](https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [包 (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) | [示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Node.js](https://nodejs.org/)
-* [用于 Node.js 的文本分析 SDK](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) 可以通过以下命令来安装此 SDK：
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* 最新版本的 [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。
 
-    `npm install azure-cognitiveservices-textanalytics`
+## <a name="setting-up"></a>设置
 
-[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+### <a name="create-a-text-analytics-azure-resource"></a>创建文本分析 Azure 资源
 
-还必须拥有在注册期间生成的[终结点和访问密钥](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
+Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](../../cognitive-services-apis-create-account.md)或 [Azure CLI](../../cognitive-services-apis-create-account-cli.md) 创建用于文本分析的资源。 还可以：
 
-## <a name="create-a-nodejs-application-and-install-the-sdk"></a>创建 Node.js 应用程序并安装 SDK
+* 免费获取在 7 天内有效的[试用版密钥](https://azure.microsoft.com/try/cognitive-services/#decision)。 注册之后，它将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上提供。  
+* 在 [Azure 门户](https://portal.azure.com/)上查看资源
 
-安装 Node.js 后，创建一个 Node 项目。 为应用创建一个新目录，然后导航到其目录。
+获取试用订阅或资源的密钥后，请为该密钥创建名为 `TEXTANALYTICS_SUBSCRIPTION_KEY` 的[环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 
-```mkdir myapp && cd myapp```
+### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
 
-运行 ```npm init``` 以使用 package.json 文件创建一个 node 应用程序。 安装 `ms-rest-azure` 和 `azure-cognitiveservices-textanalytics` NPM 包:
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 
 
-```npm install azure-cognitiveservices-textanalytics ms-rest-azure```
+```console
+mkdir myapp && cd myapp
+```
 
-应用的 package.json 文件将随依赖项进行更新。
+运行 `npm init` 命令以使用 `package.json` 文件创建一个 node 应用程序。 
 
-## <a name="authenticate-your-credentials"></a>对凭据进行验证
+```console
+npm init
+```
 
-在项目根目录中创建新文件 `index.js` 并导入已安装的库
+创建一个名为 `index.js` 的文件，并导入以下库：
 
 ```javascript
 const CognitiveServicesCredentials = require("ms-rest-azure").CognitiveServicesCredentials;
 const TextAnalyticsAPIClient = require("azure-cognitiveservices-textanalytics");
 ```
 
-为文本分析订阅密钥创建变量。
+为资源的 Azure 终结点和密钥创建变量。 如果在启动应用程序后创建了环境变量，则需要关闭再重新打开运行该应用程序的编辑器、IDE 或 shell 才能访问该变量。
+
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
 ```javascript
+// replace this endpoint with the correct one for your Azure resource. 
+let endpoint = "https://westus.api.cognitive.microsoft.com/";
+// This sample assumes you have created an environment variable for your key
+let key = var apiKey = process.env.TEXTANALYTICS_SUBSCRIPTION_KEY;
 let credentials = new CognitiveServicesCredentials(
-    "enter-your-key-here"
+    key
 );
 ```
 
-> [!Tip]
-> 若要在生产系统中安全地部署机密，建议你使用 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net)。
->
+### <a name="install-the-client-library"></a>安装客户端库
 
-## <a name="create-a-text-analytics-client"></a>创建文本分析客户端
+安装 `ms-rest-azure` 和 `azure-cognitiveservices-textanalytics` NPM 包:
 
-使用 `credentials` 作为参数创建新的 `TextAnalyticsClient` 对象。 请使用适合你的文本分析订阅的正确 Azure 区域。
+```console
+npm install azure-cognitiveservices-textanalytics ms-rest-azure
+```
+
+应用的 `package.json` 文件将使用依赖项进行更新。
+
+## <a name="object-model"></a>对象模型
+
+文本分析客户端是一个 [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest) 对象，它使用你的密钥向 Azure 进行身份验证。 该客户端提供了几种方法来分析文本，文本可以是单个字符串，也可以是批处理。
+
+文本将以 `documents` 的列表的形式发送到 API，该项是包含 `id`、`text` 和 `language` 属性的组合的 `dictionary` 对象，具体取决于所用的方法。 `text` 属性存储要以源 `language` 分析的文本，而 `id` 则可以是任何值。 
+
+响应对象是一个列表，其中包含每个文档的分析信息。 
+
+## <a name="code-examples"></a>代码示例
+
+* [对客户端进行身份验证](#authenticate-the-client)
+* [情绪分析](#sentiment-analysis)
+* [语言检测](#language-detection)
+* [实体识别](#entity-recognition)
+* [关键短语提取](#key-phrase-extraction)
+
+
+## <a name="authenticate-the-client"></a>验证客户端
+
+使用 `credentials` 和 `endpoint` 作为参数创建新的 [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest) 对象。
 
 ```javascript
 //Replace 'westus' with the correct region for your Text Analytics subscription
 let client = new TextAnalyticsAPIClient(
     credentials,
-    "https://westus.api.cognitive.microsoft.com/"
+    endpoint
 );
 ```
 
 ## <a name="sentiment-analysis"></a>情绪分析
 
-创建对象的列表，其中包含要分析的文档。 API 的有效负载由 `documents` 列表组成，而列表中的项包含 `id`、`language` 和 `text` 属性。 `text` 属性存储要分析的文本，`language` 是文档的语言，`id` 则可以是任何值。 
+创建对象的列表，其中包含要分析的文档。
 
 ```javascript
 const inputDocuments = {documents:[
-    {language:"en", id:"1", text:"I had the best day of my life."},
-    {language:"en", id:"2", text:"This was a waste of my time. The speaker put me to sleep."},
-    {language:"es", id:"3", text:"No tengo dinero ni nada que dar..."},
-    {language:"it", id:"4", text:"L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."}
+    {language:"en", id:"1", text:"I had the best day of my life."}
 ]}
 ```
 
@@ -111,23 +149,18 @@ operation
 ### <a name="output"></a>输出
 
 ```console
-[ { id: '1', score: 0.8723785877227783 },
-  { id: '2', score: 0.1059873104095459 },
-  { id: '3', score: 0.43635445833206177 },
-  { id: '4', score: 1 } ]
+[ { id: '1', score: 0.8723785877227783 } ]
 ```
 
 ## <a name="language-detection"></a>语言检测
 
-创建对象的列表，其中包含你的文档。 API 的有效负载由 `documents` 列表组成，而列表中的项包含 `id` 和 `text` 属性。 `text` 属性存储要分析的文本，而 `id` 则可以是任何值。
+创建对象的列表，其中包含你的文档。
 
 ```javascript
 // The documents to be submitted for language detection. The ID can be any value.
 const inputDocuments = {
     documents: [
-        { id: "1", text: "This is a document written in English." },
-        { id: "2", text: "Este es un document escrito en Español." },
-        { id: "3", text: "这是一个用中文写的文件" }
+        { id: "1", text: "This is a document written in English." }
     ]
     };
 ```
@@ -159,19 +192,16 @@ operation
 ```console
 ===== LANGUAGE EXTRACTION ======
 ID: 1 Language English
-ID: 2 Language Spanish
-ID: 3 Language Chinese_Simplified
 ```
 
 ## <a name="entity-recognition"></a>实体识别
 
-创建对象的列表，其中包含你的文档。 API 的有效负载由 `documents` 列表组成，而列表中的项包含 `id`、`language` 和 `text` 属性。 `text` 属性存储要分析的文本，`language` 是文档的语言，`id` 则可以是任何值。
+创建对象的列表，其中包含你的文档。
 
 ```javascript
 
     const inputDocuments = {documents:[
-        {language:"en", id:"1", text:"Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800"},
-        {language:"es", id:"2", text:"La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle."},
+        {language:"en", id:"1", text:"Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800"}
         ]}
 
 }
@@ -220,28 +250,16 @@ Document ID: 1
             Offset: 89 Length: 5 Score: 0.8
     Name: Altair 8800 Type: Other Sub Type: Other
             Offset: 116 Length: 11 Score: 0.8
-Document ID: 2
-    Name: Microsoft Type: Organization Sub Type: Organization
-            Offset: 21 Length: 9 Score: 0.999755859375
-    Name: Redmond (Washington) Type: Location Sub Type: Location
-            Offset: 60 Length: 7 Score: 0.9911284446716309
-    Name: 21 kilómetros Type: Quantity Sub Type: Quantity
-            Offset: 71 Length: 13 Score: 0.8
-    Name: Seattle Type: Location Sub Type: Location
-            Offset: 88 Length: 7 Score: 0.9998779296875
 ```
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
 
-创建对象的列表，其中包含你的文档。 API 的有效负载由 `documents` 列表组成，而列表中的项包含 `id`、`language` 和 `text` 属性。 `text` 属性存储要分析的文本，`language` 是文档的语言，`id` 则可以是任何值。
+创建对象的列表，其中包含你的文档。
 
 ```javascript
     let inputLanguage = {
     documents: [
-        {language:"ja", id:"1", text:"猫は幸せ"},
-        {language:"de", id:"2", text:"Fahrt nach Stuttgart und dann zum Hotel zu Fu."},
-        {language:"en", id:"3", text:"My cat might need to see a veterinarian."},
-        {language:"es", id:"4", text:"A mi me encanta el fútbol!"}
+        {language:"en", id:"1", text:"My cat might need to see a veterinarian."}
     ]
     };
 ```
@@ -266,19 +284,35 @@ Document ID: 2
 ### <a name="output"></a>输出
 
 ```console
-[ 
-    { id: '1', keyPhrases: [ '幸せ' ] },
-    { id: '2', keyPhrases: [ 'Stuttgart', 'Hotel', 'Fahrt', 'Fu' ] },
-    { id: '3', keyPhrases: [ 'cat', 'veterinarian' ] },
-    { id: '4', keyPhrases: [ 'fútbol' ] } 
+[
+    { id: '1', keyPhrases: [ 'cat', 'veterinarian' ] }
 ]
 ```
+
+## <a name="run-the-application"></a>运行应用程序
+
+在快速入门文件中使用 `node` 命令运行应用程序。
+
+```console
+node index.js
+```
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
+
+* [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [使用 Power BI 进行文本分析](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>另请参阅
 
- [文本分析概述](../overview.md)[常见问题解答 (FAQ)](../text-analytics-resource-faq.md)
+* [文本分析概述](../overview.md)
+* [情绪分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [实体识别](../how-tos/text-analytics-how-to-entity-linking.md)
+* [检测语言](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [语言识别](../how-tos/text-analytics-how-to-language-detection.md)
+* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js) 上找到此示例的源代码。

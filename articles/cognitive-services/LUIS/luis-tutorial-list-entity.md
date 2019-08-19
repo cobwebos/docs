@@ -1,5 +1,5 @@
 ---
-title: Extact 文本匹配实体-LUIS
+title: 提取文本匹配实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 了解如何添加有助于 LUIS 标记字词或短语变体的列表实体。
 services: cognitive-services
@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: da6e8e794520a737a96ba45f94459fb8c1a5ff18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: MT
+ms.openlocfilehash: 979cbe16653c09ea1b019310d820b070be4a5a91
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637834"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946068"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>使用列表实体提升实体检测 
 本教程展示了如何使用[列表实体](luis-concept-entity-types.md)提升实体检测。 无需标记列表实体，因为它们与术语完全匹配。  
@@ -27,7 +27,7 @@ ms.locfileid: "68637834"
 > * 添加规范化值和同义词
 > * 验证改进后的实体标识
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * 最新版 [Node.js](https://nodejs.org)
@@ -212,7 +212,7 @@ node train.js
 
 尝试其他两个陈述，看看它们是否也作为“恒温调节器”返回。 
 
-|#|陈述|实体|type|value|
+|#|陈述|实体|type|值|
 |--|--|--|--|--|
 |1|turn on the ac（打开空调）| ac（空调） | DevicesList | 恒温调节器|
 |2|turn up the heat（打开供热）|heat（供热）| DevicesList |恒温调节器|

@@ -1,17 +1,17 @@
 ---
 title: 创建 Azure 数据目录
-description: 有关如何创建 Azure 数据目录的快速入门。
+description: 本快速入门介绍如何使用 Azure 门户创建 Azure 数据目录。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 08/01/2019
-ms.openlocfilehash: df2f536dc95dd74dbae1c8bda1a9934a73fd1fe0
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 854760ea0158d356cc5449c9f1fdab6161588640
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736497"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976860"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>快速入门：创建 Azure 数据目录
 
@@ -36,7 +36,7 @@ Azure 数据目录是一个完全托管的云服务，具有企业数据资产�
 
 1. 转到 [Azure 门户](https://portal.azure.com)， >  依次选择“创建资源”、“数据目录”。  
 
-    ![创建数据目录](media/data-catalog-get-started/data-catalog-create.png)
+    ![Azure 数据目录创建按钮](media/data-catalog-get-started/data-catalog-create.png)
 
 2. 指定数据目录的**名称**、要使用的**订阅**、目录的**位置**和**定价层**。 然后选择“创建”  。
 

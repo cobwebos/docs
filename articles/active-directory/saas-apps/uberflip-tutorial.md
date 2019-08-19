@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: fb55840a3423f32d2d6d6d2531628ae4361a0cc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8760606c981f494b38d4eb8ac1b2cd50ceb8582c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088211"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>教程：Azure Active Directory 与 Uberflip 的集成
 
@@ -122,7 +122,7 @@ Uberflip 支持以下功能：
 
    ![联合元数据 XML 下载选项](common/metadataxml.png)
 
-1. 在“设置 Uberflip”窗格中，复制所需的 URL 或 URLS  ：
+1. 在“设置 Uberflip”窗格中，复制所需的一个或多个 URL  ：
 
    * **登录 URL**
    * **Azure AD 标识符**

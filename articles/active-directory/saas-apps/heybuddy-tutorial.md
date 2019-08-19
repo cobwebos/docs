@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a29d20c434a7306b016fe9a549415242f5977a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e00cc46385f5d60b28607bfc08b9ca9540f152c6
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101105"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944976"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>教程：Azure Active Directory 与 HeyBuddy 集成
 
@@ -113,7 +113,7 @@ ms.locfileid: "67101105"
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符（实体 ID）更新这些值。 “登录 URL”中的 `Entity ID` 是为每个组织自动生成的。 请联系 [HeyBuddy 客户端支持团队](mailto:support@heybuddy.com)获取这些值。
 
-5. HeyBuddy 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
+5. HeyBuddy 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
     ![image](common/edit-attribute.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "67101105"
 
 6. 除了上述属性，HeyBuddy 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 |  源属性|
+    | Name |  源属性|
     | -------- | --------- |
     | 角色  | user.assignedroles |
     | | |
@@ -209,7 +209,7 @@ ms.locfileid: "67101105"
 在本部分中，我们会在 HeyBuddy 中创建一个名为 Britta Simon 的用户。 HeyBuddy 支持默认启用的恰时用户预配。 此部分不存在任何操作项。 如果 HeyBuddy 中不存在用户，则会在身份验证后创建一个新用户。
 
 > [!Note]
-> 如果需要手动创建用户，请联系  [HeyBuddy 支持团队](mailto:support@heybuddy.com)。
+> 如果需要手动创建用户，请联系 [HeyBuddy 支持团队](mailto:support@heybuddy.com)。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

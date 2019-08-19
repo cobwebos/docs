@@ -1,5 +1,5 @@
 ---
-title: 复合实体教程-LUIS
+title: 复合实体教程 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 610a7ee677771777c9bd88e5747ff766f284ae3e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: MT
+ms.openlocfilehash: 698635b3f216c556e1e36a033703b8786a028e38
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637917"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946134"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>教程：对相关的数据进行分组和提取
 在本教程中，添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
@@ -36,7 +36,7 @@ ms.locfileid: "68637917"
 > * 导入示例应用
 > * 创建意向
 > * 添加复合实体 
-> * 训练
+> * 定型
 > * 发布
 > * 从终结点获取意向和实体
 
@@ -87,7 +87,7 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 1. 在话语 `place John Jackson in engineering` 中，选择 personName 实体 `John Jackson`，然后从以下话语的弹出菜单列表中选择“包装进复合实体”  。 
 
-    ![在下拉对话框中选择“包装复合实体”的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
+    ![在下拉对话框中选择包装复合的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
 1. 然后立即选择最后一个实体，话语中的 `engineering`。 在所选字词下面绘制的绿色条指示复合实体。 在弹出菜单中，输入复合名称 `TransferEmployeeInfo`，然后选择 Enter。 
 

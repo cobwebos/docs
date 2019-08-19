@@ -3,26 +3,26 @@ title: 项目音响效果 Unity 烘焙教程
 titlesuffix: Azure Cognitive Services
 description: 本教程介绍了在 Unity 中使用项目音响效果进行音效烘焙。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2362b3916d1b1f430350d975dc0b61914a777be2
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: b7249c3048ba3af3adbaac01f43770482a0d38ad
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706690"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933201"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>项目音响效果 Unity 烘焙教程
 本教程介绍了在 Unity 中使用项目音响效果进行音效烘焙。
 
 所需软件：
-* 用于 Windows 的 [Unity 2018.2 及更高版本](https://unity3d.com)
+* 用于 Windows 或 MacOS 的 [Unity 2018.2 及更高版本](https://unity3d.com)
 * [Unity 项目中集成的项目音响效果插件](unity-integration.md)或[项目音响效果 Unity 示例内容](unity-quickstart.md)
 * 可选：[Azure Batch 帐户](create-azure-account.md)，它用于通过云计算加快烘焙速度
 
@@ -179,6 +179,25 @@ ms.locfileid: "68706690"
 
 Azure 凭据安全地存储在本地计算机上，并与 Unity 编辑器相关联。 它们仅用于建立与 Azure 的安全连接。
 
+## <a name="to-find-the-status-of-a-running-job-on-the-azure-portal"></a>在 Azure 门户上查找正在运行的作业的状态
+
+1. 在“烘焙”选项卡上找到烘焙作业 ID：
+
+![Unity 烘焙作业 ID 的屏幕截图](media/unity-job-id.png)  
+
+2. 打开 [Azure 门户](https://portal.azure.com)，导航到用于烘焙的批处理帐户，然后选择“作业” 
+
+![作业链接的屏幕截图](media/azure-batch-jobs.png)  
+
+3. 在作业列表中搜索作业 ID
+
+![烘焙作业状态的屏幕截图](media/azure-bake-job-status.png)  
+
+4. 单击作业 ID 可查看相关任务的状态和总体作业状态
+
+![烘焙任务状态的屏幕截图](media/azure-batch-task-state.png)  
+
+
 ### <a name="Estimating-bake-cost"></a> 估计 Azure 制作成本
 
 要估计给定制作的成本，请采用“估计的计算成本”中显示的值（一段持续时间），再乘以所选 VM 节点类型的每小时费用（当地货币）   。 结果不包括节点启动和运行所需的节点时间。 例如，如果为节点类型选择 Standard_F8s_v2  ，其费用为 $0.40/小时，而“估计的计算成本”为 3 小时 57 分钟，则运行作业的估计成本为 $0.40 * ~4 小时 = ~$1.60。 实际成本很可能略高，因为开始使用节点时会产生的额外时间。 在 [Azure Batch 定价](https://azure.microsoft.com/pricing/details/virtual-machines/linux)页可找到每小时的节点费用（对类别选择“优化计算”或“高性能计算”）。
@@ -188,6 +207,7 @@ Azure 凭据安全地存储在本地计算机上，并与 Unity 编辑器相关�
 
 ### <a name="minimum-hardware-requirements"></a>最低硬件要求
 * 至少 8 核且带 32 GB RAM 的 x86-64 处理器
+* [已启用 Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 以运行 Docker
 
 例如，在具有 Intel Xeon E5-1660 @ 3 GHz 和 32 GB RAM 的 8 核计算机上测试
 * 对于探测 100 次的小场景，低分辨率烘焙时约耗时 2 小时，高分辨率烘焙时约耗时 32 小时。
@@ -195,13 +215,15 @@ Azure 凭据安全地存储在本地计算机上，并与 Unity 编辑器相关�
 
 ### <a name="setup-docker"></a>安装 Docker
 在电脑上安装并配置 Docker 将处理模拟 -
-1. 安装 [Docker 工具集](https://www.docker.com/products/docker-desktop)。
-2. 启动 Docker 设置、导航到“高级”选项，再将资源配置为至少具有 8 GB RAM。 可向 Docker 分配的 CPU 越多，制作完成的速度就越快。 ![示例 Docker 设置的屏幕截图](media/docker-settings.png)
-3. 导航到“共享驱动器”并启用用于处理的驱动器共享。![Docker 共享驱动器选项的屏幕截图](media/docker-shared-drives.png)
+1. 安装 [Docker Desktop](https://www.docker.com/products/docker-desktop)。
+2. 启动 Docker 设置、导航到“高级”选项，再将资源配置为至少具有 8 GB RAM。 可向 Docker 分配的 CPU 越多，制作完成的速度就越快。  
+![示例 Docker 设置的屏幕截图](media/docker-settings.png)
+1. 导航到“共享驱动器”并启用用于处理的驱动器共享。  
+![Docker 共享驱动器选项的屏幕截图](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>运行本地制作
 1. 单击“烘焙”选项卡上的“准备本地烘焙”按钮，再选择要保存输入文件和执行脚本的文件夹  。 然后，通过将该文件夹复制到该计算机，即可在任何计算机上运行制作，只要该计算机满足最低硬件要求并安装了 Docker。
-2. 使用“runlocalbake.bat”脚本启动模拟。 此脚本将提取 Project Acoustics Docker 映像（其中包含用于模拟处理的工具集）并启动模拟。 
+2. 在 Windows 上使用“runlocalbake.bat”脚本或在 MacOS 上使用“runlocalbake.sh”脚本启动模拟。 此脚本将提取 Project Acoustics Docker 映像（其中包含用于模拟处理的工具集）并启动模拟。 
 3. 模拟完成后，将生成的 .ace 文件复制回你的 Unity 项目。 为确保 Unity 将此识别为二进制文件，请将“.bytes”追加到文件扩展名（例如，“Scene1.ace.bytes”）。 有关模拟的详细日志存储在“AcousticsLog.txt”中。 如果遇到任何问题，请共享此文件以协助进行诊断。
 
 ## <a name="Data-Files"></a>由烘焙过程添加的数据文件
