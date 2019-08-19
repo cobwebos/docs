@@ -95,7 +95,7 @@ ms.locfileid: "64875802"
 | path     | 若要提取或映射的每个字段的 JSON 路径表达式。 适用于层次结构数据例如 MongoDB/REST。<br>对于根对象下的字段，JSON 路径以开头根 $;有关选择的数组中的字段，`collectionReference`从数组元素的属性，JSON 路径开始。 | 否       |
 | type     | 源或接收器列的数据工厂临时数据类型。 | 否       |
 | culture  | 源或接收器列的区域性。 <br>应用类型时`Datetime`或`Datetimeoffset`。 默认为 `en-us`。 | 否       |
-| 格式   | 格式字符串类型时，使用`Datetime`或`Datetimeoffset`。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否       |
+| format   | 格式字符串类型时，使用`Datetime`或`Datetimeoffset`。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否       |
 
 在下，支持以下属性`translator`  ->  `mappings`除了具有对象`source`和`sink`:
 
