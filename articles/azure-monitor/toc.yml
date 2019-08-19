@@ -509,6 +509,10 @@
                   href: insights/container-insights-troubleshoot.md
             - name: Docker 和 Windows 容器监视
               href: insights/containers.md
+        - name: 存储
+          items:
+            - name: 用于存储的 Azure Monitor
+              href: insights/storage-insights-overview.md
         - name: 虚拟机
           items:
             - name: 代理
@@ -1046,6 +1050,8 @@
               href: app/data-model-context.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
+    - name: Azure CLI - Application Insights（预览版）
+      href: 'https://docs.microsoft.com/cli/azure/ext/application-insights/monitor?view=azure-cli-latest'
     - name: Azure Functions
       href: app/azure-functions-supported-features.md
     - name: Azure PowerShell

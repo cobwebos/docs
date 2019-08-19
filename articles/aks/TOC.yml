@@ -116,6 +116,8 @@
         - name: 删除 AKS 群集
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
+        - name: 使用 AKS 群集创建 ACR（预览版）
+          href: cluster-container-registry-integration.md
         - name: 创建虚拟节点
           items:
             - name: 使用 Azure CLI

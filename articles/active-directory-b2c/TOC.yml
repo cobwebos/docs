@@ -62,9 +62,6 @@
           href: active-directory-b2c-reference-tokens.md
         - name: 请求访问令牌
           href: active-directory-b2c-access-tokens.md
-        - name: 支持多个令牌颁发者
-          href: multiple-token-endpoints.md
-          displayName: 'migrate, b2clogin, owin, jwt'
     - name: 用户流和策略
       items:
         - name: 用户流
@@ -307,7 +304,12 @@
             - name: RelyingParty
               href: relyingparty.md
     - name: 使用 b2clogin.com
-      href: b2clogin.md
+      items:
+        - name: b2clogin.com 概述
+          href: b2clogin.md
+        - name: 将 Web API 迁移到 b2clogin.com
+          href: multiple-token-endpoints.md
+          displayName: 'migrate, b2clogin, owin, jwt'
     - name: 自动化
       items:
         - name: 导出使用情况报表

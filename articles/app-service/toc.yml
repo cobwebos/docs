@@ -67,6 +67,8 @@
       href: overview-hosting-plans.md
     - name: OS 功能
       href: operating-system-functionality.md
+    - name: 部署最佳做法
+      href: deploy-best-practices.md
     - name: 安全
       items:
         - name: 建议
@@ -217,6 +219,8 @@
       href: /azure/templates/microsoft.web/allversions
 - name: 资源
   items:
+    - name: 应用服务博客
+      href: 'https://aka.ms/appserviceblog'
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/
     - name: Azure 路线图

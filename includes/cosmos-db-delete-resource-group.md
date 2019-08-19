@@ -4,12 +4,12 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 03/23/2019
 ms.author: sngun
-ms.openlocfilehash: e7fc8f57c0fe290809354ce19fe92337178a84b6
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 008177e28e99d09f384899141038c13a0e625519
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67173493"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541433"
 ---
 执行完 Web 应用和 Azure Cosmos DB 帐户的操作以后，可以删除所创建的 Azure 资源，以免产生更多费用。 若要删除资源，请执行以下操作：
 
@@ -23,5 +23,5 @@ ms.locfileid: "67173493"
 
    ![Azure 门户中的指标](./media/cosmos-db-delete-resource-group/delete-resources.png)   
 
-3. 在下一窗口中键入要删除的资源组的名称，然后选择“删除”  。
+3. 在下一窗口中输入要删除的资源组的名称，然后选择“删除”  。
 

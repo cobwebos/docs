@@ -25,7 +25,7 @@
       href: concept-authentication-methods.md
     - name: 无密码身份验证
       href: concept-authentication-passwordless.md
-    - name: 合并注册
+    - name: 安全信息注册
       href: concept-registration-mfa-sspr-combined.md
     - name: 密码重置
       items:
@@ -103,7 +103,7 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: 合并注册
+    - name: 安全信息注册
       items:
         - name: 启用合并注册
           href: howto-registration-mfa-sspr-combined.md

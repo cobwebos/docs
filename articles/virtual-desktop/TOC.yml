@@ -32,6 +32,8 @@
       href: create-host-pools-arm-template.md
     - name: 使用 PowerShell 创建主机池
       href: create-host-pools-powershell.md
+    - name: 将 Windows 许可证应用于 Windows 虚拟桌面会话主机
+      href: apply-windows-license.md
     - name: 为主机池设置用户配置文件共享
       href: create-host-pools-user-profile.md
     - name: 配置 Windows 虚拟桌面负载均衡方法
@@ -48,6 +50,8 @@
       href: customize-feed-for-virtual-desktop-users.md
     - name: 自定义 RDP 属性
       href: customize-rdp-properties.md
+    - name: 部署诊断工具
+      href: deploy-diagnostics.md
 - name: 概念
   items:
     - name: Windows 虚拟桌面环境

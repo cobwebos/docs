@@ -213,29 +213,29 @@
         - name: 在何处以及如何部署
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Notebook VM
-          href: how-to-deploy-local-container-notebook-vm.md
-        - name: Azure 容器实例
-          displayName: aci
-          href: how-to-deploy-azure-container-instance.md
-        - name: Azure Kubernetes 服务
+        - name: 部署到 Azure Kubernetes 服务
           displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
-        - name: GPU 推理
+        - name: 部署模型以进行 GPU 推理
           href: how-to-deploy-inferencing-gpus.md
-        - name: FPGA 推理
-          href: how-to-deploy-fpga-web-service.md
-        - name: IoT Edge
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: Azure 应用服务
+        - name: 部署到 Azure 应用服务
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: 自定义 Docker 映像
+        - name: 部署到 Azure 容器实例
+          displayName: aci
+          href: how-to-deploy-azure-container-instance.md
+        - name: 部署到 Notebook VM
+          href: how-to-deploy-local-container-notebook-vm.md
+        - name: 使用自定义 Docker 映像
           href: how-to-deploy-custom-docker-image.md
         - name: 部署现有模型
           displayName: publish existing model
           href: how-to-deploy-existing-model.md
-        - name: 排查问题和调试
+        - name: 部署到 IoT Edge
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: 部署模型以进行 FPGA 推理
+          href: how-to-deploy-fpga-web-service.md
+        - name: 对部署进行故障排除和调试
           href: how-to-troubleshoot-deployment.md
     - name: 使用 Web 服务
       items:

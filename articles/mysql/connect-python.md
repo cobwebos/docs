@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: f1059fac4d44138a4e9bc04c858501234974dc43
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 08/08/2019
+ms.openlocfilehash: 5d7414d13b3fb1390b12084f0480e0549a380264
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350958"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931622"
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Python 连接和查询数据
 本快速入门演示了如何使用 [Python](https://python.org) 连接到 Azure Database for MySQL。 该语言可以通过 Mac OS、Ubuntu Linux 和 Windows 平台，使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 Python 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
@@ -31,8 +31,8 @@ ms.locfileid: "58350958"
 >
 
 ### <a name="windows"></a>Windows
-1. 下载并安装 [python.org](https://www.python.org/downloads/windows/) 提供的 Python 2.7。 
-2. 通过启动命令提示符来检查 Python 安装。 使用大写 V 开关运行 `C:\python27\python.exe -V` 命令，查看版本号。
+1. 下载并安装 [python.org](https://www.python.org/downloads/windows/) 提供的 Python 3.7。 
+2. 通过启动命令提示符来检查 Python 安装。 使用大写 V 开关运行 `C:\python37\python.exe -V` 命令，查看版本号。
 3. 根据 Python 版本安装 [mysql.com](https://dev.mysql.com/downloads/connector/python/) 提供的用于 MySQL 的 Python 连接器。
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
@@ -63,9 +63,9 @@ ms.locfileid: "58350958"
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器（例如 mydemoserver）。
+2. 在 Azure 门户的左侧菜单中，单击“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
 3. 单击服务器名称。
-4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。 如果忘记了密码，也可通过此面板来重置密码。
+4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。
  ![Azure Database for MySQL 服务器名称](./media/connect-python/1_server-overview-name-login.png)
 
 ## <a name="run-python-code"></a>运行 Python 代码
@@ -73,7 +73,7 @@ ms.locfileid: "58350958"
 - 若要运行此代码，请启动命令提示符或 Bash shell。 将目录更改为项目文件夹 `cd pythonmysql`。 然后键入后跟文件名的 python 命令 `python createtable.py`，以便运行应用程序。 在 Windows OS 中，如果找不到 python.exe，可能需要提供可执行文件的完整路径，或者将 Python 路径添加到 path 环境变量中。 `C:\python27\python.exe createtable.py`
 
 ## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
-通过以下代码连接到服务器，创建一个表，然后使用 INSERT SQL 语句加载数据。 
+通过以下代码连接到服务器，创建一个表，然后使用  INSERT SQL 语句加载数据。 
 
 在代码中，mysql.connector 库已导入。 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函数用于通过配置集合中的[连接参数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)连接到 Azure Database for MySQL。 该代码对连接使用游标，并通过 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法对 MySQL 数据库执行 SQL 查询。 
 
@@ -129,7 +129,7 @@ else:
 ```
 
 ## <a name="read-data"></a>读取数据
-使用以下代码进行连接，并使用 SELECT SQL 语句读取数据。 
+使用以下代码进行连接，并使用 SELECT  SQL 语句读取数据。 
 
 在代码中，mysql.connector 库已导入。 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函数用于通过配置集合中的[连接参数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)连接到 Azure Database for MySQL。 该代码对连接使用游标，并通过 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法对 MySQL 数据库执行 SQL 语句。 数据行使用 [fetchall()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) 方法读取。 结果集保留在集合行中，for 迭代器用于针对行进行循环。
 
@@ -178,7 +178,7 @@ else:
 ```
 
 ## <a name="update-data"></a>更新数据
-使用以下代码进行连接，并使用 UPDATE SQL 语句更新数据。 
+使用以下代码进行连接，并使用 UPDATE  SQL 语句更新数据。 
 
 在代码中，mysql.connector 库已导入。  [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函数用于通过配置集合中的[连接参数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)连接到 Azure Database for MySQL。 该代码对连接使用游标，并通过 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法对 MySQL 数据库执行 SQL 语句。 
 

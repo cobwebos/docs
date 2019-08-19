@@ -105,7 +105,7 @@ ms.locfileid: "64875802"
 
 ### <a name="alternative-column-mapping"></a>备用列映射
 
-您可以指定复制活动-> `translator`  ->  `columnMappings`形表格数据之间进行映射。 在这种情况下，"structure"节是必需的输入和输出数据集的。 列映射支持将源数据集“structure”中的所有列或列子集接收器数据集“structure”中的所有列  。 以下是导致异常的错误条件：
+您可以指定复制活动-> `translator`  ->  `columnMappings`形表格数据之间进行映射。 在这种情况下，"structure"节是必需的输入和输出数据集的。 列映射支持将源数据集“structure”中的所有列或列子集接收器数据集“structure”中的所有列。 以下是导致异常的错误条件：
 
 * 源数据存储查询结果中没有输入数据集“structure”部分中指定的列名称。
 * 接收器数据存储（如果具有预定义架构）没有输出数据集“structure”部分中指定的列名称。
@@ -236,7 +236,7 @@ ms.locfileid: "64875802"
 }
 ```
 
-而你需要按以下格式通过平展数组中数据（order_pd 和 order_price）的方式将其复制到 Azure SQL 表中，并使用常见的根信息（数字、日期和城市）  进行交叉联接： 
+而你需要按以下格式通过平展数组中数据（order_pd 和 order_price）的方式将其复制到 Azure SQL 表中，并使用常见的根信息（数字、日期和城市）进行交叉联接：
 
 | orderNumber | orderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |

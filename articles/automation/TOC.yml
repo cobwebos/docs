@@ -276,6 +276,22 @@
         - name: 排查 State Configuration (DSC) 问题
           href: troubleshoot/desired-state-configuration.md
           displayName: 'Desired State Configuration, troubleshoot'
+    - name: 引用
+      items:
+        - name: 社区解决方案
+          items:
+            - name: 大规模配置数据
+              href: automation-dsc-config-data-at-scale.md
+              displayName: 'DSC, Configuration Data, ConfigData'
+            - name: 从服务器创建配置
+              href: automation-dsc-config-from-server.md
+              displayName: 'DSC, ReverseDSC'
+            - name: 基于 STIG 的配置
+              href: automation-dsc-configuration-based-on-stig.md
+              displayName: 'DSC, Configuration'
+            - name: 将配置转换为复合资源
+              href: automation-dsc-create-composite.md
+              displayName: 'DSC, composite'
 - name: 管理共享资源
   items:
     - name: 证书

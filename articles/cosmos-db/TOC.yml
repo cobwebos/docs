@@ -650,6 +650,8 @@
           href: troubleshoot-changefeed-functions.md
         - name: 更改源处理器开始时间
           href: how-to-configure-change-feed-start-time.md
+        - name: 使用更改源估算器
+          href: how-to-use-change-feed-estimator.md
     - name: 将内置分析功能与 Apache Spark 配合使用
       items:
         - name: Azure Databricks Spark 连接器
