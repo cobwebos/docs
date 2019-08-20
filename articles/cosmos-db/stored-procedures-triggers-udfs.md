@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1c2bf53a610c566ac58df588f6d96389f2206563
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 700cd6c0c75b25d56e812a394d6bdd193e4fb57c
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717537"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614057"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>存储过程、触发器和用户定义的函数
 
@@ -37,7 +37,7 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 * **封装：** 使用存储过程可在一个位置分组逻辑。 封装在数据的顶层添加一个抽象层，使你能够独立于数据改进应用程序。 如果数据无架构，并且你无需管理直接将其他逻辑添加到应用程序的过程，则此抽象层非常有用。 借助这种抽象，可以通过从脚本简化访问来保证数据的安全。
 
 > [!TIP]
-> 存储过程最适用于写入繁重的操作, 并且需要跨分区键值进行事务处理。 在决定是否使用存储过程时, 请围绕封装可能的最大写入量来进行优化。 一般而言, 存储过程不是执行大量读取或查询操作的最有效方法, 因此, 使用存储过程将大量读取操作返回到客户端将不会产生所需的权益。 为了获得最佳性能, 应在客户端使用 Cosmos SDK 完成这些大量读取操作。 
+> 存储过程最适合写入密集型操作，需要跨分区键值进行事务处理。 确定是否使用存储过程时，请在尽量封装最大量的写入操作的基础上进行优化。 一般而言，存储过程不是执行大量读取或查询操作的最有效方式，因此，使用存储过程来批处理要返回到客户端的大量读取操作不会带来所需的优势。 为了获得最佳性能，应该使用 Cosmos SDK 在客户端完成这些读取密集型操作。 
 
 ## <a name="transactions"></a>事务
 
@@ -75,18 +75,18 @@ JavaScript 函数还有[预配的吞吐量容量](request-units.md)方面的约�
 
 ## <a name="triggers"></a>Triggers
 
-Azure Cosmos DB 支持两种类型的触发器:
+Azure Cosmos DB 支持两种触发器类型：
 
 ### <a name="pre-triggers"></a>前触发器
 
-Azure Cosmos DB 提供可以通过对 Azure Cosmos DB 项执行操作来调用的触发器。 例如，可以在创建项时指定前触发器。 在这种情况下，前触发器将在创建项之前运行。 预触发器不能有任何输入参数。 如果需要，可以使用请求对象更新原始请求中的文档正文。 当注册触发器后，用户可以指定随触发器一起运行的操作。 如果使用 `TriggerOperation.Create` 创建了触发器，则不允许在替换操作中使用该触发器。 有关示例，请参阅[如何编写触发器](how-to-write-stored-procedures-triggers-udfs.md#triggers)一文。
+Azure Cosmos DB 提供可通过对 Azure Cosmos 项执行操作来调用的触发器。 例如，可以在创建项时指定前触发器。 在这种情况下，前触发器将在创建项之前运行。 预触发器不能有任何输入参数。 如果需要，可以使用请求对象更新原始请求中的文档正文。 当注册触发器后，用户可以指定随触发器一起运行的操作。 如果使用 `TriggerOperation.Create` 创建了触发器，则不允许在替换操作中使用该触发器。 有关示例，请参阅[如何编写触发器](how-to-write-stored-procedures-triggers-udfs.md#triggers)一文。
 
 ### <a name="post-triggers"></a>后触发器
 
-类似于前触发器，后触发器也与针对 Azure Cosmos DB 项执行的操作相关联，但它们不需要任何输入参数。 后触发器在操作完成之后运行，且具有对发送到客户端的响应消息的访问权限。 有关示例，请参阅[如何编写触发器](how-to-write-stored-procedures-triggers-udfs.md#triggers)一文。
+与预先触发器和后触发器类似, 它还与 Azure Cosmos 项上的操作相关联, 并且不需要任何输入参数。 后触发器在操作完成之后运行，且具有对发送到客户端的响应消息的访问权限。 有关示例，请参阅[如何编写触发器](how-to-write-stored-procedures-triggers-udfs.md#triggers)一文。
 
 > [!NOTE]
-> 已注册的触发器在执行相应的操作 (创建/删除/替换/更新) 时不会自动运行。 执行这些操作时, 必须显式调用它们。 若要了解详细信息, 请参阅[如何运行触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)一文。
+> 注册的触发器不会在出现相应的操作（创建/删除/替换/更新）时自动运行。 在执行这些操作时，必须显式调用它们。 若要了解详细信息，请参阅[如何运行触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)一文。
 
 ## <a id="udfs"></a>用户定义的函数
 

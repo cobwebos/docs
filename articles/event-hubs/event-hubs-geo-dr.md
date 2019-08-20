@@ -14,18 +14,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 8dca94f0200f6bd41dfdc199b41bf69981a960da
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 22cf2be8eaed47a9440c6798acfb4383bd84c916
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562712"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611718"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中心 - 异地灾难恢复 
 
 当整个 Azure 区域或数据中心（如果未使用[可用性区域](../availability-zones/az-overview.md)）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 在这种情况下，异地灾难恢复和异地复制对于任何企业而言都是至关重要的功能。 Azure 事件中心支持命名空间级别的异地灾难恢复和异地复制。 
 
-异地灾难恢复功能在全球范围内可用于事件中心标准和专用 SKU。 请注意, 只能在同一 SKU 层中进行地理对命名空间。 例如, 如果群集中的某个命名空间仅在专用 SKU 中提供, 则它只能与另一个群集中的命名空间配对。 
+> [!NOTE]
+> 异地灾难恢复功能仅适用于[标准和专用 sku](https://azure.microsoft.com/pricing/details/event-hubs/)。  
 
 ## <a name="outages-and-disasters"></a>中断和灾难
 
@@ -37,7 +38,9 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 ## <a name="basic-concepts-and-terms"></a>基本概念和术语
 
-灾难恢复功能可实现元数据灾难恢复，并且依赖于主要和次要灾难恢复命名空间。 请注意, 异地灾难恢复功能仅适用于[标准和专用 sku](https://azure.microsoft.com/pricing/details/event-hubs/) 。 不需要对连接字符串进行任何更改，因为连接是通过别名建立的。
+灾难恢复功能可实现元数据灾难恢复，并且依赖于主要和次要灾难恢复命名空间。 
+
+异地灾难恢复功能仅适用于[标准和专用 sku](https://azure.microsoft.com/pricing/details/event-hubs/) 。 不需要对连接字符串进行任何更改，因为连接是通过别名建立的。
 
 本文涉及以下术语：
 
@@ -48,6 +51,19 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 -  *元数据*：事件中心和使用者组等实体以及其与命名空间关联的服务的属性。 请注意，仅自动复制实体及其设置。 不会复制消息和事件。 
 
 -  *故障转移*：激活辅助命名空间的过程。
+
+## <a name="supported-namespace-pairs"></a>支持的命名空间对
+支持以下主要和辅助命名空间的组合:  
+
+| 主命名空间 | 辅助命名空间 | 支持 | 
+| ----------------- | -------------------- | ---------- |
+| 标准 | 标准 | 是 | 
+| 标准 | 专用 | 是 | 
+| 专用 | 专用 | 是 | 
+| 专用 | 标准 | 否 | 
+
+> [!NOTE]
+> 不能对同一专用群集中的命名空间配对。 你可以将位于不同群集中的命名空间配对。 
 
 ## <a name="setup-and-failover-flow"></a>设置和故障转移流程
 

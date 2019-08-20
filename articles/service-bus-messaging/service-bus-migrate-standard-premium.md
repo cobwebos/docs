@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67566066"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611919"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>将现有 Azure Service Bus 标准命名空间迁移到高级层
 以前, Azure 服务总线仅在标准层上提供了命名空间。 命名空间是多租户设置, 针对低吞吐量和开发人员环境进行了优化。 高级层为每个命名空间提供专用资源, 以实现可预测的延迟, 并以固定价格增加吞吐量。 高级层针对需要其他企业功能的高吞吐量和生产环境进行了优化。
@@ -115,7 +115,8 @@ ms.locfileid: "67566066"
    1. 完成同步后, 在页面底部选择 "**下一步**"。
 
 1. 查看 "摘要" 页上的更改。 选择 "**完成迁移**" 以切换命名空间并完成迁移。
-    ![交换机命名空间-切换][]菜单迁移完成后, 将显示 "确认" 页。
+    ![交换机命名空间-切换菜单][]  
+    迁移完成后, 将显示 "确认" 页。
     ![交换机命名空间-成功][]
 
 ## <a name="caveats"></a>注意事项

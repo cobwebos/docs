@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 8a542f7927ddd834c7273f6ef8b251ddc35e8436
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f9f4a8b52548dad011f5e825fa42c50da970ea7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234191"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613156"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD 域服务 - 安全 LDAP 配置疑难解答
 
-本文提供为 Azure AD 域服务[配置安全 LDAP](configure-ldaps.md) 时常见问题的解决方法。
+本文提供为 Azure AD 域服务[配置安全 LDAP](tutorial-configure-ldaps.md) 时常见问题的解决方法。
 
 ## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101：安全 LDAP 网络安全组配置
 
@@ -38,13 +38,13 @@ ms.locfileid: "68234191"
 
 1. 导航到 Azure 门户中的[“网络安全组”选项卡](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)
 2. 从表中选择与域相关联的 NSG。
-3. 单击“入站安全规则” 
+3. 单击“入站安全规则”
 4. 创建端口 636 规则
-   1. 单击顶部导航栏上的“添加”  。
-   2. 为源选择一个“IP 地址”  。
+   1. 单击顶部导航栏上的“添加”。
+   2. 为源选择一个“IP 地址”。
    3. 指定此规则的源端口范围。
    4. 针对目标端口范围，输入“636”。
-   5. 协议为 TCP  。
+   5. 协议为 TCP。
    6. 为规则指定适当的名称、说明和优先级。 此规则的优先级应高于“全部拒绝”规则的优先级（如果有）。
    7. 单击 **“确定”** 。
 5. 验证是否已创建规则。
@@ -58,11 +58,11 @@ ms.locfileid: "68234191"
 
 **警报消息：**
 
-托管域的安全 LDAP 证书将于 [date] 到期。 
+托管域的安全 LDAP 证书将于 [date] 到期。
 
 **解决方法：**
 
-按照[配置安全 LDAP](configure-ldaps.md) 一文中所述的步骤创建新的安全 LDAP 证书。
+按照[配置安全 LDAP](tutorial-configure-ldaps.md) 一文中所述的步骤创建新的安全 LDAP 证书。
 
 ## <a name="contact-us"></a>联系我们
 欢迎联系 Azure Active Directory 域服务产品团队[分享看法或请求支持](contact-us.md)。

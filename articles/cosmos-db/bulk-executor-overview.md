@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 1716bd64286f1882b9fc224712d227967d78058a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8d2cb30e0f18485d500344e571b3ac5f2cde008f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637790"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615705"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB 批量执行程序库概述
  
@@ -36,7 +36,7 @@ Azure Cosmos DB 是一种快速且灵活的全局分布式数据库服务，旨�
  
 * 它可以通过横向扩展体系结构在一小时内批量导入 1 TB 以上的数据。  
 
-* 它可以作为修补程序批量更新 Azure Cosmos DB 容器中的现有数据。 
+* 它可以将 Azure Cosmos 容器中的现有数据大容量更新为修补程序。 
  
 ## <a name="how-does-the-bulk-executor-operate"></a>大容量执行程序的工作原理是什么？ 
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 989d52e773ed01a8fd1f4d383c42d7628e196a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
-ms.translationtype: MT
+ms.openlocfilehash: 03e620f97ef094994f95b5dc39b95376fa7e09dd
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814722"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614472"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行器库:下载信息 
 
@@ -33,7 +33,7 @@ ms.locfileid: "68814722"
 
 | |  |
 |---|---|
-| **说明**| .Net 批量执行器库允许客户端应用程序对 Azure Cosmos DB 帐户执行批量操作。 此库提供了 BulkImport、BulkUpdate 和 BulkDelete 命名空间。 BulkImport 模块可以批量以优化方式引入文档，以便最大程度地使用为集合配置的吞吐量。 BulkUpdate 模块可以作为修补程序批量更新 Azure Cosmos DB 容器中的现有数据。 BulkDelete 模块可以批量以优化方式删除文档，以便最大程度地使用为集合配置的吞吐量。|
+| **说明**| .Net 批量执行器库允许客户端应用程序对 Azure Cosmos DB 帐户执行批量操作。 此库提供了 BulkImport、BulkUpdate 和 BulkDelete 命名空间。 BulkImport 模块可以批量以优化方式引入文档，以便最大程度地使用为集合配置的吞吐量。 BulkUpdate 模块可以将 Azure Cosmos 容器中的现有数据大容量更新为修补程序。 BulkDelete 模块可以批量以优化方式删除文档，以便最大程度地使用为集合配置的吞吐量。|
 |**SDK 下载**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **GitHub 中的 BulkExecutor 库**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API 文档**|[ 参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
@@ -84,7 +84,7 @@ ms.locfileid: "68814722"
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 
-* 改进了 BulkExecutor 导入和更新 API，使其在存储超出了当前容量且未引发异常时以透明方式适应 Cosmos DB 容器的弹性缩放。
+* 对 BulkExecutor 导入和更新 Api 做出了改进, 以便在存储超过当前容量而不引发异常时, 透明地适应 Cosmos 容器的弹性缩放。
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 

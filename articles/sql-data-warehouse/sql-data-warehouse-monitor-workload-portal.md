@@ -10,21 +10,21 @@ ms.subservice: manage
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6c8ce090039e3d5cc85c86d920710294de2165f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73e7312eacd11fbec052d2b0b7781528c3b3d50f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60748803"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575381"
 ---
 # <a name="monitor-workload---azure-portal"></a>监视工作负荷 - Azure 门户
 
 本文介绍如何使用 Azure 门户监视工作负荷。 这包括设置 Azure Monitor 日志，以使用适用于 [Azure SQL 数据仓库](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)的日志分析来调查查询执行和工作负荷趋势。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-- Azure SQL 数据仓库：我们将收集 SQL 数据仓库的日志。 如果未预配 SQL 数据仓库，请参阅[创建 SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial)中的说明。
+- Azure SQL 数据仓库：我们将收集 SQL 数据仓库的日志。 如果尚未预配 SQL 数据仓库, 请参阅[创建 Sql 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial)中的说明。
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
@@ -40,7 +40,7 @@ ms.locfileid: "60748803"
 
 ## <a name="turn-on-diagnostic-logs"></a>启用诊断日志 
 
-配置诊断设置，以便从 SQL 数据仓库发出日志。 日志由数据仓库的遥测视图组成，相当于 SQL 数据仓库最常用的性能故障排除 DMV。 目前支持以下视图：
+配置诊断设置以从 SQL 数据仓库发出日志。 日志由数据仓库的遥测视图组成，相当于 SQL 数据仓库最常用的性能故障排除 DMV。 目前支持以下视图：
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=aps-pdw-2016-au7)

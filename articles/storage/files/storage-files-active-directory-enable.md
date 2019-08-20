@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: rogarana
-ms.openlocfilehash: 2b5ebc9f35dd207e8e530b7d74acc5517125fbf4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 23e8c82bad60675338a0482155ed8a92cdad3d3d
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935004"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617678"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>启用 Azure 文件的通过 SMB Azure Active Directory 域服务身份验证
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -46,9 +46,11 @@ ms.locfileid: "68935004"
 
 2.  **启用 Azure AD 租户上的 Azure AD 域服务。**
 
-    若要支持使用 Azure AD 凭据进行身份验证, 必须为 Azure AD 租户启用 Azure AD DS。 如果你不是 Azure AD 租户的管理员, 请与管理员联系, 并按照分步指南操作,[通过使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/create-instance.md)。
+< < < < < < < HEAD 若要支持使用 Azure AD 凭据进行身份验证, 则必须为 Azure AD 租户启用 Azure AD 域服务。 如果你不是 Azure AD 租户的管理员，请与管理员联系并按照分步指南操作，以[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/tutorial-create-instance.md)。
+= = = = = = = = 若要支持 Azure AD 凭据的身份验证, 必须为 Azure AD 租户启用 Azure AD DS。 如果你不是 Azure AD 租户的管理员, 请与管理员联系, 并按照分步指南操作,[通过使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/create-instance.md)。
+>>>>>>> 5f049740fef320adb172d59f68bd161bdc4318e1
 
-    完成 Azure AD DS 部署通常需要大约15分钟。 在继续下一步之前, 请验证Azure AD DS 的运行状况状态显示为 "已启用密码哈希同步"。
+    It typically takes about 15 minutes for an Azure AD DS deployment to complete. Verify that the health status of Azure AD DS shows **Running**, with password hash synchronization enabled, before proceeding to the next step.
 
 3.  **使用 Azure AD DS 将 Azure VM 加入域。**
 

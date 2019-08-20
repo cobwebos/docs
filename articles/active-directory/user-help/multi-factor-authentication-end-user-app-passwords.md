@@ -1,6 +1,6 @@
 ---
 title: 如何管理应用密码-Azure Active Directory |Microsoft Docs
-description: 了解有关应用密码，以及这些信息用于有关双重验证。
+description: 了解应用密码, 以及它们在双重验证方面的用途。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -10,20 +10,21 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6790fa1cbb10999a751b31bcb27db2edcb67b4a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1a9d997f9ced0fbd921abfb13cda5a4845eb3763
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60334900"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616289"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理双重验证的应用密码
 
-某些非浏览器应用（例如 Outlook 2010）不支持双重验证。 缺少这种支持意味着，使用双重验证时应用不会正常工作。 若要解决此问题，可以创建一个与普通密码不同的自动生成的密码，并在每个非浏览器应用中使用该密码。
+>[!Important]
+>管理员可能不允许你使用应用密码。 如果你没有看到“应用密码”作为选项列出，则它们在你的组织中不可用。
 
 使用应用密码时，请务必记住：
 
@@ -36,88 +37,93 @@ ms.locfileid: "60334900"
     >[!Note]
     >Office 2013 客户端（包括 Outlook）支持新的身份验证协议，并可用于双重验证。 此支持意味着，在启用双重验证后，不再需要对 Office 2013 客户端使用应用密码。 有关详细信息，请参阅[如何对 Office 2013 和 Office 2016 客户端应用使用新式身份验证](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517)一文。
 
-## <a name="where-to-create-and-delete-your-app-passwords"></a>在哪里创建和删除应用密码
+## <a name="create-new-app-passwords"></a>创建新的应用密码
 
-在最初注册双重验证期间，系统会提供一个应用密码。 如果需要多个密码，可以根据双重验证的使用方式创建更多的密码：
+初始双重验证注册过程中, 系统会提供一个应用密码。 如果需要多个, 则必须自行创建。 你可以根据组织中设置双因素验证的方式, 从多个区域创建应用密码。 若要详细了解如何注册以对工作或学校帐户使用双重验证, 请参阅[双重验证和工作或学校帐户](multi-factor-authentication-end-user-first-time.md)及其相关文章的概述。
 
-- **对工作或学校帐户以及 MyApps 门户使用双重验证。** 创建和删除应用密码使用中创建的说明和删除应用密码使用 MyApps 门户部分中。 有关 MyApps 门户以及如何使用该门户的详细信息，请参阅[什么是 Azure Active Directory 中的 MyApps 门户？](active-directory-saas-access-panel-introduction.md)。
+### <a name="where-to-create-and-delete-your-app-passwords"></a>在哪里创建和删除应用密码
 
-- **对工作或学校帐户以及 Office 365 门户使用双重验证。** 遵照本文的[使用 Office 365 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-office-365-portal)部分中的说明创建和删除应用密码。
+你可以根据使用双重验证的方式创建和删除应用密码:
 
-- **对个人 Microsoft 帐户使用双重验证。** 使用个人 Microsoft 帐户的[安全基本信息](https://account.microsoft.com/account/)页创建和删除应用密码。 有关详细信息，请参阅[应用密码和双重验证](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification)一文。
+- **你的组织使用双重验证和 "其他安全验证" 页。** 如果你在组织中使用工作或学校帐户 (例如alain@contoso.com) 进行双重验证, 则可以从 "[其他安全验证" 页](https://account.activedirectory.windowsazure.com/Proofup.aspx)管理你的应用密码。 有关详细说明, 请参阅本文中[的使用其他安全验证创建和删除应用密码页](#create-and-delete-app-passwords-from-the-additional-security-verification-page)。
 
-## <a name="create-and-delete-app-passwords-using-the-myapps-portal"></a>使用 MyApps 门户创建和删除应用密码
-可以通过 MyApps 门户创建和删除应用密码。
+- **你的组织使用双因素验证和 Office 365 门户。** 如果你在组织中使用工作或学校帐户 (例如、 alain@contoso.com)、双因素验证和 office 365 应用, 则可以从[Office 365 门户页面](https://office.portal.com)管理应用密码。 有关详细说明, 请参阅本文中[的使用 Office 365 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-office-365-portal)。
 
-### <a name="to-create-an-app-password-using-the-myapps-portal"></a>使用 MyApps 门户创建应用密码
+- **你使用的是包含个人 Microsoft 帐户的双重验证。** 如果使用的是个人 Microsoft 帐户 (例如alain@outlook.com) 进行双重验证, 则可以从 "[安全基本](https://account.microsoft.com/security/)信息" 页中管理应用密码。 有关详细说明, 请参阅将[应用密码用于不支持双重验证的应用](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification)。
 
-1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
+## <a name="create-and-delete-app-passwords-from-the-additional-security-verification-page"></a>在 "其他安全性验证" 页中创建和删除应用密码
 
-2. 选择右上角的姓名，然后选择“个人资料”  。
+你可以从你的工作或学校帐户的 "**其他安全性验证**" 页中创建和删除应用密码。
 
-3. 选择“其他安全性验证”  。
+1. 登录到 "[其他安全验证" 页](https://account.activedirectory.windowsazure.com/Proofup.aspx), 然后选择 "**应用密码**"。
 
-   ![选择“其他安全性验证”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
+    !["应用密码" 页, 其中突出显示了 "应用密码" 选项卡](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page.png)
 
-4. 选择“应用密码”  。
+2. 选择 "**创建**", 键入需要应用密码的应用的名称, 然后选择 "**下一步**"。
 
-   ![选择“应用密码”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
+    !["创建应用密码" 页, 其中包含需要密码的应用的名称](media/multi-factor-authentication-end-user-app-passwords/mfa-create-app-password-page.png)
 
-5. 单击**创建**。
+3. 从 "**应用密码**" 页中复制密码, 然后选择 "**关闭**"。
 
-6. 键入应用密码的名称，然后选择“下一步”  。
+    ![包含指定应用的密码的应用密码页](media/multi-factor-authentication-end-user-app-passwords/mfa-your-app-password-page.png)
 
-7. 将应用密码复制到剪贴板，并将它粘贴到你的应用。
-   
-    ![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+4. 在 "**应用密码**" 页中, 确保已列出你的应用。
 
-### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>使用 MyApps 门户删除应用密码
+     !["应用密码" 页, 其中显示了新应用的列表](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
 
-1. 转到个人资料，并选择“其他安全性验证”。 
+5. 打开为其创建了应用程序密码的应用程序 (例如, Outlook 2010), 然后在要求时粘贴应用密码。 每个应用程序只需执行此操作一次。
 
-2. 选择“应用密码”，然后选择要删除的应用密码旁边的“删除”。  
+### <a name="to-delete-an-app-password-using-the-app-passwords-page"></a>使用 "应用密码" 页删除应用密码
 
-   ![删除应用密码](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
+1. 从 "**应用密码**" 页上, 选择要删除的应用密码旁边的 "**删除**"。
 
-3. 选择“是”确认要删除该密码，然后选择“关闭”。  
+   ![删除应用密码](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
 
-## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>使用 Office 365 门户创建和删除应用密码
-
-如果对工作或学校帐户以及 Office 365 应用使用双重验证，可以使用 Office 365 门户创建和删除应用密码。 每次最多可以创建 40 个应用密码。 如果达到该限制后需要创建另一个应用密码，必须删除一个现有的应用密码。
-
-### <a name="to-create-app-passwords-using-the-office-365-portal"></a>使用 Office 365 门户创建应用密码
-
-1. 登录到工作或学校帐户。
-
-2. 转到[ https://portal.office.com ](https://portal.office.com)，选择**设置**从右上角的图标**Office 365 门户**页，然后再展开**额外的安全验证**。
-
-    ![Office 门户，其中显示了展开的“其他安全性验证”区域](media/security-info/security-info-o365password.png)
-
-3. 选择带有“创建和管理应用程序密码”字样的文本，打开“应用密码”页。  
-
-4. 选择“创建”，键入需要应用密码的应用的友好名称，然后选择“下一步”。  
-
-5. 依次选择“将密码复制到剪贴板”、“关闭”。  
-
-6. 使用复制的应用密码登录到非浏览器应用。 只需输入此密码一次，系统会记住它。
-
-### <a name="to-delete-app-passwords-using-the-office-365-portal"></a>使用 Office 365 门户删除应用密码
-
-1. 登录到工作或学校帐户。
-
-2. 转到[ https://portal.office.com ](https://portal.office.com)，选择**设置**从右上角的图标**Office 365 门户**页上，并选择**额外的安全验证**。
-
-3. 选择带有“创建和管理应用程序密码”字样的文本，打开“应用密码”页。  
-
-4. 选择要删除的应用密码旁边的“删除”，在确认框中选择“是”，然后选择“关闭”。   
+2. 选择“是”确认要删除该密码，然后选择“关闭”。
 
     应用密码现已成功删除。
 
-5. 遵循创建应用密码的步骤来创建新的应用密码。
+## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>使用 Office 365 门户创建和删除应用密码
+
+如果对工作或学校帐户以及 Office 365 应用使用双重验证，可以使用 Office 365 门户创建和删除应用密码。
+
+### <a name="to-create-app-passwords-using-the-office-365-portal"></a>使用 Office 365 门户创建应用密码
+
+1. 登录到 Office 365, 然后前往 "我的帐户"[页](https://portal.office.com), 选择 "**安全 & 隐私**", 然后展开 "**其他安全验证**"。
+
+    ![Office 门户，其中显示了展开的“其他安全性验证”区域](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
+
+2. 选择显示的文本 "**创建和管理应用密码**" 以打开 "**应用密码**" 页。
+
+    !["应用密码" 页, 其中突出显示了 "应用密码" 选项卡](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page.png)
+
+3. 选择 "**创建**", 键入需要应用密码的应用的名称, 然后选择 "**下一步**"。
+
+    !["创建应用密码" 页, 其中包含需要密码的应用的名称](media/multi-factor-authentication-end-user-app-passwords/mfa-create-app-password-page.png)
+
+4. 从 "**应用密码**" 页中复制密码, 然后选择 "**关闭**"。
+
+    ![包含指定应用的密码的应用密码页](media/multi-factor-authentication-end-user-app-passwords/mfa-your-app-password-page.png)
+
+5. 在 "**应用密码**" 页中, 确保已列出你的应用。
+
+     !["应用密码" 页, 其中显示了新应用的列表](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
+
+6. 打开为其创建了应用程序密码的应用程序 (例如, Outlook 2010), 然后在要求时粘贴应用密码。 每个应用程序只需执行此操作一次。
+
+### <a name="to-delete-app-passwords-using-the-app-passwords-page"></a>使用 "应用密码" 页删除应用密码
+
+1. 从 "**应用密码**" 页上, 选择要删除的应用密码旁边的 "**删除**"。
+
+   ![删除应用密码](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
+
+2. 在确认框中选择 **"是"** , 然后选择 "**关闭**"。
+
+    应用密码现已成功删除。
 
 ## <a name="if-your-app-passwords-arent-working-properly"></a>如果应用密码不正常工作
 
-确保正确键入密码。 如果你确认已正确输入了密码，可以尝试重新登录，并创建新的应用密码。 如果这些做法都不能解决问题，请联系公司支持人员，请求他们删除现有的应用密码，并让你创建新的密码。 
+确保正确键入密码。 如果你确认已正确输入了密码，可以尝试重新登录，并创建新的应用密码。 如果这些选项都不能解决你的问题, 请与你组织的技术支持人员联系, 以便他们可以删除现有的应用密码, 从而创建全新的应用密码。
 
 ## <a name="next-steps"></a>后续步骤
 

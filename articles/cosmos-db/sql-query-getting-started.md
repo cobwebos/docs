@@ -1,19 +1,19 @@
 ---
-title: 开始使用 Azure Cosmos DB 中的 SQL 查询
+title: Azure Cosmos DB 中的 SQL 查询入门
 description: SQL 查询简介
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
-ms.openlocfilehash: 87b275806c06443e37e9e92c35a38b4cde378322
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5537133b31bb63c9fa6ac3a52b344f7f1d9c4c8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342529"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614341"
 ---
-# <a name="getting-started-with-sql-queries"></a>开始使用 SQL 查询
+# <a name="getting-started-with-sql-queries"></a>SQL 查询入门
 
 Azure Cosmos DB SQL API 帐户支持使用 结构化查询语言 (SQL) 作为 JSON 查询语言来查询项。 Azure Cosmos DB 查询语言的设计目标是：
 
@@ -23,7 +23,7 @@ Azure Cosmos DB SQL API 帐户支持使用 结构化查询语言 (SQL) 作为 JS
 
 ## <a name="upload-sample-data"></a>上传示例数据
 
-在 Cosmos DB SQL API 帐户中，创建名为 `Families` 的容器。 在容器中创建两个简单的 JSON 项。 你可以使用此数据集的 Azure Cosmos DB 查询文档中运行的大多数示例查询。
+在 Cosmos DB SQL API 帐户中，创建名为 `Families` 的容器。 在容器中创建两个简单的 JSON 项。 可以使用此数据集运行 Azure Cosmos DB 查询文档中的大多数示例查询。
 
 ### <a name="create-json-items"></a>创建 JSON 项
 
@@ -166,7 +166,7 @@ Azure Cosmos DB SQL API 帐户支持使用 结构化查询语言 (SQL) 作为 JS
 
 * Azure Cosmos DB 仅支持严格的 JSON 项。 类型系统和表达式仅限于处理 JSON 类型。 有关详细信息，请参阅 [JSON 规范](https://www.json.org/)。  
 
-* Cosmos DB 容器是 JSON 项的一个无架构集合。 容器项内部以及跨容器项的关系是按包含关系隐式捕获的，而不是按主键和外键关系捕获的。 此特性对于本文稍后要讨论的项内联接非常重要。
+* Cosmos 容器是 JSON 项的无架构集合。 容器项内部以及跨容器项的关系是按包含关系隐式捕获的，而不是按主键和外键关系捕获的。 此特性对于本文稍后要讨论的项内联接非常重要。
 
 ## <a name="next-steps"></a>后续步骤
 

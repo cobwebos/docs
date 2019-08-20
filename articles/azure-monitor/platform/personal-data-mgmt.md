@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 29c91f2dcff04a2d21973e79c5719c3f4d84181b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827375"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617305"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>存储在 Log Analytics 和 Application Insights 中的个人数据指南
 
@@ -98,6 +98,11 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 我们已在隐私处理中提供*清除* API 路径。 使用此路径会带来一定的风险和潜在的性能影响，并有可能导致 Log Analytics 数据的所有聚合、度量和其他方面发生偏差，因此应谨慎使用。 有关处理私人数据的替代方法，请参阅[个人数据处理策略](#strategy-for-personal-data-handling)部分。
 
 清除是一项高特权操作，如果未向 Azure 中的应用或用户显式授予 Azure 资源管理器中的某个角色，则任何应用或用户（甚至包括资源所有者）都无权执行该操作。 此角色为_数据清除程序_，由于可能会丢失数据，应谨慎委托。 
+
+> [!IMPORTANT]
+> 为了管理系统资源, 每小时50请求会限制清除请求。 应通过发送一个命令, 该命令的谓词包含所有需要清除的用户标识, 来批处理清除请求的执行。 使用[in 运算符](/azure/kusto/query/inoperator)可指定多个标识。 应在执行清除请求之前运行查询, 以验证结果是否正确。 
+
+
 
 一旦分配该 Azure 资源管理器角色，就有两个新的 API 路径可用： 
 

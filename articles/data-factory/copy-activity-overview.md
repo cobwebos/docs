@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: a8265496c475566ec7a87a19eab6d975838e9da4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 23ae7b5cfec26fb2483a3e4ac13a1220888d76ee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966392"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614270"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -144,7 +144,7 @@ ms.locfileid: "68966392"
 
 ## <a name="monitoring"></a>监视
 
-可通过编程方式或在 Azure 数据工厂的“创作和监视”UI 上监视复制活动运行。 然后，可将方案的性能和配置与内部测试中复制活动的[性能参考](copy-activity-performance.md#performance-reference)进行比较。
+可通过编程方式或在 Azure 数据工厂的“创作和监视”UI 上监视复制活动运行。
 
 ### <a name="monitor-visually"></a>直观地监视
 

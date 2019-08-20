@@ -10,18 +10,18 @@ ms.subservice: manage
 ms.date: 7/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 04d63b2c1583228a274c0ba21c87df08886f5cdb
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a6a6fdf6e63bf8c063f8dd6f23ae380e9ce7b98d
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619067"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575510"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>排查 Azure SQL 数据仓库问题
 本文列出了常见的故障排除问题。
 
 ## <a name="connecting"></a>正在连接
-| 问题                                                        | 解决                                                   |
+| 问题                                                        | 分辨率                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 用户 “NT AUTHORITY\ANONYMOUS LOGON” 登录失败。 （Microsoft SQL Server，错误：18456） | 当 AAD 用户尝试连接到 master 数据库，但 master 中没有用户时，会发生此错误。  若要纠正此问题，可以在连接时指定要连接到的 SQL 数据仓库，也可以将用户添加到 master 数据库。  有关更多详细信息，请参阅 [Security overview][Security overview]（安全性概述）一文。 |
 | 服务器主体“MyUserName”无法在当前的安全上下文下访问数据库“master”。 无法打开用户默认数据库。 登录失败。 用户“MyUserName”的登录失败。 （Microsoft SQL Server，错误：916） | 当 AAD 用户尝试连接到 master 数据库，但 master 中没有用户时，会发生此错误。  若要纠正此问题，可以在连接时指定要连接到的 SQL 数据仓库，也可以将用户添加到 master 数据库。  有关更多详细信息，请参阅 [Security overview][Security overview]（安全性概述）一文。 |
@@ -34,10 +34,10 @@ ms.locfileid: "68619067"
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Visual Studio 对象资源管理器缺少 AAD 用户           | 这是已知问题。  解决方法是在 [sys.database_principals][sys.database_principals] 中查看这些用户。  要详细了解如何将 Azure Active Directory 用于 SQL 数据仓库，请参阅[向 Azure SQL 数据仓库进行身份验证][Authentication to Azure SQL Data Warehouse]。 |
 | 使用脚本向导进行手动脚本编写或通过 SSMS 进行连接时出现缓慢、不响应或产生错误的情况 | 请确保已在 master 数据库中创建用户。 在脚本选项中，同时需确保引擎版本设置为“Microsoft Azure SQL 数据仓库版本”，且引擎类型为“Microsoft Azure SQL 数据库”。 |
-| 在 SSMS 中生成脚本失败                               | 如果将“为从属对象生成脚本”选项设置为“True”，则为 SQL 数据仓库生成脚本失败。 解决方法是，用户必须手动转到“工具”->“选项”->“SQL Server 对象资源管理器”->“为从属选项生成脚本”并设置为 false |
+| 在 SSMS 中生成脚本失败                               | 如果 "生成依赖对象的脚本" 选项设置为 "True", 则为 SQL 数据仓库生成脚本失败。 解决方法是，用户必须手动转到“工具”->“选项”->“SQL Server 对象资源管理器”->“为从属选项生成脚本”并设置为 false |
 
 ## <a name="performance"></a>性能
-| 问题                                                        | 解决                                                   |
+| 问题                                                        | 分辨率                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 查询性能故障排除                            | 如果要尝试对特定查询进行故障排除，请从 [Learning how to monitor your queries][Learning how to monitor your queries]（学习如何监视查询）开始。 |
 | 查询性能和计划不佳通常是由于缺少统计信息 | 性能不佳的最常见原因是缺少数据表的统计信息。  请参阅[维护表统计][Statistics]信息, 了解有关如何创建统计信息的详细信息以及它们对性能至关重要的原因。 |
@@ -47,7 +47,7 @@ ms.locfileid: "68619067"
 | 由于索引质量不佳导致查询性能不佳     | 由于[列存储索引质量不佳][Poor columnstore index quality], 某些时间查询可能会减慢。  有关详细信息以及如何[重建索引以提高段质量][Rebuild indexes to improve segment quality]，请参阅本文。 |
 
 ## <a name="system-management"></a>系统管理
-| 问题                                                        | 解决                                                   |
+| 问题                                                        | 分辨率                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 消息 40847：无法执行操作，因为服务器将超过 45000 这一允许的数据库事务单元配额。 | 请减少要尝试创建的数据库的 [DWU][DWU]，或者[请求增加配额][request a quota increase]。 |
 | 调查空间使用率                              | 请参阅[表大小][Table sizes]，了解系统的空间使用率。 |
@@ -56,7 +56,7 @@ ms.locfileid: "68619067"
 
 
 ## <a name="differences-from-sql-database"></a>与 SQL 数据库的差异
-| 问题                                 | 解决                                                   |
+| 问题                                 | 分辨率                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
 | 不支持的 SQL 数据库功能     | 请参阅[不支持的表功能][Unsupported table features]。 |
 | 不支持的 SQL 数据库数据类型   | 请参阅[不支持的数据类型][Unsupported data types]。        |

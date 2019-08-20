@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9ec049311fc158b13bba45deb2974d7cdd531f90
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f9d8bf9161343e4b36a3c16209873962b69d8af5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815039"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615210"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos 资源
 
@@ -41,7 +41,7 @@ az cosmosdb create \
 
 ## <a name="create-a-database"></a>创建数据库
 
-若要创建 Cosmos DB 数据库，请运行以下命令：
+若要创建 Cosmos 数据库, 请运行以下命令:
 
 ```azurecli-interactive
 az cosmosdb database create \
@@ -52,7 +52,7 @@ az cosmosdb database create \
 
 ## <a name="create-a-container"></a>创建容器
 
-若要创建吞吐量为 400 RU/秒且具有分区键的 Cosmos DB 容器，请运行以下命令：
+若要创建 Cosmos 400 的 RU/s 和分区键, 请运行以下命令:
 
 ```azurecli-interactive
 # Create a container
@@ -67,7 +67,7 @@ az cosmosdb collection create \
 
 ## <a name="change-the-throughput-of-a-container"></a>更改容器的吞吐量
 
-若要将 Cosmos DB 容器的吞吐量更改为 1000 RU/秒，请运行以下命令：
+若要将 Cosmos 容器的吞吐量更改为 1000 RU/s, 请运行以下命令:
 
 ```azurecli-interactive
 # Update container throughput

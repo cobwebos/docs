@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: acb001417b85b8ff45b2617e148e8b1961f3cbfa
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c5ec80e81381423bdfdee07b1c020343d14ed559
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772975"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617068"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD 域服务 - 故障排除指南
 本文提供设置或管理 Azure Active Directory (AD) 域服务时可能遇到的问题的故障排除提示。
@@ -32,7 +32,7 @@ ms.locfileid: "68772975"
 
 | **错误消息** | **解决方法** |
 | --- |:--- |
-| *名称 contoso100.com 已在此网络中使用。指定一个未使用的名称。* |[虚拟网络中的域名冲突](troubleshoot.md#domain-name-conflict) |
+| *此网络上已在使用该名称 contoso.com。指定一个未使用的名称。* |[虚拟网络中的域名冲突](troubleshoot.md#domain-name-conflict) |
 | *无法在此 Azure AD 租户中启用域服务。该服务对名为“Azure AD 域服务同步”的应用程序没有足够的权限。请删除名为“Azure AD 域服务同步”的应用程序，并尝试为 Azure AD 租户启用域服务。* |[域服务对 Azure AD 域服务同步应用程序没有足够的权限](troubleshoot.md#inadequate-permissions) |
 | *无法在此 Azure AD 租户中启用域服务。Azure AD 租户中的域服务应用程序没有所需的权限来启用域服务。请删除标识符为 d87dcbc6-a371-462e-88e3-28ad15ec4e64 的应用程序，并尝试为 Azure AD 租户启用域服务。* |[未在租户中正确配置域服务应用程序](troubleshoot.md#invalid-configuration) |
 | *无法在此 Azure AD 租户中启用域服务。Microsoft Azure AD 应用程序已在 Azure AD 租户中禁用。请启用标识符为 00000002-0000-0000-c000-000000000000 的应用程序，并尝试为 Azure AD 租户启用域服务。* |[Microsoft Graph 应用程序已在 Azure AD 租户中禁用](troubleshoot.md#microsoft-graph-disabled) |
@@ -40,7 +40,7 @@ ms.locfileid: "68772975"
 ### <a name="domain-name-conflict"></a>域名冲突
 **错误消息：**
 
-*名称 contoso100.com 已在此网络中使用。指定一个未使用的名称。*
+*此网络上已在使用该名称 contoso.com。指定一个未使用的名称。*
 
 **补救方法：**
 
@@ -135,12 +135,12 @@ if ($sp -ne $null)
 >
 >
 
-* 确保根据《入门指南》中所述的步骤[启用密码同步](active-directory-ds-getting-started-password-sync.md)。
+* 确保根据《入门指南》中所述的步骤[启用密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)。
 * **外部帐户：** 确保受影响的用户帐户不是 Azure AD 租户中的外部帐户。 外部帐户的示例包括 Microsoft 帐户（例如“joe@live.com”），或来自外部 Azure AD 目录的用户帐户。 由于 Azure AD 域服务没有此类用户帐户的凭据，因此这些用户无法登录到托管域。
 * **已同步的帐户：** 如果受影响的用户帐户已从本地目录同步，请确认：
 
   * 已部署或更新到[最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
-  * 已将 Azure AD Connect 配置为[执行完全同步](active-directory-ds-getting-started-password-sync.md)。
+  * 已将 Azure AD Connect 配置为[执行完全同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)。
   * 根据目录的大小，可能需要在一段时间后，用户帐户和凭据哈希才可在 Azure AD 域服务中使用。 请确保重试身份验证之前等待足够长的时间。
   * 如果在执行上述步骤后问题仍然出现，请尝试重新启动 Microsoft Azure AD 同步服务。 在同步计算机上启动命令提示符，并执行以下命令：
 

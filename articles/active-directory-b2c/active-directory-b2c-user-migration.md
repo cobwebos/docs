@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 128aa17c3f3d19f5551958fde488f803224d1cd5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 08ace7170a982fbaa186b77b27e342f16349aadd
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693377"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613305"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C：用户迁移
 
@@ -268,7 +268,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ### <a name="41-update-your-application-setting"></a>4.1：更新应用程序设置
 
 1. 若要测试 RESTful API 演示，请在 Visual Studio 中打开 `AADB2C.UserMigration.sln`。
-1. 在项目中, 打开 web.config*文件。* `AADB2C.UserMigration.API` 将设置替换为[步骤 2.2](#step-22-configure-the-application-settings) 中配置的设置：
+1. 在项目中, 打开 web.config 文件。 `AADB2C.UserMigration.API` 将设置替换为[步骤 2.2](#step-22-configure-the-application-settings) 中配置的设置：
 
     ```json
     {
@@ -375,4 +375,4 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 [B2C-GraphQuickStart]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet
 [B2C-NavContext]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-navigate-to-b2c-context
 [Portal]: https://portal.azure.com/
-[UserMigrationSample]: https://github.com/yoelhor/Azure-AD-B2C-UserMigration
+[UserMigrationSample]: https://github.com/azure-ad-b2c/user-migration

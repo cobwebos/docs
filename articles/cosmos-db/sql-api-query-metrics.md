@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: d61d3d00de5b46f7dad44625509eabe6836ca7cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447261"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614820"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>优化 Azure Cosmos DB 的查询性能
 
@@ -38,13 +38,13 @@ Azure Cosmos DB 提供了一个[用于查询数据的 SQL API](how-to-sql-query.
 
 SDK 针对查询执行提供了各种选项。 例如，在 .NET 中，`FeedOptions` 类中提供了以下选项。 下表介绍了这些选项以及它们如何影响查询执行时间。 
 
-| Option | 描述 |
+| 选项 | 描述 |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | 对于需要跨多个分区执行的任何查询，都必须将其设置为 true。 这是一个显式标志，可用来在开发时有意识地进行性能权衡。 |
 | `EnableScanInQuery` | 如果已决定不使用索引编制，但仍然希望通过扫描方式运行查询，必须将其设置为 true。 只有针对所请求的筛选器路径禁用了索引编制时才适用。 | 
 | `MaxItemCount` | 到服务器的每次往返要返回的最大项数。 通过将其设置为 -1，可以让服务器来管理此项数。 或者，可以减小此值来使每次往返仅检索少量项。 
 | `MaxBufferedItemCount` | 这是一个客户端选项，在执行跨分区 ORDER BY 时用来限制内存占用。 较高的值有助于降低跨分区排序的延迟。 |
-| `MaxDegreeOfParallelism` | 获取或设置在 Azure Cosmos DB 数据库服务中并行执行查询期间客户端运行的并发操作数。 属性值为正会将并发操作数限制为所设置的值。 如果它设置为小于 0，则系统会自动决定要运行的并发操作数。 |
+| `MaxDegreeOfParallelism` | 获取或设置在 Azure Cosmos 数据库服务中并行执行查询期间客户端运行的并发操作数。 属性值为正会将并发操作数限制为所设置的值。 如果它设置为小于 0，则系统会自动决定要运行的并发操作数。 |
 | `PopulateQueryMetrics` | 详细记录在执行查询的各个阶段花费的时间的统计信息，例如编译时间、索引循环时间和文档加载时间。 可以与 Azure 支持共享来自查询统计信息的输出以诊断查询性能问题。 |
 | `RequestContinuation` | 可以通过传入任何查询返回的不透明继续标记来继续执行查询。 继续标记封装了执行查询所需的所有状态。 |
 | `ResponseContinuationTokenLimitInKb` | 可以限制服务器返回的继续标记的最大大小。 如果应用程序主机对响应标头大小有限制，则可能需要设置此项。 设置此项可能会增加查询的总体持续时间和所使用的 RU。  |
@@ -124,7 +124,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 从查询返回的主要响应标头包括以下内容：
 
-| Option | 描述 |
+| 选项 | 描述 |
 | ------ | ----------- |
 | `x-ms-item-count` | 响应中返回的项数。 这取决于所提供的 `x-ms-max-item-count`、在最大响应有效负载大小内可以容纳的项数、预配的吞吐量以及查询执行时间。 |  
 | `x-ms-continuation:` | 用于继续执行查询的继续标记（如果有更多结果）。 | 
@@ -259,7 +259,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 下面提供了一些示例查询，并说明了如何解释从查询执行返回的某些指标： 
 
-| Query | 示例指标 | 描述 | 
+| 查询 | 示例指标 | 描述 | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | 为匹配 TOP 子句而检索的文档数为 100+1。 查询时间主要花费在 `WriteOutputTime` 和 `DocumentLoadTime` 中，因为它是一个扫描。 | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount 现在较高（为匹配 TOP 子句为 500+1）。 | 

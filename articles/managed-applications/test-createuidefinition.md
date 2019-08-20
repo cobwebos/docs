@@ -6,12 +6,12 @@ ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 91dd661cf4900512390079751f400f6a9888c452
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 54eb2df06df56c33e1a3cd74e7a4a93c07aab682
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845920"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575665"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>测试 Azure 托管应用程序的门户接口
 
@@ -91,7 +91,7 @@ ms.locfileid: "68845920"
 
 脚本会在浏览器中打开新选项卡。 浏览器中会显示门户，其中包含用于创建托管应用程序的界面。
 
-提供字段值。 完成后，会看到这些值已传递到模板。
+提供字段值。 完成后, 可以看到传递给模板的值, 这些值可在浏览器的 "开发人员工具" 控制台中找到。
 
 ![显示值](./media/test-createuidefinition/show-json.png)
 

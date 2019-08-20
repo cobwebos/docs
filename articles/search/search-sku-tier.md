@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: d93f8c61511dd1d3fc2bfd253fa7a21857f67ed6
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: a874c8a1fe2e8a81e2f42b2c88447fd52b47f3ad
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563367"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611964"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
@@ -62,7 +62,7 @@ ms.locfileid: "69563367"
 
 与可以 "暂停" 以避免收费的虚拟机或其他资源不同, Azure 搜索服务在专用于专用的硬件上始终可用。 因此, 创建服务是一种可计费事件, 该事件在你创建服务时开始, 在你删除服务时结束。 
 
-最小费用是第一个搜索单位 (1 个副本 x 个分区)。 在服务的整个生命周期内，此最低费用都是固定的，因为服务不能在低于此配置的组件上运行。 除了最小值以外, 还可以单独添加副本和分区。 通过副本和分区增加容量增加时, 会根据以下公式增加帐单: [(副本 x 分区 x 速率)](#search-units), 根据所选的定价层, 你需要支付的费用取决于所选的定价层。
+最小费用是按计费费率的第一个搜索单位 (1 个副本 x 个分区)。 在服务的整个生命周期内，此最低费用都是固定的，因为服务不能在低于此配置的组件上运行。 除了最小值以外, 还可以单独添加副本和分区。 通过副本和分区增加容量增加时, 会根据以下公式增加帐单: [(副本 x 分区 x 速率)](#search-units), 根据所选的定价层, 你需要支付的费用取决于所选的定价层。
 
 在估算搜索解决方案的费用时，请记住，定价和容量不是线性的。 （容量翻倍不是支付两倍的费用，而是要支付更高的费用）有关该公式的工作方式示例，请参阅[如何分配副本和分区](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)。
 
@@ -157,7 +157,7 @@ L2 offers twice the overall storage capacity of L1.  Choose your tier based on t
 
 ### <a name="evaluating-capacity"></a>评估容量
 
-容量与服务运行费用直接相关。 层在两个级别施加限制：存储和资源。 应该同时考虑到此两者，因为首先达到的限制就是实施的限制。
+容量和运行服务的成本。 层在两个级别施加限制：存储和资源。 应该同时考虑到此两者，因为首先达到的限制就是实施的限制。
 
 业务需求通常决定了所需的索引数。 例如，你可能需要对一个较大的文档存储库使用全局索引。 或者，你可能需要多个基于区域、应用或商业利基的索引。
 
@@ -167,25 +167,25 @@ L2 offers twice the overall storage capacity of L1.  Choose your tier based on t
 > 即使估算将来的索引和存储需求类似于猜测，但也值得一试。 如果层级容量经证实过低，将需要在更高的层级上预配新服务，然后[重新加载索引](search-howto-reindex.md)。 服务无法从一个 SKU 就地升级到另一个。
 >
 
-### <a name="step-1-develop-rough-estimates-by-using-the-free-tier"></a>步骤 1：使用“免费”层进行粗略估算
+### <a name="estimate-with-the-free-tier"></a>免费层评估
 
-估算容量的一种方法是从“免费”层开始。 回想一下，“免费”服务最多提供 3 个索引、50 MB 存储和 2 分钟索引时间。 根据这些约束估算预计索引大小可能很有难度。 下面是可以采用的一种方法：
+估算容量的一种方法是从“免费”层开始。 回想一下，“免费”服务最多提供 3 个索引、50 MB 存储和 2 分钟索引时间。 使用这些约束来估算预计的索引大小可能会很困难, 但这些步骤如下:
 
 + [创建免费服务](search-create-service-portal.md)。
-+ 准备一个较小的有代表性的数据集（例如，5,000 个文档，10% 的样本大小）。
-+ [生成初始索引](search-create-index-portal.md)并记下其在门户中的大小（例如 30 MB）。
++ 准备小型的、代表性的数据集。
++ [在门户中生成初始索引](search-create-index-portal.md), 并记下其大小。 功能和特性会影响存储。 例如, 添加建议器 (typeahead) 将增加存储需求。 使用相同的数据集, 您可以尝试创建索引的多个版本, 每个字段都有不同的属性, 以了解存储要求的变化情况。 有关详细信息, 请参阅[创建基本索引中的 "存储影响"](search-what-is-an-index.md#storage-implications)。
 
-如果样本既有代表性，又占整个数据源的 10%，如果所有文档都编入索引，则 30 MB 索引将变为大约 300 MB。 有了此初始数量，即可将此数额增加一倍到两个索引（开发和生产）的预算。 这样可以满足总共 600 MB 的存储要求。 “基本”层可以轻松满足此要求，因此你将从“基本”层开始。
+使用粗略估计时, 可以将两个索引 (开发和生产) 的预算翻倍, 然后相应地选择层。
 
-### <a name="step-2-develop-refined-estimates-by-using-a-billable-tier"></a>步骤 2：使用可计费层进行改进的估算
+### <a name="estimate-with-a-billable-tier"></a>使用可计费层估算
 
-有些客户更喜欢从可以适应更大采样和处理时间的专用资源开始，然后在开发期间对索引数量、大小和查询量进行现实估算。 最初，服务是根据最佳猜测估算结果预配的。 然后，随着开发项目的不断成熟，团队通常知道现有的服务对于预计生产工作负荷而言是容量超量还是不足。
+专用资源可以容纳更大的采样和处理时间, 以在开发过程中更逼真地估计索引数量、大小和查询量。 有些客户会直接进入可计费的层, 然后在开发项目成熟时重新评估。
 
 1. [检查每个层级的服务限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits)以确定较低层级是否可以支持需要的索引数量。 在“基本”、“S1”和“S2”层中，索引数限制分别为 15、50 和 200。 “存储优化”层的索引数限制为 10 个，因为它旨在支持少量的极大型索引。
 
 1. [在可计费层中创建服务](search-create-service-portal.md)：
 
-    + 如果你处于学习曲线的开始位置，请从较低的“基本”或“S1”层着手。
+    + 如果你不确定预计的负载, 请从 Basic 或 S1 开始。
     + 如果你知道会出现较大的索引和查询负载，请从较高的“S2”甚至“S3”层着手。
     + 如果你要为大量的数据编制索引并且查询负载相对较低（例如，使用与内部商务应用程序时），请从“优化存储”层 L1 或 L2 着手。
 

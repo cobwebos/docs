@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 676efa155c85ab371ec41c49ad0c15eb2bd5a24a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 4978f7b782271daff996807172a24103bd8d9860
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234009"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617284"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>解决现有 Azure AD 域服务托管域的不匹配目录错误
 你有一个现有 Azure AD 域服务托管域。 导航到 Azure 门户并查看托管域时，会看到以下错误消息：
@@ -54,14 +54,14 @@ ms.locfileid: "68234009"
 - 可以在属于相同 Azure AD 租户中的任意 Azure 订阅的虚拟网络上启用 Azure AD 域服务托管域。
 
 
-## <a name="resolution"></a>解决方法
+## <a name="resolution"></a>分辨率
 可通过两个选择来解决不匹配目录错误。 可以：
 
-- 单击“删除”按钮，删除现有托管域  。 使用 [Azure 门户](https://portal.azure.com)重新创建，使托管域和在其中可用的虚拟网络均属于 Azure AD 目录。 将以前加入已删除域的所有计算机重新加入新创建的托管域。
+- 单击“删除”按钮，删除现有托管域。 使用 [Azure 门户](https://portal.azure.com)重新创建，使托管域和在其中可用的虚拟网络均属于 Azure AD 目录。 将以前加入已删除域的所有计算机重新加入新创建的托管域。
 
 - 将包含虚拟网络的 Azure 订阅移到托管域所属的 Azure AD 目录。 按照[将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)一文中的步骤进行操作。
 
 
 ## <a name="related-content"></a>相关内容
-* [Azure AD 域服务 - 入门指南](create-instance.md)
+* [Azure AD 域服务 - 入门指南](tutorial-create-instance.md)
 * [故障排除指南 - Azure AD 域服务](troubleshoot.md)

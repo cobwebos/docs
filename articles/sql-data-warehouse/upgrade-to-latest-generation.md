@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: a8bd260db7a141ce845ce7fb5b7e10f642907b82
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2864e3d29a0beccd2ef52732a85ea1495e1efab8
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310243"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575287"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>通过升级 SQL 数据仓库优化性能
 
@@ -91,7 +91,7 @@ ms.locfileid: "60310243"
    ```
 
    > [!NOTE] 
-   > -RequestedServiceObjectiveName“DW300”更改为 - RequestedServiceObjectiveName“DW300c  ”
+   > -RequestedServiceObjectiveName“DW300”更改为 - RequestedServiceObjectiveName“DW300c”
    >
 
    原始 Gen1 T-SQL 命令：
@@ -106,18 +106,18 @@ ms.locfileid: "60310243"
    ALTER DATABASE mySampleDataWarehouse MODIFY (SERVICE_OBJECTIVE = 'DW300c') ; 
    ```
    > [!NOTE] 
-   > SERVICE_OBJECTIVE = “DW300”更改为 SERVICE_OBJECTIVE = “DW300c” 
+   > SERVICE_OBJECTIVE = “DW300”更改为 SERVICE_OBJECTIVE = “DW300c”
 
 ## <a name="start-the-upgrade"></a>开始升级
 
 1. 在 Azure 门户中转到你的“计算优化第 1 代”层级数据仓库。 如果要升级的“计算优化第 1 代”层级数据仓库已暂停，请[恢复数据仓库](pause-and-resume-compute-portal.md)。 
-2. 在“任务”选项卡下选择“升级到第 2 代”  卡：![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+2. 在“任务”选项卡下选择“升级到第 2 代”卡：![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
     
     > [!NOTE]
-    > 如果在“任务”选项卡下未看到“升级到第 2 代”  卡，则你的订阅类型在当前区域中受到限制。
+    > 如果在“任务”选项卡下未看到“升级到第 2 代”卡，则你的订阅类型在当前区域中受到限制。
     > [提交支持票证](sql-data-warehouse-get-started-create-support-ticket.md)以便将你的订阅列入允许列表。
 
-3. 在升级之前，请确保工作负荷已完成运行并处于静止状态。 在数据仓库作为“计算优化第 2 代”数据仓库回到联机状态之前，会出现几分钟的停机时间。 选择“升级”  ：
+3. 在升级之前，请确保工作负荷已完成运行并处于静止状态。 在数据仓库作为“计算优化第 2 代”数据仓库回到联机状态之前，会出现几分钟的停机时间。 选择“升级”：
 
    ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_2.png)
 
@@ -187,9 +187,9 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 2. 导航到要为其创建还原点的 SQL 数据仓库。
 
-3. 在“概述”部分的顶部，选择“+ 新建还原点”  。
+3. 在“概述”部分的顶部，选择“+ 新建还原点”。
 
-    ![新建还原点](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
+    ![新还原点](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
 
 4. 为还原点指定一个名称。
 
@@ -198,12 +198,12 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>使用 Azure 门户还原活动或暂停的数据库
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 导航到要从中进行还原的 SQL 数据仓库。
-3. 在“概述”部分的顶部，选择“还原”  。
+2. 导航到要从中还原的 SQL 数据仓库。
+3. 在“概述”部分的顶部，选择“还原”。
 
     ![ 还原概述](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)
 
-4. 选择“自动还原点”或“用户定义的还原点”。  
+4. 选择“自动还原点”或“用户定义的还原点”。
 
     ![自动还原点](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
 

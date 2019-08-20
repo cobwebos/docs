@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: a81b22d8ca538c7dc25a9c6631c2b455d5a6c90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b74c7b178ee4512067de4b8decba0c3c565ccd4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257224"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616962"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用 Bulk Executor .NET 库在 Azure Cosmos DB 中执行批量操作
 
-本教程提供有关使用 Azure Cosmos DB 的 Bulk Executor .NET 库在 Azure Cosmos DB 容器中导入和更新文档的说明。 若要了解 Bulk Executor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [Bulk Executor 库概述](bulk-executor-overview.md)一文。 本教程将讲解一个示例 .NET 应用程序，该应用程序可将随机生成的文档批量导入 Azure Cosmos DB 容器。 导入之后，它会显示如何通过指定要对特定文档字段执行的修补操作，来批量更新导入的数据。 
+本教程提供有关使用 Azure Cosmos DB 的批量执行器 .NET 库将文档导入和更新到 Azure Cosmos 容器的说明。 若要了解 Bulk Executor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [Bulk Executor 库概述](bulk-executor-overview.md)一文。 在本教程中, 你将看到一个将随机生成的文档大容量导入到 Azure Cosmos 容器中的 .NET 应用程序示例。 导入之后，它会显示如何通过指定要对特定文档字段执行的修补操作，来批量更新导入的数据。 
 
 目前，批量执行程序库仅受 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持。 本文介绍如何配合使用 SQL API 帐户和批量执行程序 .NET 库。 若要了解如何配合使用 Gremlin API 和批量执行程序 .NET 库，请参阅[在 Azure Cosmos DB Gremlin API 中执行批量操作](bulk-executor-graph-dotnet.md)。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 如果还没有安装 Visual Studio 2019，您可以下载并使用[Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
+* 如果尚未安装 Visual Studio 2019, 可以下载并使用[Visual studio 2019 社区版](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
 
@@ -171,11 +171,11 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
 
 * 为获得最佳性能，请从 Cosmos DB 帐户写入区域中的 Azure 虚拟机运行应用程序。  
 
-* 建议在单个虚拟机中，为整个应用程序实例化对应于特定 Cosmos DB 容器的单个 BulkExecutor 对象。  
+* 建议为单个虚拟机中的整个应用程序实例化单个 BulkExecutor 对象, 该对象对应于特定的 Cosmos 容器。  
 
 * 原因是单个批量操作 API 执行会消耗客户端计算机的大量 CPU 和网络 IO。 而发生这种情况的原因是在内部生成了多个任务，因此，每次执行批量操作 API 调用时，请避免在应用程序进程中生成多个并发任务。 如果单个虚拟机上运行的单个批量操作 API 调用无法占用整个容器的吞吐量（如果容器吞吐量超过 100 万 RU/秒），最好是创建独立的虚拟机来并发执行批量操作 API 调用。  
 
-* 确保在实例化 BulkExecutor 对象之后调用 InitializeAsync()，以提取目标 Cosmos DB 容器分区映射。  
+* 确保在实例化 BulkExecutor 对象后调用 App.mobileservice.synccontext.initializeasync (), 以提取目标 Cosmos 容器分区映射。  
 
 * 在应用程序的 App.Config 中，确保启用 **gcServer** 以获得更好的性能
   ```xml  

@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 95d128a7af60a1504d05fb5316969fccc49c397f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557342"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574965"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
 本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
@@ -229,6 +229,20 @@ ms.locfileid: "68557342"
 
     consume(ep, smallTestSet[1:10, ])
 
+<a name="deep-learning"></a>
+
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>深度学习教程和演练
+
+除了基于框架的示例外，我们还提供了一套已在 DLVM 上验证的综合演练。 这些演练可帮助你快速开始开发域中的深度学习应用程序，如图像和文本/语言理解等。 我们会继续添加更多跨不同域和技术的端到端教程。   
+
+
+- [在不同的框架中运行神经网络](https://github.com/ilkarman/DeepLearningFrameworks)：一个综合演练，演示如何将代码从一个框架迁移到另一个框架。 它还演示了如何跨框架比较模型和运行时性能。 
+
+- [生成端到端解决方案以检测图像中的产品的操作指南](https://github.com/Azure/cortana-intelligence-product-detection-from-images)：图像检测是一种能够对图像中的对象进行定位和分类的技术。 此技术有可能在多个实际生活业务域中带来巨大回报。 例如，零售商可以使用此技术确定客户已从货架上选取哪个产品。 从而，此信息可帮助商店管理产品库存。 
+
+- [深度音频学习](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) 本教程介绍如何在[城市声音数据集](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)中修整用于音频事件检测的深度学习模型，并提供有关如何使用音频数据的概述。
+
+- [文本文档分类](https://github.com/anargyri/lstm_han)：本演练演示如何生成和训练两种不同的神经网络体系结构：分层注意网络和长短期记忆 (LSTM) 网络。 这些神经网络使用用于深度学习的 Keras API 对文本文档进行分类。 Keras 是以下三大最热门深度学习框架的前端：Microsoft Cognitive Toolkit、TensorFlow 和 Theano。
 
 ## <a name="use-other-tools-available"></a>使用其他可用工具
 其余部分会显示如何使用 Linux 数据科研虚拟机上安装的一些工具。以下是所讨论工具的列表：

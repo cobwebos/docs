@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 2d0c8cfb5e146694304d32eca27836f49d82e887
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 3b50b0e81103f0b4c8ffa757673c9ec0ef652fc0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618687"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614120"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本:"]
@@ -400,7 +400,7 @@ GO
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>使用 PolyBase 将数据加载到 Azure SQL 数据仓库
 
-使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 是将大量数据加载到高吞吐量 Azure SQL 数据仓库的有效方法。 使用 PolyBase 而非默认 BULKINSERT 机制可以实现吞吐量的巨大增加。 有关详细比较，请参阅[性能参考](copy-activity-performance.md#performance-reference)。 有关带有用例的演练，请参阅[将 1 TB 的数据加载到 Azure SQL 数据仓库](v1/data-factory-load-sql-data-warehouse.md)。
+使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 是将大量数据加载到高吞吐量 Azure SQL 数据仓库的有效方法。 使用 PolyBase 而非默认 BULKINSERT 机制可以实现吞吐量的巨大增加。 有关带有用例的演练，请参阅[将 1 TB 的数据加载到 Azure SQL 数据仓库](v1/data-factory-load-sql-data-warehouse.md)。
 
 * 如果源数据位于**Azure Blob 中、Azure Data Lake Storage Gen1 或 Azure Data Lake Storage Gen2**并且**格式与 PolyBase 兼容**, 则可以使用复制活动直接调用 POLYBASE, 使 Azure SQL 数据仓库从源中提取数据。 有关详细信息，请参阅 **[使用 PolyBase 直接复制](#direct-copy-by-using-polybase)** 。
 * 如果 PolyBase 最初不支持源数据存储和格式，请改用 **[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)** 功能。 暂存复制功能也能提供更高的吞吐量。 它自动将数据转换为 PolyBase 兼容的格式。 它将数据存储在 Azure Blob 存储中。 然后，它将数据载入 SQL 数据仓库。
@@ -472,10 +472,10 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob、Azure Data Lake Storage Gen1
 
 源数据不满足上一部分所述的条件时，请通过暂存 Azure Blob 存储实例启用数据复制。 该实例不能是 Azure 高级存储。 在这种情况下，Azure 数据工厂会自动针对数据运行转换，以满足 PolyBase 的数据格式要求。 然后，它使用 PolyBase 将数据加载到 SQL 数据仓库。 最后，它会从 Blob 存储中清理临时数据。 有关通过暂存 Azure Blob 存储实例复制数据的详细信息，请参阅[暂存复制](copy-activity-performance.md#staged-copy)。
 
-若要使用此功能, 请创建一个[Azure Blob 存储链接服务](connector-azure-blob-storage.md#linked-service-properties), 该服务引用具有临时 Blob 存储的 azure 存储帐户。 然后, 为`enableStaging`复制`stagingSettings`活动指定和属性, 如下面的代码所示。
+若要使用此功能，请创建 [Azure Blob 存储链接服务](connector-azure-blob-storage.md#linked-service-properties)，该服务引用使用临时 blob 存储的 Azure 存储帐户。 然后为复制活动指定 `enableStaging` 和 `stagingSettings` 属性，如以下代码所示。
 
 >[!IMPORTANT]
->如果临时 Azure 存储配置了 VNet 服务终结点, 则必须使用托管标识身份验证-请参阅将[VNet 服务终结点与 Azure 存储配合使用的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 了解[Azure Blob-托管标识身份验证](connector-azure-blob-storage.md#managed-identity)中数据工厂所需的配置。
+>如果临时 Azure 存储配置了 VNet 服务终结点，则必须使用托管标识身份验证 - 请参阅[将 VNet 服务终结点与 Azure 存储配合使用的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 从 [Azure Blob - 托管标识身份验证](connector-azure-blob-storage.md#managed-identity)了解数据工厂中所需的配置。
 
 ```json
 "activities":[

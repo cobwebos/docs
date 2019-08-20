@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: iainfou
-ms.openlocfilehash: daddb2d13aee08fe7294ab2d7f0892bab761562b
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: c6572ab8bc2a10039f327233f983c2e822fba3b0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472672"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617218"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 启用 Azure Active Directory 域服务
 本文介绍如何使用 PowerShell 来启用 Azure Active Directory (AD) 域服务。
@@ -62,7 +62,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso100.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -124,7 +124,7 @@ $Vnet=New-AzVirtualNetwork `
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "contoso100.com"
+$ManagedDomainName = "contoso.com"
 $ResourceGroupName = "ContosoAaddsRg"
 $VnetName = "DomainServicesVNet_WUS"
 $AzureLocation = "westus"
@@ -138,24 +138,24 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 ```
 
 > [!WARNING]
-> 在预配托管域后，请不要忘记执行其他配置步骤。 
+> 在预配托管域后，请不要忘记执行其他配置步骤。
 > 预配托管域后，仍需完成以下任务：
-> * 为虚拟网络  [更新 DNS 设置](active-directory-ds-getting-started-dns.md)，以使虚拟机能够找到用于域加入或身份验证的托管域。
-> *  [启用 Azure AD 域服务的密码同步](active-directory-ds-getting-started-password-sync.md)，以使最终用户能够使用其企业凭据登录到托管域。
-
+> * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。 若要配置 DNS, 请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上, 系统会提示自动配置这些 DNS 设置。
+> * 创建所需的网络安全组规则, 以限制托管域的入站流量。 若要创建网络安全组规则, 请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上, 系统会提示自动创建相应的网络安全组规则。
+> * [启用 Azure AD 域服务的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以使最终用户能够使用其企业凭据登录到托管域。
 
 ## <a name="powershell-script"></a>PowerShell 脚本
 本文所列的用于执行所有任务的 PowerShell 脚本如下所示。 复制脚本并将其保存到扩展名为“.ps1”的文件。 在 PowerShell 中执行该脚本，或使用 PowerShell 集成脚本环境(ISE)。
 
 > [!NOTE]
->  运行此脚本所需的权限：若要启用 Azure AD 域服务，需要是 Azure AD 目录的全局管理员。 此外，需要至少具有可在其中启用 Azure AD 域服务的虚拟网络上的“参与者”权限。
+> 运行此脚本所需的权限：若要启用 Azure AD 域服务，需要是 Azure AD 目录的全局管理员。 此外，需要至少具有可在其中启用 Azure AD 域服务的虚拟网络上的“参与者”权限。
 >
 
 ```powershell
 # Change the following values to match your deployment.
-$AaddsAdminUserUpn = "admin@contoso100.onmicrosoft.com"
+$AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "contoso100.com"
+$ManagedDomainName = "contoso.com"
 $ResourceGroupName = "ContosoAaddsRg"
 $VnetName = "DomainServicesVNet_WUS"
 $AzureLocation = "westus"
@@ -222,13 +222,14 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 ```
 
 > [!WARNING]
-> 在预配托管域后，请不要忘记执行其他配置步骤。 
+> 在预配托管域后，请不要忘记执行其他配置步骤。
 > 预配托管域后，仍需完成以下任务：
-> * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
-> * 启用 Azure AD 域服务的密码同步，以使最终用户能够使用其企业凭据登录到托管域。
+> * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。 若要配置 DNS, 请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上, 系统会提示自动配置这些 DNS 设置。
+> * 创建所需的网络安全组规则, 以限制托管域的入站流量。 若要创建网络安全组规则, 请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上, 系统会提示自动创建相应的网络安全组规则。
+> * [启用 Azure AD 域服务的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以使最终用户能够使用其企业凭据登录到托管域。
 
 ## <a name="next-steps"></a>后续步骤
 创建托管域后，执行以下配置任务，以使用托管域：
 
-* [更新虚拟网络的 DNS 服务器设置，以指向托管域](active-directory-ds-getting-started-dns.md)
-* [启用托管域的密码同步](active-directory-ds-getting-started-password-sync.md)
+* [更新虚拟网络的 DNS 服务器设置，以指向托管域](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
+* [启用托管域的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)

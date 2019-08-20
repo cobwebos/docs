@@ -13,23 +13,23 @@ ms.date: 08/07/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df32ec9c2d181072bb67a8ca0f2cb04560287286
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 178ce07db24976d7df590d353603da67b68122e8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949765"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616123"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>排查常见的双因素验证问题
 
-你的组织已启用双重验证, 这意味着你的工作或学校帐户登录现在需要组合你的用户名、密码、移动设备或手机。 你的组织启用了这一额外验证, 因为它比密码更安全, 依赖于两种形式的身份验证: 你知道的信息和你所拥有的内容。 双重验证可帮助阻止恶意黑客伪装为你, 因为即使用户使用了密码, 也有可能不会有你的设备。
+你的组织已启用双重验证, 这意味着你的工作或学校帐户登录现在需要组合你的用户名、密码、移动设备或手机。 你的组织启用了这一额外验证, 因为它比密码更安全, 依赖于两种形式的身份验证: 你知道的信息和你所拥有的内容。 双重验证有助于防止恶意黑客假装你的身份，因为即使他们有你的密码，也不太可能有你的设备。
 
 有些常见的双因素验证问题似乎比我们所喜欢的更频繁。 我们整理了本文, 希望解决最常见的问题和一些可能的修补程序。
 
 >[!Important]
 >此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
 >
->此内容还仅适用于你的工作或学校帐户、你的组织提供的帐户 (例如alain@contoso.com)。 如果你在进行双重验证和个人 Microsoft 帐户时遇到问题, 你为自己设置的帐户 (例如danielle@outlook.com), 请参阅[打开或关闭 Microsoft 帐户的双重验证](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+>此内容也只能用于工作或学校帐户，该帐户是由组织提供给你的（例如 alain@contoso.com）。 如果无法使用双重验证和个人 Microsoft 帐户，即你为自己设置的帐户（例如 danielle@outlook.com），请参阅[为你的 Microsoft 帐户打开或关闭双重验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
 
 ## <a name="i-forgot-my-mobile-device-at-home"></a>我在家里忘记了我的移动设备
 
@@ -92,7 +92,11 @@ ms.locfileid: "68949765"
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>我无法使我的应用密码生效
 
-对于不支持双重验证的旧版桌面应用程序, 应用密码将替换你的普通密码。 首先，请确保输入的密码正确。 如果这不能解决此问题, 请尝试使用 "[管理双步验证的应用密码](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-using-the-myapps-portal)" 一文中的 "应用程序密码" 一文中的 "**创建和删除应用程序**密码" 一节中的步骤, 为应用程序创建新的应用密码。
+对于不支持双重验证的旧版桌面应用程序, 应用密码将替换你的普通密码。 首先，请确保输入的密码正确。 如果这不能解决此问题, 请尝试使用 "[管理双步验证的应用密码](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)" 一文中的 "应用程序密码" 一文中的 "**创建和删除应用程序**密码" 一节中的步骤, 为应用程序创建新的应用密码。
+
+## <a name="why-cant-i-turn-two-factor-verification-off"></a>为什么无法关闭双重验证？
+
+如果对工作或学校帐户 (例如alain@contoso.com) 使用双重验证, 则很可能意味着你的组织已决定必须使用此添加的安全功能。 由于你的组织已决定你必须使用此功能, 因此无法单独将其关闭。 然而, 如果使用个人帐户 (如alain@outlook.com) 进行双重验证, 则可以打开和关闭该功能。 有关如何控制 Microsoft 个人帐户的双因素验证的说明, 请参阅[打开或关闭 Microsoft 帐户的双重验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>我找不到问题的解答
 

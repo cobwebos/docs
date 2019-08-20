@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 40caea40637c57aedb6315ff6fc032898ff07af7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467946"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615665"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的更改源 - 概述
 
-Azure Cosmos DB 中更改源支持的工作原理是侦听 Azure Cosmos DB 容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 这些更改将会持久保留且能以异步和增量方式进行处理。可将输出分配到一个或多个使用者供并行处理。 
+Azure Cosmos DB 中的更改源支持通过侦听 Azure Cosmos 容器进行任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 这些更改将会持久保留且能以异步和增量方式进行处理。可将输出分配到一个或多个使用者供并行处理。 
 
 Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应用程序。 这些应用程序中的一种常见设计模式是使用数据更改来触发附加的操作。 附加操作的示例包括：
 
@@ -56,7 +56,7 @@ Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应
 
 如果某个项的 TTL（生存时间）属性设置为 -1，则将永久保留更改源。 如果数据未被删除，它将会保留在更改源中。  
 
-### <a name="change-feed-and-etag-lsn-or-ts"></a>更改源和 _etag、_lsn 或 _ts
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>更改源和 _etag、_lsn 或 _ts
 
 _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _ts 是修改或创建时间戳。 可以使用 _ts 进行时间顺序比较。 _lsn 是仅为更改源添加的批 ID，它表示事务 ID。 许多项可能具有相同的 _lsn。 FeedResponse 上的 ETag 不同于项上看到的 _etag。 _etag 是用于并发控制的内部标识符，它告知项的版本，而 ETag 用于将源定序。
 
@@ -94,7 +94,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 可通过以下选项使用更改源：
 
 * [将更改源与 Azure Functions 配合使用](change-feed-functions.md)
-* [将更改源与更改源处理器一起使用](change-feed-processor.md) 
+* [将更改源与更改源处理器配合使用](change-feed-processor.md) 
 
 更改源适用于容器中的每个逻辑分区键，它可以分配给一个或多个使用者进行并行处理，如下图所示。
 
@@ -108,7 +108,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 * 更改源包括针对容器中的项所执行的插入和更新操作。 在项（如文档）中的删除位置设置“软删除”标志，可以捕获删除操作。 此外，也可以使用 [TTL 功能](time-to-live.md)为项设置有限的过期时段。 例如，24 小时，可使用该属性的值来捕获删除操作。 使用此解决方案时，处理更改的时间间隔必须比 TTL 过期时段要短。 
 
-* 在更改源中，对项的每个更改都将显示一次，且客户端必须管理其检查点逻辑。 如果要避免管理检查点的复杂性, 更改源处理器会提供自动检查点和 "至少一次" 语义。 请参阅[将更改源与更改源处理器结合使用](change-feed-processor.md)。
+* 在更改源中，对项的每个更改都将显示一次，且客户端必须管理其检查点逻辑。 如果想要避免管理检查点的复杂性，更改源处理器提供了自动检查点和“至少一次”语义。 请参阅[将更改源与更改源处理器配合使用](change-feed-processor.md)。
 
 * 更改日志中仅包含最近对给定项所做的更改。 而不包含中途的更改。
 

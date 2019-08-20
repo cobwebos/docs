@@ -3,62 +3,63 @@ title: Azure VMware 解决方案 (按 CloudSimple 快速入门)-创建私有云
 description: 了解如何通过 CloudSimple 使用 Azure VMware 解决方案创建和配置私有云
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6b68dcd47377ee56c4ebedc94905e1f0a8b70b38
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: fdf1fc14eb4ab1458c25b484bae6cd84ecec6d7f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812334"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575489"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>快速入门-配置私有云环境
 
 本文介绍如何创建 CloudSimple 私有云并设置私有云环境。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-为私有云分配 vSphere/vSAN 子网的 CIDR 范围。 私有云是作为由 vCenter 服务器管理的隔离 VMware 堆栈 (ESXi 主机、vCenter、vSAN 和 NSX) 环境创建的。 管理组件部署在为 vSphere/vSAN 子网 CIDR 选择的网络中。 在部署过程中, 网络 CIDR 范围分为不同的子网。  VSphere/vSAN 子网地址空间必须是唯一的。 它不得与任何与 CloudSimple 环境通信的网络重叠。  与 CloudSimple 通信的网络包括本地网络和 Azure 虚拟网络。  有关 vSphere/vSAN 子网的详细信息, 请参阅[vlan 和子网概述](cloudsimple-vlans-subnets.md)。
-
-* 最小 vSphere/vSAN 子网 CIDR 范围前缀:/24 
-* 最大 vSphere/vSAN 子网 CIDR 范围前缀:/21
-
-## <a name="sign-in-to-azure"></a>登录  Azure
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-private-cloud"></a>创建私有云
 
+私有云是支持 ESXi 主机、vCenter、vSAN 和 NSX 的独立 VMware 堆栈。
+
+私有云通过 CloudSimple 门户进行管理。 它们在自己的管理域中具有自己的 vCenter 服务器。 堆栈在专用节点和隔离的裸机硬件节点上运行。
+
 1. 选择“所有服务”。
 2. 搜索 " **CloudSimple Services**"。
 3. 选择要在其上创建私有云的 CloudSimple 服务。
-4. 从 "概述" 中, 单击 "**创建私有云**" 以打开 CloudSimple 门户的新浏览器选项卡。  如果系统提示, 请用 Azure 登录凭据登录。  
+4. 从 "**概述**" 中, 单击 "**创建私有云**" 以打开 CloudSimple 门户的新浏览器选项卡。  如果系统提示, 请用 Azure 登录凭据登录。  
 
     ![从 Azure 创建私有云](media/create-private-cloud-from-azure.png)
 
-5. 在 CloudSimple 门户中, 提供私有云的名称
-6. 选择私有云的**位置**
-7. 选择在 Azure 上预配的**节点类型**。  你可以选择[CS28 或 CS36 选项](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku)。 后一种方法包括最大计算和内存容量。
-8. 指定**节点计数**。  创建私有云需要至少三个节点
+5. 在 CloudSimple 门户中, 提供私有云的名称。
+6. 选择私有云的**位置**。
+7. 选择 "**节点类型**", 与 Azure 上购买的内容一致。 你可以选择[CS28 或 CS36 选项](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku)。 后一种方法包括最大计算和内存容量。
+8. 指定**节点计数**。  至少需要三个节点才能创建私有云。
 
     ![创建私有云-基本信息](media/create-private-cloud-basic-info.png)
 
 9. 单击“下一步:**高级选项**。
-10. 输入 vSphere/vSAN 子网的 CIDR 范围。 请确保 CIDR 范围不与任何本地或其他 Azure 子网重叠。
+10. 输入 vSphere/vSAN 子网的 CIDR 范围。 请确保 CIDR 范围不与任何本地或其他 Azure 子网 (虚拟网络) 或网关子网重叠。
 
-    ![创建私有云-高级选项](media/create-private-cloud-advanced-options.png)
+    **CIDR 范围选项:** /24、/23、/22 或/21。 A/24 CIDR 范围支持最多9个节点,/23 个 CIDR 范围最多支持41个节点, 并且/22 和/21 CIDR 范围最多支持64个节点 (私有云中的最大节点数)。
 
-11. 在完成时选择“下一步:**查看和创建**。
+      > [!IMPORTANT]
+      > VSphere/vSAN CIDR 范围中的 IP 地址保留供私有云基础结构使用。  请勿在任何虚拟机上使用此范围内的 IP 地址。
+
+11. 单击“下一步:**查看和创建**。
 12. 查看设置。 如果需要更改任何设置, 请单击 "**上一步**"。
 13. 单击“创建”。
 
-将启动私有云预配过程。  预配私有云可能需要两个小时。
+私有云预配过程开始。  预配私有云可能需要长达两个小时。
 
 ## <a name="launch-cloudsimple-portal"></a>启动 CloudSimple 门户
 
-可以从 Azure 门户访问 CloudSimple 门户。  将使用 Azure 登录凭据通过单一登录 (SSO) 启动 CloudSimple 门户。  若要访问 CloudSimple 门户, 需要授权**CloudSimple Service 授权**应用程序。  有关授予权限的详细信息, 请参阅[同意 CloudSimple 服务授权应用程序](https://docs.azure.cloudsimple.com/access-cloudsimple-portal/#consent-to-cloudsimple-service-authorization-application)
+可以从 Azure 门户访问 CloudSimple 门户。  将使用 Azure 登录凭据通过单一登录 (SSO) 启动 CloudSimple 门户。  若要访问 CloudSimple 门户, 需要授权**CloudSimple Service 授权**应用程序。  有关授予权限的详细信息, 请参阅[同意 CloudSimple 服务授权应用程序](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application)。
 
 1. 选择“所有服务”。
 2. 搜索 " **CloudSimple Services**"。
@@ -69,7 +70,7 @@ ms.locfileid: "68812334"
 
 ## <a name="create-point-to-site-vpn"></a>创建点到站点 VPN
 
-点到站点 VPN 连接是从计算机连接到私有云的最简单方法。 如果要远程连接到私有云, 请使用点到站点 VPN 连接。  若要快速访问私有云, 请遵循以下步骤。  可以使用[站点到站点 VPN](https://docs.azure.cloudsimple.com/vpn-gateway/)或[Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/)来访问本地网络中的 CloudSimple 区域。
+点到站点 VPN 连接是从计算机连接到私有云的最简单方法。 如果要远程连接到私有云, 请使用点到站点 VPN 连接。  若要快速访问私有云, 请遵循以下步骤。  可以使用[站点到站点 VPN](vpn-gateway.md)或[Azure ExpressRoute](on-premises-connection.md)来访问本地网络中的 CloudSimple 区域。
 
 ### <a name="create-gateway"></a>创建网关
 
@@ -94,9 +95,9 @@ ms.locfileid: "68812334"
 6. 通过 "Vlan/子网" 部分, 可以为网关和连接指定管理和用户 Vlan/子网。
 
     * **自动添加**选项设置此网关的全局策略。 这些设置将应用于当前的网关。 这些设置可在 "**选择**" 区域中被覆盖。
-    * 选择 "**添加私有云的管理 vlan/子网**"。 
-    * 若要添加所有用户定义的 Vlan/子网, 请单击 "**添加用户定义的 vlan/子网**"。 
-    * "**选择**设置" 在 "**自动添加**" 下覆盖全局设置。 
+    * 选择 "**添加私有云的管理 vlan/子网**"。
+    * 若要添加所有用户定义的 Vlan/子网, 请单击 "**添加用户定义的 vlan/子网**"。
+    * "**选择**设置" 在 "**自动添加**" 下覆盖全局设置。
 
 7. 单击 "**下一步**" 查看设置。 单击 "编辑" 图标进行任何更改。
 8. 单击 "**创建**", 创建 VPN 网关。
@@ -109,16 +110,16 @@ ms.locfileid: "68812334"
 2. 选择**VPN 网关**。
 3. 在 VPN 网关列表中, 单击 "点到站点 VPN 网关"。
 4. 选择“用户”。
-5. 单击 "**下载我的 VPN 配置"**
+5. 单击 "**下载我的 VPN 配置"** 。
 
     ![下载 VPN 配置](media/download-p2s-vpn-configuration.png)
 
-6. 导入 VPN 客户端上的配置
+6. 导入 VPN 客户端上的配置。
 
     * 有关[在 Windows 客户端上导入配置](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)的说明
     * 有关[在 macOS 或 OS X 上导入配置](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)的说明
 
-7. 连接到 CloudSimple
+7. 连接到 CloudSimple。
 
 ## <a name="create-a-vlan-for-your-workload-vms"></a>为工作负荷 Vm 创建 VLAN
 
@@ -126,7 +127,7 @@ ms.locfileid: "68812334"
 
 1. 在 CloudSimple 门户中, 选择 "**网络**"。
 2. 单击 " **VLAN/子网**"。
-3. 单击 "**创建 VLAN/子网**"
+3. 单击 "**创建 VLAN/子网**"。
 
     ![创建 VLAN/子网](media/create-new-vlan-subnet.png)
 
@@ -138,11 +139,11 @@ ms.locfileid: "68812334"
 
     ![创建 VLAN/子网详细信息](media/create-new-vlan-subnet-details.png)
 
-将创建 VLAN/子网。  你现在可以使用此 VLAN ID 在私有云 vCenter 上创建分布式端口组。 
+将创建 VLAN/子网。  你现在可以使用此 VLAN ID 在私有云 vCenter 上创建分布式端口组。
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>将环境连接到 Azure 虚拟网络
 
-CloudSimple 为你的私有云提供了 ExpressRoute 线路。 可以将 Azure 上的虚拟网络连接到 ExpressRoute 线路。 有关设置连接的完整详细信息, 请遵循[使用 ExpressRoute 的 Azure 虚拟网络连接](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)中的步骤
+CloudSimple 为你的私有云提供了 ExpressRoute 线路。 可以将 Azure 上的虚拟网络连接到 ExpressRoute 线路。 有关设置连接的完整详细信息, 请遵循[使用 ExpressRoute 的 Azure 虚拟网络连接](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)中的步骤。
 
 ## <a name="sign-in-to-vcenter"></a>登录到 vCenter
 
@@ -154,7 +155,7 @@ CloudSimple 为你的私有云提供了 ExpressRoute 线路。 可以将 Azure �
 
 2. 选择首选的 vSphere 客户端以访问 vCenter, 并使用用户名和密码进行登录。  默认值为:
     * 用户名: **CloudOwner@cloudsimple.local**
-    * 密码:**CloudSimple123!**  
+    * 密码：**CloudSimple123!**  
 
 下一过程中的 vCenter 屏幕来自 vSphere (HTML5) 客户端。
 
@@ -182,22 +183,19 @@ CloudSimple 建议你在首次登录到 vCenter 时更改密码。
 
 使用默认密码部署了 NSX 管理器。  建议在创建私有云后更改密码。
 
-   * 用户名:**管理员**
-   * 密码:**CloudSimple123!**
+* 用户名:**管理员**
+* 密码：**CloudSimple123!**
 
 可以在 CloudSimple 门户中找到 NSX 管理器的完全限定的域名 (FQDN) 和 IP 地址。
 
 1. 启动 CloudSimple 门户并选择 "**资源**"。
 2. 单击要使用的私有云。
 3. 选择**vSphere 管理网络**
-4. 使用**NSX Manager**的 FQDN 或 IP 地址, 并使用 web 浏览器进行连接。 
+4. 使用**NSX Manager**的 FQDN 或 IP 地址, 并使用 web 浏览器进行连接。
 
     ![查找 NSX Manager FQDN](media/private-cloud-nsx-manager-fqdn.png)
 
-若要更改密码, 请按照[管理用户的密码](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/administration/GUID-DB31B304-66A5-4516-9E55-2712D12B4F27.html)中的说明进行操作。
-
-> [!WARNING]
-> 默认情况下, NSX 管理员密码在90天后过期。
+若要更改密码, 请按照[NSX Manager 安装](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html)中的说明进行操作。
 
 ## <a name="create-a-port-group"></a>创建端口组
 
@@ -208,7 +206,6 @@ CloudSimple 建议你在首次登录到 vCenter 时更改密码。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Azure 上使用 VMware Vm](https://docs.azure.cloudsimple.com/quickstart-create-vmware-virtual-machine)
 * [在 Azure 上使用 VMware Vm](quickstart-create-vmware-virtual-machine.md)
-* [使用 Azure ExpressRoute 连接到本地网络](https://docs.azure.cloudsimple.com/on-premises-connection/)
-* [从本地设置站点到站点 VPN](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [使用 Azure ExpressRoute 连接到本地网络](on-premises-connection.md)
+* [从本地设置站点到站点 VPN](vpn-gateway.md)

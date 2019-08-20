@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: ab42c600b975adac9f13e8e75da9696e51e7e94d
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e4d33756f1e09abedbf828deb447fbf14c6bfed7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779863"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616915"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 预留容量优化成本
 
@@ -57,7 +57,7 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
    | 资源组 | 将保留的容量折扣应用到的资源组。 |
    |术语  |   一年或三年。   |
    |吞吐量类型   |  吞吐量设置为 "请求单位"。 你可以为设置-单区域写入和多个区域写入购买预配吞吐量的预留。 吞吐量类型具有两个值供选择:每小时 100 RU/秒和每小时100多主机 RU/秒。|
-   | 预留容量单位| 想预留的吞吐量的量。 可以通过确定每个区域的所有 Cosmos DB 资源（例如，数据库或容器）所需的吞吐量来计算此值。 然后，将它乘以将与 Cosmos DB 数据库关联的区域数。 例如：如果有五个区域，每个区域 1 百万 RU/秒，则购买预留容量时应选 5 百万 RU/秒。 |
+   | 预留容量单位| 想预留的吞吐量的量。 可以通过确定每个区域的所有 Cosmos DB 资源（例如，数据库或容器）所需的吞吐量来计算此值。 然后, 将其与 Cosmos 数据库关联的区域数相乘。 例如：如果有五个区域，每个区域 1 百万 RU/秒，则购买预留容量时应选 5 百万 RU/秒。 |
 
 
 5. 填写该表单后, 将计算购买保留容量所需的价格。 输出还会显示所选选项的折扣百分比。 下一步单击**选择**
@@ -92,6 +92,6 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
    * [了解即用即付订阅的预留使用情况](../billing/billing-understand-reserved-instance-usage.md)
    * [合作伙伴中心 CSP 计划中的 Azure 预留](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>需要帮助? 请联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

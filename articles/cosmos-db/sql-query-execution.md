@@ -1,27 +1,27 @@
 ---
 title: Azure Cosmos DB 中的 SQL 查询执行
-description: 了解有关 Azure Cosmos DB 中执行的 SQL 查询
+description: 了解 Azure Cosmos DB 中的 SQL 查询执行
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: e4e26b658bd29e4589be40e4d29935059836c909
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 0eca458c344e5c44ad62121db14e6b286dc19a86
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342871"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614441"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB SQL 查询执行
 
 能够发出 HTTP/HTTPS 请求的任何语言都可以调用 Cosmos DB REST API。 Cosmos DB 还为 .NET、Node.js、JavaScript 和 Python 编程语言提供编程库。 REST API 和库全部支持通过 SQL 执行的查询，.NET SDK 还支持 [LINQ 查询](sql-query-linq-to-sql.md)。
 
-以下示例演示了如何对 Cosmos DB 数据库帐户创建查询并提交。
+下面的示例演示如何创建查询并根据 Cosmos 数据库帐户提交查询。
 
 ## <a id="REST-API"></a>REST API
 
-Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Azure 订阅预配的数据库帐户下的一组资源组成。 该数据库帐户由一组数据库组成，其中的每个数据库可以包含多个容器，而每个容器又可以包含项、UDF 和其他资源类型    。 可以使用稳定的逻辑 URI 对每个 Cosmos DB 资源进行寻址。 一组资源称作一个源。  
+Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Azure 订阅预配的数据库帐户下的一组资源组成。 该数据库帐户由一组数据库组成，其中的每个数据库可以包含多个容器，而每个容器又可以包含项、UDF 和其他资源类型。 可以使用稳定的逻辑 URI 对每个 Cosmos DB 资源进行寻址。 一组资源称作一个源。 
 
 这些资源的基本交互模型是通过 HTTP 谓词 `GET`、`PUT`、`POST` 和 `DELETE` 及其标准解释实现的。 使用 `POST` 可以创建新的资源、执行存储过程或发出 Cosmos DB 查询。 查询始终为只读操作，且无任何副作用。
 
@@ -147,7 +147,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
 
 如果查询包含 COUNT 等聚合函数，则查询页可以仅通过一个结果页返回部分聚合的值。 客户端必须对这些结果执行二级聚合才能生成最终结果。 例如，将各个页中返回的计数求和可以返回总计数。
 
-若要管理查询的数据一致性策略，请使用 `x-ms-consistency-level` 标头（如所有的 REST API 请求）。 对于会话一致性，还需要回显查询请求中最新的 `x-ms-session-token` Cookie 标头。 查询容器的索引策略也可以影响查询结果的一致性。 使用默认的索引策略设置，容器的索引始终与项内容保持同步，且查询结果将与为数据选择的一致性匹配。 有关详细信息，请参阅 [Azure Cosmos DB 一致性级别] [的一致性级别]。
+若要管理查询的数据一致性策略，请使用 `x-ms-consistency-level` 标头（如所有的 REST API 请求）。 对于会话一致性，还需要回显查询请求中最新的 `x-ms-session-token` Cookie 标头。 查询容器的索引策略也可以影响查询结果的一致性。 使用默认的索引策略设置，容器的索引始终与项内容保持同步，且查询结果将与为数据选择的一致性匹配。 有关详细信息，请参阅 [Azure Cosmos DB 一致性级别][一致性级别]。
 
 如果容器上配置的索引策略不能支持指定的查询，Azure Cosmos DB 服务器会返回 400“错误的请求”。 使用从索引中显式排除的路径执行查询时，将返回此错误消息。 可以指定 `x-ms-documentdb-query-enable-scan` 标头，以便在索引不可用时允许查询执行扫描。
 
@@ -249,7 +249,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
 
 ## <a id="JavaScript-server-side-API"></a>JavaScript 服务器端 API
 
-Azure Cosmos DB 提供的编程模型[执行 JavaScript 基于应用程序](stored-procedures-triggers-udfs.md)直接上使用的容器的逻辑存储过程和触发器。 然后，在容器级别注册的 JavaScript 逻辑可以针对给定容器中的、包装在环境 ACID 事务中的项发出数据库操作。
+Azure Cosmos DB 提供一种编程模型，用于通过存储过程和触发器对容器直接[执行基于 JavaScript 的应用程序](stored-procedures-triggers-udfs.md)逻辑。 然后，在容器级别注册的 JavaScript 逻辑可以针对给定容器中的、包装在环境 ACID 事务中的项发出数据库操作。
 
 以下示例演示了如何在 JavaScript 服务器 API 中使用 `queryDocuments` 从存储过程和触发器内部进行查询。
 

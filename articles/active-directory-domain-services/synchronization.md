@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 475817985885cdd6023e72f20ecf35a3ca582924
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 1c52ac967d241f31d96988fa5ead8b4e049f6f4c
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472445"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617101"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD 域服务托管域中的同步
 下图演示了 Azure AD 域服务托管域中的同步工作原理。
@@ -60,7 +60,7 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>特定的属性如何同步到托管域
 下表列出一些常用属性，并说明它们如何同步到托管域。
 
-| 托管域中的属性 | source | 说明 |
+| 托管域中的属性 | Source | 说明 |
 |:--- |:--- |:--- |
 | UPN |用户在 Azure AD 租户中的 UPN 属性 |Azure AD 租户中的 UPN 属性将按原样同步到托管域。 因此，登录到托管域的最可靠方法是使用 UPN。 |
 | SAMAccountName |用户在 Azure AD 租户中的或自动生成的 mailNickname 属性 |SAMAccountName 属性源自 Azure AD 租户中的 mailNickname 属性。 如果多个用户帐户具有相同的 mailNickname 属性，会自动生成 SAMAccountName。 如果用户的 mailNickname 或 UPN 前缀长度超过 20 个字符，会自动生成 SAMAccountName，以满足 SAMAccountName 属性不超过 20 个字符的限制。 |
@@ -69,7 +69,7 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 | 用户和组的 SID 历史记录 |本地主用户和组 SID |托管域中用户和组的 SidHistory 属性已设置为与本地域中相应的主用户或组 SID 相匹配。 借助此功能可以更方便地将本地应用程序即时转移到托管域，因为不需要重新将资源加入 ACL。 |
 
 > [!NOTE]
-> **使用 UPN 格式登录到托管域：** 可以针对托管域中的某些用户帐户自动生成 SAMAccountName 属性。 如果多个用户具有相同的 mailNickname 属性或者用户具有很长的 UPN 前缀，可能会自动生成这些用户的 SAMAccountName。 因此，使用 SAMAccountName 格式（例如“CONTOSO100\joeuser”）不一定能够可靠地登录到域。 为用户自动生成的 SAMAccountName 可能不同于其 UPN 前缀。 请使用 UPN 格式（例如“joeuser@contoso100.com”）可靠地登录到托管域。
+> **使用 UPN 格式登录到托管域：** 可以针对托管域中的某些用户帐户自动生成 SAMAccountName 属性。 如果多个用户具有相同的 mailNickname 属性或者用户具有很长的 UPN 前缀，可能会自动生成这些用户的 SAMAccountName。 因此, SAMAccountName 格式 (例如 "CONTOSO\dee") 并非始终是一种用于登录域的可靠方法。 为用户自动生成的 SAMAccountName 可能不同于其 UPN 前缀。 请使用 UPN 格式（例如“dee@contoso.com”）可靠地登录到托管域。
 
 ### <a name="attribute-mapping-for-user-accounts"></a>用户帐户的属性映射
 下表演示了 Azure AD 租户中用户对象的特定属性如何同步到托管域中的相应属性。
@@ -84,7 +84,7 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | jobTitle |title |
-| mail |mail |
+| 邮件 |邮件 |
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName（有时可能会自动生成） |
 | mobile |mobile |
@@ -94,7 +94,7 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | postalCode |postalCode |
 | preferredLanguage |preferredLanguage |
-| state |号 |
+| 省/自治区/直辖市 |号 |
 | streetAddress |streetAddress |
 | surname |sn |
 | telephoneNumber |telephoneNumber |
@@ -107,7 +107,7 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 |:--- |:--- |
 | displayName |displayName |
 | displayName |SAMAccountName（有时可能会自动生成） |
-| mail |mail |
+| 邮件 |邮件 |
 | mailNickname |msDS-AzureADMailNickname |
 | objectid |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |sidHistory |
@@ -116,7 +116,7 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 ## <a name="password-hash-synchronization-and-security-considerations"></a>密码哈希同步和安全注意事项
 启用 Azure AD 域服务后，Azure AD 目录会生成密码哈希并采用与 NTLM 和 Kerberos 兼容的格式进行存储。 
 
-对于现有的云用户帐户，由于 Azure AD 从不存储明文密码，因此无法自动生成这些哈希。 因此，Microsoft 需要[云用户重置/更改其密码](active-directory-ds-getting-started-password-sync.md)以便生成其密码哈希并将其存储在 Azure AD 中。 对于启用 Azure AD 域服务后在 Azure AD 中创建的任何云用户帐户，会生成密码哈希并采用与 NTLM 和 Kerberos 兼容的格式进行存储。 
+对于现有的云用户帐户，由于 Azure AD 从不存储明文密码，因此无法自动生成这些哈希。 因此，Microsoft 需要[云用户重置/更改其密码](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)以便生成其密码哈希并将其存储在 Azure AD 中。 对于启用 Azure AD 域服务后在 Azure AD 中创建的任何云用户帐户，会生成密码哈希并采用与 NTLM 和 Kerberos 兼容的格式进行存储。 
 
 对于使用 Azure AD Connect 同步从本地 AD 同步的用户帐户，你需要[配置 Azure AD Connect 以同步采用与 NTLM 和 Kerberos 兼容的格式的密码哈希](active-directory-ds-getting-started-password-sync-synced-tenant.md)。
 
@@ -126,7 +126,6 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 如本文前面部分中所述，不存在从托管域到 Azure AD 租户的反向同步。 可以选择在托管域中[创建自定义组织单位 (OU)](create-ou.md)。 此外，可以在这些自定义 OU 中创建其他 OU、用户、组或服务帐户。 在自定义 OU 中创建的对象都不会同步回到 Azure AD 租户。 这些对象只能在托管域中使用。 因此，无法使用 Azure AD PowerShell cmdlet、Azure AD 图形 API 或 Azure AD 管理 UI 查看这些对象。
 
 ## <a name="related-content"></a>相关内容
-* [功能 - Azure AD 域服务](active-directory-ds-features.md)
 * [部署方案 - Azure AD 域服务](scenarios.md)
 * [有关 Azure AD 域服务的网络注意事项](network-considerations.md)
-* [Azure AD 域服务入门](create-instance.md)
+* [Azure AD 域服务入门](tutorial-create-instance.md)

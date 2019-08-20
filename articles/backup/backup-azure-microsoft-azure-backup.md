@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: eb9908fc7b2d4ecd8af8c2b4a65ab43352035ec5
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 18eacc914a30dc6004bef71e9d3910e170c43d9b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018894"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575139"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 > [!div class="op_single_selector"]
@@ -176,11 +176,10 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
     使用自己的 SQL 2017 实例时, 需要手动配置 SSRS。 配置 SSRS 后，请确保 SSRS 的 *IsInitialized* 属性设置为 *True*。 如果此属性设置为 True，MABS 将假设已配置 SSRS，因此会跳过 SSRS 配置。
 
     对 SSRS 配置使用以下值： 
-
-        - Service Account: ‘Use built-in account’ should be Network Service
-        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
-        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
-        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+    - 服务帐户:"使用内置帐户" 应该是网络服务
+    - Web 服务 URL:"虚拟目录" 应为 ReportServer_<SQLInstanceName>
+    - 数据库：DatabaseName 应为 ReportServer $<SQLInstanceName>
+    - Web 门户 URL:"虚拟目录" 应为 Reports_<SQLInstanceName>
 
     [详细了解](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS 配置。
 

@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e53d0d4f8f19a3cf81f1adb6c62b2797a50d146
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b54f1d8c0705488c53925d097433e77aed3eac72
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812225"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617614"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>从 CloudSimple 门户升级私有云 vCenter 权限 
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>从 CloudSimple 门户升级私有云 vCenter 权限
 
 对于私有云 vCenter 的管理访问权限, 可以暂时提升 CloudSimple 权限。  使用提升的权限, 你可以安装 VMware 解决方案、添加标识源以及管理用户。
 
@@ -24,7 +24,7 @@ ms.locfileid: "68812225"
 > [!CAUTION]
 > 不要对管理组件进行任何配置更改。 在提升的特权状态中执行的操作可能会对系统产生负面影响, 或者导致系统变得不可用。
 
-## <a name="sign-in-to-azure"></a>登录  Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
@@ -38,7 +38,7 @@ ms.locfileid: "68812225"
 
     ![更改 vSphere 权限](media/escalate-private-cloud-privilege.png)
 
-4. 选择 vSphere 用户类型。  只能 **CloudOwner@cloudsimple.local** 升级本地用户。
+4. 选择 vSphere 用户类型。  只能`CloudOwner@cloudsimple.local`升级本地用户。
 
 5. 从下拉项中选择 "提升时间间隔"。 选择将允许您完成任务的最短时间。
 

@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 8593378dd35a6aaa31aaefca41dd921c6e65d336
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 7470dd96109823057a174d2ecf097583dcb51898
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426741"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575268"
 ---
 # <a name="restore-an-existing-azure-sql-data-warehouse"></a>还原现有的 Azure SQL 数据仓库
 
@@ -89,7 +89,7 @@ $RestoredDatabase.status
 ## <a name="restore-an-existing-data-warehouse-through-the-azure-portal"></a>通过 Azure 门户还原现有数据仓库
 
 1. 登录到 [Azure 门户][Azure portal]。
-2. 导航到要从中进行还原的 SQL 数据仓库。
+2. 导航到要从中还原的 SQL 数据仓库。
 3. 在“概览”边栏选项卡顶部，选择“还原”。
 
     ![ 还原概述](./media/sql-data-warehouse-restore-active-paused-dw/restoring-01.png)

@@ -7,16 +7,16 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 7923ce10912ebb6f09c1c3d8390dd51b4f876bea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 86d4dd706b097891db155214e4edb7e85e054858
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552000"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616948"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
-Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录时，获取连续增量记录源的一种机制。 更改源支持的工作原理是侦听容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 若要详细了解更改源，请参阅[使用更改源](change-feed.md)一文。 
+Azure Cosmos DB 更改源是一种机制, 用于从 Azure Cosmos 容器获取记录的连续和增量源, 因为正在创建或修改这些记录。 更改源支持的工作原理是侦听容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 若要详细了解更改源，请参阅[使用更改源](change-feed.md)一文。 
 
 本文介绍了电商企业如何通过变化信息了解用户模式并执行实时数据分析和可视化。 我们将分析各种事件，例如，用户查看某个商品、将商品添加到购物车，或购买商品。 发生其中一个事件时，将创建一个新记录，而更改源将会记录该记录。 然后，更改源触发一系列步骤，从而生成用于分析公司绩效和活动的指标的可视化效果。 可以可视化的示例指标包括收入、唯一的站点访客、最受欢迎的商品，以及查看的商品、添加到购物车的商品与购买的商品的平均价格。 这些示例指标可帮助电子商务公司评估其站点热门度、制定其广告和定价策略，并做出投资哪些存货的决策。
 
@@ -41,9 +41,9 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
    }
    ```
 
-2. **Cosmos DB：** 生成的数据存储在 Azure Cosmos DB 集合中。  
+2. **Cosmos DB：** 生成的数据存储在 Azure Cosmos 容器中。  
 
-3. **更改源：** 更改源将侦听 Azure Cosmos DB 集合发生的更改。 每次将新文档添加到集合时（即，发生了用户查看商品、将商品添加到购物车或购买商品等事件时），更改源将触发一个 [Azure 函数](../azure-functions/functions-overview.md)。  
+3. **更改源：** 更改源将侦听对 Azure Cosmos 容器所做的更改。 每次将新文档添加到集合时（即，发生了用户查看商品、将商品添加到购物车或购买商品等事件时），更改源将触发一个 [Azure 函数](../azure-functions/functions-overview.md)。  
 
 4. **Azure 函数：** Azure 函数处理新数据，并将其发送到 [Azure 事件中心](../event-hubs/event-hubs-about.md)。  
 
@@ -53,7 +53,7 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
 
 7. **Power BI：** Power BI 用于可视化 Azure 流分析发送的数据。 可以构建一个仪表板来实时了解指标的变化。  
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * Microsoft .NET Framework 4.7.1 或更高版本
 
@@ -143,7 +143,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>将 Azure 函数设置为读取更改源
 
-创建新文档，或者在 Cosmos DB 集合中修改当前文档时，更改源会自动将修改后的文档添加到其集合更改历史记录中。 现在，我们生成并运行一个用于处理更改源的 Azure 函数。 在创建的集合中创建或修改文档时，更改源会触发该 Azure 函数。 然后，该 Azure 函数会将修改后的文档发送到事件中心。
+创建新文档或在 Cosmos 容器中修改当前文档时, 更改源会自动将修改后的文档添加到其集合更改的历史记录中。 现在，我们生成并运行一个用于处理更改源的 Azure 函数。 在创建的集合中创建或修改文档时，更改源会触发该 Azure 函数。 然后，该 Azure 函数会将修改后的文档发送到事件中心。
 
 1. 返回到在设备上克隆的存储库。  
 
@@ -318,7 +318,7 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>可选：在电子商务站点中进行可视化
 
-现在，我们知道可以如何使用新的数据分析工具来连接实际的电子商务站点。 若要构建电子商务站点，请使用 Azure Cosmos DB 数据库来存储产品类别（女用、男用、不分性别）列表、产品目录和最受欢迎商品的列表。
+现在，我们知道可以如何使用新的数据分析工具来连接实际的电子商务站点。 为了构建电子商务网站, 请使用 Azure Cosmos 数据库来存储产品类别列表 (女性、男士、中性)、产品目录和最受欢迎的项目列表。
 
 1. 依次导航到 [Azure 门户](https://portal.azure.com/)、**Cosmos DB 帐户**、“数据资源管理器”。  
 

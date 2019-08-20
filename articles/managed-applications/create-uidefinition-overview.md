@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ee6d9332a2be5ccb22b7571b348e2e0aae78fb2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 783c4f5b1f5a7f2be748bc7173da2d068e1425f4
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563562"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575650"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition Azure 托管应用程序的创建体验
 
@@ -52,13 +52,11 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 
 建议包括 `$schema`，但这是可选的。 如果指定，则 `version` 的值必须与 `$schema` URI 中的版本匹配。
 
-可以使用 JSON 编辑器创建 UI 定义, 然后在[Ui 定义沙盒](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)中对其进行测试以预览。 有关沙盒的详细信息, 请参阅[为 Azure 托管应用程序测试门户接口](test-createuidefinition.md)。
+可以使用 JSON 编辑器创建 createUiDefinition, 然后在[CreateUiDefinition 沙盒](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)中对其进行测试以进行预览。 有关沙盒的详细信息, 请参阅[为 Azure 托管应用程序测试门户接口](test-createuidefinition.md)。
 
 ## <a name="basics"></a>基本
 
 基础知识是 Azure 门户分析文件时生成的第一步。 除了会显示 `basics` 中指定的元素外，该门户还会为用户注入其他元素以用于为部署选择订阅、资源组和位置。 如果可能, 查询部署范围内参数的元素 (如群集或管理员凭据的名称) 应在此步骤中进行。
-
-如果元素的行为取决于用户的订阅、资源组或位置, 则不能在基础上使用该元素。 例如，**Microsoft.Compute.SizeSelector** 需要依赖于用户的订阅和位置来确定可用大小的列表。 因此，**Microsoft.Compute.SizeSelector** 只能用于 steps 中。 通常，只有 **Microsoft.Common** 命名空间中的元素可以用于 basics 中。 尽管仍允许其他命名空间中的某些元素 (例如, 不依赖于用户的上下文)。
 
 ## <a name="steps"></a>步骤
 

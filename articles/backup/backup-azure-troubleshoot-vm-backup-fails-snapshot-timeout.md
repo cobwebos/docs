@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: f47afd450350226aa944287e756b73f61b15b32d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 54b83df4c0ad68c9bd6b39d39926657395c48f3e
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952048"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615883"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -106,7 +106,7 @@ Azure VM 代理可能已停止、过时、处于不一致的状态, 或者未安
 **错误代码**：UserErrorUnsupportedDiskSize <br>
 **错误消息**：当前 Azure 备份不支持大于 4095GB 的磁盘大小 <br>
 
-备份磁盘大小大于 4095 GB 的 VM 时, 备份操作可能会失败。 若要注册 Azure 备份的有限公共预览版, 大磁盘支持大于 4 TB 和最大为 30 TB 的磁盘, 请参阅[AZURE VM 备份概述](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)。
+备份磁盘大小大于 4095 GB 的 VM 时, 备份操作可能会失败。 若要注册 Azure 备份的有限公共预览版, 大磁盘支持大于 4 TB 和最大为 30 TB 的磁盘, 请参阅此[文](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)。
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 无法启动备份，因为另一个备份操作当前正在进行中
 

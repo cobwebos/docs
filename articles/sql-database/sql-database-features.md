@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 7e5c33577a2d926266ae45057509b112dc27ce7b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: 1da297034a9776c4576fa7c4556b1da47b5e9361
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985721"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611796"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>功能比较：Azure SQL 数据库与 SQL Server
 
@@ -53,7 +53,7 @@ Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的
 | [排序规则 - 服务器/实例](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | 不能, 始终使用默认`SQL_Latin1_General_CP1_CI_AS`的逻辑服务器排序规则。 | 是, 可以在[创建实例](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)时设置, 稍后不能更新。 |
 | [列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | 是 - [高级层、标准层 - S3 及以上层、常规用途层和业务关键层](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |是 |
 | [公共语言运行时-CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | 否 | 是, 但在语句中`CREATE ASSEMBLY`没有对文件系统的访问权限-请参阅[CLR 差异](sql-database-managed-instance-transact-sql-information.md#clr) |
-| [包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | 是 | 目前没有[因为还原时出现故障 (包括时间点还原)](sql-database-managed-instance-transact-sql-information.md#cant-restore-contained-database)。 这是即将修复的缺陷。 |
+| [包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | 是 | 是 |
 | [包含的用户](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | 是 | 是 |
 | [流控制语言关键字](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | 是 | 是 |
 | [凭据](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | 是，但是仅限[数据库范围的凭据](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)。 | 是, 但仅支持 Azure Key Vault `SHARED ACCESS SIGNATURE`和, 请参阅[详细信息](sql-database-managed-instance-transact-sql-information.md#credential) |

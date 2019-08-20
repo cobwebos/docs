@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f8cb7458deddc95f33fa5e4582ffa7c25c3c64e6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: ef006e94ee22886f1129c7c9ca31e20503312fe3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619809"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616934"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
-本教程提供有关使用 Azure Cosmos DB 的批量执行程序 Java 库导入和更新 Azure Cosmos DB 文档的说明。 若要了解 Bulk Executor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [Bulk Executor 库概述](bulk-executor-overview.md)一文。 在本教程中，我们将构建一个可生成随机文档的 Java 应用程序，然后将文档批量导入 Azure Cosmos DB 容器。 导入后，我们将批量更新文档的某些属性。 
+本教程提供有关使用 Azure Cosmos DB 的批量执行程序 Java 库导入和更新 Azure Cosmos DB 文档的说明。 若要了解 Bulk Executor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [Bulk Executor 库概述](bulk-executor-overview.md)一文。 在本教程中, 你将构建一个 Java 应用程序, 用于生成随机文档, 并将其大容量导入到 Azure Cosmos 容器中。 导入后，我们将批量更新文档的某些属性。 
 
 目前, 仅 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持大容量执行程序库。 本文介绍如何将批量执行程序 Java 库与 SQL API 帐户一起使用。 若要了解如何配合使用 Gremlin API 和批量执行程序 .NET 库，请参阅[在 Azure Cosmos DB Gremlin API 中执行批量操作](bulk-executor-graph-dotnet.md)。
 
@@ -88,7 +88,7 @@ ms.locfileid: "68619809"
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
    ```
 
-4. 调用 importAll API，用于生成要批量导入 Azure Cosmos DB 容器的随机文档。 可以在 CmdLineConfiguration.java 文件中配置命令行配置。
+4. 调用 importAll API, 该 API 可生成随机文档以大容量导入到 Azure Cosmos 容器。 可以在 CmdLineConfiguration.java 文件中配置命令行配置。
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
@@ -155,7 +155,7 @@ ms.locfileid: "68619809"
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. 调用 updateAll API，用于生成随后要批量导入 Azure Cosmos DB 容器的随机文档。 可以在 CmdLineConfiguration.java 文件中配置要传递的命令行配置。
+2. 调用 updateAll API, 该 API 生成随机文档, 然后将其大容量导入到 Azure Cosmos 容器。 可以在 CmdLineConfiguration.java 文件中配置要传递的命令行配置。
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
@@ -206,7 +206,7 @@ ms.locfileid: "68619809"
    * 请将 JVM 的堆大小设为足够大的数字，以免在处理大量文档时出现任何内存问题。 建议的堆大小：max(3GB, 3 * sizeof(在一个批中传递给批量导入 API 的文档总数))。  
    * 会有一段预处理时间，因此，在对大量的文档执行批量操作时可以获得更高的吞吐量。 如果想要导入 10,000,000 个文档，针对 10 批文档（每个批的大小为 1,000,000）运行批量导入 10 次，比针对 100 批文档（每个批的大小为 100,000 个文档）运行批量导入 100 次会更有利。  
 
-* 建议在单个虚拟机中，为整个应用程序实例化对应于特定 Azure Cosmos DB 容器的单个 DocumentBulkExecutor 对象。  
+* 建议在对应于特定 Azure Cosmos 容器的单个虚拟机中实例化整个应用程序的单个 DocumentBulkExecutor 对象。  
 
 * 原因是单个批量操作 API 执行会消耗客户端计算机的大量 CPU 和网络 IO。 而发生这种情况的原因是在内部生成了多个任务，因此，每次执行批量操作 API 调用时，请避免在应用程序进程中生成多个并发任务。 如果单个虚拟机上运行的单个批量操作 API 调用无法占用整个容器的吞吐量（如果容器吞吐量超过 100 万 RU/秒），最好是创建独立的虚拟机来并发执行批量操作 API 调用。
 

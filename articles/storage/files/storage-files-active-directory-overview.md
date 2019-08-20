@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: addb97d71da1ceac8717ae77204c87a8197dac86
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935173"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611776"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>Azure 文件概述 Azure Active Directory 域服务 (Azure AD DS) 身份验证支持 SMB 访问
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -59,7 +59,7 @@ Azure 文件使用 Azure AD 域服务，支持通过已加入域的 VM 中的 Az
 ### <a name="enable-azure-ad-domain-service-authentication-for-smb-access"></a>启用 SMB 访问 Azure AD 域服务身份验证
 你可以在2018年9月24日之后创建的新的和现有存储帐户上为 Azure 文件启用 Azure AD 域服务身份验证。 
 
-在启用此功能之前, 请验证是否已为你的存储帐户关联的主 Azure AD 租户部署 Azure AD 域服务。 如果尚未设置 Azure AD 域服务，请按照[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/create-instance.md)中提供的分步指导进行操作。
+在启用此功能之前, 请验证是否已为你的存储帐户关联的主 Azure AD 租户部署 Azure AD 域服务。 如果尚未设置 Azure AD 域服务，请按照[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/tutorial-create-instance.md)中提供的分步指导进行操作。
 
 部署 Azure AD 域服务通常需要 10 至 15 分钟。 部署 Azure AD 域服务后，即可启用通过 SMB 为 Azure 文件进行 Azure AD 身份验证这一功能。 有关详细信息, 请参阅[启用 Azure 文件的通过 SMB Azure Active Directory 域服务身份验证](storage-files-active-directory-enable.md)。 
 

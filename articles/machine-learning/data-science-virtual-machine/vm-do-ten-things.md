@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: 2af65dbae59774ed718d58f055158e61f15e2198
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ee63f7aae70e93dfbe857b8680d2b4a477600d72
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557486"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575113"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -54,7 +54,7 @@ Windows 数据科学虚拟机 (DSVM) 是一个功能强大的数据科研开发�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1.使用 Microsoft ML Server 或 Python 探索数据和开发模型
+## <a name="1-explore-data--develop-models-with-microsoft-ml-server"></a>1.探索数据 & 通过 Microsoft 开发模型 ML Server
 使用 R 和 Python 之类的语言即可在 DSVM 上执行数据分析。
 
 对于 R，可以使用能在“开始”菜单或桌面找到的 IDE（如 RStudio）或针对 Visual Studio 的 R 工具。 除开放源代码/CRAN-R 外，Microsoft 还提供了其他库，以便进行可缩放的分析，以及分析大于执行并行区块分析允许的内存大小的数据。 
@@ -73,7 +73,7 @@ Windows 数据科学虚拟机 (DSVM) 是一个功能强大的数据科研开发�
 
 现在即可开始创建新的 Python 项目。 导航到“文件” -> “新建” -> “项目” -> “Python”，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Python 2.7 或 3.6），方法是右键单击“Python 环境”，选择“添加/删除 Python 环境”，然后选择所需环境。 要详细了解如何使用 PTVS，请参阅产品[文档](https://aka.ms/ptvsdocs)。
 
-## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2.借助 Jupyter Notebook，可使用 Python 或 R 探索数据并建模
+## <a name="2-use-jupyter-notebooks"></a>2.使用 Jupyter 笔记本
 Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供基于浏览器的“IDE”。 可以在 Jupyter Notebook 中使用 Python 2、Python 3 或 R（开源和 Microsoft R Server）。
 
 若要启动 Jupyter Notebook，请单击标题为“Jupyter Notebook”的“开始”菜单图标/桌面图标。 在 DSVM 命令提示符处，还可以从包含现有 Notebook 或想在其中创建新 Notebook 的目录中运行 ```jupyter notebook``` 命令。  
@@ -92,7 +92,7 @@ Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供
 
 打开 Notebook 后，即可浏览数据、生成模型、使用所选的库测试模型。
 
-## <a name="3-build-models-using-r-or-python-and-operationalize-them-using-azure-machine-learning"></a>3.使用 R 或 Python 生成模型，使用 Azure 机器学习对模型进行操作
+## <a name="3-train--deploy-models-with-azure-machine-learning"></a>3.训练 & Azure 机器学习部署模型
 模型生成并经验证后，下一步通常是将它部署到生产环境。 这使客户端应用程序可以实时或基于批处理模式调用模型预测。 Azure 机器学习提供一种机制，可用于操作使用 R 或 Python 生成的模型。
 
 当在 Azure 机器学习中操作模型时，会公开 Web 服务，允许客户端在输入参数中传递 REST 调用，以及以输出形式接收模型中的预测。   
@@ -210,19 +210,19 @@ ans = consume(ep, sleepstudy)$ans
 
 可以在[此处](https://cran.r-project.org/web/packages/AzureML/AzureML.pdf)找到有关 Azure 机器学习 R 库的详细信息。
 
-## <a name="4-administer-your-azure-resources-using-azure-portal-or-powershell"></a>4.使用 Azure 门户或 PowerShell 管理 Azure 资源
+## <a name="4-manage-azure-resources"></a>4.管理 Azure 资源
 DSVM 不仅允许在虚拟机上本地生成分析解决方案，而且还允许访问 Microsoft Azure 云上的服务。 Azure 提供多个计算、存储、数据分析服务和其他服务，可以从 DSVM 管理并访问这些服务。
 
-若要管理 Azure 订阅和云资源，可以使用浏览器并指向 [Azure 门户](https://portal.azure.com)。 还可以使用 Azure Powershell 通过脚本管理 Azure 订阅和资源。
-可以从桌面快捷方式或名为“Microsoft Azure PowerShell”的“开始”菜单，运行 Azure PowerShell。 有关如何使用 Windows Powershell 脚本管理 Azure 订阅和资源的详细信息，请参阅 [Microsoft Azure Powershell 文档](../../powershell-azure-resource-manager.md)。
+若要管理 Azure 订阅和云资源, 有两个选项:
++ **Azure 门户**: 使用浏览器并指向[Azure 门户](https://portal.azure.com)
 
-## <a name="5-extend-your-storage-space-with-a-shared-file-system"></a>5.使用共享文件系统扩展存储空间
++ **Azure powershell**: 使用 Windows Powershell 脚本。 从桌面快捷方式或从名为 "Microsoft Azure Powershell" 的 "开始" 菜单中运行 Azure Powershell。 有关完整的详细信息, 请参阅[Microsoft Azure Powershell 文档](../../powershell-azure-resource-manager.md)。 
+
+## <a name="5-extend-storage-with-shared-file-systems"></a>5.利用共享文件系统扩展存储
 数据科学家可以在团队内共享大型数据集、代码或其他资源。 DSVM 自身具有大约 45GB 可用空间。 要扩展存储，可以使用 Azure 文件服务，然后将它装载到一个或多个 DSVM 实例或通过 REST API 访问它。  还可以使用 [Azure 门户](../../virtual-machines/windows/attach-managed-disk-portal.md)或 [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) 添加其他专用数据磁盘。 
 
 > [!NOTE]
 > Azure 文件服务共享的最大空间为 5 TB，单个文件大小限制为 1 TB。 
-> 
-> 
 
 可以使用 Azure PowerShell 创建 Azure 文件服务共享。 以下是在 Azure PowerShell 下运行，用于创建 Azure 文件服务共享的脚本。
 
@@ -258,7 +258,7 @@ net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
 
 现在可以像访问 VM 上的任何正常驱动器一样访问此驱动器。
 
-## <a name="6-share-code-with-your-team-using-github"></a>6.使用 GitHub 与团队共享代码
+## <a name="6-share-code-in-github"></a>6.在 GitHub 中共享代码
 GitHub 是一个代码存储库，可以在其中找到其他工具的许多示例代码和资源，这些工具使用了开发人员社区共享的各种技术。 它使用 Git 作为跟踪和存储代码文件版本的技术。 GitHub 也是一个平台，可以在其中创建自己的存储库来存储团队的共享代码和文档、实现版本控制，还可以控制谁有权查看和贡献代码。 有关使用 Git 的详细信息，请访问 [GitHub 帮助页](https://help.github.com/)。 可以将 GitHub 用作与团队协作、使用社区开发的代码以及重新贡献代码给社区的方法之一。
 
 DSVM 已在命令行以及 GUI 上加载了用于访问 GitHub 存储库的客户端工具。 用于使用 Git 和 GitHub 的命令行工具称为 Git Bash。 DSVM 上已安装的 Visual Studio 具有 Git 扩展。 可以在“开始”菜单和桌面上找到这些工具的启动图标。
@@ -273,7 +273,7 @@ DSVM 已在命令行以及 GUI 上加载了用于访问 GitHub 存储库的客�
 
 可以从 github.com 上提供的多种资源中找到有关使用 Git 操作 GitHub 存储库的更多信息。 [备忘单](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf)是一个有用的参考。
 
-## <a name="7-access-various-azure-data-and-analytics-services"></a>7.访问各种 Azure 数据和分析服务
+## <a name="7-access-many-azure-data--analytics-services"></a>7.访问多个 Azure 数据 & analytics 服务
 ### <a name="azure-blob"></a>Azure Blob
 Azure Blob 是适合大小数据的经济可靠云存储。 本部分介绍如何将数据移动到 Azure Blob 以及如何访问 Azure Blob 中存储的数据。
 
@@ -851,8 +851,8 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许使用 JSON 等文档�
 
 导入数据后，可以转到 Jupyter 并打开名为 DocumentDBSample 的 Notebook，其中包含用于访问 Azure Cosmos DB 和执行一些基本查询的 python 代码。 访问服务的[文档页](https://docs.microsoft.com/azure/cosmos-db/)可了解有关 Cosmos DB 的详细信息。
 
-## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8.使用 Power BI Desktop 生成报表和仪表板
-可以在 Power BI 中可视化从上述 Cosmos DB 示例中看到的 Volcano JSON 文件，以获取对数据的视觉洞察。 [Power BI 文章](../../cosmos-db/powerbi-visualize.md)中提供了详细步骤。 下面是概要步骤：
+## <a name="8-power-bi-reports--dashboards"></a>8.Power BI 报表 & 仪表板 
+可以通过 Power BI 桌面中前面 Cosmos DB 示例来直观显示火山 JSON 文件, 以获取对数据的视觉见解。 [Power BI 文章](../../cosmos-db/powerbi-visualize.md)中提供了详细步骤。 下面是概要步骤：
 
 1. 打开 Power BI Desktop 并执行“获取数据”。 将 URL 指定为： https://cahandson.blob.core.windows.net/samples/volcano.json
 2. 应该将导入的 JSON 记录看作列表
@@ -884,7 +884,7 @@ in
 
 ![Power BI Desktop 报表视图 - Power BI 连接器](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
 
-## <a name="9-dynamically-scale-your-dsvm-to-meet-your-project-needs"></a>9.动态缩放 DSVM 即可满足项目需求
+## <a name="9-dynamic-dsvm-scaling"></a>9.动态 DSVM 缩放 
 可以缩放 DSVM 以满足项目需求。 如果不需要在晚上或周末使用 VM，只需从 [Azure 门户](https://portal.azure.com)关闭 VM。
 
 > [!NOTE]
@@ -898,10 +898,23 @@ in
 
 ![VM 实例设置](./media/vm-do-ten-things/VMScaling.PNG)
 
-## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10.在虚拟机上安装其他工具
+## <a name="10-add-more-tools"></a>10.添加更多工具
 DSVM 中内置了好几种工具，这些工具可以满足许多常见数据分析需求。 并通过避免必须逐个安装和配置环境而节省时间，且只需为所使用的资源付费而节省成本。
 
 可以利用本文中介绍的其他 Azure 数据和分析服务来增强分析环境。 在某些情况下，需求可能需要其他工具（包括一些专用第三方工具）。 在虚拟机上具有完全的管理访问权限，可安装所需的新工具。 还可以安装未预安装的 Python 和 R 中的其他程序包。 对于 Python，可以使用 ```conda``` 或 ```pip```。 对于 R，可以在 R 控制台中使用 ```install.packages()```，或者使用 IDE 并依次选择“程序包” -> “安装程序包...”。
+
+## <a name="deep-learning"></a>深度学习
+
+除了基于框架的示例外，我们还提供了一套已在 DLVM 上验证的综合演练。 这些演练可帮助你快速开始开发域中的深度学习应用程序，如图像和文本/语言理解等。 我们会继续添加更多跨不同域和技术的端到端教程。   
+
+
+- [在不同的框架中运行神经网络](https://github.com/ilkarman/DeepLearningFrameworks)：一个综合演练，演示如何将代码从一个框架迁移到另一个框架。 它还演示了如何跨框架比较模型和运行时性能。 
+
+- [生成端到端解决方案以检测图像中的产品的操作指南](https://github.com/Azure/cortana-intelligence-product-detection-from-images)：图像检测是一种能够对图像中的对象进行定位和分类的技术。 此技术有可能在多个实际生活业务域中带来巨大回报。 例如，零售商可以使用此技术确定客户已从货架上选取哪个产品。 从而，此信息可帮助商店管理产品库存。 
+
+- [深度音频学习](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) 本教程介绍如何在[城市声音数据集](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)中修整用于音频事件检测的深度学习模型，并提供有关如何使用音频数据的概述。
+
+- [文本文档分类](https://github.com/anargyri/lstm_han)：本演练演示如何生成和训练两种不同的神经网络体系结构：分层注意网络和长短期记忆 (LSTM) 网络。 这些神经网络使用用于深度学习的 Keras API 对文本文档进行分类。 Keras 是以下三大最热门深度学习框架的前端：Microsoft Cognitive Toolkit、TensorFlow 和 Theano。
 
 ## <a name="summary"></a>总结
 这些只是 Microsoft 数据科研虚拟机上的一部分功能。 有更多使它成为有效分析环境的功能。

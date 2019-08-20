@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fe80c6231f95ec7040bde5f1d7e74353b8bfff60
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: b9060ecbb9ca9e77d994a8f20378e2c53927586a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544417"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617376"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>使用 Azure AD 作为 CloudSimple 私有云上的 vCenter 的标识提供者
 
@@ -64,16 +64,16 @@ Azure AD 是 Microsoft 多租户、基于云的目录和标识管理服务。  A
 3. 如[使用 Azure 门户启用 Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md)中所述, 配置用于管理 Azure AD 域服务的管理员组。
 4. 根据[启用 Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-getting-started-dns.md)中所述, 更新 Azure AD 域服务的 DNS 设置。  如果要通过 Internet 连接到 AD, 请将 Azure AD 域服务的公共 IP 地址的 DNS 记录设置为域名。
 5. 为用户启用密码哈希同步。  此步骤启用对 NT LAN Manager (NTLM) 和 Kerberos 身份验证所需的密码哈希的同步, 以便 Azure AD 域服务。 设置密码哈希同步以后，用户即可使用其公司凭据登录到托管域。 请参阅[启用 Azure Active Directory 域服务的密码哈希同步](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。
-    1. 如果存在仅限云的用户, 他们必须使用<a href="http://myapps.microsoft.com/" target="_blank">Azure AD 访问面板</a>更改其密码, 以确保密码哈希以 NTLM 或 Kerberos 所需的格式存储。  按照为[仅限云的用户帐户的托管域启用密码哈希同步](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md#task-5-enable-password-hash-synchronization-to-your-managed-domain-for-cloud-only-user-accounts)中的说明进行操作。  必须针对单个用户和使用 Azure 门户或 Azure AD PowerShell cmdlet 在 Azure AD 目录中创建的任何新用户执行此步骤。 需要访问 Azure AD 域服务的用户必须使用<a href="http://myapps.microsoft.com/" target="_blank">Azure AD 访问面板</a>, 并访问其配置文件以更改密码。
+    1. 如果存在仅限云的用户, 他们必须使用<a href="http://myapps.microsoft.com/" target="_blank">Azure AD 访问面板</a>更改其密码, 以确保密码哈希以 NTLM 或 Kerberos 所需的格式存储。  按照为[仅限云的用户帐户的托管域启用密码哈希同步](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)中的说明进行操作。  必须针对单个用户和使用 Azure 门户或 Azure AD PowerShell cmdlet 在 Azure AD 目录中创建的任何新用户执行此步骤。 需要访问 Azure AD 域服务的用户必须使用<a href="http://myapps.microsoft.com/" target="_blank">Azure AD 访问面板</a>, 并访问其配置文件以更改密码。
 
         > [!NOTE]
         > 如果你的组织具有仅限云的用户帐户, 则需要使用 Azure Active Directory 域服务的所有用户必须更改其密码。 仅限云的用户帐户是在 Azure AD 目录中使用 Azure 门户或 Azure AD PowerShell cmdlet 创建的帐户。 此类用户帐户不是从本地目录同步的。
 
-    2. 如果要同步本地 Active directory 中的密码, 请按照 [Active Directory 文档] (.。。/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md.
+    2. 如果要同步本地 Active directory 中的密码, 请按照[Active Directory 文档](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)中的步骤进行操作。
 
-6.  按照为[Azure AD 域服务托管域配置安全 ldap (LDAPS)](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)中所述, 在 Azure Active Directory 域服务上配置安全 ldap。
-    1. 按 Azure 主题[获取安全 ldap 的证书](../active-directory-domain-services/configure-ldaps.md#task-1---obtain-a-certificate-for-secure-ldap)中所述, 上传用于安全 ldap 的证书。  CloudSimple 建议使用证书颁发机构颁发的签名证书, 以确保 vCenter 可以信任该证书。
-    2. 启用安全 LDAP, 如上所述, 为[Azure AD 域服务托管域启用安全 ldap (LDAPS)](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)。
+6.  按照为[Azure AD 域服务托管域配置安全 ldap (LDAPS)](../active-directory-domain-services/tutorial-configure-ldaps.md)中所述, 在 Azure Active Directory 域服务上配置安全 ldap。
+    1. 按 Azure 主题[获取安全 ldap 的证书](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)中所述, 上传用于安全 ldap 的证书。  CloudSimple 建议使用证书颁发机构颁发的签名证书, 以确保 vCenter 可以信任该证书。
+    2. 启用安全 LDAP, 如上所述, 为[Azure AD 域服务托管域启用安全 ldap (LDAPS)](../active-directory-domain-services/tutorial-configure-ldaps.md)。
     3. 在配置标识源时, 以 .cer 格式保存证书的公共部分 (不带私钥) 以用于 vCenter。
     4. 如果需要对 Azure AD 域服务的 Internet 访问, 请启用 "允许通过 internet 安全访问 LDAP" 选项。
     5. 为 TCP 端口 636 Azure AD 域服务 NSG 添加入站安全规则。

@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/16/2019
 ms.author: diberry
-ms.openlocfilehash: a3e1853e587f2f1632641cbb896eba59f8dc9455
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5175dee24542c716b3d087412864ae7e6f056d18
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515782"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615987"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker 内容的数据源
 
 QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指南、支持文档，以及以网页、PDF 文件或 MS Word 文档文件形式存储的策略）中自动提取问答对。 也可以将内容从结构化 QnA 内容文件添加到知识库中。 
+
+## <a name="data-types"></a>数据类型
 
 下表汇总了 QnA Maker 支持的内容类型和文件格式。
 
@@ -32,11 +34,21 @@ QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指�
 
 ## <a name="data-source-locations"></a>数据源位置
 
-大多数数据源位置都需要提供不需要身份验证的公共 Url 或文件。 
+数据源位置是不需要身份验证的**公共 url 或文件**。 
 
-允许[Sharepoint 数据源位置](../How-to/add-sharepoint-datasources.md)提供经过身份验证的文件。 Sharepoint 资源必须是文件, 而不是网页。 
+如果需要对数据源进行身份验证, 请考虑以下方法, 以便将数据导入 QnA Maker:
 
-如果你有一个经过身份验证的文件或 URL, 则可以选择将已通过身份验证的站点中的文件下载到本地计算机, 然后将该文件从本地计算机添加到知识库。 
+* [手动下载文件](#download-file-from-authenticated-data-source-location)并导入 QnA Maker
+* 为经过身份验证的[Sharepoint 位置](#import-file-from-authenticated-sharepoint)导入文件 
+
+### <a name="download-file-from-authenticated-data-source-location"></a>从经过身份验证的数据源位置下载文件
+
+如果你有一个经过身份验证的文件 (不在经过身份验证的 Sharepoint 位置) 或 URL, 则可以选择将已通过身份验证的站点中的文件下载到本地计算机, 然后将该文件从本地计算机添加到知识库。
+
+### <a name="import-file-from-authenticated-sharepoint"></a>从经过身份验证的 Sharepoint 导入文件 
+
+允许[Sharepoint 数据源位置](../How-to/add-sharepoint-datasources.md)提供经过身份验证的**文件**。 Sharepoint 资源必须是文件, 而不是网页。 如果 URL 以 web 扩展结束, 例如 **。ASPX**, 它不会从 Sharepoint 导入 QnA Maker。
+
 
 ## <a name="faq-urls"></a>常见问题解答 URL
 

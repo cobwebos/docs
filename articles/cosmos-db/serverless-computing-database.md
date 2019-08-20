@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 3bf89cd3ec0822cee2a3ebcf76de4193046462f9
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: e1014c710d892e45f09999db22b1f59c0bb36300
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335904"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614583"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算
 
@@ -23,9 +23,9 @@ ms.locfileid: "68335904"
 
 Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和无服务器应用：
 
-* 为 Cosmos DB 创建事件驱动的**Azure Functions 触发器**。 此触发器依靠[更改源](change-feed.md)流监视 Azure Cosmos DB 容器的更改情况。 当对容器进行任何更改时，更改源流将发送到可调用 Azure Function 的触发器。
-* 或者，使用“输入绑定”将 Azure Function 绑定到 Azure Cosmos DB 容器。 执行某个函数时，输入绑定将从容器中读取函数。
-* 使用“输出绑定”将函数绑定到 Azure Cosmos DB 容器。 当函数执行完成时，输出绑定会将数据写入容器。
+* 为 Cosmos DB 创建事件驱动的**Azure Functions 触发器**。 此触发器依赖于[更改源](change-feed.md)流来监视 Azure Cosmos 容器的更改情况。 当对容器进行任何更改时，更改源流将发送到可调用 Azure Function 的触发器。
+* 或者, 使用**输入绑定**将 azure 函数绑定到 azure Cosmos 容器。 执行某个函数时，输入绑定将从容器中读取函数。
+* 使用**输出绑定**将函数绑定到 Azure Cosmos 容器。 当函数执行完成时，输出绑定会将数据写入容器。
 
 > [!NOTE]
 > 目前, 仅支持将 Cosmos DB Azure Functions 触发器、输入绑定和输出绑定用于 SQL API。 对于所有其他的 Azure Cosmos DB API，应使用适用于 API 的静态客户端通过函数来访问数据库。
@@ -37,9 +37,9 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 
 Azure Cosmos DB 的 Azure Functions 触发器、输入绑定和输出绑定可用于以下组合:
 
-* Cosmos DB 的 Azure Functions 触发器可与不同 Azure Cosmos DB 容器的输出绑定一起使用。 函数在更改源中的某个项目上执行操作后，可以将其写入其他容器（将其写入其来源的同一容器将有效创建递归循环）。 或者, 您可以使用 Azure Functions 触发器来 Cosmos DB 有效地将所有更改的项从一个容器迁移到不同的容器, 并使用输出绑定。
+* Cosmos DB 的 Azure Functions 触发器可与不同 Azure Cosmos 容器的输出绑定一起使用。 函数在更改源中的某个项目上执行操作后，可以将其写入其他容器（将其写入其来源的同一容器将有效创建递归循环）。 或者, 您可以使用 Azure Functions 触发器来 Cosmos DB 有效地将所有更改的项从一个容器迁移到不同的容器, 并使用输出绑定。
 * Azure Cosmos DB 的输入绑定和输出绑定可在相同 Azure Function 中使用。 这非常适用于以下情况：使用输入绑定查找某些数据，在 Azure Function 中进行修改，并在修改后将其保存到相同容器或不同容器。
-* 可以在与 Cosmos DB 的 Azure Functions 触发器相同的函数中使用与 Azure Cosmos DB 容器的输入绑定, 也可以在不使用输出绑定的情况下使用。 可以使用此组合以将最新汇率信息（使用输入绑定提取到汇率容器）应用到购物车服务中新订单的更改源。 已对更新的购物车总额应用当前的货币兑换，可以使用输出绑定将其写入第三个容器中。
+* 与 Azure Cosmos 容器的输入绑定可用于与 Cosmos DB 的 Azure Functions 触发器相同的函数中, 也可与或不使用输出绑定一起使用。 可以使用此组合以将最新汇率信息（使用输入绑定提取到汇率容器）应用到购物车服务中新订单的更改源。 已对更新的购物车总额应用当前的货币兑换，可以使用输出绑定将其写入第三个容器中。
 
 ## <a name="use-cases"></a>用例
 
@@ -57,7 +57,7 @@ Azure Cosmos DB 的 Azure Functions 触发器、输入绑定和输出绑定可�
 4. 每当传感器数据集合发生数据更改时都会调用触发器，因为所有更改均通过更改源流式传输。
 5. 在函数中使用阈值条件以将传感器数据发送到保修部门。
 6. 如果温度也超过特定值，也会向所有者发送警报。
-7. 函数中的“输出绑定”更新其他 Azure Cosmos DB 容器中的汽车记录，以存储关于检查引擎事件的信息。
+7. 函数的**输出绑定**将更新另一个 Azure Cosmos 容器中的汽车记录, 以存储有关检查引擎事件的信息。
 
 下图显示在 Azure 门户中为此触发器编写的代码。
 
@@ -69,7 +69,7 @@ Azure Cosmos DB 的 Azure Functions 触发器、输入绑定和输出绑定可�
 
 **实现：** 使用 Azure Cosmos DB 输入绑定的计时器触发器
 
-1. 通过使用 [计时器触发器](../azure-functions/functions-bindings-timer.md)，可以使用“输入绑定”每隔一定时间检索存储在 Azure Cosmos DB 容器中的银行帐户余额信息。
+1. 使用[计时器触发器](../azure-functions/functions-bindings-timer.md), 可以使用**输入绑定**按固定的时间间隔检索存储在 Azure Cosmos 容器中的银行帐户余额信息。
 2. 如果余额低于用户设置的低余额阈值，则采取 Azure Function 中的某个措施。
 3. 输出绑定可以是 [SendGrid 集成](../azure-functions/functions-bindings-sendgrid.md)，它可将电子邮件从服务帐户发送到为每个低余额帐户标识的电子邮件地址。
 
@@ -118,7 +118,7 @@ Azure Cosmos DB 的 Azure Functions 触发器、输入绑定和输出绑定可�
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>为什么为无服务器计算选择 Azure Functions 集成？
 
-Azure Functions 提供创建可扩展工作单元的功能，或者提供按需运行的简洁逻辑部分，无需预配或管理基础结构。 通过使用 Azure Functions，无需创建全面应用来响应 Azure Cosmos DB 数据库中的更改，即可为特定任务创建可重复使用的较小函数。 此外，还可以将 Azure Cosmos DB 数据用作 Azure Function 的输入或输出，以响应 HTTP 请求或定时触发器等事件。
+Azure Functions 提供创建可扩展工作单元的功能，或者提供按需运行的简洁逻辑部分，无需预配或管理基础结构。 通过使用 Azure Functions, 你无需创建全面的应用来响应 Azure Cosmos 数据库中的更改, 你可以为特定任务创建小型可重用函数。 此外，还可以将 Azure Cosmos DB 数据用作 Azure Function 的输入或输出，以响应 HTTP 请求或定时触发器等事件。
 
 出于以下原因，建议对无服务器计算体系结构使用 Azure Cosmos DB 数据库：
 

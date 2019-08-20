@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acfa31434534eb3618b8a279ea6cff543fae076
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949803"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616147"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>管理你的双因素验证方法设置
 
@@ -135,6 +135,10 @@ ms.locfileid: "68949803"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 获取疑难解答提示, 并帮助解决[双重验证问题](multi-factor-authentication-end-user-troubleshoot.md)
+添加或更新你的双因素验证设置后, 你可以管理你的应用密码、登录或获取一些与常见的双因素验证相关问题的帮助。
 
 - 为不支持双重验证的任何应用[管理双重验证的应用密码](multi-factor-authentication-end-user-app-passwords.md)。
+
+- [使用双重验证进行登录](multi-factor-authentication-end-user-signin.md)
+
+- [获取有关双重验证的帮助](multi-factor-authentication-end-user-troubleshoot.md)

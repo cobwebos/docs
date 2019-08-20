@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: ef701d146a37350ee07d4c368110fe09d864301e
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 096a8f221313b9dfa3e0fe804a10fc12246177ff
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543492"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575724"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>使用 Azure HDInsight 进行故障排除
 
 | Apache 工作负荷 | 最常见的问题 |
 |---|---|
-|![HBase](./media/hdinsight-troubleshoot-guide/HBASE.png)<br>[Apache HBase 故障排除](hbase/apache-troubleshoot-hbase.md)|<br>[如何对多个未分配区域运行 hbck 命令报告？](hbase/apache-troubleshoot-hbase.md#how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions)<br><br>[使用 hbck 命令进行区域分配时，如何解决超时问题？](hbase/apache-troubleshoot-hbase.md#how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments)<br><br>[如何解决 Apache Phoenix 的 JDBC 或 SQLLine 连接问题？](hbase/apache-troubleshoot-hbase.md#how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix)<br><br>[哪些因素会导致主服务器无法启动？](hbase/hbase-troubleshoot-start-fails.md)<br><br>[哪些因素会导致在区域服务器上重启失败？](hbase/apache-troubleshoot-hbase.md#what-causes-a-restart-failure-on-a-region-server)|
+|![HBase](./media/hdinsight-troubleshoot-guide/HBASE.png)<br>[Apache HBase 故障排除](hbase/apache-troubleshoot-hbase.md)|<br>[未分配区域](hbase/hbase-troubleshoot-unassigned-regions.md#scenario-unassigned-regions)<br><br>[Azure HDInsight 中包含 "hbase hbck" 命令的超时](hbase/hbase-troubleshoot-timeouts-hbase-hbck.md)<br><br>[Azure HDInsight 中的 Apache Phoenix 连接问题](hbase/hbase-troubleshoot-phoenix-connectivity.md)<br><br>[哪些因素会导致主服务器无法启动？](hbase/hbase-troubleshoot-start-fails.md)<br><br>[BindException-地址已在使用中](hbase/hbase-troubleshoot-bindexception-address-use.md)|
 |![HDFS](./media/hdinsight-troubleshoot-guide/HDFS.png)<br>[Apache Hadoop HDFS 故障排除](hdinsight-troubleshoot-hdfs.md)|<br>[如何从群集内访问本地 HDFS？](hdinsight-troubleshoot-hdfs.md#how-do-i-access-local-hdfs-from-inside-a-cluster)<br><br>[本地 HDFS 在 Azure HDInsight 群集上的安全模式下停滞](hadoop/hdinsight-hdfs-troubleshoot-safe-mode.md)|
 |![Hive](./media/hdinsight-troubleshoot-guide/HIVE.png)<br>[Apache Hive 故障排除](hdinsight-troubleshoot-hive.md)|<br>[如何导出 Hive 元存储并将其导入另一个群集？](hdinsight-troubleshoot-hive.md#how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster)<br><br>[如何在群集上查找 Apache Hive 日志？](hdinsight-troubleshoot-hive.md#how-do-i-locate-hive-logs-on-a-cluster)<br><br>[如何在群集上使用特定配置启动 Apache Hive shell？](hdinsight-troubleshoot-hive.md#how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster)<br><br>[如何在群集关键路径上分析 Apache Tez DAG 数据？](hdinsight-troubleshoot-hive.md#how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path)<br><br>[如何从群集下载 Apache Tez DAG 数据？](hdinsight-troubleshoot-hive.md#how-do-i-download-tez-dag-data-from-a-cluster)|
 |![Spark](./media/hdinsight-troubleshoot-guide/SPARK.png)<br>[Apache Spark 故障排除](hdinsight-troubleshoot-SPARK.md)|<br>[如何在群集上使用 Apache Ambari 配置 Apache Spark 应用程序？](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters)<br><br>[如何在群集上使用 Jupyter Notebook 配置 Apache Spark 应用程序？](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters)<br><br>[如何在群集上使用 Apache Livy 配置 Apache Spark 应用程序？](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters)<br><br>[如何在群集上使用 spark-submit 配置 Apache Spark 应用程序？](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters)<br><br>[如何使用 IntelliJ 配置 Apache Spark 应用程序？](spark/apache-spark-intellij-tool-plugin.md)<br><br>[如何使用 Eclipse 配置 Apache Spark 应用程序？](spark/apache-spark-eclipse-tool-plugin.md)<br><br>[如何使用 VSCode 配置 Apache Spark 应用程序？](hdinsight-for-vscode.md)<br><br>[Apache Spark 的 OutOfMemoryError 异常](spark/apache-spark-troubleshoot-outofmemory.md#scenario-outofmemoryerror-exception-for-apache-spark)|

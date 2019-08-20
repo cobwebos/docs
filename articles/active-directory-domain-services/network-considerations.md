@@ -1,145 +1,166 @@
 ---
-title: Azure AD 域服务：网络准则 | Microsoft Docs
-description: Azure Active Directory 域服务的网络注意事项
+title: Azure AD 域服务的网络规划和连接 |Microsoft Docs
+description: 了解运行 Azure Active Directory 域服务时, 一些用于连接的虚拟网络设计注意事项和资源。
 services: active-directory-ds
-documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2010
-ms.author: mstephen
-ms.openlocfilehash: 1f21d71bba01eb4bec24dbb558a126ecbbd78bbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/09/2019
+ms.author: iainfou
+ms.openlocfilehash: 506967fc4cecd322c694d31789cf09bec22ad3d4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246939"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617328"
 ---
-# <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD 域服务的网络注意事项
-## <a name="how-to-select-an-azure-virtual-network"></a>如何选择 Azure 虚拟网络
-以下指导原则可帮助选择要与 Azure AD 域服务配合使用的虚拟网络。
+# <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD 域服务的虚拟网络设计注意事项和配置选项
 
-### <a name="type-of-azure-virtual-network"></a>Azure 虚拟网络类型
-* 资源管理器虚拟网络  ：可以在使用 Azure 资源管理器创建的虚拟网络中启用 Azure AD 域服务。
-* 不能在经典 Azure 虚拟网络中启用 Azure AD 域服务。
-* 可将其他虚拟网络连接到启用了 Azure AD 域服务的虚拟网络。 有关详细信息，请参阅[网络连接](network-considerations.md#network-connectivity)部分。
+随着 Azure Active Directory 域服务 (AD DS) 向其他应用程序和工作负荷提供身份验证和管理服务, 网络连接是一个关键组件。 如果没有适当配置的虚拟网络资源, 应用程序和工作负荷无法与 Azure AD DS 提供的功能通信, 并使用这些功能。 如果你正确规划虚拟网络, 请确保 Azure AD DS 可以根据需要为你的应用程序和工作负荷提供服务。
 
-### <a name="azure-region-for-the-virtual-network"></a>虚拟网络的 Azure 区域
-* 部署 Azure AD 域服务托管域的 Azure 区域与选择启用该服务的虚拟网络所在的区域相同。
-* 请在 Azure AD 域服务支持的 Azure 区域中选择虚拟网络。
-* 请参阅“ [Azure 服务（按区域）](https://azure.microsoft.com/regions/#services/) ”页面，了解 Azure AD 域服务可用的 Azure 区域。
+本文概述支持 Azure AD DS 的 Azure 虚拟网络的设计注意事项和要求。
 
-### <a name="requirements-for-the-virtual-network"></a>虚拟网络的要求
-* **与 Azure 工作负载的邻近性**：选择当前正在托管/将要托管需要访问 Azure AD 域服务的虚拟机的虚拟网络。 如果工作负载部署在与托管域不同的虚拟网络中，则还可以选择连接虚拟网络。
-* **自定义/自带 DNS 服务器**：确保未针对虚拟网络配置自定义 DNS 服务器。 自定义 DNS 服务器的一个示例是在虚拟网络中部署的 Windows Server VM 上运行的 Windows Server DNS 实例。 Azure AD 域服务不会与任何在虚拟网络内部署的自定义 DNS 服务器集成。
-* **域名相同的现有域**：确保现有域的名称与该虚拟网络上使用的域名不同。 例如，假设名为“contoso.com”的域已在选定的虚拟网络上使用。 然后，尝试在该虚拟网络上启用具有相同域名（即“contoso.com”）的 Azure AD 域服务托管域。 尝试启用 Azure AD 域服务会失败。 发生这种失败的原因是该名称与该虚拟网络上的域名冲突。 在此情况下，必须使用不同的名称来设置 Azure AD 域服务托管域。 或者，可以取消预配现有的域，并继续启用 Azure AD 域服务。
+## <a name="azure-virtual-network-design"></a>Azure 虚拟网络设计
 
-> [!WARNING]
-> 启用域服务之后，无法将其转移到其他虚拟网络。
->
->
+若要提供网络连接以及允许应用程序和服务针对 Azure AD DS 进行身份验证, 请使用 Azure 虚拟网络和子网。 理想情况下, Azure AD DS 应部署在其自己的虚拟网络中。 可以在同一个虚拟网络中包含一个单独的应用程序子网, 用于托管管理 VM 或轻型应用程序工作负载。 对于大型或复杂的应用程序工作负荷, 对等互连到 Azure AD DS 虚拟网络的独立虚拟网络通常是最恰当的设计。 如果您满足以下部分中的虚拟网络和子网的要求, 其他设计选择都是有效的。
 
+设计用于 Azure AD DS 的虚拟网络时, 请注意以下事项:
 
-## <a name="guidelines-for-choosing-a-subnet"></a>有关选择子网的准则
+* 必须将 Azure AD DS 部署到与虚拟网络相同的 Azure 区域。
+    * 此时, 每个 Azure AD 租户只能部署一个 Azure AD DS 托管域。 Azure AD DS 托管域部署到单个区域。 请确保在[支持 AZURE AD DS 的区域](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all)中创建或选择一个虚拟网络。
+* 请考虑其他 Azure 区域与托管你的应用程序工作负荷的虚拟网络的接近程度。
+    * 若要最大程度地减少延迟, 请将核心应用程序靠近或与 Azure AD DS 托管域的虚拟网络子网位于同一区域。 你可以使用虚拟网络对等互连或 Azure 虚拟网络之间的虚拟专用网络 (VPN) 连接。
+* 虚拟网络不能依赖于 Azure AD DS 提供的 DNS 服务。
+    * Azure AD DS 提供自己的 DNS 服务。 必须将虚拟网络配置为使用这些 DNS 服务地址。 可以使用条件转发器来完成其他命名空间的名称解析。
+    * 不能使用自定义 DNS 服务器设置来引导其他 DNS 服务器, 包括 Vm 上的查询。 虚拟网络中的资源必须使用 Azure AD DS 提供的 DNS 服务。
+
+> [!IMPORTANT]
+> 启用该服务后, 不能将 Azure AD DS 移到其他虚拟网络。
+
+Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS 设计此子网, 注意事项如下:
+
+* Azure AD DS 必须部署在其自己的子网中。 请勿使用现有子网或网关子网。
+* 网络安全组是在部署 Azure AD DS 托管域的过程中创建的。 此网络安全组包含正确的服务通信所需的规则。
+    * 不要使用您自己的自定义规则创建或使用现有的网络安全组。
+* Azure AD DS 需要5到7个 IP 地址。 请确保子网 IP 地址范围可提供此数量的地址。
+    * 限制可用 IP 地址可能会阻止 Azure AD 域服务维护两个域控制器。
+
+以下示例关系图概述了 Azure AD DS 具有其自己的子网的有效设计, 提供了用于外部连接的网关子网, 并且应用程序工作负载位于虚拟网络内连接的子网中:
 
 ![建议的子网设计](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
 
-* 将 Azure AD 域服务部署到 Azure 虚拟网络中的**独立专用子网**。
-* 不要将 NSG 应用到专用子网。 如果必须将 NSG 应用到专用子网，请确保**不要阻止维护和管理域时所要使用的端口**。
-* 不要过度限制专用子网中可供托管域使用的 IP 地址数。 这种限制会阻止服务向托管域提供两个域控制器。
-* 不要在虚拟网络的**网关子网中启用 Azure AD 域服务**。
+## <a name="connections-to-the-azure-ad-ds-virtual-network"></a>与 Azure AD DS 虚拟网络的连接
+
+如上一节所述, 只能在 Azure 中的单个虚拟网络中创建一个 Azure AD 域服务托管域, 并且只能为每个 Azure AD 租户创建一个托管域。 根据此体系结构, 你可能需要将托管应用程序工作负载的一个或多个虚拟网络连接到 Azure AD DS 虚拟网络。
+
+可以使用以下方法之一来连接其他 Azure 虚拟网络中托管的应用程序工作负荷:
+
+* 虚拟网络对等互连
+* 虚拟专用网络 (VPN)
+
+### <a name="virtual-network-peering"></a>虚拟网络对等互连
+
+虚拟网络对等互连是一种通过 Azure 主干网络在同一区域连接两个虚拟网络的机制。 全局虚拟网络对等互连可以跨 Azure 区域连接虚拟网络。 对等互连后, 这两个虚拟网络允许资源 (例如 Vm) 使用专用 IP 地址相互通信。 使用虚拟网络对等互连, 可以通过部署在其他虚拟网络中的应用程序工作负荷部署 Azure AD DS 托管域。
+
+![使用对等互连的虚拟网络连接](./media/active-directory-domain-services-design-guide/vnet-peering.png)
+
+有关详细信息, 请参阅[Azure 虚拟网络对等互连概述](../virtual-network/virtual-network-peering-overview.md)。
+
+### <a name="virtual-private-networking"></a>虚拟专用网络
+
+可以通过将虚拟网络配置为本地站点位置的相同方式将虚拟网络连接到另一个虚拟网络 (VNet 到 VNet)。 这两个连接都使用 VPN 网关来创建使用 IPsec/IKE 的安全隧道。 此连接模型使你能够将 Azure AD DS 部署到 Azure 虚拟网络, 然后连接到本地位置或其他云。
+
+![使用 VPN 网关的虚拟网络连接](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
+
+有关使用虚拟专用网络的详细信息, 请参阅[使用 Azure 门户配置 VNet 到 VNET VPN 网关连接](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)。
+
+## <a name="name-resolution-when-connecting-virtual-networks"></a>连接虚拟网络时的名称解析
+
+连接到 Azure AD 域服务虚拟网络的虚拟网络通常具有自己的 DNS 设置。 连接虚拟网络时, 它不会自动配置连接虚拟网络的名称解析, 以解析 Azure AD DS 托管域提供的服务。 必须将连接虚拟网络上的名称解析配置为允许应用程序工作负荷查找 Azure AD 域服务。
+
+你可以使用支持连接虚拟网络的 DNS 服务器上的条件 DNS 转发器或从 Azure AD 域服务虚拟网络使用相同的 DNS IP 地址来启用名称解析。
+
+## <a name="network-resources-used-by-azure-ad-ds"></a>Azure AD DS 使用的网络资源
+
+在部署过程中, Azure AD DS 托管域会创建一些网络资源。 这些资源是成功操作和管理 Azure AD DS 托管域所必需的, 不应进行手动配置。
+
+| Azure 资源                          | 描述 |
+|:----------------------------------------|:---|
+| 网络接口卡                  | Azure AD DS 将托管域托管在 Windows Server 上作为 Azure Vm 运行的两个域控制器 (Dc) 上。 每个 VM 都有一个连接到虚拟网络子网的虚拟网络接口。 |
+| 动态基本公共 IP 地址         | Azure AD DS 使用基本 SKU 公共 IP 地址与同步和管理服务通信。 有关公共 IP 地址的详细信息, 请参阅[Azure 中的 IP 地址类型和分配方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)。 |
+| Azure 基本负载均衡器               | Azure AD DS 使用基本 SKU 负载均衡器进行网络地址转换 (NAT) 和负载平衡 (与安全 LDAP 一起使用时)。 有关 Azure 负载均衡器的详细信息, 请参阅[什么是 Azure 负载均衡器？](../load-balancer/load-balancer-overview.md) |
+| 网络地址转换 (NAT) 规则 | Azure AD DS 在负载平衡器上创建并使用三个 NAT 规则-一个规则用于安全 HTTP 流量, 另外两个规则用于保护 PowerShell 远程处理。 |
+| 负载均衡器规则                     | 在 TCP 端口636上为安全 LDAP 配置 Azure AD DS 托管域时, 将在负载均衡器上创建并使用三个规则来分配流量。 |
 
 > [!WARNING]
-> 将 NSG 与已启用 Azure AD 域服务的子网相关联时，可能会导致 Microsoft 无法维护和管理域。 此外，Azure AD 租户与托管域之间的同步会中断。 **如果在部署中应用的 NSG 会阻止 Azure AD 域服务更新和管理域，SLA 将不适用于此类部署。**
+> 请勿删除 Azure AD DS 创建的任何网络资源。 如果删除任何网络资源, 则会发生 Azure AD DS 服务中断。
+
+## <a name="network-security-groups-and-required-ports"></a>网络安全组和所需端口
+
+[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)包含一系列规则, 这些规则允许或拒绝到 Azure 虚拟网络中流量的网络流量。 当你部署 Azure AD DS 时, 将创建一个网络安全组, 其中包含一组规则, 这些规则允许服务提供身份验证和管理功能。 此默认网络安全组与 Azure AD DS 托管域部署到的虚拟网络子网相关联。
+
+Azure AD DS 提供身份验证和管理服务需要以下网络安全组规则。 请勿编辑或删除 Azure AD DS 托管域部署到的虚拟网络子网的这些网络安全组规则。
+
+| 端口号 | Protocol | Source                             | 目标 | 操作 | 必填 | 用途 |
+|:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
+| 443         | TCP      | AzureActiveDirectoryDomainServices | 任意         | Allow  | 是      | 与 Azure AD 租户同步。 |
+| 3389        | TCP      | CorpNetSaw                         | 任意         | Allow  | 是      | 域的管理。 |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | 任意         | Allow  | 是      | 域的管理。 |
+| 636         | TCP      | 任意                                | 任意         | Allow  | 否       | 仅在配置安全 LDAP (LDAPS) 时启用。 |
+
+> [!WARNING]
+> 请不要手动编辑这些网络资源和配置。 将配置错误的网络安全组或用户定义的路由表与在其中部署 Azure AD DS 的子网相关联时, 可能会中断 Microsoft 提供的服务和管理功能。 Azure AD 租户与 Azure AD DS 托管域之间的同步也会中断。
 >
+> 对于网络安全组, 还存在*AllowVnetInBound*、 *AllowAzureLoadBalancerInBound*、 *DenyAllInBound*、 *AllowVnetOutBound*、 *AllowInternetOutBound*和*DenyAllOutBound*的默认规则。 请勿编辑或删除这些默认规则。
 >
+> Azure SLA 不适用于不正确配置的网络安全组和/或用户定义的路由表, 这些表已应用, 阻止 Azure AD DS 更新和管理域。
 
-## <a name="ports-required-for-azure-ad-domain-services"></a>Azure AD 域服务所需的端口
-Azure AD 域服务需要使用以下端口来维护和管理托管域。 确保在启用托管域的子网中未阻止这些端口。
+### <a name="port-443---synchronization-with-azure-ad"></a>端口 443-与 Azure AD 同步
 
-| 端口号 | 必需？ | 目的 |
-| --- | --- | --- |
-| 443 | 必需 |与 Azure AD 租户同步 |
-| 5986 | 必需 | 用于管理域 |
-| 3389 | 必需 | 用于管理域 |
-| 636 | 可选 | 对托管域进行安全 LDAP (LDAPS) 访问 |
+* 用于将 Azure AD 租户与 Azure AD DS 托管域同步。
+* 如果不访问此端口, 则 Azure AD DS 托管域无法与 Azure AD 租户同步。 如果用户的密码更改不会同步到 Azure AD DS 托管域, 用户可能无法登录。
+* 默认情况下, 使用**AzureActiveDirectoryDomainServices**服务标记对此端口到 IP 地址的入站访问受到限制。
+* 不要限制此端口的出站访问。
 
-**端口 443（与 Azure AD 同步）**
-* 此端口用于将 Azure AD 目录与托管域同步。
-* 必须允许在 NSG 中访问此端口。 如果不允许访问此端口，则托管域不会与 Azure AD 目录同步。 用户可能无法登录，因为对其密码所做的更改不会同步到托管域。
-* 可将此端口的入站访问限制为属于 Azure IP 地址范围的 IP 地址。 注意，Azure IP 地址范围不同于下面的规则中显示的 PowerShell 范围。
+### <a name="port-3389---management-using-remote-desktop"></a>端口 3389-使用远程桌面管理
 
-**端口 5986（PowerShell 远程处理）**
-* 使用此端口可通过托管域上的 PowerShell 远程处理来执行管理任务。
-* 必须在 NSG 中允许通过此端口访问。 如果不允许访问此端口，则无法更新、配置、备份或监视托管域。
-* 对于任何新域或具有 Azure 资源管理器虚拟网络的域，可以将对此端口的入站访问限制为以下源 IP 地址：52.180.179.108、52.180.177.87、13.75.105.168、52.175.18.134、52.138.68.41、52.138.65.157、104.41.159.212、104.45.138.161、52.169.125.119、52.169.218.0、52.187.19.1、52.187.120.237、13.78.172.246、52.161.110.169、52.174.189.149、40.68.160.142、40.83.144.56、13.64.151.161、52.180.183.67、52.180.181.39、52.175.28.111、52.175.16.141、52.138.70.93、52.138.64.115、40.80.146.22、40.121.211.60、52.138.143.173、52.169.87.10、13.76.171.84、52.187.169.156、13.78.174.255、13.78.191.178、40.68.163.143、23.100.14.28、13.64.188.43、23.99.93.197
-* 对于具有经典虚拟网络的域，可以将对此端口的入站访问限制为以下源 IP 地址：52.180.183.8、23.101.0.70、52.225.184.198、52.179.126.223、13.74.249.156、52.187.117.83、52.161.13.95、104.40.156.18、104.40.87.209
-* 托管域的域控制器通常不侦听此端口。 只有当需要为托管域执行管理或维护操作时，服务才会在托管域控制器上打开此端口。 一旦操作完成，服务会立即在托管域控制器上关闭此端口。
+* 用于与 Azure AD DS 托管域中的域控制器的远程桌面连接。
+* 默认网络安全组规则使用*CorpNetSaw*服务标记进一步限制流量。
+    * 此服务标记仅允许 Microsoft 企业网络中的安全访问工作站使用远程桌面访问 Azure AD DS 托管域。
+    * 只允许访问业务理由, 例如用于管理或故障排除方案。
+* 此规则可以设置为 "*拒绝*", 并且仅在需要时设置为 "*允许*"。 大多数管理和监视任务都是使用 PowerShell 远程处理来执行的。 仅当 Microsoft 需要远程连接到托管域进行高级故障排除时, 才会使用 RDP。
 
-**端口 3389（远程桌面）**
-* 此端口用于与托管域的域控制器建立远程桌面连接。
-* 可将入站访问限制为以下源 IP 地址：207.68.190.32/27、13.106.78.32/27、13.106.174.32/27、13.106.4.96/27
-* 大部分时间下，此端口在托管域上也保持关闭状态。 此机制并非经常使用，因为管理和监视任务是使用 PowerShell 远程处理执行的。 只有在极少数情况下，当 Microsoft 需要远程连接到你的托管域来进行高级故障排除时，才会使用此端口。 一旦故障排除操作完成，此端口会立即关闭。
+> [!NOTE]
+> 如果尝试编辑此网络安全组规则, 则无法从门户中手动选择*CorpNetSaw*服务标记。 必须使用 Azure PowerShell 或 Azure CLI 手动配置使用*CorpNetSaw*服务标记的规则。
 
-**端口 636（安全 LDAP）**
-* 此端口用于启用通过 Internet 对托管域进行安全 LDAP 访问。
-* 可以选择性地通过 NSG 打开此端口。 仅当已启用通过 Internet 进行安全 LDAP 访问时，才需要打开此端口。
-* 可将此端口的入站访问限制为预期要通过安全 LDAP 从中建立连接的源 IP 地址。
+### <a name="port-5986---management-using-powershell-remoting"></a>端口 5986-使用 PowerShell 远程处理管理
 
+* 用于在 Azure AD DS 托管域中使用 PowerShell 远程处理执行管理任务。
+* 如果不访问此端口, 则无法更新、配置、备份或监视 Azure AD DS 托管域。
+* 对于使用基于资源管理器的虚拟网络 Azure AD DS 托管域, 你可以将此端口的入站访问限制为*AzureActiveDirectoryDomainServices*服务标记。
+    * 对于使用基于经典的虚拟网络的旧 Azure AD DS 托管域, 你可以将此端口的入站访问限制为以下源 IP 地址:*52.180.183.8*、 *23.101.0.70*、 *52.225.184.198*、 *52.179.126.223*、 *13.74.249.156*、 *52.187.117.83*、 *52.161.13.95*、 *104.40.156.18*和*104.40.87.209*。
 
-## <a name="network-security-groups"></a>网络安全组
-[网络安全组 (NSG)](../virtual-network/virtual-networks-nsg.md) 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝虚拟网络中流向 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。 另外，可以通过将 NSG 直接关联到单个 VM，对流向该 VM 的流量进行进一步的限制。
+## <a name="user-defined-routes"></a>用户定义路由
 
-### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>具有 Azure AD 域服务的虚拟网络的示例 SNG
-下表介绍一个示例 NSG，可为具有 Azure AD 域服务托管域的虚拟网络配置该 NSG。 此规则允许来自所需端口的入站流量，以确保托管域保持修补和更新，并可由 Microsoft 进行监视。 默认的“DenyAll”规则适用于来自 Internet 的所有其他入站流量。
+默认情况下不会创建用户定义的路由, 因此 Azure AD DS 可以正常工作。 如果需要使用路由表, 请避免对*0.0.0.0*路由进行任何更改。 对此路由所做的更改可能会中断 Azure AD 域服务。
 
-此外，该 NSG 还演示如何通过 Internet 锁定安全 LDAP 访问。 如果未禁用通过 Internet 对托管域的安全 LDAP 访问，则跳过此规则。 NSG 包含一组规则，允许仅从指定的一组 IP 地址通过 TCP 端口 636 进行入站 LDAPS 访问。 NSG 规则允许从指定 IP 地址通过 Internet 进行 LDAPS 访问，此规则的优先级比 DenyAll NSG 规则的优先级高。
+还必须将入站流量从各自的 Azure 服务标记中包含的 IP 地址路由到 Azure AD 域服务子网。 有关中服务标记及其关联的 IP 地址的详细信息, 请参阅[AZURE IP 范围和服务标记-公有云](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。
 
-![通过 Internet 进行安全 LDAPS 访问的示例 NSG](./media/active-directory-domain-services-alerts/default-nsg.png)
+> [!CAUTION]
+> 这些 Azure 数据中心 IP 范围可能会更改, 恕不另行通知。 确保你拥有验证你是否具有最新 IP 地址的过程。
 
-详细信息 - [创建网络安全组](../virtual-network/manage-network-security-group.md)  。
+## <a name="next-steps"></a>后续步骤
 
+有关 Azure AD DS 使用的某些网络资源和连接选项的详细信息, 请参阅以下文章:
 
-## <a name="network-connectivity"></a>网络连接
-Azure AD 域服务托管域只能在 Azure 中的单个虚拟网络中启用。
-
-### <a name="scenarios-for-connecting-azure-networks"></a>Azure 网络连接方案
-在以下任一部署方案中，连接 Azure 虚拟网络即可使用托管域：
-
-#### <a name="use-the-managed-domain-in-more-than-one-azure-virtual-network"></a>在多个 Azure 虚拟网络中使用托管域
-可将其他 Azure 虚拟网络连接到已启用 Azure AD 域服务的 Azure 虚拟网络。 通过此 VPN/VNet 对等连接，可让你将托管域与部署在其他虚拟网络中的工作负荷一起使用。
-
-![经典虚拟网络连接](./media/active-directory-domain-services-design-guide/classic-vnet-connectivity.png)
-
-#### <a name="use-the-managed-domain-in-a-resource-manager-based-virtual-network"></a>在基于 Resource Manager 的虚拟网络中使用托管域
-可将基于 Resource Manager 的虚拟网络连接到已启用 Azure AD 域服务的 Azure 经典虚拟网络。 通过此连接可以使用托管域，工作负荷将部署到基于 Resource Manager 的虚拟网络。
-
-![Resource Manager 到经典虚拟网络的连接](./media/active-directory-domain-services-design-guide/classic-arm-vnet-connectivity.png)
-
-### <a name="network-connection-options"></a>网络连接选项
-* **使用虚拟网络对等互连的 VNet 至 VNet 连接**：虚拟网络对等互连是一种通过 Azure 主干网络在同一区域连接两个虚拟网络的机制。 对等互连后，出于所有连接目的，两个虚拟网络会显示为一个。 这两个虚拟网络仍作为单独资源管理，但这些虚拟网络中的虚拟机可直接通过专用 IP 地址彼此通信。
-
-    ![使用对等互连的虚拟网络连接](./media/active-directory-domain-services-design-guide/vnet-peering.png)
-
-    [详细信息 - 虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)
-
-* **使用站点到站点 VPN 的 VNet 到 VNet 连接**：将虚拟网络连接到虚拟网络（VNet 到 VNet）类似于将虚拟网络连接到本地站点位置。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。
-
-    ![使用 VPN 网关的虚拟网络连接](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
-
-    [详细信息 - 使用 VPN 网关连接虚拟网络](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
-
-<br>
-
-## <a name="related-content"></a>相关内容
 * [Azure 虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)
-* [为经典部署模型配置 VNet 到 VNet 连接](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
+* [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
 * [Azure 网络安全组](../virtual-network/security-overview.md)
-* [创建网络安全组](../virtual-network/manage-network-security-group.md)
+
+<!-- INTERNAL LINKS -->
+
+<!-- EXTERNAL LINKS -->

@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 757366f1d1f94d11438be4df0772ce1155f71cee
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 3758766b1051acb9321ec67727eecef249971065
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310584"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615093"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>用作键值存储的 Azure Cosmos DB – 费用概述
 
 Azure Cosmos DB 是全球分布式多模型数据库服务，用于轻松构建高度可用的大规模应用程序。 默认情况下，Azure Cosmos DB 将有效地为它引入的所有数据编制索引。 因此，可针对任何类型的数据执行快速一致的 [SQL](how-to-sql-query.md)（和 [JavaScript](stored-procedures-triggers-udfs.md)）查询。 
 
-本文介绍使用 Azure Cosmos DB 作为键/值存储执行简单写入和读取操作时产生的费用。 写入操作包括文档的插入、替换、删除和更新插入。 除了保证 99.99%可用性 SLA 为所有单区域帐户和具有松散的一致性和提供 99.999%的所有多区域帐户的读取可用性所有多区域数据库帐户，Azure Cosmos DB 还保证 < 10 毫秒的延迟读取和 （索引） 写入分别在第 99 个百分点值。 
+本文介绍使用 Azure Cosmos DB 作为键/值存储执行简单写入和读取操作时产生的费用。 写入操作包括文档的插入、替换、删除和更新插入。 除了针对所有采用宽松一致性的单区域帐户和多区域帐户提供有保证的 99.99% 可用性 SLA，针对所有多区域数据库帐户提供 99.999% 读取可用性以外，Azure Cosmos DB 还保证在 99% 的情况下，读取和（索引）写入延迟分别小于 10 毫秒。 
 
 ## <a name="why-we-use-request-units-rus"></a>为何使用请求单位 (RU)
 
 Azure Cosmos DB 的性能基于分区的预配[请求单位](request-units.md) (RU) 数量。 预配属于另一种粒度，根据每秒 RU 数（[请不要与每小时计费相混淆](https://azure.microsoft.com/pricing/details/cosmos-db/)）购买。 应将 RU 视为一种货币，用于简化应用程序所需吞吐量的预配过程。 客户无需考虑读取和写入容量单位之间的差异。 RU 的单一货币模型能够有效地在读取和写入之间分享预配的容量。 这种预配的容量模型使服务能够提供可预测且一致的吞吐量，保证低延迟、高可用性。 最后，我们使用 RU 来为吞吐量建模，但每个预配的 RU 还具有定义数量的资源（内存、核心）。 每秒 RU 数不仅仅是 IOPS。
 
-作为一种全球分布式数据库系统，Cosmos DB 是仅限 Azure 的服务，除了高可用性以外，还在延迟、吞吐量和一致性方面提供 SLA。 预配的吞吐量应用到与 Cosmos DB 数据库帐户关联的每个区域。 对于读取，Cosmos DB 提供多个妥善定义的[一致性级别](consistency-levels.md)供用户选择。 
+作为一种全球分布式数据库系统，Cosmos DB 是仅限 Azure 的服务，除了高可用性以外，还在延迟、吞吐量和一致性方面提供 SLA。 预配的吞吐量将应用到与 Cosmos 数据库帐户关联的每个区域。 对于读取，Cosmos DB 提供多个妥善定义的[一致性级别](consistency-levels.md)供用户选择。 
 
 下表显示基于 1 KB 和 100 KB 自定义文档大小执行读取和写入事务所需的 RU 数量。
 

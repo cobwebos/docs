@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: ddbec882675dba4724406ad1ea8079df377c34fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8829c2534184bc14e82dfbf30d2170a7a1b8add0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967302"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614988"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
 
@@ -29,7 +29,7 @@ ms.locfileid: "65967302"
 
 下面是确定预配吞吐量策略时可以参考的一些指导原则：
 
-**对于以下情况，考虑针对 Azure Cosmos DB 数据库（包含一组容器）预配吞吐量**：
+**如果有以下情况, 请考虑在 Azure Cosmos 数据库上预配吞吐量 (包含一组容器)** :
 
 1. 有几十个 Azure Cosmos 容器，并想要在部分或所有容器之间共享吞吐量。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "65967302"
 |API|对于**共享**吞吐量，请配置 |对于**专用**吞吐量，请配置 |
 |----|----|----|
 |SQL API|数据库|容器|
-|Azure Cosmos DB 的用于 MongoDB 的 API|数据库|集合|
+|Azure Cosmos DB 的用于 MongoDB 的 API|数据库|Collection|
 |Cassandra API|密钥空间|表|
 |Gremlin API|数据库帐户|图形|
 |表 API|数据库帐户|表|

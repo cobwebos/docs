@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031036"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613018"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域上部署 Azure AD 应用程序代理
 Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问的本地应用程序，帮助用户为远程辅助角色提供支持。 使用 Azure AD 域服务，现在可以将本地运行的旧版应用程序提升并转移到 Azure 基础结构服务。 然后，可以使用 Azure AD 应用程序代理发布这些应用程序，以允许组织中的用户进行安全远程访问。
@@ -35,7 +35,7 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 1. 一个有效的 **Azure 订阅**。
 2. 一个 **Azure AD 目录** - 已与本地目录或仅限云的目录同步。
 3. 使用 Azure AD 应用程序代理需要**Azure AD Premium 许可证**。
-4. 必须为 Azure AD 目录启用 **Azure AD 域服务**。 如果未启用，请遵循[入门指南](create-instance.md)中所述的所有任务。
+4. 必须为 Azure AD 目录启用 **Azure AD 域服务**。 如果未启用，请遵循[入门指南](tutorial-create-instance.md)中所述的所有任务。
 
 <br>
 
@@ -114,18 +114,18 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
 可使用 Get-ADComputer PowerShell cmdlet 检索要在其上安装 Azure AD 应用程序代理连接器的计算机的设置。
 ```powershell
-$ConnectorComputerAccount = Get-ADComputer -Identity contoso100-proxy.contoso100.com
+$ConnectorComputerAccount = Get-ADComputer -Identity contoso-proxy.contoso.com
 ```
 
 此后，可使用 Set-ADComputer cmdlet 为资源服务器设置基于资源的 KCD。
 ```powershell
-Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
+Set-ADComputer contoso-resource.contoso.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
 ```
 
 如果已在托管域上部署多个应用程序代理连接器，则需要为每个此类连接器实例配置基于资源的 KCD。
 
 
 ## <a name="related-content"></a>相关内容
-* [Azure AD 域服务 - 入门指南](create-instance.md)
+* [Azure AD 域服务 - 入门指南](tutorial-create-instance.md)
 * [在托管域上配置 Kerberos 约束委派](deploy-kcd.md)
 * [Kerberos 约束委派概述](https://technet.microsoft.com/library/jj553400.aspx)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 3d44937c977ba264d671f2053d387470651af68a
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 509bd472fe5f930ac830b8b4016129f8acb67324
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030877"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612883"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory 域服务：常见问题解答 (FAQ)
 本页面解答有关 Azure Active Directory 域服务的常见问题。 请随时返回查看更新信息。
@@ -31,6 +31,9 @@ ms.locfileid: "69030877"
 ## <a name="configuration"></a>配置
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>是否可为单个 Azure AD 目录创建多个托管域？
 否。 对于单个 Azure AD 目录，只能创建一个由 Azure AD 域服务提供服务的托管域。  
+
+### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>能否在经典虚拟网络中启用 Azure AD 域服务？
+新部署不支持经典虚拟网络。 将继续支持经典虚拟网络中部署的现有托管域。
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>是否可以在 Azure 资源管理器虚拟网络中启用 Azure AD 域服务？
 是的。 可以在 Azure 资源管理器虚拟网络中启用 Azure AD 域服务。 经典 Azure 虚拟网络不再支持创建新的托管域。

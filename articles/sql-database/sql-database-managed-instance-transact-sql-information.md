@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 44b98b55bfa2d0424831f6cf612f66dbcdc8a6d9
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
-ms.translationtype: MT
+ms.openlocfilehash: 811d54da2fbcf36bcd2529ed9172c80d6414ab54
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543691"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617623"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 
@@ -449,7 +449,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支持的语法：
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
-- 源: 
+- 源： 
   - `FROM URL`（Azure Blob 存储）是唯一受支持的选项。
   - 不支持 `FROM DISK`/`TAPE`/备份设备。
   - 不支持备份集。
@@ -512,6 +512,10 @@ WITH PRIVATE KEY (<private_key_options>)
 - 创建托管实例后, 不支持将托管实例或 VNet 移到另一个资源组或订阅。
 - 某些服务 (如应用服务环境、逻辑应用和托管实例, 用于异地复制、事务复制或通过链接服务器) 无法访问不同区域中的托管实例, 如果它们的 Vnet 使用[global对等互连](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。 可以通过 ExpressRoute 或 vnet 到 vnet 网关连接到这些资源。
 
+### <a name="tempdb-size"></a>TEMPDB 大小
+
+在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 业务关键层`tempdb`上的最大大小受实例存储大小的限制。 `Tempdb`在常规用途和业务关键层上, 日志文件大小限制为 120 GB。 如果中的`tempdb`每个核心需要超过 24 gb, 或者它们产生超过 120 gb 的日志数据, 则某些查询可能会返回错误。
+
 ## <a name="Changes"></a>行为更改
 
 以下变量、函数和视图返回不同的结果：
@@ -526,13 +530,31 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ## <a name="Issues"></a>已知问题和限制
 
-### <a name="tempdb-size"></a>TEMPDB 大小
+### <a name="cross-database-service-broker-dialogs-dont-work-after-service-tier-upgrade"></a>服务层升级后, 跨数据库 Service Broker 对话框不起作用
 
-在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 业务关键层`tempdb`上的最大大小受实例存储大小的限制。 `Tempdb`在常规用途和业务关键层上, 日志文件大小限制为 120 GB。 `tempdb` 数据库始终拆分为 12 个数据文件。 无法更改每个文件的最大大小, 并且无法将新文件添加`tempdb`到。 如果中的`tempdb`每个核心需要超过 24 gb, 或者它们产生超过 120 gb 的日志数据, 则某些查询可能会返回错误。 `Tempdb`当实例启动或故障转移时, 始终会重新创建为空数据库, 在中`tempdb`所做的任何更改都不会保留。 
+**日期**2019年8月
 
-### <a name="cant-restore-contained-database"></a>无法还原包含的数据库
+跨数据库 Service Broker 对话框在更改服务层操作后无法传递消息。 在托管实例中更改 vcore 或实例存储大小将导致`service_broke_guid`为所有数据库更改[sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql)视图中的值。 使用`DIALOG`由 GUID 引用其他数据库中的 Service broker 的任何已创建的[BEGIN DIALOG](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql)语句均无法传递消息。
 
-托管实例无法还原[包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)。 现有包含数据库的时点还原不适用于托管实例。 同时, 我们建议您从放置在托管实例上的数据库中删除包含选项。 不要对生产数据库使用包含选项。 
+**解决方法：** 先停止使用跨数据库 Service Broker 对话会话的任何活动, 然后再更新服务层并在之后重新初始化它们。
+
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querysp_send_db_mail 中不支持的参数
+
+**日期**2019 年 4 月
+
+[sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) 过程中的 `@query` 参数不起作用。
+
+### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>Tools 中不支持 AAD 登录名和用户
+
+**日期**2019 年 4 月
+
+SQL Server Management Studio 和 SQL Server Data Tools 不 fuly 支持 Azure Acctive directory 登录名和用户。
+- 目前不支持将 Azure AD 服务器主体（登录名）和用户（公共预览版）与 SQL Server Data Tools 配合使用。
+- Azure AD 服务器主体（登录名）和用户（公共预览版）的脚本在 SQL Server Management Studio 中不受支持。
+
+### <a name="tempdb-structure-is-re-created"></a>已重新创建 TEMPDB 结构
+
+`tempdb`数据库始终拆分为12个数据文件, 无法更改文件结构。 无法更改每个文件的最大大小, 并且无法将新文件添加`tempdb`到。 `Tempdb`当实例启动或故障转移时, 始终会重新创建为空数据库, 在中`tempdb`所做的任何更改都不会保留。
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小型数据库文件超出存储空间
 
@@ -551,24 +573,9 @@ WITH PRIVATE KEY (<private_key_options>)
 
 可以使用系统视图[识别剩余文件的数目](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1)。 如果即将达到此限制，请尝试[使用 DBCC SHRINKFILE 语句清空并删除一些小型文件](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file)，或者切换到[没有此限制的“业务关键”层级](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
 
-### <a name="tooling"></a>工具
-
-访问托管实例时，SQL Server Management Studio 和 SQL Server Data Tools 可能会出现一些问题。
-
-- 目前不支持将 Azure AD 服务器主体（登录名）和用户（公共预览版）与 SQL Server Data Tools 配合使用。
-- Azure AD 服务器主体（登录名）和用户（公共预览版）的脚本在 SQL Server Management Studio 中不受支持。
-
-### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>在某些视图、日志和消息中，数据库名称不正确
+### <a name="guid-values-shown-instead-of-database-names"></a>显示的 GUID 值而不是数据库名称
 
 多个系统视图、性能计数器、错误消息、XEvent 和错误日志条目显示了 GUID 数据库标识符而非实际的数据库名称。 不要依赖这些 GUID 标识符，因为它们在将来会被替换为实际的数据库名称。
-
-### <a name="database-mail"></a>数据库邮件
-
-[sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) 过程中的 `@query` 参数不起作用。
-
-### <a name="database-mail-profile"></a>数据库邮件配置文件
-
-SQL Server 代理使用的数据库邮件配置文件必须名为 `AzureManagedInstance_dbmail_profile`。 在其他数据库邮件配置文件名称方面没有限制。
 
 ### <a name="error-logs-arent-persisted"></a>不保留错误日志
 

@@ -8,18 +8,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 75d2930363b6ad1aeace22d7529df04f31deefe5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc28cf590a1fd2c3fdfe8651f136526188801c04
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893616"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615643"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>从 Spark 连接到 Azure Cosmos DB Cassandra API
 
 本文是有关 Spark 中 Azure Cosmos DB Cassandra API 集成的系列文章中的一篇。 这些文章介绍了连接、数据定义语言 (DDL) 操作、基本数据操作语言 (DML) 操作，以及 Spark 中的高级 Azure Cosmos DB Cassandra API 集成。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 * [预配一个 Azure Cosmos DB Cassandra API 帐户。](create-cassandra-dotnet.md#create-a-database-account)
 
 * 预配所选的 Spark 环境 [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | 其他]。
@@ -42,12 +42,12 @@ ms.locfileid: "60893616"
 
 | **属性名称** | **默认值** | **说明** |
 |---------|---------|---------|
-| spark.cassandra.output.batch.size.rows |  第 |每个批的行数。 请将此参数设置为 1。 此参数用于提高重型工作负荷的吞吐量。 |
+| spark.cassandra.output.batch.size.rows |  1 |每个批的行数。 请将此参数设置为 1。 此参数用于提高重型工作负荷的吞吐量。 |
 | spark.cassandra.connection.connections_per_executor_max  | 无 | 每个执行器的每个节点的最大连接数。 10*n 相当于 n 节点 Cassandra 群集中每个节点可以建立 10 个连接。 因此，如果需要为 5 节点 Cassandra 群集的每个执行器的每个节点建立 5 个连接，则应将此配置设置为 25。 请根据为 Spark 作业配置的并行度或执行器数目修改此值。   |
 | spark.cassandra.output.concurrent.writes  |  100 | 定义每个执行器可以执行的并行写入数。 由于“batch.size.rows”设置为 1，因此请务必相应地增大此值。 请根据工作负荷要实现的并行度或吞吐量修改此值。 |
 | spark.cassandra.concurrent.reads |  512 | 定义每个执行器可以执行的并行读取数。 请根据工作负荷要实现的并行度或吞吐量修改此值  |
-| spark.cassandra.output.throughput_mb_per_sec  | 无 | 定义每个执行器的总写入吞吐量。 可将此参数用作 Spark 作业吞吐量的上限，并根据 Cosmos DB 集合的预配吞吐量修改此参数。   |
-| spark.cassandra.input.reads_per_sec| 无   | 定义每个执行器的总读取吞吐量。 可将此参数用作 Spark 作业吞吐量的上限，并根据 Cosmos DB 集合的预配吞吐量修改此参数。  |
+| spark.cassandra.output.throughput_mb_per_sec  | 无 | 定义每个执行器的总写入吞吐量。 此参数可用作 spark 作业吞吐量的上限, 并使其基于 Cosmos 容器的预配吞吐量。   |
+| spark.cassandra.input.reads_per_sec| 无   | 定义每个执行器的总读取吞吐量。 此参数可用作 spark 作业吞吐量的上限, 并使其基于 Cosmos 容器的预配吞吐量。  |
 | spark.cassandra.output.batch.grouping.buffer.size |  1000  | 定义每个 Spark 任务的、在发送到 Cassandra API 之前可以存储在内存中的批数 |
 | spark.cassandra.connection.keep_alive_ms | 60000 | 定义在经过多长的时间之后未使用的连接可供使用。 | 
 
