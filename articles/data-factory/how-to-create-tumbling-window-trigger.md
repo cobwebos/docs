@@ -102,7 +102,7 @@ ms.locfileid: "68678484"
 | **maxConcurrency** | 同时针对已就绪窗口触发的触发器运行数。 例如，若要每小时回填，昨天的运行会产生 24 个 windows。 如果 **maxConcurrency** = 10，则仅针对头 10 个窗口 (00:00-01:00 - 09:00-10:00) 触发触发器事件。 在头 10 个触发的管道运行完成后，将针对接下来的 10 个窗口 (10:00-11:00 - 19:00-20:00) 触发触发器运行。 继续进行 **maxConcurrency** = 10 的此示例，如果有 10 个窗口就绪，则总共有 10 个管道运行。 如果只有 1 个窗口就绪，则只有 1 管道运行。 | 整数 | 一个介于 1 到 50 之间的整数。 | 是 |
 | **retryPolicy: Count** | 将管道运行标记为“失败”之前的重试次数。  | 整数 | 一个整数，其默认值为 0（不重试）。 | 否 |
 | **retryPolicy: intervalInSeconds** | 重试之间的延迟（以秒为单位指定）。 | 整数 | 秒数，其默认值为 30。 | 否 |
-| **dependsOn: 键入** | TumblingWindowTriggerReference 的类型。 如果设置了依赖关系, 则为必需。 | String |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | 否 |
+| **dependsOn: type** | TumblingWindowTriggerReference 的类型。 如果设置了依赖关系, 则为必需。 | String |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | 否 |
 | **dependsOn: size** | 依赖项翻转窗口的大小。 | 时间范围<br/>(hh:mm:ss)  | 正 timespan 值, 其中默认为子触发器的窗口大小  | 否 |
 | **dependsOn: offset** | 依赖项触发器的偏移量。 | 时间范围<br/>(hh:mm:ss) |  自依赖项中必须为负的 timespan 值。 如果未指定任何值, 则窗口与触发器本身相同。 | 自我依赖项：是<br/>其他:否  |
 
