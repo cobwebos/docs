@@ -2,29 +2,29 @@
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 05/24/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 70ffc91477d4a77619ba7df3b2ab121fea5f8bac
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: a2815961f6afb0032aa6011cce5d59ab37f81303
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509815"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843144"
 ---
-| Category | 数据存储 | 支持作为[复制活动](../articles/data-factory/copy-activity-overview.md)源 | 支持作为[复制活动](../articles/data-factory/copy-activity-overview.md)接收器 | 受 [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) 支持 | 受[自我托管 IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) 支持 | 支持的[数据流](../articles/data-factory/concepts-data-flow-overview.md)
+| 类别 | 数据存储 | 支持作为[复制活动](../articles/data-factory/copy-activity-overview.md)源 | 支持作为[复制活动](../articles/data-factory/copy-activity-overview.md)接收器 | 受 [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) 支持 | 受[自我托管 IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) 支持 | [数据流](../articles/data-factory/concepts-data-flow-overview.md)支持
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **Azure** |[Azure Blob 存储](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  | ✓ <br> <small>支持的格式：带分隔符的文本 Parquet</small> |
+| **Azure** |[Azure Blob 存储](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  | ✓ <br> <small>支持的格式:分隔文本、Parquet</small> |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure Cosmos DB 的 API for MongoDB](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure 数据资源管理器](../articles/data-factory/connector-azure-data-explorer.md) |✓ |✓ |✓ |✓ ||
-| &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |✓ |✓ |✓ |✓  |✓ <br> <small>支持的格式：带分隔符的文本 Parquet</small> |
-| &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |✓ <br> <small>支持的格式：带分隔符的文本 Parquet</small> |
+| &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |✓ |✓ |✓ |✓  |✓ <br> <small>支持的格式:分隔文本、Parquet</small> |
+| &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |✓ <br> <small>支持的格式:分隔文本、Parquet</small> |
 | &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure 文件存储](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure SQL 数据库](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |✓  |
-| &nbsp; |[Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-insance.md) |✓ |✓ |✓ |✓  ||
+| &nbsp; |[Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure SQL 数据仓库](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |✓  |
 | &nbsp; |[Azure 搜索索引](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  ||
 | &nbsp; |[Azure 表存储](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  ||
@@ -36,9 +36,9 @@ ms.locfileid: "67509815"
 | &nbsp; |[HBase](../articles/data-factory/connector-hbase.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Hive](../articles/data-factory/connector-hive.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Apache Impala（预览）](../articles/data-factory/connector-impala.md) |✓ | |✓ |✓  ||
-| &nbsp; |[Informix](../articles/data-factory/connector-odbc.md#ibm-informix-source) |✓ | | |✓  ||
+| &nbsp; |[Informix](../articles/data-factory/connector-informix.md) |✓ | | |✓  ||
 | &nbsp; |[MariaDB](../articles/data-factory/connector-mariadb.md) |✓ | |✓ |✓  ||
-| &nbsp; |[Microsoft Access](../articles/data-factory/connector-odbc.md#microsoft-access-source) |✓ | | |✓  ||
+| &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |✓ | | |✓  ||
 | &nbsp; |[MySQL](../articles/data-factory/connector-mysql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Netezza](../articles/data-factory/connector-netezza.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Oracle](../articles/data-factory/connector-oracle.md) |✓ |✓ |✓ |✓  ||
@@ -85,7 +85,7 @@ ms.locfileid: "67509815"
 | &nbsp; |[Paypal（预览）](../articles/data-factory/connector-paypal.md) |✓ | |✓ |✓  ||
 | &nbsp; |[QuickBooks（预览）](../articles/data-factory/connector-quickbooks.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  ||
-| &nbsp; |[Salesforce 服务云](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  ||
+| &nbsp; |[Salesforce 服务云](../articles/data-factory/connector-salesforce-service-cloud.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Salesforce Marketing Cloud（预览）](../articles/data-factory/connector-salesforce-marketing-cloud.md) |✓ | |✓ |✓  ||
 | &nbsp; |[SAP Cloud for Customer (C4C)](../articles/data-factory/connector-sap-cloud-for-customer.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[SAP ECC](../articles/data-factory/connector-sap-ecc.md) |✓ | |✓ |✓ ||
@@ -97,4 +97,4 @@ ms.locfileid: "67509815"
 | &nbsp; |[Zoho（预览）](../articles/data-factory/connector-zoho.md) |✓ | |✓ |✓  ||
 
 > [!NOTE]
-> 连接器标记为“预览”  意味着，可以试用它并向我们提供反馈。  若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
+> 连接器标记为“预览”意味着，可以试用它并向我们提供反馈。  若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。

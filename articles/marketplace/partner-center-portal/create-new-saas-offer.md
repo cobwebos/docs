@@ -7,16 +7,16 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a4947349e64d5f9bf95a9213701dc62a0e018b8f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
-ms.translationtype: MT
+ms.openlocfilehash: 6bf22bce28972e1f3a43efea3b33446ab2a81761
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501308"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019601"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
-若要开始创建 "软件即服务" (SaaS) 产品/服务, 请确保先[创建合作伙伴中心帐户](./create-account.md), 并打开 "概述" 选项[卡, 并](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)选择 "**概述**" 选项卡。
+若要开始创建 "软件即服务" (SaaS) 产品/服务, 请确保先[创建合作伙伴中心帐户](./create-account.md), 并打开 [Commercial Marketplace 仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), "概述" 选项卡, 并选择 "**概述**" 选项卡。
 
 ![合作伙伴中心的商业应用商店仪表板](./media/new-offer-overview.png)
 
@@ -431,7 +431,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件, 而客
 
 **固定速率:** 使用单个每月或每年低价位价格启用对你的产品/服务的访问。 这有时称为基于站点的定价。 使用此定价模型, 你可以选择定义使用 marketplace 计量服务 API 根据非标准单位对客户收费的计费计划。  有关计费计费的详细信息, 请参阅[使用 marketplace 计量服务按流量](./saas-metered-billing.md)计费。
 
-**基于座位:** 根据访问产品/服务的用户数量或使用的*座位*, 使用价格启用对产品/服务的访问。 使用此基于座位的模型, 可以根据价格设置允许的最小和最大座位数。 通过这种方式, 可以通过配置多个计划, 根据用户数量来配置不同的价格点。  这些字段是可选的。 如果留空, 座位数将被解释为没有限制 (最小为 1, 最大值为系统可以支持的最大数目)。 这些字段可作为计划更新的一部分进行编辑。
+**每个用户:** 根据访问产品/服务的用户数量或使用的座位, 使用价格启用对产品/服务的访问。 此基于用户的模型使你能够根据价格设置允许的最小和最大用户数量。 通过这种方式, 可以通过配置多个计划, 根据用户数量来配置不同的价格点。  这些字段是可选的。 如果未选择此值, 则将被解释为不具有限制的用户数 (最小值为 1, 最大值为系统可以支持的最大数目)。 这些字段可作为计划更新的一部分进行编辑。
 
 发布后, 无法更改计费定价模型选择。 此外, 同一产品/服务的所有计划必须共享同一定价模型。
 
@@ -477,98 +477,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件, 而客
 
 ## <a name="test-drive"></a>体验版
 
-使用 "**测试驱动器**" 选项卡, 你可以设置一个演示 (或 "测试驱动器"), 使客户能够在提交之前试用你的产品/服务。 有关详细信息, 请参阅[什么是测试驱动器？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。 如果你不再希望为你的产品/服务提供一个测试驱动器, 请返回 " **[产品/服务设置](#offer-setup)** " 页, 然后取消选中 "**启用测试驱动器**"。
-
-### <a name="technical-configuration"></a>技术配置
-可以使用以下类型的测试驱动器, 每种都有其自己的技术配置要求。
-
-- [Azure 资源管理器](#technical-configuration-for-azure-resource-manager-test-drive)
-- [Dynamics 365](#technical-configuration-for-dynamics-365-test-drive)
-- [逻辑应用](#technical-configuration-for-logic-app-test-drive)
-- [Power BI](#technical-configuration-not-required-for-power-bi-test-drives)(不需要技术配置)
-
-#### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Azure 资源管理器测试驱动器的技术配置
-
-一个部署模板, 其中包含组成解决方案的所有 Azure 资源。 适用于此方案的产品只使用 Azure 资源。 详细了解如何设置[Azure 资源管理器试用版驱动器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)。
-
-- **区域**(必需):目前, 有26个支持 Azure 的区域可供使用。 通常情况下, 你将希望使你的测试驱动器在你预计的客户数最多的区域中可用, 以便他们可以选择最接近的区域以获得最佳性能。 你将需要确保你的订阅可以在你选择的每个区域中部署所需的所有资源。
-
-- **Instances**：选择 "类型" ("热" 或 "冷") 和 "可用实例数", 将乘以提供的可用区域数。
-
-**Hot**：此类型的实例部署并等待每个选定区域的访问权限。 客户可以即时访问测试驱动器的*热*实例, 而无需等待部署。 弊端在于这些实例始终在 Azure 订阅上运行，因此，它们会产生较高的运行时间成本。 强烈建议至少具有一个*热*实例, 因为大多数客户不希望等待完全部署, 因此, 如果没有可用的*热*实例, 则会导致客户使用中出现下拉。
-
-**冷**:此类型的实例表示每个区域可能部署的实例总数。 冷实例需要整个测试驱动器资源管理器模板在客户请求测试驱动器时进行部署, 因此,*冷*实例的加载速度慢于*热*实例。 缺点是, 你只需支付测试驱动器的持续时间, 就*不*会像使用*热*实例那样始终在 Azure 订阅上运行它。
-
-- **试用 Azure 资源管理器模板**:上载包含 Azure 资源管理器模板的 .zip。  若要详细了解如何创建 Azure 资源管理器模板, 请参阅快速入门文章[使用 Azure 门户创建和部署 azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
-
-- **测试驱动器持续时间**(必需):输入测试驱动器将保持活动状态的时间长度 (以小时为单位)。 此时间段结束后，体验版会自动终止。 此持续时间可能只会按整小时数设置 (例如"2" 小时, "1.5" 无效。
-
-#### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Dynamics 365 的技术配置测试驱动器
-
-Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服务预配和部署, 消除设置测试驱动器的复杂性。 无论测试驱动器是面向业务中心、客户接洽还是操作受众, 此类型的托管测试驱动器的配置都是相同的。
-
-- **最大并发测试驱动器**(必需):设置一次可以使用您的测试驱动器的客户的最大数目。 在测试驱动器处于活动状态时, 每个并发用户将使用 Dynamics 365 许可证, 因此你将需要确保有足够的可用许可证来支持最大限制集。 建议的值为 3-5。
-
-- **测试驱动器持续时间**(必需):通过定义小时数来输入测试驱动器保持活动状态的时间长度。 超过此时间后, 会话将结束, 并且不再使用您的许可证之一。 建议使用2-24 小时的值, 具体取决于产品/服务的复杂性。 此持续时间可能只会按整小时数设置 (例如"2" 小时, "1.5" 无效。  如果用户运行时间不足, 并且想要再次访问测试驱动器, 则用户可以请求新的会话。
-
-- **实例 URL**(必需):客户将从其开始测试驱动器的 URL。 通常是运行应用并安装示例数据的 Dynamics 365 实例的 URL (例如 https://testdrive.crm.dynamics.com) ,
-
-- **实例 WEB API URL**(必需):通过登录到 Microsoft 365 帐户并导航到 "**设置** \&" gt; 来检索 Dynamics 365 实例的 Web API URL**自定义**\&g t;**开发人员资源**\&g t;**实例 WEB API (服务根 url)** , 复制此处找到的 URL (例如 https://testdrive.crm.dynamics.com/api/data/v9.0) )。
-
-- **角色名称**(必需):提供在自定义 Dynamics 365 测试驱动器中定义的安全角色名称。 这会在其测试驱动器 (例如, 测试驱动器角色) 期间分配给用户。
-
-#### <a name="technical-configuration-for-logic-app-test-drive"></a>逻辑应用的技术配置测试驱动器
-
-任何自定义产品都应使用这种类型的测试驱动器部署模板, 其中包含各种复杂的解决方案体系结构。 有关设置逻辑应用测试驱动器的详细信息, 请访问 GitHub 上的[操作](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md)和[客户参与](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)。
-
-- **区域**(必需, 单项选择下拉列表):目前, 有26个支持 Azure 的区域可供使用。 逻辑应用的资源将部署在所选的区域中。 如果逻辑应用包含存储在特定区域中的任何自定义资源, 请确保在此处选择 "区域"。 实现此目的的最佳方式是在门户中将逻辑应用完全部署在 Azure 订阅上, 并在做出此选择之前验证它是否正常工作。
-
-- **最大并发测试驱动器**(必需):设置一次可以使用您的测试驱动器的客户的最大数目。 已部署这些测试驱动器, 从而使客户无需等待部署即可立即访问它们。
-
-- **测试驱动器持续时间**(必需):输入测试驱动器将保持活动状态的时间长度 (以小时为单位)。 此时间段结束后, 测试驱动器自动终止。
-
-- **Azure 资源组名称**(必需):输入逻辑应用测试驱动器保存到的[Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)名称。
-
-- **Azure 逻辑应用名称**(必需):输入逻辑应用的名称, 该名称将测试驱动器分配给用户。 此逻辑应用必须保存在上述 Azure 资源组中。
-
-- 取消预**配逻辑应用名称**(必需):输入在客户完成后取消设置该测试驱动器的逻辑应用的名称。 此逻辑应用必须保存在上述 Azure 资源组中。
-
-#### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>Power BI 测试驱动器无需技术配置
-
-希望演示交互 Power BI 视觉对象的产品可以使用嵌入的链接, 将自定义的仪表板共享为其测试驱动器, 无需进一步的技术配置。 了解有关设置[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)模板应用的详细信息。
-
-### <a name="deployment-subscription-details"></a>部署订阅详细信息
-
-若要代表你部署测试驱动器, 请创建并提供一个单独的唯一 Azure 订阅。 (对于 Power BI 测试驱动器不是必需的)。
-
-- **Azure 订阅 ID**(Azure 资源管理器和逻辑应用需要):输入订阅 ID, 为资源使用情况报告和计费授予对 Azure 帐户服务的访问权限。 如果还没有 Azure 订阅, 请考虑[创建一个单独的 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)用于测试驱动器。 你可以通过登录到[Azure 门户](https://portal.azure.com/)并导航到左侧菜单的 "**订阅**" 选项卡来查找你的 Azure 订阅 ID。 选择该选项卡将显示你的订阅 ID (例如 "a83645ac-5ab6-6789-1h234g764ghty")。
-
-- **Azure AD 租户 ID**(必需):输入 Azure Active Directory (AD)[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID, 请登录到[Azure 门户](https://portal.azure.com/), 在左侧菜单中选择 "Active Directory" 选项卡, 选择 "**属性**", 然后查找列出的**目录 ID**号 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 你还可以使用域名 URL 查找你组织的租户 ID, 网址为: [https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
-
-- **Azure AD 租户名称**(动态365需要):输入 Azure Active Directory (AD) 名称。 若要查找此名称, 请登录到[Azure 门户](https://portal.azure.com/), 在右上角, 你的租户名称将在你的帐户名称下面列出。
-
-- **Azure AD 应用 ID**(必需):输入 Azure Active Directory (AD)[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID, 请登录到[Azure 门户](https://portal.azure.com/), 在左侧菜单中选择 "Active Directory" 选项卡, 选择 "**应用注册**", 然后查找列出的**应用程序 ID**号 (例如 50c464d3-4930-494c-963c-1e951d15360e)。
-
-- **Azure AD 应用客户端机密**(必需):输入 Azure AD 应用程序[客户端机密](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 若要查找此值, 请登录到[Azure 门户](https://portal.azure.com/)。 选择左侧菜单中的 " **Azure Active Directory** " 选项卡, 选择 "**应用注册**", 然后选择你的测试驱动器应用。 接下来, 选择 "**证书和密码**", 选择 "**新建客户端密码**", 输入描述, 选择 "**永不** **过期**", 然后选择 "**添加**"。 请确保复制值。 (在执行此操作之前, 请勿导航离开页面, 否则将无法访问此值。)
-
-请记住在转到下一节之前**保存**。
-
-### <a name="test-drive-listings-optional"></a>测试驱动器列表 (可选)
-
-"**测试驱动器**" 选项卡下的 "**测试驱动器列表**" 选项显示你的测试驱动器可用的语言 (和市场), 当前只有英语 (美国) 是可用的位置。 此外, 此页还显示特定于语言的列表的状态以及添加它的日期/时间。 需要为每种语言/市场定义测试驱动器详细信息 (说明、用户手册、视频等)。
-
-- **描述**(必需):介绍您的测试驱动器、要演示的内容、要浏览的功能, 以及可帮助用户确定是否获取您的产品/服务的任何相关信息。 最多可在此字段中输入3000个字符的文本。 
-
-- **访问信息**(对于 Azure 资源管理器和逻辑测试驱动器是必需的):说明若要访问和使用此测试驱动器, 客户需要知道哪些内容。 逐步完成使用产品/服务的方案, 并确切了解客户在整个测试过程中访问功能应知道的情况。 最多可在此字段中输入10000个字符的文本。
-
-- **用户手册**(必需):深入演练了您的测试驱动器体验。 用户手册应确切地说明您希望客户从遇到该测试驱动器中获得的内容, 并为他们可能遇到的任何问题提供参考。 文件必须采用 PDF 格式, 并在上传后命名为 (最多255个字符)。
-
-- **视频添加视频** (可选):可以将视频上传到 YouTube 或 Vimeo, 并使用链接和缩略图 (533 x 324 像素) 在此处引用视频, 以便客户可以查看信息, 以帮助他们更好地了解测试驱动器, 包括如何成功使用提供并了解突出显示其优势的方案。
-  - **名称**请求
-  - **URL (仅限 YouTube 或 Vimeo)** 请求
-  - **缩略图 (533 x 324px)** :图像文件必须采用 PNG 格式。
-
-完成这些字段后, 选择 "**保存**"。
+[!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
 
 ## <a name="publish"></a>发布
 

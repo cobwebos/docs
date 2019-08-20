@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: manayar
-ms.openlocfilehash: eeb689f90197830dad98c213849b2e82ba43bbf1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: ac754acd61700dc39ebc633da4274c74d8463824
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296354"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884170"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虚拟机规模集自动 OS 映像升级
 
@@ -56,10 +56,10 @@ ms.locfileid: "68296354"
 
 目前支持以下 SKU（我们会定期添加更多的 SKU）：
 
-| 发布者               | OS 产品/服务      |  SKU               |
+| 发布服务器               | OS 产品/服务      |  Sku               |
 |-------------------------|---------------|--------------------|
-| Canonical               | UbuntuServer  | 16.04-LTS          |
-| Canonical               | UbuntuServer  | 18.04-LTS          |
+| 规范               | UbuntuServer  | 16.04-LTS          |
+| 规范               | UbuntuServer  | 18.04-LTS          |
 | Rogue Wave (OpenLogic)  | CentOS        | 7.5                |
 | CoreOS                  | CoreOS        | Stable             |
 | Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
@@ -73,7 +73,7 @@ ms.locfileid: "68296354"
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>配置自动 OS 映像升级时的要求
 
-- 平台映像的版本属性必须设置为“最新”   。
+- 平台映像的版本属性必须设置为“最新”。
 - 对非 Service Fabric 规模集使用应用程序运行状况探测或[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)。
 - 使用计算 API 版本2018-10-01 或更高版本。
 - 确保规模集模型中指定的外部资源可用且已更新。 示例包括，VM 扩展属性中用于引导有效负载的 SAS URI、存储帐户中的有效负载、对模型中的机密的引用，等等。
@@ -86,7 +86,7 @@ ms.locfileid: "68296354"
 -   规模集模型定义上的 Service Fabric 扩展必须具有 TypeHandlerVersion 1.1 或更高版本。
 -   持久性级别应在 Service Fabric 群集上相同, 并在规模集模型定义上 Service Fabric 扩展。
 
-请确保 Service Fabric 群集和 Service Fabric 扩展中的持续性设置不匹配, 因为不匹配将导致升级错误。 可根据本页中所述的指导原则修改持久性[级别。](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)
+请确保 Service Fabric 群集和 Service Fabric 扩展中的持续性设置不匹配, 因为不匹配将导致升级错误。 可根据[本页](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)中所述的指导原则修改持久性级别。
 
 ## <a name="configure-automatic-os-image-upgrade"></a>配置自动 OS 映像升级
 若要配置自动 OS 映像升级，请确保在规模集模型定义中将 *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* 属性设置为 *true*。
@@ -128,14 +128,14 @@ az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradeP
 
 OS 升级过程中，规模集中的 VM 实例每次只升级一批。 只有客户应用程序在升级后的 VM 实例上正常运行时，才会继续升级。 建议应用程序向规模集 OS 升级引擎提供运行状况信号。 默认情况下，在 OS 升级期间，平台根据 VM 电源状态和扩展预配状态确定升级后 VM 实例是否正常运行。 在 VM 实例的 OS 升级期间，VM 实例上的 OS 磁盘被替换为基于最新版本映像的新磁盘。 OS 升级完毕后，配置的扩展在这些 VM 上运行。 仅当已成功预配实例上的所有扩展时，才将应用程序视为正常。
 
-可以选择为规模集配置应用程序运行状况探测，用于为平台提供关于应用程序当前状态的准确信息。 应用程序运行状况探测是用作运行状况信号的自定义负载均衡器探测。 规模集 VM 实例上运行的应用程序可以响应外部的 HTTP 或 TCP 请求，指示其是否正常运行。 若要详细了解自定义负载均衡器探测的工作原理，请参阅[了解负载均衡器探测](../load-balancer/load-balancer-custom-probe-overview.md)。 Service Fabric 规模集并非一定要使用应用程序运行状况探测，但我们建议使用。 非 Service Fabric 规模集需要负载均衡器应用程序运行状况探测或[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)。
+可以选择为规模集配置应用程序运行状况探测，用于为平台提供关于应用程序当前状态的准确信息。 应用程序运行状况探测是用作运行状况信号的自定义负载均衡器探测。 规模集 VM 实例上运行的应用程序可以响应外部的 HTTP 或 TCP 请求，指示其是否正常运行。 若要详细了解自定义负载均衡器探测的工作原理，请参阅[了解负载均衡器探测](../load-balancer/load-balancer-custom-probe-overview.md)。 Service Fabric 规模集不支持应用程序运行状况探测。 非 Service Fabric 规模集需要负载均衡器应用程序运行状况探测或[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)。
 
 如果规模集配置为使用多个放置组，则探测需使用[负载均衡器标准版](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>在规模集上将自定义负载均衡器探测配置为应用程序运行状况探测
 最佳做法是为规模集运行状况显式创建负载均衡器探测。 运行状况探测可使用与现有 HTTP 探测或 TCP 探测相同的终结点，但所需的行为可能与传统负载均衡器探测不同。 例如，如果实例的负载过高，传统负载均衡器探测可能返回“不正常”，但是，这不符合自动 OS 升级过程中实际的实例运行状况。 请将探测配置为不超过两分钟的高探测速率。
 
-可以在规模集的 networkProfile 中引用负载均衡器探测  ，并可将探测与内部或公共的负载均衡器相关联，如下所示：
+可以在规模集的 networkProfile 中引用负载均衡器探测，并可将探测与内部或公共的负载均衡器相关联，如下所示：
 
 ```json
 "networkProfile": {

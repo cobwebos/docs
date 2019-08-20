@@ -18,10 +18,10 @@ ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 11a54dee653bcfa6c94a861e483183ac39f465bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/06/2019
 ms.locfileid: "67710177"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
@@ -344,7 +344,7 @@ Microsoft Azure 是 Microsoft 提供的一个云服务平台，它提供了各�
 * SAP 环境：以逻辑方式组合在一起，用于执行开发、QAS、培训、DR 或生产等业务功能的一个或多个 SAP 组件。
 * SAP 布局：表示客户 IT 布局中所有 SAP 资产的整个格局。 SAP 布局包括所有生产和非生产环境。
 * SAP 系统：诸如 SAP ERP 开发系统、SAP BW 测试系统、SAP CRM 生产系统等的 DBMS 层与应用程序层的组合。在 Azure 部署中，不支持在本地和 Azure 之间分割这两个层。 这意味着，某个 SAP 系统要么部署在本地，要么部署在 Azure 中。 但是，可以将 SAP 布局中的不同系统部署到 Azure 或本地。 例如，可以将 SAP CRM 开发系统和测试系统部署在 Azure 中，同时将 SAP CRM 生产系统部署在本地。
-* 跨界或混合：描述这样一种方案：将 VM 部署到在本地数据中心与 Azure 之间建立了站点到站点、多站点或 ExpressRoute 连接的 Azure 订阅。 在一般的 Azure 文档中，此类部署也称为跨界或混合方案。 连接的原因是为了将本地域、本地 Active Directory/OpenLDAP 和本地 DNS 扩展到 Azure。 本地布局会扩展到订阅的 Azure 资产。 经过这种扩展后，VM 可以成为本地域的一部分。 本地域的域用户可以访问服务器，并可在这些 VM 上运行服务（例如 DBMS 服务）。 但无法在本地的 VM 和 Azure 部署的 VM 之间进行通信和名称解析。 这是最常见的方案，几乎是将 SAP 资产部署到 Azure 的专用方案。 有关详细信息, 请参阅[这][vpn-gateway-cross-premises-options]篇[文章。][vpn-gateway-site-to-site-create]
+* 跨界或混合：描述这样一种方案：将 VM 部署到在本地数据中心与 Azure 之间建立了站点到站点、多站点或 ExpressRoute 连接的 Azure 订阅。 在一般的 Azure 文档中，此类部署也称为跨界或混合方案。 连接的原因是为了将本地域、本地 Active Directory/OpenLDAP 和本地 DNS 扩展到 Azure。 本地布局会扩展到订阅的 Azure 资产。 经过这种扩展后，VM 可以成为本地域的一部分。 本地域的域用户可以访问服务器，并可在这些 VM 上运行服务（例如 DBMS 服务）。 但无法在本地的 VM 和 Azure 部署的 VM 之间进行通信和名称解析。 这是最常见的方案，几乎是将 SAP 资产部署到 Azure 的专用方案。 有关详细信息, 请参阅[这篇][vpn-gateway-cross-premises-options]和[这篇][vpn-gateway-site-to-site-create]文章。
 
 > [!NOTE]
 > SAP 生产系统支持对 SAP 系统进行这种跨界或混合部署：运行 SAP 系统的 Azure 虚拟机是本地域的成员。 跨界或混合配置可将部分或完整 SAP 布局部署到 Azure。 即使在 Azure 中执行完整 SAP 布局，也需要这些 VM 成为本地域和 ADS/OpenLDAP 的一部分。 
@@ -1959,7 +1959,7 @@ Azure 缩放单元内的 Azure 可用性集可使用不限数目的容错和升�
 仅限非托管磁盘：当部署许多 SAP 系统，并且所部署的 VM 数目将超过每个订阅的存储帐户上限时，可能需要稍微折衷以下所述的概念。 在此情况下，VM 的 VHD 需要合并到一个存储帐户中。 通常可通过合并不同 SAP 系统的 SAP 应用程序层 VM 的 VHD 来实现此目的。  也可以将不同 SAP 系统的不同 DBMS VM 的不同 VHD 合并到一个 Azure 存储帐户中。 由此记住 Azure 存储帐户 的 IOPS 限制 (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>)
 
 
-##### <a name="windowslogowindows-ha-on-windows"></a>![Windows][Logo_Windows] Windows 上的 HA
+##### <a name="windowslogo_windows-ha-on-windows"></a>![Windows][Logo_Windows] Windows 上的 HA
 
 ![Azure IaaS 中包含 SQL Server 的 SAP NetWeaver 应用程序 HA 体系结构][planning-guide-figure-3200]
 
@@ -1981,7 +1981,7 @@ Azure 缩放单元内的 Azure 可用性集可使用不限数目的容错和升�
 
 ![Azure IaaS 中包含 SQL Server 的 SAP NetWeaver 应用程序 HA 体系结构][planning-guide-figure-3201]
 
-##### <a name="linuxlogolinux-ha-on-linux"></a>![Linux][Logo_Linux] Linux 上的 HA
+##### <a name="linuxlogo_linux-ha-on-linux"></a>![Linux][Logo_Linux] Linux 上的 HA
 
 Azure 上 Linux 的 SAP HA 体系结构基本上与上述 Windows 相同。 有关支持的高可用性解决方案的列表，请参阅 SAP 说明 [1928533]。
 

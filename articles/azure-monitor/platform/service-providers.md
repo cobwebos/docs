@@ -1,5 +1,5 @@
 ---
-title: Azure 监视的服务提供商 |Microsoft Docs
+title: 服务提供商的 Azure Monitor |Microsoft Docs
 description: Azure Monitor 可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。
 services: log-analytics
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/06/2019
 ms.author: meirm
-ms.openlocfilehash: 97d8d6fac93ebabac8fb319ce2f1ab8719f5f86b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 971757a4778dd50be486bead0c50fd6b3a25002e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60452647"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839273"
 ---
 # <a name="azure-monitor-for-service-providers"></a>适用于服务提供商的 Azure Monitor
 Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。 
@@ -29,7 +29,7 @@ Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (M
 
 ## <a name="architectures-for-service-providers"></a>适用于服务提供商的体系结构
 
-借助 Log Analytics 工作区，管理员可控制日志流动和隔离，并创建满足其特定业务需求的日志体系结构。 [本文](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)介绍有关工作区管理的一般注意事项。 服务提供商有其他注意事项。
+Log Analytics 工作区为管理员提供了一种方法, 用于控制[日志](data-platform-logs.md)数据的流和隔离, 并创建满足其特定业务需求的体系结构。 [本文](design-logs-deployment.md)介绍了工作区的设计、部署和迁移注意事项, 并讨论了[如何应用和管理日志数据的权限](manage-access.md)。 服务提供商有其他注意事项。
 
 对于 Log Analytics 工作区，有三种可能的体系结构适用于服务提供商：
 
@@ -55,16 +55,21 @@ Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (M
 
 此体系结构的优点在于：
 * 可轻松管理大量客户并将其集成到各种后端系统。
+
 * 服务提供商对日志和各种项目（例如函数和保存的查询）拥有完全所有权。
+
 * 服务提供商可以对其所有客户执行分析。
 
 此体系结构的缺点在于：
 * 此体系结构仅适用于基于代理的 VM 数据，不涵盖 PaaS、SaaS 和 Azure 结构数据源。
-* 将客户合并到单个工作区时，可能很难分隔客户之间的数据。 唯一效果不错的方法是使用计算机的完全限定域名 (FQDN) 或通过 Azure 订阅 ID 进行分隔。 
-* 来自所有客户的全部数据都将存储在具有单独帐单和相同保留期及配置设置的同一区域中。
-* Azure 结构及 Azure 诊断和 Azure 审核日志等 PaaS 服务要求工作区与资源位于同一租户中，因此它们无法将日志发送到中心工作区。
-* 来自所有客户的全部 VM 代理都将使用相同的工作区 ID 和密钥对中心工作区进行身份验证。 无法在不干扰其他客户的情况下阻止来自特定客户的日志。
 
+* 将客户合并到单个工作区时，可能很难分隔客户之间的数据。 唯一效果不错的方法是使用计算机的完全限定域名 (FQDN) 或通过 Azure 订阅 ID 进行分隔。 
+
+* 来自所有客户的全部数据都将存储在具有单独帐单和相同保留期及配置设置的同一区域中。
+
+* Azure 结构及 Azure 诊断和 Azure 审核日志等 PaaS 服务要求工作区与资源位于同一租户中，因此它们无法将日志发送到中心工作区。
+
+* 来自所有客户的全部 VM 代理都将使用相同的工作区 ID 和密钥对中心工作区进行身份验证。 无法在不干扰其他客户的情况下阻止来自特定客户的日志。
 
 ### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3.混合式：日志存储在位于客户租户中的工作区内，且其中一部分日志会被提取到中心位置。
 
@@ -76,10 +81,14 @@ Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (M
 
 2. 使用 Power BI 作为中心位置：当各个工作区利用 Log Analytics 工作区和 [Power BI](../../azure-monitor/platform/powerbi.md) 之间的集成将数据导出到 Power BI 时，Power BI 可以充当中心位置。 
 
-
 ## <a name="next-steps"></a>后续步骤
+
 * 使用[Resource Manager 模板](template-workspace-configuration.md)自动执行创建和配置工作区
+
 * 使用 [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) 自动创建工作区 
+
 * 使用[警报](../../azure-monitor/platform/alerts-overview.md)以便与现有系统集成
+
 * 使用 [Power BI](../../azure-monitor/platform/powerbi.md) 生成摘要报告
+
 * 查看[配置 Log Analytics 和 Power BI 以监视多个 CSP 客户](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)的过程

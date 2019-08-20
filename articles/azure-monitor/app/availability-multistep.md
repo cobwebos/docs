@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 150c41dce06c81f2e9e07605ab6d5afa9e424453
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494486"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881448"
 ---
 # <a name="multi-step-web-tests"></a>多步骤 Web 测试
 
 可以通过多步骤 Web 测试监视记录的一系列 URL 以及与网站的交互。 本文将详细介绍使用 Visual Studio Enterprise 创建多步骤 Web 测试的过程。
 
 > [!NOTE]
-> 多步骤 web 测试依赖于 Visual Studio webtest 文件。 已[公布](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/), Visual Studio 2019 将是具有 webtest 功能的最新版本。 必须了解的是, 尽管不会添加任何新功能, 但目前仍支持 Visual Studio 2019 中的 webtest 功能, 并且在产品的支持生命周期内仍将继续提供支持。 Azure Monitor 产品团队已经解决了有关将来的多步骤[可用性测试的](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)问题。  
+> 多步骤 web 测试依赖于 Visual Studio webtest 文件。 已[公布](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/), Visual Studio 2019 将是具有 webtest 功能的最新版本。 必须了解的是, 尽管不会添加任何新功能, 但目前仍支持 Visual Studio 2019 中的 webtest 功能, 并且在产品的支持生命周期内仍将继续提供支持。 Azure Monitor 产品团队已经[解决了有关将来的多步骤可用性测试的问题](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)。  
 
 ## <a name="pre-requisites"></a>先决条件
 
@@ -136,7 +136,18 @@ Web 测试日期时间插件提供处理时间参数化的方式。
 
 **简单的用户名和密码** 以普通方式录制 Web 测试。 先删除 Cookie。
 
-**SAML 身份验证** 使用可用于 Web 测试的 SAML 插件。 访问插件的方式：
+**SAML 身份验证**
+
+|属性名| 描述|
+|----|-----|
+| 受众 Uri | SAML 标记的受众 URI。  这是访问控制服务 (ACS) 的 URI, 包括 ACS 命名空间和主机名。 |
+| 证书密码 | 将授予对嵌入私钥的访问权限的客户端证书的密码。 |
+| 客户端证书  | 具有 Base64 编码格式的私钥的客户端证书值。 |
+| 名称标识符 | 标记的名称标识符 |
+| 不晚 | 标记有效的时间跨度。  默认值为 5 分钟。 |
+| 不早于 | 在过去创建的标记将有效的时间跨度 (用于处理时间偏差)。  默认值为 (负) 5 分钟。 |
+| 目标上下文参数名称 | 将接收生成的断言的上下文参数。 |
+
 
 **客户端机密** 如果应用的某个登录路由涉及到客户端机密，请使用该路由。 例如，Azure Active Directory (AAD) 就是提供客户端机密登录的服务。 在 AAD 中，客户端机密是应用密钥。
 
