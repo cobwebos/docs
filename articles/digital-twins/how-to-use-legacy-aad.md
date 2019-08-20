@@ -1,26 +1,33 @@
 ---
-title: 使用 Azure 数字孪生旧的 AAD 应用注册 |Microsoft Docs
-description: 本文介绍如何使用 Azure 数字孪生安装程序与 Azure Active Directory 中创建应用注册的旧方法。
+title: 使用 Azure 数字孪生的旧 AAD 应用注册 |Microsoft Docs
+description: 本文介绍如何使用旧版方法, 通过 Azure 数字孪生设置为 Azure Active Directory 创建应用注册。
 author: alinamstanciu
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 08/16/2019
 ms.author: alinast
-ms.openlocfilehash: ed6c540cedd21bb5154f8746050d5eaa9444b818
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: e9689c71c881c7f5f29ac05fea53bb2c27f75591
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484727"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624763"
 ---
-# <a name="register-your-azure-digital-twins-app-with-azure-active-directory-legacy"></a>与旧的 Azure Active Directory 中注册 Azure 数字孪生应用程序
+# <a name="register-your-azure-digital-twins-app-with-azure-active-directory-legacy"></a>向 Azure Active Directory 旧版注册 Azure 数字孪生应用
 
-本文介绍可以使用，以便它可以访问你的数字孪生实例注册到 Azure Active Directory (Azure AD) 示例应用程序的旧的或旧方法。 您可能想要尝试此方法在情况下新的 Azure AD 应用注册并不适用于你的设置。
+本文介绍如何使用 "不推荐使用的**应用注册 (旧)** " 边栏选项卡注册示例应用程序。
+
+> [!IMPORTANT]
+> * 新的“Azure Active Directory” > “应用注册”边栏选项卡取代了旧的“Azure Active Directory” > “应用注册(旧版)”边栏选项卡 2019 年 5 月版。
+> * 在旧版边栏选项卡中创建或显示的应用注册将自动显示在新的边栏选项卡中。
+> * 有关迁移到新的 Azure 应用注册体验的全面信息，请阅读 [Azure 应用注册培训指南](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide)和 [Azure Active Directory 快速入门](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)。
 
 [!INCLUDE [Digital Twins legacy AAD](../../includes/digital-twins-permissions-legacy.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-一旦您的应用程序注册到 AAD 后，它然后与您的数字孪生实例并在你的方案中继续学习的帮助连接。 请参阅[快速入门](quickstart-view-occupancy-dotnet.md#build-application)或[教程](tutorial-facilities-setup.md#configure-the-digital-twins-sample)的后续步骤的详细信息。 
+继续学习[快速入门](quickstart-view-occupancy-dotnet.md#build-application)或[教程](tutorial-facilities-setup.md#configure-the-digital-twins-sample)。
+
+了解[如何使用新的**应用注册**边栏选项卡注册您的应用程序](tutorial-facilities-setup.md#grant-permissions-to-your-app)。

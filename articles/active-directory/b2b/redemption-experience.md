@@ -11,67 +11,67 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a80eaa134130195fce00ee6a4d68851e478c4532
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2d32818f9e96e931f9e8c3c13554752327c5c456
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052458"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622613"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
-本文介绍了来宾用户可以访问你的资源和他们会遇到在同意处理方法。 如果发送到来宾邀请电子邮件，邀请包括来宾可以兑换的链接以获取你的应用程序或门户的访问权限。 只是一种来宾有权访问你的资源的邀请电子邮件。 或者，可以将来宾添加到你的目录，并将它们提供给门户或你想要共享的应用的直接链接。 它们使用的方法，无论来宾指导完成首次同意过程中。 此过程可确保您的客人同意隐私条款，接受任何[使用条款](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou)，已设置好。
+本文介绍来宾用户可以访问你的资源的方式以及他们将遇到的同意过程。 如果向来宾发送邀请电子邮件, 邀请会提供一个链接, 来宾可以兑换该链接来访问应用或门户。 邀请电子邮件只是来宾可以访问资源的一种方式。 作为替代方法, 你可以将来宾添加到目录, 并为其分配指向要共享的门户或应用程序的直接链接。 无论他们使用哪种方法, 都会通过首次同意过程指导来宾。 此过程可确保客人同意隐私条款, 并接受已设置[的任何使用条款](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou)。
 
-来宾用户帐户时向你的目录添加来宾用户，具有一个许可状态 （可在 PowerShell 中查看），最初设置为**PendingAcceptance**。 此设置将保持直到来宾接受邀请并同意你的隐私策略和使用条款。 此后，同意状态将变为**已接受**，并在同意页不再呈现给来宾。
+将来宾用户添加到目录时, 来宾用户帐户的同意状态 (可在 PowerShell 中查看) 最初设置为**PendingAcceptance**。 此设置将保留, 直到来宾接受邀请, 并同意你的隐私策略和使用条款。 之后, 同意状态将更改为 "已**接受**", 并且同意页面将不再显示给来宾。
 
 ## <a name="redemption-through-the-invitation-email"></a>通过邀请电子邮件兑换
 
-将来宾用户添加到的目录[使用 Azure 门户](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal)，邀请电子邮件发送到进程中来宾。 您还可以选择发送邀请电子邮件后[使用 PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)将来宾用户添加到你的目录。 当他们兑换的电子邮件中的链接时，以下是体验的来宾的说明。
+[使用 Azure 门户](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal)将来宾用户添加到目录中时, 会在该过程中向来宾发送邀请电子邮件。 [使用 PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)将来宾用户添加到目录时, 还可以选择发送邀请电子邮件。 下面是客户在兑换电子邮件中的链接时的体验说明。
 
-1. 来宾会收到[邀请电子邮件](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements)从发送**Microsoft 邀请**。
-2. 来宾选择**开始**电子邮件中。
-3. 如果来宾不具有在联合组织中的 Azure AD 帐户、 Microsoft 帐户 (MSA) 或电子邮件帐户，系统会提示他们创建 MSA (除非[一次性密码](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode)启用功能后，不需要 MSA).
-4. 来宾指导[同意体验](#consent-experience-for-the-guest)如下所述。
+1. 来宾收到从**Microsoft 邀请**发送的[邀请电子邮件](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements)。
+2. 来宾选择电子邮件中的 "**入门**"。
+3. 如果来宾没有 Azure AD 帐户、Microsoft 帐户 (MSA) 或联合组织中的电子邮件帐户, 系统会提示他们创建 MSA (除非启用了[一次性密码](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode)功能, 这不需要 msa)。
+4. 来宾通过下面所述的[许可经验](#consent-experience-for-the-guest)来指导。
 
 ## <a name="redemption-through-a-direct-link"></a>通过直接链接兑换
 
-作为邀请电子邮件的替代方法，您可以进行来宾的直接链接到你的应用程序或门户。 首先需要将来宾用户添加到你的目录通过[Azure 门户](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal)或[PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)。 然后，可以使用任一[向用户部署应用程序的可自定义方法](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)，包括直接登录链接。 当来宾而不是邀请电子邮件使用直接链接时，它们将仍可指导您完成第一次同意体验。
+作为邀请电子邮件的替代方法, 你可以向来宾授予你的应用或门户的直接链接。 首先需要通过[Azure 门户](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal)或[PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)将来宾用户添加到目录。 然后, 你可以使用任何[可自定义的方式将应用程序部署到用户](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences), 包括直接登录链接。 当来宾使用直接链接而不是邀请电子邮件时, 他们仍将通过首次同意体验指导。
 
 > [!IMPORTANT]
-> 直接链接必须是特定于租户的。 换而言之，它必须包含租户 ID，或已验证域，以便来宾可以在租户中，共享的应用所在的位置进行身份验证。 公共 URL 类似于 https://myapps.microsoft.com 不适用于来宾因为它将重定向到其宿主租户中进行身份验证。 下面是与租户上下文的直接链接的一些示例：
- > - 应用程序访问面板： https://myapps.microsoft.com/?tenantid=&lt ; 租户 id&gt; 
- > - 应用访问面板中的已验证的域： https://myapps.microsoft.com/&lt ; 已验证域&gt;
- > - Azure 门户： https://portal.azure.com/&lt ; 租户 id&gt;
- > - 单个应用： 请参阅如何使用[直接登录链接](../manage-apps/end-user-experiences.md#direct-sign-on-links)
+> 直接链接必须特定于租户。 换句话说, 它必须包含租户 ID 或已验证的域, 以便在你的租户中对来宾进行身份验证, 共享应用位于该位置。 常见的 URL ( https://myapps.microsoft.com 如) 不能用于来宾, 因为它将重定向到其主租户进行身份验证。 下面是包含租户上下文的直接链接的一些示例:
+ > - 应用访问面板: https://myapps.microsoft.com/?tenantid=&lt ; 租户 id&gt; 
+ > - 已验证域的 "应用访问面板 https://myapps.microsoft.com/&lt ":; 已验证域&gt;
+ > - Azure 门户: https://portal.azure.com/&lt ; 租户 id&gt;
+ > - 单个应用: 请参阅如何使用[直接登录链接](../manage-apps/end-user-experiences.md#direct-sign-on-links)
 
-有某些情况下，邀请电子邮件建议通过直接链接。 如果这些特殊的情况下对你的组织至关重要，我们建议您通过使用方法仍将发送邀请电子邮件邀请用户：
- - 用户不具有在联合组织中的 Azure AD 帐户、 MSA 或电子邮件帐户。 除非使用一次性密码功能，来宾将需要兑换邀请电子邮件，指导您完成创建 MSA 的步骤。
+在某些情况下, 建议通过直接链接使用邀请电子邮件。 如果这些特殊案例对你的组织很重要, 我们建议你通过使用仍发送邀请电子邮件的方法邀请用户:
+ - 用户没有 Azure AD 帐户、MSA 或联合组织中的电子邮件帐户。 除非你使用的是一次性密码功能, 否则来宾需要兑换邀请电子邮件, 以指导你完成创建 MSA 的步骤。
  - 有时，由于与联系人对象（例如，Outlook 联系人对象）存在冲突，受邀用户对象可能会没有电子邮件地址。 在这种情况下，用户必须单击邀请电子邮件中的兑换 URL。
  - 用户可使用受邀电子邮件地址的别名登录。 （别名指与电子邮件帐户关联的其他电子邮件地址。）在这种情况下，用户必须单击邀请电子邮件中的兑换 URL。
 
-## <a name="consent-experience-for-the-guest"></a>来宾的的同意体验
+## <a name="consent-experience-for-the-guest"></a>来宾的许可体验
 
-来宾身份登录时要访问第一次的合作伙伴组织中的资源，它们被指导您完成以下页面。 
+当来宾首次登录以访问合作伙伴组织中的资源时, 将通过以下页面进行指导。 
 
-1. 来宾评审**查看权限**页描述邀请方组织的隐私声明。 用户必须**接受**到邀请方组织的隐私策略，以继续根据其信息的用途。
+1. 来宾会查看 "**评审权限**" 页, 其中描述了邀请组织的隐私声明。 用户必须根据邀请的组织的隐私策略,**接受**其信息, 然后才能继续操作。
 
    ![显示“查看权限”页的屏幕截图](media/redemption-experience/review-permissions.png) 
 
    > [!NOTE]
    > 有关如何以租户管理员身份链接到组织隐私声明的信息，请参阅[如何：在 Azure Active Directory 中添加组织的隐私信息](https://aka.ms/adprivacystatement)。
 
-2. 如果配置了使用条款，来宾将打开并查看使用条款，，然后选择**接受**。 
+2. 如果配置了使用条款, 则来宾将打开并查看使用条款, 然后选择 "**接受**"。 
 
    ![显示新使用条款的屏幕截图](media/redemption-experience/terms-of-use-accept.png) 
 
    > [!NOTE]
-   > 你可以配置，请参阅[使用条款](../governance/active-directory-tou.md)中**管理** > **组织关系** > **使用条款**.
+   > 你可以配置在**管理** > **组织关系** > **使用条款**中查看[使用条款](../governance/active-directory-tou.md)。
 
-3. 除非另行指定，来宾将重定向到的应用程序访问面板中，其中列出了来宾可以访问的应用程序。
+3. 除非另外指定, 否则来宾将重定向到 "应用访问面板", 其中列出了来宾可以访问的应用程序。
 
-   ![显示应用程序访问面板的屏幕截图](media/redemption-experience/myapps.png) 
+   ![显示应用访问面板的屏幕截图](media/redemption-experience/myapps.png) 
 
-在目录中，来宾的**已接受邀请**值更改为**是**。 如果创建 MSA，访客**源**演示**的 Microsoft 帐户**。 有关来宾用户帐户属性的详细信息，请参阅[的 Azure AD B2B 协作用户属性](user-properties.md)。 
+在目录中, 来宾的 "**邀请已接受**" 值更改为 **"是"** 。 如果创建了 MSA, 则来宾的**源**会显示**Microsoft 帐户**。 有关来宾用户帐户属性的详细信息, 请参阅[AZURE AD B2B 协作用户的属性](user-properties.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

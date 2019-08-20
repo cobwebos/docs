@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 1da297034a9776c4576fa7c4556b1da47b5e9361
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
-ms.translationtype: HT
+ms.openlocfilehash: c4ba2269003c9d401982b83f4e66c8caf45a0073
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611796"
+ms.locfileid: "69624702"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>功能比较：Azure SQL 数据库与 SQL Server
 
@@ -132,7 +132,7 @@ Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的
 | [临时表](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [是](sql-database-temporal-tables.md) | [是](sql-database-temporal-tables.md) |
 | 时区选择 | 否 | [是](sql-database-managed-instance-timezone.md)的, 必须在创建托管实例时配置。 |
 | 威胁检测|  [是](sql-database-threat-detection.md)|[是](sql-database-managed-instance-threat-detection.md)|
-| [跟踪标志](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | 否 | 否 |
+| [跟踪标志](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | 否 | 是, 但仅限有限的全局跟踪标志集。 请参阅[DBCC 差异](sql-database-managed-instance-transact-sql-information.md#dbcc) |
 | [事务复制](sql-database-managed-instance-transactional-replication.md) | 是,[仅限事务复制和快照复制订阅服务器](sql-database-single-database-migrate.md) | 是, 在[公共预览版](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)中。 请参阅[此处](sql-database-managed-instance-transact-sql-information.md#replication)的限制。 |
 | [变量](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | 是 | 是 |
 | [透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | 是 - 仅限“常规用途”和“业务关键”服务层级| [是](transparent-data-encryption-azure-sql.md) |

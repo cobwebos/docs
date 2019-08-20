@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 5bf2ee68ff2cfde2846dff2d94f7478920a18760
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037107"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624986"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>教程：将 SQL 数据库托管实例添加到故障转移组
 
@@ -151,7 +151,7 @@ ms.locfileid: "69037107"
     | **网关类型** | 选择“VPN”。 |
     | **VPN 类型** | 选择 "**基于路由**" |
     | **SKU**| 保留默认值`VpnGw1`。 |
-    | **Location**| 辅助托管实例和辅助虚拟网络所在的位置。   |
+    | **Location**| 主托管实例和主虚拟网络所在的位置。   |
     | **虚拟网络**| 选择在第2部分中创建的虚拟网络, 例如`vnet-sql-mi-primary`。 |
     | **公共 IP 地址**| 选择“新建”。 |
     | **公共 IP 地址名称**| 输入 IP 地址的名称, 如`primary-gateway-IP`。 |

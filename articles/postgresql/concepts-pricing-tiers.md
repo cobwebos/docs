@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 2f6be256801983924cc794d6c8b8fa31e39959e1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f65bc0a9969ac713c2fb9f8629b97fbe522e9fe0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967857"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624849"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的定价层
 
@@ -67,7 +67,7 @@ ms.locfileid: "68967857"
 |              | **常规用途** | **内存优化** |
 |:-------------|:--------------------|:---------------------|
 | 存储类型 | Azure 高级存储 | Azure 高级存储 |
-| 存储大小 | 32 GB 到 16 TB| 32到 16 TB |
+| 存储大小 | 32 GB 到 16 TB| 32 GB 到 16 TB |
 | 存储增量大小 | 1 GB | 1 GB |
 | IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS |
 

@@ -3,7 +3,7 @@ title: Azure 媒体服务 - HEVC 的平滑流式处理协议 (MS-SSTR) 修正 | 
 description: 本规范描述 Azure 媒体服务中基于 HEVC 分片 MP4 的实时传送视频流的协议和格式。 本规范对平滑流式处理协议文档 (MS-SSTR) 做了修正，包括对 HEVC 引入和流式处理的支持。 本文中仅指定了传送 HEVC 所要进行的更改，“（未更改）”表示文本是复制的，仅用于澄清目的。
 services: media-services
 documentationcenter: ''
-author: cenkdin
+author: johndeu
 manager: femila
 editor: ''
 ms.assetid: f27d85de-2cb8-4269-8eed-2efb566ca2c6
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: dfd6de1ab2e4530afb56d1c6c67e6d78eb9ee474
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: e0637b2a015a610f9c3f92809f63a442980b63b1
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015676"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624806"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 
 
@@ -27,7 +27,7 @@ ms.locfileid: "69015676"
 
 本文提供适用于平滑流式处理协议规范 [MS-SSTR]（实现 HEVC 编码视频的平滑流式处理）的详细修正。 本规范只阐述了交付 HEVC 视频编解码器所要进行的更改。 本文遵循 [MS-SSTR] 规范所用的相同编号架构。 整篇文章中显示的空白标题行用于将读者定位到 [MS-SSTR] 规范中的相应位置。  “（未更改）”表示文本是复制的，仅用于澄清目的。
 
-本文提供平滑流式处理清单中 HEVC 视频编解码器信号的技术实现要求；规范参考内容经过更新，参考了包括 HEVC、HEVC 通用加密在内的最新 MPEG 标准；ISO 基本媒体文件格式的框架名称经过更新，与最新规范保持一致。 
+本文针对平滑流式处理清单中的 HEVC 视频编解码器 (使用 "hev1" 或 "hvc1" 格式跟踪) 提供技术实现要求, 并更新规范引用以引用当前 MPEG 标准包括 HEVC、HEVC 的通用加密, 以及 ISO 基本媒体文件格式的 box 名称已更新, 以与最新的规范保持一致。 
 
 参考的平滑流式处理协议规范 [MS-SSTR] 描述了通过以下方式传送实时和点播数字媒体（例如音频和视频）所用的在线格式：从编码器传送到 Web 服务器、从一台服务器传送到另一个服务器，以及从服务器传送到 HTTP 客户端。
 通过 HTTP 使用基于 MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=327787) 的数据结构传送方法能够在不同的压缩媒体内容质量级别之间近乎实时地无缝切换。 因此，即使客户端计算机或设备的网络和视频呈现条件发生变化，也能为 HTTP 客户端最终用户带来一致的播放体验。
@@ -148,10 +148,12 @@ ms.locfileid: "69015676"
 >   **FourCC（变量）：** 由四个字符组成的代码，用于确定对每个样本使用了哪种媒体格式。 以下值范围是保留的，其语义含义如下：
 > 
 > * "hev1”：此轨迹的视频样本使用 HEVC 视频，并采用 [ISO/IEC-14496-15] 中指定的“hev1”样本说明格式。
+>
+> * "hvc1":此曲目的视频示例使用 HEVC 视频, 使用 [ISO/IEC-iec-14496-15] 中指定的 "hvc1" 示例说明格式。
 > 
 >   **CodecPrivateData（变量）：** 指定特定于媒体格式的参数，并在轨迹的所有样本中通用的数据，以十六进制编码字节的字符串表示。 字节序列的格式和语义含义根据 **FourCC** 字段的值而异，如下所述：
 > 
->   * 如果 TrackElement 描述 HEVC 视频，则 **FourCC** 字段应等于 **"hev1"** ；
+>   * 当 TrackElement 描述 HEVC 视频时, **FourCC**字段应等于 **"hev1"** 或 **"hvc1"**
 > 
 >   **CodecPrivateData**字段应包含以下字节序列的十六进制编码的字符串表示形式, 在 ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096)中指定: (无从 MS-SSTR 中更改)
 > 
@@ -173,7 +175,7 @@ ms.locfileid: "69015676"
 
 ### <a name="223-fragment-request"></a>2.2.3 片段请求 
 
->   **注意**：为 **MinorVersion** 2 和“hev1”请求的默认媒体格式为 [ISO/IEC 14496-12] ISO 基本媒体文件格式第四版和 [ISO/IEC 23001-7] 通用加密第二版中指定的“iso8”品牌 ISO 基本媒体文件格式。
+>   **说明**：为**MinorVersion** 2 和 "hev1" 或 "hvc1" 请求的默认媒体格式为 "iso8" 品牌 ISO 基本媒体文件格式, 其中指定为 [ISO/iec 14496-12] Iso 基本媒体文件格式第四版, [ISO/iec 23001-7] 通用加密第二版。
 
 ### <a name="224-fragment-response"></a>2.2.4 片段响应 
 
@@ -187,7 +189,7 @@ ms.locfileid: "69015676"
 
 >   **TfxdBox** 已弃用，其功能已被 [ISO/IEC 14496-12] 第 8.8.12 节中指定的轨迹片段解码时间框（“tfdt”）取代。
 > 
->   **注意**：客户端可以通过将轨迹运行框（“trun”）中列出的样本持续时间相加，或者将样本数量乘以默认样本持续时间，来计算片段的持续时间。 将“tfdt”中的 baseMediaDecodeTime 加上片段持续时间等于下一个片段的 URL 时间参数。
+>   **说明**：客户端可以通过将轨迹运行框（“trun”）中列出的样本持续时间相加，或者将样本数量乘以默认样本持续时间，来计算片段的持续时间。 将“tfdt”中的 baseMediaDecodeTime 加上片段持续时间等于下一个片段的 URL 时间参数。
 > 
 >   应该根据 [ISO/IEC 14496-12] 第 8.16.5 节中的指定，视需要在电影片段框（“moof”）的前面插入生成器引用时间框（“prft”），表示电影片段框引用的第一个样本的轨迹片段解码时间对应的 UTC 时间。
 
@@ -195,7 +197,7 @@ ms.locfileid: "69015676"
 
 >   **TfrfBox** 已弃用，其功能已被 [ISO/IEC 14496-12] 第 8.8.12 节中指定的轨迹片段解码时间框（“tfdt”）取代。
 > 
->   **注意**：客户端可以通过将轨迹运行框（“trun”）中列出的样本持续时间相加，或者将样本数量乘以默认样本持续时间，来计算片段的持续时间。 将“tfdt”中的 baseMediaDecodeTime 加上片段持续时间等于下一个片段的 URL 时间参数。 预提地址已被弃用，因为它们会延迟实时传送视频流。
+>   **说明**：客户端可以通过将轨迹运行框（“trun”）中列出的样本持续时间相加，或者将样本数量乘以默认样本持续时间，来计算片段的持续时间。 将“tfdt”中的 baseMediaDecodeTime 加上片段持续时间等于下一个片段的 URL 时间参数。 预提地址已被弃用，因为它们会延迟实时传送视频流。
 
 #### <a name="2246-tfhdbox"></a>2.2.4.6 TfhdBox 
 
@@ -245,7 +247,7 @@ ms.locfileid: "69015676"
     MinorVersion = STRING_UINT32
     CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
 
-**注意**：兼容性品牌“ccff”和“iso8”指示片段符合“通用容器文件格式”、通用加密 [ISO/IEC 23001-7] 和 ISO 基本媒体文件格式版本 4 [ISO/IEC 14496-12]。
+**说明**：兼容性品牌“ccff”和“iso8”指示片段符合“通用容器文件格式”、通用加密 [ISO/IEC 23001-7] 和 ISO 基本媒体文件格式版本 4 [ISO/IEC 14496-12]。
 
 #### <a name="2272-streammanifestbox"></a>2.2.7.2 StreamManifestBox 
 
@@ -352,7 +354,7 @@ ms.locfileid: "69015676"
 
 >   如果使用此协议传输的内容具有较高的商业价值，则应使用内容保护系统来防止未经授权使用内容。 可以使用 **ProtectionElement** 来承载与内容保护系统的用法相关的元数据。 应该根据 MPEG 通用加密第二版：2015 [ISO/IEC 23001-7] 中的指定加密受保护的音频和视频内容。
 > 
->   **注意**：对于 HEVC 视频，只会加密 VCL NAL 中的切片数据。 在解密之前，呈现应用程序可以访问切片标头和其他 NAL。 呈现应用程序无法使用安全视频路径的加密信息。
+>   **说明**：对于 HEVC 视频，只会加密 VCL NAL 中的切片数据。 在解密之前，呈现应用程序可以访问切片标头和其他 NAL。 呈现应用程序无法使用安全视频路径的加密信息。
 
 ## <a name="52-index-of-security-parameters"></a>5.2 安全参数的索引 
 

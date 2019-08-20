@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: b6e1108ffee13f1583d920947404963a69616788
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1facd85563a54de2b703bbc8c192976db92c30f7
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68958416"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624891"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>向 Service Fabric 应用程序的托管标识授予对 Azure 资源的访问权限
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>向 Service Fabric 应用程序的托管标识授予对 Azure 资源 (预览版) 的访问权限
 
 在应用程序可以使用其托管标识来访问其他资源之前, 必须在访问受保护的 Azure 资源上授予该标识的权限。 授予权限通常是 Azure 服务的 "控制平面" 上的管理操作, 该服务拥有通过 Azure 资源管理器路由的受保护资源, 这将强制实施任何适用的基于角色的访问检查。
 

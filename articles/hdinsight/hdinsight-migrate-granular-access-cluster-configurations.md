@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/09/2019
-ms.openlocfilehash: 1e5eb1e363ac9e282a72a9c1430c3f80c825bb91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945080"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623845"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>迁移到群集配置的基于角色的细化访问权限
 
@@ -201,7 +201,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>如果我不执行任何操作, 会发生什么情况？
 
-和将不再返回任何信息, 并且调用将不再返回敏感参数,例如存储帐户密钥或群集密码。`GET /configurations/{configurationName}` `POST /configurations/gateway` `GET /configurations` 这同样适用 SDK 方法和 PowerShell cmdlet。
+和调用将不再`GET /configurations/{configurationName}`返回任何信息, 并且调用将不再返回敏感参数, 例如存储帐户密钥或群集密码。 `GET /configurations` `POST /configurations/gateway` 这同样适用 SDK 方法和 PowerShell cmdlet。
 
 如果使用上面提到的 Visual Studio、VSCode、IntelliJ 或 Eclipse 的工具中的旧版本, 则在更新之前, 这些工具将不再工作。
 

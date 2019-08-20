@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 08/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7463b86ea20a712937b8ccba7997c2551aae5be6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879107"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622718"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD 自助密码重置的授权要求
 
@@ -34,7 +34,7 @@ Azure AD 自助密码重置是按用户许可的，为了维护合规性，需�
 * 云用户的自助密码重置
    * 我是**仅限云用户**并且忘记了密码。
       * 我想要将我的密码**重置**为我知道的密码。
-   * 此功能包含在 Azure AD Premium P1 或 P2 版本，或 Microsoft 365 商业版中。
+   * 此功能包含在 Azure AD Premium P1 或 P2、Microsoft 365 商业版或 Office 365 中。
 
 * **通过本地写回**实现自助密码重置/更改/解锁
    * 我是**混合用户**，我的本地 Active Directory 用户帐户已使用 Azure AD Connect 与我的 Azure AD 帐户同步。 我想要更改密码、已忘记密码或已被锁定。

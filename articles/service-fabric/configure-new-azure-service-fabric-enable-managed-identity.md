@@ -7,14 +7,14 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 24fcdaf612a26109194524733e1fb9069dc664e0
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 80fb06c96f727d2b78faf4f100d59341aeaeff42
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965575"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624957"
 ---
-# <a name="create-a-new-azure-service-fabric-cluster-with-managed-identity-support"></a>使用托管标识支持创建新的 Azure Service Fabric 群集
+# <a name="create-a-new-azure-service-fabric-cluster-with-managed-identity-support-preview"></a>使用托管标识支持创建新的 Azure Service Fabric 群集 (预览版)
 
 为了访问 Azure Service Fabric 应用程序的托管标识功能, 你必须首先在群集上启用托管标识令牌服务。 此服务负责使用其托管标识对 Service Fabric 应用程序进行身份验证, 并负责代表用户获取访问令牌。 启用该服务后, 可以在左窗格中的 "**系统**" 部分下的 "Service Fabric Explorer" 下查看该服务, 并在其他系统服务旁的 name **Fabric:/system/ManagedIdentityTokenService**下运行。
 

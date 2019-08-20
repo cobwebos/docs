@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 528e1b0a353cdcd716f9bca63c423af7a6f12641
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: d5593da4f874688fa099827e418b12e41363f4bd
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68958234"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624878"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务 (预览版)
 
 Service Fabric 应用程序可以利用托管标识访问支持基于 Azure Active Directory 身份验证的其他 Azure 资源。 应用程序可以获取代表其标识的[访问令牌](../active-directory/develop/developer-glossary.md#access-token), 该令牌可能是系统分配的, 也可能是用户分配的, 并使用它作为 "持有者" 令牌向其他服务 (也称为[受保护的资源服务器](../active-directory/develop/developer-glossary.md#resource-server)) 进行身份验证。 令牌表示分配给 Service Fabric 应用程序的标识, 只会颁发给共享该标识的 Azure 资源 (包括 SF 应用程序)。 有关托管标识的详细说明以及系统分配的标识和用户分配的标识之间的区别, 请参阅[托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)文档。 在本文中, 我们将以[客户端应用程序](../active-directory/develop/developer-glossary.md#client-application)的形式引用启用了托管身份的 Service Fabric 应用程序。
 
@@ -286,7 +286,7 @@ HTTP 响应标头的 "状态代码" 字段指示请求的成功状态;"200 正�
 | ManagedIdentityNotFound | 找不到指定应用程序主机的托管标识。 | 应用程序没有标识, 或者身份验证代码未知。 |
 | ArgumentNullOrEmpty | 参数 "resource" 不应为 null 或空字符串。 | 请求中未提供资源 (受众)。 |
 | InvalidApiVersion | 不支持 api 版本 ""。 支持的版本为 "2019-07-01-preview"。 | 请求 URI 中指定的 API 版本丢失或不受支持。 |
-| InternalServerError | 出现错误。 | 托管标识子系统中出现错误, 可能在 Service Fabric 堆栈外。 最可能的原因是为资源指定的值不正确 (检查尾部的 "/"？) | 
+| InternalServerError | 出现了错误。 | 托管标识子系统中出现错误, 可能在 Service Fabric 堆栈外。 最可能的原因是为资源指定的值不正确 (检查尾部的 "/"？) | 
 
 ## <a name="retry-guidance"></a>重试指南 
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 08/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0a3a9330eaa977f72cdbaba4e11aaa706b437fad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 60cd87b6cecfb30ebc90f445c79e25c241980a86
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945909"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623331"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>教程：成批测试数据集
 
@@ -95,7 +95,7 @@ ms.locfileid: "68945909"
 
 ## <a name="review-batch-results"></a>查看批处理结果
 
-批处理图表将结果显示在四个象限中。 在图表右侧是一个筛选器。 默认情况下，筛选器设置为列表中的第一个意向。 筛选器包含所有意图, 只包含简单和复合实体。 选择[图表的一个部分](luis-concept-batch-test.md#batch-test-results)或图表中的一个点时，关联的话语显示在图表下方。 
+批处理图表将结果显示在四个象限中。 在图表右侧是一个筛选器。 筛选器包含意向和实体。 选择[图表的一个部分](luis-concept-batch-test.md#batch-test-results)或图表中的一个点时，关联的话语显示在图表下方。 
 
 鼠标悬停在图表上时，鼠标滚轮可以放大或缩小图表中的显示。 当图表上有许多点紧密地聚集在一起时，这是非常有用的。 
 
@@ -103,27 +103,27 @@ ms.locfileid: "68945909"
 
 ### <a name="getjobinformation-test-results"></a>GetJobInformation 测试结果
 
-显示在筛选器中的 GetJobInformation 测试结果显示四种预测中有 2 种是成功的。 选择右上象限上方的名称“误报”，查看图表下方的话语。 
+显示在筛选器中的 GetJobInformation 测试结果显示四种预测中有 2 种是成功的。 选择左下象限的名称**False**以查看图表下面的最谈话。 
 
-![LUIS 批处理测试话语](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
+使用键盘 "Ctrl + E" 切换到 "标签" 视图, 以查看用户查询文本的确切文本。 
 
-为什么两个话语被预测为 ApplyForJob，而不是正确的意向 GetJobInformation？ 两个意向在字词的选择和排列方式方面密切相关。 在复合实体中包装此外，ApplyForJob 的示例几乎是 GetJobInformation 的三倍。 示例话语的这种不平衡对 ApplyForJob 意向有利。 
+查询文本`Is there a database position open in Los Colinas?`标记为_GetJobInformation_ , 但当前模型将查询文本预测为_ApplyForJob_。 
+
+与**GetJobInformation**相比, **ApplyForJob**的示例几乎为三倍。 这种 unevenness 的示例最谈话以**ApplyForJob**意图的优选为依据, 导致不正确的预测。 
 
 请注意，这两个意向都有相同的错误计数。 一个意向中的错误预测也会影响另一个意向。 由于错误地预测了一个意向的话语，也错误地未预测另一个意向，因此二者都有错误。 
 
-![LUIS 批处理测试筛选器错误](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
+<a name="fix-the-app"></a>
 
-对应于“误报”部分中顶点的话语为 `Can I apply for any database jobs with this resume?` 和 `Can I apply for any database jobs with this resume?`。 对于第一个话语，单词 `resume` 仅在 ApplyForJob 中使用过。 对于第二个话语，单词 `apply` 仅在 ApplyForJob 意向中使用过。
-
-## <a name="fix-the-app"></a>修复应用
+## <a name="how-to-fix-the-app"></a>如何修复应用程序
 
 本部分的目标是通过修复应用，正确预测 GetJobInformation 的所有话语。 
 
-一个看似快速的解决方法是将这些批处理文件话语添加到正确的意向。 但这不是你想要做的。 你想让 LUIS 正确地预测这些话语，而无需将其添加为示例。 
+一个看似快速的解决方法是将这些批处理文件话语添加到正确的意向。 这并不是您想要执行的操作。 你想让 LUIS 正确地预测这些话语，而无需将其添加为示例。 
 
 可能还想知道如何从 ApplyForJob 中删除话语，直到话语数量与 GetJobInformation 中相同。 这可能会修复测试结果，但会阻碍 LUIS 下一次准确地预测该意向。 
 
-第一个解决方法是向 GetJobInformation 添加更多话语。 第二个解决方法是减少针对 ApplyForJob 意向的单词（如 `resume` 和 `apply`）的权重。 
+解决方法是将更多的最谈话添加到**GetJobInformation**中。 请记得改变查询文本长度、字选择和字词排列, 同时仍以查找作业信息的意图为目标, 而_不_是针对作业应用。
 
 ### <a name="add-more-utterances"></a>添加更多话语
 
@@ -161,15 +161,13 @@ ms.locfileid: "68945909"
 
 1. 选择顶部导航栏的“测试”。 如果批处理结果仍处于打开状态，请选择“返回到列表”。  
 
-2. 选择批处理名称右侧的省略号 (...) 按钮，然后选择“运行数据集”。 请等待批处理测试完成。 请注意，“查看结果”按钮现在为绿色。 这意味着整个批处理已成功运行。
+1. 选择 "批名称" 右侧的省略号 ("...") 按钮, 然后选择 "**运行**"。 请等待批处理测试完成。 请注意，“查看结果”按钮现在为绿色。 这意味着整个批处理已成功运行。
 
-3. 选择“查看结果”。 所有意向的名称左侧都应有绿色图标。 
-
-    ![LUIS 的屏幕截图，其中已突出显示“批处理结果”按钮](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
+1. 选择“查看结果”。 所有意向的名称左侧都应有绿色图标。 
 
 ## <a name="create-batch-file-with-entities"></a>使用实体创建批处理文件 
 
-若要验证批处理测试中的实体，需要在批处理 JSON 文件中标记实体。 仅使用计算机学习的实体: 简单实体和复合实体。 不要添加非机器学习实体，因为它们总是通过正则表达式或显式文本匹配找到的。
+若要验证批处理测试中的实体，需要在批处理 JSON 文件中标记实体。 
 
 总字（[令牌](luis-glossary.md#token)）计数的实体的变化会影响预测质量。 请确保提供给具有标记话语的意向的定型数据包括各种长度的实体。 
 
@@ -178,7 +176,6 @@ ms.locfileid: "68945909"
 测试话语中提供的“工作”实体的值通常是一个或两个词，其中有几个示例有更多词。 如果自己的人力资源应用通常有多个词的工作名称，该应用中带有“工作”实体标记的示例话语将无法正常工作。
 
 1. 在文本编辑器（如 [VSCode](https://code.visualstudio.com/)）中创建 `HumanResources-entities-batch.json`，或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json)它。
-
 
 2. 在 JSON 格式的批处理文件中，添加一个对象数组，其中包含具有想要在测试中预测的意向的话语以及话语中任何实体的位置。 由于实体是基于令牌的，因此请确保启动和停止字符上的每个实体。 不要以空格开始或结束话语。 这会导致批处理文件导入过程中出现错误。  
 

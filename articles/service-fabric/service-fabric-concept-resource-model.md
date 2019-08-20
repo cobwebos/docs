@@ -7,15 +7,15 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7795612d8aa4974bc640571d49ad1520e2a0f94c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8e39318dcaa31a111908c6be1ae7a51d73eb7478
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963843"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623828"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>什么是 Service Fabric 应用程序资源模型？
-建议通过 Azure 资源管理器将 Service Fabric 应用程序部署到 Service Fabric 群集。 此方法可以在 JSON 中描述应用程序和服务, 并将其部署在与群集相同的资源管理器模板中。 与通过 PowerShell 或 Azure CLI 部署和管理应用程序相反, 无需等待群集准备就绪。 应用程序注册、预配和部署的过程都可以在一个步骤中进行。 这是在群集中管理应用程序生命周期的最佳实践。 有关详细信息, 请查看[最佳实践](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)。
+建议通过 Azure 资源管理器将 Service Fabric 应用程序部署到 Service Fabric 群集。 此方法可以在 JSON 中描述应用程序和服务, 并将其部署在与群集相同的资源管理器模板中。 与通过 PowerShell 或 Azure CLI 部署和管理应用程序相反, 无需等待群集准备就绪。 只需执行一步操作，即可完成注册、预配和部署应用程序的整个过程。 这是在群集中管理应用程序生命周期的最佳做法。 有关详细信息, 请查看[最佳实践](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)。
 
 在适当情况下，将应用程序作为资源管理器资源进行管理可改进：
 * 审核线索：资源管理器审核所有操作，并记录详细的活动日志，有助于跟踪对这些应用程序和群集做出的任何更改。
@@ -33,7 +33,7 @@ ms.locfileid: "68963843"
 ## <a name="deploy-application-resources-using-azure-resource-manager"></a>使用 Azure 资源管理器部署应用程序资源  
 若要使用 Azure 资源管理器应用程序资源模型部署应用程序及其服务, 需要打包应用程序代码, 上传包, 然后在 Azure 资源管理器模板中将包位置作为应用程序进行引用资源. 有关详细信息, 请查看[将应用程序打包](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg)。
           
-然后, 创建 Azure 资源管理器模板, 使用应用程序详细信息更新参数文件, 并将其部署到 Service Fabric 群集上。 请参阅此处的示例
+然后, 创建 Azure 资源管理器模板, 使用应用程序详细信息更新参数文件, 并将其部署到 Service Fabric 群集上。 请参阅[此处](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)的示例。
 
 ### <a name="create-a-storage-account"></a>创建存储帐户 
 从资源管理器模板部署应用程序需要使用存储帐户暂存应用程序映像。 你可以重新使用现有存储帐户, 也可以创建新的存储帐户来暂存你的应用程序。 如果要使用现有的存储帐户, 可以跳过此步骤。 

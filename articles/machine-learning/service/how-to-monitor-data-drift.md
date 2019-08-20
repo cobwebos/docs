@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: b9593a5802300da8baa1e518f14885637db2068f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 41e357ee53d4c2fbc6683be3446ba2527dd9253f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036186"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623981"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service (AKS) 的模型上检测数据偏差 (预览)
 
@@ -40,13 +40,13 @@ ms.locfileid: "69036186"
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>如何在 Azure 机器学习服务中监视数据偏移
 
-使用 Azure 机器学习服务, 数据偏移通过数据集或部署来监视。 若要监视数据偏移, 请指定基线数据集, 这通常是模型的定型数据集。 第二个数据集 (通常是从部署中收集的模型输入数据) 根据基线数据集进行测试。 这两个数据集都被[分析](how-to-explore-prepare-data.md#explore-with-summary-statistics)并输入到数据偏移监视服务。 训练机器学习模型来检测两个数据集之间的差异。 模型的性能转换为偏移系数, 这会测量两个数据集之间的偏差量。 使用[model interpretability](machine-learning-interpretability-explainability.md), 将计算构成偏移系数的特征。 在数据集配置文件中, 将跟踪有关每个功能的统计信息。 
+使用 Azure 机器学习服务, 数据偏移通过数据集或部署来监视。 若要监视数据偏移, 请指定基线数据集, 这通常是模型的定型数据集。 第二个数据集 (通常是从部署中收集的模型输入数据) 根据基线数据集进行测试。 这两个数据集都被分析并输入到数据偏移监视服务。 训练机器学习模型来检测两个数据集之间的差异。 模型的性能转换为偏移系数, 这会测量两个数据集之间的偏差量。 使用[model interpretability](machine-learning-interpretability-explainability.md), 将计算构成偏移系数的特征。 在数据集配置文件中, 将跟踪有关每个功能的统计信息。 
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有, 请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
-- 安装的适用于 Python 的 Azure 机器学习 SDK。 使用[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)中的说明执行以下操作:
+- 安装了适用于 Python 的 Azure 机器学习 SDK。 按照 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 中的说明执行以下操作：
 
     - 创建 Miniconda 环境
     - 安装用于 Python 的 Azure 机器学习 SDK

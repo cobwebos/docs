@@ -7,14 +7,14 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: atsenthi
-ms.openlocfilehash: b99dbe3fd03b8854d7c1f54d17d5ced1f2534132
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f8dfaa39f02aefbdda1f34afa5011ce5fadbae49
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963873"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624921"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>使用用户分配的托管标识部署 Service Fabric 应用程序
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>使用用户分配的托管标识 (预览版) 部署 Service Fabric 应用程序
 
 若要使用托管标识部署 Service Fabric 应用程序, 应用程序需要通过 Azure 资源管理器部署, 通常使用 Azure 资源管理器模板。 有关如何通过 Azure 资源管理器部署 Service Fabric 应用程序的详细信息, 请参阅将[应用程序和服务作为 Azure 资源管理器资源管理](service-fabric-application-arm-resource.md)。
 

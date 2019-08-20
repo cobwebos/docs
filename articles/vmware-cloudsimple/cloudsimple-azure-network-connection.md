@@ -8,20 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eca3e316d866814f6727dd8ef2c3fa490a551383
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 90e3121c3f036d1abc8ca372ee349aef3485d07b
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563163"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69625039"
 ---
 # <a name="azure-network-connections-overview"></a>Azure 网络连接概述
 
-在区域中创建 CloudSimple 服务时, 该服务会:
+在区域创建 CloudSimple 服务并创建节点时, 可以执行以下操作:
 
-* 创建 Azure ExpressRoute 线路, 并将其附加到该区域中的服务。
+* 请求 Azure ExpressRoute 线路, 并将其附加到该区域中的 CloudSimple 网络。
 * 使用 Azure ExpressRoute 将 CloudSimple 区域网络连接到 Azure 虚拟网络或本地网络。
-* 提供对你的 Azure 订阅中运行的服务或你的私有云环境中的本地网络的访问。
+* 提供对 Azure 订阅或本地网络中运行的服务的访问。
 
 ExpressRoute 连接的带宽较低, 延迟较低。
 
@@ -35,15 +35,32 @@ Azure 网络连接允许:
 
 ## <a name="azure-virtual-network-connection"></a>Azure 虚拟网络连接
 
-私有云可以使用 ExpressRoute 连接到 Azure 资源。  ExpressRoute 连接允许从私有云访问 Azure 订阅中运行的资源。  此连接可让你将私有云网络扩展到 Azure 虚拟网络。
+私有云可以使用 ExpressRoute 连接到 Azure 资源。  ExpressRoute 连接允许从私有云访问 Azure 订阅中运行的资源。  此连接可让你将私有云网络扩展到 Azure 虚拟网络。  来自 CloudSimple 网络的路由将通过 BGP 与 Azure 虚拟网络交换。  如果已配置虚拟网络对等互连, 则所有对等互连的虚拟网络都可从 CloudSimple 网络进行访问。
 
-[![Azure ExpressRoute 与虚拟网络的连接](media/cloudsimple-azure-network-connection.png)
+![Azure ExpressRoute 与虚拟网络的连接](media/cloudsimple-azure-network-connection.png)
 
 ## <a name="expressroute-connection-to-on-premises-network"></a>到本地网络的 ExpressRoute 连接
 
-可以将现有的 Azure ExpressRoute 线路连接到 CloudSimple 区域。 ExpressRoute Global Reach 功能用于将两个线路彼此连接起来。  在本地和 CloudSimple ExpressRoute 线路之间建立连接。  此连接可让你将本地网络扩展到私有云网络。
+可以将现有的 Azure ExpressRoute 线路连接到 CloudSimple 区域。 ExpressRoute Global Reach 功能用于将两个线路彼此连接起来。  在本地和 CloudSimple ExpressRoute 线路之间建立连接。  此连接可让你将本地网络扩展到私有云网络。 来自 CloudSimple 网络的路由将通过 BGP 与本地网络交换。
 
 ![本地 ExpressRoute 连接-Global Reach](media/cloudsimple-global-reach-connection.png)
+
+
+## <a name="connection-to-on-premises-network-and-azure-virtual-network"></a>连接到本地网络和 Azure 虚拟网络
+
+与本地网络和 Azure 虚拟网络的连接可从 CloudSimple 网络共存。  该连接使用 BGP 在本地网络、Azure 虚拟网络和 CloudSimple 网络之间交换路由。  将 CloudSimple 网络连接到 Azure 虚拟网络时, 如果存在 Global Reach 连接, 则 Azure 虚拟网络路由将在本地网络中可见。  路由交换发生在边缘路由器之间的 Azure 中。
+
+![与 Azure 虚拟网络连接的本地 ExpressRoute 连接](media/cloudsimple-global-reach-and-vnet-connection.png)
+
+### <a name="important-considerations"></a>重要注意事项
+
+通过从本地网络和 Azure 虚拟网络连接到 CloudSimple 网络, 可以在所有网络之间交换路由。
+
+* Azure 虚拟网络将从本地网络和 CloudSimple 网络中可见。
+* 如果已从本地网络连接到 Azure 虚拟网络, 则使用 Global Reach 连接到 CloudSimple 网络将允许从 CloudSimple 网络访问虚拟网络。
+* 子网地址**不得**在任何连接的网络之间重叠。
+* CloudSimple**不**会将默认路由播发到 ExpressRoute 连接
+* 如果本地路由器播发默认路由, 来自 CloudSimple 网络和 Azure 虚拟网络的流量将使用播发的默认路由。  因此, 无法使用公共 IP 地址访问 Azure 上的虚拟机。
 
 ## <a name="next-steps"></a>后续步骤
 

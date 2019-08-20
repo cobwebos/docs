@@ -5,15 +5,15 @@ services: digital-twins
 author: alinamstanciu
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 08/16/2019
 ms.author: alinast
 ms.custom: include file
-ms.openlocfilehash: 9f4bf6fb92b590e274e8880b5f900e5469f85727
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ef6b395aeff18a63f52f58e2477679b48a19b002
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012050"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624752"
 ---
 1. 在 [Azure 门户](https://portal.azure.com)中，从左窗格打开 **Azure Active Directory**，然后打开“属性”窗格。 将“目录 ID”复制到一个临时文件。 将在下一部分使用此值来配置示例应用程序。
 
@@ -41,7 +41,7 @@ ms.locfileid: "69012050"
 
    e. 在“添加 API 访问权限”窗格中，选择“完成”。
 
-   f. 在“所需的权限”窗格中选择“授予权限”按钮，接受显示的确认。 如果未授予此 API 的权限, 请与管理员联系。
+   f. 在 "**所需权限**" 窗格中, 选择 "**授予权限**" 按钮, 然后接受显示的确认。 如果未授予此 API 的权限, 请与管理员联系。
 
       ![“所需的权限”窗格](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png)
 

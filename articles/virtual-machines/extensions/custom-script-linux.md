@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 8b16d7b20c4d49398790d207065da946d98ef658
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1a01f5f8aed994c16b8302e42996b27ee6a48003
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839161"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624855"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
 自定义脚本扩展版本 2 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 
@@ -60,7 +60,7 @@ ms.locfileid: "67839161"
 * 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 Systemd 服务单元。
 * 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。 
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
-* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl  。 
+* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl。 
 * 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对其进行处理。
 
 
@@ -78,7 +78,7 @@ ms.locfileid: "67839161"
   "name": "config-app",
   "type": "Extensions",
   "location": "[resourceGroup().location]",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2019-03-01",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', concat(variables('vmName'),copyindex()))]"
   ],
@@ -109,14 +109,14 @@ ms.locfileid: "67839161"
 
 | 名称 | 值/示例 | 数据类型 | 
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2019-03-01 | date |
 | publisher | Microsoft.Compute.Extensions | string |
 | type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
 | fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute（例如） | python MyPythonScript.py \<my-param1> | string |
 | 脚本 (script) | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
-| skipDos2Unix（示例） | false | boolean |
+| skipDos2Unix（示例） | 假 | boolean |
 | timestamp（示例） | 123456789 | 32 位整数 |
 | storageAccountName（例如） | examplestorageacct | string |
 | storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
@@ -142,7 +142,7 @@ ms.locfileid: "67839161"
 
 #### <a name="property-skipdos2unix"></a>属性：skipDos2Unix
 
-默认值为 false，这意味着执行 dos2unix 转换。 
+默认值为 false，这意味着执行 dos2unix 转换。
 
 旧版 CustomScript (Microsoft.OSTCExtensions.CustomScriptForLinux) 会将 `\r\n` 转换为 `\n`，从而将 DOS 文件自动转换为 UNIX 文件。 此转换仍然存在，并且默认为启用状态。 此转换适用于从 fileUris 下载的所有文件或基于任何下述标准的脚本设置。
 
@@ -196,7 +196,7 @@ CustomScript 使用以下算法来执行脚本。
 
  1. 断言脚本值的长度不得超过 256 KB。
  1. base64 对脚本的值进行解码
- 1.  尝试对 base64 解码的值执行 gunzip 操作
+ 1. 尝试对 base64 解码的值执行 gunzip 操作
  1. 将解码（以及可以选择进行解压缩）的值写入磁盘 (/var/lib/waagent/custom-script/#/script.sh)
  1. 使用 _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh 执行脚本。
 
@@ -210,7 +210,7 @@ CustomScript 使用以下算法来执行脚本。
   "name": "config-app",
   "type": "extensions",
   "location": "[resourceGroup().location]",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2019-03-01",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', concat(variables('vmName'),copyindex()))]"
   ],
