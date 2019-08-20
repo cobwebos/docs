@@ -11,12 +11,12 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a6908a26e1d513261094be28620c3c9a2d86b48
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a065f275321d16b9eaf82a02cb7da45c15aa82cc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383110"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616315"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>有关身份验证、应用和设备管理的用户帮助
 
@@ -92,8 +92,11 @@ ms.locfileid: "68383110"
                     <div class="cardText">
                         <h3>双重验证帮助</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time">设置双重验证</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-auth-app">设置验证器应用</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-phone-number">设置移动设备</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-office-phone">设置办公电话</a><br/>
                         <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-manage-settings">管理设置</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-troubleshoot">获取有关常见问题的帮助</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-sign-in">如何登录</a>
                         </p>
                     </div>

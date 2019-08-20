@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 811d54da2fbcf36bcd2529ed9172c80d6414ab54
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
-ms.translationtype: HT
+ms.openlocfilehash: 5e9972c5fea7aaa2e6b5270aff87343437b1963e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617623"
+ms.locfileid: "69624012"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 
@@ -62,6 +62,7 @@ ms.locfileid: "69617623"
 限制： 
 
 - 使用托管实例可将数据库备份到最多包含 32 个条带的备份，如果使用备份压缩，则这种方法对于不超过 4 TB 的数据库而言已足够。
+- 不能在使用服务托管透明数据加密 (TDE) 加密的数据库上执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服务托管的 TDE 强制使用内部 TDE 密钥对备份进行加密。 无法导出该密钥，因此无法还原备份。 使用自动备份和时间点还原，或者改用[客户托管 (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key)。 也可以在数据库上禁用加密。
 - 在托管实例中使用 `BACKUP` 命令最大可以设置 195 GB 的备份条带大小（即最大 Blob 大小）。 在 backup 命令中增加条带数目可以减小单个条带的大小，并保持在此限制范围内。
 
     > [!TIP]
@@ -538,6 +539,14 @@ WITH PRIVATE KEY (<private_key_options>)
 
 **解决方法：** 先停止使用跨数据库 Service Broker 对话会话的任何活动, 然后再更新服务层并在之后重新初始化它们。
 
+### <a name="some-aad-login-types-cannot-be-impersonated"></a>无法模拟某些 AAD 登录类型
+
+**日期**2019年7月
+
+不支持`EXECUTE AS USER`使用`EXECUTE AS LOGIN`或以下 AAD 主体的模拟:
+-   化名为 AAD 的用户。 在这种情况下`15517`, 将返回以下错误。
+- 基于 AAD 应用程序或服务主体的 AAD 登录名和用户。 在这种情况下`15517` , `15406`将返回以下错误。
+
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querysp_send_db_mail 中不支持的参数
 
 **日期**2019 年 4 月
@@ -546,13 +555,13 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>Tools 中不支持 AAD 登录名和用户
 
-**日期**2019 年 4 月
+**日期**Jan 2019
 
 SQL Server Management Studio 和 SQL Server Data Tools 不 fuly 支持 Azure Acctive directory 登录名和用户。
 - 目前不支持将 Azure AD 服务器主体（登录名）和用户（公共预览版）与 SQL Server Data Tools 配合使用。
 - Azure AD 服务器主体（登录名）和用户（公共预览版）的脚本在 SQL Server Management Studio 中不受支持。
 
-### <a name="tempdb-structure-is-re-created"></a>已重新创建 TEMPDB 结构
+### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB 结构和内容是重新创建的
 
 `tempdb`数据库始终拆分为12个数据文件, 无法更改文件结构。 无法更改每个文件的最大大小, 并且无法将新文件添加`tempdb`到。 `Tempdb`当实例启动或故障转移时, 始终会重新创建为空数据库, 在中`tempdb`所做的任何更改都不会保留。
 
@@ -623,12 +632,6 @@ using (var scope = new TransactionScope())
 放置在托管实例中的 CLR 模块，以及引用当前实例的链接服务器或分布式查询，有时可能无法解析本地实例的 IP。 此错误是暂时性问题。
 
 **解决方法：** 如果可能，请在 CLR 模块中使用上下文连接。
-
-### <a name="tde-encrypted-databases-with-a-service-managed-key-dont-support-user-initiated-backups"></a>采用服务托管密钥的 TDE 加密数据库不支持用户启动的备份
-
-不能在使用服务托管透明数据加密 (TDE) 加密的数据库上执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服务托管的 TDE 强制使用内部 TDE 密钥对备份进行加密。 无法导出该密钥，因此无法还原备份。
-
-**解决方法：** 使用自动备份和时间点还原，或者改用[客户托管 (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key)。 也可以在数据库上禁用加密。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -29,6 +29,8 @@
           items:
             - name: 应用集成入门
               href: plan-an-application-integration.md
+            - name: 规划访问面板部署
+              href: access-panel-deployment-plan.md
             - name: 开发人员指南
               href: developer-guidance-for-integrating-applications.md
         - name: 单一登录

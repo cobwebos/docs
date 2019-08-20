@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/20/2017
+ms.date: 08/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 68c57fbf510d923c4c87bc180a935965a511dc26
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: aa56b0ead8edc17efe74547f6374a3f8888970b5
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322905"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624194"
 ---
 # <a name="task-fail-event"></a>任务失败事件
 
@@ -65,7 +65,7 @@ ms.locfileid: "68322905"
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|元素名称|类型|说明|
+|元素名称|type|说明|
 |------------------|----------|-----------|
 |poolId|String|运行任务的池的 id。|
 |nodeId|String|运行任务的节点的 id。|
@@ -78,7 +78,7 @@ ms.locfileid: "68322905"
 
 ###  <a name="constraints"></a> constraints
 
-|元素名称|type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，并重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 150d30085976c89e9053d4715da98e487684e45c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
-ms.translationtype: MT
+ms.openlocfilehash: 51ef55247d3262d8707403ed09cc8643403dda23
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717256"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952971"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -23,7 +23,7 @@ ms.locfileid: "68717256"
 可以直接通过 Azure 自动化帐户为虚拟机启用更新管理。 若要了解如何通过自动化帐户为虚拟机启用更新管理，请参阅[管理多个虚拟机的更新](manage-update-multi.md)。 还可以通过 Azure 门户中的虚拟机页面为虚拟机启用更新管理。 此方案适用于 [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) 和 [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) 虚拟机。
 
 > [!NOTE]
-> 更新管理解决方案需要将 Log Analytics 工作区链接到自动化帐户。 有关受支持区域的权威列表, 请参阅 https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings []。 区域映射不会影响在不同于自动化帐户的区域中管理虚拟机的功能。
+> 更新管理解决方案需要将 Log Analytics 工作区链接到自动化帐户。 有关受支持区域的权威列表, 请参阅[Azure 工作区映射](./how-to/region-mappings.md)。 区域映射不会影响在不同于自动化帐户的区域中管理虚拟机的功能。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -84,6 +84,7 @@ ms.locfileid: "68717256"
 
 > [!NOTE]
 > 可以通过更新管理来管理 Azure 虚拟机规模集。 更新管理适用于实例本身, 而不是基本映像。 你需要以增量方式计划更新, 因为不会同时更新所有 VM 实例。
+> 可以按照[Onbaord 非 Azure 计算机](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)下的步骤添加 VMSS 节点。
 
 ### <a name="unsupported-client-types"></a>不支持的客户端类型
 
@@ -93,6 +94,7 @@ ms.locfileid: "68717256"
 |---------|---------|
 |Windows 客户端     | 不支持客户端操作系统（例如 Windows 7 和 Windows 10）。        |
 |Windows Server 2016 Nano Server     | 不受支持。       |
+|Azure Kubernetes 服务节点 | 不受支持。 使用[Azure Kubernetes Service (AKS) 中的将安全和内核更新应用到 Linux 节点](../aks/node-updates-kured.md)中详细的修补过程|
 
 ### <a name="client-requirements"></a>客户端要求
 
@@ -136,7 +138,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 * 更新部署 MP
 
 > [!NOTE]
-> 如果你的 Operations Manager 1807 管理组的管理组级别配置为要关联到工作区, 则用于显示的当前解决方法是将**IsAutoRegistrationEnabled** **中的** **Microsoft.intelligencepacks.updateassessment. AzureAutomation. eventmessage 以及**规则。
+> 如果你的 Operations Manager 1807 管理组的管理组级别配置为要关联到工作区, 则用于显示的当前解决方法是将**IsAutoRegistrationEnabled**中的**Microsoft.intelligencepacks.updateassessment. AzureAutomation. eventmessage 以及**规则。
 
 有关如何更新解决方案管理包的详细信息, 请参阅[将 Operations Manager 连接到 Azure Monitor 日志](../azure-monitor/platform/om-agents.md)。
 
@@ -360,6 +362,10 @@ $ServiceManager.AddService2($ServiceId,7,"")
 |\* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |\* .azure-automation.net|*.azure-automation.us|
 
+对于 Windows 计算机, 还必须允许流量发送到 Windows 更新所需的任何终结点。  可以在[与 HTTP/Proxy 相关的问题](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中找到所需用法的更新列表。 如果你有本地[Windows 更新服务器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), 则还必须允许流量流向[WSUS 密钥](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的服务器。
+
+对于 Red Hat Linux 计算机, 请参阅[RHUI 内容传送服务器的 ip](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers)以获取所需的终结点。 对于其他 Linux 发行版, 请参阅提供程序文档。
+
 有关混合 Runbook 辅助角色所需端口的详细信息，请参阅[混合辅助角色端口](automation-hybrid-runbook-worker.md#hybrid-worker-role)。
 
 建议在定义异常时使用列出的地址。 对于 IP 地址，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新一次，反映当前已部署的范围和任何即将对 IP 范围进行的更改。
@@ -368,7 +374,8 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 除了 Azure 门户中提供的详细信息以外，还可以针对日志执行搜索。 在解决方案页上，选择**Log Analytics**。 此时将打开**日志搜索**窗格。
 
-还可访问 Log Analytics 搜索 API 文档，[了解如何自定义查询或从不同客户端使用查询等。](
+还可访问 [Log Analytics 搜索 API 文档](
+https://dev.loganalytics.io/)，[了解如何自定义查询或从不同客户端使用查询等。](
 https://dev.loganalytics.io/).
 
 ### <a name="sample-queries"></a>示例查询
@@ -406,7 +413,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>单个 Azure VM 评估查询 (Linux)
 
-对于某些 Linux 发行版, 与来自 Azure 资源管理器的 VMUUID 值和存储在 Azure Monitor 日志中的值[不匹配。](https://en.wikipedia.org/wiki/Endianness) 以下查询可检查任一字节序的匹配情况。 使用 GUID 的 big-endian 和 little-endian 格式替换 VMUUID 值可正常地返回结果。 可以通过在 Azure Monitor 日志中运行以下查询来找到应使用的 VMUUID:`Update | where Computer == "<machine name>"
+对于某些 Linux 发行版, 与来自 Azure 资源管理器的 VMUUID 值和存储在 Azure Monitor 日志中的[字节序](https://en.wikipedia.org/wiki/Endianness)不匹配。 以下查询可检查任一字节序的匹配情况。 使用 GUID 的 big-endian 和 little-endian 格式替换 VMUUID 值可正常地返回结果。 可以通过在 Azure Monitor 日志中运行以下查询来找到应使用的 VMUUID:`Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>缺少更新摘要

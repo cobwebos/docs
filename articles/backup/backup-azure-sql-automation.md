@@ -1,5 +1,5 @@
 ---
-title: Azure 备份：使用 Azure 备份和 PowerShell 备份和还原 Azure Vm 中的 SQL 数据库
+title: 通过 PowerShell 备份和还原 Azure Vm 中的 SQL 数据库-Azure 备份
 description: 使用 Azure 备份和 PowerShell 备份和还原 Azure Vm 中的 SQL 数据库。
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: b31043ad445f0ac1459772fe630358fc38eaa9c2
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: e078c75911a332c7e70f3a578723735729b9e6b6
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689062"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954482"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>在 Azure Vm 中通过 PowerShell 备份和还原 SQL 数据库
 
@@ -241,13 +241,13 @@ Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLDat
 ````
 
 提取相关的可保护项后, 按[上述部分](#configuring-backup)所述启用备份。
-如果不想手动检测新数据库, 则可以选择 start-autoprotection, 如下所[述。](#enable-autoprotection)
+如果不想手动检测新数据库, 则可以选择 start-autoprotection, 如[下](#enable-autoprotection)所述。
 
 ## <a name="enable-autoprotection"></a>启用 Start-autoprotection
 
 用户可以配置备份, 以便将来添加的所有数据库都将使用特定策略自动保护。 若要启用 start-autoprotection, 请使用[AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS cmdlet。
 
-由于此说明是备份所有未来的数据库, 因此该操作在 SQLInstance 级别进行。
+由于说明要备份所有未来的数据库, 因此该操作在 SQLInstance 级别进行。
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"

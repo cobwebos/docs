@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 15fd8593f950e0f553d1b7ca34ee785692043cad
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 582e4d81851d570f99d25d626a1db8a9f5e98231
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304363"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881340"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -67,7 +67,7 @@ ms.locfileid: "68304363"
 
    ![调用列表](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
-1. 若要查看特定函数调用的日志，选择该调用对应的“日期”列链接。 
+1. 若要查看特定函数调用的日志，选择该调用对应的“日期”列链接。
 
    ![调用详细信息链接](media/functions-monitoring/invocation-details-link-ai.png)
 
@@ -99,9 +99,9 @@ ms.locfileid: "68304363"
 
 | Tab | 描述 |
 | ---- | ----------- |
-| **[故障](../azure-monitor/app/asp-net-exceptions.md)** |  根据函数失败和服务器异常来创建图表和警报。 操作名称  是函数名称。 除非为依赖项实现自定义遥测, 否则不会显示依赖项中的故障。 |
+| **[故障](../azure-monitor/app/asp-net-exceptions.md)** |  根据函数失败和服务器异常来创建图表和警报。 操作名称是函数名称。 除非为依赖项实现自定义遥测, 否则不会显示依赖项中的故障。 |
 | **[性能](../azure-monitor/app/performance-counters.md)** | 分析性能问题。 |
-| **服务器** | 查看每个服务器的资源利用率和吞吐量。 在函数阻碍基础资源的调试方案下，此数据非常有用。 服务器被称为云角色实例  。 |
+| **服务器** | 查看每个服务器的资源利用率和吞吐量。 在函数阻碍基础资源的调试方案下，此数据非常有用。 服务器被称为云角色实例。 |
 | **[指标](../azure-monitor/app/metrics-explorer.md)** | 创建基于指标的图表和警报。 度量值包括函数调用数、执行时间和成功率。 |
 | **[实时指标流](../azure-monitor/app/live-stream.md)** | 查看以实时方式创建的指标数据。 |
 
@@ -150,11 +150,11 @@ traces
 
 ### <a name="categories"></a>Categories
 
-对于每个日志，Azure Functions 记录器都包含一个类别  。 类别指示运行时代码或函数代码的哪个部分编写日志。 
+对于每个日志，Azure Functions 记录器都包含一个类别。 类别指示运行时代码或函数代码的哪个部分编写日志。 
 
-函数运行时创建具有以 "Host" 开头的类别的日志。 "函数已启动"、"函数已执行" 和 "函数已完成" 日志的类别为 "Host. 执行器"。 
+函数运行时创建具有以 "Host" 开头的类别的日志。 在版本1.x 中`function started`,、 `function executed`和`function completed`日志具有类别`Host.Executor`。 从版本2.x 开始, 这些日志具有类别`Function.<YOUR_FUNCTION_NAME>`。
 
-如果在函数代码中编写日志, 则它们的类别为 "Function"。
+如果在函数代码中编写日志, 则类别`Function`在函数运行时的版本1.x 中。 在版本2.x 中, 类别为`Function.<YOUR_FUNCTION_NAME>.User`。
 
 ### <a name="log-levels"></a>日志级别
 
@@ -167,7 +167,7 @@ Azure Functions 记录器还包括每个日志的*日志级别*。 [LogLevel](/d
 |Information | 2 |
 |警告     | 3 |
 |Error       | 4 |
-|严重    | 5 |
+|关键    | 5 |
 |无        | 6 |
 
 日志级别 `None` 将在下一节中进行介绍。 
@@ -217,7 +217,7 @@ v2.x 运行时使用 [.NET Core 日志记录筛选器层次结构](https://docs.
 * 对于 `Host.Aggregator` 类别的日志，将所有日志发送到 Application Insights。 `Trace` 日志级别与某些记录器称为 `Verbose` 的日志级别相同，但在 [主机 json] 文件中请使用 `Trace`。
 * 对于所有其他日志，仅向 Application Insights 发送 `Information` 级别及更高级别。
 
-[主机 json] 中的类别值控制所有以相同值开头的类别的日志记录。 `Host`在中`Host.General`,[主机 json] `Host.Executor` `Host.Results`、等的日志记录。
+[主机 json] 中的类别值控制所有以相同值开头的类别的日志记录。 在 [主机 json] 中, `Host`会控制`Host.General`、`Host.Executor`、`Host.Results`等的日志记录。
 
 如果 [主机 json] 包含以相同字符串开头的多个类别，则先匹配较长的类别。 假设你想要从运行时中`Host.Aggregator`除`Error`日志级别以外的所有内容, `Host.Aggregator`但`Information`想要在级别进行记录:
 
@@ -607,14 +607,21 @@ module.exports = function (context, req) {
 
 ## <a name="streaming-logs"></a>流式处理日志
 
-开发应用程序时，以近乎实时的方式查看日志记录信息通常很有用。 你可以在本地计算机上的 Azure 门户或命令行会话中查看函数正在生成的日志文件流。
+开发应用程序时, 通常需要在 Azure 中运行时以近乎实时的速度向日志写入日志。
 
-这等效于在[本地开发](functions-develop-local.md)期间调试函数时所见到的输出。 有关详细信息，请参阅[如何流式传输日志](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)。
+可以通过两种方式查看由函数执行生成的日志文件流。
 
-> [!NOTE]
-> 流式处理日志仅支持函数主机的单个实例。 将函数扩展到多个实例时, 不会在日志流中显示来自其他实例的数据。 Application Insights 中的[实时指标流](../azure-monitor/app/live-stream.md)支持多个实例。 同时, 在接近实时的情况下, 流式分析还基于[抽样数据](#configure-sampling)。
+* **内置日志流式处理**: 应用服务平台使你可以查看应用程序日志文件的流。 这等效于在[本地开发](functions-develop-local.md)期间调试函数时以及在门户中使用 "**测试**" 选项卡时所显示的输出。 将显示所有基于日志的信息。 有关详细信息，请参阅[如何流式传输日志](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)。 此流处理方法仅支持单个实例, 不能用于在消耗计划中运行 Linux 的应用。
+
+* **实时指标流**: 当函数应用[连接到 Application Insights](#enable-application-insights-integration)时, 你可以使用[实时指标流](../azure-monitor/app/live-stream.md)以近乎实时的 Azure 门户查看日志数据和其他指标。 当监视消耗计划中在多个实例上或在 Linux 上运行的函数时, 请使用此方法。 此方法使用[抽样数据](#configure-sampling)。
+
+可以在门户中和大多数本地开发环境中查看日志流。 
 
 ### <a name="portal"></a>门户
+
+可以在门户中查看这两种类型的日志流。
+
+#### <a name="built-in-log-streaming"></a>内置日志流式处理
 
 若要在门户中查看流式处理日志, 请在函数应用中选择 "**平台功能**" 选项卡。 然后, 在 "**监视**" 下选择 "**日志流**"。
 
@@ -624,9 +631,21 @@ module.exports = function (context, req) {
 
 ![在门户中查看流式处理日志](./media/functions-monitoring/streaming-logs-window.png)
 
+#### <a name="live-metrics-stream"></a>实时指标流
+
+若要查看应用的实时指标流, 请选择 function app 的 "**概述**" 选项卡。 Application Insights 启用后, 会在 "**已配置功能**" 下看到**Application Insights**链接。 此链接会将你转到应用的 "Application Insights" 页。
+
+在 Application Insights 中, 选择 "**实时指标流**"。 [采样的日志项](#configure-sampling)显示在 "**示例遥测**" 下。
+
+![在门户中查看实时指标流](./media/functions-monitoring/live-metrics-stream.png) 
+
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
+
+### <a name="core-tools"></a>核心工具
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -654,7 +673,7 @@ Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 
 启用 Application Insights 时, 请禁用使用 Azure 存储的内置日志记录。 内置日志记录适用于测试轻型工作负荷, 但不适用于高负载生产。 对于生产监视, 我们建议 Application Insights。 如果在生产中使用内置日志记录, 则日志记录可能不完整, 因为对 Azure 存储的限制。
 
-若要禁用内置日志记录，请删除 `AzureWebJobsDashboard` 应用设置。 有关如何在 Azure 门户中删除应用设置的信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md#settings)的“应用程序设置”  部分。 在删除应用设置之前, 请确保同一 function app 中没有现有函数使用 Azure 存储触发器或绑定的设置。
+若要禁用内置日志记录，请删除 `AzureWebJobsDashboard` 应用设置。 有关如何在 Azure 门户中删除应用设置的信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md#settings)的“应用程序设置”部分。 在删除应用设置之前, 请确保同一 function app 中没有现有函数使用 Azure 存储触发器或绑定的设置。
 
 ## <a name="next-steps"></a>后续步骤
 

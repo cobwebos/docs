@@ -19,6 +19,10 @@
 - name: 概念
   expanded: false
   items:
+    - name: 采用条件访问
+      href: howto-conditional-access-adoption-kit.md
+    - name: 常用条件访问策略
+      href: concept-conditional-access-policy-common.md
     - name: 条件
       href: conditions.md
     - name: 位置条件
@@ -38,6 +42,22 @@
       href: plan-conditional-access.md
     - name: 最佳做法
       href: best-practices.md
+    - name: 常用策略模板
+      items:
+        - name: 要求对管理员执行 MFA
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: 要求将 MFA 用于 Azure 管理
+          href: howto-conditional-access-policy-azure-management.md
+        - name: 阻止传统身份验证
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: 基于风险的条件访问
+          href: howto-conditional-access-policy-risk.md
+        - name: 要求在进行 MFA 注册时处于受信任的位置
+          href: howto-conditional-access-policy-registration.md
+        - name: 按位置阻止访问
+          href: howto-conditional-access-policy-location.md
+        - name: 要求符合的设备
+          href: howto-conditional-access-policy-compliant-device.md
     - name: 阻止传统身份验证
       href: block-legacy-authentication.md
     - name: 用于 MFA 注册的条件访问

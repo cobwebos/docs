@@ -4,19 +4,19 @@ description: 列出了可移动到新资源组或订阅的 Azure 资源类型。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 7/9/2019
+ms.date: 07/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 22493ad7998e9014c88c79e6ac5eee3bf1216119
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 73f4b6fe4714d21c12d2c7bd387cd30f6f711d5a
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226814"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624320"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
-本文列出了 Azure 资源类型是否支持移动操作。 它还提供有关移动资源时要考虑的特殊情况的信息。
+本文列出了 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
 
-跳转到资源提供程序命名空间:
+跳转到资源提供程序命名空间：
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
 > - [microsoft.aadiam](#microsoftaadiam)
@@ -167,7 +167,7 @@ ms.locfileid: "68226814"
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| servers | 是 | 是 |
+| 服务器 | 是 | 是 |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | 资源类型 | 资源组 | 订阅 |
@@ -202,7 +202,7 @@ ms.locfileid: "68226814"
 | automationaccounts/runbooks | 是 | 是 |
 
 > [!IMPORTANT]
-> Runbook 必须与自动化帐户位于同一资源组中。
+> Runbook 必须与自动化帐户存在于同一资源组中。
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | 资源类型 | 资源组 | 订阅 |
@@ -229,8 +229,8 @@ ms.locfileid: "68226814"
 | ------------- | ----------- | ---------- |
 | clusters | 否 | 否 |
 | fileservers | 否 | 否 |
-| jobs | 否 | 否 |
-| workspaces | 否 | 否 |
+| 作业 | 否 | 否 |
+| 工作区 | 否 | 否 |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | 资源类型 | 资源组 | 订阅 |
@@ -263,7 +263,7 @@ ms.locfileid: "68226814"
 | redis | 是 | 是 |
 
 > [!IMPORTANT]
-> 如果为 Redis 实例的 Azure Cache 配置了虚拟网络, 则无法将该实例移到不同的订阅。 请参阅[虚拟网络移动限制](./move-limitations/virtual-network-move-limitations.md)。
+> 如果为 Redis 实例的 Azure Cache 配置了虚拟网络, 则无法将该实例移到不同的订阅。 请参阅[虚拟网络移动限制](./move-limitations/networking-move-limitations.md)。
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | 资源类型 | 资源组 | 订阅 |
@@ -309,24 +309,24 @@ ms.locfileid: "68226814"
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| accounts | 是 | 是 |
+| 帐户 | 是 | 是 |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
 | availabilitysets | 是 | 是 |
-| disks | 是 | 是 |
+| 磁盘 | 是 | 是 |
 | galleries | 否 | 否 |
 | galleries/images | 否 | 否 |
 | galleries/images/versions | 否 | 否 |
 | hostgroups | 否 | 否 |
-| hostgroups/主机 | 否 | 否 |
-| images | 是 | 是 |
+| hostgroups/hosts | 否 | 否 |
+| 映像 | 是 | 是 |
 | proximityplacementgroups | 否 | 否 |
 | restorepointcollections | 否 | 否 |
 | sharedvmimages | 否 | 否 |
 | sharedvmimages/versions | 否 | 否 |
-| snapshots | 是 | 是 |
+| 快照 | 是 | 是 |
 | virtualmachines | 是 | 是 |
 | virtualmachines/extensions | 是 | 是 |
 | virtualmachinescalesets | 是 | 是 |
@@ -363,12 +363,12 @@ ms.locfileid: "68226814"
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| 服务 | 是 | 是 |
+| 应用程序 | 是 | 是 |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| accounts | 否 | 否 |
+| 帐户 | 否 | 否 |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 | 资源类型 | 资源组 | 订阅 |
@@ -383,7 +383,7 @@ ms.locfileid: "68226814"
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| jobs | 否 | 否 |
+| 作业 | 否 | 否 |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | 资源类型 | 资源组 | 订阅 |
@@ -393,7 +393,7 @@ ms.locfileid: "68226814"
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| workspaces | 否 | 否 |
+| 工作区 | 否 | 否 |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | 资源类型 | 资源组 | 订阅 |
@@ -426,12 +426,12 @@ ms.locfileid: "68226814"
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| accounts | 是 | 是 |
+| 帐户 | 是 | 是 |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| accounts | 是 | 是 |
+| 帐户 | 是 | 是 |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 | 资源类型 | 资源组 | 订阅 |
@@ -443,18 +443,18 @@ ms.locfileid: "68226814"
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| servers | 是 | 是 |
+| 服务器 | 是 | 是 |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| servers | 是 | 是 |
+| 服务器 | 是 | 是 |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
 | servergroups | 否 | 否 |
-| servers | 是 | 是 |
+| 服务器 | 是 | 是 |
 | serversv2 | 是 | 是 |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
@@ -528,12 +528,12 @@ ms.locfileid: "68226814"
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
 | clusters | 是 | 是 |
-| namespaces | 是 | 是 |
+| 命名空间 | 是 | 是 |
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| accounts | 否 | 否 |
+| 帐户 | 否 | 否 |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 | 资源类型 | 资源组 | 订阅 |
@@ -558,7 +558,7 @@ ms.locfileid: "68226814"
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| 造 | 否 | 否 |
+| 计算机 | 否 | 否 |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 | 资源类型 | 资源组 | 订阅 |
@@ -568,12 +568,12 @@ ms.locfileid: "68226814"
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| jobs | 是 | 是 |
+| 作业 | 是 | 是 |
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| accounts | 否 | 否 |
+| 帐户 | 否 | 否 |
 | actiongroups | 是 | 是 |
 | activitylogalerts | 否 | 否 |
 | alertrules | 是 | 是 |
@@ -588,7 +588,7 @@ ms.locfileid: "68226814"
 | workbooks | 是 | 是 |
 
 > [!IMPORTANT]
-> 请确保移动到新订阅不超过[订阅配额](../azure-subscription-service-limits.md#azure-monitor-limits)。
+> 确保移到新订阅时，不会超出[订阅配额](../azure-subscription-service-limits.md#azure-monitor-limits)。
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | 资源类型 | 资源组 | 订阅 |
@@ -599,7 +599,7 @@ ms.locfileid: "68226814"
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
 | checknameavailability | 是 | 是 |
-| graph | 是 | 是 |
+| 图形 | 是 | 是 |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | 资源类型 | 资源组 | 订阅 |
@@ -608,7 +608,7 @@ ms.locfileid: "68226814"
 | vaults | 是 | 是 |
 
 > [!IMPORTANT]
-> 用于磁盘加密的密钥保管库不能移到同一订阅中的资源组或跨订阅。
+> 用于磁盘加密的 Key Vault 不能移到同一订阅中的资源组，也不能跨订阅移动。
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | 资源类型 | 资源组 | 订阅 |
@@ -623,12 +623,12 @@ ms.locfileid: "68226814"
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| accounts | 是 | 是 |
+| 帐户 | 是 | 是 |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| accounts | 否 | 否 |
+| 帐户 | 否 | 否 |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | 资源类型 | 资源组 | 订阅 |
@@ -644,7 +644,7 @@ ms.locfileid: "68226814"
 | ------------- | ----------- | ---------- |
 | commitmentplans | 是 | 是 |
 | webservices | 是 | 否 |
-| workspaces | 是 | 是 |
+| 工作区 | 是 | 是 |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 | 资源类型 | 资源组 | 订阅 |
@@ -654,7 +654,7 @@ ms.locfileid: "68226814"
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| accounts | 否 | 否 |
+| 帐户 | 否 | 否 |
 | accounts/workspaces | 否 | 否 |
 | accounts/workspaces/projects | 否 | 否 |
 | teamaccounts | 否 | 否 |
@@ -664,7 +664,7 @@ ms.locfileid: "68226814"
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| accounts | 是 | 是 |
+| 帐户 | 是 | 是 |
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
 | 资源类型 | 资源组 | 订阅 |
@@ -674,7 +674,7 @@ ms.locfileid: "68226814"
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| workspaces | 否 | 否 |
+| 工作区 | 否 | 否 |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | 资源类型 | 资源组 | 订阅 |
@@ -684,7 +684,7 @@ ms.locfileid: "68226814"
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| accounts | 是 | 是 |
+| 帐户 | 是 | 是 |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 | 资源类型 | 资源组 | 订阅 |
@@ -722,7 +722,7 @@ ms.locfileid: "68226814"
 | applicationsecuritygroups | 是 | 是 |
 | azurefirewalls | 是 | 是 |
 | bastionhosts | 否 | 否 |
-| connections | 是 | 是 |
+| 连接 | 是 | 是 |
 | ddoscustompolicies | 是 | 是 |
 | ddosprotectionplans | 否 | 否 |
 | dnszones | 是 | 是 |
@@ -732,7 +732,7 @@ ms.locfileid: "68226814"
 | expressrouteports | 否 | 否 |
 | frontdoors | 否 | 否 |
 | frontdoorwebapplicationfirewallpolicies | 否 | 否 |
-| loadbalancers | 是-基本 SKU<br>无标准 SKU | 是-基本 SKU<br>无标准 SKU |
+| loadbalancers | 是 - 基本 SKU<br>否 - 标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
 | localnetworkgateways | 是 | 是 |
 | natgateways | 是 | 是 |
 | networkintentpolicies | 是 | 是 |
@@ -748,7 +748,7 @@ ms.locfileid: "68226814"
 | privatednszones/virtualnetworklinks | 是 | 是 |
 | privateendpoints | 否 | 否 |
 | privatelinkservices | 否 | 否 |
-| publicipaddresses | 是-基本 SKU<br>无标准 SKU | 是-基本 SKU<br>无标准 SKU |
+| publicipaddresses | 是 - 基本 SKU<br>否 - 标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
 | publicipprefixes | 是 | 是 |
 | routefilters | 否 | 否 |
 | routetables | 是 | 是 |
@@ -765,33 +765,33 @@ ms.locfileid: "68226814"
 | webapplicationfirewallpolicies | 是 | 是 |
 
 > [!IMPORTANT]
-> 请参阅[虚拟网络移动指南](./move-limitations/virtual-network-move-limitations.md)。
+> 请参阅[网络移动指南](./move-limitations/networking-move-limitations.md)。
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| namespaces | 是 | 是 |
+| 命名空间 | 是 | 是 |
 | namespaces/notificationhubs | 是 | 是 |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| workspaces | 是 | 是 |
+| 工作区 | 是 | 是 |
 
 > [!IMPORTANT]
-> 请确保移动到新订阅不超过[订阅配额](../azure-subscription-service-limits.md#azure-monitor-limits)。
+> 确保移到新订阅时，不会超出[订阅配额](../azure-subscription-service-limits.md#azure-monitor-limits)。
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
 | managementconfigurations | 是 | 是 |
-| solutions | 是 | 是 |
+| 解决方案 | 是 | 是 |
 | 视图 | 是 | 是 |
 
 ## <a name="microsoftpeering"></a>Microsoft.Peering
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| 对等互连 | 否 | 否 |
+| 对等 | 否 | 否 |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | 资源类型 | 资源组 | 订阅 |
@@ -816,7 +816,7 @@ ms.locfileid: "68226814"
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| accounts | 否 | 否 |
+| 帐户 | 否 | 否 |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 | 资源类型 | 资源组 | 订阅 |
@@ -829,17 +829,17 @@ ms.locfileid: "68226814"
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| namespaces | 是 | 是 |
+| 命名空间 | 是 | 是 |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| 服务 | 是 | 否 |
+| 应用程序 | 是 | 否 |
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| flows | 是 | 是 |
+| 流 | 是 | 是 |
 | jobcollections | 是 | 是 |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -864,29 +864,29 @@ ms.locfileid: "68226814"
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| namespaces | 是 | 是 |
+| 命名空间 | 是 | 是 |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| 服务 | 否 | 否 |
+| 应用程序 | 否 | 否 |
 | clusters | 是 | 是 |
 | containergroups | 否 | 否 |
 | containergroupsets | 否 | 否 |
 | edgeclusters | 否 | 否 |
-| networks | 否 | 否 |
+| 网络 | 否 | 否 |
 | secretstores | 否 | 否 |
-| volumes | 否 | 否 |
+| 卷 | 否 | 否 |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| 服务 | 是 | 是 |
+| 应用程序 | 是 | 是 |
 | containergroups | 否 | 否 |
 | gateways | 是 | 是 |
-| networks | 是 | 是 |
+| 网络 | 是 | 是 |
 | 机密 | 是 | 是 |
-| volumes | 是 | 是 |
+| 卷 | 是 | 是 |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 | 资源类型 | 资源组 | 订阅 |
@@ -907,7 +907,7 @@ ms.locfileid: "68226814"
 | appliancedefinitions | 否 | 否 |
 | appliances | 否 | 否 |
 | applicationdefinitions | 否 | 否 |
-| 服务 | 否 | 否 |
+| 应用程序 | 否 | 否 |
 | jitrequests | 否 | 否 |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
@@ -916,7 +916,7 @@ ms.locfileid: "68226814"
 | instancepools | 否 | 否 |
 | managedinstances | 否 | 否 |
 | managedinstances/databases | 否 | 否 |
-| servers | 是 | 是 |
+| 服务器 | 是 | 是 |
 | servers/databases | 是 | 是 |
 | servers/elasticpools | 是 | 是 |
 | virtualclusters | 是 | 是 |
@@ -971,14 +971,14 @@ ms.locfileid: "68226814"
 | streamingjobs | 是 | 是 |
 
 > [!IMPORTANT]
-> 当流分析作业处于运行状态时, 无法将其移动。
+> 当流分析作业处于运行状态时，则无法进行移动。
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
 | environments | 否 | 否 |
 | environments/eventsources | 否 | 否 |
-| instances | 否 | 否 |
+| 实例 | 否 | 否 |
 | instances/environments | 否 | 否 |
 | instances/environments/eventsources | 否 | 否 |
 
@@ -1025,13 +1025,13 @@ ms.locfileid: "68226814"
 ## <a name="microsoftweb"></a>Microsoft.Web
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| certificates | 否 | 是 |
+| 证书 | 否 | 是 |
 | connectiongateways | 是 | 是 |
-| connections | 是 | 是 |
+| 连接 | 是 | 是 |
 | customapis | 是 | 是 |
 | hostingenvironments | 否 | 否 |
 | serverfarms | 是 | 是 |
-| sites | 是 | 是 |
+| 站点 | 是 | 是 |
 | sites/premieraddons | 是 | 是 |
 | sites/slots | 是 | 是 |
 
@@ -1048,7 +1048,7 @@ ms.locfileid: "68226814"
 | ------------- | ----------- | ---------- |
 | applicationgroups | 否 | 否 |
 | hostpools | 否 | 否 |
-| workspaces | 否 | 否 |
+| 工作区 | 否 | 否 |
 
 ## <a name="third-party-services"></a>第三方服务
 

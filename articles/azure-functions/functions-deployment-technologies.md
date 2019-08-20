@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: d877628cbf0a1c26b2d05a0d1486d5ea858b61ac
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
-ms.translationtype: HT
+ms.openlocfilehash: 9f40ec658fc6725f381300d967c9d7cd61c3a218
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612007"
+ms.locfileid: "69624149"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -207,23 +207,7 @@ Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行
 
 ## <a name="deployment-slots"></a>部署槽
 
-将函数应用部署到 Azure 时，可以部署到单独的部署槽，而不是直接部署到生产槽。 有关部署槽的详细信息，请参阅 [Azure 应用服务槽](../app-service/deploy-staging-slots.md)。
-
-### <a name="deployment-slots-levels-of-support"></a>部署槽的支持级别
-
-部署槽有两个支持级别：
-
-* **正式版 (GA)** ：完全受支持，并已获批在生产环境中使用。
-* **预览**：尚不支持，但将来有望达到正式版的支持状态。
-
-| OS/托管计划 | 支持级别 |
-| --------------- | ------ |
-| Windows 消耗计划 | 预览 |
-| Windows 高级计划（预览版） | 预览 |
-| Windows 专用计划 | 正式版 |
-| Linux 消耗计划 | 不支持 |
-| Linux 高级版 (预览) | 预览 |
-| Linux 专用计划 | 正式版 |
+将函数应用部署到 Azure 时, 可以将部署到单独的部署槽而不是直接部署到生产环境。 有关部署槽的详细信息, 请参阅[Azure Functions 部署槽](../app-service/deploy-staging-slots.md)文档以获取详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

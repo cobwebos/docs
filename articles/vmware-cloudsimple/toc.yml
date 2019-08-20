@@ -111,15 +111,19 @@
         - name: 设置私有云的 VMware 虚拟机
           items:
             - name: 在 Azure 中创建 VM
-              href: 'https://docs.azure.cloudsimple.com/azure-create-vm/'
+              href: azure-create-vm.md
+            - name: 在 Azure 中管理 VM
+              href: azure-manage-vm.md
     - name: 操作指南
       items:
         - name: 保护环境
           href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
         - name: 私有云管理
           items:
+            - name: 提升私有云权限
+              href: escalate-privileges.md
             - name: 工作负荷 DNS 和 DHCP 设置
-              href: 'https://docs.azure.cloudsimple.com/dns-dhcp-setup/'
+              href: dns-dhcp-setup.md
             - name: 用于迁移的 NSX 第 2 层 VPN
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
         - name: 私有云网络
@@ -133,11 +137,11 @@
         - name: VMware 平台
           items:
             - name: 了解私有云权限模型
-              href: 'https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/'
+              href: learn-private-cloud-permissions.md
             - name: vCenter 标识源
               href: set-vcenter-identity.md
             - name: 将 Azure 应用程序网关与 VMware VM 配合使用
-              href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
+              href: azure-application-gateway.md
             - name: 将私有云 vCenter 服务器配置为 vRealize 自动化终结点
               href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
             - name: 将工作负荷 VM 迁移到私有云
@@ -147,7 +151,7 @@
         - name: VMware 生态系统
           items:
             - name: 备份工作负荷虚拟机
-              href: 'https://docs.azure.cloudsimple.com/backup-workloads-veeam/'
+              href: backup-workloads-veeam.md
             - name: VMware Horizon 解决方案指南
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: 为私有云配置 vSAN 加密

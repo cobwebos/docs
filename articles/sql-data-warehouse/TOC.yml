@@ -273,6 +273,8 @@
       items:
         - name: 升级到第 2 代
           href: upgrade-to-latest-generation.md
+        - name: 管理计算
+          href: manage-compute-with-azure-functions.md
         - name: 监视工作负荷 - 门户
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: 监视工作负荷 - DMV

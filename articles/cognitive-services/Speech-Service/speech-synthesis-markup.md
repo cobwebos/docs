@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855102"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624247"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>语音合成标记语言 (SSML)
 
@@ -31,6 +31,10 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 选择 "标准" 和 "神经" 语音, 或创建自己的产品或品牌独有的自定义声音。 75多种语言和区域设置中提供了 75 45 多项标准语音, 5 种神经声音提供4种语言和区域设置。 有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md)。
 
 若要了解有关标准、神经和自定义语音的详细信息, 请参阅[文本到语音的概述](text-to-speech.md)。
+
+## <a name="special-characters"></a>特殊字符
+
+使用 SSML 转换文本到合成的语音时, 请记住, 与 XML 一样, 必须对特殊字符 (如引号、撇号和方括号) 进行转义。 有关详细信息, 请[参阅可扩展标记语言 (XML) 1.0:附录 D](https://www.w3.org/TR/xml/#sec-entexpand)。
 
 ## <a name="supported-ssml-elements"></a>支持的 SSML 元素
 
@@ -138,10 +142,11 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 使用此表来确定每个神经语音支持的说话风格。
 
-| 语音 | 类型 | 描述 |
+| 语音 | type | 描述 |
 |-------|------|-------------|
 | `en-US-JessaNeural` | type=`cheerful` | 表达非常好的情感 |
 | | type=`empathy` | 表达关心和理解 |
+| | type=`chat` | 用一种偶然、宽松的音调说话 |
 | `zh-CN-XiaoxiaoNeural` | type=`newscast` | 表达与新闻广播类似的正式音调 |
 | | type=`sentiment` | 传达触摸消息或故事 |
 

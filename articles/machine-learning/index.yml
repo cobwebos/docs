@@ -7,7 +7,7 @@ metadata:
   description: 了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。
   ms.author: jmartens
   ms.subservice: core
-  ms.date: 5/14/2019
+  ms.date: 8/14/2019
   ms.devlang: na
   ms.service: machine-learning
   ms.tgt_pltfrm: na

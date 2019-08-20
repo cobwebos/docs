@@ -128,6 +128,9 @@
         - name: 配置开发环境
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
+        - name: 管理软件环境
+          displayName: 'pip, Conda'
+          href: how-to-use-environments.md
         - name: 启用日志记录
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md

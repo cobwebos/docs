@@ -8,16 +8,19 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 74e36d944450e1ce2c61481b2cb7e345860212af
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6f51d2907738f49ace559f1b127458eda71de287
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326884"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624102"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
 除了审核和[修正](../how-to/remediate-resources.md)azure 资源以外, azure 策略还可以审核虚拟机内的设置。 验证由来宾配置扩展和客户端执行。 扩展通过客户端验证设置，例如操作系统的配置、应用程序配置或状态以及环境设置等等。
+
+目前, Azure 策略来宾配置仅在计算机内部执行设置审核。
+尚不能应用配置。
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -33,13 +36,13 @@ ms.locfileid: "68326884"
 
 若要通过 Azure 门户注册资源提供程序的来宾配置，请按照下列步骤操作：
 
-1. 启动 Azure 门户，单击“所有服务”  。 搜索并选择“订阅”  。
+1. 启动 Azure 门户，单击“所有服务”。 搜索并选择“订阅”。
 
 1. 找到并单击要启用来宾配置的订阅。
 
-1. 在“订阅”  页的左侧菜单中，单击“资源提供程序”  。
+1. 在“订阅”页的左侧菜单中，单击“资源提供程序”。
 
-1. 筛选或滚动直至找到“Microsoft.GuestConfiguration”  ，然后在同一行上单击“注册”  。
+1. 筛选或滚动直至找到“Microsoft.GuestConfiguration”，然后在同一行上单击“注册”。
 
 #### <a name="registration---powershell"></a>注册 - PowerShell
 
@@ -69,9 +72,9 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 下表显示了 Azure 映像上支持的操作系统列表：
 
-|发布者|名称|版本|
+|发布者|姓名|版本|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04、16.04、18.04|
+|规范|Ubuntu 服务器|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
 |Microsoft|Windows Server|2012 datacenter、2012 R2 Datacenter、2016 Datacenter、2019 Datacenter|
 |Microsoft|Windows 客户端|Windows 10|
@@ -99,11 +102,11 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 每个按来宾配置审核运行都需要两个策略定义: **DeployIfNotExists**定义和**审核**定义。 **DeployIfNotExists**定义用于通过来宾配置代理和其他组件准备虚拟机, 以支持[验证工具](#validation-tools)。
 
-“DeployIfNotExists”策略定义验证并更正以下项目  ：
+“DeployIfNotExists”策略定义验证并更正以下项目：
 
 - 验证虚拟机已分配要评估的配置。 如果当前不存在任何分配，则获取分配并通过以下操作准备虚拟机：
   - 使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)对虚拟机进行身份验证
-  - 安装 Microsoft.GuestConfiguration  扩展的最新版本
+  - 安装 Microsoft.GuestConfiguration 扩展的最新版本
   - 安装[验证工具](#validation-tools)和依赖项（如果需要）
 
 如果**DeployIfNotExists**分配不符合, 则可以使用[补救任务](../how-to/remediate-resources.md#create-a-remediation-task)。
@@ -111,13 +114,13 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 一旦**DeployIfNotExists**分配符合,**审核**策略分配将使用本地验证工具来确定配置分配是符合还是不符合。
 验证工具向来宾配置客户端提供结果。 客户端将结果转发给来宾扩展，使其可通过来宾配置资源提供程序使用。
 
-Azure Policy 使用来宾配置资源提供程序 complianceStatus  属性在“符合性”  节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/getting-compliance-data.md)。
+Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“符合性”节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/getting-compliance-data.md)。
 
 > [!NOTE]
 > **审核**策略需要**DeployIfNotExists**策略来返回结果。
 > 如果没有**DeployIfNotExists**,**审核**策略会将 "0 个 0" 资源显示为状态。
 
-来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：  审核 Linux 和 Windows 虚拟机内的密码安全设置”的内置计划包含 18 个策略。 对于 Windows，有六个 **DeployIfNotExists** 和 **Audit** 对，对于 Linux，有三个对。 在每种情况下，都可使用定义内的逻辑验证仅基于[策略规则](definition-structure.md#policy-rule)定义评估目标操作系统。
+来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：审核 Linux 和 Windows 虚拟机内的密码安全设置”的内置计划包含 18 个策略。 对于 Windows，有六个 **DeployIfNotExists** 和 **Audit** 对，对于 Linux，有三个对。 在每种情况下，都可使用定义内的逻辑验证仅基于[策略规则](definition-structure.md#policy-rule)定义评估目标操作系统。
 
 ## <a name="multiple-assignments"></a>多个分配
 

@@ -4,14 +4,14 @@ description: 使用 Azure 资源管理器将资源移到新的资源组或订阅
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 53482fdd760517967c9a4a976b43b64ba745c637
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 114e0d8e935aa8e6ac3f70a34a8050b19758fb42
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542949"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624560"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
@@ -32,9 +32,11 @@ ms.locfileid: "69542949"
    * [应用服务移动指南](./move-limitations/app-service-move-limitations.md)
    * [Azure DevOps Services 移动指南](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [经典部署模型移动指南](./move-limitations/classic-model-move-limitations.md)-经典计算、经典存储、经典虚拟网络和云服务
+   * [网络移动指南](./move-limitations/networking-move-limitations.md)
    * [恢复服务移动指南](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [虚拟机移动指南](./move-limitations/virtual-machines-move-limitations.md)
-   * [虚拟网络移动指南](./move-limitations/virtual-network-move-limitations.md)
+
+   如果目标资源组包含虚拟网络, 则其从属资源的状态可能会阻止移动, 即使这些资源不涉及移动时也是如此。 有关详细信息, 请参阅[网络移动指南](./move-limitations/virtual-network-move-limitations.md)。
 
 1. 源订阅和目标订阅必须处于活动状态。 如果在启用已禁用的帐户时遇到问题，请[创建 Azure 支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”作为问题类型。
 
@@ -97,10 +99,11 @@ ms.locfileid: "69542949"
 1. **对于跨订阅移动, 资源及其从属资源必须位于同一资源组中, 并且必须一起移动。** 例如, 具有托管磁盘的 VM 需要将 VM 和托管磁盘与其他依赖资源一起移动。
 
    如果要将资源移到新订阅, 请检查该资源是否有任何依赖资源, 以及这些资源是否位于同一资源组中。 如果资源不在同一资源组中, 请检查资源是否可以合并到同一个资源组中。 如果是这样, 请使用跨资源组的移动操作将所有这些资源置于同一资源组中。
-    
-有关详细信息, 请参阅[跨订阅移动方案](#scenario-for-move-across-subscriptions)。
+
+   有关详细信息, 请参阅[跨订阅移动方案](#scenario-for-move-across-subscriptions)。
 
 ## <a name="scenario-for-move-across-subscriptions"></a>跨订阅移动方案
+
 将资源从一个订阅移到另一个订阅的过程分为三个步骤:
 
 ![跨订阅移动方案](./media/resource-group-move-resources/cross-subscription-move-scenario.png)

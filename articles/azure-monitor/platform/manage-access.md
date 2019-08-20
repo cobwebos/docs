@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 59e5bbaf8deccdd8218e9c5590266070ed3b5ebb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881431"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624342"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure Monitor 中的日志数据和工作区
 
@@ -44,12 +44,12 @@ Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics �
 
 ### <a name="configure-from-the-azure-portal"></a>从 Azure 门户配置
 
-可以在工作区“概述”页上的“Log Analytics 工作区”菜单中查看当前的工作区访问控制模式。 
+可以在工作区“概述”页上的“Log Analytics 工作区”菜单中查看当前的工作区访问控制模式。
 
 ![查看工作区访问控制模式](media/manage-access/view-access-control-mode.png)
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-1. 在 Azure 门户中, 选择工作区 > Log Analytics 工作区。  
+1. 在 Azure 门户中, 选择工作区 > Log Analytics 工作区。
 
 你可以从工作区的 "**属性**" 页中更改此设置。 如果你无权配置工作区，则会禁止更改此设置。
 
@@ -60,7 +60,7 @@ Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics �
 使用以下命令检查订阅中所有工作区的访问控制模式：
 
 ```powershell
-Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions} 
+Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions}
 ```
 
 输出应如下所示：
@@ -70,10 +70,10 @@ DefaultWorkspace38917: True
 DefaultWorkspace21532: False
 ```
 
-值`False`为表示使用工作区上下文访问模式配置工作区。  值`True`为表示使用资源上下文访问模式配置工作区。 
+值`False`为表示使用工作区上下文访问模式配置工作区。  值`True`为表示使用资源上下文访问模式配置工作区。
 
->[!NOTE]
->如果在未使用布尔值的情况下返回工作区且为空白, 则这还会`False`匹配值的结果。
+> [!NOTE]
+> 如果在未使用布尔值的情况下返回工作区且为空白, 则这还会`False`匹配值的结果。
 >
 
 使用以下脚本将特定工作区的访问控制模式设置为资源上下文权限:
@@ -81,9 +81,9 @@ DefaultWorkspace21532: False
 ```powershell
 $WSName = "my-workspace"
 $Workspace = Get-AzResource -Name $WSName -ExpandProperties
-if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $Workspace.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properties -Force
 ```
@@ -92,9 +92,9 @@ Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properti
 
 ```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {
-if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $_.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
@@ -116,7 +116,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 以下活动也需要 Azure 权限：
 
-|Action |所需 Azure 权限 |说明 |
+|操作 |所需 Azure 权限 |说明 |
 |-------|-------------------------|------|
 | 添加和删除监视解决方案 | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | 需要在资源组或订阅级别授予这些权限。 |
 | 更改定价层 | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -144,12 +144,12 @@ Log Analytics 读者角色的成员可以：
 
 Log Analytics 读者角色包括以下 Azure 操作：
 
-| 类型    | 权限 | 描述 |
+| type    | 权限 | 描述 |
 | ------- | ---------- | ----------- |
-| Action | `*/read`   | 能够查看所有 Azure 资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置。 <br> 对于工作区, 它允许完全无限制的权限来读取工作区设置并对数据执行查询。 请参阅上面更细化的选项。 |
-| Action | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 不推荐使用, 无需将其分配给用户。 |
-| Action | `Microsoft.OperationalInsights/workspaces/search/action` | 不推荐使用, 无需将其分配给用户。 |
-| Action | `Microsoft.Support/*` | 能够打开支持案例 |
+| 操作 | `*/read`   | 能够查看所有 Azure 资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置。 <br> 对于工作区, 它允许完全无限制的权限来读取工作区设置并对数据执行查询。 请参阅上面更细化的选项。 |
+| 操作 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 不推荐使用, 无需将其分配给用户。 |
+| 操作 | `Microsoft.OperationalInsights/workspaces/search/action` | 不推荐使用, 无需将其分配给用户。 |
+| 操作 | `Microsoft.Support/*` | 能够打开支持案例 |
 |非操作 | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | 防止读取工作区密钥，该密钥是使用数据集合 API 和安装代理所必需的。 这可以防止用户向工作区添加新资源 |
 
 Log Analytics 参与者角色的成员可以：
@@ -159,10 +159,10 @@ Log Analytics 参与者角色的成员可以：
 * 添加和删除管理解决方案
 
     > [!NOTE]
-    > 若要成功执行最后两个操作，需要在资源组或订阅级别授予此权限。  
+    > 若要成功执行最后两个操作，需要在资源组或订阅级别授予此权限。
 
 * 读取存储帐户密钥
-* 从 Azure 存储配置日志收集  
+* 从 Azure 存储配置日志收集
 * 编辑 Azure 资源的监视设置，包括
   * 将 VM 扩展添加到 VM
   * 在所有 Azure 资源上配置 Azure 诊断
@@ -201,8 +201,8 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
 | 权限 | 描述 |
 | ---------- | ----------- |
-| `Microsoft.Insights/logs/<tableName>/read`<br><br>示例:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | 可以查看资源的所有日志数据。  |
-| `Microsoft.Insights/diagnosticSettings/write ` | 能够将诊断设置配置为允许设置此资源的日志。 |
+| `Microsoft.Insights/logs/<tableName>/read`<br><br>例如：<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | 可以查看资源的所有日志数据。  |
+| `Microsoft.Insights/diagnosticSettings/write` | 能够将诊断设置配置为允许设置此资源的日志。 |
 
 `/read`权限通常是从包括 _\*/read 或_ _\*_ 权限 (如内置[读取器](../../role-based-access-control/built-in-roles.md#reader)和[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色) 的角色授予的。 请注意，含有特定操作的自定义角色或专用内置角色可能没有此权限。
 

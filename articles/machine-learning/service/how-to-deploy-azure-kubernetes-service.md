@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: bc9d3f6b461412f0e28cba3cb86d288085ffe500
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 490085da1e8f6b8e151168433836d59329887c6e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543573"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623965"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes Service 群集
 
@@ -59,6 +59,9 @@ ms.locfileid: "69543573"
 **时间估计**：大约 20 分钟。
 
 创建或附加 AKS 群集是工作区的一次过程。 可以将此群集重复用于多个部署。 如果删除群集或包含该群集的资源组, 则下次需要部署时, 必须创建新群集。 可以将多个 AKS 群集附加到工作区。
+
+> [!TIP]
+> 如果要使用 Azure 虚拟网络保护 AKS 群集, 必须先创建虚拟网络。 有关详细信息, 请参阅[通过 Azure 虚拟网络进行安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。
 
 如果要创建 AKS 群集以进行__开发__、__验证__和__测试__, 而不是生产, 则可以将__群集目的__指定为进行开发__测试__。
 
@@ -115,6 +118,8 @@ az ml computetarget create aks -n myaks
 
 > [!TIP]
 > 现有的 AKS 群集可以位于 Azure 区域中, 而不是 Azure 机器学习服务工作区。
+>
+> 如果要使用 Azure 虚拟网络保护 AKS 群集, 必须先创建虚拟网络。 有关详细信息, 请参阅[通过 Azure 虚拟网络进行安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。
 
 > [!WARNING]
 > 将 AKS 群集附加到工作区时, 可以通过设置`cluster_purpose`参数来定义使用群集的方式。
@@ -272,6 +277,7 @@ print(token)
 
 ## <a name="next-steps"></a>后续步骤
 
+* [在虚拟网络中保护试验和推理](how-to-enable-virtual-network.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署故障排除](how-to-troubleshoot-deployment.md)
 * [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)

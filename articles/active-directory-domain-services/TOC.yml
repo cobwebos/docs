@@ -1,93 +1,80 @@
 - name: Azure AD 域服务文档
   href: index.yml
 - name: 概述
-  expanded: true
   items:
     - name: 什么是 Azure AD 域服务？
       href: overview.md
-    - name: 与 Windows Server AD 进行比较
-      href: comparison.md
-    - name: 与 Azure AD 加入进行比较
-      href: active-directory-ds-compare-with-azure-ad-join.md
-    - name: 功能
-      href: active-directory-ds-features.md
+    - name: 比较标识服务
+      href: compare-identity-solutions.md
+- name: 教程
+  expanded: true
+  items:
+    - name: 创建托管域
+      href: tutorial-create-instance.md
+    - name: 将 Windows Server VM 加入域
+      href: join-windows-vm.md
+    - name: 安装管理工具
+      href: tutorial-create-management-vm.md
+    - name: 配置安全 LDAP
+      href: tutorial-configure-ldaps.md
 - name: 示例
   items:
     - name: 使用 Azure PowerShell 创建 Azure AD DS 实例
       href: powershell-create-instance.md
 - name: 概念
   items:
-    - name: 同步的工作原理
+    - name: Azure AD DS 同步的工作原理
       href: synchronization.md
+    - name: 密码哈希同步的工作原理
+      href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: 什么是 Azure Active Directory？
+      href: ../active-directory/fundamentals/active-directory-whatis.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Azure Active Directory 体系结构
+      href: ../active-directory/fundamentals/active-directory-architecture.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: 实现最小特权管理模型
+      href: /windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
 - name: 如何
   items:
-    - name: 创建 Azure AD DS 实例
+    - name: 配置通用设置
       items:
-        - name: 任务 1：配置基本设置
-          href: create-instance.md
-        - name: 任务 2：配置网络设置
-          href: active-directory-ds-getting-started-network.md
-        - name: 任务 3：配置管理员组并启用 Azure AD 域服务
-          href: active-directory-ds-getting-started-admingroup.md
-        - name: 任务 4：更新虚拟网络的 DNS 设置
-          href: active-directory-ds-getting-started-dns.md
-        - name: 任务 5：启用密码哈希同步
-          href: active-directory-ds-getting-started-password-sync.md
+        - name: 启用密码哈希同步
+          href: active-directory-ds-getting-started-password-sync-synced-tenant.md
+        - name: 配置从 Azure AD 中进行的作用域内同步
+          href: scoped-synchronization.md
+        - name: 创建组织单位 (OU)
+          href: create-ou.md
+        - name: 创建组托管服务帐户 (gMSA)
+          href: create-gmsa.md
     - name: 为 Azure AD DS 进行规划
       items:
-        - name: 方案
+        - name: 常见方案
           href: scenarios.md
-        - name: 规划虚拟网络
+        - name: 虚拟网络注意事项
           href: network-considerations.md
     - name: 管理 Azure AD DS
       items:
-        - name: 启用安全审核事件（预览版）
-          href: security-audit-events.md
-        - name: 检查托管域的运行状况
-          href: check-health.md
-        - name: 配置从 Azure AD 到托管域的作用域内同步
-          href: scoped-synchronization.md
-        - name: 保护托管域
-          href: secure-your-domain.md
-        - name: 在托管域上创建 OU
-          href: create-ou.md
-        - name: 在托管域上创建组托管服务帐户
-          href: create-gmsa.md
-        - name: 管理 Azure AD 域服务的组策略
+        - name: 管理组策略
           href: manage-group-policy.md
-        - name: 配置托管域上的密码策略
-          href: password-policy.md
+        - name: 管理 DNS
+          href: manage-dns.md
+        - name: 检查运行状况状态
+          href: check-health.md
+        - name: 配置电子邮件通知
+          href: notifications.md
         - name: 删除托管域
           href: delete-aadds.md
-        - name: 创建 Azure AD DS 管理虚拟机
-          href: manage-domain.md
-        - name: 管理 Azure AD 域服务的 DNS
-          href: manage-dns.md
-        - name: 更新电子邮件通知
-          href: notifications.md
-        - name: 在 Azure AD 域服务域中配置安全 LDAP (LDAPS)
-          href: configure-ldaps.md
-          items:
-            - name: 任务 2：导出安全 LDAP 证书
-              href: active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md
-            - name: 任务 3：使用 Azure 门户为托管域启用安全 LDAP
-              href: active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md
-            - name: 任务 4：配置 DNS 以便从 Internet 访问托管域
-              href: active-directory-ds-ldaps-configure-dns.md
-            - name: 任务 5：绑定到托管域和锁定安全 LDAP 访问
-              href: active-directory-ds-ldaps-bind-lockdown.md
-    - name: 将应用程序部署到 Azure AD DS
+    - name: 保护 Azure AD DS
       items:
-        - name: 为 SharePoint Server 配置对配置文件同步的支持
-          href: deploy-sp-profile-sync.md
+        - name: 保护托管域
+          href: secure-your-domain.md
         - name: 配置 Kerberos 约束委派
           href: deploy-kcd.md
-        - name: 部署 Azure AD 应用程序代理
-          href: deploy-azure-app-proxy.md
-    - name: 将虚拟机加入到 Azure AD DS
+        - name: 配置密码和帐户锁定策略
+          href: password-policy.md
+        - name: 启用安全审核事件（预览版）
+          href: security-audit-events.md
+    - name: 将 VM 加入域
       items:
-        - name: Windows Server VM
-          href: join-windows-vm.md
         - name: 通过模板将 Windows Server VM 加入托管域
           href: join-windows-vm-template.md
         - name: CentOS
@@ -98,24 +85,31 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: 对 Azure AD DS 进行故障排除
+    - name: 将应用程序部署到 Azure AD DS
       items:
-        - name: 故障排除指南
+        - name: 部署 Azure AD 应用程序代理
+          href: deploy-azure-app-proxy.md
+        - name: 为 SharePoint Server 配置对配置文件同步的支持
+          href: deploy-sp-profile-sync.md
+    - name: 故障排除
+      items:
+        - name: 常见错误
           href: troubleshoot.md
-        - name: 排查警报问题
-          href: troubleshoot-alerts.md
+        - name: 常见警报
           items:
-            - name: 修复存在问题的 NSG 配置
+            - name: 常见警报
+              href: troubleshoot-alerts.md
+            - name: 修复存在问题的网络配置
               href: alert-nsg.md
             - name: 还原缺少的服务主体
               href: alert-service-principal.md
-            - name: 安全 LDAP 错误
+            - name: 安全 LDAP 警报
               href: alert-ldaps.md
-        - name: 解决“不匹配的租户”错误
+        - name: “不匹配的租户”错误
           href: mismatched-tenant-error.md
         - name: 挂起的域
           href: suspension.md
-        - name: 排查安全 LDAP 问题
+        - name: 安全 LDAP
           href: tshoot-ldaps.md
 - name: 资源
   items:

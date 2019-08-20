@@ -64,7 +64,7 @@ sections:
               src: media/index/spark-logo.png
             title: 将内置分析功能与 Apache Spark 配合使用
           - href: /azure/cosmos-db/change-feed/
-            html: <p>利用更改源执行实时分析，方法是按 Azure Cosmos DB 容器中文档的修改顺序读取这些文档的排序列表。 </p>
+            html: <p>利用更改源执行实时分析，方法是按 Azure Cosmos 容器中文档的修改顺序读取这些文档的排序列表。 </p>
             image:
               src: media/index/change-feed-logo.png
             title: 更改源

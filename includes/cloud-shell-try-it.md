@@ -4,12 +4,12 @@ ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: bfefefc365f2725f9f3feacf1e6159d09cc43ba9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: f443b11207f6844bcffc1c7963209bc315f725b4
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68736203"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623855"
 ---
 ## <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
@@ -25,7 +25,7 @@ Azure 托管 Azure Cloud Shell（一个可通过浏览器使用的交互式 shel
 
 若要在 Azure Cloud Shell 中运行本文中的代码，请执行以下操作：
 
-1. 启动 Cloud Shell。
+1. 打开 Cloud Shell。
 1. 选择代码块上的“复制”按钮  以复制代码。 
 1. 在 Windows 和 Linux 上使用 **Ctrl**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中，或在 macOS 上使用 **Cmd**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中。 
 1. 按 **Enter** 运行此代码。

@@ -1,18 +1,18 @@
 ---
 title: Azure VM 备份的 Azure 备份支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支持设置和限制摘要。
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
-ms.author: raynew
-ms.openlocfilehash: 3b979b6bcf2078e83564a8f008d392fd8e0a7c78
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
-ms.translationtype: MT
+ms.author: dacurwin
+ms.openlocfilehash: 9b0cbe8126a01a64e35b2fcfeca400aed5aef0cc
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464904"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952030"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 可以使用 [Azure 备份服务](backup-overview.md)备份本地计算机和工作负荷以及 Azure 虚拟机 (VM)。 本文汇总了使用 Azure 备份服务备份 Azure VM 时的支持设置和限制。
@@ -130,7 +130,6 @@ DPM/MABS 磁盘上的恢复点数 | 文件服务器为 64 个，应用服务器�
 还原到现有 VM | 使用“替换磁盘”选项。
 在为存储帐户启用了 Azure 存储服务加密 (SSE) 的情况下还原磁盘 | 不受支持。<br/><br/> 还原到未启用 SSE 的帐户。
 还原到混合存储帐户 | 不受支持。<br/><br/> 根据存储帐户类型，所有已还原的磁盘将是高级或标准类型，而不是混合类型。
-使用区域冗余存储 (ZRS) 还原到存储帐户 | 支持 (适用于2019年1月和[可用性区域](https://azure.microsoft.com/global-infrastructure/availability-zones/)可用的备份 VM)
 将 VM 直接还原到可用性集 | 对于托管磁盘，可以还原磁盘，并在模板中使用可用性集选项。<br/><br/> 不支持非托管磁盘。 对于非托管磁盘，可以还原磁盘，然后在可用性集中创建 VM。
 升级到托管 VM 后还原非托管 VM 的备份| 。<br/><br/> 可以还原磁盘，然后创建托管 VM。
 在将 VM 迁移到托管磁盘之前将 VM 还原到还原点 | 。<br/><br/> 还原到非托管磁盘（默认设置），将已还原的磁盘转换为托管磁盘，然后使用托管磁盘创建 VM。
@@ -150,16 +149,17 @@ VM 大小 |   至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小�
 备份从自定义映像部署的 VM（第三方） |   。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。
 备份已迁移到 Azure 的 VM  | 。<br/><br/> 若要备份 VM，必须在迁移的计算机上安装 VM 代理。
 备份多 VM 一致性 | Azure 备份不提供跨多个 VM 的数据和应用程序一致性。
-备份包含[诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)的 VM  | 不支持。 <br/><br/> 如果使用 "新建[" 选项触发](backup-azure-arm-restore-vms.md#create-a-vm)了包含诊断设置的 Azure VM 还原, 则还原将失败。
+备份包含[诊断设置](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)的 VM  | 不支持。 <br/><br/> 如果使用 "[新建](backup-azure-arm-restore-vms.md#create-a-vm)" 选项触发了包含诊断设置的 Azure  VM 还原, 则还原将失败。
+还原区域固定 Vm | 支持 (适用于在2019年1月和[可用性区域](https://azure.microsoft.com/global-infrastructure/availability-zones/)可用的位置) 的 VM。<br/><br/>目前支持还原到 Vm 中固定的同一区域。 但是, 如果该区域不可用, 则还原将失败。
 
 
 ## <a name="vm-storage-support"></a>VM 存储支持
 
 组件 | **支持**
 --- | ---
-Azure VM 数据磁盘 | 备份包含 16 个或更少数据磁盘的 VM。 <br/><br/> 最大支持 4 TB 的磁盘。
-数据磁盘大小 | 单个磁盘最大可以为 4095 GB。<br/><br/> 如果保管库运行最新版本的 Azure 备份（称为“即时还原”），则支持不超过 4TB 的磁盘大小。 [了解详细信息](backup-instant-restore-capability.md)。  
-存储类型 | 标准 HDD、标准 SSD、高级 SSD。 <br/><br/> 如果保管库已升级到最新版本的 Azure VM 备份（称为“即时还原”），则支持标准 SSD。 [了解详细信息](backup-instant-restore-capability.md)。
+Azure VM 数据磁盘 | 备份包含 16 个或更少数据磁盘的 VM。 <br/><br/> 最大支持 4 TB 的磁盘。<br/><br/>若要注册 Azure 备份的有限公共预览版, 大磁盘支持大于 4 TB 和最大为 30 TB 的磁盘, 请参阅[AZURE VM 备份概述](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)。
+数据磁盘大小 | 单个磁盘最大可以为 4095 GB。<br/><br/>若要注册 Azure 备份的有限公共预览版, 大磁盘支持大于4TB 的磁盘的大小, 请参阅此[文](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)。
+存储类型 | 标准 HDD、标准 SSD 高级 SSD。
 托管磁盘 | 。
 加密的磁盘 | 。<br/><br/> 可以备份已启用 Azure 磁盘加密的 Azure VM（包含或不包含 Azure AD 应用）。<br/><br/> 无法在文件/文件夹级别恢复已加密的 VM。 必须恢复整个 VM。<br/><br/> 可以在已受 Azure 备份保护的 VM 上启用加密。
 已启用写入加速器的磁盘 | 不受支持。<br/><br/> Azure 备份会在备份期间自动排除已启用写入加速器的磁盘。 由于这些磁盘未备份，因此将无法从 VM 的恢复点还原这些磁盘。
@@ -167,7 +167,6 @@ Azure VM 数据磁盘 | 备份包含 16 个或更少数据磁盘的 VM。 <br/><
 将磁盘添加到受保护的 VM | 。
 调整受保护 VM 上的磁盘大小 | 。
 共享存储| 不建议使用群集共享卷 (CSV) 或横向扩展文件服务器备份 VM。 在备份期间，CSV 写入器可能会失败。 还原时，包含 CSV 卷的磁盘可能不会启动。
-
 
 
 ## <a name="vm-network-support"></a>VM 网络支持

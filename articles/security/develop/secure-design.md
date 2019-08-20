@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 67687e217372c17b007982ef99bf1f80c3e6be5f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 87acc6e8c561349b734bd9cd98300b65e730abe7
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728697"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928076"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上设计安全应用程序
 本文介绍了在为云设计应用程序时要考虑的安全活动和控制措施。 还介绍了在 Microsoft[安全开发生命周期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的要求和设计阶段, 培训资源以及要考虑的安全问题和概念。 其目标是帮助你定义可用于设计更安全的应用程序的活动和 Azure 服务。
@@ -36,7 +36,7 @@ ms.locfileid: "68728697"
 
   - [Azure 开发人员指南](https://azure.microsoft.com/campaigns/developer-guide/)介绍了如何开始 azure。 本指南向您展示了可用于运行应用程序的服务、存储数据、并入智能、构建 IoT 应用程序, 以及以更高效、更安全的方式部署解决方案。
 
-  - [Azure 开发人员入门指南](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide)为寻找开始使用 Azure 平台满足其开发需求的开发人员提供了基本信息。
+  - [Azure 开发人员入门指南](../../guides/developer/azure-developer-guide.md)为寻找开始使用 Azure 平台满足其开发需求的开发人员提供了基本信息。
 
   - [Sdk 和工具](https://docs.microsoft.com/azure/index#pivot=sdkstools)介绍 Azure 上可用的工具。
 
@@ -66,7 +66,7 @@ ms.locfileid: "68728697"
 
   - 我的应用程序是否包含敏感数据？
 
-  - 我的应用程序是收集还是存储数据, 这些数据要求我遵守行业标准和合规性计划, 如[联邦金融机构检查委员会 (FFIEC)](https://docs.microsoft.com/azure/security/blueprints/ffiec-analytics-overview)或[支付卡行业数据安全标准 (PCI DSS)](https://docs.microsoft.com/azure/security/blueprints/pcidss-analytics-overview)?
+  - 我的应用程序是收集还是存储数据, 这些数据要求我遵守行业标准和合规性计划, 如[联邦金融机构检查委员会 (FFIEC)](../blueprints/ffiec-analytics-overview.md)或[支付卡行业数据安全标准 (PCI DSS)](../blueprints/pcidss-analytics-overview.md)?
 
   - 我的应用程序是收集还是包含敏感的个人数据或客户数据, 这些数据可以单独使用, 也可以与其他信息一起使用, 以确定、联系或查找单个人员？
 
@@ -129,13 +129,13 @@ OWASP Top 10 解决了 web 应用程序面临的严重安全风险。
 Microsoft 提供多种[语言、框架和工具](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all), 可用于在 Azure 上开发应用程序。 例如, [Azure 适用于 .net 和 .Net Core 开发人员](https://docs.microsoft.com/dotnet/azure/)。 对于我们提供的每种语言和框架, 你会发现快速入门、教程和 API 参考, 以帮助你快速入门。
 
 Azure 提供了多种可用于托管网站和 web 应用程序的服务。 这些服务使你能够以你最喜欢的语言进行开发, 无论是 .NET、.NET Core、Java、Ruby、node.js、PHP 还是 Python。
-[Azure App Service Web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-overview)(Web 应用) 是这些服务之一。
+[Azure App Service Web 应用](../../app-service/overview.md)(Web 应用) 是这些服务之一。
 
 Web 应用将 Microsoft Azure 的功能添加到应用程序。 它包括安全性、负载均衡、自动缩放和自动化管理。 你还可以利用 Web 应用中的 DevOps 功能, 例如包管理、过渡环境、自定义域、SSL/TLS 证书, 以及从 Azure DevOps、GitHub、Docker 中心和其他源进行的持续部署。
 
 Azure 提供了可用于托管网站和 web 应用程序的其他服务。 大多数情况下，Web 应用是最佳选择。 对于微服务体系结构, 请考虑使用[Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)。
 如果需要更好地控制运行代码的 VM，请考虑使用 [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)。
-有关如何在这些 Azure 服务之间进行选择的详细信息, 请参阅[Azure App Service、虚拟机、Service Fabric 和云服务的比较](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)。
+有关如何在这些 Azure 服务之间进行选择的详细信息, 请参阅[Azure App Service、虚拟机、Service Fabric 和云服务的比较](/azure/architecture/guide/technology-choices/compute-decision-tree)。
 
 ### <a name="apply-updates-to-components"></a>将更新应用于组件
 
@@ -147,18 +147,18 @@ Azure 提供了可用于托管网站和 web 应用程序的其他服务。 大�
 
 威胁建模是确定业务和应用程序的潜在安全威胁的过程, 然后确保适当的缓解措施到位。 SDL 指定团队应在设计阶段进行威胁建模, 在解决潜在问题时相对简单且经济高效。 在设计阶段使用威胁建模可以极大地降低开发总成本。
 
-为帮助简化威胁建模过程, 我们设计了[SDL Threat Modeling Tool](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) , 其中包含非安全专家。 此工具通过提供有关如何创建和分析威胁模型的清楚指导, 使所有开发人员能够更轻松地进行威胁建模。
+为帮助简化威胁建模过程, 我们设计了[SDL Threat Modeling Tool](threat-modeling-tool.md) , 其中包含非安全专家。 此工具通过提供有关如何创建和分析威胁模型的清楚指导, 使所有开发人员能够更轻松地进行威胁建模。
 
 在所有信任边界之间对应用程序设计和枚举[STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)威胁进行建模, 从而对其进行欺骗、篡改、否认、信息泄露、拒绝服务和特权提升。早于。 下表列出了 STRIDE 威胁, 并提供了一些使用 Azure 提供的功能的示例缓解措施。 这些缓解措施并非在每种情况下都起作用。
 
 | 威胁 | 安全属性 | 潜在的 Azure 平台缓解 |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 欺骗               | 身份验证        | [需要 HTTPS 连接](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)。 |
-| 篡改              | 完整性             | 验证 SSL/TLS 证书。 使用 SSL/TLS 的应用程序必须完全验证其连接到的实体的 x.509 证书。 使用 Azure Key Vault 证书来[管理 x509 证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)。 |
+| 篡改              | 完整性             | 验证 SSL/TLS 证书。 使用 SSL/TLS 的应用程序必须完全验证其连接到的实体的 x.509 证书。 使用 Azure Key Vault 证书来[管理 x509 证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)。 |
 | 否认性            | 不可否认性       | 启用 Azure [监视和诊断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。|
-| 信息泄露 | 保密性       | 加密[和](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)[传输中](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit)的敏感数据。 |
-| 拒绝服务      | 可用性          | 监视性能指标, 以了解潜在的拒绝服务情况。 实现连接筛选器。 [Azure DDoS 保护](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps)与应用程序设计最佳做法相结合, 提供对 DDoS 攻击的防御。|
-| 特权提升 | Authorization         | 使用 Azure Active Directory <span class="underline"></span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)。|
+| 信息泄露 | 保密性       | 加密[静态](../fundamentals/encryption-atrest.md)和[传输中](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)的敏感数据。 |
+| 拒绝服务      | 可用性          | 监视性能指标, 以了解潜在的拒绝服务情况。 实现连接筛选器。 [Azure DDoS 保护](../../virtual-network/ddos-protection-overview.md#next-steps)与应用程序设计最佳做法相结合, 提供对 DDoS 攻击的防御。|
+| 特权提升 | Authorization         | 使用 Azure Active Directory <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)。|
 
 ### <a name="reduce-your-attack-surface"></a>减小攻击面
 
@@ -203,21 +203,21 @@ Azure 提供了可用于托管网站和 web 应用程序的其他服务。 大�
 
 #### <a name="enforce-multi-factor-authentication-for-users"></a>为用户强制实施多重身份验证
 
-使用双重身份验证。 双因素身份验证是当前用于身份验证和授权的标准, 因为它可以避免身份验证的用户名和密码类型固有的安全漏洞。 应将对 Azure 管理接口 (Azure 门户/远程 PowerShell) 和面向客户的服务的访问权限设计并配置为使用[Azure 多重身份验证](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)。
+使用双重身份验证。 双因素身份验证是当前用于身份验证和授权的标准, 因为它可以避免身份验证的用户名和密码类型固有的安全漏洞。 应将对 Azure 管理接口 (Azure 门户/远程 PowerShell) 和面向客户的服务的访问权限设计并配置为使用[Azure 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)。
 
 #### <a name="use-strong-authentication-and-authorization-platforms"></a>使用强身份验证和授权平台
 
-使用平台提供的身份验证和授权机制，而不要使用自定义代码。 这是因为开发自定义身份验证代码可能容易出错。 通常会广泛检查商业代码 (例如, 通过 Microsoft) 的安全性。 [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 是用于标识和访问管理的 Azure 解决方案。 这些 Azure AD 工具和服务可帮助进行安全的开发:
+使用平台提供的身份验证和授权机制，而不要使用自定义代码。 这是因为开发自定义身份验证代码可能容易出错。 通常会广泛检查商业代码 (例如, 通过 Microsoft) 的安全性。 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 是用于标识和访问管理的 Azure 解决方案。 这些 Azure AD 工具和服务可帮助进行安全的开发:
 
-- [Azure AD 标识平台 (开发人员 Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform)是一项云标识服务, 开发人员使用它来构建可安全登录用户的应用程序。 Azure AD 为正在开发多租户应用的单租户、业务线 (LOB) 应用和开发人员提供开发人员提供帮助。 除了基本登录, 使用 Azure AD 构建的应用还可以调用 Microsoft Api 以及在 Azure AD 平台上构建的自定义 Api。 Azure AD 标识平台支持行业标准协议, 如 OAuth 2.0 和 OpenID Connect。
+- [Azure AD 标识平台 (开发人员 Azure AD)](../../active-directory/develop/about-microsoft-identity-platform.md)是一项云标识服务, 开发人员使用它来构建可安全登录用户的应用程序。 Azure AD 为正在开发多租户应用的单租户、业务线 (LOB) 应用和开发人员提供开发人员提供帮助。 除了基本登录, 使用 Azure AD 构建的应用还可以调用 Microsoft Api 以及在 Azure AD 平台上构建的自定义 Api。 Azure AD 标识平台支持行业标准协议, 如 OAuth 2.0 和 OpenID Connect。
 
-- [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)是一项标识管理服务, 可用于自定义和控制客户使用应用程序时的注册、登录和管理配置文件的方式。 这包括为 iOS、Android 和 .NET 开发的应用程序, 等等。 Azure AD B2C 在保护客户标识时启用这些操作。
+- [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml)是一项标识管理服务, 可用于自定义和控制客户使用应用程序时的注册、登录和管理配置文件的方式。 这包括为 iOS、Android 和 .NET 开发的应用程序, 等等。 Azure AD B2C 在保护客户标识时启用这些操作。
 
 #### <a name="apply-the-principle-of-least-privilege"></a>应用最小特权原则
 
 [最小特权](https://en.wikipedia.org/wiki/Principle_of_least_privilege)的概念意味着向用户提供完成其工作所需的准确级别的访问和控制。
 
-软件开发人员是否需要域管理员权限？ 管理助手是否需要访问其个人计算机上的管理控制？ 评估对软件的访问权限没有什么不同。 如果你使用[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)来向用户授予应用程序中不同的功能和颁发机构, 则不会为每个人授予所有内容的访问权限。 通过限制对每个角色所需的访问权限, 可以限制出现安全问题的风险。
+软件开发人员是否需要域管理员权限？ 管理助手是否需要访问其个人计算机上的管理控制？ 评估对软件的访问权限没有什么不同。 如果你使用[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md)来向用户授予应用程序中不同的功能和颁发机构, 则不会为每个人授予所有内容的访问权限。 通过限制对每个角色所需的访问权限, 可以限制出现安全问题的风险。
 
 确保你的应用程序在其访问模式中强制实施[最小特权](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications)。
 
@@ -226,7 +226,7 @@ Azure 提供了可用于托管网站和 web 应用程序的其他服务。 大�
 
 #### <a name="implement-just-in-time-access"></a>实现实时访问
 
-实现*实时*(JIT) 访问, 进一步降低权限的暴露时间。 使用[Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#stage-3-build-visibility-and-take-full-control-of-admin-activity)执行以下操作:
+实现*实时*(JIT) 访问, 进一步降低权限的暴露时间。 使用[Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-build-visibility-and-take-full-control-of-admin-activity)执行以下操作:
 
 - 向用户授予仅 JIT 所需的权限。
 - 分配时限更短的角色，确信权限会自动撤消。
@@ -242,7 +242,7 @@ Azure 提供了可用于托管网站和 web 应用程序的其他服务。 大�
 
 丢失密钥和凭据是一个常见问题。 唯一比丢失密钥和凭据更遭糕的事情是让未经授权的一方获取这些密钥和凭据的访问权限。 攻击者可以利用自动和手动技术来查找存储在代码存储库 (如 GitHub) 中的密钥和机密。 请勿在这些公共代码存储库中或任何其他服务器上放置密钥和机密。
 
-请始终将密钥、证书、机密和连接字符串放在密钥管理解决方案中。 你可以使用集中式解决方案, 其中的密钥和机密存储在硬件安全模块 (Hsm) 中。 Azure 通过[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)提供云中的 HSM。
+请始终将密钥、证书、机密和连接字符串放在密钥管理解决方案中。 你可以使用集中式解决方案, 其中的密钥和机密存储在硬件安全模块 (Hsm) 中。 Azure 通过[Azure Key Vault](../../key-vault/key-vault-whatis.md)提供云中的 HSM。
 
 Key Vault 是*机密存储*: 这是用于存储应用程序机密的集中式云服务。 Key Vault 通过将应用程序机密保存在单个中心位置, 并提供安全访问、权限控制和访问日志记录, 使机密数据保持安全。
 
@@ -267,7 +267,7 @@ Key Vault 是*机密存储*: 这是用于存储应用程序机密的集中式云
 #### <a name="use-encryption"></a>使用加密
 
 保护数据应该是安全策略的重要组成部分。
-如果数据存储在数据库中, 或者在位置之间来回移动, 请使用[静态数据](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)加密 (在数据库中) 和[传输中的数据](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit)加密 (从用户、数据库、API 或服务终结点进行传输)。 建议始终使用 SSL/TLS 协议来交换数据。 确保使用最新版本的 TLS 进行加密 (目前为版本 1.2)。
+如果数据存储在数据库中, 或者在位置之间来回移动, 请使用[静态数据](../fundamentals/encryption-atrest.md)加密 (在数据库中) 和[传输中的数据](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)加密 (从用户、数据库、API 或服务终结点进行传输)。 建议始终使用 SSL/TLS 协议来交换数据。 确保使用最新版本的 TLS 进行加密 (目前为版本 1.2)。
 
 #### <a name="avoid-hard-coding"></a>避免进行硬编码
 
@@ -277,7 +277,7 @@ Key Vault 是*机密存储*: 这是用于存储应用程序机密的集中式云
 
 基本上, 假设开发项目中的所有内容都将在部署时成为公共知识。 避免在项目中包含任何类型的敏感数据。
 
-前面讨论[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)。 你可以使用 Key Vault 来存储密钥和密码等机密, 而不是对其进行硬编码。 将 Key Vault 与 Azure 资源的托管标识结合使用时, Azure web 应用可轻松安全地访问机密配置值, 而无需在源代码管理或配置中存储任何机密。 若要了解详细信息, 请参阅[通过 Azure Key Vault 管理服务器应用中的机密](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)。
+前面讨论[Azure Key Vault](../../key-vault/key-vault-whatis.md)。 你可以使用 Key Vault 来存储密钥和密码等机密, 而不是对其进行硬编码。 将 Key Vault 与 Azure 资源的托管标识结合使用时, Azure web 应用可轻松安全地访问机密配置值, 而无需在源代码管理或配置中存储任何机密。 若要了解详细信息, 请参阅[通过 Azure Key Vault 管理服务器应用中的机密](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)。
 
 ### <a name="implement-fail-safe-measures"></a>实现故障安全措施
 
@@ -299,7 +299,7 @@ Key Vault 是*机密存储*: 这是用于存储应用程序机密的集中式云
 
 - 记录了异常, 并为取证或事件响应团队提供了足够的信息来调查。
 
-[Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)提供了用于处理由依赖系统引起的[错误和异常](https://docs.microsoft.com/azure/logic-apps/logic-apps-exception-handling)的一流体验。 可以使用逻辑应用创建工作流, 以自动执行跨企业和组织集成应用、数据、系统和服务的任务和流程。
+[Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)提供了用于处理由依赖系统引起的[错误和异常](../../logic-apps/logic-apps-exception-handling.md)的一流体验。 可以使用逻辑应用创建工作流, 以自动执行跨企业和组织集成应用、数据、系统和服务的任务和流程。
 
 ### <a name="use-logging-and-alerting"></a>使用日志记录和警报
 
