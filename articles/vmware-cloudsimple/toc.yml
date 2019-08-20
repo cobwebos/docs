@@ -117,7 +117,7 @@
     - name: 操作指南
       items:
         - name: 保护环境
-          href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
+          href: private-cloud-secure.md
         - name: 私有云管理
           items:
             - name: 提升私有云权限
@@ -143,7 +143,7 @@
             - name: 将 Azure 应用程序网关与 VMware VM 配合使用
               href: azure-application-gateway.md
             - name: 将私有云 vCenter 服务器配置为 vRealize 自动化终结点
-              href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
+              href: configure-server-vrealize-automation-endpoint.md
             - name: 将工作负荷 VM 迁移到私有云
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
             - name: 确保应用程序在 Azure 上的 VMware 中的高可用性

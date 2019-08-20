@@ -216,9 +216,6 @@
         - name: 排查 VM 上的更改问题
           href: automation-tutorial-troubleshoot-changes.md
           displayName: inventory
-        - name: 使用清单集合管理 VM
-          href: automation-vm-inventory.md
-          displayName: inventory
     - name: 故障排除
       items:
         - name: 登记

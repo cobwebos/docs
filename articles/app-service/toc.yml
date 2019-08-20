@@ -170,7 +170,7 @@
     - name: 缩放应用
       items:
         - name: 纵向扩展服务器容量
-          href: web-sites-scale.md
+          href: manage-scale-up.md
         - name: 配置 PremiumV2 层
           href: app-service-configure-premium-tier.md
         - name: 横向扩展到多个实例

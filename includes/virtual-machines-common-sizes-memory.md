@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3d45defa9ff8e7b2e03d550b76c0e18192c58c4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881593"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626299"
 ---
 内存优化 VM 大小提供适用于关系数据库服务器、中到大型规模的缓存和内存中分析的高内存 CPU 比率。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。
 
 * Ev3 系列在超线程配置中采用 E5-2673 v4 2.3 GHz (Broadwell) 处理器，针对最常规用途的工作负荷提供了更好的价值主张，因此 Ev3 适用于大多数其他云的常规用途 VM。  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存也得到了扩展（从 7 GiB/vCPU 到 8 GiB/vCPU）。  Ev3 是 D/Dv2 系列的高内存 VM 大小产品的后继产品。
 
-* Eav3 系列和 Easv3 系列利用多线程配置中 AMD 的 35Ghz EPYC<sup>TM</sup> 7452V 处理器, 具有多线程配置, 最多可包含 256GB L3 缓存, 同时增加了运行大多数内存优化工作负荷的选项。  Eav3 系列和 Easv3 具有与 Ev3 & Esv3 系列相同的内存和磁盘配置。
+* Eav3 系列和 Easv3 系列在多线程配置中利用 AMD 的 2.35 Ghz EPYC<sup>TM</sup> 7452V 处理器, 最多可使用 256mb L3 缓存, 同时增加了运行大多数内存优化工作负荷的选项。  Eav3 系列和 Easv3 具有与 Ev3 & Esv3 系列相同的内存和磁盘配置。
 
 * Mv2 系列提供云中任意 VM 的最高 vCPU 计数 (最高为208个 vcpu) 和最大内存 (最大为 5.7 TiB)。 它非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。
 

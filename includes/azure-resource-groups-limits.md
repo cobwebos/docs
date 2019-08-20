@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/30/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: f027f5b295d75c105e81360a10718239e5b08e4d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698274"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626298"
 ---
 | Resource | 默认限制 | 最大限制 |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "68698274"
 | 部署历史记录中每个资源组的部署数 |800<sup>1</sup> |800 |
 | 每个部署的资源数 |800 |800 |
 | 管理锁数（按唯一的作用域） |20 |20 |
-| 标记数（按资源或资源组） |15 |15 |
+| 标记数（按资源或资源组） |50 |50 |
 | 标记键长度 |512 |512 |
 | 标记值长度 |256 |256 |
 

@@ -332,8 +332,6 @@
               href: iot-hub-raspberry-pi-kit-c-get-started.md
             - name: 将 MXChip IoT DevKit 与 Arduino 配合使用
               href: iot-hub-arduino-iot-devkit-az3166-get-started.md
-            - name: 将 Adafruit Feather HUZZAH ESP8266 与 Arduino 配合使用
-              href: iot-hub-arduino-huzzah-esp8266-get-started.md
         - name: 使用 MXChip IoT DevKit
           items:
             - name: 使用 Azure 认知服务翻译语音消息

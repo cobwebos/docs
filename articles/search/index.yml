@@ -7,9 +7,8 @@ metadata:
   description: 了解如何使用 Azure 搜索创建基于专用异类内容的企业搜索解决方案。 教程、API 参考和其他文档介绍了如何将从简单到高级的语法用于各种方案，以便将可搜索内容整合到单个可查询的快速索引中。
   services: search
   author: HeidiSteen
-  manager: cgronlun
+  manager: nitinme
   ms.service: search
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/12/2019
   ms.author: heidist

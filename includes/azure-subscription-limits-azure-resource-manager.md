@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 4d13779317793b5edd971dd457a77e0bc5cae1c8
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: f85605610727ef2c1e1987b7ef93a41ce2417a25
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426850"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626296"
 ---
 | Resource | 默认限制 | 最大限制 |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ ms.locfileid: "68426850"
 
 <sup>1</sup>默认限制根据产品类别类型 (例如免费试用版和即用即付, 以及按序列 (如 Dv2、F 和 G) 而有所不同。例如, 企业协议订阅的默认值为350。
 
-<sup>2</sup>每个订阅可以应用无限数量的标记。 每个资源或资源组的标记数仅限 15。 当标记数少于或等于 10,000 时，资源管理器仅返回订阅中[唯一标记名和值的列表](/rest/api/resources/tags)。 即使数目超过 10,000，也仍可按标记查找资源。  
+<sup>2</sup>每个订阅可以应用无限数量的标记。 每个资源或资源组的标记数限制为50。 当标记数少于或等于 10,000 时，资源管理器仅返回订阅中[唯一标记名和值的列表](/rest/api/resources/tags)。 即使数目超过 10,000，也仍可按标记查找资源。  
 
 <sup>3</sup>使用 Azure 资源组和资源管理器时不再需要这些功能。
 

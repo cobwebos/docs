@@ -127,7 +127,7 @@
     - name: 缩放
       items:
         - name: Web 和移动应用
-          href: 'https://docs.microsoft.com/azure/app-service/web-sites-scale'
+          href: 'https://docs.microsoft.com/azure/app-service/manage-scale-up'
         - name: 虚拟机
           href: 'https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview'
         - name: 微服务应用

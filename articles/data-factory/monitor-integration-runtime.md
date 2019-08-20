@@ -178,7 +178,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | Type | Azure-SSIS 集成运行时的类型 (Managed/Self-Hosted)。 |
 | ResourceGroupName | 在其中创建了数据工厂和 Azure-SSIS 集成运行时的 Azure 资源组的名称。 |
 | DataFactoryName | Azure 数据工厂的名称。 |
-| 名称 | Azure-SSIS 集成运行时的名称。 |
+| Name | Azure-SSIS 集成运行时的名称。 |
 | 描述 | Azure-SSIS 集成运行时的说明。 |
 
   
