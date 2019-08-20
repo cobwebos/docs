@@ -43,7 +43,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 
 | 属性 | 描述 |
 -------- | ------------- | 
-| 名称 | Azure 集成运行时的名称。 |  
+| Name | Azure 集成运行时的名称。 |  
 | State | Azure 集成运行时的状态。 | 
 | Location | Azure 集成运行时的位置。 有关 Azure 集成运行时位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。 |
 | DataFactoryName | Azure 集成运行时所属的数据工厂的名称。 | 
