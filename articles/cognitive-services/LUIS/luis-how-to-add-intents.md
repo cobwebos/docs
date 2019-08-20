@@ -1,34 +1,34 @@
 ---
-title: 添加意向
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 添加方法-LUIS
+titleSuffix: Azure Cognitive Services
 description: 向 LUIS 应用添加意向，识别具有相同意向的问题或命令组。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 04/01/2019
+ms.topic: conceptual
+ms.date: 07/29/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 0c42ab44ba317888b982ba7c72f78be4ca73d93c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb90a902b8f7fe8b37b81c2825cbdfc25ef5dc0d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148169"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932891"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>添加意向以确定用户的话语意向
 
 向 LUIS 应用添加[意向](luis-concept-intent.md)，识别具有相同意向的问题或命令组。 
 
-可以依次转到顶部导航栏的“生成”部分和左侧面板的“意向”来管理意向。   
+可以依次转到顶部导航栏的“生成”部分和左侧面板的“意向”来管理意向。 
 
 ## <a name="add-intent"></a>添加意向
 
-1. 在“意向”页上，选择“创建新意向”。  
+1. 在“意向”页上，选择“创建新意向”。
 
-1. 在“创建新意向”对话框中，输入意向名称 `GetEmployeeInformation`，然后单击“完成”   。
+1. 在“创建新意向”对话框中，输入意向名称 `GetEmployeeInformation`，然后单击“完成”。
 
     ![添加意向](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "65148169"
 
 示例表述是用户问题或命令的文本示例。 若要传授语言理解 (LUIS)，需将示例话语添加到意向。
 
-1. 在“GetEmployeeInformation”意向详细信息页上的意向名称下的文本框中，输入预期用户会输入的相关话语，例如 `Does John Smith work in Seattle?`，然后按 Enter。 
+1. 在“GetEmployeeInformation”意向详细信息页上的意向名称下的文本框中，输入预期用户会输入的相关话语，例如 `Does John Smith work in Seattle?`，然后按 Enter。
  
     ![意向详细信息页的屏幕截图，其中突出显示了表述](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
@@ -48,7 +48,7 @@ ms.locfileid: "65148169"
 
 意向中的示例话语可能会在示例话语当前表现出的意向和在训练过程中确定的预测意向之间存在意向预测错误。 
 
-若要找出并修复话语预测错误，请将“筛选器”  选项的“评估”  选项“不正确”和“不清楚”与“视图”  选项“详细视图”配合使用。  
+若要找出并修复话语预测错误，请将“筛选器”选项的“评估”选项“不正确”和“不清楚”与“视图”选项“详细视图”配合使用。 
 
 ![若要找出并修复话语预测错误，请使用“筛选器”选项。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "65148169"
 * 删除：从意向中删除话语。 如果仍想保留该话语，则更好的方法是将其移到 **None** 意向。 
 * 添加模式：使用模式可以提取常用话语以及标记可替换的文本和可忽略的文本，从而减少在意向中提供更多话语的需要。 
 
-使用“已标记的意向”列可以更改话语的意向。 
+使用“已标记的意向”列可以更改话语的意向。
 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>在对模型进行意向更改后对应用进行培训
 

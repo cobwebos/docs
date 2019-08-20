@@ -17,7 +17,7 @@ ms.locfileid: "65954499"
 
 本教程说明如何使用可将数据从各种源导入 Azure Cosmos DB 集合和表的 Azure Cosmos DB 数据迁移工具。 可从 JSON 文件、CSV 文件、SQL、MongoDB、Azure 表存储、Amazon DynamoDB 导入，甚至还可以从 Azure Cosmos DB SQL API 集合导入。 可将该数据迁移到集合和表中，以便在 Azure Cosmos DB 中使用。 还可在从单个分区集合迁移到 SQL API 的多分区集合时使用数据迁移工具。
 
-要对 Azure Cosmos DB 使用哪个 API？
+要使用 Azure Cosmos DB 的哪个 API？
 
 * **[SQL API](documentdb-introduction.md)** - 可以使用数据迁移工具中提供的任何源选项导入数据。
 * **[表 API](table-introduction.md)** - 可以使用数据迁移工具或 AzCopy 导入数据。 有关详细信息，请参阅[导入要在 Azure Cosmos DB 表 API 中使用的数据](table-import.md)。
@@ -165,7 +165,7 @@ dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.Con
 
 ## <a id="SQL"></a>从 SQL Server 导入
 
-借助 SQL 源导入程序选项，可以从单个 SQL Server 数据库中导入，并且选择筛选要使用查询来导入的记录。 此外，可以通过指定嵌套分隔符（稍后进行详细介绍）来修改文档结构。  
+借助 SQL 源导入程序选项，可以从单个 SQL Server 数据库中导入，并且可以选择通过查询来筛选要导入的记录。 此外，可以通过指定嵌套分隔符（稍后进行详细介绍）来修改文档结构。  
 
 ![SQL 源选项的屏幕截图 - 数据库迁移工具](./media/import-data/sqlexportsource.png)
 
@@ -298,7 +298,7 @@ Azure Cosmos DB 连接字符串的格式为：
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-可根据[如何管理 Azure Cosmos DB 帐户](manage-account.md)中所述，从 Azure 门户的“密钥”页检索 Azure Cosmos DB 帐户连接字符串。 但是，需将数据库的名称追加到采用以下格式的连接字符串后面：
+可根据[如何管理 Azure Cosmos DB 帐户](manage-account.md)中所述，从 Azure 门户的“密钥”页检索 Azure Cosmos DB 帐户连接字符串。 但是，需将数据库的名称追加到连接字符串后面（格式如下）：
 
 `Database=<CosmosDB Database>;`
 
@@ -428,7 +428,7 @@ Azure Cosmos DB 连接字符串的格式为：
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-可根据[如何管理 Azure Cosmos DB 帐户](manage-account.md)中所述，从 Azure 门户的“密钥”页检索 Azure Cosmos DB 帐户的连接字符串。 但是，需将数据库的名称追加到采用以下格式的连接字符串后面：
+可根据[如何管理 Azure Cosmos DB 帐户](manage-account.md)中所述，从 Azure 门户的“密钥”页检索 Azure Cosmos DB 帐户的连接字符串。 但是，需将数据库的名称追加到连接字符串后面（格式如下）：
 
 `Database=<Azure Cosmos DB Database>;`
 
