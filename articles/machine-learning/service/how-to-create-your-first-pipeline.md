@@ -11,16 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1e68f60880e09dfeb46641f40eca12e1fc0560bc
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
-ms.translationtype: HT
+ms.openlocfilehash: a34443abf38f31a5400b9f274c65b0b2f7362af7
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950427"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624789"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中创建和运行机器学习管道
 
-本文介绍如何使用 [Azure 机器学习 SDK](https://aka.ms/aml-sdk) 创建、发布、运行和跟踪[机器学习管道](concept-ml-pipelines.md)。  使用**ML 管道**创建一个工作流, 该工作流将拼结多个 ML 阶段, 然后将该管道发布到 Azure 机器学习工作区, 以便以后访问或与其他用户共享。  ML 管道非常适合用于批处理评分方案, 使用各种计算, 重复使用步骤, 而不是重新运行, 以及与他人共享 ML 工作流。 
+本文介绍如何使用 [Azure 机器学习 SDK](https://aka.ms/aml-sdk) 创建、发布、运行和跟踪[机器学习管道](concept-ml-pipelines.md)。  使用**ML 管道**创建一个工作流, 该工作流将拼结多个 ML 阶段, 然后将该管道发布到 Azure 机器学习工作区, 以便以后访问或与他人共享。  ML 管道非常适合用于批处理评分方案, 使用各种计算, 重复使用步骤, 而不是重新运行, 以及与他人共享 ML 工作流。 
 
 虽然你可以使用一种称为[Azure 管道](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml)的不同类型的管道来实现 ML 任务的 CI/CD 自动化, 但这种类型的管道永远不会存储在工作区中。 [比较这些不同的管道](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use)。
 

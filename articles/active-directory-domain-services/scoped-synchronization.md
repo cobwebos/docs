@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: bb96e7ccbc38a71d24178c31f8eb9a077c06b8f0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 7d3bd8c6c62c0b8a1be6203e426337fcee7d2126
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472521"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617113"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>配置从 Azure AD 到托管域的范围内同步
 本文介绍了如何仅将特定用户帐户配置为从 Azure AD 目录同步到 Azure AD 域服务托管域。
@@ -47,8 +47,8 @@ ms.locfileid: "67472521"
 
 ## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>使用 Azure 门户新建托管域并启用基于组的范围内同步
 
-1. 按照[入门指南](create-instance.md)创建托管域。
-2. 在 Azure AD 域服务创建向导中选择同步样式期间，选择“范围内”  。
+1. 按照[入门指南](tutorial-create-instance.md)创建托管域。
+2. 在 Azure AD 域服务创建向导中选择同步样式期间，选择“范围内”。
 
 ## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-powershell"></a>使用 PowerShell 新建托管域并启用基于组的范围内同步
 使用 PowerShell 完成这一组步骤。 请参阅[使用 PowerShell 启用 Azure Active Directory 域服务](powershell-create-instance.md)中的说明。 为了配置范围内同步，我们对这篇文章中的几个步骤略作修改。
@@ -58,7 +58,7 @@ ms.locfileid: "67472521"
 1. 完成以下任务：
    * [任务 1：安装所需的 PowerShell 模块](powershell-create-instance.md#task-1-install-the-required-powershell-modules)。
    * [任务 2：在 Azure AD 目录中创建所需的服务主体](powershell-create-instance.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory)。
-   * [任务 3:创建和配置 AAD DC 管理员 group]powershell-create-instance.md#task-3-create-and-configure-the-aad-dc-administrators-group）。
+   * [任务 3:创建和配置 "AAD DC 管理员" 组 "powershell-创建-实例"。 md # 任务-3-创建并配置--
    * [任务 4：注册 Azure AD 域服务资源提供程序](powershell-create-instance.md#task-4-register-the-azure-ad-domain-services-resource-provider)。
    * [任务 5：创建资源组](powershell-create-instance.md#task-5-create-a-resource-group)。
    * [任务 6：创建并配置虚拟网络](powershell-create-instance.md#task-6-create-and-configure-the-virtual-network)。
@@ -81,7 +81,7 @@ ms.locfileid: "67472521"
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "contoso100.com"
+   $ManagedDomainName = "contoso.com"
    $ResourceGroupName = "ContosoAaddsRg"
    $VnetName = "DomainServicesVNet_WUS"
    $AzureLocation = "westus"

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 51ef55247d3262d8707403ed09cc8643403dda23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
-ms.translationtype: HT
+ms.openlocfilehash: 393c66f57cd4a7621ad660774a95502c0f5ad8c4
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952971"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534705"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -251,6 +251,15 @@ Heartbeat
 
 此外，能够以编程方式创建更新部署。 若要了解如何使用 REST API 创建更新部署，请参阅[软件更新配置 - 创建](/rest/api/automation/softwareupdateconfigurations/create)。 此外，还有一个示例 Runbook，可用于创建每周更新部署。 若要了解有关此 Runbook 的详细信息，请参阅[为资源组中的一个或多个 VM 创建每周更新部署](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)。
 
+### <a name="maintenance-windows"></a>维护时段
+
+维护时段控制允许安装更新的时间。 指定维护时段时, 请考虑以下详细信息。
+
+* 维护时段控制尝试安装的更新的数量。
+* 如果维护时段结束时, 更新管理不会停止安装新的更新。
+* 如果超出了维护时段, 更新管理不会终止正在进行的更新。
+* 如果在 Windows 上超过维护时段, 通常是因为 Service Pack 更新需要很长时间才能安装。
+
 ### <a name="multi-tenant"></a>跨租户更新部署
 
 如果你在向“更新管理”进行报告的另一个 Azure 租户中存在需要修补的计算机，则需要使用以下解决方法来计划它们。 你可以使用 [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 和开关 `-ForUpdate` 来创建计划，然后使用 [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
@@ -374,8 +383,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 除了 Azure 门户中提供的详细信息以外，还可以针对日志执行搜索。 在解决方案页上，选择**Log Analytics**。 此时将打开**日志搜索**窗格。
 
-还可访问 [Log Analytics 搜索 API 文档](
-https://dev.loganalytics.io/)，[了解如何自定义查询或从不同客户端使用查询等。](
+还可访问 Log Analytics 搜索 API 文档，[了解如何自定义查询或从不同客户端使用查询等。](
 https://dev.loganalytics.io/).
 
 ### <a name="sample-queries"></a>示例查询

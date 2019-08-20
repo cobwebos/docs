@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 849c3a745de08e7cf8ff7f1b8bb237a6d0f54395
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384164"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615346"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB 全局数据分布 - 揭秘
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 是 Azure 中的一项基本服务, 因此它已部署到全球�
 
 物理分区是通过一组副本（称作副本集）实现的。 每台计算机托管数百个副本，这些副本对应于一组固定进程中的各个物理分区，如上图所示。 对应于物理分区的副本在区域中群集与数据中心内的计算机之间进行动态定位和负载均衡。  
 
-一个副本专属于一个 Azure Cosmos DB 租户。 每个副本托管 Cosmos DB [数据库引擎](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)的实例，该实例管理资源以及关联的索引。 Cosmos DB 数据库引擎在基于原子记录序列 (ARS) 的系统上运行。 该引擎对架构概念不可知，并将记录的结构与实例值之间的边界模糊化。 Cosmos DB 通过在引入时为所有内容自动编制索引来有效实现架构的完全不可知性，使用户无需处理架构或索引管理，即可查询其全球分布式数据。
+一个副本专属于一个 Azure Cosmos DB 租户。 每个副本托管 Cosmos DB [数据库引擎](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)的实例，该实例管理资源以及关联的索引。 Cosmos 数据库引擎在基于 atom 记录序列 (ARS) 的类型系统上进行操作。 该引擎对架构概念不可知，并将记录的结构与实例值之间的边界模糊化。 Cosmos DB 通过在引入时为所有内容自动编制索引来有效实现架构的完全不可知性，使用户无需处理架构或索引管理，即可查询其全球分布式数据。
 
 Cosmos 数据库引擎包含的组件可以实现多个协调基元、语言运行时、查询处理器，并包括分别负责事务存储和数据索引的存储子系统与索引子系统。 为了提供持久性和高可用性，数据库引擎将在 SSD 中保存其数据和索引，并相应地将其复制到副本集中的数据库引擎实例之间。 大型租户的吞吐量和存储规模较高，并且数据和索引的副本数也较多。 该系统的每个组件是完全异步的 – 永远不会出现线程阻塞，每个线程执行生存期较短的工作，可避免任何不必要的线程切换。 速率限制和反压在从许可控制到所有 I/O 路径的整个堆栈中传播。 Cosmos 数据库引擎旨在利用精细并发性和提供高吞吐量，同时可在有限的系统资源中运行。
 
