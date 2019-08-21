@@ -95,7 +95,7 @@ ms.locfileid: "67839563"
 | 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | bucketName |S3 存储桶的名称。 |String |是 |
-| key |S3 对象键。 |字符串 |否 |
+| key |S3 对象键。 |String |否 |
 | prefix |S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当键为空时应用。 |String |否 |
 | version |启用 S3 版本控制时 S3 对象的版本。 |String |否 |
 | format | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat      。 请将格式中的“type”属性设置为上述值之一  。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 | |
