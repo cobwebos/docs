@@ -367,7 +367,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 属性 | 类型 | 描述 | 示例 |
 | --- | --- | --- | --- |
-| 级别 |String | 诊断日志的级别。 对于活动运行日志，请设置为级别 4。 | `4`  |
+| Level |String | 诊断日志的级别。 对于活动运行日志，请设置为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | 事件的时间，以时间跨度表示，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |triggerId| String| 触发器运行的 ID | `08587023010602533858661257311` |
@@ -436,7 +436,7 @@ ADFV2 发出以下度量值:
 
 为数据工厂启用诊断设置。
 
-1. 在门户中，导航到“Azure Monitor”并单击“设置”菜单中的“诊断设置”   。
+1. 在门户中，导航到“Azure Monitor”并单击“设置”菜单中的“诊断设置” 。
 
 2. 选择要为其设置诊断设置的数据工厂。
     
@@ -448,11 +448,11 @@ ADFV2 发出以下度量值:
 
    ![添加诊断设置 - 现有的设置](media/data-factory-monitor-oms/add-diagnostic-setting.png)
 
-4. 为设置提供名称，并选中“发送到 Log Analytics”  框，然后选择 Log Analytics 工作区。
+4. 为设置提供名称，并选中“发送到 Log Analytics” 框，然后选择 Log Analytics 工作区。
 
     ![monitor-oms-image2.png](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
-5. 单击“保存”  。
+5. 单击“保存” 。
 
 几分钟后, 新设置会显示在此数据工厂的设置列表中, 只要生成新的事件数据, 就会立即将诊断日志流式传输到该工作区。 发出事件后可能需要最多 15 分钟的时间该事件才会出现在 Log Analytics 中。
 
@@ -465,7 +465,7 @@ ADFV2 发出以下度量值:
 
 ![monitor-oms-image4.png](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-单击“创建”  并选择工作区和工作区设置。
+单击“创建” 并选择工作区和工作区设置。
 
 ![monitor-oms-image5.png](media/data-factory-monitor-oms/monitor-oms-image5.png)
 
@@ -507,14 +507,14 @@ ADFV2 发出以下度量值:
 
 ### <a name="create-alerts"></a>创建警报
 
-1.  单击“+ 新建警报规则”，创建新的警报  。
+1.  单击“+ 新建警报规则”，创建新的警报 。
 
     ![新建警报规则](media/monitor-using-azure-monitor/alerts_image4.png)
 
-2.  定义警报条件  。
+2.  定义警报条件 。
 
     > [!NOTE]
-    > 请务必在“按资源类型筛选”中选择“所有”   。
+    > 请务必在“按资源类型筛选”中选择“所有” 。
 
     ![警报条件，第 1 屏，共 3 屏](media/monitor-using-azure-monitor/alerts_image5.png)
 
@@ -522,11 +522,11 @@ ADFV2 发出以下度量值:
 
     ![警报条件，第 3 屏，共 3 屏](media/monitor-using-azure-monitor/alerts_image7.png)
 
-3.  定义警报详细信息  。
+3.  定义警报详细信息 。
 
     ![警报详细信息](media/monitor-using-azure-monitor/alerts_image8.png)
 
-4.  定义操作组  。
+4.  定义操作组 。
 
     ![操作组，第 1 屏，共 4 屏](media/monitor-using-azure-monitor/alerts_image9.png)
 
