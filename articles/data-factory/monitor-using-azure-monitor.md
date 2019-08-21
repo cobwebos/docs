@@ -277,7 +277,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 属性 | 类型 | 描述 | 示例 |
 | --- | --- | --- | --- |
-| 级别 |String | 诊断日志的级别。 活动运行日志始终为级别 4。 | `4`  |
+| Level |String | 诊断日志的级别。 活动运行日志始终为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | 事件的时间，以时间跨度表示，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |activityRunId| String| 活动运行的 ID | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
@@ -323,7 +323,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 属性 | type | 描述 | 示例 |
 | --- | --- | --- | --- |
-| 级别 |String | 诊断日志的级别。 活动运行日志为级别 4。 | `4`  |
+| Level |String | 诊断日志的级别。 活动运行日志为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | 事件的时间，以时间跨度表示，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |runId| String| 管道运行的 ID | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
