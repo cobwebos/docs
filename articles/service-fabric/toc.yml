@@ -108,7 +108,7 @@
 - name: 示例
   items:
     - name: 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?service=service-fabric'
+      href: 'https://docs.microsoft.com/samples/browse/'
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
@@ -354,7 +354,7 @@
       href: service-fabric-api-management-overview.md
     - name: 应用资源模型
       href: service-fabric-concept-resource-model.md
-    - name: 托管标识
+    - name: 托管标识（预览版）
       href: concepts-managed-identity.md
 - name: 操作指南
   items:
@@ -747,7 +747,7 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: 对本地群集进行故障排除
           href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: 将托管标识用于 Service Fabric 应用
+    - name: 将托管标识用于 Service Fabric 应用（预览版）
       items:
         - name: 群集设置
           items:

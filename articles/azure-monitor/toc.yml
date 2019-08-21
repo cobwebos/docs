@@ -930,6 +930,8 @@
               href: platform/alerts-understand-migration.md
             - name: 使用迁移工具
               href: platform/alerts-using-migration-tool.md
+            - name: 自动迁移过程
+              href: platform/alerts-automatic-migration.md
             - name: 管理经典指标警报
               href: platform/alerts-classic-portal.md
             - name: 使用资源管理器模板的经典指标警报

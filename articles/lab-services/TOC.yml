@@ -4,19 +4,19 @@
   items:
     - name: 关于实验室服务
       href: lab-services-overview.md
-    - name: 关于教室实验室
+    - name: 关于课堂实验室
       href: classroom-labs/classroom-labs-overview.md
     - name: 关于开发测试实验室
       href: devtest-lab-overview.md
 - name: 教程
   items:
-    - name: 教室实验室
+    - name: 课堂实验室
       items:
         - name: 1. 设置实验室帐户
           href: classroom-labs/tutorial-setup-lab-account.md
-        - name: 2. 设置教室实验室
+        - name: 2. 设置课堂实验室
           href: classroom-labs/tutorial-setup-classroom-lab.md
-        - name: 3. 访问教室实验室
+        - name: 3. 访问课堂实验室
           href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
         - name: 4. 跟踪课堂实验室的使用情况
           href: classroom-labs/tutorial-track-usage.md
@@ -40,9 +40,9 @@
           href: samples-cli.md
 - name: 概念
   items:
-    - name: 教室实验室
+    - name: 课堂实验室
       items:
-        - name: 教室实验室概念
+        - name: 课堂实验室概念
           href: classroom-labs/classroom-labs-concepts.md
         - name: 方案
           items:
@@ -70,9 +70,9 @@
               href: devtest-lab-use-claim-capabilities.md
 - name: 操作指南
   items:
-    - name: 教室实验室
+    - name: 课堂实验室
       items:
-        - name: 创建和配置实验室帐户
+        - name: 创建和配置实验室帐户（实验室帐户所有者）
           items:
             - name: 创建和管理实验室帐户
               href: classroom-labs/how-to-manage-lab-accounts.md
@@ -82,16 +82,14 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: 附加或分离共享映像库
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-        - name: 创建、配置和使用教室实验室
+        - name: 创建和配置课堂实验室（老师）
           items:
-            - name: 创建和管理教室实验室
+            - name: 创建和管理课堂实验室
               href: classroom-labs/how-to-manage-classroom-labs.md
             - name: 设置并发布模板
               href: classroom-labs/how-to-create-manage-template.md
             - name: 配置和控制使用情况
               href: classroom-labs/how-to-configure-student-usage.md
-            - name: 访问教室实验室
-              href: classroom-labs/how-to-use-classroom-lab.md
             - name: 创建并管理计划
               href: classroom-labs/how-to-create-schedules.md
             - name: 创建带有模板 VM 内的多个 VM 的环境
@@ -102,6 +100,10 @@
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
             - name: 设置或重置虚拟机的密码
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
+        - name: 连接到课堂实验室中的 VM（学生）
+          items:
+            - name: 访问课堂实验室
+              href: classroom-labs/how-to-use-classroom-lab.md
     - name: 开发测试实验室
       items:
         - name: 配置实验室
@@ -120,6 +122,8 @@
               href: configure-lab-remote-desktop-gateway.md
             - name: 在实验室中发布公告
               href: devtest-lab-announcements.md
+            - name: 在 VM 上启用浏览器连接
+              href: enable-browser-connection-lab-virtual-machines.md
             - name: 配置成本管理
               href: devtest-lab-configure-cost-management.md
             - name: 发送自动关闭通知
@@ -166,6 +170,8 @@
               href: devtest-lab-use-resource-manager-template.md
             - name: 使用共享映像库中的映像创建 VM
               href: add-vm-use-shared-image.md
+            - name: 通过浏览器连接到 VM
+              href: connect-virtual-machine-through-browser.md
             - name: 使用 PowerShell 或 CLI 启动或停止 VM
               href: use-command-line-start-stop-virtual-machines.md
             - name: 重新启动 VM
@@ -287,7 +293,7 @@
               href: devtest-lab-troubleshoot-artifact-failure.md
 - name: 引用
   items:
-    - name: 教室实验室
+    - name: 课堂实验室
       items:
         - name: REST API
           href: 'https://docs.microsoft.com/rest/api/labservices/'
@@ -305,7 +311,7 @@
           href: /azure/templates/microsoft.devtestlab/allversions
 - name: 资源
   items:
-    - name: 教室实验室
+    - name: 课堂实验室
       items:
         - name: Azure 更新
           href: 'https://azure.microsoft.com/updates/?product=lab-services'

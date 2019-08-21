@@ -149,6 +149,8 @@
           href: display-feature-information-android.md
         - name: 添加图块层
           href: how-to-add-tile-layer-android-map.md
+    - name: 提供数据反馈
+      href: how-to-use-feedback-tool.md
 - name: 引用
   items:
     - name: API 和参数扩展

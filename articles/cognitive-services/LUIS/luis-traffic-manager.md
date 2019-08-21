@@ -9,26 +9,26 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 72a7b383d224936e3d22ee9e7acb5db28fe63c4e
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 85f6be7a897908ef9198ac71ada809efb7c033bc
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945147"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650544"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>使用 Microsoft Azure 流量管理器管理密钥之间的终结点配额
 语言理解 (LUIS) 提供增加终结点请求配额的功能，可超出单个密钥的配额。 可通过以下方法实现此功能：为 LUIS 创建多个密钥，并在“资源和密钥”部分中的“发布”页面上将其添加到 LUIS 应用程序。 
 
 客户端应用程序必须管理密钥之间的流量。 LUIS 不执行此操作。 
 
-本文介绍如何通过 Azure[流量管理器][traffic-manager-marketing]管理密钥间的流量。 必须具有已训练和已发布的 LUIS 应用。 如果还没有，请按照预生成的域[快速入门](luis-get-started-create-app.md)操作。 
+本文介绍如何使用 Azure [流量管理器][traffic-manager-marketing]管理密钥之间的流量。 必须具有已训练和已发布的 LUIS 应用。 如果还没有，请按照预生成的域[快速入门](luis-get-started-create-app.md)操作。 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="connect-to-powershell-in-the-azure-portal"></a>在 Azure 门户中连接到 PowerShell
-在[Azure][azure-portal]门户中, 打开 PowerShell 窗口。 PowerShell 窗口的图标是顶部导航栏中的“>_”。 从门户中使用 PowerShell，即表示已获得最新 PowerShell 版本并且通过了身份验证。 门户中的 PowerShell 需要 [Azure 存储](https://azure.microsoft.com/services/storage/)帐户。 
+在 [Azure][azure-portal] 门户中，打开 PowerShell 窗口。 PowerShell 窗口的图标是顶部导航栏中的“>_”。 从门户中使用 PowerShell，即表示已获得最新 PowerShell 版本并且通过了身份验证。 门户中的 PowerShell 需要 [Azure 存储](https://azure.microsoft.com/services/storage/)帐户。 
 
 ![打开 Powershell 窗口的 Azure 门户的屏幕截图](./media/traffic-manager/azure-portal-powershell.png)
 
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![luis-traffic-manager 资源组中带有两个 LUIS 密钥的 Azure 门户的屏幕截图](./media/traffic-manager/luis-keys.png)
 
-2. 在[LUIS][LUIS]网站的 "**管理**" 部分的 "**密钥和终结点**" 页上, 为应用分配密钥, 并通过选择右上方菜单中的 "**发布**" 按钮来重新发布应用。 
+2. 在 [LUIS][LUIS] 网站的“密钥和终结点”页上的“管理”部分中，为应用分配密钥，然后通过选择右上方菜单中的“发布”按钮重新发布应用。 
 
     “终结点”列中的示例 URL 使用具有终结点密钥的 GET 请求作为查询参数。 复制这两个新密钥的终结点 URL。 本文后面的流量管理器配置中会用到它们。
 
@@ -101,7 +101,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
     |--|--|--|
     |-EndpointName|luis-east-endpoint|配置文件下显示的终结点名称|
     |-TrafficManagerProfile|$eastprofile|使用步骤 1 中创建的配置文件对象|
-    |-Type|ExternalEndpoints|有关详细信息, 请参阅[流量管理器终结点][traffic-manager-endpoints] |
+    |-Type|ExternalEndpoints|有关详细信息，请参阅[流量管理器终结点][traffic-manager-endpoints] |
     |-Target|eastus.api.cognitive.microsoft.com|这是 LUIS 终结点的域。|
     |-EndpointLocation|“eastus”|终结点的区域|
     |-EndpointStatus|已启用|创建时启用终结点|
@@ -170,7 +170,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
     |--|--|--|
     |-EndpointName|luis-west-endpoint|配置文件下显示的终结点名称|
     |-TrafficManagerProfile|$westprofile|使用步骤 1 中创建的配置文件对象|
-    |-Type|ExternalEndpoints|有关详细信息, 请参阅[流量管理器终结点][traffic-manager-endpoints] |
+    |-Type|ExternalEndpoints|有关详细信息，请参阅[流量管理器终结点][traffic-manager-endpoints] |
     |-Target|westus.api.cognitive.microsoft.com|这是 LUIS 终结点的域。|
     |-EndpointLocation|“westus”|终结点的区域|
     |-EndpointStatus|已启用|创建时启用终结点|
@@ -330,7 +330,7 @@ $<variable-name> = Get-AzTrafficManagerProfile -Name <profile-name> -ResourceGro
 ![显示联机监控状态的 Azure 流量管理器配置文件概述的屏幕截图](./media/traffic-manager/profile-status-online.png)
 
 ### <a name="validate-traffic-manager-polling-works"></a>验证流量管理器轮询的工作
-验证流量管理器轮询是否正常工作的另一种方法是使用 LUIS 终结点日志。 在[LUIS][LUIS]网站应用列表页上, 导出应用程序的终结点日志。 由于流量管理器通常轮询两个终结点，因此，即使它们仅进行了几分钟，日志中也有条目。 请务必查找其中的查询以 `traffic-manager-` 开头的条目。
+验证流量管理器轮询是否正常工作的另一种方法是使用 LUIS 终结点日志。 在 [LUIS][LUIS] 网站应用列表页上，导出应用程序的终结点日志。 由于流量管理器通常轮询两个终结点，因此，即使它们仅进行了几分钟，日志中也有条目。 请务必查找其中的查询以 `traffic-manager-` 开头的条目。
 
 ```console
 traffic-manager-west    6/7/2018 19:19  {"query":"traffic-manager-west","intents":[{"intent":"None","score":0.944767}],"entities":[]}
