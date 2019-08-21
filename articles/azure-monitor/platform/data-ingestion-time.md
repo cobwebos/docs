@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: e07a436ee18a216bab569d299e534e729996db19
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5947c4c28736f8488ea0e48941214df42c6af72a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990158"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639491"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间
 Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于日志数据在收集后需要多长时间才可供使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
@@ -100,8 +100,11 @@ Heartbeat
 | summarize percentiles(E2EIngestionLatency,50,95), percentiles(AgentLatency,50,95) by Computer 
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
- 
+
+上述百分比检查适用于查找延迟的一般趋势。 若要在延迟时间内标识短期高峰, 使用最大值`max()`() 可能更有效。
+
 如果要在一段时间内向下钻取特定计算机的引入时间, 请使用以下查询, 该查询还直观显示了图形中过去一天的数据: 
+
 
 ``` Kusto
 Heartbeat 

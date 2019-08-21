@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 08/20/2019
 ms.author: delhan
-ms.openlocfilehash: d96d75f4f2623476f7af4e6eea930c1f2c503e3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fc51dfb90158316b3fe6c11b5265f1cf3251505
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306945"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641038"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>如何在 Azure VM 上重置本地 Linux 密码
 
@@ -30,17 +30,20 @@ ms.locfileid: "60306945"
 
 ## <a name="manual-password-reset-procedure"></a>手动密码重置过程
 
-1.  删除 VM 并保留附加的磁盘。
+> [!NOTE]
+> 以下步骤不适用于包含非托管磁盘的 VM。
 
-2.  将 OS 驱动器作为数据磁盘附加到同一位置中的另一个临时 VM 中。
+1. 为受影响的 VM 的 OS 磁盘拍摄快照, 从快照创建磁盘, 然后将该磁盘附加到故障排除 VM。 有关详细信息, 请参阅[使用 Azure 门户将 OS 磁盘附加到恢复 VM, 对 WINDOWS VM 进行故障排除](troubleshoot-recovery-disks-portal-linux.md)。
 
-3.  在临时 VM 上运行以下 SSH 命令，成为超级用户。
+2. 使用远程桌面连接到故障排除 VM。
+
+3.  在故障排除 VM 上运行以下 SSH 命令, 使其成为超级用户。
 
     ```bash
     sudo su
     ```
 
-4.  运行 fdisk -l  ，或查看系统日志以查找新附加的磁盘。 找到要装载的驱动器名称。 然后在临时 VM 上，查找相关的日志文件。
+4.  运行 fdisk -l，或查看系统日志以查找新附加的磁盘。 找到要装载的驱动器名称。 然后在临时 VM 上，查找相关的日志文件。
 
     ```bash
     grep SCSI /var/log/kern.log (ubuntu)
@@ -53,13 +56,13 @@ ms.locfileid: "60306945"
     kernel: [ 9707.100572] sd 3:0:0:0: [sdc] Attached SCSI disk
     ```
 
-5.  创建名为 tempmount  的装入点。
+5.  创建名为 tempmount 的装入点。
 
     ```bash
     mkdir /tempmount
     ```
 
-6.  在该装入点上装载 OS 磁盘。 通常需要装载 sdc1  或 sdc2  。 这将取决于损坏的计算机磁盘的 /etc  目录中的托管分区。
+6.  在该装入点上装载 OS 磁盘。 通常需要装载 sdc1或 sdc2。 这将取决于损坏的计算机磁盘的 /etc 目录中的托管分区。
 
     ```bash
     mount /dev/sdc1 /tempmount
@@ -98,12 +101,12 @@ ms.locfileid: "60306945"
     umount /tempmount
     ```
 
-11. 从管理门户分离磁盘。
+11. 在 Azure 门户中, 将磁盘从故障排除 VM 中分离出来。
 
-12. 重新创建 VM。
+12. [更改受影响的 VM 的 OS 磁盘](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Troubleshoot Azure VM by attaching OS disk to another Azure VM](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)（通过将 OS 磁盘附加到另一个 Azure VM 对 Azure VM 进行故障排除）
 
-* [Azure CLI:如何删除和重新部署 VM 从 VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)
+* [Azure CLI:如何从 VHD 中删除和重新部署 VM](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)

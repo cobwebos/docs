@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: fc7cb7f82fce4f7da02f39b0b423841ac270dcbd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e970afbfd9c302dc95667a7c356e95824838e9b4
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564813"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636474"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -392,7 +392,7 @@ public void run(
 
 Blob 触发器提供了几个元数据属性。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些值的语义与 [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) 类型相同。
 
-|属性  |type  |描述  |
+|属性  |类型  |描述  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|触发 Blob 的路径。|
 |`Uri`|`System.Uri`|主位置的 blob 的 URI。|

@@ -5,19 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 653fbfe8c20150b2aca3e0a45b2877af35e01fff
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 617bc843084ed8f40c9d7f8c3f02303d39f50596
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840987"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639069"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
@@ -49,7 +47,7 @@ OCR 技能可以从图像文件中提取文本。 支持的文件格式包括：
 |--------------------|-------------|
 | detectOrientation | 启用图像方向自动检测。 <br/> 有效值：true / false。|
 |defaultLanguageCode | <p>  输入文本的语言代码。 支持的语言包括： <br/> zh-Hans（中文简体） <br/> zh-Hant（中文繁体） <br/>cs（捷克语） <br/>da（丹麦语） <br/>nl（荷兰语） <br/>en（英语） <br/>fi（芬兰语）  <br/>fr（法语） <br/>  de（德语） <br/>el（希腊语） <br/> hu（匈牙利） <br/> it（意大利语） <br/>  ja（日语） <br/> ko（韩语） <br/> nb（挪威语） <br/>   pl（波兰语） <br/> pt（葡萄牙语） <br/>  ru（俄语） <br/>  es（西班牙语） <br/>  sv（瑞典语） <br/>  tr（土耳其语） <br/> ar（阿拉伯语） <br/> ro（罗马尼亚语） <br/> sr-Cyrl（塞尔维亚语西里尔文） <br/> sr-Latn（塞尔维亚语拉丁语） <br/>  sk（斯洛伐克语） <br/>  unk（未知） <br/><br/> 如果语言代码未指定或为 null，则语言将设置为英语。 如果语言显式设置为“unk”，则将自动检测语言。 </p> |
-|lineEnding | 要在各个检测到的行之间使用的值。 可能的值:“Space”、“CarriageReturn”、“LineFeed”。  默认值为“Space” |
+|lineEnding | 要在各个检测到的行之间使用的值。 可能的值：“Space”、“CarriageReturn”、“LineFeed”。  默认值为“Space” |
 
 以前, 有一个名为 "textExtractionAlgorithm" 的参数, 用于指定技能是否应提取 "打印" 或 "手写" 文本。  此参数已弃用且不再需要, 因为最新的读取 API 算法能够同时提取这两种类型的文本。  如果你的技能定义已经包含此参数, 则不需要将其删除, 但将不再使用它, 并且这两种类型的文本都将被提取, 而不考虑它所设置的内容。
 

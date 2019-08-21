@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bb4ac9953bcadd9e49cee5b7b99e853705b6567c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9609a886bdcbf093cffaf888f9aeaff0d61acec1
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990275"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636651"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
@@ -167,7 +167,7 @@ ms.locfileid: "68990275"
 
 ![常规设置](./media/configure-common/open-general.png)
 
-在此处可以配置应用的某些常用设置。 某些设置要求[纵向扩展到更高的定价层](web-sites-scale.md)。
+在此处可以配置应用的某些常用设置。 某些设置要求[纵向扩展到更高的定价层](manage-scale-up.md)。
 
 - **堆栈设置**：用于运行应用的软件堆栈，包括语言和 SDK 版本。 对于 Linux 应用和自定义的容器应用，还可以设置可选的启动命令或文件。
 - **平台设置**：用于配置托管平台的设置，包括：
@@ -268,4 +268,4 @@ ms.locfileid: "68990275"
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
 [在 Azure 应用服务中监视基础知识]: ./web-sites-monitor.md
 [管道模式]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[在 Azure 应用服务中缩放应用]: ./web-sites-scale.md
+[在 Azure 应用服务中缩放应用]: ./manage-scale-up.md

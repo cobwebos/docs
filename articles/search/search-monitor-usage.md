@@ -2,21 +2,19 @@
 title: 监视搜索服务的资源使用情况和查询指标 - Azure 搜索
 description: 启用日志记录，从 Azure 搜索服务获取查询活动指标、资源使用情况以及其他系统数据。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: bac897178c8220abe72a92a5cf14fc4767cdd3bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e83e84cc8627be468ce0074b35549d5ea7def4f5
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755057"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640537"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>在 Azure 搜索中监视资源使用情况和查询活动
 
@@ -28,17 +26,17 @@ ms.locfileid: "66755057"
 
 ## <a name="metrics-at-a-glance"></a>指标概览
 
-内置到“概览”页中的“使用情况”和“监视”部分会针对资源使用情况和查询执行指标进行报告。   只要你开始使用此服务，就可以使用此信息，不需进行配置。 此页每隔几分钟就会刷新一次。 对于[将哪个层用于生产工作负荷](search-sku-tier.md)或是否要[调整活动副本和分区的数目](search-capacity-planning.md)这样的问题，可以根据这些指标进行最终决策，因为这些指标会显示资源的消耗速度，以及当前配置处理现有负载的有效程度。
+内置到“概览”页中的“使用情况”和“监视”部分会针对资源使用情况和查询执行指标进行报告。 只要你开始使用此服务，就可以使用此信息，不需进行配置。 此页每隔几分钟就会刷新一次。 对于[将哪个层用于生产工作负荷](search-sku-tier.md)或是否要[调整活动副本和分区的数目](search-capacity-planning.md)这样的问题，可以根据这些指标进行最终决策，因为这些指标会显示资源的消耗速度，以及当前配置处理现有负载的有效程度。
 
-“使用情况”  选项卡显示资源可用性（相当于当前[限制](search-limits-quotas-capacity.md)而言）。 下图描述免费服务的情况，该服务的上限是每个类型 3 个对象，最大存储为 50 MB。 “基本”或“标准”服务的限制更高，在增加分区计数的情况下，最大存储会按比例增大。
+“使用情况”选项卡显示资源可用性（相当于当前[限制](search-limits-quotas-capacity.md)而言）。 下图描述免费服务的情况，该服务的上限是每个类型 3 个对象，最大存储为 50 MB。 “基本”或“标准”服务的限制更高，在增加分区计数的情况下，最大存储会按比例增大。
 
 ![相对于有效限制的使用状态](./media/search-monitor-usage/usage-tab.png
  "相对于有效限制的使用状态")
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>每秒查询次数 (QPS) 和其他指标
 
-“监视”选项卡  显示每秒搜索查询数  （简称 QPS，每分钟汇总一次）之类的指标的移动平均。 
-搜索延迟是搜索服务处理搜索查询所需的时间（每分钟汇总一次）。  限制的搜索查询百分比（未显示）是受限制的搜索查询的百分比（也是每分钟汇总一次）。 
+“监视”选项卡显示每秒搜索查询数（简称 QPS，每分钟汇总一次）之类的指标的移动平均。 
+搜索延迟是搜索服务处理搜索查询所需的时间（每分钟汇总一次）。 限制的搜索查询百分比（未显示）是受限制的搜索查询的百分比（也是每分钟汇总一次）。
 
 这些数字是大概的数字，只是让你大致了解系统处理请求的情况。 实际的 QPS 可能高于或低于门户中报告的数字。
 
@@ -48,7 +46,7 @@ ms.locfileid: "66755057"
 
 **活动日志**从 Azure 资源管理器收集信息。 例如，在活动日志中发现的信息包括：创建或删除服务、更新资源组、查看名称可用性，或者获取处理请求所需的服务访问密钥。 
 
-可以通过左侧导航窗格、顶部窗口命令栏中的“通知”或者“诊断并解决问题”页访问**活动日志**。 
+可以通过左侧导航窗格、顶部窗口命令栏中的“通知”或者“诊断并解决问题”页访问**活动日志**。
 
 对于服务内任务（例如创建索引或删除数据源），你会看到针对每个请求的常规通知（例如“获取管理密钥”），但看不到具体操作本身。 对于这种级别的信息，必须启用附加监视解决方案。
 
@@ -58,7 +56,7 @@ Azure 搜索不在其管理的对象之外存储任何数据，这意味着日�
 
 下表比较了各种选项，这些选项用于存储日志以及添加深度监视指标，以便通过 Application Insights 监视服务操作和查询工作负荷。
 
-| 资源 | 用途 |
+| Resource | 用于 |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | 记录的事件和查询指标，基于下面的架构并与应用中的用户事件关联。 这是唯一会考虑用户操作或信号的解决方案，它会映射用户发起的搜索中的事件，而不会筛选应用程序代码提交的请求。 若要使用此方法，请将检测代码复制并粘贴到源文件中，以便将请求信息路由到 Application Insights。 有关详细信息，请参阅[搜索流量分析](search-traffic-analytics.md)。 |
 | [Azure Monitor 日志](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | 记录的事件和查询指标，基于下面的架构。 事件记录到 Log Analytics 工作区。 可以针对工作区运行查询，以便从日志返回详细信息。 有关详细信息，请参阅 [Azure Monitor 日志入门](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
@@ -79,7 +77,7 @@ Azure Monitor 日志和 Blob 存储均以免费共享服务的形式提供，让
 
    存储帐户必须存在于 Azure 搜索所在的区域。
 
-2. 打开搜索服务的“概览”页。 在左侧导航窗格中，向下滚动到“监视”，然后单击“启用监视”。  
+2. 打开搜索服务的“概览”页。 在左侧导航窗格中，向下滚动到“监视”，然后单击“启用监视”。
 
    ![启用监视](./media/search-monitor-usage/enable-monitoring.png "启用监视")
 
@@ -111,42 +109,42 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>日志架构
 包含搜索服务流量日志的 Blob 的结构如此部分所述。 每个 Blob 都有一个名为 **records** 的根对象，该对象包含一组日志对象。 每个 Blob 包含同一小时内发生的所有操作的记录。
 
-| 名称 | Type | 示例 | 说明 |
+| 姓名 | 类型 | 示例 | 说明 |
 | --- | --- | --- | --- |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |操作的时间戳 |
-| resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |ResourceId |
-| operationName |字符串 |“Query.Search” |操作的名称 |
-| operationVersion |字符串 |“2019-05-06” |使用的 api-version |
-| category |字符串 |“OperationLogs” |常量 |
-| resultType |字符串 |“Success” |可能的值：Success 或 Failure |
+| 时间 |DATETIME |"2018-12-07T00:00:43.6872559Z" |操作的时间戳 |
+| resourceId |string |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |ResourceId |
+| operationName |string |“Query.Search” |操作的名称 |
+| operationVersion |string |“2019-05-06” |使用的 api-version |
+| category |string |“OperationLogs” |常量 |
+| resultType |string |“Success” |可能的值：Success 或 Failure |
 | resultSignature |int |200 |HTTP 结果代码 |
 | durationMS |int |50 |操作持续时间，以毫秒为单位 |
-| 属性 |对象 |请参阅下表 |包含特定于操作的数据的对象 |
+| properties |object |请参阅下表 |包含特定于操作的数据的对象 |
 
 **属性架构**
 
-| 名称 | Type | 示例 | 说明 |
+| 姓名 | 类型 | 示例 | 说明 |
 | --- | --- | --- | --- |
-| 描述 |字符串 |“GET /indexes('content')/docs” |操作的终结点 |
-| 查询 |字符串 |"?search=AzureSearch&$count=true&api-version=2019-05-06" |查询参数 |
+| 描述 |string |“GET /indexes('content')/docs” |操作的终结点 |
+| 查询 |string |"?search=AzureSearch&$count=true&api-version=2019-05-06" |查询参数 |
 | 文档 |int |42 |处理的文档数目 |
-| IndexName |字符串 |“testindex” |与操作关联的索引名称 |
+| IndexName |string |“testindex” |与操作关联的索引名称 |
 
 ## <a name="metrics-schema"></a>度量值架构
 
 针对查询请求来捕获指标。
 
-| 名称 | Type | 示例 | 说明 |
+| 姓名 | 类型 | 示例 | 说明 |
 | --- | --- | --- | --- |
-| resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |资源 ID |
-| metricName |字符串 |“Latency” |度量值名称 |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |操作的时间戳 |
-| average |int |64 |度量值时间间隔内原始样本的平均值 |
-| minimum |int |37 |度量值时间间隔内原始样本的最小值 |
-| maximum |int |78 |度量值时间间隔内原始样本的最大值 |
-| total |int |258 |度量值时间间隔内原始样本的总计值 |
+| resourceId |string |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |资源 ID |
+| metricName |string |“Latency” |度量值名称 |
+| time |DATETIME |"2018-12-07T00:00:43.6872559Z" |操作的时间戳 |
+| 平均值 |int |64 |度量值时间间隔内原始样本的平均值 |
+| 最小值 |int |37 |度量值时间间隔内原始样本的最小值 |
+| 最大值 |int |78 |度量值时间间隔内原始样本的最大值 |
+| 总计 |int |258 |度量值时间间隔内原始样本的总计值 |
 | 计数 |int |4 |用于生成度量值的原始样本数 |
-| timegrain |字符串 |“PT1M” |采用 ISO 8601 的度量值时间粒度 |
+| timegrain |string |“PT1M” |采用 ISO 8601 的度量值时间粒度 |
 
 所有度量值会按一分钟的时间间隔报告。 每个度量值都会显示每分钟的最小、最大和平均值。
 
@@ -161,7 +159,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 
 1. 在 Azure 门户中打开存储帐户。 
 
-2. 在左侧导航窗格中，单击“Blob”  。 此时会看到 **insights-logs-operationlogs** 和 **insights-metrics-pt1m**。 这些容器是在将日志数据导出到 Blob 存储时由 Azure 搜索创建的。
+2. 在左侧导航窗格中，单击“Blob”。 此时会看到 **insights-logs-operationlogs** 和 **insights-metrics-pt1m**。 这些容器是在将日志数据导出到 Blob 存储时由 Azure 搜索创建的。
 
 3. 单击文件夹层次结构，直至找到 .json 文件。  通过上下文菜单来下载文件。
 

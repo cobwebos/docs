@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: aab93e1ecd112f7ef9fdb0829469efa14aff2e98
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 05c5d42d3c20948df4f42db50dd93abd60288c00
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623993"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639581"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 
@@ -163,7 +163,15 @@ Azure 机器学习服务使用与工作区关联的密钥保管库实例来存�
 
 如果在机器学习计算中使用强制隧道, 请将[用户定义的路由 (udr)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)添加到包含计算资源的子网。
 
-* 为每个 IP 地址建立 UDR, 这些 IP 地址由存在资源的区域中的 Azure Batch 服务使用。 这些 Udr 允许批处理服务与计算节点通信, 以便进行任务计划。 若要获取 Batch 服务的 IP 地址列表, 请与 Azure 支持部门联系。
+* 为每个 IP 地址建立 UDR, 这些 IP 地址由存在资源的区域中的 Azure Batch 服务使用。 这些 Udr 允许批处理服务与计算节点通信, 以便进行任务计划。 若要获取 Batch 服务的 IP 地址列表, 请使用以下方法之一:
+
+    * 下载[azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519), 并在文件`BatchNodeManagement.<region>`中搜索, 其中`<region>`是你的 Azure 区域。
+
+    * 使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)下载信息。 下面的示例将下载 IP 地址信息并筛选出美国东部2区域的信息:
+
+        ```azurecli-interactive
+        az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
+        ```
 
 * 到 Azure 存储的出站流量不得被本地网络设备阻止。 具体而言, url 的格式`<account>.table.core.windows.net`为、 `<account>.queue.core.windows.net`和`<account>.blob.core.windows.net`。
 

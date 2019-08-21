@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/24/2018
+ms.date: 08/19/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73033f91e9d20c56fedc6b4faf26dcf312fce1e1
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: fe0a3c8cbee92be85fe415a4d44d5493940bb45a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321112"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638624"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
 
@@ -40,7 +40,7 @@ ms.locfileid: "68321112"
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="required-permissions"></a>所需的权限
+## <a name="required-permissions"></a>所需权限
 
 若要完成本文，必须在 Azure AD 和 Azure 订阅中均有足够的权限。 具体而言，必须能够在 Azure AD 中创建应用并向角色分配服务主体。
 
@@ -49,6 +49,9 @@ ms.locfileid: "68321112"
 ## <a name="create-service-principal-with-self-signed-certificate"></a>使用自签名证书创建服务主体
 
 下面的示例介绍了简单的方案。 它使用 [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) 创建具有自签名证书的服务主体，并使用 [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 将[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色分配给该服务主体。 角色分配的范围限定为当前所选 Azure 订阅。 若要选择其他订阅，请使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
+
+> [!NOTE]
+> New-selfsignedcertificate cmdlet 和 PKI 模块目前在 PowerShell Core 中不受支持。 
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
@@ -212,9 +215,9 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 创建服务主体时，可能会收到以下错误：
 
-* “Authentication_Unauthorized”  或“在上下文中找不到订阅”。  - 如果帐户不具有在 Azure AD 上注册应用[所需的权限](#required-permissions)，会看到此错误。 通常，当只有 Azure Active Directory 中的管理员用户可注册应用且帐户不是管理员帐户时，会看到此错误。请要求管理员向你分配管理员角色，或让用户能够注册应用。
+* “Authentication_Unauthorized”或“在上下文中找不到订阅”。 - 如果帐户不具有在 Azure AD 上注册应用[所需的权限](#required-permissions)，会看到此错误。 通常，当只有 Azure Active Directory 中的管理员用户可注册应用且帐户不是管理员帐户时，会看到此错误。请要求管理员向你分配管理员角色，或让用户能够注册应用。
 
-* 帐户“不具有对作用域‘/subscriptions/{guid}’执行操作‘Microsoft.Authorization/roleAssignments/write’的权限”。  - 当帐户不具有足够权限将角色分配给标识时，会看到此错误。 请要求订阅管理员你将添加到用户访问管理员角色。
+* 帐户“不具有对作用域‘/subscriptions/{guid}’执行操作‘Microsoft.Authorization/roleAssignments/write’的权限”。 - 当帐户不具有足够权限将角色分配给标识时，会看到此错误。 请要求订阅管理员你将添加到用户访问管理员角色。
 
 ## <a name="next-steps"></a>后续步骤
 

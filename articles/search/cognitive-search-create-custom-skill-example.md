@@ -6,22 +6,21 @@ author: luiscabrer
 services: search
 ms.service: search
 ms.subservice: cognitive-search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: a032288338d2d6a53489105790b6862eefadf609
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 58f98f3807955db0b32cbcd1ed0d409814e35a76
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841230"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639899"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例如：使用必应实体搜索 API 创建自定义技能
 
 在此示例中, 了解如何创建 web API 自定义技能。 此技能将接受位置、公共数字和组织, 并为他们返回说明。 该示例使用[Azure 函数](https://azure.microsoft.com/services/functions/)包装[必应实体搜索 API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/)以便实现自定义技能接口。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 + 如果你不熟悉自定义技能应该实现的输入/输出界面, 请阅读有关[自定义技能接口](cognitive-search-custom-skill-interface.md)文章。
 

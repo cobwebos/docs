@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c85644e3cab39f9e0864af91722ee54aab6d59f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d500c3841a9ecec1e4ceae8b13824f0240a5121d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66139791"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639850"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>为 Azure 应用服务配置 PremiumV2 层
 
-与现有定价层相比，新的 PremiumV2 定价层提供更快的处理器和 SSD 存储以及双倍的内存-内核比  。 借助性能优势，可以通过在更少的实例上运行应用来节省资金。 在本文中，你将了解如何在 **PremiumV2** 层中创建应用或者将应用纵向扩展到 **PremiumV2** 层。
+与现有定价层相比，新的 PremiumV2 定价层提供更快的处理器和 SSD 存储以及双倍的内存-内核比。 借助性能优势，可以通过在更少的实例上运行应用来节省资金。 在本文中，你将了解如何在 **PremiumV2** 层中创建应用或者将应用纵向扩展到 **PremiumV2** 层。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要将应用纵向扩展到 **PremiumV2**，需要有一个 Azure 应用服务应用，该应用在低于 **PremiumV2** 的定价层中运行，并且必须在支持 PremiumV2 的应用服务部署中运行。
 
@@ -49,9 +49,9 @@ az appservice list-locations --sku P1V2
 
 应用服务应用的定价层是在运行它的[应用服务计划](overview-hosting-plans.md)中定义的。 应用服务计划可以独立创建，也可以在创建应用的过程中创建。
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>中配置应用服务计划时，选择“定价层”。  
+在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>中配置应用服务计划时，选择“定价层”。 
 
-选择“生产”  ，然后选择 **P1V2**、**P2V2** 或 **P3V2**，然后单击“应用”  。
+选择“生产”，然后选择 **P1V2**、**P2V2** 或 **P3V2**，然后单击“应用”。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
@@ -66,11 +66,11 @@ az appservice list-locations --sku P1V2
 
 在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>中，打开你的应用服务应用页面。
 
-在应用服务应用页面的左侧导航栏中，选择“纵向扩展(应用服务计划)”。 
+在应用服务应用页面的左侧导航栏中，选择“纵向扩展(应用服务计划)”。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-选择“生产”  ，然后选择 **P1V2**、**P2V2** 或 **P3V2**，然后单击“应用”  。
+选择“生产”，然后选择 **P1V2**、**P2V2** 或 **P3V2**，然后单击“应用”。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
@@ -93,7 +93,7 @@ az appservice list-locations --sku P1V2
 
     ![](media/app-service-configure-premium-tier/clone-app.png)
 
-    在“克隆应用”页中，可以在所需的区域中创建使用 **PremiumV2** 的应用服务计划，并指定要克隆的应用设置和配置。 
+    在“克隆应用”页中，可以在所需的区域中创建使用 **PremiumV2** 的应用服务计划，并指定要克隆的应用设置和配置。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 
@@ -125,5 +125,5 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ```
 ## <a name="more-resources"></a>更多资源
 
-[纵向扩展 Azure 中的应用](web-sites-scale.md)  
+[纵向扩展 Azure 中的应用](manage-scale-up.md)  
 [手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)

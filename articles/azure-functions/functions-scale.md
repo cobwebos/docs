@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 348cd0eccc66adb29a7564bbbeca99fffec28957
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: fdef1457254b6deb8a0b791b11c94154518b4301
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562857"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636436"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -101,7 +101,7 @@ ms.locfileid: "69562857"
 
 应用服务计划中函数应用的费用与其他应用服务资源（例如 Web 应用）的费用相同。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/overview-hosting-plans.md)。
 
-借助应用服务计划，可通过添加更多 VM 实例手动进行横向扩展。 也可以启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。 还可以通过选择不同的应用服务计划来进行增加。 有关详细信息，请参阅[增加 Azure 中的应用](../app-service/web-sites-scale.md)。 
+借助应用服务计划，可通过添加更多 VM 实例手动进行横向扩展。 也可以启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。 还可以通过选择不同的应用服务计划来进行增加。 有关详细信息，请参阅[增加 Azure 中的应用](../app-service/manage-scale-up.md)。 
 
 在应用服务计划上运行 JavaScript 函数时，应选择具有较少 vCPU 的计划。 有关详细信息，请参阅[选择单核应用服务计划](functions-reference-node.md#choose-single-vcpu-app-service-plans)。 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 

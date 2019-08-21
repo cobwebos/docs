@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c749f090cbb0aeb036a53a01e6cd516617c3186d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 77d5e4ace14fb0071b6e01a01edbad0128382303
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953880"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639741"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 
@@ -97,7 +97,7 @@ ms.locfileid: "68953880"
 
 ## <a name="scale-an-app-service-plan"></a>缩放应用服务计划
 
-若要纵向扩展应用服务计划的定价层，请参阅[在 Azure 中纵向扩展应用](web-sites-scale.md)。
+若要纵向扩展应用服务计划的定价层，请参阅[在 Azure 中纵向扩展应用](manage-scale-up.md)。
 
 若要增加应用的实例计数，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)。
 
@@ -113,7 +113,7 @@ ms.locfileid: "68953880"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [纵向扩展 Azure 中的应用](web-sites-scale.md)
+> [纵向扩展 Azure 中的应用](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

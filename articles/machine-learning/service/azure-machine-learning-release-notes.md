@@ -10,18 +10,88 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
-ms.translationtype: MT
+ms.openlocfilehash: 684a84431c8348ddafab8cefbe831c2b58c3cee6
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828620"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639933"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
 本文介绍 Azure 机器学习服务版本。  有关完整的 SDK 参考内容, 请访问 Azure 机器学习的[**主要 sdk For Python**](https://aka.ms/aml-sdk)参考页。
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
+
+## <a name="2019-08-19"></a>2019-08-19
+
+### <a name="azure-machine-learning-sdk-for-python-v1057"></a>用于 Python 的 Azure 机器学习 SDK 1.0.57
++ **新功能**
+  + 已`TabularDataset`启用以供 AutomatedML 使用。 若要了解有关`TabularDataset`的详细信息 https://aka.ms/azureml/howto/createdatasets, 请访问。
+  
++ **Bug 修复和改进**
+  + **automl-nativeclient-ios**
+    + 修复了在以 pandas 数据帧但不是 numpy 数组形式提供训练和/或验证标签 (y 和 y_valid) 时引发的错误。
+    + 将创建的`RawDataContext`接口更新为仅需要数据`AutoMLBaseSettings`和对象。
+    +  允许 AutoML 用户删除在预测时不够长的培训系列。 -允许 AutoML 用户从预测集中不存在的测试集中删除粒度。
+  + **azure-cli-ml**
+    + 你现在可以为在 AKS 群集上部署的用于 Microsoft 生成的评分终结点和客户证书更新 SSL 证书。
+  + **automl-核心**
+    + 修复了 AutoML 中缺少标签的行未正确删除的问题。
+    + 改进了 AutoML 中的错误日志记录;现在, 完整的错误消息始终写入日志文件。
+    + AutoML 已将其包固定更新为`azureml-defaults`包括`azureml-explain-model`、和`azureml-dataprep`。 AutoML 将不再对包不匹配 ( `azureml-train-automl`包除外) 发出警告。
+    + 修复了 timeseries 中 cv 拆分的大小不相等的问题, 导致箱计算失败。
+    + 在运行交叉验证定型类型的系综迭代时, 如果我们最终无法下载针对整个数据集训练的模型, 则模型权重与正在送入投票的模型之间存在不一致系综.
+    + 修复了在以 pandas 数据帧但不是 numpy 数组形式提供训练和/或验证标签 (y 和 y_valid) 时引发的错误。
+    + 修复了在输入表的布尔值列中没有遇到任何内容时预测任务的问题。
+    + 允许 AutoML 用户删除在预测时不够长的培训系列。 -允许 AutoML 用户从预测集中不存在的测试集中删除粒度。
+  + **azureml-core**
+    + 修复了 blob_cache_timeout 参数排序问题。
+    + 向系统错误添加了外部的 "匹配" 和 "转换" 异常类型。
+    + 添加了对 Key Vault 的远程运行机密的支持。 添加 keyvault 类以添加、获取和列出与工作区关联的 keyvault 中的机密。 支持的操作包括:
+      + azureml. get _default_keyvault ()
+      + keyvault. Keyvault _secret (name, value)
+      + keyvault. Keyvault _secrets (secrets_dict)
+      + keyvault. Keyvault _secret (name)
+      + keyvault. Keyvault _secrets (secrets_list)
+      + keyvault. Keyvault. list_secrets ()
+    + 用于获取默认 keyvault 并在远程运行期间获得机密的其他方法:
+      + azureml. get _default_keyvault ()
+      + azureml. 运行. get _secret (名称)
+      + azureml. _secrets (secrets_list)
+    + 将其他替代参数添加到了 hyperdrive CLI 命令。
+    + 提高 API 调用的可靠性会将重试次数扩展到常见的请求库异常。
+    + 添加了对从已提交的运行提交运行的支持。
+    + 修复了 FileWatcher 中的过期 SAS 令牌问题, 这会导致文件在其初始令牌过期后停止上传。
+    + 支持在数据集 python SDK 中导入 HTTP csv/tsv 文件。
+    + 弃用了 Workspace () 方法。 显示给用户的警告消息建议使用 create () 或 get ()/from_config ()。
+    + 添加了环境。添加了 _private_pip_wheel (), 它允许将专用自定义 python 包 (. whl) 上传到工作区, 并安全地使用它们来生成/具体化环境。
+    + 你现在可以为在 AKS 群集上部署的用于 Microsoft 生成的评分终结点和客户证书更新 SSL 证书。
+  + **azureml-explain-model**
+    + 添加了参数, 用于将模型 ID 添加到上传说明。
+    + 在`is_raw`内存中添加了标记并将其上传。
+    + 添加了 azureml-说明模型包的 pytorch 支持和测试。
+  + **azureml-opendatasets**
+    + 支持检测和记录自动测试环境。
+    + 添加了类, 使我们通过县和 zip 进行填充。
+  + **azureml-pipeline-core**
+    + 为输入和输出端口定义添加了标签属性。
+  + **azureml-遥测**
+    + 修复了不正确的遥测配置。
+  + **azureml-train-automl**
+    + 修复了在设置失败的情况下, 没有为安装程序运行记录 "错误" 字段, 因此未将其存储在父运行 "错误" 中。
+    + 修复了 AutoML 中缺少标签的行未正确删除的问题。
+    + 允许 AutoML 用户删除在预测时不够长的培训系列。
+    + 允许 AutoML 用户从预测集中不存在的测试集中删除粒度。
+    + 现在, AutoMLStep 将通过 automl config 传递到后端, 以避免发生更改或添加新的配置参数的任何问题。
+  + **azureml-train-core**
+    + 在 PyTorch 估计器中添加了 torch 1.2 支持。
+  + **azureml-小组件**
+    + 改进了分类培训的混淆矩阵图。
+
+### <a name="azure-portal"></a>Azure 门户
++ **预览功能**
+  + 现在可以在 "运行详细信息" 页上使用日志和输出文件流。 当启用了预览切换功能时, 这些文件将实时流更新。
 
 ## <a name="2019-08-05"></a>2019-08-05
 
@@ -483,7 +553,7 @@ Azure 机器学习 SDK for Python v 1.0.30 已发布。
   + 现在可以使用透视转换。
     + 操作方法指南:[枢轴](https://aka.ms/aml-data-prep-pivot-nb)
   + 你现在可以在本机函数中使用正则表达式。
-    + 示例:
+    + 例如：
       + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
       + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
   + 你现在可以在`to_upper`表达式`to_lower`语言中使用 和 函数。

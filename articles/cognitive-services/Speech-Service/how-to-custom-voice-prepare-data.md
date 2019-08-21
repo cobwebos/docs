@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a29117ff6e5173063bc2aced87f08f1a6aea425
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8b4b5553605042499a9a8f3343ac4e6678e7006f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559577"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640426"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>准备数据以创建自定义语音
 
@@ -104,7 +104,7 @@ ms.locfileid: "68559577"
 
 为分段准备音频时, 请遵循以下准则。
 
-| 属性 | 值 |
+| 属性 | ReplTest1 |
 | -------- | ----- |
 | 文件格式 | RIFF (.wav), 其采样率至少为 16 khz 16 位 (在 PCM 中) 或 mp3, 比特率至少为 256 KBps, 按 .zip 文件分组 |
 | 文件名 | 仅 ASCII 字符。 名称中的 Unicode 字符将失败 (例如, 中文字符或符号 "-")。 不允许重复的名称。 |
@@ -124,7 +124,7 @@ ms.locfileid: "68559577"
 | 文件名 | 使用与匹配的音频文件相同的名称 |
 | 编码格式 | 仅 UTF-8-BOM |
 | 每行的话语数 | 无限制 |
-| 文件大小上限 | 50M |
+| 文件大小上限 | 50 MB |
 
 此数据类型中的所有脚本文件都应组合到一个 zip 文件中。 Zip 文件中不允许有子文件夹。 例如, 你上传了一个 zip 文件, 其中包含名为 "kingstory"、45秒长的音频文件, 另一个名为 "queenstory", 200 秒长的文件。 需要上传另一个包含两个脚本 (一个名为 "kingstory", 另一个名为 "queenstory") 的 zip 文件。 在每个纯文本文件中, 你将为匹配的音频提供完全正确的脚本。
 

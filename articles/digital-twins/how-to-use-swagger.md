@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/29/2019
+ms.date: 08/16/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9d4fd798309398dff38081cc66b4071c5dd1f5bf
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1344b86b9fa922dc22870dda495ff367a511b8ca
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670786"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640264"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure 数字孪生 Swagger 参考文档
 
@@ -74,11 +74,11 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 
 选择特定的终结点后，你会看到**试用**。
 
-[![Swagger 重试](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[![Swagger 尝试](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
-展开该部分会显示每个必需字段和可选参数的输入字段。 输入正确的值，并选择“执行”  。
+展开该部分会显示每个必需字段和可选参数的输入字段。 输入正确的值，并选择“执行”。
 
-[![已尝试使用 swagger](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[![已尝试 Swagger](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
 执行测试后，可以验证响应数据。
 
@@ -93,32 +93,32 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 ## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2.0 授权
 
 > [!NOTE]
-> * 创建 Azure 数字孪生资源的用户主体将具有空间管理员角色分配，并将能够创建其他用户的其他角色分配。 此类用户以及他们角色在有权调用 Api。
+> * 创建 Azure 数字孪生资源的用户主体将具有空间管理员角色分配, 并将能够为其他用户创建其他角色分配。 此类用户及其角色可以获得调用 Api 的权限。
 
-1. 按照中的步骤[本快速入门](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)或[注册 Azure 数字孪生应用程序使用 Azure Active Directory 旧版](./how-to-use-legacy-aad.md)创建和配置 Azure AD 应用程序。 或者，可以重复使用现有的应用注册。
+1. 按照[本快速入门](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)中的步骤进行操作, 或[使用 Azure Active Directory 旧版注册 Azure 数字孪生应用](./how-to-use-legacy-aad.md)来创建和配置 Azure AD 应用程序。 或者, 你可以重复使用现有的应用注册。
 
-1. 将以下回复 url 添加到应用程序注册：
+1. 将以下回复 url 添加到应用注册:
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | 名称  | 替换为 | 示例 |
+    | 姓名  | 替换为 | 示例 |
     |---------|---------|---------|
-    | YOUR_SWAGGER_URL | 你在门户中找到的管理 REST API 文档 URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
+    | YOUR_SWAGGER_URL | 你的管理 REST API 在门户中找到的文档 URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
 1. 复制 Azure AD 应用的 ID。
 
-后完成的 Azure Active Directory 注册：
+完成 Azure Active Directory 注册后:
 
-1. 选择**Authorize** swagger 页上的按钮。
+1. 在 swagger 页面上选择 "**授权**" 按钮。
 
-    [![选择了在 Swagger 授权按钮](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![选择 "Swagger 授权" 按钮](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-1. 粘贴到的应用程序 ID **client_id**字段。
+1. 将应用程序 ID 粘贴到 " **client_id** " 字段。
 
     [![Swagger client_id 字段](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-1. 您然后将定向到以下成功模式。
+1. 然后, 将重定向到以下成功模式。
 
     [![Swagger 重定向模式](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 

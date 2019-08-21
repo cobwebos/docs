@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b127738d4be79c30d1791d7313c0f8f7eacaf36
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: 60b3d1dcc7d60b25319b3fa5dd740541a457927f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985137"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640091"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -65,9 +65,9 @@ AzCopy V10 只是一个可执行文件, 因此没有要安装的内容。
 |**Blob 存储 (分层命名空间)** | Azure AD & SAS |
 |**文件存储** | 仅 SAS |
 
-### <a name="option-1-use-azure-ad"></a>选项 1：使用 Azure AD
+### <a name="option-1-use-azure-active-directory"></a>选项 1：使用 Azure Active Directory
 
-通过使用 Azure AD, 你可以提供一次凭据, 而无需向每个命令追加 SAS 令牌。  
+通过使用 Azure Active Directory, 你可以提供一次凭据, 而无需向每个命令追加 SAS 令牌。  
 
 > [!NOTE]
 > 在当前版本中, 如果计划在存储帐户之间复制 blob, 则必须向每个源 URL 追加一个 SAS 令牌。 只能从目标 URL 中省略 SAS 令牌。 有关示例, 请参阅[在存储帐户之间复制 blob](storage-use-azcopy-blobs.md)。
@@ -93,7 +93,7 @@ AzCopy V10 只是一个可执行文件, 因此没有要安装的内容。
 若要了解如何验证和分配角色, 请参阅[在 Azure 门户中使用 RBAC 授予对 Azure blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 > [!NOTE]
-> 请记住，RBAC 角色分配可能需要最多五分钟的时间进行传播。
+> 请记住, RBAC 角色分配可能需要长达五分钟才能传播。
 
 如果将安全主体添加到目标容器或目录的访问控制列表 (ACL), 则无需将这些角色中的一个分配给安全主体。 在 ACL 中, 安全主体需要对目标目录具有写入权限, 并且对容器和每个父目录具有 execute 权限。
 
@@ -149,7 +149,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 ```
 
 > [!NOTE]
-> 请考虑使用本示例中所示的提示。 这样, 客户端密码就不会出现在控制台的命令历史记录中。 
+> 请考虑使用本示例中所示的提示。 这样, 你的密码就不会出现在控制台的命令历史记录中。  
 
 接下来, 键入以下命令, 然后按 ENTER 键。
 
@@ -170,7 +170,7 @@ azcopy login --service-principal --application-id <application-id>
 > [!NOTE]
 > 请确保在命令提示符下设置此值, 而不是在操作系统的环境变量设置中设置。 这样, 该值仅对当前会话可用。
 
-此示例演示如何在 PowerShell 中执行此操作。
+此示例演示如何在 PowerShell 中执行此任务。
 
 ```azcopy
 $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"

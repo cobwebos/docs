@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
 ms.author: mlearned
-ms.openlocfilehash: 0238278b81255d735f8a950ca307d0e05100cfec
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e3a4ea2e81e6c428b51d164336282f8f929d414b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614566"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639795"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>通过 RDP 连接到 Azure Kubernetes Service (AKS) 群集 Windows Server 节点进行维护或故障排除
 
@@ -63,6 +63,27 @@ az vm create \
 ```
 
 记录虚拟机的公共 IP 地址。 稍后的步骤中会用到此地址。
+
+## <a name="allow-access-to-the-virtual-machine"></a>允许访问虚拟机
+
+默认情况下, AKS 节点池子网使用 Nsg (网络安全组) 进行保护。 若要获取对虚拟机的访问权限, 必须在 NSG 中启用访问权限。
+
+> [!NOTE]
+> Nsg 由 AKS 服务控制。 您对 NSG 所做的任何更改都将在控制平面随时被覆盖。
+>
+
+首先, 获取要将规则添加到的 nsg 的资源组和 nsg 名称:
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
+```
+
+然后, 创建 NSG 规则:
+
+```azurecli-interactive
+az network nsg rule create --name tempRDPAccess --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --priority 100 --destination-port-range 3389 --protocol Tcp --description "Temporary RDP access to Windows nodes"
+```
 
 ## <a name="get-the-node-address"></a>获取节点地址
 
@@ -117,6 +138,17 @@ aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67
 
 ```azurecli-interactive
 az vm delete --resource-group myResourceGroup --name myVM
+```
+
+NSG 规则:
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
+```
+
+```azurecli-interactive
+az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --name tempRDPAccess
 ```
 
 ## <a name="next-steps"></a>后续步骤

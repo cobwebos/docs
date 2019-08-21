@@ -9,12 +9,12 @@ ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f33193e3102afca73344fcd640d14d9af9c1d46e
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2607e09e6b8428c2aacc8ee7c6be42f54284a1ce
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775343"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641091"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 ### <a name="access-permissions-for-data-operations"></a>数据操作访问权限
 
-有关调用特定 Blob 或队列服务操作所需的权限的详细信息，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
+有关调用特定 Blob 或队列服务操作所需的权限的详细信息，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
 
 ## <a name="resource-scope"></a>资源范围
 
@@ -85,5 +85,5 @@ Azure 文件支持通过 SMB Azure AD 仅限已加入域的 Vm (预览版) 的�
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure 资源的 Azure Active Directory 和托管标识授予对 blob 和队列的访问权限](storage-auth-aad-msi.md)
-- [从应用程序中使用 Azure Active Directory 进行身份验证以访问 blob 和队列](storage-auth-aad-app.md)
+- [使用应用程序 Azure Active Directory 授权访问 blob 和队列](storage-auth-aad-app.md)
 - [Azure 存储对基于 Azure Active Directory 的访问控制的支持现已正式发布](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)

@@ -5,17 +5,15 @@ manager: jlembicz
 author: LiamCavanagh
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: liamca
-ms.custom: seodec2018
-ms.openlocfilehash: 58d7ca65a14f9f774b19796c9beae2a7c84102ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3e47fc0c46c638a51e6555ccbdc1885f081c149
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61288686"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640550"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>多租户 SaaS 应用程序与 Azure 搜索的设计模式
 多租户应用程序可以为无法看到或共享任何其他租户数据的任意数量的租户，提供相同服务和功能。 本文档讨论的租户隔离策略适用于使用 Azure 搜索生成的多租户应用程序。
@@ -42,7 +40,7 @@ Azure 搜索中有一些不同的[定价层](https://azure.microsoft.com/pricing
 |  | 基本 | 标准 1 | 标准 2 | 标准 3 | 标准 3 HD |
 | --- | --- | --- | --- | --- | --- |
 | 每个服务的副本数上限 |3 |12 |12 |12 |12 |
-| 每个服务的分区数上限 |第 |12 |12 |12 |3 |
+| 每个服务的分区数上限 |1 |12 |12 |12 |3 |
 | 每个服务的搜索单位数上限（副本*分区） |3 |36 |36 |36 |36（最多 3 个分区） |
 | 每个服务的存储上限 |2 GB |300 GB |1.2 TB |2.4 TB |600 GB |
 | 每个分区的存储上限 |2 GB |25 GB |100 GB |200 GB |200 GB |

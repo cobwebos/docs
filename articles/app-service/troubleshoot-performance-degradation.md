@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2d17991854f13f889c4e8c3a8c6f18e933655546
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02a214c10c5b111070127e4a823682989f24b20b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128443"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637724"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中应用性能缓慢的问题
 本文帮助排查 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中应用性能缓慢的问题。
@@ -56,7 +56,7 @@ ms.locfileid: "62128443"
 每次发生服务中断或性能下降时 Microsoft Azure 会发出通告。 可以在 [Azure 门户](https://portal.azure.com/)中跟踪服务的运行状况。 有关详细信息，请参阅[跟踪服务的运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
 
 #### <a name="monitor-your-app"></a>监视应用
-此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴  。 “指标”边栏选项卡显示所有可以添加的指标。 
+此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴。 “指标”边栏选项卡显示所有可以添加的指标。
 
 可能需要在应用中监视的一些指标包括
 
@@ -64,7 +64,7 @@ ms.locfileid: "62128443"
 * 平均响应时间
 * CPU 时间
 * 内存工作集
-* Requests
+* 请求
 
 ![监视应用性能](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "62128443"
 * [接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 #### <a name="monitor-web-endpoint-status"></a>监视 Web 终结点状态
-如果在“标准”定价层中运行应用，应用服务允许从三个地理位置监视两个终结点。 
+如果在“标准”定价层中运行应用，应用服务允许从三个地理位置监视两个终结点。
 
 终结点监视可从测试 Web URL 的响应时间和运行时间的分布式地理位置配置 Web 测试。 该测试可对 Web URL 执行 HTTP GET 操作，以从每个位置确定响应时间和运行时间。 每个已配置位置每 5 分钟运行一次测试。
 
@@ -85,7 +85,7 @@ ms.locfileid: "62128443"
 另外，有关终结点监视的视频，请参阅[保持 Azure 网站运行以及终结点监视 - Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow)。
 
 #### <a name="application-performance-monitoring-using-extensions"></a>使用扩展的应用程序性能监视
-还可以使用站点扩展监视应用程序的性能。 
+还可以使用站点扩展监视应用程序的性能。
 
 每个应用服务应用都提供了一个可扩展的管理终结点，通过此终结点可使用一组作为站点扩展部署的功能强大的工具。 扩展包括： 
 
@@ -131,10 +131,10 @@ Application Insights Profiler 提供每个 Web 调用响应时间的统计信息
 #### <a name="use-the-diagnostics-tool"></a>使用诊断工具
 应用服务提供了智能的交互式体验，可帮助我们排查应用的问题，且无需配置。 如果应用确实出现问题，诊断工具会指出问题所在，并引导你获取适当的信息，以便更轻松快速地排查和解决问题。
 
-若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。 
+若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
-应用服务随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为应用的 Kudu 控制台或 SCM 仪表板。  
+应用服务随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为应用的 Kudu 控制台或 SCM 仪表板。
 
 可以通过转到链接 **https://&lt;Your app name>.scm.azurewebsites.net/** 来访问此仪表板。
 
@@ -155,14 +155,14 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 #### <a name="scale-the-app"></a>缩放应用
 在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 纵向扩展应用涉及到两个相关操作：将应用服务计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
 
-有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](web-sites-scale.md)。
+有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](manage-scale-up.md)。
 
 此外，可以选择在多个实例上运行应用程序。 扩展不仅能提供更强大的处理功能，而且还能提供一定程度的容错。 如果进程在某个实例上中断，其他实例会继续处理请求。
 
 可以将缩放设置为手动或自动。
 
 #### <a name="use-autoheal"></a>使用 AutoHeal
-AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终都可从 Azure 门户中直接重启应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 即使你的应用程序不是一个.NET 应用程序，这些设置的工作方式相同。
+AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终都可从 Azure 门户中直接重启应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 即使您的应用程序不是 .NET 应用程序, 这些设置的工作方式也相同。
 
 有关详细信息，请参阅[自动修复 Azure 网站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 

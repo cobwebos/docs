@@ -5,16 +5,15 @@ manager: jlembicz
 author: yahnoosh
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: jlembicz
-ms.openlocfilehash: 6e54bc91ff60ce4f3c2340282410923225601df4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 3ce1e0a37357f016373e1ffe5b6a7d5daf2501d9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883910"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640564"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 

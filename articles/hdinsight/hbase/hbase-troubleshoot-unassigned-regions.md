@@ -5,19 +5,19 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/07/2019
-ms.openlocfilehash: e75f2fdd0530b92e8c8405b74c2a364ff9e9e28e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/16/2019
+ms.openlocfilehash: 6e734a661557b024257fcd1b9d9c2da6a3bc8f85
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935427"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640226"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight 中的区域服务器问题
 
 本文介绍有关在与 Azure HDInsight 群集交互时遇到的问题的故障排除步骤和可能的解决方法。
 
-## <a name="scenario-unassigned-regions"></a>方案:未分配区域
+## <a name="scenario-unassigned-regions"></a>场景：未分配区域
 
 ### <a name="issue"></a>问题
 
@@ -27,31 +27,31 @@ ms.locfileid: "68935427"
 multiple regions being unassigned or holes in the chain of regions
 ```
 
-在 Apache HBase Master UI 中, 可以看出在所有区域服务器之间出现不平衡的区域的计数。
+从 Apache HBase Master UI, 你可以看到所有区域服务器之间不均衡的区域数。 然后，可以运行 `hbase hbck` 命令查看区域链中的漏洞。
 
 ### <a name="cause"></a>原因
 
 可能是由于脱机区域导致的。
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 修复分配。 请遵循以下步骤使未分配的区域恢复为正常状态：
 
 1. 使用 SSH 登录到 HDInsight HBase 群集。
 
-1. 运行`hbase zkcli`命令以连接到 zookeeper shell。
+1. 运行`hbase zkcli`命令以连接到 ZooKeeper shell。
 
 1. 运行`rmr /hbase/regions-in-transition` 或`rmr /hbase-unsecure/regions-in-transition`命令。
 
 1. 使用`exit`命令退出 zookeeper shell。
 
-1. 打开 Ambari UI 并从 Ambari 重启 Active HBase Master 服务。
+1. 打开 Apache Ambari UI，并重启 Active HBase Master 服务。
 
 1. 再次`hbase hbck`运行命令 (无任何其他选项)。 检查输出并确保分配了所有区域。
 
 ---
 
-## <a name="scenario-dead-region-servers"></a>方案:死区服务器
+## <a name="scenario-dead-region-servers"></a>场景：死区服务器
 
 ### <a name="issue"></a>问题
 
@@ -61,11 +61,11 @@ multiple regions being unassigned or holes in the chain of regions
 
 多个拆分的 WAL 目录。
 
-1. 获取当前 wal 的列表: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`。
+1. 获取当前 Wal 的列表: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`。
 
 1. 检查该`wals.out`文件。 如果拆分目录太多 (从 * 拆分后开始), 则区域服务器可能会因为这些目录而失败。
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 1. 从 Ambari 门户停止 HBase。
 

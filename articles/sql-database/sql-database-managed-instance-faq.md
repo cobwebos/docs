@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 3637676a330b324d5620885f0cbe50d4aa68ed51
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 2efeb37f8b98f4cf9a29ec8a6976146b81aab26b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779053"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641072"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL 数据库托管实例常见问题 (FAQ)
 
@@ -36,8 +36,7 @@ ms.locfileid: "68779053"
 
 ## <a name="where-can-i-find-known-issues-and-bugs"></a>在哪里可以找到已知问题和 bug？
 
-有关错误和已知问题, 请参阅[行为更改](sql-database-managed-instance-transact-sql-information.md#Changes)和[已知问题](sql-database-managed-instance-transact-sql-information.md#Issues)。
-
+对于 bug 和已知问题, 请参阅[已知问题](sql-database-managed-instance-transact-sql-information.md#Issues)。
 
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>托管实例是否可以与本地 SQL Server 具有相同的名称？
 

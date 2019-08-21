@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: c225971675557ba9bc98aafa25d17a3ef95a594a
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 9f6f3d43f80b3c69b0c1106b8e395b4d8f5d32ab
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624953"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640704"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>部署包含系统分配的托管标识的 Service Fabric 应用程序 (预览版)
 
@@ -92,7 +92,7 @@ ms.locfileid: "69624953"
     ```
     这是从服务定义的角度来看, 从标识到服务的等效映射。 此标识由其在应用程序清单中声明`WebAdmin`的友好名称 () 引用。
 
-## <a name="related-articles"></a>相关文章
+## <a name="next-steps"></a>后续步骤
 
 * 查看 Azure 中的[托管标识支持](./concepts-managed-identity.md)Service Fabric
 

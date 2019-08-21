@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: b71cf55944c1049fa2c3ddca79f02a8b75b9b2ec
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
-ms.translationtype: MT
+ms.openlocfilehash: 07d44bb54c288202d571f8e664822ecf9b4998be
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563014"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639761"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux Java 应用
 
@@ -440,7 +440,7 @@ Linux 上的 Azure App Service 允许 Java 开发人员在完全托管的基于 
 
 在 Linux 上的应用服务中运行的 WildFly 应用程序服务器以独立模式运行，而不是在域配置中运行。 横向扩展应用服务计划时，每个 WildFly 实例都被配置为独立的服务器。
 
-使用[缩放规则](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md)和[增加实例数](../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，纵向或横向缩放应用程序。
+使用[缩放规则](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md)和[增加实例数](../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，纵向或横向缩放应用程序。
 
 ### <a name="customize-application-server-configuration"></a>自定义应用程序服务器配置
 

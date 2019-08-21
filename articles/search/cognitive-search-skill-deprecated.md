@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 316cfb228050030b15e791e1d890c9048eadc109
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 57dd8e47d44248270920e44268b99c98d399504d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841090"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635883"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>已弃用的认知搜索技能
 
@@ -25,7 +24,7 @@ ms.locfileid: "68841090"
 * 技能名称：将要弃用的技能的名称，映射到 @odata.type 属性。
 * 最后一个可用的 API 版本：Azure 搜索公共 API 的最后一个版本，通过它可以创建/更新技能集，其中包含相应的已弃用技能。
 * 结束支持：支持的最后一天，这一天过后相应的技能会被视为不受支持的技能。 以前创建的技能集应该仍然可以继续使用，但建议用户不要使用已弃用的技能。
-* 建议:通过向前迁移路径来使用支持的技能。 建议用户按照建议来继续接受支持。
+* 建议：通过向前迁移路径来使用支持的技能。 建议用户按照建议来继续接受支持。
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
@@ -37,7 +36,7 @@ ms.locfileid: "68841090"
 
 2019 年 2 月 15 日
 
-### <a name="recommendations"></a>推荐 
+### <a name="recommendations"></a>建议 
 
 改用 [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)。 它提供 NamedEntityRecognitionSkill 的大多数功能，且质量更高。 它还在复杂的输出字段中提供更丰富的信息。
 

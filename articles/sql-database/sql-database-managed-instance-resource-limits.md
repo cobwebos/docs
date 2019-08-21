@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 961c0de6856a9791f76be1ec609f176f1fbbf8fb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 412a3cb32663f5bd3bfad2d565b6797f92e26b75
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567341"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641110"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -42,7 +42,7 @@ ms.locfileid: "68567341"
 | 最大实例保留存储 |  常规用途: 8 TB<br/>业务关键:1TB | 常规用途:8 TB<br/> 业务关键 1 TB、2 TB 或 4 TB, 具体取决于核心数 |
 
 > [!IMPORTANT]
-> AustraliaEast 区域中不再支持新的 Gen4 数据库。
+> 澳大利亚东部或巴西南部区域不再支持新的 Gen4 数据库。
 
 ### <a name="service-tier-characteristics"></a>服务层特征
 

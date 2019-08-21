@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: cc89e9284e6dbb735aef08100c99a5a7fdb87549
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 75af2012c4e6287a2fbe76098c2a325e6c9ae2ef
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248849"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640681"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>在 Azure 虚拟网络中部署 IPv6 双重堆栈应用程序-CLI (预览版)
 
@@ -33,7 +33,7 @@ ms.locfileid: "68248849"
 
 如果你决定在本地安装并使用 Azure CLI, 则本快速入门要求你使用 Azure CLI 版本2.0.49 或更高版本。 若要查找已安装的版本，请运行 `az --version`。 有关安装或升级信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 若要使用 Azure 虚拟网络的 IPv6 功能, 必须使用 Azure PowerShell 配置订阅, 如下所示:
 
 ```azurecli
@@ -130,7 +130,7 @@ az network lb create \
 
 使用[az network lb 前端 ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)创建 IPV6 前端 ip。 以下示例创建名为*dsLbFrontEnd_v6*的前端 IP 配置, 并附加*dsPublicIP_v6*地址:
 
-```azurepowershell-interactive
+```azurecli
 az network lb frontend-ip create \
 --lb-name dsLB  \
 --name dsLbFrontEnd_v6  \

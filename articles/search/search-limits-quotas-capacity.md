@@ -2,20 +2,18 @@
 title: 层和 SKU 的服务限制 - Azure 搜索
 description: 用于容量计划的服务限制以及请求和响应 Azure 搜索的最大限制。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 35beb55d7326b954a568a377b73696fe598742c5
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 9ddc7ad8882b30a17be5820116da72c5ab32fad9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348295"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640614"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”、“标准”还是“存储优化”定价层上[预配 Azure 搜索](search-create-service-portal.md)。

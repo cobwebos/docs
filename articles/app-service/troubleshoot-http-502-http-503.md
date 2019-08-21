@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d40b11538d5aee20b54ddd6d3ca112f30238b512
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60833031"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636544"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>排查 Azure 应用服务中出现的 HTTP 错误“502 错误的网关”和“503 服务不可用”
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中托管的应用经常出现“502 错误的网关”和“503 服务不可用”错误。 本文将帮助你排查这些错误。
@@ -55,7 +55,7 @@ ms.locfileid: "60833031"
 每次发生服务中断或性能下降时 Microsoft Azure 会发出通告。 可以在 [Azure 门户](https://portal.azure.com/)中跟踪服务的运行状况。 有关详细信息，请参阅[跟踪服务的运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
 
 #### <a name="monitor-your-app"></a>监视应用
-此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴  。 “指标”边栏选项卡会显示所有可以添加的指标。 
+此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴。 “指标”边栏选项卡会显示所有可以添加的指标。
 
 可能想要在应用中监视的一些指标包括
 
@@ -63,7 +63,7 @@ ms.locfileid: "60833031"
 * 平均响应时间
 * CPU 时间
 * 内存工作集
-* Requests
+* 请求
 
 ![监视应用以解决 HTTP 错误“502 错误的网关”和“503 服务不可用”](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "60833031"
 #### <a name="use-the-diagnostics-tool"></a>使用诊断工具
 应用服务提供了智能的交互式体验，可帮助我们排查应用的问题，且无需配置。 如果应用确实出现问题，诊断工具会指出问题所在，并引导你获取适当的信息，以便更轻松快速地排查和解决问题。
 
-若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。 
+若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
 应用服务随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为应用的 *Kudu 控制台*或 *SCM 仪表板*。
@@ -102,14 +102,14 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 #### <a name="scale-the-app"></a>缩放应用
 在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 纵向扩展应用涉及到两个相关操作：将应用服务计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
 
-有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](web-sites-scale.md)。
+有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](manage-scale-up.md)。
 
 此外，可以选择在多个实例上运行应用程序。 这不仅能提供更强大的处理能力，而且还能提供一定程度的容错。 如果进程在某个实例上中断，其他实例仍将继续处理请求。
 
 可以将缩放设置为手动或自动。
 
 #### <a name="use-autoheal"></a>使用 AutoHeal
-AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终可以从 Azure 门户直接重新启动应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 请注意这些设置的相同方式工作，即使你的应用程序不是一个.NET。
+AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终可以从 Azure 门户直接重新启动应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 请注意, 即使应用程序不是 .NET 应用程序, 这些设置的工作方式也相同。
 
 有关详细信息，请参阅[自动修复 Azure 网站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 

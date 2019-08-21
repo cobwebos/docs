@@ -7,14 +7,14 @@ manager: paulyuk
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: 3f5196c81550446221a4524330e355c595b65c6a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934369"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639481"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>安全地保存 Web 应用的密钥应用程序设置
 
@@ -23,7 +23,7 @@ ms.locfileid: "68934369"
 
 传统上，所有 Web 应用配置设置都保存在配置文件（如 Web.config）中。这一做法会导致将密钥设置（如云凭据）签入到公共源代码管理系统（如 GitHub）中。 同时，因为更改源代码和重新配置开发设置都需要开销，因此会难以遵循安全最佳实践。
 
-为了确保开发过程的安全性，创建了工具和框架库，以安全地保存应用程序密钥设置，并最大程度地减少对源代码的更改或不对其进行更改。
+为了确保开发过程是安全的, 可以创建工具和框架库, 以便在不更改源代码的情况下安全地保存应用程序密钥设置。
 
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET 和 .NET Core 应用程序
 
@@ -45,12 +45,12 @@ ms.locfileid: "68934369"
 
     ![添加密钥保管库访问策略](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-3. 将密钥添加到 Azure 门户上的密钥保管库。 对于嵌套的配置设置，请将“:”替换为“--”，以使密钥保管库密钥名称有效。 不能在密钥保管库密钥的名称中使用“:”。
+3. 将你的机密添加到 Azure 门户 Key Vault。 对于嵌套的配置设置，请将“:”替换为“--”，以使密钥保管库密钥名称有效。 不能在密钥保管库密钥的名称中使用“:”。
 
     ![添加密钥保管库密钥](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
     > [!NOTE] 
-    > 在 Visual Studio 2017 V15.6 之前，我们曾建议安装 Visual Studio 的 Azure 服务身份验证扩展。 但是现在该扩展已弃用，因为它的功能已集成在 Visual Studio 中。 因此，如果你使用的是旧版本的 Visual Studio 2017，我们建议你更新至至少 VS 2017 15.6 或更高版本，以便可以本机使用此功能并使用 Visual Studio 登录标识本身访问密钥保管库。
+    > 在 Visual Studio 2017 V15.6 之前，我们曾建议安装 Visual Studio 的 Azure 服务身份验证扩展。 但现在, 在 Visual Studio 中集成功能后, 该功能已弃用。 因此，如果你使用的是旧版本的 Visual Studio 2017，我们建议你更新至至少 VS 2017 15.6 或更高版本，以便可以本机使用此功能并使用 Visual Studio 登录标识本身访问密钥保管库。
     >
  
 4. 将以下 NuGet 包添加到项目：
@@ -97,10 +97,10 @@ ms.locfileid: "68934369"
 
 1. 将以下 NuGet 包安装到你的项目
     ```
-    Microsoft.Configuration.ConfigurationBuilders.Basic
+    Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
-2. 创建类似于以下的文件。 将其保存在你的项目文件夹外部的某个位置下。
+2. 创建类似于以下内容的文件。 将其保存在你的项目文件夹外部的某个位置下。
 
     ```xml
     <root>
@@ -123,7 +123,7 @@ ms.locfileid: "68934369"
     </configBuilders>
     ```
 
-4. 指定 appSettings 部分使用密钥配置生成器。 确保有任何含有虚拟值的密钥设置的条目。
+4. 指定 appSettings 部分使用密钥配置生成器。 请确保有一个具有虚拟值的机密设置条目。
 
     ```xml
         <appSettings configBuilders="Secrets">

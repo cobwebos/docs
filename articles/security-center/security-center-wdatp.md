@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 87f5a14bcd6003ad81b663ed97e5349dcbff2a30
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 597670803514fa59faaafdad73786cdb745a0976
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296515"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640900"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender 高级威胁防护与 Azure 安全中心
 
@@ -51,21 +51,21 @@ Azure 安全中心通过与 [Windows Defender 高级威胁防护](https://www.mi
 
 ## <a name="platform-support"></a>平台支持
 
-安全中心的 windows Defender ATP 支持在属于标准服务订阅的 Windows Server 2012 R2 和 Windows Server 2016 操作系统上检测。
+安全中心的 windows Defender ATP 支持在标准服务订阅中的 Windows Server 2016、2012 R2 和 2008 R2 SP1 操作系统上检测。
 
 > [!NOTE]
 > 使用 Azure 安全中心监视服务器时, 将自动创建 Windows Defender ATP 租户, 并且默认情况下, Windows Defender ATP 数据存储在欧洲。 如果需要将数据移动到另一个位置, 则需要联系 Microsoft 支持部门重置租户。
 
 ## <a name="onboarding-servers-to-security-center"></a>将服务器加入安全中心 
 
-若要将服务器加入到安全中心，请从“Windows Defender ATP 服务器加入”单击“到 Azure 安全中心加入服务器”  。
+若要将服务器加入到安全中心，请从“Windows Defender ATP 服务器加入”单击“到 Azure 安全中心加入服务器”。
 
-1. 在“加入”  边栏选项卡中选择或创建用于存储数据的工作区。 <br>
+1. 在“加入”边栏选项卡中选择或创建用于存储数据的工作区。 <br>
 2. 如果看不到所有工作区，可能是由于缺少权限，请确保已将工作区设置到“Azure 安全标准”层。 有关详细信息，请参阅[升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
     
-3. 选择“添加服务器”  以查看有关如何安装 Microsoft Monitoring Agent 的说明。 
+3. 选择“添加服务器”以查看有关如何安装 Microsoft Monitoring Agent 的说明。 
 
-4. 加入后，可以在“计算和应用”  下监视计算机。
+4. 加入后，可以在“计算和应用”下监视计算机。
 
    ![加入计算机](media/security-center-wdatp/onboard-computers.png)
 
@@ -111,7 +111,7 @@ Azure 安全中心通过与 [Windows Defender 高级威胁防护](https://www.mi
 
 3. 如果该命令成功，则 Azure 安全中心仪表板和 Windows Defender ATP 门户中会显示一条新警报。 此警报可能要在几分钟之后才显示。
 
-4. 若要在安全中心查看该警报，请转到“安全警报”>  “可疑的 Powershell 命令行”     。
+4. 若要在安全中心查看该警报，请转到“安全警报”>  “可疑的 Powershell 命令行” 。
 
 5. 在调查窗口中，选择相应的链接转到 Windows Defender ATP 门户。
 

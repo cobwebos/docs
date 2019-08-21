@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 80fb06c96f727d2b78faf4f100d59341aeaeff42
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: cb32251c2507f3def7f5e830af15828ff2f04c29
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624957"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640717"
 ---
 # <a name="create-a-new-azure-service-fabric-cluster-with-managed-identity-support-preview"></a>使用托管标识支持创建新的 Azure Service Fabric 群集 (预览版)
 
@@ -51,13 +51,14 @@ ms.locfileid: "69624957"
 }
 ```
 
-## <a name="next-steps"></a>后续步骤
-* [使用系统分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [使用用户分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [利用服务代码中 Service Fabric 应用程序的托管标识](./how-to-managed-identity-service-fabric-app-code.md)
-* [向 Azure Service Fabric 应用程序授予其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
 
 ## <a name="related-articles"></a>相关文章
 * 查看 Azure 中的[托管标识支持](./concepts-managed-identity.md)Service Fabric
 
 * [在现有 Azure Service Fabric 群集中启用托管标识支持](./configure-existing-cluster-enable-managed-identity-token-service.md)
+
+## <a name="next-steps"></a>后续步骤
+* [使用系统分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [使用用户分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+* [利用服务代码中 Service Fabric 应用程序的托管标识](./how-to-managed-identity-service-fabric-app-code.md)
+* [向 Azure Service Fabric 应用程序授予其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)

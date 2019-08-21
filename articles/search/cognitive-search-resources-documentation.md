@@ -2,20 +2,19 @@
 title: 认知搜索文档资源 - Azure 搜索
 description: 与 Azure 搜索中的认知搜索工作负载相关的文章、教程、示例和博客文章的批注列表。
 services: search
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.subservice: cognitive-search
-ms.openlocfilehash: c7c0d22944726959ae3eaf036d30bcde3ca86900
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 88e9db6526733960045e9a7f49e1f73fcaca8cf6
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841129"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639105"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>认知搜索工作负载的文档资源
 
@@ -23,7 +22,7 @@ ms.locfileid: "68841129"
 
 下文是认知搜索的完整文档。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 + [什么是认知搜索？](cognitive-search-concept-intro.md)
 + [快速入门：在门户中尝试认知搜索](cognitive-search-quickstart-blob.md)
 + [教程：了解认知搜索 API](cognitive-search-tutorial-blob.md)

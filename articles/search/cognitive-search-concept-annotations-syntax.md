@@ -6,18 +6,16 @@ manager: pablocas
 author: luiscabrer
 ms.service: search
 ms.subservice: cognitive-search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 1868e9fd3a7dde5d6302753986019f481a577007
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 5ce2c1aebebe802aa0fd3bda74c168e7a12341c0
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841302"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639294"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>如何在认知搜索技能集中引用注释
 
@@ -35,7 +33,7 @@ ms.locfileid: "68841302"
 | 扩充上下文 | 扩充发生的上下文，即扩充的元素。 默认情况下，扩充上下文位于 `"/document"` 级别，作用域为单个文档。 当一个技能运行时，该技能的输出将成为[定义上下文的属性](#example-2)。|
 
 <a name="example-1"></a>
-## <a name="example-1-simple-annotation-reference"></a>示例 1:简单注释引用
+## <a name="example-1-simple-annotation-reference"></a>示例 1：简单注释引用
 
 在 Azure Blob 存储中，假设你有各种文件，其中包含你想要使用实体识别提取的人名的引用。 在下面的技能定义中，`"/document/content"` 是整个文档的文本表示，“people”是对标识为 persons 的实体的全名提取。
 

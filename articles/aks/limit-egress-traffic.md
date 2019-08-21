@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: cf9dc304efea8874d16953f74bf88a4317760819
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 369729f10de4a55cd14bb866795ea1aa15b3d9da
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031837"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639781"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>预览-限制群集节点的出口流量并控制对 Azure Kubernetes Service (AKS) 中所需的端口和服务的访问
 
@@ -58,6 +58,10 @@ az provider register --namespace Microsoft.ContainerService
 若要提高 AKS 群集的安全性, 您可能希望限制出站流量。 群集配置为从 MCR 或 ACR 请求基本系统容器映像。 如果以这种方式锁定出口流量, 则必须定义特定端口和 Fqdn, 以允许 AKS 节点与所需的外部服务正确通信。 如果没有这些授权端口和 Fqdn, 则 AKS 节点无法与 API 服务器通信或安装核心组件。
 
 可以使用[Azure 防火墙][azure-firewall]或第三方防火墙设备来保护出口流量, 并定义这些所需的端口和地址。 AKS 不会自动为你创建这些规则。 当你在网络防火墙中创建适当的规则时, 以下端口和地址用于引用。
+
+> [!IMPORTANT]
+> 使用 Azure 防火墙限制传出流量并创建用户定义的路由 (UDR) 来强制所有传出流量时, 请确保在防火墙中创建适当的 DNAT 规则, 以正确允许入口流量。 使用带有 UDR 的 Azure 防火墙会断开入口设置, 因为不对称路由。 (之所以出现此问题, 是因为 AKS 子网有一个默认路由, 该路由转到防火墙的专用 IP 地址, 但使用的是以下类型的公共负载均衡器入口或 Kubernetes 服务:LoadBalancer)。 在这种情况下，将通过负载均衡器的公共 IP 地址接收传入的负载均衡器流量，但返回路径将通过防火墙的专用 IP 地址。 由于防火墙是有状态的, 因此它会删除返回的数据包, 因为防火墙无法识别已建立的会话。 若要了解如何将 Azure 防火墙与入口或服务负载均衡器集成, 请参阅将[Azure firewall 与 azure 标准负载均衡器集成](https://docs.microsoft.com/en-us/azure/firewall/integrate-lb)。
+>
 
 在 AKS 中, 有两组端口和地址:
 

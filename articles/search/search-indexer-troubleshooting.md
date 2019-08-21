@@ -2,20 +2,18 @@
 title: 排查常见的搜索索引器问题 - Azure 搜索
 description: 修复 Azure 搜索中索引器的错误和常见问题，包括数据源连接、防火墙和丢失的文档。
 author: mgottein
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
-ms.custom: seodec2018
-ms.openlocfilehash: 1cb3260fa11354de963318a023fec912d082eae4
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 4692be287e9b38cf116107d2e7c1043f23a6b34b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653404"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640595"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>排查 Azure 搜索中的常见索引器问题
 
@@ -35,11 +33,11 @@ Azure 存储提供可配置的防火墙。 默认情况下，防火墙处于禁�
 
 防火墙启用后，没有具体的错误消息。 通常情况下，防火墙错误类似于：`The remote server returned an error: (403) Forbidden`。
 
-可以在[门户](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)中验证防火墙是否已启用。 唯一受支持的解决方法是通过选择允许从访问禁用防火墙[所有网络](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)。
+可以在[门户](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)中验证防火墙是否已启用。 唯一受支持的解决方法是通过选择允许从["所有网络"](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)进行访问来禁用防火墙。
 
-如果你的索引器不具有附加的技能组合，你_可能_尝试[添加一个例外，](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules)搜索服务的 IP 地址。 但是，这种情况下不支持，并且不能保证工作。
+如果索引器没有附加的技能组合, 则_可能会_尝试为搜索服务的 IP 地址[添加例外](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules)。 但是, 这种情况不受支持, 因此不能保证有效。
 
-可以通过 ping 其 FQDN 来了解你的搜索服务的 IP 地址 (`<your-search-service-name>.search.windows.net`)。
+可以通过对搜索服务的 FQDN (`<your-search-service-name>.search.windows.net`) 进行 ping 操作来找出它的 IP 地址。
 
 ### <a name="cosmos-db"></a>Cosmos DB
 

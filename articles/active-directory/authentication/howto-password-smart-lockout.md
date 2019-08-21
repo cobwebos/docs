@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489ff1824c4bc45ee7ed31e9c96377975a32baa4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8df01c204a6893f4e2ff1c2ff22fa337d77c519b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879241"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637596"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory 智能锁定
 
@@ -48,7 +48,7 @@ ms.locfileid: "68879241"
 例如, 如果你希望 Azure AD 计数器高于 AD, 则 Azure AD 为120秒 (2 分钟), 而本地 AD 设置为1分钟 (60 秒)。
 
 > [!IMPORTANT]
-> 目前，如果用户的云帐户已被智能锁定功能锁定，管理员将无法为其解锁。 管理员必须等到锁定持续时间到期。
+> 目前, 如果用户的云帐户已被智能锁定功能锁定, 管理员将无法解除其锁定。 管理员必须等到锁定持续时间到期。 但是, 用户可以通过使用受信任的设备或位置的自助密码重置 (SSPR) 来解锁。
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>验证本地帐户锁定策略
 

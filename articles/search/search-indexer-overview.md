@@ -2,20 +2,18 @@
 title: 用于在编制索引期间抓取数据源的索引器 - Azure 搜索
 description: 对 Azure SQL 数据库、Azure Cosmos DB 或 Azure 存储爬网，提取可搜索的数据并填充 Azure 搜索索引。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 6871c75f0af662762ffac6e7346d4999e55eb937
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: af01b6127a8a3e20edfac19ce3b54cecb9d561d1
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303439"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640589"
 ---
 # <a name="indexers-in-azure-search"></a>Azure 搜索中的索引器
 
@@ -25,7 +23,7 @@ Azure 搜索中的*索引器*是一种爬网程序，它从外部 Azure 数据�
 
 可以单独使用索引器来引入数据，也可以结合索引器使用多种技术来加载索引中的部分字段。
 
-可以按需运行索引器或的定期数据刷新计划来根据每隔五分钟的频率运行。 要进行更频繁的更新，则需要采用“推送模式”，便于同时更新 Azure 搜索和外部数据源中的数据。
+可以按需或按每五分钟运行一次的定期数据刷新计划运行索引器。 要进行更频繁的更新，则需要采用“推送模式”，便于同时更新 Azure 搜索和外部数据源中的数据。
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>创建及管理索引器的方法
 
@@ -60,7 +58,7 @@ Azure 搜索中的*索引器*是一种爬网程序，它从外部 Azure 数据�
 索引器可提供数据源独有的功能。 因此，索引器或数据源配置的某些方面会因索引器类型而不同。 但是，所有索引器的基本构成元素和要求都相同。 下面介绍所有索引器都适用的共同步骤。
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
-索引器从数据源  对象获取数据源连接。 数据源定义提供连接字符串和可能的凭据。 调用[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API 或 [DataSource 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource)以创建资源。
+索引器从数据源对象获取数据源连接。 数据源定义提供连接字符串和可能的凭据。 调用[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API 或 [DataSource 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource)以创建资源。
 
 数据源的配置和管理独立于使用数据源的索引器，这意味着多个索引器可使用一个数据源，同时加载多个索引。
 

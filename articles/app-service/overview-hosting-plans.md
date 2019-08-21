@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: be391f2aa9ee5d94ffc36a6e03d3af8881346520
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932343"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636560"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 
@@ -100,7 +100,7 @@ ms.locfileid: "68932343"
 
 反之亦然。 如果觉得自己不再需要较高层的功能，可以降低到更低的层，从而节省资金。
 
-有关提高应用服务计划的信息，请参阅[纵向扩展 Azure 中的应用](web-sites-scale.md)。
+有关提高应用服务计划的信息，请参阅[纵向扩展 Azure 中的应用](manage-scale-up.md)。
 
 如果你的应用与其他应用在同一个应用服务计划中，可以通过隔离计算资源来提高你的应用的性能。 为此，可将应用移到单独的应用服务计划中。 有关详细信息，请参阅[将应用移到另一个应用服务计划](app-service-plan-manage.md#move)。
 

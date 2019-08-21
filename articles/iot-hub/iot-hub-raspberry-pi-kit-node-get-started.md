@@ -1,6 +1,6 @@
 ---
 title: 连接到云的 Raspberry Pi (Node.js) - 将 Raspberry Pi 连接到 Azure IoT 中心 | Microsoft Docs
-description: 了解如何设置和 Raspberry Pi 连接到 Azure IoT 中心的 Raspberry Pi 将在本教程中将数据发送到 Azure 云平台。
+description: 在本教程中了解如何设置 Raspberry Pi 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。
 author: wesmc7777
 manager: philmea
 keywords: Azure IoT Raspberry Pi, Raspberry Pi IoT 中心, Raspberry Pi 将数据发送到云, 连接到云的 Raspberry Pi
@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 04/11/2018
+ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: e7863e4a0f4cab6f6328de19d1611710f9188de3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e7346fa0f9cc977755c441077a50707dd207019f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838756"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638279"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
@@ -94,10 +94,7 @@ ms.locfileid: "67838756"
 
 1. 下载 Raspbian。
 
-   a. [下载 Raspbian Stretch](https://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/)（.zip 文件）。
-
-   > [!WARNING]
-   > 请使用上面的链接来下载 `raspbian-2017-07-5` zip 映像。 Raspbian 映像的最新版本具有与接线 Pi 节点相关的已知问题，这可能会导致在接下来的步骤中发生故障。
+   a. [带桌面的 Raspbian Buster](https://www.raspberrypi.org/downloads/raspbian/)(.zip 文件)。
 
    b. 将 Raspbian 映像提取到计算机上的一个文件夹中。
 
@@ -121,11 +118,11 @@ ms.locfileid: "67838756"
 
 2. 启动 Pi，然后使用 `pi` 作为用户名并使用 `raspberry` 作为密码来登录 Raspbian。
 
-3. 依次单击 Raspberry 图标 >“首选项”   > “Raspberry Pi 配置”  。
+3. 依次单击 Raspberry 图标 >“首选项” > “Raspberry Pi 配置”。
 
    ![Raspbian 首选项菜单](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
-4. 在“接口”  选项卡上，将“I2C”  和“SSH”  设置为“启用”  ，然后单击“确定”  。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
+4. 在“接口”选项卡上，将“I2C”和“SSH”设置为“启用”，然后单击“确定”。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
 
    ![在 Raspberry Pi 上启用 I2C 和 SSH](./media/iot-hub-raspberry-pi-kit-node-get-started/2-enable-i2c-ssh-on-raspberry-pi.png)
 
@@ -195,10 +192,10 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
    node -v
    ```
 
-   如果版本低于 10.x，或者 Pi 上没有 Node.js，请安装最新版本。
+   如果版本低于 11. x, 或者 Pi 上没有 node.js, 请安装最新版本。
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
@@ -230,7 +227,7 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
    此文件中有两个可以配置的项。 第一个是 `interval`，它定义了发送到云的消息之间的时间间隔（以毫秒为单位）。 第二个是 `simulatedData`，它是一个布尔值，指示是否使用模拟的传感器数据。
 
-   如果没有传感器  ，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建和使用模拟的传感器数据。
+   如果没有传感器，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建和使用模拟的传感器数据。
 
 2. 通过按“Control-O”>“Enter”>“Control-X”保存并退出。
 

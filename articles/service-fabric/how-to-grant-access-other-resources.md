@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: 1facd85563a54de2b703bbc8c192976db92c30f7
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 07b26fb86392b26ef45c4370741a32efc7dc436b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624891"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640915"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>向 Service Fabric 应用程序的托管标识授予对 Azure 资源 (预览版) 的访问权限
 
@@ -73,15 +73,3 @@ ms.locfileid: "69624891"
 * [使用系统分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 
 * [使用用户分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-
-## <a name="related-articles"></a>相关文章
-
-* 查看 Azure 中的[托管标识支持](./concepts-managed-identity.md)Service Fabric
-
-* [部署新的](./configure-new-azure-service-fabric-enable-managed-identity.md)支持托管标识的 Azure Service Fabric 群集 
-
-* 在现有 Azure Service Fabric 群集中[启用托管标识](./configure-existing-cluster-enable-managed-identity-token-service.md)
-
-* 利用源代码中 Service Fabric 应用程序的[托管标识](./how-to-managed-identity-service-fabric-app-code.md)
-
-* 查看[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-msi.md)列表

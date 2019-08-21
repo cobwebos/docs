@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 8a287f118c126967d2cf8cad77a434cfecc098eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0325a3bda912c95d8d27646bc1e80fff5ce10a8
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236236"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639427"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>什么是 Azure 诊断扩展
 Azure 诊断扩展是 Azure 中可对部署的应用程序启用诊断数据收集的代理。 可以使用于自许多不同源的诊断扩展。 目前支持 Azure 云服务（经典）Web 和辅助角色、虚拟机、虚拟机规模集，以及 Service Fabric。 其他 Azure 服务具有不同的诊断方法。 请参阅 [Azure 中的监控概述](../../azure-monitor/overview.md)。
@@ -74,7 +74,7 @@ Azure 诊断扩展可收集以下类型的数据：
 
 ## <a name="virtual-machines"></a>虚拟机
 * 如果使用 Visual Studio，请参阅[使用 Visual Studio 跟踪 Azure 虚拟机](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines)帮助自己入门。 否则，请参阅
-* [在 Azure 虚拟机上设置 Azure 诊断](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
+* [在 Azure 虚拟机上设置 Azure 诊断](/azure/virtual-machines/extensions/diagnostics-windows)
 
 有关更高级主题，请参阅
 

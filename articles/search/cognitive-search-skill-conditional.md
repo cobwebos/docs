@@ -6,17 +6,16 @@ manager: pablocas
 author: luiscabrer
 ms.service: search
 ms.subservice: cognitive-search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: dff0ffaed49d7e4b7ba8211827a26bc3e9a87d9d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 21a36988b31571f2110fe4fd2802aa5d84ee0216
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841115"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635930"
 ---
 #   <a name="conditional-skill"></a>条件技能
 
@@ -46,14 +45,14 @@ Microsoft.Skills.Util.ConditionalSkill
 
 -   批注路径（表达式中的路径必须以“$(”和“)”分隔）
  <br/>
-    示例:
+    例如：
     ```
         "= $(/document)"
         "= $(/document/content)"
     ```
 
 -  文本（字符串、数字、true、false、null） <br/>
-    示例:
+    例如：
     ```
        "= 'this is a string'"   // string (note the single quotation marks)
        "= 34"                   // number
@@ -62,21 +61,21 @@ Microsoft.Skills.Util.ConditionalSkill
     ```
 
 -  使用比较运算符（==、!=、>=、>、<=、<）的表达式 <br/>
-    示例:
+    例如：
     ```
         "= $(/document/language) == 'en'"
         "= $(/document/sentiment) >= 0.5"
     ```
 
 -   使用布尔运算符（&&、||、!、^）的表达式 <br/>
-    示例:
+    例如：
     ```
         "= $(/document/language) == 'en' && $(/document/sentiment) > 0.5"
         "= !true"
     ```
 
 -   使用数字运算符（+、-、\*、/、%）的表达式 <br/>
-    示例: 
+    例如： 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
         "= $(/document/totalValue) * 1.10"       // multiplication
@@ -90,7 +89,7 @@ Microsoft.Skills.Util.ConditionalSkill
 
 | 输入   | 描述 |
 |-------------|-------------|
-| condition   | 此输入是一个[求值字段](#evaluated-fields)，表示要求值的条件。 此条件应求值为布尔值（*true* 或 *false*）。   <br/>  示例: <br/> "= true" <br/> "= $(/document/language) =='fr'" <br/> "= $(/document/pages/\*/language) == $(/document/expectedLanguage)" <br/> |
+| condition   | 此输入是一个[求值字段](#evaluated-fields)，表示要求值的条件。 此条件应求值为布尔值（*true* 或 *false*）。   <br/>  例如： <br/> "= true" <br/> "= $(/document/language) =='fr'" <br/> "= $(/document/pages/\*/language) == $(/document/expectedLanguage)" <br/> |
 | whenTrue    | 此输入是一个[求值字段](#evaluated-fields)，表示当条件求值为 *true* 时要返回的值。 常量字符串应括在单引号（' 和 '）中返回。 <br/>示例值： <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/> |
 | whenFalse   | 此输入是一个[求值字段](#evaluated-fields)，表示当条件求值为 *false* 时要返回的值。 <br/>示例值： <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/>
 

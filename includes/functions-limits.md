@@ -4,16 +4,16 @@ ms.service: billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: aa43fe6c7999b8fa73419916870f9dfca0c01e3d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d00af77a2d502cb534a4ab4a0db9231e5e8748b7
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601296"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636454"
 ---
 | Resource | [消耗计划](../articles/azure-functions/functions-scale.md#consumption-plan) | [高级计划](../articles/azure-functions/functions-scale.md#premium-plan) | [应用服务计划](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
-| 横向扩展 | 事件驱动 | 事件驱动 | [手动/自动缩放](../articles/app-service/web-sites-scale.md) | 
+| 横向扩展 | 事件驱动 | 事件驱动 | [手动/自动缩放](../articles/app-service/manage-scale-up.md) | 
 | 最大实例数 | 200 | 20 | 10-20 |
 |默认[超时持续时间](../articles/azure-functions/functions-scale.md#timeout)（分钟） |5 | 30 |30<sup>2</sup> |
 |最大[超时持续时间](../articles/azure-functions/functions-scale.md#timeout)（分钟） |10 | unbounded | 不受限制<sup>3</sup> |

@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 1328edfd9a049daf9244df992b55f4fb1585c8ba
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 25f6075d1e026745d4db1a60149e109a0f9636a4
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841088"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635957"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
 
@@ -42,7 +41,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 |--------------------|-------------|
 | categories    | 应提取的类别的数组。  可能的类别类型有：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"`。 如果不提供类别，则返回所有类型。|
 |defaultLanguageCode |  输入文本的语言代码。 支持以下语言：`de, en, es, fr, it`|
-|minimumPrecision | 未使用。 保留供将来使用。 |
+|minimumPrecision | 未使用。 留待将来使用。 |
 |includeTypelessEntities | 当设置为 true 时，如果文本包含某个已知实体，但无法分类为受支持的类别之一，则它将作为 `"entities"` 复杂输出字段的一部分返回。 
 这些实体是已知的但未归类到当前受支持的“类别”。 例如，“Windows 10”是一个已知实体（产品），但“Products”不在当前受支持的类别中。 默认为 `false` |
 

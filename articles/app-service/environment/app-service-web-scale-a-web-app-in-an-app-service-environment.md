@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6e683eb07b690d7d5680b7a4d429d1150f22f67e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 452c3b9aac58e1eca25b6417eb891fed7180ada7
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60767667"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636639"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>在应用服务环境中缩放应用
 在 Azure 应用服务中，通常有三项内容可以扩展：
@@ -31,7 +31,7 @@ ms.locfileid: "60767667"
 
 在 ASE 中，无需选择或更改定价计划。  在功能方面，它已处于高级定价功能级别。  
 
-在辅助角色大小方面，ASE 管理员可以指定用于每个辅助角色池的计算资源大小。  这意味着，如有需要，可让辅助池 1 具有 P4 计算资源，而辅助池 2 则具有 P1 计算资源。  它们不需要按照大小顺序排列。  有关大小及其定价的详细信息，请参阅此处的文档 [Azure 应用服务定价][AppServicePricing]。  此操作会将应用服务环境中 Web 应用和应用服务计划的缩放选项保留为：
+在辅助角色大小方面，ASE 管理员可以指定用于每个辅助角色池的计算资源大小。  这意味着，如有需要，可让辅助池 1 具有 P4 计算资源，而辅助池 2 则具有 P1 计算资源。  它们不需要按照大小顺序排列。  有关大小及其定价的详细信息, 请参阅此处的文档[Azure App Service 定价][AppServicePricing]。  此操作会将应用服务环境中 Web 应用和应用服务计划的缩放选项保留为：
 
 * 辅助池选择项
 * 实例数
@@ -40,7 +40,7 @@ ms.locfileid: "60767667"
 
 ![][1]
 
-无法将 ASP 扩展到超出 ASP 所在辅助角色池中可用的计算资源数。  如果需要该辅助池中的计算资源，需让 ASE 管理员进行添加。  有关重新配置 ASE 的信息，请阅读此处的信息：[如何配置应用服务环境][HowtoConfigureASE]。  还可以利用 ASE 自动缩放功能来根据计划或指标增加容量。  若要获取有关配置 ASE 环境本身自动缩放的更多详细信息，请参阅[如何配置应用服务环境的自动缩放][ASEAutoscale]。
+无法将 ASP 扩展到超出 ASP 所在辅助角色池中可用的计算资源数。  如果需要该辅助池中的计算资源，需让 ASE 管理员进行添加。  有关重新配置 ASE 的信息，请阅读此处的信息：[如何配置应用服务环境][HowtoConfigureASE]。  还可以利用 ASE 自动缩放功能来根据计划或指标增加容量。  若要详细了解如何为 ASE 环境本身配置自动缩放, 请参阅[如何配置应用服务环境的自动缩放][ASEAutoscale]。
 
 可以使用来自不同辅助池或相同辅助池的计算资源，创建多个应用服务计划。  例如，如果在辅助池 1 中有 (10) 个可用的计算资源，可以选择使用 (6) 个计算资源创建一个应用服务计划，而第二个应用服务计划使用 (4) 个计算资源。
 
@@ -51,7 +51,7 @@ ms.locfileid: "60767667"
 
 ![][2] 
 
-ASE 中的 ASP 自动缩放规则与一般运行方式相同。  可以选择“缩放依据”下面的“CPU 百分比”，根据 CPU 百分比创建 ASP 的自动缩放规则，或使用“计划和性能规则”创建更复杂的规则。  若要查看有关配置自动缩放的更完整详细信息，请参阅此处的指南：[在 Azure 应用服务中缩放应用][AppScale]。 
+ASE 中的 ASP 自动缩放规则与一般运行方式相同。  可以选择“缩放依据”下面的“CPU 百分比”，根据 CPU 百分比创建 ASP 的自动缩放规则，或使用“计划和性能规则”创建更复杂的规则。  若要查看有关配置自动缩放的更完整详细信息, 请使用此处[缩放 Azure App Service 中的应用][AppScale]。 
 
 ### <a name="worker-pool-selection"></a>辅助池选择项
 如前所述，辅助角色池选项需通过 ASP UI 访问。  打开想要缩放的 ASP 边栏选项卡，并选择辅助角色池。  将显示已在应用服务环境中配置的所有辅助池。  如果只有一个辅助池，则将仅列出该池。  要更改 ASP 所在的辅助角色池，只需选择希望将应用服务计划移动到的目标辅助角色池即可。  
@@ -61,12 +61,12 @@ ASE 中的 ASP 自动缩放规则与一般运行方式相同。  可以选择“
 将 ASP 从一个辅助角色池移到另一个池之前，请确保有足够的容量可以容纳该 ASP。  辅助池列表中不仅列出了辅助池名，还显示了该辅助池中的可用辅助角色数。  请确保具有足够的可用实例来容纳应用服务计划。  如果想移动到的目标辅助池需要更多计算资源，请让 ASE 管理员进行添加。  
 
 > [!NOTE]
-> 从一个辅助池移出 ASP 会导致该 ASP 中的应用冷启动。  这可能会导致请求的运行速度变慢，因为应用在新计算资源上冷启动。  使用 Azure 应用服务中的[应用程序预热功能][AppWarmup]可以避免冷启动。  本文所述的应用程序初始化模块对冷启动也有效，因为当应用在新的计算资源上冷启动时，也会调用初始化进程。 
+> 从一个辅助池移出 ASP 会导致该 ASP 中的应用冷启动。  这可能会导致请求的运行速度变慢，因为应用在新计算资源上冷启动。  使用 Azure App Service 中的[应用程序预热功能][AppWarmup]可以避免冷启动。  本文所述的应用程序初始化模块对冷启动也有效，因为当应用在新的计算资源上冷启动时，也会调用初始化进程。 
 > 
 > 
 
 ## <a name="getting-started"></a>入门
-若要开始使用应用服务环境，请参阅[如何创建应用服务环境][HowtoCreateASE]
+若要开始使用应用服务环境, 请参阅[如何创建应用服务环境][HowtoCreateASE]
 
 <!--Image references-->
 [1]: ./media/app-service-web-scale-a-web-app-in-an-app-service-environment/aseappscale-aspblade.png
@@ -75,12 +75,12 @@ ASE 中的 ASP 自动缩放规则与一般运行方式相同。  可以选择“
 
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
-[ScaleWebapp]: ../web-sites-scale.md
+[ScaleWebapp]: ../manage-scale-up.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [CreateWebappinASE]: app-service-web-how-to-create-a-web-app-in-an-ase.md
 [Appserviceplans]: ../overview-hosting-plans.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 [ASEAutoscale]: app-service-environment-auto-scale.md
-[AppScale]: ../web-sites-scale.md
+[AppScale]: ../manage-scale-up.md
 [AppWarmup]: https://ruslany.net/2015/09/how-to-warm-up-azure-web-app-during-deployment-slots-swap/

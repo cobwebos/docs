@@ -11,28 +11,30 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5e9972c5fea7aaa2e6b5270aff87343437b1963e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
-ms.translationtype: MT
+ms.openlocfilehash: b792c0fc5d02a84d45b47ac68e0058144f31e673
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624012"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641000"
 ---
-# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
+# <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例 T-sql 差异、限制和已知问题
 
-本文总结并说明了 Azure SQL 数据库托管实例与本地 SQL Server 数据库引擎之间的语法和行为之间的差异。 其中讨论了以下主题：<a name="Differences"></a>
+本文总结并说明了 Azure SQL 数据库托管实例与本地 SQL Server 数据库引擎之间的语法和行为之间的差异。 托管实例部署选项与本地 SQL Server 数据库引擎高度兼容。 托管实例支持大多数 SQL Server 数据库引擎功能。
+
+![迁移](./media/sql-database-managed-instance/migration.png)
+
+托管实例中引入了一些 PaaS 限制, 与 SQL Server 相比, 某些行为发生了更改。 这些差异分为以下几类:<a name="Differences"></a>
 
 - [可用性](#availability)包括 [Always-On](#always-on-availability) 和[备份](#backup)方面的差异。
 - [安全性](#security)包括[审核](#auditing)、[证书](#certificates)、[凭据](#credential)、[加密提供程序](#cryptographic-providers)、[登录名和用户名](#logins-and-users)以及[服务密钥和服务主密钥](#service-key-and-service-master-key)方面的差异。
 - [配置](#configuration)包括[缓冲池扩展](#buffer-pool-extension)、[排序规则](#collation)、[兼容性级别](#compatibility-levels)、[数据库镜像](#database-mirroring)、[数据库选项](#database-options)、[SQL Server 代理](#sql-server-agent)以及[表选项](#tables)方面的差异。
 - [功能](#functionalities)包括[BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc),[分布式事务](#distributed-transactions),[扩展事件](#extended-events),[外部库](#external-libraries), [filestream 和 FileTable](#filestream-and-filetable),[全文语义搜索](#full-text-semantic-search)、[链接服务器](#linked-servers)、 [PolyBase](#polybase)、[复制](#replication)、[还原](#restore-statement)、 [Service Broker](#service-broker)、[存储过程、函数和触发器](#stored-procedures-functions-and-triggers)。
 - [环境设置](#Environment), 如 vnet 和子网配置。
-- [在托管实例中行为不同的功能](#Changes)。
-- [暂时性的限制和已知问题](#Issues)。
 
-托管实例部署选项与本地 SQL Server 数据库引擎高度兼容。 托管实例支持大多数 SQL Server 数据库引擎功能。
+其中大多数功能都是体系结构约束, 表示服务功能。
 
-![迁移](./media/sql-database-managed-instance/migration.png)
+此页还介绍了在托管实例中发现的[临时已知问题](#Issues), 这些问题将在以后解决。
 
 ## <a name="availability"></a>可用性
 
@@ -499,6 +501,18 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支持 `Extended stored procedures`，其中包括 `sp_addextendedproc` 和 `sp_dropextendedproc`。 请参阅[扩展存储过程](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)。
 - 不支持 `sp_attach_db`、`sp_attach_single_file_db` 和 `sp_detach_db`。 请参阅 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) 和 [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql)。
 
+### <a name="system-functions-and-variables"></a>系统函数和变量
+
+以下变量、函数和视图返回不同的结果：
+
+- `SERVERPROPERTY('EngineEdition')` 返回值 8。 此属性唯一标识托管实例。 请参阅 [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql)。
+- `SERVERPROPERTY('InstanceName')` 返回 NULL，因为 SQL Server 存在的实例概念并不适用于托管实例。 请参阅 [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql)。
+- `@@SERVERNAME`返回完整 DNS "可连接" 名称, 例如, my-managed-instance.wcus17662feb9ce98.database.windows.net。 请参阅 [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql)。 
+- `SYS.SERVERS`返回完整 DNS "可连接" 名称, 如`myinstance.domain.database.windows.net`属性 "name" 和 "data_source"。 请参阅 [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql)。
+- `@@SERVICENAME` 返回 NULL，因为 SQL Server 存在的服务概念并不适用于托管实例。 请参阅 [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql)。
+- 支持 `SUSER_ID`。 如果 Azure AD 登录名不在 sys.syslogins 中，则返回 NULL。 请参阅 [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql)。 
+- 不支持 `SUSER_SID`。 将返回错误数据，这是暂时性的已知问题。 请参阅 [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql)。 
+
 ## <a name="Environment"></a>环境约束
 
 ### <a name="subnet"></a>Subnet
@@ -513,33 +527,25 @@ WITH PRIVATE KEY (<private_key_options>)
 - 创建托管实例后, 不支持将托管实例或 VNet 移到另一个资源组或订阅。
 - 某些服务 (如应用服务环境、逻辑应用和托管实例, 用于异地复制、事务复制或通过链接服务器) 无法访问不同区域中的托管实例, 如果它们的 Vnet 使用[global对等互连](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。 可以通过 ExpressRoute 或 vnet 到 vnet 网关连接到这些资源。
 
-### <a name="tempdb-size"></a>TEMPDB 大小
+### <a name="tempdb"></a>TEMPDB
 
 在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 业务关键层`tempdb`上的最大大小受实例存储大小的限制。 `Tempdb`在常规用途和业务关键层上, 日志文件大小限制为 120 GB。 如果中的`tempdb`每个核心需要超过 24 gb, 或者它们产生超过 120 gb 的日志数据, 则某些查询可能会返回错误。
 
-## <a name="Changes"></a>行为更改
+### <a name="error-logs"></a>错误日志
 
-以下变量、函数和视图返回不同的结果：
+托管实例将详细信息放在错误日志中。 错误日志中记录了很多内部系统事件。 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息, 请参阅[托管实例– sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)。
 
-- `SERVERPROPERTY('EngineEdition')` 返回值 8。 此属性唯一标识托管实例。 请参阅 [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql)。
-- `SERVERPROPERTY('InstanceName')` 返回 NULL，因为 SQL Server 存在的实例概念并不适用于托管实例。 请参阅 [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql)。
-- `@@SERVERNAME`返回完整 DNS "可连接" 名称, 例如, my-managed-instance.wcus17662feb9ce98.database.windows.net。 请参阅 [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql)。 
-- `SYS.SERVERS`返回完整 DNS "可连接" 名称, 如`myinstance.domain.database.windows.net`属性 "name" 和 "data_source"。 请参阅 [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql)。
-- `@@SERVICENAME` 返回 NULL，因为 SQL Server 存在的服务概念并不适用于托管实例。 请参阅 [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql)。
-- 支持 `SUSER_ID`。 如果 Azure AD 登录名不在 sys.syslogins 中，则返回 NULL。 请参阅 [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql)。 
-- 不支持 `SUSER_SID`。 将返回错误数据，这是暂时性的已知问题。 请参阅 [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql)。 
+## <a name="Issues"></a>已知问题
 
-## <a name="Issues"></a>已知问题和限制
-
-### <a name="cross-database-service-broker-dialogs-dont-work-after-service-tier-upgrade"></a>服务层升级后, 跨数据库 Service Broker 对话框不起作用
+### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>跨数据库 Service Broker 对话框必须在服务层升级后重新初始化
 
 **日期**2019年8月
 
-跨数据库 Service Broker 对话框在更改服务层操作后无法传递消息。 在托管实例中更改 vcore 或实例存储大小将导致`service_broke_guid`为所有数据库更改[sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql)视图中的值。 使用`DIALOG`由 GUID 引用其他数据库中的 Service broker 的任何已创建的[BEGIN DIALOG](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql)语句均无法传递消息。
+更改服务层操作后, 跨数据库 Service Broker 对话框将停止向其他数据库中的服务传递消息。 消息不会**丢失**, 并且可以在发送方队列中找到它们。 在托管实例中更改 vcore 或实例存储大小将导致`service_broke_guid`为所有数据库更改[sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql)视图中的值。 引用`DIALOG`其他数据库中的 Service broker 的任何使用[BEGIN DIALOG](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql)语句创建的都将停止向目标服务传递消息消息。
 
-**解决方法：** 先停止使用跨数据库 Service Broker 对话会话的任何活动, 然后再更新服务层并在之后重新初始化它们。
+**解决方法：** 先停止使用跨数据库 Service Broker 对话会话的任何活动, 然后再更新服务层并在之后重新初始化它们。 如果存在服务层更改后未传递的剩余消息, 请从源队列中读取消息, 并将其重新发送到目标队列。
 
-### <a name="some-aad-login-types-cannot-be-impersonated"></a>无法模拟某些 AAD 登录类型
+### <a name="impresonification-of-aad-login-types-is-not-supported"></a>不支持 AAD 登录类型的 Impresonification
 
 **日期**2019年7月
 
@@ -547,11 +553,19 @@ WITH PRIVATE KEY (<private_key_options>)
 -   化名为 AAD 的用户。 在这种情况下`15517`, 将返回以下错误。
 - 基于 AAD 应用程序或服务主体的 AAD 登录名和用户。 在这种情况下`15517` , `15406`将返回以下错误。
 
+### <a name="database-email"></a>数据库电子邮件 
+
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querysp_send_db_mail 中不支持的参数
 
 **日期**2019 年 4 月
 
 [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) 过程中的 `@query` 参数不起作用。
+
+### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>在异地故障转移之后, 必须重新配置事务复制
+
+**日期**三月2019
+
+如果对自动故障转移组中的数据库启用了事务复制, 则托管实例管理员必须清除旧主副本上的所有发布, 并在故障转移到另一个区域后将它们重新配置到新的主副本。 有关更多详细信息, 请参阅[复制](#replication)。
 
 ### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>Tools 中不支持 AAD 登录名和用户
 
@@ -588,13 +602,7 @@ SQL Server Management Studio 和 SQL Server Data Tools 不 fuly 支持 Azure Acc
 
 ### <a name="error-logs-arent-persisted"></a>不保留错误日志
 
-托管实例中可用的错误日志不会持久保存, 它们的大小不会包括在最大存储限制内。 在发生故障转移时可能会自动清除错误日志。
-
-### <a name="error-logs-are-verbose"></a>错误日志是详细的
-
-托管实例在错误日志中记录详细信息，其中许多信息都不相关。 
-
-**解决方法：** 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息, 请参阅[托管实例– sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)。
+托管实例中可用的错误日志不会持久保存, 它们的大小不会包括在最大存储限制内。 在发生故障转移时可能会自动清除错误日志。 错误日志历史记录中可能存在间隔, 因为托管实例在多个虚拟机上移动了几次。
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>跨同一实例中的两个数据库的事务范围不受支持
 
