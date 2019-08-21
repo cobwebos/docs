@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/13/2019
+ms.date: 08/20/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 38ed3b2e4b103e63d88b9ba3d250aa8c0b6bb9bf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: bc1863795161342c05a5538e8f7e40e789ce695d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072030"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647119"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>如何将 QnA Maker REST API 与 Go 配合使用 
 <a name="HOLTop"></a>
@@ -38,7 +38,7 @@ ms.locfileid: "67072030"
 - [获取当前区分大小写的字词变更集。](#GetAlterations)
 - [替换当前区分大小写的字词变更集。](#PutAlterations)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 需要使用 [Go 1.10.1](https://golang.org/dl/) 来运行此代码。
 
