@@ -253,16 +253,16 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    
    - 打开“插入操作”边栏选项卡，输入名称，在“运行位置”选项中选择“主端”选项，选择自动化帐户（在其中添加了 runbook），并选择“Failover-StorSimple-Volume-Containers”runbook。
    
-   - 右键单击“组 1:启动”并单击“添加受保护的项”选项，然后选择要在恢复计划中进行保护的 VM 并单击“确定”按钮**。 （可选）如果已选择 VM。
+   - 右键单击“组 1:启动”并单击“添加受保护的项”选项，然后选择要在恢复计划中进行保护的 VM 并单击“确定”按钮。 （可选）如果已选择 VM。
    
-   - 右键单击“组 1:启动”并单击“之后的操作”选项，然后添加以下所有脚本**：  
+   - 右键单击“组 1:启动”并单击“之后的操作”选项，然后添加以下所有脚本：  
       
       - Start-StorSimple-Virtual-Appliance Runbook  
       - Fail over-StorSimple-volume-containers Runbook  
       - Mount-volumes-after-failover Runbook  
       - Uninstall-custom-script-extension Runbook  
         
-   - 在同一个“组 1:之后的步骤”部分中，在上面 4 个脚本后面添加一个手动操作**。 通过此操作可以确认所有配置是否正常运行。 只需为测试故障转移添加此操作（因此选中“测试故障转移”复选框即可）。
+   - 在同一个“组 1:之后的步骤”部分中，在上面 4 个脚本后面添加一个手动操作。 通过此操作可以确认所有配置是否正常运行。 只需为测试故障转移添加此操作（因此选中“测试故障转移”复选框即可）。
     
    - 执行手动操作后，使用针对其他 runbook 执行的相同过程添加 **Cleanup** 脚本。 **保存**恢复计划。
     
