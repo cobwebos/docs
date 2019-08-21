@@ -71,7 +71,7 @@ ms.locfileid: "68229097"
 
 ### <a name="view-an-assessment"></a>查看评估
 
-1. 在 "**迁移目标** >  **服务器**" 中, **单击 "Azure Migrate 中的**评估**:服务器评估**。
+1. 在 "**迁移目标** >  **服务器**"中, **单击 "Azure Migrate 中的 **评估** :服务器评估**。
 2. 在 "**评估**" 中, 单击 "评估" 以将其打开。
 
     ![评估摘要](./media/how-to-create-assessment/assessment-summary.png)

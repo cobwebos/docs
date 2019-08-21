@@ -218,7 +218,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 以下步骤将你的项目发布到新创建的 function app 创建使用高级选项。
 
-1. 在“Azure：函数”** 区域中，选择“部署到函数应用”图标。
+1. 在“Azure：函数”区域中，选择“部署到函数应用”图标。
 
     ![函数应用程序设置](./media/functions-develop-vs-code/function-app-publish-project.png)
 
