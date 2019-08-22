@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 0122b76592ce9e1179a3d65f7db681679bda6f37
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e5b99bba3c3b21ea9662845928c523c329695bf8
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988612"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877244"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安装 Azure IoT Edge 运行时
 
@@ -29,11 +29,6 @@ ms.locfileid: "68988612"
 > 当 IoT Edge 模块（进程隔离的 Windows Nano Server 容器）正在运行时，一个已知的 Windows 操作系统问题会阻止转换到睡眠和休眠电源状态。 此问题会影响设备的电池寿命。
 >
 > 作为解决方法，在使用这些电源状态之前，请使用 `Stop-Service iotedge` 命令停止任何正在运行的 IoT Edge 模块。 
-
-<!--
-> [!NOTE]
-> Using Linux containers on Windows systems is not a recommended or supported production configuration for Azure IoT Edge. However, it can be used for development and testing purposes.
--->
 
 不推荐或支持在 Windows 系统上使用 Linux 容器作为 Azure IoT Edge 的生产配置。 但可将其用于开发和测试。 有关详细信息，请参阅[使用 Windows 上的 IoT Edge 运行 Linux 容器](how-to-install-iot-edge-windows-with-linux.md)。
 
@@ -57,6 +52,9 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 >Azure IoT Edge 软件程序包受制于程序包中的许可条款（位于 LICENSE 目录中）。 使用程序包之前请阅读这些许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用程序包。
 
 某个 PowerShell 脚本将下载并安装 Azure IoT Edge 安全守护程序。 然后，安全守护程序将启动两个运行时模块中的第一个，即 IoT Edge 代理，以便能够远程部署其他模块。 
+
+>[!TIP]
+>对于 IoT Core 设备, 我们建议使用 RemotePowerShell 会话运行安装命令。 有关详细信息, 请参阅将[PowerShell 用于 Windows IoT](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)。
 
 首次在设备上安装 IoT Edge 运行时时，需要使用 IoT 中心内的标识预配该设备。 可以使用 IoT 中心提供的设备连接字符串手动预配单个 IoT Edge 设备。 或者, 你可以使用设备预配服务 (DPS) 自动设置设备, 当你有许多设备需要设置时, 这非常有用。 根据预配选项，选择合适的安装脚本。 
 
@@ -281,7 +279,7 @@ Deploy-IoTEdge 命令下载并部署 IoT Edge 安全守护程序及其依赖项�
 | 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows** 或 **Linux** | 如果未指定容器操作系统，则 Windows 是默认值。<br><br>对于 Windows 容器，IoT Edge 使用安装中包含的 moby 容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
-| **Proxy** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
+| **代理** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **OfflineInstallationPath** | 目录路径 | 如果包含此参数，则安装程序将在列出的目录中检查安装时所需的 IoT Edge cab 和 VC 运行时 MSI 文件。 系统会下载该目录中不存在的任何文件。 如果这两个文件在该目录中存在，则无需建立 Internet 连接即可安装 IoT Edge。 还可以通过此参数来使用特定的版本。 |
 | **InvokeWebRequestParameters** | 参数和值的哈希表 | 在安装期间，会发出多个 Web 请求。 请使用此字段来设置这些 Web 请求的参数。 此参数可用于配置代理服务器的凭据。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **RestartIfNeeded** | 无 | 此标志可让部署脚本在无提示的情况下根据需要重启计算机。 |
@@ -293,7 +291,7 @@ Initialize-IoTEdge 命令使用设备连接字符串和操作详细信息配置 
 | 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
 | **Manual** | None | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备连接字符串来手动预配设备 |
-| **Dps** | 无 | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备预配服务 (DPS) 范围 ID 和设备的注册 ID，以通过 DPS 进行预配。  |
+| **Dps** | None | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备预配服务 (DPS) 范围 ID 和设备的注册 ID，以通过 DPS 进行预配。  |
 | **DeviceConnectionString** | 已在 IoT 中心注册的 IoT Edge 设备中的连接字符串，括在单引号中 | 对于手动安装，此参数是**必需**的。 如果未在脚本参数中提供连接字符串，则安装期间系统会提示你提供连接字符串。 |
 | **ScopeId** | 与 IoT 中心关联的设备预配服务实例中的范围 ID。 | 对于 DPS 安装，此参数是**必需**的。 如果未在脚本参数中提供范围 ID，则安装期间系统会提示你提供范围 ID。 |
 | **RegistrationId** | 设备生成的注册 ID | 对于 DPS 安装，此参数是**必需**的。 |
@@ -309,7 +307,7 @@ Initialize-IoTEdge 命令使用设备连接字符串和操作详细信息配置 
 | 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows** 或 **Linux** | 如果未指定容器 OS，则 Windows 是默认值。 对于 Windows 容器，安装中会包含一个容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
-| **Proxy** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
+| **代理** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **InvokeWebRequestParameters** | 参数和值的哈希表 | 在安装期间，会发出多个 Web 请求。 请使用此字段来设置这些 Web 请求的参数。 此参数可用于配置代理服务器的凭据。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **OfflineInstallationPath** | 目录路径 | 如果包含此参数，则安装程序将在列出的目录中检查安装时所需的 IoT Edge cab 和 VC 运行时 MSI 文件。 系统会下载该目录中不存在的任何文件。 如果这两个文件在该目录中存在，则无需建立 Internet 连接即可安装 IoT Edge。 还可以通过此参数来使用特定的版本。 |
 | **RestartIfNeeded** | 无 | 此标志可让部署脚本在无提示的情况下根据需要重启计算机。 |

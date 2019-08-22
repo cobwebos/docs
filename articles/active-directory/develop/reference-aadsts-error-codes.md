@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e62a0c1363acfedc1f059ac0e56fce0df68298f8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 57ec69f4bc2e73bfb390a6b23b1da627d77f9b5e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532382"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874249"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>身份验证和授权错误代码
 
@@ -92,7 +92,7 @@ ms.locfileid: "69532382"
 | AADSTS50079 | UserStrongAuthEnrollmentRequired - 由于管理员做了配置更改，或者用户已移到新位置，该用户需要使用多重身份验证。 |
 | AADSTS50085 | 刷新令牌需要社交 IDP 登录。 请让用户尝试使用用户名和密码再次登录 |
 | AADSTS50086 | SasNonRetryableError |
-| AADSTS50087 | SasRetryableError - 服务暂时不可用。 请重试。 |
+| AADSTS50087 | SasRetryableError - 服务暂时不可用。 重试。 |
 | AADSTS50089 | 流令牌过期 - 身份验证失败。 请让用户尝试使用用户名和密码再次登录 |
 | AADSTS50097 | DeviceAuthenticationRequired - 必须使用设备身份验证。 |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized - JWT 签名无效。 |
@@ -153,7 +153,7 @@ ms.locfileid: "69532382"
 | AADSTS70007 | UnsupportedResponseMode - 请求令牌时，应用返回了不受支持的 `response_mode` 值。  |
 | AADSTS70008 | ExpiredOrRevokedGrant - 刷新令牌由于非活动状态而过期。 该令牌是在 XXX 颁发的，并在特定的时间内处于非活动状态。 |
 | AADSTS70011 | InvalidScope - 应用请求的范围无效。 |
-| AADSTS70012 | MsaServerError - 对 MSA（使用者）用户进行身份验证时发生服务器错误。 请重试。 如果仍然失败，请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError - 对 MSA（使用者）用户进行身份验证时发生服务器错误。 重试。 如果仍然失败，请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending - OAuth 2.0 设备流错误。 授权处于挂起状态。 设备将重试轮询请求。 |
 | AADSTS70018 | BadVerificationCode - 由于用户为设备代码流键入了错误的用户代码，验证码无效。 授权未获批准。 |
 | AADSTS70019 | CodeExpired - 验证码已过期。 让用户重试登录。 |
@@ -194,7 +194,7 @@ ms.locfileid: "69532382"
 | AADSTS90019 | MissingTenantRealm - Azure AD 无法确定请求中的租户标识符。 |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat - 主体名称格式无效，或者不符合预期的 `name[/host][@realm]` 格式。 主体名称是必需的，而主机和领域是可选的，可设置为 null。 |
 | AADSTS90023 | InvalidRequest - 身份验证服务请求无效。 |
-| AADSTS90024 | RequestBudgetExceededError - 发生了暂时性错误。 请重试。 |
+| AADSTS90024 | RequestBudgetExceededError - 发生了暂时性错误。 重试。 |
 | AADSTS90033 | MsodsServiceUnavailable - Microsoft Online Directory Service (MSODS) 不可用。 |
 | AADSTS90036 | MsodsServiceUnretryableFailure - MSODS 托管的 WCF 服务发生意外的不可重试错误。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。 |
 | AADSTS90038 | NationalCloudTenantRedirection - 指定的租户“Y”属于国家/地区云“X”。 当前云实例“Z”未与 X 联合。返回了云重定向错误。 |
@@ -265,6 +265,7 @@ ms.locfileid: "69532382"
 | AADSTS700023 | InvalidResourcelessScope - 请求访问令牌时，为输入参数范围提供的值无效。 |
 | AADSTS1000000 | UserNotBoundError - 绑定 API 要求 Azure AD 用户同时使用外部 IDP 进行身份验证，但尚未执行此操作。 |
 | AADSTS1000002 | BindCompleteInterruptError - 绑定已成功完成，但必须通知用户。 |
+| AADSTS7000112 | UnauthorizedClientApplicationDisabled-应用程序被禁用。 |
 
 ## <a name="next-steps"></a>后续步骤
 

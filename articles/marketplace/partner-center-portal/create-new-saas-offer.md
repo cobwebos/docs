@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 3d3fc1541fb99d8d1219392158c3b87cd6ff99aa
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 37624c79a345f956de9a289c672340e391199e2f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033529"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650688"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -302,12 +302,7 @@ Azure Marketplace 发布者可以选择在标准合同下提供其软件, 而客
 
     上述内容如下所示:
 
-    <h1>标题1</h1> 
-    <h2>这是标题2</h2> 
-    <h3>这是标题3</h3> 
-    <h4>这是标题4</h4> 
-    <h5>这是标题5</h5> 
-    <h6>这是标题6</h6> 
+    ![示例标题](./media/heading.png)
 
 #### <a name="links"></a>链接
 

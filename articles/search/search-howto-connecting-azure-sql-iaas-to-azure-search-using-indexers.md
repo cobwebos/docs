@@ -2,19 +2,19 @@
 title: 用于搜索索引的 Azure SQL 虚拟机 VM 连接 - Azure 搜索
 description: 启用加密连接并配置防火墙，支持从 Azure 搜索上的索引器连接到 Azure 虚拟机 (VM) 上的 SQL Server。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 90e5a133bac519cbc5ab2d7b112d51a019e8f698
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7629750da8f58c2c62f15102b60b5b562689f087
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60871274"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656705"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>配置从 Azure 搜索索引器到 Azure VM 上 SQL Server 的连接
 如[使用索引器将 Azure SQL 数据库连接到 Azure 搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述，针对 **Azure VM 上的 SQL Server**（或简称 **SQL Azure VM**）创建索引器受 Azure 搜索支持，但首先需要满足一些与安全性相关的先决条件。 
@@ -27,9 +27,9 @@ ms.locfileid: "60871274"
 ## <a name="enable-encrypted-connections"></a>启用加密连接
 对于所有通过公共 Internet 连接的索引器请求，Azure 搜索都需要使用加密通道。 本部分列出了实现此目的的步骤。
 
-1. 查看证书的属性，验证使用者名称是否是 Azure VM 的完全限定的域名 (FQDN)。 可以使用 CertUtils 等工具或证书管理单元查看属性。 可从 [Azure 门户](https://portal.azure.com/)中 VM 服务边栏选项卡的“基本要素”部分中获取 FQDN（位于“公共 IP 地址/DNS 名称标签”  字段中）。
+1. 查看证书的属性，验证使用者名称是否是 Azure VM 的完全限定的域名 (FQDN)。 可以使用 CertUtils 等工具或证书管理单元查看属性。 可从 [Azure 门户](https://portal.azure.com/)中 VM 服务边栏选项卡的“基本要素”部分中获取 FQDN（位于“公共 IP 地址/DNS 名称标签”字段中）。
    
-   * 对于使用较新的资源管理器  模板创建的 VM，FQDN 的格式设置为 `<your-VM-name>.<region>.cloudapp.azure.com`
+   * 对于使用较新的资源管理器模板创建的 VM，FQDN 的格式设置为 `<your-VM-name>.<region>.cloudapp.azure.com`
    * 对于创建为**经典** VM 的较旧 VM，FQDN 的格式设置为 `<your-cloud-service-name.cloudapp.net>`。
 
 2. 使用注册表编辑器 (regedit) 将 SQL Server 配置为使用证书。 

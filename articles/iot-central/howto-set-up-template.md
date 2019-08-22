@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ede7167d570c7bd2ba7e04c3a9a703555efb35cd
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 63c0a04a6d18d6af850b1492d2efa9df9aa65219
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698523"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877378"
 ---
 # <a name="set-up-a-device-template"></a>设置设备模板
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 设备模板是一个蓝图，用于定义可连接到 Azure IoT Central 应用程序的某种设备的特征和行为。
 

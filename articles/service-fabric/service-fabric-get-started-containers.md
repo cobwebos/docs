@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 9ef1dad0e90ec3e48a4bf22325cba0beb197d290
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 771a4ffde9f3929a55ee8ce48c2b38e16b83ad49
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599527"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650676"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
 
@@ -265,136 +265,9 @@ Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程�
 > [!NOTE]
 > 可以通过使用适用的属性值声明其他 PortBinding 元素来添加服务的其他端口绑定。
 
-## <a name="configure-container-registry-authentication"></a>配置容器注册表身份验证
+## <a name="configure-container-repository-authentication"></a>配置容器存储库身份验证
 
-将 `RepositoryCredentials` 添加到 ApplicationManifest.xml 文件的 `ContainerHostPolicies`，配置容器注册表身份验证。 为 myregistry.azurecr.io 容器注册表添加帐户和密码，以便服务从存储库下载容器映像。
-
-```xml
-<ServiceManifestImport>
-    ...
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-            <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-            <PortBinding ContainerPort="80" EndpointRef="Guest1TypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-    ...
-</ServiceManifestImport>
-```
-
-建议使用部署到群集所有节点的加密证书，对存储库密码加密。 当 Service Fabric 将服务包部署到群集时，即可使用加密证书解密密码文本。 Invoke-ServiceFabricEncryptText cmdlet 用于为密码创建密码文本，后者将添加到 ApplicationManifest.xml 文件中。
-
-以下脚本创建一个新的自签名证书，并将其导出到 PFX 文件中。 证书先导入到现有的密钥保管库中，然后部署到 Service Fabric 群集。
-
-```powershell
-# Variables.
-$certpwd = ConvertTo-SecureString -String "Pa$$word321!" -Force -AsPlainText
-$filepath = "C:\MyCertificates\dataenciphermentcert.pfx"
-$subjectname = "dataencipherment"
-$vaultname = "mykeyvault"
-$certificateName = "dataenciphermentcert"
-$groupname="myclustergroup"
-$clustername = "mycluster"
-
-$subscriptionId = "subscription ID"
-
-Login-AzAccount
-
-Select-AzSubscription -SubscriptionId $subscriptionId
-
-# Create a self signed cert, export to PFX file.
-New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject $subjectname -Provider 'Microsoft Enhanced Cryptographic Provider v1.0' `
-| Export-PfxCertificate -FilePath $filepath -Password $certpwd
-
-# Import the certificate to an existing key vault. The key vault must be enabled for deployment.
-$cer = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certificateName -FilePath $filepath -Password $certpwd
-
-Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $groupname -EnabledForDeployment
-Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $cer.SecretId
-```
-使用 [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) cmdlet 来加密密码。
-
-```powershell
-$text = "=P==/==/=8=/=+u4lyOB=+=nWzEeRfF="
-Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint $cer.Thumbprint -Text $text -StoreLocation Local -StoreName My
-```
-
-将密码替换为由 [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) cmdlet 返回的密码文本，并将 `PasswordEncrypted` 设置为“true”。
-
-```xml
-<ServiceManifestImport>
-    ...
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-            <RepositoryCredentials AccountName="myregistry" Password="MIIB6QYJKoZIhvcNAQcDoIIB2jCCAdYCAQAxggFRMIIBTQIBADA1MCExHzAdBgNVBAMMFnJ5YW53aWRhdGFlbmNpcGhlcm1lbnQCEFfyjOX/17S6RIoSjA6UZ1QwDQYJKoZIhvcNAQEHMAAEg
-gEAS7oqxvoz8i6+8zULhDzFpBpOTLU+c2mhBdqXpkLwVfcmWUNA82rEWG57Vl1jZXe7J9BkW9ly4xhU8BbARkZHLEuKqg0saTrTHsMBQ6KMQDotSdU8m8Y2BR5Y100wRjvVx3y5+iNYuy/JmM
-gSrNyyMQ/45HfMuVb5B4rwnuP8PAkXNT9VLbPeqAfxsMkYg+vGCDEtd8m+bX/7Xgp/kfwxymOuUCrq/YmSwe9QTG3pBri7Hq1K3zEpX4FH/7W2Zb4o3fBAQ+FuxH4nFjFNoYG29inL0bKEcTX
-yNZNKrvhdM3n1Uk/8W2Hr62FQ33HgeFR1yxQjLsUu800PrYcR5tLfyTB8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBybgM5NUV8BeetUbMR8mJhgFBrVSUsnp9B8RyebmtgU36dZiSObDsI
-NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==" PasswordEncrypted="true"/>
-            <PortBinding ContainerPort="80" EndpointRef="Guest1TypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-    ...
-</ServiceManifestImport>
-```
-
-### <a name="configure-cluster-wide-credentials"></a>配置群集级凭据
-
-从 6.3 版运行时起，Service Fabric 允许你配置群集级凭据，可以将这些凭据用作应用程序的默认存储库凭据。
-
-可以通过在 ApplicationManifest.xml 中向 `ContainerHostPolicies` 添加值为 `true` 或 `false` 的 `UseDefaultRepositoryCredentials` 属性来启用或禁用此功能。
-
-```xml
-<ServiceManifestImport>
-    ...
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code" UseDefaultRepositoryCredentials="true">
-            <PortBinding ContainerPort="80" EndpointRef="Guest1TypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-    ...
-</ServiceManifestImport>
-```
-
-然后，Service Fabric 使用你可以在 ClusterManifest 中的 `Hosting` 部分下指定的默认存储库凭据。  如果 `UseDefaultRepositoryCredentials` 为 `true`，则 Service Fabric 将从 ClusterManifest 中读取以下值：
-
-* DefaultContainerRepositoryAccountName (string)
-* DefaultContainerRepositoryPassword (string)
-* IsDefaultContainerRepositoryPasswordEncrypted (bool)
-* DefaultContainerRepositoryPasswordType (string) --- 从 6.4 版运行时起受支持
-
-下面是可以在 ClusterManifestTemplate.json 文件中的 `Hosting` 部分内添加的内容的示例。 可以在群集创建时或配置升级后期添加 `Hosting` 节。 有关详细信息，请参阅[更改 Azure Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)和[管理 Azure Service Fabric 应用程序机密](service-fabric-application-secret-management.md)
-
-```json
-"fabricSettings": [
-    ...,
-    {
-        "name": "Hosting",
-        "parameters": [
-          {
-            "name": "EndpointProviderEnabled",
-            "value": "true"
-          },
-          {
-            "name": "DefaultContainerRepositoryAccountName",
-            "value": "someusername"
-          },
-          {
-            "name": "DefaultContainerRepositoryPassword",
-            "value": "somepassword"
-          },
-          {
-            "name": "IsDefaultContainerRepositoryPasswordEncrypted",
-            "value": "false"
-          },
-          {
-            "name": "DefaultContainerRepositoryPasswordType",
-            "value": "PlainText"
-          }
-        ]
-      },
-]
-```
+若要了解如何为容器映像下载配置不同类型的身份验证, 请参阅[容器存储库身份验证](configure-container-repository-credentials.md)。
 
 ## <a name="configure-isolation-mode"></a>配置隔离模式
 Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔离模式时，在同一台主机计算机上运行的所有容器将与主机共享内核。 使用 Hyper-V 隔离模式时，内核将在每个 Hyper-V 容器与容器主机之间隔离。 隔离模式在应用程序清单文件中的 `ContainerHostPolicies` 元素内指定。 可以指定的隔离模式为 `process`、`hyperv` 和 `default`。 Windows Server 主机上默认采用进程隔离模式。 Windows 10 主机仅支持 Hyper-V 隔离模式，因此无论容器的离模式设置如何，它都在 Hyper-V 隔离模式下运行。 以下代码片段演示如何在应用程序清单文件中指定隔离模式。

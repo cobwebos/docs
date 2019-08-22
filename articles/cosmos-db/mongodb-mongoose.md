@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 23275bc639b445b55cafb72c929514541ba00660
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3955b84df401e5832668fa091274caea9af2466e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61333217"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876612"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
 
@@ -22,7 +22,7 @@ ms.locfileid: "61333217"
 
 Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的全球分布和水平缩放功能。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -65,11 +65,11 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
     var env = require('dotenv').load();    //Use the .env file to load the variables
     ```
 
-1. 将 Cosmos DB 连接字符串和 Cosmos DB 名称添加到 ```.env``` 文件。
+1. 将 Cosmos DB 连接字符串和 Cosmos DB 名称添加到 ```.env``` 文件。 将占位符 {cosmos} 和 {dbname} 替换为你自己的 Cosmos 帐户名称和数据库名称, 而不包含大括号符号。
 
     ```JavaScript
-    COSMOSDB_CONNSTR=mongodb://{cosmos-user}.documents.azure.com:10255/{dbname}
-    COSMODDB_USER=cosmos-user
+    COSMOSDB_CONNSTR=mongodb://{cosmos-account-name}.documents.azure.com:10255/{dbname}
+    COSMODDB_USER=cosmos-account-name
     COSMOSDB_PASSWORD=cosmos-secret
     ```
 

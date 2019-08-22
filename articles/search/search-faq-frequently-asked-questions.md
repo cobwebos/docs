@@ -2,19 +2,19 @@
 title: 常见问题解答 (FAQ) - Azure 搜索
 description: 获取有关 Microsoft Azure 搜索服务（Microsoft Azure 上的云托管搜索服务）的常见问题的解答。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c77f26187914b2c6e52426bb2a07303b22ccb2b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4aae2f2ef9ccbc645647125682d999c11c99ab6
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024000"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649837"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure 搜索 - 常见问题解答 (FAQ)
 
@@ -44,7 +44,7 @@ Azure 搜索支持多个数据源、[针对多种语言的语言分析](https://
 
 ### <a name="backup-and-restore-or-download-and-move-indexes-or-index-snapshots"></a>备份和还原 （或下载和移动）索引或索引快照？
 
-尽管可随时[获取索引定义](https://docs.microsoft.com/rest/api/searchservice/get-index)，但并无索引提取、快照或备份-还原功能用于将云中运行的“已填充”索引下载到本地系统，或将它移动到另一个 Azure 搜索服务  。
+尽管可随时[获取索引定义](https://docs.microsoft.com/rest/api/searchservice/get-index)，但并无索引提取、快照或备份-还原功能用于将云中运行的“已填充”索引下载到本地系统，或将它移动到另一个 Azure 搜索服务。
 
 索引由写入的代码创建和填充，仅在云中的 Azure 搜索上运行。 通常，如果客户希望将一个索引移动到另一个服务，会通过编辑代码以使用新的终结点，然后重新运行索引。 如果希望能够拍摄快照或备份索引，请在 [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index) 上投票。
 
@@ -94,7 +94,7 @@ Azure 搜索支持多个数据源、[针对多种语言的语言分析](https://
 
 问题是否与缺少功能相关？ 请在 [User Voice 网站](https://feedback.azure.com/forums/263029-azure-search)上请求该功能。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
  [StackOverflow：Azure 搜索](https://stackoverflow.com/questions/tagged/azure-search)   
  [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md)  

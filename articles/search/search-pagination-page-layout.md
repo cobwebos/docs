@@ -2,7 +2,7 @@
 title: 如何使用搜索结果 - Azure 搜索
 description: 对搜索结果进行组织和排序、获取记录计数并将内容导航添加到 Azure 搜索中的搜索结果。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: ''
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bb86a75be464cb78a16170626bc96778d43bb8b6
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 9fa2baf64dbb35d85c55635d7522075d61bfc17d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67974627"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647712"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>如何在 Azure 搜索中使用搜索结果
 本文提供有关如何实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。 通过发送给 Azure 搜索服务的[搜索记录](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)请求来指定与页面相关的选项，以使用这些选项将数据或信息提供到搜索结果。 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 2ed93846e0a1ab98b25bdfbe33b34779996da82b
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 6882476cabc3dc3a737f31eeeb4ccd92e5ea6ee0
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782646"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872746"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -139,6 +139,7 @@ Site Recovery 按如下所述创建快照：
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
 若要使用 IP 地址控制 VM 的出站连接，请允许这些地址。
+请注意, 可以在 "[网络" 白皮书](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)中找到网络连接要求的详细信息 
 
 #### <a name="source-region-rules"></a>源区域规则
 

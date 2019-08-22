@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 24e340d25cb57f9a35f06f6dbd5a394d60a14fad
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/20/2019
+ms.openlocfilehash: 7ff7712130372dcfd277750e881cccce23b36465
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566436"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648347"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
@@ -118,6 +118,12 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 ### <a name="general-requirements"></a>一般要求
 
 - 每个表都必须有主键。 请勿更改任何一行中的主键值。 如果必须更改主键值，请先删除行，再使用新的主键值重新创建此行。 
+
+> [!IMPORTANT]
+> 更改现有主键的值将导致以下错误行为:   
+>   - 即使同步未报告任何问题, 集线器和成员之间的数据也会丢失。
+> - 同步可能会失败, 因为跟踪表包含源中不存在的行, 因为主键发生更改。
+
 - 必须启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
 
 ### <a name="general-limitations"></a>一般限制

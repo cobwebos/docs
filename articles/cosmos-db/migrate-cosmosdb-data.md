@@ -7,18 +7,23 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.author: bharathb
-ms.openlocfilehash: a4de902e51b101d14aac599c9aad8c4feb86a9c6
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6092b3aac2b0282a795d89730266e72179b34e8a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624612"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648901"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>将数百 TB 的数据迁移到 Azure Cosmos DB 
 
 Azure Cosmos DB 可以存储数 tb 的数据。 可以执行大规模数据迁移, 将生产工作负荷移动到 Azure Cosmos DB。 本文介绍将大规模数据迁移到 Azure Cosmos DB 涉及到的难题, 并向您介绍用于帮助解决问题并将数据迁移到 Azure Cosmos DB 的工具。 在此示例中, 客户使用 Cosmos DB SQL API。  
 
 在将整个工作负荷迁移到 Azure Cosmos DB 之前, 您可以迁移数据的一个子集以验证某些方面, 如分区键选择、查询性能和数据建模。 验证概念证明后, 可以将整个工作负荷移动到 Azure Cosmos DB。  
+
+你还可以使用[Cosmos DB 的启动程序](https://azurecosmosdb.github.io/CosmosBootstrap/), 加速在 Azure Cosmos DB 上构建或迁移应用程序。 作为此计划的一部分, Azure Cosmos DB 团队中的工程师将分配给你的项目, 并将帮助你将数据迁移到 Azure Cosmos DB。 单击下面的按钮以注册 Cosmos DB 启动程序:
+
+> [!div class="nextstepaction"]
+> [Cosmos DB 启动程序](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ## <a name="tools-for-data-migration"></a>用于数据迁移的工具 
 
@@ -152,4 +157,7 @@ Azure Cosmos DB 迁移策略当前因 API 选项和数据大小而异。 迁移�
 * 通过尝试使用[.net](bulk-executor-dot-net.md)和[Java](bulk-executor-java.md)中的批量执行程序库的示例应用程序, 了解详细信息。 
 * 大容量执行程序库已集成到 Cosmos DB Spark 连接器, 若要了解详细信息, 请参阅[Azure Cosmos DB Spark 连接器](spark-connector.md)一文。  
 * 若要获得大规模迁移的更多帮助, 请在 "常规建议" 问题类型和 "大型 (TB +) 迁移" 问题子类型下打开支持票证, 联系 Azure Cosmos DB 产品团队。 
+* 使用[Cosmos DB 启动程序](https://azurecosmosdb.github.io/CosmosBootstrap/), 加速在 Azure Cosmos DB 上构建或迁移应用程序。
 
+> [!div class="nextstepaction"]
+> [Cosmos DB 启动程序](https://azurecosmosdb.github.io/CosmosBootstrap/)

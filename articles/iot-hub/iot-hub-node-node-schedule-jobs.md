@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 10/06/2017
-ms.openlocfilehash: 243f4e63cc04bca018c2bf69492dccf163e92b73
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/16/2019
+ms.openlocfilehash: 0a89cd2c576a3539d7b1b6a282a2287551e8265a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780831"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877121"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>计划和广播作业 (node.js)
 
@@ -48,9 +48,11 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 * scheduleJobService.js，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性。
 
-要完成本教程，需要以下各项：
+## <a name="prerequisites"></a>先决条件
 
-* Node.js 版本 10.0. x 或更高版本[准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍如何在 Windows 或 Linux 上安装本教程的 node.js。
+要完成本教程，需要：
+
+* Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
@@ -68,39 +70,39 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 1. 新建名为 **simDevice** 的空文件夹。  在 **simDevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
-   ```
+   ```console
    npm init
    ```
 
 2. 在 **simDevice** 文件夹的命令提示符处，运行下述命令以安装 **azure-iot-device** 设备 SDK 包和 **azure-iot-device-mqtt** 包：
-   
-   ```
+
+   ```console
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
 3. 在 **simDevice.js** 文件夹中，利用文本编辑器创建新的 **simDevice** 文件。
 
 4. 在 **simDevice.js** 文件的开头添加以下“require”语句：
-   
-    ```
+
+    ```javascript
     'use strict';
-   
+
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。  
-   
-    ```
-    var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
+5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。 `{yourDeviceConnectionString}`将占位符值替换为先前复制的设备连接字符串。
+
+    ```javascript
+    var connectionString = '{yourDeviceConnectionString}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
 6. 添加以下函数以处理 **lockDoor** 方法。
-   
-    ```
+
+    ```javascript
     var onLockDoor = function(request, response) {
-   
+
         // Respond the cloud app for the direct method
         response.send(200, function(err) {
             if (err) {
@@ -109,14 +111,14 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.');
             }
         });
-   
+
         console.log('Locking Door!');
     };
     ```
 
 7. 添加以下代码以注册 **lockDoor** 方法的处理程序。
 
-   ```
+   ```javascript
    client.open(function(err) {
         if (err) {
             console.error('Could not connect to IotHub client.');
@@ -145,30 +147,30 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 1. 新建名为 **scheduleJobService** 的空文件夹。  在 **scheduleJobService** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
-    ```
+    ```console
     npm init
     ```
 
 2. 在 **scheduleJobService** 文件夹的命令提示符处，运行下述命令以安装 **azure-iothub** 设备 SDK 包和 **azure-iot-device-mqtt** 包：
-   
-    ```
+
+    ```console
     npm install azure-iothub uuid --save
     ```
 
 3. 在 **scheduleJobService** 文件夹中，利用文本编辑器创建新的 **scheduleJobService.js** 文件。
 
-4. 在 **dmpatterns_gscheduleJobServiceetstarted_service.js** 文件开头添加以下“require”语句：
-   
-    ```
+4. 在**scheduleJobService**文件的开头添加以下 "需要" 语句:
+
+    ```javascript
     'use strict';
-   
+
     var uuid = require('uuid');
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. 添加以下变量声明并替换占位符值：
-   
-    ```
+5. 添加以下变量声明。 将`{iothubconnectionstring}`占位符值替换为在["获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)" 中复制的值。 如果注册的设备不同于**myDeviceId**, 请确保在查询条件中进行更改。
+
+    ```javascript
     var connectionString = '{iothubconnectionstring}';
     var queryCondition = "deviceId IN ['myDeviceId']";
     var startTime = new Date();
@@ -177,8 +179,8 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
     ```
 
 6. 添加以下用于监视作业执行的函数：
-   
-    ```
+
+    ```javascript
     function monitorJob (jobId, callback) {
         var jobMonitorInterval = setInterval(function() {
             jobClient.getJob(jobId, function(err, result) {
@@ -197,14 +199,14 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
     ```
 
 7. 添加以下代码以安排调用设备方法的作业：
-   
-    ```
+  
+    ```javascript
     var methodParams = {
         methodName: 'lockDoor',
         payload: null,
         responseTimeoutInSeconds: 15 // Timeout after 15 seconds if device is unable to process method
     };
-   
+
     var methodJobId = uuid.v4();
     console.log('scheduling Device Method job with id: ' + methodJobId);
     jobClient.scheduleDeviceMethod(methodJobId,
@@ -228,8 +230,8 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
     ```
 
 8. 添加以下代码，安排设备孪生的更新作业：
-   
-    ```
+
+    ```javascript
     var twinPatch = {
        etag: '*',
        properties: {
@@ -239,9 +241,9 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
            }
        }
     };
-   
+
     var twinJobId = uuid.v4();
-   
+
     console.log('scheduling Twin Update job with id: ' + twinJobId);
     jobClient.scheduleTwinUpdate(twinJobId,
                                 queryCondition,
@@ -270,18 +272,26 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 现在，已准备就绪，可以运行应用程序了。
 
 1. 在 simDevice 文件夹的命令提示符处，运行以下命令以开始侦听重启直接方法。
-   
-    ```
+
+    ```console
     node simDevice.js
     ```
 
 2. 在 **scheduleJobService** 文件夹的命令提示符处运行以下命令，以便触发作业进行锁门和孪生项的更新
-   
-    ```
+
+    ```console
     node scheduleJobService.js
     ```
 
-3. 可以在控制台中看到设备对直接方法的响应。
+3. 可以在控制台中看到直接方法和作业状态的设备响应。
+
+   下面显示了对直接方法的设备响应:
+
+   ![模拟设备应用输出](./media/iot-hub-node-node-schedule-jobs/sim-device.png)
+
+   下面显示了直接方法和设备克隆更新的服务计划作业, 以及运行到完成的作业:
+
+   ![运行模拟设备应用](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
 
 ## <a name="next-steps"></a>后续步骤
 

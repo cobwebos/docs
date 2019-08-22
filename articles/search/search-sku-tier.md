@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: a874c8a1fe2e8a81e2f42b2c88447fd52b47f3ad
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1c86649a989b16d928a46d322af3d805b6fbf832
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611964"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647345"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
@@ -53,10 +53,10 @@ ms.locfileid: "69611964"
 
 基于 Azure 搜索构建的解决方案可能会按以下方式产生成本:
 
-+ 最小配置的服务基本成本
++ 最低配置服务的基本成本 (创建服务)
 + 增加时增加成本 (添加副本或分区)
-+ 出站数据传输的带宽费用
-+ 利用认知服务资源的认知搜索
++ 带宽费用 (出站数据传输) 
++ 认知搜索 (为 AI 扩充附加认知服务、用于知识库的 Azure 存储)
 
 ### <a name="service-costs"></a>服务成本
 

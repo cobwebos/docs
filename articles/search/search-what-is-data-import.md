@@ -2,25 +2,25 @@
 title: 数据导入以便将数据引入到搜索索引中 - Azure 搜索
 description: 从外部数据源填充数据并将数据上传到 Azure 搜索中的索引。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b56a31a58937ddbea08ff22c3d1c0c71942f47f1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 71ee63dfbe880cbf6018f3dd13d360850ed994f9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445399"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647338"
 ---
 # <a name="data-import-overview---azure-search"></a>数据导入概述 - Azure 搜索
 
-在 Azure 搜索中，将会针对已加载和已保存到[搜索索引](search-what-is-an-index.md)中的内容执行查询。 本文介绍填充索引的两种基本方法：一种是推送，即以编程方式将数据推送至索引；  另一种是拉取，即将 [Azure 搜索索引器](search-indexer-overview.md)指向支持的数据源，以便拉取数据。 
+在 Azure 搜索中，将会针对已加载和已保存到[搜索索引](search-what-is-an-index.md)中的内容执行查询。 本文介绍填充索引的两种基本方法：一种是推送，即以编程方式将数据推送至索引；另一种是拉取，即将 [Azure 搜索索引器](search-indexer-overview.md)指向支持的数据源，以便拉取数据。
 
-不管使用哪种方法，目的都是将数据从外部数据源加载到 Azure 搜索索引中。  Azure 搜索会允许你创建空索引，但在你将数据推送到其中或从其拉取数据之前，该索引是不可查询的。
+不管使用哪种方法，目的都是将数据从外部数据源加载到 Azure 搜索索引中。 Azure 搜索会允许你创建空索引，但在你将数据推送到其中或从其拉取数据之前，该索引是不可查询的。
 
 ## <a name="pushing-data-to-an-index"></a>将数据推送至索引
 推送模式用于以编程方式将数据发送到 Azure 搜索，是最灵活的方法。 首先，它对数据源类型没有限制。 任何由 JSON 文档组成的数据集都可以推送至 Azure 搜索索引，前提是数据集中的每个文档的字段都映射到索引架构中定义的字段。 其次，它对执行频率没有限制。 可以根据需要选择相应的频率，将更改推送到索引。 对于具有极低延迟要求的应用程序（例如，如果需要搜索操作与动态库存数据库同步），只能选择推送模型。
@@ -36,7 +36,7 @@ ms.locfileid: "67445399"
 
 目前尚没有支持通过门户推送数据的工具。
 
-有关每种方法的简介，请参阅[快速入门：创建使用 PowerShell 的 Azure 搜索索引](search-create-index-rest-api.md)或[C#快速入门：创建使用.NET SDK 的 Azure 搜索索引](search-get-started-dotnet.md)。
+有关每种方法的简介，请参阅[快速入门：使用 PowerShell](search-create-index-rest-api.md)或[ C#快速入门创建 Azure 搜索索引:使用 .NET SDK](search-get-started-dotnet.md)创建 Azure 搜索索引。
 
 <a name="indexing-actions"></a>
 
@@ -44,9 +44,9 @@ ms.locfileid: "67445399"
 
 可以按文档控制索引操作的类型，指定是应该完整地上传文档、与现有文档内容合并还是将其删除。
 
-在 REST API 中，向 Azure 搜索索引的终结点 URL 发出具有 JSON 请求正文的 HTTP POST 请求。 "Value"数组中的每个 JSON 对象包含文档密钥，并指定的索引操作将添加、 更新或删除文档内容。 有关代码示例，请参阅[加载文档](search-get-started-dotnet.md#load-documents)。
+在 REST API 中，向 Azure 搜索索引的终结点 URL 发出具有 JSON 请求正文的 HTTP POST 请求。 "Value" 数组中的每个 JSON 对象都包含文档的键, 并指定索引操作是否添加、更新或删除文档内容。 有关代码示例，请参阅[加载文档](search-get-started-dotnet.md#load-documents)。
 
-在 .NET SDK 中，请将数据打包到 `IndexBatch` 对象中。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象均包含一个文档和一个属性，用于指示 Azure 搜索对该文档执行什么操作。 有关代码示例，请参阅[C#快速入门](search-get-started-dotnet.md)。
+在 .NET SDK 中，请将数据打包到 `IndexBatch` 对象中。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象均包含一个文档和一个属性，用于指示 Azure 搜索对该文档执行什么操作。 有关代码示例, 请参阅[ C#快速入门](search-get-started-dotnet.md)。
 
 
 | @search.action | 描述 | 每个文档必需的字段 | 说明 |
@@ -71,7 +71,7 @@ POST 的 URL 格式相同，只是查询字符串参数仅包含 API 版本。
 
 
 ## <a name="pulling-data-into-an-index"></a>将数据拉取到索引中
-提取模型对支持的数据源进行爬网，将数据自动上传到索引中。 在 Azure 搜索中，此功能是通过索引器  实现的，目前适用于以下平台：
+提取模型对支持的数据源进行爬网，将数据自动上传到索引中。 在 Azure 搜索中，此功能是通过索引器实现的，目前适用于以下平台：
 
 + [Blob 存储](search-howto-indexing-azure-blob-storage.md)
 + [表存储](search-howto-indexing-azure-tables.md)
@@ -94,7 +94,7 @@ POST 的 URL 格式相同，只是查询字符串参数仅包含 API 版本。
 > [!TIP]
 > 有大量的 [Azure 搜索代码示例](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)包含了嵌入的或随时可用的数据集，帮助用户轻松入门。 门户中还提供了一个示例索引器，以及一个由小型房地产数据集组成的数据源（名为“realestate-us-sample”）。 针对示例数据源运行预配置的索引器时，会创建索引并连同文档一起加载该索引，然后，可以使用搜索浏览器或编写的代码查询该索引。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [索引器概述](search-indexer-overview.md)
 + [门户演练：创建、加载和查询索引](search-get-started-portal.md)

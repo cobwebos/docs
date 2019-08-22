@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb4378047f34f3f635b2f1dd2425bbee28f91178
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815724"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873075"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务优化模型的超参数
 
@@ -325,11 +325,9 @@ RunDetails(hyperdrive_run).show()
 
 此外，可以使用“并行坐标绘图”来直观地识别各个超参数的性能与值之间的关联。 
 
-![超参数优化并行坐标](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)
+[![超参数优化并行坐标](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
 还可将 Azure Web 门户中的所有超参数优化运行可视化。 若要详细了解如何在 Web 门户中查看试验，请参阅[如何跟踪试验](how-to-track-experiments.md#view-the-experiment-in-the-web-portal)。
-
-![超参数优化门户](media/how-to-tune-hyperparameters/HyperparameterTuningPortal.png)
 
 ## <a name="find-the-best-model"></a>找到最佳模型
 

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 36efdb7db57d3acfa7384d904e9be8faad4c6534
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 35abb84f92ed9a7295c45afc69b673a3be46be15
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622080"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874133"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -32,7 +32,7 @@ Azure AD B2C 扩展了标准 OpenID Connect 协议，使其功能远远超出了
 
 当 Web 应用程序需要对用户进行身份验证并运行用户流时，它可以将用户定向到 `/authorize` 终结点。 用户可以根据用户流执行操作。
 
-在此请求中, 客户端指示它需要在`scope`参数中从用户获取的权限, 并指定要运行的用户流。 以下部分中提供了三个示例（带换行符以便阅读），每个示例使用不同的用户流。 要了解每个请求的工作原理，请尝试将请求粘贴到浏览器并运行它。 如果你有一个租户并已创建了用户流，则可将 `fabrikamb2c` 替换为该租户的名称。 还需要替换`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`。 将此客户端 ID 替换为你创建的应用程序注册的应用程序 ID。 还将策略名称 (`{policy}`) 更改为你在租户中拥有的策略名称, 例如。 `b2c_1_sign_in`
+在此请求中, 客户端指示它需要在`scope`参数中从用户获取的权限, 并指定要运行的用户流。 若要查看请求的工作方式, 请尝试将请求粘贴到浏览器并运行该请求。 将 `{tenant}` 替换为租户的名称。 将`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`替换为之前在租户中注册的应用程序的应用程序 ID。 还将策略名称 (`{policy}`) 更改为你在租户中拥有的策略名称, 例如。 `b2c_1_sign_in`
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -48,7 +48,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | 参数 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
-| 政策 | 是 | 运行的用户流。 它是在 Azure AD B2C 租户中创建的用户流的名称。 用户流的名称应以 `b2c_1_` 开头。 例如: `b2c_1_sign_in`、 `b2c_1_sign_up`或。 `b2c_1_edit_profile` |
+| 政策 | 是 | 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如: `b2c_1_sign_in`、 `b2c_1_sign_up`或。 `b2c_1_edit_profile` |
 | client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
 | nonce | 是 | 由应用程序生成且包含在请求中的值，以声明方式包含在生成的 ID 令牌中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串，可用以识别请求的来源。 |
 | response_type | 是 | 必须包含 OpenID Connect 的 ID 令牌。 如果 Web 应用程序还需要使用令牌来调用 Web API，则可以使用 `code+id_token`。 |
@@ -274,14 +274,14 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 想要用于从应用程序中注销用户的用户流。 |
-| id_token_hint| 否 | 以前颁发的 ID 令牌, 作为有关最终用户当前通过身份验证的会话与客户端的提示传递到注销终结点。 |
-| post_logout_redirect_uri | 否 | 用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |
+| id_token_hint| 否 | 以前颁发的 ID 令牌, 作为有关最终用户当前通过身份验证的会话与客户端的提示传递到注销终结点。 `id_token_hint` 确保`post_logout_redirect_uri`是 Azure AD B2C 应用程序设置中的已注册答复 URL。 |
+| post_logout_redirect_uri | 否 | 用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 除非提供`id_token_hint`, 否则不应在 Azure AD B2C 应用程序设置中将此 url 注册为答复 URL。 |
 | 省/自治区/直辖市 | 否 | 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用程序需验证请求和响应中的 `state` 值是否相同。 |
 
-### <a name="require-id-token-hint-in-logout-request"></a>注销请求中需要 ID 令牌提示
+### <a name="secure-your-logout-redirect"></a>保护注销重定向
 
 注销后, 用户将被重定向到`post_logout_redirect_uri`参数中指定的 URI, 而不考虑已为应用程序指定的回复 url。 但是, 如果传递了`id_token_hint`有效的, 则 Azure AD B2C 在执行重定向`post_logout_redirect_uri`之前, 验证的值是否与应用程序的一个已配置重定向 uri 相匹配。 如果没有为应用程序配置匹配的答复 URL, 将显示一条错误消息, 并且不会重定向用户。
 
-### <a name="external-identity-provider-session"></a>外部标识提供者会话
+### <a name="external-identity-provider-sign-out"></a>外部标识提供者注销
 
 将用户定向到 `end_session` 终结点会清除用户的某些 Azure AD B2C 的单一登录状态，但是不会将用户从其社交标识提供者 (IDP) 会话中注销。 如果用户在后续登录中选择相同的 IDP, 则会重新进行身份验证, 而无需输入其凭据。 如果用户想要从应用程序中注销, 则不一定意味着他们要注销其 Facebook 帐户。 但是, 如果使用了本地帐户, 用户的会话便会正确结束。

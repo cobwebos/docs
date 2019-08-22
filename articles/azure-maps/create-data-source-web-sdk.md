@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c225aa5f821925247d27890e9ee75f3eac4d9eb9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 36c06182d0807ce3d255477a865023ae7b74e2cb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977347"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874923"
 ---
 # <a name="create-a-data-source"></a>创建数据源
 
@@ -22,7 +22,11 @@ Azure Maps Web SDK 将数据存储在数据源中, 用于优化用于查询和�
 
 **GeoJSON 数据源**
 
-基于 GeoJSON 的数据源可以使用类在`DataSource`本地加载和存储数据。 可以使用 [atlas.data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) 命名空间中的帮助器类手动创建或创建 GeoJSON 数据。 `DataSource`类提供用于导入本地或远程 GeoJSON 文件的函数。 远程 GeoJSON 文件必须托管在已启用 CORs 的终结点上。 `DataSource`类为聚集点数据提供功能。 
+基于 GeoJSON 的数据源可以使用类在`DataSource`本地加载和存储数据。 可以使用 [atlas.data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) 命名空间中的帮助器类手动创建或创建 GeoJSON 数据。 `DataSource`类提供用于导入本地或远程 GeoJSON 文件的函数。 远程 GeoJSON 文件必须托管在已启用 CORs 的终结点上。 `DataSource`类为聚集点数据提供功能。 可以通过`DataSource`类轻松地添加、删除和更新数据。
+
+
+> [!TIP]
+> 如果要覆盖中`DataSource`的所有数据, 如果对`clear` then `add`函数进行调用, 则映射将尝试重新呈现两次, 这可能会导致一些延迟。 改为`setShapes`使用函数, 该函数将移除并替换数据源中的所有数据, 并且只触发地图的单次重新呈现。
 
 **矢量磁贴源**
 

@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/22/2019
-ms.openlocfilehash: 86350f21f5c530a00560c92cc0ae2fd58c9a2c57
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/20/2019
+ms.openlocfilehash: ad08bb19f96aadad42e973eebb8adce6875e07b1
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780055"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876595"
 ---
 # <a name="secure-your-cluster-in-azure-data-explorer"></a>保护 Azure 中的群集数据资源管理器
 
@@ -29,6 +29,9 @@ ms.locfileid: "68780055"
 1. 在 "**安全**" 窗口中, 为 "**磁盘加密**安全设置" 选择 **"打开**"。 
 
 1. 选择**保存**。
+ 
+> [!NOTE]
+> 加密可以在激活后禁用。
 
 ## <a name="next-steps"></a>后续步骤
 

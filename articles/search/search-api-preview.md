@@ -3,7 +3,7 @@ title: 适用于 Azure 搜索的预览版 REST API 2019-05-06-Preview - Azure �
 description: Azure 搜索服务 REST API 版本 2019-05-06-Preview 包括试验功能，例如知识存储和客户托管的加密密钥。
 services: search
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.workload: search
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 29d079c4e21352ced5fdcde44acaee66b79f6af9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 7fa280742556b7bc42d2c7fb30c880f836eef62b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876657"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649981"
 ---
 # <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Azure 搜索服务 REST API 版本 2019-05-06-Preview
 本文介绍了 `api-version=2019-05-06-Preview` 版的 Azure 搜索服务 REST API，该版提供尚未正式发布的实验性功能。

@@ -3,19 +3,19 @@ title: 为 Azure Cosmos DB 数据源编制索引 - Azure 搜索
 description: 在 Azure 搜索中抓取 Azure Cosmos DB 数据源并通过全文可搜索索引引入数据。 索引器可自动为所选数据源（如 Azure Cosmos DB）引入数据。
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 7f9df42725e41fb514370dbdb828ad5b1305ea78
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 802a4e9c6191d33051eb075543691845595bc9c3
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485454"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656691"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>如何使用 Azure 搜索索引器为 Cosmos DB 编制索引
 
@@ -35,7 +35,7 @@ ms.locfileid: "67485454"
 * [MongoDB API（预览版）](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)
 
 > [!Note]
-> 用户之声有更多 API 支持的现有项。 可以强制转换为你想要查看 Azure 搜索中受支持 Cosmos Api 投票：[将表 API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab)，[图形 API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4)， [Apache Cassandra API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu)。
+> 用户语音的现有项支持其他 API。 你可以为想要在 Azure 搜索中看到的 Cosmos Api 转换投票:[表 API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab)、[图形 API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4) [Apache Cassandra API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu)。
 >
 
 <a name="cosmos-indexer-portal"></a>
@@ -54,7 +54,7 @@ ms.locfileid: "67485454"
 
 ### <a name="2---start-import-data-wizard"></a>2 - 启动“导入数据”向导
 
-可以通过 Azure 搜索服务页中的命令栏[启动该向导](search-import-data-portal.md)，或者在存储帐户左侧导航窗格的“设置”部分单击“添加 Azure 搜索”。  
+可以通过 Azure 搜索服务页中的命令栏[启动该向导](search-import-data-portal.md)，或者在存储帐户左侧导航窗格的“设置”部分单击“添加 Azure 搜索”。
 
    ![门户中的导入数据命令](./media/search-import-data-portal/import-data-cmd2.png "启动导入数据向导")
 
@@ -63,17 +63,17 @@ ms.locfileid: "67485454"
 > [!NOTE] 
 > 目前，无法使用 Azure 门户或 .NET SDK 创建或编辑 **MongoDB** 数据源。 但是，**可以**在门户中监视 MongoDB 索引器的执行历史记录。
 
-在“数据源”页中，源必须是“Cosmos DB”，其规范如下：  
+在“数据源”页中，源必须是“Cosmos DB”，其规范如下：
 
-+ “名称”是数据源对象的名称。  创建后，可以选择将它用于其他工作负荷。
++ “名称”是数据源对象的名称。 创建后，可以选择将它用于其他工作负荷。
 
-+ “Cosmos DB 帐户”应是 Cosmos DB 中的主要或辅助连接字符串，包含 `AccountEndpoint` 和 `AccountKey`。  该帐户确定是要将数据强制转换为 SQL API 还是 Mongo DB API
++ “Cosmos DB 帐户”应是 Cosmos DB 中的主要或辅助连接字符串，包含 `AccountEndpoint` 和 `AccountKey`。 该帐户确定是要将数据强制转换为 SQL API 还是 Mongo DB API
 
-+ “数据库”是帐户中的现有数据库。  
++ “数据库”是帐户中的现有数据库。 
 
-+ “集合”是文档的容器。  若要成功导入，文档必须存在。 
++ “集合”是文档的容器。 若要成功导入，文档必须存在。 
 
-+ 若要查询所有文档，可将“查询”留空；否则，可以输入一个选择文档子集的查询。  
++ 若要查询所有文档，可将“查询”留空；否则，可以输入一个选择文档子集的查询。 
 
    ![Cosmos DB 数据源定义](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB 数据源定义")
 
@@ -91,9 +91,9 @@ ms.locfileid: "67485454"
 
 ### <a name="5---set-index-attributes"></a>5 - 设置索引属性
 
-在“索引”页中，应会看到带有数据类型的字段列表，以及一系列用于设置索引属性的复选框。  向导可以通过源数据采样，基于元数据生成字段列表。 
+在“索引”页中，应会看到带有数据类型的字段列表，以及一系列用于设置索引属性的复选框。 向导可以通过源数据采样，基于元数据生成字段列表。 
 
-可以通过单击属性列顶部的复选框，来批量选择属性。 对于应该返回给客户端应用并且需要接受全文搜索处理的每个字段，请选择“可检索”和“可搜索”。   你会注意到，无法对整数进行全文搜索或模糊搜索（数字按原义评估，通常在筛选器中使用）。
+可以通过单击属性列顶部的复选框，来批量选择属性。 对于应该返回给客户端应用并且需要接受全文搜索处理的每个字段，请选择“可检索”和“可搜索”。 你会注意到，无法对整数进行全文搜索或模糊搜索（数字按原义评估，通常在筛选器中使用）。
 
 有关详细信息，请查看[索引属性](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib)和[语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)的说明。 
 
@@ -105,9 +105,9 @@ ms.locfileid: "67485454"
 
 完全指定设置后，向导将在搜索服务中创建三个不同的对象。 数据源对象和索引对象作为命名的资源保存在 Azure 搜索服务中。 最后一个步骤创建索引器对象。 为索引器命名可让它作为独立的资源存在，无论在同一向导序列中创建了哪种索引和数据源对象，都可以计划和管理该索引器。
 
-如果你不熟悉索引器，请记住，索引器是 Azure 搜索中的一个资源，它可以在外部数据源中爬网，以检索可搜索的内容。  “导入数据”向导的输出是在 Cosmos DB 数据源中爬网、提取可搜索内容，然后将此内容导入 Azure 搜索中的某个索引的索引器。 
+如果你不熟悉索引器，请记住，索引器是 Azure 搜索中的一个资源，它可以在外部数据源中爬网，以检索可搜索的内容。 “导入数据”向导的输出是在 Cosmos DB 数据源中爬网、提取可搜索内容，然后将此内容导入 Azure 搜索中的某个索引的索引器。
 
-以下屏幕截图显示了默认的索引器配置。 若要运行索引器一次，可以切换为“一次”。  单击“提交”运行向导并创建所有对象。  随后会立即开始编制索引。
+以下屏幕截图显示了默认的索引器配置。 若要运行索引器一次，可以切换为“一次”。 单击“提交”运行向导并创建所有对象。 随后会立即开始编制索引。
 
    ![Cosmos DB 索引器定义](media/search-howto-index-cosmosdb/cosmosdb-indexer.png "Cosmos DB 索引器定义")
 
@@ -145,9 +145,9 @@ ms.locfileid: "67485454"
 
 1. 在 Azure 搜索的门户页中，从“概述”页复制搜索服务 URL。
 
-2. 在左侧导航窗格中单击“密钥”，然后复制主密钥或辅助密钥（两者是等效的）。 
+2. 在左侧导航窗格中单击“密钥”，然后复制主密钥或辅助密钥（两者是等效的）。
 
-3. 切换到 Cosmos 存储帐户的门户页。 在左侧导航窗格中的“设置”下，单击“密钥”。   此页提供一个 URI、两组连接字符串和两组密钥。 请将其中一个连接字符串复制到记事本。
+3. 切换到 Cosmos 存储帐户的门户页。 在左侧导航窗格中的“设置”下，单击“密钥”。 此页提供一个 URI、两组连接字符串和两组密钥。 请将其中一个连接字符串复制到记事本。
 
 ### <a name="2---create-a-data-source"></a>2 - 创建数据源
 
@@ -176,7 +176,7 @@ ms.locfileid: "67485454"
 
 | 字段   | 描述 |
 |---------|-------------|
-| **name** | 必需。 选择任意名称来表示数据源对象。 |
+| **名称** | 必需。 选择任意名称来表示数据源对象。 |
 |**type**| 必需。 必须是 `cosmosdb`。 |
 |**凭据** | 必需。 必须是 Cosmos DB 连接字符串。<br/>对于 SQL 集合，连接字符串采用以下格式：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>对于 MongoDB 集合，请将 **ApiKind=MongoDb** 添加到连接字符串：<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>避免在终结点 URL 中包含端口号。 如果包含端口号，Azure 搜索将无法为 Azure Cosmos DB 数据库编制索引。|
 | **容器** | 包含以下元素： <br/>**名称**：必需。 指定要编制索引的数据库集合的 ID。<br/>**查询**：可选。 可以指定一个查询来将一个任意 JSON 文档平整成 Azure 搜索可编制索引的平面架构。<br/>对于 MongoDB 集合，不支持查询。 |
@@ -262,7 +262,7 @@ ms.locfileid: "67485454"
 | 基元类型的数组，如 ["a", "b", "c"] |集合 (Edm.String) |
 | 类似于日期的字符串 |Edm.DateTimeOffset、Edm.String |
 | GeoJSON 对象，例如 { "type":"Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
-| 其他 JSON 对象 |不适用 |
+| 其他 JSON 对象 |不可用 |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 - 配置并运行索引器
 
@@ -283,7 +283,7 @@ ms.locfileid: "67485454"
 
 有关创建索引器 API 的更多详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
-有关定义索引器计划的详细信息请参阅[如何安排 Azure 搜索索引器](search-howto-schedule-indexers.md)。
+有关定义索引器计划的详细信息, 请参阅[如何为 Azure 搜索计划索引器](search-howto-schedule-indexers.md)。
 
 ## <a name="use-net"></a>使用 .NET
 

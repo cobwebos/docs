@@ -3,19 +3,19 @@ title: 使用索引器连接 Azure SQL 数据库并为其内容编制索引 - Az
 description: 了解如何使用索引器抓取 Azure SQL 数据库中的数据，以便在 Azure 搜索中进行全文搜索。 本文介绍连接、索引器配置和数据引入。
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 59a45791676f62f42763e0e834d327b0c0c4106d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ed218fdc1c6580e9b92364d123b081a1f34b441
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755094"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656233"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>使用 Azure 搜索索引器连接 Azure SQL 数据库并为其内容编制索引
 
@@ -158,13 +158,13 @@ ms.locfileid: "66755094"
 
 **间隔**参数是必需的。 间隔是指开始两个连续的索引器执行之间的时间。 允许的最小间隔为 5 分钟；最长为一天。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 它的模式为：`P(nD)(T(nH)(nM))`。 示例：`PT15M` 为每隔 15 分钟，`PT2H` 为每隔 2 小时。
 
-有关定义索引器计划的详细信息请参阅[如何安排 Azure 搜索索引器](search-howto-schedule-indexers.md)。
+有关定义索引器计划的详细信息, 请参阅[如何为 Azure 搜索计划索引器](search-howto-schedule-indexers.md)。
 
 <a name="CaptureChangedRows"></a>
 
 ## <a name="capture-new-changed-and-deleted-rows"></a>捕获新的、更改的和删除的行
 
-Azure 搜索使用  “增量索引编制”来避免索引器每次运行时都必须为整个表或视图重新编制索引。 Azure 搜索提供了两个更改检测策略来支持增量索引编制。 
+Azure 搜索使用“增量索引编制”来避免索引器每次运行时都必须为整个表或视图重新编制索引。 Azure 搜索提供了两个更改检测策略来支持增量索引编制。 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 集成的更改跟踪策略
 如果 SQL 数据库支持[更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)，我们建议使用 **SQL 集成的更改跟踪策略**。 这是最有效的策略。 此外，它允许 Azure 搜索标识删除的行，无需向表中添加显式“软删除”列。
@@ -178,7 +178,7 @@ Azure 搜索使用  “增量索引编制”来避免索引器每次运行时都
 + 在数据库上，为表[启用更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server)。 
 + 表上没有组合主键（包含多个列的主键）。  
 
-#### <a name="usage"></a>使用情况
+#### <a name="usage"></a>用法
 
 若要使用此策略，按如下所示创建或更新数据源：
 
@@ -213,7 +213,7 @@ Azure 搜索使用  “增量索引编制”来避免索引器每次运行时都
 > [!IMPORTANT] 
 > 强烈建议为高使用标记列使用 [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) 数据类型。 如果使用其他任何数据类型，则当存在与索引器查询并发执行的事务时，不能保证更改跟踪捕获所有更改。 在具有只读副本的配置中使用 **rowversion** 时，必须将索引器指向主副本。 只有主副本可以用于数据同步方案。
 
-#### <a name="usage"></a>使用情况
+#### <a name="usage"></a>用法
 
 若要使用高使用标记策略，请按如下所示创建或更新数据源：
 
@@ -281,16 +281,16 @@ Azure 搜索使用  “增量索引编制”来避免索引器每次运行时都
 | smalldatetime、datetime、datetime2、date、datetimeoffset |Edm.DateTimeOffset、Edm.String | |
 | uniqueidentifer |Edm.String | |
 | geography |Edm.GeographyPoint |仅支持具有 SRID 4326（这是默认值）的类型 POINT 的地理实例 |
-| rowversion |不适用 |行版本列不能存储在搜索索引中，但可用于更改跟踪 |
-| time、timespan、binary、varbinary、image、xml、geometry、CLR 类型 |不适用 |不支持 |
+| rowversion |不可用 |行版本列不能存储在搜索索引中，但可用于更改跟踪 |
+| time、timespan、binary、varbinary、image、xml、geometry、CLR 类型 |不可用 |不支持 |
 
 ## <a name="configuration-settings"></a>配置设置
 SQL 索引器公开多个配置设置：
 
-| 设置 | 数据类型 | 目的 | 默认值 |
+| 设置 | 数据类型 | 用途 | 默认值 |
 | --- | --- | --- | --- |
-| queryTimeout |字符串 |设置 SQL 查询执行的超时 |5 分钟（“00:05:00”） |
-| disableOrderByHighWaterMarkColumn |bool |导致高使用标记策略使用的 SQL 查询省略 ORDER BY 子句。 请参阅[高使用标记策略](#HighWaterMarkPolicy) |false |
+| queryTimeout |string |设置 SQL 查询执行的超时 |5 分钟（“00:05:00”） |
+| disableOrderByHighWaterMarkColumn |bool |导致高使用标记策略使用的 SQL 查询省略 ORDER BY 子句。 请参阅[高使用标记策略](#HighWaterMarkPolicy) |假 |
 
 在索引器定义的 `parameters.configuration` 对象中使用这些设置。 例如，要将查询超时设置为 10 分钟，请使用以下配置创建或更新索引器：
 
@@ -300,7 +300,7 @@ SQL 索引器公开多个配置设置：
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 **问：是否可以将 Azure SQL 索引器与在 Azure 中 IaaS VM 上运行的 SQL 数据库配合使用？**
 
@@ -312,7 +312,7 @@ SQL 索引器公开多个配置设置：
 
 **问：是否可以将 Azure SQL 索引器与在 Azure 上 IaaS 中运行的非 SQL Server 数据库配合使用？**
 
-不。 我们不支持此方案，因为我们尚未使用除 SQL Server 以外的任何数据库测试该索引器。  
+否。 我们不支持此方案，因为我们尚未使用除 SQL Server 以外的任何数据库测试该索引器。  
 
 **问：是否可以创建多个按计划运行的索引器？**
 

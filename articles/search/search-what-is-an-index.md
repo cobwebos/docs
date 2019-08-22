@@ -2,25 +2,25 @@
 title: 创建索引定义和概念 - Azure 搜索
 description: 介绍 Azure 搜索中的索引术语和概念，包括组成部分和物理结构。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 0a6a5b0e3957141b9ea17a378a7cbeff33a0124e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485207"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647366"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>在 Azure 搜索中创建基本索引
 
 在 Azure 搜索中，*索引*是用于在 Azure 搜索服务上进行筛选和全文搜索的*文档*和其他构造的持久存储。 从概念上讲，文档是索引中的一个可搜索数据单元。 例如，电子商务零售商可能有所销售每件商品的文档，新闻机构可能有每篇报道的文档。 将这些概念对应到更为熟悉的数据库等效对象：*索引*在概念上类似于*表*，*文档*大致相当于表中的*行*。
 
-添加或上传索引时，Azure 搜索将根据提供的架构创建物理基础结构。 例如，如果将索引中的某个字段标记为可搜索，则为该字段创建倒排索引。 以后在 Azure 搜索中添加或上传文档或者提交搜索查询时，将向搜索服务中的特定索引发送请求。 加载包含文档值的字段称为索引编制或数据引入。 
+添加或上传索引时，Azure 搜索将根据提供的架构创建物理基础结构。 例如，如果将索引中的某个字段标记为可搜索，则为该字段创建倒排索引。 以后在 Azure 搜索中添加或上传文档或者提交搜索查询时，将向搜索服务中的特定索引发送请求。 加载包含文档值的字段称为索引编制或数据引入。
 
 可以在门户、[REST API](search-create-index-rest-api.md) 或 [.NET SDK](search-create-index-dotnet.md) 中创建索引。
 
@@ -30,11 +30,11 @@ ms.locfileid: "67485207"
 
 1. 确定是否可以使用[索引器](search-indexer-overview.md#supported-data-sources)。 如果你的外部数据是支持的数据源之一，则你可以使用[**导入数据**](search-import-data-portal.md)向导制作原型和加载索引。
 
-2. 如果无法使用“导入数据”，仍可以使用“添加索引”页上的控件[在门户中创建初始索引](search-create-index-portal.md)，以及添加字段、数据类型和分配属性。   门户会显示不同数据类型可用的属性。 如果你不太熟悉索引设计，此功能非常有用。
+2. 如果无法使用“导入数据”，仍可以使用“添加索引”页上的控件[在门户中创建初始索引](search-create-index-portal.md)，以及添加字段、数据类型和分配属性。 门户会显示不同数据类型可用的属性。 如果你不太熟悉索引设计，此功能非常有用。
 
    ![“添加索引”页，其中按数据类型显示了属性](media/search-create-index-portal/field-attributes.png "“添加索引”页，其中按数据类型显示了属性")
   
-   单击“创建”时，将在搜索服务中创建支持你的索引的所有物理结构。 
+   单击“创建”时，将在搜索服务中创建支持你的索引的所有物理结构。
 
 3. 使用[获取索引 REST API](https://docs.microsoft.com/rest/api/searchservice/get-index) 和 [Postman](search-get-started-postman.md) 等 Web 测试工具下载索引架构。 现在，门户中会显示所创建的索引的 JSON 表示形式。 
 
@@ -146,7 +146,7 @@ ms.locfileid: "67485207"
 定义架构时，必须在索引中指定每个字段的名称、类型和属性。 字段类型的作用是对该字段中存储的数据进行分类。 对各个字段设置属性的目的是指定字段的使用方式。 下表枚举了可以指定的类型和属性。
 
 ### <a name="data-types"></a>数据类型
-| Type | 描述 |
+| type | 描述 |
 | --- | --- |
 | *Edm.String* |全文搜索可以选择性地标记化（断词、词干提取等）的文本。 |
 | *Collection(Edm.String)* |全文搜索可以选择性标记化的字符串列表。 理论上，集合中的项目数没有上限，但集合的有效负载大小上限为 16 MB。 |
@@ -161,11 +161,11 @@ ms.locfileid: "67485207"
 
 ### <a name="index-attributes"></a>索引属性
 
-在索引中的一个字段必须是与指定**密钥**唯一标识每个文档的字段。
+索引中正好有一个字段必须指定为唯一标识每个文档的**键**字段。
 
-其他属性确定如何在应用程序中使用字段。 例如，**可搜索**属性分配给每个字段应包括在全文搜索。 
+其他属性确定如何在应用程序中使用字段。 例如, 可**搜索**属性将分配给应包括在全文搜索中的每个字段。 
 
-用于生成索引 Api 都具有不同的默认行为。 有关[REST Api](https://docs.microsoft.com/rest/api/searchservice/Create-Index)，默认情况下启用的大多数属性 (例如，**可搜索**和**可检索**适用于字符串字段)，通常只需要将它们设置如果你想要将其关闭。 对于.NET SDK，反过来也成立。 在未显式设置的任何属性，默认值是禁用相应的搜索行为，除非用户专门启用它。
+用于生成索引的 Api 具有不同的默认行为。 对于[REST api](https://docs.microsoft.com/rest/api/searchservice/Create-Index), 默认情况下会启用大多数属性 (例如, 字符串字段的可**搜索**和可**检索**值), 并且如果要将其关闭, 通常只需要设置它们。 对于 .NET SDK, 相反的情况也是如此。 在未显式设置的任何属性上, 默认情况下将禁用相应的搜索行为, 除非您专门启用此操作。
 
 | 特性 | 描述 |
 | --- | --- |
@@ -185,7 +185,7 @@ ms.locfileid: "67485207"
 
 ![基于属性选择的索引大小](./media/search-what-is-an-index/realestate-index-size.png "基于属性选择的索引大小")
 
-尽管这些索引变体是人造的，但我们可以参考这些变体来对属性影响存储的方式进行广泛比较。 设置 **retrievable** 是否会增大索引大小？ 不。 将字段添加到**建议器**是否会增大索引大小？ 是的。
+尽管这些索引变体是人造的，但我们可以参考这些变体来对属性影响存储的方式进行广泛比较。 设置 **retrievable** 是否会增大索引大小？ 否。 将字段添加到**建议器**是否会增大索引大小？ 是的。
 
 支持筛选和排序的索引在比例上大于仅支持全文搜索的索引。 原因在于，筛选和排序操作基于精确匹配执行查询，因此文档将按原样存储。 相比之下，支持全文搜索和模糊搜索的可搜索字段使用倒排索引，而这些索引中填充了空间占用量比整个文档更小的标记化字词。
 
@@ -197,7 +197,7 @@ ms.locfileid: "67485207"
 
 添加到建议器的字段用于生成自动提示搜索词。 在索引编制期间创建所有搜索词，并单独存储它们。 有关创建建议器结构的详细信息，请参阅[添加建议器](index-add-suggesters.md)。
 
-## <a name="scoring-profiles"></a>为配置文件评分
+## <a name="scoring-profiles"></a>评分配置文件
 
 [评分配置文件](index-add-scoring-profiles.md)是定义自定义评分行为，方便用户影响搜索结果中排名更高的项的架构部分。 计分配置文件由字段权重和函数组成。 若要使用它们，请在查询字符串上按名称指定配置文件。
 
@@ -215,7 +215,7 @@ ms.locfileid: "67485207"
 
 + **allowedOrigins**（必需）：这是会被授予索引访问权限的来源的列表。 这意味着，将允许从这些来源提供的任何 JavaScript 代码查询索引（假设它提供正确的 api-key）。 每个来源通常采用 `protocol://<fully-qualified-domain-name>:<port>` 格式，不过往往会省略 `<port>`。 有关更多详细信息，请参阅[跨域资源共享 (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
 
-  若要允许访问所有来源，请将 `*` 作为单个项目包含在 **allowedOrigins** 数组中。 不建议对生产搜索服务采用这种做法，但它在开发和调试中却很有用。 
+  若要允许访问所有来源，请将 `*` 作为单个项目包含在 **allowedOrigins** 数组中。 不建议对生产搜索服务采用这种做法，但它在开发和调试中却很有用。
 
 + **maxAgeInSeconds**（可选）：浏览器使用此值确定缓存 CORS 预检响应的持续时间（以秒为单位）。 此值必须是非负整数。 此值越大，性能越好，但 CORS 策略更改生效所需的时间也越长。 如果未设置此值，将使用 5 分钟的默认持续时间。
 

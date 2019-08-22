@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/19/2019
 ms.author: v-adgera
-ms.openlocfilehash: 64a980ba8ed581b3cad369951220d47baf9e17ab
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849285"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656526"
 ---
 # <a name="security-best-practices"></a>安全最佳实践
 
@@ -26,6 +26,9 @@ Azure 数字孪生还使用 Azure IoT 中存在的其他安全功能，包括 Az
 > [!IMPORTANT]
 > 为确保 IoT 空间的最大安全性，请查看其他安全资源。 请确保包括你的设备供应商。
 
+> [!TIP]
+> 使用[适用于 iot 的 Azure 安全中心](https://docs.microsoft.com/azure/asc-for-iot/)来帮助检测 iot 安全威胁和漏洞。
+
 ## <a name="iot-security-best-practices"></a>IoT 安全最佳实践
 
 安全地保护 IoT 设备的一些关键做法包括：
@@ -36,6 +39,7 @@ Azure 数字孪生还使用 Azure IoT 中存在的其他安全功能，包括 Az
 > * 考虑设备 IP 地址筛选和端口限制的可能使用。
 > * 限制 I/O 和设备带宽，以提高性能。 通过阻止拒绝服务攻击，速率限制可增强安全性。
 > * 使设备固件保持最新。
+> * 定期审核并查看设备、网络和网关安全最佳做法, 因为它们会不断改进和发展。
 
 安全地保护 IoT 空间的一些关键做法包括：
 
@@ -43,6 +47,7 @@ Azure 数字孪生还使用 Azure IoT 中存在的其他安全功能，包括 Az
 > * 加密已保存、已存储或持久性数据。
 > * 要求定期更改或刷新密码或密钥。
 > * 仔细按角色限制访问权限和权限。 请参阅以下[基于角色的访问控制最佳做法](#rbac)部分。
+> * 请考虑使用分段网络拓扑, 使每个网络上的设备彼此隔离。
 > * 使用功能强大的加密。 要求使用长密码，并使用安全的协议以及双重身份验证。
 
 [监视](./how-to-configure-monitoring.md) IoT 资源来查看处于常见操作范围之外的离群值、威胁或资源参数。 使用 Azure Analytics 进行监视管理。

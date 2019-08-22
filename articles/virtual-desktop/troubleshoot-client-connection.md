@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 9cd754b1810595c3ae82a7e4edfd9a3abe145b3f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4f325d9fc512fd9f6776fcd799b720aaf60ce472
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816415"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876762"
 ---
 # <a name="remote-desktop-client-connections"></a>远程桌面客户端连接
 
@@ -135,7 +135,7 @@ Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
     Time              : <Timestampt>
     ```
 
-### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>错误：O_ADD_USER_TO_GROUP_FAILED/无法将 USER = ≤ username ≥添加到 GROUP = 远程桌面用户。 原因:Win32.ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>错误：O_ADD_USER_TO_GROUP_FAILED/无法将 USER = ≤ username ≥添加到 GROUP = 远程桌面用户。 原因：Win32.ERROR_NO_SUCH_MEMBER
 
 原因：VM 尚未加入到用户对象所在的域。
 
@@ -173,7 +173,7 @@ Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 - 若要在 Windows 虚拟桌面环境中创建租户和主机池时排查问题, 请参阅[租户和主机池创建](troubleshoot-set-up-issues.md)。
 - 若要解决在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题, 请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
 - 若要解决将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题, 请参阅[Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
-- 若要了解有关预览服务的详细信息, 请参阅[Windows 桌面预览环境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?)。
+- 若要了解有关预览服务的详细信息, 请参阅[Windows 虚拟桌面预览环境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)问题。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)。

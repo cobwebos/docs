@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 553f19a2cb621698cb5b47e56d7cb30d529cc243
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 9e71757215f6a0a5b664abd3f8a9ee632b1535f3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467061"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876370"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>将文件还原到 Azure 中的虚拟机
 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，也可以还原单个文件。 本文将详细介绍如何还原单个文件。 本教程介绍如何执行下列操作：
@@ -142,7 +142,7 @@ Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复�
 
     脚本的输出将提供恢复点的路径。 下面的示例输出显示恢复点已装入 /home/azureuser/myVM-20170919213536/Volume1  ：
 
-    ```
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
     Please enter the password as shown on the portal to securely connect to the recovery point. : c068a041ce12465

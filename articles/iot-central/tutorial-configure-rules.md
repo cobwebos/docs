@@ -9,16 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 56ced4f5e2fd0fbf829f72cff2413998398a7a09
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30bfd3b119b3ae4badbda50747158e8b08a9dd08
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066016"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875524"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>教程：在 Azure IoT Central 中配置用于设备的规则和操作
 
 *本文适用于操作员、构建者和管理员。*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 在本教程中，将创建一个规则，用于在连接的空调设备中的温度超过 90 &deg; F 时发送电子邮件。
 
@@ -50,7 +52,7 @@ ms.locfileid: "67066016"
 
     | 设置                                      | 值                             |
     | -------------------------------------------- | ------------------------------    |
-    | 名称                                         | 空调温度警报 |
+    | Name                                         | 空调温度警报 |
     | 为此此模板中的所有设备启用规则 | 启用                                |
     | 条件                                    | 温度大于 90    |
     | 聚合                                  | 无                              |

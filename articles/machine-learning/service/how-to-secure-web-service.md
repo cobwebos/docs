@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 04/29/2019
+ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee8af77ce8f3897fdf1cb3da9a125acca28f9419
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e730e1b5534c4c74734816f5481247e341436b08
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358700"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656337"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>通过 SSL 使用 SSL 来保护 web 服务 Azure 机器学习
 
@@ -152,6 +152,107 @@ aci_config = AciWebservice.deploy_configuration(
   更新 AKS 群集公共 IP 地址的 "**配置**" 选项卡上的 DNS。 (请参阅下图。)公共 IP 地址是一种资源类型, 它是在包含 AKS 代理节点和其他网络资源的资源组下创建的。
 
   ![Azure 机器学习服务：使用 SSL 保护 Web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)
+
+## <a name="update-the-ssl-certificate"></a>更新 SSL 证书
+
+SSL 证书已过期, 必须续订。 通常每年都会发生这种情况。 使用以下部分中的信息为部署到 Azure Kubernetes 服务的模型更新和续订证书:
+
+### <a name="update-a-microsoft-generated-certificate"></a>更新 Microsoft 生成的证书
+
+如果证书最初由 Microsoft 生成 (使用*leaf_domain_label*创建服务时), 请使用以下示例之一更新证书:
+
+**使用 SDK**
+
+```python
+from azureml.core.compute import AksCompute
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute.aks import SslConfiguration
+
+# Get the existing cluster
+aks_target = AksCompute(ws, clustername)
+
+# Update the existing certificate by referencing the leaf domain label
+ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True)
+update_config = AksUpdateConfiguration(ssl_configuration)
+aks_target.update(update_config)
+```
+
+**使用 CLI**
+
+```azurecli
+az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True
+```
+
+有关详细信息, 请参阅以下参考文档:
+
+* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
+* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
+
+### <a name="update-custom-certificate"></a>更新自定义证书
+
+如果证书最初是由证书颁发机构生成的, 请使用以下步骤:
+
+1. 使用证书颁发机构提供的文档来续订证书。 此过程将创建新的证书文件。
+
+1. 使用 SDK 或 CLI 通过新证书更新服务:
+
+    **使用 SDK**
+
+    ```python
+    from azureml.core.compute import AksCompute
+    from azureml.core.compute.aks import AksUpdateConfiguration
+    from azureml.core.compute.aks import SslConfiguration
+    
+    # Read the certificate file
+    def get_content(file_name):
+        with open(file_name, 'r') as f:
+            return f.read()
+
+    # Get the existing cluster
+    aks_target = AksCompute(ws, clustername)
+    
+    # Update cluster with custom certificate
+    ssl_configuration = SslConfiguration(cname="myaks", cert=get_content('cert.pem'), key=get_content('key.pem'))
+    update_config = AksUpdateConfiguration(ssl_configuration)
+    aks_target.update(update_config)
+    ```
+
+    **使用 CLI**
+
+    ```azurecli
+    az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-cname "myaks"--ssl-cert-file "cert.pem" --ssl-key-file "key.pem"
+    ```
+
+有关详细信息, 请参阅以下参考文档:
+
+* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
+* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
+
+## <a name="disable-ssl"></a>禁用 SSL
+
+若要为部署到 Azure Kubernetes 服务的模型禁用 SSL, 可以使用 SDK 或 CLI:
+
+**使用 SDK**
+
+```python
+from azureml.core.compute import AksCompute
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute.aks import SslConfiguration
+
+# Get the existing cluster
+aks_target = AksCompute(ws, clustername)
+
+# Disable SSL
+ssl_configuration = SslConfiguration(status="Disabled")
+update_config = AksUpdateConfiguration(ssl_configuration)
+aks_target.update(update_config)
+```
+
+**使用 CLI**
+
+```azurecli
+ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-disable True
+```
 
 ## <a name="next-steps"></a>后续步骤
 了解如何：

@@ -1,24 +1,21 @@
 ---
 title: Azure Functions 的缩放和托管 | Microsoft Docs
 description: 了解如何在 Azure Functions 消耗计划和高级计划之间进行选择。
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: azure 函数, 函数, 消耗计划, 高级计划, 事件处理, webhook, 动态计算, 无服务器体系结构
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdef1457254b6deb8a0b791b11c94154518b4301
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c39ee29b9a4449000d44e44bc6feae407cf4cd38
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636436"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874939"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -143,9 +140,6 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 在消耗和高级计划中, Azure Functions 基础结构通过基于其函数触发的事件数来添加其他函数主机实例, 从而缩放 CPU 和内存资源。 消耗计划中 Functions 主机的每个实例限制为 1.5 GB 内存和 1 个 CPU。  主机实例是整个函数应用，这意味着函数应用中的所有函数共享某个实例中的资源并同时缩放。 共享同一消耗计划的函数应用单独缩放。  在高级计划中, 计划大小将确定该实例上该计划中的所有应用程序的可用内存和 CPU。  
 
 函数代码文件存储在函数主要存储帐户中的 Azure 文件共享上。 删除函数应用的主存储帐户时，函数代码文件将被删除并且无法恢复。
-
-> [!NOTE]
-> 在消耗量计划中使用 blob 触发器时，处理新的 blob 可能会出现长达 10 分钟的延迟。 函数应用处于空闲时会发生这种延迟。 函数应用运行后，就会立即处理 Blob。 若要避免此冷启动延迟, 请使用高级计划, 或使用[事件网格触发器](functions-bindings-event-grid.md)。 有关详细信息，请参阅 [blob 触发器绑定参考文章](functions-bindings-storage-blob.md#trigger)。
 
 ### <a name="runtime-scaling"></a>运行时缩放
 

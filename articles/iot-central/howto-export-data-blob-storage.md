@@ -8,14 +8,16 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 0fcce6bd6ee9461790ca7618f65be9a20a821afc
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7366072dbf6b000981899a56ca1c8cfe6af6f04a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360342"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876054"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>将数据导出到 Azure Blob 存储
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 *本主题适用于管理员。*
 
@@ -38,7 +40,7 @@ ms.locfileid: "68360342"
 
 1. [在 Azure 门户中创建新的存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 可以在 [Azure 存储文档](https://aka.ms/blobdocscreatestorageaccount)中进行详细的了解。
 2. 对于帐户类型，选择“常规用途”或“Blob 存储”。
-3. 请选择订阅。 
+3. 选择订阅。 
 
     > [!Note] 
     > 可以将数据导出到其他订阅，此类订阅**不同于**那些适用于即用即付 IoT Central 应用程序的订阅。 在此示例中，将使用连接字符串进行连接。

@@ -1,13 +1,13 @@
 ---
-title: OData 排序依据参考-Azure 搜索
-description: Azure 搜索查询中的排序依据语法的 OData 语言参考。
+title: OData 顺序-按引用-Azure 搜索
+description: Azure 搜索查询中 order by 语法的 OData 语言参考。
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: Brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1ced35dc73e6d596fbeda32590ab0b69df396c5c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ee44549931100a1affa5e2bb9e5cda904c05ed1
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079751"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647541"
 ---
 # <a name="odata-orderby-syntax-in-azure-search"></a>Azure 搜索中的 OData $orderby 语法
 
- 可以使用[OData **$orderby**参数](query-odata-filter-orderby-syntax.md)应用在 Azure 搜索中的搜索结果的自定义排序顺序。 本文介绍的语法 **$orderby**在详细信息。 有关如何使用更多常规信息 **$orderby**搜索结果时，请参阅[如何使用搜索结果在 Azure 搜索中](search-pagination-page-layout.md)。
+ 可以使用[OData **$orderby**参数](query-odata-filter-orderby-syntax.md)在 Azure 搜索中对搜索结果应用自定义排序顺序。 本文详细介绍 **$orderby**的语法。 有关如何在显示搜索结果时使用 **$orderby**的更多常规信息, 请参阅[如何在 Azure 搜索中使用搜索结果](search-pagination-page-layout.md)。
 
 ## <a name="syntax"></a>语法
 
-**$Orderby**参数接受以逗号分隔列表的最多 32 个**order by 子句**。 通过以下 EBNF 描述的 order by 子句的语法 ([扩展巴科斯-诺尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
+**$Orderby**参数接受一个逗号分隔的列表, 该列表的最大**顺序**为32。 下面的 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 描述了 order by 子句的语法:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -42,23 +42,23 @@ order_by_clause ::= (field_path | sortable_function) ('asc' | 'desc')?
 sortable_function ::= geo_distance_call | 'search.score()'
 ```
 
-交互式语法关系图也是可用的：
+还提供交互式语法关系图:
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法关系图](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
+> [适用于 Azure 搜索的 OData 语法关系图](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)的完整 EBNF。
+> 有关完整的 EBNF, 请参阅[Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)。
 
-每个子句具有排序条件，可以选择后跟排序方向 (`asc`升序或`desc`按降序排序)。 如果未指定方向，默认值为升序。 排序条件可以是路径`sortable`字段或调用[ `geo.distance` ](search-query-odata-geo-spatial-functions.md)或[ `search.score` ](search-query-odata-search-score-function.md)函数。
+每个子句都具有排序条件, 可选择后跟排序`asc`方向 (升序`desc`或降序)。 如果未指定方向, 则默认值为 "升序"。 排序条件可以是`sortable`字段的路径, 也可以是对[`geo.distance`](search-query-odata-geo-spatial-functions.md)或[`search.score`](search-query-odata-search-score-function.md)函数的调用。
 
-如果多个文档都具有相同的排序条件并`search.score`函数未使用 (例如，如果您通过数字进行排序`Rating`字段和三个文档都有其分级为 4)，等同值将不起作用的文档评分降序排序。 文档分数相同时 （例如，没有在请求中指定的全文搜索查询时），则关联的文档的相对顺序是不确定。
+如果多个文档具有相同的排序条件, `search.score`但未使用该函数 (例如, 如果您按数值`Rating`字段进行排序, 并且三个文档的排名均为 4), 则按文档分数将按降序对并列进行分解。 如果文档分数相同 (例如, 在请求中未指定全文搜索查询时), 则相关文档的相对顺序是不确定的。
 
-可以指定多个排序条件。 表达式的顺序决定最终排序顺序。 例如，若要按分数后, 跟分级，按降序排序语法将为`$orderby=search.score() desc,Rating desc`。
+可以指定多个排序条件。 表达式的顺序决定最终排序顺序。 例如, 若要按分数降序排序, 然后按级别进行排序, 则语法`$orderby=search.score() desc,Rating desc`为。
 
 **$orderby** 中 `geo.distance` 的语法与其在 **$filter** 中的语法相同。 如果在 **$orderby** 中使用 `geo.distance`，其应用到的字段必须为 `Edm.GeographyPoint` 类型，且还必须 `sortable`。
 
-**$orderby** 中 `search.score` 的语法为 `search.score()`。 该函数`search.score`不采用任何参数。
+**$orderby** 中 `search.score` 的语法为 `search.score()`。 函数`search.score`不采用任何参数。
 
 ## <a name="examples"></a>示例
 
@@ -70,17 +70,17 @@ sortable_function ::= geo_distance_call | 'search.score()'
 
     $orderby=Rating desc,BaseRate
 
-对酒店降序的评分，然后从给定的坐标距离按升序进行排序：
+按评级对酒店降序排序, 然后按与给定坐标的距离升序排序:
 
     $orderby=Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 
-排序酒店 search.score 和分级，降序，然后按升序从给定的坐标的距离。 具有相同的相关性评分的两个酒店，分级，首先列出最近的一个：
+按搜索的降序对酒店排序, 并按与给定坐标的距离升序排列。 在具有相同相关性分数和分级的两个旅馆之间, 最靠近的酒店首先列出:
 
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 
 ## <a name="next-steps"></a>后续步骤  
 
-- [Azure 搜索中如何使用搜索结果](search-pagination-page-layout.md)
+- [如何在 Azure 搜索中使用搜索结果](search-pagination-page-layout.md)
 - [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
 - [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

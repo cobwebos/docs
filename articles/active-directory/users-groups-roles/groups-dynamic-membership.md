@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 08/12/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a0e0508babdd9ae703e38d58b079ab5fa16f68c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f529723abd449891dba845253502b78e8666199f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397878"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650218"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -40,9 +40,15 @@ ms.locfileid: "66397878"
 
 * 属性
 * 运算符
-* 值
+* ReplTest1
 
 表达式中各部分的顺序对于避免语法错误至关重要。
+
+### <a name="rule-builder-in-the-azure-portal"></a>Azure 门户中的规则生成器
+
+Azure AD 提供了一个规则生成器, 以便更快地创建和更新重要规则。 规则生成器最多支持五个规则。 若要添加第六个和所有后续规则术语, 必须使用文本框。 有关分步说明, 请参阅[更新动态组](groups-update-rule.md)。
+
+   ![添加动态组的成员身份规则](./media/groups-update-rule/update-dynamic-group-rule.png)
 
 ### <a name="rules-with-a-single-expression"></a>带有单个表达式的规则
 
@@ -68,45 +74,45 @@ user.department -eq "Sales"
 
 ### <a name="properties-of-type-boolean"></a>布尔值类型的属性
 
-| 属性 | 允许的值 | 使用情况 |
+| 属性 | 允许的值 | 用法 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>字符串类型的属性
 
-| 属性 | 允许的值 | 使用情况 |
+| 属性 | 允许的值 | 用法 |
 | --- | --- | --- |
-| city |任意字符串值或 null  |(user.city -eq "value") |
-| country |任意字符串值或 null  |(user.country -eq "value") |
-| companyName | 任意字符串值或 null  | (user.companyName -eq "value") |
-| department |任意字符串值或 null  |(user.department -eq "value") |
+| city |任意字符串值或 null |(user.city -eq "value") |
+| country |任意字符串值或 null |(user.country -eq "value") |
+| companyName | 任意字符串值或 null | (user.companyName -eq "value") |
+| department |任意字符串值或 null |(user.department -eq "value") |
 | displayName |任意字符串值 |(user.displayName -eq "value") |
 | employeeId |任意字符串值 |(user.employeeId -eq "value")<br>(user.employeeId -ne *null*) |
-| facsimileTelephoneNumber |任意字符串值或 null  |(user.facsimileTelephoneNumber -eq "value") |
-| givenName |任意字符串值或 null  |(user.givenName -eq "value") |
-| jobTitle |任意字符串值或 null  |(user.jobTitle -eq "value") |
-| mail |任意字符串值或 null（用户的 SMTP 地址）  |(user.mail -eq "value") |
+| facsimileTelephoneNumber |任意字符串值或 null |(user.facsimileTelephoneNumber -eq "value") |
+| givenName |任意字符串值或 null |(user.givenName -eq "value") |
+| jobTitle |任意字符串值或 null |(user.jobTitle -eq "value") |
+| 邮件 |任意字符串值或 null（用户的 SMTP 地址） |(user.mail -eq "value") |
 | mailNickName |任意字符串值（用户的邮件别名） |(user.mailNickName -eq "value") |
-| mobile |任意字符串值或 null  |(user.mobile -eq "value") |
+| mobile |任意字符串值或 null |(user.mobile -eq "value") |
 | objectId |用户对象的 GUID。 |(user.objectId -eq "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | 从本地同步至云端的用户的本地安全标识符 (SID)。 |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |任意字符串值或 null  |(user.physicalDeliveryOfficeName -eq "value") |
-| postalCode |任意字符串值或 null  |(user.postalCode -eq "value") |
+| physicalDeliveryOfficeName |任意字符串值或 null |(user.physicalDeliveryOfficeName -eq "value") |
+| postalCode |任意字符串值或 null |(user.postalCode -eq "value") |
 | preferredLanguage |ISO 639-1 代码 |(user.preferredLanguage -eq "en-US") |
-| sipProxyAddress |任意字符串值或 null  |(user.sipProxyAddress -eq "value") |
-| state |任意字符串值或 null  |(user.state -eq "value") |
-| streetAddress |任意字符串值或 null  |(user.streetAddress -eq "value") |
-| surname |任意字符串值或 null  |(user.surname -eq "value") |
-| telephoneNumber |任意字符串值或 null  |(user.telephoneNumber -eq "value") |
+| sipProxyAddress |任意字符串值或 null |(user.sipProxyAddress -eq "value") |
+| 省/自治区/直辖市 |任意字符串值或 null |(user.state -eq "value") |
+| streetAddress |任意字符串值或 null |(user.streetAddress -eq "value") |
+| surname |任意字符串值或 null |(user.surname -eq "value") |
+| telephoneNumber |任意字符串值或 null |(user.telephoneNumber -eq "value") |
 | usageLocation |双字母国家/地区代码 |(user.usageLocation -eq "US") |
 | userPrincipalName |任意字符串值 |(user.userPrincipalName -eq "alias@domain") |
-| userType |member guest null  |(user.userType -eq "Member") |
+| userType |member guest null |(user.userType -eq "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>字符串集合类型的属性
 
-| 属性 | 允许的值 | 使用情况 |
+| 属性 | 允许的值 | 用法 |
 | --- | --- | --- |
 | otherMails |任意字符串值 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
@@ -124,10 +130,10 @@ user.department -eq "Sales"
 | 开头不为 |-notStartsWith |
 | 开头为 |-startsWith |
 | 不包含 |-notContains |
-| Contains |-contains |
+| 包含 |-contains |
 | 不匹配 |-notMatch |
 | 匹配 |-match |
-| In | -in |
+| 流入 | -in |
 | 不位于 | -notIn |
 
 ### <a name="using-the--in-and--notin-operators"></a>使用 -in 和 -notIn 运算符
@@ -142,7 +148,7 @@ user.department -eq "Sales"
 
 
 ### <a name="using-the--match-operator"></a>使用 -match 运算符 
-**-match** 运算符用于匹配任何正则表达式。 示例：
+**-match** 运算符用于匹配任何正则表达式。 例如：
 
 ```
 user.displayName -match "Da.*"   
@@ -172,10 +178,10 @@ David 的计算结果为 true，Da 的计算结果为 false。
 
 ### <a name="use-of-null-values"></a>Null 值的用法
 
-要在规则中指定 null 值，可以使用 null 值  。 
+要在规则中指定 null 值，可以使用 null 值。 
 
-* 比较表达式中的 null 值时，请使用 -eq 或 -ne  。
-* 仅当希望将其解释为文本字符串值时，才在 null 两边加引号  。
+* 比较表达式中的 null 值时，请使用 -eq 或 -ne。
+* 仅当希望将其解释为文本字符串值时，才在 null 两边加引号。
 * 不能将 -not 运算符用作 null 的比较运算符。 如果使用该运算符，将会出现错误，不管使用 null 还是 $null。
 
 引用 null 值的正确方法如下：
@@ -231,7 +237,7 @@ David 的计算结果为 true，Da 的计算结果为 false。
 
 多值属性是同一类型的对象的集合。 它们可用于使用 -any 和 -all 逻辑运算符创建成员资格规则。
 
-| 属性 | 值 | 使用情况 |
+| 属性 | 值 | 用法 |
 | --- | --- | --- |
 | assignedPlans | 集合中的每个对象均公开以下字符串属性：capabilityStatus、service、servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 | proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains "contoso")) |
@@ -261,7 +267,7 @@ user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore--syntax"></a>使用下划线 (\_) 语法
+### <a name="using-the-underscore-_-syntax"></a>使用下划线 (\_) 语法
 
 下划线 (\_) 语法匹配特定值在其中一个多值字符串集合属性中的出现，以便将用户或设备添加到动态组。 它与 -any 或 -all 运算符一起使用。
 
@@ -283,7 +289,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 Direct Reports for "{objectID_of_manager}"
 ```
 
-下面是"62e19b97-8b3d-4d4a-a106-4ce66896a863"所在的管理器的 objectID 的有效规则的示例：
+下面是一个有效规则的示例, 其中 "62e19b97-8b3d-4d4a-a106-4ce66896a863" 是经理的 objectID:
 
 ```
 Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
@@ -291,26 +297,26 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 以下提示可帮助你正确使用该规则。
 
-* “经理 ID”是经理的对象 ID  。 可在经理的“配置文件”中找到它  。
-* 要使规则起作用，请确保租户中用户的 Manager 属性已正确设置  。 可检查用户的“配置文件”中的当前值  。
-* 此规则仅支持经理的直接下属。 换言之，无法创建包含经理的直接下属及其下属的组  。
+* “经理 ID”是经理的对象 ID。 可在经理的“配置文件”中找到它。
+* 要使规则起作用，请确保租户中用户的 Manager 属性已正确设置。 可检查用户的“配置文件”中的当前值。
+* 此规则仅支持经理的直接下属。 换言之，无法创建包含经理的直接下属及其下属的组。
 * 此规则不能与任何其他成员资格规则结合使用。
 
 ### <a name="create-an-all-users-rule"></a>创建“所有用户”规则
 
 可使用成员资格规则创建包含租户中所有用户的组。 以后向租户添加用户或从中删除用户时，将自动调整该组的成员资格。
 
-"所有用户"规则是使用单个使用-ne 运算符和 null 值的表达式构造的。 此规则将 B2B 来宾用户以及成员用户添加到该组。
+"所有用户" 规则是使用单表达式构造的, 使用-ne 运算符和 null 值。 此规则将 B2B 来宾用户以及成员用户添加到该组。
 
 ```
 user.objectid -ne null
 ```
 
-### <a name="create-an-all-devices-rule"></a>创建"所有设备"规则
+### <a name="create-an-all-devices-rule"></a>创建 "所有设备" 规则
 
 可使用成员资格规则创建包含租户中所有设备的组。 以后向租户添加设备或从中删除设备时，将自动调整该组的成员资格。
 
-"所有设备"规则是使用单个使用-ne 运算符和 null 值的表达式构造的：
+"所有设备" 规则使用单个表达式构造, 使用-ne 运算符和 null 值:
 
 ```
 device.objectid -ne null
@@ -318,7 +324,7 @@ device.objectid -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>扩展属性和自定义扩展属性
 
-为动态成员身份规则中的字符串属性支持的扩展属性和自定义扩展属性。 扩展属性从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
+支持在动态成员身份规则中将扩展属性和自定义扩展属性作为字符串属性。 扩展属性从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
@@ -335,7 +341,7 @@ device.objectid -ne null
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ```
 
-通过使用 Graph Explorer 查询用户属性并搜索属性名，可在目录中找到自定义属性名称。 此外，现在可以在动态用户组规则生成器中选择“获取自定义扩展属性”  链接，以输入唯一的应用程序 ID，并接收创建动态成员身份规则时要使用的自定义扩展属性的完整列表。 还可以刷新此列表，以获取该应用的任何新自定义扩展属性。
+通过使用 Graph Explorer 查询用户属性并搜索属性名，可在目录中找到自定义属性名称。 此外，现在可以在动态用户组规则生成器中选择“获取自定义扩展属性”链接，以输入唯一的应用程序 ID，并接收创建动态成员身份规则时要使用的自定义扩展属性的完整列表。 还可以刷新此列表，以获取该应用的任何新自定义扩展属性。
 
 ## <a name="rules-for-devices"></a>设备规则
 
@@ -347,7 +353,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  ----- | ----- | ----------------
  accountEnabled | true false | (device.accountEnabled -eq true)
  displayName | 任意字符串值 |(device.displayName -eq "Rob iPhone")
- deviceOSType | 任意字符串值 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>(device.deviceOSType -contains "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
+ deviceOSType | 任意字符串值 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>(Device.deviceostype-包含 "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
  deviceOSVersion | 任意字符串值 | (device.deviceOSVersion -eq "9.1")
  deviceCategory | 有效的设备类别名称 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意字符串值 | (device.deviceManufacturer -eq "Samsung")
@@ -358,7 +364,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  managementType | MDM（适用于移动设备）<br>电脑（适用于由 Intune 电脑代理管理的计算机） | (device.managementType -eq "MDM")
  deviceId | 有效的 Azure AD 设备 ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有效的 Azure AD 对象 ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
- systemLabels | 任何与 Intune 设备属性匹配的字符串，用于标记现代工作区设备 | (device.systemLabels -contains "M365Managed")
+ systemLabels | 任何与 Intune 设备属性匹配的字符串，用于标记现代工作区设备 | (systemLabels-包含 "M365Managed")
 
 > [!Note]  
 > 对于 deviceOwnership，在创建设备的动态组时，需要将该值设置为“Company”。 而在 Intune 上，设备所有权表示为 Corporate。 请参阅 [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes)，了解更多详细信息。 

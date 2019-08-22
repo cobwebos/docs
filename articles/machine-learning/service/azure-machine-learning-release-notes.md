@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 07/25/2019
+ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 684a84431c8348ddafab8cefbe831c2b58c3cee6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: e169d7734776f9319685d97f941b3fc11eec8298
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639933"
+ms.locfileid: "69656252"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
-本文介绍 Azure 机器学习服务版本。  有关完整的 SDK 参考内容, 请访问 Azure 机器学习的[**主要 sdk For Python**](https://aka.ms/aml-sdk)参考页。
+本文介绍 Azure 机器学习服务版本。  有关完整的 SDK 参考内容, 请访问 Azure 机器学习的[**主要 sdk For Python**](https://aka.ms/aml-sdk)参考页。 
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 

@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e8e9b737676b2695b7b88430f59b0b0e79bc477a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d667588cea5902700c225dd7b597d8f03d93d200
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883864"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650048"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Azure 搜索中的 Lucene 查询语法
 可以基于用于专用查询窗体的丰富 [Lucene 查询分析](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)语法写入针对 Azure 搜索的查询：通配符、模糊搜索、邻近搜索、正则表达式等。 除了通过 `$filter` 表达式在 Azure 搜索中构造的“范围搜索”之外，大部分 Lucene 查询分析器语法都[在 Azure 搜索中完整实现](search-lucene-query-architecture.md)。 

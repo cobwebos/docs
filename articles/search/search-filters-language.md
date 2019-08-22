@@ -2,7 +2,7 @@
 title: 用于搜索索引中多语言内容的语言筛选器 - Azure 搜索
 description: 支持多语言搜索的筛选条件，将查询执行范围限定为特定于语言的字段。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 695fdfba1573ff97b05f8e8b50a05bef9dbf48de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1eced868b180a916355d6f9fbfc8cd47a5d7d6e2
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61289599"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649865"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>如何在 Azure 搜索中按语言筛选 
 
@@ -23,7 +23,7 @@ ms.locfileid: "61289599"
 
 请求中的查询参数用于限定搜索操作的范围，同时修剪无法提供与所需搜索体验兼容的内容的任何字段的结果。
 
-| parameters | 目的 |
+| Parameters | 用途 |
 |-----------|--------------|
 | **searchFields** | 将全文搜索限制为命名字段的列表。 |
 | **$select** | 修剪响应，以便只包含指定的字段。 默认情况下，会返回所有可检索字段。 使用 **$Select** 参数可以选择要返回哪些字段。 |
@@ -62,7 +62,7 @@ parameters =
 > [!Note]
 > 尽管查询不包含 $filter 自变量，但此用例与筛选概念密切相关，因此我们将它作为筛选方案进行演示。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [Azure 搜索中的筛选器](search-filters.md)
 + [语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)

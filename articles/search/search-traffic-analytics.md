@@ -2,19 +2,19 @@
 title: 实现搜索流量分析 - Azure 搜索
 description: 为 Azure 搜索启用搜索流量分析，以将遥测数据和用户发起的事件添加到日志文件中。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b15ae30151b22509a78b9a39d258991363a05e5b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: bb12ed2f18df100ab3f679e7a8a3ef1e7c1aca45
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295427"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647804"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-search"></a>在 Azure 搜索中实现搜索流量分析
 搜索流量分析是用于为搜索服务实现反馈循环的模式。 此模式描述必需的数据以及如何使用 Application Insights（用于监视多个平台中的服务的行业领导者）收集这些数据。
@@ -98,7 +98,7 @@ Azure 搜索提供集成 Azure Application Insights 和 Power BI 的遥测解决
 
 每当用户发出搜索请求时，应使用 Application Insights 自定义事件上的以下架构，将该请求作为搜索事件进行记录：
 
-**SearchServiceName**: (string) 搜索服务名称**SearchId**: (guid) 的搜索查询的唯一标识符 （进入搜索响应） **IndexName**: (string) 搜索服务索引进行查询**QueryTerms**: (string) 用户输入的搜索词**ResultCount**: (int) 返回的文档数 （进入搜索响应） **ScoringProfile**: （字符串） 的使用，如果有计分概要文件的名称
+**SearchServiceName**: (string) 搜索服务名称**SearchId**: (guid) 搜索查询的唯一标识符 (传入搜索响应) **IndexName**: (string) 要查询的搜索服务索引**QueryTerms**: (string) 搜索用户**objectqueryoptions**: (int) 已返回的文档数 (输入搜索响应) **ScoringProfile**: (string) 所用评分配置文件的名称 (如果有)
 
 > [!NOTE]
 > 请通过向搜索查询添加 $count=true 来请求用户生成查询的计数。 请在[此处](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)查看详细信息
@@ -166,19 +166,19 @@ Azure 搜索提供集成 Azure Application Insights 和 Power BI 的遥测解决
 
 Azure 搜索提供了一个监视 [Power BI 内容包](https://app.powerbi.com/getdata/services/azure-search)，以便你可以分析日志数据。 内容包添加预先定义的图表和表，它们可用于分析为搜索流量分析捕获的其他数据。 有关详细信息，请参阅[内容包帮助页](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/)。 
 
-1. 在 Azure 搜索仪表板左侧导航窗格中，在“设置”  下，单击“搜索流量分析”  。
+1. 在 Azure 搜索仪表板左侧导航窗格中，在“设置”下，单击“搜索流量分析”。
 
-2. 在“搜索流量分析”  页面上，在步骤 3 中，单击“获取 Power BI Desktop”  以安装 Power BI。
+2. 在“搜索流量分析”页面上，在步骤 3 中，单击“获取 Power BI Desktop”以安装 Power BI。
 
    ![获取 Power BI 报表](./media/search-traffic-analytics/get-use-power-bi.png "获取 Power BI 报表")
 
-2. 在同一页面上，单击“下载 Power BI 报表”  。
+2. 在同一页面上，单击“下载 Power BI 报表”。
 
 3. 该报表将在 Power BI Desktop 中打开，并且会提示你连接到 Application Insights。 可以在你的 Application Insights 资源的 Azure 门户页面中找到此信息。
 
    ![连接到 Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "连接到 Application Insights")
 
-4. 单击“加载”。 
+4. 单击“加载”。
 
 该报表包含图表和表，可帮助你做出更明智的决策来提高搜索性能和相关性。
 

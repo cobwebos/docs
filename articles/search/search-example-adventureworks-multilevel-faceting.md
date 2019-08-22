@@ -1,21 +1,21 @@
 ---
-title: 示例：多层分面 - Azure 搜索
+title: 例如：多层分面 - Azure 搜索
 description: 了解如何为多层分类生成分面结构，创建可以包含在应用程序页面中的嵌套式导航结构。
 author: cstone
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: chstone
-ms.openlocfilehash: e17a91a35b69102e4e0ac6025559bbc32e71d8fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a6fda0157f0f3a4ca5861acd4bcbead7839e451
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024125"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649938"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>示例：Azure 搜索中的多层分面
+# <a name="example-multi-level-facets-in-azure-search"></a>例如：Azure 搜索中的多层分面
 
 Azure 搜索架构不显式支持多层分类类别，但你可以对其进行近似处理，方法是：在进行索引编制之前先处理内容，然后对结果应用某些特殊的处理。 
 
@@ -97,6 +97,6 @@ categories.count = sum;
 > [!TIP]
 > 查询速度受返回的分面数的影响。 若要支持极大的分类集，考虑添加可分面的 **Edm.String** 字段，用于保存每个文档的顶级分类值。 然后应用如上所述的相同方法，但在用户展开顶级节点时仅执行集合-分面查询（在根分类字段上进行筛选）。 或者，在不需要 100% 召回的情况下，直接将分面计数降至一个合理的数字，确保分面条目按计数排序。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 示例：[为 Azure 搜索的 AdventureWorks Inventory 数据库建模](search-example-adventureworks-modeling.md)

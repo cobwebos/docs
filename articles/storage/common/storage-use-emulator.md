@@ -7,12 +7,12 @@ ms.date: 08/10/2018
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 9e0e024a5bd3c9cf16879bb9ea93727a338ddbf4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ee8dd9da186013dc168e20e6b8b842cca85de172
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986409"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877628"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -221,9 +221,21 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 ## <a name="storage-emulator-release-notes"></a>存储模拟器发行说明
 
+### <a name="version-510"></a>版本5.10
+
+* 存储模拟器不会拒绝 Blob、队列和表服务终结点上的2019-07-07 版本的存储服务。
+
+### <a name="version-59"></a>版本5。9
+
+* 存储模拟器不会拒绝 Blob、队列和表服务终结点上的2019-02-02 版本的存储服务。
+
+### <a name="version-58"></a>版本5。8
+
+* 存储模拟器不会拒绝 Blob、队列和表服务终结点上的2018-11-09 版本的存储服务。
+
 ### <a name="version-57"></a>版本 5.7
 
-修复了启用日志记录时可能导致崩溃的 bug。
+* 修复了启用日志记录时可能导致崩溃的 bug。
 
 ### <a name="version-56"></a>版本 5.6
 
@@ -236,11 +248,11 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 ### <a name="version-54"></a>版本 5.4
 
-为了提高安装稳定性，模拟器在安装时不再尝试预留端口。 如果需要端口预留，请使用 **init** 命令的 *-reserveports* 选项进行指定。
+* 为了提高安装稳定性，模拟器在安装时不再尝试预留端口。 如果需要端口预留，请使用 **init** 命令的 *-reserveports* 选项进行指定。
 
 ### <a name="version-53"></a>版本 5.3
 
-存储模拟器现在支持 Blob、队列和表服务终结点上的 2017-07-29 版本的存储服务。
+* 存储模拟器现在支持 Blob、队列和表服务终结点上的 2017-07-29 版本的存储服务。
 
 ### <a name="version-52"></a>版本 5.2
 
@@ -249,7 +261,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 ### <a name="version-51"></a>版本 5.1
 
-修复了一个 Bug。出现该 Bug 时，存储模拟器会在某些不包含服务的响应中返回 `DataServiceVersion` 标头。
+* 修复了一个 Bug。出现该 Bug 时，存储模拟器会在某些不包含服务的响应中返回 `DataServiceVersion` 标头。
 
 ### <a name="version-50"></a>版本 5.0
 

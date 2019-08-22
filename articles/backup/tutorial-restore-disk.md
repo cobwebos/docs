@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 70431870027cc27d886995b0bf7f47108ad767fa
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: ddbf2e5349a77a45155fafd07da5489d0073b093
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273943"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876385"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>在 Azure 中还原磁盘并创建恢复的 VM
 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，也可以还原单个文件。 本文介绍如何使用 CLI 还原完整的 VM。 本教程介绍如何执行下列操作：
@@ -95,7 +95,7 @@ az backup job list \
 
 输出类似于以下示例，该示例显示还原作业处于“正在进行”  状态：
 
-```
+```output
 Name      Operation        Status      Item Name    Start Time UTC       Duration
 --------  ---------------  ----------  -----------  -------------------  --------------
 7f2ad916  Restore          InProgress  myvm         2017-09-19T19:39:52  0:00:34.520850

@@ -9,18 +9,16 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/06/2019
-ms.openlocfilehash: cf35651f7dd839e8792029851b9bfe278036624c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: eb84dc1b5bf3f756e484ef27aaa998ab6b94cc51
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173567"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891637"
 ---
 试验在计算目标（附加到工作区的计算资源）上运行。  一旦创建了计算目标，就可以在以后的运行中重用它。
 
 1. 选择底部的“运行”，运行此试验。 
-
-     ![运行试验](./media/aml-ui-create-training-compute/run-experiment.png)
 
 1. 出现“设置计算目标”  对话框时，如果你的工作区已有计算资源，现在就可以选择它。  否则，请选择“新建”  。
 

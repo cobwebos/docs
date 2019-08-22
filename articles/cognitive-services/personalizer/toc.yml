@@ -53,14 +53,6 @@
           href: concept-feature-evaluation.md
     - name: 可伸缩性和性能
       href: concepts-scalability-performance.md
-- name: 演示
-  items:
-    - name: 新闻内容网站
-      href: 'https://personalizerdemo-staging.azurewebsites.net/'
-    - name: 购物内容网站
-      href: 'http://personalizer-traveldemo.azurewebsites.net/'
-    - name: 用于实现演示的示例代码
-      href: 'https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/demos'
 - name: 操作指南
   items:
     - name: 创建并配置个性化体验创建服务

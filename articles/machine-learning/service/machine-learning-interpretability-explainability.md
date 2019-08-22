@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 1e742c278b9356c7501964541802e0c96dc74b09
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358647"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872387"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>模型 interpretability 与 Azure 机器学习服务
 
@@ -69,7 +69,7 @@ __直接 explainers__来自集成库。 SDK 包装所有 explainers, 使其公�
 * **排列特征重要性说明**:排列功能的重要性是一种技术, 用于说明通过[Breiman 的随机林](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf)的方式 (请参阅第10部分) 可以激发的分类和回归模型。 从较高层次来看, 它的工作方式是对整个数据集随机混排一项功能, 并计算出相关性能指标降低的程度。 更改越大, 该功能越重要。
 
 * **酸橙色说明**(`contrib`):基于酸橙色, 酸橙色说明使用先进的本地可解释模式说明 (酸橙色) 算法来创建本地代理项模型。 与全局代理项模型不同, 酸橙色侧重于定型本地代理项模型来解释各个预测。
-* 中文**文本说明**(`contrib`):汉语文本说明使用分层注意网络从给定的黑色框文本模型的文本数据中获取模型说明。 我们在给定的老师型号的预测输出上定型了汉语代理模型。 在整个文本语料库中进行全局定型后, 我们为特定文档添加了微调步骤, 以便提高说明的准确性。 汉语使用双向 RNN, 其中包含两个注意层, 用于句子和单词。 DNN 在教师模型上定型并对特定文档进行微调后, 就可以从 "注意" 层中提取单词 "importances"。 对于文本数据, 我们发现了汉语比酸橙色或 SHAP 更精确, 但对于培训时间而言, 它的成本更高。 但是, 我们已通过向用户提供使用手套 word 嵌入初始化网络的选项 (尽管速度仍很慢) 来改进培训时间。 通过在远程 Azure GPU VM 上运行汉语, 可以显著提高训练时间。 汉字的实现在 "文档分类的分层注意网络 (阳 et al, 2016)" ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)) 中进行了介绍。
+* 中文**文本说明**(`contrib`):汉语文本说明使用分层注意网络从给定的黑色框文本模型的文本数据中获取模型说明。 我们在给定的老师型号的预测输出上定型了汉语代理模型。 在整个文本语料库中进行全局定型后, 我们为特定文档添加了微调步骤, 以便提高说明的准确性。 汉语使用双向 RNN, 其中包含两个注意层, 用于句子和单词。 DNN 在教师模型上定型并对特定文档进行微调后, 就可以从 "注意" 层中提取单词 "importances"。 对于文本数据, 我们发现了汉语比酸橙色或 SHAP 更精确, 但对于培训时间而言, 它的成本更高。 但是, 我们已通过向用户提供使用手套 word 嵌入初始化网络的选项 (尽管速度仍很慢) 来改进培训时间。 通过在远程 Azure GPU VM 上运行汉语, 可以显著提高训练时间。 ["文档分类的分层注意事项网络" ("阳 et al, 2016)"](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification)中介绍了汉语的实现。
 
 
 __元 explainers__会自动选择合适的直接说明, 并根据给定的模型和数据集生成最佳解释信息。 元 explainers 利用我们集成或开发的所有库 (SHAP、酸橙色、模拟等)。 以下是 SDK 中可用的元 explainers:

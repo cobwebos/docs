@@ -2,7 +2,7 @@
 title: Lucene 查询示例 - Azure 搜索
 description: 在 Azure 搜索服务中进行模糊搜索、邻近搜索、术语提升、正则表达式搜索和通配符搜索的 Lucene 查询语法。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: Lucene query analyzer syntax
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 53a1f09fcc9897f4def565a9119ad97ca365cae3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 3f6a39129db9e8c43a5e2de68d919ba1037c3f5c
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882751"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648241"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>使用“完整”Lucene 搜索语法（Azure 搜索中的高级查询）的查询示例
 
@@ -81,7 +81,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 本文中的所有示例都指定了 queryType=full 搜索参数，指明由 Lucene 查询分析程序处理完整语法。 
 
-## <a name="example-1-query-scoped-to-a-list-of-fields"></a>示例 1:将查询范围限定为字段列表
+## <a name="example-1-query-scoped-to-a-list-of-fields"></a>示例 1：将查询范围限定为字段列表
 
 第一个示例并非特定于 Lucene，但我们将先使用它来介绍第一个基本查询概念：字段范围。 此示例将整个查询和响应的范围限定为几个特定的字段。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
 

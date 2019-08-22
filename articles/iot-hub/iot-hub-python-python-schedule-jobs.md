@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: 81b2145e6107558f2d9698c7e5d03658f1129b00
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 63534260e042a1b47ca5e635c48123672d663a9b
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667936"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873298"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>计划和广播作业 (Python)
 
@@ -47,15 +47,17 @@ simDevice.py，它使用设备标识连接到 IoT 中心并接收 lockDoor 直�
 
 scheduleJobService.py，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性。
 
-[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
-
-下面是先决条件的安装说明。
-
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
 > [!NOTE]
 > Azure IoT SDK for Python 不直接支持作业功能。 本教程中转而提供一种利用异步现成和计时器的备选解决方案。 有关进一步的更新，请参阅 [Azure IoT SDK for Python](https://github.com/Azure/azure-iot-sdk-python) 页面上的**服务客户端 SDK**功能列表。
 >
+
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+## <a name="prerequisites"></a>先决条件
+
+要完成本教程，需要：
+
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -74,6 +76,10 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > 用于 azure iothub 和 azure iothub 设备客户端的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac OS, 请参阅为[Python 发布准备开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)中的 linux 和 Mac OS 特定部分。
+   >
 
 2. 使用文本编辑器，在工作目录中创建一个 simDevice.py 文件。
 
@@ -158,9 +164,27 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-[!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
+在本文中, 将创建一个后端服务, 用于调用设备上的直接方法并更新设备克隆。 服务需要 "**服务连接**" 权限才能在设备上调用直接方法。 服务还需要**注册表读取**和**注册表写入**权限来读取和写入标识注册表。 没有默认的共享访问策略仅包含这些权限, 因此需要创建一个。
 
-[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+若要创建授予**服务连接**、**注册表读取**和**注册表写入**权限的共享访问策略, 以及获取此策略的连接字符串, 请执行以下步骤:
+
+1. 在[Azure 门户](https://portal.azure.com)中打开 IoT 中心。 若要访问 IoT 中心, 最简单的方法是选择 "**资源组**", 选择 iot 中心所在的资源组, 然后从资源列表中选择 iot 中心。
+
+2. 在 IoT 中心的左侧窗格中, 选择 "**共享访问策略**"。
+
+3. 从策略列表上方的顶部菜单中, 选择 "**添加**"。
+
+4. 在 "**添加共享访问策略**" 窗格中, 输入策略的描述性名称;例如: *serviceAndRegistryReadWrite*。 在 "**权限**" 下, 选择 "**服务连接**" 和 "**注册表写入**" (选择 "**注册表写入**时, 自动选择**注册表读取**")。 然后选择“创建”。
+
+    ![显示如何添加新的共享访问策略](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
+
+5. 返回 "**共享访问策略**" 窗格, 从策略列表中选择新策略。
+
+6. 在 "**共享访问密钥**" 下, 选择连接字符串的复制图标 **--primary key**并保存值。
+
+    ![显示如何检索连接字符串](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
+
+有关 IoT 中心共享访问策略和权限的详细信息, 请参阅[访问控制和权限](./iot-hub-devguide-security.md#access-control-and-permissions)。
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>安排作业，用于调用直接方法和更新设备孪生的属性
 
@@ -172,9 +196,13 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
     pip install azure-iothub-service-client
     ```
 
+   > [!NOTE]
+   > 用于 azure iothub 和 azure iothub 设备客户端的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac OS, 请参阅为[Python 发布准备开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)中的 linux 和 Mac OS 特定部分。
+   >
+
 2. 使用文本编辑器，在工作目录中创建一个 scheduleJobService.py 文件。
 
-3. 在 scheduleJobService.py 文件的开头添加以下 `import` 语句和变量：
+3. 在 scheduleJobService.py 文件`import`的开头添加以下语句和变量。 将占位符替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。 `{IoTHubConnectionString}` 将`{deviceId}`占位符替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID:
 
     ```python
     import sys

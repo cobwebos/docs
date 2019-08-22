@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 23492133035f27aa3e1217269022565e0ff217a9
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5176fc36b62fc1e970bd51f6386191ea34c5170c
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018756"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872675"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -120,7 +120,7 @@ Get-AzRecoveryServicesVault
 
 输出与以下示例类似，请注意提供的关联 ResourceGroupName 和 Location（位置）。
 
-```
+```output
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -140,7 +140,21 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 在 VM 上启用保护之前，请使用 [Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0) 来设置保管库上下文。 设置保管库上下文后，它将应用于所有后续 cmdlet。 以下示例为保管库 *testvault* 设置保管库上下文。
 
 ```powershell
-Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
+Get-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "Contoso-docs-rg" | Set-AzRecoveryServicesVaultContext
+```
+
+### <a name="fetch-the-vault-id"></a>提取保管库 ID
+
+我们已计划根据 Azure PowerShell 指导原则弃用保管库上下文设置。 相反, 你可以存储或提取保管库 ID, 并将其传递给相关命令。 因此, 如果你尚未设置保管库上下文, 或者想要为某个保管库指定运行该命令, 请将保管库 ID 作为 "-vaultID" 传递给所有相关命令, 如下所示:
+
+```powershell
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault"
+$targetVault.ID
+```
+或
+
+```powershell
+$targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
 ```
 
 ### <a name="modifying-storage-replication-settings"></a>修改存储复制设置
@@ -148,8 +162,7 @@ Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultConte
 使用 [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty) 命令，将保管库的存储复制配置设置为 LRS/GRS
 
 ```powershell
-$vault= Get-AzRecoveryServicesVault -name "testvault"
-Set-AzRecoveryServicesBackupProperty -Vault $vault -BackupStorageRedundancy GeoRedundant/LocallyRedundant
+Set-AzRecoveryServicesBackupProperty -Vault $targetVault -BackupStorageRedundancy GeoRedundant/LocallyRedundant
 ```
 
 > [!NOTE]
@@ -167,7 +180,7 @@ Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 
 输出类似于以下示例：
 
-```
+```output
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
 ----                 ------------       -------------------- ----------                ----------
 DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 PM
@@ -206,7 +219,7 @@ New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "Az
 
 输出类似于以下示例：
 
-```
+```output
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
 ----                 ------------       -------------------- ----------                ----------
 NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
@@ -259,7 +272,7 @@ $joblist[0]
 
 输出类似于以下示例：
 
-```
+```output
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   ----------
 V2VM             Backup               InProgress            4/23/2016                5:00:30 PM                cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -307,9 +320,9 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $Ret
 > 从 Az PS 版本 1.6.0 开始，用户可以使用 Powershell 在策略中更新即时还原快照保留期
 
 ````powershell
-PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=7
-PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ````
 
 默认值为 2，用户可以将值设置为 1 到 5。 对于每周备份策略, 时间段设置为 5, 并且无法更改。
@@ -327,7 +340,7 @@ $job = Backup-AzRecoveryServicesBackupItem -Item $item -VaultId $targetVault.ID 
 
 输出类似于以下示例：
 
-```
+```output
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   ----------
 V2VM              Backup              InProgress          4/23/2016                  5:00:30 PM                cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -421,7 +434,7 @@ $rp[0]
 
 输出类似于以下示例：
 
-```powershell
+```output
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -469,7 +482,7 @@ VMConfig.JSON 文件将还原到存储帐户，托管磁盘将还原到指定的
 
 输出类似于以下示例：
 
-```powershell
+```output
 WorkloadName     Operation          Status               StartTime                 EndTime            JobID
 ------------     ---------          ------               ---------                 -------          ----------
 V2VM              Restore           InProgress           4/23/2016 5:00:30 PM                        cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -771,7 +784,7 @@ $rp[0]
 
 输出类似于以下示例：
 
-```powershell
+```output
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -800,7 +813,7 @@ Get-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 输出类似于以下示例：
 
-```powershell
+```output
 OsType  Password        Filename
 ------  --------        --------
 Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe
