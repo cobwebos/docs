@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 9f40ec658fc6725f381300d967c9d7cd61c3a218
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: a0c34fcc70d92f98a6d72e4cd2fc78d34d863d55
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624149"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650461"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -60,7 +60,7 @@ Azure Functions 支持跨平台的本地开发以及使用 Windows 和 Linux 作
 
 ### <a name="remote-build"></a>远程生成
 
-Azure Functions 可以自动对其在实现 zip 部署后收到的代码执行生成。 根据你的应用程序是在 Windows 还是 Linux 上运行, 这些生成的行为会略有不同。 如果以前已将应用程序设置为在 "[从包运行](run-functions-from-deployment-package.md)" 模式下运行, 则不会执行远程生成。 
+Azure Functions 可以自动对其在实现 zip 部署后收到的代码执行生成。 根据你的应用程序是在 Windows 还是 Linux 上运行, 这些生成的行为会略有不同。 如果以前已将应用程序设置为在 "[从包运行](run-functions-from-deployment-package.md)" 模式下运行, 则不会执行远程生成。 若要了解如何使用远程生成, 请导航到 " [zip 部署](#zip-deploy)"。
 
 > [!NOTE]
 > 如果你在远程生成时遇到问题, 可能是因为你的应用程序是在提供该功能之前创建的 (2019 年8月1日)。 尝试创建新的 function app。
@@ -85,11 +85,11 @@ Azure Functions 可以自动对其在实现 zip 部署后收到的代码执行�
 
 ##### <a name="consumption-preview-plan"></a>使用情况 (预览) 计划
 
-在消耗计划中运行的 Linux function apps 没有 SCM/Kudu 站点, 它限制了部署选项。 但是, 在消耗计划中运行的 Linux 上的函数应用支持远程生成。 这些远程生成使用[Oryx](https://github.com/microsoft/Oryx)。
+在消耗计划中运行的 Linux function apps 没有 SCM/Kudu 站点, 它限制了部署选项。 但是, 在消耗计划中运行的 Linux 上的函数应用支持远程生成。
 
 ##### <a name="dedicated-and-premium-preview-plans"></a>专用和高级 (预览版) 计划
 
-在 Linux 上运行的适用于[专用 (应用服务) 计划](functions-scale.md#app-service-plan)和[高级计划](functions-scale.md#premium-plan)的函数应用还具有受限的 SCM/Kudu 站点, 该站点自身利用了[Oryx](https://github.com/microsoft/Oryx)。
+在 Linux 上的[专用 (应用服务) 计划](functions-scale.md#app-service-plan)和[高级计划](functions-scale.md#premium-plan)中运行的函数应用还具有受限的 SCM/Kudu 站点。
 
 ## <a name="deployment-technology-details"></a>部署技术详细信息
 
@@ -111,7 +111,7 @@ Azure Functions 中提供了以下部署方法。
 
 >__如何使用：__ 使用偏爱的客户端工具进行部署：[VS Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure)、[Visual Studio](functions-develop-vs.md#publish-to-azure)或 [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure)。 若要手动将 .zip 文件部署到函数应用，请遵照[从 .zip 文件或 URL 进行部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)中的说明操作。
 
-若要执行使用远程生成的 zip 部署, 请使用以下[Core 工具](functions-run-local.md)命令:
+若要执行使用[远程生成](#remote-build)的 zip 部署, 请使用以下[Core 工具](functions-run-local.md)命令:
 
 ```bash
 func azure functionapp publish <app name> --build remote

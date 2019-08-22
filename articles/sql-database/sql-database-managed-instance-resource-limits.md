@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 412a3cb32663f5bd3bfad2d565b6797f92e26b75
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e5dc449dc51faccdd8c0e69337cc5f8ac19fa296
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641110"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874397"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -56,11 +56,13 @@ ms.locfileid: "69641110"
 | 最大数据库大小 | 由每个实例的最大存储大小决定 | 由每个实例的最大存储大小决定 |
 | 每个实例的数据库数目上限 | 100 | 100 |
 | 每个实例的最大数据库文件数 | 最多 280 个 | 每个数据库 32,767 个文件 |
+| 最大文件大小 | 8 TB | 4 TB |
 | 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[增大文件大小以获取更多 IOPS](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K (1375/vCore)<br/>添加更多的 Vcore, 以获得更好的 IO 性能。 |
 | 日志写入吞吐量限制 | 3 MB/s（每个 vCore）<br/>每个实例最大 22 MB/秒 | 每 vCore 4 MB/秒<br/>最大为 48 MB/秒（每个实例）|
 | 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[增大文件大小以获得更好的 IO 性能](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 不可用 |
 | 存储 IO 延迟 (近似) | 5-10 毫秒 | 1-2 毫秒 |
 | 最大 tempDB 大小 | 192 - 1,920 GB（每个 vCore 为 24 GB）<br/>添加更多 Vcore 以获取更多 TempDB 空间。 | 受最大实例存储大小的限制。 TempDB 日志文件的大小当前限制为 24GB/vCore。 |
+| 内存中 OLTP | 不支持 | 可用 |
 | 最大会话 | 30000 | 30000 |
 
 > [!NOTE]

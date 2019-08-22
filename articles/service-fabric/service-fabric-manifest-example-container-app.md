@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 622e6f7552d91cdb9ccf3668c302496c68a5920f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ece0b763a2dbe501b0f46d026c59e1294a448c59
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60719237"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650613"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>多容器应用程序和服务清单示例
 下面是多容器 Service Fabric 应用程序的应用程序和服务清单示例。 这些示例的用途是展示有哪些设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Windows Server 2016 容器示例](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows)清单。
@@ -28,7 +28,7 @@ ms.locfileid: "60719237"
 
 |清单|功能|
 |---|---|
-|[应用程序清单](#application-manifest)| [替代环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置容器端口到主机映射](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[配置容器注册表身份验证](service-fabric-get-started-containers.md#configure-container-registry-authentication)、[资源调控](service-fabric-resource-governance.md)、[设置隔离模式](service-fabric-get-started-containers.md#configure-isolation-mode)、[指定 OS 内部版本特定的容器映像](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
+|[应用程序清单](#application-manifest)| [替代环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置容器端口到主机映射](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[配置容器注册表身份验证](service-fabric-get-started-containers.md#configure-container-repository-authentication)、[资源调控](service-fabric-resource-governance.md)、[设置隔离模式](service-fabric-get-started-containers.md#configure-isolation-mode)、[指定 OS 内部版本特定的容器映像](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
 |[FrontEndService 服务清单](#frontendservice-service-manifest)| [设置环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置终结点](service-fabric-get-started-containers.md#configure-communication)、将命令传递给容器、[将证书导入到容器中](service-fabric-securing-containers.md)| 
 |[BackEndService 服务清单](#backendservice-service-manifest)|[设置环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置终结点](service-fabric-get-started-containers.md#configure-communication)、[配置卷驱动程序](service-fabric-containers-volume-logging-drivers.md)| 
 

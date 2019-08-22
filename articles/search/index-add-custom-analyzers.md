@@ -7,7 +7,7 @@ ms.service: search
 ms.topic: conceptual
 author: Yahnoosh
 ms.author: jlembicz
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 25edc52be90b6133ec0a0f0b5e8ea525d75d4800
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0cd2cf4b7847b767bac391f2547c0a5c3e3a9135
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881533"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891558"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>向 Azure 搜索索引添加自定义分析器
 
@@ -213,15 +213,15 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 |||  
 |-|-|  
-|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
-|类型|分析器类型来自受支持分析器列表。 请参阅下面[分析器](#AnalyzerTable)表中的 **analyzer_type** 列。|  
+|姓名|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
+|type|分析器类型来自受支持分析器列表。 请参阅下面[分析器](#AnalyzerTable)表中的 **analyzer_type** 列。|  
 |选项|必须是下面[分析器](#AnalyzerTable)表中列出的预定义分析器的有效选项。|  
 
 #### <a name="custom-analyzers"></a>自定义分析器
 
 |||  
 |-|-|  
-|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
+|姓名|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |类型|必须是“#Microsoft.Azure.Search.CustomAnalyzer”。|  
 |CharFilters|设置为[字符筛选器](#char-filters-reference)表中列出的预定义字符筛选器之一或索引定义中指定的自定义字符筛选器。|  
 |分词器|必需。 设置为下面 [Tokenizer](#Tokenizers) 表中列出的预定义 tokenizer 之一或索引定义中指定的自定义 tokenizer。|  
@@ -238,8 +238,8 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 |||  
 |-|-|  
-|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
-|type|字符筛选器类型来自受支持字符筛选器列表。 请参阅下面[字符筛选器](#char-filters-reference)表中的 **char_filter_type** 列。|  
+|姓名|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
+|类型|字符筛选器类型来自受支持字符筛选器列表。 请参阅下面[字符筛选器](#char-filters-reference)表中的 **char_filter_type** 列。|  
 |选项|必须是给定[字符筛选器](#char-filters-reference)类型的有效选项。|  
 
 ### <a name="tokenizers"></a>Tokenizer
@@ -262,8 +262,8 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 |||  
 |-|-|  
-|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
-|类型|标记筛选器名称来自受支持标记筛选器列表。 请参阅下面[标记筛选器](#TokenFilters)表中的 **token_filter_type** 列。|  
+|姓名|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
+|type|标记筛选器名称来自受支持标记筛选器列表。 请参阅下面[标记筛选器](#TokenFilters)表中的 **token_filter_type** 列。|  
 |选项|必须是给定标记筛选器类型的[标记筛选器](#TokenFilters)。|  
 
 <a name="PropertyReference"></a>  
@@ -279,7 +279,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |**analyzer_name**|**analyzer_type**  <sup>1</sup>|**说明和选项**|  
 |-|-|-|  
 |[keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)| （仅当有可用的选项时，类型才适用） |将某个字段的整个内容视为单个标记。 此分析器可用于邮政编码、ID 和某些产品名称等数据。|  
-|[pattern](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|通过正则表达式模式将文本灵活地分解成多个词条。<br /><br /> **选项**<br /><br /> lowercase (type: bool) - 确定词条是否为小写。 默认值为 true。<br /><br /> [pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (type: string) - 用于匹配标记分隔符的正则表达式模式。 默认值为 \w+。<br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (type: string) - 正则表达式标志。 默认值为空字符串。 允许的值：CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES<br /><br /> stopwords (type: string array) - 非索引字列表。 默认为空列表。|  
+|[pattern](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|通过正则表达式模式将文本灵活地分解成多个词条。<br /><br /> **选项**<br /><br /> lowercase (type: bool) - 确定词条是否为小写。 默认值为 true。<br /><br /> [pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (type: string) - 用于匹配标记分隔符的正则表达式模式。 默认值为 \w+。<br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (type: string) - 正则表达式标志。 默认值为空字符串。 允许的值：CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES<br /><br /> stopwords (type: string array) - 非索引字列表。 默认为空列表。|  
 |[simple](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/SimpleAnalyzer.html)|（仅当有可用的选项时，类型才适用） |在非字母处划分文本并将其转换为小写。 |  
 |[standard](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) <br />（也称为 standard.lucene）|StandardAnalyzer|标准 Lucene 分析器，由标准 tokenizer、小写筛选器和停止筛选器组成。<br /><br /> **选项**<br /><br /> maxTokenLength (type: int) - 最大标记长度。 默认值为 255。 超过最大长度的标记将被拆分。 可以使用的最大标记长度为 300 个字符。<br /><br /> stopwords (type: string array) - 非索引字列表。 默认为空列表。|  
 |standardasciifolding.lucene|（仅当有可用的选项时，类型才适用） |带 Ascii 折叠筛选器的标准分析器。 |  
@@ -323,7 +323,7 @@ analyzer_type 仅适用于可自定义的分析器。 如果没有选项（比�
 |[nGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|将输入标记为给定大小的 n 元语法。<br /><br /> **选项**<br /><br /> minGram (type: int) - 默认值：1，最大值：300。<br /><br /> maxGram (type: int) - 默认值：2，最大值：300。 必须大于 minGram。 <br /><br /> tokenChars (type: string array) - 要保留在标记中的字符类。 允许的值：“letter”、“digit”、“whitespace”、“punctuation”、“symbol”。 默认为空数组 - 保留所有字符。 |  
 |[path_hierarchy_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|用于路径式层次结构的 tokenizer。<br /><br /> **选项**<br /><br /> delimiter (type: string) - 默认值：'/。<br /><br /> replacement (type: string) - 如果设置该选项，则替换分隔符字符。 默认值与分隔符的值相同。<br /><br /> maxTokenLength (type: int) - 最大标记长度。 默认：300，最大值：300。 长度超过 maxTokenLength 的路径将被忽略。<br /><br /> reverse (type: bool) - 如果为 true，则按相反顺序生成标记。 默认值：false。<br /><br /> skip (type: bool) - 要跳过的初始标记。 默认值为 0。|  
 |[pattern](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|此 tokenizer 使用正则表达式模式匹配来构造不同的标记。<br /><br /> **选项**<br /><br /> [模式](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html)(类型: string)-正则表达式模式。 默认值为 \W +。 <br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (type: string) - 正则表达式标志。 默认值为空字符串。 允许的值：CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES<br /><br /> group (type: int) - 要提取到标记中的组。 默认值为 -1 (split)。|
-|[standard_v2](http://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|按照 [Unicode 文本分段规则](https://unicode.org/reports/tr29/)划分文本。<br /><br /> **选项**<br /><br /> maxTokenLength (type: int) - 最大标记长度。 默认：255，最大值：300。 超过最大长度的标记将被拆分。|  
+|[standard_v2](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|按照 [Unicode 文本分段规则](https://unicode.org/reports/tr29/)划分文本。<br /><br /> **选项**<br /><br /> maxTokenLength (type: int) - 最大标记长度。 默认：255，最大值：300。 超过最大长度的标记将被拆分。|  
 |[uax_url_email](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|将 URL 和电子邮件标记为一个标记。<br /><br /> **选项**<br /><br /> maxTokenLength (type: int) - 最大标记长度。 默认：255，最大值：300。 超过最大长度的标记将被拆分。|  
 |[whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceTokenizer.html)|（仅当有可用的选项时，类型才适用） |在空格处划分文本。 超过 255 个字符的标记将被拆分。|  
 

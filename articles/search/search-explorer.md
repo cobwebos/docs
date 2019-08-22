@@ -1,7 +1,7 @@
 ---
 title: Azure 门户中用于查询数据的搜索浏览器工具 - Azure 搜索
 description: 使用搜索浏览器等 Azure 门户工具在 Azure 搜索中查询索引。 使用高级语法输入搜索词或完全限定的搜索字符串。
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 87e5ec82299ef9ddc8bc8756196bb2ace3d1f6f3
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414239"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649973"
 ---
 # <a name="search-explorer-for-querying-data-in-azure-search"></a>Azure 搜索中用于查询数据的搜索浏览器 
 

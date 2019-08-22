@@ -3,19 +3,19 @@ title: 为 Azure 表存储中的内容编制索引，以便进行全文搜索 - 
 description: 了解如何使用 Azure 搜索索引器为 Azure 表存储中存储的数据编制索引。
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: bca7c1b9ffe7ac0ab82f4287bba201a78fbf726a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dffb0a41dbf33cd86014115b089036d69a8e4718
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755084"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648185"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>使用 Azure 搜索编制 Azure 表存储的索引
 本文介绍如何使用 Azure 搜索对 Azure 表存储中存储的数据编制索引。
@@ -67,7 +67,7 @@ ms.locfileid: "66755084"
 
 可通过以下一种方式提供表的凭据： 
 
-- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 可通过转到“存储帐户”边栏选项卡  > “设置” > “密钥”（适用于经典存储帐户）或“设置” > “访问密钥”（适用于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串      。
+- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 可通过转到“存储帐户”边栏选项卡  > “设置” > “密钥”（适用于经典存储帐户）或“设置” > “访问密钥”（适用于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
 - **存储帐户共享访问签名连接字符串**：`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 共享访问签名应具有容器（本例中为表）和对象（表行）的列表和读取权限。
 -  **表共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共享访问签名应具有表的查询（读取）权限。
 
@@ -115,7 +115,7 @@ ms.locfileid: "66755084"
 
 有关创建索引器 API 的详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
-有关定义索引器计划的详细信息请参阅[如何安排 Azure 搜索索引器](search-howto-schedule-indexers.md)。
+有关定义索引器计划的详细信息, 请参阅[如何为 Azure 搜索计划索引器](search-howto-schedule-indexers.md)。
 
 ## <a name="deal-with-different-field-names"></a>处理不同的字段名称
 有时，现有索引中的字段名称会不同于表中的属性名称。 可以使用字段映射将表中的属性名称映射到搜索索引中的字段名称。 若要详细了解字段映射，请参阅 [Azure 搜索索引器字段映射弥补数据源和搜索索引之间的差异](search-indexer-field-mappings.md)。

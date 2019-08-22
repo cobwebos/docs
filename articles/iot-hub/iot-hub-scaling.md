@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: ea7b38f509fcdaa4e41ce17db3beca44b05a59b2
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 9be0b93335cef919db4efa2fce361bda1f9b934e
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514481"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891994"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
 
@@ -63,7 +63,7 @@ Azure IoT 中心包含 [Azure 事件中心](../event-hubs/event-hubs-features.md
 从基本层迁移到标准层时，分配配置保持不变。
 
 > [!NOTE]
-> 免费层不支持升级到基本或标准。
+> 免费层不支持升级到基本层或标准层。
 
 ## <a name="iot-hub-rest-apis"></a>IoT 中心 REST API
 
@@ -83,7 +83,7 @@ IoT 中心基本层和标准层所支持的功能存在差异，也就是说，�
 | [创建文件上传 SAS URI](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | 是 | 是 |
 | [接收发往设备的通知](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | 是 | 是 |
 | [发送设备事件](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | 是 | 是 |
-| 发送模块事件 | AMQP 和 MQTT 仅 | AMQP 和 MQTT 仅 |
+| 发送模块事件 | 仅限 AMQP 和 MQTT | 仅限 AMQP 和 MQTT |
 | [更新文件上传状态](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | 是 | 是 |
 | [批量设备操作](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | 是的，IoT Edge 功能除外 | 是 |
 | [清除命令队列](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | 是 |
@@ -129,12 +129,8 @@ IoT 中心基本层和标准层所支持的功能存在差异，也就是说，�
 
 如果即将达到 IoT 中心允许的消息限制，可以使用这些[用于自动缩放的步骤](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/)在同一 IoT 中心层内增加一个 IoT 中心单元。
 
-## <a name="sharding"></a>分片
-
-尽管单个 IoT 中心可以扩展到数百万个设备，但有时解决方案所需的具体性能特征无法由单个 IoT 中心提供保证。 在这种情况下，可以跨多个 IoT 中心将设备分区。 多个 IoT 中心可以缓解流量喷发，并获得所需的吞吐量或操作速率。
-
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 IoT 中心功能和性能的详细信息的详细信息，请参阅[IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub)或[IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
+* 有关 IoT 中心功能和性能详细信息的详细信息, 请参阅[Iot 中心定价](https://azure.microsoft.com/pricing/details/iot-hub)或[iot 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
 
 * 若要更改 IoT 中心层，请执行[升级 IoT 中心](iot-hub-upgrade.md)中的步骤。

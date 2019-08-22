@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 80c90ceb0e2edac47d67b99e7fb7f03c1ab82fb1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5b3c65361f45c8ad5bdf3adf89dc3002c229d0d0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882359"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650412"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -87,7 +87,7 @@ ms.locfileid: "68882359"
 
    若要为备用次要可用性组或故障转移群集实例提供免费的被动许可证, 必须满足以下所有条件, 如[许可指南 PDF](https://download.microsoft.com/download/7/8/C/78CDF005-97C1-4129-926B-CE4A6FE92CF5/SQL_Server_2017_Licensing_guide.pdf)所述:
 
-   1. 你有通过[软件保障](https://www.microsoft.comlicensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)获得的[许可移动性](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)。 
+   1. 你有通过[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)获得的[许可移动性](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)。 
    1. 被动 SQL Server 实例不会向客户端提供 SQL Server 数据或运行活动 SQL Server 工作负荷。 它仅用于与主服务器同步, 否则, 维护被动数据库处于热备用状态。 如果它正在为数据提供服务 (例如向运行活动 SQL Server 工作负荷的客户端报告, 或执行任何 "工作", 如辅助服务器的其他备份), 则必须是付费许可 SQL Server 实例。 
    1. Active SQL Server 许可证由软件保障涵盖, 并允许使用**一个**被动辅助 SQL Server 实例, 最多可有与许可的活动服务器相同的计算量。 
    1. 辅助 SQL Server VM 利用自带许可证 (BYOL) 或 Azure 混合权益 (AHB)[许可证模型](virtual-machines-windows-sql-ahb.md)。 

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a5ced51eabe708dc7883fc91e5b6fa67f9211381
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f2b95affd08c989a9d1cdee53c0a4e6df16af106
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559627"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892037"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音？
 
-[自定义语音](https://aka.ms/custom-speech)是一组联机工具, 可用于评估和改善 Microsoft 的应用程序、工具和产品的语音到文本准确性。 开始使用的只是一些测试音频文件。 请按照以下链接开始创建自定义语音到文本体验。
+[自定义语音](https://aka.ms/customspeech)是一组联机工具, 可用于评估和改善 Microsoft 的应用程序、工具和产品的语音到文本准确性。 开始使用的只是一些测试音频文件。 请按照以下链接开始创建自定义语音到文本体验。
 
 ## <a name="whats-in-custom-speech"></a>自定义语音有哪些？
 

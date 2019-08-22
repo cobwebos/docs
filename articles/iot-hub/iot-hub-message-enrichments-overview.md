@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 5ef1749217dd8980892d7bf933cbe1412929fbbd
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976979"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873200"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>设备到云 IoT 中心消息的消息扩充（预览版）
 
@@ -76,6 +76,8 @@ ms.locfileid: "68976979"
 
 * 总消息大小（包括扩充）不能超过 256 KB。 如果消息大小超过 256 KB，IoT 中心会丢弃消息。 如果丢弃了消息，可以使用 [IoT 中心指标](iot-hub-metrics.md)来识别和调试错误。 例如，可以监视 d2c.telemetry.egress.invalid。
 
+* 消息根据不适用于数字克隆更改事件 ( [IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)的一部分)。
+
 ## <a name="pricing"></a>定价
 
 使用消息扩充不会产生额外的费用。 目前，将消息发送到 IoT 中心需要付费。 即使消息要发往多个终结点，也只需支付该消息的费用一次。
@@ -87,6 +89,8 @@ ms.locfileid: "68976979"
 ## <a name="next-steps"></a>后续步骤
 
 请查看以下文章来详细了解如何将消息路由到 IoT 中心：
+
+* [消息增强教程](tutorial-message-enrichments.md)
 
 * [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](iot-hub-devguide-messages-d2c.md)
 

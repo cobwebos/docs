@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4bc9a79576c3165585a4a2c897bd41bfb77c080c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43357bdeb444fed20f29107d10dc31a61857fccf
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693127"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877502"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 本文概述 Microsoft Azure IoT Central 体系结构。
 
@@ -81,17 +83,17 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ## <a name="data-export"></a>数据导出
 
-在 Azure IoT Central 应用程序，你可以[将数据持续导出](howto-export-data-event-hubs-service-bus.md)到自己的 Azure 事件中心和 Azure 服务总线实例。 也会定期可以将数据导出到 Azure Blob 存储帐户。 度量值、 设备和设备模板，可以导出 IoT 中心。
+在 Azure IoT Central 应用程序中, 可以将[数据连续导出](howto-export-data-event-hubs-service-bus.md)到自己的 Azure 事件中心和 Azure 服务总线实例。 还可以定期将数据导出到 Azure Blob 存储帐户。 IoT Central 可以导出度量、设备和设备模板。
 
-## <a name="batch-device-updates"></a>批量设备更新
+## <a name="batch-device-updates"></a>批处理设备更新
 
-在 Azure IoT Central 应用程序，你可以[创建和运行作业](howto-run-a-job.md)来管理连接的设备。 这些作业可以用来执行大容量更新设备属性或设置，或运行命令。 例如，可以创建一个作业来提高多个 refrigerated 自动贩卖机风扇速度。
+在 Azure IoT Central 应用程序中, 可以[创建和运行作业](howto-run-a-job.md)来管理连接设备。 通过这些作业, 可以对设备属性或设置进行大容量更新或运行命令。 例如, 可以创建一个作业来提高多个 refrigerated 自动售货机机的风扇速度。
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 
 [管理员可以使用预定义的角色定义适用于 Azure IoT Central 应用程序的访问规则](howto-administer.md)。 管理员可以通过为用户分配角色来决定用户可以访问的应用程序的具体区域。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 Azure IoT Central 中的安全功能包括：
 
@@ -103,10 +105,10 @@ Azure IoT Central 中的安全功能包括：
 ## <a name="ui-shell"></a>UI Shell
 
 UI Shell 是一个现代的基于 HTML5 浏览器的应用程序，响应速度快。
-管理员可以通过应用自定义主题和修改为指向您自己的自定义帮助的资源的帮助链接来自定义应用程序的 UI。 若要了解有关自定义 UI 的详细信息，请参阅[自定义 Azure IoT Central UI](howto-customize-ui.md)一文。
+管理员可以通过应用自定义主题和修改帮助链接来自定义应用程序的 UI, 以指向您自己的自定义帮助资源。 若要了解有关 UI 自定义的详细信息, 请参阅[自定义 Azure IOT CENTRAL UI](howto-customize-ui.md)一文。
 
-操作员可以创建个性化的应用程序仪表板。 可以有多个仪表板，以显示不同的数据以及它们之间进行切换。
+操作员可以创建个性化的应用程序仪表板。 您可以有多个仪表板, 用于显示不同的数据并在它们之间切换。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已了解 Azure IoT Central 的体系结构，建议下一步是了解如何[设备连接性](concepts-connectivity.md)中 Azure IoT 中心。
+现在, 你已了解 Azure IoT Central 的体系结构, 接下来要介绍 Azure IoT Central 中的[设备连接](concepts-connectivity.md)。

@@ -4,14 +4,14 @@ description: 介绍可在 Azure 资源管理器模板中使用的用于检索资
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 08/06/2019
+ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ec6e58438e7be953e1f672fb815ff3f68a7f252
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839257"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650418"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -57,7 +57,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 | Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
 | Microsoft.BotService/botServices/channels | listChannelWithKeys |
-| Microsoft.Cache/Redis | [listKeys](/rest/api/redis/redis/listkeys) |
+| Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
@@ -265,7 +265,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |是 |string |提供程序的命名空间 |
 | resourceType |否 |string |指定的命名空间中的资源类型。 |
@@ -340,7 +340,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 引用以前部署的资源时, 请提供资源 ID。 |
 | apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本, 请参阅[模板参考](/azure/templates/)。 |
@@ -634,55 +634,58 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ## <a name="resourceid"></a>resourceId
 
-`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
+`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
 
 返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。 
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
 | resourceGroupName |否 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 |
 | resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
 | resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |否 |string |下一个资源名称段（如果资源是嵌套的）。 |
+| resourceName2 |否 |string |下一个资源名称段 (如果需要)。 |
+
+当资源类型包括更多段时, 继续添加资源名称作为参数。
 
 ### <a name="return-value"></a>返回值
 
 将使用以下格式返回标识符：
 
-```json
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-```
+**/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}**
+
 
 ### <a name="remarks"></a>备注
 
-与[订阅级部署](deploy-to-subscription.md)一起使用时，`resourceId()` 函数只能检索在该级别部署的资源的 ID。 例如，你可以获取策略定义或角色定义的 ID，但不能获取存储帐户的 ID。 对于到资源组的部署，反过来也成立。 你无法获取在订阅级别部署的资源的资源 ID。
+提供的参数数目因资源是否为父资源或子资源而异, 并且该资源是否在相同的订阅或资源组中。
 
-指定的参数值取决于资源是否与当前部署位于同一订阅和资源组。 若要在同一订阅和资源组中获取存储帐户的资源 ID，请使用：
-
-```json
-"[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
-```
-
-若要在相同订阅但不同的资源组中获取存储帐户的资源 ID，请使用：
+若要获取同一订阅和资源组中父资源的资源 ID, 请提供该资源的类型和名称。
 
 ```json
-"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
+"[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-若要在不同的订阅和资源组中获取存储帐户的资源 ID，请使用：
+若要获取子资源的资源 ID, 请注意资源类型中的段数。 提供资源类型的每个段的资源名称。 段的名称对应于该层次结构中存在的资源。
+
+```json
+"[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
+```
+
+若要获取同一订阅但不同资源组中的资源的资源 ID, 请提供资源组名称。
+
+```json
+"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
+```
+
+若要获取不同订阅和资源组中的资源的资源 ID, 请提供订阅 ID 和资源组名称。
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-若要在不同的资源组中获取数据库的资源 ID，请使用：
-
-```json
-"[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
-```
+与[订阅级部署](deploy-to-subscription.md)一起使用时，`resourceId()` 函数只能检索在该级别部署的资源的 ID。 例如，你可以获取策略定义或角色定义的 ID，但不能获取存储帐户的 ID。 对于到资源组的部署，反过来也成立。 你无法获取在订阅级别部署的资源的资源 ID。
 
 在订阅范围内部署时，若要获取订阅级资源的资源 ID，请使用：
 
@@ -766,7 +769,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |

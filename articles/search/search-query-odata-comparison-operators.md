@@ -1,13 +1,13 @@
 ---
-title: OData 比较运算符参考-Azure 搜索
-description: OData 比较运算符、 eq、 ne、 gt、 l t、 ge、 和 le、 在 Azure 搜索查询中。
+title: OData 比较运算符引用-Azure 搜索
+description: Azure 搜索查询中的 OData 比较运算符、eq、ne、gt、lt、ge 和 le。
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,37 +19,37 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b51bf3d77283ae828f47fdb0355d2deb43f071a1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a8bd8b05fd874e05e5e59042d461f4a4286c81e4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079920"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648065"
 ---
-# <a name="odata-comparison-operators-in-azure-search---eq-ne-gt-lt-ge-and-le"></a>在 Azure 搜索中的 OData 比较运算符`eq`， `ne`， `gt`， `lt`， `ge`，和 `le`
+# <a name="odata-comparison-operators-in-azure-search---eq-ne-gt-lt-ge-and-le"></a>Azure 搜索中的 OData 比较运算符`eq`- `ne`、 `gt`、 `lt`、 `ge`、和`le`
 
-中的最基本操作[OData 筛选器表达式](query-odata-filter-orderby-syntax.md)Azure 搜索中为要比较为给定值的字段。 两种类型的比较可使用-相等比较和范围比较。 可以使用以下运算符来比较为常量值的字段：
+在 Azure 搜索的[OData 筛选器表达式](query-odata-filter-orderby-syntax.md)中, 最基本的操作是将字段与给定值进行比较。 可以进行两种类型的比较:-相等比较和范围比较。 您可以使用下列运算符来比较字段和常量值:
 
-相等运算符：
+相等运算符:
 
-- `eq`：测试字段是否**等于**常量值
-- `ne`：测试字段是否**不等于**常量值
+- `eq`：测试字段是否**等于**常数值
+- `ne`：测试字段是否**不等于**常数值
 
-范围运算符：
+范围运算符:
 
-- `gt`：测试字段是否**大于**常量值
-- `lt`：测试字段是否**小于**常量值
-- `ge`：测试字段是否**大于或等于**常量值
-- `le`：测试字段是否**小于或等于**常量值
+- `gt`：测试字段是否**大于**常数值
+- `lt`：测试字段是否**小于**常数值
+- `ge`：测试字段是否**大于或等于**常数值
+- `le`：测试字段是否**小于或等于**常数值
 
-可以结合使用范围运算符[逻辑运算符](search-query-odata-logical-operators.md)来测试是否为特定范围的值中的字段。 请参阅[示例](#examples)这篇文章中更高版本。
+可以结合使用范围运算符和[逻辑运算符](search-query-odata-logical-operators.md)来测试字段是否在某个值范围内。 请参阅本文后面的[示例](#examples)。
 
 > [!NOTE]
-> 如果您愿意，可以将常量值置于左侧和右侧的运算符和右侧的字段名称。 范围运算符反转比较的含义。 例如，如果常量的值是在左侧，`gt`像测试的常量值是否大于该字段。 此外可以使用比较运算符进行比较的函数，结果如`geo.distance`，值。 一个布尔值的函数等函数`search.ismatch`，比较将结果发送到`true`或`false`是可选的。
+> 如果需要, 可以将常量值放在运算符的左侧, 并将字段名称放在右侧。 对于范围运算符, 比较的含义是相反的。 例如, 如果常量值位于左侧, `gt`则会测试该常数值是否大于该字段。 还可以使用比较运算符来比较函数的结果 (例如`geo.distance`) 和值。 对于等布尔函数`search.ismatch`, 将结果与`true`或`false`进行比较是可选的。
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF ([扩展巴科斯-诺尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义的使用比较运算符的 OData 表达式语法。
+以下 EBNF ([扩展巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义使用比较运算符的 OData 表达式的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -63,57 +63,57 @@ variable_or_function ::= variable | function_call
 comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 ```
 
-交互式语法关系图也是可用的：
+还提供交互式语法关系图:
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法关系图](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
+> [适用于 Azure 搜索的 OData 语法关系图](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)的完整 EBNF。
+> 有关完整的 EBNF, 请参阅[Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)。
 
-有两种形式的比较表达式。 唯一区别是运算符的常量是否显示在左侧-或-右侧。 必须是运算符的表达式的另一端**变量**或函数调用。 变量可以是某字段名称或某个范围变量的情况下[lambda 表达式](search-query-odata-collection-operators.md)。
+比较表达式有两种形式。 它们之间唯一的区别在于常量是否显示在运算符的左侧或右侧。 运算符的另一侧的表达式必须是**变量**或函数调用。 变量可以是字段名称, 也可以是[lambda 表达式](search-query-odata-collection-operators.md)时的范围变量。
 
-## <a name="data-types-for-comparisons"></a>数据类型进行比较
+## <a name="data-types-for-comparisons"></a>用于比较的数据类型
 
-比较运算符的两面上的数据类型必须兼容。 例如，如果左侧和右侧是一个类型的字段`Edm.DateTimeOffset`，然后在右侧必须是日期时间常量。 数值数据类型是更灵活。 下表中所述，您可以比较变量和常量的任何其他数值类型，有一些限制，与任何数值类型的函数。
+比较运算符两侧的数据类型必须兼容。 例如, 如果左侧是类型`Edm.DateTimeOffset`为的字段, 则右侧必须为日期时间常量。 数值数据类型更加灵活。 可以将任何数值类型的变量和函数与任何其他数值类型的常量进行比较, 但有几个限制, 如下表中所述。
 
-| 变量或函数类型 | 常量值类型 | 限制 |
+| 变量或函数类型 | 常数值类型 | 限制 |
 | --- | --- | --- |
-| `Edm.Double` | `Edm.Double` | 比较都将遵守[特殊规则 `NaN`](#special-case-nan) |
-| `Edm.Double` | `Edm.Int64` | 常量转换为`Edm.Double`，从而导致大型大的值的精度损失 |
+| `Edm.Double` | `Edm.Double` | 比较遵循[ `NaN`的特殊规则](#special-case-nan) |
+| `Edm.Double` | `Edm.Int64` | 常数转换为`Edm.Double`, 导致大数量级值的精度损失 |
 | `Edm.Double` | `Edm.Int32` | 不适用 |
-| `Edm.Int64` | `Edm.Double` | 与比较`NaN`， `-INF`，或`INF`不允许 |
+| `Edm.Int64` | `Edm.Double` | 不允许`NaN`对`-INF`、或`INF`进行比较 |
 | `Edm.Int64` | `Edm.Int64` | 不适用 |
-| `Edm.Int64` | `Edm.Int32` | 常量转换为`Edm.Int64`比较之前 |
-| `Edm.Int32` | `Edm.Double` | 与比较`NaN`， `-INF`，或`INF`不允许 |
+| `Edm.Int64` | `Edm.Int32` | 在比较之前将`Edm.Int64`常数转换为 |
+| `Edm.Int32` | `Edm.Double` | 不允许`NaN`对`-INF`、或`INF`进行比较 |
 | `Edm.Int32` | `Edm.Int64` | 不适用 |
 | `Edm.Int32` | `Edm.Int32` | 不适用 |
 
-不允许，例如比较类型的字段的比较`Edm.Int64`到`NaN`，Azure 搜索 REST API 将返回"HTTP 400:错误的请求"时出错。
+对于不允许的比较, 如将类型`Edm.Int64`的字段与进行`NaN`比较, Azure 搜索 REST API 将返回 "HTTP 400:错误的请求 "错误。
 
 > [!IMPORTANT]
-> 尽管数字类型比较灵活，我们强烈建议，以便与变量或要比较的函数相同的数据类型的常量值是在筛选器中编写的比较。 这一点尤其重要时混合浮点和整数值，可能会丢失精度的隐式转换的。
+> 即使数值类型比较灵活, 我们强烈建议在筛选器中编写比较, 使常量值的数据类型与要与之进行比较的变量或函数的数据类型相同。 当混合浮点值和整数值时, 这一点尤其重要, 在这种情况下, 可能会丢失精度。
 
 <a name="special-case-nan"></a>
 
-### <a name="special-cases-for-null-and-nan"></a>特殊情况下为`null`和 `NaN`
+### <a name="special-cases-for-null-and-nan"></a>和的`null`特殊情况`NaN`
 
-使用比较运算符，它时，请务必记住，可能会在 Azure 搜索中的所有非集合字段`null`。 下表显示了用于比较表达式的所有可能结果其中任何一侧，可以是`null`:
+使用比较运算符时, 务必记住, Azure 搜索中的所有非集合字段都可能是`null`。 下表显示比较表达式的所有可能结果, 其中两侧可以是`null`:
 
-| 运算符 | 字段或变量时的结果 `null` | 仅该常量不在时的结果 `null` | 该字段或变量和常量时的结果 `null` |
+| 运算符 | 当只为字段或变量`null` | 仅当常量为`null` | 当字段或变量和常量都为`null` |
 | --- | --- | --- | --- |
-| `gt` | `false` | HTTP 400:无效的请求错误 | HTTP 400:无效的请求错误 |
-| `lt` | `false` | HTTP 400:无效的请求错误 | HTTP 400:无效的请求错误 |
-| `ge` | `false` | HTTP 400:无效的请求错误 | HTTP 400:无效的请求错误 |
-| `le` | `false` | HTTP 400:无效的请求错误 | HTTP 400:无效的请求错误 |
+| `gt` | `false` | HTTP 400:错误的请求错误 | HTTP 400:错误的请求错误 |
+| `lt` | `false` | HTTP 400:错误的请求错误 | HTTP 400:错误的请求错误 |
+| `ge` | `false` | HTTP 400:错误的请求错误 | HTTP 400:错误的请求错误 |
+| `le` | `false` | HTTP 400:错误的请求错误 | HTTP 400:错误的请求错误 |
 | `eq` | `false` | `false` | `true` |
 | `ne` | `true` | `true` | `false` |
 
-总之，`null`相同到其自身，且不小于或大于任何其他值。
+总而言之, `null`仅等于自身, 不小于或大于任何其他值。
 
-如果索引包含类型的字段`Edm.Double`上, 传`NaN`给这些字段的值，你将需要编写筛选器时为该帐户。 Azure 搜索实现处理的 IEEE 754 标准`NaN`值和具有此类值的比较生成不明显的结果下, 表中所示。
+如果索引具有类型`Edm.Double`为的字段, 并将值上载`NaN`到这些字段, 则在编写筛选器时需要考虑这一点。 Azure 搜索实现了用于处理`NaN`值的 IEEE 754 标准, 并且与此类值的比较产生了不明显的结果, 如下表所示。
 
-| 运算符 | 至少一个操作数时的结果 `NaN` |
+| 运算符 | 至少一个操作数为时的结果`NaN` |
 | --- | --- |
 | `gt` | `false` |
 | `lt` | `false` |
@@ -122,35 +122,35 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 | `eq` | `false` |
 | `ne` | `true` |
 
-总之，`NaN`不等于任何值，包括其本身。
+总而言之, `NaN`不等于任何值, 包括自身。
 
-### <a name="comparing-geo-spatial-data"></a>比较地理空间数据
+### <a name="comparing-geo-spatial-data"></a>比较异地空间数据
 
-您不能直接比较类型的字段`Edm.GeographyPoint`与常量值，但你可以使用`geo.distance`函数。 此函数返回类型的值`Edm.Double`，以便比较数值常量，以筛选根据常量的地理空间坐标的距离。 请参阅[示例](#examples)下面。
+不能直接将类型`Edm.GeographyPoint`为的字段与常量值进行比较, 但可以`geo.distance`使用函数。 此函数将返回一个类型`Edm.Double`的值, 因此, 您可以将它与一个数值常数进行比较, 以根据来自固定的地理空间坐标的距离进行筛选。 请参阅以下[示例](#examples)。
 
 ### <a name="comparing-string-data"></a>比较字符串数据
 
-可以使用完全匹配项的筛选器中比较字符串`eq`和`ne`运算符。 这种比较并区分大小写。
+使用`eq` 和`ne`运算符可以在筛选器中比较完全匹配的字符串。 这些比较区分大小写。
 
 ## <a name="examples"></a>示例
 
-匹配文档的位置`Rating`字段是介于 3 到 5，非独占之间：
+与`Rating`字段介于3和5之间的文档匹配 (含):
 
     Rating ge 3 and Rating le 5
 
-匹配文档的位置`Location`字段是小于 2 公里从给定的纬度和经度：
+与给定纬度和`Location`经度中的字段小于2千米的文档匹配:
 
     geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
 
-匹配文档的位置`LastRenovationDate`字段是大于或等于 2015 年 1 月 1 日，UTC 午夜：
+匹配以下内容: `LastRenovationDate`字段大于或等于2015年1月1日午夜 UTC 的文档:
 
     LastRenovationDate ge 2015-01-01T00:00:00.000Z
 
-匹配文档的位置`Details/Sku`字段不是`null`:
+匹配`Details/Sku`字段不`null`为的文档:
 
     Details/Sku ne null
 
-匹配的酒店，其中至少一个空间都具有类型"豪华房间"，其中的文档的字符串`Rooms/Type`字段完全匹配筛选器：
+与至少一个房间具有 "高级房间" 类型的酒店的文档匹配, 其中`Rooms/Type`字段的字符串完全匹配筛选器:
 
     Rooms/any(room: room/Type eq 'Deluxe Room')
 
@@ -158,5 +158,5 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 - [Azure 搜索中的筛选器](search-filters.md)
 - [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
 - [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

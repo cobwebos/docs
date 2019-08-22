@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45a7477fa312a172579c6b4717e9f679ac253e1b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 50f2f1f7f5d8509a28557e9704bc178be465b1ee
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823812"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648658"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -36,6 +36,20 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 - 更改计划
 
 本页面每月更新，请不时回来查看。 如果要查找超过 6 个月的项目，可以在 [Azure Active Directory 新增功能存档](whats-new-archive.md)中找到它们。
+
+---
+
+## <a name="august-2019"></a>2019 年 8 月
+
+### <a name="adalnet-ignores-the-msalnet-shared-cache-for-on-behalf-of-scenarios"></a>ADAL.NET 为代表的方案忽略 MSAL.NET 共享缓存
+
+**类型：** 已修复  
+**服务类别：** 身份验证（登录）  
+**产品功能：** 用户身份验证
+
+从 Azure AD 身份验证库 (ADAL.NET) 第5.0.0 版-预览版开始, 应用开发人员必须[为 web 应用和 Web api 每个帐户序列化一个缓存](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api)。 否则, 某些使用代理[流](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow)的方案以及某些特定用例`UserAssertion`可能会导致权限提升。 为避免出现这种情况, ADAL.NET 会为代表方案忽略用于 dotnet (MSAL.NET) 共享缓存的 Microsoft 身份验证库。
+
+有关此问题的详细信息, 请参阅[Azure Active Directory Authentication Library 提升权限漏洞](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1258)。
 
 ---
 
@@ -568,13 +582,13 @@ Azure AD 应用现在可以使用静态查询参数 (例如, `https://contoso.co
 
 ## <a name="april-2019"></a>2019 年 4 月
 
-### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-in-refreshed-azure-ad-identity-protection"></a>新 Azure AD 威胁智能检测功能现在已刷新 Azure AD Identity Protection
+### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-as-part-of-azure-ad-identity-protection"></a>新 Azure AD 威胁情报检测现在作为 Azure AD Identity Protection 的一部分提供
 
 **类型：** 新功能  
 **服务类别：** Azure AD Identity Protection  
 **产品功能：** 标识安全性和保护
 
-Azure AD 威胁情报检测现在在刷新的 Azure AD Identity Protection 中可用。 这一新功能有助于指出对于特定用户来说是异常的用户活动, 或与基于 Microsoft 内部和外部威胁情报的已知攻击模式一致的用户活动。
+Azure AD 威胁情报检测现在作为更新的 Azure AD Identity Protection 功能的一部分提供。 这一新功能可以帮助为特定用户或活动指出异常的用户活动, 该活动与基于 Microsoft 内部和外部威胁智能源的已知攻击模式一致。
 
 有关 Azure AD Identity Protection 的刷新版本的详细信息, 请参阅[公共预览博客中的四个主要 Azure AD Identity Protection 增强功能](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935), 以及[Azure Active Directory Identity Protection (已刷新) 是什么？](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) 下文. 有关 Azure AD 威胁智能检测的详细信息, 请参阅[Azure Active Directory Identity Protection 风险事件](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence)一文。
 

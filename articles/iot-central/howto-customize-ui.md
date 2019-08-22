@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cef0014fb47aeddcad785fb3f938ab928964a942
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 28a0e91befb717882aa202a776e0b9cddb8fd390
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725691"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876101"
 ---
-# <a name="customize-the-azure-iot-central-ui"></a>自定义 Azure IoT Central UI 
+# <a name="customize-the-azure-iot-central-ui"></a>自定义 Azure IoT Central UI
 
-本文介绍如何以管理员身份通过应用自定义主题和修改帮助链接来自定义应用程序的 UI, 以指向你自己的自定义帮助资源。 
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+本文介绍如何以管理员身份通过应用自定义主题和修改帮助链接来自定义应用程序的 UI, 以指向你自己的自定义帮助资源。
 
 以下屏幕截图显示了使用标准主题的页面:
 

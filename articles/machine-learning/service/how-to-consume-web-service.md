@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b7157cd58abc7f1fecf288e72b0232c8a67b7ee
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 4aa948a785153dd0d70a9af41ae0ed25036827f8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512580"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656267"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
@@ -43,7 +43,7 @@ ms.locfileid: "69512580"
 * `auth_enabled`-如果启用密钥身份验证, `True`则为; `False`否则为。
 * `token_auth_enabled`-如果启用令牌身份验证, `True`则为; `False`否则为。
 * `scoring_uri` - REST API 地址。
-
+* `swagger_uri`-OpenAPI 规范的地址。 如果已启用自动生成架构, 则可以使用此 URI。 有关详细信息, 请参阅[部署具有 Azure 机器学习服务的模型](how-to-deploy-and-where.md#schema)。
 
 可通过三种方式检索已部署的 Web 服务的此信息：
 
@@ -56,6 +56,7 @@ ms.locfileid: "69512580"
                                            image_config=image_config,
                                            workspace=ws)
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 * 可以使用 `Webservice.list` 检索工作区中为模型部署的 Web 服务列表。 可以添加筛选器，以缩小返回的信息列表范围。 有关可以筛选的对象的详细信息，请参阅 [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) 参考文档。
@@ -63,6 +64,7 @@ ms.locfileid: "69512580"
     ```python
     services = Webservice.list(ws)
     print(services[0].scoring_uri)
+    print(services[0].swagger_uri)
     ```
 
 * 如果知道已部署的服务的名称，可以创建 `Webservice` 的新实例，并以参数的形式提供工作区和服务名称。 新对象包含有关已部署的服务的信息。
@@ -70,11 +72,12 @@ ms.locfileid: "69512580"
     ```python
     service = Webservice(workspace=ws, name='myservice')
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 ### <a name="authentication-for-services"></a>服务身份验证
 
-Azure 机器学习提供了两种方法来控制对 web 服务的访问。 
+Azure 机器学习提供了两种方法来控制对 web 服务的访问。
 
 |身份验证方法|ACI|AKS|
 |---|---|---|

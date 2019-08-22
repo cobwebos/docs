@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 8e7456eff3062ef6667e7b0022ea9740c397a493
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5ffa77a05e6019ee6b5e29c5af5ed0130e027cae
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679250"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876503"
 ---
 > [!NOTE]
 > 本文档详细说明了2019年7月31日从 Azure 安全中心停用的功能列表。
@@ -160,7 +160,7 @@ Log Analytics 仪表板在单个工作区中显示了见解。 但是, 本机安
 - [Microsoft 高级威胁分析](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
 - [Azure AD 标识保护](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
-停用后, 你将无法添加或修改前面列表中提到的任何解决方案类型, 无论是通过 UI 还是 API。
+停用后, 你将无法添加或修改前面列表中提到的任何解决方案类型, 无论是通过 UI 还是 API。 Azure 安全中心将不再发现上述合作伙伴解决方案的任何新实例。
 
 如果你有现成的连接解决方案, 我们建议你转到 Azure Sentinel。
 

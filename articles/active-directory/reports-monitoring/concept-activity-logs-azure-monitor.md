@@ -17,12 +17,12 @@ ms.date: 04/22/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8fb570d328c7391c269d4a2aa91c69003b1cfc8
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f62ad020d2ec3b5ab712f50dca2dddd3b981f098
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989893"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656466"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD 中的活动日志 Azure Monitor
 
@@ -70,7 +70,7 @@ ms.locfileid: "68989893"
 
 ### <a name="storage-size-for-activity-logs"></a>用于活动日志的存储大小
 
-每个审核日志事件使用大约 2 KB 的数据存储。 如果一个租户有 100,000 个用户，每天会引发大约 150 万个事件，则每天需要大约 3 GB 的数据存储。 由于写入时每批需要大约五分钟的时间，则可预计每月大约有 9,000 次写入操作。 
+每个审核日志事件使用大约 2 KB 的数据存储。 登录事件日志约为 4 KB 的数据存储。 如果一个租户有 100,000 个用户，每天会引发大约 150 万个事件，则每天需要大约 3 GB 的数据存储。 由于写入时每批需要大约五分钟的时间，则可预计每月大约有 9,000 次写入操作。 
 
 
 下表包含的内容是根据租户大小进行的成本估算。这是一个常规用途的 v2 存储帐户，位于“美国西部”区域，保留期至少为一年。 若要针对应用程序的预期数据量进行更准确的估算，请使用 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/details/storage/blobs/)。

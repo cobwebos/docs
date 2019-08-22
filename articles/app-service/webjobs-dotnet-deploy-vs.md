@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: d50acc50880229626c847d41d9abe9a9e13d9c6e
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736115"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876884"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 开发和部署 WebJobs - Azure 应用服务
 
@@ -71,7 +71,7 @@ ms.locfileid: "68736115"
 
 ## <a name="webjobs-as-net-framework-console-apps"></a>用作 .NET Framework 控制台应用的 WebJob  
 
-当 Visual Studio 部署启用了 web 作业的 .NET Framework 控制台应用程序项目时, 它会将运行时文件复制到 web 应用中的相应文件夹 (对于连续 Web 作业, 则为*app_data/jobs/连续*, 为其*触发了 app_data/作业*/计划的或按需 Web 作业)。
+当 Visual Studio 部署启用 WebJobs 的 .NET Framework 控制台应用程序项目时，它会将运行时文件复制到 Web 应用中的相应文件夹（对于连续运行的 WebJobs，该文件夹为 *App_Data/jobs/continuous*，对于按计划运行或按需运行的 WebJobs，该文件夹为 *App_Data/jobs/triggered*）。
 
 已启用 Web 作业的项目中添加了以下项：
 
@@ -86,11 +86,11 @@ ms.locfileid: "68736115"
 
 ![显示链接到 Web 项目的 Web 作业项目的插图](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>先决条件
 
 如果使用的是 Visual Studio 2015，请安装[用于 .NET 的 Azure SDK (Visual Studio 2015)](https://azure.microsoft.com/downloads/)。
 
-如果使用的是 Visual Studio 2019，请安装 [Azure 开发工作负荷](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)。
+如果使用的是 Visual Studio 2017，请安装 [Azure 开发工作负荷](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)。
 
 ### <a id="convert"></a> 为现有控制台应用程序项目启用 WebJobs 部署
 

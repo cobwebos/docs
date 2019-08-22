@@ -3,19 +3,19 @@ title: 使用 Azure 搜索 Blob 索引器为 CSV Blob 编制索引 - Azure 搜�
 description: 使用 Azure 搜索索引在 Azure Blob 存储中抓取 CSV Blob 以进行全文搜索。 索引器可自动为所选数据源（如 Azure Blob 存储）引入数据。
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: e7d959e77d27fb04b18f402e4056d4dea1607039
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b135fd1a0758567a7b504996bf442a913741fe59
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522899"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656759"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>使用 Azure 搜索 Blob 索引器对 CSV blob 编制索引
 

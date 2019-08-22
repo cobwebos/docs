@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 298770b1b2da816ddef9154fafb20d7c6cb82df3
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 6c18a244ceae2ccd9a536abeb6bc2d85760bb0a6
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849046"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875911"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建并运行作业
 
@@ -76,7 +76,7 @@ ms.locfileid: "67849046"
 | -------------------- | ------------------------------------------------------- |
 | 已完成            | 此作业已在所有设备上执行。              |
 | 已失败               | 此作业失败且未在设备上完全执行。  |
-| 挂起的              | 此作业尚未开始在设备上执行。         |
+| 待处理              | 此作业尚未开始在设备上执行。         |
 | 正在运行              | 此作业当前正在设备上执行。             |
 | 已停止              | 此作业已由用户手动停止。           |
 
@@ -95,7 +95,7 @@ ms.locfileid: "67849046"
 | -------------------- | ----------------------------------------------------------------------------- |
 | 已完成            | 作业已在此设备上执行。                                     |
 | 已失败               | 作业在此设备上执行失败。 错误消息显示了详细信息。  |
-| 挂起的              | 作业尚未在此设备上执行。                                   |
+| 待处理              | 作业尚未在此设备上执行。                                   |
 
 > [!NOTE]
 > 如果已删除设备, 则无法选择该设备, 并将其显示为 "已删除", 并显示设备 ID。

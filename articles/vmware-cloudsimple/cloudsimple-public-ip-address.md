@@ -1,23 +1,23 @@
 ---
-title: VMware 解决方案 (按 CloudSimple)-Azure 公共 IP 地址
-description: 通过 CloudSimple 了解公共 IP 地址及其对 VMware 解决方案的好处
+title: Azure VMware 解决方案 (按 CloudSimple-公共 IP 地址)
+description: 通过 CloudSimple 了解公共 IP 地址及其对 Azure VMware 解决方案的好处
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 29d2bdb75a7f4409e6b3ffee2608cfe7adde6b1f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812521"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877679"
 ---
 # <a name="cloudsimple-public-ip-address-overview"></a>CloudSimple 公共 IP 地址概述
 
-使用公共 IP 地址, internet 资源可以与专用 IP 地址的私有云资源进行入站通信。 专用 IP 地址是虚拟机或软件负载平衡器。 专用 IP 地址在私有云 vCenter 上。 公共 IP 地址可让你将在私有云上运行的服务公开到 internet。
+使用公共 IP 地址, internet 资源可以通过专用 IP 地址与私有云资源进行入站通信。 专用 IP 地址是私有云 vCenter 上的虚拟机或软件负载均衡器。 公共 IP 地址可让你将在私有云上运行的服务公开到 internet。
 
 公共 IP 地址专用于专用 IP 地址, 直到你取消分配该地址。 公共 IP 地址只能分配给一个专用 IP 地址。
 
@@ -33,4 +33,4 @@ ms.locfileid: "68812521"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[分配公共 IP 地址](https://docs.azure.cloudsimple.com/public-ips/)
+* 了解如何[分配公共 IP 地址](public-ips.md)

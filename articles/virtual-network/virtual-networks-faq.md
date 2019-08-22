@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035344"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892023"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -29,9 +29,11 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 
 使用 VNet：
 
-* 创建私有云专用的 VNet：有时，不需要对解决方案使用跨界配置。 创建 VNet 时，VNet 中的服务和 VM 可以在云中安全地互相直接通信。 在解决方案中，还可以为需要进行 Internet 通信的 VM 和服务配置终结点连接。
-* 安全地扩展数据中心：借助 VNet，可以构建传统的站点到站点 (S2S) VPN，以便安全缩放数据中心的容量。 S2S VPN 使用 IPSEC 提供企业 VPN 网关和 Azure 之间的安全连接。
-* 实现混合云方案：利用 VNet 可以灵活支持一系列混合云方案。 可以安全地将基于云的应用程序连接到任何类型的本地系统，例如大型机和 Unix 系统。
+* 创建专用仅限云的专用 VNet。 有时不需要适用于解决方案的跨界配置。 创建 VNet 时，VNet 中的服务和 VM 可以在云中安全地互相直接通信。 在解决方案中，还可以为需要进行 Internet 通信的 VM 和服务配置终结点连接。
+
+* 安全地扩展数据中心。 借助 VNet，可以构建传统的站点到站点 (S2S) VPN，以便安全地缩放数据中心容量。 S2S VPN 使用 IPSEC 提供企业 VPN 网关和 Azure 之间的安全连接。
+
+* 启用混合云方案。 利用 VNet 可灵活地支持一系列混合云方案。 可以安全地将基于云的应用程序连接到任何类型的本地系统，例如大型机和 Unix 系统。
 
 ### <a name="how-do-i-get-started"></a>如何入门？
 请访问[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)帮助自己入门。 该内容提供了所有 VNet 功能的概述和部署信息。

@@ -1,6 +1,6 @@
 ---
 title: 将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (C#) | Microsoft Docs
-description: 作为设备开发人员，如何将 Raspberry Pi 连接到你的 Azure IoT Central 应用程序使用C#。
+description: 作为设备开发人员, 如何使用C#将 Raspberry Pi 连接到 Azure IoT Central 应用程序。
 author: viv-liu
 ms.author: viviali
 ms.date: 04/15/2019
@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 3e77494eacaf16ac23a531cb7a16fe8bf6117006
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3feb0b2b50851903bbd6799f46d489879e62bf43
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714418"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876223"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (C#)
 
 [!INCLUDE [howto-raspberrypi-selector](../../includes/iot-central-howto-raspberrypi-selector.md)]
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 本文介绍如何使用 C# 编程语言以设备开发人员的身份将 Raspberry Pi 连接到 Microsoft Azure IoT Central 应用程序。
 
@@ -25,12 +27,12 @@ ms.locfileid: "64714418"
 
 若要完成本文中的步骤，需要以下组件：
 
-* 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序  。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
-* 运行 Raspbian 操作系统的 Raspberry Pi 设备。 在 Raspberry Pi 必须能够连接到 internet。 有关详细信息，请参阅[设置 Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)。
+* 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
+* 运行 Raspbian 操作系统的 Raspberry Pi 设备。 Raspberry Pi 必须能够连接到 internet。 有关详细信息, 请参阅[设置 Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)。
 
 ## <a name="sample-devkits-application"></a>**示例 Devkits** 应用程序
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板   ：
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板：
 
 - 遥测数据，包括设备将收集的以下度量值：
   - 湿度
@@ -48,11 +50,11 @@ ms.locfileid: "64714418"
   - “模具编号”设备属性
   - “位置”云属性
 
-设备模板的配置的完整详细信息，请参阅[Raspberry Pi 设备模板详细信息](#raspberry-pi-device-template-details)。
+有关设备模板配置的完整详细信息, 请参阅[Raspberry Pi 设备模板详细信息](#raspberry-pi-device-template-details)。
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
-Azure IoT Central 应用程序中添加真实的设备，从**Raspberry Pi**设备模板。 请记下的设备连接详细信息 (**作用域 ID**，**设备 ID**，并**主键**)。 有关详细信息，请参阅[将真实设备添加到 Azure IoT Central 应用程序](tutorial-add-device.md)。
+在 Azure IoT Central 应用程序中, 从**Raspberry Pi**设备模板添加一个实际设备。 记下设备连接详细信息 (**作用域 id**、**设备 id**和**主密钥**)。 有关详细信息，请参阅[将真实设备添加到 Azure IoT Central 应用程序](tutorial-add-device.md)。
 
 ### <a name="create-your-net-application"></a>创建 .NET 应用程序
 
@@ -91,7 +93,7 @@ Azure IoT Central 应用程序中添加真实的设备，从**Raspberry Pi**设�
     > [!NOTE]
     > 你的 **Microsoft.Azure.Devices.Client** 包版本号可能高于所示版本号。
 
-1. 保存 **pisample.csproj**。 如果 Visual Studio Code 提示执行还原命令，请选择“还原”。 
+1. 保存 **pisample.csproj**。 如果 Visual Studio Code 提示执行还原命令，请选择“还原”。
 
 1. 打开 **Program.cs**，将内容替换为以下代码：
 
@@ -269,9 +271,9 @@ Azure IoT Central 应用程序中添加真实的设备，从**Raspberry Pi**设�
 
 ## <a name="run-your-net-application"></a>运行 .NET 应用程序
 
-将特定于设备的连接字符串添加到代码中，以便设备使用 Azure IoT Central 进行身份验证。 请按照这些说明[生成的设备连接字符串](howto-generate-connection-string.md)使用**作用域 ID**，**设备 ID**，并**主键**所做以前的注意。
+将特定于设备的连接字符串添加到代码中，以便设备使用 Azure IoT Central 进行身份验证。 按照这些说明使用之前记下的**作用域 ID**、**设备 ID**和主密钥[生成设备连接字符串](howto-generate-connection-string.md)。
 
-1. 替换`{your device connection string}`中**Program.cs**文件生成的连接字符串。
+1. 将`{your device connection string}` **Program.cs**文件中的替换为生成的连接字符串。
 
 1. 在命令行环境中运行以下命令：
 
@@ -307,9 +309,9 @@ Azure IoT Central 应用程序中添加真实的设备，从**Raspberry Pi**设�
 
 1. 在 Azure IoT Central 应用程序中，可以看到在 Raspberry Pi 上运行的代码如何与应用程序交互：
 
-   * 在真实设备的“度量”页上，可以看到遥测数据。 
-   * 在“属性”页上，可以看到报告的“模具编号”属性的值。  
-   * 在“设置”页中，可以更改  Raspberry Pi 上的各种设置，例如电压和风扇速度。
+   * 在真实设备的“度量”页上，可以看到遥测数据。
+   * 在“属性”页上，可以看到报告的“模具编号”属性的值。
+   * 在“设置”页中，可以更改 Raspberry Pi 上的各种设置，例如电压和风扇速度。
 
      以下屏幕截图显示 Raspberry Pi 接收设置更改：
 
@@ -317,7 +319,7 @@ Azure IoT Central 应用程序中添加真实的设备，从**Raspberry Pi**设�
 
 ## <a name="raspberry-pi-device-template-details"></a>Raspberry Pi 设备模板详细信息
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板   ：
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板：
 
 ### <a name="telemetry-measurements"></a>遥测数据度量
 
@@ -361,4 +363,4 @@ Azure IoT Central 应用程序中添加真实的设备，从**Raspberry Pi**设�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已了解如何将 Raspberry Pi 连接到 Azure IoT Central 应用程序，建议下一步是了解如何[设置自定义设备模板](howto-set-up-template.md)IoT 设备。
+现在, 你已了解如何将 Raspberry Pi 连接到 Azure IoT Central 应用程序, 接下来建议的下一步是了解如何为你自己的 IoT 设备[设置自定义设备模板](howto-set-up-template.md)。

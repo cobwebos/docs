@@ -8,16 +8,16 @@ ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: e6df6a1f751106f62cdfecc3a7b5efb0fe4c63bf
+ms.openlocfilehash: b5a78901a8fc3f4c370216c0cc378f57630d345e
 ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875999"
+ms.locfileid: "69879755"
 ---
-# <a name="export-your-data-in-azure-iot-central"></a>导出 Azure IoT Central 中的数据
+# <a name="export-your-data-in-azure-iot-central-preview-features"></a>在 Azure IoT Central 中导出数据 (预览功能)
 
-[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+[!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
 *本主题适用于管理员。*
 
@@ -61,19 +61,19 @@ ms.locfileid: "69875999"
 
 1. 登录到 IoT Central 应用程序。
 
-2. 在左侧菜单中, 选择 "**连续数据导出**"。
+2. 在左侧菜单中, 选择 "**数据导出**"。
 
     > [!Note]
     > 如果在左侧菜单中看不到“连续数据导出”，则说明你在应用中不是管理员。 请与管理员联系以设置数据导出。
 
-    ![创建新的 cde 事件中心](media/howto-export-data/export_menu1.png)
+    ![创建新的 cde 事件中心](media/howto-export-data-pnp/export-menu1.png)
 
 3. 选择右上方的 " **+ 新建**" 按钮。 选择**Azure 事件中心**或**azure 服务总线**作为导出目标。 
 
     > [!NOTE] 
     > 每个应用的最大导出数目是 5。 
 
-    ![创建新的连续数据导出](media/howto-export-data/export_new1.png)
+    ![创建新的连续数据导出](media/howto-export-data-pnp/export-new1.png)
 
 4. 在下拉列表框中, 选择**事件中心命名空间/服务总线命名空间**。 也可选取列表中的最后一个选项，即“输入连接字符串”。 
 
@@ -83,7 +83,7 @@ ms.locfileid: "69875999"
     > [!NOTE] 
     > 若要通过 7 天试用期的应用来配置连续事件导出，则唯一的方式是使用连接字符串。 这是因为 7 天试用期的应用没有关联的 Azure 订阅。
 
-    ![创建新的 cde 事件中心](media/howto-export-data/export_create1.png)
+    ![创建新的 cde 事件中心](media/howto-export-data-pnp/export-create1.png)
 
 5. （可选）如果选中了“输入连接字符串”，则会出现一个用于粘贴连接字符串的新框。 若要获取连接字符串，请执行以下操作：
     - 事件中心或服务总线, 请中转到 Azure 门户中的命名空间。
@@ -97,7 +97,7 @@ ms.locfileid: "69875999"
 
 6. 若要启用连续数据导出，请确保将“数据导出”设置为“打开”。 选择**保存**。
 
-    ![配置连续数据导出](media/howto-export-data/export_list1.png)
+    ![配置连续数据导出](media/howto-export-data-pnp/export-list1.png)
 
 7. 几分钟后，数据便会出现在所选目标中。
 
@@ -300,4 +300,4 @@ ms.locfileid: "69875999"
 了解如何将数据导出到 Azure 事件中心和 Azure 服务总线后，请继续进行下一步：
 
 > [!div class="nextstepaction"]
-> [如何触发 Azure Functions](howto-trigger-azure-functions.md)
+> [如何触发 Azure Functions](howto-trigger-azure-functions.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)

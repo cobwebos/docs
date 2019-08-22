@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d08dce95836328f6a0991601951057944fa5f61e
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0ad917215275ce2f80dfdd2ec4e5a16794b36c13
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536438"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650354"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>配置从本地到 CloudSimple 的 VPN 网关的高可用性连接
 
@@ -315,7 +315,7 @@ Cisco ASA 支持的 IKEv1 和 IKEv2 属性:
 
 在 Palo Alto 上通过代理 Id 配置站点到站点 VPN:
 
-<a href="https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/vpns/set-up-Site-to-Site-vpn.html#" target="_blank">设置站点到站点 VPN</a>
+<a href="https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/vpns/set-up-site-to-site-vpn#" target="_blank">设置站点到站点 VPN</a>
 
 设置隧道监视器:
 
@@ -323,4 +323,4 @@ Cisco ASA 支持的 IKEv1 和 IKEv2 属性:
 
 IKE 网关或 IPsec 隧道操作:
 
-<a href="https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/vpns/set-up-Site-to-Site-vpn/enabledisable-refresh-or-restart-an-ike-gateway-or-ipsec-tunnel.html#" target="_blank">启用/禁用、刷新或重启 IKE 网关或 IPsec 隧道</a>
+<a href="https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/vpns/set-up-site-to-site-vpn/enabledisable-refresh-or-restart-an-ike-gateway-or-ipsec-tunnel#" target="_blank">启用/禁用、刷新或重启 IKE 网关或 IPsec 隧道</a>

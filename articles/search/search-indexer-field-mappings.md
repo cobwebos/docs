@@ -3,19 +3,19 @@ title: 使用索引器进行自动索引的字段映射 - Azure 搜索
 description: 针对字段名称和数据表示的差异配置帐户的 Azure 搜索索引器字段映射。
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 771a6e413cd08a338da41c09cd6a0da35e28e5e4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b64f6dcecb26e35689ad6f569ade6c7862f06f1a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840657"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648137"
 ---
 # <a name="field-mappings-and-transformations-using-azure-search-indexers"></a>使用 Azure 搜索索引器的字段映射和转换
 
@@ -189,7 +189,7 @@ Azure 搜索支持两个不同的 Base64 编码:**HTTPSERVERUTILITY url 标记**
 | 带填充的 Base64 | `MDA+MDA/MDA=` | 使用 URL 安全字符并删除填充 | 使用标准 base64 字符并添加填充 |
 | 不带填充的 Base64 | `MDA+MDA/MDA` | 使用 URL 安全字符 | 使用标准 base64 字符 |
 | 带填充的 URL 安全 Base64 | `MDA-MDA_MDA=` | 删除填充 | 添加填充 |
-| 不带填充的 URL 安全 Base64 | `MDA-MDA_MDA` | None | 无 |
+| 不带填充的 URL 安全 Base64 | `MDA-MDA_MDA` | 无 | 无 |
 
 <a name="extractTokenAtPositionFunction"></a>
 

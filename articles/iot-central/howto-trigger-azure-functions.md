@@ -8,20 +8,22 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 92d6f005018040e20c2df72dbc608a47bc8d9f08
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: e7c0f0abdf4a96f4af904f76549bdebd62b803cd
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849022"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877318"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>在 Azure IoT Central 中使用 Webhook 触发 Azure Functions
 
-本主题适用于构建者和管理员  。
+本主题适用于构建者和管理员。
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 使用 Azure Functions 对来自 IoT Central 规则的 Webhook 输出运行无服务器代码。 无需预配 VM 或发布 web 应用即可使用 Azure Functions, 而是可以运行此代码无服务器。 先使用 Azure Functions 转换 Webhook 有效负载，然后再将它发送到最终目标，如 SQL 数据库或事件网格。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -45,7 +47,7 @@ ms.locfileid: "67849022"
 
 4. 在 IoT Central 中，导航到要连接到函数应用的规则。
 
-5. 添加 Webhook 操作。 输入“显示名称”  ，并将之前复制的函数 URL 粘贴到“回调 URL”  中。
+5. 添加 Webhook 操作。 输入“显示名称”，并将之前复制的函数 URL 粘贴到“回调 URL”中。
 
     ![向回调 URL 字段中输入函数 URL](media/howto-trigger-azure-functions/configurewebhook.PNG)
 

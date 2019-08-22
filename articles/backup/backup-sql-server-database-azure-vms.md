@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6a929359c0e4e0a5c64eadbf41f565dfeb56a233
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854117"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872908"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -51,22 +51,29 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
 - **允许 Azure 数据中心 IP 范围**。 此选项允许下载中的[IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 若要访问网络安全组 (NSG), 请使用 Set-azurenetworksecurityrule cmdlet。 如果你是安全收件人, 则仅列出特定于区域的 Ip, 你还需要更新安全收件人列表以启用身份验证 Azure Active Directory (Azure AD) 服务标记。
 
-- **允许使用 NSG 标记进行访问**。 如果使用 Nsg 来限制连接, 此选项会将规则添加到 NSG, 以允许使用 AzureBackup 标记对 Azure 备份进行出站访问。 除了此标记之外, 你还需要 Azure AD 和 Azure 存储的相应[规则](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags), 以允许连接到身份验证和数据传输。 AzureBackup 标记当前仅在 PowerShell 上可用。 使用 AzureBackup 标记创建规则:
+- **允许使用 NSG 标记进行访问**。  如果使用 NSG 来限制连接, 则应使用 AzureBackup service 标记允许对 Azure 备份进行出站访问。 此外, 还应允许通过使用 Azure AD 和 Azure 存储的[规则](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)进行身份验证和数据传输。 可以通过门户或 PowerShell 执行此操作。
 
-    - 添加 Azure 帐户凭据并更新国家/地区云<br/>
-    `Add-AzureRmAccount`
+    使用门户创建规则:
+    
+    - 在 "**所有服务**" 中, 请参阅 "**网络安全组**" 并选择 "网络安全组"。
+    - 选择 "**设置**" 下的 "**出站安全规则**"。
+    - 选择 **添加** 。 输入创建新规则所需的所有详细信息, 如 "[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)" 中所述。 确保选项**Destination**设置为**服务标记**,**目标服务标记**设置为**AzureBackup**。
+    - 单击 "**添加**" 以保存新创建的出站安全规则。
+    
+   使用 Powershell 创建规则:
 
-    - 选择 NSG 订阅<br/>
-    `Select-AzureRmSubscription "<Subscription Id>"`
-
-     - 选择 NSG<br/>
-    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
-
-    - 为 Azure 备份服务标记添加允许出站规则<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
-
+   - 添加 Azure 帐户凭据并更新国家/地区云<br/>
+    ``Add-AzureRmAccount``
+  - 选择 NSG 订阅<br/>
+    ``Select-AzureRmSubscription "<Subscription Id>"``
+  - 选择 NSG<br/>
+    ```$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"```
+  - 为 Azure 备份服务标记添加允许出站规则<br/>
+   ```Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"```
   - 保存 NSG<br/>
-    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+    ```Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg```
+
+   
 - **允许使用 Azure 防火墙标记进行访问**。 如果使用的是 Azure 防火墙, 请使用 AzureBackup [FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)创建应用程序规则。 这允许对 Azure 备份进行出站访问。
 - **部署 HTTP 代理服务器来路由流量**。 在 Azure VM 上备份 SQL Server 数据库时, VM 上的备份扩展将使用 HTTPS Api 将管理命令发送到 Azure 备份, 并将数据发送到 Azure 存储。 Backup extension 还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 该扩展是为了访问公共 Internet 而配置的唯一组件。
 
@@ -168,7 +175,7 @@ Windows Registry Editor Version 5.00
    为了优化备份负载，Azure 备份会将一个备份作业中的最大数据库数目设置为 50。
 
      * 若要对 50 个以上的数据库提供保护，请配置多个备份。
-     * 启用[](#enable-auto-protection)整个实例或 Always On 可用性组。 在 " **AUTOPROTECT** " 下拉列表中, 选择 "**打开**", 然后选择 **"确定"** 。
+     * 若要[启用](#enable-auto-protection)整个实例或 Always On 可用性组, 请在 " **AUTOPROTECT** " 下拉列表中选择 "**打开**", 然后选择 **"确定"** 。
 
     > [!NOTE]
     > [自动保护](#enable-auto-protection)功能不仅能同时对所有现有数据库启用保护, 还会自动保护添加到该实例或可用性组的任何新数据库。  

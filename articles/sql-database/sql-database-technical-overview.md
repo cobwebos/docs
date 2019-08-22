@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: e648f89a86d7d6064b883496f888cb27a4af27e4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1c4fae5c41f4f23c4a7fe3135b602133aa69aacd
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566390"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873727"
 ---
 # <a name="what-is-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务
 
@@ -197,6 +197,8 @@ SQL 数据库让应用程序的构建和维护更加轻松、高效。 SQL 数�
   一种可免费下载的开源代码编辑器，适用于 Windows、macOS 和 Linux，并支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 SQL 数据仓库）。
 
 SQL 数据库支持在 MacOS、Linux 和 Windows 上使用 Python、Java、Node.js、PHP、 Ruby 和 .NET 生成应用程序。 SQL 数据库和 SQL Server 支持相同的[连接库](sql-database-libraries.md)。
+
+[!INCLUDE [sql-database-create-manage-portal](includes/sql-database-create-manage-portal.md)]
 
 ## <a name="sql-database-frequently-asked-questions-faq"></a>SQL 数据库常见问题解答 (FAQ)
 

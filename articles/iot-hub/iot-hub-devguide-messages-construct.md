@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 9a62001f168e0577ea07ad030923a4d0398e50af
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534974"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872489"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -51,7 +51,7 @@ IoT 中心消息由以下部分组成：
 
 | 属性 | 描述  |用户可设置？|关键字 </br>路由查询|
 | --- | --- | --- | --- |
-| message-id |用户可设置的，用于请求-答复模式的消息标识符。 格式:ASCII 7 位字母数字字符 + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。  | 是 | messageId |
+| message-id |用户可设置的，用于请求-答复模式的消息标识符。 格式：ASCII 7 位字母数字字符 + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。  | 是 | messageId |
 | iothub-enqueuedtime |IoT 中心收到[设备到云](iot-hub-devguide-d2c-guidance.md)消息的日期和时间。 | 否 | enqueuedTime |
 | user-id |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 | 是 | userId |
 | iothub-connection-device-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **deviceId**。 | 否 | connectionDeviceId |
@@ -63,7 +63,7 @@ IoT 中心消息由以下部分组成：
 
 | 属性 | 描述  |用户可设置？|
 | --- | --- | --- |
-| message-id |用户可设置的，用于请求-答复模式的消息标识符。 格式:ASCII 7 位字母数字字符 + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。  |是|
+| message-id |用户可设置的，用于请求-答复模式的消息标识符。 格式：ASCII 7 位字母数字字符 + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。  |是|
 | sequence-number |IoT 中心分配给每条云到设备消息的编号（对每个设备队列是唯一的）。 |否|
 | to |[从云到设备](iot-hub-devguide-c2d-guidance.md)的消息中指定的目标。 |否|
 | absolute-expiry-time |消息过期的日期和时间。 |否|   |
@@ -73,7 +73,7 @@ IoT 中心消息由以下部分组成：
 
 ## <a name="message-size"></a>消息大小
 
-IoT 中心用于衡量消息大小的方法与协议无关，仅考虑实际有效负载。 以字节为单位的大小计算以下各项之和：
+IoT 中心用于衡量消息大小的方法与协议无关，仅考虑实际有效负载。 大小 (以字节为单位) 将计算为以下值的总和:
 
 * 以字节为单位的正文大小。
 * 以字节为单位的消息系统属性的所有值的大小。

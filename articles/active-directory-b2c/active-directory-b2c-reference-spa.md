@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1196f3b186abcd914c409db06b52654f82f4158b
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: e3cc95c908ea81d21b6f32bed8b754feb5d724ff
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377321"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874170"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 OAuth 2.0 隐式流的单页登录
 
@@ -27,7 +27,7 @@ ms.locfileid: "68377321"
 
 为了支持这些应用程序，Azure Active Directory B2C (Azure AD B2C) 使用 OAuth 2.0 隐式流。 [OAuth 2.0 规范第 4.2 部分](https://tools.ietf.org/html/rfc6749)描述了 OAuth 2.0 授权隐式授权流。 在隐式流中，应用直接从 Azure Active Directory (Azure AD) 授权终结点接收令牌，无需任何服务器到服务器的交换。 所有身份验证逻辑和会话处理都是使用页面重定向或弹出框完全在 JavaScript 客户端中完成的。
 
-Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了简单的身份验证和授权。 Azure AD B2C 引入了[策略参数](active-directory-b2c-reference-policies.md)。 通过该策略参数，可以使用 OAuth 2.0 向应用添加策略，例如注册、登录和配置文件管理用户流。 在本文的示例 HTTP 请求中, 将使用**fabrikamb2c.onmicrosoft.com**作为示例。 如果你有一个租户并已创建了用户流，则可将 `fabrikamb2c` 替换为该租户的名称。
+Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了简单的身份验证和授权。 Azure AD B2C 引入了[策略参数](active-directory-b2c-reference-policies.md)。 通过该策略参数，可以使用 OAuth 2.0 向应用添加策略，例如注册、登录和配置文件管理用户流。 在本文的示例 HTTP 请求中, 将使用 **{租户}. onmicrosoft**作为示例。 将`{tenant}`替换为你的租户名称 (如果你有), 并且还创建了一个用户流。
 
 隐式登录流看起来类似于下图。 本文后面将详细说明每个步骤。
 
@@ -37,12 +37,10 @@ Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了�
 
 当 Web 应用程序需要对用户进行身份验证并运行用户流时，它可以将用户定向到 `/authorize` 终结点。 用户可以根据用户流执行操作。
 
-在此请求中，客户端指示在 `scope` 参数中需要从用户获取的权限以及要在 `p` 参数中运行的用户流。 以下部分中提供了三个示例（带换行符以便阅读），每个示例使用不同的用户流。 要了解每个请求的工作原理，请尝试将请求粘贴到浏览器并运行它。 如果你有一个租户并已创建了用户流，则可将 `fabrikamb2c` 替换为该租户的名称。
+在此请求中, 客户端指示它需要在`scope`参数中获取用户的权限, 以及要运行的用户流。 若要查看请求的工作方式, 请尝试将请求粘贴到浏览器并运行该请求。 将 `{tenant}` 替换为 Azure AD B2C 租户的名称。 将`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`替换为之前在租户中注册的应用程序的应用程序 ID。 将`{policy}`替换为你在租户中创建的策略的名称, 例如`b2c_1_sign_in`。
 
-### <a name="use-a-sign-in-user-flow"></a>使用登录用户流
-
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+```HTTP
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=id_token+token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -50,37 +48,12 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &scope=openid%20offline_access
 &state=arbitrary_data_you_can_receive_in_the_response
 &nonce=12345
-&p=b2c_1_sign_in
-```
-
-### <a name="use-a-sign-up-user-flow"></a>使用注册用户流
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
-&response_type=id_token+token
-&redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=fragment
-&scope=openid%20offline_access
-&state=arbitrary_data_you_can_receive_in_the_response
-&nonce=12345
-&p=b2c_1_sign_up
-```
-
-### <a name="use-an-edit-profile-user-flow"></a>使用编辑配置文件用户流
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
-&response_type=id_token+token
-&redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=fragment
-&scope=openid%20offline_access
-&state=arbitrary_data_you_can_receive_in_the_response
-&nonce=12345
-&p=b2c_1_edit_profile
 ```
 
 | 参数 | 必填 | 描述 |
 | --------- | -------- | ----------- |
+|组织| 是 | Azure AD B2C 租户的名称|
+|政策| 是| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如: `b2c_1_sign_in`、 `b2c_1_sign_up`或。 `b2c_1_edit_profile` |
 | client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
 | response_type | 是 | 必须包含 OpenID Connect 登录的 `id_token`。 也可以包含响应类型 `token`。 如果使用 `token`，则应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。  如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
 | redirect_uri | 否 | 应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须完全匹配在门户中注册的其中一个重定向 URI，但必须经 URL 编码。 |
@@ -88,7 +61,6 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | 范围 | 是 | 范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 `offline_access` 作用域对 Web 应用是可选的。 它表示你的应用需要刷新令牌才能长期访问资源。 |
 | 省/自治区/直辖市 | 否 | 同时随令牌响应返回的请求中所包含的值。 它可以是你想要使用的任何内容的字符串。 随机生成的唯一值通常用于防止跨站点请求伪造攻击。 该状态也用于在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户之前所在的页面。 |
 | nonce | 是 | 由应用生成且包含在请求中的值，以声明方式包含在生成的 ID 令牌中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机产生的唯一字符串，可用于识别请求的来源。 |
-| p | 是 | 要执行的策略。 它是在 Azure AD B2C 租户中创建的策略（用户流）的名称。 策略名称值应以“b2c\_1\_”开头。 |
 | prompt | 否 | 需要的用户交互类型。 目前唯一有效的值是 `login`。 此参数会强制用户在该请求上输入其凭据。 单一登录不会生效。 |
 
 此时，要求用户完成策略的工作流。 用户可能必须输入其用户名和密码、用社交标识登录、注册目录或者执行任何其他数目的步骤。 用户操作取决于用户流是如何定义的。
@@ -98,7 +70,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 ### <a name="successful-response"></a>成功的响应
 使用 `response_mode=fragment` 和 `response_type=id_token+token` 的成功响应如下所示（包含换行符以便阅读）：
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &token_type=Bearer
@@ -120,7 +92,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 ### <a name="error-response"></a>错误响应
 错误响应也可能发送到重定向 URI，使应用可以对其进行适当处理：
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -141,11 +113,15 @@ error=access_denied
 
 Azure AD B2C 具有 OpenID Connect 元数据终结点。 应用可以使用终结点在运行时提取 Azure AD B2C 的相关信息。 此信息包括终结点、令牌内容和令牌签名密钥。 Azure AD B2C 租户中的每个用户流都有一个 JSON 元数据文档。 例如，fabrikamb2c.onmicrosoft.com 租户中的 b2c_1_sign_in 用户流的元数据文档位于以下位置：
 
-`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
+```HTTP
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/.well-known/openid-configuration
+```
 
 此配置文档的其中一个属性是 `jwks_uri`。 相同用户流的值是：
 
-`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`
+```HTTP
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
+```
 
 若要确定对 ID 令牌签名所用的用户流（以及提取元数据的位置），共有两个选择。 第一种方法，用户流名称包含在 `id_token` 的 `acr` 声明中。 有关如何从 ID 令牌中分析声明的信息，请参阅 [Azure AD B2C 令牌参考](active-directory-b2c-reference-tokens.md)。 另一个方法是在发出请求时在 `state` 参数的值中对用户流进行编码。 然后对 `state` 参数进行解码以确定所使用的用户流。 任意一种方法均有效。
 
@@ -175,8 +151,8 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点。 应用可以使用终�
 
 在典型的 Web 应用流中，你将对 `/token` 终结点发出请求。 但是, 该终结点不支持 CORS 请求, 因此, 不能选择进行 AJAX 调用来获取刷新令牌。 相反，可以在隐藏的 HTML iframe 元素中使用隐式流，以获取其他 Web API 的新令牌。 下面是一个示例（带换行符以便阅读）：
 
-```
-https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+```HTTP
+https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -185,11 +161,12 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &state=arbitrary_data_you_can_receive_in_the_response
 &nonce=12345
 &prompt=none
-&p=b2c_1_sign_in
 ```
 
 | 参数 | 必需？ | 描述 |
 | --- | --- | --- |
+|组织| 必填 | Azure AD B2C 租户的名称|
+政策| 必填| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如: `b2c_1_sign_in`、 `b2c_1_sign_up`或。 `b2c_1_edit_profile` |
 | client_id |必填 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | response_type |必填 |必须包含 OpenID Connect 登录的 `id_token`。  也可能包含响应类型 `token`。 如果在此处使用 `token`，应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
 | redirect_uri |建议 |应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 |
@@ -206,7 +183,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 ### <a name="successful-response"></a>成功的响应
 使用 `response_mode=fragment` 的成功响应如以下示例所示：
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_sent_earlier
@@ -226,7 +203,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 ### <a name="error-response"></a>错误响应
 错误响应也可能发送到重定向 URI，使应用可以对其进行适当处理。  对于 `prompt=none`，错误应如以下示例所示：
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
@@ -247,16 +224,17 @@ ID 令牌和访问令牌在较短时间后都会过期。 应用必须准备好�
 
 只需将用户重定向到[验证 ID 令牌](#validate-the-id-token)中所述的相同 OpenID Connect 元数据文档中列出的 `end_session_endpoint`。 例如：
 
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
-p=b2c_1_sign_in
-&post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
+```HTTP
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| 参数 | 必需？ | 描述 |
-| --- | --- | --- |
-| p |必填 |要用于从应用程序中注销用户的策略。 |
-| post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |
+| 参数 | 必填 | 描述 |
+| --------- | -------- | ----------- |
+| 组织 | 是 | Azure AD B2C 租户的名称 |
+| 政策 | 是 | 想要用于从应用程序中注销用户的用户流。 |
+| post_logout_redirect_uri | 否 | 用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |
+| 省/自治区/直辖市 | 否 | 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用程序需验证请求和响应中的 `state` 值是否相同。 |
+
 
 > [!NOTE]
 > 将用户定向到 `end_session_endpoint` 会清除用户的某些 Azure AD B2C 单一登录状态。 但是，不会从用户的社交标识提供者会话中注销该用户。 如果用户在后续登录中选择相同的标识提供者, 则会重新对用户进行身份验证, 而无需输入其凭据。 例如，如果用户要注销 Azure AD B2C 应用程序，并不表示他们想要完全注销其 Facebook 帐户。 但是，如果是本地帐户，则会以正确的方式结束用户的会话。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 60b3d1dcc7d60b25319b3fa5dd740541a457927f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 6b5be5271e2ff579d93cb70f7c8da93d861d4dc0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640091"
+ms.locfileid: "69648729"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -238,7 +238,7 @@ azcopy login --identity --identity-resource-id "<resource-id>"
 此示例命令将数据从本地目录递归复制到 blob 容器。 将一个虚构的 SAS 令牌追加到容器 URL 的末尾。
 
 ```azcopy
-azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
+azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
 若要了解有关 SAS 令牌以及如何获取 SAS 令牌的详细信息, 请参阅[使用共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)。

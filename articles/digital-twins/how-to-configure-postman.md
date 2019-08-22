@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 08/20/2019
 ms.author: v-adgera
-ms.openlocfilehash: 7ceb36d818c84642461372f0df70c8088908550c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 66dbfd09ef07740c07ddb010b73e33e783340e5a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965807"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873660"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -53,7 +53,9 @@ ms.locfileid: "68965807"
 
 ## <a name="obtain-an-oauth-20-token"></a>获取 OAuth 2.0 令牌
 
-接下来，设置并配置 Postman 以获取 Azure Active Directory 令牌。 之后，使用获取的令牌向 Azure 数字孪生发出经过身份验证的 HTTP 请求：
+[!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
+
+设置并配置 Postman 以获取 Azure Active Directory 令牌。 之后，使用获取的令牌向 Azure 数字孪生发出经过身份验证的 HTTP 请求：
 
 1. 前往 [www.getpostman.com](https://www.getpostman.com/) 下载应用。
 1. 验证“授权 URL”正确无误。 它应采用以下格式：

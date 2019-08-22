@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 99c4f0f99af61196cf1a12f2f68a7d10d8b2e6c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ece55cdad04e71d339944b5fcda5a16d35630c16
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477155"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877725"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虚拟机上的 SQL Server 是什么？ (Windows)
 
@@ -83,7 +83,7 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL VM 还
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2)、[Standard  BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
-可以使用 PowerShell 部署 Azure 门户中不可用的较旧的 SQL Server 映像。 若要使用 Powershell 查看所有可用映像，请使用以下命令：
+可以使用 PowerShell 部署 Azure 门户中未提供的 SQL Server 的旧映像。 若要使用 Powershell 查看所有可用映像，请使用以下命令：
 
   ```powershell
   Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
@@ -98,11 +98,35 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL VM 还
 ### <a name="migrate-your-data"></a>迁移数据
 如果已有数据库，会想要将该数据库移至新预配的 SQL VM。 有关迁移选项的列表和指导，请参阅[将数据库迁移到 Azure VM 上的 SQL Server](virtual-machines-windows-migrate-sql.md)。
 
+## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>利用 Azure 门户创建和管理 Azure SQL 资源
+
+Azure 门户提供了一个页面, 可在其中管理[所有 AZURE sql 资源](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql)(包括 SQL 虚拟机)。
+
+若要访问 " **AZURE sql 资源**" 页, 请在 Azure 门户的左侧菜单中选择 " **azure sql** "。 如果**AZURE sql**不在列表中, 请选择 "**所有服务**", 然后在搜索框中键入 " *Azure sql* "。
+
+> [!NOTE]
+> **AZURE sql**提供一种便捷的方式来访问所有 SQL 数据库、弹性池、数据库服务器、sql 托管实例和 sql 虚拟机。 Azure SQL 不是服务或资源。 
+
+若要管理现有资源, 请在列表中选择所需的项。 若要创建新的 Azure SQL 资源, 请选择 " **+ 添加**"。 
+
+![Azure SQL 门户页](./media/quickstart-sql-vm-create-portal/azure-sql.png)
+
+选择 " **+ 添加**" 后, 通过选择 "在任何磁贴上**显示详细**信息" 来查看有关不同选项的其他信息。
+
+![数据库磁贴详细信息](./media/quickstart-sql-vm-create-portal/sql-vm-details.png)
+
+有关详细信息，请参阅：
+
+- [创建单一数据库](../../../sql-database/sql-database-single-database-get-started.md)
+- [创建弹性池](../../../sql-database/sql-database-elastic-pool.md#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)
+- [创建托管实例](../../../sql-database/sql-database-managed-instance-get-started.md)
+- [创建 SQL 虚拟机](quickstart-sql-vm-create-portal.md)
+
 ## <a id="lifecycle"></a> SQL VM 映像刷新策略
-对于每种支持的操作系统和版本的组合，Azure 只保留一个虚拟机映像。 这意味着，随着时间的推移，映像会进行刷新，旧映像会被删除。 有关详细信息，请参阅  [SQL Server VM 常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md#images)的“映像”部分。
+对于每种支持的操作系统和版本的组合，Azure 只保留一个虚拟机映像。 这意味着，随着时间的推移，映像会进行刷新，旧映像会被删除。 有关详细信息，请参阅 [SQL Server VM 常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md#images)的“映像”部分。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>客户体验改善计划 (CEIP)
-客户体验改善计划 (CEIP) 默认情况下已启用。 这样会定期将报告发送至 Microsoft，帮助改进 SQL Server。 CEIP 不需要执行管理任务，除非用户想要在预配后将其禁用。 可以通过远程桌面连接到 VM，以自定义或禁用 CEIP。 然后运行“SQL Server 错误和使用情况报告”  实用工具。 请按照说明禁用报告功能。 有关数据收集的详细信息，请参阅 [SQL Server 隐私声明](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement)。
+客户体验改善计划 (CEIP) 默认情况下已启用。 这样会定期将报告发送至 Microsoft，帮助改进 SQL Server。 CEIP 不需要执行管理任务，除非用户想要在预配后将其禁用。 可以通过远程桌面连接到 VM，以自定义或禁用 CEIP。 然后运行“SQL Server 错误和使用情况报告”实用工具。 请按照说明禁用报告功能。 有关数据收集的详细信息，请参阅 [SQL Server 隐私声明](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement)。
 
 ## <a name="related-products-and-services"></a>相关产品和服务
 ### <a name="windows-virtual-machines"></a>Windows 虚拟机
