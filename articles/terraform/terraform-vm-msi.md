@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e3aaf943b5eecd9ec1853c09ea36156b98560d3d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007961"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648712"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>结合 Azure 资源的托管标识使用 Azure 市场映像创建 Terraform Linux 虚拟机
 
@@ -33,9 +33,9 @@ ms.locfileid: "58007961"
 
 1. 在 Azure 门户中，转到[创建资源](https://ms.portal.azure.com/#create/hub)列表。
 
-2. 在“在市场中搜索”搜索栏中搜索 **Terraform**。 选择 **Terraform** 模板。 
+2. 在“在市场中搜索”  搜索栏中搜索 **Terraform**。 选择 **Terraform** 模板。 
 
-3. 在 Terraform 详细信息选项卡的右下角选择“创建”按钮。
+3. 在 Terraform 详细信息选项卡的右下角选择“创建”按钮。 
 
     ![创建 Terraform 虚拟机](media/terraformmsi.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "58007961"
 
 ## <a name="details-on-the-create-terraform-tab"></a>“创建 Terraform”选项卡中的详细信息
 
-在“创建 Terraform”选项卡中输入以下详细信息：
+在“创建 Terraform”选项卡中输入以下详细信息： 
 
 1. **基础知识**
     
@@ -65,7 +65,7 @@ ms.locfileid: "58007961"
 
 4. **购买**
 
-   * 若要开始预配过程，请选择“购买”。 此时会显示交易条款的链接。 除计算“大小”步骤中选择的服务器大小所产生的费用外，VM 不产生其他任何费用。
+   * 若要开始预配过程，请选择“购买”。  此时会显示交易条款的链接。 除计算“大小”步骤中选择的服务器大小所产生的费用外，VM 不产生其他任何费用。
 
 Terraform VM 映像执行以下步骤：
 
@@ -85,7 +85,7 @@ Terraform VM 映像执行以下步骤：
 
 `. ~/tfEnv.sh`
 
-上述脚本使用 [AZ CLI v 2.0 交互式登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)机制在 Azure 中进行身份验证，并在整个订阅中分配虚拟机托管标识参与者权限。 
+上述脚本使用 [AZ CLI v 2.0 交互式登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#sign-in-interactively)机制在 Azure 中进行身份验证，并在整个订阅中分配虚拟机托管标识参与者权限。 
 
  VM 具有 Terraform 远程状态后端。 若要在 Terraform 部署中启用该后端，请将 tfTemplate 目录中的 remoteState.tf 文件复制到 Terraform 脚本所在的根目录。  
 

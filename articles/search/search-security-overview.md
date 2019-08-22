@@ -2,19 +2,19 @@
 title: 安全性和数据隐私 - Azure 搜索
 description: Azure 搜索符合 SOC 2、HIPAA 和其他认证。 在 Azure 搜索筛选器中通过用户和组安全标识符进行连接和数据加密、身份验证和标识访问。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f366726f539a817f515a78fbc35bfeaa3b65514e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fbad9624d6b76593ac4e77283f63904e9c006bcd
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024500"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647800"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Azure 搜索中的安全性和数据隐私
 
@@ -101,7 +101,7 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 
 下表汇总了 Azure 搜索中允许的操作，以及哪个密钥可以解锁特定操作的访问。
 
-| Operation | 权限 |
+| 操作 | 权限 |
 |-----------|-------------------------|
 | 创建服务 | Azure 订阅持有者|
 | 缩放服务 | 管理密钥，资源中的 RBAC 所有者或参与者  |
@@ -119,7 +119,7 @@ Microsoft 数据中心提供行业领先的物理安全性，符合广泛的标�
 > [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [.NET 入门（演示如何使用管理密钥创建索引）](search-create-index-dotnet.md)
 + [REST 入门（演示如何使用管理密钥创建索引）](search-create-index-rest-api.md)

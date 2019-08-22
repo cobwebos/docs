@@ -1,6 +1,6 @@
 ---
 title: 将泛型 Node.js 客户端应用程序连接到 Azure IoT Central | Microsoft Docs
-description: 作为设备开发人员，如何将通用的 Node.js 设备连接到 Azure IoT Central 应用程序。
+description: 作为设备开发人员, 如何将通用 node.js 设备连接到 Azure IoT Central 应用程序。
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/14/2019
@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 90e4a061e38fdd3a13a640363069fae3a18e0b49
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3b73344a233182fe8366795cfa111b706c6d06ac
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444220"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876234"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>将泛型客户端应用程序连接到 Azure IoT Central 应用程序 (Node.js)
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 本文介绍如何以设备开发人员的身份将代表真实设备的泛型 Node.js 应用程序连接到 Microsoft Azure IoT Central 应用程序。
 
@@ -28,13 +30,13 @@ ms.locfileid: "67444220"
 
 ## <a name="create-a-device-template"></a>创建设备模板
 
-Azure IoT Central 应用程序中需要具有以下度量值、 设备属性、 设置和命令的设备模板：
+在 Azure IoT Central 应用程序中, 需要具有以下度量、设备属性、设置和命令的设备模板:
 
 ### <a name="telemetry-measurements"></a>遥测数据度量
 
-上添加以下遥测数据**度量**页：
+在 "**度量值**" 页上添加以下遥测数据:
 
-| 显示名称 | 字段名称  | 单位 | Min | Max | 小数位数 |
+| 显示名 | 字段名  | 单位 | 最小值 | 最大 | 小数位数 |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
 | 温度  | 温度 | F     | 60  | 110 | 0              |
 | 湿度     | 湿度    | %     | 0   | 100 | 0              |
@@ -43,87 +45,87 @@ Azure IoT Central 应用程序中需要具有以下度量值、 设备属性、 
 > [!NOTE]
 > 遥测度量的数据类型是一个浮点数。
 
-将表中所示字段名称准确输入设备模板中。 如果字段名称不匹配相应的设备代码中的属性名称，不能在应用程序中显示遥测数据。
+将表中所示字段名称准确输入设备模板中。 如果字段名称与相应设备代码中的属性名称不匹配, 则无法在应用程序中显示遥测数据。
 
 ### <a name="state-measurements"></a>状态度量
 
-上添加以下状态**度量**页：
+在 "**度量值**" 页上添加以下状态:
 
-| 显示名称 | 字段名称  | 值 1 | 显示名称 | 值 2 | 显示名称 |
+| 显示名 | 字段名  | 值 1 | 显示名 | 值 2 | 显示名 |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| 风扇模式     | fanmode     | 第       | 正在运行      | 0       | 已停止      |
+| 风扇模式     | fanmode     | 1       | 正在运行      | 0       | 已停止      |
 
 > [!NOTE]
 > 状态度量的数据类型为字符串。
 
-将表中所示字段名称准确输入设备模板中。 如果字段名称不匹配相应的设备代码中的属性名称，不能在应用程序中显示状态。
+将表中所示字段名称准确输入设备模板中。 如果字段名称与相应设备代码中的属性名称不匹配, 则无法在应用程序中显示该状态。
 
 ### <a name="event-measurements"></a>事件度量
 
-添加下面的事件上**度量**页：
+在 "**度量值**" 页上添加以下事件:
 
-| 显示名称 | 字段名称  | 严重性 |
+| 显示名 | 字段名  | Severity |
 | ------------ | ----------- | -------- |
-| 过热  | 过热    | 错误    |
+| 过热  | 过热    | Error    |
 
 > [!NOTE]
 > 事件度量的数据类型为字符串。
 
 ### <a name="location-measurements"></a>位置度量
 
-上添加以下位置度量**度量**页：
+在 "**度量值**" 页上添加以下位置度量:
 
-| 显示名称 | 字段名称  |
+| 显示名 | 字段名  |
 | ------------ | ----------- |
 | Location     | location    |
 
-位置度量值数据类型由两个浮点数字的经度和纬度和一个可选的浮点数的海拔高度。
+位置度量数据类型由经度和纬度的两个浮点数组成, 并具有一个高度的可选浮点数。
 
-将表中所示字段名称准确输入设备模板中。 如果字段名称不匹配相应的设备代码中的属性名称，不能在应用程序中显示的位置。
+将表中所示字段名称准确输入设备模板中。 如果字段名称与相应设备代码中的属性名称不匹配, 则无法在应用程序中显示该位置。
 
 ### <a name="device-properties"></a>设备属性
 
-添加以下设备属性上**属性**页：
+在 "**属性**" 页上添加以下设备属性:
 
-| 显示名称        | 字段名称        | 数据类型 |
+| 显示名        | 字段名        | 数据类型 |
 | ------------------- | ----------------- | --------- |
 | 序列号       | serialNumber      | text      |
 | 设备制造商 | 制造商      | text      |
 
-将表中所示字段名称准确输入设备模板中。 如果字段名称不匹配相应的设备代码中的属性名称，不能在应用程序中显示属性。
+将表中所示字段名称准确输入设备模板中。 如果字段名称与相应设备代码中的属性名称不匹配, 则无法在应用程序中显示这些属性。
 
 ### <a name="settings"></a>设置
 
-添加以下**数量**上的设置**设置**页：
+在 "**设置**" 页上添加以下**数字**设置:
 
-| 显示名称    | 字段名称     | 单位 | 小数 | Min | Max  | 初始 |
+| 显示名    | 字段名     | 单位 | 小数 | 最小值 | 最大  | 初始 |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | 风扇速度       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
 | 设置温度 | setTemperature | F     | 0        | 20  | 200  | 80      |
 
-将表中所示字段名称准确输入设备模板中。 如果字段名称不匹配相应的设备代码中的属性名称，该设备无法接收设置值。
+将表中所示字段名称准确输入设备模板中。 如果字段名称与相应设备代码中的属性名称不匹配, 则设备无法接收设置值。
 
 ### <a name="commands"></a>命令
 
-在上添加以下命令**命令**页：
+在 "**命令**" 页上添加以下命令:
 
-| 显示名称    | 字段名称     | 默认超时 | 数据类型 |
+| 显示名    | 字段名     | 默认超时 | 数据类型 |
 | --------------- | -------------- | --------------- | --------- |
-| 倒计时       | 倒计时      | 30              | 数字    |
+| 倒       | 倒      | 30              | 号    |
 
-将以下输入的字段添加到倒计时命令：
+将以下输入字段添加到倒计时命令:
 
-| 显示名称    | 字段名称     | 数据类型 | 值 |
+| 显示名    | 字段名     | 数据类型 | ReplTest1 |
 | --------------- | -------------- | --------- | ----- |
-| 从计数      | countFrom      | 数字    | 10    |
+| 计数起始      | countFrom      | 号    | 10    |
 
-严格按照所示的表中的设备模板到输入字段名称。 如果字段名称不匹配相应的设备代码中的属性名称，该设备无法处理该命令。
+输入与设备模板中的表中所示完全相同的字段名称。 如果字段名称与相应设备代码中的属性名称不匹配, 则设备无法处理该命令。
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
-Azure IoT Central 应用程序中将添加到在上一节中创建的设备模板的真实的设备。
+在 Azure IoT Central 应用程序中, 将实际设备添加到在上一部分中创建的设备模板。
 
-在"添加设备"教程到中按照[生成真实的设备的连接字符串](tutorial-add-device.md#generate-connection-string)。 下一节中使用此连接字符串：
+然后按照 "添加设备" 教程中的说明[生成真实设备的连接字符串](tutorial-add-device.md#generate-connection-string)。 在以下部分中使用此连接字符串:
 
 ### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
@@ -161,9 +163,9 @@ Azure IoT Central 应用程序中将添加到在上一节中创建的设备模�
     var client = clientFromConnectionString(connectionString);
     ```
 
-    更新占位符`{your device connection string}`与[设备连接字符串](tutorial-add-device.md#generate-connection-string)。 在此示例中，您初始化`targetTemperature`为零，您可以使用当前读取从设备或设备孪生中的值。
+    用`{your device connection string}` [设备连接字符串](tutorial-add-device.md#generate-connection-string)更新占位符。 在此示例中, 将`targetTemperature`初始化为零, 可以使用来自设备的当前读取或设备克隆中的值。
 
-1. 若要发送到 Azure IoT Central 应用程序的遥测数据、 状态、 事件和位置度量，请向文件添加以下函数：
+1. 若要将遥测、状态、事件和位置度量发送到 Azure IoT Central 应用程序, 请将以下函数添加到文件:
 
     ```javascript
     // Send device measurements.
@@ -254,7 +256,7 @@ Azure IoT Central 应用程序中将添加到在上一节中创建的设备模�
     }
     ```
 
-1. 添加以下代码以处理从 IoT Central 应用程序发送的倒计时命令：
+1. 添加以下代码以处理从 IoT Central 应用程序发送的倒计时命令:
 
     ```javascript
     // Handle countdown command
@@ -337,26 +339,26 @@ node connectedAirConditionerAdv.js
 
 作为 Azure IoT Central 应用程序中的操作员，你可以对真实设备执行以下操作：
 
-* 在“度量”页中查看遥测： 
+* 在“度量”页中查看遥测：
 
     ![查看遥测数据](media/howto-connect-nodejs/viewtelemetry.png)
 
-* 在查看的位置**度量**页：
+* 查看 "**度量值**" 页上的位置:
 
-    ![视图位置度量](media/howto-connect-nodejs/viewlocation.png)
+    ![查看位置度量](media/howto-connect-nodejs/viewlocation.png)
 
-* 在“属性”页上查看从设备发送的设备属性值。  在设备连接的设备属性磁贴更新：
+* 在“属性”页上查看从设备发送的设备属性值。 设备属性磁贴会在设备连接时更新:
 
     ![查看设备属性](media/howto-connect-nodejs/viewproperties.png)
 
-* 设置从风扇速度和目标温度**设置**页：
+* 从 "**设置**" 页设置风扇速度和目标温度:
 
     ![设置风扇速度](media/howto-connect-nodejs/setfanspeed.png)
 
-* 调用中的倒计时命令**命令**页：
+* 从 "**命令**" 页调用倒数命令:
 
     ![调用倒计时命令](media/howto-connect-nodejs/callcountdown.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已了解如何将泛型 Node.js 客户端连接到 Azure IoT Central 应用程序，建议下一步是了解如何[设置自定义设备模板](howto-set-up-template.md)IoT 设备。
+现在, 你已了解如何将通用 node.js 客户端连接到 Azure IoT Central 应用程序, 接下来建议的下一步是了解如何为你自己的 IoT 设备[设置自定义设备模板](howto-set-up-template.md)。

@@ -1,23 +1,23 @@
 ---
-title: 防火墙表-VMware 解决方案 (按 CloudSimple)-Azure
+title: Azure VMware 解决方案 (按 CloudSimple)-防火墙表
 description: 了解 CloudSimple 私有云防火墙表和防火墙规则。
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9d25aa9252f061cee7f4cffdca42f00d84f719a3
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812664"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877712"
 ---
 # <a name="firewall-tables-overview"></a>防火墙表概述
 
-防火墙表列出了筛选进出私有云资源的网络流量的规则。 可以将它们应用到 VLAN 或子网。 然后, 这些规则控制源网络或 IP 地址之间的网络流量, 以及目标网络或 IP 地址。
+防火墙表列出了筛选进出私有云资源的网络流量的规则。 可以将防火墙表应用到 VLAN/子网。 规则控制源网络或 IP 地址与目标网络或 IP 地址之间的网络流量。
 
 ## <a name="firewall-rules"></a>防火墙规则
 
@@ -26,7 +26,7 @@ ms.locfileid: "68812664"
 | 属性 | 详细信息 |
 | ---------| --------|
 | **名称** | 唯一标识防火墙规则及其用途的名称。 |
-| **Priority** | 介于100和4096之间的数字, 其中100是最高优先级。 规则按优先顺序处理。 当流量跨规则匹配时, 将停止规则处理。 因此, 具有较低优先级的所有规则都不会处理具有较高优先级的规则。  请注意避免规则冲突。 |
+| **Priority** | 介于100和4096之间的数字, 其中100是最高优先级。 规则按优先顺序处理。 当流量遇到规则匹配时, 将停止规则处理。 因此, 优先级较低的规则不会处理具有较高优先级的规则。  请注意避免规则冲突。 |
 | **状态跟踪** | 跟踪可以是无状态 (私有云、Internet 或 VPN), 也可以是有状态的 (公共 IP)。  |
 | 协议 | 选项包括 Any、TCP 或 UDP。 如果需要 ICMP, 请使用 Any。 |
 | **Direction** | 该规则是应用到入站还是出站流量。 |
@@ -53,13 +53,13 @@ ms.locfileid: "68812664"
 
 将在每个防火墙表上创建以下默认规则。
 
-|Priority|名称|状态跟踪|Direction|流量类型|Protocol|Source|Source Port|目标|目标端口|Action|
+|Priority|姓名|状态跟踪|Direction|流量类型|Protocol|Source|Source Port|目标|目标端口|操作|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|allow-all-to-internet|有|出站|公共 IP 或 internet 流量|全部|Any|Any|Any|Any|Allow|
-|65001|deny-all-from-internet|有|入站|公共 IP 或 internet 流量|全部|Any|Any|Any|Any|拒绝|
-|65002|allow-all-to-intranet|无状态|出站|私有云内部或 VPN 流量|全部|Any|Any|Any|Any|Allow|
-|65003|allow-all-from-intranet|无状态|入站|私有云内部或 VPN 流量|全部|Any|Any|Any|Any|Allow|
+|65000|allow-all-to-internet|有|出站|公共 IP 或 internet 流量|全部|任意|任意|任意|任意|Allow|
+|65001|deny-all-from-internet|有|入站|公共 IP 或 internet 流量|全部|任意|任意|任意|任意|拒绝|
+|65002|allow-all-to-intranet|无状态|出站|私有云内部或 VPN 流量|全部|任意|任意|任意|任意|Allow|
+|65003|allow-all-from-intranet|无状态|入站|私有云内部或 VPN 流量|全部|任意|任意|任意|任意|Allow|
 
 ## <a name="next-steps"></a>后续步骤
 
-* [设置防火墙表和规则](https://docs.azure.cloudsimple.com/firewall/)
+* [设置防火墙表和规则](firewall.md)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 8/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 91dd397095718b3b43e41767af422801fd50b7f1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 25fb94afdfe68510c66cff130a3abc8b74d7311d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295682"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647313"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 安全中心的安全警报
 
@@ -50,7 +50,7 @@ ASC 监视部署在 Azure 上或部署在其他本地和混合云环境中的资
 
 ## <a name="what-are-alert-incidents"></a>什么是警报事件？
 
-安全事件是相关警报的集合, 而不是单独列出每个警报。 安全中心使用合成将不同的警报和低保真信号关联到安全事件。
+安全事件是相关警报的集合, 而不是单独列出每个警报。 安全中心使用[云智能警报相关](security-center-alerts-cloud-smart.md), 将不同的警报和低保真信号关联到安全事件。
 
 通过使用事件, 安全中心可提供攻击活动的单一视图和所有相关警报。 利用此视图, 您可以快速了解攻击者执行了哪些操作以及受影响的资源。 有关详细信息, 请参阅[云智能警报相关性](security-center-alerts-cloud-smart.md)。
 

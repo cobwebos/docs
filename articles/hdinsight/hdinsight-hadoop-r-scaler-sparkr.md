@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: 48792a90a42d0cfe5c0b34c872b3d474d6a784f1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 75bbcfa831ba7ef0b3dd0da629cfa94768d6ae9d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433503"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873332"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
 
@@ -193,7 +193,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>将航班和天气数据导入 Spark DataFrames
 
-现在，使用 SparkR [read.df()](https://docs.databricks.com/spark/1.6/sparkr/functions/read.df.html#read-df) 函数将天气和航班数据导入 Spark DataFrame。 与其他许多 Spark 方法一样，此函数是延迟执行的，也就是说，它会排入执行队列，但只在需要时才会执行。
+现在，使用 SparkR [read.df()](http://spark.apache.org/docs/latest/api/R/read.df.html) 函数将天气和航班数据导入 Spark DataFrame。 与其他许多 Spark 方法一样，此函数是延迟执行的，也就是说，它会排入执行队列，但只在需要时才会执行。
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -266,7 +266,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>联接天气和航班数据
 
-现在，使用 SparkR [join()](https://docs.databricks.com/spark/1.6/sparkr/functions/join.html#join) 函数根据出发地 AirportID 和日期时间，针对航班数据和天气数据执行左外部联接。 使用外部联接可以保留所有航班数据记录，即使没有匹配的天气数据。 联接后，删除一些多余的列，并重命名保留的列，以删除联接时传入的 DataFrame 前缀。
+现在，使用 SparkR [join()](http://spark.apache.org/docs/latest/api/R/join.html) 函数根据出发地 AirportID 和日期时间，针对航班数据和天气数据执行左外部联接。 使用外部联接可以保留所有航班数据记录，即使没有匹配的天气数据。 联接后，删除一些多余的列，并重命名保留的列，以删除联接时传入的 DataFrame 前缀。
 
 ```
 logmsg('Join airline data with weather at Origin Airport')
@@ -528,7 +528,7 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文说明了如何在 Hadoop Spark 中将用于数据处理的 SparkR 与用于模型开发的 ScaleR 结合使用。 此方案要求保留单独的 Spark 会话，一次只运行一个会话，并通过 CSV 文件交换数据。 尽管此过程现已相当简单直接，但在将来的 ML Services 版本中还会得到进一步简化，因为到时 SparkR 和 ScaleR 可以共享 Spark 会话，因而也能共享 Spark DataFrame。
 
@@ -536,7 +536,7 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 - 有关使用 Apache Spark 上 ML Server 的详细信息，请参阅[入门指南](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)。
 
-- 有关在 HDInsight 上的机器学习服务的信息，请参阅[概述的机器学习服务上 HDInsight](r-server/r-server-overview.md)。
+- 有关 HDInsight 上的 ML 服务的信息, 请参阅[hdinsight 上的 Ml 服务概述](r-server/r-server-overview.md)。
 
 有关 SparkR 用法的详细信息，请参阅：
 

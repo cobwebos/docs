@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: f0944e9fddc0afb28f758ba7b16232330d3bc34d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 5095e680eb7fd33d28acb2d187f83d86db1b46bf
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635529"
+ms.locfileid: "69656626"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务 (预览版)
 
@@ -60,7 +60,7 @@ GET 'http://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://localhost:2377/metadata/identity/oauth2/token` | Service Fabric 应用程序的托管标识终结点, 通过 MSI_ENDPOINT 环境变量提供。 |
 | `api-version` | 查询字符串参数, 指定托管标识令牌服务的 API 版本;目前唯一接受的值为`2019-07-01-preview`, 并且可能会发生更改。 |
-| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 这将反映为`aud`已颁发令牌的 (受众) 声明。 此示例请求一个令牌访问 Azure Key Vault, 其应用 ID URI 为 https://keyvault.azure.com/ 。 |
+| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 这将反映为`aud`已颁发令牌的 (受众) 声明。 此示例请求一个令牌访问 Azure Key Vault, 其应用 ID URI 为 https:\//keyvault.azure.com/。 |
 | `Secret` | HTTP 请求标头字段, 该字段是 Service Fabric 托管标识令牌服务为 Service Fabric 服务的身份验证调用方进行身份验证所必需的。 此值由 SF 运行时通过 MSI_SECRET 环境变量提供。 |
 
 

@@ -1,27 +1,27 @@
 ---
-title: Azure Active Directory B2C 中的验证形式的 REST API 声明交换 | Microsoft Docs
-description: 有关 Azure Active Directory B2C 自定义策略的主题。
+title: REST API 声明交换作为 Azure Active Directory B2C 中的验证
+description: 用于创建与 RESTful services 交互的 Azure AD B2C 用户旅程的演练。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/24/2017
+ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0779e4a93230a90b8eee76f1898154c1a5b82661
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45fad1fab419c448febb3f3b760996fba278e154
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508726"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644973"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架 (IEF) 可让标识开发人员在用户旅程中将某种交互与 RESTful API 集成。  
+构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架 (IEF) 可让标识开发人员在用户旅程中将某种交互与 RESTful API 集成。
 
 完成本演练后，就可以创建与 RESTful 服务交互的 Azure AD B2C 用户旅程了。
 
@@ -36,7 +36,7 @@ IEF 在声明中发送数据，同时也在声明中接收数据。 与 API 的�
 
 我们可以验证用户在配置文件编辑中提供的名称是否为排除列表的一部分。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 根据[入门](active-directory-b2c-get-started-custom.md)中所述配置一个 Azure AD B2C 租户，以完成本地帐户注册/登录。
 - 要交互的 REST API 终结点。 对于本演练，我们设置了一个名为 [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) 且包含 REST API 服务的演示站点。
@@ -91,8 +91,10 @@ IEF 需要 Azure 函数返回的 `userMessage` 声明。 如果验证失败，�
             <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
             <Metadata>
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
-                <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+                <Item Key="AuthenticationType">None</Item>
+                <!-- REMOVE the following line in production environments -->
                 <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
@@ -111,9 +113,11 @@ IEF 需要 Azure 函数返回的 `userMessage` 声明。 如果验证失败，�
 
 `InputClaims` 元素定义要从 IEF 发送到 REST 服务的声明。 在本示例中，声明 `givenName` 的内容将以 `playerTag` 的形式发送到 REST 服务。 本示例中，IEF 不需要返回的声明。 相反，它等待来自 REST 服务的响应并根据所接收的状态代码执行操作。
 
+上述`AuthenticationType`注释并`AllowInsecureAuthInProduction`指定移动到生产环境时应进行的更改。 若要了解如何保护用于生产的 RESTful Api, 请参阅通过[证书身份验证](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)实现基本身份验证和安全 RESTful Api[安全 RESTful api](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) 。
+
 ## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>步骤 3：在要验证用户输入的自我断言技术配置文件中包含 RESTful 服务声明交换
 
-验证步骤的最常见用途是与用户交互。 用户预期需要提供输入的所有交互都属于自我断言技术配置文件  。 在本示例中，我们会将此验证添加到 Self-Asserted-ProfileUpdate 技术配置文件。 这是信赖方 (RP) 策略文件 `Profile Edit` 所使用的技术配置文件。
+验证步骤的最常见用途是与用户交互。 用户预期需要提供输入的所有交互都属于自我断言技术配置文件。 在本示例中，我们会将此验证添加到 Self-Asserted-ProfileUpdate 技术配置文件。 这是信赖方 (RP) 策略文件 `Profile Edit` 所使用的技术配置文件。
 
 将声明交换添加到自我断言技术配置文件：
 
@@ -124,11 +128,18 @@ IEF 需要 Azure 函数返回的 `userMessage` 声明。 如果验证失败，�
 ## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>步骤 4：上传并测试配置文件编辑 RP 策略文件
 
 1. 上传新版本的 TrustFrameworkExtensions.xml 文件。
-2. 使用“立即运行”测试配置文件编辑 RP 策略文件。 
-3. 通过在“给定名称”  字段中提供某个现有名称（例如：mcvinny）来测试验证。 如果所有设置正确，应会收到一条消息，告知用户播放器标记已被使用。
+2. 使用“立即运行”测试配置文件编辑 RP 策略文件。
+3. 通过在“给定名称”字段中提供某个现有名称（例如：mcvinny）来测试验证。 如果所有设置正确，应会收到一条消息，告知用户播放器标记已被使用。
 
 ## <a name="next-steps"></a>后续步骤
 
 [修改配置文件编辑和用户注册以便收集用户的其他信息](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
 [演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换](active-directory-b2c-rest-api-step-custom.md)
+
+[参考：RESTful 技术配置文件](restful-technical-profile.md)
+
+若要了解如何保护 Api, 请参阅以下文章:
+
+* [使用基本身份验证（用户名和密码）保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+* [使用客户端证书保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

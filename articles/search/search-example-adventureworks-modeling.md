@@ -1,21 +1,21 @@
 ---
-title: 示例：为 AdventureWorks Inventory 数据库建模 - Azure 搜索
+title: 例如：为 AdventureWorks Inventory 数据库建模 - Azure 搜索
 description: 了解如何为关系数据建模，将其转换为平展数据集，以便在 Azure 搜索中进行索引编制和全文本搜索。
 author: cstone
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: chstone
-ms.openlocfilehash: 6d5d01dfbbcfda56818f5c38b06117a87e021445
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52ccf3edfca5b3481b038bd5d3449c1dd6354179
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61291873"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649919"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>示例：为 Azure 搜索的 AdventureWorks Inventory 数据库建模
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>例如：为 Azure 搜索的 AdventureWorks Inventory 数据库建模
 
 将结构化数据库内容建模为有效的搜索索引通常不能直接进行。 除了进行计划和更改管理，还必须将源行进行反规范化处理，从表联接状态变为易于搜索的实体。 本文使用在线提供的 AdventureWorks 示例数据，在从数据库到搜索的转换过程中突出显示常见体验。 
 

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d95760745dc3554bc63271cedc63dcf3bf017c5c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 59b5138950e0fb94ea0051fa9cfe9aa75cd7d770
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855222"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877796"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理扩展在 Azure 虚拟机上自动执行管理任务
 > [!div class="op_single_selector"]
@@ -88,14 +88,17 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 你可以使用 PowerShell 查看 SQL Server IaaS 代理的当前模式: 
 
   ```powershell-interactive
-     //Get the SqlVirtualMachine
+     #Get the SqlVirtualMachine
      $sqlvm = Get-AzResource -Name $vm.Name  -ResourceGroupName $vm.ResourceGroupName  -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines
      $sqlvm.Properties.sqlManagement
   ```
 
-对于安装了 NoAgent 或轻型 IaaS 扩展的 SQL Server Vm, 可以使用 Azure 门户将模式升级为 full。 无法降级。 要执行此操作, 你需要完全卸载 SQL Server IaaS 扩展并再次安装。 
+如果 SQL Server 安装了*轻型*IaaS 扩展的 vm, 则可以使用 Azure 门户将模式升级到_完整_模式。 将操作系统升级到 Windows 2008 R2 及更高版本后,_无代理_模式下的 SQL Server vm 可以升级到_完整_版本。 不可能进行降级-若要执行此操作, 你将需要完全卸载 SQL IaaS 扩展并重新安装它。 
 
 若要将代理模式升级到完整模式: 
+
+
+# <a name="azure-portaltabazure-portal"></a>[Azure 门户](#tab/azure-portal)
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 中转到[SQL 虚拟机](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)资源。 
@@ -108,8 +111,33 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 
     ![确认在虚拟机上重新启动 SQL Server 服务的复选框](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
 
+# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+
+运行以下 Az CLI 代码片段:
+
+  ```azurecli-interactive
+  # Update to full mode
+
+  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
+  ```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+运行以下 PowerShell 代码片段:
+
+  ```powershell-interactive
+  # Update to full mode
+
+  $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
+  $SqlVm.Properties.sqlManagement="Full"
+  $SqlVm | Set-AzResource -Force
+  ```
+
+---
+
+
 ##  <a name="installation"></a>安装
-当你向[SQL VM 资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-the-sql-vm-resource-provider)注册你的 SQL Server VM 时, 会安装 SQL Server IaaS 扩展。 如有必要, 可以使用 full 或轻型模式手动安装 SQL Server IaaS 代理。 
+当你向[SQL VM 资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)注册你的 SQL Server VM 时, 会安装 SQL Server IaaS 扩展。 如有必要, 可以使用 full 或轻型模式手动安装 SQL Server IaaS 代理。 
 
 当你通过使用 Azure 门户预配其中一个 SQL Server 虚拟机 Azure Marketplace 映像时, 将自动安装完整模式下的 SQL Server IaaS 代理扩展。 
 
@@ -119,10 +147,10 @@ SQL Server IaaS 扩展的完整模式为 SQL Server VM 上的单个实例提供�
 使用 PowerShell 通过完整模式安装 SQL Server IaaS 代理:
 
   ```powershell-interactive
-     // Get the existing compute VM
+     #Get the existing compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register the SQL Server VM with 'Full' SQL Server IaaS agent
+     #Register the SQL Server VM with 'Full' SQL Server IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='Full'}  
@@ -158,10 +186,10 @@ SQL Server IaaS 扩展的完整模式为 SQL Server VM 上的单个实例提供�
 
 
   ```powershell-interactive
-     // Get the existing  Compute VM
+     /#Get the existing  Compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register the SQL Server VM with the 'Lightweight' SQL IaaS agent
+     #Register the SQL Server VM with the 'Lightweight' SQL IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  

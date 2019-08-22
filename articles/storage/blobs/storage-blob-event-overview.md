@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 13eef9beb6c86683c56efc744dc42b4614b84fe9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: b813ef89bb1a55f769d0ea2391855ba5d671c140
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946483"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648795"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -32,6 +32,8 @@ Blob 存储事件可靠地发送到事件网格服务, 该服务通过丰富的�
 |Azure 门户    |[快速入门：将 Blob 存储事件路由到具有 Azure 门户的 web 终结点](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[快速入门：通过 PowerShell 将存储事件路由到 web 终结点](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure CLI    |[快速入门：通过 Azure CLI 将存储事件路由到 web 终结点](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+
+如果帐户具有分层命名空间, 本教程将演示如何在 Azure Databricks 中将事件网格订阅、Azure 函数和[作业](https://docs.azuredatabricks.net/user-guide/jobs.html)连接在一起:[教程：使用 Azure Data Lake Storage Gen2 事件来更新 Databricks 增量表](data-lake-storage-events.md)。
 
 ## <a name="the-event-model"></a>事件模型
 

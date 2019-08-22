@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b792c0fc5d02a84d45b47ac68e0058144f31e673
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641000"
+ms.locfileid: "69644881"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例 T-sql 差异、限制和已知问题
 
@@ -545,15 +545,13 @@ WITH PRIVATE KEY (<private_key_options>)
 
 **解决方法：** 先停止使用跨数据库 Service Broker 对话会话的任何活动, 然后再更新服务层并在之后重新初始化它们。 如果存在服务层更改后未传递的剩余消息, 请从源队列中读取消息, 并将其重新发送到目标队列。
 
-### <a name="impresonification-of-aad-login-types-is-not-supported"></a>不支持 AAD 登录类型的 Impresonification
+### <a name="impersonification-of-aad-login-types-is-not-supported"></a>不支持 AAD 登录类型的 Impersonification
 
 **日期**2019年7月
 
 不支持`EXECUTE AS USER`使用`EXECUTE AS LOGIN`或以下 AAD 主体的模拟:
 -   化名为 AAD 的用户。 在这种情况下`15517`, 将返回以下错误。
 - 基于 AAD 应用程序或服务主体的 AAD 登录名和用户。 在这种情况下`15517` , `15406`将返回以下错误。
-
-### <a name="database-email"></a>数据库电子邮件 
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querysp_send_db_mail 中不支持的参数
 

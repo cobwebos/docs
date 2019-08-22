@@ -1,7 +1,7 @@
 ---
 title: 如何开始使用知识存储（预览版）- Azure 搜索
 description: 了解如何分步将 Azure 搜索 AI 索引管道创建的扩充文档发送到 Azure 存储帐户中的知识存储。 随后，可以在 Azure 搜索和其他应用中查看、整形和使用扩充文档。
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: 7539481105e1c1fd3b6816778e31e6edde8842d3
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d6cecdce9bc4f7fee9ec936ac73b6accc77084c4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840805"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648822"
 ---
 # <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>如何开始使用 Azure 搜索中的知识存储
 

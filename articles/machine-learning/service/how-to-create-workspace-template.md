@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 0e78d9cfce59615a53534fe9815205e39f64853d
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 89c24512e50dedbf10d145088ec77c2e6e303d1e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868840"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873154"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>使用 Azure 资源管理器模板创建 Azure 机器学习服务的工作区
 
@@ -38,8 +38,8 @@ ms.locfileid: "67868840"
 此模板创建以下 Azure 服务：
 
 * Azure 资源组
-* Azure 存储帐户
-* Azure 密钥保管库
+* Azure 存储空间帐户
+* Azure Key Vault
 * Azure Application Insights
 * Azure 容器注册表
 * Azure 机器学习工作区
@@ -64,15 +64,13 @@ ms.locfileid: "67868840"
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-1. 遵循[从自定义模板部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)中的步骤。 显示“编辑模板”屏幕后，请粘贴本文档中所述的模板。 
-1. 选择“保存”以使用该模板。  提供以下信息并同意列出的条款和条件：
+1. 遵循[从自定义模板部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)中的步骤。 显示“编辑模板”屏幕后，请粘贴本文档中所述的模板。
+1. 选择“保存”以使用该模板。 提供以下信息并同意列出的条款和条件：
 
    * 订阅：选择用于这些资源的 Azure 订阅。
    * 资源组：选择或创建一个用于包含服务的资源组。
    * 工作区名称：要创建的 Azure 机器学习工作区所用的名称。 工作区名称的长度必须为 3 到 33 个字符。 只能包含字母数字字符和“-”。
    * 位置：选择要在其中创建资源的位置。
-
-     ![Azure 门户中的模板参数](media/how-to-create-workspace-template/template-parameters.png)
 
 有关详细信息，请参阅[从自定义模板部署资源](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)。
 

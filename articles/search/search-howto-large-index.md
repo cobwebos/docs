@@ -3,18 +3,18 @@ title: 使用内置索引器为大型数据集编制索引 - Azure 搜索
 description: 了解通过计划、并行和分布式索引的批处理模式、资源处理和技术，为大型数据编制索引或进行计算密集型索引编制的策略。
 services: search
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.service: search
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8c067b6e238fab2970e5e40f0660a5c7555a8f2e
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: a98d716562f53488e9adb5d485a1dbf7fafc3102
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302232"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648159"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-search"></a>如何在 Azure 搜索中为大型数据集编制索引
 
@@ -54,7 +54,7 @@ ms.locfileid: "67302232"
 
 根据设计，计划的索引按特定的间隔启动，作业通常会按下一个计划间隔在恢复之前完成。 但是，如果处理在该间隔内未完成，则索引器会停止（因为已超时）。 在下一个间隔，处理将上次中断的位置恢复，同时，系统会跟踪该位置。 
 
-实际上，对于跨越好几天的索引负载，可按 24 小时计划放置索引器。 在下一个 24 小时周期恢复索引编制时，该作业会从已知正常的文档重新开始。 这样，索引器便可以处理很多天的文档积压工作，直到处理完所有未处理的文档。 有关此方法的详细信息，请参阅[为 Azure Blob 存储中的大型数据集编制索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。 有关一般情况下设置计划的详细信息，请参阅[创建索引器 REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax)或请参阅[如何安排 Azure 搜索索引器](search-howto-schedule-indexers.md)。
+实际上，对于跨越好几天的索引负载，可按 24 小时计划放置索引器。 在下一个 24 小时周期恢复索引编制时，该作业会从已知正常的文档重新开始。 这样，索引器便可以处理很多天的文档积压工作，直到处理完所有未处理的文档。 有关此方法的详细信息，请参阅[为 Azure Blob 存储中的大型数据集编制索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。 有关一般设置计划的详细信息, 请参阅[Create 索引器 REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax)或参阅[如何为 Azure 搜索计划索引器](search-howto-schedule-indexers.md)。
 
 <a name="parallel-indexing"></a>
 
@@ -67,7 +67,7 @@ ms.locfileid: "67302232"
 并行处理具有以下要素：
 
 + 在多个容器之间分割源数据，或者分割同一容器中的多个虚拟文件夹。 
-+ 将每个小型数据集映射到其自身[数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、 到其自身配对[索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
++ 将每个迷你数据集映射到其自己的[数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source), 并将其与自己的[索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)配对。
 + 对于认知搜索，请在每个索引器定义中引用相同的[技能集](https://docs.microsoft.com/rest/api/searchservice/create-skillset)。
 + 写入相同的目标搜索索引。 
 + 将所有索引器计划为在同一时间运行。
@@ -79,9 +79,9 @@ ms.locfileid: "67302232"
 
 对于索引器，处理能力并不严格依赖于搜索服务所用每个服务单位 (SU) 的一个索引器子系统。 可以在基本或标准层上预配的、至少包含两个副本的 Azure 搜索服务中创建多个并发索引器。 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，在搜索服务仪表板的“概述”页上，选中“定价层”以确认它能够适应并行索引。   基本和标准层提供多个副本。
+1. 在 [Azure 门户](https://portal.azure.com)中，在搜索服务仪表板的“概述”页上，选中“定价层”以确认它能够适应并行索引。 基本和标准层提供多个副本。
 
-2. 在“设置” > “缩放”中，为并行处理[增加副本](search-capacity-planning.md)：为每个索引器工作负荷额外添加一个副本。   保留足够数量的现有查询卷。 为索引牺牲查询工作负荷并不是一个很好的折衷方法。
+2. 在“设置” > “缩放”中，为并行处理[增加副本](search-capacity-planning.md)：为每个索引器工作负荷额外添加一个副本。 保留足够数量的现有查询卷。 为索引牺牲查询工作负荷并不是一个很好的折衷方法。
 
 3. 在 Azure 搜索索引器可以访问的级别，将数据分配到多个容器。 这可能是 Azure SQL 数据库中的多个表、Azure Blob 存储中的多个容器，或多个集合。 为每个表或容器定义一个数据源对象。
 
@@ -98,7 +98,7 @@ ms.locfileid: "67302232"
 > [!Note]
 > 增加副本时，如果索引大小预计会显著增加，请考虑增加分区计数。 分区存储索引内容的切片；分区数越多，每个分区要存储的切片就越小。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [索引器概述](search-indexer-overview.md)
 + [在门户中编制索引](search-import-data-portal.md)

@@ -2,19 +2,19 @@
 title: 为查询和索引缩放分区与副本 - Azure 搜索
 description: 在 Azure 搜索中调整分区和副本计算机资源，其中每个资源按照可计费搜索单位定价。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5955b21ae405f15960974fcbc81b8383f3322509
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c048dcf31d8f434f742d2da9351ef9b46f0a71d4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485706"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650069"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>为 Azure 搜索中的查询和索引工作负荷缩放分区与副本
 [选择定价层](search-sku-tier.md)并[预配搜索服务](search-create-service-portal.md)后，下一步是有选择性地增加服务使用的副本或分区数目。 每一层提供固定数量的计费单位。 本文介绍如何通过分配这些单位来实现最佳配置，根据查询执行、索引和存储的要求做出平衡。
@@ -48,7 +48,7 @@ ms.locfileid: "67485706"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，并选择搜索服务。
 
-2. 在“设置”中，打开“规模”页以修改副本和分区。   
+2. 在“设置”中，打开“规模”页以修改副本和分区。 
 
    以下屏幕截图显示了预配有一个副本和分区的标准服务。 底部的公式指示正在使用多少个搜索单位 (1)。 如果单位价格为 $100（非实际价格），则运行此服务的每月成本平均为 $100。
 
@@ -62,7 +62,7 @@ ms.locfileid: "67485706"
 
    ![添加副本和分区](media/search-capacity-planning/2-add-2-each.png "添加副本和分区")
 
-3. 单击“保存”以确认所做的更改。 
+3. 单击“保存”以确认所做的更改。
 
    ![确认对规模和计费所做的更改](media/search-capacity-planning/3-save-confirm.png "确认对规模和计费所做的更改")
 
@@ -89,10 +89,10 @@ ms.locfileid: "67485706"
 | **1 个副本** |1 个 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 个副本** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 个副本** |3 SU |6 SU |9 SU |12 SU |18 SU |36 个 SU |
-| **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |不适用 |
-| **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |不适用 |
-| **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |不适用 |
-| **12 副本** |12 SU |24 SU |36 个 SU |不适用 |不适用 |不适用 |
+| **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |不可用 |
+| **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |不可用 |
+| **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |不可用 |
+| **12 副本** |12 SU |24 SU |36 个 SU |不可用 |不可用 |不可用 |
 
 Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请参阅 [Pricing Details](https://azure.microsoft.com/pricing/details/search/)（定价详细信息）。
 

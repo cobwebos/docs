@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 08/22/2019
 ms.author: victorh
-ms.openlocfilehash: 8524c8f05a5d48755ab1ccca62f0fd53870190bb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fea00358fc21cf6f57673e14ebd0feafe532b620
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640245"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876560"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure 防火墙日志和指标
 
@@ -95,6 +95,10 @@ Azure Monitor 中的度量值是在特定时间描述系统某些方面的数值
 
     单位: 计数
 
+- **网络规则命中计数**-网络规则的命中次数。
+
+    单位: 计数
+
 - **处理的数据**-遍历防火墙的数据量。
 
     单位: 字节
@@ -109,9 +113,7 @@ Azure Monitor 中的度量值是在特定时间描述系统某些方面的数值
 
 
 
-- **网络规则命中计数**-网络规则的命中次数。
 
-    单位: 计数
 
 - **SNAT 端口使用率**-防火墙使用的 snat 端口数的百分比。
 

@@ -2,19 +2,19 @@
 title: 如何在类别层次结构中实现分面导航 - Azure 搜索
 description: 将分面导航添加到与 Azure 搜索（Microsoft Azure 上的一项云托管的搜索服务）集成的应用程序。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6fc1e1aaaa3b2489dd4083f56d45ab0abc2b6892
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8e325abf1f58458d2fa035c8c8f081173efb0e65
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165969"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649898"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实现分面导航
 分面导航是一种筛选机制，用于在搜索应用程序中提供自定向的深化导航。 术语“分面导航”可能让人觉得陌生，但我们以前也许用过它。 如以下示例所示，分面导航就是用于筛选结果的类别。
@@ -232,7 +232,7 @@ SearchParameters sp = new SearchParameters()
 
 分面查询参数设置为字段，根据数据类型，可通过逗号分隔列表（包括 `count:<integer>`、`sort:<>`、`interval:<integer>` 和 `values:<list>`）对其执行进一步参数化。 设置范围时，数值数据支持值列表。 有关使用情况详细信息，请参阅[搜索记录（Azure 搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
 
-通过分面，应用程序明确表述的请求还应生成筛选器，以便根据分面值选择缩小候选记录集。 对于自行车商店，分面导航提供了就“有哪些颜色、制造商和类型的自行车”问题的线索，  同时筛选对“在此价格区间，具体有哪些红色的山地自行车”问题的答案。  单击“红色”指示应仅显示红色产品时，应用程序发送的下一条查询将为 `$filter=Color eq ‘Red’`。
+通过分面，应用程序明确表述的请求还应生成筛选器，以便根据分面值选择缩小候选记录集。 对于自行车商店，分面导航提供了就“有哪些颜色、制造商和类型的自行车”问题的线索， 同时筛选对“在此价格区间，具体有哪些红色的山地自行车”问题的答案。 单击“红色”指示应仅显示红色产品时，应用程序发送的下一条查询将为 `$filter=Color eq ‘Red’`。
 
 如果从“职称”分面中选择一个值，源自 `JobsSearch.cs` 页面的以下代码片段会将选定的职称添加到筛选器。
 
@@ -254,7 +254,7 @@ if (businessTitleFacet != "")
 
 回想一下，索引的架构确定哪些字段可用作分面。 假设某个字段可进行分面，该查询可指定分面依据的字段。 分面时依据的字段提供了显示在标签下面的值。 
 
-显示在每个标签下面的值可从索引检索。 例如，如果分面字段为“颜色”，可用于其他筛选的值将是该字段的值（红色、黑色等）。 
+显示在每个标签下面的值可从索引检索。 例如，如果分面字段为“颜色”，可用于其他筛选的值将是该字段的值（红色、黑色等）。
 
 仅可针对 Numeric 和 DateTime 值，在分面字段上显式设置值（例如 `facet=Rating,values:1|2|3|4|5`）。 这些字段类型允许使用值列表，以简化将分面结果分入连续范围（基于数值或时段的范围）操作。 
 
@@ -379,7 +379,7 @@ Azure 搜索作业门户演示包含本文中参考的示例。
 
 1. 若要使用该演示应用的地图功能，请从[必应地图开发人员中心](https://www.bingmapsportal.com/)获取必应地图密钥。 请粘贴该密钥并覆盖 `index.cshtml` 页面中的现有密钥。 不使用 `Web.config` 文件中的 `BingApiKey` 设置。 
 
-2. 运行应用程序。 学习可选的教程，或关闭该对话框。
+2. 运行该应用程序。 学习可选的教程，或关闭该对话框。
    
 3. 输入搜索词（例如“分析师”），并单击“搜索”图标。 快速执行查询。
    
@@ -395,11 +395,11 @@ Azure 搜索作业门户演示包含本文中参考的示例。
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解详情
 观看 [Azure 搜索深入研究](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)。 在 45:25，演示了如何实现分面。
 
 有关分面导航设计准则的更多见解，建议查看以下链接：
 
 * [设计模式：分面导航](https://alistapart.com/article/design-patterns-faceted-navigation)
-* [前端问题时实现分面搜索 – 第 1 部分](https://articles.uie.com/faceted_search2/)
+* [实现分面搜索时的前端问题–第1部分](https://articles.uie.com/faceted_search2/)
 

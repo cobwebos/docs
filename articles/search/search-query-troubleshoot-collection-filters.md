@@ -1,13 +1,13 @@
 ---
-title: OData 集合筛选器-Azure 搜索故障排除
-description: 排查在 Azure 搜索查询中的 OData 集合筛选器错误。
+title: OData 集合筛选器疑难解答-Azure 搜索
+description: 排查 Azure 搜索查询中的 OData 集合筛选器错误。
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,58 +19,58 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: c7fa00c82eea03a50bae22fcb1ad16e230aa5bcb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fbd43cc13d3b7377668aad2fadc874ae47422ee1
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079621"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647953"
 ---
-# <a name="troubleshooting-odata-collection-filters-in-azure-search"></a>Azure 搜索中的 OData 集合筛选器进行故障排除
+# <a name="troubleshooting-odata-collection-filters-in-azure-search"></a>Azure 搜索中的 OData 集合筛选器疑难解答
 
-向[筛选器](query-odata-filter-orderby-syntax.md)在 Azure 搜索中的集合字段，可以使用[`any`并`all`运算符](search-query-odata-collection-operators.md)一起使用**lambda 表达式**。 Lambda 表达式是应用于集合的每个元素的子筛选器。
+若要在 Azure 搜索中对集合字段进行[筛选](query-odata-filter-orderby-syntax.md), 可以[ `any`将`all`和运算符](search-query-odata-collection-operators.md)与**lambda 表达式**一起使用。 Lambda 表达式是应用于集合的每个元素的子筛选器。
 
-可在 lambda 表达式的筛选器表达式不是每个功能。 所提供的功能不同，具体取决于你想要筛选的集合字段的数据类型。 如果你尝试在该上下文中不受支持的 lambda 表达式中使用的功能，这可以导致错误。 如果尝试在集合字段上重写复杂的筛选器时遇到此类错误，本文将帮助您解决这个问题。
+并非每个筛选器表达式功能都可在 lambda 表达式中使用。 可用的功能因要筛选的集合字段的数据类型而异。 如果尝试在该上下文中不支持的 lambda 表达式中使用功能, 这可能会导致错误。 如果你在尝试对集合字段编写复杂筛选器时遇到此类错误, 本文将帮助你解决问题。
 
-## <a name="common-collection-filter-errors"></a>集合筛选器的常见错误
+## <a name="common-collection-filter-errors"></a>常见集合筛选器错误
 
-下表列出了尝试执行收集筛选器时可能会遇到的错误。 使用筛选器表达式的 lambda 表达式中不受支持的功能时，会发生这些错误。 每个错误提供有关如何重写筛选器以避免此错误的一些指导。 该表还包括指向相关的部分，其中提供有关如何避免该错误的详细信息这篇文章的链接。
+下表列出了在尝试执行集合筛选器时可能遇到的错误。 当您使用在 lambda 表达式中不支持的筛选表达式功能时, 将发生这些错误。 每个错误都提供了有关如何重写筛选器以避免错误的一些指导。 该表还包括指向本文相关部分的链接, 该链接提供了有关如何避免此错误的详细信息。
 
-| 错误消息 | 情况 | 有关详细信息，请参阅 |
+| 错误消息 | 发生 | 有关详细信息，请参阅 |
 | --- | --- | --- |
-| 函数 ismatch 没有绑定到的范围变量的任何参数。 仅绑定的字段 （'any' 或 'all'） 的 lambda 表达式中支持的引用。 请更改筛选器，以便 ismatch 函数是外部 lambda 表达式，然后重试。 | 使用`search.ismatch`或`search.ismatchscoring`在 lambda 表达式 | [用于筛选复杂集合规则](#bkmk_complex) |
-| 无效的 lambda 表达式。 找到相反应有循环访问的类型为 collection （edm.string） 字段的 lambda 表达式中测试相等。 对于 any，请使用窗体 x eq y 或 search.in(...) 的表达式。 为 all，请使用窗体 x ne y，不 (x eq y) 或不 search.in(...) 的表达式。 | 对类型的字段进行筛选 `Collection(Edm.String)` | [筛选字符串集合的规则](#bkmk_strings) |
-| 无效的 lambda 表达式。 找到的不受支持的窗体的复杂的布尔表达式。 对于 any，请使用 Or 的 And，也称为析取范式标准形式的表达式。 例如： '(a and b) 或 （c 和 d） 在 a、 b、 c 和 d 时，比较或相等性的子表达式。 为 all，请使用 And 的 ORs，也称为合标准形式的表达式。 例如： '(a or b) 和 （c 或 d） 在 a、 b、 c 和 d 时，比较是否相等的子表达式。 比较表达式的示例: x gt 5，x le 2。 相等表达式的示例: x eq 5。 不等表达式的示例: x ne 5。 | 对类型的字段进行筛选`Collection(Edm.DateTimeOffset)`， `Collection(Edm.Double)`， `Collection(Edm.Int32)`，或 `Collection(Edm.Int64)` | [筛选可比较的集合的规则](#bkmk_comparables) |
-| 无效的 lambda 表达式。 在循环访问的字段类型 Collection(Edm.GeographyPoint) 的 lambda 表达式中找到 geo.distance() 或 geo.intersects() 不支持的使用。 对于 any，请确保你比较 geo.distance() 使用 lt 或 le 运算符，并确保任何使用 geo.intersects() 不起作用。 为 all，请确保你比较 geo.distance() 使用 gt 或 ge 运算符，并确保任何使用 geo.intersects() 不起作用。 | 对类型的字段进行筛选 `Collection(Edm.GeographyPoint)` | [用于筛选 GeographyPoint 集合规则](#bkmk_geopoints) |
-| 无效的 lambda 表达式。 在循环访问 Collection(Edm.GeographyPoint) 类型的字段的 lambda 表达式中不支持复杂的布尔表达式。 对于任何，请加入使用的子表达式或;和不受支持。 为 all，请加入使用的子表达式和;或不受支持。 | 对类型的字段进行筛选`Collection(Edm.String)`或 `Collection(Edm.GeographyPoint)` | [筛选字符串集合的规则](#bkmk_strings) <br/><br/> [用于筛选 GeographyPoint 集合规则](#bkmk_geopoints) |
-| 无效的 lambda 表达式。 找到一个比较运算符 （lt、 le、 gt 或 ge 的一个）。 在循环访问的类型为 collection （edm.string） 字段的 lambda 表达式中不允许仅相等运算符。 对于 any，请使用 x eq y 形式的表达式。 为 all，请使用窗体 x ne y 或不 (x eq y) 的表达式。 | 对类型的字段进行筛选 `Collection(Edm.String)` | [筛选字符串集合的规则](#bkmk_strings) |
+| 函数 "ismatch" 没有绑定到范围变量的 "" 的参数。 Lambda 表达式 ("任何" 或 "全部") 中仅支持绑定字段引用。 请更改筛选器, 使 "ismatch" 函数位于 lambda 表达式之外, 然后重试。 | 在`search.ismatch` lambda `search.ismatchscoring`表达式中使用或 | [用于筛选复杂集合的规则](#bkmk_complex) |
+| Lambda 表达式无效。 在循环访问类型集合 (Edm) 的字段的 lambda 表达式中找到了相等或不相等测试。 对于 "any", 请使用 "x eq y" 或 "search.in (...)" 形式的表达式。 对于 "all", 请使用 "x ne y"、"not (x eq y)" 或 "not search.in (...)" 形式的表达式。 | 筛选类型为`Collection(Edm.String)` | [用于筛选字符串集合的规则](#bkmk_strings) |
+| Lambda 表达式无效。 找到不受支持的复杂布尔表达式格式。 对于 "any", 请使用 "Or of ANDs" (也称为析取范式 Normal 窗体) 的表达式。 例如: "(a 和 b) 或 (c 和 d)", 其中 a、b、c 和 d 是比较或相等子表达式。 对于 "all", 请使用 "ANDs of Or" (也称为联合 Normal 窗体) 的表达式。 例如: "(a 或 b) 和 (c 或 d)", 其中 a、b、c 和 d 是比较或不相等子表达式。 比较表达式的示例: "x gt 5"、"x le 2"。 相等表达式的示例: "x eq 5"。 不等表达式的示例: "x ne 5"。 | 筛选类型`Collection(Edm.DateTimeOffset)`为`Collection(Edm.Double)`、 、或的字段`Collection(Edm.Int32)``Collection(Edm.Int64)` | [用于筛选可比较集合的规则](#bkmk_comparables) |
+| Lambda 表达式无效。 在循环访问类型集合 (GeographyPoint) 的字段的 lambda 表达式中发现不支持的地域 () 或地域交集 ()。 对于 "any", 请确保使用 "lt" 或 "le" 运算符比较 geo (), 并确保不会对 geo 交集 () 进行任何使用。 对于 "全部", 请确保使用 "g t" 或 "ge" 运算符比较了 geo (), 并确保对地域交集 () 的任何使用都进行了取反运算。 | 筛选类型为`Collection(Edm.GeographyPoint)` | [用于筛选 GeographyPoint 集合的规则](#bkmk_geopoints) |
+| Lambda 表达式无效。 在循环访问类型集合 (GeographyPoint) 的字段的 lambda 表达式中不支持复杂的布尔表达式。 对于 "any", 请将子表达式与 "or" 联接;不支持 "and"。 对于 "all", 请将子表达式与 "and" 联接;不支持 "or"。 | 筛选类型`Collection(Edm.String)`为或的字段`Collection(Edm.GeographyPoint)` | [用于筛选字符串集合的规则](#bkmk_strings) <br/><br/> [用于筛选 GeographyPoint 集合的规则](#bkmk_geopoints) |
+| Lambda 表达式无效。 找到比较运算符 ("lt"、"le"、"g t" 或 "ge" 之一)。 在循环访问类型为 Collection (Edm) 的字段的 lambda 表达式中只允许使用相等运算符。 对于 "any", 请使用 "x eq y" 形式的表达式。 对于 "all", 请使用 "x ne y" 或 "not (x eq y)" 形式的表达式。 | 筛选类型为`Collection(Edm.String)` | [用于筛选字符串集合的规则](#bkmk_strings) |
 
 <a name="bkmk_examples"></a>
 
 ## <a name="how-to-write-valid-collection-filters"></a>如何编写有效的集合筛选器
 
-编写有效的集合筛选器的规则是不同的每种数据类型。 以下部分介绍通过显示的示例的筛选器的支持功能，这不是规则：
+对于每种数据类型, 用于编写有效集合筛选器的规则各不相同。 以下部分通过显示受支持的筛选器功能和不支持的筛选器功能的示例来描述规则:
 
-- [筛选字符串集合的规则](#bkmk_strings)
-- [用于筛选布尔集合规则](#bkmk_bools)
-- [用于筛选 GeographyPoint 集合规则](#bkmk_geopoints)
-- [筛选可比较的集合的规则](#bkmk_comparables)
-- [用于筛选复杂集合规则](#bkmk_complex)
+- [用于筛选字符串集合的规则](#bkmk_strings)
+- [用于筛选布尔集合的规则](#bkmk_bools)
+- [用于筛选 GeographyPoint 集合的规则](#bkmk_geopoints)
+- [用于筛选可比较集合的规则](#bkmk_comparables)
+- [用于筛选复杂集合的规则](#bkmk_complex)
 
 <a name="bkmk_strings"></a>
 
-## <a name="rules-for-filtering-string-collections"></a>筛选字符串集合的规则
+## <a name="rules-for-filtering-string-collections"></a>用于筛选字符串集合的规则
 
-内部 lambda 表达式的字符串集合，可以使用的仅比较运算符包括`eq`和`ne`。
+在字符串集合的 lambda 表达式中, 唯一可以使用的比较运算符是`eq`和。 `ne`
 
 > [!NOTE]
-> Azure 搜索不支持`lt` / `le` / `gt` / `ge`运算符对于字符串，是否内部或外部 lambda 表达式。
+> Azure 搜索不支持字符串的`lt` / `le` / 运算符,`gt`无论是在 lambda 表达式内部还是外部。 / `ge`
 
-正文`any`可以仅测试是否相等的正文时`all`可以仅测试是否不相等。
+的主体`any`只能测试相等性, 而的主体只能测试是否不`all`相等。
 
-还有可能要合并多个表达式通过`or`中的正文`any`，并通过`and`的正文中`all`。 由于`search.in`函数等同于结合使用的相等性检查`or`，还允许使用的正文中`any`。 也可反过来`not search.in`的正文中允许`all`。
+还可以通过`or`将多个表达式组合到的正文`any`中, 并通过`and`将其合并到的正文`all`中。 由于函数等效于将相等性检查与结合`or`使用, 因此它`any`在的主体中也是允许的。 `search.in` 相反, `not search.in`在的主体`all`中允许。
 
-例如，允许两个表达式：
+例如, 允许使用以下表达式:
 
 - `tags/any(t: t eq 'books')`
 - `tags/any(t: search.in(t, 'books, games, toys'))`
@@ -80,7 +80,7 @@ ms.locfileid: "67079621"
 - `tags/any(t: t eq 'books' or t eq 'games')`
 - `tags/all(t: t ne 'books' and not (t eq 'games'))`
 
-而不允许两个表达式：
+但不允许这些表达式:
 
 - `tags/any(t: t ne 'books')`
 - `tags/any(t: not search.in(t, 'books, games, toys'))`
@@ -91,11 +91,11 @@ ms.locfileid: "67079621"
 
 <a name="bkmk_bools"></a>
 
-## <a name="rules-for-filtering-boolean-collections"></a>用于筛选布尔集合规则
+## <a name="rules-for-filtering-boolean-collections"></a>用于筛选布尔集合的规则
 
-类型`Edm.Boolean`仅支持`eq`和`ne`运算符。 在这种情况下，它没有多少意义若要允许合并此类检查使用的相同范围变量的子句`and` / `or`因为这会始终导致 tautologies 或矛盾。
+类型`Edm.Boolean` 仅支持`ne`和运算符。 `eq` 同样, 允许将检查同一范围变量`and` / `or`的这类子句组合起来并不太合理, 因为这会导致 tautologies 或矛盾。
 
-下面是允许的布尔值集合的筛选器的一些示例：
+下面是允许使用的布尔集合上的一些筛选器示例:
 
 - `flags/any(f: f)`
 - `flags/all(f: f)`
@@ -104,9 +104,9 @@ ms.locfileid: "67079621"
 - `flags/all(f: not f)`
 - `flags/all(f: not (f eq true))`
 
-与不同的字符串集合，布尔集合在哪种类型的 lambda 表达式中具有可以在其使用运算符不受限制。 这两`eq`并`ne`可以在正文中使用`any`或`all`。
+与字符串集合不同, 布尔集合没有限制可用于哪种类型的 lambda 表达式。 和`eq` 都`ne`可以在`any`或的主体中使用。`all`
 
-如下所示的表达式不允许为布尔值的集合：
+布尔集合不允许使用如下所示的表达式:
 
 - `flags/any(f: f or not f)`
 - `flags/any(f: f or f)`
@@ -115,25 +115,25 @@ ms.locfileid: "67079621"
 
 <a name="bkmk_geopoints"></a>
 
-## <a name="rules-for-filtering-geographypoint-collections"></a>用于筛选 GeographyPoint 集合规则
+## <a name="rules-for-filtering-geographypoint-collections"></a>用于筛选 GeographyPoint 集合的规则
 
-类型的值`Edm.GeographyPoint`集合中不能相互进行比较直接。 相反，它们必须使用作为参数`geo.distance`和`geo.intersects`函数。 `geo.distance`又必须为使用其中一个比较运算符的距离值比较函数`lt`， `le`， `gt`，或`ge`。 这些规则也适用于非集合 Edm.GeographyPoint 字段。
+集合中类型`Edm.GeographyPoint`的值不能直接进行比较。 相反, 它们必须用作和`geo.distance` `geo.intersects`函数的参数。 相反`geo.distance` , 该函数必须与某个比较运算符`lt`( `le` `gt`、或`ge`) 进行比较。 这些规则也适用于非集合 GeographyPoint 字段。
 
-字符串集合一样`Edm.GeographyPoint`集合具有可以如何使用并在不同类型的 lambda 表达式中组合的地理空间函数的一些规则：
+与字符串集合一样`Edm.GeographyPoint` , 集合具有一些规则, 用于说明如何在不同类型的 lambda 表达式中使用地理空间函数和组合:
 
-- 您可以使用的比较运算符`geo.distance`函数取决于 lambda 表达式的类型。 有关`any`，可以仅使用`lt`或`le`。 有关`all`，可以仅使用`gt`或`ge`。 对涉及的表达式的求反`geo.distance`，但您必须要更改的比较运算符 (`geo.distance(...) lt x`变得`not (geo.distance(...) ge x)`并`geo.distance(...) le x`变得`not (geo.distance(...) gt x)`)。
-- 中的正文`all`，则`geo.intersects`函数必须进行求反。 相反，在正文`any`，则`geo.intersects`函数必须不起作用。
-- 中的正文`any`，可以使用组合地理空间表达式`or`。 中的正文`all`，可以使用组合此类表达式`and`。
+- 可对`geo.distance`函数使用哪些比较运算符取决于 lambda 表达式的类型。 对于`any`, 只能`lt`使用或`le`。 对于`all`, 只能`gt`使用或`ge`。 您可以`geo.distance`否定涉及的表达式, 但必须更改比较运算符 (`geo.distance(...) lt x`变为`not (geo.distance(...) ge x)`和`geo.distance(...) le x`变为`not (geo.distance(...) gt x)`)。
+- 在的主体`all`中, 该函数`geo.intersects`必须是否定的。 相反, 在的主体`any`中`geo.intersects` , 函数不得取反。
+- `or`在中`any`, 可以使用将地理空间表达式组合在一起。 在的正文`all`中, 此类表达式可以使用`and`进行组合。
 
-存在出于类似原因作为字符串集合上相等/不等限制更高版本的限制。 请参阅[Azure 搜索中的了解 OData 集合筛选器](search-query-understand-collection-filters.md)，更深入地了解这些原因。
+上述限制存在的原因类似于字符串集合的相等/不相等限制。 若要深入了解这些原因, 请参阅[了解 Azure 搜索中的 OData 集合筛选器](search-query-understand-collection-filters.md)。
 
-以下是上的筛选器的一些示例`Edm.GeographyPoint`允许的集合：
+下面是有关`Edm.GeographyPoint`允许的集合的一些筛选器示例:
 
 - `locations/any(l: geo.distance(l, geography'POINT(-122 49)') lt 10)`
 - `locations/any(l: not (geo.distance(l, geography'POINT(-122 49)') ge 10) or geo.intersects(l, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))`
 - `locations/all(l: geo.distance(l, geography'POINT(-122 49)') ge 10 and not geo.intersects(l, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))`
 
-不允许使用类似于下面的表达式`Edm.GeographyPoint`集合：
+`Edm.GeographyPoint`集合不允许使用如下所示的表达式:
 
 - `locations/any(l: l eq geography'POINT(-122 49)')`
 - `locations/any(l: not geo.intersects(l, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))`
@@ -145,88 +145,88 @@ ms.locfileid: "67079621"
 
 <a name="bkmk_comparables"></a>
 
-## <a name="rules-for-filtering-comparable-collections"></a>筛选可比较的集合的规则
+## <a name="rules-for-filtering-comparable-collections"></a>用于筛选可比较集合的规则
 
-本部分适用于以下数据类型：
+本部分适用于以下所有数据类型:
 
 - `Collection(Edm.DateTimeOffset)`
 - `Collection(Edm.Double)`
 - `Collection(Edm.Int32)`
 - `Collection(Edm.Int64)`
 
-类型，如`Edm.Int32`并`Edm.DateTimeOffset`支持所有六项的比较运算符： `eq`， `ne`， `lt`， `le`， `gt`，和`ge`。 通过这些类型的集合的 lambda 表达式可以包含使用任何这些运算符的简单表达式。 这同时适用于`any`和`all`。 例如，允许这些筛选器：
+类型`Edm.Int32` (如和`Edm.DateTimeOffset` ) 支持所有六个比较运算符: `eq`、 `ne`、 `lt`、 `le`、 `gt`和。 `ge` 这些类型的集合上的 Lambda 表达式可以使用其中任何一个运算符包含简单的表达式。 这同时`any`适用于和`all`。 例如, 允许使用以下筛选器:
 
 - `ratings/any(r: r ne 5)`
 - `dates/any(d: d gt 2017-08-24T00:00:00Z)`
 - `not margins/all(m: m eq 3.5)`
 
-但是，有如何进行此类比较表达式组合到 lambda 表达式中更复杂的表达式的限制：
+但是, 在 lambda 表达式中, 这种比较表达式如何合并到更复杂的表达式中也存在一些限制:
 
-- 为规则`any`:
-  - 简单的不等式表达式不能有效地结合任何其他表达式。 例如，允许使用此表达式：
+- `any`规则:
+  - 不能将简单不相等表达式与任何其他表达式有用。 例如, 允许使用以下表达式:
     - `ratings/any(r: r ne 5)`
 
-    但是，此表达式不是：
+    但此表达式并不是:
     - `ratings/any(r: r ne 5 and r gt 2)`
 
-    和虽然允许使用此表达式，但它不有用因为条件重叠：
+    尽管此表达式是允许的, 但它并不有用, 因为条件重叠:
     - `ratings/any(r: r ne 5 or r gt 7)`
-  - 简单的比较表达式涉及`eq`， `lt`， `le`， `gt`，或`ge`可以结合`and` / `or`。 例如：
+  - 可以将涉及`eq` `lt` `and` /、 、`gt`、或的简单`or`比较表达式与结合起来。 `ge` `le` 例如：
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - 比较表达式结合`and`（连词） 可以进一步使用组合`or`。 作为布尔逻辑中已知此窗体"[析取范式标准形式](https://en.wikipedia.org/wiki/Disjunctive_normal_form)"(DNF)。 例如：
+  - 与 (连词) `and`组合的比较表达式可以使用`or`进一步组合。 此窗体在布尔逻辑中称为 "[析取范式 Normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF)。 例如：
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
-- 为规则`all`:
-  - 简单的等式表达式不能有效地结合任何其他表达式。 例如，允许使用此表达式：
+- `all`规则:
+  - 简单的相等表达式不能与任何其他表达式有用组合。 例如, 允许使用以下表达式:
     - `ratings/all(r: r eq 5)`
 
-    但是，此表达式不是：
+    但此表达式并不是:
     - `ratings/all(r: r eq 5 or r le 2)`
 
-    和虽然允许使用此表达式，但它不有用因为条件重叠：
+    尽管此表达式是允许的, 但它并不有用, 因为条件重叠:
     - `ratings/all(r: r eq 5 and r le 7)`
-  - 简单的比较表达式涉及`ne`， `lt`， `le`， `gt`，或`ge`可以结合`and` / `or`。 例如：
+  - 可以将涉及`ne` `lt` `and` /、 、`gt`、或的简单`or`比较表达式与结合起来。 `ge` `le` 例如：
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - 比较表达式结合`or`（表达式） 可以进一步使用组合`and`。 作为布尔逻辑中已知此窗体"[合标准形式](https://en.wikipedia.org/wiki/Conjunctive_normal_form)"(CNF)。 例如：
+  - 与 (disjunctions) `or`组合的比较表达式可以使用`and`进一步组合。 此窗体在布尔逻辑中称为 "[联合 Normal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (.cnf)。 例如：
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>
 
-## <a name="rules-for-filtering-complex-collections"></a>用于筛选复杂集合规则
+## <a name="rules-for-filtering-complex-collections"></a>用于筛选复杂集合的规则
 
-Lambda 表达式通过复杂集合支持的基元类型的集合与 lambda 表达式灵活得多的语法。 可以使用任何筛选器构造此类 lambda 表达式，可以使用外部的一个，但只有两个例外中。
+复杂集合上的 lambda 表达式支持比基元类型集合上的 lambda 表达式更灵活的语法。 你可以使用此类 lambda 表达式中的任何筛选器构造, 你可以在其中使用它, 只有两个例外。
 
-首先，函数`search.ismatch`和`search.ismatchscoring`在 lambda 表达式内不受支持。 有关详细信息，请参阅[Azure 搜索中的了解 OData 集合筛选器](search-query-understand-collection-filters.md)。
+首先, lambda 表达式`search.ismatch`中`search.ismatchscoring`的函数和不受支持。 有关详细信息, 请参阅[了解 Azure 搜索中的 OData 集合筛选器](search-query-understand-collection-filters.md)。
 
-其次，引用不是字段*绑定*对范围变量 (所谓*自由变量*) 不允许使用。 例如，考虑以下两个等效 OData 筛选器表达式：
+其次, 不允许引用未*绑定*到范围变量 (所谓的*自由变量*) 的字段。 例如, 请考虑下面两个等效的 OData 筛选器表达式:
 
 1. `stores/any(s: s/amenities/any(a: a eq 'parking')) and details/margin gt 0.5`
 1. `stores/any(s: s/amenities/any(a: a eq 'parking' and details/margin gt 0.5))`
 
-将允许第一个表达式，同时第二个窗体将被拒绝，因为`details/margin`不绑定到的范围变量`s`。
+将允许第一个表达式, 而第二个窗体将被拒绝`details/margin` , 因为未绑定到范围`s`变量。
 
-此规则也扩展到具有变量绑定在外部作用域中的表达式。 此类变量是免费方面出现的作用域。 例如，允许，而第二个等效的表达式无效，因为第一个表达式`s/name`是相对于范围变量的作用域可用`a`:
+此规则还扩展到具有外部作用域中的变量的表达式。 此类变量在其出现的范围内是免费的。 例如, 允许第一个表达式, 而不允许使用第二个等效表达式, `s/name`因为对范围变量`a`的范围而言是可自由的:
 
 1. `stores/any(s: s/amenities/any(a: a eq 'parking') and s/name ne 'Flagship')`
 1. `stores/any(s: s/amenities/any(a: a eq 'parking' and s/name ne 'Flagship'))`
 
-此限制不应为在实践中的问题，因为它是总能够构造筛选器，以便 lambda 表达式包含绑定的变量。
+此限制不应是实际问题, 因为它始终可以构造筛选器, 使 lambda 表达式只包含绑定变量。
 
-## <a name="cheat-sheet-for-collection-filter-rules"></a>速查表集合筛选器规则
+## <a name="cheat-sheet-for-collection-filter-rules"></a>集合筛选规则的备忘单
 
-下表总结了用于构造有效的筛选器的每个集合数据类型的规则。
+下表总结了为每个集合数据类型构建有效筛选器的规则。
 
 [!INCLUDE [Limitations on OData lambda expressions in Azure Search](../../includes/search-query-odata-lambda-limitations.md)]
 
-有关如何构造有效的筛选器，每个用例的示例，请参阅[如何编写有效的集合筛选器](#bkmk_examples)。
+有关如何为每种情况构造有效筛选器的示例, 请参阅[如何编写有效的集合筛选器](#bkmk_examples)。
 
-如果通常情况下，写入筛选器，了解从第一个原则规则帮助您多个只需记住它们，请参阅[Azure 搜索中的了解 OData 集合筛选器](search-query-understand-collection-filters.md)。
+如果经常编写筛选器, 并且理解来自第一个原则的规则不仅可帮助您记住它们, 但请参阅[了解 Azure 搜索中的 OData 集合筛选器](search-query-understand-collection-filters.md)。
 
 ## <a name="next-steps"></a>后续步骤  
 
 - [了解 Azure 搜索中的 OData 集合筛选器](search-query-understand-collection-filters.md)
 - [Azure 搜索中的筛选器](search-filters.md)
 - [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
 - [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 07d44bb54c288202d571f8e664822ecf9b4998be
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 428c470eb633c7727f65c5a9a3afa76bce50b177
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639761"
+ms.locfileid: "69647247"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux Java 应用
 
@@ -423,7 +423,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 ## <a name="configure-java-ee-wildfly"></a>配置 Java EE (WildFly)
 
 > [!NOTE]
-> 应用服务 Linux 上的 Java Enterprise Edition 目前处于预览阶段。 对于面向生产的工作,**不**建议使用此堆栈。 有关 Java SE 和 Tomcat 堆栈的信息。
+> 应用服务 Linux 上的 Java Enterprise Edition 目前处于预览阶段。 对于面向生产的工作,**不**建议使用此堆栈。
 
 Linux 上的 Azure App Service 允许 Java 开发人员在完全托管的基于 Linux 的服务上构建、部署和缩放 Java Enterprise (Java EE) 应用程序。  基础 Java 企业运行时环境是开源[WildFly](https://wildfly.org/)应用程序服务器。
 
@@ -434,7 +434,6 @@ Linux 上的 Azure App Service 允许 Java 开发人员在完全托管的基于 
 - [安装模块和依赖项](#install-modules-and-dependencies)
 - [配置数据源](#configure-data-sources)
 - [启用消息传递提供程序](#enable-messaging-providers)
-- [配置会话管理缓存](#configure-session-management-caching)
 
 ### <a name="scale-with-app-service"></a>应用服务缩放
 
@@ -652,14 +651,121 @@ Web 应用实例是无状态的, 因此在启动时必须配置每个新实例, 
 
 4. 按照安装模块和依赖关系部分中概述的步骤，使用模块 XML 描述符、.jar依赖项、JBoss CLI 命令和 JMS 提供程序的启动脚本。 除这四个文件外，还需要创建一个 XML 文件，该文件定义 JMS 队列和主题的 JNDI 名称。 请参阅[此存储库](https://github.com/JasonFreeberg/widlfly-server-configs/tree/master/appconfig)，获取有关参考配置文件。
 
-### <a name="configure-session-management-caching"></a>配置会话管理缓存
+## <a name="use-redis-as-a-session-cache-with-tomcat"></a>将 Redis 用作使用 Tomcat 的会话缓存
 
-默认情况下，Linux 上的应用服务将使用会话相关性 cookie 来确保将现有会话的客户端请求路由到应用程序的同一实例。 此默认行为不需要配置，但存在一些限制：
+可以将 Tomcat 配置为使用外部会话存储 (如[用于 Redis 的 Azure 缓存](/azure/azure-cache-for-redis/))。 这使你可以在将用户转移到应用的另一个实例时 (例如, 在发生自动缩放、重新启动或故障转移时) 保留用户会话状态 (如购物车数据)。
 
-- 如果重启或减少应用程序实例，应用程序服务器中的用户会话状态将会丢失。
-- 如果应用程序具有较长的会话超时设置或固定数量的用户，则自动调整的新实例可能需要一些时间才能接收负载，因为只有新会话将路由到新启动的实例。
+若要将 Tomcat 用于 Redis, 必须将应用配置为使用[PersistentManager](http://tomcat.apache.org/tomcat-8.5-doc/config/manager.html)实现。 以下步骤介绍了如何使用[Pivotal Session Manager: redis](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store)作为示例执行此过程。
 
-可以将 WildFly 配置为使用外部会话存储, 如[Azure Cache For Redis](/azure/azure-cache-for-redis/)。 需要[禁用现有的 ARR 实例相关性](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)配置才能关闭基于会话 cookie 的路由, 并允许已配置的 WildFly 会话存储在不干扰的情况下运行。
+1. 打开 Bash 终端, 并使用`export <variable>=<value>`设置以下每个环境变量。
+
+    | 变量                 | ReplTest1                                                                      |
+    |--------------------------|----------------------------------------------------------------------------|
+    | RESOURCEGROUP_NAME       | 包含应用服务实例的资源组的名称。       |
+    | WEBAPP_NAME              | 应用服务实例的名称。                                     |
+    | WEBAPP_PLAN_NAME         | 应用服务计划的名称                                          |
+    | 区域                   | 托管应用的区域的名称。                           |
+    | REDIS_CACHE_NAME         | 用于 Redis 实例的 Azure 缓存的名称。                           |
+    | REDIS_PORT               | Redis 缓存侦听的 SSL 端口。                             |
+    | REDIS_PASSWORD           | 实例的主访问键。                                  |
+    | REDIS_SESSION_KEY_PREFIX | 指定用于标识来自应用的会话密钥的值。 |
+
+    您可以通过在服务实例的 "**属性**" 或 "**访问密钥**" 部分中查找, 查找 Azure 门户上的名称、端口和访问密钥信息。
+
+2. 创建或更新应用的*src/main/webapp/META-INF/context.subname*文件, 其中包含以下内容:
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Context path="">
+        <!-- Specify Redis Store -->
+        <Valve className="com.gopivotal.manager.SessionFlushValve" />
+        <Manager className="org.apache.catalina.session.PersistentManager">
+            <Store className="com.gopivotal.manager.redis.RedisStore"
+                   connectionPoolSize="20"
+                   host="${REDIS_CACHE_NAME}.redis.cache.windows.net"
+                   port="${REDIS_PORT}"
+                   password="${REDIS_PASSWORD}"
+                   sessionKeyPrefix="${REDIS_SESSION_KEY_PREFIX}"
+                   timeout="2000"
+            />
+        </Manager>
+    </Context>
+    ```
+
+    此文件指定并配置应用程序的会话管理器实现。 它使用您在上一步中设置的环境变量, 将您的帐户信息保留在您的源文件中。
+
+3. 使用 FTP 将会话管理器的 JAR 文件上传到应用服务实例, 并将其放置在 */home/tomcat/lib*目录中。 有关详细信息, 请参阅[使用 FTP/S 将应用部署到 Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-ftp)。
+
+4. 为应用服务实例禁用[会话相关性 cookie](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) 。 可以通过导航到应用, 然后将**配置 > 常规设置 > ARR 相关性**设置为**Off**, 来执行 Azure 门户此操作。 或者, 可以使用以下命令:
+
+    ```azurecli
+    az webapp update -g <resource group> -n <webapp name> --client-affinity-enabled false
+    ```
+
+    默认情况下, 应用服务将使用会话关联 cookie 来确保将具有现有会话的客户端请求路由到你的应用程序的同一个实例。 此默认行为不需要任何配置, 但在重新启动应用程序实例或将流量重新路由到另一个实例时, 它不能保留用户会话状态。 [禁用现有 ARR 实例相关性](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)配置以关闭基于会话 cookie 的路由时, 允许配置的会话存储在不干扰的情况下运行。
+
+5. 导航到应用服务实例的 "**属性**" 部分, 并找到**其他出站 IP 地址**。 这表示应用的所有可能的出站 IP 地址。 复制这些项以便在下一步中使用。
+
+6. 对于每个 IP 地址, 请在 Azure Cache for Redis 实例中创建防火墙规则。 你可以在 Redis 实例的 "**防火墙**" 部分的 Azure 门户上执行此操作。 为每个规则提供唯一的名称, 并将 "**起始 ip 地址**" 和 "**结束 ip 地址**" 值设置为相同的 ip 地址。
+
+7. 导航到 Redis 实例的 "**高级设置**" 部分, 将 "**仅允许通过 SSL 访问**" 设置为 "**否**"。 这样, 应用服务实例便可通过 Azure 基础结构与 Redis 缓存通信。
+
+8. 更新应用`azure-webapp-maven-plugin`的*pom*文件中的配置, 以引用你的 Redis 帐户信息。 此文件使用您之前设置的环境变量来保留源文件中的帐户信息。
+
+    如有必要, `1.7.0`请更改为[Azure App Service 的 Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)的当前版本。
+
+    ```xml
+    <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.7.0</version>
+        <configuration>
+
+            <!-- Web App information -->
+            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+            <appServicePlanName>${WEBAPP_PLAN_NAME}-${REGION}</appServicePlanName>
+            <appName>${WEBAPP_NAME}-${REGION}</appName>
+            <region>${REGION}</region>
+            <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
+
+            <appSettings>
+                <property>
+                    <name>REDIS_CACHE_NAME</name>
+                    <value>${REDIS_CACHE_NAME}</value>
+                </property>
+                <property>
+                    <name>REDIS_PORT</name>
+                    <value>${REDIS_PORT}</value>
+                </property>
+                <property>
+                    <name>REDIS_PASSWORD</name>
+                    <value>${REDIS_PASSWORD}</value>
+                </property>
+                <property>
+                    <name>REDIS_SESSION_KEY_PREFIX</name>
+                    <value>${REDIS_SESSION_KEY_PREFIX}</value>
+                </property>
+                <property>
+                    <name>JAVA_OPTS</name>
+                    <value>-Xms2048m -Xmx2048m -DREDIS_CACHE_NAME=${REDIS_CACHE_NAME} -DREDIS_PORT=${REDIS_PORT} -DREDIS_PASSWORD=${REDIS_PASSWORD} IS_SESSION_KEY_PREFIX=${REDIS_SESSION_KEY_PREFIX}</value>
+                </property>
+
+            </appSettings>
+
+        </configuration>
+    </plugin>
+    ```
+
+9. 重新生成并重新部署你的应用。
+
+    ```bash
+    mvn package
+    mvn azure-webapp:deploy
+    ```
+
+现在, 你的应用将使用 Redis 缓存进行会话管理。
+
+有关可用于测试这些说明的示例, 请参阅 GitHub 上的[扩展-有状态 java web 应用](https://github.com/Azure-Samples/scaling-stateful-java-web-app-on-azure)存储库。
 
 ## <a name="docker-containers"></a>Docker 容器
 

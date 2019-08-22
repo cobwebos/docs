@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 638be5e62c523c478f139f13185edeb24995ab3f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c718794528989fbc46b404617f16d3a91ade6011
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848993"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877314"
 ---
 # <a name="create-a-new-device-template-version"></a>创建新设备模板版本
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Azure IoT Central 用于快速开发 IoT 应用程序。 可以通过添加、编辑或删除度量、设置或属性来快速地循环访问设备模板设计。 对于当前的连接设备，这其中的某些更改可能是侵入性的。 Azure IoT Central 可以标识这些中断性变更，并且可以通过某种方式将这些更新安全地部署到设备。
 
@@ -58,8 +60,8 @@ Azure IoT Central 用于快速开发 IoT 应用程序。 可以通过添加、�
 
 1. 请参阅**Device Explorer**页面。
 1. 选择需迁移到另一版本的设备。
-1. 选择“迁移设备”。 
-1. 选择需将设备迁移到其中的版本号，然后选择“迁移”。 
+1. 选择“迁移设备”。
+1. 选择需将设备迁移到其中的版本号，然后选择“迁移”。
 
 ![如何迁移设备](media/howto-version-device-template/pick-version.png)
 

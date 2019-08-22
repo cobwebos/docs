@@ -4,19 +4,19 @@ ms.service: billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: 203f0eda7e2e9d1545e7bf5cc2bb6eff9c2c3c55
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1080e3488483610af0f0c9afadaf000895021821
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68936755"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69657732"
 ---
 | Resource | 免费 | 已共享 | 基本 | 标准 | 高级 (v2) | 独立 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | 每个[Azure App Service 计划](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> [的 Web 应用、移动应用或 API 应用](https://azure.microsoft.com/services/app-service/) |10 |100 |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup>|
 | [应用服务计划](../articles/app-service/overview-hosting-plans.md) |每个区域仅 10 个 |每个资源组 10 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个|
 | 计算实例类型 |已共享 |已共享 |专用<sup>3</sup> |专用<sup>3</sup> |专用<sup>3</sup></p> |专用<sup>3</sup>|
-| [横向扩展](../articles/app-service/web-sites-scale.md)(最大实例数) |1 个共享 |1 个共享 |3 个专用<sup>3</sup> |10 个专用<sup>3</sup> |20 个专用<sup>3</sup>|100 个专用<sup>4</sup>|
+| [横向扩展](../articles/app-service/manage-scale-up.md)(最大实例数) |1 个共享 |1 个共享 |3 个专用<sup>3</sup> |10 个专用<sup>3</sup> |20 个专用<sup>3</sup>|100 个专用<sup>4</sup>|
 | 存储<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
 | CPU 时间 (5 分钟)<sup>6</sup> |3 分钟 |3 分钟 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费|
 | CPU 时间（天）<sup>6</sup> |60 分钟 |240 分钟 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |
@@ -31,7 +31,7 @@ ms.locfileid: "68936755"
 | 集成的负载均衡器 | |X |X |X |X |X<sup>9</sup> |
 | [始终打开](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [计划的备份](../articles/app-service/manage-backup.md) | | | | 每2小时计划一次备份, 每天最多12个备份 (手动 + 计划) | 每小时计划备份, 每天最多50个备份 (手动 + 计划) | 每小时计划备份, 每天最多50个备份 (手动 + 计划) |
-| [自动缩放](../articles/app-service/web-sites-scale.md) | | | |X |X |X |
+| [自动缩放](../articles/app-service/manage-scale-up.md) | | | |X |X |X |
 | [WebJobs](../articles/app-service/webjobs-create.md)<sup>8</sup> |X |X |X |X |X |X |
 | [Azure 计划程序](https://azure.microsoft.com/services/scheduler/)支持 | |X |X |X |X |X |
 | [终结点监视](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
