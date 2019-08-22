@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, sdk, 人体, 跟踪, 关节, 应用程序, 第一个
-ms.openlocfilehash: 50e53ccc643287fc8317917ec371ee4bed04e239
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 6ce330aebd296d966993620fe1a7eb7cb5341911
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827061"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515430"
 ---
 # <a name="quickstart-build-your-first-azure-kinect-body-tracking-application"></a>快速入门：生成第一个 Azure Kinect 人体跟踪应用程序
 
@@ -61,7 +61,7 @@ k4a_device_open(0, &device);
 
 // Start camera. Make sure depth camera is enabled.
 k4a_device_configuration_t deviceConfig = K4A_DEVICE_CONFIG_INIT_DISABLE_ALL;
-deviceConfig.depth_mode = K4A_DEPTH_MODE_WFOV_2X2BINNED;
+deviceConfig.depth_mode = K4A_DEPTH_MODE_NFOV_UNBINNED;
 deviceConfig.color_resolution = K4A_COLOR_RESOLUTION_OFF;
 k4a_device_start_cameras(device, &deviceConfig);
 ```
@@ -72,7 +72,7 @@ k4a_device_start_cameras(device, &deviceConfig);
 
 ```C
 k4a_calibration_t sensor_calibration;
-k4a_device_get_calibration(device, deviceConfig.depth_mode, K4A_COLOR_RESOLUTION_OFF, &sensor_calibration);
+k4a_device_get_calibration(device, deviceConfig.depth_mode, deviceConfig.color_resolution, &sensor_calibration);
 
 k4abt_tracker_t tracker = NULL;
 k4abt_tracker_create(&sensor_calibration, &tracker);
@@ -94,7 +94,7 @@ k4a_device_get_capture(device, &capture, TIMEOUT_IN_MS);
 第一个人体跟踪应用程序使用实时处理模式。 有关其他模式的详细说明，请参阅[获取人体跟踪结果](get-body-tracking-results.md)。
 
 ```C
-k4a_wait_result_t queue_capture_result = k4abt_tracker_enqueue_capture(tracker, sensor_capture, 0);
+k4a_wait_result_t queue_capture_result = k4abt_tracker_enqueue_capture(tracker, sensor_capture, K4A_WAIT_INFINITE);
 k4a_capture_release(sensor_capture); // Remember to release the sensor capture once you finish using it
 if (queue_capture_result == K4A_WAIT_RESULT_FAILED)
 {
@@ -103,7 +103,7 @@ if (queue_capture_result == K4A_WAIT_RESULT_FAILED)
 }
 
 k4abt_frame_t body_frame = NULL;
-k4a_wait_result_t pop_frame_result = k4abt_tracker_pop_result(tracker, &body_frame, 0);
+k4a_wait_result_t pop_frame_result = k4abt_tracker_pop_result(tracker, &body_frame, K4A_WAIT_INFINITE);
 if (pop_frame_result == K4A_WAIT_RESULT_SUCCEEDED)
 {
     // Successfully popped the body tracking result. Start your processing
@@ -153,11 +153,13 @@ k4a_device_close(device);
 
 int main()
 {
+    k4a_device_t device = NULL;
+    VERIFY(k4a_device_open(0, &device), "Open K4A Device failed!");
+
+    // Start camera. Make sure depth camera is enabled.
     k4a_device_configuration_t deviceConfig = K4A_DEVICE_CONFIG_INIT_DISABLE_ALL;
     deviceConfig.depth_mode = K4A_DEPTH_MODE_NFOV_UNBINNED;
-
-    k4a_device_t device;
-    VERIFY(k4a_device_open(0, &device), "Open K4A Device failed!");
+    deviceConfig.color_resolution = K4A_COLOR_RESOLUTION_OFF;
     VERIFY(k4a_device_start_cameras(device, &deviceConfig), "Start K4A cameras failed!");
 
     k4a_calibration_t sensor_calibration;
@@ -176,7 +178,7 @@ int main()
         {
             frame_count++;
             k4a_wait_result_t queue_capture_result = k4abt_tracker_enqueue_capture(tracker, sensor_capture, K4A_WAIT_INFINITE);
-            k4a_capture_release(sensor_capture);
+            k4a_capture_release(sensor_capture); // Remember to release the sensor capture once you finish using it
             if (queue_capture_result == K4A_WAIT_RESULT_TIMEOUT)
             {
                 // It should never hit timeout when K4A_WAIT_INFINITE is set.
@@ -193,10 +195,12 @@ int main()
             k4a_wait_result_t pop_frame_result = k4abt_tracker_pop_result(tracker, &body_frame, K4A_WAIT_INFINITE);
             if (pop_frame_result == K4A_WAIT_RESULT_SUCCEEDED)
             {
+                // Successfully popped the body tracking result. Start your processing
+
                 size_t num_bodies = k4abt_frame_get_num_bodies(body_frame);
                 printf("%zu bodies are detected!\n", num_bodies);
 
-                k4abt_frame_release(body_frame);
+                k4abt_frame_release(body_frame); // Remember to release the body frame once you finish using it
             }
             else if (pop_frame_result == K4A_WAIT_RESULT_TIMEOUT)
             {

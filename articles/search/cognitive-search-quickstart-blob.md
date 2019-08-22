@@ -1,7 +1,7 @@
 ---
 title: 快速入门：在 Azure 门户中生成 AI 扩充的索引 - Azure 搜索
 description: 使用 Azure 门户和示例数据，在 Azure 搜索索引门户中添加数据提取、自然语言和图像处理技能。
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: quickstart
 ms.date: 07/09/2019
 ms.author: heidist
-ms.openlocfilehash: 7bc8bd77ef581134fad0cb2e11277dc4fcee99c4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a4654e5895e9c7768b9fa6b975ef848294bcc8cc
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841177"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648910"
 ---
 # <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>快速入门：在 Azure 搜索中使用认知技能创建 AI 索引管道
 

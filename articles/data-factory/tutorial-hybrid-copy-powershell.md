@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: abnarain
-ms.openlocfilehash: 49d9be9f10f0e840cfa3d027901a297de8cbf750
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3f49bed0253a380dbcb0a526364c85c2031b0116
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328075"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640324"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>教程：将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 本教程使用 Azure PowerShell 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。 
@@ -41,20 +41,20 @@ ms.locfileid: "60328075"
 如果还没有 Azure 订阅，请在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ### <a name="azure-roles"></a>Azure 角色
-若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须分配有“参与者”或“所有者”角色，或者必须是 Azure 订阅的管理员。 
+若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须分配有  “参与者”或  “所有者”角色，或者必须是 Azure 订阅的  管理员。 
 
-若要查看你在订阅中拥有的权限，请转到 Azure 门户，选择右上角的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 有关如何将用户添加到角色的示例说明，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)一文。
+若要查看你在订阅中拥有的权限，请转到 Azure 门户，选择右上角的用户名，然后选择“权限”。  如果可以访问多个订阅，请选择相应的订阅。 有关如何将用户添加到角色的示例说明，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)一文。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016 和 2017
-在本教程中，请将本地 SQL Server 数据库用作源数据存储。 首先，在本教程中创建的数据工厂中的管道将数据从这个本地 SQL Server 数据库（源）复制到 Azure Blob 存储（接收器）。 然后，你可以在 SQL Server 数据库中创建名为 **emp** 的表，并向表中插入几个示例条目。 
+在本教程中，请将本地 SQL Server 数据库用作  源数据存储。 首先，在本教程中创建的数据工厂中的管道将数据从这个本地 SQL Server 数据库（源）复制到 Azure Blob 存储（接收器）。 然后，你可以在 SQL Server 数据库中创建名为 **emp** 的表，并向表中插入几个示例条目。 
 
 1. 启动 SQL Server Management Studio。 如果此软件尚未安装在计算机上，请访问[下载 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。 
 
 1. 使用凭据连接到 SQL Server 实例。 
 
-1. 创建示例数据库。 在树状视图中右键单击“数据库”，然后选择“新建数据库”。 
+1. 创建示例数据库。 在树状视图中右键单击“数据库”，然后选择“新建数据库”。   
  
-1. 在“新建数据库”窗口中输入数据库的名称，然后选择“确定”。 
+1. 在“新建数据库”  窗口中输入数据库的名称，然后选择“确定”。  
 
 1. 若要创建 **emp** 表并将一些示例数据插入到其中，请对数据库运行以下查询脚本：
 
@@ -64,7 +64,7 @@ ms.locfileid: "60328075"
        GO
    ```
 
-1. 在树状视图中右键单击所创建的数据库，然后选择“新建查询”。
+1. 在树状视图中右键单击所创建的数据库，然后选择“新建查询”。 
 
 ### <a name="azure-storage-account"></a>Azure 存储帐户
 在本教程中，请使用常规用途的 Azure 存储帐户（具体说来就是 Azure Blob 存储）作为目标/接收器数据存储。 如果没有常规用途的 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。 在本教程中创建的数据工厂中的管道将数据从本地 SQL Server 数据库（源）复制到这个 Azure Blob 存储（接收器）。 
@@ -74,40 +74,37 @@ ms.locfileid: "60328075"
 
 1. 使用 Azure 用户名和密码登录到 [Azure 门户](https://portal.azure.com)。 
 
-1. 在左窗格中选择“更多服务”，使用“存储”关键字进行筛选，然后选择“存储帐户”。
+1. 在左窗格中选择“更多服务”，使用“存储”关键字进行筛选，然后选择“存储帐户”。   
 
-    ![搜索存储帐户](media/tutorial-hybrid-copy-powershell/search-storage-account.png)
+    ![搜索存储帐户](media/doc-common-process/search-storage-account.png)
 
 1. 在存储帐户列表中，通过筛选找出你的存储帐户（如果需要），然后选择你的存储帐户。 
 
-1. 在“存储帐户”窗口中选择“访问密钥”。
+1. 在“存储帐户”窗口中选择“访问密钥”   。
 
-    ![获取存储帐户名称和密钥](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
-
-1. 复制“存储帐户名称”和“key1”框中的值，然后将其粘贴到记事本或其他编辑器中，在教程的后面部分使用。 
+1. 复制“存储帐户名称”和“key1”框中的值，然后将其粘贴到记事本或其他编辑器中，在教程的后面部分使用。   
 
 #### <a name="create-the-adftutorial-container"></a>创建 adftutorial 容器 
 此部分在 Azure Blob 存储中创建名为 **adftutorial** 的 Blob 容器。 
 
-1. 在“存储帐户”窗口中切换到“概览”，然后选择“Blob”。 
+1. 在“存储帐户”  窗口中切换到“概览”  ，然后选择“Blob”。  
 
     ![选择“Blob”选项](media/tutorial-hybrid-copy-powershell/select-blobs.png)
 
-1. 在“Blob 服务”窗口中，选择“容器”。 
+1. 在“Blob 服务”  窗口中，选择“容器”  。 
 
     ![“添加容器”按钮](media/tutorial-hybrid-copy-powershell/add-container-button.png)
 
-1. 在“新建容器”窗口的“名称”框中输入“adftutorial”，然后选择“确定”。 
+1. 在“新建容器”窗口的“名称”框中输入“adftutorial”，然后选择“确定”。     
 
     ![输入容器名称](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
 
-1. 在容器列表中选择“adftutorial”。  
+1. 在容器列表中选择“adftutorial”  。  
 
     ![选择容器](media/tutorial-hybrid-copy-powershell/select-adftutorial-container.png)
 
-1. 让 **adftutorial** 的“容器”窗口保持打开状态。 在教程结束时可以使用它来验证输出。 数据工厂自动在该容器中创建输出文件夹，因此不需要你来创建。
+1. 让  **adftutorial** 的“容器”窗口保持打开状态。 在教程结束时可以使用它来验证输出。 数据工厂自动在该容器中创建输出文件夹，因此不需要你来创建。
 
-    ![“容器”窗口](media/tutorial-hybrid-copy-powershell/container-page.png)
 
 ### <a name="windows-powershell"></a>Windows PowerShell
 
@@ -178,8 +175,8 @@ ms.locfileid: "60328075"
 >    ```
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
-> * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须具有参与者或所有者角色，或者是 Azure 订阅的管理员。
-> * 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域。
+> * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须具有  参与者或  所有者角色，或者是 Azure 订阅的  管理员。
+> * 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域。
 > 
 > 
 
@@ -234,7 +231,7 @@ ms.locfileid: "60328075"
     State                     : NeedRegistration
     ```
 
-1. 若要检索可将自承载 Integration Runtime 注册到云中数据工厂服务的身份验证密钥，请运行以下命令。 复制其中一个密钥（去除引号），以便注册将在下一步安装到计算机上的自承载 Integration Runtime。 
+1. 若要检索可将自承载 Integration Runtime 注册到云中数据工厂服务的  身份验证密钥，请运行以下命令。 复制其中一个密钥（去除引号），以便注册将在下一步安装到计算机上的自承载 Integration Runtime。 
 
     ```powershell
     Get-AzDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
@@ -252,21 +249,21 @@ ms.locfileid: "60328075"
 ## <a name="install-the-integration-runtime"></a>安装 Integration Runtime
 1. 将 [Azure 数据工厂 Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) 下载到本地 Windows 计算机上，然后进行安装。 
 
-1. 在“欢迎使用 Microsoft Integration Runtime 安装向导”页上，选择“下一步”。  
+1. 在“欢迎使用 Microsoft Integration Runtime 安装向导”页上，选择“下一步”。    
 
-1. 在“最终用户许可协议”窗口中接受许可协议的条款，然后选择“下一步”。 
+1. 在“最终用户许可协议”窗口中接受许可协议的条款，然后选择“下一步”   。 
 
-1. 在“目标文件夹”窗口中，选择“下一步”。 
+1. 在“目标文件夹”  窗口中，选择“下一步”  。 
 
-1. 在“准备安装 Microsoft Integration Runtime”窗口中选择“安装”。 
+1. 在“准备安装 Microsoft Integration Runtime”窗口中选择“安装”。   
 
-1. 如果看到一条警告消息，指出系统正将计算机配置为在不使用时进入睡眠或休眠模式，请选择“确定”。 
+1. 如果看到一条警告消息，指出系统正将计算机配置为在不使用时进入睡眠或休眠模式，请选择“确定”。  
 
-1. 如果显示“电源选项”窗口，请将其关闭，然后切换到安装窗口。 
+1. 如果显示“电源选项”窗口，请将其关闭，然后切换到安装窗口。  
 
-1. 在“完成 Microsoft Integration Runtime 安装向导”页中选择“完成”。
+1. 在“完成 Microsoft Integration Runtime 安装向导”页中选择“完成”。  
 
-1. 在“注册 Integration Runtime (自承载)”窗口中粘贴在上一部分保存的密钥，然后选择“注册”。 
+1. 在“注册 Integration Runtime (自承载)”窗口中粘贴在上一部分保存的密钥，然后选择“注册”。   
 
     ![注册集成运行时](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
@@ -274,16 +271,16 @@ ms.locfileid: "60328075"
 
     ![已成功注册](media/tutorial-hybrid-copy-powershell/registered-successfully.png)
 
-1. 在“新建 Integration Runtime (自承载)节点”窗口中，选择“下一步”。 
+1. 在“新建 Integration Runtime (自承载)节点”窗口中，选择“下一步”。   
 
     ![“新建 Integration Runtime 节点”窗口](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
 
-1. 在“Intranet 信道”窗口中，选择“跳过”。  
+1. 在“Intranet 信道”窗口中，选择“跳过”。    
     可以选择 TLS/SSL 认证，确保多节点 Integration Runtime 环境中的节点内通信安全。
 
     ![“Intranet 信道”窗口](media/tutorial-hybrid-copy-powershell/intranet-communication-channel-page.png)
 
-1. 在“注册 Integration Runtime (自承载)”窗口中，选择“启动配置管理器”。 
+1. 在“注册 Integration Runtime (自承载)”窗口中，选择“启动配置管理器”。   
 
 1. 将节点连接到云服务后，会显示以下消息：
 
@@ -293,9 +290,9 @@ ms.locfileid: "60328075"
 
     ![“诊断”选项卡](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)   
 
-    a. 在“配置管理器”窗口中，切换到“诊断”选项卡。
+    a. 在“配置管理器”窗口中，切换到“诊断”选项卡。  
 
-    b. 在“数据源类型”框中，选择“SqlServer”。
+    b. 在“数据源类型”框中，选择“SqlServer”。  
 
     c. 输入服务器名称。
 
@@ -307,7 +304,7 @@ ms.locfileid: "60328075"
 
     g. 输入与用户名关联的密码。
 
-    h. 若要确认 Integration Runtime 能否连接到 SQL Server，请选择“测试”。  
+    h. 若要确认 Integration Runtime 能否连接到 SQL Server，请选择“测试”。   
     如果连接成功，则会显示绿色复选图标。 否则，会收到与故障相关的错误消息。 请解决问题，确保 Integration Runtime 可以连接到 SQL Server 实例。
 
     记下所有上述值，在本教程的后面部分使用。
@@ -415,7 +412,7 @@ ms.locfileid: "60328075"
     > [!IMPORTANT]
     > - 根据连接到 SQL Server 实例时所使用的身份验证选择节。
     > - 将 **\<integration runtime name>** 替换为 Integration Runtime 的名称。
-    > - 保存文件之前，请将 **\<servername>**、**\<databasename>**、**\<username>** 和 **\<password>** 替换为 SQL Server 实例的值。
+    > - 保存文件之前，请将 **\<servername>** 、 **\<databasename>** 、 **\<username>** 和 **\<password>** 替换为 SQL Server 实例的值。
     > - 如需在用户帐户或服务器名称中使用反斜杠 (\\)，请在其前面加上转义字符 (\\)。 例如，使用 *mydomain\\\\myuser*。 
 
 1. 若要加密敏感数据（用户名、密码等），请运行 `New-AzDataFactoryV2LinkedServiceEncryptedCredential` cmdlet。  
@@ -653,7 +650,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
 ## <a name="verify-the-output"></a>验证输出
 该管道自动在 `adftutorial` Blob 容器中创建名为 *fromonprem* 的输出文件夹。 确认在输出文件夹中看到 *dbo.emp.txt* 文件。 
 
-1. 在 Azure 门户的“adftutorial”容器窗口中选择“刷新”，查看输出文件夹。
+1. 在 Azure 门户的“adftutorial”容器窗口中选择“刷新”，查看输出文件夹。  
 
     ![创建的输出文件夹](media/tutorial-hybrid-copy-powershell/fromonprem-folder.png)
 1. 选择文件夹列表中的 `fromonprem`。 

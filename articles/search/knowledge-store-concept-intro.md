@@ -6,16 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.subservice: cognitive-search
-ms.devlang: NA
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: 8605a2c954eec2a57925557f8823a3614ebdc266
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: f4308cf0309725fc0ba3b5feb047d04af2ebbe66
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013382"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638186"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>什么是 Azure 搜索中的知识存储？
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
-ms.openlocfilehash: 97f7393622311103d94d3067205f902e3eec6843
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8dfe0db5277a995b6e6675381ebeb5aeb243c9b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567351"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647218"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL 数据库托管实例入门
 
@@ -55,8 +55,6 @@ ms.locfileid: "68567351"
 ## <a name="customize-network-environment"></a>自定义网络环境
 
 尽管在使用 [Azure 门户](sql-database-managed-instance-get-started.md)创建实例时可以自动配置 VNet/子网，但最好是在开始创建托管实例之前创建 VNet/子网，因为这样可以配置 VNet 和子网的参数。 创建和配置网络环境的最简单方法是使用 [Azure 资源部署](sql-database-managed-instance-create-vnet-subnet.md)模板，这样可以创建并配置实例所要放入到的网络和子网。 只需按下 Azure 资源管理器部署按钮，然后在表单中填充参数即可。
-
-或者，可以使用 [PowerShell 脚本](https://www.powershellmagazine.com/20../../configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/)自动创建网络。
 
 或者，也可以使用此 [PowerShell 脚本](https://www.powershellmagazine.com/2018/07/23/configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/)自动创建网络。
 

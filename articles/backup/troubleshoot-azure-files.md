@@ -4,22 +4,21 @@ description: 本文提供在保护 Azure 文件共享时所发生的问题的故
 ms.service: backup
 author: dcurwin
 ms.author: dacurwin
-ms.date: 07/22/2019
+ms.date: 08/20/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 486c0ae674f1549206b7aa3110faf31132c22f2a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1182c7d4ac9a103e752a8cd0c392c5e57f1eebd0
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639400"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637569"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>排查 Azure 文件共享备份问题
 可参考下表中所列信息，排查使用 Azure 文件共享备份时遇到的问题和错误。
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>预览版期间 Azure 文件共享备份的限制
 Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2 存储帐户中的 Azure 文件共享均受支持。 Azure 文件共享不支持以下备份场景：
-- 不能保护已启用虚拟网络或防火墙的存储帐户中的 Azure 文件共享。
 - 无法使用 CLI 通过 Azure 备份来保护 Azure 文件。
 - 每天的计划备份数上限为 1。
 - 每天的按需备份数上限为 4。
@@ -51,7 +50,6 @@ Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2
 | 你已达到此文件共享的最大快照限制，在旧的快照过期后才能继续生成快照。 | <ul><li> 为文件创建多个按需备份时，可能发生此错误。 <li> 每个文件共享的快照限制为 200 个，包括通过 Azure 备份生成的快照。 较旧的计划备份（或快照）会自动清除。 如果达到最大限制，则必须删除按需备份（或快照）。<li> 从 Azure 文件门户删除按需备份（Azure 文件共享快照）。 **注意**：如果删除 Azure 备份创建的快照，会失去恢复点。 |
 | 文件共享备份或还原因存储服务限制而失败。 这可能是因为存储服务正忙于处理给定存储帐户的其他请求。| 稍后重试操作。 |
 | 还原失败，找不到目标文件共享。 | <ul><li>确保所选存储帐户存在，且目标文件共享未删除。 <li> 确保存储帐户是支持进行文件共享备份的存储帐户。 |
-| 启用了虚拟网络的存储帐户中的 Azure 文件共享目前不支持 Azure 备份。 | 在存储帐户上禁用虚拟网络，确保成功进行备份或还原操作。 |
 | 由于存储帐户处于“已锁定”状态，备份或还原作业失败。 | 解除存储帐户上的锁定，或者使用删除锁定而不是读取锁定，然后重试该操作。 |
 | 恢复失败，因为故障文件数超出阈值。 | <ul><li> 恢复失败原因在文件中列出（作业详细信息中提供了路径）。 请解决导致失败的问题，然后只对故障文件重试还原操作。 <li> 文件还原失败的常见原因： <br/> - 确保目前没有在使用故障文件。 <br/> - 父目录中存在其名称与故障文件名称相同的目录。 |
 | 恢复失败，因为没有可以恢复的文件。 | <ul><li> 恢复失败原因在文件中列出（作业详细信息中提供了路径）。 解决导致失败的问题，然后只对故障文件重试还原操作。 <li> 文件还原失败的常见原因： <br/> - 确保目前没有在使用故障文件。 <br/> - 父目录中存在其名称与故障文件名称相同的目录。 |
