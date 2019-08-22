@@ -76,7 +76,7 @@ ms.locfileid: "68693344"
 
 通过将 LinkedIn 帐户添加到策略扩展文件中的**ClaimsProviders**元素, 将其定义为声明提供程序。
 
-1. 在编辑器中打开*SocialAndLocalAccounts/* * trustframeworkextensions.xml** * 文件。 此文件位于[自定义策略初学者包][starter-pack]中, 你可以在其中一个必备组件中下载。
+1. 在编辑器中打开*SocialAndLocalAccounts/ **trustframeworkextensions.xml** *文件。 此文件位于[自定义策略初学者包][starter-pack]中, 你可以在其中一个必备组件中下载。
 1. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
 1. 如下所示添加新的 **ClaimsProvider**：
 
