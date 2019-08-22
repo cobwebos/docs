@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 6bb3be3805243bba4d11037b180e7f8418a84014
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
-ms.translationtype: MT
+ms.openlocfilehash: 54d3f175e74b9f94c7845725e3d8f4531750df57
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947222"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877557"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
@@ -86,7 +86,7 @@ Windows 虚拟桌面提供对客户所使用的 Vm 大小、类型和计数的�
 确保 Windows 虚拟桌面环境遵循最佳做法:
 
 - Azure 文件存储帐户必须位于与会话主机 Vm 相同的区域中。
-- Azure 文件权限应与[要求-配置文件容器](https://docs.fslogix.com/display/20170529/Requirements+-+Profile+Containers)中所述的权限匹配。
+- Azure 文件权限应与[要求-配置文件容器](https://docs.microsoft.com/fslogix/overview#requirements)中所述的权限匹配。
 - 每个主机池都必须基于相同的主映像生成相同的类型和大小的 VM。
 - 每个主机池 VM 必须位于同一个资源组中, 以帮助管理、缩放和更新。
 - 为了获得最佳性能, 存储解决方案和 FSLogix 配置文件容器应位于相同的数据中心位置。
@@ -99,6 +99,6 @@ Windows 虚拟桌面提供对客户所使用的 Vm 大小、类型和计数的�
 - 若要开始构建桌面虚拟化解决方案, 请参阅[在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)。
 - 若要在 Windows 虚拟桌面租户中创建主机池, 请参阅[使用 Azure Marketplace 创建主机池](create-host-pools-azure-marketplace.md)。
 - 若要设置云中完全托管的文件共享, 请参阅[设置 Azure 文件共享](/articles/storage/files/storage-files-active-directory-enable.md)。
-- 若要配置 FSLogix 配置文件容器, 请参阅为[主机池设置用户配置文件共享](create-host-pools-user-profile.md)。
+- 若要配置 FSLogix 配置文件容器, 请参阅[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)。
 - 若要将用户分配到主机池, 请参阅[管理 Windows 虚拟桌面的应用组](manage-app-groups.md)。
 - 若要通过 web 浏览器访问 Windows 虚拟桌面资源, 请参阅[连接到 Windows 虚拟桌面](connect-web.md)。

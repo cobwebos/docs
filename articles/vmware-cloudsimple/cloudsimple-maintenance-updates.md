@@ -3,25 +3,25 @@ title: Azure VMware 解决方案 (按 CloudSimple)-CloudSimple 维护和更新
 description: 描述计划的维护和更新的 CloudSimple 服务进程
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5d6eeecbecc89995c25e687cc6808ed3b0c5dc5c
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 92f02c0abef6755213d4c73189c7e0a593867ef6
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816219"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877934"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple 维护和更新
 
-私有云环境旨在无单点故障:
+私有云环境旨在无单点故障。
 
-* ESXi 群集配置为具有 vSphere 高可用性。 群集的大小调整为至少有一个备用节点用于复原。
+* ESXi 群集是通过 vSphere 高可用性 (HA) 配置的。 群集的大小调整为至少有一个备用节点用于复原。
 * VSAN 提供冗余的主存储, 它至少需要三个节点才能针对单一故障提供保护。 可以配置 vSAN, 为更大的群集提供更高的复原能力。
-* vCenter、PSC 和 NSX Manager Vm 配置了 RAID-5 存储策略来防止存储故障。 Vm 受 vSphere HA 的节点/网络故障保护。
+* vCenter、PSC 和 NSX Manager Vm 配置了10个存储, 以防止存储故障。 Vm 受 vSphere HA 的节点/网络故障保护。
 * ESXi 主机具有冗余风扇和 Nic。
 * 在 HA 对中配置 TOR 和书脊交换机, 以提供复原能力。
 
@@ -57,9 +57,9 @@ CloudSimple 在私有云中备份、维护和更新这些 VMware 元素:
 CloudSimple 备份包括:
 
 * VCenter、PSC 和 DVS 规则的夜间增量备份。
-* 使用 vCenter 本机 Api 在应用程序层上备份组件。
-* 在升级或升级 VMware 管理软件之前自动备份。
-* 数据在通过 TLS 1.2 加密通道传输到 Azure 之前, 在源处按 vCenter 进行数据加密。 数据存储在 Azure blob 中, 其中跨区域复制数据。
+* vCenter 本机 Api, 用于在应用程序层备份组件。
+* 在更新或升级 VMware 管理软件之前自动备份。
+* 在数据通过 TLS 1.2 加密通道传输到 Azure 之前, 源上的 vCenter 数据加密。 数据存储在 Azure blob 中, 其中跨区域复制数据。
 
 可以通过打开[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来请求还原。
 
@@ -105,4 +105,4 @@ CloudSimple 提供对 VMware 软件组件的季度维护更新。 当 VMware 软
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Veeam 备份工作负载 vm](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)。
+[使用 Veeam 备份工作负荷 Vm](backup-workloads-veeam.md)
