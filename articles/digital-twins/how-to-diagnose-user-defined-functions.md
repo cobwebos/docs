@@ -1,20 +1,20 @@
 ---
 title: 如何在 Azure 数字孪生中调试 UDF | Microsoft Docs
 description: 有关如何在 Azure 数字孪生中调试 UDF 的指南。
-author: stefanmsft
-manager: deshner
+author: kingdomofends
+manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.author: stegaw
+ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 61c3f033fbe3febe7b0d048b247cc1fe8d597698
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 24dc01d47bece4191d1b142a58c4ad7b6d9fb6cf
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014176"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876567"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中调试用户定义的函数
 
@@ -100,7 +100,7 @@ GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSO
 | *YOUR_MATCHER_IDENTIFIER* | 要评估的匹配程序的 ID |
 | *YOUR_SENSOR_IDENTIFIER* | 要评估的传感器的 ID |
 
-响应:
+响应：
 
 ```JavaScript
 {
@@ -123,7 +123,7 @@ GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=Use
 | --- | --- |
 | *YOUR_SENSOR_IDENTIFIER* | 要发送遥测数据的传感器的 ID |
 
-响应:
+响应：
 
 ```JavaScript
 [

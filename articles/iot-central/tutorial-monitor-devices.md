@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d6ad7631ae32f8bd04812093a0fef4fa3d575864
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d716eb761ab406b65f10898b29775327a801ac45
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067396"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875494"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>教程：使用 Azure IoT Central 监视设备
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 本教程介绍作为操作员如何使用 Microsoft Azure IoT Central 应用程序监视设备和更改设置。
 
