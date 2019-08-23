@@ -251,6 +251,8 @@
           href: mitigate-se.md
         - name: 计划事件
           href: scheduled-events.md
+        - name: 监视计划事件
+          href: scheduled-event-service.md
         - name: 监视元数据
           href: instance-metadata-service.md
         - name: 启用嵌套虚拟化

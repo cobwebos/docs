@@ -44,6 +44,8 @@
               href: ./appsource-offer-publishing-guide.md
             - name: 使用 Azure Active Directory 启用 AppSource 和市场列表
               href: ./enable-appsource-marketplace-using-azure-ad.md
+            - name: 集成的解决方案
+              href: ./integrated-solutions-for-publishers.md
         - name: 市场营销最佳做法
           href: ./gtm-marketing-best-practices.md
           items:

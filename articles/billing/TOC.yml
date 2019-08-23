@@ -179,12 +179,14 @@
   items:
     - name: 找不到任何订阅
       href: billing-no-subscriptions-found.md
+    - name: 支付问题
+      href: billing-troubleshoot-azure-payment-issues.md
     - name: 银行卡被拒绝
-      href: 'https://support.microsoft.com/en-us/help/4042960'
+      href: billing-troubleshoot-declined-card.md
     - name: 注册问题
-      href: 'https://support.microsoft.com/en-us/help/4042959'
-    - name: 登录问题
-      href: 'https://support.microsoft.com/en-us/help/4042961'
+      href: billing-troubleshoot-azure-sign-up.md
+    - name: 订阅登录问题
+      href: billing-troubleshoot-sign-in-issue.md
     - name: 企业成本视图已禁用
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: 联系支持人员

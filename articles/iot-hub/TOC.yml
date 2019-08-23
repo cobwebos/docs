@@ -406,14 +406,16 @@
   items:
     - name: 解决方案
       items:
-        - name: IoT 解决方案加速器
-          href: /azure/iot-accelerators
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT 解决方案加速器
+          href: /azure/iot-accelerators
     - name: 平台服务
       items:
         - name: IoT 中心
           href: /azure/iot-hub
+        - name: IoT 即插即用
+          href: /azure/iot-pnp
         - name: IoT 中心设备预配服务
           href: /azure/iot-dps
         - name: IoT 服务 SDK

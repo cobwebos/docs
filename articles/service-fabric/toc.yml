@@ -356,6 +356,8 @@
       href: service-fabric-concept-resource-model.md
     - name: 托管标识（预览版）
       href: concepts-managed-identity.md
+    - name: 配置容器存储库凭据
+      href: configure-container-repository-credentials.md
 - name: 操作指南
   items:
     - name: 设置开发环境

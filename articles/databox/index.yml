@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 08/14/2019
-  ms.openlocfilehash: 03de9ceffe4495b1c3a39dad6617cc72d022fbbd
-  ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+  ms.date: 08/16/2019
+  ms.openlocfilehash: 2c42ee93804eb1e0e24b0b67925a092cc8517ceb
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/16/2019
-  ms.locfileid: "69557834"
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69650371"
 landingContent:
 - title: 关于 Data Box 系列
   linkLists:
@@ -53,75 +53,43 @@ landingContent:
     links:
     - text: 对于 Data Box
       url: data-box-system-requirements.md
-    - text: 对于 Data Box Blob 存储
-      url: data-box-system-requirements-rest.md
     - text: 对于 Data Box Disk
       url: data-box-disk-system-requirements.md
     - text: Data Box Heavy
       url: data-box-heavy-system-requirements.md
-- title: 部署 Data Box
+- title: 订购、设置、复制、返回
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 顺序
+    - text: Data Box
       url: data-box-deploy-ordered.md
-    - text: 电缆
-      url: data-box-deploy-set-up.md
-    - text: 通过 SMB 连接、复制数据
-      url: data-box-deploy-copy-data.md
-    - text: 返回、上传、验证 Azure 数据
-      url: data-box-deploy-picked-up.md
-- title: 部署 Data Box Disk
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 顺序
+    - text: Data Box Disk
       url: data-box-disk-deploy-ordered.md
-    - text: 解锁和连接
-      url: data-box-disk-deploy-set-up.md
-    - text: 复制、验证数据
-      url: data-box-disk-deploy-copy-data.md
-    - text: 返回、上传、验证 Azure 数据
-      url: data-box-disk-deploy-picked-up.md
-- title: 部署 Data Box Heavy
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 顺序
+    - text: Data Box Heavy
       url: data-box-heavy-deploy-ordered.md
-    - text: 电缆
-      url: data-box-heavy-deploy-set-up.md
-    - text: 通过 SMB 连接、复制数据
-      url: data-box-heavy-deploy-copy-data.md
-    - text: 返回、上传、验证 Azure 数据
-      url: data-box-heavy-deploy-picked-up.md
 - title: 管理设备
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 在 Azure 中管理 Data Box、Data Box Heavy
+    - text: Azure 中的 Data Box
       url: data-box-portal-admin.md
-    - text: 通过本地 UI 管理 Data Box、Data Box Heavy
-      url: data-box-local-web-ui-admin.md
     - text: 在 Azure 中管理 Data Box Disk
       url: data-box-portal-ui-admin.md
-- title: 常见问题解答
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 常见问题解答 - Data Box
-      url: data-box-faq.md
-    - text: 常见问题解答 - Data Box Disk
-      url: data-box-disk-faq.md
+    - text: Azure 中的 Data Box Heavy
+      url: data-box-portal-admin.md
 - title: 故障排除
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box、Data Box Heavy
+    - text: Data Box
       url: data-box-troubleshoot.md
-    - text: Data Box Blob 存储
-      url: data-box-troubleshoot-rest.md
     - text: Data Box Disk
       url: data-box-disk-troubleshoot.md
+    - text: Data Box Heavy
+      url: data-box-troubleshoot.md
+    - text: 通过 Data Box 常见问题解答
+      url: data-box-faq.md
+    - text: 通过 Data Box Disk 常见问题解答
+      url: data-box-disk-faq.md
     - text: 创建支持票证
       url: data-box-disk-contact-microsoft-support.md

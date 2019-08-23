@@ -104,8 +104,8 @@
               href: account.md
             - name: 查看用户列表
               href: users.md
-            - name: 设置到私有云的虚拟网络连接
-              href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
+            - name: 设置与私有云的虚拟网络连接
+              href: virtual-network-connection.md
             - name: 编辑用户配置文件
               href: 'https://docs.azure.cloudsimple.com/editprofile/'
         - name: 设置私有云的 VMware 虚拟机
@@ -124,8 +124,8 @@
               href: escalate-privileges.md
             - name: 工作负荷 DNS 和 DHCP 设置
               href: dns-dhcp-setup.md
-            - name: 用于迁移的 NSX 第 2 层 VPN
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
+            - name: 使用第 2 层外延式网络迁移工作负荷
+              href: migration-layer-2-vpn.md
         - name: 私有云网络
           items:
             - name: 本地与私有云之间的 VPN 连接
@@ -145,24 +145,28 @@
             - name: 将私有云 vCenter 服务器配置为 vRealize 自动化终结点
               href: configure-server-vrealize-automation-endpoint.md
             - name: 将工作负荷 VM 迁移到私有云
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
+              href: migrate-workloads.md
             - name: 确保应用程序在 Azure 上的 VMware 中的高可用性
               href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+            - name: 选择负载均衡解决方案
+              href: load-balancers.md
         - name: VMware 生态系统
           items:
             - name: 备份工作负荷虚拟机
               href: backup-workloads-veeam.md
+            - name: 使用 Zerto 将私有云配置为灾难恢复站点
+              href: disaster-recovery-zerto.md
             - name: VMware Horizon 解决方案指南
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: 为私有云配置 vSAN 加密
               href: vsan-encryption.md
-            - name: CloudSimple 私有云上的 Oracle RAC 部署
-              href: 'https://docs.azure.cloudsimple.com/oracle-rac/'
+            - name: 为 Oracle RAC 优化私有云
+              href: oracle-real-application-clusters.md
         - name: Azure 核心集成
           items:
             - name: 私有云 vCenter 上的 Azure AD 标识源
               href: azure-ad.md
             - name: 通过 ExpressRoute 进行的本地网络连接
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: 通过 ExpressRoute 进行的 Azure 虚拟网络连接
-              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'
+              href: azure-expressroute-connection.md

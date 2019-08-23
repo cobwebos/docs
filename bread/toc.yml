@@ -173,6 +173,9 @@
         - name: IoT Edge
           tocHref: /azure/iot-edge/
           topicHref: /azure/iot-edge/
+        - name: IoT 即插即用
+          tocHref: /azure/iot-pnp/
+          topicHref: /azure/iot-pnp/
         - name: Azure 数字孪生
           tocHref: /azure/digital-twins/
           topicHref: /azure/digital-twins/

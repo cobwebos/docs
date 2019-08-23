@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: IoT 即插即用预览版文档
+metadata:
+  title: IoT 即插即用预览版文档 - 教程和 API 参考 | Microsoft Docs
+  description: 在教程、API 参考、视频和其他文档的帮助下，了解如何使用 IoT 即插即用。
+  author: dominicbetts
+  manager: philmea
+  ms.service: iot-pnp
+  services: iot-pnp
+  ms.topic: landing-page
+  ms.date: 07/23/2019
+  ms.author: dobett
+abstract:
+  description: 了解如何使用 IoT 即插即用预览版来定义设备模型，使云解决方案能够自动了解你的设备并与之交互 — 所有这一切都无需编写任何设备代码。 教程、API 参考、视频和其他文档可帮助你将设备连接到云解决方案，如 Azure IoT Central 或合作伙伴应用程序。
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/index/video-thumb-pnp-introduction.png
+      width: 250
+    title: 'IoT 即插即用简介。 (11:54)'
+    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player'
+    width: 250
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 了解如何<a href="quickstart-create-pnp-device">使用设备功能模型创建设备</a>。
+      - type: paragraph
+        text: 了解如何<a href="quickstart-connect-pnp-device-solution">将设备连接到解决方案</a>。
+  - title: 分步教程
+    items:
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-pnp-visual-studio-code">使用 Visual Studio Code 创建设备</a>
+          - html: <a href="tutorial-build-device-certification">构建可供认证的设备</a>
+          - html: <a href="tutorial-certification-test">认证你的设备</a>

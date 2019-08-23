@@ -1,0 +1,141 @@
+- name: Azure IoT Central 文档（预览功能）
+  href: ../iot-central/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- name: 概述
+  items:
+    - name: Azure IoT Central 是什么
+      href: ../iot-central/overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: IoT 解决方案选项
+      href: ../iot-central/overview-iot-options.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: UI 教程
+      href: ../iot-central/overview-iot-central-tour-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 创建新应用程序
+      href: ../iot-central/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: 连接一个设备
+      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- name: 教程
+  items:
+    - name: 1 - 定义新设备类型
+      href: ../iot-central/tutorial-define-device-type-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: 2 - 添加设备
+      href: ../iot-central/tutorial-add-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: 3 - 配置规则
+      href: ../iot-central/tutorial-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: 4 - 监视设备
+      href: ../iot-central/tutorial-monitor-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- name: 概念
+  items:
+    - name: 体系结构
+      href: ../iot-central/concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: 连接
+      href: ../iot-central/concepts-connectivity-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- name: 操作指南
+  items:
+    - name: 连接设备
+      items:
+        - name: 连接 IoT 即插即用设备
+          href: ../iot-central/howto-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 准备和连接 MXChip IoT DevKit
+          href: ../iot-central/howto-connect-devkit-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 使用命令行监视设备连接
+          href: ../iot-central/howto-use-iotc-explorer.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: 管理设备
+      items:
+        - name: 设置设备模板
+          href: ../iot-central/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 管理设备
+          href: ../iot-central/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 运行作业
+          href: ../iot-central/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 使用设备组
+          href: ../iot-central/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 对设备模板进行版本控制
+          href: ../iot-central/howto-version-device-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: 监视和分析
+      items:
+        - name: 创建遥测规则
+          href: ../iot-central/howto-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 创建事件中心
+          href: ../iot-central/howto-create-event-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 分析设备数据
+          href: ../iot-central/howto-create-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: 操作和扩展性
+      items:
+        - name: 导出数据
+          items:
+            - name: 导出到事件中心和服务总线
+              href: ../iot-central/howto-export-data-event-hubs-service-bus-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+            - name: 导出到 Blob 存储
+              href: ../iot-central/howto-export-data-blob-storage-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 创建自定义规则
+          href: ../iot-central/howto-create-custom-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 创建自定义分析
+          href: ../iot-central/howto-create-custom-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 在 Power BI 中直观显示数据
+          href: ../iot-central/howto-connect-powerbi-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 连接其他 IoT 云
+          href: ../iot-central/howto-build-iotc-device-bridge.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: 管理
+      items:
+        - name: 管理应用程序
+          href: ../iot-central/howto-administer-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 管理用户和角色
+          href: ../iot-central/howto-manage-users-roles-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 查看帐单
+          href: ../iot-central/howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 自定义应用程序 UI
+          href: ../iot-central/howto-customize-ui-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 准备和上传图像
+          href: ../iot-central/howto-prepare-images.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 配置应用程序仪表板
+          href: ../iot-central/howto-configure-homepage.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 从 Azure 门户进行管理
+          href: ../iot-central/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 从 Azure CLI 进行管理
+          href: ../iot-central/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 从 Azure PowerShell 进行管理
+          href: ../iot-central/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 以 CSP 身份创建和管理应用程序
+          href: ../iot-central/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: 个性化
+      items:
+        - name: 创建个人仪表板
+          href: ../iot-central/howto-personalize-dashboard.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 管理首选项
+          href: ../iot-central/howto-manage-preferences.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: 切换实时聊天
+          href: ../iot-central/howto-show-hide-chat.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- name: 相关内容
+  items:
+    - name: 解决方案
+      items:
+        - name: IoT 解决方案加速器
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: /microsoft-iot-central
+    - name: 平台服务
+      items:
+        - name: IoT 中心
+          href: /azure/iot-hub
+        - name: IoT 中心设备预配服务
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: 服务 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: 时序见解
+          href: /azure/time-series-insights
+    - name: IoT Edge
+      items:
+        - name: Azure IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 设备 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: 资源
+  items:
+    - name: 客户数据请求
+      href: ../iot-central/iot-central-customer-data-requests.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: 支持的浏览器
+      href: ../iot-central/iot-central-supported-browsers.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json

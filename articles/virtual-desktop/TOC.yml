@@ -34,8 +34,10 @@
       href: create-host-pools-powershell.md
     - name: 将 Windows 许可证应用于 Windows 虚拟桌面会话主机
       href: apply-windows-license.md
-    - name: 为主机池设置用户配置文件共享
+    - name: 使用文件共享为主机池创建配置文件容器
       href: create-host-pools-user-profile.md
+    - name: 使用 Azure NetApp 文件为主机池创建配置文件容器
+      href: create-fslogix-profile-container.md
     - name: 配置 Windows 虚拟桌面负载均衡方法
       href: configure-host-pool-load-balancing.md
     - name: 准备和自定义主 VHD 映像

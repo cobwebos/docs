@@ -1,40 +1,55 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure AD 标识保护
+### YamlMime:Landing
+title: Azure AD 标识保护文档
+summary: 了解如何使用“标识保护”来识别和处理组织中的标识风险
 metadata:
-  document_id: null
-  title: “Azure Active Directory 标识保护”文档 - 快速入门、概念和参考 | Microsoft Docs
-  description: 了解如何配置和测试 Azure Active Directory 标识保护。
+  title: Azure AD 标识保护文档
+  description: 了解如何使用“标识保护”来识别和处理组织中的标识风险
   services: active-directory
-  ms.subservice: identity-protection
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: identity-protection
   ms.topic: landing-page
-  ms.date: 09/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 了解可能已泄露标识的检测工作原理以及如何实现自动响应以解决它们。 Azure Active Directory 标识保护是 Azure AD Premium P2 版本的功能，支持：<ul><li>检测影响组织标识的潜在漏洞</li><li>配置条件访问策略以自动响应与组织标识相关的可疑操作</li><li>调查可疑事件，并采取适当的措施解决</li></ul><br> 以下资源可帮助你快速入门。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: “Azure AD 标识保护”简介
-    href: 'https://www.youtube.com/watch?v=zI3jn_G0_Ns'
-    width: 246
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何为常见访问方案配置登录风险条件访问策略。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: 检测到会话风险时阻止访问
-            href: quickstart-sign-in-risk-policy.md
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 5f69dff8568c308d7a8eb9d80e247ef7cfc58acd
+  ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/21/2019
+  ms.locfileid: "69874111"
+landingContent:
+- title: 关于标识保护
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是“标识保护”？
+      url: overview-v2.md
+    - text: “安全概述”简介
+      url: security-overview.md
+- title: 调查风险事件
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 配置风险策略
+      url: howto-configure-risk-policies.md
+    - text: 调查有风险的用户和登录
+      url: howto-investigate-risky-users-signins.md
+  - linkListType: reference
+    links:
+    - text: 事件类型
+      url: risk-events-reference.md
+- title: 标识保护体验
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 登录体验
+      url: flows.md
+  - linkListType: how-to-guide
+    links:
+    - text: 模拟风险事件
+      url: playbook.md
+  - linkListType: quickstart
+    links:
+    - text: 检测到会话风险时阻止访问
+      url: quickstart-sign-in-risk-policy.md

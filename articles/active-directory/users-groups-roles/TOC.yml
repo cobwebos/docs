@@ -102,7 +102,9 @@
           items:
             - name: 创建动态组
               href: groups-create-rule.md
-            - name: 动态组规则
+            - name: 更新成员身份规则
+              href: groups-update-rule.md
+            - name: 动态组规则和语法
               href: groups-dynamic-membership.md
             - name: 更改组成员身份类型
               href: groups-change-type.md
