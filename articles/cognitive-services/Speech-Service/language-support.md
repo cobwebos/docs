@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abff902dc62ad7ae48f2ecedfbd52aeb96719093
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815256"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970373"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>语音服务的语言和区域支持
 
@@ -24,40 +24,40 @@ ms.locfileid: "68815256"
 
 ## <a name="speech-to-text"></a>语音转文本
 
-Microsoft speech 识别 SDK 和 REST API 都支持以下语言 (区域设置)。 每种语言都有不同级别的自定义。
+Microsoft speech 识别 SDK 和 REST API 都支持以下语言 (区域设置)。 若要提高准确性, 可通过上传音频和人贴标签的脚本或相关文本, 为语言的子集提供自定义:句子.  发音自定义当前仅适用于 en-us 和 de。 [在此处](how-to-custom-speech.md)了解有关自定义的详细信息。
 
-  代码 | 语言 | [声学适应](how-to-customize-acoustic-models.md) | [语言适应](how-to-customize-language-model.md) | [发音适应](how-to-customize-pronunciation.md)
- ------|----------|---------------------|---------------------|-------------------------
- ar-EG | 阿拉伯语(埃及)，现代标准 | 否 | 是 | 否
- ca-ES | 加泰罗尼亚语 | 否 | 否 | 否
- da-DK | 丹麦语(丹麦) | 否 | 否 | 否
- de-DE | 德语(德国) | 是 | 是 | 是
- en-AU | 英语(澳大利亚) | 否 | 是 | 否
- en-CA | 英语(加拿大) | 否 | 是 | 否
- en-GB | 英语(英国) | 否 | 是 | 否
- en-IN | 英语(印度) | 是 | 是 | 否
- en-NZ | 英语(新西兰) | 否 | 是 | 否 
- zh-CN | 英语(美国) | 是 | 是 | 是
- es-ES | 西班牙语(西班牙) | 是 | 是 | 否
- es-MX | 西班牙语(墨西哥) | 否 | 是 | 否
- fi-FI | 芬兰语(芬兰) | 否 | 否 | 否
- fr-CA | 法语(加拿大) | 否 | 是 | 否
- fr-FR | 法语(法国) | 是 | 是 | 否
- hi-IN | 印地语(印度) | 否 | 是 | 否
- it-IT | 意大利语(意大利) | 是 | 是 | 否
- ja-JP | 日语(日本) | 否 | 是 | 否
- ko-KR | 韩语(韩国) | 否 | 是 | 否
- nb-NO | 书面挪威语(挪威) | 否 | 否 | 否
- nl-NL | 荷兰语(荷兰) | 否 | 是 | 否
- pl-PL | 波兰语(波兰) | 否 | 否 | 否
- pt-BR | 葡萄牙语(巴西) | 是 | 是 | 否
- pt-PT | 葡萄牙语(葡萄牙) | 否 | 是 | 否
- ru-RU | 俄语(俄罗斯) | 是 | 是 | 否
- sv-SE | 瑞典语(瑞典) | 否 | 否 | 否
- zh-CN | 中文(普通话，简体) | 是 | 是 | 否
- zh-HK | 中文 (粤语, 繁体) | 否 | 是 | 否
- zh-TW | 中文(台湾普通话) | 否 | 是 | 否
- th-TH | 泰语(泰国) | 否 | 否 | 否
+  代码 | 语言 | 支持 | 可自定义
+ ------|----------|---------------------|---------------------
+ ar-EG | 阿拉伯语(埃及)，现代标准 | 是 | 是
+ ca-ES | 加泰罗尼亚语 | 是 | 否
+ da-DK | 丹麦语(丹麦) | 是 | 否
+ de-DE | 德语(德国) | 是 | 是
+ en-AU | 英语(澳大利亚) | 是 | 是
+ en-CA | 英语(加拿大) | 是 | 是
+ en-GB | 英语(英国) | 是 | 是
+ en-IN | 英语(印度) | 是 | 是
+ en-NZ | 英语(新西兰) | 是 | 是
+ en-US | 英语(美国) | 是 | 是
+ es-ES | 西班牙语(西班牙) | 是 | 是
+ es-MX | 西班牙语(墨西哥) | 是 | 是
+ fi-FI | 芬兰语(芬兰) | 是 | 否
+ fr-CA | 法语(加拿大) | 是 | 是
+ fr-FR | 法语(法国) | 是 | 是
+ hi-IN | 印地语(印度) | 是 | 是
+ it-IT | 意大利语(意大利) | 是 | 是
+ ja-JP | 日语(日本) | 是 | 是
+ ko-KR | 韩语(韩国) | 是 | 是
+ nb-NO | 书面挪威语(挪威) | 是 | 否
+ nl-NL | 荷兰语(荷兰) | 是 | 是
+ pl-PL | 波兰语(波兰) | 是 | 否
+ pt-BR | 葡萄牙语(巴西) | 是 | 是
+ pt-PT | 葡萄牙语(葡萄牙) | 是 | 是
+ ru-RU | 俄语(俄罗斯) | 是 | 是
+ sv-SE | 瑞典语(瑞典) | 是 | 否
+ zh-CN | 中文(普通话，简体) | 是 | 是
+ zh-HK | 中文 (粤语, 繁体) | 是 | 是
+ zh-TW | 中文(台湾普通话) | 是 | 是
+ th-TH | 泰语(泰国) | 是 | 否 
 
 
 ## <a name="text-to-speech"></a>文本转语音
@@ -78,8 +78,8 @@ Microsoft speech 识别 SDK 和 REST API 都支持以下语言 (区域设置)。
 区域设置 | 语言 | 性别 | 完全服务名称映射 | 短语音名称
 --------|----------|--------|---------|------------
 de-DE | 德语(德国) | 女 | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)" | "取消 KatjaNeural"
-zh-CN | 英语(美国) | 男 | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)" | "en-us-GuyNeural"
-zh-CN | 英语(美国) | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)" | "en-us-JessaNeural"
+en-US | 英语(美国) | 男 | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)" | "en-us-GuyNeural"
+en-US | 英语(美国) | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)" | "en-us-JessaNeural"
 it-IT | 意大利语(意大利) | 女 |"Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)" | "it-ElsaNeural"
 zh-CN | 中文(中国) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)" | "zh-chs-XiaoxiaoNeural"
 
@@ -115,7 +115,7 @@ en-IE | 英语(爱尔兰) | 男 | "Microsoft Server Speech Text to Speech Voice 
 en-IN | 英语(印度) | 女 | "Microsoft Server Speech Text to Speech Voice (en-IN, Heera, Apollo)" | "Heera-Apollo"
 | | | 女 | "Microsoft Server Speech Text to Speech Voice (en-IN, PriyaRUS)" | "PriyaRUS"
 | | | 男 | "Microsoft Server Speech Text to Speech Voice (en-IN, Ravi, Apollo)" | "Ravi-Apollo"
-zh-CN | 英语(美国) | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)" | "en-us-ZiraRUS"
+en-US | 英语(美国) | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)" | "en-us-ZiraRUS"
 | | | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)" | "en-US-JessaRUS"
 | | | 男 | "Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)" | "en-US-BenjaminRUS"
 | | | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)" | "en-us-Jessa24kRUS"
@@ -167,10 +167,10 @@ vi-VN | 越南语 | 男 | "Microsoft Server Speech Text to Speech Voice (vi-VN, 
 zh-CN | 中文(中国) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)" | "zh-chs-HuihuiRUS"
 | | | 女 | "Microsoft Server Speech Text to Speech Voice (zh-CN, Yaoyao, Apollo)" | "zh-CN-Yaoyao-Apollo"
 | | | 男 | "Microsoft Server Speech Text to Speech Voice (zh-CN, Kangkang, Apollo)" | "zh-chs-Kangkang-Apollo"
-zh-HK | 中文(香港) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-HK, Tracy, Apollo)" | "zh-chs-Tracy-Apollo"
+zh-HK | 中文(香港特别行政区) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-HK, Tracy, Apollo)" | "zh-chs-Tracy-Apollo"
 | | | 女 | "Microsoft Server Speech Text to Speech Voice (zh-HK, TracyRUS)" | "zh-chs-TracyRUS"
 | | | 男 | "Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apollo)" | "zh-chs-Danny-Apollo"
-zh-TW | 中文(台湾) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)" | "zh-chs-Yating-Apollo"
+zh-TW | 中文(中国台湾) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)" | "zh-chs-Yating-Apollo"
 | | | 女 | "Microsoft Server Speech Text to Speech Voice (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
 | | | 男 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)" | "zh-chs-Zhiwei-Apollo"
 
@@ -197,7 +197,7 @@ zh-TW | 中文(台湾) | 女 | "Microsoft Server Speech Text to Speech Voice (zh
 | 南非荷兰语      | `af`          |
 | 阿拉伯语       | `ar`          |
 | 孟加拉语      | `bn`          |
-| 波斯尼亚语(拉丁语)      | `bs`          |
+| 波斯尼亚语(拉丁语系)      | `bs`          |
 | 保加利亚语      | `bg`          |
 | 粤语(繁体)      | `yue`          |
 | 加泰罗尼亚语      | `ca`          |
@@ -240,8 +240,8 @@ zh-TW | 中文(台湾) | 女 | "Microsoft Server Speech Text to Speech Voice (zh
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
 | 萨摩亚语      | `sm`          |
-| 塞尔维亚语(西里尔语)      | `sr-Cyrl`          |
-| 塞尔维亚语(拉丁语)      | `sr-Latn`          |
+| 塞尔维亚语(西里尔文)      | `sr-Cyrl`          |
+| 塞尔维亚语(拉丁语系)      | `sr-Latn`          |
 | 斯洛伐克语     | `sk`          |
 | 斯洛文尼亚语      | `sl`          |
 | 西班牙语      | `es`          |

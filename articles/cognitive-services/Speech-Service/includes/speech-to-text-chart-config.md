@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 08/22/2019
 ms.author: dapine
-ms.openlocfilehash: 1b46c58d3f3c804052e637f7bde2e1a456764dba
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3f390affe7badb401277aa86d1867c763aa0ae3b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67717229"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971322"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>语音到文本 (子图表: 图表/speechToText)
 
-若要替代 "伞" 图表, 请在任何`speechToText.`参数上添加前缀以使其更具针对性。 例如, 它将重写相应的参数, 如`speechToText.numberOfConcurrentRequest`重`numberOfConcurrentRequest`写。
+若要替代 "伞" 图表, 请在任何`speechToText.`参数上添加前缀以使其更具针对性。 例如, 它将重写相应的参数 (例如, `speechToText.numberOfConcurrentRequest`重`numberOfConcurrentRequest`写)。
 
 |参数|描述|默认|
 | -- | -- | -- |
@@ -37,5 +37,6 @@ ms.locfileid: "67717229"
 | `image.args.apikey`请求 | 用于跟踪账单信息。 ||
 | `service.type` | **语音到文本**服务的 Kubernetes 服务类型。 有关更多详细信息, 请参阅[Kubernetes 服务类型说明](https://kubernetes.io/docs/concepts/services-networking/service/), 并验证云提供程序支持。 | `LoadBalancer` |
 | `service.port`|  **语音到文本**服务的端口。 | `80` |
+| `service.annotations` | 服务元数据的**语音到文本**注释。 批注是键值对。 <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
 | `service.autoScaler.enabled` | 是否启用[水平 Pod 自动缩放程序](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)。 如果`true`为, `speech-to-text-autoscaler`则将在 Kubernetes 群集中部署。 | `true` |
 | `service.podDisruption.enabled` | 是否启用[Pod 中断预算](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/)。 如果`true`为, `speech-to-text-poddisruptionbudget`则将在 Kubernetes 群集中部署。 | `true` |

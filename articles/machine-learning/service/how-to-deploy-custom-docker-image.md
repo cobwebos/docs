@@ -1,7 +1,7 @@
 ---
-title: 使用自定义 Docker 映像部署模型
+title: 使用自定义 Docker 基本映像部署模型
 titleSuffix: Azure Machine Learning service
-description: 了解如何在部署 Azure 机器学习 service 模型时使用自定义 Docker 映像。 部署训练的模型时, 将创建一个 Docker 映像来托管运行该服务所需的映像、web 服务器和其他组件。 虽然 Azure 机器学习 service 为你提供了默认映像, 但你也可以使用自己的映像。
+description: 了解如何在部署 Azure 机器学习 service 模型时使用自定义 Docker 基本映像。 部署定型模型时, 会部署一个基容器映像, 以运行模型进行推理。 虽然 Azure 机器学习 service 为你提供了一个默认的基本映像, 但你也可以使用自己的基本映像。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,23 +9,25 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/11/2019
-ms.openlocfilehash: f41ccef7803366e63247e6862c59ddb983527d26
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/22/2019
+ms.openlocfilehash: a86dd021d8f9cfe275b3af3f0cb71b99857c26d7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990536"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971523"
 ---
-# <a name="deploy-a-model-by-using-a-custom-docker-image"></a>使用自定义 Docker 映像部署模型
+# <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基本映像部署模型
 
-了解如何在使用 Azure 机器学习服务部署定型模型时使用自定义 Docker 映像。
+了解如何在使用 Azure 机器学习服务部署定型模型时使用自定义 Docker 基本映像。
 
-将定型模型部署到 web 服务或 IoT Edge 设备时, 将创建 Docker 映像。 此映像包含使用模型所需的模型、conda 环境和资产。 它还包含一个 web 服务器, 用于处理在部署为 web 服务时传入的请求, 以及使用 Azure IoT 中心所需的组件。
+将定型模型部署到 web 服务或 IoT Edge 设备时, 将创建一个包含用于处理传入请求的 web 服务器的包。
 
-Azure 机器学习服务提供了一个默认 Docker 映像, 因此你无需担心如何创建它。 你还可以使用创建的自定义映像作为_基本映像_。 为部署创建映像时, 将使用基本映像作为起始点。 它提供基本的操作系统和组件。 然后, 部署过程会在部署之前将其他组件 (如模型、conda 环境和其他资产) 添加到映像。
+Azure 机器学习服务提供了一个默认 Docker 基本映像, 因此你无需担心如何创建它。 你还可以使用创建的自定义基本映像作为_基本映像_。 
 
-通常, 当你想要控制组件版本或在部署期间节省时间时, 可以创建自定义映像。 例如, 你可能希望在特定版本的 Python、Conda 或其他组件上实现标准化。 你可能还希望安装模型所需的软件, 安装过程需要较长时间。 在创建基础映像时安装软件意味着无需为每个部署安装软件。
+为部署创建映像时, 将使用基本映像作为起始点。 它提供基本的操作系统和组件。 然后, 部署过程会在部署之前将其他组件 (如模型、conda 环境和其他资产) 添加到映像。
+
+通常, 当你想要使用 Docker 来管理依赖项时, 请创建一个自定义的基本映像, 维护组件版本的更紧密控制, 或在部署期间节省时间。 例如, 你可能希望在特定版本的 Python、Conda 或其他组件上实现标准化。 你可能还希望安装模型所需的软件, 安装过程需要较长时间。 在创建基础映像时安装软件意味着无需为每个部署安装软件。
 
 > [!IMPORTANT]
 > 部署模型时, 不能重写核心组件 (如 web 服务器或 IoT Edge 组件)。 这些组件提供了由 Microsoft 测试和支持的已知的工作环境。
@@ -35,8 +37,8 @@ Azure 机器学习服务提供了一个默认 Docker 映像, 因此你无需担�
 
 本文档分为两部分:
 
-* 创建自定义映像:提供有关使用 Azure CLI 和机器学习 CLI 创建自定义映像和配置 Azure 容器注册表身份验证的管理员和 DevOps 的信息。
-* 使用自定义映像:在从 Python SDK 或 ML CLI 部署训练的模型时, 向数据科学家和 DevOps/MLOps 提供有关使用自定义映像的信息。
+* 创建自定义基本映像:提供有关使用 Azure CLI 和机器学习 CLI 创建自定义映像和配置 Azure 容器注册表身份验证的管理员和 DevOps 的信息。
+* 使用自定义基本映像部署模型:向数据科学家和 DevOps/ML 工程师提供有关在从 Python SDK 或 ML CLI 部署定型模型时使用自定义映像的信息。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,7 +49,7 @@ Azure 机器学习服务提供了一个默认 Docker 映像, 因此你无需担�
 * 可在 internet 上访问的[Azure 容器注册表](/azure/container-registry)或其他 Docker 注册表。
 * 本文档中的步骤假定你熟悉如何创建和使用__推理配置__对象作为模型部署的一部分。 有关详细信息, 请参阅[部署位置和方式](how-to-deploy-and-where.md#prepare-to-deploy)的 "准备部署" 一节。
 
-## <a name="create-a-custom-image"></a>创建自定义映像
+## <a name="create-a-custom-base-image"></a>创建自定义基本映像
 
 本部分中的信息假定你使用 Azure 容器注册表来存储 Docker 映像。 计划为 Azure 机器学习服务创建自定义映像时, 请使用以下清单:
 
@@ -109,7 +111,7 @@ Azure 机器学习服务提供了一个默认 Docker 映像, 因此你无需担�
 
     `<registry_name>`该值是工作区的 Azure 容器注册表的名称。
 
-### <a name="build-a-custom-image"></a>构建自定义映像
+### <a name="build-a-custom-base-image"></a>构建自定义基本映像
 
 本部分中的步骤介绍如何在 Azure 容器注册表中创建自定义 Docker 映像。
 
@@ -162,7 +164,7 @@ Azure 机器学习服务提供了一个默认 Docker 映像, 因此你无需担�
 
 有关将现有映像上传到 Azure 容器注册表的详细信息, 请参阅将[第一个映像推送到专用 Docker 容器注册表](/azure/container-registry/container-registry-get-started-docker-cli)。
 
-## <a name="use-a-custom-image"></a>使用自定义映像
+## <a name="use-a-custom-base-image"></a>使用自定义基本映像
 
 若要使用自定义映像, 需要以下信息:
 
@@ -174,7 +176,7 @@ Azure 机器学习服务提供了一个默认 Docker 映像, 因此你无需担�
 
     如果没有此信息, 请向管理员咨询包含映像的 Azure 容器注册表。
 
-### <a name="publicly-available-images"></a>公开提供的映像
+### <a name="publicly-available-base-images"></a>公开发布的基本映像
 
 Microsoft 在可公开访问的存储库上提供了几个 docker 映像, 可用于本部分中的步骤:
 

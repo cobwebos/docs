@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 67bb7e0cd8a800c2c2ba87c768739fd573ef6888
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 00d0067fe51efef8efffe31860e16f4530adf3ac
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812209"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972365"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>缩小 CloudSimple 私有云
 
@@ -26,11 +26,11 @@ CloudSimple 提供动态收缩私有云的灵活性。  私有云由一个或多
 * VSphere 群集必须具有三个节点。  只有三个节点的群集无法收缩。
 * 使用的总存储空间不应超过群集缩小后的总容量。 
 
-## <a name="sign-in-to-azure"></a>登录  Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
-## <a name="shrink-a-private-cloud"></a>缩小私有云 
+## <a name="shrink-a-private-cloud"></a>缩小私有云
 
 1. [访问 CloudSimple 门户](access-cloudsimple-portal.md)。
 

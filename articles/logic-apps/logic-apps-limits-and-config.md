@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: e076d6fed8cb3baf6b62dc3ede6ddd34732ed7a2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 95df72875338b6964f42075404cf9c30ba132f9d
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562079"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900210"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -253,9 +253,11 @@ ms.locfileid: "69562079"
 
 ## <a name="firewall-configuration-ip-addresses"></a>防火墙配置：IP 地址
 
-同一区域中的所有逻辑应用都使用相同的 IP 地址范围。 若要支持逻辑应用通过 [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 和其他 HTTP 请求直接发出的调用，请根据这些逻辑应用所在的区域，使用逻辑应用服务所用的所有[入站](#inbound)和[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“入站”和“出站”标题下，并按区域进行排序。
+同一区域中的所有逻辑应用都使用相同的 IP 地址范围。 若要支持逻辑应用通过 [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 和其他 HTTP 请求直接发出的调用，请根据这些逻辑应用所在的区域，使用逻辑应用服务所用的所有[入站](#inbound)和[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“入站”和“出站”标题下，并按区域进行排序。 
 
 若要支持 [Microsoft 托管的连接器](../connectors/apis-list.md)发出的调用，请根据逻辑应用所在的区域，使用这些连接器所用的所有[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“出站”标题下，并按区域进行排序。
+
+对于在 integration service 环境 (ISE) 中运行的逻辑应用, 请确保[打开这些端口](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)。
 
 对于 [Azure 政府](../azure-government/documentation-government-overview.md)和 [Azure 中国世纪互联](https://docs.microsoft.com/azure/china/)，连接器的保留 IP 地址目前不可用。
 

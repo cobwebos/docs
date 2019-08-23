@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b9060ecbb9ca9e77d994a8f20378e2c53927586a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 8e8ea11da0339103375009709be8795cdede2448
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617376"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972928"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>使用 Azure AD 作为 CloudSimple 私有云上的 vCenter 的标识提供者
 
@@ -98,4 +98,4 @@ Azure AD 是 Microsoft 多租户、基于云的目录和标识管理服务。  A
 
 3. 升级权限后, 登录到私有云 vCenter。
 4. 按照使用上一步骤中的值在[vCenter 上添加标识源](set-vcenter-identity.md#add-an-identity-source-on-vcenter)中的说明, 将 Azure Active Directory 设置为标识源。
-5. 按照 VMware 主题<a href="https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html" target="_blank">将成员添加到 Vcenter 单一登录组</a>中所述, 将 Azure AD 中的用户/组添加到 vcenter 组。
+5. 按照 VMware 主题[将成员添加到 Vcenter 单一登录组](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)中所述, 将 Azure AD 中的用户/组添加到 vcenter 组。

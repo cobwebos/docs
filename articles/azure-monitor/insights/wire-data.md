@@ -1,5 +1,5 @@
 ---
-title: 中的线路数据解决方案 Azure Monitor |Microsoft Docs
+title: Azure Monitor 中的线路数据解决方案 |Microsoft Docs
 description: 线路数据是具有 Log Analytics 代理的计算机提供的整合网络和性能数据。 网络数据与日志数据结合在一起，可帮助将数据相关联。
 services: log-analytics
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: b7968de8ad4357241eb8d86d51e991f4bbab959d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e1324bb90c0b92daf709b695a0a8b3af9161c2e
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65601573"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905428"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 Wire Data 2.0（预览版）解决方案
 
@@ -31,7 +31,7 @@ ms.locfileid: "65601573"
 除了 Log Analytics 代理之外，Wire Data 解决方案使用在 IT 基础结构中的计算机上安装的 Microsoft 依赖关系代理。 依赖关系代理将监视 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)中处于网络层 2-3 层中的计算机接收和发送的网络数据，包括使用的各种协议和端口。 然后，这些代理将数据发送到 Azure Monitor。  
 
 >[!NOTE]
->如果已部署服务映射中，或正在考虑使用服务映射或[Vm 的 Azure Monitor](../../azure-monitor/insights/vminsights-overview.md)，没有新连接度量值的数据集收集并存储在 Azure Monitor 提供与传输数据的可比较的信息。
+>如果已部署服务映射或正在考虑服务映射或[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-overview.md), 则会在为传输数据提供类似信息的 Azure Monitor 中收集并存储新的连接度量值数据集。
 
 默认情况下，Azure Monitor 从 Windows 和 Linux 中内置的计数器以及可以指定的其他性能计算器记录 CPU、内存和磁盘数据以及网络性能数据。 网络以及其他数据的收集针对每个代理实时执行，包括正在由计算机使用的子网和应用程序级协议。  Wire Data 查看应用程序层（而不是 TCP 传输层）的数据。  该解决方案不会查看单个 ACK 和 SYN。  完成握手后，该连接将被视作实时连接，并被标记为“已连接”。 只要双方同意开启套接字，并且数据可以在彼此之间来回传递，该实时连接就将保持不变。  只要有一方关闭连接，该连接就会被标记为“已断开连接”。  因此，它只对已成功完成数据包的带宽计数，而不会对重新发送或失败的数据包进行报告。
 
@@ -60,16 +60,16 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 
 | **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
-| Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/agent-windows.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems)。 |
-| Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/learn/quick-collect-linux-computer.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)。 |
-| System Center Operations Manager 管理组 | 是 | Wire Data 在所连接的 [System Center Operations Manager 管理组](../../azure-monitor/platform/om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br> 需要从 System Center Operations Manager 代理计算机直接连接到 Azure Monitor。 |
+| Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除[适用于 Windows 的 Log Analytics 代理](../platform/agent-windows.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
+| Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除[适用于 Linux 的 Log Analytics 代理](../learn/quick-collect-linux-computer.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
+| System Center Operations Manager 管理组 | 是 | Wire Data 在所连接的 [System Center Operations Manager 管理组](../platform/om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br> 需要从 System Center Operations Manager 代理计算机直接连接到 Azure Monitor。 |
 | Azure 存储帐户 | 否 | Wire Data 从代理计算机中收集数据，因此Wire Data 中没有从 Azure 存储收集的数据。 |
 
-在 Windows 中，Microsoft Monitoring Agent (MMA) 用于通过 System Center Operations Manager 和 Azure Monitor 收集和发送数据。 根据上下文，可将此代理称为 System Center Operations Manager 代理、Log Analytics 代理、MMA 或直接代理。 System Center Operations Manager 和 Azure Monitor 提供略有不同的 MMA 版本。 这些版本每个都可向 System Center Operations Manager 报告，或向 Azure Monitor 报告，也可同时向两者报告。
+在 Windows 上, System Center Operations Manager 和 Azure Monitor 使用 Microsoft Monitoring Agent (MMA) 来收集和发送数据。 根据上下文，可将此代理称为 System Center Operations Manager 代理、Log Analytics 代理、MMA 或直接代理。 System Center Operations Manager 和 Azure Monitor 提供略有不同的 MMA 版本。 这些版本每个都可向 System Center Operations Manager 报告，或向 Azure Monitor 报告，也可同时向两者报告。
 
 在 Linux 上，适用于 Linux 的 Log Analytics 代理收集数据并将其发送到 Azure Monitor。 可对具有直接连接到 Azure Monitor 的代理的服务器或通过 System Center Operations Manager 管理组连接到 Azure Monitor 的服务器使用 Wire Data。
 
-依赖关系代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 Wire Data 中的数据始终由 Log Analytics 代理直接或通过 Log Analytics 网关传输到 Azure Monitor。
+依赖关系代理不会传输任何数据本身, 也不需要对防火墙或端口进行任何更改。 Wire Data 中的数据始终由 Log Analytics 代理直接或通过 Log Analytics 网关传输到 Azure Monitor。
 
 ![代理示意图](./media/wire-data/agents.png)
 
@@ -80,12 +80,12 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 
 如果 Windows 或 Linux 计算机无法直接连接到服务，则需要将 Log Analytics 代理配置为使用 Log Analytics 网关连接到 Azure Monitor。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 Log Analytics 网关。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 需要 [Insight and Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) 解决方案产品/服务。
 - 如果正在使用以前版本的 Wire Data 解决方案，必须首先将其删除。 不过，通过原始 Wire Data 解决方案捕获的所有数据在 Wire Data 2.0 和日志搜索中仍然可用。
-- 需要管理员特权才能安装或卸载依赖关系代理。
-- 依赖关系代理必须安装在具有 64 位操作系统的计算机上。
+- 需要管理员权限才能安装或卸载依赖关系代理。
+- 依赖关系代理必须安装在具有64位操作系统的计算机上。
 
 ### <a name="operating-systems"></a>操作系统
 
@@ -100,7 +100,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
 
-#### <a name="windows-desktop"></a>Windows 桌面
+#### <a name="windows-desktop"></a>Windows 桌面版
 
 - Windows 10 1803
 - Windows 10
@@ -136,7 +136,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 | 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
 | 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
-##### <a name="ubuntu-server"></a>Ubuntu Server
+##### <a name="ubuntu-server"></a>Ubuntu 服务器
 
 | OS 版本 | 内核版本 |
 |:--|:--|
@@ -160,7 +160,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 
 ### <a name="dependency-agent-downloads"></a>Dependency Agent 下载
 
-| 文件 | 操作系统 | 版本 | SHA-256 |
+| 文件 | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
@@ -172,22 +172,22 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 执行以下步骤，为工作区配置 Wire Data 解决方案。
 
 1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview)或者使用[从解决方案库中添加监视解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
-2. 在希望从中获取数据的每台计算机上安装依赖关系代理。 依赖关系代理可以监视与直接邻居之间的连接，因此不需要在每台计算机上都具有代理。
+2. 在要获取数据的每台计算机上安装依赖关系代理。 依赖关系代理可以监视到直属邻居的连接, 因此你可能不需要在每台计算机上使用代理。
 
 > [!NOTE]
 > 不能将以前版本的 Wire Data 解决方案添加到新工作区。 如果已启用了原始的 Wire Data 解决方案，则可以继续使用该解决方案。 不过，若要使用 Wire Data 2.0，必须首先删除原始版本。
 > 
  
-### <a name="install-the-dependency-agent-on-windows"></a>在 Windows 上安装依赖关系代理
+### <a name="install-the-dependency-agent-on-windows"></a>在 Windows 上安装依赖项代理
 
 需要管理员特权才能安装或卸载代理。
 
-在运行 Windows 的计算机上，依赖关系代理是通过 InstallDependencyAgent-Windows.exe 安装的。 如果在没有任何选项的情况下运行此可执行文件，它将启动一个向导，以交互方式指导用户安装。
+依赖关系代理安装在运行 Windows 的计算机上, 通过 Installdependencyagent-windows.exe。 如果在没有任何选项的情况下运行此可执行文件，它将启动一个向导，以交互方式指导用户安装。
 
-使用以下步骤在运行 Windows 的每台计算机上安装依赖关系代理：
+使用以下步骤在每台运行 Windows 的计算机上安装依赖关系代理:
 
 1. 遵循[从托管在环境中的 Windows 计算机收集数据](../../azure-monitor/platform/agent-windows.md)所述步骤安装 Log Analytics 代理。
-2. 使用上一部分中的链接下载 Windows 依赖项代理，然后使用以下命令运行该代理：`InstallDependencyAgent-Windows.exe`
+2. 使用上一部分中的链接下载 Windows 依赖项代理, 并使用以下命令运行该代理:`InstallDependencyAgent-Windows.exe`
 3. 按照向导安装代理。
 4. 如果 Dependency Agent 无法启动，请检查日志以获取详细的错误信息。 对于 Windows 代理，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。
 
@@ -202,15 +202,15 @@ InstallDependencyAgent-Windows.exe /?
 | <code>/?</code> | 获取命令行选项列表。 |
 | <code>/S</code> | 执行无提示安装，无用户提示。 |
 
-默认情况下，Windows 依赖关系代理的文件放置在 C:\Program Files\Microsoft Dependency Agent 中。
+默认情况下, Windows 依赖关系代理的文件放置在 C:\Program Files\Microsoft 依赖项代理中。
 
-### <a name="install-the-dependency-agent-on-linux"></a>在 Linux 上安装依赖关系代理
+### <a name="install-the-dependency-agent-on-linux"></a>在 Linux 上安装 Dependency Agent
 
 需要根目录访问才能安装或配置代理。
 
-使用 InstallDependencyAgent-Linux64.bin（具有自解压二进制文件的 Shell 脚本）在 Linux 计算机上安装依赖关系代理。 可使用 _sh_ 来运行文件或将执行权限添加到文件本身。
+依赖关系代理通过 Installdependencyagent-linux64.bin (带有自解压缩二进制文件的 shell 脚本) 在 Linux 计算机上安装。 可使用 _sh_ 来运行文件或将执行权限添加到文件本身。
 
-使用以下步骤在每台 Linux 计算机上安装依赖关系代理：
+使用以下步骤在每台 Linux 计算机上安装 Dependency Agent：
 
 1. 遵循[从托管在环境中的 Linux 计算机收集数据](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)所述步骤安装 Log Analytics 代理。
 2. 使用上一部分中的链接下载 Linux 依赖关系代理，然后以 root 身份使用以下命令安装该代理：sh InstallDependencyAgent-Linux64.bin
@@ -228,9 +228,9 @@ InstallDependencyAgent-Linux64.bin -help
 | <code>-s</code> | 执行无提示安装，无用户提示。 |
 | <code>--check</code> | 检查权限和操作系统，但不安装代理。 |
 
-依赖关系代理的文件放置在以下目录中：
+Dependency Agent 的文件放置在以下目录中：
 
-| **文件** | **位置** |
+| **文件** | **Location** |
 | --- | --- |
 | 核心文件 | /opt/microsoft/dependency-agent |
 | 日志文件 | /var/opt/microsoft/dependency-agent/log |
@@ -240,7 +240,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 ### <a name="installation-script-examples"></a>安装脚本示例
 
-若要轻松地在多台服务器上同时部署依赖关系代理，请使用脚本。 可使用以下脚本示例下载依赖关系代理，并在 Windows 或 Linux 上进行安装。
+若要同时在多台服务器上轻松部署依赖关系代理, 可以使用脚本。 您可以使用以下脚本示例, 在 Windows 或 Linux 上下载和安装依赖关系代理。
 
 #### <a name="powershell-script-for-windows"></a>适用于 Windows 的 PowerShell 脚本
 
@@ -264,7 +264,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 
 ### <a name="desired-state-configuration"></a>Desired State Configuration
 
-若通过 Desired State Configuration 部署依赖关系代理，可使用 xPSDesiredStateConfiguration 模块和少量代码进行操作，如下所示：
+若要通过所需状态配置部署依赖关系代理, 可以使用 xPSDesiredStateConfiguration 模块和类似于下面的代码:
 
 ```powershell
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
@@ -277,7 +277,7 @@ Node $NodeName
 
 {
 
-    # Download and install the Dependency Agent
+    # Download and install the Dependency agent
 
     xRemoteFile DAPackage
 
@@ -319,17 +319,17 @@ Node $NodeName
 
 ### <a name="uninstall-the-dependency-agent"></a>卸载依赖关系代理
 
-可使用以下部分来帮助删除依赖关系代理。
+使用下列部分来帮助你删除依赖项代理。
 
 #### <a name="uninstall-the-dependency-agent-on-windows"></a>卸载 Windows 上的依赖关系代理
 
-管理员可通过“控制面板”卸载适用于 Windows 的依赖关系代理。
+管理员可通过“控制面板”卸载适用于 Windows 的 Dependency Agent。
 
-管理员还可以运行 %Programfiles%\Microsoft Dependency Agent\Uninstall.exe 卸载依赖关系代理。
+管理员还可以运行 %Programfiles%\Microsoft Dependency Agent\Uninstall.exe 卸载 Dependency Agent。
 
 #### <a name="uninstall-the-dependency-agent-on-linux"></a>卸载 Linux 上的依赖关系代理
 
-若要从 Linux 中彻底卸载依赖关系代理，必须删除代理本身以及随该代理自动安装的连接器。 可使用以下单个命令同时卸载这两项：
+若要完全从 Linux 中卸载依赖关系代理, 必须删除代理本身和连接器 (随代理一起自动安装)。 可使用以下单个命令同时卸载这两项：
 
 ```
 rpm -e dependency-agent dependency-agent-connector
@@ -356,7 +356,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="using-the-wire-data-20-solution"></a>使用 Wire Data 2.0 解决方案
 
-在 Azure 门户的 Log Analytics 工作区的“概览”页中，单击“Wire Data 2.0”磁贴打开 Wire Data 仪表板   。 该仪表板包含下表中的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出了匹配该边栏选项卡条件的最多 10 个项。 可通过单击边栏选项卡底部的“查看全部”  或单击边栏选项卡标题，运行返回所有记录的日志搜索。
+在 Azure 门户的 Log Analytics 工作区的“概览”页中，单击“Wire Data 2.0”磁贴打开 Wire Data 仪表板。 该仪表板包含下表中的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出了匹配该边栏选项卡条件的最多 10 个项。 可通过单击边栏选项卡底部的“查看全部”或单击边栏选项卡标题，运行返回所有记录的日志搜索。
 
 | **边栏选项卡** | **说明** |
 | --- | --- |
@@ -366,15 +366,15 @@ rpm -e dependency-agent dependency-agent-connector
 
 ![Wire Data 仪表板](./media/wire-data/wire-data-dash.png)
 
-可以使用“正在捕获网络流量的代理”边栏选项卡来确定计算机正在消耗多少网络带宽。  可以通过此边栏选项卡轻松找到你的环境中“最健谈的”计算机。  此类计算机可能负载过重，行为异常，或者使用比平时更多的网络资源。
+可以使用“正在捕获网络流量的代理”边栏选项卡来确定计算机正在消耗多少网络带宽。 可以通过此边栏选项卡轻松找到你的环境中“最健谈的”计算机。 此类计算机可能负载过重，行为异常，或者使用比平时更多的网络资源。
 
 ![日志搜索示例](./media/wire-data/log-search-example01.png)
 
-类似地，可以使用“本地子网”边栏选项卡确定有多少网络流量正在通过各个子网移动。  用户通常围绕其应用程序的关键领域定义子网。 可以通过此边栏选项卡查看这些领域。
+类似地，可以使用“本地子网”边栏选项卡确定有多少网络流量正在通过各个子网移动。 用户通常围绕其应用程序的关键领域定义子网。 可以通过此边栏选项卡查看这些领域。
 
 ![日志搜索示例](./media/wire-data/log-search-example02.png)
 
-“应用程序级协议”  边栏选项卡很有用，因为它可以帮助你了解正在使用什么协议。 例如，你可能预料网络环境中没有使用 SSH。 查看此边栏选项卡中提供的信息可以快速确认或否定你的预期。
+“应用程序级协议”边栏选项卡很有用，因为它可以帮助你了解正在使用什么协议。 例如，你可能预料网络环境中没有使用 SSH。 查看此边栏选项卡中提供的信息可以快速确认或否定你的预期。
 
 ![日志搜索示例](./media/wire-data/log-search-example03.png)
 
@@ -400,7 +400,7 @@ rpm -e dependency-agent dependency-agent-connector
 | Direction | 入站或出站 |
 | MaliciousIP | 某个已知恶意源的 IP 地址 |
 | Severity | 可疑恶意软件的严重性 |
-| RemoteIPCountry | 国家/地区的远程 IP 地址 |
+| RemoteIPCountry | 远程 IP 地址所在的国家/地区 |
 | ManagementGroupName | Operations Manager 管理组的名称 |
 | SourceSystem | 从中收集了数据的源 |
 | SessionStartTime | 会话开始时间 |
@@ -417,7 +417,6 @@ rpm -e dependency-agent dependency-agent-connector
 | ProcessName | 进程的路径和文件名 |
 | RemoteIPLongitude | IP 经度值 |
 | RemoteIPLatitude | IP 纬度值 |
-
 
 ## <a name="next-steps"></a>后续步骤
 

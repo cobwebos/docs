@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e730e1b5534c4c74734816f5481247e341436b08
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5a2cab9dff4a075545d919cb41e72cf6e446e9d2
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656337"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897318"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>通过 SSL 使用 SSL 来保护 web 服务 Azure 机器学习
 
@@ -149,9 +149,9 @@ aci_config = AciWebservice.deploy_configuration(
   > [!WARNING]
   > 如果使用了*leaf_domain_label*通过 Microsoft 的证书创建服务, 请不要手动更新群集的 DNS 值。 应自动设置该值。
 
-  更新 AKS 群集公共 IP 地址的 "**配置**" 选项卡上的 DNS。 (请参阅下图。)公共 IP 地址是一种资源类型, 它是在包含 AKS 代理节点和其他网络资源的资源组下创建的。
+  在左侧窗格中的 "**设置**" 下的 "**配置**" 选项卡上, 更新 AKS 群集的公共 IP 地址的 DNS。 (请参阅下图。)公共 IP 地址是一种资源类型, 它是在包含 AKS 代理节点和其他网络资源的资源组下创建的。
 
-  ![Azure 机器学习服务：使用 SSL 保护 Web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  [![Azure 机器学习服务:保护具有 SSL 的 web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>更新 SSL 证书
 
@@ -230,9 +230,7 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 ## <a name="disable-ssl"></a>禁用 SSL
 
-若要为部署到 Azure Kubernetes 服务的模型禁用 SSL, 可以使用 SDK 或 CLI:
-
-**使用 SDK**
+若要为部署到 Azure Kubernetes 服务的模型禁用 SSL, 请`SslConfiguration`创建`status="Disabled"`一个, 然后执行更新:
 
 ```python
 from azureml.core.compute import AksCompute
@@ -246,12 +244,6 @@ aks_target = AksCompute(ws, clustername)
 ssl_configuration = SslConfiguration(status="Disabled")
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
-```
-
-**使用 CLI**
-
-```azurecli
- az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-disable True
 ```
 
 ## <a name="next-steps"></a>后续步骤

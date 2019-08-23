@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 56470c08f0ac940dae42821ae61846f1c86d52eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 838d65da90ec0daef69375e5a75bcb497a0c3512
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479512"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900403"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>选择 Azure 数据传输解决方案
 
@@ -36,13 +36,13 @@ ms.locfileid: "66479512"
     - **图形界面** - 如果偶尔仅传输几个文件，并且无需自动执行数据传输，则可以选择图形界面工具（如 Azure 存储资源管理器或 Azure 门户中基于 Web 的浏览工具）。
     - **脚本化或编程传输** - 可以使用我们提供的优化软件工具，或直接调用我们的 REST API/SDK。 可用的可编写脚本工具有 AzCopy、Azure PowerShell 和 Azure CLI。 对于编程接口，请使用用于 .NET、Java、Python、Node/JS、C++、Go、PHP 或 Ruby 的 SDK 之一。
     - **本地设备** - 我们向你提供物理或虚拟设备，该设备驻留在你的数据中心内，并优化通过网络进行的数据传输。 这些设备还提供频繁使用的文件的本地缓存。 物理设备是 Data Box Edge，虚拟设备是 Data Box Gateway。 两者都在本地永久运行，并通过网络连接到 Azure。
-    -  - 可以设置云管道，以在多个 Azure 服务、本地或这两者的组合之间定期传输文件。 使用 Azure 数据工厂可设置和管理数据管道，以及移动和转换数据以进行分析。
+    - - 可以设置云管道，以在多个 Azure 服务、本地或这两者的组合之间定期传输文件。 使用 Azure 数据工厂可设置和管理数据管道，以及移动和转换数据以进行分析。
 
 下面的视觉对象说明根据可用于传输的网络带宽、打算传输的数据大小和传输频率选择各种 Azure 数据传输工具的指导原则。
 
 ![Azure 数据传输工具](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
 
-*脱机传输设备（Data Box Disk、Data Box 和 Data Box Heavy）的上限可以通过对一种设备类型下多个订单来进行扩展。 
+*脱机传输设备（Data Box Disk、Data Box 和 Data Box Heavy）的上限可以通过对一种设备类型下多个订单来进行扩展。
 
 ## <a name="selecting-a-data-transfer-solution"></a>选择数据传输解决方案
 
@@ -65,9 +65,9 @@ ms.locfileid: "66479512"
     如果是，请使用[方案 4：定期数据传输](storage-solution-periodic-data-transfer.md)中概述的脚本化/编程选项。
  
 
-## <a name="data-transfer-feature-in-azure-portal"></a>在 Azure 门户中的数据传输功能
+## <a name="data-transfer-feature-in-azure-portal"></a>Azure 门户中的数据传输功能
 
-也可以转到 Azure 门户，选择你的 Azure 存储帐户**数据传输**功能。 提供在环境中的网络带宽、 传输的数据的大小和数据传输的频率。 您将看到最佳的数据传输解决方案对应于您所提供的信息。 
+你还可以转到 Azure 门户中的 Azure 存储帐户, 并选择**数据传输**功能。 提供环境中的网络带宽、要传输的数据的大小和数据传输的频率。 你将看到与你提供的信息相对应的最佳数据传输解决方案。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -83,4 +83,4 @@ ms.locfileid: "66479512"
 - 使用 REST API 传输数据
 
     - [在 .NET 中](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [在 Java 中](https://docs.microsoft.com/java/api/overview/azure/storage/client)
+    - [在 Java 中](https://docs.microsoft.com/java/api/overview/azure/storage)

@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9dbe1751ac77f370991af75ea161247c21700ff2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886983"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972821"
 ---
-# <a name="delete-nodes-from-vmware-solution-by-cloudsimple---azure"></a>通过 CloudSimple 从 VMware 解决方案中删除节点-Azure
+# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>通过 CloudSimple 从 Azure VMware 解决方案中删除节点
 
-创建 CloudSimple 节点后, 将对其进行计量。  必须删除节点以停止对节点进行计数。  删除 Azure 门户中未使用的节点。 
+创建 CloudSimple 节点后, 将对其进行计量。  必须删除节点以停止对节点进行计数。  删除 Azure 门户中未使用的节点。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -26,8 +26,7 @@ ms.locfileid: "68886983"
 * 将删除使用节点创建的私有云。  若要删除私有云, 请参阅[通过 CloudSimple 私有云删除 Azure VMware 解决方案](delete-private-cloud.md)。
 * 已通过收缩私有云从私有云中删除了节点。  若要缩小私有云, 请参阅[通过 CloudSimple 私有云缩小 Azure VMware 解决方案](shrink-private-cloud.md)。
 
-
-## <a name="sign-in-to-azure"></a>登录  Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 

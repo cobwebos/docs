@@ -1,19 +1,19 @@
 ---
 title: 浏览 Azure 资源
-description: 了解如何使用 Resource Graph 查询语言浏览资源并发现资源的连接方式。
+description: 了解如何使用资源关系图查询语言来浏览资源并发现其连接方式。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/23/2019
+ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0b4a75558f5e82b707ae5d012acef4d2c5c4b7a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c6fdebad3cd84699e1ac7d06bb58a33d1522af1
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723809"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972315"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 浏览 Azure 资源
 
@@ -43,7 +43,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit
 ```
 
 > [!NOTE]
-> Azure PowerShell `Search-AzGraph` cmdlet 默认情况下会返回 PSCustomObject  。 若要让输出与 Azure CLI 返回的内容相同，请使用 `ConvertTo-Json` cmdlet。 “深度”  的默认值是“2”  。 将它设置为“100”  应转换所有返回的级别。
+> Azure PowerShell `Search-AzGraph` cmdlet 默认情况下会返回 PSCustomObject。 若要让输出与 Azure CLI 返回的内容相同，请使用 `ConvertTo-Json` cmdlet。 “深度”的默认值是“2”。 将它设置为“100”应转换所有返回的级别。
 
 JSON 结果的结构类似于下面的示例：
 
@@ -110,11 +110,11 @@ JSON 结果的结构类似于下面的示例：
 ]
 ```
 
-属性告诉我们有关虚拟机资源本身，涵盖从 SKU、 OS、 磁盘、 标记、 其他信息，并且资源组和订阅的成员。
+属性告诉我们有关虚拟机资源本身的其他信息, 这些信息来自 SKU、OS、磁盘、标记以及其所属的资源组和订阅。
 
 ### <a name="virtual-machines-by-location"></a>按位置列出的虚拟机
 
-根据我们对虚拟机资源的了解，我们使用“位置”  属性按位置计算所有虚拟机。 要更新查询，我们将删除限制并汇总位置值的计数。
+根据我们对虚拟机资源的了解，我们使用“位置”属性按位置计算所有虚拟机。 要更新查询，我们将删除限制并汇总位置值的计数。
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -152,7 +152,7 @@ JSON 结果的结构类似于下面的示例：
 
 ### <a name="virtual-machines-by-sku"></a>按 SKU 列出的虚拟机
 
-回到原始虚拟机属性，尝试查找 SKU 大小为“Standard_B2s”  的所有虚拟机。 查看返回的 JSON，我们看到它存储在 properties.hardwareprofile.vmsize  中。 我们将更新查询以查找与此大小匹配的所有 VM，并仅返回 VM 和区域的名称。
+回到原始虚拟机属性，尝试查找 SKU 大小为“Standard_B2s”的所有虚拟机。 查看返回的 JSON，我们看到它存储在 properties.hardwareprofile.vmsize中。 我们将更新查询以查找与此大小匹配的所有 VM，并仅返回 VM 和区域的名称。
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
@@ -179,7 +179,7 @@ where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile
 ```
 
 > [!NOTE]
-> 获得 SKU 的另一种方法是使用 aliases  属性 Microsoft.Compute/virtualMachines/sku.name  。 请参阅[显示别名](../samples/starter.md#show-aliases)并[显示不同的别名值](../samples/starter.md#distinct-alias-values)示例。
+> 获得 SKU 的另一种方法是使用 aliases 属性 Microsoft.Compute/virtualMachines/sku.name。 请参阅[显示别名](../samples/starter.md#show-aliases)和[显示不同的别名值](../samples/starter.md#distinct-alias-values)示例。
 
 ```azurecli-interactive
 az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
@@ -209,8 +209,8 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
 where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-在运行查询之前，如何知道“类型”  现在是 Microsoft.Compute/disks  ？
-如果查看完整 ID，会看到作为字符串一部分的 /providers/Microsoft.Compute/disks/  。 此字符串片段为你提供了要搜索的类型的提示。 另一种方法是按类型删除限制，而只搜索 ID 字段。 由于 ID 是唯一的，因此只返回一条记录，并且 ID 的 type  属性提供该详细信息。
+在运行查询之前，如何知道“类型”现在是 Microsoft.Compute/disks？
+如果查看完整 ID，会看到作为字符串一部分的 /providers/Microsoft.Compute/disks/。 此字符串片段为你提供了要搜索的类型的提示。 另一种方法是按类型删除限制，而只搜索 ID 字段。 由于 ID 是唯一的，因此只返回一条记录，并且 ID 的 type 属性提供该详细信息。
 
 > [!NOTE]
 > 要使此示例起作用，必须使用自己的环境中的结果替换 ID 字段。
@@ -259,17 +259,25 @@ JSON 结果的结构类似于下面的示例：
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>浏览虚拟机以查找公共 IP 地址
 
-这一组 Azure CLI 查询首先查找并存储已连接到虚拟机的所有网络接口 (NIC) 资源。 然后，它使用 NIC 列表查找是公共 IP 地址的每个 IP 地址资源并存储这些值。 最后，它提供公共 IP 地址的列表。
+这组查询首先查找并存储连接到虚拟机的所有网络接口 (NIC) 资源。 然后, 查询使用 Nic 列表来查找作为公共 IP 地址的每个 IP 地址资源, 并存储这些值。 最后, 查询提供公共 IP 地址的列表。
 
 ```azurecli-interactive
-# Use Resource Graph to get all NICs and store in the 'nic' variable
+# Use Resource Graph to get all NICs and store in the 'nics.txt' file
 az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20" --output table | tail -n +3 > nics.txt
 
 # Review the output of the query stored in 'nics.txt'
 cat nics.txt
 ```
 
-在下一个查询中使用 `nics.txt` 文件来获取相关的网络接口资源详细信息，其中有一个公共 IP 地址附加到 NIC。
+```azurepowershell-interactive
+# Use Resource Graph to get all NICs and store in the $nics variable
+$nics = Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20"
+
+# Review the output of the query stored in the variable
+$nics.nic
+```
+
+使用下一个查询中的文件 (Azure CLI) 或变量 (Azure PowerShell) 获取相关的网络接口资源详细信息, 其中存在连接到 NIC 的公共 IP 地址。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file
@@ -279,11 +287,24 @@ az graph query -q="where type =~ 'Microsoft.Network/networkInterfaces' | where i
 cat ips.txt
 ```
 
-最后，使用 `ips.txt` 中存储的公共 IP 地址资源列表从中获取实际的公共 IP 地址并显示出来。
+```azurepowershell-interactive
+# Use Resource Graph  with the $nics variable to get all related public IP addresses and store in $ips variable
+$ips = Search-AzGraph -Query "where type =~ 'Microsoft.Network/networkInterfaces' | where id in ('$($nics.nic -join "','")') | project publicIp = tostring(properties['ipConfigurations'][0]['properties']['publicIPAddress']['id']) | where isnotempty(publicIp) | distinct publicIp"
+
+# Review the output of the query stored in the variable
+$ips.publicIp
+```
+
+最后, 使用存储在文件中的公共 IP 地址资源的列表 (Azure CLI) 或变量 (Azure PowerShell) 从相关对象获取实际的公共 IP 地址, 并显示。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'ips.txt' file to get the IP address of the public IP address resources
 az graph query -q="where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$(awk -vORS="','" '{print $0}' ips.txt | sed 's/,$//')') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip" --output table
+```
+
+```azurepowershell-interactive
+# Use Resource Graph with the $ips variable to get the IP address of the public IP address resources
+Search-AzGraph -Query "where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
 ## <a name="next-steps"></a>后续步骤

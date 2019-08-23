@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: eead4436a7135f6f74528cde52883ea247360fc6
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: a95e643d6561f425484a21b5032b1df585d0460b
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648778"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900332"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>用 AzCopy 和 Blob 存储传输数据
 
@@ -195,7 +195,7 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 
 ## <a name="synchronize-files"></a>同步文件
 
-你可以使用 blob 容器同步本地文件系统的内容。 同步是单向的。 换句话说, 您可以选择这两个终结点中的哪一个是源, 哪一个是目标。
+你可以使用 blob 容器同步本地文件系统的内容。 同步是单向的。 换句话说, 您可以选择这两个终结点中的哪一个是源, 哪一个是目标。 同步还使用服务器到服务器 Api。
 
 > [!NOTE]
 > 目前, 只有没有分层命名空间的帐户才支持此方案。 当前版本的 AzCopy 不在其他源和目标之间同步 (例如:文件存储或 Amazon Web Services (AWS) S3 存储桶)。

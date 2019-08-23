@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 84738d9de880e09177ebb5c060fbd7bbd4613006
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f9223fdead9d22e8f58076b47502e71c06741e3f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036808"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900110"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>为操作产品/服务创建新的 Dynamics 365
 
@@ -82,27 +82,11 @@ ms.locfileid: "69036808"
 
 ## <a name="connect-lead-management"></a>连接潜在客户管理
 
-将客户关系管理 (CRM) 系统与客户直接连接起来。 当你这样做时, 你将收到客户联系信息, 在客户提出兴趣或部署你的产品时。
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-若要连接 CRM 系统, 请选择 "**连接**"。
+有关详细信息, 请参阅[线索管理概述](./commercial-marketplace-get-customer-leads.md)。
 
-### <a name="choose-a-lead-destination"></a>选择潜在顾客目标
-
-选择 "**连接**" 后, 你将看到一个下拉菜单, 你可以在其中选择 CRM 系统, 然后提供连接详细信息。
-
-对于潜在客户管理, 合作伙伴中心支持以下 CRM 系统。 选择安装说明的链接。
-
-- [Azure 表](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)–提供存储帐户连接字符串。 
-- [Dynamics 365 For Customer Engagement (以前为 DYNAMICS CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) ), 提供 Dynamics 365 实例 URL 和身份验证模式 (Office 365 或 Azure Active Directory)。
-- [Https 终结点](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https)–提供 https 终结点 URL。 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) –提供服务器 Id、MUNCHKIN 帐户 id 和窗体 id。
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) -提供组织 ID。
-
-#### <a name="additional-lead-management-resources"></a>其他潜在客户管理资源
-
-- [潜在客户管理常见问题](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常见潜在客户配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [潜在客户管理概述 One 寻呼](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+请记住在转到下一节之前**保存**。
 
 ## <a name="properties"></a>属性
 

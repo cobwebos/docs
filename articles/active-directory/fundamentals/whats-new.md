@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50f2f1f7f5d8509a28557e9704bc178be465b1ee
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 93327091d0065a67d441dd56cadd83f4f7d2d1f2
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648658"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970401"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -114,7 +114,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 
 Azure AD 客户现在可以设置策略以管理其组织的用户和组的 FIDO2 安全密钥。 最终用户还可以自行注册其安全密钥, 在 FIDO 支持的设备上使用密钥登录到网站上的 Microsoft 帐户, 以及登录到其 Azure AD 联接的 Windows 10 设备。
 
-有关详细信息, 请参阅[Enable 无密码 sign in for Azure AD (预览版)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable) , 以获取管理员相关信息, 并[将安全信息设置为对最终用户相关信息使用安全密钥 (预览)](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-security-key) 。
+有关详细信息, 请参阅[Enable 无密码 sign in for Azure AD (预览版)](/azure/active-directory/authentication/concept-authentication-passwordless) , 以获取管理员相关信息, 并[将安全信息设置为对最终用户相关信息使用安全密钥 (预览)](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-security-key) 。
 
 ---
 

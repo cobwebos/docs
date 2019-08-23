@@ -1,18 +1,18 @@
 ---
-title: 有关 Azure Site Recovery 配置、 流程和主目标服务器 |Microsoft Docs
+title: 关于 Azure Site Recovery 配置、进程和主目标服务器 |Microsoft Docs
 description: 本文概述了使用 Azure Site Recovery 设置本地 VMware VM 到 Azure 的灾难恢复时使用的配置服务器、进程服务器和主目标服务器
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 8b3815fc9dc44484779a70b51ebff4802265d53a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d835eda044c2a6d1e0e7c678073711e45fde7395
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417740"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972142"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>关于 Site Recovery 组件（配置服务器、进程服务器、主目标服务器）
 

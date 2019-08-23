@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 4ff52e737438210296b8f2201d5e66e1d38b7bc9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d746385a034fdf742b8958b3d1fe51ea2a3c5cf
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418282"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972180"
 ---
 # <a name="monitor-the-process-server"></a>监视进程服务器
 
@@ -53,15 +53,15 @@ ms.locfileid: "66418282"
 
 **警报类型** | **详细信息**
 --- | ---
-![Healthy][green] | 进程服务器已连接且正常运行。
+![状态良好][green] | 进程服务器已连接且正常运行。
 ![警告][yellow] | 过去 15 分钟的 CPU 利用率超过 80%
 ![警告][yellow] | 过去 15 分钟的内存使用率超过 80%
 ![警告][yellow] | 过去 15 分钟的缓存文件夹可用空间小于 30%
 ![警告][yellow] | 进程服务器服务在过去 15 分钟未运行
-![严重][red] | 过去 15 分钟的 CPU 利用率超过 95%
-![严重][red] | 过去 15 分钟的内存使用率超过 95%
-![严重][red] | 过去 15 分钟的缓存文件夹可用空间小于 25%
-![严重][red] | 进程服务器有 15 分钟未发出检测信号。
+![关键][red] | 过去 15 分钟的 CPU 利用率超过 95%
+![关键][red] | 过去 15 分钟的内存使用率超过 95%
+![关键][red] | 过去 15 分钟的缓存文件夹可用空间小于 25%
+![关键][red] | 进程服务器有 15 分钟未发出检测信号。
 
 ![表键](./media/vmware-physical-azure-monitor-process-server/table-key.png)
 
@@ -74,12 +74,12 @@ ms.locfileid: "66418282"
 
 可按如下所述监视进程服务器的运行状况： 
 
-1. 若要监视复制的计算机及其进程服务器的复制运行状况和状态，请在保管库中选择“已复制的项”，然后单击要监视的计算机。 
-2. 在“复制运行状况”中，可以监视 VM 的运行状况。  单击该状态可以深入查看错误详细信息。
+1. 若要监视复制的计算机及其进程服务器的复制运行状况和状态，请在保管库中选择“已复制的项”，然后单击要监视的计算机。
+2. 在“复制运行状况”中，可以监视 VM 的运行状况。 单击该状态可以深入查看错误详细信息。
 
     ![VM 仪表板中的进程服务器运行状况](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
 
-4. 在“进程服务器运行状况”中，可以监视进程服务器的状态。  深入查看详细信息。
+4. 在“进程服务器运行状况”中，可以监视进程服务器的状态。 深入查看详细信息。
 
     ![VM 仪表板中的进程服务器详细信息](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "66418282"
     - 如果进程服务器在配置服务器上的默认部署中运行，则会相应地突出显示配置服务器。
     - 若要深入查看信息，请单击配置服务器或进程服务器。 注意任何问题和任何补救建议。
 
-还可以在“Site Recovery 基础结构”下监视保管库中的进程服务器。  在“管理 Site Recovery 基础结构”中，单击“配置服务器”。   选择与进程服务器关联的配置服务器，然后深入查看进程服务器详细信息。
+还可以在“Site Recovery 基础结构”下监视保管库中的进程服务器。 在“管理 Site Recovery 基础结构”中，单击“配置服务器”。 选择与进程服务器关联的配置服务器，然后深入查看进程服务器详细信息。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 510f58cc0b71fb75ac6f5e15fc883c3caf4a8f9a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946405"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897998"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Azure 机器学习服务的企业安全性
 
@@ -31,7 +31,7 @@ ms.locfileid: "68946405"
 * 客户端将令牌提供给 Azure 资源管理器 & 所有 Azure 机器学习服务
 * Azure 机器学习服务向用户计算提供 Azure 机器学习令牌。 例如, 机器学习计算。 在运行完成后, 用户计算使用此标记回拨到 Azure 机器学习服务 (限制作用域)。
 
-![显示身份验证在 Azure 机器学习服务中的工作方式的屏幕截图](./media/enterprise-readiness/authentication.png)
+[![显示身份验证在 Azure 机器学习服务中的工作方式的屏幕截图](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Web 服务部署的身份验证
 
@@ -185,7 +185,7 @@ Azure 机器学习服务使用与工作区关联 Key Vault 实例来存储各种
 
 Azure Monitor 指标可用于查看和监视 Azure 机器学习服务工作区的指标。 在[Azure 门户](https://portal.azure.com)中, 选择工作区, 然后使用 "__指标__" 链接。
 
-![显示工作区的示例指标的屏幕截图](./media/enterprise-readiness/workspace-metrics.png)
+[![显示工作区的示例指标的屏幕截图](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 指标包括有关运行、部署和注册的信息。
 
@@ -197,7 +197,7 @@ Azure Monitor 指标可用于查看和监视 Azure 机器学习服务工作区�
 
 以下屏幕截图显示工作区的活动日志:
 
-![显示工作区下的活动日志的屏幕截图](./media/enterprise-readiness/workspace-activity-log.png)
+[![显示工作区下的活动日志的屏幕截图](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 评分请求详细信息存储在应用程序见解中, 这是在创建工作区时在用户的订阅中创建的。 记录的信息包括 HTTPMethod、UserAgent、ComputeType、RequestUrl、StatusCode、RequestId、Duration 等等字段。
 
@@ -220,14 +220,14 @@ Azure Monitor 指标可用于查看和监视 Azure 机器学习服务工作区�
 
 附加到工作区的其他计算 (Azure Kubernetes 服务、VM 等) 还可以根据需要由客户进行设置。
 
-![显示创建工作区工作流的屏幕截图](./media/enterprise-readiness/create-workspace.png)
+[![显示创建工作区工作流的屏幕截图](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
 
 ### <a name="save-source-code-training-scripts"></a>保存源代码 (训练脚本)
 
 下图显示了代码快照工作流。
 与 Azure 机器学习服务工作区关联的是目录 (试验), 其中包含源代码 (训练脚本)。  这些脚本存储在客户的本地计算机和云中 (在客户的订阅下的 Azure Blob 存储中)。 代码快照用于执行或检查历史审核。
 
-![显示创建工作区工作流的屏幕截图](./media/enterprise-readiness/code-snapshot.png)
+[![显示创建工作区工作流的屏幕截图](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
 ### <a name="training"></a>培训
 
@@ -253,7 +253,7 @@ Azure Monitor 指标可用于查看和监视 Azure 机器学习服务工作区�
 
 此步骤显示在定型计算将*运行度量*写入 Cosmos DB 中存储的 Azure 机器学习服务的流中。 客户端可以调用 Azure 机器学习服务, 该服务将从 Cosmos DB 中打开拉取指标, 并将其返回给客户端。
 
-![显示创建工作区工作流的屏幕截图](./media/enterprise-readiness/training-and-metrics.png)
+[![显示创建工作区工作流的屏幕截图](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>创建 web 服务
 
@@ -267,7 +267,7 @@ Azure Monitor 指标可用于查看和监视 Azure 机器学习服务工作区�
 * 评分请求详细信息存储在应用程序见解中, 这是用户的订阅
 * 遥测还会推送到 Microsoft/Azure 订阅
 
-![显示创建工作区工作流的屏幕截图](./media/enterprise-readiness/inferencing.png)
+[![显示创建工作区工作流的屏幕截图](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 37624c79a345f956de9a289c672340e391199e2f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650688"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900122"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -153,23 +153,9 @@ ms.locfileid: "69650688"
 
 ## <a name="connect-lead-management"></a>连接潜在客户管理
 
-通过在市场中列出产品/服务并挂钩你的客户关系管理 (CRM) 系统, 直接与客户联系, 以便你可以在客户提出兴趣后立即接收客户联系信息或部署产品.
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-- **选择潜在顾客目标**(下拉菜单):向 CRM 系统提供连接详细信息, 您希望我们向客户发送客户主管。 
-
-对于潜在客户管理, 合作伙伴中心支持以下 CRM 系统。 选择安装说明的链接。
-
-- Azure Blob –提供联系人电子邮件、容器名称和存储帐户连接字符串。 
-- [Azure 表](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)–提供联系人电子邮件和存储帐户连接字符串。 
-- [DYNAMICS CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) –提供联系人电子邮件、URL 和身份验证模式 (Office 365 或 Azure Active Directory)。
-- [Https 终结点](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https)–提供联系人电子邮件和 Https 终结点 URL。 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) –提供联系人电子邮件、表单 ID、MUNCHKIN 帐户 id 和服务器 id。
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) -提供联系人电子邮件和组织 ID。 
-
-#### <a name="additional-lead-management-resources"></a>其他潜在客户管理资源
-- [潜在客户管理常见问题](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常见潜在客户配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [潜在客户管理概述 One 寻呼](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+有关详细信息, 请参阅[线索管理概述](./commercial-marketplace-get-customer-leads.md)。
 
 请记住在转到下一节之前**保存**。
 

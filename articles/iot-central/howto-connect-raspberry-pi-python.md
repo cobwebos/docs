@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: bd506bf1210692feb017f3b526c3b6d4bca36004
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c8fd5309f50cfc024083cb8a05d679d04bf112dc
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877425"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972263"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (Python)
 
@@ -29,6 +29,9 @@ ms.locfileid: "69877425"
 
 * 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 * 运行 Raspbian 操作系统的 Raspberry Pi 设备。 Raspberry Pi 必须能够连接到 internet。 有关详细信息, 请参阅[设置 Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)。
+
+> [!TIP]
+> 若要了解如何设置并连接到 Raspberry Pi 设备, 请访问[Raspberry pi 入门](https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi)
 
 ## <a name="sample-devkits-application"></a>**示例 Devkits** 应用程序
 
@@ -63,12 +66,37 @@ ms.locfileid: "69877425"
 * 将遥测数据和属性值发送到 Azure IoT Central。
 * 响应在 Azure IoT Central 中做的设置更改。
 
-若要配置该设备, 请[按照 GitHub 上的分步说明](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md)进行操作。
+1. 使用 Raspberry Pi 桌面连接到 Raspberry Pi 上的 shell 环境, 或使用 SSH 远程连接到 shell 环境。
 
-1. 配置设备后, 设备开始将遥测度量发送到 Azure IoT Central。
+1. 运行以下命令以安装 IoT Central Python 客户端:
+
+    ```sh
+    pip install iotc
+    ```
+
+1. 下载示例 Python 代码:
+
+    ```sh
+    curl -O https://raw.githubusercontent.com/Azure/iot-central-firmware/master/RaspberryPi/app.py
+    ```
+
+1. 编辑下载`app.py`的文件, 并将`DEVICE_ID`、 `SCOPE_ID`和`PRIMARY/SECONDARY device KEY`占位符替换为之前记下的连接值。 保存更改。
+
+    > [!TIP]
+    > 在 Raspberry Pi 上的 shell 中, 可以使用**nano**或**vi**文本编辑器。
+
+1. 使用以下命令运行该示例:
+
+    ```sh
+    python app.py
+    ```
+
+    你的 Raspberry Pi 开始将遥测度量发送到 Azure IoT Central。
+
 1. 在 Azure IoT Central 应用程序中，可以看到在 Raspberry Pi 上运行的代码如何与应用程序交互：
 
     * 在真实设备的“度量”页上，可以看到从 Raspberry Pi 发送的遥测数据。
+    * 在 "**属性**" 页上, 可以看到 "**骰子编号**设备" 属性。
     * 在 "**设置**" 页上, 可以更改 Raspberry Pi 上的设置, 例如电压和风扇速度。 当 Raspberry Pi 确认变化时, 该设置显示为 "已**同步**"。
 
 ## <a name="raspberry-pi-device-template-details"></a>Raspberry Pi 设备模板详细信息

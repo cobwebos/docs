@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 9053866b76ec1cc409c3f00d0af59bf3761d3936
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e5ed60ea59dc8cf19b8f9ca7e96777dbc6980171
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927983"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906063"
 ---
 # <a name="azure-database-security-overview"></a>Azure 数据库安全性概述
 
@@ -206,7 +206,7 @@ SQL 高级威胁防护 (ATP) 提供一组高级 SQL 安全功能，包括数据�
 
 [Azure 安全中心](https://azure.microsoft.com/documentation/services/security-center/)可帮助防范、检测和应对威胁。 它为 Azure 订阅提供集成的安全监控和策略管理。 它有助于检测可能会被忽视的威胁，适用于各种安全解决方案生态系统。
 
-[安全中心](../../security-center/security-center-sql-database.md)通过为所有服务器和数据库提供安全性的可见性来帮助保护 SQL 数据库中的数据。 通过安全中心，可以：
+[安全中心](../../security-center/security-center-alerts-data-services.md)通过为所有服务器和数据库提供安全性的可见性来帮助保护 SQL 数据库中的数据。 通过安全中心，可以：
 
 - 定义 SQL 数据库加密和审核的策略。
 - 跨所有订阅监视 SQL 数据库资源的安全性。

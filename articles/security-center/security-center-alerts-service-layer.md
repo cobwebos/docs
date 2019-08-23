@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: aae2270417e0bb3bdf0dd847e2e09e7cb1999d39
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624774"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972470"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Azure 安全中心中 Azure 服务层的威胁检测
 
@@ -50,6 +50,10 @@ ms.locfileid: "69624774"
 |**检测到具有恶意地址的网络通信**|采样网络流量分析检测到的通信是使用可能的命令和控制 (C & C) 服务器从你的部署中的某个资源发起的通信。 请注意，此类活动可能导致你的 IP 被外部实体标记为恶意 IP。|
 
 若要了解安全中心如何使用网络相关信号来应用威胁防护, 请参阅[在 Azure 安全中心中检测启发式 DNS](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)。
+
+>[!NOTE]
+>Azure 安全中心中的 azure 网络层威胁检测警报是在创建 VM 后的第一个小时内生成的。
+
 ## Azure 管理层 (Azure 资源管理器) (预览版)<a name ="management-layer"></a>
 
 >[!NOTE]
