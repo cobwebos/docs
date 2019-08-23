@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 8dd55032c933cdc31b848addfdac991550376dcf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7177a95bdd585ff2822c9ac8c94a85d12f9259b
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729218"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900365"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>具有中高速网络带宽的大型数据集的数据传输
  
@@ -49,8 +49,8 @@ ms.locfileid: "60729218"
 
 如果可用的网络带宽为高速带宽，则使用下面的一种工具。
 
-- AzCopy  - 使用此命令行工具在保证最佳性能的同时轻松向/从 Azure Blob、文件和表存储复制数据。 AzCopy 支持并发度和并行度，并且可以在复制操作中断后进行恢复。
-- Azure 存储 REST API/SDK  - 生成应用程序时，可以对照着 Azure 存储 REST API 开发应用程序，并使用以多种语言提供的 Azure SDK。
+- AzCopy - 使用此命令行工具在保证最佳性能的同时轻松向/从 Azure Blob、文件和表存储复制数据。 AzCopy 支持并发度和并行度，并且可以在复制操作中断后进行恢复。
+- Azure 存储 REST API/SDK - 生成应用程序时，可以对照着 Azure 存储 REST API 开发应用程序，并使用以多种语言提供的 Azure SDK。
 - **用于在线传输的 Azure Data Box 系列** – Data Box Edge 和 Data Box Gateway 是可以将数据移入和移出 Azure 的联机网络设备。 在上传之前同时需要持续引入和预处理数据时，请使用 Data Box Edge 物理设备。 Data Box Gateway 是该设备的虚拟版本，具有相同的数据传输功能。 每种情况下，数据传输都是由设备进行管理。
 - **Azure 数据工厂** - 如果需要业务流程和企业级监视功能，应使用数据工厂横向扩展传输操作。 使用数据工厂在多个 Azure 服务、本地或两者的组合之间定期传输文件。 使用数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据并自动执行数据移动和数据传输。
 
@@ -74,7 +74,7 @@ ms.locfileid: "60729218"
 |    硬件                         |     Microsoft 提供          |    Microsoft 提供                            |    Microsoft 提供                    |    客户提供                   |
 |    网络接口                |    USB 3.1/SATA                 |    RJ 45，SFP+                                   |    RJ45，QSFP+                           |    SATA II/SATA III                    |
 |    合作伙伴集成              |    部分                         |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    部分                                |
-|    寄送                         |    Microsoft 托管            |    Microsoft 托管                             |    Microsoft 托管                     |    由客户管理                    |
+|    正在装运                         |    Microsoft 托管            |    Microsoft 托管                             |    Microsoft 托管                     |    由客户管理                    |
 | 数据移动时使用         |在商务区域内|在商务区域内|在商务区域内|跨地理区域，例如美国到欧洲|
 |    定价                          |    [定价](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [价格](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [价格](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定价](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
@@ -83,7 +83,7 @@ ms.locfileid: "60729218"
 
 ### <a name="high-network-bandwidth"></a>高速网络带宽
 
-|                                     |    Tools AzCopy， <br>Azure PowerShell， <br>Azure CLI             |    Azure 存储 REST API，SDK                   |    数据框网关或数据框边缘          |    Azure 数据工厂                                            |
+|                                     |    Tools AzCopy， <br>Azure PowerShell， <br>Azure CLI             |    Azure 存储 REST API，SDK                   |    Data Box Gateway 或 Data Box Edge          |    Azure 数据工厂                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    数据类型                  |    Azure Blob、Azure 文件、Azure 表    |    Azure Blob、Azure 文件、Azure 表    |    Azure Blob、Azure 文件                           |   支持 70 多个用于数据存储和格式的数据连接器    |
 |    外形规格                |    命令行工具                        |    编程接口                    |    Microsoft 提供虚拟 <br>或物理设备     |    Azure 门户中的服务                                            |
@@ -108,4 +108,4 @@ ms.locfileid: "60729218"
 - 使用 REST API 传输数据
 
     - [在 .NET 中](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [在 Java 中](https://docs.microsoft.com/java/api/overview/azure/storage/client)
+    - [在 Java 中](https://docs.microsoft.com/java/api/overview/azure/storage)

@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 09/15/2017
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 44dea072b9871d0be6e18549896456af2a4989f6
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 5a0be55df9be67fcf6ff5d53e18e3eb2b0e69d7f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558778"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904477"
 ---
 # <a name="get-started-with-device-management-net"></a>设备管理入门 (.NET)
 
@@ -34,7 +34,9 @@ ms.locfileid: "69558778"
 
 * **TriggerReboot**。 此应用调用模拟设备应用中的直接方法, 显示响应, 并显示更新后的报告属性。
 
-若要完成本教程，需要具备以下先决条件：
+## <a name="prerequisites"></a>先决条件
+
+要完成本教程，需要：
 
 * Visual Studio。
 
@@ -81,7 +83,7 @@ ms.locfileid: "69558778"
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. 将以下字段添加到 Program 类。 将占位符值替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。
+1. 将以下字段添加到 Program 类。 将`{iot hub connection string}`占位符值替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。
 
    ```csharp
    static RegistryManager registryManager;
@@ -133,7 +135,7 @@ ms.locfileid: "69558778"
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 
-在本部分中, 你将执行以下操作:
+本部分的操作：
 
 * 创建一个 .NET 控制台应用，用于响应通过云调用的直接方法。
 
@@ -164,11 +166,10 @@ ms.locfileid: "69558778"
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. 将以下字段添加到 Program 类。 将占位符值替换为上一部分中所述的设备连接字符串。
+1. 将以下字段添加到 Program 类。 将`{device connection string}`占位符值替换为之前在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中记下的设备连接字符串。
 
     ```csharp
-    static string DeviceConnectionString = 
-      "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
+    static string DeviceConnectionString = "{device connection string}";
     static DeviceClient Client = null;
     ```
 
@@ -233,7 +234,7 @@ ms.locfileid: "69558778"
    }
    ```
 
-1. 在解决方案资源管理器中, 右键单击解决方案, 然后选择 "**设置启动项目**"。 
+1. 在解决方案资源管理器中, 右键单击解决方案, 然后选择 "**设置启动项目**"。
 
 1. 对于 "**通用属性** > " "**启动项目**", 选择 "**单个启动项目**", 然后选择 " **SimulateManagedDevice** " 项目。 选择“确定”保存更改。
 
@@ -244,7 +245,7 @@ ms.locfileid: "69558778"
 
 ## <a name="run-the-apps"></a>运行应用
 
-现在可以运行应用了。
+你现在已准备好运行应用。
 
 1. 若要运行 .NET 设备应用**SimulateManagedDevice**, 请在解决方案资源管理器中右键单击 " **SimulateManagedDevice** " 项目, 选择 "**调试**", 然后选择 "**启动新实例**"。 应用应开始侦听来自 IoT 中心的方法调用。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e434065feb218b0a46220b95cc6bfd9a7033de30
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 120ab94ce62010acf4e742bd5220405961dad6db
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816114"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972724"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solution-by-cloudsimple"></a>使用 CloudSimple 管理 Azure VMware 解决方案的主要概念
 
@@ -34,7 +34,6 @@ ms.locfileid: "68816114"
 ## <a name="cloudsimple-node"></a>CloudSimple 节点
 
 CloudSimple 节点是部署 VMware ESXi 虚拟机监控程序的专用、裸机超聚合计算和存储主机。 然后, 将此节点合并到 VMware vSphere、vCenter、vSAN 和 NSX 平台。 还启用了 CloudSimple 网络服务和边缘网络服务。 每个节点都作为计算和存储容量的单元, 你可以预配该单元以创建[CloudSimple 的私有云](cloudsimple-private-cloud.md)。 在 CloudSimple 服务可用的区域中预配或保留节点。
-
 
 了解有关[CloudSimple 节点](cloudsimple-node.md)的详细信息。
 

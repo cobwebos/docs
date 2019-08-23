@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 734ad263356ab9f91c7cb92ab174a14e0c5dd867
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775180"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900639"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>开发C# IoT Edge 模块以在 Data Box Edge 上移动文件
 
@@ -40,7 +40,7 @@ ms.locfileid: "68775180"
 
 文件位于云共享中后，它会自动上传到 Azure 存储帐户。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 
@@ -127,8 +127,10 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 2. 在 FileCopyModule namespace 的顶部，为稍后要使用的类型添加三个 using 语句。 Microsoft.Azure.Devices.Client.Transport.Mqtt 是一种协议，可将消息发送到 IoT Edge 中心。
 
     ```
-    using Microsoft.Azure.Devices.Client.Transport.Mqtt;
-    using Newtonsoft.Json;
+    namespace FileCopyModule
+    {
+        using Microsoft.Azure.Devices.Client.Transport.Mqtt;
+        using Newtonsoft.Json;
     ```
 3. 将“InputFolderPath”和“OutputFolderPath”变量添加到 Program 类。
 
@@ -140,7 +142,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. 添加**FileEvent**类以定义消息正文。
+4. 紧跟在上一步后, 添加**FileEvent**类以定义消息正文。
 
     ```
     /// <summary>
@@ -156,7 +158,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
     }
     ```
 
-5. 在 Init 方法中，此代码创建并配置 ModuleClient 对象。 该对象允许模块使用 MQTT 协议连接到本地 Azure IoT Edge 运行时，以发送并接收消息。 在 Init 方法中使用的连接字符串由 IoT Edge 运行时提供给模块。 代码注册 FileCopy 回调，以通过 input1 终结点从 IoT Edge 中心接收消息。
+5. 在**Init 方法**中, 代码创建并配置**ModuleClient**对象。 该对象允许模块使用 MQTT 协议连接到本地 Azure IoT Edge 运行时，以发送并接收消息。 在 Init 方法中使用的连接字符串由 IoT Edge 运行时提供给模块。 代码注册 FileCopy 回调，以通过 input1 终结点从 IoT Edge 中心接收消息。 将**Init 方法**替换为以下代码。
 
     ```
     /// <summary>
@@ -178,11 +180,11 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
     }
     ```
 
-6. 插入 FileCopy 的代码。
+6. 删除**管道消息方法**的代码, 并在其位置插入**FileCopy**的代码。
 
     ```
         /// <summary>
-        /// This method is called whenever the module is sent a message from the IoT Edge Hub. 
+        /// This method is called whenever the module is sent a message from the IoT Edge Hub.
         /// This method deserializes the file event, extracts the corresponding relative file path, and creates the absolute input file path using the relative file path and the InputFolderPath.
         /// This method also forms the absolute output file path using the relative file path and the OutputFolderPath. It then copies the input file to output file and deletes the input file after the copy is complete.
         /// </summary>
@@ -236,6 +238,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
     ```
 
 7. 保存此文件。
+8. 你还可以下载此项目的[现有代码示例](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable)。 然后, 你可以在本示例中验证针对**program.cs**文件保存的文件。
 
 ## <a name="build-your-iot-edge-solution"></a>生成 IoT Edge 解决方案
 
@@ -246,7 +249,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
     `docker login <ACR login server> -u <ACR username>`
 
-    使用从 Azure 容器注册表复制的登录服务器和用户名。 
+    使用从 Azure 容器注册表复制的登录服务器和用户名。
 
     ![生成并推送 IoT Edge 解决方案](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
 

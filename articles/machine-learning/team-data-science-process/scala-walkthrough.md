@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cdc37ace4687fe978030f528dcd5cbc87da596f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b22d461d327e595908ea8cc18dd0d507fdc83ecd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589574"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907714"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 和 Spark 展开数据科研
 本文介绍如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。 它将指导完成[数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)所需的任务：数据引入和浏览、可视化、特征工程、建模和模型使用。 本文中的模型包括逻辑和线性回归、随机林和梯度提升树 (GBT)，以及两个常见的监管式机器学习任务：
@@ -32,16 +32,16 @@ ms.locfileid: "60589574"
 
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) 是 Azure 托管的开放源代码 Spark 产品。 它还包括对 Spark 群集上 Jupyter Scala 笔记本的支持，并且可运行 Spark SQL 交互式查询以便对存储在 Azure Blob 存储中的数据进行转换、筛选和可视化。 本文中的 Scala 代码片段提供解决方案，并显示相关图表，以可视化安装在 Spark 群集上的 Jupyter 笔记本中运行的数据。 这些主题中的建模步骤具有代码，显示每种类型模型的定型、评估、保存和使用方式。
 
-本文中的设置步骤和代码适用于 Azure HDInsight 3.4 Spark 1.6。 但是，本文和 [Scala Jupyter Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration%20Modeling%20and%20Scoring%20using%20Scala.ipynb)中的代码是通用的，应该可以在任何 Spark 群集上使用。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与本文中显示的稍有不同。
+本文中的设置步骤和代码适用于 Azure HDInsight 3.4 Spark 1.6。 但是，本文和 [Scala Jupyter Notebook](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)中的代码是通用的，应该可以在任何 Spark 群集上使用。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与本文中显示的稍有不同。
 
 > [!NOTE]
 > 有关演示如何使用 Python 而非 Scala 完成端到端数据科学过程任务的主题，请参阅[在 Azure HDInsight 上使用 Spark 展开数据科学](spark-overview.md)。
 > 
 > 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 * 必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 中的说明。 在“选择群集类型”  菜单上设置群集类型和版本。
+* 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 中的说明。 在“选择群集类型”菜单上设置群集类型和版本。
 
 ![HDInsight 群集类型配置](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "60589574"
 有关 NYC 出租车行程数据说明以及如何从 Spark 群集上的 Jupyter notebook 执行代码的说明，请参阅[在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)中的相关部分。  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>从 Spark 群集上的 Jupyter notebook 执行 Scala 代码
-可以从 Azure 门户启动 Jupyter notebook。 在仪表板上找到 Spark 群集，并单击进入群集管理页面。 接下来，单击“群集仪表板”  ，再单击“Jupyter Notebook”  打开与 Spark 群集关联的笔记本。
+可以从 Azure 门户启动 Jupyter notebook。 在仪表板上找到 Spark 群集，并单击进入群集管理页面。 接下来，单击“群集仪表板”，再单击“Jupyter Notebook”打开与 Spark 群集关联的笔记本。
 
 ![群集仪表板和 Jupyter notebook](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
@@ -60,9 +60,9 @@ ms.locfileid: "60589574"
 
 ![使用群集名称可转到 Jupyter notebook](./media/scala-walkthrough/spark-jupyter-notebook.png)
 
-选择“Scala”  ，查看包含数个使用 PySpark API 的预打包笔记本示例的目录。 浏览建模和评分可在 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala) 上获得，它使用 Scala.ipynb 笔记本，笔记本中包含此套 Spark 主题的代码示例。
+选择“Scala”，查看包含数个使用 PySpark API 的预打包笔记本示例的目录。 浏览建模和评分可在 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala) 上获得，它使用 Scala.ipynb 笔记本，笔记本中包含此套 Spark 主题的代码示例。
 
-可以将笔记本直接从 GitHub 上传到 Spark 群集上的 Jupyter Notebook 服务器。 在 Jupyter 主页上，单击“上传”  按钮。 在文件资源管理器中，粘贴 Scala notebook 的 GitHub（原始内容）URL，并单击“打开”  。 可通过以下 URL 获取 Scala notebook:
+可以将笔记本直接从 GitHub 上传到 Spark 群集上的 Jupyter Notebook 服务器。 在 Jupyter 主页上，单击“上传”按钮。 在文件资源管理器中，粘贴 Scala notebook 的 GitHub（原始内容）URL，并单击“打开”。 可通过以下 URL 获取 Scala notebook:
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 039a4db11adf66e0c28826106df5845b42fedef5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f395ba5d63463aa177b453d187d025a4461eff28
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688244"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905580"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>有关启用用于 VM 的 Azure Monitor（预览版）的概述
 
@@ -31,9 +31,12 @@ ms.locfileid: "68688244"
 * 使用 PowerShell 跨指定的订阅或资源组启用两个或更多 Azure VM，或启用虚拟机规模集。
 * 启用用于 VM 的 Azure Monitor，以监视企业网络或其他云环境中托管的 VM 或物理计算机。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-在开始之前，请确保理解以下部分中的信息。
+在开始之前，请确保理解以下部分中的信息。 
+
+>[!NOTE]
+>本部分中所述的以下信息也适用于[服务映射解决方案](service-map.md)。  
 
 ### <a name="log-analytics"></a>Log Analytics
 
@@ -46,8 +49,8 @@ ms.locfileid: "68688244"
 - 英国南部
 - 西欧
 - 东南亚
-- 澳大利亚东部
-- 澳大利亚东南部
+- 澳大利亚东部<sup>1</sup>
+- 澳大利亚东南部<sup>1</sup>
 
 <sup>1</sup> 此区域目前不支持用于 VM 的 Azure Monitor 的“运行状况”功能。
 
@@ -77,7 +80,7 @@ ms.locfileid: "68688244"
 
 下表列出了用于 VM 的 Azure Monitor 支持的 Windows 和 Linux 操作系统。 本部分稍后将提供详细说明主要和次要 Linux OS 版本以及支持的内核版本的完整列表。
 
-|OS 版本 |性能 |地图 |健康 |
+|OS 版本 |性能 |映射 |健康 |
 |-----------|------------|-----|-------|
 |Windows Server 2019 | X | X | X |
 |Windows Server 2016 1803 | X | X | X |
@@ -153,6 +156,9 @@ ms.locfileid: "68688244"
 
 无论是为单个 Azure VM 启用用于 VM 的 Azure Monitor，还是使用大规模部署方法，都需要在体验过程中使用 Azure VM 依赖项代理扩展来安装该代理。
 
+>[!NOTE]
+>本部分中所述的以下信息也适用于[服务映射解决方案](service-map.md)。  
+
 在混合环境中，可以手动下载并安装依赖项代理。 如果 VM 托管在 Azure 外部，请使用自动部署方法。
 
 下表描述了映射功能在混合环境中支持的连接源。
@@ -167,8 +173,8 @@ ms.locfileid: "68688244"
 
 | 文件 | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.8.1 | 622C99924385CBF539988D759BCFDC9146BB157E7D577C997CDD2674E27E08DD |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.8.1 | 3037934A5D3FB7911D5840A9744AE9F980F87F620A7F7B407F05E276FE7AE4A8 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.1 | FCF9C1D9B20AD414051B49EE79144E595CCC411EB6D444D6D5B5A7B1874DCDEC |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
@@ -200,14 +206,14 @@ ms.locfileid: "68688244"
 |LogicalDisk |平均磁盘秒数/传输 |
 |LogicalDisk |平均磁盘秒数/写入 |
 |LogicalDisk |磁盘字节/秒 |
-|LogicalDisk |磁盘读取的字节数/秒 |
+|LogicalDisk |磁盘读取字节数/秒 |
 |LogicalDisk |磁盘读取数/秒 |
 |LogicalDisk |磁盘传输数/秒 |
-|LogicalDisk |磁盘写入的字节数/秒 |
+|LogicalDisk |磁盘写入字节数/秒 |
 |LogicalDisk |磁盘写入数/秒 |
 |LogicalDisk |可用 MB 数 |
 |内存 |可用字节(MB) |
-|网络适配器 |已接收字节/秒 |
+|网络适配器 |收到的字节数/秒 |
 |网络适配器 |发送的字节数/秒 |
 |处理器 |处理器时间百分比 |
 
@@ -216,10 +222,10 @@ ms.locfileid: "68688244"
 |对象名称 |计数器名称 |
 |------------|-------------|
 |逻辑磁盘 |已用空间百分比 |
-|逻辑磁盘 |磁盘读取的字节数/秒 |
+|逻辑磁盘 |磁盘读取字节数/秒 |
 |逻辑磁盘 |磁盘读取数/秒 |
 |逻辑磁盘 |磁盘传输数/秒 |
-|逻辑磁盘 |磁盘写入的字节数/秒 |
+|逻辑磁盘 |磁盘写入字节数/秒 |
 |逻辑磁盘 |磁盘写入数/秒 |
 |逻辑磁盘 |可用 MB 数 |
 |逻辑磁盘 |逻辑磁盘字节数/秒 |

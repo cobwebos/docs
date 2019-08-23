@@ -1,96 +1,98 @@
 ---
-title: Azure 数据框边缘安全 |Microsoft Docs
-description: 介绍保护在 Azure 数据框边缘设备、 服务和数据的本地安全和隐私功能和在云中。
+title: Azure Data Box Edge 安全性 |Microsoft Docs
+description: 描述在本地和云中保护 Azure Data Box Edge 设备、服务和数据的安全和隐私功能。
 services: Data Box Edge
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8823aebe17a5446b3c507878833c2525c338dde1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 375576dd4a7897c48474fd2af00a99084292d854
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718003"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970887"
 ---
-# <a name="azure-data-box-edge-security-and-data-protection"></a>Azure 数据框边缘安全和数据保护
+# <a name="azure-data-box-edge-security-and-data-protection"></a>Azure Data Box Edge 安全和数据保护
 
-安全性是主要考虑因素时要采用新技术，尤其是当该技术使用包含机密或专有数据。 Azure 数据框边缘可帮助您确保只有经过授权的实体可以查看、 修改或删除你的数据。
+在采用新技术时, 安全性是一个主要考虑因素, 尤其是在该技术用于机密或专有数据时。 Azure Data Box Edge 可帮助你确保只有经过授权的实体可以查看、修改或删除你的数据。
 
-这篇文章介绍帮助保护的每个解决方案组件和在其中存储的数据的数据框边缘安全功能。
+本文介绍了 Data Box Edge 的安全功能, 这些功能可帮助保护每个解决方案组件和其中存储的数据。
 
-Azure 数据框边缘包含四个彼此交互的主要组件：
+Azure Data Box Edge 由四个主要组件进行交互:
 
-- **在 Azure 中托管的数据框边缘服务**。 管理资源的使用来创建设备顺序，配置设备，，然后完成到跟踪的顺序。
-- **数据框边缘设备**。 传输设备，以便可以在本地数据导入 Azure 运送给你。
-- **连接到设备的客户端/主机**。 中的客户端基础结构连接到数据框边缘设备，并且包含需要保护的数据。
-- **云存储**。 Azure 云平台中存储数据的位置。 此位置通常是存储帐户链接到你创建的数据框边缘资源。
+- **Data Box Edge 服务, 托管在 Azure 中**。 用于创建设备顺序、配置设备, 然后跟踪订单完成的管理资源。
+- **Data Box Edge 设备**。 发送给你的传输设备, 你可以将本地数据导入到 Azure。
+- **连接到设备的客户端/主机**。 基础结构中连接到 Data Box Edge 设备并包含需要保护的数据的客户端。
+- **云存储**。 Azure 云平台中存储数据的位置。 此位置通常是链接到所创建的 Data Box Edge 资源的存储帐户。
 
-## <a name="data-box-edge-service-protection"></a>数据框边缘服务保护
+## <a name="data-box-edge-service-protection"></a>Data Box Edge 服务保护
 
-数据框边缘服务是在 Azure 中托管的管理服务。 该服务用于配置和管理设备。
+Data Box Edge 服务是托管在 Azure 中的一项管理服务。 服务用于配置和管理设备。
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-service-protection.md)]
 
-## <a name="data-box-edge-device-protection"></a>数据框边缘设备保护
+## <a name="data-box-edge-device-protection"></a>Data Box Edge 设备保护
 
-数据框边缘设备是在本地设备，可帮助将数据转换通过本地处理，然后将其发送到 Azure。 你的设备：
+Data Box Edge 设备是一个本地设备, 它通过在本地处理数据, 然后将数据发送到 Azure 来帮助转换数据。 你的设备:
 
-- 需要激活密钥来访问数据框边缘服务。
-- 是始终受到保护的设备密码。
-- 是锁定的设备。 设备 BMC 和 BIOS 受密码保护。 BIOS 受限制的用户访问权限。
+- 需要激活密钥才能访问 Data Box Edge 服务。
+- 由设备密码始终受保护。
+- 是锁定的设备。 设备 BMC 和 BIOS 受密码保护。 BIOS 受受限用户访问保护。
 - 已启用安全启动。
-- 在运行 Windows Defender Device Guard。 Device Guard 可以运行仅受信任的应用程序在你的代码完整性策略中定义。
+- 运行 Windows Defender 设备防护。 Device Guard 使你可以仅运行你在代码完整性策略中定义的受信任的应用程序。
 
-### <a name="protect-the-device-via-activation-key"></a>保护设备通过激活密钥
+### <a name="protect-the-device-via-activation-key"></a>通过激活密钥保护设备
 
-仅授权的数据框边缘设备允许加入你的 Azure 订阅中创建的数据框边缘服务。 若要授权某个设备，需要使用激活密钥来激活设备的数据框边缘服务。
+仅允许授权的 Data Box Edge 设备加入你在 Azure 订阅中创建的 Data Box Edge 服务。 若要授权设备, 你需要使用激活密钥来通过 Data Box Edge 服务激活设备。
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-activation-key.md)]
 
-有关详细信息，请参阅[获取激活密钥](data-box-edge-deploy-prep.md#get-the-activation-key)。
+有关详细信息, 请参阅[获取激活密钥](data-box-edge-deploy-prep.md#get-the-activation-key)。
 
-### <a name="protect-the-device-via-password"></a>保护通过密码的设备
+### <a name="protect-the-device-via-password"></a>通过密码保护设备
 
-密码确保只有授权的用户可以访问你的数据。 数据框边缘设备中启动，锁定状态。
+密码确保只有经过授权的用户才能访问数据。 Data Box Edge 设备启动时处于锁定状态。
 
-可以：
+你可以：
 
-- 连接到本地 web UI 中通过浏览器设备，然后提供密码以登录到设备。
-- 远程连接到设备的 PowerShell 接口通过 HTTP。 默认情况下，远程管理启用。 然后可以提供用于登录到设备的设备密码。 有关详细信息，请参阅[远程连接到数据框边缘设备](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface)。
+- 通过浏览器连接到设备的本地 web UI, 然后提供用于登录设备的密码。
+- 通过 HTTP 远程连接到设备 PowerShell 接口。 默认情况下启用远程管理。 然后, 你可以提供用于登录设备的设备密码。 有关详细信息, 请参阅[远程连接到 Data Box Edge 设备](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface)。
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-password-best-practices.md)]
-- 使用本地 web UI[更改密码](data-box-edge-manage-access-power-connectivity-mode.md#manage-device-access)。 如果你更改密码，请务必通知所有远程访问用户，因此它们不存在登录出现的问题。
+- 使用本地 web UI[更改密码](data-box-edge-manage-access-power-connectivity-mode.md#manage-device-access)。 如果更改了密码, 请务必通知所有远程访问用户, 以便在登录时不会出现问题。
 
 ## <a name="protect-your-data"></a>保护数据
 
-本部分介绍保护传输中和存储数据的数据框边缘安全功能。
+本节介绍保护传输中数据和存储数据的 Data Box Edge 安全功能。
 
 ### <a name="protect-data-at-rest"></a>保护静止的数据
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-rest.md)]
+- BitLocker XTS-AES 256 位加密用于保护本地数据。
 
-### <a name="protect-data-in-flight"></a>正传输的数据保护
+
+### <a name="protect-data-in-flight"></a>保护传输中的数据
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-flight.md)]
 
 ### <a name="protect-data-via-storage-accounts"></a>通过存储帐户保护数据
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
-- 旋转，然后[同步存储帐户密钥](data-box-edge-manage-shares.md#sync-storage-keys)定期以帮助防止未经授权的用户的存储帐户。
+- 定期轮换[存储帐户密钥](data-box-edge-manage-shares.md#sync-storage-keys)并对其进行同步, 以帮助保护你的存储帐户不受未经授权的用户的保护。
 
 ## <a name="manage-personal-information"></a>管理个人信息
 
-数据框边缘服务收集以下方案中的个人信息：
+Data Box Edge 服务在以下情况下收集个人信息:
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-manage-personal-data.md)]
 
-若要查看的用户可以访问或删除共享的列表，请按照中的步骤[管理数据框边缘上的共享](data-box-edge-manage-shares.md)。
+若要查看可访问或删除共享的用户的列表, 请按照[管理 Data Box Edge 上的共享](data-box-edge-manage-shares.md)中的步骤操作。
 
-有关详细信息，查看 Microsoft 隐私策略上[信任中心](https://www.microsoft.com/trustcenter)。
+有关详细信息, 请在[信任中心](https://www.microsoft.com/trustcenter)查看 Microsoft 隐私策略。
 
 ## <a name="next-steps"></a>后续步骤
 
-[部署数据框边缘设备](data-box-edge-deploy-prep.md)
+[部署 Data Box Edge 设备](data-box-edge-deploy-prep.md)

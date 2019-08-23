@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 356b430e0bb9170999398eb8eb68ad31f2d5eeb6
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: d5f0dbf916096b608495c0cc1017d919616653d4
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017304"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899706"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -106,7 +106,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的:
     -   处理器信息 (\*)\\处理器时间
     -   每个会话的用户输入\*延迟\\() 最大输入延迟
 
-[在 Azure Monitor 中了解有关 Windows 和 Linux 性能数据源](/articles/azure-monitor/platform/data-sources-performance-counters.md)的性能计数器的详细信息。
+[在 Azure Monitor 中了解有关 Windows 和 Linux 性能数据源](/azure/azure-monitor/platform/data-sources-performance-counters)的性能计数器的详细信息。
 
 >[!NOTE]
 >你配置的任何其他计数器将不会显示在诊断工具本身中。 若要使它显示在诊断工具中, 需要配置该工具的配置文件。 有关如何使用高级管理完成此操作的说明, 可在 GitHub 中的日后使用。
@@ -189,7 +189,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的:
 
 在使诊断工具可供用户使用之前, 请确保他们具有以下权限:
 
-- 用户需要 log analytics 的读取访问权限。 有关详细信息, 请参阅[Azure Monitor 的角色、权限和安全入门](/articles/azure-monitor/platform/roles-permissions-security.md)。
+- 用户需要 log analytics 的读取访问权限。 有关详细信息, 请参阅[Azure Monitor 的角色、权限和安全入门](/azure/azure-monitor/platform/roles-permissions-security)。
 -  用户还需要对 Windows 虚拟桌面租户 (RDS 读取者角色) 具有读取权限。 有关详细信息, 请参阅[Windows 虚拟桌面预览版中的委托访问](delegated-access-virtual-desktop.md)。
 
 还需要为用户指定以下信息:
@@ -229,22 +229,22 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的:
 - 逻辑磁盘 (\*)\|% 可用空间:
 
     - 显示逻辑磁盘上可用的总可用空间的百分比。
-    - 阈值:小于 20% 被标记为不正常。
+    - 阈值：小于 20% 被标记为不正常。
 
 - 逻辑磁盘 (C:\\) Avg磁盘队列长度:
 
     - 表示存储系统条件。
-    - 阈值:大于5会被标记为不正常。
+    - 阈值：大于5会被标记为不正常。
 
 - 内存 (\*)\\可用兆字节:
 
     - 系统的可用内存。
-    - 阈值:小于 500 mb 标记为不正常。
+    - 阈值：小于 500 mb 标记为不正常。
 
 - 处理器信息 (\*)\\处理器时间:
 
-    - 阈值:大于 80% 将被标记为不正常。
+    - 阈值：大于 80% 将被标记为不正常。
 
 - [每个会话的用户输入\*延迟\\() 最大输入延迟](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
-    - 阈值:大于 2000 ms 被标记为不正常。
+    - 阈值：大于 2000 ms 被标记为不正常。

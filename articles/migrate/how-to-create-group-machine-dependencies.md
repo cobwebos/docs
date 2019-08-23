@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 4130bb746a4faa4907353654d16f7c20c0cc7817
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598946"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906371"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>为评估设置依赖项可视化
 
@@ -37,10 +37,10 @@ ms.locfileid: "68598946"
 **功能** | **注意**
 --- | ---
 可用性 | 依赖关系可视化在 Azure 政府版中不可用。
-服务映射 | 依赖项可视化在 Azure Monitor 日志中使用服务映射解决方案。 [服务映射](../azure-monitor/insights/service-map-configure.md)会自动发现并显示服务器之间的连接。
-代理 | 若要使用依赖关系可视化, 请在要映射的计算机上安装几个代理:<br/> - [Azure Log Analytics](../azure-monitor/platform/log-analytics-agent.md)代理 (以前称为 MICROSOFT MONITORING AGENT (MMA)。<br/> -服务映射依赖关系代理。<br/><br/> 若要自动完成代理安装, 你可以使用部署工具 (如 System Center Configuration Manager) 或合作伙伴工具 (如[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)), 其中包含用于 Azure Migrate 的代理部署解决方案。
-Dependency Agent | 查看[Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems)和[Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)的依赖关系代理支持。<br/><br/> [了解](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)有关使用脚本安装依赖关系代理的详细信息。
-Log Analytics 代理 (MMA) | [了解](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)有关 MMA 安装方法的详细信息。<br/><br/> 对于 System Center Operations Manager 2012 R2 或更高版本监视的计算机, 无需安装 MMA 代理。 服务映射与 Operations Manager 集成。 你可以使用[此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)的指南启用该集成。 但请注意，需要在这些计算机上安装依赖项代理。<br/><br/> [查看](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)Log Analytics 代理支持的 Linux 操作系统。
+服务映射 | 依赖项可视化使用 Azure Monitor 中服务映射解决方案。 [服务映射](../azure-monitor/insights/service-map.md)会自动发现并显示服务器之间的连接。
+代理 | 若要使用依赖关系可视化, 请在要映射的计算机上安装以下代理:<br/> - [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)程序 (以前称为 MICROSOFT MONITORING AGENT (MMA)。<br/> - [服务映射依赖关系代理](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)。<br/><br/> 若要自动完成代理安装, 你可以使用部署工具 (如 System Center Configuration Manager) 或合作伙伴工具 (如[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)), 其中包含用于 Azure Migrate 的代理部署解决方案。
+Dependency Agent | 查看 Windows 和 Linux 的[依赖关系代理支持](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)。<br/><br/> [了解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)有关使用脚本安装依赖关系代理的详细信息。
+Log Analytics 代理 (MMA) | [了解](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)有关 MMA 安装方法的详细信息。<br/><br/> 对于 System Center Operations Manager 2012 R2 或更高版本监视的计算机, 无需安装 MMA 代理。 服务映射与 Operations Manager 集成。 你可以使用[此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)的指南启用该集成。 但请注意, 依赖关系代理将需要安装在这些计算机上。<br/><br/> [查看](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)Log Analytics 代理支持的 Linux 操作系统。
 评估组 | 要可视化其依赖项的组所包含的计算机不应超过 10 台。 如果计算机超过10台, 请将它们拆分成较小的组, 以可视化依赖项。
 
 ## <a name="associate-a-log-analytics-workspace"></a>关联 Log Analytics 工作区

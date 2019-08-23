@@ -2,20 +2,20 @@
 title: 了解 Azure SQL 数据仓库操作 | Microsoft Docs
 description: '借助 SQL 数据仓库的弹性，可以使用数据仓库单位 (DWU) 的可调缩放性扩大、收缩或暂停计算容量。 本文介绍数据仓库指标以及它们如何与 DWU 相关。 '
 services: sql-data-warehouse
-author: kevinvngo
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: kevin
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: f0489d9c018abac380cd0f8b1aa51fa5bb81707a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47e04cb6b58a185e84120fe73a8468834d2e57fd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531180"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907930"
 ---
 # <a name="data-warehouse-workload"></a>数据仓库工作负荷
 数据仓库工作负荷是指所有针对数据仓库所发生的操作。 数据仓库工作负荷包括将数据载入仓库、对数据仓库执行分析和报告、管理数据仓库中的数据，以及从数据仓库导出数据的整个过程。 这些组件的广度与深度多半与数据仓库的成熟度相当。
@@ -62,7 +62,7 @@ ms.locfileid: "60531180"
 * 要执行分析，可以在数据仓库中创建分析多维数据集，并针对数据仓库运行分析，或是预先处理数据，再导出到分析服务器做进一步的分析。
 
 ## <a name="next-steps"></a>后续步骤
-对 SQL 数据仓库有了初步的认识后，请继续学习如何快速[创建 SQL 数据仓库][create a SQL Data Warehouse]和[加载示例数据][load sample data]。
+现在, 你已了解有关 SQL 数据仓库的一点, 接下来了解如何快速[创建 Sql 数据仓库][create a SQL Data Warehouse]和[加载示例数据][load sample data]。
 
 <!--Image references-->
 

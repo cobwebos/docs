@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5095e680eb7fd33d28acb2d187f83d86db1b46bf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 8e535fc581e186abd032206c2bbf78623d95967f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656626"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899774"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务 (预览版)
 
@@ -23,7 +23,7 @@ Service Fabric 应用程序可以利用托管标识访问支持基于 Azure Acti
 > 托管标识表示与包含资源的订阅关联的相应 Azure AD 租户中的 Azure 资源和服务主体之间的关联。 因此, 在 Service Fabric 环境中, 仅在部署为 Azure 资源的应用程序中支持托管标识。 
 
 > [!IMPORTANT]
-> 在使用 Service Fabric 应用程序的托管标识之前, 必须向客户端应用程序授予对受保护资源的访问权限。 请参阅[支持 Azure AD 身份验证的 Azure 服务](/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources)列表, 以查看支持, 然后访问各自服务的文档, 以了解向访问相关资源授予标识访问权限的特定步骤。 
+> 在使用 Service Fabric 应用程序的托管标识之前, 必须向客户端应用程序授予对受保护资源的访问权限。 请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)列表, 以查看支持, 然后访问各自服务的文档, 以了解向访问相关资源授予标识访问权限的特定步骤。 
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>使用 REST API 获取访问令牌
 在为托管标识启用的群集中, Service Fabric 运行时公开一个 localhost 终结点, 应用程序可以使用该终结点获取访问令牌。 此终结点在群集的每个节点上都可用, 且可供该节点上的所有实体访问。 授权的调用方可以通过调用此终结点并提供身份验证代码来获取访问令牌;此代码由每个不同的服务代码包激活的 Service Fabric 运行时生成, 并绑定到托管该服务代码包的进程的生存期。

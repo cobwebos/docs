@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 90e3121c3f036d1abc8ca372ee349aef3485d07b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: cfd4d65b07cf255ac2b60d6bf8376723a997374e
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69625039"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972948"
 ---
 # <a name="azure-network-connections-overview"></a>Azure 网络连接概述
 
@@ -44,7 +44,6 @@ Azure 网络连接允许:
 可以将现有的 Azure ExpressRoute 线路连接到 CloudSimple 区域。 ExpressRoute Global Reach 功能用于将两个线路彼此连接起来。  在本地和 CloudSimple ExpressRoute 线路之间建立连接。  此连接可让你将本地网络扩展到私有云网络。 来自 CloudSimple 网络的路由将通过 BGP 与本地网络交换。
 
 ![本地 ExpressRoute 连接-Global Reach](media/cloudsimple-global-reach-connection.png)
-
 
 ## <a name="connection-to-on-premises-network-and-azure-virtual-network"></a>连接到本地网络和 Azure 虚拟网络
 

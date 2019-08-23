@@ -8,14 +8,14 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 05/09/2019
+ms.date: 08/20/2019
 tags: connectors
-ms.openlocfilehash: 9e46c51ae06920bd57f272248f06020dfad380e7
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 59263f74086f789e46e854ca320455e84dcb42c1
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326716"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907612"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
@@ -47,7 +47,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
 * 在任何本地计算机上下载并安装最新的[本地数据网关](https://www.microsoft.com/download/details.aspx?id=53127)。 在继续操作之前，请确保在 Azure 门户中设置网关。 网关有助于安全访问本地数据和资源。 有关详细信息, 请参阅[为 Azure 逻辑应用安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
 
-* 如果将 SNC 与 SSO 一起使用, 请确保网关正在以与 SAP 用户对应的用户身份运行。 若要更改默认帐户，请选择“更改帐户”并输入用户凭据。 
+* 如果将 SNC 与 SSO 一起使用, 请确保网关正在以与 SAP 用户对应的用户身份运行。 若要更改默认帐户，请选择“更改帐户”并输入用户凭据。
 
   ![更改网关帐户](./media/logic-apps-using-sap-connector/gateway-account.png)
 
@@ -81,7 +81,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
    ![添加 HTTP 请求触发器](./media/logic-apps-using-sap-connector/add-trigger.png)
 
-1. 现在, 保存逻辑应用, 以便可以为逻辑应用生成终结点 URL。 在设计器工具栏上, 选择 "**保存**"。
+1. 现在, 保存逻辑应用, 以便可以为逻辑应用生成终结点 URL。 在设计器工具栏上选择“保存”。
 
    终结点 URL 现在会显示在触发器中，例如：
 
@@ -109,50 +109,46 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
    **创建本地 SAP 连接**
 
-    1. 提供 SAP 服务器的连接信息。 对于“数据网关”属性，请选择在 Azure 门户中为网关安装创建的数据网关。 
+   提供 SAP 服务器的连接信息。 对于“数据网关”属性，请选择在 Azure 门户中为网关安装创建的数据网关。 完成后, 选择 "**创建**"。 逻辑应用设置并测试连接, 以确保连接正常运行。
 
-         - 如果“登录类型”属性设置为“应用程序服务器”，则必须指定以下属性（通常显示为可选）：  
+   * 如果“登录类型”属性设置为“应用程序服务器”，则必须指定以下属性（通常显示为可选）：
 
-            ![创建 SAP 应用程序服务器连接](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+     ![创建 SAP 应用程序服务器连接](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-         - 如果“登录类型”属性设置为“组”，则必须指定以下属性（通常显示为可选）：  
+   * 如果“登录类型”属性设置为“组”，则必须指定以下属性（通常显示为可选）：
 
-            ![创建 SAP 消息服务器连接](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+     ![创建 SAP 消息服务器连接](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
-           默认会使用强类型化通过针对架构执行 XML 验证来检查无效值。 此行为可帮助提前检测问题。 “安全类型化”选项用于实现后向兼容，它只会检查字符串长度。  了解有关[安全键入选项](#safe-typing)的详细信息。
-
-    1. 完成后, 选择 "**创建**"。
-
-       逻辑应用设置并测试连接, 以确保连接正常运行。
+   默认会使用强类型化通过针对架构执行 XML 验证来检查无效值。 此行为可帮助提前检测问题。 “安全类型化”选项用于实现后向兼容，它只会检查字符串长度。 了解有关[安全键入选项](#safe-typing)的详细信息。
 
 1. 现在，请找到并选择 SAP 服务器中的某个操作。
 
-    1. 在 " **SAP 操作**" 框中, 选择文件夹图标。 在文件列表中，找到并选择要使用的 SAP 消息。 使用箭头可在列表中导航。
+   1. 在 " **SAP 操作**" 框中, 选择文件夹图标。 在文件列表中，找到并选择要使用的 SAP 消息。 使用箭头可在列表中导航。
 
-       此示例选择**订单**类型为的 IDoc。
+      此示例选择**订单**类型为的 IDoc。
 
-       ![找到并选择 IDoc 操作](./media/logic-apps-using-sap-connector/SAP-app-server-find-action.png)
+      ![找到并选择 IDoc 操作](./media/logic-apps-using-sap-connector/SAP-app-server-find-action.png)
 
-       如果找不到所需的操作，可以手动输入路径，例如：
+      如果找不到所需的操作，可以手动输入路径，例如：
 
-       ![手动提供 IDoc 操作的路径](./media/logic-apps-using-sap-connector/SAP-app-server-manually-enter-action.png)
+      ![手动提供 IDoc 操作的路径](./media/logic-apps-using-sap-connector/SAP-app-server-manually-enter-action.png)
 
-       > [!TIP]
-       > 通过表达式编辑器提供**SAP 操作**的值。 这样, 就可以对不同的消息类型使用相同的操作。
+      > [!TIP]
+      > 通过表达式编辑器提供**SAP 操作**的值。 这样, 就可以对不同的消息类型使用相同的操作。
 
-       有关 IDoc 操作的详细信息，请参阅 [IDOC 操作的消息架构](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)。
+      有关 IDoc 操作的详细信息，请参阅 [IDOC 操作的消息架构](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)。
 
-    1. 在“输入消息”框中单击，以显示动态内容列表。  在该列表中的“收到 HTTP 请求时”下面，选择“正文”字段。  
+   1. 在“输入消息”框中单击，以显示动态内容列表。 在该列表中的“收到 HTTP 请求时”下面，选择“正文”字段。
 
-       此步骤包括 HTTP 请求触发器的正文内容, 并将输出发送到 SAP 服务器。
+      此步骤包括 HTTP 请求触发器的正文内容, 并将输出发送到 SAP 服务器。
 
-       ![选择“正文”字段](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
+      ![选择“正文”字段](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
 
-       完成后, SAP 操作如以下示例所示:
+      完成后, SAP 操作如以下示例所示:
 
-       ![完成 SAP 操作](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
+      ![完成 SAP 操作](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
-1. 保存逻辑应用。 在设计器工具栏上, 选择 "**保存**"。
+1. 保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 <a name="add-response"></a>
 
@@ -164,7 +160,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
 1. 在搜索框中，输入“响应”作为筛选器。 从 "**操作**" 列表中选择 "**响应**"。
 
-1. 在“正文”框中单击，以显示动态内容列表。  在该列表中的“将消息发送到 SAP”下面，选择“正文”字段。  
+1. 在“正文”框中单击，以显示动态内容列表。 在该列表中的“将消息发送到 SAP”下面，选择“正文”字段。
 
    ![完成 SAP 操作](./media/logic-apps-using-sap-connector/select-sap-body-for-response-action.png)
 
@@ -217,17 +213,17 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
    **创建本地 SAP 连接**
 
-   - 提供 SAP 服务器的连接信息。 对于“数据网关”属性，请选择在 Azure 门户中为网关安装创建的数据网关。 
+   提供 SAP 服务器的连接信息。 对于“数据网关”属性，请选择在 Azure 门户中为网关安装创建的数据网关。 完成后, 选择 "**创建**"。 逻辑应用设置并测试连接, 以确保连接正常运行。
 
-      - 如果“登录类型”属性设置为“应用程序服务器”，则必须指定以下属性（通常显示为可选）：  
+   * 如果“登录类型”属性设置为“应用程序服务器”，则必须指定以下属性（通常显示为可选）：
 
-         ![创建 SAP 应用程序服务器连接](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+     ![创建 SAP 应用程序服务器连接](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      - 如果“登录类型”属性设置为“组”，则必须指定以下属性（通常显示为可选）：  
+   * 如果“登录类型”属性设置为“组”，则必须指定以下属性（通常显示为可选）：
 
-          ![创建 SAP 消息服务器连接](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
+     ![创建 SAP 消息服务器连接](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
-      默认会使用强类型化通过针对架构执行 XML 验证来检查无效值。 此行为可帮助提前检测问题。 “安全类型化”选项用于实现后向兼容，它只会检查字符串长度。  了解有关[安全键入选项](#safe-typing)的详细信息。
+   默认会使用强类型化通过针对架构执行 XML 验证来检查无效值。 此行为可帮助提前检测问题。 “安全类型化”选项用于实现后向兼容，它只会检查字符串长度。 了解有关[安全键入选项](#safe-typing)的详细信息。
 
 1. 根据 SAP 系统配置提供所需的参数。
 
@@ -248,7 +244,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
    有关 SAP 操作的详细信息，请参阅 [IDOC 操作的消息架构](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
 
 1. 现在请保存逻辑应用，以便可以开始从 SAP 系统接收消息。
-在设计器工具栏上, 选择 "**保存**"。
+在设计器工具栏上选择“保存”。
 
 现在，逻辑应用已准备好从 SAP 系统接收消息。
 
@@ -263,6 +259,41 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
 1. 打开最近的运行，触发器输出部分会显示从 SAP 系统发送的消息。
 
+## <a name="receive-idocs-packets-from-sap"></a>接收来自 SAP 的 Idoc 数据包
+
+你可以设置 SAP 以[在数据包中发送 idoc](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), 这些数据包是 idoc 的批处理或组。 若要接收 IDOC 数据包, SAP 连接器, 特别是触发器, 无需额外配置。 但是, 若要在触发器收到数据包后处理 IDOC 数据包中的每个项, 则需要执行一些额外的步骤来将数据包拆分为单个 Idoc。
+
+下面是一个示例, 演示如何使用[ `xpath()`函数](./workflow-definition-language-functions-reference.md#xpath)从包中提取单个 idoc: 
+
+1. 在开始之前, 需要一个具有 SAP 触发器的逻辑应用。 如果还没有此逻辑应用, 请按照本主题中前面的步骤[使用 SAP 触发器设置逻辑应用](#receive-from-sap)。 
+
+   例如：
+
+   ![SAP 触发器](./media/logic-apps-using-sap-connector/first-step-trigger.png)
+
+1. 从你的逻辑应用从 SAP 接收的 XML IDOC 获取根命名空间。 若要从 XML 文档中提取此命名空间, 请添加一个步骤, 该步骤创建一个本地字符串变量, 并`xpath()`使用表达式存储该命名空间:
+
+   `xpath(xml(triggerBody()?['Content']), 'namespace-uri(/*)')`
+
+   ![获取命名空间](./media/logic-apps-using-sap-connector/get-namespace.png)
+
+1. 若要提取单个 IDOC, 请添加一个步骤, 该步骤创建一个数组变量, 并使用另一个`xpath()`表达式存储 IDOC 集合:
+
+   `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')` 
+
+   ![获取项的数组](./media/logic-apps-using-sap-connector/get-array.png)
+
+   数组变量使每个 IDOC 可供逻辑应用通过枚举集合来单独处理。 在此示例中, 逻辑应用使用循环将每个 IDOC 传输到 SFTP 服务器:
+
+   ![发送 IDOC](./media/logic-apps-using-sap-connector/loop-batch.png)
+
+   每个 IDOC 都必须包含根命名空间, 这是在这种情况下, 在将`<Receive></Receive` IDOC 发送到下游应用或 SFTP 服务器之前, 文件内容与根命名空间一起包装在元素内的原因。
+
+> [!TIP]
+> 创建新的逻辑应用时, 可以通过在逻辑应用设计器中选择此模板来使用此模式的快速入门模板。
+>
+> ![批处理模板](./media/logic-apps-using-sap-connector/batch-template.png)
+
 ## <a name="generate-schemas-for-artifacts-in-sap"></a>为 SAP 中的项目生成架构
 
 本示例使用可通过 HTTP 请求触发的逻辑应用。 SAP 操作向 SAP 系统发送一个请求, 以生成指定的 IDoc 和 BAPI 的架构。 使用 Azure 资源管理器连接器将在响应中返回的架构上传到集成帐户。
@@ -276,7 +307,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
    ![添加 HTTP 请求触发器](./media/logic-apps-using-sap-connector/add-trigger.png)
 
 1. 现在请保存逻辑应用，以便可为逻辑应用生成终结点 URL。
-在设计器工具栏上, 选择 "**保存**"。
+在设计器工具栏上选择“保存”。
 
    终结点 URL 现在会显示在触发器中，例如：
 
@@ -300,17 +331,17 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
    **创建本地 SAP 连接**
 
-   1. 提供 SAP 服务器的连接信息。 对于“数据网关”属性，请选择在 Azure 门户中为网关安装创建的数据网关。 
+   1. 提供 SAP 服务器的连接信息。 对于“数据网关”属性，请选择在 Azure 门户中为网关安装创建的数据网关。
 
-      - 如果“登录类型”属性设置为“应用程序服务器”，则必须指定以下属性（通常显示为可选）：  
+      - 如果“登录类型”属性设置为“应用程序服务器”，则必须指定以下属性（通常显示为可选）：
 
         ![创建 SAP 应用程序服务器连接](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      - 如果“登录类型”属性设置为“组”，则必须指定以下属性（通常显示为可选）：  
+      - 如果“登录类型”属性设置为“组”，则必须指定以下属性（通常显示为可选）：
 
         ![创建 SAP 消息服务器连接](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
-      默认会使用强类型化通过针对架构执行 XML 验证来检查无效值。 此行为可帮助提前检测问题。 “安全类型化”选项用于实现后向兼容，它只会检查字符串长度。  了解有关[安全键入选项](#safe-typing)的详细信息。
+      默认会使用强类型化通过针对架构执行 XML 验证来检查无效值。 此行为可帮助提前检测问题。 “安全类型化”选项用于实现后向兼容，它只会检查字符串长度。 了解有关[安全键入选项](#safe-typing)的详细信息。
 
    1. 完成后, 选择 "**创建**"。 
    
@@ -334,13 +365,13 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
    有关 SAP 操作的详细信息, 请参阅[IDOC 操作的消息架构](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)。
 
-1. 保存逻辑应用。 在设计器工具栏上, 选择 "**保存**"。
+1. 保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 ### <a name="test-your-logic-app"></a>测试逻辑应用
 
 1. 在设计器工具栏上, 选择 "**运行**" 以触发逻辑应用的运行。
 
-1. 打开该运行，并检查“生成架构”操作的输出。 
+1. 打开该运行，并检查“生成架构”操作的输出。
 
    输出中会显示针对指定的消息列表生成的架构。
 
@@ -356,13 +387,13 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
 1. 输入操作的详细信息，包括 Azure 订阅、Azure 资源组和集成帐户。 若要将 SAP 令牌添加到字段，请在这些字段对应的框中单击，然后从显示的动态内容列表中选择。
 
-   1. 打开“添加新参数”列表，然后选择“位置”和“属性”字段。   
+   1. 打开“添加新参数”列表，然后选择“位置”和“属性”字段。
 
    1. 按此示例所示，提供这些新字段的详细信息。
 
       ![输入 Azure 资源管理器操作的详细信息](media/logic-apps-using-sap-connector/azure-resource-manager-action.png)
 
-   SAP 的“生成架构”操作会生成集合形式的架构，因此，设计器会自动将一个 **For each** 循环添加到该操作。  以下示例演示此操作的显示方式：
+   SAP 的“生成架构”操作会生成集合形式的架构，因此，设计器会自动将一个 **For each** 循环添加到该操作。 以下示例演示此操作的显示方式：
 
    ![包含“for each”循环的 Azure 资源管理器操作](media/logic-apps-using-sap-connector/azure-resource-manager-action-foreach.png)  
    > [!NOTE]
@@ -376,7 +407,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
    > }
    > ```
 
-1. 保存逻辑应用。 在设计器工具栏上, 选择 "**保存**"。
+1. 保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 ### <a name="test-your-logic-app"></a>测试逻辑应用
 
@@ -412,7 +443,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
 ## <a name="safe-typing"></a>安全类型化
 
-创建 SAP 连接时，默认会使用强类型化通过针对架构执行 XML 验证来检查无效值。 此行为可帮助提前检测问题。 “安全类型化”选项用于实现后向兼容，它只会检查字符串长度。  如果选择 "**安全键入**", 则将 SAP 中的 dat 类型和 TIMS 类型视为字符串, 而不是作为其`xs:date` XML `xs:time`等效项`xmlns:xs="http://www.w3.org/2001/XMLSchema"`, 并在其中进行处理。 安全类型将影响所有架构生成的行为、"已发送" 负载和 "已收到" 响应的发送消息以及触发器。 
+创建 SAP 连接时，默认会使用强类型化通过针对架构执行 XML 验证来检查无效值。 此行为可帮助提前检测问题。 “安全类型化”选项用于实现后向兼容，它只会检查字符串长度。 如果选择 "**安全键入**", 则将 SAP 中的 dat 类型和 TIMS 类型视为字符串, 而不是作为其`xs:date` XML `xs:time`等效项`xmlns:xs="http://www.w3.org/2001/XMLSchema"`, 并在其中进行处理。 安全类型将影响所有架构生成的行为、"已发送" 负载和 "已收到" 响应的发送消息以及触发器。 
 
 使用强类型时 (不启用**安全键入**), 架构将 DAT 和 TIMS 类型映射为更简单的 XML 类型:
 
@@ -457,10 +488,6 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 ## <a name="known-issues-and-limitations"></a>已知问题和限制
 
 下面是 SAP 连接器目前存在的已知问题和限制：
-
-* 只有单一发送到 SAP 调用或消息才能与 tRFC 一起使用。 BAPI 提交模式 (如在同一会话中发出多个 tRFC 调用) 不受支持。
-
-* SAP 触发器不支持接收来自 SAP 的批处理 Idoc。 此操作可能导致 SAP 系统与数据网关之间的 RFC 连接失败。
 
 * SAP 触发器不支持数据网关群集。 在某些故障转移情况下, 与 SAP 系统通信的 "数据网关" 节点可能与活动节点不同, 这会导致意外的行为。 对于发送方案, 数据网关群集受支持。
 

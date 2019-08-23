@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b21c5f8630598a4b7117d23ad7c8da46de07d2fa
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 5c3102480e316c634930c356ae02f769767b7d08
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204496"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900045"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数引用
 在 Azure AD Connect 中，函数用于在同步期间操作属性值。  
@@ -82,7 +82,7 @@ ms.locfileid: "67204496"
 | **Program Flow** | | | | |
 | [错误](#error) |[IIF](#iif) |[Select](#select) |[Switch](#switch) | |
 | [Where](#where) |[With](#with) | | | |
-| **文本** | | | | |
+| **Text** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [Left](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
 | [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Replace](#replace) | |
@@ -102,7 +102,7 @@ BitAnd 函数设置值的指定位。
 **备注：**  
 此函数将两个参数转换为二进制表示形式，并将位设置为：
 
-* 0 - 如果*掩码*和*标志*中相应位的其中一个或两个均为 0
+* 0-如果*value1*和*value2*中的相应位中有一个或两个均为0
 * 1 - 如果两个相应位均为 1。
 
 换而言之，除了当两个参数的相应位均为 1 时之外，所有情况下均返回 0。
@@ -133,7 +133,7 @@ CBool 函数基于计算的表达式返回布尔值
 `bool CBool(exp Expression)`
 
 **备注：**  
-如果表达式的计算结果为非零值，则 CBool 返回 True，否则返回 False。
+如果表达式的计算结果为非零值, 则 CBool 返回 True, 否则返回 False。
 
 **示例：**  
 `CBool([attrib1] = [attrib2])`  
@@ -567,7 +567,7 @@ DNComponentRev 函数返回从右边起（末尾）的指定 DN 组件的值。
 两者都返回 US。
 
 ---
-### <a name="error"></a>错误
+### <a name="error"></a>Error
 **说明：**  
 Error 函数用于返回自定义错误。
 
@@ -810,7 +810,7 @@ IsNumeric 函数返回布尔值，该值指示表达式是否可以计算为数�
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
-### <a name="item"></a>Item
+### <a name="item"></a>项
 **说明：**  
 Item 函数返回多值字符串/属性中的一个项。
 
@@ -1273,7 +1273,7 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 返回“TEST”。
 
 ---
-### <a name="where"></a>Where
+### <a name="where"></a>其中
 
 **说明：**  
 根据指定条件，从多值属性（或表达式输出）中返回值子集。
@@ -1291,7 +1291,7 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 返回多值属性 userCertificate 中未过期的证书值。
 
 ---
-### <a name="with"></a>With
+### <a name="with"></a>和
 **说明：**  
 通过使用变量来表示在复杂表达式中出现一次或多次的子表达式，With 函数提供了一种简化复杂表达式的方法。
 

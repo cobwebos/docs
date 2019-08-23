@@ -1,20 +1,20 @@
 ---
 title: 沉浸式读者 iOS SDK 参考
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 沉浸式读者 iOS SDK 参考
 services: cognitive-services
-author: MeganRoach
+author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
-ms.author: t-meroa
-ms.openlocfilehash: acdaaf0bf08644053e86343ae4b002002fee6a84
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.author: metan
+ms.openlocfilehash: 615c09dd8a7287918bb009ce11854278b21554c1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966596"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899411"
 ---
 # <a name="immersive-reader-sdk-reference"></a>沉浸式读者 SDK 参考
 
@@ -34,7 +34,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 
 #### <a name="parameters"></a>Parameters
 
-| 名称 | 类型 | 描述 |
+| 姓名 | 类型 | 描述 |
 | ---- | ---- |------------ |
 | `navController` | UINavigationController | 从中调用函数的 iOS 应用程序的导航控制器。 |
 | `token` | String | Azure AD 身份验证令牌。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
@@ -61,7 +61,7 @@ struct Content: Encodable {
 
 | MIME 类型 | 描述 |
 | --------- | ----------- |
-| 文本/无格式 | 纯文本。 |
+| text/plain | 纯文本。 |
 | application/mathml+xml | 数学标记语言 (MathML)。 [了解详细信息](https://developer.mozilla.org/en-US/docs/Web/MathML)。
 
 ### <a name="options"></a>选项

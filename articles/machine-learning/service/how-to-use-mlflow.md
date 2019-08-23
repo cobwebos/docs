@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd451f4c7ada3c062862098d4cda5314152be0c0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d819479c5e4bdbf8287dc7408c0f7813f5e32b13
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881999"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900174"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>通过 MLflow 和 Azure 机器学习 service (预览版) 跟踪指标和部署模型
 
@@ -27,6 +27,8 @@ ms.locfileid: "68881999"
 + 将 MLflow 试验部署为 Azure 机器学习 web 服务。 通过将部署为 web 服务, 可以将 Azure 机器学习监视和数据偏差检测功能应用到生产模型。 
 
 [MLflow](https://www.mlflow.org)是一个开源库, 用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件, 无论是在本地还是在虚拟机上 (即使在 Azure Databricks 上), 都可记录和跟踪你的培训运行指标和模型项目, 无论是在本地还是在虚拟机上进行测试。
+
+下图说明了使用 MLflow 跟踪时, 可以执行任何试验, 无论它位于虚拟机上的远程计算目标上、是否在本地计算机上, 还是在 Azure Databricks 群集上, 并跟踪其运行指标和存储模型项目在 Azure 机器学习工作区中。
 
 ![mlflow 与 azure 机器学习示意图](media/how-to-use-mlflow/mlflow-diagram-track.png)
 
@@ -139,9 +141,11 @@ run = exp.submit(src)
 
 ## <a name="track-azure-databricks-runs"></a>跟踪 Azure Databricks 运行
 
-通过 Azure 机器学习 service 的 MLflow 跟踪, 你可以将记录的指标和 Databrick 中的项目存储到 Azure 机器学习工作区中。
+通过 Azure 机器学习 service 的 MLflow 跟踪, 你可以将 Databricks 中记录的指标和项目存储在 Azure 机器学习工作区中。
 
-若要使用 Azure Databricks 运行 Mlflow 试验, 需要首先创建[Azure Databricks 工作区和群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。 在群集中, 请确保从 PyPi 安装*mlflow*库, 以确保群集有权访问所需的函数和类。
+若要使用 Azure Databricks 运行 Mlflow 试验, 需要首先创建[Azure Databricks 工作区和群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)
+
+在群集中, 请确保从 PyPi 安装*mlflow*库, 以确保群集有权访问所需的函数和类。
 
 ### <a name="install-libraries"></a>安装库
 
@@ -210,9 +214,12 @@ ws.get_details()
 
 将 MLflow 试验作为 Azure 机器学习 web 服务进行部署, 可以利用 Azure 机器学习模型管理和数据偏差检测功能, 并将其应用于生产模型。
 
+下图演示了使用 MLflow 部署 API, 你可以将现有的 MLflow 模型部署为 Azure 机器学习 web 服务, 尽管它们的框架有: PyTorch、Tensorflow、scikit-learn、ONNX 等, 并在中管理你的生产模型你的工作区。
+
 ![mlflow 与 azure 机器学习示意图](media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
 ### <a name="log-your-model"></a>记录模型
+
 部署之前, 请确保已保存模型, 以便可以引用它及其部署的路径位置。 在训练脚本中, 应存在类似于以下[mlflow _model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html)方法的代码, 以将模型保存到指定的输出目录。 
 
 ```python
@@ -227,7 +234,7 @@ mlflow.sklearn.log_model(regression_model, model_save_path)
 
 ### <a name="retrieve-model-from-previous-run"></a>检索以前运行的模型
 
-若要检索所需的运行, 我们需要运行 ID 和在其中保存模型的运行历史记录中的路径。 
+若要检索所需的运行, 需要运行 ID 和在其中保存模型的运行历史记录中的路径。 
 
 ```python
 # gets the list of runs for your experiment as an array
@@ -244,7 +251,7 @@ model_save_path = 'model'
 
 `mlflow.azureml.build_image()`函数以框架感知的方式从保存的模型生成 Docker 映像。 它会自动创建框架特定的推断包装器代码, 并为您指定包依赖关系。 指定模型路径、工作区、运行 ID 和其他参数。
 
-在下面的代码中, 我们使用*运行:/< >/model*作为 scikit-learn 学习试验的 model_uri 路径, 生成一个 docker 映像。
+以下代码使用*运行:/< >/model*作为 scikit-learn 学习试验的 model_uri 路径生成 docker 映像。
 
 ```python
 import mlflow.azureml
@@ -290,9 +297,9 @@ webservice.wait_for_deployment(show_output=True)
 ```
 #### <a name="deploy-to-aks"></a>部署到 AKS
 
-若要部署到 AKS, 你需要创建一个 AKS 群集, 并选择要部署的 Docker 映像。 在此示例中, 我们从 ACI 部署中引入了之前创建的映像。
+若要部署到 AKS, 你需要创建一个 AKS 群集, 并选择要部署的 Docker 映像。 在此示例中, 从 ACI 部署中引入前面创建的映像。
 
-若要从以前的 ACI 部署获取映像, 我们使用[image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py)类。 
+若要从以前的 ACI 部署获取映像, 请使用[image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py)类。 
 
 ```python
 from azureml.core.image import Image

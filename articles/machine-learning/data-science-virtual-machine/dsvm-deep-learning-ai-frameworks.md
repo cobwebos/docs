@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2019
 ms.author: vijetaj
-ms.openlocfilehash: de407f4b4de58abebf87b82ff6f76342a0e9f7e0
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: adf6a68d6da4236874dce403bb4d7043087049b2
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575042"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970368"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>深度学习和人工智能框架
 [Data Science Virtual Machine](https://aka.ms/dsvm) (DSVM) 支持许多深度学习框架, 可帮助使用预测分析和认知功能 (如图像和语言理解) 构建人工智能 (AI) 应用程序。
@@ -47,7 +47,7 @@ DSVM 上提供的深度学习框架包括:
 + TensorRT
 + Microsoft 认知工具包
 
-|DSVM&nbsp;上&nbsp;的&nbsp;DL 工具|Windows|Linus|使用&nbsp;说明|
+|DSVM&nbsp;上&nbsp;的&nbsp;DL 工具|Windows|Linux|使用&nbsp;说明|
 |---------|:-------------------:|:------------------:|-----|
 |[TensorFlow](https://www.tensorflow.org/) | 是 (Windows 2016) | 是 |在适用于[Linux 和 windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition)的 python 3.5 中安装, 在[windows 2016](dsvm-languages.md#python-windows-server-2016-edition)上安装 python 3.6。 DSVM 上包含了示例 Jupyter 笔记本。<br/><br/>**若要运行**:<br/>* 终端: 激活正确的环境, 然后运行 Python。 <br/> Jupyter连接到 [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) 或 [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)，然后打开示例的 TensorFlow 目录。  |
 |[PyTorch](https://pytorch.org/)| 否 | 是 |在[Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition)中安装。 包含 Jupyter 笔记本示例, 其中的示例位于/dsvm/samples/pytorch。    <br/><br/>**运行**<br/>* 终端: 激活正确的环境, 然后运行 Python。<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux):连接, 然后打开 PyTorch 目录获取示例。  |

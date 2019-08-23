@@ -8,20 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8a47968ec252f628da8a1a36570fb06eb4bb10bf
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886944"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972810"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>删除 CloudSimple 私有云
 
-CloudSimple 提供了删除私有云的灵活性。  私有云由一个或多个 vSphere 群集组成。 每个群集可以有3到16个节点。 删除私有云时, 所有群集都将被删除。 
+CloudSimple 提供了删除私有云的灵活性。  私有云由一个或多个 vSphere 群集组成。 每个群集可以有3到16个节点。 删除私有云时, 所有群集都将被删除。
 
 ## <a name="before-you-begin"></a>开始之前
 
-删除私有云会删除整个私有云。  私有云的所有组件都将被删除。  如果要保留任何数据, 请确保已将数据备份到本地存储或 Azure 存储。 
+删除私有云会删除整个私有云。  私有云的所有组件都将被删除。  如果要保留任何数据, 请确保已将数据备份到本地存储或 Azure 存储。
 
 私有云的组件包括:
 
@@ -31,12 +31,11 @@ CloudSimple 提供了删除私有云的灵活性。  私有云由一个或多个
 * 私有云上存储的所有用户数据
 * VLAN/子网的所有防火墙规则附件
 
-
-## <a name="sign-in-to-azure"></a>登录  Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
-## <a name="delete-a-private-cloud"></a>删除私有云 
+## <a name="delete-a-private-cloud"></a>删除私有云
 
 1. [访问 CloudSimple 门户](access-cloudsimple-portal.md)。
 
@@ -52,12 +51,10 @@ CloudSimple 提供了删除私有云的灵活性。  私有云由一个或多个
 
     ![删除私有云-确认](media/delete-private-cloud-confirm.png)
 
-
 私有云已标记为要删除。  删除过程将在三个小时后开始, 并删除私有云。
 
 > [!CAUTION]
 > 删除私有云后, 必须删除节点。  在从订阅中删除节点之前, 将继续执行节点计数。
-
 
 ## <a name="next-steps"></a>后续步骤
 

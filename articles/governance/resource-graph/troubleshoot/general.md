@@ -3,16 +3,16 @@ title: 排查常见错误
 description: 了解如何通过 Azure 资源关系图对 Azure 资源进行查询进行故障排除。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 511d170f90e8ed34b00a3960d084223ec73d99dd
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3c59b5c4b580604c65572364d29d4e5d10a26820
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480548"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900009"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>使用 Azure 资源图排查错误
 
@@ -34,7 +34,7 @@ ms.locfileid: "68480548"
 
 Azure CLI 和 PowerShell 仅转发 Azure 资源关系图的前1000订阅。 Azure 资源关系图的 REST API 接受对执行查询的最大订阅数。
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
 具有订阅子集的查询的批处理请求保持在1000订阅限制的范围之外。 解决方案在 PowerShell 中使用**订阅**参数。
 
@@ -60,6 +60,33 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 # View the completed results of the query on all subscriptions
 $response
 ```
+
+### <a name="rest-contenttype"></a>场景：不支持的 Content-type REST 标头
+
+#### <a name="issue"></a>问题
+
+客户查询 Azure 资源 Graph REST API 收到返回_500_ (内部服务器错误) 的响应。
+
+#### <a name="cause"></a>原因
+
+Azure 资源 Graph REST API 仅支持`Content-Type` **application/json**的。 某些 REST 工具或代理默认为**text/简洁**, 这不受 REST API 支持。
+
+#### <a name="resolution"></a>分辨率
+
+验证用于查询 Azure 资源关系图的工具或代理是否为**application/json**配置了`Content-Type` REST API 标头。
+### <a name="rest-403"></a>场景：列表中没有对所有订阅的读取权限
+
+#### <a name="issue"></a>问题
+
+使用 Azure 资源图形查询显式传递订阅列表的客户将获得_403_ (禁止) 响应。
+
+#### <a name="cause"></a>原因
+
+如果客户没有对提供的所有订阅的读取权限, 则该请求将被拒绝, 因为缺乏适当的安全权限。
+
+#### <a name="resolution"></a>分辨率
+
+在订阅列表中包含至少一个订阅, 运行查询的客户至少具有对的读取访问权限。 有关详细信息, 请参阅[Azure 资源图中的权限](../overview.md#permissions-in-azure-resource-graph)。
 
 ## <a name="next-steps"></a>后续步骤
 

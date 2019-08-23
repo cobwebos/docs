@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e87fc74b3fa989471f9074a33fc66d8cb8250aa0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2cc8f4f81ad95376dcbc10c2952c1b2ed95ffe42
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927835"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907910"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -270,6 +270,7 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 
 
 可防止 Web 攻击的集中式 Web 应用程序防火墙，可简化安全管理，并可针对入侵威胁为应用程序提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 现有应用程序网关可以轻松地转换为带有 Web 应用程序防火墙的应用程序网关。
+
 ### <a name="traffic-manager"></a>通信管理器
 使用 Microsoft [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)，可以控制用户流量在不同数据中心内的服务终结点上的分布。 流量管理器支持的服务终结点包括 Azure VM、Web 应用和云服务。 也可将流量管理器用于外部的非 Azure 终结点。 流量管理器根据[流量路由方法](../../traffic-manager/traffic-manager-routing-methods.md)和终结点的运行状况，使用域名系统 (DNS) 将客户端请求定向到最合适的终结点。
 
@@ -295,18 +296,8 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 -   规则计数器：包含应用每个 NSG 规则以拒绝或允许流量的次数的条目。
 
 ### <a name="azure-security-center"></a>Azure 安全中心
-安全中心可帮助预防、检测和响应威胁，同时提高对 Azure 资源安全性的可见性和控制力度。 它提供对 Azure 订阅的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。 网络建议围绕防火墙和网络安全组，配置入站流量规则等。
 
-可用的网络建议如下：
-
--   [添加下一代防火墙](../../security-center/security-center-add-next-generation-firewall.md)：建议从 Microsoft 合作伙伴添加下一代防火墙 (NGFW)，以增强安全保护
-
--   [仅通过 NGFW 路由流量](../../security-center/security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)：建议配置通过 NGFW 强制将流量入站到 VM 的网络安全组 (NSG) 规则。
-
--   [在子网或虚拟机上启用网络安全组](../../security-center/security-center-enable-network-security-groups.md)：建议在子网或 VM 上启用 NSG。
-
--   [通过面向 Internet 的终结点限制访问](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md)：建议为 NSG 配置入站流量规则。
-
+[Azure 安全中心](../../security-center/security-center-intro.md)会持续分析 azure 资源的安全状态, 以了解网络安全最佳实践。 当安全中心识别到潜在的安全漏洞时, 它会创建[建议](../../security-center/security-center-recommendations.md), 指导你完成配置所需控件的过程, 以强化和保护资源。
 
 ## <a name="compute"></a>计算
 
@@ -387,7 +378,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 - [Azure Active Directory 应用程序代理](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/)为本地托管的 Web 应用程序提供 SSO 和安全远程访问。
 
 ## <a name="next-steps"></a>后续步骤
-- [Microsoft Azure 安全入门](./https://docs.microsoft.com/azure/security)
+- [Microsoft Azure 安全入门](https://docs.microsoft.com/azure/security)
 
 可以用来确保 Azure 中服务和数据安全性的 Azure 服务和功能
 

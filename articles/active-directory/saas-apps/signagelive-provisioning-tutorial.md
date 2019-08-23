@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7838fd30869629298c5b44cc4b3e5c1e5daa7051
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: ef5a605fb0190e67de8b2bb95bbccfd8fd3cf279
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69519992"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906037"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Signagelive
 
@@ -56,8 +56,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 将 Signagelive 配置为使用 Azure AD 进行自动用户预配之前, 需要在 Signagelive 上启用 SCIM 设置。
 
-1.  联系[Signagelive](mailto:development@signagelive.com)以获取配置 SCIM 预配所需的机密令牌。
-
+  联系[Signagelive](mailto:development@signagelive.com)以获取配置 SCIM 预配所需的机密令牌。
 
 ## <a name="add-signagelive-from-the-gallery"></a>从库中添加 Signagelive
 
@@ -86,7 +85,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 本部分将指导你完成以下步骤: 配置 Azure AD 预配服务, 以便基于 Azure AD 中的用户和/或组分配在 Signagelive 中创建、更新和禁用用户和/或组。
 
 > [!TIP]
->  你还可以选择按照[Signagelive 单一登录教程](Signagelive-tutorial.md)中提供的说明为 BitaBIZ 启用基于 SAML 的单一登录。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
+>  你还可以选择按照[Signagelive 单一登录教程](Signagelive-tutorial.md)中提供的说明为 Signagelive 启用基于 SAML 的单一登录。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
 
 ### <a name="to-configure-automatic-user-provisioning-for-signagelive--in-azure-ad"></a>若要在 Azure AD 中配置 Signagelive 的自动用户预配:
 
@@ -106,7 +105,8 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![设置选项卡](common/provisioning-automatic.png)
 
-5. 在 "管理员凭据" 部分中` https://samlapi.signagelive.com/scim/v2` , 输入 "**租户 URL**"。 在 "**机密令牌**" 字段中, 输入工程开发团队提供的**持有者令牌**值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Signagelive。 如果连接失败, 请确保 Signagelive 帐户具有管理员权限, 然后重试![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
+5. 在 "管理员凭据" 部分中` https://samlapi.signagelive.com/scim/v2` , 输入 "**租户 URL**"。 在 "**机密令牌**" 字段中, 输入工程开发团队提供的**持有者令牌**值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Signagelive。 如果连接失败, 请确保 Signagelive 帐户具有管理员权限, 然后重试。
+    ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”。
 
@@ -144,9 +144,9 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![正在保存设置配置](common/provisioning-configuration-save.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 "**同步详细信息**" 部分监视进度并跟踪指向预配活动报告的链接, 该报告描述了 Azure AD 预配服务对 Signagelive 执行的所有操作。
+此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长。 有关设置用户和/或组所需的时间的详细信息, 请参阅[预配用户](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)需要多长时间。 
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+你可以使用 "**当前状态**" 部分监视进度并跟踪指向预配活动报告的链接, 该报告描述了 Azure AD 预配服务对 Signagelive 执行的所有操作。 有关详细信息, 请参阅[检查用户预配的状态](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志, 请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

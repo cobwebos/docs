@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 2fa9db20554df813e5da94e2bbea122ac6cc9b60
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946529"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899946"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure 安全性和符合性蓝图 - 适用于英国官方的三层 IaaS Web 应用程序
 
@@ -186,7 +186,7 @@ ms.locfileid: "68946529"
 
 [有关在 Azure 虚拟机上部署 Windows Server Active Directory 的指导](https://msdn.microsoft.com/library/azure/jj156090.aspx)。
 
-**Active Directory 集成**：客户可能希望使用 [Azure Active Directory](/azure/architecture/reference-architectures/identity.md) 集成或 [Azure 中已加入本地林的 Active Directory](/azure/architecture/reference-architectures/identity.md) 作为专用 AD DS 体系结构的替代方案。
+**Active Directory 集成**：客户可能希望使用 [Azure Active Directory](/azure/architecture/reference-architectures/identity) 集成或 [Azure 中已加入本地林的 Active Directory](/azure/architecture/reference-architectures/identity) 作为专用 AD DS 体系结构的替代方案。
 
 ### <a name="security"></a>安全性
 
@@ -200,9 +200,9 @@ ms.locfileid: "68946529"
 
 **IP 范围**：体系结构中的 IP 范围是建议的范围。 建议客户考虑自身的环境，并使用适当的范围。
 
-**混合连接**：基于云的工作负荷使用 Azure VPN 网关通过 IPSEC VPN 连接到本地数据中心。 客户应确保使用适当的 VPN 网关连接到 Azure。 示例 - [VPN 网关资源管理器模板](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection)。 运行大规模任务关键型工作负荷且要满足大数据要求的客户可能需要考虑混合网络体系结构，使用 [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute.md) 来与 Microsoft 云服务建立专用网络连接。
+**混合连接**：基于云的工作负荷使用 Azure VPN 网关通过 IPSEC VPN 连接到本地数据中心。 客户应确保使用适当的 VPN 网关连接到 Azure。 示例 - [VPN 网关资源管理器模板](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection)。 运行大规模任务关键型工作负荷且要满足大数据要求的客户可能需要考虑混合网络体系结构，使用 [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) 来与 Microsoft 云服务建立专用网络连接。
 
-**关注点分离**：此参考体系结构将用于管理运营和业务运营的 VNet 分离开来。 将 VNet 和子网分离可以实现流量管理，包括根据 [Microsoft 云服务和网络安全](/azure/architecture/vdc/networking-virtual-datacenter.md)最佳做法，在网段之间使用 NSG 来限制传入和传出流量。
+**关注点分离**：此参考体系结构将用于管理运营和业务运营的 VNet 分离开来。 将 VNet 和子网分离可以实现流量管理，包括根据 [Microsoft 云服务和网络安全](/azure/architecture/vdc/networking-virtual-datacenter)最佳做法，在网段之间使用 NSG 来限制传入和传出流量。
 
 **资源管理**：将 VM、VNet 和负载均衡器等 Azure 资源分组到 [Azure 资源组](../../azure-resource-manager/resource-group-overview.md)可对其进行管理。 然后，可将基于资源的访问控制角色分配到每个资源组，以将访问权限限制给已获授权的用户。
 

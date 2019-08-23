@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8d0de6c68800b1a37e57aa259fd6884ee91752b5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9674df346ff0b5c046df26fe85bf7ba0bbb802e6
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699560"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900306"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 
@@ -40,9 +40,11 @@ ms.locfileid: "68699560"
 | Ubuntu 服务器 | 14.04+ | 16.04+ |
 | RHEL | 7+ | 7.5+ |
 | CentOS | 7+ |  7.5+ |
-| Debian | 8+ |   |
+| Debian | 8+ | 9 +<sup>*</sup> |
 | openSUSE | 13.2+ | 42.3+ |
 | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+
+<sup>*</sup>向后移植内核的使用可能是必需的。 可使用 `sudo apt-get install linux-image-cloud-amd64` 进行安装。
 
 如果此处未列出你的 Linux 分发版，则你可以使用以下命令查看 Linux 内核版本：
 

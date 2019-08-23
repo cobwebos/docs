@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: e21788dbf30b6fa3b37f84dd07d54b89bc91f17f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 64cf633d50fc81ae8d53f2b4ee2a9975a756f0c7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935369"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972480"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>在 Azure 中排查出站 SMTP 连接问题
 
@@ -38,7 +38,7 @@ ms.locfileid: "68935369"
 
 在 2017 年 11 月 15 日之后创建的即用即付或 Microsoft 合作伙伴网络订阅中存在一个技术限制，它会阻止这些订阅中的 VM 直接发送电子邮件。 如需将电子邮件从 Azure VM 直接发送到外部电子邮件提供商（不使用经身份验证的 SMTP 中继），可以请求去除该限制。 Microsoft 将会根据自行的判断审批请求，并且只会在执行额外的防欺诈检查后才授予权限。 若要发出请求, 请使用以下问题类型打开支持案例:**技术** **虚拟网络** **连接** **无法发送电子邮件 (SMTP/端口 25)。**  >  >  >  请确保添加详细信息，解释为什么要直接向电子邮件提供商发送邮件而不是使用经身份验证的中继。
 
-在从 Azure 门户中免除了即用即付或 Microsoft 合作伙伴网络订阅并且 Vm 已从 "启动" &, 将免除该订阅中的所有 Vm。 豁免仅适用于请求的订阅。
+在从 Azure 门户中免除了即用即付或 Microsoft 合作伙伴网络订阅并且 Vm 已从 "启动" &, 将免除该订阅中的所有 Vm。 豁免仅适用于请求的订阅, 并且仅适用于直接路由到 internet 的虚拟机流量。 不支持通过 Azure PaaS 服务 (例如[Azure 防火墙](https://azure.microsoft.com/services/azure-firewall/)) 路由端口25的流量。
 
 > [!NOTE]
 > 如果确定发生违反服务条款的情况，Microsoft 保留撤销此豁免的权利。
@@ -52,6 +52,6 @@ ms.locfileid: "68935369"
 
 如果通过 CSP 使用 Azure 资源, 则可以请求 CSP 在不能使用安全的 SMTP 中继的情况下, 通过 Microsoft 代表你创建取消阻止豁免请求。
 
-## <a name="need-help-contact-support"></a>需要帮助? 联系技术支持
+## <a name="need-help-contact-support"></a>需要帮助？ 联系技术支持
 
 如果仍需要帮助,[请联系支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)人员, 使用以下问题类型快速解决你的问题:**订阅管理**问题类型:**请求启用端口25电子邮件流**。

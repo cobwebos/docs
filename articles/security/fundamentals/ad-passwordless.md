@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 38c850f167287fe5e1a444c8670e359c4d2b6b90
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934837"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899948"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>没有密码的世界 Azure Active Directory
 
@@ -226,7 +226,7 @@ WebAuthN 定义了一个 API, 该 API 支持通过 web 应用和服务进行强�
 
 #### <a name="user-sets-up-fido2-security-key"></a>用户设置 FIDO2 安全密钥
 
-虽然管理员可以[手动预配密钥](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)并将其分发给最终用户, 但在 Windows 10 锁屏上设置和启用 FIDO2 凭据提供程序将通过[Intune](https://docs.microsoft.com/intune/windows-enrollment-methods)提供支持。 管理员还需要使用[Azure 门户](https://portal.azure.com/)将硬件令牌设备启用为无密码身份验证方法。
+虽然管理员可以[手动预配密钥](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)并将其分发给最终用户, 但在 Windows 10 锁屏上设置和启用 FIDO2 凭据提供程序将通过[Intune](https://docs.microsoft.com/intune/windows-enrollment-methods)提供支持。 管理员还需要使用[Azure 门户](https://portal.azure.com/)将硬件令牌设备启用为无密码身份验证方法。
 
 部署 FIDO2 安全密钥还要求用户使用[组合注册](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)注册其密钥。 通过组合注册, 用户可以注册一次, 并获得 Azure 多重身份验证和单一登录密码重置 (SSPR) 的好处。
 
@@ -299,7 +299,7 @@ FIDO2 安全密钥提供安全的身份验证, 而不考虑其外观。 安全�
 |**信息工作者**|工作效率| 移动或非 windows 设备|无密码 Microsoft Authenticator 应用登录|
 |**前端工作线程**|工厂、植物、零售或数据输入中的网亭|共享 Windows 10 设备|FIDO2 安全密钥|
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 无密码 authentication 是未来的浪潮和更安全的环境的路径。 建议组织开始规划此更改并减少其对密码的依赖关系。 若要开始操作, 请考虑以下目标:
 
@@ -343,4 +343,4 @@ FIDO2 安全密钥提供安全的身份验证, 而不考虑其外观。 安全�
 ## <a name="next-steps"></a>后续步骤
 
 * [无密码](../../active-directory/authentication/concept-authentication-passwordless.md)概述
-* [如何在 Azure AD 中启用无密码](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)
+* [如何在 Azure AD 中启用无密码](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)

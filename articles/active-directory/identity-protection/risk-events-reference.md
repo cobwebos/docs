@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08e27052c3583ddea7a2fb6fe96fa6b48cd6c372
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 5d2247aab872a71f250bd0b4b52714e402d2102d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333875"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905197"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory 标识保护风险事件参考
 
@@ -76,3 +76,8 @@ ms.locfileid: "68333875"
 **旧名称：** 此检测将显示在旧 Azure AD Identity Protection 报表中 (标记为有风险的用户、风险事件) 显示为 "拥有泄露凭据的用户"
 
 此风险事件类型表示对于给定用户异常的用户活动, 或者与基于 Microsoft 内部和外部威胁情报源的已知攻击模式一致。
+
+## <a name="admin-confirmed-user-compromised"></a>管理员已确认用户遭入侵
+
+**检测类型：** 脱机 <br>
+此检测表明管理员已在有风险的用户 UI 或使用 riskyUsers API 中选择了 "确认用户泄露"。 若要查看已确认此用户已泄露的管理员, 请检查用户的风险历史记录 (通过 UI 或 API)。

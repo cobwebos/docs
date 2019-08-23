@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: fc70d140479be100e6aa52cf8105d3e466342cd7
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 74b502a37081c729c5e33a0db7dc7f26cb44774b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302661"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972284"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>将 OPC 克隆部署到现有项目
 
@@ -28,7 +28,7 @@ OPC UA 设备注册表微服务提供对已注册的 OPC UA 应用程序及其�
 > [!NOTE]
 > 有关部署详细信息和说明的详细信息, 请参阅 GitHub[存储库](https://github.com/Azure/azure-iiot-opc-twin-module)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 请确保已安装 PowerShell 和[AzureRM powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)扩展。 如果尚未这样做, 请克隆此 GitHub 存储库。 在 PowerShell 中运行以下命令：
 
@@ -56,7 +56,7 @@ cd azure-iiot-components
 
 ## <a name="troubleshooting-deployment-failures"></a>部署故障排除
 
-### <a name="resource-group-name"></a>资源组名称
+### <a name="resource-group-name"></a>资源组名
 
 请确保使用简短且简单的资源组名称。  该名称还用于命名资源, 因为它必须符合资源命名要求。  
 
@@ -142,4 +142,4 @@ cd azure-iiot-components
 现在, 你已了解如何将 OPC 克隆部署到现有项目, 下面是建议的后续步骤:
 
 > [!div class="nextstepaction"]
-> [OPC 客户端和 OPC PLC 的安全通信](howto-opc-vault-deploy-existing-client-plc-communication.md)
+> [OPC UA 客户端和 OPC UA PLC 的安全通信](howto-opc-vault-secure.md)

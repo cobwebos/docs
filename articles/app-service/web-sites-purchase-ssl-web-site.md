@@ -16,12 +16,12 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 7675a22b4b2d8b13524f06f45d6bb805c1e2fad1
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 8f55e2eb3ac7fe2e869b6b1061f6d45d11894ccf
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019139"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905941"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -50,7 +50,7 @@ ms.locfileid: "69019139"
 
 | 设置 | 描述 |
 |-|-|
-| 名称 | 应用服务证书证书的友好名称。 |
+| 姓名 | 应用服务证书证书的友好名称。 |
 | 裸域主机名 | 在此处指定根域。 颁发的证书*同时*保护根域和`www`子域。 在颁发的证书中, "公用名" 字段包含根域, "使用者可选名称" 字段`www`包含该域。 若要仅保护子域，请在此处指定子域的完全限定域名（例如，`mysubdomain.contoso.com`）。|
 | 订阅 | 托管 Web 应用的数据中心。 |
 | 资源组 | 包含证书的资源组。 例如，可以使用新资源组，或选择与应用服务应用相同的资源组。 |
@@ -71,7 +71,7 @@ ms.locfileid: "69019139"
 
 | 设置 | 描述 |
 |-|-|
-| 名称 | 由字母数字字符和短划线组成的唯一名称。 |
+| 姓名 | 由字母数字字符和短划线组成的唯一名称。 |
 | 资源组 | 建议选择与应用服务证书相同的资源组。 |
 | Location | 选择与应用服务应用相同的位置。 |
 | 定价层 | 有关信息，请参阅 [Azure Key Vault 定价详细信息](https://azure.microsoft.com/pricing/details/key-vault/)。 |
@@ -139,7 +139,7 @@ ms.locfileid: "69019139"
 
 ## <a name="renew-certificate"></a>续订证书
 
-若要在任何时候启用证书自动续订，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格的“自动续订设置”。
+若要在任何时候启用证书自动续订，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格的“自动续订设置”。 默认情况下, 应用服务证书的有效期为1年。
 
 选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 60 天自动续订。
 

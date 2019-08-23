@@ -4,14 +4,14 @@ description: 使用 Azure Resource Manager 和 Azure PowerShell 将资源部署�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 63d729f19b0ef20d0e7a716d6857b4627095856b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f9fb786933d03b27be47c9f778a5f1575ca17c2
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476981"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970909"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>使用 Resource Manager 模板和 Azure PowerShell 部署资源
 
@@ -35,15 +35,15 @@ New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -Template
 New-AzDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
-目前，管理组部署仅支持通过 REST API。 请参阅[使用资源管理器模板和 Resource Manager REST API 部署资源](resource-group-template-deploy-rest.md)。
+目前，仅通过 REST API 支持管理组部署。 请参阅[使用资源管理器模板和资源管理器 REST API 部署资源](resource-group-template-deploy-rest.md)。
 
 本文中的示例使用资源组部署。 有关订阅部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 你需要使用模板进行部署。 如果还没有模板，请从 Azure 快速入门模板存储库下载并保存一个[示例模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)。 本文中使用的本地文件名称为 **c:\MyTemplates\azuredeploy.json**。
 
-除非你使用 Azure Cloud shell 中，将模板部署，需要安装 Azure PowerShell 并连接到 Azure:
+除非使用 Azure Cloud shell 部署模板, 否则需要安装 Azure PowerShell 并连接到 Azure:
 
 - **在本地计算机上安装 Azure PowerShell cmdlet。** 有关详细信息，请参阅 [Azure PowerShell 入门](/powershell/azure/get-started-azureps)。
 - **使用 [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount) 连接到 Azure**。 如果有多个 Azure 订阅，则可能还需要运行 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。 有关详细信息，请参阅[使用多个 Azure 订阅](/powershell/azure/manage-subscriptions-azureps)。
@@ -67,7 +67,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 可能更愿意将 Resource Manager 模板存储在外部位置，而不是将它们存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
 
-若要部署外部模板，请使用 TemplateUri  参数。 使用示例中的 URI 从 GitHub 部署示例模板。
+若要部署外部模板，请使用 TemplateUri 参数。 使用示例中的 URI 从 GitHub 部署示例模板。
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -82,7 +82,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 ## <a name="deploy-from-azure-cloud-shell"></a>从 Azure Cloud shell 部署
 
-可以使用 [Azure Cloud Shell](https://shell.azure.com) 来部署模板。 若要部署外部模板，请提供模板的 URI。 要部署本地模板，必须先将模板加载到 Cloud Shell 的存储帐户。 若要将文件上传到 shell，请从 shell 窗口选择“上传/下载文件”菜单图标  。
+可以使用 [Azure Cloud Shell](https://shell.azure.com) 来部署模板。 若要部署外部模板，请提供模板的 URI。 要部署本地模板，必须先将模板加载到 Cloud Shell 的存储帐户。 若要将文件上传到 shell，请从 shell 窗口选择“上传/下载文件”菜单图标。
 
 若要打开 Cloud shell，请浏览到 [https://shell.azure.com](https://shell.azure.com)，或从以下代码部分选择 **Try-It**：
 
@@ -95,15 +95,15 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-若要将代码粘贴到 shell 中，请在 shell 内右键单击，然后选择“粘贴”  。
+若要将代码粘贴到 shell 中，请在 shell 内右键单击，然后选择“粘贴”。
 
 ## <a name="redeploy-when-deployment-fails"></a>部署失败时，重新部署
 
-此功能也称为“出错时回滚”  。 部署失败时，可以自动重新部署部署历史记录中先前成功的部署。 若要指定重新部署，请在部署命令中使用 `-RollbackToLastDeployment` 或 `-RollBackDeploymentName` 参数。 如果已经有已知的良好状态的基础结构部署并且想要还原到此状态，此功能很有用。 有许多需要注意的问题和限制：
+此功能也称为“出错时回滚”。 部署失败时，可以自动重新部署部署历史记录中先前成功的部署。 若要指定重新部署，请在部署命令中使用 `-RollbackToLastDeployment` 或 `-RollBackDeploymentName` 参数。 如果基础结构部署存在一个已知良好的状态，并且你希望还原到此状态，则此功能非常有用。 有许多需要注意的问题和限制：
 
-- 重新部署使用与以前运行它时相同的参数以相同的方式运行。 不能更改参数。
+- 重新部署使用与以前运行它时相同的参数以相同的方式运行。 无法更改参数。
 - 以前的部署是使用[完整模式](./deployment-modes.md#complete-mode)运行的。 以前的部署中未包括的任何资源都将被删除，任何资源配置都将设置为以前的状态。 请确保你完全理解[部署模式](./deployment-modes.md)。
-- 重新部署只会影响资源，任何数据更改不会受到影响。
+- 重新部署只会影响资源，而不会影响任何数据更改。
 - 只有资源组部署支持此功能，订阅级部署不支持此功能。 有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](./deploy-to-subscription.md)。
 
 若要使用此选项，部署必须具有唯一的名称，以便可以在历史记录中标识它们。 如果没有唯一名称，则当前失败的部署可能会覆盖历史记录中以前成功的部署。 只能将此选项用于根级别部署。 从嵌套模板进行的部署不可用于重新部署。
@@ -130,9 +130,9 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
 
 ## <a name="pass-parameter-values"></a>粘贴参数值
 
-若要传递参数值，可以使用内联参数或参数文件。 本文中前面的示例显示了内联参数。
+若要传递参数值，可以使用内联参数或参数文件。
 
-### <a name="inline-parameters"></a>内联参数
+### <a name="inline-parameters"></a>内联参数。
 
 若要传递内联参数，请使用 `New-AzResourceGroupDeployment` 命令提供参数的名称。 例如，若要将字符串和数组传递给模板，请使用：
 
@@ -156,7 +156,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 
 当需要提供配置值时，从文件中获取参数值非常有用。 例如，可以[为 Linux 虚拟机提供 cloud-init 值](../virtual-machines/linux/using-cloud-init.md)。
 
-如果需要传递一个对象数组中，在 PowerShell 中创建的哈希表，并将其添加到一个数组。 在部署期间作为参数传递该数组。
+如果需要传入对象数组，请在 PowerShell 中创建哈希表并将其添加到数组中。 在部署过程中将该数组作为参数传递。
 
 ```powershell
 $hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
@@ -167,28 +167,11 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -exampleArray $subnetArray
 ```
 
-
 ### <a name="parameter-files"></a>参数文件
 
 与在脚本中以内联值的形式传递参数相比，可能会发现使用包含参数值的 JSON 文件更为容易。 参数文件可以是本地文件，也可以是具有可访问 URI 的外部文件。
 
-参数文件必须采用以下格式：
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-     "storageAccountType": {
-         "value": "Standard_GRS"
-     }
-  }
-}
-```
-
-请注意，parameters 部分包含与模板中定义的参数匹配的参数名称 (storageAccountType)。 参数文件针对该参数包含了一个值。 此值在部署期间自动传递给模板。 可以创建多个参数文件，然后为方案传入适当的参数文件。
-
-复制上面的示例，并将其保存为名为 `storage.parameters.json` 的文件。
+有关参数文件的详细信息, 请参阅[Create 资源管理器 parameter file](resource-manager-parameter-files.md)。
 
 若要传递本地参数文件，请使用 **TemplateParameterFile** 参数：
 
@@ -205,16 +188,6 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
 ```
-
-### <a name="parameter-precedence"></a>参数优先级
-
-可以在同一部署操作中使用内联参数和本地参数文件。 例如，可以在本地参数文件中指定某些值，并在部署期间添加其他内联值。 如果同时为本地参数文件中的参数和内联参数提供值，则内联值优先。
-
-但是，使用外部参数文件时，不能传递是内联值或来自本地文件的其他值。 如果在 **TemplateParameterUri** 参数中指定参数文件，则将忽略所有内联参数。 提供外部文件中的所有参数值。 如果模板包括参数文件中无法包括的敏感值，可将该值添加到密钥保管库，或者以内联方式动态提供所有参数值。
-
-### <a name="parameter-name-conflicts"></a>参数名冲突
-
-如果模板包括的一个参数与 PowerShell 命令中的某个参数同名，PowerShell 使用后缀 **FromTemplate** 显示模板的参数。 例如，模板中名为 **ResourceGroupName** 的参数与 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的 **ResourceGroupName** 参数冲突。 系统会提示你提供 **ResourceGroupNameFromTemplate** 的值。 通常，不应将参数命名为与用于部署操作的参数的名称相同以避免这种混乱。
 
 ## <a name="test-template-deployments"></a>测试模板部署
 

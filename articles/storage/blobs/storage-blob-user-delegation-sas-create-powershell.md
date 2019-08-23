@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 86b5e4b6bcf65c2174fa3d3743551813ce2f8b1b
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: bdb66ec65d493c6af2f33bf6ed6e4a2bb2154235
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034741"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897026"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>使用 PowerShell (预览版) 为容器或 blob 创建用户委托 SAS
 
@@ -80,7 +80,7 @@ Connect-AzAccount
 
 ## <a name="assign-permissions-with-rbac"></a>通过 RBAC 分配权限
 
-若要从 Azure PowerShell 创建用户委托 SAS, 必须为用于登录 PowerShell 的 Azure AD 帐户分配包含 storageAccounts **//blobServices/generateUserDelegationKey**操作的角色。 此权限允许 Azure AD 帐户请求*用户委托密钥*。 用户委托密钥用于对用户委托 SAS 进行签名。 提供 storageAccounts/ **blobServices/generateUserDelegationKey**操作的角色必须在存储帐户、资源组或订阅的级别上进行分配。 有关创建用户委托 SAS 的 RBAC 权限的详细信息, 请参阅[创建用户委托 sas](/rest/api/storageservices/create-a-user-delegation-sas)中的**使用 rbac 分配权限**部分。
+若要从 Azure PowerShell 创建用户委托 SAS, 必须为用于登录 PowerShell 的 Azure AD 帐户分配包含 storageAccounts **//blobServices/generateUserDelegationKey**操作的角色。 此权限允许 Azure AD 帐户请求*用户委托密钥*。 用户委托密钥用于对用户委托 SAS 进行签名。 提供 storageAccounts/ **blobServices/generateUserDelegationKey**操作的角色必须在存储帐户、资源组或订阅的级别上进行分配。 有关创建用户委托 SAS 的 RBAC 权限的详细信息, 请参阅[创建用户委托 sas](/rest/api/storageservices/create-user-delegation-sas)中的**使用 rbac 分配权限**部分。
 
 如果你的权限不足, 无法将 RBAC 角色分配到 Azure AD 安全主体, 你可能需要要求帐户所有者或管理员分配必要的权限。
 
@@ -94,7 +94,7 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-有关包含 storageAccounts/ **blobServices/generateUserDelegationKey**操作的内置角色的详细信息, 请参阅[Azure 资源的内置角色](/role-based-access-control/built-in-roles)。
+有关包含 storageAccounts/ **blobServices/generateUserDelegationKey**操作的内置角色的详细信息, 请参阅[Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>使用 Azure AD 凭据来保护 SAS
 
@@ -167,5 +167,5 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建用户委派 SAS (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)
+- [创建用户委派 SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas)
 - [获取用户委派密钥操作](/rest/api/storageservices/get-user-delegation-key)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: c2adf9bff4c3d91305e71a7688740fa0268ad7b9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0704db7444756fb44c5587ae8e8e743f671c9dcc
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69531483"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907947"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>保护 Azure 安全中心的 Azure 数据和存储服务
 本主题说明如何查看和实施有关数据和存储资源的安全建议。 Azure 安全中心在分析 Azure 资源的安全状态时发现这些建议。
@@ -65,7 +65,7 @@ ms.locfileid: "69531483"
 |----|----|----|----|
 |存储帐户|20|应该启用安全传输到存储帐户|安全传输选项会强制存储帐户仅接受来自安全连接 (HTTPS) 的请求。 HTTPS 可确保服务器与服务之间的身份验证, 并防止数据在传输过程中受到网络层攻击, 如中间人、窃听和会话劫持。|
 |Redis|20|应该启用只能通过安全方式连接到 Redis 缓存|仅启用通过 SSL 来与 Azure Redis 缓存建立连接。 使用安全连接可确保服务器和服务之间的身份验证并保护传输中的数据免受中间人攻击、窃听攻击和会话劫持等网络层攻击。|
-|SQL|15|应在 SQL 数据库上启用透明数据加密|启用透明数据加密以保护静态数据并满足符合性要求。|
+|SQL|15|应在 SQL 数据库上启用透明数据加密|启用透明数据加密以保护静态数据并满足合规性要求。|
 |SQL|15|应启用 SQL server 审核|启用 Azure SQL 服务器的审核。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。）|
 |Data Lake Analytics|5|应启用 Data Lake Analytics 中的诊断日志|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。 |
 |Data Lake Store|5|应启用 Azure Data Lake Store 中的诊断日志|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。 |
@@ -77,7 +77,7 @@ ms.locfileid: "69531483"
 ## <a name="see-also"></a>请参阅
 若要详细了解适用于其他 Azure 资源类型的建议, 请参阅以下主题:
 
-* [保护 Azure 安全中心中的虚拟机](security-center-virtual-machine-recommendations.md)
+* [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
 * [保护 Azure 安全中心中的应用程序](security-center-application-recommendations.md)
 * [保护 Azure 安全中心中的网络](security-center-network-recommendations.md)
 

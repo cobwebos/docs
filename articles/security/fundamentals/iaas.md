@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: c04d5fc5b455c798ffc8cb4a88948deaea0cf348
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0e8be1675dd2b400f89ab17fe85c037066302409
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927932"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906019"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 本文介绍了 VM 和操作系统的安全最佳做法。
@@ -182,7 +182,7 @@ Azure 磁盘加密可解决以下业务需求：
 **详细信息**：使用 RBAC 确保只有中心网络组才能获得网络资源的权限。
 
 **最佳做法**：标识并修正允许从 "任何" 源 IP 地址进行访问的公开 Vm。   
-**详细信息**：使用 Azure 安全中心。 如果你的任何网络安全组有一个或多个允许从 "任何" 源 IP 地址进行访问的入站规则, 安全中心将建议你通过面向 internet 的终结点限制访问。 安全中心将建议你编辑这些入站规则, 以限制对实际需要访问的源 IP 地址的[访问](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md)。
+**详细信息**：使用 Azure 安全中心。 如果你的任何网络安全组有一个或多个允许从 "任何" 源 IP 地址进行访问的入站规则, 安全中心将建议你通过面向 internet 的终结点限制访问。 安全中心将建议你编辑这些入站规则, 以限制对实际需要访问的源 IP 地址的[访问](../../security-center/security-center-network-recommendations.md)。
 
 **最佳做法**：限制管理端口 (RDP、SSH)。   
 **详细信息**：实时[(JIT) VM 访问](../../security-center/security-center-just-in-time.md)可用于锁定到 Azure vm 的入站流量, 降低攻击的风险, 同时在需要时提供轻松的连接来连接到 vm。 启用 JIT 后, 安全中心会通过创建网络安全组规则来锁定发往 Azure Vm 的入站流量。 你需要选择要锁定 VM 上的哪些端口的入站流量。 这些端口由 JIT 解决方案控制。

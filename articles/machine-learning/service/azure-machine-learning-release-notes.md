@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: e169d7734776f9319685d97f941b3fc11eec8298
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1e35baf24b59e7864982d131f44f79458e0d9015
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656252"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971491"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -89,9 +89,18 @@ ms.locfileid: "69656252"
   + **azureml-小组件**
     + 改进了分类培训的混淆矩阵图。
 
+### <a name="azure-machine-learning-data-prep-sdk-v1112"></a>Azure 机器学习数据准备 SDK 1.1.12
++ **新功能**
+  + 现在可将字符串列表作为输入`read_*`传递给方法。
+
++ **Bug 修复和改进**
+  + 在 Spark 中`read_parquet`运行时, 的性能得到了显著改进。
+  + 修复了在具有`column_type_builder`不明确日期格式的单个列的情况下失败的问题。
+
 ### <a name="azure-portal"></a>Azure 门户
 + **预览功能**
   + 现在可以在 "运行详细信息" 页上使用日志和输出文件流。 当启用了预览切换功能时, 这些文件将实时流更新。
+  + 在工作区级别设置配额的功能在预览中发布。 AmlCompute 配额在订阅级别分配, 但我们现在允许你在工作区之间分配该配额, 并将其分配给公平共享和管理。 只需单击工作区左侧导航栏中的 "**使用情况 + 配额**" 边栏选项卡, 然后选择 "**配置配额**" 选项卡。请注意, 你必须是订阅管理员才能在工作区级别设置配额, 因为这是一个跨工作区操作。
 
 ## <a name="2019-08-05"></a>2019-08-05
 

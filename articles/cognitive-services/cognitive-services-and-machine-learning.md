@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 570429a2d5332e7d951271b36b79d9d16df174c0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: b0345773956a0adc5c7f403195c496a3ea5e6fd6
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535203"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982327"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 
@@ -65,7 +65,7 @@ ms.locfileid: "69535203"
 
 认知服务为您提供了一个训练的模型。 这会将数据和算法一起提供, 可从 REST API 或 SDK 获得。 你可以在几分钟内实现此服务, 具体取决于你的方案。  认知服务提供一般问题的答案, 例如图像中的文本或项标识中的关键短语。 
 
-机器学习是一种通常需要较长时间才能成功实现的进程。 此时间花费在数据收集、清理、转换、算法选择、模型定型和部署上, 以实现认知服务提供的相同级别的功能。 在机器学习中, 可以为任何类型的问题 (包括高度专用或特定的问题) 提供解答。 这些机器学习问题需要熟悉以下一项或多项操作: 主题、机器学习和数据科学。
+机器学习是一种通常需要较长时间才能成功实现的进程。 此时间花费在数据收集、清理、转换、算法选择、模型定型和部署上, 以实现认知服务提供的相同级别的功能。 通过机器学习, 可以提供非常专用和/或特定问题的答案。 机器学习问题需要熟悉相关问题的特定主题和数据, 以及数据科学方面的专业知识。
 
 ## <a name="what-kind-of-data-do-you-have"></a>您拥有哪种类型的数据？
 

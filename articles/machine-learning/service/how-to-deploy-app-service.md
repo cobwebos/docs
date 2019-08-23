@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/01/2019
-ms.openlocfilehash: a5fd376a6da70ed68baedf44fd4c2cc47e68d3cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: HT
+ms.openlocfilehash: ada2a19de12c2f3f6b23fcc3d759afb0c747d37d
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872373"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897406"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure App Service (预览版)
 
@@ -108,11 +108,11 @@ package.wait_for_creation(show_output=True)
 
 1. 在[Azure 门户](https://portal.azure.com)中, 选择 Azure 机器学习工作区。 从 "__概述__" 部分中, 使用__注册表__链接访问工作区的 Azure 容器注册表。
 
-    ![工作区概述的屏幕截图](media/how-to-deploy-app-service/workspace-overview.png)
+    [![工作区概述的屏幕截图](media/how-to-deploy-app-service/workspace-overview.png)](media/how-to-deploy-app-service/workspace-overview-expanded.png)
 
 2. 从 Azure 容器注册表中, 选择 "__存储库__", 然后选择要部署的__映像名称__。 对于要部署的版本, 请选择 " __...__ " 条目, 然后将__其部署到 web 应用__。
 
-    ![从 ACR 部署到 web 应用的屏幕截图](media/how-to-deploy-app-service/deploy-to-web-app.png)
+    [![从 ACR 部署到 web 应用的屏幕截图](media/how-to-deploy-app-service/deploy-to-web-app.png)](media/how-to-deploy-app-service/deploy-to-web-app-expanded.png)
 
 3. 若要创建 Web 应用, 请提供站点名称、订阅、资源组, 并选择 "应用服务计划/位置"。 最后，选择“创建”。
 
@@ -122,7 +122,7 @@ package.wait_for_creation(show_output=True)
 
 在[Azure 门户](https://portal.azure.com)中, 选择上一步中创建的 Web 应用。 从 "__概述__" 部分中, 复制__URL__。 此值为服务的__基 URL__ 。
 
-![Web 应用概述的屏幕截图](media/how-to-deploy-app-service/web-app-overview.png)
+[![Web 应用概述的屏幕截图](media/how-to-deploy-app-service/web-app-overview.png)](media/how-to-deploy-app-service/web-app-overview-expanded.png)
 
 向模型传递请求的 web 服务位于`{baseurl}/score`。 例如， `https://mywebapp.azurewebsites.net/score` 。 以下 Python 代码演示了如何将数据提交到 URL 并显示响应:
 

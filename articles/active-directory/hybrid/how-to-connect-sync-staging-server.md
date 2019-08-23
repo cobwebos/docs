@@ -16,12 +16,12 @@ ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381550"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900060"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：暂存服务器和灾难恢复
 使用处于暂存模式的服务器，可以在激活服务器之前更改配置和预览更改。 它还允许运行完全导入和完全同步，以便在生产环境中应用所有更改之前验证这些更改是否符合预期。
@@ -42,7 +42,7 @@ ms.locfileid: "60381550"
 
 仍然可以使用 Synchronization Service Manager 强制导出。
 
-处于暂存模式的服务器继续接收来自 Active Directory 和 Azure AD 的更改。 它始终都有最新更改的副本，并且可以非常快速地接管另一服务器的责任。 如果对主要服务器进行配置更改，则需要负责对处于暂存模式的服务器进行相同的更改。
+处于暂存模式的服务器将继续接收来自 Active Directory 和 Azure AD 的更改, 并且在发生故障时可快速接管另一服务器的责任。 如果对主要服务器进行配置更改，则需要负责对处于暂存模式的服务器进行相同的更改。
 
 对于熟悉旧式同步技术的人员而言，暂存模式是不同的，因为服务器有自身的 SQL 数据库。 此体系结构允许将暂存模式服务器放置在不同的数据中心。
 
@@ -56,18 +56,18 @@ ms.locfileid: "60381550"
 5. [切换活动服务器](#switch-active-server)
 
 #### <a name="prepare"></a>准备
-1. 安装 Azure AD Connect，选择“暂存模式”，并取消选择安装向导中最后一页上的“启动同步”。   此模式允许手动运行同步引擎。
+1. 安装 Azure AD Connect，选择“暂存模式”，并取消选择安装向导中最后一页上的“启动同步”。 此模式允许手动运行同步引擎。
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
-2. 注销/登录并从“开始”菜单选择“同步服务”。 
+2. 注销/登录并从“开始”菜单选择“同步服务”。
 
 #### <a name="configuration"></a>配置
 如果对主服务器进行了自定义更改并希望比较配置和临时服务器，则使用 [Azure AD Connect 配置文档管理器](https://github.com/Microsoft/AADConnectConfigDocumenter)。
 
 #### <a name="import-and-synchronize"></a>导入和同步
-1. 选择“连接器”，并选择第一个 **Active Directory 域服务**类型的连接器。  单击“运行”，并依次选择“完全导入”和“确定”。    针对此类型的所有连接器执行这些步骤。
-2. 选择 **Azure Active Directory (Microsoft)** 类型的连接器。 单击“运行”，并依次选择“完全导入”和“确定”。   
-3. 确保“连接器”选项卡仍处于选中状态。 针对每个 **Active Directory 域服务**类型的连接器单击“运行”，并选择“差异同步”和“确定”。   
-4. 选择 **Azure Active Directory (Microsoft)** 类型的连接器。 单击“运行”，选择“差异同步”，并选择“确定”。   
+1. 选择“连接器”，并选择第一个 **Active Directory 域服务**类型的连接器。 单击“运行”，并依次选择“完全导入”和“确定”。 针对此类型的所有连接器执行这些步骤。
+2. 选择 **Azure Active Directory (Microsoft)** 类型的连接器。 单击“运行”，并依次选择“完全导入”和“确定”。
+3. 确保“连接器”选项卡仍处于选中状态。 针对每个 **Active Directory 域服务**类型的连接器单击“运行”，并选择“差异同步”和“确定”。
+4. 选择 **Azure Active Directory (Microsoft)** 类型的连接器。 单击“运行”，选择“差异同步”，并选择“确定”。
 
 现在，已将导出更改暂存到 Azure AD 和本地 AD（如果你正在使用 Exchange 混合部署）。 使用后续步骤可在实际开始导出到目录之前，检查将要更改的内容。
 
@@ -77,11 +77,11 @@ ms.locfileid: "60381550"
 3. 运行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` %temp% 中已有名为 export.csv 的文件，可在 Microsoft Excel 中检查。 此文件包含要导出的所有更改。
 4. 对数据或配置进行必要的更改并再次运行这些步骤（导入和同步和身份验证），直到要导出的更改都按预期进行。
 
-了解 export.csv 文件。大部分的文件都简单易懂  。 请理解内容中的的一些缩写：
+了解 export.csv 文件。大部分的文件都简单易懂。 请理解内容中的的一些缩写：
 * OMODT – 对象修改类型。 指示对象级别的操作是添加、更新还是删除。
 * AMODT – 属性修改类型。 指示属性级别的操作是添加、更新还是删除。
 
-检索通用标识符。export.csv 文件包含要导出的所有更改  。 每行都对应于连接器空间中某个对象的更改，该对象由 DN 属性标识。 DN 属性是分配给连接器空间中对象的唯一标识符。 当 export.csv 中存在较多待分析的行/更改时，仅凭 DN 属性可能难以判断哪些对象发生了更改。 要简化分析更改的进程，请使用 csanalyzer.ps1 PowerShell 脚本。 该脚本可检索对象的通用标识符（如 displayName 和 userPrincipalName 等）。 使用脚本：
+检索通用标识符。export.csv 文件包含要导出的所有更改。 每行都对应于连接器空间中某个对象的更改，该对象由 DN 属性标识。 DN 属性是分配给连接器空间中对象的唯一标识符。 当 export.csv 中存在较多待分析的行/更改时，仅凭 DN 属性可能难以判断哪些对象发生了更改。 要简化分析更改的进程，请使用 csanalyzer.ps1 PowerShell 脚本。 该脚本可检索对象的通用标识符（如 displayName 和 userPrincipalName 等）。 使用脚本：
 1. 将 PowerShell 脚本从 [CSAnalyzer](#appendix-csanalyzer) 部分复制到名为 `csanalyzer.ps1` 的文件。
 2. 打开 PowerShell 窗口并浏览到已在其中创建 PowerShell 脚本的文件夹。
 3. 运行：`.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`。
@@ -89,7 +89,7 @@ ms.locfileid: "60381550"
 
 #### <a name="switch-active-server"></a>切换活动服务器
 1. 在当前处于活动状态的服务器上，关闭服务器 (DirSync/FIM/Azure AD Sync)，使它不会导出到 Azure AD，或将它设为暂存模式 (Azure AD Connect)。
-2. 在处于“暂存模式”的服务器上运行安装向导，并禁用“暂存模式”。  
+2. 在处于“暂存模式”的服务器上运行安装向导，并禁用“暂存模式”。
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/additionaltasks.png)
 
 ## <a name="disaster-recovery"></a>灾难恢复

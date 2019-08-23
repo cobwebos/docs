@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: bed95c070649785a701f9d08a98faf29c8ee1413
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 98ab93bbec8da17dde93c9c343703838b0279994
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990684"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900430"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>使用 .NET (预览版) 为容器或 blob 创建用户委托 SAS
 
@@ -44,7 +44,7 @@ Install-Package Azure.Identity -IncludePrerelease
 
 若要创建具有 Azure CLI 的服务主体并分配一个 RBAC 角色, 请调用[az ad sp create for rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)命令。 提供要分配给新服务主体的 Azure 存储数据访问角色。 角色必须包含 storageAccounts/ **/blobServices/generateUserDelegationKey**操作。 有关为 Azure 存储提供的内置角色的详细信息, 请参阅[azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
 
-此外, 请提供角色分配的作用域。 服务主体将创建用户委托密钥, 该密钥是在存储帐户级别执行的操作, 因此角色分配的作用域应为存储帐户、资源组或订阅的级别。 有关创建用户委托 SAS 的 RBAC 权限的详细信息, 请参阅[创建用户委托 sas (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)中的**使用 rbac 分配权限**部分。
+此外, 请提供角色分配的作用域。 服务主体将创建用户委托密钥, 该密钥是在存储帐户级别执行的操作, 因此角色分配的作用域应为存储帐户、资源组或订阅的级别。 有关创建用户委托 SAS 的 RBAC 权限的详细信息, 请参阅[创建用户委托 sas (REST API)](/rest/api/storageservices/create-user-delegation-sas)中的**使用 rbac 分配权限**部分。
 
 如果你没有足够的权限将角色分配给服务主体, 你可能需要请求帐户所有者或管理员执行角色分配。
 
@@ -276,4 +276,4 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 ## <a name="see-also"></a>请参阅
 
 - [获取用户委派密钥操作](/rest/api/storageservices/get-user-delegation-key)
-- [创建用户委派 SAS (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)
+- [创建用户委派 SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas)

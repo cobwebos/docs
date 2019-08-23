@@ -8,24 +8,21 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a19c78efb7d81dcdcd3c221f58d4e4cc7be5ccd1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 6a335bcbb45b1aac48a3aaea282ffeffe1696f4c
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722195"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900069"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署计划
-正在查找有关如何部署某些 Azure Active Directory (Azure AD) 功能的端到端指南？ 以下部署计划详述了成功推出部分更常用 Azure AD 功能所需的业务价值、规划注意事项、设计和运营过程。 
+正在寻找有关部署 Azure Active Directory (Azure AD) 功能的端到端指南吗？ Azure AD 部署计划将引导你完成成功部署常见 Azure AD 功能所需的业务价值、规划注意事项和操作过程。
 
-在文档中，可以找到电子邮件模板、系统体系结构关系图、常见测试案例，等等。 
-
-欢迎对文档提供反馈。 请参与这个简短的[调查](https://aka.ms/deploymentplanfeedback)，说出你对文档的看法。 
-
+从任何计划页面, 使用浏览器的打印到 PDF 功能创建文档的最新脱机版本。
 ## <a name="include-the-right-stakeholders"></a>包含正确的利益干系人
 
 在开始规划新功能时, 必须在组织中包含关键利益干系人。 建议你确定并记录满足以下各项角色的人员或人员, 并与他们合作来确定他们在项目中的参与情况。  
@@ -50,23 +47,43 @@ ms.locfileid: "68722195"
 - **C**ontributor 到项目计划和结果 
 
 - **我**nformed 项目计划和结果
- 
-## <a name="deployment-plans"></a>部署计划
 
 
+## <a name="deploy-authentication"></a>部署身份验证
 
-|应用场景 |描述 |
-|-|-|
-|[多重身份验证](../authentication/howto-mfa-getstarted.md)|Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 使用管理员批准的身份验证方法，Azure MFA 可帮助保护对数据和应用程序的访问，同时满足对简单登录过程的需求。|
-|[条件性访问](https://aka.ms/deploymentplans/ca)|使用条件性访问, 你可以根据条件, 实现可访问云应用的用户的自动访问控制决策。|
-|[自助密码重置](https://aka.ms/deploymentplans/sspr)|自助密码重置允许用户在需要时重置其密码，不需要管理员干预。|
-|[Privileged Identity Management](https://aka.ms/deploymentplans/pim)|Azure AD Privileged Identity Management (PIM) 可帮助跨 Azure AD、Azure 资源和其他 Microsoft 联机服务管理特权管理角色。 PIM 提供实时访问、请求审批工作流和完全集成的访问评审等解决方案，让用户可以实时识别、发现并防止特权角色的恶意活动。|
-|[单一登录](https://aka.ms/deploymentplans/sso)|进行单一登录时，只需使用单个用户帐户登录一次，就能访问开展业务所需的全部应用和资源。 登录之后，可以从 Microsoft Office 转到 SalesForce，再转到 Box，无需再次进行身份验证（例如键入密码）。|
-|[无缝 SSO](https://aka.ms/SeamlessSSODPDownload)|Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接到企业网络的企业设备上的用户自动登录。 启用此功能后，用户无需键入其密码即可登录到 Azure AD；通常情况下，甚至无需键入其用户名。 此功能可让用户轻松访问基于云的应用程序，而无需使用其他任何本地组件。|
-|[访问面板](https://aka.ms/AccessPanelDPDownload)|为你的用户提供一个简单的中心来发现和访问他们的所有应用程序。 通过自助服务功能提高他们的工作效率，例如请求访问新应用和组的能力，或代表其他人管理对这些资源的访问。|
-|[使用 ADFS 进行密码哈希同步](https://aka.ms/deploymentplans/adfs2phs)|有了密码哈希同步，就可以将用户密码的哈希从本地 Active Directory 同步到 Azure AD，让 Azure AD 对用户进行身份验证，不与本地 Active Directory 交互|
-|[使用 ADFS 进行直通身份验证](https://aka.ms/deploymentplans/adfs2pta)|借助 Azure AD 直通身份验证证，你的用户可使用相同的密码登录到本地应用程序和基于云的应用程序。 此功能为用户提供更好的体验 - 少记一个密码，并且能减少 IT 支持人员成本，因为用户不太可能忘记如何登录。 当人们使用 Azure AD 登录时，此功能可直接通过本地 Active Directory 验证用户的密码。|
-|[Azure AD 应用程序代理](https://aka.ms/deploymentplans/appproxy)|现今的员工想要随时随地都能在任何设备上高效工作。 他们想要在自己的设备上工作，无论设备是平板电脑、手机还是笔记本电脑。 员工期望能够访问其所有的应用程序：云中的 SaaS 应用和本地的公司应用。 传统上，提供本地应用程序访问权限会涉及虚拟专用网络 (VPN) 或外围网络 (DMZ)。 这些解决方案不仅复杂且难以确保安全性，而且设置和管理成本也很高。 还有更好的办法！ - Azure AD 应用程序代理|
-|[用户预配](https://aka.ms/UserProvisioningDPDownload)|可以通过 Azure AD 自动创建、维护和删除云 (SaaS) 应用程序（如 Dropbox、Salesforce、ServiceNow 等）中的用户标识。|
-|[Workday 驱动的入站用户预配](https://aka.ms/WorkdayDeploymentPlan)|Workday 驱动的到 Active Directory 的入站用户预配为正在进行的标识管理奠定了基础，并提高了依赖权威标识数据的业务流程的质量。 使用此功能，可以通过配置将 Joiner-Mover-Leaver 流程（例如新雇佣、终止、转移）映射到 IT 预配操作（例如创建、启用、禁用、删除帐户等）的规则，无缝地管理员工和临时工的标识生命周期。|
-|[报告和监视](https://aka.ms/deploymentplans/reporting)| Azure AD 报告和监视解决方案的设计取决于你的法律、安全和运营要求以及你的现有环境和过程。 本文介绍各种设计选项, 并指导您正确部署策略。|
+| 功能 | 描述|
+| -| -|
+| [多重身份验证](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-getstarted)| Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 使用管理员批准的身份验证方法, Azure MFA 可帮助保护对数据和应用程序的访问, 同时满足用户对简单登录过程的需求。 |
+| [条件性访问](https://aka.ms/deploymentplans/ca)| 使用条件性访问, 你可以根据条件, 实现可访问云应用的用户的自动访问控制决策。 |
+| [自助密码重置](https://aka.ms/deploymentplans/sspr)| 自助密码重置功能可帮助用户在无需管理员干预的情况下重置密码。 |
+
+## <a name="deploy-application-management"></a>部署应用程序管理
+
+| 功能 | 描述|
+| -| - |
+| [单一登录](https://aka.ms/deploymentplans/sso)| 单一登录可帮助用户访问在只登录一次时需要执行业务的应用和资源。 登录后, 他们可以从 Microsoft Office 到 SalesForce 到 Box, 再到内部应用程序, 而无需再次输入凭据。 |
+| [访问面板](https://aka.ms/deploymentplans/accesspanel)| 为你的用户提供一个简单的中心来发现和访问他们的所有应用程序。 使用自助服务功能, 例如请求访问应用和组, 或者代表其他人管理对资源的访问权限, 从而提高工作效率。 |
+
+
+## <a name="deploy-hybrid-scenarios"></a>部署混合方案
+
+| 功能 | 描述|
+| -| -|
+| [使用 ADFS 进行密码哈希同步](https://aka.ms/deploymentplans/adfs2phs)| 通过密码哈希同步, 用户密码的哈希将从本地 Active Directory 同步到 Azure AD, 让 Azure AD 对不与本地的交互的用户进行身份验证 Active Directory |
+| [使用 ADFS 进行直通身份验证](https://aka.ms/deploymentplans/adfs2pta)| Azure AD 传递身份验证可帮助用户使用相同的密码登录到本地和基于云的应用程序。 此功能为用户提供更好的体验-需要记住的密码越少, 并且减少了 IT 支持人员的成本, 因为用户不太可能忘记登录的方式。 当人们使用 Azure AD 登录时，此功能可直接通过本地 Active Directory 验证用户的密码。 |
+| [Azure AD 应用程序代理](https://aka.ms/deploymentplans/appproxy)| 现今的员工想要随时随地都能在任何设备上高效工作。 他们需要访问云中的 SaaS 应用和本地公司应用。 Azure AD 应用程序代理可实现此强大的访问, 而无需昂贵、复杂的虚拟专用网络 (Vpn) 或外围区域 (Dmz)。 |
+| [无缝 SSO](https://aka.ms/SeamlessSSODPDownload)| Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接到企业网络的企业设备上的用户自动登录。 利用此功能, 用户无需键入密码即可登录 Azure AD, 通常不需要输入用户名。 此功能为授权用户提供轻松访问基于云的应用程序的权限, 而无需其他任何本地组件。 |
+
+## <a name="deploy-user-provisioning"></a>部署用户预配
+
+| 功能 | 描述|
+| -| -|
+| [用户预配](https://aka.ms/UserProvisioningDPDownload)| 可以通过 Azure AD 自动创建、维护和删除云 (SaaS) 应用程序（如 Dropbox、Salesforce、ServiceNow 等）中的用户标识。 |
+| [Workday 驱动的入站用户预配](https://aka.ms/WorkdayDeploymentPlan)| Workday 驱动的到 Active Directory 的入站用户预配为正在进行的标识管理奠定了基础，并提高了依赖权威标识数据的业务流程的质量。 使用此功能, 你可以通过配置将 Leaver 流程 (如 "创建"、"终止"、"转移") 映射到 IT 预配操作 (如 "创建"、"启用"、禁用 |
+
+## <a name="deploy-governance-and-reporting"></a>部署管理和报告
+
+| 功能 | 描述|
+| -| -|
+| [Privileged Identity Management](https://aka.ms/deploymentplans/pim)| Azure AD Privileged Identity Management (PIM) 可帮助跨 Azure AD、Azure 资源和其他 Microsoft 联机服务管理特权管理角色。 PIM 提供实时访问、请求审批工作流和完全集成的访问评审等解决方案，让用户可以实时识别、发现并防止特权角色的恶意活动。 |
+| [报告和监视](https://aka.ms/deploymentplans/reporting)| Azure AD 报告和监视解决方案的设计取决于你的法律、安全和运营要求以及你的现有环境和过程。 本文介绍各种设计选项, 并指导您正确部署策略。 |

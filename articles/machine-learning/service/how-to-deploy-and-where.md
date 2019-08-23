@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 7bfbec194733f2f8422eef45236a64e45bb553c7
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: acb3717f0e71ca1e67f1ddec79a259935f6cc539
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656364"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897693"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -723,7 +723,7 @@ Azure 机器学习计算目标由 Azure 机器学习服务创建和管理。 它
 
 1. 使用__服务连接__设置与 Azure 机器学习服务工作区的服务主体连接, 以访问所有项目。 单击 "项目设置", 单击 "服务连接", 并选择 "Azure 资源管理器"。
 
-    ![view-service-connection](media/how-to-deploy-and-where/view-service-connection.png) 
+    [![视图-服务-连接](media/how-to-deploy-and-where/view-service-connection.png)](media/how-to-deploy-and-where/view-service-connection-expanded.png) 
 
 1. 将 AzureMLWorkspace 定义为__作用域级别__, 并填写后续参数。
 
@@ -731,11 +731,11 @@ Azure 机器学习计算目标由 Azure 机器学习服务创建和管理。 它
 
 1. 接下来, 若要使用 Azure Pipelines 连续部署机器学习模型, 请在 "管道" 下选择 "__发布__"。 添加新项目, 选择 "AzureML 模型项目" 和在前面步骤中创建的服务连接。 选择要触发部署的模型和版本。 
 
-    ![select-AzureMLmodel-artifact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)
+    [![AzureMLmodel-项目](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
 
 1. 对模型项目启用模型触发器。 启用触发器后, 每次指定版本 (即 此模型的最新版本) 是在工作区中注册, 将触发 Azure DevOps release 管道。 
 
-    ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
+    [![enable-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
 
 有关更多示例项目和示例, 请参阅以下示例存储库:
 

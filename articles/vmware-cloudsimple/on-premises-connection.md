@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3f1772384621978524539514a0d647a4921a7b20
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: ee359b76072da3caee9ae1f5fab3d0fc28d25c0e
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69564103"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972689"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>使用 ExpressRoute 从本地连接到 CloudSimple
 
@@ -60,7 +60,7 @@ ms.locfileid: "69564103"
 
 6. 为要创建的连接提供<a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">支持</a>的票证。
     * 问题类型：**技术**
-    * 订阅:**部署 CloudSimple 服务的订阅**
+    * 订阅：**部署 CloudSimple 服务的订阅**
     * 服务：**VMware 解决方案 (按 CloudSimple)**
     * 问题类型:**服务请求**
     * 问题子类型:**创建到本地的 ExpressRoute 连接**

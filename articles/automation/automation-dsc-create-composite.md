@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9e76532d41e23cba376755ca524ca6911385204
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: d830b8e27bb6f66a533b8106cbec53eeca4ca139
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559502"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970716"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>将配置转换为复合资源
 
@@ -49,7 +49,7 @@ CompositeResource 自动执行从配置创建新模块的过程。
 
 生成模块后, 你可以在每次进行更改时递增版本并添加发行说明, 并将其发布到自己的[PowerShellGet 存储库](https://kevinmarquette.github.io/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)。
 
-创建包含配置 (或多个配置) 的复合资源模块后, 可以在 Azure 中的可[撰写创作体验](/azure/automation/compose-configurationwithcompositeresources)中使用它们, 或将其添加到[DSC 配置脚本](/powershell/dsc/resources/configurations)以生成 MOF 文件和将[MOF 文件上传到 Azure 自动化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
+创建包含配置 (或多个配置) 的复合资源模块后, 可以在 Azure 中的可[撰写创作体验](/azure/automation/compose-configurationwithcompositeresources)中使用它们, 或将其添加到[DSC 配置脚本](/powershell/dsc/configurations/configurations)以生成 MOF 文件和将[MOF 文件上传到 Azure 自动化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
 然后从[本地](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)或[Azure 中](/azure/automation/automation-dsc-onboarding#azure-virtual-machines)将服务器注册到请求配置。
 项目的最新更新还发布了适用于 Azure 自动化的[runbook](https://www.powershellgallery.com/packages?q=DscGallerySamples) , 以便自动从 PowerShell 库导入配置。
 

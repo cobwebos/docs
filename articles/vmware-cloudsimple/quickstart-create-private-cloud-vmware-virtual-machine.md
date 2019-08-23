@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4e1642366d41906035e1ba1b7f75d0ad875c739b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8d4712ca57801c15510ffcaf54852ce9287d343b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574614"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972399"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在私有云上创建 VMware 虚拟机
 
@@ -143,7 +143,7 @@ CloudSimple 门户中的 "网络" 页允许您为 Vm 指定防火墙表和公共
 
     ![公共 IP](media/quick-create-pc-public-ip.png)
 
-开始分配公共 IP 地址的任务。 可以在**活动 > 任务**"页上检查任务的状态。 分配完成后, "公共 Ip" 页面上会显示新条目。 
+开始分配公共 IP 地址的任务。 可以在**活动 > 任务**"页上检查任务的状态。 分配完成后, "公共 Ip" 页面上会显示新条目。
 
 此 IP 地址必须映射到的 VM 需要配置在上面指定的本地地址。 配置 IP 地址的过程特定于 VM 操作系统。 有关正确的过程, 请参阅 VM 操作系统的文档。
 
@@ -205,7 +205,7 @@ python2.7 -m SimpleHTTPServer 80
 ```
 python3 -m http.server 80
 ```
-在桌面上启动浏览器, 并将其指向公共 IP 地址的端口 80, 以浏览 VM 上的文件。 
+在桌面上启动浏览器, 并将其指向公共 IP 地址的端口 80, 以浏览 VM 上的文件。
 
 ### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>公共 IP 的默认 CloudSimple 防火墙规则
 

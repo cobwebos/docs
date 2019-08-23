@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 08/14/2019
-ms.openlocfilehash: 6a29d1e001d4c647d5b975b7e746eced29962ee4
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 08/22/2019
+ms.openlocfilehash: 481419a5db6efd600d74851238cd1a12d8766186
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637244"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972530"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>使用基于 vCore 的购买模型的单一数据库的资源限制
 
@@ -301,7 +301,7 @@ ms.locfileid: "69637244"
 |IO 延迟（近似）|待定|待定|待定|待定|待定|待定|待定|待定|
 |最大并发工作线程数（请求数）|200|400|800|1600|2400|3200|4000|8000|
 |最大并发会话数|30000|30000|30000|30000|30000|30000|30000|30000|
-|副本数|2|2|2|2|2|2|2|2|
+|次要副本|0-4|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
 |Multi-AZ|不可用|不可用|不可用|不可用|不可用|不可用|不可用|不可用|
 |读取横向扩展|是|是|是|是|是|是|是|是|
 |随附的备份存储 |7|7|7|7|7|7|7|7|

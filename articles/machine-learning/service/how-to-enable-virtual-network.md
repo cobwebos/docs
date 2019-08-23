@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: 05c5d42d3c20948df4f42db50dd93abd60288c00
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6e5ae4966a62c24594ec6efa9454d5e03f75c25b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639581"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971528"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 
-在本文中, 你将了解如何在 Azure 虚拟网络 (vnet) 中的 Azure 机器学习中保护试验/培训作业和推理/评分作业。 
+在本文中, 你将了解如何在 Azure 虚拟网络 (vnet) 中的 Azure 机器学习中保护试验/培训作业和推理/评分作业。
 
 **虚拟网络**充当安全边界, 将 Azure 资源与公共 internet 隔离开来。 你也可以将 Azure 虚拟网络加入本地网络。 通过加入网络, 可以安全地训练模型并访问已部署的模型以进行推断。
 
@@ -29,25 +29,25 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
 
 ## <a name="prerequisites"></a>先决条件
 
-+ Azure 机器学习服务[工作区](how-to-manage-workspace.md)。 
++ Azure 机器学习服务[工作区](how-to-manage-workspace.md)。
 
-+ [Azure 虚拟网络服务](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)和[IP 网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)的常规工作知识。 
++ [Azure 虚拟网络服务](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)和[IP 网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)的常规工作知识。
 
-+ 用于计算资源的预先存在的虚拟网络和子网。 
++ 用于计算资源的预先存在的虚拟网络和子网。
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>使用工作区的存储帐户
 
 若要为虚拟网络中的工作区使用 Azure 存储帐户, 请执行以下操作:
 
-1. 在虚拟网络后创建试验计算实例 (例如机器学习计算实例), 或将试验计算实例附加到工作区 (例如, HDInsight 群集或虚拟机)。 
+1. 在虚拟网络后创建试验计算实例 (例如机器学习计算实例), 或将试验计算实例附加到工作区 (例如, HDInsight 群集或虚拟机)。
 
    有关详细信息, 请参阅本文中的 "使用机器学习计算实例" 和 "使用虚拟机或 HDInsight 群集" 部分。
 
-1. 在 Azure 门户中, 请前往附加到工作区的存储。 
+1. 在 Azure 门户中, 请前往附加到工作区的存储。
 
-   ![附加到 Azure 机器学习服务工作区的存储](./media/how-to-enable-virtual-network/workspace-storage.png)
+   [![附加到 Azure 机器学习服务工作区的存储](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. 在 " **Azure 存储空间**" 页上, 选择 "__防火墙和虚拟网络__"。 
+1. 在 " **Azure 存储空间**" 页上, 选择 "__防火墙和虚拟网络__"。
 
    !["Azure 存储" 页上的 "防火墙和虚拟网络" 区域 Azure 门户](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
@@ -56,7 +56,12 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
     - 在 "__虚拟网络__" 下, 选择 "__添加现有虚拟网络__" 链接。 此操作将添加试验计算实例所在的虚拟网络 (请参阅步骤 1)。
     - 选中 "__允许受信任的 Microsoft 服务访问此存储帐户__" 复选框。
 
-   ![Azure 门户中的 "防火墙和虚拟网络" 窗格](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)
+    > [!IMPORTANT]
+    > 使用 Azure 机器学习 SDK 时, 你的开发环境必须能够连接到 Azure 存储帐户。 当存储帐户位于虚拟网络内部时, 防火墙必须允许从开发环境的 IP 地址进行访问。
+    >
+    > 若要启用对存储帐户的访问, 请在*开发客户端的 web 浏览器中*访问存储帐户的__防火墙和虚拟网络__。 然后, 使用 "__添加客户端 IP 地址__" 复选框将客户端的 ip 地址添加到__地址范围__。 你还可以使用 "__地址范围__" 字段手动输入开发环境的 IP 地址。 添加客户端的 IP 地址后, 可以使用 SDK 访问存储帐户。
+
+   [![Azure 门户中的 "防火墙和虚拟网络" 窗格](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
 1. 运行试验时, 请在试验代码中更改运行配置以使用 Azure Blob 存储:
 
@@ -65,9 +70,9 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
     ```
 
 > [!IMPORTANT]
-> 你可以在虚拟网络中将 Azure 机器学习服务的_默认存储帐户_设置_为仅用于试验_。
+> 你可以在虚拟网络中将 Azure 机器学习服务的_默认存储帐户_设置_为仅用于试验_。 创建工作区时, 会自动预配默认存储帐户。
 >
-> 你可以在虚拟网络中将_非默认存储帐户_置于_仅用于试验_。
+> 你可以在虚拟网络中将_非默认存储帐户_置于_仅用于试验_。 函数`storage_account`中的参数允许你按 Azure 资源 ID 指定自定义存储帐户。 [ `Workspace.create()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)
 >
 > 用于_推理_的默认和非默认存储帐户都必须具有_对存储帐户的无限制访问权限_。
 >
@@ -81,11 +86,11 @@ Azure 机器学习服务使用与工作区关联的密钥保管库实例来存�
 * 数据存储的连接字符串
 
 若要在虚拟网络后使用 Azure Key Vault Azure 机器学习试验功能, 请执行以下操作:
-1. 中转到与工作区关联的密钥保管库。 
+1. 中转到与工作区关联的密钥保管库。
 
-   ![与 Azure 机器学习服务工作区关联的密钥保管库](./media/how-to-enable-virtual-network/workspace-key-vault.png)
+   [![与 Azure 机器学习服务工作区关联的密钥保管库](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
 
-1. 在 " **Key Vault** " 页上的左窗格中, 选择 "__防火墙和虚拟网络__"。 
+1. 在 " **Key Vault** " 页上的左窗格中, 选择 "__防火墙和虚拟网络__"。
 
    !["Key Vault" 窗格中的 "防火墙和虚拟网络" 部分](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 
@@ -94,31 +99,25 @@ Azure 机器学习服务使用与工作区关联的密钥保管库实例来存�
     - 在 "__虚拟网络__" 下, 选择 "__添加现有虚拟网络__" 以添加试验计算实例所在的虚拟网络。
     - 在 "__允许受信任的 Microsoft 服务跳过此防火墙__" 下, 选择 __"是"__ 。
 
-   !["Key Vault" 窗格中的 "防火墙和虚拟网络" 部分](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)
+   [!["Key Vault" 窗格中的 "防火墙和虚拟网络" 部分](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 
 ## <a name="use-a-machine-learning-compute-instance"></a>使用机器学习计算实例
 
-若要在虚拟网络中使用 Azure 机器学习计算实例, 请考虑以下网络要求:
+若要在虚拟网络中使用 Azure 机器学习计算实例, 必须满足以下网络要求:
 
-- 该虚拟网络必须与 Azure 机器学习服务工作区位于同一订阅和区域。
+> [!div class="checklist"]
+> * 该虚拟网络必须与 Azure 机器学习服务工作区位于同一订阅和区域。
+> * 为计算群集指定的子网必须具有足够的未分配 IP 地址, 才能容纳群集目标 Vm 的数量。 如果子网没有足够的未分配 IP 地址, 则将对该群集进行部分分配。
+> * 查看虚拟网络的订阅或资源组的安全策略或锁定是否限制了管理虚拟网络的权限。 如果打算通过限制流量来保护虚拟网络, 请为计算服务留出一些打开的端口。 有关详细信息, 请参阅[所需的端口](#mlcports)部分。
+> * 如果要在一个虚拟网络中放置多个计算群集, 则可能需要为一个或多个资源请求增加配额。
 
-- 为计算群集指定的子网必须具有足够的未分配 IP 地址, 才能容纳群集目标 Vm 的数量。 如果该子网没有足够的未分配 IP 地址，则只分配该群集的一部分资源。
+机器学习计算实例会自动分配包含虚拟网络的资源组中的其他网络资源。 对于每个计算群集, 服务分配以下资源:
 
-- 如果打算通过限制流量来保护虚拟网络, 请为计算服务留出一些打开的端口。 有关详细信息，请参阅[所需的端口](#mlcports)部分。
+* 一个网络安全组
+* 一个公共 IP 地址
+* 一个负载均衡器
 
-- 查看虚拟网络的订阅或资源组的安全策略或锁定是否限制了管理虚拟网络的权限。
-
-- 如果要在一个虚拟网络中放置多个计算群集, 则可能需要为一个或多个资源请求增加配额。
-
-    机器学习计算实例会自动分配包含虚拟网络的资源组中的其他网络资源。 对于每个计算群集, 服务分配以下资源:
-
-    - 一个网络安全组
-
-    - 一个公共 IP 地址
-
-    - 一个负载均衡器
-
-  这些资源受订阅的[资源配额](https://docs.microsoft.com/azure/azure-subscription-service-limits)限制。
+这些资源受订阅的[资源配额](https://docs.microsoft.com/azure/azure-subscription-service-limits)限制。
 
 ### <a id="mlcports"></a>所需的端口
 
@@ -140,7 +139,7 @@ Azure 机器学习服务使用与工作区关联的密钥保管库实例来存�
 
 下图显示了 Azure 门户中的 NSG 规则配置:
 
-![机器学习计算的入站 NSG 规则](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png)
+[![机器学习计算的入站 NSG 规则](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png)](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png#lightbox)
 
 ![机器学习计算的出站 NSG 规则](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
 
@@ -157,7 +156,7 @@ Azure 机器学习服务使用与工作区关联的密钥保管库实例来存�
 
 下图显示了 Azure 门户中的 NSG 规则配置:
 
-![机器学习计算的出站 NSG 规则](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)
+[![机器学习计算的出站 NSG 规则](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 ### <a name="user-defined-routes-for-forced-tunneling"></a>用户定义的用于强制隧道的路由
 
@@ -282,13 +281,13 @@ except ComputeTargetException:
 若要将虚拟网络中的 AKS 添加到工作区, 请执行以下操作:
 
 > [!IMPORTANT]
-> 开始以下过程之前, 请检查系统必备组件, 并规划群集的 IP 寻址。 有关详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中配置高级网络](https://docs.microsoft.com/azure/aks/configure-advanced-networking)。
+> 开始以下过程之前, 请遵循在[Azure Kubernetes Service (AKS) 中配置高级网络](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites)"操作方法" 中的先决条件, 并规划群集的 IP 寻址。
 >
 > AKS 实例和 Azure 虚拟网络必须位于同一区域。
 
 1. 在[Azure 门户](https://portal.azure.com)中, 请确保控制虚拟网络的 NSG 具有一个入站规则, 该规则是使用__AzureMachineLearning__作为**源**为 Azure 机器学习服务启用的。
 
-    !["Azure 机器学习服务" 添加计算窗格](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)
+    [!["Azure 机器学习服务" 添加计算窗格](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
 
 1. 选择 Azure 机器学习服务工作区。
 
@@ -315,8 +314,8 @@ except ComputeTargetException:
 1. 确保控制虚拟网络的 NSG 组已为评分终结点启用了入站安全规则, 以便可以从虚拟网络外部调用它。
    > [!IMPORTANT]
    > 保留 NSG 的默认出站规则。 有关详细信息，请参阅[安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)中的“默认安全规则”。
-  
-   ![入站安全规则](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
+
+   [![入站安全规则](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
 
 你还可以使用 Azure 机器学习 SDK 将 Azure Kubernetes 服务添加到虚拟网络中。 如果虚拟网络中已有 AKS 群集, 请将其附加到工作区, 如[如何部署到 AKS](how-to-deploy-to-aks.md)中所述。 以下代码在名为`default` `mynetwork`的虚拟网络的子网中创建新的 AKS 实例:
 

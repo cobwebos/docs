@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6869602b7d4aff6d779d189f0b6444dde2055d4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5630c157ef7843726bcc17455a1e683e58b88ffd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261907"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905240"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -30,7 +30,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-virtual-machines"></a>Azure 虚拟机
 
-| 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure 政府 | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
 | 系统分配 | 可用 | 预览 | 预览 | 预览 | 
 | 用户分配 | 预览 | 预览 | 预览 | 预览 |
@@ -45,7 +45,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集
 
-|托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+|托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure 政府 | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
 | 系统分配 | 可用 | 预览 | 预览 | 预览 |
 | 用户分配 | 预览 | 预览 | 预览 | 预览 |
@@ -60,10 +60,10 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-app-service"></a>Azure 应用服务
 
-| 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure 政府 | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
 | 系统分配 | 可用 | 可用 | 可用 | 可用 |
-| 用户分配 | 预览 | 不可用 | 不可用 | 不可用 |
+| 用户分配 | 可用 | 不可用 | 不可用 | 不可用 |
 
 请参阅以下列表来配置 Azure 应用服务的托管标识（在可用的区域中）：
 
@@ -74,7 +74,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-blueprints"></a>Azure 蓝图
 
-|托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+|托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure 政府 | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
 | 系统分配 | 预览 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 预览 | 不可用 | 不可用 | 不可用 |
@@ -86,10 +86,10 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-functions"></a>Azure Functions
 
-托管标识类型 |所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+托管标识类型 |所有正式发布版<br>全球 Azure 区域 | Azure 政府 | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
 | 系统分配 | 可用 | 可用 | 可用 | 可用 |
-| 用户分配 | 预览 | 不可用 | 不可用 | 不可用 |
+| 用户分配 | 可用 | 不可用 | 不可用 | 不可用 |
 
 请参阅以下列表来配置 Azure Functions 的托管标识（在可用的区域中）：
 
@@ -100,7 +100,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-logic-apps"></a>Azure 逻辑应用
 
-托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure 政府 | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
 | 系统分配 | 预览 | 预览 | 不可用 | 预览 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
@@ -112,7 +112,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-data-factory-v2"></a>Azure 数据工厂 V2
 
-托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure 政府 | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
 | 系统分配 | 可用 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
@@ -126,7 +126,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-api-management"></a>Azure API 管理
 
-托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure 政府 | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
 | 系统分配 | 可用 | 可用 | 不可用 | 不可用 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
@@ -137,7 +137,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-container-instances"></a>Azure 容器实例
 
-托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure 政府 | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
 | 系统分配 | Linux：预览<br>Windows:不可用 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | Linux：预览<br>Windows:不可用 | 不可用 | 不可用 | 不可用 |
@@ -150,7 +150,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-container-registry-tasks"></a>Azure 容器注册表任务
 
-托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure 政府 | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
 | 系统分配 | 可用 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 预览 | 不可用 | 不可用 | 不可用 |
@@ -165,7 +165,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-resource-manager"></a>Azure 资源管理器
 
-请参阅以下列表, 配置对 Azure 资源管理器的访问权限:
+请参阅以下列表配置对 Azure 资源管理器的访问权限：
 
 - [通过 Azure 门户分配访问权限](howto-assign-access-portal.md)
 - [通过 Powershell 分配访问权限](howto-assign-access-powershell.md)
@@ -175,16 +175,16 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
 | Azure 全球 | `https://management.azure.com/`| 可用 |
-| Azure Government | `https://management.usgovcloudapi.net/` | 可用 |
+| Azure 政府 | `https://management.usgovcloudapi.net/` | 可用 |
 | Azure 德国 | `https://management.microsoftazure.de/` | 可用 |
 | Azure 中国世纪互联 | `https://management.chinacloudapi.cn` | 可用 |
 
-### <a name="azure-key-vault"></a>Azure 密钥保管库
+### <a name="azure-key-vault"></a>Azure Key Vault
 
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
 | Azure 全球 | `https://vault.azure.net`| 可用 |
-| Azure Government | `https://vault.usgovcloudapi.net` | 可用 |
+| Azure 政府 | `https://vault.usgovcloudapi.net` | 可用 |
 | Azure 德国 |  `https://vault.microsoftazure.de` | 可用 |
 | Azure 中国世纪互联 | `https://vault.azure.cn` | 可用 |
 
@@ -193,7 +193,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
 | Azure 全球 | `https://datalake.azure.net/` | 可用 |
-| Azure Government |  | 不可用 |
+| Azure 政府 |  | 不可用 |
 | Azure 德国 |   | 不可用 |
 | Azure 中国世纪互联 |  | 不可用 |
 
@@ -202,7 +202,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
 | Azure 全球 | `https://database.windows.net/` | 可用 |
-| Azure Government | `https://database.usgovcloudapi.net/` | 可用 |
+| Azure 政府 | `https://database.usgovcloudapi.net/` | 可用 |
 | Azure 德国 | `https://database.cloudapi.de/` | 可用 |
 | Azure 中国世纪互联 | `https://database.chinacloudapi.cn/` | 可用 |
 
@@ -211,7 +211,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
 | Azure 全球 | `https://eventhubs.azure.net` | 预览 |
-| Azure Government |  | 不可用 |
+| Azure 政府 |  | 不可用 |
 | Azure 德国 |   | 不可用 |
 | Azure 中国世纪互联 |  | 不可用 |
 
@@ -220,7 +220,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
 | Azure 全球 | `https://servicebus.azure.net`  | 预览 |
-| Azure Government |  | 不可用 |
+| Azure 政府 |  | 不可用 |
 | Azure 德国 |   | 不可用 |
 | Azure 中国世纪互联 |  | 不可用 |
 
@@ -229,7 +229,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
 | Azure 全球 | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 可用 |
-| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 可用 |
+| Azure 政府 | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 可用 |
 | Azure 德国 | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 可用 |
 | Azure 中国世纪互联 | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 可用 |
 
@@ -238,6 +238,6 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
 | Azure 全球 | `https://*.asazure.windows.net` | 可用 |
-| Azure Government | `https://*.asazure.usgovcloudapi.net` | 可用 |
+| Azure 政府 | `https://*.asazure.usgovcloudapi.net` | 可用 |
 | Azure 德国 | `https://*.asazure.cloudapi.de` | 可用 |
 | Azure 中国世纪互联 | `https://*.asazure.chinacloudapi.cn` | 可用 |

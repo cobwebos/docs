@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: b25806044dd74092a5404ad7ef24ddd386dffbc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c24352fdbc6b81e7d263ac8c511b7c61792e6ae
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521751"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907868"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>设置 VNet 的网络映射和 IP 寻址
 
 本文介绍如何映射不同 Azure 区域中的两个 Azure 虚拟网络 (VNet) 实例，以及如何设置网络之间的 IP 寻址。 启用复制时，网络映射为基于源网络的目标网络选择提供了默认行为。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在映射网络之前，应在源和目标 Azure 区域中创建 [Azure VNet](../virtual-network/virtual-networks-overview.md)。 
 
@@ -26,11 +26,11 @@ ms.locfileid: "65521751"
 
 按如下所述映射网络：
 
-1. 在“Site Recovery 基础结构”中，单击“+网络映射”。  
+1. 在“Site Recovery 基础结构”中，单击“+网络映射”。
 
     ![ 创建网络映射](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 
-3. 在“添加网络映射”中，选择源和目标位置。  在本示例中，源 VM 在“东亚”区域运行，将复制到“东南亚”区域。
+3. 在“添加网络映射”中，选择源和目标位置。 在本示例中，源 VM 在“东亚”区域运行，将复制到“东南亚”区域。
 
     ![选择源和目标](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 3. 现在，在对方目录中创建网络映射。 在本示例中，源现在是“东南亚”，目标是“东亚”。
@@ -58,7 +58,7 @@ ms.locfileid: "65521751"
 
 - 如果可在目标网络中找到与源 VM 子网同名的子网，则为目标 VM 设置该子网。
 - 如果目标网络中没有同名的子网，则按字母顺序设置第一个子网作为目标子网。
-- 您可以修改中的目标子网**计算和网络**VM 的设置。
+- 可以在 VM 的“计算和网络”设置中修改目标子网。
 
     ![计算和网络计算属性窗口](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
@@ -90,12 +90,10 @@ ms.locfileid: "65521751"
 
 - 故障转移 VNet 是设置灾难恢复时选择的目标网络。
 - 我们建议始终使用非生产网络进行测试故障转移。
-- 可以在 VM 的“计算和网络”设置中修改目标 IP 地址。 
+- 可以在 VM 的“计算和网络”设置中修改目标 IP 地址。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - 查看 Azure VM 灾难恢复的[网络指导](site-recovery-azure-to-azure-networking-guidance.md)。
 - [详细了解](site-recovery-retain-ip-azure-vm-failover.md)如何在故障转移后保留 IP 地址。
-
-选择的目标网络是故障转移 VNet，但第 2 点指出“如果所选目标网络不同于故障转移 VNet，但子网范围与故障转移 VNet 相同”

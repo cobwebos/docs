@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 1fd08efd12e723a16445eba1d341f017a86a212e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e55b191e937b6c9f8183b3878b264eb50401b3f1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68481377"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69903966"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>网络限制-Azure 资源管理器以下限制仅适用于通过**Azure 资源管理器**每个订阅的每个区域管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -78,7 +78,7 @@ ms.locfileid: "68481377"
 | Resource | 默认限制 | 最大限制 |
 | --- | --- | --- |
 | 虚拟网络 |100 |100 |
-| 本地网络站点 |20 |联系支持人员。 |
+| 本地网络站点 |20 |50 |
 | 每个虚拟网络的 DNS 服务器数 |20 |20 |
 | 每个虚拟网络的专用 IP 地址数 |4,096 |4,096 |
 | 虚拟机或角色实例的单 NIC 并发 TCP 或 UDP 流数 |如果 NIC 至少有两个，则为 500,000（至多 1,000,000）。 |如果 NIC 至少有两个，则为 500,000（至多 1,000,000）。 |

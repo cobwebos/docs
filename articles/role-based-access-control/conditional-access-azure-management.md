@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 3aa24fdfc156c0197d724fd57729f5b11fa908ee
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d4036b2aaa59eeb8e38a5881e465031d7a2f15e3
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278145"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899714"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>使用条件性访问管理对 Azure 管理的访问
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 中的条件性访问根据你指定的特定�
 
 通常, 使用条件访问来控制对云应用的访问。 此外，还可以设置策略来基于某些条件（如登录风险、位置或设备）控制对 Azure 管理的访问权限并强制实施多重身份验证等要求。
 
-若要创建用于 Azure 管理的策略，请在选择要应用该策略的应用时，选择“云应用”  下的“Microsoft Azure 管理”  。
+若要创建用于 Azure 管理的策略，请在选择要应用该策略的应用时，选择“云应用”下的“Microsoft Azure 管理”。
 
 ![用于 Azure 管理的条件访问](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
@@ -40,6 +40,7 @@ Azure Active Directory (Azure AD) 中的条件性访问根据你指定的特定�
 - Azure PowerShell
 - Visual Studio 订阅管理员门户
 - Azure DevOps
+- Azure 数据工厂门户
 
 请注意，该策略适用于调用 Azure 资源管理器 API 的 Azure PowerShell。 它不适用于调用 Microsoft Graph 的 [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 393c66f57cd4a7621ad660774a95502c0f5ad8c4
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: b9fcf06caf2abf116a2f2b99f26ead6277f7ad50
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534705"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970546"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -76,7 +76,7 @@ ms.locfileid: "69534705"
 |操作系统  |说明  |
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 仅支持更新评估。         |
-|Windows Server 2008 R2 SP1 及更高版本。  |需要 .NET Framework 4.5.1 或更高版本。 （[下载 .NET 框架](/dotnet/framework/install/guide-for-developers)）<br/> 需要 Windows PowerShell 4.0 或更高版本。 （[下载 WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)）<br/> 为提高可靠性，建议使用 Windows PowerShell 5.1。  （[下载 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2008 R2 (RTM 和 SP1 Standard)|需要 .NET Framework 4.5.1 或更高版本。 （[下载 .NET 框架](/dotnet/framework/install/guide-for-developers)）<br/> 需要 Windows PowerShell 4.0 或更高版本。 （[下载 WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)）<br/> 为提高可靠性，建议使用 Windows PowerShell 5.1。  （[下载 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要借助“yum”来返回 CentOS 当前没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息, 请参阅[Linux 上的更新分类](#linux-2)          |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
@@ -371,7 +371,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 |\* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |\* .azure-automation.net|*.azure-automation.us|
 
-对于 Windows 计算机, 还必须允许流量发送到 Windows 更新所需的任何终结点。  可以在[与 HTTP/Proxy 相关的问题](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中找到所需用法的更新列表。 如果你有本地[Windows 更新服务器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), 则还必须允许流量流向[WSUS 密钥](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的服务器。
+对于 Windows 计算机, 还必须允许流量发送到 Windows 更新所需的任何终结点。  可以在[与 HTTP/Proxy 相关的问题](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中找到所需终结点的更新列表。 如果你有本地[Windows 更新服务器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), 则还必须允许流量流向[WSUS 密钥](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的服务器。
 
 对于 Red Hat Linux 计算机, 请参阅[RHUI 内容传送服务器的 ip](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers)以获取所需的终结点。 对于其他 Linux 发行版, 请参阅提供程序文档。
 

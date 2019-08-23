@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 591a62ebb6b83ea23d3ed6cf867c07b91e1596b3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5664bf1eaee85d2492601ef00968d9b17d857abb
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847047"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900484"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
 
@@ -40,7 +40,7 @@ ms.locfileid: "68847047"
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-可以使用[Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)启用静态网站托管。
+您可以使用[Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)来启用静态网站托管。
 
 1. 首先, 打开[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest); 如果已在本地[安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)了 Azure CLI, 请打开命令控制台应用程序, 如 Windows PowerShell。
 
@@ -175,7 +175,7 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 使用以下命令查找 URL:
 
 ```powershell
- $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
+ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -Name "<storage-account-name>"
 Write-Output $storageAccount.PrimaryEndpoints.Web
 ```
 

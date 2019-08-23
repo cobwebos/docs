@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/22/2019
+ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 52d7b84fe6210d8a4d46814ad6749bed0463478e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: a0b0df9110f062b5f9c23840cb21308b634c9c81
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405645"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898146"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
@@ -76,8 +76,13 @@ ms.locfileid: "68405645"
 > [!NOTE]
 > 有关以下每项的数值限制，请参阅[用于监视的订阅服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits)。  
 
+### <a name="automation-runbook"></a>自动化 Runbook
+有关 Runbook 有效负载的限制，请参考 [Azure 订阅服务限制](../../azure-subscription-service-limits.md)。
+
+一个操作组中可以存在有限数量的 Runbook 操作。 
+
 ### <a name="azure-app-push-notifications"></a>Azure 应用推送通知
-操作组中可能包含有限数量的 Azure 应用操作。
+一个操作组中可以存在有限数量的 Azure 应用操作。
 
 ### <a name="email"></a>Email
 将从以下电子邮件地址发送电子邮件。 确保电子邮件筛选正确配置
@@ -87,81 +92,47 @@ ms.locfileid: "68405645"
 
 一个操作组中可以存在有限数量的电子邮件操作。 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
+### <a name="email-azure-resource-manager-role"></a>通过电子邮件发送 Azure 资源管理器角色
+向订阅角色的成员发送电子邮件。
+
+一个操作组中可以存在有限数量的电子邮件操作。 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
+
+### <a name="function"></a>函数
+配置为操作的 Function App 的函数密钥通过函数 API 读取。目前，这需要 v2 函数应用将应用设置“AzureWebJobsSecretStorageType”配置为“files”。 有关详细信息，请参阅 [Functions V2 中对密钥管理的更改]( https://aka.ms/funcsecrets)。
+
+一个操作组中可以存在有限数量的 Function 操作。
+
 ### <a name="itsm"></a>ITSM
 ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../../azure-monitor/platform/itsmc-overview.md)。
 
-操作组中可能包含有限数量的 ITSM 操作。 
+一个操作组中可以存在有限数量的 ITSM 操作。 
 
 ### <a name="logic-app"></a>逻辑应用
-操作组中可能包含有限数量的逻辑应用操作。
+一个操作组中可以存在有限数量的逻辑应用操作。
 
-### <a name="function"></a>函数
-为操作配置的函数应用的功能密钥是通过函数 API 读取的, 该 API 当前需要 v2 函数应用将应用设置 "AzureWebJobsSecretStorageType" 配置为 "files"。 有关详细信息，请参阅 [Functions V2 中对密钥管理的更改]( https://aka.ms/funcsecrets)。
+### <a name="secure-webhook"></a>安全 Webhook
+**安全 Webhook 功能目前为预览版。**
 
-操作组中可能包含有限数量的函数操作。
+可以通过“操作组 Webhook”操作利用 Azure Active Directory 来保护操作组和受保护 Web API（Webhook 终结点）之间的连接。 利用此功能的完整工作流如下所述。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
 
-### <a name="automation-runbook"></a>自动化 Runbook
-有关 Runbook 有效负载的限制，请参考 [Azure 订阅服务限制](../../azure-subscription-service-limits.md)。
-
-操作组中可能包含有限数量的 Runbook 操作。 
-
-### <a name="sms"></a>短信
-有关其他重要信息, 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)和[SMS 警报行为](../../azure-monitor/platform/alerts-sms-behavior.md)。
-
-操作组中的短信操作数可能有限。  
-
-### <a name="voice"></a>语音
-请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
-
-操作组中可能包含有限数量的语音操作。
-
-### <a name="webhook"></a>Webhook
-Webhook 使用以下规则进行重试。 当返回的 HTTP 状态代码为 408、429、503、504 或者 HTTP 终结点未响应时，最多可以重试 2 次 Webhook 调用。 首次重试在 10 秒后发生。 第二次重试在 100 秒后发生。 在失败两次后，操作组在 30 分钟内不会再调用该终结点。 
-
-源 IP 地址范围
- - 13.72.19.232
- - 13.106.57.181
- - 13.106.54.3
- - 13.106.54.19
- - 13.106.38.142
- - 13.106.38.148
- - 13.106.57.196
- - 13.106.57.197
- - 52.244.68.117
- - 52.244.65.137
- - 52.183.31.0
- - 52.184.145.166
- - 51.4.138.199
- - 51.5.148.86
- - 51.5.149.19
-
-若要接收有关这些 IP 地址更改的更新，我们建议你配置服务运行状况警报，以监视有关操作组服务的信息通知。
-
-操作组中可能包含有限数量的 Webhook 操作。
-
-#### <a name="secure-webhook"></a>安全 Webhook
-**安全 Webhook 功能目前处于预览阶段。**
-
-操作组 Webhook 操作使你能够利用 Azure Active Directory 来保护操作组与受保护的 web API (Webhook 终结点) 之间的连接。 下面介绍了利用此功能的整个工作流。 有关 Azure AD 应用程序和服务主体的概述, 请参阅[Microsoft 标识平台 (v2.0) 概述](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
-
-1. 为受保护的 web API 创建 Azure AD 应用程序。 请参阅 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview 。
-    - 配置要由后台程序应用调用的受保护 API。
+1. 针对受保护的 Web API 创建 Azure AD 应用程序。 请参阅 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview 。
+    - 将受保护的 API 配置为通过守护程序应用进行调用。
     
-1. 允许操作组使用您的 Azure AD 应用程序。
+1. 允许操作组使用 Azure AD 应用程序。
 
     > [!NOTE]
-    > 您必须是 " [Azure AD" 应用程序管理员 "角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成员才能执行此脚本。
+    > 你必须是 [Azure AD 应用程序管理员角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成员才能执行此脚本。
     
-    - 修改 PowerShell 脚本的 AzureAD 调用, 以使用 Azure AD 租户 ID。
-    - 将 PowerShell 脚本的变量 $myAzureADApplicationObjectId 修改为使用 Azure AD 应用程序的对象 ID
-    - 运行修改后的脚本。
+    - 修改 PowerShell 脚本的 Connect-AzureAD 调用，以便使用 Azure AD 租户 ID。
+    - 修改 PowerShell 脚本的变量 $myAzureADApplicationObjectId，以便使用 Azure AD 应用程序的对象 ID。
+    - 运行修改的脚本。
     
-1. 配置操作组 Webhook 操作。
-    - 从脚本中复制 $myApp ObjectId 的值, 并将其输入到 Webhook 操作定义中的 "应用程序对象 ID" 字段。
+1. 配置操作组安全 Webhook 操作。
+    - 从脚本中复制 $myApp.ObjectId 值，将其输入 Webhook 操作定义的“应用程序对象 ID”字段中。
     
-    ![安全 Webhook 操作](./media/action-groups/action-groups-secure-webhook.png)
+    ![保护 Webhook 操作](./media/action-groups/action-groups-secure-webhook.png)
 
-##### <a name="secure-webhook-powershell-script"></a>安全 Webhook PowerShell 脚本
+#### <a name="secure-webhook-powershell-script"></a>保护 Webhook PowerShell 脚本
 
 ```PowerShell
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
@@ -229,6 +200,41 @@ Write-Host "My Azure AD Application ($myApp.ObjectId): " + $myApp.ObjectId
 Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
+
+### <a name="sms"></a>短信
+有关其他重要信息，请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)和[短信警报行为](../../azure-monitor/platform/alerts-sms-behavior.md)。
+
+一个操作组中可以存在有限数量的短信操作。  
+
+### <a name="voice"></a>语音
+请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
+
+一个操作组中可以存在有限数量的语音操作。
+
+### <a name="webhook"></a>Webhook
+Webhook 使用以下规则进行重试。 当返回的 HTTP 状态代码为 408、429、503、504 或者 HTTP 终结点未响应时，最多可以重试 2 次 Webhook 调用。 首次重试在 10 秒后发生。 第二次重试在 100 秒后发生。 在失败两次后，操作组在 30 分钟内不会再调用该终结点。 
+
+源 IP 地址范围
+ - 13.72.19.232
+ - 13.106.57.181
+ - 13.106.54.3
+ - 13.106.54.19
+ - 13.106.38.142
+ - 13.106.38.148
+ - 13.106.57.196
+ - 13.106.57.197
+ - 52.244.68.117
+ - 52.244.65.137
+ - 52.183.31.0
+ - 52.184.145.166
+ - 51.4.138.199
+ - 51.5.148.86
+ - 51.5.149.19
+
+若要接收有关这些 IP 地址更改的更新，我们建议你配置服务运行状况警报，以监视有关操作组服务的信息通知。
+
+一个操作组中可以存在有限数量的 Webhook 操作。
+
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 186a0b0d4025f7d8a8888a9a0d2d0bd8832cf2d9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7b33484084b4ada5aeaf89eb90167658ade15ad8
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726495"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899787"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 本文概述了可用于虚拟机的核心 Azure 安全功能。
@@ -77,9 +77,9 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 * [管理和 API](/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Microsoft 威胁防护](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
-了解详细信息:
+了解更多：
 
-* [WDATP 入门](/windows/security/threat-protection/windows-defender-atp/get-started)  
+* [WDATP 入门](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)  
 * [WDATP 功能概述](/windows/security/threat-protection/windows-defender-atp/overview)  
 
 ## <a name="hardware-security-module"></a>硬件安全模块
@@ -88,7 +88,7 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 
 密钥保管库提供将密钥存储在已通过 FIPS 140-2 Level 2 标准认证的硬件安全模块 (HSM) 中的选项。 用于备份或[透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)的 SQL Server 加密密钥均可存储在密钥保管库中，此外还可存储应用程序中的任意密钥或密码。 对这些受保护项的权限和访问权限通过 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) 进行管理。
 
-了解详细信息:
+了解更多：
 
 * [什么是 Azure 密钥保管库？](/azure/key-vault/key-vault-overview)
 * [Azure 密钥保管库博客](https://blogs.technet.microsoft.com/kv/)
@@ -99,7 +99,7 @@ Azure 磁盘加密是用于加密 Windows 和 Linux 虚拟机磁盘的新功能�
 
 该解决方案与 Azure Key Vault 集成，帮助用户控制和管理 Key Vault 订阅中的磁盘加密密钥和机密。 它可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。
 
-了解详细信息:
+了解更多：
 
 * [适用于 IaaS VM 的 Azure 磁盘加密](/azure/security/azure-security-disk-encryption-overview)
 * [Quickstart:Encrypt a Windows IaaS VM with Azure PowerShell](../azure-disk-encryption-linux-powershell-quickstart.md)（快速入门：使用 Azure PowerShell 加密 Windows IaaS VM）
@@ -108,7 +108,7 @@ Azure 磁盘加密是用于加密 Windows 和 Linux 虚拟机磁盘的新功能�
 
 Azure 备份是一种可缩放的解决方案，无需资本投资便可帮助保护应用程序数据，从而最大限度降低运营成本。 应用程序错误可能损坏数据，人为错误可能将 bug 引入应用程序。 使用 Azure 备份可以保护运行 Windows 和 Linux 的虚拟机。
 
-了解详细信息:
+了解更多：
 
 * [什么是 Azure 备份？](/azure/backup/backup-introduction-to-azure-backup)
 * [Azure 备份服务 - 常见问题解答](/azure/backup/backup-azure-backup-faq)
@@ -125,7 +125,7 @@ Site Recovery：
 * **消除辅助数据中心**：可复制到辅助本地站点，或复制到 Azure。 将 Azure 用作灾难恢复的目标可以消除维护辅助站点的复杂性和成本。 复制的数据存储在 Azure 存储中。
 * **与现有 BCDR 技术集成**：Site Recovery 能够与其他应用程序的 BCDR 功能结合使用。 例如，可使用 Site Recovery 来帮助保护公司工作负荷的 SQL Server 后端。 这包括对 SQL Server AlwaysOn 的本机支持以管理可用性组的故障转移。
 
-了解详细信息:
+了解更多：
 
 * [什么是 Azure Site Recovery？](/azure/site-recovery/site-recovery-overview)
 * [Azure Site Recovery 的工作原理是什么？](/azure/site-recovery/site-recovery-components)
@@ -137,7 +137,7 @@ Site Recovery：
 
 Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个逻辑 Azure 虚拟网络都独立于所有其他 Azure 虚拟网络。 这种隔离可帮助确保部署中的网络流量对于其他 Microsoft Azure 客户不可访问。
 
-了解详细信息:
+了解更多：
 
 * [Azure 网络安全概述](network-overview.md)
 * [虚拟网络概述](/azure/virtual-network/virtual-networks-overview)
@@ -152,7 +152,7 @@ Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心�
 * 为虚拟机提供[安全建议](/azure/security-center/security-center-recommendations)。 示例建议包括：应用系统更新、配置 ACL 终结点、启用反恶意软件、启用网络安全组和应用磁盘加密。
 * 监视虚拟机的状态。
 
-了解详细信息:
+了解更多：
 
 * [Azure 安全中心简介](/azure/security-center/security-center-intro)
 * [Azure 安全中心常见问题解答](/azure/security-center/security-center-faq)
@@ -162,7 +162,7 @@ Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心�
 
 Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关键合规性计划进行了认证。 此认证使自己的 Azure 应用程序更容易满足合规性要求，并使企业更容易应对各种国内和国际法规要求。
 
-了解详细信息:
+了解更多：
 
 * [Microsoft Trust Center:Compliance](https://www.microsoft.com/en-us/trustcenter/compliance)（Microsoft 信任中心：合规性）
 * [Trusted Cloud:Microsoft Azure Security, Privacy, and Compliance](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)（可信云：Microsoft Azure 安全性、隐私和合规性）
@@ -175,7 +175,7 @@ Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关�
 
 TEE 可以确保无法从外部查看数据或执行操作，即使通过调试程序也不可以。 它们甚至可以确保只有经过授权的代码才能访问数据。 如果代码被更改或篡改，则会拒绝操作并禁用环境。 TEE 会在代码在它中执行的整个过程中实施这些保护。
 
-了解详细信息:
+了解更多：
 
 * [Azure 机密计算介绍](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure 机密计算](https://azure.microsoft.com/blog/azure-confidential-computing/)  
