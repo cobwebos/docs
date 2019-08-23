@@ -121,6 +121,8 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: 资源管理器模板
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: 连接器
+      href: /connectors/aci
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

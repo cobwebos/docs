@@ -42,7 +42,7 @@
       href: plan-conditional-access.md
     - name: 最佳做法
       href: best-practices.md
-    - name: 常用策略模板
+    - name: 常用条件访问策略
       items:
         - name: 要求对管理员执行 MFA
           href: howto-conditional-access-policy-admin-mfa.md

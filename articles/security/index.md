@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 06/11/2019
 ms.author: angrobe
-ms.openlocfilehash: 7c41b09c35de7ef8694f9215b8f3dc271e243de2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 158819792243234ab6f2efc549a3e70166706a50
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780496"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970856"
 ---
 # <a name="azure-security-documentation"></a>Azure 安全文档
 
@@ -195,7 +195,7 @@ ms.locfileid: "68780496"
                                 <a class="barLink" href="/azure/security/fundamentals/threat-detection">Azure 高级威胁检测</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/fundamentals/abstract-network-security>Azure network security"</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-network-security">Azure 网络安全</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/fundamentals/abstract-develop-secure-apps">在 Azure 上开发安全的应用程序</a>
