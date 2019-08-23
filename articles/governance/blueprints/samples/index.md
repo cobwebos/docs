@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 08/20/2019
 ms.author: dacoulte
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 884777bce761f6b16581a28038bf9a28ce6a3801
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 8a91ae0c576299e139cf036f1f20b90470f51349
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650525"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972300"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -30,8 +30,8 @@ ms.locfileid: "69650525"
 | [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | 提供用于符合 NIST SP 800-53 R4 的规范措施。 |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | 提供一组策略以帮助用户符合 PCI-DSS v3.2.1。 |
 | [英国官方和英国 NHS 监管](./ukofficial/index.md) | 提供了一组符合标准的基础结构模式和策略防护措施，以便帮助用户通过英国官方和英国 NHS 认证。 |
-| [CAF 基础](./caf-foundation/index.md) | 提供了一组控制措施，以便帮助你管理云资产，使其与[适用于 Azure 的 Microsoft 云采用框架 (CAF)](/azure/architecture/cloud-adoption/governance/journeys/index.md) 相符合。 |
-| [CAF 迁移登陆区域](./caf-migrate-landing-zone/index.md) | 提供了一组控制措施，以便帮助你安排迁移你的第一个工作负荷并管理你的云资产，使其与[适用于 Azure 的 Microsoft 云采用框架 (CAF)](/azure/architecture/cloud-adoption/migrate/index.md) 相符合。 |
+| [CAF 基础](./caf-foundation/index.md) | 提供了一组控制措施，以便帮助你管理云资产，使其与[适用于 Azure 的 Microsoft 云采用框架 (CAF)](/azure/architecture/cloud-adoption/governance/journeys/index) 相符合。 |
+| [CAF 迁移登陆区域](./caf-migrate-landing-zone/index.md) | 提供了一组控制措施，以便帮助你安排迁移你的第一个工作负荷并管理你的云资产，使其与[适用于 Azure 的 Microsoft 云采用框架 (CAF)](/azure/architecture/cloud-adoption/migrate/index) 相符合。 |
 
 ## <a name="samples-strategy"></a>示例策略
 
