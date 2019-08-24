@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 982ebf28a0f99a6eace2448676c934855cd99d1f
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: fd7cd8f73f602953573b7e6edab32bf2a6aecc05
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879729"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998124"
 ---
 # <a name="set-up-and-manage-a-device-template-preview-features"></a>设置和管理设备模板 (预览功能)
 
@@ -36,7 +36,7 @@ ms.locfileid: "69879729"
 > [!NOTE]
 > 只有构建人员和管理员可以创建、编辑和删除设备模板。 任何用户都可以通过现有设备模板在 "**设备**" 页上创建设备。
 
-[IoT 即插即用](https://aka.ms/iot-pnp-docs)允许 IoT Central 集成设备, 而无需编写任何嵌入的设备代码。 IoT 即插即用的核心是描述设备功能的设备功能模型架构。 在 IoT Central 预览应用程序中, 设备模板使用这些 IoT 即插即用设备功能模型。
+[IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)允许 IoT Central 集成设备, 而无需编写任何嵌入的设备代码。 IoT 即插即用的核心是描述设备功能的设备功能模型架构。 在 IoT Central 预览应用程序中, 设备模板使用这些 IoT 即插即用设备功能模型。
 
 作为生成器, 有几个选项可用于创建设备模板:
 

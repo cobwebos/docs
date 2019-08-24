@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6e29e0f89d9270a143d48cf6e85b479813e19d9d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: a73d048a66c70eaf22caf6b33c4a495df6d730dd
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013649"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997916"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
 
@@ -78,7 +78,7 @@ automl_config = AutoMLConfig(task="classification")
 >* 数据必须为表格格式。
 >* 要预测的值 (目标列) 必须在数据中存在。
 
-示例:
+例如：
 
 *   Numpy 数组
 
@@ -207,6 +207,8 @@ automl_config = AutoMLConfig(task="classification")
 ### <a name="primary-metric"></a>主要指标
 主要指标;如以上示例中所示, 确定要在模型定型期间用于优化的指标。 你可以选择的主要指标取决于你选择的任务类型。 下面是可用指标的列表。
 
+在[了解自动化机器学习结果](how-to-understand-automated-ml.md)中了解这些信息的具体定义。
+
 |分类 | 回归 | 时序预测
 |-- |-- |--
 |accuracy| spearman_correlation | spearman_correlation
@@ -222,7 +224,7 @@ automl_config = AutoMLConfig(task="classification")
 若要启用此特征化, `"preprocess": True`请[ `AutoMLConfig`为类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)指定。
 
 > [!NOTE]
-> 自动机器学习预处理步骤 (功能规范化、处理丢失的数据、将文本转换为数字等) 成为基础模型的一部分。 使用模型进行预测时, 在训练过程中应用的相同预处理步骤会自动应用于输入数据。
+> 自动机器学习预处理步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，训练期间应用的相同预处理步骤将自动应用于输入数据。
 
 ### <a name="time-series-forecasting"></a>时序预测
 对于时序预测任务类型, 你有其他要定义的参数。
@@ -377,7 +379,7 @@ best_run, fitted_model = automl_run.get_output()
 
 + API 1: `get_engineered_feature_names()`返回工程功能名称的列表。
 
-  用法:
+  用法：
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -393,7 +395,7 @@ best_run, fitted_model = automl_run.get_output()
 
 + API 2: `get_featurization_summary()`返回所有输入功能的特征化汇总。
 
-  用法:
+  用法：
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
@@ -401,7 +403,7 @@ best_run, fitted_model = automl_run.get_output()
   >[!Note]
   >请将 "timeseriestransformer" 用于任务 = "预测", 否则请将 "datatransformer" 用于 "回归" 或 "分类" 任务。
 
-  输出:
+  输出：
   ```
   [{'RawFeatureName': 'A',
     'TypeDetected': 'Numeric',

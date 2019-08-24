@@ -1,5 +1,5 @@
 ---
-title: 深度学习和机器学习简介
+title: 深度学习与机器学习
 titleSuffix: Azure Machine Learning service
 description: 了解深度学习与机器学习之间的关系, 以及它们如何适应人工智能的类别。 本文介绍了深度学习如何解决方案, 如欺诈检测、语音和面部识别、情绪分析以及时序预测。
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 186ba03142e01c4b9340fc5b492621cc17575104
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5301be493ef22fc2d74cc337d88b04caf391fdaa
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934288"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982811"
 ---
-# <a name="introduction-to-deep-learning-vs-machine-learning"></a>深度学习和机器学习简介
+# <a name="deep-learning-vs-machine-learning"></a>深度学习与机器学习
 
 本文可帮助你了解深度学习与机器学习之间的关系。 你将了解两个概念是如何进行比较的, 以及如何将其调整为更广泛的人工智能。 最后, 本文介绍了如何将深度学习应用于真实应用场景, 如欺诈检测、语音和面部识别、情绪分析以及时序预测。
 

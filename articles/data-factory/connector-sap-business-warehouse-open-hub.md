@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: e94c4f179174a3957aef8828687ebf1fbb299903
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0c4a70f337166a304bd8664da2180fcda29ca8ac
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967424"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996642"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据
 
@@ -82,7 +82,7 @@ ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和
 
 - 将 SAP Open Hub Destination 类型创建为“数据库表”（勾选“技术密钥”选项）。  另外还建议取消选中“从表中删除数据”，虽然这不是必需的操作。 利用 DTP（直接执行或集成到现有进程链中）将数据从所选源对象（例如多维数据集）移到 Open Hub Destination 表。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 > [!TIP]
 >
@@ -174,7 +174,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从 SAP BW Open Hub 复制数据，请将复制活动中的源类型设置为“SapOpenHubSource”。 复制活动的 **source** 节中没有其他特定于类型的必需属性。
 
-若要加快数据加载速度, 可以在复制[`parallelCopies`](copy-activity-performance.md#parallel-copy)活动上设置, 以并行从 SAP BW 打开的中心加载数据。 例如, 如果将设置`parallelCopies`为 4, 则数据工厂会同时执行四个 RFC 调用, 并且每个 rfc 调用都将从 SAP BW 打开的中心表中检索部分数据, 并按 DTP 请求 id 和包 id 进行分区。 这适用于唯一 DTP 请求 ID + 包 ID 的数量大于的值`parallelCopies`时。
+若要加快数据加载速度, 可以在复制[`parallelCopies`](copy-activity-performance.md#parallel-copy)活动上设置, 以并行从 SAP BW 打开的中心加载数据。 例如, 如果将设置`parallelCopies`为 4, 则数据工厂会同时执行四个 RFC 调用, 并且每个 rfc 调用都将从 SAP BW 打开的中心表中检索部分数据, 并按 DTP 请求 id 和包 id 进行分区。 这适用于唯一 DTP 请求 ID + 包 ID 的数量大于的值`parallelCopies`时。 将数据复制到基于文件的数据存储时, 还 recommanded 将文件夹作为多个文件写入 (仅指定文件夹名称), 在这种情况下, 性能比写入单个文件更好。
 
 **示例：**
 

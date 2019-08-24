@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 369069ef9a9c562ef6ba88a46dc0ef82c4debba1
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 951b1f3749807ac6aee78a96ae7eb38877ca6acc
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950684"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991815"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -32,7 +32,7 @@ Blob 存储 API 已禁用，以防止可能出现的功能可操作性问题，�
 
 如果其中任何一个使用 Blob Api, 并且你想要使用它们来处理你上载到你的帐户的所有内容, 则有两个选择。
 
-* **选项 1**：请不要在 Blob 存储帐户上启用分层命名空间, 直到 Blob Api 与 Azure Data Lake Gen2 Api 互操作。 使用未启用分层命名空间的存储帐户意味着无法访问 Data Lake Storage Gen2 特定的功能，例如目录和文件系统访问控制列表。
+* **选项 1**：请不要在 Blob 存储帐户上启用分层命名空间, 直到 Blob Api 与 Azure Data Lake Gen2 Api 互操作。 使用不带分层命名空间的存储帐户意味着你不能访问 Data Lake Storage Gen2 特定功能, 例如目录和容器访问控制列表。
 
 * **选项 2**：[在 Data Lake Storage 上注册多协议访问](data-lake-storage-multi-protocol-access.md)的公共预览版。 调用 Blob Api 的工具和应用程序以及 Blob 存储功能 (如诊断日志) 可用于具有分层命名空间的帐户。
 

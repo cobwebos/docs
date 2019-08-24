@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a819e0b5a0da92137451eedbf84fe06d22879568
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: ae10bb3488c21b6637163e333231e95a18c652bf
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973774"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996122"
 ---
-# <a name="how-to-use-the-opc-ua-certificate-management-service"></a>如何使用 OPC UA 证书管理服务
+# <a name="how-to-use-the-opc-vault-certificate-management-service"></a>如何使用 OPC 保管库证书管理服务
 
 本文介绍如何注册应用程序, 以及如何为 OPC UA 设备颁发已签名的应用程序证书。
 

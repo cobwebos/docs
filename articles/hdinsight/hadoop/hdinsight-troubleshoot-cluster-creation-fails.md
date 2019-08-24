@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
-ms.date: 08/06/2019
-ms.openlocfilehash: c7092b2cbcef01ef71261b6f5498cde56a40c358
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 08/22/2019
+ms.openlocfilehash: 476b8cff23d09d81fe356a6445e27794b267d9a2
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857243"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998108"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>排查 Azure HDInsight 群集创建失败问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "68857243"
 
 ## <a name="permissions-issues"></a>权限问题
 
-如果使用 Data Lake Storage 第2代, 请确保分配给 HDInsight 群集的用户分配的托管标识在 " **存储 Blob 数据参与者**" 角色或 "**存储 blob 数据所有者" 角色**中。 有关完整的安装说明, 请参阅[将 Azure Data Lake Storage Gen2 与 Azure HDInsight 群集配合使用](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account)。
+如果你使用 Azure Data Lake Storage 第2代, 并收到错误 "此请求无权使用此权限执行此操作", 请打开 Azure 门户, 前往你的存储帐户, 并在 "访问控制 (IAM)" 下, 确保**存储 Blob数据参与者**或**存储 Blob 数据所有者角色**角色已分配给该订阅的**用户分配的托管标识**。 有关详细说明, 请参阅在[Data Lake Storage Gen2 帐户上设置托管标识的权限](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account)。
 
 如果使用 Data Lake Storage 第1代, 请参阅[此处](../hdinsight-hadoop-use-data-lake-store.md)的设置和配置说明。 HBase 群集不支持 Data Lake Storage 第1代, 在 HDInsight 版本4.0 中不受支持。
 
@@ -73,6 +73,8 @@ ms.locfileid: "68857243"
 ## <a name="storage-account-name-restrictions"></a>存储帐户名称限制
 
 存储帐户名称不能超过24个字符, 并且不能包含特殊字符。 这些限制也适用于存储帐户中的默认容器名称。
+
+其他命名限制还适用于群集创建。 有关详细信息, 请参阅[群集名称限制](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name)。
 
 ## <a name="service-outages"></a>服务中断
 

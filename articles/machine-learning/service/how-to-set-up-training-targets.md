@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e73a64a9782535da31e2eacbaa2740007707c774
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: MT
+ms.openlocfilehash: 7d9d6dc8a980c543aa1a94c0ed4e9ae845769567
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872403"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997907"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标 
 
@@ -433,7 +433,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 * [使用 CLI 扩展](reference-azure-machine-learning-cli.md#experiments)提交试验。
 * 通过[VS Code 扩展](how-to-vscode-tools.md#train-and-tune-models)提交试验。
 
-## <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
+## <a name="git-tracking-and-integration"></a>Git 跟踪和集成
 
 当你开始在源目录为本地 Git 存储库的训练运行时, 有关存储库的信息存储在运行历史记录中。 例如, 将在历史记录中记录存储库的当前提交 ID。
 

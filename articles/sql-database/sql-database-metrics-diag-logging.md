@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: a1475188d2e1ab0db3dfd9775fc37d3fc0a17158
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b35533eeb4c4a364588dbea11f74e8d6b76df3b
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567259"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998222"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -344,9 +344,12 @@ Azure SQL Analytics 是一种云解决方案，可跨多个订阅大规模监视
 
 如果使用的是弹性池或托管实例，则还需要在这些资源中配置诊断设置，以便将诊断遥测数据流式传输到工作区。
 
-### <a name="use-the-sql-analytics-solution"></a>使用 SQL Analytics 解决方案
+### <a name="use-the-sql-analytics-solution-for-monitoring-and-alerting"></a>使用 SQL Analytics 解决方案进行监视和警报
 
-可以使用 SQL Analytics 作为分层仪表板来查看 SQL 数据库资源。 若要了解如何使用 SQL Analytics 解决方案，请参阅[使用 SQL Analytics 解决方案监视 SQL 数据库](../log-analytics/log-analytics-azure-sql.md)。
+可以使用 SQL Analytics 作为分层仪表板来查看 SQL 数据库资源。
+
+- 若要了解如何使用 SQL Analytics 解决方案，请参阅[使用 SQL Analytics 解决方案监视 SQL 数据库](../log-analytics/log-analytics-azure-sql.md)。
+- 若要了解如何设置基于 SQL Analytics 的 SQL 数据库和托管实例的警报, 请参阅[为 Sql 数据库和托管实例创建警报](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)。
 
 ## <a name="stream-into-event-hubs"></a>流式传输到事件中心
 
@@ -632,7 +635,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure |
 |TimeGenerated [UTC]|记录日志时的时间戳 |
-|type|始终为：AzureDiagnostics |
+|类型|始终为：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQL |
 |类别|类别的名称。 始终为：块 |
 |OperationName|操作的名称。 始终为：BlockEvent |
@@ -656,7 +659,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure |
 |TimeGenerated [UTC] |记录日志时的时间戳 |
-|type|始终为：AzureDiagnostics |
+|类型|始终为：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQL |
 |类别|类别的名称。 始终为：死锁 |
 |OperationName|操作的名称。 始终为：DeadlockEvent |
@@ -715,3 +718,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 - [什么是 Azure 事件中心？](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+
+若要了解如何基于 log analytics 中的遥测设置警报, 请参阅:
+
+- [为 SQL 数据库和托管实例创建警报](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)

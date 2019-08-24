@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 945d123c0901722a527e7cc8181c91f09e4e95ec
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014509"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991922"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>映射数据流调试模式
 
@@ -53,7 +53,14 @@ ms.locfileid: "69014509"
 
 ![数据预览](media/data-flow/datapreview.png "数据预览")
 
+> [!NOTE]
+> 文件源仅限制您看到的行数, 而不限制所读取的行数。 对于非常大的数据集, 建议你拍摄该文件的一小部分, 并将其用于测试。 可以为文件数据集类型的每个源选择 "调试" 设置中的临时文件。
+
 在数据流中以调试模式运行时，数据不会写入接收器转换。 调试会话旨在用作转换的测试工具。 调试期间不需要接收器，并且会在数据流中忽略接收器。 如果希望测试在接收器中写入数据, 请从 Azure 数据工厂管道执行数据流, 并使用管道中的调试执行。
+
+### <a name="testing-join-conditions"></a>测试联接条件
+
+单元测试联接、存在或查找转换时, 请确保为测试使用少量的已知数据。 你可以使用上面的 "调试设置" 选项来设置用于测试的临时文件。 这是必需的, 因为在对大型数据集中的行进行限制或采样时, 无法预测哪些行以及哪些键将被读入流以进行测试。 结果是非确定性的, 这意味着联接条件可能会失败。
 
 ### <a name="quick-actions"></a>快速操作
 

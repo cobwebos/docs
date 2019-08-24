@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 142c99b2471a9010a00bf9b5d50549c5e84548f1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9c27b81717c32ccf4c78143a3d3d31de7181c5fe
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966463"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996632"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -30,9 +30,9 @@ ms.locfileid: "68966463"
 
 可以将数据从 Oracle 数据库复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Oracle 数据库。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言, 此 Oracle 连接器支持:
+具体而言，此 Oracle 连接器支持：
 
-- 以下版本的 Oracle 数据库:
+- 以下版本的 Oracle 数据库：
     - Oracle 18c R1 (18.1) 及更高版本
     - Oracle 12c R1 (12.1) 及更高版本
     - Oracle 11g R1 (11.1) 及更高版本
@@ -198,7 +198,7 @@ Oracle 链接服务支持以下属性:
 ### <a name="oracle-as-source"></a>Oracle 作为源
 
 >[!TIP]
->若要使用数据分区有效地从 Oracle 加载数据, 请参阅[从 oracle 进行并行复制](#parallel-copy-from-oracle)。
+>若要使用数据分区有效地从 Oracle 加载数据, 请从[oracle 的并行复制](#parallel-copy-from-oracle)中了解详细信息。
 
 若要从 Oracle 复制数据, 请将复制活动中的源类型`OracleSource`设置为。 复制活动的 **source** 节支持以下属性。
 
@@ -206,10 +206,10 @@ Oracle 链接服务支持以下属性:
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为`OracleSource`。 | 是 |
 | oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时, 需要在查询中挂接任何对应的内置分区参数。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
-| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许值包括：**无**(默认值)、 **PhysicalPartitionsOfTable**和**DynamicRange**。<br>启用`None`分区选项后, 还会在复制活动上[`parallelCopies`](copy-activity-performance.md#parallel-copy)配置设置。 这将确定并行加载 Oracle 数据库中的数据的并行度。 例如, 你可以将此设置为4。 | 否 |
-| partitionSettings | 指定数据分区设置的组。 <br>当 partition 选项不`None`为时应用。 | 否 |
+| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许值包括：**None**（默认值）、**PhysicalPartitionsOfTable** 和 **DynamicRange**。<br>启用`None`分区选项后, 还会在复制活动上[`parallelCopies`](copy-activity-performance.md#parallel-copy)配置设置。 这将确定并行加载 Oracle 数据库中的数据的并行度。 例如, 你可以将此设置为4。 | 否 |
+| partitionSettings | 指定数据分区的设置组。 <br>当 partition 选项不`None`为时应用。 | 否 |
 | partitionNames | 需要复制的物理分区的列表。 <br>当 partition 选项为`PhysicalPartitionsOfTable`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfTabularPartitionName`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
-| partitionColumnName | 指定**整数类型**的源列名称, 将由范围分区用于并行复制。 如果未指定此参数, 则将自动检测该表的主键, 并将其用作分区列。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionColumnName`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
+| partitionColumnName | 指定并行复制范围分区使用的源列（**整数类型**）的名称。 如果未指定此参数, 则将自动检测该表的主键, 并将其用作分区列。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionColumnName`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 | partitionUpperBound | 要向其复制数据的分区列的最大值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionUpbound`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 | partitionLowerBound | 要向其复制数据的分区列的最小值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionLowbound`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 
@@ -287,24 +287,24 @@ Oracle 链接服务支持以下属性:
 ]
 ```
 
-## <a name="parallel-copy-from-oracle"></a>从 Oracle 并行复制
+## <a name="parallel-copy-from-oracle"></a>从 Oracle 进行并行复制
 
 数据工厂 Oracle 连接器提供内置数据分区, 用于并行复制 Oracle 数据。 可以在复制活动的 "**源**" 选项卡上找到数据分区选项。
 
 ![分区选项的屏幕截图](./media/connector-oracle/connector-oracle-partition-options.png)
 
-启用分区副本时, 数据工厂对 Oracle 源运行并行查询以按分区加载数据。 并行度由 "复制" 活动[`parallelCopies`](copy-activity-performance.md#parallel-copy)的设置控制。 例如, 如果将设置`parallelCopies`为 4, 则数据工厂会同时生成并运行基于指定分区选项和设置的四个查询。 每个查询都从 Oracle 数据库中检索部分数据。
+启用分区副本时, 数据工厂对 Oracle 源运行并行查询以按分区加载数据。 并行度由 "复制" 活动[`parallelCopies`](copy-activity-performance.md#parallel-copy)的设置控制。 例如, 如果将设置`parallelCopies`为 4, 则数据工厂会同时基于指定的分区选项和设置生成并运行四个查询, 每个查询将从 Oracle 数据库中检索部分数据。
 
-使用数据分区启用并行复制是一个不错的主意, 尤其是在从 Oracle 数据库加载大量数据时。 以下是针对不同方案的建议配置:
+使用数据分区启用并行复制是一个不错的主意, 尤其是在从 Oracle 数据库加载大量数据时。 下面是针对不同方案的建议配置。 将数据复制到基于文件的数据存储时, 将 recommanded 写入文件夹作为多个文件 (仅指定文件夹名称), 在这种情况下, 性能比写入单个文件更好。
 
 | 应用场景                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 包含物理分区的大型表的完全加载。          | **Partition 选项**:表的物理分区。 <br><br/>在执行期间, 数据工厂会自动检测物理分区, 并按分区复制数据。 |
-| 完全加载大型表, 没有物理分区, 而使用整数列进行数据分区。 | **分区选项**:动态范围分区。<br>**分区列**:指定用于对数据进行分区的列。 如果未指定, 则使用主键列。 |
-| 使用带有物理分区的自定义查询加载大量数据。 | **Partition 选项**:表的物理分区。<br>**查询**: `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`。<br>**分区名称**:指定要从中复制数据的分区名称。 如果未指定, 数据工厂会自动检测您在 Oracle 数据集中指定的表的物理分区。<br><br>在执行期间, 数据工厂`?AdfTabularPartitionName`将替换为实际分区名称, 并发送到 Oracle。 |
-| 使用自定义查询而不使用物理分区加载大量数据, 而使用整数列进行数据分区。 | **分区选项**:动态范围分区。<br>**查询**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**:指定用于对数据进行分区的列。 可以对具有整数数据类型的列进行分区。<br>**分区上限**和**分区下限**:指定是否要针对分区列进行筛选, 以便仅检索下限和上限之间的数据。<br><br>在执行期间, 数据工厂`?AdfRangePartitionColumnName`会`?AdfRangePartitionUpbound`将、 `?AdfRangePartitionLowbound`和替换为每个分区的实际列名称和值范围, 并将其发送到 Oracle。 <br>例如, 如果将分区列 "ID" 设置为下限为 1, 上限为 80, 并将 "并行副本" 设置为 "4", 则数据工厂将按4个分区检索数据。 它们的 Id 分别介于 [1, 20]、[21, 40]、[41、60] 和 [61, 80] 之间。 |
+| 包含物理分区的大型表的完全加载。          | **分区选项**：表的物理分区。 <br><br/>在执行期间, 数据工厂会自动检测物理分区, 并按分区复制数据。 |
+| 完全加载大型表, 没有物理分区, 而使用整数列进行数据分区。 | **分区选项**：动态范围分区。<br>**分区列**：指定用于对数据进行分区的列。 如果未指定, 则使用主键列。 |
+| 使用带有物理分区的自定义查询加载大量数据。 | **分区选项**：表的物理分区。<br>**查询**：`SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`。<br>**分区名称**：指定要从中复制数据的分区名称。 如果未指定, 数据工厂会自动检测您在 Oracle 数据集中指定的表的物理分区。<br><br>在执行期间, 数据工厂`?AdfTabularPartitionName`将替换为实际分区名称, 并发送到 Oracle。 |
+| 使用自定义查询而不使用物理分区加载大量数据, 而使用整数列进行数据分区。 | **分区选项**：动态范围分区。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**：指定用于对数据进行分区的列。 可以对具有整数数据类型的列进行分区。<br>**分区上限**和**分区下限**：指定是否要针对分区列进行筛选, 以便仅检索下限和上限之间的数据。<br><br>在执行期间, 数据工厂`?AdfRangePartitionColumnName`会`?AdfRangePartitionUpbound`将、 `?AdfRangePartitionLowbound`和替换为每个分区的实际列名称和值范围, 并将其发送到 Oracle。 <br>例如, 如果将分区列 "ID" 设置为下限为 1, 上限为 80, 并将 "并行副本" 设置为 "4", 则数据工厂将按4个分区检索数据。 它们的 Id 分别介于 [1, 20]、[21, 40]、[41、60] 和 [61, 80] 之间。 |
 
-**示例: 具有物理分区的查询**
+**示例：使用物理分区进行查询**
 
 ```json
 "source": {
@@ -320,7 +320,7 @@ Oracle 链接服务支持以下属性:
 }
 ```
 
-**示例: 包含动态范围分区的查询**
+**示例：使用动态范围分区进行查询**
 
 ```json
 "source": {

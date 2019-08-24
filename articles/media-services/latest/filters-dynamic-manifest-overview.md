@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: bbbb570cc042d5faa16b66c42aef9792b24fdb12
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: dc9f59894da071e956283591cf7206bc371650b7
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854056"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991436"
 ---
 # <a name="pre-filtering-manifests-by-using-dynamic-packager"></a>使用动态包装器预筛选清单
 
@@ -52,7 +52,7 @@ Azure 媒体服务支持 HLS、MPEG 破折号和平滑流式处理协议。 作�
 
 ![Azure Media Player 诊断][amp_diagnostics]
  
-### <a name="examples-urls-with-filters-in-query-string"></a>示例：查询字符串中包含筛选器的 Url
+### <a name="examples-urls-with-filters-in-query-string"></a>例如：查询字符串中包含筛选器的 Url
 
 可以将筛选器应用于 ABR 流式处理协议:HLS、MPEG-DASH 和平滑流式处理。 下表显示了一些包含筛选器的 URL 示例：
 
@@ -60,7 +60,7 @@ Azure 媒体服务支持 HLS、MPEG 破折号和平滑流式处理协议。 作�
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|平滑流|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
+|平滑流式处理|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="rendition-filtering"></a>再现内容筛选
 
@@ -107,7 +107,7 @@ Azure 媒体服务支持 HLS、MPEG 破折号和平滑流式处理协议。 作�
 
 ## <a name="adjusting-the-presentation-window-dvr"></a>调整演示窗口 (DVR)
 
-目前, Azure 媒体服务提供了循环存档, 可以在5分钟到25小时之间配置持续时间。 清单筛选可以基于存档创建循环 DVR 窗口存档，而不会删除媒体。 在许多情况下，广播者想要提供受限制的 DVR 窗口，此窗口可随着实时边缘移动，并同时保留更大的存档窗口。 广播者可能想要使用超出 DVR 窗口的数据来突出显示剪辑，或者想要为不同的设备提供不同的 DVR 窗口。 例如, 大多数移动设备不处理大的 DVR 窗口 (对于移动设备, 你可以有2分钟的 DVR 窗口, 桌面客户端有1小时的时间)。
+目前, Azure 媒体服务提供了循环存档, 其中的持续时间可配置为1分钟到25小时。 清单筛选可以基于存档创建循环 DVR 窗口存档，而不会删除媒体。 在许多情况下，广播者想要提供受限制的 DVR 窗口，此窗口可随着实时边缘移动，并同时保留更大的存档窗口。 广播者可能想要使用超出 DVR 窗口的数据来突出显示剪辑，或者想要为不同的设备提供不同的 DVR 窗口。 例如，大多数移动设备不处理大的 DVR 窗口（可以让移动设备有 2 分钟的 DVR 窗口，桌面客户端有 1 小时的 DVR 窗口）。
 
 ![DVR 窗口][dvr_filter]
 

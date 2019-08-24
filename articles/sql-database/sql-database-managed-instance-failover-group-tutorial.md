@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 059a614dff7fc0eab5419e3e2ffdeaeecb79ad99
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624986"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981387"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>教程：将 SQL 数据库托管实例添加到故障转移组
 
@@ -47,7 +47,7 @@ ms.locfileid: "69624986"
 1. 选择 "**创建**" 以启动 " **SQL 托管实例**创建" 页。 
 1. 在 "**创建 Azure SQL 数据库托管实例**" 页上的 "**基本**信息" 选项卡
     1. 在 "**项目详细信息**" 下, 从下拉菜单中选择你的**订阅**, 然后选择 "**新建**资源组"。 键入资源组的名称, 例如`myResourceGroup`。 
-    1. 在 "**托管实例详细信息**" 下, 提供托管实例的名称以及要将托管实例部署到的区域。 请确保选择具有[配对区域](/azure/best-practices-availability-paired-regions)的区域。 将 "**计算 + 存储**" 保留为默认值。 
+    1. 在 "**托管实例详细信息**" 下, 提供托管实例的名称以及要将托管实例部署到的区域。 将 "**计算 + 存储**" 保留为默认值。 
     1. 在 "**管理员帐户**" 下, 提供管理员登录名`azureuser`(例如) 和复杂的管理员密码。 
 
     ![创建主 MI](media/sql-database-managed-instance-failover-group-tutorial/primary-sql-mi-values.png)
@@ -79,7 +79,7 @@ ms.locfileid: "69624986"
     | **名称** |  辅助托管实例使用的虚拟网络的名称, 例如`vnet-sql-mi-secondary`。 |
     | **地址空间** | 虚拟网络的地址空间, 例如`10.128.0.0/16`。 | 
     | **订阅** | 主托管实例和资源组所在的订阅。 |
-    | **区域** | 你将在其中部署辅助托管实例的位置;这应该位于与主托管实例[配对的区域](/azure/best-practices-availability-paired-regions)中。  |
+    | **区域** | 你将在其中部署辅助托管实例的位置。 |
     | **子网** | 子网的名称。 `default`默认情况下, 为您提供。 |
     | **地址范围**| 子网的地址范围。 这必须不同于主托管实例的虚拟网络使用的子网地址范围, 例如`10.128.0.0/24`。  |
     | &nbsp; | &nbsp; |
@@ -92,7 +92,6 @@ ms.locfileid: "69624986"
 
 第二个托管实例必须:
 - 为空。 
-- 位于[配对区域](/azure/best-practices-availability-paired-regions)内, 其主托管实例对应。 
 - 具有不同于主托管实例的子网和 IP 范围。 
 
 若要创建辅助托管实例, 请执行以下步骤: 
@@ -108,7 +107,7 @@ ms.locfileid: "69624986"
     | **订阅** |  主托管实例所在的订阅。 |
     | **资源组**| 主托管实例所在的资源组。 |
     | **托管实例名称** | 新的辅助托管实例的名称, 例如`sql-mi-secondary`  | 
-    | **区域**| 辅助托管实例的[配对区域](/azure/best-practices-availability-paired-regions)位置。  |
+    | **区域**| 辅助托管实例的位置。  |
     | **托管实例管理员登录名** | 要用于新的辅助托管实例的登录名, 如`azureuser`。 |
     | **密码** | 管理登录名将用于新的辅助托管实例的复杂密码。  |
     | &nbsp; | &nbsp; |

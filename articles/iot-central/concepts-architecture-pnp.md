@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: abc09ac1a13537c31fe96fae14edefd0d06b6aef
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: fab65828228bdea8f0367f8928b83934bf0a7a4f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880249"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995878"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central 体系结构 (预览功能)
 
@@ -73,7 +73,7 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 在 IoT Central 预览应用程序设备模板:
 
-- **设备功能模型**指定设备的功能, 如它发送的遥测、定义设备状态的属性, 以及设备响应的命令。 设备功能组织为一个或多个接口。 有关设备功能模型的详细信息, 请参阅[IoT 即插即用](https://aka.ms/iot-pnp-docs)文档。
+- **设备功能模型**指定设备的功能, 如它发送的遥测、定义设备状态的属性, 以及设备响应的命令。 设备功能组织为一个或多个接口。 有关设备功能模型的详细信息, 请参阅[IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)文档。
 - **Cloud properties**为设备指定 IoT Central 存储属性。 这些属性仅存储在 IoT Central 中, 不会发送到设备。
 - **视图**指定生成器创建的仪表板和窗体, 以使操作员能够监视和管理设备。
 - **自定义**允许生成器覆盖设备功能模型中的某些定义, 使其更与 IoT Central 应用程序相关。

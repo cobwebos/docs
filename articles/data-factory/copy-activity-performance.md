@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 7b5c0a045fe932db38666559ee415d7b27aa11e4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 05ecfdc4f082aaa44fe54e6b807a1c5faf84eb8d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614183"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996463"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
 > [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本:"]
@@ -41,30 +41,30 @@ ms.locfileid: "69614183"
 
 ADF 提供的无服务器体系结构允许不同级别的并行度, 这允许开发人员构建管道来充分利用网络带宽以及存储 IOPS 和带宽, 最大程度地提高环境的数据移动吞吐量。  这意味着, 可以通过度量源数据存储中提供的最小吞吐量、目标数据存储以及源和目标之间的网络带宽, 来估计可以实现的吞吐量。  下表根据数据大小和环境的带宽限制来计算复制持续时间。 
 
-| 数据大小-带宽 | 50 Mbps    | 100 Mbps  | 200 Mbps  | 500 Mbps  | 1 Gbps   | 10 Gbps  |
-| --------------------- | ---------- | --------- | --------- | --------- | -------- | -------- |
-| 1 GB                  | 2.7 分钟    | 1.4 分钟   | 0.7 分钟   | 0.3 分钟   | 0.1 分钟  | 0.0 分钟  |
-| 10 GB                 | 27.3 分钟   | 13.7 分钟  | 6.8 分钟   | 2.7 分钟   | 1.3 分钟  | 0.1 分钟  |
-| 100 GB                | 4.6 小时    | 2.3 小时   | 1.1 小时   | 0.5 小时   | 0.2 小时  | 0.0 小时  |
-| 1 TB                  | 46.6 小时   | 23.3 小时  | 11.7 小时  | 4.7 小时   | 2.3 小时  | 0.2 小时  |
-| 10 TB                 | 19.4 天  | 9.7 天  | 4.9 天  | 1.9 天  | 0.9 天 | 0.1 天 |
-| 100 TB                | 194.2 天 | 97.1 天 | 48.5 天 | 19.4 天 | 9.5 天 | 0.9 天 |
-| 1 PB                  | 64.7 mo    | 32.4 mo   | 16.2 mo   | 6.5 mo    | 3.2 mo   | 0.3 mo   |
-| 10 PB                 | 647.3 mo   | 323.6 mo  | 161.8 mo  | 64.7 mo   | 31.6 mo  | 3.2 mo   |
+| 数据大小/ <br/> 带宽 | 50 Mbps    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 Gbps   |
+| --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
+| **1 GB**                    | 2.7 分钟    | 1.4 分钟   | 0.3 分钟   | 0.1 分钟  | 0.03 分钟 | 0.01 分钟 | 0.0 分钟   |
+| **10 GB**                   | 27.3 分钟   | 13.7 分钟  | 2.7 分钟   | 1.3 分钟  | 0.3 分钟  | 0.1 分钟  | 0.03 分钟  |
+| **100 GB**                  | 4.6 小时    | 2.3 小时   | 0.5 小时   | 0.2 小时  | 0.05 小时 | 0.02 小时 | 0.0 小时   |
+| **1 TB**                    | 46.6 小时   | 23.3 小时  | 4.7 小时   | 2.3 小时  | 0.5 小时  | 0.2 小时  | 0.05 小时  |
+| **10 TB**                   | 19.4 天  | 9.7 天  | 1.9 天  | 0.9 天 | 0.2 天 | 0.1 天 | 0.02 天 |
+| **100 TB**                  | 194.2 天 | 97.1 天 | 19.4 天 | 9.7 天 | 1.9 天 | 1天   | 0.2 天  |
+| **1 PB**                    | 64.7 mo    | 32.4 mo   | 6.5 mo    | 3.2 mo   | 0.6 mo   | 0.3 mo   | 0.06 mo   |
+| **10 PB**                   | 647.3 mo   | 323.6 mo  | 64.7 mo   | 31.6 mo  | 6.5 mo   | 3.2 mo   | 0.6 mo    |
 
 ADF 副本可在不同级别进行缩放:
 
 ![ADF 复制的缩放方式](media/copy-activity-performance/adf-copy-scalability.png)
 
-- 单个复制活动可以利用可缩放的计算资源: 使用 Azure Integration Runtime 时, 可以以无服务器方式为每个复制活动指定[最多 256 DIUs](#data-integration-units) ;使用自承载 Integration Runtime 时, 可以手动纵向扩展计算机或向外扩展到多台计算机 ([最多4个节点](create-self-hosted-integration-runtime.md#high-availability-and-scalability)), 单个复制活动会将其文件集分区在所有节点上。
-- 单个复制活动使用多个线程从数据存储区读取数据并将数据写入数据存储区。
 - ADF 控制流可以并行启动多个复制活动, 例如,[为每个循环](control-flow-for-each-activity.md)使用。
+- 单个复制活动可以利用可缩放的计算资源: 使用 Azure Integration Runtime 时, 可以以无服务器方式为每个复制活动指定[最多 256 DIUs](#data-integration-units) ;使用自承载 Integration Runtime 时, 可以手动纵向扩展计算机或向外扩展到多台计算机 ([最多4个节点](create-self-hosted-integration-runtime.md#high-availability-and-scalability)), 单个复制活动会将其文件集分区在所有节点上。
+- 单个复制活动将使用多个线程[并行](#parallel-copy)读取和写入数据存储区。
 
 ## <a name="performance-tuning-steps"></a>性能优化步骤
 
 请执行以下步骤，通过复制活动优化 Azure 数据工厂服务的性能。
 
-1. **建立基准。** 在开发阶段，通过对代表性数据示例使用复制活动来测试管道。 按照[复制活动监视](copy-activity-overview.md#monitoring)收集执行详细信息和性能特征。
+1. **选取测试数据集并建立基线。** 在开发阶段，通过对代表性数据示例使用复制活动来测试管道。 你选择的数据集应表示典型的数据模式 (文件夹结构、文件模式、数据架构等), 并且足够大以评估复制性能, 例如, 复制活动需要10分钟或更长时间才能完成。 按照[复制活动监视](copy-activity-overview.md#monitoring)收集执行详细信息和性能特征。
 
 2. **如何最大程度地提高单个复制活动的性能**:
 
@@ -78,19 +78,19 @@ ADF 副本可在不同级别进行缩放:
 
    当你增加 DIU 设置时, 复制活动应尽可能接近线性缩放。  如果通过将 DIU 设置加倍而不显示吞吐量 double, 则可能会发生两种情况:
 
-   - 要运行的特定复制模式无法从添加更多 DIUs 中获益。  即使您指定了较大的 DIU 值, 实际使用的 DIU 仍保持不变, 因此, 您将获得与以前相同的吞吐量。  如果是这种情况, 请执行步骤 #3
+   - 要运行的特定复制模式无法从添加更多 DIUs 中获益。  即使您指定了较大的 DIU 值, 实际使用的 DIU 仍保持不变, 因此, 您将获得与以前相同的吞吐量。  如果是这种情况, 请通过运行多个副本同时引用步骤3来最大程度地提高聚合吞吐量。
    - 通过添加更多的 DIUs (更好的性能), 进而驱动数据提取、传输和加载的速度, 源数据存储、源中的网络或目标数据存储已达到其瓶颈, 而且可能会受到限制。  如果是这种情况, 请尝试与数据存储管理员或网络管理员联系以提高上限, 或减少 DIU 设置, 直到限制停止发生。
 
    **如果在自承载 Integration Runtime 上执行复制活动:**
 
-   建议你将专用计算机与托管数据存储的服务器分开, 以承载集成运行时
+   我们建议你将专用计算机与托管数据存储的服务器分开, 以承载集成运行时。
 
    从[并行复制](#parallel-copy)设置的默认值开始, 对自承载 IR 使用单个节点。  执行性能测试运行, 并记下实现的性能。
 
    如果要实现更高的吞吐量, 可以纵向扩展或横向扩展自承载 IR:
 
    - 如果自承载 IR 节点上的 CPU 和可用内存未充分利用, 但并发作业的执行达到了限制, 则应通过增加可在节点上运行的并发作业数来向上缩放。  有关说明, 请参阅[此处](create-self-hosted-integration-runtime.md#scale-up)。
-   - 另一方面, 如果 CPU 在自承载 IR 节点上很高并且可用内存较低, 则可以添加新节点, 以帮助在多个节点之间横向扩展负载。  有关说明, 请参阅[此处](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
+   - 另一方面, 如果 CPU 在自承载 IR 节点上很高, 或者可用内存较低, 则可以添加新节点以帮助在多个节点之间横向扩展负载。  有关说明, 请参阅[此处](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
 
    扩展或横向扩展自承载 IR 的容量时, 请重复执行性能测试, 以查看是否获得更好的吞吐量。  如果吞吐量停止提高, 很可能是因为源数据存储、源网络或目标数据存储已达到其瓶颈, 因而开始受到限制。 如果是这种情况, 请尝试联系你的数据存储管理员或网络管理员以提高上限, 或者返回到你先前的自承载 IR 缩放设置。 
 
@@ -98,9 +98,7 @@ ADF 副本可在不同级别进行缩放:
 
    现在, 你已将单个复制活动的性能最大化, 但如果尚未达到你的环境的吞吐量上限–网络、源数据存储和目标数据存储, 则可以使用 ADF 并行运行多个复制活动控制流构造, 如[For each 循环](control-flow-for-each-activity.md)。
 
-4. **诊断和优化性能。** 如果观察到的性能不符合预期，请识别性能瓶颈。 然后，优化性能以消除或减少瓶颈的影响。
-
-   在某些情况下, 当你在 Azure 数据工厂中运行复制活动时,[将在复制活动监视](copy-activity-overview.md#monitor-visually)顶部看到 "性能优化提示" 消息, 如以下示例中所示。 该消息将告知针对给定复制运行识别到的瓶颈。 此外，它还会提供有关如何进行更改以提升复制吞吐量的指导。 性能优化提示目前提供如下建议：
+4. **性能优化提示和优化功能。** 在某些情况下, 当你在 Azure 数据工厂中运行复制活动时,[将在复制活动监视](copy-activity-overview.md#monitor-visually)顶部看到 "性能优化提示" 消息, 如以下示例中所示。 该消息将告知针对给定复制运行识别到的瓶颈。 此外，它还会提供有关如何进行更改以提升复制吞吐量的指导。 性能优化提示目前提供如下建议：
 
    - 将数据加载到 Azure SQL 数据仓库时使用 PolyBase。
    - 当数据存储端的资源造成瓶颈时，增加 Azure Cosmos DB 请求单位数或 Azure SQL 数据库 DTU（数据库吞吐量单位）数。
@@ -114,12 +112,11 @@ ADF 副本可在不同级别进行缩放:
 
    ![包含性能优化提示的复制监视](media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-   此外，以下是一些常见的注意事项。 本文不涵盖性能诊断的完整说明。
+   此外, 还应注意以下一些性能优化功能:
 
-   - 性能优化功能:
-     - [并行复制](#parallel-copy)
-     - [数据集成单元](#data-integration-units)
-     - [暂存复制](#staged-copy)
+   - [并行复制](#parallel-copy)
+   - [数据集成单元](#data-integration-units)
+   - [暂存复制](#staged-copy)
    - [自承载集成运行时可伸缩性](concepts-integration-runtime.md#self-hosted-integration-runtime)
 
 5. **将配置扩展至整个数据集。** 对执行结果和性能满意时，可以扩展定义和管道以覆盖整个数据集。
@@ -136,7 +133,9 @@ Azure 数据工厂提供以下性能优化功能:
 
 数据集成单元是一种度量单位，代表单个单位在 Azure 数据工厂中的能力（包含 CPU、内存、网络资源分配）。 数据集成单元仅适用于 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)，而不适用于[自承载集成运行时](concepts-integration-runtime.md#self-hosted-integration-runtime)。
 
-允许复制活动运行的允许 DIUs 介于2到256之间。 如果未指定，下表列出了不同复制方案中使用的默认 DIU 数目：
+将按 **# \*个使用的 DIUs 复制持续时间\*单位价格/DIU**。 请参阅[此处](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)的当前价格。 每个订阅类型可能应用本地货币和单独折扣。
+
+允许复制活动运行的允许 DIUs**介于2到256之间**。 如果未指定或在用户界面上选择 "自动", 则数据工厂会根据源接收器对和数据模式动态应用最佳 DIU 设置。 下表列出了不同复制方案中使用的默认 DIUs:
 
 | 复制方案 | 服务决定的默认 DIU 数目 |
 |:--- |:--- |
@@ -151,7 +150,7 @@ Azure 数据工厂提供以下性能优化功能:
 > [!NOTE]
 > 仅当你将多个文件从 Azure 存储、Azure Data Lake Storage、Amazon S3、Google Cloud Storage、cloud FTP 或云 SFTP 复制到任何其他云数据存储时, 才会将设置为大于4的 DIUs。
 
-**示例**
+**示例：**
 
 ```json
 "activities":[
@@ -173,10 +172,6 @@ Azure 数据工厂提供以下性能优化功能:
 ]
 ```
 
-#### <a name="data-integration-units-billing-impact"></a>数据集成单元计费影响
-
-请记住，会根据复制操作的总时间向你收费。 对数据移动计费的总持续时间是所有 DIU 的持续时间总和。 如果复制作业过去使用 2 个云单元花费 1 小时，现在使用 8 个云单元花费 15 分钟，则总费用几乎相同。
-
 ### <a name="parallel-copy"></a>并行复制
 
 可使用 **parallelCopies** 属性指示要让复制活动使用的并行度。 可将此属性视为复制活动内，可从源并行读取或并行写入接收器数据存储的最大线程数。
@@ -193,6 +188,15 @@ Azure 数据工厂提供以下性能优化功能:
 > 在基于文件的存储之间复制数据时，默认行为通常可提供最佳吞吐量。 默认行为是根据源文件模式自动确定的。
 
 若要控制托管数据存储的计算机上的负载或优化复制性能，可以替代默认值并为 **parallelCopies** 属性指定值。 该值必须是大于或等于 1 的整数。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
+
+**需要注意的要点：**
+
+- 在基于文件的存储之间复制数据时，**parallelCopies** 确定文件级别的并行度。 单个文件内的区块化会自动透明地在文件下进行。 它旨在对给定源数据存储类型使用最佳区块大小，以并行独立方式将数据加载到 **parallelCopies**。 数据移动服务在运行时用于复制操作的并行复制的实际数量不超过所拥有的文件数。 如果复制行为是 **mergeFile**，复制活动无法利用文件级别的并行度。
+- 如果从不基于文件的存储 ( [Oracle](connector-oracle.md#oracle-as-source)、 [Teradata](connector-teradata.md#teradata-as-source)、 [Sap 表](connector-sap-table.md#sap-table-as-source)和[SAP 开放中心](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)连接器除外) 将数据复制到基于文件的存储, 则数据移动服务忽略**parallelCopies**属性。 即使指定了并行性，在此情况下也不适用。
+- **parallelCopies** 属性独立于 **dataIntegrationUnits**。 前者跨所有数据集成单元进行计数。
+- 为 **parallelCopies** 属性指定值时，请考虑源和接收器数据存储上的负载会增加。 另外请考虑到，如果复制活动由自承载集成运行时提供支持（例如，使用混合复制时），则自承载集成运行时的负载也会增加。 尤其在有多个活动或针对同一数据存储运行的相同活动有并发运行时，会发生这种负载增加的情况。 如果注意到数据存储或自承载集成运行时负载过重，请降低 **parallelCopies**  值以减轻负载。
+
+**示例：**
 
 ```json
 "activities":[
@@ -213,13 +217,6 @@ Azure 数据工厂提供以下性能优化功能:
     }
 ]
 ```
-
-**需要注意的要点：**
-
-* 在基于文件的存储之间复制数据时，**parallelCopies** 确定文件级别的并行度。 单个文件内的区块化会自动透明地在文件下进行。 它旨在对给定源数据存储类型使用最佳区块大小，以并行独立方式将数据加载到 **parallelCopies**。 数据移动服务在运行时用于复制操作的并行复制的实际数量不超过所拥有的文件数。 如果复制行为是 **mergeFile**，复制活动无法利用文件级别的并行度。
-* 如果从不基于文件的存储 ( [Oracle](connector-oracle.md#oracle-as-source)、 [Teradata](connector-teradata.md#teradata-as-source)、 [Sap 表](connector-sap-table.md#sap-table-as-source)和[SAP 开放中心](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)连接器除外) 将数据复制到基于文件的存储, 则数据移动服务忽略**parallelCopies**属性。 即使指定了并行性，在此情况下也不适用。
-* **parallelCopies** 属性独立于 **dataIntegrationUnits**。 前者跨所有数据集成单元进行计数。
-* 为 **parallelCopies** 属性指定值时，请考虑源和接收器数据存储上的负载会增加。 另外请考虑到，如果复制活动由自承载集成运行时提供支持（例如，使用混合复制时），则自承载集成运行时的负载也会增加。 尤其在有多个活动或针对同一数据存储运行的相同活动有并发运行时，会发生这种负载增加的情况。 如果注意到数据存储或自承载集成运行时负载过重，请降低 **parallelCopies**  值以减轻负载。
 
 ### <a name="staged-copy"></a>暂存复制
 
@@ -305,5 +302,5 @@ Azure 数据工厂提供以下性能优化功能:
 请参阅其他复制活动文章：
 
 - [复制活动概述](copy-activity-overview.md)
-- [复制活动架构映射](copy-activity-schema-and-type-mapping.md)
-- [复制活动容错](copy-activity-fault-tolerance.md)
+- [使用 Azure 数据工厂将数据从 data lake 或数据仓库迁移到 Azure](data-migration-guidance-overview.md)
+- [将数据从 Amazon S3 迁移到 Azure 存储](data-migration-guidance-s3-azure-storage.md)

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 5991aec681b00583a9c66328aed601593c864c63
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: ce663dec47f99b6ba4751e23e7ac7f13de866a5d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517200"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982980"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -65,7 +65,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 将 ISE 与现有虚拟网络一起使用时, 常见的安装问题是有一个或多个被阻止的端口。 用于在 ISE 与目标系统之间创建连接的连接器还可能有自己的端口要求。 例如，如果使用 FTP 连接器来与 FTP 系统通信，请确保在该 FTP 系统上使用的端口（例如用于发送命令的端口 21）可用。
 
-如果创建的新虚拟网络和子网没有任何限制, 则无需在虚拟网络中设置[网络安全组 (nsg)](../virtual-network/security-overview.md) , 以便能够跨子网控制流量。 对于现有虚拟网络, 可以通过[在子网之间筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md),*来设置 nsg* 。 如果选择此路由, 请确保 ISE 按照下表中所述的方式打开包含 Nsg 的虚拟网络上的特定端口。 因此, 对于虚拟网络中的现有 Nsg 或防火墙, 请确保它们打开这些端口。 这样, 你的 ISE 将保持可访问性, 并且可以正常工作, 因此你不会失去对 ISE 的访问权限。 否则, 如果任何所需的端口不可用, ISE 将停止工作。
+如果创建的新虚拟网络和子网没有任何限制, 则无需在虚拟网络中设置[网络安全组 (nsg)](../virtual-network/security-overview.md) , 以便能够跨子网控制流量。 对于现有虚拟网络, 可以通过[在子网之间筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md), 来设置 nsg。 如果选择此路由, 请确保 ISE 按照下表中所述的方式打开包含 Nsg 的虚拟网络上的特定端口。 因此, 对于虚拟网络中的现有 Nsg 或防火墙, 请确保它们打开这些端口。 这样, 你的 ISE 将保持可访问性, 并且可以正常工作, 因此你不会失去对 ISE 的访问权限。 否则, 如果任何所需的端口不可用, ISE 将停止工作。
 
 此表介绍你的 ISE 使用的虚拟网络中的端口以及这些端口的使用位置。 [资源管理器服务标记](../virtual-network/security-overview.md#service-tags)代表一组 IP 地址前缀, 有助于在创建安全规则时最大程度地降低复杂性。
 
@@ -117,7 +117,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的 Azure 资源组 |
-   | **集成服务环境名称** | 是 | <*environment-name*> | 为环境指定的名称 |
+   | **Integration service 环境名称** | 是 | <*environment-name*> | ISE 名称, 只能包含字母、数字、连字符 (`-`)、下划线 (`_`) 和句点 (`.`)。 |
    | **Location** | 是 | <*Azure-datacenter-region*> | 要在其中部署环境的 Azure 数据中心区域 |
    | **SKU** | 是 | **高级**或**开发人员 (无 SLA)** | 要创建和使用的 ISE SKU。 有关这些 Sku 之间的差异, 请参阅[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 <p><p>**重要说明**：此选项仅在创建 ISE 时可用, 不能在以后更改。 |
    | **额外容量** | 价格 <br>是 <p><p>开发 <br>不适用 | 价格 <br>0到10 <p><p>开发 <br>不适用 | 要用于此 ISE 资源的其他处理单元的数量。 若要在创建后添加容量, 请参阅[添加 ISE 容量](#add-capacity)。 |
@@ -136,7 +136,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    * 使用无[类别域间路由 (CIDR) 格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)和 B 类地址空间。
 
-   * 至少`/27`在地址空间中使用, 因为每个子网必须*至少*具有 32*地址。* 例如：
+   * 至少`/27`在地址空间中使用, 因为每个子网必须*至少*具有32地址。 例如：
 
      * `10.0.0.0/27`具有32个地址, 因为 2<sup>(32-27)</sup>为 2<sup>5</sup>或32。
 

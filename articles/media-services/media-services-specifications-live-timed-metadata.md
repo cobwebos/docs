@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/2/2019
+ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 444d5ca996c014bdbf2e62cacf2563c7b63372e4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 19d3fe4285cf6bf316a0d445e49a398ed5d66a35
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69015719"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991785"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>实时传送视频流中的超时元数据信号 
 
-最后更新:2019-07-02
+上次更新时间:2019-08-22
 
 ### <a name="conformance-notation"></a>一致表示法
 
@@ -74,6 +74,7 @@ ms.locfileid: "69015719"
 | AMF0            | ["操作消息格式 AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf) |
 | [短线-IF-IOP]     | 短划线行业论坛互操作指南 v 4。2[https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html) |
 | [HLS-TMD]         | HTTP Live Streaming 的定时元数据-[https://developer.apple.com/streaming](https://developer.apple.com/streaming) |
+| [CMAF]         | [常见媒体应用程序格式的定时元数据 (CMAF)](https://aomediacodec.github.io/av1-id3/)
 | ID3v2           | ID3 标记版本2.4。0[http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure) |
 | [ISO-14496-12]    | ISO/IEC 14496-12:第12部分 ISO 基本媒体文件格式, FourthEdition 2012-07-15  |
 | [MPEGDASH]        | 信息技术-通过 HTTP 的动态自适应流式处理 (破折号)--第1部分:媒体演示说明和段格式。 可能为2014。 发布. URL： https://www.iso.org/standard/65274.html |
@@ -95,23 +96,148 @@ ms.locfileid: "69015719"
 
 ## <a name="2-timed-metadata-ingest"></a>2.计时数据引入
 
-## <a name="21-rtmp-ingest"></a>2.1 RTMP 引入
+Azure 媒体服务支持 [RTMP] 和平滑流式处理 [SSTR] 协议的实时带内元数据。 实时元数据可用于定义自定义事件、使用自己独特的自定义架构 (JSON、二进制、XML) 以及行业定义格式 (如 ID3) 或 SCTE-35 (用于广播流中的广告信号)。 
 
-[RTMP] 允许将定时元数据信号作为嵌入到 [RTMP] 流中的 [AMF0] 提示消息发送。 在实际事件或 [SCTE35] ad 接合信号需要发生之前, 可能会发送提示消息。 若要支持此方案, 请在提示消息中发送事件的实际时间。 有关详细信息，请参见 [AMF0]。
+本文提供了有关如何使用媒体服务支持的引入协议发送自定义的定时元数据信号的详细信息。 本文还介绍了如何使用计时元数据信号修饰 HLS、破折号和平滑流式处理的清单, 以及如何在使用 CMAF (片段) 或 HLS 传输流 (TS) 段传输内容时将其带内传输。 
+
+计时元数据的常见用例方案包括:
+
+ - SCTE-35 用于在实时事件或线性广播中触发广告中断的广告信号
+ - 可在客户端应用程序 (浏览器、iOS 或 Android) 上触发事件的自定义 ID3 元数据
+ - 自定义的 JSON、二进制或 XML 元数据, 用于在客户端应用程序中触发事件
+ - 来自实时编码器、IP 照相机或无人机的遥测
+ - 来自 IP 摄像机的事件, 如动作、面部检测等。
+ - 操作相机、无人机或移动设备的地理位置信息
+ - 歌曲歌词
+ - 线性实时源上的程序边界
+ - 要在实时源上显示的图像或已扩充的元数据
+ - 体育评分或游戏-时钟信息
+ - 要在浏览器中与视频一起显示的交互式广告包
+ - 测验或投票
+  
+Azure 媒体服务实时事件和包装器可以接收这些计时的元数据信号, 并将它们转换为可使用基于标准的协议 (如 HLS 和短划线) 访问客户端应用程序的元数据流。
+
+
+## <a name="21-rtmp-timed-metadata"></a>2.1 RTMP 计时元数据
+
+[RTMP] 协议允许针对各种方案 (包括自定义元数据和 35 SCTE 广告信号) 发送定时元数据信号。 
+
+广告信号 (提示消息) 以 [AMF0] 提示消息的形式发送, 该消息嵌入在 [RTMP] 流中。 在实际事件或 [SCTE35] ad 接合信号需要发生之前, 可能会发送提示消息。 若要支持此方案, 请在提示消息中发送事件的实际时间。 有关详细信息，请参见 [AMF0]。
+
+Azure 媒体服务支持以下 [AMF0] 命令用于 RTMP 摄取:
+
+- **onUserDataEvent** -用于自定义元数据或 [ID3v2] 计时元数据
+- **onAdCue** -主要用于在实时流中发出广告定位机会。 支持两种形式的提示: 简单模式和 "SCTE-35" 模式。 
+- **onCuePoint** -由某些本地硬件编码器 (如 Elemental 实时编码器) 支持, 以发出 [SCTE35] 消息。 
+  
 
 下表描述了媒体服务将为 "简单" 和 "SCTE35" 消息模式引入的 AMF 消息负载的格式。
 
 [AMF0] 消息的名称可用于区分同一类型的多个事件流。  对于 [SCTE-35] 消息和 "简单" 模式, AMF 消息的名称在 [Adobe-Primetime] 规范中必须是 "onAdCue"。  Azure 媒体服务将在引入时忽略下面未列出的任何字段。
 
-## <a name="211-rtmp-signal-syntax"></a>2.1.1 RTMP 信号语法
+## <a name="211-rtmp-with-custom-metadata-using-onuserdataevent"></a>2.1.1 使用 "onUserDataEvent" 的自定义元数据的 RTMP
+
+如果要使用 RTMP 协议从上游编码器、IP 照相机、无人机或设备提供自定义元数据源, 请使用 "onUserDataEvent" [AMF0] 数据消息命令类型。
+
+**"OnUserDataEvent"** 数据消息命令必须携带具有以下定义的消息负载, 以由媒体服务捕获并打包为带内文件格式, 并打包为 HLS、破折号和平滑清单。
+建议每0.5 秒 (500 毫秒) 发送一次定时元数据消息, 而不是每隔一次发送一次。 如果需要提供框架级元数据, 则每个消息都可以聚合来自多个帧的元数据。 如果要发送多比特率流, 则建议你仅在单比特率提供元数据, 以减少带宽并避免视频/音频处理干扰。 
+
+**"OnUserDataEvent"** 的有效负载应为 [MPEGDASH] EventStream XML 格式消息。 这样, 就可以轻松地传入自定义的架构, 这些架构可以在 "emsg" 有效负载中携带, 用于 CMAF [MPEGCMAF] 通过 HLS 或短划线协议传递的内容。 每个短划线事件流消息都包含一个 schemeIdUri, 它充当 URN 消息方案标识符, 并定义消息的负载。 [ID3v2] 的某些 https://aomedia.org/emsg/ID3 方案 (如 "") 或**urn: scte: scte35: 2013: bin** for [35 scte] 按行业 consortia 标准化以实现互操作性。 任何应用程序提供程序都可以使用其控制的 URL (拥有的域) 定义自己的自定义方案, 并可以在该 URL 中提供规范 (如果选择)。 如果播放机具有已定义方案的处理程序, 则这是需要理解有效负载和协议的唯一组件。
+
+[MPEG-短线] EventStream XML 有效负载的架构定义为 (从短划线 ISO-IEC-23009-第三版开始)。 请注意, 此时仅支持每个 "EventStream" 一个 "事件类型"。 如果**EventStream**中提供了多个事件, 则仅处理第一个**事件**元素。
+
+```xml
+  <!-- Event Stream -->
+  <xs:complexType name="EventStreamType">
+    <xs:sequence>
+      <xs:element name="Event" type="EventType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute ref="xlink:href"/>
+    <xs:attribute ref="xlink:actuate" default="onRequest"/>
+    <xs:attribute name="schemeIdUri" type="xs:anyURI" use="required"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="timescale" type="xs:unsignedInt"/>
+  </xs:complexType>
+  <!-- Event  -->
+  <xs:complexType name="EventType">
+    <xs:sequence>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="presentationTime" type="xs:unsignedLong" default="0"/>
+    <xs:attribute name="duration" type="xs:unsignedLong"/>
+    <xs:attribute name="id" type="xs:unsignedInt"/>
+    <xs:attribute name="contentEncoding" type="ContentEncodingType"/>
+    <xs:attribute name="messageData" type="xs:string"/>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+```
+
+
+### <a name="example-xml-event-stream-with-id3-schema-id-and-base64-encoded-data-payload"></a>带有 ID3 架构 ID 和 base64 编码的数据负载的示例 XML 事件流。  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="https://aomedia.org/emsg/ID3">
+         <Event contentEncoding="Base64">
+          -- base64 encoded ID3v2 full payload here per [CMAF-TMD] --
+         </Event>
+   <EventStream>
+```
+
+### <a name="example-event-stream-with-custom-schema-id-and-base64-encoded-binary-data"></a>带有自定义架构 ID 和 base64 编码的二进制数据的示例事件流  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="urn:example.org:custom:binary">
+         <Event contentEncoding="Base64">
+          -- base64 encoded custom binary data message --
+         </Event>
+   <EventStream>
+```
+
+### <a name="example-event-stream-with-custom-schema-id-and-custom-json"></a>带有自定义架构 ID 和自定义 JSON 的示例事件流  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="urn:example.org:custom:JSON">
+         <Event>
+          [
+            {"key1" : "value1"},
+            {"key2" : "value2"}
+          ]
+         </Event>
+   <EventStream>
+```
+
+### <a name="built-in-supported-scheme-id-uris"></a>内置支持的方案 ID Uri
+| 方案 ID URI                 |  描述                                             |
+|-------------------------------|----------------------------------------------------------|
+| https://aomedia.org/emsg/ID3   | 描述如何将 [ID3v2] 元数据作为与 CMAF 兼容的 [MPEGCMAF] 分散的形式传递。 有关详细信息, 请参阅[常见媒体应用程序格式的定时元数据 (CMAF)](https://aomediacodec.github.io/av1-id3/) |
+
+### <a name="event-processing-and-manifest-signaling"></a>事件处理和清单信号
+
+收到有效的 **"onUserDataEvent"** 事件时, Azure 媒体服务将查找与 EventStreamType 匹配的有效 XML 有效负载 (在 [MPEGDASH] 中定义), 分析 XML 有效负载并将其转换为 [MPEGCMAF] 片段 "emsg" 版本1框实时存档并传输到媒体服务包装器的存储。   包装器将检测实时流中的 "emsg" 框, 并执行以下操作:
+
+- (a) 将其 "动态打包" 到 TS 段, 以便在符合 HLS 定时元数据规范 [HLS-TMD] 的情况下传递到 HLS 客户端, 或
+- (b) 通过 HLS 或短划线向传递到 CMAF 片段, 或 
+- (c) 通过平滑流式处理 [SSTR] 将其转换为稀疏轨迹信号以进行传送。
+
+除了 HLS 的带内 "emsg" 格式 CMAF 或 TS PE 数据包外, 短划线 (MPD) 和平滑流式处理的清单将包含对带内事件流的引用 (在平滑流式处理中也称为稀疏流跟踪)。 
+
+单个事件或其数据负载不会直接在 HLS、破折号或光滑清单中输出。 
+
+### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>OnUserDataEvent 事件的其他信息性约束和默认值
+
+- 如果未在 EventStream 元素中设置时间刻度, 则默认情况下将使用 RTMP 1Khz 时间刻度
+- OnUserDataEvent 消息的传递限于每个500毫秒最大值一次。如果更频繁地发送事件, 可能会影响实时源的带宽和稳定性
+
+## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>具有 "onCuePoint" 的 2.1.2 RTMP 广告提示
 
 Azure 媒体服务可以侦听并响应若干 [AMF0] 消息类型, 这些消息类型可用于在实时流中通知各种实时同步元数据。  [Primetime] 规范定义了两个称为 "简单" 和 "SCTE-35" 模式的提示类型。 对于 "简单" 模式, 媒体服务支持使用与下表 (为 "简单模式" 信号定义) 匹配的 "onAdCue" 的单个 AMF 提示消息。  
 
 以下部分显示了 RTMP "简单" 模式 "负载, 可用于发送基本" spliceOut "广告信号, 该信号会传递到 HLS、破折号和 Microsoft 平滑流式处理的客户端清单。 这对于以下情况非常有用: 客户不提供基于 SCTE 35 的复杂广告信号部署或插入系统, 并使用基本的本地编码器通过 API 在提示消息中发送。 通常, 本地编码器将支持基于 REST 的 API 触发此信号, 该信号还会通过将 IDR 帧插入视频并启动新的 GOP 来 "拼接条件" 视频流。
 
-## <a name="212--simple-mode-ad-signaling-with-rtmp"></a>2.1.2 简单模式 Ad 通过 RTMP 发送信号
+## <a name="213--rtmp-ad-cue-signaling-with-oncuepoint---simple-mode"></a>2.1.3 RTMP "onCuePoint" 的广告提示-简单模式
 
-| 字段名 | 字段类型 | 必需? | 说明                                                                                                             |
+| 字段名 | 字段类型 | 必需？ | 说明                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
 | 提示        | String     | 必填 | 事件消息。  应为“SpliceOut”以指定简单模式接合。                                              |
 | id         | String     | 必填 | 描述接合或片段的唯一标识符。 标识消息的此实例                            |
@@ -121,7 +247,7 @@ Azure 媒体服务可以侦听并响应若干 [AMF0] 消息类型, 这些消息�
 
 ---
  
-## <a name="213-scte-35-mode-ad-signaling-with-rtmp"></a>2.1.3 SCTE-35 模式 Ad 向 RTMP 发出信号
+## <a name="214-rtmp-ad-cue-signaling-with-oncuepoint---scte-35-mode"></a>2.1.4 RTMP 广告提示, 带 "onCuePoint"-SCTE-35 模式
 
 使用需要将完整的 SCTE-35 负载消息传递到 HLS 或短划线清单的更高级的广播生产工作流时, 最好使用 [Adobe-Primetime] 规范的 "SCTE-35 模式"。  此模式支持将带内 SCTE-35 信号直接发送到本地实时编码器, 然后使用 [Adobe-Primetime] 规范中指定的 "SCTE-35 模式" 将信号编码到 RTMP 流中。 
 
@@ -129,7 +255,7 @@ Azure 媒体服务可以侦听并响应若干 [AMF0] 消息类型, 这些消息�
 
 在此方案中, 必须使用 **"onAdCue"** [AMF0] 消息类型从本地编码器发送以下有效负载。
 
-| 字段名 | 字段类型 | 必需? | 说明                                                                                                             |
+| 字段名 | 字段类型 | 必需？ | 说明                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
 | 提示        | String     | 必填 | 事件消息。  对于 [SCTE-35] 消息, 这必须是 base64 编码的 [RFC4648] binary splice_info_section (), 以便将消息发送到 HLS、平滑和短信客户端。                                              |
 | type       | String     | 必填 | 标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息, 此项**应**为 **"scte35"** , 以便将消息发送到 HLS、平滑和短信客户端, 与 [Adobe-Primetime] 兼容。 也可以选择使用 URN "urn: scte: scte35: 2013: bin" 发出 [SCTE-35] 消息的信号。 |
@@ -139,7 +265,7 @@ Azure 媒体服务可以侦听并响应若干 [AMF0] 消息类型, 这些消息�
 | 时间       | 数量     | 必填 | 事件或广告接合的呈现时间。  显示时间和持续时间**应**与类型为1或2的流访问点 (SAP) 一致, 如 [ISO-14496-12] 附录 I 中所定义。对于 HLS 出口, 时间和持续时间**应**与段边界对齐。 相同事件流中的不同事件消息的呈现时间和持续时间不得重叠。 单位为小数形式的秒。
 
 ---
-## <a name="214-elemental-live-oncuepoint-ad-markers-with-rtmp"></a>2.1.4 Elemental Live "onCuePoint" Ad 标记与 RTMP
+## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>用于 Elemental Live 的 "onCuePoint" 的 2.1.5 RTMP 广告信号
 
 Elemental Live 本地编码器支持 RTMP 信号中的广告标记。 Azure 媒体服务目前只支持 RTMP 的 "onCuePoint" 广告标记类型。  可以通过将 "**ad_markers**" 设置为 "onCuePoint", 在 Elemental Media Live 编码器设置或 API 的 Adobe RTMP 组设置中启用此功能。  有关详细信息, 请参阅 Elemental Live 文档。 如果在 RTMP 组中启用此功能, 则会将 SCTE-35 信号传递到 Adobe RTMP 输出, 以由 Azure 媒体服务进行处理。
 
@@ -156,7 +282,7 @@ Elemental Live 本地编码器支持 RTMP 信号中的广告标记。 Azure 媒�
 
 当使用广告标记的此模式时, HLS 清单输出类似于 Adobe "Simple" 模式。 
 
-### <a name="215-cancellation-and-updates"></a>2.1.5 取消和更新
+### <a name="216-cancellation-and-updates"></a>2.1.6 取消和更新
 
 可以通过发送多条具有相同呈现时间和 ID 的消息来取消或更新消息。 呈现时间和 ID 用于唯一标识事件，并且针对具体呈现时间收到的满足前置式约束的最后一条消息为待处理的消息。 已更新的事件将替换以前接收的任何消息。 前置式约束为 4 秒。 在呈现时间前的至少 4 秒内收到的消息将有待处理。
 
@@ -465,6 +591,13 @@ EventStream 元素具有以下属性：
 使用 Azure 媒体服务平台测试实现时, 请先通过 "传递" LiveEvent 开始测试, 然后再转到对编码 LiveEvent 进行测试。
 
 ---
+
+## <a name="change-history"></a>更改历史记录
+
+| Date     | 更改                                                                            |
+|----------|------------------------------------------------------------------------------------|
+| 07/2/19  | 修订了用于 SCTE35 支持的 RTMP 摄取, 添加了 RTMP "onCuePoint" 进行 Elemental Live | 
+| 08/22/19 | 更新以将 OnUserDataEvent 添加到自定义元数据的 RTMP                         |
 
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。

@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: a9451b5dcd572eee27809cf66df889f06da960ed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e2a94f82e4830bd1e9c96039f5ef8fe6546b0d0b
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571492"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982676"
 ---
 # <a name="role-based-access-control-rbac-and-privileged-identity-management-pim"></a>基于角色的访问控制 (RBAC) 和 Privileged Identity Management (PIM)
 
@@ -27,7 +27,7 @@ Microsoft 提供了一套控件来实现 Microsoft Azure 中的实时和足够�
 
 ![RBAC-概述](media/rbac-overview.png)
 
-* **安全主体**:安全主体可以是以下任一项:用户、组、[服务主体或[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 应使用 Azure Active Directory 组为安全主体分配权限。
+* **安全主体**:安全主体可以是以下任一项:用户、组、[服务主体](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)或[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 应使用 Azure Active Directory 组为安全主体分配权限。
 
 * **角色定义**:角色定义也称为角色, 是权限的集合。 这些权限定义可由分配给角色定义的安全主体执行的操作。 此功能由 Azure 资源角色和 Azure Active Directory 管理员角色提供。 Azure 随附了一组内置角色 (链接), 可通过自定义角色进行扩展。
 
@@ -134,7 +134,7 @@ Microsoft 通过 Azure Privileged Identity Management 实现了实时 (JIT) 访�
 
 使用 PIM 可防止常见权限分配问题, 这些问题可能发生在不使用实时访问的环境中, 或者不会执行特权分配的例行审核。 一个常见问题是, 在完成需要提升权限的任务后, 会忘记并保留较长时间的已提升权限的分配。 另一个问题是, 在配置其他类似安全主体时, 通过克隆分配到安全主体的访问权限, 在环境中增加了提升的权限。
 
-## <a name="key-design-considerations"></a>关键设计注意事项
+## <a name="key-design-considerations"></a>关键设计考虑因素
 
 设计 RBAC 策略时, 如果希望强制实施最低权限安全性, 应考虑以下安全要求:
 

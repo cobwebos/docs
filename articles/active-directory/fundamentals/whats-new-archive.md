@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b338ad90c01c109cc9b2e222f1d7bcaa09f20346
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a978e2755818e88cad580753e041eacd50a9e6d2
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812950"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980485"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -143,13 +143,13 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 
 - **分阶段对多个用户进行大规模 ImmutableID 更新**
   
-  例如，需要进行耗时很长的 AD DS 林间迁移。 解决方案:使用 Azure AD Connect **配置源定位点**，并在用户迁移时将现有的 ImmutableID 值从 Azure AD 复制到本地 AD DS 用户的新林的 ms-DS-Consistency-Guid 属性中。 有关详细信息，请参阅[将 msDS-ConsistencyGuid 用作 sourceAnchor](/azure/active-directory/hybrid/plan-connect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)。
+  例如，需要进行耗时很长的 AD DS 林间迁移。 解决方案：使用 Azure AD Connect **配置源定位点**，并在用户迁移时将现有的 ImmutableID 值从 Azure AD 复制到本地 AD DS 用户的新林的 ms-DS-Consistency-Guid 属性中。 有关详细信息，请参阅[将 msDS-ConsistencyGuid 用作 sourceAnchor](/azure/active-directory/hybrid/plan-connect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)。
 
 - **一次性对多个用户进行大规模 ImmutableID 更新**
 
-  例如，在实现 Azure AD Connect 时犯错，现在需要更改 SourceAnchor 属性。 解决方案:在租户级别禁用 DirSync，并清除所有无效的 ImmutableID 值。 有关详细信息，请参阅[禁用 Office 365 的目录同步](/office365/enterprise/turn-off-directory-synchronization)。
+  例如，在实现 Azure AD Connect 时犯错，现在需要更改 SourceAnchor 属性。 解决方案：在租户级别禁用 DirSync，并清除所有无效的 ImmutableID 值。 有关详细信息，请参阅[禁用 Office 365 的目录同步](/office365/enterprise/turn-off-directory-synchronization)。
 
-- **将本地用户与 Azure AD 中的现有用户重新匹配** 例如，在 AD DS 中重新创建的用户会在 Azure AD 帐户中生成一个重复的用户，系统不会将其与现有的 Azure AD 帐户（孤立对象）重新匹配。 解决方案:在 Azure 门户中使用 Azure AD Connect Health 重新映射源定位点/ImmutableID。 有关详细信息，请参阅[孤立对象场景](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario)。
+- **将本地用户与 Azure AD 中的现有用户重新匹配** 例如，在 AD DS 中重新创建的用户会在 Azure AD 帐户中生成一个重复的用户，系统不会将其与现有的 Azure AD 帐户（孤立对象）重新匹配。 解决方案：在 Azure 门户中使用 Azure AD Connect Health 重新映射源定位点/ImmutableID。 有关详细信息，请参阅[孤立对象场景](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario)。
 
 ### <a name="breaking-change-updates-to-the-audit-and-sign-in-logs-schema-through-azure-monitor"></a>重大更改：更新了通过 Azure Monitor 提供的审核和登录日志的架构
 
@@ -168,8 +168,8 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 |字段名称|更改内容|旧值|新值|
 |----------|------------|----------|----------|
 |类别|以前它是“服务名称”字段， 现在是“审核类别”字段。 “服务名称”已重命名为“loggedByService”字段。|<ul><li>帐户预配</li><li>核心目录</li><li>自助密码重置</li></ul>|<ul><li>用户管理</li><li>组管理</li><li>应用管理</li></ul>|
-|targetResources|包括顶层的 **TargetResourceType**。|&nbsp;|<ul><li>策略</li><li>應用程式</li><li>用户</li><li>Group</li></ul>|
-|loggedByService|提供生成审核日志的服务的名称。|Null|<ul><li>帐户预配</li><li>核心目录</li><li>自助服务密码重置</li></ul>|
+|targetResources|包括顶层的 **TargetResourceType**。|&nbsp;|<ul><li>策略</li><li>应用</li><li>用户</li><li>Group</li></ul>|
+|loggedByService|提供生成审核日志的服务的名称。|Null|<ul><li>帐户预配</li><li>核心目录</li><li>自助密码重置</li></ul>|
 |结果|提供审核日志的结果。 以前会显示枚举值，但现在会显示实际值。|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>失败</li></ul>|
 
 #### <a name="changed-fields-in-the-sign-in-schema"></a>登录架构中已更改的字段
@@ -215,7 +215,7 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 
 - 短信
 
-有关使用 Microsoft Authenticator 应用重置密码的详细信息，请参阅 [Azure AD 自助密码重置 - 移动应用和 SSPR（预览版）](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr-preview)
+有关使用 Microsoft Authenticator 应用重置密码的详细信息，请参阅 [Azure AD 自助密码重置 - 移动应用和 SSPR（预览版）](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr)
 
 ---
 
@@ -280,7 +280,7 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
  
 ---
 
-### <a name="new-azure-ad-privileged-identity-management-pim-emails-for-azure-active-directory-roles"></a>Azure Active Directory 角色的新 Azure AD Privileged Identity Management (PIM)电子邮件
+### <a name="new-azure-ad-privileged-identity-management-pim-emails-for-azure-active-directory-roles"></a>Azure Active Directory 角色的新 Azure AD Privileged Identity Management (PIM) 电子邮件
 
 **类型：** 新功能  
 **服务类别：** Privileged Identity Management  
@@ -330,7 +330,7 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 
 ## <a name="october-2018"></a>2018 年 10 月
 
-### <a name="azure-ad-logs-now-work-with-azure-log-analytics-public-preview"></a>Azure AD 日志现在可用于 Azure Log Analytics (公众预览版)
+### <a name="azure-ad-logs-now-work-with-azure-log-analytics-public-preview"></a>Azure AD 日志现在可与 Azure Log Analytics（公共预览版）配合使用
 
 **类型：** 新功能  
 **服务类别：** 报告  
@@ -340,7 +340,7 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---october-2018"></a>Azure AD 应用库中推出的全新联合应用 - 2018 年 10 月
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---october-2018"></a>Azure AD 应用库中推出了新的联合应用 - 2018 年 10 月
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -384,7 +384,7 @@ Azure AD 域服务在 Azure 门户中提供有关托管域配置错误或问题�
 
 ## <a name="september-2018"></a>2018 年 9 月
  
-### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>更新了动态组的管理员角色权限
+### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>已更新动态组的管理员角色权限
 
 **类型：** 已修复  
 **服务类别：** 组管理  
@@ -404,7 +404,7 @@ Azure AD 域服务在 Azure 门户中提供有关托管域配置错误或问题�
 
 ---
 
-### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>为某些第三方应用简化了单一登录(SSO)配置设置
+### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>简化了某些第三方应用的单一登录 (SSO) 配置设置
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -422,7 +422,7 @@ Azure AD 域服务在 Azure 门户中提供有关托管域配置错误或问题�
 
 ---
 
-### <a name="azure-active-directory---where-is-your-data-located-page"></a>Azure Active Directory - “数据所在位置”页
+### <a name="azure-active-directory---where-is-your-data-located-page"></a>“Azure Active Directory - 数据位于何处?”页
 
 **类型：** 新功能  
 **服务类别：** 其他  
@@ -434,7 +434,7 @@ Azure AD 域服务在 Azure 门户中提供有关托管域配置错误或问题�
 
 ---
 
-### <a name="new-deployment-plan-available-for-the-my-apps-access-panel"></a>可用于“我的应用访问”面板的新部署计划
+### <a name="new-deployment-plan-available-for-the-my-apps-access-panel"></a>适用于“我的应用”访问面板的新部署计划
 
 **类型：** 新功能  
 **服务类别：** 我的应用  
@@ -459,7 +459,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ---
 
-### <a name="enhanced-support-for-custom-extension-properties-used-to-create-dynamic-membership-rules"></a>增强了对创建动态成员身份规则时所用的自定义扩展属性的支持
+### <a name="enhanced-support-for-custom-extension-properties-used-to-create-dynamic-membership-rules"></a>增强了用于创建动态成员身份规则的自定义扩展属性的支持
 
 **类型：** 已更改的功能  
 **服务类别：** 组管理  
@@ -489,7 +489,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ---
 
-### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>新的 Windows 7/8/8.1 锁屏自助密码重置支持
+### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Windows 7/8/8.1 锁屏界面中新的自助密码重置支持
 
 **类型：** 新功能  
 **服务类别：** SSPR  
@@ -515,7 +515,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---september-2018"></a>Azure AD 应用库中推出的全新联合应用 - 2018 年 9 月
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---september-2018"></a>Azure AD 应用库中推出了新的联合应用 - 2018 年 9 月
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -529,7 +529,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ---
 
-### <a name="support-for-additional-claims-transformations-methods"></a>支持更多声明转换方法
+### <a name="support-for-additional-claims-transformations-methods"></a>对其他声明转换方法的支持
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -541,7 +541,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ---
 
-### <a name="updated-saml-based-app-configuration-ui-preview"></a>更新了基于 SAML 的应用配置 UI(预览)
+### <a name="updated-saml-based-app-configuration-ui-preview"></a>更新了基于 SAML 的应用配置 UI（预览版）
 
 **类型：** 已更改的功能  
 **服务类别：** 企业应用  
@@ -567,7 +567,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ## <a name="august-2018"></a>2018 年 8 月
 
-### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>Azure Active Directory IP 地址范围更改
+### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>对 Azure Active Directory IP 地址范围的更改
 
 **类型：** 更改计划  
 **服务类别：** 其他  
@@ -599,7 +599,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
  
 ---
 
-### <a name="converged-security-info-management-for-self-service-password-sspr-and-multi-factor-authentication-mfa"></a>自助密码重置(SSPR)和多重身份验证(MFA)安全信息集中管理
+### <a name="converged-security-info-management-for-self-service-password-sspr-and-multi-factor-authentication-mfa"></a>为自助密码重置 (SSPR) 和多重身份验证 (MFA) 融合了安全信息管理
 
 **类型：** 新功能  
 **服务类别：** SSPR  
@@ -613,7 +613,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ---
 
-### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Azure AD 应用程序代理应用中的全新仅 HTTP cookie 设置
+### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Azure AD 应用程序代理应用中的新 HTTP-Only Cookie 设置
 
 **类型：** 新功能  
 **服务类别：** 应用代理  
@@ -627,7 +627,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ---
 
-### <a name="privileged-identity-management-pim-for-azure-resources-supports-management-group-resource-types"></a>Azure 资源的特权标识管理(PIM)支持管理组资源类型
+### <a name="privileged-identity-management-pim-for-azure-resources-supports-management-group-resource-types"></a>Azure 资源的 Privileged Identity Management (PIM) 支持管理组资源类型
 
 **类型：** 新功能  
 **服务类别：** Privileged Identity Management  
@@ -639,7 +639,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
  
 ---
 
-### <a name="application-access-preview-provides-faster-access-to-the-azure-ad-portal"></a>应用程序访问(预览)可实现更快的 Azure AD 门户访问速度
+### <a name="application-access-preview-provides-faster-access-to-the-azure-ad-portal"></a>使用“应用程序访问”（预览版）可以更快地访问 Azure AD 门户
 
 **类型：** 新功能  
 **服务类别：** Privileged Identity Management  
@@ -651,7 +651,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
  
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---august-2018"></a>Azure AD 应用库中推出的全新联合应用 - 2018 年 8 月
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---august-2018"></a>Azure AD 应用库中推出了新的联合应用 - 2018 年 8 月
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -665,7 +665,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ---
 
-### <a name="native-tableau-support-is-now-available-in-azure-ad-application-proxy"></a>Azure AD 应用程序代理现已拥有本机 Tableau 支持
+### <a name="native-tableau-support-is-now-available-in-azure-ad-application-proxy"></a>Azure AD 应用程序代理现已提供本机 Tableau 支持
 
 **类型：** 已更改的功能  
 **服务类别：** 应用代理  
@@ -677,7 +677,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ---
 
-### <a name="new-support-to-add-google-as-an-identity-provider-for-b2b-guest-users-in-azure-active-directory-preview"></a>新支持: 在 Azure Active Directory 中将 Google 添加为 B2B 来宾用户标识提供商(预览)
+### <a name="new-support-to-add-google-as-an-identity-provider-for-b2b-guest-users-in-azure-active-directory-preview"></a>将 Google 添加为 Azure Active Directory 中 B2B 来宾用户的标识提供者的新支持（预览版）
 
 **类型：** 新功能  
 **服务类别：** B2B  
@@ -2120,7 +2120,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 ### <a name="real-time-password-writeback-client-status"></a>实时密码写回客户端状态
 
 **类型：** 新功能  
-**服务类别：** 自助服务密码重置  
+**服务类别：** 自助密码重置  
 **产品功能：** 用户身份验证
 
 现在可以查看本地密码写回客户端的状态。 此选项位于[密码重置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)页的“本地集成”部分。 

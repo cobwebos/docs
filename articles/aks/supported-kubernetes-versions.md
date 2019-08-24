@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 0f2d3079de43767e61dfc1c8d77244da19f13a40
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
-ms.translationtype: HT
+ms.openlocfilehash: 0e26b9b5aee61f399a39c032cdbd2084884538c9
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898864"
+ms.locfileid: "69982702"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -30,7 +30,6 @@ Kubernetes 使用标准的[语义化版本控制](https://semver.org/)方案。 
 Example:
   1.12.14
   1.12.15
-  1.13.7
 ```
 
 版本中的每个编写表示与前一版本的一般兼容性：
@@ -39,7 +38,7 @@ Example:
 * 如果所做的功能更改与其他次要版本后向兼容，则次要版本将会更改。
 * 做出后向兼容的 Bug 修复时，修补程序版本将会更改。
 
-一般情况下，用户应尽量运行次要版本的最新修补程序版本，例如，如果你的生产群集使用 *1.13.6*，而 *1.13* 系列可用的最新修补程序版本为 *1.13.7*，则你应该尽快升级到 *1.13.7*，以确保群集得到全面的修补并受支持。
+通常情况下, 用户应努力运行其正在运行的次要版本的最新修补程序版本 (例如, 如果你的生产群集在*1.12.14*上, 而*1.12.15*是适用于*1.12*系列的最新可用修补程序版本)。应尽快升级到*1.12.15* , 可以确保群集已完全修补并受支持。
 
 ## <a name="kubernetes-version-support-policy"></a>Kubernetes 版本支持策略
 

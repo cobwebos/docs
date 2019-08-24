@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2019
+ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 29af70a2713e7b4aebf611d8f2b547e38c6c5d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b7a72c03d41d54aa80505e781b6f6d32cd2a2c0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60623085"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991364"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>对实验室中的项目失败进行诊断 
 创建项目后，可检查其为成功还是失败。 Azure 开发测试实验室中的项目日志提供了可用于诊断项目失败的信息。 可通过几个选项查看 Windows VM 的项目日志信息：
@@ -34,11 +34,11 @@ ms.locfileid: "60623085"
 
 1. 在 Azure 门户中的资源列表中选择实验室。
 2. 选择包含想要调查的项目的 Windows VM。
-3. 在左侧面板中，在“常规”下选择“项目”   。 随即会出现与该 VM 关联的项目的列表。 其中显示了项目的名称和状态。
+3. 在左侧面板中，在“常规”下选择“项目”。 随即会出现与该 VM 关联的项目的列表。 其中显示了项目的名称和状态。
 
    ![项目状态](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure.png)
 
-4. 选择状态显示为“失败”的项目  。 项目随即打开。 此时会显示一条扩展消息，其中包含有关项目失败的详细信息。
+4. 选择状态显示为“失败”的项目。 项目随即打开。 此时会显示一条扩展消息，其中包含有关项目失败的详细信息。
 
    ![项目错误消息](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error.png)
 
@@ -46,13 +46,14 @@ ms.locfileid: "60623085"
 ## <a name="troubleshoot-artifact-failures-from-within-the-virtual-machine"></a>从虚拟机中对项目失败进行故障排除
 
 1. 登录到包含要诊断的项目的 VM。
-2. 转到 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\1.9\Status，其中 1.9 为 Azure 自定义脚本扩展版本号   。
+2. 转到 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\1.9\Status，其中 1.9 为 Azure 自定义脚本扩展版本号。
 
    ![状态文件](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error-vm-status.png)
 
-3. 打开状态文件  。
+3. 打开状态文件。
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+有关在**Linux** VM 上查找日志文件的说明, 请参阅以下文章:[将 Azure 自定义脚本扩展版本2用于 Linux 虚拟机](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
+
 
 ## <a name="related-blog-posts"></a>相关的博客文章
 * [使用开发测试实验室中的资源管理器模板将 VM 加入到现有 Active Directory 域中](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)

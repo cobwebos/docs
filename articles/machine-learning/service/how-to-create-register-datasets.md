@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/21/2019
-ms.openlocfilehash: 67dda1ab56c6a706a9fdbef45fabdae9167ffe2b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 08/22/2019
+ms.openlocfilehash: 497a00570d85ab83f71416e979e485db4685b64a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616342"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992119"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>在 Azure 机器学习中创建和访问数据集 (预览)
 
@@ -44,7 +44,8 @@ ms.locfileid: "69616342"
 > 某些数据集类 (预览版) 与[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包之间存在依赖关系。 对于 Linux 用户, 仅以下分发版支持这些类:Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
 
 ## <a name="dataset-types"></a>数据集类型
-数据集根据用户在定型中使用它们的方式分类为各种类型。 目前, 我们支持 TabularDatasets, 它通过分析提供的文件或文件列表来表示表格格式的数据。 这使你能够将数据具体化为 pandas 数据帧。 可以从 csv、tsv、parquet 文件、SQL 查询结果等创建 TabularDataset。有关完整列表, 请访问我们的文档。
+
+数据集根据用户在定型中使用它们的方式分类为各种类型。 目前, 我们支持[TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , 它通过分析提供的文件或文件列表来表示表格格式的数据。 这使你能够将数据具体化为 pandas 数据帧。 可以通过 csv、tsv、parquet 文件、SQL 查询结果等来创建对象。`TabularDataset`有关完整列表, 请访问我们的文档。
 
 若要了解有关即将发生的 API 更改的详细信息, 请参阅[什么是 Azure 机器学习服务？](https://aka.ms/tabular-dataset) 
 
@@ -136,7 +137,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="access-your-data-during-training"></a>在定型过程中访问数据
 
-已注册的数据集可在 Azure 机器学习计算的计算群集上本地和远程访问。 若要跨试验访问已注册的数据集, 请使用以下代码按名称获取工作区和已注册的数据集。 默认`get_by_name`情况下, `Dataset`类上的方法返回注册到工作区中的最新版本的数据集。
+已注册的数据集可在 Azure 机器学习计算的计算群集上本地和远程访问。 若要跨试验访问已注册的数据集, 请使用以下代码按名称获取工作区和已注册的数据集。 默认[`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)情况下, `Dataset`类上的方法返回注册到工作区中的最新版本的数据集。
 
 ```Python
 %%writefile $script_folder/train.py

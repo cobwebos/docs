@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b0c9d55846a0240dde92de16ea17e9403a112c3e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9264aa6d24256b991abefe35b41045caa2e76d67
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699221"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997783"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>将大容量数据迁移到 Azure 文件同步
 可以通过两种方式将大容量数据迁移到 Azure 文件同步:
@@ -22,9 +22,10 @@ ms.locfileid: "68699221"
 
 本文介绍如何以与 Azure 文件同步兼容的方式脱机迁移文件。按照这些说明操作, 以避免文件冲突, 并在启用同步后保留文件和文件夹的访问控制列表 (Acl) 和时间戳。
 
-## <a name="online-migration-tools"></a>联机迁移工具
-本文介绍的过程不仅适用于 Data Box, 还适用于其他脱机迁移工具。 它还适用于 AzCopy、Robocopy 或合作伙伴工具及服务等联机工具。 不过, 如果你克服了初始上传难题, 请按照本文中的步骤使用这些工具, 这种方式与 Azure 文件同步兼容。
+## <a name="migration-tools"></a>迁移工具
+本文介绍的过程不仅适用于 Data Box, 还适用于其他脱机迁移工具。 它还适用于 AzCopy、Robocopy 或合作伙伴工具以及直接在 internet 上使用的服务等工具。 但是, 若要解决最初的上传难题, 请按照本文中的步骤操作, 以与 Azure 文件同步兼容的方式使用这些工具。
 
+在某些情况下, 你需要在采用 Azure 文件同步之前从一台 Windows Server 迁移到另一台 Windows Server。[存储迁移服务](https://aka.ms/storagemigrationservice)(SMS) 可以为此提供帮助。 无论你是需要迁移到 Azure 文件同步 (Windows Server 2012R2 和更高版本) 所支持的服务器操作系统版本, 还是只需迁移, 因为你要为 Azure 文件同步购买新系统, 但 SMS 具有许多功能和优势, 可帮助 migr) 顺利完成。
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>使用工具脱机传输数据的优点
 下面是使用传输工具 (例如 Data Box 进行脱机迁移) 的主要优点:

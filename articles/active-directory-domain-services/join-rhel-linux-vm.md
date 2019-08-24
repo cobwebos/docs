@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 0e3803edd47c3589652b3fedecd12125e3ff40b7
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: b59bd7c7196ceb87da087967498eca6dda7c212b
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612800"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990604"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>将 Red Hat Enterprise Linux 7 虚拟机加入托管域
 本文说明如何将 Red Hat Enterprise Linux (RHEL) 7 虚拟机加入 Azure AD 域服务托管域。
@@ -84,7 +84,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
 1. 发现 AAD 域服务托管域。 在 SSH 终端中键入以下命令：
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -100,7 +100,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
     > * 以大写字母指定域名，否则 kinit 会失败。
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. 将计算机加入域。 在 SSH 终端中键入以下命令：
@@ -111,7 +111,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
     > 如果 VM 无法加入域, 请确保 VM 的网络安全组允许 TCP + UDP 端口464上的出站 Kerberos 流量到 Azure AD DS 托管域的虚拟网络子网。
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM'
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM'
     ```
 
 计算机成功加入托管域后，应会显示一条消息（“已在领域中成功注册计算机”）。
@@ -120,10 +120,10 @@ sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
 ## <a name="verify-domain-join"></a>验证域加入
 验证计算机是否已成功加入托管域。 使用不同 SSH 连接连接到已加入域的 RHEL VM。 使用域用户帐户连接，并检查该用户帐户是否正确解析。
 
-1. 在 SSH 终端中键入以下命令，使用 SSH 连接到已加入域的 RHEL 虚拟机。 使用属于托管域的域帐户（例如，在本例中为“bob@contoso.COM”）。
+1. 在 SSH 终端中键入以下命令，使用 SSH 连接到已加入域的 RHEL 虚拟机。 使用属于托管域的域帐户（例如，在本例中为“bob@CONTOSO.COM”）。
     
     ```console
-    ssh -l bob@contoso.COM contoso-rhel.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-rhel.contoso.com
     ```
 
 2. 在 SSH 终端中键入以下命令，查看是否已正确初始化主目录。

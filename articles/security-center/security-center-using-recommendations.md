@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 79a5f9a1269bdfc63d9d0b6fffd8458d011b777b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 13d6eb64b2089cf93f08c294cc9b6a2034b64fa0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640877"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990547"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 安全中心建议增强安全性
 可以通过配置安全策略，并实施 Azure 安全中心提供的建议，降低发生重大安全事件的可能性。 本文说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。 
@@ -75,6 +75,6 @@ Jeff 继续浏览高优先级和中优先级建议，并进行有关实施的决
 ## <a name="next-steps"></a>后续步骤
 确保拥有一个适当的监视进程，定期检查安全中心中的建议，以便可以确保在一段时间内保护资源的安全。
 
-此方案说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。 请参阅[事件响应方案](security-center-incident-response.md)，了解如何在攻击发生之前制定事件响应计划。
+此方案说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。
 
-了解如何通过[事件响应](security-center-incident-response.md)来响应威胁。
+了解如何通过[管理和响应安全警报](security-center-managing-and-responding-alerts.md)来应对威胁。

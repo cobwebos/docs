@@ -1,23 +1,23 @@
 ---
 title: 了解部署排序顺序
-description: 了解有关蓝图定义所经历的生命周期和有关每个阶段的详细信息。
+description: 了解蓝图定义经历的生命周期, 以及有关每个阶段的详细信息。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/25/2019
+ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b05a7ce260e8cc1da4ac8a0c186694ae097a3b1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71584c9a69ebab6583973003aa51e94a1afe1b14
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721290"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991999"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
-Azure 蓝图使用**序列化顺序**处理蓝图定义的分配时确定的顺序创建资源。 本文解释了以下概念：
+在处理蓝图定义的分配时, Azure 蓝图使用**排序顺序**来确定创建资源的顺序。 本文解释了以下概念：
 
 - 使用的默认序列化顺序
 - 如何自定义顺序
@@ -29,32 +29,36 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 ## <a name="default-sequencing-order"></a>默认排序顺序
 
-如果蓝图定义包含顺序，以便将项目部署任何指令或指令为 null，则使用以下顺序：
+如果蓝图定义为部署项目的顺序不包含指令, 或者指令为 null, 则使用以下顺序:
 
-- 订阅级别“角色分配”项目按项目名称排序 
-- 订阅级别“策略分配”项目按项目名称排序 
-- 订阅级别“Azure 资源管理器模板”项目按项目名称排序 
-- “资源组”项目（包括子项目）按占位符名称排序 
+- 订阅级别“角色分配”项目按项目名称排序
+- 订阅级别“策略分配”项目按项目名称排序
+- 订阅级别“Azure 资源管理器模板”项目按项目名称排序
+- “资源组”项目（包括子项目）按占位符名称排序
 
 在每个**资源组**项目中，将按照以下顺序排列在该资源组中创建的项目：
 
-- 资源组子“角色分配”项目按项目名称排序 
-- 资源组子“策略分配”项目按项目名称排序 
-- 资源组子“Azure 资源管理器模板”项目按项目名称排序 
+- 资源组子“角色分配”项目按项目名称排序
+- 资源组子“策略分配”项目按项目名称排序
+- 资源组子“Azure 资源管理器模板”项目按项目名称排序
 
 > [!NOTE]
-> 利用[artifacts()](../reference/blueprint-functions.md#artifacts)上所引用的项目创建隐式依赖项。
+> 使用[伪像 ()](../reference/blueprint-functions.md#artifacts)可对所引用的项目创建隐式依赖项。
 
 ## <a name="customizing-the-sequencing-order"></a>自定义排序顺序
 
-当撰写大型蓝图定义时，可能有必要为按特定顺序创建资源。 蓝图定义包含多个 Azure 资源管理器模板时，此方案的最常见的使用模式。 蓝图通过允许定义排序顺序来处理此模式。
+编写大型蓝图定义时, 可能需要按特定顺序创建资源。 此方案的最常见使用模式是蓝图定义包含多个 Azure 资源管理器模板。 蓝图通过允许定义排序顺序来处理此模式。
 
-排序是通过在 JSON 中定义 `dependsOn` 属性来实现的。 蓝图定义中，为资源组和项目对象支持此属性。 `dependsOn` 是在创建特定项目之前需要创建的项目名称的字符串数组。
+排序是通过在 JSON 中定义 `dependsOn` 属性来实现的。 资源组和项目对象的蓝图定义支持此属性。 `dependsOn` 是在创建特定项目之前需要创建的项目名称的字符串数组。
 
-### <a name="example---ordered-resource-group"></a>示例-排序资源组
+> [!NOTE]
+> 创建蓝图对象时, 如果使用[REST API](/rest/api/blueprints/artifacts/createorupdate), 则每个项目资源都将从文件名中获取其名称 (如果使用[POWERSHELL](/powershell/module/az.blueprint/new-azblueprintartifact)) 或 URL 端点。
+> 项目中的 ResourceGroup 引用必须与蓝图定义中定义的_资源_组引用匹配。
 
-此示例蓝图定义具有已通过声明的值来定义自定义排序顺序的资源组`dependsOn`，以及标准的资源组。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理   。
-standard-rg 将按默认排序顺序进行处理  。
+### <a name="example---ordered-resource-group"></a>示例-有序资源组
+
+此示例蓝图定义具有一个资源组, 该资源组通过声明的值`dependsOn`以及标准资源组定义了自定义的排序顺序。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理。
+standard-rg 将按默认排序顺序进行处理。
 
 ```json
 {
@@ -77,9 +81,7 @@ standard-rg 将按默认排序顺序进行处理  。
         },
         "targetScope": "subscription"
     },
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint",
-    "type": "Microsoft.Blueprint/blueprints",
-    "name": "mySequencedBlueprint"
+    "type": "Microsoft.Blueprint/blueprints"
 }
 ```
 
@@ -98,15 +100,13 @@ standard-rg 将按默认排序顺序进行处理  。
         ]
     },
     "kind": "policyAssignment",
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/assignPolicyTags",
-    "type": "Microsoft.Blueprint/artifacts",
-    "name": "assignPolicyTags"
+    "type": "Microsoft.Blueprint/artifacts"
 }
 ```
 
-### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>示例-具体取决于资源组的订阅级别模板项目
+### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>示例-根据资源组的订阅级别模板项目
 
-此示例适用于在订阅级别，以依赖于资源组部署的资源管理器模板。 在默认排序，将任何资源组和资源组中的子项目之前创建的订阅级别项目。 蓝图定义此类中定义的资源组：
+此示例适用于在订阅级别部署的资源管理器模板, 以依赖于资源组。 默认排序中, 将在这些资源组中的任何资源组和子项目之前创建订阅级别项目。 资源组在蓝图定义中定义, 如下所示:
 
 ```json
 "resourceGroups": {
@@ -118,7 +118,7 @@ standard-rg 将按默认排序顺序进行处理  。
 }
 ```
 
-具体取决于订阅级别模板项目**等待-对-我**资源组定义如下：
+根据 "**等待我**" 资源组的定义, 订阅级别模板项目的定义如下所示:
 
 ```json
 {
@@ -134,9 +134,7 @@ standard-rg 将按默认排序顺序进行处理  。
         "description": ""
     },
     "kind": "template",
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/subtemplateWaitForRG",
-    "type": "Microsoft.Blueprint/blueprints/artifacts",
-    "name": "subtemplateWaitForRG"
+    "type": "Microsoft.Blueprint/blueprints/artifacts"
 }
 ```
 

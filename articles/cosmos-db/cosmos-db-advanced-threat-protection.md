@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: 0504da45cbbd60629954d3e3ca3230e05761c1d6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e22e05618c8b8977ba8b03afd3b654d27d4fa6bd
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640383"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981738"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB 的高级威胁防护
 
 适用于 Azure Cosmos DB 的高级威胁防护提供额外的安全智能层, 用于检测访问或利用 Azure Cosmos DB 帐户的异常和潜在有害尝试。 利用这一层保护, 你可以解决威胁, 甚至无需成为安全专家, 还可以将它们与中心安全监视系统集成。
 
-当发生异常时, 将触发安全警报。 这些安全警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成, 还会通过电子邮件发送给订阅管理员, 并详细介绍了可疑活动以及如何调查和修正威胁的建议。
+当发生异常时, 将触发安全警报。 这些安全警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成, 还会通过电子邮件发送给订阅管理员, 并详细介绍了可疑活动以及如何调查和修正威胁的建议。
 
 > [!NOTE]
 >
@@ -31,16 +31,16 @@ ms.locfileid: "68640383"
 
 ### <a name="set-up-atp-using-the-portal"></a>使用门户设置 ATP
 
-1. 启动 Azure 门户  [https://portal.azure.com](https://portal.azure.com/)。
+1. 启动 Azure 门户[https://portal.azure.com](https://portal.azure.com/)。
 
 2. 从 Azure Cosmos DB 帐户的 "**设置**" 菜单中, 选择 "**高级安全**"。
 
     ![设置 ATP](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png)
 
-3. 在 " **高级安全**配置" 边栏选项卡中:
+3. 在 "**高级安全**配置" 边栏选项卡中:
 
     * 单击 "**高级威胁防护**" 选项将其设置为 **"开**"。
-    * 单击 " **保存** " 以保存新的或更新的高级威胁防护策略。   
+    * 单击“保存”以保存新的或更新的高级威胁防护策略。   
 
 ### <a name="set-up-atp-using-rest-api"></a>使用 REST API 设置 ATP
 
@@ -75,5 +75,5 @@ ms.locfileid: "68640383"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 [诊断日志记录 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
-* 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
+* 详细了解[诊断日志记录 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
+* 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息

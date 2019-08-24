@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c1f3d1ec7bb9e9f449cea3f9aa36ca8f80348c6e
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: dc76d9a0d492d8ef0e37c0c34173216ff4c75164
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612813"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990566"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>将 CoreOS Linux 虚拟机加入托管域
 本文介绍如何将 Azure 中的 CoreOS Linux 虚拟机加入 Azure AD 域服务托管域。
@@ -79,9 +79,9 @@ sudo vi /etc/hosts
 [sssd]
 config_file_version = 2
 services = nss, pam
-domains = contoso.COM
+domains = CONTOSO.COM
 
-[domain/contoso.COM]
+[domain/CONTOSO.COM]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad
@@ -99,17 +99,17 @@ ldap_force_upper_case_realm = true
 fallback_homedir = /home/%d/%u
 
 krb5_server = contoso.com
-krb5_realm = contoso.COM
+krb5_realm = CONTOSO.COM
 ```
 
-替换为 "contoso"。COM ', 其中包含托管域的 DNS 域名。 确保在配置文件中指定大写域名。
+替换为 "CONTOSO"。COM ', 其中包含托管域的 DNS 域名。 确保在配置文件中指定大写域名。
 
 
 ## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>将 Linux 虚拟机加入托管域
 在 Linux 虚拟机上安装所需的包后，下一个任务是将虚拟机加入托管域。
 
 ```console
-sudo adcli join -D contoso.COM -U bob@contoso.COM -K /etc/krb5.keytab -H contoso-coreos.contoso.com -N coreos
+sudo adcli join -D CONTOSO.COM -U bob@CONTOSO.COM -K /etc/krb5.keytab -H contoso-coreos.contoso.com -N coreos
 ```
 
 
@@ -129,10 +129,10 @@ sudo systemctl start sssd.service
 ## <a name="verify-domain-join"></a>验证域加入
 验证计算机是否已成功加入托管域。 使用不同的 SSH 连接来连接到已加入域的 CoreOS VM。 使用域用户帐户连接，并检查该用户帐户是否正确解析。
 
-1. 在 SSH 终端中键入以下命令，使用 SSH 连接到已加入域的 CoreOS 虚拟机。 使用属于托管域的域帐户（例如，在本例中为“bob@contoso.COM”）。
+1. 在 SSH 终端中键入以下命令，使用 SSH 连接到已加入域的 CoreOS 虚拟机。 使用属于托管域的域帐户（例如，在本例中为“bob@CONTOSO.COM”）。
     
     ```console
-    ssh -l bob@contoso.COM contoso-coreos.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-coreos.contoso.com
     ```
 
 2. 在 SSH 终端中键入以下命令，查看是否已正确初始化主目录。

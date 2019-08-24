@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404606"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992353"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -117,6 +117,10 @@ Azure 数据工厂映射数据流提供了一个无代码浏览器界面, 用于
 * 可以控制 ADF 将使用的分区数量。 在每个源 & 接收器转换以及每个单独的转换中, 可以设置分区方案。 对于较小的文件, 可能会发现选择 "单一分区" 有时可以比请求 Spark 分区小型文件更好、更快。
 * 如果没有关于源数据的足够信息, 可以选择 "轮循机制" 分区并设置分区数。
 * 如果您浏览数据并发现您的列可以是良好的哈希键, 请使用哈希分区选项。
+* 在数据预览和管道调试中进行调试时, 请注意, 基于文件的源数据集的限制和采样大小仅适用于返回的行数, 而不是读取的行数。 这一点很重要, 因为它可能会影响调试执行的性能, 并且可能会导致流失败。
+* 请记住, 默认情况下, 调试群集是小型单节点群集, 因此使用临时小文件进行调试。 使用临时文件, 中转到 "调试设置" 并指向数据的一小部分。
+
+![调试设置](media/data-flow/debugsettings3.png "调试设置")
 
 ### <a name="file-naming-options"></a>文件命名选项
 

@@ -4,17 +4,17 @@ description: 将 Azure IoT Edge 用作可处理来自下游设备的消息的透
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 08/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a91860e9ec8d503a01d079925466093d19bbbccf
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e61ddd6cb51795fad564b6246fb24ea4ce48f028
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698608"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982959"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
 
@@ -52,8 +52,6 @@ ms.locfileid: "68698608"
 要配置为网关的 Azure IoT Edge 设备。 对以下操作系统之一使用 IoT Edge 安装步骤：
   * [Windows](how-to-install-iot-edge-windows.md)
   * [Linux](how-to-install-iot-edge-linux.md)
-
-本文在多个位置提到了“网关主机名”。 网关主机名在 IoT Edge 网关设备上的 config.yaml 文件的 **hostname** 参数中声明。 它用于创建本文中所用的证书，并在下游设备的连接字符串中引用。 网关主机名必须能够解析成 IP 地址，不管是使用 DNS 还是主机文件条目。
 
 ## <a name="generate-certificates-with-windows"></a>在 Windows 中生成证书
 
@@ -142,15 +140,18 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。 在本
    此脚本命令将创建多个证书和密钥文件，但我们稍后在本文中只会引用其中特定的一个文件：
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-2. 使用以下命令创建 IoT Edge 设备 CA 证书和私钥。 提供网关主机名（可在网关设备上的 iotedge\config.yaml 文件中找到）。 在生成证书的过程中，将使用该网关主机名来为文件命名。 
+2. 使用以下命令创建 IoT Edge 设备 CA 证书和私钥。 提供 CA 证书的名称, 例如**MyEdgeDeviceCA**。 此名称用于命名文件和生成证书。 
 
    ```powershell
-   New-CACertsEdgeDevice "<gateway hostname>"
+   New-CACertsEdgeDeviceCA "MyEdgeDeviceCA"
    ```
 
    此脚本命令将创建多个证书和密钥文件，包括我们稍后在本文中引用的两个文件：
-   * `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+
+   >[!TIP]
+   >如果提供的名称不是**MyEdgeDeviceCA**, 则此命令创建的证书和密钥将反映该名称。 
 
 现已创建证书，接下来请转到[在网关上安装证书](#install-certificates-on-the-gateway)
 
@@ -193,6 +194,8 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。 在本
 
 1. 创建根 CA 证书和一个中间证书。 这些证书位于 *\<WRKDIR>* 中。
 
+   如果已在此工作目录中创建了根证书和中间证书, 请不要再次运行此脚本。 重新运行此脚本将覆盖现有证书。 而是转到下一步。 
+
    ```bash
    ./certGen.sh create_root_and_intermediate
    ```
@@ -200,15 +203,18 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。 在本
    该脚本将创建多个证书和密钥。 请记下我们将在下一部分引用的那一个：
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`
 
-2. 使用以下命令创建 IoT Edge 设备 CA 证书和私钥。 提供网关主机名（可在网关设备上的 iotedge/config.yaml 文件中找到）。 在生成证书的过程中，将使用该网关主机名来为文件命名。 
+2. 使用以下命令创建 IoT Edge 设备 CA 证书和私钥。 提供 CA 证书的名称, 例如**MyEdgeDeviceCA**。 此名称用于命名文件和生成证书。 
 
    ```bash
-   ./certGen.sh create_edge_device_certificate "<gateway hostname>"
+   ./certGen.sh create_edge_device_ca_certificate "MyEdgeDeviceCA"
    ```
 
    该脚本将创建多个证书和密钥。 请记下我们将在下一部分引用的那两个： 
-   * `<WRKDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * `<WRKDIR>/private/iot-edge-device-<gateway hostname>.key.pem`
+   * `<WRKDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * `<WRKDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+
+   >[!TIP]
+   >如果提供的名称不是**MyEdgeDeviceCA**, 则此命令创建的证书和密钥将反映该名称。 
 
 ## <a name="install-certificates-on-the-gateway"></a>在网关上安装证书
 
@@ -216,8 +222,8 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。 在本
 
 1. 复制 *\<WRKDIR>* 中的以下文件。 将其保存在 IoT Edge 设备上的任意位置。 我们将 IoT Edge 设备上的目标目录称作 *\<CERTDIR>* 。 
 
-   * 设备 CA 证书 - `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * 设备 CA 私钥 - `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * 设备 CA 证书 - `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * 设备 CA 私钥 - `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
    * 根 CA - `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
    可以使用 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) 之类的服务或[安全复制协议](https://www.ssh.com/ssh/scp/)之类的功能来移动证书文件。  如果在 IoT Edge 设备本身上生成了证书，则可以跳过此步骤，并使用工作目录的路径。
@@ -233,16 +239,16 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。 在本
 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-<gateway hostname>-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-<gateway hostname>.key.pem"
+        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
         trusted_ca_certs: "<CERTDIR>\\certs\\azure-iot-test-only.root.ca.cert.pem"
       ```
    
    * Linux： 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>/private/iot-edge-device-<gateway hostname>.key.pem"
+        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
         trusted_ca_certs: "<CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem"
       ```
 

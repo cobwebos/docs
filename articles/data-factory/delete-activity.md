@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2019
-ms.openlocfilehash: e749138cd28f7bd8faf10ca1087a73f323533a25
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.date: 08/20/2019
+ms.openlocfilehash: d9a1c76e8ac386b954c68f16e2189df4e6c0e1b7
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335667"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996323"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Delete 活动
 
@@ -44,6 +44,7 @@ ms.locfileid: "68335667"
 -   [Azure Blob 存储](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+-   [Azure 文件存储](connector-azure-file-storage.md)
 
 ### <a name="file-system-data-stores"></a>文件系统数据存储
 
@@ -51,6 +52,7 @@ ms.locfileid: "68335667"
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
+-   [Google Cloud Storage](connector-google-cloud-storage.md)
 
 ## <a name="syntax"></a>语法
 
@@ -115,7 +117,7 @@ ms.locfileid: "68335667"
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete 活动的示例日志文件
 
-| 名称 | 类别 | 状态 | Error |
+| 姓名 | 类别 | 状态 | Error |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | 文件 | 已删除 |  |
 | test2/hello789.txt | 文件 | 已删除 |  |

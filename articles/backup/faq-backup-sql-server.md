@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: a600c50e97f0d069443112a59d529c0d6f6fecad
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6e3ce21419e131ceef65939202eb70a98f10b040
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737062"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982433"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关在 Azure VM 备份上运行的 SQL Server 数据库的常见问题解答
 
@@ -37,9 +37,10 @@ ms.locfileid: "68737062"
 默认情况下, 为所有用户启用了自动修复功能;但是, 如果选择退出它, 请执行以下操作:
 
   * 在 SQL Server 实例上的*C:\Program Files\Azure 工作负荷 Backup\bin*文件夹中, 创建或编辑**ExtensionSettingsOverrides**文件。
-  * 在 **ExtensionSettingsOverrides**中, 将 *{"EnableAutoHealer": false}* 设置为。
+  * 在**ExtensionSettingsOverrides**中, 将 *{"EnableAutoHealer": false}* 设置为。
   * 保存更改并关闭该文件。
-  * 在 SQL Server 实例上, 打开 "**管理**", 然后重新启动**AzureWLBackupCoordinatorSvc**服务。  
+  * 在 SQL Server 实例上, 打开 "**管理**", 然后重新启动**AzureWLBackupCoordinatorSvc**服务。
+   
 
 ## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>能否控制 SQL server 上运行的并发备份的数量？
 
@@ -71,12 +72,12 @@ Azure 备份恢复服务保管库可以检测和保护与保管库位于同一�
 "**备份作业**" 菜单将仅显示即席备份作业。 对于计划作业, 请使用[Azure Monitor 监视](backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>未来的数据库会自动添加备份吗？
-是的, 可以通过 [自动保护](backup-sql-server-database-azure-vms.md#enable-auto-protection)实现此功能。  
+是的, 可以通过[自动保护](backup-sql-server-database-azure-vms.md#enable-auto-protection)实现此功能。  
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>如果从 autoprotected 实例中删除数据库, 备份会发生什么情况呢？
 如果从 autoprotected 实例中删除数据库, 则仍将尝试数据库备份。 这意味着, 已删除的数据库在 "**备份项**" 下开始显示为 "不正常", 并且仍受保护。
 
-停止保护此数据库的正确方法是在此数据库上 **停止备份**并**删除数据**。  
+停止保护此数据库的正确方法是在此数据库上**停止备份**并**删除数据**。  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>如果我确实停止了 autoprotected 数据库的备份操作, 会出现什么情况？
 如果你确实**停止备份并保留数据**, 则不会进行将来的备份, 现有的恢复点将保持不变。 数据库仍将被视为受保护, 并显示在 "**备份项**" 下。

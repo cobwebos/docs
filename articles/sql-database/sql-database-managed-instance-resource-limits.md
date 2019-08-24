@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: e5dc449dc51faccdd8c0e69337cc5f8ac19fa296
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 776a27ca0babfd7557bf4d16c449a8dfa5bceaf7
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874397"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998202"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -42,7 +42,8 @@ ms.locfileid: "69874397"
 | 最大实例保留存储 |  常规用途: 8 TB<br/>业务关键:1TB | 常规用途:8 TB<br/> 业务关键 1 TB、2 TB 或 4 TB, 具体取决于核心数 |
 
 > [!IMPORTANT]
-> 澳大利亚东部或巴西南部区域不再支持新的 Gen4 数据库。
+> - Gen4 硬件正在逐步推出。建议在 Gen5 硬件上部署新的托管实例。
+> - 此时, Gen4 硬件在以下区域中提供:北欧、西欧、美国东部、美国中南部、美国中北部、美国西部2、美国中部、加拿大中部、印度南部和韩国中部。
 
 ### <a name="service-tier-characteristics"></a>服务层特征
 
@@ -106,7 +107,7 @@ ms.locfileid: "69874397"
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional 和 MSDN 平台|2|32|
 
-\*规划部署时, 请考虑使用业务关键 (BC) vCore (由于增加了冗余), 将比常规用途 (GP) vCore 更多的容量。 因此, 对于计算, 1 个 GP vCore = 1 vCore unit 和1个 BC vCore = 4 个 vCore 单位。 若要简化对默认限制的消耗分析, 请在部署托管实例的区域中的所有子网中汇总 vCore 单位, 并将结果与订阅类型的实例单位限制进行比较。 **VCore 单位限制的最大数量**适用于区域中的每个订阅。 每个子网没有任何限制, 只不过跨多个子网部署的所有 Vcore 的总和必须小于或等于**vCore 单元的最大数目**。
+\*在规划部署时, 请考虑业务关键 (BC) 服务层需要四 (4) 倍于常规用途 (GP) 服务层的 vCore。 例如：1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 单位。 若要简化对默认限制的消耗分析, 请在部署托管实例的区域中的所有子网中汇总 vCore 单位, 并将结果与订阅类型的实例单位限制进行比较。 **VCore 单位限制的最大数量**适用于区域中的每个订阅。 每个子网没有任何限制, 只不过跨多个子网部署的所有 Vcore 的总和必须小于或等于**vCore 单元的最大数目**。
 
 \*\*以下区域提供了更大的子网和 vCore 限制:澳大利亚东部、美国东部、美国东部2、北欧、美国中南部、东南亚、英国南部、西欧、美国西部2。
 

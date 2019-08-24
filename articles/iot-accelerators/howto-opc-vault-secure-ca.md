@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b08358680793ccdadca27c5f2aa57fbffe89b53a
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: f35836f60fae11c0955c128e96a4cea188681942
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973787"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997665"
 ---
-# <a name="how-to-run-the-opc-ua-certificate-management-service-securely"></a>如何安全运行 OPC UA 证书管理服务
+# <a name="how-to-run-the-opc-vault-certificate-management-service-securely"></a>如何安全运行 OPC 保管库证书管理服务
 
-本文介绍如何在 Azure 中安全地运行 OPC UA 证书管理服务以及其他要考虑的安全指导原则。
+本文介绍如何在 Azure 中安全地运行 OPC 保管库证书管理服务以及其他要考虑的安全指导原则。
 
 ## <a name="roles"></a>角色
 
@@ -32,7 +32,7 @@ OPC 保管库微服务配置为允许不同角色访问服务的各个部分。
 
 ### <a name="certificate-management-service-roles"></a>证书管理服务角色
 
-微服务定义以下角色:
+OPC 保管库微服务定义下列角色:
 
 - **读者**：默认情况下, 租户中任何经过身份验证的用户都具有读取访问权限。 
   - 对应用程序和证书请求的读取访问权限。 可以列出和查询应用程序和证书请求。 此外, 还可以使用读取访问权限访问设备发现信息和公共证书。
@@ -132,14 +132,14 @@ OPC 保管库微服务配置为允许不同角色访问服务的各个部分。
 
 CA 层次结构文档必须包含所有操作的 Ca, 包括所有相关的从属 Ca、父 Ca 和根 Ca, 即使它们不是由服务管理的。 可以提供一组详尽的所有未过期的 CA 证书, 而不是正式的文档。
 
-> [!IMPORTANT]
+> [!NOTE]
 > OPC 保管库示例应用程序支持下载服务中使用的所有证书, 并在文档中生成。
 
 ### <a name="document-the-issued-certificates-by-all-certification-authorities-cas"></a>记录所有证书颁发机构 (Ca) 颁发的证书
 
 应为文档提供过去12个月颁发的所有证书的详尽集。
 
-> [!IMPORTANT]
+> [!NOTE]
 > OPC 保管库示例应用程序支持下载服务中使用的所有证书, 并在文档中生成。
 
 ### <a name="document-the-sop-for-securely-deleting-cryptographic-keys"></a>记录用于安全删除加密密钥的工作方式
@@ -220,7 +220,7 @@ Key Vault 使用的加密模块（HSM 或软件）经过 FIPS（美国联邦信�
 
 证书吊销过程在[概述](overview-opc-vault-architecture.md)和[如何管理](howto-opc-vault-manage.md)文档中进行了介绍。
     
-### <a name="document-certification-authority-key-generation-ceremony"></a>文档证书颁发机构密钥生成仪式 
+### <a name="document-certification-authority-ca-key-generation-ceremony"></a>文档证书颁发机构 (CA) 密钥生成仪式 
 
 由于 Azure KeyVault 中的安全存储和[如何管理](howto-opc-vault-manage.md)文档中所述, OPC 保管库微服务中的颁发者 CA 密钥生成被简化。
 

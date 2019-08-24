@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 630f92bc8cf5fb89626bfe4de4e4a575045c961a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6eb73c1c2b768d82143890415702950905f261f6
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880951"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997233"
 ---
 # <a name="use-visual-studio-code-to-create-an-iot-plug-and-play-device-that-connects-to-iot-central"></a>使用 Visual Studio Code 创建连接到 IoT Central 的 IoT 即插即用设备
 
@@ -22,7 +22,7 @@ ms.locfileid: "69880951"
 
 * 作为操作员, 可以在 Azure IoT Central 应用程序中添加和配置真实设备。
 
-* 作为设备开发人员, 使用 Visual Studio Code 创建连接到 IoT Central 应用程序的[IoT 即插即用](https://aka.ms/iot-pnp-docs)设备。
+* 作为设备开发人员, 使用 Visual Studio Code 创建连接到 IoT Central 应用程序的[IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)设备。
 
 使用[设备功能模型](./concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)来定义连接到 IoT Central 的设备。 在本指南中, 您将使用定义环境传感器设备的模型。
 

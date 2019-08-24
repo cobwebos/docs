@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 3f40c69900b0d7f1c3bf446c1153e21dd7fd4d1b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014938"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997680"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒体分析进行面部修订演练
 
@@ -40,7 +40,7 @@ ms.locfileid: "69014938"
 
 ### <a name="download-and-setup"></a>下载和安装
 
-1. 从[此处](https://github.com/Azure/Azure-Media-Services-Explorer)下载 AMSE 工具。
+1. 从[此处](https://aka.ms/amseforv2)下载 AMSE for AMS v2 工具。
 1. 使用服务密钥登录媒体服务帐户。
 
     若要获取帐户名称和密钥信息，请转到 [Azure 门户](https://portal.azure.com/)并选择 AMS 帐户。 然后，选择“设置”>“密钥”。 “管理密钥”窗口显示帐户名称、主密钥和辅助密钥。 复制帐户名称和主密钥的值。

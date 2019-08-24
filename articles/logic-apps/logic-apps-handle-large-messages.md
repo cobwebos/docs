@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: 4a37345cf33cbb02a6bd9a70b0253a55ee4c9478
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ed086c4c36711f92ba654a64856b43a5fdaadf5f
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035593"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69989925"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用分块处理大型消息
 
@@ -117,7 +117,7 @@ GET 请求将表示字节范围的 "Range" 标头设置为 "bytes=0-1023"。 如
 
 1. 你的逻辑应用使用空的消息正文发送初始的 HTTP POST 或 PUT 请求。 请求标头包括与逻辑应用需要以区块形式上传的内容的以下信息：
 
-   | 逻辑应用请求标头字段 | ReplTest1 | 类型 | 描述 |
+   | 逻辑应用请求标头字段 | ReplTest1 | type | 描述 |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | 分块 | String | 指示内容以区块形式上传 |
    | **x-ms-content-length** | <*content-length*> | 整数 | 整个内容在分块之前的大小（以字节为单位） |
@@ -128,7 +128,7 @@ GET 请求将表示字节范围的 "Range" 标头设置为 "bytes=0-1023"。 如
    | 终结点响应标头字段 | 类型 | 必填 | 描述 |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | 整数 | 否 | 建议的区块大小（以字节为单位） |
-   | **Location** | String | 否 | 要向其发送 HTTP PATCH 消息的 URL 位置 |
+   | **Location** | String | 是 | 要向其发送 HTTP PATCH 消息的 URL 位置 |
    ||||
 
 3. 逻辑应用创建并发送后续 HTTP PATCH 消息 - 每条消息包含以下信息：
@@ -146,7 +146,7 @@ GET 请求将表示字节范围的 "Range" 标头设置为 "bytes=0-1023"。 如
 
 4. 每次修补请求后, 端点通过使用 "200" 状态代码和以下响应标头来确认每个区块的回执:
 
-   | 终结点响应标头字段 | 类型 | 必填 | 描述 |
+   | 终结点响应标头字段 | type | 必填 | 描述 |
    |--------------------------------|------|----------|-------------|
    | **范围** | String | 是 | 终结点收到的内容的字节范围, 例如: "bytes = 0-1023" |   
    | **x-ms-chunk-size** | 整数 | 否 | 建议的区块大小（以字节为单位） |

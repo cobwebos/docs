@@ -1,5 +1,5 @@
 ---
-title: 从 Gen2 到 Gen3 的 Azure SQL 数据库的网关迁移通知 |Microsoft Docs
+title: 适用于 Azure SQL 数据库的网关流量迁移通知 |Microsoft Docs
 description: 本文向用户提供有关迁移 Azure SQL 数据库网关 IP 地址的通知
 services: sql-database
 ms.service: sql-database
@@ -10,23 +10,23 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 85691464684ff327c01a85bf357514f447564dd7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1fc6c054b32c62fbebaa2af738e25ef0dec362ac
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568116"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981289"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>将 Azure SQL 数据库流量迁移到更新的网关
 
-Azure 基础结构改进后, Microsoft 会定期刷新硬件, 以确保提供最佳的客户体验。 在接下来的几个月中, 我们计划添加基于较新的硬件代构建的网关, 并解除在某些区域中的旧硬件上构建的网关。  
+Azure 基础结构改进后, Microsoft 会定期刷新硬件, 以确保提供最佳的客户体验。 在接下来的几个月中, 我们计划添加基于较新的硬件代构建的网关, 将流量迁移到这些网关, 并最终解除在某些区域中的旧硬件上构建网关。  
 
 在每个区域中提供的任何网关更改之前, 将通过电子邮件和 Azure 门户获取客户通知。 在[AZURE SQL 数据库网关 IP 地址](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses)表中将保留最新的信息。
 
 ## <a name="impact-of-this-change"></a>此更改的影响
 
-第一轮网关退役计划为以下区域2019年9月1日:
-
+第一轮流量迁移到较新的网关的计划时间为**2019 年10月14日**以下区域:
+- 巴西南部
 - 美国西部
 - 西欧
 - East US
@@ -40,12 +40,14 @@ Azure 基础结构改进后, Microsoft 会定期刷新硬件, 以确保提供最
 - 美国东部 2
 - 东亚
 
-已取消的 IP 地址将停止接受流量, 任何新的连接尝试将路由到该区域中的一个网关。
+流量迁移将更改 DNS 为你的 SQL 数据库解析的公共 IP 地址。
+如果有
+- 硬编码本地防火墙中任何特定网关的 IP 地址
+- 使用 Microsoft .SQL 作为服务终结点但无法与网关 IP 地址通信的任何子网
 
-你不会看到此更改的影响:
-
-- 使用重定向作为其连接策略的客户不会有任何影响。
-- 从 Azure 内部到 SQL 数据库的连接不会受到影响。
+如果你拥有 
+- 作为连接策略的重定向
+- 从 Azure 内部连接到 SQL 数据库并使用服务标记
 - 使用受支持的 JDBC Driver for SQL Server 所建立的连接将不会产生任何影响。 有关支持的 JDBC 版本, 请参阅[下载 MICROSOFT JDBC Driver for SQL Server](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)。
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>如果受到影响, 应如何操作

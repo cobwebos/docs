@@ -39,8 +39,6 @@
       href: security-center-managing-and-responding-alerts.md
     - name: 安全事件
       href: security-center-incident.md
-    - name: 事件响应
-      href: security-center-incident-response.md
     - name: 跨租户管理
       href: security-center-cross-tenant-management.md
     - name: 威胁检测警报
@@ -129,8 +127,6 @@
           href: security-center-apply-system-updates.md
         - name: 安装终结点保护
           href: security-center-install-endpoint-protection.md
-        - name: 在系统更新后重启
-          href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
         - name: 未安装漏洞评估
           href: security-center-vulnerability-assessment-recommendations.md
         - name: 启用网络安全组

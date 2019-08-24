@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: cb82d47be11570baf7865468c804162a20a7685f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 59574f0a07f4ecc145f2b0efd430e65cbdebcc65
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855469"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991563"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>使用 Power BI 分析 Azure Data Lake Storage Gen2 中的数据
 
@@ -39,7 +39,7 @@ ms.locfileid: "68855469"
 
     !["获取数据" 页](media/data-lake-storage-use-power-bi/get-data-page.png)
 
-4. 在 " **Azure Data Lake Storage Gen2** " 对话框中, 可以使用文件系统终结点格式向 Azure Data Lake Storage Gen2 帐户、文件系统或子文件夹提供 URL。 Data Lake Storage Gen2 的 url 具有以下模式`https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` , 然后单击 **"确定"** 。
+4. 在 " **Azure Data Lake Storage Gen2** " 对话框中, 可以使用容器终结点格式向 Azure Data Lake Storage Gen2 帐户、文件系统或子文件夹提供 URL。 Data Lake Storage Gen2 的 url 具有以下模式`https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` , 然后单击 **"确定"** 。
 
     ![URL](media/data-lake-storage-use-power-bi/adls-url.png)
 

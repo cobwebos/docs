@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 0884120c15b2e48566d1889400197e316bac9021
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 82c286ce60751775308d0f2c197d86785c4f0a14
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907446"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991582"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -45,7 +45,7 @@ ms.locfileid: "69907446"
 
 
 ### <a name="paired-regions"></a>配对区域
-除通用副本区域外, 还可以在主服务器的 Azure 配对区域中创建读取副本。 如果你不知道区域对, 可以从[Azure 配对区域一文](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)了解详细信息。
+除通用副本区域外, 还可以在主服务器的 Azure 配对区域中创建读取副本。 如果你不知道区域对, 可以从[Azure 配对区域一文](../best-practices-availability-paired-regions.md)了解详细信息。
 
 如果你使用跨区域副本进行灾难恢复计划, 则建议在配对区域中创建副本, 而不是在另一个区域中创建。 配对区域避免同时进行更新, 并划分物理隔离和数据驻留的优先级。  
 
@@ -124,19 +124,21 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 了解如何[停止复制到副本](howto-read-replicas-portal.md)。
 
-## <a name="fail-over"></a>故障转移
+## <a name="failover"></a>故障转移
 主服务器和副本服务器之间没有自动故障转移。 
 
-由于复制是异步的, 因此主副本和副本之间存在延迟。 延迟量取决于主服务器上运行的工作负荷的繁重程度。 在大多数情况下, 副本延迟范围在几秒钟到几分钟之间。 可以使用每个副本可用的指标*副本滞后*时间跟踪实际复制滞后时间。 此指标显示自上次重播事务以来的时间。 建议通过观察一段时间内的副本滞后时间来确定平均滞后时间。 你可以在副本滞后时间设置警报, 以便在出现在预期范围之外时, 你可以采取措施。
+由于复制是异步的, 因此主副本和副本之间存在延迟。 延迟量可能会受到许多因素的影响, 例如, 在主服务器上运行的工作负荷的繁重程度以及数据中心之间的延迟。 在大多数情况下, 副本延迟范围在几秒钟到几分钟之间。 可以使用每个副本可用的指标*副本滞后*时间跟踪实际复制滞后时间。 此指标显示自上次重播事务以来的时间。 建议通过观察一段时间内的副本滞后时间来确定平均滞后时间。 你可以在副本滞后时间设置警报, 以便在出现在预期范围之外时, 你可以采取措施。
 
 > [!Tip]
 > 如果故障转移到副本, 则从主副本解除链接陈旧副本时的滞后时间将指示丢失的数据量。
 
 确定要故障转移到副本后, 
 
-1. 停止复制到副本必须执行此步骤, 以便副本服务器能够接受写入。 作为此过程的一部分, 副本服务器将重新启动, 并从主服务器 delinked。 启动停止复制后, 后端进程通常需要大约2分钟的时间才能完成。 了解有关[停止复制](#stop-replication)的详细信息。
+1. 停止复制到副本<br/>
+   若要使副本服务器能够接受写入, 则必须执行此步骤。 作为此过程的一部分, 副本服务器将重新启动, 并从主服务器 delinked。 启动停止复制后, 后端进程通常需要大约2分钟的时间才能完成。 请参阅本文的[停止复制](#stop-replication)部分, 了解此操作的含义。
     
-2. 将应用程序指向 (前一个) 副本每个服务器都有一个唯一的连接字符串。 更新应用程序以指向 (前一个) 副本而不是主副本。
+2. 将您的应用程序指向 (前一个) 副本<br/>
+   每个服务器都有一个唯一的连接字符串。 更新应用程序以指向 (前一个) 副本而不是主副本。
     
 应用程序成功处理读取和写入后, 即已完成故障转移。 你的应用程序体验的停机时间将取决于你何时检测到问题并完成上面的步骤1和2。
 

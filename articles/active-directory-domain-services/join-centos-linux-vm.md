@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: f28933623100ed18320df37741c7c1e82ccffa9f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 183f1190e4ccbd730600290305a5847f83853c39
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612847"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990733"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>将 CentOS Linux 虚拟机加入托管域
 本文介绍了如何将 Azure 中的 CentOS Linux 虚拟机加入 Azure AD 域服务托管域。
@@ -84,7 +84,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
 1. 发现 AAD 域服务托管域。 在 SSH 终端中键入以下命令：
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -100,7 +100,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
     > * 以大写字母指定域名，否则 kinit 会失败。
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. 将计算机加入域。 在 SSH 终端中键入以下命令：
@@ -111,7 +111,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
     > 如果 VM 无法加入域, 请确保 VM 的网络安全组允许 TCP + UDP 端口464上的出站 Kerberos 流量到 Azure AD DS 托管域的虚拟网络子网。
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM'
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM'
     ```
 
 计算机成功加入托管域后，应会显示一条消息（“已在领域中成功注册计算机”）。
@@ -120,10 +120,10 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
 ## <a name="verify-domain-join"></a>验证域加入
 验证计算机是否已成功加入托管域。 使用不同的 SSH 连接，连接到已加入域的 CentOS VM。 使用域用户帐户连接，并检查该用户帐户是否正确解析。
 
-1. 在 SSH 终端中，键入以下命令，使用 SSH 连接到已加入域的 CentOS 虚拟机。 使用属于托管域的域帐户（例如，在本例中为“bob@contoso.COM”）。
+1. 在 SSH 终端中，键入以下命令，使用 SSH 连接到已加入域的 CentOS 虚拟机。 使用属于托管域的域帐户（例如，在本例中为“bob@CONTOSO.COM”）。
     
     ```console
-    ssh -l bob@contoso.COM contoso-centos.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-centos.contoso.com
     ```
 
 2. 在 SSH 终端中键入以下命令，查看是否已正确初始化主目录。

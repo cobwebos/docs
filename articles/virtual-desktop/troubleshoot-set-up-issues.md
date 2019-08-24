@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: efc721f7852d50e431be38f52e27d72ad7f3ae76
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 93f111eb4439b89ac367ad7e7b951e26cecb86e4
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877572"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981098"
 ---
 # <a name="tenant-and-host-pool-creation"></a>创建租户和主机池
 
@@ -53,7 +53,7 @@ ms.locfileid: "69877572"
 
 原因：未在 Azure Active Directory 中为登录用户分配 "TenantCreator" 角色。
 
-**能够**按照[为 Azure Active Directory 租户中的用户分配 TenantCreator 应用程序角色](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant)中的说明进行操作。 按照说明操作后, 你将拥有一个分配给 TenantCreator 角色的用户。
+**能够**按照[为 Azure Active Directory 租户中的用户分配 TenantCreator 应用程序角色](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role)中的说明进行操作。 按照说明操作后, 你将拥有一个分配给 TenantCreator 角色的用户。
 
 ![已分配 TenantCreator 角色的屏幕截图。](media/TenantCreatorRoleAssigned.png)
 

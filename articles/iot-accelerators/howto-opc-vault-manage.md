@@ -1,5 +1,5 @@
 ---
-title: 如何管理 OPC 保管库证书管理服务-Azure |Microsoft Docs
+title: 如何管理 OPC 保管库证书服务-Azure |Microsoft Docs
 description: 管理 OPC 保管库根 CA 证书和用户权限。
 author: mregen
 ms.author: mregen
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6e53914b16bc126cdab7300d918dbb7b6b868728
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 4420e5b0d895f8ea30dbd39fc50dd7480d57d086
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973800"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995998"
 ---
-# <a name="how-to-manage-the-opc-ua-certificate-service"></a>如何管理 OPC UA 证书服务
+# <a name="how-to-manage-the-opc-vault-certificate-service"></a>如何管理 OPC 保管库证书服务
 
-本文介绍了 Azure 中的 OPC UA 证书管理服务的管理任务, 如何续订颁发者 CA 证书, 如何续订证书吊销列表 (CRL) 以及如何授予和吊销用户访问权限。
+本文介绍了 Azure 中的 OPC 保管库证书管理服务的管理任务, 如何续订颁发者 CA 证书, 如何续订证书吊销列表 (CRL) 以及如何授予和撤消用户访问权限。
 
 ## <a name="create-or-renew-the-root-ca-certificate"></a>创建或续订根 CA 证书
 

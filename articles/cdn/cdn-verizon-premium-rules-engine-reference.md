@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 5fc611af75a7f733576f9343a4375fb56cacc030
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: aab93204c850223756f28a56ea550f912e28e0d2
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67593149"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996755"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>从 Verizon 高级规则引擎引用 Azure CDN
 
@@ -70,6 +70,8 @@ Character | 描述
 \* | 使用星号时，其前面的字符可以匹配零次或更多次。
 空格 | 通常将空格字符视为文本字符。
 '值' | 可将单引号视为文本字符。 一组单引号没有特殊含义。
+
+支持正则表达式的匹配条件和功能接受由 Perl 兼容的正则表达式 (PCRE) 定义的模式。
 
 ## <a name="next-steps"></a>后续步骤
 

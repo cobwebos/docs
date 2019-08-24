@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 134302bffdadc27cf202a43e7dc4cc94704bb5b3
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: ddce94cab0067c34ad056a40251d79c5470ba460
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69557862"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996569"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -189,7 +189,7 @@ Teradata 链接服务支持以下属性:
 ### <a name="teradata-as-source"></a>以 Teradata 作为源
 
 >[!TIP]
->若要通过使用数据分区有效地从 Teradata 加载数据, 请参阅[并行复制 From Teradata](#parallel-copy-from-teradata)部分。
+>若要使用数据分区有效地从 Teradata 加载数据, 请从 Teradata 部分中的[并行复制](#parallel-copy-from-teradata)中了解详细信息。
 
 从 Teradata 复制数据时，复制活动的 **source** 节支持以下属性：
 
@@ -245,9 +245,9 @@ Teradata 链接服务支持以下属性:
 
 ![分区选项的屏幕截图](./media/connector-teradata/connector-teradata-partition-options.png)
 
-启用分区副本时, 数据工厂对 Teradata 源运行并行查询以按分区加载数据。 并行度由 "复制" 活动[`parallelCopies`](copy-activity-performance.md#parallel-copy)的设置控制。 例如, 如果将设置`parallelCopies`为 4, 则数据工厂会同时生成并运行基于指定分区选项和设置的四个查询。 每个查询都从 Teradata 数据库中检索部分数据。
+启用分区副本时, 数据工厂对 Teradata 源运行并行查询以按分区加载数据。 并行度由 "复制" 活动[`parallelCopies`](copy-activity-performance.md#parallel-copy)的设置控制。 例如, 如果将设置`parallelCopies`为 4, 则数据工厂会同时生成并运行基于指定分区选项和设置的四个查询, 每个查询将从 Teradata 数据库中检索部分数据。
 
-使用数据分区启用并行复制是个好主意, 尤其是在从 Teradata 数据库加载大量数据时。 以下是针对不同方案的建议配置:
+使用数据分区启用并行复制是个好主意, 尤其是在从 Teradata 数据库加载大量数据时。 下面是针对不同方案的建议配置。 将数据复制到基于文件的数据存储时, 将 recommanded 写入文件夹作为多个文件 (仅指定文件夹名称), 在这种情况下, 性能比写入单个文件更好。
 
 | 应用场景                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

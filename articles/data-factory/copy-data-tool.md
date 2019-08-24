@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 144a991eb911fa6a337b6711515bd5760456fc10
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787624"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996388"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure 数据工厂中的“复制数据”工具
 Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data Lake 的过程，这通常是端到端数据集成方案的第一步。  这可节省时间，尤其是首次使用 Azure 数据工厂引入数据源中的数据时。 下面是使用此工具的一些优势：
@@ -33,7 +33,7 @@ Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data
 | 需要轻松构建数据加载任务，而无需了解 Azure 数据工厂实体（链接的服务、数据集和管道等） | 需要实现复杂而灵活的逻辑，将数据加载到 Lake 中。 |
 | 需要将大量数据项目快速加载到 Data Lake 中。 | 需要将复制活动与后续活动链接在一起，以清理或处理数据。 |
 
-要启动“复制数据”工具，请单击数据工厂主页上的“复制数据”  磁贴。
+要启动“复制数据”工具，请单击数据工厂主页上的“复制数据”磁贴。
 
 ![“开始使用”页 -“复制数据”工具的链接](./media/copy-data-tool/get-started-page.png)
 
@@ -41,12 +41,12 @@ Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data
 ## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>将数据加载到 Data Lake 中的直观流程
 使用此工具，可通过一个直观的流程在数分钟内轻松地将数据从各种源移动到目标：  
 
-1. 配置“源”的设置  。
-2. 配置“目标”的设置  。 
-3. 配置复制操作的高级设置，如列映射、性能设置和容错设置  。 
-4. 指定数据加载任务的“计划”  。 
-5. 查看要创建的数据工厂实体的摘要  。 
-6. 编辑管道，根据需要更新复制活动的设置  。 
+1. 配置“源”的设置。
+2. 配置“目标”的设置。 
+3. 配置复制操作的高级设置，如列映射、性能设置和容错设置。 
+4. 指定数据加载任务的“计划”。 
+5. 查看要创建的数据工厂实体的摘要。 
+6. 编辑管道，根据需要更新复制活动的设置。 
 
    该工具从设计之初就考虑到了大数据，支持多种数据和对象类型。 可利用该工具移动数百个文件夹、文件或表。 该工具支持自动数据预览、构架捕获和自动映射，以及筛选数据。
 
@@ -78,7 +78,7 @@ Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data
 ![筛选数据库中的数据](./media/copy-data-tool/filter-data-in-database.png)
 
 ### <a name="filter-data-in-an-azure-blob-folder"></a>筛选 Azure Blob 文件夹中的数据
-可在文件夹路径中使用变量来复制文件夹中的数据。 支持的变量包括：{year}、{month}、{day}、{hour} 和 {minute}      。 例如：inputfolder/{year}/{month}/{day}。 
+可在文件夹路径中使用变量来复制文件夹中的数据。 支持的变量包括：{year}、{month}、{day}、{hour} 和 {minute}。 例如：inputfolder/{year}/{month}/{day}。 
 
 假设输入文件夹格式如下： 
 
@@ -89,13 +89,13 @@ Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data
 ...
 ```
 
-单击“文件或文件夹”  的“浏览”  按钮，找到其中一个文件夹（例如，2016-> 03-> 01-> 02），并单击“选择”  。 文本框中应该会显示 2016/03/01/02。 
+单击“文件或文件夹”的“浏览”按钮，找到其中一个文件夹（例如，2016-> 03-> 01-> 02），并单击“选择”。 文本框中应该会显示 2016/03/01/02。 
 
-然后，请用 {year} 代替 2016、{month} 代替 03、{day} 代替 01、{hour} 代替 02，并按 Tab 键          。 可以看到用于选择这四个变量格式的下拉列表：
+然后，请用 {year} 代替 2016、{month} 代替 03、{day} 代替 01、{hour} 代替 02，并按 Tab 键。 可以看到用于选择这四个变量格式的下拉列表：
 
 ![筛选文件或文件夹](./media/copy-data-tool/filter-file-or-folder.png)
 
-创建管道时，“复制数据”工具生成包含表达式、函数和系统变量的参数，用于表示 {year}、{month}、{day}、{hour} 和 {minute}。 有关详细信息，请参阅[如何读取或写入分区的数据](how-to-read-write-partitioned-data.md)一文。
+创建管道时，“复制数据”工具生成包含表达式、函数和系统变量的参数，用于表示 {year}、{month}、{day}、{hour} 和 {minute}。
 
 ## <a name="scheduling-options"></a>计划选项
 可以一次性运行复制操作，也可按计划运行（每小时、每天等）。 这些选项可用于跨不同环境（包括本地、云和本地桌面）的连接器。 

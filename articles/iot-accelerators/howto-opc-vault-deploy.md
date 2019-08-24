@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b626f906738e3a6e65053408cfdc2002d459a6e2
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
-ms.translationtype: MT
+ms.openlocfilehash: 347e7c2aa2ff4fb4f188847b81d03006c1909166
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973852"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997649"
 ---
-# <a name="build-and-deploy-the-opc-ua-certificate-management-service"></a>生成并部署 OPC UA 证书管理服务
+# <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>生成并部署 OPC 保管库证书管理服务
 
-本文介绍如何在 Azure 中部署 OPC UA 证书管理服务。
+本文介绍如何在 Azure 中部署 OPC 保管库证书管理服务。
 
 > [!NOTE]
 > 有关部署详细信息和说明的详细信息, 请参阅 GitHub [OPC 保管库](https://github.com/Azure/azure-iiot-opc-vault-service)。
@@ -59,20 +59,20 @@ cd azure-iiot-opc-vault-service
 7. 如果计划使用此部署进行开发, 请添加`-development 1`以启用 Swagger UI 并部署调试版本。
 6. 按照脚本中的说明登录到你的订阅, 并提供其他信息。
 9. 成功完成生成和部署操作后, 应会看到以下消息:
+   ```
+   To access the web client go to:
+   https://myResourceGroup.azurewebsites.net
 
-```
-To access the web client go to:
-https://myResourceGroup.azurewebsites.net
+   To access the web service go to:
+   https://myResourceGroup-service.azurewebsites.net
 
-To access the web service go to:
-https://myResourceGroup-service.azurewebsites.net
+   To start the local docker GDS server:
+   .\myResourceGroup-dockergds.cmd
 
-To start the local docker GDS server:
-.\myResourceGroup-dockergds.cmd
+   To start the local dotnet GDS server:
+   .\myResourceGroup-gds.cmd
+   ```
 
-To start the local dotnet GDS server:
-.\myResourceGroup-gds.cmd
-```
 如果遇到问题, 请执行[以下](#troubleshooting-deployment-failures)步骤。
 
 8. 打开你最喜欢的浏览器并打开应用程序页:`https://myResourceGroup.azurewebsites.net`
@@ -86,7 +86,7 @@ To start the local dotnet GDS server:
 
 成功部署后, 可以随时开始使用服务:[如何管理 OPC 保管库证书管理服务](howto-opc-vault-manage.md)
 
-## <a name="delete-the-certificate-management-services-from-the-subscription"></a>从订阅中删除证书管理服务
+## <a name="delete-the-certificate-management-service-from-the-subscription"></a>从订阅中删除证书管理服务
 
 1. 登录到 Azure 门户: `https://portal.azure.com`。
 2. 中转到部署了该服务的资源组。

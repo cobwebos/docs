@@ -12,7 +12,7 @@
     - name: 将设备连接到 IoT 中心
       href: quickstart-connect-pnp-device.md
     - name: 将设备连接到 IoT Central
-      href: 'https://aka.ms/iot-central-connect-qs'
+      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: 连接到解决方案中的设备
       href: quickstart-connect-pnp-device-solution.md
 - name: 教程
@@ -50,7 +50,7 @@
 - name: 引用
   items:
     - name: REST
-      href: 'https://aka.ms/iot-pnp-rest'
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
     - name: 生成 REST 安全令牌
       href: howto-generate-sas-token.md
 - name: 相关内容
@@ -58,7 +58,7 @@
     - name: 解决方案
       items:
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /azure/iot-central
         - name: IoT 解决方案加速器
           href: /azure/iot-accelerators
     - name: 平台服务

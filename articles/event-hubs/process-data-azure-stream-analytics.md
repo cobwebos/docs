@@ -8,18 +8,15 @@ ms.author: spelluru
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: 003e68b36ff71fb2991cf087ef33f72aba73a8be
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233958"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991951"
 ---
-# <a name="process-data-from-your-event-hub-using-azure-stream-analytics-preview"></a>使用 Azure 流分析 (预览版) 从事件中心处理数据
+# <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>使用 Azure 流分析从事件中心处理数据 
 利用 Azure 流分析服务, 可以轻松地从 Azure 事件中心引入、处理和分析流式处理数据, 实现功能强大的洞察力来驱动实时操作。 此集成使你可以快速创建热路径分析管道。 可以使用 Azure 门户直观显示传入数据并写入流分析查询。 查询准备就绪后, 只需单击几下鼠标就能将其移动到生产中。 
-
-> [!NOTE]
-> 此功能目前处于预览状态。 
 
 ## <a name="key-benefits"></a>主要优点
 下面是 Azure 事件中心和 Azure 流分析集成的主要优点: 
@@ -80,7 +77,7 @@ ms.locfileid: "68233958"
 ## <a name="known-limitations"></a>已知限制
 测试查询时, 需要大约6秒钟的时间来加载测试结果。 我们正在努力提高测试性能。 但是, 在生产环境中部署时, Azure 流分析会有亚秒级的延迟。
 
-## <a name="streaming-units"></a>流式处理单位
+## <a name="streaming-units"></a>流单元
 Azure 流分析作业默认为三个流式处理单位 (SUs)。 若要调整此设置, 请在 Azure 门户的**流分析作业**页的左侧菜单中选择 "**缩放**"。 若要了解有关流式处理单元的详细信息, 请参阅[了解和调整流式处理单位](../stream-analytics/stream-analytics-streaming-unit-consumption.md)。
 
 ![缩放流式处理单元](./media/process-data-azure-stream-analytics/scale.png)

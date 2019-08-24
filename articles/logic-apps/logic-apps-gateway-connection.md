@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 0580fe09c2cb6569724a9b4365233a3142645a47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 029dc8daaf456c155d46eefa699772882bdabee5
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546273"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982870"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
-若要从逻辑应用中访问本地数据源，请在 Azure 门户中创建本地数据网关资源。 然后，逻辑应用可以使用[本地连接器](../logic-apps/logic-apps-gateway-install.md#supported-connections)。 本文介绍[在本地计算机上下载并安装网关](../logic-apps/logic-apps-gateway-install.md)之后，如何创建 Azure 网关资源。  
+若要从逻辑应用中访问本地数据源，请在 Azure 门户中创建本地数据网关资源。 然后，逻辑应用可以使用[本地连接器](../logic-apps/logic-apps-gateway-install.md#supported-connections)。 本文介绍[在本地计算机上下载并安装网关](../logic-apps/logic-apps-gateway-install.md)之后，如何创建 Azure 网关资源。 
 
 > [!TIP]
 > 若要连接到 Azure 虚拟网络，请考虑改为创建[*集成服务环境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 
@@ -30,7 +30,7 @@ ms.locfileid: "65546273"
 * [Microsoft PowerApps 本地数据网关](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Azure Analysis Services 本地数据网关](../analysis-services/analysis-services-gateway.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 已[在本地计算机上下载并安装数据网关](../logic-apps/logic-apps-gateway-install.md)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "65546273"
 
 * 登录 Azure 门户并创建网关资源时，请确保使用先前用于[安装本地数据网关](../logic-apps/logic-apps-gateway-install.md#requirements)的相同登录帐户以及用于安装网关的相同 [Azure 订阅](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access)。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
-* 若要在 Azure 门户中创建和维护网关资源，[Windows 服务帐户](../logic-apps/logic-apps-gateway-install.md#windows-service-account)至少需要具有“参与者”权限。  本地数据网关以 Windows 服务的形式运行，并设置为使用 `NT SERVICE\PBIEgwService` 作为 Windows 服务登录凭据。 
+* 若要在 Azure 门户中创建和维护网关资源，[Windows 服务帐户](../logic-apps/logic-apps-gateway-install.md#windows-service-account)至少需要具有“参与者”权限。 本地数据网关以 Windows 服务的形式运行，并设置为使用 `NT SERVICE\PBIEgwService` 作为 Windows 服务登录凭据。 
 
   > [!NOTE]
   > Windows 服务帐户与用于连接到本地数据源的帐户或用于登录到云服务的 Azure 工作或学校帐户不同。
@@ -56,19 +56,19 @@ ms.locfileid: "65546273"
 
 1. 登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。 请务必使用安装网关时所用的同一 Azure 工作或学校电子邮件地址。
 
-2. 在 Azure 主菜单上，选择“创建资源”   > 
-“集成”   >   “本地数据网关”。
+2. 在 Azure 主菜单上，选择“创建资源” > 
+“集成” > “本地数据网关”。
 
    ![查找“本地数据网关”](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
 
-3. 在“创建连接网关”页上，提供网关资源的以下信息： 
+3. 在“创建连接网关”页上，提供网关资源的以下信息：
 
-   | 属性 | 说明 | 
+   | 属性 | 描述 | 
    |----------|-------------|
-   | **名称** | 网关资源的名称。 | 
+   | 资源名称 | 网关资源名称, 只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号 (`(`、 `)`) 和句点 (`.`)。 | 
    | **订阅** | Azure 订阅的名称，应是逻辑应用所在的同一订阅。 默认订阅取决于用来登录的 Azure 帐户。 | 
    | **资源组** | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称 | 
-   | **位置** | 根据 Azure 限制，此位置必须是在[网关安装](../logic-apps/logic-apps-gateway-install.md)期间为网关云服务选择的同一区域。 <p>**注意**：请确保网关资源位置与网关云服务位置相符。 否则，网关安装可能不会显示在已安装网关列表中，因此无法在下一步中选择。 可以为网关资源和逻辑应用使用不同的区域。 | 
+   | **Location** | 根据 Azure 限制，此位置必须是在[网关安装](../logic-apps/logic-apps-gateway-install.md)期间为网关云服务选择的同一区域。 <p>**注意**：请确保网关资源位置与网关云服务位置相符。 否则，网关安装可能不会显示在已安装网关列表中，因此无法在下一步中选择。 可以为网关资源和逻辑应用使用不同的区域。 | 
    | **安装名称** | 如果尚未选择网关安装，请选择前面安装的网关。 | 
    | | | 
 
@@ -76,10 +76,10 @@ ms.locfileid: "65546273"
 
    ![提供创建本地数据网关所需的详细信息](./media/logic-apps-gateway-connection/createblade.png)
 
-4. 若要将网关资源添加到 Azure 仪表板，请选择“固定到仪表板”  。 完成后，选择“创建”  。
+4. 若要将网关资源添加到 Azure 仪表板，请选择“固定到仪表板”。 完成后，选择“创建”。
 
-   若要随时查找或查看网关，请从 Azure 主菜单中选择“所有服务”  。 
-   在搜索框中，输入“本地数据网关”，然后选择“本地数据网关”  。
+   若要随时查找或查看网关，请从 Azure 主菜单中选择“所有服务”。 
+   在搜索框中，输入“本地数据网关”，然后选择“本地数据网关”。
 
    ![查找“本地数据网关”](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
 
@@ -95,9 +95,9 @@ ms.locfileid: "65546273"
 
 3. 现在设置连接：
 
-   1. 选择“通过本地数据网关连接”。  
+   1. 选择“通过本地数据网关连接”。 
 
-   2. 对于“网关”，请选择前面创建的网关资源。  
+   2. 对于“网关”，请选择前面创建的网关资源。 
 
       尽管网关连接位置必须与逻辑应用位于同一区域，但可以选择另一区域中的网关。
 
@@ -109,7 +109,7 @@ ms.locfileid: "65546273"
 
       ![在逻辑应用和数据网关之间创建连接](./media/logic-apps-gateway-connection/blankconnection.png)
 
-   4. 完成后，选择“创建”  。 
+   4. 完成后，选择“创建”。 
 
 网关连接现在已准备就绪，可供逻辑应用使用。
 
@@ -119,16 +119,16 @@ ms.locfileid: "65546273"
 
 1. 查找网关连接：
 
-   * 若要查找逻辑应用的所有 API 连接，请在逻辑应用菜单中的“开发工具”下，选择“API 连接”。   
+   * 若要查找逻辑应用的所有 API 连接，请在逻辑应用菜单中的“开发工具”下，选择“API 连接”。 
    
      ![转到逻辑应用，选择“API 连接”。](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
 
    * 查找与 Azure 订阅关联的所有 API 连接： 
 
-     * 在 Azure 主菜单中，转到“所有服务” > “Web” > “API 连接”。    
-     * 或者，在 Azure 主菜单中转到“所有资源”  。
+     * 在 Azure 主菜单中，转到“所有服务” > “Web” > “API 连接”。 
+     * 或者，在 Azure 主菜单中转到“所有资源”。
 
-2. 选择所需的网关连接，然后选择“编辑 API 连接”。 
+2. 选择所需的网关连接，然后选择“编辑 API 连接”。
 
    > [!TIP]
    > 如果更新未生效，请尝试[停止网关 Windows 服务，并重新启动该服务](./logic-apps-gateway-install.md#restart-gateway)。
@@ -139,13 +139,13 @@ ms.locfileid: "65546273"
 
 要创建其他网关资源、将网关与其他资源相关联，或者移除网关资源，则可删除网关资源，不影响网关安装。 
 
-1. 从 Azure 主菜单中转到“所有资源”  。 
+1. 从 Azure 主菜单中转到“所有资源”。 
 
 2. 找到并选择所需的网关资源。
 
-3. 如果尚未选择，请在网关资源菜单中选择“本地数据网关”。  
+3. 如果尚未选择，请在网关资源菜单中选择“本地数据网关”。 
 
-4. 在资源工具栏上选择“删除”  。
+4. 在资源工具栏上选择“删除”。
 
 <a name="faq"></a>
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c782629d422eb8846b209fed7ab6b5a5c015de25
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80dbb4f3d0c8b993beab5f6344d6034d6c2b6895
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612297"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990576"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>将 Azure 中的 Ubuntu 虚拟机加入托管域
 本文介绍如何将 Ubuntu Linux 虚拟机加入 Azure AD 域服务托管域。
@@ -88,7 +88,7 @@ sudo vi /etc/hosts
 3. 在 Kerberos 安装期间，会出现一个粉红色的屏幕。 安装“krb5-user”包时会出现输入领域名的提示（以全大写的形式输入）。 安装过程会在 /etc/krb5.conf 中写入 [realm] 和 [domain_realm] 节。
 
     > [!TIP]
-    > 如果托管域的名称为 contoso.com, 请输入 contoso.COM 作为领域。 请记住，必须以大写形式指定领域名。
+    > 如果托管域的名称为 contoso.com, 请输入 CONTOSO.COM 作为领域。 请记住，必须以大写形式指定领域名。
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>在 Linux 虚拟机上配置的 NTP（网络时间协议）设置
@@ -121,7 +121,7 @@ sudo systemctl start ntp
 1. 发现 AAD 域服务托管域。 在 SSH 终端中键入以下命令：
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -138,7 +138,7 @@ sudo systemctl start ntp
     >
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. 将计算机加入域。 在 SSH 终端中键入以下命令：
@@ -149,7 +149,7 @@ sudo systemctl start ntp
     > 如果 VM 无法加入域, 请确保 VM 的网络安全组允许 TCP + UDP 端口464上的出站 Kerberos 流量到 Azure AD DS 托管域的虚拟网络子网。
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM' --install=/
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM' --install=/
     ```
 
 计算机成功加入托管域后，应会显示一条消息（“已在领域中成功注册计算机”）。
@@ -192,10 +192,10 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ## <a name="verify-domain-join"></a>验证域加入
 验证计算机是否已成功加入托管域。 使用不同的 SSH 连接连接到已加入域的 Ubuntu VM。 使用域用户帐户连接，并检查该用户帐户是否正确解析。
 
-1. 在 SSH 终端中键入以下命令，使用 SSH 连接到已加入域的 Ubuntu 虚拟机。 使用属于托管域的域帐户（例如，在本例中为“bob@contoso.COM”）。
+1. 在 SSH 终端中键入以下命令，使用 SSH 连接到已加入域的 Ubuntu 虚拟机。 使用属于托管域的域帐户（例如，在本例中为“bob@CONTOSO.COM”）。
     
     ```console
-    ssh -l bob@contoso.COM contoso-ubuntu.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-ubuntu.contoso.com
     ```
 
 2. 在 SSH 终端中键入以下命令，查看是否已正确初始化主目录。

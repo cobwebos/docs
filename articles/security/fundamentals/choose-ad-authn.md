@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ba9cda5aeebaf0764068a463cdb55f3ef5542ea3
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928034"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997820"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法 
 
@@ -67,6 +67,9 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 ## <a name="decision-tree"></a>决策树
 
+> [!NOTE]
+> 当 UserPrincipalName 被选为备用 ID 时, PTA 仅适用于备用 ID。 仅将本地 UserPrincipalName 从 AD 同步到 AAD。 有关详细信息, 请参阅[Pass 身份验证是否支持 "备用 ID" 作为用户名, 而不是 "userPrincipalName"？](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)。
+
 ![Azure AD 身份验证决策树](./media/choose-ad-authn/azure-ad-authn-image1.png)
 
 有关决策问题的详细信息：
@@ -108,7 +111,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 请参阅[实现密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)了解相关部署步骤。
 
-### <a name="cloud-authentication-pass-through-authentication"></a>云身份验证：传递身份验证  
+### <a name="cloud-authentication-pass-through-authentication"></a>云身份验证：直通身份验证  
 
 * **工作量**。 对于直通身份验证，需要有一个或多个（我们建议三个）轻量代理安装在现有服务器上。 这些代理必须有权访问本地 Active Directory 域服务，包括本地 AD 域控制器。 它们需要具有对 Internet 的出站访问权限以及对域控制器的访问权限。 因此，不支持将这些代理部署在外围网络中。 
 
@@ -177,7 +180,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 |注意事项|密码哈希同步 + 无缝 SSO|直通身份验证 + 无缝 SSO|使用 AD FS 进行联合身份验证|
 |:-----|:-----|:-----|:-----|
 |身份验证在何处发生？|在云中|在云中，在使用本地身份验证代理进行安全密码验证交换后|本地|
-|除预配系统外的本地服务器要求是什么：Azure AD Connect？|无|为额外的每个身份验证代理提供一台服务器|两台或更多 AD FS 服务器<br><br>外围网络中的两台或更多 WAP 服务器|
+|除预配系统外的本地服务器要求是什么：Azure AD Connect？|None|为额外的每个身份验证代理提供一台服务器|两台或更多 AD FS 服务器<br><br>外围网络中的两台或更多 WAP 服务器|
 |除预配系统外的本地 Internet 和网络的要求是什么？|无|从运行身份验证代理的服务器进行[出站 Internet 访问](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)|对外围网络中的 WAP 服务器进行[入站 Internet 访问](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>从外围网络中的 WAP 服务器对 AD FS 服务器进行入站网络访问<br><br>网络负载均衡|
 |是否有 SSL 证书要求？|否|否|是|
 |是否有运行状况监视解决方案？|不需要|[Azure Active Directory 管理中心](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)提供的代理状态|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
@@ -194,7 +197,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 > [!NOTE] 
 > Azure AD 条件访问中的自定义控件当前不支持设备注册。
 
-## <a name="recommendations"></a>推荐
+## <a name="recommendations"></a>建议
 标识系统确保用户有权访问云应用、迁移到云中的业务线应用以及在云中提供的业务线应用。 为了使授权用户保持效率并防止歹徒接触组织的敏感数据，身份验证会控制对应用的访问。
 
 无论选择了哪种身份验证方法，都请为其使用或启用密码哈希同步，原因如下：
