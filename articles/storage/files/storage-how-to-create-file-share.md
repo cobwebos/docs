@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e56be394bc7667dfca9a0b417593e8e587073712
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 000dacb7530b52784a68663d295fde9784d50e29
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699650"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013563"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>在 Azure 文件中创建文件共享
 可以使用  [Azure 门户](https://portal.azure.com/)、Azure 存储 PowerShell cmdlet、Azure 存储客户端库或 Azure 存储 REST API 来创建 Azure 文件共享。 本教程介绍：
@@ -20,7 +20,7 @@ ms.locfileid: "68699650"
 * [如何使用 Powershell 创建 Azure 文件共享](#create-file-share-through-powershell)
 * [如何使用 CLI 创建 Azure 文件共享](#create-file-share-through-command-line-interface-cli)
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 若要创建 Azure 文件共享，可以使用已存在的存储帐户，也可以[创建新的 Azure 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 若要使用 PowerShell 创建 Azure 文件共享，需提供存储帐户的帐户密钥和名称。 如果计划使用 Powershell 或 CLI，则需存储帐户密钥。
 
 ## <a name="create-a-file-share-through-the-azure-portal"></a>通过 Azure 门户创建文件共享
@@ -41,24 +41,25 @@ ms.locfileid: "68699650"
 
 
 ## <a name="create-file-share-through-powershell"></a>通过 PowerShell 创建文件共享
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
+若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 
 > [!Note]  
 > 建议下载并安装最新的 Azure PowerShell 模块或升级到最新模块。
 
-1. 为存储帐户和密钥创建上下文：上下文封装存储帐户名称和帐户密钥。 有关从  [Azure 门户](https://portal.azure.com/)复制帐户密钥的说明，请参阅 [存储帐户访问密钥](../common/storage-account-manage.md#access-keys)。
+1. **创建新的存储帐户:** 存储帐户是一个存储共享池, 你可以在其中部署 Azure 文件共享和其他存储资源, 例如 blob 或队列。
 
-    ```powershell
-    $storageContext = New-AzStorageContext <storage-account-name> <storage-account-key>
+    ```PowerShell
+    $resourceGroup = "myresourcegroup"
+    $storAcctName = "myuniquestorageaccount"
+    $region = "westus2"
+    $storAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storAcctName -SkuName Standard_LRS -Location $region -Kind StorageV2
     ```
-    
+
 2. 创建新的文件共享：    
     
     ```powershell
-    $share = New-AzStorageShare logs -Context $storageContext
+    $shareName = "myshare"
+    $share = New-AzStorageShare -Context $storAcct.Context -Name $shareName
     ```
 
 > [!Note]  

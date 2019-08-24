@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ff24acd58d00f737a4342a7f45ddd22261a55be
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 62496aceb1454283449e952c0ed86623597e9e66
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562115"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011668"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
@@ -87,11 +87,13 @@ ms.locfileid: "69562115"
 
 如果你依赖于虚拟机 (VM) 快照来创建其他 Vm, 请确保快照不是来自已注册到 Azure AD 的 VM, 因为混合 Azure AD 加入。
 
-如果加入 Windows 10 域的设备在你的租户中[已注册 Azure AD](overview.md#getting-devices-in-azure-ad)，强烈建议在启用混合 Azure AD 加入之前删除该状态。 从 Windows 10 1809 版本开始，进行了以下更改来避免此双重状态：
+如果已加入 Windows 10 域的设备[Azure AD 注册](overview.md#getting-devices-in-azure-ad)到你的租户, 则可能会导致混合 Azure AD 加入和 Azure AD 注册设备的双重状态。 建议升级到 Windows 10 1803 (应用了 KB4489894) 或更高版本来自动处理此方案。 在1803之前的版本中, 你将需要手动删除 Azure AD 注册状态, 然后才能启用混合 Azure AD join。 在1803及更高版本中, 已进行了以下更改, 以避免这种双重状态:
 
-- 在设备加入混合 Azure AD 后，会自动删除任何现有的已注册 Azure AD 状态。
+- <i>混合 Azure AD 加入设备后</i>, 会自动删除任何现有 Azure AD 注册状态。
 - 可以通过添加此注册表项-HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin "BlockAADWorkplaceJoin" = dword: 00000001, 阻止已加入域的设备 Azure AD 注册。
-- 此更改现在适用于应用了 KB4489894 的 Windows 10 1803 版本。 但是, 如果你已配置 Windows Hello 企业版, 则在双重状态清除后, 用户需要重新设置 Windows Hello 企业版。
+- 在 Windows 10 1803 中, 如果已配置 Windows Hello 企业版, 则用户需要在双重状态清理后重新设置 Windows Hello 企业版。此问题已通过 KB4512509 解决。
+
+
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>查看混合 Azure AD 联接的受控验证
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 8b5cf0026c3bfdf6812ba985061401b3585a07bf
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: fa787a64a19f89070ff3c1cd9722f2b0c13e1ad2
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563266"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013672"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -606,7 +606,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList
 
  ```bash
   # Get the signature
-   curl  --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2018-10-01 | jq -r '.["signature"]' > signature
+   curl  --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2019-04-30 | jq -r '.["signature"]' > signature
   # Decode the signature
   base64 -d signature > decodedsignature
   #Get PKCS7 format

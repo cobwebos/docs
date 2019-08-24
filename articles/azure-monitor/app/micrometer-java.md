@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 778690fb2796cea3154b3acbb662341fdaea87da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1074495f5ac9112b6ce4f67ad2d81ee57b28e720
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699131"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012697"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
 Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码的指标，并可用于将数据导出到偏爱的监视系统。 本文介绍如何对 Spring Boot 和非 Spring Boot 应用程序配合使用 Micrometer 与 Application Insights。
@@ -29,7 +29,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 * [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 或更高版本（用于向后移植 Spring 框架中的自动配置代码）。
 * [ApplicationInsights 资源](../../azure-monitor/app/create-new-resource.md )
 
-Steps
+步骤
 
 1. 更新 Spring Boot 应用程序的 pom.xml 文件，在其中添加以下依赖项：
 
@@ -64,7 +64,7 @@ Steps
 将以下依赖项添加到 pom.xml 或 build.gradle 文件：
 
 * Application Insights Spring-boot-starter 2.1.2 或更高版本
-* Azure-spring-boot-metrics-starters 2.0.7 或更高版本  
+* 2\.1.5-启动或更高版本  
 * [Application Insights 资源](../../azure-monitor/app/create-new-resource.md )
 
 步骤：
@@ -75,12 +75,12 @@ Steps
     <dependency> 
           <groupId>com.microsoft.azure</groupId>
           <artifactId>azure-spring-boot-metrics-starter</artifactId>
-          <version>2.0.7</version>
+          <version>2.1.6</version>
     </dependency>
     ```
 1. 使用以下属性更新 application.properties 或 yml 文件中的 Application Insights 检测密钥：
 
-     `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
+     `management.metrics.export.azuremonitor.instrumentation-key=<your-instrumentation-key-here>`
 3. 生成并运行应用程序
 4. 上述代码应会使用自动收集到 Azure Monitor 的预先聚合指标运行应用程序。 有关如何微调 Application Insights Spring Boot Starter 的详细信息，请参阅 [GitHub 上的自述文件](https://github.com/Microsoft/azure-spring-boot/releases/latest)。
 

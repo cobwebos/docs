@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7dd57e41144ec33aec6eb716716d0794d92071f5
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900122"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013091"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -79,25 +79,29 @@ ms.locfileid: "69900122"
 - 你的产品/服务必须使用[SaaS 履单 api](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)与 Azure Marketplace 集成。
 - 有关更广泛的要求, 请参阅[SaaS 优惠发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)。
 
-#### <a name="saas-on-azure-billing-infrastructure-costs"></a>Azure 计费基础结构成本的 SaaS
-如果 SaaS 产品/服务托管在 Azure 中, 你作为发布者, 必须考虑 Azure 基础结构使用费用, 并将软件许可费用作为单个成本项目。 此成本按每月向客户收取费用。 Azure 基础结构的使用情况是直接管理和计费的。 客户将无法看到实际的基础结构使用费。 发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。 
+#### <a name="saas-pricing-and-billing-options"></a>SaaS 定价和计费选项
+使用在发布者的 Azure 订阅中运行的 SaaS 解决方案, 客户支付的许可费用包括部署软件所需的基础结构的成本。 Azure 基础结构的使用情况是直接管理和计费的。 客户将无法看到实际的基础结构使用费。 发布者应将 Azure 基础结构使用费用捆绑到其软件许可证定价中。 
 
-软件许可费用作为每月定期定期基于站点的订阅提供, 并不按流量计费或消耗。
+SaaS 使用按流量计费服务, 根据固定费用、每用户或消耗费用支持每月或每年计费。 Microsoft 的商业市场运营于代理商模型, 使出版商设置价格、Microsoft 帐单客户和 Microsoft 将收入支付给出版商, 同时为代理商收费。
+
+下表显示了降低成本的示例, 并显示了付款以演示代理模型。
 
 |**你的许可证费用**|**每月 $100**|
 |:---|:---|
 |Azure 使用费用（D1/1 核）|直接向发布者而不是客户收费|
 |客户由 Microsoft 计费|每月 $100.00 (发布者必须按许可费考虑任何产生的或通过的基础结构成本)|
 
-- 在这种情况下，Microsoft 向你收取 100.00 美元的软件许可证费用，并向发布者支付 80.00 美元。
+|**Microsoft 收费**|**每月 $100**|
+|:---|:---|
+|Microsoft 将许可证费用的 80% 支付给你 <br>**对于合格的 SaaS 应用, Microsoft 将支付 90% 的许可证成本*|80.00 美元/月 <br>*$* 每月 90.00 *|
+
+- 在此示例中, $100.00 Microsoft 向客户收取软件许可证, 并向发布者支付 $80.00。
 - 符合**Marketplace 服务费用**的合作伙伴将从5月2019到6月5日起, 从 5 2020 月5日起, 对 SaaS 产品/服务的事务费用将减少。 在此方案中, Microsoft 为你的软件许可证计费 $100.00, 并向发布者支付 $90.00。
 
 > [!NOTE]
 > **降低 Marketplace 服务费用**:对于在我们的商业市场上发布的特定 SaaS 产品/服务, Microsoft 会将其 Marketplace 服务费用从 20% 降低到 10% (如 Microsoft 发布者协议中所述)。 为了使你的产品/服务符合资格, Microsoft 已将至少一个产品/服务指定为 "IP 共同销售就绪" 或 "IP 共同销售"。  在每个日历月结束之前, 必须在每个日历月结束至少五 (5) 个工作日内获得资格, 以便每月获得更少的 Marketplace 服务费用。  降低的 Marketplace 服务费用不适用于 Vm、托管应用或通过我们的商业市场提供的任何其他产品。  降低的 Marketplace 服务费用仅适用于 Microsoft 在5月1日、2019年6月 30 2020 日之间收集的许可费用。  此时间过后, Marketplace 服务费用将恢复为其正常量。 
 
-|**Microsoft 收费**|**每月 $100**|
-|:---|:---|
-|Microsoft 将许可证费用的 80% 支付给你 <br>**对于合格的 SaaS 应用, Microsoft 将支付 90% 的许可证成本*|80.00 美元/月 <br>*$* 每月 90.00 *|
+
 
 
 #### <a name="csp-program-opt-in"></a>CSP 计划选择加入
@@ -153,9 +157,23 @@ ms.locfileid: "69900122"
 
 ## <a name="connect-lead-management"></a>连接潜在客户管理
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+通过在市场中列出产品/服务并挂钩你的客户关系管理 (CRM) 系统, 直接与客户联系, 以便你可以在客户提出兴趣后立即接收客户联系信息或部署产品.
 
-有关详细信息, 请参阅[线索管理概述](./commercial-marketplace-get-customer-leads.md)。
+- **选择潜在顾客目标**(下拉菜单):向 CRM 系统提供连接详细信息, 您希望我们向客户发送客户主管。 
+
+对于潜在客户管理, 合作伙伴中心支持以下 CRM 系统。 选择安装说明的链接。
+
+- Azure Blob –提供联系人电子邮件、容器名称和存储帐户连接字符串。 
+- [Azure 表](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)–提供联系人电子邮件和存储帐户连接字符串。 
+- [DYNAMICS CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) –提供联系人电子邮件、URL 和身份验证模式 (Office 365 或 Azure Active Directory)。
+- [Https 终结点](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https)–提供联系人电子邮件和 Https 终结点 URL。 
+- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) –提供联系人电子邮件、表单 ID、MUNCHKIN 帐户 id 和服务器 id。
+- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) -提供联系人电子邮件和组织 ID。 
+
+#### <a name="additional-lead-management-resources"></a>其他潜在客户管理资源
+- [潜在客户管理常见问题](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
+- [常见潜在客户配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [潜在客户管理概述 One 寻呼](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
 请记住在转到下一节之前**保存**。
 

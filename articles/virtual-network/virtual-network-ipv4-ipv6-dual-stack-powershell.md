@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 虚拟网络中部署 IPv6 双重堆栈应用程序-PowerShell
+title: 使用 Azure 中的基本负载均衡器部署 IPv6 双堆栈应用程序-PowerShell
 titlesuffix: Azure Virtual Network
 description: 本文介绍如何使用 Azure Powershell 在 Azure 虚拟网络中部署 IPv6 双重堆栈应用程序。
 services: virtual-network
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: b9a6b0ee6796acc2b9adc88480f6933af413e4e6
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0ce051892cde9cb50b43a6d4f66ed3d461e71285
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260852"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011433"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>在 Azure 中部署 IPv6 双重堆栈应用程序-PowerShell (预览版)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell-preview"></a>使用基本负载均衡器部署 IPv6 双重堆栈应用程序-PowerShell (预览版)
 
-本文介绍如何在 Azure 中部署一个双堆栈 (IPv4 + IPv6) 应用程序, 该应用程序包括双重堆栈虚拟网络和子网、带有双重 (IPv4 + IPv6) 前端配置的负载均衡器、具有具有双 IP 配置的 Nic 的 Vm、网络安全组和公共 Ip。
+本文介绍如何使用包含双堆栈虚拟网络和子网的 Azure CLI 部署具有基本负载均衡器的双堆栈 (IPv4 + IPv6) 应用程序、包含双堆栈虚拟网络和子网的基本负载均衡器 (具有双重 (IPv4 + IPv6) 前端配置的基本负载均衡器、Nic 具有双 IP 配置、网络安全组和公共 Ip。
+
+若要使用标准负载均衡器部署双堆栈 (IPV4 + IPv6) 应用程序, 请参阅[使用 Azure PowerShell 部署具有标准负载均衡器的 IPv6 双重堆栈应用程序](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)。
 
 > [!Important]
 > Azure 虚拟网络的 IPv6 支持当前提供公共预览版。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -31,7 +33,7 @@ ms.locfileid: "68260852"
 
 如果选择在本地安装并使用 PowerShell, 则本文需要 Azure PowerShell 模块版本6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 在 Azure 中部署双堆栈应用程序之前, 必须使用以下 Azure PowerShell 来配置此预览功能的订阅:
 
 按如下所示进行注册:

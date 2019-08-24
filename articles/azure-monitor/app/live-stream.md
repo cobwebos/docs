@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f8203cade1d2e34a9852e945df03dc2fddc1fbe5
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4e1d83d99f6df9407e24e2ae57af70f68858092d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359414"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012750"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
@@ -107,7 +107,12 @@ ms.locfileid: "68359414"
 ![采样的实时失败](./media/live-stream/live-stream-filter.png)
 
 ## <a name="sdk-requirements"></a>SDK 要求
+
+### <a name="net"></a>.NET
 自定义实时指标流适用于 2.4.0-beta2 或更高版本的 [Application Insights SDK for Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)。 请记得从 NuGet 包管理器中选择“包括预发行版”选项。
+
+### <a name="nodejs"></a>Node.js
+实时指标流适用于 node.js 的[APPLICATION INSIGHTS SDK](https://npmjs.com/package/applicationinsights)版本1.3.0 或更高版本。 在代码中`setSendLiveMetrics(true)`配置 SDK 时请务必使用。
 
 ## <a name="secure-the-control-channel"></a>确保控制通道的安全
 指定的自定义筛选器条件将发回到 Application Insights SDK 中的“实时指标”组件。 筛选器可能包含 customerID 等敏感信息。 可以使用机密 API 密钥以及检测密钥来保护通道的安全。

@@ -129,7 +129,7 @@
           href: live-event-types-comparison.md
         - name: 状态和计费
           href: live-event-states-billing.md
-        - name: Latency
+        - name: 延迟
           href: live-event-latency.md
     - name: 监视
       items:
@@ -149,7 +149,7 @@
       items:
         - name: 概述
           href: media-services-apis-overview.md
-          displayName: 'accessing, naming, long-running'
+          displayName: 'accessing, naming, long-running, invalid character'
         - name: 对实体进行分页、筛选、排序
           href: entities-overview.md
         - name: RBAC

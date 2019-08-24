@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 07/16/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9481263773cc919fecacce80191cf209ec2a1282
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: d115b7d56609b95f2ea10b3fee2f8900102b94e4
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359241"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012472"
 ---
 # <a name="check-for-pool-and-node-errors"></a>检查池和节点错误
 
@@ -64,7 +64,7 @@ Batch 在删除过程中将[池状态](https://docs.microsoft.com/rest/api/batch
 
 ## <a name="pool-compute-node-errors"></a>池计算节点错误
 
-即使批处理成功分配池中的节点, 不同的问题也会导致某些节点运行不正常, 并且无法运行任务。 这些节点仍会产生费用, 因此, 检测问题以避免为不能使用的节点付费, 这一点很重要。
+即使批处理成功分配池中的节点, 不同的问题也会导致某些节点运行不正常, 并且无法运行任务。 这些节点仍会产生费用, 因此, 检测问题以避免为不能使用的节点付费, 这一点很重要。 除了常见的节点错误外, 知道当前[作业状态](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)对于故障排除非常有用。
 
 ### <a name="start-task-failures"></a>启动任务失败
 
@@ -118,7 +118,7 @@ Batch 在删除过程中将[池状态](https://docs.microsoft.com/rest/api/batch
 
 ### <a name="node-disk-full"></a>节点磁盘已满
 
-批处理用于作业文件、任务文件和共享文件的池节点 VM 的临时驱动器。 
+批处理用于作业文件、任务文件和共享文件的池节点 VM 的临时驱动器。
 
 - 应用程序包文件
 - 任务资源文件

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 347e7c2aa2ff4fb4f188847b81d03006c1909166
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
-ms.translationtype: HT
+ms.openlocfilehash: 1625f0e6f9bfe8297cae2770e63107bf4f19f95e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997649"
+ms.locfileid: "70012982"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>生成并部署 OPC 保管库证书管理服务
 
@@ -86,7 +86,7 @@ cd azure-iiot-opc-vault-service
 
 成功部署后, 可以随时开始使用服务:[如何管理 OPC 保管库证书管理服务](howto-opc-vault-manage.md)
 
-## <a name="delete-the-certificate-management-service-from-the-subscription"></a>从订阅中删除证书管理服务
+## <a name="delete-the-services-from-the-subscription"></a>从订阅中删除服务
 
 1. 登录到 Azure 门户: `https://portal.azure.com`。
 2. 中转到部署了该服务的资源组。

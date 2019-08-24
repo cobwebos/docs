@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/03/2019
+ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6b551ee9a0a9c7ef9a8f5ff1bd7452a24dc04b7
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 0442b987c502533bfbd55990f201a5c02b119804
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014199"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011300"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -270,3 +270,7 @@ Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况�
 * 转到 [Azure AD 社区](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)，搜索技术问题与答案，或提出自己的问题。
 
 [获取 Azure AD 支持](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+
+**问：为什么在同步步骤错误后出现事件6311和6401？**
+
+事件 6311-**服务器在执行回调时遇到意外错误**, 6401-**管理代理控制器遇到意外错误**-在同步步骤出错后总是会记录该错误。 若要解决这些错误, 需要清除同步步骤错误。  有关详细信息, 请参阅[在同步过程中排查错误](tshoot-connect-sync-errors.md)和[排查 Azure AD Connect 同步中的对象同步](/tshoot-connect-objectsync.md)

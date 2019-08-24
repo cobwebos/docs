@@ -1,5 +1,5 @@
 ---
-title: Service Fabric Azure 文件卷驱动程序（预览版）| Microsoft Docs
+title: Service Fabric Azure 文件卷驱动程序 (GA) |Microsoft Docs
 description: Service Fabric 支持使用 Azure 文件备份容器中的卷。 此功能目前处于预览状态。
 services: service-fabric
 author: athinanthny
@@ -9,18 +9,20 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.author: atsenthi
-ms.openlocfilehash: eb45dda9886450d217355d876ae35af954d99845
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 70784e2c8c91d39c34ba503cc3ebfcf3469939d9
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955596"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013501"
 ---
 # <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure 文件卷驱动程序
-Azure 文件卷插件是一个 [Docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)，可为 Docker 容器提供基于 [Azure 文件](/azure/storage/files/storage-files-introduction)的卷。 该 Docker 卷插件可在打包为 Service Fabric 应用程序后部署到 Service Fabric 群集。 其目的是为部署到群集的其他 Service Fabric 容器应用程序提供基于 Azure 文件的卷。
+Azure 文件卷插件, 为 Docker 容器提供基于[Azure 文件](/azure/storage/files/storage-files-introduction)的卷的[docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)现已**正式发布 (公开发布)** 。
+
+该 Docker 卷插件可在打包为 Service Fabric 应用程序后部署到 Service Fabric 群集。 其目的是为部署到群集的其他 Service Fabric 容器应用程序提供基于 Azure 文件的卷。
 
 > [!NOTE]
-> Azure 文件卷插件的版本6.5.516.9494 是本文档提供的预览版本。 作为预览版本，不支持在生产环境中使用。
+> Azure 文件卷插件的版本6.5.661.9590 是 GA (正式发布) 版本。 
 >
 
 ## <a name="prerequisites"></a>先决条件
@@ -119,11 +121,11 @@ Azure 文件卷插件是一个 [Docker 卷插件](https://docs.docker.com/engine
 4. 创建应用程序, 注意**listenport 提供**应用程序参数值。 此值是 Azure 文件卷插件侦听 Docker 守护程序请求的端口。 确保提供给应用程序的端口与 Clustermanifest.xml 中的 VolumePluginPorts 匹配, 并且不与群集或应用程序使用的任何其他端口发生冲突。
 
     ```powershell
-    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.516.9494  -ApplicationParameter @{ListenPort='19100'}
+    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590   -ApplicationParameter @{ListenPort='19100'}
     ```
 
     ```bash
-    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.516.9494 --parameter '{"ListenPort":"19100"}'
+    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort":"19100"}'
     ```
 
 > [!NOTE]
@@ -136,11 +138,11 @@ Azure 文件卷插件是一个 [Docker 卷插件](https://docs.docker.com/engine
  Azure 文件卷插件应用程序的默认服务实例计数为 -1，这表示有一个服务实例会部署到群集中的每个节点。 但在本地开发群集上部署 Azure 文件卷插件应用程序时，服务实例计数应指定为 1。 可以通过 InstanceCount 应用程序参数完成此操作。 因此, 在本地开发群集上创建 Azure 文件卷插件应用程序的命令是:
 
 ```powershell
-New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.516.9494 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
+New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590  -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
 ```
 
 ```bash
-sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.516.9494 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
+sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
 ```
 
 ## <a name="configure-your-applications-to-use-the-volume"></a>配置应用程序以使用卷

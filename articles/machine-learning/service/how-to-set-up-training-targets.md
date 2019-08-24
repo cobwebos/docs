@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d9d6dc8a980c543aa1a94c0ed4e9ae845769567
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
-ms.translationtype: HT
+ms.openlocfilehash: b1ee18abfab2cf286ee010bd6d25dfbc5a38cebb
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997907"
+ms.locfileid: "70011568"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标 
 
@@ -432,6 +432,8 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 * 根据[使用评估器训练机器学习模型](how-to-train-ml-models.md)中所述，使用 `Estimator` 对象提交试验。
 * [使用 CLI 扩展](reference-azure-machine-learning-cli.md#experiments)提交试验。
 * 通过[VS Code 扩展](how-to-vscode-tools.md#train-and-tune-models)提交试验。
+
+<a id="gitintegration"></a>
 
 ## <a name="git-tracking-and-integration"></a>Git 跟踪和集成
 

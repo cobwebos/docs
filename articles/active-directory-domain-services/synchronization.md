@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 9a7baa6385e0130b784b264a4c53c232ae8a1b50
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: 85b1e3eae9d7472fa829665707fca481a28f0623
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980463"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011278"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>如何在 Azure AD 域服务托管域中同步对象和凭据
 
@@ -127,7 +127,7 @@ Azure AD 具有更简单、更简单的命名空间。 为了使用户能够可�
 
 对于仅限云的 Azure AD 环境,[用户必须重置/更改其密码](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), 才能生成所需的密码哈希, 并将其存储到 Azure AD 中。 对于启用 Azure AD 域服务后在 Azure AD 中创建的任何云用户帐户，会生成密码哈希并采用与 NTLM 和 Kerberos 兼容的格式进行存储。 这些新帐户无需重置/更改其密码即可生成旧密码哈希。
 
-对于使用 Azure AD Connect 从本地 AD DS 环境同步的混合用户帐户, 你必须[将 Azure AD Connect 配置为以 NTLM 和 Kerberos 兼容格式同步密码哈希](active-directory-ds-getting-started-password-sync-synced-tenant.md)。
+对于使用 Azure AD Connect 从本地 AD DS 环境同步的混合用户帐户, 你必须[将 Azure AD Connect 配置为以 NTLM 和 Kerberos 兼容格式同步密码哈希](tutorial-configure-password-hash-sync.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

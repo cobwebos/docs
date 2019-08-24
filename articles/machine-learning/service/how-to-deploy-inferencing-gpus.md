@@ -10,18 +10,21 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 9cf39230d6a2c615925222b6545a091a4be941ac
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 08ceb5d795465a5759d0130618eafdccdc8c3c91
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847981"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011524"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 
 本文介绍如何使用 Azure 机器学习服务将支持 GPU 的模型部署为 web 服务。 本文中的信息基于在 Azure Kubernetes 服务 (AKS) 上部署模型。 AKS 群集提供模型用于推理的 GPU 资源。
 
 推理或模型计分是部署模型用于进行预测的阶段。 使用 Gpu 而不是 Cpu, 可为高度可并行化的计算提供性能优势。
+
+> [!IMPORTANT]
+> GPU 推理仅在 Azure Kubernetes 服务上受支持。
 
 > [!TIP]
 > 尽管本文中的代码片段 usee TensorFlow 模型, 但你可以将这些信息应用到支持 Gpu 的任何机器学习框架。

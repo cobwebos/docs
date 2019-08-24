@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f89e7307d75b159886cb47bde3e1fceb5ed557f5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: bd587bfed7fcfea8e8cd99ca155ee9d86222ae3d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699314"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013537"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -254,12 +254,15 @@ Azure 文件同步仅在以下区域中可用：
 | East US | Virginia |
 | 美国东部 2 | Virginia |
 | 法国中部 | 巴黎 |
-| 韩国中部| Seoul |
-| 韩国| Busan |
+| 法国南部 * | 马赛 |
+| 韩国中部 | Seoul |
+| 韩国 | Busan |
 | 日本东部 | 东京都埼玉县 |
 | 日本西部 | 大阪 |
 | 美国中北部 | Illinois |
 | 北欧 | 爱尔兰 |
+| 南非北部 | 约翰内斯堡 |
+| 南非西部 * | 开普敦 |
 | 美国中南部 | Texas |
 | 印度南部 | 金奈 |
 | 东南亚 | 新加坡 |
@@ -274,6 +277,8 @@ Azure 文件同步仅在以下区域中可用：
 | 美国西部 2 | Washington |
 
 Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件共享进行同步。
+
+对于用星号标记的区域, 必须与 Azure 支持部门联系, 请求访问这些区域中的 Azure 存储。 [本文档](https://azure.microsoft.com/global-infrastructure/geographies/)概述了此过程。
 
 ### <a name="azure-disaster-recovery"></a>Azure 灾难恢复
 为了防止 Azure 区域丢失，Azure 文件同步集成了[异地冗余存储冗余](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) 选项。 GRS 存储的工作原理是在主要区域中的存储（你通常与之交互）和配对次要区域中的存储之间使用异步块复制。 发生导致 Azure 区域暂时或永久脱机的灾难时，Microsoft 会将存储故障转移到配对区域。 
@@ -296,12 +301,15 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 | East US             | 美国西部            |
 | 美国东部 2           | 美国中部         |
 | 法国中部      | 法国南部       |
+| 法国南部        | 法国中部     |
 | 日本东部          | 日本西部         |
 | 日本西部          | 日本东部         |
 | 韩国中部       | 韩国        |
 | 韩国         | 韩国中部      |
 | 北欧        | 西欧        |
 | 美国中北部    | 美国中南部   |
+| 南非北部  | 南非西部  |
+| 南非西部   | 南非北部 |
 | 美国中南部    | 美国中北部   |
 | 印度南部         | 印度中部      |
 | 东南亚      | 东亚          |

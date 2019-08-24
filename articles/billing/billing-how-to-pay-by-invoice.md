@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 08/23/2019
 ms.author: banders
-ms.openlocfilehash: 90c7014e3c22ac7186854d5c01b911aa630d20dd
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 9e4e05acd88e9b0f0c17d4dd4caf5eb5a883d63d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774660"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012598"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按发票为你的 Azure 订阅付费
 
@@ -24,7 +24,8 @@ ms.locfileid: "68774660"
 
 > [!IMPORTANT]
 > * 发票支付 (支票/电汇) 仅适用于企业帐户。
-> * 在切换到发票支付之前, 必须支付所有未付费用。
+> * 在切换到发票支付之前支付所有未付费用。
+> * 目前, 发票支付不支持全局中国区 Azure。
 
 ## <a name="request-to-pay-by-invoice"></a>请求按发票付款
 
@@ -64,7 +65,7 @@ ms.locfileid: "68774660"
          Specific region & series of Subscription:
 
     - **公司名称**和**公司地址**应与你为 Azure 帐户提供的信息匹配。 若要查看或更新信息, 请参阅[更改 Azure 帐户配置文件信息](billing-how-to-change-azure-account-profile.md)。
-    - 必须先在 Azure 门户中添加帐单联系信息, 然后才能批准信用额度。 联系详细信息应与公司的应付帐款或财务部门相关。 若要更新计费联系信息, 请访问[Azure 帐户中心](https://account.azure.com/Profile)。
+    - 在 Azure 门户中添加帐单联系信息, 然后才能批准信用额度。 联系详细信息应与公司的应付帐款或财务部门相关。 若要更新计费联系信息, 请访问[Azure 帐户中心](https://account.azure.com/Profile)。
 
 6. 验证联系人信息和首选联系方法，并单击“创建”。
 
@@ -72,9 +73,9 @@ ms.locfileid: "68774660"
 
 ## <a name="switch-to-invoice-pay-checkwire-transfer"></a>切换到发票支付 (支票/无线传输)
 
-一旦批准通过发票支付, 你就可以在 Azure 门户中切换到 "发票支付 (支票/电汇)"。
+一旦批准通过发票支付, 就可以切换到 Azure 门户中的发票支付 (支票/电汇)。
 
-如果有 Microsoft Online Services 程序帐户, 可以将 Azure 订阅切换为 "检查/传输"。 如果你有 Microsoft 客户协议, 则可以将计费配置文件切换到 "支票/有线传输"。 [了解如何检查你的帐户类型](#check-access-to-a-microsoft-customer-agreement)。
+如果有 Microsoft Online Services 程序帐户, 可以将 Azure 订阅切换为 "检查/传输"。 使用 Microsoft 客户协议, 你可以将计费配置文件切换到支票/有线传输。 [了解如何检查你的帐户类型](#check-access-to-a-microsoft-customer-agreement)。
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>将 Azure 订阅切换到支票/无线传输
 
@@ -93,7 +94,7 @@ ms.locfileid: "68774660"
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>将计费配置文件切换到支票/无线传输
 
-请按照以下步骤将计费配置文件切换到支票/有线传输。 请注意, 只有注册 Azure 的人员才能更改计费配置文件的默认付款方式。
+请按照以下步骤将计费配置文件切换到支票/有线传输。 只有注册 Azure 的人员才能更改计费配置文件的默认付款方式。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在“成本管理 + 计费”中进行搜索。
@@ -113,7 +114,7 @@ ms.locfileid: "68774660"
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>需要帮助? 请联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如果你有疑问或需要帮助, 请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

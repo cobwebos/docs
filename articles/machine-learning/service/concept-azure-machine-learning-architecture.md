@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8987c14fab141a71ba2dd9f1ed228a56ce419bce
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: b7cb4f1a106d8caa2c43f5f17c5efa16a3ee6df2
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982817"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011641"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -151,7 +151,7 @@ Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何�
 
 ### <a name="runs"></a>运行
 
-运行是包含以下信息的记录：
+"运行" 是训练脚本的单次执行。 Azure 机器学习记录所有运行并存储以下信息:
 
 * 有关运行的元数据（时间戳、持续时间等）
 * 脚本记录的指标

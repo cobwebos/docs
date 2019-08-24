@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 9ea22dfc83883238923de06a764d7ef1f11cb475
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
-ms.translationtype: HT
+ms.openlocfilehash: 818bebdb7555d1b515a5c4a3439d11d4a4766e56
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992986"
+ms.locfileid: "70011974"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 对应用程序进行身份验证以访问事件中心资源
 Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用程序提供了集成的访问控制管理功能。 将 Azure AD 与 Azure 事件中心结合使用的主要优势是, 无需再将凭据存储在代码中。 相反, 你可以从 Microsoft 标识平台请求 OAuth 2.0 访问令牌。 Azure AD 对运行应用程序的安全主体（用户、组或服务主体）进行身份验证。 如果身份验证成功, Azure AD 会返回应用程序的访问令牌, 然后应用程序可使用访问令牌向 Azure 事件中心资源授权请求。
@@ -26,9 +26,9 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 ## <a name="built-in-roles-for-azure-event-hubs"></a>Azure 事件中心的内置角色
 Azure 提供下列内置 RBAC 角色, 可使用 Azure AD 和 OAuth 授权访问事件中心数据:
 
-- [Azure 事件中心数据所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview):使用此角色可以完全访问事件中心资源。
-- [Azure 事件中心数据发送](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender-preview)程序:使用此角色授予对事件中心资源的发送访问权限。
-- [Azure 事件中心数据接收方](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver-preview):使用此角色授予接收对事件中心资源的访问权限。   
+- [Azure 事件中心数据所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner):使用此角色可以完全访问事件中心资源。
+- [Azure 事件中心数据发送](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)程序:使用此角色授予对事件中心资源的发送访问权限。
+- [Azure 事件中心数据接收方](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver):使用此角色授予接收对事件中心资源的访问权限。   
 
 > [!IMPORTANT]
 > 预览版本支持将事件中心数据访问权限添加到所有者或参与者角色。 但是, 不能再遵守所有者和参与者角色的数据访问权限。 如果你使用的是 "所有者" 或 "参与者" 角色, 请切换到使用 Azure 事件中心数据所有者角色。

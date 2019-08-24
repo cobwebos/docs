@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 72ed518af579bb6b95d3b13400f2fbf6679cd036
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 6f7175e24f4eb85229847470bc37a6224ac6dd6e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248178"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013691"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>为 Azure 准备基于 CentOS 的虚拟机
 
@@ -30,14 +30,14 @@ ms.locfileid: "68248178"
 * [为 Azure 准备 CentOS 7.0+ 虚拟机](#centos-70)
 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 本文假设已在虚拟硬盘中安装了 CentOS（或类似的衍生产品）Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅 [安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 **CentOS 安装说明**
 
 * 另请参阅[常规 Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，获取更多有关如何为 Azure 准备 Linux 的提示。
-* Azure 不支持 VHDX 格式，仅支持 **固定大小的 VHD**。  可使用 Hyper-V 管理器或 convert-vhd cmdlet 将磁盘转换为 VHD 格式。 如果使用 VirtualBox，则意味着选择的是“固定大小”，而不是在创建磁盘时动态分配默认大小。 
+* Azure 不支持 VHDX 格式，仅支持 **固定大小的 VHD**。  可使用 Hyper-V 管理器或 convert-vhd cmdlet 将磁盘转换为 VHD 格式。 如果使用 VirtualBox，则意味着选择的是“固定大小”，而不是在创建磁盘时动态分配默认大小。
 * 在安装 Linux 系统时，*建议*使用标准分区而不是 LVM（通常是许多安装的默认值）。 这会避免 LVM 与克隆 VM 发生名称冲突，特别是在 OS 磁盘需要连接到另一台相同的 VM 进行故障排除的情况下。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 可以在数据磁盘上使用。
 * 需要装载 UDF 文件系统的内核支持。 在 Azure 上首次启动时，预配配置将通过附加到来宾的 UDF 格式媒体传递到 Linux VM。 Azure Linux 代理必须能够装载 UDF 文件系统才能读取其配置和预配 VM。
 * 低于 2.6.37 的 Linux 内核版本不支持具有更大 VM 大小的 Hyper-V 上的 NUMA。 此问题主要影响使用上游 Red Hat 2.6.32 内核的旧分发版，在 RHEL 6.6 (kernel-2.6.32-504) 中已解决。 运行版本低于 2.6.37 的自定义内核的系统，或者版本低于 2.6.32-504 的基于 RHEL 的内核必须在 grub.conf 中的内核命令行上设置启动参数 `numa=off`。 有关详细信息，请参阅 Red Hat [KB 436883](https://access.redhat.com/solutions/436883)。
@@ -48,7 +48,7 @@ ms.locfileid: "68248178"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-2. 单击“连接”打开该虚拟机的控制台窗口。 
+2. 单击“连接”打开该虚拟机的控制台窗口。
 
 3. 在 CentOS 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 请运行以下命令来卸载该包：
 
@@ -174,11 +174,14 @@ ms.locfileid: "68248178"
 
     此外，可以按照 [LIS 下载页](https://go.microsoft.com/fwlink/?linkid=403033)上的手动安装说明操作将 RPM 安装到 VM 中。
 
-12. 安装 Azure Linux 代理和依赖项：
+12. 安装 Azure Linux 代理和依赖项。 启动并启用 waagent 服务:
 
     ```bash
     sudo yum install python-pyasn1 WALinuxAgent
+    sudo service waagent start
+    sudo chkconfig waagent on
     ```
+
 
     如果没有按步骤 3 中所述删除 NetworkManager 包和 NetworkManager-gnome 包，则安装 WALinuxAgent 包时会删除它们。
 
@@ -223,7 +226,7 @@ ms.locfileid: "68248178"
     logout
     ```
 
-17. 在 Hyper-V 管理器中单击“操作”->“关闭”  。 Linux VHD 现已准备好上传到 Azure。
+17. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 
 
@@ -241,7 +244,7 @@ ms.locfileid: "68248178"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-2. 单击“连接”  以打开该虚拟机的控制台窗口。
+2. 单击“连接” 以打开该虚拟机的控制台窗口。
 
 3. 创建或编辑 `/etc/sysconfig/network` 文件，添加以下文本：
 
@@ -348,7 +351,7 @@ ms.locfileid: "68248178"
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-10. 如果从 VMware、VirtualBox 或 KVM  生成映像：请确保 initramfs 中包含 HYPER-V 驱动程序：
+10. 如果从 VMware、VirtualBox 或 KVM 生成映像：请确保 initramfs 中包含 HYPER-V 驱动程序：
 
     编辑 `/etc/dracut.conf`，添加内容：
 
@@ -389,7 +392,7 @@ ms.locfileid: "68248178"
     logout
     ```
 
-14. 在 Hyper-V 管理器中单击“操作”->“关闭”  。 Linux VHD 现已准备好上传到 Azure。
+14. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
 

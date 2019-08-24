@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 虚拟网络中的标准负载均衡器部署 IPv6 双重堆栈应用程序-CLI
+title: 在 Azure 虚拟网络中部署 IPv6 双重堆栈应用程序-CLI
 titlesuffix: Azure Virtual Network
 description: 本文介绍如何使用 Azure CLI 在 Azure 虚拟网络中部署 IPv6 双重堆栈应用程序。
 services: virtual-network
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 7b231ded3fdae7553e101beff2ee77d82fe27e6e
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: f67494b229a14b66b593950903184e54e4a8ab8c
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269619"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013699"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-standard-load-balancer-in-azure-virtual-network---cli-preview"></a>使用 Azure 虚拟网络中的标准负载均衡器部署 IPv6 双重堆栈应用程序-CLI (预览版)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>在 Azure 虚拟网络中部署 IPv6 双重堆栈应用程序-CLI (预览版)
 
-本文介绍如何在 Azure 中部署一个双堆栈 (IPv4 + IPv6) 应用程序, 该应用程序包含一个双堆栈子网、一个具有双堆栈子网的负载均衡器、一个具有双堆栈子网的负载均衡器、一个具有双 IP 配置的 Nic 的 Vm,双重网络安全组规则和双重公共 Ip。
+本文介绍如何使用 Azure 中的标准负载均衡器部署双堆栈 (IPv4 + IPv6) 应用程序, 该应用程序包括具有双堆栈子网的双堆栈虚拟网络、具有双堆栈子网的标准负载均衡器、双 (IPv4 + IPv6) 前端配置、Vm具有双 IP 配置、双网络安全组规则和双重公共 Ip 的 Nic。
 
 > [!Important]
 > Azure 虚拟网络的 IPv6 双堆栈目前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -33,7 +33,7 @@ ms.locfileid: "68269619"
 
 如果你决定在本地安装并使用 Azure CLI, 则本快速入门要求你使用 Azure CLI 版本2.0.49 或更高版本。 若要查找已安装的版本，请运行 `az --version`。 有关安装或升级信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 若要使用 Azure 虚拟网络的 IPv6 功能, 必须使用 Azure PowerShell 配置订阅, 如下所示:
 
 ```azurecli
@@ -369,7 +369,7 @@ az vm create \
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 门户中查看 IPv6 双堆栈虚拟网络
 可以在 Azure 门户中查看 IPv6 双堆栈虚拟网络, 如下所示:
 1. 在门户的搜索栏中, 输入 " *dsVnet*"。
-2. 当“myVirtualNetwork”出现在搜索结果中时，将其选中。  这将启动名为*dsVnet*的双堆栈虚拟网络的 "**概述**" 页。 双堆栈虚拟网络将显示两个 Nic, 它们都位于名为*dsSubnet*的双堆栈子网中。
+2. 当“myVirtualNetwork”出现在搜索结果中时，将其选中。 这将启动名为*dsVnet*的双堆栈虚拟网络的 "**概述**" 页。 双堆栈虚拟网络将显示两个 Nic, 它们都位于名为*dsSubnet*的双堆栈子网中。
 
   ![Azure 中的 IPv6 双堆栈虚拟网络](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 

@@ -4,7 +4,6 @@ description: 根据如何使用共享访问签名进行服务总线访问控制�
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
@@ -12,20 +11,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2018
+ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: d2cd7c8e24571f66fa73ceaa9a70ce33d6105e9c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: ac240fee9a71714f2c7368b43e60f4e6c5d7093d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017741"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013048"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 
 共享访问签名 (SAS) 是服务总线消息传送的主要安全机制。 本文介绍 SAS、其工作原理以及如何以平台无关的方式使用它们。
 
 SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名空间或消息传递实体（中继、队列或主题）中配置这些保护。 授权规则具有与特定权限关联的名称，并包含一个加密密钥对。 通过服务总线 SDK 或者在自己的代码中使用规则名称和密钥可以生成 SAS 令牌。 然后，客户端可将令牌传递给服务总线，以证明请求的操作获得授权。
+
+> [!NOTE]
+> Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授权对服务总线命名空间及其实体的访问权限。 使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供更高的安全性, 并可通过共享访问签名 (SAS) 轻松使用。 在 Azure AD 中, 无需在代码中存储令牌并存在潜在的安全漏洞。
+>
+> Microsoft 建议尽可能将 Azure AD 用于 Azure 服务总线应用程序。 有关详细信息，请参阅以下文章：
+> - [使用 Azure Active Directory 访问 Azure 服务总线实体, 对应用程序进行身份验证和授权](authenticate-application.md)。
+> - [使用 Azure Active Directory 验证托管标识以访问 Azure 服务总线资源](service-bus-managed-service-identity.md)
 
 ## <a name="overview-of-sas"></a>SAS 概述
 
@@ -57,7 +63,7 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>共享访问签名身份验证的配置
 
-可以在服务总线命名空间、队列，或主题上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 规则。 当前不支持在服务总线订阅上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)，但是可以使用命名空间或主题上配置的规则来确保安全访问订阅。 有关说明此过程的工作示例, 请参阅[管理 Azure 服务总线队列](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule)示例。
+可以在服务总线命名空间、队列，或主题上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 规则。 当前不支持在服务总线订阅上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)，但是可以使用命名空间或主题上配置的规则来确保安全访问订阅。 有关说明此过程的工作示例，请参阅 [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)（将共享访问签名 (SAS) 身份验证与服务总线订阅配合使用）示例。
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
@@ -88,7 +94,7 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 资源 URI 是向其声明访问权限的服务总线资源的完整 URI。 例如，`http://<namespace>.servicebus.windows.net/<entityPath>` 或 `sb://<namespace>.servicebus.windows.net/<entityPath>`；即，`http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`。 
 
-**URI 必须按[百分比编码](/dotnet/api/system.web.httputility.urlencode?view=netframework-4.8)。**
+**URI 必须按[百分比编码](https://msdn.microsoft.com/library/4fkewx0t.aspx)。**
 
 用于签名的共享访问授权规则必须在此 URI 指定的实体上，或由其分层父级之一进行配置。 例如，前面的示例中的 `http://contoso.servicebus.windows.net/contosoTopics/T1` 或 `http://contoso.servicebus.windows.net`。
 
@@ -104,8 +110,8 @@ SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的
 
 下面所述的方案包括配置授权规则、生成 SAS 令牌和客户端授权。
 
-有关演示配置和使用 SAS 授权的服务总线应用程序的完整工作示例, 请参阅 GitHub 存储库中的以下示例:[管理 Azure 服务总线队列](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule)。
- 
+有关演示配置和使用 SAS 授权的服务总线应用程序的完整工作示例，请参阅 [Shared Access Signature authentication with Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)（服务总线的共享访问签名身份验证）。 演示如何使用为保护服务总线订阅而在命名空间或主题上配置的 SAS 授权规则的相关示例位于此处：[将共享访问签名 (SAS) 身份验证与服务总线订阅配合使用](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)。
+
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>访问实体上的共享访问授权规则
 
 使用服务总线 .NET Framework 库，可通过相应 [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) 或 [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription) 中的 [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) 集合，访问在服务总线队列或主题上配置的 [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象。

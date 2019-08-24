@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0ebf18fe2dc6906bc2c06d94388d126fb55c6024
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: bf2b83725f8ce8e712974c182c9a11e8ed0d04f0
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981418"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013227"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>存储队列和服务总线队列 - 比较与对照
 本文分析 Microsoft Azure 目前提供的以下两种队列类型之间的差异和相似性：存储队列和服务总线队列。 通过使用该信息，可以比较和对照这两种技术，并可以明智地决定哪种解决方案最符合需要。
@@ -52,7 +52,9 @@ Azure 支持两种队列机制：“存储队列”和“服务总线队列”�
 * 希望应用程序将消息作为长时间运行的并行流进行处理（使用消息的 [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) 属性，将消息与流相关联）。 在这种模式下，消费应用程序中的每个节点将竞争流而不是消息。 当流被提供给某个消费节点时，该节点可以使用事务检查应用程序流的状态。
 * 解决方案在发送或接收来自队列的多个消息时，需要事务行为和原子性。
 * 应用程序处理的消息介于 64 KB 和 256 KB 之间。
-* 需要向队列提供基于角色的访问模型，为发送者和接收者提供不同权限。 有关详细信息, 请参阅[Active Directory 基于角色的访问控制 (预览)](service-bus-role-based-access-control.md)
+* 需要向队列提供基于角色的访问模型，为发送者和接收者提供不同权限。 有关详细信息，请参阅以下文章：
+    - [用托管标识进行身份验证](service-bus-managed-service-identity.md)
+    - [从应用程序进行身份验证](authenticate-application.md)
 * 队列大小不会增长到超过 80 GB。
 * 希望使用基于 AMQP 1.0 标准的消息传送协议。 有关 AMQP 的详细信息，请参阅[服务总线 AMQP 概述](service-bus-amqp-overview.md)。
 * 想要从基于队列的点到点通信最终迁移到消息交换模式，后者允许无缝集成其他接收者（订阅服务器），其中每个接收者都接收发送到该队列的某些消息或所有消息的独立副本。 消息交换模式是服务总线本机提供的发布/订阅功能。

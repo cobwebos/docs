@@ -15,12 +15,12 @@ ms.date: 08/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 09551eb2620349fa2445c1da3a7e0d66062ebaf0
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 776b8303e3454b40979691ea32fdcca11be4fa71
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899738"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013374"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -54,15 +54,15 @@ ms.locfileid: "69899738"
 | [自动化 Runbook 操作员](#automation-runbook-operator) | 读取 Runbook 属性 - 以能够创建 runbook 的作业。 |
 | [Avere 参与者](#avere-contributor) | 可以创建和管理 Avere vFXT 群集。 |
 | [Avere 操作员](#avere-operator) | 由 Avere vFXT 群集用来管理群集 |
-| [Azure 事件中心数据所有者（预览）](#azure-event-hubs-data-owner-preview) | 允许完全访问 Azure 事件中心资源。 |
-| [Azure 事件中心数据接收者（预览）](#azure-event-hubs-data-receiver-preview) | 允许接收对 Azure 事件中心资源的访问权限。 |
-| [Azure 事件中心数据发送者（预览）](#azure-event-hubs-data-sender-preview) | 允许以发送方式访问 Azure 事件中心资源。 |
+| [Azure 事件中心数据所有者](#azure-event-hubs-data-owner) | 允许完全访问 Azure 事件中心资源。 |
+| [Azure 事件中心数据接收方](#azure-event-hubs-data-receiver) | 允许接收对 Azure 事件中心资源的访问权限。 |
+| [Azure 事件中心数据发送者](#azure-event-hubs-data-sender) | 允许以发送方式访问 Azure 事件中心资源。 |
 | [Azure Kubernetes 服务群集管理员角色](#azure-kubernetes-service-cluster-admin-role) | 列出群集管理员凭据操作。 |
 | [Azure Kubernetes 服务群集用户角色](#azure-kubernetes-service-cluster-user-role) | 列出群集用户凭据操作。 |
 | [Azure Maps 数据读取器（预览）](#azure-maps-data-reader-preview) | 授予从 Azure Maps 帐户中读取相关数据的权限。 |
-| [Azure 服务总线数据所有者（预览）](#azure-service-bus-data-owner-preview) | 允许完全访问 Azure 服务总线资源。 |
-| [Azure 服务总线数据接收者（预览）](#azure-service-bus-data-receiver-preview) | 允许对 Azure 服务总线资源进行接收访问。 |
-| [Azure 服务总线数据发送者（预览）](#azure-service-bus-data-sender-preview) | 允许对 Azure 服务总线资源进行发送访问。 |
+| [Azure 服务总线数据所有者](#azure-service-bus-data-owner) | 允许完全访问 Azure 服务总线资源。 |
+| [Azure 服务总线数据接收方](#azure-service-bus-data-receiver) | 允许对 Azure 服务总线资源进行接收访问。 |
+| [Azure 服务总线数据发送者](#azure-service-bus-data-sender) | 允许对 Azure 服务总线资源进行发送访问。 |
 | [Azure Stack 注册所有者](#azure-stack-registration-owner) | 允许管理 Azure Stack 注册。 |
 | [备份参与者](#backup-contributor) | 允许管理备份服务，但不允许创建保管库以及授予其他人访问权限 |
 | [备份操作员](#backup-operator) | 允许管理备份服务，但删除备份、创建保管库以及授予其他人访问权限除外 |
@@ -556,7 +556,7 @@ ms.locfileid: "69899738"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="azure-event-hubs-data-owner-preview"></a>Azure 事件中心数据所有者（预览）
+## <a name="azure-event-hubs-data-owner"></a>Azure 事件中心数据所有者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -571,7 +571,7 @@ ms.locfileid: "69899738"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="azure-event-hubs-data-receiver-preview"></a>Azure 事件中心数据接收者（预览）
+## <a name="azure-event-hubs-data-receiver"></a>Azure 事件中心数据接收方
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -586,7 +586,7 @@ ms.locfileid: "69899738"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="azure-event-hubs-data-sender-preview"></a>Azure 事件中心数据发送者（预览）
+## <a name="azure-event-hubs-data-sender"></a>Azure 事件中心数据发送者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -646,7 +646,7 @@ ms.locfileid: "69899738"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="azure-service-bus-data-owner-preview"></a>Azure 服务总线数据所有者（预览）
+## <a name="azure-service-bus-data-owner"></a>Azure 服务总线数据所有者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -661,7 +661,7 @@ ms.locfileid: "69899738"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="azure-service-bus-data-receiver-preview"></a>Azure 服务总线数据接收者（预览）
+## <a name="azure-service-bus-data-receiver"></a>Azure 服务总线数据接收方
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -678,7 +678,7 @@ ms.locfileid: "69899738"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="azure-service-bus-data-sender-preview"></a>Azure 服务总线数据发送者（预览）
+## <a name="azure-service-bus-data-sender"></a>Azure 服务总线数据发送者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

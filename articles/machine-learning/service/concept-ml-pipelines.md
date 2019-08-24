@@ -1,7 +1,7 @@
 ---
 title: 什么是 ML 管道
 titleSuffix: Azure Machine Learning service
-description: 本文介绍通过适用于 Python 的 Azure 机器学习 SDK 生成的机器学习管道，以及使用管道的优势。 数据科学家使用机器学习(ML)管道来生成、优化和管理自己的机器学习工作流。
+description: 本文介绍通过适用于 Python 的 Azure 机器学习 SDK 生成的机器学习管道，以及使用管道的优势。 机器学习 (ML) 管道由数据科学家用来生成、优化和管理其机器学习工作流。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22d1da4c194b392993b37b16ab20673120c3362e
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 160be4224e31793b5bb172f5b913c364ae2c8a59
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951803"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013044"
 ---
 # <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>什么是 ML 管道 Azure 机器学习服务？
 
@@ -69,7 +69,7 @@ Azure 云提供多个其他管道, 每个都有不同的用途。 下表列出�
 
 ## <a name="the-python-sdk-for-pipelines"></a>用于管道的 Python SDK
 
-[使用 PYTHON SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)在首选 IDE 或 Jupyter 笔记本中创建 ML 管道。 没有数据依赖项存在时，Azure 机器学习 SDK 提供的命令性构造用于对管道中的步骤进行序列化和并行化操作。 
+[使用 PYTHON SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)在首选集成开发环境 (IDE) 或 Jupyter 笔记本中创建 ML 管道。 没有数据依赖项存在时，Azure 机器学习 SDK 提供的命令性构造用于对管道中的步骤进行序列化和并行化操作。 
 
 可以使用声明性数据依赖项来优化任务。 此 SDK 包含用于常见任务（如数据传输和模型发布）的预构建模块框架。 可以通过实现可在管道间重用的自定义步骤, 来扩展框架, 从而为自己的约定建模。 还可以直接通过此 SDK 管理计算目标和存储资源。
 
