@@ -149,6 +149,8 @@
       items:
         - name: OPC 孪生体系结构
           href: overview-opc-twin-architecture.md
+        - name: OPC 保管库体系结构
+          href: overview-opc-vault-architecture.md
     - name: 操作指南
       items:
         - name: 互连工厂
@@ -169,14 +171,14 @@
               href: howto-opc-twin-deploy-dependencies.md
         - name: OPC 保管库
           items:
-            - name: 将 OPC 保管库部署到现有项目
-              items:
-                - name: 保护 OPC 客户端和 OPC PLC 的通信
-                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
-                - name: 保护 OPC UA 客户端和 OPC UA 服务器应用程序
-                  href: howto-opc-vault-deploy-existing-client-server-communication.md
-            - name: 从头开始部署 OPC 保管库
-              href: howto-opc-vault-deploy-scratch.md
+            - name: 部署 OPC 保管库服务
+              href: howto-opc-vault-deploy.md
+            - name: 管理 OPC 保管库服务
+              href: howto-opc-vault-manage.md
+            - name: 保护 OPC UA 设备与 OPC 保管库的通信
+              href: howto-opc-vault-secure.md
+            - name: 安全运行 OPC 保管库服务
+              href: howto-opc-vault-secure-ca.md
         - name: OPC 发布服务器
           items:
             - name: 配置 OPC 发布服务器

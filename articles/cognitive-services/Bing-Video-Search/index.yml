@@ -2,15 +2,14 @@
 documentType: LandingData
 title: 必应视频搜索 API 文档
 metadata:
-  title: 必应视频搜索 API 文档 - 教程、快速入门和 API 参考 | Microsoft Docs
+  title: 必应视频搜索 API 文档 - 教程、快速入门和 API 参考
+  titleSuffix: Azure Cognitive Services
   description: 了解如何使用必应视频搜索 API 在 Web 中搜索并查找视频。
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-video-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

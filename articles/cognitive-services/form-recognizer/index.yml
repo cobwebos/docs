@@ -2,15 +2,14 @@
 documentType: LandingData
 title: 表单识别器文档
 metadata:
-  title: API 文档 - 表单识别器 - Azure 认知服务 | Microsoft Docs
+  title: API 文档 - 表单识别器
+  titleSuffix: Azure Cognitive Services
   description: 了解如何使用表单识别器以智能方式从表单文档中提取键值数据。
   services: cognitive-services
   author: PatrickFarley
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/16/2019
   ms.author: pafarley

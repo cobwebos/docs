@@ -3,15 +3,14 @@ documentType: LandingData
 title: 必应拼写检查 API 文档
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 必应拼写检查 API 文档 - 教程和 API 参考 - Azure 认知服务| Microsoft Docs
+  title: 必应拼写检查 API 文档 - 教程和 API 参考
+  titleSuffix: Azure Cognitive Services
   description: 了解如何使用必应拼写检查 API 来获取建议的文本文档更正。 教程介绍了如何构建使用该 API 的应用。
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-spell-check
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

@@ -7,19 +7,158 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 07/22/2019
+ms.date: 08/21/2019
 ms.topic: hub-page
-ms.openlocfilehash: ad403b58a0f6aad37e9d8d547d269b9f45566559
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 13bd9d8c9b5c8337e616b315187242633fce8308
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442820"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971413"
 ---
 <div id="main" class="v2">
 <h1>Azure 认知服务文档</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。</p>
         <p> 每个服务都有其自己的<a href="/azure/cognitive-services/language-support">语言支持</a>和<a href="/azure/cognitive-services/cognitive-services-and-machine-learning#service-requirements-for-the-data-model">数据模型要求</a>（从完全训练的模型到可完全自定义的模型）。 
+
+
+<h2>入门</h2>
+<ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
+        <li>
+            <a href="/azure/cognitive-services/welcome/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_overview.svg" alt="Learn about Azure Cognitive Services and how to use the different APIs to build intelligent apps." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>什么是认知服务？</h3>
+                                <p>了解 Azure 认知服务，以及如何使用不同的 API 来生成智能应用。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-and-machine-learning/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_guidelines.svg" alt="Learn where Azure Cognitive Services fits in with other Azure offerings for machine learning." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>认知服务和机器学习</h3>
+                                <p>了解在哪些情况下适合将 Azure 认知服务与其他用于机器学习的 Azure 产品/服务配合使用。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-apis-create-account/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/account-management.svg" alt="Learn how to create an Azure Cognitive Services resource." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>创建认知服务资源</h3>
+                                <p>了解如何创建 Azure 认知服务资源。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/language-support/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/mic-abc.svg" alt="Learn about the human languages supported by Cognitive Services APIs." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>认知服务中的语言支持</h3>
+                                <p>了解认知服务 API 支持的人类语言。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-container-support/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/virtual-containers.svg" alt="Learn how to use Azure Cognitive Services in Containers." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>在容器中使用认知服务</h3>
+                                <p>了解如何在容器中使用 Azure 认知服务。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/authentication/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/account-management.svg" alt="Learn how to authenticate API requests to Azure Cognitive Services." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>对请求进行身份验证</h3>
+                                <p>了解如何对向 Azure 认知服务发出的 API 请求进行身份验证。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="https://docs.microsoft.com/learn/browse/?products=azure-cognitive-services">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/grad-hat.svg" alt="Up your game with a module or learning path tailored to today's developer and technology masterminds and designed to prepare you for industry-recognized Microsoft certifications." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Microsoft Learn</h3>
+                                <p>使用一个模块或学习路径来提升你的业务水平，该模块或学习路径专为当今的开发人员和技术大师定制，旨在让你为行业认可的 Microsoft 认证做好准备。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+</ul>
+
 
 
 <h2>认知服务 API</h2>
@@ -29,7 +168,8 @@ ms.locfileid: "68442820"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>视觉 API</h3>
+                        <h3>影像</h3>
+                        <h4>识别和确定你的图片、视频和数字墨迹内容，为它们添加描述文字和编制索引，并审查这些内容。</h4><br>
                         <p><a href="/azure/cognitive-services/computer-vision/">计算机视觉</a></p>
                         <p><a href="/azure/cognitive-services/Custom-Vision-Service/">自定义视觉服务</a></p>
                         <p><a href="/azure/cognitive-services/face/">人脸 API</a></p>
@@ -46,7 +186,8 @@ ms.locfileid: "68442820"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>语音 API</h3>
+                        <h3>语音</h3>
+                        <h4>将语音转换为文本，将文本转换为自然语音。 从一种语言翻译成另一种语言，并启用说话人验证和识别。</h4><br>
                         <p><a href="/azure/cognitive-services/speech-service">语音服务</a></p>
                         <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>说话人识别&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/speech/home"><span>必应语音 API&nbsp;<sup style="font-size:70%">即将停用</sup></span></a></p>
@@ -61,7 +202,8 @@ ms.locfileid: "68442820"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>语言 API</h3>
+                        <h3>语言</h3>
+                        <h4>让应用能够通过预建的脚本处理自然语言、评估情绪，并了解如何识别用户需求。</h4><br>
                         <p><a href="/azure/cognitive-services/immersive-reader"><span>沉浸式阅读器&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>                        <p><a href="/azure/cognitive-services/luis/">语言理解 (LUIS)</a></p>
                         <p><a href="/azure/cognitive-services/qnamaker/index">QnA Maker</a></p>
                         <p><a href="/azure/cognitive-services/text-analytics/">文本分析</a></p>
@@ -76,7 +218,8 @@ ms.locfileid: "68442820"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>搜索 API</h3>
+                        <h3>搜索</h3>
+                        <h4>将必应搜索 API 添加到应用，并利用该功能通过单个 API 调用实现数十亿网页、图像、视频和新闻的梳理。</h4><br>
                         <p><a href="/azure/cognitive-services/bing-news-search/">必应新闻搜索</a></p>
                         <p><a href="/azure/cognitive-services/Bing-Video-Search/">必应视频搜索</a></p>
                         <p><a href="/azure/cognitive-services/bing-web-search/">必应 Web 搜索</a></p>
@@ -98,6 +241,7 @@ ms.locfileid: "68442820"
                 <div class="card">
                     <div class="cardText">
                         <h3>决策 API</h3>
+                        <h4>构建应用，用于呈现有助于做出明智和高效决策的建议。</h4><br>
                         <p><a href="/azure/cognitive-services/anomaly-detector/"><span>异常检测器&nbsp;<sup style="font-size:70%">预览版</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/content-moderator/">内容审查器</a></p>
                         <p><a href="https://go.microsoft.com/fwlink/?linkid=2088324"><span>个性化体验创建服务&nbsp;<sup style="font-size:70%">预览版</sup></span></a></p>
@@ -109,123 +253,6 @@ ms.locfileid: "68442820"
 </ul>
 </div>
 
-<h2>入门</h2>
-<ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
-        <li>
-            <a href="/azure/cognitive-services/welcome/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_overview.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>什么是认知服务？</h3>
-                                <p>了解 Azure 认知服务，以及如何使用不同的 API 来生成智能应用。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/cognitive-services-and-machine-learning/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_get-started.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>认知服务和机器学习</h3>
-                                <p>了解在哪些情况下适合将 Azure 认知服务与其他用于机器学习的 Azure 产品/服务配合使用。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/cognitive-services-apis-create-account/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_get-started.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>创建认知服务帐户</h3>
-                                <p>了解如何创建 Azure 认知服务帐户。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/authentication/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_guidelines.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>对请求进行身份验证</h3>
-                                <p>了解如何通过 Azure 认知服务对请求进行身份验证。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/language-support/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_guidelines.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>认知服务中的语言支持</h3>
-                                <p>了解认知服务 API 支持的人类语言。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/cognitive-services-container-support/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_guidelines.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>在容器中使用认知服务</h3>
-                                <p>了解如何在容器中使用 Azure 认知服务。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-</ul>
 <h2>5 分钟快速入门</h2>
 <ul class="cardsF panelContent singlePanelContent cols cols3" style="display:flex!important;">
     <li>
@@ -396,4 +423,48 @@ ms.locfileid: "68442820"
     </li>
 </ul>
 
-
+<h2>其他资源</h2>
+<ul class="cardsF panelContent singlePanelContent" style="display:flex!important;">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3></h3>
+                        <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+                        <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services">PowerShell</a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3></h3>
+                        <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/">REST API</a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3></h3>
+                        <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet">.Net</a></p>
+                        <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices">Go</a></p>
+                        <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client?view=azure-java-stable">Java</a></p>
+                        <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest">Node.js</a></p>
+                        <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python">Python</a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+</div>

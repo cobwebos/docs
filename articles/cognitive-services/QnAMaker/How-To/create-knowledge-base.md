@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2cacc8cc6d7c22a93f46007e8150a4e55dc7650
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b2fb7496f16359f01ddbbe6db31b2d047a2ab4df
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967718"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012810"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>快速入门：使用 QnA Maker API 服务门户创建知识库
 
@@ -45,24 +45,21 @@ ms.locfileid: "68967718"
 
     ![设置数据源](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - 为服务提供一个“名称”。 支持重复的名称，也支持特殊字符。
-    - 添加你希望提取的数据的 URL。 若要详细了解支持的源类型，请查看[此处](../Concepts/data-sources-supported.md)。
-    - 上传你希望提取的数据的文件。 若要了解能添加的文档数量，请参阅[定价信息](https://aka.ms/qnamaker-pricing)。
-    - 如果希望手动添加 QnA，则可以跳过上图中显示的**步骤 4**。
+1. 为服务指定一个**名称**, 例如`my first kb`。 支持重复的名称，也支持特殊字符。
 
-1. 向知识库中添加**聊天内容**。 选择为机器人添加 chit-聊天支持, 方法是从个性中选择一个。 
+1. 添加 "QnA Maker 故障排除" 页作为 URL `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting`:, 然后`+ Add URL`选择。 若要详细了解支持的源类型，请查看[此处](../Concepts/data-sources-supported.md)。 对于本快速入门, 请勿为要提取的数据**上传文件**。 若要了解能添加的文档数量，请参阅[定价信息](https://aka.ms/qnamaker-pricing)。
 
-    ![向 KB 添加聊天内容](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+1. 添加 **_专业_Chit-聊天**到你的 KB。 
 
 1. 选择“创建知识库”。
 
     ![创建知识库](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-1. 提取数据需要几分钟时间。
+1. 提取数据可能需要几分钟时间。
 
     ![提取](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-1. 成功创建知识库后，将重定向至“知识库”页面。
+1. 成功创建知识库后, 会重定向到**知识库**页面。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -2,15 +2,14 @@
 documentType: LandingData
 title: 计算机视觉 API 文档
 metadata:
-  title: API 文档 - 计算机视觉 - Azure 认知服务 | Microsoft Docs
+  title: API 文档 - 计算机视觉
+  titleSuffix: Azure Cognitive Services
   description: 了解如何使用计算机视觉处理图像并返回信息。 教程介绍了如何构建使用该 API 的应用。
   services: cognitive-services
   author: nitinme
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: computer-vision
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/26/2019
   ms.author: nitinme

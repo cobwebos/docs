@@ -2,15 +2,15 @@
 documentType: LandingData
 title: 异常检测器 API 文档
 metadata:
-  title: 异常检测器 API - 教程、快速入门和 API 参考 - Azure 认知服务 | Microsoft Docs
+  title: 异常检测器 API - 教程、快速入门和 API 参考
+  titleSuffix: Azure Cognitive Services
   description: 使用异常检测器 API 可在一段时间内监视数据，并通过机器学习检测异常。 深入了解数据，而无论数据量、行业或场景如何。
   services: cognitive-services
   author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: anomaly-detector
   ms.topic: landing-page
   ms.date: 03/26/2019
   ms.author: aahi
