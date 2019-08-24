@@ -311,8 +311,6 @@
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: Apache Spark 作业失败 - InvalidClassException
           href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
-        - name: 缓慢 Apache Spark 作业 - listStatus
-          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
         - name: 缓慢 Apache Spark 作业 - 存储容器
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: IllegalArgumentException 异常
