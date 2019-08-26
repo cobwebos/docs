@@ -21,7 +21,7 @@ ms.locfileid: "67875206"
 现在，可以比过去更轻松地针对 [Azure 应用服务](https://docs.microsoft.com/azure/app-service/)中运行的基于 .NET 和.NET Core 的 Web 应用程序启用监视。 以前需要手动安装某个站点扩展，而现在应用服务映像中默认会内置最新的扩展/代理。 本文逐步讲解如何启用 Application Insights 监视，并提供有关如何自动完成大规模部署的初步指导。
 
 > [!NOTE]
-> 通过“开发工具” > “扩展”手动添加 Application Insights 站点扩展的功能已弃用。   此扩展安装方法依赖于每个新版本的手动更新。 扩展的最新稳定版现在会[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)在应用服务映像中。 这些文件位于 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` 中，每发布一个稳定版本，它们都会自动更新。 如果在下文中遵循基于代理的说明启用监视，系统会自动删除已弃用的扩展。
+> 通过“开发工具” > “扩展”手动添加 Application Insights 站点扩展的功能已弃用。 此扩展安装方法依赖于每个新版本的手动更新。 扩展的最新稳定版现在会[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)在应用服务映像中。 这些文件位于 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` 中，每发布一个稳定版本，它们都会自动更新。 如果在下文中遵循基于代理的说明启用监视，系统会自动删除已弃用的扩展。
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 
@@ -45,14 +45,14 @@ ms.locfileid: "67875206"
 > 不支持 APPINSIGHTS_JAVASCRIPT_ENABLED 和 Urlcompression> 的组合。 有关详细信息，请参阅[故障排除部分](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)中的说明。
 
 
-1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。 
+1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。
 
     ![在“设置”下选择“Application Insights”](./media/azure-web-apps/settings-app-insights-01.png)
 
    * 除非已为此应用设置了 Application Insights 资源，否则请选择创建新资源。 
 
      > [!NOTE]
-     > 当单击“确定”  来创建新资源时，将提示你**应用监视设置**。 选择“继续”  会将新的 Application Insights 资源链接到你的应用服务，这样做还会**触发应用服务的重新启动**。 
+     > 当单击“确定”来创建新资源时，将提示你**应用监视设置**。 选择“继续”会将新的 Application Insights 资源链接到你的应用服务，这样做还会**触发应用服务的重新启动**。 
 
      ![检测 Web 应用](./media/azure-web-apps/create-resource-01.png)
 
@@ -60,9 +60,9 @@ ms.locfileid: "67875206"
 
     ![根据平台选择选项](./media/azure-web-apps/choose-options-new.png)
 
-   * .NET 基本集合  级别提供基本的单实例 APM 功能。
+   * .NET 基本集合级别提供基本的单实例 APM 功能。
 
-   * .NET 建议集合  级别：
+   * .NET 建议集合级别：
        * 添加 CPU、内存和 I/O 使用情况趋势。
        * 跨请求/依赖关系边界关联微服务。
        * 收集使用情况趋势，并启用从可用性结果到事务的关联。
@@ -81,18 +81,18 @@ ms.locfileid: "67875206"
 
 基于代理/扩展的监视目前**不支持**面向 .NET Core 的完整框架、独立部署和 ASP.NET Core 3.0。 （在上述所有方案中，都可通过代码进行[手动检测](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。）
 
-1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。 
+1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。
 
     ![在“设置”下选择“Application Insights”](./media/azure-web-apps/settings-app-insights-01.png)
 
    * 除非已为此应用设置了 Application Insights 资源，否则请选择创建新资源。 
 
      > [!NOTE]
-     > 当单击“确定”  来创建新资源时，将提示你**应用监视设置**。 选择“继续”  会将新的 Application Insights 资源链接到你的应用服务，这样做还会**触发应用服务的重新启动**。 
+     > 当单击“确定”来创建新资源时，将提示你**应用监视设置**。 选择“继续”会将新的 Application Insights 资源链接到你的应用服务，这样做还会**触发应用服务的重新启动**。 
 
      ![检测 Web 应用](./media/azure-web-apps/create-resource-01.png)
 
-2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 对于 .NET Core 2.0、2.1 和 2.2，.NET Core 提供“建议的集合”或“已禁用”。  
+2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 对于 .NET Core 2.0、2.1 和 2.2，.NET Core 提供“建议的集合”或“已禁用”。
 
     ![根据平台选择选项](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "67875206"
 
 可以选择为 ASP.NET 启用客户端监视。 若要启用客户端监视：
 
-* 选择“设置”>“应用程序设置”。 
+* 选择“设置”>“应用程序设置”。
    * 在“应用程序设置”下，添加新的**应用设置名称**和**值**：
 
      名称：`APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -115,11 +115,11 @@ ms.locfileid: "67875206"
 
 ## <a name="enable-client-side-monitoring-for-net-core-applications"></a>为 .NET Core 应用程序启用客户端监视
 
-对于使用“建议的集合”的 .NET Core 应用，**默认已启用**客户端监视，无论是否存在应用设置“APPINSIGHTS_JAVASCRIPT_ENABLED”。 
+对于使用“建议的集合”的 .NET Core 应用，**默认已启用**客户端监视，无论是否存在应用设置“APPINSIGHTS_JAVASCRIPT_ENABLED”。
 
 如果出于某种原因想要禁用客户端监视：
 
-* 选择“设置” > “应用程序设置”。  
+* 选择“设置” > “应用程序设置”。
    * 在“应用程序设置”下，添加新的**应用设置名称**和**值**：
 
      名称：`APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -177,7 +177,7 @@ ms.locfileid: "67875206"
 
 若要使用配置的所有默认 Application Insights 设置创建 Azure 资源管理器模板，请像在启用了 Application Insights 的情况下创建新的 Web 应用时一样开始操作。
 
-选择“自动化选项” 
+选择“自动化选项”
 
    ![应用服务 Web 应用创建菜单](./media/azure-web-apps/create-web-app.png)
 
@@ -310,7 +310,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 从版本 2.8.9 开始，将使用预装的站点扩展。 如果使用更低的版本，可通过两种方法之一进行更新：
 
-* [通过门户启用扩展进行升级](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights)。 （即使已安装 Azure 应用服务的 Application Insights 扩展，UI 也只会显示“启用”按钮。  在幕后，旧的专用站点扩展将被删除。）
+* [通过门户启用扩展进行升级](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights)。 （即使已安装 Azure 应用服务的 Application Insights 扩展，UI 也只会显示“启用”按钮。 在幕后，旧的专用站点扩展将被删除。）
 
 * [通过 PowerShell 升级](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell)：
 
@@ -356,7 +356,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 |`AppContainsDiagnosticSourceAssembly**:true`|此值表示扩展已检测到对应用程序中的 `System.Diagnostics.DiagnosticSource` 的引用，因此将会回退。| 删除引用。
 |`IKeyExists:false`|此值表示 AppSetting 中不存在检测密钥 `APPINSIGHTS_INSTRUMENTATIONKEY`。 可能的原因：可能意外删除了这些值，忘记了在自动化脚本中设置这些值，等等。 | 确保该设置在应用服务的应用程序设置中存在。
 
-### <a name="appinsightsjavascriptenabled-and-urlcompression-is-not-supported"></a>不支持 APPINSIGHTS_JAVASCRIPT_ENABLED 和 urlCompression
+### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>不支持 APPINSIGHTS_JAVASCRIPT_ENABLED 和 urlCompression
 
 如果在对内容进行编码的情况下使用 APPINSIGHTS_JAVASCRIPT_ENABLED=true，可能会出现如下所示的错误： 
 
