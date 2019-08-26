@@ -751,6 +751,10 @@
           href: cosmosdb-sql-api-migrate-data-striim.md
         - name: 使用 Striim 迁移到 Cassandra API
           href: cosmosdb-cassandra-api-migrate-data-striim.md
+        - name: 迁移 - Oracle DB 到 Cassandra API（使用 Blitzz）
+          href: oracle-migrate-cosmos-db-blitzz.md
+        - name: 迁移 - Apache Cassandra 到 Cassandra API（使用 Blitzz）
+          href: cassandra-migrate-cosmos-db-blitzz.md
         - name: 将数百 TB 的数据迁移到 Azure Cosmos DB
           href: migrate-cosmosdb-data.md
     - name: 批量执行程序库

@@ -79,10 +79,6 @@
       href: service-bus-samples.md
 - name: 概念
   items:
-    - name: Azure 资源的托管标识
-      href: service-bus-managed-service-identity.md
-    - name: 基于角色的访问控制（预览）
-      href: service-bus-role-based-access-control.md
     - name: 高级消息传送
       href: service-bus-premium-messaging.md
     - name: Azure 队列与服务总线队列的比较
@@ -95,8 +91,25 @@
       href: service-bus-async-messaging.md
     - name: 处理中断和灾难问题
       href: service-bus-outages-disasters.md
-    - name: Azure 的常见安全属性
-      href: service-bus-messaging-security-attributes.md
+    - name: 安全
+      items:
+        - name: 身份验证和授权
+          href: service-bus-authentication-and-authorization.md
+          items:
+            - name: 使用共享访问签名
+              items:
+                - name: 从 ACS 迁移到 SAS
+                  href: service-bus-migrate-acs-sas.md
+                - name: 使用共享访问签名进行的身份验证
+                  href: service-bus-sas.md
+            - name: 使用 Azure Active Directory
+              items:
+                - name: 通过 Azure 资源的托管标识进行身份验证
+                  href: service-bus-managed-service-identity.md
+                - name: 通过应用程序进行身份验证
+                  href: authenticate-application.md
+        - name: Azure 的常见安全属性
+          href: service-bus-messaging-security-attributes.md
 - name: 操作指南
   items:
     - name: 创建命名空间
@@ -119,13 +132,6 @@
               href: service-bus-to-event-grid-integration-concept.md
             - name: Azure 事件网格示例
               href: service-bus-to-event-grid-integration-example.md
-        - name: 身份验证和授权
-          href: service-bus-authentication-and-authorization.md
-          items:
-            - name: 从 ACS 迁移到 SAS
-              href: service-bus-migrate-acs-sas.md
-            - name: 使用共享访问签名进行的身份验证
-              href: service-bus-sas.md
         - name: 主题筛选器和操作
           href: topic-filters.md
         - name: 从标准层迁移到高级层命名空间

@@ -13,14 +13,14 @@ metadata:
   ms.author: iainfou
   manager: daveba
   ms.date: 08/01/2019
-  ms.openlocfilehash: 3c97b7bbb652fd26e5c8fdb6d20576a3c9e70421
-  ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+  ms.openlocfilehash: f5fa27e19da6bb64b7e214ec32cbfbf0a417118e
+  ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/19/2019
-  ms.locfileid: "69612866"
+  ms.lasthandoff: 08/23/2019
+  ms.locfileid: "70010558"
 landingContent:
-- title: 了解 Azure AD 域服务
+- title: 关于 Azure AD 域服务
   linkLists:
   - linkListType: overview
     links:
@@ -28,6 +28,8 @@ landingContent:
       url: overview.md
     - text: 比较标识解决方案
       url: compare-identity-solutions.md
+  - linkListType: concept
+    links:
     - text: 同步是如何工作的？
       url: synchronization.md
     - text: 常见问题解答
@@ -53,7 +55,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 启用密码哈希同步
-      url: active-directory-ds-getting-started-password-sync-synced-tenant.md
+      url: tutorial-configure-password-hash-sync.md
     - text: 创建组织单位 (OU)
       url: create-ou.md
     - text: 配置 Kerberos 约束委派

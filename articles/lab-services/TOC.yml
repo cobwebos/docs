@@ -263,6 +263,10 @@
               href: integrate-environments-devops-pipeline.md
             - name: 在 Azure Pipelines 生成和发布管道中使用开发测试实验室
               href: use-devtest-labs-build-release-pipelines.md
+        - name: 扩展开发测试实验室
+          items:
+            - name: 使用 Azure Functions 扩展开发测试实验室
+              href: extend-devtest-labs-azure-functions.md
         - name: 报告实验室的使用情况
           href: report-usage-across-multiple-labs-subscriptions.md
         - name: 企业中的开发测试实验室

@@ -71,12 +71,24 @@
           href: event-hubs-geo-dr.md
     - name: 安全
       items:
-        - name: Azure 资源的托管标识
-          href: event-hubs-managed-service-identity.md
-        - name: 基于角色的访问控制（预览）
-          href: event-hubs-role-based-access-control.md
-        - name: 身份验证和安全模型概述
-          href: event-hubs-authentication-and-security-model-overview.md
+        - name: 授权
+          items:
+            - name: 授予对 Azure 事件中心的访问权限
+              href: authorize-access-event-hubs.md
+            - name: 使用 Azure Active Directory 授予访问权限
+              href: authorize-access-azure-active-directory.md
+            - name: 使用共享访问签名授予访问权限
+              href: authorize-access-shared-access-signature.md
+        - name: Authentication
+          items:
+            - name: 使用 Azure Active Directory 进行身份验证
+              items:
+                - name: 使用托管标识进行身份验证
+                  href: authenticate-managed-identity.md
+                - name: 通过应用程序进行身份验证
+                  href: authenticate-application.md
+            - name: 使用共享访问签名进行身份验证
+              href: authenticate-shared-access-signature.md
         - name: 安全属性
           href: event-hubs-security-attributes.md
     - name: AMQP 1.0 协议指南
@@ -166,6 +178,8 @@
           href: event-hubs-service-endpoints.md
         - name: 在事件中心命名空间中启用虚拟网络集成和防火墙
           href: event-hubs-tutorial-virtual-networks-firewalls.md
+        - name: 配置客户管理的密钥以加密静态数据
+          href: configure-customer-managed-key.md
     - name: 故障排除
       items:
         - name: 例外

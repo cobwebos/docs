@@ -27,6 +27,12 @@
     - name: 索引
       displayName: 'list, examples'
       href: ./samples/index.md
+    - name: CIS Microsoft Azure 基础基准
+      items:
+        - name: 概述
+          href: ./samples/cis-azure-1.1.0/index.md
+        - name: 建议映射
+          href: ./samples/cis-azure-1.1.0/control-mapping.md
     - name: IRS 1075
       items:
         - name: 概述
