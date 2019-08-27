@@ -386,7 +386,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 Log Analytics 从 Azure Monitor 继承架构, 但有以下例外:
 
 * 每个列名中的第一个字母将大写, Azure Monitor 中的示例*correlationid*将在*Log Analytics 中。*
-* 将删除列*级别*。
+* 将删除列*Level*。
 * 动态列*属性*将保留为以下动态 JSON blob 类型:
 
     | Azure Monitor 列 | Log Analytics 列 | 类型 |
@@ -436,7 +436,7 @@ ADFV2 发出以下度量值:
 
 为数据工厂启用诊断设置。
 
-1. 在门户中，导航到“Azure Monitor”并单击“设置”菜单中的“诊断设置” 。
+1. 在门户中，导航到“Azure Monitor”并单击“设置”菜单中的“诊断设置”。
 
 2. 选择要为其设置诊断设置的数据工厂。
     
@@ -448,11 +448,11 @@ ADFV2 发出以下度量值:
 
    ![添加诊断设置 - 现有的设置](media/data-factory-monitor-oms/add-diagnostic-setting.png)
 
-4. 为设置提供名称，并选中“发送到 Log Analytics” 框，然后选择 Log Analytics 工作区。
+4. 为设置提供名称，并选中“发送到 Log Analytics”框，然后选择 Log Analytics 工作区。
 
     ![monitor-oms-image2.png](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
-5. 单击“保存” 。
+5. 单击“保存”。
 
 几分钟后, 新设置会显示在此数据工厂的设置列表中, 只要生成新的事件数据, 就会立即将诊断日志流式传输到该工作区。 发出事件后可能需要最多 15 分钟的时间该事件才会出现在 Log Analytics 中。
 
@@ -465,7 +465,7 @@ ADFV2 发出以下度量值:
 
 ![monitor-oms-image4.png](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-单击“创建” 并选择工作区和工作区设置。
+单击“创建”并选择工作区和工作区设置。
 
 ![monitor-oms-image5.png](media/data-factory-monitor-oms/monitor-oms-image5.png)
 
@@ -507,14 +507,14 @@ ADFV2 发出以下度量值:
 
 ### <a name="create-alerts"></a>创建警报
 
-1.  单击“+ 新建警报规则”，创建新的警报 。
+1.  单击“+ 新建警报规则”，创建新的警报。
 
     ![新建警报规则](media/monitor-using-azure-monitor/alerts_image4.png)
 
-2.  定义警报条件 。
+2.  定义警报条件。
 
     > [!NOTE]
-    > 请务必在“按资源类型筛选”中选择“所有” 。
+    > 请务必在“按资源类型筛选”中选择“所有”。
 
     ![警报条件，第 1 屏，共 3 屏](media/monitor-using-azure-monitor/alerts_image5.png)
 
@@ -522,11 +522,11 @@ ADFV2 发出以下度量值:
 
     ![警报条件，第 3 屏，共 3 屏](media/monitor-using-azure-monitor/alerts_image7.png)
 
-3.  定义警报详细信息 。
+3.  定义警报详细信息。
 
     ![警报详细信息](media/monitor-using-azure-monitor/alerts_image8.png)
 
-4.  定义操作组 。
+4.  定义操作组。
 
     ![操作组，第 1 屏，共 4 屏](media/monitor-using-azure-monitor/alerts_image9.png)
 
