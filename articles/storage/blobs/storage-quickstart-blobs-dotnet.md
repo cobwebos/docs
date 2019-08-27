@@ -7,12 +7,12 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 40ee855aa01a9b24e35fb9863221e3607786d407
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1b6348173f47b570efff25bf09e9a427ff2ba9b5
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722018"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640998"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库
 
@@ -129,7 +129,7 @@ namespace blob_quickstart
 
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>从 Azure 门户复制凭据
 
-此示例应用程序需对存储帐户访问进行身份验证。 若要进行身份验证，请将存储帐户凭据以连接字符串形式添加到应用程序中。 按照以下步骤查看存储帐户凭据：
+当示例应用程序向 Azure 存储发出请求时，必须对其进行授权。 若要对请求进行授权，请将存储帐户凭据以连接字符串形式添加到应用程序中。 按照以下步骤查看存储帐户凭据：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 2. 找到自己的存储帐户。

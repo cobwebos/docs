@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: b073a270fabb8657be19b79601fa90f1b9a0351b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 03fd31333a97290a5e8a00029867fc4e73a0cdd7
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015236"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875610"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>教程：将真实设备添加到 Azure IoT Central 应用程序
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 本教程介绍如何在 Microsoft Azure IoT Central 应用程序中添加和配置真实的设备。
 
@@ -36,11 +38,8 @@ ms.locfileid: "66015236"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，构建人员至少应完成第一篇构建人员教程以创建 Azure IoT Central 应用程序：
+在开始之前，构建人员至少应完成第一篇构建人员教程以创建 Azure IoT Central 应用程序：[定义新设备类型](tutorial-define-device-type.md)（必需）
 
-* [定义新设备类型](tutorial-define-device-type.md)（必需）
-* [配置设备的规则和操作](tutorial-configure-rules.md)（可选）
-* [自定义操作员的视图](tutorial-customize-operator.md)（可选）
 
 在开发计算机上安装 [Node.js](https://nodejs.org/) 版本 8.0.0 或更高版本。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种操作系统。
 

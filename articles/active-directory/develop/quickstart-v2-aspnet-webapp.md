@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ed57f581db593a288e62d25a2f0b8ee42c28114
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 10911e5100add2dca84475857a6909fb20d452c4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852951"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891549"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -55,8 +55,10 @@ ms.locfileid: "68852951"
 > 1. 选择“新注册”。 
 > 1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
 >      - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `ASPNET-Quickstart`。
->      - 在“重定向 URI”中添加 `https://localhost:44368/`，  然后单击“注册”。 
-选择“身份验证”菜单，在“隐式授权”下设置“ID 令牌”，然后选择“保存”。    
+>      - 在“重定向 URI”中添加 `http://localhost:44368/`，  然后单击“注册”。 
+>      - 在“管理”部分下的左侧导航窗格中，选择“身份验证” 
+>          - 在“隐式授权”  子部分下，选择“ID 令牌”  。
+>          - 然后选择“保存”  。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -91,12 +93,13 @@ ms.locfileid: "68852951"
 > 其中：
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
 > - `Enter_the_Tenant_Info_Here` - 是下述选项之一：
->   - 如果应用程序支持“仅我的组织”，  请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
+>   - 如果应用程序支持“仅我的组织”，  请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.onmicrosoft.com）
 >   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为  `organizations`
 >   - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值替换为  `common`
 >
 > > [!TIP]
-> > 若要查找“应用程序 ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到“概览”页。    
+> > - 若要查找“应用程序 ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到“概览”页。    
+> > - 确保 **Web.config** 中 `redirectUri` 的值与 Azure AD 中为应用注册定义的**重定向 URI** 相对应（如果不对应，请导航到应用注册的“身份验证”  菜单，并更新**重定向 URI** 以匹配）
 
 ## <a name="more-information"></a>详细信息
 

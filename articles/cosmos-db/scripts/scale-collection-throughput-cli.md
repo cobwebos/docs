@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本 - 缩放 Azure Cosmos DB 容器吞吐量 | Microsoft Docs
-description: Azure CLI 脚本示例 - 缩放 Azure Cosmos DB 容器吞吐量
+title: Azure CLI 脚本 - 缩放 Azure Cosmos 容器吞吐量 | Microsoft Docs
+description: Azure CLI 脚本示例 - 缩放 Azure Cosmos 容器吞吐量
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,16 +8,16 @@ ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 593fade731fac86e7fcda69bfe223716127de9e1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a7ae4b015ba476ca1ffdb4b4510334490a6f6fee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038443"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616699"
 ---
-# <a name="scale-azure-cosmos-db-container-throughput-using-the-azure-cli"></a>使用 Azure CLI 缩放 Azure Cosmos DB 容器吞吐量
+# <a name="scale-azure-cosmos-container-throughput-using-the-azure-cli"></a>使用 Azure CLI 缩放 Azure Cosmos 容器吞吐量
 
-此示例可缩放任何类型的 Azure Cosmos DB 容器的容器吞吐量。  
+此示例可缩放任何类型的 Azure Cosmos 容器的容器吞吐量。  
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -43,9 +43,9 @@ az group delete --name $resourceGroupName
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | 创建 Azure Cosmos DB 帐户。 |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | 创建 Azure Cosmos DB 数据库。 |
-| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | 创建 Azure Cosmos DB 容器。 |
-| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | 更新 Azure Cosmos DB 容器。 |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | 创建 Azure Cosmos 数据库。 |
+| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | 创建 Azure Cosmos 容器。 |
+| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | 更新 Azure Cosmos 容器。 |
 | [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 853d7f7bf9950640a824eee4ae3e044265b518f7
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017221"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898341"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>使用 Azure Maps 实现 IoT 空间分析
 
@@ -290,6 +290,10 @@ Azure 函数启动并运行后，我们将遥测数据发送到 IoT 中心，而
 有关 Azure Maps REST API 的完整列表，请参阅：
 
 * [Azure Maps REST API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
+
+若要详细了解 IoT 即插即用，请参阅：
+
+* [IoT 即插即用](https://docs.microsoft.com/azure/iot-pnp)
 
 若要获取 Azure 认证的 IoT 设备列表，请访问：
 

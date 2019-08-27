@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4ea6f04dbfd18a6e561a255988ba0465b9e017be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967611"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624263"
 ---
 # <a name="what-are-the-speech-services"></a>什么是语音服务？
 
@@ -43,6 +43,7 @@ ms.locfileid: "68967611"
 
 * 2019 年 8 月
   * **新教程**：[使用语音 SDK、C# 为机器人启用语音](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * 添加了一种新的说话风格 [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)，用于 `en-US-JessaNeural` 语音。 
 * 2019 年 7 月
   * 发布了语音 SDK 1.6.0。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
 * 2019 年 5 月 - [会话听录](conversation-transcription-service.md)、[呼叫中心听录](call-center-transcription.md)和[语音优先虚拟助手](voice-first-virtual-assistants.md)的文档现已提供。

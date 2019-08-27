@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Workday 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 Workday 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Workday 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 08/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aba2d3bab7d709b4bb9ac18e4a9c6ed052a5fb83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086963"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891968"
 ---
-# <a name="tutorial-integrate-workday-with-azure-active-directory"></a>教程：将 Workday 与 Azure Active Directory 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workday 集成
 
 本教程介绍如何将 Workday 与 Azure Active Directory (Azure AD) 集成。 将 Workday 与 Azure AD 集成后，可以：
 
@@ -55,20 +55,20 @@ ms.locfileid: "67086963"
 1. 在“从库中添加”部分的搜索框中，键入“Workday”   。
 1. 从结果面板中选择“Workday”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on-for-workday"></a>配置和测试 Workday 的 Azure AD 单一登录
 
-使用名为 Britta Simon 的测试用户配置和测试 Workday 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 Workday 相关用户之间建立链接关系。
+使用名为 **B.Simon** 的测试用户配置和测试 Workday 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Workday 相关用户之间建立链接关系。
 
 若要配置和测试 Workday 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B.Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，使 B.Simon 能够使用 Azure AD 单一登录。
 2. **[配置 Workday](#configure-workday)** ，以在应用程序端配置 SSO 设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以便使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Workday 测试用户](#create-workday-test-user)** ，以在 Workday 中创建 Britta Simon 的对应用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
-6. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
+    1. **[创建 Workday 测试用户](#create-workday-test-user)** - 在 Workday 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -82,7 +82,7 @@ ms.locfileid: "67086963"
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://impl.workday.com/<tenant>/login-saml2.flex`。
 
-    b. 在“标识符”  文本框中，使用以下模式键入 URL：`https://www.workday.com`
+    b. 在“标识符”  文本框中，使用以下模式键入 URL：`http://www.workday.com`
 
     c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://impl.workday.com/<tenant>/login-saml.htmld`
 
@@ -115,7 +115,37 @@ ms.locfileid: "67086963"
 
    ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="configure-workday"></a>配置 Workday
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
+
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 选择屏幕顶部的“新建用户”  。
+1. 在“用户”属性中执行以下步骤  ：
+   1. 在“名称”  字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+   1. 单击“创建”。 
+
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，将通过授予 B.Simon 访问 Workday 的权限，允许其使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在应用程序列表中，选择“Workday”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+
+   ![“用户和组”链接](common/users-groups-blade.png)
+
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+
+    ![“添加用户”链接](common/add-assign-user.png)
+
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-workday"></a>配置 Workday
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录 Workday 公司站点。
 
@@ -197,7 +227,7 @@ ms.locfileid: "67086963"
 
     ![SSO 配置](./media/workday-tutorial/WorkdaySSOConfiguratio.png "SSO 配置")
 
-    a.  在“服务提供商 ID”  文本框中，键入 **https://www.workday.com** 。
+    a.  在“服务提供商 ID”  文本框中，键入 **http://www.workday.com** 。
 
     b. 选择“不削弱 SP 发起的身份验证请求”  。
 
@@ -212,41 +242,11 @@ ms.locfileid: "67086963"
     > [!NOTE]
     > 请确保正确设置单一登录。 如果使用不正确的设置启用单一登录，则可能无法使用凭据进入应用程序并被锁定。在这种情况下，Workday 提供备份登录 URL，用户可以使用以下格式的普通用户名和密码登录：[Workday URL]/login.flex?redirect=n
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-在本部分中，将在 Azure 门户中创建一个名为 Britta Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `Britta Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，通过授予 Britta Simon 访问 Workday 的权限，允许其使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Workday”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
-1. 在“添加分配”对话框中，单击“分配”按钮。  
-
 ### <a name="create-workday-test-user"></a>创建 Workday 测试用户
 
-在本部分中，将在 Workday 中创建一个名为“Britta Simon”的用户。 请与 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)协作来在 Workday 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Workday 中创建名为 B.Simon 的用户。 请与 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)协作来在 Workday 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在访问面板中选择“Workday”磁贴时，应会自动登录到设置了 SSO 的 Workday。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
@@ -257,3 +257,5 @@ ms.locfileid: "67086963"
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [通过 Azure AD 试用 Workday](https://aad.portal.azure.com)

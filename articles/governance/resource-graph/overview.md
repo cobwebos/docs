@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: d78c640f4269c799d3d371e6dd9db477faf96694
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: faad0a0166c1b11f51f814bb6ce3351d7a017239
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807415"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900032"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph 服务概述
 
@@ -62,6 +62,9 @@ Resource Graph 然后就会更新其数据库。 Resource Graph 也会定期进�
 
 > [!NOTE]
 > Resource Graph 使用主体在登录期间可用的订阅。 若要查看在活动会话期间添加的新订阅的资源，主体必须刷新上下文。 此操作在注销并重新登录时自动发生。
+
+Azure CLI 和 Azure PowerShell 使用用户有权访问的订阅。 直接使用 REST API 时，订阅列表由用户提供。 如果用户有权访问列表中的任何订阅，则返回用户有权访问的订阅的查询结果。 此行为与调用 [Resource Groups - List](/rest/api/resources/resourcegroups/list) \- 时相同，你可以获得有权访问的资源组，而不会指示结果可能是部分的。
+如果订阅列表中没有用户具有适当权限的订阅，则响应为“403 (已禁止)”  。
 
 ## <a name="throttling"></a>限制
 

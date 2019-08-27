@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 646a602d7e6c47454f039a5f4f1981a60b56fa56
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567515"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873867"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>快速入门：创建 Azure SQL 数据库托管实例
 
@@ -35,11 +35,11 @@ ms.locfileid: "68567515"
 
 下列步骤展示了如何创建托管实例。
 
-1. 在 Azure 门户的左上角，选择“创建资源”  。
-2. 找到“托管实例”，然后选择“Azure SQL 托管实例”   。
-3. 选择“创建”  。
+1. 在 Azure 门户的左侧菜单中选择“Azure SQL”  。 如果 Azure SQL 不在列表中，请选择“所有服务”  ，然后在搜索框中键入“Azure SQL”  。
+2. 选择“+添加”  以打开“选择 SQL 部署选项”  页。 通过在“托管实例”  磁贴上选择“显示详细信息”  ，可以查看有关 Azure SQL 数据库托管实例的其他信息。
+3. 选择“创建”  ：
 
-   ![创建托管实例](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
+   ![创建托管实例](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
 4. 根据下表中的信息，在“SQL 托管实例”窗体中填充要求的信息  。
 

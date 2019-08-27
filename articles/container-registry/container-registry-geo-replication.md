@@ -6,14 +6,14 @@ author: stevelas
 manager: gwallace
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/24/2019
+ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 2fffa3b063969cbe68fb9a405f4198f15b3f9809
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845204"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574386"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -105,6 +105,14 @@ ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“
 异地复制是 Azure 容器注册表[高级 SKU](container-registry-skus.md) 的一项功能。 将注册表复制到所需区域时，每个区域都会产生高级注册表费用。
 
 在前面的示例中，Contoso 将两个注册表合并到一起，并向美国东部、加拿大中部和西欧添加副本。 Contoso 每月将支付四次高级费用，且无额外配置或管理。 现在每个区域就从本地拉取映像，既提升了性能和可靠性，又节省了从美国西部到加拿大和美国东部的网络传输费用。
+
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>使用异地复制注册表对推送操作进行故障排除
+ 
+将映像推送到异地复制注册表的 Docker 客户端可能不会将所有映像层及其清单推送到单个复制区域。 出现这种情况的原因可能是因为 Azure 流量管理器将注册表请求路由到离网络最近的复制注册表。 如果注册表有两个*附近*的复制区域，则可以将映像层和清单分发到两个站点，并且在验证清单时推送操作将失败。 之所以出现此问题是因为在某些 Linux 主机上解析注册表的 DNS 名称的方式。 这个问题不会发生在 Windows 上，因为 Windows 提供了一个客户端 DNS 缓存。
+ 
+如果出现此问题，一种解决方案是在 Linux 主机上应用客户端 DNS 缓存，比如 `dnsmasq`。 这有助于确保一致地解析注册表的名称。 如果你使用 Azure 中的 Linux VM 推送到注册表，请参阅 [Azure 中 Linux 虚拟机的 DNS 名称解析选项](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns)中的选项。
+
+若要在推送映像时将 DNS 解析优化到最近的副本，请在推送操作源所在的 Azure 区域中配置异地复制注册表，或者在 Azure 外部工作时配置最近的区域。
 
 ## <a name="next-steps"></a>后续步骤
 

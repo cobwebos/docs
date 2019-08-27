@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 647ab76760d0c5ce5315a60d0a671163b902be0f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 23c10fbed751e05fea2a95030c720f622e195f40
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954542"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534220"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -22,9 +22,9 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 此解决方案利用 SQL 本机 API 来备份 SQL 数据库。
 
-* 指定要保护的 SQL Server VM 并查询其中的数据库后，Azure 备份服务将在此 VM 上以 `AzureBackupWindowsWorkload` 扩展名安装工作负荷备份扩展。
+* 指定要保护的 SQL Server VM 并查询其中的数据库后，Azure 备份服务将在此 VM 上以 `AzureBackupWindowsWorkload` 扩展名安装工作负荷备份扩展。
 * 此扩展包含协调器和 SQL 插件。 协调器负责触发多种操作（如配置备份、备份和还原）的工作流，插件负责实际数据流。
-* 为了发现此 VM 上的数据库，Azure 备份创建帐户  `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 Azure 备份将  `NT AUTHORITY\SYSTEM`  帐户用于数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 UserErrorSQLNoSysadminMembership **** 。 如果发生此错误，请 [遵照这些说明](backup-azure-sql-database.md)予以解决。
+* 为了能够发现此 VM 上的数据库，Azure 备份将创建帐户 `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 Azure 备份利用 `NT AUTHORITY\SYSTEM` 帐户进行数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生此错误，请[遵照这些说明](backup-azure-sql-database.md)予以解决。
 * 在所选数据库上触发配置保护后，备份服务将使用备份计划和其他策略详细信息设置协调器，扩展将这些详细信息本地缓存在 VM 上。
 * 在计划的时间，协调器与插件通信，并开始使用 VDI 从 SQL 服务器流式处理备份数据。  
 * 插件将数据直接发送到恢复服务保管库，因此不需要暂存位置。 Azure 备份服务在存储帐户中加密和存储数据。
@@ -45,7 +45,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 **支持** | **详细信息**
 --- | ---
 **支持的部署** | 支持 SQL 市场 Azure VM 和非市场（手动安装的 SQL Server）VM。
-**支持的地理区域** | 澳大利亚东南部 (ASE)、澳大利亚东部 (AE) <br> 巴西南部 (BRS)<br> 加拿大中部 (CNC)、加拿大东部 (CE)<br> 东南亚 (SEA)、东亚 (EA) <br> 美国东部 (EUS)、美国东部 2 (EUS2)、美国中西部 (WCUS)、美国西部 (WUS)；美国西部 2 (WUS 2) 美国中北部 (NCUS) 美国中部 (CUS) 美国中南部 (SCUS) <br> 印度中部 (INC)、印度南部 (INS) <br> 日本东部 (JPE)、日本西部 (JPW) <br> 韩国中部 (KRC)、韩国南部 (KRS) <br> 北欧 (NE)、西欧 <br> 英国南部 (UKS)、英国西部 (UKW) <br> US Gov 亚利桑那州、US Gov 弗吉尼亚州、US Gov 德克萨斯州、US DoD 中部、US DoD 东部
+**支持的地理区域** | 澳大利亚东南部 (ASE)、澳大利亚东部 (AE) <br> 巴西南部 (BRS)<br> 加拿大中部 (CNC)、加拿大东部 (CE)<br> 东南亚 (SEA)、东亚 (EA) <br> 美国东部 (EUS)、美国东部 2 (EUS2)、美国中西部 (WCUS)、美国西部 (WUS)；美国西部 2 (WUS 2) 美国中北部 (NCUS) 美国中部 (CUS) 美国中南部 (SCUS) <br> 印度中部 (INC)、印度南部 (INS) <br> 日本东部 (JPE)、日本西部 (JPW) <br> 韩国中部 (KRC)、韩国南部 (KRS) <br> 北欧 (NE)、西欧 <br> 英国南部 (UKS)、英国西部 (UKW) <br> US Gov 亚利桑那州、US Gov 弗吉尼亚州、US Gov 德克萨斯州、US DoD 中部、US DoD 东部
 **受支持的操作系统** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012<br/><br/> 目前不支持 Linux。
 **支持的 SQL Server 版本** | SQL Server 2017（[此处](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)详述）、SQL Server 2016 和 SP（[此处](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)详述）、SQL Server 2014、SQL Server 2012。<br/><br/> Enterprise、Standard、Web、Developer、Express。
 **支持的 .NET 版本** | 安装在 VM 上的 .NET Framework 4.5.2 及更高版本

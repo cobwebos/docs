@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 45f5e21e05cf627d418cb66418cf305833a73891
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: e8f943ebaa5dfc06e0bfb04dc1097d6794ec6d05
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965096"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616830"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB SQL API 资源
 
@@ -46,7 +46,7 @@ ms.locfileid: "68965096"
 
 ### <a id="create-account"></a> 创建 Azure Cosmos 帐户
 
-此命令创建一个 Azure Cosmos DB 数据库帐户，该帐户使用[多区域][distribute-data-globally]、有限过期[一致性策略](consistency-levels.md)。
+此命令创建一个 Azure Cosmos 数据库帐户，该帐户使用[多区域][distribute-data-globally]、有限过期[一致性策略](consistency-levels.md)。
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos Account for Core (SQL) API
@@ -112,7 +112,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="update-account"></a> 更新 Azure Cosmos 帐户
 
-此命令可更新 Azure Cosmos DB 数据库帐户属性。 可以更新的属性包括：
+此命令可更新 Azure Cosmos 数据库帐户属性。 可以更新的属性包括：
 
 * 添加或删除区域
 * 更改默认一致性策略
@@ -247,6 +247,7 @@ Select-Object $keys
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
+# Assume existing priority is "West US 2" = 0 and "East US 2" = 1
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"

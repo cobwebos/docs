@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.openlocfilehash: 1bb8779db51a3fdc3af4a9169ce5123ebf6e3f50
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477753"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614111"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>通过 React 和 Azure Cosmos DB 创建 MongoDB 应用  
 
@@ -69,7 +69,7 @@ ms.locfileid: "66477753"
 
 ## <a name="read-and-create-heroes-in-the-app"></a>在应用中读取和创建 hero
 
-此视频介绍如何在 Cosmos DB 数据库中读取 hero 和创建 hero，以及如何使用 Postman 和 React UI 测试这些方法。 
+此视频介绍如何在 Cosmos 数据库中读取 hero 和创建 hero，以及如何使用 Postman 和 React UI 测试这些方法。 
 
 > [!VIDEO https://www.youtube.com/embed/AQK9n_8fsQI] 
 

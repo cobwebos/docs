@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6725bbc1978109d2b690a98e2cf98cc8c8c25141
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033007"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534799"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>教程：使用 Azure 机器学习通过 MNIST 数据和 scikit-learn 训练映像分类模型
 
@@ -40,33 +40,15 @@ ms.locfileid: "69033007"
 
 ## <a name="prerequisites"></a>先决条件
 
-跳到[设置开发环境](#start)来了解整个 Notebook 设置步骤，或遵照以下说明获取 Notebook 并在 Azure Notebooks 或自己的 Notebook 服务器中运行。  若要运行 Notebook，需要：
+* 在开始本教程之前完成[教程：开始创建第一个 ML 试验](tutorial-1st-experiment-sdk-setup.md)，以执行以下操作：
+    * 创建工作区
+    * 创建云笔记本服务器
+    * 启动 Jupyter Notebook 仪表板
 
-* 一个装有以下组件的 Python 3.6 Notebook 服务器：
-    * 适用于 Python 的 Azure 机器学习 SDK
-    * `matplotlib` 和 `scikit-learn`
-* 教程 Notebook 和文件 **utils.py**
-* 机器学习工作区
-* Notebook 所在的同一目录中的工作区的配置文件
+* 启动 Jupyter Notebook 仪表板后，打开 **tutorials/img-classification-part1-training.ipynb** Notebook。
 
-从以下任一部分获取所有这些必备组件。
+如果希望在自己的[本地环境](how-to-configure-environment.md#local)中使用此教程及其附带的 **utils.py** 文件，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。  请确保已在环境中安装了 `matplotlib` 和 `scikit-learn`。
 
-* 使用[工作区中的云 Notebook 服务器](#azure)
-* 使用[自己的 Notebook 服务器](#server)
-
-### <a name="azure"></a>使用工作区中的云 Notebook 服务器
-
-可以轻松地从你自己的基于云的 Notebook 服务器着手。 创建此云资源后，[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 就已为你安装和配置了。
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* 启动 Notebook 网页后，打开 **tutorials/img-classification-part1-training.ipynb** Notebook。
-
-### <a name="server"></a>使用自己的 Jupyter Notebook 服务器
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
- 完成这些步骤后，从克隆的目录运行 **tutorials/img-classification-part1-training.ipynb** Notebook。
 
 ## <a name="start"></a>设置开发环境
 

@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 5c225d76e1822d42500713578a7159eed0699a66
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 58ea7c6b455888b18b927ae1511a2240aed524a4
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225963"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515491"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的控制映射
 
@@ -118,13 +118,13 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 - \[预览\]：审核存储帐户是否缺少 blob 加密
 - \[预览\]：部署 VM 扩展以审核 Windows VM 不应使用可逆加密存储密码
 - \[预览\]：审核 Windows VM 不应使用可逆加密存储密码
-- \[预览\]：监视 Azure 安全中心内未加密的 SQL 数据库
 - \[预览\]：监视 Azure 安全中心内未加密的 VM 磁盘
 - 审核确认已启用自动化帐户变量加密功能
 - 审核确认仅启用了到 Redis 缓存的安全连接
 - 审核确认指向存储帐户的传输的安全性
 - 审核确认 Service Fabric 中的 ClusterProtectionLevel 属性设置为 EncryptAndSign
 - 审核透明数据加密状态
+- 应在 SQL 数据库上启用透明数据加密
 
 ## <a name="a1241-event-logging"></a>A.12.4.1 事件日志记录
 
@@ -135,9 +135,9 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 - \[预览\]：审核 VMSS 中的依赖项代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：监视 Azure 安全中心内未审核的 SQL 数据库
 - 审核诊断设置
 - 审核 SQL 服务器级别审核设置
+- 应在 SQL Server 的高级数据安全设置上启用审核
 
 ## <a name="a1243-administrator-and-operator-logs"></a>A.12.4.3 管理员和操作员日志
 
@@ -147,9 +147,9 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 - \[预览\]：审核 VMSS 中的依赖项代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：监视 Azure 安全中心内未审核的 SQL 数据库
 - 审核诊断设置
 - 审核 SQL 服务器级别审核设置
+- 应在 SQL Server 的高级数据安全设置上启用审核
 
 ## <a name="a1244-clock-synchronization"></a>A.12.4.4 时钟同步
 
@@ -159,9 +159,9 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 - \[预览\]：审核 VMSS 中的依赖项代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：监视 Azure 安全中心内未审核的 SQL 数据库
 - 审核诊断设置
 - 审核 SQL 服务器级别审核设置
+- 应在 SQL Server 的高级数据安全设置上启用审核
 
 ## <a name="a1251-installation-of-software-on-operational-systems"></a>A.12.5.1 在可操作的系统上安装软件
 

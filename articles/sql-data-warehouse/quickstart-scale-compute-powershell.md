@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 3c3be507fd544ec86790f820830c2275e7703564
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 193aec8de2a6ee34da666a013dcb0d49d85c08b0
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641084"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574857"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>快速入门：使用 PowerShell 在 Azure SQL 数据仓库中缩放计算资源
 
@@ -27,7 +27,7 @@ ms.locfileid: "68641084"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本快速入门教程假定已有可缩放的 SQL 数据仓库。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库  。
+本快速入门假定你已有可缩放的 SQL 数据仓库。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库  。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 

@@ -11,16 +11,16 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/20/2019
+ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3834b4f07f6450f498831accfa6640f55bc5855a
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 7f997865ba33a51c3e3aa7a4c7e990037be9e534
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550176"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637334"
 ---
-# <a name="tutorial-stream-video-files---net"></a>教程：流式处理视频文件 - .NET
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - .NET
 
 本教程展示了使用 Azure 媒体服务在各种浏览器和设备上对视频进行编码和流式处理有多轻松。 可以使用 HTTPS、URL、SAS URL 或位于 Azure Blob 存储中的文件路径来指定输入内容。
 本主题中的示例对可通过 HTTPS URL 访问的内容进行编码。 请注意，目前，AMS v3 不支持基于 HTTPS URL 的块传输编码。

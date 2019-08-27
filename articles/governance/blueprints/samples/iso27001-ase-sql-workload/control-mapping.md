@@ -7,18 +7,18 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 59e47c448f58235114c8fb3147637b77dd5fcf23
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: de043e682fea5cb629a127763515b162c3ad4943
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226066"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515940"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL 工作负荷蓝图示例的控制映射
 
 以下文章详细说明了 Azure 蓝图 ISO 27001 ASE/SQL 工作负荷蓝图示例如何映射到 ISO 27001 控制措施。 有关控制措施的详细信息，请参阅 [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html)。
 
-以下映射适用于 **ISO 27001:2013** 控制措施。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。 然后，找到并选择“\[预览\] 审核 ISO 27001:2013 控制措施并部署特定 VM 扩展以支持审核要求”内置策略计划。
+以下映射适用于 **ISO 27001:2013** 控制措施。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“\[预览\] 审核 ISO 27001:2013 控制措施并部署特定 VM 扩展以支持审核要求”内置策略计划。 
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 职责分离
 
@@ -118,13 +118,13 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 - \[预览\]：审核存储帐户是否缺少 blob 加密
 - \[预览\]：部署 VM 扩展以审核 Windows VM 不应使用可逆加密存储密码
 - \[预览\]：审核 Windows VM 不应使用可逆加密存储密码
-- \[预览\]：监视 Azure 安全中心内未加密的 SQL 数据库
 - \[预览\]：监视 Azure 安全中心内未加密的 VM 磁盘
 - 审核确认已启用自动化帐户变量加密功能
 - 审核确认仅启用了到 Redis 缓存的安全连接
 - 审核确认指向存储帐户的传输的安全性
 - 审核确认 Service Fabric 中的 ClusterProtectionLevel 属性设置为 EncryptAndSign
 - 审核透明数据加密状态
+- 应在 SQL 数据库上启用透明数据加密
 
 ## <a name="a1241-event-logging"></a>A.12.4.1 事件日志记录
 
@@ -135,9 +135,9 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 - \[预览\]：审核 VMSS 中的依赖项代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：监视 Azure 安全中心内未审核的 SQL 数据库
 - 审核诊断设置
 - 审核 SQL 服务器级别审核设置
+- 应在 SQL Server 的高级数据安全设置上启用审核
 
 ## <a name="a1243-administrator-and-operator-logs"></a>A.12.4.3 管理员和操作员日志
 
@@ -147,9 +147,9 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 - \[预览\]：审核 VMSS 中的依赖项代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：监视 Azure 安全中心内未审核的 SQL 数据库
 - 审核诊断设置
 - 审核 SQL 服务器级别审核设置
+- 应在 SQL Server 的高级数据安全设置上启用审核
 
 ## <a name="a1244-clock-synchronization"></a>A.12.4.4 时钟同步
 
@@ -159,9 +159,9 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 - \[预览\]：审核 VMSS 中的依赖项代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：监视 Azure 安全中心内未审核的 SQL 数据库
 - 审核诊断设置
 - 审核 SQL 服务器级别审核设置
+- 应在 SQL Server 的高级数据安全设置上启用审核
 
 ## <a name="a1251-installation-of-software-on-operational-systems"></a>A.12.5.1 在可操作的系统上安装软件
 

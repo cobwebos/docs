@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2018
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 8c3fa2a68018e0eb45f37b54b16b6e7797cfa7c4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4697bad15a374bed0de08b7cabc5aceaad7f1259
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560035"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876710"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>教程：确定常见意向和实体
 
@@ -51,18 +51,7 @@ LUIS 提供几个预生成意向，以便提供常见用户意向。
 
 1. 搜索 `Utilities`。 
 
-    [![“预生成意向”对话框的屏幕截图，其中的搜索框中包含“实用工具”](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
-
-1. 选择以下意向，然后选择“完成”  ： 
-
-   * Utilities.Cancel
-   * Utilities.Confirm
-   * Utilities.Help
-   * Utilities.StartOver
-   * Utilities.Stop
-
-     这些意向有助于确定用户在聊天中所处的位置及其需求。 这些意向包括实体的使用。 这些实体会自动添加到 LUIS 应用：number、ordinal 和 Utilities.DirectionalReference。 
-
+1. 选择所有意向并选择“完成”  。 这些意向有助于确定用户在聊天中所处的位置及其需求。 
 
 ## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>添加预生成的实体以帮助提取常见数据类型
 
@@ -101,35 +90,75 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
     ```json
     {
-      "query": "I want to cancel my trip to Seattle to see Bob Smith",
+      "query": "I want to cancel my trip to Seattle to see Bob Smith.",
       "topScoringIntent": {
-        "intent": "Utilities.Cancel",
-        "score": 0.807676256
+        "intent": "Utilities.ReadAloud",
+        "score": 0.100361854
       },
       "intents": [
         {
-          "intent": "Utilities.Cancel",
-          "score": 0.807676256
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.0487322025
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.0208660364
-        },
-        {
-          "intent": "None",
-          "score": 0.008789532
+          "intent": "Utilities.ReadAloud",
+          "score": 0.100361854
         },
         {
           "intent": "Utilities.Stop",
-          "score": 0.006929268
+          "score": 0.08102781
+        },
+        {
+          "intent": "Utilities.SelectNone",
+          "score": 0.0398852825
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.0277276486
+        },
+        {
+          "intent": "Utilities.SelectItem",
+          "score": 0.0220712926
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.0145813478
+        },
+        {
+          "intent": "None",
+          "score": 0.012434179
+        },
+        {
+          "intent": "Utilities.Escalate",
+          "score": 0.0122632384
+        },
+        {
+          "intent": "Utilities.ShowNext",
+          "score": 0.008534077
+        },
+        {
+          "intent": "Utilities.ShowPrevious",
+          "score": 0.00547111453
+        },
+        {
+          "intent": "Utilities.SelectAny",
+          "score": 0.00152912608
+        },
+        {
+          "intent": "Utilities.Repeat",
+          "score": 0.0005556819
+        },
+        {
+          "intent": "Utilities.FinishTask",
+          "score": 0.000169488427
         },
         {
           "intent": "Utilities.Confirm",
-          "score": 0.00136293867
+          "score": 0.000149565312
+        },
+        {
+          "intent": "Utilities.GoBack",
+          "score": 0.000141017343
+        },
+        {
+          "intent": "Utilities.Reject",
+          "score": 6.27324E-06
         }
       ],
       "entities": [

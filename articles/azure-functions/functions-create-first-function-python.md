@@ -11,16 +11,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 58f5cfd3718720cafc922bbd7b974a353e0d9d02
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5b90702f89af260a67b69bf96c2e079a45298723
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722782"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575441"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>在 Azure 中创建 HTTP 触发的函数
-
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 本文介绍如何使用命令行工具创建在 Azure Functions 中运行的 Python 项目。 你创建的此函数由 HTTP 请求触发。 最后，发布项目，在 Azure 中作为[无服务器函数](functions-scale.md#consumption-plan)运行。
 
@@ -32,7 +30,7 @@ ms.locfileid: "68722782"
 
 + 安装 [Python 3.6](https://www.python.org/downloads/)。
 
-+ 安装 [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.1071 或更高版本。
++ 安装 [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.7.1575 或更高版本。
 
 + 安装 [Azure CLI](/cli/azure/install-azure-cli) 版本 2.x 或更高版本。
 
@@ -40,9 +38,9 @@ ms.locfileid: "68722782"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-and-activate-a-virtual-environment"></a>创建并激活虚拟环境
+## <a name="create-and-activate-a-virtual-environment-optional"></a>创建并激活虚拟环境（可选）
 
-要本地开发和测试 Python 函数，必须在 Python 3.6 环境中工作。 运行以下命令来创建并激活一个名为 `.venv` 的虚拟环境。
+若要在本地开发和测试 Python 函数，建议使用 Python 3.6 环境。 运行以下命令来创建并激活一个名为 `.venv` 的虚拟环境。
 
 ### <a name="bash"></a>Bash：
 
@@ -81,8 +79,6 @@ func init MyFunctionProj
 ```console
 cd MyFunctionProj
 ```
-
-接下来，请更新 host.json 文件以启用扩展捆绑包。  
 
 ## <a name="create-a-function"></a>创建函数
 
@@ -165,15 +161,19 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 --consumption-plan-location westeurope  --runtime python \
 --name <APP_NAME> --storage-account  <STORAGE_NAME>
 ```
-
 > [!NOTE]
-> Azure Functions（适用于 Linux 的消耗计划）目前处于预览状态，仅可以下区域使用：美国西部、美国东部、西欧、东亚。 此外，Linux 和 Windows 应用不能托管在同一个资源组中。 如果名为 `myResourceGroup` 的现有资源组有 Windows 函数应用或 Web 应用，必须使用其他资源组。
+> Linux 和 Windows 应用不能托管在同一个资源组中。 如果名为 `myResourceGroup` 的现有资源组有 Windows 函数应用或 Web 应用，必须使用其他资源组。
+
+此命令还将在同一资源组中预配关联的 Azure Application Insights 实例，该实例可用于监视和查看日志。
 
 现在，可以将本地函数项目发布到 Azure 中的函数应用了。
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+
+> [!NOTE]
+> 若要查看已发布的 Python 应用的近乎实时日志，建议使用 [Application Insights 实时指标流](functions-monitoring.md#streaming-logs)
 
 ## <a name="next-steps"></a>后续步骤
 

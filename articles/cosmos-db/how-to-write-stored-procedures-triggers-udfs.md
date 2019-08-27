@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/21/2019
 ms.author: mjbrown
-ms.openlocfilehash: 66e0a7e13df9eddcd722492c9c894721517af5f9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: cf73b6e0477e46f0a2eac43d7fa6bccc6845db92
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968920"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615246"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数
 
@@ -48,11 +48,11 @@ var helloWorldStoredProc = {
 
 ### <a id="create-an-item"></a>使用存储过程创建项
 
-使用存储过程创建某个项时，该项将会插入到 Azure Cosmos DB 容器，并返回新建项的 ID。 创建项是一种异步操作，依赖于 JavaScript 回调函数。 回调函数包含两个参数 - 一个参数用于操作失败时返回的错误对象，另一个参数用于返回值（在本例中为创建的对象）。 在回调内部，可以处理异常或引发错误。 如果未提供回调并出现错误，则 Azure Cosmos DB 运行时将引发错误。 
+使用存储过程创建某个项时，该项将会插入到 Azure Cosmos 容器，并返回新建项的 ID。 创建项是一种异步操作，依赖于 JavaScript 回调函数。 回调函数包含两个参数 - 一个参数用于操作失败时返回的错误对象，另一个参数用于返回值（在本例中为创建的对象）。 在回调内部，可以处理异常或引发错误。 如果未提供回调并出现错误，则 Azure Cosmos DB 运行时将引发错误。 
 
 存储过程还包含一个用于设置说明的参数（一个布尔值）。 如果该参数设置为 true，同时缺少说明，则存储过程将引发异常。 否则，存储过程的剩余部分将继续运行。
 
-以下示例存储过程采用新的 Azure Cosmos DB 项作为输入，将此项插入到 Azure Cosmos DB 容器，然后返回新建项的 ID。 此示例利用[快速入门 .NET SQL API](create-sql-api-dotnet.md) 中的 ToDoList 示例
+以下示例存储过程采用新的 Azure Cosmos 项作为输入，将此项插入到 Azure Cosmos 容器，然后返回新建项的 ID。 此示例利用[快速入门 .NET SQL API](create-sql-api-dotnet.md) 中的 ToDoList 示例
 
 ```javascript
 function createToDoItem(itemToCreate) {
@@ -87,7 +87,7 @@ function sample(arr) {
 
 ### <a id="transactions"></a>存储过程中的事务
 
-可以使用存储过程对容器中的项实现事务。 以下示例使用梦幻足球游戏应用中的事务，通过单个操作在两支球队之间交易球员。 该存储过程尝试读取两个 Azure Cosmos DB 项，其中每个项对应于作为参数传递的球员 ID。 如果找到了这两个球员，则存储过程将通过交换其所在球队来更新这些项。 如果在此过程中遇到了任何错误，则存储过程将引发 JavaScript 异常，从而隐式终止事务。
+可以使用存储过程对容器中的项实现事务。 以下示例使用梦幻足球游戏应用中的事务，通过单个操作在两支球队之间交易球员。 该存储过程尝试读取两个 Azure Cosmos 项，其中每个项对应于作为参数传递的球员 ID。 如果找到了这两个球员，则存储过程将通过交换其所在球队来更新这些项。 如果在此过程中遇到了任何错误，则存储过程将引发 JavaScript 异常，从而隐式终止事务。
 
 ```javascript
 // JavaScript source code
@@ -214,7 +214,7 @@ Azure Cosmos DB 支持前触发器和后触发器。 前触发器是在修改数
 
 ### <a id="pre-triggers"></a>前触发器
 
-以下示例演示如何使用前触发器来验证正在创建的 Azure Cosmos DB 项的属性。 此示例利用[快速入门 .NET SQL API](create-sql-api-dotnet.md) 中的 ToDoList 示例，将时间戳属性添加到新添加的项（如果其中不包含此属性）。
+以下示例演示如何使用前触发器来验证正在创建的 Azure Cosmos 项的属性。 此示例利用[快速入门 .NET SQL API](create-sql-api-dotnet.md) 中的 ToDoList 示例，将时间戳属性添加到新添加的项（如果其中不包含此属性）。
 
 ```javascript
 function validateToDoItemTimestamp() {
@@ -235,7 +235,7 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-预触发器不能有任何输入参数。 使用触发器中的请求对象来处理与操作关联的请求消息。 在前面的示例中，创建 Azure Cosmos DB 项时将运行前触发器，请求消息正文包含要以 JSON 格式创建的项。
+预触发器不能有任何输入参数。 使用触发器中的请求对象来处理与操作关联的请求消息。 在前面的示例中，创建 Azure Cosmos 项时将运行前触发器，请求消息正文包含要以 JSON 格式创建的项。
 
 注册触发器后，可以指定可对哪些操作运行该触发器。 应使用 `TriggerOperation.Create` 的 `TriggerOperation` 值创建此触发器，这意味着，不允许在以下代码所示的 replace 操作中使用此触发器。
 

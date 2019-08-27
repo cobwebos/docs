@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 407b5b8dd4aa846140628c7d701ced92e8bcec03
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 57dc1e136d242fd0c5063526dc54bdb95351cf02
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780068"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616645"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB：SQL API 的 .NET 示例
 > [!div class="op_single_selector"]
@@ -138,7 +138,7 @@ Azure 订阅，或免费的 Cosmos DB 试用帐户
 | [读取更改源](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery) | 
 | [读取分区键范围](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync) | 
 
-更改源处理器示例 [ChangeFeedMigrationTool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) 演示如何使用更改源处理器库将数据复制到另一个 Cosmos DB 集合。   
+更改源处理器示例 [ChangeFeedMigrationTool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) 演示如何使用更改源处理器库将数据复制到另一个 Cosmos 容器。   
 
 ## <a name="server-side-programming-examples"></a>服务器端编程示例
 示例 *ServerSideScripts* 项目的 [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L58-L91) 方法演示如何执行以下任务。 若要在运行以下示例之前了解 Azure Cosmos DB 中的服务器端编程，请参阅[存储过程、触发器和用户定义的函数](stored-procedures-triggers-udfs.md)。 

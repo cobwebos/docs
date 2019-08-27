@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: d92a96f928c859fba056f1d98c07ee4852aad0f1
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: f7c8e4e240d4278257da9df5cea67a7e55eb1019
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68002753"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543069"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>开始监视 Node.js Web 应用程序
 
@@ -56,7 +56,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
    | **应用程序类型** | Node.js 应用程序 | 所监视的应用的类型 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
-2. 单击“创建”。 
+2. 选择“创建”  。
 
 ## <a name="configure-app-insights-sdk"></a>配置 App Insights SDK
 
@@ -88,11 +88,11 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
    ![Application Insights 概述菜单](./media/nodejs-quick-start/4overview.png)
 
-2. 单击“应用程序映射”  以获取应用程序组件之间依赖关系的可视布局。 每个组件均显示 KPI，如负载、性能、失败和警报。
+2. 选择“应用程序映射”  以获取应用程序组件之间依赖关系的可视布局。 每个组件均显示 KPI，如负载、性能、失败和警报。
 
    ![应用程序地图](./media/nodejs-quick-start/5appmap.png)
 
-3. 单击“应用分析”  图标 ![“应用程序映射”图标](./media/nodejs-quick-start/006.png)  “在 Analytics 中查看”。  这将打开“Application Insights Analytics”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
+3. 选择“应用分析”  图标 ![“应用程序映射”图标](./media/nodejs-quick-start/006.png)  “在 Analytics 中查看”。  这将打开“Application Insights Analytics”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
 
    ![一段时间内用户请求的分析图](./media/nodejs-quick-start/6analytics.png)
 
@@ -122,7 +122,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
    </script>
    ```
 
-5. 在左侧单击“指标”  。 使用指标资源管理器调查资源的运行状况和利用率。 可以单击“添加新图表”  创建其他自定义视图，或者选择“编辑”  修改现有的图表类型、高度、调色板、分组和指标。 例如，可以制作一个图表来显示浏览器页面的平均加载时间，只需从指标下拉列表中选取“浏览器页面加载时间”并从聚合中选择“平均”即可。 若要详细了解 Azure 指标资源管理器，请访问 [Azure 指标资源管理器入门](../../azure-monitor/platform/metrics-getting-started.md)。
+5. 在左侧，选择“指标”。  使用指标资源管理器调查资源的运行状况和利用率。 可以选择“添加新图表”  创建其他自定义视图，或者选择“编辑”  修改现有的图表类型、高度、调色板、分组和指标。 例如，可以制作一个图表来显示浏览器页面的平均加载时间，只需从指标下拉列表中选择“浏览器页面加载时间”并从聚合中选择“平均”即可。 若要详细了解 Azure 指标资源管理器，请访问 [Azure 指标资源管理器入门](../../azure-monitor/platform/metrics-getting-started.md)。
 
    ![“服务器指标”图](./media/nodejs-quick-start/8metrics.png)
 
@@ -132,8 +132,8 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 完成测试后，即可删除资源组和所有相关的资源。 为此，请执行以下步骤。
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，然后单击“myResourceGroup”  。
-2. 在资源组页上单击“删除”  ，在文本框中键入 **myResourceGroup**，然后单击“删除”  。
+1. 在 Azure 门户的左侧菜单中，选择“资源组”  ，然后选择“myResourceGroup”  。
+2. 在资源组页上选择“删除”  ，在文本框中输入 **myResourceGroup**，然后选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

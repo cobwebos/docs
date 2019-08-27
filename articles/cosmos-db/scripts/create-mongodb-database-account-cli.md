@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 7/2/2019
 ms.reviewer: sngun
-ms.openlocfilehash: a256a0ff5164ec9b25aea3849f20643ee3719fac
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e30419d328cf7af4e1cb710d5bad79f5ebba055e
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541427"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614734"
 ---
 # <a name="create-an-azure-cosmos-db-account-with-azure-cosmos-dbs-api-for-mongodb-using-azure-cli"></a>使用 Azure CLI 通过 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Azure Cosmos DB 帐户
 
@@ -45,8 +45,8 @@ az group delete --name $resourceGroupName
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | 创建 Azure Cosmos DB 帐户。 |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | 创建 Azure Cosmos DB 数据库。 |
-| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | 创建用于 MongoDB 的 Azure Cosmos DB 集合。 |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | 创建 Azure Cosmos 数据库。 |
+| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | 创建用于 MongoDB 的 Azure Cosmos 容器。 |
 | [az group delete](/cli/azure/resource#az-resource-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤

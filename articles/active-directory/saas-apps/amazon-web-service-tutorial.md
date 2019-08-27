@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346c995cbc8be6e609020db799959d873ce89b3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 672a3571202b92232bd45a42254a43019f6a9796
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68944958"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617342"
 ---
 # <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>教程：将 Amazon Web Services (AWS) 与 Azure Active Directory 集成
 
@@ -369,6 +369,12 @@ ms.locfileid: "68944958"
    可将多个 AWS 租户（由 `servicePrincipals` 表示）从库添加到 Azure AD 进行预配。 但存在一个已知的问题：无法自动将所有导入的角色从用于预配的多个 AWS `servicePrincipals` 写入到用于 SSO 的单个 `servicePrincipal` 中。 
    
    若要解决此问题，可以使用 [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) 来提取所有已导入每个 AWS `servicePrincipal`（已在其中配置预配）中的 `appRoles`。 然后，可将这些角色字符串添加到 AWS `servicePrincipal`（已在其中配置 SSO）。
+ 
+* 角色必须满足以下要求才有资格从 AWS 导入 Azure AD：
+
+  * 角色必须仅有一个在 AWS 中定义的 saml-provider
+
+  * 要导入的角色的角色 ARN 和 saml-provider ARN 的组合长度必须为 119 个字符或更少
 
 ## <a name="additional-resources"></a>其他资源
 

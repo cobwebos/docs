@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 3be1da54b16a24ce3c4431dfe26eb778cea5c83d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 769cb2c6a3ae0e5b94ffd65425634ac9dd0221d0
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545257"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640070"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>教程：访问 Azure 实验室服务中的课堂实验室
 在本教程中，你会作为一名学生连接到教室实验室中的虚拟机 (VM)。 
@@ -27,25 +27,41 @@ ms.locfileid: "59545257"
 在本教程中，将执行以下操作：
 
 > [!div class="checklist"]
-> * 使用注册链接 
-> * 连接到虚拟机
+> * 注册到实验室
+> * 启动 VM
+> * 连接到 VM
 
-## <a name="use-the-registration-link"></a>使用注册链接
+## <a name="register-to-the-lab"></a>注册到实验室
 
-1. 导航到从教授/教师处收到的注册 URL。 完成注册后，不需使用注册 URL。 请改用 URL：[https://labs.azure.com](https://labs.azure.com)。 请注意尚不支持 Internet Explorer 11。 
+1. 导航到从教授/教师处收到的注册 URL  。 完成注册后，不需使用注册 URL。 请改用 URL：[https://labs.azure.com](https://labs.azure.com)。 目前尚不支持 Internet Explorer 11。 
 1. 使用学校帐户登录服务以完成注册。 
 2. 注册后，请确认可看到你有权访问的实验室的虚拟机。 
-3. 等待虚拟机准备就绪，然后**启动** VM。 此过程需要一些时间。  
+3. 等到虚拟机准备就绪。 在“VM”磁贴上，请注意以下字段：
+    1. 在磁贴的顶部，可以看到**实验室的名称**。
+    1. 在其右侧，可以看到代表 VM 的**操作系统 (OS)** 的图标。 在此示例中，它是 Windows OS。 
+    1. 磁贴上的进度栏会显示对分配给你的[配额小时](how-to-configure-student-usage.md#set-quotas-for-users)数已使用的小时数。 此时间是在实验室的计划时间之外，额外分配给你的时间。 
+    1. 可以在磁贴底部看到用于启动/停止 VM 以及连接到 VM 的图标/按钮。 
+    1. 在按钮的右侧，可以看到 VM 的状态。 确认你看到 VM 的状态为“已停止”  。 
+
+        ![VM 处于停止状态](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
+
+## <a name="start-the-vm"></a>启动 VM
+1. 通过选择第一个按钮**启动** VM，如下图所示。 此过程需要一些时间。  
 
     ![启动 VM](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
+4. 确认 VM 的状态设置为“正在运行”  。 
 
-## <a name="connect-to-the-virtual-machine"></a>连接到虚拟机
+    ![VM 处于正在运行状态](../media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
 
-1. 在要访问的实验室虚拟机的磁贴上，选择“连接”。 
+    请注意，第一个按钮的图标已更改为表示**停止**操作。 可以选择此按钮以停止 VM。 
+
+## <a name="connect-to-the-vm"></a>连接到 VM
+
+1. 选择下图中所示的第二个按钮以**连接**到实验室的 VM。 
 
     ![连接到 VM](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. 执行以下步骤之一： 
-    1. 对于 Windows 虚拟机，将 RDP 文件保存到硬盘上。 打开要连接到虚拟机的 RDP 文件。 使用从教师/教授处获得的用户名和密码登录到计算机。 
+    1. 对于 Windows 虚拟机，将 RDP 文件保存到硬盘上   。 打开要连接到虚拟机的 RDP 文件。 使用从教师/教授处获得的用户名和密码登录到计算机   。 
     3. 对于 **Linux** 虚拟机，可以使用 **SSH** 或 **RDP**（如果已启用）连接到它们。 有关详细信息，请参阅[为 Linux 计算机启用远程桌面连接](how-to-enable-remote-desktop-linux.md)。 
 
 ## <a name="next-steps"></a>后续步骤

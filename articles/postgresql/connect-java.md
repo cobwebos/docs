@@ -8,14 +8,14 @@ ms.custom: seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: acb59c75441c729aabaea8b33b5253f4df7c1fc0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b025315391ceb15fc1ae76f0365898f02882dd0b
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845854"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563438"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-java-to-connect-and-query-data"></a>Azure Database for PostgreSQL - 单一服务器：使用 Java 连接和查询数据
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Java 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
 本快速入门演示了如何使用 Java 应用程序连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Java 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
 ## <a name="prerequisites"></a>先决条件

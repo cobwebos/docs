@@ -10,15 +10,15 @@ author: ajlam
 ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.custom: seo-java-july2019
-ms.openlocfilehash: 273f8ad080b80a58b63e70ab2aa311c9c498d491
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.custom: seo-java-july2019. seo-java-august2019
+ms.openlocfilehash: 8940e13dcc6d6287984ba1cc7c7510768b4e232f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640084"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624082"
 ---
-# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>快速入门：使用 Java 查询 Azure SQL 数据库
+# <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>快速入门：使用 Java 连接到 Azure SQL 数据库并进行查询
 
 本文演示了如何使用 [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 连接到 Azure SQL 数据库。 然后即可使用 T-SQL 语句来查询数据。
 
@@ -55,7 +55,7 @@ ms.locfileid: "68640084"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
+2. 选择“SQL 数据库”  或打开“SQL 托管实例”  页。
 
 3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称    。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标  。 
 

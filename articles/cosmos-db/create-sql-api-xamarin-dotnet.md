@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 28ba47c1c0ec053af8632475ad52ab50672eab64
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 9d7dc560d452eba4c31b24a2011254258211bf8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855151"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615733"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入门：通过 Azure Cosmos DB SQL API 帐户使用 Xamarin 生成 ToDo 应用
 
@@ -137,7 +137,7 @@ ToDoItems 解决方案中的代码包含：
     `IDocumentQuery<T>.ExecuteNextAsync<T>` 函数从 Azure Cosmos DB 检索结果页，该 DB 会进行 `HasMoreResults` 检查，看是否还有其他需要返回的结果。
 
 > [!TIP]
-> 多个在 Azure Cosmos DB 容器和文档上运行的函数采用 URI 作为参数，以便指定容器或文档的地址。 此 URI 使用 `URIFactory` 类进行构造。 数据库、容器和文档的 URI 均可通过此类来创建。
+> 多个在 Azure Cosmos 容器和文档上运行的函数采用 URI 作为参数，以便指定容器或文档的地址。 此 URI 使用 `URIFactory` 类进行构造。 数据库、容器和文档的 URI 均可通过此类来创建。
 
 * `ComsmosDBService.InsertToDoItem` 函数演示如何插入新文档：
 

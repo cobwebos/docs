@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7c331a4a7395069dc4dc3ab1dcfc89415be0898c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8827aa660d348ef9e42c617067c2837b8697ba6e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854456"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876781"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>什么是 Windows 虚拟桌面预览版？ 
 
@@ -81,7 +81,7 @@ Windows 虚拟桌面现已推出公共预览版，它是一个在云中运行的
 为 Windows 虚拟桌面创建的 Azure 虚拟机必须：
 
 * [已加入标准域](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison)，或[已加入混合 AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)。 虚拟机不能加入 Azure AD。
-* 运行以下[受支持的 OS 映像](#supported-virtual-machine-os-image)之一。
+* 运行以下[受支持的 OS 映像](#supported-virtual-machine-os-images)之一。
 
 >[!NOTE]
 >如需 Azure 订阅，可以[注册一个月免费试用版](https://azure.microsoft.com/free/)。 如果使用免费试用版的 Azure，则应使用 Azure AD 域服务来使 Windows Server Active Directory 与 Azure Active Directory 保持同步。
@@ -101,7 +101,7 @@ Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由
 * [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
 * [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
 
-## <a name="supported-virtual-machine-os-image"></a>受支持的虚拟机 OS 映像
+## <a name="supported-virtual-machine-os-images"></a>受支持的虚拟机 OS 映像
 
 Windows 虚拟桌面目前支持以下 OS 映像：
 

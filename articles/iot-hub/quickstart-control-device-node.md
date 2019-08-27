@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 462b485b5dc5106ab18959ab2cdbfe1bfc0f94bf
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: ba49709e6cab2d3e6a752fb7b529da7edb9f642e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330564"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877151"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>快速入门：控制连接到 IoT 中心的设备 (Node.js)
 

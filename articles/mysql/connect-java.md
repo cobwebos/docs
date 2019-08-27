@@ -4,18 +4,19 @@ description: 本快速入门提供了一个 Java 代码示例，你可以使用�
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, devcenter, seo-java-july2019
+ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/08/2019
-ms.openlocfilehash: 5dbac4cee4df43dfc2f0ebf9fdb5e2e7b7d3192c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b1771d7940a12d0cc818c223c28dcad87acd8a0c
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931603"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624727"
 ---
-# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Java 连接和查询数据
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 Java 连接到 Azure Database for MySQL 并查询其中的数据
+
 本快速入门演示如何使用 Java 应用程序和 JDBC 驱动程序 [MariaDB Connector/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) 连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Java 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
 
 ## <a name="prerequisites"></a>先决条件
@@ -33,8 +34,8 @@ ms.locfileid: "68931603"
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户的左侧菜单中，单击“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
-3. 单击服务器名称。
+2. 在 Azure 门户的左侧菜单中，选择“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
+3. 选择服务器名称。
 4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。
  ![Azure Database for MySQL 服务器名称](./media/connect-java/1_server-overview-name-login.png)
 

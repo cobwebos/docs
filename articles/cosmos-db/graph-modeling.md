@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: c6ae23efa90874bbefc2aff35f8798aa6c0da791
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 94df90db4a715d2540dfc5ec0aa521d76d22f757
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503733"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624213"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的图形数据建模
 
@@ -47,12 +47,12 @@ ms.locfileid: "67503733"
 
 | Object | 属性 | Type | 说明 |
 | --- | --- | --- |  --- |
-| 顶点 | ID | 字符串 | 每个分区唯一强制执行。 如果插入时未提供值，则将存储自动生成的 GUID。 |
-| 顶点 | label | 字符串 | 此属性用于定义顶点表示的实体类型。 如果未提供值，则将使用默认值 vertex。 |
+| 顶点 | ID | String | 每个分区唯一强制执行。 如果插入时未提供值，则将存储自动生成的 GUID。 |
+| 顶点 | label | String | 此属性用于定义顶点表示的实体类型。 如果未提供值，则将使用默认值 vertex。 |
 | 顶点 | properties | 字符串、布尔值、数字 | 在每个顶点中存储为键值对的单独属性的列表。 |
 | 顶点 | 分区键 | 字符串、布尔值、数字 | 此属性定义顶点及其传出边缘的存储位置。 有关更多信息，请参阅[图形分区](graph-partitioning.md)。 |
-| Microsoft Edge | ID | 字符串 | 每个分区唯一强制执行。 默认情况下自动生成。 边缘通常不需要通过 ID 唯一检索。 |
-| Microsoft Edge | label | 字符串 | 此属性用于定义两个顶点具有的关系类型。 |
+| Microsoft Edge | ID | String | 每个分区唯一强制执行。 默认情况下自动生成。 边缘通常不需要通过 ID 唯一检索。 |
+| Microsoft Edge | label | String | 此属性用于定义两个顶点具有的关系类型。 |
 | Microsoft Edge | properties | 字符串、布尔值、数字 | 在每个边缘中存储为键值对的单独属性的列表。 |
 
 > [!NOTE]
@@ -94,7 +94,7 @@ ms.locfileid: "67503733"
 
 但是，使用 `in()` 函数在边缘的相反方向遍历将始终导致跨分区查询。 有关详细信息，请参阅[图形分区](graph-partitioning.md)。 如果需要使用 `in()` 函数不断遍历，建议在两个方向上添加边缘。
 
-你可以通过在 `.addE()` Gremlin 步骤中使用 `.to()` 或 `.from()` 谓词来确定边缘方向。 或通过使用[适用于 Gremlin API 的 BulkExecutor 库](bulk-executor-graph-dotnet.md)来确定。
+你可以通过在 `.addE()` Gremlin 步骤中使用 `.to()` 或 `.from()` 谓词来确定边缘方向。 或通过使用[适用于 Gremlin API 的批量执行程序库](bulk-executor-graph-dotnet.md)来确定。
 
 > [!NOTE]
 > 边缘对象默认具有方向。

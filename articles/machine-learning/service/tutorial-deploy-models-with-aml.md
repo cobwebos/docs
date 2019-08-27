@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: c673fd43abe6808256eb74f435aad48ed8d41539
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a4395105c66756c4743373707309a88e2afa96b7
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359843"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534816"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教程：在 Azure 容器实例中部署映像分类模型
 
@@ -38,10 +38,10 @@ ms.locfileid: "68359843"
 > 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.41 进行测试。
 
 ## <a name="prerequisites"></a>先决条件
-跳到[设置开发环境](#start)来通读 Notebook 步骤。  
 
-若要运行 Notebook，请首先完成以下教程中的模型训练：[教程（第 1 部分）：使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。   然后，使用同一 Notebook 服务器运行 **tutorials/img-classification-part2-deploy.ipynb** Notebook。
+若要运行 Notebook，请首先完成以下教程中的模型训练：[教程（第 1 部分）：训练映像分类模型](tutorial-train-models-with-aml.md)。   然后，使用同一 Notebook 服务器打开 **tutorials/img-classification-part2-deploy.ipynb** Notebook。
 
+如果希望在自己的[本地环境](how-to-configure-environment.md#local)中使用此教程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。  请确保已在环境中安装了 `matplotlib` 和 `scikit-learn`。 
 
 ## <a name="start"></a>设置环境
 

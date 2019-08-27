@@ -11,22 +11,23 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: afccce5ca9101ed1e30f69264abae7ad85b4902b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cbf199c391b49518bb595d7d1a0ed47147903a85
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564574"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034495"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>安装和运行识别文本容器
 
-计算机视觉的识别文本部分也可用作 Docker 容器。 使用它可以从具有不同表面和背景的各种对象的图像中检测和提取印刷文本，例如收据、海报和名片。  
+计算机视觉的识别文本部分也可用作 Docker 容器。 使用它可以从具有不同表面和背景的各种对象的图像中检测和提取印刷文本，例如收据、海报和名片。
+
 > [!IMPORTANT]
 > 识别文本容器目前仅适用于英语。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 使用“识别文本”容器前，必须先满足以下先决条件：
 
@@ -38,7 +39,7 @@ ms.locfileid: "68564574"
 
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>主计算机
 
@@ -46,16 +47,7 @@ ms.locfileid: "68564574"
 
 ### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
-下表列出了为每个“识别文本”容器分配的最小和建议 CPU 核心数和内存。
-
-| 容器 | 最低要求 | 建议 |TPS<br>(最小值, 最大值)|
-|-----------|---------|-------------|--|
-|识别文本|1核, 8 GB 内存, 0.5 TPS|2核, 8 GB 内存, 1 个 TPS|0.5、1|
-
-* 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
-* TPS - 每秒事务数
-
-核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
+[!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
 ## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 获取容器映像
 
@@ -87,7 +79,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 该命令使用以下参数：
 
-| 占位符 | 值 |
+| 占位符 | ReplTest1 |
 |-------------|-------|
 |{API_KEY} | 此密钥用于启动容器, 并在 Azure `Cognitive Services`密钥页上可用。  |
 |{ENDPOINT_URI} | 帐单终结点 URI 值。 例如:`https://westus.api.cognitive.microsoft.com/vision/v2.0`|

@@ -13,12 +13,12 @@ ms.date: 08/05/2019
 ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6145ccc67eedfdae8e9e1aa9245ff8d34101d387
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: f10f3b272978ea24b515e39a8a8cc1fd0bea73a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949565"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616002"
 ---
 # <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>双重验证和工作或学校帐户概述
 
@@ -29,7 +29,15 @@ ms.locfileid: "68949565"
 >[!Important]
 >此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
 >
->此内容也只能用于工作或学校帐户，该帐户是由组织提供给你的（例如 alain@contoso.com）。 如果无法使用双重验证和个人 Microsoft 帐户，即你为自己设置的帐户（例如 danielle@outlook.com），请参阅[为你的 Microsoft 帐户打开或关闭双重验证](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+>此内容也只能用于工作或学校帐户，该帐户是由组织提供给你的（例如 alain@contoso.com）。 如果无法使用双重验证和个人 Microsoft 帐户，即你为自己设置的帐户（例如 danielle@outlook.com），请参阅[为你的 Microsoft 帐户打开或关闭双重验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+
+## <a name="who-decides-if-you-use-this-feature"></a>谁决定是否要使用此功能？
+
+根据具体的帐户类型，你的组织可能决定必须使用双重验证，有时你也可以自行决定使用此功能。
+
+- **工作或学校帐户。** 如果你使用工作或学校帐户（例如 alain@contoso.com），则由你的组织决定是否必须使用双重验证，以及具体的验证方法是什么。 由于你的组织已决定你必须使用此功能，因此无法单独将其关闭。
+
+- **Microsoft 个人帐户。** 可以选择为 Microsoft 个人帐户（例如 alain@outlook.com）设置双重验证。 如果无法使用双重验证和个人 Microsoft 帐户，请参阅[为你的 Microsoft 帐户打开或关闭双重验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。 因为你选择是否使用此功能，所以可根据需要随时将其打开或关闭。
 
 ## <a name="two-factor-verification-related-articles"></a>与双重验证相关的文章
 

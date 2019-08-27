@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: f254572f5c26a809f401e99f527ccd3d30451c3d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 3e5490a4d74f10532764029f7a83788e3e39b592
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931590"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636217"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -95,7 +95,8 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
     创建存储帐户可能需要大约一分钟的时间。 在创建好存储帐户之前，请勿继续执行剩余的步骤。 如果使用现有的存储帐户而不是创建一个，请确保在存储帐户的“设置”下针对“防火墙和虚拟网络”选择了“所有网络”（默认设置）。    在所有情况下，存储帐户必须与 NSG 位于同一区域中。 
     
     > [!NOTE]
-    > 虽然 Azure 存储当前支持 Microsoft.Insight 和 Microsoft.Network 提供程序作为可信 Microsoft 服务，但 NSG 流日志尚未完全上线。 在此功能完全上线之前，若要启用 NSG 流日志记录，还必须选择“所有网络”  。 
+    > 虽然当前支持将 Microsoft.Insight 和 Microsoft.Network 提供程序作为 [Azure 存储的受信任 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)，但 NSG 流日志尚未完全上线。 若要启用 NSG 流日志记录，必须如上所述选择“所有网络”  。
+    
 4. 在门户左上角选择“所有服务”  。 在“筛选器”框中，键入“网络观察程序”   。 搜索结果中出现“网络观察程序”后，将其选中  。
 5. 在“日志”下选择“NSG 流日志”，如下图所示   ：
 
@@ -114,6 +115,8 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
    > * 存储帐户已启用[分层命名空间](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)。
 1. 在门户左上角选择“所有服务”  。 在“筛选器”框中，键入“网络观察程序”   。 搜索结果中出现“网络观察程序”后，将其选中  。
 10. 将“保留期(天)”设置为 5，然后选择“保存”。  
+    > [!IMPORTANT]
+    > 目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 如果你有现有的非零保留策略，我们建议你定期删除超过保留期的存储 blob，以避免产生任何费用。 有关如何删除 NSG 流日志存储 blob 的详细信息，请参阅[删除 NSG 流日志存储 blob](network-watcher-delete-nsg-flow-log-blobs.md)。
 
 ## <a name="download-flow-log"></a>下载流日志
 

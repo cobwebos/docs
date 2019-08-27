@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
 ms.custom: seo-java-july2019
-ms.openlocfilehash: 58356db2fbdf53bbd16e6fd20de54e022afb38b3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: cea53aefae2e559b7874b1235e4f952fe46ea642
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736669"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509609"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>快速入门：在 Azure Cosmos DB 中使用 Java SDK 创建图形数据库 
 
@@ -106,7 +106,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在，返回到 Azure 门户，获取连接信息，并将信息复制到应用程序中。 借助这些设置，应用程序可以与托管的数据库进行通信。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“密钥”  。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择“密钥”  。 
 
     复制 URI 值的第一部分。
 
@@ -165,14 +165,14 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     
     如果遇到超时错误，请在[更新你的连接信息](#update-your-connection-information)中检查是否正确更新了连接信息，并尝试再次运行上一个命令。 
     
-    一旦程序停止运行，按 Enter，然后在 Internet 浏览器中立即切换回 Azure 门户。 
+    一旦程序停止运行，请选择 Enter，然后在 Internet 浏览器中立即切换回 Azure 门户。 
 
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>查看并添加示例数据
 
 现在可以回到数据资源管理器，查看添加到图形的顶点，并添加其他数据点。
 
-1. 单击“数据资源管理器”  ，展开“sample-graph”  ，再依次单击“图形”  和“应用筛选器”  。 
+1. 选择“数据资源管理器”  ，展开“sample-graph”  ，再依次选择“图”  和“应用筛选器”  。 
 
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
@@ -180,13 +180,13 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
    ![在 Azure 门户数据资源管理器的图形中的新顶点](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
 
-3. 接下来，添加几个新用户。 单击“新建顶点”按钮，向图形添加数据。 
+3. 接下来，添加几个新用户。 选择“新建顶点”，向图添加数据。 
 
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
 
 4. 在标签框中，输入 *person*。
 
-5. 单击“添加属性”  ，添加下列所有属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
+5. 选择“添加属性”  ，以添加下列每个属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
     key|值|说明
     ----|----|----
@@ -197,13 +197,13 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     > [!NOTE]
     > 在本快速入门中，将创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
 
-6. 单击“确定”。  可能需要展开屏幕才能在屏幕底部看到“确定”。 
+6. 选择“确定”  。 可能需要展开屏幕才能在屏幕底部看到“确定”。 
 
-7. 再次单击“新建顶点”，添加其他新用户。  
+7. 再次选择“新建顶点”，添加其他新用户。  
 
 8. 输入标签“人员”  。
 
-9. 单击“添加属性”  ，添加下列所有属性：
+9. 选择“添加属性”  ，以添加下列每个属性：
 
     key|值|说明
     ----|----|----
@@ -211,17 +211,17 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     gender|男| 
     学校|MIT| 
 
-10. 单击“确定”。  
+10. 选择“确定”  。 
 
-11. 单击“应用筛选器”  按钮（默认 `g.V()` 筛选器），显示图形中的所有值。 所有用户此时会显示在“结果”列表中。  
+11. 选择“应用筛选器”  按钮（使用默认 `g.V()` 筛选器），显示图中的所有值。 所有用户此时会显示在“结果”列表中。  
 
-    添加更多数据时，可以使用筛选器来限制结果。 默认情况下，数据资源管理器使用 `g.V()` 检索图形中的所有顶点。 可以更改为其他[图形查询](tutorial-query-graph.md)（如 `g.V().count()`），以 JSON 格式返回图形中所有 顶点的计数。 如果更改了筛选器，请将筛选器更改回 `g.V()`，并单击“应用筛选器”  ，再次显示所有结果。
+    添加更多数据时，可以使用筛选器来限制结果。 默认情况下，数据资源管理器使用 `g.V()` 检索图形中的所有顶点。 可以更改为其他[图形查询](tutorial-query-graph.md)（如 `g.V().count()`），以 JSON 格式返回图形中所有 顶点的计数。 如果更改了筛选器，请将筛选器更改回 `g.V()`，并选择“应用筛选器”  ，再次显示所有结果。
 
-12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后单击右下侧“目标”旁边的“更改图形中某个顶点的目标”。   ![](./media/create-graph-java/edit-pencil-button.png)  可能需要扩大窗口才能看到该按钮。
+12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后选择右下侧“目标”旁边的“更改图中某个顶点的目标”。   ![](./media/create-graph-java/edit-pencil-button.png)  可能需要扩大窗口才能看到该按钮。
 
     ![更改图形中某个顶点的目标。](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
-13. 在“目标”  框中键入“rakesh”  ，在“Edge 标签”  框中键入“认识”  ，然后单击复选框。
+13. 在“目标”框中输入“rakesh”，   在“Edge 标签”框中输入“认识”，然后选中复选框。  
 
     ![通过数据资源管理器在 ashley 和 rakesh 之间添加连接](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 

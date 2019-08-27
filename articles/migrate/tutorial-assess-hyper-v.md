@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 08/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 60e1db913336cc9f9e355c2e8f8466854de20389
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: b93d9ee65850749e79714b632584f1977ca88c81
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828326"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639990"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估工具评估 Hyper-V VM
 
@@ -128,13 +128,17 @@ Azure Migrate 服务器评估运行一个轻型 Hyper-V VM 设备。
 
 导入下载的文件，然后创建 VM。
 
-1. 将压缩的 VHD 文件解压缩到托管设备 VM 的 Hyper-V 主机上的某个文件夹中。 将解压缩三个文件夹。
+1. 将压缩的 VHD 文件下载到将放置设备 VM 的 Hyper-V 主机后，提取压缩文件。
+    - 在提取的位置，文件将解压缩到名为 **AzureMigrateAppliance_VersionNumber** 的文件夹中。
+    - 此文件夹包含一个子文件夹，也称为 **AzureMigrateAppliance_VersionNumber**。
+    - 此子文件夹包含另外三个子文件夹 - **快照**、**虚拟硬盘**和**虚拟机**。
+
 2. 打开 Hyper-V 管理器。 在“操作”中，单击“导入虚拟机”。  
 
     ![部署 VHD](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. 在“导入虚拟机向导”>“开始之前”中，单击“下一步”。  
-3. 在“查找文件夹”中，指定包含已解压缩的 VHD 的文件夹。  然后单击“下一步”  。
+3. 在“查找文件夹”  中，选择“虚拟机”  文件夹。 然后单击“下一步”  。
 1. 在“选择虚拟机”中，单击“下一步”。  
 2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。   然后单击“下一步”  。
 3. 在“选择目标”中保留默认设置。  单击“下一步”。 

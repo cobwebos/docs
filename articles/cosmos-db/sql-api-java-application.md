@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/22/2018
 ms.author: ramkris
-ms.openlocfilehash: dfb4e40aeed797a55a7b2cabad32d33920547c06
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: bd2894c23e206ed5f49fec8aa169d6ed852df4c6
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479492"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616661"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>使用 Azure Cosmos DB 和 SQL API 构建 Java Web 应用程序
 
@@ -250,7 +250,7 @@ ms.locfileid: "66479492"
    
             return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
         }
-5. 与 Azure Cosmos DB 数据库和集合一样，文档也是通过自链接来引用。 以下帮助器函数可以让我们通过另一个属性（例如“id”）来检索文档，而不是自链接：
+5. 与 Azure Cosmos 数据库和集合一样，文档也是通过自链接来引用。 以下帮助器函数可以让我们通过另一个属性（例如“id”）来检索文档，而不是自链接：
    
         private Document getDocumentById(String id) {
             // Retrieve the document using the DocumentClient.
@@ -737,12 +737,12 @@ GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 
 3. 在 Eclipse 中，在“文件”菜单上单击“导入”。  
 4. 在“导入”窗口中，依次单击“Git”、“来自 Git 的项目”和“下一步”。    
 5. 在“选择存储库源”屏幕上，单击“克隆 URI”。  
-6. 在“源 Git 存储库”屏幕上的“URI”框中，输入 https://github.com/Azure-Samples/documentdb-java-todo-app.git，然后单击“下一步”    。
+6. 在“源 Git 存储库”屏幕上的“URI”框中，输入 https://github.com/Azure-Samples/documentdb-java-todo-app.git ，然后单击“下一步”    。
 7. 在“分支选择”屏幕上，确保已选择“master”，并单击“下一步”。   
 8. 在“本地目标”屏幕上，单击“浏览”选择要将存储库复制到的文件夹，然后单击“下一步”。   
 9. 在“选择要用于导入项目的向导”屏幕上，确保已选择“导入现有项目”，并单击“下一步”。   
 10. 在“导入项目”屏幕上，取消选择“DocumentDB”项目，并单击“完成”。    DocumentDB 项目包含 Azure Cosmos DB Java SDK，我们会将其添加为依赖项。
-11. 在“项目资源管理器”中，导航到 azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java，并将 HOST 和 MASTER_KEY 值替换为 Azure Cosmos DB 帐户的 URI 和主密钥，然后保存该文件。  有关更多信息，请参阅[步骤 1.创建 Azure Cosmos DB 数据库帐户](#CreateDB)。
+11. 在“项目资源管理器”中，导航到 azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java，并将 HOST 和 MASTER_KEY 值替换为 Azure Cosmos DB 帐户的 URI 和主密钥，然后保存该文件。  有关更多信息，请参阅[步骤 1.创建 Azure Cosmos 数据库帐户](#CreateDB)。
 12. 在“项目资源管理器”中，右键单击“azure-documentdb-java-sample”，单击“生成路径”，并单击“配置生成路径”。    
 13. 在“Java 生成路径”屏幕上，在右侧窗格中，选择“库”选项卡，并单击“添加外部 JAR”。    导航至 lombok.jar 文件的位置，单击“打开”，并单击“确定”。  
 14. 使用步骤 12 再次打开“属性”窗口，并在左窗格中单击“目标运行时”。  

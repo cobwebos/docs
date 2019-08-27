@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 786c5725046885a0321696e95703c53081e96979
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b731d8000e748813649ea32c91b9566a8bc245a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560329"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648600"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>教程：通过简单实体和短语列表提取名称
 

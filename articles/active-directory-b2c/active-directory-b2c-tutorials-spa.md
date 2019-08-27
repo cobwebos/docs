@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6884cb7b10da3996977f2aea7693625bc45c3139
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 8683169e0f8464cdcf52600968f67f3622e61445
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369573"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509585"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 在单页应用程序中启用身份验证
 
@@ -49,7 +49,7 @@ ms.locfileid: "68369573"
 在按照先决条件完成的第二个教程中，你已在 Azure AD B2C 中注册了 Web 应用程序。 若要与教程中的示例通信，需添加一个指向 Azure AD B2C 中的应用程序的重定向 URI。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录和订阅”筛选器，然后选择包含租户的目录  。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
 1. 选择“应用程序”，然后选择“webapp1”应用程序。  
 1. 在“回复 URL”下添加 `http://localhost:6420`。 
@@ -109,23 +109,23 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     Listening on port 6420...
     ```
 
-1. 在浏览器中导航到 `http://localhost:6420`，查看此应用程序。
+1. 在浏览器中转到 `http://localhost:6420`，查看此应用程序。
 
 示例支持注册、登录、配置文件编辑和密码重置。 本教程重点介绍用户如何使用电子邮件地址注册。
 
 ### <a name="sign-up-using-an-email-address"></a>使用电子邮件地址注册
 
-1. 单击“登录”  以启动在前面步骤中指定的 B2C_1_signupsignin1  用户流。
-1. Azure AD B2C 会显示带注册链接的登录页面。 由于你还没有帐户，因此请单击“立即注册”链接。 
+1. 选择“登录”  以启动在前面步骤中指定的 B2C_1_signupsignin1  用户流。
+1. Azure AD B2C 会显示带注册链接的登录页面。 由于你还没有帐户，因此请选择“立即注册”链接。 
 1. 注册工作流会显示一个页面，用于收集用户的标识并通过电子邮件地址对其进行验证。 注册工作流还收集用户的密码和请求的属性（在用户流中定义）。
 
     请使用有效的电子邮件地址，并使用验证码进行验证。 设置密码。 输入请求的属性的值。
 
     ![登录/注册用户流提供的注册页](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
-1. 单击“创建”，  在 Azure AD B2C 目录中创建本地帐户。
+1. 选择“创建”，  在 Azure AD B2C 目录中创建本地帐户。
 
-单击“创建”时，注册页关闭，登录页重新显示。 
+选择“创建”时，注册页将关闭，登录页将重新显示。 
 
 现在可以使用电子邮件地址和密码登录到应用程序。
 

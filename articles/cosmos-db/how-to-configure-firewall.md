@@ -1,17 +1,17 @@
 ---
 title: 为 Azure Cosmos DB 帐户配置 IP 防火墙
-description: 了解如何配置 IP 访问控制策略，以对 Azure Cosmos DB 数据库帐户提供防火墙支持。
+description: 了解如何配置 IP 访问控制策略，以为 Azure Cosmos 帐户提供防火墙支持。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0b8ad6c5addbff293e9f7e9b8af6ed34d4dd274b
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: ee9a686060fd712e9a1f14058ce7db325aaedffd
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494877"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615368"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置 IP 防火墙
 

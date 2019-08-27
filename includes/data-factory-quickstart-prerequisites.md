@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: dc12d77e9a57938051300277940b6e5107e45496
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 0a2bf306ccfa3a4a4fc80d0d55493f284185bba9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234538"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648470"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,21 +38,17 @@ ms.locfileid: "68234538"
 ### <a name="azure-storage-account"></a>Azure 存储帐户
 在本快速入门中，使用通用的 Azure 存储帐户（具体说来就是 Blob 存储）作为源和目标数据存储。   如果没有通用的 Azure 存储帐户，请参阅[创建存储帐户](../articles/storage/common/storage-quickstart-create-account.md)创建一个。 
 
-#### <a name="get-the-storage-account-name-and-account-key"></a>获取存储帐户名称和帐户密钥
-在本快速入门中，将需要 Azure 存储帐户的名称和密钥。 以下过程提供的步骤用于获取存储帐户的名称和密钥： 
+#### <a name="get-the-storage-account-name"></a>获取存储帐户名称
+在本快速入门中，将需要 Azure 存储帐户的名称。 以下过程提供的步骤用于获取存储帐户的名称： 
 
 1. 在 Web 浏览器中，转到 [Azure 门户](https://portal.azure.com)并使用你的 Azure 用户名和密码登录。
 2. 选择“所有服务” > “存储” > “存储帐户”    。
 3. 在“存储帐户”页中，筛选你的存储帐户（如果需要），然后选择它  。 
-4. 从 \<Account name> - “存储帐户”页的侧边栏，转到“设置”标签并选择“访问密钥”     。 随机会显示 \<Account name> - “访问密钥”   。
-
-   ![获取存储帐户名称和密钥](media/data-factory-quickstart-prerequisites/storage-account-name-key.png)
-5. 将“存储帐户名称”和“密钥 1”框的值复制到剪贴板。   将这些值粘贴到记事本或任何其他编辑器中，然后保存。 本快速入门后面会用到它们。   
 
 #### <a name="create-a-blob-container"></a>创建 Blob 容器
 本部分介绍如何在 Azure Blob 存储中创建名为 **adftutorial** 的 Blob 容器。
 
-1. 从 \<Account name> - “访问密钥”页的侧边栏，选择“概述” > “Blob”     。
+1. 在“存储帐户”页上，选择“概述” > “Blob”。  
 2. 在 \<Account name> - “Blob”页的工具栏中，选择“容器”    。
 3. 在“新建容器”  对话框中，输入 **adftutorial** 作为名称，然后选择“确定”  。 \<Account name> - “Blob”页已更新为包含容器列表中的“adftutorial”    。
 

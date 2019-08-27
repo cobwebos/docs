@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 07/21/2019
-ms.openlocfilehash: b0d227b71677db1d6b4ce8386b02cf957ca259f7
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.date: 08/16/2019
+ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668406"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891650"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>教程：使用可视界面预测汽车价格
 
@@ -27,9 +27,11 @@ ms.locfileid: "68668406"
 本教程的第一部分介绍如何：
 
 > [!div class="checklist"]
-> * 导入和清除数据
+> * 创建新实验
+> * 导入数据
+> * 准备数据
 > * 训练机器学习模型
-> * 评分和评估模型
+> * 评估机器学习模型
 
 在本教程的[第二部分](ui-tutorial-automobile-price-deploy.md)中，你将学习如何将预测模型部署为 Azure Web 服务，以便可以根据发送它的技术规范来预测任何汽车的价格。 
 
@@ -37,13 +39,17 @@ ms.locfileid: "68668406"
 
 若要进行查找，请从“试验页”  中选择“新增”  ，然后选择  “示例 1 - 回归: 汽车价格预测(基本)”试验。
 
-## <a name="create-a-workspace"></a>创建工作区
+## <a name="create-a-new-experiment"></a>创建新实验
+
+若要创建可视界面试验，首先需要 Azure 机器学习服务工作区。 本部分介绍如何创建这两个资源。
+
+### <a name="create-a-new-workspace"></a>创建新的工作区
 
 如果你有一个 Azure 机器学习服务工作区，请跳至下一部分。
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-new-experiment"></a>创建新试验
+### <a name="create-an-experiment"></a>创建试验
 
 1. 在 [Azure 门户](https://portal.azure.com/)中打开你的工作区。
 
@@ -57,7 +63,7 @@ ms.locfileid: "68668406"
 
 1. 在画布顶部选择默认试验名称“Experiment created on ...”，然后将它重命名为有意义的名称。  例如“汽车价格预测”。  名称不需唯一。
 
-## <a name="specify-data"></a>指定数据
+## <a name="import-data"></a>导入数据
 
 机器学习依赖于数据。 幸运的是，此界面中包含多个样本数据集可供你进行试验。 在本教程中，可以使用示例数据集“汽车价格数据(原始)”  。 
 
@@ -65,7 +71,7 @@ ms.locfileid: "68668406"
 
 1. 选择数据集“汽车价格数据(原始)”，然后将其拖到画布上。 
 
-   ![将数据拖到画布上](./media/ui-tutorial-automobile-price-train-score/drag-data.png)
+   ![将数据拖到画布上](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
 
 1. 选择要处理哪些数据列。 在面板顶部的搜索框中键入“选择”，以查找“选择数据集中的列”   模块。
 
@@ -87,11 +93,11 @@ ms.locfileid: "68668406"
 
     在“选择列”对话框中选择“所有列”，并包括“所有功能”。    此对话框应如下所示：
 
-     ![列选择器](./media/ui-tutorial-automobile-price-train-score/select-all.png)
+     ![列选择器](./media/ui-tutorial-automobile-price-train-score/select-all.gif)
 
 1. 在右下角，选择“确定”以关闭列选择器。 
 
-## <a name="run-the-experiment"></a>运行试验
+### <a name="run-the-experiment"></a>运行试验
 
 在任何时刻，单击数据集或模块的输出端口即可查看数据流中的数据在该时刻的情形。 如果“可视化”选项已禁用，则先需要运行此试验。 
 
@@ -100,7 +106,7 @@ ms.locfileid: "68668406"
 在计算目标可用后，试验就会运行。 在运行完成后，每个模块上都会显示一个绿色的对勾标记。
 
 
-## <a name="visualize-the-data"></a>可视化数据
+### <a name="visualize-the-data"></a>可视化数据
 
 运行了初始试验后，可以直观显示数据，以详细了解你使用的数据集。
 
@@ -110,9 +116,9 @@ ms.locfileid: "68668406"
 
     在此数据集中，每行代表一辆汽车，与每辆汽车关联的变量显示为列。 此数据集中有 205 行和 26 列。
 
-     每次单击某个数据列时，就会在左侧显示该列的**统计**信息和**可视化**图像。 例如，单击 **num-of-doors** 时，会看到它有 2 个唯一值和 2 个缺失值。 向下滚动即可看到值：两个门和四个门。
+    每次单击某个数据列时，就会在左侧显示该列的**统计**信息和**可视化**图像。
 
-     ![预览数据](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
+    [![预览数据](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)](./media/ui-tutorial-automobile-price-train-score/preview-data.gif#lightbox)
 
 1. 单击每一列以了解有关数据集的更多信息，并考虑这些列对预测汽车价格是否有用。
 
@@ -137,15 +143,11 @@ ms.locfileid: "68668406"
 
     * 在右下角，选择“确定”以关闭列选择器。 
 
-    ![排除列](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+    ![排除列](./media/ui-tutorial-automobile-price-train-score/exclude-column.gif)
         
     现在，“在数据集中选择列”的属性窗格指示它会传递数据集中除 **normalized-losses** 外的所有列。
         
     属性窗格显示 **normalized-losses** 列已排除。
-        
-    ![属性窗格](./media/ui-tutorial-automobile-price-train-score/property-pane.png)
-        
-    可以双击模块并输入文本，为模块添加注释。 这有助于快速查看模块在实验中的运行情况。 
 
 1. 双击“在数据集中选择列”模块，键入注释“排除规范化的损失”。  
     
@@ -168,22 +170,22 @@ ms.locfileid: "68668406"
 1. 在“属性”窗格中，选择“清理模式”下的“删除整个行”。  
 
 1. 双击该模块并键入注释“删除缺失值行”。
- 
-    ![删除行](./media/ui-tutorial-automobile-price-train-score/remove-rows.png)
 
     试验现在应该如下所示：
     
     ![选择列](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
 
-## <a name="train-the-model"></a>训练模型
+## <a name="train-a-machine-learning-model"></a>训练机器学习模型
 
 数据准备就绪后，可以构造一个预测模型。 你将使用自己的数据来训练模型。 然后将测试模型，以确定它预测价格的准确性。
+
+### <a name="select-an-algorithm"></a>选择一个算法
 
 **分类** 和**回归** 是两种监督式机器学习算法。 **分类**可以从一组定义的类别预测答案，例如颜色（红、蓝或绿）。 **回归**用于预测数字。
 
 由于你要预测价格（一个数字），因此可以使用回归算法。 本示例将使用线性回归模型。
 
-在模型中提供一组包含价格的数据以对其进行训练。 该模型会扫描数据，查找汽车特征与其价格之间的关联。
+### <a name="split-the-data"></a>拆分数据
 
 将数据拆分为单独的训练数据集和测试数据集，用于模型训练和测试。
 
@@ -191,9 +193,11 @@ ms.locfileid: "68668406"
 
 1. 选择“拆分数据”  模块。 在“属性”窗格中，将“第一个输出集中的行部分”设置为 0.7。 这样，我们将使用 70% 的数据来训练模型，保留 30% 的数据用于测试。
 
-    ![显示属性窗格的正确配置的屏幕截图。 “拆分数据”的值应是“拆分行”、“0.7”、“随机拆分”、“0”、“False”。](./media/ui-tutorial-automobile-price-train-score/split-data.png)
-
 1. 双击“拆分数据”并键入注释“将数据集拆分为训练集(0.7)和测试集(0.3)” 
+
+### <a name="train-the-model"></a>训练模型
+
+在模型中提供一组包含价格的数据以对其进行训练。 该模型会扫描数据，查找汽车特征与其价格之间的关联。
 
 1. 若要选择学习算法，请清除模块控制板搜索框。
 
@@ -201,9 +205,7 @@ ms.locfileid: "68668406"
 
 1. 对于本试验，请选择“回归” > “线性回归”，并将该模块拖到试验画布上。  
 
-    ![显示属性窗格的正确配置的屏幕截图。 “拆分数据”的值应是“拆分行”、“0.7”、“随机拆分”、“0”、“False”。](./media/ui-tutorial-automobile-price-train-score/linear-regression-module.png)
-
-1. 找到“训练模型”模块并将其拖到试验画布上。  将“线性回归”模块的输出连接到“训练模型”模块左侧的输入，将“拆分数据”模块的训练数据输出（左端口）连接到“训练模型”模块右侧的输入。  
+1. 找到 **训练模型** 模块并将其拖到试验画布上。 将“线性回归”模块的输出连接到“训练模型”模块左侧的输入，将“拆分数据”模块的训练数据输出（左端口）连接到“训练模型”模块右侧的输入。  
 
     ![显示“训练模型”模块的正确配置的屏幕截图。 “线性回归”模块将连接到“训练模型”模块的左端口，“拆分数据”模块将连接到“训练模型”的右端口](./media/ui-tutorial-automobile-price-train-score/train-model.png)
 
@@ -215,11 +217,11 @@ ms.locfileid: "68668406"
 
     ![显示添加“训练模型”模块后试验的正确配置的屏幕截图。](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
 
-## <a name="score-and-evaluate-the-model"></a>评分和评估模型
+## <a name="evaluate-a-machine-learning-model"></a>评估机器学习模型
 
 使用 70% 的数据训练模型后，可以使用该模型为另外 30% 的数据评分，确定模型的运行情况。
 
-1. 在搜索框中键入“评分模型”找到“评分模型”模块，并将该模块拖到试验画布上。   将“训练模型”模块的输出连接到“评分模型”的左侧输入端口。   将“拆分数据”模型的测试数据输出（右端口）连接到“评分模型”的右侧输入端口。  
+1. 在搜索框中键入“评分模型”找到“评分模型”模块，并将该模块拖到试验画布上。   将“训练模型”模块的输出连接到“评分模型”的左侧输入端口。   将 **拆分数据** 模型的测试数据输出（右端口）连接到 **评分模型** 的右侧输入端口。
 
 1. 在搜索框中键入“评估”找到“评估模型”，并将该模块拖到试验画布上。   将“评分模型”模块的输出连接到“评估模型”的左侧输入。   最终试验看起来应与下图类似：
 
@@ -244,26 +246,6 @@ ms.locfileid: "68668406"
 * **决定系数**：也称为 R 平方值，这是一个统计指标，表示模型的数据拟合度。
 
 每个误差统计值越小越好。 值越小，表示预测越接近实际值。 对于决定系数，其值越接近 1 (1.0)，预测就越精确。
-
-## <a name="manage-experiments-in-azure-machine-learning-service-workspace"></a>在 Azure 机器学习服务工作区中管理试验
-
-可以通过 Azure 机器学习服务工作区管理在可视界面中创建的试验。 使用工作区可以查看个人试验运行、诊断日志、执行图等其他详细信息。
-
-1. 在 [Azure 门户](https://portal.azure.com/)中打开你的工作区。  
-
-1. 在工作区中选择“试验”。  然后选择创建的试验。
-
-    ![显示如何在 Azure 门户中导航到试验的屏幕截图](./media/ui-tutorial-automobile-price-train-score/portal-experiments.png)
-
-    此页会显示试验及其最新运行的概览。
-
-    ![显示 Azure 门户中试验统计信息概览的屏幕截图](./media/ui-tutorial-automobile-price-train-score/experiment-overview.png)
-
-1. 选择某个运行编号可以查看有关特定执行的更多详细信息。
-
-    ![详细运行报告的屏幕截图](./media/ui-tutorial-automobile-price-train-score/run-details.png)
-
-    运行报告会实时更新。 如果在试验中使用了“执行 Python 脚本”或“执行 R 脚本”模块，则可以在“日志”选项卡中指定要输出的脚本日志。   
 
 ## <a name="clean-up-resources"></a>清理资源
 

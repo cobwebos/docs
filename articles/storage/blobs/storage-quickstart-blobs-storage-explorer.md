@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/15/2018
 ms.author: tamram
-ms.openlocfilehash: 929ba7e28bca608359e76f9eeb130c61ba3235a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cd31d1c40f30ebc8341c2126da22f8a74cb05438
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435801"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640520"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>快速入门：使用 Azure 存储资源管理器在对象存储中创建 blob
 

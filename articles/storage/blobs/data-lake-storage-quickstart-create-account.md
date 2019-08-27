@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 08/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f7c83e67c2162561aa579d38116f8ce01fceda9a
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: e820ed25cae23a2dad37c807eb3e188161eaecbf
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014377"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617692"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>创建 Azure Data Lake Storage Gen2 存储帐户
 
@@ -28,7 +28,7 @@ Azure Data Lake Storage Gen2 [支持分层命名空间](data-lake-storage-introd
 |           | 先决条件 |
 |-----------|--------------|
 |门户     | 无         |
-|PowerShell | 本快速入门需要 PowerShell 模块 Az.Storage 0.7 或更高版本  。 若要查找当前版本，请运行 `Get-Module -ListAvailable Az.Storage` 命令。 如果在运行此命令后，没有显示任何结果，或者如果出现 0.7 以外的版本，则必须升级 powershell 模块  。 请参阅本指南的[升级 powershell 模块](#upgrade-your-powershell-module)部分。
+|PowerShell | 本快速入门需要 PowerShell 模块 Az.Storage 0.7 或更高版本  。 若要查找当前版本，请运行 `Get-Module -ListAvailable Az.Storage` 命令。 如果在运行此命令后，没有显示任何结果，或者如果出现 0.7 以下的版本，则必须升级 powershell 模块  。 请参阅本指南的[升级 powershell 模块](#upgrade-your-powershell-module)部分。
 |CLI        | 可以登录到 Azure，然后采用以下两种方式之一运行 Azure CLI 命令： <ul><li>可以在 Azure 门户的 Azure Cloud Shell 中运行 CLI 命令 </li><li>可以安装 CLI 并在本地运行 CLI 命令</li></ul>|
 
 使用命令行时，可以运行 Azure Cloud shell，也可以在本地安装 CLI。

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: dd28fb51a4fc3fbf3dfc893f2f5f159ccafdb4b3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1e30650f932d15d23d7ffe7bd9b9fe07e9872511
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839309"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891621"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>教程：使用可视界面部署机器学习模型
 
@@ -33,15 +33,15 @@ ms.locfileid: "67839309"
 
 ## <a name="prepare-for-deployment"></a>准备部署
 
-在将试验部署为 Web 服务之前，首先需将训练试验转换成预测试验。
+在将试验部署为 Web 服务之前，首先需将训练试验  转换成预测试验  。
 
-1. 选择试验画布底部的“创建预测试验”*。
+1. 选择试验画布底部的“创建预测试验”*  。
 
     ![显示如何将训练试验自动转换为预测试验的 Gif 动画](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
 
-    选择“创建预测试验”时，会发生一些事情：
+    选择“创建预测试验”时，会发生一些事情： 
     
-    * 训练的模型在模块调色板中存储为“训练的模型”模块。 可以在“训练的模型”下找到它。
+    * 训练的模型在模块调色板中存储为“训练的模型”模块。  可以在“训练的模型”下找到它。 
     * 用于训练的模块被删除，具体包括：
       * 训练模型
       * 拆分数据
@@ -53,7 +53,7 @@ ms.locfileid: "67839309"
 
 1. **运行** 试验。
 
-1. 若要验证模型是否仍然正常工作，请选择“评分模型”模块的输出，然后选择“查看结果”。 此时会显示原始数据，以及预测的价格（“评分标签”）。
+1. 若要验证模型是否仍然正常工作，请选择“评分模型”模块的输出，然后选择“查看结果”。   此时会显示原始数据，以及预测的价格（“评分标签”）。
 
 试验现在应如下所示：  
 
@@ -61,7 +61,7 @@ ms.locfileid: "67839309"
 
 ## <a name="deploy-the-web-service"></a>部署 Web 服务
 
-1. 选择画布下面的“部署 Web 服务”。
+1. 选择画布下面的“部署 Web 服务”。 
 
 1. 选择要运行 Web 服务的**计算目标**。
 
@@ -69,27 +69,25 @@ ms.locfileid: "67839309"
 
     ![显示新计算目标的可能配置的屏幕截图](./media/ui-tutorial-automobile-price-deploy/deploy-compute.png)
 
-1. 选择“部署 Web 服务”。 部署完成后，将看到以下通知。 部署可能需要几分钟时间。
+1. 选择“部署 Web 服务”  。 部署完成后，将看到以下通知。 部署可能需要几分钟时间。
 
     ![显示成功部署确认消息的屏幕截图。](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
 
 ## <a name="test-the-web-service"></a>测试 Web 服务
 
-可以导航到“Web 服务”选项卡，以便测试和管理可视界面 Web 服务。
+可以导航到“Web 服务”选项卡，以便测试和管理可视界面 Web 服务。 
 
-1. 转到“Web 服务”部分。 将会看到所部署的名为“教程 - 预测汽车价格 [预测开支]”的 Web 服务。
+1. 转到“Web 服务”部分。 将会看到所部署的名为“教程 - 预测汽车价格 [预测开支]”的 Web 服务。 
 
      ![显示“Web 服务”选项卡的屏幕截图，其中突出显示了最近创建的 Web 服务](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
 1. 选择 Web 服务名称可查看更多详细信息。
 
-     ![显示“Web 服务”视图中提供的其他详细信息的屏幕截图](./media/ui-tutorial-automobile-price-deploy/web-service-details.png)
+1. 选择“测试”。 
 
-1. 选择“测试”。
+    [![显示 Web 服务测试页的屏幕截图](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)](./media/ui-tutorial-automobile-price-deploy/web-service-test.png#lightbox)
 
-    ![显示 Web 服务测试页的屏幕截图](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
-
-1. 输入测试数据或使用自动填充的示例数据，然后选择“测试”。
+1. 输入测试数据或使用自动填充的示例数据，然后选择“测试”。 
 
     测试请求将提交到 Web 服务，结果将显示在页面上。 尽管为输入数据生成了价格值，但它不用于生成预测值。
 
@@ -99,13 +97,11 @@ ms.locfileid: "67839309"
 
 **请求/响应** - 用户可以使用 HTTP 协议向该服务发送一行或多行汽车数据。 该服务将使用一个或多个结果集做出响应。
 
-可以在 Web 服务详细信息页的“使用”选项卡中找到示例 REST 调用。
+可以在 Web 服务详细信息页的“使用”选项卡中找到示例 REST 调用。 
 
    ![显示用户可在“使用”选项卡中找到的示例 REST 调用的屏幕截图](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
 
-导航到“API 文档”选项卡可以找到更多 API 详细信息。
-
-  ![显示用户可在“API 文档”选项卡中找到的其他 API 详细信息的屏幕截图](./media/ui-tutorial-automobile-price-deploy/web-service-api.png)
+导航到“API 文档”选项卡可以找到更多 API 详细信息。 
 
 ## <a name="manage-models-and-deployments"></a>管理模型和部署
 
@@ -113,17 +109,15 @@ ms.locfileid: "67839309"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中打开你的工作区。  
 
-1. 在工作区中选择“模型”。 然后选择创建的试验。
+1. 在工作区中选择“模型”。  然后选择创建的试验。
 
     ![显示如何在 Azure 门户中导航到试验的屏幕截图](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
 
     在此页上，可以看到有关该模型的其他详细信息。
 
-    ![显示 Azure 门户中试验统计信息概览的屏幕截图](./media/ui-tutorial-automobile-price-deploy/model-details.png)
+1. 选择“部署”；随即会列出使用该模型的所有 Web 服务。  选择 Web 服务名称会转到 Web 服务详细信息页。 在此页中，可以获取 Web 服务的更多详细信息。
 
-1. 选择“部署”；随即会列出使用该模型的所有 Web 服务。 选择 Web 服务名称会转到 Web 服务详细信息页。 在此页中，可以获取 Web 服务的更多详细信息。
-
-    ![详细运行报告的屏幕截图](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)
+    [![详细运行报告的屏幕截图](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
 
 ## <a name="clean-up-resources"></a>清理资源
 

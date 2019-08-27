@@ -6,25 +6,20 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 08/13/2019
+ms.date: 08/21/2019
 ms.author: heidist
-ms.openlocfilehash: eefa0eb5d1e15df34089d7baa3241cbbed4724c2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 204951f725c2885fe9f8bf33fffe83e55628dd34
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034846"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899681"
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
 
-Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 自定义代码将调用数据引入（索引编制）、发出查询请求并处理响应。 搜索体验是使用 Azure 搜索中的功能在客户端代码中定义的，而查询是通过你创建、拥有并存储在 Azure 搜索中的持久索引执行的。
+Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 自定义代码调用数据引入（索引）来创建和加载索引。 另一方面，应用程序代码发出查询请求并处理响应。 搜索体验是使用 Azure 搜索中的功能在客户端中定义的，而查询是通过你创建、拥有并存储在 Azure 搜索中的持久索引执行的。
 
-![Azure 搜索体系结构](media/search-what-is-azure-search/azure-search-diagram.png "Azure 搜索体系结构")
-
-<!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
-+ Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.
-+ Create intuitive search experiences with facet navigation and filters, synonyms, autocomplete, and text analysis for "did you mean" autocorrected search terms. Get relevance tuning through functions and boosting logic.
-+ Create search apps for specific use-cases. Geo-search supports a "find near me" experience. Multi-lingual search is supported through language analyzers for non-English full text search. -->
+![Azure 搜索体系结构](media/search-what-is-azure-search/azure-search-diagram.svg "Azure 搜索体系结构")
 
 功能通过简单的 [REST API](/rest/api/searchservice/) 或 [.NET SDK](search-howto-dotnet-sdk.md) 公开，消除了信息检索固有的复杂性。 除了 API，Azure 门户还通过原型制作和查询索引工具，提供管理和内容管理支持。 因为服务在云中运行，所以基础结构和可用性由 Microsoft 管理。
 
@@ -36,7 +31,7 @@ Azure 搜索非常适合以下应用方案：
 
 + 轻松实现搜索相关的功能。 Azure 搜索 API 简化了查询构造、分面导航、筛选器（包括地理空间搜索）、同义词映射、自动提示查询和相关性优化。 使用内置功能可以满足最终用户对搜索体验的预期，使其觉得该体验类似于商用 Web 搜索引擎。
 
-+ 为非结构化文本编制索引，或者从图像文件中提取文本和信息。 Azure 搜索的认知搜索功能将 AI 处理添加到了索引管道中。 一些常见用例包括对扫描的文档进行 OCR 识别、在大型文档中进行实体识别和关键短语提取、语言检测和文本翻译，以及情绪分析。
++ 为非结构化文本编制索引，或者从图像文件中提取文本和信息。 Azure 搜索的[认知搜索](cognitive-search-concept-intro.md)功能将 AI 处理添加到了索引管道中。 一些常见用例包括对扫描的文档进行 OCR 识别、在大型文档中进行实体识别和关键短语提取、语言检测和文本翻译，以及情绪分析。
 
 + 使用 Azure 搜索的自定义和语言分析器可以满足语言要求。 如果你使用非英语内容，Azure 搜索支持 Lucene 分析器和 Microsoft 的自然语言处理器。 还可以配置分析器以实现原始内容的专业处理，例如筛选出标注字符。
 
@@ -93,7 +88,9 @@ Azure 搜索非常适合以下应用方案：
 推模型通过 SDK 或 REST API 进行提供，用于将更新的文档发送到索引。 可以从使用 JSON 格式的几乎任何数据集推送数据。 有关加载数据的指南，请参阅[添加、更新或删除文档](/rest/api/searchservice/addupdate-or-delete-documents)或[如何使用.NET SDK）](search-howto-dotnet-sdk.md)。
 
 ### <a name="step-4-search"></a>步骤 4：搜索
-填充索引后，可以通过将简单的 HTTP 请求与 REST API 或 .NET SDK 结合使用，向服务终结点[发出搜索查询](/rest/api/searchservice/Search-Documents)。
+填充索引后，可以通过将简单的 HTTP 请求与 [REST API](/rest/api/searchservice/Search-Documents) 或 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations) 结合使用，向服务终结点[发出搜索查询](search-query-overview.md)。
+
+逐步完成[创建第一个搜索应用](tutorial-csharp-create-first-app.md)以进行构建，然后扩展用于收集用户输入并处理结果的网页。 还可以使用 [Postman 进行交互式 REST](search-get-started-postman.md) 调用，或使用 Azure 门户中内置的[搜索浏览器](search-explorer.md)来查询现有索引。
 
 ## <a name="how-it-compares"></a>它如何进行比较
 

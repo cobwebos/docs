@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: a6348024d4e84c27610f1294f916cca9a851b6b9
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d7ce5e2c12feeee770de8acfd5df81d340e0a7d0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034193"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615568"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 Azure CLI 示例
 
@@ -28,7 +28,7 @@ ms.locfileid: "54034193"
 | [使用表 API 创建 Azure Cosmos DB 帐户](scripts/create-table-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 创建单个 Azure Cosmos DB 帐户、数据库和表。 |
 |**缩放 Azure Cosmos DB**||
 | [缩放容器吞吐量](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 更改容器上预配的吞吐量。|
-| [将 Azure Cosmos DB 数据库帐户复制到多个区域中并配置故障转移优先级](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|在全局范围内将帐户数据复制到具有指定故障转移优先级的多个区域中。|
+| [将 Azure Cosmos 数据库帐户复制到多个区域中并配置故障转移优先级](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|在全局范围内将帐户数据复制到具有指定故障转移优先级的多个区域中。|
 |**保护 Azure Cosmos DB**||
 | [获取帐户密钥](scripts/secure-get-account-key-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 获取帐户的主要和辅助 master 写密钥以及主要和辅助只读密钥。|
 | [获取 Cosmos 帐户的连接字符串，该字符串配置有 Azure Cosmos DB 的用于 MongoDB 的 API](scripts/secure-mongo-connection-string-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 获取用于将 MongoDB 应用连接到 Azure Cosmos DB 帐户的连接字符串。|
@@ -37,5 +37,5 @@ ms.locfileid: "54034193"
 |**高可用性、灾难恢复、备份和还原**||
 | [配置故障转移策略](scripts/ha-failover-policy-cli.md?toc=%2fcli%2fazure%2ftoc.json)|为帐户所复制的每个区域设置故障转移优先级。|
 |**将 Azure Cosmos DB 连接到资源**||
-| [将 Web 应用连接到 Azure Cosmos DB](../app-service/scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|创建并连接 Azure Cosmos DB 数据库和 Azure Web 应用。|
+| [将 Web 应用连接到 Azure Cosmos DB](../app-service/scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|创建并连接 Azure Cosmos 数据库和 Azure Web 应用。|
 |||

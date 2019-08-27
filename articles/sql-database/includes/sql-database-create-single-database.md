@@ -3,19 +3,19 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 06/19/2019
+ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: ffa48d55703347883edf96a0a27ee52d19189976
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935015"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69894069"
 ---
-在此步骤中，将创建资源组和 Azure SQL 数据库单一数据库。
+在此步骤中，将创建 Azure SQL 数据库单一数据库。 
 
 > [!IMPORTANT]
-> 请务必设置防火墙规则，以使用本文中执行步骤的计算机的公共 IP 地址。 
+> 请务必设置防火墙规则，以使用用于完成本文的计算机的公共 IP 地址。
 >
 > 有关详细信息，请参阅[创建数据库级防火墙规则](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)，或参阅[创建服务器级防火墙](../sql-database-server-level-firewall-rule.md)，确定用于计算机的服务器级防火墙规则的 IP 地址。  
 
@@ -23,10 +23,11 @@ ms.locfileid: "68935015"
 
 使用 Azure 门户创建资源组和单一数据库。
 
-1. 在 Azure 门户的左上角选择“创建资源”。 
-2. 选择“数据库”，然后选择“SQL 数据库”打开“创建 SQL 数据库”页。   
+1. 在 Azure 门户的左侧菜单中选择“Azure SQL”  。 如果 **Azure SQL** 不在列表中，请选择“所有服务”  ，然后在搜索框中键入“Azure SQL”  。
+2. 选择“+添加”  以打开“选择 SQL 部署选项”  页。 可以通过在“数据库”  磁贴上选择“显示详细信息”  来查看有关不同数据库的其他信息。
+3. 选择“创建”  ：
 
-   ![创建单一数据库](../media/sql-database-get-started-portal/create-database-1.png)
+   ![创建单一数据库](../media/sql-database-get-started-portal/create-single-database.png)
 
 3. 在“项目详细信息”部分的“基本信息”选项卡上，键入或选择以下值：  
 

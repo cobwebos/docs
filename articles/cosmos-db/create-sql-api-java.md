@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.custom: seo-java-august2019
-ms.openlocfilehash: 5f8555d23a43a3ca391ec03f827b0d81ac3c4698
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a7e2089b8dfff1f021c31d2b13591b54dcd9c4ac
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933955"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616985"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Azure Cosmos DB SQL API 帐户生成 Java 应用程序
 
@@ -26,7 +26,7 @@ ms.locfileid: "68933955"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-本快速入门介绍如何使用 Java 应用程序创建和管理 Azure Cosmos DB [SQL API](sql-api-introduction.md) 帐户的资源。 首先，请使用 Azure 门户创建 Azure Cosmos DB SQL API 帐户，使用 [SQL Java SDK](sql-api-sdk-async-java.md) 创建 Java 应用，使用 Java 应用程序将资源添加到 Cosmos DB 帐户。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 完成本快速入门以后，你就会熟悉如何通过 UI 或编程方式（以首选方式为准）创建和修改 Cosmos DB 数据库和容器。
+本快速入门介绍如何使用 Java 应用程序创建和管理 Azure Cosmos DB [SQL API](sql-api-introduction.md) 帐户的资源。 首先，请使用 Azure 门户创建 Azure Cosmos DB SQL API 帐户，使用 [SQL Java SDK](sql-api-sdk-async-java.md) 创建 Java 应用，使用 Java 应用程序将资源添加到 Cosmos DB 帐户。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 完成本快速入门以后，你就会熟悉如何通过 UI 或编程方式（以首选方式为准）创建和修改 Cosmos 数据库和容器。
 
 ## <a name="prerequisites"></a>先决条件
 

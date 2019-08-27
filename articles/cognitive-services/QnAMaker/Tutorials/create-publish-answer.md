@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: dfd0a04da9f4f728bd43d8d3fcd4c671e9b95a47
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f81492dcdd095762127baabda14da602c6698ef6
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562896"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69646987"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>教程：使用 C# 创建知识库并回答问题
 
@@ -30,7 +30,7 @@ ms.locfileid: "68562896"
 > * 使用 Curl 查询知识库
 
 
-本快速入门调用了 QnA Maker API：
+本快速入门调用了 QnA Maker REST API：
 
 * [创建知识库 (KB)](https://go.microsoft.com/fwlink/?linkid=2092179)
 * [获取操作详细信息](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)

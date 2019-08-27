@@ -4,23 +4,23 @@ description: 本教程详细介绍如何设置开发计算机和云资源来使�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/06/2019
+ms.date: 08/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 94a287cd996bd18b757620254540f8dc0df499e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 66fa7c2f61af250e4b63b67f6941bed768bd94c4
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051824"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541928"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>教程：开发适用于 Windows 设备的 IoT Edge 模块
 
 使用 Visual Studio 开发代码并将其部署到运行 IoT Edge 的 Windows 设备。
 
-在快速入门中，使用 Windows 虚拟机创建了 IoT Edge 设备，并部署了来自 Azure 市场的预构建模块。 本教程详细介绍如何才能开发自己的代码并将其部署到 IoT Edge 设备。 本教程是所有其他教程的有用系统必备组件，其将详细介绍特定编程语言或 Azure 服务。 
+在快速入门中，使用 Windows 虚拟机创建了 IoT Edge 设备，并部署了来自 Azure 市场的预构建模块。 本教程详细介绍如何才能开发自己的代码并将其部署到 IoT Edge 设备。 本教程是学习其他教程的有用先决条件，其他教程将更详细地介绍特定编程语言或 Azure 服务。 
 
 本教程使用**将 C# 模块部署到 Windows 设备**的示例。 之所以选择了此示例，原因在于它是最常见的开发方案。 如果你希望使用不同的语言进行开发，或者计划将 Azure 服务作为模块来部署，本教程还有助于了解开发工具。 了解开发概念后，即可选择首选语言或 Azure 服务来深入了解详细信息。 
 
@@ -126,26 +126,25 @@ Azure IoT Edge Tools 扩展为 Visual Studio 中支持的所有 IoT Edge 模块�
 3. 在“配置新项目”窗口中，重命名项目和解决方案，使名称具有描述性，例如 **CSharpTutorialApp**。 单击“创建”以创建项目。 
 
    ![配置新的 Azure IoT Edge 项目](./media/tutorial-develop-for-windows/configure-project.png)
- 
 
-4. 在 IoT Edge 应用程序和模块窗口中，使用以下值配置项目： 
+4. 在“添加模块”窗口中，使用下列值配置项目： 
 
    | 字段 | 值 |
    | ----- | ----- |
-   | 选择模板 | 选择“C# 模块”。  | 
-   | 模块项目名称 | 接受默认的 **IoTEdgeModule1**。 | 
-   | Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 系统已基于模块项目名称值预先填充容器映像。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/iotedgemodule1。 |
+   | Visual Studio 模板 | 选择“C# 模块”。  | 
+   | 模块名称 | 接受默认的 **IotEdgeModule1**。 | 
+   | 存储库 URL | 映像存储库包含容器注册表的名称和容器映像的名称。 系统已基于模块项目名称值预先填充容器映像。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/iotedgemodule1。 |
 
-   ![针对目标设备、模块类型和容器注册表配置项目](./media/tutorial-develop-for-windows/add-module-to-solution.png)
+      ![针对目标设备、模块类型和容器注册表配置项目](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
-5. 选择“是”以应用所做的更改  。 
+5. 选择“添加”  以创建模块。 
 
 在 Visual Studio 窗口中加载新项目后，请花时间熟悉其创建的文件： 
 
 * 一个名为 **CSharpTutorialApp** 的 IoT Edge 项目。
-    * 包含指向项目所含模块的指针的 **Modules** 文件夹。 在本例中，应该只有 IoTEdgeModule1。 
+    * 包含指向项目所含模块的指针的 **Modules** 文件夹。 在本例中，应该只有 IotEdgeModule1。 
     * **deployment.template.json** 文件是可帮助创建部署清单的模板。 *部署清单*是一个文件，可准确定义想要在设备上部署的模块、应如何配置它们以及它们如何相互通信及与云通信。 
-* 名为 **IoTEdgeModule1** 的 IoT Edge 模块项目。
+* 名为 **IotEdgeModule1** 的 IoT Edge 模块项目。
     * **program.cs** 文件中包含项目模板附带的默认 C# 模块代码。 默认模块从源获取输入并将其传递到 IoT 中心。 
     * **module.json** 文件保存有关模块的详细信息，其中包括完整的映像存储库、映像版本以及用于每个受支持平台的 Dockerfile。
 
@@ -201,7 +200,7 @@ IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge �
 
 7. 找到 $edgeHub 所需属性的 **routes** 属性。 
 
-   IoT Edge 中心模块的某个函数可在部署中的所有模块之间路由消息。 查看 routes 属性中的值。 第一个路由 **IotEdgeModule1ToIoTHub** 使用通配符 ( **\*** ) 将来自任何输出队列的任何消息包含到 IoTEdgeModule1 模块中。 这些消息进入 *$upstream*，后者是指示 IoT 中心的保留名称。 第二个路由 **sensorToIotEdgeModule1** 接收来自 tempSensor 模块的消息，并将其路由到 IotEdgeModule1 模块的 *input1* 输入队列。 
+   IoT Edge 中心模块的某个函数可在部署中的所有模块之间路由消息。 查看 routes 属性中的值。 第一个路由 **IotEdgeModule1ToIoTHub** 使用通配符 ( **\*** ) 将来自任何输出队列的任何消息包含到 IotEdgeModule1 模块中。 这些消息进入 *$upstream*，后者是指示 IoT 中心的保留名称。 第二个路由 **sensorToIotEdgeModule1** 接收来自 tempSensor 模块的消息，并将其路由到 IotEdgeModule1 模块的 *input1* 输入队列。 
 
    ![查看 deployment.template.json 中的路由](./media/tutorial-develop-for-windows/deployment-routes.png)
 

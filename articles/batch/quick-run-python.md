@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: f7170fbb4a258e9d8290ad9d207028087b22003a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a2420f98bb07686b548dc6641df77dd0fdf7028b
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322314"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562810"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>快速入门：使用 Python API 运行你的第一个 Batch 作业
 
@@ -174,7 +174,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>创建 Batch 作业
 
-Batch 作业是对一个或多个任务进行逻辑分组。 作业包含任务的公用设置，例如优先级以及运行任务的池。 此应用使用 [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) 类在池中创建作业。 [job.add](/python/api/azure.batch.operations.joboperations) 方法将池提交到 Batch 服务。 作业一开始没有任务。
+Batch 作业是对一个或多个任务进行逻辑分组。 作业包含任务的公用设置，例如优先级以及运行任务的池。 此应用使用 [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) 类在池中创建作业。 [job.add](/python/api/azure.batch.operations.joboperations) 方法将作业添加到指定的 Batch 帐户。 作业一开始没有任务。
 
 ```python
 job = batch.models.JobAddParameter(

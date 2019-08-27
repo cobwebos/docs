@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f090a3f07eba529fd39976545eb654083e637eb
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: f1a1a8a6b32567a1571c70e76a4ae6c570d27ca5
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561395"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900574"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题
 
@@ -185,6 +185,9 @@ A. Microsoft 负责将 Data Box 服务寄回和寄出 Azure 数据中心。 如�
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>问： 我的 Data Box 设备在运输过程中是否将跨越国家/地区边界？
 A. 所有 Data Box 设备都将从与其目的地相同的国家/地区发运，不会跨越任何国际边界。 唯一的例外是在欧盟 (EU) 的订单，设备可以在任何 EU 国家/地区之间发送。 这适用于 Data Box 和 Data Box Heavy 设备。
+
+### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>问： 我订购了美国东部的 Data Box，但收到的设备是从美国西部位置发货的。 我应该将设备退回到何处？
+A. 我们会尽快为你提供一个 Data Box 设备。 我们优先从离你的存储帐户位置最近的数据中心发货，但会从任何有可用库存的 Azure 数据中心发运设备。 你的 Data Box 应退回到发货标签中显示的发货地点。
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>问： 电子墨水显示屏未显示退货发货标签。 我该怎么办？
 A. 如果电子墨水显示屏未显示退货发货标签，请执行以下步骤：

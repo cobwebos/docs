@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/12/2018
+ms.date: 8/20/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f491a160e0f4f72f072dc43c46571f96dd19a297
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: feaefef23b433a296d25cc11b5cd89d86acd280f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671043"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650194"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
 
-可以通过 Azure 门户创建 Azure 虚拟机 (VM)。 Azure 门户是基于浏览器的用户界面，用于创建 VM 及其相关资源。 本快速入门介绍如何使用 Azure 门户部署运行 Ubuntu 16.04 LTS 的 Linux 虚拟机 (VM)。 若要查看运行中的 VM，也可以通过 SSH 登录到该 VM 并安装 NGINX Web 服务器。
+可以通过 Azure 门户创建 Azure 虚拟机 (VM)。 Azure 门户是基于浏览器的用户界面，用于创建 Azure 资源。 本快速入门介绍如何使用 Azure 门户部署运行 Ubuntu 18.04 LTS 的 Linux 虚拟机 (VM)。 若要查看运行中的 VM，也可以通过 SSH 登录到该 VM 并安装 NGINX Web 服务器。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -33,35 +33,29 @@ ms.locfileid: "67671043"
 
 需要一个 SSH 密钥对才能完成本快速入门。 如果已有一个 SSH 密钥对，则可以跳过此步骤。
 
-打开 bash shell，使用 [ssh-keygen](https://www.ssh.com/ssh/keygen/) 创建一个 SSH 密钥对。 如果本地计算机上没有 bash shell，则可使用 [Azure Cloud Shell](https://shell.azure.com/bash)。  
+打开 bash shell，使用 [ssh-keygen](https://www.ssh.com/ssh/keygen/) 创建一个 SSH 密钥对。 如果本地计算机上没有 bash shell，则可使用 [Azure Cloud Shell](https://shell.azure.com/bash)。
 
-```bash
-ssh-keygen -t rsa -b 2048
-```
 
-上述命令在 `~/.ssh directory` 中生成默认名称为 `id_rsa` 的公钥和私钥。 此命令返回公钥的完整路径。 请使用公钥的此路径通过 `cat` 来显示其内容。
-
-```bash 
-cat ~/.ssh/id_rsa.pub
-```
-
-保存此命令的输出。 在配置登录到 VM 所需的管理员帐户时，需要用到它。
-
-有关如何创建 SSH 密钥对的更多详细信息，包括 PuTTy 的用法，请参阅[如何将 SSH 密钥与 Windows 配合使用](ssh-from-windows.md)。
-
-如果使用 Cloud Shell 创建 SSH 密钥对，则会将密钥对存储在 Azure 文件共享中，该共享[由 Cloud Shell 自动装载](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)。 在检索密钥之前，请勿删除此文件共享或存储帐户，否则将无法访问 VM。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在页面顶部的菜单中选择 `>_` 图标以打开 Cloud Shell。
+1. 请确保 CloudShell 在左上角显示 **Bash**。 如果显示“PowerShell”，请使用下拉菜单选择 **Bash**，然后选择“确认”  以更改为 Bash shell。
+1. 键入 `ssh-keygen -t rsa -b 2048` 以创建 ssh 密钥。 
+1. 系统将提示你输入用于保存密钥对的文件。 只需按 **Enter** 即可保存到括号中列出的默认位置。 
+1. 系统会要求你输入密码。 你可以为 SSH 密钥键入密码，或按 **Enter** 继续而不键入密码。
+1. `ssh-keygen` 命令会在 `~/.ssh directory` 中生成默认名称为 `id_rsa` 的公钥和私钥。 此命令返回公钥的完整路径。 通过键入 `cat ~/.ssh/id_rsa.pub` 使用公钥的此路径以 `cat` 显示其内容。
+1. 复制此命令的输出，并将其保存到某个位置，以供本文后面使用。 这是你的公钥，在配置登录 VM 所需的管理员帐户时，需要用到它。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+如果尚未登录到 [Azure 门户](https://portal.azure.com)，请进行登录。
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
 1. 在 Azure 门户的左上角，选择“创建资源”  。
 
-1. 在 Azure 市场资源列表上方的搜索框中，搜索并选择 Canonical 提供的“Ubuntu Server 16.04 LTS”  ，然后选择“创建”  。
+1. 在“热门”  中，选择 **Ubuntu Server 18.04 LTS**。
 
-1. 在“基本信息”  标签页中的“项目详细信息”  下，确保选择了正确的订阅，然后在“资源组”  下选择“新建”  。 在弹出窗口中，键入 *myResourceGroup* 作为资源组的名称，然后选择“确定”  。 
+1. 在“基本信息”  标签页中的“项目详细信息”  下，确保选择了正确的订阅，然后在“资源组”  下选择“新建”  。 键入 *myResourceGroup* 作为资源组的名称，然后选择“确定”  。 
 
     ![为 VM 新建资源组](./media/quick-create-portal/project-details.png)
 
@@ -69,7 +63,7 @@ cat ~/.ssh/id_rsa.pub
 
     ![“实例详细信息”部分](./media/quick-create-portal/instance-details.png)
 
-1. 在“管理员帐户”  下，选择“SSH 公钥”  ，键入用户名，然后将公钥粘贴到文本框中。 删除公钥中的所有前导或尾随空格。
+1. 在“管理员帐户”  下，选择“SSH 公钥”  ，键入用户名，然后粘贴公钥。 删除公钥中的所有前导或尾随空格。
 
     ![管理员帐户](./media/quick-create-portal/administrator-account.png)
 
@@ -92,13 +86,13 @@ cat ~/.ssh/id_rsa.pub
 
     ![门户 9](./media/quick-create-portal/portal-quick-start-9.png)
 
-2. 在“连接到虚拟机”页面中，请保留默认选项，以使用 IP 地址通过端口 22 进行连接。  在“使用 VM 本地帐户登录”  中，将显示一个连接命令。 单击相应按钮来复制该命令。 下面的示例展示了 SSH 连接命令的样式：
+2. 在“连接到虚拟机”页面中，请保留默认选项，以使用 IP 地址通过端口 22 进行连接。  在“使用 VM 本地帐户登录”  中，将显示一个连接命令。 选择相应的按钮来复制该命令。 下面的示例展示了 SSH 连接命令的样式：
 
     ```bash
     ssh azureuser@10.111.12.123
     ```
 
-3. 使用创建 SSH 密钥对时使用过的 bash shell（例如 [Azure Cloud Shell](https://shell.azure.com/bash) 或本地 bash shell）将 SSH 连接命令粘贴到 shell 中，以便创建一个 SSH 会话。 
+3. 使用创建 SSH 密钥对时使用过的 bash shell（可以通过再次选择 `>_` 或转到 https://shell.azure.com/bash) 重新打开 Cloud Shell），将 SSH 连接命令粘贴到 shell 中以创建 SSH 会话。
 
 ## <a name="install-web-server"></a>安装 Web 服务器
 
@@ -114,7 +108,7 @@ sudo apt-get -y install nginx
 
 ## <a name="view-the-web-server-in-action"></a>查看运行中的 Web 服务器
 
-使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 输入 VM 的公共 IP 地址作为 Web 地址。 可以在 VM 概览页上或此前使用过的 SSH 连接字符串中找到公共 IP 地址。
+使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 键入 VM 的公共 IP 地址作为 Web 地址。 可以在 VM 概览页上或此前使用过的 SSH 连接字符串中找到公共 IP 地址。
 
 ![NGINX 默认站点](./media/quick-create-cli/nginx.png)
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 062b815315d7bcdd5d55a86c2447a0b21295e8b6
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: cd80ed3c3db2453a333c87ed706dd358ba248b47
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014093"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516179"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>教程：在 Windows 虚拟桌面预览版中创建租户
 
@@ -34,7 +34,7 @@ ms.locfileid: "69014093"
    * 管理员帐户必须是工作或学校帐户。
 * Azure 订阅。
 
-## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>向 Windows 虚拟桌面预览版服务授予 Azure Active Directory 权限
+## <a name="grant-permissions-to-windows-virtual-desktop"></a>向 Windows 虚拟桌面授予权限
 
 如果已向 Windows 虚拟桌面授予对此 Azure Active Directory 实例的权限，请跳过本部分。
 
@@ -62,7 +62,7 @@ ms.locfileid: "69014093"
 6. 像在步骤 2 中一样，以全局管理员的身份登录到 Windows 虚拟桌面许可页。
 7. 选择“接受”  。
 
-## <a name="assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant"></a>将 TenantCreator 应用程序角色分配到 Azure Active Directory 租户中的用户
+## <a name="assign-the-tenantcreator-application-role"></a>分配 TenantCreator 应用程序角色
 
 为 Azure Active Directory 用户分配 TenantCreator 应用程序角色可让该用户创建与 Azure Active Directory 实例关联的 Windows 虚拟桌面租户。 需要使用全局管理员帐户分配 TenantCreator 角色。
 

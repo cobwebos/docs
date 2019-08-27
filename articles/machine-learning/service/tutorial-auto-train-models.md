@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 08/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 060257ef144309e37208db80c7731ed96b995b2c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 49f46c09cfcfef2ab1e74ae7c08d9a54289293ac
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990475"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534828"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>教程：通过自动化机器学习来构建回归模型
 
@@ -42,36 +42,11 @@ ms.locfileid: "68990475"
 
 ## <a name="prerequisites"></a>先决条件
 
-跳到[设置开发环境](#start)来了解整个 Notebook 设置步骤，或遵照以下说明获取 Notebook 并在 Azure Notebooks 或自己的 Notebook 服务器中运行。 若要运行 Notebook，需要：
+* 完成第一部分[数据准备教程](tutorial-data-prep.md)。
 
-* [运行数据准备教程](tutorial-data-prep.md)。
-* 一个装有以下组件的 Python 3.6 Notebook 服务器：
-    * 适用于 Python 的 Azure 机器学习 SDK 以及 `automl` 和 `notebooks` 附加程序
-    * `matplotlib`
-* 教程 Notebook
-* 机器学习工作区
-* Notebook 所在的同一目录中的工作区的配置文件
+* 完成第一部分后，使用同一 Notebook 服务器打开 **tutorials/regression-part2-automated-ml.ipynb** Notebook。
 
-从以下任一部分获取所有这些必备组件。
-
-* 使用[工作区中的云 Notebook 服务器](#azure)
-* 使用[自己的 Notebook 服务器](#server)
-
-### <a name="azure"></a>使用工作区中的云 Notebook 服务器
-
-可以轻松地从你自己的基于云的 Notebook 服务器着手。 当你创建此云资源时，[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 就已为你安装和配置了。
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* 在启动笔记本网页后，请运行 **tutorials/regression-part2-automated-ml.ipynb** Notebook。
-
-### <a name="server"></a>使用自己的 Jupyter Notebook 服务器
-
-执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。  确保在你的环境中安装 `matplotlib` 以及 `automl` 和 `notebooks` 附加程序。
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
-完成这些步骤后，运行 **tutorials/regression-part2-automated-ml.ipynb** Notebook。
+如果希望在自己的[本地环境](how-to-configure-environment.md#local)中使用此教程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。  请确保已安装了来自 Azure 机器学习 SDK 的 `matplotlib`、`automl` 和 `notebooks` 附加组件。
 
 ## <a name="start"></a>设置开发环境
 

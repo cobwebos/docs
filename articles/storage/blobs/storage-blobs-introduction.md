@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/24/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e216503cac2db55115bd4c1b5bf0e2f6e50355fc
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: b54f69edfebca2786ec996b1ca71cea933179b58
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190854"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641025"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 存储简介
 
@@ -66,7 +66,7 @@ Azure 存储支持三种类型的 Blob：
 
 - AzCopy 是一种易于使用的适用于 Windows 和 Linux 的命令行工具，可以跨容器或跨存储帐户将数据复制到 Blob 存储，以及从 Blob 存储复制数据  。 有关 AzCopy 的详细信息，请参阅[使用 AzCopy v10（预览版）传输数据](../common/storage-use-azcopy-v10.md)。 
 - Azure 存储数据移动库是一个 .NET 库，用于在 Azure 存储服务之间移动数据  。 AzCopy 实用程序是使用数据移动库生成的。 有关详细信息，请参阅数据移动库的[参考文档](/dotnet/api/microsoft.azure.storage.datamovement)。 
-- Azure 数据工厂支持使用 Azure 资源身份验证的帐户密钥、共享访问签名、服务主体或托管标识向/从 Blob 存储复制数据  。 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Azure Blob 存储复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
+- **Azure 数据工厂**支持使用 Azure 资源的帐户密钥、共享访问签名、服务主体或托管标识向/从 Blob 存储复制数据。 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Azure Blob 存储复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
 - Blobfuse 是 Azure Blob 存储的虚拟文件系统驱动程序  。 可以使用 Blobfuse 通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 有关详细信息，请参阅[如何使用 Blobfuse 将 Blob 存储装载为文件系统](storage-how-to-mount-container-linux.md)。
 - 如果大型数据集或网络限制导致通过网络上传数据不可行，**Azure Data Box** 服务可将本地数据传输到 Blob 存储。 根据数据大小，你可以向 Microsoft 请求 [Azure Data Box Disk](../../databox/data-box-disk-overview.md)、[Azure Data Box](../../databox/data-box-overview.md) 或 [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md) 设备。 然后，你可以将数据复制到这些设备中，将设备寄回 Microsoft，我们就会将数据上传到 Blob 存储中。
 - **Azure 导入/导出服务**提供了一种使用你提供的硬盘向存储帐户导入或从存储帐户导出大量数据的方法。 有关详细信息，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中](../common/storage-import-export-service.md)。

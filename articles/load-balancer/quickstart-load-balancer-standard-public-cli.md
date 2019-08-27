@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: c655d108e018bb843b81a4c45c94584985e82488
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8c4659fada420bc81c4633deb8bd241497a0263d
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273973"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509678"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建标准负载均衡器以对 VM 进行负载均衡
 
@@ -152,16 +152,34 @@ ms.locfileid: "68273973"
 使用 [az network nic create](/cli/azure/network/nic#az-network-nic-create) 创建三个网络接口，并将它们与公共 IP 地址和网络安全组关联。 
 
 ```azurecli-interactive
-for i in `seq 1 2`; do
+
   az network nic create \
     --resource-group myResourceGroupSLB \
-    --name myNic$i \
+    --name myNicVM1 \
     --vnet-name myVnet \
     --subnet mySubnet \
     --network-security-group myNetworkSecurityGroup \
     --lb-name myLoadBalancer \
     --lb-address-pools myBackEndPool
-done
+
+  az network nic create \
+    --resource-group myResourceGroupSLB \
+    --name myNicVM2 \
+    --vnet-name myVnet \
+    --subnet mySubnet \
+    --network-security-group myNetworkSecurityGroup \
+    --lb-name myLoadBalancer \
+    --lb-address-pools myBackEndPool
+  
+  az network nic create \
+    --resource-group myResourceGroupSLB \
+    --name myNicVM3 \
+    --vnet-name myVnet \
+    --subnet mySubnet \
+    --network-security-group myNetworkSecurityGroup \
+    --lb-name myLoadBalancer \
+    --lb-address-pools myBackEndPool
+
 ```
 
 
@@ -179,7 +197,7 @@ done
     --name myAvailabilitySet
 ```
 
-### <a name="create-two-virtual-machines"></a>创建两个虚拟机
+### <a name="create-three-virtual-machines"></a>创建三个虚拟机
 
 可使用 cloud-init 配置文件在 Linux 虚拟机上安装 NGINX 并运行“Hello World”Node.js 应用。 在当前 shell 中创建名为“cloud-init.txt”的文件，并将以下配置复制粘贴到 shell。 请确保正确复制整个 cloud-init 文件，尤其是第一行：
 
@@ -228,17 +246,37 @@ runcmd:
 使用 [az vm create](/cli/azure/vm#az-vm-create) 创建虚拟机。
 
  ```azurecli-interactive
-for i in `seq 1 2`; do
+
   az vm create \
     --resource-group myResourceGroupSLB \
-    --name myVM$i \
+    --name myVM1 \
     --availability-set myAvailabilitySet \
-    --nics myNic$i \
+    --nics myNicVM1 \
     --image UbuntuLTS \
     --generate-ssh-keys \
     --custom-data cloud-init.txt \
     --no-wait
-done
+   
+  az vm create \
+    --resource-group myResourceGroupSLB \
+    --name myVM2 \
+    --availability-set myAvailabilitySet \
+    --nics myNicVM2 \
+    --image UbuntuLTS \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt \
+    --no-wait
+
+   az vm create \
+    --resource-group myResourceGroupSLB \
+    --name myVM3 \
+    --availability-set myAvailabilitySet \
+    --nics myNicVM3 \
+    --image UbuntuLTS \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt \
+    --no-wait
+
 ```
 VM 可能需要几分钟才能部署好。
 
