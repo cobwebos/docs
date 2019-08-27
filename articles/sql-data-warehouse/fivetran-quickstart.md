@@ -80,5 +80,5 @@ ms.locfileid: "65857004"
 * 主机（服务器名称）。
 * 端口。
 * 数据库。
-* 用户 (用户名称应**fivetran\@_server_name_** 其中*server_name*是您的 Azure 主机 URI 的一部分:  ***server_name*。database.windows.net**)。
+* 用户 (用户名称应**fivetran\@_server_name_** 其中*server_name*是您的 Azure 主机 URI 的一部分: ***server_name*.database.windows.net**)。
 * Password。
