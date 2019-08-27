@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 4b426fbc1d1b3eeed2321f86bb51c9c5d705adb4
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543050"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035619"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -47,8 +47,8 @@ ms.locfileid: "69543050"
 * Azure Monitor 仅支持 System Center Operations Manager 2016 或更高版本、Operations Manager 2012 SP1 UR6 或更高版本，以及 Operations Manager 2012 R2 UR2 或更高版本。 Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
 * 将 System Center Operations Manager 2016 与美国政府云集成需要使用更新汇总 2 或更高版本随附的更新顾问管理包。 System Center Operations Manager 2012 R2 需要更新汇总 3 或更高版本随附的更新顾问管理包。
 * 所有 Operations Manager 代理必须满足最低支持要求。 确保代理中安装了最起码的更新，否则 Windows 代理通信可能失败，并在 Operations Manager 事件日志中生成错误。
-* Log Analytics 工作区。 有关详细信息，请查看 [Log Analytics 工作区概述](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json)。   
-* 使用 [Log Analytics 参与者角色](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users)成员帐户在 Azure 中进行身份验证。
+* Log Analytics 工作区。 有关详细信息，请查看 [Log Analytics 工作区概述](design-logs-deployment.md)。 
+* 使用 [Log Analytics 参与者角色](manage-access.md#manage-access-using-azure-permissions)成员帐户在 Azure 中进行身份验证。
 
 * 支持的区域-System Center Operations Manager 连接到 Log Analytics 工作区, 则仅支持以下 Azure 区域:
     - 美国中西部

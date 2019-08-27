@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817200"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036030"
 ---
 ## <a name="application-performance-indicators"></a>应用程序性能指标
 
@@ -96,7 +96,7 @@ PerfMon 计数器适用于处理器、内存以及服务器的每个逻辑磁盘
 | --- | --- | --- | --- |
 | **IOPS 或每秒事务数** |每秒发送到存储磁盘的 I/O 请求数。 |磁盘读取数/秒 <br> 磁盘写入数/秒 |tps <br> r/s <br> w/s |
 | **磁盘读取数和写入数** |在磁盘上执行的读取和写入操作的百分比。 |磁盘读取时间百分比 <br> 磁盘写入时间百分比 |r/s <br> w/s |
-| **吞吐量** |每秒从磁盘读取或向磁盘写入的数据量。 |磁盘读取的字节数/秒 <br> 磁盘写入字节数/秒 |kB_read/s <br> kB_wrtn/s |
+| **吞吐量** |每秒从磁盘读取或向磁盘写入的数据量。 |磁盘读取字节数/秒 <br> 磁盘写入字节数/秒 |kB_read/s <br> kB_wrtn/s |
 | **延迟** |完成磁盘 IO 请求的总时间。 |磁盘平均秒数/读取 <br> 磁盘平均秒数/写入 |await <br> svctm |
 | **IO 大小** |向存储磁盘发出的 I/O 请求的大小。 |磁盘平均字节数/读取 <br> 磁盘平均字节数/写入 |avgrq-sz |
 | **队列深度** |等待从存储磁盘读取或等待向存储磁盘写入的待处理 I/O 请求的数目。 |当前的磁盘队列长度 |avgqu-sz |
@@ -111,7 +111,7 @@ PerfMon 计数器适用于处理器、内存以及服务器的每个逻辑磁盘
 
 影响运行在高级存储上的应用程序的性能的主要因素包括：IO 请求的性质、VM 大小、磁盘大小、磁盘数目、磁盘缓存、多线程处理和队列深度。 可以使用系统提供的设置来控制其中部分因素。 大多数应用程序可能不提供直接更改 IO 大小和队列深度的选项。 例如，如果使用 SQL Server，则不能选择 IO 大小和队列深度。 SQL Server 会选择最佳 IO 大小和队列深度值以获取最大性能。 必须了解两类因素对应用程序性能的影响，以便根据性能需要预配相应的资源。
 
-此部分从始至终都需要参考所创建的应用程序要求清单，以便确定需要将应用程序性能优化到何种程度。 据此，可确定此部分中需要调整的因素。 若要了解每个因素对应用程序性能的影响，可在应用程序安装以后运行基准测试工具。 请参阅本文末尾的“基准测试”部分，了解需要执行哪些步骤才能在 Windows 和 Linux VM 上运行常见的基准测试工具。
+此部分从始至终都需要参考所创建的应用程序要求清单，以便确定需要将应用程序性能优化到何种程度。 据此，可确定此部分中需要调整的因素。 若要了解每个因素对应用程序性能的影响，可在应用程序安装以后运行基准测试工具。 有关在 Windows 和 Linux Vm 上运行常见的基准测试工具的步骤, 请参阅最后链接的基准测试文章。
 
 ### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>迅速优化 IOPS、吞吐量和延迟
 
@@ -166,7 +166,7 @@ IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的�
 > [!NOTE]
 > 增加 IOPS 或吞吐量这两个指标中的其中一个时，另一指标也将增加，因此增加任一指标时都请勿超过磁盘或 VM 的吞吐量或 IOPS 限制。
 
-若要了解 IO 大小对应用程序性能的影响，可在 VM 和磁盘上运行基准测试工具。 创建多个测试运行并对每个运行使用不同的 IO 大小，即可观察相应的影响。 如需更多详细信息，请参阅本文末尾的“基准测试”部分。
+若要了解 IO 大小对应用程序性能的影响，可在 VM 和磁盘上运行基准测试工具。 创建多个测试运行并对每个运行使用不同的 IO 大小，即可观察相应的影响。 有关更多详细信息, 请参阅最后链接的基准测试文章。
 
 ## <a name="high-scale-vm-sizes"></a>大型 VM 大小
 
@@ -326,7 +326,7 @@ sudo yum install microsoft-hyper-v
 
 在 Windows 上，可以使用存储空间将磁盘条带化。 必须为池中每个磁盘配置一列。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。
 
-重要:使用服务器管理器 UI，可以将列的总数设置为每个条带化卷最多 8 个。 连接 8 个以上的磁盘时，可使用 PowerShell 来创建卷。 使用 PowerShell，可以将列数设置为与磁盘数相等。 例如，如果一个条带集中有 16 个磁盘，可在 *New-VirtualDisk* PowerShell cmdlet 的 *NumberOfColumns* 参数中指定 16 个列。
+重要说明：使用服务器管理器 UI，可以将列的总数设置为每个条带化卷最多 8 个。 连接 8 个以上的磁盘时，可使用 PowerShell 来创建卷。 使用 PowerShell，可以将列数设置为与磁盘数相等。 例如，如果一个条带集中有 16 个磁盘，可在 *New-VirtualDisk* PowerShell cmdlet 的 *NumberOfColumns* 参数中指定 16 个列。
 
 在 Linux 中，可使用 MDADM 实用工具将磁盘条带化。 有关在 Linux 中对磁盘进行条带化操作的详细步骤，请参阅[在 Linux 上配置软件 RAID](../articles/virtual-machines/linux/configure-raid.md)。
 
@@ -387,11 +387,3 @@ Azure 高级存储根据所选 VM 大小和磁盘大小，预配指定数目的 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关可用磁盘类型的详细信息：
-
-* [选择磁盘类型](../articles/virtual-machines/windows/disks-types.md)  
-
-SQL Server 用户请阅读有关 SQL Server 性能最佳实践的文章：
-
-* [Azure 虚拟机中 SQL Server 的性能最佳实践](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
-* [Azure Premium Storage provides highest performance for SQL Server in Azure VM](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)（Azure 高级存储为 Azure VM 中的 SQL Server 提供最高性能）

@@ -1,6 +1,6 @@
 ---
 title: 在数据科学虚拟机上安全存储访问凭据 - Azure | Microsoft Docs
-description: 了解如何在 Data Science Virtual Machine 上安全地存储访问凭据。 你将了解如何使用托管服务标识和 Azure Key Vault 存储访问凭据。
+description: 了解如何在 Data Science Virtual Machine 上安全地存储访问凭据。 你将了解如何使用托管服务标识和 Azure Key Vault 来存储访问凭据。
 keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析, 团队数据科学过程
 services: machine-learning
 documentationcenter: ''
@@ -16,22 +16,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: vijetaj
-ms.openlocfilehash: 7adc968dd88ede70b18766ce2c156c23324d0c4e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1374cbef41f40ea270f3c4d84c68d08e7db095bc
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557926"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051618"
 ---
-# <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>在数据科学虚拟机上安全存储访问凭据
+# <a name="store-access-credentials-securely-on-a-data-science-virtual-machine"></a>安全地在 Data Science Virtual Machine 上存储访问凭据
 
-生成云应用程序时需要应对的常见挑战是，如何管理为了通过云服务的身份验证而需要插入代码的凭据。 保护这些凭据是一项非常重要的任务。 理想情况下，它们永远不会出现在开发者工作站上，也永远不会被签入源代码管理系统中。 
+通常, 云应用程序中的代码包含用于对云服务进行身份验证的凭据。 如何管理和保护这些凭据是构建云应用程序的已知挑战。 理想情况下, 凭据绝不会出现在开发人员工作站上, 也不会被签入到源代码管理中。
 
-[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 可使用此标识对支持 Azure AD 身份验证的任何服务进行身份验证，而无需在代码中插入任何凭据。 
+[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)功能通过向 azure 服务提供 Azure Active Directory (Azure AD) 中的自动托管标识, 更简单地解决此问题。 可以使用此标识向支持 Azure AD 身份验证的任何服务进行身份验证，而无需在代码中放入任何凭据。
 
-保护凭据的一个常见方法是结合使用 MSI 和 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)（一项安全存储机密和加密密钥的托管 Azure 服务）。 可以使用托管标识访问密钥保管库，并从该密钥保管库检索授权机密和加密密钥。 
+保护凭据的一种方法是将 Windows Installer (MSI) 与[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)(一种托管 Azure 服务) 结合使用, 以安全地存储机密和加密密钥。 你可以使用托管标识访问密钥保管库, 然后从密钥保管库中检索授权的机密和加密密钥。
 
-Azure 资源的托管标识和 Key Vault 文档是深入了解这些服务信息的综合资源。 本文的其余部分将介绍数据科学虚拟机 (DSVM) 上 MSI 和 Key Vault 的基本使用步骤，以访问 Azure 资源。 
+有关 Azure 资源和 Key Vault 的托管标识的文档包含有关这些服务的详细信息的综合性资源。 本文的其余部分将介绍数据科学虚拟机 (DSVM) 上 MSI 和 Key Vault 的基本使用步骤，以访问 Azure 资源。 
 
 ## <a name="create-a-managed-identity-on-the-dsvm"></a>在 DSVM 上创建托管标识 
 
@@ -46,11 +46,11 @@ az resource list -n <Name of the VM> --query [*].identity.principalId --out tsv
 ```
 
 
-## <a name="assign-key-vault-access-permission-to-a-vm-principal"></a>为 VM 主体分配 Key Vault 访问权限
+## <a name="assign-key-vault-access-permissions-to-a-vm-principal"></a>将 Key Vault 访问权限分配给 VM 主体
 ```
-# Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI. 
+# Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI.
 
-# Assign only get and set permission but not the capability to list the keys.
+# Assign only get and set permissions but not the capability to list the keys.
 az keyvault set-policy --object-id <Principal ID of the DSVM from previous step> --name <Key Vault Name> -g <Resource Group of Key Vault>  --secret-permissions get set
 ```
 
@@ -61,14 +61,14 @@ az keyvault set-policy --object-id <Principal ID of the DSVM from previous step>
 x=`curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true`
 token=`echo $x | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`
 
-# Access the key vault by using the access token. 
+# Access the key vault by using the access token.
 curl https://<Vault Name>.vault.azure.net/secrets/SQLPasswd?api-version=2016-10-01 -H "Authorization: Bearer $token"
 ```
 
 ## <a name="access-storage-keys-from-the-dsvm"></a>从 DSVM 访问存储密钥
 
 ```
-# Prerequisite: You have granted your VM's MSI access to use storage account access keys based on instructions from the article at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
+# Prerequisite: You have granted your VMs MSI access to use storage account access keys based on instructions at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
 
 y=`curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true`
 ytoken=`echo $y | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`
@@ -108,8 +108,8 @@ print("My secret value is {}".format(secret.value))
 ## <a name="access-the-key-vault-from-azure-cli"></a>从 Azure CLI 访问 Key Vault
 
 ```
-# With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. Here are commands to access the key vault from Azure CLI without having to log in to an Azure account. 
-# Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permission, like accessing storage account keys, reading specific secrets, and writing new secrets, is provided to the MSI. 
+# With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. The following commands enable access to the key vault from Azure CLI without requiring login to an Azure account.
+# Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permissions, like accessing storage account keys, reading specific secrets, and writing new secrets, are provided to the MSI.
 
 # Authenticate to Azure CLI without requiring an Azure account. 
 az login --msi

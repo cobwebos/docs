@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 794f8f136521acbb51139b9e781a30c71a1560e6
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 311f69ffa436eebb261fb8aa5ee72886ad9fe9d0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992752"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035914"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>配置客户托管的密钥, 以便通过使用 Azure 门户来加密静态 Azure 事件中心数据
 Azure 事件中心通过 Azure 存储服务加密 (Azure SSE) 提供静态数据的加密。 事件中心依赖于 Azure 存储来存储数据, 默认情况下, 使用 Microsoft 托管密钥对存储在 Azure 存储中的所有数据进行加密。 
@@ -170,7 +170,7 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 > 若要在使用 BYOK 加密的命名空间上启用异地灾难恢复, 辅助命名空间必须在专用群集中, 并且必须在该群集上启用系统分配的托管标识。 若要了解详细信息, 请参阅[Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 > [!NOTE]
-> 对于 BYOK 加密事件中心命名空间, 预览版本不支持虚拟网络 (VNet) 服务终结点。 
+> 如果在事件中心命名空间 Azure Key Vault 上配置了虚拟网络 (VNet) 服务终结点, 则将不支持 BYOK。 
 
 
 ## <a name="next-steps"></a>后续步骤

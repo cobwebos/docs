@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dacurwin
-ms.openlocfilehash: f5a76ef44ebef0689ec0587434996f28ba7b7025
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a11d454feb965907f3bd4e994c0916eeb7236fa7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735544"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034566"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>将 SAP HANA 数据库备份到 Azure
 
@@ -106,9 +106,9 @@ ms.locfileid: "68735544"
 
 1. 在步骤2中, 单击 "**配置备份**"。
 2. 在 "**选择要备份的项目**" 中, 选择要保护的所有数据库 > **"确定"** 。
-3. 在 " **备份策略** > " 中, 根据以下说明, 为数据库创建新的备份策略。
+3. 在 "**备份策略** > " 中, 根据以下说明, 为数据库创建新的备份策略。
 4. 创建策略后, 在 "**备份**" 菜单上单击 "**启用备份**"。
-5. 在门户的 " **通知** " 区域中跟踪备份配置进度。
+5. 在门户的 "**通知**" 区域中跟踪备份配置进度。
 
 ### <a name="create-a-backup-policy"></a>创建备份策略
 

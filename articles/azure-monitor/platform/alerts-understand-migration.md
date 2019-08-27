@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: f981c14e26c51c427dab6b418cab8df46b1bb026
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 5257724add570be480063ab776248a8fd1d944c7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302246"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034752"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>了解迁移工具的工作原理
 
@@ -75,10 +75,10 @@ ms.locfileid: "68302246"
 
 - 每秒平均请求数
 - 一致性级别
-- Http 2xx
-- Http 3xx
+- HTTP 2xx
+- HTTP 3xx
 - Http 400
-- Http 401
+- HTTP 401
 - 内部服务器错误
 - 每分钟使用的最大 RUPM
 - 最大每秒 ru 数
@@ -94,7 +94,7 @@ ms.locfileid: "68302246"
 - 观察到的写入延迟
 - 服务可用性
 - 存储容量
-- 限制的请求
+- 限制的请求数
 - 请求总数
 
 每秒平均请求数, 一致性级别, 每分钟使用的最大 RUPM 数, 最大每秒的每秒, 观察到的读取延迟, 观察到的写入延迟, 存储容量目前在[新系统](metrics-supported.md#microsoftdocumentdbdatabaseaccounts)中不可用。
@@ -247,7 +247,7 @@ Mongo 失败请求的警报必须拆分为多个警报, 因为没有提供相同
 - Microsoft.Insights/actiongroups/*
 - Microsoft.Insights/AlertRules/*
 - Microsoft.Insights/metricAlerts/*
-- AlertsManagement/smartDetectorAlertRules/*
+- Microsoft.AlertsManagement/smartDetectorAlertRules/*
 
 > [!NOTE]
 > 除了获取上述权限以外，还应额外地将订阅注册到 Microsoft.AlertsManagement 资源提供程序。 只有这样，才能成功迁移 Application Insights 中的“失败异常”警报。 
@@ -258,11 +258,18 @@ Mongo 失败请求的警报必须拆分为多个警报, 因为没有提供相同
 
 ### <a name="validation-failed"></a>验证失败
 
-由于最近对订阅中的经典警报规则做了某些更改，无法迁移该订阅。 此问题是暂时性的。 几天后当迁移状态恢复为“准备好迁移”时，可以重新开始迁移。 
+由于最近对订阅中的经典警报规则做了某些更改，无法迁移该订阅。 此问题是暂时性的。 几天后当迁移状态恢复为“准备好迁移”时，可以重新开始迁移。
 
-### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>策略或范围锁阻止我们迁移你的规则
+### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>范围锁阻止我们迁移规则
 
-在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是，有某个策略或范围锁阻止我们创建资源。 根据具体的策略或范围锁，无法迁移某些或所有规则。 暂时删除该范围锁或策略并再次触发迁移即可解决此问题。
+在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是, 范围锁可防止我们创建或删除资源。 根据范围锁, 无法迁移部分或全部规则。 若要解决此问题, 可以删除[迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中列出的订阅、资源组或资源的作用域锁定, 并再次触发迁移。 在迁移过程中, 不能禁用作用域锁定, 必须将其删除。 [详细了解如何管理范围锁](../../azure-resource-manager/resource-group-lock-resources.md#portal)。
+
+### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>具有 "拒绝" 影响的策略阻止我们迁移你的规则
+
+在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是, 策略可以阻止我们创建资源。 根据策略, 无法迁移部分或全部规则。 [迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中列出了阻止进程的策略。 通过以下方法之一解决此问题:
+
+- 从策略分配中排除在迁移过程中的订阅或资源组。 [了解有关管理策略排除范围的详细信息](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion)。
+- 删除或更改 "audit" 或 "append" 的效果 (例如, 可以解决与缺少标记相关的问题)。 [了解有关管理策略的详细信息](../../governance/policy/concepts/definition-structure.md#policy-rule)。
 
 ## <a name="next-steps"></a>后续步骤
 

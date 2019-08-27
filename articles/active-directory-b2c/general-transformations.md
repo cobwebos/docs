@@ -1,33 +1,33 @@
 ---
-title: Azure Active Directory B2C 标识体验框架架构的常规声明转换示例 | Microsoft Docs
-description: Azure Active Directory B2C 标识体验框架架构的常规声明转换示例。
+title: Azure Active Directory B2C 的标识体验框架架构的一般声明转换示例
+description: Azure Active Directory B2C 的标识体验框架架构的一般声明转换示例。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a5f8068ea7e97343749c719d2d0800e20701079c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7cea33cb61f8f8d0fe305a757f11c80bc5da24ca
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510984"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032901"
 ---
 # <a name="general-claims-transformations"></a>常规声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文演示了在 Azure Active Directory (Azure AD) B2C 中使用标识体验框架架构的常规声明转换的过程。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
+本文提供了有关在 Azure Active Directory B2C (Azure AD B2C) 中使用标识体验框架架构的一般声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
-检查 inputClaim  是否存在并将 outputClaim  相应地设置为 true 或 false。
+检查 inputClaim 是否存在并将 outputClaim 相应地设置为 true 或 false。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |任意 | 需要验证是否存在的输入声明。 |
 | OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
@@ -38,7 +38,7 @@ ms.locfileid: "66510984"
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim" />
-  </InputClaims>                    
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isEmailPresent" TransformationClaimType="outputClaim" />
   </OutputClaims>
@@ -49,19 +49,19 @@ ms.locfileid: "66510984"
 
 - 输入声明：
   - **inputClaim**: someone@contoso.com
-- 输出声明： 
-    - **outputClaim**: true
+- 输出声明：
+  - **outputClaim**: true
 
 ## <a name="hash"></a>哈希
 
-使用加密盐和机密对提供的纯文本执行哈希。
+使用加密盐和机密对提供的纯文本执行哈希。 使用的哈希算法是 SHA-256。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | 纯文本 | 字符串 | 要加密的输入声明 |
-| InputClaim | 加密盐 | 字符串 | 加密盐参数。 可以使用 `CreateRandomString` 声明转换创建随机值。 |
-| InputParameter | randomizerSecret | 字符串 | 指向现有的 Azure AD B2C 策略密钥  。 若要新建一个：在 Azure AD B2C 租户中，请选择“B2C 设置 > 标识体验框架”  。 选择“策略密钥”，查看租户中的可用密钥。  选择 **添加** 。 对于“选项”，请选择“手动”   。 提供名称（可能会自动添加前缀 B2C_1A_。）。 在“机密”框中，输入要使用的任何机密，如 1234567890。 对于“密钥用法”，请选择“机密”  。 选择“创建”  。 |
-| OutputClaim | hash | 字符串 | 调用此声明转换后生成的 ClaimType。 在 `plaintext` inputClaim 中配置的声明。 |
+| InputClaim | 纯文本 | string | 要加密的输入声明 |
+| InputClaim | 加密盐 | string | 加密盐参数。 可以使用 `CreateRandomString` 声明转换创建随机值。 |
+| InputParameter | randomizerSecret | string | 指向现有 Azure AD B2C**策略密钥**。 若要创建新的策略密钥:在 Azure AD B2C 租户中的 "**管理**" 下, 选择 "**标识体验框架**"。 选择 "**策略密钥**", 查看租户中可用的密钥。 选择 **添加** 。 对于“选项”，请选择“手动”。 提供一个名称 (可能会自动添加前缀*B2C_1A_* 。)。 在 "**机密**" 文本框中, 输入要使用的任何机密, 如1234567890。 对于“密钥用法”，请选择“签名”。 选择“创建”。 |
+| OutputClaim | hash | string | 调用此声明转换后生成的 ClaimType。 在 `plaintext` inputClaim 中配置的声明。 |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
@@ -81,11 +81,8 @@ ms.locfileid: "66510984"
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **plaintext**: MyPass@word1
-    - **加密盐**：487624568
-    - **randomizerSecret**：B2C_1A_AccountTransformSecret
-- 输出声明： 
-    - **outputClaim**：CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=
-
-
-
+  - **plaintext**: MyPass@word1
+  - **加密盐**：487624568
+  - **randomizerSecret**：B2C_1A_AccountTransformSecret
+- 输出声明：
+  - **outputClaim**：CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=

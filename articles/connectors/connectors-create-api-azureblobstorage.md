@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: d9c29837e99d327112e6a9d648a5c56cc35e8555
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: d57ea1a881980203b1c8f216239b27b64f0d71cd
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296666"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051058"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>使用 Azure 逻辑应用在 Azure Blob 存储中创建和管理 Blob
 
@@ -34,15 +35,15 @@ ms.locfileid: "67296666"
 
 ## <a name="limits"></a>限制
 
-* 默认情况下，Azure Blob 存储操作可以读取或写入的文件*50 MB 或更小*。 若要处理大于 50 MB，但最多为 1024 MB 的文件，Azure Blob 存储操作支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 **获取 blob 内容**操作隐式使用分块。
+* 默认情况下, Azure Blob 存储操作可以读取或写入*50 MB 或更小*的文件。 若要处理大于 50 MB 但高达 1024 MB 的文件, Azure Blob 存储操作支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 "**获取 blob 内容**" 操作隐式使用分块。
 
-* Azure Blob 存储触发器不支持分块。 触发器请求时文件内容，选择为 50 MB 的文件或更小。 若要获取大于 50 MB 的文件，请遵循以下模式：
+* Azure Blob 存储触发器不支持分块。 请求文件内容时, 触发器仅选择 50 MB 或更小的文件。 若要获取大于 50 MB 的文件，请遵循以下模式：
 
-  * 使用返回文件的属性，如 Azure Blob 存储触发器**添加或修改 （仅属性） blob**。
+  * 使用 Azure Blob 存储触发器, 该触发器返回文件属性, 例如**添加或修改 Blob 时 (仅属性)** 。
 
-  * 请按照使用 Azure Blob 存储触发器**获取 blob 内容**操作，用于读取完整的文件，并隐式使用分块。
+  * 使用 Azure Blob 存储**获取 Blob 内容**操作执行触发器, 该操作读取完整的文件并隐式使用分块。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -56,13 +57,13 @@ ms.locfileid: "67296666"
 
 在 Azure 逻辑应用中，每个逻辑应用都必须从[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例并开始运行应用的工作流。
 
-此示例演示如何开始使用逻辑应用工作流**添加或修改 （仅属性） blob**触发器时添加或更新存储容器中 blob 的属性获取。
+此示例演示如何在存储容器中添加或更新 blob 的属性时, 使用**添加或修改 Blob 时 (仅限属性)** 触发逻辑应用工作流。
 
-1. 在中[Azure 门户](https://portal.azure.com)或 Visual Studio 中，创建空白逻辑应用，这将打开逻辑应用设计器。 此示例使用 Azure 门户。
+1. 在[Azure 门户](https://portal.azure.com)或 Visual Studio 中, 创建一个可打开逻辑应用设计器的空白逻辑应用。 此示例使用 Azure 门户。
 
 2. 在搜索框中，输入“azure blob”作为筛选器。 在触发器列表中，选择所需的触发器。
 
-   此示例使用以下触发器：**添加或修改 （仅属性） blob**
+   此示例使用以下触发器：**添加或修改 blob 时 (仅属性)**
 
    ![选择触发器](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -70,7 +71,7 @@ ms.locfileid: "67296666"
 
    对于此示例，请选择要监视的容器和文件夹。
 
-   1. 在“容器”框中，选择文件夹图标。 
+   1. 在“容器”框中，选择文件夹图标。
 
    2. 在文件夹列表中选择右尖括号 ( **>** )，然后以浏览方式查找并选择所需的文件夹。
 
@@ -78,7 +79,7 @@ ms.locfileid: "67296666"
 
    3. 选择你希望触发器以多大时间间隔和频率来检查文件夹中的更改。
 
-4. 完成后，请在设计器工具栏上选择“保存”  。
+4. 完成后，请在设计器工具栏上选择“保存”。
 
 5. 现在请继续向逻辑应用添加一个或多个操作，以便完成需对触发器结果执行的任务。
 
@@ -90,11 +91,11 @@ ms.locfileid: "67296666"
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 此示例使用 Azure 门户。
 
-2. 在逻辑应用设计器中，在触发器或操作，选择**新步骤**。
+2. 在逻辑应用设计器中的触发器或操作下, 选择 "**新建步骤**"。
 
    ![添加操作](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
-   若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 选择加号 ( **+** ) 的出现，然后选择**添加操作**。
+   若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 选择出现的加号 ( **+** ), 然后选择 "**添加操作**"。
 
 3. 在搜索框中，输入“azure blob”作为筛选器。 从操作列表中选择所需的操作。
 
@@ -107,13 +108,13 @@ ms.locfileid: "67296666"
 
    对于此示例，请选择所需的文件。
 
-   1. 从“Blob”框中选择文件夹图标。 
+   1. 从“Blob”框中选择文件夹图标。
   
       ![选择文件夹](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
 
-   2. 根据 Blob 的 **ID** 号查找并选择所需的文件。 可以在 Blob 的元数据中找到此 ID  号，该元数据是由前述 Blob 存储触发器返回的。
+   2. 根据 Blob 的 **ID** 号查找并选择所需的文件。 可以在 Blob 的元数据中找到此 ID 号，该元数据是由前述 Blob 存储触发器返回的。
 
-5. 完成后，请在设计器工具栏上选择“保存”  。
+5. 完成后，请在设计器工具栏上选择“保存”。
 若要测试逻辑应用，请确保所选文件夹包含一个 Blob。
 
 此示例仅获取 Blob 的内容。 若要查看这些内容，请使用另一连接器添加另一操作，以便创建包含此 Blob 的文件。 例如，添加一个 OneDrive 操作，以便根据 Blob 内容创建文件。

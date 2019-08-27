@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 安全中心处理安全警报 | Microsoft 文档
-description: 本文档旨在帮助你使用 Azure 安全中心功能来处理安全事件。
+title: 管理 Azure 安全中心的安全事件 |Microsoft Docs
+description: 本文档可帮助你使用 Azure 安全中心管理安全事件。
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -12,53 +12,62 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2018
+ms.date: 8/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: 68bcd2b1916ccdf68eaa31ed251661a6b7e1bca0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df487b5d16568605544fb69111579bd4a9fb045f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60704059"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047594"
 ---
-# <a name="handling-security-incidents-in-azure-security-center"></a>处理 Azure 安全中心的安全事件
-会审和调查安全警报可能会非常耗时，即使对于技术高超的安全分析员也是如此，并且很多人不知道从何处开始。 通过使用[分析](security-center-detection-capabilities.md)来连接不同的[安全警报](security-center-managing-and-responding-alerts.md)之间的信息，安全中心可以提供攻击活动及其所有相关警报的单一视图，让你快速了解攻击者所采取的操作以及哪些资源受到了影响。
+# <a name="manage-security-incidents-in-azure-security-center"></a>管理 Azure 安全中心的安全事件
 
-本文档介绍如何在安全中心使用安全警报功能，帮助你处理安全事件。
+会审和调查安全警报对于最有经验的安全分析师来说是非常耗时的, 而且很多人都很难知道从何处着手。 通过使用[分析](security-center-detection-capabilities.md)来连接不同的[安全警报](security-center-managing-and-responding-alerts.md)之间的信息，安全中心可以提供攻击活动及其所有相关警报的单一视图，让你快速了解攻击者所采取的操作以及哪些资源受到了影响。
+
+本主题介绍安全中心中的事件, 以及如何使用修正其警报。
 
 ## <a name="what-is-a-security-incident"></a>什么是安全事件？
-在安全中心，安全事件是对资源的所有警报汇总，与 [网络攻击链](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/) 模式保持一致。 事件显示在 [安全警报](security-center-managing-and-responding-alerts.md) 磁贴和边栏选项卡中。 事件会显示相关警报列表，可使你获取有关每个匹配项的详细信息。
+
+在安全中心，安全事件是对资源的所有警报汇总，与 [网络攻击链](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/) 模式保持一致。 事件显示在 "[安全警报](security-center-managing-and-responding-alerts.md)" 列表中。 单击 "ona 事件" 以查看相关警报, 使你可以获取有关每个匹配项的详细信息。
 
 ## <a name="managing-security-incidents"></a>管理安全事件
-可以通过查看“安全警报”磁贴查看当前安全事件。 访问 Azure 门户，按照以下步骤查看每个安全事件的详细信息：
 
-1. 在安全中心仪表板中，可以看到“ **安全警报** ”磁贴。
+1. 在安全中心仪表板上, 单击 "**安全警报**" 磁贴。 将列出事件和警报。 请注意，安全事件描述相比其他警报具有不同的图标。
 
-    ![安全中心的“安全警报”磁贴](./media/security-center-incident/security-center-incident-fig1.png)
+    ![查看安全事件](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-2. 单击此磁贴以展开查看，如果检测到安全事件，它会在安全警报图下方出现，如下所示：
+1. 若要查看详细信息, 请单击某个事件。 "**检测到安全事件**" 边栏选项卡显示更多详细信息。 "**常规信息**" 一节可以深入了解触发安全警报的内容。 如果警报仍处于活动状态, 则它会显示目标资源、源 IP 地址 (如果适用), 以及有关如何修正的建议等信息。  
 
-    ![安全事件](./media/security-center-incident/security-center-incident-fig2.png)
+    ![响应 Azure 安全中心的安全事件](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
 
-3. 请注意，安全事件描述相比其他警报具有不同的图标。 单击事件即可查看有关此事件的更多详细信息。
+1. 若要获取有关每个警报的详细信息, 请单击 "警报"。 安全中心提供的修正建议因安全警报而异。 安全中心提供的修正建议因安全警报而异。 
 
-    ![安全事件](./media/security-center-incident/security-center-incident-fig3.png)
+   > [!NOTE]
+   > 同一个警报可以作为事件的一部分存在, 也可以作为独立的警报显示。
 
-4. 在“事件”边栏选项卡上，将看到有关此安全事件的详细信息，其中包括其完整的说明、严重程度（这种情况下严重程度较高）、当前状态（在本例中仍*在发生*，这表明用户尚未对它采取措施 - 可以通过右键单击“安全警报”边栏选项卡中的事件完成操作）、被攻击的资源（在本例中为 *VM1*）、事件的补救步骤，并且在底部窗格中有包含在此事件中的警报。   如果想要获取每个警报的详细信息，只需单击它，另一个边栏选项卡会打开，如下所示：
+    ![警报详细信息](./media/security-center-incident/security-center-incident-alert.png)
 
-    ![安全事件](./media/security-center-incident/security-center-incident-fig4.png)
+1. 按照为每个警报提供的补救步骤进行操作。
 
-此边栏选项卡上的信息将因警报而有所不同。 请参阅 [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) ，了解更多有关如何管理这些警报的详细信息。 有关此功能的一些重要注意事项：
+有关警报的详细信息, 请[管理和响应安全警报](security-center-managing-and-responding-alerts.md)。
 
-* 使用新的筛选器，可以自定义视图，以仅显示事件、仅显示警报，或两者。
-* 同一个警报可以作为事件（如果适用）的一部分，也可以作为独立的警报显示。
+以下主题将指导你根据资源类型来完成不同的警报:
 
-## <a name="see-also"></a>另请参阅
-在本文档中，已经学习了如何在安全中心使用安全事件功能。 若要了解有关安全中心的详细信息，请参阅以下内容：
+* [IaaS Vm 和服务器警报](security-center-alerts-iaas.md)
+* [本机计算警报](security-center-alerts-compute.md)
+* [数据服务警报](security-center-alerts-data-services.md)
 
-* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)
-* [Azure 安全中心检测功能](security-center-detection-capabilities.md)
+以下主题介绍安全中心如何使用它从与 Azure 基础结构集成所收集的不同遥测, 以便为 Azure 上部署的资源应用其他保护层:
+
+* [服务层警报](security-center-alerts-service-layer.md)
+* [与 Azure 安全产品集成](security-center-alerts-integration.md)
+
+## <a name="see-also"></a>请参阅
+在本文档中，已经学习了如何在安全中心使用安全事件功能。 若要了解有关安全中心的详细信息，请参阅以下文章：
+
+* [Azure 安全中心的安全警报](security-center-alerts-overview.md)。
+* [管理安全警报](security-center-managing-and-responding-alerts.md)
 * [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
-* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)
 * [Azure 安全中心常见问题解答](security-center-faq.md)-- 查找有关使用服务的常见问题。
 * [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)-- 查找关于 Azure 安全性及合规性的博客文章。

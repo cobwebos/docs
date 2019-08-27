@@ -15,6 +15,8 @@
       href: ./interactive-query-tutorial-analyze-flight-data.md
 - name: 概念
   items:
+    - name: 比较存储选项
+      href: ../hdinsight-hadoop-compare-storage-options.md
     - name: 安装 HDInsight 应用
       href: ../hdinsight-apps-install-applications.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
     - name: 容量计划

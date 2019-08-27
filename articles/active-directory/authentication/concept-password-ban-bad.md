@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe2b4ed91969248bc0818f98306a108555eac424
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 77309a73f3c5641aa8a7667015ed02808e376348
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853053"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032881"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>消除你的组织中的错误密码
 
@@ -121,7 +121,7 @@ Azure AD 密码保护旨在有效地阻止可能在密码喷涂攻击中使用�
 
 示例：假定已禁止密码“abcdef”，并且用户尝试将密码更改为以下密码之一：
 
-“abcdeg”（最后一个字符由“f”变为“g”）    ** ；“abcdefg”（末尾附加了“g”）   ** ；“abcde”（删除了末尾的尾随“f”）     **
+"abcdeg" *(最后一个字符从 "f" 更改为 "g")* "abcdefg" *"(g 附加到末尾)* " abcde...z " *(末尾的" f "已从末尾删除)*
 
 上述每个密码都不与禁止的密码“abcdef”精确匹配。 但是, 由于每个示例都处于禁止字词 "abcdef" 的编辑距离 1, 因此它们被视为与 "abcdef" 匹配。
 
@@ -160,7 +160,7 @@ Azure AD 密码保护旨在有效地阻止可能在密码喷涂攻击中使用�
 
 |   | 带有全局禁止密码列表的 Azure AD 密码保护 | 带有自定义禁止密码列表的 Azure AD 密码保护|
 | --- | --- | --- |
-| 仅限云的用户 | Azure AD Free | Azure AD Premium P1 或 P2 |
+| 仅限云的用户 | Azure AD 免费版 | Azure AD Premium P1 或 P2 |
 | 从本地 Windows Server Active Directory 同步的用户 | Azure AD Premium P1 或 P2 | Azure AD Premium P1 或 P2 |
 
 > [!NOTE]

@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 0d6721c2ef24665035cc4a99c9bf3804b312fe75
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900167"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033263"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>创建新的 Dynamics 365 业务中心产品/服务
 
@@ -354,7 +354,7 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 ## <a name="supplemental-content"></a>补充内容
 
-此页可提供有关产品/服务的其他必需信息。
+此页面允许你提供有关产品/服务的其他信息, 以帮助我们验证你的产品/服务。 此信息不会向客户显示, 也不会发布到 marketplace。
 
 ### <a name="target-release"></a>目标版本
 
@@ -362,15 +362,15 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 ### <a name="supported-editions"></a>支持的版本
 
-指示你的解决方案是否支持 Microsoft Dynamics 365 Business Central 的 Essentials 和/或高级版。 必须至少选择一个值。
+如果产品/服务需要 Microsoft Dynamics 365 Business Central 的高级版, 请选择 "仅限**高级**版"。 否则, 请选择 "**基本**" 和 "**高级**"。
 
 ### <a name="key-usage-scenario"></a>密钥使用方案
 
-上传`.pdf`一个文件, 该文件列出文档中列出的产品/服务的关键使用方案 (.pdf 格式)。 我们在为 marketplace 批准产品/服务之前, 验证团队可能会验证这里列出的所有方案。
+必须上载一个`.pdf`文件, 该文件列出文档中列出的产品/服务的关键使用方案 (.pdf 格式)。 我们在为 marketplace 批准产品/服务之前, 验证团队可能会验证这里列出的所有方案。
 
 ### <a name="app-tests-automation"></a>应用测试自动化
 
-还可在此处上传**应用测试自动化**文件 (app.config)。
+你可以选择在此处上传**应用测试自动化**文件 (app.config)。
 
 ### <a name="test-accounts"></a>测试帐户
 

@@ -69,15 +69,9 @@
         - name: 配置容器
           href: text-analytics-resource-container-config.md
         - name: 使用容器实例
-          items:
-            - name: 情绪分析
-              href: how-tos/deploy-sentiment-analysis-on-container-instances.md
+          href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: 使用 Kubernetes 服务 (AKS)
-          items:
-            - name: 语言检测
-              href: how-tos/use-language-detection-on-aks.md
-            - name: 情绪分析
-              href: how-tos/use-sentiment-analysis-on-aks.md
+          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
     - name: 使用文本分析连接服务
       href: vs-text-connected-service.md
 - name: 引用

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 22a27ba19670344f351205b6a4865bf85daf0bab
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8fd3aedd2e371e511730fd98751ae3214545c489
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900259"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034585"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET Standard API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -33,7 +33,14 @@ ms.locfileid: "69900259"
 |**当前受支持的框架**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 |**报告问题**|[报告问题](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
-## <a name="release-notes"></a>发行说明
+## <a name="release-notes-for-200-series"></a>2\.0.0 系列的发行说明
+2.0.0 系列采用[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的依赖项, 并对 Cosmos DB 终结点执行性能改进和命名空间合并。
+
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
+* 2\.0.0 表 SDK 的初始预览, 它依赖于[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的性能改进和命名空间合并, 以 Cosmos DB 端点。 公共 API 保持不变。
+
+## <a name="release-notes-for-100-series"></a>1\.0.0 系列发行说明
+1.0.0 系列依赖于[Microsoft. Azure](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)。
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5-预览
 * Bug 修复
@@ -77,6 +84,12 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 这种跨平台 .NET Standard 库将替换 .NET Framework 库[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) 。) 将替换[CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。
 
+### <a name="200-series"></a>2.0.0 系列
+| Version | 发布日期 | 停用日期 |
+| --- | --- | --- |
+| [2.0.0-preview](#2.0.0-preview) |Auguest 22, 2019 |--- |
+
+### <a name="100-series"></a>1.0.0 系列
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
 | [1.0.5-预览](#1.0.5-preview) |Auguest 20, 2019 |--- |

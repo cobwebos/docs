@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/16/2019
-ms.openlocfilehash: 69a3b4fc966b6dd506d91e52b33967a2e001367f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 6357b5a477390f484a47167a0b9d2e524d37c9ac
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575791"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035775"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
-自动故障转移组是一项 SQL 数据库功能, 可用于管理 SQL 数据库服务器上的一组数据库的复制和故障转移, 或者管理托管实例中的所有数据库到另一个区域。 它是一种基于现有[活动异地复制](sql-database-active-geo-replication.md)功能的声明性抽象, 旨在简化大规模地部署和管理异地复制的数据库。 可以手动启动故障转移，也可以基于用户定义的策略委托 SQL 数据库服务进行故障转移。 使用后一种做法可在发生下述情况后自动恢复次要区域中的多个相关数据库：灾难性故障或其他导致主要区域中 SQL 数据库服务完全或部分丧失可用性的计划外事件。 故障转移组可以包含一个或多个数据库, 通常由同一应用程序使用。 此外，你还可以使用可读辅助数据库卸载只读查询工作负荷。 由于自动故障转移组涉及多个数据库，因此这些数据库必须在主服务器上进行配置。 故障转移组中数据库的主服务器和辅助服务器必须位于同一订阅中。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器。
+自动故障转移组是一项 SQL 数据库功能，可便于管理 SQL 数据库服务器中一组数据库或托管实例中所有数据库到另一区域的复制和故障转移。 它是建立在现有[活动异地复制](sql-database-active-geo-replication.md)功能基础之上的声明性抽象，旨在简化异地复制的数据库的大规模部署和管理。 可以手动启动故障转移，也可以基于用户定义的策略委托 SQL 数据库服务进行故障转移。 使用后一种做法可在发生下述情况后自动恢复次要区域中的多个相关数据库：灾难性故障或其他导致主要区域中 SQL 数据库服务完全或部分丧失可用性的计划外事件。 一个故障转移组可以包含一个或多个数据库，通常由同一个应用程序使用。 此外，你还可以使用可读辅助数据库卸载只读查询工作负荷。 由于自动故障转移组涉及多个数据库，因此这些数据库必须在主服务器上进行配置。 故障转移组中数据库的主服务器和辅助服务器必须位于同一订阅中。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器。
 
 > [!NOTE]
 > 如果在 SQL 数据库服务器上使用单一数据库或共用数据库，并要在相同或不同的区域中使用多个辅助数据库，请使用[活动异地复制](sql-database-active-geo-replication.md)。 
@@ -43,10 +43,10 @@ ms.locfileid: "69575791"
 
 - **故障转移组 (FOG)**
 
-  故障转移组是一组命名的数据库, 由单个 SQL 数据库服务器管理, 也可以在单个托管实例中进行故障转移, 在所有或某些主数据库因主要区域中断而变得不可用时, 可以将其作为一个单元故障转移到另一个区域。 为托管实例创建时, 故障转移组包含实例中的所有用户数据库, 因此只能在实例上配置一个故障转移组。
+  故障转移组是由一个 SQL 数据库服务器管理或位于一个托管实例中的一组指定数据库，当主要区域的服务中断导致所有或部分主要数据库不可用时，这组数据库可作为单元故障转移到另一区域。 为托管实例创建故障转移组后，该组将包含该实例中的所有用户数据库，因此，只能在一个实例上配置一个故障转移组。
   
   > [!IMPORTANT]
-  > 故障转移组的名称在`.database.windows.net`域中必须是全局唯一的。
+  > 故障转移组的名称在 `.database.windows.net` 域中必须全局唯一。
 
 - **SQL 数据库服务器**
 
@@ -54,18 +54,18 @@ ms.locfileid: "69575791"
 
 - **主要节点**
 
-  承载故障转移组中的主数据库的 SQL 数据库服务器或托管实例。
+  托管故障转移组中的主要数据库的 SQL 数据库服务器或托管实例。
 
 - **辅助节点**
 
-  在故障转移组中托管辅助数据库的 SQL 数据库服务器或托管实例。 辅助节点不能与主要节点位于相同的区域。
+  托管故障转移组中的辅助数据库的 SQL 数据库服务器或托管实例。 辅助节点不能与主要节点位于相同的区域。
 
 - **将单一数据库添加到故障转移组**
 
   可以将同一 SQL 数据库服务器上的多个单一数据库放入同一故障转移组。 如果将单一数据库添加到故障转移组，则它会在辅助服务器上自动使用相同的版本和计算大小创建辅助数据库。  创建故障转移组时指定该服务器。 如果在辅助服务器中添加已具有辅助数据库的数据库，则该异地复制链接由组继承。 在不属于故障转移组的服务器中添加已有辅助数据库的数据库时，会在辅助服务器中创建新的辅助节点。
   
   > [!IMPORTANT]
-  > 在托管实例中, 将复制所有用户数据库。 无法选择复制故障转移组中的一部分用户数据库。
+  > 在托管实例中，将复制所有用户数据库。 无法选择复制故障转移组中的一部分用户数据库。
 
 - **将弹性池中的数据库添加到故障转移组**
 
@@ -73,18 +73,18 @@ ms.locfileid: "69575791"
   
 - **DNS 区域**
 
-  在创建新实例时自动生成的唯一 ID。 为此实例预配了多域 (SAN) 证书, 以对同一 DNS 区域中的任何实例的客户端连接进行身份验证。 同一故障转移组中的两个托管实例必须共享 DNS 区域。 
+  创建新实例时自动生成的唯一 ID。 将为此实例预配一个多域 (SAN) 证书，以便对与同一 DNS 区域中的任何实例建立的客户端连接进行身份验证。 同一故障转移组中的两个托管实例必须共享 DNS 区域。 
   
   > [!NOTE]
   > 为 SQL 数据库服务器创建的故障转移组不需要 DNS 区域 ID。
 
 - **故障转移组读写侦听器**
 
-  指向当前主副本的 URL 的 DNS CNAME 记录。 这是在故障转移组创建时自动创建的, 并允许读写 SQL 工作负荷在故障转移后主数据库发生更改时以透明方式重新连接到主数据库。 在 SQL 数据库服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.database.windows.net`。 在托管实例上创建故障转移组时, 侦听器 URL 的 DNS CNAME 记录的格式`<fog-name>.zone_id.database.windows.net`为。
+  一个 DNS CNAME 记录，指向当前主要节点的 URL。 此记录是创建故障转移组时自动创建的，可让读写 SQL 工作负荷在故障转移发生后主节点发生更改时，以透明方式重新连接到主数据库。 在 SQL 数据库服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.database.windows.net`。 在托管实例上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.zone_id.database.windows.net`。
 
 - **故障转移组只读侦听器**
 
-  构成的 DNS CNAME 记录，指向只读侦听器，后者指向辅助节点的 URL。 它是在创建故障转移组时自动创建的, 并允许只读 SQL 工作负荷使用指定的负载均衡规则以透明方式连接到辅助工作负荷。 在 SQL 数据库服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.secondary.database.windows.net`。 在托管实例上创建故障转移组时, 侦听器 URL 的 DNS CNAME 记录的格式`<fog-name>.zone_id.secondary.database.windows.net`为。
+  构成的 DNS CNAME 记录，指向只读侦听器，后者指向辅助节点的 URL。 此记录是创建故障转移组时自动创建的，可让只读 SQL 工作负荷使用指定的负载均衡规则以透明方式连接到辅助数据库。 在 SQL 数据库服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.secondary.database.windows.net`。 在托管实例上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.zone_id.secondary.database.windows.net`。
 
 - **自动故障转移策略**
 
@@ -125,13 +125,13 @@ ms.locfileid: "69575791"
 通过[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 管理故障转移组的权限。 [SQL Server 参与者](../role-based-access-control/built-in-roles.md#sql-server-contributor)角色拥有管理故障转移组所需的全部权限。 
 
 ### <a name="create-failover-group"></a>创建故障转移组
-若要创建某个故障转移组，需要对主服务器和辅助服务器，以及该故障转移组中的所有数据库拥有 RBAC 写入访问权限。 对于托管实例, 需要具有对主托管实例和辅助托管实例的 RBAC 写入访问权限, 但对单个数据库的权限是不相关的, 因为无法在故障转移组中添加或删除单个托管实例数据库。 
+若要创建某个故障转移组，需要对主服务器和辅助服务器，以及该故障转移组中的所有数据库拥有 RBAC 写入访问权限。 对于托管实例，需要对主要和辅助托管实例拥有 RBAC 写入访问权限，但对单个数据库的权限无关紧要，因为无法在故障转移组中添加或删除单个托管实例数据库。 
 
 ### <a name="update-a-failover-group"></a>更新故障转移组
-若要更新故障转移组, 需要对故障转移组以及当前主服务器或托管实例上的所有数据库的 RBAC 写入访问权限。  
+若要更新某个故障转移组，需要对该故障转移组，以及当前主服务器或托管实例上的所有数据库拥有 RBAC 写入访问权限。  
 
 ### <a name="failover-a-failover-group"></a>对故障转移组进行故障转移
-若要对故障转移组进行故障转移, 需要在新的主服务器或托管实例上对故障转移组的 RBAC 写入访问权限。 
+若要对某个故障转移组进行故障转移，需要对新的主服务器或托管实例上的故障转移组拥有 RBAC 写入访问权限。 
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>有关将故障转移组与单一数据库和弹性池配合使用的最佳做法
 
@@ -171,7 +171,7 @@ ms.locfileid: "69575791"
   > [!IMPORTANT]
   > DTU 少于或等于 800、使用异地复制的数据库超过 250 个的弹性数据库池可能会遇到更长的计划故障转移和性能下降等问题。  这些问题更可能在写密集型工作负荷下发生，例如，异地复制终结点广泛分隔于各个地理位置，或者每个数据库使用多个辅助终结点。  当异地复制滞后随着时间推移增加时，这些问题的症状便会显现。  这种滞后可以使用 [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) 进行监视。  如果发生这些问题，缓解方法包括增加池 DTU 的数量或者减少同一池中异地复制数据库的数量。
 
-## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>将故障转移组用于托管实例的最佳做法
+## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>有关将故障转移组与托管实例配合使用的最佳做法
 
 > [!IMPORTANT]
 > 托管实例的自动故障转移组功能以公共预览版提供。
@@ -185,13 +185,13 @@ ms.locfileid: "69575791"
 > [!NOTE]
 > 有关将托管实例添加到使用故障转移组的详细分步教程, 请参阅[将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)。 
 
-如果你的应用程序将托管实例用作数据层, 请在设计业务连续性时遵循以下通用准则:
+如果应用程序使用托管实例作为数据层，进行业务连续性设计时，请遵循以下一般准则：
 
 - **在主要实例所在的同一 DNS 区域中创建辅助实例**
 
-  若要确保故障转移后与主要实例的连接不中断，主要实例和辅助实例必须位于同一 DNS 区域。 它将保证相同的多域 (SAN) 证书可用于对与故障转移组中的两个实例之一的客户端连接进行身份验证。 准备好将应用程序部署到生产环境后，在不同的区域中创建一个辅助实例，并确保它与主要实例共享 DNS 区域。 可以通过使用 Azure 门户、PowerShell 或`DNS Zone Partner` REST API 来指定可选参数来执行此操作。 
+  若要确保故障转移后与主要实例的连接不中断，主要实例和辅助实例必须位于同一 DNS 区域。 将会保证同一个多域 (SAN) 证书可用于对与故障转移组中的两个实例之一建立的客户端连接进行身份验证。 准备好将应用程序部署到生产环境后，在不同的区域中创建一个辅助实例，并确保它与主要实例共享 DNS 区域。 为此，可以使用 Azure 门户、PowerShell 或 REST API 指定 `DNS Zone Partner` 可选参数。 
 
-  有关在与主实例相同的 DNS 区域中创建辅助实例的详细信息, 请参阅[用托管实例管理故障转移组 (预览)](#powershell-managing-failover-groups-with-managed-instances-preview)。
+  有关在主要实例所在的同一 DNS 区域中创建辅助实例的详细信息，请参阅[使用托管实例管理故障转移组（预览版）](#powershell-managing-failover-groups-with-managed-instances-preview)。
 
 - **在两个实例之间启用复制流量**
 
@@ -206,7 +206,7 @@ ms.locfileid: "69575791"
 
 - **使用读写侦听器处理 OLTP 工作负荷**
 
-  执行 OLTP 操作时，请使用 `<fog-name>.zone_id.database.windows.net` 作为服务器 URL，连接将自动定向到主要节点。 此 URL 在故障转移后不会更改。 故障转移涉及更新 DNS 记录，以便仅在刷新客户端 DNS 缓存后，客户端连接才会重定向到新的主要节点。 由于辅助实例与主实例共享 DNS 区域, 因此客户端应用程序将能够使用同一个 SAN 证书重新连接到该区域。
+  执行 OLTP 操作时，请使用 `<fog-name>.zone_id.database.windows.net` 作为服务器 URL，连接将自动定向到主要节点。 此 URL 在故障转移后不会更改。 故障转移涉及更新 DNS 记录，以便仅在刷新客户端 DNS 缓存后，客户端连接才会重定向到新的主要节点。 由于辅助实例与主要实例共享 DNS 区域，客户端应用程序可以使用相同的 SAN 证书重新连接到辅助实例。
 
 - **直接连接到异地复制的辅助节点以进行只读查询**
 
@@ -215,7 +215,7 @@ ms.locfileid: "69575791"
   > [!NOTE]
   > 在某些服务层级中，Azure SQL 数据库支持通过[只读副本](sql-database-read-scale-out.md)使用只读副本的容量和连接字符串中的 `ApplicationIntent=ReadOnly` 参数对只读查询工作负荷进行负载均衡。 如果配置了异地复制的辅助节点，则可以使用此功能连接到主要位置或异地复制位置中的只读副本。
   > - 若要连接到主要位置中的只读副本，请使用 `<fog-name>.zone_id.database.windows.net`。
-  > - 若要连接到辅助位置中的只读副本, 请使用`<fog-name>.secondary.zone_id.database.windows.net`。
+  > - 若要连接到辅助位置中的只读副本，请使用 `<fog-name>.secondary.zone_id.database.windows.net`。
 
 - **可应对性能下降的问题**
 
@@ -225,7 +225,7 @@ ms.locfileid: "69575791"
 
   如果检测到服务中断，则 SQL 会自动触发读写故障转移是否我们的知识的最佳零数据丢失。 否则，它会等待 `GracePeriodWithDataLossHours` 指定的期限。 如果指定了 `GracePeriodWithDataLossHours`，则可能会丢失数据。 一般情况下，在中断期间 Azure 倾向于可用性。 如果不能承受丢失数据，请务必将 GracePeriodWithDataLossHours 设置为一个足够大的数字，例如 24 小时。
 
-  启动故障转移后，读写侦听器的 DNS 更新会立即发生。 此操作不会导致数据丢失。 但是，在正常情况下，切换数据库角色的过程可能需要 5 分钟时间。 在完成之前，新主要实例中的某些数据库仍是只读的。 如果使用 PowerShell 启动故障转移, 则整个操作都是同步的。 如果使用 Azure 门户启动, 则 UI 将指示完成状态。 如果使用 REST API 启动故障转移，可以使用标准 Azure 资源管理器的轮询机制来监视完成状态。
+  启动故障转移后，读写侦听器的 DNS 更新会立即发生。 此操作不会导致数据丢失。 但是，在正常情况下，切换数据库角色的过程可能需要 5 分钟时间。 在完成之前，新主要实例中的某些数据库仍是只读的。 如果使用 PowerShell 启动故障转移，则整个操作是同步的。 如果使用 Azure 门户启动故障转移，UI 将指示完成状态。 如果使用 REST API 启动故障转移，可以使用标准 Azure 资源管理器的轮询机制来监视完成状态。
 
   > [!IMPORTANT]
   > 使用手动组故障转移可将主要数据库移回到原始位置。 缓解导致故障转移的服务中断问题后，可将主要数据库移到原始位置。 为此，应该启动组的手动故障转移。
@@ -264,21 +264,24 @@ ms.locfileid: "69575791"
 > [!IMPORTANT]
 > 若要保证区域服务中断的业务连续性，则必须确保前端组件和数据库的地理冗余。
 
-## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>在托管实例与其 Vnet 之间启用异地复制
+## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>在托管实例及其 VNet 之间启用异地复制
 
-在两个不同的区域中的主要和辅助托管实例之间设置故障转移组时, 每个实例都是使用独立的虚拟网络隔离的。 若要允许这些 Vnet 之间的复制流量, 请确保满足以下先决条件:
+在两个不同的区域中的主要和辅助托管实例之间设置故障转移组时, 每个实例都是使用独立的虚拟网络隔离的。 若要允许这些 VNet 之间的复制流量，请确保满足以下先决条件：
 
-1. 这两个托管实例需要在不同的 Azure 区域中。
+1. 两个托管实例需位于不同的 Azure 区域中。
 1. 这两个托管实例必须是相同的服务层, 并且具有相同的存储大小。 
 1. 辅助托管实例必须为空 (无用户数据库)。
 1. 托管实例使用的虚拟网络需要通过[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 Express Route 连接。 当两个虚拟网络通过本地网络连接时, 请确保没有阻止端口5022和11000-11999 的防火墙规则。 不支持全局 VNet 对等互连。
-1. 这两个托管实例 Vnet 不能有重叠的 IP 地址。
-1. 需要设置网络安全组 (NSG), 以使端口5022和范围 11000 ~ 12000 为来自其他托管实例子网的连接打开入站和出站。 目的是允许实例之间的复制流量
+1. 两个托管实例 VNet 的 IP 地址不能重叠。
+1. 需要设置网络安全组 (NSG)，使端口 5022 和端口范围 11000~12000 保持打开，以便能够从其他托管实例子网建立入站和出站连接。 目的是允许实例之间的复制流量
 
    > [!IMPORTANT]
    > NSG 安全规则配置不当会导致数据库复制操作停滞。
 
-7. 辅助实例配置了正确的 DNS 区域 ID。 DNS 区域是托管实例的属性, 其 ID 包含在主机名称地址中。 当在每个 VNet 中创建第一个托管实例并且为同一子网中的所有其他实例分配相同的 ID 时, 区域 ID 将作为随机字符串生成。 分配后, 将无法修改 DNS 区域。 包含在同一故障转移组中的托管实例必须共享 DNS 区域。 为此, 可以在创建辅助实例时将主实例的区域 ID 作为 DnsZonePartner 参数的值传递。 
+7. 辅助实例上已配置正确的 DNS 区域 ID。 DNS 区域是托管实例的属性，其 ID 包含在主机名地址中。 在每个 VNet 中创建第一个托管实例时，将生成随机字符串形式的区域 ID。同一个 ID 将分配到同一子网中的所有其他实例。 分配后，无法修改 DNS 区域。 同一故障转移组中包含的托管实例必须共享 DNS 区域。 为此，在创建辅助实例时，可以传递主要实例的区域 ID 作为 DnsZonePartner 参数的值。 
+
+   > [!NOTE]
+   > 有关使用托管实例配置故障转移组的详细教程, 请参阅[将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)。
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>升级或降级主数据库
 
@@ -325,7 +328,7 @@ ms.locfileid: "69575791"
 
 ### <a name="powershell-managing-failover-groups-with-managed-instances-preview"></a>PowerShell：使用托管实例管理故障转移组（预览版）
 
-#### <a name="install-the-newest-pre-release-version-of-powershell"></a>安装最新的 PowerShell 预发行版本
+#### <a name="install-the-newest-pre-release-version-of-powershell"></a>安装 PowerShell 的最新预发行版
 
 1. 将 PowerShellGet 模块更新到 1.6.5（或最新预览版）。 请参阅 [PowerShell 预览版站点](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview)。
 
@@ -342,7 +345,7 @@ ms.locfileid: "69575791"
       import-module azurerm.sql
    ```
 
-#### <a name="powershell-commandlets-to-create-an-instance-failover-group"></a>PowerShell commandlet 创建实例故障转移组
+#### <a name="powershell-commandlets-to-create-an-instance-failover-group"></a>用于创建实例故障转移组的 PowerShell cmdlet
 
 | API | 描述 |
 | --- | --- |

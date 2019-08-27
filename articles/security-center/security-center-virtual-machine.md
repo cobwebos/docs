@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: aad42ea891b671bd481322d8b499d375ca06a7dc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5d13e7375c9e3cd874bc61b686ff2549c38da1f3
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512639"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036364"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure 安全中心与 Azure 虚拟机
 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -59,8 +59,6 @@ ms.locfileid: "69512639"
 
 > [!NOTE]
 > 若要详细了解可用的每个“防护策略”，请参阅[设置安全策略](tutorial-security-policy.md)一文。
-> 
-> 
 
 ## <a name="manage-security-recommendations"></a>管理安全建议
 安全中心将分析 Azure 资源的安全状态。 安全中心识别到潜在的安全漏洞时，会创建建议。 此建议指导完成配置所需控件的过程。
@@ -89,8 +87,8 @@ ms.locfileid: "69512639"
 
 ![安全运行状况](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
-## <a name="manage-and-respond-to-security-alerts"></a>管理并响应安全警报
-安全中心将从 Azure 资源、网络和已连接的合作伙伴解决方案（例如防火墙和终结点保护解决方案）自动收集、分析并整合日志数据，以检测真正的威胁并减少误报。 利用[检测功能](security-center-detection-capabilities.md)的各种聚合，安全中心能够生成按优先级排列的安全警报，帮助用户快速调查问题并提供有关如何减少潜在攻击的建议。
+## <a name="manage-and-respond-to-security-alerts"></a>管理和响应安全警报
+安全中心将从 Azure 资源、网络和已连接的合作伙伴解决方案（例如防火墙和终结点保护解决方案）自动收集、分析并整合日志数据，以检测真正的威胁并减少误报。 利用[检测功能](security-center-alerts-overview.md#detect-threats)的各种聚合，安全中心能够生成按优先级排列的安全警报，帮助用户快速调查问题并提供有关如何减少潜在攻击的建议。
 
 ![安全警报](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
 

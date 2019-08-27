@@ -3,17 +3,17 @@ title: Azure IoT Central 中的客户数据请求功能 | Microsoft Docs
 description: Azure IoT Central 中的客户数据请求功能
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/24/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 4c63ac8d6b16b2a0476600f67c66b2ccc8dc2aab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1775c8680b2e0d931c623d2e8ced2224205a767
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685552"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050488"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 
@@ -33,7 +33,7 @@ Azure Active Directory 对象 ID 用于标识用户和分配角色。 Azure IoT 
 
 ## <a name="deleting-customer-data"></a>删除客户数据
 
-只能通过 IoT Central 管理页删除用户数据。 应用程序管理员可以选择要删除和选择的用户**删除**中要删除的记录的应用程序的右上角。 应用程序管理员也可以删除不再与相关应用程序关联的个人帐户。
+只能通过 IoT Central 管理页删除用户数据。 应用程序管理员可以选择要删除的用户, 并在应用程序的右上角选择 "**删除**" 以删除记录。 应用程序管理员也可以删除不再与相关应用程序关联的个人帐户。
 
 删除用户后，不会向其发送电子邮件警报。 但是，必须从每个配置的警报中一个个地删除其电子邮件地址。
 

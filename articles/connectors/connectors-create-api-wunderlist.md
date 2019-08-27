@@ -11,12 +11,12 @@ ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d57ab4a7b655a7d49a7120d358dccc627099e5fd
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105660"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050667"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Wunderlist
 
@@ -29,9 +29,9 @@ ms.locfileid: "62105660"
 
 [Wunderlist](https://www.wunderlist.com/) 是一项服务，可以帮助你在任何位置在任何设备上计划、管理和完成项目、待办事项列表以及任务。 可以使用触发器从 Wunderlist 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Wunderlist 帐户执行任务的操作。 还可以让其他操作使用来自 Wunderlist 操作的输出。 例如，当新任务到期时，可以使用 Slack 连接器发布消息。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * Wunderlist 帐户和用户凭据
 
@@ -52,16 +52,16 @@ ms.locfileid: "62105660"
    * 对于空白逻辑应用，请在搜索框中输入“wunderlist”作为筛选器。 
    在触发器列表下，选择所需的触发器。 
 
-     -或-
+     或
 
    * 对于现有逻辑应用： 
    
-     * 在要添加操作的最后一个步骤下，选择“新建步骤”。  
+     * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
 
-       -或-
+       或
 
      * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-     选择出现的加号 ( **+** )，然后选择“添加操作”。 
+     选择出现的加号 ( **+** )，然后选择“添加操作”。
      
        在搜索框中，输入“wunderlist”作为筛选器。 
        在操作列表下，选择所需的操作。

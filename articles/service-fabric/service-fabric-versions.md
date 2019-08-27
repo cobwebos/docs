@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/03/2019
+ms.date: 08/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: 8512b1c94145d573d96cd3a43190cda5b9cfa222
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: b7d34095568fa1d98c5f2987a70397ca042c8867
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775315"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036406"
 ---
 # <a name="supported-service-fabric-versions"></a>支持的 Service Fabric 版本
 
@@ -46,8 +46,8 @@ ms.locfileid: "68775315"
 | 6.1.* | 5.7.221.* |版本 3.0 或更低版本 |2018 年 7 月 15日      |
 | 6.2.* | 6.0.232.* |版本 3.1 或更低版本 |2018 年 10 月 26日   |
 | 6.3.* | 6.1.480.* |版本 3.2 或更低版本 |2019 年 3 月 31 日  |
-| 6.4.* | 6.2.301.* |版本 3.3 或更低版本 |2019年9月15日 |
-| 6.5.* | 6.4.617.* |小于或等于版本3。4 |当前版本，因此无结束日期 |
+| 6.4.* | 6.2.301.* |版本 3.3 或更低版本 |2019 年 9 月 15 日 |
+| 6.5.* | 6.4.617.* |低于或等于版本 3.4 |当前版本，因此无结束日期 |
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -108,3 +108,4 @@ ms.locfileid: "68775315"
 | 6.5 RTO | 6.5.639.9590 | 6.5.435.1 |
 | 6.5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6.5 CU2 | 6.5.658.9590 | 6.5.460.1 |
+| 6.5 CU3 | 6.5.664.9590 | 6.5.466.1 |

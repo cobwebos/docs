@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 7146e59eabf9e30fa263f957f1c546414ad0fe26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61004ed75a1935ada21b5c620a909fb5289aebb8
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60952511"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050997"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>使用必应搜索和 Azure 逻辑应用查找新闻
 
@@ -23,10 +24,10 @@ ms.locfileid: "60952511"
 
 例如，可以根据搜索条件查找新闻项，并用 Twitter 将这些项发布为 Twitter 信息提要中的推文。
 
-如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
-如需特定于连接器的技术信息，请参阅<a href="https://docs.microsoft.com/connectors/bingsearch/" target="blank">必应搜索连接器参考</a>。
+如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+如需特定于连接器的技术信息，请参阅[必应搜索连接器参考](https://docs.microsoft.com/connectors/bingsearch/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [认知服务帐户](../cognitive-services/cognitive-services-apis-create-account.md)
 
@@ -44,7 +45,7 @@ ms.locfileid: "60952511"
 
 2. 在搜索框中，输入“必应搜索”作为筛选器。 在触发器列表中，选择所需的触发器。
 
-   此示例使用此触发器：**必应搜索-在新的新闻文章**
+   此示例使用以下触发器：**必应搜索-新新闻文章**
 
    ![查找必应搜索触发器](./media/connectors-create-api-bing-search/add-trigger.png)
 
@@ -53,13 +54,13 @@ ms.locfileid: "60952511"
 
    对于此示例，请提供从必应搜索返回匹配的新闻文章的条件。
 
-   | 属性 | 需要 | Value | 描述 |
+   | 属性 | 必填 | Value | 描述 |
    |----------|----------|-------|-------------|
-   | Search Query | 是 | <search-words>  | 输入要使用的搜索关键字。 |
-   | Market | 是 | <区域设置>  | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
-   | Safe Search | 是 | <search-level>  | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
-   | Count | 否 | <results-count>  | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
-   | Offset | 否 | <skip-value>  | 返回结果前要跳过的结果数 |
+   | Search Query | 是 | <search-words> | 输入要使用的搜索关键字。 |
+   | Market | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
+   | Safe Search | 是 | <search-level> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
+   | Count | 否 | <results-count> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
+   | 偏移量 | 否 | <skip-value> | 返回结果前要跳过的结果数 |
    |||||
 
    例如：
@@ -68,7 +69,7 @@ ms.locfileid: "60952511"
 
 4. 选择希望触发器检查结果的时间间隔和频率。
 
-5. 完成后，请在设计器工具栏上选择“保存”  。
+5. 完成后, 请在设计器工具栏上选择 "**保存**"。
 
 6. 现在请继续向逻辑应用添加一个或多个操作，以便完成需对触发器结果执行的任务。
 
@@ -80,23 +81,23 @@ ms.locfileid: "60952511"
 
 1. 在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 此示例使用 Azure 门户。
 
-2. 在该触发器或操作下，选择“新建步骤” > “添加操作”   。
+2. 在触发器或操作下, 选择 "**新建步骤** > " "**添加操作**"。
 
-   此示例使用此触发器：
+   此示例使用以下触发器：
 
-   **必应搜索-在新的新闻文章**
+   **必应搜索-新新闻文章**
 
    ![添加操作](./media/connectors-create-api-bing-search/add-action.png)
 
    若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 
-   选择出现的加号 ( **+** )，然后选择“添加操作”。 
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 3. 在搜索框中，输入“必应搜索”作为筛选器。
 从操作列表中选择所需的操作。
 
    此示例使用以下操作：
 
-   **必应搜索的查询列表新闻**
+   **必应搜索-按查询列出新闻**
 
    ![查找必应搜索操作](./media/connectors-create-api-bing-search/bing-search-select-action.png)
 
@@ -104,36 +105,36 @@ ms.locfileid: "60952511"
 
    对于此示例，提供返回触发器结果子集的条件。
 
-   | 属性 | 需要 | Value | 描述 |
+   | 属性 | 必填 | Value | 描述 |
    |----------|----------|-------|-------------|
-   | Search Query | 是 | <search-expression>  | 输入用于查询触发器结果的表达式。 可以从动态内容列表的字段中进行选择，或使用表达式生成器创建表达式。 |
-   | Market | 是 | <区域设置>  | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
-   | Safe Search | 是 | <search-level>  | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
-   | Count | 否 | <results-count>  | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
-   | Offset | 否 | <skip-value>  | 返回结果前要跳过的结果数 |
+   | Search Query | 是 | <search-expression> | 输入用于查询触发器结果的表达式。 可以从动态内容列表的字段中进行选择，或使用表达式生成器创建表达式。 |
+   | Market | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
+   | Safe Search | 是 | <search-level> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
+   | Count | 否 | <results-count> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
+   | 偏移量 | 否 | <skip-value> | 返回结果前要跳过的结果数 |
    |||||
 
    例如，假设需要类别名称包含单词“tech”的结果。
 
-   1. 在“搜索查询”框中单击，以显示动态内容列表  。 
-   从该列表中选择“表达式”，以显示表达式生成器  。 
+   1. 在“搜索查询”框中单击，以显示动态内容列表。 
+   从该列表中选择 "**表达式**", 以便显示 "表达式生成器"。 
 
       ![必应搜索触发器](./media/connectors-create-api-bing-search/bing-search-action.png)
 
       现在即可开始创建表达式。
 
-   2. 从函数列表中选择“contains()”函数，该函数将显示在表达式框中  。 单击“动态内容”，以便重新显示字段列表，但请确保将光标停留在圆括号内  。
+   2. 从函数列表中选择“contains()”函数，该函数将显示在表达式框中。 单击“动态内容”，以便重新显示字段列表，但请确保将光标停留在圆括号内。
 
       ![选择函数](./media/connectors-create-api-bing-search/expression-select-function.png)
 
-   3. 从字段列表中选择将转换为参数的“类别”  。 
+   3. 从字段列表中选择将转换为参数的“类别”。 
    在第一个参数后添加一个逗号，并在该逗号后加上此单词：`'tech'` 
 
       ![选择字段](./media/connectors-create-api-bing-search/expression-select-field.png)
 
-   4. 完成后，选择“确定”  。
+   4. 完成后，请选择“确定”。
 
-      该表达式现在以此格式显示在“搜索查询”框中  ：
+      该表达式现在以此格式显示在“搜索查询”框中：
 
       ![已完成的表达式](./media/connectors-create-api-bing-search/resolved-expression.png)
 
@@ -141,7 +142,7 @@ ms.locfileid: "60952511"
 
       `"@{contains(triggerBody()?['category'],'tech')}"`
 
-5. 完成后，请在设计器工具栏上选择“保存”  。
+5. 完成后, 请在设计器工具栏上选择 "**保存**"。
 
 <a name="create-connection"></a>
 
@@ -151,27 +152,22 @@ ms.locfileid: "60952511"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | 属性 | 需要 | Value | 描述 |
+   | 属性 | 必填 | Value | 描述 |
    |----------|----------|-------|-------------|
-   | 连接名称 | 是 | <connection-name  > | 为连接创建的名称 |
-   | API 版本 | 是 | <API-version>  | 默认情况下，必应搜索 API 版本设置为当前版本。 可以根据需要选择早期版本。 |
-   | API 密钥 | 是 | <API-key>  | 之前获取的必应搜索 API 密钥。 如果没有密钥，请立刻获取 [API 密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)。 |  
+   | 连接名称 | 是 | <*connection-name*> | 为连接创建的名称 |
+   | API 版本 | 是 | <API-version> | 默认情况下，必应搜索 API 版本设置为当前版本。 可以根据需要选择早期版本。 |
+   | API 密钥 | 是 | <API-key> | 之前获取的必应搜索 API 密钥。 如果没有密钥，请立刻获取 [API 密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)。 |  
    |||||  
 
    例如：
 
    ![创建连接](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
-2. 完成后，选择“创建”  。
+2. 完成操作后，选择“创建”。
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关技术详细信息，如触发器、 操作和限制，如所述的连接器的 OpenAPI (以前称为 Swagger) 文件，请参阅[连接器的参考页](/connectors/bingsearch/)。
-
-## <a name="get-support"></a>获取支持
-
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
+如需技术详细信息（例如触发器、操作和限制，如连接器的 OpenAPI（以前为 Swagger）文件所述），请参阅[连接器的参考页](/connectors/bingsearch/)。
 
 ## <a name="next-steps"></a>后续步骤
 

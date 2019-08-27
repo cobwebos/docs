@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2018
 ms.author: banders
-ms.openlocfilehash: 98ed28af8df246549fb521a81f1968e1f5c28cc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39526defb8f41ddacb0a26d7ad852f820ca6ea77
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370707"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034527"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Azure 企业协议管理角色
 
@@ -36,12 +36,12 @@ ms.locfileid: "60370707"
 
 ## <a name="user-limit-for-admin-roles"></a>管理员角色的用户限制
 
-|角色| 用户限制|
+|Role| 用户限制|
 |---|---|
-|企业管理员|不受限制|
-|企业管理员（只读）|不受限制|
-|部门管理员|不受限制|
-|部门管理员（只读）|不受限制|
+|企业管理员|无限制|
+|企业管理员（只读）|无限制|
+|部门管理员|无限制|
+|部门管理员（只读）|无限制|
 |帐户所有者|每个帐户 1 个<sup>1</sup>|
 
 <sup>1</sup> 每个帐户需要一个唯一的 Microsoft 帐户，或者工作或学校帐户。
@@ -56,7 +56,7 @@ ms.locfileid: "60370707"
 |添加或删除通知联系人<sup>2</sup> |✔|✘|✘|✘|✘|
 |创建并管理部门 |✔|✘|✘|✘|✘|
 |查看部门管理员|✔|✔|✔|✔|✘|
-|添加或删除部门管理员|✔|✔|✔|✘|✘|
+|添加或删除部门管理员|✔|✘|✔|✘|✘|
 |查看注册的帐户 |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
 |将帐户添加到注册并更改帐户所有者|✔|✘|✔<sup>3</sup>|✘|✘|
 |创建并管理订阅和订阅权限|✘|✘|✘|✘|✔|
@@ -76,8 +76,8 @@ ms.locfileid: "60370707"
 |查看使用情况和成本详细信息|✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✔<sup>5</sup>|
 |管理 Azure 门户中的资源|✘|✘|✘|✘|✔|
 
-- <sup>4</sup> 要求企业管理员在企业门户中启用“DA 视图费用”策略。  然后，部门管理员就可以查看部门的成本详细信息。
-- <sup>5</sup> 要求企业管理员在企业门户中启用“AO 视图费用”策略。  然后，帐户所有者就可以查看帐户的成本详细信息。
+- <sup>4</sup> 要求企业管理员在企业门户中启用“DA 视图费用”策略。 然后，部门管理员就可以查看部门的成本详细信息。
+- <sup>5</sup> 要求企业管理员在企业门户中启用“AO 视图费用”策略。 然后，帐户所有者就可以查看帐户的成本详细信息。
 
 
 ## <a name="pricing-in-azure-portal"></a>Azure 门户中的定价

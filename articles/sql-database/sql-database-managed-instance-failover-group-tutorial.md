@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 059a614dff7fc0eab5419e3e2ffdeaeecb79ad99
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 5169fe5eef416812c399b421f59305f6cb1e7b62
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981387"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035787"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>教程：将 SQL 数据库托管实例添加到故障转移组
 
@@ -29,7 +29,9 @@ ms.locfileid: "69981387"
 > - 测试故障转移
 
   > [!NOTE]
-  > 创建托管实例可能需要很长时间。 因此, 此教程可能需要几个小时才能完成。 有关预配时间的详细信息, 请参阅[托管实例管理操作](sql-database-managed-instance.md#managed-instance-management-operations)。 将故障转移组用于托管实例目前处于预览阶段。 
+  > - 在学习本教程时, 请确保使用[为托管实例设置故障转移组的先决条件](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)来配置资源。 
+  > - 创建托管实例可能需要很长时间。 因此, 此教程可能需要几个小时才能完成。 有关预配时间的详细信息, 请参阅[托管实例管理操作](sql-database-managed-instance.md#managed-instance-management-operations)。 
+  > - 将故障转移组用于托管实例目前处于预览阶段。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -96,7 +98,7 @@ ms.locfileid: "69981387"
 
 若要创建辅助托管实例, 请执行以下步骤: 
 
-1. 在[Azure 门户](http://portal.azure.com)中, 选择 "**创建资源**", 然后搜索 " *Azure SQL 托管实例*。 
+1. 在[Azure 门户](https://portal.azure.com)中, 选择 "**创建资源**", 然后搜索 " *Azure SQL 托管实例*。 
 1. 选择 Microsoft 发布的**AZURE SQL 托管实例**选项, 然后在下一页上选择 "**创建**"。
 1. 在 "**创建 Azure SQL 数据库托管实例**" 页的 "**基本**信息" 选项卡上, 填写必填字段以配置辅助托管实例。 
 

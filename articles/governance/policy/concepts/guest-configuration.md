@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6f51d2907738f49ace559f1b127458eda71de287
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 18a85fae7d2d241bd8d582db73c71e1d1472f04d
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624102"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036314"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -28,11 +28,16 @@ ms.locfileid: "69624102"
 
 为审核虚拟机内部的设置，已启用[虚拟机扩展](../../../virtual-machines/extensions/overview.md)。 该扩展下载适用的策略分配和相应的配置定义。
 
-### <a name="register-guest-configuration-resource-provider"></a>注册来宾配置资源提供程序
+### <a name="limits-set-on-the-exension"></a>对 exension 设置的限制
+
+为了限制扩展影响在计算机内运行的应用程序, 不允许来宾配置超过超过 5% 的 CPU 使用率。
+这适用于 Microsoft 提供的配置 "内置" 的 boh 和客户创作的自定义配置。
+
+## <a name="register-guest-configuration-resource-provider"></a>注册来宾配置资源提供程序
 
 必须注册资源提供程序，之后才能使用来宾配置。 可以通过门户或通过 PowerShell 注册。 如果来宾配置策略的分配是通过门户完成的, 则会自动注册资源提供程序。
 
-#### <a name="registration---portal"></a>注册 - 门户
+### <a name="registration---portal"></a>注册 - 门户
 
 若要通过 Azure 门户注册资源提供程序的来宾配置，请按照下列步骤操作：
 
@@ -44,7 +49,7 @@ ms.locfileid: "69624102"
 
 1. 筛选或滚动直至找到“Microsoft.GuestConfiguration”，然后在同一行上单击“注册”。
 
-#### <a name="registration---powershell"></a>注册 - PowerShell
+### <a name="registration---powershell"></a>注册 - PowerShell
 
 若要通过 PowerShell 注册资源提供程序的来宾配置，请运行以下命令：
 
@@ -53,7 +58,7 @@ ms.locfileid: "69624102"
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 ```
 
-### <a name="validation-tools"></a>验证工具
+## <a name="validation-tools"></a>验证工具
 
 在虚拟机内，来宾配置客户端使用本地工具运行审核。
 
@@ -68,7 +73,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 来宾配置客户端每 5 分钟检查一次新内容。 在收到来宾分配后，将按 15 分钟的时间间隔检查设置。 在审核完成后，结果会立即发送到来宾配置资源提供程序。 当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。 这会导致 Azure Policy 评估 Azure 资源管理器属性。 按需 Azure 策略评估检索来宾配置资源提供程序中的最新值。 但是，它不会触发对虚拟机中的配置执行新的审核。
 
-### <a name="supported-client-types"></a>支持的客户端类型
+## <a name="supported-client-types"></a>支持的客户端类型
 
 下表显示了 Azure 映像上支持的操作系统列表：
 
@@ -89,7 +94,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 任何版本都不支持 Windows Server Nano Server。
 
-### <a name="guest-configuration-extension-network-requirements"></a>来宾配置扩展网络要求
+## <a name="guest-configuration-extension-network-requirements"></a>来宾配置扩展网络要求
 
 要与 Azure 中的来宾配置资源提供程序通信, 虚拟机需要对端口**443**上的 Azure 数据中心的出站访问权限。 如果你使用的是 Azure 中的专用虚拟网络, 并且不允许出站流量, 则必须使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置例外。 目前, Azure 策略来宾配置不存在服务标记。
 
@@ -100,7 +105,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 
-每个按来宾配置审核运行都需要两个策略定义: **DeployIfNotExists**定义和**审核**定义。 **DeployIfNotExists**定义用于通过来宾配置代理和其他组件准备虚拟机, 以支持[验证工具](#validation-tools)。
+每个按来宾配置审核运行都需要两个策略定义: **DeployIfNotExists**定义和**AuditIfNotExists**定义。 **DeployIfNotExists**定义用于通过来宾配置代理和其他组件准备虚拟机, 以支持[验证工具](#validation-tools)。
 
 “DeployIfNotExists”策略定义验证并更正以下项目：
 
@@ -111,18 +116,18 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 如果**DeployIfNotExists**分配不符合, 则可以使用[补救任务](../how-to/remediate-resources.md#create-a-remediation-task)。
 
-一旦**DeployIfNotExists**分配符合,**审核**策略分配将使用本地验证工具来确定配置分配是符合还是不符合。
+**DeployIfNotExists**分配符合要求后, **AuditIfNotExists**策略分配将使用本地验证工具来确定配置分配是符合还是不符合。
 验证工具向来宾配置客户端提供结果。 客户端将结果转发给来宾扩展，使其可通过来宾配置资源提供程序使用。
 
 Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“符合性”节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/getting-compliance-data.md)。
 
 > [!NOTE]
-> **审核**策略需要**DeployIfNotExists**策略来返回结果。
-> 如果没有**DeployIfNotExists**,**审核**策略会将 "0 个 0" 资源显示为状态。
+> **AuditIfNotExists**策略需要**DeployIfNotExists**策略才能返回结果。
+> 如果没有**DeployIfNotExists**, 则**AuditIfNotExists**策略会将 "0 个 0" 资源显示为状态。
 
-来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：审核 Linux 和 Windows 虚拟机内的密码安全设置”的内置计划包含 18 个策略。 对于 Windows，有六个 **DeployIfNotExists** 和 **Audit** 对，对于 Linux，有三个对。 在每种情况下，都可使用定义内的逻辑验证仅基于[策略规则](definition-structure.md#policy-rule)定义评估目标操作系统。
+来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：审核 Linux 和 Windows 虚拟机内的密码安全设置”的内置计划包含 18 个策略。 对于 Windows 有六个 DeployIfNotExists 和 AuditIfNotExists 对，对于 Linux 有三个对。 在每种情况下，都可使用定义内的逻辑验证仅基于[策略规则](definition-structure.md#policy-rule)定义评估目标操作系统。
 
-## <a name="multiple-assignments"></a>多个分配
+### <a name="multiple-assignments"></a>多个分配
 
 来宾配置策略目前仅支持对每个虚拟机分配相同的来宾分配, 即使策略分配使用不同的参数也是如此。
 

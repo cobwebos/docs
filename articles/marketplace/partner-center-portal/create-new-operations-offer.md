@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: f9223fdead9d22e8f58076b47502e71c06741e3f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: e711e94a4ac8098137456c2ae5bf018107687354
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900110"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033222"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>为操作产品/服务创建新的 Dynamics 365
 
@@ -339,11 +339,11 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 ## <a name="supplemental-content"></a>补充内容
 
-此页可提供有关产品/服务的其他必需信息。
+此页面允许你提供有关产品/服务的其他信息, 以帮助我们验证你的产品/服务。 此信息不会向客户显示, 也不会发布到 marketplace。
 
 ### <a name="validation-assets"></a>验证资产
 
-你必须在此部分中上载自定义分析报表 (CAR)。 此报告是根据一组预定义的最佳实践规则分析您的自定义和扩展模型而生成的。
+你必须在此部分中上载[自定义分析报表 (CAR)](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/dev-tools/customization-analysis-report) 。 此报告是根据一组预定义的最佳实践规则分析您的自定义和扩展模型而生成的。
 
 此文件必须采用 .xls 或 .xlsx 格式。 如果有多个报表, 则可以上载包含所有报表的 .zip 文件。
 

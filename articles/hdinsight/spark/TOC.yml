@@ -49,6 +49,8 @@
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
       href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: 比较存储选项
+      href: ../hdinsight-hadoop-compare-storage-options.md
 - name: 如何
   items:
     - name: 使用群集存储

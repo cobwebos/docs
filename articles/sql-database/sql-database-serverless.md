@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
+author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 07/05/2019
-ms.openlocfilehash: 67e877609eec98e7100b34ab477dbab7c5577772
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/26/2019
+ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515281"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035723"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL 数据库无服务器 (预览版)
 
@@ -136,7 +136,7 @@ SQL 缓存的增长, 因为数据是以相同的方式从磁盘中提取的, 并
 |数据库复制|以副本形式创建数据库。<br>导出到 BACPAC 文件。|
 |SQL 数据同步|按照可配置的时间表或手动执行中心和成员数据库之间的同步|
 |修改特定的数据库元数据|正在添加新的数据库标记。<br>更改 max Vcore、min Vcore 或 autopause delay。|
-|SQL Server Management Studio (SSMS)|使用 SSMS 版本 18 并在服务器中为任意数据库打开新的查询窗口会恢复同一服务器中任何自动暂停的数据库。 如果使用 IntelliSense 处于关闭状态的 SSMS 版本 17.9.1，则不会发生此行为。|
+|SQL Server Management Studio (SSMS)|使用早于18.1 的 SSMS 版本, 并为服务器中的任何数据库打开新的查询窗口, 将恢复同一服务器中的任何自动暂停的数据库。 如果使用 SSMS 18.1 版或更高版本, 则不会发生此行为。|
 
 在部署某些需要数据库联机的服务更新的过程中, 也会触发 Autoresuming。
 
@@ -165,7 +165,7 @@ SQL 缓存的增长, 因为数据是以相同的方式从磁盘中提取的, 并
    |参数|可选的值|默认值|
    |---|---|---|---|
    |最小 V 核心|{0.5, 1, 2, 4} 中的任何值，不超过最大 vCore 数|0.5 个 vCore|
-   |自动暂停延迟|最小值:60分钟 (1 小时)<br>最大值:10080 分钟（7 天）<br>增量：60 分钟<br>禁用自动暂停：-1|60 分钟|
+   |自动暂停延迟|最低：60分钟 (1 小时)<br>最佳10080 分钟（7 天）<br>增量：60 分钟<br>禁用自动暂停：-1|60 分钟|
 
 > [!NOTE]
 > 目前不支持使用 T-SQL 将现有数据库移动到无服务器或更改其计算大小，但可以通过 Azure 门户或 PowerShell 完成这些操作。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 77c5285462c4368badd63d7cdbf6589c7ad03c8d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f72feeefeb896c9006f767f8724d9ca3b3640c1e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534583"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035231"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -36,7 +36,7 @@ ms.locfileid: "69534583"
 > [!IMPORTANT]
 > 只需使用以下方法之一将 Application Insights JavaScript SDK 添加到应用程序。 如果使用基于 NPM 的安装程序, 请不要使用基于代码段的设置。 相反, 使用基于代码段的方法时, 这一点也同样适用于基于 NPM 的设置。 
 
-### <a name="npm-based-setup"></a>基于 NPM 的设置 
+### <a name="npm-based-setup"></a>基于 NPM 的设置
 
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -198,7 +198,7 @@ dataset
 2. 确定哪些源映射对应于此调用堆栈。 源映射必须与堆栈帧的源文件匹配, 但带有后缀`.map`
 3. 将源映射拖放到 Azure 门户中的调用堆栈上![](https://i.imgur.com/Efue9nU.gif)
 
-## <a name="application-insights-web-basic"></a>Application Insights Web 基本
+### <a name="application-insights-web-basic"></a>Application Insights Web 基本
 
 对于轻型体验, 可以改为安装的基本版本 Application Insights
 ```
@@ -242,7 +242,7 @@ SDK V2 版本中的重大更改:
 
 在从 CDN 下载脚本时, 页面的所有跟踪都将排队。 下载的脚本异步初始化完成后, 将跟踪已排队的所有事件。 因此, 你不会在页面的整个生命周期内丢失任何遥测数据。 此安装过程为页面提供了一个无缝分析系统, 对用户不可见。
 
-> 摘要:
+> 摘要：
 > - **25 KB** gzip 压缩过
 > - **15 ms**总体初始化时间
 > - 在页面生命周期中**零**跟踪丢失

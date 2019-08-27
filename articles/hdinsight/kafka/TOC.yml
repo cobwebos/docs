@@ -38,6 +38,8 @@
       href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
+    - name: 比较存储选项
+      href: ../hdinsight-hadoop-compare-storage-options.md
 - name: 如何
   items:
     - name: 启用自动创建主题功能

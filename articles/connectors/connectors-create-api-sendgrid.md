@@ -11,12 +11,12 @@ ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
 ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 7eecd3908883b195b52755d03e70872afe9180bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f5efd73ef2a08069e3b9f2c7d60be99c209ddca
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105728"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050808"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 SendGrid 中发送电子邮件以及管理邮件列表
 
@@ -31,9 +31,9 @@ ms.locfileid: "62105728"
 此连接器仅提供操作，因此，若要启动逻辑应用，请使用单独的触发器，例如**定期**触发器。 例如，如果你定期将收件人添加到你的列表中，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送关于收件人和列表的电子邮件。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * 一个 [SendGrid 帐户](https://www.sendgrid.com/)和一个 [SendGrid API 密钥](https://sendgrid.com/docs/ui/account-and-settings/api-keys/)
 
@@ -51,18 +51,18 @@ ms.locfileid: "62105728"
 
 1. 选择一个路径： 
 
-   * 在要添加操作的最后一个步骤下，选择“新建步骤”。  
+   * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
 
-     -或-
+     或
 
    * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 ( **+** )，然后选择“添加操作”。 
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 在搜索框中，输入“sendgrid”作为筛选器。 在操作列表下，选择所需的操作。
 
 1. 提供连接的名称。 
 
-1. 输入你的 SendGrid API 密钥，然后选择“创建”  。
+1. 输入你的 SendGrid API 密钥，然后选择“创建”。
 
 1. 为所选操作提供必要的详细信息，并继续构建逻辑应用的工作流。
 

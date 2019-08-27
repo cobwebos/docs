@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca2b7f2b0e20e85e1e62f8efabb81eddd5f901f2
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: eb4486c889dec29f81b57605c3ccee510242f832
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991116"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035146"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理启用对 Power BI 移动版的远程访问
 
@@ -103,28 +103,27 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 
 若要完成应用程序的设置, 请访问 **"用户和组** " 部分, 并分配用户以访问此应用程序。
 
-## <a name="step-3-grant-power-bi-mobile-access-to-report-services"></a>步骤 3：授予 Power BI 移动版对报表服务的访问权限
+## <a name="step-3-modify-the-reply-uris-for-the-application"></a>步骤 3：修改应用程序的回复 URI
 
-在 Power BI 移动应用可以连接和访问报表服务之前, 必须在 Azure AD 中正确注册。  
+在 Power BI 移动应用可以连接和访问报表服务之前, 您必须配置在步骤2中为您自动创建的应用程序注册。 
 
 1. 在 Azure Active Directory**概述**"页上, 选择"**应用注册**"。
 2. 在 "**所有应用程序**" 选项卡下, 搜索在步骤2中创建的应用程序。
 3. 选择应用程序, 然后选择 "**身份验证**"。
 4. 根据所使用的平台添加以下重定向 Uri。
 
-   为 Power BI 移动版**iOS**注册应用时, 请添加以下类型的重定向 Uri: 公用客户端 (移动 & 桌面):
+   为 Power BI 移动版**iOS**配置应用时, 请添加以下类型的重定向 Uri: 公用客户端 (移动 & 桌面):
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
    
-   为 Power BI 移动版**Android**注册应用时, 请添加以下类型的重定向 Uri: 公用客户端 (移动 & 桌面):
+   为 Power BI 移动版**Android**配置应用时, 请添加以下类型的重定向 Uri: 公用客户端 (移动 & 桌面):
    - `urn:ietf:wg:oauth:2.0:oob`
+   - `mspbi-adal://com.microsoft.powerbimobile`
 
    > [!IMPORTANT]
-   > 若要使应用程序正常工作, 必须添加重定向 Uri。 如果为 iOS 和 Android 配置此项, 则只需注册**单个**应用程序并为 Ios 和 Android 添加重定向 uri。 如果每个平台需要单独的应用程序, 则需要包含两个应用的重`mspbi-adal://com.microsoft.powerbimobile`定向 URI:。
-
-2. 现在, 你已注册了本机应用程序, 接下来可以访问你的目录中的其他应用程序, 这种情况下, 可以访问通过应用程序代理发布的报表服务。 [执行步骤 3:授予对代理应用程序](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application)的访问权限。
+   > 若要使应用程序正常工作, 必须添加重定向 Uri。 如果要同时为 Power BI 移动版 iOS 和 Android 配置应用, 请将以下类型的重定向 URI 添加到为 iOS `urn:ietf:wg:oauth:2.0:oob`配置的重定向 Uri 列表 (移动 & 桌面)。
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>步骤 4：从 Power BI 移动版应用进行连接
 

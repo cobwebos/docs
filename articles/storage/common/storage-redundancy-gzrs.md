@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c6c070012db0857759c63603072b8321896398b4
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516135"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036341"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>使用地理区域冗余存储 (GZRS) 构建高度可用的 Azure 存储应用程序 (预览版)
 
@@ -70,7 +70,7 @@ Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看 [
 如果故障影响整个主要区域, Microsoft 将首先尝试还原主要区域。 如果无法进行还原, Microsoft 将故障转移到次要区域, 以便次要区域成为新的主要区域。 如果存储帐户启用了 GZRS, 则为此方案设计的应用程序可在等待故障转移时从次要区域读取。 如果存储帐户未启用 GZRS, 则在故障转移完成之前, 应用程序将无法从辅助数据库读取。
 
 > [!NOTE]
-> GZRS 和 RA-GZRS 目前仅在美国东部2地区处于预览阶段。 美国东部2尚不提供客户管理的帐户故障转移 (预览版), 因此, 客户当前无法使用 GZRS 和 RA GZRS 帐户来管理帐户故障转移事件。 在预览期间, Microsoft 将管理影响 GZRS 和 GZRS 帐户的任何故障转移事件。
+> GZRS 和 RA-GZRS 目前仅在美国东部地区处于预览阶段。 美国东部2尚不提供客户管理的帐户故障转移 (预览版), 因此, 客户当前无法使用 GZRS 和 RA GZRS 帐户来管理帐户故障转移事件。 在预览期间, Microsoft 将管理影响 GZRS 和 GZRS 帐户的任何故障转移事件。
 
 由于数据是以异步方式复制到辅助区域的, 因此如果无法恢复主要区域, 则影响主要区域的故障可能会导致数据丢失。 最近写入主要区域和最后一次写入次要区域之间的时间间隔称为恢复点目标 (RPO)。 RPO 指示可以将数据恢复到的时间点。 Azure 存储的 RPO 通常小于15分钟, 但目前没有 SLA 向次要区域复制数据所需的时间。
 

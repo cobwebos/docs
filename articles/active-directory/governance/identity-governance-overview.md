@@ -1,6 +1,6 @@
 ---
-title: 标识管理-Azure Active Directory |Microsoft Docs
-description: Azure Active Directory Identity Governance 允许你通过适当的流程和可见性来平衡组织的安全和员工工作效率需求。
+title: 标识监管 - Azure Active Directory | Microsoft Docs
+description: 使用 Azure Active Directory 标识监管可以在组织的安全性和员工工作效率与适当的流程和可见性需求之间实现平衡。
 services: active-directory
 documentationcenter: ''
 author: msaburnley
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/29/2019
+ms.date: 08/25/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f09a8c2f8caae3cbb182cf2dc4621deb95f7e5c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499663"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033325"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD Identity Governance？
 
-Azure Active Directory (Azure AD) 标识调控允许您通过适当的流程和可见性来平衡组织的安全和员工工作效率需求。 标识监管提供的功能可以确保适当的用户对适当的资源拥有适当的访问权限，它还可用于保护、监视和审核对关键资产的访问 - 同时确保员工的工作效率。  
+使用 Azure Active Directory (Azure AD) 标识监管可以在组织的安全性和员工工作效率与适当的流程和可见性需求之间实现平衡。 标识监管提供的功能可以确保适当的用户对适当的资源拥有适当的访问权限，它还可用于保护、监视和审核对关键资产的访问 - 同时确保员工的工作效率。  
 
-标识调控使组织能够跨员工、业务合作伙伴和供应商以及服务和应用程序执行以下任务:
+标识监管使组织能够跨员工、业务合作伙伴和供应商以及服务和应用程序执行以下任务：
 
 - 监管标识生命周期
 - 监管访问生命周期
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 标识调控允许您通过适当的流程和�
 
 ## <a name="identity-lifecycle"></a>标识生命周期
 
-标识调控可帮助组织实现*工作效率*之间的平衡-用户有权访问所需的资源 (例如在加入组织时)？ 安全性 - 用户的访问权限会不断发生怎样的变化（例如，由于该用户的雇佣状态发生变化）？  标识生命周期管理是标识管理的基础, 并且大规模的有效监管需要现代化应用程序的标识生命周期管理基础结构。
+标识监管可帮助组织在以下需求之间实现平衡：工作效率 - 用户可以多快地访问所需的资源（例如，在刚入职时）？ 安全性 - 用户的访问权限会不断发生怎样的变化（例如，由于该用户的雇佣状态发生变化）？  标识生命周期管理是标识监管的基石，大规模的有效监管需要将应用程序的标识生命周期管理基础结构现代化。
 
 ![标识生命周期](./media/identity-governance-overview/identity-lifecycle.png)
 
@@ -60,30 +60,32 @@ Azure Active Directory (Azure AD) 标识调控允许您通过适当的流程和�
 
 组织可以通过[动态组](../users-groups-roles/groups-dynamic-membership.md)等技术，并结合 [SaaS 应用](../saas-apps/tutorial-list.md)的用户预配或者[与 SCIM集成的应用](../manage-apps/use-scim-to-provision-users-and-groups.md)，将访问生命周期过程自动化。  组织还可以控制哪些[来宾用户有权访问本地应用程序](../b2b/hybrid-cloud-to-on-premises.md)。  然后，可以使用 [Azure AD 访问评审](access-reviews-overview.md)定期评审这些访问权限。
 
-当用户尝试访问应用程序时, Azure AD 强制实施[条件性访问](/azure/active-directory/conditional-access/)策略。 例如, 条件性访问策略可能包括显示[使用条款](../conditional-access/terms-of-use.md), 并确保用户在访问应用程序之前[已同意这些条款](../conditional-access/require-tou.md)。
+当用户尝试访问应用程序时，Azure AD 会实施[条件访问](/azure/active-directory/conditional-access/)策略。 例如，条件访问策略可以包括显示[使用条款](../conditional-access/terms-of-use.md)，并[确保用户已同意这些条款](../conditional-access/require-tou.md)，然后才能访问应用程序。
 
 ## <a name="privileged-access-lifecycle"></a>特权访问权限生命周期
 
-从历史角度来看, 其他供应商已将特权访问权限视为不同的标识管理功能。 但是, 在 Microsoft, 我们认为管理特权访问是标识监管的关键部分, 特别是, 对于与这些管理员权限相关的滥用的可能性, 这可能会导致组织。 拥有管理权限的员工、供应商与合同工需要接受监管。
+一直以来，其他供应商将特权访问权限描述为标识监管中的一项独立功能。 但是，Microsoft 将特权访问权限的监管视为标识监管的重要组成部分 - 特别是考虑到与这些管理员权限相关的滥用可能会对组织造成的影响。 拥有管理权限的员工、供应商与合同工需要接受监管。
 
 ![特权访问权限生命周期](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-Azure AD Privileged Identity Management (PIM) 提供用于保护 Azure AD、Azure 和其他 Microsoft Online Services 中的资源访问权限的其他定制控制措施。  Azure AD PIM 提供的实时访问和角色更改警报功能除了多重身份验证和条件性访问以外, 还提供一组全面的监管控制来帮助保护公司的资源 (目录、Office 365 和 Azure 资源角色)。 与处理其他形式的访问权限一样，组织可以使用访问评审来针对充当管理员角色的所有用户配置定期的访问权限重新认证。
+Azure AD Privileged Identity Management (PIM) 提供用于保护 Azure AD、Azure 和其他 Microsoft Online Services 中的资源访问权限的其他定制控制措施。  Azure AD PIM 提供的实时访问和角色更改警报功能，以及多重身份验证和条件访问，共同提供了一套综合性的监管控制措施，可帮助保护公司的资源（目录、Office 365 和 Azure 资源角色）。 与处理其他形式的访问权限一样，组织可以使用访问评审来针对充当管理员角色的所有用户配置定期的访问权限重新认证。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
-尽管没有适用于每个客户的完美解决方案或建议, 但以下配置提供了 Microsoft 建议你遵循的基准策略的指南, 以确保更安全、更高效的员工。
+尽管我们不能为每个客户提供完美的解决方案或建议，但以下配置提供了 Microsoft 建议你遵循的基准策略指南，以确保提高安全性和员工工作效率。
 
 - [标识和设备访问权限配置](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [保护特权访问](../users-groups-roles/directory-admin-roles-secure.md)
 
-你还可以在 Azure 门户中查看**标识调控**的 "入门" 选项卡, 开始使用授权管理、访问评审、Privileged Identity Management 和使用条款。
+还可以在 Azure 门户中查看**标识监管**的“入门”选项卡，以开始使用权利管理、访问评审、Privileged Identity Management 和使用条款。
 
-![标识调控入门](./media/identity-governance-overview/getting-started.png)
+![标识监管入门](./media/identity-governance-overview/getting-started.png)
+
+如果你对标识调控功能有任何反馈, 请单击 "Azure 门户中的 **" 获取反馈 "** , 以提交你的反馈。 团队定期查看你的反馈。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure AD 权限管理？（预览版）？](entitlement-management-overview.md)
+- [什么是 Azure AD 权利管理？（预览版）？](entitlement-management-overview.md)
 - [Azure AD 访问评审是什么？](access-reviews-overview.md)
 - [什么是 Azure AD Privileged Identity Management？](../privileged-identity-management/pim-configure.md)
 - [“使用条款”可以用来做什么？](active-directory-tou.md)

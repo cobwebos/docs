@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中设置 Windows Vm 的维护通知 |Microsoft Docs
-description: 了解如何为 Azure 虚拟机设置计划的维护通知。
+title: 监视 Azure 中 Windows Vm 的计划事件 |Microsoft Docs
+description: 了解如何监视 Azure 虚拟机的计划事件。
 services: virtual-machines-windows
 documentationcenter: ''
 author: mysarn
@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 18b46b848946bb2450604bdf0650a004e21778d9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657406"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051856"
 ---
-# <a name="set-up-notifications-about-maintenance-affecting-your-vm"></a>设置影响 VM 的维护的通知
+# <a name="monitoring-scheduled-events"></a>监视 Scheduled Events
 
 每日将更新应用到 Azure 的不同部分, 以使这些服务在安全和最新的状态下运行。 除了计划的更新以外, 还可能会发生计划外事件。 例如, 如果检测到任何硬件降级或故障, Azure 服务可能需要执行计划外维护。 使用实时迁移时, 内存保留更新, 并且通常会对更新的影响进行严格的跟踪, 在大多数情况下, 这些事件对于客户来说几乎是透明的, 并且不会产生任何影响, 也不会导致虚拟机冻结几秒钟。 但是, 对于某些应用程序, 甚至几秒钟的虚拟机冻结可能会造成影响。 提前了解即将到来的 Azure 维护非常重要, 可确保这些应用程序的最佳体验。 [Scheduled Events 服务](scheduled-events.md)提供了一个编程接口, 用于通知即将进行的维护, 并使你能够正确地处理维护。 
 

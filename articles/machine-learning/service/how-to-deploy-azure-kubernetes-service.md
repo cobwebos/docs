@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 490085da1e8f6b8e151168433836d59329887c6e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 26f965169f1fd01676efd3356534a8ac9f2121f7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623965"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036074"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes Service 群集
 
@@ -229,7 +229,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 ## <a name="web-service-authentication"></a>Web 服务身份验证
 
-部署到 Azure Kubernetes 服务时, 默认情况下启用__基于密钥的__身份验证。 还可以启用__令牌__身份验证。 令牌身份验证要求客户端使用 Azure Active Directory 帐户来请求身份验证令牌, 该令牌用于向部署的服务发出请求。
+部署到 Azure Kubernetes 服务时, 默认情况下启用__基于密钥的__身份验证。 你还可以启用__基于令牌的__身份验证。 基于令牌的身份验证要求客户端使用 Azure Active Directory 帐户来请求身份验证令牌, 该令牌用于向部署的服务发出请求。
 
 若要__禁用__身份验证, `auth_enabled=False`请在创建部署配置时设置参数。 下面的示例使用 SDK 禁用身份验证:
 
@@ -269,7 +269,7 @@ print(token)
 > [!IMPORTANT]
 > 需要在令牌`refresh_by`时间之后请求新令牌。
 >
-> Microsoft 强烈建议在 Azure Kubernetes Service 群集所在的同一区域中创建 Azure 机器学习工作区。 若要使用令牌进行身份验证, web 服务将调用创建 Azure 机器学习工作区的区域。 如果工作区的区域不可用, 则即使群集与工作区位于不同的区域, 也无法获取 web 服务的令牌。 这实际上会导致 Azure AD 身份验证不可用, 直到工作区的区域再次可用。 此外, 群集区域与工作区区域之间的距离越大, 提取令牌所需的时间就越长。
+> Microsoft 强烈建议在 Azure Kubernetes Service 群集所在的同一区域中创建 Azure 机器学习工作区。 若要使用令牌进行身份验证, web 服务将调用创建 Azure 机器学习工作区的区域。 如果工作区的区域不可用, 则即使群集与工作区位于不同的区域, 也无法获取 web 服务的令牌。 这实际上会导致在工作区的区域再次可用之前, 不能使用基于令牌的身份验证。 此外, 群集区域与工作区区域之间的距离越大, 提取令牌所需的时间就越长。
 
 ## <a name="update-the-web-service"></a>更新 Web 服务
 

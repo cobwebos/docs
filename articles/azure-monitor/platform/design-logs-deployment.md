@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 1c2416d9fb1d45116bb6594b29863c1fe8f524a3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5d6e68b4b17c31056ed1f96a779823fc856962fb
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883200"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034738"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -71,7 +71,7 @@ Log Analytics 工作区可提供：
 |:---|:---|
 | [访问模式](#access-mode) | 用户用于访问工作区的方法。  定义可用数据的范围，以及应用的访问控制模式。 |
 | [访问控制模式](#access-control-mode) | 工作区中的设置，用于定义是要在工作区级别还是资源级别应用权限。 |
-| [权限](manage-access.md#manage-accounts-and-users) | 应用到工作区或资源的个人用户或用户组的权限。 定义用户有权访问哪些数据。 |
+| [权限](manage-access.md) | 应用到工作区或资源的个人用户或用户组的权限。 定义用户有权访问哪些数据。 |
 | [表级 RBAC](manage-access.md#table-level-rbac) | 适用于所有用户的可选粒度权限, 不考虑其访问模式或访问控制模式。 定义用户可以访问哪些数据类型。 |
 
 ## <a name="access-mode"></a>访问模式
@@ -105,7 +105,7 @@ Azure Monitor 根据你执行日志搜索的上下文, 自动确定正确的模�
 | | 工作区-上下文 | 资源上下文 |
 |:---|:---|:---|
 | 每种模式适合哪类用户？ | 集中管理。 需要配置数据收集的管理员，以及需要访问各种资源的用户。 目前还需要访问 Azure 外部资源的日志。 | 应用程序团队。 受监视 Azure 资源的管理员。 |
-| 用户需要哪些权限才能查看日志？ | 对工作区的权限。 请参阅[管理帐户和用户](manage-access.md#manage-accounts-and-users)中的“工作区权限”。 | 对资源的读取访问权限。 请参阅[管理帐户和用户](manage-access.md#manage-accounts-and-users)中的“资源权限”。 权限可以继承（例如，从包含资源组继承），也可以直接分配给资源。 系统会自动分配对资源日志的权限。 |
+| 用户需要哪些权限才能查看日志？ | 对工作区的权限。 请参阅[使用工作区权限管理访问](manage-access.md#manage-access-using-workspace-permissions)中的**工作区权限**。 | 对资源的读取访问权限。 请参阅[使用 Azure 权限管理访问](manage-access.md#manage-access-using-azure-permissions)中的**资源权限**。 权限可以继承（例如，从包含资源组继承），也可以直接分配给资源。 系统会自动分配对资源日志的权限。 |
 | 权限范围是什么？ | 工作区。 具有工作区访问权限的用户可以从他们有权访问的表中查询工作区中的所有日志。 请参阅[表访问控制](manage-access.md#table-level-rbac) | Azure 资源。 用户可以从任何工作区查询日志以获取他们有权访问的特定资源、资源组或订阅, 但不能查询其他资源的日志。 |
 | 用户如何访问日志？ | <ul><li>从**Azure Monitor**菜单启动**日志**。</li></ul> <ul><li>从**Log Analytics 工作区**启动**日志**。</li></ul> <ul><li>Azure Monitor[工作簿](../visualizations.md#workbooks)中。</li></ul> | <ul><li>从 Azure 资源的菜单启动**日志**</li></ul> <ul><li>从**Azure Monitor**菜单启动**日志**。</li></ul> <ul><li>从**Log Analytics 工作区**启动**日志**。</li></ul> <ul><li>Azure Monitor[工作簿](../visualizations.md#workbooks)中。</li></ul> |
 
@@ -128,9 +128,9 @@ Azure Monitor 根据你执行日志搜索的上下文, 自动确定正确的模�
     > [!NOTE]
     > 如果用户对工作区只有资源权限, 则只有在将工作区访问模式设置为**使用资源或工作区权限**的情况下, 用户才能使用资源上下文模式访问工作区。
 
-若要了解如何在门户中使用 PowerShell 或使用资源管理器模板更改访问控制模式, 请参阅[定义访问控制模式](manage-access.md#define-access-control-mode)。
+若要了解如何在门户中使用 PowerShell 或使用资源管理器模板更改访问控制模式, 请参阅[配置访问控制模式](manage-access.md#configure-access-control-mode)。
 
-## <a name="recommendations"></a>推荐
+## <a name="recommendations"></a>建议
 
 ![资源上下文设计示例](./media/design-logs-deployment/workspace-design-resource-context-01.png)
 

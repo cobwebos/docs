@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: 2b87f9bcbaa0fd9d8a23d774e0765e1eb5b56633
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eaf689ecb8fd64dca15570179733b7d7539a352e
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563895"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050074"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
@@ -28,7 +28,7 @@ ms.locfileid: "68563895"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要运行 LUIS 容器，必须具有以下各项： 
 
@@ -121,7 +121,7 @@ LUIS 容器需要已训练或已发布的 LUIS 应用才能回复用户话语的
 
 |打包要求|详细信息|
 |--|--|
-|Azure 认知服务资源实例|支持的区域包括<br><br>美国西部 (```westus```)<br>西欧 (```westeurope```)<br>澳大利亚东部 (```australiaeast```)|
+|Azure认知服务资源实例|支持的区域包括<br><br>美国西部 (```westus```)<br>西欧 (```westeurope```)<br>澳大利亚东部 (```australiaeast```)|
 |已训练或已发布的 LUIS 应用|没有[不受支持的依赖项](#unsupported-dependencies)。 |
 |访问[主计算机](#the-host-computer)的文件系统 |主计算机必须允许[输入装入点](luis-container-configuration.md#mount-settings)。|
   
@@ -168,7 +168,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| 占位符 | 值 |
+| 占位符 | ReplTest1 |
 |-------------|-------|
 |{APPLICATION_ID} | 已发布 LUIS 应用的应用程序 ID。 |
 |{APPLICATION_ENVIRONMENT} | 已发布 LUIS 应用的环境。 使用以下值之一：<br/>```PRODUCTION```<br/>```STAGING``` |
@@ -187,7 +187,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| 占位符 | 值 |
+| 占位符 | ReplTest1 |
 |-------------|-------|
 |{APPLICATION_ID} | 已训练 LUIS 应用程序的应用程序 ID。 |
 |{APPLICATION_VERSION} | 已训练 LUIS 应用程序的应用程序版本。 |
@@ -248,7 +248,7 @@ ApiKey={API_KEY}
 
 容器提供了基于 REST 的查询预测终结点 API。 已发布（过渡或生产）应用的终结点包含的路由与已训练应用的终结点不同。 
 
-使用主机 `https://localhost:5000`，以获得容器 API。 
+使用主机 `http://localhost:5000`，以获得容器 API。 
 
 |包类型|方法|路由|查询参数|
 |--|--|--|--|

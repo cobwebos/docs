@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: dapine
-ms.openlocfilehash: ff0be2e9dada758cce96ba7c5eebbf03b00f56c6
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 8664d0f727c47da1b70b8060f879a49fbbd8c7c5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971450"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051270"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -48,54 +48,38 @@ ms.locfileid: "69971450"
 
 下表描述了每个文本分析容器的 CPU 和内存配置，其中包括要分配的最少和建议 CPU 核心数（至少 2.6 GHz）和内存量 (GB)。
 
-| 容器 | 最低要求 | 建议 | TPS<br>(最小值, 最大值)|
-|-----------|---------|-------------|--|
-|关键短语提取 | 单核，2-GB 内存 | 单核，4-GB 内存 |15、30|
-|语言检测 | 单核，2-GB 内存 | 单核，4-GB 内存 |15、30|
-|情绪分析 | 单核，2-GB 内存 | 单核，4-GB 内存 |15、30|
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[关键短语提取](#tab/keyphrase)
+
+[!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
+
+#### <a name="language-detectiontablanguage"></a>[语言检测](#tab/language)
+
+[!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
+
+#### <a name="sentiment-analysistabsentiment"></a>[情绪分析](#tab/sentiment)
+
+[!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
+
+***
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 * TPS - 每秒事务数
 
 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
-## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 获取容器映像
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[关键短语提取](#tab/keyphrase)
 
-Microsoft 容器注册表中提供了文本分析的容器映像。
+[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-| 容器 | 存储库 |
-|-----------|------------|
-|关键短语提取 | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
-|语言检测 | `mcr.microsoft.com/azure-cognitive-services/language` |
-|情绪分析| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+#### <a name="language-detectiontablanguage"></a>[语言检测](#tab/language)
 
-使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令从 Microsoft 容器注册表下载容器映像。
+[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-有关文本分析容器可用标记的完整说明，请查看 Docker 中心内的以下容器：
+#### <a name="sentiment-analysistabsentiment"></a>[情绪分析](#tab/sentiment)
 
-* [关键短语提取](https://go.microsoft.com/fwlink/?linkid=2018757)
-* [语言检测](https://go.microsoft.com/fwlink/?linkid=2018759)
-* [情绪分析](https://go.microsoft.com/fwlink/?linkid=2018654)
+[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
-使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
-
-### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>适用于关键短语提取容器的 Docker 拉取
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
-```
-
-### <a name="docker-pull-for-the-language-detection-container"></a>适用于语言检测容器的 Docker 拉取
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
-```
-
-### <a name="docker-pull-for-the-sentiment-container"></a>适用于情绪容器的 Docker 拉取
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
-```
+***
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -112,23 +96,19 @@ docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 
 可用的[命令示例](../text-analytics-resource-container-config.md#example-docker-run-commands) `docker run` 。
 
-### <a name="run-container-example-of-docker-run-command"></a>Docker run 命令的运行容器示例
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[关键短语提取](#tab/keyphrase)
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/keyphrase \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
+[!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-此命令：
+#### <a name="language-detectiontablanguage"></a>[语言检测](#tab/language)
 
-* 从容器映像运行关键短语容器
-* 分配一个 CPU 核心和 4 GB 内存
-* 公开 TCP 端口 5000，并为容器分配伪 TTY
-* 退出后自动删除容器。 容器映像在主计算机上仍然可用。
+[!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
+#### <a name="sentiment-analysistabsentiment"></a>[情绪分析](#tab/sentiment)
+
+[!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
+
+***
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing)。

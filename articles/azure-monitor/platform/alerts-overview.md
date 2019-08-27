@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: c389f2ab9e67cbb1fd1a6a0c9ee274bca7d4c99d
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 67318fee540195fc913739d78e80649100c54e70
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560425"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034821"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -25,7 +25,7 @@ ms.locfileid: "67560425"
 ## <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
 在监视数据中发现重要情况时，警报会以主动的方式通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 
 
-本文讨论 Azure Monitor 中的统一警报体验，其现在包括由 Log Analytics 和 Application Insights 管理的警报。 [以前的警报体验](alerts-classic.overview.md)和警报类型称为“经典警报”。  单击警报页顶部的“查看经典警报”即可查看这个旧的体验和旧的警报类型。  
+本文讨论 Azure Monitor 中的统一警报体验，其现在包括由 Log Analytics 和 Application Insights 管理的警报。 [以前的警报体验](alerts-classic.overview.md)和警报类型称为“经典警报”。 单击警报页顶部的“查看经典警报”即可查看这个旧的体验和旧的警报类型。 
 
 ## <a name="overview"></a>概述
 
@@ -33,7 +33,7 @@ ms.locfileid: "67560425"
 
 ![警报流](media/alerts-overview/Azure-Monitor-Alerts.svg)
 
-警报规则被彼此警报并触发警报时执行的操作。 
+警报规则独立于警报，也独立于警报触发时采取的操作。 
 
 **警报规则** - 警报规则捕获警报的目标和条件。 警报规则可以是“已启用”或“已禁用”状态。 警报只有在启用后才会触发。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "67560425"
 
 **信号** - 信号由目标资源发出，可以有多种类型。 指标、活动日志、Application Insights 和日志。
 
-**条件** - 条件是应用于目标资源的信号和逻辑的组合。 示例： 
+**条件** - 条件是应用于目标资源的信号和逻辑的组合。 例如： 
    - CPU 百分比 > 70%
    - 服务器响应时间 > 4 毫秒 
    - 日志查询的结果计数 > 100
@@ -69,21 +69,21 @@ ms.locfileid: "67560425"
 
 | **监视器源** | **信号类型**  | **说明** | 
 |-------------|----------------|-------------|
-| 服务运行状况 | 活动日志  | 不支持。 请参阅[创建有关服务通知的活动日志警报](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。  |
-| Application Insights | Web 可用性测试 | 不支持。 请参阅 [Web 测试警报](../../azure-monitor/app/monitor-web-app-availability.md)。 适用于任何经检测可将数据发送到 Application Insights 的网站。 网站的可用性或响应度低于预期时，就会收到通知。 |
+| 服务运行状况 | 活动日志  | 不受支持。 请参阅[创建有关服务通知的活动日志警报](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。  |
+| Application Insights | Web 可用性测试 | 不受支持。 请参阅 [Web 测试警报](../../azure-monitor/app/monitor-web-app-availability.md)。 适用于任何经检测可将数据发送到 Application Insights 的网站。 网站的可用性或响应度低于预期时，就会收到通知。 |
 
 ## <a name="manage-alerts"></a>管理警报
-可以设置警报状态来指定它在解决过程中所处的阶段。 符合警报规则中指定的条件以后，就会创建或触发警报，其状态为“新”。  可以在确认警报和关闭警报时更改状态。 所有状态更改都存储在警报历史记录中。
+可以设置警报状态来指定它在解决过程中所处的阶段。 符合警报规则中指定的条件以后，就会创建或触发警报，其状态为“新”。 可以在确认警报和关闭警报时更改状态。 所有状态更改都存储在警报历史记录中。
 
 支持以下警报状态。
 
 | 状态 | 描述 |
 |:---|:---|
-| 新建 | 只是检测到了问题，但尚未审查问题。 |
+| 新 | 只是检测到了问题，但尚未审查问题。 |
 | 已确认 | 管理员已审查警报，并已开始进行处理。 |
 | 已关闭 | 问题已解决。 关闭某个警报后，可通过将其更改为另一种状态来重新打开它。 |
 
-**警报状态**不同于且独立于**监视条件**。 警报状态是由用户设置的。 监视条件是由系统设置的。 当警报触发后，警报的监视条件设置为“已触发”  。 当导致警报触发的基础条件解除后，监视条件会设置为“已解决”。  在用户更改警报状态之前，警报状态不会改变。 了解[如何更改警报和智能组的状态](https://aka.ms/managing-alert-smart-group-states)。
+**警报状态**不同于且独立于**监视条件**。 警报状态是由用户设置的。 监视条件是由系统设置的。 当警报触发后，警报的监视条件设置为“已触发”。 当导致警报触发的基础条件解除后，监视条件会设置为“已解决”。 在用户更改警报状态之前，警报状态不会改变。 了解[如何更改警报和智能组的状态](https://aka.ms/managing-alert-smart-group-states)。
 
 ## <a name="smart-groups"></a>智能组 
 智能组为预览版。 
@@ -94,7 +94,10 @@ ms.locfileid: "67560425"
 ## <a name="alerts-experience"></a>警报体验 
 默认的“警报”页提供特定时间范围内创建的警报的摘要。 该页显示每种严重性的警报总数，列中会标识处于每种状态的、具有每种严重性的警报总数。 选择任一严重性可打开按该严重性筛选的“[所有警报](#all-alerts-page)”页。
 
-此外，也可以[以编程方式枚举通过使用 REST Api 在你的订阅生成的警报实例](#manage-your-alert-instances-programmatically)。
+或者，可以[使用 REST API 以编程方式枚举在订阅上生成的警报实例](#manage-your-alert-instances-programmatically)。
+
+> [!NOTE]
+   >  只有过去30天内生成的警报可以通过 UX 或 REST Api 进行访问。
 
 它不显示或跟踪旧的[经典警报](#classic-alerts)。 可以通过更改订阅或筛选器参数来更新页面。 
 
@@ -102,15 +105,15 @@ ms.locfileid: "67560425"
 
 可以通过选择页面顶部的下拉菜单中的值，来对此视图进行筛选。
 
-| 列 | 描述 |
+| 柱形图 | 描述 |
 |:---|:---|
-| 订阅 | 选择想要查看的警报的 Azure 订阅。 （可选） 可以选择以选择所有订阅。 仅所选订阅中有权访问的警报包含在视图中。 |
+| 订阅 | 选择要查看其警报的 Azure 订阅。 （可选）可以选择你的所有订阅。 视图中仅包含你在所选订阅中有权访问的警报。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
 | 时间范围 | 只有在选定时间范围内触发的警报才会包含在该视图中。 支持的值为过去 1 小时、过去 24 小时、过去 7 天和过去 30 天。 |
 
 选择“警报”页面顶部的以下值打开另一个页面。
 
-| 值 | 描述 |
+| ReplTest1 | 描述 |
 |:---|:---|
 | 警报总数 | 符合选定条件的警报总数。 选择此值会打开未经筛选的“所有警报”视图。 |
 | 智能组 | 从符合选定条件的警报创建的智能组总数。 选择此值会在“所有警报”视图中打开智能组列表。
@@ -118,7 +121,7 @@ ms.locfileid: "67560425"
 
 
 ## <a name="manage-alert-rules"></a>管理警报规则
-单击“管理警报规则”  即可显示“规则”页  。 “规则”是用于跨 Azure 订阅管理所有警报规则的一个地方  。 此页列出所有警报规则，这些规则可以根据目标资源、资源组、规则名称或状态排序。 还可以在此页中编辑、启用或禁用警报规则。  
+单击“管理警报规则”即可显示“规则”页。 “规则”是用于跨 Azure 订阅管理所有警报规则的一个地方。 此页列出所有警报规则，这些规则可以根据目标资源、资源组、规则名称或状态排序。 还可以在此页中编辑、启用或禁用警报规则。  
 
  ![警报规则](./media/alerts-overview/alerts-preview-rules.png)
 
@@ -127,9 +130,9 @@ ms.locfileid: "67560425"
 可以通过一致的方式创作警报，而不考虑监视服务或信号类型。 单个页面中提供了所有触发的警报和相关详细信息。
  
 使用以下三个步骤创作新警报规则：
-1. 选取警报的目标。 
-1. 从目标的可用信号中选择信号。 
-1. 指定要应用到信号中数据的逻辑。 
+1. 选取警报的目标。
+1. 从目标的可用信号中选择信号。
+1. 指定要应用到信号中数据的逻辑。
  
 这个创作过程经过了简化，用户在选择 Azure 资源之前，不再需要知道受支持的监视源或信号。 可用信号列表会根据你选择的目标资源自动筛选。 另外，还将根据该目标引导你自动定义警报规则的逻辑。  
 
@@ -145,46 +148,46 @@ ms.locfileid: "67560425"
 
 可以通过选择页面顶部的下拉菜单中的以下值，可以对该视图进行筛选。
 
-| 列 | 描述 |
+| 柱形图 | 描述 |
 |:---|:---|
-| 订阅 | 选择想要查看的警报的 Azure 订阅。 （可选） 可以选择以选择所有订阅。 仅所选订阅中有权访问的警报包含在视图中。 |
+| 订阅 | 选择要查看其警报的 Azure 订阅。 （可选）可以选择你的所有订阅。 视图中仅包含你在所选订阅中有权访问的警报。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
 | 资源类型 | 选择一个或多个资源类型。 只有包含选定类型中的目标的警报才会包含在视图中。 仅在指定资源组后，才显示此列。 |
 | Resource | 选择资源。 只有包含该资源（作为目标）的警报才会包含在视图中。 仅在指定资源类型后，才显示此列。 |
-| 严重性 | 选择警报严重性，或选择“所有”以包含所有严重性的警报  。 |
-| 监视条件 | 选择监视条件，或选择“所有”以包括所有条件的警报  。 |
-| 警报状态 | 选择警报状态，或选择“所有”以包含所有状态的警报  。 |
-| 监视服务 | 选择一个服务，或选择“所有”以包含所有服务  。 只会包含使用该服务（作为目标）的规则创建的警报。 |
+| Severity | 选择警报严重性，或选择“所有”以包含所有严重性的警报。 |
+| 监视条件 | 选择监视条件，或选择“所有”以包括所有条件的警报。 |
+| 警报状态 | 选择警报状态，或选择“所有”以包含所有状态的警报。 |
+| 监视服务 | 选择一个服务，或选择“所有”以包含所有服务。 只会包含使用该服务（作为目标）的规则创建的警报。 |
 | 时间范围 | 只有在选定时间范围内触发的警报才会包含在该视图中。 支持的值为过去 1 小时、过去 24 小时、过去 7 天和过去 30 天。 |
 
-选择页面顶部的“列”可以选择要显示的列  。 
+选择页面顶部的“列”可以选择要显示的列。 
 
-## <a name="alert-details-page"></a>警报详细信息页
+## <a name="alert-details-page"></a>“警报详细信息”页
 选择某个警报时，会显示“警报详细信息”页。 该页提供警报详细信息，并可在其中更改警报的状态。
 
 ![警报详细信息](media/alerts-overview/alert-detail2.png)
 
-警报详细信息页包括以下各节。
+“警报详细信息”页包括以下部分。
 
-| 部分 | 描述 |
+| 节 | 描述 |
 |:---|:---|
-| 摘要 | 显示警报的属性和其他重要信息。 |
+| 总结 | 显示警报的属性和其他重要信息。 |
 | 历史记录 | 列出警报执行的每个操作，以及对警报进行的任何更改。 目前仅限状态更改。 |
-| 诊断 | 有关包含警报的智能组的信息。 “警报计数”表示包含在智能组中的警报数量  。 包括同一智能组中在过去 30 天内创建的其他警报，无论警报列表页面中的时间筛选器是什么。 选择某个警报以查看其详细信息。 |
+| 诊断 | 有关包含警报的智能组的信息。 “警报计数”表示包含在智能组中的警报数量。 包括同一智能组中在过去 30 天内创建的其他警报，无论警报列表页面中的时间筛选器是什么。 选择某个警报以查看其详细信息。 |
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>警报实例的基于角色的访问控制 (RBAC)
 
-使用和管理警报实例的要求用户具有的内置 RBAC 角色[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)或[监视读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)。 在任何 Azure 资源管理器范围中，从订阅级别，在资源级别的精细分配到支持这些角色。 例如，如果用户仅具有虚拟机 ContosoVM1 的监视参与者访问权限，然后他可以使用和管理仅在 ContosoVM1 上生成的警报。
+警报实例的消耗和管理要求用户具有[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)或[监视读取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)的内置 RBAC 角色。 任何 Azure 资源管理器范围 (从订阅级别到资源级别的粒度分配) 都支持这些角色。 例如, 如果用户仅对虚拟机 "ContosoVM1" 具有 "监视参与者" 的访问权限, 则他只能使用和管理在 "ContosoVM1" 上生成的警报。
 
 ## <a name="manage-your-alert-instances-programmatically"></a>以编程方式管理警报实例
 
-有许多方案，其中你想要以编程方式查询生成的警报针对你的订阅。 这可能是创建在 Azure 门户外的自定义视图或分析您的通知来标识模式和趋势。
+在许多情况下，你可能希望以编程方式查询针对订阅生成的警报。 这可以是在 Azure 门户之外创建自定义视图，也可以是分析警报以确定模式和趋势。
 
-可以查询有关针对订阅可通过使用生成的警报[警报管理 REST API](https://aka.ms/alert-management-api)或使用[警报的 Azure 资源 Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources)。
+可以使用[警报管理 REST API](https://aka.ms/alert-management-api) 或[用于警报的 Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) 查询针对订阅生成的警报。
 
-[警报的 Azure 资源 Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources)允许您查询在规模较大的警报实例。 这被推荐的方案需要管理跨多个订阅生成的警报。 
+[用于警报的 Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) 允许你大规模地查询警报实例。 对于必须管理跨多个订阅生成的警报的情况，建议使用此 API。 
 
-对 API 的以下示例请求将返回一个订阅中的警报的计数：
+以下对 API 的示例请求返回一个订阅中的警报计数：
 
 ```json
 {
@@ -197,9 +200,9 @@ ms.locfileid: "67560425"
   }
 }
 ```
-警报可以查询有关其[基本](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields)字段。
+可以查询警报的[“基本”](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields)字段。
 
-[警报管理 REST API](https://aka.ms/alert-management-api)可用于获取有关特定警报，包括详细信息及其[警报上下文](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields)字段。
+[警报管理 REST API](https://aka.ms/alert-management-api) 可用于获取有关特定警报的详细信息，包括其[“警报上下文”](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields)字段。
 
 ## <a name="classic-alerts"></a>经典警报 
 

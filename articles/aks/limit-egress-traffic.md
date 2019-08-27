@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 369729f10de4a55cd14bb866795ea1aa15b3d9da
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 9476290669606f6eb6c56b51497f3026b9613698
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639781"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034951"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>预览-限制群集节点的出口流量并控制对 Azure Kubernetes Service (AKS) 中所需的端口和服务的访问
 
@@ -85,15 +85,13 @@ AKS 群集需要以下出站端口/网络规则:
 |----------------------------|-----------|----------|
 | *.hcp.\<location\>.azmk8s.io | HTTPS: 443, TCP:22, TCP: 9000 | 此地址为 API 服务器终结点。 将 *\<location\>* 替换为部署 AKS 群集的区域。 |
 | *.tun.\<location\>.azmk8s.io | HTTPS: 443, TCP:22, TCP: 9000 | 此地址为 API 服务器终结点。 将 *\<location\>* 替换为部署 AKS 群集的区域。 |
-| aksrepos.azurecr.io        | HTTPS:443 | 访问 Azure 容器注册表 (ACR) 中的映像需要此地址。 |
+| aksrepos.azurecr.io        | HTTPS:443 | 访问 Azure 容器注册表 (ACR) 中的映像需要此地址。 此注册表包含升级和缩放群集期间群集正常运行所需的第三方映像/图表 (例如, 指标服务器、核心 dns 等)|
 | \* .blob.core.windows.net    | HTTPS:443 | 此地址为 ACR 中存储的图像的后端存储。 |
-| mcr.microsoft.com          | HTTPS:443 | 访问 Microsoft 容器注册表 (MCR) 中的图像需要此地址。 |
+| mcr.microsoft.com          | HTTPS:443 | 访问 Microsoft 容器注册表 (MCR) 中的图像需要此地址。 此注册表包含升级和缩放群集期间群集正常运行所需的第一方映像/图表 (例如, 小鲸鱼等) |
 | *.cdn.mscr.io              | HTTPS:443 | Azure 内容分发网络 (CDN) 支持的 MCR 存储需要此地址。 |
 | management.azure.com       | HTTPS:443 | 此地址是 Kubernetes GET/PUT 操作所必需的。 |
 | login.microsoftonline.com  | HTTPS:443 | 此地址是 Azure Active Directory 身份验证所必需的。 |
-| api.snapcraft.io           | HTTPS: 443, HTTP:80 | 在 Linux 节点上安装管理包需要此地址。 |
 | ntp.ubuntu.com             | UDP: 123   | 对于 Linux 节点上的 NTP 时间同步, 此地址是必需的。 |
-| *. docker.io                | HTTPS:443 | 需要此地址才能拉取隧道前面的必需容器映像。 |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>适用于 AKS 群集的可选推荐地址和端口
 
@@ -103,7 +101,7 @@ AKS 群集需要以下出站端口/网络规则:
 
 | FQDN                                    | Port      | 使用      |
 |-----------------------------------------|-----------|----------|
-| *.ubuntu.com                            | HTTP:80   | 此地址允许 Linux 群集节点下载所需的安全修补程序和更新。 |
+| security.ubuntu.com、azure.archive.ubuntu.com、changelogs.ubuntu.com                           | HTTP:80   | 此地址允许 Linux 群集节点下载所需的安全修补程序和更新。 |
 | packages.microsoft.com                  | HTTPS:443 | 此地址是用于缓存*apt*操作的 Microsoft 包存储库。 |
 | dc.services.visualstudio.com            | HTTPS:443 | 建议使用 Azure Monitor 进行正确的指标和监视。 |
 | *.opinsights.azure.com                  | HTTPS:443 | 建议使用 Azure Monitor 进行正确的指标和监视。 |

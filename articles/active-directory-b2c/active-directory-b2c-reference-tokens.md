@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c347a5740a13d071d4bb06daf43463f974198e5d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 2b33c35b1e4f83c30e2efdf64aed0b5f2035c79b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980805"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032081"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的令牌概述
 
@@ -40,7 +40,7 @@ Azure AD B2C 支持 [OAuth 2.0 和 OpenID Connect 协议](active-directory-b2c-r
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
 
-应用程序从 Azure AD B2C 收到的安全令牌可能来自于 `/authorize` 或 `/token` 终结点。 从 `/authorize` 终结点获取 ID 令牌时，将通过使用[隐式流](active-directory-b2c-reference-spa.md)完成此操作，该令牌通常供用户用于登录到基于 Javascript 的 Web 应用程序。 从 `/token` 终结点获取 ID 令牌时，将通过使用[机密代码流](active-directory-b2c-reference-oidc.md)完成此操作，从而使令牌隐藏在浏览器中。
+应用程序从 Azure AD B2C 收到的安全令牌可能来自于 `/authorize` 或 `/token` 终结点。 从`/authorize`终结点获取 ID 令牌时, 将使用[隐式流](active-directory-b2c-reference-spa.md)来完成此操作, 该流通常用于登录到基于 JavaScript 的 web 应用程序的用户。 从`/token`终结点获取 ID 令牌时, 将使用[授权代码流](active-directory-b2c-reference-oidc.md#get-a-token)来完成此操作, 这会使令牌在浏览器中保持隐藏状态。
 
 ## <a name="claims"></a>声明
 

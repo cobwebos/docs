@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: c41ab1c3309243fa3a96d907f620ffeff10376a1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6ad7f32704d8cb73999a6e3cf60cb2a238268242
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626257"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034548"
 ---
 # <a name="move-guidance-for-networking-resources"></a>移动网络资源指南
 
@@ -22,10 +22,6 @@ ms.locfileid: "69626257"
 移动虚拟网络时，还必须移动其从属资源。 对于 VPN 网关，必须移动 IP 地址、虚拟网络网关和所有关联的连接资源。 本地网络网关可以位于不同的资源组中。
 
 若要移动带网络接口卡的虚拟机，必须移动所有依赖的资源。 移动与该网络接口卡对应的虚拟网络、该虚拟网络的所有其他网络接口卡，以及 VPN 网关。
-
-## <a name="state-of-dependent-resources"></a>从属资源的状态
-
-如果源或目标资源组包含虚拟网络, 则在移动过程中将检查虚拟网络的所有从属资源的状态。 如果其中的任何资源处于失败状态, 则会阻止移动。 例如, 如果使用虚拟网络的虚拟机出现故障, 则会阻止移动。 即使虚拟机不是要移动的资源之一, 而且不在移动的资源组中, 也会阻止移动。 若要避免此问题, 请将资源移到没有虚拟网络的资源组。
 
 ## <a name="peered-virtual-network"></a>对等的虚拟网络
 

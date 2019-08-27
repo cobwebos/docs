@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: ec017901e36a01042485e9aeca2431c8a6838ab8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 6c06453d479ae55ceb1c05a7ee8a29ce19a7a13b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536750"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034977"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>预览-从 Azure Kubernetes 服务向 Azure 容器注册表进行身份验证
 
@@ -46,11 +46,15 @@ az extension add -y --name aks-preview
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>使用 ACR 集成创建新的 AKS 群集
 
-你可以在最初创建 AKS 群集的过程中设置 AKS 和 ACR 集成。  若要允许 AKS 群集与 ACR 交互, 请使用 Azure Active Directory**服务主体**。 以下 CLI 命令将在指定的资源组中创建一个 ACR, 并为该服务主体配置适当的**ACRPull**角色。 如果*acr 名称*不存在, 则会自动创建的`aks<resource-group>acr`默认 acr 名称。  请为以下参数提供有效值。  括号中的参数是可选的。
+你可以在最初创建 AKS 群集的过程中设置 AKS 和 ACR 集成。  若要允许 AKS 群集与 ACR 交互, 请使用 Azure Active Directory**服务主体**。 以下 CLI 命令将在指定的资源组中创建一个 ACR, 并为该服务主体配置适当的**ACRPull**角色。 如果该*acr 名称*不存在于指定的资源组中, 则会自动创建的`aks<resource-group>acr`默认 acr 名称。  请为以下参数提供有效值。  括号中的参数是可选的。
 ```azurecli
 az login
 az aks create -n myAKSCluster -g myResourceGroup --enable-acr [--acr <acr-name-or-resource-id>]
 ```
+\* * ACR 资源 id 采用以下格式: 
+
+/subscriptions/< 订阅 >/resourceGroups/> </providers/Microsoft.ContainerRegistry/registries/<name> 
+  
 此步骤可能需要几分钟才能完成。
 
 ## <a name="create-acr-integration-for-existing-aks-clusters"></a>为现有 AKS 群集创建 ACR 集成

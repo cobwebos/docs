@@ -3,17 +3,17 @@ title: 将 SensorTile 设备连接到 Azure IoT Central 应用程序 |Microsoft 
 description: 作为设备开发人员, 了解如何将 SensorTile 设备连接到 Azure IoT Central 应用程序。
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 04/24/2019
+ms.date: 08/24/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: ce0c5abe6e89094623c07afa2d1c85903e0e7ee7
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 3d804b1e14d1b79266a74340e8682f1bf03d8f30
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877447"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050556"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>将 SensorTile 设备连接到 Azure IoT Central 应用程序
 
@@ -34,7 +34,7 @@ ms.locfileid: "69877447"
 
 在 Azure IoT Central 应用程序中, 从**SensorTile**设备模板添加真实设备, 并记下设备连接详细信息:**作用域 id**、**设备 id**和**主键**:
 
-1. 从 Device Explorer 添加设备。 选择 " **+ 新建 > real** " 以添加实际设备。
+1. 从设备添加设备。 选择 " **+ 新建 > real** " 以添加实际设备。
 
     * 输入小写**设备 id**, 或使用建议的**设备 id**。
     * 输入**设备名称**, 或使用建议的名称

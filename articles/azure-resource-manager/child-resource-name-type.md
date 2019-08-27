@@ -4,14 +4,14 @@ description: 介绍如何在 Azure 资源管理器模板中设置子资源的名
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 08/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: 32d1eb8fdf2b488e5d6ec46d281392ad6185525b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: bd1c38547866c34eb5c4808ed5b185b50fa44a01
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827334"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035559"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>设置子资源的名称和类型
 
@@ -22,9 +22,9 @@ ms.locfileid: "68827334"
 ```json
 "resources": [
   {
-    // parent resource
+    <parent-resource>
     "resources": [
-      // child resource
+      <child-resource>
     ]
   }
 ]
@@ -35,10 +35,10 @@ ms.locfileid: "68827334"
 ```json
 "resources": [
   {
-    // parent resource
+    <parent-resource>
   },
   {
-    // child resource
+    <child-resource>
   }
 ]
 ```
