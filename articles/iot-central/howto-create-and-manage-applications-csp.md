@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/03/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 43fe0047022173cc20f58688920fa95b95cc6c22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d20256381eab155d4b7532591cea85e43080ec0
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65473531"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019801"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>作为 CSP，代表客户创建和管理 Azure IoT Central 应用程序 
 
@@ -25,7 +25,7 @@ Microsoft 云解决方案提供商 (CSP) 计划是 Microsoft 经销商计划。 
 
 ![Microsoft 合作伙伴中心, 客户视图](media/howto-create-application-csp/image1.png)
 
-Azure IoT Central 将列为可用于管理的服务。 选择要创建新的应用程序或管理此客户的现有应用程序的页面上的 Azure IoT 中心链接。
+Azure IoT Central 将列为可用于管理的服务。 选择页面上的 "Azure IoT Central" 链接, 创建新应用程序或管理此客户的现有应用程序。
 
 ![可用于管理的 Azure IoT Central](media/howto-create-application-csp/image2.png)
 
@@ -33,7 +33,7 @@ Azure IoT Central 将列为可用于管理的服务。 选择要创建新的应�
 
 ![创建适用于 CSP 的管理器](media/howto-create-application-csp/image3.png)
 
-若要创建 Azure IoT Central 应用程序，请选择**新的应用程序**磁贴。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。  你将找到有关以下每个字段的详细信息。
+若要创建 Azure IoT Central 应用程序, 请选择 "**新建应用程序**" 磁贴。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。 你将找到有关以下每个字段的详细信息。
 
 ![适用于 CSP 的“创建应用程序”页](media/howto-create-application-csp/image4.png)
 
@@ -45,7 +45,7 @@ Azure IoT Central 将列为可用于管理的服务。 选择要创建新的应�
 
 ## <a name="application-name"></a>应用程序名称
 
-应用程序的名称显示在“应用程序管理器”页上和每个 Azure IoT Central 应用程序中。  可以为 Azure IoT Central 应用程序选择任意名称。 选择一个在自己和组织中的其他人看来合适的名称。
+应用程序的名称显示在“应用程序管理器”页上和每个 Azure IoT Central 应用程序中。 可以为 Azure IoT Central 应用程序选择任意名称。 选择一个在自己和组织中的其他人看来合适的名称。
 
 ## <a name="application-url"></a>应用程序 URL
 
@@ -53,7 +53,7 @@ Azure IoT Central 将列为可用于管理的服务。 选择要创建新的应�
 
 输入应用程序的名称时，系统会自动创建应用程序 URL。 可以根据需要为应用程序选择另一个 URL。 每个 Azure IoT Central URL 在 Azure IoT Central 中必须唯一。 如果所选 URL 已被使用，则会看到一条错误消息。
 
-## <a name="directory"></a>Directory
+## <a name="directory"></a>目录
 
 由于 Azure IoT Central 有你用于管理已在 Microsoft 合作伙伴门户中选择的客户的上下文，因此在“目录”字段中只显示该客户的 Azure Active Directory 租户。 
 
@@ -63,13 +63,13 @@ Azure Active Directory 租户包含用户标识、凭据和其他组织信息。
 
 ## <a name="azure-subscription"></a>Azure 订阅
 
-有了 Azure 订阅，就可以创建 Azure 服务的实例。 Azure IoT Central 会自动查找你有权访问的客户的所有 Azure 订阅，并将其显示在“创建应用程序”页的下拉列表中。  选择用于创建新 Azure IoT Central 应用程序的 Azure 订阅。
+有了 Azure 订阅，就可以创建 Azure 服务的实例。 Azure IoT Central 会自动查找你有权访问的客户的所有 Azure 订阅，并将其显示在“创建应用程序”页的下拉列表中。 选择用于创建新 Azure IoT Central 应用程序的 Azure 订阅。
 
-如果没有 Azure 订阅，则可在 Microsoft 合作伙伴中心创建一个。 创建 Azure 订阅以后，请导航回“创建应用程序”页。  新订阅显示在“Azue 订阅”  下拉列表中。
+如果没有 Azure 订阅，则可在 Microsoft 合作伙伴中心创建一个。 创建 Azure 订阅以后，请导航回“创建应用程序”页。 新订阅显示在“Azue 订阅”下拉列表中。
 
 若要了解详细信息，请参阅 [Azure 订阅](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)。
 
-## <a name="region"></a>区域
+## <a name="region"></a>地区
 
 选择要在其中创建 Azure IoT Central 应用程序的区域。 通常应选择在地理上最靠近设备的区域，以便优化性能。
 

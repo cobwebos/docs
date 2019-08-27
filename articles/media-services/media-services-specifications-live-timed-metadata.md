@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 19d3fe4285cf6bf316a0d445e49a398ed5d66a35
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d2fec29c96639d21db362f6982b88a90bd6c319f
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991785"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019083"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>实时传送视频流中的超时元数据信号 
 
@@ -98,7 +98,7 @@ ms.locfileid: "69991785"
 
 Azure 媒体服务支持 [RTMP] 和平滑流式处理 [SSTR] 协议的实时带内元数据。 实时元数据可用于定义自定义事件、使用自己独特的自定义架构 (JSON、二进制、XML) 以及行业定义格式 (如 ID3) 或 SCTE-35 (用于广播流中的广告信号)。 
 
-本文提供了有关如何使用媒体服务支持的引入协议发送自定义的定时元数据信号的详细信息。 本文还介绍了如何使用计时元数据信号修饰 HLS、破折号和平滑流式处理的清单, 以及如何在使用 CMAF (片段) 或 HLS 传输流 (TS) 段传输内容时将其带内传输。 
+本文提供了有关如何使用 Azure 媒体服务支持的引入协议发送自定义的定时元数据信号的详细信息。 本文还介绍了如何使用计时元数据信号修饰 HLS、破折号和平滑流式处理的清单, 以及如何在使用 CMAF (片段) 或 HLS 传输流 (TS) 段传输内容时将其带内传输。 
 
 计时元数据的常见用例方案包括:
 
@@ -122,7 +122,7 @@ Azure 媒体服务实时事件和包装器可以接收这些计时的元数据�
 
 [RTMP] 协议允许针对各种方案 (包括自定义元数据和 35 SCTE 广告信号) 发送定时元数据信号。 
 
-广告信号 (提示消息) 以 [AMF0] 提示消息的形式发送, 该消息嵌入在 [RTMP] 流中。 在实际事件或 [SCTE35] ad 接合信号需要发生之前, 可能会发送提示消息。 若要支持此方案, 请在提示消息中发送事件的实际时间。 有关详细信息，请参见 [AMF0]。
+广告信号 (提示消息) 以 [AMF0] 提示消息的形式发送, 该消息嵌入在 [RTMP] 流中。 在实际事件或 [SCTE35] ad 接合信号需要发生之前, 可能会发送提示消息。 若要支持此方案, 请在提示消息中发送事件的实际显示时间戳。 有关详细信息，请参见 [AMF0]。
 
 Azure 媒体服务支持以下 [AMF0] 命令用于 RTMP 摄取:
 
@@ -139,8 +139,8 @@ Azure 媒体服务支持以下 [AMF0] 命令用于 RTMP 摄取:
 
 如果要使用 RTMP 协议从上游编码器、IP 照相机、无人机或设备提供自定义元数据源, 请使用 "onUserDataEvent" [AMF0] 数据消息命令类型。
 
-**"OnUserDataEvent"** 数据消息命令必须携带具有以下定义的消息负载, 以由媒体服务捕获并打包为带内文件格式, 并打包为 HLS、破折号和平滑清单。
-建议每0.5 秒 (500 毫秒) 发送一次定时元数据消息, 而不是每隔一次发送一次。 如果需要提供框架级元数据, 则每个消息都可以聚合来自多个帧的元数据。 如果要发送多比特率流, 则建议你仅在单比特率提供元数据, 以减少带宽并避免视频/音频处理干扰。 
+**"OnUserDataEvent"** 数据消息命令必须携带具有以下定义的消息负载, 以由媒体服务捕获并打包成带内文件格式, 并打包为 HLS、破折号和平滑流式处理清单。
+建议每隔0.5 秒 (500 毫秒) 发送一次定时元数据消息, 否则可能会出现实时流的稳定性问题。 如果需要提供框架级元数据, 则每个消息都可以聚合来自多个帧的元数据。 如果要发送多比特率流, 则建议你仅在单比特率提供元数据, 以减少带宽并避免视频/音频处理干扰。 
 
 **"OnUserDataEvent"** 的有效负载应为 [MPEGDASH] EventStream XML 格式消息。 这样, 就可以轻松地传入自定义的架构, 这些架构可以在 "emsg" 有效负载中携带, 用于 CMAF [MPEGCMAF] 通过 HLS 或短划线协议传递的内容。 每个短划线事件流消息都包含一个 schemeIdUri, 它充当 URN 消息方案标识符, 并定义消息的负载。 [ID3v2] 的某些 https://aomedia.org/emsg/ID3 方案 (如 "") 或**urn: scte: scte35: 2013: bin** for [35 scte] 按行业 consortia 标准化以实现互操作性。 任何应用程序提供程序都可以使用其控制的 URL (拥有的域) 定义自己的自定义方案, 并可以在该 URL 中提供规范 (如果选择)。 如果播放机具有已定义方案的处理程序, 则这是需要理解有效负载和协议的唯一组件。
 
@@ -226,7 +226,7 @@ Azure 媒体服务支持以下 [AMF0] 命令用于 RTMP 摄取:
 
 ### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>OnUserDataEvent 事件的其他信息性约束和默认值
 
-- 如果未在 EventStream 元素中设置时间刻度, 则默认情况下将使用 RTMP 1Khz 时间刻度
+- 如果未在 EventStream 元素中设置时间刻度, 则默认情况下将使用 RTMP 1 kHz 时间刻度
 - OnUserDataEvent 消息的传递限于每个500毫秒最大值一次。如果更频繁地发送事件, 可能会影响实时源的带宽和稳定性
 
 ## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>具有 "onCuePoint" 的 2.1.2 RTMP 广告提示

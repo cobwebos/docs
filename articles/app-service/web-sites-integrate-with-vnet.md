@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 7246a0223e156abd866594c65542069944601b01
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68740898"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018253"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
 本文档介绍 Azure 应用服务虚拟网络集成功能，并说明如何在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中使用应用对其进行设置。 使用 [Azure 虚拟网络][VNETOverview] (VNet) 可将多个 Azure 资源置于无法通过 Internet 路由的网络中。  
@@ -84,8 +84,9 @@ VNet 集成不支持某些功能，其中包括：
 * 应用和 VNet 必须位于同一区域中
 * 不能删除带有集成应用的 VNet。 必须先删除集成 
 * 对于每个应用服务计划, 只能有一个区域 VNet 集成。 同一应用服务计划中的多个应用可以使用相同的 VNet。 
+* 当存在使用区域 VNet 集成的应用时, 不能更改应用或应用服务计划的订阅
 
-为每个应用服务计划实例使用一个地址。 如果你将应用程序缩放到5个实例, 则使用5个地址。 由于在分配后无法更改子网大小, 因此你必须使用足够大的子网来容纳你的应用程序可能会达到的任何规模。 建议使用32地址的/27, 因为它可以容纳扩展为20个实例的高级应用服务计划。
+为每个应用服务计划实例使用一个地址。 如果将应用扩展到5个实例, 则使用5个地址。 由于在分配后无法更改子网大小, 因此你必须使用足够大的子网来容纳你的应用程序可能会达到的任何规模。 建议大小为/26, 其中包含64地址。 如果未更改应用服务计划的大小, 则包含32地址的/27 将提供高级应用服务计划20个实例。 当你向上或向下缩放应用服务计划时, 你需要在短时间内使用两个地址。 
 
 如果希望其他应用服务计划中的应用连接到已由其他应用服务计划中的应用程序连接的 VNet, 则需要选择与预先存在的 VNet 集成所使用的子网不同的子网。  
 
@@ -102,6 +103,8 @@ VNet 集成不支持某些功能，其中包括：
    ![选择 VNet 和子网][7]
 
 当你的应用与 VNet 集成后, 它将使用你的 VNet 配置的 DNS 服务器。 
+
+区域 VNet 集成要求将集成子网委托给 Microsoft。  VNet 集成 UI 会自动将子网委托给 Microsoft。 如果你的帐户没有足够的网络权限来进行设置, 则你将需要可设置集成子网上属性的人员来委派子网。 若要手动委派集成子网, 请参阅 Azure 虚拟网络子网 UI, 并设置 Microsoft 的委派。
 
 若要从 VNet 断开应用，请选择“断开连接”。 该操作将重启 Web 应用。 
 
@@ -143,7 +146,7 @@ VNet 集成不支持某些功能，其中包括：
 * 跨 ExpressRoute 访问资源 
 * 跨服务终结点访问资源 
 
-### <a name="getting-started"></a>开始使用
+### <a name="getting-started"></a>入门
 
 将 Web 应用连接到虚拟网络之前，需要牢记以下几点：
 
@@ -249,7 +252,7 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 
 
 ## <a name="troubleshooting"></a>疑难解答
-虽然此功能容易设置，但这并不意味着你就不会遇到问题。 如果在访问所需终结点时遇到问题，可以使用某些实用程序来测试从应用控制台发出的连接。 可以使用两种控制台。 一种是 Kudu 控制台，另一种是 Azure 门户中的控制台。 若要访问应用中的 Kudu 控制台，请转到“工具”->“Kudu”。 这相当于访问 [sitename].scm.azurewebsites.net。 打开后，转到“调试控制台”选项卡。若要访问 Azure 门户托管的控制台，请在应用中转到“工具”->“控制台”。 
+虽然此功能容易设置，但这并不意味着你就不会遇到问题。 如果在访问所需终结点时遇到问题，可以使用某些实用程序来测试从应用控制台发出的连接。 可以使用两种控制台。 一种是 Kudu 控制台，另一种是 Azure 门户中的控制台。 若要访问应用中的 Kudu 控制台，请转到“工具”->“Kudu”。 你还可以在 [sitename] appname>.azurewebsites.net 上访问 Kudo 控制台。 网站加载后, 请切换到 "调试控制台" 选项卡。若要访问 Azure 门户托管的控制台，请在应用中转到“工具”->“控制台”。 
 
 #### <a name="tools"></a>工具
 由于存在安全约束，**ping**、**nslookup** 和 **tracert** 工具无法通过控制台来使用。 为了填补这方面的空白，我们添加了两种单独的工具。 为了测试 DNS 功能，我们添加了名为 nameresolver.exe 的工具。 语法为：

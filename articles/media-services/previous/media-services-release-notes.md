@@ -11,26 +11,26 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: c519cf88f40928bbd556b0accfa30d9f8c5c0f11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff85638a05855d0b755a7b1812ee7025274b559c
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991917"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019311"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
 这些 Azure 媒体服务发行说明汇总了与以前版本相比的变更之处和已知的问题。
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 我们希望能够倾听客户的心声，以便努力解决对客户造成影响的问题。 要报告问题或提出问题，请将在 [Azure 媒体服务 MSDN 论坛]提交问题。 
 
 ## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>当前已知的问题
-### <a name="a-idgeneralissuesmedia-services-general-issues"></a><a id="general_issues"/>媒体服务一般问题
+### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>媒体服务一般问题
 
 | 问题 | 描述 |
 | --- | --- |
@@ -42,12 +42,20 @@ ms.locfileid: "65991917"
 | 某些客户端可能会在平滑流式处理清单中碰到重复标记问题。 |有关详细信息，请参阅[此部分](media-services-deliver-content-overview.md#known-issues)。 |
 | 媒体服务 .NET SDK 对象无法序列化，因此无法与 Azure Redis 缓存配合使用。 |如果尝试对 SDK AssetCollection 对象进行序列化以将其添加到 Azure Redis 缓存，则会引发异常。 |
 
-## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
+## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
+
+## <a name="august-2019"></a>2019 年 8 月
+
+### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
+
+我们将宣布弃用2019年11月30日停用的*Windows Azure 媒体编码器*(WAME) 和*Azure 媒体编码器*(AME) 媒体处理器。
+
+有关详细信息, 请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334)并[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-已弃用 Azure 媒体服务媒体 Hyperlapse 预览功能。
+Azure 媒体服务的媒体 Hyperlapse 预览功能已弃用。
 
 ## <a name="december-2018"></a>2018 年 12 月
 
@@ -136,7 +144,7 @@ Azure 媒体编修器正式发布：此媒体处理器通过模糊选定个体�
 
  现可使用媒体服务访问其服务的遥测/指标数据。 可使用当前版本的媒体服务收集实时通道、流式处理终结点和存档实体的遥测数据。 有关详细信息，请参阅[媒体服务遥测](media-services-telemetry-overview.md)。
 
-## <a name="a-idjulychanges16july-2016-release"></a><a id="july_changes16"/>2016 年 7 月版本
+## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>2016 年 7 月版本
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>编码任务所生成清单文件 (*.ISM) 的更新
 将某个编码任务提交到 Media Encoder Standard 或 Media Encoder Premium 后，该编码任务会在输出资产中生成[流式处理清单文件](media-services-deliver-content-overview.md) (*.ism)。 最新的服务版本已更新此流式处理清单文件的语法。
 
@@ -192,9 +200,9 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 有关详细信息，请参阅：
 
 * 以下[代码示例](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)可帮助你快速入门：
-  * vodworkflow_aes.php  ：此 PHP 文件演示如何使用 AES-128 动态加密和密钥传送服务。 它基于[使用 AES-128 动态加密和密钥传送服务](media-services-protect-with-aes128.md)中所述的 .NET 示例。
-  * vodworkflow_aes.php  ：此 PHP 文件演示如何使用 PlayReady 动态加密和许可证传送服务。 它基于[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)中所述的 .NET 示例。
-  * scale_encoding_units.php  ：此 PHP 文件演示如何缩放编码预留单位。
+  * vodworkflow_aes.php：此 PHP 文件演示如何使用 AES-128 动态加密和密钥传送服务。 它基于[使用 AES-128 动态加密和密钥传送服务](media-services-protect-with-aes128.md)中所述的 .NET 示例。
+  * vodworkflow_aes.php：此 PHP 文件演示如何使用 PlayReady 动态加密和许可证传送服务。 它基于[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)中所述的 .NET 示例。
+  * scale_encoding_units.php：此 PHP 文件演示如何缩放编码预留单位。
 
 ## <a id="nov_changes_15"></a>2015 年 11 月版本
  媒体服务现已在云中提供 Widevine 许可证传送服务。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)。 另请参阅[此教程](media-services-protect-with-playready-widevine.md)和 [GitHub 存储库](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)。 
@@ -506,7 +514,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 
 * 资产
   
-    * IAsset.Create(assetName) 是唯一的资产创建函数。  IAsset.Create 不再在方法调用中上传文件。 使用 IAssetFile 进行上传。
+    * IAsset.Create(assetName) 是唯一的资产创建函数。 IAsset.Create 不再在方法调用中上传文件。 使用 IAssetFile 进行上传。
     * IAsset.Publish 方法和 AssetState.Publish 枚举值已从媒体服务 SDK 中删除。 必须重写依赖于此值的任何代码。
 * FileInfo
   

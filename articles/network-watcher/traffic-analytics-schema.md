@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: efa8a92ca9861c0280237ba07f4304b5c7dbbb88
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: bd83d915b51ab44d4287987e3da7113722910262
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609991"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020240"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架构和数据聚合
 
@@ -32,7 +32,7 @@ ms.locfileid: "68609991"
 
 ### <a name="data-aggregation"></a>数据聚合
 
-1. 位于 "FlowIntervalStartTime_t" 与 "FlowIntervalEndTime_t" 之间的 NSG 之间的所有流日志在存储帐户中以一分钟的时间间隔捕获为 blob, 然后流量分析处理。 
+1. 位于 "FlowIntervalStartTime_t" 与 "FlowIntervalEndTime_t" 之间的 NSG 之间的所有流日志在存储帐户中以一分钟的时间间隔捕获为 blob, 然后流量分析处理。
 2. 流量分析的默认处理间隔为60分钟。 这意味着每60分钟流量分析从存储中选取用于聚合的 blob。 如果选择的处理间隔是10分钟, 流量分析将在每10分钟后从存储帐户中选取 blob。
 3. 具有相同源 IP、目标 IP、目标端口、NSG 名称、NSG 规则、流方向和传输层协议 (TCP 或 UDP) 的流 (注意:排除源端口以进行聚合, 流量分析
 4. 此单个记录经过修饰 (以下部分中的详细信息), 流量分析 Log Analytics 中的引入。此过程可能需要最多1小时。
@@ -85,6 +85,12 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 ```
 
 ### <a name="fields-used-in-traffic-analytics-schema"></a>流量分析架构中使用的字段
+  > [!IMPORTANT]
+  > 流量分析架构已于2019年8月更新 ()。 新架构提供源和目标 Ip 分别删除需要分析 System.windows.flowdirection> 字段, 使查询更简单。 </br>
+  > FASchemaVersion_s 更新了从1到2的。 </br>
+  > 弃用的字段:VMIP_s, Subscription_s, Region_s, NSGRules_s, Subnet_s, VM_s, NIC_s, PublicIPs_s, FlowCount_d </br>
+  > 新字段:SrcPublicIPs_s, DestPublicIPs_s, NSGRule_s </br>
+  > 2019年11月之前, 将提供已弃用的字段22日。
 
 流量分析在 Log Analytics 之上构建而成, 因此可以对通过流量分析修饰的数据运行自定义查询, 并在同一上设置警报。
 
@@ -94,7 +100,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | 用于流量分析数据的表
 | SubType_s | FlowLog | 流日志的子类型。 仅使用 "FlowLog", SubType_s 的其他值用于产品的内部工作 |
-| FASchemaVersion_s |   1   | 架构版本。 不反映 NSG 流日志版本 |
+| FASchemaVersion_s |   2   | 架构版本。 不反映 NSG 流日志版本 |
 | TimeProcessed_t   | UTC 格式的日期和时间  | 流量分析处理来自存储帐户的原始流日志的时间 |
 | FlowIntervalStartTime_t | UTC 格式的日期和时间 |  流日志处理间隔的开始时间。 这是从其测量流间隔的时间 |
 | FlowIntervalEndTime_t | UTC 格式的日期和时间 | 流日志处理间隔的结束时间 |
@@ -111,7 +117,8 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | FlowDirection_s | * I = 入站<br> * O = 出站 | 流入/流出 NSG 的流向, 按 flow 日志 |
 | FlowStatus_s  | * A = NSG 规则允许 <br> * D = 被 NSG 规则拒绝  | 按流日志的 NSG 允许/nblocked 的 flow 状态 |
 | NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | 与流关联的网络安全组 (NSG) |
-| NSGRules_s | \<索引值 0) > < NSG_RULENAME >\<flow 方向 >\<flow 状态 >\<FlowCount ProcessedByRule > |  允许或拒绝此流的 NSG 规则 |
+| NSGRules_s | \<索引值 0) >\|\<NSG_RULENAME >\|\<流方向 >\|流状态\|>\<FlowCountProcessedByRule>\< |  允许或拒绝此流的 NSG 规则 |
+| NSGRule_s | NSG_RULENAME |  允许或拒绝此流的 NSG 规则 |
 | NSGRuleType_s | * 用户定义 * 默认值 |   流使用的 NSG 规则的类型 |
 | MACAddress_s | MAC 地址 | 捕获流的 NIC 的 MAC 地址 |
 | Subscription_s | 此字段中填充了 Azure 虚拟网络/网络接口/虚拟机的订阅 | 仅适用于 FlowType = S2S、P2S、AzurePublic、ExternalPublic、MaliciousFlow 和 UnknownPrivate 流类型 (其中只有一方是 azure 的流类型) |
@@ -151,6 +158,8 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | OutboundBytes_d | 在应用 NSG 规则的网络接口上按捕获发送的字节数 | 仅为 NSG 流日志架构版本2填充此版本 |
 | CompletedFlows_d  |  | 仅为 NSG 流日志架构版本2的非零值填充此值 |
 | PublicIPs_s | < PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_PACKETS >\|\<\<\|\<OUTBOUND_BYTES>\|INBOUND_BYTES>\< | 按栏分隔的条目 |
+| SrcPublicIPs_s | < SOURCE_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_PACKETS\|\<\<>\|OUTBOUND_BYTES\<>\|INBOUND_BYTES>\< | 按栏分隔的条目 |
+| DestPublicIPs_s | < DESTINATION_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_\|\<\<数据包 >\|\<OUTBOUND_BYTES >\|INBOUND_BYTES\<> | 按栏分隔的条目 |
 
 ### <a name="notes"></a>说明
 
@@ -165,7 +174,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 1. MaliciousFlow-其中一个 IP 地址属于 azure 虚拟网络, 而另一个 IP 地址是不在 Azure 中的公共 IP 地址, 并且在 ASC 源中被报告为恶意, 流量分析将在 "FlowIntervalStartTime_t "和" FlowIntervalEndTime_t "。
 1. UnknownPrivate-其中一个 IP 地址属于 Azure 虚拟网络, 而另一个 IP 地址属于 RFC 1918 中定义的专用 IP 范围, 无法通过流量分析映射到客户拥有的站点或 Azure 虚拟网络。
 1. 未知–无法将流中的 IP 地址与 Azure 中的客户拓扑以及本地 (站点) 进行映射。
-1. 某些字段名称附加了 _s 或 _d。 这并不表示源和目标。
+1. 某些字段名称附加了\_s 或\_d。 这并不表示源和目标, 但分别表示数据类型字符串和十进制。
 
 ### <a name="next-steps"></a>后续步骤
 若要获取常见问题的解答, 请参阅[流量分析常见问题解答](traffic-analytics-faq.md)若要查看有关功能的详细信息, 请参阅[流量分析文档](traffic-analytics.md)

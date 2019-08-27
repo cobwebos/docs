@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0013540bf0ca921b2f41260dea185f6aa32567d7
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 39245cb43dacfeec2b647936d5e5790d4a185467
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679261"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019002"
 ---
 # <a name="connect-data-from-office-365-logs"></a>连接 Office 365 日志中的数据
 
@@ -37,6 +37,9 @@ ms.locfileid: "68679261"
 
 - 你必须是租户的全局管理员或安全管理员
 - 在你登录到 Azure Sentinel 以创建连接的计算机上, 确保端口4433已打开 web 流量。
+- 如果你的租户没有 Office 365 E3 或 Office 365 E5 许可证, 则必须使用以下过程之一在 tentant 上启用统一审核:
+    - [使用 AdminAuditLogConfig cmdlet](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps)并启用参数 "UnifiedAuditLogIngestionEnabled")。
+    - [或使用安全与合规中心 UI](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin)。
 
 ## <a name="connect-to-office-365"></a>连接到 Office 365
 

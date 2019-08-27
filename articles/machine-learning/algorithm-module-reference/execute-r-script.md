@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7de3dd016700d10ef5fac97fada5cd23c2f4e1cb
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 926e2004207472d16a195ceba2ecf3f2a4590885
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558312"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019141"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
 
@@ -66,7 +66,7 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-    > 安装之前, 请检查包是否已存在, 以避免重复安装。 类似`  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`于上面的示例代码。 重复安装可能会导致 web 服务请求超时。     
+  > 安装之前, 请检查包是否已存在, 以避免重复安装。 类似`  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`于上面的示例代码。 重复安装可能会导致 web 服务请求超时。     
 
 ## <a name="how-to-configure-execute-r-script"></a>如何配置执行 R 脚本
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/14/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 45f383691a52d841f35ed9b67d4658341de18afc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f4ea820eb116c4efe550997cbe7c9ed69713c965
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036247"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019114"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -71,6 +71,12 @@ ms.locfileid: "69036247"
 
 - 支持较大的文件共享大小
     - 预览更大的 Azure 文件共享, 我们也增加了对文件同步的支持限制。 在第一步中, Azure 文件同步现在支持单个同步命名空间中的25TB 和50million 文件。 若要申请大型文件共享预览, 请填写此窗体 https://aka.ms/azurefilesatscalesurvey 。 
+- 支持存储帐户上的防火墙和虚拟网络设置
+    - Azure 文件同步现在支持存储帐户上的防火墙和虚拟网络设置。 若要将部署配置为使用防火墙和虚拟网络设置, 请参阅[配置防火墙和虚拟网络设置](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)。
+- 用于立即同步 Azure 文件共享中已更改文件的 PowerShell cmdlet
+    - 若要立即同步 Azure 文件共享中已更改的文件, 可使用 AzStorageSyncChangeDetection PowerShell cmdlet 手动启动对 Azure 文件共享中的更改的检测。 此 cmdlet 适用于某些类型的自动化过程在 Azure 文件共享中进行更改或由管理员完成更改的情况 (如将文件和目录移动到共享中)。 对于最终用户的更改, 建议在 IaaS VM 中安装 Azure 文件同步代理, 并让最终用户通过 IaaS VM 访问文件共享。 这样一来, 所有更改都将快速同步到其他代理, 而无需使用 AzStorageSyncChangeDetection cmdlet。 若要了解详细信息, 请参阅[AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection)文档。
+- 改进的门户体验 (如果遇到未同步的文件)
+    - 如果你有未能同步的文件, 现在我们会在门户中区分暂时性错误和永久性错误。 暂时性错误通常会自行解决, 而无需执行管理操作。 例如, 当前正在使用的文件在文件句柄关闭之前将不会同步。 对于持久性错误, 我们现在会显示受每个错误影响的文件数。 持久性错误计数还显示在同步组中所有服务器终结点的 "文件未同步" 列中。
 - 改进了 Azure 备份文件级还原
     - 现在会检测使用 Azure 备份还原的单个文件并将其同步到服务器终结点。
 - 提高了云分层召回 cmdlet 的可靠性 

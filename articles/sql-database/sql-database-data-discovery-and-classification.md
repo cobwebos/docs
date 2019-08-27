@@ -11,16 +11,16 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: a606364503172d5cb1ddcf00262eb81b9423b55b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f2b57aa517c1518929b857eff6aed2ef4e0d8ca1
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569057"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018968"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL 数据库和 SQL 数据仓库数据发现和分类
 
-数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 & 
+数据发现 & 分类提供了内置于 Azure SQL 数据库的高级功能, 用于 & **发现**、**分类**、**保护**数据库中的敏感数据。
 发现最敏感的数据（业务、财务、医疗保健、个人身份数据 (PII)，等等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
 
 - 帮助满足数据隐私标准和法规符合性要求。
@@ -76,7 +76,7 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-2. 导航到 Azure SQL 数据库窗格“安全”标题下的“高级数据安全”。 单击以启用“高级数据安全”，然后单击“数据发现和分类(预览)”卡。
+2. 导航到 Azure SQL 数据库窗格“安全”标题下的“高级数据安全”。 单击 "启用高级数据安全性", 然后单击 "**数据发现" & 分类**卡 "。
 
    ![扫描数据库](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -147,7 +147,7 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 ## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>使用 Azure PowerShell 管理数据发现和分类
 
-可以使用 PowerShell 获取 Azure SQL 数据库和托管实例中的所有推荐列。
+可以使用 PowerShell 获取 Azure SQL 数据库和托管实例中所有建议的列。
 
 ### <a name="powershell-cmdlets-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 PowerShell Cmdlet
 

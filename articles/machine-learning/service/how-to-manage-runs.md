@@ -10,13 +10,13 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 07/12/2019
-ms.openlocfilehash: 701c266705c16198f35cddc36cdf1d431331c2d2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 07/31/2019
+ms.openlocfilehash: 9b58d6e189c891d0dd2917d7d150f133dc35f917
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847944"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019098"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消定型运行
 
@@ -29,7 +29,7 @@ ms.locfileid: "68847944"
 * 创建子运行。
 * 标记和查找运行。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 你将需要以下项:
 
@@ -220,9 +220,32 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > 超出范围时, 子运行将自动标记为 "已完成"。
 
-你还可以逐个启动子运行, 但由于每个创建都会导致网络调用, 因此它比提交一批运行的效率更低。
+若要有效地创建多个子运行, [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-)请使用方法。 因为每次创建都会导致网络调用, 所以创建一批批次比逐个创建运行更为有效。
 
-若要查询特定父对象的子运行, 请使用[`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-)方法。
+### <a name="submit-child-runs"></a>提交子运行
+
+还可以从父运行提交子运行。 这样, 你便可以创建父和子运行的层次结构, 每个层次结构都在不同的计算目标上运行, 这些层次结构由通用父运行 ID 连接。
+
+使用["submit_child ()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-count-none--tag-key-none--tag-values-none-)方法可从父运行中提交子运行。 若要在父运行脚本中执行此操作, 请获取运行上下文, 并使用上下文实例的 "' submit_child '" 方法提交子运行。
+
+```python
+## In parent run script
+parent_run = Run.get_context()
+child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py')
+parent_run.submit_child(child_run_config)
+```
+
+在子运行中, 可以查看父运行 ID:
+
+```python
+## In child run script
+child_run = Run.get_context()
+child_run.parent.id
+```
+
+### <a name="query-child-runs"></a>查询子运行
+
+若要查询特定父对象的子运行, 请使用[`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-)方法。 使用 "" recursive = True "" "参数可以查询子级和孙级的嵌套树。
 
 ```python
 print(parent_run.get_children())

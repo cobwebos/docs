@@ -4,16 +4,16 @@ description: 汇总了使用 Azure Migrate 服务评估和迁移 VMware Vm 到 A
 services: backup
 author: rayne-wiselman
 manager: carmonm
-ms.service: backup
+ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 70107311b189e1692b902812c4ccbbd91c3695a1
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: c351ee8290b60c81add173bb927b0c12e37f5c7c
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952116"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018129"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>用于 VMware 评估和迁移的支持矩阵
 
@@ -232,7 +232,7 @@ RAM | 16 GB
 操作系统 | Windows Server 2016 或 Windows Server 2012 R2
 操作系统区域设置 | 美国英语
 TLS | 应启用 TLS 1.2。
-.NET Framework | 应在计算机上安装 .NET Framework 4.6 或更高版本 (启用了强密码。
+.NET framework | 应在计算机上安装 .NET Framework 4.6 或更高版本 (启用了强密码。
 MySQL | MySQL 应安装在设备上。<br/> 应安装 MySQL。 可以手动安装, 也可以在设备部署期间安装 Site Recovery。
 其他应用 | 请勿在复制设备上运行其他应用。
 Windows Server 角色 | 请勿启用以下角色： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V
@@ -330,7 +330,7 @@ VM | Vm 上运行的移动服务与用于复制管理的端口 HTTPS 443 入站�
 
 ## <a name="azure-vm-requirements"></a>Azure VM 要求
 
-复制到 Azure 的所有本地 Vm 必须满足此表中汇总的 Azure VM 要求。 当 Site Recovery 为复制运行必备项检查时, 如果无法满足某些要求, 则检查将失败。
+复制到 Azure 的所有本地 Vm 必须满足此表中汇总的 Azure VM 要求。 Site Recovery 运行复制先决条件检查时，如果不符合某些要求，检查将会失败。
 
 组件 | **要求** | **详细信息**
 --- | --- | ---

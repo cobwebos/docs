@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: jingwang
 ms.openlocfilehash: a2815961f6afb0032aa6011cce5d59ab37f81303
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843144"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020425"
 ---
 | 类别 | 数据存储 | 支持作为[复制活动](../articles/data-factory/copy-activity-overview.md)源 | 支持作为[复制活动](../articles/data-factory/copy-activity-overview.md)接收器 | 受 [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) 支持 | 受[自我托管 IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) 支持 | [数据流](../articles/data-factory/concepts-data-flow-overview.md)支持
 |:--- |:--- |:--- |:--- |:--- |:--- |

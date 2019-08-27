@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2019
+ms.date: 08/22/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0c37d6167012af46204cbca29397f5d226b9649b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: b609dc70c45941ec1132c7cdf614cf9bec8119ff
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611900"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019025"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>机载 Azure Sentinel 预览
 
@@ -59,7 +59,8 @@ ms.locfileid: "69611900"
 
    >[!NOTE] 
    > - Azure 安全中心创建的默认工作区将不会显示在列表中;无法在其上安装 Azure Sentinel。
-   > - Azure Sentinel 可以在部署在以下任何区域中的工作区上运行:澳大利亚东南部、加拿大中部、印度中部、美国东部、美国东部 2 EUAP (未)、日本东部、东南亚、英国南部、西欧、美国西部2。
+   > - Azure Sentinel 可以在部署在以下任何区域中的工作区上运行:澳大利亚东部、澳大利亚东南部、加拿大中部、印度中部、美国东部、美国东部 2 EUAP (未)、日本东部、东南亚、英国南部、西欧、美国西部2、美国中部北欧、美国西部、美国西部2、美国中部、美国东部2、东亚、美国西部、美国东部、美国中南部。
+
 
 6. 单击 "**添加 Azure Sentinel**"。
   

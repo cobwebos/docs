@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: aecad80bb1b1e95b07b9df4105547406ff76b84c
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 2f0f3d70d51ff35e37506eab1082fc07b16e711c
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991541"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018787"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器 
 
@@ -76,7 +76,9 @@ ms.locfileid: "69991541"
 
 如果符合这三个条件，则更改源处理器将使用均等分配算法，将租约容器中的所有租约分配到所有正在运行的实例，并将计算并行化。 在给定的时间，一个租约只能由一个实例拥有，因此，最大实例数等于租约数。
 
-实例可以扩展和收缩，更改源处理器会通过相应地重新分配来动态调整负载。
+实例数可以增大和缩小, 更改源处理器会根据相应的方式动态调整负载。
+
+而且, 更改源处理器可以动态调整到容器规模, 因为吞吐量或存储量会增加。 当容器增长时, 更改源处理器会以透明方式处理这些情况, 方法是动态增加租约并在现有实例之间分配新的租约。
 
 ## <a name="change-feed-and-provisioned-throughput"></a>更改源和预配吞吐量
 

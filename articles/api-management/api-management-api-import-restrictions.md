@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: af550d3cdf359fc79b3cc2c799e531e5ec491c4e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bf39e508b8e4c883934b51fdc99eaef96caf1235
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613632"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018215"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
 
@@ -34,11 +34,12 @@ ms.locfileid: "67613632"
 ### <a name="open-api-general"> </a>常规
 
 -   路径和查询所需的参数必须具有唯一名称。 （在 OpenAPI 中，参数名称只需要在一个位置内是唯一的，例如路径、查询、标头。 但是，在 API 管理中，我们允许操作通过路径和查询参数进行区分（OpenAPI 不支持此方法）。 这就是要求参数名称在整个 URL 模板中是唯一的原因。）
--   **\$ref**指针不能引用外部文件。
+-   引用指针无法引用外部文件。  **\$**
 -   仅支持 **x-ms-paths** 和 **x-servers** 扩展。
 -   自定义扩展在导入时将被忽略，并且不会为导出保存或保留。
 -   **递归** - API 管理目前不支持以递归方式定义的定义（例如，引用自身的架构）。
 -   源文件 URL（如果可用）应用于相对服务器 URL。
+-   忽略安全定义。
 
 ### <a name="open-api-v2"> </a>OpenAPI 版本 2
 
@@ -46,16 +47,16 @@ ms.locfileid: "67613632"
 
 ### <a name="open-api-v3"> </a>OpenAPI 版本 3
 
--   如果指定了多个服务器，API 管理将尝试选择第一个 HTTP URL  。 如果不存在任何 HTTP URL，则为第一个 HTTP URL。 如果不存在任何 HTTP URL，则服务器 URL 将为空。
--   不支持“Examples”，但支持“example”   。
--   不支持“Multipart/form-data”  。
+-   如果指定了多个服务器，API 管理将尝试选择第一个 HTTP URL。 如果不存在任何 HTTP URL，则为第一个 HTTP URL。 如果不存在任何 HTTP URL，则服务器 URL 将为空。
+-   不支持“Examples”，但支持“example”。
+-   不支持“Multipart/form-data”。
 
 > [!IMPORTANT]
 > 如需与 OpenAPI 导入相关的重要信息和提示，请参阅此[文档](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/)。
 
 ## <a name="wsdl"></a>WSDL
 
-WSDL 文件用于创建 SOAP 直通和 SOAP 到 REST Api。
+WSDL 文件用于创建 SOAP 传递和 SOAP到 REST API。
 
 -   **SOAP 绑定** - 仅支持样式“文档”和“文本”编码的 SOAP 绑定。 不支持“rpc”样式或 SOAP 编码。
 -   **WSDL:Import** - 不支持此属性。 客户应将导入项合并到一个文档中。
@@ -64,7 +65,7 @@ WSDL 文件用于创建 SOAP 直通和 SOAP 到 REST Api。
 -   **MTOM** - 使用 MTOM 的服务<em>可能</em>正常工作。 目前暂未提供官方支持。
 -   **递归** - APIM 不支持以递归方式定义的类型（例如，引用这些类型本身的数组）。
 -   **多个命名空间** - 可以在架构中使用多个名称空间，但只能使用目标名称空间来定义消息部分。 不保留用于定义其他输入或输出元素的目标以外的命名空间。 虽然可以导入这样的 WSDL 文档，但在导出时，所有消息部分都将具有 WSDL 的目标命名空间。
--   **数组**-SOAP 到 REST 转换支持仅包装数组在下面的示例所示：
+-   **数组** - SOAP 到 REST 转换仅支持包装数组，如下例所示：
 
 ```xml
     <complexType name="arrayTypeName">
