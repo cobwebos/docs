@@ -7,12 +7,12 @@ ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 6ca8351e7294c5a9cdd9f594eb4524d04a27b5c1
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c9bc02959c64baecf11e2d1651051cd9bdda61d7
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516975"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060619"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 
@@ -26,7 +26,7 @@ ms.locfileid: "68516975"
 
 ![管理组层次结构树的示例](./media/tree.png)
 
-创建层次结构以便可以应用策略，例如，将 VM 位置限制到“生产”组中的“美国西部区域”。 此策略将继承到该管理组下的两个 EA 订阅，并应用到这些订阅下的所有 VM。 此安全策略不能由资源或订阅所有者更改，因此增强了治理效果。
+例如，可以创建应用一个策略的层次结构，该策略将 VM 位置限制到名为“生产”的组中的“美国西部”区域。 此策略将继承到该管理组下的两个 EA 订阅，并应用到这些订阅下的所有 VM。 此安全策略不能由资源或订阅所有者更改，因此增强了治理效果。
 
 使用管理组的另一个场景是向用户提供对多个订阅的访问权限。 通过移动该管理组下的多个订阅，可对该管理组创建一个[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) 分配，该分配将这种访问权限继承到所有订阅。
 管理组的一个分配就能让用户访问所需的一切内容，而无需基于多个订阅编写 RBAC 分配的脚本。
@@ -55,7 +55,7 @@ ms.locfileid: "68516975"
   - 新订阅在创建时自动默认为根管理组。
 - 所有 Azure 客户都可查看根管理组，但并非所有客户都具有管理该根管理组的权限。
   - 有权访问订阅的每个人都可看到订阅位于层次结构中的位置的上下文。  
-  - 未对任何人授予对根管理组的默认访问权限。 只有 Azure AD 全局管理员可将自身提升为拥有访问权限的角色。  拥有访问权限后，全局管理员可向要管理的其他用户分配任何 RBAC 角色。  
+  - 未对任何人授予对根管理组的默认访问权限。 只有 Azure AD 全局管理员可将自身提升为拥有访问权限的角色。  拥有对根管理组的访问权限后，全局管理员可向其他用户分配任何 RBAC 角色以便管理它。  
 
 > [!IMPORTANT]
 > 对根管理组进行的任何用户访问权限分配或策略分配都适用于在目录中的所有资源  。

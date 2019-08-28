@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: 使用帮助文档
+summary: 作为员工、IT 工作人员或最终用户，为你的工作或学校帐户设置身份验证、重置你自己的密码、设置和加入设备、设置 Microsoft Authenticator 应用以及使用各种门户。
+metadata:
+  title: 有关身份验证、应用和设备的用户帮助
+  description: 作为员工或最终用户，了解如何设置并使用身份验证、Microsoft Authenticator 应用和“我的应用”门户。
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: user-help
+  ms.topic: landing-page
+  ms.collection: M365-identity-device-management
+  author: eross-msft
+  ms.author: lizross
+  ms.date: 08/26/2019
+  ms.openlocfilehash: 687ae4b276b4e975c9b9de9d688f23180deaeebc
+  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70062199"
+landingContent:
+- title: 设置并使用 Microsoft Authenticator 应用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Microsoft Authenticator 应用？
+      url: user-help-auth-app-overview.md
+  - linkListType: download
+    links:
+    - text: 下载并安装应用
+      url: user-help-auth-app-download-install.md
+  - linkListType: how-to-guide
+    links:
+    - text: 备份和恢复帐户信息
+      url: user-help-auth-app-backup-recovery.md
+    - text: 使用应用登录
+      url: user-help-auth-app-sign-in.md
+- title: 设置并使用双重验证
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是双重验证？
+      url: user-help-two-step-verification-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 设置验证方法
+      url: multi-factor-authentication-end-user-first-time.md
+    - text: 管理设置
+      url: multi-factor-authentication-end-user-manage-settings.md
+    - text: 获取帮助
+      url: multi-factor-authentication-end-user-troubleshoot.md
+- title: 设置并使用“我的应用”门户
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是“我的应用”门户？
+      url: my-apps-portal-end-user-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: 更新信息
+      url: my-apps-portal-end-user-update-profile.md
+    - text: 获取帮助
+      url: my-apps-portal-end-user-troubleshoot.md
+- title: 设置并使用安全信息（预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是安全信息（预览版）？
+      url: user-help-security-info-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 设置安全信息方法
+      url: security-info-add-update-methods-overview.md
+    - text: 在登录提示过程中添加信息
+      url: security-info-setup-signin.md
+- title: 设置并使用“我的个人资料”（预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是“我的个人资料”（预览版）门户？
+      url: myprofile-portal-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理组织
+      url: myprofile-portal-organizations-page.md
+    - text: 管理连接的设备
+      url: myprofile-portal-devices-page.md
+- title: 重置自己的密码
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是密码重置？
+      url: user-help-password-reset-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 注册密码重置
+      url: active-directory-passwords-reset-register.md
+    - text: 重置密码
+      url: user-help-reset-password.md

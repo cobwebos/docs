@@ -33,18 +33,16 @@
       href: security-center-data-security.md
     - name: 使用建议增强安全性
       href: security-center-using-recommendations.md
-    - name: 检测威胁
-      href: security-center-detection-capabilities.md
-    - name: 管理安全警报
-      href: security-center-managing-and-responding-alerts.md
-    - name: 安全事件
-      href: security-center-incident.md
     - name: 跨租户管理
       href: security-center-cross-tenant-management.md
-    - name: 威胁检测警报
+    - name: 威胁检测警报和事件
       items:
         - name: 安全警报概述
           href: security-center-alerts-overview.md
+        - name: 管理安全警报
+          href: security-center-managing-and-responding-alerts.md
+        - name: 管理安全事件
+          href: security-center-incident.md
         - name: VM 和服务器的威胁检测
           href: security-center-alerts-iaas.md
         - name: 云原生计算的威胁检测

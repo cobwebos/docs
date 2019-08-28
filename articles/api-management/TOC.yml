@@ -207,6 +207,8 @@
           href: api-management-configuration-repository-git.md
         - name: 使用基于角色的访问控制
           href: api-management-role-based-access-control.md
+        - name: 迁移 API 管理实例
+          href: api-management-howto-migrate.md
         - name: 将托管标识用于 Azure 资源
           href: api-management-howto-use-managed-service-identity.md
         - name: 与 Service Fabric 集成

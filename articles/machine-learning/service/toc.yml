@@ -28,10 +28,7 @@
               href: tutorial-deploy-models-with-aml.md
         - name: 回归（NYC Taxi 数据）
           items:
-            - name: 1. 准备建模的数据
-              displayName: data prep
-              href: tutorial-data-prep.md
-            - name: 2. 自动训练 ML 模型
+            - name: 自动训练 ML 模型
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
     - name: 可视界面
@@ -260,7 +257,7 @@
     - name: 创建可重用的工作流
       displayName: pipelines
       items:
-        - name: ML 管道
+        - name: 使用 Python 创建 ML 管道
           href: how-to-create-your-first-pipeline.md
         - name: 用于 CI/CD 的 Azure Pipelines
           displayName: 'continuous, integration, delivery'

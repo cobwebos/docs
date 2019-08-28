@@ -1,56 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 资源的 RBAC 文档
+summary: 基于角色的访问控制 (RBAC) 是一个系统，它为 Azure 资源提供精细的访问管理。 使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。
 metadata:
-  document_id: null
-  title: Azure 资源的基于角色的访问控制 (RBAC) 文档 | Microsoft Docs
+  title: Azure 资源的基于角色的访问控制 (RBAC) 文档
   description: 了解基于角色的访问控制 (RBAC) 以管理谁有权访问 Azure 资源、他们可以对这些资源执行哪些操作以及他们有权访问哪些领域。
-  services: active-directory
-  author: rolyon
-  manager: mtillman
+  services: role-based-access-control
   ms.service: role-based-access-control
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 02/16/2019
+  ms.collection: na
+  author: rolyon
   ms.author: rolyon
-abstract:
-  description: 基于角色的访问控制 (RBAC) 是一个系统，它为 Azure 资源提供精细的访问管理。 使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-get-started.png
-      width: 200
-    title: '锁定对 Azure 的访问 (1:16)'
-    href: 'https://www.youtube.com/embed/FKBoWWKRnvI'
-    width: 200
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/role-based-access-control/check-access">查看用户的访问权限</a>
-  - title: 分步教程
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">授予用户访问权限 - 门户</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">授予组访问权限 - PowerShell</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-custom-role-powershell">创建自定义角色 - PowerShell</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-custom-role-cli">创建自定义角色 - CLI</a>
-  - title: 利用 Microsoft Learn 掌握技能
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 使用基于角色的访问控制 (RBAC) 保护 Azure 资源
-            href: /learn/modules/secure-azure-resources-with-rbac/
-            image:
-              src: /learn/achievements/secure-azure-resources-with-rbac.svg
-              href: /learn/modules/secure-azure-resources-with-rbac/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-active-directory">更多交互式学习...</a>
+  ms.date: 08/26/2019
+  ms.openlocfilehash: cd4628ef5e7d56f03590899fe514141d415c8f01
+  ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70052021"
+landingContent:
+- title: 关于 Azure 资源的 RBAC
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 RBAC?
+      url: overview.md
+    - text: 了解不同角色
+      url: rbac-and-directory-admin-roles.md
+  - linkListType: video
+    links:
+    - text: Microsoft Ignite：锁定对 Azure 的访问
+      url: https://www.youtube.com/embed/FKBoWWKRnvI
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 查看用户的访问权限
+      url: check-access.md
+  - linkListType: tutorial
+    links:
+    - text: 授予用户访问权限 - 门户
+      url: quickstart-assign-role-user-portal.md
+    - text: 授予组访问权限 - PowerShell
+      url: tutorial-role-assignments-group-powershell.md
+  - linkListType: learn
+    links:
+    - text: 使用 RBAC 保护 Azure 资源
+      url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
+- title: 管理访问权限
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 门户
+      url: role-assignments-portal.md
+    - text: PowerShell
+      url: role-assignments-powershell.md
+    - text: Azure CLI
+      url: role-assignments-cli.md
+    - text: REST API
+      url: role-assignments-rest.md
+    - text: 模板
+      url: role-assignments-template.md
+- title: 创建自定义角色
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 自定义角色
+      url: custom-roles.md
+  - linkListType: tutorial
+    links:
+    - text: 创建自定义角色 - PowerShell
+      url: tutorial-custom-role-powershell.md
+    - text: 创建自定义角色 - CLI
+      url: tutorial-custom-role-cli.md

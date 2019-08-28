@@ -11,6 +11,9 @@
     - name: 创建蓝图 - 门户
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-portal.md
+    - name: 创建蓝图 - PowerShell
+      displayName: 'publish, assign, track, unassign, delete'
+      href: create-blueprint-powershell.md
     - name: 创建蓝图 - REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md

@@ -1,89 +1,123 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Active Directory B2C 文档
+summary: Azure Active Directory B2C (Azure AD B2C) 是一项标识管理服务，用于以自定义的方式控制客户在使用 iOS、Android、.NET、单页 (SPA) 及其他应用程序时如何注册、登录和管理其个人资料。 通过我们的快速入门、教程和示例了解如何使用 Azure AD B2C。
 metadata:
   title: Azure Active Directory B2C 文档
-  meta.description: 'Learn how to use Azure Active Directory B2C to customize and control how customers sign up, sign in, and manage their profiles when using your applications.'
+  description: 了解如何使用 Azure Active Directory B2C 自定义和控制客户在使用应用程序时注册、登录和管理其个人资料的方式。
   services: active-directory-b2c
-  author: mmacy
-  manager: daveba
   ms.service: active-directory
   ms.subservice: B2C
   ms.topic: landing-page
-  ms.date: 03/29/2018
+  ms.collection: collection
+  author: mmacy
   ms.author: marsma
-abstract:
-  description: Azure Active Directory (Azure AD) B2C 是一项标识管理服务，用于自定义和控制客户在使用应用程序时的注册、登录和管理配置文件的方式。 此类应用程序包括为 iOS、Android、 .NET 等系统开发的应用程序。 有了 Azure AD B2C，就可以在执行这些操作的同时保护客户的标识。 通过我们的快速入门、教程和示例了解如何使用 Azure AD B2C。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/active-directory-b2c-video.PNG
-      width: 250
-    title: '使用 Azure AD B2C 进行客户标识管理 (20:56)'
-    href: 'https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/active-directory-b2c/active-directory-b2c-overview
-            html: <p>了解有关 Azure AD B2C 及其特性和功能的详细信息。</p>
-            image:
-              src: ./media/index/i_get-started.svg
-            title: 关于 Azure AD B2C
-          - href: /azure/active-directory-b2c/solution-articles
-            html: <p>使用 Azure AD B2C 调查解决方案和培训机会。</p>
-            image:
-              src: ./media/index/i_advanced.svg
-            title: 解决方案和培训
-          - href: /azure/active-directory-b2c/trustframeworkpolicy
-            html: <p>使用 Azure AD B2C 中的自定义策略创建高级注册和登录方案。</p>
-            image:
-              src: ./media/index/i_investigate.svg
-            title: 标识体验框架
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何为使用应用程序的客户设置标识管理：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_NET.svg'
-            text: .NET
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app'
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_windows.svg'
-            text: 桌面型
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-desktop-app'
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_nodejs.svg'
-            text: 单页
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-spa'
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何在 ASP.NET 应用程序、桌面应用程序或单页 Node.js 应用程序中管理注册、登录和客户配置文件。
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: ASP.NET
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">创建租户</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">对用户进行身份验证</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">授予 API 访问权限</a></p>
-          - title: 桌面型
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">创建租户</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">对用户进行身份验证</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">授予 API 访问权限</a></p>
-          - title: 单页
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">创建租户</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">对用户进行身份验证</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">授予 API 访问权限</a></p>
-  - title: 示例
-    items:
-      - type: paragraph
-        text: 请查找那些介绍如何在应用程序中管理客户标识的示例。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/active-directory-b2c/code-samples">移动应用、桌面应用、Web 应用和单页应用</a>
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 445e3bf68b3ce75ca2d9e51dc6f69c638f2f6b44
+  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70061355"
+landingContent:
+- title: 了解基础知识
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure AD B2C？
+      url: active-directory-b2c-overview.md
+  - linkListType: get-started
+    links:
+    - text: 创建 Azure AD B2C 租户
+      url: tutorial-create-tenant.md
+    - text: 注册应用程序
+      url: tutorial-register-applications.md
+    - text: 设置用户流
+      url: tutorial-create-user-flows.md
+  - linkListType: learn
+    links:
+    - text: 视频：使用 Azure AD B2C 进行客户标识管理
+      url: https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C
+- title: 将标识添加到 ASP.NET 应用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 设置登录
+      url: active-directory-b2c-quickstarts-web-app.md
+  - linkListType: tutorial
+    links:
+    - text: 在 .NET Web 应用程序中对用户进行身份验证
+      url: active-directory-b2c-tutorials-web-app.md
+    - text: 向 .NET Web 应用程序授予 API 访问权限
+      url: active-directory-b2c-tutorials-web-api.md
+    - text: 启用企业和社交登录
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: 适用于 Web 应用和 API 的代码示例
+      url: code-samples.md#web-apps-and-apis
+- title: 将标识添加到单页应用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 设置登录
+      url: active-directory-b2c-quickstarts-desktop-app.md
+  - linkListType: tutorial
+    links:
+    - text: 在单页应用中对用户进行身份验证
+      url: active-directory-b2c-tutorials-spa.md
+    - text: 向单页应用授予 API 访问权限
+      url: active-directory-b2c-tutorials-spa-webapi.md
+    - text: 启用企业和社交登录
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: 适用于单页应用的代码示例
+      url: code-samples.md#single-page-apps
+- title: 将标识添加到桌面应用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 设置登录
+      url: active-directory-b2c-quickstarts-desktop-app.md
+  - linkListType: tutorial
+    links:
+    - text: 在本机客户端中对用户进行身份验证
+      url: active-directory-b2c-tutorials-desktop-app.md
+    - text: 向本机客户端授予 API 访问权限
+      url: active-directory-b2c-tutorials-desktop-app-webapi.md
+    - text: 启用企业和社交登录
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: 适用于移动应用和桌面应用的代码示例
+      url: code-samples.md
+- title: 配置通用标识方案
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 用户流简介
+      url: active-directory-b2c-reference-policies.md
+  - linkListType: how-to-guide
+    links:
+    - text: 用户注册和登录
+      url: tutorial-create-user-flows.md
+    - text: 自定义用户界面
+      url: customize-ui-overview.md
+    - text: 允许使用 Facebook 帐户登录
+      url: active-directory-b2c-setup-fb-app.md
+- title: 构建高级标识方案
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 自定义策略简介
+      url: active-directory-b2c-overview-custom.md
+  - linkListType: how-to-guide
+    links:
+    - text: 用户注册和登录
+      url: active-directory-b2c-get-started-custom.md
+    - text: 自定义用户界面
+      url: active-directory-b2c-ui-customization-custom.md
+    - text: 允许使用 Azure AD 多租户登录
+      url: active-directory-b2c-setup-commonaad-custom.md
+    - text: 使用 REST API 添加自己的业务逻辑
+      url: active-directory-b2c-rest-api-validation-custom.md
