@@ -10,16 +10,15 @@ ms.assetid: 061702a7-3a78-472b-a54a-f3b1e332490d
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: bd31d711c58a63b5c15712c1774d48433c62f18d
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 69584b434ac0442df48dcdea2a7d9f2aca9c1ccd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774980"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073741"
 ---
 # <a name="api-management-authentication-policies"></a>API 管理身份验证策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -49,16 +48,16 @@ ms.locfileid: "68774980"
 
 ### <a name="elements"></a>元素
 
-|名称|描述|必填|
+|姓名|描述|必填|
 |----------|-----------------|--------------|
 |authentication-basic|根元素。|是|
 
 ### <a name="attributes"></a>特性
 
-|名称|描述|必填|默认|
+|姓名|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
-|userName|指定基本凭据的用户名。|是|不可用|
-|密码|指定基本凭据的密码。|是|不可用|
+|username|指定基本凭据的用户名。|是|不可用|
+|password|指定基本凭据的密码。|是|不可用|
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
@@ -89,13 +88,13 @@ ms.locfileid: "68774980"
 
 ### <a name="elements"></a>元素  
   
-|名称|描述|必填|  
+|姓名|描述|必填|  
 |----------|-----------------|--------------|  
 |authentication-certificate|根元素。|是|  
   
 ### <a name="attributes"></a>特性  
   
-|名称|描述|必填|默认|  
+|姓名|描述|必填|默认|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|客户端证书的指纹。|必须提供 `thumbprint` 或 `certificate-id`。|不可用|  
 |certificate-id|证书资源名称。|必须提供 `thumbprint` 或 `certificate-id`。|不可用|  
@@ -133,13 +132,13 @@ ms.locfileid: "68774980"
 
 ### <a name="elements"></a>元素  
   
-|名称|描述|必填|  
+|姓名|描述|必填|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |根元素。|是|  
   
 ### <a name="attributes"></a>特性  
   
-|名称|描述|必填|默认|  
+|姓名|描述|必填|默认|  
 |----------|-----------------|--------------|-------------|  
 |资源|字符串。 Azure Active Directory 中的目标 Web API（受保护的资源）的应用 ID URI。|是|不可用|  
 |output-token-variable-name|字符串。 上下文变量的名称，它将令牌值接收为对象类型 `string`。 |否|不可用|  

@@ -10,17 +10,16 @@ ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 452c3b9aac58e1eca25b6417eb891fed7180ada7
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 711dc4d59785418d6637eb144b644948ed495e2c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636639"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069728"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>在应用服务环境中缩放应用
 在 Azure 应用服务中，通常有三项内容可以扩展：

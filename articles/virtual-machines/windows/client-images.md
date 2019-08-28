@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: fcd97b07416526d71d5bee9bc198eb0d912e1c55
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: dbb771351ee774a7fea33e5aaad3ae4d0c70f8b1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719151"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079905"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 客户端实现开发/测试方案
 如果有相应的 Visual Studio（以前为 MSDN）订阅，可以在 Azure 中使用 Windows 7、Windows 8 或 Windows 10 企业版 (x64) 实施开发/测试方案。 本文概述在 Azure 中运行 Windows 7、Windows 8.1、Windows 10 企业版和使用以下 Azure 库映像所要满足的条件。
@@ -53,11 +52,11 @@ ms.locfileid: "67719151"
 ## <a name="check-your-azure-subscription"></a>检查 Azure 订阅
 如果不知道自己的产品 ID，可以使用以下两种方式之一通过 Azure 门户获取：  
 
-- 在“订阅”  窗口上：
+- 在“订阅”窗口上：
 
   ![Azure 门户中的产品 ID 详细信息](./media/client-images/offer-id-azure-portal.png) 
 
-- 或者，单击“计费”  ，并单击订阅 ID。 产品 ID 会显示在“计费”  窗口中。
+- 或者，单击“计费”，并单击订阅 ID。 产品 ID 会显示在“计费”窗口中。
 
 也可以从 Azure 帐户门户的 [订阅](https://account.windowsazure.com/Subscriptions) 选项卡查看产品 ID：
 

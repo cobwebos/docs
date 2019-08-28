@@ -10,16 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: c3592529d20680c6920e569887effee4ffe38344
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f3c18ea1887ea5b05bb89f85371139ac83dfe49
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684009"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080164"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM 启动时停滞，并在 Azure 中显示“正在准备 Windows。 请不要关闭计算机”
 
@@ -29,7 +28,7 @@ ms.locfileid: "64684009"
 
 ## <a name="symptoms"></a>症状
 
-当使用“启动诊断”获取 VM 的屏幕截图时，操作系统无法完全启动  。 VM 显示消息“正在准备 Windows。 请不要关闭计算机。”
+当使用“启动诊断”获取 VM 的屏幕截图时，操作系统无法完全启动。 VM 显示消息“正在准备 Windows。 请不要关闭计算机。”
 
 ![Windows Server 2012 R2 的消息示例](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
@@ -49,7 +48,7 @@ ms.locfileid: "64684009"
 
 1. 在 Azure 门户中，打开 VM，然后浏览到磁盘。
 
-2. 查看“加密”列，查看是否启用了加密  。
+2. 查看“加密”列，查看是否启用了加密。
 
 如果 OS 磁盘已加密，请解锁加密的磁盘。 要解锁磁盘，请按照下列步骤操作。
 
@@ -100,7 +99,7 @@ ms.locfileid: "64684009"
     manage-bde -status F:
     manage-bde -unlock F: -rk C:\BEKFILENAME.BEK
     ```
-    可选  ：在某些情况下，可能需要通过使用以下命令来解密该磁盘。
+    可选：在某些情况下，可能需要通过使用以下命令来解密该磁盘。
    
     ```Powershell
     manage-bde -off F:
@@ -109,7 +108,7 @@ ms.locfileid: "64684009"
     > [!Note]
     > 上一个命令假定要加密的磁盘为盘符为 F。
 
-8. 如果需要收集日志，请转到路径“DRIVE LETTER:\Windows\System32\winevt\Logs”  。
+8. 如果需要收集日志，请转到路径“DRIVE LETTER:\Windows\System32\winevt\Logs”。
 
 9. 将驱动器从恢复计算机分离。
 
@@ -121,7 +120,7 @@ ms.locfileid: "64684009"
 
 当 VM 在配置阶段停滞时，请使用[收集 OS 转储](troubleshoot-common-blue-screen-error.md#collect-memory-dump-file)部分中的步骤。
 
-## <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
+## <a name="contact-microsoft-support"></a>联系 Microsoft 支持部门
 
 收集转储文件后，请联系 [Microsoft 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来分析根本原因。
 

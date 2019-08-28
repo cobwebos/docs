@@ -3,15 +3,15 @@ title: 为 Azure Cosmos 容器定义唯一键
 description: 了解如何为 Azure Cosmos 容器定义唯一键
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 313dd07c2b8eeb5684310b57d74053d3cbc1b5e1
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
-ms.translationtype: HT
+ms.openlocfilehash: 67b6ca1914d1728930c29c4a0bbca6cf86753da9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356386"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093324"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>为 Azure Cosmos 容器定义唯一键
 
@@ -23,15 +23,15 @@ ms.locfileid: "68356386"
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)或选择现有帐户。
 
-1. 打开“数据资源管理器”窗格，选择要使用的容器。 
+1. 打开“数据资源管理器”窗格，选择要使用的容器。
 
-1. 单击“新建容器”  。
+1. 单击“新建容器”。
 
-1. 在“添加容器”对话框中，单击“+ 添加唯一键”，添加唯一键条目   。
+1. 在“添加容器”对话框中，单击“+ 添加唯一键”，添加唯一键条目。
 
 1. 输入唯一键约束的路径
 
-1. 如果需要，可通过单击“+ 添加唯一键”，添加更多唯一键条目 
+1. 如果需要，可通过单击“+ 添加唯一键”，添加更多唯一键条目
 
 ![Azure 门户中唯一键约束条目的屏幕截图](./media/how-to-define-unique-keys/unique-keys-portal.png)
 

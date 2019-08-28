@@ -3,15 +3,15 @@ title: 了解如何在 Azure Cosmos DB 中管理一致性
 description: 了解如何在 Azure Cosmos DB 中管理一致性
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: mjbrown
-ms.openlocfilehash: 2617aba0d790209d83f410ee632ffad43c952d55
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
-ms.translationtype: HT
+ms.openlocfilehash: bc5554e2d56987e969894ba57052d548e1499938
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356416"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093308"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理一致性级别
 
@@ -35,7 +35,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-此示例创建在“美国东部”和“美国西部”区域中启用了多个写入区域的一个新 Azure Cosmos 帐户。 默认一致性级别设置为“会话”一致性  。
+此示例创建在“美国东部”和“美国西部”区域中启用了多个写入区域的一个新 Azure Cosmos 帐户。 默认一致性级别设置为“会话”一致性。
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -61,7 +61,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要查看或修改默认一致性级别，请登录到 Azure 门户。 找到你的 Azure Cosmos 帐户，打开“默认一致性”窗格  。 选择你希望用作新的默认值的一致性级别，然后选择“保存”  。 Azure 门户还使用音符提供了不同一致性级别的可视化效果。 
+若要查看或修改默认一致性级别，请登录到 Azure 门户。 找到你的 Azure Cosmos 帐户，打开“默认一致性”窗格。 选择你希望用作新的默认值的一致性级别，然后选择“保存”。 Azure 门户还使用音符提供了不同一致性级别的可视化效果。 
 
 ![Azure 门户中的一致性菜单](./media/how-to-manage-consistency/consistency-settings.png)
 
@@ -140,7 +140,7 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 
 ## <a name="utilize-session-tokens"></a>利用会话令牌
 
-Azure Cosmos DB 中的一致性级别之一是“会话”一致性  。 这是默认情况下应用于 Cosmos 帐户的默认级别。 使用“会话”一致性时，客户端将在内部的每个读取/查询请求中使用会话令牌，以确保维持设置的一致性级别  。
+Azure Cosmos DB 中的一致性级别之一是“会话”一致性。 这是默认情况下应用于 Cosmos 帐户的默认级别。 使用“会话”一致性时，客户端将在内部的每个读取/查询请求中使用会话令牌，以确保维持设置的一致性级别。
 
 若要手动管理会话令牌，请从响应中获取会话令牌并针对每个请求设置它们。 如果不需手动管理会话令牌，则不需要使用这些示例。 SDK 会自动跟踪会话令牌。 如果未手动设置会话令牌，则默认情况下，SDK 使用最新的会话令牌。
 
@@ -231,7 +231,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>监视概率有限过期 (PBS) 指标
 
-最终一致性的最终程度如何？ 对于普通情况，我们是否可以提供版本历史和时间方面的过期限度。 [**概率有限过期 (PBS)** ](https://pbs.cs.berkeley.edu/) 指标尝试量化过期的概率并将其显示为指标。 若要查看 PBS 指标，请在 Azure 门户中转到你的 Cosmos 帐户。 打开“指标”  窗格，然后选择“一致性”  选项卡。查看名为“基于工作负载的强一致性读取的概率(请参阅 PBS)”的图。 
+最终一致性的最终程度如何？ 对于普通情况，我们是否可以提供版本历史和时间方面的过期限度。 [**概率有限过期 (PBS)** ](https://pbs.cs.berkeley.edu/) 指标尝试量化过期的概率并将其显示为指标。 若要查看 PBS 指标，请在 Azure 门户中转到你的 Cosmos 帐户。 打开“指标”窗格，然后选择“一致性”选项卡。查看名为“基于工作负载的强一致性读取的概率(请参阅 PBS)”的图。
 
 ![Azure 门户中的 PBS 图](./media/how-to-manage-consistency/pbs-metric.png)
 

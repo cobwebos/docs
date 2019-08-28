@@ -9,18 +9,17 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
-ms.openlocfilehash: 7aaf29ddf52fb07524aa972f12ca18c235a40928
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 30dfd864c6c237024c72325da813691ac5043bd0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68351536"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072092"
 ---
-# <a name="failed-to-update-api-management-service-hostnames"></a>未能更新 API 管理服务的主机名
+# <a name="failed-to-update-api-management-service-hostnames"></a>未能更新 API 管理服务主机名
 
 本文介绍添加 Azure API 管理服务的自定义域时可能会遇到的 "无法更新 API 管理服务主机名" 错误。 本文提供了疑难解答步骤来帮助您解决问题。
 
@@ -48,7 +47,7 @@ API 管理服务没有访问你尝试用于自定义域的密钥保管库的权�
     - **选择主体**:搜索 API 管理服务的名称, 然后从列表中选择它
     - **密钥权限**:无
     - **机密权限**:获取
-    - **证书权限**:None
+    - **证书权限**:无
 1. 选择 **"确定"** 以创建访问策略。
 1. 选择“保存”，保存更改。
 

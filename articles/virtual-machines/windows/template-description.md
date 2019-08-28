@@ -11,16 +11,15 @@ ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: fd4fad40ef4809c756321493854f38fd813569ca
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 23519edb61df23c97dfd2162d6cabea6b7fa5d38
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710289"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101775"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure 资源管理器模板中的虚拟机
 
@@ -445,7 +444,7 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 
 ![获取扩展状态](./media/template-description/virtual-machines-show-extensions.png)
 
-此外，也可以使用 Get-AzVMExtension PowerShell 命令、vm extension get Azure CLI 命令或“获取扩展信息”REST API 来获取扩展信息    。
+此外，也可以使用 Get-AzVMExtension PowerShell 命令、vm extension get Azure CLI 命令或“获取扩展信息”REST API 来获取扩展信息。
 
 ## <a name="deployments"></a>部署
 
@@ -455,7 +454,7 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 
 ![获取部署信息](./media/template-description/virtual-machines-deployment-info.png)
     
-完全可以使用同一个模板来创建资源或更新现有资源。 使用命令部署模板时，可以指定想要使用的[模式](../../resource-group-template-deploy.md)。 模式可设置为“完整”(Complete) 或“增量”(Incremental)。   默认设置为执行增量更新。 请谨慎使用“完整”模式，因为这可能会意外删除资源。  在模式设置为“完整”时，资源管理器会删除资源组中不包含在模板内的所有资源。 
+完全可以使用同一个模板来创建资源或更新现有资源。 使用命令部署模板时，可以指定想要使用的[模式](../../resource-group-template-deploy.md)。 模式可设置为“完整”(Complete) 或“增量”(Incremental)。 默认设置为执行增量更新。 请谨慎使用“完整”模式，因为这可能会意外删除资源。 在模式设置为“完整”时，资源管理器会删除资源组中不包含在模板内的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 

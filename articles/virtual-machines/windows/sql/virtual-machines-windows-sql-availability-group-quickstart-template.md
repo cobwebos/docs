@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f95d3487adecb17e0f4b79e81a08e16bafe4594f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2b44b51da11bc1c51fcbc60992a9b5b870daf02e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855258"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100585"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>使用 Azure 快速入门模板为 Azure VM 上的 SQL Server 配置 Always On 可用性组
 本文介绍如何使用 Azure 快速入门模板部分自动完成 Azure 中 SQL Server 虚拟机的 Always On 可用性组配置的部署。 此过程中使用了两个 Azure 快速入门模板: 

@@ -1,6 +1,6 @@
 ---
-title: 收集有关使用 PowerShell 订阅中的所有 Vm 的详细信息 |Microsoft Docs
-description: 收集有关使用 PowerShell 订阅中的所有 Vm 的详细信息
+title: 使用 PowerShell 收集订阅中所有 Vm 的详细信息 |Microsoft Docs
+description: 使用 PowerShell 收集订阅中所有 VM 的详细信息
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: v-miegge
@@ -9,23 +9,22 @@ editor: v-miegge
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: b4828b34a089a59e630aaaf7652e8623b3e2c7b8
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b51c0f7a9fbeadfd0ff79e4578bddad052466b13
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659705"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090794"
 ---
-# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>收集有关使用 PowerShell 订阅中的所有 Vm 的详细信息
+# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>使用 PowerShell 收集订阅中所有 VM 的详细信息
 
-此脚本创建包含 VM 名称、 资源组名称、 区域、 虚拟网络、 子网、 专用 IP 地址、 操作系统类型和提供的订阅中的 vm 的公共 IP 地址的 csv。
+此脚本创建一个 csv，其中包含所提供订阅中 VM 的 VM 名称、资源组名称、区域、虚拟网络、子网、专用 IP 地址、OS 类型和公共 IP 地址。
 
 如果还没有 [Azure 订阅](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
@@ -33,7 +32,7 @@ ms.locfileid: "67659705"
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -71,11 +70,11 @@ $report | Export-CSV "$home/$reportName"
 ```
 
 ## <a name="script-explanation"></a>脚本说明
-此脚本使用以下命令在订阅中创建的 Vm 的详细信息的 csv 导出。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建订阅中 VM 详细信息的 csv 导出。 表中的每条命令均链接到特定于命令的文档。
 
 |Command|说明|
 |-|-|
-|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|设置租户、 订阅和环境的 cmdlet 为当前会话中使用。|
+|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|设置要在当前会话中使用的 cmdlet 的租户、订阅和环境。|
 |[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|获取虚拟机的属性。|
 |[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|获取公共 IP 地址。|
 |[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|获取网络接口。|

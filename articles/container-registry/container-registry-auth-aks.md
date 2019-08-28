@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-service
 ms.topic: article
-ms.date: 08/08/2018
+ms.date: 08/27/2019
 ms.author: danlep
-ms.openlocfilehash: 9690f900b6fe8d81fbebc3fcf5b7022b12bc3b96
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: f80956ec401737766f7a85540e90be70b9d621e7
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310263"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114706"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
@@ -21,7 +21,7 @@ ms.locfileid: "68310263"
 
 只需配置其中一种身份验证方法。 最常见的方法是[使用 AKS 服务主体授予访问权限](#grant-aks-access-to-acr)。 如果有特定需求, 可以选择[使用 Kubernetes 机密授予访问权限](#access-with-kubernetes-secret)。
 
-本文假定已创建 AKS 群集，并且可以使用 `kubectl` 命令行客户端访问群集。
+本文假定已创建 AKS 群集，并且可以使用 `kubectl` 命令行客户端访问群集。 如果要在创建群集时创建群集并配置对容器注册表的访问, 请参阅[教程:](../aks/tutorial-kubernetes-deploy-cluster.md) [使用 azure Kubernetes Service (预览版) 部署 AKS 群集或使用 azure 容器注册表进行身份验证](../aks/cluster-container-registry-integration.md)。
 
 ## <a name="grant-aks-access-to-acr"></a>向 ACR 授予 AKS 访问权限
 
@@ -76,7 +76,7 @@ echo "Service principal password: $SP_PASSWD"
 
 你现在可以将服务主体的凭据存储在 Kubernetes[映像请求机密][image-pull-secret]中, AKS 群集在运行容器时将引用该密钥。
 
-使用以下 kubectl  命令创建 Kubernetes 机密。 将 `<acr-login-server>` 替换为 Azure 容器注册表的完全限定名称（它的格式为“acrname.azurecr.io”）。 将 `<service-principal-ID>` 和 `<service-principal-password>` 替换为运行之前的脚本所获得的值。 将 `<email-address>` 替换为格式正确的任何电子邮件地址。
+使用以下 kubectl 命令创建 Kubernetes 机密。 将 `<acr-login-server>` 替换为 Azure 容器注册表的完全限定名称（它的格式为“acrname.azurecr.io”）。 将 `<service-principal-ID>` 和 `<service-principal-password>` 替换为运行之前的脚本所获得的值。 将 `<email-address>` 替换为格式正确的任何电子邮件地址。
 
 ```bash
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>

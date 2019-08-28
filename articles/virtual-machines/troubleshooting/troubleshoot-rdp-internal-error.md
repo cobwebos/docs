@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 4476e4732dfcf8d79c9678a7ff4719eba10e48f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fa00a5b65b0e337c47ca1fa892b8958f0bd2232
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60319422"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089809"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>尝试通过远程桌面连接到 Azure VM 时发生内部错误
 
@@ -105,10 +104,10 @@ ms.locfileid: "60319422"
 
 2. 如果无法使用此方法续订证书，请尝试远程续订 RDP 自签名证书：
 
-    1. 在已连接到有问题 VM 的正常 VM 上，在“运行”框中键入 **mmc** 打开 Microsoft 管理控制台。 
-    2. 在“文件”菜单中，依次选择“添加/删除管理单元”、“证书”、“添加”。    
-    3. 依次选择“计算机帐户”、“另一台计算机”，然后添加有问题 VM 的 IP 地址。  
-    4. 转到“远程桌面\证书”文件夹，右键单击证书，然后选择“删除”   。
+    1. 在已连接到有问题 VM 的正常 VM 上，在“运行”框中键入 **mmc** 打开 Microsoft 管理控制台。
+    2. 在“文件”菜单中，依次选择“添加/删除管理单元”、“证书”、“添加”。
+    3. 依次选择“计算机帐户”、“另一台计算机”，然后添加有问题 VM 的 IP 地址。
+    4. 转到“远程桌面\证书”文件夹，右键单击证书，然后选择“删除”。
     5. 在串行控制台上的 PowerShell 实例中，重启“远程桌面配置”服务：
 
             Stop-Service -Name "SessionEnv"
@@ -161,14 +160,14 @@ RDP 客户端使用 TLS 1.0 作为默认协议。 但是，可将此协议更改
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
 
 1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
-2. 将 OS 磁盘附加到恢复 VM 后，请确保磁盘在磁盘管理控制台中标记为“联机”  。 请注意分配给附加的 OS 磁盘的驱动器号。
+2. 将 OS 磁盘附加到恢复 VM 后，请确保磁盘在磁盘管理控制台中标记为“联机”。 请注意分配给附加的 OS 磁盘的驱动器号。
 3. 开始与恢复 VM 建立远程桌面连接。
 
 #### <a name="enable-dump-log-and-serial-console"></a>启用转储日志和串行控制台
 
 若要启用转储日志和串行控制台，请运行以下脚本。
 
-1. 打开权限提升的命令提示符会话（“以管理员身份运行”）。 
+1. 打开权限提升的命令提示符会话（“以管理员身份运行”）。
 2. 运行以下脚本：
 
     对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
@@ -197,7 +196,7 @@ RDP 客户端使用 TLS 1.0 作为默认协议。 但是，可将此协议更改
 
 #### <a name="reset-the-permission-for-machinekeys-folder"></a>重置 MachineKeys 文件夹的权限
 
-1. 打开权限提升的命令提示符会话（“以管理员身份运行”）。 
+1. 打开权限提升的命令提示符会话（“以管理员身份运行”）。
 2. 运行以下脚本。 对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
 
         Md F:\temp
@@ -216,7 +215,7 @@ RDP 客户端使用 TLS 1.0 作为默认协议。 但是，可将此协议更改
 
 #### <a name="enable-all-supported-tls-versions"></a>启用所有受支持的 TLS 版本
 
-1.  打开权限提升的命令提示符会话（“以管理员身份运行”），然后运行以下命令。  以下脚本假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
+1.  打开权限提升的命令提示符会话（“以管理员身份运行”），然后运行以下命令。 以下脚本假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
 2.  检查启用了哪个 TLS：
 
         reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

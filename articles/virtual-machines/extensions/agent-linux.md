@@ -11,17 +11,16 @@ ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59a0cdd29e50501f023faf323948a400f325df0b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: acb6e14845beb4c947992e63f1984c072ba9f59f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706162"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084821"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
 
@@ -263,7 +262,7 @@ Default: ext4
 Type: String  
 Default: /mnt/resource 
 ```
-这会指定资源磁盘的安装路径。 资源磁盘是临时  磁盘，可能在取消预配 VM 时被清空。
+这会指定资源磁盘的安装路径。 资源磁盘是临时磁盘，可能在取消预配 VM 时被清空。
 
 **ResourceDisk.MountOptions**  
 ```

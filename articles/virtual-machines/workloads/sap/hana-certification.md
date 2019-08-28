@@ -7,25 +7,24 @@ author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d623a189da5c5eccd73018e1ae0b7e5564fe09ab
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3c2c919d6e85a2b708dc247b1642e7e8987df81b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709692"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099884"
 ---
 # <a name="certification"></a>认证
 
 除了 NetWeaver 认证以外，SAP 还要求通过 SAP HANA 的特殊认证，以便在某些基础结构（如 Azure IaaS）上支持 SAP HANA。
 
-是的核心 SAP 说明有关 NetWeaver 和程度的 SAP HANA 认证[SAP 说明 #1928533 – Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型](https://launchpad.support.sap.com/#/notes/1928533)。
+NetWeaver 上的核心 sap 说明以及对 SAP HANA 认证的程度是[sap 说明 #1928533-Azure 上的 sap 应用程序:支持的产品和 Azure VM](https://launchpad.support.sap.com/#/notes/1928533)类型。
 
 在 [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)站点中可找到 Azure 上 SAP HANA（大型实例）单元的认证记录。 
 

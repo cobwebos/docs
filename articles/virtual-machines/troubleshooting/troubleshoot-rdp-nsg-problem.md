@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cfb0464fd7fbd271272a992cffead44e9ba3b553
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318929"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103419"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>因为没有在 NSG 中启用 RDP 端口而无法远程连接到 VM
 
@@ -38,9 +37,9 @@ ms.locfileid: "60318929"
 
 若要在 NSG 中启用 RDP 端口，请执行以下步骤：
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在“虚拟机”中，选择有问题的 VM。  
-3. 在“设置”中，选择“网络”。   
-4. 在“入站端口规则”  中，检查是否正确设置了 RDP 的端口。 下面是一个配置示例： 
+2. 在“虚拟机”中，选择有问题的 VM。 
+3. 在“设置”中，选择“网络”。 
+4. 在“入站端口规则”中，检查是否正确设置了 RDP 的端口。 下面是一个配置示例： 
 
     **优先级**：300 </br>
     **端口**：3389 </br>
@@ -49,7 +48,7 @@ ms.locfileid: "60318929"
     **协议**：TCP </br>
     **源**：任意 </br>
     **目标**：任意 </br>
-    **操作**：允许 </br>
+    **操作**：Allow </br>
 
 如果你指定了源 IP 地址，则此设置仅允许来自特定 IP 地址或 IP 地址范围的流量连接到 VM。 请确保你用来启动 RDP 会话的计算机在该范围内。
 

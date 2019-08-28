@@ -7,19 +7,18 @@ author: hermanndms
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5bfd278cc4252167aace3aca52fec65fb3c6367f
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ebf4a0f892e65bf96e07e333cf5446d3036108a0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869131"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099793"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何安装和配置 Azure 上的 SAP HANA（大型实例）
 
@@ -151,7 +150,7 @@ Azure 上的 SAP HANA (大型实例) 的存储布局是通过 azure 上的 SAP H
 
 下表列出了存储卷的命名约定：
 
-| 存储用途 | 装入点名称 | 卷名 | 
+| 存储使用情况 | 装入点名称 | 卷名 | 
 | --- | --- | ---|
 | HANA 数据 | /hana/data/SID/mnt0000\<m > | 存储 IP：/hana_data_SID_mnt00001_tenant_vol |
 | HANA 日志 | /hana/log/SID/mnt0000\<m > | 存储 IP：/hana_log_SID_mnt00001_tenant_vol |

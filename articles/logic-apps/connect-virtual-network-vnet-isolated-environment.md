@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 7a3cdab8e05a873e67788a72350d1bf3fde3cd18
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4865a2b3b02a1e7a6db19418122b66aeb79dd332
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018206"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099469"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -88,7 +88,8 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 | 来自 Azure 流量管理器的通信 | 入站 | 443 | AzureTrafficManager | VirtualNetwork | |
 | 逻辑应用设计器 - 动态属性 | 入站 | 454 | Internet | VirtualNetwork | 请求来自于逻辑应用[访问终结点在该区域中的入站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#inbound)。 |
 | 应用服务管理依赖项 | 入站 | 454、455 | AppServiceManagement | VirtualNetwork | |
-| 连接器部署 | 入站 | 454、3443 | Internet | VirtualNetwork | 需要用于部署和更新连接器。 关闭或阻止此端口会导致 ISE 部署失败, 并阻止连接器更新或修复。 |
+| 连接器部署 | 入站 | 454 | AzureConnectors | VirtualNetwork | 需要用于部署和更新连接器。 关闭或阻止此端口会导致 ISE 部署失败, 并阻止连接器更新或修复。 |
+| 连接器策略部署 | 入站 | 3443 | Internet | VirtualNetwork | 需要用于部署和更新连接器。 关闭或阻止此端口会导致 ISE 部署失败, 并阻止连接器更新或修复。 |
 | Azure SQL 依赖关系 | 出站 | 1433 | VirtualNetwork | SQL | |
 | Azure 资源运行状况 | 出站 | 1886 | VirtualNetwork | AzureMonitor | 用于将运行状况状态发布到资源运行状况 |
 | API 管理 - 管理终结点 | 入站 | 3443 | APIManagement | VirtualNetwork | |

@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: shwinne
-author: swinner95
+ms.author: ronglu
+author: ronglums
 ms.date: 7/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3b49def1af7f13e38c3a9daea32d56bf3c633261
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b1d18006e6ec3ff1659f8fb80f8cf6766797d76b
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871764"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114432"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code 入门
 
@@ -25,9 +25,9 @@ ms.locfileid: "67871764"
 
 你还可以部署这些模型, 以满足测试和生产需求。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-+ 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用[Azure 机器学习服务的免费或付费版本](https://aka.ms/AMLFree)。
++ 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
 + 必须安装 Visual Studio Code。 Visual Studio Code 是在桌面上运行的轻型但功能强大的源代码编辑器。 它附带了对 Python 和其他编程语言的内置支持。 如果尚未安装 Visual Studio Code, 请了解操作[方法](https://code.visualstudio.com/docs/setup/setup-overview)。
 
@@ -84,7 +84,7 @@ ms.locfileid: "67871764"
    [![创建工作区](./media/vscode-tools-for-ai/CreateaWorkspace.gif)](./media/vscode-tools-for-ai/CreateaWorkspace.gif#lightbox)
 
 
-1. 右键单击你的 Azure 订阅，然后选择“创建工作区”。  此时将显示一个列表。 在示例动画图像中, 订阅名称为**免费试用版**, 工作区为**TeamWorkspace**。 
+1. 右键单击你的 Azure 订阅，然后选择“创建工作区”。 此时将显示一个列表。 在示例动画图像中, 订阅名称为**免费试用版**, 工作区为**TeamWorkspace**。 
 
 1. 从列表中选择一个资源组, 或使用 "命令" 面板中的向导创建一个新的资源组。
 
@@ -119,7 +119,7 @@ ms.locfileid: "67871764"
 
 2. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。 在下面的示例图像中, 订阅名称为**免费试用版**, 工作区为**TeamWorkspace**。 
 
-3. 在工作区节点下，右键单击“计算”  节点，再选择“创建计算”  。
+3. 在工作区节点下，右键单击“计算”节点，再选择“创建计算”。
 
 4. 从列表中选择计算目标类型。 
 
@@ -151,7 +151,7 @@ Visual Studio Code 扩展会自动创建本地计算目标, 并为本地计算�
 
 1. 在 "工作区" 节点下, 展开 "**计算**" 节点, 然后右键单击要使用的计算的**运行配置**。 
 
-1. 选择“运行试验”  。
+1. 选择“运行试验”。
 
 1. 从 "文件资源管理器" 中, 选择要运行的脚本。 
 
@@ -226,7 +226,7 @@ dependencies:
 
 1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。
 
-1. 在工作区节点下，右键单击“模型”  ，再选择“注册模型”  。
+1. 在工作区节点下，右键单击“模型”，再选择“注册模型”。
 
 1. 在 "命令" 面板的 "字段" 中, 输入模型名称。 
 
@@ -255,7 +255,7 @@ dependencies:
 
 1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。
 
-1. 在工作区节点下，展开“模型”  节点。
+1. 在工作区节点下，展开“模型”节点。
 
 1. 右键单击要部署的模型, 然后从上下文菜单中选择 "**从已注册的模型部署服务**"。
 

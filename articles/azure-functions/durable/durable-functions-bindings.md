@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 678e370977cadae642207f91a02136404fb6c34e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fbd645ef9f5e687e71ce110fc84b8342e31defed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60710519"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087537"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 的绑定
 
@@ -46,10 +45,10 @@ ms.locfileid: "60710519"
 
 以下是有关业务流程触发器的一些注意事项：
 
-* 单线程 - 单个调度程序线程用于单个主机实例上的所有业务流程协调程序函数执行  。 为此，必须确保业务流程协调程序函数代码有效，且不执行任何 I/O 操作。 还必须确保此线程不执行任何异步工作，等待特定于 Durable Functions 的任务类型除外。
+* 单线程 - 单个调度程序线程用于单个主机实例上的所有业务流程协调程序函数执行。 为此，必须确保业务流程协调程序函数代码有效，且不执行任何 I/O 操作。 还必须确保此线程不执行任何异步工作，等待特定于 Durable Functions 的任务类型除外。
 * **有害消息处理** - 业务流程触发器中不支持有害消息。
-* 消息可见性 - 业务流程触发器消息会取消排队并在可配置的持续时间内保持可见  。 只要函数应用正常运行，这些消息的可见性就会自动更新。
-* 返回值 - 返回值序列化为 JSON，并持久保存到 Azure 表存储中的业务流程历史记录表  。 业务流程客户端绑定可以查询这些值，后文会对此进行介绍。
+* 消息可见性 - 业务流程触发器消息会取消排队并在可配置的持续时间内保持可见。 只要函数应用正常运行，这些消息的可见性就会自动更新。
+* 返回值 - 返回值序列化为 JSON，并持久保存到 Azure 表存储中的业务流程历史记录表。 业务流程客户端绑定可以查询这些值，后文会对此进行介绍。
 
 > [!WARNING]
 > 业务流程协调程序函数不得使用业务流程触发器绑定之外的任何输入或输出绑定。 这样做有可能导致 Durable Task 扩展出现问题，因为这些绑定可能不遵从单线程处理和 I/O 规则。
@@ -62,7 +61,7 @@ ms.locfileid: "60710519"
 业务流程触发器绑定同时支持输入和输出。 下面是有关输入和输出处理的一些须知事项：
 
 * **输入** - .NET 业务流程函数仅支持以 [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) 作为参数类型。 不支持在函数签名中直接反序列化输入。 代码必须使用 [GetInput\<T>](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)(.NET) 或 `getInput` (JavaScript) 方法提取业务流程协调程序函数输入。 这些输入必须是 JSON 可序列化类型。
-* 输出 - 业务流程触发器支持输出值以及输入  。 函数的返回值用于分配输出值，且必须是 JSON 可序列化的。 如果 .NET 函数返回 `Task` 或 `void`，则会将 `null` 值保存为输出。
+* 输出 - 业务流程触发器支持输出值以及输入。 函数的返回值用于分配输出值，且必须是 JSON 可序列化的。 如果 .NET 函数返回 `Task` 或 `void`，则会将 `null` 值保存为输出。
 
 ### <a name="trigger-sample"></a>触发器示例
 
@@ -129,7 +128,7 @@ module.exports = df.orchestrator(function*(context) {
 
 如果使用的是 Visual Studio，活动触发器使用 [ActvityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .NET 属性进行配置。
 
-如果使用 VS Code 或 Azure 门户进行开发，则由 function.json  文件中 `bindings` 数组的以下 JSON 对象定义活动触发器：
+如果使用 VS Code 或 Azure 门户进行开发，则由 function.json 文件中 `bindings` 数组的以下 JSON 对象定义活动触发器：
 
 ```json
 {
@@ -148,10 +147,10 @@ module.exports = df.orchestrator(function*(context) {
 
 以下是有关活动触发器的一些注意事项：
 
-* 线程处理 - 与业务流程触发器不同，活动触发器没有关于线程处理或 I/O 的任何限制  。 可以将它们视为常规功能。
+* 线程处理 - 与业务流程触发器不同，活动触发器没有关于线程处理或 I/O 的任何限制。 可以将它们视为常规功能。
 * **有害消息处理** - 活动触发器不支持有害消息。
-* 消息可见性 - 活动触发器消息会取消排队并在可配置的持续时间内保持可见  。 只要函数应用正常运行，这些消息的可见性就会自动更新。
-* 返回值 - 返回值序列化为 JSON，并持久保存到 Azure 表存储中的业务流程历史记录表  。
+* 消息可见性 - 活动触发器消息会取消排队并在可配置的持续时间内保持可见。 只要函数应用正常运行，这些消息的可见性就会自动更新。
+* 返回值 - 返回值序列化为 JSON，并持久保存到 Azure 表存储中的业务流程历史记录表。
 
 > [!WARNING]
 > 活动函数的存储后端属于实现详细信息，用户代码不得直接与这些存储实体进行交互。
@@ -255,7 +254,7 @@ public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContex
 
 如果使用 Visual Studio，可以使用 [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .NET 属性绑定到业务流程客户端。
 
-如果使用脚本语言（例如，.csx  或 .js  文件）进行开发，由 function.json  的 `bindings` 数组中的以下 JSON 对象定义业务流程触发器：
+如果使用脚本语言（例如，.csx 或 .js 文件）进行开发，由 function.json 的 `bindings` 数组中的以下 JSON 对象定义业务流程触发器：
 
 ```json
 {

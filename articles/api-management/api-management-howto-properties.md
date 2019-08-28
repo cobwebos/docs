@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 46f4e1b3df5f1c77a57d432297685d6d1a0a14a8
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: d71d71c4d289235e5b67a5201c1f7417274b8fca
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405802"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072325"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用命名值
 
@@ -26,7 +25,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 每个 API 管理服务实例都有一个属性集合，其中包含对服务实例来说属于全局性的键值对（称为“命名值”）。 集合中的项数没有施加限制。 命名值可用于管理所有 API 配置和策略的常量字符串值。 每个命名值都可能具有以下特性:
 
-| 特性      | type            | 描述                                                                                                                         |
+| 特性      | 类型            | 描述                                                                                                                         |
 | -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | string          | 用于在策略中引用属性。 一个到256个字符的字符串。 只允许使用字母、数字、点和短划线。 |
 | `Value`        | string          | 实际值。 不得为空或仅包含空格。 最大长度为4096个字符。                                     |
@@ -37,7 +36,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 命名值可以包含文本字符串和[策略表达式](/azure/api-management/api-management-policy-expressions)。 例如，`Expression` 的值是一个策略表达式，其返回的字符串包含当前日期和时间。 命名值`Credential`标记为机密, 因此默认情况下不显示其值。
 
-| 名称       | Value                      | Secret | Tags          |
+| 姓名       | Value                      | Secret | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
 | ReplTest1      | 42                         | False  | 重要-数字 |
 | 凭据 | ••••••••••••••••••••••     | True   | 安全性      |

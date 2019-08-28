@@ -5,21 +5,20 @@ services: virtual-machines-windows
 author: bobbytreed
 manager: carmonm
 tags: azure-resource-manager
-keywords: dsc
+keywords: DSC
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 1bcec37e7642ae0cb5bd68de1426c8cc62085d38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 458ba61adba294af99f2265e4907e874ed3a6956
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61475518"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084580"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration 扩展与 Azure 资源管理器模板
 
@@ -82,7 +81,7 @@ DSC 扩展继承默认扩展属性。
 ## <a name="template-example-for-windows-virtual-machine-scale-sets"></a>Windows 虚拟机规模集的模板示例
 
 虚拟机规模集节点具有 **properties** 节，其中包含 **VirtualMachineProfile, extensionProfile** 属性。
-在“扩展”下，添加 DSC 扩展的详细信息  。
+在“扩展”下，添加 DSC 扩展的详细信息。
 
 DSC 扩展继承默认扩展属性。
 有关详细信息，请参阅 [VirtualMachineScaleSetExtension 类](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)。
@@ -178,9 +177,9 @@ DSC 扩展继承默认扩展属性。
 
 ## <a name="details"></a>详细信息
 
-| 属性名称 | Type | 描述 |
+| 属性名 | 类型 | 描述 |
 | --- | --- | --- |
-| settings.wmfVersion |string |指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为 **latest** 可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.1”和“latest”     。 这些可能值将来可能会更新。 默认值为 **latest**。 |
+| settings.wmfVersion |string |指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为 **latest** 可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.1”和“latest”。 这些可能值将来可能会更新。 默认值为 **latest**。 |
 | settings.configuration.url |string |指定要从中下载 DSC 配置 .zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，请将 **protectedSettings.configurationUrlSasToken** 属性设置为 SAS 令牌的值。 如果已定义 **settings.configuration.script** 或 **settings.configuration.function**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置位置配置管理器 (LCM) 元数据，并应提供参数。 |
 | settings.configuration.script |string |指定包含 DSC 配置定义的脚本的文件名。 此脚本必须位于从 **settings.configuration.url** 属性所指定的 URL 下载的 zip 文件的根文件夹中。 如果已定义 **settings.configuration.url** 或 **settings.configuration.script**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置 LCM 元数据，并应提供参数。 |
 | settings.configuration.function |string |指定 DSC 配置的名称。 命名的配置必须包含在 **settings.configuration.script** 定义的脚本中。 如果已定义 **settings.configuration.url** 或 **settings.configuration.function**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置 LCM 元数据，并应提供参数。 |
@@ -197,7 +196,7 @@ DSC 扩展继承默认扩展属性。
 有关以下值的详细信息，请参阅[本地配置管理器基本设置](/powershell/dsc/metaconfig#basic-settings)。
 使用 DSC 扩展默认配置脚本只能配置下表中列出的 LCM 属性。
 
-| 属性名称 | Type | 描述 |
+| 属性名 | type | 描述 |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |必需的属性。 指定节点用于注册到 Azure 自动化服务的密钥作为 PowerShell 凭据对象的密码。 可以使用 **listkeys** 方法针对自动化帐户自动发现此值。  请参阅[示例](#example-using-referenced-azure-automation-registration-values)。 |
 | settings.configurationArguments.RegistrationUrl |string |必需的属性。 指定节点将尝试注册的自动化终结点的 URL。 可以使用 **reference** 方法针对自动化帐户自动发现此值。 |
@@ -205,9 +204,9 @@ DSC 扩展继承默认扩展属性。
 | settings.configurationArguments.ConfigurationMode |string |指定 LCM 的模式。 有效选项包括 **ApplyOnly**、**ApplyandMonitor** 和 **ApplyandAutoCorrect**。  默认值为 **ApplyandMonitor**。 |
 | settings.configurationArguments.RefreshFrequencyMins | uint32 | 指定 LCM 将尝试向自动化帐户查询更新的频率。  默认值为 **30**。  最小值为 **15**。 |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | 指定 LCM 将验证当前配置的频率。 默认值为 **15**。 最小值为 **15**。 |
-| settings.configurationArguments.RebootNodeIfNeeded | boolean | 指定在 DSC 操作请求时是否可能会自动重新启动节点。 默认值为“false”  。 |
+| settings.configurationArguments.RebootNodeIfNeeded | boolean | 指定在 DSC 操作请求时是否可能会自动重新启动节点。 默认值为“false”。 |
 | settings.configurationArguments.ActionAfterReboot | string | 指定在应用配置时重新启动后会发生什么情况。 有效选项为 **ContinueConfiguration** 和 **StopConfiguration**。 默认值为 **ContinueConfiguration**。 |
-| settings.configurationArguments.AllowModuleOverwrite | boolean | 指定 LCM 是否会覆盖节点上的现有模块。 默认值为“false”  。 |
+| settings.configurationArguments.AllowModuleOverwrite | boolean | 指定 LCM 是否会覆盖节点上的现有模块。 默认值为“false”。 |
 
 ## <a name="settings-vs-protectedsettings"></a>settings 与 protectedSettings
 
@@ -344,7 +343,7 @@ DSC 扩展继承默认扩展属性。
 | protectedSettings.configurationUrlSasToken |settings.SasToken |
 | protectedSettings.configurationDataUrlSasToken |protectedSettings.DataBlobUri 中的 SAS 令牌 |
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 下面是可能会遇到的一些错误及其解决方法。
 
@@ -357,16 +356,16 @@ DSC 扩展继承默认扩展属性。
 
 **问题**：不允许使用提供的值。
 
-**解决方案**；将无效值更改为有效值。
+**解决方案**：将无效值更改为有效值。
 有关详细信息，请参阅[详细信息](#details)中的表格。
 
-### <a name="invalid-url"></a>无效的 URL
+### <a name="invalid-url"></a>URL 无效
 
 “ConfigurationData.url 为‘{0}’。 这不是有效的 URL”。“DataBlobUri 为‘{0}’。 这不是有效的 URL”。“Configuration.url 为‘{0}’。 这不是有效的 URL”
 
 **问题**：提供的 URL 无效。
 
-**解决方案**；检查提供的所有 URL。
+**解决方案**：检查提供的所有 URL。
 确保所有 URL 都解析为扩展可在远程计算机上访问的有效位置。
 
 ### <a name="invalid-registrationkey-type"></a>无效 RegistrationKey 类型
@@ -375,7 +374,7 @@ DSC 扩展继承默认扩展属性。
 
 **问题**：protectedSettings.configurationArguments 中的 *RegistrationKey* 值不能提供为 PSCredential 以外的任何类型。
 
-**解决方案**；将 RegistrationKey 的 protectedSettings.configurationArguments 条目更改为使用以下格式的 PSCredential 类型：
+**解决方案**：将 RegistrationKey 的 protectedSettings.configurationArguments 条目更改为使用以下格式的 PSCredential 类型：
 
 ```json
 "configurationArguments": {
@@ -392,7 +391,7 @@ DSC 扩展继承默认扩展属性。
 
 **问题**：*ConfigurationArguments* 属性无法解析为**哈希表**对象。
 
-**解决方案**；将 *ConfigurationArguments* 属性设置为**哈希表**。
+**解决方案**：将 *ConfigurationArguments* 属性设置为**哈希表**。
 遵循上述示例中提供的格式。 请注意引号、逗号和括号。
 
 ### <a name="duplicate-configurationarguments"></a>重复的 ConfigurationArguments
@@ -401,7 +400,7 @@ DSC 扩展继承默认扩展属性。
 
 **问题**：公共设置中的 *ConfigurationArguments* 和受保护设置中的 *ConfigurationArguments* 包含同名属性。
 
-**解决方案**；删除其中一个重复的属性。
+**解决方案**：删除其中一个重复的属性。
 
 ### <a name="missing-properties"></a>缺少属性
 

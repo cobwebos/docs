@@ -7,19 +7,18 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 078ce7e2acd93ecab6b37407f460672d4acb1853
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d0150aeace3960d075bbf61c1dd0bba4865aaf2b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707321"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099709"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复 
 
@@ -33,9 +32,9 @@ ms.locfileid: "67707321"
 
 Microsoft 通过 HANA 大型实例支持一些 SAP HANA 高可用性功能。 这些功能包括：
 
-- **存储复制**:若要将所有数据都复制到另一个 Azure 区域中的另一个 HANA 大型实例模具的存储系统的功能。 SAP HANA 的工作独立于此方法。 此功能是为 HANA 大型实例提供的默认灾难恢复机制。
-- **HANA 系统复制**:[的 SAP HANA 中的所有数据复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)到独立的 SAP HANA 系统。 通过定期复制数据最大限度地减小恢复时间目标。 SAP HANA 支持异步模式、内存中同步模式和同步模式。 仅在同一数据中心或者距离不超过 100 公里的范围内针对 SAP HANA 系统使用同步模式。 在 HANA 大型实例戳的当前设计中，HANA 系统复制仅可用于在一个区域内实现高可用性。 HANA 系统复制要求使用第三方反向代理或路由组件将灾难恢复配置传送到另一 Azure 区域。 
-- **主机自动故障转移**:是替代 HANA 系统复制的 SAP HANA 本地故障恢复解决方案。 如果主节点不可用，可在横向扩展模式下配置一个或多个备用 SAP HANA 节点，SAP HANA 会自动故障转移到备用节点。
+- **存储复制**:存储系统能够将所有数据复制到另一个 Azure 区域中的另一个 HANA 大型实例标记。 SAP HANA 的工作独立于此方法。 此功能是为 HANA 大型实例提供的默认灾难恢复机制。
+- **HANA 系统复制**:将[SAP HANA 中的所有数据复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)到单独的 SAP HANA 系统。 通过定期复制数据最大限度地减小恢复时间目标。 SAP HANA 支持异步模式、内存中同步模式和同步模式。 仅在同一数据中心或者距离不超过 100 公里的范围内针对 SAP HANA 系统使用同步模式。 在 HANA 大型实例戳的当前设计中，HANA 系统复制仅可用于在一个区域内实现高可用性。 HANA 系统复制要求使用第三方反向代理或路由组件将灾难恢复配置传送到另一 Azure 区域。 
+- **主机自动故障转移**:用于 SAP HANA 的本地故障恢复解决方案, 可替代 HANA 系统复制。 如果主节点不可用，可在横向扩展模式下配置一个或多个备用 SAP HANA 节点，SAP HANA 会自动故障转移到备用节点。
 
 Azure 上的 SAP HANA（大型实例）在四个地缘政治区域（美国、澳大利亚、欧洲和日本）的两个 Azure 区域中提供。 托管 HANA 大型实例戳的两个不同区域与用于复制存储快照的单独专用网络线路连接。 它们用于复制存储快照，以提供灾难恢复方法。 默认情况下不建立复制，该功能是为订购灾难恢复功能的客户设置。 存储复制取决于 HANA 大型实例存储快照的使用情况。 无法选择 Azure 区域作为 DR 区域，因为它位于另一个地缘政治区域。 
 
@@ -44,7 +43,7 @@ Azure 上的 SAP HANA（大型实例）在四个地缘政治区域（美国、�
 | HANA 大型实例支持的方案 | 高可用性选项 | 灾难恢复选项 | 注释 |
 | --- | --- | --- | --- |
 | 单节点 | 不可用。 | 专用 DR 设置。<br /> 多用途 DR 设置。 | |
-| 主机自动故障转移：横向扩展 （有或没有备用）<br /> 包括 1+1 | 在备用节点充当活动角色的情况下可行。<br /> HANA 控制角色切换。 | 专用 DR 设置。<br /> 多用途 DR 设置。<br /> 使用存储复制实现 DR 同步。 | HANA 卷集将附加到所有节点。<br /> DR 站点必须拥有相同的节点数。 |
+| 主机自动故障转移:横向扩展 (有或没有备用)<br /> 包括 1+1 | 在备用节点充当活动角色的情况下可行。<br /> HANA 控制角色切换。 | 专用 DR 设置。<br /> 多用途 DR 设置。<br /> 使用存储复制实现 DR 同步。 | HANA 卷集将附加到所有节点。<br /> DR 站点必须拥有相同的节点数。 |
 | HANA 系统复制。 | 在使用主要或辅助设置的情况下可行。<br /> 在故障转移案例中，辅助角色变为主要角色。<br /> HANA 系统复制和 OS 控制故障转移。 | 专用 DR 设置。<br /> 多用途 DR 设置。<br /> 使用存储复制实现 DR 同步。<br /> 在没有第三方组件的情况下，无法使用 HANA 系统复制实现 DR。 | 单独一组磁盘卷附加到每个节点。<br /> 仅生产站点中的辅助副本磁盘卷被复制到 DR 位置。<br /> DR 站点中需要一组卷。 | 
 
 专用 DR 设置是在不用于运行任何其他工作负荷或非生产系统的 DR 站点中部署 HANA 大型实例单元。 此单元是被动单元，仅当执行灾难故障转移时才部署。 不过，对于许多客户而言，此设置不是首选项。
@@ -70,7 +69,7 @@ Azure 上的 SAP HANA（大型实例）在四个地缘政治区域（美国、�
 
 若要利用 HANA 大型实例的灾难恢复功能，需要规划好与两个 Azure 区域之间的网络连接。 需使用一条 Azure ExpressRoute 线路从本地连接到主要 Azure 区域，使用另一个线路从本地连接到灾难恢复区域。 这种措施可以应对 Azure 区域（包括 Microsoft 企业边缘路由器 (MSEE) 位置）中出现的问题。
 
-还可以采取第二种措施，就是将连接到某个区域中 Azure 上的 SAP HANA（大型实例）的所有 Azure 虚拟网络都连接到 ExpressRoute 线路，此线路将连接其他区域的 HANA 大型实例。 通过此“跨连接”，1 号区域的 Azure 虚拟网络中运行的服务可以连接到 2 号区域中的 HANA 大型实例单元，也可以从后者连接到前者。  这种措施可以避免当 Azure 离线时，只有一个 MSEE 位置连接到本地位置。
+还可以采取第二种措施，就是将连接到某个区域中 Azure 上的 SAP HANA（大型实例）的所有 Azure 虚拟网络都连接到 ExpressRoute 线路，此线路将连接其他区域的 HANA 大型实例。 通过此“跨连接”，1 号区域的 Azure 虚拟网络中运行的服务可以连接到 2 号区域中的 HANA 大型实例单元，也可以从后者连接到前者。 这种措施可以避免当 Azure 离线时，只有一个 MSEE 位置连接到本地位置。
 
 下图展示了灾难恢复方案的弹性配置：
 
@@ -82,7 +81,7 @@ Azure 上的 SAP HANA（大型实例）在四个地缘政治区域（美国、�
 
 使用 HANA 大型实例实现灾难恢复设置的其他要求包括：
 
-- 订购的 Azure 上的 SAP HANA（大型实例）的 SKU 大小必须与生产 SKU 大小相同，并且应部署在灾难恢复区域中。 在当前客户部署中，这些实例用于运行非生产 HANA 实例。 这些配置被称为“多用途 DR 设置”  。   
+- 订购的 Azure 上的 SAP HANA（大型实例）的 SKU 大小必须与生产 SKU 大小相同，并且应部署在灾难恢复区域中。 在当前客户部署中，这些实例用于运行非生产 HANA 实例。 这些配置被称为“多用途 DR 设置”。   
 - 在 DR 站点上为想要在灾难恢复站点中恢复的每个 Azure 上的 SAP HANA（大型实例）SKU 订购附加存储。 购买附加存储可以分配存储卷。 可以分配用作从生产 Azure 区域复制到灾难恢复 Azure 区域的存储复制目标的存储卷。
 - 本例中，在主节点上安装了 HSR，且将基于存储的副本安装到了 DR 站点，因此必须在 站点购买额外的存储，以便主节点数据和辅助节点数据复制到 DR 站点。
 

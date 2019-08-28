@@ -8,44 +8,44 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
 ms.openlocfilehash: 5a4a46b8384da46a95ef148bc9989749535ec811
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/28/2019
 ms.locfileid: "67615338"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用静态公共 IP 地址创建入口控制器
 
 入口控制器是一个软件片段，为 Kubernetes 服务提供反向代理、可配置的流量路由和 TLS 终止。 Kubernetes 入口资源用于配置各个 Kubernetes 服务的入口规则和路由。 借助入口控制器和入口规则，可以使用单个 IP 地址将流量路由到 Kubernetes 群集中的多个服务。
 
-本文介绍如何在 Azure Kubernetes 服务 (AKS) 群集中部署[NGINX 入口控制器][nginx-ingress]。 入口控制器配置了一个静态公共 IP 地址。 [证书管理器][cert-manager]项目用于自动生成并配置[我们的加密][lets-encrypt]证书。 最后，在 AKS 群集中运行两个应用程序（可通过单个 IP 地址访问其中的每个应用程序）。
+本文介绍如何在 Azure Kubernetes 服务 (AKS) 群集中部署 [NGINX 入口控制器][nginx-ingress]。 入口控制器配置了一个静态公共 IP 地址。 [cert-manager][cert-manager] 项目用于自动生成和配置 [Let's Encrypt][lets-encrypt] 证书。 最后，在 AKS 群集中运行两个应用程序（可通过单个 IP 地址访问其中的每个应用程序）。
 
 还可以：
 
 - [创建具有外部网络连接的基本入口控制器][aks-ingress-basic]
 - [启用 HTTP 应用程序路由外接程序][aks-http-app-routing]
-- [创建使用自己的 TLS 证书的入口控制器][aks-ingress-own-tls]
-- [创建一个入口控制器, 该控制器使用我们的加密来自动生成包含动态公共 IP 地址的 TLS 证书][aks-ingress-tls]
+- [创建使用你自己的 TLS 证书的入口控制器][aks-ingress-own-tls]
+- [创建一个使用 Let's Encrypt 的入口控制器，以自动生成具有动态公共 IP 地址的 TLS 证书][aks-ingress-tls]
 
 ## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-本文使用 Helm 安装 NGINX 入口控制器、cert-manager 和示例 Web 应用。 你需要在 AKS 群集中初始化 Helm 并使用 Tiller 服务帐户。 请确保使用 Helm 的最新版本。 有关升级说明, 请参阅[Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息, 请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
+本文使用 Helm 安装 NGINX 入口控制器、cert-manager 和示例 Web 应用。 你需要在 AKS 群集中初始化 Helm 并使用 Tiller 服务帐户。 请确保使用 Helm 的最新版本。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
 
-本文还要求运行 Azure CLI 版本2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="create-an-ingress-controller"></a>创建入口控制器
 
 默认情况下，NGINX 入口控制器通过新的公共 IP 地址分配创建。 此公共 IP 地址仅对入口控制器的生命周期而言是静态的，如果删除并重新创建控制器，它将会丢失。 常见的配置要求是为 NGINX 入口控制器提供现有的静态公共 IP 地址。 如果删除入口控制器，静态公共 IP 地址仍存在。 此方法允许在应用程序的整个生命周期中以一致的方式使用现有的 DNS 记录和网络配置。
 
-如果需要创建静态公共 IP 地址, 请首先使用[az AKS show][az-aks-show]命令获取 AKS 群集的资源组名称:
+如果需要创建静态公共 IP 地址，请首先使用 [az aks show][az-aks-show] 命令获取 AKS 群集的资源组名称：
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 ```
 
-接下来, 使用[az network 公共 ip create][az-network-public-ip-create]命令创建具有*静态*分配方法的公共 IP 地址。 以下示例在前面的步骤中获取的 AKS 群集资源组中创建名为 *myAKSPublicIP* 的公用 IP 地址：
+接下来，使用 [az network public-ip create][az-network-public-ip-create] 命令通过静态分配方法创建一个公共 IP 地址。 以下示例在前面的步骤中获取的 AKS 群集资源组中创建名为 *myAKSPublicIP* 的公用 IP 地址：
 
 ```azurecli-interactive
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static --query publicIp.ipAddress -o tsv
@@ -53,13 +53,13 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 
 现在，通过 Helm 部署 *nginx-ingress* 图表。 添加 `--set controller.service.loadBalancerIP` 参数，并指定在前面的步骤中创建的你自己的公共 IP 地址。 对于增加的冗余，NGINX 入口控制器的两个副本会在部署时具备 `--set controller.replicaCount` 参数。 若要充分利用正在运行的入口控制器副本，请确保 AKS 群集中有多个节点。
 
-还需要在 Linux 节点上计划入口控制器。 Windows Server 节点 (当前在 AKS 中为预览版) 不应运行入口控制器。 使用`--set nodeSelector`参数指定节点选择器, 以告知 Kubernetes 计划程序在基于 Linux 的节点上运行 NGINX 入口控制器。
+还需要在 Linux 节点上计划入口控制器。 Windows Server 节点 (当前在 AKS 中为预览版) 不应运行入口控制器。 使用 `--set nodeSelector` 参数指定节点选择器，以告知 Kubernetes 计划程序在基于 Linux 的节点上运行 NGINX 入口控制器。
 
 > [!TIP]
 > 以下示例为名为 *ingress-basic* 的入口资源创建 Kubernetes 命名空间。 根据需要为你自己的环境指定一个命名空间。 如果 AKS 群集未启用 RBAC，请将 `--set rbac.create=false` 添加到 Helm 命令中。
 
 > [!TIP]
-> 如果要对群集中的容器的请求启用[客户端源 IP 保留][client-source-ip], 请将添加`--set controller.service.externalTrafficPolicy=Local`到 Helm install 命令。 客户端源 IP 存储在请求标头中的*X-转发*的下。 使用启用了客户端源 IP 保存的入口控制器时, SSL 传递将不起作用。
+> 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For 下的请求头中。 使用启用了客户端源 IP 保留的入口控制器时，SSL 传递将不起作用。
 
 ```console
 # Create a namespace for your ingress resources
@@ -110,7 +110,7 @@ az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
 
 ## <a name="install-cert-manager"></a>安装证书管理器
 
-NGINX 入口控制器支持 TLS 终止。 可通过多种方法为 HTTPS 检索和配置证书。 本文演示如何使用[证书管理器, 该管理器][cert-manager]提供自动[允许加密][lets-encrypt]证书生成和管理功能。
+NGINX 入口控制器支持 TLS 终止。 可通过多种方法为 HTTPS 检索和配置证书。 本文演示如何使用[证书管理器][cert-manager]，该管理器提供自动 [Lets Encrypt][lets-encrypt] 证书生成和管理功能。
 
 > [!NOTE]
 > 本文为 Let's Encrypt 使用 `staging` 环境。 在生产部署中，请在安装 Helm 图表时使用资源定义中的 `letsencrypt-prod` 和 `https://acme-v02.api.letsencrypt.org/directory`。
@@ -141,11 +141,11 @@ helm install \
   jetstack/cert-manager
 ```
 
-有关 cert manager 配置的详细信息, 请参阅[证书管理器项目][cert-manager]。
+若要详细了解证书管理器配置，请参阅[证书管理器项目][cert-manager]。
 
 ## <a name="create-a-ca-cluster-issuer"></a>创建 CA 群集证书颁发者
 
-证书管理器需要[颁发者][cert-manager-issuer]或[ClusterIssuer][cert-manager-cluster-issuer]资源, 才能颁发证书。 这两种 Kubernetes 资源的功能完全相同，区别在于 `Issuer` 适用于单一命名空间，而 `ClusterIssuer` 适用于所有命名空间。 有关详细信息, 请参阅[证书管理器颁发者][cert-manager-issuer]文档。
+证书管理器需要 [Issuer][cert-manager-issuer] 或 [ClusterIssuer][cert-manager-cluster-issuer] 资源，才能颁发证书。 这两种 Kubernetes 资源的功能完全相同，区别在于 `Issuer` 适用于单一命名空间，而 `ClusterIssuer` 适用于所有命名空间。 有关详细信息，请参阅[证书管理器颁发者][cert-manager-issuer]文档。
 
 使用以下示例清单创建群集证书颁发者，例如 `cluster-issuer.yaml`。 将电子邮件地址更新为组织提供的有效地址：
 
@@ -244,9 +244,9 @@ ingress.extensions/hello-world-ingress created
 
 ## <a name="create-a-certificate-object"></a>创建证书对象
 
-接下来，必须创建证书资源。 证书资源定义了必需的 X.509 证书。 有关详细信息, 请参阅[cert-manager 证书][cert-manager-certificates]。
+接下来，必须创建证书资源。 证书资源定义了必需的 X.509 证书。 有关详细信息，请参阅[证书管理器证书][cert-manager-certificates]。
 
-证书管理器可能已使用 ingress-shim（自 v0.2.2 以来随证书管理器自动部署）为你自动创建了证书对象。 有关详细信息, 请参阅[入口填充文档][ingress-shim]。
+证书管理器可能已使用 ingress-shim（自 v0.2.2 以来随证书管理器自动部署）为你自动创建了证书对象。 有关详细信息，请参阅 [ingress-shim 文档][ingress-shim]。
 
 若要验证证书是否已成功创建，请使用 `kubectl describe certificate tls-secret --namespace ingress-basic` 命令。
 
@@ -399,8 +399,8 @@ az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eas
 - [创建具有外部网络连接的基本入口控制器][aks-ingress-basic]
 - [启用 HTTP 应用程序路由外接程序][aks-http-app-routing]
 - [创建使用内部、专用网络和 IP 地址的入口控制器][aks-ingress-internal]
-- [创建使用自己的 TLS 证书的入口控制器][aks-ingress-own-tls]
-- [使用动态公共 IP 创建入口控制器, 并配置让我们进行加密以自动生成 TLS 证书][aks-ingress-tls]
+- [创建使用你自己的 TLS 证书的入口控制器][aks-ingress-own-tls]
+- [使用动态公共 IP 创建入口控制器并配置 Let 's Encrypt 以自动生成 TLS 证书][aks-ingress-tls]
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm

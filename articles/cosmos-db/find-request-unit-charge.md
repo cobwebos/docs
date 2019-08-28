@@ -3,15 +3,15 @@ title: 在 Azure Cosmos DB 中查找请求单位 (RU) 费用
 description: 了解如何查找针对 Azure Cosmos 容器执行的任何操作所产生的请求单位 (RU) 费用。
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 96c36067456a49a5760d6fde488dcb4ad8311a90
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
-ms.translationtype: HT
+ms.openlocfilehash: 682273524269682f62cd386de1c9161888747f16
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356457"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093710"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中查找请求单位费用
 
@@ -29,13 +29,13 @@ ms.locfileid: "68356457"
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)并在其中植入数据，或选择一个已包含数据的现有 Azure Cosmos 帐户。
 
-1. 转到“数据资源管理器”窗格，然后选择要处理的容器。 
+1. 转到“数据资源管理器”窗格，然后选择要处理的容器。
 
-1. 选择“新建 SQL 查询”。 
+1. 选择“新建 SQL 查询”。
 
-1. 输入有效的查询，然后选择“执行查询”  。
+1. 输入有效的查询，然后选择“执行查询”。
 
-1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。 
+1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。
 
 ![Azure 门户中的 SQL 查询请求费用屏幕截图](./media/find-request-unit-charge/portal-sql-query.png)
 
@@ -176,13 +176,13 @@ RU 费用由名为 `getLastRequestStatistics` 的自定义[数据库命令](http
 
 1. [创建新的 Azure Cosmos 帐户](create-mongodb-dotnet.md#create-a-database-account)并在其中植入数据，或选择一个已包含数据的现有帐户。
 
-1. 转到“数据资源管理器”窗格，然后选择要处理的集合。 
+1. 转到“数据资源管理器”窗格，然后选择要处理的集合。
 
-1. 选择“新建查询”  。
+1. 选择“新建查询”。
 
-1. 输入有效的查询，然后选择“执行查询”  。
+1. 输入有效的查询，然后选择“执行查询”。
 
-1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。 
+1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。
 
 ![Azure 门户中的 MongoDB 查询请求费用屏幕截图](./media/find-request-unit-charge/portal-mongodb-query.png)
 

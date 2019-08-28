@@ -1,5 +1,5 @@
 ---
-title: 限制访问-Azure 应用服务 |Microsoft Docs
+title: 限制访问-Azure App Service |Microsoft Docs
 description: 如何将访问限制与 Azure 应用服务配合使用
 author: ccompy
 manager: stefsch
@@ -10,17 +10,16 @@ ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d3c547fbc09aeb034df5b7ed579639e1ff4bc0b4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cee6fc9fb5cc10a2b3442e146ef5688ed74290bb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705797"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088441"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure 应用服务访问限制 #
 
@@ -32,13 +31,13 @@ ms.locfileid: "67705797"
 
 访问限制功能是在应用服务前端角色（即代码运行所在的辅助角色主机中的上游）中实现的。 因此，访问限制是有效的网络 ACL。
 
-访问限于你的 web 应用从 Azure 虚拟网络 (VNet) 的功能称为[服务终结点][serviceendpoints]。 使用服务终结点可以限制为从选定的子网对多租户服务进行访问。 必须在网络端以及用于启用该功能的服务中启用该功能。 它并不适将流量限制到应用服务环境中托管的应用。  如果要在应用服务环境中，您可以控制对使用 IP 地址规则对应用程序的访问。
+限制从 Azure 虚拟网络 (VNet) 访问 Web 应用的功能称为[服务终结点][serviceendpoints]。 使用服务终结点可以限制为从选定的子网对多租户服务进行访问。 必须在网络端以及用于启用该功能的服务中启用该功能。 它不能用于将流量限制到应用服务环境中托管的应用。  如果你使用的是应用服务环境, 则可以使用 IP 地址规则控制对应用程序的访问。
 
 ![访问限制流](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>在门户中添加并编辑访问限制规则 ##
 
-若要向应用添加访问限制规则，请使用菜单打开“网络”>“访问限制”，然后单击“配置访问限制”   
+若要向应用添加访问限制规则，请使用菜单打开“网络”>“访问限制”，然后单击“配置访问限制”
 
 ![应用服务网络选项](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -50,7 +49,7 @@ ms.locfileid: "67705797"
 
 ## <a name="adding-ip-address-rules"></a>添加 IP 地址规则
 
-可单击“[+] 添加”以添加新的访问限制规则  。 规则在添加后会立即生效。 规则会从最小的数字开始往上，按优先级顺序强制执行。 即使仅添加了一个规则，一个隐式的“拒绝所有”也会立即生效。
+可单击“[+] 添加”以添加新的访问限制规则。 规则在添加后会立即生效。 规则会从最小的数字开始往上，按优先级顺序强制执行。 即使仅添加了一个规则，一个隐式的“拒绝所有”也会立即生效。
 
 创建规则时，必须选择“允许/拒绝”以及规则的类型。 此时，需要提供优先级值，以及要限制访问的内容。  可以选择性地添加规则的名称和说明。  
 
@@ -64,9 +63,9 @@ ms.locfileid: "67705797"
 
 ![添加 VNet 访问限制规则](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
 
-服务终结点不能用于限制对应用服务环境中运行的应用程序的访问。 您的应用程序在应用服务环境时，可以使用 IP 访问规则向应用来控制访问。 
+服务终结点不能用于限制对在应用服务环境中运行的应用程序的访问。 当应用处于应用服务环境时, 可以使用 IP 访问规则来控制对应用的访问。 
 
-使用服务终结点，可以配置使用应用程序网关或其他 WAF 设备对应用程序。 您还可以使用安全的后端配置多层应用程序。 上的多种可能性的详细信息，请参阅[联网功能和应用服务](networking-features.md)。
+通过服务终结点, 你可以配置应用程序网关或其他 WAF 设备。 还可以配置具有 secure 后端的多层应用程序。 有关某些可能性的详细信息, 请参阅[联网功能和应用服务](networking-features.md)。
 
 ## <a name="managing-access-restriction-rules"></a>管理访问限制规则
 
@@ -78,15 +77,15 @@ ms.locfileid: "67705797"
 
 ![编辑访问限制规则](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
-若要删除某个规则，请单击规则上的“...”然后单击“删除”   。
+若要删除某个规则，请单击规则上的“...”然后单击“删除”。
 
 ![删除访问限制规则](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
 ## <a name="blocking-a-single-ip-address"></a>阻止单个 IP 地址 ##
 
-添加第一个 IP 限制规则时，服务将添加优先级为 2147483647 的显式“全部拒绝”  规则。 实际上，显式“全部拒绝”  规则将是最后执行的规则，并将阻止访问使用“允许”  规则未明确允许的任何 IP 地址。
+添加第一个 IP 限制规则时，服务将添加优先级为 2147483647 的显式“全部拒绝”规则。 实际上，显式“全部拒绝”规则将是最后执行的规则，并将阻止访问使用“允许”规则未明确允许的任何 IP 地址。
 
-如果用户希望显式阻止单个 IP 地址或 IP 地址块，但允许所有其他访问，则有必要添加一个显式的“全部允许”  规则。
+如果用户希望显式阻止单个 IP 地址或 IP 地址块，但允许所有其他访问，则有必要添加一个显式的“全部允许”规则。
 
 ![阻止单个 IP 地址](media/app-service-ip-restrictions/block-single-address.png)
 
@@ -98,11 +97,11 @@ ms.locfileid: "67705797"
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>访问限制规则的编程操作 ##
 
-当前没有 CLI 或 PowerShell 对新的访问限制功能，但可以使用手动设置值[Azure REST API](https://docs.microsoft.com/rest/api/azure/)上应用配置资源管理器中的 PUT 操作。 例如，可以使用 resources.azure.com 并编辑 ipSecurityRestrictions 块以添加所需的 JSON。
+新的访问限制功能目前没有适用的 CLI 或 PowerShell，但是可以通过 [Azure REST API](https://docs.microsoft.com/rest/api/azure/) PUT 操作在资源管理器中的应用配置上手动设置值。 例如，可以使用 resources.azure.com 并编辑 ipSecurityRestrictions 块以添加所需的 JSON。
 
 此信息在资源管理器中的位置为：
 
-management.azure.com/subscriptions/subscription ID/resourceGroups/resource groups/providers/Microsoft.Web/sites/web app name/config/web?api-version=2018-02-01   
+management.azure.com/subscriptions/subscription ID/resourceGroups/resource groups/providers/Microsoft.Web/sites/web app name/config/web?api-version=2018-02-01
 
 前面的示例的 JSON 语法为：
 

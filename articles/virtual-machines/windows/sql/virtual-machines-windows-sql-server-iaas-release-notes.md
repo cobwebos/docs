@@ -8,23 +8,22 @@ manager: craigg
 tags: azure-service-management
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: 61bf9d53b5ceda9420ae594680466a70b1e3d0cd
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e58b01c6a01a22ef2dd45dc49d741f0287d603a0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882318"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100378"
 ---
 # <a name="release-notes-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上 SQL Server 的发行说明
 
 Azure 允许你使用内置 SQL Server 的映像部署虚拟机 (VM)。 本文总结了[Azure 虚拟机上 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)的最新版本中的新功能和改进。 本文还列出了不与此版本直接相关但在同一时间范围内发布的值得注意的内容更新。 有关对其他 Azure 服务的改进, 请参阅[服务更新](https://azure.microsoft.com/updates)。
 
-## <a name="july-2019"></a>2019年7月
+## <a name="july-2019"></a>2019 年 7 月
 
 ### <a name="documentation-improvements"></a>文档改进
 

@@ -1,5 +1,5 @@
 ---
-title: Azure AD 自助服务密码重置策略-Azure Active Directory
+title: Azure AD 自助式密码重置策略 - Azure Active Directory
 description: 配置 Azure AD 自助密码重置策略选项
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f32952dff8f09db5b790818a5f98c527a04c2ef5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8f5371334fb383b15514c879ceb262fa78d7fca
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65823391"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084963"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
@@ -28,21 +28,21 @@ ms.locfileid: "65823391"
 
 使用双门策略，**管理员将无法使用安全问题**。
 
-双门策略需要两条身份验证数据，如“电子邮件地址”、“身份验证应用”或“电话号码”    。 双门策略在以下情况下适用：
+双门策略需要两条身份验证数据，如“电子邮件地址”、“身份验证应用”或“电话号码”。 双门策略在以下情况下适用：
 
 * 以下所有 Azure 管理员角色将受到影响：
   * 支持管理员
   * 服务支持管理员
-  * 计费管理员
-  * 合作伙伴一线支持人员
-  * 合作伙伴二线支持人员
+  * 帐务管理员
+  * 合作伙伴层级 1 支持
+  * 合作伙伴层级 2 支持
   * Exchange 管理员
   * Skype for Business 管理员
   * 用户管理员
   * 目录写入者
   * 全局管理员或公司管理员
   * SharePoint 管理员
-  * 法规管理员
+  * 符合性管理员
   * 应用程序管理员
   * 安全管理员
   * 特权角色管理员
@@ -57,7 +57,7 @@ ms.locfileid: "65823391"
 * 虚域存在（例如 contoso.com）；或
 * Azure AD Connect 正在从本地目录同步标识
 
-### <a name="exceptions"></a>例外
+### <a name="exceptions"></a>Exceptions
 
 单门策略需要一条身份验证数据，如电子邮件地址*或*电话号码。 单门策略在以下情况下适用：
 
@@ -81,19 +81,19 @@ ms.locfileid: "65823391"
 
 | 属性 | 要求 |
 | --- | --- |
-| 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>空白区域</li></ul> |
-| 不允许的字符 |<ul><li>Unicode 字符。</li><li> 不能紧靠在“\@\"”符号前面添加句点字符“.”。</li></ul> |
-| 密码限制 |<ul><li>最少 8 个字符，最多 256 个字符。</li><li>需满足以下 4 项中的 3 项：<ul><li>小写字符。</li><li>大写字符。</li><li>数字 (0-9)。</li><li>符号（请参阅前面的密码限制）。</li></ul></li></ul> |
-| 密码过期期限 |<ul><li>默认值：“90”天  。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |
-| 密码过期通知 |<ul><li>默认值：“14”天（密码到期前）  。</li><li>可使用 `Set-MsolPasswordPolicy` cmdlet 配置该值。</li></ul> |
-| 密码到期 |<ul><li>默认值：**false** 天（指示已启用密码到期）。</li><li>可使用 `Set-MsolUser` cmdlet 配置单个用户帐户的值。</li></ul> |
-| 密码更改历史记录 |用户更改密码时，上一个密码*不能*再次使用。 |
+| 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>空白</li></ul> |
+| 不允许的字符 | Unicode 字符。 |
+| 密码限制 |<ul><li>至少 8 个字符，最多包含 256 个字符。</li><li>需满足以下 4 项中的 3 项：<ul><li>小写字符。</li><li>大写字符。</li><li>数字 (0-9)。</li><li>符号（请参阅前面的密码限制）。</li></ul></li></ul> |
+| 密码过期持续时间 (最长密码期限) |<ul><li>默认值：“90”天。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |
+| 密码到期通知 (当用户通知密码过期时) |<ul><li>默认值：“14”天（密码到期前）。</li><li>可使用 `Set-MsolPasswordPolicy` cmdlet 配置该值。</li></ul> |
+| 密码过期 (密码过期) |<ul><li>默认值：**false** 天（指示已启用密码到期）。</li><li>可使用 `Set-MsolUser` cmdlet 配置单个用户帐户的值。</li></ul> |
+| 密码更改历史记录 | 用户更改密码时，上一个密码*不能*再次使用。 |
 | 密码重置历史记录 | 用户重置忘记的密码时，上一个密码*可以*再次使用。 |
-| 帐户锁定 |使用错误密码 10 次登录尝试失败之后，用户会被锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 [智能锁定](howto-password-smart-lockout.md)跟踪最后三个错误的密码哈希，以避免对相同密码增大锁定计数器。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。 |
+| 帐户锁定 | 使用错误密码 10 次登录尝试失败之后，用户会被锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 [智能锁定](howto-password-smart-lockout.md)跟踪最后三个错误的密码哈希，以避免对相同密码增大锁定计数器。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。 |
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>在 Azure AD 中设置密码过期策略
 
-全局管理员或 Microsoft 云服务的用户管理员可以使用 Windows PowerShell 的 Microsoft Azure AD 模块将用户密码未过期设置。 还可以使用 Windows PowerShell cmdlet 删除永不过期配置，或者查看已将哪些用户密码设置为永不过期。 
+Microsoft 云服务的全局管理员或用户管理员可以使用用于 Windows PowerShell 的 Microsoft Azure AD 模块将用户密码设置为永不过期。 还可以使用 Windows PowerShell cmdlet 删除永不过期配置，或者查看已将哪些用户密码设置为永不过期。 
 
 本指南适用于其他提供程序（如 Intune 和 Office 365），这些提供程序也依赖于 Azure AD 提供标识和目录服务。 密码过期是策略中唯一可更改的部分。
 
@@ -106,16 +106,16 @@ ms.locfileid: "65823391"
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>检查密码过期策略
 
-1. 使用您的用户管理员或公司管理员凭据连接到 Windows PowerShell。
+1. 使用用户管理员或公司管理员凭据连接到 Windows PowerShell。
 1. 执行以下命令之一：
 
-   * 若要查看单个用户的密码已设置为永不过期，运行以下 cmdlet 使用的 UPN (例如， *aprilr\@contoso.onmicrosoft.com*) 或你想要检查的用户的用户 ID:
+   * 若要查看单个用户的密码是否设置为永不过期, 请使用 UPN (例如, *aprilr\@contoso.onmicrosoft.com*) 或要查看的用户的用户 ID 运行以下 cmdlet:
 
    ```powershell
    Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
    ```
 
-   * 若要查看**密码永不过期**为所有用户设置，运行以下 cmdlet:
+   * 若要查看所有用户的“密码永不过期”设置，请运行以下 cmdlet：
 
    ```powershell
    Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
@@ -123,16 +123,16 @@ ms.locfileid: "65823391"
 
 ### <a name="set-a-password-to-expire"></a>设置密码过期
 
-1. 使用您的用户管理员或公司管理员凭据连接到 Windows PowerShell。
+1. 使用用户管理员或公司管理员凭据连接到 Windows PowerShell。
 1. 执行以下命令之一：
 
-   * 若要将一个用户的密码设置的密码已过期，请使用的 UPN 或用户的用户 ID 运行以下 cmdlet:
+   * 若要将某一用户的密码设置为过期，请使用该用户的 UPN 或用户 ID 运行以下 cmdlet：
 
    ```powershell
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None
    ```
 
-   * 若要设置组织中所有用户的密码，以便在它们到期，使用以下 cmdlet:
+   * 若要将组织中所有用户的密码设置为过期，请使用以下 cmdlet：
 
    ```powershell
    Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None
@@ -140,16 +140,16 @@ ms.locfileid: "65823391"
 
 ### <a name="set-a-password-to-never-expire"></a>将密码设置为永不过期
 
-1. 使用您的用户管理员或公司管理员凭据连接到 Windows PowerShell。
+1. 使用用户管理员或公司管理员凭据连接到 Windows PowerShell。
 1. 执行以下命令之一：
 
-   * 若要设置为永不过期的某位用户的密码，请使用的 UPN 或用户的用户 ID 运行以下 cmdlet:
+   * 若要将某一用户的密码设置为永不过期，请使用该用户的 UPN 或用户 ID 运行以下 cmdlet：
 
    ```powershell
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration
    ```
 
-   * 若要将所有用户的密码设置为永不过期的组织中，运行以下 cmdlet:
+   * 若要将组织中所有用户的密码设置为永不过期，请运行以下 cmdlet：
 
    ```powershell
    Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration

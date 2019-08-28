@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 9846bf7b28f1205f98eb59671553d309fe754d30
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: be3ccfd0c562763d0968398ddb042dc5f07dbdcf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707933"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101559"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>上传通用化 VHD 并使用它在 Azure 中创建新的 VM
 
@@ -49,9 +48,9 @@ Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要
 
 1. 登录到 Windows 虚拟机。
 2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 %windir%\system32\sysprep，然后运行 `sysprep.exe`。
-3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已启用“通用化”复选框    。
-4. 在“关机选项”  中选择“关机”  。
-5. 选择“确定”  。
+3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已启用“通用化”复选框。
+4. 在“关机选项”中选择“关机”。
+5. 选择“确定”。
    
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep 在完成后会关闭虚拟机。 请勿重启 VM。
@@ -71,7 +70,7 @@ Get-AzStorageAccount | Format-Table
 
 ## <a name="upload-the-vhd-to-your-storage-account"></a>将 VHD 上传到存储帐户
 
-使用 [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 myVHD.vhd 从 C:\Users\Public\Documents\Virtual hard disks\\ 上传到 myResourceGroup 资源组中名为 mystorageaccount 的存储帐户     。 该文件将放入名为 *mycontainer* 的容器，新文件名为 *myUploadedVHD.vhd*。
+使用 [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 myVHD.vhd 从 C:\Users\Public\Documents\Virtual hard disks\\ 上传到 myResourceGroup 资源组中名为 mystorageaccount 的存储帐户。 该文件将放入名为 *mycontainer* 的容器，新文件名为 *myUploadedVHD.vhd*。
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -109,7 +108,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
     导入/导出可用于复制到标准存储帐户。 需要使用 AzCopy 等工具从标准存储复制到高级存储帐户。
 
 > [!IMPORTANT]
-> 如果使用 AzCopy 将 VHD 上传至 Azure，请确保在运行上传脚本前已设置 [/BlobType:page](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file)  。 如果目标是一个 blob 并且未指定此选项，则默认情况下 AzCopy 将创建块 blob。
+> 如果使用 AzCopy 将 VHD 上传至 Azure，请确保在运行上传脚本前已设置 [/BlobType:page](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file)。 如果目标是一个 blob 并且未指定此选项，则默认情况下 AzCopy 将创建块 blob。
 > 
 > 
 
@@ -147,7 +146,7 @@ New-AzImage `
 
 ## <a name="create-the-vm"></a>创建 VM
 
-在已有映像之后，可以从该映像创建一个或多个新 VM。 本示例从 myResourceGroup 中的 myImage 创建名为 myVM 的 VM    。
+在已有映像之后，可以从该映像创建一个或多个新 VM。 本示例从 myResourceGroup 中的 myImage 创建名为 myVM 的 VM。
 
 
 ```powershell

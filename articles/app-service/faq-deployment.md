@@ -11,17 +11,16 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: beee76bdc443b3a66b4500b83d228075b84eed1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7551a13c84798b5a594d4646b8faa619619724b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864772"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073149"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的部署常见问题解答
 
@@ -33,14 +32,14 @@ ms.locfileid: "65864772"
 
 以下是一些用于发布 Web 应用代码的选项：
 
-*   使用 Visual Studio 进行部署。 如果具有 Visual Studio 解决方案，则右键单击 Web 应用程序项目，然后选择“发布”  。
+*   使用 Visual Studio 进行部署。 如果具有 Visual Studio 解决方案，则右键单击 Web 应用程序项目，然后选择“发布”。
 *   使用 FTP 客户端进行部署。 在 Azure 门户中，下载要将代码部署到的 Web 应用的发布配置文件。 然后使用相同的发布配置文件 FTP 凭据将文件上传到 \site\wwwroot。
 
 有关详细信息，请参阅[将应用部署到应用服务](deploy-local-git.md)。
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>我在尝试从 Visual Studio 进行部署时看到错误消息。 如何解决此错误？
 
-如果看到以下消息，则可能使用的是旧版本的 SDK：“在资源组 'YourResourceGroup' 中部署资源 'YourResourceName' 时出错: MissingRegistrationForLocation: 订阅未在 '美国中部' 位置注册资源类型 'components'。 重新注册此提供程序才能访问此位置。" 
+如果看到以下消息，则可能使用的是旧版本的 SDK：“在资源组 'YourResourceGroup' 中部署资源 'YourResourceName' 时出错: MissingRegistrationForLocation: 订阅未在 '美国中部' 位置注册资源类型 'components'。 重新注册此提供程序以便有权访问此位置。 " 
 
 若要解决此错误，请升级到[最新 SDK](https://azure.microsoft.com/downloads/)。 如果你看到此消息并且具有最新 SDK，请提交支持请求。
 
@@ -59,7 +58,7 @@ ms.locfileid: "65864772"
 
 ## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>如何在尝试通过 FTP 传输文件时解决“FTP 错误 550 - 磁盘空间不足”？
 
-如果看到此消息，则很可能你运行到磁盘配额的服务计划中为 web 应用。 可能需要基于磁盘空间需求提升到较高服务层级。 有关定价计划和资源限制的详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
+如果看到此消息，磁盘空间可能即将达到 Web 应用服务计划中的磁盘配额。 可能需要基于磁盘空间需求提升到较高服务层级。 有关定价计划和资源限制的详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>如何为应用服务 Web 应用程序设置持续部署？
 
@@ -80,7 +79,7 @@ ms.locfileid: "65864772"
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>如何将我的代码发布到应用服务？
 
-Azure 快速入门旨在帮助使用部署堆栈和所选方法部署应用。 若要使用快速入门，请在 Azure 门户中转到应用服务，在“部署”  下，选择“快速入门”  。
+Azure 快速入门旨在帮助使用部署堆栈和所选方法部署应用。 若要使用快速入门，请在 Azure 门户中转到应用服务，在“部署”下，选择“快速入门”。
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>为何我的应用有时在部署到应用服务之后重新启动？
 

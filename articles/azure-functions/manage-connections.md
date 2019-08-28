@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 69425129d5f049254a60032283ddc6ca2ab84d5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26702ae63dcb7aadb96b5bf77f96a44f7d6776f5
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65872698"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114325"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
 
@@ -25,7 +25,7 @@ ms.locfileid: "65872698"
 
 此限制是按实例施加的。 [缩放控制器添加函数应用实例](functions-scale.md#how-the-consumption-and-premium-plans-work)以处理更多请求时，每个实例都有单独的连接限制。 这意味着没有全局连接限制，你可以跨所有活动实例建立比 600 个活动连接多得多的连接。
 
-故障排除时，请确保为 function app 启用了 Application Insights。 Application Insights，可以查看函数应用执行类似的度量值。 有关详细信息，请参阅[Application Insights 中查看遥测数据](functions-monitoring.md#view-telemetry-in-application-insights)。  
+进行故障排除时, 请确保已启用函数应用 Application Insights。 Application Insights 使你可以查看函数应用的指标, 如执行。 有关详细信息, 请参阅[在 Application Insights 中查看遥测](functions-monitoring.md#view-telemetry-in-application-insights)。  
 
 ## <a name="static-clients"></a>静态客户端
 
@@ -34,9 +34,9 @@ ms.locfileid: "65872698"
 
 在 Azure Functions 应用程序中使用特定于服务的客户端时，请遵循以下准则：
 
--  不要在每次调用函数时创建新的客户端。
--  应创建一个可在每次调用函数时使用的静态客户端。
-- 如果不同的函数使用相同的服务，请考虑  在共享帮助程序类中创建单个静态客户端。
+- 不要在每次调用函数时创建新的客户端。
+- 应创建一个可在每次调用函数时使用的静态客户端。
+- 如果不同的函数使用相同的服务，请考虑在共享帮助程序类中创建单个静态客户端。
 
 ## <a name="client-code-examples"></a>客户端代码示例
 
@@ -116,15 +116,15 @@ public static async Task Run(string input)
 ```javascript
 const cosmos = require('@azure/cosmos');
 const endpoint = process.env.COSMOS_API_URL;
-const masterKey = process.env.COSMOS_API_KEY;
+const key = process.env.COSMOS_API_KEY;
 const { CosmosClient } = cosmos;
 
-const client = new CosmosClient({ endpoint, auth: { masterKey } });
+const client = new CosmosClient({ endpoint, key });
 // All function invocations also reference the same database and container.
 const container = client.database("MyDatabaseName").container("MyContainerName");
 
 module.exports = async function (context) {
-    const { result: itemArray } = await container.items.readAll().toArray();
+    const { resources: itemArray } = await container.items.readAll().fetchAll();
     context.log(itemArray);
 }
 ```
@@ -135,10 +135,10 @@ module.exports = async function (context) {
 ) 连接不同，ADO.NET 默认实现连接池。 但是，由于连接仍可能耗尽，因此应优化数据库连接。 有关详细信息，请参阅 [SQL Server 连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)。
 
 > [!TIP]
-> 某些数据框架（例如实体框架）通常从配置文件的 **ConnectionStrings** 节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中  。 如果要在函数代码中创建 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中  。
+> 某些数据框架（例如实体框架）通常从配置文件的 **ConnectionStrings** 节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中。 如果要在函数代码中创建 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关为何我们建议使用静态客户端的详细信息，请参阅[不当实例化对立模式](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)。
+有关为何建议静态客户端的详细信息, 请参阅不[正确的实例化对立模式](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)。
 
 有关更多 Azure Functions 性能提示，请参阅[优化 Azure Functions 的性能和可靠性](functions-best-practices.md)。

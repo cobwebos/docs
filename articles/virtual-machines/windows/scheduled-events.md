@@ -9,18 +9,17 @@ editor: ''
 tags: ''
 ms.assetid: 28d8e1f2-8e61-4fbe-bfe8-80a68443baba
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: ddd34147848ecb3a964eac3d618b452f5eb43f19
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 087f27b3857363c0b5f244ecd52ebd64105626b5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710301"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102400"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -66,9 +65,9 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 
 | Version | 发布类型 | Regions | 发行说明 | 
 | - | - | - | - |
-| 2017-11-01 | 正式版 | All | <li> 添加了对低优先级 VM 逐出 EventType“Preempt”<br> | 
-| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | All |<li>初始版本
+| 2017-11-01 | 正式版 | 全部 | <li> 添加了对低优先级 VM 逐出 EventType“Preempt”<br> | 
+| 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | 全部 |<li>初始版本
 
 > [!NOTE] 
 > 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且会在未来被弃用。
@@ -128,10 +127,10 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 ### <a name="event-scheduling"></a>事件计划
 将根据事件类型为每个事件计划将来的最小量时间。 此时间将反映在事件的 `NotBefore` 属性中。 
 
-|EventType  | 最小值通知 |
+|事件类型  | 最小值通知 |
 | - | - |
 | 冻结| 15 分钟 |
-| 重新启动 | 15 分钟 |
+| 重启 | 15 分钟 |
 | 重新部署 | 10 分钟 |
 | Preempt | 30 秒 |
 

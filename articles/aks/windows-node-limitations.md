@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 501aeb60eba1d94b4c5882a7c6cbfa8d0359e44d
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c2c9e3d29ced5f75873656e253ecdbab5efe7df8
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033904"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114408"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中 Windows Server 节点池和应用程序工作负荷的当前限制
 
@@ -28,7 +28,7 @@ ms.locfileid: "69033904"
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>Windows Server 在 Kubernetes 中的限制
 
-Windows Server 容器必须在基于 Windows 的容器主机上运行。 若要在 AKS 中运行 Windows Server 容器, 可以[创建一个运行 Windows server][windows-node-cli]作为来宾 OS 的节点池。 Windows Server 节点池支持在 Kubernetes 项目中包含属于上游 Windows Server 的一些限制。 这些限制并不特定于 AKS。 有关 Kubernetes 中对 Windows Server 的此上游支持的详细信息, 请参阅[Kubernetes 限制中的 Windows server 容器](https://docs.microsoft.com/azure/aks/windows-node-limitations)。
+Windows Server 容器必须在基于 Windows 的容器主机上运行。 若要在 AKS 中运行 Windows Server 容器, 可以[创建一个运行 Windows server][windows-node-cli]作为来宾 OS 的节点池。 Windows Server 节点池支持在 Kubernetes 项目中包含属于上游 Windows Server 的一些限制。 这些限制并不特定于 AKS。 有关 Kubernetes 中对 Windows Server 的此上游支持的详细信息, 请参阅[Kubernetes 限制中的 Windows server 容器](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations)。
 
 Kubernetes 中 Windows Server 容器的以下上游限制与 AKS 相关:
 

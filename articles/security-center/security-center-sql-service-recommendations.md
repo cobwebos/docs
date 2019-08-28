@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 0704db7444756fb44c5587ae8e8e743f671c9dcc
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5f34f5e0c622ff107da880d9a4a77c63568b63b0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907947"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100940"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>保护 Azure 安全中心的 Azure 数据和存储服务
 本主题说明如何查看和实施有关数据和存储资源的安全建议。 Azure 安全中心在分析 Azure 资源的安全状态时发现这些建议。
@@ -78,7 +78,6 @@ ms.locfileid: "69907947"
 若要详细了解适用于其他 Azure 资源类型的建议, 请参阅以下主题:
 
 * [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
-* [保护 Azure 安全中心中的应用程序](security-center-application-recommendations.md)
 * [保护 Azure 安全中心中的网络](security-center-network-recommendations.md)
 
 若要了解有关安全中心的详细信息, 请参阅以下主题:

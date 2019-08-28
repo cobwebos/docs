@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: af2295643869ba8022fe15cf1e1cef3f2f20a428
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c3ebaae9fc023eb309bceeac7543b279a21fd436
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849829"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079785"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>使用 Azure 门户在可用性区域中创建 Windows 虚拟机
 
@@ -35,11 +34,11 @@ ms.locfileid: "67849829"
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户的左上角单击“创建资源”。 
+1. 在 Azure 门户的左上角单击“创建资源”。
 
-2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。   
+2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。 
 
-3. 输入虚拟机信息。 在此处输入的用户名和密码用于登录到虚拟机。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 选择一个位置，例如支持可用性区域的美国东部 2。 完成后，单击“确定”。 
+3. 输入虚拟机信息。 在此处输入的用户名和密码用于登录到虚拟机。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 选择一个位置，例如支持可用性区域的美国东部 2。 完成后，单击“确定”。
 
     ![在门户边栏选项卡中输入 VM 的基本信息](./media/create-portal-availability-zone/create-windows-vm-portal-basic-blade.png)
 
@@ -47,11 +46,11 @@ ms.locfileid: "67849829"
 
     ![选择 VM 大小](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. 在“设置”   > “高可用性”  下，从“可用性区域”  下拉列表中选择一个带编号的区域，保留其余默认值，并单击“确定”  。
+5. 在“设置” > “高可用性”下，从“可用性区域”下拉列表中选择一个带编号的区域，保留其余默认值，并单击“确定”。
 
     ![选择可用性区域](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 
-6. 在摘要页上，单击“创建”以启动虚拟机部署。 
+6. 在摘要页上，单击“创建”以启动虚拟机部署。
 
 7. VM 将固定到 Azure 门户仪表板。 完成部署后，会自动打开 VM 摘要。
 
@@ -61,13 +60,13 @@ ms.locfileid: "67849829"
 
 可以在门户中确认这些资源的区域设置。  
 
-1. 单击“资源组”  ，然后单击 VM 的资源组的名称，例如 *myResourceGroup*。
+1. 单击“资源组”，然后单击 VM 的资源组的名称，例如 *myResourceGroup*。
 
-2. 单击磁盘资源的名称。 “概述”  页包含有关资源的位置和可用性区域的详细信息。
+2. 单击磁盘资源的名称。 “概述”页包含有关资源的位置和可用性区域的详细信息。
 
     ![托管磁盘的可用性区域](./media/create-portal-availability-zone/create-windows-vm-portal-disk.png)
 
-3. 单击公用 IP 地址资源的名称。 “概述”  页包含有关资源的位置和可用性区域的详细信息。
+3. 单击公用 IP 地址资源的名称。 “概述”页包含有关资源的位置和可用性区域的详细信息。
 
     ![IP 地址的可用性区域](./media/create-portal-availability-zone/create-windows-vm-portal-ip.png)
 

@@ -10,16 +10,15 @@ ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 19d30d207e67e1dfd8cdec2fe9951c763a921a0e
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 771064774371e71c0664918790b296c156ed1c1f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67706068"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084786"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
 
@@ -41,7 +40,7 @@ Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的�
 
 *$diagnosticsconfig_path* 是指向包含 XML 格式诊断配置的文件的路径，如以下[示例](#sample-diagnostics-configuration)中所述。  
 
-如果诊断配置文件使用某个存储帐户名称指定了 StorageAccount 元素，则 Set-AzVMDiagnosticsExtension 脚本会自动将诊断扩展设置为将诊断数据发送到该存储帐户   。 为此，存储帐户需位于 VM 所在的同一订阅中。
+如果诊断配置文件使用某个存储帐户名称指定了 StorageAccount 元素，则 Set-AzVMDiagnosticsExtension 脚本会自动将诊断扩展设置为将诊断数据发送到该存储帐户。 为此，存储帐户需位于 VM 所在的同一订阅中。
 
 如果未在诊断配置中指定 **StorageAccount**，需要将 *StorageAccountName* 参数传递给 cmdlet。 如果指定了 *StorageAccountName* 参数，cmdlet 始终使用该参数中指定的存储帐户，而不使用诊断配置文件中指定的存储帐户。
 
@@ -53,7 +52,7 @@ Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的�
 
     Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 
-该 cmdlet 返回 PublicSettings  ，其中包含诊断配置。 支持两种类型的配置：WadCfg 和 xmlCfg。 WadCfg 是 JSON 配置，而 xmlCfg 是 Base64 编码格式的 XML 配置。 要读取该 XML，需将其解码。
+该 cmdlet 返回 PublicSettings，其中包含诊断配置。 支持两种类型的配置：WadCfg 和 xmlCfg。 WadCfg 是 JSON 配置，而 xmlCfg 是 Base64 编码格式的 XML 配置。 要读取该 XML，需将其解码。
 
     $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg

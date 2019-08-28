@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: d544aae33faf60be00a2b4ea0a45f405efcedb39
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6a81f105f9632a7ca7e2bf7188e358274020c78f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706144"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084764"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>适用于 Linux 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -27,14 +26,14 @@ ms.locfileid: "67706144"
 
 Azure 磁盘加密利用 Linux 中的 dm-crypt 子系统在[选择 Azure Linux 发行版](https://aka.ms/adelinux)上提供完整磁盘加密。  此解决方案与 Azure Key Vault 集成，用于管理磁盘加密密钥和机密。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 有关先决条件的完整列表，请参阅 [Azure 磁盘加密先决条件](
 ../../security/azure-security-disk-encryption-prerequisites.md)。
 
 ### <a name="operating-system"></a>操作系统
 
-目前，选择的发行版和版本支持 Azure 磁盘加密。  请参阅[Azure 磁盘加密支持的操作系统：Linux](../../security/azure-security-disk-encryption-prerequisites.md#linux)有关支持的 Linux 分发的列表。
+目前，选择的发行版和版本支持 Azure 磁盘加密。  请参阅[Azure 磁盘加密支持的操作系统:Linux](../../security/azure-security-disk-encryption-prerequisites.md#linux)提供支持的 linux 发行版列表。
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
@@ -42,10 +41,10 @@ Azure 磁盘加密利用 Linux 中的 dm-crypt 子系统在[选择 Azure Linux �
 
 ## <a name="extension-schemata"></a>扩展架构
 
-有两个架构的 Azure 磁盘加密： v1.1、 不使用 Azure Active Directory (AAD) 属性和 0.1 版的更高版本，建议架构、 需要 AAD 属性的较旧架构。 必须使用对应于正在使用的扩展的架构版本： AzureDiskEncryptionForLinux 扩展版本 1.1，AzureDiskEncryptionForLinux 扩展版本 0.1 的架构 v0.1 的架构 v1.1。
-### <a name="schema-v11-no-aad-recommended"></a>架构 1.1 版：无 AAD （推荐）
+Azure 磁盘加密有两种架构：v1.1，一种不使用 Azure Active Directory (AAD) 属性的较新推荐架构；v0.1，一种需要 AAD 属性的较旧架构。 你必须使用与所使用的扩展对应的架构版本：架构 v1.1 用于 AzureDiskEncryptionForLinux 扩展版本 1.1，架构 v0.1 用于 AzureDiskEncryptionForLinux 扩展版本 0.1。
+### <a name="schema-v11-no-aad-recommended"></a>架构 v1.1：无 AAD（推荐）
 
-V1.1 架构建议，并且不需要 Azure Active Directory 属性。
+建议使用 v1.1 架构，它不需要 Azure Active Directory 属性。
 
 ```json
 {
@@ -71,9 +70,9 @@ V1.1 架构建议，并且不需要 Azure Active Directory 属性。
 ```
 
 
-### <a name="schema-v01-with-aad"></a>架构 v0.1： 使用 AAD 
+### <a name="schema-v01-with-aad"></a>架构 v0.1：使用 AAD 
 
-0\.1 架构要求`aadClientID`并将`aadClientSecret`或`AADClientCertificate`。
+0\.1 版架构需要 `aadClientID` 和 `aadClientSecret` 或 `AADClientCertificate`。
 
 使用 `aadClientSecret`：
 
@@ -143,10 +142,10 @@ V1.1 架构建议，并且不需要 Azure Active Directory 属性。
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | string |
 | type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0.1, 1.1 | int |
+| typeHandlerVersion | 0.1、1.1 | int |
 | (0.1 schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (0.1 schema) AADClientSecret | password | string |
-| (0.1 schema) AADClientCertificate | thumbprint | string |
+| （0.1 版架构）AADClientSecret | password | string |
+| （0.1 版架构）AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON dictionary |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |

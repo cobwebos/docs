@@ -8,18 +8,17 @@ manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: d413fe73735f526444aea76d68f44163065578a0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 04b2eb70a9e304fb50f4f6cb94daf0a0dda86d63
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710231"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100261"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的时间同步
 
@@ -37,7 +36,7 @@ Azure 现在由运行 Windows Server 2016 的基础结构提供支持。 Windows
 
 计算机时钟的准确性根据计算机时钟与协调世界时 (UTC) 时间标准的接近程度来测量。 UTC 由多国的精确原子钟示例定义，300 年误差仅一秒。 但是，直接读取 UTC 需要专用的硬件。 相反，时间服务器与 UTC 同步，并可从其他计算机访问，以提供可伸缩性和可靠性。 每台计算机都运行时间同步服务，该服务知道要使用什么时间服务器，并定期检查计算机时钟是否需要校正以及在需要时调整时间。 
 
-Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Microsoft 拥有的带 GPS 天线的 Stratum 1 设备获取时间。 Azure 中的虚拟机可以依赖其主机将准确时间（主机时间）传递给 VM，也可以直接从时间服务器中获取时间，或结合使用这两种方式  。 
+Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Microsoft 拥有的带 GPS 天线的 Stratum 1 设备获取时间。 Azure 中的虚拟机可以依赖其主机将准确时间（主机时间）传递给 VM，也可以直接从时间服务器中获取时间，或结合使用这两种方式。 
 
 虚拟机与主机的交互也会影响时钟。 在[内存保留维护](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)期间，VM 最多暂停 30 秒。 例如，在维护开始之前，VM 时钟显示上午 10:00:00 并持续 28 秒。 VM 恢复后，VM 上的时钟仍显示上午 10:00:00，也就是差了 28 秒。 为了校正这种情况，VMICTimeSync 服务会监视主机上发生的情况，并提示在 VM 上进行更改以进行补偿。
 
@@ -122,11 +121,11 @@ w32tm /query /source
 
 以下是可以看到的输出及其含义：
     
-- time.windows.com - 在默认配置中，w32time 会从 time.windows.com 获取时间  。 时间同步质量取决于与其的 Internet 连接，并受数据包延迟的影响。 这是默认设置的常规输出。
-- VM IC 时间同步提供程序 - VM 正在与主机同步时间  。 如果选择加入仅主机时间同步或者 NtpServer 此时不可用，通常会出现这种情况。 
-- 域服务器 - 当前计算机位于域中，域定义时间同步层次结构  。
-- 其他一些服务器 - 将 w32time 明确配置为从其他服务器获取时间  。 时间同步质量取决于此时间服务器质量。
-- 本地 CMOS 时钟 - 时钟未同步  。 如果 w32time 在重新启动后没有足够的时间启动，或者所有配置的时间源都不可用时，则可以获得此输出。
+- time.windows.com - 在默认配置中，w32time 会从 time.windows.com 获取时间。 时间同步质量取决于与其的 Internet 连接，并受数据包延迟的影响。 这是默认设置的常规输出。
+- VM IC 时间同步提供程序 - VM 正在与主机同步时间。 如果选择加入仅主机时间同步或者 NtpServer 此时不可用，通常会出现这种情况。 
+- 域服务器 - 当前计算机位于域中，域定义时间同步层次结构。
+- 其他一些服务器 - 将 w32time 明确配置为从其他服务器获取时间。 时间同步质量取决于此时间服务器质量。
+- 本地 CMOS 时钟 - 时钟未同步。 如果 w32time 在重新启动后没有足够的时间启动，或者所有配置的时间源都不可用时，则可以获得此输出。
 
 
 ## <a name="opt-in-for-host-only-time-sync"></a>选择加入仅限主机的时间同步

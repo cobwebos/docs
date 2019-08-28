@@ -11,17 +11,16 @@ ms.assetid: 7032b586-e4e5-4954-952f-fdfc03fc1980
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ff98079c6156783442078546a4783a367863057
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f4191015ee4dc7eb753c70f23be242f2ca88dcc3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722590"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079389"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>适用于 Windows VM 的 Azure 示例基础结构演练
 本文将逐步讲述如何构建示例应用程序基础结构。 我们将详细介绍如何设计简单在线商店的基础结构，此在线商店可将关于命名约定、可用性集、虚拟网络及负载均衡器的所有准则和决策聚集在一起；以及如何实际部署虚拟机 (VM)。
@@ -76,7 +75,7 @@ Adventure Works Cycles 确定其应使用 Azure 托管磁盘。 创建 VM 时，
 * 位置：美国东部 2
 * 虚拟网络地址空间：10.0.0.0/8
 * 第一个子网：
-  * 姓名：FrontEnd
+  * 姓名：前端
   * 地址空间：10.0.1.0/24
 * 第二个子网：
   * 姓名：BackEnd

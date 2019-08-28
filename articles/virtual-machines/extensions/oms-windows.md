@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: feae6176-2373-4034-b5d9-a32c6b4e1f10
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2019
 ms.author: roiyz
-ms.openlocfilehash: 700d8c6ea1527598591aa4300a977f80085e04b0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 393b01d7815d94e4ad623c552f4110421c9d98bd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990366"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092255"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Azure Monitor 虚拟机扩展
 
@@ -39,7 +38,7 @@ Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Wind
 
 | Log Analytics Windows 代理捆绑包版本 | Azure Monitor Windows VM 扩展版本 | 发布日期 | 发行说明 |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18011 | 1.0.18011 | 2019年7月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> MaxExpressionDepth 已增加到10000 </li></ul> |
+| 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> MaxExpressionDepth 已增加到10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | 2019 年 7 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> 添加了在建立代理连接时禁用默认凭据的功能（支持 WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH） </li></ul>|
 | 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>次要稳定性修复 </li></ul> |
 | 10.19.10006 | 不适用 | 2018 年 12 月 | <ul><li> 次要稳定性修复 </li></ul> | 

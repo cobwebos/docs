@@ -1,6 +1,7 @@
 ---
-title: 通过输入和输出目录防止存储限制和试验延迟
-description: 本文介绍如何保存实验输入文件, 以及在何处写入输出文件, 以防止出现存储限制错误和试验延迟。
+title: 在何处保存 & 写入试验文件
+titleSuffix: Azure Machine Learning service
+description: 了解保存实验输入文件的位置, 以及写入输出文件的位置, 以防止出现存储限制错误和试验延迟。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ea820536d93ec095f6f2929a9dc3b38d92779a58
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7d5e147173e766d0da54aa3422faef4b6035b914
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856048"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114519"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>在何处为 Azure 机器学习试验保存和写入文件
 

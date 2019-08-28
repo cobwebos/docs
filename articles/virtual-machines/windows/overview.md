@@ -11,17 +11,16 @@ ms.assetid: fbae9c8e-2341-4ed0-bb20-fd4debb2f9ca
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7bb87713f1f7d1f41f68f3743b2504784b37bb23
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 47ad2346f4574b10d12c46c1f72394225e014854
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723055"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102569"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机概述
 
@@ -54,7 +53,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 如果使用 Azure 创建操作系统磁盘，计算机名称与虚拟机名称相同。 如果[上传包含以前配置的操作系统的自有映像](upload-generalized-managed.md)并使用它来创建虚拟机，则名称可以不同。 建议在上传自己的映像文件时，使操作系统中的计算机名称与虚拟机名称保持相同。
 
 ### <a name="locations"></a>位置
-在 Azure 中创建的所有资源分布在世界各地的多个[地理区域](https://azure.microsoft.com/regions/)。 创建 VM 时，  区域通常称为“位置”。 位置指定 VM 虚拟硬盘的存储位置。
+在 Azure 中创建的所有资源分布在世界各地的多个[地理区域](https://azure.microsoft.com/regions/)。 创建 VM 时，区域通常称为“位置”。 位置指定 VM 虚拟硬盘的存储位置。
 
 下表显示了获取可用位置列表的一些方法。
 
@@ -101,7 +100,7 @@ VM [扩展](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ft
 ### <a name="related-resources"></a>相关资源
 VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则要予以创建。
 
-| Resource | 需要 | 描述 |
+| Resource | 必填 | 描述 |
 | --- | --- | --- |
 | [资源组](../../azure-resource-manager/resource-group-overview.md) |是 |VM 必须包含在资源组中。 |
 | [存储帐户](../../storage/common/storage-create-storage-account.md) |是 |VM 需要使用存储帐户来存储其虚拟硬盘。 |
@@ -134,7 +133,7 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 
 | 方法 | 描述 |
 | --- | --- |
-| Azure 门户 |在中心菜单中，单击“虚拟机”，并从列表中选择 VM。  在 VM 的边栏选项卡中，可以访问概述信息、设置值以及监控指标。 |
+| Azure 门户 |在中心菜单中，单击“虚拟机”，并从列表中选择 VM。 在 VM 的边栏选项卡中，可以访问概述信息、设置值以及监控指标。 |
 | Azure PowerShell |若要了解如何使用 PowerShell 来管理 VM，请参阅[使用 Azure PowerShell 模块创建和管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 |
 | REST API |使用 [获取 VM 信息](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get) 操作获取有关 VM 的信息。 |
 | 客户端 SDK |有关使用 C# 管理 VM 的信息，请参阅[使用 Azure 资源管理器与 C# 来管理 Azure 虚拟机](csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 |

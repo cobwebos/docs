@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3524f34773f4627dff478ee7cc9cbff9f674bf8e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ec23d3f08fb22f73618c27443bcd8b72c43a9862
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931769"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113567"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
@@ -48,7 +48,7 @@ ms.locfileid: "68931769"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | type | 说明 |
+| 姓名 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |通常是来自源对象的属性的名称。 |
 | **suffix** |必填 |String |要附加到源值末尾的字符串。 |
@@ -61,7 +61,7 @@ ms.locfileid: "68931769"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 姓名 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |通常是来自源对象的属性的名称。 |
 | **inputFormat** |必填 |String |源值的预期格式。 有关支持的格式，请参阅 [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
@@ -77,7 +77,7 @@ ms.locfileid: "68931769"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 姓名 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **separator** |必填 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
 | **source1  … sourceN** |必选，次数可变 |String |要联接在一起的字符串值。 |
@@ -90,7 +90,7 @@ ms.locfileid: "68931769"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | type | 说明 |
+| 姓名 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |通常是属性的名称。 |
 | **start** |必填 |整数 |**source** 字符串中的索引，子字符串应从此处开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
@@ -104,7 +104,7 @@ ms.locfileid: "68931769"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | type | 说明 |
+| 姓名 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String | 通常是名字或姓氏属性。 |
 
@@ -116,7 +116,7 @@ ms.locfileid: "68931769"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 姓名 | 必选/重复 | type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
@@ -164,12 +164,13 @@ ms.locfileid: "68931769"
 
 > [!NOTE]
 >1. 这是一个顶级函数，不能嵌套。
->2. 此函数仅供用于创建条目。 将其与属性一起使用时，请将“应用映射”属性设置为“仅在创建对象期间”。
+>2. 此函数不能应用于具有匹配优先级的属性。  
+>3. 此函数仅供用于创建条目。 将其与属性一起使用时，请将“应用映射”属性设置为“仅在创建对象期间”。
 
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 姓名 | 必选/重复 | type | 说明 |
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |String | 要评估的唯一值生成规则的列表。 |
 
@@ -182,7 +183,7 @@ ms.locfileid: "68931769"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 姓名 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |必填 |String |**[appRoleAssignments]** 对象。 |
 
@@ -194,7 +195,7 @@ ms.locfileid: "68931769"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 姓名 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |要更新的 **source** 值。 |
 | **delimiter** |必填 |String |指定将用来拆分字符串的字符（示例：“,”） |
@@ -207,7 +208,7 @@ ms.locfileid: "68931769"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | type | 说明 |
+| 姓名 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |要更新的 **source** 值。 |
 
@@ -219,7 +220,7 @@ ms.locfileid: "68931769"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | type | 说明 |
+| 姓名 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |要更新的 **source** 值。 |
 | **defaultValue** |可选 |String |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
@@ -247,7 +248,7 @@ ms.locfileid: "68931769"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | type | 说明 |
+| 姓名 | 必选/重复 | type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必填 |String |通常是来自源对象的属性的名称。 |
 | **culture** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|

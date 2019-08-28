@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: db0b9887b80f13938045a5d11fb09ed0a43efc19
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f6f678f91e74ea9b0b68127c1786fee745508b99
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706965"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101463"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复
 
@@ -32,7 +31,7 @@ ms.locfileid: "67706965"
 ## <a name="goals"></a>目标
 - 设计满足灾难恢复 (DR) 需求的拓扑和配置。
 
-## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>方案 1：主站点和在 Azure 上的 DR 站点
+## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>方案 1：Azure 上的主站点和 DR 站点
 
 客户在主站点上安装了 Oracle 数据库。 DR 站点位于其他区域。 客户使用 Oracle Data Guard 在这两个站点间进行快速恢复。 主站点还拥有用于报告等其他用途的辅助数据库。 
 
@@ -45,20 +44,20 @@ ms.locfileid: "67706965"
 - 两个具有 Data Guard 的 Oracle 数据库（主数据库和备用数据库）
 - 两个具有 Golden Gate 或 Data Guard 的 Oracle 数据库（仅限主站点）
 - 两个应用程序服务，一个位于主站点，一个位于 DR 站点
-- 一个“可用性集”  ，用于主站点上的数据库和应用程序服务
+- 一个“可用性集”，用于主站点上的数据库和应用程序服务
 - 每个站点各有一个 jumpbox，用于限制对专用网络的访问，且仅允许管理员登录
 - 位于不同子网的 jumpbox、应用程序服务、数据库和 VPN 网关
 - 对应用程序和数据库子网强制执行的 NSG
 
 ![“DR 拓扑”页屏幕截图](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
-## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>方案 2：主站点的本地和 Azure 上的 DR 站点
+## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>方案 2：主站点本地和 Azure 上的 DR 站点
 
 客户在本地安装了 Oracle 数据库（主站点）。 DR 站点位于 Azure 上。 使用 Oracle Data Guard 在这些站点间进行快速恢复。 主站点还拥有用于报告等其他用途的辅助数据库。 
 
 安装方式有两种。
 
-### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>方法 1:在本地和 Azure，需要在防火墙上的开启 TCP 端口之间的直接连接 
+### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>方法 1:在本地与 Azure 之间直接连接, 要求在防火墙上打开 TCP 端口 
 
 不建议进行直接连接，因为这会向外部公开 TCP 端口。
 

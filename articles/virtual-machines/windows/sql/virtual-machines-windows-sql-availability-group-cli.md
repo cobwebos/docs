@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5bfbf995b67ac49cf169565046daa2887a57e476
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 58174704051709a720950ac51591a1d53b9d01bb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846161"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100570"
 ---
 # <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>使用 Azure CLI 为 Azure VM 上的 SQL Server 配置 Always On 可用性组
 本文介绍如何使用[Azure CLI](/cli/azure/sql/vm?view=azure-cli-latest/)部署 Windows 故障转移群集、将 SQL Server vm 添加到群集, 并为 Always On 可用性组创建内部负载均衡器和侦听器。 Always On 可用性组的部署仍通过 SQL Server Management Studio (SSMS) 手动完成。 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: c9bf2c2c459999813c7fc30f95be653168d270ad
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1339fe66a4925104d459c0491caccdd7db5998a7
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67613954"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114462"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -57,12 +57,12 @@ Azure 提供了两种实现网络策略的方式。 创建 AKS 群集时, 可以
 
 ### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Azure 和 Calico 策略及其功能之间的差异
 
-| 能力                               | Azure                      | Calico                      |
+| 功能                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | 受支持的平台                      | Linux                      | Linux                       |
 | 支持的网络选项             | Azure CNI                  | Azure CNI                   |
 | 符合 Kubernetes 规范 | 支持的所有策略类型 |  支持的所有策略类型 |
-| 其他功能                      | 无                       | 扩展策略模型, 由全局网络策略、全局网络集和主机终结点组成。 有关使用`calicoctl` CLI 管理这些扩展功能的详细信息, 请参阅[calicoctl user reference][calicoctl]。 |
+| 其他功能                      | None                       | 扩展策略模型, 由全局网络策略、全局网络集和主机终结点组成。 有关使用`calicoctl` CLI 管理这些扩展功能的详细信息, 请参阅[calicoctl user reference][calicoctl]。 |
 | 支持                                  | 受 Azure 支持和工程团队支持 | Calico 社区支持。 有关其他付费支持的详细信息, 请参阅[Project Calico 支持选项][calico-support]。 |
 | 日志记录                                  | IPTables 中添加/删除的规则记录在 */var/log/azure-npm.log*下的每个主机上。 | 有关详细信息, 请参阅[Calico 组件日志][calico-logs] |
 
@@ -89,7 +89,6 @@ Azure 提供了两种实现网络策略的方式。 创建 AKS 群集时, 可以
 提供自己的安全 SP_PASSWORD。 可以替换*RESOURCE_GROUP_NAME*和*CLUSTER_NAME*变量:
 
 ```azurecli-interactive
-SP_PASSWORD=mySecurePassword
 RESOURCE_GROUP_NAME=myResourceGroup-NP
 CLUSTER_NAME=myAKSCluster
 LOCATION=canadaeast
@@ -106,7 +105,9 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 
 # Create a service principal and read in the application ID
-SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
+SP=$(az ad sp create-for-rbac --output json)
+SP_ID=$(echo $SP | jq -r .appId)
+SP_PASSWORD=$(echo $SP | jq -r .password)
 
 # Wait 15 seconds to make sure that service principal has propagated
 echo "Waiting for service principal to propagate..."

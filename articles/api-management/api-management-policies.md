@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: e27829fe5ebf57552ef4e97a2bfc7b6aefd81dc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed20ef023a884ac79150cd31f25fde86b715c752
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254398"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073393"
 ---
 # <a name="api-management-policies"></a>API 管理策略
 本部分提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
@@ -56,7 +55,7 @@ ms.locfileid: "66254398"
 -   [身份验证策略](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [使用基本方法进行身份验证](api-management-authentication-policies.md#Basic) - 使用基本身份验证方法对后端服务进行身份验证。  
     -   [使用客户端证书进行身份验证](api-management-authentication-policies.md#ClientCertificate) - 使用客户端证书对后端服务进行身份验证。  
-    -   [使用托管的标识进行身份验证](api-management-authentication-policies.md#ManagedIdentity)-后端服务中使用身份验证[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。  
+    -   使用[托管标识进行身份验证](api-management-authentication-policies.md#ManagedIdentity)-使用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)向后端服务进行身份验证。  
 -   [缓存策略](api-management-caching-policies.md#CachingPolicies)  
     -   [从缓存中获取](api-management-caching-policies.md#GetFromCache) - 执行缓存查找，并返回有效的缓存响应（如果有）。  
     -   [存储到缓存](api-management-caching-policies.md#StoreToCache) - 根据指定的缓存控制配置来缓存响应。  

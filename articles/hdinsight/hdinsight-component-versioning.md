@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: b451769f5f98bf64ca340504c983f16d1db36647
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a844d28067fc0851760849317160d5902918252e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991552"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074390"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
@@ -177,63 +177,7 @@ Enterprise Security 包支持使用 Azure Data Lake Storage 作为主存储和�
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>群集的默认节点配置和虚拟机大小
 
-下表列出了 HDInsight 群集的默认虚拟机 (VM) 大小。  此图表是了解在创建 PowerShell 或 Azure CLI 脚本以部署 HDInsight 群集时要使用的 VM 大小所必需的。
-
-> [!NOTE]
-> 只有启用了加速写入功能的 Kafka 和 HBase 群集才能使用具有数据磁盘的群集类型。 在这些情况下, HDInsight 支持 P30 和 S30 磁盘大小。
-
-> [!IMPORTANT]  
-> 如果需要群集中有 32 个以上的辅助节点，则必须选择至少具有 8 个核心和 14 GB RAM 的头节点大小。
-
-* 除巴西南部和日本西部外的所有受支持区域：
-
-|群集类型|Hadoop|HBase|Interactive Query|Storm|Spark|ML Server|Kafka|
-|---|---|---|---|---|---|---|---|
-|头：默认 VM 大小|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
-|头：建议的 VM 大小|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
-||D4 v2|D4 v2|D14|A8 v2|D13 v2|D13 v2|D3 v2|
-||D12 v2|D12 v2|E16 v3|A2m v2|D14 v2|D14 v2|D4 v2|
-||E4 v3|E4 v3|E32 v3|E4 v3|E4 v3|E4 v3|D12 v2|
-|辅助角色：默认 VM 大小|D4 v2|D4 v2|D14 v2|D3 v2|D13 v2|D4 v2|4 D12v2，每个中转站 2 个 S30 磁盘|
-|辅助角色：建议的 VM 大小|D3 v2|D3 v2|D13|D3 v2|D4 v2|D4 v2|D13 v2|
-||D4 v2|D4 v2|D14|D4 v2|D12 v2|D12 v2|DS12 v2|
-||D12 v2|D12 v2|E16 v3|D12 v2|D13 v2|D13 v2|DS13 v2|
-||E4 v3|E4 v3|E20 v3|E4 v3|D14 v2|D14 v2|E4 v3|
-||||E32 v3||E16 v3|E16 v3|ES4 v3|
-||||E64 v3||E20 v3|E20 v3|E8 v3|
-||||||E32 v3|E32 v3|ES8 v3|
-||||||E64 v3|E64 v3||
-|Zookeeper：默认 VM 大小||A4 v2|A4 v2|A4 v2||A2 v2|D3v2|
-|Zookeeper：建议的 VM 大小||A4 v2||A2 v2|||A2M v2|
-|||A8 v2||A4 v2|||D3 v2|
-|||A2m v2||A8 v2|||E8 v3|
-|ML 服务: 默认 VM 大小||||||D4 v2||
-|ML 服务: 建议的 VM 大小||||||D4 v2||
-|||||||D12 v2||
-|||||||D13 v2||
-|||||||D14 v2||
-|||||||E16 v3||
-|||||||E20 v3||
-|||||||E32 v3||
-|||||||E64 v3||
-
-* 仅限巴西南部和日本西部（无 v2 大小）：
-
-  | 群集类型 | Hadoop | HBase | Interactive Query |Storm | Spark | ML Services |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | 头：默认 VM 大小 |D12 |D12  | D13 |A3 |D12 |D12 |
-  | 头：建议的 VM 大小 |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3,<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
-  | 辅助角色：默认 VM 大小 |D4 |D4  |  D14 |D3 |D13 |D4 |
-  | 辅助角色：建议的 VM 大小 |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
-  | Zookeeper：默认 VM 大小 | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
-  | Zookeeper：建议的 VM 大小 | |A2,<br/> A3,<br/> A4 | |A2,<br/> A3,<br/> A4 | | |
-  | ML 服务: 默认 VM 大小 | | | | | |D4 |
-  | ML 服务: 建议的 VM 大小 | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
-
-> [!NOTE]
-> - 对于 Storm 群集类型，头称为 *Nimbus*。
-> - 对于 Storm 群集类型，辅助角色称为“主管”。
-> - 对于 HBase 群集类型，辅助角色称为“区域”。
+有关选择哪个虚拟机 Sku 作为群集的详细信息, 请参阅[Azure HDInsight 群集配置详细信息](hdinsight-supported-node-configuration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 - [为 HDInsight 上的 Apache Hadoop、Spark 和其他组件设置群集](hdinsight-hadoop-provision-linux-clusters.md)

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 0627361fdd4f94a329b08b184dbd542e1927af39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 19aa0877c7c37083a6206e094aced40542d0ef72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871912"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092686"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -51,7 +51,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 
 ### <a name="prerequisites"></a>先决条件
 
-* Azure Linux 代理 2.2.0 版或更高版本  。 大部分 Azure VM Linux 库映像包含 2.2.7 版或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)将其更新。
+* Azure Linux 代理 2.2.0 版或更高版本。 大部分 Azure VM Linux 库映像包含 2.2.7 版或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)将其更新。
 * **Azure CLI**。 在计算机上[设置 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 环境。
 * wget 命令（如果尚无此命令，请运行 `sudo apt-get install wget`。
 * 现有 Azure 订阅以及其中用于存储数据的现有存储帐户。
@@ -97,7 +97,7 @@ az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnost
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>从以前版本的扩展迁移
 
-扩展的最新版本是 3.0  。 任何旧版本 (2.x) 都已弃用，可能会在 2018 年 7 月 31 日或之后取消发布  。
+扩展的最新版本是 3.0。 任何旧版本 (2.x) 都已弃用，可能会在 2018 年 7 月 31 日或之后取消发布。
 
 > [!IMPORTANT]
 > 此扩展引入了对扩展配置的重大更改。 其中一项更改是为了提高扩展的安全性；因此，无法维持与 2.x 版本的向后兼容性。 此外，此扩展的扩展发布服务器与 2.x 版本的发布服务器不同。
@@ -127,17 +127,15 @@ az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnost
 }
 ```
 
-名称 | ReplTest1
+姓名 | ReplTest1
 ---- | -----
 storageAccountName | 扩展写入数据的存储帐户的名称。
 storageAccountEndPoint | （可选）标识存储帐户所在云的终结点。 如果缺少此设置，则 LAD 默认为 Azure 公有云`https://core.windows.net`。 若要使用 Azure Germany、Azure 政府或 Azure China 中的存储帐户，请相应地设置此值。
-storageAccountSasToken | Blob 服务和表服务的[帐户 SAS 令牌](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) (`ss='bt'`)，适用于容器和对象 (`srt='co'`)，用于授予添加、创建、列出、更新和写入权限 (`sp='acluw'`)。 请勿使用前导问号 (?)  。
+storageAccountSasToken | Blob 服务和表服务的[帐户 SAS 令牌](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) (`ss='bt'`)，适用于容器和对象 (`srt='co'`)，用于授予添加、创建、列出、更新和写入权限 (`sp='acluw'`)。 请勿使用前导问号 (?)。
 mdsdHttpProxy | （可选）允许扩展连接到指定存储帐户和终结点所需的 HTTP 代理信息。
 sinksConfig | （可选）可将指标和事件传递到的替换目标的详细信息。 扩展所支持的每个数据接收器的具体详细信息将在下面各节中介绍。
 
-
-> [!NOTE]
-> 使用 Azure 部署模板部署扩展时，必须提前创建好存储帐户和 SAS 令牌并将其传递给模板。 无法在单个模板中部署 VM、存储帐户和配置扩展。 当前不支持在模板中创建 SAS 令牌。
+若要在资源管理器模板内获取 SAS 令牌, 请使用**listAccountSas**函数。 有关示例模板, 请参阅[List function example](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example)。
 
 可通过 Azure 门户轻松构造所需的 SAS 令牌。
 
@@ -167,7 +165,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 
 此可选部分用于定义扩展要将其收集到的信息发送到的附加目的地。 “sink”数组包含每个附加数据接收器的对象。 “type”属性确定对象中的其他属性。
 
-元素 | 值
+元素 | ReplTest1
 ------- | -----
 name | 在扩展配置中其他位置用于引用此接收器的字符串。
 type | 要定义的接收器的类型。 确定此类型实例中的其他值（如果有）。
@@ -269,7 +267,7 @@ sampleRateInSeconds | （可选）两次收集原始（未聚合）指标之间�
 }
 ```
 
-元素 | 值
+元素 | ReplTest1
 ------- | -----
 resourceId | VM 或 VM 所属虚拟机规模集的 Azure 资源管理器资源 ID。 如果配置中使用了任何 JsonBlob 接收器，也必须指定此设置。
 scheduledTransferPeriod | 计算聚合指标并将转移到 Azure Metrics 的频率，以 IS 8601 时间间隔形式表示。 最小传输周期为 60 秒，即 PT1M。 必须指定至少一个 scheduledTransferPeriod。
@@ -408,7 +406,7 @@ sinks | （可选）应将原始样本指标结果发布到的附加接收器的
 ]
 ```
 
-元素 | 值
+元素 | ReplTest1
 ------- | -----
 file | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。
 表 | （可选）指定的存储帐户（在受保护的配置中指定）中的 Azure 存储表，文件“结尾”处的新行将写入此表。
@@ -502,7 +500,7 @@ TransfersPerSecond | 每秒读取或写入操作数
 
 可通过设置 `"condition": "IsAggregate=True"`，获取跨所有文件系统的聚合值。 可通过设置 `"condition": 'Name="/mnt"'`，获取已装入的特定文件系统（如“/mnt”）的值。 
 
-**注意**：如果使用的是 Azure 门户而不是 JSON, 则正确的条件字段格式为 Name = '/mnt '
+**注意**：如果使用 Azure 门户而不是 JSON，则正确的条件字段形式为 Name='/mnt'
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>磁盘类的内置指标
 

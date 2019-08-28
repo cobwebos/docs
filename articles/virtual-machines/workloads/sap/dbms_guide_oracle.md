@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5182b621779cf31f3c7da99674ab24fe6efe702d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b912743c758f33173b568944341fab4e815300ed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835254"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099988"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署
 
@@ -367,7 +366,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 如果使用基于 Azure 页 Blob 存储或托管磁盘的磁盘时，[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述也适用于利用 Oracle Database 进行的部署。
 
-存在 Azure 磁盘的 IOPS 吞吐量的配额。 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中解释了此概念。 确切的配额因所用 VM 类型而异。 可在 [Azure 中 Windows 虚拟机大小][virtual-machines-sizes-windows]中找到 VM 类型及其配额的列表。
+存在 Azure 磁盘的 IOPS 吞吐量的配额。 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中解释了此概念。 确切的配额因所用 VM 类型而异。 可以在[Azure 中的 Windows 虚拟机的大小][virtual-machines-sizes-windows]找到 VM 类型及其配额的列表。
 
 若要确定支持的 Azure VM 类型，请参阅 SAP 说明 [1928533]。
 
@@ -419,7 +418,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 有关 Azure 中 Oracle Database 灾难恢复的详细信息，请参阅 [Azure 环境中 Oracle Database 12c 数据库的灾难恢复](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)。
 
-### <a name="accelerated-networking"></a>加速网络
+### <a name="accelerated-networking"></a>更快的网络连接
 对于 Window 上的 Oracle 部署，我们强烈建议根据 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)中所述使用加速网络。 也可以考虑[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的建议。 
 ### <a name="other"></a>其他
 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中介绍了使用 Oracle Database 的 VM 部署相关的其他重要概念，包括 Azure 可用性集和 SAP 监视。
@@ -457,7 +456,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 如果使用基于 Azure 页 Blob 存储或托管磁盘的磁盘，[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述也适用于利用 Oracle Database 进行的部署。
 
- 存在 Azure 磁盘的 IOPS 吞吐量的配额。 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中解释了此概念。确切的配额因所用 VM 类型而异。 有关 VM 类型及其配额的列表，请参阅 [Azure 中的 Linux 虚拟机大小][virtual-machines-sizes-linux]。
+ 存在 Azure 磁盘的 IOPS 吞吐量的配额。 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中解释了此概念。确切的配额因所用 VM 类型而异。 有关其配额的 VM 类型的列表, 请参阅[Azure 中 Linux 虚拟机的大小][virtual-machines-sizes-linux]。
 
 若要确定支持的 Azure VM 类型，请参阅 SAP 说明 [1928533]。
 
@@ -465,10 +464,10 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 | 组件 | 磁盘 | 正在缓存 | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID > / origlogaA & mirrlogB | 高级 | 无 | 无需 |
-| /oracle/\<SID > / origlogaB & mirrlogA | 高级 | 无 | 无需 |
-| /oracle/\<SID>/sapdata1...n | 高级 | 只读 | 可使用 |
-| /oracle/\<SID > / oraarch | 标准 | 无 | 无需 |
+| /oracle/\<SID >/origlogaA & mirrlogB | 高级 | None | 无需 |
+| /oracle/\<SID >/origlogaB & mirrlogA | 高级 | None | 无需 |
+| /oracle/\<SID >/sapdata1.。。北 | 高级 | 只读 | 可使用 |
+| /oracle/\<SID >/oraarch | 标准 | None | 无需 |
 | Oracle 主页, saptrace, ... | 操作系统磁盘 | | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
@@ -479,13 +478,13 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 | 组件 | 磁盘 | 正在缓存 | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA | 高级 | 无 | 可使用  |
-| /oracle/\<SID > / origlogaB | 高级 | 无 | 可使用 |
-| /oracle/\<SID>/mirrlogAB | 高级 | 无 | 可使用 |
+| /oracle/\<SID >/origlogaA | 高级 | 无 | 可使用  |
+| /oracle/\<SID >/origlogaB | 高级 | None | 可使用 |
+| /oracle/\<SID >/mirrlogAB | 高级 | 无 | 可使用 |
 | /oracle/\<SID>/mirrlogBA | 高级 | 无 | 可使用 |
-| /oracle/\<SID>/sapdata1...n | 高级 | 只读 | 建议  |
-| /oracle/\<SID>/sapdata(n+1)* | 高级 | 无 | 可使用 |
-| /oracle/\<SID > / oraarch * | 高级 | 无 | 无需 |
+| /oracle/\<SID >/sapdata1.。。北 | 高级 | 只读 | 建议  |
+| /oracle/\<SID >/sapdata (n + 1) * | 高级 | 无 | 可使用 |
+| /oracle/\<SID >/oraarch * | 高级 | 无 | 无需 |
 | Oracle 主页, saptrace, ... | 操作系统磁盘 | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
@@ -513,7 +512,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 有关在 Azure 环境下的 Oracle Database 数据库灾难恢复方面的信息，请参阅[在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)。
 
-### <a name="accelerated-networking"></a>加速网络
+### <a name="accelerated-networking"></a>更快的网络连接
 Oracle Linux 7 更新 5 (Oracle Linux 7.5) 提供对 Oracle Linux 中 Azure 加速网络的支持。 如果无法升级到最新的 Oracle Linux 7.5 版本，可能的解决方法是，使用 RedHat 兼容内核 (RHCK) 而不是 Oracle UEK 内核。 
 
 根据 SAP 说明 [#1565179](https://launchpad.support.sap.com/#/notes/1565179)，支持在 Oracle Linux 内使用 RHEL 内核。 对于 Azure 加速网络，最小 RHCKL 内核版本必须是 3.10.0-862.13.1.el7。 如果在 Oracle Linux 中结合 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)使用 UEK 内核，需要使用 Oracle UEK 内核版本 5。

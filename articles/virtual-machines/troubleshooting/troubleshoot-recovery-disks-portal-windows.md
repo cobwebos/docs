@@ -7,18 +7,17 @@ author: genlin
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
-ms.openlocfilehash: 8fd2f997bd5d5156616b5aad70a3460f64e774bc
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: d1b76479c17a9b1ace149334c7bb451c7bf2cc45
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997862"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103356"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM，对 Windows VM 进行故障排除
 如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 门户将虚拟硬盘连接到另一个 Windows VM 来修复所有错误，然后重新创建原始 VM。 
@@ -87,12 +86,12 @@ ms.locfileid: "69997862"
 ## <a name="attach-the-disk-to-another-vm"></a>将磁盘附加到另一个 VM
 在后续几个步骤中，将使用另一个 VM 进行故障排除。 将磁盘附加到故障排除 VM 后, 你可以浏览和编辑磁盘的内容。 此过程允许您更正任何配置错误或者查看其他应用程序或系统日志文件。 若要将磁盘附加到另一个 VM, 请遵循以下步骤:
 
-1. 在门户中选择资源组，并选择故障排除 VM。 选择 "**磁盘**", 选择 "**编辑**", 然后单击 "**添加数据磁盘**":
+1. 在门户中选择资源组，并选择故障排除 VM。 依次选择“磁盘”、“编辑”，然后单击“添加数据磁盘”：
 
     ![在门户中附加现有磁盘](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. 在 "**数据磁盘**" 列表中, 选择所标识 VM 的 OS 磁盘。 如果看不到 OS 磁盘, 请确保故障排除 VM 和操作系统磁盘位于同一区域 (位置)。 
-3. 选择 "**保存**" 应用更改。
+2. 在“数据磁盘”列表中，选择所标识的 VM 的 OS 磁盘。 如果看不到 OS 磁盘，请确保故障排除 VM 和 OS 磁盘位于同一区域（位置）。 
+3. 选择“保存”应用所做的更改。
 
 ## <a name="mount-the-attached-data-disk-to-the-vm"></a>向 VM 装载附加的数据磁盘
 
@@ -120,7 +119,7 @@ ms.locfileid: "69997862"
     ![在“服务器管理器”中将数据磁盘设置为脱机](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
 
 3. 现在从 VM 中分离虚拟硬盘。 在 Azure 门户中选择 VM，并单击“磁盘”。 
-4. 选择 "**编辑**", 选择附加的 OS 磁盘, 然后单击 "**分离**":
+4. 选择“编辑”，选择附加的 OS 磁盘，然后单击“分离”：
 
     ![分离现有虚拟硬盘](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 

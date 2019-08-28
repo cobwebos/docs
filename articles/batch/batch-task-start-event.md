@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 76100f1457123ac88055fddd55eb22a102201adf
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: efad9e71b986156c6d8e95208d50ac8d5a4d7e7f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322809"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094363"
 ---
 # <a name="task-start-event"></a>任务开始事件
 
@@ -48,7 +47,7 @@ ms.locfileid: "68322809"
 }
 ```
 
-|元素名称|type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |jobId|String|包含任务的作业的 id。|
 |id|String|任务的 id。|
@@ -68,7 +67,7 @@ ms.locfileid: "68322809"
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|元素名称|type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |numberOfInstances|Int|任务所需的计算节点数。|
 
@@ -80,6 +79,6 @@ ms.locfileid: "68322809"
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|元素名称|type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |retryCount|Int32|批处理服务重试任务的次数。 如果任务使用非零退出代码退出，该任务会重试，直至达到指定的 MaxTaskRetryCount|
