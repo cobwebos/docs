@@ -4,18 +4,18 @@ hide_bc: false
 title: Azure 物联网文档 - 教程和 API 参考 | Microsoft Docs
 description: Azure 物联网 (IoT) 是 Microsoft 托管的云服务的集合，这些服务用于连接、监视和控制数十亿项 IoT 资产。 如果以比较简单的术语来表述，则 IoT 解决方案包含一个或多个 IoT 设备，以及一个或多个在云中运行的后端服务，它们可以互相通信。
 services: azure-iot
-author: dsk-2015
+author: philmea
 manager: philmea
 ms.service: azure-iot
-ms.topic: landing-page
-ms.date: 02/12/2019
-ms.author: dkshir
-ms.openlocfilehash: d19b6fff3bf2b43ecb692bd8d8e33a202e969570
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: hub-page
+ms.date: 08/27/2019
+ms.author: philmea
+ms.openlocfilehash: 7ea66c873d6ba70c2a7b3907a83a466117b56190
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61216490"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074326"
 ---
 <div id="main" class="v2">
     <div class="container">
