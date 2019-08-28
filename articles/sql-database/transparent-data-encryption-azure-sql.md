@@ -10,19 +10,20 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 08/12/2019
-ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/27/2019
+ms.openlocfilehash: 9261bae0d2bee990a5048cb87a863d96e1854d00
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967904"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061939"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL 数据库和数据仓库的透明数据加密
 
 透明数据加密 (TDE) 通过加密静态数据, 帮助保护 Azure SQL 数据库、Azure SQL 托管实例和 Azure 数据仓库免受恶意脱机活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 默认情况下，为所有新部署的 Azure SQL 数据库启用了 TDE。 不能使用 TDE 来加密 SQL 数据库中的逻辑 **master** 数据库。  **master** 数据库包含对用户数据库执行 TDE 操作时所需的对象。
 
-需要为 Azure SQL 托管实例、Azure SQL 数据库的早期版本数据库或 Azure SQL 数据仓库手动启用 TDE。  
+需要为早期版本的 Azure SQL 数据库、Azure SQL 托管实例或 Azure SQL 数据仓库手动启用 TDE。
+通过还原创建托管实例数据库将从源数据库继承加密状态。
 
 透明数据加密使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 此数据库加密密钥受透明数据加密保护器的保护。 保护器是服务托管的证书（服务托管的透明数据加密）或存储在 Azure Key Vault 中的非对称密钥（“创建自己的密钥”）。 在 Azure SQL 数据库和数据仓库的服务器级别以及 Azure SQL 托管实例的实例级别设置透明数据加密保护程序。 除非另有说明，否则术语“服务器”指的是整个文档中的服务器和实例。
 

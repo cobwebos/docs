@@ -5,21 +5,21 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: a11d454feb965907f3bd4e994c0916eeb7236fa7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034566"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060711"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>将 SAP HANA 数据库备份到 Azure
 
 [Azure 备份](backup-overview.md)支持将 SAP HANA 数据库备份到 Azure。
 
 > [!NOTE]
-> 此功能目前处于公开预览状态。 它当前未准备就绪, 不具备保证的 SLA。 
+> 此功能目前处于公开预览状态。 它当前未准备就绪, 不具备保证的 SLA。
 
 ## <a name="scenario-support"></a>方案支持
 
@@ -32,8 +32,11 @@ ms.locfileid: "70034566"
 ### <a name="current-limitations"></a>当前限制
 
 - 只能备份在 Azure Vm 上运行的 SAP HANA 数据库。
-- 只能在 Azure 门户中配置 SAP HANA 备份。 此功能不能通过 PowerShell、CLI 或 REST API 进行配置。
-- 你只能在向上扩展模式下备份数据库。
+- 只能备份在单个 Azure 虚拟机中运行 SAP HANA 实例。 当前不支持同一 Azure VM 中的多个 HANA 实例。
+- 你只能在向上扩展模式下备份数据库。 横向扩展, 即目前不支持备份多个 Azure Vm 上的 HANA 实例。
+- 你不能在扩展服务器中通过动态分层备份 SAP HANA 实例, 即在另一个节点上存在动态分层。 这实质上是不受支持的扩展。
+- 不能在同一服务器中为启用了动态分层的 SAP HANA 实例进行备份。 当前不支持动态分层。
+- 只能在 Azure 门户中配置 SAP HANA 备份。 此功能不能通过 PowerShell、CLI 进行配置。
 - 可以每隔15分钟备份一次数据库日志。 日志备份仅在数据库的成功完整备份完成后开始流动。
 - 可以进行完整备份和差异备份。 当前不支持增量备份。
 - 应用 SAP HANA 备份后, 无法修改备份策略。 如果要使用不同的设置进行备份, 请创建新策略或分配其他策略。
@@ -44,23 +47,16 @@ ms.locfileid: "70034566"
 
 在配置备份之前, 请确保执行以下操作:
 
-1. 在运行 SAP HANA 数据库的 VM 上, 安装官方 Microsoft [.Net Core Runtime 2.1](https://dotnet.microsoft.com/download/linux-package-manager/sles/runtime-current)包。 请注意：
-    - 只需**2.1 dotnet**包。 不需要**aspnetcore-2.1**。
-    - 如果 VM 不具备 internet 访问权限, 请在页面中指定的 Microsoft 包源中镜像或提供 dotnet-2.1 (以及所有从属 Rpm) 的脱机缓存。
-    - 在包安装期间, 系统可能会要求你指定选项。 如果是这样, 请指定**解决方案 2**。
-
-        ![包安装选项](./media/backup-azure-sap-hana-database/hana-package.png)
-
-2. 在 VM 上, 使用 zypper 从官方 SLES 包/媒体安装并启用 ODBC 驱动程序包, 如下所示:
+1. 在运行 SAP HANA 数据库的 VM 上, 使用 zypper 从官方 SLES 包/媒体安装并启用 ODBC 驱动程序包, 如下所示:
 
     ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
 
-3. 允许从 VM 连接到 internet, 以便它可以访问 Azure, 如[以下](#set-up-network-connectivity)过程中所述。
+2. 允许从 VM 连接到 internet, 以便它可以访问 Azure, 如[以下](#set-up-network-connectivity)过程中所述。
 
-4. 在安装了 HANA 的虚拟机中运行预注册脚本, 作为根用户。 此脚本在[门户](#discover-the-databases)中的流中提供, 并且需要设置[正确的权限](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions)。
+3. 在安装了 HANA 的虚拟机中运行预注册脚本, 作为根用户。 此脚本在[门户](#discover-the-databases)中的流中提供, 并且需要设置[正确的权限](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions)。
 
 ### <a name="set-up-network-connectivity"></a>设置网络连接
 
@@ -68,6 +64,7 @@ ms.locfileid: "70034566"
 
 - 可以下载 Azure 数据中心的[IP 地址范围](https://www.microsoft.com/download/details.aspx?id=41653), 然后允许访问这些 ip 地址。
 - 如果你使用的是网络安全组 (Nsg), 则可以使用 AzureCloud[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)允许所有 AZURE 公共 IP 地址。 你可以使用[set-azurenetworksecurityrule cmdlet](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0)来修改 NSG 规则。
+- 443端口应列入允许列表, 因为传输是通过 HTTPS 传输的。
 
 ## <a name="onboard-to-the-public-preview"></a>集成到公共预览版
 
@@ -79,8 +76,6 @@ ms.locfileid: "70034566"
     ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
-
-
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -182,6 +177,15 @@ ms.locfileid: "70034566"
     - 将**log_backup_using_backint**设置为**True**。
 
 
+## <a name="upgrading-protected-10-dbs-to-20"></a>将受保护的1.0 数据库升级到2。0
+
+如果要保护 SAP HANA 1.0 数据库, 并希望升级到 2.0, 请执行下面所述的步骤。
+
+- 停止保护旧的 SDC DB 的保留数据。
+- 重新运行预注册脚本, 其详细信息为 (sid 和 mdc)。 
+- 重新注册扩展 (备份 > 视图详细信息-> 选择相关的 Azure VM > 重新注册)。 
+- 单击 "重新发现同一 VM 的数据库"。 这会在步骤2中显示新的数据库, 其中包含正确的详细信息 (SYSTEMDB 和租户 DB, 而不是 SDC)。 
+- 保护这些新数据库。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
-ms.openlocfilehash: c649b93284a48df705d389f4de728d83f793af04
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: bed56f169e2a985b23b3bca96c32f7caba596432
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036637"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061499"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -158,7 +158,7 @@ HADR 只是一种复制功能。 它没有故障检测, 也没有自动接管或
 
 Red Hat Enterprise Linux Server HA 加载项中包含 IBM Db2 LUW 的资源代理。 对于本文档中所述的设置, 应使用适用于 SAP 的 Red Hat Enterprise Linux。 Azure Marketplace 包含适用于 SAP 或更高版本的 Red Hat Enterprise Linux 7.4 的映像, 可用于部署新的 Azure 虚拟机。 选择 Azure VM Marketplace 中的 VM 映像时, 请注意通过 Azure Marketplace 提供的各种支持或服务模型。
 
-### <a name="hosts-dns-updates"></a>主机:DNS 更新
+### <a name="hosts-dns-updates"></a>主机DNS 更新
 创建所有主机名 (包括虚拟主机名) 的列表, 并更新您的 DNS 服务器, 以便为主机名解析启用适当的 IP 地址。 如果 DNS 服务器不存在, 或者你无法更新和创建 DNS 条目, 则需要使用参与此方案的各个 Vm 的本地主机文件。 如果使用的是主机文件条目, 请确保将条目应用到 SAP 系统环境中的所有 Vm。 但是, 我们建议你使用理想情况下扩展到 Azure 中的 DNS
 
 
@@ -517,15 +517,19 @@ j2ee/dbhost = db-virt-hostname
 使用 J2EE 配置工具检查或更新 JDBC URL。 由于 J2EE 配置工具是图形工具, 因此需要安装 X server:
  
 1. 登录到 J2EE 实例的主应用程序服务器并执行以下操作:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
-1.在左框架中, 选择 "**安全存储**"。
-1.在右侧框中, 选择密钥 jdbc/pool/\<SAPSID>/url。
-1.将 JDBC URL 中的主机名更改为虚拟主机名。
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
-1.选择 "**添加**"。
-1.若要保存所做的更改, 请在左上角选择磁盘图标。
-1.关闭配置工具。
-1.重新启动 Java 实例。
+    
+    <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
+    
+1. 在左框架中, 选择 "**安全存储**"。
+1. 在右侧框中, 选择 "密钥`jdbc/pool/\<SAPSID>/url`"。
+1. 将 JDBC URL 中的主机名更改为虚拟主机名。
+    
+    <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
+    
+1. 选择 **添加** 。
+1. 若要保存所做的更改, 请在左上角选择磁盘图标。
+1. 关闭配置工具。
+1. 重新启动 Java 实例。
 
 ## <a name="configure-log-archiving-for-hadr-setup"></a>配置 HADR 安装的日志存档
 若要为 HADR 安装程序配置 Db2 日志存档, 我们建议你将主数据库和备用数据库配置为从所有日志存档位置自动执行日志检索功能。 主数据库和备用数据库都必须能够从所有日志存档位置检索日志存档文件, 其中一个数据库实例可能会将日志文件存档。 

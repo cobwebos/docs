@@ -1,6 +1,6 @@
 ---
-title: Azure 数据工厂中的获取元数据活动 | Microsoft Docs
-description: 了解如何在数据工厂管道中使用 GetMetadata 活动。
+title: 在 Azure 数据工厂中获取元数据活动 |Microsoft Docs
+description: 了解如何使用数据工厂管道中的 "获取元数据" 活动。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,52 +13,52 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 320e92e45f319e394b5a38b3f1e8ef3f314920b8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 081d7219407decac5dd36a06f289436aa0da627b
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966347"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061547"
 ---
-# <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的获取元数据活动
+# <a name="get-metadata-activity-in-azure-data-factory"></a>在 Azure 数据工厂中获取元数据活动
 
-GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的**元数据**。 此活动可用于以下方案：
+你可以使用 "获取元数据" 活动来检索 Azure 数据工厂中任何数据的元数据。 您可以在以下情况下使用此活动:
 
-- 验证任何数据的元数据信息
-- 数据就绪/可用时触发管道
+- 验证任何数据的元数据。
+- 数据准备就绪/可用时触发管道。
 
 控制流中有以下功能：
 
-- 获取元数据活动的输出可用于条件表达式以执行验证。
-- 满足条件时可通过 Do-Until 循环触发管道
+- 您可以使用条件表达式中的 Get Metadata 活动的输出来执行验证。
+- 满足条件时, 可以通过 Do Do Until 循环来触发管道。
 
-## <a name="supported-capabilities"></a>支持的功能
+## <a name="capabilities"></a>功能
 
-GetMetadata 活动将数据集作为必要输入，并输出可用作活动输出的元数据信息。 目前，支持具有相应可检索元数据的以下连接器，并且支持的最大元数据大小高达 **1MB**。
+获取元数据活动将数据集作为输入, 并返回作为输出的元数据信息。 目前支持以下连接器和相应的可检索元数据。 返回的元数据的最大大小为 1 MB。
 
 >[!NOTE]
->如果在自承载 Integration Runtime 上运行 GetMetadata 活动，3.6 或更高版本将支持该最新功能。 
+>如果在自承载集成运行时上运行 Get Metadata 活动, 则在3.6 版或更高版本上支持最新功能。
 
 ### <a name="supported-connectors"></a>受支持的连接器
 
-**文件存储：**
+**文件存储**
 
 | 连接器/元数据 | itemName<br>（文件/文件夹） | itemType<br>（文件/文件夹） | 大小<br>（文件） | 已创建<br>（文件/文件夹） | lastModified<br>（文件/文件夹） |childItems<br>（文件夹） |contentMD5<br>（文件） | 结构<br/>（文件） | columnCount<br>（文件） | 存在<br>（文件/文件夹） |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | X | √ | √ | √/√* |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | X | √ | √ | √/√* |
-| [Azure Blob](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Azure Blob 存储](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | X | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | X | √ | √ | √/√ |
-| [Azure 文件存储](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | X | √ | √ | √/√ |
+| [Azure 文件](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | X | √ | √ | √/√ |
 | [文件系统](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | X | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | X | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | X | √ | √ | √/√ |
 
-- 对于 Amazon S3 和 Google 云存储, `lastModified`适用于 bucket 和密钥, 但不适用于虚拟文件夹;; `exists`适用于 bucket 和密钥, 但不适用于前缀或虚拟文件夹。
-- 对于 Azure Blob，`lastModified` 适用于容器和 blob，但不适用于虚拟文件夹。
+- 对于 Amazon S3 和 Google 云存储, `lastModified`适用于 bucket 和密钥, 但不适用于虚拟文件夹, 并且`exists`适用于 bucket 和密钥, 但不适用于前缀或虚拟文件夹。
+- 对于 Azure Blob 存储, `lastModified`适用于容器和 Blob, 但不适用于虚拟文件夹。
 
-**关系数据库：**
+**关系数据库**
 
 | 连接器/元数据 | 结构 | columnCount | 存在 |
 |:--- |:--- |:--- |:--- |
@@ -69,30 +69,30 @@ GetMetadata 活动将数据集作为必要输入，并输出可用作活动输�
 
 ### <a name="metadata-options"></a>元数据选项
 
-可以在 GetMetadata 活动字段列表中指定检索以下元数据类型：
+您可以在 "获取元数据活动字段" 列表中指定以下元数据类型以检索相应的信息:
 
 | 元数据类型 | 描述 |
 |:--- |:--- |
 | itemName | 文件或文件夹的名称。 |
-| itemType | 文件或文件夹的类型。 输出值为 `File` 或 `Folder`。 |
-| 大小 | 文件大小，以字节为单位。 仅适用于文件。 |
+| itemType | 文件或文件夹的类型。 返回的值`File`为`Folder`或。 |
+| 大小 | 文件大小 (以字节为单位)。 仅适用于文件。 |
 | 已创建 | 文件或文件夹的创建日期时间。 |
 | lastModified | 文件或文件夹的上次修改日期时间。 |
-| childItems | 给定文件夹内子文件夹和文件的列表。 仅适用于文件夹。 输出值为每个子项的名称和类型的列表。 |
+| childItems | 给定文件夹中的子文件夹和文件的列表。 仅适用于文件夹。 返回的值是每个子项的名称和类型的列表。 |
 | contentMD5 | 文件的 MD5。 仅适用于文件。 |
-| 结构 | 文件或关系数据库表内的数据结构。 输出值为列名称和列类型列表。 |
-| columnCount | 文件或关系表内的列数。 |
-| 存在| 是否存在某个文件/文件夹/表。 请注意，如果在 GetaMetadata 字段列表中指定了“exists”，那么即使不存在该项（文件/文件夹/表），活动也不会失败，而是在输出中返回 `exists: false`。 |
+| 结构 | 文件或关系数据库表的数据结构。 返回的值是列名称和列类型的列表。 |
+| columnCount | 文件或关系表中的列数。 |
+| 存在| 文件、文件夹或表是否存在。 请注意, `exists`如果在 "获取元数据字段" 列表中指定, 即使文件、文件夹或表不存在, 活动也不会失败。 相反, `exists: false`在输出中返回。 |
 
 >[!TIP]
->如果要验证是否存在某个文件/文件夹/表，请在 GetMetadata 活动字段列表中指定 `exists`，然后可以检查活动输出中的 `exists: true/false` 结果。 如果未在该字段列表中配置 `exists`，则当找不到对象时，GetMetadata 活动将失败。
+>如果要验证文件、文件夹或表是否存在, 请在 "获取元`exists`数据活动字段" 列表中指定。 然后, 你可以在`exists: true/false`活动输出中检查结果。 如果`exists`未在字段列表中指定, 则获取元数据活动将失败 (如果找不到该对象)。
 
 >[!NOTE]
->当从文件存储区中获取元数据`modifiedDatetimeStart`并配置和`modifiedDatetimeEnd`/或`childItems`时, 中的输出只返回在该范围内的最后修改时间 (而不是子文件夹) 下给定路径下的文件。
+>当从文件存储区中获取元数据`modifiedDatetimeStart`并`modifiedDatetimeEnd`配置或`childItems`时, 中的输出将只包含给定路径中的文件, 该文件在指定范围内具有最后修改时间。 在中, 不包括子文件夹中的项。
 
 ## <a name="syntax"></a>语法
 
-**GetMetadata 活动：**
+**获取元数据活动**
 
 ```json
 {
@@ -108,7 +108,7 @@ GetMetadata 活动将数据集作为必要输入，并输出可用作活动输�
 }
 ```
 
-**数据集：**
+**Dataset**
 
 ```json
 {
@@ -132,18 +132,18 @@ GetMetadata 活动将数据集作为必要输入，并输出可用作活动输�
 
 ## <a name="type-properties"></a>Type 属性
 
-目前，GetMetadata 活动可以提取以下类型的元数据信息。
+目前, 获取元数据活动可返回以下类型的元数据信息:
 
 属性 | 说明 | 必填
 -------- | ----------- | --------
-fieldList | 列出了所需元数据信息的类型。 有关受支持的元数据，请参阅[元数据选项](#metadata-options)部分中的详细信息。 | 是 
-dataset | 引用数据集，其元数据活动将由获取源数据活动检索。 有关受支持的连接器，请参阅[支持的功能](#supported-capabilities)部分；有关数据集语法详细信息，请参考连接器主题。 | 是
+fieldList | 所需的元数据信息的类型。 有关支持的元数据的详细信息, 请参阅本文的[元数据选项](#metadata-options)部分。 | 是 
+dataset | 要由 Get Metadata 活动检索其元数据的引用数据集。 有关支持的连接器的信息, 请参阅[功能](#capabilities)部分。 有关数据集语法的详细信息, 请参阅特定的连接器主题。 | 是
 formatSettings | 使用格式类型数据集时应用。 | 否
 storeSettings | 使用格式类型数据集时应用。 | 否
 
 ## <a name="sample-output"></a>示例输出
 
-GetMetadata 结果显示在活动输出中。 下面两个示例在字段列表中选择了详尽的元数据选项作为参考。 若要在后续活动中使用该结果，请使用 `@{activity('MyGetMetadataActivity').output.itemName}` 模式。
+获取元数据结果显示在活动输出中。 下面是两个显示大量元数据选项的示例。 若要在后续活动中使用结果, 请使用此模式`@{activity('MyGetMetadataActivity').output.itemName}`:。
 
 ### <a name="get-a-files-metadata"></a>获取文件的元数据
 
@@ -193,9 +193,9 @@ GetMetadata 结果显示在活动输出中。 下面两个示例在字段列表�
 ```
 
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动： 
+了解数据工厂支持的其他控制流活动:
 
-- [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
-- [For Each 活动](control-flow-for-each-activity.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [执行管道活动](control-flow-execute-pipeline-activity.md)
+- [ForEach 活动](control-flow-for-each-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 - [Web 活动](control-flow-web-activity.md)

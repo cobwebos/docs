@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: d50b3ab68b406db47a4cc8fec081b2fc076071d1
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741655"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061598"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -72,7 +72,7 @@ ms.locfileid: "68741655"
 
 从 Office 365 订阅中：
 
-- 用户名:管理帐户的电子邮件地址。
+- 用户名：管理帐户的电子邮件地址。
 - 租户 ID：Office 365 订阅的唯一 ID。
 - 客户端 ID：一个 16 字符的字符串，表示 Office 365 客户端。
 - 客户端密码：进行身份验证所需的已加密字符串。
@@ -83,45 +83,46 @@ ms.locfileid: "68741655"
 
 1. 通过 [https://portal.azure.com](https://portal.azure.com/) 登录到 Azure 门户。
 1. 依次选择“Azure Active Directory”和“应用注册”。
-1. 单击“新建应用程序注册”。
+1. 单击 "**新建注册**"。
 
     ![添加应用注册](media/solution-office-365/add-app-registration.png)
-1. 输入应用程序名称和登录 URL。  名称应是描述性的。  使用`http://localhost`作为 URL, 并保留**应用程序类型**的_Web 应用/API_
+1. 输入应用程序**名称**。 为**支持的帐户类型**选择**任何组织目录中的帐户 (任何 Azure AD Directory-多租户)** 。
     
     ![创建应用程序](media/solution-office-365/create-application.png)
-1. 单击“创建”并验证应用程序信息。
+1. 单击 "**注册**" 并验证应用程序信息。
 
     ![已注册的应用](media/solution-office-365/registered-app.png)
 
 ### <a name="configure-application-for-office-365"></a>为 Office 365 配置应用程序
 
-1. 单击“设置”以打开“设置”菜单。
-1. 选择“属性”。 将“多租户”更改为“是”。
+1. 选择 "**身份验证**", 并验证是否在 "**支持的帐户类型**" 下选择了**任何组织目录中的帐户 (任何 Azure AD directory-多租户)** 。
 
     ![设置多租户](media/solution-office-365/settings-multitenant.png)
 
-1. 在“设置”菜单中选择“所需权限”，然后单击“添加”。
-1. 单击“选择 API”，然后单击“Office 365 管理 API”。 单击“Office 365 管理 API”。 单击“选择”。
+1. 依次选择 " **API 权限**" 和 "**添加权限**"。
+1. 单击 " **Office 365 管理 api**"。 
 
     ![选择 API](media/solution-office-365/select-api.png)
 
-1. 在“选择权限”下，为“应用程序权限”和“委派的权限”选择以下选项：
+1. 在**应用程序所需的权限类型**下, 为**应用程序权限**和**委托权限**选择以下选项:
    - 读取组织的服务运行状况信息
    - 读取组织的活动数据
    - 读取组织的活动报表
 
-     ![选择 API](media/solution-office-365/select-permissions.png)
+     ![选择 API](media/solution-office-365/select-permissions-01.png)![选择 API](media/solution-office-365/select-permissions-02.png)
 
-1. 依次单击“选择”、“完成”。
-1. 单击“授予权限”，然后在要求确认时单击“是”。
+1. 单击“添加权限”。
+1. 单击 "**授予管理员许可**", 然后在要求验证时单击 **"是"** 。
 
-    ![授予权限](media/solution-office-365/grant-permissions.png)
 
-### <a name="add-a-key-for-the-application"></a>为应用程序添加密钥
+### <a name="add-a-secret-for-the-application"></a>为应用程序添加机密
 
-1. 在“设置”窗口中选择“密钥”。
+1. 选择**证书 & 机密**, 然后选择**新的客户端密码**。
+
+    ![密钥](media/solution-office-365/secret.png)
+ 
 1. 键入新密钥的说明和持续时间。
-1. 单击“保存”，然后复制生成的值。
+1. 单击 "**添加**", 然后复制生成的**值**。
 
     ![密钥](media/solution-office-365/keys.png)
 

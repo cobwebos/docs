@@ -15,16 +15,16 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bdf9210eb88b2057cf861b208f19d3e6f562e9a
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 8ebf524d932322fa08729f229a451afe656900d5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414845"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061408"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>用于调用 web Api-代码配置的移动应用
 
-创建应用程序后, 你将了解如何从应用程序注册时获取的应用程序参数配置代码。 移动应用程序还具有一些复杂的细节, 这与在构建这些应用时使用的框架有关
+创建应用程序后, 你将了解如何使用应用注册参数来配置代码。 移动应用程序还具有一些复杂的细节, 这与在构建这些应用时使用的框架有关
 
 ## <a name="msal-libraries-supporting-mobile-apps"></a>支持移动应用的 MSAL 库
 
@@ -38,7 +38,7 @@ ms.locfileid: "68414845"
 
 ## <a name="configuring-the-application"></a>配置应用程序
 
-移动应用程序使用 MSAL 的`PublicClientApplication`类。 下面介绍如何对其进行实例化:
+移动应用程序使用`PublicClientApplication`类。 下面介绍如何对其进行实例化:
 
 ### <a name="android"></a>Android
 
@@ -68,7 +68,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 #### <a name="instantiating-the-application"></a>实例化应用程序
 
-在 Xamarin 或 UWP 中, 实例化应用程序的最简单方法如下, 其中是你`ClientId`的应用程序的 Guid (注册为)。
+在 Xamarin 或 UWP 中, 实例化应用程序的最简单方法如下, 其中`ClientId`是已注册应用的 Guid。
 
 ```CSharp
 var app = PublicClientApplicationBuilder.Create(clientId)
@@ -87,7 +87,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-在 Android 上, 我们建议你`CurrentActivityPlugin`这样[做。](https://github.com/jamesmontemagno/CurrentActivityPlugin)  然后, `PublicClientApplication`生成器代码将如下所示:
+在 Android 上, 我们建议你在`CurrentActivityPlugin` [此处](https://github.com/jamesmontemagno/CurrentActivityPlugin)使用。  然后, `PublicClientApplication`生成器代码将如下所示:
 
 ```CSharp
 // Requires MSAL.NET 4.2 or above
@@ -128,7 +128,7 @@ var pca = PublicClientApplicationBuilder
 
 #### <a name="uwp-specific-considerations"></a>UWP 特定注意事项
 
-在 UWP 上, 你可以使用公司网络。 有关 UWP 详细信息的信息, 请参阅[MSAL.NET 的通用 Windows 平台相关注意事项](msal-net-uwp-considerations.md)。
+在 UWP 上, 你可以使用公司网络。 有关将 MSAL 库与 UWP 一起使用的其他信息, 请参阅[MSAL.NET 通用 Windows 平台特定的注意事项](msal-net-uwp-considerations.md)。
 
 ## <a name="configuring-the-application-to-use-the-broker"></a>将应用程序配置为使用 broker
 
@@ -186,7 +186,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 #### <a name="step-3-set-a-uiviewcontroller"></a>步骤 3：设置 UIViewController ()
 
-使用 Xamarin iOS 时, 通常不需要设置对象窗口, 但在这种情况下, 需要从代理发送和接收响应。 仍在`AppDelegate.cs`中, 设置 ViewController。
+使用 Xamarin iOS 时, 通常不需要设置对象窗口, 但在这种情况下, 你可以从 broker 发送和接收响应。 仍在`AppDelegate.cs`中, 设置 ViewController。
 
 执行以下操作来设置对象窗口:
 

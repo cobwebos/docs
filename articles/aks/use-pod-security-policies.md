@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 374e86409be08f1f9859b3e325dda57080b89dbf
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: df8aa51558bc3aa456758510792c198a8bd9cf78
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034000"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061843"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览-在 Azure Kubernetes Service (AKS) 中使用 pod 安全策略保护群集
 
@@ -32,7 +32,7 @@ ms.locfileid: "69034000"
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要使用 pod 安全策略, 需要*aks* CLI 扩展版本0.4.1 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展, 然后使用[az extension update][az-extension-update]命令检查是否有任何可用更新:
+若要使用 pod 安全策略, 需要*aks* CLI 扩展版本0.4.1 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展, 然后使用[az extension update][az-extension-update]命令检查是否有任何可用的更新:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -443,7 +443,7 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 ```
 
 > [!NOTE]
-> 在本文的第一步中, 已在 AKS 群集上启用 pod 安全策略功能。 建议的做法是, 在定义自己的策略后, 只启用 pod 安全策略功能。 这是启用 pod 安全策略功能的阶段。 已经定义了一个或多个自定义策略, 并且用户帐户已与这些策略相关联。 现在, 你可以安全地使用 pod 安全策略功能, 并最大限度地减少了默认策略导致的问题。
+> 在本文的第一步中, 已在 AKS 群集上启用 pod 安全策略功能。 建议的做法是, 在定义自己的策略后, 只启用 pod 安全策略功能。 这是启用 pod 安全策略功能的阶段。 已经定义了一个或多个自定义策略, 并且用户帐户已与这些策略相关联。 现在, 你可以安全地启用 pod 安全策略功能, 并最大限度地减少了默认策略导致的问题。
 
 ## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>再次测试创建无特权的 pod
 

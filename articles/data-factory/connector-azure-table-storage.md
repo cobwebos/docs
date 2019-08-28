@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: bf28fb69d35256d65fdfd2c092ad48d0ad1281f9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5920fe4a1addd2188f53a15c1d2232f505009087
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986001"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061492"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表存储复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -221,10 +221,8 @@ ms.locfileid: "68986001"
 
 对于无架构的数据存储（如 Azure 表），数据工厂将使用下列方式之一推断架构：
 
-* 如果使用数据集定义中的**结构**属性指定数据的结构，数据工厂会将此结构作为架构。 在这种情况下，如果行不包含列的值，则会为其提供 null 值。
-* 如果不使用数据集定义中的**结构**属性指定数据结构，数据工厂将通过使用数据中的第一行来推断架构。 在这种情况下，如果第一行不包含完整架构，则复制操作的结果中会丢失部分列。
-
-对于无架构的数据源，最佳做法是使用**结构**属性指定数据的结构。
+* 如果在复制活动中指定列映射, 数据工厂将使用源端列列表来检索数据。 在这种情况下，如果行不包含列的值，则会为其提供 null 值。
+* 如果未在复制活动中指定列映射, 数据工厂将使用数据中的第一行来推断架构。 在这种情况下, 如果第一行不包含完整架构 (例如, 某些列的值为 null), 则复制操作的结果中会丢失某些列。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 

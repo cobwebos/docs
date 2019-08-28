@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd587bfed7fcfea8e8cd99ca155ee9d86222ae3d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 9c46181d5ab449d28c2e2e93cc583a3551f114bc
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013537"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061741"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -245,7 +245,7 @@ Azure 文件同步仅在以下区域中可用：
 |--------|---------------------|
 | 澳大利亚东部 | New South Wales |
 | 澳大利亚东南部 | Victoria |
-| 巴西南部 | 圣多美 Paolo 状态 |
+| 巴西南部 | 圣保罗州 |
 | 加拿大中部 | 多伦多 |
 | 加拿大东部 | 魁北克市 |
 | 印度中部 | 浦那 |

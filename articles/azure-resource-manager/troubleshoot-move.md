@@ -4,14 +4,14 @@ description: 使用 Azure 资源管理器将资源移到新的资源组或订阅
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 08/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: b688218b871a5f652e7f4de172d23f1b1fb0aa5c
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: d56f6a5ffe01540b9ce1e5a20ec628a90da594c6
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035522"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061777"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>排查将 Azure 资源移到新的资源组或订阅时遇到的问题
 
@@ -43,9 +43,11 @@ ms.locfileid: "70035522"
 
 ## <a name="resource-not-in-succeeded-state"></a>资源未处于成功状态
 
-如果收到一条错误消息, 指出由于某个资源未处于 "成功" 状态而无法移动, 则它实际上可能是阻止移动的依赖资源。
+如果收到一条错误消息, 指出由于某个资源未处于 "成功" 状态而无法移动, 则它实际上可能是阻止移动的依赖资源。 通常, 错误代码为**MoveCannotProceedWithResourcesNotInSucceededState**。
 
-如果源或目标资源组包含虚拟网络, 则在移动过程中将检查虚拟网络的所有从属资源的状态。 如果其中的任何资源处于失败状态, 则会阻止移动。 例如, 如果使用虚拟网络的虚拟机出现故障, 则会阻止移动。 即使虚拟机不是要移动的资源之一, 而且不在移动的资源组中, 也会阻止移动。 若要避免此问题, 请将资源移到没有虚拟网络的资源组。
+如果源或目标资源组包含虚拟网络, 则在移动过程中将检查虚拟网络的所有从属资源的状态。 该检查包括直接和间接依赖于虚拟网络的这些资源。 如果其中的任何资源处于失败状态, 则会阻止移动。 例如, 如果使用虚拟网络的虚拟机出现故障, 则会阻止移动。 即使虚拟机不是要移动的资源之一, 而且不在移动的资源组中, 也会阻止移动。
+
+收到此错误时, 你有两个选择。 将资源移到没有虚拟网络的资源组, 或者[与支持人员联系](../azure-supportability/how-to-create-azure-support-request.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

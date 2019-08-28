@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 2770a15211e24c9b79c906287295554b2cb94db8
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 56d332ca00cbd47448b7e3fb8d3ab2d141380b70
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986127"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061527"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Blob 存储复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -413,10 +413,10 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="blob-storage-as-a-source-type"></a>将 Blob 存储用作源类型
 
-- 对于**Parquet (分隔文本和二进制格式**), 请参阅[Parquet, 分隔文本和二进制格式数据集](#format-based-dataset)部分。
-- 对于其他格式 (如**ORC/Avro/JSON 格式**), 请参阅[其他格式数据集](#other-format-dataset)部分。
+- 若要从**Parquet 复制, 分隔文本和二进制格式**, 请参阅[Parquet, 分隔文本和二进制格式源](#format-based-source)部分。
+- 若要从其他格式 (如**ORC/Avro/JSON 格式**) 复制, 请参阅[其他格式源](#other-format-source)部分。
 
-### <a name="format-based-dataset"></a>Parquet, 分隔文本和二进制格式数据集
+#### <a name="format-based-source"></a>Parquet, 分隔文本和二进制格式源
 
 若要在 Parquet 中向/从 Blob 存储复制数据 **(以分隔符分隔的文本或二进制格式**), 请参阅基于格式的数据集和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的复制源中 `storeSettings` 设置下的 Azure Blob 支持以下属性：
 

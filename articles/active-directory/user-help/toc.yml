@@ -1,5 +1,5 @@
 - name: 使用帮助文档
-  href: index.md
+  href: index.yml
 - name: 双重验证帮助
   items:
     - name: 概述

@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dd898397b4aaec2e62558d12a3547f7b61d6d3fd
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533468"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061383"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
 
@@ -58,16 +58,11 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 - Windows 8.1
 - Windows 7
 
-[Microsoft Hyper-v Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016)独立产品 sku 不包含所需状态配置的实现, 因此无法通过 PowerShell DSC 或 Azure Automation 状态配置进行管理。
+[Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016)独立产品 sku 不包含所需状态配置的实现, 因此无法通过 PowerShell DSC 或 Azure 自动化状态配置进行管理。
 
 运行 Linux 的节点支持以下发行版/版本：
 
-DSC Linux 扩展支持所有[在 Azure 上认可的](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Linux 发行版，除了以下这些：
-
-分发组 | Version
--|-
-Debian  | 所有版本
-Ubuntu  | 18.04
+DSC Linux 扩展支持[支持的 Linux 发行](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)版下列出的所有 linux 分发版。
 
 ### <a name="dsc-requirements"></a>DSC 要求
 
@@ -79,7 +74,7 @@ Ubuntu  | 18.04
 
 如果节点位于专用网络内, 则状态配置 (DSC) 需要以下端口和 Url 才能与自动化通信:
 
-* 端口:只需使用 TCP 443 即可进行出站 Internet 访问。
+* 端口：只需使用 TCP 443 即可进行出站 Internet 访问。
 * 全局 URL：*.azure-automation.net
 * 美国弗吉尼亚州政府的全局 URL：*.azure-automation.us
 * 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.net

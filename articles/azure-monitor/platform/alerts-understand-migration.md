@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 5257724add570be480063ab776248a8fd1d944c7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c3d5bb58989fe87ddf9a185dbae926a71edf1590
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034752"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061557"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>了解迁移工具的工作原理
 
@@ -36,7 +36,7 @@ ms.locfileid: "70034752"
 - 针对某些 Cosmos DB 指标的经典警报规则。 请参阅本文稍后所述的[详细信息](#cosmos-db-metrics)。
 - 针对所有经典虚拟机和云服务指标 (Microsoft.classiccompute/virtualMachines 和 Microsoft.classiccompute/domainNames/个角色) 的经典警报规则。 请参阅本文稍后所述的[详细信息](#classic-compute-metrics)。
 
-如果你的订阅包含任何此类经典规则，必须手动迁移。 由于我们无法提供自动迁移，任何此类现有经典指标警报会继续运行到 2020 年 6 月。 此缓冲期可让你从容地迁移到新警报。 但是，在 2019 年 8 月之后，不再可以创建新的经典警报。
+如果你的订阅包含任何此类经典规则，必须手动迁移。 由于我们无法提供自动迁移，任何此类现有经典指标警报会继续运行到 2020 年 6 月。 此缓冲期可让你从容地迁移到新警报。 还可以继续在2020年6月之前的列出异常上创建新的经典警报。 但对于其他所有内容, 2019 年8月后将不能创建新的经典警报。
 
 > [!NOTE]
 > 除了上面所列的例外情况，如果经典警报规则无效，即，它们应用于[已弃用的指标](#classic-alert-rules-on-deprecated-metrics)或已删除的资源，则在自愿性迁移过程中，不会迁移这些规则。 自动迁移时，将删除任何此类无效经典警报规则。

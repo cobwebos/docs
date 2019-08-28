@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c84f68a9af855f61523919069e1947e051b130b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622266"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061370"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ)
 
@@ -43,11 +43,9 @@ Azure AD B2C 不用于 Microsoft Office 365 用户的身份验证。 Azure AD �
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>现在支持哪些社交标识提供者？ 计划在未来支持哪些？
 
-我们当前支持 Facebook、Google+、LinkedIn、Amazon、Twitter（预览版）、微信（预览版）、微博（预览版）和 QQ（预览版）。 我们会根据客户需求添加对其他流行社交标志提供者的支持。
+目前, 我们支持多个社交标识提供者, 包括 Amazon、Facebook、GitHub (预览版)、Google、LinkedIn、Microsoft 帐户 (MSA)、QQ (预览版)、Twitter、WeChat (预览版) 和 Weibo (预览版)。 我们会根据客户需求评估添加其他热门社交标识提供者的支持。
 
-Azure AD B2C 还增加了对[自定义策略](active-directory-b2c-overview-custom.md)的支持。 这些自定义策略允许开发人员使用支持 [OpenID 连接](https://openid.net/specs/openid-connect-core-1_0.html)或 SAML 的任何标识提供者创建自己的策略。
-
-查看我们的[自定义策略初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)，开始使用自定义策略。
+Azure AD B2C 还支持[自定义策略](active-directory-b2c-overview-custom.md)。 自定义策略允许你为支持[OpenID connect](https://openid.net/specs/openid-connect-core-1_0.html)或 SAML 的任何标识提供者创建你自己的策略。 查看我们的[自定义策略初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)，开始使用自定义策略。
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>我可以配置范围，从各种社交标识提供者收集更多使用者的相关信息吗？
 

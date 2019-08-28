@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 62385f4bd07f4b80dc3d571d409e16c7e0dca205
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: c720dfe7aeaa39a1717362b040b5548e116cc246
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667829"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70062070"
 ---
 # <a name="get-started-with-device-twins-python"></a>设备孪生入门 (Python)
 
@@ -49,11 +49,15 @@ ms.locfileid: "68667829"
 
 在本部分中, 将创建一个 Python 控制台应用, 用于将位置元数据添加到与 **{DEVICE ID}** 关联的设备克隆中。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
 
-1. 打开命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。 在安装 SDK 之后关闭命令提示符。
+1. 在工作目录中, 打开命令提示符, 并安装**用于 Python 的 Azure IoT 中心服务 SDK**。
 
-   ```
+   ```cmd/sh
    pip install azure-iothub-service-client
    ```
+
+   > [!NOTE]
+   > 用于 azure iothub 和 azure iothub 设备客户端的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac OS, 请参阅为[Python 发布准备开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)中的 linux 和 Mac OS 特定部分。
+   >
 
 2. 使用文本编辑器，新建一个 **AddTagsAndQuery.py** 文件。
 
@@ -66,7 +70,7 @@ ms.locfileid: "68667829"
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. 添加以下代码, `[IoTHub Connection String]`并将和`[Device Id]`的占位符替换为 IoT 中心的连接字符串和在前面的部分中创建的设备 ID。
+4. 添加以下代码。 将`[IoTHub Connection String]`替换为在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。 将`[Device Id]`替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -80,7 +84,7 @@ ms.locfileid: "68667829"
 
 5. 将以下代码添加到 **AddTagsAndQuery.py** 文件：
 
-     ```python
+    ```python
     def iothub_service_sample_run():
         try:
             iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
@@ -143,7 +147,7 @@ ms.locfileid: "68667829"
 
     在查询位于 **Redmond43** 的所有设备的查询结果中，应该会看到一个设备，而在将结果限制为使用蜂窝网络的设备的查询结果中没有任何设备。
 
-    ![第一个显示 Redmond 中所有设备的查询](./media/iot-hub-python-twin-getstarted/1-device-twins-python-service-sample.png)
+    ![第一个显示 Redmond 中所有设备的查询](./media/iot-hub-python-twin-getstarted/service-1.png)
 
 在下一部分中，创建的设备应用将报告连接信息，并更改上一部分中查询的结果。
 
@@ -151,11 +155,15 @@ ms.locfileid: "68667829"
 
 在本部分中, 将创建一个 Python 控制台应用, 用于连接到你的中心作为 **{设备 ID}** , 然后更新其设备克隆的报告属性, 以包含使用蜂窝网络连接的信息。
 
-1. 打开命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。 在安装 SDK 之后关闭命令提示符。
+1. 在工作目录中的命令提示符下, 安装**适用于 Python 的 Azure IoT 中心服务 SDK**:
 
-    ```
+    ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > 用于 azure iothub 和 azure iothub 设备客户端的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac OS, 请参阅为[Python 发布准备开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)中的 linux 和 Mac OS 特定部分。
+   >
 
 2. 使用文本编辑器，新建一个 **ReportConnectivity.py** 文件。
 
@@ -167,7 +175,7 @@ ms.locfileid: "68667829"
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
     ```
 
-4. 添加以下代码，将 `[IoTHub Device Connection String]` 的占位符替换为在前面的部分中创建的 IoT 中心设备的连接字符串。
+4. 添加以下代码。 将占位符值替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。 `[IoTHub Device Connection String]`
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -227,7 +235,7 @@ ms.locfileid: "68667829"
             return
         except KeyboardInterrupt:
             print ( "IoTHubClient sample stopped" )
-     ```
+    ```
 
     **Client** 对象公开从该设备与设备孪生交互所需的所有方法。 上面的代码首先初始化 **Client** 对象，然后检索你的设备的设备孪生，并使用连接信息更新其报告属性。
 
@@ -248,7 +256,7 @@ ms.locfileid: "68667829"
 
     应当会看到关于设备孪生已更新的确认。
 
-    ![更新孪生](./media/iot-hub-python-twin-getstarted/2-python-client-sample.png)
+    ![更新孪生](./media/iot-hub-python-twin-getstarted/device-1.png)
 
 8. 既然设备报告其连接的信息，该信息应显示在两个查询中。 回过头来再次运行查询：
 
@@ -258,7 +266,7 @@ ms.locfileid: "68667829"
 
     这一次，两个查询结果中应当都会显示你的 **{Device ID}** 。
 
-    ![第二个查询](./media/iot-hub-python-twin-getstarted/3-device-twins-python-service-sample.png)
+    ![第二个查询](./media/iot-hub-python-twin-getstarted/service-2.png)
 
 ## <a name="next-steps"></a>后续步骤
 
