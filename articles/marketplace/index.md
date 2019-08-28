@@ -31,7 +31,7 @@ ms.locfileid: "65800323"
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>AppSource 和 Azure Marketplace 发布者指南</h3>
+                        <h3>AppSource 和 Azure 市场发布者指南</h3>
                     </div>
                 </div>
             </div>

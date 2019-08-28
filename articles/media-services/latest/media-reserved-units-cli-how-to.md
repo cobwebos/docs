@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI 缩放媒体保留单位 - Azure | Microsoft Docs
+title: 使用 CLI 缩放媒体预留单位 - Azure | Microsoft Docs
 description: 本主题演示如何使用 CLI 通过 Azure 媒体服务来缩放媒体处理能力。
 services: media-services
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: b1a79f2798fc98fd7361c47788c79e329e2cb827
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "65556189"
 ---
 # <a name="scaling-media-processing"></a>缩放媒体处理能力
 
-使用 Azure 媒体服务，可以通过管理媒体保留单位 (MRU) 来缩放媒体处理能力。 Mru 确定与你的媒体处理任务的处理的速度。 可以在以下预留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 预留单位类型相比，使用 **S2** 预留单位类型时，同一编码作业运行速度更快。 
+使用 Azure 媒体服务，可以通过管理媒体预留单位 (MRU) 来缩放媒体处理能力。 Mru 确定与你的媒体处理任务的处理的速度。 可以在以下预留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 预留单位类型相比，使用 **S2** 预留单位类型时，同一编码作业运行速度更快。 
 
 除了指定预留单位类型，还可以指定通过预留单位来设置帐户。 设置的预留单位数决定了给定帐户中可并发处理的媒体任务数。 例如，如果帐户具有 5 个预留单位，则只要有任务要处理，就可以同时运行 5 个媒体任务。 其余任务将排队等待，运行的任务完成后才选择它们以按顺序进行处理。 如果帐户未设置任何预留单位，则按顺序选择任务进行处理。 在这种情况下，完成一个任务和开始下一个任务之间的等待时间将取决于系统中资源的可用性。
 
@@ -55,7 +55,7 @@ ms.locfileid: "65556189"
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
-## <a name="scale-media-reserved-units-with-cli"></a>使用 CLI 缩放媒体保留单位
+## <a name="scale-media-reserved-units-with-cli"></a>使用 CLI 缩放媒体预留单位
 
 运行 `mru` 命令。
 

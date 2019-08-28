@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 07/11/2019
 ms.locfileid: "67807452"
 ---
-# <a name="overview-of-the-azure-policy-service"></a>Azure 策略服务概述
+# <a name="overview-of-the-azure-policy-service"></a>Azure Policy 服务概述
 
 治理验证组织是否能够通过有效且高效地使用 IT 来实现其目标。 它通过详细说明业务目标和 IT 项目来满足这一需求。
 
@@ -144,7 +144,7 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已大致了解 Azure 策略以及一些关键概念，下面是建议的后续步骤：
+现在，你已大致了解 Azure Policy 以及一些关键概念，下面是建议的后续步骤：
 
 - [使用门户分配策略定义](assign-policy-portal.md)。
 - [使用 Azure CLI 分配策略定义](assign-policy-azurecli.md)。

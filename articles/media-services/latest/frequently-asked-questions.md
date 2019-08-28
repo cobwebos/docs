@@ -28,7 +28,7 @@ ms.locfileid: "68501258"
 
 请参阅[媒体服务帐户的基于角色的访问控制 (RBAC)](rbac-overview.md)。
 
-### <a name="how-do-i-configure-media-reserved-units"></a>如何配置媒体保留单位？
+### <a name="how-do-i-configure-media-reserved-units"></a>如何配置媒体预留单位？
 
 对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈建议为你的帐户预配 10 S3 MRU。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.com/)打开一个支持票证。
 

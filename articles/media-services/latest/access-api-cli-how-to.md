@@ -44,7 +44,7 @@ ms.locfileid: "65779673"
 
 ## <a name="see-also"></a>另请参阅
 
-- [缩放媒体保留单位 - CLI](media-reserved-units-cli-how-to.md)
+- [缩放媒体预留单位 - CLI](media-reserved-units-cli-how-to.md)
 - [创建媒体服务帐户 - CLI](create-account-cli-how-to.md) 
 - [重置帐户凭据 - CLI](cli-reset-account-credentials.md)
 - [创建资产 - CLI](cli-create-asset.md)

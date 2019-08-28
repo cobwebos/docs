@@ -257,7 +257,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 
 ## <a name="a-nameshow-aliasesshow-aliases-for-a-virtual-machine-resource"></a><a name="show-aliases"/> 显示虚拟机资源的别名
 
-Azure 策略使用 [Azure 策略别名](../../policy/concepts/definition-structure.md#aliases)管理资源符合性。 Azure Resource Graph 可以返回资源类型的别名  。 创建自定义策略定义后，这些值可用于比较别名的当前值。 默认情况下，查询结果中不提供别名数组  。 使用 `project aliases` 将其显式添加到结果中。
+Azure Policy 使用 [Azure Policy 别名](../../policy/concepts/definition-structure.md#aliases)管理资源符合性。 Azure Resource Graph 可以返回资源类型的别名  。 创建自定义策略定义后，这些值可用于比较别名的当前值。 默认情况下，查询结果中不提供别名数组  。 使用 `project aliases` 将其显式添加到结果中。
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'

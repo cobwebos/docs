@@ -98,7 +98,7 @@ ms.locfileid: "68835539"
       ![appRoles 属性的详细信息](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
       > [!Note]
-      > 如果使用自定义应用（而不是 Azure Marketplace 应用），则会看到两个默认角色：user 和 msiam_access。 对于 Marketplace 应用，msiam_access 是唯一的默认角色。 不需对默认角色进行任何更改。
+      > 如果使用自定义应用（而不是 Azure 市场应用），则会看到两个默认角色：user 和 msiam_access。 对于 Marketplace 应用，msiam_access 是唯一的默认角色。 不需对默认角色进行任何更改。
 
     h. 为应用程序生成新角色。
 

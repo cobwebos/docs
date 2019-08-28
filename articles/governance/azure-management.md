@@ -40,7 +40,7 @@ Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure �
 ## <a name="govern"></a>治理
 
 “治理”提供了机制和流程来保持对 Azure 中的应用程序和资源的控制。 它涉及规划计划和设置战略优先级。
-Azure 中的治理主要是通过两个服务实现的。 [Azure 策略](./policy/overview.md)允许你创建、分配和管理策略定义，以强制执行资源规则。 此功能可使这些资源符合企业标准。 使用[Azure 成本管理](../cost-management/overview-cost-mgt.md), 可以跟踪 azure 资源和其他云提供商的云使用情况和支出。
+Azure 中的治理主要是通过两个服务实现的。 [Azure Policy ](./policy/overview.md)允许你创建、分配和管理策略定义，以强制执行资源规则。 此功能可使这些资源符合企业标准。 使用[Azure 成本管理](../cost-management/overview-cost-mgt.md), 可以跟踪 azure 资源和其他云提供商的云使用情况和支出。
 
 ## <a name="secure"></a>安全
 

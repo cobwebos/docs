@@ -212,8 +212,8 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 ## <a id="oct_changes_15"></a>2015 年 10 月版本
 媒体服务现在位于以下数据中心：巴西南部、印度西部、印度南部和印度中部。 现在可以使用 Azure 门户[创建媒体服务帐户](media-services-portal-create-account.md)，以及执行[媒体服务文档网页](https://azure.microsoft.com/documentation/services/media-services/)中所述的各项任务。 这些数据中心未启用实时编码。 此外，并非所有类型的编码预留单位都可用于这些数据中心。
 
-* 巴西南部：                                        只可以使用标准和基本编码保留单位。
-* 印度西部、印度南部和印度中部：           只可以使用基本编码保留单位。
+* 巴西南部：                                        只可以使用标准和基本编码预留单位。
+* 印度西部、印度南部和印度中部：           只可以使用基本编码预留单位。
 
 ## <a id="september_changes_15"></a>2015 年 9 月版本
 媒体服务现在提供通过 Widevine 模块化 DRM 技术保护点播视频和实时流的功能。 可以通过以下交付服务合作伙伴来交付 Widevine 许可证：

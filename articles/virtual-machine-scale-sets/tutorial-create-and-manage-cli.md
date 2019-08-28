@@ -41,7 +41,7 @@ ms.locfileid: "55751015"
 
 
 ## <a name="create-a-resource-group"></a>创建资源组
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机规模集前创建资源组。 使用 [az group create](/cli/azure/group) 命令创建资源组。 在此示例中，在“eastus”区域中创建了名为“myResourceGroup”的资源组。 
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机规模集前创建资源组。 使用 [az group create](/cli/azure/group) 命令创建资源组。 在此示例中，在“eastus”  区域中创建了名为“myResourceGroup”  的资源组。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -51,7 +51,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-请使用 [az vmss create](/cli/azure/vmss) 命令创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，并生成 SSH 密钥（如果不存在）：
+请使用 [az vmss create](/cli/azure/vmss) 命令创建虚拟机规模集。 以下示例创建名为“myScaleSet”  的规模集，并生成 SSH 密钥（如果不存在）：
 
 ```azurecli-interactive
 az vmss create \
@@ -129,7 +129,7 @@ exit
 
 
 ## <a name="understand-vm-instance-images"></a>了解 VM 实例映像
-在教程开头创建规模集时，为 VM 实例指定的 `--image` 为 *UbuntuLTS*。 Azure Marketplace 包括许多可用于创建 VM 实例的映像。 若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image) 命令。
+在教程开头创建规模集时，为 VM 实例指定的 `--image` 为 *UbuntuLTS*。 Azure 市场包括许多可用于创建 VM 实例的映像。 若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image) 命令。
 
 ```azurecli-interactive
 az vm image list --output table
@@ -153,7 +153,7 @@ WindowsServer  MicrosoftWindowsServer  2012-Datacenter     MicrosoftWindowsServe
 WindowsServer  MicrosoftWindowsServer  2008-R2-SP1         MicrosoftWindowsServer:WindowsServer:2008-R2-SP1:latest         Win2008R2SP1         latest
 ```
 
-若要查看完整列表，请添加 `--all` 参数。 还可以按 `--publisher` 或 `–-offer` 筛选映像列表。 以下示例从列表中筛选出了产品/服务与“CentOS”相匹配的所有映像：
+若要查看完整列表，请添加 `--all` 参数。 还可以按 `--publisher` 或 `–-offer` 筛选映像列表。 以下示例从列表中筛选出了产品/服务与“CentOS”  相匹配的所有映像：
 
 ```azurecli-interactive
 az vm image list --offer CentOS --all --output table
@@ -172,7 +172,7 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170707   7.3.20170707
 CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 ```
 
-若要部署使用特定映像的规模集，请使用“Urn”列中的值。 指定映像时，可将映像版本号替换为 *latest*，以便选择最新的发行版。 在以下示例中，`--image` 参数用于指定最新版本的 CentOS 7.3 映像。
+若要部署使用特定映像的规模集，请使用“Urn”  列中的值。 指定映像时，可将映像版本号替换为 *latest*，以便选择最新的发行版。 在以下示例中，`--image` 参数用于指定最新版本的 CentOS 7.3 映像。
 
 由于只需数分钟即可创建和配置所有的规模集资源和 VM 实例，因此不需部署以下规模集：
 
@@ -252,7 +252,7 @@ az vmss scale \
     --new-capacity 3
 ```
 
-更新规模集容量需要花费数分钟。 若要查看规模集中目前包含的实例数，请使用 [az vmss show](/cli/azure/vmss) 并对 sku.capacity 进行查询：
+更新规模集容量需要花费数分钟。 若要查看规模集中目前包含的实例数，请使用 [az vmss show](/cli/azure/vmss) 并对 sku.capacity  进行查询：
 
 ```azurecli-interactive
 az vmss show \
