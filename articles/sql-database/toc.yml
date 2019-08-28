@@ -42,7 +42,7 @@
           href: sql-database-import.md
         - name: 将数据库备份还原到托管实例
           href: sql-database-managed-instance-get-started-restore.md
-    - name: Query
+    - name: 查询
       href: sql-database-connect-query.md
       items:
         - name: SSMS
@@ -238,7 +238,7 @@
     - name: 平台即服务
       items:
         - name: “平台即服务”文档
-          href: sql-database-paas.yml
+          href: sql-database-paas-index.yml
         - name: 业务连续性
           href: sql-database-business-continuity.md
         - name: 高可用性
