@@ -6,16 +6,15 @@ author: apwestgarth
 manager: stefsch
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 2af9575c50ee522d6330ddf46c75b666132b7a84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e67041ca78ba328fad132cc556b12d780eb9b318
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61021165"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095977"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Azure Functions 运行时概述（预览版）
 

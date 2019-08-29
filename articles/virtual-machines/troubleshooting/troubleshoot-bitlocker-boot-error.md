@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: c96c8ef5e5bd9758cf270946da1e90bb12e8bca0
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: b9ff0dfa98fb3b6f12974512e197142d44223b80
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998010"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080285"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
 
@@ -48,7 +47,7 @@ ms.locfileid: "69998010"
 如果此方法未能解决此问题，请执行以下步骤，手动还原 BEK 文件：
 
 1. 拍摄受影响的 VM 的系统磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
-2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤7中运行[manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde)命令, 必须在恢复 VM 中启用**BitLocker 驱动器加密**功能。
+2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤 7 中运行 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，必须在恢复 VM 中启用“BitLocker 驱动器加密”功能。
 
     附加托管磁盘时，可能会收到“包含加密设置，因此不能用作数据磁盘”错误消息。 在此情况下，运行以下脚本，重试附加磁盘：
 
@@ -120,7 +119,7 @@ ms.locfileid: "69998010"
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  若要使用 BEK 文件解锁附加的磁盘, 请运行以下命令。
+7.  若要使用 BEK 文件解锁附加磁盘，请运行以下命令。
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
@@ -200,7 +199,7 @@ ms.locfileid: "69998010"
     ########################################################################################################################
 
     #Get wrapped BEK and place it in JSON object to send to KeyVault REST API
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $keyVaultName -Name $secretName
+    $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $secretName
     $wrappedBekSecretBase64 = $keyVaultSecret.SecretValueText
     $jsonObject = @"
     {
@@ -210,7 +209,7 @@ ms.locfileid: "69998010"
     "@
 
     #Get KEK Url
-    $kekUrl = (Get-AzureKeyVaultKey -VaultName $keyVaultName -Name $kekName).Key.Kid;
+    $kekUrl = (Get-AzKeyVaultKey -VaultName $keyVaultName -Name $kekName).Key.Kid;
     $unwrapKeyRequestUrl = $kekUrl+ "/unwrapkey?api-version=2015-06-01";
 
     #Call KeyVault REST API to Unwrap 

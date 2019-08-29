@@ -12,12 +12,12 @@ metadata:
   author: eross-msft
   ms.author: lizross
   ms.date: 08/26/2019
-  ms.openlocfilehash: 687ae4b276b4e975c9b9de9d688f23180deaeebc
-  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.openlocfilehash: 168c8ad8acd1734aa06be111f42f4c0b2da92d3e
+  ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/27/2019
-  ms.locfileid: "70062199"
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70072664"
 landingContent:
 - title: 设置并使用 Microsoft Authenticator 应用
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
       url: user-help-auth-app-backup-recovery.md
     - text: 使用应用登录
       url: user-help-auth-app-sign-in.md
-- title: 设置并使用双重验证
+- title: 选择双重验证方法
   linkLists:
   - linkListType: overview
     links:
@@ -49,7 +49,7 @@ landingContent:
       url: multi-factor-authentication-end-user-manage-settings.md
     - text: 获取帮助
       url: multi-factor-authentication-end-user-troubleshoot.md
-- title: 设置并使用“我的应用”门户
+- title: 在“我的应用”门户中更新信息
   linkLists:
   - linkListType: overview
     links:
@@ -61,7 +61,7 @@ landingContent:
       url: my-apps-portal-end-user-update-profile.md
     - text: 获取帮助
       url: my-apps-portal-end-user-troubleshoot.md
-- title: 设置并使用安全信息（预览版）
+- title: 设置和管理安全信息（预览版）
   linkLists:
   - linkListType: overview
     links:
@@ -73,7 +73,7 @@ landingContent:
       url: security-info-add-update-methods-overview.md
     - text: 在登录提示过程中添加信息
       url: security-info-setup-signin.md
-- title: 设置并使用“我的个人资料”（预览版）
+- title: 在“我的个人资料”门户中管理信息（预览版）
   linkLists:
   - linkListType: overview
     links:

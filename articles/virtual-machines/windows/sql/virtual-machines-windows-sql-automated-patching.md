@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 91637ea26244dde8f1ce53c9cc3a614f13e45d1a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0900dd1809ecb1e93906b57483f334d0f12f6582
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855280"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102076"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)
 > [!div class="op_single_selector"]
@@ -81,7 +80,7 @@ ms.locfileid: "68855280"
 ### <a name="new-vms"></a>新的 VM
 在 Resource Manager 部署模型中创建新的 SQL Server 虚拟机时，可以使用 Azure 门户配置自动修补。
 
-在**SQL Server 设置**"选项卡中, 选择"**自动修补**"下的"**更改配置**"。 下面的 Azure 门户屏幕截图显示了“SQL 自动修补”边栏选项卡。
+在“SQL Server 设置”选项卡中，选择“自动修补”下的“更改配置”。 下面的 Azure 门户屏幕截图显示了“SQL 自动修补”边栏选项卡。
 
 ![Azure 门户中的 SQL 自动修补](./media/virtual-machines-windows-sql-automated-patching/azure-sql-arm-patching.png)
 

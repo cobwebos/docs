@@ -11,16 +11,15 @@ ms.assetid: 906a9c89-6866-496b-b4a4-f07fb39f990c
 ms.service: virtual-machines-linux
 ms.workload: na
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: dd6241f75311ea956b204b5181ae17db0ef3faa1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f02e1f73460140c9fe9f2cf6d7ffda26533d570d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710494"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090026"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>排查在 Azure 中新建 Linux 虚拟机时遇到的 Resource Manager 部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -43,7 +42,7 @@ ms.locfileid: "67710494"
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**Y：** 如果 OS 是通用的 Linux，并且它是上传和/或捕获使用通用设置，则不会有任何错误。 同理，如果 OS 是通用的 Linux，并且是使用专用设置上传和/或捕获的，则不会有任何错误。
+**Y：** 如果 OS 是通用的 Linux, 并且已上传和/或采用通用设置捕获, 则不会出现任何错误。 同理，如果 OS 是通用的 Linux，并且是使用专用设置上传和/或捕获的，则不会有任何错误。
 
 **上载错误：**
 
@@ -75,9 +74,9 @@ ms.locfileid: "67710494"
 * 以更小的 VM 大小重试请求。
 * 如果无法更改请求的 VM 大小：
   * 停止可用性集中的所有 VM。
-    单击“资源组” >  *你的资源组*  > “资源” >  *你的可用性集*  > “虚拟机” >  *你的虚拟机*  > “停止”。    
+    单击“资源组” >  *你的资源组*  > “资源” >  *你的可用性集*  > “虚拟机” >  *你的虚拟机*  > “停止”。
   * 所有 VM 都停止后，创建所需大小的新 VM。
-  * 先启动新 VM，选择每个已停止的 VM，并单击“启动”。 
+  * 先启动新 VM，选择每个已停止的 VM，并单击“启动”。
 
 **原因 2：** 群集没有空闲的资源。
 

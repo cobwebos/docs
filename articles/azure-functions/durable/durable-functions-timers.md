@@ -6,20 +6,19 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a05f75a7e38ee7cd4dc056629d9acaacad875e08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11edfc11fc1e54684a99774c21517d4c322348b1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730219"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087047"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions 中的计时器 (Azure Functions)
 
-[Durable Functions](durable-functions-overview.md) 提供了供在业务流程协调程序函数中使用的“持久计时器”，这些计时器用来为异步操作实现延迟或设置超时。  在业务流程协调程序函数中应当使用持久计时器，而不是使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript)。
+[Durable Functions](durable-functions-overview.md) 提供了供在业务流程协调程序函数中使用的“持久计时器”，这些计时器用来为异步操作实现延迟或设置超时。 在业务流程协调程序函数中应当使用持久计时器，而不是使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript)。
 
 通过在 .NET 中调用 [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) 的 [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) 方法或在 JavaScript 中调用 `DurableOrchestrationContext` 的 `createTimer` 方法来创建持久计时器。 该方法返回一个将在指定的日期和时间恢复运行的任务。
 
@@ -132,7 +131,7 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> 使用 `CancellationTokenSource` 取消持久计时器 (C#) 或对返回的 `TimerTask` (JavaScript) 调用 `cancel()`（如果你的代码不会等待它完成）。 Durable Task Framework 不会更改业务流程的状态为"已完成"，直到所有未完成的任务都完成或已取消。
+> 使用 `CancellationTokenSource` 取消持久计时器 (C#) 或对返回的 `TimerTask` (JavaScript) 调用 `cancel()`（如果你的代码不会等待它完成）。 在完成或取消所有未完成的任务之前, 持久性任务框架不会将业务流程的状态更改为 "已完成"。
 
 此机制实际上不会终止正在进行的活动函数执行。 它只是允许业务流程协调程序函数忽略结果并继续运行。 如果函数应用使用了消耗计划，则还需要为已放弃的活动函数消耗的任何时间和内存付费。 默认情况下，在消耗计划中运行的函数有五分钟的超时。 如果超出了此限制，则会回收 Azure Functions 主机以停止所有执行并防止出现费用失控的情况。 [函数超时是可配置的](../functions-host-json.md#functiontimeout)。
 

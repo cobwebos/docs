@@ -9,17 +9,16 @@ ms.assetid: 9e21a7e4-2436-4e81-bb05-4a6ba70eeaf7
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba34638bbdb838adc6f1e61b1f8b07a6915815c0
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: f40043b920fab4cb38f935618c7aaecc6bf40a87
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540784"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069713"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>证书和应用服务环境 
 
@@ -55,7 +54,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
     $fileName = "exportedcert.pfx"
     Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
-当创建自签名证书时，将需要确保使用者名称格式为 CN = {ASE_NAME_HERE} _InternalLoadBalancingASE。
+创建自签名证书时, 需要确保使用者名称的格式为 CN = {ASE_NAME_HERE} _InternalLoadBalancingASE。
 
 ## <a name="application-certificates"></a>应用程序证书 
 
@@ -85,7 +84,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
     84EC242A4EC7957817B8E48913E50953552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
 
-配置了该设置的应用所在的同一个应用服务计划中的所有应用都可以使用该证书。 如果需要将该证书提供给不同应用服务计划中的应用使用，则需要在该应用服务计划中的应用上重复“应用设置”操作。 若要检查设置证书，然后转到 Kudu 控制台 PowerShell 调试控制台中的以下命令：
+配置了该设置的应用所在的同一个应用服务计划中的所有应用都可以使用该证书。 如果需要将该证书提供给不同应用服务计划中的应用使用，则需要在该应用服务计划中的应用上重复“应用设置”操作。 若要检查是否已设置证书, 请在 PowerShell 调试控制台中转到 Kudu 控制台并发出以下命令:
 
     dir cert:\localmachine\root
 

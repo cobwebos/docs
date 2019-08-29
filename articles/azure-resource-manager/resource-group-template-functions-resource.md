@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: eddd99be9d4a30e3e71c806a3f98c6be6800e8fb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650418"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095752"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -188,7 +188,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 如果在有条件部署的资源中使用 **list** 函数，则会对该函数进行评估，即使资源尚未部署。 如果 **list** 函数引用某个不存在的资源，则会出现错误。 使用 **if** 函数确保仅在部署资源时才评估函数。 请查看示例模板的 [if 函数](resource-group-template-functions-logical.md#if)，该模板将 if 和 list 用于进行条件部署的资源。
 
-### <a name="example"></a>示例
+### <a name="list-example"></a>列表示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json)演示如何从 outputs 节中的存储帐户返回主密钥和辅助密钥。 它还为存储帐户返回 SAS 令牌。 
 
@@ -265,7 +265,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |是 |string |提供程序的命名空间 |
 | resourceType |否 |string |指定的命名空间中的资源类型。 |
@@ -284,7 +284,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 不保证返回值的数组排序。
 
-### <a name="example"></a>示例
+### <a name="providers-example"></a>提供程序示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json)演示如何使用 provider 函数：
 
@@ -433,7 +433,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 正确，`Microsoft.Compute/virtualMachines/extensions/myVM/myExt` 不正确
 
-### <a name="example"></a>示例
+### <a name="reference-example"></a>参考示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json)部署一个资源并引用该资源。
 
@@ -600,7 +600,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 还可以使用 resourceGroup 函数将资源组中的标记应用于资源。 有关详细信息, 请参阅[从资源组应用标记](resource-group-using-tags.md#apply-tags-from-resource-group)。
 
-### <a name="example"></a>示例
+### <a name="resource-group-example"></a>资源组示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json)返回资源组的属性。
 
@@ -640,7 +640,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
 | resourceGroupName |否 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 |
@@ -737,7 +737,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 }
 ```
 
-### <a name="example"></a>示例
+### <a name="resource-id-example"></a>资源 ID 示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json)返回资源组中存储帐户的资源 ID：
 
@@ -795,7 +795,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 }
 ```
 
-### <a name="example"></a>示例
+### <a name="subscription-example"></a>订阅示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json)显示了在 outputs 节中调用的 subscription 函数。 
 

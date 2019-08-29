@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27e75ac256cf71441e00a004bb2331277aa07b43
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fada16b3ca5307a28eebca4dfe97dc96ba389212
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710026"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098698"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -209,7 +208,7 @@ ms.locfileid: "67710026"
 > ![Windows][Logo_Windows] Windows
 >
 
-2016 年 9 月，Microsoft 发布了一项功能可以通过使用管理多个虚拟 IP 地址[Azure 内部负载均衡器][load-balancer-multivip-overview]。 Azure 外部负载均衡器已包含此功能。 
+2016年9月, Microsoft 发布了一项功能, 可在其中使用[Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址。 Azure 外部负载均衡器已包含此功能。 
 
 在 SAP 部署中，必须使用内部负载均衡器为 SAP 中心服务 (ASCS/SCS) 实例创建 Windows 群集配置。
 
@@ -227,9 +226,9 @@ ms.locfileid: "67710026"
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-已配置 WSFC 群集，通过文件共享用于一个 SAP ASCS/SCS 实例，如下图所示  。
+已配置 WSFC 群集，通过文件共享用于一个 SAP ASCS/SCS 实例，如下图所示。
 
 ![高可用性 SAP ASCS/SCS 实例][sap-ha-guide-figure-6001]
 
@@ -389,7 +388,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 1. 将相同大小的一个或多个附加磁盘（需要条带化）添加到每个群集节点，并将其格式化。
 2. 使用 SIOS DataKeeper 配置存储复制。
 
-此过程假设已在 WSFC 群集计算机上安装 SIOS DataKeeper。 如果已安装，现在必须配置计算机之间的复制。 中详细介绍该过程[安装 SAP ASCS/SCS 群集共享磁盘为 SIOS DataKeeper Cluster Edition][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios]。  
+此过程假设已在 WSFC 群集计算机上安装 SIOS DataKeeper。 如果已安装，现在必须配置计算机之间的复制。 [适用于 SAP ASCS/SCS 群集共享磁盘的安装 SIOS DataKeeper Cluster Edition][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios]中详细介绍了此过程。  
 
 ![新 SAP ASCS/SCS 共享磁盘的 DataKeeper 同步镜像][sap-ha-guide-figure-6006]
 
@@ -402,7 +401,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 ## <a name="install-an-sap-netweaver-multi-sid-system"></a>安装 SAP NetWeaver 多 SID 系统
 
-有关安装第二个 SAP SID2 系统的完整过程的说明，请参阅[SAP NetWeaver HA 安装 Windows 故障转移群集和共享的磁盘为 SAP ASCS/SCS 实例][sap-high-availability-installation-wsfc-shared-disk]。
+有关安装第二个 SAP SID2 系统的完整过程的说明, 请参阅 sap [ASCS/SCS 实例的 Windows 故障转移群集和共享磁盘上的 Sap NETWEAVER HA 安装][sap-high-availability-installation-wsfc-shared-disk]。
 
 概要过程如下所述：
 
@@ -421,13 +420,13 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
  此步骤在现有 WSFC 群集节点 2 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。 若要安装第二个群集，请按照 SAP 安装指南中的步骤操作。
 
 6. 打开 SAP ASCS/SCS 实例的 Windows 防火墙端口和探测端口。  
-    在用于 SAP ASCS/SCS 实例的两个群集节点上，打开 SAP ASCS/SCS 使用的所有 Windows 防火墙端口。 一章中列出了这些 SAP ASCS/SCS 实例端口[SAP ASCS / SCS 端口][sap-net-weaver-ports-ascs-scs-ports]。
+    在用于 SAP ASCS/SCS 实例的两个群集节点上，打开 SAP ASCS/SCS 使用的所有 Windows 防火墙端口。 [SAP ASCS/Scs 端口][sap-net-weaver-ports-ascs-scs-ports]一章中列出了这些 sap ASCS/scs 实例端口。
 
-    所有其他 SAP 端口的列表，请参阅[所有 SAP 产品的 TCP/IP 端口][sap-net-weaver-ports]。  
+    有关所有其他 SAP 端口的列表, 请参阅[所有 sap 产品的 tcp/ip 端口][sap-net-weaver-ports]。  
 
-    此外，打开 Azure 内部负载均衡器探测端口，在本例中为 62350。 它被描述[这篇文章中][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port]。
+    此外，打开 Azure 内部负载均衡器探测端口，在本例中为 62350。 [本文对此][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port]进行了介绍。
 
-7. [更改 SAP 评估收据结算 (ERS) Windows 服务实例的启动类型][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type]。
+7. [更改 SAP 评估接收结算 (ERS) Windows 服务实例的启动类型][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type]。
 
 8. 在新的专用 VM 上安装 SAP 主应用程序服务器，如 SAP 安装指南中所述。  
 
@@ -438,4 +437,4 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 ## <a name="next-steps"></a>后续步骤
 
 - [网络限制：Azure Resource Manager][networking-limits-azure-resource-manager]
-- [负载均衡器适用于 Azure 的多个 Vip][load-balancer-multivip-overview]
+- [Azure 负载均衡器的多个 Vip][load-balancer-multivip-overview]

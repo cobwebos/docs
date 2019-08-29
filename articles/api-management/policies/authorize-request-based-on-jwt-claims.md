@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: d656cf7c7bed1d40bbde654f9c2484efcc5df25d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd99d9ed3eebe6ada60511b3f16c53b0d57a65d6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61062144"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067811"
 ---
 # <a name="authorize-access-based-on-jwt-claims"></a>基于 JWT 声明授权访问权限
 
@@ -26,7 +25,7 @@ ms.locfileid: "61062144"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中  。
+将代码粘贴到“入站”块中。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Pre-authorize requests based on HTTP method with validate-jwt.policy.xml)]
 

@@ -8,18 +8,17 @@ manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 3271804a80ededae650c3b6ad34fdb7f9f1e5b18
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7e23b71edd05154f3c19a097ebf92c690426c777
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708625"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100779"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中 Linux VM 的时间同步
 
@@ -36,7 +35,7 @@ Azure 由运行 Windows Server 2016 的基础结构提供支持。 Windows Serve
 
 计算机时钟的准确性根据计算机时钟与协调世界时 (UTC) 时间标准的接近程度来测量。 UTC 由多国的精确原子钟示例定义，300 年误差仅一秒。 但是，直接读取 UTC 需要专用的硬件。 相反，时间服务器与 UTC 同步，并可从其他计算机访问，以提供可伸缩性和可靠性。 每台计算机都运行时间同步服务，该服务知道要使用什么时间服务器，并定期检查计算机时钟是否需要校正以及在需要时调整时间。 
 
-Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Microsoft 拥有的带 GPS 天线的 Stratum 1 设备获取时间。 Azure 中的虚拟机可以依赖其主机将准确时间（主机时间）传递给 VM，也可以直接从时间服务器中获取时间，或结合使用这两种方式  。 
+Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Microsoft 拥有的带 GPS 天线的 Stratum 1 设备获取时间。 Azure 中的虚拟机可以依赖其主机将准确时间（主机时间）传递给 VM，也可以直接从时间服务器中获取时间，或结合使用这两种方式。 
 
 在独立硬件上，Linux OS 仅在启动时读取主机硬件时钟。 在此之后，使用 Linux 内核中的中断计时器维护时钟。 在此配置中，时钟将随时间推移发生偏移。 在 Azure 上较新的 Linux 发行版中，VM 可以使用 Linux 集成服务 (LIS) 中包含的 VMICTimeSync 提供程序来更频繁地查询来自主机的时钟更新。
 
@@ -63,7 +62,7 @@ Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Micro
 
 默认情况下，大多数适用于 Linux 的 Azure 市场映像都配置为从两个源同步： 
 
-- NTP 作为主服务器，从 NTP 服务器获取时间。 例如，Ubuntu 16.04 LTS 市场映像使用 ntp.ubuntu.com  。
+- NTP 作为主服务器，从 NTP 服务器获取时间。 例如，Ubuntu 16.04 LTS 市场映像使用 ntp.ubuntu.com。
 - VMICTimeSync 服务作为辅助服务器，用于将主机时间传递给 VM，并在 VM 暂停以进行维护后进行校正。 Azure 主机使用 Microsoft 拥有的 Stratum 1 设备来保持准确的时间。
 
 在较新的 Linux 发行版中，VMICTimeSync 服务使用精确时间协议 (PTP)，但早期发行版可能不支持 PTP，将回退到 NTP 以从主机获取时间。
@@ -124,17 +123,17 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ls /sys/class/ptp
 ```
 
-在此示例中，返回的值为 ptp0，因此我们使用它来检查时钟名称  。 要验证设备，请检查时钟名称。
+在此示例中，返回的值为 ptp0，因此我们使用它来检查时钟名称。 要验证设备，请检查时钟名称。
 
 ```bash
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-这应返回 hyperv  。
+这应返回 hyperv。
 
 ### <a name="chrony"></a>chrony
 
-在 Red Hat Enterprise Linux 和 CentOS 7.x 上，[chrony](https://chrony.tuxfamily.org/) 配置为使用 PTP 源时钟。 网络时间协议守护程序 (ntpd) 不支持 PTP 源，因此建议使用 chronyd  。 要启用 PTP，请更新 chrony.conf  。
+在 Red Hat Enterprise Linux 和 CentOS 7.x 上，[chrony](https://chrony.tuxfamily.org/) 配置为使用 PTP 源时钟。 网络时间协议守护程序 (ntpd) 不支持 PTP 源，因此建议使用 chronyd。 要启用 PTP，请更新 chrony.conf。
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
@@ -144,7 +143,7 @@ refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 
 有关 chrony 的详细信息，请参阅[使用 chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)。
 
-如果同时启用了 chrony 和 TimeSync 源，则可以将其中一个源标记为“首选”，将另一个源设置为备份  。 由于 NTP 服务只会在很长一段时间后才会更新偏差较大的时钟，因此与仅基于 NTP 的工具相比，VMICTimeSync 可更快地从暂停的 VM 事件中恢复时钟。
+如果同时启用了 chrony 和 TimeSync 源，则可以将其中一个源标记为“首选”，将另一个源设置为备份。 由于 NTP 服务只会在很长一段时间后才会更新偏差较大的时钟，因此与仅基于 NTP 的工具相比，VMICTimeSync 可更快地从暂停的 VM 事件中恢复时钟。
 
 
 ### <a name="systemd"></a>systemd 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5ad912b1cee5495e18a5eb2da4d981eadd74dd7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559473"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066429"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>通过语音 SDK 转录多参与者对话
 
@@ -25,7 +25,9 @@ ms.locfileid: "68559473"
 
 * Windows、Linux 和 Android C++上C#的、和 Java 支持会话 transcriber。
 * ROOBO DevKit 是支持用于创建会话转录的硬件环境, 因为它提供了环形多麦克风阵列, 可以有效地利用该阵列来识别演讲者。 [有关详细信息, 请参阅语音设备 SDK](speech-devices-sdk.md)。
-* 对会话脚本的语音 SDK 支持仅限于使用带有8个16位 16 kHz 音频 PCM 音频通道的音频拉取和推送模式流。
+* 对会话脚本的语音 SDK 支持仅限于带有8个通道的16位 16 kHz PCM 音频的音频拉取和推送模式流。 目前, 仅支持将这些工具包用于8声道音频捕获:
+   * [ROOBO 智能音频圆形 7-Mic 深色](https://ddk.roobo.com/)
+   * [Azure KINECT 深色](https://azure.microsoft.com/en-in/services/kinect-dk/)。
 * 会话脚本目前在以下区域的 "en-us" 和 "zh-chs" 语言中提供: centralus 和 eastasia。
 
 ## <a name="prerequisites"></a>先决条件

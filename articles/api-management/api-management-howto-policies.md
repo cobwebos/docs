@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 99f756b5415811b3d4c2ee0167f98b31c905df1a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657675"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072304"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的策略
 
@@ -35,7 +34,7 @@ ms.locfileid: "60657675"
 单击启用的语句会在定义视图中的光标位置添加相应的 XML。 
 
 > [!NOTE]
-> 如果无法启用要添加的策略，请确保为该策略设置的范围是正确的。 每个策略语句都设计为在特定范围和策略部分中使用。 若要查看某个策略的策略部分和范围，请参阅[策略参考][Policy Reference]中该策略的“用法”  部分。
+> 如果无法启用要添加的策略，请确保为该策略设置的范围是正确的。 每个策略语句都设计有特定的使用范围，需在特定的策略部分使用。 若要查看某个策略的策略部分和范围, 请在 "[策略参考][Policy Reference]" 中查看该策略的 "**使用情况**" 部分。
 > 
 > 
 
@@ -93,7 +92,7 @@ ms.locfileid: "60657675"
 
 ### <a name="restrict-incoming-requests"></a>限制传入的请求
 
-要添加新的语句以限制到指定 IP 地址的入站请求，请将光标置于 `inbound` XML 元素的内容中，然后单击“限制调用方 IP”语句。 
+要添加新的语句以限制到指定 IP 地址的入站请求，请将光标置于 `inbound` XML 元素的内容中，然后单击“限制调用方 IP”语句。
 
 ![限制策略][policies-restrict]
 

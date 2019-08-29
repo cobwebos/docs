@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 3333e830-8a60-42f5-9f44-8e02e9868d7b
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aeb97d661d330ed6afb3ca5e5e1eb924dacc4024
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: da40b635b0fc094275d8d46b8c5ad6d3d90bea24
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607700"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101816"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>在 Azure 虚拟机（经典）中对 SQL Server 进行自动备份
 > [!div class="op_single_selector"]
@@ -35,7 +34,7 @@ ms.locfileid: "60607700"
 > [!IMPORTANT] 
 > Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 若要查看本文中的 Resource Manager 版本，请参阅[在 Azure 虚拟机 Resource Manager 中对 SQL Server 进行自动备份](../sql/virtual-machines-windows-sql-automated-backup.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要使用自动备份，请考虑以下先决条件：
 
 **操作系统**：
@@ -75,7 +74,7 @@ ms.locfileid: "60607700"
 | **加密** |启用/禁用（已禁用） |启用或禁用加密。 启用加密时，用于还原备份的证书使用相同的命名约定存放在同一 automaticbackup 容器中的指定存储帐户内。 如果密码发生更改，将使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
 | **密码** |密码文本（无） |加密密钥的密码。 仅当启用了加密时才需要此设置。 若要还原加密的备份，必须具有创建该备份时使用的正确密码和相关证书。 |
 | **备份系统数据库** | 启用/禁用（已禁用） | 完整备份 Master、Model 和 MSDB |
-| **配置备份计划** | 手动/自动（自动） | 选择“自动”  可根据日志增长自动进行完整备份和日志备份。 选择“手动”  可指定完整备份和日志备份的计划。 |
+| **配置备份计划** | 手动/自动（自动） | 选择“自动”可根据日志增长自动进行完整备份和日志备份。 选择“手动”可指定完整备份和日志备份的计划。 |
 
 ## <a name="configuration-with-powershell"></a>使用 PowerShell 进行配置
 在下面的 PowerShell 示例中，为现有 SQL Server 2014 VM 配置了自动备份。 **New-AzureVMSqlServerAutoBackupConfig** 命令会自动备份设置配置为在 $storageaccount 变量指定的 Azure 存储帐户中存储备份。 这些备份将保留 10 天。 **Set-AzureVMSqlServerExtension** 命令使用这些设置更新指定的 Azure VM。
