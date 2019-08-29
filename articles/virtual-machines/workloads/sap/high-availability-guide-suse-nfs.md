@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 93644b9a3487906a27db70bfe82cceccdc7ab45c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7af5663b399556d66f86213310858780369215af
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707230"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101058"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 
@@ -52,7 +51,7 @@ ms.locfileid: "67707230"
 [sap-hana-ha]:sap-hana-high-availability.md
 
 本文介绍了如何部署虚拟机、配置虚拟机、安装群集框架，以及安装可用来存储高度可用的 SAP 系统的共享数据的高度可用的 NFS 服务器。
-本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的高度可用的 NFS 服务器。 在示例中的资源 （例如虚拟机、 虚拟网络） 名称假定使用了[SAP 文件服务器模板][template-file-server]与资源前缀**prod**。
+本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的高度可用的 NFS 服务器。 示例中的资源名称 (例如虚拟机、虚拟网络) 假设你已将[SAP 文件服务器模板][template-file-server]用于资源前缀 "**生产**"。
 
 请先阅读以下 SAP 说明和文档
 
@@ -71,13 +70,13 @@ ms.locfileid: "67707230"
 * SAP 说明 [1984787] 包含有关 SUSE Linux Enterprise Server 12 的一般信息。
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
-* [Azure 虚拟机规划和实施适用于 Linux 上的 SAP][planning-guide]
-* [适用于 Linux （详见本文） 上的 SAP 的 azure 虚拟机部署][deployment-guide]
-* [适用于 Linux 上的 SAP 的 azure 虚拟机 DBMS 部署][dbms-guide]
-* [SUSE Linux Enterprise 高可用性扩展 12 SP3 最佳实践指南][sles-hae-guides]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署 (本文)][deployment-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
+* [SUSE Linux Enterprise High Availability Extension 12 SP3 最佳实践指南][sles-hae-guides]
   * 使用 DRBD 和 Pacemaker 的高度可用 NFS 存储
-* [SUSE Linux Enterprise Server for SAP 应用程序 12 SP3 最佳实践指南][sles-for-sap-bp]
-* [SUSE High Availability Extension 12 SP3 发行说明][suse-ha-12sp3-relnotes]
+* [SAP 应用程序的 SUSE Linux Enterprise Server 12 SP3 最佳做法指南][sles-for-sap-bp]
+* [SUSE 高可用性扩展 12 SP3 发行说明][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>概述
 
@@ -110,7 +109,7 @@ NFS 服务器为使用此 NFS 服务器的每个 SAP 系统使用专用的虚拟
 Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。
 可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
 
-1. 打开[SAP 文件服务器模板][template-file-server]在 Azure 门户中   
+1. 在 Azure 门户中打开[SAP 文件服务器模板][template-file-server]   
 1. 输入以下参数
    1. 资源前缀  
       输入想要使用的前缀。 此值将用作所要部署的资源的前缀。
@@ -121,7 +120,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    4. 管理员用户名和管理员密码  
       创建可用于登录计算机的新用户。
    5. 子网 ID  
-      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;    
+      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -169,7 +168,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          1. 打开负载均衡器，选择负载均衡规则，并单击“添加”
          1. 输入新的负载均衡器规则的名称（例如 **nw1-lb-2049**）
          1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **nw1-frontend**）
-         1. 将协议保留为“TCP”  ，输入端口 **2049**
+         1. 将协议保留为“TCP”，输入端口 **2049**
          1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
@@ -181,7 +180,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          * 为 NW2 针对端口 2049 和 UDP 重复上述步骤
 
 > [!IMPORTANT]
-> 不要启用 TCP 放置在 Azure 负载均衡器之后的 Azure Vm 上的时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数设置**net.ipv4.tcp_timestamps**到**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.tcp _timestamps**设置为**0**。 有关详细信息, 请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 
@@ -189,9 +188,9 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 ### <a name="configure-nfs-server"></a>配置 NFS 服务器
 
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2    。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2。
 
-1. [A] 设置主机名称解析 
+1. [A] 设置主机名称解析
 
    可以使用 DNS 服务器，或修改所有节点上的 /etc/hosts。 此示例演示如何使用 /etc/hosts 文件。
    请替换以下命令中的 IP 地址和主机名
@@ -215,7 +214,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo mkdir /srv/nfs/
    </code></pre>
 
-1. [A] 安装 drbd 组件 
+1. [A] 安装 drbd 组件
 
    <pre><code>sudo zypper install drbd drbd-kmp-default drbd-utils
    </code></pre>
@@ -239,7 +238,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun1'
    </code></pre>
 
-1. [A] 创建 LVM 配置 
+1. [A] 创建 LVM 配置
 
    列出所有可用的分区
 
@@ -378,25 +377,25 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo drbdadm up <b>NW2</b>-nfs
    </code></pre>
 
-1. [1] 跳过初始同步 
+1. [1] 跳过初始同步
 
    <pre><code>sudo drbdadm new-current-uuid --clear-bitmap <b>NW1</b>-nfs
    sudo drbdadm new-current-uuid --clear-bitmap <b>NW2</b>-nfs
    </code></pre>
 
-1. [1] 设置主节点 
+1. [1] 设置主节点
 
    <pre><code>sudo drbdadm primary --force <b>NW1</b>-nfs
    sudo drbdadm primary --force <b>NW2</b>-nfs
    </code></pre>
 
-1. [1] 等待新的 drbd 设备完成同步 
+1. [1] 等待新的 drbd 设备完成同步
 
    <pre><code>sudo drbdsetup wait-sync-resource NW1-nfs
    sudo drbdsetup wait-sync-resource NW2-nfs
    </code></pre>
 
-1. [1] 在 drbd 设备上创建文件系统 
+1. [1] 在 drbd 设备上创建文件系统
 
    <pre><code>sudo mkfs.xfs /dev/drbd0
    sudo mkdir /srv/nfs/NW1
@@ -539,8 +538,8 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 ## <a name="next-steps"></a>后续步骤
 
 * [安装 SAP ASCS 和数据库](high-availability-guide-suse.md)
-* [Azure 虚拟机规划和实施适用于 SAP][planning-guide]
-* [适用于 SAP 的 azure 虚拟机部署][deployment-guide]
-* [适用于 SAP 的 azure 虚拟机 DBMS 部署][dbms-guide]
+* [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
+* [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
-* 若要了解如何建立高可用性以及 Azure Vm 上的 SAP HANA 的灾难恢复计划，请参阅[SAP HANA 的高可用性在 Azure 虚拟机 (Vm)][sap-hana-ha]
+* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复, 请参阅[Azure 虚拟机 (vm) 上的 SAP HANA 的高可用性][sap-hana-ha]

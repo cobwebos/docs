@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-service-management
 ms.assetid: b73be387-9323-4e08-be53-6e5928e3786e
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ad8b59a9290c533a3687b5ff8956d8682fb6d9e9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a4c7c29736cdd80ef7ebe413a377aba630d61858
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607840"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101871"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>使用 Azure PowerShell 预配 SQL Server 虚拟机（经典）
 
@@ -80,7 +79,7 @@ ms.locfileid: "60607840"
    > [!NOTE]
    > 如果需要新的存储帐户，首先请使用 New-AzureStorageAccount 命令创建一个全部小写的存储帐户名称，如以下示例所示：`New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
 
-4. 将目标存储帐户名称分配给 **$staccount**。 然后使用 Set-AzureSubscription 设置订阅和当前存储帐户  。
+4. 将目标存储帐户名称分配给 **$staccount**。 然后使用 Set-AzureSubscription 设置订阅和当前存储帐户。
 
    ```powershell
    $staccount="<storage account name>"
@@ -142,7 +141,7 @@ ms.locfileid: "60607840"
 
 ## <a name="example-powershell-script"></a>PowerShell 脚本示例
 
-以下脚本提供完整脚本的示例，该脚本在 Windows Server 2012 R2 虚拟机上创建 SQL Server 2016 RTM Enterprise  。 如果使用此脚本，必须根据本主题中之前的步骤自定义初始变量。
+以下脚本提供完整脚本的示例，该脚本在 Windows Server 2012 R2 虚拟机上创建 SQL Server 2016 RTM Enterprise。 如果使用此脚本，必须根据本主题中之前的步骤自定义初始变量。
 
 ```powershell
 # Customize these variables based on your settings and requirements:

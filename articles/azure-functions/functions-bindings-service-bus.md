@@ -8,16 +8,15 @@ manager: gwallace
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 3d5b2afd642a7eb042b2e6e07ef93a505f6b9648
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: f2bdfab82e1b9fb05d74f69536ec672a4b18a4bf
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774702"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114380"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -367,7 +366,7 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 
 服务总线触发器提供了几个[元数据属性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 类的属性。
 
-|属性|type|描述|
+|属性|类型|描述|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|传递次数。|
 |`DeadLetterSource`|`string`|死信源。|
@@ -715,14 +714,19 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 * `out T paramName` - `T` 可以是任何可 JSON 序列化的类型。 如果函数退出时参数值为 null，Functions 将创建具有 null 对象的消息。
 * `out string` - 如果函数退出时参数值为 null，Functions 不创建消息。
 * `out byte[]` - 如果函数退出时参数值为 null，Functions 不创建消息。
-* `out BrokeredMessage` - 如果函数退出时参数值为 null，Functions 不创建消息。
+* `out BrokeredMessage`-如果函数退出时参数值为 null, 则函数不会创建消息 (对于函数 1.x)
+* `out Message`-如果函数退出时参数值为 null, 则函数不会创建消息 (对于函数 1.x)
 * `ICollector<T>` 或 `IAsyncCollector<T>` - 用于创建多条消息。 调用 `Add` 方法时创建了一条消息。
 
-在异步函数中，请使用返回值或 `IAsyncCollector` 而非 `out` 参数。
+使用C#函数时:
 
-这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x，请使用 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
+* 异步函数需要返回值`IAsyncCollector` , 而不`out`是参数。
 
-在 JavaScript 中通过 `context.bindings.<name from function.json>` 访问队列或主题。 可以向 `context.binding.<name>` 分配一个字符串、字节数组或 Javascript 对象（反序列化为 JSON）。
+* 若要访问会话 ID, 请绑定到[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)类型并`sessionId`使用属性。
+
+在 JavaScript 中通过 `context.bindings.<name from function.json>` 访问队列或主题。 可以将字符串、字节数组或 JavaScript 对象 (反序列化为 JSON) 分配给`context.binding.<name>`。
+
+若要将消息以非C#语言发送到已启用会话的队列, 请使用[AZURE 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) , 而不是内置的输出绑定。
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 

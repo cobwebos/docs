@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 656bc8329d6273695e4da24a7e7d13c9df6a1080
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 73bf7424e7c1aedff271ed3653592d174416003c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846605"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090189"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 GRUB 是指 GRand 统一引导加载程序，它可能是你在启动 VM 时看到的第一个事物。 因为它是在操作系统启动之前显示的，因此无法通过 SSH 进行访问。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 95df72875338b6964f42075404cf9c30ba132f9d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900210"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099433"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -105,6 +105,8 @@ ms.locfileid: "69900210"
 
 ### <a name="integration-service-environment-ise"></a>Integration service 环境 (ISE)
 
+下面是高级 SKU 的吞吐量限制:
+
 | 姓名 | 限制 | 说明 |
 |------|-------|-------|
 | 基本单位执行限制 | 当基础结构容量达到 80% 时系统受到限制 | 提供 ~ 4000 每分钟执行的操作, 即每月约160000000个操作执行 | |
@@ -113,6 +115,9 @@ ms.locfileid: "69900210"
 ||||
 
 若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
+
+> [!NOTE]
+> 由于此 SKU 没有任何服务级别协议 (SLA) 或扩展功能,[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)没有发布的限制。 仅将此 SKU 用于试验、开发和测试, 而不是生产或性能测试。
 
 <a name="request-limits"></a>
 
@@ -181,10 +186,10 @@ ms.locfileid: "69900210"
 
 * 每个 ISE, 无论是[开发人员还是高级版](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), 都限于5个集成帐户:
 
-  | ISE SKU | 限制 |
-  |---------|-------|
-  | **高级** | 5 total-仅限[标准版](../logic-apps/logic-apps-pricing.md#integration-accounts), 无免费版或基本版 |
-  | **开发人员** | 5总计-免费 (限制为 1) 和/或标准, 但不包括基本 |
+  | ISE SKU | 集成帐户限制 |
+  |---------|----------------------------|
+  | **高级** | 仅限5个[标准](../logic-apps/logic-apps-pricing.md#integration-accounts)帐户, 包括免费的一个标准帐户。 不允许免费帐户或基本帐户。 |
+  | **开发人员** | 5总计-[免费](../logic-apps/logic-apps-pricing.md#integration-accounts)(限制为1个帐户) 和[标准](../logic-apps/logic-apps-pricing.md#integration-accounts)组合或所有标准帐户。 不允许使用基本帐户。 使用[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)进行试验、开发和测试, 但不适用于生产或性能测试。 |
   |||
 
 额外费用适用于你在 ISE 附带的集成帐户之外添加的集成帐户。 若要了解 ISEs 的定价和计费工作原理, 请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率, 请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。

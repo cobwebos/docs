@@ -7,19 +7,18 @@ author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01001336e166d5eb2c7dff845b80da2174225a25
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 24404d6b55f83f96d8e2601afd35b2dec00cc7e9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234427"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099737"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA（大型实例）网络体系结构
 
@@ -76,7 +75,7 @@ Azure 中 SAP 部署的差别如下：
 
 在 HANA 大型实例戳记的修订版3中, Vm 与 HANA 大型实例单元之间经历的网络延迟可能高于典型的 VM 到 VM 网络往返延迟。 根据 Azure 区域, 测量到的值可能超过 0.7-ms 双程延迟, 其分类方式为[SAP 说明 #1100926-FAQ:网络性能](https://launchpad.support.sap.com/#/notes/1100926/E)。 依赖于 Azure 区域和工具来测量 Azure VM 和 HANA 大型实例单元之间的网络往返延迟，所测量的延迟可以达到或大约 2 毫秒。 尽管如此，客户在 SAP HANA 大型实例上部署基于 SAP HANA 的生产型 SAP 应用程序很成功。 请确保在 Azure HANA 大型实例中对自己的业务流程进行彻底的测试。 称为 ExpressRoute 快速路径的一项新功能, 它能够减少 Azure 中 HANA 大型实例和应用程序层 Vm 之间的网络延迟 (见下文)。 
 
-在 hana 大型实例标记的修订版4中, 与 hana 大型实例戳记接近的 Azure vm 之间的网络延迟, 如 SAP 说明 # 中[所述。1100926-常见问题解答:如果配置](https://launchpad.support.sap.com/#/notes/1100926/E)了 Azure ExpressRoute 快速路径, 则为网络性能 (请参阅下文)。 若要部署接近于版本4的 HANA 大型实例单元的 Azure Vm, 需利用[Azure 邻近性放置组](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)。 [有关 sap 应用程序的最佳网络延迟的 Azure 邻近性放置组中介绍了如何使用近程放置组查找同一 azure 数据中心内的 SAP 应用程序层](sap-proximity-placement-scenarios.md).
+在 hana 大型实例戳记的修订版4中, 与 hana 大型实例戳记接近的 Azure vm 之间的网络延迟, 如 SAP 说明中[所述, 可以满足平均分类或比平均分类更好的分类#1100926-常见问题:如果配置](https://launchpad.support.sap.com/#/notes/1100926/E)了 Azure ExpressRoute 快速路径, 则为网络性能 (请参阅下文)。 若要部署接近于版本4的 HANA 大型实例单元的 Azure Vm, 需利用[Azure 邻近性放置组](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)。 [有关 sap 应用程序的最佳网络延迟的 Azure 邻近性放置组中介绍了如何使用近程放置组查找同一 azure 数据中心内的 SAP 应用程序层](sap-proximity-placement-scenarios.md).
 
 若要在 Vm 和 HANA 大型实例之间提供确定性网络延迟, 请选择 ExpressRoute 网关 SKU。 不同于本地与 VM 之间的流量模式，VM 与 HANA 大型实例之间的流量模式可能是这样的：一开始流量很小，但随着要传输的请求和数据量的增多，可能会出现流量突然增高的迸发现象。 为了应对这种迸发现象，我们强烈建议使用 UltraPerformance 网关 SKU。 对于类型 II 类 HANA 大型实例 Sku, 将 UltraPerformance 网关 SKU 用作 Expressroute 网关是必需的。
 
@@ -136,7 +135,7 @@ Azure 中 SAP 部署的差别如下：
 
 * 如果在两个不同的 Azure 区域部署了 HANA 大型实例单元用于进行灾难恢复, 则会在过去应用相同的暂时性路由限制。 换言之, 一个区域 (例如美国西部) 中的 HANA 大型实例单元的 IP 地址未路由到另一个区域 (例如美国东部) 中部署的 HANA 大型实例单元。 此限制独立于跨区域使用 Azure 网络对等互连, 或者跨连接 ExpressRoute 线路 (将 HANA 大型实例单元连接到虚拟网络)。 有关图形表示形式，请参阅“在多个区域使用 HANA 大型实例单位”部分中的插图。 此限制在已部署的体系结构的基础上, 禁止立即将 HANA 系统复制用作灾难恢复功能。 对于最近的更改, 查找 "在多个区域使用 HANA 大型实例单元" 一节。 
 
-* Azure 上的 SAP HANA (大型实例) 单位有一个从服务器 IP 池地址范围分配的 IP 地址, 该地址是在请求 HANA 大型实例部署时提交的。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 可以通过将 Azure 虚拟网络连接到 HANA 大型实例的 Azure 订阅和线路来访问此 IP 地址。 从该服务器 IP 池地址范围中分配的 IP 地址将直接分配给硬件单元， 而不会经过 NAT 转换，在此解决方案的第一个部署中也存在这种情况  。 
+* Azure 上的 SAP HANA (大型实例) 单位有一个从服务器 IP 池地址范围分配的 IP 地址, 该地址是在请求 HANA 大型实例部署时提交的。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 可以通过将 Azure 虚拟网络连接到 HANA 大型实例的 Azure 订阅和线路来访问此 IP 地址。 从该服务器 IP 池地址范围中分配的 IP 地址将直接分配给硬件单元， 而不会经过 NAT 转换，在此解决方案的第一个部署中也存在这种情况。 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>直接路由到 HANA 大型实例
 默认情况下, 在两个不同区域中部署的 HANA 大型实例单元和本地或 HANA 大型实例路由之间的可传递路由不起作用。 启用此类可传递路由有多种可能性。
@@ -173,7 +172,7 @@ Microsoft 引入了新功能, 称为[ExpressRoute Global Reach](https://docs.mic
 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>HANA 大型实例的 Internet 连接
-HANA 大型实例未建立直接 Internet 连接  。 这会限制某些功能，例如，直接向 OS 供应商注册 OS 映像的功能。 可能需要使用本地 SUSE Linux Enterprise Server 订阅管理工具服务器或 Red Hat Enterprise Linux 订阅管理器。
+HANA 大型实例未建立直接 Internet 连接。 这会限制某些功能，例如，直接向 OS 供应商注册 OS 映像的功能。 可能需要使用本地 SUSE Linux Enterprise Server 订阅管理工具服务器或 Red Hat Enterprise Linux 订阅管理器。
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>VM 与 HANA 大型实例之间的数据加密
 在 HANA 大型实例与 VM 之间传输的数据不会加密。 但是，仅仅是用于 HANA DBMS 端和基于 JDBC/ODBC 应用程序之间的交换，可以启用加密的流量。 有关详细信息，请参阅[此 SAP 文档](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)。

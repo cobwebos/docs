@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 6dfd3bd86e55d19bf1c15486a502a4cbab3c96a8
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 3683550045699a24c27a3226fba2e90a671f80e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905303"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101024"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>保护 Azure 安全中心的网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
@@ -153,7 +153,6 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 若要了解有关适用于其他 Azure 资源类型的建议的详细信息，请参阅以下内容：
 
 * [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
-* [保护 Azure 安全中心中的应用程序](security-center-application-recommendations.md)
 * [保护 Azure 安全中心中的 Azure SQL 服务](security-center-sql-service-recommendations.md)
 
 若要了解有关安全中心的详细信息，请参阅以下文章：

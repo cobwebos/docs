@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: cf43e29e967ee6f920eb38feb9c73d70f9621ea4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3918c37d985c6766fe6ad4601b70ddbd4597b0ba
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123308"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087153"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
@@ -27,11 +26,11 @@ ms.locfileid: "62123308"
 
 ## <a name="scenario-overview"></a>方案概述
 
-电话验证用于验证应用程序的最终用户不是垃圾邮件发送者，且他们提供的是真实身份。 多重身份验证是保护用户帐户免受黑客攻击的常见用例。 实现自己的电话验证需要面临的挑战是，它需要与人进行有状态交互  。 最终用户通常会获得一些代码（例如一个 4 位数字），且必须在合理的时间内响应  。
+电话验证用于验证应用程序的最终用户不是垃圾邮件发送者，且他们提供的是真实身份。 多重身份验证是保护用户帐户免受黑客攻击的常见用例。 实现自己的电话验证需要面临的挑战是，它需要与人进行有状态交互。 最终用户通常会获得一些代码（例如一个 4 位数字），且必须在合理的时间内响应。
 
 普通的 Azure Functions 是无状态的（正如其他平台上的许多其他云终结点一样），因此这些类型的交互需要在外部的数据库或某种其他永久性存储中显式管理状态。 此外，需要将交互分解为多个可一起进行协调的函数。 例如，需要至少一个函数用于确定代码、将其持久保存在某个位置并发送至用户的电话。 此外，还需要至少一个其他函数来接收用户的响应，并以某种方式映射回原始函数调用，以实现代码验证。 超时也是保证安全的一个重要方面。 这可能很快就会变得相当复杂。
 
-如果使用 Durable Functions，可大大降低此方案的复杂性。 如此示例中所示，业务流程协调程序函数可以轻松地管理有状态交互，且无需任何外部数据存储。 由于业务流程协调程序函数是持久的，因此这些交互流也非常可靠  。
+如果使用 Durable Functions，可大大降低此方案的复杂性。 如此示例中所示，业务流程协调程序函数可以轻松地管理有状态交互，且无需任何外部数据存储。 由于业务流程协调程序函数是持久的，因此这些交互流也非常可靠。
 
 ## <a name="configuring-twilio-integration"></a>配置 Twilio 集成
 
@@ -41,14 +40,14 @@ ms.locfileid: "62123308"
 
 本文通过示例应用介绍了以下函数：
 
-* E4_SmsPhoneVerification 
-* E4_SendSmsChallenge 
+* E4_SmsPhoneVerification
+* E4_SendSmsChallenge
 
 以下各部分介绍了用于 C# 脚本和 JavaScript 的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
 
 ## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS 验证业务流程（Visual Studio Code 和 Azure 门户的示例代码）
 
-E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 function.json   。
+E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 function.json。
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/function.json)]
 
@@ -64,10 +63,10 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 
 启动后，该业务流程协调程序函数执行以下任务：
 
-1. 获取要向其发送短信通知的电话号码  。
-2. 调用 E4_SendSmsChallenge，向用户发送短信，并返回预期的 4 位数质询代码  。
+1. 获取要向其发送短信通知的电话号码。
+2. 调用 E4_SendSmsChallenge，向用户发送短信，并返回预期的 4 位数质询代码。
 3. 创建可从当前时间开始触发 90 秒的持久计时器。
-4. 与计时器一起，等待来自用户的 SmsChallengeResponse 事件  。
+4. 与计时器一起，等待来自用户的 SmsChallengeResponse 事件。
 
 用户会收到一条含 4 位数代码的短信。 用户需要在 90 秒内将相同的 4 位数代码发送回业务流程协调程序函数实例，以便完成验证过程。 如果提交的代码不正确，可额外尝试 3 次进行更正（在相同的 90 秒时间段内）。
 
@@ -79,7 +78,7 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 
 ## <a name="send-the-sms-message"></a>发送短信
 
-E4_SendSmsChallenge 函数使用 Twilio 绑定向最终用户发送包含 4 位数代码的短信  。 function.json 定义如下  ：
+E4_SendSmsChallenge 函数使用 Twilio 绑定向最终用户发送包含 4 位数代码的短信。 function.json 定义如下：
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/function.json)]
 
@@ -93,7 +92,7 @@ E4_SendSmsChallenge 函数使用 Twilio 绑定向最终用户发送包含 4 位�
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
-E4_SendSmsChallenge 函数仅被调用一次，即使进程崩溃或进行重播也是如此  。 因为不希望最终用户收到多条短信，所以这种设定非常合适。 `challengeCode` 返回值可自动保留，以便业务流程协调程序函数始终了解正确的代码。
+E4_SendSmsChallenge 函数仅被调用一次，即使进程崩溃或进行重播也是如此。 因为不希望最终用户收到多条短信，所以这种设定非常合适。 `challengeCode` 返回值可自动保留，以便业务流程协调程序函数始终了解正确的代码。
 
 ## <a name="run-the-sample"></a>运行示例
 
@@ -116,7 +115,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-业务流程协调程序函数可接收提供的电话号码，并立即向其发送一条短信，其中包含随机生成的 4 位数验证代码 &mdash; 例如，2168  。 然后函数等待 90 秒，获取响应。
+业务流程协调程序函数可接收提供的电话号码，并立即向其发送一条短信，其中包含随机生成的 4 位数验证代码 &mdash; 例如，2168。 然后函数等待 90 秒，获取响应。
 
 若要使用该代码进行答复，可使用另一函数中的 [`RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript)](durable-functions-instance-management.md)，或调用上面的 202 响应中引用的 **sendEventUrl** HTTP POST webhook，同时将 `{eventName}` 替换为事件的名称 `SmsChallengeResponse`：
 

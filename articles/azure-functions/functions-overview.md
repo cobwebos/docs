@@ -7,17 +7,16 @@ manager: jeconnoc
 keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: overview
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 36dbfca577f69c3a7c49d03ef31bc18c71222f95
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f3fc7691fc3afa3a1fe886655353d9ed41f631cc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881296"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096083"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions 简介  
 Azure Functions 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 用户可以只编写解决现有问题所需的代码，而无需担心要运行该代码的整个应用程序或基础结构。 Functions 可使开发更有效率，并可以使用自己所选的开发语言，例如 C#、Java、JavaScript、PowerShell 和 Python。 只需为代码运行的时间付费，并可信任 Azure 会根据需要进行调整。 使用 Azure Functions，可在 Microsoft Azure 上开发[无服务器](https://azure.microsoft.com/solutions/serverless/)应用程序。

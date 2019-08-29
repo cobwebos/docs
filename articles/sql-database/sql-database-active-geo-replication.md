@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c1f50dfb499c220a4e13f043438798c556319ddf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935075"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092809"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>创建并使用活动异地复制
 
@@ -81,11 +81,11 @@ ms.locfileid: "68935075"
 
 - **计划内故障转移**
 
-  完全同步完成后, 计划的故障转移将切换主数据库和辅助数据库的角色。 这是一项联机操作, 它不会导致数据丢失。 操作的时间取决于主副本上需要同步的事务日志的大小。 计划的故障转移设计用于以下方案: (a) 在无法接受数据丢失时在生产中执行 DR 演练;(b): 将数据库重新定位到不同的区域;在缓解中断后 (c) 将数据库返回到主要区域 (故障回复)。
+  计划内故障转移会在完全同步完成以后切换主数据库和辅助数据库的角色。 这是一项联机操作，不会导致数据丢失。 操作时间取决于主数据库上需要同步的事务日志的大小。 计划内故障转移设计用于以下方案：(a) 在数据丢失是可以接受的情况下，在生产环境中进行 DR 演练；(b) 将数据库重新定位到另一区域；(c) 解决服务中断问题后将数据库恢复到主要区域（故障回复）。
 
 - **计划外故障转移**
 
-  计划外故障转移或强制故障转移立即将辅助角色切换为主要角色，而不与主要节点进行任何同步。 提交到主副本但不复制到辅助副本的任何事务都将丢失。 当无法访问主副本时, 此操作被设计为故障恢复方法, 但必须快速还原数据库的可用性。 原始主副本重新联机时, 它会自动重新连接, 并成为新的辅助副本。 故障转移之前的所有未同步事务将保留在备份文件中, 但不会与新的主副本同步, 以避免冲突。 这些事务必须与主数据库的最新版本进行手动合并。
+  计划外故障转移或强制故障转移立即将辅助角色切换为主要角色，而不与主要节点进行任何同步。 任何已提交到主数据库但未复制到辅助数据库的事务都会丢失。 根据设计，当主数据库在服务中断期间不可访问，而数据库可用性必须快速恢复时，可将此操作用作恢复方法。 原始主数据库重新联机后，会自动重新进行连接，并成为新的辅助数据库。 所有在故障转移之前未同步的事务会保留在备份文件中，但不会与新的主数据库同步，以免出现冲突。 需要通过手动方式将这些事务与主数据库的最新版本合并。
  
 - **多个可读的辅助数据库**
 
@@ -103,20 +103,24 @@ ms.locfileid: "68935075"
 
   应用程序或用户可随时会辅助数据库显式切换到主角色。 在实际服务中断期间，应使用“计划外”选项，这会立即将辅助数据库升级为主数据库。 当出现故障的主数据库恢复并再次可用时，系统会自动将恢复的主数据库标记为辅助数据库并使其与新的主数据库保持最新状态。 由于复制的异步特性，在未计划的故障转移期间，如果主数据库在将最新的更改复制到辅助数据库之前出现故障，则可能会丢失少量数据。 当具有多个辅助数据库的主数据库进行故障转移时，系统会自动重新配置复制关系，并将剩余辅助数据库链接到新升级的主数据库，无需任何用户的干预。 导致了故障转移的服务中断得到缓解后，可能需要将应用程序返回到主要区域。 为此，应使用“计划内”选项调用故障转移命令。
 
-## <a name="preparing-secondary-database-for-failover"></a>准备辅助数据库以进行故障转移
+## <a name="preparing-secondary-database-for-failover"></a>准备要进行故障转移的辅助数据库
 
-若要确保应用程序在故障转移后可以立即访问新的主服务器, 请确保正确配置辅助服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。 若要确保在故障转移后符合性, 请确保辅助数据库上的备份保留策略与主数据库的保留策略匹配。 这些设置不是数据库的一部分, 也不会被复制。 默认情况下, 辅助数据库将配置为默认的 PITR 保持期为七天。 有关详细信息，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。
+若要确保应用程序可以在故障转移后立即访问新的主数据库，请确保正确配置辅助服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。 若要保证故障转移后的符合性，请确保辅助数据库上的备份保留策略与主数据库的匹配。 这些设置不是数据库的一部分，因此不会进行复制。 默认情况下，会为辅助数据库配置七天的默认 PITR 保留期。 有关详细信息，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。
+
+> [!IMPORTANT]
+> 如果数据库是故障转移组的成员, 则不能使用异地复制 faiover 命令启动其故障转移。 请考虑使用组的故障转移命令。 如果需要故障转移单个数据库, 则必须先将其从故障转移组中删除。 有关详细信息, 请参阅[故障转移组](sql-database-auto-failover-group.md)。 
+
 
 ## <a name="configuring-secondary-database"></a>配置辅助数据库
 
-主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到大量写入工作负荷, 则计算大小较小的辅助数据库可能无法跟上它。 这将导致辅助副本上的重做延迟, 并且可能不可用。 如果要求强制故障转移，则落后于主数据库的辅助数据库还存在比较大的数据丢失风险。 若要缓解这些风险, 有效的活动异地复制会限制主要的日志速率, 以允许其辅助数据库保持同步。 不均衡辅助配置的另一个结果是, 在故障转移后, 应用程序的性能会因为新的主数据库的计算能力不足而受到影响。 需要将其升级到更高的计算级别, 这在中断中断之前将无法进行。 
+主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到很大的写入工作负荷，则计算大小较小的辅助数据库可能在进度上跟不上主数据库。 这会导致辅助数据库上出现重做滞后，并且可能会出现不可用性问题。 在需要强制性故障转移的情况下，如果辅助数据库滞后于主数据库，则还存在丢失大量数据的风险。 若要缓解这些风险，需要通过有效的活动异地复制来限制主数据库的日志速率，让辅助数据库能够跟上进度。 辅助数据库的配置不平衡的另一结果是，在故障转移后，应用程序的性能会由于新的主数据库的计算能力不足而受影响。 需要升级它的计算能力，使之达到所需的级别，但这在解决服务中断问题之前是不可能的。 
 
 
 > [!IMPORTANT]
-> 除非将辅助数据库配置为具有与主数据库相同的计算大小, 否则无法保证发布的 RPO = 5 秒。 
+> 不能保证已发布的 RPO 为 5 秒，除非为辅助数据库配置的计算大小与为主数据库配置的相同。 
 
 
-如果决定创建具有较低计算大小的辅助数据库，Azure 门户上的日志 IO 百分比图表提供了一种评估维持复制负荷所需的辅助数据库的最小计算大小的好办法。 例如，如果主数据库是 P6 (1000 DTU)，其日志 IO 百分比为 50%，则辅助数据库需要至少为 P4 (500 DTU)。 还可以使用 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 或 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 数据库视图检索日志 IO 数据。  在[sys.databases _exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)和[sys.databases _os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)数据库视图中, 该限制报告为 HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等待状态。 
+如果决定创建具有较低计算大小的辅助数据库，Azure 门户上的日志 IO 百分比图表提供了一种评估维持复制负荷所需的辅助数据库的最小计算大小的好办法。 例如，如果主数据库是 P6 (1000 DTU)，其日志 IO 百分比为 50%，则辅助数据库需要至少为 P4 (500 DTU)。 还可以使用 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 或 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 数据库视图检索日志 IO 数据。  限制在 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 数据库视图中报告为 HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等待状态。 
 
 有关 SQL 数据库计算大小的详细信息，请参阅[什么是 SQL 数据库服务层级](sql-database-purchase-models.md)。
 
@@ -146,7 +150,7 @@ ms.locfileid: "68935075"
 
 ## <a name="monitoring-geo-replication-lag"></a>监视异地复制延迟
 
-若要监视与 RPO 相关的延迟，请使用主数据库中 [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) 的 *replication_lag_sec* 列。 它显示在主数据库上提交的事务与在辅助数据库上保留的事务之间的延迟（以秒为单位）。 例如 如果 lag 的值为1秒, 则表示主副本受中断的影响, 并且启动故障转移时, 将不会保存1秒的最近转换。 
+若要监视与 RPO 相关的延迟，请使用主数据库中 [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) 的 *replication_lag_sec* 列。 它显示在主数据库上提交的事务与在辅助数据库上保留的事务之间的延迟（以秒为单位）。 例如 如果延迟值为 1 秒，则意味着如果主数据库现在受到某个中断的影响并启动了故障转移，则不会保存最近 1 秒执行的事务。 
 
 若要以在主数据库上所做的更改应用到辅助数据库（即可以从辅助数据库读取）所需的时间来衡量延迟，请将辅助数据库上的 *last_commit* 时间与主数据库上的同一值进行比较。
 

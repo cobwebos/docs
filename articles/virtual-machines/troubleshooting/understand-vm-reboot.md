@@ -8,18 +8,17 @@ manager: willchen
 editor: ''
 tags: ''
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 70a6845349b90cf614a84e13680ebb6fc6b3e2a9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aea4c20ceeb9b4f1ad70187da2690fd5d202fe7a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60443749"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089546"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系统重启
 
@@ -57,7 +56,7 @@ Microsoft Azure 在全球范围内定期执行更新，提高 VM 所基于主机
 
 对于 Microsoft Azure 中的这类更新，用户体验不到其对运行中的 VM 的任何影响。 其中一些更新主要面向组件或服务，更新时不会干扰正在运行的实例。 还有一些是主机操作系统上的平台基础结构更新，应用时无需重启 VM。
 
-这些内存保留更新通过启用就地实时迁移技术实现。 进行更新时，VM 处于“暂停”状态。  该状态可保留 RAM 中的内存，基础主机操作系统则接收必要的更新和补丁。 VM 在暂停后 30 秒内恢复正常。 VM 恢复后，其时钟将自动同步。
+这些内存保留更新通过启用就地实时迁移技术实现。 进行更新时，VM 处于“暂停”状态。 该状态可保留 RAM 中的内存，基础主机操作系统则接收必要的更新和补丁。 VM 在暂停后 30 秒内恢复正常。 VM 恢复后，其时钟将自动同步。
 
 由于暂停时间短，因此通过这种机制部署更新可以大大减少对 VM 的影响。 但是，并非所有更新都可通过这种方式部署。 
 
@@ -90,7 +89,7 @@ Azure 安全中心每天对 Windows 和 Linux VM 进行监控，以找出缺少�
 
 服务器错误通常由硬盘或固态硬盘等硬件故障引起。 Azure 持续监视这些事件，确定基础 bug，并在实现和测试缓解举措后推出更新。
 
-由于某些主机服务器错误可能特定于该服务器，因此可通过手动将 VM 重新部署到其他主机服务器来改善 VM 重复重启的情况。 在 VM 详细信息页上使用“重新部署”选项，或在 Azure 门户中停止并重启 VM，可触发此操作。 
+由于某些主机服务器错误可能特定于该服务器，因此可通过手动将 VM 重新部署到其他主机服务器来改善 VM 重复重启的情况。 在 VM 详细信息页上使用“重新部署”选项，或在 Azure 门户中停止并重启 VM，可触发此操作。
 
 ### <a name="auto-recovery"></a>自动恢复
 
@@ -117,7 +116,7 @@ VM 可能因自身问题重启。 在 VM 上运行的工作负荷或角色可能
 
 关机持续时间可短至 5 分钟，也可能非常久。 下面是与存储相关的强制关机具体情况之一： 
 
-超过 IO 限制 
+超过 IO 限制
 
 如果 I/O 请求因每秒输入/输出操作数 (IOPS) 超出磁盘 I/O 限制而持续受到限制，则可能暂时关闭 VM。 （标准磁盘存储的限制为 500 IOPS。）为缓解此问题，请在来宾 VM 中使用磁盘剥离或配置存储空间，具体情况取决于工作负荷。 有关详细信息，请参阅[配置 Azure VM 以获得最佳存储性能](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)。
 

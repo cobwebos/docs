@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 004d6125de6762303db91f3a5ef9ffa16e6e501f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c44722403967f3563472692f97cb2a114e6294cd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705961"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084463"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>适用于 Windows 的 NVIDIA GPU 驱动程序扩展
 
@@ -27,7 +26,7 @@ ms.locfileid: "67705961"
 
 此扩展在 Windows N 系列 VM 上安装 NVIDIA GPU 驱动程序。 根据 VM 系列，此扩展安装 CUDA 或 GRID 驱动程序。 使用此扩展安装 NVIDIA 驱动程序时，即表示你接受并同意 [NVIDIA 最终用户许可协议](https://go.microsoft.com/fwlink/?linkid=874330)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
 
-提供了有关手动安装的驱动程序和当前支持的版本说明[此处](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)。
+[此处](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)提供了有关手动安装驱动程序和当前支持的版本的说明。
 此扩展也可用于在 [Linux N 系列 VM](hpccompute-gpu-linux.md) 上安装 NVIDIA GPU 驱动程序。
 
 ## <a name="prerequisites"></a>先决条件
@@ -36,7 +35,7 @@ ms.locfileid: "67705961"
 
 此扩展支持以下 OS：
 
-| 分发 | Version |
+| 分发组 | Version |
 |---|---|
 | Windows 10 | Core |
 | Windows Server 2016 | Core |
@@ -72,7 +71,7 @@ ms.locfileid: "67705961"
 
 ### <a name="properties"></a>属性
 
-| 名称 | 值/示例 | 数据类型 |
+| 姓名 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |

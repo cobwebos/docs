@@ -9,16 +9,15 @@ keywords: azure functions, functions 无服务体系结构, 基础结构即代�
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.service: azure-functions
 ms.server: functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: f84bc92f51f8d6d7700cb15accb4b1282c97a37b
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3d60e5e4aae3457ae04cd7e4ecfe4f9253a04751
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562888"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085405"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 

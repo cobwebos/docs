@@ -7,19 +7,18 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3afcd429351a0d988ff0e82ecf09f524ceac70f1
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 046daed4f548d24010c3d3bef177cee8cf24a55e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868967"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098726"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>修订版3中的 II 类 Sku 的操作系统备份和还原
 
@@ -61,7 +60,7 @@ Microsoft `Service Management`团队完成预配后, 默认情况下, 服务器�
 ```
 还原后，文件会在当前工作目录中恢复。
 
-以下命令演示从备份文件 backup.tar.gz 还原文件 /etc/fstab  
+以下命令演示从备份文件 backup.tar.gz 还原文件 /etc/fstab
 ```
 #tar  -xvf  /osbackups/hostname/backup.tar.gz  etc/fstab 
 ```
@@ -74,20 +73,20 @@ Microsoft `Service Management`团队完成预配后, 默认情况下, 服务器�
 
 ## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>如何安装 ReaR 工具并更改配置？ 
 
-Relax-and-Recover (ReaR) 包预安装在 HANA 大型实例的类型 II SKU 中，你不需要执行任何操作   。 可以直接开始使用 ReaR 进行操作系统备份。
+Relax-and-Recover (ReaR) 包预安装在 HANA 大型实例的类型 II SKU 中，你不需要执行任何操作。 可以直接开始使用 ReaR 进行操作系统备份。
 但如果需要自行安装此包，则可以按照列出的步骤安装并配置 ReaR 工具。
 
-若要安装 ReaR 备份包，请使用以下命令  ：
+若要安装 ReaR 备份包，请使用以下命令：
 
-对于 SLES 操作系统，请使用以下命令  ：
+对于 SLES 操作系统，请使用以下命令：
 ```
 #zypper install <rear rpm package>
 ```
-对于 RHEL 操作系统，请使用以下命令  ： 
+对于 RHEL 操作系统，请使用以下命令： 
 ```
 #yum install rear -y
 ```
-若要配置 ReaR 工具，需要在 /etc/rear/local.conf 文件中更新 OUTPUT_URL 和 BACKUP_URL    。
+若要配置 ReaR 工具，需要在 /etc/rear/local.conf 文件中更新 OUTPUT_URL 和 BACKUP_URL。
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso

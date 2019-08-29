@@ -6,16 +6,15 @@ author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ee96bc5e17051ab37be34eecbb8e4fe35599cd5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6548b84f9599116aaa5055324bfa4625ea621ec3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730763"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087251"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>在 Azure 中管理 Durable Functions 中的实例
 
@@ -166,8 +165,8 @@ module.exports = async function(context, instanceId) {
 * **`id`（必需）** ：业务流程实例的 ID。
 * **`show-input`（可选）** ：如果设置为 `true`，则响应包含函数的输入。 默认值为 `false`。
 * **`show-output`（可选）** ：如果设置为 `true`，则响应包含函数的输出。 默认值为 `false`。
-* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认值为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认值为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 以下命令检索业务流程实例 ID 为 0ab8c55a66644d68a3a8b220b12d209c 的实例的状态（包括输入和输出）。 假设从函数应用的根目录运行 `func` 命令：
 
@@ -178,8 +177,8 @@ func durable get-runtime-status --id 0ab8c55a66644d68a3a8b220b12d209c --show-inp
 可以使用 `durable get-history` 命令检索业务流程实例的历史记录。 它采用了以下参数：
 
 * **`id`（必需）** ：业务流程实例的 ID。
-* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 host.json 中设置此参数。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认值为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认值为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 host.json 中设置此参数。
 
 ```bash
 func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
@@ -229,8 +228,8 @@ module.exports = async function(context, req) {
 
 * **`top`（可选）** ：此命令支持分页。 此参数对应于每个请求检索的实例数。 默认值为 10。
 * **`continuation-token`（可选）** ：用于指示要检索的实例页或节的标记。 每次执行 `get-instances` 都会向下一个实例集返回一个标记。
-* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认值为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认值为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 ```bash
 func durable get-instances
@@ -299,8 +298,8 @@ module.exports = async function(context, req) {
 * **`runtime-status`（可选）** ：检索具有特定状态（例如 running 或 completed）的实例。 可以提供多个状态（用空格分隔）。
 * **`top`（可选）** ：每个请求检索的实例数。 默认值为 10。
 * **`continuation-token`（可选）** ：用于指示要检索的实例页或节的标记。 每次执行 `get-instances` 都会向下一个实例集返回一个标记。
-* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认值为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认值为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 如果未提供任何筛选器（`created-after`、`created-before` 或 `runtime-status`），则无论运行时状态或创建时间是什么，该命令都会检索 `top` 实例。
 
@@ -349,8 +348,8 @@ module.exports = async function(context, instanceId) {
 
 * **`id`（必需）** ：要终止的业务流程实例的 ID。
 * **`reason`（可选）** ：终止的原因。
-* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认值为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认值为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 以下命令终止 ID 为 0ab8c55a66644d68a3a8b220b12d209c 的业务流程实例：
 
@@ -404,10 +403,10 @@ module.exports = async function(context, instanceId) {
 也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable raise-event` 命令向业务流程实例引发事件。 它采用了以下参数：
 
 * **`id`（必需）** ：业务流程实例的 ID。
-* **`event-name`（可选）** ：要引发的事件的名称。 默认为 `$"Event_{RandomGUID}"`。
+* **`event-name`（可选）** ：要引发的事件的名称。 默认值为 `$"Event_{RandomGUID}"`。
 * **`event-data`（可选）** ：要发送到业务流程实例的数据。 这可以是某个 JSON 文件的路径，或者，你可以直接在命令行中提供数据。
-* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认值为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认值为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 ```bash
 func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEvent --event-data @eventdata.json
@@ -533,7 +532,7 @@ modules.exports = async function(context, ctx) {
 
 ## <a name="rewind-instances-preview"></a>回退实例（预览）
 
-如果意外的原因导致业务流程失败，可以使用相应的 API 将实例回退到以前的正常状态。 
+如果意外的原因导致业务流程失败，可以使用相应的 API 将实例回退到以前的正常状态。
 
 > [!NOTE]
 > 此 API 不是为了替换正确的错误处理和重试策略。 而是仅用于业务流程实例意外失败的情况。 有关错误处理和重试策略的详细信息，请参阅[错误处理](durable-functions-error-handling.md)主题。
@@ -543,7 +542,7 @@ modules.exports = async function(context, ctx) {
 例如，假设某个工作流涉及到一系列[人工审批](durable-functions-concepts.md#human)。 假设有一系列活动函数会通知某人做出审批并等待其实时响应。 在所有审批活动收到响应或超时后，假设另一活动因应用程序配置错误（例如数据库连接字符串无效）而失败。 于是，工作流中存在业务流程故障。 使用 `RewindAsync` (.NET) 或 `rewindAsync` (JavaScript) API，应用程序管理员可以修复配置错误并将失败的业务流程回退到失败前的状态。 无需再次审批任何人工交互步骤，业务流程现可成功完成。
 
 > [!NOTE]
-> 回退功能不支持回退使用持久计时器的业务流程实例。 
+> 回退功能不支持回退使用持久计时器的业务流程实例。
 
 ### <a name="c"></a>C#
 
@@ -577,8 +576,8 @@ module.exports = async function(context, instanceId) {
 
 * **`id`（必需）** ：业务流程实例的 ID。
 * **`reason`（可选）** ：回退业务流程实例的原因。
-* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认值为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认值为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 ```bash
 func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator failed and needs to be revived."
@@ -631,8 +630,8 @@ public static Task Run(
 * **`created-after`（可选）** ：清除此日期/时间 (UTC) 之后创建的实例的历史记录。 接受 ISO 8601 格式的日期时间。
 * **`created-before`（可选）** ：清除此日期/时间 (UTC) 之前创建的实例的历史记录。 接受 ISO 8601 格式的日期时间。
 * **`runtime-status`（可选）** ：清除具有特定状态（例如 running 或 completed）的实例的历史记录。 可以提供多个状态（用空格分隔）。
-* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认值为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认值为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 以下命令删除在 2018 年 11 月 14 日下午 7:35 (UTC) 之前创建的所有失败实例的历史记录。
 
@@ -644,8 +643,8 @@ func durable purge-history --created-before 2018-11-14T19:35:00.0000000Z --runti
 
 使用 [Azure Functions Core Tools](../functions-run-local.md) `durable delete-task-hub` 命令可以删除与特定任务中心关联的所有存储项目。 这包括 Azure 存储表、队列和 Blob。 该命令有两个参数：
 
-* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
-* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
+* **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认值为 `AzureWebJobsStorage`。
+* **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认值为 `DurableFunctionsHub`。 也可以使用 durableTask:HubName 在 [host.json](durable-functions-bindings.md#host-json) 中设置此参数。
 
 以下命令删除与 `UserTest` 任务中心关联的所有 Azure 存储数据。
 

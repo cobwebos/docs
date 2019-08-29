@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 8934306efadc4ec732afbb658c081ada30f232cd
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4b6a140ec428ce3b053c41074f02f65f19b8dc72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312210"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102892"
 ---
 # <a name="dependency-visualization"></a>依赖项可视化
 
-Azure Migrate：服务器评估将评估要迁移到 Azure 的本地计算机组。 您可以使用服务器评估中的依赖项可视化功能来创建组。 本文提供了有关此功能的信息。
+“Azure Migrate:服务器评估将评估要迁移到 Azure 的本地计算机组。 您可以使用服务器评估中的依赖项可视化功能来创建组。 本文提供了有关此功能的信息。
 
 > [!NOTE]
 > 依赖项可视化功能在 Azure 政府中不可用。
@@ -27,8 +27,8 @@ Azure Migrate：服务器评估将评估要迁移到 Azure 的本地计算机组
 ## <a name="before-you-start"></a>开始之前
 
 - 请确保已[创建](how-to-add-tool-first-time.md)Azure Migrate 项目。
-- 如果已创建项目, 请确保已[添加](how-to-assess.md)Azure Migrate:服务器评估工具。
-- 请确保已在 Azure Migrate 中发现了计算机;为此, 可以设置适用于[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 设备。 设备将发现本地计算机, 并将元数据和性能数据发送到 Azure Migrate:服务器评估。 [了解详细信息](migrate-appliance.md)。
+- 如果已创建项目, 请确保已[添加](how-to-assess.md)Azure Migrate:服务器评估”工具评估本地 VMware VM。
+- 请确保已在 Azure Migrate 中发现了计算机;为此, 可以设置适用于[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 设备。 设备将发现本地计算机, 并将元数据和性能数据发送到 Azure Migrate:两种类型的评估。 [了解详细信息](migrate-appliance.md)。
 
 ## <a name="how-does-it-work"></a>工作原理
 
@@ -36,7 +36,7 @@ Azure Migrate 使用[Azure Monitor 日志](../log-analytics/log-analytics-overvi
 - 若要利用依赖项可视化功能，需要将现有或新的 Log Analytics 工作区与 Azure Migrate 项目进行关联。
 - 只能在创建 Azure Migrate 项目的同一订阅中创建或附加工作区。
 - 将 Log Analytics 工作区附加到项目:
-    1. 在 "**服务器**" 选项卡**的 Azure Migrate:服务器评估**磁贴, 单击 "**概述**"。
+    1. 在“服务器”选项卡上的“Azure Migrate:**服务器评估**磁贴, 单击 "**概述**"。
     2. 在 "**概述**" 中, 单击向下箭头以展开 " **Essentials**"。
     3. 在**OMS 工作区**中, 单击 "**需要配置**"。
     4. 在 "**配置工作区**" 中, 指定是否要创建新的工作区或使用现有工作区:
@@ -50,15 +50,15 @@ Azure Migrate 使用[Azure Monitor 日志](../log-analytics/log-analytics-overvi
   > [!NOTE]
   > 工作区附加到一个项目后，你将无法再对其进行更改。
 
-- 关联的工作区通过“迁移项目”  键和“项目名称”  值（可用于在 Azure 门户中进行搜索）进行标记。
-- 若要导航到与项目关联的工作区，可以转到项目“概述”  页的“Essentials”  部分并访问工作区
+- 关联的工作区通过“迁移项目”键和“项目名称”值（可用于在 Azure 门户中进行搜索）进行标记。
+- 若要导航到与项目关联的工作区，可以转到项目“概述”页的“Essentials”部分并访问工作区
 
     ![导航 Log Analytics 工作区](./media/concepts-dependency-visualization/oms-workspace.png)
 
 若要使用依赖项可视化，你需要在要分析的每台本地计算机上下载并安装代理。  
 
 - 需要在每台计算机上安装 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。 [了解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma)有关如何安装 MMA 代理的详细信息。
-- 需要在每台计算机上安装[依赖项代理](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure)。 [了解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent)有关如何安装依赖关系代理的详细信息。
+- 需要在每台计算机上安装[依赖项代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。 [了解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent)有关如何安装依赖关系代理的详细信息。
 - 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 Log Analytics 网关。
 
 除非要使用依赖项可视化，否则在要评估的计算机上不需要安装这些代理。
