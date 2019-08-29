@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c28e30b8e44b6888cdb7416b9c7b563b955a68ce
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 4e3756435703c4e8c887a4e7b9d4f75a6701d840
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335377"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126251"
 ---
 # <a name="how-to-unblock-users"></a>如何：取消阻止用户
 
@@ -52,7 +52,7 @@ ms.locfileid: "68335377"
 要取消阻止有风险的帐户，具有以下选项：
 
 1. **重置密码** - 可以重置用户的密码。 
-2. **消除所有风险事件** - 如果已达到阻止访问的已配置用户风险级别，用户风险策略将阻止用户。 可以通过手动关闭报告的风险事件降低用户的风险级别。 
+2. **消除所有风险检测**-如果已达到配置的用户风险级别用于阻止访问, 则用户风险策略会阻止用户。 可以通过手动关闭报告的风险检测来减少用户的风险级别。 
 3. **从策略中排除** - 如果认为登录策略的当前配置导致特定用户出现问题，可从中排除这些用户。 有关详细信息，请参阅 [Azure Active Directory 标识保护](../active-directory-identityprotection.md)。
 4. **禁用** - 如果认为策略配置导致所有用户出现问题，可禁用该策略。 有关详细信息，请参阅 [Azure Active Directory 标识保护](../active-directory-identityprotection.md)。
 

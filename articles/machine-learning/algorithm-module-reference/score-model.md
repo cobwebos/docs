@@ -1,7 +1,7 @@
 ---
-title: 评分模型：模块参考
+title: 评分模型:模块参考
 titleSuffix: Azure Machine Learning service
-description: 了解如何在 Azure 机器学习服务中使用评分模型模块来生成使用经过训练的分类或回归模型的预测。
+description: 了解如何使用 Azure 机器学习服务中的评分模型模块, 通过定型的分类或回归模型生成预测。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,49 +9,48 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f8f7bfcbbf013f2cf32957772086d7e44d31e310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43a398b091b282da6ede06796250cda17117dc18
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029260"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128522"
 ---
 # <a name="score-model-module"></a>“评分模型”模块
 
-本指南介绍了 Azure 机器学习服务的可视界面 （预览版） 的模块。
+本文介绍了 Azure 机器学习服务的可视界面 (预览) 的模块。
 
-使用此模块来生成使用经过训练的分类或回归模型的预测。
+使用此模块可以使用训练的分类或回归模型生成预测。
 
 ## <a name="how-to-use"></a>如何使用
 
-1. 添加**评分模型**模块在试验。
+1. 将 "**评分模型**" 模块添加到试验中。
 
-2. 附加已训练的模型和包含新的输入的数据的数据集。 
+2. 附加定型模型和包含新输入数据的数据集。 
 
-    数据应为与所使用的已训练模型的类型兼容的格式。 输入数据集的架构通常也应匹配用于为模型定型的数据的架构。
+    数据应采用与所使用的定型模型类型兼容的格式。 输入数据集的架构通常还应与用于为模型定型的数据的架构匹配。
 
 3. 运行试验。
 
 ## <a name="results"></a>结果
 
-生成一组使用的评分之后[评分模型](./score-model.md):
+使用[评分模型](./score-model.md)生成一组评分后:
 
-+ 若要生成的一组用于评估模型的准确性 （性能） 的指标。  你可以连接到的已评分数据集[评估模型](./evaluate-model.md)， 
-+ 右键单击模块并选择**可视化**可查看结果的示例。
++ 生成一组用于评估模型准确性 (性能) 的指标。  可以将评分的数据集连接到[评估模型](./evaluate-model.md), 
++ 右键单击模块并选择 "**可视化**" 以查看结果的示例。
 + 将结果保存到数据集。
 
-分数或预测的值，可以采用许多不同的格式，具体取决于模型和输入的数据：
+分数或预测值可以采用多种不同的格式, 具体取决于模型和输入数据:
 
-- 对于分类模型，[评分模型](./score-model.md)输出类，以及预测值的概率的预测的值。
-- 对于回归模型，[评分模型](./score-model.md)生成只是预测的数字值。
-- 对于图像分类模型，评分可能是对象的映像或一个布尔值，该值指示是否找到了特定功能中的类。
+- 对于分类模型,[分数模型](./score-model.md)输出类的预测值, 以及预测值的概率。
+- 对于回归模型,[分数模型](./score-model.md)仅生成预测的数值。
+- 对于图像分类模型, 分数可能是图像中的对象类, 或指示是否找到了特定功能的布尔值。
 
 ## <a name="publish-scores-as-a-web-service"></a>将评分发布为 web 服务
 
-评分的一个常见用途是返回输出作为预测 web 服务的一部分。 有关详细信息，请参阅如何创建基于 Azure 机器学习中的实验的 web 服务的此教程：
+评分的一个常见用途是在预测 web 服务中返回输出。 有关详细信息, 请参阅本教程, 了解如何基于 Azure 机器学习中的试验创建 web 服务:
 
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[可用的模块集](module-reference.md)到 Azure 机器学习服务。 
+查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 

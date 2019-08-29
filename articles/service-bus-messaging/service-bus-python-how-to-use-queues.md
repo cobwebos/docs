@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: fa3aedf138564fedafe555adfbaf6c56efc1813e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9bb53a8e68866e2ed346277171e2706f5907e8af
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360841"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141908"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>如何通过 Python 使用服务总线队列
 
@@ -36,7 +36,7 @@ ms.locfileid: "68360841"
 
         > [!NOTE]
         > 在本教程中，需使用 Python 在服务总线命名空间中创建一个**队列**。 
-1. 安装 Python 或[Python Azure 服务总线包][Python Azure Service Bus package], 请参阅[python 安装指南](../python-how-to-install.md)。 在[此处](/python/api/overview/azure/servicebus?view=azure-python)查看服务总线 Python SDK 的完整文档。
+1. 若要安装 Python 或 [Python Azure 服务总线包][Python Azure Service Bus package]，请参阅 [Python 安装指南](/azure/python/python-sdk-azure-install)。 在[此处](/python/api/overview/azure/servicebus?view=azure-python)查看服务总线 Python SDK 的完整文档。
 
 ## <a name="create-a-queue"></a>创建队列
 可以通过 **ServiceBusClient** 对象处理队列。 将以下代码添加到任何 Python 文件的顶部附近，你希望在其中以编程方式访问服务总线：
@@ -51,7 +51,7 @@ from azure.servicebus import ServiceBusClient
 sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
 ```
 
-SAS 密钥名称和值的值可以在[Azure 门户][Azure portal]连接信息中找到, 也可以在服务器资源管理器中选择服务总线命名空间时在 Visual Studio 的 "**属性**" 窗格中找到 (如前一部分中所示)。
+SAS 密钥名称的值和值可以在 [Azure 门户][Azure portal]连接信息中找到，也可以在服务器资源管理器中选择服务总线命名空间时，在 Visual Studio“属性”窗格中找到（如前一部分中所示）。
 
 ```python
 sb_client.create_queue("taskqueue")

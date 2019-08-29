@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2f60b496594946e9175ecf5c1948b08c9065b1b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 220f68461d47293e9f43a650e4fa5d1d59bce02f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848196"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128338"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -30,7 +30,7 @@ ms.locfileid: "68848196"
 | [本地环境](#local) | 完全控制开发环境和依赖项。 在您选择的任何生成工具、环境或 IDE 中运行。 | 需要更长的时间才能开始。 必须安装必需的 SDK 包, 并且还必须安装环境 (如果尚未安装)。 |
 | [Azure Databricks](#aml-databricks) | 适用于在可缩放的 Apache Spark 平台上运行大规模密集型机器学习工作流。 | 用于试验机器学习或小规模试验和工作流的多余。 Azure Databricks 产生的额外成本。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/databricks/)。 |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | 类似于基于云的笔记本 VM (已预装 Python, 并且已预装 SDK), 但预安装了其他热门数据科学和机器学习工具。 易于缩放, 并与其他自定义工具和工作流组合。 | 与基于云的笔记本 VM 相比, 较慢的入门体验。 |
-| [Azure Notebook](#aznotebooks) | 具有 Python 和 SDK 预装的免费和轻型入门体验。 | 与基于云的笔记本 VM 相比, 可提供更强大的 VM。 独立于工作区和其他资源。 |
+| [Azure Notebook](#aznotebooks) | 具有 Python 和 SDK 预装的免费和轻型入门体验。 | 与基于云的笔记本 VM 相比, 提供的功能不太强大。 独立于工作区和其他资源。 |
 
 本文还提供了以下工具的其他使用技巧:
 
@@ -72,7 +72,7 @@ Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azu
 
   如果你使用的是代码, VM 将包括教程和示例, 以帮助你了解如何使用 Azure 机器学习服务。 示例笔记本存储在工作区的 Azure Blob 存储帐户中, 使其可在 Vm 之间共享。 运行时, 它们还可以访问工作区的数据存储和计算资源。
 
-+ **简单安装**:随时从 Azure 机器学习工作区中创建一个。 仅提供名称并指定 Azure VM 类型。 请通过本[教程立即试用:设置环境和工作](tutorial-1st-experiment-sdk-setup.md)区。
++ **简单安装**:随时从 Azure 机器学习工作区中创建一个。 仅提供名称并指定 Azure VM 类型。 请通过本[教程立即试用:设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
 + **可自定义**。 尽管提供了托管安全的 VM 产品/服务, 但仍保留了对硬件功能的完全访问权限, 并对其进行自定义以满足你的需求。 例如, 快速创建最新的 NVidia V100 支持的 VM, 以执行 novel 神经网络体系结构的分步调试。
 
@@ -187,14 +187,19 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
 
     此命令安装包含笔记本和 automl 的基本 Azure 机器学习 SDK。 额外`automl`的是大型安装, 如果不打算运行自动机器学习试验, 则可以将其从方括号中删除。 另外`automl` , 默认情况下还包括 Azure 机器学习数据准备 SDK 作为依赖项。
 
-     ```shell
+    ```shell
     pip install azureml-sdk[notebooks,automl]
     ```
 
    > [!NOTE]
-   > 如果有消息指出无法卸载 PyYAML，请改用以下命令：
+   > * 如果有消息指出无法卸载 PyYAML，请改用以下命令：
    >
-   > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >
+   > * 从 macOS Catalina 开始, zsh (Z shell) 是默认的登录 shell 和交互式 shell。 在 zsh 中, 使用以下命令, 该命令使用 "\\" (反斜杠) 对括号进行转义:
+   >
+   >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
+
 
    安装 SDK 需要几分钟时间。 有关安装选项的详细信息, 请参阅[安装指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
@@ -329,10 +334,10 @@ Azure Databricks 如何与 Azure 机器学习服务一起使用:
    1. 在“库”选项卡上，选择“重启”。
 
    还应考虑:
-   + 在 Automl 配置中, 使用 Azure Databricks 时, 请添加以下参数:
+   + 在 AutoML 配置中, 使用时 Azure Databricks 添加以下参数:
        1. ```max_concurrent_iterations```基于群集中的辅助角色节点数。
         2. ```spark_context=sc```基于默认 spark 上下文。
-   + 或者, 如果你使用的是旧版本的 SDK, 请从群集的已安装库中取消选中它, 然后移到垃圾桶。 安装新的 SDK 版本并重启群集。 如果完成此操作后出现问题，请分离并重新附加群集。
+   + 或者, 如果你使用的是旧版本的 SDK, 请从群集的已安装库中取消选中它, 然后移到垃圾桶。 安装新的 SDK 版本并重启群集。 如果重新启动后出现问题, 请分离并重新附加群集。
 
 如果安装成功, 则导入的库应如下所示:
 
@@ -357,7 +362,7 @@ Sdk for Databricks, **_无_** 自动机器![学习 Azure 机器学习 sdk for Da
 
 使用 [Azure 门户](https://portal.azure.com)完成 Azure Notebooks 入门。  打开工作区, 从 "**概述**" 部分中选择 " **Azure Notebooks 开始**"。
 
-默认情况下，Azure Notebooks 使用限制为 4GB 内存和 1GB 数据的免费服务层级。 不过，可以通过向 Azure Notebooks 项目附加 Data Science Virtual Machine 实例来解除这些限制。 有关详细信息，请参阅[管理和配置 Azure Notebooks 项目 - 计算层](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)。
+默认情况下, Azure Notebooks 使用限制为 4 GB 内存和 1 GB 数据的免费服务层。 不过，可以通过向 Azure Notebooks 项目附加 Data Science Virtual Machine 实例来解除这些限制。 有关详细信息，请参阅[管理和配置 Azure Notebooks 项目 - 计算层](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)。
 
 ## <a id="workspace"></a>创建工作区配置文件
 
@@ -371,7 +376,7 @@ Sdk for Databricks, **_无_** 自动机器![学习 Azure 机器学习 sdk for Da
 }
 ```
 
-此 JSON 文件必须采用包含 Python 脚本或 Jupyter Notebook 的目录结构。 它可以位于同一个目录中、一个名为*azureml*的子目录或父目录中。
+此 JSON 文件必须采用包含 Python 脚本或 Jupyter Notebook 的目录结构。 它可以位于同一目录（名为 *.azureml* 的子目录）中，也可以位于父目录中。
 
 要从代码使用此文件，请使用 `ws=Workspace.from_config()`。 此代码从文件中加载信息，并连接到工作区。
 

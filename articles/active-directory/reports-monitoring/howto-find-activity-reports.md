@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356412bfca19e72d09338faf8c8bcac5ec8f273a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988289"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127392"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
 
@@ -112,12 +112,12 @@ ms.locfileid: "68988289"
 
 ### <a name="anomalous-activity-reports"></a>异常活动报告
 
-异常活动报告提供 Azure AD 可以检测和报告的与安全相关的风险事件的信息。
+异常活动报告提供 Azure AD 可以检测和报告的与安全相关的风险检测的相关信息。
 
-下表列出了 Azure 门户中“Azure AD 异常活动”安全报告和相应的风险事件类型。 有关详细信息，请参阅 [Azure Active Directory 风险事件](concept-risk-events.md)。  
+下表列出了 Azure AD 异常活动安全报告和 Azure 门户中的相应风险检测类型。 有关详细信息, 请参阅[Azure Active Directory 风险检测](concept-risk-events.md)。  
 
 
-| Azure AD 异常活动报告 |  标识保护风险事件类型|
+| Azure AD 异常活动报告 |  标识保护风险检测类型|
 | :--- | :--- |
 | 凭据泄漏的用户 | 泄漏的凭据 |
 | 异常登录活动 | 不可能前往这些异常位置 |
@@ -126,15 +126,15 @@ ms.locfileid: "68988289"
 | 从具有可疑活动的 IP 地址登录 | 从具有可疑活动的 IP 地址登录 |
 | - | 从不熟悉的位置登录 |
 
-以下 Azure AD 异常活动安全报告未作为风险事件包含在 Azure 门户中：
+以下 Azure AD 异常活动安全报告未作为 Azure 门户中的风险检测包括:
 
 * 多次失败后登录
 * 从多个地理区域登录
 
 
-### <a name="detected-risk-events"></a>检测到的风险事件
+### <a name="detected-risk-detections"></a>检测到的风险检测
 
-在 [Azure 门户](https://portal.azure.com)中，可以在“Azure Active Directory” 边栏选项卡的“安全性”部分中访问有关检测到的风险事件的报告。 可以在以下报告中跟踪检测到的风险事件：   
+可以在[Azure 门户](https://portal.azure.com)中的 " **Azure Active Directory** " 边栏选项卡上的 "**安全**" 部分中访问有关检测到的风险检测的报告。 在以下报表中跟踪检测到的风险检测:   
 
 - [有风险的用户](concept-user-at-risk.md)
 - [有风险的登录](concept-risky-sign-ins.md)
@@ -147,7 +147,7 @@ ms.locfileid: "68988289"
 
 #### <a name="symptoms"></a>症状 
 
-我下载了活动日志（审核日志或登录日志），但发现所选时间范围内的记录不全。 为什么? 
+我下载了活动日志（审核日志或登录日志），但发现所选时间范围内的记录不全。 为什么？ 
 
  ![报告](./media/troubleshoot-missing-data-download/01.png)
  
@@ -155,7 +155,7 @@ ms.locfileid: "68988289"
 
 下载 Azure 门户中的活动日志时, 会将扩展限制为250000个记录, 并按最新的顺序进行排序。 
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
 可以随时通过 [Azure AD 报告 API](concept-reporting-api.md) 获取多达一百万条记录。
 
@@ -176,7 +176,7 @@ ms.locfileid: "68988289"
 | 目录审核 | &nbsp; | 2 分钟 | 5 分钟 |
 | 登录活动 | &nbsp; | 2 分钟 | 5 分钟 | 
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
 等待 15 分钟到 2 小时，再看操作是否显示在日志中。 如果 2 小时后仍未看到日志，请[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，我们会进行调查。
 
@@ -197,7 +197,7 @@ ms.locfileid: "68988289"
 | 目录审核 | &nbsp; | 2 分钟 | 5 分钟 |
 | 登录活动 | &nbsp; | 2 分钟 | 5 分钟 | 
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
 等待 15 分钟到 2 小时，再看操作是否显示在日志中。 如果 2 小时后仍未看到日志，请[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，我们会进行调查。
 
@@ -205,7 +205,7 @@ ms.locfileid: "68988289"
 
 #### <a name="symptoms"></a>症状
 
-无法在 Azure 门户中查看 30 天以上的登录和审核数据。 为什么? 
+无法在 Azure 门户中查看 30 天以上的登录和审核数据。 为什么？ 
 
  ![报告](./media/troubleshoot-missing-audit-data/03.png)
 
@@ -220,7 +220,7 @@ ms.locfileid: "68988289"
 
 有关详细信息，请参阅 [Azure Active Directory 报告保留策略](reference-reports-data-retention.md)。  
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
 可以通过两个选项将数据保留 30 天以上。 可以使用 [Azure AD 报告 API](concept-reporting-api.md) 以编程方式检索数据并将其存储在数据库中。 也可将审核日志集成到第三方 SIEM 系统（例如 Splunk 或 SumoLogic）中。
 

@@ -1,5 +1,5 @@
 ---
-title: 管理 web 服务使用 API 管理
+title: 使用 API 管理管理 web 服务
 titleSuffix: Azure Machine Learning Studio
 description: 介绍如何使用 API 管理来管理 AzureML Web 服务的指南。 通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b424696c3350ff2592df9a97189dde3df57845f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346994"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138564"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>使用 API 管理以管理 Azure 机器学习工作室 Web 服务
 ## <a name="overview"></a>概述
@@ -24,7 +24,7 @@ ms.locfileid: "60346994"
 ## <a name="what-is-azure-api-management"></a>什么是 Azure API 管理？
 Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。 单击[此处](https://azure.microsoft.com/services/api-management/)获取有关 Azure API 管理的详细信息。 单击[此处](/azure/api-management/import-and-publish)获取如何使用 Azure API 管理的指南。 这份额外指南（作为本指南的依据）涵盖更多主题，包括通知配置、层定价、响应处理、用户身份验证、创建产品、开发人员订阅和使用仪表板。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要完成本指南，需要：
 
 * 一个 Azure 帐户。 如果没有 Azure 帐户，请单击[此处](https://azure.microsoft.com/pricing/free-trial/)了解有关如何创建免费试用版帐户的详细信息。
@@ -36,14 +36,14 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 可以使用 API 管理实例来管理 Azure 机器学习 Web 服务。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“+ 创建资源”。 
+2. 选择“+ 创建资源”。
 3. 在搜索框中键入“API 管理”，然后选择“API 管理”资源。
-4. 单击**创建**。
-5. “名称”值用于创建唯一 URL（本示例使用“demoazureml”）。 
+4. 单击“创建”。
+5. “名称”值用于创建唯一 URL（本示例使用“demoazureml”）。
 6. 为服务实例选择**订阅**、**资源组**和**位置**。
-7. 指定“组织名称”的值（本示例使用“demoazureml”）。 
-8. 输入“管理员电子邮件”- 此电子邮件用于接收 API 管理系统发出的通知。 
-9. 单击**创建**。
+7. 指定“组织名称”的值（本示例使用“demoazureml”）。
+8. 输入“管理员电子邮件”- 此电子邮件用于接收 API 管理系统发出的通知。
+9. 单击“创建”。
 
 创建新服务最多可能需要 30 分钟。
 
@@ -56,38 +56,38 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 创建 API：
 
 1. 在 Azure 门户中，打开刚刚创建的服务实例。
-2. 在左侧导航窗格中，选择“API”。 
+2. 在左侧导航窗格中，选择“API”。
 
    ![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management.png)
 
-1. 单击“添加 API”。 
-2. 输入“Web API 名称”（本示例使用“AzureML 演示 API”）。 
-3. 对于“Web 服务 URL”，请输入“`https://ussouthcentral.services.azureml.net`”。 
+1. 单击“添加 API”。
+2. 输入“Web API 名称”（本示例使用“AzureML 演示 API”）。
+3. 对于“Web 服务 URL”，请输入“`https://ussouthcentral.services.azureml.net`”。
 4. 输入“Web API URL 后缀”。 这是客户向服务实例发送请求时使用的 URL 的最后一个部分（本示例使用“azureml-demo”）。
-5. 对于“Web API URL 方案”，请选择“HTTPS”。  
-6. 对于“产品”，请选择“初学者”。  
-7. 单击“ **保存**”。
+5. 对于“Web API URL 方案”，请选择“HTTPS”。
+6. 对于“产品”，请选择“初学者”。
+7. 单击“保存”。
 
 
 ## <a name="add-the-operations"></a>添加操作
 
-在发布者门户中将操作添加并配置到 API。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”，依次选择“API”、“操作”，然后单击“添加操作”。    
+在发布者门户中将操作添加并配置到 API。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”，依次选择“API”、“操作”，然后单击“添加操作”。
 
 ![add-operation](./media/manage-web-service-endpoints-using-api-management/add-an-operation.png)
 
-将显示“新建操作”  窗口，并且在默认情况下将选择“签名”  选项卡。
+将显示“新建操作”窗口，并且在默认情况下将选择“签名”选项卡。
 
 ## <a name="add-rrs-operation"></a>添加 RRS 操作
 首先为 AzureML RRS 服务创建一个操作：
 
-1. 对于“HTTP 谓词”，请选择“POST”。  
-2. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`”。 
-3. 输入“显示名称”（本示例使用“RRS 执行”）。 
+1. 对于“HTTP 谓词”，请选择“POST”。
+2. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`”。
+3. 输入“显示名称”（本示例使用“RRS 执行”）。
 
    ![add-rrs-operation-signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
-4. 在左侧依次单击“响应”   > “添加”  ，并选择“200 正常”  。
-5. 单词“保存”  ，保存此操作。
+4. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
+5. 单词“保存”，保存此操作。
 
    ![add-rrs-operation-response](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
 
@@ -98,69 +98,69 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 ### <a name="submit-but-not-start-a-batch-execution-job"></a>提交（但不启动）批处理执行作业
 
-1. 单击“添加操作”，将一个 BES 操作添加到 API。 
-2. 对于“HTTP 谓词”，请选择“POST”。  
-3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`”。 
-4. 输入“显示名称”（本示例使用“BES 提交”）。 
-5. 在左侧依次单击“响应”   > “添加”  ，并选择“200 正常”  。
-6. 单击“ **保存**”。
+1. 单击“添加操作”，将一个 BES 操作添加到 API。
+2. 对于“HTTP 谓词”，请选择“POST”。
+3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`”。
+4. 输入“显示名称”（本示例使用“BES 提交”）。
+5. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
+6. 单击“保存”。
 
 ### <a name="start-a-batch-execution-job"></a>启动批处理执行作业
 
-1. 单击“添加操作”，将一个 BES 操作添加到 API。 
-2. 对于“HTTP 谓词”，请选择“POST”。  
-3. 对于“HTTP 谓词”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`”。 
-4. 输入“显示名称”（本示例使用“BES 启动”）。 
-6. 在左侧依次单击“响应”   > “添加”  ，并选择“200 正常”  。
-7. 单击“ **保存**”。
+1. 单击“添加操作”，将一个 BES 操作添加到 API。
+2. 对于“HTTP 谓词”，请选择“POST”。
+3. 对于“HTTP 谓词”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`”。
+4. 输入“显示名称”（本示例使用“BES 启动”）。
+6. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
+7. 单击“保存”。
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>获取批处理执行作业的状态或结果
 
-1. 单击“添加操作”，将一个 BES 操作添加到 API。 
-2. 对于“HTTP 谓词”，请选择“GET”。  
-3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。 
-4. 输入“显示名称”（本示例使用“BES 状态”）。 
-6. 在左侧依次单击“响应”   > “添加”  ，并选择“200 正常”  。
-7. 单击“ **保存**”。
+1. 单击“添加操作”，将一个 BES 操作添加到 API。
+2. 对于“HTTP 谓词”，请选择“GET”。
+3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。
+4. 输入“显示名称”（本示例使用“BES 状态”）。
+6. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
+7. 单击“保存”。
 
 ### <a name="delete-a-batch-execution-job"></a>删除批处理执行作业
 
-1. 单击“添加操作”，将一个 BES 操作添加到 API。 
-2. 对于“HTTP 谓词”，请选择“DELETE”。  
-3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。 
-4. 输入“显示名称”（本示例使用“BES 删除”）。 
-5. 在左侧依次单击“响应”   > “添加”  ，并选择“200 正常”  。
-6. 单击“ **保存**”。
+1. 单击“添加操作”，将一个 BES 操作添加到 API。
+2. 对于“HTTP 谓词”，请选择“DELETE”。
+3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。
+4. 输入“显示名称”（本示例使用“BES 删除”）。
+5. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
+6. 单击“保存”。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>从开发人员门户调用操作
 
-可以直接从开发人员门户调用操作，这样可以方便地查看和测试 API 的操作。 此步骤将调用已添加到“AzureML 演示 API”的“RRS 执行”方法。   
+可以直接从开发人员门户调用操作，这样可以方便地查看和测试 API 的操作。 此步骤将调用已添加到“AzureML 演示 API”的“RRS 执行”方法。 
 
-1. 单击“开发人员门户”。 
+1. 单击“开发人员门户”。
 
    ![developer-portal](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
 
-2. 单击顶部菜单的“API”  ，并单击“AzureML 演示 API”  ，查看可用操作。
+2. 单击顶部菜单的“API”，并单击“AzureML 演示 API”，查看可用操作。
 
    ![demoazureml-api](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
 
-3. 为操作选择“RRS 执行”  。 单击“试用”  。
+3. 为操作选择“RRS 执行”。 单击“试用”。
 
    ![try-it](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
-4. 对于“请求参数”，请键入自己的**工作区**和**服务**，为 **apiversion** 键入“2.0”，为 **details** 键入“true”。  可在 AzureML Web 服务仪表板中查找“工作区”  和“服务”  （请参阅附录 A 中的**测试 Web 服务**）。
+4. 对于“请求参数”，请键入自己的**工作区**和**服务**，为 **apiversion** 键入“2.0”，为 **details** 键入“true”。 可在 AzureML Web 服务仪表板中查找“工作区”和“服务”（请参阅附录 A 中的**测试 Web 服务**）。
 
-   对于“请求标头”，请单击“添加标头”，并键入“Content-Type”和“application/json”。   再次单击“添加标头”，键入“Authorization”和“Bearer \<服务 API-KEY\>”。   可在 AzureML Web 服务仪表板中找到 API-KEY（请参阅附录 A 中的**测试 Web 服务**）。
+   对于“请求标头”，请单击“添加标头”，并键入“Content-Type”和“application/json”。 再次单击“添加标头”，键入“Authorization”和“Bearer \<服务 API-KEY\>”。 可在 AzureML Web 服务仪表板中找到 API-KEY（请参阅附录 A 中的**测试 Web 服务**）。
 
-   对于“请求正文”，请键入 `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`。 
+   对于“请求正文”，请键入 `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`。
 
    ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
-5. 单击“发送”  。
+5. 单击“发送”。
 
    ![发送](./media/manage-web-service-endpoints-using-api-management/send.png)
 
-调用操作后，开发人员门户将从后端服务显示“请求的 URL”  、“响应状态”  、“响应标头”  以及任何“响应内容”  。
+调用操作后，开发人员门户将从后端服务显示“请求的 URL”、“响应状态”、“响应标头”以及任何“响应内容”。
 
 ![response-status](./media/manage-web-service-endpoints-using-api-management/response-status.png)
 
@@ -168,7 +168,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 ### <a name="creating-the-experiment"></a>创建实验
 下面是创建简单 AzureML 实验并将其部署为 Web 服务的步骤。 采用任意文本列作为输入，并返回以整数形式表示的功能集。 例如：
 
-| Text | 经过哈希处理的文本 |
+| 文本 | 经过哈希处理的文本 |
 | --- | --- |
 | 今天天气不错 |1 1 2 2 0 2 0 1 |
 
@@ -176,61 +176,61 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 ![搜索实验模板](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
-将其重命名为“SimpleFeatureHashingExperiment”  。 展开“保存的数据集”  ，并将“Amazon 中的书评”  拖动至实验。
+将其重命名为“SimpleFeatureHashingExperiment”。 展开“保存的数据集”，并将“Amazon 中的书评”拖动至实验。
 
 ![simple-feature-hashing-experiment](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
-展开“数据转换”  和“操作”  ，并将“选择数据集中的列”  拖动至实验。 将“Amazon 中的书评”  连接到“选择数据集中的列”  。
+展开“数据转换”和“操作”，并将“选择数据集中的列”拖动至实验。 将“Amazon 中的书评”连接到“选择数据集中的列”。
 
-![将书籍评论数据集模块连接到的投影列模块](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![将书籍检查数据集模块连接到 "项目列" 模块](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
-单击“选择数据集中的列”  ，并单击“启动列选择器”  并选择“Col2”  。 单击复选标记应用这些更改。
+单击“选择数据集中的列”，并单击“启动列选择器”并选择“Col2”。 单击复选标记应用这些更改。
 
-![选择使用列名称的列](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
+![使用列名称选择列](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
-展开“文本分析”  ，并将“功能哈希”  拖动至实验。 将“选择数据集中的列”  连接到“功能哈希”  。
+展开“文本分析”，并将“功能哈希”拖动至实验。 将“选择数据集中的列”连接到“功能哈希”。
 
 ![connect-project-columns](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
-键入“3”  作为“哈希位大小”  。 这会创建 8 (23) 个列。
+键入“3”作为“哈希位大小”。 这会创建 8 (23) 个列。
 
 ![hashing-bitsize](./media/manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
 
-此时你可能想要单击“运行”  测试试验。
+此时你可能想要单击“运行”测试试验。
 
 ![run](./media/manage-web-service-endpoints-using-api-management/run.png)
 
 ### <a name="create-a-web-service"></a>创建 Web 服务
-现在创建 Web 服务。 展开“Web 服务”  ，并将“输入”  拖动至实验。 将“输入”  连接到“功能哈希”  。 另将“输出”  拖动至实验。 将“输出”  连接到“功能哈希”  。
+现在创建 Web 服务。 展开“Web 服务”，并将“输入”拖动至实验。 将“输入”连接到“功能哈希”。 另将“输出”拖动至实验。 将“输出”连接到“功能哈希”。
 
 ![output-to-feature-hashing](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
 
-单击“发布 Web 服务”  。
+单击“发布 Web 服务”。
 
 ![publish-web-service](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
 
-单击“是”  发布实验。
+单击“是”发布实验。
 
 ![yes-to-publish](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>测试 Web 服务
-AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行服务）终结点。 RSS 适用于同步执行。 BES 适用于异步作业执行。 若要通过下面的示例 Python 源测试 Web 服务，可能需要下载并安装 Azure SDK for Python（请参阅：[如何安装 Python](../../python-how-to-install.md)）。
+AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行服务）终结点。 RSS 适用于同步执行。 BES 适用于异步作业执行。 若要通过下面的示例 Python 源测试 Web 服务，可能需要下载并安装 Azure SDK for Python（请参阅：[如何安装 Python](/azure/python/python-sdk-azure-install)）。
 
-还需要下面源示例实验的“工作区”  、“服务”  和“api_key”  。 在 Web 服务仪表板中单击实验的“请求/响应”  或“批处理执行”  ，查找工作区和服务。
+还需要下面源示例实验的“工作区”、“服务”和“api_key”。 在 Web 服务仪表板中单击实验的“请求/响应”或“批处理执行”，查找工作区和服务。
 
 ![find-workspace-and-service](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
-在 Web 服务仪表板中单击实验，查找“api_key”  。
+在 Web 服务仪表板中单击实验，查找“api_key”。
 
 ![find-api-key](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
 
 #### <a name="test-rrs-endpoint"></a>测试 RRS 终结点
 ##### <a name="test-button"></a>“测试”按钮
-测试 RRS 终结点的简单方法是在 Web 服务仪表板上单击“测试”  。
+测试 RRS 终结点的简单方法是在 Web 服务仪表板上单击“测试”。
 
 ![测试](./media/manage-web-service-endpoints-using-api-management/test.png)
 
-为“col2”  键入“今天天气不错”  。 单击复选标记。
+为“col2”键入“今天天气不错”。 单击复选标记。
 
 ![enter-data](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
 
@@ -239,9 +239,9 @@ AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行�
 ![sample-output](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
 
 ##### <a name="sample-code"></a>代码示例
-测试 RRS 的另一种方法是从客户端代码入手。 如果在仪表板上单击“请求/响应”  ，并滚动到底部，会看到 C#、Python 和 R 的示例代码。还将看到 RRS 请求的语法，包括请求 URI、标头和正文。
+测试 RRS 的另一种方法是从客户端代码入手。 如果在仪表板上单击“请求/响应”，并滚动到底部，会看到 C#、Python 和 R 的示例代码。还将看到 RRS 请求的语法，包括请求 URI、标头和正文。
 
-本指南介绍了运行中的 Python 示例。 将使用实验的“工作区”  、“服务”  和“api_key”  修改该示例。
+本指南介绍了运行中的 Python 示例。 将使用实验的“工作区”、“服务”和“api_key”修改该示例。
 
     import urllib2
     import json
@@ -271,9 +271,9 @@ AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行�
         print(json.loads(error.read()))
 
 #### <a name="test-bes-endpoint"></a>测试 BES 终结点
-在仪表板上单击“批处理执行”  并滚动到底部。 会看到 C#、Python 和 R 的示例代码。还将看到提交作业、启动作业、获取作业状态或结果以及删除作业的 BES 请求语法。
+在仪表板上单击“批处理执行”并滚动到底部。 会看到 C#、Python 和 R 的示例代码。还将看到提交作业、启动作业、获取作业状态或结果以及删除作业的 BES 请求语法。
 
-本指南介绍了运行中的 Python 示例。 需要使用实验的“工作区”  、“服务”  和“api_key”  修改该示例。 此外，还需要修改“存储帐户名称”  、“存储帐户密钥”  和“存储容器名称”  。 最后，需要修改“输入文件”  和“输出文件”  的位置。
+本指南介绍了运行中的 Python 示例。 需要使用实验的“工作区”、“服务”和“api_key”修改该示例。 此外，还需要修改“存储帐户名称”、“存储帐户密钥”和“存储容器名称”。 最后，需要修改“输入文件”和“输出文件”的位置。
 
     import urllib2
     import json

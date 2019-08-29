@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9be48d8f403d3ddde993ebdcf0142b55e52afce
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779670"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125110"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -140,28 +140,28 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 **示例 A - 用于恢复对任务关键型协作应用的访问权限的应急 CA 策略：**
 
 * 策略 1：要求从已加入域的设备访问 Exchange 和 SharePoint
-  * 名称:EM001 - 在紧急情况下启用：MFA 中断 [1/4] - Exchange SharePoint - 要求执行混合 Azure AD 加入
+  * 姓名：EM001 - 在紧急情况下启用：MFA 中断 [1/4] - Exchange SharePoint - 要求执行混合 Azure AD 加入
   * 用户和组：包括 ContingencyAccess。 排除 CoreAdmins 和 EmergencyAccess
   * 云应用：Exchange Online 和 SharePoint Online
-  * 条件：Any
+  * 条件：任意
   * 授予控制权：要求已加入域
   * 状态：已禁用
 * 策略 2：阻止 Windows 以外的平台
-  * 名称:EM002 - 在紧急情况下启用：MFA 中断 [2/4] - Exchange SharePoint - 阻止非 Windows 访问
+  * 姓名：EM002 - 在紧急情况下启用：MFA 中断 [2/4] - Exchange SharePoint - 阻止非 Windows 访问
   * 用户和组：包括所有用户。 排除 CoreAdmins 和 EmergencyAccess
   * 云应用：Exchange Online 和 SharePoint Online
   * 条件：设备平台包括所有平台，不包括 Windows
   * 授予控制权：阻止
   * 状态：已禁用
 * 策略 3：阻止 CorpNetwork 以外的网络
-  * 名称:EM003 - 在紧急情况下启用：MFA 中断 [3/4] - Exchange SharePoint - 阻止非企业网络的访问
+  * 姓名：EM003 - 在紧急情况下启用：MFA 中断 [3/4] - Exchange SharePoint - 阻止非企业网络的访问
   * 用户和组：包括所有用户。 排除 CoreAdmins 和 EmergencyAccess
   * 云应用：Exchange Online 和 SharePoint Online
   * 条件：位置包括任意位置，不包括 CorpNetwork
   * 授予控制权：阻止
   * 状态：已禁用
 * 策略 4：显式阻止 EAS
-  * 名称:EM004 - 在紧急情况下启用：MFA 中断 [4/4] - Exchange - 阻止所有用户的 EAS
+  * 姓名：EM004 - 在紧急情况下启用：MFA 中断 [4/4] - Exchange - 阻止所有用户的 EAS
   * 用户和组：包括所有用户
   * 云应用：包括 Exchange Online
   * 条件：客户端应用：Exchange ActiveSync
@@ -182,14 +182,14 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 **示例 B - 应急 CA 策略：**
 
 * 策略 1：阻止不属于 SalesContingency 团队的所有人员
-  * 名称:EM001 - 在紧急情况下启用：设备合规性中断 [1/2] - Salesforce - 阻止除 SalesforceContingency 以外的所有用户
+  * 姓名：EM001 - 在紧急情况下启用：设备合规性中断 [1/2] - Salesforce - 阻止除 SalesforceContingency 以外的所有用户
   * 用户和组：包括所有用户。 排除 SalesAdmins 和 SalesforceContingency
   * 云应用：Salesforce。
   * 条件：None
   * 授予控制权：阻止
   * 状态：已禁用
 * 策略 2：阻止销售团队从移动设备以外的任何平台进行访问（以缩小受攻击面）
-  * 名称:EM002 - 在紧急情况下启用：设备合规性中断 [2/2] - Salesforce - 阻止除 iOS 和 Android 以外的所有平台
+  * 姓名：EM002 - 在紧急情况下启用：设备合规性中断 [2/2] - Salesforce - 阻止除 iOS 和 Android 以外的所有平台
   * 用户和组：包括 SalesforceContingency。 排除 SalesAdmins
   * 云应用：Salesforce
   * 条件：设备平台包括所有平台，不包括 iOS 和 Android
@@ -232,7 +232,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 1. 作为变更控制策略的一部分，记录每项变更和之前的状态，以便在访问控制完全正常运行后立即回滚你实施的所有应急计划。
 2. 假设恶意参与者在你禁用 MFA 时试图通过密码喷射或网络钓鱼攻击来获取密码。 此外，不良参与者可能已经拥有以前未授权访问任何资源，但可能在此时段试图访问这些资源的密码。 对于高级管理人员等关键用户，可以在为其禁用 MFA 之前重置密码，从而在一定程度上缓解此风险。
 3. 存档所有登录活动，以确定在 MFA 被禁用期间，哪些人访问了哪些内容。
-4. 对此时段[报告的所有风险事件进行会审](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
+4. 会审此窗口期间[报告的所有风险检测](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
 
 ## <a name="after-a-disruption"></a>中断后
 
@@ -242,7 +242,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 2. 禁用应急策略。 
 3. 回滚在中断期间所做的并进行了记录的任何其他更改。
 4. 如果使用了紧急访问帐户，请记住重新生成凭据并以物理方式保护新凭据的详细信息，以作为紧急访问帐户过程的一部分。
-5. 继续对中断后就可疑活动[报告的所有风险事件进行会审](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
+5. 继续会审发生可疑活动中断后[报告的所有风险检测](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
 6. 撤销[使用 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) 针对一组用户颁发的所有刷新令牌。 撤销所有刷新令牌对于在中断期间使用的特权帐户非常重要，这样做将迫使它们重新进行身份验证并满足已还原策略的控制要求。
 
 ## <a name="emergency-options"></a>紧急选项
@@ -254,7 +254,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
    1. 如果没有出站 IP 地址清单，或需要在公司网络内外均启用访问，则可通过指定 0.0.0.0/1 和 128.0.0.0/1 将整个 IPv4 地址空间添加为可信 IP。
 
 >[!IMPORTANT]
- > 如果通过扩大受信任 IP 地址的范围来取消阻止访问，则不会生成与 IP 地址关联的风险事件（例如，无法实现的行程或不熟悉的位置）。
+ > 如果你放宽了受信任的 IP 地址以取消阻止访问, 将不会生成与 IP 地址 (例如, 不可能的旅行或不熟悉的位置) 关联的风险检测。
 
 >[!NOTE]
  > 只有使用 [Azure AD Premium 许可证](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)才能为 Azure MFA 配置[受信任的 IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings)。

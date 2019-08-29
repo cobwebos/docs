@@ -3,22 +3,20 @@ title: Azure 数据工厂支持的计算环境 | Microsoft Docs
 description: 了解可在 Azure 数据工厂管道（例如 Azure HDInsight）中用于转换或处理数据的计算环境。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 6877a7e8-1a58-4cfb-bbd3-252ac72e4145
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12d12e96616d94360e5d193cf2b778a9ae389062
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565712"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140248"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 > [!NOTE]
@@ -51,7 +49,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 2017 年 12 月 15日后：
 
 - 客户不再能够使用数据工厂版本 1 中的按需 HDInsight 链接服务创建基于 Linux 的 HDInsight 版本 3.3（或更低版本）的群集。 
-- 如果未在现有数据工厂版本 1 按需 HDInsight 链接服务的 JSON 定义中显式指定 [osType 和 Version 属性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，则默认值将 从“Version=3.1, osType=Windows”更改为“Version=\<最新 HDI 默认版本\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType=Linux”     。
+- 如果未在现有数据工厂版本 1 按需 HDInsight 链接服务的 JSON 定义中显式指定 [osType 和 Version 属性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，则默认值将 从“Version=3.1, osType=Windows”更改为“Version=\<最新 HDI 默认版本\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType=Linux”。
 
 2018 年 7 月 31 日后：
 
@@ -83,19 +81,19 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight 按需链接服务
 数据工厂可自动创建基于 Windows 或 Linux 的按需 HDInsight 群集用于处理数据。 该群集是在与它关联的存储帐户所在的同一区域中创建的。 使用 JSON **linkedServiceName** 属性创建该群集。
 
-请注意以下有关按需 HDInsight 链接服务的要点： 
+请注意以下有关按需 HDInsight 链接服务的要点：
 
 * 按需 HDInsight 群集不会出现在 Azure 订阅中。 数据工厂服务会代你管理按需 HDInsight 群集。
-* 在按需 HDInsight 群集上运行的作业日志将复制到与 HDInsight 群集相关联的存储帐户。 若要访问这些日志，请在 Azure 门户中转到“活动运行详细信息”窗格。  有关详细信息，请参阅[监视和管理管道](data-factory-monitor-manage-pipelines.md)。
+* 在按需 HDInsight 群集上运行的作业日志将复制到与 HDInsight 群集相关联的存储帐户。 若要访问这些日志，请在 Azure 门户中转到“活动运行详细信息”窗格。 有关详细信息，请参阅[监视和管理管道](data-factory-monitor-manage-pipelines.md)。
 * 只需为启动 HDInsight 群集和运行作业的时间付费。
 
 > [!IMPORTANT]
-> 预配按需 HDInsight 群集通常需要 20 分钟或更长时间。 
+> 预配按需 HDInsight 群集通常需要 20 分钟或更长时间。
 >
 > 
 
 ### <a name="example"></a>示例
-以下 JSON 定义基于 Linux 的按需 HDInsight 链接服务。 处理数据切片时，数据工厂会自动创建基于 Linux 的 HDInsight 群集。  
+以下 JSON 定义基于 Linux 的按需 HDInsight 链接服务。 处理数据切片时，数据工厂会自动创建基于 Linux 的 HDInsight 群集。 
 
 ```json
 {
@@ -114,7 +112,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 > [!IMPORTANT]
-> HDInsight 群集在 JSON **linkedServiceName** 属性中指定的 Azure Blob 存储内创建默认容器。  根据设计，HDInsight 不会在删除群集时删除此容器。 在按需 HDInsight 链接服务中，除非存在现有的实时群集 (**timeToLive**)，否则每次需要处理切片时，都会创建 HDInsight 群集。 处理完成后会删除该群集。 
+> HDInsight 群集在 JSON **linkedServiceName** 属性中指定的 Azure Blob 存储内创建默认容器。 根据设计，HDInsight 不会在删除群集时删除此容器。 在按需 HDInsight 链接服务中，除非存在现有的实时群集 (**timeToLive**)，否则每次需要处理切片时，都会创建 HDInsight 群集。 处理完成后会删除该群集。 
 >
 > 随着处理的切片越来越多，Blob 存储中会出现大量的容器。 如果不需要使用容器来排查作业问题，可以删除容器以降低存储成本。 这些容器的名称遵循 `adf<your Data Factory name>-<linked service name>-<date and time>` 模式。 可以使用 [Microsoft 存储资源管理器](https://storageexplorer.com/)等工具来删除 Blob 存储中的容器。
 >
@@ -132,7 +130,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 | osType                       | 操作系统的类型。 允许的值为 **Linux** 和 **Windows**。 如果未指定此值，将使用 **Linux**。  <br /><br />我们强烈建议使用基于 Linux 的 HDInsight 群集。 Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 | 否       |
 | hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的名称。 按需 HDInsight 群集是使用 SQL 数据库作为元存储创建的。 | 否       |
 
-#### <a name="example-linkedservicenames-json"></a>示例：LinkedServiceNames JSON
+#### <a name="example-linkedservicenames-json"></a>例如：LinkedServiceNames JSON
 
 ```json
 "additionalLinkedServiceNames": [
@@ -144,7 +142,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ### <a name="advanced-properties"></a>高级属性
 若要对按需 HDInsight 群集进行粒度配置，可指定以下属性：
 
-| 属性               | 说明                              | 需要 |
+| 属性               | 说明                              | 必填 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 为要创建的 HDInsight 群集指定核心配置参数 (core-site.xml)。 | 否       |
 | hBaseConfiguration     | 为 HDInsight 群集指定 HBase 配置参数 (hbase-site.xml)。 | 否       |
@@ -155,7 +153,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 | stormConfiguration     | 为 HDInsight 群集指定 Storm 配置参数 (storm-site.xml)。 | 否       |
 | yarnConfiguration      | 为 HDInsight 群集指定 YARN 配置参数 (yarn-site.xml)。 | 否       |
 
-#### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>示例：具有高级属性的按需 HDInsight 群集配置
+#### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>例如：具有高级属性的按需 HDInsight 群集配置
 
 ```json
 {
@@ -197,7 +195,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ### <a name="node-sizes"></a>节点大小
 若要指定头节点、数据节点和 ZooKeeper 节点的大小，请使用以下属性： 
 
-| 属性          | 说明                              | 需要 |
+| 属性          | 说明                              | 必填 |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | 设置头节点的大小。 默认值为 **Standard_D3**。 有关详细信息，请参阅[指定节点大小](#specify-node-sizes)。 | 否       |
 | dataNodeSize      | 设置数据节点的大小。 默认值为 **Standard_D3**。 | 否       |
@@ -332,9 +330,9 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| 属性   | 说明                              | 需要 |
+| 属性   | 说明                              | 必填 |
 | ---------- | ---------------------------------------- | -------- |
-| Type       | 将 type 属性设置为 **AzureML**。 | 是      |
+| 类型       | 将 type 属性设置为 **AzureML**。 | 是      |
 | mlEndpoint | 批处理计分 URL。                   | 是      |
 | apiKey     | 已发布的工作区模型的 API。     | 是      |
 
@@ -362,11 +360,11 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性                | 说明                              | 需要 |
+| 属性                | 说明                              | 必填 |
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | 应用程序的客户端 ID。     | 是      |
 | servicePrincipalKey | 应用程序的密钥。           | 是      |
-| tenant              | 应用程序所在的租户的信息（域名或租户 ID）。 若要获取此信息，请将鼠标悬停在 Azure 门户的右上角。 | 是      |
+| 租户              | 应用程序所在的租户的信息（域名或租户 ID）。 若要获取此信息，请将鼠标悬停在 Azure 门户的右上角。 | 是      |
 
 **示例：服务主体身份验证**
 ```json
@@ -390,9 +388,9 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 #### <a name="user-credential-authentication"></a>用户凭据身份验证
 若要对 Data Lake Analytics 使用用户凭据身份验证，请指定以下属性：
 
-| 属性          | 说明                              | 需要 |
+| 属性          | 说明                              | 必填 |
 | :---------------- | :--------------------------------------- | :------- |
-| authorization | 在数据工厂编辑器中，选择“授权”按钮。  在此属性中输入用于分配自动生成的授权 URL 的凭据。 | 是      |
+| authorization | 在数据工厂编辑器中，选择“授权”按钮。 在此属性中输入用于分配自动生成的授权 URL 的凭据。 | 是      |
 | sessionId     | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时，会自动生成此设置。 | 是      |
 
 示例：**用户凭据身份验证**
@@ -414,7 +412,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 #### <a name="token-expiration"></a>令牌过期
-选择“授权”按钮后生成的授权代码将在设置的间隔后过期。  
+选择“授权”按钮后生成的授权代码将在设置的间隔后过期。 
 
 身份验证令牌过期时，可能会显示以下错误消息： 
 
@@ -424,10 +422,10 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 | 用户类型                                | 过期时间                            |
 | :--------------------------------------- | :--------------------------------------- |
-| 不是由 Azure AD 管理的用户帐户（Hotmail、Live 等等）  | 12 小时。                                 |
-| 由 Azure AD 管理的用户帐户  | 最后一次运行切片后的 14 天。 <br /><br />如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
+| 不是由 Azure AD 管理的用户帐户（Hotmail、Live 等等） | 12 小时。                                 |
+| 由 Azure AD 管理的用户帐户 | 最后一次运行切片后的 14 天。 <br /><br />如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
-若要避免或解决此错误，请在令牌过期时，选择“授权”按钮重新授权。  然后重新部署链接服务。 还可使用以下代码以编程方式生成 **sessionId** 和 **authorization** 属性的值：
+若要避免或解决此错误，请在令牌过期时，选择“授权”按钮重新授权。 然后重新部署链接服务。 还可使用以下代码以编程方式生成 **sessionId** 和 **authorization** 属性的值：
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||

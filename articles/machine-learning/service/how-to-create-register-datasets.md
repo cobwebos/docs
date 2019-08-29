@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 497a00570d85ab83f71416e979e485db4685b64a
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: e5d5d36e82914f1d6d03299db0ed1427ac5a389a
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992119"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147590"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>在 Azure 机器学习中创建和访问数据集 (预览)
 
@@ -45,9 +45,11 @@ ms.locfileid: "69992119"
 
 ## <a name="dataset-types"></a>数据集类型
 
-数据集根据用户在定型中使用它们的方式分类为各种类型。 目前, 我们支持[TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , 它通过分析提供的文件或文件列表来表示表格格式的数据。 这使你能够将数据具体化为 pandas 数据帧。 可以通过 csv、tsv、parquet 文件、SQL 查询结果等来创建对象。`TabularDataset`有关完整列表, 请访问我们的文档。
+数据集根据用户在定型中使用它们的方式分类为各种类型。 数据集类型列表:
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)通过分析提供的文件或文件列表, 以表格格式表示数据。 这使你能够将数据具体化为 pandas 数据帧。 可以通过 csv、tsv、parquet 文件、SQL 查询结果等来创建对象。`TabularDataset`有关完整列表, 请访问我们的[文档](https://aka.ms/tabulardataset-api-reference)。
+* FileDataset 引用数据存储或公用 url 中的单个或多个文件。 这使您能够将文件下载或装载到您的计算中。 文件可以是任何格式, 这使得各种机器学习方案 (包括深度学习) 更广泛。
 
-若要了解有关即将发生的 API 更改的详细信息, 请参阅[什么是 Azure 机器学习服务？](https://aka.ms/tabular-dataset) 
+若要了解有关即将发生的 API 更改的详细信息, 请参阅[此处](https://aka.ms/tabular-dataset)。
 
 ## <a name="create-datasets"></a>创建数据集 
 
@@ -101,6 +103,25 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, Mrs Bradley (Florence Briggs 。|女|38.0|1|0|电脑17599|71.2833|C85|C
 2|3|1|3|Heikkinen, 未命中。 Laina|女|26.0|0|0|STON/O2。 3101282|7.9250||S
 
+### <a name="create-filedatasets"></a>创建 FileDatasets
+使用`FileDatasetFactory`类`from_files()`的方法可加载任意格式的文件, 并创建未注册的 FileDataset。
+
+```Python
+# create a FileDataset from multiple paths in datastore
+datastore_paths = [
+                  (datastore, 'animals/dog/1.jpg'),
+                  (datastore, 'animals/dog/2.jpg'),
+                  (datastore, 'animals/dog/*.jpg')
+                 ]
+animal_ds = Dataset.File.from_files(path=datastore_paths)
+
+# create a FileDataset from image and label files behind public web urls
+web_paths = [
+            'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
+            'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
+           ]          
+mnist_ds = Dataset.File.from_files(path=web_paths)
+```
 ## <a name="register-datasets"></a>注册数据集
 
 若要完成创建过程, 请将数据集注册到工作区:

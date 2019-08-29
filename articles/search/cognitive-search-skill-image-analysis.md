@@ -7,22 +7,22 @@ author: luiscabrer
 ms.service: search
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/28/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 8cf72ba2fff65cf3382344fd2851c9c6027676c2
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2bdb65355f835eec232efd4f0493ecefbecfdd26
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635852"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128192"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
 图像分析技能根据图像内容提取一组丰富的可视特征。 例如，可从图像生成标题栏、生成标记或识别名人和地标。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 
 
 > [!NOTE]
-> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 小型卷 (20 个事务下) 可在 Azure 搜索中免费执行, 但较大的工作负荷需要[附加可计费认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
 > 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
 
@@ -37,9 +37,8 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 | 参数名称     | 描述 |
 |--------------------|-------------|
 | defaultLanguageCode   |  表示要返回的语言的字符串。 该服务以指定的语言返回识别结果。 如果未指定此参数，则默认值为“en”。 <br/><br/>支持的语言为： <br/>en - 英语（默认） <br/> zh - 简体中文|
-|visualFeatures |   表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li> categories - 根据认知服务[文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像。</li><li>*description* - 用完整的英文句子描述图像内容。</li><li>*faces* - 检测人脸是否存在。 如果存在，则生成位置、性别和年龄。</li><li> *imageType* - 检测图像是剪贴画还是素描。</li><li>  *color* - 确定主题色、主色以及图像是否为黑白。</li><li>*adult* - 检测图片是否具有色情性质（描绘裸体或性行为）。 也检测性暗示内容。</li></ul> 可视特征的名称区分大小写。|
-| details   | 表示要返回的特定于域的详细信息的一组字符串。 有效的可视特征类型包括： <ul><li>*celebrities* - 识别在图像中检测到的名人。</li><li>*landmarks* - 识别在图像中检测到的地标。</li></ul>
- |
+|visualFeatures |   表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li> *类别*-根据认知服务[计算机视觉文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。 </li><li> tags - 使用与图像内容相关字词的详细列表来标记图像。</li><li>*description* - 用完整的英文句子描述图像内容。</li><li>*faces* - 检测人脸是否存在。 如果存在，则生成位置、性别和年龄。</li><li>    *imageType* - 检测图像是剪贴画还是素描。</li><li>  *color* - 确定主题色、主色以及图像是否为黑白。</li><li>*adult* - 检测图片是否具有色情性质（描绘裸体或性行为）。 也检测性暗示内容。</li></ul> 可视特征的名称区分大小写。|
+| details   | 表示要返回的特定于域的详细信息的一组字符串。 有效的可视特征类型包括： <ul><li>*celebrities* - 识别在图像中检测到的名人。</li><li>*landmarks* - 识别在图像中检测到的地标。 </li></ul> |
 
 ## <a name="skill-inputs"></a>技能输入
 
@@ -49,7 +48,8 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 
 
-##  <a name="sample-definition"></a>示例定义
+##  <a name="sample-skill-definition"></a>示例技能定义
+
 ```json
         {
             "description": "Extract image analysis.",
@@ -316,7 +316,17 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             "targetFieldName": "faces"
         }
 ```
+### <a name="variation-on-output-field-mappings-nested-properties"></a>输出字段映射 (嵌套属性) 的变体
 
+您可以将输出字段映射定义为较低级别的属性, 例如仅特征点或名人。 在这种情况下, 请确保索引架构中有一个字段专门用于包含特征点。
+
+```json
+    "outputFieldMappings": [
+        {
+            "sourceFieldName": /document/normalized_images/*/categories/details/landmarks/*",
+            "targetFieldName": "landmarks"
+        }
+```
 ##  <a name="sample-input"></a>示例输入
 
 ```json
@@ -493,6 +503,22 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 | NotSupportedVisualFeature  | 指定的特征类型无效。 |
 | NotSupportedImage | 不受支持的图片，例如儿童色情内容。 |
 | InvalidDetails | 不受支持的特定于域的模型。 |
+
+如果收到类似于`"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`的错误, 请检查路径。 名人和特征点都是下`detail`的属性。
+
+```json
+"categories":[  
+      {  
+         "name":"building_",
+         "score":0.97265625,
+         "detail":{  
+            "landmarks":[  
+               {  
+                  "name":"Forbidden City",
+                  "confidence":0.92013400793075562
+               }
+            ]
+```
 
 ## <a name="see-also"></a>请参阅
 

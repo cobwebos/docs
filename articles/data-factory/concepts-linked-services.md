@@ -3,21 +3,20 @@ title: Azure 数据工厂中的链接服务 | Microsoft Docs
 description: 了解数据工厂中的链接服务。 链接服务将计算/数据存储链接到数据工厂。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: 904e063ae64a971de7f34fbfac63b7679f3bc363
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 80e9cee0d973dc8575e9645c537b6b69fbeef700
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019959"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137123"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure 数据工厂中的链接服务
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -92,14 +91,11 @@ connectVia | 用于连接到数据存储的[集成运行时](concepts-integratio
 ```
 
 ## <a name="create-linked-services"></a>创建链接服务
+
 可以使用以下任一工具或 SDK 创建链接服务：[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure 资源管理器模板和 Azure 门户
 
 ## <a name="data-store-linked-services"></a>数据存储链接的服务
-连接到数据存储的方法可以在我们的[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)中找到。 有关不同存储所需的特定连接属性，请参考该列表。
-
-## <a name="data-store-supported-activities"></a>数据存储支持的活动
-
-[!INCLUDE [Connector-activity support matrix](../../includes/connector-activity-support-matrix.md)]
+可以从 "[连接器概述](copy-activity-overview.md#supported-data-stores-and-formats)" 一文中找到数据工厂支持的数据列表。 单击数据存储以了解支持的连接属性。
 
 ## <a name="compute-linked-services"></a>计算链接服务
 有关可以从数据工厂连接到的不同计算环境以及不同配置的详细信息，请参考[支持的计算环境](compute-linked-services.md)。

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 80c1ffd27b0668f19fd87e7eda62e578c861ba64
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fb17d1b95d74a67f220651cf198f367bdd31f19f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934602"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129318"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -130,7 +130,7 @@ Azure Active Directory 中的许多功能可以自动截获攻击，以消除检
 
 ### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>使用“Azure AD 标识保护”实施用户风险安全策略
 
-用户风险指示用户身份透露的可能性，它是根据与用户身份关联的[用户风险事件](../../active-directory/identity-protection/overview.md)计算的。 用户风险策略是一种条件性访问策略, 可评估特定用户或组的风险级别。 根据“低”、“中”、“高”风险级别，可以配置一个策略来阻止访问，或者要求使用多重身份验证进行安全密码更改。 Microsoft 建议要求高风险用户进行安全密码更改。
+用户风险表示用户的标识已遭到破坏, 并且是根据与用户标识关联的[用户风险检测](../../active-directory/identity-protection/overview.md)来计算的。 用户风险策略是一种条件性访问策略, 可评估特定用户或组的风险级别。 根据“低”、“中”、“高”风险级别，可以配置一个策略来阻止访问，或者要求使用多重身份验证进行安全密码更改。 Microsoft 建议要求高风险用户进行安全密码更改。
 
 ![已标记为存在风险的用户](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
@@ -156,7 +156,7 @@ Microsoft Azure 服务和功能提供可配置的安全审核和日志记录选�
 
 ### <a name="monitor-azure-ad-identity-protection-events"></a>监视“Azure AD 标识保护”事件
 
-[Azure AD 标识保护](../../active-directory/identity-protection/overview.md)是一个通知、监视和报告工具，可用于检测影响组织标识的潜在漏洞。 它可以检测风险事件，例如，泄漏的凭据、不可能的轨迹、来自受感染设备的登录、匿名的 IP 地址、与可疑活动关联的 IP 地址，以及未知的位置。 启用通知警报可以接收有风险用户的电子邮件，和/或每周摘要电子邮件。
+[Azure AD 标识保护](../../active-directory/identity-protection/overview.md)是一个通知、监视和报告工具，可用于检测影响组织标识的潜在漏洞。 它检测到风险检测, 如泄漏的凭据、无法进行的传播, 以及来自受感染设备的登录、匿名 IP 地址、与可疑活动关联的 IP 地址以及未知位置。 启用通知警报可以接收有风险用户的电子邮件，和/或每周摘要电子邮件。
 
 Azure AD 标识保护提供两份应该每日监视的重要报告：
 1. 风险登录报告显示应该调查的用户登录活动，合法所有者不可以执行这种登录。

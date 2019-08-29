@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0645e01c8ad9c620b77abd9af6cf7fe7c26ab4ea
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: d00376c6689b6be773f24e8acd09c3697fb6a799
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335405"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126309"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>如何：配置登录风险策略
 
-Aure Active Directory 可实时和离线检测[风险事件类型](../reports-monitoring/concept-risk-events.md#risk-event-types)。 用户登录时检测到的各项风险事件组成名为风险登录的逻辑概念。 风险登录是指可能不是由用户帐户合法拥有者进行的登录尝试。
+Azure Active Directory 实时、脱机地检测[风险检测类型](../reports-monitoring/concept-risk-events.md#risk-detection-types)。 已检测到的用户登录的每个风险检测都有助于成为有风险登录的逻辑概念。 风险登录是指可能不是由用户帐户合法拥有者进行的登录尝试。
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>什么是登录风险策略？
 
-Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录而来的可疑操作。 例如，登录是否是使用匿名 IP 地址执行的？或者，登录是否是从不熟悉的位置发起的？ 在 Azure AD 中，系统可以检测到的可疑操作也称为风险事件。 根据在登录期间检测到的风险事件，Azure AD 会计算一个值。 该值表示登录不是由合法用户执行的可能性（低、中、高）。 此可能性称为**登录风险级别**。
+Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录而来的可疑操作。 例如，登录是否是使用匿名 IP 地址执行的？或者，登录是否是从不熟悉的位置发起的？ 在 Azure AD 中, 系统可以检测到的可疑操作也称为风险检测。 根据在登录期间检测到的风险检测, Azure AD 计算一个值。 该值表示登录不是由合法用户执行的可能性（低、中、高）。 此可能性称为**登录风险级别**。
 
 登录风险策略是可以为特定登录风险级别配置的自动响应。 在响应中，你可以阻止对资源的访问，或者要求传递多重身份验证 (MFA) 质询来获取访问权限。
    

@@ -15,14 +15,17 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: d4036b2aaa59eeb8e38a5881e465031d7a2f15e3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: e4b7ce0701349cae3ef501213d0f822ee8d150d0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899714"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142830"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>使用条件性访问管理对 Azure 管理的访问
+
+> [!CAUTION]
+> 在设置策略以管理对 Azure 管理的访问权限之前, 请务必了解条件访问的工作原理。 请确保不创建可能会阻止自己访问门户的条件。
 
 Azure Active Directory (Azure AD) 中的条件性访问根据你指定的特定条件控制对云应用的访问。 若要允许访问, 你可以创建条件性访问策略, 根据是否满足策略中的要求, 允许或阻止访问。 
 
@@ -44,7 +47,5 @@ Azure Active Directory (Azure AD) 中的条件性访问根据你指定的特定�
 
 请注意，该策略适用于调用 Azure 资源管理器 API 的 Azure PowerShell。 它不适用于调用 Microsoft Graph 的 [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。
 
-> [!CAUTION]
-> 在设置策略以管理对 Azure 管理的访问权限之前, 请务必了解条件访问的工作原理。 请确保不创建可能会阻止自己访问门户的条件。
 
 有关如何设置和使用条件性访问的详细信息, 请参阅[Azure Active Directory 中的条件访问](../active-directory/active-directory-conditional-access-azure-portal.md)。
