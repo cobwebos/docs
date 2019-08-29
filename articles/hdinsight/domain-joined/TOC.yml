@@ -66,6 +66,8 @@
           href: ./domain-joined-zeppelin-signin.md
 - name: 引用
   items:
+    - name: 支持的节点配置
+      href: ../hdinsight-supported-node-configuration.md
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Azure PowerShell

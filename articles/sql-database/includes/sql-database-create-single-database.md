@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69894069"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099137"
 ---
 在此步骤中，将创建 Azure SQL 数据库单一数据库。 
 
@@ -23,8 +23,8 @@ ms.locfileid: "69894069"
 
 使用 Azure 门户创建资源组和单一数据库。
 
-1. 在 Azure 门户的左侧菜单中选择“Azure SQL”  。 如果 **Azure SQL** 不在列表中，请选择“所有服务”  ，然后在搜索框中键入“Azure SQL”  。
-2. 选择“+添加”  以打开“选择 SQL 部署选项”  页。 可以通过在“数据库”  磁贴上选择“显示详细信息”  来查看有关不同数据库的其他信息。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”  。 如果 **Azure SQL** 不在列表中，请选择“所有服务”  ，然后在搜索框中键入“Azure SQL”  。 （可选）选择“Azure SQL”  旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+2. 选择“+ 添加”  以打开“选择 SQL 部署选项”  页。 可以通过在“数据库”  磁贴上选择“显示详细信息”  来查看有关不同数据库的其他信息。
 3. 选择“创建”  ：
 
    ![创建单一数据库](../media/sql-database-get-started-portal/create-single-database.png)
@@ -43,7 +43,7 @@ ms.locfileid: "69894069"
        - **服务器名称**：键入 `mysqlserver` 和一些数字，使名称唯一。
        - **服务器管理员登录名**：键入 `azureuser`。
        - **密码**：键入符合密码要求的复杂密码。
-       - **位置**：从下拉列表中选择一个位置，例如 `West US 2`。
+       - **位置**：从下拉列表中选择一个位置，例如 `West US`。
 
          ![新建服务器](../media/sql-database-get-started-portal/new-server.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "69894069"
    # Set variables for your server and database
    $subscriptionId = '<SubscriptionID>'
    $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   $location = "West US 2"
+   $location = "West US"
    $adminLogin = "azureuser"
    $password = "PWD27!"+(New-Guid).Guid
    $serverName = "mysqlserver-$(Get-Random)"

@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure 数据科学虚拟机文档
+title: Azure Data Science Virtual Machine 文档
 metadata:
-  title: 数据科学虚拟机文档 - Azure
-  description: 了解如何使用 Data Science Virtual Machine（Azure 云中的一个试验环境，专为数据科学而构建）。 许多热门数据科学和其他工具已预装并预配，可快速构建智能应用程序以进行高级分析。
+  title: Data Science Virtual Machine 文档 - Azure
+  description: 了解如何使用 Data Science Virtual Machine（Azure 云中的一个试验环境，专为数据科学而构建）。 常用的数据科学和机器学习工具已预安装且已预配置。 此设计可使你在构建用于高级分析的智能应用程序方面取得领先优势。
   services: machine-learning
   author: vijetajo
   ms.service: machine-learning
@@ -14,12 +14,12 @@ metadata:
   ms.date: 08/19/2019
   ms.author: vijetaj
 abstract:
-  description: Azure Data Science Virtual Machine (DSVM) 是一种自定义的虚拟机 (VM) 映像，其中包含数据科学和机器学习工具。 可以使用此 VM 构建智能高级分析应用程序。 <a href="overview.md">了解详细信息...</a>
+  description: Azure Data Science Virtual Machine (DSVM) 是一种自定义的虚拟机 (VM) 映像，其中包含数据科学和机器学习工具。 可以使用此 VM 构建智能应用程序以进行高级分析。 <a href="overview.md">了解详细信息</a>。
 sections:
   - title: 5 分钟快速入门
     items:
       - type: paragraph
-        text: 了解如何设置基于 Windows 或 Linux 的数据科学 VM：
+        text: 了解如何设置基于 Windows 或 Linux 的 Data Science Virtual Machine：
       - type: paragraph
         text: <b>Windows DSVM</b>
       - type: list
