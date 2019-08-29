@@ -10,17 +10,16 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c21a923f06a768c0a9a0f2843a24583df7a7821d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af6d8b61c5d49ae219e90513abb93185f957222e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059642"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074055"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -48,14 +47,14 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](https://go.
 将内容发布到某个应用时，应用服务还记录部署信息。 此操作自动执行，不会对部署日志记录进行配置设置。 部署日志记录允许确定部署失败的原因。 例如，如果使用自定义部署脚本，可能会使用部署日志记录确定该脚本失败的原因。
 
 ## <a name="enablediag"></a>如何启用诊断
-若要在 [Azure 门户](https://portal.azure.com)中启用诊断，请转到应用的相应页面，并依次单击“设置”>“诊断日志”  。
+若要在 [Azure 门户](https://portal.azure.com)中启用诊断，请转到应用的相应页面，并依次单击“设置”>“诊断日志”。
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![日志部分](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-启用“应用程序诊断”  时，还需选择“级别”  。 下表显示了每个级别包含的日志类别：
+启用“应用程序诊断”时，还需选择“级别”。 下表显示了每个级别包含的日志类别：
 
-| 级别| 包含的日志类别 |
+| Level| 包含的日志类别 |
 |-|-|
 |**已禁用** | 无 |
 |**错误** | “错误”、“严重” |
@@ -64,23 +63,23 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](https://go.
 |**详细** | “跟踪”、“调试”、“信息”、“警告”、“错误”、“严重”（所有类别） |
 |-|-|
 
-对于“应用程序日志记录”，可以临时打开文件系统选项以便调试  。 此选项将在 12 小时后自动关闭。 还可打开 blob 存储选项，选择要将日志写入到的 blob 容器。
+对于“应用程序日志记录”，可以临时打开文件系统选项以便调试。 此选项将在 12 小时后自动关闭。 还可打开 blob 存储选项，选择要将日志写入到的 blob 容器。
 
 > [!NOTE]
 > 目前，只有 .NET 应用程序日志可以写入到 blob 存储。 Java、PHP、Node.js、Python 应用程序日志只能存储在文件系统上（无需修改代码即可将日志写入外部存储）。
 >
 >
 
-对于“Web 服务器日志记录”，可选择“存储”或“文件系统”    。 选择“存储”  可选择存储帐户，然后选择日志写入到的 Blob 容器。 
+对于“Web 服务器日志记录”，可选择“存储”或“文件系统”。 选择“存储”可选择存储帐户，然后选择日志写入到的 Blob 容器。 
 
 如果将日志存储在文件系统中，可通过 FTP 访问这些文件，或使用 Azure CLI 将这些文件作为 Zip 存档下载。
 
-默认情况下，日志不会自动删除（除非是“应用程序日志记录(文件系统)”）  。 要自动删除日志，请设置“保留期(天)”字段  。
+默认情况下，日志不会自动删除（除非是“应用程序日志记录(文件系统)”）。 要自动删除日志，请设置“保留期(天)”字段。
 
 > [!NOTE]
-> 如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的密钥。 为此，请按以下步骤操作：
+> 如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的密钥。 为此，请执行以下操作:
 >
-> 1. 在“配置”  选项卡上，将相应的日志记录功能设置为“关闭”  。 保存设置。
+> 1. 在“配置”选项卡上，将相应的日志记录功能设置为“关闭”。 保存设置。
 > 2. 再次启用将日志记录到存储帐户 Blob。 保存设置。
 >
 >
@@ -130,7 +129,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 2. 将跟踪侦听器包添加到项目。
    * 右键单击项目，并选择“管理 NuGet 包”。 选择 `Microsoft.ApplicationInsights.TraceListener` [了解详细信息](../azure-monitor/app/asp-net-trace-logs.md)
 3. 上传项目并运行，以生成日志数据。
-4. 在 [Azure 门户](https://portal.azure.com/)中，浏览到新的 Application Insights 资源，并打开“搜索”  。 随后应会显示日志数据，以及请求、使用情况和其他遥测。 某些遥测可能需要几分钟才能到达：请单击“刷新”。 [了解详细信息](../azure-monitor/app/diagnostic-search.md)
+4. 在 [Azure 门户](https://portal.azure.com/)中，浏览到新的 Application Insights 资源，并打开“搜索”。 随后应会显示日志数据，以及请求、使用情况和其他遥测。 某些遥测可能需要几分钟才能到达：请单击“刷新”。 [了解详细信息](../azure-monitor/app/diagnostic-search.md)
 
 [了解有关使用 Application Insights 跟踪性能的详细信息](../azure-monitor/app/azure-web-apps.md)
 
@@ -187,10 +186,10 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 
 如果记录到 Blob 存储，数据以逗号分隔值 (CSV) 格式存储。 将记录其他字段以提供有关事件的更详尽信息。 以下属性适用于每一行（CSV 格式）：
 
-| 属性名称 | 值/格式 |
+| 属性名 | 值/格式 |
 | --- | --- |
-| 日期 |事件发生的日期和时间 |
-| 级别 |事件级别（例如“错误”、“警告”或“信息”） |
+| Date |事件发生的日期和时间 |
+| Level |事件级别（例如“错误”、“警告”或“信息”） |
 | ApplicationName |应用名称 |
 | InstanceId |发生事件的应用实例 |
 | EventTickCount |事件发生的日期和时间，刻度格式（精度更高） |
@@ -215,7 +214,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 ![在浏览器中查看失败请求](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
 > [!NOTE]
-> 查看带格式的失败的请求跟踪的简单办法是导航到在门户中的应用程序页面。 从左侧菜单中，选择**诊断并解决问题**，然后搜索**失败请求跟踪日志**，然后单击图标来浏览和查看所需的跟踪。
+> 查看格式化失败请求跟踪的一种简单方法是在门户中导航到应用的页面。 在左侧菜单中, 选择 "**诊断和解决问题**", 然后搜索 "**失败请求跟踪日志**", 然后单击图标以浏览并查看所需跟踪。
 >
 
 ### <a name="detailed-error-logs"></a>详细的错误日志

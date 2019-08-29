@@ -6,20 +6,19 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0bef5f1b64ec9f322070ba5c36cab138c7327da2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3db98039ae057e48867c91d1081c38066067c621
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60741267"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087435"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions 中的扇出/扇入方案 - 云备份示例
 
-“扇出/扇入”是指同时执行多个函数，然后针对结果执行某种聚合的模式。  本文讲解一个使用 [Durable Functions](durable-functions-overview.md) 实现扇入/扇出方案的示例。 该示例是一个持久函数，可将应用的全部或部分站点内容备份到 Azure 存储中。
+“扇出/扇入”是指同时执行多个函数，然后针对结果执行某种聚合的模式。 本文讲解一个使用 [Durable Functions](durable-functions-overview.md) 实现扇入/扇出方案的示例。 该示例是一个持久函数，可将应用的全部或部分站点内容备份到 Azure 存储中。
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -67,7 +66,7 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 4. 等待所有上传完成。
 5. 返回已上传到 Azure Blob 存储的总字节数。
 
-请注意 `await Task.WhenAll(tasks);` (C#) 和 `yield context.df.Task.all(tasks);` (JavaScript) 所在的行。 对 `E2_CopyFileToBlob` 函数的所有单个调用都未处于等待状态。  这是有意而为的，目的是让这些调用同时运行。 将此任务数组传递给 `Task.WhenAll` (C#) 或 `context.df.Task.all` (JavaScript) 时，会获得所有复制操作完成之前不会完成的任务。  如果熟悉 .NET 中的任务并行库 (TPL) 或 JavaScript 中的 [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)，则对此过程也不会陌生。 差别在于，这些任务可在多个 VM 上同时运行，Durable Functions 扩展可确保端到端执行能够弹性应对进程回收。
+请注意 `await Task.WhenAll(tasks);` (C#) 和 `yield context.df.Task.all(tasks);` (JavaScript) 所在的行。 对 `E2_CopyFileToBlob` 函数的所有单个调用都未处于等待状态。 这是有意而为的，目的是让这些调用同时运行。 将此任务数组传递给 `Task.WhenAll` (C#) 或 `context.df.Task.all` (JavaScript) 时，会获得所有复制操作完成之前不会完成的任务。 如果熟悉 .NET 中的任务并行库 (TPL) 或 JavaScript 中的 [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)，则对此过程也不会陌生。 差别在于，这些任务可在多个 VM 上同时运行，Durable Functions 扩展可确保端到端执行能够弹性应对进程回收。
 
 > [!NOTE]
 > 虽然任务在概念上类似于 JavaScript 承诺，但业务流程协调程序函数应使用 `context.df.Task.all` 和 `context.df.Task.any`（而不是 `Promise.all` 和 `Promise.race`）来管理任务并行化。

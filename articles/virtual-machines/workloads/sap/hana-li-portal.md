@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d64fe6c244ffcb6da2926dfea6efaa6da315727
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 3c14ff9c4f6d2bc2b1a62d1874d01950d09491c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234458"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099817"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>通过 Azure 门户控制 Azure HANA 大型实例
 本文档介绍了如何在[Azure 门户](https://portal.azure.com)中提供[HANA 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture), 以及可通过部署的 hana 大型实例单元 Azure 门户进行哪些活动。 Azure 门户中 HANA 大型实例的可见性是通过适用于 HANA 大型实例的 Azure 资源提供程序提供的, 当前正在公开预览
@@ -93,7 +92,7 @@ ms.locfileid: "68234458"
 标头右侧列中的其他字段会通知 HANA 大型实例单元的电源状态。
 
 > [!NOTE]
-> 电源状态描述硬件设备是开机还是关机。 它不会给出有关正在启动并运行的操作系统的信息。 当您重新启动 HANA 大型实例单元时, 您将会遇到一小段时间, 其中, 单元状态更改为 "**正在**启动"**状态。** 处于 "**已启动**" 状态表示 os 正在启动, 或者操作系统已完全启动。 因此, 在重新启动该单元后, 一旦状态切换为 "**已启动**", 就无法立即登录到该设备。
+> 电源状态描述硬件设备是开机还是关机。 它不会给出有关正在启动并运行的操作系统的信息。 当您重新启动 HANA 大型实例单元时, 您将会遇到一小段时间, 其中, 单元状态更改为 "**正在**启动" 状态。 处于 "**已启动**" 状态表示 os 正在启动, 或者操作系统已完全启动。 因此, 在重新启动该单元后, 一旦状态切换为 "**已启动**", 就无法立即登录到该设备。
 > 
 
 如果按 "查看更多", 则会显示附加信息。 另外, 还显示了在中部署的 HANA 大型实例标记的修订版本。 请参阅文章[Azure 上的什么是 Azure 上的 SAP HANA (大型实例)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) , 以了解 HANA 大型实例戳记的不同版本
@@ -130,7 +129,7 @@ ms.locfileid: "68234458"
 按下 "重新启动" 按钮时, 系统会询问你是否确实要重新启动该单元。 按下按钮 "是" 进行确认时, 设备将重新启动。
 
 > [!NOTE]
-> 在重新启动过程中, 将出现一小段时间, 其中单元状态更改为 "**正在**启动 **"。** 处于 "**已启动**" 状态表示 os 正在启动, 或者操作系统已完全启动。 因此, 在重新启动该单元后, 一旦状态切换为 "**已启动**", 就无法立即登录到该设备。
+> 在重新启动过程中, 将出现一小段时间, 其中单元状态更改为 "**正在**启动"。 处于 "**已启动**" 状态表示 os 正在启动, 或者操作系统已完全启动。 因此, 在重新启动该单元后, 一旦状态切换为 "**已启动**", 就无法立即登录到该设备。
 
 > [!IMPORTANT]
 > 取决于 HANA 大型实例单元中的内存量, 重新启动和重新启动硬件和操作系统最多可能需要一小时
