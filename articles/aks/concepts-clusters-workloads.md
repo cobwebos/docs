@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e606b4fee2c46f66f13c45586bcc25577bd90a1f
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67616015"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147184"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -100,6 +100,9 @@ AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你�
 ### <a name="node-pools"></a>节点池
 
 具有相同配置的节点将统一合并成节点池。 Kubernetes 群集包含一个或多个节点池。 创建 AKS 群集时会定义初始节点数和大小，从而创建默认节点池。 AKS 中的此默认节点池包含运行代理节点的基础 VM。 AKS 中目前有多个节点池支持。
+
+> [!NOTE]
+> 若要确保群集能够可靠运行, 应在默认节点池中至少运行2个节点。
 
 缩放或升级 AKS 群集时，将对默认节点池执行操作。 你还可以选择缩放或升级特定节点池。 对于升级操作，将在节点池中的其他节点上计划运行的容器，直到成功升级所有节点。
 

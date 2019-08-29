@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 0bd8c0417b32e93a4f52b545c4d7fc532992a0b1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 4a20318a4779b06e60d849dea0774d717d87e48e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854330"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141864"
 ---
 # <a name="optimize-expressroute-routing"></a>优化 ExpressRoute 路由
 有多个 ExpressRoute 线路时，可以通过多个路径连接到 Microsoft。 结果就是，所采用的路由可能不是最理想的 - 也就是说，流量可能会经历较长的路径才能到达 Microsoft，而 Microsoft 的流量也可能会经历较长的路径才能到达网络。 网络路径越长，延迟越严重。 延迟对应用程序性能和用户体验有直接影响。 本文将详述此问题，并说明如何使用标准路由技术来优化路由。
 
-## <a name="path-selection-on-microsoft-and-public-peerings"></a>Microsoft 和 Public 对等互连上的路径选择
-使用 Microsoft 或公共对等互连时, 如果你有一个或多个 ExpressRoute 线路, 并通过 Internet 交换 (IX) 或 Internet 服务提供商 (ISP) 连接到 Internet, 则必须确保流量流过所需路径。 BGP 基于多种因素 (包括最长前缀匹配 (LPM)) 使用最佳路径选择算法。 若要确保通过 Microsoft 或公共对等互连发往 Azure 的流量遍历 ExpressRoute 路径, 客户必须实现*本地首选项*属性, 以确保在 ExpressRoute 上始终首选该路径。 
+## <a name="path-selection-on-microsoft-and-public-peerings"></a>Microsoft 和公共对等互连的路径选择
+如果你有一个或多个 ExpressRoute 线路，以及通过 Internet Exchange (IX) 或 Internet 服务提供商 (ISP) 连接到 Internet 的路径，则在使用 Microsoft 或 公共对等互连时，确保流量在所需的路径上流动非常重要。 BGP 利用基于许多因素的最佳路径选择算法，包括最长前缀匹配 (LPM)。 为确保通过 Microsoft 或公共对等互连发往 Azure 的流量遍历 ExpressRoute 路径，客户必须实现“Local Preference”（本地优先级）属性，以确保该路径始终是 ExpressRoute 上的首选路径。 
 
 > [!NOTE]
-> 默认的本地首选项通常为100。 更喜欢更高的本地首选项。 
+> 默认的本地优先级通常为 100。 本地优先级越高越好。 
 >
 >
 
-请考虑以下示例方案:
+请考虑以下示例场景：
 
 ![ExpressRoute 案例 1 问题 - 从客户到 Microsoft 的路由欠佳](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
-在上面的示例中, 若要首选 ExpressRoute 路径, 请按如下所示配置本地首选项。 
+在上面的示例中，要首选 ExpressRoute路径，请按如下所示配置“本地优先级”。 
 
-**来自 R1 的 Cisco IOS-XE 配置:**
+**从 R1 角度看 Cisco IOS-XE 配置：**
 
     R1(config)#route-map prefer-ExR permit 10
     R1(config-route-map)#set local-preference 150
@@ -42,7 +42,7 @@ ms.locfileid: "67854330"
     R1(config-router)#neighbor 1.1.1.2 activate
     R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
 
-**来自 R1 的 Junos 配置:**
+**从 R1 角度看 Junos 配置：**
 
     user@R1# set protocols bgp group ibgp type internal
     user@R1# set protocols bgp group ibgp local-preference 150
@@ -75,7 +75,7 @@ ms.locfileid: "67854330"
 第二种解决方案是，继续将两种前缀播发到两个 ExpressRoute 线路上，但除此之外你还需提示我们哪个前缀靠近哪个办公室。 由于我们支持 BGP AS Path 追加，因此可以对前缀的 AS Path 进行配置，使之影响路由。 在此示例中，可以延长美国东部 172.2.0.0/31 的 AS PATH，这样我们就会首选美国西部的 ExpressRoute 线路来传送目标为该前缀的流量（因为我们的网络会认为在西部，到此前缀的路径较短）。 类似地，可以延长美国西部 172.2.0.2/31 的 AS PATH，这样我们就会首选美国东部的 ExpressRoute 线路。 路由是针对这两处办公室进行优化的。 根据此设计，如果一个 ExpressRoute 线路断开，Exchange Online 仍可通过其他 ExpressRoute 线路以及 WAN 访问你。 
 
 > [!IMPORTANT]
-> 对于在 Microsoft 对等互连上接收的前缀，我们会删除 AS PATH 中的专用 AS 数字。 需在 AS PATH 中追加公共 AS 数字才能影响 Microsoft 对等互连的路由。
+> 如果对等互连使用专用 AS 编号, 则我们会将专用 AS 编号删除为 Microsoft 对等互连上接收的前缀。 需要对等互连, 并在 AS PATH 中追加公共 AS 数字来影响 Microsoft 对等互连的路由。
 > 
 > 
 

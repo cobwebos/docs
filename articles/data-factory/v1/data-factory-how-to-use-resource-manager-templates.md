@@ -3,23 +3,20 @@ title: 在数据工厂中使用 Resource Manager 模板 | Microsoft Docs
 description: 了解如何创建和使用 Azure 资源管理器模板来创建数据工厂实体。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
-ms.assetid: 37724021-f55f-4e85-9206-6d4a48bda3d8
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ca8b3930b9d9f708d83dc760be3ee89737b074dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b33762ae18332854d6c25d49553b533c9b99cc44
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583360"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139462"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用模板来创建 Azure 数据工厂实体
 > [!NOTE]
@@ -28,7 +25,7 @@ ms.locfileid: "60583360"
 ## <a name="overview"></a>概述
 使用 Azure 数据工厂实现数据集成需求时，可能发现自己在不同环境中重复使用同一模式，或在同一解决方案内重复执行相同任务。 使用模板可轻松实现和管理这些方案。 Azure 数据工厂中的模板非常适合于涉及可重用性和重复的情况。
 
-请考虑此情况：某组织在世界各地拥有 10 个制造工厂。 每个工厂的日志均存储在单独的本地 SQL Server 数据库中。 该公司希望生成一个数据仓库在云中为即席分析。 还希望开发、测试和生产环境具有相同逻辑但具有不同配置。
+请考虑此情况：某组织在世界各地拥有 10 个制造工厂。 每个工厂的日志均存储在单独的本地 SQL Server 数据库中。 公司希望在云中构建单个数据仓库用于即席分析。 还希望开发、测试和生产环境具有相同逻辑但具有不同配置。
 
 在此情况下，需在相同环境中重复同一任务，但 10 个制造工厂的每个数据工厂具有不同值。 总之，存在**重复**。 模板化允许将此泛型流抽象化（即，管道在每个数据工厂中具有相同活动），但对每个制造工厂使用单独的参数文件。
 

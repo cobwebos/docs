@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 7ff4db2e349d0da811ef262e308477bde3b27a3c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ac9a62a810a957c67d9c24063d01eff822c8294f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934596"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129293"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 本文介绍了 Azure 中的安全服务, 可帮助你保护云中的数据、资源和应用程序, 并满足业务的安全需求。
@@ -147,7 +147,7 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 #### <a name="identity-protection"></a>标识保护
 
-[Azure AD 标识保护](../../active-directory/identity-protection/overview.md)是一种安全服务，它提供一个整合的视图来让用户查看影响组织标识的风险事件和潜在漏洞。 “标识保护”使用现有的 Azure Active Directory 异常情况检测功能（可通过 Azure AD 的异常活动报告得到），并引入了可以实时检测异常情况的新风险事件类型。
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md)是一种安全服务, 可提供对风险检测和潜在漏洞 (影响组织标识) 的合并视图。 标识保护使用现有 Azure Active Directory 的异常检测功能 (可通过 Azure AD 的异常活动报告获得), 并引入了新的风险检测类型, 这些类型可以实时检测异常。
 
 ## <a name="secure-resource-access"></a>安全资源访问
 

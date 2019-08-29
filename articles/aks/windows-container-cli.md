@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 879e2831dc099eabe43f1eefb81b1b7373c665dc
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a173272600bab71264ed3b85ce5141814c0a6aed
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898708"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147203"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>预览-使用 Azure CLI 在 Azure Kubernetes Service (AKS) 群集上创建 Windows Server 容器
 
@@ -121,8 +121,11 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
 若要运行支持 Windows Server 容器的节点池的 AKS 群集, 群集需要使用使用[AZURE CNI][azure-cni-about] (advanced) 网络插件的网络策略。 若要详细了解如何计划所需的子网范围和网络注意事项, 请参阅[配置 AZURE CNI 网络][use-advanced-networking]。 使用[az aks create][az-aks-create]命令创建名为*myAKSCluster*的 aks 群集。 如果这些资源不存在, 此命令将创建必要的网络资源。
-  * 群集配置有一个节点
+  * 群集配置了两个节点
   * *Windows 管理员密码*和*windows 管理员-用户名*参数为群集上创建的任何 windows Server 容器设置管理员凭据。
+
+> [!NOTE]
+> 若要确保群集能够可靠运行, 应在默认节点池中至少运行2个节点。
 
 提供自己的安全*PASSWORD_WIN* (请注意, 本文中的命令已输入到 BASH shell 中):
 
@@ -132,7 +135,7 @@ PASSWORD_WIN="P@ssw0rd1234"
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --node-count 1 \
+    --node-count 2 \
     --enable-addons monitoring \
     --kubernetes-version 1.14.6 \
     --generate-ssh-keys \
@@ -184,7 +187,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为 *Ready*：
+以下示例输出显示了群集中的所有节点。 请确保所有节点的状态均为 "*就绪*":
 
 ```
 NAME                                STATUS   ROLES   AGE    VERSION

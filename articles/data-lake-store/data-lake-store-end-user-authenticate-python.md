@@ -1,5 +1,5 @@
 ---
-title: 最终用户身份验证：通过 Azure Active Directory 将 Python 与 Azure 数据湖存储 Gen1 |Microsoft Docs
+title: 最终用户身份验证:使用 Azure Active Directory Azure Data Lake Storage Gen1 Python |Microsoft Docs
 description: 了解如何通过 Python 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8b72604d7e736230911d0a0987b88d372be4ddf3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71ca7bec7f69007fd0290211fac308eb5f3983a7
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878044"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139054"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>通过 Python 使用 Azure Data Lake Storage Gen1 进行最终用户身份验证
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "60878044"
 
 本文将讨论这两个选项。 若要了解使用 Python 的 Data Lake Storage Gen1 服务到服务身份验证，请参阅[使用 Python 进行 Data Lake Storage Gen1 的服务到服务身份验证](data-lake-store-service-to-service-authenticate-python.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用的是 Python 3.6.2。
 
@@ -113,7 +113,7 @@ pip install azure-datalake-store
 
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>无需多重身份验证的最终用户身份验证
 
-此方法已弃用。 有关详细信息，请参阅[使用 Python SDK 的 Azure 身份验证](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python#mgmt-auth-token)。
+此方法已弃用。 有关详细信息，请参阅[使用 Python SDK 的 Azure 身份验证](/azure/python/python-sdk-azure-authenticate)。
    
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何使用 Python 通过最终用户身份验证进行 Azure Data Lake Storage Gen1 身份验证。 接下来，可以查看以下介绍如何使用 Python 在 Azure Data Lake Storage Gen1 中执行操作的文章。

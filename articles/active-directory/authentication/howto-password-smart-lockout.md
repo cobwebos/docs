@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8df01c204a6893f4e2ff1c2ff22fa337d77c519b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a762009a7aaf1a965333ac573efe55d792c3f04b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637596"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125008"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory 智能锁定
 
@@ -45,7 +45,7 @@ ms.locfileid: "69637596"
 * Azure AD 的锁定阈值小于Active Directory 的帐户锁定阈值。 请设置此值，以便使 Active Directory 的帐户锁定阈值至少长于 Azure AD 锁定阈值的二倍或三倍。 
 * Azure AD 锁定持续时间设置的时间必须长于 Active Directory 重置帐户锁定计数器的持续时间。 请注意, Azure AD 持续时间以秒为单位, 而 AD 持续时间设置为分钟。 
 
-例如, 如果你希望 Azure AD 计数器高于 AD, 则 Azure AD 为120秒 (2 分钟), 而本地 AD 设置为1分钟 (60 秒)。
+例如, 如果你希望 Azure AD 计数器高于 AD, 则在本地 AD 设置为1分钟 (60 秒) 时 Azure AD 为120秒 (2 分钟)。
 
 > [!IMPORTANT]
 > 目前, 如果用户的云帐户已被智能锁定功能锁定, 管理员将无法解除其锁定。 管理员必须等到锁定持续时间到期。 但是, 用户可以通过使用受信任的设备或位置的自助密码重置 (SSPR) 来解锁。
@@ -67,7 +67,7 @@ ms.locfileid: "69637596"
 
 要检查或修改组织的智能锁定值，请按以下步骤操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)，再依次单击“Azure Active Directory”和“身份验证方法”。
+1. 登录到[Azure 门户](https://portal.azure.com), 导航到**Azure Active Directory** > **身份验证方法** > "**密码保护**"。
 1. 根据帐户在第一次锁定之前允许的登录失败次数，设置“锁定阈值”。 默认值为 10。
 1. 将“锁定持续时间(以秒计)”设置为每次锁定的时长（以秒计）。 默认值为 60 秒（一分钟）。
 

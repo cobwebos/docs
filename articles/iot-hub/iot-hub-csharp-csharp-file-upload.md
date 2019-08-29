@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: 98b5fb06bf018c9176fc989786d8bd1821914f43
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: db020092c076680eddd575f8e7e85a2060603dd8
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558476"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147773"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>用 IoT 中心 (.NET) 将文件从设备上传到云
 
@@ -47,7 +47,7 @@ ms.locfileid: "69558476"
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 Sdk 来支持许多设备平台和语言 (包括 C、Java、Python 和 Javascript)。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot)。
 
-若要完成本教程，需要具备以下先决条件：
+## <a name="prerequisites"></a>先决条件
 
 * Visual Studio
 

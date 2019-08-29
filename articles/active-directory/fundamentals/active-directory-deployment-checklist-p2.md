@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767e3caf577bc1b7a49bd56570b8aeedbe307edc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 7b5678fb0edcecae9ffa6a3c27f3dc6334ecf505
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693876"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125347"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
 
@@ -26,7 +26,7 @@ ms.locfileid: "68693876"
 
 此外，客户可以检查其[标识安全评分](identity-secure-score.md)，以确定他们与 Microsoft 最佳做法的相符程度。 请在实施这些建议之前和之后检查安全评分，以确定你与同行业中的其他公司或者与同等规模的其他组织之间的优劣。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 本指南中的许多建议均可通过 Azure AD Free 或根本无许可证实现。 如果需要许可证，本指南会指出完成相应任务最起码需要哪种许可证。
 
@@ -55,7 +55,7 @@ ms.locfileid: "68693876"
 | [为 AD FS 启用 Extranet 智能锁定](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS Extranet 锁定可以防范暴力密码猜测攻击，同时可让有效的 AD FS 用户继续使用其帐户。 | |
 | [使用条件性访问策略部署 Azure AD 多重身份验证](../authentication/howto-mfa-getstarted.md) | 要求用户在使用条件访问策略访问敏感应用程序时执行双重验证。 | Azure AD Premium P1 |
 | [Azure Active Directory 标识保护](../identity-protection/enable.md) | 针对组织中的用户启用有风险登录和已泄密凭据的跟踪。 | Azure AD Premium P2 |
-| [使用风险事件触发多重身份验证和密码更改](../authentication/tutorial-risk-based-sspr-mfa.md) | 启用可以触发多重身份验证、密码重置和基于风险阻止登录等事件的自动化功能。 | Azure AD Premium P2 |
+| [使用风险检测来触发多重身份验证和密码更改](../authentication/tutorial-risk-based-sspr-mfa.md) | 启用可以触发多重身份验证、密码重置和基于风险阻止登录等事件的自动化功能。 | Azure AD Premium P2 |
 | [启用自助密码重置和 Azure AD 多重身份验证的聚合注册（预览版）](../authentication/concept-registration-mfa-sspr-converged.md) | 允许用户从 Azure 多重身份验证和自助式密码重置的一个常用体验进行注册。 | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>阶段 2：导入用户、启用同步和管理设备

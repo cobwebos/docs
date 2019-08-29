@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: e5d2e485283f71b27bb5e93330a54e1b987044c4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: abf8b18d13e2990f053dd4273645dd7b9a324c77
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883824"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147746"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>IoT 中心模块标识和模块克隆入门 (.NET)
 
@@ -31,7 +31,7 @@ ms.locfileid: "68883824"
 > [!NOTE]
 > 有关 Azure IoT SDK 的信息（可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-若要完成本教程，需要具备以下先决条件：
+## <a name="prerequisites"></a>先决条件
 
 * Visual Studio。
 

@@ -3,21 +3,20 @@ title: 以可视化方式监视 Azure 数据工厂 | Microsoft Docs
 description: 了解如何以视觉方式监视 Azure 数据工厂
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: shlo
-ms.openlocfilehash: e680610263830c856a3ff902d8e55cd8b2b4a158
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 99ae0139d7b12c0bfb87030d2b749b12834a4f96
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114555"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141103"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>以可视化方式监视 Azure 数据工厂
 Azure 数据工厂是基于云的数据集成服务。 可以使用它在云中创建数据驱动型工作流, 以便协调和自动化数据移动和数据转换。 使用 Azure 数据工厂, 可以:

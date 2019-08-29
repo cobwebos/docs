@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 3bee473adde9c4762cf400dff6190eb76a4cc8d7
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 156699b8d8c1a645961f4e919bdd843d995a3d18
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624687"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142648"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Async Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -152,6 +152,10 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 使用已停用的 SDK 对 Cosmos DB 发出的任何请求都会被服务拒绝。
 
+> [!WARNING]
+> 适用于 SQL API 的 ASYNC Java SDK 的所有版本1.x 将于**2020 年8月30日**停用。
+> 
+>
 <br/>
 
 | Version | 发布日期 | 停用日期 |
@@ -169,9 +173,9 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | [2.1.0](#2.1.0) |2018 年 9 月 5 日|--- |
 | [2.0.1](#2.0.1) |2018 年 8 月 16 日|--- |
 | [2.0.0](#2.0.0) |2018 年 6 月 20 日|--- |
-| [1.0.2](#1.0.2) |2018 年 5 月 18日|--- |
-| [1.0.1](#1.0.1) |2018 年 4 月 20 日|--- |
-| [1.0.0](#1.0.0) |2018 年 2 月 27 日|--- |
+| [1.0.2](#1.0.2) |2018 年 5 月 18日|2020年8月30日 |
+| [1.0.1](#1.0.1) |2018 年 4 月 20 日|2020年8月30日 |
+| [1.0.0](#1.0.0) |2018 年 2 月 27 日|2020年8月30日 |
 
 ## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

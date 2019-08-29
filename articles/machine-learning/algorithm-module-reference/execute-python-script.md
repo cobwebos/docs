@@ -1,7 +1,7 @@
 ---
-title: 执行 Python 脚本：模块参考
+title: 执行 Python 脚本:模块参考
 titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中执行 Python 脚本模块运行 Python 代码。
+description: 了解如何使用 Azure 机器学习服务中的执行 Python 脚本模块来运行 Python 代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,32 +9,31 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 6e61ed5a18e69b107b78bf2042de21d14cd6beb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4bd3433db92767f2d0d733ab71e4298fc5e618f8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029125"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128824"
 ---
 # <a name="execute-python-script-module"></a>执行 Python 脚本模块
 
-本指南介绍了 Azure 机器学习服务的可视界面 （预览版） 的模块。
+本文介绍了 Azure 机器学习服务的可视界面 (预览) 的模块。
 
-使用此模块来运行 Python 代码。 有关 Python 的体系结构和设计原则的详细信息，请参阅[以下文章。](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)
+使用此模块可以运行 Python 代码。 有关 Python 的体系结构和设计原则的详细信息, 请参阅[以下文章。](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)
 
-使用 Python，您可以执行目前不支持现有模块如的任务：
+使用 Python, 你可以执行现有模块当前不支持的任务, 例如:
 
-+ 可视化数据使用 `matplotlib`
-+ 使用 Python 库枚举数据集和工作区中的模型
-+ 读取、 加载和操作数据的源不受[导入数据](./import-data.md)模块
-+ 运行深度学习代码 
++ 使用可视化数据`matplotlib`
++ 使用 Python 库枚举工作区中的数据集和模型
++ 从 "[导入数据](./import-data.md)" 模块不支持的源读取、加载和操作数据
++ 运行你自己的深度学习代码 
 
 
-Azure 机器学习使用 Anaconda Python 分发版，其中包括数据处理的多个常见的实用程序。 我们将自动更新 Anaconda 版本。 当前版本为：
- -  为 Python 3.6 anaconda 4.5 + 分发 
+Azure 机器学习使用 Python 的 Anaconda 分发版, 其中包括用于数据处理的许多常用实用程序。 我们将自动更新 Anaconda 版本。 当前版本为:
+ -  Python 3.6 的 Anaconda 4.5 + 分发 
 
-预安装的包包括：
+预安装的包如下:
 -  asn1crypto==0.24.0
 - attrs==19.1.0
 - azure-common==1.1.18
@@ -47,29 +46,29 @@ Azure 机器学习使用 Anaconda Python 分发版，其中包括数据处理的
 - distro==1.4.0
 - idna==2.8
 - jsonschema==3.0.1
-- lightgbm==2.2.3
+- lightgbm = = 2.2。3
 - more-itertools==6.0.0
 - numpy==1.16.2
-- pandas==0.24.2
+- pandas = = 0.24。2
 - Pillow==6.0.0
 - pip==19.0.3
 - pyarrow==0.12.1
 - pycparser==2.19
 - pycryptodomex==3.7.3
-- pyrsistent==0.14.11
+- pyrsistent = = 0.14.11
 - python-dateutil==2.8.0
 - pytz==2018.9
 - requests==2.21.0
-- scikit-learn==0.20.3
+- scikit-learn = = 0.20。3
 - scipy==1.2.1
-- setuptools==40.8.0
+- setuptools = = 40.8。0
 - six==1.12.0
 - torch==1.0.1.post2
 - torchvision==0.2.2.post3
 - urllib3==1.24.1
 - wheel==0.33.1 
 
- 若要安装其他包不在预安装列表中，例如*scikit 杂项*，将以下代码添加到您的脚本： 
+ 若要安装不在预安装列表中的其他程序包 (例如*scikit-learn*), 请将以下代码添加到脚本: 
 
  ```python
 import os
@@ -78,51 +77,51 @@ os.system(f"pip install scikit-misc")
 
 ## <a name="how-to-use"></a>如何使用
 
-**执行 Python 脚本**模块包含示例 Python 代码，可以使用作为起始点。 若要配置**执行 Python 脚本**模块，则提供的输入和 Python 代码中执行一组**Python 脚本**文本框。
+**执行 Python 脚本**模块包含可用作起点的示例 python 代码。 若要配置 "**执行 Python 脚本**" 模块, 请在 " **Python 脚本**" 文本框中提供要执行的一组输入和 Python 代码。
 
-1. 添加**执行 Python 脚本**模块在试验。
+1. 将**执行 Python 脚本**模块添加到试验中。
 
-2. 添加和连接上**Dataset1**从你想要使用的输入的接口的任何数据集。 引用 Python 脚本作为此数据集**DataFrame1**。
+2. 在**Dataset1**上添加并连接要用于输入的接口中的任何数据集。 在 Python 脚本中将此数据集引用为**DataFrame1**。
 
-    如果想要生成使用 Python、 数据或使用 Python 代码来将数据直接导入该模块，是可选的使用的数据集。
+    如果要使用 Python 生成数据, 或使用 Python 代码直接将数据导入到模块中, 则可以使用数据集。
 
-    此模块上支持的第二个数据集添加**Dataset2**。 作为 DataFrame2 引用 Python 脚本中的第二个数据集。
+    此模块支持在**Dataset2**上添加另一个数据集。 将 Python 脚本中的第二个数据集作为 DataFrame2 引用。
 
-    在 Azure 机器学习中存储的数据集自动转换为**pandas**数据框架使用此模块加载时。
+    在 Azure 机器学习中存储的数据集将自动转换为**pandas** 。
 
-    ![执行 Python 输入的映射](media/module/python-module.png)
+    ![执行 Python 输入映射](media/module/python-module.png)
 
-4. 若要包含新的 Python 包或代码，添加对包含这些自定义资源的压缩的文件**脚本捆绑包**。 输入**脚本捆绑包**必须压缩的文件已上传到你的工作区。 
+4. 若要包括新的 Python 包或代码, 请在**脚本捆绑包**上添加包含这些自定义资源的压缩文件。 **脚本捆绑包**的输入必须是已上载到工作区的压缩文件。 
 
-    试验执行期间，可以使用已上传压缩的存档中包含的任何文件。 如果存档都包括目录结构，保留了结构，但您必须在前面添加一个名为目录**src**到路径。
+    在试验执行过程中, 可以使用上载的压缩存档中包含的任何文件。 如果存档中包含目录结构, 则会保留结构, 但必须在路径前面添加一个名为**src**的目录。
 
-5. 在中**Python 脚本**文本框中，键入或粘贴有效的 Python 脚本。
+5. 在 " **Python 脚本**" 文本框中, 键入或粘贴有效的 Python 脚本。
 
-    **Python 脚本**文本框中已经填充了一些注释和访问数据和输出的示例代码中的说明。 **您必须编辑或替换此代码。** 请务必遵循 Python 有关缩进和大小写约定。
+    " **Python 脚本**" 文本框预填充了注释中的某些说明, 并预先填充了用于数据访问和输出的示例代码。 **必须编辑或替换此代码。** 请务必遵循有关缩进和大小写的 Python 约定。
 
-    + 该脚本必须包含一个名为函数`azureml_main`作为此模块的入口点。
-    + 入口点函数可以包含最多两个输入的参数：`Param<dataframe1>`和 `Param<dataframe2>`
-    + 解压缩并存储在目录中，连接到第三个输入端口的压缩的文件`.\Script Bundle`，这还将添加到 Python `sys.path`。 
+    + 脚本必须包含一个名`azureml_main`为的函数作为此模块的入口点。
+    + 入口点函数最多可以包含两个输入参数: `Param<dataframe1>`和`Param<dataframe2>`
+    + 连接到第三个输入端口的压缩文件将被解压缩并存储在`.\Script Bundle`目录中, 该目录还将添加`sys.path`到 Python。 
 
-    因此，如果 zip 文件包含`mymodule.py`，使用导入`import mymodule`。
+    因此, 如果 zip 文件包含`mymodule.py`, 请使用`import mymodule`将其导入。
 
-    + 两个数据集可以返回到接口，它必须是一系列类型`pandas.DataFrame`。 可以在 Python 代码中创建其他输出并将其写入到 Azure 存储空间直接。
+    + 可以将两个数据集返回到接口, 该接口必须是类型`pandas.DataFrame`的序列。 可以在 Python 代码中创建其他输出, 并将其直接写入 Azure 存储。
 
-6. 运行实验，或选择的模块，并单击**运行所选**运行只是 Python 脚本。
+6. 运行试验, 或选择该模块, 然后单击 "**运行所选项**" 以仅运行 Python 脚本。
 
-    所有数据和代码加载到虚拟机，并使用指定的 Python 环境运行。
+    所有数据和代码都将加载到虚拟机中, 并使用指定的 Python 环境运行。
 
 ## <a name="results"></a>结果
 
-必须作为 pandas 提供的由嵌入式 Python 代码执行任何计算的结果。数据帧，自动转换为 Azure 机器学习数据集格式，以便您可以与其他模块在试验中使用结果。
+嵌入的 Python 代码执行的任何计算的结果必须以 pandas 的形式提供。数据帧, 它会自动转换为 Azure 机器学习的数据集格式, 因此可以在试验中将结果与其他模块一起使用。
 
-该模块返回两个数据集：  
+该模块将返回两个数据集:  
   
-+ **结果数据集 1**、 定义的 Python 脚本中的第一个返回的 pandas 数据帧
++ **结果数据集 1**, 由 Python 脚本中第一个返回的 pandas 数据帧定义
 
-+ **结果数据集 2**、 定义的 Python 脚本中的第二个返回的 pandas 数据帧
++ **结果数据集 2**, 由第二个在 Python 脚本中返回的 pandas 数据帧定义
 
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[可用的模块集](module-reference.md)到 Azure 机器学习服务。 
+查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 

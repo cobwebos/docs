@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 73bf7424e7c1aedff271ed3653592d174416003c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
-ms.translationtype: HT
+ms.openlocfilehash: 1bd850fe2cac7194d78005f4c0a57523bc8323c6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090189"
+ms.locfileid: "70124487"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 GRUB 是指 GRand 统一引导加载程序，它可能是你在启动 VM 时看到的第一个事物。 因为它是在操作系统启动之前显示的，因此无法通过 SSH 进行访问。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
@@ -31,7 +31,7 @@ GRUB 是指 GRand 统一引导加载程序，它可能是你在启动 VM 时看�
 
 ![Linux 串行控制台重启按钮](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-bar.png)
 
-## <a name="general-grub-access"></a>常规 GRUB 访问
+## <a name="general-grub-access"></a>通用 GRUB 访问
 若要访问 GRUB，需要重新启动 VM，同时使串行控制台边栏选项卡保持处于打开状态。 某些发行版将需要键盘输入以显示 GRUB，而其他发行版则会自动显示 GRUB 几秒钟，并允许用户键盘输入取消超时。
 
 需要确保 VM 上已启用 GRUB，以便能够访问单用户模式。 根据所用的分发版，可能需要完成一些设置工作才能确保启用 GRUB。 可在下方的[此链接](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)处查看特定于发行版的信息。
@@ -58,9 +58,24 @@ GRUB 是指 GRand 统一引导加载程序，它可能是你在启动 VM 时看�
 在无法正常启动的情况下，RHEL 会自动将你置于单用户模式。 但是，如果未设置单用户模式的 root 访问权限，则就不会获得 root 密码，因此也就无法登录。 有一种解决方法（请参阅后面的“手动进入单用户模式”），但建议的做法是一开始就设置 root 访问权限。
 
 ### <a name="grub-access-in-rhel"></a>在 RHEL 中访问 GRUB 访问
-RHEL 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo reboot` 重新启动 VM，然后按任意键。 此时会显示 GRUB 屏幕。
+RHEL 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo reboot` 重新启动 VM，然后按任意键。 此时会显示 GRUB 屏幕。 如果未显示, 请确保 GRUB 文件 (`/etc/default/grub`) 中存在以下行:
 
-> 注意:Red Hat 也提供了有关启动进入急救模式、紧急模式、调试模式以及重置 root 密码的文档。 [单击此处访问文档](https://aka.ms/rhel7grubterminal)。
+#### <a name="rhel-8"></a>RHEL 8:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
+```
+
+#### <a name="rhel-7"></a>RHEL 7:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL_OUTPUT="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 net.ifnames=0"
+```
+
+> [!NOTE]
+> Red Hat 也提供了有关启动进入急救模式、紧急模式、调试模式以及重置 root 密码的文档。 [单击此处访问文档](https://aka.ms/rhel7grubterminal)。
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>在 RHEL 中为单用户模式设置 root 访问权限
 RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如果需要启用单用户模式，请遵照以下说明：
@@ -193,7 +208,7 @@ CoreOS 中的单用户模式要求启用 GRUB。
 与 Red Hat Enterprise Linux 中的情况非常类似，Oracle Linux 中的单用户模式也要求启用 GRUB 和 root 用户。
 
 ### <a name="grub-access-in-oracle-linux"></a>在 Oracle Linux 中访问 GRUB
-Oracle Linux 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo reboot` 重新启动 VM，然后按“Esc”。 此时会显示 GRUB 屏幕。 如果看不到 GRUB, 请确保`GRUB_TERMINAL`行的值包含 "串行控制台", 如下所示:。 `GRUB_TERMINAL="serial console"`
+Oracle Linux 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo reboot` 重新启动 VM，然后按“Esc”。 此时会显示 GRUB 屏幕。 如果看不到 GRUB, 请确保`GRUB_TERMINAL`行的值包含 "串行控制台", 如下所示:。 `GRUB_TERMINAL="serial console"` 重新生成 GRUB `grub2-mkconfig -o /boot/grub/grub.cfg`。
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Oracle Linux 中的单用户模式
 遵照适用于 RHEL 的上述说明，在 Oracle Linux 中启用单用户模式。

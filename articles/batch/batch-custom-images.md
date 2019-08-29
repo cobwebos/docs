@@ -6,14 +6,14 @@ author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 08/28/2019
 ms.author: lahugh
-ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3c2213c25a8fdc6d6545711bd2af9b94662ee609
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036688"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141822"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-pool"></a>使用共享映像库创建池
 
@@ -23,7 +23,7 @@ ms.locfileid: "69036688"
 
 使用自定义映像的共享映像库时, 可以控制操作系统类型和配置, 以及数据磁盘的类型。 共享映像可包括应用程序和引用数据, 这些数据在预配后就会在所有 Batch 池节点上可用。
 
-你还可以根据需要为你的环境提供多个版本的映像。 使用映像版本创建 VM 时, 映像版本用于为 VM 创建新磁盘。 
+你还可以根据需要为你的环境提供多个版本的映像。 使用映像版本创建 VM 时, 映像版本用于为 VM 创建新磁盘。
 
 使用共享映像可节省准备池的计算节点以运行 Batch 工作负荷的时间。 预配后, 可以使用 Azure Marketplace 映像并在每个计算节点上安装软件, 但使用共享映像通常效率更高。 此外, 你可以为共享映像指定多个副本, 因此, 当你创建包含多个 Vm (超过600个 Vm) 的池时, 你将在创建池时节省时间。
 
@@ -91,6 +91,19 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
     ...
 }
 ```
+
+## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>使用 Azure 门户从共享映像创建池
+
+使用以下步骤从 Azure 门户中的共享映像创建池。
+
+1. 打开 [Azure 门户](https://portal.azure.com)。
+1. 中转到 " **Batch 帐户**" 并选择你的帐户。
+1. 选择 "**池**", 然后单击 "**添加**" 创建新池。
+1. 在 "**映像类型**" 部分中, 选择 "**共享图像库**"。
+1. 填写剩余部分, 其中包含有关托管映像的信息。
+1. 选择“确定”。
+
+![使用门户通过共享映像创建池。](media/batch-custom-images/create-custom-pool.png)
 
 ## <a name="considerations-for-large-pools"></a>大型池的注意事项
 

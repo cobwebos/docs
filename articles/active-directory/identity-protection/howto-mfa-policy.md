@@ -11,31 +11,31 @@ manager: daveba
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27ff7512bb3f9422ed4c8edd7ab50fce23f0ed07
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 939f08fd16cf27e641cf6436a00396ad2db8e6c3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499567"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126391"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>如何：配置 Azure 多重身份验证注册策略
 
-Azure AD Identity Protection 通过将条件访问策略配置为要求进行 MFA 注册, 而不考虑登录到的现代身份验证应用, 可帮助你管理多因素身份验证 (MFA) 注册的推出。 本文介绍了可以使用的策略, 以及如何对其进行配置。
+Azure AD Identity Protection 通过将条件访问策略配置为要求进行 MFA 注册, 而不考虑登录到的现代身份验证应用, 可帮助你管理多因素身份验证 (MFA) 注册的推出。 本文将说明策略的用途以及如何配置它。
 
 
 
-## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Azure 多重身份验证注册策略是什么？
+## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>什么是 Azure 多重身份验证注册策略？
 
-Azure 多重身份验证提供了一种方法, 用于验证你使用的不只是用户名和密码。 它为用户登录提供了另一层安全措施。为了使用户能够响应 MFA 提示, 他们必须首先注册 Azure 多重身份验证。
+Azure 多重身份验证提供了一种方法来实现不只使用用户名和密码验证用户的身份。 它为用户登录提供了第二层保护。为了让用户能够响应 MFA 提示，他们必须首先注册 Azure 多重身份验证。
 
-建议你对用户登录要求进行 Azure 多重身份验证, 因为它:
+我们建议你要求用户登录使用 Azure 多重身份验证，因为这种身份验证方法可以：
 
 - 提供强式身份验证和一系列简单的验证选项
-- 在准备你的组织以保护和从 Identity Protection 中的风险事件中恢复时, 扮演着重要的角色
+- 在准备您的组织时, 扮演着重要的角色来保护和恢复在 Identity Protection 中的风险检测
 
-有关 MFA 的详细信息, 请参阅[什么是 Azure 多重身份验证？](../authentication/howto-mfa-getstarted.md)
+有关 MFA 的更多详细信息，请参阅[什么是 Azure 多重身份验证？](../authentication/howto-mfa-getstarted.md)
 
-## <a name="how-do-i-access-the-registration-policy"></a>如何实现访问注册策略？
+## <a name="how-do-i-access-the-registration-policy"></a>如何访问注册策略？
 
 MFA 注册策略位于[“Azure AD 标识保护”页](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy)上的“配置”部分中。
 
@@ -43,17 +43,17 @@ MFA 注册策略位于[“Azure AD 标识保护”页](https://portal.azure.com/
 
 ## <a name="policy-settings"></a>策略设置
 
-配置 MFA 注册策略时, 需要进行以下配置更改:
+配置 MFA 注册策略时，需要进行以下配置更改：
 
-- 应用策略的用户和组。 请记住排除组织的[紧急访问帐户](../users-groups-roles/directory-emergency-access.md)。
+- 策略应用到的用户和组。 请记住排除组织的[紧急访问帐户](../users-groups-roles/directory-emergency-access.md)。
 
     ![用户和组](./media/howto-mfa-policy/11.png)
 
-- 要强制实施的控件-**需要 AZURE MFA 注册**
+- 要强制实施的控制 - **需要 Azure MFA 注册**
 
     ![访问权限](./media/howto-mfa-policy/12.png)
 
-- 应将 "强制策略" 设置为 **"开"** 。
+- “强制实施策略”应设置为“开”。
 
     ![强制实施策略](./media/howto-mfa-policy/14.png)
 

@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f57f09f146e542768c83fa034f0b4e65bc6b2ae
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ce62a5059304fe83d933a46ae69f4b8e0c276ba7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987932"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127038"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
 
@@ -62,13 +62,13 @@ ms.locfileid: "68987932"
 | 报告 | 最低要求 | Average | 最大值 |
 | :-- | --- | --- | --- |
 | 有风险的用户          | 5 分钟   | 15 分钟  | 2 小时  |
-| 风险登录         | 5 分钟   | 15 分钟  | 2 小时  |
+| 有风险的登录         | 5 分钟   | 15 分钟  | 2 小时  |
 
-## <a name="risk-events"></a>风险事件
+## <a name="risk-detections"></a>风险检测
 
-Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 检测到的每个可疑操作都存储在称为**风险事件**的记录中。
+Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 每个检测到的可疑操作都存储在称为**风险检测**的记录中。
 
-下表列出了风险事件的延迟信息。
+下表列出了风险检测的滞后时间信息。
 
 | 报告 | 最低要求 | Average | 最大值 |
 | :-- | --- | --- | --- |
@@ -84,4 +84,4 @@ Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户�
 
 * [Azure AD 报告概述](overview-reports.md)
 * [以编程方式访问 Azure AD 报告](concept-reporting-api.md)
-* [Azure Active Directory 风险事件](concept-risk-events.md)
+* [Azure Active Directory 风险检测](concept-risk-events.md)

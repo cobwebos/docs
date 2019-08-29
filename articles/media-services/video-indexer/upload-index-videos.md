@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 8fffc74075abf6dcc4b5c293819f739a9725646b
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998179"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128202"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -30,15 +30,15 @@ ms.locfileid: "69998179"
 视频上传以后，视频索引器会选择性地对视频进行编码（在本文中介绍）。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以[创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
 
 ## <a name="uploading-considerations"></a>上传注意事项
-
-- 根据 URL（首选方式）上传视频时，必须使用 TLS 1.2（或更高版本）保护终结点
-- 带有 URL 选项的上传大小限制为30GB
-- 请求 URL 长度限制为2048个字符
-- 对于字节数组选项，上传大小限制为 2GB
-- 字节组选项会在 30 分钟后超时
-- 需要对 `videoURL` 参数中提供的 URL 进行编码
-- 为媒体服务资产编制索引与从 URL 创建索引具有相同的限制
-- 对于单个文件, 视频索引器的最大持续时间限制为4小时
+ 
+- 基于 URL 上传视频时 (首选), 终结点必须通过 TLS 1.2 (或更高版本) 进行保护。
+- 带有 URL 选项的上传大小限制为30GB。
+- 请求 URL 长度限制为6144个字符, 其中查询字符串 URL 长度限制为4096个字符。
+- 具有字节数组选项的上传大小限制为2GB。
+- 字节数组选项在30分钟后超时。
+- `videoURL`参数中提供的 URL 需要进行编码。
+- 为媒体服务资产编制索引与从 URL 进行索引的限制相同。
+- 对于单个文件, 视频索引器的最大持续时间限制为4小时。
 
 > [!Tip]
 > 建议使用 .NET framework 版本 4.6.2. 或更高版本，因为较旧的 .NET framework 不会默认为 TLS 1.2。

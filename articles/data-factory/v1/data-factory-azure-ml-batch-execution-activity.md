@@ -3,22 +3,20 @@ title: 使用 Azure 数据工厂创建预测数据管道 | Microsoft Docs
 description: 描述如何使用 Azure 数据工厂和 Azure 机器学习创建预测管道
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 4fad8445-4e96-4ce0-aa23-9b88e5ec1965
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 4093febd19d71512e3c80704e88f9d5cf669d7d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7c48c1d91ae08be29531f4a99ea75ab7a928f34
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60567384"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140489"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 
@@ -54,7 +52,7 @@ ms.locfileid: "60567384"
 有关 Azure 数据工厂服务的快速入门，请参阅文章 [Azure 数据工厂简介](data-factory-introduction.md)和[生成第一个管道](data-factory-build-your-first-pipeline.md)。
 
 ### <a name="data-factory-and-machine-learning-together"></a>结合数据工厂和机器学习
-借助 Azure 数据工厂，可轻松创建相关管道，利用已发布的 [Azure 机器学习 Web 服务进行预测分析][azure-machine-learning]。 使用 Azure 数据工厂管道中的**批处理执行活动**，可以调用 Azure 机器学习工作室 Web 服务成批对数据进行预测。 有关详细信息，请参阅使用批处理执行活动调用 Azure 机器学习工作室 Web 服务部分。
+使用 Azure 数据工厂, 可轻松创建使用已发布的[Azure 机器学习][azure-machine-learning]web 服务进行预测分析的管道。 使用 Azure 数据工厂管道中的**批处理执行活动**，可以调用 Azure 机器学习工作室 Web 服务成批对数据进行预测。 有关详细信息，请参阅使用批处理执行活动调用 Azure 机器学习工作室 Web 服务部分。
 
 随着时间推移，需要使用新的输入数据集重新训练 Azure 机器学习工作室评分实验中的预测模型。 可以通过执行以下步骤重新训练数据工厂管道中的 Azure 机器学习工作室模型：
 
@@ -68,7 +66,7 @@ ms.locfileid: "60567384"
 
 1. 创建 Azure 机器学习链接服务。 需要以下值：
 
-   1. 用于批处理执行 API 的**请求 URI**。 在 Web 服务页中，单击“批处理执行”  链接可找到此请求 URI。
+   1. 用于批处理执行 API 的**请求 URI**。 在 Web 服务页中，单击“批处理执行”链接可找到此请求 URI。
    2. 用于已发布 Azure 机器学习 Web 服务的 **API 密钥**。 单击已发布的 Web 服务可找到此 API 密钥。
    3. 使用 **AzureMLBatchExecution** 活动。
 
@@ -137,7 +135,7 @@ ms.locfileid: "60567384"
 ### <a name="example"></a>示例
 本示例使用 Azure 存储保留输入和输出数据。
 
-建议先浏览[使用数据工厂生成第一个管道][adf-build-1st-pipeline]教程，再浏览本示例。 本示例使用数据工厂编辑器创建数据工厂项目（链接服务、数据集、管道）。
+在此示例中, 我们建议你完成[使用数据工厂生成第一个管道][adf-build-1st-pipeline]教程。 本示例使用数据工厂编辑器创建数据工厂项目（链接服务、数据集、管道）。
 
 1. 为 **Azure 存储**创建**链接服务**。 如果输入和输出文件位于不同的存储帐户，需使用两个链接服务。 下面是 JSON 示例：
 
@@ -236,7 +234,7 @@ ms.locfileid: "60567384"
       }
     }
     ```
-4. 为以下类型创建“链接服务”  ：AzureMLLinkedService，提供 API 密钥和模型批处理执行 URL  。
+4. 为以下类型创建“链接服务”：AzureMLLinkedService，提供 API 密钥和模型批处理执行 URL。
 
     ```JSON
     {
@@ -349,7 +347,7 @@ ms.locfileid: "60567384"
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>使用读取器模块读取 Azure Blob 中多个文件的数据
 含 Pig 和 Hive 等活动的大数据管道可以生成无扩展名的一个或多个输出文件。 例如，指定外部 Hive 表时，可将外部 Hive 表数据存储在 Azure Blob 存储中，并命名为 000000_0。 可在实验中使用读取器模块读取多个文件，并将文件用于预测。
 
-在 Azure 机器学习实验中使用读取器模块时，可指定 Azure Blob 作为输入。 Azure Blob 存储中文件可以是输出文件（例如：000000_0），这些文件由 HDInsight 上运行的 Pig 和 Hive 脚本生成。 使用读取器模块，可通过配置“容器路径、目录/blob”  读取文件（无扩展名）。 **容器路径**指向容器，**目录/blob** 指向包含如下图所示文件的文件夹。 星号，即 \*) **指定容器/文件夹中的所有文件（即，data/aggregateddata/year=2014/month-6/\*）** 均作为实验的一部分读取。
+在 Azure 机器学习实验中使用读取器模块时，可指定 Azure Blob 作为输入。 Azure Blob 存储中文件可以是输出文件（例如：000000_0），这些文件由 HDInsight 上运行的 Pig 和 Hive 脚本生成。 使用读取器模块，可通过配置“容器路径、目录/blob”读取文件（无扩展名）。 **容器路径**指向容器，**目录/blob** 指向包含如下图所示文件的文件夹。 星号，即 \*) **指定容器/文件夹中的所有文件（即，data/aggregateddata/year=2014/month-6/\*）** 均作为实验的一部分读取。
 
 ![Azure Blob 属性](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -604,7 +602,7 @@ Azure SDK 和 Azure PowerShell 的 2015 年 8 月版中引入了 AzureMLBatchExe
 ```
 
 ### <a name="web-service-parameters"></a>Web 服务参数
-要指定 Web 服务参数的值，请将“typeProperties”部分添加到管道 JSON 中的“AzureMLBatchScoringActivty”部分，如下方示例所示   ：
+要指定 Web 服务参数的值，请将“typeProperties”部分添加到管道 JSON 中的“AzureMLBatchScoringActivty”部分，如下方示例所示：
 
 ```JSON
 "typeProperties": {
@@ -629,7 +627,7 @@ Azure SDK 和 Azure PowerShell 的 2015 年 8 月版中引入了 AzureMLBatchExe
 >
 >
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure 博客文章：Azure 数据工厂和 Azure 机器学习入门](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
 
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md

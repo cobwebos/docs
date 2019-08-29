@@ -8,16 +8,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 3ab3ec5380fbc90dffd4f258073ad8b477e2318a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02c4644c4440c3a00a21ef22674bcc0d00902ac2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002832"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140786"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Python 活动转换数据
 
@@ -62,19 +62,19 @@ ms.locfileid: "66002832"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|属性|说明|需要|
+|属性|说明|必填|
 |---|---|---|
 |name|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|
 |type|对于 Databricks Python 活动，活动类型是 DatabricksSparkPython。|是|
 |linkedServiceName|Databricks 链接服务的名称，Python 活动在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|是|
 |pythonFile|要执行的 Python 文件的 URI。 仅支持 DBFS 路径。|是|
-|parameters|将传递到 Python 文件的命令行参数。 这是一个字符串数组。|否|
+|参数|将传递到 Python 文件的命令行参数。 这是一个字符串数组。|否|
 |库|要安装在将执行作业的群集上的库列表。 它可以是 <string, object> 数组|否|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>databricks 活动支持的库
 
-在以上 Databricks 活动定义中，指定这些库类型：jar、egg、maven、pypi、cran      。
+在以上 Databricks 活动定义中，指定这些库类型：jar、egg、maven、pypi、cran。
 
 ```json
 {
@@ -116,10 +116,10 @@ ms.locfileid: "66002832"
 
 若要获取使用 UI 添加的库的 dbfs 路径，可以使用 [Databricks CLI（安装）](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)。 
 
-使用 UI 时，Jar 库通常存储在 dbfs:/FileStore/jars 下。 可以通过 CLI 列出所有库：databricks fs ls dbfs:/FileStore/jars  
+使用 UI 时，Jar 库通常存储在 dbfs:/FileStore/jars 下。 可以通过 CLI 列出所有库：databricks fs ls dbfs:/FileStore/jars 
 
 
 
 #### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[使用 Databricks CLI 复制库](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
 
-示例：databricks fs cp SparkPi-assembly-0.1.jar dbfs:/FileStore/jars 
+示例：databricks fs cp SparkPi-assembly-0.1.jar dbfs:/FileStore/jars

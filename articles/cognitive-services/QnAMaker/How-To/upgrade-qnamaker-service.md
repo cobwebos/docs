@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 08/26/2019
 ms.author: diberry
-ms.openlocfilehash: df4aa2d6a3c4690fb1fc38b0f4f7d49afccdd657
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ba9c2cd5a85e02a7dd4b1091a050d76e94861964
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640485"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147085"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>共享或升级 QnA Maker 服务
 共享或升级 QnA Maker 服务, 以便更好地管理资源。 
@@ -26,13 +26,14 @@ ms.locfileid: "69640485"
 
 QnA Maker 创建多个 Azure 资源。 为了减少成本共享的管理和权益, 请使用下表来了解可以和不能共享的内容:
 
-|服务|共享|
-|--|--|
-|认知服务|X|
-|应用服务计划|✔|
-|应用服务|X|
-|Application Insights|✔|
-|搜索服务|✔|
+|服务|共享|Reason|
+|--|--|--|
+|认知服务|X|不能通过设计|
+|应用服务计划|✔|为应用服务计划分配的固定磁盘空间。 如果其他应用程序共享同一个应用服务计划, 则占用大量磁盘空间, QnAMaker 应用服务将遇到问题。|
+|应用服务|X|不能通过设计|
+|Application Insights|✔|可以共享|
+|搜索服务|✔|1. `testkb`是 QnAMaker 服务的保留名称, 其他名称不能使用。<br>2.名称`synonym-map`的同义词映射是为 QnAMaker 服务保留的。<br>3.已发布的 Kb 数受搜索服务层限制。 如果有可用的可用索引, 则其他服务可以使用。|
+
 
 ## <a name="upgrade-qna-maker-management-sku"></a>升级 QnA Maker 管理 SKU
 

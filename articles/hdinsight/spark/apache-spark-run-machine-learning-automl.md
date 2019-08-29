@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: ff6a071a2d157bf79ab27fcbf4f9753fdbcac118
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a731d9e0c97cb8431b1294d961ad46ff324f32be
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354856"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141185"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>在 Azure HDInsight 中的 Apache Spark 上使用自动化机器学习 (AutoML) 运行 Azure 机器学习工作负荷
 
@@ -34,7 +34,7 @@ Azure 机器学习简化并加速了机器学习模型的构建、培训和部�
 
 ## <a name="authentication-for-workspace"></a>工作区身份验证
 
-创建工作区和提交试验需要使用身份验证令牌。 可以使用 [Azure AD 应用程序](../../active-directory/develop/app-objects-and-service-principals.md)生成此令牌。 如果未在帐户中启用多重身份验证，则还可以使用 [Azure AD 用户](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python)来生成所需的身份验证令牌。  
+创建工作区和提交试验需要使用身份验证令牌。 可以使用 [Azure AD 应用程序](../../active-directory/develop/app-objects-and-service-principals.md)生成此令牌。 如果未在帐户中启用多重身份验证，则还可以使用 [Azure AD 用户](/azure/python/python-sdk-azure-authenticate)来生成所需的身份验证令牌。  
 
 以下代码片段使用 **Azure AD 应用程序**创建身份验证令牌。
 

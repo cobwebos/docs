@@ -3,22 +3,21 @@ title: 监视和管理数据管道 - Azure | Microsoft 文档
 description: 了解如何使用“监视和管理”应用来监视和管理 Azure 数据工厂和管道。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 5b70edd4f65538b52c70881258bc500a34b04d80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 052ea99f0489458269adf4dca2c6713535933638
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826350"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139578"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>使用“监视和管理”应用监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -39,7 +38,7 @@ ms.locfileid: "60826350"
 >
 
 ## <a name="launch-the-monitoring-and-management-app"></a>启动“监视和管理”应用
-若要启动“监视和管理”应用，请针对数据工厂单击“数据工厂”  边栏选项卡上的“监视和管理”  磁贴。
+若要启动“监视和管理”应用，请针对数据工厂单击“数据工厂”边栏选项卡上的“监视和管理”磁贴。
 
 ![数据工厂主页上的“监视”磁贴](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
 
@@ -48,26 +47,26 @@ ms.locfileid: "60826350"
 ![“监视和管理”应用](./media/data-factory-monitor-manage-app/AppLaunched.png)
 
 > [!NOTE]
-> 如果 Web 浏览器停滞在“正在授权...”处，请清除“阻止第三方 Cookie 和站点数据”  复选框，或在将其保持选中的状态下为 **login.microsoftonline.com** 创建一个例外，并尝试再次打开该应用。
+> 如果 Web 浏览器停滞在“正在授权...”处，请清除“阻止第三方 Cookie 和站点数据”复选框，或在将其保持选中的状态下为 **login.microsoftonline.com** 创建一个例外，并尝试再次打开该应用。
 
 
 在中间窗格中的“活动窗口”列表中，每次运行某个活动时，都可以看到一个活动窗口。 例如，如果将该活动计划为在五小时内每小时运行一次，将看到与五个数据切片关联的五个活动窗口。 如果在底部列表中看不到活动窗口，请执行以下操作：
  
-- 更新顶部的“开始时间”  和“结束时间”  筛选器以匹配管道的开始时间和结束时间，然后单击“应用”  按钮。  
-- “活动窗口”列表不会自动刷新。 请单击“活动窗口”  列表中工具栏上的“刷新”  按钮。  
+- 更新顶部的“开始时间”和“结束时间”筛选器以匹配管道的开始时间和结束时间，然后单击“应用”按钮。  
+- “活动窗口”列表不会自动刷新。 请单击“活动窗口”列表中工具栏上的“刷新”按钮。  
 
 如果没有用于测试这些步骤的数据工厂应用程序，请完成教程：[使用数据工厂将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="understand-the-monitoring-and-management-app"></a>了解“监视和管理”应用
-在左侧有三个选项卡：“资源浏览器”、“监视视图”和“警报”。    第一个选项卡（**资源浏览器**）在默认情况下处于选中状态。
+在左侧有三个选项卡：“资源浏览器”、“监视视图”和“警报”。 第一个选项卡（**资源浏览器**）在默认情况下处于选中状态。
 
 ### <a name="resource-explorer"></a>资源浏览器
 会看到如下内容：
 
 * 左侧窗格中的资源浏览器**树视图**。
 * 中间窗格顶部的**图示视图**。
-* 中间窗格底部的“活动窗口”  列表。
-* 右侧窗格中的“属性”  、“活动窗口资源管理器”  和“脚本”  选项卡。
+* 中间窗格底部的“活动窗口”列表。
+* 右侧窗格中的“属性”、“活动窗口资源管理器”和“脚本”选项卡。
 
 在资源浏览器中，可在树视图的数据工厂中查看所有资源（管道、数据集、链接服务）。 在资源浏览器中选择对象时：
 
@@ -105,7 +104,7 @@ ms.locfileid: "60826350"
 
 ![管道的上下文菜单](./media/data-factory-monitor-manage-app/right-click-menu-for-pipeline.png)
 
-单击“打开管道”  选项可查看管道中的所有活动。 
+单击“打开管道”选项可查看管道中的所有活动。 
 
 ![“打开管道”菜单](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
@@ -119,19 +118,19 @@ ms.locfileid: "60826350"
 
 ![“活动窗口”弹出窗口](./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png)
 
-可以在右侧窗格的“属性”  窗口中单击活动窗口以查看其详细信息。
+可以在右侧窗格的“属性”窗口中单击活动窗口以查看其详细信息。
 
 ![“活动窗口”属性](./media/data-factory-monitor-manage-app/ActivityWindowProperties.png)
 
-在右侧窗格中，切换到“活动窗口资源管理器”  选项卡以查看更多详细信息。
+在右侧窗格中，切换到“活动窗口资源管理器”选项卡以查看更多详细信息。
 
 ![活动窗口资源管理器](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
-还可在“尝试”  部分看到活动的每次运行尝试的**已解析变量**。
+还可在“尝试”部分看到活动的每次运行尝试的**已解析变量**。
 
 ![已解析变量](./media/data-factory-monitor-manage-app/ResolvedVariables.PNG)
 
-切换到“脚本”  选项卡以查看所选对象的 JSON 脚本定义。   
+切换到“脚本”选项卡以查看所选对象的 JSON 脚本定义。   
 
 ![脚本选项卡](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
@@ -145,7 +144,7 @@ ms.locfileid: "60826350"
 
 ![活动窗口资源管理器向左/向右键](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-在图示视图底部，可以看到以下按钮：放大、缩小、缩放到合适大小、比例 100%、锁定布局。 “锁定布局”  按钮将防止意外移动图示视图中的表和管道。 它在默认情况下处于“打开”状态。 可将其关闭，还可在图示中移动实体。 将其关闭后，可使用最后一个按钮来自动放置表和管道。 还可以通过使用鼠标滚轮来放大或缩小。
+在图示视图底部，可以看到以下按钮：放大、缩小、缩放到合适大小、比例 100%、锁定布局。 “锁定布局”按钮将防止意外移动图示视图中的表和管道。 它在默认情况下处于“打开”状态。 可将其关闭，还可在图示中移动实体。 将其关闭后，可使用最后一个按钮来自动放置表和管道。 还可以通过使用鼠标滚轮来放大或缩小。
 
 ![图示视图缩放命令](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
@@ -188,7 +187,7 @@ ms.locfileid: "60826350"
 </tr>
 <tr>
 <tr>
-<td rowspan="2">InProgress</td><td>正在验证</td><td>正在进行验证。</td>
+<td rowspan="2">正在进行</td><td>正在验证</td><td>正在进行验证。</td>
 </tr>
 <td>-</td>
 <td>正在处理活动窗口。</td>
@@ -216,7 +215,7 @@ ms.locfileid: "60826350"
 </table>
 
 
-单击列表中的活动窗口时，可在右侧的“活动窗口资源管理器”  或“属性”  窗口中看到其详细信息。
+单击列表中的活动窗口时，可在右侧的“活动窗口资源管理器”或“属性”窗口中看到其详细信息。
 
 ![活动窗口资源管理器](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
@@ -231,7 +230,7 @@ ms.locfileid: "60826350"
 它会显示资源浏览器（树视图）、图示视图或“活动窗口”列表中所选项的属性。
 
 ### <a name="activity-window-explorer"></a>活动窗口资源管理器
-“活动窗口资源管理器”  窗口位于“监视和管理”应用的最右侧窗格中。 它显示“活动窗口”弹出窗口或“活动窗口”列表中所选活动窗口的相关详细信息。
+“活动窗口资源管理器”窗口位于“监视和管理”应用的最右侧窗格中。 它显示“活动窗口”弹出窗口或“活动窗口”列表中所选活动窗口的相关详细信息。
 
 ![活动窗口资源管理器](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png)
 
@@ -240,25 +239,25 @@ ms.locfileid: "60826350"
 在底部窗格中，可使用工具栏按钮来重新运行活动窗口或刷新窗格中的详细信息。
 
 ### <a name="script"></a>脚本
-可以使用“脚本”  选项卡来查看所选数据工厂实体（链接服务、数据集或管道）的 JSON 定义。
+可以使用“脚本”选项卡来查看所选数据工厂实体（链接服务、数据集或管道）的 JSON 定义。
 
 ![脚本选项卡](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## <a name="use-system-views"></a>使用系统视图
-使用“监视和管理”应用附带的预建系统视图（“最近活动窗口”  、“失败活动窗口”  、“进行中活动窗口”  ），可以查看数据工厂的最近/失败/进行中活动窗口。
+使用“监视和管理”应用附带的预建系统视图（“最近活动窗口”、“失败活动窗口”、“进行中活动窗口”），可以查看数据工厂的最近/失败/进行中活动窗口。
 
-通过单击左侧“监视视图”  选项卡切换到此视图。
+通过单击左侧“监视视图”选项卡切换到此视图。
 
 ![监视视图选项卡](./media/data-factory-monitor-manage-app/MonitoringViewsTab.png)
 
 目前有三种系统视图受支持。 选择一个选项可在“活动窗口”列表（位于中间窗格底部）中查看最近活动窗口、失败活动窗口或进行中活动窗口。
 
-选择“最近活动窗口”  选项时，将看到按**上次尝试时间**降序排序的所有最近活动窗口。
+选择“最近活动窗口”选项时，将看到按**上次尝试时间**降序排序的所有最近活动窗口。
 
-可以使用“失败活动窗口”  视图来查看列表中所有失败的活动窗口。 在该列表中选择失败活动窗口，可在“属性”  窗口或“活动窗口资源管理器”  中查看其详细信息。 还可以下载失败活动窗口的任何日志。
+可以使用“失败活动窗口”视图来查看列表中所有失败的活动窗口。 在该列表中选择失败活动窗口，可在“属性”窗口或“活动窗口资源管理器”中查看其详细信息。 还可以下载失败活动窗口的任何日志。
 
 ## <a name="sort-and-filter-activity-windows"></a>排序并筛选活动窗口
-更改命令栏中的“开始时间”  和“结束时间”  设置，以筛选活动窗口。 更改开始时间和结束时间后，单击结束时间旁边的按钮可刷新“活动窗口”列表。
+更改命令栏中的“开始时间”和“结束时间”设置，以筛选活动窗口。 更改开始时间和结束时间后，单击结束时间旁边的按钮可刷新“活动窗口”列表。
 
 ![开始和结束时间](./media/data-factory-monitor-manage-app/StartAndEndTimes.png)
 
@@ -267,7 +266,7 @@ ms.locfileid: "60826350"
 >
 >
 
-在“活动窗口”列表  中，单击某一列的名称（例如：状态）。
+在“活动窗口”列表中，单击某一列的名称（例如：状态）。
 
 ![“活动窗口”列表列菜单](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
@@ -287,7 +286,7 @@ ms.locfileid: "60826350"
 
 ## <a name="perform-batch-actions"></a>执行批处理操作
 ### <a name="rerun-selected-activity-windows"></a>重新运行选定的活动窗口
-选择活动窗口，单击第一个命令栏按钮的向下键，并选择“重新运行”   / “与管道中的上游一起重新运行”  。 选择“与管道中的上游一起重新运行”  选项时，也将重新运行所有上游活动窗口。
+选择活动窗口，单击第一个命令栏按钮的向下键，并选择“重新运行” / “与管道中的上游一起重新运行”。 选择“与管道中的上游一起重新运行”选项时，也将重新运行所有上游活动窗口。
     ![重新运行活动窗口](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
 还可在列表中选择多个活动窗口，并同时重新运行它们。 你可能希望基于状态筛选活动窗口（例如：**失败**）--并在解决导致活动窗口失败的问题后重新运行失败的活动窗口。 有关在列表中筛选活动窗口的详细信息，请参阅以下部分。  

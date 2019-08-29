@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: a23f71a38324d9751846f1308f79d3a4e746fd85
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c35863ed1d564adf4190efa1888d24f4f4f68ddf
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637288"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147860"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>在 vCore 服务层中进行选择, 并从 DTU 服务层迁移
 
@@ -43,7 +43,7 @@ ms.locfileid: "69637288"
 ||**常规用途**|**业务关键**|**超大规模**|
 |---|---|---|---|
 |最适合|大多数业务工作负荷。 提供面向预算、平衡和可缩放的计算和存储选项。|具有高 i/o 要求的业务应用程序。 通过使用多个独立副本, 提供最高的故障恢复能力。|具有高度可缩放的存储和读取缩放要求的大多数业务工作负荷。|
-|计算|**预配计算**：<br/>Gen4：1到 24 Vcore<br/>Gen5：2到 80 Vcore<br/>**无服务器计算**:<br/>Gen5：0.5-4 Vcore|**预配计算**：<br/>Gen4：1到 24 Vcore<br/>Gen5：2到 80 Vcore|**预配计算**：<br/>Gen4：1到 24 Vcore<br/>Gen5：2到 80 Vcore|
+|计算|**预配计算**：<br/>Gen4：1到 24 Vcore<br/>Gen5：2到 80 Vcore<br/>**无服务器计算**:<br/>Gen5：0.5-16 Vcore|**预配计算**：<br/>Gen4：1到 24 Vcore<br/>Gen5：2到 80 Vcore|**预配计算**：<br/>Gen4：1到 24 Vcore<br/>Gen5：2到 80 Vcore|
 |内存|**预配计算**：<br/>Gen4：每个 vCore 7 GB<br/>Gen5：每个 vCore 5.1 GB<br/>**无服务器计算**:<br/>Gen5：每个 vCore 3 GB|**预配计算**：<br/>Gen4：每个 vCore 7 GB<br/>Gen5：每个 vCore 5.1 GB |**预配计算**：<br/>Gen4：每个 vCore 7 GB<br/>Gen5：每个 vCore 5.1 GB|
 |存储|使用远程存储。<br/>**单一数据库预配计算**：<br/>5 GB – 4 TB<br/>**单一数据库无服务器计算**：<br/>5 GB - 1 TB<br/>**托管实例**:32 GB - 8 TB |使用本地 SSD 存储。<br/>**单一数据库预配计算**：<br/>5 GB – 4 TB<br/>**托管实例**:<br/>32 GB - 4 TB |根据需要灵活地自动增长存储。 最多支持 100 TB 的存储空间。 将本地 SSD 存储用于本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终长期数据存储。 |
 |I/o 吞吐量 (近似)|**单一数据库**:每个 vCore 500 IOPS, 最大 IOPS 为7000。<br/>**托管实例**:取决于[文件的大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)。|每个 vCore 提供 5000 IOPS，最大 200,000 IOPS|超大规模是具有多个级别的缓存的多层体系结构。 有效 IOPs 将取决于工作负荷。|

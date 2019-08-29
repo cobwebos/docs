@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a978e2755818e88cad580753e041eacd50a9e6d2
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1b5615de8df42bca64822b0e459c7815412300af
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980485"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125378"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -1843,11 +1843,11 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 **服务类别：** Identity Protection  
 **产品功能：** 标识安全性和保护
 
-从检测到的风险事件获得的见解会绑定到 Azure AD 订阅。 使用 Azure AD Premium P2 版本时，可以获取有关所有基础检测的最详细的信息。
+针对检测到的风险检测获得的见解与 Azure AD 订阅相关联。 使用 Azure AD Premium P2 版本时，可以获取有关所有基础检测的最详细的信息。
 
-使用 Azure AD Premium P1 版本时，许可证未涵盖的检测项会显示为风险事件“登录时检测到其他风险”。
+使用 Azure AD Premium P1 edition 时, 许可证未涵盖的检测将显示为检测到其他风险检测的登录。
 
-有关详细信息，请参阅 [Azure Active Directory 风险事件](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)。
+有关详细信息, 请参阅[Azure Active Directory 风险检测](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)。
  
 ---
 
@@ -1913,7 +1913,7 @@ MFA 配置位于：“Azure Active Directory”\>“MFA 服务器”
 
 **可用功能**
 
-在过渡到新管理控制台的过程中，有 2 个新 API 可用于检索 Azure AD 活动日志。 新的 API 集提供更丰富的筛选和排序功能，此外还提供更丰富的审核和登录活动。 现在可以通过 Microsoft Graph 中的“标识保护”风险事件 API 来访问以前通过安全报告提供的数据。
+在过渡到新管理控制台的过程中，有 2 个新 API 可用于检索 Azure AD 活动日志。 新的 API 集提供更丰富的筛选和排序功能，此外还提供更丰富的审核和登录活动。 现在可以通过 Microsoft Graph 中的 Identity Protection 风险检测 API 来访问以前通过安全报告提供的数据。
 
 有关详细信息，请参阅：
 
@@ -2264,13 +2264,13 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
  
 ---
 
-### <a name="aggregation-of-real-time-risk-events"></a>实时风险事件的聚合
+### <a name="aggregation-of-real-time-risk-detections"></a>实时风险检测的聚合
 
 **类型：** 已更改的功能    
 **服务类别：** 标识保护  
 **产品功能：** 标识安全性和保护
 
-在 Azure AD 标识保护中，某一天源自同一 IP 地址的所有实时风险事件现按照每种风险事件类型聚合在一起。 此更改限制了显示的风险事件数量，但不会对用户安全性造成任何影响。
+在 Azure AD Identity Protection 中, 所有源自给定日期的相同 IP 地址的实时风险检测现在都将针对每种风险检测类型进行聚合。 此更改限制显示的风险检测量, 而不会对用户安全进行任何更改。
 
 每当用户登录时，基础实时检测都会运行。 如果针对多重身份验证或阻止访问设置了登录风险安全策略，则每次存在风险的登录期间都会触发该设置。
  
@@ -2388,7 +2388,7 @@ Azure 门户中使用 Azure RBAC 功能的所有资源都可以利用 Azure AD P
 
 **可用功能**
 
- 在过渡到新管理控制台的过程中，有两个新 API 可用于检索 Azure AD 活动日志。 新的 API 集提供更丰富的筛选和排序功能，此外还提供更丰富的审核和登录活动。 现在可以通过 Microsoft Graph 中的“标识保护”风险事件 API 来访问以前通过安全报告提供的数据。
+ 在过渡到新管理控制台的过程中，有两个新 API 可用于检索 Azure AD 活动日志。 新的 API 集提供更丰富的筛选和排序功能，此外还提供更丰富的审核和登录活动。 现在, 可以通过 Microsoft Graph 中的 Identity Protection 风险检测 API 来访问以前通过安全报告提供的数据。
 
 
 ## <a name="september-2017"></a>2017 年 9 月

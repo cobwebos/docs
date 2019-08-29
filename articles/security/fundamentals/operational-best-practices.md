@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828728"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129335"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 本文提供了一系列操作最佳实践, 用于保护 Azure 中的数据、应用程序和其他资产。
@@ -218,7 +218,7 @@ Azure 具有两个 DDoS [服务产品](../../virtual-network/ddos-protection-ove
 **详细信息**：组织文档或 azure 策略本身中的文档映射, 方法是在 Azure[策略说明](../../governance/policy/concepts/definition-structure.md#display-name-and-description)或 azure 策略[计划](../../governance/policy/concepts/definition-structure.md#initiatives)说明中添加对组织策略的引用。
 
 ## <a name="monitor-azure-ad-risk-reports"></a>监视 Azure AD 风险报告
-大多数安全违规出现在当攻击者通过窃取用户的标识来获取环境的访问权限时。 发现标识是否遭到入侵并不容易。 Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 检测到的每个可疑操作都存储在称为[风险事件](../../active-directory/reports-monitoring/concept-risk-events.md)的记录中。 风险事件记录在 Azure AD 安全报表中。 有关详细信息, 请参阅[风险安全报表](../../active-directory/reports-monitoring/concept-user-at-risk.md)中的用户和有风险的[登录安全报告](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)。
+大多数安全违规出现在当攻击者通过窃取用户的标识来获取环境的访问权限时。 发现标识是否遭到入侵并不容易。 Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 每个检测到的可疑操作都存储在称为[风险检测](../../active-directory/reports-monitoring/concept-risk-events.md)的记录中。 风险检测记录在 Azure AD 安全报表中。 有关详细信息, 请参阅[风险安全报表](../../active-directory/reports-monitoring/concept-user-at-risk.md)中的用户和有风险的[登录安全报告](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](best-practices-and-patterns.md)。

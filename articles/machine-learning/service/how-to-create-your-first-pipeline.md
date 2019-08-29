@@ -11,18 +11,18 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3086df4a10c803b718f5eb0c28ed66fe137e94da
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: e81cc39157231c98e38305c70e046111ec062732
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019147"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128294"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中创建和运行机器学习管道
 
 本文介绍如何使用 [Azure 机器学习 SDK](https://aka.ms/aml-sdk) 创建、发布、运行和跟踪[机器学习管道](concept-ml-pipelines.md)。  使用**ML 管道**创建一个工作流, 该工作流将拼结多个 ML 阶段, 然后将该管道发布到 Azure 机器学习工作区, 以便以后访问或与他人共享。  ML 管道非常适合用于批处理评分方案, 使用各种计算, 重复使用步骤, 而不是重新运行, 以及与他人共享 ML 工作流。 
 
-虽然你可以使用一种称为[Azure 管道](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml)的不同类型的管道来实现 ML 任务的 CI/CD 自动化, 但这种类型的管道永远不会存储在工作区中。 [比较这些不同的管道](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use)。
+虽然你可以使用一种称为[Azure 管道](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml)的不同类型的管道来实现 ML 任务的 CI/CD 自动化, 但这种类型的管道永远不会存储在工作区中。 [比较这些不同的管道](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use)。
 
 ML 管道的每个阶段 (如数据准备和模型定型) 都可以包含一个或多个步骤。
 
@@ -113,7 +113,7 @@ output_data1 = PipelineData(
 
 ## <a name="set-up-compute-target"></a>设置计算目标
 
-在 Azure 机器学习中，术语“计算”（或“计算目标”）是指在机器学习管道中执行计算步骤的计算机或群集。   有关计算目标的完整列表以及如何创建计算目标并将其附加到工作区的详细信息，请参阅[模型训练的计算目标](how-to-set-up-training-targets.md)。  无论是在训练模型还是运行管道步骤，创建和/或附加计算目标的过程都是相同的。 创建并附加计算目标后，请使用[管道步骤](#steps)中的 `ComputeTarget` 对象。
+在 Azure 机器学习中, 术语 "computes__ (或__计算目标__)" 是指在机器学习管道中执行计算步骤的计算机或群集。   有关计算目标的完整列表以及如何创建计算目标并将其附加到工作区的详细信息，请参阅[模型训练的计算目标](how-to-set-up-training-targets.md)。  无论是在训练模型还是运行管道步骤，创建和/或附加计算目标的过程都是相同的。 创建并附加计算目标后，请使用[管道步骤](#steps)中的 `ComputeTarget` 对象。
 
 > [!IMPORTANT]
 > 内部远程作业不支持对计算目标执行管理操作。 由于机器学习管道作为远程作业提交，因此请勿对管道内的计算目标使用管理操作。
@@ -159,7 +159,7 @@ else:
 
 Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它可以用作 Azure 机器学习管道的计算目标。
 
-请先创建 Azure Databricks 工作区，然后再使用该工作区。 若要创建这些资源，请参阅[在 Azure Databricks 中运行 Spark 作业](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)文档。
+请先创建 Azure Databricks 工作区，然后再使用该工作区。 若要创建工作区资源, 请参阅[对 Azure Databricks 文档运行 Spark 作业](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。
 
 要将 Azure Databricks 附加为计算目标，请提供以下信息：
 
@@ -278,7 +278,7 @@ trainStep = PythonScriptStep(
 )
 ```
 
-在协作环境中使用`allow_reuse`管道时, 重复使用以前的结果 () 是关键的, 因为消除不必要的重新运行可提供灵活性。 当步骤的 script_name、输入和参数保持不变时, 这是默认行为。 当重复使用该步骤的输出时, 该作业不会提交到计算, 而是从上一次运行的结果立即用于下一步的运行。 如果设置为 false, 则在管道执行过程中将始终为此步骤生成新的运行。 
+在协作环境中使用`allow_reuse`管道时, 重复使用以前的结果 () 是关键的, 因为消除不必要的重新运行会带来灵活性。 当步骤的 script_name、输入和参数保持不变时, 将使用默认行为。 当重复使用该步骤的输出时, 该作业不会提交到计算, 而是从上一次运行的结果立即用于下一步的运行。 如果`allow_reuse`设置为 false, 则在管道执行过程中将始终为此步骤生成新的运行。 
 
 定义步骤后，使用其中的部分或所有步骤生成管道。
 
@@ -341,8 +341,8 @@ pipeline_run1.wait_for_completion()
 
 * 将项目快照从与工作区关联的 Blob 存储下载到计算目标。
 * 生成对应于管道中每个步骤的 Docker 映像。
-* 将每个步骤的 Docker 映像从容器注册表下载到计算目标。
-* 如果在步骤中指定了 `DataReference` 对象，则装载数据存储。 如果不支持装载，则改为将数据复制到计算目标。
+* 从容器注册表中将每个步骤的 Docker 映像下载到计算目标。
+* 如果在步骤中指定`DataReference`了对象, 则会装载数据存储。 如果不支持装载，则改为将数据复制到计算目标。
 * 运行在步骤定义中指定的计算目标中的步骤。 
 * 创建项目，例如日志、stdout 和 stderr、指标以及步骤指定的输出。 然后上传这些项目并将其保存在用户的默认数据存储中。
 
@@ -395,7 +395,7 @@ pipeline_run1.wait_for_completion()
 
 所有已发布的管道都具有 REST 终结点。 此终结点可以从非 Python 客户端等外部系统调用管道的运行。 在批量评分和重新训练方案中，此终结点支持“托管可重复性”。
 
-若要调用上述管道的运行，需要使用 [AzureCliAuthentication 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)（AzureCliAuthentication 类）中所述的 Azure Active Directory 身份验证标头令牌或在 [Azure 机器学习中的身份验证](https://aka.ms/pl-restep-auth)笔记本中获取详细信息。
+若要调用前面的管道的运行, 需要 Azure Active Directory authentication 标头令牌, 如[AzureCliAuthentication 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)引用中所述, 或在 Azure 机器学习笔记本中的[身份验证](https://aka.ms/pl-restep-auth)中获取更多详细信息。
 
 ```python
 from azureml.pipeline.core import PublishedPipeline
@@ -427,17 +427,17 @@ p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-您可以使用`p.enable()`再次启用它。
+您可以使用`p.enable()`再次启用它。 有关详细信息, 请参阅[PublishedPipeline 类](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py)引用。
 
 
 ## <a name="caching--reuse"></a>缓存 & 重用  
 
-为了优化和自定义管道的行为, 您可以围绕缓存和重用来执行一些操作。 例如, 您可以选择:
-+ 在[步骤定义](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)期间设置`allow_reuse=False` ,**关闭步骤运行输出的默认重用**。 在协作环境中使用管道时, 重复使用是关键的, 因为消除不必要的运行可提供灵活性。 不过, 您可以选择退出此。
+为了优化和自定义管道的行为, 您可以围绕缓存和重新使用来执行一些操作。 例如, 您可以选择:
++ 在[步骤定义](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)期间设置`allow_reuse=False` ,**关闭步骤运行输出的默认重用**。 在协作环境中使用管道时, 重复使用是关键的, 因为消除不必要的运行可提供灵活性。 但是, 您可以选择不使用。
 + 将**哈希扩展到脚本以外**, 还可以使用 source_directory 将绝对路径或相对路径添加到其他文件和目录`hash_paths=['<file or directory']` 
 + 对**运行方式中的所有步骤强制执行输出重新生成**`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-默认情况下`allow-reuse` , 将启用 "步骤" 并只对主脚本文件进行哈希处理。 因此, 如果给定步骤的脚本与相同 (`script_name`、输入和参数) 保持不变, 则会重复使用上一步运行的输出, 该作业不会提交到计算, 而以前运行的结果将立即用于下一步骤.  
+默认情况下`allow_reuse` , 将启用 "步骤" 并只对主脚本文件进行哈希处理。 因此, 如果给定步骤的脚本与相同 (`script_name`、输入和参数) 保持不变, 则会重复使用上一步运行的输出, 该作业不会提交到计算, 而以前运行的结果将立即用于下一步骤.  
 
 ```python
 step = PythonScriptStep(name="Hello World",
@@ -452,6 +452,6 @@ step = PythonScriptStep(name="Hello World",
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 [GitHub 上的这些 Jupyter Notebook](https://aka.ms/aml-pipeline-readme) 以进一步探索机器学习管道。
-- 阅读有关 [azureml-pipelines-core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) 包和 [azureml-pipelines-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) 包的 SDK 参考帮助信息。
+- 请参阅适用于[azureml 管道核心](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)包和[azureml 管道-步骤](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)包的 SDK 参考帮助。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

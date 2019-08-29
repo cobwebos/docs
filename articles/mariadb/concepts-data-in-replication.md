@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: c19ec06ce353d653086fa693dde975a55f51f823
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 28c2c01e85120ec17e6f782fb0686a627d50d0d0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839257"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136748"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>将数据复制到 Azure Database for MariaDB
 
@@ -26,7 +26,7 @@ ms.locfileid: "67839257"
 ## <a name="limitations-and-considerations"></a>限制和注意事项
 
 ### <a name="data-not-replicated"></a>不会复制的数据
-不会复制主服务器上的 [mysql 系统数据库](https://mariadb.com/kb/en/library/the-mysql-database-tables/)  。 不会复制对主服务器上的帐户和权限所做的更改。 如果在主服务器上创建帐户，并且此帐户需要访问副本服务器，则在副本服务器上手动创建相同的帐户。 要了解系统数据库中包含哪些表，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/library/the-mysql-database-tables/)。
+不会复制主服务器上的 [mysql 系统数据库](https://mariadb.com/kb/en/library/the-mysql-database-tables/)。 不会复制对主服务器上的帐户和权限所做的更改。 如果在主服务器上创建帐户，并且此帐户需要访问副本服务器，则在副本服务器上手动创建相同的帐户。 要了解系统数据库中包含哪些表，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/library/the-mysql-database-tables/)。
 
 ### <a name="requirements"></a>要求
 - 主服务器版本不得低于 MariaDB 10.2 版本。
@@ -34,6 +34,10 @@ ms.locfileid: "67839257"
 - 每个表都必须有主键。
 - 主服务器应使用 InnoDB 引擎。
 - 用户必须具有权限才能在主服务器上配置二进制日志记录和创建新用户。
+- 如果主服务器已启用 ssl, 请确保在`mariadb.az_replication_change_master`存储过程中包含为域提供的 ssl CA 证书。 请参阅下面的[示例](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication)和`master_ssl_ca`参数。
+- 确保主服务器的 IP 地址已添加到 Azure Database for MariaDB 副本服务器的防火墙规则中。 使用 [Azure 门户](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal)或 [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) 更新防火墙规则。
+- 确保托管主服务器的计算机在端口 3306 上允许入站和出站流量。
+- 确保主服务器的**公共 IP 地址**或 DNS 可以公开访问
 
 ### <a name="other"></a>其他
 - 仅可在常规用途和优化内存定价层中使用数据传入复制功能。

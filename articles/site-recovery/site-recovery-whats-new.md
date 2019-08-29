@@ -5,25 +5,36 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.author: raynew
-ms.openlocfilehash: 3dc20036ead29c62d47b4a628d7ce8101b9d31f4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 5cd4b86c9c70f713a207f7feea9fa8efc06b6247
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972526"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146898"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
 [Azure Site Recovery](site-recovery-overview.md) 服务会持续进行更新和改进。 本文介绍最新版本、新功能和新内容，让你始终了解最新动态。 此页会定期更新。
 
-如果有关于 Site Recovery 功能的建议，请[提供反馈](https://feedback.azure.com/forums/256299-site-recovery)。
+你可以在[Azure 更新](https://azure.microsoft.com/updates/?product=site-recovery)通道中跟踪并订阅 Site Recovery 更新通知。
 
+## <a name="supported-updates"></a>支持的更新
 
-## <a name="installing-updates"></a>安装更新
+对于 Site Recovery 组件, 我们支持 N-4 版本, 其中 N 是最新的已发布版本。 下表总结了这些情况。
 
-请[查看本文](service-updates-how-to.md)了解 Site Recovery 更新支持和说明。
+**更新** |  **统一安装** | **配置服务器 .ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理** 
+--- | --- | --- | --- | ---
+[汇总39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
+[汇总38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
+[汇总37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
+[汇总36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
+[汇总35](https://support.microsoft.com/help/4494485/) | 9.23.5163.1 | 5.1.4000.0 | 9.23.5163.1 | 5.1.4000.0 | 2.0.9156.0 
+        
+
+[了解](service-updates-how-to.md)有关更新安装和支持的详细信息。
+
 
 ## <a name="updates-august-2019"></a>更新 (2019 年8月)
 

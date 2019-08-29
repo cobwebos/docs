@@ -11,16 +11,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: bwren
-ms.openlocfilehash: 397272c3a47aca2aa73394f443d76dead66308e0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9ecae51d996e2e065b15d1fa70bdaf796f8f197b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68555337"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124155"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor 中的自定义日志
+
 Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算机上的文本文件中收集事件。 许多应用程序将信息记录到文本文件，而不是标准日志记录服务（例如 Windows 事件日志或 Syslog）。 在收集后，可以将数据分析到查询中的各个字段，或者在收集期间将数据提取到各个字段。
 
 ![自定义日志收集](media/data-sources-custom-logs/overview.png)
@@ -46,6 +47,9 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 > * 列名称的最大字符数为 500。 
 >
 
+>[!IMPORTANT]
+>自定义日志收集要求编写日志文件的应用程序定期将日志内容刷新到磁盘。 这是因为自定义日志收集依赖于要跟踪的日志文件的文件系统更改通知。
+
 ## <a name="defining-a-custom-log"></a>定义自定义日志
 使用以下步骤定义自定义日志文件。  请在本文末尾查看添加自定义日志的演示示例。
 
@@ -64,7 +68,6 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 
 如果使用时间戳分隔符，则存储在Azure Monitor 中的每个记录的 TimeGenerated 属性将填充为日志文件中为该条目指定的日期/时间。  如果使用换行分隔符，则 TimeGenerated 将填充为 Azure Monitor 收集此条目的日期和时间。
 
-
 1. 单击“浏览”，浏览到示例文件。  请注意，此按钮在某些浏览器中可能标记为“选择文件”。
 2. 单击“下一步”。
 3. 自定义日志向导将上传文件，并列出其标识的记录。
@@ -75,7 +78,6 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 必须在可查找自定义日志的代理上定义一个或多个路径；  可以提供日志文件的特定路径和名称，也可以使用通配符为名称指定路径。 这样，应用程序就可以每天创建新文件，或者在某个文件达到一定大小时创建新文件。 还可以为单个日志文件提供多个路径。
 
 例如，应用程序可能会每天创建日志文件，其日期包含在名称中，例如 log20100316.txt。 此类日志的模式可能是 *log\*.txt*，它将按照应用程序命名方案应用于任何日志文件。
-
 
 下表提供了有效模式示例，用来指定不同的日志文件。
 
@@ -105,7 +107,6 @@ Azure Monitor 开始从自定义日志收集后，它的记录将可用于日志
 > [!NOTE]
 > 如果查询中缺少 RawData 属性，则可能需要关闭并重新打开浏览器。
 
-
 ### <a name="step-6-parse-the-custom-log-entries"></a>步骤 6. 分析自定义日志条目
 全部日志条目将存储在名为 **RawData** 的单个属性中。  你很可能希望将每个条目中信息的不同部分分离到每条记录的各个属性中。 请参考[在 Azure Monitor 中分析数据](../log-query/parse-text.md)来了解用于将 **RawData** 分析到多个属性中的选项。
 
@@ -114,7 +115,6 @@ Azure Monitor 开始从自定义日志收集后，它的记录将可用于日志
 
 1. 从工作区的“高级设置”中的“数据”菜单中选择“自定义日志”，以便列出所有自定义日志。
 2. 单击要删除的自定义日志旁边的“删除”。
-
 
 ## <a name="data-collection"></a>数据收集
 Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条目。  代理会在从中进行收集的每个日志文件中记录其位置。  如果代理在一段时间内处于脱机状态，则 Azure Monitor 将从其上次脱机的位置收集条目，即使这些条目是在代理脱机期间创建的。
@@ -135,11 +135,11 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>添加自定义日志的演示示例
 以下部分是创建自定义日志的演示示例。  收集的示例日志在每行有单个条目，以日期和时间开头，然后是逗号分隔的代码、状态和消息字段。  几个示例条目如下所示。
 
-    2016-03-10 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
-    2016-03-10 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
-    2016-03-10 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
-    2016-03-10 01:38:22 302,Error,Application could not connect to database
-    2016-03-10 01:31:34 303,Error,Application lost connection to database
+    2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
+    2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
+    2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
+    2019-08-27 01:38:22 302,Error,Application could not connect to database
+    2019-08-27 01:31:34 303,Error,Application lost connection to database
 
 ### <a name="upload-and-parse-a-sample-log"></a>上传和分析示例日志
 我们提供一个日志文件，可以看到它收集的事件。  在这种情况下，换行是有效的分隔符。  如果日志中的单个条目跨过多行，则需要使用时间戳分隔符。
@@ -157,14 +157,10 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
 ![日志名称](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>验证是否正在收集自定义日志
-我们使用查询“Type=MyApp_CL”，从收集的日志返回所有记录。
+我们使用简单的*MyApp_CL*查询从收集的日志返回所有记录。
 
 ![没有自定义字段的日志查询](media/data-sources-custom-logs/query-01.png)
 
-### <a name="parse-the-custom-log-entries"></a>分析自定义日志条目
-我们使用自定义字段来定义“EventTime”、“Code”、“Status”和“Message”字段，这样就可以看到查询返回的记录中的差异。
-
-![具有自定义字段的日志查询](media/data-sources-custom-logs/query-02.png)
 
 ## <a name="alternatives-to-custom-logs"></a>自定义日志的替代方法
 虽然如果数据符合列出的条件，则自定义日志很有用，但如下所示的情况需要其他策略：

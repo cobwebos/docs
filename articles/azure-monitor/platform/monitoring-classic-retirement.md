@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: c53bc9527eeb6c7ca8194ef056177a79dd880957
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2ba93ad347783d467d467b72cfa49ffccf309fa0
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874776"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147340"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor 中的统一警报和监视替换经典警报和监视
 
@@ -72,6 +72,10 @@ Azure 资源的新指标按以下形式提供：
 > [!IMPORTANT]
 > Microsoft Azure 监视器已在阶段推出[, 可](alerts-using-migration-tool.md)立即将经典警报规则迁移到新的平台。 并在9月2019开始时, 对仍然存在且可以迁移的所有经典警报规则强制执行此方法。 在迁移经典警报规则后，客户将需要确保对使用经典警报规则有效负载的自动化进行修改以处理来自 [Application Insights 中的统一指标和警报](#unified-metrics-and-alerts-in-application-insights)或[其他 Azure 资源的统一指标和警报](#unified-metrics-and-alerts-for-other-azure-resources)的新有效负载。 有关详细信息, 请参阅[为经典警报规则迁移做准备](alerts-prepare-migration.md)
 
+本文将不断更新有关新 Azure 监视和警报功能的链接和详细信息，以及工具的可用性，以帮助用户采用新的 Azure Monitor 平台。
+
+## <a name="pricing-for-migrated-alert-rules"></a>已迁移的警报规则的定价
+
 我们正在推出迁移工具, 以帮助你将 Azure Monitor[经典警报](../../azure-monitor/platform/alerts-classic.overview.md)迁移到新的警报体验。 迁移的警报规则和相应的已迁移操作组 (电子邮件、webhook 或逻辑应用) 将保持免费。 使用已迁移的警报规则时, 可以使用经典警报的功能, 包括编辑阈值、聚合类型和聚合粒度这一功能。 但是, 如果您编辑已迁移的警报规则以使用任何新的警报平台功能、通知或操作类型, 则将应用相应的费用。 有关警报规则和通知的定价的详细信息, 请参阅[Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
 下面是你将对警报规则收费的情况的示例:
@@ -82,9 +86,6 @@ Azure 资源的新指标按以下形式提供：
 - Azure Monitor 内除免费单位数之外存储的任何自定义指标
 - 经过编辑的任何已迁移警报规则, 以使用较新的指标警报功能, 如频率、多个资源/维度、[动态阈值](alerts-dynamic-thresholds.md)、更改资源/信号等等。
 - 任何已迁移的操作组, 这些操作组将进行编辑以使用较新的通知, 或诸如短信、语音呼叫和/或 ITSM 集成等操作类型。
-
-本文将不断更新有关新 Azure 监视和警报功能的链接和详细信息，以及工具的可用性，以帮助用户采用新的 Azure Monitor 平台。
-
 
 ## <a name="next-steps"></a>后续步骤
 

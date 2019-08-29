@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 2acaba4e82f499ce1ca08a0ce17469ccb0a7e541
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3ac5d5d31bb54ce87859a6eec52dbe5948864d4c
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698434"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147328"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
@@ -34,6 +34,7 @@ ms.locfileid: "68698434"
 * 从 Linux 和 Windows 计算机中收集性能计数器
 * 从 Linux 计算机的 syslog 中收集事件 
 * 从 Windows 事件日志中收集事件
+* 从 Windows 计算机收集自定义日志
 * 将日志分析代理添加到 Azure 虚拟机
 * 配置 Log Analytics 以便为使用 Azure 诊断收集的数据编制索引
 
@@ -150,6 +151,7 @@ ms.locfileid: "68698434"
 7. 从 Windows 计算机的应用程序事件日志中收集错误和警告事件
 8. 从 Windows 计算机中收集可用内存 (MB) 性能计数器
 9. 收集由 Azure 诊断写入存储帐户的 IIS 日志和 Windows 事件日志
+10. 从 Windows 计算机收集自定义日志
 
 ```json
 {
@@ -188,6 +190,7 @@ ms.locfileid: "68698434"
     },
     "immediatePurgeDataOn30Days": {
       "type": "bool",
+      "defaultValue": "false",
       "metadata": {
         "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
       }
@@ -235,22 +238,28 @@ ms.locfileid: "68698434"
         "metadata": {
           "description": "The resource group name containing the storage account with Azure diagnostics output"
         }
-    }
-  },
-  "variables": {
-    "Updates": {
-      "Name": "[Concat('Updates', '(', parameters('workspaceName'), ')')]",
-      "GalleryName": "Updates"
+      }
     },
-    "AntiMalware": {
-      "Name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
-      "GalleryName": "AntiMalware"
+    "customlogName": {
+    "type": "string",
+    "metadata": {
+      "description": "custom log name"
+      }
     },
-    "SQLAssessment": {
-      "Name": "[Concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
-      "GalleryName": "SQLAssessment"
-    },
-    "diagnosticsStorageAccount": "[resourceId(parameters('applicationDiagnosticsStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName'))]"
+    "variables": {
+      "Updates": {
+        "Name": "[Concat('Updates', '(', parameters('workspaceName'), ')')]",
+        "GalleryName": "Updates"
+      },
+      "AntiMalware": {
+        "Name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
+        "GalleryName": "AntiMalware"
+      },
+      "SQLAssessment": {
+        "Name": "[Concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
+        "GalleryName": "SQLAssessment"
+      },
+      "diagnosticsStorageAccount": "[resourceId(parameters('applicationDiagnosticsStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName'))]"
   },
   "resources": [
     {
@@ -259,13 +268,13 @@ ms.locfileid: "68698434"
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
       "properties": {
+        "retentionInDays": "[parameters('dataRetention')]",
+        "features": {
+          "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
+        },
         "sku": {
           "name": "[parameters('pricingTier')]"
-          "features": {
-            "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
-          }
-        },
-    "retentionInDays": "[parameters('dataRetention')]"
+        }
       },
       "resources": [
         {
@@ -405,6 +414,55 @@ ms.locfileid: "68698434"
             "intervalSeconds": 10
           }
         },
+        {
+          "apiVersion": "2015-11-01-preview",
+          "type": "dataSources",
+          "name": "[concat(parameters('workspaceName'), parameters('customlogName'))]",
+          "dependsOn": [
+            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+          ],
+          "kind": "CustomLog",
+          "properties": {
+            "customLogName": "[parameters('customlogName')]",
+            "description": "this is a description",
+            "extractions": [
+              {
+                "extractionName": "TimeGenerated",
+                "extractionProperties": {
+                  "dateTimeExtraction": {
+                    "regex": [
+                      {
+                        "matchIndex": 0,
+                        "numberdGroup": null,
+                        "pattern": "((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]"
+                      }
+                    ]
+                  }
+                },
+                "extractionType": "DateTime"
+              }
+            ],
+            "inputs": [
+              {
+                "location": {
+                  "fileSystemLocations": {
+                    "linuxFileTypeLogPaths": null,
+                    "windowsFileTypeLogPaths": [
+                      "[concat('c:\\Windows\\Logs\\',parameters('customlogName'))]"
+                    ]
+                  }
+                },
+                "recordDelimiter": {
+                  "regexDelimiter": {
+                    "matchIndex": 0,
+                    "numberdGroup": null,
+                    "pattern": "(^.*((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9].*$)"
+                  }
+                }
+              }
+            ]
+          }
+        }
         {
           "apiVersion": "2015-11-01-preview",
           "type": "datasources",

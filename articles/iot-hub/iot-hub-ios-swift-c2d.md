@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 8c6013e5bda2bec1c8a09fd9f2434cdd477eed01
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 1875e3437c13a678532c05b4057126f785b9125c
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618522"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147537"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>使用 IoT 中心发送云到设备消息 (iOS)
 
@@ -39,7 +39,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 Sdk 对许多设备平台和语言 (包括 C、Java、Python 和 Javascript) 提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的逐步说明，请参阅 [Azure IoT 开发人员中心](https://www.azure.com/develop/iot)。
 
-要完成本教程，需要以下各项：
+## <a name="prerequisites"></a>先决条件
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
@@ -95,7 +95,7 @@ pod install
 
 4. 搜索 **connectionString** 变量，并使用第一个步骤中复制的设备连接字符串更新其值。
 
-5. 保存所做更改。 
+5. 保存更改。 
 
 6. 使用“生成并运行”按钮或“Command + R”组合键在设备模拟器中运行项目。
 
@@ -143,7 +143,7 @@ pod install
 
 4. 搜索**connectionString**变量, 并将值更新为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的服务连接字符串。
 
-5. 保存所做更改。
+5. 保存更改。
 
 6. 在 Xcode 中，将模拟器设置更改为其他 iOS 设备，而不是用来运行 IoT 设备的 iOS 设备。 XCode 无法运行相同类型的多个模拟器。
 

@@ -3,20 +3,20 @@ title: Azure 数据工厂中的 Azure 函数活动 | Microsoft Docs
 description: 了解如何使用 Azure 函数活动在数据工厂管道中运行 Azure 函数
 services: data-factory
 documentationcenter: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: dfdfb9e38f16d0077175587933b0800b87cc1931
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 292fe858b85faef69b9df2dbdf54e7061ed56fa2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144133"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142511"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Azure 函数活动
 
@@ -28,13 +28,13 @@ ms.locfileid: "67144133"
 
 ## <a name="azure-function-linked-service"></a>Azure 函数链接服务
 
-Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) 不  是 `JObject`。）除了 `JObject` 之外的任何返回类型都将失败，并且会引发用户错误*响应内容不是有效的 JObject*。
+Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) 不是 `JObject`。）除了 `JObject` 之外的任何返回类型都将失败，并且会引发用户错误*响应内容不是有效的 JObject*。
 
 | **属性** | **说明** | **必需** |
 | --- | --- | --- |
 | type   | type 属性必须设置为：**AzureFunction** | 是 |
-| 函数应用 URL | Azure 函数应用的 URL。 格式为 `https://<accountname>.azurewebsites.net`。 在 Azure 门户中查看函数应用时，此 URL 是 URL  部分下的值  | 是 |
-| 函数密钥 | Azure 函数的访问密钥。 单击相应函数的“管理”  部分，并复制“函数密钥”  或“主机密钥”  。 在此处了解详细信息：[Azure Functions HTTP 触发器和绑定](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | 是 |
+| 函数应用 URL | Azure 函数应用的 URL。 格式为 `https://<accountname>.azurewebsites.net`。 在 Azure 门户中查看函数应用时，此 URL 是 URL 部分下的值  | 是 |
+| 函数密钥 | Azure 函数的访问密钥。 单击相应函数的“管理”部分，并复制“函数密钥”或“主机密钥”。 在此处了解详细信息：[Azure Functions HTTP 触发器和绑定](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | 是 |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Azure 函数活动
@@ -47,7 +47,7 @@ Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArra
 | 函数名称  | 此活动在 Azure 函数应用中调用的函数的名称 | String | 是 |
 | method  | 函数调用的 Rest API 方法 | 字符串支持的类型：“GET”、“POST”、“PUT”   | 是 |
 | 标头的值开始缓存响应  | 发送到请求的标头。 例如，若要在请求中设置语言和类型："headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | 字符串（或带有 resultType 字符串的表达式） | 否 |
-| body  | 随请求一起发送到函数 API 方法的正文  | 字符串（或带有 resultType 字符串的表达式）或对象。   | PUT/POST 方法所必需 |
+| 正文  | 随请求一起发送到函数 API 方法的正文  | 字符串（或带有 resultType 字符串的表达式）或对象。   | PUT/POST 方法所必需 |
 |   |   |   | |
 
 请参阅 [请求有效负载架构](control-flow-web-activity.md#request-payload-schema) 部分中的请求有效负载架构。
@@ -65,9 +65,9 @@ Azure Functions 会在 230 秒之后超时，无论在设置中配置的 `functi
 在[此文章](../azure-functions/durable/durable-functions-overview.md)中详细了解 Durable Functions。 你可以设置 Azure 函数活动来调用持久函数，这将返回具有不同 URI 的响应，例如[此示例](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery)。 因为 `statusQueryGetUri` 在函数正在运行时返回 HTTP 状态 202，因此你可以使用 Web 活动轮询函数的状态。 简单地设置一个 Web 活动并将 `url` 字段设置为 `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`。 当持久函数完成时，该函数的输出将是 Web 活动的输出。
 
 
-## <a name="sample"></a>示例
+## <a name="sample"></a>样本
 
-您可以找到数据工厂使用 Azure 函数来提取 tar 文件内容的示例[此处](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)。
+可以在[此处](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)找到使用 Azure 函数提取 tar 文件内容的数据工厂示例。
 
 ## <a name="next-steps"></a>后续步骤
 

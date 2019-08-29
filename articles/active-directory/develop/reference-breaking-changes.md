@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38383685f74020f5208d42df4428f896931fbe2a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6dd50aa00368469a9c5b42c41826da28566268d4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931789"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125421"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能 
 
@@ -41,9 +41,26 @@ ms.locfileid: "68931789"
 
 ## <a name="upcoming-changes"></a>即将推出的更改
 
-2019年8月:根据 URL 分析规则强制执行 POST 语义-重复参数将触发错误, 不会再忽略跨参数的引号, 并忽略[BOM](https://www.w3.org/International/questions/qa-byte-order-mark) 。
+2019年9月:根据 URL 分析规则附加了 POST 语义, 重复的参数将触发错误并忽略[BOM](https://www.w3.org/International/questions/qa-byte-order-mark) 。
 
-## <a name="july-2019"></a>2019年7月
+## <a name="august-2019"></a>2019 年 8 月
+
+### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>将强制执行 POST 窗体语义, 将忽略更严格的空格和引号
+
+**生效日期**：2019年9月2日
+
+**受影响的终结点**：v1.0 和 v2.0
+
+**受影响的协议**：使用任何地方 POST ([客户端凭据](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)、[授权代码兑换](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)、 [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)、 [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)和[刷新令牌兑换](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token))
+
+从9/2 开始, 使用 POST 方法的身份验证请求将使用更严格的 HTTP 标准进行验证。  具体而言, 将不再从请求窗体值中删除空格和双引号 ("")。 这些更改不会中断任何现有的客户端, 并且将确保发送到 Azure AD 的请求可以每次可靠地处理。 将来 (请参阅上文) 我们计划再次拒绝重复参数, 并忽略请求中的 BOM。 
+
+例如：
+
+目前, `?e=    "f"&g=h`的分析方式与`?e=f&g=h` `e`  == 相同。`f`  通过此更改, 现在可以对其进行分析, `e`这样 ==  `    "f"`就不太可能是有效的参数, 请求现在会失败。 
+
+
+## <a name="july-2019"></a>2019 年 7 月
 
 ### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>仅当资源租户中存在客户端应用时, 才会发出单租户应用程序的仅限应用的令牌
 

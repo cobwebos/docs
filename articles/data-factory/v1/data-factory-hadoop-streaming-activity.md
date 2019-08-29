@@ -3,22 +3,21 @@ title: 使用 Hadoop 流式处理活动转换数据 - Azure | Microsoft Docs
 description: 了解如何使用 Azure 数据工厂中的 Hadoop 流式处理活动通过运行 Hadoop 流式处理程序在按需的/自己的 HDInsight 群集上转换数据。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: dd00c0a2998009ce6c39ca19abb25a2548682cee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fd9512f4ede8d9b8b1a8fd69b7120303fe6a0ad5
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486339"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139544"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
 > [!div class="op_single_selector" title1="转换活动"]
@@ -101,7 +100,7 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
 4. 对于 **reducer** 属性，指定减压器可执行文件的名称。 在示例中，wc.exe 即是减压器可执行文件。
 5. 对于 **input** 类型属性，指定映射器的输入文件（包括位置）。 在示例 `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` 中：adfsample 是 blob 容器，example/data/Gutenberg 是文件夹，davinci.txt 是 blob。
 6. 对于 **output** 类型属性，指定减压器的输出文件（包括位置）。 将 Hadoop Streaming 作业的输出写入到为该属性指定的位置。
-7. 在“filePaths”  部分，指定映射器和减压器可执行文件的路径。 在此示例中：blob 容器为 "adfsample/example/apps/wc.exe"adfsample，文件夹为 example/apps，可执行文件为 wc.exe。
+7. 在“filePaths”部分，指定映射器和减压器可执行文件的路径。 在此示例中：blob 容器为 "adfsample/example/apps/wc.exe"adfsample，文件夹为 example/apps，可执行文件为 wc.exe。
 8. 对于 **fileLinkedService** 属性，指定表示 Azure 存储（包含“filePaths”部分中指定的文件）的 Azure 存储链接服务。
 9. 对于 **arguments** 属性，指定流式处理作业的参数。
 10. **getDebugInfo** 属性是可选元素。 将其设置为“Failure”时，仅针对失败下载日志。 如果设置为“Always”，将始终下载日志，无论执行状态如何。
@@ -114,7 +113,7 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
 ## <a name="example"></a>示例
 此演练中的管道在 Azure HDInsight 群集上运行字数统计流式处理 Map/Reduce 程序。 
 
-### <a name="linked-services"></a>链接服务
+### <a name="linked-services"></a>链接的服务
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 首先，创建一个链接服务，将 Azure HDInsight 群集使用的 Azure 存储链接到 Azure 数据工厂。 如果要复制/粘贴以下代码，请记住将帐户名和帐户密钥替换为自己的 Azure 存储的名称和密钥。 
 
@@ -223,7 +222,7 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
     }
 }
 ```
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Hive 活动](data-factory-hive-activity.md)
 * [Pig 活动](data-factory-pig-activity.md)
 * [MapReduce 活动](data-factory-map-reduce.md)

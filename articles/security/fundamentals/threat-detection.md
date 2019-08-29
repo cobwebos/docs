@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 86b17efdb811e9e4040b8b267c161b950f6de5fd
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6278e848a82fb31939117fa9b916a92a2fb74a3e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036182"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129286"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 
@@ -30,13 +30,13 @@ Azure 提供多种安全性配置和自定义选项，以满足应用部署的�
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护
 
-[Azure AD 标识保护](../../active-directory/identity-protection/overview.md)是 [Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) 版本中的一项功能，概述了可影响组织标识的风险事件和潜在漏洞。 “标识保护”使用现有的 Azure AD 异常情况检测功能（可通过 [Azure AD 异常活动报告](../../active-directory/active-directory-reporting-azure-portal.md)获得），并引入了新的可以检测实时异常的风险事件类型。
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md)是一种[Azure Active Directory Premium 的 P2](../../active-directory/active-directory-whatis.md) edition 功能, 它提供了可能影响组织标识的风险检测和潜在漏洞的概述。 标识保护使用现有 Azure AD 异常检测功能, 这些功能通过[Azure AD 异常活动报告](../../active-directory/active-directory-reporting-azure-portal.md)提供, 并引入了新的风险检测类型来检测实时异常。
 
 ![“Azure AD 标识保护”示意图](./media/threat-detection/azure-threat-detection-fig1.png)
 
-“标识保护”使用自适应机器学习算法和启发式学习法来检测异常行为以及可能表示标识已遭入侵的风险事件。 “标识保护”使用此数据生成报告和警报，以便可以调查这些风险事件并采取相应的补救措施或缓解措施。
+Identity Protection 使用自适应机器学习算法和试探法来检测可能指示标识已泄露的异常和风险检测。 使用此数据, Identity Protection 会生成报告和警报, 以便您可以调查这些风险检测并采取适当的补救措施或缓解措施。
 
-Azure Active Directory 标识保护不只是一个监视和报告工具。 “标识保护”根据风险事件计算每个用户的用户风险级别，以便可以配置基于风险的策略来自动保护组织的标识。
+Azure Active Directory 标识保护不只是一个监视和报告工具。 根据风险检测, Identity Protection 计算每个用户的用户风险级别, 以便可以配置基于风险的策略来自动保护组织的标识。
 
 除了 Azure Active Directory 和[EMS](../../active-directory/active-directory-conditional-access-azure-portal.md)提供的其他[条件性访问控制](../../active-directory/active-directory-conditional-access-azure-portal.md)以外, 这些基于风险的策略可以自动阻止或提供自适应补救措施, 包括密码重置和多重因素强制执行身份验证。
 
@@ -46,14 +46,14 @@ Azure Active Directory 标识保护不只是一个监视和报告工具。 若�
 
 Azure 标识保护可帮助保护帐户和标识的一些示例包括：
 
-[检测风险事件和有风险的帐户](../../active-directory/identity-protection/overview.md)
--   使用机器学习和启发式规则检测 6 种风险事件类型。
+[检测风险检测和有风险的帐户](../../active-directory/identity-protection/overview.md)
+-   使用机器学习和启发式规则检测6种风险检测类型。
 -   计算用户风险级别。
 -   提供自定义建议，通过突显漏洞来改善整体安全状况。
 
-[调查风险事件](../../active-directory/identity-protection/overview.md)
--   针对风险事件发送通知。
--   使用相关的上下文信息调查风险事件。
+[调查风险检测](../../active-directory/identity-protection/overview.md)
+-   发送风险检测的通知。
+-   使用相关的上下文信息来调查风险检测。
 -   提供基本工作流来跟踪调查。
 -   提供轻松使用补救措施，例如密码重置。
 

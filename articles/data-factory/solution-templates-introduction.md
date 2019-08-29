@@ -8,15 +8,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/04/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: d239e44364c3a4879f2f131717511385a4bd7037
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: c4a3fc20e806ec91ed2646e6131f682bf5c80e38
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234452"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140836"
 ---
 # <a name="templates"></a>模板
 
@@ -26,11 +26,11 @@ ms.locfileid: "68234452"
 
 可通过以下两种方式，开始从模板创建数据工厂管道：
 
-1.  在“概述”页上选择“从模板创建管道”打开模板库。 
+1.  在“概述”页上选择“从模板创建管道”打开模板库。
 
     ![从“概述”页打开模板库](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  在资源浏览器中的“创作”选项卡上选择 **+** ，然后选择“模板中的管道”打开模板库。 
+1.  在资源浏览器中的“创作”选项卡上选择 **+** ，然后选择“模板中的管道”打开模板库。
 
     ![从“创作”页打开模板库](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -80,11 +80,11 @@ ms.locfileid: "68234452"
 
 ### <a name="my-templates"></a>我的模板
 
-还可以通过在“管道”选项卡上选择“另存为模板”，将管道另存为模板。 
+还可以通过在“管道”选项卡上选择“另存为模板”，将管道另存为模板。
 
 ![将管道另存为模板](media/solution-templates-introduction/templates-intro-image4.png)
 
-可以在模板库的“我的模板”部分查看另存为模板的管道。  也可以在资源浏览器的“模板”部分查看这些管道。 
+可以在模板库的“我的模板”部分查看另存为模板的管道。 也可以在资源浏览器的“模板”部分查看这些管道。
 
 ![我的模板](media/solution-templates-introduction/templates-intro-image5.png)
 

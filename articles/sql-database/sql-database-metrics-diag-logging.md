@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: 1b35533eeb4c4a364588dbea11f74e8d6b76df3b
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: d9f1afdff53ada2df7722fcfdd7014fb6c417e39
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998222"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135172"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -55,17 +55,17 @@ ms.locfileid: "69998222"
 
 可预配新的 Azure 资源或选择现有资源。 使用“诊断设置”选项选择资源之后，指定要收集的数据。
 
-## <a name="supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases"></a>支持 Azure SQL 数据库和实例数据库的诊断日志记录
+## <a name="supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases"></a>支持用于 Azure SQL 数据库和实例数据库的诊断日志记录
 
 对 SQL 数据库启用指标与诊断日志记录 - 默认未启用此功能。
 
-可以设置 Azure SQL 数据库和实例数据库来收集以下诊断遥测数据:
+可将 Azure SQL 数据库以及实例数据库设置为收集以下诊断遥测数据：
 
 | 数据库的监视遥测 | 单一数据库和共用数据库支持 | 实例数据库支持 |
 | :------------------- | ----- | ----- |
 | [基本指标](#basic-metrics):包含 DTU/CPU 百分比、DTU/CPU 限制、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比和 XTP 存储百分比。 | 是 | 否 |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics)：包含有关查询运行时统计信息的信息，例如 CPU 使用率、查询持续时间统计信息。 | 是 | 是 |
-| [QueryStoreWaitStatistics](#query-store-wait-statistics)：包含有关查询等待统计信息 (查询的等待统计信息) 的信息, 例如 CPU、日志和锁定。 | 是 | 是 |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics)：包含有关查询等待统计信息的信息（查询正在等待什么），例如 CPU、日志和锁定。 | 是 | 是 |
 | [Errors](#errors-dataset):包含有关数据库发生的 SQL 错误的信息。 | 是 | 是 |
 | [DatabaseWaitStatistics](#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。 | 是 | 否 |
 | [Timeouts](#time-outs-dataset)：包含有关数据库发生的超时的信息。 | 是 | 否 |
@@ -156,16 +156,16 @@ ms.locfileid: "69998222"
 | :------------------- | ------------------- |
 | **托管实例** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) 包含 vCore 计数、平均 CPU 百分比、IO 请求数、读取/写入的字节数、保留的存储空间和已使用的存储空间。 |
 
-若要为托管实例和实例数据库配置诊断遥测流, 需要单独配置以下**两项**:
+若要为托管实例和实例数据库配置对诊断遥测数据的流式处理，需单独配置下面这**两项**：
 
-- 为托管实例启用诊断遥测流式处理,**并**
-- 启用每个实例数据库的诊断遥测流式处理
+- 为托管实例启用诊断遥测流，**以及**
+- 为每个实例数据库启用诊断遥测流
 
-这是因为, 托管实例是具有自己的遥测的数据库容器, 与单个实例数据库遥测分开。
+这是因为，托管实例是一个带有自己的遥测的数据库容器，独立于单个实例数据库遥测。
 
 若要为托管实例资源启用诊断遥测数据的流式传输，请执行以下步骤：
 
-1. 中转到 Azure 门户中的**托管实例**资源。
+1. 在 Azure 门户中转到**托管实例**资源。
 1. 选择“诊断设置”。
 1. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
 
@@ -177,18 +177,18 @@ ms.locfileid: "69998222"
 1. 选中实例诊断遥测对应的复选框：**ResourceUsageStats**。
    ![为托管实例配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 1. 选择**保存**。
-1. 此外, 请按照下一节中所述的步骤, 为你想要监视的托管实例中的每个实例数据库配置诊断遥测流。
+1. 另外，请为托管实例中需要监视的每个实例数据库配置诊断遥测流，只需按下一部分所述的步骤操作即可。
 
 > [!IMPORTANT]
-> 除了为托管实例配置诊断遥测以外, 还需要为每个实例数据库配置诊断遥测, 如下所述。
+> 除了为托管实例配置诊断遥测数据，还需为每个实例数据库配置诊断遥测数据，如下所述。
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>为实例数据库配置诊断遥测流式处理
+### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>为实例数据库配置诊断遥测流
 
    ![托管实例中的实例数据库图标](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
 
-若要为实例数据库启用诊断遥测流, 请执行以下步骤:
+若要为实例数据库启用诊断遥测数据的流式传输，请执行以下步骤：
 
-1. 在托管实例中, 请切换到**实例数据库**资源。
+1. 转到托管实例中的**实例数据库**资源。
 1. 选择“诊断设置”。
 1. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
    - 最多可以创建三 (3) 个并行连接用于流式传输诊断遥测数据。
@@ -199,12 +199,12 @@ ms.locfileid: "69998222"
 1. 输入设置名称供自己参考。
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 选中数据库诊断遥测对应的复选框：“SQLInsights”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”和“Errors”。
-   ![配置实例数据库的诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+   ![为实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 1. 选择**保存**。
-1. 为要监视的每个实例数据库重复这些步骤。
+1. 针对要监视的每个实例数据库重复上述步骤。
 
 > [!TIP]
-> 为要监视的每个实例数据库重复这些步骤。
+> 针对要监视的每个实例数据库重复上述步骤。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -440,7 +440,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳 |
-|类型|始终为：AzureDiagnostics |
+|type|始终为：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQL |
 |类别|类别的名称。 始终为：ResourceUsageStats |
 |Resource|资源的名称 |
@@ -554,8 +554,8 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID |
 |SourceSystem|始终为：Azure |
 |TimeGenerated [UTC]|记录日志时的时间戳 |
-|类型|始终为：AzureDiagnostics |
-|ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQ |
+|type|始终为：AzureDiagnostics |
+|ResourceProvider|资源提供程序的名称。 始终为：MICROSOFT.SQL |
 |类别|类别的名称。 始终为：错误 |
 |OperationName|操作的名称。 始终为：ErrorEvent |
 |Resource|资源的名称 |

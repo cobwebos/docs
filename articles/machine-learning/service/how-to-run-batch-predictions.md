@@ -10,12 +10,12 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 97b66bff0e6413b7774a054a01a0dc73649c9cce
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b0d8eef025efb6398f1d7c734ca558540b157fef
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68962984"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128255"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>对包含 Azure 机器学习管道的大型数据集运行批处理预测
 
@@ -114,7 +114,7 @@ output_dir = PipelineData(name="scores",
 
 ### <a name="set-up-compute-target"></a>设置计算目标
 
-在 Azure 机器学习中，*计算*（或*计算目标*）是指在机器学习管道中执行计算步骤的计算机或群集。 例如，可以创建 `Azure Machine Learning compute`。
+在 Azure 机器学习中，*计算*（或*计算目标*）是指在机器学习管道中执行计算步骤的计算机或群集。 例如, 可以使用[AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py)类创建计算 Azure 机器学习。
 
 ```python
 from azureml.core.compute import AmlCompute

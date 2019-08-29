@@ -3,23 +3,20 @@ title: 数据工厂教程：第一个数据管道 | Microsoft Docs
 description: 此 Azure 数据工厂教程介绍如何创建和计划数据工厂，使用 Hadoop 群集上的 Hive 脚本处理数据。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
-ms.assetid: 81f36c76-6e78-4d93-a3f2-0317b413f1d0
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 552c89cd3294567e8203b69f81c1ac24716a8b1b
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 2dd2edfabff51c749890fe20d47a29c1ec39947c
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839440"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140381"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>教程：使用 Hadoop 群集构建你的第一个管道来转换数据
 > [!div class="op_single_selector"]
@@ -35,7 +32,7 @@ ms.locfileid: "67839440"
 
 在本教程中，将使用数据管道生成第一个 Azure 数据工厂。 管道通过在 Azure HDInsight (Hadoop) 群集上运行 Hive 脚本转换输入数据以生成输出数据。  
 
-本文提供了此教程的概述和先决条件。 完成先决条件之后，可以使用下列工具/SDK 之一完成本教程：Visual Studio、 PowerShell、 资源管理器模板、 REST API。 在本文开头的下拉列表中选择一个选项，或者选择本文末尾的链接以使用其中一个选项完成此教程。    
+本文提供了此教程的概述和先决条件。 完成先决条件之后，可以使用下列工具/SDK 之一完成本教程：Visual Studio、PowerShell、资源管理器模板 REST API。 在本文开头的下拉列表中选择一个选项，或者选择本文末尾的链接以使用其中一个选项完成此教程。    
 
 ## <a name="tutorial-overview"></a>教程概述
 将在本教程中执行以下步骤：
@@ -84,8 +81,8 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 
 1. **Azure 订阅** - 如果没有 Azure 订阅，只需几分钟就能创建一个免费试用帐户。 如需了解如何获取免费试用帐户，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)一文。
 2. **Azure 存储** - 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文。 创建存储帐户后，记下**帐户名称**和**访问密钥**。 请参阅[查看、复制和重新生成存储访问密钥](../../storage/common/storage-account-manage.md#access-keys)。
-3. 下载并查看位于 [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) 的 Hive 查询文件 (HQL)  。 此查询转换输入数据以生成输出数据。 
-4. 下载并查看位于 [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log) 的示例输入文件 (input.log)  。
+3. 下载并查看位于 [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) 的 Hive 查询文件 (HQL)。 此查询转换输入数据以生成输出数据。 
+4. 下载并查看位于 [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log) 的示例输入文件 (input.log)。
 5. 在 Azure Blob 存储中创建一个名为 **adfgetstarted** 的 blob 容器。 
 6. 将 **partitionweblogs.hql** 文件上传到 **adfgetstarted** 容器中的 **script** 文件夹。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具。 
 7. 将 **input.log** 文件上传到 **adfgetstarted** 容器中的 **inputdata** 文件夹。 
@@ -97,7 +94,7 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 - [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-Visual Studio 提供生成数据工厂的 GUI 方式。 而 PowerShell、Resource Manager 模板和 REST API 选项提供了生成数据工厂的脚本/编程方式。
+Visual Studio 提供了一种 GUI 方式来构建你的数据工厂。 而 PowerShell、Resource Manager 模板和 REST API 选项提供了生成数据工厂的脚本/编程方式。
 
 > [!NOTE]
 > 本教程中的数据管道可以转换输入数据，以便生成输出数据。 它不是将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。

@@ -3,21 +3,21 @@ title: 使用 Databricks Notebook 转换数据 - Azure | Microsoft Docs
 description: 了解如何通过运行 Databricks Notebook 处理或转换数据。
 services: data-factory
 documentationcenter: ''
-ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: 2bc8b84d4b98036acc93788dee88444786df139e
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: db437c7699c7fddc2b04175537446f53c4c4bc85
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335856"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140829"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>通过运行 Databricks Notebook 转换数据
 

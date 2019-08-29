@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114298"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147904"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure App Service (预览版)
 
@@ -265,8 +265,8 @@ print(response.json())
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关配置 Web 应用的详细信息, 请参阅[Linux 上的应用服务](/azure/app-service/containers/)文档。
-* 有关缩放的详细信息, 请参阅[Azure 中的自动缩放入门](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)。
-* 有关 SSL 支持的详细信息, 请参阅[在 Azure App Service 中使用 SSL 证书](/azure/app-service/app-service-web-ssl-cert-load)。
-* 有关身份验证的详细信息, 请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](/azure/app-service/configure-authentication-provider-aad)。
+* 了解如何在[Linux 应用服务](/azure/app-service/containers/)文档中配置 Web 应用。
+* 详细了解[Azure 中的自动缩放入门中的](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)缩放。
+* [在 Azure App Service 中使用 SSL 证书](/azure/app-service/app-service-web-ssl-cert-load)。
+* [将应用服务应用配置为使用 Azure Active Directory 登录](/azure/app-service/configure-authentication-provider-aad)。
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)

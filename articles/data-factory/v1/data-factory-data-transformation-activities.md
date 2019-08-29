@@ -3,22 +3,20 @@ title: 数据转换：处理和转换数据 | Microsoft Docs
 description: 了解如何在 Azure 数据工厂中利用 Hadoop、机器学习或 Azure Data Lake Analytics 转换或处理数据。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 39786731-1e4b-40a4-81b7-d06e127427aa
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: b1a99f2872a69e01232c69a73f36319552429ca0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e70877a51c23be2d626492f84a69ae49fb27fac
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486594"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139774"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
 > [!div class="op_single_selector"]
@@ -66,7 +64,7 @@ ms.locfileid: "60486594"
 
 有关这些机器学习活动的详细信息，请参阅[使用机器学习活动](data-factory-azure-ml-batch-execution-activity.md)。 
 
-## <a name="stored-procedure-activity"></a>存储过程活动
+## <a name="stored-procedure-activity"></a>已存储过程活动
 可使用数据工厂管道中的 SQL Server 存储过程活动调用以下数据存储之一中的存储过程：Azure SQL 数据库、Azure SQL 数据仓库、企业中的 SQL Server 数据库或 Azure VM。 有关详细信息，请参阅[存储过程活动](data-factory-stored-proc-activity.md)文章。  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
@@ -85,7 +83,7 @@ Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-
 
 有关数据工厂支持的计算服务列表，请参阅 [计算链接服务](data-factory-compute-linked-services.md)文章。 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 Azure 数据工厂支持以下数据转换活动和活动的计算环境。 这些活动可单独添加到管道，也可与其他活动关联在一起。
 
 | 数据转换活动 | 计算环境 |

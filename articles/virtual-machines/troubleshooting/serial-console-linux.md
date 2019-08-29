@@ -4,7 +4,7 @@ description: 用于 Azure 虚拟机和虚拟机规模集的双向串行控制台
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: gwallace
+manager: borisb
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4e0c91096d5efdcc9639a7127126d8e4b89ef068
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
-ms.translationtype: HT
+ms.openlocfilehash: f6e08f113e29b44e4ec94d14624d62c1c3d48d45
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090159"
+ms.locfileid: "70124468"
 ---
 # <a name="azure-serial-console-for-linux"></a>适用于 Linux 的 Azure 串行控制台
 
@@ -49,34 +49,6 @@ Azure 门户中的串行控制台提供对 Linux 虚拟机 (Vm) 和虚拟机规�
 - 必须为虚拟机或虚拟机规模集实例配置 "串行输出" `ttys0`。 这是 Azure 映像的默认设置, 但你需要在自定义映像上仔细检查此设置。 详细信息[如下](#custom-linux-images)。
 
 
-## <a name="get-started-with-the-serial-console"></a>串行控制台入门
-Vm 和虚拟机规模集的串行控制台只能通过 Azure 门户访问:
-
-### <a name="serial-console-for-virtual-machines"></a>虚拟机的串行控制台
-Vm 的串行控制台就像在 Azure 门户的 "**支持 + 故障排除**" 部分中单击**串行控制台**一样简单。
-  1. 打开 [Azure 门户](https://portal.azure.com)。
-
-  1. 导航到 "**所有资源**", 并选择虚拟机。 此时会打开该 VM 的概述页。
-
-  1. 向下滚动到“支持 + 故障排除”部分，并选择“串行控制台”。 此时会打开一个包含串行控制台的新窗格，并启动连接。
-
-     ![Linux 串行控制台窗口](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
-
-### <a name="serial-console-for-virtual-machine-scale-sets"></a>虚拟机规模集的串行控制台
-对于虚拟机规模集, 每个实例可以使用串行控制台。 在看到 "**串行控制台**" 按钮之前, 必须导航到虚拟机规模集的单个实例。 如果虚拟机规模集未启用启动诊断, 请确保更新虚拟机规模集模型以启用启动诊断, 然后将所有实例升级到新模型, 以便访问串行控制台。
-  1. 打开 [Azure 门户](https://portal.azure.com)。
-
-  1. 导航到 "**所有资源**", 并选择虚拟机规模集。 此时将打开虚拟机规模集的 "概述" 页。
-
-  1. 导航到**实例**
-
-  1. 选择虚拟机规模集实例
-
-  1. 在 "**支持 + 故障排除**" 部分中, 选择**串行控制台**。 此时会打开一个包含串行控制台的新窗格，并启动连接。
-
-     ![Linux 虚拟机规模集串行控制台](./media/virtual-machines-serial-console/vmss-start-console.gif)
-
-
 > [!NOTE]
 > 串行控制台需要一个配置了密码的本地用户。 仅使用 SSH 公钥配置的 Vm 或虚拟机规模集将无法登录到串行控制台。 若要创建带有密码的本地用户，请使用 [VMAccess 扩展](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension)（在 Azure 门户中选择“重置密码”即可访问它），然后创建带有密码的本地用户。
 > 也可在帐户中重置管理员密码，方法是[使用 GRUB 启动进入单用户模式](./serial-console-grub-single-user-mode.md)。
@@ -97,7 +69,7 @@ SUSE        | Azure 中提供的较新 SLES 映像默认已启用串行控制台
 Oracle Linux        | 默认已启用串行控制台访问。
 
 ### <a name="custom-linux-images"></a>自定义 Linux 映像
-若要为自定义 Linux VM 映像启用串行控制台，请在文件 */etc/inittab* 中启用控制台访问，以便在 `ttyS0` 上运行终端。 例如：`S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。
+若要为自定义 Linux VM 映像启用串行控制台，请在文件 */etc/inittab* 中启用控制台访问，以便在 `ttyS0` 上运行终端。 例如：`S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 还可能需要在 ttyS0 上生成 getty。 这可以通过`systemctl start serial-getty@ttyS0.service`来实现。
 
 还需要将 ttys0 添加为串行输出的目标。 有关配置自定义映像以使用串行控制台的详细信息, 请参阅在[Azure 中创建和上载 LINUX VHD 中](https://aka.ms/createuploadvhd#general-linux-system-requirements)的常规系统要求。
 
@@ -114,47 +86,8 @@ SSH 配置问题 | 访问串行控制台并更改设置。 无论 VM 的 SSH 配
 与引导加载程序交互 | 从串行控制台边栏选项卡中重启 VM 以访问 Linux VM 上的 GRUB。 有关详细信息和发行版特定的信息, 请参阅[使用串行控制台访问 GRUB 和单用户模式](serial-console-grub-single-user-mode.md)。
 
 ## <a name="disable-the-serial-console"></a>禁用串行控制台
-默认情况下, 所有订阅都启用了串行控制台访问。 可以在订阅级别或 VM/虚拟机规模集级别禁用串行控制台。 请注意, 必须在 VM 上启用启动诊断, 以便串行控制台工作。
 
-### <a name="vmvirtual-machine-scale-set-level-disable"></a>VM/虚拟机规模集级禁用
-可以通过禁用 "启动诊断" 设置来禁用特定 VM 或虚拟机规模集的串行控制台。 关闭 Azure 门户的启动诊断, 禁用 VM 或虚拟机规模集的串行控制台。 如果在虚拟机规模集上使用串行控制台, 请确保将虚拟机规模集实例升级到最新模型。
-
-> [!NOTE]
-> 若要为订阅启用或禁用串行控制台，必须具有订阅的写入权限。 这些权限包括管理员或所有者角色。 自定义角色也可能具有写入权限。
-
-### <a name="subscription-level-disable"></a>订阅级禁用
-可以通过[禁用控制台 REST API 调用](/rest/api/serialconsole/console/disableconsole)为整个订阅禁用串行控制台。 此操作要求对订阅具有参与者级别的访问权限或更高权限。 可以使用此 API 文档页面上提供的“试用”功能为订阅禁用和启用串行控制台。 在“subscriptionId”字段中输入自己的订阅 ID，在“default”字段中输入“default”，然后选择“运行”。 Azure CLI 命令目前不可用。
-
-若要为订阅重新启用串行控制台, 请使用[Enable console REST API 调用](/rest/api/serialconsole/console/enableconsole)。
-
-![试用 REST API](./media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
-
-另外，可以在 Cloud Shell 中使用以下 bash 命令集来禁用、启用订阅的串行控制台，以及查看其禁用状态。
-
-* 若要获取订阅的串行控制台禁用状态，请使用以下命令：
-    ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
-    ```
-* 若要禁用订阅的串行控制台，请使用以下命令：
-    ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
-    ```
-* 若要启用订阅的串行控制台，请使用以下命令：
-    ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/enableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
-    ```
+默认情况下, 所有订阅都启用了串行控制台访问。 可以在订阅级别或 VM/虚拟机规模集级别禁用串行控制台。 有关详细说明, 请访问[启用和禁用 Azure 串行控制台](./serial-console-enable-disable.md)。
 
 ## <a name="serial-console-security"></a>串行控制台安全性
 
@@ -184,18 +117,6 @@ SSH 配置问题 | 访问串行控制台并更改设置。 无论 VM 的 SSH 配
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>通过屏幕阅读器使用串行控制台
 串行控制台内置了屏幕阅读器支持。 在打开屏幕阅读器的情况下导航，屏幕阅读器可大声读出当前所选按钮的替换文字。
-
-## <a name="errors"></a>错误
-大多数错误都是暂时性的，重试连接往往可以解决。 下表显示了错误和缓解措施的列表。 这些错误和缓解措施适用于 Vm 和虚拟机规模集实例。
-
-Error                            |   缓解
-:---------------------------------|:--------------------------------------------|
-无法检索 *&lt;VMNAME&gt;* 的启动诊断设置。 若要使用串行控制台，请确保为此 VM 启用了启动诊断。 | 确保 VM 已启用[启动诊断](boot-diagnostics.md)。
-VM 处于已停止/已解除分配状态。 启动 VM，然后重试串行控制台连接。 | VM 必须处于已启动状态才能访问串行控制台。
-没有所需的权限，无法使用此 VM 来访问串行控制台。 请确保至少拥有“虚拟机参与者”角色权限。| 需要特定的权限才能访问串行控制台。 有关详细信息，请参阅[先决条件](#prerequisites)。
-无法确定启动诊断存储帐户 *&lt;STORAGEACCOUNTNAME&gt;* 的资源组。 确认是否为此 VM 启用了启动诊断，以及是否有权访问此存储帐户。 | 需要特定的权限才能访问串行控制台。 有关详细信息，请参阅[先决条件](#prerequisites)。
-Web 套接字已关闭或无法打开。 | 你可能需要将 `*.console.azure.com` 加入允许列表。 一种更详细但更冗长的方法是将 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)加入允许列表，该范围相当规律地定期更改。
-访问此 VM 的启动诊断存储帐户时遇到“已禁止”响应。 | 请确保启动诊断没有帐户防火墙。 若要使串行控制台正常运行，需要一个可访问的启动诊断存储帐户。
 
 ## <a name="known-issues"></a>已知问题
 我们注意到串行控制台存在的一些问题。 下面是这些问题和缓解措施的列表。 这些问题和缓解措施适用于 Vm 和虚拟机规模集实例。
@@ -241,7 +162,7 @@ A. 你的映像可能配置错误，无法进行串行控制台访问。 有关�
 
 **问：串行控制台是否可用于虚拟机规模集？**
 
-A. 是的，它是！ 请参阅[用于虚拟机规模集的串行控制台](#serial-console-for-virtual-machine-scale-sets)
+A. 是的，它是！ 请参阅[用于虚拟机规模集的串行控制台](serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
 **问：如果我只使用 SSH 密钥身份验证来设置我的 VM 或虚拟机规模集, 我是否仍然可以使用串行控制台连接到我的 VM/虚拟机规模集实例？**
 

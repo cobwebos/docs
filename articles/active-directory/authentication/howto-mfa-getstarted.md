@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 776a73f8a20a3f5ad4e97a08ff3871e805a61eb3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4b555ecdf8bbd3d29e440675599041f40ac3c9d0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879118"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125035"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>规划基于云的 Azure 多重身份验证部署
 
@@ -76,7 +76,7 @@ Azure 多重身份验证是通过使用条件访问实施策略来部署的。 [
 * 从受感染的设备登录
 * 从具有可疑活动的 IP 地址登录
 
-某些 Azure Active Directory Identity Protection 检测到的风险事件是实时发生的, 某些则需要脱机处理。 管理员可以选择阻止显示有风险行为的用户和手动修正, 要求更改密码, 或者需要多重身份验证作为其条件访问策略的一部分。
+Azure Active Directory Identity Protection 检测到的某些风险检测是实时发生的, 一些则需要脱机处理。 管理员可以选择阻止显示有风险行为的用户和手动修正, 要求更改密码, 或者需要多重身份验证作为其条件访问策略的一部分。
 
 ## <a name="define-network-locations"></a>定义网络位置
 
@@ -95,7 +95,7 @@ Azure 多重身份验证是通过使用条件访问实施策略来部署的。 [
       2. 指定 IP 范围
    2. 如果使用国家/地区
       1. 展开下拉菜单, 然后选择要为此命名位置定义的国家或地区。
-      2. 决定是否包含未知区域。 未知区域是指无法映射到某国家/地区的 IP 地址。
+      2. 决定是否包含未知区域。 未知区域是无法映射到国家/地区的 IP 地址。
 7. 单击“创建”
 
 ## <a name="plan-authentication-methods"></a>规划身份验证方法

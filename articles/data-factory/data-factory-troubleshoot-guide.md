@@ -5,19 +5,23 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 6/26/2019
+ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 1995ce2a91bfbc115f80c99687cc84b52ef614ec
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: f35a3567ae4ae7c3e2d59f776d3a3bc00ec2be3e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950111"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142380"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
 
 本文探讨了 Azure 数据工厂中的外部控制活动的常见故障排除方法。
+
+## <a name="connector-and-copy-activity"></a>连接器和复制活动
+
+有关连接器问题 (例如, 使用复制活动时遇到错误), 请参阅对[Azure 数据工厂连接器进行故障排除](connector-troubleshoot-guide.md)。
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
@@ -86,9 +90,9 @@ ms.locfileid: "68950111"
 
 | 错误代码 | 错误消息                                                | 描述                                                  | 建议                           |
 | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2300、2310 | Hadoop 作业提交失败。 错误：无法解析远程名称。 <br/><br/>找不到群集。 | 提供的群集 URI 无效。                              | 请确保未删除群集, 并且提供的 URI 是正确的。 在浏览器中打开 URI 时, 应会看到 Ambari UI。 如果群集位于虚拟网络中, 则 URI 应为专用 URI。 若要打开它, 请使用同一虚拟网络中的 VM。 有关详细信息, 请参阅[直接连接到 Apache Hadoop 服务](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services)。 |
+| 2300、2310 | Hadoop 作业提交失败。 错误：无法解析远程名称”的问题。 <br/><br/>找不到群集。 | 提供的群集 URI 无效。                              | 请确保未删除群集, 并且提供的 URI 是正确的。 在浏览器中打开 URI 时, 应会看到 Ambari UI。 如果群集位于虚拟网络中, 则 URI 应为专用 URI。 若要打开它, 请使用同一虚拟网络中的 VM。 有关详细信息, 请参阅[直接连接到 Apache Hadoop 服务](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services)。 |
 | 2300         | Hadoop 作业提交失败。 作业: ...，群集: .../。 错误：任务已取消。 | 作业提交超时。                         | 此问题可能是常规 HDInsight 连接或网络连接。 首先确认 HDInsight Ambari UI 可从任何浏览器获得。 确认凭据仍然有效。 如果使用自承载集成运行时 (IR), 请确保从安装自承载 IR 的 VM 或计算机中执行此操作。 然后尝试再次从数据工厂提交作业。 如果仍失败, 请与数据工厂团队联系以获取支持。 |
-| 2300         | 未授权: Ambari 用户名或密码不正确  <br/><br/>未授权: 用户管理员在 Ambari 中被锁定。   <br/><br/>403-禁止访问:拒绝访问。 | HDInsight 的凭据不正确或已过期。 | 更正凭据并重新部署链接服务。 首先, 请确保凭据在 HDInsight 上起作用, 方法是在任何浏览器上打开群集 URI 并尝试登录。 如果凭据不起作用, 则可以从 Azure 门户重置它们。 |
+| 2300         | 未授权: Ambari 用户名或密码不正确  <br/><br/>未授权: 用户管理员在 Ambari 中被锁定。   <br/><br/>403-禁止访问:访问被拒绝。 | HDInsight 的凭据不正确或已过期。 | 更正凭据并重新部署链接服务。 首先, 请确保凭据在 HDInsight 上起作用, 方法是在任何浏览器上打开群集 URI 并尝试登录。 如果凭据不起作用, 则可以从 Azure 门户重置它们。 |
 | 2300、2310 | 502 - Web 服务器在充当网关或代理服务器时收到了无效响应。       <br/>网关错误。 | 此错误来自 HDInsight。                               | 此错误来自 HDInsight 群集。 有关详细信息, 请参阅[AMBARI UI 502 错误](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)、[连接到 spark Thrift 服务器时出现502错误](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)、 [502 连接到 spark Thrift 服务器的错误](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)和[排查应用程序网关中的网关错误](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502)。 |
 | 2300         | Hadoop 作业提交失败。 作业: ..., 群集: ...错误: {\"错误\":\"无法为提交作业请求提供服务，因为 templeton 服务正忙于处理过多的提交作业请求。 请等待一段时间，然后重试该操作。 请参阅配置 templeton 以配置并发请求。  <br/><br/>Hadoop 作业提交失败。 作业:161da5d4-6fa8-4ef4-a240-6b6428c5ae2f, 群集: `https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/`。   错误: {\"错误\":\"java.io.IOException: org.apache.hadoop.yarn.exceptions.YarnException:无法将 application_1561147195099_3730 提交到 YARN: org.apache.hadoop.security.AccessControlException:队列 root.joblauncher 已包含 500 个应用程序，无法接受应用程序提交: application_1561147195099_3730\ | 同时提交到 HDInsight 的作业太多。 | 请考虑限制提交到 HDInsight 的并发作业的数目。 如果作业正在由同一活动提交, 则请参阅数据工厂活动并发性。 更改触发器，将并发管道运行分散到不同的时间。 如错误的建议, 请`templeton.parallellism.job.submit`参阅 HDInsight 文档进行调整。 |
 | 2303、2347 | Hadoop 作业失败并返回了退出代码 "5"。 有关更多详细信息，请参阅“wasbs://adfjobs@adftrialrun.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr”。  <br/><br/>Hive 执行失败并返回了错误代码 'UserErrorHiveOdbcCommandExecutionFailure'。   有关更wasbs://adfjobs@eclsupplychainblobd.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out多详细信息, 请参阅 ""。 | 作业已提交到 HDInsight, 在 HDInsight 上失败。 | 已成功将作业提交到 HDInsight。 群集上的失败。 打开 HDInsight Ambari UI 中的作业和日志, 或从存储中打开该文件, 如错误消息所述。 文件显示错误详细信息。 |

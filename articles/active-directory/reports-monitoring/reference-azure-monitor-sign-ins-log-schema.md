@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a82cc4da3b9f4f0c654c95b9889a8bf73fd8ec5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4cc07ac2644ac9f97146e980a1961b9b84e7c561
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989612"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127054"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解释中的 Azure AD 登录日志架构 Azure Monitor
 
@@ -154,16 +154,16 @@ ms.locfileid: "68989612"
 | ResultType | 登录操作的结果，可以是“成功”或“失败”。 | 
 | ResultSignature | 包含登录操作的错误代码（如果有）。 |
 | ResultDescription | 提供登录操作的错误说明。 |
-| riskDetail | riskDetail | 提供风险用户、登录或风险事件的特定状态背后的 "原因"。 可能的值包括: `none`、 `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordReset` `adminConfirmedSigninSafe` 、`adminDismissedAllRiskForUser`、、、 、、、和`aiConfirmedSigninSafe` 。`unknownFutureValue` `userPerformedSecuredPasswordChange` `userPassedMFADrivenByRiskBasedPolicy` `adminConfirmedSigninCompromised` 值`none`表示尚未对用户执行任何操作或目前未登录。 <br>**注意：** 此属性的详细信息需要 Azure AD Premium P2 许可证。 其他许可证返回值`hidden`。 |
-| riskEventTypes | riskEventTypes | 与登录关联的风险事件类型。 可能的值包括: `unlikelyTravel`、 `anonymizedIPAddress` `unfamiliarFeatures` `malwareInfectedIPAddress` 、`generic`、、、 `suspiciousIPAddress` 、、`unknownFutureValue`、和。 `investigationsThreatIntelligence` `maliciousIPAddress` `leakedCredentials` |
+| riskDetail | riskDetail | 提供风险用户、登录或风险检测的特定状态背后的 "原因"。 可能的值包括: `none`、 `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordReset` `adminConfirmedSigninSafe` 、`adminDismissedAllRiskForUser`、、、 、、、和`aiConfirmedSigninSafe` 。`unknownFutureValue` `userPerformedSecuredPasswordChange` `userPassedMFADrivenByRiskBasedPolicy` `adminConfirmedSigninCompromised` 值`none`表示尚未对用户执行任何操作或目前未登录。 <br>**注意：** 此属性的详细信息需要 Azure AD Premium P2 许可证。 其他许可证返回值`hidden`。 |
+| riskEventTypes | riskEventTypes | 与登录关联的风险检测类型。 可能的值包括: `unlikelyTravel`、 `anonymizedIPAddress` `unfamiliarFeatures` `malwareInfectedIPAddress` 、`generic`、、、 `suspiciousIPAddress` 、、`unknownFutureValue`、和。 `investigationsThreatIntelligence` `maliciousIPAddress` `leakedCredentials` |
 | riskLevelAggregated | riskLevel | 聚合的风险级别。 可能的值包括: `none`、 `low`、 `medium`、 `high`、 `hidden`和。 `unknownFutureValue` 该值`hidden`表示没有为用户或登录启用 Azure AD Identity Protection。 **注意：** 此属性的详细信息仅适用于 Azure AD Premium P2 客户。 将返回`hidden`所有其他客户。 |
 | riskLevelDuringSignIn | riskLevel | 登录过程中的风险级别。 可能的值包括: `none`、 `low`、 `medium`、 `high`、 `hidden`和。 `unknownFutureValue` 该值`hidden`表示没有为用户或登录启用 Azure AD Identity Protection。 **注意：** 此属性的详细信息仅适用于 Azure AD Premium P2 客户。 将返回`hidden`所有其他客户。 |
-| riskState | riskState | 报告风险用户、登录或风险事件的状态。 可能的值包括: `none`、 `confirmedSafe`、 `remediated`、 `dismissed`、 `atRisk`、 `confirmedCompromised`和。`unknownFutureValue` |
+| riskState | riskState | 报告风险用户、登录或风险检测的状态。 可能的值包括: `none`、 `confirmedSafe`、 `remediated`、 `dismissed`、 `atRisk`、 `confirmedCompromised`和。`unknownFutureValue` |
 | DurationMs |  此值未映射，可以放心地忽略此字段。 |
 | CallerIpAddress | 发出请求的客户端的 IP 地址。 | 
 | CorrelationId | 客户端所传递的可选 GUID。 此值可帮助将客户端操作与服务器端操作关联，并且在跟踪跨服务的日志时非常有用。 |
 | 标识 | 发出请求时提供的令牌中的标识。 可以是用户帐户、系统帐户或服务主体。 |
-| 级别 | 提供消息的类型。 对于审核，它始终是“信息”。 |
+| Level | 提供消息的类型。 对于审核，它始终是“信息”。 |
 | Location | 提供登录活动的位置。 |
 | 属性 | 列出与登录关联的所有属性。有关详细信息，请参阅 [Microsoft Graph API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)。 为提高可读性，此架构使用登录资源中的相同属性名。
 

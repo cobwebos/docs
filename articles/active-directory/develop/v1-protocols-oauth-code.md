@@ -17,14 +17,18 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 719939b393b01938a4d4faa41a5dca163b2a8949
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 611947c8c1d202cf4abf4222dfe0072aced58507
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834700"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135726"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序
+
+> [!NOTE]
+>  如果你没有告诉服务器你计划调用的资源, 则服务器将不会触发该资源的条件性访问策略。 因此, 若要使用 MFA 触发器, 需要在 URL 中包含资源。 
+>
 
 Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Azure AD 租户中的 Web 应用程序和 Web API。 本指南与语言无关，介绍在不使用我们的[开放源代码库](active-directory-authentication-libraries.md)的情况下，如何发送和接收 HTTP 消息。
 
@@ -64,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 省/自治区/直辖市 |建议 |同时随令牌响应返回的请求中所包含的值。 随机生成的唯一值通常用于 [防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的网页或视图。 |
 | 资源 | 建议 |目标 Web API 的应用 ID URI（受保护的资源）。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用程序注册”，打开应用程序的“设置”页面，然后单击“属性”。 也可能是外部资源，如 `https://graph.microsoft.com`。 这在授权或令牌请求中是必需的。 要确保减少身份验证提示，请将其置于授权请求中以确保获得用户许可。 |
 | 范围 | **ignored** | 对于 v1 Azure AD 应用，必须在 Azure 门户中的应用程序“设置”、“所需权限”下静态配置作用域。 |
-| prompt |可选 |表示需要的用户交互类型。<p> 有效值是： <p> login：应该提示用户重新进行身份验证。 <p> select_account：系统会提示用户选择一个帐户，中断单一登录。 用户可以选择现有已登录帐户，输入已记忆帐户的凭据，或选择使用其他帐户。 <p> consent：用户同意已授予，但需要进行更新。 应该提示用户授予同意。 <p> admin_consent：应该提示管理员代表组织中的所有用户授予同意 |
+| prompt |可选 |表示需要的用户交互类型。<p> 有效值包括： <p> login：应该提示用户重新进行身份验证。 <p> select_account：系统会提示用户选择一个帐户，中断单一登录。 用户可以选择现有已登录帐户，输入已记忆帐户的凭据，或选择使用其他帐户。 <p> consent：用户同意已授予，但需要进行更新。 应该提示用户授予同意。 <p> admin_consent：应该提示管理员代表组织中的所有用户授予同意 |
 | login_hint |可选 |如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。 通常，应用在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。 |
 | domain_hint |可选 |提供有关用户应该用于登录的租户或域的提示。 domain_hint 的值是租户的已注册域。 如果该租户与本地目录联合，则 AAD 将重定向到指定的租户联合服务器。 |
 | code_challenge_method | 建议    | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 可以是 `plain` 或 `S256` 之一。 如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Azure AAD v1.0 同时支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
@@ -278,6 +282,8 @@ RFC 6750 规范为在响应中使用 WWW-Authenticate 标头和持有者方案�
 访问令牌的生存期很短，必须在其过期后刷新才能继续访问资源。 若要刷新 `access_token`，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`。  刷新令牌对客户端已被同意访问的所有资源有效 - 因此，对 `resource=https://graph.microsoft.com` 请求发出的刷新令牌可用于请求 `resource=https://contoso.com/api` 的新访问令牌。 
 
 刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理令牌颁发终结点返回的错误。
+
+[!NOTE] 可在此处找到访问令牌生存期: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configurable-token-lifetimes#configurable-token-lifetime-properties 访问令牌的默认值为1小时, 刷新令牌的默认值为90天。 可以通过相应地配置令牌生存期来更改这些生存期。 
 
 收到具有刷新令牌错误的响应时，请丢弃当前刷新令牌，并请求新的授权代码或访问令牌。 尤其是在授权代码授予流中使用刷新令牌时，如果收到具有 `interaction_required` 或 `invalid_grant` 错误代码的响应，请丢弃刷新令牌，并请求新的授权代码。
 

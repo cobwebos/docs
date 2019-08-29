@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 9a22de93dfa45d16f289871bc548a998f9c91c68
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 395b1fd3301925db0607f775c6b7367979ba367b
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050316"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147433"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>使用门户和 .NET 设备创建 IoT 中心模块标识和模块孪生入门
 
@@ -34,7 +34,7 @@ ms.locfileid: "70050316"
 > 有关可用于构建在设备和解决方案后端上运行的应用程序的 Azure IoT Sdk 的信息, 请参阅[Azure Iot sdk](iot-hub-devguide-sdks.md)。
 >
 
-若要完成本教程，需要具备以下先决条件：
+## <a name="prerequisites"></a>先决条件
 
 * Visual Studio。
 

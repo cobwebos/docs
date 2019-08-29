@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a228c0d349fd45f34923a64ef99dcfba50c4c548
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 93532b1b40dc138a234d5433591a2ba79167194e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034991"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135579"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -123,7 +123,7 @@ ms.locfileid: "70034991"
 
 * **[设备管理员](#device-administrators)** :此角色只能作为[设备设置](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)中的其他本地管理员进行分配。 拥有此角色的用户成为所有已加入 Azure Active Directory 的 Windows 10 设备上的本地计算机管理员。 他们无权管理 Azure Active Directory 中的设备对象。 
 
-* **[目录读取者](#directory-readers)** ：此角色只应分配给不支持[同意框架](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)的旧版应用程序。 不要将其分配给用户。
+* **[目录读取者](#directory-readers)** ：此角色只应分配给不支持[同意框架](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)的旧版应用程序。 此角色中的用户可以读取基本的目录信息。 此角色应用于:1) 授予一组特定的来宾用户读取访问权限, 而不是将其授予所有来宾用户。 2) 将一组特定的非管理员用户授予 Azure 门户的访问权限: "仅限管理员访问 Azure AD 门户" 设置为 "是"。 3) 授予服务主体对目录 whereDirectory 的访问权限。全部不是一个选项。
 
 * **[目录同步帐户](#directory-synchronization-accounts)** ：请勿使用。 此角色自动分配给 Azure AD Connect 服务，不可用于其他任何用途。
 
@@ -658,7 +658,7 @@ ms.locfileid: "70034991"
 | microsoft.aad.directory/groupSettingTemplates/basic/read | 读取 Azure Active Directory 中 groupSettingTemplates 的基本属性。 |
 
 ### <a name="directory-readers"></a>目录读取者
-可以读取基本目录信息。 用于授予对应用程序的访问权限，不针对用户。
+可以读取基本目录信息。 此角色中的用户可以读取基本的目录信息。 此角色应用于:1) 授予一组特定的来宾用户读取访问权限, 而不是将其授予所有来宾用户。 2) 将一组特定的非管理员用户授予 Azure 门户的访问权限: "仅限管理员访问 Azure AD 门户" 设置为 "是"。 3) 授予服务主体对目录 whereDirectory 的访问权限。全部不是一个选项。
 
 | **操作** | **说明** |
 | --- | --- |

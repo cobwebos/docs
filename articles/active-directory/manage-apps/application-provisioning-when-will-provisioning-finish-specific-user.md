@@ -16,12 +16,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf6190ae35a573ab4b9a37f5cd1f2bd75f06ca46
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3c6ad7e305958131c4f544dfa2022e7471e9adac
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667156"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147112"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>检查用户设置的状态
 
@@ -35,7 +35,7 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期, 后跟
 - 当前正在运行或最后完成的预配周期 (初始或增量) 的类型。
 - 显示已完成的预配周期百分比的**进度栏**。 百分比反映预配的页的计数。 请注意, 每个页面可能包含多个用户或组, 因此该百分比并不与预配的用户、组或角色的数目直接相关。
 - 可以使用 "**刷新**" 按钮来更新视图。
-- 预配的**用户**和**组**的数量, 以及创建的角色数。 在初始周期期间, 用户在创建或更新用户时 **, 将按**1 计数, 并且在删除用户时, 将按1计数。 在增量循环期间, 用户更新不会影响**用户**计数;只有在创建或删除用户时, 才会更改此数字。
+- 预配的**用户**和**组**的数量, 以及创建的角色数。 在初始周期期间, 用户在创建或更新用户时, 将按1计数, 并且在删除用户时, 将按1计数。 在增量循环期间, 用户更新不会影响**用户**计数;只有在创建或删除用户时, 才会更改此数字。
 - "**查看审核日志**" 链接, 可打开 Azure AD 审核日志, 以获取有关用户预配服务运行的所有操作的详细信息, 包括每个用户的预配状态 (请参阅下面的 "[使用审核日志](#use-audit-logs-to-check-a-users-provisioning-status)" 部分)。
 
 设置周期完成后, "**统计信息截止日期**" 部分显示已设置为 "日期" 的用户和组的累计数量, 以及最后一个周期的完成日期和持续时间。 **活动 ID**唯一标识最新的设置周期。 **作业 ID**是预配作业的唯一标识符, 特定于租户中的应用。
@@ -62,7 +62,7 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期, 后跟
 有关如何读取 Azure 门户中的审核日志的详细信息, 请参阅[预配报告指南](check-status-user-account-provisioning.md)。
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>预配用户需要多长时间？
-在应用程序中使用自动用户预配时, Azure AD 会按定期计划的时间间隔 (通常每10分钟) 在应用中自动预配和更新用户帐户 (如[用户和组分配](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal))。
+在应用程序中使用自动用户预配时, Azure AD 会按定期计划的时间间隔 (通常每隔40分钟) 在应用中自动预配和更新用户帐户 (如[用户和组分配](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal))。
 
 预配给定用户所用的时间主要取决于你的预配作业是正在运行初始同步还是增量同步。
 

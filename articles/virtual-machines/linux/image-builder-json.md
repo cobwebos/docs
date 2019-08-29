@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: abaf96b11abee0bf519a276f825b9c47cd333c1b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 240e0dadaebde6725974604b578328ede0b20652
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816321"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129057"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -190,6 +190,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 `imageVersionId`应为映像版本的 ResourceId。 使用[az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list)列出映像版本。
 
 ## <a name="properties-buildtimeoutinminutes"></a>属性: buildTimeoutInMinutes
+
 默认情况下, 映像生成器将运行240分钟。 之后, 无论映像生成是否完成, 它都将超时和停止。 如果遇到超时, 你将看到类似于下面的错误:
 
 ```text
@@ -203,7 +204,6 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 
 ## <a name="properties-customize"></a>属性: 自定义
-
 
 图像生成器支持多个 "定制器"。 定制员是用于自定义映像的功能, 如运行脚本或重新启动服务器。 
 

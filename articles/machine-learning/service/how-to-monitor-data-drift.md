@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 41e357ee53d4c2fbc6683be3446ba2527dd9253f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623981"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128274"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service (AKS) 的模型上检测数据偏差 (预览)
 
@@ -178,16 +178,7 @@ datadrift.disable_schedule()
 
 ## <a name="retrain-your-model-after-drift"></a>偏移后重新训练模型
 
-当数据偏移对已部署的模型的性能产生负面影响时, 可以重新训练模型。 下面[ 的方法为](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#diff-rhs-dataset--compute-target-none--columns-none-
-)您提供了新旧定型数据集之间的更改。 `diff()` 
-
-```python
-from azureml.core import Dataset
-
-old_training_dataset.diff(new_training_dataset)
-```
-
-根据前面代码的输出, 可能需要重新训练模型。 为此, 请继续执行以下步骤。
+当数据偏移对已部署的模型的性能产生负面影响时, 可以重新训练模型。 为此, 请继续执行以下步骤。
 
 * 调查收集的数据并准备数据以对新模型定型。
 * 将其拆分为训练/测试数据。

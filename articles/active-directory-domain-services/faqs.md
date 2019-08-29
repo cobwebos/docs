@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 509bd472fe5f930ac830b8b4016129f8acb67324
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80bc5ef78a73430dea23bdd644767d9fa9b3c9a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612883"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124678"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory 域服务：常见问题解答 (FAQ)
 本页面解答有关 Azure Active Directory 域服务的常见问题。 请随时返回查看更新信息。
@@ -61,6 +61,9 @@ ms.locfileid: "69612883"
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>邀请到我的目录中的来宾用户能否使用 Azure AD 域服务？
 否。 使用 [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 邀请进程邀请到 Azure AD 目录的来宾用户会同步到 Azure Active Directory 域服务托管域。 但这些用户的密码不会存储在 Azure AD 目录中。 因此，Azure AD 域服务无法将这些用户的 NTLM 和 Kerberos 哈希同步到托管域。 所以，这些用户无法登录到托管域，也无法将计算机加入托管域。
+
+### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>是否可以将现有 Azure AD 域服务托管域移到不同的订阅、资源组、区域或虚拟网络？
+否。 创建 Azure AD 域服务托管域后, 不能将实例移动到不同的资源组、虚拟网络、订阅等。部署 Azure AD DS 实例时, 请注意选择最适当的订阅、资源组、区域和虚拟网络。
 
 ## <a name="administration-and-operations"></a>管理和操作
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>是否可以使用远程桌面连接到托管域的域控制器？

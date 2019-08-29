@@ -3,22 +3,22 @@ title: Azure 数据工厂实体的命名规则 | Microsoft Docs
 description: 描述数据工厂实体的命名规则。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: bc5e801d-0b3b-48ec-9501-bb4146ea17f1
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: daf0b1c12ab10230690a62eb5dc772417d8b92f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd1cdfac91a48d016857d06d5c9843fcdc4f5d9f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824229"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139208"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure 数据工厂 - 命名规则
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "60824229"
 
 下表提供了数据工厂项目的命名规则。
 
-| Name | 名称唯一性 | 验证检查 |
+| 姓名 | 名称唯一性 | 验证检查 |
 |:--- |:--- |:--- |
 | 数据工厂 |在 Microsoft Azure 内唯一。 名称不区分大小写，即 `MyDF` 和 `mydf` 指的是同一个数据工厂。 |<ul><li>一个数据工厂绑定到一个 Azure 订阅。</li><li>对象名称必须以字母或数字开头，并且只能包含字母、数字和短划线 (-) 字符。</li><li>每个短划线 (-) 字符的前后必须紧接字母或数字。 容器名称中不允许使用连续短划线。</li><li>名称长度为 3-63 个字符。</li></ul> |
 | 链接服务/表/管道 |在数据工厂中唯一。 名称不区分大小写。 |<ul><li>表名称的最大字符数：260。</li><li>对象名称必须以字母、数字或下划线 (_) 开头。</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“ * ”、“%”、“&”、“:”、“\\”</li></ul> |

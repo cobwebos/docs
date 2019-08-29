@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 08/16/2019
-ms.openlocfilehash: 2f82bd9c0bcacf2c552df84cdd4f8f2cd6a68c8a
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.date: 08/29/2019
+ms.openlocfilehash: a038a05f03ce7a209ae82203441750749bc6c4c4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543191"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138706"
 ---
 # <a name="get-insights-and-debugging-data-for-logic-apps-by-using-azure-monitor-logs"></a>使用 Azure Monitor 日志获取逻辑应用的见解和调试数据
 
@@ -55,7 +55,7 @@ ms.locfileid: "69543191"
 
 ## <a name="install-logic-apps-management-solution"></a>安装逻辑应用管理解决方案
 
-如果在创建逻辑应用时已打开 Azure Monitor 日志, 请跳过此步骤。 你已经安装了逻辑应用管理解决方案。
+如果在创建逻辑应用时已设置 Azure Monitor 日志, 请跳过此步骤。 你已经安装了逻辑应用管理解决方案。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 在搜索框中, 找到 "log analytics 工作区", 然后选择 " **Log Analytics 工作区**"。
 
@@ -107,23 +107,21 @@ ms.locfileid: "69543191"
 
    下面是一个显示特定逻辑应用所有运行的示例：
 
-   ![查看逻辑应用或状态的运行](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
+   ![查看逻辑应用运行和状态](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
 
-   此页面具有以下高级选项：
+   此页面包含高级选项: 
 
-   * **跟踪的属性：**
+   * **跟踪的属性**列:对于设置跟踪属性 (按操作分组) 的逻辑应用, 可以从此列查看这些属性。 若要查看这些跟踪的属性, 请选择 "**查看**"。 若要搜索跟踪的属性，请使用列筛选器。
 
-     此列显示逻辑应用的跟踪属性（按操作分组）。 若要查看跟踪的属性, 请选择 "**查看**"。 若要搜索跟踪的属性，请使用列筛选器。
+      ![查看逻辑应用的跟踪属性](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
 
-     ![查看逻辑应用的跟踪属性](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
+      任何新添加的跟踪属性可能需要 10-15 分钟时间，才会首次显示。 了解[如何将跟踪属性添加到逻辑应用](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)。
 
-     任何新添加的跟踪属性可能需要 10-15 分钟时间，才会首次显示。 了解[如何将跟踪属性添加到逻辑应用](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)。
-
-   * **重新提交：** 可以重新提交一个或多个已失败、成功或仍在运行的逻辑应用运行。 选中要重新提交的运行对应的复选框, 然后选择 "**重新提交**"。
+   * **重新提交**:你可以重新提交一个或多个已失败、成功或仍在运行的逻辑应用运行。 选中要重新提交的运行对应的复选框, 然后选择 "**重新提交**"。
 
      ![重新提交逻辑应用运行](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
-1. 要筛选这些结果，可以执行客户端和服务器端筛选。
+1. 要筛选结果, 可以同时执行客户端和服务器端筛选。
 
    * **客户端筛选器**：对于每个列, 请选择所需的筛选器, 例如:
 
@@ -133,25 +131,21 @@ ms.locfileid: "69543191"
 
      ![更改时间窗口](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
 
-1. 若要查看特定运行的所有操作及其详细信息，请选择逻辑应用运行所在的行。
+1. 若要查看特定运行的所有操作及其详细信息, 请选择逻辑应用运行所在的行。
 
-   下面是一个显示特定逻辑应用运行的所有操作的示例：
+   以下示例显示了特定逻辑应用运行的所有操作和触发器:
 
    ![查看逻辑应用运行的操作](media/logic-apps-monitor-your-logic-apps-oms/logic-app-action-details.png)
 
-1. 在任何结果页上, 若要查看结果后的查询或查看所有结果, 请选择 "**查看全部**", 这将打开 "日志搜索" 页。
+1. 在任何结果页上, 若要查看结果后的查询或查看所有结果, 请选择 "**查看全部**", 这将打开 "**日志**" 页。
 
-   ![结果页上的“查看全部”](media/logic-apps-monitor-your-logic-apps-oms/logic-app-seeall.png)
+   ![查看所有结果](media/logic-apps-monitor-your-logic-apps-oms/logic-app-see-all.png)
 
-   在 "日志搜索" 页上, 可以选择以下选项:
+   在 "**日志**" 页上, 可以选择以下选项:
 
    * 若要在表中查看查询结果, 请选择 "**表**"。
 
-   * 要更改查询，可在搜索栏中编辑查询字符串。 若要获得更好的体验, 请选择 "**高级分析**"。
-
-     ![查看逻辑应用运行的操作和详细信息](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
-
-     在 log analytics 页上, 你可以更新查询并查看表中的结果。 此查询使用 [Kusto 查询语言](https://aka.ms/LogAnalyticsLanguageReference)，如果希望查看不同的结果，可对其进行编辑。
+   * 查询使用[Kusto 查询语言](https://aka.ms/LogAnalyticsLanguageReference), 如果想要查看不同的结果, 可以编辑该语言。 若要更改查询, 请更新查询字符串, 然后选择 "**运行**" 以查看表中的结果。 
 
      ![Log Analytics-查询视图](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 

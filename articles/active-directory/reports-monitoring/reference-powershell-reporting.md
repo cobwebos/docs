@@ -17,14 +17,17 @@ ms.date: 07/12/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 372041dc24db4ed66977364e2a2997c7195cca9c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4d34204b936a608158a0ca3e8af2264059ffc6aa
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988034"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136559"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>用于报告的 Azure AD PowerShell cmdlet
+
+> [!NOTE] 
+> 这些 Powershell cmdlet 目前仅适用于[Azure AD 预览](https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing)模块。 请注意, 不建议使用预览模块进行生产。 
 
 通过 Azure Active Directory (Azure AD) 报表, 你可以在你的方向 (审核日志) 和身份验证数据 (登录日志) 中获取有关所有写入操作的活动的详细信息。 尽管该信息可通过使用 MS 图形 API 获取, 但现在可以使用用于报告的 Azure AD PowerShell cmdlet 来检索相同的数据。
 

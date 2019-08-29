@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f52ca8062ed1ed196a67d25385b712451afe8ae
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 02c093375ba2dc5c851a2deb35bdea28338ee982
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532730"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135771"
 ---
 # <a name="logging"></a>日志记录
 用于生成日志消息的 Microsoft 身份验证库 (MSAL) 应用，这些消息可以用来诊断问题并提供详细信息。 应用可以通过数行代码配置日志记录，并可对详细程度以及是否记录个人和组织数据进行自定义控制。 建议设置 MSAL 日志记录回调，并提供一种允许用户在遇到身份验证问题时提交日志的方法。
@@ -32,7 +32,7 @@ ms.locfileid: "69532730"
 MSAL 的记录器允许捕获多个级别的详细信息：
 
 - 错误：指示出现问题并已生成错误。 用于调试并确定问题。
-- 警告:出问题的事件，应用需要该事件的更多信息。 不一定会出现错误或故障，只是为了诊断和指出问题。
+- 警告：出问题的事件，应用需要该事件的更多信息。 不一定会出现错误或故障，只是为了诊断和指出问题。
 - 信息：MSAL 将要记录的事件可为用户提供信息，不一定用于调试。
 - 详细：默认。 MSAL 会记录大量的信息，让用户全面且详细地了解库的具体行为。
 
@@ -100,14 +100,15 @@ var msalConfig = {
     auth: {
         clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”,
     },
-    system: {
-        logger: {
-            localCallback: loggerCallback,
-            level: Msal.LogLevel.Verbose,
-            piiLoggingEnabled: false,
-            correlationId: '1234'
-        }
-    }
+     system: {
+             logger: new Msal.Logger(
+                                loggerCallback ,{
+                                     level: Msal.LogLevel.Verbose,
+                                     piiLoggingEnabled: false,
+                                     correlationId: '1234'
+                                }
+                        )
+     }
 }
 
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);

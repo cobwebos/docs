@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 0e0ad63ffb8d9c22d1b527644bc78e229ac6830c
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: bbec8c79b7d1b1a3f8864e12a6dc5b6c07bbb05d
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668202"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147816"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>IoT 中心模块标识和模块克隆入门 (C)
 
@@ -31,7 +31,7 @@ ms.locfileid: "68668202"
 > [!NOTE]
 > 有关 Azure IoT SDK 的信息（可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-要完成本教程，需要以下各项：
+## <a name="prerequisites"></a>先决条件
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个 [Azure 免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 

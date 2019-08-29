@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60382159"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135737"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：设计概念
 本文档旨在说明 Azure AD Connect 实现设计期间必须考虑到的各个方面。 本文档是特定领域的深入探讨，其他文档中也简要描述了这些概念。
@@ -95,7 +95,6 @@ Azure AD Connect（1.1.524.0 及更高版本）现可帮助你将 ms-DS-Consiste
   > 仅较新版本的 Azure AD Connect（1.1.524.0 及更高版本）支持在新安装期间将 ConsistencyGuid 用作 sourceAnchor。
 
 ### <a name="how-to-enable-the-consistencyguid-feature"></a>如何启用 ConsistencyGuid 功能
-目前，该功能只能在新 Azure AD Connect 安装期间启用。
 
 #### <a name="express-installation"></a>快速安装
 使用“快速”模式安装 Azure AD Connect 时，Azure AD Connect 向导会根据以下逻辑，自动确定最适合用作 sourceAnchor 属性的 AD 属性：
@@ -123,7 +122,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现可帮助你将 ms-DS-Consiste
 | 设置 | 描述 |
 | --- | --- |
 | 让 Azure 为我管理源定位点 | 如果想要 Azure AD 选取属性，请选择此选项。 如果选择此选项，Azure AD Connect 向导会应用[在快速安装时使用的 sourceAnchor 属性选择逻辑](#express-installation)。 与快速安装类似，自定义安装完成后，向导会告知你已选取哪个属性作为“源定位点”属性。 |
-| 特定的属性 | 如果希望指定现有的 AD 属性作为 sourceAnchor 属性，请选择此选项。 |
+| 特定属性 | 如果希望指定现有的 AD 属性作为 sourceAnchor 属性，请选择此选项。 |
 
 ### <a name="how-to-enable-the-consistencyguid-feature---existing-deployment"></a>如何启用 ConsistencyGuid 功能 - 现有部署
 如果你有现有的 Azure AD Connect 部署，它使用 objectGUID 作为 Source Anchor 属性，可将它切换至改为使用 ConsistencyGuid。
@@ -133,19 +132,19 @@ Azure AD Connect（1.1.524.0 及更高版本）现可帮助你将 ms-DS-Consiste
 
 从使用 ObjectGuid 切换为使用 ConsistencyGuid 作为 Source Anchor 属性：
 
-1. 启动 Azure AD Connect 向导，然后单击“配置”  转到“任务”屏幕。
+1. 启动 Azure AD Connect 向导，然后单击“配置”转到“任务”屏幕。
 
-2. 选择“配置 Source Anchor”  任务选项并单击“下一步”  。
+2. 选择“配置 Source Anchor”任务选项并单击“下一步”。
 
    ![为现有部署启用 ConsistencyGuid - 步骤 2](./media/plan-connect-design-concepts/consistencyguidexistingdeployment01.png)
 
-3. 输入 Azure AD 管理员凭据，然后单击“下一步”  。
+3. 输入 Azure AD 管理员凭据，然后单击“下一步”。
 
-4. Azure AD Connect 向导会分析本地 Active Directory 中 ms-DS-ConsistencyGuid 属性的状态。 如果未在目录中的任何对象上配置该属性，Azure AD Connect 可以确定任何其他应用程序当前均未使用该属性，可以安全地将其用作 Source Anchor 属性。 单击“下一步”以继续操作。 
+4. Azure AD Connect 向导会分析本地 Active Directory 中 ms-DS-ConsistencyGuid 属性的状态。 如果未在目录中的任何对象上配置该属性，Azure AD Connect 可以确定任何其他应用程序当前均未使用该属性，可以安全地将其用作 Source Anchor 属性。 单击“下一步”以继续操作。
 
    ![为现有部署启用 ConsistencyGuid - 步骤 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
-5. 在“准备好配置”  屏幕上，单击“配置”  进行配置更改。
+5. 在“准备好配置”屏幕上，单击“配置”进行配置更改。
 
    ![为现有部署启用 ConsistencyGuid - 步骤 5](./media/plan-connect-design-concepts/consistencyguidexistingdeployment03.png)
 
@@ -157,7 +156,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现可帮助你将 ms-DS-Consiste
 
 ![为现有部署启用 ConsistencyGuid - 错误](./media/plan-connect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
- 如果确定其他现有应用程序不使用该属性，则可以通过在指定“/SkipLdapSearch”  开关的情况下重启 Azure AD Connect 向导来取消显示该错误。 为此，请在命令提示符下运行以下命令：
+ 如果确定其他现有应用程序不使用该属性，则可以通过在指定“/SkipLdapSearch”开关的情况下重启 Azure AD Connect 向导来取消显示该错误。 为此，请在命令提示符下运行以下命令：
 
 ```
 "c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch
@@ -171,7 +170,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现可帮助你将 ms-DS-Consiste
 ![第三方联合身份验证配置](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>将新目录添加到现有部署
-假设你在部署 Azure AD Connect 时启用了 ConsistencyGuid 功能，现在要将另一目录添加到部署中。 尝试添加目录时，Azure AD Connect 向导会检查目录中 ms-DS-ConsistencyGuid 属性的状态。 如果该属性已在目录中的一个或多个对象上配置，向导就会认为该属性正由其他应用程序使用，于是返回一个错误，如下图所示。 如果确定现有应用程序不使用该属性，则可以通过使用前文所述的指定 /SkipLdapSearch 开关的情况下重启 Azure AD Connect 向导来取消显示该错误或者需要联系支持人员以获得更多信息  。
+假设你在部署 Azure AD Connect 时启用了 ConsistencyGuid 功能，现在要将另一目录添加到部署中。 尝试添加目录时，Azure AD Connect 向导会检查目录中 ms-DS-ConsistencyGuid 属性的状态。 如果该属性已在目录中的一个或多个对象上配置，向导就会认为该属性正由其他应用程序使用，于是返回一个错误，如下图所示。 如果确定现有应用程序不使用该属性，则可以通过使用前文所述的指定 /SkipLdapSearch 开关的情况下重启 Azure AD Connect 向导来取消显示该错误或者需要联系支持人员以获得更多信息。
 
 ![将新目录添加到现有部署](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 
@@ -184,7 +183,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现可帮助你将 ms-DS-Consiste
 * 属性值符合 UPN 语法 (RFC 822)，其格式应为“username\@domain”
 * 这些值的后缀符合 Azure AD 中其中一个已验证的自定义域
 
-在快速设置中，属性的假设选择是 userPrincipalName。 如果 userPrincipalName 属性不包含希望用户用于登录 Azure 的值，则必须选择“自定义安装”。 
+在快速设置中，属性的假设选择是 userPrincipalName。 如果 userPrincipalName 属性不包含希望用户用于登录 Azure 的值，则必须选择“自定义安装”。
 
 ### <a name="custom-domain-state-and-upn"></a>自定义域状态和 UPN
 必须确保 UPN 后缀包含已验证的域。

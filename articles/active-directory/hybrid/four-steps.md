@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4eb5b4c634fe495a0ed149016d862defc2eb45
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532442"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124927"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 进行强身份验证的四个步骤
 
@@ -141,7 +141,7 @@ Azure 的[自助服务密码重置](https://docs.microsoft.com/azure/active-dire
 
 Azure 提供可供你和你的组织使用的报表, 以确保用户已注册 MFA 和 SSPR。 在此过程中, 可能需要教育尚未注册的用户。
 
-"MFA[登录" 报表](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting)包含有关 mfa 使用情况的信息, 可帮助你深入了解如何在组织中使用 mfa。 对于故障排除、使用情况分析和取证调查, 有权访问 Azure AD 的登录活动 (以及审核和风险事件) 是至关重要的。
+"MFA[登录" 报表](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting)包含有关 mfa 使用情况的信息, 可帮助你深入了解如何在组织中使用 mfa。 对于故障排除、使用情况分析和取证调查, 有权访问 Azure AD 的登录活动 (以及审核和风险检测) 是至关重要的。
 
 同样, 可以使用[自助服务密码管理报告](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting)来确定谁已注册 SSPR。
 

@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 45e1ad6bd757ec5acaf784c94e4cfb5e487ce9ba
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 52eeedf4651cee012569034ae635a4736b3f3335
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975739"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135540"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名
 
@@ -88,7 +88,7 @@ ms.locfileid: "68975739"
 -   配置指向你的 API 管理网关 IP 地址的 A 记录。
 
 > [!NOTE]
-> 尽管 API 管理实例 IP 地址是静态的, 但在少数情况下, 它可能会更改。 因此, 建议在配置自定义域时使用 CNAME。 选择 DNS 配置方法时要考虑这一点。 有关详细信息, 请参阅[API MANANAGEMENT 常见问题解答](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)。
+> 尽管 API 管理实例 IP 地址是静态的, 但在少数情况下, 它可能会更改。 因此, 建议在配置自定义域时使用 CNAME。 选择 DNS 配置方法时要考虑这一点。 有关详细信息, 请参阅[API MANANAGEMENT 常见问题解答](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)。
 
 ## <a name="next-steps"></a>后续步骤
 

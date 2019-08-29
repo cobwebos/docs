@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2cc8f4f81ad95376dcbc10c2952c1b2ed95ffe42
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 30ec36067b4a047478abc294361b015d12d21319
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907910"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129351"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -365,7 +365,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) 是 Azure Active Directory 的一项高级功能，能够识别组织中的人员所使用的云应用程序。
 
-- [Azure Active Directory 标识保护](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/)是一种安全服务，它使用 Azure Active Directory 异常检测功能对风险事件和可能影响组织标识的潜在漏洞提供综合视图。
+- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/)是一种安全服务, 它使用 Azure Active Directory 异常检测功能来提供合并视图, 以提供风险检测和可能影响组织的潜在漏洞标识.
 
 - [Azure Active Directory 域服务](https://azure.microsoft.com/services/active-directory-ds/)让用户可以将 Active VM 加入一个域，且无需部署域控制器。 用户可使用他们的企业 Active Directory 凭证登录这些 VM，且可以无缝访问资源。
 

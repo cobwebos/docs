@@ -3,21 +3,20 @@ title: 使用 Azure 数据工厂更新机器学习模型 | Microsoft Docs
 description: 介绍了如何使用 Azure 数据工厂和机器学习创建预测管道
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: shlo
-ms.openlocfilehash: 8f1320db0af85f6c83a9daf8e17a691336c9b251
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 56d0ce6668c1077b99c980c2bc5b16998a3a41c1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335466"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140527"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习模型
 本文是对主要 Azure 数据工厂 - Azure 机器学习集成文章的补充：[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。
@@ -35,7 +34,7 @@ ms.locfileid: "60335466"
 
 ## <a name="azure-machine-learning-update-resource-activity"></a>Azure 机器学习“更新资源”活动
 
-以下 JSON 代码片段定义 Azure 机器学习批处理执行活动。
+以下 JSON 代码片段定义了一个 Azure 机器学习“批处理执行”活动。
 
 ```json
 {
@@ -57,9 +56,9 @@ ms.locfileid: "60335466"
 }
 ```
 
-| 属性                      | 说明                              | 需要 |
+| 属性                      | 说明                              | 必填 |
 | :---------------------------- | :--------------------------------------- | :------- |
-| 名称                          | 管道中活动的名称     | 是      |
+| name                          | 管道中活动的名称     | 是      |
 | description                   | 描述活动用途的文本。  | 否       |
 | type                          | 对于 Azure 机器学习“更新资源”活动，活动类型为 **AzureMLUpdateResource**。 | 是      |
 | linkedServiceName             | 包含 updateResourceEndpoint 属性的 Azure 机器学习链接服务。 | 是      |
@@ -71,7 +70,7 @@ ms.locfileid: "60335466"
 
 对模型进行重新训练以及更新预测性 Web 服务的整个操作过程涉及以下步骤：
 
-- 使用 **“批处理执行”活动**调用**训练 Web 服务**。 调用训练 Web 服务与[使用 Azure 机器学习和数据工厂“批处理执行”活动创建预测性管道](transform-data-using-machine-learning.md)中所述的调用预测性 Web 服务相同。 训练 Web 服务的输出是一个可用于更新预测 Web 服务的 iLearner 文件。
+- 使用 **“批处理执行”活动**调用**训练 Web 服务**。 调用训练 Web 服务与[使用 Azure 机器学习和数据工厂“批处理执行”活动创建预测性管道](transform-data-using-machine-learning.md)中所述的调用预测性 Web 服务相同。 定型 Web 服务的输出是一个 iLearner 文件, 可用于更新预测 Web 服务。
 - 通过使用 **“更新资源”活动**调用**预测性 Web 服务**的**更新资源终结点**来使用新训练的模型更新 Web 服务。
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure 机器学习链接服务
@@ -93,7 +92,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 在 [Azure 机器学习 Web 服务门户](https://services.azureml.net/)上查询 Web 服务时可获取 URL 中占位符的值。
 
-新类型的更新资源终结点要求执行服务主体身份验证。 若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册应用程序实体，并向其授予 Web 服务所属的订阅或资源组的“参与者”或“所有者”角色。   请参阅[如何创建服务主体和分配权限来管理 Azure 资源](../active-directory/develop/howto-create-service-principal-portal.md)。 记下下面的值，这些值用于定义链接服务：
+新类型的更新资源终结点要求执行服务主体身份验证。 若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册应用程序实体，并向其授予 Web 服务所属的订阅或资源组的“参与者”或“所有者”角色。 请参阅[如何创建服务主体和分配权限来管理 Azure 资源](../active-directory/develop/howto-create-service-principal-portal.md)。 记下下面的值，这些值用于定义链接服务：
 
 - 应用程序 ID
 - 应用程序密钥
@@ -170,11 +169,11 @@ Azure 存储保留以下数据：
 
 在 **Azure 机器学习工作室**中，执行以下操作以获取 **mlEndpoint** 和 **apiKey** 的值：
 
-1. 在左侧菜单上，单击“Web 服务”  。
-2. 在 Web 服务列表中，单击“定型 Web 服务”  。
-3. 单击“API 密钥”  文本框旁的“复制”。 将剪贴板中的密钥粘贴到数据工厂 JSON 编辑器。
-4. 在 **Azure 机器学习工作室**中，单击“批处理执行”  链接。
-5. 从“请求”  分区复制“请求 URI”  ，然后将其粘贴到数据工厂 JSON 编辑器。
+1. 在左侧菜单上，单击“Web 服务”。
+2. 在 Web 服务列表中，单击“定型 Web 服务”。
+3. 单击“API 密钥”文本框旁的“复制”。 将剪贴板中的密钥粘贴到数据工厂 JSON 编辑器。
+4. 在 **Azure 机器学习工作室**中，单击“批处理执行”链接。
+5. 从“请求”分区复制“请求 URI”，然后将其粘贴到数据工厂 JSON 编辑器。
 
 ### <a name="linked-service-for-azure-machine-learning-studio-updatable-scoring-endpoint"></a>Azure 机器学习工作室可更新评分终结点的链接服务：
 以下 JSON 代码片段定义了指向评分 Web 服务的可更新终结点的 Azure 机器学习链接服务。
@@ -197,7 +196,7 @@ Azure 存储保留以下数据：
 ```
 
 ### <a name="pipeline"></a>管道
-管道具有两个活动：AzureMLBatchExecution 和 AzureMLUpdateResource   。 “批处理执行”活动采用训练数据作为输入，并生成 iLearner 文件作为输出。 然后，“更新资源”活动采用此 iLearner 文件并使用它来更新预测性 Web 服务。
+管道具有两个活动：AzureMLBatchExecution 和 AzureMLUpdateResource。 “批处理执行”活动采用训练数据作为输入，并生成 iLearner 文件作为输出。 然后，“更新资源”活动采用此 iLearner 文件并使用它来更新预测性 Web 服务。
 
 ```JSON
 {

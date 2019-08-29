@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 73cf6fd1c20f2e4208d1f7c28a756f28a2fad839
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: ce44be5bae5aaa8f86d04068cce1c4bc919b0893
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302575"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126961"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -50,9 +50,9 @@ ms.locfileid: "68302575"
 
 ![浮出控件](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>调查故障
+### <a name="investigate-failures"></a>调查失败
 
-选择“调查故障”  以启动故障窗格。
+选择“调查故障”以启动故障窗格。
 
 ![“调查故障”按钮的屏幕截图](media/app-map/investigate-failures.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "68302575"
 
 ### <a name="investigate-performance"></a>调查性能
 
-若要排查性能问题，请选择“调查性能”  。
+若要排查性能问题，请选择“调查性能”。
 
 ![“调查性能”按钮的屏幕截图](media/app-map/investigate-performance.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "68302575"
 
 ### <a name="go-to-details"></a>转到详细信息
 
-选择“转到详细信息”可探索端到端事务体验，从而可以深入到调用堆栈级别的信息。 
+选择“转到详细信息”可探索端到端事务体验，从而可以深入到调用堆栈级别的信息。
 
 ![“转到详细信息”按钮的屏幕截图](media/app-map/go-to-details.png)
 
@@ -76,7 +76,7 @@ ms.locfileid: "68302575"
 
 ### <a name="view-in-analytics"></a>在 Analytics 中查看
 
-若要进一步查询和调查应用程序数据，请单击“在 Analytics 中查看”。 
+若要进一步查询和调查应用程序数据，请单击“在 Analytics 中查看”。
 
 ![“在 Analytics 中查看”按钮的屏幕截图](media/app-map/view-in-analytics.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "68302575"
 
 ### <a name="alerts"></a>警报
 
-若要查看活动警报和导致警报触发的基础规则，请选择“警报”。 
+若要查看活动警报和导致警报触发的基础规则，请选择“警报”。
 
 ![“警报”按钮的屏幕截图](media/app-map/alerts.png)
 
@@ -272,4 +272,6 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解关联](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)
+* 若要详细了解相关工作原理 Application Insights 参阅 [遥测相关文章] (https://docs.microsoft.com/azure/application-insights/application-insights-correlation) 。
+* [端到端事务诊断体验](transaction-diagnostics.md)将所有 Application Insights 监视的组件中的服务器端遥测关联到一个视图中。
+* 有关 ASP.NET Core 和 ASP.NET 中的高级关联方案, 请参阅[跟踪自定义操作](custom-operations-tracking.md)一文。

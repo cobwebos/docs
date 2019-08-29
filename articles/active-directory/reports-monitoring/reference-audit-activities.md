@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a687823d1344ca11864523cb9187f48d7373fd41
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989632"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127133"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 审核活动参考
 
@@ -66,10 +66,10 @@ Azure AD 中的报告体系结构由以下部分组成：
 |访问评审|更新访问评审|
 |访问评审|更新 Azure AD 访问评审加入状态|
 |访问评审|更新访问评审邮件通知设置|
-|访问评审|更新访问评审定期模式计数设置|
-|访问评审|更新以天为单位的访问评审定期模式持续时间设置|
-|访问评审|更新访问评审定期模式结束类型设置|
-|访问评审|更新访问评审定期模式类型设置|
+|访问评审|更新访问评审再评计数设置|
+|访问评审|更新以天为单位的访问评审再评持续时间设置|
+|访问评审|更新访问评审再评结束类型设置|
+|访问评审|更新访问评审再评类型设置|
 |访问评审|更新访问评审提醒设置|
 |访问评审|更新程序|
 |访问评审|更新请求审核|
@@ -348,10 +348,10 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 |审核类别|activities|
 |---|---|
-|管理单元管理|下载单个风险事件类型|
+|管理单元管理|下载单个风险检测类型|
 |管理单元管理|下载选择加入的每周摘要的管理和状态|
-|管理单元管理|下载所有风险事件类型|
-|管理单元管理|下载免费的用户风险事件|
+|管理单元管理|下载所有风险检测类型|
+|管理单元管理|下载免费的用户风险检测|
 |管理单元管理|下载已标记为存在风险的用户|
 |应用程序管理|已处理批量邀请|
 |应用程序管理|已上传批量邀请|

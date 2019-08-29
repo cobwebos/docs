@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 9ddc7ad8882b30a17be5820116da72c5ab32fad9
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640614"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141150"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”、“标准”还是“存储优化”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
@@ -124,6 +124,15 @@ ms.locfileid: "69640614"
 <sup>4</sup> 每个技能集最多拥有 30 项技能。
 
 <sup>5</sup> 认知搜索工作负载和 Azure blob 索引中的 图像分析的运行时间比常规文本索引运行时间短。 图像分析和自然语言处理属于计算密集型，并且消耗了过多的可用处理能力。 减少运行时间，以便队列中的其他作业能够运行。  
+
+## <a name="synonym-limits"></a>同义词限制
+
+允许的最大同义词映射数因定价层而异。 每个规则最多可以有20个扩展, 其中的扩展是 equivalvent 的一项。 例如, 给定 "cat", 与 "猫"、"猫" 和 "felis" (猫的 genus) 的关联将计为3个扩展。
+
+| Resource | 免费 | 基本 | S1 | S2 | S3 | S3-HD |L1 | L2 |
+| -------- | -----|------ |----|----|----|-------|---|----|
+| 最大同义词映射 |3 |3|5 |10 |20 |20 | 10 | 10 |
+| 每个映射的最大规则数 |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
 
 ## <a name="queries-per-second-qps"></a>每秒查询次数 (QPS)
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 2b835765bbd40ffbd4a5117f767a7ba163e41dda
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 293f2a704fecb04bc6b65e49743ea80905f2394f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309289"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142672"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题
 
@@ -31,7 +31,7 @@ ms.locfileid: "68309289"
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>能否使用资源管理器模板创建 Azure 容器注册表？
 
-是的。 下面是[一个](https://github.com/Azure/azure-cli/blob/master/src/command_modules/azure-cli-acr/azure/cli/command_modules/acr/template.json)可用于创建注册表的模板。
+是的。 下面是[一个](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)可用于创建注册表的模板。
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>对于 ACR 中的图像, 是否存在安全漏洞扫描？
 

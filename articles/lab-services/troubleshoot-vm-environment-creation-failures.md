@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: bcdb549ce5b522b2d456e2cbeb5471b9df984514
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 945afd4f0a5049985955bbc71bbf6b2250f68d2a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774409"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129042"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Azure 开发测试实验室中的虚拟机 (VM) 和环境创建故障疑难解答
 如果计算机名称无效或者你即将违反实验室策略, 开发测试实验室会发出警告。 有时, 您的实验室`X` VM 或环境状态旁边会出现红色, 表明出现了问题。  本文提供了几个技巧, 你可以使用这些技巧来查找基本问题, 并希望避免将来出现此问题。
 
 ## <a name="portal-notifications"></a>门户通知
-如果你使用的是 Azure 门户, 则首先要查看 "**通知" 面板**。  通知面板，可通过单击主命令栏上 **钟形图标**，告诉您是否实验室 VM 或环境创建是成功还是失败。  如果出现故障, 你会看到与创建失败相关联的错误消息。 详细信息通常会给予进一步的信息来帮助你解决问题。 在下面的示例中, 虚拟机创建失败, 因为内核不足。 详细消息告诉你如何解决此问题并请求增加核心配额。
+如果你使用的是 Azure 门户, 则首先要查看 "**通知" 面板**。  通知面板，可通过单击主命令栏上 **钟形图标**，告诉您是否实验室 VM 或环境创建是成功还是失败。  如果出现故障, 你会看到与创建失败相关联的错误消息。 详细信息通常会给予进一步的信息来帮助你解决问题。 在下面的示例中, 虚拟机创建失败, 因为内核不足。 详细消息告诉你如何解决此问题并请求增加核心配额。
 
 ![Azure 门户通知](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
 

@@ -1,19 +1,18 @@
 ---
-title: Azure 站点恢复-使用 Azure PowerShell 的 Azure 虚拟机的复制期间排除磁盘 |Microsoft Docs
+title: Azure Site Recovery-通过使用 Azure PowerShell 在复制 Azure 虚拟机时排除磁盘 |Microsoft Docs
 description: 了解如何使用 Azure PowerShell 在 Azure Site Recovery 过程中排除 Azure 虚拟机的磁盘。
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 54a32d7f7aa4bcab73f5828da3e7eba9d25276be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81d22250262351e3c1bbb2fe28960b3d158bbf57
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160306"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147053"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>对 Azure VM 进行 PowerShell 复制时排除磁盘
 
@@ -22,7 +21,7 @@ ms.locfileid: "66160306"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 开始之前：
 
@@ -36,13 +35,13 @@ ms.locfileid: "66160306"
 
 - 虚拟机已达到 [Azure Site Recovery 对数据更改复制速率的限制](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)。
 
-- 排除的磁盘改动的数据并不重要或不需要复制。
+- 在排除的磁盘上改动的数据不重要或不需要复制。
 
 - 需要节省存储和网络资源，因此不复制此数据。
 
 ## <a name="how-to-exclude-disks-from-replication"></a>如何从复制中排除磁盘
 
-在本示例中，我们将复制具有一个操作系统的虚拟机和美国东部区域为美国西部 2 区域中的三个数据磁盘。 虚拟机的名称为“AzureDemoVM”  。 我们排除磁盘 1，保留磁盘 2 和 3。
+在本示例中, 我们将包含一个操作系统的虚拟机和美国东部地区的三个数据磁盘复制到美国西部2区域。 虚拟机的名称为“AzureDemoVM”。 我们排除磁盘 1，保留磁盘 2 和 3。
 
 ## <a name="get-details-of-the-virtual-machines-to-replicate"></a>获取要复制的虚拟机的详细信息
 

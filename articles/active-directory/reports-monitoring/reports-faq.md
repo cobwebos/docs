@@ -16,18 +16,18 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a9b1144e3ef1f1a49c39d694f465653da5881cb
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e8c3138b82c7dc4a7217e8cb67448a5d824398ba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987931"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127020"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>有关 Azure Active Directory 报告的常见问题解答
 
 本文包括了对 Azure Active Directory (Azure AD) 报告常见问题的解答。 有关详细信息，请参阅 [Azure Active Directory 报告](overview-reports.md)。 
 
-## <a name="getting-started"></a>开始使用 
+## <a name="getting-started"></a>入门 
 
 **问：我目前使用`https://graph.windows.net/<tenant-name>/reports/`终结点 api 以编程方式将 Azure AD 审核和集成的应用程序使用情况报表纳入我们的报表系统。我应当切换到什么？**
 
@@ -37,7 +37,7 @@ ms.locfileid: "68987931"
 
 **问：我目前使用`https://graph.windows.net/<tenant-name>/reports/`终结点 api 来以编程方式将 Azure AD 安全报告 (如泄漏的凭据或来自匿名 IP 地址的登录) 提取到我们的报告系统中。我应当切换到什么？**
 
-**答:** 可以使用 [“标识保护”风险事件 API](../identity-protection/graph-get-started.md) 通过 Microsoft Graph 访问安全检测。 此新格式在如何查询数据方面提供了更大的灵活性，可以使用高级筛选、字段选择和其他手段；并且此新格式将风险事件标准化为一种类型，以便更轻松地集成到 SIEM 和其他数据收集工具中。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 不过，[新 API 使用的是 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，后者是 O365 或 Azure AD 之类的 API 的 Microsoft 标准。 因此，需要做的工作可以扩展当前 MS Graph 投资或者帮助开始向此新的标准平台进行转换。
+**答:** 你可以使用 [Identity Protection 风险检测 API](../identity-protection/graph-get-started.md) 通过 Microsoft Graph 访问安全检测。 这种新格式可让你更灵活地查询数据、高级筛选、字段选择等, 并将风险检测标准化为一种类型, 以便更轻松地集成到 Siem 和其他数据收集工具。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 不过，[新 API 使用的是 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，后者是 O365 或 Azure AD 之类的 API 的 Microsoft 标准。 因此，需要做的工作可以扩展当前 MS Graph 投资或者帮助开始向此新的标准平台进行转换。
 
 ---
 
@@ -105,9 +105,9 @@ ms.locfileid: "68987931"
 
 ---
 
-## <a name="risky-sign-ins"></a>风险登录
+## <a name="risky-sign-ins"></a>有风险的登录
 
-**问：“标识保护”中存在风险事件，但登录报告中未显示相应的登录。** 这是正常情况吗？
+**问：标识保护存在风险检测, 但在 "登录" 报告中看不到相应的登录。** 这是正常情况吗？
 
 **答:** 是的，“标识保护”会评估所有身份验证流的风险，无论其为交互式还是非交互式。 但是，所有登录报告仅显示交互式登录。
 
@@ -115,7 +115,7 @@ ms.locfileid: "68987931"
 
 **问：如何了解 Azure 门户中被标记为存在风险的用户或登录的原因？**
 
-**答:** 如果使用的是 Azure AD Premium 订阅，可以选择单击“已标记为存在风险的用户”中的用户或选择“有风险的登录”报告中的记录来了解潜在风险事件的详细信息。 如果使用的是 **Free** 或 **Basic** 订阅，则可以查看有风险的用户和有风险的登录报告，但无法查看潜在风险事件的信息。
+**答:** 如果有**Azure AD Premium**订阅, 可以通过在 "已**标记为风险的用户**" 中选择用户或在 "有**风险的登录**" 报表中选择一个记录来了解有关底层风险检测的详细信息。 如果你有**免费**订阅或**基本**订阅, 则可以查看 "有风险的用户和有风险的登录" 报表, 但看不到基础风险检测信息。
 
 ---
 
@@ -125,7 +125,7 @@ ms.locfileid: "68987931"
 
 ---
 
-**问：风险事件“检测到具有附加风险的登录”指示什么？**
+**问：风险检测 "已检测到其他风险的登录" 是什么意思？**
 
 **答:** 为了深入了解环境中所有具有风险的登录，对于为了执行“Azure AD 标识保护”订阅方专用的检测而进行的登录，“登录时检测到其他风险”将充当占位符。
 

@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93327091d0065a67d441dd56cadd83f4f7d2d1f2
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: afab194c984dcbfa96a9342f46b892c7ec08d321
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970401"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135672"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -53,7 +53,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 
 ---
 
-## <a name="july-2019"></a>2019年7月
+## <a name="july-2019"></a>2019 年 7 月
 
 ### <a name="plan-for-change-application-proxy-service-update-to-support-only-tls-12"></a>计划更改:应用程序代理服务更新, 仅支持 TLS 1。2
 
@@ -85,7 +85,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 **服务类别：** MFA  
 **产品功能：** 标识安全性和保护
 
-我们正在从[Office 365 Ip 地址和 URL Web 服务](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service)中删除 MFA 服务器的 ip 地址。 如果你当前依赖这些页面来更新防火墙设置, 则必须确保还包括 "入门" 的 " **Azure 多重身份验证服务器防火墙要求**" 部分中所述的 IP 地址列表[Azure 多重身份验证服务器](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements)一文。
+我们正在从[Office 365 Ip 地址和 URL Web 服务](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service)中删除 MFA 服务器的 ip 地址。 如果你当前依赖这些页面来更新防火墙设置, 则必须确保还包括 " **Azure 多重身份验证服务器防火墙要求**" 部分的 "入门" 中所述的 IP 地址列表[Azure 多重身份验证服务器](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements)一文。
 
 ---
 
@@ -164,7 +164,7 @@ Azure AD 客户现在可以设置策略以管理其组织的用户和组的 FIDO
 
 如果你厌倦了管理 IP 地址和范围的长列表, 则可以使用 Azure 网络安全组中的 new **AzureActiveDirectoryDomainServices** network service 标记来帮助保护到 Azure AD 域服务虚拟的入站流量网络子网。
 
-有关此新服务标记的详细信息, 请参阅[Azure AD 域服务的网络安全组](https://docs.microsoft.com/azure/active-directory-domain-services/network-considerations#default-network-service-group)。
+有关此新服务标记的详细信息, 请参阅[Azure AD 域服务的网络安全组](../../active-directory-domain-services/network-considerations.md#network-security-groups-and-required-ports)。
 
 ---
 
@@ -590,7 +590,7 @@ Azure AD 应用现在可以使用静态查询参数 (例如, `https://contoso.co
 
 Azure AD 威胁情报检测现在作为更新的 Azure AD Identity Protection 功能的一部分提供。 这一新功能可以帮助为特定用户或活动指出异常的用户活动, 该活动与基于 Microsoft 内部和外部威胁智能源的已知攻击模式一致。
 
-有关 Azure AD Identity Protection 的刷新版本的详细信息, 请参阅[公共预览博客中的四个主要 Azure AD Identity Protection 增强功能](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935), 以及[Azure Active Directory Identity Protection (已刷新) 是什么？](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) 下文. 有关 Azure AD 威胁智能检测的详细信息, 请参阅[Azure Active Directory Identity Protection 风险事件](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence)一文。
+有关 Azure AD Identity Protection 的刷新版本的详细信息, 请参阅[公共预览博客中的四个主要 Azure AD Identity Protection 增强功能](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935), 以及[Azure Active Directory Identity Protection (已刷新) 是什么？](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) 下文. 有关 Azure AD 威胁智能检测的详细信息, 请参阅[Azure Active Directory Identity Protection 风险检测](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence)一文。
 
 ---
 

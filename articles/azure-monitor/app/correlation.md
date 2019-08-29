@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 1c6a0ce3e4e8d098d2bc048a331b0ae0cb5c6b13
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bb28171ceca9861fb5cc0b7be1db9ab58ef72a1b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881386"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124103"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -258,6 +258,7 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 ## <a name="next-steps"></a>后续步骤
 
 - 编写[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)。
+- 有关 ASP.NET Core 和 ASP.NET 中的高级关联方案, 请参阅[跟踪自定义操作](custom-operations-tracking.md)一文。
 - 详细了解如何为其他 SDK [设置 cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name)。
 - 在 Application Insights 中载入微服务的所有组件。 查看[支持的平台](../../azure-monitor/app/platforms.md)。
 - 有关 Application Insights 的类型，请参阅[数据模型](../../azure-monitor/app/data-model.md)。

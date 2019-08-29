@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 如何提供静态数据的加密以及如�
 author: monhaber
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: e22e05618c8b8977ba8b03afd3b654d27d4fa6bd
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 035c7e9ed5ab33c89a2a55b1133294db434bfe81
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981738"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123904"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB 的高级威胁防护
 
@@ -56,6 +56,31 @@ ms.locfileid: "69981738"
 * [启用高级威胁防护](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
 * [获取高级威胁防护](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
 * [禁用高级威胁防护](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+
+### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
+
+使用 Azure 资源管理器模板来设置启用了高级威胁防护的 Cosmos DB。
+有关详细信息, 请参阅[使用高级威胁防护创建 CosmosDB 帐户](https://azure.microsoft.com/en-us/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/)。
+
+### <a name="using-azure-policy"></a>使用 Azure 策略
+
+使用 Azure 策略为 Cosmos DB 启用高级威胁防护。
+
+1. 启动 "Azure**策略定义**" 页, 搜索 "为**Cosmos DB 策略部署高级威胁防护**"。
+
+    ![搜索策略](./media/cosmos-db-advanced-threat-protection/cosmos-db.png) 
+
+1. 单击 "**为 CosmosDB 部署高级威胁防护**" 策略, 然后单击 "**分配**"。
+
+    ![选择订阅或组](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png)
+
+
+1. 在 "**作用域**" 字段中, 单击三个点, 选择 Azure 订阅或资源组, 然后单击 "**选择**"。
+
+    !["策略定义" 页](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png)
+
+
+1. 输入其他参数, 然后单击 "**分配**"。
 
 ## <a name="manage-atp-security-alerts"></a>管理 ATP 安全警报
 

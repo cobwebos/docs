@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: af95ad892b62cb5d8bece554d6026525d9279777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 03651ecb073d02a373c434b8cb55bdafec6d142a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102871"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142220"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>“Azure Migrate:常见问题 (FAQ)
 
@@ -172,7 +172,7 @@ Azure Migrate 收集本地计算机的性能历史记录, 并使用它在 Azure 
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-the-dependency-agent"></a>如何自动执行 Microsoft Monitoring Agent (MMA) 和依赖项代理的安装？
 
-使用此[脚本安装代理](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)。 按照这些说明操作, 使用命令行或自动化[来安装 MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) 。 对于 MMA, 请使用[此脚本](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)。
+使用此[脚本安装依赖关系代理](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)。 按照这些说明操作, 使用命令行或自动化[来安装 MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) 。 对于 MMA, 请使用[此脚本](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)。
 
 除了脚本以外, 还可以使用 System Center Configuration Manager 和[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)之类的部署工具来部署代理。
 
@@ -183,8 +183,7 @@ Azure Migrate 收集本地计算机的性能历史记录, 并使用它在 Azure 
 
 ### <a name="what-operating-systems-are-supported-by-the-dependency-agent"></a>依赖关系代理支持哪些操作系统？
 
-- 查看[依赖关系代理支持的 Windows 操作系统](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems)的列表。
-- 查看[依赖关系代理支持的 Linux 操作系统](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)的列表。
+查看[用于 VM 的 Azure Monitor 支持的 Windows 和 Linux 操作系统](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)的列表。
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>是否可以将 Azure Migrate 中的依赖项可视化到超过一小时？
 否。 最多可将依赖项可视化到一小时。 您可以返回到历史记录中的特定日期 (在历史记录中, 每月返回一项), 但可视化效果的最大持续时间是一小时。 例如, 你可以在依赖关系映射中使用时间段来查看昨天的依赖项, 但你只能查看一个小时的窗口。 但是, 可以使用 Azure Monitor 日志来查询更长时间的[依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。

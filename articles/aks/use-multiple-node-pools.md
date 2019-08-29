@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 656934f00879b47669fac4deaac5156cb100e159
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: caeb89332bd46b4f0cf2d0f9e5654aebca4d765d
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898754"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147257"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>预览-创建和管理 Azure Kubernetes 服务中群集的多个节点池 (AKS)
 
@@ -101,12 +101,15 @@ az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --enable-vmss \
-    --node-count 1 \
+    --node-count 2 \
     --generate-ssh-keys \
     --kubernetes-version 1.13.10
 ```
 
 创建群集需要几分钟时间。
+
+> [!NOTE]
+> 若要确保群集正常运行, 应在默认节点池中至少运行2个节点, 因为基本的系统服务在此节点池上运行。
 
 群集准备就绪后, 请使用[az aks get 凭据][az-aks-get-credentials]命令获取用于的群集凭据`kubectl`:
 
@@ -133,7 +136,7 @@ az aks nodepool add \
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-以下示例输出显示已成功地在节点池中有三个节点创建了*mynodepool* 。 在上一步中创建 AKS 群集时, 创建的默认*nodepool1*的节点计数为*1*。
+以下示例输出显示已成功地在节点池中有三个节点创建了*mynodepool* 。 在上一步中创建 AKS 群集时, 创建的默认*nodepool1*的节点计数为*2*。
 
 ```console
 $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
@@ -151,7 +154,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -166,11 +169,14 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > 如果在添加节点池时未指定*OrchestratorVersion*或*VmSize* , 则将基于 AKS 群集的默认值创建节点。 在此示例中, 为 Kubernetes 版本*1.13.10*和*Standard_DS2_v2*的节点大小。
 
 ## <a name="upgrade-a-node-pool"></a>升级节点池
-
+ 
 > [!NOTE]
 > 群集或节点池上的升级和缩放操作是互相排斥的。 不能同时升级和缩放群集或节点池。 相反, 每个操作类型必须在目标资源上完成, 然后才能在该相同资源上发出下一个请求。 有关详细信息, 请参阅[故障排除指南](https://aka.ms/aks-pending-upgrade)。
 
 在第一步中创建 AKS 群集时, 指定了`--kubernetes-version` *1.13.10*的。 这会为控制平面和初始节点池设置 Kubernetes 版本。 可以通过不同的命令来升级控制平面和节点池的 Kubernetes 版本。 命令用于升级控制平面, `az aks nodepool upgrade`而用于升级单个节点池。 `az aks upgrade`
+
+> [!NOTE]
+> 节点池 OS 映像版本绑定到群集的 Kubernetes 版本。 在群集升级之后, 你只会获得 OS 映像升级。
 
 让我们将*mynodepool*升级到 Kubernetes *1.13.10*。 使用[az aks 节点池升级][az-aks-nodepool-upgrade]命令升级节点池, 如以下示例中所示:
 
@@ -206,7 +212,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -269,7 +275,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -319,7 +325,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -372,7 +378,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -389,7 +395,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 ## <a name="schedule-pods-using-taints-and-tolerations"></a>使用 taints 和 tolerations 计划箱
 
-现在, 群集中有两个节点池: 最初创建的默认节点池, 以及基于 GPU 的节点池。 使用[kubectl get 节点][kubectl-get]命令查看群集中的节点。 以下示例输出显示每个节点池中的一个节点:
+现在, 群集中有两个节点池: 最初创建的默认节点池, 以及基于 GPU 的节点池。 使用[kubectl get 节点][kubectl-get]命令查看群集中的节点。 以下示例输出显示节点:
 
 ```console
 $ kubectl get nodes

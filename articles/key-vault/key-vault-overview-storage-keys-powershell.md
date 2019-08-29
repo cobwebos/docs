@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: df377b19d78a63b3cfc57347fff00345a9c63ead
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562532"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136567"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault 托管存储帐户 - PowerShell
 
@@ -21,6 +21,7 @@ ms.locfileid: "69562532"
 > - 使用应用程序标识或用户标识（而不是存储帐户凭据）对客户端应用程序进行身份验证。 
 > - 在 Azure 上运行时使用 [Azure AD 托管标识](/azure/active-directory/managed-identities-azure-resources/)。 托管标识完全消除了客户端身份验证的需要，并可以在应用程序中存储凭据，或者将凭据与应用程序一同存储。
 > - 使用同样受 Key Vault 支持的基于角色的访问控制 (RBAC) 来管理授权。
+> - 目前, AAD 访问存储帐户不能用于访问表。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -142,7 +143,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>启用密钥重新生成
 
-如果希望 Key Vault 定期重新生成存储帐户密钥，可以设置重新生成周期。 以下示例将重新生成周期设置为 3 天。 3 天后，Key Vault 将重新生成“key1”，并将活动密钥从“key2”交换为“key1”。
+如果希望 Key Vault 定期重新生成存储帐户密钥，可以设置重新生成周期。 以下示例将重新生成周期设置为 3 天。 三天后 Key Vault 将重新生成 "key2" 并将活动密钥从 "key2" 交换为 "key1"。
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

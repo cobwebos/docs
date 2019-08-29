@@ -3,22 +3,21 @@ title: 从 Azure 数据工厂调用 MapReduce 程序
 description: 了解如何通过从 Azure 数据工厂在 Azure HDInsight 群集上运行 MapReduce 程序来处理数据。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: c34db93f-570a-44f1-a7d6-00390f4dc0fa
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 715c595f7a8757842ddf10de1c5d5c0a905e9d53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d32cd12989262ebeaafee60a02bb7ea2a9b1e32
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824212"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139301"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>从数据工厂调用 MapReduce 程序
 > [!div class="op_single_selector" title1="转换活动"]
@@ -118,8 +117,8 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 ## <a name="running-the-word-count-program"></a>运行字数统计程序
 此示例中的管道在 Azure HDInsight 群集上运行字数统计 Map/Reduce 程序。   
 
-### <a name="linked-services"></a>链接服务
-首先，创建一个链接服务，将 Azure HDInsight 群集使用的 Azure 存储链接到 Azure 数据工厂。 如果要复制/粘贴下面的代码，请不要忘记将“帐户名”  和“帐户密钥”  替换为自己的 Azure 存储 的名称和密钥。 
+### <a name="linked-services"></a>链接的服务
+首先，创建一个链接服务，将 Azure HDInsight 群集使用的 Azure 存储链接到 Azure 数据工厂。 如果要复制/粘贴下面的代码，请不要忘记将“帐户名”和“帐户密钥”替换为自己的 Azure 存储 的名称和密钥。 
 
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 
@@ -246,7 +245,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 [Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
 [Azure Portal]: https://portal.azure.com
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Hive 活动](data-factory-hive-activity.md)
 * [Pig 活动](data-factory-pig-activity.md)
 * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)

@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 3d1f82c5eadde52edb721185a497d9b187eebb7b
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3ef727c4d1f1af13b66c7de02b8e67cc5e45f065
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668063"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147479"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>通过 IoT 中心将文件从设备上传到云 (Java)
 
@@ -44,7 +44,7 @@ ms.locfileid: "68668063"
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、.NET 和 Javascript）。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot)。
 
-要完成本教程，需要以下各项：
+## <a name="prerequisites"></a>先决条件
 
 * 最新的 [Java SE 开发工具包 8](https://aka.ms/azure-jdks)
 

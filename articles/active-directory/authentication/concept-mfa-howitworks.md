@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d4f19c16149dbed34c16d021ff7100cace9a06a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 57b441803a066b794d17b46afec4d930b94ebdea
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879146"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125132"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>工作原理：Azure 多重身份验证
 
 双重验证的安全性在于它的分层方法。 破坏多因素身份验证系统对于攻击者来说是巨大的挑战。 即使攻击者设法得到用户的密码，如果没有同时占有其他身份验证方法也没有用处。 它需要以下身份验证方法中的两种或多种才能运作：
 
-* 你知道的某样东西（通常为密码）
-* 具有的某样东西（无法轻易复制的可信设备，如电话）
-* 自身的特征（生物辨识系统）
+* 您知道的信息（通常为密码）
+* 您拥有的东西（不易被复制的受信任设备，如电话）
+* 您的特征（生物识别）
 
 <center>
 
@@ -52,7 +52,7 @@ Azure 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问�
 * 请对支持人员进行培训，以处理用户因无法访问其身份验证方法或操作不正确而无法登录的情况。
    * 使用 Azure MFA 服务的条件访问策略, 你的支持人员可以将用户添加到从需要 MFA 的策略中排除的组。
 * 请考虑使用条件性访问命名位置作为最小化双重验证提示的方式。 使用此功能, 管理员可以绕过从安全的受信任的网络位置 (例如用于新用户载入的网络分段) 登录的用户的双重验证。
-* 部署 [Azure AD 标识保护](../active-directory-identityprotection.md)并根据风险事件触发双重验证。
+* 部署[Azure AD Identity Protection](../active-directory-identityprotection.md)并根据风险检测来触发双重验证。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 33e29b02adfccf94da84dd99451117485b892ba3
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
-ms.translationtype: HT
+ms.openlocfilehash: c6b9c0a8615960772ccac824c293b5f4ea6cfe55
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072906"
+ms.locfileid: "70129191"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure 文件同步疑难解答
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -717,7 +717,7 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
 | **所需的补救措施** | 否 |
 
-此错误的原因是同步数据库出现内部问题。 当 Azure 文件同步重试同步时，此错误将自行解决。 如果此错误持续了较长时间，请创建支持请求，到时我们将与你取得联系，并帮助解决此问题。
+此错误的原因是同步数据库出现内部问题。 同步重试时, 此错误将自动解决。 如果此错误持续了较长时间，请创建支持请求，到时我们将与你取得联系，并帮助解决此问题。
 
 <a id="-2134364024"></a>**由于 Azure Active Directory 租户中的更改, 同步失败**  
 

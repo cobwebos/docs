@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ec69f4bc2e73bfb390a6b23b1da627d77f9b5e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8cfefe02b8c9325a2d501289b10b09bc153b0593
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874249"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135754"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>身份验证和授权错误代码
 
@@ -194,6 +194,7 @@ ms.locfileid: "69874249"
 | AADSTS90019 | MissingTenantRealm - Azure AD 无法确定请求中的租户标识符。 |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat - 主体名称格式无效，或者不符合预期的 `name[/host][@realm]` 格式。 主体名称是必需的，而主机和领域是可选的，可设置为 null。 |
 | AADSTS90023 | InvalidRequest - 身份验证服务请求无效。 |
+| AADSTS9002313 | InvalidRequest-请求格式不正确或无效。 -这里的问题是由于请求与特定终结点发生错误。 此问题的建议是获取发生的错误的 fiddler 跟踪, 并查看请求的格式是否确实正确。 |
 | AADSTS90024 | RequestBudgetExceededError - 发生了暂时性错误。 重试。 |
 | AADSTS90033 | MsodsServiceUnavailable - Microsoft Online Directory Service (MSODS) 不可用。 |
 | AADSTS90036 | MsodsServiceUnretryableFailure - MSODS 托管的 WCF 服务发生意外的不可重试错误。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。 |

@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 28d01f1acbc6d9ff033567b10efc801925752191
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4d9a73ee9fb9e4019d30354e6d9fbbe57d081e33
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618483"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147522"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>使用 IoT 中心发送云到设备的消息 (Java)
 
@@ -43,7 +43,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 Sdk 对许多设备平台和语言 (包括 C、Java、Python 和 Javascript) 提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的逐步说明，请参阅 [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot)。
 
-要完成本教程，需要以下各项：
+## <a name="prerequisites"></a>先决条件
 
 * [从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-java.md)快速入门或[使用 IoT 中心配置消息路由](tutorial-routing.md)教程的完整工作版本。
 

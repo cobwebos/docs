@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 12b88e14ed1d20ad26c9c8832877da08d3d98523
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543510"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146129"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建来宾配置策略
 
@@ -142,7 +142,7 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 首先, 在 Azure 中创建用户分配的托管标识。 虚拟机使用该标识来访问存储在 Key Vault 中的机密。 有关详细步骤, 请参阅[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。
 
 接下来, 创建 Key Vault 实例。 有关详细步骤, 请参阅[设置和检索机密-PowerShell](../../../key-vault/quick-create-powershell.md)。
-向实例分配权限, 以向用户分配的标识授予对存储在 Key Vault 中的机密的访问权限。 有关详细步骤, 请参阅[设置和检索机密-.net](../../../key-vault/quick-create-net.md#assign-permissions-to-your-application-to-read-secrets-from-key-vault)。
+向实例分配权限, 以向用户分配的标识授予对存储在 Key Vault 中的机密的访问权限。 有关详细步骤, 请参阅[设置和检索机密-.net](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault)。
 
 然后, 将用户分配的标识分配给虚拟机。 有关详细步骤, 请参阅[使用 PowerShell 在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)。
 大规模, 使用 Azure 资源管理器通过 Azure 策略分配此标识。 有关详细步骤, 请参阅[使用模板在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)。
@@ -318,11 +318,11 @@ New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.w
 
 使用自定义内容包发布自定义 Azure 策略后, 如果想要发布新版本, 必须更新两个字段。
 
-- **版本**：当你运行 cmdlet `New-GuestConfigurationPolicy` cmdlet 时, 你必须指定一个大于当前发布的版本号。  这将更新新策略文件中的来宾配置分配的版本, 以便扩展识别包已更新。
-- **contentHash**:这会由`New-GuestConfigurationPolicy` cmdlet 自动更新。  它是由`New-GuestConfigurationPackage`创建的包的哈希值。  对于发布的`.zip`文件, 此文件必须是正确的。  如果仅`contentUri`更新属性 (例如, 如果用户可以从门户手动更改策略定义), 该扩展将不接受该内容包。
+- **版本**：当你运行`New-GuestConfigurationPolicy` cmdlet 时, 你必须指定一个比当前发布的版本号大的版本号。  属性更新新策略文件中的来宾配置分配的版本, 以便扩展识别包已更新。
+- **contentHash**:此属性由`New-GuestConfigurationPolicy` cmdlet 自动更新。  它是由`New-GuestConfigurationPackage`创建的包的哈希值。  对于发布的`.zip`文件, 属性必须是正确的。  如果仅`contentUri`更新属性 (例如, 如果用户可以从门户手动更改策略定义), 则扩展不接受内容包。
 
 发布更新包的最简单方法是重复本文中所述的过程, 并提供更新的版本号。
-这将保证所有属性都已正确更新。
+该进程保证所有属性都已正确更新。
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>将 Windows 组策略内容转换为 Azure 策略来宾配置
 
@@ -330,7 +330,7 @@ New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.w
 DSC 社区已发布工具, 用于将导出的组策略模板转换为 DSC 格式。
 通过将此工具与上述来宾配置 cmdlet 结合使用, 你可以转换 Windows 组策略内容并打包/发布它以供 Azure 策略审核。
 有关使用该工具的详细信息, 请参阅[文章快速入门:将组策略转换为](/powershell/dsc/quickstarts/gpo-quickstart)DSC。
-内容转换完成后, 创建 pakcage 并将其发布为 Azure 策略的步骤与任何 DSC 内容相同。
+内容转换完成后, 创建包并将其发布为 Azure 策略的步骤与任何 DSC 内容相同。
 
 ## <a name="optional-signing-guest-configuration-packages"></a>可选：为来宾配置包签名
 

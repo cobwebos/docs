@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304ba16985d5abfc4d385b3f1150cfa544c20b2a
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c8e73bd3639adcc43dd191ff2eacaf7335f08d72
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335507"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126599"
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>启用 Azure Active Directory 标识保护
 
 Azure Active Directory 标识保护是 Azure Active Directory (Azure AD) 的一项功能。 使用 Azure AD 标识保护，你能够：
 
-- 获得使用机器学习算法检测到的已标记用户和风险事件的综合视图
+- 使用机器学习算法获取已标记用户和检测到的风险检测的合并视图
 - 设置基于风险的条件访问策略以自动保护你的用户
 - 通过对漏洞执行操作提高安全状态 
 
