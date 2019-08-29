@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: roiyz
-ms.openlocfilehash: a0c4b6333cc8348959a679a81343f2479078694b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 8ce10deaf49b6d7796a6b932beb15a1527322f69
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828159"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084386"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Azure Monitor 虚拟机扩展
 
@@ -33,7 +32,7 @@ Azure Monitor 日志提供跨云和本地资产的监视、警报和警报修正
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 

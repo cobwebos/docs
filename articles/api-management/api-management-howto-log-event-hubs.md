@@ -10,16 +10,15 @@ ms.assetid: 88f6507d-7460-4eb2-bffd-76025b73f8c4
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 14f84b5380a1c106114cdab425de7f69f4e19825
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 646d9206ec82d5f35ccab9365e76276ff779d225
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657537"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073487"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何在 Azure API 管理中将事件记录到 Azure 事件中心
 事件中心是一个高度可缩放的引入服务，每秒可以引入数百万的事件，使用户能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道的“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储这些数据。 事件中心可将事件流的生成与这些事件的使用分离开来，因此，事件使用者可以根据自己的计划访问事件。
@@ -93,12 +92,12 @@ ms.locfileid: "60657537"
 1. 浏览到自己的 APIM 实例。
 2. 选择“API”选项卡。
 3. 选择要将策略添加到的 API。 在此示例中，我们向 **Unlimited** 产品中的 **Echo API** 添加策略。
-4. 选择“所有操作”。 
+4. 选择“所有操作”。
 5. 选择屏幕顶部的“设计”选项卡。
 6. 在“入站或出站处理”窗口中，单击三角形（铅笔旁边）。
 7. 选择“代码编辑器”。 有关详细信息，请参阅[如何设置或编辑策略](set-edit-policies.md)。
 8. 将光标放在 `inbound` 或 `outbound` 策略部分中。
-9. 在右侧窗口中，选择“高级策略”   > “记录到 EventHub”  。 这会插入 `log-to-eventhub` 策略语句模板。
+9. 在右侧窗口中，选择“高级策略” > “记录到 EventHub”。 这会插入 `log-to-eventhub` 策略语句模板。
 
 ```xml
 <log-to-eventhub logger-id ='logger-id'>
@@ -109,7 +108,7 @@ ms.locfileid: "60657537"
 
 可使用返回字符串作为 `log-to-eventhub` 元素值的任何表达式。 在此示例中，将记录包含日期和时间、服务名称、请求 ID、请求 IP 地址和操作名称的字符串。
 
-单击“保存”  保存更新后的策略配置。 保存后，策略立即处于活动状态，并且事件记录到指定的事件中心。
+单击“保存”保存更新后的策略配置。 保存后，策略立即处于活动状态，并且事件记录到指定的事件中心。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关 Azure 事件中心的详细信息

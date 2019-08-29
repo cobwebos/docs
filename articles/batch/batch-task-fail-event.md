@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/15/2019
 ms.author: lahugh
-ms.openlocfilehash: aa56b0ead8edc17efe74547f6374a3f8888970b5
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0a96bbbd9166d501e6824a8875e9505a4a715e8b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624194"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094420"
 ---
 # <a name="task-fail-event"></a>任务失败事件
 
@@ -65,7 +64,7 @@ ms.locfileid: "69624194"
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|元素名称|type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |poolId|String|运行任务的池的 id。|
 |nodeId|String|运行任务的节点的 id。|
@@ -85,7 +84,7 @@ ms.locfileid: "69624194"
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|元素名称|type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |startTime|DateTime|任务开始运行的时间。 “Running”对应于**正在运行**状态，因此如果任务指定资源文件或应用程序包，则开始时间反映了任务开始下载或部署这些内容的时间。  如果任务已重启或重试，该时间是任务开始运行的最近时间。|
 |endTime|DateTime|任务完成的时间。|

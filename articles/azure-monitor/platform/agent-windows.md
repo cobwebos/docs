@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 8ca87f18a91af3937f8b4dd1148ecad8507e0dd5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5e1fe6252f396a4585b5d7d7190728b79229d5c7
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849063"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073976"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>将 Windows 计算机连接到 Azure Monitor
 
@@ -204,6 +204,6 @@ ms.locfileid: "68849063"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[管理并维护 Windows 和 Linux 的 Log Analytics 代理](agent-manage.md)，了解如何在代理部署生命周期内在计算机上管理代理。  
+- 查看[管理和维护适用于 Windows 和 Linux 的 Log Analytics 代理](agent-manage.md), 以了解如何在虚拟机中重新配置、升级或删除代理。
 
 - 如果在安装或管理代理时遇到问题，请查看 [Windows 代理疑难解答](agent-windows-troubleshoot.md)。

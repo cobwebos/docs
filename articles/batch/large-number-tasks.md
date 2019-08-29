@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: f91d47e1f57fb74575fbdad0a76386b53fb38b1f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1322b8eb14205ff29e109fae82466270f7507781
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322523"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094023"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>将大量的任务提交到 Batch 作业
 
@@ -30,7 +29,7 @@ ms.locfileid: "68322523"
 
 ## <a name="use-task-collections"></a>使用任务集合
 
-Batch API 提供所需的方法用于高效地将任务作为集合添加到作业，或者每次添加一个任务。  添加大量的任务时，应使用适当的方法或重载，以集合的形式添加任务。 一般情况下，任务集合的构造方式是在循环访问一组输入文件或作业的参数时定义任务。
+Batch API 提供所需的方法用于高效地将任务作为集合添加到作业，或者每次添加一个任务。 添加大量的任务时，应使用适当的方法或重载，以集合的形式添加任务。 一般情况下，任务集合的构造方式是在循环访问一组输入文件或作业的参数时定义任务。
 
 可在单个调用中添加的任务集合的最大大小取决于所用的 Batch API：
 

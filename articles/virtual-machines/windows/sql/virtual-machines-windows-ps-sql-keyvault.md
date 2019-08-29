@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: cd66dfb1-0e9b-4fb0-a471-9deaf4ab4ab8
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e7de54f7da8cef5942a8d8f41031eaf3e2565580
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: cad70169e88e1fafa129c02f30d5288d39e30a9c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846249"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102150"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>在 Azure 虚拟机上配置 SQL Server 的 Azure Key Vault 集成 (Resource Manager)
 
@@ -50,7 +49,7 @@ SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](https://m
 
 ![SQL Azure 密钥保管库集成](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 
-有关预配的详细演练, 请参阅[在 Azure 门户中预配 SQL Server 虚拟机](virtual-machines-windows-portal-sql-server-provision.md)。
+有关预配的详细演练，请参阅[在 Azure 门户中预配 SQL Server 虚拟机](virtual-machines-windows-portal-sql-server-provision.md)。
 
 ### <a name="existing-vms"></a>现有 VM
 
@@ -63,7 +62,7 @@ SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](https://m
 完成后, 选择 "**安全**" 页底部的 "**应用**" 按钮保存所做的更改。
 
 > [!NOTE]
-> 此处创建的凭据名称将在稍后映射到 SQL 登录名。 这允许 SQL 登录名访问密钥保管库。 
+> 我们在此处创建的凭据名称将在稍后映射到 SQL 登录名。 这允许 SQL 登录名访问密钥保管库。 
 
 
 > [!NOTE]

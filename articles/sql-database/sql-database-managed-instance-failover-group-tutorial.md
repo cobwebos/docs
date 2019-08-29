@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 5169fe5eef416812c399b421f59305f6cb1e7b62
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035787"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103098"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>教程：将 SQL 数据库托管实例添加到故障转移组
 
@@ -40,13 +40,15 @@ ms.locfileid: "70035787"
 - 如果还没有 Azure 订阅, 请[创建一个免费帐户](https://azure.microsoft.com/free/)。 
 
 
-## <a name="1----create-resource-group-and-primary-managed-instance"></a>1-创建资源组和主托管实例
+## <a name="1---create-resource-group-and-primary-managed-instance"></a>1-创建资源组和主托管实例
 在此步骤中, 将使用 Azure 门户为故障转移组创建资源组和主托管实例。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
-1. 选择在 Azure 门户的左上角**创建资源**。 
-1. 在`managed instance`搜索框中键入, 并选择 "Azure SQL 托管实例" 选项。 
-1. 选择 "**创建**" 以启动 " **SQL 托管实例**创建" 页。 
+1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果**AZURE sql**不在列表中, 请选择 "**所有服务**", 然后在搜索框中键入 "Azure sql"。 可有可无选择 " **AZURE SQL** " 旁边的星号将其收藏, 并将其添加为左侧导航栏中的项。 
+1. 选择 " **+ 添加**", 打开 "**选择 SQL 部署" 选项**页。 通过选择 "数据库" 磁贴上的 "显示详细信息", 可以查看有关不同数据库的其他信息。
+1. 在 " **SQL 托管实例**" 磁贴上选择 "**创建**"。 
+
+    ![选择托管实例](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. 在 "**创建 Azure SQL 数据库托管实例**" 页上的 "**基本**信息" 选项卡
     1. 在 "**项目详细信息**" 下, 从下拉菜单中选择你的**订阅**, 然后选择 "**新建**资源组"。 键入资源组的名称, 例如`myResourceGroup`。 
     1. 在 "**托管实例详细信息**" 下, 提供托管实例的名称以及要将托管实例部署到的区域。 将 "**计算 + 存储**" 保留为默认值。 
@@ -98,8 +100,12 @@ ms.locfileid: "70035787"
 
 若要创建辅助托管实例, 请执行以下步骤: 
 
-1. 在[Azure 门户](https://portal.azure.com)中, 选择 "**创建资源**", 然后搜索 " *Azure SQL 托管实例*。 
-1. 选择 Microsoft 发布的**AZURE SQL 托管实例**选项, 然后在下一页上选择 "**创建**"。
+1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果**AZURE sql**不在列表中, 请选择 "**所有服务**", 然后在搜索框中键入 "Azure sql"。 可有可无选择 " **AZURE SQL** " 旁边的星号将其收藏, 并将其添加为左侧导航栏中的项。 
+1. 选择 " **+ 添加**", 打开 "**选择 SQL 部署" 选项**页。 通过选择 "数据库" 磁贴上的 "显示详细信息", 可以查看有关不同数据库的其他信息。
+1. 在 " **SQL 托管实例**" 磁贴上选择 "**创建**"。 
+
+    ![选择托管实例](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. 在 "**创建 Azure SQL 数据库托管实例**" 页的 "**基本**信息" 选项卡上, 填写必填字段以配置辅助托管实例。 
 
    下表显示了辅助托管实例所需的值:
@@ -209,9 +215,8 @@ ms.locfileid: "70035787"
 ## <a name="7---create-a-failover-group"></a>7-创建故障转移组
 在此步骤中, 将创建故障转移组, 并向其中添加两个托管实例。 
 
-1. 在[Azure 门户](https://portal.azure.com)中, 切换到 "**所有服务**" `managed instance` , 并在搜索框中键入。 
-1. 可有可无选择 " **SQL 托管实例**" 旁边的星号, 将托管实例添加为左侧导航栏的快捷方式。 
-1. 选择 " **SQL 托管实例**" 并选择主托管实例, 如`sql-mi-primary`。 
+1. 在[Azure 门户](https://portal.azure.com)的左侧菜单中选择 " **Azure SQL** "。 如果**AZURE sql**不在列表中, 请选择 "**所有服务**", 然后在搜索框中键入 "Azure sql"。 可有可无选择 " **AZURE SQL** " 旁边的星号将其收藏, 并将其添加为左侧导航栏中的项。 
+1. 选择在第一部分中创建的主托管实例, 如`sql-mi-primary`。 
 1. 在 "**设置**" 下, 导航到 "**实例故障转移组**", 然后选择 "**添加组**" 以打开 "**实例故障转移组**" 页。 
 
    ![添加故障转移组](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)

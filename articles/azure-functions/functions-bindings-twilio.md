@@ -7,17 +7,16 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c63b81e5461af5407d260651b79ec80e79fc9b4d
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 32f987caed915aff8c581b974dec7689fc90b007
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479973"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114361"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions 的 Twilio 绑定
 
@@ -122,7 +121,7 @@ public static void Run(string myQueueItem, out SMSMessage message,  TraceWriter 
 }
 ```
 
-不能在同步代码中使用 out 参数。 下面是异步 C# 脚本代码的示例：
+不能在异步代码中使用 out 参数。 下面是异步 C# 脚本代码的示例：
 
 ```cs
 #r "Newtonsoft.Json"
@@ -298,7 +297,7 @@ public static void Run(string myQueueItem, out CreateMessageOptions message,  IL
 }
 ```
 
-不能在同步代码中使用 out 参数。 下面是异步 C# 脚本代码的示例：
+不能在异步代码中使用 out 参数。 下面是异步 C# 脚本代码的示例：
 
 ```cs
 #r "Newtonsoft.Json"
@@ -377,7 +376,7 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="attributes"></a>属性
+## <a name="attributes"></a>特性
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) 特性。
 
@@ -397,16 +396,16 @@ public static CreateMessageOptions Run(
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json  文件和 `TwilioSms` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `TwilioSms` 特性中设置的绑定配置属性。
 
 | v1 function.json 属性 | v2 function.json 属性 | Attribute 属性 |说明|
 |---------|---------|---------|----------------------|
 |**type**|**type**| 必须设置为 `twilioSms`。|
 |**direction**|**direction**| 必须设置为 `out`。|
-|**name**|**name**| 在 Twilio 短信的函数代码中使用的变量名。 |
+|**名称**|**名称**| 在 Twilio 短信的函数代码中使用的变量名。 |
 |**accountSid**|**AccountSidSetting**| **AccountSidSetting**| 此值必须设置为保留 Twilio 帐户 Sid 的应用设置的名称，例如 TwilioAccountSid。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAccountSid”。 |
 |**authToken**|**AuthTokenSetting**|**AuthTokenSetting**| 此值必须设置为保留 Twilio 身份验证令牌的应用设置的名称，例如 TwilioAccountAuthToken。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAuthToken”。 |
-|**to**| 不适用 - 在代码中指定 | **收件人**| 此值设置为短信将发送到的电话号码。|
+|**to**| 不适用 - 在代码中指定 | **To**| 此值设置为短信将发送到的电话号码。|
 |**from**|**from** | **From**| 此值设置为发送短信的电话号码。|
 |**body**|**body** | **正文**| 如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 |  
 

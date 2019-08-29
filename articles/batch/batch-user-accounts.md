@@ -8,19 +8,18 @@ editor: ''
 tags: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 93b3004303dd1587340b467c2fd52cb7233c95fd
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 820e979c41ddc1c1cf14456ed77a4a55e353ab12
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322700"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094283"
 ---
 > [!NOTE] 
 > 出于安全原因, 本文中所述的用户帐户不同于用于远程桌面协议 (RDP) 或安全外壳 (SSH) 的用户帐户。 

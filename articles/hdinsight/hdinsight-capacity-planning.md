@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: bd2284211c2fdc5a346c6ffb113f89fe311a358c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 0f386faa5a18282c9e60bdb282e01dcd53f9de4f
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786498"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114301"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -31,13 +31,13 @@ ms.locfileid: "67786498"
 
 Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化，群集应靠近数据所在的位置。
 
-许多 Azure 区域提供 HDInsight。 若要查找最靠近的区域，请参阅“[产品上市区域](https://azure.microsoft.com/regions/services/)”中“分析”下面的“HDInsight”项   。
+许多 Azure 区域提供 HDInsight。 若要查找最靠近的区域，请参阅“[产品上市区域](https://azure.microsoft.com/regions/services/)”中“分析”下面的“HDInsight”项。
 
 ## <a name="choose-storage-location-and-size"></a>选择存储位置和大小
 
 ### <a name="location-of-default-storage"></a>默认存储的位置
 
-默认存储（Azure 存储帐户或 Azure Data Lake Storage）必须与群集位于同一位置。 所有位置都提供 Azure 存储。 Data Lake Storage Gen1 已在某些区域中提供 - 请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/regions/services/) 中“存储”  下面列出的当前 Data Lake Storage 可用性。
+默认存储（Azure 存储帐户或 Azure Data Lake Storage）必须与群集位于同一位置。 所有位置都提供 Azure 存储。 Data Lake Storage Gen1 已在某些区域中提供 - 请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/regions/services/) 中“存储”下面列出的当前 Data Lake Storage 可用性。
 
 ### <a name="location-of-existing-data"></a>现有数据的位置
 
@@ -66,7 +66,7 @@ Azure 存储具有某些[容量限制](../azure-subscription-service-limits.md#s
 
 每个群集类型具有一组节点类型，每个节点类型在 VM 大小和类型方面提供特定的选项。
 
-若要确定应用程序的最佳群集大小，可以建立群集容量基准，并根据指示增加大小。 例如，可以使用模拟工作负荷或“canary 查询”。  使用模拟工作负荷时，可在不同大小的群集上运行预期的工作负荷，并逐渐增加大小，直到达到所需的性能。 可在其他生产查询之间定期插入 canary 查询，以显示群集是否有足够的资源。
+若要确定应用程序的最佳群集大小，可以建立群集容量基准，并根据指示增加大小。 例如，可以使用模拟工作负荷或“canary 查询”。 使用模拟工作负荷时，可在不同大小的群集上运行预期的工作负荷，并逐渐增加大小，直到达到所需的性能。 可在其他生产查询之间定期插入 canary 查询，以显示群集是否有足够的资源。
 
 VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
@@ -82,7 +82,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 根据群集类型，增加工作节点数目可以添加更多的计算容量（例如更多的核心），但同时也可能会增大整个群集为所处理数据的内存中存储提供支持所需的内存总量。 在 VM 大小和类型的选择上，适当的群集规模通常是使用模拟工作负荷或 canary 查询凭经验选择出来的。
 
-可以扩展群集来满足峰值负载需求，然后在不再需要这些额外的节点时缩减群集。 [自动缩放功能](hdinsight-autoscale-clusters.md)可以自动缩放你的群集根据预先确定的度量值和计时。 有关手动缩放群集的详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)。
+可以扩展群集来满足峰值负载需求，然后在不再需要这些额外的节点时缩减群集。 自动[缩放功能](hdinsight-autoscale-clusters.md)可让你根据预先确定的指标和计时自动缩放群集。 有关手动缩放群集的详细信息, 请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)。
 
 ### <a name="cluster-lifecycle"></a>群集生命周期
 
@@ -94,7 +94,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 ### <a name="isolate-cluster-job-errors"></a>查明群集作业错误
 
-有时，多节点群集上多个映射和化简组件的并行执行可能导致出错。 为了帮助查明问题，可以通过在单节点群集上运行多个并发作业来尝试执行分布式测试，然后延伸这种方法，在包含多个节点的群集上并发运行多个作业。 若要在 Azure 中创建单节点 HDInsight 群集，请使用高级选项。 
+有时，多节点群集上多个映射和化简组件的并行执行可能导致出错。 若要解决此问题, 请尝试通过在单个辅助角色节点上运行并发多个作业来进行分布式测试, 然后展开此方法以在包含多个节点的群集上并发运行多个作业。 若要在 Azure 中创建单节点 HDInsight 群集, 请在门户中设置新群集时, 使用 "*自定义 (大小、设置、应用)* " 选项, 并将值1用于 "**群集大小**" 部分中的 "*工作节点数*"。
 
 也可以在本地计算机上安装单节点开发环境，并在该环境中测试解决方案。 Hortonworks 为基于 Hadoop 的解决方案提供单节点本地开发环境，非常有利于初始开发、概念证明和测试。 有关详细信息，请参阅 [Hortonworks 沙盒](https://hortonworks.com/products/hortonworks-sandbox/)。
 
@@ -105,19 +105,19 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 确定目标群集 VM 大小、规模和类型之后，请检查订阅的当前配额容量限制。 达到配额限制时，可能无法部署新群集，或通过添加更多工作节点来横向扩展现有群集。 唯一存在配额限制的是每个订阅的区域级别的 CPU 核心配额。 例如，订阅可能会在美国东部区域有 30 个核心的限制。 如果需要请求增加配额，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 选择页面左下方的“帮助 + 支持”  。
-1. 选择“新建支持请求”  。
-1. 在“新建支持请求”页面的“基本信息”选项卡下，选择以下选项   ：
-   - “问题类型”  ：“服务和订阅限制(配额)” 
-   - “订阅”  ：想要修改的订阅
-   - “配额类型”  ：**HDInsight**
+1. 选择页面左下方的“帮助 + 支持”。
+1. 选择“新建支持请求”。
+1. 在“新建支持请求”页面的“基本信息”选项卡下，选择以下选项：
+   - “问题类型”：“服务和订阅限制(配额)”
+   - “订阅”：想要修改的订阅
+   - “配额类型”：**HDInsight**
     
      ![创建支持请求来增加 HDInsight 核心配额](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
-1. 在完成时选择“下一步:  解决方案 >>”。
-1. 在“详细信息”页上，输入问题的说明，选择问题的严重性、首选联系方法和其他必需字段  。
-1. 在完成时选择“下一步:  查看 + 创建 >>”。
-1. 在“查看 + 创建”选项卡中，选择“创建”。  
+1. 在完成时选择“下一步:解决方案 >>”。
+1. 在“详细信息”页上，输入问题的说明，选择问题的严重性、首选联系方法和其他必需字段。
+1. 在完成时选择“下一步:查看 + 创建 >>”。
+1. 在“查看 + 创建”选项卡中，选择“创建”。
 
 > [!NOTE]  
 > 如果需要增加专用区域中的 HDInsight 核心配额，请[提交允许列表请求](https://aka.ms/canaryintwhitelist)。

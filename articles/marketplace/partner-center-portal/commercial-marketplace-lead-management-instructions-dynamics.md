@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 17ae6dc8d1d583e5223a64ee079731fa5d9dc63c
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 03d67249ef1d74844a7e9019e90f6331ecfdf0c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902307"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102977"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>为 Customer Engagement 配置 Dynamics 365 的潜在客户管理
 
@@ -97,7 +97,7 @@ ms.locfileid: "69902307"
 
     ![添加权限](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
-14. 完成 Azure 门户上的步骤1-13 后, 导航到 URL (如 https://tenant.crm.dynamics.com) ), 导航到 Dynamics 365 以获取客户参与实例。
+14. 完成 Azure 门户上的步骤1-13 后, 导航到 URL (如`https://tenant.crm.dynamics.com`), 导航到 Dynamics 365 以获取客户参与实例。
 15. 通过选择齿轮图标和顶部导航栏上的 "**高级设置**" 来访问设置。
 16. 在 "设置" 页上, 访问顶部导航栏中的 "设置" 菜单, 然后选择 "**安全性**"。
 17. 在 "安全" 页上, 选择 "**用户**"。  在 "用户" 页上, 选择 "启用的用户" 下拉列表以切换到**应用程序用户**。

@@ -9,12 +9,12 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: e1285f6bc3bd081eae03cf1e5a124a86cac7a2ae
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 62b96fa8722408aed81e87cb31218140fa4f5da8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335989"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099415"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -61,7 +61,7 @@ ms.locfileid: "68335989"
 
   * **开发人员 SKU**:最多4个标准帐户或最多5个标准帐户。 无基本帐户。
 
-有关集成帐户限制的详细信息, 请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 可以在本主题的后面部分了解有关[集成帐户层及其定价模型](#integration-accounts)的详细信息。 
+有关集成帐户限制的详细信息, 请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 可以在本主题的后面部分了解有关[集成帐户层及其定价模型](#integration-accounts)的详细信息。
 
 对于高级 ISE SKU, 基本单位具有固定容量, 因此, 如果需要更多的吞吐量, 可以在创建期间或之后[添加更多缩放单位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)。 开发人员 ISE SKU 不能添加更多缩放单位。 在 ISE 中运行的逻辑应用不会产生数据保留成本。
 
@@ -74,7 +74,7 @@ ms.locfileid: "68335989"
 
 ## <a name="connectors"></a>连接器
 
-Azure 逻辑应用连接器通过提供[触发器](#triggers)和/或[操作](#actions)，帮助逻辑应用访问云中或本地的应用、服务和系统。 连接器分类为“标准”或“企业”连接器。 有关这些连接器的概述，请参阅[适用于 Azure 逻辑应用的连接器](../connectors/apis-list.md)。 如果你想要在逻辑应用中使用的 REST Api 没有预构建的连接器, 则可以创建[自定义连接器](https://docs.microsoft.com/connectors/custom-connectors), 它们只是围绕这些 rest api 的包装。 自定义连接器按标准连接器计费。 以下部分提供有关触发器和操作的计费方式的详细信息。
+Azure 逻辑应用连接器通过提供[触发器](#triggers)和/或[操作](#actions)，帮助逻辑应用访问云中或本地的应用、服务和系统。 连接器分类为“标准”或“企业”连接器。 有关这些连接器的概述，请参阅[适用于 Azure 逻辑应用的连接器](../connectors/apis-list.md)。 如果没有预生成的连接器可用于要在逻辑应用中使用的 REST API，则可以创建[自定义连接器](https://docs.microsoft.com/connectors/custom-connectors)，这些连接器只是这些 REST API 的包装器。 自定义连接器按标准连接器计费。 以下部分提供有关触发器和操作的计费方式的详细信息。
 
 <a name="triggers"></a>
 
@@ -166,5 +166,5 @@ Azure 逻辑应用提供免费、基本和标准集成帐户。 逻辑应用服�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关 Azure 逻辑应用的详细信息](logic-apps-overview.md)
+* [详细了解 Azure 逻辑应用](logic-apps-overview.md)
 * [创建第一个逻辑应用](quickstart-create-first-logic-app-workflow.md)

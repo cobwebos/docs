@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 6e02f5a5b42da9c99a08782903cdc05ee32ec9d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77685fd6549906cfb050e12d53ec151c964fda42
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743320"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084410"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>适用于 Windows 的网络观察程序代理虚拟机扩展
 
@@ -31,7 +30,7 @@ ms.locfileid: "60743320"
 
 本文档详细介绍适用于 Windows 的网络观察程序代理虚拟机扩展支持的平台和部署选项。 安装代理时不会中断，也不会需要重新启动虚拟机。 可以将扩展部署到所部署的虚拟机。 如果 Azure 服务部署了虚拟机，请查看该服务的文档以确定它是否允许在虚拟机中安装扩展。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -92,9 +91,9 @@ Set-AzVMExtension `
   -TypeHandlerVersion "1.4"
 ```
 
-## <a name="troubleshooting-and-support"></a>故障排除和支持
+## <a name="troubleshooting-and-support"></a>疑难解答和支持
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 可以从 Azure 门户和 PowerShell 检索有关扩展部署状态的数据。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令：
 

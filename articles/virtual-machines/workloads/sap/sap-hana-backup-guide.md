@@ -7,18 +7,17 @@ author: hermanndms
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 91671b39e6ac33e16636cc924f5c0aa5e3fcbf3b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 05a4b8e8034e1c354a4209244694aeb2fc2c6007
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709943"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078749"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP HANA 备份指南
 
@@ -90,7 +89,7 @@ SAP 不会在 HANA 备份与存储快照之间做出优先选择， 而是列出
 
 在 Azure 上，请注意这样一个事实：Azure Blob 快照功能无法保证文件系统一致性（请参阅[通过 PowerShell 使用 Blob 快照](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)）。 下一部分_创建存储快照时保持 SAP HANA 数据一致性_介绍了有关此功能的一些注意事项。
 
-此外，必须了解对计费产生影响时经常使用 blob 快照在本文中所述：[了解快照如何产生费用](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)— 它并不是&#39;t 明显，使用 Azure 虚拟磁盘。
+此外, 还必须了解本文中所述的 blob 快照经常使用的计费含义:[了解快照如何产生费用](/rest/api/storageservices/understanding-how-snapshots-accrue-charges),&#39;与使用 Azure 虚拟磁盘一样明显。
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>创建存储快照时保持 SAP HANA 数据一致性
 

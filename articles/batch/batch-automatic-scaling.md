@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2014b00a82a6d56bf58b471336c6d809721abea9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68500039"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095439"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动缩放公式
 
@@ -637,7 +636,7 @@ Error:
 ## <a name="example-autoscale-formulas"></a>示例自动缩放公式
 让我们查看一些公式，它们演示了调整池中计算资源数量的不同方法。
 
-### <a name="example-1-time-based-adjustment"></a>示例 1:基于时间的调整
+### <a name="example-1-time-based-adjustment"></a>示例 1：基于时间的调整
 假设你想要根据星期日期和当天的时间来调整池的大小。 此示例演示如何相应地增加或减少池中的节点数。
 
 该公式首先获取当前时间。 如果日期是工作日（周一到周五）且时间是工作时间（上午 8 点到下午 6 点），则会将目标池大小设置为 20 个节点。 否则，它将设置为 10 个节点。

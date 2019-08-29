@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: f4920cde64ae951fa5f234f6ad6d7423429bb907
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e5ef1bde9420104b596c22837048b054f918b3cc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706030"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092629"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 1
 
@@ -74,7 +73,7 @@ ms.locfileid: "67706030"
 * 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](../linux/using-cloud-init.md)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 Systemd 服务单元。
 * 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
-* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl  。
+* 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl。
 * 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对其进行处理。
 
 ## <a name="extension-schema"></a>扩展架构
@@ -127,7 +126,7 @@ ms.locfileid: "67706030"
 | typeHandlerVersion | 1.5 | int |
 | fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute（例如） | python MyPythonScript.py \<my-param1\> | string |
-| enableInternalDNSCheck | true | boolean |
+| enableInternalDNSCheck | 真 | boolean |
 | storageAccountName（例如） | examplestorageacct | string |
 | storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 

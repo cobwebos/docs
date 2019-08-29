@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 0e32c81f37a8b81511cd009dfddbcc546aee1797
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f797d3ee525806d8002b19edb1378d0376508b08
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876749"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073932"
 ---
 # <a name="tenant-and-host-pool-creation"></a>创建租户和主机池
 
@@ -34,39 +34,45 @@ ms.locfileid: "69876749"
 
 原因：在 Azure 资源管理器模板接口修复中输入凭据时, 出现了一个错误。
 
-**能够**按照这些说明来更正凭据。
+**能够**执行下列操作之一来解决。
 
-1. 手动将 Vm 添加到域。
-2. 确认凭据后重新部署。 请参阅[使用 PowerShell 创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)。
-3. 使用将[现有 WINDOWS VM 加入 AD 域](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)的模板将 vm 加入域。
+- 手动将 Vm 添加到域。
+- 确认凭据后, 重新部署模板。 请参阅[使用 PowerShell 创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)。
+- 使用将[现有 WINDOWS VM 加入 AD 域](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)的模板将 vm 加入域。
 
 ### <a name="error-timeout-waiting-for-user-input"></a>错误：等待用户输入超时
 
 原因：用于完成域加入的帐户可能具有多重身份验证 (MFA)。
 
-**能够**按照这些说明完成域加入。
+**能够**执行下列操作之一来解决。
 
-1. 暂时删除帐户的 MFA。
-2. 使用服务帐户。
+- 暂时删除帐户的 MFA。
+- 使用服务帐户。
 
 ### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>错误：预配过程中使用的帐户不具有完成此操作的权限
 
 原因：由于合规性和法规要求, 所使用的帐户没有将 Vm 加入到域中的权限。
 
-**能够**按照这些说明进行操作。
+**能够**执行下列操作之一来解决。
 
-1. 使用作为管理员组成员的帐户。
-2. 向所使用的帐户授予必要的权限。
+- 使用作为管理员组成员的帐户。
+- 向所使用的帐户授予必要的权限。
 
 ### <a name="error-domain-name-doesnt-resolve"></a>错误：域名不能解析
 
-**原因 1：** Vm 位于与域所在的虚拟网络 (VNET) 不关联的资源组中。
+**原因 1：** Vm 位于与域所在的虚拟网络 (VNET) 不关联的虚拟网络上。
 
 **修复 1:** 在配置了 Vm 的 VNET 和运行域控制器 (DC) 的 VNET 之间创建 VNET 对等互连。 请参阅[创建虚拟网络对等互连-资源管理器、不同订阅](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions)。
 
-**原因 2：** 使用 AadService (AADS) 时, 尚未设置 DNS 条目。
+**原因 2：** 使用 Azure Active Directory 域服务 (Azure AD DS) 时, 不会将虚拟网络的 DNS 服务器设置更新为指向托管域控制器。
 
-**修复 2:** 若要设置域服务, 请参阅[Enable Azure Active Directory Domain services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns)。
+**修复 2:** 若要更新包含 Azure AD DS 的虚拟网络的 DNS 设置, 请参阅[更新 Azure 虚拟网络的 dns 设置](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network)。
+
+**原因 3:** 网络接口的 DNS 服务器设置未指向虚拟网络上适当的 DNS 服务器。
+
+**修复 3:** 按照 [更改 DNS 服务器] 中的步骤操作, 执行以下操作之一以解决此问题。
+- 将网络接口的 DNS 服务器设置更改为 "**自定义**", 并执行 "[更改 dns 服务器](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers)" 和 "指定虚拟网络上 DNS 服务器的专用 IP 地址" 中的步骤。
+- 更改网络接口的 DNS 服务器设置, 使其从 "[更改 dns 服务器](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers)" 中的步骤**继承**, 然后更改虚拟网络的 dns 服务器设置和 "[更改 dns 服务器](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers)" 中的步骤。
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>未安装 windows 虚拟桌面代理和 Windows 虚拟桌面启动加载程序
 

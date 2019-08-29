@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: cf85bfd8be146cb599ced61eaa2126ee9e12538b
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f9edee7a0ff19a536d0ea719ede6d0cd2e9d6ac7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723068"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102636"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>如何使用 Azure 门户打开虚拟机端口
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -30,11 +29,11 @@ ms.locfileid: "67723068"
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
 
-1. 搜索并选择 VM 的资源组，选择“添加”  ，然后搜索并选择“网络安全组”  。
+1. 搜索并选择 VM 的资源组，选择“添加”，然后搜索并选择“网络安全组”。
 
-2. 选择“创建”  。
+2. 选择“创建”。
 
-    此时将打开“创建网络安全组”  窗口。
+    此时将打开“创建网络安全组”窗口。
 
     ![创建网络安全组](./media/nsg-quickstart-portal/create-nsg.png)
 
@@ -42,29 +41,29 @@ ms.locfileid: "67723068"
 
 3. 选择或创建一个资源组，然后选择位置。
 
-4. 选择“创建”  以创建网络安全组。
+4. 选择“创建”以创建网络安全组。
 
 ## <a name="create-an-inbound-security-rule"></a>创建入站安全规则
 
 1. 选择新的网络安全组。 
 
-2. 选择“入站安全规则”  ，并选择“添加”  。
+2. 选择“入站安全规则”，并选择“添加”。
 
     ![添加入站规则](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
-3. 选择“高级”。  
+3. 选择“高级”。 
 
-4. 从下拉菜单中选择常见的“服务”，如 HTTP   。 如果要提供要使用的特定端口，也可以选择“自定义”  。 
+4. 从下拉菜单中选择常见的“服务”，如 HTTP。 如果要提供要使用的特定端口，也可以选择“自定义”。 
 
 5. （可选）更改**优先级**或**名称**。 优先级会影响应用规则的顺序：数值越小，越先应用规则。
 
-6. 选择“添加”  以创建规则。
+6. 选择“添加”以创建规则。
 
 ## <a name="associate-your-network-security-group-with-a-subnet"></a>将网络安全组与子网相关联
 
 最后一步是将网络安全组与子网或特定网络接口相关联。 对于此示例，我们将网络安全组与子网相关联。 
 
-1. 选择“子网”，然后选择“关联”   。
+1. 选择“子网”，然后选择“关联”。
 
     ![将网络安全组与子网相关联](./media/nsg-quickstart-portal/associate-subnet.png)
 

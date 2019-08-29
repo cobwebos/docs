@@ -11,27 +11,26 @@ ms.assetid: 757da816-a050-4889-a010-6f75d7978eb7
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 69c79db937d70bcc8ae834bf0bdf8f1930bed3c9
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 0b1af2052e8aa916bf5fd6a40bea3502ff81a02d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722737"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079478"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>有关 Windows 虚拟机的常见问题
-本文讨论了在 Azure 中使用 Resource Manager 部署模型创建的 Windows 虚拟机的一些常见问题。 本主题的 Linux 版本，请参阅[常问问题有关 Linux 虚拟机](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+本文讨论了在 Azure 中使用 Resource Manager 部署模型创建的 Windows 虚拟机的一些常见问题。 有关本主题的 Linux 版本，请参阅[有关 Linux 虚拟机的常见问题](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>我可以在 Azure VM 上运行什么程序？
-所有订户都可以在 Azure 虚拟机上运行服务器软件。 在 Azure 中运行 Microsoft 服务器软件的支持策略的信息，请参阅[Microsoft 服务器软件支持适用于 Azure 虚拟机](https://support.microsoft.com/kb/2721672)。
+所有订户都可以在 Azure 虚拟机上运行服务器软件。 有关在 Azure 中运行 Microsoft 服务器软件的支持策略的信息，请参阅 [Microsoft 服务器软件对 Azure 虚拟机的支持](https://support.microsoft.com/kb/2721672)。
 
 MSDN Azure 权益订户以及 MSDN 开发和测试即用即付订户可使用某些版本的 Windows 7、Windows 8.1 和 Windows 10 执行开发和测试任务。 有关详细信息（包括说明和限制），请参阅[适用于 MSDN 订户的 Windows 客户端映像](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)。 
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>使用虚拟机时，我可以使用多少存储？
-每个数据磁盘可以最多 32,767 GiB。 可以使用的数据磁盘的数目取决于虚拟机的大小。 有关详细信息，请参阅[虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+每个数据磁盘的容量高达 32,767 GiB。 可以使用的数据磁盘的数目取决于虚拟机的大小。 有关详细信息，请参阅[虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 Azure 托管磁盘是推荐用于 Azure 虚拟机的磁盘存储产品，方便永久存储数据。 可对每个虚拟机使用多个托管磁盘。 托管磁盘提供两种类型的持久存储选项：高级和标准托管磁盘。 有关定价信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)。
 
@@ -101,10 +100,10 @@ Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的�
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>创建 VM 时，密码有什么要求？
 
-有不同的密码长度要求，具体取决于所使用的工具：
- - 门户-12 到 72 个字符之间
- - PowerShell-介于 8 到 123 个字符之间
- - CLI-12 到 123 之间
+根据所使用的工具，有不同的密码长度要求：
+ - 门户 - 12 到 72 个字符之间
+ - PowerShell - 8 到 123 个字符之间
+ - CLI - 12 到 123 个字符之间
 
 * 具有小写字符
 * 具有大写字符

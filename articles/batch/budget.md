@@ -5,18 +5,17 @@ services: batch
 author: laurenhughes
 manager: gwallace
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
 ms.author: lahugh
-ms.openlocfilehash: e6a99021a5e05f04672a4db2b4c208b8f4bad8c8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361786"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094209"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch 的成本分析和预算
 
@@ -51,7 +50,7 @@ Batch 池使用网络资源。 特别是, 对于**VirtualMachineConfiguration**�
 1. 在 Azure 门户中, 从左侧导航栏中选择 "**成本管理 + 计费**"。
 1. 从 "**我的订阅**" 部分中选择你的订阅
 1. 请参阅左侧导航栏的 "**成本管理**" 部分下的 "**成本分析**", 将显示如下所示的视图:
-1. 选择 "**添加筛选器**"。 在第一个下拉箭头中 **, 选择** ![资源筛选器](./media/batch-budget/resource-filter.png)
+1. 选择 "**添加筛选器**"。 在第一个下拉箭头中, 选择 ![资源筛选器](./media/batch-budget/resource-filter.png)
 1. 在第二个下拉箭头中, 选择批处理池。 选择该池后, 成本分析将类似于以下分析。
     ![池的成本分析](./media/batch-budget/pool-cost-analysis.png)
 

@@ -10,16 +10,15 @@ tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 2877fae66584ec24fb6e62b20d66ded36157b824
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8c0c8f5543af425091c821f28d08fcab01118fd4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990351"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090448"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>在强制隧道方案中，Windows 激活失败
 
@@ -27,7 +26,7 @@ ms.locfileid: "68990351"
 
 ## <a name="symptom"></a>症状
 
-在 Azure 虚拟网络子网上启用[强制隧道](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)，以将所有 Internet 绑定的流量定向回本地网络。 在此方案中，运行 Windows Server 2012 R2（或更高版本的 Windows ）的 Azure 虚拟机 (VM) 可成功激活 Windows。 但是，运行 Windows 早期版本的 VM 无法激活 Windows。
+在 Azure 虚拟网络子网上启用[强制隧道](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)，以将所有 Internet 绑定的流量定向回本地网络。 在此方案中, 运行 Windows 的 Azure 虚拟机 (Vm) 无法激活 Windows。
 
 ## <a name="cause"></a>原因
 

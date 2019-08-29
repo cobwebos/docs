@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a244883f470f4906879725daf0d37bd1759e65c4
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 828bcaa8c93454ba845c30c03c76144310891123
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812894"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098249"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions 模式和技术概念 (Azure Functions)
 
@@ -223,7 +222,7 @@ module.exports = async function (context, req) {
 
 在前面的示例中，HTTP 触发的函数采用传入的 URL 中的 `functionName` 值，并将该值传递给 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)。 然后，[CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) 绑定 API 返回包含 `Location` 标头和有关实例的其他信息的响应。 稍后可以使用这些信息来查找已启动实例的状态或终止实例。
 
-### <a name="monitoring"></a>模式 #4：监视
+### <a name="monitoring"></a>模式 #4：监视器
 
 监视模式是指工作流中某个灵活的重复性过程。 例如，不断轮询，直到满足特定的条件为止。 可以使用常规[计时器触发器](../functions-bindings-timer.md)解决简单方案（例如定期清理作业），但该方案的间隔是静态的，并且管理实例生存期会变得复杂。 可以使用 Durable Functions 创建灵活的重复间隔、管理任务生存期，以及从单个业务流程创建多个监视过程。
 
@@ -297,7 +296,7 @@ module.exports = df.orchestrator(function*(context) {
 
 许多自动化过程涉及到某种人机交互。 自动化过程中涉及的人机交互非常棘手，因为人的可用性和响应能力不如云服务那样高。 自动化过程可以使用超时和补偿逻辑来实现此目的。
 
-审批过程就是涉及到人机交互的业务过程的一个例子。 经理进行审批可能需要超过特定金额的费用报表。 如果经理未在 72 小时内审批该开支报表（经理可能正在度假），则会启动上报过程，让其他某人（可能是经理的经理）审批。
+审批过程就是涉及到人机交互的业务过程的一个例子。 对于超过特定金额的支出报表, 可能需要经理的批准。 如果经理未在 72 小时内审批该开支报表（经理可能正在度假），则会启动上报过程，让其他某人（可能是经理的经理）审批。
 
 ![人机交互模式的示意图](./media/durable-functions-concepts/approval.png)
 
@@ -376,7 +375,7 @@ module.exports = async function (context) {
 
 ### <a name="aggregator"></a>模式 #6:聚合器（预览版）
 
-第六种模式是关于将一段时间内的事件数据聚合到单个可寻址的实体  中。 在此模式下，聚合的数据可能来自多个源，可能分批传送，也可能分散在很长一段时间内。 聚合器可能需要在事件数据到达时对其执行操作，外部客户端可能需要查询聚合的数据。
+第六种模式是关于将一段时间内的事件数据聚合到单个可寻址的实体中。 在此模式下，聚合的数据可能来自多个源，可能分批传送，也可能分散在很长一段时间内。 聚合器可能需要在事件数据到达时对其执行操作，外部客户端可能需要查询聚合的数据。
 
 ![聚合器关系图](./media/durable-functions-concepts/aggregator.png)
 
@@ -408,7 +407,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-此外可以作为.NET 类建模持久实体。 如果操作的列表变得大并当其大部分静态，这很有用。 下面的示例是等效的实现`Counter`实体使用.NET 类和方法。
+持久实体还可以建模为 .NET 类。 如果操作列表变大并且大部分是静态的，这可能很有用。 以下示例是使用 .NET 类和方法对 `Counter` 实体的等效实现。
 
 ```csharp
 public class Counter
@@ -445,7 +444,7 @@ public static async Task Run(
 }
 ```
 
-动态生成的代理，还提供了以类型安全的方式中的信号的实体。 除了发出信号，客户端还可以查询实体函数上使用方法的状态和`orchestrationClient`绑定。
+动态生成的代理也可用于以类型安全的方式向实体发信号。 除了发信号外，客户端还可以使用 `orchestrationClient` 绑定上的方法查询实体函数的状态。
 
 > [!NOTE]
 > 实体函数目前仅在 [Durable Functions 2.0 预览版](durable-functions-preview.md)中可用。
@@ -456,7 +455,7 @@ public static async Task Run(
 
 ### <a name="event-sourcing-checkpointing-and-replay"></a>事件溯源、检查点和重播
 
-业务流程协调程序函数通过使用可靠地维护其执行状态[事件溯源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)设计模式。 Durable Functions 扩展使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而不是直接存储业务流程的当前状态。 与“转储”完整的运行时状态相比，仅限追加的存储具有诸多优势。 优势包括提升性能、可伸缩性和响应能力。 此外，还可以确保事务数据的最终一致性，保持完整的审核线索和历史记录。 审核线索支持可靠的补偿操作。
+业务流程协调程序函数使用[事件源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)设计模式来可靠地维护其执行状态。 Durable Functions 扩展使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而不是直接存储业务流程的当前状态。 与“转储”完整的运行时状态相比，仅限追加的存储具有诸多优势。 优势包括提升性能、可伸缩性和响应能力。 此外，还可以确保事务数据的最终一致性，保持完整的审核线索和历史记录。 审核线索支持可靠的补偿操作。
 
 Durable Functions 以透明方式使用事件溯源。 在幕后，业务流程协调程序函数中的 `await` (C#) 或 `yield` (JavaScript) 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。 
 
@@ -472,17 +471,17 @@ Durable Functions 以透明方式使用事件溯源。 在幕后，业务流程�
 
 ## <a name="monitoring-and-diagnostics"></a>监视和诊断
 
-Durable Functions 扩展可自动生成为结构化的跟踪数据[Application Insights](../functions-monitoring.md)如果 function app 设置使用 Azure Application Insights 检测密钥。 跟踪数据可用于监视操作和业务流程的进度。
+如果使用 Azure 应用程序 Insights 检测密钥设置 function app, 则 Durable Functions 扩展会自动将结构化跟踪数据发送到[Application Insights](../functions-monitoring.md) 。 您可以使用跟踪数据来监视业务流程的操作和进度。
 
-下面是示例的跟踪事件 Durable Functions 在 Application Insights 门户中使用时[Application Insights Analytics](../../application-insights/app-insights-analytics.md):
+下面是使用[Application Insights Analytics](../../application-insights/app-insights-analytics.md)时, Durable Functions 跟踪事件在 Application Insights 门户中的外观:
 
 ![Application Insights 查询结果](./media/durable-functions-concepts/app-insights-1.png)
 
-您可以找到有用的结构化的数据中`customDimensions`字段中每个日志条目。 下面是项的一个完全展开的示例：
+您可以在每个日志条目的`customDimensions`字段中找到有用的结构化数据。 下面是一个完全展开的条目的示例:
 
 ![Application Insights 查询中的 customDimensions 字段](./media/durable-functions-concepts/app-insights-2.png)
 
-由于 Durable Task Framework 调度程序的重播行为，用户应该会看到重播操作的冗余日志项目。 冗余日志项目可以帮助您了解核心引擎的重播行为。 [诊断](durable-functions-diagnostics.md)文章显示了筛选出重播日志，以便您可以看到只需"实时"日志的示例查询。
+由于 Durable Task Framework 调度程序的重播行为，用户应该会看到重播操作的冗余日志项目。 冗余日志条目有助于了解核心引擎的重播行为。 [诊断](durable-functions-diagnostics.md)文章显示了筛选出重播日志的示例查询, 以便你可以仅查看 "实时" 日志。
 
 ## <a name="storage-and-scalability"></a>存储和可伸缩性
 

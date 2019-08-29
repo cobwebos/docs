@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/01/2019
-ms.openlocfilehash: ada2a19de12c2f3f6b23fcc3d759afb0c747d37d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/27/2019
+ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897406"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114298"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure App Service (预览版)
 
@@ -38,6 +38,7 @@ ms.locfileid: "69897406"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建工作区一](how-to-manage-workspace.md)文。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * 已在工作区中注册的经过训练的机器学习模型。 如果没有模型, 请使用[图像分类教程: 训练模型](tutorial-train-models-with-aml.md)训练和注册。
 
     > [!IMPORTANT]
@@ -97,34 +98,151 @@ ms.locfileid: "69897406"
 
 若要创建部署到 Azure App Service 的 Docker 映像, 请使用[模型类](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-)。 下面的代码段演示如何从模型和推理配置生成新的图像:
 
+> [!NOTE]
+> 代码段假定`model`包含已注册的模型, `inference_config`并且包含推理环境的配置。 有关详细信息, 请参阅[部署具有 Azure 机器学习服务的模型](how-to-deploy-and-where.md)。
+
 ```python
+from azureml.core import Model
+
 package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
+# Display the package location/ACR path
+print(package.location)
 ```
 
-如果`show_output=True`为, 则显示 Docker 生成过程的输出。 完成此过程后, 将在工作区的 Azure 容器注册表中创建映像。
+如果`show_output=True`为, 则显示 Docker 生成过程的输出。 完成此过程后, 将在工作区的 Azure 容器注册表中创建映像。 构建映像后, 将显示 Azure 容器注册表中的位置。 返回的位置为格式`<acrinstance>.azurecr.io/package:<imagename>`。 例如， `myml08024f78fd10.azurecr.io/package:20190827151241` 。
+
+> [!IMPORTANT]
+> 保存位置信息, 因为它在部署映像时使用。
 
 ## <a name="deploy-image-as-a-web-app"></a>将映像部署为 web 应用
 
-1. 在[Azure 门户](https://portal.azure.com)中, 选择 Azure 机器学习工作区。 从 "__概述__" 部分中, 使用__注册表__链接访问工作区的 Azure 容器注册表。
+1. 使用以下命令获取包含映像的 Azure 容器注册表的登录凭据。 替换`<acrinstance>`为之前从`package.location`返回的第 e 个值: 
 
-    [![工作区概述的屏幕截图](media/how-to-deploy-app-service/workspace-overview.png)](media/how-to-deploy-app-service/workspace-overview-expanded.png)
+    ```azurecli-interactive
+    az acr credential show --name <myacr>
+    ```
 
-2. 从 Azure 容器注册表中, 选择 "__存储库__", 然后选择要部署的__映像名称__。 对于要部署的版本, 请选择 " __...__ " 条目, 然后将__其部署到 web 应用__。
+    此命令的输出类似于以下 JSON 文档:
 
-    [![从 ACR 部署到 web 应用的屏幕截图](media/how-to-deploy-app-service/deploy-to-web-app.png)](media/how-to-deploy-app-service/deploy-to-web-app-expanded.png)
+    ```json
+    {
+    "passwords": [
+        {
+        "name": "password",
+        "value": "Iv0lRZQ9762LUJrFiffo3P4sWgk4q+nW"
+        },
+        {
+        "name": "password2",
+        "value": "=pKCxHatX96jeoYBWZLsPR6opszr==mg"
+        }
+    ],
+    "username": "myml08024f78fd10"
+    }
+    ```
 
-3. 若要创建 Web 应用, 请提供站点名称、订阅、资源组, 并选择 "应用服务计划/位置"。 最后，选择“创建”。
+    保存__用户名__和__密码__之一的值。
 
-    !["新建 web 应用" 对话框的屏幕截图](media/how-to-deploy-app-service/web-app-for-containers.png)
+1. 如果你还没有资源组或应用服务计划来部署服务, 以下命令将演示如何创建这两项:
+
+    ```azurecli-interactive
+    az group create --name myresourcegroup --location "West Europe"
+    az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
+    ```
+
+    在此示例中, 使用了__基本__定价`--sku B1`层 ()。
+
+    > [!IMPORTANT]
+    > Azure 机器学习服务创建的映像使用 Linux, 因此你必须使用`--is-linux`参数。
+
+1. 若要创建 web 应用, 请使用以下命令。 将`<app-name>`替换为要使用的名称。 将`<acrinstance>`和`<imagename>`替换为前面返回`package.location`的值:
+
+    ```azurecli-interactive
+    az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
+    ```
+
+    此命令返回类似于下面的 JSON 文档的信息:
+
+    ```json
+    { 
+    "adminSiteName": null,
+    "appServicePlanName": "myplanname",
+    "geoRegion": "West Europe",
+    "hostingEnvironmentProfile": null,
+    "id": "/subscriptions/0000-0000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myplanname",
+    "kind": "linux",
+    "location": "West Europe",
+    "maximumNumberOfWorkers": 1,
+    "name": "myplanname",
+    < JSON data removed for brevity. >
+    "targetWorkerSizeId": 0,
+    "type": "Microsoft.Web/serverfarms",
+    "workerTierName": null
+    }
+    ```
+
+    > [!IMPORTANT]
+    > 此时, 已创建了 web 应用。 但是, 由于你尚未向包含映像的 Azure 容器注册表提供凭据, 因此 web 应用不会处于活动状态。 在下一步中, 你将为容器注册表提供身份验证信息。
+
+1. 若要为 web 应用提供访问容器注册表所需的凭据, 请使用以下命令。 将`<app-name>`替换为要使用的名称。 将`<acrinstance>`和`<imagename>`替换为前面返回`package.location`的值。 将`<username>` 和`<password>`替换为前面检索到的 ACR 登录信息:
+
+    ```azurecli-interactive
+    az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
+    ```
+
+    此命令返回类似于下面的 JSON 文档的信息:
+
+    ```json
+    [
+    {
+        "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+        "slotSetting": false,
+        "value": "false"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_URL",
+        "slotSetting": false,
+        "value": "https://myml08024f78fd10.azurecr.io"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+        "slotSetting": false,
+        "value": "myml08024f78fd10"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+        "slotSetting": false,
+        "value": null
+    },
+    {
+        "name": "DOCKER_CUSTOM_IMAGE_NAME",
+        "value": "DOCKER|myml08024f78fd10.azurecr.io/package:20190827195524"
+    }
+    ]
+    ```
+
+此时, web 应用开始加载映像。
+
+> [!IMPORTANT]
+> 加载映像可能需要几分钟时间。 若要监视进度, 请使用以下命令:
+>
+> ```azurecli-interactive
+> az webapp log tail --name <app-name> --resource-group myresourcegroup
+> ```
+>
+> 加载映像并且站点处于活动状态后, 该日志将显示一条指示消息`Container <container name> for site <app-name> initialized successfully and is ready to serve requests`。
+
+部署映像后, 可以使用以下命令查找主机名:
+
+```azurecli-interactive
+az webapp show --name <app-name> --resource-group myresourcegroup
+```
+
+此命令返回类似于以下主机名的`<app-name>.azurewebsites.net`信息。 使用此值作为服务__基 url__的一部分。
 
 ## <a name="use-the-web-app"></a>使用 Web 应用
 
-在[Azure 门户](https://portal.azure.com)中, 选择上一步中创建的 Web 应用。 从 "__概述__" 部分中, 复制__URL__。 此值为服务的__基 URL__ 。
-
-[![Web 应用概述的屏幕截图](media/how-to-deploy-app-service/web-app-overview.png)](media/how-to-deploy-app-service/web-app-overview-expanded.png)
-
-向模型传递请求的 web 服务位于`{baseurl}/score`。 例如， `https://mywebapp.azurewebsites.net/score` 。 以下 Python 代码演示了如何将数据提交到 URL 并显示响应:
+向模型传递请求的 web 服务位于`{baseurl}/score`。 例如， `https://<app-name>.azurewebsites.net/score` 。 以下 Python 代码演示了如何将数据提交到 URL 并显示响应:
 
 ```python
 import requests
@@ -134,8 +252,6 @@ scoring_uri = "https://mywebapp.azurewebsites.net/score"
 
 headers = {'Content-Type':'application/json'}
 
-print(headers)
-    
 test_sample = json.dumps({'data': [
     [1,2,3,4,5,6,7,8,9,10],
     [10,9,8,7,6,5,4,3,2,1]

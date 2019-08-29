@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 52f6e7ebb1cbae14878b1897bd8c59c73dd0f493
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 38fdbbf76806325e457f066e6b469a531c27b038
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981027"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102205"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>如何在 Azure 门户中预配 Windows SQL Server 虚拟机
 
@@ -37,21 +36,12 @@ ms.locfileid: "69981027"
 
 创建 SQL Server 虚拟机时，可从虚拟机库中选择一个预配置的映像。 以下步骤演示如何选择一个 SQL Server 2017 映像。
 
-1. 使用帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果**AZURE sql**不在列表中, 请选择 "**所有服务**", 然后在搜索框中键入 "Azure sql"。 可有可无选择 " **AZURE SQL** " 旁边的星号将其收藏, 并将其添加为左侧导航栏中的项。 
+1. 选择 " **+ 添加**", 打开 "**选择 SQL 部署" 选项**页。 您可以通过选择 "**显示详细**信息" 查看其他信息。 
+1. 在`2017` " **SQL 虚拟机**" 磁贴上的 "SQL Server 图像搜索框中键入 **, 然后选择" 免费 SQL Server 许可证 ":从下拉 SQL Server 2017 Windows Server 2016**开发人员。 
 
-1. 在 Azure 门户中，单击“创建资源”。 该门户将打开“新建”窗口。
 
-1. 在“新建”窗口中，单击“计算”，然后单击“全部查看”。
-
-1. 在搜索字段中，键入“SQL Server 2017”，然后按 Enter。
-
-1. 在 "筛选器" 下拉端中, 选择 "适用于**操作系统**的_Windows Server 2016_ ", 并选择 " _Microsoft_ " 作为**发布服务器**。 
-
-     ![“新建计算”窗口](./media/virtual-machines-windows-portal-sql-server-provision/azure-new-compute-blade.png)
-
-1. 查看可用的 SQL Server 映像。 每个映像均可标识 SQL Server 版本和操作系统。
-
-1. 选择名为“免费 SQL Server 许可证：Windows Server 2016 上的 SQL Server 2017 Developer”的映像。
+   ![选择 SQL VM 映像](media/virtual-machines-windows-portal-sql-server-provision/select-sql-vm-image-portal.png)
 
    > [!TIP]
    > 本演示使用 Developer（开发人员）版，因为该版本是 SQL Server 的完整功能版本，并且可免费用于开发测试。 只需支付运行 VM 的成本。 但是，本教程中使用的映像可随意选择。 有关可用映像的说明，请参阅 [SQL Server Microsoft 虚拟机概述](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)。
@@ -61,7 +51,6 @@ ms.locfileid: "69981027"
    >
    > 有关这些选项的详细信息，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
 
-1. 在“选择部署模型”下面，确认已选择“Resource Manager”。 对于新虚拟机，建议使用“Resource Manager”部署模型。 
 
 1. 选择“创建”。
 

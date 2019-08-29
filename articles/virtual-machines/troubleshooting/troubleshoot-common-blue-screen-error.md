@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 26306489b11e24ab50f0ae893f11137d279c6127
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 397f9f4de21ecb27435c132d80074ed442202448
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719800"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089973"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows 在启动 Azure VM 时显示蓝屏错误
 本文介绍在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能出现的蓝屏错误。 本文提供用于收集支持票证数据的步骤。 

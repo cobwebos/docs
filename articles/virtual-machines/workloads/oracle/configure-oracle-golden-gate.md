@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 39d1b8b860fd19261bd39c345d464dd37b48d871
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 40eaabb149e2e897ecd4e1109e0db7c42b990925
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707549"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101551"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
@@ -389,10 +388,10 @@ SQL> EXIT;
 
 3. 在 PuTTY 密钥生成器中：
 
-   - 若要生成密钥，请选择“生成”按钮。 
+   - 若要生成密钥，请选择“生成”按钮。
    - 复制密钥的内容 (**Ctrl+C**)。
-   - 选择“保存私钥”按钮。 
-   - 忽略显示的警告，并选择“确定”。 
+   - 选择“保存私钥”按钮。
+   - 忽略显示的警告，并选择“确定”。
 
    ![PuTTY 密钥生成器页屏幕截图](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -410,15 +409,15 @@ SQL> EXIT;
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
    >  
 
-6. 启动 PuTTY。 在“类别”  窗格中，选择“连接”   > “SSH”   > “身份验证”  。在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。 
+6. 启动 PuTTY。 在“类别”窗格中，选择“连接” > “SSH” > “身份验证”。在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
 
    ![“设置私钥”页屏幕截图](./media/oracle-golden-gate/setprivatekey.png)
 
-7. 在“类别”  窗格中，选择“连接”   > “SSH”   > “X11”  。 然后选中“启用 X11 转发”  框。
+7. 在“类别”窗格中，选择“连接” > “SSH” > “X11”。 然后选中“启用 X11 转发”框。
 
    ![“启用 X11”页屏幕截图](./media/oracle-golden-gate/enablex11.png)
 
-8. 在“类别”窗格中，转到“会话”。   输入主机信息，并选择“打开”。 
+8. 在“类别”窗格中，转到“会话”。 输入主机信息，并选择“打开”。
 
    ![会话页屏幕截图](./media/oracle-golden-gate/puttysession.png)
 
@@ -432,27 +431,27 @@ SQL> EXIT;
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
    $ ./runInstaller
    ```
-2. 选择“Oracle GoldenGate for Oracle Database 12c”。 然后选择“下一步”  继续。
+2. 选择“Oracle GoldenGate for Oracle Database 12c”。 然后选择“下一步”继续。
 
    ![安装程序中的“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 更改软件位置。 然后选中“启动管理器”  框，并输入数据库位置。 选择“下一步”  继续。
+3. 更改软件位置。 然后选中“启动管理器”框，并输入数据库位置。 选择“下一步”继续。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_02.png)
 
-4. 更改清单目录，然后选择“下一步”  继续。
+4. 更改清单目录，然后选择“下一步”继续。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_03.png)
 
-5. 在“摘要”  屏幕上，选择“安装”  以继续。
+5. 在“摘要”屏幕上，选择“安装”以继续。
 
    ![安装程序中的“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_04.png)
 
-6. 系统可能会提示以“root”身份运行脚本。 如果是这样，则打开单独的会话，通过 ssh 连接到 VM，执行 sudo 操作到 root，然后运行脚本。 选择“确定”  继续。
+6. 系统可能会提示以“root”身份运行脚本。 如果是这样，则打开单独的会话，通过 ssh 连接到 VM，执行 sudo 操作到 root，然后运行脚本。 选择“确定”继续。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_05.png)
 
-7. 完成安装后，选择“关闭”  完成过程。
+7. 完成安装后，选择“关闭”完成过程。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_06.png)
 
@@ -698,7 +697,7 @@ SQL> EXIT;
    MAP pdb1.test.*, TARGET pdb1.test.*;
    ```
 
-5. 设置复制检查点：
+5. 设置复制检查点:
 
    ```bash
    GGSCI> ADD REPLICAT REPORA, INTEGRATED, EXTTRAIL ./dirdat/rt

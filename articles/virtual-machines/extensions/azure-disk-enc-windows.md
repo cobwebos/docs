@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 9a3e135172f0744c053da816b3c77762dbe783c3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 11394f692765cc1df5db0eb5c0dd06425026505d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706099"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092648"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>适用于 Windows 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -43,11 +42,11 @@ Azure 磁盘加密需要 Internet 连接才能访问 Active Directory、Key Vaul
 
 ## <a name="extension-schemata"></a>扩展架构
 
-有两个架构的 Azure 磁盘加密： v1.1、 不使用 Azure Active Directory (AAD) 属性和 0.1 版的更高版本，建议架构、 需要 AAD 属性的较旧架构。 必须使用对应于正在使用的扩展的架构版本： AzureDiskEncryption 扩展版本 1.1，AzureDiskEncryption 扩展版本 0.1 的架构 v0.1 的架构 v1.1。
+Azure 磁盘加密有两种架构：v1.1，一种不使用 Azure Active Directory (AAD) 属性的较新推荐架构；v0.1，一种需要 AAD 属性的较旧架构。 你必须使用与所使用的扩展对应的架构版本：架构 v1.1 用于 AzureDiskEncryption 扩展版本 1.1，架构 v0.1 用于 AzureDiskEncryption 扩展版本 0.1。
 
-### <a name="schema-v11-no-aad-recommended"></a>架构 1.1 版：无 AAD （推荐）
+### <a name="schema-v11-no-aad-recommended"></a>架构 v1.1：无 AAD（推荐）
 
-V1.1 架构建议，并且不需要 Azure Active Directory 属性。
+建议使用 v1.1 架构，它不需要 Azure Active Directory 属性。
 
 ```json
 {
@@ -74,9 +73,9 @@ V1.1 架构建议，并且不需要 Azure Active Directory 属性。
 ```
 
 
-### <a name="schema-v01-with-aad"></a>架构 v0.1： 使用 AAD 
+### <a name="schema-v01-with-aad"></a>架构 v0.1：使用 AAD 
 
-0\.1 架构要求`aadClientID`并将`aadClientSecret`或`AADClientCertificate`。
+0\.1 版架构需要 `aadClientID` 和 `aadClientSecret` 或 `AADClientCertificate`。
 
 使用 `aadClientSecret`：
 
@@ -146,16 +145,16 @@ V1.1 架构建议，并且不需要 Azure Active Directory 属性。
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | string |
 | type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0.1, 1.1 | int |
+| typeHandlerVersion | 0.1、1.1 | int |
 | (0.1 schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (0.1 schema) AADClientSecret | password | string |
-| (0.1 schema) AADClientCertificate | thumbprint | string |
+| （0.1 版架构）AADClientSecret | password | string |
+| （0.1 版架构）AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON dictionary |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
 | KeyVaultURL | url | string |
-| （可选）通行短语 | password | string | 
+| （可选）Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | OS, Data, All | string |
 

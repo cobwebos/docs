@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5ff87e761bbe5243a478a00ca90d4be03fdbc6d4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cce4e558331cad0045772f53f7fc3c78aeed2bb7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706567"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082201"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
@@ -172,7 +171,7 @@ CoreOS 中的单用户模式要求启用 GRUB。
 1. 查找以 `linux` 开头的内核行
 1. 在行尾追加 `systemd.unit=emergency.target`
 1. 按 Ctrl + X 使用这些设置重新启动，并进入紧急 shell
-   > 请注意，系统会将你置于采用只读文件系统的紧急 shell。  若要对任何文件进行任何编辑，需要使用读写权限重新装载文件系统。 为此，请在 shell 中输入 `mount -o remount,rw /`
+   > 请注意，系统会将你置于采用只读文件系统的紧急 shell。 若要对任何文件进行任何编辑，需要使用读写权限重新装载文件系统。 为此，请在 shell 中输入 `mount -o remount,rw /`
 
 ## <a name="access-for-oracle-linux"></a>在 Oracle Linux 中访问
 与 Red Hat Enterprise Linux 中的情况非常类似，Oracle Linux 中的单用户模式也要求启用 GRUB 和 root 用户。 

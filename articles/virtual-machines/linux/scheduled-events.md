@@ -9,18 +9,17 @@ editor: ''
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: f7691bcd6f9f3137f48bdd52722c887c4777a32c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d427544ab9396211e4cbb247527a0eb848f42926
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706537"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091280"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
 
@@ -77,9 +76,9 @@ ms.locfileid: "67706537"
 
 | Version | 发布类型 | Regions | 发行说明 | 
 | - | - | - | - | 
-| 2017-11-01 | 正式版 | All | <li> 添加了对低优先级 VM 逐出 EventType“Preempt”<br> | 
-| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | All | <li>初始版本
+| 2017-11-01 | 正式版 | 全部 | <li> 添加了对低优先级 VM 逐出 EventType“Preempt”<br> | 
+| 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | 全部 | <li>初始版本
 
 
 > [!NOTE] 
@@ -139,10 +138,10 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 ### <a name="event-scheduling"></a>事件计划
 将根据事件类型为每个事件计划将来的最小量时间。 此时间将反映在事件的 `NotBefore` 属性中。 
 
-|EventType  | 最小值通知 |
+|事件类型  | 最小值通知 |
 | - | - |
 | 冻结| 15 分钟 |
-| 重新启动 | 15 分钟 |
+| 重启 | 15 分钟 |
 | 重新部署 | 10 分钟 |
 | Preempt | 30 秒 |
 

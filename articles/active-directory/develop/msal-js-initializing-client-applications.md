@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7df2f9aa56e22bd4060c823b02900fa914a0fd7f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 5d36def4faa98f4b8e42c93cf3e222c2ec7ca89a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532794"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073848"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL.js 初始化客户端应用程序
 本文介绍如何使用用户代理应用程序的实例初始化适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js)。 该用户代理应用程序是某种形式的公共客户端应用程序，其中的客户端代码在 Web 浏览器等用户代理中执行。 这些客户端不存储机密，因为浏览器上下文可公开访问。 若要详细了解客户端应用程序类型和应用程序配置选项，请阅读[概述](msal-client-applications.md)。
@@ -123,7 +123,7 @@ export type Configuration = {
 
 - **validateAuthority**：可选。  验证令牌的颁发者。 默认为 `true`。 对于 B2C 应用程序，由于颁发机构值是已知的，并且根据不同的策略而异，因此，颁发机构验证不起作用，必须设置为 `false`。
 
-- **redirectUri**：可选。  应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 其必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 默认为 `window.location.href`。
+- **redirectUri**：可选。  应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须与在门户中注册的重定向 Uri 之一完全匹配。 默认为 `window.location.href`。
 
 - **postLogoutRedirectUri**：可选。  注销后将用户重定向到 `postLogoutRedirectUri`。默认值为 `redirectUri`。
 

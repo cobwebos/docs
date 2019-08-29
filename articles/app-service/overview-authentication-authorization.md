@@ -10,18 +10,17 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d01994dc4d01baed71bb3de56e069fac5597dc77
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e308b44fffff451daa92cbf19209a1bcbfd4bff6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030849"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087982"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 
@@ -109,7 +108,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 | 步骤 | 不使用提供程序 SDK | 使用提供程序 SDK |
 | - | - | - |
 | 1.将用户登录 | 将客户端重定向到 `/.auth/login/<provider>`。 | 客户端代码直接使用提供程序的 SDK 将用户登录，并接收身份验证令牌。 有关详细信息，请参阅提供程序文档。 |
-| 2.后身份验证 | 提供程序将客户端重定向到 `/.auth/login/<provider>/callback`。 | 客户端代码[将来自提供程序的令牌发布到](app-service-authentication-how-to.md#validate-tokens-from-providers) `/.auth/login/<provider>` 进行验证。 |
+| 2.身份验证后 | 提供程序将客户端重定向到 `/.auth/login/<provider>/callback`。 | 客户端代码[将来自提供程序的令牌发布到](app-service-authentication-how-to.md#validate-tokens-from-providers) `/.auth/login/<provider>` 进行验证。 |
 | 3.建立经过身份验证的会话 | 应用服务将经过身份验证的 Cookie 添加到响应中。 | 应用服务将自身的身份验证令牌返回给客户端代码。 |
 | 4.提供经过身份验证的内容 | 客户端在后续请求中包含身份验证 Cookie（由浏览器自动处理）。 | 客户端代码在 `X-ZUMO-AUTH` 标头中提供身份验证令牌（由移动应用客户端 SDK 自动处理）。 |
 
@@ -125,7 +124,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 以下标题介绍了选项。
 
-### <a name="allow-anonymous-requests-no-action"></a>允许匿名请求(无操作)
+### <a name="allow-anonymous-requests-no-action"></a>允许匿名请求 (无操作)
 
 此选项会将未经身份验证的流量授权到你的应用程序代码。 对于经过身份验证的请求，应用服务还会在 HTTP 标头中一起传递身份验证信息。 
 

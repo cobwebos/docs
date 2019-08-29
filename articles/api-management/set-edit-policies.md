@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 052bf619cd6f41aad139db45a8f3ecd9f4a0a62f
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034922"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071704"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>如何设置或编辑 Azure API 管理策略
 

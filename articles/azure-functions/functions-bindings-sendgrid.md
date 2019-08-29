@@ -6,16 +6,15 @@ documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 8b7666b043379f3ff143e2a5eaae6b40ea80ab90
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: dc113417be3df97b9ab9509c30a1f23e1eeaf35b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480253"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086277"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -107,7 +106,7 @@ public class OutgoingEmail
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json 
 {
@@ -193,7 +192,7 @@ public class Message
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json 
 {
@@ -231,7 +230,7 @@ module.exports = function (context, input) {
 };
 ```
 
-## <a name="attributes"></a>属性
+## <a name="attributes"></a>特性
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) 特性。
 
@@ -251,7 +250,7 @@ public static void Run(
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json  文件和 `SendGrid` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `SendGrid` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -288,7 +287,7 @@ public static void Run(
 
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
-|from|不适用|所有函数的发件人电子邮件地址。| 
+|来自|不适用|所有函数的发件人电子邮件地址。| 
 
 
 ## <a name="next-steps"></a>后续步骤

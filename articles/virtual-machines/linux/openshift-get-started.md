@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: d9e3aa3dae81166ef91f57ea6a95087a952001ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80f0ec57aa287bae9b10d9a4cdb013014aab3332
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65550988"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082553"
 ---
 # <a name="openshift-in-azure"></a>Azure 中的 OpenShift
 
@@ -36,7 +35,7 @@ OpenShift 包括用于容器业务流程和管理的 Kubernetes 容器。 它增
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift 是一种完全托管在 Azure 中运行的 OpenShift 的产品。 此服务由 Microsoft 和 Red Hat 共同管理并提供支持。 有关更多详细信息，请参阅[Azure Red Hat OpenShift 服务](https://docs.microsoft.com/azure/openshift/)文档。
+Microsoft Azure Red Hat OpenShift 是在 Azure 中运行的 OpenShift 的完全托管的服务。 此服务由 Microsoft 和 Red Hat 共同管理并提供支持。 有关更多详细信息, 请参阅[Azure Red Hat OpenShift 服务](https://docs.microsoft.com/azure/openshift/)文档。
 
 ## <a name="openshift-container-platform"></a>OpenShift 容器平台
 

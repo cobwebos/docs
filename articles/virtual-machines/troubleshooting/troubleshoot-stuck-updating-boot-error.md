@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: cff1577eacd0af86d3ad1c99e1eb2164b64318c4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b9a93448e084a42a935a8281ccd069e3604b1f18
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60443766"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089622"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM 启动在更新 Windows 时停滞
 
@@ -56,7 +55,7 @@ ms.locfileid: "60443766"
     例如，如果附加 OS 磁盘是驱动器 F，则运行以下命令：
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. 打开 C:\temp\Patch_level.txt 文件，然后从下往上浏览。 查找处于“安装挂起”或“卸载挂起”状态的更新   。  以下是更新状态的示例：
+5. 打开 C:\temp\Patch_level.txt 文件，然后从下往上浏览。 查找处于“安装挂起”或“卸载挂起”状态的更新。  以下是更新状态的示例：
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
@@ -69,7 +68,7 @@ ms.locfileid: "60443766"
     ```
     dism /Image:<Attached OS disk>:\ /Remove-Package /PackageName:<PACKAGE NAME TO DELETE>
     ```
-    示例： 
+    例如： 
 
     ```
     dism /Image:F:\ /Remove-Package /PackageName:Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5

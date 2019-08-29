@@ -8,18 +8,17 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 89d652f440e97650b7e7ac63cccc7fde75d7204a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: ee5a6c732bcb48cd347b8d87b95d2896d7230a08
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798271"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092375"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 扩展
 
@@ -27,13 +26,13 @@ ms.locfileid: "67798271"
 
 适用于 Windows 的 PowerShell DSC 扩展由 Microsoft 发布和提供支持。 扩展在 Azure VM 中上传和应用 PowerShell DSC 配置。 DSC 扩展可调用 PowerShell DSC，在 VM 上启用收到的 DSC 配置。 本文档详细介绍适用于 Windows 的 DSC 虚拟机扩展支持的平台、配置和部署选项。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
 DSC 扩展支持以下 OS：
 
-Windows Server 2019、 Windows Server 2016、 Windows Server 2012R2，Windows Server 2012、 Windows Server 2008 R2 SP1、 Windows 客户端 7/8.1/10
+Windows Server 2019, Windows Server 2016, Windows Server 2012R2, Windows Server 2012, Windows Server 2008 R2 SP1, Windows 客户端 7/8.1/10
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
@@ -107,7 +106,7 @@ Windows Server 2019、 Windows Server 2016、 Windows Server 2012R2，Windows Se
 
 ### <a name="settings-property-values"></a>设置属性值
 
-| 名称 | 数据类型 | 描述
+| 姓名 | 数据类型 | 描述
 | ---- | ---- | ---- |
 | settings.wmfVersion | string | 指定应在 VM 上安装的 Windows Management Framework 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”和“latest”。 这些可能值将来可能会更新。 默认值为“latest”。 |
 | settings.configuration.url | string | 指定要从中下载 DSC 配置 zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationUrlSasToken 属性设置为 SAS 令牌的值。 如果已定义 settings.configuration.script 和/或 settings.configuration.function，则需要此属性。
@@ -121,7 +120,7 @@ Windows Server 2019、 Windows Server 2016、 Windows Server 2012R2，Windows Se
 
 ### <a name="protected-settings-property-values"></a>受保护设置属性值
 
-| 名称 | 数据类型 | 描述
+| 姓名 | 数据类型 | 描述
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | string | 定义想要传递到 DSC 配置的任何参数。 将加密此属性。 |
 | protectedSettings.configurationUrlSasToken | string | 指定用于访问 configuration.url 所定义的 URL 的 SAS 令牌。 将加密此属性。 |

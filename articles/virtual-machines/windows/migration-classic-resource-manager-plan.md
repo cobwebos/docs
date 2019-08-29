@@ -11,16 +11,15 @@ ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 26766be8b2468da0df44fa42655db0ee04db45a2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: bf8959abcf591acd902793e9247cd15e2cfdada9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327074"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089223"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 尽管 Azure 资源管理器提供了许多精彩功能，但请务必计划迁移，以确保一切顺利进行。 花时间进行规划可确保执行迁移活动时不会遇到问题。
@@ -88,7 +87,7 @@ ms.locfileid: "68327074"
 
 下面是在许多大型迁移中发现的问题。 这个列表并不详尽，有关详细信息，请参阅[不支持的功能和配置](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations)。  不一定会遇到这些技术问题，但如果遇到，在尝试迁移前先解决这些问题可确保体验更流畅。
 
-- **执行验证/准备/中止试运行** - 这可能是确保经典部署模型成功迁移到 Azure 资源管理器部署模型最重要的步骤。 迁移 API 包括三个主要步骤：验证、准备和提交。 验证将读取经典环境的状态并返回所有问题的结果。 但是，由于某些问题可能存在于 Azure 资源管理器堆栈中，因此验证并不会捕获所有内容。 作为迁移过程下一步的“准备”有助于公开这些问题。 “准备”会将元数据从经典部署模型移动到 Azure 资源管理器部署模型，但不会提交移动，且不会删除或更改经典部署模型端的任何内容。 试运行涉及准备迁移，并中止（**而不是提交**）迁移准备。 验证/准备/中止试运行的目标是查看 Azure 资源管理器堆栈中的所有元数据，对其进行检查（以编程方式或在门户中  ），并验证所有内容是否正确迁移以及解决技术问题。  它还可让你对迁移持续时间有一些认识，以便可以相应地规划停机时间。  验证/准备/中止操作不会导致任何用户停机时间：因此，它对应用程序使用不具有破坏性。
+- **执行验证/准备/中止试运行** - 这可能是确保经典部署模型成功迁移到 Azure 资源管理器部署模型最重要的步骤。 迁移 API 包括三个主要步骤：验证、准备和提交。 验证将读取经典环境的状态并返回所有问题的结果。 但是，由于某些问题可能存在于 Azure 资源管理器堆栈中，因此验证并不会捕获所有内容。 作为迁移过程下一步的“准备”有助于公开这些问题。 “准备”会将元数据从经典部署模型移动到 Azure 资源管理器部署模型，但不会提交移动，且不会删除或更改经典部署模型端的任何内容。 试运行涉及准备迁移，并中止（**而不是提交**）迁移准备。 验证/准备/中止试运行的目标是查看 Azure 资源管理器堆栈中的所有元数据，对其进行检查（以编程方式或在门户中），并验证所有内容是否正确迁移以及解决技术问题。  它还可让你对迁移持续时间有一些认识，以便可以相应地规划停机时间。  验证/准备/中止操作不会导致任何用户停机时间：因此，它对应用程序使用不具有破坏性。
   - 以下各项需要在试运行前解决，但如果错过了，试运行测试也会安全刷新这些准备步骤。 企业迁移期间，我们发现试运行是确保迁移准备就绪的安全且重要的方法。
   - 准备运行期间，将对整个虚拟网络锁定控制平面（Azure 管理操作），因此在验证/准备/中止期间无法对 VM 元数据进行任何更改。  但在其他方面，所有应用程序功能（RD、VM 使用等）均不受影响。  VM 用户不知道正在执行的是试运行。
 
@@ -123,7 +122,7 @@ ms.locfileid: "68327074"
     >
 
   - 网络接口
-  - 负载均衡器
+  - 负载平衡器
   - 公共 IP
   - 静态公共 IP
   - 核心数
@@ -134,7 +133,7 @@ ms.locfileid: "68327074"
     
     [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-    **计算**（核心数、可用性集数） 
+    **计算**（核心数、可用性集数）
 
     ```powershell
     Get-AzVMUsage -Location <azure-region>
@@ -181,7 +180,7 @@ ms.locfileid: "68327074"
 
 ### <a name="patterns-of-success"></a>成功模式
 
-实际迁移前，应考虑和缓解“实验室测试”  部分中的技术指南。  通过充分测试，实际上迁移不属于事件。  对于生产环境，具有其他支持，如受信任的 Microsoft 合作伙伴或 Microsoft 高级服务等会很有帮助。
+实际迁移前，应考虑和缓解“实验室测试”部分中的技术指南。  通过充分测试，实际上迁移不属于事件。  对于生产环境，具有其他支持，如受信任的 Microsoft 合作伙伴或 Microsoft 高级服务等会很有帮助。
 
 ### <a name="pitfalls-to-avoid"></a>需避免的错误
 

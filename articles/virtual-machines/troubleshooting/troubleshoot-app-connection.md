@@ -12,16 +12,15 @@ ms.assetid: b9ff7cd0-0c5d-4c3c-a6be-3ac47abf31ba
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 9bc528cdd098a2e355c542c3ca8f9bcb0287f339
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fd79e04cdd8f9d01131c016031d696c1583eb55d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710524"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080399"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>排查 Azure 中虚拟机上的应用程序连接问题
 
@@ -105,7 +104,7 @@ ms.locfileid: "67710524"
 
 在基于 Windows 的虚拟机上，使用具有高级安全性的 Windows 防火墙确定防火墙规则是否排除应用程序的入站和出站流量。
 
-## <a id="step3"></a>步骤 3：从虚拟网络外部的访问应用程序
+## <a id="step3"></a>步骤 3：从虚拟网络外部访问应用程序
 尝试通过虚拟网络之外的计算机访问应用程序，作为应用程序运行的 VM。 使用其他网络作为原始客户端计算机。
 
 ![从虚拟网络外部的计算机启动应用程序。](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)

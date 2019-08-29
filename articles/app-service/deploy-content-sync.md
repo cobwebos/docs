@@ -9,18 +9,17 @@ ms.assetid: 88d3a670-303a-4fa2-9de9-715cc904acec
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 60caadf58a8acdc7cecb0074e189fd1656032327
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 033a9adfd81dc52858ab58e3170e69af6f56c323
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617082"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070631"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>将内容从云文件夹同步到 Azure 应用服务
 本文介绍如何将内容同步到 Dropbox 和 OneDrive 上的 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)。 
@@ -31,26 +30,26 @@ ms.locfileid: "67617082"
 
 若要启用内容同步，请导航至 [Azure 门户](https://portal.azure.com)中的“应用服务应用”页。
 
-在左侧菜单中，单击“部署中心”   > “OneDrive”  或“Dropbox”   > “授权”  。 按照授权提示进行操作。 
+在左侧菜单中，单击“部署中心” > “OneDrive”或“Dropbox” > “授权”。 按照授权提示进行操作。 
 
 ![](media/app-service-deploy-content-sync/choose-source.png)
 
-只需使用 OneDrive 或 Dropbox 授权一次。 如果已获得授权，只需单击“继续”  即可。 可以通过单击“更改帐户”  来更改已获得授权的 OneDrive 或 Dropbox 帐户。
+只需使用 OneDrive 或 Dropbox 授权一次。 如果已获得授权，只需单击“继续”即可。 可以通过单击“更改帐户”来更改已获得授权的 OneDrive 或 Dropbox 帐户。
 
 ![](media/app-service-deploy-content-sync/continue.png)
 
-在“配置”  页上，选择要同步的文件夹。 将在 OneDrive 或 Dropbox 中的以下指定内容路径下创建此文件夹。 
+在“配置”页上，选择要同步的文件夹。 将在 OneDrive 或 Dropbox 中的以下指定内容路径下创建此文件夹。 
    
 * **OneDrive**：`Apps\Azure Web Apps`
 * **Dropbox**：`Apps\Azure`
 
-完成后，单击“继续”。 
+完成后，单击“继续”。
 
-在“摘要”  页中，确认选项，然后单击“完成”  。
+在“摘要”页中，确认选项，然后单击“完成”。
 
 ## <a name="synchronize-content"></a>同步内容
 
-如果想要使用应用服务同步云文件夹中的内容，请返回到“部署中心”  页，单击“同步”  。
+如果想要使用应用服务同步云文件夹中的内容，请返回到“部署中心”页，单击“同步”。
 
 ![](media/app-service-deploy-content-sync/synchronize.png)
    
@@ -63,7 +62,7 @@ ms.locfileid: "67617082"
 
 若要禁用内容同步，请导航至 [Azure 门户](https://portal.azure.com)中的“应用服务应用”页。
 
-在左侧菜单中，单击“部署中心” > “断开连接”。  
+在左侧菜单中，单击“部署中心” > “断开连接”。
 
 ![](media/app-service-deploy-content-sync/disable.png)
 

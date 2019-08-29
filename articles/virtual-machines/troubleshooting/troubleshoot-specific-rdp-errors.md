@@ -12,16 +12,15 @@ ms.assetid: 5feb1d64-ee6f-4907-949a-a7cffcbc6153
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ea8a2fa3a37815f3a7a48078e408e6607dc37eb4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: eb9929c66275959ed64ab66517f8b38190f1bdbd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709285"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089665"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure 中 Windows VM 特定 RDP 错误消息故障排除
 使用远程桌面连接到 Azure 中的 Windows 虚拟机 (VM) 时，可能会收到特定错误消息。 本文详细介绍了一些遇到的更常见错误消息以及解决错误的故障排除步骤。 如果在使用 RDP 连接到 VM 时出现问题，但没有收到特定错误消息，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md)。
@@ -37,7 +36,7 @@ ms.locfileid: "67709285"
 <a id="rdplicense"></a>
 
 ## <a name="the-remote-session-was-disconnected-because-there-are-no-remote-desktop-license-servers-available-to-provide-a-license"></a>由于没有可用于提供许可证的远程桌面许可证服务器，远程会话已断开连接。
-原因：用于远程桌面服务器角色的 120 天许可宽限期已过期，你需要安装许可证。
+原因：用于远程桌面服务器角色的 120 天许可宽限期已过期，需要安装许可证。
 
 解决方法是，从门户保存 RDP 文件的本地副本，并在 PowerShell 命令提示符下运行此命令以进行连接。 此步骤仅禁用该连接的许可：
 
@@ -50,7 +49,7 @@ ms.locfileid: "67709285"
 <a id="rdpname"></a>
 
 ## <a name="remote-desktop-cant-find-the-computer-name"></a>远程桌面找不到计算机“名称”。
-原因：您的计算机上的远程桌面客户端无法解析 RDP 文件设置中的计算机的名称。
+原因：计算机上的远程桌面客户端无法解析 RDP 文件设置中的计算机名称。
 
 可能的解决方法：
 
@@ -68,9 +67,9 @@ ms.locfileid: "67709285"
 <a id="rdpauth"></a>
 
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>发生身份验证错误。 无法联系本地安全机构。
-原因：目标 VM 找不到安全机构中的凭据的用户名部分。
+原因：目标 VM 在凭据的用户名部分中找不到安全机构。
 
-当您的用户名称处于窗体*SecurityAuthority*\\*用户名*(示例：CORP\User1)， *SecurityAuthority*部分是 VM 的计算机名 （表示本地安全机构） 或 Active Directory 域名。
+如果用户名格式为 SecurityAuthority\\UserName（例如：CORP\User1），则 SecurityAuthority 部分是 VM 的计算机名（表示本地安全机构）或 Active Directory 域名。
 
 可能的解决方法：
 
@@ -80,13 +79,13 @@ ms.locfileid: "67709285"
 
 <a id="wincred"></a>
 
-## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows 安全性错误：你的凭据未解决问题。
-原因：目标 VM 无法验证你的帐户名和密码。
+## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows 安全性错误：你的凭据无效。
+原因：目标 VM 无法验证帐户名和密码。
 
 基于 Windows 的计算机可以验证本地帐户或域帐户的凭据。
 
-* 对于本地帐户，请使用*ComputerName*\\*用户名*语法 (示例：SQL1\Admin4798)。
-* 对于域帐户，请使用*DomainName*\\*用户名*语法 (示例：CONTOSO\peterodman)。
+* 对于本地帐户，请使用 ComputerName\\UserName 语法（例如：SQL1\Admin4798）。
+* 对于域帐户，请使用 DomainName\\UserName 语法（例如：CONTOSO\peterodman）。
 
 如果已将 VM 提升为新的 Active Directory 林中的域控制器，则会将用于登录的本地管理员帐户转换为新的林和域中具有相同密码的等效帐户。 然后，将删除本地帐户。
 
@@ -103,7 +102,7 @@ ms.locfileid: "67709285"
 
 每台 Windows 计算机都具有远程桌面用户本地组，包含可以远程登录的帐户和组。 本地 Administrators 组的成员也具有访问权限，即使在远程桌面用户本地组中未列出这些帐户。 对于已加入域的计算机，本地 Administrators 组还包含该域的域管理员。
 
-确保用于连接的帐户具有远程桌面登录权限。 解决方法是使用域管理员或本地管理员帐户通过远程桌面建立连接。 若要将所需帐户添加到远程桌面用户本地组，请使用 Microsoft 管理控制台管理单元（“系统工具”>“本地用户和组”>“组”>“远程桌面用户”  ）。
+确保用于连接的帐户具有远程桌面登录权限。 解决方法是使用域管理员或本地管理员帐户通过远程桌面建立连接。 若要将所需帐户添加到远程桌面用户本地组，请使用 Microsoft 管理控制台管理单元（“系统工具”>“本地用户和组”>“组”>“远程桌面用户”）。
 
 ## <a name="next-steps"></a>后续步骤
 如果没有发生这些错误，但在使用 RDP 连接时出现未知问题，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

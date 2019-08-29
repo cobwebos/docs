@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
-ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bead5f0bec6d57c0f4aaddc6537e00c466d987f1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 96ba829ffaadb6bc792c2d859e1e6766ab3ee394
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68323879"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095584"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -287,7 +286,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 如果某个计算节点上的启动任务失败，则节点的状态将会更新以反映失败状态，同时，不会为该节点分配任何任务。 如果从存储中复制启动任务的资源文件时出现问题，或由其命令行执行的进程返回了非零退出代码，则启动任务可能会失败。
 
-如果为现有池添加或更新开始任务，则必须重启其计算节点，才能将开始任务应用到节点。
+如果添加或更新现有池的启动任务，必须重启其计算节点，启动任务才应用到节点。
 
 >[!NOTE]
 > Batch 限制启动任务的总大小，其中包括资源文件和环境变量。 如需缩小启动任务，可使用下述两种方法中的一种：

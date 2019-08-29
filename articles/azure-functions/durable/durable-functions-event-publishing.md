@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: glenga
-ms.openlocfilehash: c07a42349fbd81a46b1b7cd9bcad1978f891a6b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 837e29731b617fcb8da95b89668403638c4d049a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60733695"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087404"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
@@ -29,7 +28,7 @@ ms.locfileid: "60733695"
 
 * **长时间运行的后台活动**：如果对长时间运行的后台活动使用 Durable Functions，此功能有助于了解当前状态。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 在 Durable Functions 项目中安装 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 1.3.0-rc 或更高版本。
 * 安装 [Azure 存储模拟器](https://docs.microsoft.com/azure/storage/common/storage-use-emulator)。
@@ -37,14 +36,14 @@ ms.locfileid: "60733695"
 
 ## <a name="create-a-custom-event-grid-topic"></a>创建自定义事件网格主题
 
-创建事件网格主题从 Durable Functions 发送事件。 以下说明介绍如何使用 Azure CLI 创建主题。 有关如何使用 PowerShell 或 Azure 门户执行此操作的信息，请参阅以下文章：
+创建用于从 Durable Functions 发送事件的事件网格主题。 以下说明介绍如何使用 Azure CLI 创建主题。 有关如何使用 PowerShell 或 Azure 门户执行此操作的信息，请参阅以下文章：
 
 * [EventGrid 快速入门：创建自定义事件 - PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
 * [EventGrid 快速入门：创建自定义事件 - Azure 门户](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 `az group create` 命令创建资源组。 目前，Azure 事件网格不支持所有区域。 支持哪些区域的信息，请参阅[Azure 事件网格概述](https://docs.microsoft.com/azure/event-grid/overview)。
+使用 `az group create` 命令创建资源组。 目前, Azure 事件网格不支持所有区域。 有关支持的区域的信息, 请参阅[Azure 事件网格概述](https://docs.microsoft.com/azure/event-grid/overview)。
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -52,7 +51,7 @@ az group create --name eventResourceGroup --location westus2
 
 ### <a name="create-a-custom-topic"></a>创建自定义主题
 
-事件网格主题提供发布到事件的用户定义的终结点。 用主题的唯一名称替换 `<topic_name>`。 主题名称必须唯一，因为它将用作 DNS 条目。
+事件网格主题提供用户定义的终结点, 您可以将事件发布到该终结点。 用主题的唯一名称替换 `<topic_name>`。 主题名称必须唯一，因为它将用作 DNS 条目。
 
 ```bash
 az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
@@ -89,7 +88,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 }
 ```
 
-可能的 Azure 事件网格配置属性可在[host.json 文档](../functions-host-json.md#durabletask)。 在配置之后`host.json`文件，则 function app 会将生命周期事件发送到事件网格主题。 适用于本地和 Azure 中运行 function app。 ' '
+可以在[host json 文档](../functions-host-json.md#durabletask)中找到可能的 Azure 事件网格配置属性。 配置`host.json`文件后, 函数应用将生命周期事件发送到事件网格主题。 这适用于在本地和 Azure 中运行函数应用的情况。
 
 在函数应用和 `local.setting.json` 中设置主题密钥的应用设置。 以下 JSON 是用于本地调试的 `local.settings.json` 示例。 将 `<topic_key>` 替换为主题密钥。  
 
@@ -108,11 +107,11 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 ## <a name="create-functions-that-listen-for-events"></a>创建用于侦听事件的函数
 
-创建函数应用。 最好是在事件网格主题所在的同一区域中找到它。
+创建函数应用。 最好将它放在与事件网格主题相同的区域中。
 
 ### <a name="create-an-event-grid-trigger-function"></a>创建事件网格触发器函数
 
-创建用于接收生命周期事件的函数。 选择“自定义函数”。 
+创建用于接收生命周期事件的函数。 选择“自定义函数”。
 
 ![选择“创建自定义函数”。](./media/durable-functions-event-publishing/functions-portal.png)
 
@@ -138,11 +137,11 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
-选择 `Add Event Grid Subscription`。 此操作将添加你创建的事件网格主题的事件网格订阅。 有关详细信息，请参阅 [Azure 事件网格中的概念](https://docs.microsoft.com/azure/event-grid/concepts)。
+选择 `Add Event Grid Subscription`。 此操作为您创建的事件网格主题添加事件网格订阅。 有关详细信息，请参阅 [Azure 事件网格中的概念](https://docs.microsoft.com/azure/event-grid/concepts)。
 
 ![选择“事件网格触发器”链接。](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
-为“主题类型”选择 `Event Grid Topics`。  选择事件网格主题为创建的资源组。 然后选择事件网格主题的实例。 按 `Create`。
+为“主题类型”选择 `Event Grid Topics`。 选择为事件网格主题创建的资源组。 然后选择事件网格主题的实例。 按 `Create`。
 
 ![创建事件网格订阅。](./media/durable-functions-event-publishing/eventsubscription.png)
 
@@ -258,7 +257,7 @@ namespace LifeCycleEventSpike
   * **`instanceId`** ：Durable Functions instanceId。
   * **`reason`** ：与跟踪事件关联的其他数据。 有关详细信息，请参阅 [Durable Functions 中的诊断 (Azure Functions)](durable-functions-diagnostics.md)
   * **`runtimeStatus`** ：业务流程运行时状态。 值为 Running、Completed、Failed 和 Canceled。
-* **`eventType`** :"orchestratorEvent"
+* **`eventType`** : "orchestratorEvent"
 * **`eventTime`** ：事件时间 (UTC)。
 * **`dataVersion`** ：生命周期事件架构的版本。
 * **`metadataVersion`** ：元数据的版本。

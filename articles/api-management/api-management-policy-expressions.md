@@ -10,16 +10,15 @@ ms.assetid: ea160028-fc04-4782-aa26-4b8329df3448
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a42028891f0a8677127221c8ed4cff73a22103a
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: fa5e84ba62896969458b84cf014e2b35ee869df7
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498541"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072174"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
 本文讨论策略表达式语法 C# 7。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。
@@ -215,13 +214,13 @@ ms.locfileid: "68498541"
 |<a id="ref-context-deployment"></a>context.Deployment|Region: 字符串<br /><br /> ServiceName: 字符串<br /><br /> 证书：IReadOnlyDictionary<string, X509Certificate2>|
 |<a id="ref-context-lasterror"></a>context.LastError|Source: 字符串<br /><br /> Reason: 字符串<br /><br /> Message: 字符串<br /><br /> Scope: 字符串<br /><br /> Section: 字符串<br /><br /> Path：string<br /><br /> PolicyId: 字符串<br /><br /> 有关 context.LastError 的详细信息，请参阅[错误处理](api-management-error-handling-policies.md)。|
 |<a id="ref-context-operation"></a>context.Operation|Id: 字符串<br /><br /> Method: 字符串<br /><br /> Name：string<br /><br /> UrlTemplate: 字符串|
-|<a id="ref-context-product"></a>context.Product|Api：IEnumerable<[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: 布尔值<br /><br /> 组:IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: 字符串<br /><br /> Name: 字符串<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: 布尔值|
-|<a id="ref-context-request"></a>context.Request|正文:[IMessageBody](#ref-imessagebody) 或 `null`（如果请求没有正文）。<br /><br /> 证书:System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [标头](#ref-context-request-headers)：IReadOnlyDictionary<string, string[]><br /><br /> IpAddress: 字符串<br /><br /> MatchedParameters：IReadOnlyDictionary<string, string><br /><br /> Method: 字符串<br /><br /> OriginalUrl：[IUrl](#ref-iurl)<br /><br /> Url:[IUrl](#ref-iurl)|
+|<a id="ref-context-product"></a>context.Product|Api：IEnumerable<[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: 布尔值<br /><br /> 组：IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: 字符串<br /><br /> Name: 字符串<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: 布尔值|
+|<a id="ref-context-request"></a>context.Request|正文：[IMessageBody](#ref-imessagebody) 或 `null`（如果请求没有正文）。<br /><br /> 证书：System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [标头](#ref-context-request-headers)：IReadOnlyDictionary<string, string[]><br /><br /> IpAddress: 字符串<br /><br /> MatchedParameters：IReadOnlyDictionary<string, string><br /><br /> Method: 字符串<br /><br /> OriginalUrl：[IUrl](#ref-iurl)<br /><br /> URL：[IUrl](#ref-iurl)|
 |<a id="ref-context-request-headers"></a>string context.Request.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: 字符串<br /><br /> defaultValue: 字符串<br /><br /> 如果找不到标头，则返回逗号分隔的请求标头值或 `defaultValue`。|
-|<a id="ref-context-response"></a>context.Response|正文:[IMessageBody](#ref-imessagebody)<br /><br /> [标头](#ref-context-response-headers)：IReadOnlyDictionary<string, string[]><br /><br /> StatusCode: 整数<br /><br /> StatusReason: 字符串|
+|<a id="ref-context-response"></a>context.Response|正文：[IMessageBody](#ref-imessagebody)<br /><br /> [标头](#ref-context-response-headers)：IReadOnlyDictionary<string, string[]><br /><br /> StatusCode: 整数<br /><br /> StatusReason: 字符串|
 |<a id="ref-context-response-headers"></a>string context.Response.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: 字符串<br /><br /> defaultValue: 字符串<br /><br /> 如果找不到标头，则返回逗号分隔的响应标头值或 `defaultValue`。|
-|<a id="ref-context-subscription"></a>context.Subscription|CreatedTime：日期时间<br /><br /> EndDate:DateTime?<br /><br /> Id: 字符串<br /><br /> Key: 字符串<br /><br /> Name: 字符串<br /><br /> PrimaryKey: 字符串<br /><br /> SecondaryKey: 字符串<br /><br /> StartDate:DateTime?|
-|<a id="ref-context-user"></a>context.User|Email: 字符串<br /><br /> FirstName: 字符串<br /><br /> 组:IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: 字符串<br /><br /> 标识：IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: 字符串<br /><br /> Note: 字符串<br /><br /> RegistrationDate：日期时间|
+|<a id="ref-context-subscription"></a>context.Subscription|CreatedTime：DateTime<br /><br /> EndDate:DateTime?<br /><br /> Id: 字符串<br /><br /> Key: 字符串<br /><br /> Name: 字符串<br /><br /> PrimaryKey: 字符串<br /><br /> SecondaryKey: 字符串<br /><br /> StartDate:DateTime?|
+|<a id="ref-context-user"></a>context.User|Email: 字符串<br /><br /> FirstName: 字符串<br /><br /> 组：IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: 字符串<br /><br /> 标识：IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: 字符串<br /><br /> Note: 字符串<br /><br /> RegistrationDate：DateTime|
 |<a id="ref-iapi"></a>IApi|Id: 字符串<br /><br /> Name: 字符串<br /><br /> Path: 字符串<br /><br /> 协议：IEnumerable<string\><br /><br /> ServiceUrl：[IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames：[ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|Id: 字符串<br /><br /> Name: 字符串|
 |<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false):其中 T: string、byte []、JObject、JToken、JArray、System.xml.linq.xnode>、System.xml.linq.xelement>、XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Response.Body.As<T>` 方法用于读取请求和响应采用指定类型 `T` 的消息正文。 该方法默认使用原始消息正文流，并在返回后将其呈现为不可用。 要通过让该方法在正文流的副本上执行操作而避免这种情况，请将 `preserveContent` 参数设置为 `true`。 请转到[此处](api-management-transformation-policies.md#SetBody)查看示例。|

@@ -10,23 +10,22 @@ ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
-ms.openlocfilehash: fd9902a83a813daffc52e089e6e8bfc4137c5b8f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0a333b1fac78889b61829b869c23efea5e312adf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656621"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072253"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>在 Azure API 管理中修改开发人员门户上的页面内容和页面布局
 在 Azure API 管理中自定义开发人员门户有三种基本方法：
 
-* [编辑静态页面内容和页面布局元素][modify-content-layout]（本指南中所述）
+* [编辑静态页和页面布局元素的内容][modify-content-layout](本指南中所述)
 * [跨开发人员门户更新页面元素所用的样式][customize-styles]
-* [修改门户生成的页面所用的模板][portal-templates]（例如 API 文档、产品、用户身份验证等）
+* [修改门户生成的页面所用的模板][portal-templates](例如, API 文档、产品、用户身份验证等)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -46,18 +45,18 @@ ms.locfileid: "60656621"
 
 开发人员门户可从 Azure 门户进行访问。
 
-1. 单击 API 管理实例的工具栏中的“开发人员门户”  。
-2. 若要编辑小组件的内容，请单击左侧“开发人员门户”菜单中由两个画刷组成的图标。 
-3. 若要修改标头的内容，请滚动到左侧列表中的“标头”部分。 
+1. 单击 API 管理实例的工具栏中的“开发人员门户”。
+2. 若要编辑小组件的内容，请单击左侧“开发人员门户”菜单中由两个画刷组成的图标。
+3. 若要修改标头的内容，请滚动到左侧列表中的“标头”部分。
 
     可以在字段中对小组件进行编辑。
-4. 做好发布更改的准备以后，请单击页面底部的“发布”。 
+4. 做好发布更改的准备以后，请单击页面底部的“发布”。
 
 现在，就能够在开发人员门户中的每一页上看见此新的标头。
 
 ## <a name="next-steps"></a>后续步骤
 * [跨开发人员门户更新页面元素所用的样式][customize-styles]
-* [修改门户生成的页面所用的模板][portal-templates]（例如 API 文档、产品、用户身份验证等）
+* [修改门户生成的页面所用的模板][portal-templates](例如, API 文档、产品、用户身份验证等)
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget

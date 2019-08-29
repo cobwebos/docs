@@ -5,18 +5,17 @@ services: batch
 author: laurenhughes
 manager: gwallace
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.workload: na
 ms.date: 08/09/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: a7de2ba66ccfb5e3f3bce688e68698d90fe2eaf6
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c8fc8e7d5888f9a0b080c0ca1d24e53068b543be
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941336"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095180"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 

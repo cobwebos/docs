@@ -11,16 +11,15 @@ ms.assetid: 0b82ca70-89ed-496d-bb49-c04ae59b4523
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 74b92c277b1d6eaa0984e55a70459bad59c2bf84
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 5cbf53da5a0af0a511350b9f30153e2fefe72dcf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719270"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080074"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>使用 Chef 自动部署 Azure 虚拟机
 
@@ -45,8 +44,8 @@ Chef 客户端（节点）是位于在管理的服务器上的代理。
 
 Chef 工作站是在其中创建策略和执行管理命令与 Chef 工具软件包的管理工作站的名称。
 
-一般情况下，可将自己的工作站视为在其中执行操作的位置，以及用于运行软件包的 Chef 工作站。  
-例如，你要在 Chef 工作站中下载 knife 命令，但要从自己的工作站运行 knife 命令来管理基础结构。  
+一般情况下，可将自己的工作站视为在其中执行操作的位置，以及用于运行软件包的 Chef 工作站。
+例如，你要在 Chef 工作站中下载 knife 命令，但要从自己的工作站运行 knife 命令来管理基础结构。
 
 Chef 还使用“食谱”和“配方”的概念，它们实际上是我们要定义并应用到服务器的策略。
 
@@ -56,11 +55,11 @@ Chef 还使用“食谱”和“配方”的概念，它们实际上是我们要
 
 创建名为 C:\Chef 的目录。
 
-下载并安装最新[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)到你的工作站的版本。
+下载最新的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 版本，并将其安装到工作站上。
 
 ## <a name="configure-azure-service-principal"></a>配置 Azure 服务主体
 
-在最简单的条款和 Azure 服务主体是一个服务帐户。   我们将使用服务主体来帮助我们从我们的 Chef 工作站创建 Azure 资源。  若要创建使用所需的权限相关的服务主体，我们需要运行 PowerShell 中的以下命令：
+用最简单的术语来说，Azure 服务主体就是一个服务帐户。   我们将使用一个服务主体来帮助我们从 Chef 工作站创建 Azure 资源。  若要创建具有所需权限的相关服务主体，我们需要在 PowerShell 中运行以下命令：
  
 ```powershell
 Login-AzureRmAccount
@@ -71,7 +70,7 @@ New-AzureRmADServicePrincipal -ApplicationId $myApplication.ApplicationId
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $myApplication.ApplicationId
 ```
 
-请记下你的订阅 Id、 TenantID、 ClientID 和客户端密码 （上述设置的密码），将会在以后需要它。 
+请记下 SubscriptionID、TenantID、ClientID 和客户端密码（前面设置的密码），稍后将需要这些项。 
 
 ## <a name="setup-chef-server"></a>设置 Chef 服务器
 
@@ -100,7 +99,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName 
 
 此初学者工具包 zip 文件的 `.chef` 目录中包含组织配置文件和用户密钥。
 
-必须单独下载 `organization-validator.pem`，因为它是一个私钥，而私钥不应存储在 Chef 服务器上。 从[Chef 管理](https://manage.chef.io/)，请转到管理部分并选择"重置验证密钥"，它提供可单独下载的文件。 将该文件保存到 c:\chef。
+必须单独下载 `organization-validator.pem`，因为它是一个私钥，而私钥不应存储在 Chef 服务器上。 在 [Chef 管理](https://manage.chef.io/)中，进入“管理”部分并选择“重置验证密钥”，此时会提供一个文件供你单独下载。 将该文件保存到 c:\chef。
 
 ### <a name="configuring-your-chef-workstation"></a>配置 Chef 工作站
 
@@ -161,7 +160,7 @@ knife[:azure_client_id] =         "11111111-bbbbb-cccc-1111-2222222222222"
 knife[:azure_client_secret] =     "#1234p$wdchef19"
 
 
-这些行将确保 Knife 引用 c:\chef\cookbooks 下的 cookbooks 目录并且还使用 Azure 操作期间创建的 Azure 服务主体。
+这些行将确保 Knife 引用 c:\chef\cookbooks 下的 cookbooks 目录，并且还使用你在 Azure 操作期间创建的 Azure 服务主体。
 
 knife.rb 文件现在应类似于以下示例：
 
@@ -281,7 +280,7 @@ Chef Workstation: 0.4.2
 导航到 `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` 文件。 通过添加一些简单的“Hello World”html 代码来编辑该文件，并保存该文件。
 
 ## <a name="upload-the-cookbook-to-the-chef-server"></a>将食谱上传到 Chef 服务器
-此步骤生成在本地计算机上创建的食谱的副本，并将其上传到 Chef 托管服务器。 上传后，食谱将显示在“策略”选项卡下  。
+此步骤生成在本地计算机上创建的食谱的副本，并将其上传到 Chef 托管服务器。 上传后，食谱将显示在“策略”选项卡下。
 
     knife cookbook upload webserver
 
@@ -290,7 +289,7 @@ Chef Workstation: 0.4.2
 ## <a name="deploy-a-virtual-machine-with-knife-azure"></a>使用 Knife Azure 部署虚拟机
 部署 Azure 虚拟机，并应用“Webserver”食谱来安装 IIS Web 服务和默认网页。
 
-若要执行此操作，使用**knife azurerm 服务器创建**命令。
+若要执行此操作，请使用 **knife azurerm server create** 命令。
 
 下面显示了命令示例。
 
@@ -310,10 +309,10 @@ Chef Workstation: 0.4.2
     -r "recipe[webserver]"
 
 
-上面的示例将使用 Windows Server 2016 安装在美国西部区域创建 Standard_DS2_v2 虚拟机。 替换特定变量并运行。
+上面的示例将创建一个 Standard_DS2_v2 虚拟机, 并在美国西部区域中安装 Windows Server 2016。 替换特定变量并运行。
 
 > [!NOTE]
-> 通过命令行，还使用 –tcp-endpoints 参数自动执行终结点网络筛选规则。 我已打开端口 80 和 3389 来提供对网页和 RDP 会话的访问。
+> 通过命令行，还使用 –tcp-endpoints 参数自动执行终结点网络筛选规则。 我已打开端口80和 3389, 以提供对网页和 RDP 会话的访问。
 >
 >
 
@@ -325,13 +324,13 @@ Chef Workstation: 0.4.2
 
 ![][16]
 
-部署完成后，新的虚拟机的公共 IP 地址将显示在部署完成后，可以将此内容复制并将其粘贴到 web 浏览器并查看您部署该网站。 我们部署了虚拟机我们会打开端口 80，因此它应为其外部可用。   
+部署完成后，新虚拟机的公共 IP 地址将在部署完成时显示，你可以复制此地址并将其粘贴到 Web 浏览器中，然后查看你部署的网站。 我们部署虚拟机时，打开了端口 80，因此它应该在外部可用。   
 
 ![][11]
 
 此示例使用了富有创造性的 HTML 代码。
 
-你还可以查看该节点的状态[Chef 管理](https://manage.chef.io/)。 
+你还可以查看节点的状态 [Chef 管理](https://manage.chef.io/)。 
 
 ![][17]
 

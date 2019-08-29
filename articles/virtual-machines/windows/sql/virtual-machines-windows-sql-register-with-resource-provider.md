@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 552caf0f09dcfa291981ef73152cf4febfc4a840
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a4e217ce3fcfae0f7d103c545ff385f2dffe582d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882375"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100498"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>使用 SQL VM 资源提供程序在 Azure 中注册 SQL Server 虚拟机
 
@@ -33,7 +32,7 @@ ms.locfileid: "68882375"
 
 若要利用 SQL VM 资源提供程序, 还必须将 SQL VM 资源提供程序注册到订阅。 可以使用 Azure 门户、Azure CLI 或 PowerShell 实现此目的。 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要向资源提供程序注册你的 SQL Server VM, 你将需要以下各项: 
 

@@ -14,12 +14,12 @@ ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a9d997f9ced0fbd921abfb13cda5a4845eb3763
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: fc6f6f7b02db664ca6cd62dc7aad61baf5f132fa
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616289"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088410"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理双重验证的应用密码
 
@@ -47,7 +47,7 @@ ms.locfileid: "69616289"
 
 - **你的组织使用双重验证和 "其他安全验证" 页。** 如果你在组织中使用工作或学校帐户 (例如alain@contoso.com) 进行双重验证, 则可以从 "[其他安全验证" 页](https://account.activedirectory.windowsazure.com/Proofup.aspx)管理你的应用密码。 有关详细说明, 请参阅本文中[的使用其他安全验证创建和删除应用密码页](#create-and-delete-app-passwords-from-the-additional-security-verification-page)。
 
-- **你的组织使用双因素验证和 Office 365 门户。** 如果你在组织中使用工作或学校帐户 (例如、 alain@contoso.com)、双因素验证和 office 365 应用, 则可以从[Office 365 门户页面](https://office.portal.com)管理应用密码。 有关详细说明, 请参阅本文中[的使用 Office 365 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-office-365-portal)。
+- **你的组织使用双因素验证和 Office 365 门户。** 如果你在组织中使用工作或学校帐户 (例如、 alain@contoso.com)、双因素验证和 office 365 应用, 则可以从[Office 365 门户页面](https://www.office.com)管理应用密码。 有关详细说明, 请参阅本文中[的使用 Office 365 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-office-365-portal)。
 
 - **你使用的是包含个人 Microsoft 帐户的双重验证。** 如果使用的是个人 Microsoft 帐户 (例如alain@outlook.com) 进行双重验证, 则可以从 "[安全基本](https://account.microsoft.com/security/)信息" 页中管理应用密码。 有关详细说明, 请参阅将[应用密码用于不支持双重验证的应用](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification)。
 

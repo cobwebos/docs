@@ -3,15 +3,15 @@ title: 管理 Azure Cosmos DB 中的索引策略
 description: 了解如何管理 Azure Cosmos DB 中的索引策略
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: thweiss
-ms.openlocfilehash: 0100be7eeacdcda5b123356e95e2510a365d0f22
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
-ms.translationtype: HT
+ms.openlocfilehash: 6e935b88c474d28c06b8cdd76d36f5ba64c942f9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356440"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093207"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 
@@ -34,13 +34,13 @@ Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门
 
 1. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，选择要使用的容器。 
+1. 打开“数据资源管理器”窗格，选择要使用的容器。
 
-1. 单击“缩放设置”。 
+1. 单击“缩放设置”。
 
 1. 修改索引策略 JSON 文档（请参阅[下文](#indexing-policy-examples)中的示例）
 
-1. 完成后，单击“保存”。 
+1. 完成后，单击“保存”。
 
 ![使用 Azure 门户管理索引编制](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 
@@ -231,7 +231,7 @@ response = client.ReplaceContainer(containerPath, container)
     }
 ```
 
-注意：通常情况下，建议使用**选择退出**索引策略来让 Azure Cosmos DB 主动为可能会添加到模型的任何新属性编制索引。
+注意:通常情况下，建议使用**选择退出**索引策略来让 Azure Cosmos DB 主动为可能会添加到模型的任何新属性编制索引。
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>仅在特定属性路径上使用空间索引
 ```

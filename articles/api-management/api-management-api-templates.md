@@ -10,16 +10,15 @@ ms.assetid: 3642fd09-ba98-4358-93a6-c48ab0500431
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: e8519bf436e1af19a22a840f48bf1bfccdae99b2
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 9d75dff413e7b6e61d38b95e08bf9c891b583014
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341259"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073825"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
 
@@ -79,7 +78,7 @@ ms.locfileid: "67341259"
 </div>  
 ```  
   
-### <a name="controls"></a>Controls  
+### <a name="controls"></a>控件  
  `API list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
@@ -88,7 +87,7 @@ ms.locfileid: "67341259"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|Type|描述|  
+|属性|类型|描述|  
 |--------------|----------|-----------------|  
 |`apis`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体的集合。|对当前用户可见的 API。|  
   
@@ -338,12 +337,12 @@ ms.locfileid: "67341259"
 </div>  
 ```  
   
-### <a name="controls"></a>Controls  
+### <a name="controls"></a>控件  
  `Operation` 模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|Type|描述|  
+|属性|类型|描述|  
 |--------------|----------|-----------------|  
 |`apiId`|string|当前 API 的 ID。|  
 |`apiName`|string|API 的名称。|  
@@ -352,7 +351,7 @@ ms.locfileid: "67341259"
 |`operation`|[操作](api-management-template-data-model-reference.md#Operation)|当前显示的操作。|  
 |`sampleUrl`|string|当前操作的 URL。|  
 |`operationMenu`|[操作菜单](api-management-template-data-model-reference.md#Menu)|此 API 的操作的菜单。|  
-|`consoleUrl`|URI|“试用”按钮的 URI。 |  
+|`consoleUrl`|URI|“试用”按钮的 URI。|  
 |`samples`|[代码示例](api-management-template-data-model-reference.md#Sample)实体的集合。|当前操作的代码示例。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
@@ -681,7 +680,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
   
 ```  
   
-#### <a name="controls"></a>Controls  
+#### <a name="controls"></a>控件  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -860,7 +859,7 @@ namespace CSHttpClientSample
 }     
 ```  
   
-#### <a name="controls"></a>Controls  
+#### <a name="controls"></a>控件  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -956,7 +955,7 @@ public class JavaSample
   
 ```  
   
-#### <a name="controls"></a>Controls  
+#### <a name="controls"></a>控件  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1045,7 +1044,7 @@ public class JavaSample
   
 ```  
   
-#### <a name="controls"></a>Controls  
+#### <a name="controls"></a>控件  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1157,7 +1156,7 @@ int main(int argc, const char * argv[])
   
 ```  
   
-#### <a name="controls"></a>Controls  
+#### <a name="controls"></a>控件  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1247,7 +1246,7 @@ catch (HttpException $ex)
 ?>  
 ```  
   
-#### <a name="controls"></a>Controls  
+#### <a name="controls"></a>控件  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1365,7 +1364,7 @@ except Exception as e:
 ####################################  
 ```
   
-#### <a name="controls"></a>Controls  
+#### <a name="controls"></a>控件  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  
@@ -1436,7 +1435,7 @@ puts response.body
   
 ```  
   
-#### <a name="controls"></a>Controls  
+#### <a name="controls"></a>控件  
  代码示例模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>数据模型  

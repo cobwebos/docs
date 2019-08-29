@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 08/29/2019
 ms.author: victorh
-ms.openlocfilehash: ebe02e8bf3fecc03c46bb66c9ab178e4f277e6e4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 119f28bcc4f88f0b4dc0ce65584dbce326087eba
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971622"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114760"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -153,4 +153,12 @@ Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubn
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>防火墙名称是否有字符限制？
 
-是的。 防火墙名称有50个字符的限制。 
+是的。 防火墙名称有50个字符的限制。
+
+## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>为什么 Azure 防火墙需要/26 子网大小？
+
+在缩放时, Azure 防火墙必须预配更多虚拟机实例。 /26 地址空间可确保防火墙有足够的可用 IP 地址来容纳缩放。
+
+## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>在服务缩放时, 防火墙子网大小是否需要更改？
+
+否。 Azure 防火墙不需要大于/26 的子网。

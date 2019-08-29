@@ -3,15 +3,15 @@ title: 使用更改源估算器 - Azure Cosmos DB
 description: 了解如何使用更改源估算器分析更改源处理器的进度
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: f72a3bfcfd6b4f480977510963f49f73a7207e1f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
-ms.translationtype: HT
+ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615288"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092955"
 ---
 # <a name="use-the-change-feed-estimator"></a>使用更改源估算器
 
@@ -55,7 +55,7 @@ ms.locfileid: "69615288"
 ## <a name="additional-resources"></a>其他资源
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [GitHub 上的用法示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/usage/changefeed)
+* [GitHub 上的用法示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [GitHub 上的其他示例](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>后续步骤

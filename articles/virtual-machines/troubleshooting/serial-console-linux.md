@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0eda9fe0e16a945dcb9f9a1b686afcd2aebe6306
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 4e0c91096d5efdcc9639a7127126d8e4b89ef068
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854384"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090159"
 ---
 # <a name="azure-serial-console-for-linux"></a>适用于 Linux 的 Azure 串行控制台
 
@@ -33,7 +32,7 @@ Azure 门户中的串行控制台提供对 Linux 虚拟机 (Vm) 和虚拟机规�
 > 串行控制台已在全球 Azure 区域正式发布。 串行控制台目前不可用于 Azure 政府云或 Azure 中国云。
 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - VM 或虚拟机规模集实例必须使用资源管理部署模型。 不支持经典部署。
 

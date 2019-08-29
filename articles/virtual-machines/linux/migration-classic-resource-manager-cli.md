@@ -11,16 +11,15 @@ ms.assetid: d6f5a877-05b6-4127-a545-3f5bede4e479
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 0e21a962fb03a42af4cb32fcdf60cd59746a591d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7af101b036e8e40a14ad5d9931cc897cb1758ea0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667365"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082784"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型
 以下步骤演示如何使用 Azure 命令行接口 (CLI) 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure 资源管理器部署模型。 本文中的操作需要 [Azure 经典 CLI](../../cli-install-nodejs.md)。 由于 Azure CLI 仅适用于 Azure 资源管理器资源，因此它不能用于此迁移。
@@ -96,7 +95,7 @@ azure vm list-usage -l "<Your VNET or Deployment's Azure region"
     azure config mode asm
 
 
-## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>步骤 4：选项 1-迁移云服务中的虚拟机
+## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>步骤 4：选项 1 - 迁移云服务中的虚拟机
 使用以下命令获取云服务列表，并选取要迁移的云服务。 请注意，如果云服务中的 VM 在虚拟网络中或者具有 Web/辅助角色，会收到错误消息。
 
     azure service list
@@ -135,7 +134,7 @@ azure service deployment validate-migration <serviceName> <deploymentName> new "
 
 
 
-## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>步骤 4：选项 2-迁移虚拟网络中的虚拟机
+## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>步骤 4：选项 2 - 迁移虚拟网络中的虚拟机
 选取要迁移的虚拟网络。 请注意，如果虚拟网络包含的 Web/辅助角色或 VM 的配置不受支持，会收到验证错误消息。
 
 使用以下命令获取订阅中的所有虚拟网络。

@@ -8,16 +8,15 @@ manager: cfowler
 editor: ''
 ms.service: azure-functions
 ms.workload: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 6057fa52cd2f1e9b9fd525723f96ab66983fb5d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d5959acc7719e2b02d529bca8261bc09d5b93634
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61020292"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085332"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>如何排查“Azure Functions 运行时无法访问”的问题
 
@@ -27,10 +26,10 @@ ms.locfileid: "61020292"
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>总结
 当 Azure Functions 运行时无法启动时，会出现此问题。 出现此错误最常见的原因是，Function App 无法访问其存储帐户。 [在此处阅读有关存储帐户要求的详细信息](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 我们将通过四种最常见的错误事例来说明如何识别以及如何解决每种事例。
 
 1. 存储帐户已删除
@@ -55,7 +54,7 @@ ms.locfileid: "61020292"
 
 ### <a name="required-application-settings"></a>必需的应用程序设置
 
-* 必选
+* 必填
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 * 消耗计划函数需要
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)

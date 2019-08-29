@@ -7,24 +7,23 @@ author: craigshoemaker
 manager: gwallace
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: f48eced2ebcc4ad92c5124194ed2e2df92f64f11
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d2e15c63ac6d93824aeab3f251c2860b7ea114d6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480659"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086825"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
 本文介绍如何处理 Azure Functions 中的[事件网格](../event-grid/overview.md)事件。
 
-事件网格是一个 Azure 服务，它可以发送 HTTP 请求来告知发布方中发生的事件情况。  发布方是发起事件的服务或资源。 例如，Azure Blob 存储帐户是发布方，而 [Blob 上传或删除是事件](../storage/blobs/storage-blob-event-overview.md)。 某些 [Azure 服务原生支持向事件网格发布事件](../event-grid/overview.md#event-sources)。
+事件网格是一个 Azure 服务，它可以发送 HTTP 请求来告知发布方中发生的事件情况。 发布方是发起事件的服务或资源。 例如，Azure Blob 存储帐户是发布方，而 [Blob 上传或删除是事件](../storage/blobs/storage-blob-event-overview.md)。 某些 [Azure 服务原生支持向事件网格发布事件](../event-grid/overview.md#event-sources)。
 
-事件处理程序接收并处理事件。  Azure Functions 是[原生支持处理事件网格事件的多个 Azure 服务](../event-grid/overview.md#event-handlers)之一。 本文将会介绍在收到事件网格发出的事件时，如何使用事件网格触发器调用某个函数。
+事件处理程序接收并处理事件。 Azure Functions 是[原生支持处理事件网格事件的多个 Azure 服务](../event-grid/overview.md#event-handlers)之一。 本文将会介绍在收到事件网格发出的事件时，如何使用事件网格触发器调用某个函数。
 
 如果需要，可以使用 HTTP 触发器来处理事件网格事件；请参阅本文稍后介绍的[将 HTTP 触发器用作事件网格触发器](#use-an-http-trigger-as-an-event-grid-trigger)。 目前，在以 [CloudEvents 架构](../event-grid/cloudevents-schema.md)传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 应转而使用 HTTP 触发器。
 
@@ -107,9 +106,9 @@ namespace Company.Function
 
 ### <a name="c-script-example"></a>C# 脚本示例
 
-以下示例演示 function.json  文件中的一个触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -159,9 +158,9 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 
 ### <a name="javascript-example"></a>JavaScript 示例
 
-以下示例演示 function.json  文件中的一个触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -190,9 +189,9 @@ module.exports = function (context, eventGridEvent) {
 
 ### <a name="python-example"></a>Python 示例
 
-以下示例演示 function.json  文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -301,7 +300,7 @@ public class EventSchema {
 
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 EventGrid 的参数使用 `EventGridTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
-## <a name="attributes"></a>属性
+## <a name="attributes"></a>特性
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/EventGridTriggerAttribute.cs) 特性。
 
@@ -319,15 +318,15 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json  文件中设置的绑定配置属性。 无法在 `EventGridTrigger` 特性中设置任何构造函数参数或属性。
+下表解释了在 function.json 文件中设置的绑定配置属性。 无法在 `EventGridTrigger` 特性中设置任何构造函数参数或属性。
 
 |function.json 属性 |描述|
 |---------|---------|
-| type  | 必需 - 必须设置为 `eventGridTrigger`。 |
-| direction  | 必需 - 必须设置为 `in`。 |
-| name  | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
+| **type** | 必需 - 必须设置为 `eventGridTrigger`。 |
+| **direction** | 必需 - 必须设置为 `in`。 |
+| **名称** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 
 在 Azure Functions 1.x 的 C# 和 F# 函数中，可以为事件网格触发器使用以下参数类型：
 
@@ -387,11 +386,11 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 ### <a name="azure-portal"></a>Azure 门户
 
-对于在 Azure 门户中使用事件网格触发器开发的函数，请选择“添加事件网格订阅”。 
+对于在 Azure 门户中使用事件网格触发器开发的函数，请选择“添加事件网格订阅”。
 
 ![在门户中创建订阅](media/functions-bindings-event-grid/portal-sub-create.png)
 
-选择此链接时，门户将打开“创建事件订阅”页，其中预先填充了终结点 URL。 
+选择此链接时，门户将打开“创建事件订阅”页，其中预先填充了终结点 URL。
 
 ![预先填充的终结点 URL](media/functions-bindings-event-grid/endpoint-url.png)
 
@@ -472,7 +471,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 }
 ```
 
-可以从门户中的“函数应用设置”选项卡获取函数应用的主密钥  。
+可以从门户中的“函数应用设置”选项卡获取函数应用的主密钥。
 
 > [!IMPORTANT]
 > 主密钥提供对函数应用的管理员访问权限。 不要与第三方共享此密钥或将其分发到本机客户端应用程序中。
@@ -496,7 +495,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 若要简化事件消息捕获，可部署用于显示事件消息的[预建 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
-选择“部署到 Azure”  将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
+选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -530,13 +529,13 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 * 设置 `aeg-event-type: Notification` 标头。
 * 将 RequestBin 数据粘贴到请求正文。
 * 发布到事件网格触发器函数的 URL。
-  * 有关 2.x 中，使用以下模式：
+  * 对于 2.x, 请使用以下模式:
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
     ```
 
-  * 对于 1.x 使用：
+  * 对于1.x 使用:
 
     ```
     http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
@@ -556,7 +555,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ## <a name="local-testing-with-ngrok"></a>使用 ngrok 进行本地测试
 
-在本地测试事件网格触发器的另一种方法是自动化 Internet 与开发计算机之间的 HTTP 连接。 可以执行的操作与之类的工具[ngrok](https://ngrok.com/):
+在本地测试事件网格触发器的另一种方法是自动化 Internet 与开发计算机之间的 HTTP 连接。 可以使用[ngrok](https://ngrok.com/)之类的工具来执行此操作:
 
 1. [创建 ngrok 终结点](#create-an-ngrok-endpoint)。
 1. [运行事件网格触发器函数](#run-the-event-grid-trigger-function)。

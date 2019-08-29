@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 9ca58bbc6f7b983ff545eb2dca6240359637e214
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c394b013b057a78e99cafc0adde9727d0a75a87c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671223"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091827"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
 
@@ -34,7 +33,7 @@ ms.locfileid: "67671223"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在“美国东部”  位置创建一个名为“myResourceGroup”  的资源组。
+在“美国东部”位置创建一个名为“myResourceGroup”的资源组。
 
 ```bash
 az group create --name myResourceGroup --location eastus

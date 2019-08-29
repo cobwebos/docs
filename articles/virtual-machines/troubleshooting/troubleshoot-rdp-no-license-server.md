@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 550b971602d1736e0ba3981a5b7ca546862ea034
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c5eb25ae536a6cdb0eb12f1233307215fe2d7d1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318946"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080007"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>连接到 Azure VM 时，远程桌面许可证服务器不可用
 
@@ -63,7 +62,7 @@ mstsc /v:<Server>[:<Port>] /admin
 
     如果无法使用管理会话连接到 VM，可以使用 [Azure 上的虚拟机串行控制台](serial-console-windows.md)访问 VM，如下所述：
 
-    1. 选择“支持和故障排除” > “串行控制台(预览版)”访问串行控制台。   如果在 VM 上启用了该功能，则可以成功连接 VM。
+    1. 选择“支持和故障排除” > “串行控制台(预览版)”访问串行控制台。 如果在 VM 上启用了该功能，则可以成功连接 VM。
 
     2. 为 CMD 实例创建新通道。 输入 **CMD** 启动通道，并获取通道名称。
 
@@ -127,6 +126,6 @@ mstsc /v:<Server>[:<Port>] /admin
 
 4. 如果远程桌面许可证服务器已配置且正常运行，请确保使用 CAL 激活远程桌面许可证服务器。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
+## <a name="need-help-contact-support"></a>需要帮助？ 联系技术支持
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)解决问题。

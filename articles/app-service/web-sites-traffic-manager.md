@@ -11,17 +11,16 @@ ms.assetid: dabda633-e72f-4dd4-bf1c-6e945da456fd
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 79fe3bce558a8315f5fbf7dbc82a4979e8e24238
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb63b25ee9257a402a9887bc8ed8aa83370f3ea0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831973"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066414"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>使用 Azure 流量管理器控制 Azure 应用服务流量
 > [!NOTE]
@@ -43,15 +42,15 @@ Azure 流量管理器使用四种不同的路由方法。 下面的列表中介�
 有关详细信息，请参阅[流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
 
 ## <a name="app-service-and-traffic-manager-profiles"></a>应用服务和流量管理器配置文件
-若要配置应用服务应用程序通信的控制，您可以创建配置文件在 Azure 流量管理器中，使用四个负载平衡方法前面所述，然后再添加你想要控制流向终结点 （在本例中为应用服务）配置文件。 应用状态（正在运行、已停止或已删除）会定期传送到该配置文件，以便 Azure 流量管理器可以相应地对流量进行定向。
+若要配置应用服务应用流量的控制, 请在 Azure 流量管理器中创建一个配置文件, 该配置文件使用前面所述的四种负载平衡方法之一, 然后添加要控制其流量的终结点 (在此例中为应用服务)简介. 应用状态（正在运行、已停止或已删除）会定期传送到该配置文件，以便 Azure 流量管理器可以相应地对流量进行定向。
 
 将 Azure 流量管理器与 Azure 一起使用时，请记住以下几点：
 
 * 对于同一区域内的仅限应用部署，应用服务已经提供了与应用服务模式无关的故障转移和轮循机制功能。
 * 对于同一区域中将应用服务与另一 Azure 云服务一起使用的部署，可以组合使用两种类型的终结点以启用混合方案。
 * 在一个配置文件中，只能为每个区域指定一个应用服务终结点。 当选择某个应用作为一个区域的终结点后，该区域中的其余应用对于该配置文件会变为不可选择状态。
-* 在 Azure 流量管理器配置文件中指定的应用服务终结点将出现在配置文件中应用“配置”页面的“域名”部分下，但无法在该位置进行配置。 
-* 在将应用添加到配置文件后，该应用门户页面的仪表板上的“网站 URL”会显示该应用的自定义域 URL（如果已经设置了一个）。  否则，它将显示流量管理器配置文件 URL（例如，`contoso.trafficmanager.net`）。 在应用的“配置”页面的“域名”部分下将可以看到应用的直接域名和流量管理器 URL  。
+* 在 Azure 流量管理器配置文件中指定的应用服务终结点将出现在配置文件中应用“配置”页面的“域名”部分下，但无法在该位置进行配置。
+* 在将应用添加到配置文件后，该应用门户页面的仪表板上的“网站 URL”会显示该应用的自定义域 URL（如果已经设置了一个）。 否则，它将显示流量管理器配置文件 URL（例如，`contoso.trafficmanager.net`）。 在应用的“配置”页面的“域名”部分下将可以看到应用的直接域名和流量管理器 URL。
 * 自定义域名将正常工作，但除了将它们添加到应用之外，还必须配置 DNS 映射，使之指向流量管理器 URL。 有关如何为应用服务设置自定义域的信息，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](app-service-web-tutorial-custom-domain.md)。
 * 只能将标准或高级模式下的应用添加到 Azure 流量管理器配置文件。
 

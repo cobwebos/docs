@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 93b00aec868cf947b67329934c703f5d1b774426
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cb2b3246264d04ce97c45dff58979079a731998e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615383"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066085"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
 
@@ -31,6 +31,12 @@ ms.locfileid: "69615383"
 键/值（表）、纵栏表、文档和图形数据模型都是原本就支持的，因为 Azure Cosmos DB 是基于 ARS（原子、记录和序列）设计构建的。 原子、记录和序列可以轻松映射和投影到各种数据模型。 现在提供了适用于一个模型子集的 API（SQL、MongoDB、表和 Gremlin），并且将来会提供特定于其他数据模型的其他 API。
 
 Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动为它引入的所有数据编制索引，不会要求开发者提供任何架构或辅助索引。 该引擎依赖于一组逻辑索引布局（倒置、纵栏表、树形），这些布局将存储布局从索引和查询处理子系统中分离出来。 Cosmos DB 还能够以可扩展方式支持一组连网协议和 API 并将它们高效地转换为核心数据模型 (1) 和逻辑索引布局 (2)，这使得它具有原本就支持多个数据模型的独特功能。
+
+### <a name="can-i-use-multiple-apis-to-access-my-data"></a>是否可以使用多个 Api 来访问我的数据？
+
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 如果多模型意味着 Azure Cosmos DB 支持多个 Api 和多个数据模型, 则不同的 Api 将不同的数据格式用于存储和网络协议。 例如, SQL 使用 JSON, MongoDB 使用 BSON, 表使用 EDM, Cassandra 使用 CQL, Gremlin 使用 GraphSON。 因此, 建议使用相同的 API 对给定帐户中的数据进行所有访问。
+
+除了可互操作的 Gremlin 和 SQL API, 每个 API 都独立运行。
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Azure Cosmos DB 是否符合 HIPAA？
 

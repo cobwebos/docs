@@ -9,16 +9,15 @@ editor: mattfarm
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: c371333dcc7db0b60ffa5f94d6e2d55ae500a4f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4ee4ca2ede2e0a2d6d1af906cc34051c76353bd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241190"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073758"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
@@ -48,7 +47,7 @@ ms.locfileid: "66241190"
 
 ## <a name="access-git-configuration-in-your-service"></a>访问服务中的 Git 配置
 
-若要查看和配置 Git 配置设置，可单击“安全”  菜单并导航到“配置存储库”  选项卡。
+若要查看和配置 Git 配置设置，可单击“安全”菜单并导航到“配置存储库”选项卡。
 
 ![启用 Git][api-management-enable-git]
 
@@ -61,9 +60,9 @@ ms.locfileid: "66241190"
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>将服务配置保存到 Git 存储库
 
-克隆存储库之前的第一个步骤是将服务配置的当前状态保存到存储库。 单击“保存到存储库”  。
+克隆存储库之前的第一个步骤是将服务配置的当前状态保存到存储库。 单击“保存到存储库”。
 
-在确认屏幕上进行任何所需的更改，并单击“确定”  保存。
+在确认屏幕上进行任何所需的更改，并单击“确定”保存。
 
 片刻后配置已保存，并显示存储库的配置状态，包括上次配置更改和服务配置与存储库之间上次同步的日期和时间。
 
@@ -73,9 +72,9 @@ ms.locfileid: "66241190"
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>将存储库克隆到本地计算机
 
-若要克隆存储库，需要存储库的 URL、用户名和密码。 若要获取用户名和其他凭据，请单击页面顶部附近的“访问凭据”  。
+若要克隆存储库，需要存储库的 URL、用户名和密码。 若要获取用户名和其他凭据，请单击页面顶部附近的“访问凭据”。
 
-若要生成密码，先确保“到期”  设置为所需的到期日期和时间，然后单击“生成”  。
+若要生成密码，先确保“到期”设置为所需的到期日期和时间，然后单击“生成”。
 
 > [!IMPORTANT]
 > 记下此密码。 离开此页面后，不会再次显示该密码。
@@ -97,7 +96,7 @@ git clone https://{name}.scm.azure-api.net/
 git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
-如果这提供了一个错误，请尝试对命令的密码部分进行 URL 编码。 执行此操作的一个快速方法是打开 Visual Studio，并在“即时窗口”  中发出以下命令。 要打开“即使窗口”  ，请在 Visual Studio 中打开任意解决方案或项目（或创建新的空白控制台应用程序），并从“调试”  菜单中依次选择“Windows”  、“即时”  。
+如果这提供了一个错误，请尝试对命令的密码部分进行 URL 编码。 执行此操作的一个快速方法是打开 Visual Studio，并在“即时窗口”中发出以下命令。 要打开“即使窗口”，请在 Visual Studio 中打开任意解决方案或项目（或创建新的空白控制台应用程序），并从“调试”菜单中依次选择“Windows”、“即时”。
 
 ```
 ?System.NetWebUtility.UrlEncode("password from the Azure portal")
@@ -113,7 +112,7 @@ git clone https://username:url encoded password@{name}.scm.azure-api.net/
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>使用最新服务实例配置更新本地存储库
 
-如果在 Azure 门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用最新更改更新本地存储库。 要执行此操作，请单击 Azure 门户中“配置存储库”  选项卡上的“将配置保存到存储库”  ，然后在本地存储库中发布以下命令。
+如果在 Azure 门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用最新更改更新本地存储库。 要执行此操作，请单击 Azure 门户中“配置存储库”选项卡上的“将配置保存到存储库”，然后在本地存储库中发布以下命令。
 
 ```
 git pull
@@ -149,7 +148,7 @@ git push
 
 本地 Git 存储库中的文件和文件夹包含有关服务实例的配置信息。
 
-| Item | 描述 |
+| 项 | 描述 |
 | --- | --- |
 | 根 api-management 文件夹 |包含服务实例的顶级配置 |
 | apis 文件夹 |包含服务实例中的 API 的配置 |
@@ -161,7 +160,7 @@ git push
 
 每个文件夹都可包含一个或多个文件，并且在某些情况下可包含一个或多个文件夹，例如，每个 API、产品或组对应一个文件夹。 每个文件夹内的文件都特定于文件夹名称所述的实体类型。
 
-| 文件类型 | 目的 |
+| 文件类型 | 用途 |
 | --- | --- |
 | json |关于相应实体的配置信息 |
 | html |关于实体的说明，通常显示在开发人员门户中 |
@@ -199,24 +198,24 @@ git push
 }
 ```
 
-前四个设置（`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled` 和 `UserRegistrationTermsConsentRequired`）映射到“安全”  部分中的“标识”  选项卡上的以下设置。
+前四个设置（`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled` 和 `UserRegistrationTermsConsentRequired`）映射到“安全”部分中的“标识”选项卡上的以下设置。
 
 | 标识设置 | 映射到 |
 | --- | --- |
 | RegistrationEnabled |是否存在**用户名和密码**标识提供者 |
-| UserRegistrationTerms |“用户登录时的使用条款”  文本框 |
-| UserRegistrationTermsEnabled |“显示用户登录时的使用条款”  复选框 |
-| UserRegistrationTermsConsentRequired |“需要同意”  复选框 |
-| RequireUserSigninEnabled |“将匿名用户重定向到登录页”  复选框 |
+| UserRegistrationTerms |“用户登录时的使用条款”文本框 |
+| UserRegistrationTermsEnabled |“显示用户登录时的使用条款”复选框 |
+| UserRegistrationTermsConsentRequired |“需要同意”复选框 |
+| RequireUserSigninEnabled |“将匿名用户重定向到登录页”复选框 |
 
-接下来的四个设置（`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`）映射到“安全”  部分中的“委派”  选项卡上的以下设置。
+接下来的四个设置（`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`）映射到“安全”部分中的“委派”选项卡上的以下设置。
 
 | 委派设置 | 映射到 |
 | --- | --- |
-| DelegationEnabled |“委派登录和注册”  复选框 |
-| DelegationUrl |“委派终结点 URL”  文本框 |
-| DelegatedSubscriptionEnabled |“委派产品订阅”  复选框 |
-| DelegationValidationKey |“委派验证密钥”  文本框 |
+| DelegationEnabled |“委派登录和注册”复选框 |
+| DelegationUrl |“委派终结点 URL”文本框 |
+| DelegatedSubscriptionEnabled |“委派产品订阅”复选框 |
+| DelegationValidationKey |“委派验证密钥”文本框 |
 
 最后的设置 `$ref-policy` 映射到服务实例的全局策略声明文件。
 

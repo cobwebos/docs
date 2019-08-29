@@ -7,18 +7,17 @@ author: genlin
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: 0e5669e32f01a260b5a260b548cfe508ad47cf11
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 2dcd2009d93fdf39d1221f2a2f5354fe68658077
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997989"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103363"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
 如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 门户将虚拟硬盘连接到另一个 Linux VM 来修复所有错误，然后重新创建原始 VM。
@@ -96,12 +95,12 @@ ms.locfileid: "69997989"
 ## <a name="attach-disk-to-another-vm"></a>将磁盘附加到另一个 VM
 在后续几个步骤中，将使用另一个 VM 进行故障排除。 将磁盘附加到故障排除 VM 后, 你可以浏览和编辑磁盘的内容。 此过程允许您更正任何配置错误或者查看其他应用程序或系统日志文件。 若要将磁盘附加到另一个 VM, 请遵循以下步骤:
 
-1. 在门户中选择资源组，并选择故障排除 VM。 选择 "**磁盘**", 选择 "**编辑**", 然后单击 "**添加数据磁盘**":
+1. 在门户中选择资源组，并选择故障排除 VM。 依次选择“磁盘”、“编辑”，然后单击“添加数据磁盘”：
 
     ![在门户中附加现有磁盘](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. 在 "**数据磁盘**" 列表中, 选择所标识 VM 的 OS 磁盘。 如果看不到 OS 磁盘, 请确保故障排除 VM 和操作系统磁盘位于同一区域 (位置)。 
-3. 选择 "**保存**" 应用更改。
+2. 在“数据磁盘”列表中，选择所标识的 VM 的 OS 磁盘。 如果看不到 OS 磁盘，请确保故障排除 VM 和 OS 磁盘位于同一区域（位置）。 
+3. 选择“保存”应用所做的更改。
 
 ## <a name="mount-the-attached-data-disk"></a>装载附加的数据磁盘
 

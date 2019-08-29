@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb468a735a9e1f5cca899090df0125013b9b8d4c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: bebdd8beacb3b5fc91802fb41055df7e24b93218
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67709321"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078955"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机高可用性
 
@@ -738,7 +737,7 @@ _**图 15：** Azure 内部负载均衡器的默认 ASCS/SCS 负载均衡规则_
 
 如果想要将其他编号用于 SAP ASCS 或 SCS 实例，必须更改这些实例的名称和默认值。
 
-1. 在 Azure 门户中，依次选择“<SID>-lb-ascs 负载均衡器” > “负载均衡规则”  。
+1. 在 Azure 门户中，依次选择“<SID>-lb-ascs 负载均衡器” > “负载均衡规则”。
 2. 对于属于 SAP ASCS 或 SCS 实例的所有负载均衡规则，请更改以下值：
 
    * 姓名
@@ -1133,7 +1132,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 1. 在 Windows DNS 管理器中为 ASCS/SCS 实例的虚拟主机名创建 DNS 条目。
 
    > [!IMPORTANT]
-   > 分配给 ASCS/SCS 实例虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器 (<SID>-lb-ascs) 的 IP 地址相同  。  
+   > 分配给 ASCS/SCS 实例虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器 (<SID>-lb-ascs) 的 IP 地址相同。  
    >
    >
 
@@ -1211,7 +1210,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
    端口号在 SAP Azure 资源管理器模板中定义。 可在 PowerShell 中分配端口号。
 
-   若要为 SAP <SID> IP 群集资源设置新的 ProbePort 值，请运行以下 PowerShell 脚本  。 更新环境的 PowerShell 变量。 运行该脚本后，系统会提示重新启动 SAP 群集组以激活更改。
+   若要为 SAP <SID> IP 群集资源设置新的 ProbePort 值，请运行以下 PowerShell 脚本。 更新环境的 PowerShell 变量。 运行该脚本后，系统会提示重新启动 SAP 群集组以激活更改。
 
    ```powershell
    $SAPSID = "PR1"      # SAP <SID>

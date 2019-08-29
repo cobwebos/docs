@@ -9,18 +9,17 @@ editor: ''
 tags: ''
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: b4622321dc25025eb2f7752755490eb5bc105069
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 82bbd728bfd51595f0b6eacf344bc95ea5db1ea8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741782"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086162"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions 的 SignalR Service 绑定
 

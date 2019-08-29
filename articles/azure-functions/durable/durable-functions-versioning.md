@@ -6,16 +6,15 @@ author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 33ca6c36cd11d53a3c50a8374181c511fd2f8c3e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef64a43cbed7f033a938351506b7f78142ff044c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648122"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097623"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Durable Functions 中的版本控制 (Azure Functions)
 
@@ -40,7 +39,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-此简单函数接收“Foo”  结果并将其传递给“Bar”  。 假设需要将返回值“Foo”  从 `bool` 更改为 `int` 以支持各种不同的结果值。 结果如下所示：
+此简单函数接收“Foo”结果并将其传递给“Bar”。 假设需要将返回值“Foo”从 `bool` 更改为 `int` 以支持各种不同的结果值。 结果如下所示：
 
 ```csharp
 [FunctionName("FooBar")]
@@ -51,7 +50,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-此更改会应用于业务流程协调程序函数的所有新实例，但会中断任何正在进行的实例。 例如，请考虑业务流程实例调用“Foo”  并先后返回布尔值和检查点这样一种情况。 如果此时部署签名更改，则检查点实例在恢复和重播对 `context.CallActivityAsync<int>("Foo")` 的调用时将立即失败。 这是因为历史记录表中的结果为 `bool`，而新代码尝试将其反序列化为 `int`。
+此更改会应用于业务流程协调程序函数的所有新实例，但会中断任何正在进行的实例。 例如，请考虑业务流程实例调用“Foo”并先后返回布尔值和检查点这样一种情况。 如果此时部署签名更改，则检查点实例在恢复和重播对 `context.CallActivityAsync<int>("Foo")` 的调用时将立即失败。 这是因为历史记录表中的结果为 `bool`，而新代码尝试将其反序列化为 `int`。
 
 这只是签名更改可以中断现有实例的许多不同方法之一。 一般情况下，如果业务流程协调程序需要更改其调用函数的方式，则此更改可能会出现问题。
 
@@ -86,7 +85,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-此更改会向“Foo”  和“Bar”  之间的“SendNotification”  添加新的函数调用。 不存在签名更改。 在从对“Bar”  的调用中恢复现有实例时，将出现问题。 在重播过程中，如果对“Foo”  的原始调用返回 `true`，则业务流程协调程序重播将调用不在其执行历史记录中的“SendNotification”  。 因此，Durable Task Framework 将失败，并且出现 `NonDeterministicOrchestrationException`，因为在它希望出现对“Bar”  的调用时出现了对“SendNotification”  的调用。
+此更改会向“Foo”和“Bar”之间的“SendNotification”添加新的函数调用。 不存在签名更改。 在从对“Bar”的调用中恢复现有实例时，将出现问题。 在重播过程中，如果对“Foo”的原始调用返回 `true`，则业务流程协调程序重播将调用不在其执行历史记录中的“SendNotification”。 因此，Durable Task Framework 将失败，并且出现 `NonDeterministicOrchestrationException`，因为在它希望出现对“Bar”的调用时出现了对“SendNotification”的调用。
 
 ## <a name="mitigation-strategies"></a>缓解策略
 
@@ -96,7 +95,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 * 停止所有正在进行的实例
 * 并行部署
 
-### <a name="do-nothing"></a>不执行任何操作
+### <a name="do-nothing"></a>不采取任何措施
 
 处理中断更改的最简单方法是使正在进行的业务流程实例失败。 新实例成功运行更改后的代码。
 
@@ -104,7 +103,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 
 ### <a name="stop-all-in-flight-instances"></a>停止所有正在进行的实例
 
-另一个选项是停止所有正在进行的实例。 可通过清除内部“控件队列”  和“工作项队列”  队列的内容来完成此操作。 实例将永远停在其当前位置，但它们不会通过失败消息打乱遥测。 这是快速原型开发的理想情况。
+另一个选项是停止所有正在进行的实例。 可通过清除内部“控件队列”和“工作项队列”队列的内容来完成此操作。 实例将永远停在其当前位置，但它们不会通过失败消息打乱遥测。 这是快速原型开发的理想情况。
 
 > [!WARNING]
 > 这些队列的详细信息可能会随时间而发生更改，因此对于生产工作负载，请不要依赖此方法。
@@ -119,7 +118,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 
 ### <a name="how-to-change-task-hub-name"></a>如何更改任务中心名称
 
-可在 host.json  文件中配置任务中心，如下所示：
+可在 host.json 文件中配置任务中心，如下所示：
 
 #### <a name="functions-1x"></a>Functions 1.x
 
@@ -137,10 +136,10 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 
 所有 Azure 存储实体都基于 `HubName` 配置值进行命名。 通过给任务中心提供新名称，可以确保为应用程序的新版本创建单独的队列和历史记录表。
 
-建议将函数应用的新版本部署到一个新的[部署槽位](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/)。 通过部署槽位，可以并行运行函数应用的多个副本，且仅其中一个槽位为活动生产槽位  。 当准备好向现有基础结构公开新业务流程逻辑时，它可以像将新版本交换到生产槽一样简单。
+建议将函数应用的新版本部署到一个新的[部署槽位](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/)。 通过部署槽位，可以并行运行函数应用的多个副本，且仅其中一个槽位为活动生产槽位。 当准备好向现有基础结构公开新业务流程逻辑时，它可以像将新版本交换到生产槽一样简单。
 
 > [!NOTE]
-> 在对业务流程协调程序函数使用 HTTP 和 webhook 触发器时，此策略效果最佳。 对于非 HTTP 触发器，例如队列或事件中心触发器定义应[派生的应用设置](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings)，获取更新交换操作的一部分。
+> 在对业务流程协调程序函数使用 HTTP 和 webhook 触发器时，此策略效果最佳。 对于非 HTTP 触发器（如队列或事件中心），触发器定义应[派生自在交换操作过程中更新的应用设置](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings)。
 
 ## <a name="next-steps"></a>后续步骤
 

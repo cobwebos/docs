@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60353369"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085232"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自定义 Active Directory 联合身份验证服务
 本文介绍如何使用 Azure Active Directory (Azure AD) Connect 管理和自定义 Active Directory 联合身份验证服务 (AD FS)。 另外，还介绍了可能需要针对完整的 AD FS 场配置执行的其他常见 AD FS 任务。
@@ -48,25 +48,25 @@ ms.locfileid: "60353369"
 ## <a name="repairthetrust"></a>修复信任 
 可以使用 Azure AD Connect 检查 AD FS 和 Azure AD 信任的当前运行状况并采取适当措施来修复信任。 请按照以下步骤修复 Azure AD 和 AD FS 信任。
 
-1. 从其他任务列表中选择“修复 AAD 和 ADFS 信任”  。
+1. 从其他任务列表中选择“修复 AAD 和 ADFS 信任”。
    ![修复 AAD 和 ADFS 信任](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
-2. 在“连接到 Azure AD”  页上，提供 Azure AD 的全局管理员凭据，并单击“下一步”  。
+2. 在“连接到 Azure AD”页上，提供 Azure AD 的全局管理员凭据，并单击“下一步”。
    ![连接到 Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
-3. 在“远程访问凭据”  页上，输入域管理员的凭据。
+3. 在“远程访问凭据”页上，输入域管理员的凭据。
 
    ![远程访问凭据](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
-    单击“下一步”后，Azure AD Connect 会检查证书运行状况，并显示任何问题。 
+    单击“下一步”后，Azure AD Connect 会检查证书运行状况，并显示任何问题。
 
     ![证书状态](./media/how-to-connect-fed-management/RepairADTrust4.PNG)
 
-    “已准备好配置”页会显示为修复信任而将要执行的操作列表。 
+    “已准备好配置”页会显示为修复信任而将要执行的操作列表。
 
-    ![已准备好配置](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![已准备好进行配置](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
-4. 单击“安装”  修复信任。
+4. 单击“安装”修复信任。
 
 > [!NOTE]
 > Azure AD Connect 只能对自签名的证书进行修复或采取措施。 Azure AD Connect 无法修复第三方证书。
@@ -92,11 +92,11 @@ ms.locfileid: "60353369"
 > [!NOTE]
 > 若要添加 AD FS 服务器，Azure AD Connect 需要 PFX 证书。 因此，只有使用 Azure AD Connect 配置了 AD FS 场，才能执行此操作。
 
-1. 选择“部署其他联合服务器”，并单击“下一步”。  
+1. 选择“部署其他联合服务器”，并单击“下一步”。
 
    ![其他联合服务器](./media/how-to-connect-fed-management/AddNewADFSServer1.PNG)
 
-2. 在“连接到 Azure AD”页上，输入 Azure AD 的全局管理员凭据，并单击“下一步”。  
+2. 在“连接到 Azure AD”页上，输入 Azure AD 的全局管理员凭据，并单击“下一步”。
 
    ![连接到 Azure AD](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
@@ -104,17 +104,17 @@ ms.locfileid: "60353369"
 
    ![域管理员凭据](./media/how-to-connect-fed-management/AddNewADFSServer3.PNG)
 
-4. Azure AD Connect 将要求提供在使用 Azure AD Connect 配置新的 AD FS 场时提供的 PFX 文件的密码。 单击“输入密码”  提供 PFX 文件的密码。
+4. Azure AD Connect 将要求提供在使用 Azure AD Connect 配置新的 AD FS 场时提供的 PFX 文件的密码。 单击“输入密码”提供 PFX 文件的密码。
 
    ![证书密码](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
     ![指定 SSL 证书](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
-5. 在“AD FS 服务器”  页上，输入要添加到 AD FS 场的服务器名称或 IP 地址。
+5. 在“AD FS 服务器”页上，输入要添加到 AD FS 场的服务器名称或 IP 地址。
 
    ![AD FS 服务器](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
 
-6. 单击“下一步”并完成最终“配置”页。   Azure AD Connect 完成将服务器添加到 AD FS 场后，将提供验证连接性的选项。
+6. 单击“下一步”并完成最终“配置”页。 Azure AD Connect 完成将服务器添加到 AD FS 场后，将提供验证连接性的选项。
 
    ![已准备好配置](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
@@ -125,7 +125,7 @@ ms.locfileid: "60353369"
 > [!NOTE]
 > 若要添加 WAP 服务器，Azure AD Connect 需要 PFX 证书。 因此，只有使用 Azure AD Connect 配置了 AD FS 场，才能执行此操作。
 
-1. 从可用任务列表中选择“部署 Web 应用程序代理”  。
+1. 从可用任务列表中选择“部署 Web 应用程序代理”。
 
    ![部署 Web 应用程序代理](./media/how-to-connect-fed-management/WapServer1.PNG)
 
@@ -133,7 +133,7 @@ ms.locfileid: "60353369"
 
    ![连接到 Azure AD](./media/how-to-connect-fed-management/wapserver2.PNG)
 
-3. 在“指定 SSL 证书”页上，为使用 Azure AD Connect 配置 AD FS 场时提供的 PFX 文件提供密码。 
+3. 在“指定 SSL 证书”页上，为使用 Azure AD Connect 配置 AD FS 场时提供的 PFX 文件提供密码。
    ![证书密码](./media/how-to-connect-fed-management/WapServer3.PNG)
 
     ![指定 SSL 证书](./media/how-to-connect-fed-management/WapServer4.PNG)
@@ -142,15 +142,15 @@ ms.locfileid: "60353369"
 
    ![管理服务器凭据](./media/how-to-connect-fed-management/WapServer5.PNG)
 
-5. 在“代理信任凭据”  页上，提供管理凭据用于配置代理信任和访问 AD FS 场中的主服务器。
+5. 在“代理信任凭据”页上，提供管理凭据用于配置代理信任和访问 AD FS 场中的主服务器。
 
    ![代理信任凭据](./media/how-to-connect-fed-management/WapServer6.PNG)
 
-6. 在“已准备好配置  ”页上，向导显示将要执行的操作列表。
+6. 在“已准备好配置”页上，向导显示将要执行的操作列表。
 
    ![已准备好配置](./media/how-to-connect-fed-management/WapServer7.PNG)
 
-7. 单击“安装”  完成配置。 完成配置后，向导将提供验证到服务器的连接性的选项。 单击“验证”  检查连接性。
+7. 单击“安装”完成配置。 完成配置后，向导将提供验证到服务器的连接性的选项。 单击“验证”检查连接性。
 
    ![安装完成](./media/how-to-connect-fed-management/WapServer8.PNG)
 
@@ -158,7 +158,7 @@ ms.locfileid: "60353369"
 
 使用 Azure AD Connect 可以轻松添加要与 Azure AD 联合的域。 Azure AD Connect 将添加域用于联合身份验证，并修改声明规则，以便在有多个域与 Azure AD 联合时，正确反映发布者。
 
-1. 若要添加联合域，请选择任务“添加其他 Azure AD 域”  。
+1. 若要添加联合域，请选择任务“添加其他 Azure AD 域”。
 
    ![其他 Azure AD 域](./media/how-to-connect-fed-management/AdditionalDomain1.PNG)
 
@@ -166,7 +166,7 @@ ms.locfileid: "60353369"
 
    ![连接到 Azure AD](./media/how-to-connect-fed-management/AdditionalDomain2.PNG)
 
-3. 在“远程访问凭据”  页上，提供域管理员凭据。
+3. 在“远程访问凭据”页上，提供域管理员凭据。
 
    ![远程访问凭据](./media/how-to-connect-fed-management/additionaldomain3.PNG)
 
@@ -176,9 +176,9 @@ ms.locfileid: "60353369"
 
     选择域后，向导将提供有关向导将采取的进一步操作以及配置产生的影响的适当信息。 在某些情况下，如果选择的域尚未在 Azure AD 中进行验证，则向导将提供帮助验证域的信息。 有关更多详细信息，请参阅[将自定义域名添加到 Azure Active Directory](../active-directory-domains-add-azure-portal.md)。
 
-5. 单击“下一步”。  “已准备好配置”页会显示 Azure AD Connect 将要执行的操作列表。  单击“安装”  完成配置。
+5. 单击“下一步”。 “已准备好配置”页会显示 Azure AD Connect 将要执行的操作列表。 单击“安装”完成配置。
 
-   ![已准备好配置](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
+   ![已准备好进行配置](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
 > [!NOTE]
 > 已添加的联合域中的用户必须在同步之后才能登录到 Azure AD。
@@ -187,7 +187,7 @@ ms.locfileid: "60353369"
 以下部分提供有关自定义 AD FS 登录页时可能必须执行的一些常见任务的详细信息。
 
 ## <a name="customlogo"></a>添加自定义公司徽标或插图 
-若要更改“登录”页上显示的公司徽标，请使用以下 Windows PowerShell cmdlet 和语法。 
+若要更改“登录”页上显示的公司徽标，请使用以下 Windows PowerShell cmdlet 和语法。
 
 > [!NOTE]
 > 建议徽标维度为 260 x 35 \@ 96 dpi，且文件大小不应超过 10 KB。
@@ -198,7 +198,7 @@ ms.locfileid: "60353369"
 > *TargetName* 参数是必填参数。 随 AD FS 一起发布的默认主题名为“默认”。
 
 ## <a name="addsignindescription"></a>添加登录说明 
-要将登录页说明添加到“登录”  页，请使用以下 Windows PowerShell cmdlet 和语法。
+要将登录页说明添加到“登录”页，请使用以下 Windows PowerShell cmdlet 和语法。
 
     Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
 
@@ -210,7 +210,7 @@ AD FS 支持丰富的声明语言，可用于创建自定义声明规则。 有�
 ### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>属性中存在的值上的不可变 ID 条件
 当对象将同步到 Azure AD 时，通过 Azure AD Connect，可以指定一个属性以用作源锚点。 如果自定义属性中的值非空，可能需要发出不可变的 ID 声明。
 
-例如，可以选择“ms-ds-consistencyguid”  作为源锚点的属性，并且需要发出 **ImmutableID** 作为 **ms-ds-consistencyguid** 以防属性具有反对自身的值。 如果没有反对属性的值，则发出 **objectGuid** 作为不可变 ID。 可以按以下部分中所述构造自定义声明规则集。
+例如，可以选择“ms-ds-consistencyguid”作为源锚点的属性，并且需要发出 **ImmutableID** 作为 **ms-ds-consistencyguid** 以防属性具有反对自身的值。 如果没有反对属性的值，则发出 **objectGuid** 作为不可变 ID。 可以按以下部分中所述构造自定义声明规则集。
 
 **规则 1：查询属性**
 
@@ -226,12 +226,12 @@ AD FS 支持丰富的声明语言，可用于创建自定义声明规则。 有�
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-此规则定义名为 **idflag** 的临时标志，当没有为用户填充的 **ms-ds-consistencyguid** 时，该标志设置为 **useguid**。 这背后的逻辑在于 AD FS 不允许空的声明。 所以，当你在规则 1 中添加声明 http://contoso.com/ws/2016/02/identity/claims/objectguid 和 http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid 时，你最终会得到 msdsconsistencyguid  声明（除非为该用户填充该值）。 如果未填充该值，AD FS 发现该空值后会立即将它删除。 所有对象都具有 **objectGuid**，因此在执行规则 1 后声明将始终存在。
+此规则定义名为 **idflag** 的临时标志，当没有为用户填充的 **ms-ds-consistencyguid** 时，该标志设置为 **useguid**。 这背后的逻辑在于 AD FS 不允许空的声明。 所以，当你在规则 1 中添加声明 http://contoso.com/ws/2016/02/identity/claims/objectguid 和 http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid 时，你最终会得到 msdsconsistencyguid 声明（除非为该用户填充该值）。 如果未填充该值，AD FS 发现该空值后会立即将它删除。 所有对象都具有 **objectGuid**，因此在执行规则 1 后声明将始终存在。
 
 **规则 3：如果存在，则将 ms-ds-consistencyguid 作为不可变 ID 发出**
 
     c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
-    => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c.Value);
+    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
 
 这是隐式的 **Exist** 检查。 如果声明的值存在，则将其作为不可变 ID 发布。 之前的示例使用 **nameidentifier** 声明。 需要将其更改为环境中不可变 ID 的适当声明类型。
 
@@ -239,7 +239,7 @@ AD FS 支持丰富的声明语言，可用于创建自定义声明规则。 有�
 
     c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
     && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
-    => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c2.Value);
+    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
 
 在此规则中，只检查临时标志 **idflag**。 根据该标志的值决定是否发出声明。
 

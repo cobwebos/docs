@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 188b8974-fabd-4cd3-b7dc-559cbb86b98a
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: eb8feb13caebc938d9b56a985c07ceb06e211b24
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 645d969d71a0b8707d7969f4bf68a07ab0211d0a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719174"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080023"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像
 
@@ -36,7 +35,7 @@ ms.locfileid: "67719174"
 
 此表显示了指示的发布者和产品/服务可用的 SKU 的子集。
 
-| 发布者 | 产品/服务 | SKU |
+| 发布者 | 套餐 | Sku |
 |:--- |:--- |:--- |
 | MicrosoftWindowsServer |WindowsServer |2019-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
@@ -48,8 +47,8 @@ ms.locfileid: "67719174"
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
 | MicrosoftDynamicsNAV |DynamicsNAV |2017 |
 | MicrosoftSharePoint |MicrosoftSharePointServer |2019 |
-| MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
-| MicrosoftRServer |RServer-WS2016 |Enterprise |
+| MicrosoftSQLServer |SQL2019-WS2016 |企业 |
+| MicrosoftRServer |RServer-WS2016 |企业 |
 
 ## <a name="navigate-the-images"></a>浏览映像
 
@@ -122,7 +121,7 @@ advantys
 ...
 ```
 
-对于“MicrosoftWindowsServer”  发布者：
+对于“MicrosoftWindowsServer”发布者：
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
@@ -139,7 +138,7 @@ WindowsServer
 WindowsServerSemiAnnual
 ```
 
-对于“WindowsServer”  产品/服务：
+对于“WindowsServer”产品/服务：
 
 ```powershell
 $offerName="WindowsServer"

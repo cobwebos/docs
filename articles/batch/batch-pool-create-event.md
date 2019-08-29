@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: a86ce329a19272eb83c431af395b330f75111361
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 083702a5340ed47370a8b4c7d64846848636ba30
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323300"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094875"
 ---
 # <a name="pool-create-event"></a>池创建事件
 
@@ -72,7 +71,7 @@ ms.locfileid: "68323300"
 
 ###  <a name="bk_vmconf"></a> virtualMachineConfiguration
 
-|元素名称|type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |[imageReference](#bk_imgref)|复杂类型|指定关于要使用的平台或市场映像的信息。|
 |nodeAgentSKUId|String|在计算节点上预配的批处理节点代理的 SKU。|
@@ -89,7 +88,7 @@ ms.locfileid: "68323300"
 
 ###  <a name="bk_winconf"></a> windowsConfiguration
 
-|元素名称|type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |enableAutomaticUpdates|Boolean|指示是否对虚拟机启用自动更新。 如果未指定此属性，则默认值为 true。|
 

@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 5c3049b5f9f7607b9b75f3bee48b6ccd44601b15
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: d647a643dafe50a5768261c2b09bf8c4154be469
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254758"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086246"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -214,7 +213,7 @@ public class Person
 
 以下示例演示 *function.json* 文件中的一个表输入绑定以及使用该绑定的 [C# 脚本](functions-reference-csharp.md)代码。 该函数读取队列消息中指定的分区键的实体。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -374,7 +373,7 @@ let Run(myQueueItem: string, personEntity: Person) =
 
 ### <a name="input---javascript-example"></a>输入 - JavaScript 示例
 
-以下示例演示了 function.json  文件中的表输入绑定以及使用该绑定的 [JavaScript 代码](functions-reference-node.md)。 该函数使用队列触发器来读取单个表行。 
+以下示例演示了 function.json 文件中的表输入绑定以及使用该绑定的 [JavaScript 代码](functions-reference-node.md)。 该函数使用队列触发器来读取单个表行。 
 
 *function.json* 文件指定 `partitionKey` 和 `rowKey`。 `rowKey` 值“{queueTrigger}”指示行键来自队列消息字符串。
 
@@ -757,7 +756,7 @@ public static MyPoco TableOutput(
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-下表解释了在 function.json  文件和 `Table` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `Table` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|

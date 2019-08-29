@@ -8,18 +8,18 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: dff15deaefba728bad76965a186dd2f245ea5854
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 021341406f1a7269aadf18eb3a748e539cbb5bf5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019854"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086961"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>从 Azure CLI 管理 IoT Central
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-你可以使用[Azure CLI](/cli/azure/)来管理你的应用程序, 而无需从 "IoT Central[应用程序管理器](https://aka.ms/iotcentral)" 页创建和管理 IoT Central 应用程序。
+你可以使用[Azure CLI](/cli/azure/)来管理你的应用程序, 而不是在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建和管理 IoT Central 应用程序。
 
 ## <a name="prerequisites"></a>先决条件
 
