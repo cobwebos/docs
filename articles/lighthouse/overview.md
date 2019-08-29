@@ -3,16 +3,16 @@ title: 什么是 Azure Lighthouse？
 description: 借助 Azure Lighthouse，服务提供商可为其客户提供自动化程度更高且更高效的规模级托管服务。
 author: JnHs
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 ms.service: lighthouse
 manager: carmonm
-ms.openlocfilehash: eb55af5a1121eb193bb76efc9f9e0b833f4b5a1f
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 05fa16504e25a6bf0f6aa1c0a348284abba6e1ed
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810791"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011911"
 ---
 # <a name="what-is-azure-lighthouse"></a>什么是 Azure Lighthouse？
 
@@ -42,3 +42,8 @@ Azure Lighthouse 提供了多种方法来协助客户简化参与和管理：
 
 > [!NOTE]
 > 上述功能当前在公有云中可用。 有关各个服务的区域可用性，请参阅[按地区提供的产品](https://azure.microsoft.com/global-infrastructure/services/)。
+
+## <a name="next-steps"></a>后续步骤
+
+- 了解 [Azure 委派资源管理](concepts/azure-delegated-resource-management.md)。
+- 了解[跨租户管理体验](concepts/cross-tenant-management-experience.md)。

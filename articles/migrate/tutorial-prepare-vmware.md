@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 16c0354466d5c2a1207873a1e83e209da9339705
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5bd4926494e13c1dd0cfb6283292ade967471238
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509995"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013435"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>准备 VMware VM 以进行评估和迁移到 Azure
 
@@ -163,5 +163,5 @@ Azure Migrate 需访问 vCenter Server 来发现用于评估和无代理迁移�
 继续学习第二篇教程以设置 Azure Migrate 项目，并评估要迁移到 Azure 的 VMware VM。
 
 > [!div class="nextstepaction"] 
-> [访问 VMware VM](./tutorial-migrate-vmware.md) 
+> [访问 VMware VM](./tutorial-assess-vmware.md) 
 

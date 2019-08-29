@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4ea64b16a9a581683d3b7a44b4b331af435db22c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 047e724fe3e1c2e4738e5964326bf7719281f4af
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762715"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073711"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>自定义开发人员门户页面的样式
 
@@ -47,15 +46,15 @@ ms.locfileid: "57762715"
 
 ## <a name="customize-the-developer-portal"></a>自定义开发人员门户
 
-1. 选择“概述”。
-2. 单击“概述”窗口顶部的“开发人员门户”按钮。 或者，可以单击“开发人员门户 URL”链接。
+1. 选择“概述”。 
+2. 单击“概述”窗口顶部的“开发人员门户”按钮。   或者，可以单击“开发人员门户 URL”链接。 
 3. 在屏幕的左上方，可以看到由两支画笔构成的图标。 将鼠标悬停在此图标上，打开门户自定义菜单。
 
     ![自定义样式](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
-4. 从菜单中选择“样式”，打开样式自定义窗格。
+4. 从菜单中选择“样式”，打开样式自定义窗格。 
 
-    可以使用“样式”自定义的所有元素都显示在该页面上
-5. 在“更改变量值以自定义开发人员门户外观:”字段中输入“headings-color”。
+    可以使用“样式”自定义的所有元素都显示在该页面上 
+5. 在“更改变量值以自定义开发人员门户外观:”字段中输入“headings-color”。 
 
     **\@headings-color** 元素将显示在页面上。 此变量控制文本的颜色。
 
@@ -69,8 +68,8 @@ ms.locfileid: "57762715"
     > [!TIP]
     > 可实时预览所有更改。 自定义窗格顶部会显示进度指示器。 几秒钟后，标题文本的颜色将更改为刚刚选择的颜色。
 
-8. 选择自定义窗格菜单左下角的“发布”。
-9. 选择“发布自定义项”，以公开所做的更改。
+8. 选择自定义窗格菜单左下角的“发布”。 
+9. 选择“发布自定义项”，以公开所做的更改。 
 
 ## <a name="view-your-change"></a>查看更改
 

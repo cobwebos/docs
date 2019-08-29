@@ -6,15 +6,15 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 854e09600440c28f7505a016566ea0f05e994f5f
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 852193e137eab10d1e46c5ba6ae6636d530095be
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418313"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972197"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms"></a>故障转移和故障回复 VMware VM
 
@@ -61,7 +61,7 @@ ms.locfileid: "66418313"
 
 3. 可以在“计算和网络”中根据需要修改这些属性  ：
     * Azure 名称
-    * 资源组
+    * Resource group
     * 目标大小
     * [可用性集](../virtual-machines/windows/tutorial-availability-sets.md)
     * 托管磁盘设置

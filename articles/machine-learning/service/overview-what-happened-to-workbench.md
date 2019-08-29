@@ -11,18 +11,18 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: e043847db09eec6ec05cca1e259024cf08e91ed0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 40a2f8716b438837cf3efe300286ab9053fc8b07
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846040"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035820"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
-为了给改进后的[体系结构](concept-azure-machine-learning-architecture.md)让路，2018 年 9 月版本弃用并替换了 Azure Machine Learning Workbench 应用程序和其他一些早期功能。 
+为了给改进后的[体系结构](concept-azure-machine-learning-architecture.md)让路，2018 年 9 月版本弃用并替换了 Azure Machine Learning Workbench 应用程序和其他一些早期功能。
 
-为改善用户体验，此版本包含许多重大更新，这些更新由客户反馈促成。 从实验运行到模型部署的核心功能没有变化。 但现在，可以使用可靠的 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> 和 [Azure CLI](reference-azure-machine-learning-cli.md) 来完成机器学习任务和管道。  
+为改善用户体验，此版本包含许多重大更新，这些更新由客户反馈促成。 从实验运行到模型部署的核心功能没有变化。 但现在，可以使用可靠的 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> 和 [Azure CLI](reference-azure-machine-learning-cli.md) 来完成机器学习任务和管道。
 
 在旧版 Azure 机器学习服务中创建的大多数项目，都存储在自己的本地存储或云存储中。 这些项目永远不会消失。
 
@@ -40,7 +40,7 @@ ms.locfileid: "68846040"
 + 更全面的全新 Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>。
 + 已扩充的全新 [Azure CLI 扩展](reference-azure-machine-learning-cli.md)，用于机器学习。
 
-重新设计的[架构](concept-azure-machine-learning-architecture.md)，易于使用。 无需使用多个 Azure 资源和帐户，只需使用 [Azure 机器学习服务工作区](concept-workspace.md)即可。 可以在 [Azure 门户]((how-to-manage-workspace.md) 中快速创建工作区。 通过使用工作区，多个用户可以存储定型和部署计算目标、模型试验、Docker 映像、已部署模型等。
+重新设计的[架构](concept-azure-machine-learning-architecture.md)，易于使用。 无需使用多个 Azure 资源和帐户，只需使用 [Azure 机器学习服务工作区](concept-workspace.md)即可。 可以在 [Azure 门户](how-to-manage-workspace.md)中快速创建工作区。 通过使用工作区，多个用户可以存储定型和部署计算目标、模型试验、Docker 映像、已部署模型等。
 
 虽然当前版本中有新的已改进的 CLI 和 SDK 客户端，但桌面工作台应用程序本身已经停用。 可以在 [Azure 门户的工作区仪表板](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)中管理试验。 借助仪表板，可以获取试验历史记录、管理附加到工作区的计算目标、管理模型和 Docker 映像，甚至还能部署 Web 服务。
 
@@ -48,13 +48,13 @@ ms.locfileid: "68846040"
 
 ## <a name="support-timeline"></a>支持时间线
 
-于 2019 年 1 月 9 日，对 Machine Learning Workbench、Azure 机器学习试验和模型管理帐户及其相关 SDK 和 CLI 的支持已经结束。 
+于 2019 年 1 月 9 日，对 Machine Learning Workbench、Azure 机器学习试验和模型管理帐户及其相关 SDK 和 CLI 的支持已经结束。
 
 通过此 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md) 和[门户](how-to-manage-workspace.md)即可使用所有最新功能。
 
 ## <a name="what-about-run-histories"></a>运行历史记录又如何？
 
-旧的运行历史记录不再可访问，你仍然可以在最新版本中查看运行情况。 
+旧的运行历史记录不再可访问，你仍然可以在最新版本中查看运行情况。
 
 运行历史记录现在称为“试验”  。 可使用 SDK、CLI 或 Azure 门户收集并探索模型的试验。
 
@@ -66,11 +66,9 @@ ms.locfileid: "68846040"
 
 ## <a name="can-i-still-prep-data"></a>我能否仍准备数据？
 
-已有的数据准备文件不可移植到最新版本中，因为 Machine Learning Workbench 已遭弃用。 但你仍然可以为建模准备任何大小的数据集。   
+已有的数据准备文件不可移植到最新版本中，因为 Machine Learning Workbench 已遭弃用。 但你仍然可以为建模准备任何大小的数据集。
 
-对于任意大小的数据集，在通过编写 Python 代码进行建模之前，你都可以使用 [Azure 机器学习数据准备包](https://aka.ms/data-prep-sdk)来快速准备数据。 
-
-可以按照[本教程](tutorial-data-prep.md)，深入了解如何使用 Azure 机器学习数据准备 SDK。
+对于任意大小的数据集，在通过编写 Python 代码进行建模之前，你都可以使用 [Azure 机器学习数据准备包](https://aka.ms/data-prep-sdk)来快速准备数据。
 
 ## <a name="will-projects-persist"></a>项目是否继续存在？
 
@@ -86,7 +84,7 @@ run = exp.submit(source_directory=script_folder,
 
 ## <a name="what-about-my-registered-models-and-images"></a>我注册的模型和映像又如何？
 
-若要继续使用旧模型注册表中注册的模型，必须将它们迁移到新工作区。 若要迁移模型，请下载模型并将其在新工作区中重新注册。 
+若要继续使用旧模型注册表中注册的模型，必须将它们迁移到新工作区。 若要迁移模型，请下载模型并将其在新工作区中重新注册。
 
 你在自己的旧映像注册表中创建的映像不能直接迁移到新工作区。 大多数情况下，可以部署此模型，不需创建映像。 可以根据需要在新工作区中为模型创建一个映像。 有关详细信息，请参阅[管理、注册、部署和监视机器学习模型](concept-model-management-and-deployment.md)。
 
@@ -94,7 +92,7 @@ run = exp.submit(source_directory=script_folder,
 
 现在，对旧 CLI 的支持已经结束，你无法再重新部署模型或管理最初使用模型管理帐户部署的 Web 服务。 但是，只要仍支持 Azure 容器服务 (ACS)，这些 Web 服务就将继续有效。
 
-在最新版本中，模型作为 Web 服务部署到 Azure 容器实例 (ACI) 或 Azure Kubernetes 服务 (AKS) 群集。 还可以部署到 FPGA 和 Azure IoT Edge。 
+在最新版本中，模型作为 Web 服务部署到 Azure 容器实例 (ACI) 或 Azure Kubernetes 服务 (AKS) 群集。 还可以部署到 FPGA 和 Azure IoT Edge。
 
 通过以下文章，了解详细信息：
 + [在何处以及如何部署模型](how-to-deploy-and-where.md)
@@ -118,10 +116,10 @@ run = exp.submit(source_directory=script_folder,
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 [Azure 机器学习服务的最新体系结构](concept-azure-machine-learning-architecture.md)。 
+了解 [Azure 机器学习服务的最新体系结构](concept-azure-machine-learning-architecture.md)。
 
 有关该服务的概述，请阅读[什么是 Azure 机器学习服务？](overview-what-is-azure-ml.md)。
 
 使用由两部分（[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)和[训练第一个模型](tutorial-1st-experiment-sdk-train.md)）组成的教程创建第一个试验
 
-有关此工作流的更深入体验，请参阅[完整教程](tutorial-train-models-with-aml.md)，其中包含使用 Azure 机器学习服务训练和部署模型的详细步骤。 
+有关此工作流的更深入体验，请参阅[完整教程](tutorial-train-models-with-aml.md)，其中包含使用 Azure 机器学习服务训练和部署模型的详细步骤。

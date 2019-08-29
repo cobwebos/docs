@@ -10,17 +10,16 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2762a81c9f366ad4a5d0d6d87cf04490fc10b23c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: b64fd653a737201921ad481c50e2a72dc00cd912
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630578"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071756"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Core Web 应用
 
@@ -40,45 +39,45 @@ ms.locfileid: "53630578"
 
 如果已安装 Visual Studio 2017：
 
-- 通过单击“帮助” > “检查更新”，在 Visual Studio 中安装最新的更新。
-- 通过单击“工具” > “获取工具和功能”，添加工作负荷。
+- 通过单击“帮助”   >   “检查更新”，在 Visual Studio 中安装最新的更新。
+- 通过单击“工具”   >   “获取工具和功能”，添加工作负荷。
 
 ## <a name="create-an-aspnet-core-web-app"></a>创建一个 ASP.NET Core Web 应用
 
-在 Visual Studio 中，通过依次选择“文件”>“新建”>“项目”创建项目。 
+在 Visual Studio 中，通过依次选择“文件”>“新建”>“项目”  创建项目。 
 
-在“新建项目”对话框中，选择“Visual C#”>“Web”>“ASP.NET Core Web 应用程序”。
+在“新建项目”  对话框中，选择“Visual C#”>“Web”>“ASP.NET Core Web 应用程序”  。
 
-将应用程序命名为 _myFirstAzureWebApp_，然后选择“确定”。
+将应用程序命名为 _myFirstAzureWebApp_，然后选择“确定”  。
    
 ![“新建项目”对话框](./media/app-service-web-get-started-dotnet/new-project.png)
 
-可将任何类型的 ASP.NET Core Web 应用部署到 Azure。 在本快速入门教程中，请选择“Web 应用程序”模板，并确保身份验证已设置为“无身份验证”且任何其他选项均未选中。
+可将任何类型的 ASP.NET Core Web 应用部署到 Azure。 在本快速入门教程中，请选择“Web 应用程序”  模板，并确保身份验证已设置为“无身份验证”  且任何其他选项均未选中。
       
-选择“确定”。
+选择“确定”  。
 
 ![“新建 ASP.NET 项目”对话框](./media/app-service-web-get-started-dotnet/razor-pages-aspnet-dialog.png)
 
-在菜单中，选择“调试>启动但不调试”以在本地运行 Web 应用。
+在菜单中，选择“调试>启动但不调试”  以在本地运行 Web 应用。
 
 ![在本地运行应用](./media/app-service-web-get-started-dotnet/razor-web-app-running-locally.png)
 
 ## <a name="launch-the-publish-wizard"></a>启动发布向导
 
-在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。
+在“解决方案资源管理器”  中右键单击“myFirstAzureWebApp”  项目，然后选择“发布”  。
 
 ![从解决方案资源管理器发布](./media/app-service-web-get-started-dotnet/right-click-publish.png)
 
-发布向导是自动启动的。 选择“应用服务” > “发布”以打开“创建应用服务”对话框。
+发布向导是自动启动的。 选择“应用服务”   >   “发布”以打开“创建应用服务”  对话框。
 
 ![从项目概述页发布](./media/app-service-web-get-started-dotnet/publish-to-app-service.png)
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-在“创建应用服务”对话框中单击“添加帐户”，并登录到 Azure 订阅。 如果已登录，请从下拉列表中选择所需的帐户。
+在“创建应用服务”对话框中单击“添加帐户”，并登录到 Azure 订阅。   如果已登录，请从下拉列表中选择所需的帐户。
 
 > [!NOTE]
-> 如果已经登录，请先不要选择“创建”。
+> 如果已经登录，请先不要选择“创建”  。
 >
    
 ![登录 Azure](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
@@ -87,17 +86,17 @@ ms.locfileid: "53630578"
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-在“资源组”旁边，选择“新建”。
+在“资源组”  旁边，选择“新建”  。
 
-将资源组命名为 **myResourceGroup**，然后选择“确定”。
+将资源组命名为 **myResourceGroup**，然后选择“确定”  。
 
 ## <a name="create-an-app-service-plan"></a>创建应用服务计划
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-在“托管计划”旁边，选择“新建”。 
+在“托管计划”旁边  ，选择“新建”  。 
 
-在“配置托管计划”对话框中，使用该屏幕截图下面的表中的设置。
+在“配置托管计划”对话框中，使用该屏幕截图下面的表中的设置。 
 
 ![创建应用服务计划](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
@@ -107,13 +106,13 @@ ms.locfileid: "53630578"
 | 位置 | 西欧 | 托管 Web 应用的数据中心。 |
 | 大小 | 免费 | [定价层](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)确定托管功能。 |
 
-选择“确定”。
+选择“确定”  。
 
 ## <a name="create-and-publish-the-web-app"></a>创建并发布 Web 应用
 
-在“应用名称”中，键入唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`），或接受自动生成的唯一名称。 Web 应用的 URL 为 `http://<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用名称。
+在“应用名称”中，键入唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`），或接受自动生成的唯一名称。  Web 应用的 URL 为 `http://<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用名称。
 
-选择“创建”开始创建 Azure 资源。
+选择“创建”  开始创建 Azure 资源。
 
 ![配置应用名称](./media/app-service-web-get-started-dotnet/web-app-name.png)
 
@@ -127,7 +126,7 @@ ms.locfileid: "53630578"
 
 ## <a name="update-the-app-and-redeploy"></a>更新应用并重新部署
 
-在“解决方案资源管理器”中打开“Pages/Index.cshtml”。
+在“解决方案资源管理器”中打开“Pages/Index.cshtml”。  
 
 将两个 `<div>` 标记替换为以下代码：
 
@@ -138,9 +137,9 @@ ms.locfileid: "53630578"
 </div>
 ```
 
-若要重新部署到 Azure，请在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。
+若要重新部署到 Azure，请在“解决方案资源管理器”  中右键单击“myFirstAzureWebApp”  项目，然后选择“发布”  。
 
-在“发布摘要”页中选择“发布”。
+在“发布摘要”页中选择“发布”  。
 ![Visual Studio“发布摘要”页](./media/app-service-web-get-started-dotnet/publish-summary-page.png)
 
 发布完成后，Visual Studio 将启动浏览器并转到 Web 应用的 URL。
@@ -151,7 +150,7 @@ ms.locfileid: "53630578"
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理 Web 应用。
 
-从左侧菜单中选择“应用程序服务”，并选择 Azure 应用的名称。
+从左侧菜单中选择“应用程序服务”，并选择 Azure 应用的名称。 
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-get-started-dotnet/access-portal.png)
 

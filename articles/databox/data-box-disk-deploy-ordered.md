@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 39d39b313cd2e65989989080d4cb0729b0be1e65
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: c1626542aba71f971ad96fe9f187ce9f1c1a99f3
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561453"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012929"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>教程：订购 Azure Data Box Disk
 
@@ -68,7 +68,7 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
     |设置|值|
     |---|---|
-    |订阅|选择已为其启用了 Data Box 服务的订阅。<br> 订阅链接到计费帐户。 |
+    |Subscription|选择已为其启用了 Data Box 服务的订阅。<br> 订阅链接到计费帐户。 |
     |传输类型| 导入到 Azure|
     |来源国家/地区 | 选择数据当前所在的国家/地区。|
     |目标 Azure 区域|选择要在其中传输数据的 Azure 区域。|
@@ -82,8 +82,8 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
     |设置|值|
     |---|---|
-    |名称|提供友好名称用于跟踪订单。<br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。 |
-    |资源组| 使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。 |
+    |Name|提供友好名称用于跟踪订单。<br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。 |
+    |Resource group| 使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。 |
     |目标 Azure 区域| 选择存储帐户的区域。<br> 目前，支持美国、西欧和北欧、加拿大和澳大利亚的所有区域的存储帐户。 |
     |估计数据大小(TB)| 输入估计值，以 TB 为单位。 <br>根据数据大小，Microsoft 会寄送适当数量的 8 TB SSD（7 TB 可用容量）。 <br>5 个磁盘的最大可用容量高达 35 TB。 |
     |磁盘密钥| 如果选中“使用自定义密钥而不是 Azure 生成的密钥”  ，请提供磁盘密钥。 <br> 提供一个 12 到 32 个字符的字母数字密钥，其中至少包含一个数字和一个特殊字符。 允许使用的特殊字符是 `@?_+`。 <br> 可以选择跳过此选项并使用 Azure 生成的密钥来解锁磁盘。|
@@ -97,11 +97,11 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
     |设置  |值  |
     |---------|---------|
-    |资源组     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 使用现有资源组的前提是，它是由 Data Box 服务为托管磁盘的 Data Box Disk 订单创建的。 <br> 只支持一个资源组。|
+    |Resource group     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 使用现有资源组的前提是，它是由 Data Box 服务为托管磁盘的 Data Box Disk 订单创建的。 <br> 只支持一个资源组。|
 
     ![托管磁盘的 Data Box Disk 订单](media/data-box-disk-deploy-ordered/order-managed-disks.png)
 
-    为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 上传到临时存储帐户，然后将其转换为托管磁盘并移到资源组。 有关详细信息，请参阅[验证 Azure 中的数据上传](data-box-disk-deploy-picked-up.md#verify-data-upload-to-azure)。
+    为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 上传到临时存储帐户，然后将其转换为托管磁盘并移到资源组。 有关详细信息，请参阅[验证 Azure 中的数据上传](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure)。
 
 13. 单击“下一步”。 
 

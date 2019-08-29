@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: dcbec817f771324219a68de96eb5dd262a887fc1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d8ecfb53b78277e4b0e4a85d60fb6712d0bc2292
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449045"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114840"
 ---
 # <a name="example-use-the-large-scale-feature"></a>示例：使用大规模使用的功能
 
@@ -32,7 +32,7 @@ LargePersonGroup 和 LargeFaceList 统称为大规模操作。 LargePersonGroup 
 
 使用人脸 API 客户端库时，订阅密钥和订阅终结点将通过 FaceClient 类的构造函数传入。 例如：
 
-```CSharp
+```csharp
 string SubscriptionKey = "<Subscription Key>";
 // Use your own subscription endpoint corresponding to the subscription key.
 string SubscriptionEndpoint = "https://westus.api.cognitive.microsoft.com";
@@ -73,7 +73,7 @@ faceClient.Endpoint = SubscriptionEndpoint
 
 上表对 FaceList 和 LargeFaceList 的列级操作进行了对比。 如表中所示，与 FaceList 相比，LargeFaceList 附带了新的操作（“训练”和“获取训练状态”）。 训练 LargeFaceList 是 [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 操作的前提条件。 FaceList 不需要训练。 以下代码片段是一个用于等待训练 LargeFaceList 的帮助器函数：
 
-```CSharp
+```csharp
 /// <summary>
 /// Helper function to train LargeFaceList and wait for finish.
 /// </summary>
@@ -123,7 +123,7 @@ private static async Task TrainLargeFaceList(
 
 以前，添加了人脸的 FaceList 和 FindSimilar 的典型用法如下所示：
 
-```CSharp
+```csharp
 // Create a FaceList.
 const string FaceListId = "myfacelistid_001";
 const string FaceListName = "MyFaceListDisplayName";
@@ -156,7 +156,7 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 
 将它迁移到 LargeFaceList 时，它会变成：
 
-```CSharp
+```csharp
 // Create a LargeFaceList.
 const string LargeFaceListId = "mylargefacelistid_001";
 const string LargeFaceListName = "MyLargeFaceListDisplayName";
@@ -233,7 +233,7 @@ LargePersonGroup 或 LargeFaceList 中的人员/人脸仅在训练后才可搜�
 
 假设存在类似于 `TrainLargeFaceList` 的 `TrainLargePersonGroup` 函数。 通过调用 `System.Timers` 中的 [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) 类，针对 LargePersonGroup 的独立训练的典型实现为：
 
-```CSharp
+```csharp
 private static void Main()
 {
     // Create a LargePersonGroup.

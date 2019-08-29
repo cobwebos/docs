@@ -8,22 +8,21 @@ author: alexkarcher-msft
 manager: ggailey777
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 860fedb13e84054e8ba264116be4e452445b7e9b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b4a143f14dc4e443570e8eca9ce6ce9e81b1d783
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143097"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096641"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>使用面向学生的 Azure 入门版创建函数
 
 在本教程中，我们将在面向学生的 Azure 入门版订阅中创建一个 hello world HTTP 函数。 此外，我们还将演练 Azure Functions 在此类订阅中的功能。
 
-借助面向学生的 Microsoft Azure 入门版，可以免费体验在云中进行开发所需的 Azure 产品。 [在此处详细了解此产品/服务。](https://azure.microsoft.com/offers/ms-azr-0144p/)
+借助面向学生的 Microsoft Azure 入门版，可以免费体验在云中进行开发所需的 Azure 产品。  [在此处详细了解此产品/服务。](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
 Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/serverless/)环境中执行代码，无需先创建 VM 或发布 Web 应用程序。 [在此处详细了解 Functions。](./functions-overview.md)
 
@@ -41,7 +40,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 必须使用函数应用托管函数的执行。 函数应用可将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 
 
-1. 选择 Azure 门户左上角的“新建”按钮，然后选择“计算” > “Function App”。
+1. 选择 Azure 门户左上角的“新建”按钮，然后选择“计算” > “Function App”。   
 
     ![在 Azure 门户中创建函数应用](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -53,38 +52,38 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
     | ------------ |  ------- | -------------------------------------------------- |
     | **应用名称** | 全局唯一名称 | 用于标识新 Function App 的名称。 有效的字符是 `a-z`、`0-9` 和 `-`。  | 
     | **订阅** | 订阅 | 要在其下创建此新函数应用的订阅。 | 
-    | [资源组](../azure-resource-manager/resource-group-overview.md) |  myResourceGroup | 要在其中创建 Function App 的新资源组的名称。 |
+    |  [资源组](../azure-resource-manager/resource-group-overview.md) |  myResourceGroup | 要在其中创建 Function App 的新资源组的名称。 |
    | **[应用服务计划/位置](./functions-scale.md)** | 新建 | 用于控制函数应用所要部署到的区域和资源密度的托管计划。 部署到同一计划的多个函数应用将共享同一个免费实例。 这是面向学生的入门版计划的限制。 [此处介绍](./functions-scale.md)了所有托管选项。|
     | **运行时堆栈** | 首选语言 | 选择支持你喜欢的函数编程语言的运行时。 对于 C# 和 F# 函数，选择 **.NET**。 |
     |**[Application Insights](./functions-monitoring.md)**| 已启用 | Application Insights 用于存储和分析函数应用的日志。 如果选择了支持 Application Insights 的位置，则默认会启用 Application Insights。 可以通过手动选择用于部署 Application Insights 的附近区域，来为任何函数启用 Application Insights。 如果不使用 Application Insights，则只能查看实时传送视频流日志。
 
-3. 选择上述“应用服务计划/位置”以选择不同的位置
+3. 选择上述“应用服务计划/位置”以选择不同的位置 
 
-4. 选择“新建”，然后为计划指定唯一的名称。
+4. 选择“新建”，然后为计划指定唯一的名称。 
 
 5. 选择最靠近你的位置。 [在此处查看完整的 Azure 区域地图。](https://azure.microsoft.com/global-infrastructure/regions/) 
 
     <img src="./media/functions-create-student-starter/Create-ASP.png" width="800">
 
-6. 选择“创建”以预配和部署函数应用。
+6. 选择“创建”  以预配和部署函数应用。
 
     <img src="./media/functions-create-student-starter/Function-create-end.png" width="315">
 
-7. 选择门户右上角的“通知”图标，留意是否显示“部署成功”消息。
+7. 选择门户右上角的“通知”图标，留意是否显示“部署成功”消息。 
 
     ![定义新的函数应用设置](./media/functions-create-student-starter/function-app-create-notification.png)
 
-8. 选择“转到资源”，查看新的函数应用。
+8. 选择“转到资源”  ，查看新的函数应用。
 
 接下来，在新的 Function App 中创建一个函数。
 
 ## <a name="create-function"></a>创建 HTTP 触发的函数
 
-1. 展开新的函数应用，然后选择 **Functions** 旁边的 **+** 按钮，选择“门户中”，然后选择“继续”。
+1. 展开新的函数应用，然后选择 **Functions** 旁边的 **+** 按钮，选择“门户中”  ，然后选择“继续”  。
 
     ![Functions 快速入门选择平台。](./media/functions-create-student-starter/function-app-quickstart-choose-portal.png)
 
-1. 选择“WebHook + API”，然后选择“创建”。
+1. 选择“WebHook + API”  ，然后选择“创建”  。
 
     ![Azure 门户中的函数快速入门。](./media/functions-create-student-starter/function-app-quickstart-node-webhook.png)
 
@@ -94,7 +93,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 ## <a name="test-the-function"></a>测试函数
 
-1. 在新函数中，单击右上角的“</> 获取函数 URL”，选择“默认(函数密钥)”，然后单击“复制”。 
+1. 在新函数中，单击右上角的“</> 获取函数 URL”，选择“默认(函数密钥)”，然后单击“复制”    。 
 
     ![从 Azure 门户复制函数 URL](./media/functions-create-student-starter/function-app-develop-tab-testing.png)
 
@@ -106,7 +105,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
     请求 URL 包含通过 HTTP 访问函数默认所需的密钥。
 
-3. 运行函数时，会在日志中写入跟踪信息。 若要查看上次执行的跟踪输出，请返回到门户中的函数，并单击屏幕底部的箭头以展开“日志”。
+3. 运行函数时，会在日志中写入跟踪信息。 若要查看上次执行的跟踪输出，请返回到门户中的函数，并单击屏幕底部的箭头以展开“日志”  。
 
    ![Azure 门户中的“函数日志”查看器。](./media/functions-create-student-starter/function-view-logs.png)
 

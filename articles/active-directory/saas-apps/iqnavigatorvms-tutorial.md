@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 579b35a06b74ffcef47ca0b41ff60bfdc4e0eb2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dba50c984984363682efce1f09ef462b3c0c5def
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67099786"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078500"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>教程：Azure Active Directory 与 IQNavigator VMS 集成
 
@@ -114,7 +114,7 @@ ms.locfileid: "67099786"
     d. 在“中继状态”文本框中，使用以下模式键入 URL：`https://<subdomain>.iqnavigator.com` 
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际回复 URL 和中继状态更新这些值。 请联系 [IQNavigator VMS 客户端支持团队](https://www.beeline.com/iqn-product-support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际回复 URL 和中继状态更新这些值。 请联系 [IQNavigator VMS 客户端支持团队](https://www.beeline.com/support-iqn/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. IQNavigator 应用程序希望在名称标识符声明中的用户标识符是唯一的。 用户可以为名称标识符声明映射正确的值。 在这种情况下，出于演示目的，我们映射了 user.UserPrincipalName。 但是你应该根据组织设置映射正确的值。
 
@@ -126,7 +126,7 @@ ms.locfileid: "67099786"
 
 ### <a name="configure-iqnavigator-vms-single-sign-on"></a>配置 IQNavigator VMS 单一登录
 
-若要在“IQNavigator VMS”端配置单一登录，需将应用联合元数据 URL 发送给 [IQNavigator VMS 支持团队](https://www.beeline.com/iqn-product-support/)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在“IQNavigator VMS”端配置单一登录，需将应用联合元数据 URL 发送给 [IQNavigator VMS 支持团队](https://www.beeline.com/support-iqn/)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -181,7 +181,7 @@ ms.locfileid: "67099786"
 
 ### <a name="create-iqnavigator-vms-test-user"></a>创建 IQNavigator VMS 测试用户
 
-在本部分，将在 IQNavigator VMS 中创建一个名为 Britta Simon 的用户。 请与  [IQNavigator VMS 支持团队](https://www.beeline.com/iqn-product-support/)协作，将用户添加到 IQNavigator VMS 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分，将在 IQNavigator VMS 中创建一个名为 Britta Simon 的用户。 请与  [IQNavigator VMS 支持团队](https://www.beeline.com/support-iqn/)协作，将用户添加到 IQNavigator VMS 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

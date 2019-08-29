@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 04/23/2019
+ms.date: 08/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: fa8730c43adb37fa9f62682beec9baeb7e95dfcf
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 32b050c86c2a170b1f95943a873c67d15f947c93
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839599"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035671"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>教程：开发适用于 Linux 设备的 C IoT Edge 模块
 
@@ -133,20 +133,20 @@ ms.locfileid: "68839599"
 1. 在 main.c 中找到 `CreateMessageInstance` 函数。 将内部的 if-else 语句替换为以下代码，以添加几行功能： 
 
    ```c
-   if ((messageInstance->messageHandle = IoTHubMessage_Clone(message)) == NULL)
-   {
-       free(messageInstance);
-       messageInstance = NULL;
-   }
-   else
-   {
-       messageInstance->messageTrackingId = messagesReceivedByInput1Queue;
-       MAP_HANDLE propMap = IoTHubMessage_Properties(messageInstance->messageHandle);
-       if (Map_AddOrUpdate(propMap, "MessageType", "Alert") != MAP_OK)
+       if ((messageInstance->messageHandle = IoTHubMessage_Clone(message)) == NULL)
        {
-          printf("ERROR: Map_AddOrUpdate Failed!\r\n");
+           free(messageInstance);
+           messageInstance = NULL;
        }
-   }
+       else
+       {
+           messageInstance->messageTrackingId = messagesReceivedByInput1Queue;
+           MAP_HANDLE propMap = IoTHubMessage_Properties(messageInstance->messageHandle);
+           if (Map_AddOrUpdate(propMap, "MessageType", "Alert") != MAP_OK)
+           {
+              printf("ERROR: Map_AddOrUpdate Failed!\r\n");
+           }
+       }
    ```
 
    else 语句中的新代码行将一个新属性添加到消息，用于将消息标记为警报。 此代码将所有消息均标记为警报，因为我们将添加仅在消息报告高温时才将其发送到 IoT 中心的功能。 
@@ -220,7 +220,7 @@ ms.locfileid: "68839599"
     static void moduleTwinCallback(DEVICE_TWIN_UPDATE_STATE update_state, const unsigned char* payLoad, size_t size, void* userContextCallback)
     {
         printf("\r\nTwin callback called with (state=%s, size=%zu):\r\n%s\r\n",
-            ENUM_TO_STRING(DEVICE_TWIN_UPDATE_STATE, update_state), size, payLoad);
+            MU_ENUM_TO_STRING(DEVICE_TWIN_UPDATE_STATE, update_state), size, payLoad);
         JSON_Value *root_value = json_parse_string(payLoad);
         JSON_Object *root_object = json_value_get_object(root_value);
         if (json_object_dotget_value(root_object, "desired.TemperatureThreshold") != NULL) {
@@ -242,12 +242,12 @@ ms.locfileid: "68839599"
        if (IoTHubModuleClient_LL_SetInputMessageCallback(iotHubModuleClientHandle, "input1", InputQueue1Callback, (void*)iotHubModuleClientHandle) != IOTHUB_CLIENT_OK)
        {
            printf("ERROR: IoTHubModuleClient_LL_SetInputMessageCallback(\"input1\")..........FAILED!\r\n");
-           ret = __FAILURE__;
+           ret = 1;
        }
        else if (IoTHubModuleClient_LL_SetModuleTwinCallback(iotHubModuleClientHandle, moduleTwinCallback, (void*)iotHubModuleClientHandle) != IOTHUB_CLIENT_OK)
        {
            printf("ERROR: IoTHubModuleClient_LL_SetModuleTwinCallback(default)..........FAILED!\r\n");
-           ret = __FAILURE__;
+           ret = 1;
        }
        else
        {

@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: eff827937adbae7cfdfdd86392593df8d698053c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 134483764ffcb012ece0769a514683fc9487887f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241770"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073616"
 ---
 # <a name="create-and-publish-a-product"></a>创建和发布产品  
 
@@ -48,10 +47,10 @@ ms.locfileid: "66241770"
 
     添加产品时，需要提供以下信息： 
 
-    | 名称                     | 说明                                                                                                                                                                                                                                                                                                             |
+    | Name                     | 说明                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | 显示名称             | 要在**开发人员门户**中显示的名称。                                                                                                                                                                                                                                                        |
-    | 名称                     | 产品的描述性名称。                                                                                                                                                                                                                                                                                      |
+    | Name                     | 产品的描述性名称。                                                                                                                                                                                                                                                                                      |
     | 说明              | 可在“说明”  字段中提供有关该产品的详细的信息，例如其用途，它提供访问权的 API 和其他有用的信息。                                                                                                                                               |
     | 状态                    | 如果想要发布该产品，请按“发布”。  在产品中的 API 可调用前，必须先发布该产品。 默认情况下新产品未发布，并仅对“管理员”  组可见。                                                                                      |
     | 需要订阅    | 如果需要用户订阅才能使用该产品，请选中“需要订阅”  。                                                                                                                                                                                                                                   |

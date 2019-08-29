@@ -9,18 +9,17 @@ editor: ''
 tags: azure-service-management
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4fb44440e68f8205b18eba3a3418e5a498e6b2ba
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 07ca1a167a2c7bf2f2946772b97cca4d2c1bd9c9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613530"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098510"
 ---
 # <a name="back-up-an-app-using-cli"></a>使用 CLI 备份应用
 
