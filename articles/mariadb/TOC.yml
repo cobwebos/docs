@@ -89,6 +89,10 @@
           href: concepts-read-replicas.md
 - name: 操作指南
   items:
+    - name: 管理服务器
+      items:
+        - name: Azure 门户
+          href: howto-create-manage-server-portal.md
     - name: 防火墙规则
       items:
         - name: Azure 门户
@@ -123,6 +127,8 @@
       items:
         - name: Azure 门户
           href: howto-auto-grow-storage-portal.md
+        - name: Azure CLI
+          href: howto-auto-grow-storage-cli.md
     - name: 访问服务器日志
       items:
         - name: 慢查询日志

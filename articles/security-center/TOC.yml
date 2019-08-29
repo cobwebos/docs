@@ -127,8 +127,6 @@
           href: security-center-install-endpoint-protection.md
         - name: 未安装漏洞评估
           href: security-center-vulnerability-assessment-recommendations.md
-        - name: 启用网络安全组
-          href: security-center-enable-network-security-groups.md
         - name: 威胁报告
           href: security-center-threat-report.md
         - name: 自定义警报
@@ -143,8 +141,6 @@
           href: security-center-investigation-user-data.md
         - name: 逻辑应用演练手册
           href: security-center-playbooks.md
-        - name: 查看事件
-          href: security-center-events-dashboard.md
         - name: 搜索
           href: security-center-search.md
         - name: 规划和操作
