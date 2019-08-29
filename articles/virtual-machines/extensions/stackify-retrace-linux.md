@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
-ms.openlocfilehash: ca3232dc3862cffb67d396b3ec2333fdc28dbb65
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6db152394a8e57689b34436b48dbcb4ecdc58b5a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706645"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084316"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux 代理扩展
 
@@ -44,7 +43,7 @@ Retrace 是唯一可以在单一平台中的所有环境下提供以下所有功
 
 Retrace 代理可以针对这些 Linux 分发运行
 
-| 分发 | Version |
+| 分发组 | Version |
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS、16.10 和 17.04 |
 | Debian | 7.9+ 和 8.2+、9 |
@@ -192,7 +191,7 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 40 | 安装错误 | 必需 activationKey |
 | 51 | 安装错误 | 不支持 OS 发行版 |
 | 60 | 安装错误 | 必需环境 |
-| 70 | 安装错误 | Unknown |
+| 70 | 安装错误 | 未知 |
 | 80 | 启用错误 | 服务安装失败 |
 | 90 | 启用错误 | 服务启动失败 |
 | 100 | 禁用错误 | 服务停止失败 |

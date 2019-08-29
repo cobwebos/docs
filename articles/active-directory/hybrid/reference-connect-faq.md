@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0442b987c502533bfbd55990f201a5c02b119804
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 70f0badc170c65b11bc244b5ed4ec2f9a205c72d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011300"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084867"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -273,4 +273,4 @@ Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况�
 
 **问：为什么在同步步骤错误后出现事件6311和6401？**
 
-事件 6311-**服务器在执行回调时遇到意外错误**, 6401-**管理代理控制器遇到意外错误**-在同步步骤出错后总是会记录该错误。 若要解决这些错误, 需要清除同步步骤错误。  有关详细信息, 请参阅[在同步过程中排查错误](tshoot-connect-sync-errors.md)和[排查 Azure AD Connect 同步中的对象同步](/tshoot-connect-objectsync.md)
+事件 6311-**服务器在执行回调时遇到意外错误**, 6401-**管理代理控制器遇到意外错误**-在同步步骤出错后总是会记录该错误。 若要解决这些错误, 需要清除同步步骤错误。  有关详细信息, 请参阅[在同步过程中排查错误](tshoot-connect-sync-errors.md)和[排查 Azure AD Connect 同步中的对象同步](tshoot-connect-objectsync.md)

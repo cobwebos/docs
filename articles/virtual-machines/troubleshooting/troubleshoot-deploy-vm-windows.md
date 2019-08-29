@@ -11,16 +11,15 @@ ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 76841484595b0a8809b8ab10db3199fc8cd28b04
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d963556a657f4367acca14d5d8340f384ef555a9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710439"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080209"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>排查在 Azure 中部署 Windows 虚拟机时遇到的问题
 
@@ -35,7 +34,7 @@ ms.locfileid: "67710439"
 \<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - 以更小的 VM 大小重试请求。
 - 如果无法更改请求的 VM 大小：
-    - 停止可用性集中的所有 VM。 依次单击“资源组”  > 资源组 >“资源”  > 可用性集 >“虚拟机”  > 虚拟机 >“停止”  。
+    - 停止可用性集中的所有 VM。 依次单击“资源组”> 资源组 >“资源”> 可用性集 >“虚拟机”> 虚拟机 >“停止”。
     - 在所有 VM 都停止后，创建相应大小的 VM。
     - 先启动新 VM，再选择所有已停止的 VM 并单击“启动”。
 

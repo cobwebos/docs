@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: bdc63fd1-db49-4e76-87d5-b5c6a890e53c
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5c9d2acf3e58d233bd789e335c585f61511b975d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 24863f00dcec78471cd187b64f6931b7b95124c9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846215"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100633"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 虚拟机 (Resource Manager) 的自动备份
 
@@ -32,7 +31,7 @@ ms.locfileid: "68846215"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 若要使用自动备份，请考虑以下先决条件：
 
 **操作系统**：
@@ -77,7 +76,7 @@ ms.locfileid: "68846215"
 
 在 Resource Manager 部署模型中创建新的 SQL Server 2014 虚拟机时，可以使用 Azure 门户配置自动备份。
 
-在**SQL Server 设置**"选项卡中, 向下滚动到"**自动备份**", 然后选择"**启用**"。 你还可以指定保留期和存储帐户, 还可以启用加密、备份系统数据库以及配置备份计划。  下面的 Azure 门户屏幕截图显示了“SQL 自动备份”设置。
+在“SQL Server 设置”选项卡中，向下滚动到“自动备份”并选择“启用”。 还可以指定保留期和存储帐户，以及启用加密、备份系统数据库和配置备份计划。  下面的 Azure 门户屏幕截图显示了“SQL 自动备份”设置。
 
 ![Azure 门户中的 SQL 自动备份配置](./media/virtual-machines-windows-sql-automated-backup/azure-sql-arm-autobackup.png)
 

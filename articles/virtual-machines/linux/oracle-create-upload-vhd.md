@@ -11,16 +11,15 @@ ms.assetid: dd96f771-26eb-4391-9a89-8c8b6d691822
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 0d83a6f9b42a56799371c5cdf82422ab73b8859a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ede12520fc6db089aea2d22b02dc32e72496830c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671091"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082454"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>为 Azure 准备 Oracle Linux 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -43,7 +42,7 @@ ms.locfileid: "67671091"
 你必须在操作系统中完成特定的配置步骤才能使虚拟机在 Azure 中运行。
 
 1. 在 Hyper-V 管理器的中间窗格中，选择虚拟机。
-2. 单击“连接”打开虚拟机窗口。 
+2. 单击“连接”打开虚拟机窗口。
 3. 通过运行以下命令卸载 NetworkManager：
    
         # sudo rpm -e --nodeps NetworkManager
@@ -105,7 +104,7 @@ ms.locfileid: "67671091"
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-14. 在 Hyper-V 管理器中单击“操作”->“关闭”  。 Linux VHD 现已准备好上传到 Azure。
+14. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 ---
 ## <a name="oracle-linux-70"></a>Oracle Linux 7.0+
@@ -121,7 +120,7 @@ ms.locfileid: "67671091"
 **配置步骤**
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
-2. 单击“连接”打开该虚拟机的控制台窗口。 
+2. 单击“连接”打开该虚拟机的控制台窗口。
 3. 在包含以下文本的 `/etc/sysconfig/` 目录中创建一个名为 **network** 的文件：
    
         NETWORKING=yes
@@ -181,7 +180,7 @@ ms.locfileid: "67671091"
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-15. 在 Hyper-V 管理器中单击“操作”->“关闭”  。 Linux VHD 现已准备好上传到 Azure。
+15. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
 现在，已准备就绪，可以使用 Oracle Linux .vhd 在 Azure 中创建新的虚拟机了。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。

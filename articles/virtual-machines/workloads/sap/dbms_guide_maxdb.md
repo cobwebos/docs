@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83319118c778d89749b1eb5d5fd792a5200c19c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6824eae4d5fed2eceaf85b9a674f980815afb260
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835993"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101371"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 上的 SAP MaxDB、liveCache 和内容服务器部署
 
@@ -339,7 +338,7 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 
 简而言之，必须：
 
-* 如果使用 Azure 存储帐户，请将保存 SAP MaxDB 数据和日志卷（数据和日志文件）的 Azure 存储帐户设置为本地冗余存储 (LRS)  ，如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述。
+* 如果使用 Azure 存储帐户，请将保存 SAP MaxDB 数据和日志卷（数据和日志文件）的 Azure 存储帐户设置为本地冗余存储 (LRS)，如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述。
 * 将 SAP MaxDB 数据卷（数据文件）的 IO 路径与日志卷（日志文件）的 IO 路径隔开。 这表示 SAP MaxDB 数据卷（数据文件）必须安装在一个逻辑驱动器上，而 SAP MaxDB 日志卷（日志文件）必须安装在另一个逻辑驱动器上。
 * 根据[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述，为每个磁盘设置适当的缓存类型，具体取决于是将其用于 SAP MaxDB 数据卷还是日志卷（数据和日志文件），以及是使用 Azure 标准存储还是 Azure 高级存储。
 * 只要每个磁盘当前的 IOPS 配额能满足需求，就可以将所有数据卷存储在装载的单个磁盘上，同时将所有数据库日志卷存储在装载的另一个磁盘上。
@@ -381,7 +380,7 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 
 ## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>有关 Windows 上的 SAP liveCache 部署的具体信息
 ### <a name="sap-livecache-version-support"></a>SAP liveCache 版本支持
-Azure 虚拟机支持的 SAP liveCache 最低版本是针对 EhP 2 for SAP SCM 7.0 和更新版本发行的 SAP LC/LCAPPS 10.0 SP 25，其中包括 liveCache 7.9.08.31 和 LCA-Build 25     。
+Azure 虚拟机支持的 SAP liveCache 最低版本是针对 EhP 2 for SAP SCM 7.0 和更新版本发行的 SAP LC/LCAPPS 10.0 SP 25，其中包括 liveCache 7.9.08.31 和 LCA-Build 25。
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>SAP liveCache DBMS 支持的 Microsoft Windows 版本和 Azure VM 类型
 若要为 Azure 上的 SAP liveCache DBMS 查找受支持的 Microsoft Windows 版本，请参阅：
@@ -426,9 +425,9 @@ SAP 目前支持：
 * **SAP MaxDB 版本 7.9**
 * **Microsoft IIS (Internet Information Server) 版本 8.0（和更高版本）**
 
-强烈建议使用最新版的 SAP 内容服务器以及最新版的 Microsoft IIS  。 
+强烈建议使用最新版的 SAP 内容服务器以及最新版的 Microsoft IIS。 
 
-在 [SAP 产品可用性对照表 (PAM)][sap-pam] 中查看支持的最新 SAP 内容服务器和 Microsoft IIS 版本。
+在[Sap 产品可用性矩阵 (PAM)][sap-pam]中查看 Sap 内容服务器和 Microsoft IIS 的最新支持版本。
 
 ### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>SAP 内容服务器支持的 Microsoft Windows 和 Azure VM 类型
 若要为 Azure 上的 SAP 内容服务器查找受支持的 Windows 版本，请参阅：
@@ -439,7 +438,7 @@ SAP 目前支持：
 强烈建议使用最新版本的 Microsoft Windows Server。
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>在 Azure VM 中安装 SAP 的 SAP 内容服务器配置准则
-#### <a name="storage-configuration-for-content-server-in-azure"></a>在 Azure 中的内容服务器的存储配置
+#### <a name="storage-configuration-for-content-server-in-azure"></a>Azure 中内容服务器的存储配置
 如果将 SAP 内容服务器配置为将文件存储在 SAP MaxDB 数据库中，那么，本文档中针对 SAP MaxDB 提出的所有 Azure 存储最佳做法建议也适用于 SAP 内容服务器方案。 
 
 如果将 SAP 内容服务器配置为将文件存储在文件系统中，则建议使用专用的逻辑驱动器。 如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)所述，通过使用 Windows 存储空间，还可以增加逻辑磁盘的大小和 IOPS 吞吐量。 

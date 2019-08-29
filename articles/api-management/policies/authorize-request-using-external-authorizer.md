@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: apimpm
-ms.openlocfilehash: 65ea8622187d0665e4680f4162ddff0bc01e6eb9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 92836e0bfe43a41ad6547c68bc0b9a326528862c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306760"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074172"
 ---
 # <a name="authorize-requests-using-external-authorizer"></a>使用外部授权程序授权请求
 
@@ -26,7 +25,7 @@ ms.locfileid: "60306760"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中  。
+将代码粘贴到“入站”块中。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Authorize requests using external authorizer.policy.xml)]
 

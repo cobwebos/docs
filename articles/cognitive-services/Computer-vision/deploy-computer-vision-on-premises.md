@@ -1,5 +1,5 @@
 ---
-title: 与 Kubernetes 和 Helm 一起使用-计算机视觉
+title: 使用 Kubernetes 和 Helm 计算机视觉容器
 titleSuffix: Azure Cognitive Services
 description: 将计算机视觉容器部署到 Azure 容器实例, 并在 web 浏览器中对其进行测试。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 8/22/2019
 ms.author: dapine
-ms.openlocfilehash: 5befba9bdc44a594363dba86c0c2d082a9b44cdd
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 1627aea958707eaaef6ee79908a17afc2e8f7b45
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036623"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068969"
 ---
-# <a name="use-with-kubernetes-and-helm"></a>与 Kubernetes 和 Jenkins 配合使用
+# <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>使用 Kubernetes 和 Helm 计算机视觉容器
 
 在本地管理计算机视觉容器的一种方法是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 定义识别文本容器映像, 我们将创建一个 Kubernetes 包。 此包将部署到本地的 Kubernetes 群集。 最后, 我们将探讨如何测试已部署的服务。 有关在没有 Kubernetes 业务流程的情况下运行 Docker 容器的详细信息, 请参阅[安装并运行识别文本容器](computer-vision-how-to-install-containers.md)。
 

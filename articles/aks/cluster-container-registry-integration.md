@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: 6c06453d479ae55ceb1c05a7ee8a29ce19a7a13b
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 1f07581be8fc416f8aae5eec1460ca3d33bda8f9
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034977"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114237"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>预览-从 Azure Kubernetes 服务向 Azure 容器注册表进行身份验证
 
@@ -59,7 +59,7 @@ az aks create -n myAKSCluster -g myResourceGroup --enable-acr [--acr <acr-name-o
 
 ## <a name="create-acr-integration-for-existing-aks-clusters"></a>为现有 AKS 群集创建 ACR 集成
 
-通过为**acr 名称**和**acr 资源 id**提供有效值, 将 ACR 与现有的 acr 群集集成。
+通过为**ACR 名称**或**acr 资源 id**提供有效值 (如下所示), 将现有的 ACR 与现有的 AKS 群集集成。
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acrName>

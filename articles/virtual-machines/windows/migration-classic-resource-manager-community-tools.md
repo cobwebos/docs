@@ -11,16 +11,15 @@ ms.assetid: 228b697b-3950-49f5-84bb-283bb56621b1
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 63e1ad044204bf7695d274fa46f06523fd9d460f
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 2b5d218812878db6fb110c043afffd2f9a2d344d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720280"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102672"
 ---
 # <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>使用社区工具将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 本文编录了社区提供的工具，这些工具适用于将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型。
@@ -42,7 +41,7 @@ ms.locfileid: "67720280"
 [工具文档链接](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
 ## <a name="migaz"></a>migAz
-migAz 是另一选项，用于将整套经典部署模型 IaaS 资源迁移到 Azure 资源管理器 IaaS 资源。 迁移可能在同一订阅中或者在不同订阅和订阅类型 (例如：CSP 订阅）。
+migAz 是另一选项，用于将整套经典部署模型 IaaS 资源迁移到 Azure 资源管理器 IaaS 资源。 可以在同一订阅中迁移，也可以在不同订阅和不同订阅类型（例如：CSP 订阅）之间迁移。
 
 [工具文档链接](https://github.com/Azure/migAz)
 

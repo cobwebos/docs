@@ -10,23 +10,22 @@ tags: top-support-issue
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 0b6bdc884107a522c81d100c0a05018cbc9d0a70
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 097d4ea45827223a5d3e64a2d1ca326569db9958
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718285"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113539"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
 本文列出了为 Azure 应用服务中的 Web 应用配置域或 SSL 证书时可能遇到的常见问题。 此外，还描述了这些问题的可能原因和解决方法。
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -78,26 +77,26 @@ ms.locfileid: "67718285"
 
 - 应用服务计划的层级为“免费”或“共享”。 这些定价层不支持 SSL。 
 
-    **解决方案**；将应用的应用服务计划升级到“标准”。
+    **解决方案**：将应用的应用服务计划升级到“标准”。
 
 - 订阅中没有有效的信用卡。
 
-    **解决方案**；将有效的信用卡添加到订阅。 
+    **解决方案**：将有效的信用卡添加到订阅。 
 
 - 该订阅套餐不支持购买“Microsoft 学生”等应用服务证书。  
 
-    **解决方案**；升级订阅。 
+    **解决方案**：升级订阅。 
 
 - 订阅已达到允许的购买限制。
 
-    **解决方案**；对于即用即付和 EA 订阅类型，可购买的应用服务证书限制为 10 个。 对于其他订阅类型，限制为 3 个。 若要提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-- 应用服务证书标记为欺诈。 收到以下错误消息：“你的证书已被标记为可能存在欺诈。 请求当前正在审查中。 如果证书不会不能使用 24 小时内，请联系 Azure 支持。"
+    **解决方案**：对于即用即付和 EA 订阅类型，可购买的应用服务证书限制为 10 个。 对于其他订阅类型，限制为 3 个。 若要提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+- 应用服务证书标记为欺诈。 收到以下错误消息：“你的证书已被标记为可能存在欺诈。 请求当前正在审查中。 如果证书未在 24 小时内变为可用，请联系 Azure 支持部门。”
 
-    **解决方案**；如果证书标记为欺诈，并且在 24 小时后未得到解决，请执行以下步骤：
+    **解决方案**：如果证书标记为欺诈，并且在 24 小时后未得到解决，请执行以下步骤：
 
     1. 登录到 [Azure 门户](https://portal.azure.com)。
-    2. 转到“应用服务证书”，选择该证书。 
-    3. 选择“证书配置”   > “步骤 2:  验证” > “域验证”  。 此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
+    2. 转到“应用服务证书”，选择该证书。
+    3. 选择“证书配置” > “步骤 2:验证” > “域验证”。 此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
 
 ## <a name="custom-domain-problems"></a>自定义域问题
 
@@ -191,20 +190,20 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 应用服务证书已续订，但使用应用服务证书的应用仍在使用旧证书。 此外，出现需要 HTTPS 协议的警告。
 
 #### <a name="cause"></a>原因 
-Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何更改发生，则会同步证书资源。 在轮换或更新证书时，应用程序有时仍会检索旧证书，而不是最近更新的证书。 原因是同步证书资源的作业尚未运行。 
+应用服务会在48小时内自动同步证书。 在轮换或更新证书时，应用程序有时仍会检索旧证书，而不是最近更新的证书。 原因是同步证书资源的作业尚未运行。 单击 "同步"。同步操作会自动更新应用服务中证书的主机名绑定, 而不会导致应用程序停机。
  
 #### <a name="solution"></a>解决方案
 
 可以强制同步证书：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择“应用服务证书”，然后选择该证书。 
-2. 依次单击“重新生成密钥和同步”、“同步”。   同步过程需要一段时间才能完成。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 选择“应用服务证书”，然后选择该证书。
+2. 依次单击“重新生成密钥和同步”、“同步”。同步过程需要一段时间才能完成。 
 3. 同步完成后，将看到以下通知：“已成功使用最新的证书更新了所有资源。”
 
 ### <a name="domain-verification-is-not-working"></a>域验证无法进行 
 
 #### <a name="symptom"></a>症状 
-应用服务证书要求先经过域验证，然后该证书才可供使用。 选择“验证”时，验证过程失败。 
+应用服务证书要求先经过域验证，然后该证书才可供使用。 选择“验证”时，验证过程失败。
 
 #### <a name="solution"></a>解决方案
 通过添加 TXT 记录来手动验证域：
@@ -212,13 +211,13 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 1.  转到托管域名的域名服务 (DNS) 提供商站点。
 2.  添加域的 TXT 记录，并在其中使用 Azure 门户中显示的域令牌值。 
 
-等待几分钟以运行 DNS 传播，然后选择“刷新”按钮触发验证。  
+等待几分钟以运行 DNS 传播，然后选择“刷新”按钮触发验证。 
 
 另一种做法是使用 HTML 网页方法来手动验证域。 此方法可让证书颁发机构确认为其颁发证书的域的域所有权。
 
 1.  创建名为 {Domain Verification Token}.html 的 HTML 文件。 此文件的内容应为域验证令牌的值。
 3.  将此文件上传到托管域的 Web 服务器的根目录。
-4.  选择“刷新”检查证书状态。  验证可能需要几分钟才能完成。
+4.  选择“刷新”检查证书状态。 验证可能需要几分钟才能完成。
 
 例如，如果为 azure.com 购买了域验证令牌为 1234abcd 的标准证书，则对 https://azure.com/1234abcd.html 发出的 Web 请求应返回 1234abcd。 
 
@@ -238,17 +237,17 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 - Azure 订阅中没有信用卡，或信用卡无效。
 
-    **解决方案**；将有效的信用卡添加到订阅。
+    **解决方案**：将有效的信用卡添加到订阅。
 
 - 你不是订阅所有者，因此无权购买域。
 
-    **解决方案**；[将“所有者”角色分配](../role-based-access-control/role-assignments-portal.md)给自己的帐户。 或者联系订阅管理员获取购买域的权限。
+    **解决方案**：[将“所有者”角色分配](../role-based-access-control/role-assignments-portal.md)给自己的帐户。 或者联系订阅管理员获取购买域的权限。
 - 已达到订阅中可购买域数的限制。 当前限制为 20 个。
 
-    **解决方案**；若要请求提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+    **解决方案**：若要请求提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 - Azure 订阅类型不支持购买应用服务域。
 
-    **解决方案**；将 Azure 订阅升级到其他订阅类型，例如即用即付订阅。
+    **解决方案**：将 Azure 订阅升级到其他订阅类型，例如即用即付订阅。
 
 ### <a name="you-cant-add-a-host-name-to-an-app"></a>无法将主机名添加到应用 
 
@@ -262,10 +261,10 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 - 无权添加主机名。
 
-    **解决方案**；让订阅管理员为你授予添加主机名的权限。
+    **解决方案**：让订阅管理员为你授予添加主机名的权限。
 - 无法验证域所有权。
 
-    **解决方案**；验证是否已正确配置 CNAME 或 A 记录。 若要将自定义域映射到应用，请创建 CNAME 记录或 A 记录。 若要使用根域，必须使用 A 和 TXT 记录：
+    **解决方案**：验证是否已正确配置 CNAME 或 A 记录。 若要将自定义域映射到应用，请创建 CNAME 记录或 A 记录。 若要使用根域，必须使用 A 和 TXT 记录：
 
     |记录类型|主机|指向|
     |------|------|-----|
@@ -273,15 +272,15 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 **购买网站的自定义域后是否必须配置该域？**
 
-通过 Azure 门户购买某个域时，应用服务应用程序会自动配置为使用该自定义域。 你不需要执行任何额外的步骤。 有关详细信息，观看[Azure 应用服务自助帮助：自定义域名添加](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)第 9 频道上。
+通过 Azure 门户购买某个域时，应用服务应用程序会自动配置为使用该自定义域。 你不需要执行任何额外的步骤。 有关详细信息, 请[观看 Azure App Service 自助:](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)在 Channel9 上添加自定义域名。
 
 **是否可以使用在 Azure 门户中购买的域来指向 Azure VM？**
 
-是的您可以将域指向 VM 了。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](../dns/dns-custom-domain.md)。
+是的，可将该域指向 VM。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](../dns/dns-custom-domain.md)。
 
 **我的域是由 GoDaddy 还是 Azure DNS 托管？**
 

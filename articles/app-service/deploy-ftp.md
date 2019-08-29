@@ -10,18 +10,17 @@ ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ae172c5a7ed6f90bfe132f346b356f2be81b349d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: f239fb4464d2e7f67b91a2d18c21b089ffd52b27
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617053"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070488"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
@@ -33,17 +32,17 @@ ms.locfileid: "67617053"
 
 在 [Azure 门户](https://portal.azure.com)中，打开应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)。
 
-若要打开 FTP 仪表板，请单击“部署中心”   > “FTP”   > “仪表板”  。
+若要打开 FTP 仪表板，请单击“部署中心” > “FTP” > “仪表板”。
 
 ![打开 FTP 仪表板](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>获取 FTP 连接信息
 
-在 FTP 仪表板中，单击“复制”  以复制 FTPS 终结点和应用凭据。
+在 FTP 仪表板中，单击“复制”以复制 FTPS 终结点和应用凭据。
 
 ![复制 FTP 信息](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-建议你使用**应用凭据**部署到应用，因为它对每个应用都是唯一的。 但是，如果单击“用户凭据”  ，会将可用于 FTP/S 登录的用户级凭据设置到订阅中的所有应用服务应用。
+建议你使用**应用凭据**部署到应用，因为它对每个应用都是唯一的。 但是，如果单击“用户凭据”，会将可用于 FTP/S 登录的用户级凭据设置到订阅中的所有应用服务应用。
 
 > [!NOTE]
 > 使用用户级凭据向 FTP/FTPS 终结点进行身份验证时需要使用以下格式的用户名： 
@@ -73,9 +72,9 @@ ms.locfileid: "67617053"
 
 为了增强安全性，只应启用基于 SSL 的 FTP。 如果不使用 FTP 部署，也可禁用 FTP 和 FTPS。
 
-如果应用的资源页位于 [Azure 门户](https://portal.azure.com)中，请在左侧导航中选择“应用设置”。 
+如果应用的资源页位于 [Azure 门户](https://portal.azure.com)中，请在左侧导航中选择“应用设置”。
 
-若要禁用未加密的 FTP，请选择“仅 FTPS”  。 若要将 FTP 和 FTPS 都禁用，请选择“禁用”  。 完成后，单击“保存”  。 如果使用“仅 FTPS”  ，则必须通过导航到 Web 应用的“SSL 设置”边栏选项卡来强制实施 TLS 1.2 或更高版本。  TLS 1.0 和 1.1 不支持“仅 FTPS”。 
+若要禁用未加密的 FTP，请选择“仅 FTPS”。 若要将 FTP 和 FTPS 都禁用，请选择“禁用”。 完成后，单击“保存”。 如果使用“仅 FTPS”，则必须通过导航到 Web 应用的“SSL 设置”边栏选项卡来强制实施 TLS 1.2 或更高版本。 TLS 1.0 和 1.1 不支持“仅 FTPS”。
 
 ![禁用 FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 

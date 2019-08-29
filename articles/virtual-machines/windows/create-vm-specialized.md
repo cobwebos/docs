@@ -11,16 +11,15 @@ ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 8f4169e7d94a5a838ecc11b22e7988223c25e02c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 5dde098277b16c7ec5339aa6b963b04dd608c8ac
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718828"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079670"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 
@@ -83,7 +82,7 @@ Get-AzStorageAccount
     Get-AzResourceGroup
     ```
 
-    在“美国西部”区域创建名为 *myResourceGroup* 的资源组。 
+    在“美国西部”区域创建名为 *myResourceGroup* 的资源组。
 
     ```powershell
     New-AzResourceGroup `
@@ -103,7 +102,7 @@ Get-AzStorageAccount
     ```
 
 ### <a name="upload-the-vhd-to-your-storage-account"></a>将 VHD 上传到存储帐户 
-使用 [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 *myVHD.vhd* 从 "C:\Users\Public\Documents\Virtual hard disks\" 上传到 *myResourceGroup* 资源组中名为 *mystorageaccount* 的存储帐户。 该文件存储在名为“mycontainer”  的容器中，新文件名为“myUploadedVHD.vhd”  。
+使用 [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 *myVHD.vhd* 从 "C:\Users\Public\Documents\Virtual hard disks\" 上传到 *myResourceGroup* 资源组中名为 *mystorageaccount* 的存储帐户。 该文件存储在名为“mycontainer”的容器中，新文件名为“myUploadedVHD.vhd”。
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -132,7 +131,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>从 VHD 创建托管磁盘
 
-使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)，基于存储帐户中的专用 VHD 创建托管磁盘。 此示例使用“myOSDisk1”作为  磁盘名称，将磁盘放置在“Standard_LRS”  存储中，并使用 *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* 作为源 VHD 的 URI。
+使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)，基于存储帐户中的专用 VHD 创建托管磁盘。 此示例使用“myOSDisk1”作为磁盘名称，将磁盘放置在“Standard_LRS”存储中，并使用 *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* 作为源 VHD 的 URI。
 
 创建适用于新 VM 的新资源组。
 
@@ -209,7 +208,7 @@ $snapShot = New-AzSnapshot `
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>从快照创建新磁盘
 
-使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) 基于快照创建托管磁盘。 此示例使用“myOSDisk”作为磁盘名称  。
+使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) 基于快照创建托管磁盘。 此示例使用“myOSDisk”作为磁盘名称。
 
 创建适用于新 VM 的新资源组。
 
@@ -243,7 +242,7 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
 
 为 VM 创建[虚拟网络](../../virtual-network/virtual-networks-overview.md)和子网。
 
-1. 创建子网。 本示例在资源组“myDestinationResourceGroup”中创建名为“mySubNet”的子网，并将子网地址前缀设置为 10.0.0.0/24    。
+1. 创建子网。 本示例在资源组“myDestinationResourceGroup”中创建名为“mySubNet”的子网，并将子网地址前缀设置为 10.0.0.0/24。
    
     ```powershell
     $subnetName = 'mySubNet'
@@ -313,7 +312,7 @@ $nsg = New-AzNetworkSecurityGroup `
 
 ### <a name="set-the-vm-name-and-size"></a>设置 VM 名称和大小
 
-此示例将 VM 名称设置为“myVM”，将 VM 大小设置为“Standard_A2”   。
+此示例将 VM 名称设置为“myVM”，将 VM 大小设置为“Standard_A2”。
 
 ```powershell
 $vmName = "myVM"
@@ -354,7 +353,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM。  
+应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM。
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

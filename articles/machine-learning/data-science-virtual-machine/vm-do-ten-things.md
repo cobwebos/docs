@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: 2effbd5fec1bbe32bcd6f599d2c2cbba66f33bdb
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 33f1d102f128f7e63d625132c9d3c3834955747b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998092"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099451"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -207,7 +207,7 @@ ep <- endpoints(ws, s)
 ans = consume(ep, sleepstudy)$ans
 ```
 
-请参阅[机器学习 Studio 中的 R 包的](/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning.md)详细信息。
+请参阅[机器学习 Studio 中的 R 包的](/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning)详细信息。
 
 ## <a name="manage-azure-resources"></a>管理 Azure 资源
 DSVM 不允许在虚拟机上本地生成分析解决方案。 它还允许您访问 Azure 云平台上的服务。 Azure 提供多个计算、存储、数据分析和其他服务, 你可以从 DSVM 进行管理和访问。

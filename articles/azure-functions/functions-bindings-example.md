@@ -6,16 +6,15 @@ documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: bced6dc71063b6be68d739ef67fb5ec46c3d1be6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d1959792823e04cf34d65ab775ae8c51e741e293
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480439"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097474"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions 触发器和绑定示例
 
@@ -23,7 +22,7 @@ ms.locfileid: "67480439"
 
 假设希望在 Azure 队列存储中显示一条新消息时就将一个新行写入 Azure 表存储。 使用 Azure 队列存储触发器和 Azure 表存储输出绑定即可实现此方案。 
 
-下面是用于这种方案的 function.json  文件。 
+下面是用于这种方案的 function.json文件。 
 
 ```json
 {
@@ -50,14 +49,14 @@ ms.locfileid: "67480439"
 
 `bindings` 数组中的第二个元素是 Azure 表存储输出绑定。 `type` 和 `direction` 属性标识该绑定。 `name` 属性指定函数提供新表行的方式，在此例中是使用函数返回值来提供。 表格的名称位于 `tableName` 中，连接字符串位于由 `connection` 标识的应用设置中。
 
-若要在 Azure 门户中查看和编辑 *function.json* 的内容，请单击函数“集成”  选项卡上的“高级编辑器”  选项。
+若要在 Azure 门户中查看和编辑 *function.json* 的内容，请单击函数“集成”选项卡上的“高级编辑器”选项。
 
 > [!NOTE]
-> `connection` 的值是包含连接字符串的应用设置的名称，而不是连接字符串本身的名称。 绑定使用应用设置中存储的连接字符串，以强制执行 function.json  不包含服务密钥这一最佳做法。
+> `connection` 的值是包含连接字符串的应用设置的名称，而不是连接字符串本身的名称。 绑定使用应用设置中存储的连接字符串，以强制执行 function.json 不包含服务密钥这一最佳做法。
 
 ## <a name="c-script-example"></a>C# 脚本示例
 
-以下是适用于此触发器和绑定的 C# 脚本代码。 请注意，提供队列消息内容的参数的名称是 `order`；需使用此名称是因为 function.json  中的 `name` 属性值是 `order` 
+以下是适用于此触发器和绑定的 C# 脚本代码。 请注意，提供队列消息内容的参数的名称是 `order`；需使用此名称是因为 function.json 中的 `name` 属性值是 `order` 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -107,7 +106,7 @@ function generateRandomId() {
 
 ## <a name="class-library-example"></a>类库示例
 
-在类库中，由特性而不是 function.json 文件提供这些触发器和绑定信息 &mdash; 队列和表名称、存储帐户、输入和输出 &mdash; 的函数参数。 下面是一个示例：
+在类库中，由特性而不是 function.json 文件提供这些触发器和绑定信息 &mdash; 队列和表名称、存储帐户、输入和输出 &mdash; 的函数参数。 以下是一个示例：
 
 ```csharp
 public static class QueueTriggerTableOutput
@@ -135,7 +134,7 @@ public class Person
 }
 ```
 
-现可由 Azure 队列触发，并将数据输出到 Azure 表存储的工作函数。
+现在，你已有一个由 Azure 队列触发并将数据输出到 Azure 表存储的工作函数。
 
 ## <a name="next-steps"></a>后续步骤
 

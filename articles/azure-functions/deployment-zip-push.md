@@ -6,16 +6,15 @@ documentationcenter: na
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 2762e5c4f2b67415a0e42e80a34ae5b34c57adc9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c411ff6b3a7152adaaf29045f4c3b3a3deb22d09
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62111180"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087591"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 Zip 部署
 
@@ -53,7 +52,7 @@ Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务
 
   1. 登录 [Azure 门户](https://portal.azure.com)，并转到函数应用。
 
-  2. 在“概述”选项卡中，选择“下载应用内容”   。 选择下载选项，然后选择“下载”  。
+  2. 在“概述”选项卡中，选择“下载应用内容”。 选择下载选项，然后选择“下载”。
 
       ![下载函数应用项目](./media/deployment-zip-push/download-project.png)
 

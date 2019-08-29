@@ -11,16 +11,15 @@ ms.assetid: a6de7a7c-cc70-44e7-aed0-2ae6884d401a
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: szark
-ms.openlocfilehash: bdeaf4ec4a276e7cdd94402159f6adac474b3af8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 009918a95ca1ff6189553d502fd06773fcd0d402
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671533"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083454"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>为 Azure 准备 Debian VHD
 ## <a name="prerequisites"></a>先决条件
@@ -50,7 +49,7 @@ ms.locfileid: "67671533"
 
 ## <a name="manually-prepare-a-debian-vhd"></a>手动准备 Debian VHD
 1. 在 Hyper-V 管理器中，选择虚拟机。
-2. 单击“连接”打开该虚拟机的控制台窗口。 
+2. 单击“连接”打开该虚拟机的控制台窗口。
 3. 如果用 ISO 安装了 OS，请注释掉与 `/etc/apt/source.list` 中的“`deb cdrom`”相关的任何行。
 
 4. 编辑 `/etc/default/grub` 文件并按如下方式修改 **GRUB_CMDLINE_LINUX** 参数，包含用于 Azure 的其他内核参数。
@@ -105,7 +104,7 @@ ms.locfileid: "67671533"
         # export HISTSIZE=0
         # logout
 
-10. 在 Hyper-V 管理器中单击“操作”->“关闭”。  Linux VHD 现已准备好上传到 Azure。
+10. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
 现在，可以使用 Debian 虚拟硬盘在 Azure 中创建新的 Azure 虚拟机了。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。

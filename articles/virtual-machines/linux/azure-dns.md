@@ -8,18 +8,17 @@ manager: gwallace
 editor: tysonn
 ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: d9ff8ca8ce35c8698fc67fa8588eed4228230068
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 16dc7d16b3e8f2a4c95e93f9b85c74027291ce19
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668497"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084044"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的 DNS 名称解析选项
 Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。 在 Azure 托管的虚拟机上配置自己的 DNS 服务，即可实现自己的 DNS 名称解析解决方案。 以下方案有助于选择适合的解决方案。
@@ -61,7 +60,7 @@ Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。
 * 每个虚拟机的 DNS 查询流量有所限制。 限制不会影响大部分应用程序。  如果遵循请求限制，请确保启用客户端缓存。  有关详细信息，请参阅[充分利用 Azure 提供的名称解析](#getting-the-most-from-name-resolution-that-azure-provides)。
 
 ### <a name="getting-the-most-from-name-resolution-that-azure-provides"></a>充分利用 Azure 提供的名称解析
-客户端缓存： 
+客户端缓存：
 
 有些 DNS 查询不会通过网络发送。 客户端缓存可以解析本地缓存中重复出现的 DNS 查询，从而帮助降低延迟并提高网络不一致的复原能力。 DNS 记录包含生存时间 (TTL)，可让缓存尽可能长时间地存储记录，同时不影响记录新近度。 因此，客户端缓存适用于大多数情况。
 
@@ -69,7 +68,7 @@ Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。
 
 提供有多个不同的 DNS 缓存包（例如 dnsmasq）。 在最常见发行版上安装 dnsmasq 的步骤如下：
 
-Ubuntu（使用 resolvconf） 
+Ubuntu（使用 resolvconf）
   * 安装 dnsmasq 包（“sudo apt-get install dnsmasq”）。
 
 **SUSE（使用 netconf）** ：
@@ -79,7 +78,7 @@ Ubuntu（使用 resolvconf）
 4. 编辑“/etc/sysconfig/network/config”并将 NETCONFIG_DNS_FORWARDER="" 更改为“dnsmasq”。
 5. 更新 resolv.conf（“netconfig update”），将缓存设置为本地 DNS 解析程序。
 
-Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager） 
+Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager）
 1. 安装 dnsmasq 包（“sudo yum install dnsmasq”）。
 2. 启用 dnsmasq 服务（“systemctl enable dnsmasq.service”）。
 3. 启动 dnsmasq 服务（“systemctl start dnsmasq.service”）。
@@ -91,7 +90,7 @@ Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager）
 >
 >
 
-客户端重试： 
+客户端重试：
 
 DNS 主要是一个 UDP 协议。 UDP 协议不保证消息传递，所以 DNS 协议自身处理重试逻辑。 每个 DNS 客户端（操作系统）可能会表现出不同的重试逻辑，具体取决于创建者的偏好：
 
@@ -104,15 +103,15 @@ DNS 主要是一个 UDP 协议。 UDP 协议不保证消息传递，所以 DNS �
 
 resolv.conf 文件是自动生成的，不应进行编辑。 添加“options”行的具体步骤因发行版而异：
 
-Ubuntu（使用 resolvconf） 
+Ubuntu（使用 resolvconf）
 1. 将“options”行添加到“/etc/resolveconf/resolv.conf.d/head”。
 2. 运行“resolvconf -u”以更新。
 
-SUSE（使用 netconf） 
+SUSE（使用 netconf）
 1. 将“timeout:1 attempts:5”添加到“/etc/sysconfig/network/config”中的 NETCONFIG_DNS_RESOLVER_OPTIONS="" 参数。
 2. 运行“netconfig update”以更新。
 
-Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager） 
+Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager）
 1. 将“RES_OPTIONS="timeout:1 attempts:5"”添加到“/etc/sysconfig/network”。
 2. 运行“service network restart”以更新。
 

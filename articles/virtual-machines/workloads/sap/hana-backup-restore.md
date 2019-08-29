@@ -7,19 +7,18 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27f7a9b576263b97c251306c9817b85c31041739
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 705dfb0b62327d9675fe9bf3e5860b1396e2fab9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312224"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101303"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 
@@ -132,7 +131,7 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 
 安装 SAP HANA 时, 你有责任在 HANA 大型实例单元上安装 SAP HANA HDB 客户端。
 
-### <a name="step-2-change-the-etcsshsshconfig"></a>步骤 2：更改 /etc/ssh/ssh\_config
+### <a name="step-2-change-the-etcsshssh_config"></a>步骤 2：更改 /etc/ssh/ssh\_config
 
 在[Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)中, 在 "通过存储启用通信" 中介绍了此步骤。
 
@@ -214,7 +213,7 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 ## <a name="snapshot-strategies"></a>快照策略
 不同类型快照的频率取决于是否使用 HANA 大型实例灾难恢复功能。 此功能依赖于存储快照，这可能需要实施某些与存储快照频率和执行时间长短相关的特殊建议。 
 
-以下注意事项和建议假设不  使用 HANA 大型实例提供的灾难恢复功能。 假设用户使用存储快照来获取备份并提供过去 30 天的时点恢复。 考虑到快照和空间的限制, 请考虑以下要求:
+以下注意事项和建议假设不使用 HANA 大型实例提供的灾难恢复功能。 假设用户使用存储快照来获取备份并提供过去 30 天的时点恢复。 考虑到快照和空间的限制, 请考虑以下要求:
 
 - 时间点恢复的恢复时间。
 - 使用的空间。
@@ -290,7 +289,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 在特定的存储卷上，可以监视快照的数量以及这些快照的存储消耗量。 `ls` 命令不会显示快照目录或文件。 Linux OS 命令`du`显示有关这些存储快照的详细信息, 因为这些快照存储在相同的卷上。 使用带有以下选项的命令:
 
 - `du –sh .snapshot`：此选项提供快照目录中所有快照的总数。
-- `du –sh --max-depth=1`：此选项列出 .snapshot  文件夹中保存的所有快照，以及每个快照的大小。
+- `du –sh --max-depth=1`：此选项列出 .snapshot 文件夹中保存的所有快照，以及每个快照的大小。
 - `du –hc`：此选项提供所有快照占用的总大小。
 
 使用这些命令来确保所采用和存储的快照不会消耗卷上的所有存储。

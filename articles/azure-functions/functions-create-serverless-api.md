@@ -4,17 +4,16 @@ description: 了解如何在中自定义 HTTP 触发器终结点 Azure Functions
 author: mattchenderson
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 00aa55fe9f92358fd3a0e6f3065e5e2e69e405e1
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f7729f5acb8b7b95004265f6802ba2feb1bc3cd7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534628"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096761"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自定义 HTTP 终结点
 

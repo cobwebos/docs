@@ -6,20 +6,19 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9d5e06c3d72d87a87b41a52ed4df369ebc04dccd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae6c2bd27e9192966ecffb4d4296063201fca970
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387080"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098024"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
-监视模式是工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。  本文介绍使用 [Durable Functions](durable-functions-overview.md) 实现监视的示例。
+监视模式是工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。 本文介绍使用 [Durable Functions](durable-functions-overview.md) 实现监视的示例。
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -27,7 +26,7 @@ ms.locfileid: "66387080"
 
 此示例监视某个地点的当前天气状况，如果是晴天，则通过短信通知用户。 可以使用常规的计时器触发函数来检查天气和发送提醒。 但是，此方法存在**生存期管理**方面的问题。 如果只应发送一条提醒，则在检测到晴天后，监视器需要禁用自身。 监视模式可以结束自身的执行，同时还具有其他优点：
 
-* 监视器按时间间隔而不是计划运行：计时器触发器每隔一小时运行；监视器等待一小时，然后执行下一项操作。   除非有指定，否则监视器的操作不会重叠，这对于长时间运行的任务可能很重要。
+* 监视器按时间间隔而不是计划运行：计时器触发器每隔一小时运行；监视器等待一小时，然后执行下一项操作。 除非有指定，否则监视器的操作不会重叠，这对于长时间运行的任务可能很重要。
 * 监视器可以使用动态时间间隔：可以根据某种条件更改等待时间。
 * 监视器可以在满足某种条件时终止，或者由其他进程终止。
 * 监视器可以采用参数。 此示例演示如何将同一个天气监视进程应用到任何请求的地点和电话号码。
@@ -78,7 +77,7 @@ ms.locfileid: "66387080"
 
 此业务流程协调程序函数执行以下操作：
 
-1. 获取 **MonitorRequest**，其中包括要监视的地点，以及要将短信通知发送到的电话号码。  
+1. 获取 **MonitorRequest**，其中包括要监视的地点，以及要将短信通知发送到的电话号码。
 2. 确定监视器的过期时间。 为简便起见，本示例使用了硬编码值。
 3. 调用 **E3_GetIsClear** 来确定请求的地点是否为晴天。
 4. 如果是晴天，则调用 **E3_SendGoodWeatherAlert** 将短信通知发送到请求的电话号码。
@@ -89,7 +88,7 @@ ms.locfileid: "66387080"
 
 ## <a name="strongly-typed-data-transfer-net-only"></a>强类型数据传输（仅限 .NET）
 
-业务流程协调程序需要多个小的数据，因此[共享的 POCO 对象](../functions-reference-csharp.md#reusing-csx-code)用于强类型数据传输C#和C#脚本：  
+Orchestrator 需要多个数据段, 以便在和C# C#脚本中使用共享的[POCO 对象](../functions-reference-csharp.md#reusing-csx-code)进行强类型的数据传输:  
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
@@ -98,7 +97,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 ## <a name="helper-activity-functions"></a>帮助器活动函数
 
-与其他示例一样，帮助器活动函数是使用 `activityTrigger` 触发器绑定的正则函数。 **E3_GetIsClear** 函数使用 Weather Underground API 获取当前天气状况并确定是否为晴天。 function.json 定义如下  ：
+与其他示例一样，帮助器活动函数是使用 `activityTrigger` 触发器绑定的正则函数。 **E3_GetIsClear** 函数使用 Weather Underground API 获取当前天气状况并确定是否为晴天。 function.json 定义如下：
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
 

@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 7ab921d889c48ccd8be469328e2690cb1cb2d8b2
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7dba929101a928f0bbcb8553d6dd3b3043d74853
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050028"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114854"
 ---
 # <a name="install-and-run-face-containers"></a>安装并运行人脸容器
 
@@ -150,7 +150,6 @@ ApiKey={API_KEY}
 
 本文介绍了如何下载、安装和运行人脸 API 容器的概念和工作流。 综上所述：
 
-* 人脸 API 提供了用于 Docker 的三个 Linux 容器, 它们提供关键短语提取、语言检测和情绪分析。
 * 从 Azure 容器注册表下载容器映像。
 * 容器映像在 Docker 中运行。
 * 您可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用人脸 API 容器中的操作。

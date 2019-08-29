@@ -6,16 +6,15 @@ documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: b9a44bd058e6148c6210c5e3be93745d18d8cb74
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: db6f4f938b1555091dc51e310d4d31f96f93200c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480416"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097353"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 绑定表达式模式
 
@@ -152,7 +151,7 @@ public static void Run(
 * NextVisibleTime
 * PopReceipt
 
-这些元数据值可在 function.json 文件属性中访问  。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中  ，可在 blob `path` 属性中使用 `queueTrigger` 元数据属性，如下面的示例中所示：
+这些元数据值可在 function.json 文件属性中访问。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中，可在 blob `path` 属性中使用 `queueTrigger` 元数据属性，如下面的示例中所示：
 
 ```json
   "bindings": [
@@ -172,7 +171,7 @@ public static void Run(
   ]
 ```
 
-相应参考文章中会详细介绍每种触发器的元数据属性。 有关示例，请参阅[队列触发器元数据](functions-bindings-storage-queue.md#trigger---message-metadata)。 在门户“集成”  选项卡的绑定配置区域下方的“文档”  部分中，还提供了文档。  
+相应参考文章中会详细介绍每种触发器的元数据属性。 有关示例，请参阅[队列触发器元数据](functions-bindings-storage-queue.md#trigger---message-metadata)。 在门户“集成”选项卡的绑定配置区域下方的“文档”部分中，还提供了文档。  
 
 ## <a name="json-payloads"></a>JSON 有效负载
 
@@ -308,7 +307,7 @@ public class BlobName
 ```
 ## <a name="binding-at-runtime"></a>在运行时绑定
 
-在 C# 和其他 .NET 语言中，可以使用命令性绑定模式，而不是 function.json  和特性中的声明式绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 若要了解详细信息，请参阅 [C# 开发人员参考](functions-dotnet-class-library.md#binding-at-runtime)或 [C# 脚本开发人员参考](functions-reference-csharp.md#binding-at-runtime)。
+在 C# 和其他 .NET 语言中，可以使用命令性绑定模式，而不是 function.json和特性中的声明式绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 若要了解详细信息，请参阅 [C# 开发人员参考](functions-dotnet-class-library.md#binding-at-runtime)或 [C# 脚本开发人员参考](functions-reference-csharp.md#binding-at-runtime)。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

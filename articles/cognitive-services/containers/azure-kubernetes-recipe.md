@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 5b406f9c7f8c16038561853170896d2cd95dc383
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 852530910f7a8c6c815493d0dbcc57f67695d6de
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444850"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066111"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>将语言检测容器部署到 Azure Kubernetes 服务
 
 了解如何部署语言检测容器。 此过程说明如何创建本地 Docker 容器，将容器推送到自己的专用容器注册表，在 Kubernetes 群集中运行容器，以及在 Web 浏览器中对其进行测试。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 此过程要求必须在本地安装和运行多个工具。 请勿使用 Azure Cloud Shell。
 
@@ -31,12 +31,12 @@ ms.locfileid: "67444850"
 * [Docker 引擎](https://www.docker.com/products/docker-engine)并验证 Docker CLI 是否可在控制台窗口中工作。
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe)。
 * 具有适当定价层的 Azure 资源。 并非所有定价层都适用于此容器：
-  * 仅具有 F0 或标准定价层的文本分析资源  。
-  * 具有 S0 定价层的认知服务资源  。
+  * 仅具有 F0 或标准定价层的文本分析资源。
+  * 具有 S0 定价层的认知服务资源。
 
 ## <a name="running-the-sample"></a>运行示例
 
-此过程加载并运行认知服务容器示例以进行语言检测。 该示例有两个容器，一个用于客户端应用程序，另一个用于认知服务容器。 需要将这些映像都推送到自己的 Azure 容器注册表。 这些映像推送到自己的注册表后，请创建 Azure Kubernetes 服务来访问这些映像和运行容器。 容器在运行时，请使用 kubectl CLI，监视容器性能  。 使用 HTTP 请求访问客户端应用程序，并查看结果。
+此过程加载并运行认知服务容器示例以进行语言检测。 该示例有两个容器，一个用于客户端应用程序，另一个用于认知服务容器。 需要将这些映像都推送到自己的 Azure 容器注册表。 这些映像推送到自己的注册表后，请创建 Azure Kubernetes 服务来访问这些映像和运行容器。 容器在运行时，请使用 kubectl CLI，监视容器性能。 使用 HTTP 请求访问客户端应用程序，并查看结果。
 
 ![运行示例容器的概念性想法](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 
@@ -62,23 +62,23 @@ ms.locfileid: "67444850"
 
 1. 登录 Azure CLI
 
-    ```azurecli
+    ```azurecli-interactive
     az login
     ```
 
 1. 创建名为 `cogserv-container-rg` 的资源组来保存此过程中创建的每一个资源。
 
-    ```azurecli
+    ```azurecli-interactive
     az group create --name cogserv-container-rg --location westus
     ```
 
 1. 使用名字后加 `registry` 这一格式（如 `pattyregistry`）创建自己的 Azure 容器注册表。 请勿在名称中使用短划线或下划线字符。
 
-    ```azurecli
+    ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
-    保存结果，以获取 loginServer 属性  。 这将是托管容器地址的一部分，稍后将在 `language.yml` 文件中使用。
+    保存结果，以获取 loginServer 属性。 这将是托管容器地址的一部分，稍后将在 `language.yml` 文件中使用。
 
     ```console
     > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -104,7 +104,7 @@ ms.locfileid: "67444850"
 
 1. 登录容器注册表。 需登录后才能将映像推送到注册表。
 
-    ```azurecli
+    ```azurecli-interactive
     az acr login --name pattyregistry
     ```
 
@@ -174,7 +174,7 @@ ms.locfileid: "67444850"
 
 1. 创建服务主体。
 
-    ```azurecli
+    ```azurecli-interactive
     az ad sp create-for-rbac --skip-assignment
     ```
 
@@ -193,7 +193,7 @@ ms.locfileid: "67444850"
 
 1. 获取容器注册表 ID。
 
-    ```azurecli
+    ```azurecli-interactive
     az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
     ```
 
@@ -208,7 +208,7 @@ ms.locfileid: "67444850"
 
 1. 若要授予 AKS 群集使用容器注册表中存储的映像的适当访问权限，请创建角色分配。 将 `<appId>` 和 `<acrId>` 替换为在前两个步骤中收集的值。
 
-    ```azurecli
+    ```azurecli-interactive
     az role assignment create --assignee <appId> --scope <acrId> --role Reader
     ```
 
@@ -216,7 +216,7 @@ ms.locfileid: "67444850"
 
 1. 创建 Kubernetes 群集。 所有参数值都来自前一部分，name 参数除外。 选择一个名称，指明其创建者及其用途，例如 `patty-kube`。
 
-    ```azurecli
+    ```azurecli-interactive
     az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
     ```
 
@@ -284,15 +284,15 @@ ms.locfileid: "67444850"
 
 1. 获取 Kubernetes 群集的凭据。
 
-    ```azurecli
+    ```azurecli-interactive
     az aks get-credentials --resource-group cogserv-container-rg --name patty-kube
     ```
 
 ## <a name="load-the-orchestration-definition-into-your-kubernetes-service"></a>将业务流程定义加载到 Kubernetes 服务中
 
-本部分使用 kubectl CLI 与 Azure Kubernetes 服务通信  。
+本部分使用 kubectl CLI 与 Azure Kubernetes 服务通信。
 
-1. 在加载业务流程定义之前，请检查 kubectl 是否有权访问节点  。
+1. 在加载业务流程定义之前，请检查 kubectl 是否有权访问节点。
 
     ```console
     kubectl get nodes
@@ -313,21 +313,21 @@ ms.locfileid: "67444850"
 
 1. 根据下表更改 `language.yml` 的语言前端部署行，以添加自己的容器注册表映像名称、客户端密码和文本分析设置。
 
-    语言前端部署设置|目的|
+    语言前端部署设置|用途|
     |--|--|
     |第 32 行<br> `image` 属性|容器注册表中的前端映像的映像位置<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
     |第 44 行<br> `name` 属性|映像的容器注册表机密，在上一节中称为 `<client-secret>`。|
 
 1. 根据下表更改 `language.yml` 的语言部署行，以添加自己的容器注册表映像名称、客户端密码和文本分析设置。
 
-    |语言部署设置|目的|
+    |语言部署设置|用途|
     |--|--|
     |第 78 行<br> `image` 属性|容器注册表中语言映像的映像位置<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
     |第 95 行<br> `name` 属性|映像的容器注册表机密，在上一节中称为 `<client-secret>`。|
     |第 91 行<br> `apiKey` 属性|文本分析资源密钥|
     |第 92 行<br> `billing` 属性|文本分析资源的账单终结点。<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    由于 apiKey 和账单终结点已设置为 Kubernetes 业务流程定义的一部分，因此网站容器无需了解这些内容或将其作为请求的一部分传递   。 网站容器按其业务流程协调程序名称 `language` 引用语言检测容器。
+    由于 apiKey 和账单终结点已设置为 Kubernetes 业务流程定义的一部分，因此网站容器无需了解这些内容或将其作为请求的一部分传递。 网站容器按其业务流程协调程序名称 `language` 引用语言检测容器。
 
 1. 从创建和保存 `language.yml` 的文件夹中加载此示例的业务流程定义文件。
 
@@ -397,7 +397,7 @@ replicaset.apps/language-frontend-68b9969969   1         1         1         13h
 
 群集操作完成后，请删除 Azure 资源组。
 
-```azure-cli
+```azurecli-interactive
 az group delete --name cogserv-container-rg
 ```
 

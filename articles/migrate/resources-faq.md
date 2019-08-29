@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 96fde6ade45bb92036fbc9ac803eebd50640bf85
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: af95ad892b62cb5d8bece554d6026525d9279777
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013448"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102871"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>“Azure Migrate:常见问题 (FAQ)
 
@@ -157,7 +157,7 @@ Azure Migrate 收集本地计算机的性能历史记录, 并使用它在 Azure 
 
 需要在每台计算机上安装以下代理:
 - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。
-- [依赖关系代理](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure)。
+- [依赖关系代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。
 - 如果计算机没有 internet 连接, 则需要下载并安装 Log Analytics 网关。
 
 不需要这些代理, 除非使用的是依赖项可视化。

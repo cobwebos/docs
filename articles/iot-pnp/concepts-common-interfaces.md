@@ -7,16 +7,16 @@ ms.date: 07/16/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 848210509bf9ab0ffec35004cbb07e39d6de1bc0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5a5aeac06ccf31e88a8ec670e57b22e753553ff5
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879599"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114253"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT 即插即用预览通用接口
 
-所有 IoT 即插即用设备都应该实现一些公共接口。 常见接口会使 IoT 解决方案受益, 因为它们提供了一致的功能。 [证书](tutorial-build-device-certification.md)要求设备实现多个通用接口。 您可以从全局模型存储库检索公共接口定义。
+所有 IoT 即插即用设备都应该实现一些公共接口。 常见接口会使 IoT 解决方案受益, 因为它们提供了一致的功能。 [证书](tutorial-build-device-certification.md)要求设备实现多个通用接口。 你可以从公共模型存储库检索公共接口定义。
 
 ## <a name="summary-of-common-interfaces"></a>公共接口摘要
 
@@ -35,7 +35,7 @@ ms.locfileid: "69879599"
 
 ### <a name="cli"></a>CLI
 
-可以使用适用于 Azure CLI 的 Azure IoT 扩展从全局模型存储库检索公共接口。
+可以使用适用于 Azure CLI 的 Azure IoT 扩展从公共模型存储库检索公共接口。
 
 ```cmd/sh
 az iot pnp interface show --interface {InterfaceID} --login {ModelRepoConnectionString}
@@ -47,11 +47,11 @@ az iot pnp model show --interface {InterfaceID} --login {ModelRepoConnectionStri
 
 ### <a name="vs-code"></a>VS Code
 
-1. 使用**Ctrl + Shift + P**打开命令面板。
+1. 按 **Ctrl+Shift+P** 打开命令面板。
 
-1. 输入**即插即用**, 然后选择**IoT 即插即用:打开模型存储**库命令。 选择 "**全局模型存储库**"。 全局模型存储库将在 VS Code 中打开。
+1. 输入**即插即用**, 然后选择**IoT 即插即用:** 打开模型存储库”命令。 选择 "**公共存储库**"。 公共模型存储库将在 VS Code 中打开。
 
-1. 在 "全局模型存储库" 中, 在搜索字段中输入接口名称。
+1. 在 "公共模型存储库" 中, 在搜索字段中输入接口名称。
 
 1. 若要创建接口的本地副本, 请在搜索结果中选择它, 然后选择 "**下载**"。
 

@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: b55502bbc24868b6d8b0352f581bbf4adc81e53a
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 4f57f7cbc4e93f8a98b64b31ca51e0f1e32c375c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442253"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073294"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -70,13 +69,13 @@ ms.locfileid: "68442253"
 
 ### <a name="elements"></a>元素
 
-|名称|描述|必填|
+|姓名|描述|必填|
 |----------|-----------------|--------------|
 |json-to-xml|根元素。|是|
 
 ### <a name="attributes"></a>特性
 
-|名称|描述|必填|默认|
+|姓名|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
 |应用|属性必须设置为以下值之一。<br /><br /> -   always - 始终应用转换。<br />-   content-type-json - 仅在响应的 Content-Type 标头指示存在 JSON 的情况下进行转换。|是|不可用|
 |consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 JSON，则应用转换。<br />-   false - 始终应用转换。|否|真|
@@ -150,13 +149,13 @@ ms.locfileid: "68442253"
 
 ### <a name="elements"></a>元素
 
-|名称|描述|必填|
+|姓名|描述|必填|
 |----------|-----------------|--------------|
 |find-and-replace|根元素。|是|
 
 ### <a name="attributes"></a>特性
 
-|名称|描述|必填|默认|
+|姓名|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
 |来自|要搜索的字符串。|是|不可用|
 |to|替换字符串。 指定一个零长度的替换字符串，以便删除搜索字符串。|是|不可用|
@@ -188,7 +187,7 @@ ms.locfileid: "68442253"
 
 ### <a name="elements"></a>元素
 
-|名称|描述|必填|
+|姓名|描述|必填|
 |----------|-----------------|--------------|
 |redirect-content-urls|根元素。|是|
 
@@ -267,7 +266,7 @@ ms.locfileid: "68442253"
 
 ### <a name="attributes"></a>特性
 
-|名称|描述|必填|默认|
+|姓名|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
 |base-url|新的后端服务基 URL。|必须存在 `base-url` 或 `backend-id` 中的一个。|不可用|
 |backend-id|要路由到的后端标识符。 （后端实体通过 [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|不可用|
@@ -403,7 +402,7 @@ ms.locfileid: "68442253"
 
 ### <a name="properties"></a>属性
 
-|名称|描述|必填|默认|
+|姓名|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
 |模板|用于更改设置正文策略运行的模板模式。 目前唯一支持的值是：<br /><br />- Liquid - 设置正文策略会使用 Liquid 模板引擎 |否||
 
@@ -571,7 +570,7 @@ OriginalUrl.
 
 ### <a name="properties"></a>属性
 
-|名称|描述|必填|默认|
+|姓名|描述|必填|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当查询参数已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有参数的值。<br />-   skip - 不替换现有查询参数值。<br />-   append - 将值追加到现有查询参数值。<br />-   delete - 从请求中删除查询参数。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置查询参数；结果中只会设置列出的值。|否|override|
 |name|指定要设置的查询参数的名称。|是|不可用|
@@ -643,7 +642,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|描述|必填|
+|姓名|描述|必填|
 |----------|-----------------|--------------|
 |rewrite-uri|根元素。|是|
 
@@ -712,7 +711,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|描述|必填|
+|姓名|描述|必填|
 |----------|-----------------|--------------|
 |xsl-transform|根元素。|是|
 |参数|用于定义在转换中使用的变量|否|

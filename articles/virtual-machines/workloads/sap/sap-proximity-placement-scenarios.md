@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f97cce2d1a8b2de5634215629ddb997dc8f7196a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 02dcb7174dd9cb2926ef2fafda4b521b939ae68a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68235192"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077989"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>用于最大程度地降低 SAP 应用程序网络延迟的 Azure 邻近放置组
 基于 SAP NetWeaver 或 SAP S/4HANA 体系结构的 SAP 应用程序对于 SAP 应用程序层和 SAP 数据库层之间的网络延迟很敏感。 这种体系结构的敏感性原因在于, 大多数业务逻辑都是在应用程序层中执行的。 由于执行业务逻辑, SAP 应用程序层以高频率 (每秒几千个) 向数据库层发出查询。 在大多数情况下, 这些查询的性质很简单。 通常, 可以在500或更小的时间内在数据库层上执行。 网络上花费的时间将此类查询从应用程序层发送到数据库层, 从数据库层接收结果集对执行业务流程所需的时间有重大影响。 网络延迟的这一敏感度是需要在 SAP 部署项目中花费时间来实现最佳网络延迟。 [SAP 说明 #1100926-常见问题解答:网络性能](https://launchpad.support.sap.com/#/notes/1100926/E), SAP 发布了如何分类网络延迟的一些准则。

@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 81e6b5558ab90f154ebf121a558704b00b97444d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b22507796a9e614da780d25795bb7edf7094e935
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684332"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103202"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何扩展虚拟机的 OS 驱动器
 
@@ -185,7 +184,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 
 
-同样，如上所示使用索引或磁盘的“名称属性”可以引用附加到 VM 的其他数据磁盘  ：
+同样，如上所示使用索引或磁盘的“名称属性”可以引用附加到 VM 的其他数据磁盘：
 
 
 **托管磁盘**
@@ -202,17 +201,17 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 ## <a name="expand-the-volume-within-the-os"></a>扩展 OS 中的卷
 
-展开 VM 的磁盘后，需要转到 OS 并展开卷以包含新的空间。 以下几种方法可用于扩展分区。 本部分介绍了如何使用 RDP 连接来连接 VM 以使用 DiskPart 展开分区  。
+展开 VM 的磁盘后，需要转到 OS 并展开卷以包含新的空间。 以下几种方法可用于扩展分区。 本部分介绍了如何使用 RDP 连接来连接 VM 以使用 DiskPart 展开分区。
 
 1. 打开与 VM 的 RDP 连接。
 
-2.  打开命令提示符并键入 diskpart 
+2.  打开命令提示符并键入 diskpart
 
-2.  在 DISKPART 提示符处，键入 `list volume`  。 记下要扩展的卷。
+2.  在 DISKPART 提示符处，键入 `list volume`。 记下要扩展的卷。
 
-3.  在 DISKPART 提示符处，键入 `select volume <volumenumber>`  。 这将选择将扩展到同一磁盘上的连续可用空间的卷 volumenumber  。
+3.  在 DISKPART 提示符处，键入 `select volume <volumenumber>`。 这将选择将扩展到同一磁盘上的连续可用空间的卷 volumenumber。
 
-4.  在 DISKPART 提示符处，键入 `extend [size=<size>]`  。 这将按大小（MB）扩展所选的卷  。
+4.  在 DISKPART 提示符处，键入 `extend [size=<size>]`。 这将按大小（MB）扩展所选的卷。
 
 
 ## <a name="next-steps"></a>后续步骤

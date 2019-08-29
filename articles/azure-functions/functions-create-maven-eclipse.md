@@ -7,19 +7,19 @@ author: jeffhollan
 manager: jpconnock
 keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构, java
 ms.service: azure-functions
-ms.devlang: java
 ms.topic: conceptual
+ms.devlang: java
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9dcc959e51aa42fd6ef3173dba2aec8d9970deb1
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: b2f5567e037c65d7650b3f95a2ee81b93ac987b7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154582"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085874"
 ---
-# <a name="create-your-first-function-with-java-and-eclipse"></a>使用 Java 和 Eclipse 中创建第一个函数 
+# <a name="create-your-first-function-with-java-and-eclipse"></a>使用 Java 和 Eclipse 创建第一个函数 
 
 本文介绍如何使用 Eclipse IDE 和 Apache Maven 创建[无服务器](https://azure.microsoft.com/solutions/serverless/)函数项目、对其进行测试和调试，然后将其部署到 Azure Functions。 
 
@@ -43,34 +43,34 @@ ms.locfileid: "67154582"
 
 ## <a name="create-a-functions-project"></a>创建 Functions 项目
 
-1. 在 Eclipse 中，选择**文件**菜单，然后选择**新建-&gt; Maven 项目**。 
-1. 接受“新建 Maven 项目”对话框中的默认设置，然后选择“下一步”。  
-1. 选择“添加原型”，并为 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) 添加条目。 
+1. 在 Eclipse 中，选择“文件”菜单，然后选择“新建”-&gt;“Maven 项目”。 
+1. 接受“新建 Maven 项目”对话框中的默认设置，然后选择“下一步”。
+1. 选择“添加原型”，并为 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) 添加条目。
     - 原型组 ID：com.microsoft.azure
     - 原型项目 ID：azure-functions-archetype
-    - 版本：使用最新版本**1.22**从[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![Eclipse Maven 创建](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. 单击**确定**，然后单击**下一步**输入值，如以下快照 (请使用不同的应用程序名不是**fabrikam 函数 20170920120101928**)，并最终**完成**。
-    ![Eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
+    - 版本：使用[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    中的最新版本 **1.22** ![Eclipse Maven 创建](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
+1. 单击“确定”，然后单击“下一步”以输入类似以下快照的值（请使用除 **Fabrikam-Function-20170920120101928** 之外的其他 appName），最后单击“完成”。
+    ![Eclipse Maven 创建 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
-Maven 在新文件夹中创建名为 artifactId  的项目文件。 项目中生成的代码是一个简单的回显触发 HTTP 请求正文的 [HTTP 触发](/azure/azure-functions/functions-bindings-http-webhook)函数。
+Maven 在新文件夹中创建名为 artifactId 的项目文件。 项目中生成的代码是一个简单的回显触发 HTTP 请求正文的 [HTTP 触发](/azure/azure-functions/functions-bindings-http-webhook)函数。
 
 ## <a name="run-functions-locally-in-the-ide"></a>在 IDE 本地运行函数
 
 > [!NOTE]
 > 必须安装 [Azure Functions Core Tools 版本 2](functions-run-local.md#v2)，才能在本地运行和调试函数。
 
-1. 右键单击生成的项目，然后选择“运行方式”和“Maven 生成”。  
-1. 在“编辑配置”对话框中的“目标”和“名称”字段内输入 `package`，然后选择“运行”。     这会生成并打包函数代码。
-1. 生成完成后，使用 `azure-functions:run` 作为目标和名称，如上所述创建另一个“运行”配置。 选择“运行”，在 IDE 中运行函数。 
+1. 右键单击生成的项目，然后选择“运行方式”和“Maven 生成”。
+1. 在“编辑配置”对话框中的“目标”和“名称”字段内输入 `package`，然后选择“运行”。 这会生成并打包函数代码。
+1. 生成完成后，使用 `azure-functions:run` 作为目标和名称，如上所述创建另一个“运行”配置。 选择“运行”，在 IDE 中运行函数。
 
 完成函数测试后，在控制台窗口中终止运行时。 一次只能有一个函数主机处于活动状态并在本地运行。
 
 ### <a name="debug-the-function-in-eclipse"></a>在 Eclipse 中调试函数
 
-在上一步骤的“运行方式”  配置设置中，将 `azure-functions:run` 更改为 `azure-functions:run -DenableDebug` 并运行更新的配置，以便在调试模式下启动函数应用。
+在上一步骤的“运行方式”配置设置中，将 `azure-functions:run` 更改为 `azure-functions:run -DenableDebug` 并运行更新的配置，以便在调试模式下启动函数应用。
 
-选择“运行”菜单并打开“调试配置”。   选择“远程 Java 应用程序”并创建新配置。  为配置命名，并填写设置。 端口应与函数主机打开的调试端口一致，默认为 `5005`。 设置后，单击 `Debug` 开始调试。
+选择“运行”菜单并打开“调试配置”。 选择“远程 Java 应用程序”并创建新配置。 为配置命名，并填写设置。 端口应与函数主机打开的调试端口一致，默认为 `5005`。 设置后，单击 `Debug` 开始调试。
 
 ![在 Eclipse 中调试函数](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
 
@@ -84,7 +84,7 @@ Maven 在新文件夹中创建名为 artifactId  的项目文件。 项目中生
 az login
 ```
 
-使用新“运行方式”配置中的 `azure-functions:deploy` Maven 目标，将代码部署到新的函数应用。 
+使用新“运行方式”配置中的 `azure-functions:deploy` Maven 目标，将代码部署到新的函数应用。
 
 部署完成后，将显示可用于访问你的 Azure 函数应用的 URL：
 

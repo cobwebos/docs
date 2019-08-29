@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: a562630ef19c134c227ef44b944c1dd921ff2e46
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726807"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098627"
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -139,7 +139,7 @@ Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定�
 **详细信息**：[应用服务环境](/azure/app-service/environment/intro)提供虚拟网络集成功能，可帮助你通过网络安全组限制传入的源 IP 地址。 使用虚拟网络可将 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 若要了解详细信息，请参阅[将应用与 Azure 虚拟网络集成](/azure/app-service/web-sites-integrate-with-vnet)。
 
 **最佳做法**：监视应用服务环境的安全状态。   
-**详细信息**：使用 Azure 安全中心监视应用服务环境。 在安全中心识别潜在的安全漏洞时，它会创建一些[建议](/azure/security-center/security-center-virtual-machine-recommendations)，这些建议会指导完成配置所需控件的过程。
+**详细信息**：使用 Azure 安全中心监视应用服务环境。 在安全中心识别潜在的安全漏洞时，它会创建一些[建议](../../security-center/security-center-virtual-machine-protection.md)，这些建议会指导完成配置所需控件的过程。
 
 > [!NOTE]
 > 监视应用服务的功能以预览版提供，仅适用于安全中心的[标准层](/azure/security-center/security-center-pricing)。

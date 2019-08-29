@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: ca3fe83d7072ba774c8124c5108652ab7223041d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2a6e8985a2cb13da0f2e34f4e9961f84aacdd974
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449813"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103509"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>启动 Azure VM 时 Windows 在蓝屏上显示“关键服务失败”
 本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能会遇到的“关键服务失败”错误。 它提供了故障排除步骤来帮助解决问题。 
@@ -94,8 +93,8 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
         bcdedit /store F: boot\bcd /set {default} safeboot minimal
 
 2. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](troubleshoot-recovery-disks-portal-windows.md)。 VM 将以安全模式启动。 如果仍然遇到错误，请转到可选步骤。
-3. 打开“运行”  框，运行 **verifier** 来启动驱动程序验证程序管理器工具。
-4. 选择“自动选择未经签名的驱动程序”  ，然后单击“下一步”  。
+3. 打开“运行”框，运行 **verifier** 来启动驱动程序验证程序管理器工具。
+4. 选择“自动选择未经签名的驱动程序”，然后单击“下一步”。
 5. 此时将显示未经签名的驱动程序文件的列表。 请记住这些文件名。
 6. 从正常工作的 VM 复制这些文件的相同版本，然后替换这些未签名的文件。 
 
@@ -111,14 +110,14 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 1. 将 OS 磁盘附加到恢复 VM。
 2. 在附加的 OS 磁盘上，浏览到 **\windows\system32\config**。将所有文件复制为一个备份，以备回滚之需。
 3. 启动**注册表编辑器** (regedit.exe)。
-4. 选择“HKEY_LOCAL_MACHINE”  项。 在菜单上，选择“文件” > “加载配置单元”。  
-5. 浏览到已附加 OS 磁盘上的 **\windows\system32\config\SYSTEM** 文件夹。 输入“BROKENSYSTEM”  作为配置单元名称。 新的注册表配置单元将显示在“HKEY_LOCAL_MACHINE”  项之下。
+4. 选择“HKEY_LOCAL_MACHINE”项。 在菜单上，选择“文件” > “加载配置单元”。
+5. 浏览到已附加 OS 磁盘上的 **\windows\system32\config\SYSTEM** 文件夹。 输入“BROKENSYSTEM”作为配置单元名称。 新的注册表配置单元将显示在“HKEY_LOCAL_MACHINE”项之下。
 6. 浏览到 **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** 并进行以下更改：
 
     Autoreboot = 0
 
     CrashDumpEnabled = 2
-7.  选择“BROKENSYSTEM”  。 在菜单上，选择“文件”   > “卸载配置单元” 
+7.  选择“BROKENSYSTEM”。 在菜单上，选择“文件” > “卸载配置单元”
 8.  修改 BCD 设置以在调试模式下启动。 在提升的命令提示符下运行以下命令：
 
     ```cmd
@@ -138,7 +137,7 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 9. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](troubleshoot-recovery-disks-portal-windows.md)。
 10. 启动 VM 以查看它是否显示了转储分析。 找到无法加载的文件。 需要使用正常工作的 VM 中的文件替换此文件。 
 
-    下面是转储分析的示例。 可看到 filecrypt.sys 出错  ：“FAILURE_BUCKET_ID:0x5A_c0000428_IMAGE_filecrypt.sys”。
+    下面是转储分析的示例。 可看到 filecrypt.sys 出错：“FAILURE_BUCKET_ID:0x5A_c0000428_IMAGE_filecrypt.sys”。
 
     ```
     kd> !analyze -v 

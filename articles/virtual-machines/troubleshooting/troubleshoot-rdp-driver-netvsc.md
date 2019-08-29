@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: e6685a5e77d92bb9e05ab9578e48c99e80a64b74
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6e68aac07379de142968b85884e7dbd95e73195f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362248"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103477"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>由于 netvsc.sys，无法在 Azure 中远程连接到 Windows 10 或 Windows Server 2016 VM
 
@@ -28,11 +27,11 @@ ms.locfileid: "60362248"
 
 无法使用远程桌面协议 (RDP) 连接到 Azure Windows 10 或 Windows Server 2016 VM。 在[启动诊断](boot-diagnostics.md)中，屏幕在网络接口卡 (NIC) 处显示一个红叉。 这表示操作系统完全加载后 VM 没有连接。
 
-通常，此问题发生在 Windows [内部版本 14393](https://support.microsoft.com/help/4093120/) 和[内部版本 15063](https://support.microsoft.com/help/4015583/) 中。 如果操作系统版本低于这些版本，则本文不适用于你的方案。 要检查系统版本，请在[串行访问控制台功能](serial-console-windows.md)中打开 CMD 会话，然后运行“Ver”  。
+通常，此问题发生在 Windows [内部版本 14393](https://support.microsoft.com/help/4093120/) 和[内部版本 15063](https://support.microsoft.com/help/4015583/) 中。 如果操作系统版本低于这些版本，则本文不适用于你的方案。 要检查系统版本，请在[串行访问控制台功能](serial-console-windows.md)中打开 CMD 会话，然后运行“Ver”。
 
 ## <a name="cause"></a>原因
 
-如果已安装的 netvsc.sys 系统文件的版本为 10.0.14393.594 或 10.0.15063.0，则可能会发生此问题   。 这些版本的 netvsc.sys 可能会阻止系统与 Azure 平台进行交互。
+如果已安装的 netvsc.sys 系统文件的版本为 10.0.14393.594 或 10.0.15063.0，则可能会发生此问题。 这些版本的 netvsc.sys 可能会阻止系统与 Azure 平台进行交互。
 
 
 ## <a name="solution"></a>解决方案
@@ -47,7 +46,7 @@ ms.locfileid: "60362248"
 > [!NOTE]
 > 如果 VM 上未启用串行控制台，请转到[修复 VM 脱机](#repair-the-vm-offline)部分。
 
-1. 在 PowerShell 实例中运行以下命令以获取文件的版本 (c:\windows\system32\drivers\netvsc.sys)  ：
+1. 在 PowerShell 实例中运行以下命令以获取文件的版本 (c:\windows\system32\drivers\netvsc.sys)：
 
    ```
    (get-childitem "$env:systemroot\system32\drivers\netvsc.sys").VersionInfo.FileVersion
@@ -74,17 +73,17 @@ ms.locfileid: "60362248"
 
 2. 开始与恢复 VM 建立远程桌面连接。
 
-3. 确保磁盘在磁盘管理控制台中标记为“联机”。  请留意分配给附加系统磁盘的驱动器号。
+3. 确保磁盘在磁盘管理控制台中标记为“联机”。 请留意分配给附加系统磁盘的驱动器号。
 
-4. 创建 \Windows\System32\config 文件夹的副本，以防需要回滚更改  。
+4. 创建 \Windows\System32\config 文件夹的副本，以防需要回滚更改。
 
 5. 在安全的 VM 中，启动注册表编辑器 (regedit.exe)。
 
-6. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” > “加载配置单元”    。
+6. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” > “加载配置单元”。
 
-7. 查找 \Windows\System32\config 文件夹中的系统文件  。
+7. 查找 \Windows\System32\config 文件夹中的系统文件。
 
-8. 选择“打开”，键入 BROKENSYSTEM 作为名称，展开 HKEY_LOCAL_MACHINE 键，然后查找名为 BROKENSYSTEM 的附加键     。
+8. 选择“打开”，键入 BROKENSYSTEM 作为名称，展开 HKEY_LOCAL_MACHINE 键，然后查找名为 BROKENSYSTEM 的附加键。
 
 9. 请转到以下位置：
 
@@ -92,9 +91,9 @@ ms.locfileid: "60362248"
    HKLM\BROKENSYSTEM\ControlSet001\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}
    ```
 
-10. 在每个子项（例如 0000）中，检查显示为“Microsoft HYPER-V 网络适配器”的 DriverDesc 值   。
+10. 在每个子项（例如 0000）中，检查显示为“Microsoft HYPER-V 网络适配器”的 DriverDesc 值。
 
-11. 在子项中，检查 DriverVersion 值，该值是 VM 的网络适配器的驱动程序版本  。
+11. 在子项中，检查 DriverVersion 值，该值是 VM 的网络适配器的驱动程序版本。
 
 12. 下载相应的更新：
 
@@ -117,6 +116,6 @@ ms.locfileid: "60362248"
 
 16. [拆离系统磁盘并重新创建 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
+## <a name="need-help-contact-support"></a>需要帮助？ 联系技术支持
 
 如果仍需帮助，请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

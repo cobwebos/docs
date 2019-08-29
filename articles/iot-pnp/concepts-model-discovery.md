@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4ab1d45e27762ef05ab7ec74c98ab0b0b934cbf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c37446fd5a0cdc986044405a9aa3da32462d9c04
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880548"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114279"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>在 IoT 解决方案中实现 IoT 即插即用预览模型发现
 
@@ -30,7 +30,7 @@ IoT 即插即用设备首次连接到 IoT 中心时, 会发送一个模型信息
 
 以下是 IoT 即插即用设备在使用设备预配服务 (DPS) 连接到集线器时所采用的步骤:
 
-1. 当设备处于开启状态时, 它将连接到 DPS 的全局终结点并使用允许的方法之一进行身份验证。
+1. 当设备处于开启状态时, 它将连接到 DPS 的全局终结点, 并使用允许的方法之一进行身份验证。
 1. 然后, DPS 对设备进行身份验证, 并查找规则, 告诉它要将设备分配到哪个 IoT 中心。 然后, DPS 向该中心注册设备。
 1. DPS 会将 IoT 中心连接字符串返回到设备。
 1. 然后, 设备会将发现遥测消息发送到 IoT 中心。 发现遥测消息包含设备所实现的接口的 Id。
@@ -69,9 +69,9 @@ IoT 即插即用设备首次连接到 IoT 中心时, 会发送一个模型信息
 1. 阅读发现遥测消息以检索功能模型的 Id 和设备实现的接口。
 1. 对于每个 ID, 请阅读完整的 JSON 文件以查找设备的功能。
 1. 检查是否每个接口都存在于你为存储解决方案之前检索到的 JSON 文件而生成的任何缓存中。
-1. 然后, 检查具有该 ID 的接口是否存在于全局模型存储库中。 有关详细信息, 请参阅[全局模型存储库](howto-manage-models.md)。
-1. 如果接口不存在于全局模型存储库中, 请尝试在解决方案已知的任何专用模型存储库中查找它。 需要连接字符串才能访问专用模型存储库。 有关详细信息, 请参阅[专用模型存储库](howto-manage-models.md)。
-1. 如果在全局模型存储库或专用模型存储库中都找不到所有接口, 可以检查设备是否可以提供接口定义。 设备可以实现标准[ModelDefinition](concepts-common-interfaces.md)接口, 以发布有关如何使用命令检索接口文件的信息。
+1. 然后, 检查公共模型存储库中是否存在具有该 ID 的接口。 有关详细信息, 请参阅[公共模型存储库](howto-manage-models.md)。
+1. 如果接口不存在于公共模型存储库中, 请尝试在解决方案已知的任何公司模型存储库中查找它。 需要连接字符串才能访问公司模型存储库。 有关详细信息, 请参阅[公司模型存储库](howto-manage-models.md)。
+1. 如果找不到公共模型存储库中的所有接口或公司模型存储库中的所有接口, 可以检查设备是否可以提供接口定义。 设备可以实现标准[ModelDefinition](concepts-common-interfaces.md)接口, 以发布有关如何使用命令检索接口文件的信息。
 1. 如果找到了设备实现的每个接口的 JSON 文件, 则可以枚举设备的功能。 使用之前编写的逻辑使用户能够与设备交互。
 1. 你随时都可以调用数字孪生 API 来检索设备的功能模型 ID 和接口 Id。
 

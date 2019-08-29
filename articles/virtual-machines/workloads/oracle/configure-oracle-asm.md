@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: a2f6eab495680b3f32246488af5b7bbe5263d93a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 91150251140379c15d4ab3711ded571c9ad2c024
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707703"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101649"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
@@ -513,7 +512,7 @@ ssh <publicIpAddress>
 
    此时会打开 Oracle ASM 配置助手。
 
-2. 在“配置 ASM: 磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
+2. 在“配置 ASM:磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
 
 3. 在“创建磁盘组”对话框中：
 
@@ -525,7 +524,7 @@ ssh <publicIpAddress>
 
    ![“创建磁盘组”对话框屏幕截图](./media/oracle-asm/asm02.png)
 
-4. 在“配置 ASM: 磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
+4. 在“配置 ASM:磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
 
 5. 在“创建磁盘组”对话框中：
 

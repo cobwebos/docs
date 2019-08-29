@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c718794528989fbc46b404617f16d3a91ade6011
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 155f392410c5722a28ba09acafc1480e72586773
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877314"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100911"
 ---
 # <a name="create-a-new-device-template-version"></a>创建新设备模板版本
 
@@ -50,7 +50,7 @@ Azure IoT Central 用于快速开发 IoT 应用程序。 可以通过添加、�
 
 进行版本更改时，规则和设备仪表板会发生什么？
 
-**规则**可能包含依赖于属性的条件。 如果删除了一个或多个此类属性，这些规则可能会在新的设备模板版本中处于损坏状态。 可以找到这些特定规则并更新相关条件，以便修复这些规则。 旧版的规则应该可以使用，不会有任何影响。
+先前版本的设备模板上的**规则**将继续工作。 规则不会自动迁移到新的设备模板版本。 你可以像平常一样在新的模板版本上创建规则。 有关详细信息, 请参阅在[Azure IoT Central 应用程序操作指南文章中创建遥测规则并设置通知](howto-create-telemetry-rules.md)。
 
 **设备仪表板**可能包含多种类型的磁贴。 某些磁贴可能包含设置和属性。 删除在某个磁贴中使用的属性或设置时，该磁贴会遭到完全破坏或部分破坏。 可以转到该磁贴并修复问题，方法是删除磁贴或更新磁贴的内容。
 

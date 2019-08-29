@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: be3917d7943f808292e5ed15978a3d6aefd3afb5
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 2be56f5308fd16d0e20003b0038fdcb12503a574
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891824"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074451"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -200,7 +200,7 @@ ExpressRoute 位置 (有时称为 "对等互连位置" 或 "满足我的位置")
 | **伦敦** | BICS、Equinix、euNetworks、Telecity | Bezeq 国际有限公司, CoreAzure, Epsilon 电信有限, 指数 E, HSO, NexGen 网络, Proximus, Tamares 电信, Zain |
 | **洛杉矶** | Equinix |王冠城堡, Transtelco |
 | **马德里** | Level3 | Zertia |
-| **Montreal** | Cologix、Equinix | Airgate Technologies, Inc.Cogeco Peer 1、Rogers、Zirro |
+| **Montreal** | Cologix、Equinix | Airgate Technologies, Inc.Aptum 技术、Rogers、Zirro |
 | **纽约** |Equinix、Megaport | Altice Business、王冠城堡、彩虹 Enterprise、Webair |
 | **巴黎** | Equinix | Proximus |
 | **魁北克市** | Megaport | Fibrenoire |
@@ -211,7 +211,7 @@ ExpressRoute 位置 (有时称为 "对等互连位置" 或 "满足我的位置")
 | **Slough** | Equinix | HSO|
 | **悉尼** | Megaport | Macquarie Telecom Group|
 | **东京** | Equinix | ARTERIA Networks Corporation、BroadBand Tower, Inc. |
-| **多伦多** | Equinix、Megaport | Airgate 技术 Inc., Beanfield Metroconnect, Cogeco peer 对等机 1, IVedha Inc., Rogers, Thinktel, Zirro|
+| **多伦多** | Equinix、Megaport | Airgate 技术 Inc., Beanfield Metroconnect, Aptum 技术, IVedha Inc., Rogers, Thinktel, Zirro|
 | **华盛顿特区** |Equinix | Altice Business、BICS、Cox Business、王冠城堡、Gtt communication Inc.、Epsilon 电信有限、Masergy、Windstream |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute 系统集成商

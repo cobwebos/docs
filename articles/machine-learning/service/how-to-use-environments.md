@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb9281af16dc8e4b4544cb18a2aae51aa3d9be27
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: e506259b980c0aaf0300c0bb0a1aa0803171643a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576272"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098949"
 ---
 # <a name="create-and-manage-environments-for-training-and-deployment"></a>创建和管理用于培训和部署的环境
 
@@ -95,7 +95,7 @@ myenv = Environment.from_existing_conda_environment(name = "myenv",
 
 ### <a name="automatically-create-environments"></a>自动创建环境
 
-通过使用[submit ()]()方法提交定型运行来自动创建环境。 提交定型运行时, 构建新环境可能需要几分钟时间, 具体取决于所需依赖项的大小。 
+通过使用 submit () 方法提交定型运行来自动创建环境。 提交定型运行时, 构建新环境可能需要几分钟时间, 具体取决于所需依赖项的大小。 
 
 如果在提交运行之前未在运行配置中指定环境, 则会为你创建一个默认环境。
 

@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 6cf688750ac73763c7f0da4eea152cf6bf0c8285
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a80dc8ccaa72a57986ed6c64f7ab7050ab4c7de5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935025"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098975"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>教程：将 Azure SQL 数据库单一数据库添加到故障转移组
 
@@ -61,16 +61,15 @@ ms.locfileid: "68935025"
 创建故障转移组, 并使用 Azure 门户向其添加单个数据库。 
 
 
-1. 选择[Azure 门户](https://portal.azure.com)左上角的 "**所有服务**"。 
-1. 在`sql servers`搜索框中键入。 
-1. 可有可无选择 "SQL Server" 旁的星形图标, 将**sql server**放在最上方, 并将其添加到左侧导航窗格中。 
-    
-    ![查找 SQL Server](media/sql-database-single-database-create-failover-group-tutorial/all-services-sql-servers.png)
+1. 在[Azure 门户](https://portal.azure.com)的左侧菜单中选择 " **Azure SQL** "。 如果**AZURE sql**不在列表中, 请选择 "**所有服务**", 然后在搜索框中键入 "Azure sql"。 可有可无选择 " **AZURE SQL** " 旁边的星号将其收藏, 并将其添加为左侧导航栏中的项。 
+1. 选择在第2部分中创建的单一数据库, 例如`mySampleDatbase`。 
+1. 在 "**服务器名称**" 下选择服务器的名称以打开服务器的设置。
 
-1. 选择 " **SQL 服务器**", 然后选择在第1部分中创建的`mysqlserver`服务器, 例如。
+   ![为单一数据库打开服务器](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+
 1. 选择 "**设置**" 窗格下的 "**故障转移组**", 然后选择 "**添加组**" 以创建新的故障转移组。 
 
-    ![添加新的故障转移组](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
+    ![添加新的故障转移组](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. 在 "**故障转移组**" 页上, 输入或选择以下值, 然后选择 "**创建**":
     - **故障转移组名称**:键入一个唯一的故障转移组名称, 如`failovergrouptutorial`。 
@@ -78,16 +77,16 @@ ms.locfileid: "68935025"
         - **服务器名称**：键入辅助服务器的唯一名称, 例如`mysqlsecondary`。 
         - **服务器管理员登录名**：类别`azureuser`
         - **密码**：键入符合密码要求的复杂密码。
-        - **位置**：从下拉菜单中选择一个位置, 例如 "美国东部 2"。 此位置不能与主服务器相同。
+        - **位置**：从下拉列表中选择一个位置，例如 `East US`。 此位置不能与主服务器相同。
 
     > [!NOTE]
     > 服务器登录名和防火墙设置必须与主服务器的设置相匹配。 
     
-      ![为故障转移组创建辅助服务器](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
+      ![为故障转移组创建辅助服务器](media/sql-database-single-database-failover-group-tutorial/create-secondary-failover-server.png)
 
    - **组中的数据库**:选择辅助服务器后, 此选项将解除锁定。 选择它以**选择要添加的数据库**, 然后选择在第1部分中创建的数据库。 将数据库添加到故障转移组会自动启动异地复制过程。 
         
-    ![将 SQL DB 添加到故障转移组](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![将 SQL DB 添加到故障转移组](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -99,12 +98,12 @@ ms.locfileid: "68935025"
    ```powershell-interactive
    # $subscriptionId = '<SubscriptionID>'
    # $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   # $location = "West US 2"
+   # $location = "West US"
    # $adminLogin = "azureuser"
    # $password = "PWD27!"+(New-Guid).Guid
    # $serverName = "mysqlserver-$(Get-Random)"
    # $databaseName = "mySampleDatabase"
-   $drLocation = "East US 2"
+   $drLocation = "East US"
    $drServerName = "mysqlsecondary-$(Get-Random)"
    $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
 
@@ -194,16 +193,21 @@ ms.locfileid: "68935025"
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 使用 Azure 门户的测试故障转移。 
 
-1. 导航到[Azure 门户](https://portal.azure.com)中的**SQL** server 服务器。 
+1. 在[Azure 门户](https://portal.azure.com)的左侧菜单中选择 " **Azure SQL** "。 如果**AZURE sql**不在列表中, 请选择 "**所有服务**", 然后在搜索框中键入 "Azure sql"。 可有可无选择 " **AZURE SQL** " 旁边的星号将其收藏, 并将其添加为左侧导航栏中的项。 
+1. 选择在第2部分中创建的单一数据库, 例如`mySampleDatbase`。 
+1. 在 "**服务器名称**" 下选择服务器的名称以打开服务器的设置。
+
+   ![为单一数据库打开服务器](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+
 1. 选择 "**设置**" 窗格下的 "**故障转移组**", 然后选择在第2部分中创建的故障转移组。 
   
-   ![从门户中选择故障转移组](media/sql-database-single-database-create-failover-group-tutorial/select-failover-group.png)
+   ![从门户中选择故障转移组](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
 1. 查看哪个服务器是主服务器, 哪台服务器是辅助服务器。 
 1. 从任务窗格中选择 "**故障转移**", 以故障转移包含示例单一数据库的故障转移组。 
 1. 在警告消息中选择 **"是**", 通知您 TDS 会话将断开连接。 
 
-   ![故障转移包含 SQL 数据库的故障转移组](media/sql-database-single-database-create-failover-group-tutorial/failover-sql-db.png)
+   ![故障转移包含 SQL 数据库的故障转移组](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
 1. 查看现在是主服务器, 哪台服务器是辅助服务器。 如果故障转移成功, 这两台服务器应该已经交换角色。 
 1. 再次选择 "**故障转移**", 将服务器故障回复到其最初的角色。 

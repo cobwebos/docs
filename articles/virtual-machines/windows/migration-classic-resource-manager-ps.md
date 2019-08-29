@@ -11,16 +11,15 @@ ms.assetid: 2b3dff9b-2e99-4556-acc5-d75ef234af9c
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: dc88a7936c4ab4994bd9de168a682b1253c34e1f
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: bf964f23b6c38444fb15b61161cb7ed5a2b15e00
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720223"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102657"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 以下步骤演示了如何使用 Azure PowerShell 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure 资源管理器部署模型。
@@ -60,8 +59,8 @@ ms.locfileid: "67720223"
 若要执行此迁移，必须在 [Azure 门户](https://portal.azure.com)中将你添加为订阅的协同管理员。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“中心”菜单上，选择“订阅”。  如果看不到该选项，请选择“所有服务”  。
-3. 查找相应订阅项，然后查看“我的角色”字段  。 对于协同管理员，该值应为“帐户管理员”  。
+2. 在“中心”菜单上，选择“订阅”。 如果看不到该选项，请选择“所有服务”。
+3. 查找相应订阅项，然后查看“我的角色”字段。 对于协同管理员，该值应为“帐户管理员”。
 
 如果无法添加协同管理员，请联系订阅的服务管理员或协同管理员，将自己添加为协同管理员。   
 
@@ -80,7 +79,7 @@ ms.locfileid: "67720223"
     Get-AzSubscription | Sort Name | Select Name
 ```
 
-设置当前会话的 Azure 订阅。 此示例将默认订阅名称设置为“我的 Azure 订阅”  。 将示例订阅名称替换成自己的名称。
+设置当前会话的 Azure 订阅。 此示例将默认订阅名称设置为“我的 Azure 订阅”。 将示例订阅名称替换成自己的名称。
 
 ```powershell
     Select-AzSubscription –SubscriptionName "My Azure Subscription"
@@ -117,7 +116,7 @@ ms.locfileid: "67720223"
     Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
 ```
 
-设置当前会话的 Azure 订阅。 此示例将默认订阅设置为“我的 Azure 订阅”  。 将示例订阅名称替换成自己的名称。
+设置当前会话的 Azure 订阅。 此示例将默认订阅设置为“我的 Azure 订阅”。 将示例订阅名称替换成自己的名称。
 
 ```powershell
     Select-AzureSubscription –SubscriptionName "My Azure Subscription"
@@ -128,7 +127,7 @@ ms.locfileid: "67720223"
 ## <a name="step-5-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>步骤 5：确保在当前部署或 VNET 的 Azure 区域中有足够的 Azure 资源管理器虚拟机 vCPU
 可以使用以下 PowerShell 命令检查 Azure 资源管理器中目前的 vCPU 数量。 若要了解有关 vCPU 配额的详细信息，请参阅[限制和 Azure 资源管理器](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager)。
 
-此示例检查在“美国西部”  区域中的可用性。 将示例区域名称替换成自己的名称。
+此示例检查在“美国西部”区域中的可用性。 将示例区域名称替换成自己的名称。
 
 ```powershell
 Get-AzVMUsage -Location "West US"
@@ -150,7 +149,7 @@ Get-AzVMUsage -Location "West US"
     Get-AzureService | ft Servicename
 ```
 
-获取云服务的部署名称。 在此示例中，服务名称是“我的服务”  。 使用自己的服务名称替换示例名称。
+获取云服务的部署名称。 在此示例中，服务名称是“我的服务”。 使用自己的服务名称替换示例名称。
 
 ```powershell
     $serviceName = "My Service"
@@ -170,7 +169,7 @@ Get-AzVMUsage -Location "West US"
     $validate.ValidationMessages
     ```
 
-    以下命令会显示任何阻止迁移的警告和错误。 如果验证成功，可继续执行“准备”  步骤：
+    以下命令会显示任何阻止迁移的警告和错误。 如果验证成功，可继续执行“准备”步骤：
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
@@ -271,7 +270,7 @@ Get-AzVMUsage -Location "West US"
 完成虚拟机迁移之后，我们建议在迁移存储帐户之前执行以下先决条件检查。
 
 > [!NOTE]
-> 如果存储帐户没有关联的磁盘或 VM 数据，则可以直接跳至“验证存储帐户并开始迁移”  部分。
+> 如果存储帐户没有关联的磁盘或 VM 数据，则可以直接跳至“验证存储帐户并开始迁移”部分。
 
 * **如果已迁移任何 VM 或存储帐户具有磁盘资源，则进行先决条件检查**
     * **迁移其磁盘存储在存储帐户中的经典虚拟机**

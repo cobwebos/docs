@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 1527dbd1df3e4a10a68a5949d9e0bca11628bdd2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 989d438ad2c5ec80b89540eb7ddfc80d69a9d0e6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781141"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100912"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -67,9 +67,8 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 
 文章    
 * [在 Azure 安全中心进行安全运行状况监视](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [保护 Azure 安全中心中的虚拟机](https://docs.microsoft.com/azure/security-center/security-center-virtual-machine-recommendations)
+* [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
 * [保护 Azure 安全中心中的网络](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [保护 Azure 安全中心中的应用程序](https://docs.microsoft.com/azure/security-center/security-center-application-recommendations)
 * [在 Azure 安全中心保护 Azure SQL 服务和数据](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 

@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 70e478ac70b7ab53f1357394f3a3cb0d92f41f00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ae5c4cdd76f164d13da349c355a30d8b6dc83058
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075800"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102086"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>连接到 Azure 上的 SQL Server 虚拟机
 
@@ -34,23 +33,23 @@ ms.locfileid: "67075800"
 
 客户端连接虚拟机上运行的 SQL Server 的方式取决于客户端的位置与网络配置。
 
-如果在 Azure 门户中预配 SQL Server VM，则可以选择指定“SQL 连接”  的类型。
+如果在 Azure 门户中预配 SQL Server VM，则可以选择指定“SQL 连接”的类型。
 
 ![预配期间的公共 SQL 连接选项](./media/virtual-machines-windows-sql-connect/sql-vm-portal-connectivity.png)
 
 用于连接的选项包括：
 
-| Option | 描述 |
+| 选项 | 描述 |
 |---|---|
-| 公共  | 通过 Internet 连接到 SQL Server |
-| 专用  | 连接到同一虚拟网络中的 SQL Server |
-| 本地  | 在同一虚拟机上本地连接到 SQL Server | 
+| 公共 | 通过 Internet 连接到 SQL Server |
+| 专用 | 连接到同一虚拟网络中的 SQL Server |
+| 本地 | 在同一虚拟机上本地连接到 SQL Server | 
 
-以下各节详细说明了“公共”  和“专用”  选项。
+以下各节详细说明了“公共”和“专用”选项。
 
 ## <a name="connect-to-sql-server-over-the-internet"></a>通过 Internet 连接到 SQL Server
 
-如果想要通过 Internet 连接到 SQL Server 数据库引擎，在预配过程中，在门户中为“SQL 连接”  类型选择“公共”  。 门户将自动执行以下步骤：
+如果想要通过 Internet 连接到 SQL Server 数据库引擎，在预配过程中，在门户中为“SQL 连接”类型选择“公共”。 门户将自动执行以下步骤：
 
 * 为 SQL Server 启用 TCP/IP 协议。
 * 配置防火墙规则以打开 SQL Server TCP 端口（默认值为 1433）。
@@ -66,7 +65,7 @@ ms.locfileid: "67075800"
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
 ```
 
-尽管客户端可通过 Internet 进行连接，但这并不意味着任何人都可以连接到 SQL Server。 外部客户端必须有正确的用户名和密码。 但是，为了提高安全性，可以不使用 1433 这个众所周知的端口。 例如，如果将 SQL Server 配置为在端口 1500 上进行侦听并制定了适当的防火墙和网络安全组规则，则可将端口号附加到服务器名称上进行连接。 下面的示例通过将自定义端口号 1500  添加到服务器名称，对前一个端口号进行了更改：
+尽管客户端可通过 Internet 进行连接，但这并不意味着任何人都可以连接到 SQL Server。 外部客户端必须有正确的用户名和密码。 但是，为了提高安全性，可以不使用 1433 这个众所周知的端口。 例如，如果将 SQL Server 配置为在端口 1500 上进行侦听并制定了适当的防火墙和网络安全组规则，则可将端口号附加到服务器名称上进行连接。 下面的示例通过将自定义端口号 1500 添加到服务器名称，对前一个端口号进行了更改：
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
@@ -77,7 +76,7 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 
 ## <a name="connect-to-sql-server-within-a-virtual-network"></a>在虚拟网络中连接到 SQL Server
 
-在门户中为“SQL 连接”  类型选择“专用”  时，Azure 会将大多数设置配置为相同的“公共”  。 其中一个区别在于，不存在允许 SQL Server 端口（默认值为 1433）上的外部流量的网络安全组规则。
+在门户中为“SQL 连接”类型选择“专用”时，Azure 会将大多数设置配置为相同的“公共”。 其中一个区别在于，不存在允许 SQL Server 端口（默认值为 1433）上的外部流量的网络安全组规则。
 
 > [!IMPORTANT]
 > SQL Server Developer Edition 和 Express Edition 的虚拟机映像不会自动启用 TCP/IP 协议。 对于 Developer Edition 和 Express Edition，在创建 VM 后，必须使用 SQL Server 配置管理器[手动启用 TCP/IP 协议](#manualtcp) 。
@@ -98,13 +97,13 @@ Server=mysqlvm;Integrated Security=true
 
 可以更改 Azure 门户中的 SQL Server 虚拟机的连接设置。
 
-1. 在 Azure 门户中，选择**SQL 虚拟机**。
+1. 在 Azure 门户中, 选择 " **SQL 虚拟机**"。
 
 2. 选择 SQL Server VM。
 
-3. 下**设置**，选择**安全**。
+3. 在 "**设置**" 下, 选择 "**安全性**"。
 
-4. 将“SQL 连接级别”  更改为所需设置。 可以选择性使用此区域来更改 SQL Server 端口或 SQL 身份验证设置。
+4. 将“SQL 连接级别”更改为所需设置。 可以选择性使用此区域来更改 SQL Server 端口或 SQL 身份验证设置。
 
    ![更改 SQL 连接性](./media/virtual-machines-windows-sql-connect/sql-vm-portal-connectivity-change.png)
 
@@ -120,7 +119,7 @@ Server=mysqlvm;Integrated Security=true
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
-接下来，通过“SQL Server 配置管理器”  启用 TCP/IP 协议。
+接下来，通过“SQL Server 配置管理器”启用 TCP/IP 协议。
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 

@@ -9,19 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 7ccf99d7-7cce-4e3d-bbab-21b751ab0e88
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3b3bb206286629a68c14b6444f3f88ffa0af50dd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ebcfa9da8fc8760fa4c13cec1a8921c4ecef5691
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60582950"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101945"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>将 Azure 高级存储用于虚拟机上的 SQL Server
 
@@ -44,7 +43,7 @@ ms.locfileid: "60582950"
 
 有关 Azure 虚拟机中的 SQL Server 的更多背景信息，请参阅 [Azure 虚拟机中的 SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)。
 
-**作者：** Daniel Sol 技术审阅人员  ：Luis Carlos Vargas Herring、Sanjay Mishra、Pravin Mital、Juergen Thomas、Gonzalo Ruiz。
+**作者：** Daniel Sol 技术审阅人员：Luis Carlos Vargas Herring、Sanjay Mishra、Pravin Mital、Juergen Thomas、Gonzalo Ruiz。
 
 ## <a name="prerequisites-for-premium-storage"></a>高级存储的先决条件
 
@@ -143,11 +142,11 @@ Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 1. 记下 DiskName 和 LUN。
 
     ![DisknameAndLUN][2]
-1. 通过远程桌面连接到 VM。 然后依次转到“计算机管理”   | “设备管理器”   | “磁盘驱动器”  。 查看每个 Microsoft 虚拟磁盘的属性
+1. 通过远程桌面连接到 VM。 然后依次转到“计算机管理” | “设备管理器” | “磁盘驱动器”。 查看每个 Microsoft 虚拟磁盘的属性
 
     ![VirtualDiskProperties][3]
 1. 此处的 LUN 号是对你在将 VHD 附加到 VM 时指定的 LUN 号的引用。
-1. 对于“Microsoft 虚拟磁盘”，转到“详细信息”  选项卡，并在“属性”  列表中转到“驱动程序键”  。 在“值”  中，注意“偏移量”  ，该项在下面的屏幕截图中为 0002。 0002 表示存储池引用的 PhysicalDisk2。
+1. 对于“Microsoft 虚拟磁盘”，转到“详细信息”选项卡，并在“属性”列表中转到“驱动程序键”。 在“值”中，注意“偏移量”，该项在下面的屏幕截图中为 0002。 0002 表示存储池引用的 PhysicalDisk2。
 
     ![VirtualDiskPropertyDetails][4]
 1. 转储每个存储池关联的磁盘：
@@ -474,7 +473,7 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 7. 将新节点添加到群集并运行完整验证。
 8. 成功验证后，启动所有 SQL Server 服务。
 9. 备份事务日志并还原用户数据库。
-10. 将新节点添加到 Always On 可用性组中，并将复制放置到“同步”  中。
+10. 将新节点添加到 Always On 可用性组中，并将复制放置到“同步”中。
 11. 根据[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的多站点示例，通过 PowerShell 为 Always On 添加新云服务 ILB/ELB 的 IP 地址资源。 在 Windows 群集中，将 **IP 地址**资源的**可能所有者**设置为新节点 old。 请参阅[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
 12. 故障转移到新节点之一。
 13. 将新节点设为“自动故障转移伙伴”并测试故障转移。
@@ -535,7 +534,7 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 * 如果选择使 AlwaysOn 群集组脱机以提取 IP 地址，则停机时间会增加。 可以通过对添加的 IP 地址资源使用 OR 依赖关系和可能的所有者来避免出现这种情况。 请参阅[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
 
 > [!NOTE]
-> 如果要让添加的节点作为 Always On 故障转移伙伴参与其中，则需要添加带有对负载均衡集的引用的 Azure 终结点。 运行 Add-AzureEndpoint 命令来执行此操作时，当前连接保持断开，但在更新负载均衡器之后，才能建立到侦听器的新连接  。 在测试时，看到此现像持续 90 到 120 秒，应该对此进行测试。
+> 如果要让添加的节点作为 Always On 故障转移伙伴参与其中，则需要添加带有对负载均衡集的引用的 Azure 终结点。 运行 Add-AzureEndpoint 命令来执行此操作时，当前连接保持断开，但在更新负载均衡器之后，才能建立到侦听器的新连接。 在测试时，看到此现像持续 90 到 120 秒，应该对此进行测试。
 
 ##### <a name="advantages"></a>优点
 
@@ -750,7 +749,7 @@ Get-ClusterResource $ListenerName| Set-ClusterParameter -Name "HostRecordTTL" 12
 
 ##### <a name="client-application-settings"></a>客户端应用程序设置
 
-如果 SQL 客户端应用程序支持.NET 4.5 SQLClient，则可以使用 MULTISUBNETFAILOVER = TRUE 关键字。 必须使用此关键字，因为它可加快故障转移期间到 SQL AlwaysOn 可用性组的连接速度。 它可以在故障转移过程中枚举与 Always On 侦听器并行关联的所有 IP 地址，并执行更激进的 TCP 连接重试速度。
+如果 SQL 客户端应用程序支持 .NET 4.5 SQLClient, 则可以使用 "MULTISUBNETFAILOVER = TRUE" 关键字。 必须使用此关键字，因为它可加快故障转移期间到 SQL AlwaysOn 可用性组的连接速度。 它可以在故障转移过程中枚举与 Always On 侦听器并行关联的所有 IP 地址，并执行更激进的 TCP 连接重试速度。
 
 有关先前设置的详细信息，请参阅[MultiSubnetFailover 关键字及关联的功能](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover)。 另请参阅 [SqlClient 对高可用性、灾难恢复的支持](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx)。
 

@@ -9,18 +9,17 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 291288a0-740b-4cfa-af62-053218beba77
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 0e6a52ea2fdd05546a4da9f8cd1165b41ed27944
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca8adf4f9ce221533240e6c797f1fb01dacf6e8d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097644"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101908"
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 Always On 可用性组的 ILB 侦听器
 > [!div class="op_single_selector"]
@@ -56,9 +55,9 @@ ms.locfileid: "62097644"
 
 1. 在 Azure 门户中，转到每个托管副本的 VM 查看详细信息。
 
-2. 单击每个 VM 的“终结点”选项卡。 
+2. 单击每个 VM 的“终结点”选项卡。
 
-3. 验证想要使用的侦听器终结点“名称”和“公用端口”是否已被使用。   在本部分的示例中，名称为“MyEndpoint”，端口为“1433”。  
+3. 验证想要使用的侦听器终结点“名称”和“公用端口”是否已被使用。 在本部分的示例中，名称为“MyEndpoint”，端口为“1433”。
 
 4. 在本地客户端上，下载并安装[最新的 PowerShell 模块](https://azure.microsoft.com/downloads/)。
 
@@ -78,7 +77,7 @@ ms.locfileid: "62097644"
         (Get-AzureVNetConfig).XMLConfiguration
 9. 记下包含副本所在 VM 的子网的 *Subnet* 名称。 脚本中的 $SubnetName 参数将要使用此名称。
 
-10. 记下包含副本所在 VM 的子网的 *VirtualNetworkSite* 名称和起始 *AddressPrefix*。 再通过将这两个值传递给 `Test-AzureStaticVNetIP` 命令并检查 AvailableAddresses 来查找可用的 IP 地址  。 例如，如果虚拟网络名为 MyVNet，并包含从 172.16.0.128 开始的子网地址范围，则以下命令将列出可用地址   ：
+10. 记下包含副本所在 VM 的子网的 *VirtualNetworkSite* 名称和起始 *AddressPrefix*。 再通过将这两个值传递给 `Test-AzureStaticVNetIP` 命令并检查 AvailableAddresses 来查找可用的 IP 地址。 例如，如果虚拟网络名为 MyVNet，并包含从 172.16.0.128 开始的子网地址范围，则以下命令将列出可用地址：
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 11. 选择一个可用地址，并将其用于下一步骤中脚本的 $ILBStaticIP 参数。
@@ -105,7 +104,7 @@ ms.locfileid: "62097644"
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. 设置变量后，将脚本从文本编辑器复制到 PowerShell 会话并运行。 如果提示符仍然显示 >>，请再次按 Enter，以确保脚本开始运行  。
+13. 设置变量后，将脚本从文本编辑器复制到 PowerShell 会话并运行。 如果提示符仍然显示 >>，请再次按 Enter，以确保脚本开始运行。
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>如果需要，请验证是否已安装 KB2854082
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]

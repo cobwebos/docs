@@ -7,18 +7,17 @@ author: MSSedusch
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 78d14add09a89b7ec4d4844a12ffa0434d714b3a
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 7b9d3791d44e9541df7fc95c34b5e8c83a4295b3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "67709104"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078391"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -693,7 +692,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 以下测试是“SUSE Linux Enterprise Server for SAP Applications 12 SP1 的 SAP HANA SR 性能优化方案”指南测试说明的副本。 如需最新版本，另请阅读指南本身。 在开始测试之前，始终确保 HANA 已同步，另请确保 Pacemaker 的配置正确。
 
 以下测试说明假设 PREFER_SITE_TAKEOVER ="true"，AUTOMATED_REGISTER ="false"。
-注意:以下测试需按顺序运行，并依赖于前面测试的退出状态。
+注意：以下测试需按顺序运行，并依赖于前面测试的退出状态。
 
 1. 测试 1：停止节点 1 上的主数据库
 

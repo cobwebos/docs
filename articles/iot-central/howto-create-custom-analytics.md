@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5f9b255e8aa370184ec244ed418f02e55fc149b3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: e1649d1ad50a62374cb5a1d9491c594e1b485ec1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049163"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100976"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics"></a>通过自定义分析扩展 Azure IoT Central
 
@@ -35,7 +35,7 @@ ms.locfileid: "70049163"
 
 ### <a name="iot-central-application"></a>IoT Central 应用程序
 
-使用以下设置从[Azure IoT Central-我的应用程序](https://aka.ms/iotcentral)页创建 IoT Central 应用程序:
+使用以下设置在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建 IoT Central 应用程序:
 
 | 设置 | ReplTest1 |
 | ------- | ----- |
@@ -99,7 +99,7 @@ ms.locfileid: "70049163"
 
 ## <a name="configure-export-in-iot-central"></a>在 IoT Central 中配置导出
 
-导航到从 Contoso 模板创建的[IoT Central 应用程序](https://aka.ms/iotcentral)。 在本部分中, 将配置应用程序, 以便将遥测从其模拟设备流式传输到事件中心。 若要配置导出:
+在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上, 导航到从 Contoso 模板创建的 IoT Central 应用程序。 在本部分中, 将配置应用程序, 以便将遥测从其模拟设备流式传输到事件中心。 若要配置导出:
 
 1. 导航到 "**连续数据导出**" 页, 依次选择 " **+ 新建**" 和 " **Azure 事件中心**"。
 1. 使用以下设置配置导出, 然后选择 "**保存**":

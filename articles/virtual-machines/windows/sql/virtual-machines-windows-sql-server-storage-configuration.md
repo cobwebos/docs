@@ -8,18 +8,17 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
-ms.openlocfilehash: 8d197bbf464038918dd083d14a1befa740c8ce0e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 5a8b6c9885099ed549f7f29d7f2096de5983d9d0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846096"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100390"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 
@@ -55,7 +54,7 @@ ms.locfileid: "68846096"
 * 将存储池与虚拟机上的新驱动器相关联。
 * 根据指定的工作负荷类型（“数据仓库”、“事务处理”或“常规”）优化新驱动器。
 
-有关 Azure 如何配置存储设置的详细信息，请参阅[存储配置部分](#storage-configuration)。 有关如何在 Azure 门户中创建 SQL Server VM 的完整演练, 请参阅[预配教程](virtual-machines-windows-portal-sql-server-provision.md)。
+有关 Azure 如何配置存储设置的详细信息，请参阅[存储配置部分](#storage-configuration)。 有关如何在 Azure 门户中创建 SQL Server VM 的完整演练，请参阅[预配教程](virtual-machines-windows-portal-sql-server-provision.md)。
 
 ### <a name="resource-manage-templates"></a>Resource Manager 模板
 
@@ -76,7 +75,7 @@ ms.locfileid: "68846096"
 * 其他（非 SQL 存储）
 * 可用
 
-若要修改存储设置, 请选择 "**设置**" 下的 "**配置**"。 
+若要修改存储设置，请在“设置”下选择“配置”。 
 
 ![为现有 SQL Server VM 配置存储](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
@@ -103,13 +102,13 @@ Azure 会根据规范创建新驱动器。 在此方案中，Azure 将执行以�
 
 ### <a name="extend-the-drive"></a>扩展驱动器
 
-扩展存储的另一个选项是扩展现有驱动器。 此选项会增加驱动器的可用存储，但不提升性能。 对于存储池，在创建存储池后无法更改列数。 列数决定了可跨数据磁盘条带化的并行写入数。 因此，添加的任何数据磁盘均无法提升性能。 它们只能为写入的数据提供更多的存储空间。 这种限制也意味着，在扩展驱动器时，列数决定了可以添加的数据磁盘的最小数目。 因此，如果创建的存储池包含四个数据磁盘，则列数也是四个。 每次扩展存储时, 必须至少添加四个数据磁盘。
+扩展存储的另一个选项是扩展现有驱动器。 此选项会增加驱动器的可用存储，但不提升性能。 对于存储池，在创建存储池后无法更改列数。 列数决定了可跨数据磁盘条带化的并行写入数。 因此，添加的任何数据磁盘均无法提升性能。 它们只能为写入的数据提供更多的存储空间。 这种限制也意味着，在扩展驱动器时，列数决定了可以添加的数据磁盘的最小数目。 因此，如果创建的存储池包含四个数据磁盘，则列数也是四个。 每次扩展存储时，必须至少添加四个数据磁盘。
 
 ![扩展 SQL VM 的驱动器](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 
 ## <a name="storage-configuration"></a>存储配置
 
-本部分提供有关 Azure 在 Azure 门户中的 SQL VM 预配或配置期间自动执行的存储配置更改的参考。
+本部分提供有关在 Azure 门户中预配或配置 SQL VM 期间，Azure 自动执行的存储配置更改的参考信息。
 
 * 如果为 VM 选择的存储小于 2 TB，Azure 不会创建存储池。
 * 如果为 VM 选择了至少 2 TB 的存储，则 Azure 将配置存储池。 本主题的下一部分提供了存储池配置详细信息。
@@ -121,7 +120,7 @@ Azure 会根据规范创建新驱动器。 在此方案中，Azure 将执行以�
 
 Azure 使用以下设置在 SQL Server VM 上创建存储池。
 
-| 设置 | 值 |
+| 设置 | ReplTest1 |
 | --- | --- |
 | 条带大小 |256 KB（数据仓库）；64 KB（事务） |
 | 磁盘大小 |每个磁盘 1 TB |

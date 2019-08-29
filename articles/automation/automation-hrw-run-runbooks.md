@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c10262e50fff2903d7caf242304145a2ab93dbcd
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: e726b60a08f234ef021b2901f8ed29ec74f0ff47
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970622"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087579"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
 运行在 Azure 自动化中的 runbook 和运行在混合 Runbook 辅助角色上的 runbook 没有结构上的区别。 但在这两类 runbook 彼此之间可能会有很大差异。 存在这种差异是因为面向混合 Runbook 辅助角色的 runbook 通常管理本地计算机本身的资源，或者管理它所在的本地环境中的资源。 Azure 自动化中的 runbook 通常管理 Azure 云中的资源。
 
-创建 runbook 以在混合 Runbook 辅助角色上运行时，应当在承载着混合辅助角色的计算机内编辑并测试 runbook。 宿主计算机具有管理和访问本地资源时所需的所有 PowerShell 模块和网络访问权限。 在混合辅助角色计算机上测试 runbook 后，可以将它上传到 Azure 自动化环境，用于在混合辅助角色中运行。 务必了解在 Windows 的本地系统帐户下或 Linux 的特殊用户帐户 `nxautomation` 下运行的作业。 在 Linux 上, 这意味着您必须确保该`nxautomation`帐户可以访问存储模块的位置。 使用[安装模块]()cmdlet 时, 请为`-Scope`参数指定**AllUsers**以确认该`naxautomation`帐户具有访问权限。
+创建 runbook 以在混合 Runbook 辅助角色上运行时，应当在承载着混合辅助角色的计算机内编辑并测试 runbook。 宿主计算机具有管理和访问本地资源时所需的所有 PowerShell 模块和网络访问权限。 在混合辅助角色计算机上测试 runbook 后，可以将它上传到 Azure 自动化环境，用于在混合辅助角色中运行。 务必了解在 Windows 的本地系统帐户下或 Linux 的特殊用户帐户 `nxautomation` 下运行的作业。 在 Linux 上, 这意味着您必须确保该`nxautomation`帐户可以访问存储模块的位置。 使用[安装模块](/powershell/module/powershellget/install-module)cmdlet 时, 请为`-Scope`参数指定**AllUsers**以确认该`naxautomation`帐户具有访问权限。
 
 有关 Linux 上的 PowerShell 的详细信息, 请参阅[非 Windows 平台上的 powershell 的已知问题](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms)。
 

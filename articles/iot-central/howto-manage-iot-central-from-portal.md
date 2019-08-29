@@ -8,18 +8,18 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 7893c8e8b8d67b4b63bd9d6bb5a71552e95c9125
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 25751db785bf5d0b67195d1e1db660c0b9b5bf4e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850250"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100953"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>通过 Azure 门户管理 IoT Central
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-如果不从 IoT Central [应用程序管理器](https://aka.ms/iotcentral)页面创建和管理 IoT Central 应用程序，可以使用 [Azure 门户](https://portal.azure.com) 来管理应用程序。
+你可以使用[Azure 门户](https://portal.azure.com)来管理你的应用程序, 而不是在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建和管理 IoT Central 应用程序。
 
 ## <a name="create-iot-central-applications"></a>创建 IoT Central 应用程序
 
@@ -27,7 +27,7 @@ ms.locfileid: "67850250"
 
 ![管理门户：导航菜单](media/howto-manage-iot-central-from-portal/image0.png)
 
-在搜索栏中，键入“IoT Central”  。
+在搜索栏中，键入“IoT Central”。
 
 ![管理门户：搜索](media/howto-manage-iot-central-from-portal/image0a1.png)
 
@@ -35,11 +35,11 @@ ms.locfileid: "67850250"
 
 ![管理门户：搜索结果](media/howto-manage-iot-central-from-portal/image0b1.png)
 
-现在选择“创建”  。
+现在选择“创建”。
 
 ![管理门户：IoT Central 资源](media/howto-manage-iot-central-from-portal/image0c1.png)
 
-填写窗体中的所有字段。 此窗体与在 IoT Central [应用程序管理器](https://aka.ms/iotcentral)页创建应用程序时需要填写的窗体类似。 有关详细信息，请参阅[创建 IoT Central 应用程序](quick-deploy-iot-central.md)快速入门。
+填写窗体中的所有字段。 此窗体类似于你填写在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建应用程序的窗体。 有关详细信息，请参阅[创建 IoT Central 应用程序](quick-deploy-iot-central.md)快速入门。
 
 ![管理门户：创建 IoT Central 资源](media/howto-manage-iot-central-from-portal/image1a.png)  
 
@@ -60,7 +60,7 @@ ms.locfileid: "67850250"
 
 ![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image3.png)
 
-若要将应用程序移动到其他资源组, 请选择资源组旁边的 "**更改**"。 在“移动资源”页上，选取要将此应用程序迁移到其中的资源组  。
+若要将应用程序移动到其他资源组, 请选择资源组旁边的 "**更改**"。 在“移动资源”页上，选取要将此应用程序迁移到其中的资源组。
 
 ![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image4a.png)
 

@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 086f5773a8ae4085a8e5bc0637bdebe5f2df4fb0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3469c4f11a075ceb958e35e4cfc87a78e60b3882
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65203337"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074132"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
 
@@ -85,7 +84,7 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 
 下表显示了应用中运行的 Windows 和语言运行时版本：
 
-| 信息 | 查找位置 | 
+| Information | 查找位置 | 
 |-|-|
 | Windows 版本 | 查看 `https://<appname>.scm.azurewebsites.net/Env.cshtml`（在“系统信息”下） |
 | .NET 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |

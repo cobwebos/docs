@@ -9,22 +9,21 @@ editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: 87bdfcc827155e5dd0a02ffb1640bf7e9cd4e479
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d40f1992a5c68872de6e0fa2fc04a1a25abe674
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859118"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098589"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Azure 应用服务中针对移动应用的身份验证和授权
 
 本文介绍了在开发具有应用服务后端的原生移动应用时身份验证和授权功能如何工作。 应用服务提供了集成的身份验证和授权，因此，移动应用可以在不更改应用服务中的任何代码的情况下让用户登录。 该功能可以方便地保护应用程序和处理每个用户的数据。 
 
-本文重点介绍了移动应用开发。 若要快速了解如何将应用服务身份验证和授权用于移动应用，请参阅以下教程之一：[向 iOS 应用添加身份验证][iOS]（或 [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms] 或 [Cordova]）。 
+本文重点介绍了移动应用开发。 若要快速开始处理移动应用的应用服务身份验证和授权, 请参阅以下教程之一: 向[iOS 应用添加身份验证][iOS](或[android]、 [Windows]、 [Xamarin.iOS]、xamarin、 [Xamarin.Android]、 [Xamarin.Forms]或[Cordova]。 
 
 有关应用服务中的身份验证和授权如何工作的信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/overview-authentication-authorization.md)。
 
@@ -58,12 +57,12 @@ ms.locfileid: "60859118"
 以下教程展示了如何通过[服务器定向流](../app-service/overview-authentication-authorization.md#authentication-flow)向移动客户端添加身份验证：
 
 * [将身份验证添加到 iOS 应用][iOS]
-* [将身份验证添加到 Android 应用][Android]
+* [向 Android 应用添加身份验证][Android]
 * [将身份验证添加到 Windows 应用][Windows]
 * [将身份验证添加到 Xamarin.iOS 应用][Xamarin.iOS]
 * [将身份验证添加到 Xamarin.Android 应用][Xamarin.Android]
-* [将身份验证添加到 Xamarin.Forms 应用][Xamarin.Forms]
-* [将身份验证添加到 Cordova 应用][Cordova]
+* [向 Xamarin.Forms 应用添加身份验证][Xamarin.Forms]
+* [向 Cordova 应用添加身份验证][Cordova]
 
 若要为 Azure Active Directory 使用[客户端定向流](../app-service/overview-authentication-authorization.md#authentication-flow)，请参阅以下资源：
 

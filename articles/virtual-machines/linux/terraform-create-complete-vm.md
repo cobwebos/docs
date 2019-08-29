@@ -9,18 +9,17 @@ editor: na
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: gwallace
-ms.openlocfilehash: be8bfd8b6a0ba8afa43869366b4482e1b202727f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 83fba1ae29c2912e440f8983ded844414443a1a7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876329"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100800"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>在 Azure 中使用 Terraform 创建完整的 Linux 虚拟机基础结构
 
@@ -31,7 +30,7 @@ ms.locfileid: "67876329"
 
 我们来详细地了解 Terraform 模板的每个部分。 还可以看到完整版本的 [Terraform 模板](#complete-terraform-script)，可以复制并粘贴这些模板。
 
-`provider` 部分告知 Terraform 使用 Azure 提供程序。 若要获取 subscription_id  、client_id  、client_secret  和 *tenant_id* 的值，请参阅[安装和配置 Terraform](terraform-install-configure.md)。 
+`provider` 部分告知 Terraform 使用 Azure 提供程序。 若要获取 subscription_id、client_id、client_secret 和 *tenant_id* 的值，请参阅[安装和配置 Terraform](terraform-install-configure.md)。 
 
 > [!TIP]
 > 如果要为值创建环境变量，或要使用 [Azure Cloud Shell Bash 体验](/azure/cloud-shell/overview)，则无需在此节中包括变量声明。
@@ -58,10 +57,10 @@ resource "azurerm_resource_group" "myterraformgroup" {
 }
 ```
 
-在其他部分中，可以使用 ${azurerm_resource_group.myterraformgroup.name}  引用该资源组。
+在其他部分中，可以使用 ${azurerm_resource_group.myterraformgroup.name} 引用该资源组。
 
 ## <a name="create-virtual-network"></a>创建虚拟网络
-以下部分在 10.0.0.0/16  地址空间中创建名为 myVnet  的虚拟网络：
+以下部分在 10.0.0.0/16 地址空间中创建名为 myVnet 的虚拟网络：
 
 ```tf
 resource "azurerm_virtual_network" "myterraformnetwork" {
@@ -76,7 +75,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 }
 ```
 
-以下部分在 myVnet  虚拟网络中创建名为 mySubnet  的子网：
+以下部分在 myVnet 虚拟网络中创建名为 mySubnet 的子网：
 
 ```tf
 resource "azurerm_subnet" "myterraformsubnet" {
@@ -89,7 +88,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 
 
 ## <a name="create-public-ip-address"></a>创建公共 IP 地址
-若要通过 Internet 访问资源，请创建公共 IP 地址并将其分配到 VM。 以下部分创建名为 myPublicIP  的公共 IP 地址：
+若要通过 Internet 访问资源，请创建公共 IP 地址并将其分配到 VM。 以下部分创建名为 myPublicIP 的公共 IP 地址：
 
 ```tf
 resource "azurerm_public_ip" "myterraformpublicip" {
@@ -106,7 +105,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 
 
 ## <a name="create-network-security-group"></a>创建网络安全组
-网络安全组控制传入和传出 VM 的网络流量。 以下部分创建名为 myNetworkSecurityGroup  的网络安全组并定义允许 TCP 端口 22 上的 SSH 流量的规则：
+网络安全组控制传入和传出 VM 的网络流量。 以下部分创建名为 myNetworkSecurityGroup 的网络安全组并定义允许 TCP 端口 22 上的 SSH 流量的规则：
 
 ```tf
 resource "azurerm_network_security_group" "myterraformnsg" {
@@ -134,7 +133,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 
 
 ## <a name="create-virtual-network-interface-card"></a>创建虚拟网络接口卡
-虚拟网络接口卡 (NIC) 将 VM 连接到规定的虚拟网络、公共 IP 地址和网络安全组。 Terraform 模板的以下部分创建名为“myNIC”  的虚拟 NIC，并连接到已创建的虚拟网络资源：
+虚拟网络接口卡 (NIC) 将 VM 连接到规定的虚拟网络、公共 IP 地址和网络安全组。 Terraform 模板的以下部分创建名为“myNIC”的虚拟 NIC，并连接到已创建的虚拟网络资源：
 
 ```tf
 resource "azurerm_network_interface" "myterraformnic" {
@@ -190,9 +189,9 @@ resource "azurerm_storage_account" "mystorageaccount" {
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-最后一步是创建 VM 并使用所有已创建的资源。 以下部分创建名为 myVM  的 VM 并附加名为 myNIC  的虚拟 NIC。 将使用最新的 Ubuntu 16.04 LTS  映像，并且在禁用密码身份验证的情况下创建名为 azureuser  的用户。
+最后一步是创建 VM 并使用所有已创建的资源。 以下部分创建名为 myVM 的 VM 并附加名为 myNIC 的虚拟 NIC。 将使用最新的 Ubuntu 16.04 LTS 映像，并且在禁用密码身份验证的情况下创建名为 azureuser 的用户。
 
- ssh_keys  部分中提供了 SSH 密钥数据。 在 *key_data* 字段中提供有效的公共 SSH 密钥。
+ ssh_keys 部分中提供了 SSH 密钥数据。 在 *key_data* 字段中提供有效的公共 SSH 密钥。
 
 ```tf
 resource "azurerm_virtual_machine" "myterraformvm" {
@@ -242,7 +241,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 
 ## <a name="complete-terraform-script"></a>完成 Terraform 脚本
 
-若要将所有这些部分组合在一起，并在操作中看到 Terraform，请创建名为 terraform_azure.tf  的文件并粘贴以下内容：
+若要将所有这些部分组合在一起，并在操作中看到 Terraform，请创建名为 terraform_azure.tf 的文件并粘贴以下内容：
 
 ```tf
 # Configure the Microsoft Azure Provider
@@ -414,7 +413,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 terraform init
 ```
 
-下一步是让 Terraform 检查并验证模板。 此步骤将请求的资源与 Terraform 保存的状态信息进行比较，然后输出计划的执行。 资源不是  在 Azure 中创建的。
+下一步是让 Terraform 检查并验证模板。 此步骤将请求的资源与 Terraform 保存的状态信息进行比较，然后输出计划的执行。 资源不是在 Azure 中创建的。
 
 ```bash
 terraform plan
