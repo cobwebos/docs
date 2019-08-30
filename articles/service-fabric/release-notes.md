@@ -19,9 +19,9 @@ ms.locfileid: "70018988"
 # <a name="service-fabric-releases"></a>Service Fabric 发布
 
 | <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">疑难解答指南</a> 
-| <a href="https://github.com/Azure/service-fabric-issues" target="blank">问题跟踪</a><a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank"></a><a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank"></a><a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank"></a>支持选项支持的版本 
-| 代码示例 
-|  
+| <a href="https://github.com/Azure/service-fabric-issues" target="blank">问题跟踪</a> 
+| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">支持选项</a> 
+| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">支持的版本</a><a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">代码示例</a> 
 | 
 
 本文提供了有关 Service Fabric 运行时和 Sdk 的最新版本和更新的详细信息。
