@@ -1,7 +1,7 @@
 ---
 title: 在认知搜索管道中创建技能集 - Azure 搜索
 description: 定义数据提取、自然语言处理或图像分析步骤，从 Azure 搜索使用的数据扩充和提取结构化信息。
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: c67131154fd50a2b20b4b07b7294fad250dfa9d9
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 457157b93e6fb6be8ed734ae6f58c3b8717fc83d
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639261"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183479"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>如何在扩充管道中创建技能集
 

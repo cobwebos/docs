@@ -2,18 +2,18 @@
 title: 用于搜索索引的 azure SQL 托管实例连接-Azure 搜索
 description: 启用公共终结点, 以允许从 Azure 搜索索引器连接到 SQL 托管实例。
 author: vl8163264128
-manager: briansmi
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: victliu
-ms.openlocfilehash: ae947e85f600b3bc380898ad5820239aa823794d
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 07bc1a55c0222fda87b28acbaa8bfe552fb8e6ed
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229123"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186677"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-managed-instance"></a>配置从 Azure 搜索索引器到 SQL 托管实例的连接
 如[使用索引器将 AZURE SQL 数据库连接到 Azure 搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述, Azure 搜索通过公共终结点为**SQL 托管实例**创建索引器。
