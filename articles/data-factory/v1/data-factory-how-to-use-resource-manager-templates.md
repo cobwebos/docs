@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: b33762ae18332854d6c25d49553b533c9b99cc44
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: d2360efe71327f02d5cb7d16cb8141f47c304b0c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139462"
+ms.locfileid: "70164682"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用模板来创建 Azure 数据工厂实体
 > [!NOTE]
@@ -32,7 +32,7 @@ ms.locfileid: "70139462"
 此外，鉴于该组织希望在不同环境内多次部署这 10 个数据工厂，因此模板可通过利用开发、测试和生产环境的单独参数文件来使用此**可重用性**。
 
 ## <a name="templating-with-azure-resource-manager"></a>通过 Azure 资源管理器实现模板化
-[Azure 资源管理器模板](../../azure-resource-manager/resource-group-overview.md#template-deployment)是实现 Azure 数据工厂模板化的好办法。 Resource Manager 模板通过 JSON 文件定义 Azure 解决方案的基础结构和配置。 由于 Azure 资源管理器模板适用于所有/多数 Azure 服务，因此可广泛用于轻松管理 Azure 资产的所有资源。 若要深入了解常用的资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)。
+[Azure 资源管理器模板](../../azure-resource-manager/template-deployment-overview.md)是实现 Azure 数据工厂模板化的好办法。 Resource Manager 模板通过 JSON 文件定义 Azure 解决方案的基础结构和配置。 由于 Azure 资源管理器模板适用于所有/多数 Azure 服务，因此可广泛用于轻松管理 Azure 资产的所有资源。 若要深入了解常用的资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)。
 
 ## <a name="tutorials"></a>教程
 请参阅以下教程，获取使用 Resource Manager 模板创建数据工厂实体的分步说明：

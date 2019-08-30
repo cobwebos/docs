@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f797d3ee525806d8002b19edb1378d0376508b08
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 03a8e8063f1a66b929311f09bf8e20cd4b951e43
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073932"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163300"
 ---
 # <a name="tenant-and-host-pool-creation"></a>创建租户和主机池
 
@@ -208,7 +208,12 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 **能够**按照这些说明在会话主机 VM 上安装并行堆栈。
 
 1. 使用远程桌面协议 (RDP) 作为本地管理员直接加入会话主机 VM。
-2. 下载并导入要在 PowerShell 会话中使用[的 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)(如果尚未这样做)。
+2. 下载并导入要在 PowerShell 会话中使用[的 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)(如果尚未这样做), 然后运行此 cmdlet 以登录到你的帐户:
+    
+    ```powershell
+    Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+    ```
+    
 3. 使用 "使用[PowerShell 创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)" 安装并行堆栈。
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>如何修复发生故障的 Windows 虚拟桌面并行堆栈

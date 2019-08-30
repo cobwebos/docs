@@ -11,16 +11,16 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fb4d953f575dcf6582f9f1c8c2a725971134159
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c654da71a0c060a9344ef7d7d42b30263a7fb2db
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856256"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165213"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
-自动机器学习 (也称为 autoML) 是自动执行机器学习模型开发的耗时的迭代任务的过程。 它允许数据科学家、分析人员和开发人员构建具有高缩放性、效率和生产力的 ML 模型, 同时维持模型质量。
+自动机器学习 (也称为 autoML) 是自动执行机器学习模型开发的耗时的迭代任务的过程。 它允许数据科学家、分析人员和开发人员构建具有高缩放性、效率和生产力的 ML 模型, 同时维持模型质量。 自动 ML 基于我们的[Microsoft 研究部门](https://arxiv.org/abs/1705.05355)的突破。
 
 传统的机器学习模型开发需要大量资源, 需要大量的域知识和时间来生成和比较数十个模型。 如果希望 Azure 机器学习使用指定的目标度量值定型和调整模型, 请应用自动 ML。 然后, 该服务会循环访问与功能选择配对的 ML 算法, 其中, 每次迭代都会生成一个包含定型分数的模型。 分数越高, 模型被视为 "拟合" 数据就越好。
 
@@ -68,7 +68,7 @@ ms.locfileid: "68856256"
 在每个自动机器学习试验中, 均使用默认方法对数据进行预处理, 并可选择通过高级预处理进行预处理。
 
 > [!NOTE]
-> 自动机器学习预处理步骤 (功能规范化、处理丢失的数据、将文本转换为数字等) 成为基础模型的一部分。 使用模型进行预测时, 在训练过程中应用的相同预处理步骤会自动应用于输入数据。
+> 自动机器学习预处理步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，训练期间应用的相同预处理步骤将自动应用于输入数据。
 
 ### <a name="automatic-preprocessing-standard"></a>自动预处理 (标准)
 

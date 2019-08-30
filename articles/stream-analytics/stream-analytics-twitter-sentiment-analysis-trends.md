@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/9/2019
-ms.openlocfilehash: a0dd2499f3ddfaa1cd22a58e058c6adb7e40fd7e
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.date: 07/09/2019
+ms.openlocfilehash: 8561789d53c3c1b00ac1477909bcbe356fe6a85d
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620044"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173122"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
 
@@ -23,14 +23,14 @@ ms.locfileid: "68620044"
 
 实时 Twitter 趋势分析是分析工具的一个很好的示例, 因为井号标签订阅模型使你能够侦听特定关键字 (井号标签) 并开发源的情绪分析。
 
-## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>方案:实时社交媒体情绪分析
+## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>场景：实时社交媒体情绪分析
 
 一家拥有新闻媒体网站的公司关注如何打造特色网站内容，使之迅速贴近其读者，以便增加相较于其竞争对手的竞争优势。 该公司通过对 Twitter 数据执行实时情绪分析，以便在贴近读者的主题上使用社交媒体分析。
 
 若要标识 Twitter 上的实时热门话题，公司需要关于关键主题推文量及情绪的实时分析。
 
 ## <a name="prerequisites"></a>先决条件
-在本操作方法指南中, 你将使用连接到 Twitter 的客户端应用程序, 并查找具有特定井号标签 (可以设置) 的推文。 若要运行应用程序并使用 Azure 流分析分析推文, 必须具有以下各项:
+本操作指南将使用连接到 Twitter 的客户端应用程序，并查找具有特定井号标签（可设置）的推文。 为了运行应用程序并使用 Azure 流分析来分析推文，必须具备以下项：
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * [Twitter](https://twitter.com)帐户。
@@ -41,7 +41,7 @@ ms.locfileid: "68620044"
 示例应用程序生成事件并将其推送到 Azure 事件中心。 Azure 事件中心是适合流分析的首选事件引入方法。 有关详细信息，请参阅 [Azure 事件中心文档](../event-hubs/event-hubs-what-is-event-hubs.md)。
 
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>创建事件中心命名空间和事件中心
-创建事件中心命名空间, 然后将事件中心添加到该命名空间。 事件中心命名空间用于逻辑分组相关的事件总线实例。 
+创建事件中心命名空间，然后将事件中心添加到该命名空间。 事件中心命名空间用于逻辑分组相关的事件总线实例。 
 
 1. 登录 Azure 门户，然后依次单击“创建资源” > “物联网” > “事件中心”。 
 
@@ -107,7 +107,7 @@ ms.locfileid: "68620044"
 客户端应用程序直接从 Twitter 获取推文事件。 为了做到这一点，需要为其赋予调用 Twitter 流式处理 API 的权限。 若要配置该权限，可在 Twitter 中创建一个应用程序，该应用会生成唯一凭据（例如 OAuth 标记）。 然后，可配置客户端应用程序，以便在其执行 API 调用时使用这些凭据。 
 
 ### <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
-如果还没有可用于本操作方法指南的 Twitter 应用程序, 可以创建一个。 必须已具有 Twitter 帐户。
+如果还没有可用于本操作指南的 Twitter 应用程序，则可以创建一个。 必须已具有 Twitter 帐户。
 
 > [!NOTE]
 > Twitter 中创建应用程序以及获取密钥、机密和令牌的确切过程可能会改变。 如果这些说明与你在 Twitter 网站上看到的内容不符，请参阅 Twitter 开发人员文档。
@@ -278,14 +278,14 @@ ms.locfileid: "68620044"
 |主题 | 与指定的关键字匹配的主题|
 |SentimentScore | Sentiment140 的观点分数|
 |作者 | 发送推文的 Twitter 句柄|
-|Text | 推文的完整正文|
+|文本 | 推文的完整正文|
 
 
 ## <a name="create-an-output-sink"></a>创建输出接收器
 
 现已定义事件流、用于引入事件的事件中心输入，以及用于通过流执行转换的查询。 最后一步是为作业定义输出接收器。  
 
-本操作方法指南介绍如何将聚合的推文事件从作业查询写入 Azure Blob 存储。  也可以将结果推送到 Azure SQL 数据库、Azure 表存储、事件中心或 Power BI，具体取决于应用程序需求。
+本操作指南会将聚合的推文事件从作业查询写入 Azure Blob 存储。  也可以将结果推送到 Azure SQL 数据库、Azure 表存储、事件中心或 Power BI，具体取决于应用程序需求。
 
 ## <a name="specify-the-job-output"></a>指定作业输出
 
@@ -343,7 +343,7 @@ ms.locfileid: "68620044"
 
 可用于了解 Twitter 情绪的另一个查询是基于[滑动窗口](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)。 为了确定热门话题，需查找指定时间内超出某一提及次数阈值的主题。
 
-为了实现本操作方法, 您将检查过去5秒内提到的主题是否超过20次。
+出于本操作指南的目的，需检查过去 5 秒内提及次数超过 20 次的主题。
 
 1. 在“作业”边栏选项卡中，单击“停止”以停止作业。 
 

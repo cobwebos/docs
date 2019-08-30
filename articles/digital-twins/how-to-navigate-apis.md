@@ -6,14 +6,14 @@ manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/29/2019
 ms.author: v-adgera
-ms.openlocfilehash: da1493d2d52f2c8a964df3b72c1622a9c6b66abf
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 8472a86800d13cedd228ca881a7c095ff748350a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719847"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172818"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>如何使用 Azure 数字孪生管理 API
 
@@ -35,11 +35,11 @@ Azure 数字孪生管理 API 为 IoT 应用提供强大的功能。 本文介绍
 
 * [/ontologies](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Ontologies)：这些 API 可帮助你管理本体，即，扩展类型的集合。 本体根据它们表示的物理空间提供对象类型的名称。 例如，*BACnet* 本体为 *sensortypes*、*datatypes*、*datasubtypes* 和 *dataunittypes* 提供特定的名称。 本体由服务托管和创建。 用户可以加载和卸载本体。 加载某个本体时，它的所有关联类型名称都将启用，并可在空间图形进行预配。 
 
-* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys)：可以使用这些 API 为空间、设备、用户和传感器创建自定义属性。     这些属性以键/值对的形式创建。 可以通过设置这些属性的 *PrimitiveDataType* 来为其定义数据类型。 例如，可为传感器定义名为 *BasicTemperatureDeltaProcessingRefreshTime*、类型为 *uint* 的属性，然后为每个传感器分配此属性的值。 还可以在创建属性时为这些值添加约束（例如 *Min* 和 *Max* 范围）以及允许的值（例如 *ValidationData*）。
+* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys)：可以使用这些 API 为空间、设备、用户和传感器创建自定义属性。 这些属性以键/值对的形式创建。 可以通过设置这些属性的 *PrimitiveDataType* 来为其定义数据类型。 例如，可为传感器定义名为 *BasicTemperatureDeltaProcessingRefreshTime*、类型为 *uint* 的属性，然后为每个传感器分配此属性的值。 还可以在创建属性时为这些值添加约束（例如 *Min* 和 *Max* 范围）以及允许的值（例如 *ValidationData*）。
 
 * [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers)：这些 API 用于指定要在传入的设备数据中评估的条件。 有关详细信息，请参阅[此文](concepts-user-defined-functions.md#matchers)。 
 
-* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions)：这些 API 用于创建、删除或更新当满足 *matchers* 定义的条件时要执行的自定义函数，以处理来自设置的数据。 有关这些自定义函数（也称为“用户定义的函数”）的详细信息，请参阅[此文](concepts-user-defined-functions.md#user-defined-functions)。  
+* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions)：这些 API 用于创建、删除或更新当满足 *matchers* 定义的条件时要执行的自定义函数，以处理来自设置的数据。 有关这些自定义函数（也称为“用户定义的函数”）的详细信息，请参阅[此文](concepts-user-defined-functions.md#user-defined-functions)。 
 
 * [/endpoints](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Endpoints)：这些 API 用于创建终结点，使数字孪生解决方案能够与其他 Azure 数据存储和分析服务通信。 有关详细信息，请阅读[此文](concepts-events-routing.md)。 
 
@@ -88,6 +88,7 @@ Azure 数字孪生管理 API 为 IoT 应用提供强大的功能。 本文介绍
 
 
 ## <a name="odata-support"></a>OData 支持
+
 返回集合的大多数 API（例如，针对 /spaces 的 GET 调用）都支持泛型 [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) 系统查询选项的以下子集：  
 
 * **$filter**
@@ -95,11 +96,12 @@ Azure 数字孪生管理 API 为 IoT 应用提供强大的功能。 本文介绍
 * **$top**
 * **$skip** - 如果你想要显示整个集合，应在单个调用中以完整集的形式发出此请求，然后在应用程序中执行分页。 
 
-请注意，不支持 $count、$expand、$search 等其他查询选项。
+> [!NOTE]
+> 目前尚不支持某些 OData 选项 (如查询选项 **$count**、 **$expand**和 **$search**)。
 
 ### <a name="examples"></a>示例
 
-以下列表显示了使用 OData 系统查询选项的一些查询示例：
+下面的列表描述了具有有效 OData 语法的几个查询:
 
 - `YOUR_MANAGEMENT_API_URL/devices?$top=3&$orderby=Name desc`
 - `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,’space’)`
@@ -108,9 +110,10 @@ Azure 数字孪生管理 API 为 IoT 应用提供强大的功能。 本文介绍
 - `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,’k’)&$orderby=LastName`
 - `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor’,Name)`
  
-
 ## <a name="next-steps"></a>后续步骤
 
-若要了解一些常用的 API 查询模式，请参阅[如何在常见任务中查询 Azure 数字孪生 API](how-to-query-common-apis.md)。
+若要了解一些常用的 API 查询模式，请参阅[如何在常见任务中查询 Azure 数字孪生 API](./how-to-query-common-apis.md)。
 
-若要了解有关 API 终结点的详细信息，请阅读[如何使用数字孪生 Swagger](./how-to-use-swagger.md)。
+若要了解有关 API 终结点的详细信息, 请参阅[如何使用数字孪生 Swagger](./how-to-use-swagger.md)。
+
+若要查看 OData 语法和可用的比较运算符, 请阅读[Azure 搜索中的 odata 比较运算符](../search/search-query-odata-comparison-operators.md)。

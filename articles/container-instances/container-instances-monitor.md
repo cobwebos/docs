@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 manager: gwallace
 ms.service: container-instances
-ms.topic: overview
+ms.topic: article
 ms.date: 04/24/2019
 ms.author: danlep
-ms.openlocfilehash: 4c1208d8cbc795e53128df0ccf93e79dc427abad
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: a26789bb41fb3fb1e7dec376b7e187f45745ea65
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325853"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172261"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>监视 Azure 容器实例中的容器资源
 
@@ -28,7 +28,7 @@ ms.locfileid: "68325853"
 
 目前，仅提供了 Linux 容器的 Azure Monitor 指标。
 
-## <a name="available-metrics"></a>可用指标
+## <a name="available-metrics"></a>可用的指标
 
 Azure Monitor 提供下述 [Azure 容器实例指标][supported-metrics]。 这些指标适用于容器组和单独的容器。
 
@@ -40,14 +40,14 @@ Azure Monitor 提供下述 [Azure 容器实例指标][supported-metrics]。 这�
 
 ## <a name="get-metrics---azure-portal"></a>获取指标 - Azure 门户
 
-创建容器组时，Azure Monitor 数据在 Azure 门户中可用。 若要查看容器组的指标，请转到容器组的“概览”页。  在这里可以看到为每个可用指标预先创建的图表。
+创建容器组时，Azure Monitor 数据在 Azure 门户中可用。 若要查看容器组的指标，请转到容器组的“概览”页。 在这里可以看到为每个可用指标预先创建的图表。
 
 ![双图表][dual-chart]
 
 在包含多个容器的容器组中，使用[维度][monitor-dimension]按容器显示指标。 若要创建包含个体容器指标的图表，请执行以下步骤：
 
-1. 在“概览”页中选择一个指标图表，例如“CPU”。   
-1. 选择“应用拆分”按钮，然后选择“容器名称”  。 
+1. 在“概览”页中选择一个指标图表，例如“CPU”。 
+1. 选择“应用拆分”按钮，然后选择“容器名称”。
 
 ![维度][dimension]
 

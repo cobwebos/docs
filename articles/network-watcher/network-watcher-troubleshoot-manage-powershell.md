@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: c1038059f52fdddaa52f3575440a20a6f884226f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40d576a980bd66fea44f9f8e4935fab3d777e4c8
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64690824"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163861"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>使用 Azure 网络观察程序 PowerShell 对虚拟网络网关和连接进行故障排除
 
@@ -49,8 +49,7 @@ ms.locfileid: "64690824"
 第一步是检索网络观察程序实例。 `$networkWatcher` 变量传递给步骤 4 中的 `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet。
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 ```
 
 ## <a name="retrieve-a-virtual-network-gateway-connection"></a>检索虚拟网络网关连接

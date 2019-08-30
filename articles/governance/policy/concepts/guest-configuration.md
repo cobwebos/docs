@@ -1,6 +1,6 @@
 ---
-title: 了解如何审核虚拟机的内容
-description: 了解 Azure Policy 如何使用来宾配置审核 Azure 虚拟机内部的设置。
+title: 了解如何审核计算机的内容
+description: 了解 Azure 策略如何使用来宾配置审核 Azure 计算机中的设置。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/18/2019
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 18a85fae7d2d241bd8d582db73c71e1d1472f04d
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: b6c9e50334a25b505655a49a02cd98165d04740b
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036314"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164953"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
-除了审核和[修正](../how-to/remediate-resources.md)azure 资源以外, azure 策略还可以审核虚拟机内的设置。 验证由来宾配置扩展和客户端执行。 扩展通过客户端验证设置，例如操作系统的配置、应用程序配置或状态以及环境设置等等。
+除了审核和[修正](../how-to/remediate-resources.md)azure 资源以外, azure 策略还可以审核计算机内部的设置。 验证由来宾配置扩展和客户端执行。 扩展通过客户端验证设置，例如操作系统的配置、应用程序配置或状态以及环境设置等等。
 
 目前, Azure 策略来宾配置仅在计算机内部执行设置审核。
 尚不能应用配置。
@@ -26,7 +26,7 @@ ms.locfileid: "70036314"
 
 ## <a name="extension-and-client"></a>扩展和客户端
 
-为审核虚拟机内部的设置，已启用[虚拟机扩展](../../../virtual-machines/extensions/overview.md)。 该扩展下载适用的策略分配和相应的配置定义。
+若要审核虚拟机中的设置, 请启用[虚拟机扩展](../../../virtual-machines/extensions/overview.md)。 该扩展下载适用的策略分配和相应的配置定义。
 
 ### <a name="limits-set-on-the-exension"></a>对 exension 设置的限制
 
@@ -60,7 +60,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="validation-tools"></a>验证工具
 
-在虚拟机内，来宾配置客户端使用本地工具运行审核。
+在计算机内部, 来宾配置客户端使用本地工具来运行审核。
 
 下表显示了每个受支持操作系统上本地工具的列表：
 
@@ -71,7 +71,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ### <a name="validation-frequency"></a>验证频率
 
-来宾配置客户端每 5 分钟检查一次新内容。 在收到来宾分配后，将按 15 分钟的时间间隔检查设置。 在审核完成后，结果会立即发送到来宾配置资源提供程序。 当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。 这会导致 Azure Policy 评估 Azure 资源管理器属性。 按需 Azure 策略评估检索来宾配置资源提供程序中的最新值。 但是，它不会触发对虚拟机中的配置执行新的审核。
+来宾配置客户端每 5 分钟检查一次新内容。 在收到来宾分配后，将按 15 分钟的时间间隔检查设置。 在审核完成后，结果会立即发送到来宾配置资源提供程序。 当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。 这会导致 Azure Policy 评估 Azure 资源管理器属性。 按需 Azure 策略评估检索来宾配置资源提供程序中的最新值。 但是, 它不会触发对计算机内配置的新审核。
 
 ## <a name="supported-client-types"></a>支持的客户端类型
 
@@ -96,7 +96,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="guest-configuration-extension-network-requirements"></a>来宾配置扩展网络要求
 
-要与 Azure 中的来宾配置资源提供程序通信, 虚拟机需要对端口**443**上的 Azure 数据中心的出站访问权限。 如果你使用的是 Azure 中的专用虚拟网络, 并且不允许出站流量, 则必须使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置例外。 目前, Azure 策略来宾配置不存在服务标记。
+要与 Azure 中的来宾配置资源提供程序通信, 计算机需要对端口**443**上的 Azure 数据中心的出站访问。 如果你使用的是 Azure 中的专用虚拟网络, 并且不允许出站流量, 则必须使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置例外。 目前, Azure 策略来宾配置不存在服务标记。
 
 对于 IP 地址列表, 你可以下载[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。 只需允许对部署了 Vm 的区域中的 Ip 进行出站访问。
 
@@ -105,12 +105,12 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 
-每个按来宾配置审核运行都需要两个策略定义: **DeployIfNotExists**定义和**AuditIfNotExists**定义。 **DeployIfNotExists**定义用于通过来宾配置代理和其他组件准备虚拟机, 以支持[验证工具](#validation-tools)。
+每个按来宾配置审核运行都需要两个策略定义: **DeployIfNotExists**定义和**AuditIfNotExists**定义。 **DeployIfNotExists**定义用于通过来宾配置代理和其他组件来准备计算机以支持[验证工具](#validation-tools)。
 
 “DeployIfNotExists”策略定义验证并更正以下项目：
 
-- 验证虚拟机已分配要评估的配置。 如果当前不存在任何分配，则获取分配并通过以下操作准备虚拟机：
-  - 使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)对虚拟机进行身份验证
+- 验证是否已为计算机分配了要评估的配置。 如果当前没有分配, 请通过以下方法获取分配并准备计算机:
+  - 使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)向计算机进行身份验证
   - 安装 Microsoft.GuestConfiguration 扩展的最新版本
   - 安装[验证工具](#validation-tools)和依赖项（如果需要）
 
@@ -125,11 +125,11 @@ Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“�
 > **AuditIfNotExists**策略需要**DeployIfNotExists**策略才能返回结果。
 > 如果没有**DeployIfNotExists**, 则**AuditIfNotExists**策略会将 "0 个 0" 资源显示为状态。
 
-来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：审核 Linux 和 Windows 虚拟机内的密码安全设置”的内置计划包含 18 个策略。 对于 Windows 有六个 DeployIfNotExists 和 AuditIfNotExists 对，对于 Linux 有三个对。 在每种情况下，都可使用定义内的逻辑验证仅基于[策略规则](definition-structure.md#policy-rule)定义评估目标操作系统。
+来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：*Linux 和 Windows 计算机*内的审核密码安全设置包含18个策略。 对于 Windows 有六个 DeployIfNotExists 和 AuditIfNotExists 对，对于 Linux 有三个对。 在每种情况下，都可使用定义内的逻辑验证仅基于[策略规则](definition-structure.md#policy-rule)定义评估目标操作系统。
 
 ### <a name="multiple-assignments"></a>多个分配
 
-来宾配置策略目前仅支持对每个虚拟机分配相同的来宾分配, 即使策略分配使用不同的参数也是如此。
+来宾配置策略目前仅支持对每台计算机分配相同的来宾分配, 即使策略分配使用不同的参数也是如此。
 
 ## <a name="client-log-files"></a>客户端日志文件
 

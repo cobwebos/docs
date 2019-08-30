@@ -7,10 +7,6 @@
       items:
         - name: Linux 容器中的 Web 应用
           href: secure-web-app.md
-    - name: 符合行业标准的解决方案
-      items:
-        - name: 支付卡行业
-          href: secure-pci-web-app.md
 - name: 概念
   expanded: true
   items:

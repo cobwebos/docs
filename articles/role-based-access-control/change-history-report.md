@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 842d3146bf1927871e29eb750cde09e9029b7c12
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5758f480c9216cf71e47509682053b39f0b15bf
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242103"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172406"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>查看 Azure 资源的 RBAC 更改的活动日志
 
@@ -43,10 +43,10 @@ ms.locfileid: "66242103"
 
 门户中的活动日志有多个筛选器。 下面是与 RBAC 相关的筛选器：
 
-|筛选器  |值  |
+|筛选  |ReplTest1  |
 |---------|---------|
 |事件类别     | <ul><li>管理</li></ul>         |
-|Operation     | <ul><li>创建角色分配</li> <li>删除角色分配</li> <li>创建或更新自定义角色定义</li> <li>删除自定义角色定义</li></ul>      |
+|操作     | <ul><li>创建角色分配</li> <li>删除角色分配</li> <li>创建或更新自定义角色定义</li> <li>删除自定义角色定义</li></ul>      |
 
 
 若要详细了解活动日志，请参阅[查看活动日志中的事件](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)。
@@ -110,7 +110,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)是另一个工具可用于收集和分析所有 Azure 资源的 RBAC 更改。 Azure Monitor 日志具有以下优势：
+[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)是另一种工具, 可用于收集和分析所有 Azure 资源的 RBAC 更改。 Azure Monitor 日志具有以下优势:
 
 - 编写复杂查询和逻辑
 - 与警报、Power BI 和其他工具集成
@@ -123,9 +123,9 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 1. 为工作区[配置 Activity Log Analytics 解决方案](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。
 
-1. [查看活动日志](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。 导航到活动 Log Analytics 解决方案概述页的快速方法是单击**Log Analytics**选项。
+1. [查看活动日志](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。 导航到 "Activity Log Analytics 解决方案概述" 页的快捷方式是单击 " **Log Analytics** " 选项。
 
-   ![Azure 监视器在门户中将记录选项](./media/change-history-report/azure-log-analytics-option.png)
+   ![门户中 Azure Monitor 日志选项](./media/change-history-report/azure-log-analytics-option.png)
 
 1. 可以选择使用[日志搜索](../log-analytics/log-analytics-log-search.md)页面或[高级分析门户](../azure-monitor/log-query/get-started-portal.md)来查询并查看日志。 若要详细了解这两种选择，请参阅[日志搜索页面或高级分析门户](../azure-monitor/log-query/portals.md)。
 
@@ -133,7 +133,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 ```
 AzureActivity
-| where TimeGenerated > ago(60d) and OperationName startswith "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
+| where TimeGenerated > ago(60d) and OperationNameValue startswith "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
 | parse ResourceId with * "/providers/" TargetResourceAuthProvider "/" *
 | summarize count(), makeset(Caller) by TargetResourceAuthProvider
 ```
@@ -142,8 +142,8 @@ AzureActivity
 
 ```
 AzureActivity
-| where TimeGenerated > ago(60d) and OperationName startswith "Microsoft.Authorization/roleAssignments"
-| summarize count() by bin(TimeGenerated, 1d), OperationName
+| where TimeGenerated > ago(60d) and OperationNameValue startswith "Microsoft.Authorization/roleAssignments"
+| summarize count() by bin(TimeGenerated, 1d), OperationNameValue
 | render timechart
 ```
 

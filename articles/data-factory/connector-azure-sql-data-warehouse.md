@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 45f7db943499b8a722b8e203d676d1d80eb5091e
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 49a0c7597e8d44e3f60e2d3b6bd4c14cad1524b5
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996678"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172628"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本:"]
@@ -536,6 +536,10 @@ PolyBase 负载限制为小于 1 MB 的行。 不能用它加载到 VARCHR(MAX)�
 
 另外，对于列这样宽的数据，可以使用非 PolyBase 通过 ADF 来加载数据，只需关闭“允许 PolyBase”设置即可。
 
+### <a name="sql-data-warehouse-resource-class"></a>SQL 数据仓库资源类
+
+若要实现最佳吞吐量，请将更大的资源类分配给通过 PolyBase 在 SQL 数据仓库中加载数据的用户。
+
 ### <a name="polybase-troubleshooting"></a>排查 PolyBase 问题
 
 **加载到“小数”列**
@@ -549,13 +553,7 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 解决方案是在复制活动接收器 -> PolyBase 设置中取消选中“使用类型默认值”选项（为 false）。 “[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
 )”是 PolyBase 本机配置，用于指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。 
 
-**其他**
-
-### <a name="sql-data-warehouse-resource-class"></a>SQL 数据仓库资源类
-
-若要实现最佳吞吐量，请将更大的资源类分配给通过 PolyBase 在 SQL 数据仓库中加载数据的用户。
-
-### <a name="tablename-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的 **tableName**
+**`tableName`在 Azure SQL 数据仓库中**
 
 下表举例说明如何在 JSON 数据集中指定 **tableName** 属性。 其中显示了架构和表名称的多个组合。
 
@@ -572,7 +570,7 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
 ```
 
-### <a name="columns-with-default-values"></a>具有默认值的列
+**具有默认值的列**
 
 目前，数据工厂中的 PolyBase 功能只接受与目标表中相同数量的列。 例如，某个表包含四列，其中一列定义了默认值。 输入数据仍需包含四列。 包含三列的输入数据集生成类似于以下消息的错误：
 

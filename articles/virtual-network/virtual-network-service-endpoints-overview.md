@@ -13,38 +13,37 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: e36e1ca17b5106c79076d1c62e737ba60907ab19
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8420142e67fe4af12045a2b6fe7f7461ef384f81
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666459"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164476"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
 虚拟网络 (VNet) 服务终结点可通过直接连接将 VNet 的虚拟网络专用地址空间和标识扩展到 Azure 服务。 使用终结点可以保护关键的 Azure 服务资源，只允许在客户自己的虚拟网络中对其进行访问。 从 VNet 发往 Azure 服务的流量始终保留在 Microsoft Azure 主干网络中。
 
-此功能针对以下 Azure 服务和区域提供：
+此功能适用于以下 Azure 服务和区域, 你还将在括号中找到需要从子网端启用的 Microsoft. * 资源, 同时为你的服务配置服务终结点:
 
 **正式发布版**
 
-- **[Azure 存储](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** ：在所有 Azure 区域正式发布。
-- **[Azure SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在所有 Azure 区域正式发布。
-- **[Azure SQL 数据仓库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在所有 Azure 区域正式发布。
-- **[Azure Database for PostgreSQL 服务器](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Database for MySQL 服务器](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** ：在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在所有 Azure 区域正式发布。
-- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)** ：在所有 Azure 区域正式发布。
-- **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在所有 Azure 区域正式发布。
-- **[Azure 事件中心](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在所有 Azure 区域正式发布。
-- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在提供了 ADLS Gen1 的所有 Azure 区域正式发布。
-- **[Azure 应用服务](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** :在应用服务已上市的所有 Azure 区域公开发布
+- **[Azure 存储](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (Microsoft 存储):在所有 Azure 区域正式发布。
+- **[AZURE SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (.Sql):在所有 Azure 区域正式发布。
+- **[AZURE SQL 数据仓库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (.Sql):在所有 Azure 区域正式发布。
+- **[Azure Database for PostgreSQL 服务器](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (.Sql):在可以使用数据库服务的 Azure 区域中通常可用。
+- **[Azure Database for MySQL 服务器](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (.Sql):在可以使用数据库服务的 Azure 区域中通常可用。
+- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (.Sql):在可以使用数据库服务的 Azure 区域中通常可用。
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (AzureCosmosDB):在所有 Azure 区域正式发布。
+- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)** (KeyVault):在所有 Azure 区域正式发布。
+- **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Node.js):在所有 Azure 区域正式发布。
+- **[Azure 事件中心](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Node.js):在所有 Azure 区域正式发布。
+- **[Azure Data Lake Store 第1代](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (AzureActiveDirectory):在提供了 ADLS Gen1 的所有 Azure 区域正式发布。
+- **[Azure 应用服务](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** ：通常可在应用服务可用的所有 Azure 区域中使用
 
 **公共预览版**
 
-- **[Azure 容器注册表](../container-registry/container-registry-vnet.md)** :在 Azure 容器注册表是可用的所有 Azure 区域中预览可用。
-.
+- **[Azure 容器注册表](../container-registry/container-registry-vnet.md)** (Microsoft.containerregistry):可用 Azure 容器注册表的所有 Azure 区域提供预览版。
 
 有关最新通知，请查看 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。
 
@@ -63,7 +62,7 @@ ms.locfileid: "67666459"
 - 该功能仅适用于使用 Azure 资源管理器部署模型部署的虚拟网络。
 - 终结点在 Azure 虚拟网络中配置的子网上启用。 终结点不可用于从本地发往 Azure 服务的流量。 有关详细信息，请参阅[保护从本地进行的 Azure 服务访问](#securing-azure-services-to-virtual-networks)
 - 对于 Azure SQL，服务终结点仅适用于虚拟网络区域中的 Azure 服务流量。 对于 Azure 存储，为了支持 RA-GRS 和 GRS 流量，终结点还进行扩展以包括虚拟网络所部署到的配对区域。 详细了解 [Azure 配对区域](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)。
-- 就 ADLS Gen 1 来说，VNet 集成功能仅适用于同一区域中的虚拟网络。 此外请注意，Azure 数据湖存储 Gen1 的虚拟网络集成，可以使用虚拟网络服务终结点之间的安全虚拟网络和 Azure Active Directory (Azure AD) 中的访问令牌生成额外的安全声明。 然后，系统会使用这些声明对 Data Lake Storage Gen1 帐户进行虚拟网络身份验证，然后允许访问。 列出服务支持服务终结点下的"Microsoft.AzureActiveDirectory"标记仅用于支持 ADLS 第 1 代的服务终结点。 Azure Active Directory (Azure AD) 并不本机支持服务终结点。 详细了解如何[Azure 数据湖存储 Gen 1 VNet 集成](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 就 ADLS Gen 1 来说，VNet 集成功能仅适用于同一区域中的虚拟网络。 另请注意, Azure Data Lake Storage Gen1 的虚拟网络集成利用虚拟网络和 Azure Active Directory (Azure AD) 之间的虚拟网络服务终结点安全, 在访问令牌中生成附加的安全声明。 然后，系统会使用这些声明对 Data Lake Storage Gen1 帐户进行虚拟网络身份验证，然后允许访问。 服务支持服务终结点下列出的 "AzureActiveDirectory" 标记仅用于支持服务终结点到 ADLS 第1代。 Azure Active Directory (Azure AD) 不以本机方式支持服务终结点。 详细了解[Azure Data Lake Store 第1代 VNet 集成](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>在虚拟网络中保护 Azure 服务
 
@@ -122,7 +121,7 @@ ms.locfileid: "67666459"
 
 ## <a name="provisioning"></a>设置
 
-对虚拟网络拥有写入访问权限的用户可在虚拟网络上单独配置服务终结点。 若要保护与 VNet 的 Azure 服务资源，用户必须有权*Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action*正在添加的子网。 此权限默认包含在内置的服务管理员角色中，可以通过创建自定义角色进行修改。
+对虚拟网络拥有写入访问权限的用户可在虚拟网络上单独配置服务终结点。 若要在 VNet 中保护 Azure 服务资源，用户必须对所添加的子网拥有“Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action”权限。 此权限默认包含在内置的服务管理员角色中，可以通过创建自定义角色进行修改。
 
 详细了解[内置角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)以及将特定的权限分配到[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
@@ -140,7 +139,7 @@ ms.locfileid: "67666459"
 
 使用虚拟网络服务终结点策略可以通过服务终结点筛选发往 Azure 服务的虚拟网络流量，以便仅允许特定的 Azure 服务资源。 服务终结点策略针对发往 Azure 服务的虚拟网络流量提供精细的访问控制。 更多信息：[虚拟网络服务终结点策略](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
-## <a name="faqs"></a>常见问题解答
+## <a name="faqs"></a>常见问题
 
 有关常见问题，请查看[虚拟网络服务终结点常见问题解答](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)
 

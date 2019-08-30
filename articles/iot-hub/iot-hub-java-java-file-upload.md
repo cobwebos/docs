@@ -9,14 +9,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 3ef727c4d1f1af13b66c7de02b8e67cc5e45f065
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 81b80edcd2e880488e203960f8e2a6aa71b69679
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147479"
+ms.locfileid: "70161817"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>通过 IoT 中心将文件从设备上传到云 (Java)
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>使用 IoT 中心将文件从设备上传到云 (Java)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
@@ -46,9 +46,9 @@ ms.locfileid: "70147479"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 最新的 [Java SE 开发工具包 8](https://aka.ms/azure-jdks)
+* [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 请确保选择**长期支持**下的**Java 8** , 以获取 JDK 8 的下载。
 
-* [Maven 3](https://maven.apache.org/install.html)
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
@@ -122,7 +122,7 @@ ms.locfileid: "70147479"
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-在本文中, 你将创建一个后端服务, 以接收从[设备发送遥测到 iot 中心](quickstart-send-telemetry-java.md)中创建的 IoT 中心的文件上传通知消息。 若要接收文件上传通知消息, 您的服务需要**服务连接**权限。 默认情况下, 每个 IoT 中心都创建有一个名为 "**服务**" 的共享访问策略, 该策略将授予此权限。
+在本文中，你将创建一项后端服务，用于从你在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)中创建的 IoT 中心接收文件上传通知消息。 若要接收文件上传通知消息，服务需要“服务连接”权限。 默认情况下，每个 IoT 中心都使用名为 **service** 的共享访问策略创建，该策略授予此权限。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -165,7 +165,7 @@ ms.locfileid: "70147479"
     import java.util.concurrent.Executors;
     ```
 
-7. 将以下类级变量添加到 **App** 类。 将`{Your IoT Hub connection string}`占位符值替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串:
+7. 将以下类级变量添加到 **App** 类。 将 `{Your IoT Hub connection string}` 占位符值替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串：
 
     ```java
     private static final String connectionString = "{Your IoT Hub connection string}";

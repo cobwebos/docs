@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f4f081001f2573bccc58205ccc7955739b7f5c4c
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779290"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170661"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -52,8 +52,10 @@ ms.locfileid: "68779290"
 ## <a name="private-site-access"></a>专用站点访问
 
 专用站点访问指的是仅可从专用网络（例如 Azure 虚拟网络内）对应用进行访问。 
-* 配置**服务终结点**时, 可在[高级](./functions-premium-plan.md)和[应用服务计划](functions-scale.md#app-service-plan)中获取专用站点访问。 有关详细信息, 请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
-    * 请注意, 对于服务终结点, 即使配置了虚拟网络集成, 函数仍具有 internet 的完全出站访问权限。
+* 配置**服务终结点**时,[高级](./functions-premium-plan.md)、[消费](functions-scale.md#consumption-plan)和[应用服务计划](functions-scale.md#app-service-plan)中提供了专用站点访问。 
+    * 可以基于每个应用在平台功能 > 网络上配置服务终结点, > 配置访问限制 > 添加规则。 现在可以选择虚拟网络作为规则的 "类型"。
+    * 有关详细信息, 请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
+        * 请注意, 对于服务终结点, 即使配置了虚拟网络集成, 函数仍具有 internet 的完全出站访问权限。
 * 通过使用内部负载均衡器 (ILB) 配置的应用服务环境, 还可以使用专用站点访问。 有关详细信息, 请参阅[创建和使用带有应用服务环境的内部负载均衡器](../app-service/environment/create-ilb-ase.md)。
 
 ## <a name="virtual-network-integration"></a>虚拟网络集成
@@ -99,6 +101,13 @@ VNet 集成不支持某些功能，其中包括：
 * [网关所需的 VNet 集成](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
 若要详细了解如何使用虚拟网络集成, 请参阅将[function app 与 Azure 虚拟网络集成](functions-create-vnet.md)。
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>将存储帐户限制在虚拟网络中
+
+> [!note] 
+> 暂时, 一旦你配置了对该存储帐户的访问限制, 则你的存储帐户最多可能需要12小时才能供函数应用使用。 在这段时间内, 应用程序将完全脱机。
+
+为了提供更高级别的安全性, 你可以将应用程序的存储帐户限制为虚拟网络。 然后, 你必须将你的站点与该虚拟网络集成, 才能访问你的存储帐户。 支持虚拟网络集成的所有计划都支持此配置。
 
 ## <a name="virtual-network-triggers-non-http"></a>虚拟网络触发器 (非 HTTP)
 

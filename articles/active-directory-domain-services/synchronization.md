@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 85b1e3eae9d7472fa829665707fca481a28f0623
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 88a5e5fa1267e834a04c46ed38868cf74acd9bb0
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011278"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171926"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>如何在 Azure AD 域服务托管域中同步对象和凭据
 
@@ -30,7 +30,7 @@ ms.locfileid: "70011278"
 
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>从 Azure AD 到 Azure AD DS 的同步
 
-用户帐户、组成员身份和凭据哈希从 Azure AD 同步到 Azure AD DS。 此同步过程是自动的。 不需要配置、监视或管理此同步过程。 初始同步可能需要几个小时到几天的时间, 具体取决于 Azure AD 目录中的对象数。 初始同步完成后, 在 Azure AD 中进行的更改 (如密码或属性更改) 大约需要20-30 分钟才能在 Azure AD DS 中更新。
+用户帐户、组成员身份和凭据哈希从 Azure AD 同步到 Azure AD DS。 此同步过程是自动的。 不需要配置、监视或管理此同步过程。 初始同步可能需要几个小时到几天的时间, 具体取决于 Azure AD 目录中的对象数。 初始同步完成后, 在 Azure AD 中所做的更改 (如密码或属性更改) 将自动同步到 Azure AD DS。
 
 按照设计, 同步过程是一种方法。 Azure AD DS 中的更改不会反向同步回 Azure AD。 除了可以创建的自定义 Ou 外, Azure AD DS 托管域在大部分情况上都是只读的。 不能更改 Azure AD DS 托管域中的用户属性、用户密码或组成员身份。
 

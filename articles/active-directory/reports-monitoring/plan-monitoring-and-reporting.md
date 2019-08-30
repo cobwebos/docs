@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f974b3564857a439f1ac1c40ddd572633b761862
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6d24a4ab74f7957c068fc664fc4e8898c525afcb
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879861"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162545"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>规划 Azure Active Directory 报告和监视部署
 
@@ -73,11 +73,11 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志, 包括�
 
 ### <a name="engage-the-right-stakeholders"></a>吸引适当的利益干系人
 
-当技术项目失败时, 它们通常是由于对影响、结果和责任的预期不匹配而导致的。 若要避免这些问题, 请[确保您参与到了正确的利益干系人](https://aka.ms/deploymentplans)。 还要确保通过记录利益干系人及其项目输入和责任, 充分了解项目中的利益干系人角色。
+当技术项目失败时，失败的原因往往是对影响、结果和责任的预期不符。 若要避免这些问题, 请[确保您参与到了正确的利益干系人](https://aka.ms/deploymentplans)。 还要确保通过记录利益干系人及其项目输入和责任, 充分了解项目中的利益干系人角色。
 
 ### <a name="plan-communications"></a>规划沟通
 
-通信对于任何新服务的成功至关重要。 主动与用户交流他们的体验将如何更改, 何时会发生更改, 以及在遇到问题时如何获取支持。
+沟通对于任何新服务的成功至关重要。 主动与用户交流他们的体验将如何更改, 何时会发生更改, 以及在遇到问题时如何获取支持。
 
 ### <a name="document-your-current-infrastructure-and-policies"></a>记录你当前的基础结构和策略
 
@@ -164,8 +164,6 @@ Azure AD 角色使你能够根据你的角色委托配置和查看 Azure AD 报�
 ### <a name="consume-and-archive-azure-ad-logs"></a>使用和存档 Azure AD 日志
 
 [在 Azure 门户中查找活动报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-find-activity-reports)
-
-[使用 Azure AD 的 Power BI 内容包](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack)
 
 [将 Azure AD 日志存档到 Azure 存储帐户](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account)
 

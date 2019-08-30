@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: ef51a1b130323a8799d5334d8d043fda08fcc7ef
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 6ea4dbf07c8ef99c43dbe7add1ae9270056f708c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896965"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164330"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>使用 Azure CLI (预览版) 为容器或 blob 创建用户委托 SAS
 
@@ -85,7 +85,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 ### <a name="create-a-user-delegation-sas-for-a-blob"></a>为 blob 创建用户委托 SAS
 
-若要为带有 Azure CLI 的 blob 创建用户委托 SAS, 请调用[az storage blob 生成 sas](/cli/azure/storage/blob#az-storage-blob-generate-sas)命令。
+若要为具有 Azure CLI 的 blob 创建用户委托 SAS, 请调用[az storage blob 生成 sas](/cli/azure/storage/blob#az-storage-blob-generate-sas)命令。
 
 Blob 上的用户委托 SAS 支持的权限包括添加、创建、删除、读取和写入。 权限可以单独指定或组合指定。 有关这些权限的详细信息, 请参阅[创建用户委托 SAS](/rest/api/storageservices/create-user-delegation-sas)。
 
@@ -112,6 +112,21 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 > [!NOTE]
 > 用户委托 SAS 不支持使用存储访问策略定义权限。
+
+## <a name="revoke-a-user-delegation-sas"></a>撤消用户委托 SAS
+
+若要从 Azure CLI 撤消用户委托 SAS, 请调用[az storage account revoke-keys](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys)命令。 此命令吊销与指定存储帐户关联的所有用户委托密钥。 与这些密钥关联的所有共享访问签名都将失效。
+
+请务必将尖括号中的占位符值替换为你自己的值：
+
+```azurecli-interactive
+az storage account revoke-delegation-keys \
+    --name <storage-account> \
+    --resource-group <resource-group>
+```
+
+> [!IMPORTANT]
+> 用户委托密钥和 RBAC 角色分配都是由 Azure 存储缓存的, 因此, 在启动吊销过程和现有用户委派 SAS 变为无效之间可能存在延迟。
 
 ## <a name="next-steps"></a>后续步骤
 

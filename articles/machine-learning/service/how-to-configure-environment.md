@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 220f68461d47293e9f43a650e4fa5d1d59bce02f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 33ee006a704cec1fb0d75a953629aec68461a4f4
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128338"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165188"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -76,7 +76,7 @@ Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azu
 
 + **可自定义**。 尽管提供了托管安全的 VM 产品/服务, 但仍保留了对硬件功能的完全访问权限, 并对其进行自定义以满足你的需求。 例如, 快速创建最新的 NVidia V100 支持的 VM, 以执行 novel 神经网络体系结构的分步调试。
 
-若要停止产生笔记本 VM 费用, 请[停止笔记本 vm](tutorial-1st-experiment-sdk-setup.md#stop-the-notebook-vm)。 
+若要停止产生笔记本 VM 费用, 请[停止笔记本 vm](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。 
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 

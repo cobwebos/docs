@@ -7,20 +7,20 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 12b88e14ed1d20ad26c9c8832877da08d3d98523
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 235ad37c5cf5f8ac7e801a6d25e961d32c1b7aad
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146129"
+ms.locfileid: "70164925"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建来宾配置策略
 
-来宾配置使用[Desired State configuration](/powershell/dsc) (DSC) 资源模块来创建用于审核 Azure 虚拟机的配置。 DSC 配置定义虚拟机应处于的状态。 如果评估配置失败, 则会触发策略影响**审核**, 并且虚拟机被视为**不符合**。
+来宾配置使用[Desired State configuration](/powershell/dsc) (DSC) 资源模块来创建用于审核 Azure 计算机的配置。 DSC 配置定义计算机应处于的状态。 如果评估配置失败, 则会触发策略效果**auditIfNotExists** , 并将计算机视为**不符合**。
 
-[Azure 策略来宾配置](/azure/governance/policy/concepts/guest-configuration)只能用于审核虚拟机内的设置。 虚拟机内的设置的修正功能尚不可用。
+[Azure 策略来宾配置](/azure/governance/policy/concepts/guest-configuration)只能用于审核计算机内部的设置。 计算机内的设置的修正功能尚不可用。
 
-使用以下操作创建自己的配置, 以验证 Azure 虚拟机的状态。
+使用以下操作创建自己的配置, 以验证 Azure 计算机的状态。
 
 > [!IMPORTANT]
 > 使用来宾配置的自定义策略是一项预览功能。
@@ -133,18 +133,18 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 - **路径**：输出文件夹路径。 此参数是可选的。 如果未指定, 则将在当前目录中创建包。
 - **ChefProfilePath**:InSpec 配置文件的完整路径。 仅在将内容创建到审核 Linux 时支持此参数。
 
-已完成的包必须存储在被管理的虚拟机可访问的位置。 示例包括 GitHub 存储库、Azure 存储库或 Azure 存储。 如果你不想使包成为公共包, 可以在 URL 中包含[SAS 令牌](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 你还可以在专用网络中实现虚拟机的[服务终结点](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network), 尽管此配置仅适用于访问包, 而不会与服务通信。
+已完成的包必须存储在被管理的虚拟机可访问的位置。 示例包括 GitHub 存储库、Azure 存储库或 Azure 存储。 如果你不想使包成为公共包, 可以在 URL 中包含[SAS 令牌](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 你还可以实现专用网络中的计算机的[服务终结点](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network), 尽管此配置仅适用于访问包, 而不会与服务通信。
 
 ### <a name="working-with-secrets-in-guest-configuration-packages"></a>使用来宾配置包中的机密
 
 在 Azure 策略来宾配置中, 管理运行时使用的机密的最佳方式是将它们存储在 Azure Key Vault 中。 此设计在自定义 DSC 资源内实现。
 
-首先, 在 Azure 中创建用户分配的托管标识。 虚拟机使用该标识来访问存储在 Key Vault 中的机密。 有关详细步骤, 请参阅[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。
+首先, 在 Azure 中创建用户分配的托管标识。 计算机使用该标识来访问存储在 Key Vault 中的机密。 有关详细步骤, 请参阅[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。
 
 接下来, 创建 Key Vault 实例。 有关详细步骤, 请参阅[设置和检索机密-PowerShell](../../../key-vault/quick-create-powershell.md)。
 向实例分配权限, 以向用户分配的标识授予对存储在 Key Vault 中的机密的访问权限。 有关详细步骤, 请参阅[设置和检索机密-.net](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault)。
 
-然后, 将用户分配的标识分配给虚拟机。 有关详细步骤, 请参阅[使用 PowerShell 在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)。
+然后, 将用户分配的标识分配给您的计算机。 有关详细步骤, 请参阅[使用 PowerShell 在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)。
 大规模, 使用 Azure 资源管理器通过 Azure 策略分配此标识。 有关详细步骤, 请参阅[使用模板在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)。
 
 最后, 在自定义资源中使用上面生成的客户端 ID 通过计算机上提供的令牌访问 Key Vault。 可以`client_id`将 Key Vault 实例的和 url 作为[属性](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema)传递给资源, 这样就不需要为多个环境更新资源, 也不需要更改这些值。
@@ -165,7 +165,7 @@ $credential = New-Object System.Management.Automation.PSCredential('secret',$val
 
 ## <a name="test-a-guest-configuration-package"></a>测试来宾配置包
 
-创建配置包后, 但在将其发布到 Azure 之前, 可以从工作站或 CI/CD 环境测试包的功能。 GuestConfiguration 模块包含一个 cmdlet, `Test-GuestConfigurationPackage`该 cmdlet 在你的开发环境中加载与在 Azure 虚拟机中使用的相同的代理。 使用此解决方案, 你可以在发布到计费的测试/QA/生产环境之前, 在本地执行集成测试。
+创建配置包后, 但在将其发布到 Azure 之前, 可以从工作站或 CI/CD 环境测试包的功能。 GuestConfiguration 模块包含一个 cmdlet, `Test-GuestConfigurationPackage`该 cmdlet 在你的开发环境中加载与在 Azure 计算机中使用相同的代理。 使用此解决方案, 你可以在发布到计费的测试/QA/生产环境之前, 在本地执行集成测试。
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
@@ -187,7 +187,7 @@ New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConf
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>创建 Azure 策略定义和计划部署文件
 
-创建来宾配置自定义策略包并将其上传到虚拟机可访问的位置后, 请创建 Azure 策略的来宾配置策略定义。 Cmdlet 采用可公开访问的来宾配置自定义策略包, 并创建**auditIfNotExists**和 deployIfNotExists 策略定义。 `New-GuestConfigurationPolicy` 同时还会创建包括两个策略定义的策略计划定义。
+创建来宾配置自定义策略包并将其上传到计算机可访问的位置后, 请创建 Azure 策略的来宾配置策略定义。 Cmdlet 采用可公开访问的来宾配置自定义策略包, 并创建**auditIfNotExists**和 deployIfNotExists 策略定义。 `New-GuestConfigurationPolicy` 同时还会创建包括两个策略定义的策略计划定义。
 
 以下示例在来自 Windows 的来宾配置自定义策略包的指定路径中创建策略和计划定义, 并提供名称、说明和版本:
 
@@ -220,7 +220,7 @@ New-GuestConfigurationPolicy
 
 Cmdlet 输出返回一个对象, 该对象包含策略文件的计划显示名称和路径。
 
-如果要使用此命令基架自定义策略项目, 可以对这些文件进行更改。 例如, 将修改 "If" 部分, 以评估是否存在用于虚拟机的特定标记。 有关创建策略的详细信息, 请参阅[以编程方式创建策略](./programmatically-create.md)。
+如果要使用此命令基架自定义策略项目, 可以对这些文件进行更改。 例如, 将修改 "If" 节, 以评估计算机是否存在特定标记。 有关创建策略的详细信息, 请参阅[以编程方式创建策略](./programmatically-create.md)。
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>使用自定义来宾配置策略中的参数
 
@@ -337,7 +337,7 @@ DSC 社区已发布工具, 用于将导出的组策略模板转换为 DSC 格式
 默认情况下, 来宾配置自定义策略使用 SHA256 哈希来验证策略包在被审核的服务器读取时是否已从发布到该策略包。
 客户还可以使用证书对包进行签名, 并强制来宾配置扩展仅允许已签名的内容。
 
-若要启用此方案, 需要完成两个步骤。 运行 cmdlet 以对内容包进行签名, 并将标记追加到需要对代码进行签名的虚拟机。
+若要启用此方案, 需要完成两个步骤。 运行 cmdlet 以对内容包进行签名, 并将标记追加到需要对代码进行签名的计算机。
 
 若要使用签名验证功能, 请运行`Protect-GuestConfigurationPackage` cmdlet 以在包发布之前对包进行签名。 此 cmdlet 需要 "代码签名" 证书。
 
@@ -353,17 +353,17 @@ Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindo
 - **PrivateGpgKeyPath**:私有 GPG 密钥路径。 仅在为 Linux 签名内容时才支持此参数。
 - **PublicGpgKeyPath**:公共 GPG 密钥路径。 仅在为 Linux 签名内容时才支持此参数。
 
-GuestConfiguration 代理需要在 Windows 计算机上的 "受信任的根证书颁发机构" 和 Linux 计算机上的路径`/usr/local/share/ca-certificates/extra`中显示证书公钥。 要使节点验证签名内容, 请在应用自定义策略之前在虚拟机上安装证书公钥。 可以使用 VM 内的任何方法或使用 Azure 策略来完成此过程。 [此处提供](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)了一个示例模板。
+GuestConfiguration 代理需要在 Windows 计算机上的 "受信任的根证书颁发机构" 和 Linux 计算机上的路径`/usr/local/share/ca-certificates/extra`中显示证书公钥。 要使节点验证签名内容, 请在应用自定义策略之前在计算机上安装证书公钥。 可以使用 VM 内的任何方法或使用 Azure 策略来完成此过程。 [此处提供](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)了一个示例模板。
 Key Vault 访问策略必须允许计算资源提供程序在部署过程中访问证书。 有关详细步骤, 请参阅[在 Azure 资源管理器中为虚拟机设置 Key Vault](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)。
 
-下面是从签名证书导出公钥以导入到虚拟机的示例。
+下面是从签名证书导出公钥以导入到计算机的示例。
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert3") } | Select-Object -First 1
 $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
-GitHub 上的一篇文章提供了一个用于创建用于 Linux 虚拟机的 GPG 密钥的好参考, 其中[生成了新的 GPG 密钥](https://help.github.com/en/articles/generating-a-new-gpg-key)。
+GitHub 上的一篇文章提供了一个用于创建用于 Linux 计算机的 GPG 密钥的好参考, 其中[生成了新的 GPG 密钥](https://help.github.com/en/articles/generating-a-new-gpg-key)。
 
 发布内容后, 会将名称`GuestConfigPolicyCertificateValidation`和值`enabled`的标记追加到需要进行代码签名的所有虚拟机。 可以使用 Azure 策略大规模传递此标记。 请参阅[应用标记及其默认值](../samples/apply-tag-default-value.md)示例。
 完成此标记后, 使用`New-GuestConfigurationPolicy` cmdlet 生成的策略定义将通过来宾配置扩展启用要求。

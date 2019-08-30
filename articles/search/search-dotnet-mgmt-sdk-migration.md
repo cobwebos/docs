@@ -2,19 +2,19 @@
 title: 升级到 Azure 搜索 .NET 管理 SDK 版本 2 - Azure 搜索
 description: 从以前版本升级到 Azure 搜索 .NET 管理 SDK 版本 2。 了解新增功能和所需的代码更改。
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 ms.author: brjohnst
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 62c2ed555fcac56677f4950c10d38ded8fb0649d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a59cff7f5313b0ac5a060d698950a4c82160f67
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65025177"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182251"
 ---
 # <a name="upgrading-to-the-azure-search-net-management-sdk-version"></a>升级到 Azure 搜索 .NET 管理 SDK 版本 
 

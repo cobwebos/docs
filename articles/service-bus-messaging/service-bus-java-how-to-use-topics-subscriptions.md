@@ -14,15 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019
-ms.openlocfilehash: 822fadb661fd9fcdde8ff75fa4f9e60dfa44c97b
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.custom: seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 2e64f996a346e0241fd5feefb11a38a0c8605b27
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663405"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173401"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>如何通过 Java 使用服务总线主题和订阅
+# <a name="use-service-bus-topics-and-subscriptions-with-java"></a>通过 Java 使用 Service Bus 主题和订阅
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 

@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 390e49a09136c21f3fd2f6555c0d56fde6e3b267
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 38da6d39d095ce27cdd26719d9b8b752d2921bc0
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388082"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164772"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>开发用于实现云一致性的 Azure 资源管理器模板
 
@@ -47,7 +47,7 @@ Microsoft 在很多位置提供了面向企业的智能云服务，其中包括�
 * 请确保使用的模板参数适用于目标云。
 * 验证特定于资源的属性在目标云中是否可用。
 
-有关 Azure 资源管理器模板的简介，请参阅[模板部署](resource-group-overview.md#template-deployment)。
+有关 Azure 资源管理器模板的简介，请参阅[模板部署](template-deployment-overview.md)。
 
 ## <a name="ensure-template-functions-work"></a>确保模板函数可用
 
@@ -154,7 +154,7 @@ Azure 资源管理器在运行时评估主要模板并检索和评估每个嵌�
 
 `_artifactsLocation` 参数的默认值通过上述方式使用。 如果需要从其他位置检索链接模板，则参数输入在部署时可用于重写默认值 - 无需更改模板本身。
 
-### <a name="use-artifactslocation-instead-of-hardcoding-links"></a>使用 _artifactsLocation 取代硬编码链接
+### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>使用 _artifactsLocation 取代硬编码链接
 
 `_artifactsLocation` 参数中的 URL 除了用于嵌套模板，还可用作部署模板的所有相关项目的基。 某些 VM 扩展包含存储在模板外的脚本的链接。 对于这些扩展，不应对链接进行硬编码。 例如，自定义脚本和 PowerShell DSC 扩展可能链接到 GitHub 上的外部脚本，如下所示： 
 
@@ -301,7 +301,7 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 
 ### <a name="track-versions-using-api-profiles"></a>使用 API 配置文件跟踪版本
 
-跟踪所有可用资源提供程序和 Azure Stack 中存在的相关 API 版本非常具有挑战性。 例如，在撰写本文时，Azure 中 Microsoft.Compute/availabilitySets 的最新 API 版本为 `2018-04-01`，而 Azure 和 Azure Stack 的通用 API 版本为 `2016-03-30`  。 在所有 Azure 和 Azure Stack 位置之间共享的 Microsoft.Storage/storageAccounts 的通用 API 版本为 `2016-01-01`，而在 Azure 中的最新 API 版本为 `2018-02-01`  。
+跟踪所有可用资源提供程序和 Azure Stack 中存在的相关 API 版本非常具有挑战性。 例如，在撰写本文时，Azure 中 Microsoft.Compute/availabilitySets 的最新 API 版本为 `2018-04-01`，而 Azure 和 Azure Stack 的通用 API 版本为 `2016-03-30`。 在所有 Azure 和 Azure Stack 位置之间共享的 Microsoft.Storage/storageAccounts 的通用 API 版本为 `2016-01-01`，而在 Azure 中的最新 API 版本为 `2018-02-01`。
 
 为此，资源管理器在模板中引入了 API 配置文件的概念。 使用 API 配置文件，模板中的每个资源都配置了 `apiVersion` 元素，用于描述该特定资源的 API 版本。
 
@@ -443,14 +443,14 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 * 存储帐户（blob、队列、表和文件）
 * 连接字符串（MySql、SQLServer、SQLAzure、Custom、NotificationHub、ServiceBus、EventHub、ApiHub、DocDb、RedisCache、PostgreSQL）
-* 流量管理器
+* 通信管理器
 * 公共 IP 地址的 domainNameLabel
 * 云服务
 
 一般情况下，请避免在模板中使用硬编码终结点。 最佳做法是使用引用模板函数动态检索终结点。 例如，最常进行硬编码的终结点是存储帐户的终结点命名空间。 每个存储帐户均有唯一的 FQDN，它通过连接存储帐户的名称与终结点命名空间来构造。 名为 mystorageaccount1 的 blob 存储帐户会因为云的不同而产生不同的 FQDN：
 
-* 在全球 Azure 云上创建时会产生 mystorageaccount1.blob.core.windows.net  。
-* 在 Azure 中国云中创建时会产生 mystorageaccount1.blob.core.chinacloudapi.cn  。
+* 在全球 Azure 云上创建时会产生 mystorageaccount1.blob.core.windows.net。
+* 在 Azure 中国云中创建时会产生 mystorageaccount1.blob.core.chinacloudapi.cn。
 
 以下引用模板函数从存储资源提供程序中检索终结点命名空间：
 
@@ -617,7 +617,7 @@ Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageTy
 
 VM 扩展资源的 API 版本必须存在于你模板中计划的所有目标位置。 位置依赖关系的作用类似于之前在“验证所有资源类型的版本”部分讨论的资源提供程序 API 版本的可用性。
 
-要检索 VM 扩展资源的可用 API 版本列表，请将 [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) cmdlet 与 Microsoft.Compute 资源提供程序结合使用，如下所示  ：
+要检索 VM 扩展资源的可用 API 版本列表，请将 [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) cmdlet 与 Microsoft.Compute 资源提供程序结合使用，如下所示：
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachines/extensions"}
@@ -647,7 +647,7 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Obje
         ...   
 ```
 
-要检索特定 VM 扩展的可用版本列表，请使用 [Get AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) cmdlet。 以下示例从 myLocation 检索 PowerShell DSC（所需状态配置）VM 扩展的可用版本  ：
+要检索特定 VM 扩展的可用版本列表，请使用 [Get AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) cmdlet。 以下示例从 myLocation 检索 PowerShell DSC（所需状态配置）VM 扩展的可用版本：
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT

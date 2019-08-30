@@ -2,19 +2,19 @@
 title: 使用 Active Directory 修剪结果的安全筛选器 - Azure 搜索
 description: 使用安全筛选器和 Azure Active Directory (AAD) 标识对 Azure 搜索内容进行访问控制。
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 410727022b092e2dd8ab8b05e628e25fd60ab833
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bcc1dcd1d86c0ca18ed03dc60834884a42a39c9
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61282199"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186528"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 搜索结果的安全筛选器
 
@@ -31,7 +31,7 @@ ms.locfileid: "61282199"
 > [!NOTE]
 > 本文中的示例代码片段是用 C# 语言编写的。 可以 [在 GitHub 上](https://aka.ms/search-dotnet-howto)找到完整的源代码。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 Azure 搜索中的索引必须有一个[安全字段](search-security-trimming-for-azure-search.md)用于存储对文档拥有读取访问权限的组标识列表。 此用例假设某个安全对象项（例如个人的大学申请）与指定谁有权访问该项（招生人员）的安全字段之间存在一对一的对应关系。
 
@@ -43,12 +43,12 @@ Azure 搜索中的索引必须有一个[安全字段](search-security-trimming-f
 
 此步骤将应用程序与 AAD 集成，以接受用户和组帐户的登录。 如果你不是组织中的 AAD 管理员，可能需要[创建新租户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant)才能执行以下步骤。
 
-1. 转到[**应用程序注册门户**](https://apps.dev.microsoft.com)  >   选择“聚合应用” > “添加应用”。  
-2. 输入应用程序的名称，单击“创建”。  
+1. 转到[**应用程序注册门户**](https://apps.dev.microsoft.com)  >   选择“聚合应用” > “添加应用”。
+2. 输入应用程序的名称，单击“创建”。 
 3. 在“我的应用程序”页中选择新注册的应用程序。
-4. 在应用程序注册页上 > 选择“平台” > “添加平台”>“Web API”。   
-5. 仍在应用程序注册页上，转到“Microsoft Graph 权限” > “添加”。  
-6. 在“选择权限”中添加以下委托权限，单击“确定”： 
+4. 在应用程序注册页上 > 选择“平台” > “添加平台”>“Web API”。
+5. 仍在应用程序注册页上，转到“Microsoft Graph 权限” > “添加”。
+6. 在“选择权限”中添加以下委托权限，单击“确定”：
 
    + **Directory.ReadWrite.All**
    + **Group.ReadWrite.All**
@@ -187,7 +187,7 @@ DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<Secur
 
 本演练已介绍如何使用 AAD 登录名筛选 Azure 搜索结果中的文档，以及修剪与请求中提供的筛选器不匹配的文档结果。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [使用 Azure 搜索筛选器进行基于标识的访问控制](search-security-trimming-for-azure-search.md)
 + [Azure 搜索中的筛选器](search-filters.md)

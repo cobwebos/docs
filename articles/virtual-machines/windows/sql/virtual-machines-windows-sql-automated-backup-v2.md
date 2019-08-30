@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: cd97b50dbfded314cbf37f53a33955a51d36469f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 066c154c0ba3e62ac4f441e268c657dd5e991220
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846223"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102122"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>适用于 Azure 虚拟机（资源管理器）的自动备份 v2
 
@@ -67,7 +66,7 @@ ms.locfileid: "68846223"
 | **自动备份** | 启用/禁用（已禁用） | 为运行 SQL Server 2016/2017 Developer、Standard 或 Enterprise 的 Azure VM 启用或禁用自动备份。 |
 | **保留期** | 1-30 天（30 天） | 保留备份的天数。 |
 | **存储帐户** | Azure 存储帐户 | 用于在 Blob 存储中存储自动备份文件的 Azure 存储帐户。 在此位置创建容器，用于存储所有备份文件。 备份文件命名约定包括日期、时间和数据库 GUID。 |
-| **加密** |启用/禁用（已禁用） | 启用或禁用加密。 启用加密时，用于还原备份的证书位于指定的存储帐户中。 它使用具有相同命名约定的相同**自动备份**容器。 如果密码发生更改，将使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
+| **加密** |启用/禁用（已禁用） | 启用或禁用加密。 启用加密时，用于还原备份的证书位于指定的存储帐户中。 该证书使用具有相同命名约定的相同**自动备份**容器。 如果密码发生更改，将使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
 | **密码** |密码文本 | 加密密钥的密码。 仅当启用了加密时才需要此设置。 若要还原加密的备份，必须具有创建该备份时使用的正确密码和相关证书。 |
 
 ### <a name="advanced-settings"></a>高级设置
@@ -127,7 +126,7 @@ ms.locfileid: "68846223"
 
 在资源管理器部署模型中创建新的 SQL Server 2016 或 2017 虚拟机时，使用 Azure 门户配置自动备份 v2。
 
-在**SQL Server 设置**"选项卡中, 选择" 在**自动备份**下**启用**"。 下面的 Azure 门户屏幕截图显示了“SQL 自动备份”设置。
+在“SQL Server 设置”选项卡中，选择“自动备份”下的“启用”。 下面的 Azure 门户屏幕截图显示了“SQL 自动备份”设置。
 
 ![Azure 门户中的 SQL 自动备份配置](./media/virtual-machines-windows-sql-automated-backup-v2/automated-backup-blade.png)
 
@@ -209,7 +208,7 @@ LogBackupFrequency          : 60
 ### <a name="configure-automated-backup-v2"></a>配置自动备份 v2
 随时可以使用 PowerShell 来启用自动备份以及修改其配置和行为。 
 
-首先, 为备份文件选择或创建存储帐户。 以下脚本将选择一个存储帐户，或者创建一个存储帐户（如果不存在）。
+首先，为备份文件选择或创建存储帐户。 以下脚本将选择一个存储帐户，或者创建一个存储帐户（如果不存在）。
 
 ```powershell
 $storage_accountname = “yourstorageaccount”

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fc30c3273528b8cbc08681950e0bd5f03ec7890
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 55e3f073c1d22ef09784f699dc2decb0492d9edf
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561273"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162295"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>启用组合安全信息注册 (预览)
 
@@ -88,6 +88,8 @@ ms.locfileid: "69561273"
 1. 然后单击 "**创建**"
 
 ## <a name="next-steps"></a>后续步骤
+
+[强制用户重新注册身份验证方法](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 
 [多重身份验证和 SSPR 的可用方法](concept-authentication-methods.md)
 

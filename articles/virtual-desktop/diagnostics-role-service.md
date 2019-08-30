@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: d6cde04d122d20c4aad5920c29995d9d33165163
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c07086feef1851f1a6e2a5cda2f541d52a50d91d
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515523"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163494"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>确定诊断功能的问题
 
@@ -24,7 +24,11 @@ Windows 虚拟桌面预览版提供一项诊断功能, 使管理员能够通过�
   
 由于诊断角色服务本身是 Windows 虚拟桌面的一部分, 因此无法访问 Windows 虚拟桌面的连接将不会显示在诊断结果中。 当最终用户遇到网络连接问题时, 可能会出现 Windows 虚拟桌面连接问题。
 
-若要开始, 请下载并导入要在 PowerShell 会话中使用[的 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)(如果尚未这样做)。
+若要开始, 请下载并导入要在 PowerShell 会话中使用[的 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)(如果尚未这样做)。 然后, 运行以下 cmdlet 登录到你的帐户:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="diagnose-issues-with-powershell"></a>诊断 PowerShell 问题
 

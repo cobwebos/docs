@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/12/2019
+ms.date: 08/29/2019
 ms.author: atsenthi
-ms.openlocfilehash: 08864d6a965921f7f6d284dc53bd2586d30fedd1
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 5d6f1fcba5d93cbd4efb63cd080848258eb2a262
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014429"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172893"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -236,6 +236,8 @@ ms.locfileid: "69014429"
 |UserMaxStandByReplicaCount |Int，默认值为 1 |动态|系统为用户服务保留的默认最大备用副本数。 |
 |UserReplicaRestartWaitDuration |以秒为单位的时间，默认值为 60.0 \* 30 |动态|指定以秒为单位的时间范围。 当持久化副本不可用时，Windows Fabric 在创建新的替换副本（需要状态的副本）前，会等待该副本恢复正常，等待时间即为此持续时间。 |
 |UserStandByReplicaKeepDuration |以秒为单位的时间，默认值为 3600.0 \* 24 \* 7 |动态|指定以秒为单位的时间范围。 持久化副本从不可用状态恢复时，可能已被替换为另一副本。 此定时器决定 FM 在放弃备用副本之前保留其多长时间。 |
+|WaitForInBuildReplicaSafetyCheckTimeout|TimeSpan, 默认值为 Common:: TimeSpan:: FromSeconds (60 * 10)|动态|指定以秒为单位的时间范围。 可选 WaitForInBuildReplica 安全检查超时的配置条目。 此配置为节点停用和升级定义 WaitForInBuildReplica 安全检查的超时时间。 如果满足以下任一条件, 则此安全检查将失败:-正在创建主副本, ft 目标副本集大小 > 1-如果当前副本在生成中并且是持久的, 则为, 如果这是当前的主副本并且正在生成新的副本, 则将跳过此安全检查如果超时到期 (即使之前的条件之一仍为 true), 则 ped。 |
+|WaitForReconfigurationSafetyCheckTimeout|TimeSpan, 默认值为 Common:: TimeSpan:: FromSeconds (60.0 * 10)|动态|指定以秒为单位的时间范围。 可选 WaitForReconfiguration 安全检查超时的配置条目。 此配置定义节点停用和升级的 WaitForReconfiguration 安全检查的超时时间。 如果要检查的副本是正在重新配置的分区的一部分, 则此安全检查将失败。 即使分区仍处于重新配置下, 此超时到期后, 也会跳过安全检查。|
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -846,7 +848,7 @@ ms.locfileid: "69014429"
 
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|级别 |Int，默认值为 4 | 动态 |跟踪 etw 级别可以采用值 1、2、3、4。 必须使跟踪级别保持在 4 才可受到支持 |
+|Level |Int，默认值为 4 | 动态 |跟踪 etw 级别可以采用值 1、2、3、4。 必须使跟踪级别保持在 4 才可受到支持 |
 
 ## <a name="transactionalreplicator"></a>TransactionalReplicator
 

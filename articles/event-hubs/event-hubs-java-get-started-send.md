@@ -10,14 +10,14 @@ ms.topic: article
 ms.custom: seodec18, seo-java-august2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: c85d69b823956a5cf5e7f9d6dfa3c39b918cd465
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 8684e786de64f91acba0c61017083015288ca4eb
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034805"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172789"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-java"></a>使用 Java 将事件发送到 Azure 事件中心或从其接收事件
+# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>使用 Java 将事件发送到 Azure 事件中心或从 Azure 事件中心接收事件
 
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 

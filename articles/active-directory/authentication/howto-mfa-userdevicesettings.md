@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d500f6c74bb62322a5e14ce3c489e8dba11dc2f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 190d697dca56fa51d92987f32db0146aa79881aa
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68555776"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162399"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>管理云中 Azure 多重身份验证的用户设置
 
@@ -32,9 +32,12 @@ ms.locfileid: "68555776"
 
 ![从 Azure 门户管理身份验证方法](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
-1. 重置密码将重置用户的密码, 并分配在下一次登录时必须更改的临时密码。
-2. 需要重新注册 MFA 才能进行, 以便在下次用户登录时, 他们将被请求设置新的 MFA 身份验证方法。
-3. Revoke MFA 会话会清除用户记住的 MFA 会话, 并要求他们在下次设备上的策略要求时执行 MFA。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
+1. 选择要对其执行操作的用户, 然后选择 "**身份验证方法**"。
+   - **重置密码**将重置用户的密码, 并分配在下一次登录时必须更改的临时密码。
+   - **需要重新注册 MFA**才能进行, 以便在下次用户登录时, 他们将被请求设置新的 MFA 身份验证方法。
+   - **REVOKE Mfa 会话**会清除用户记住的 mfa 会话, 并要求他们在下次设备上的策略要求时执行 mfa。
 
 ## <a name="require-users-to-provide-contact-methods-again"></a>要求用户再次提供联系方式
 

@@ -2,18 +2,18 @@
 title: 用于非英语搜索查询的多语言索引 - Azure 搜索
 description: Azure 搜索支持 56 种语言，通过 Microsoft 中的 Lucene 和自然语言处理技术利用语言分析器。
 author: yahnoosh
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: jlembicz
-ms.openlocfilehash: 5383ad44f665ce809772143e23817932c3e2b7e6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9d2e6418eb925f0d113b7e9a91463951ca52031a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883889"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186555"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>如何在 Azure 搜索中为多种语言创建索引
 

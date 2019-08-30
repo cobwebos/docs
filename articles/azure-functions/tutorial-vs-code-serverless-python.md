@@ -3,21 +3,31 @@ title: 通过 Visual Studio Code 在 Python 中创建和部署 Azure Functions
 description: 如何使用 Azure Functions 的 Visual Studio Code 扩展在 Python 中创建无服务器函数并将其部署到 Azure。
 services: functions
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: f5591a3e0ca73649b1ffc51c75aa95e86e286768
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4f5c10536992f51ac61815507a3869e521520299
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639088"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170713"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>通过 Visual Studio Code 将 Python 部署到 Azure Functions
 
 在本教程中, 你将使用 Visual Studio Code 和 Azure Functions 扩展创建具有 Python 的无服务器 HTTP 终结点, 还可以将连接 (或 "绑定") 添加到存储。 Azure Functions 在无服务器环境中运行你的代码, 而无需预配虚拟机或发布 web 应用。 Visual Studio Code 的 Azure Functions 扩展极大地简化了通过自动处理许多配置注意事项来使用函数的过程。
+
+本教程介绍如何执行下列操作：
+
+> [!div class="checklist"]
+> * 安装 Azure Functions 扩展
+> * 创建 HTTP 触发的函数
+> * 本地调试
+> * 同步应用程序设置
+> * 查看流式处理日志
+> * 连接到 Azure 存储
 
 如果在本教程中的任何步骤中都遇到问题, 我们将很乐意听到详细信息。 使用每节末尾的 "**我遇到问题**" 按钮提交详细的反馈。
 
@@ -44,7 +54,7 @@ ms.locfileid: "68639088"
 
 请按照有关[使用 Azure Functions Core Tools](functions-run-local.md#v2)的操作系统的说明进行操作。 这些工具本身是用 .NET Core 编写的, 核心工具包最好使用 node.js 包管理器 (npm) 进行安装, 这就是为什么需要安装 .NET Core 和 node.js, 甚至是用于 Python 代码的原因。 但你可以使用 "扩展捆绑" 跳过 .NET Core 要求, 如前面提到的文档中所述。 无论是哪种情况, 只需安装这些组件一次, 之后 Visual Studio Code 会自动提示您安装任何更新。
 
-### <a name="sign-in-to-azure"></a>登录  Azure
+### <a name="sign-in-to-azure"></a>登录 Azure
 
 安装函数扩展后, 通过导航到**azure 登录到 azure 帐户:函数**资源管理器中, 选择 "**登录到 Azure**", 然后按照提示进行操作。
 
@@ -94,35 +104,32 @@ ms.locfileid: "68639088"
 
 1. 在下面的提示中:
 
-    | Prompt | 值 | 描述 | 
+    | Prompt | ReplTest1 | 描述 | 
     | --- | --- | --- |
     | 为项目指定文件夹 | 当前打开的文件夹 | 要在其中创建项目的文件夹。 你可能想要在子文件夹中创建项目。 |
     | 选择函数应用项目的语言 | **Python** | 用于函数的语言, 该语言确定用于代码的模板。 |
     | 为项目的第一个函数选择模板 | **HTTP 触发器** | 每当向函数的终结点发出 HTTP 请求时, 都将运行使用 HTTP 触发器的函数。 (还有其他用于 Azure Functions 的触发器。 若要了解详细信息, 请参阅[如何处理函数？](functions-overview.md#what-can-i-do-with-functions)。) |
     | 提供函数名称 | HttpExample | 该名称用于包含函数的代码以及配置数据的子文件夹, 并且还定义了 HTTP 终结点的名称。 使用 "HttpExample" 而不是接受默认的 "HTTPTrigger", 以将函数本身与触发器区分开来。 |
-    | 身份验证级别 | **匿名** | 匿名身份验证使任何人都能够公开访问该函数。 |
+    | 身份验证级别 | **Function** | 对函数终结点进行的调用需要[函数键](functions-bindings-http-webhook.md#authorization-keys)。 |
     | 选择打开项目的方式 | **在当前窗口中打开** | 在当前 Visual Studio Code 窗口中打开项目。 |
 
-1. 短时间之后, 会出现一条消息, 指示已创建新项目。 在**资源管理器**中, 为函数创建了子文件夹, Visual Studio Code 打开 *\_ \_\_\_* 包含默认函数代码的 py 文件:
+1. 短时间之后, 会出现一条消息, 指示已创建新项目。 在**资源管理器**中, 为函数创建了子文件夹。 
+
+1. 如果该文件尚未打开, 请打开 *\_ \_\_\_* 包含默认函数代码的 py 文件:
 
     [![创建新的 Python 函数项目的结果](media/tutorial-vs-code-serverless-python/project-create-results.png)](media/tutorial-vs-code-serverless-python/project-create-results.png)
 
     > [!NOTE]
-    > 如果 Visual Studio Code 表明在打开 *\_ \_\_py时未选择Python解释器,请打开命令面板(F1),选择python:\_* **选择 "** 解释器命令", 然后选择本地`.env`文件夹中的虚拟环境 (作为项目的一部分创建)。 环境必须基于 Python 3.6 x, 如前面的[先决条件](#prerequisites)中所述。
+    > 当你打开 *\_ \_py 时, Visual Studio Code 如果你未选择 python 解释器, 请打开命令面板 (F1), 然后选择 python:\_\_* **选择 "** 解释器命令", 然后选择本地`.env`文件夹中的虚拟环境 (作为项目的一部分创建)。 环境必须基于 Python 3.6 x, 如前面的[先决条件](#prerequisites)中所述。
     >
     > ![选择用项目创建的虚拟环境](media/tutorial-vs-code-serverless-python/select-venv-interpreter.png)
-
-> [!TIP]
-> 每当你想要在同一项目中创建另一个函数时, 请使用**Azure 中的**create function**命令:函数**资源管理器, 或打开命令面板 (F1) 并**选择 Azure Functions:** Create Function”命令。 这两个命令都会提示你提供函数名称 (这是终结点的名称), 然后创建一个包含默认文件的子文件夹。
->
-> ![Azure 中的新函数命令:函数资源管理器](media/tutorial-vs-code-serverless-python/function-create-new.png)
 
 > [!div class="nextstepaction"]
 > [我遇到了问题](https://www.research.net/r/PWZWZ52?tutorial=python-functions-extension&step=02-create-function)
 
 ## <a name="examine-the-code-files"></a>检查代码文件
 
-在新创建的 function 子文件夹中有三个文件:  *\_ \_\_\_py*包含函数的代码,*函数。 json*描述了要 Azure Functions 的函数和*示例 .dat*是一个示例数据文件。 如果需要, 你可以删除*示例 .dat* , 因为它只是为了表明可以将其他文件添加到子文件夹中。
+在新创建的_HttpExample_ function 子文件夹中为三个文件:  *\_ \_\_\_py*包含函数的代码,*函数。 json*介绍了 Azure 的函数函数和*示例 .dat*是一个示例数据文件。 如果需要, 你可以删除*示例 .dat* , 因为它只是为了表明可以将其他文件添加到子文件夹中。
 
 首先查看*函数 json* , 然后查看 *\_py\_ \_中\_* 的代码。
 
@@ -135,7 +142,7 @@ ms.locfileid: "68639088"
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "authLevel": "anonymous",
+      "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
@@ -155,9 +162,9 @@ ms.locfileid: "68639088"
 
 属性标识代码的启动文件, 并且该代码必须包含一个名为`main`的 Python 函数。 `scriptFile` 可以将代码分解成多个文件, 只要此处指定的文件包含`main`函数。
 
-`bindings`元素包含两个对象, 一个用于描述传入的请求, 另一个用于描述 HTTP 响应。 对于传入的请求`"direction": "in"`(), 该函数会响应 HTTP GET 或 POST 请求, 而不需要进行身份验证。 响应 (`"direction": "out"`) 是返回`main`从 Python 函数返回的任何值的 HTTP 响应。
+`bindings`元素包含两个对象, 一个用于描述传入的请求, 另一个用于描述 HTTP 响应。 对于传入的请求`"direction": "in"`(), 该函数会响应 HTTP GET 或 POST 请求, 并要求你提供函数键。 响应 (`"direction": "out"`) 是返回`main`从 Python 函数返回的任何值的 HTTP 响应。
 
-### <a name="initpy"></a>\_\_init.py\_\_
+### <a name="__initpy__"></a>\_\_init.py\_\_
 
 创建新函数时, Azure Functions 在 py 中提供默认的 *\_ \_\_\_* Python 代码:
 
@@ -233,7 +240,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     或者, 创建一个包含`{"name":"Visual Studio Code"}`和使用命令`curl --header "Content-Type: application/json" --request POST --data @data.json http://localhost:7071/api/HttpExample`的文件, 如*数据。*
 
-1. 若要测试函数调试, 请在读取`name = req.params.get('name')`并再次向 URL 发出请求的行上设置一个断点。 Visual Studio Code 调试器应该在该行停止, 使您能够检查变量并单步执行代码。 (有关基本调试的简短演练, 请参阅[Visual Studio Code 教程-配置和运行调试器](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger)。)
+1. 若要调试函数, 请在读取`name = req.params.get('name')`并再次向 URL 发出请求的行上设置一个断点。 Visual Studio Code 调试器应该在该行停止, 使您能够检查变量并单步执行代码。 (有关基本调试的简短演练, 请参阅[Visual Studio Code 教程-配置和运行调试器](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger)。)
 
 1. 如果你认为已在本地全面测试函数, 请停止调试器 (通过 "**调试** > " "**停止调试**" 菜单命令或在 "调试" 工具栏上的 "**断开连接**" 命令)。
 
@@ -303,8 +310,8 @@ func azure functionapp logstream <app_name> --browser
 
 1. 在“Azure：函数” **"** 函数资源管理器" 中, 选择 " ****创建函数**" 命令或使用 Azure Functions:从命令**面板创建函数。 为该函数指定以下详细信息:
 
-    - 模板:HTTP 触发器
-    - 名称:"DigitsOfPi"
+    - 模板：HTTP 触发器
+    - 姓名："DigitsOfPi"
     - 授权级别:匿名
 
 1. 在 Visual Studio Code 文件资源管理器是包含函数名称的子文件夹, 该子文件夹又包含名为 *\_ \_\_\_py*、*函数 json*和*示例*的文件。
@@ -423,7 +430,7 @@ _绑定_使你可以将函数代码连接到 Azure 存储等资源, 而无需编
     | --- | --- |
     | 设置绑定方向 | out |
     | 选择向外定向绑定 | Azure 队列存储 |
-    | 用于在你的代码中标识此绑定的名称 | 缺少 |
+    | 用于在代码中标识此绑定的名称 | 缺少 |
     | 消息将发送到的队列 | outqueue |
     | 从 "*设置*" 中选择 "设置" (请求存储连接) | AzureWebJobsStorage |
 

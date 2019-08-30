@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc83f59d51e1552d9d68089d0b9fa23d924f491c
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: c0c941ec5010b6f9c35e81fdbcacd2093724eb21
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561294"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162353"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>如何要求对用户进行双重验证
 
@@ -137,6 +137,8 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 ### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>将用户从每用户 MFA 转换为基于条件访问的 MFA
 
 以下 PowerShell 可帮助你进行基于 Azure 多重身份验证的条件性访问。
+
+在 ISE 窗口或 "另存为" 中运行此 PowerShell。PS1 要本地运行的文件。
 
 ```PowerShell
 # Sets the MFA requirement state

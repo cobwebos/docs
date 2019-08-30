@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 2fd8934f34b811c0a2532f27e32fc799c2c8186e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 1fb377d482277a4776214d08b879d99f4234ca40
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141850"
+ms.locfileid: "70163673"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
 
@@ -25,7 +25,7 @@ ms.locfileid: "70141850"
 运行以下 cmdlet 以登录到 Windows 虚拟桌面环境
 
 ```powershell
-Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
 接下来, 运行此 cmdlet 以在 Windows 虚拟桌面租户中创建新的主机池:

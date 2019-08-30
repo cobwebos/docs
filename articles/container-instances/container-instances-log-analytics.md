@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 manager: gwallace
 ms.service: container-instances
-ms.topic: overview
+ms.topic: article
 ms.date: 07/09/2019
 ms.author: danlep
-ms.openlocfilehash: 4099bc0b15f02faade02f47aeb00fb7c4b4a3332
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 9b57775040251312c8afbff5983a52ae9d14e6c6
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325885"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172496"
 ---
 # <a name="container-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器实例日志记录
 
@@ -37,8 +37,8 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 若要获取 Log Analytics 工作区 ID 和主密钥，请执行以下操作：
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
-1. 在“设置”下，选择“高级设置”  
-1. 选择“连接的源”   >   “Windows 服务器”（或“Linux 服务器”  --二者的 ID 和密钥相同）
+1. 在“设置”下，选择“高级设置”
+1. 选择“连接的源” > “Windows 服务器”（或“Linux 服务器”--二者的 ID 和密钥相同）
 1. 记下以下内容：
    * **工作区 ID**
    * **主密钥**
@@ -104,11 +104,11 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 部署容器组以后，可能需要等待数分钟（最多 10 分钟），第一个日志条目才会显示在 Azure 门户中。 若要查看容器组的日志，请执行以下操作：
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
-1. 在“常规”  下，选择“日志”   
+1. 在“常规”下，选择“日志”  
 1. 键入以下查询：`search *`
-1. 选择“运行” 
+1. 选择“运行”
 
-此时会看到 `search *` 查询显示的多个结果。 如果起初没有看到任何结果，请等待几分钟，然后选择“运行”按钮，再次执行查询  。 默认情况下会以“表”的形式显示日志条目  。 然后即可展开某一行来查看单个日志条目的内容。
+此时会看到 `search *` 查询显示的多个结果。 如果起初没有看到任何结果，请等待几分钟，然后选择“运行”按钮，再次执行查询。 默认情况下会以“表”的形式显示日志条目。 然后即可展开某一行来查看单个日志条目的内容。
 
 ![Azure 门户中的“日志搜索”结果][log-search-01]
 
@@ -118,7 +118,7 @@ Azure Monitor 日志包含全面的[查询语言][query_lang]，用于从可能�
 
 Azure 容器实例日志记录代理将条目发送到 Log Analytics 工作区中的 `ContainerInstanceLog_CL` 表。 查询的基本结构是一个源表 (`ContainerInstanceLog_CL`)，后跟一系列以竖线字符 (`|`) 隔开的运算符。 可以将多个运算符链接起来以优化结果和执行高级函数。
 
-若要查看查询结果，请将以下查询粘贴到查询文本框（位于“显示旧式语言转换器”下面）中，然后选择“运行”按钮以执行该查询。  此查询显示其“消息”字段包含“warn”一词的所有日志条目：
+若要查看查询结果，请将以下查询粘贴到查询文本框（位于“显示旧式语言转换器”下面）中，然后选择“运行”按钮以执行该查询。 此查询显示其“消息”字段包含“warn”一词的所有日志条目：
 
 ```query
 ContainerInstanceLog_CL

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c6186334820d0e419a06b9c60a8279825bf54c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e79d7a4b97f010b035f5c864682b4d3882a21393
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927295"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171921"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -65,17 +65,16 @@ ms.locfileid: "68927295"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在“中心”菜单上，选择“新建” > “存储” > “存储帐户”。
-3. 为存储帐户输入唯一的**名称**。
-4. “部署模型”可保留为“Resource Manager”。
-5. 将“帐户类型”更改为“Blob 存储”。
-6. “性能”可保留为“标准”。
-7. “复制”可保留为“RA-GRS”。
-8. “访问层”可保留为“热”。
-9. “存储服务加密”可保留为“已禁用”。
-10. 为存储帐户选择一个**订阅**。
-11. 创建一个**资源组**或选择现有的资源组。
-12. 为存储帐户选择**地理位置**。
-13. 单击“创建”以创建存储帐户。  
+3. 为存储帐户选择一个**订阅**。
+4. 创建一个**资源组**或选择现有的资源组。
+5. 为存储帐户输入唯一的**名称**。
+6. 为存储帐户选择**地理位置**。 
+7. “部署模型”可保留为“Resource Manager”。
+8. “性能”可保留为“标准”。
+9. 将“帐户类型”更改为“Blob 存储”。
+10. “复制”可保留为“RA-GRS”。
+11. “访问层”可保留为“热”。 
+12. 单击 "**查看 + 创建**" 以创建存储帐户。  
     在部署完成后，“存储帐户”边栏选项卡将自动打开。
 
 ## <a name="create-a-container"></a>创建容器

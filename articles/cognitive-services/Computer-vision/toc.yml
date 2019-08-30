@@ -133,12 +133,6 @@
       href: concept-detecting-adult-content.md
 - name: 操作指南
   items:
-    - name: 使用计算机视觉
-      items:
-        - name: Java
-          href: Tutorials/java-tutorial.md
-        - name: JavaScript
-          href: Tutorials/javascript-tutorial.md
     - name: 调用计算机视觉 API
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: 使用容器

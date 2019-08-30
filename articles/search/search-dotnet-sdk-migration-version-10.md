@@ -2,7 +2,7 @@
 title: 升级到 Azure 搜索 .NET SDK 版本 10-Azure 搜索
 description: 将代码从较旧版本迁移到 Azure 搜索 .NET SDK 版本10。 了解新增功能和所需的代码更改。
 author: arv100kri
-manager: briansmi
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: dotnet
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: arjagann
 ms.custom: seodec2018
-ms.openlocfilehash: 193f886fe92c41fa51dbc5acbca89f0a5aa6043e
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: e4633a1c0543331b0ea9820703ed685fb99f2130
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020259"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182363"
 ---
 # <a name="upgrade-to-the-azure-search-net-sdk-version-10"></a>升级到 Azure 搜索 .NET SDK 版本10
 

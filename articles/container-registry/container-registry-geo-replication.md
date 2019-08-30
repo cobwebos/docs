@@ -5,15 +5,15 @@ services: container-registry
 author: stevelas
 manager: gwallace
 ms.service: container-registry
-ms.topic: overview
+ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
-ms.translationtype: HT
+ms.openlocfilehash: 50ab3fc92fc980638547bb090c5d0d78aa20ab5f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574386"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172268"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -64,7 +64,7 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 ## <a name="configure-geo-replication"></a>配置异地复制
 
-配置异地复制就如在地图上单击区域一样简单。 你还可以使用包括 Azure CLI 中的 [az acr replication](/cli/azure/acr/replication) 命令在内的工具来管理异地复制。
+配置异地复制就如在地图上单击区域一样简单。 你还可以使用工具 (包括 Azure CLI 中的[az acr replication](/cli/azure/acr/replication)命令) 管理异地复制, 或使用[Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)为异地复制启用注册表部署。
 
 异地复制是[高级注册表](container-registry-skus.md)特有的功能。 如果尚未使用高级注册表，可在 [Azure 门户](https://portal.azure.com)中将基本和标准更改为高级：
 
@@ -72,7 +72,7 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 若要为高级注册表配置异地复制，可通过 https://portal.azure.com 登录到 Azure 门户。
 
-导航到 Azure 容器注册表，然后选择“复制”  ：
+导航到 Azure 容器注册表，然后选择“复制”：
 
 ![Azure 门户容器注册表 UI 中的副本](media/container-registry-geo-replication/registry-services.png)
 
@@ -84,13 +84,13 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 * 绿色六边形表示可能的复制区域
 * 灰色六边形表示尚不可复制的 Azure 区域
 
-若要配置副本，请选择一个绿色六边形，然后选择“创建”  ：
+若要配置副本，请选择一个绿色六边形，然后选择“创建”：
 
  ![Azure 门户中的“创建副本”UI](media/container-registry-geo-replication/create-replication.png)
 
-若要创建其他副本，请选择表示其他区域的绿色六边形，然后单击“创建”  。
+若要创建其他副本，请选择表示其他区域的绿色六边形，然后单击“创建”。
 
-ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“就绪”  。 门户中的副本状态不会自动更新。 使用刷新按钮查看更新状态。
+ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“就绪”。 门户中的副本状态不会自动更新。 使用刷新按钮查看更新状态。
 
 ## <a name="considerations-for-using-a-geo-replicated-registry"></a>使用异地复制注册表的注意事项
 

@@ -10,18 +10,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2019
+ms.date: 08/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: a3c6eca548eb61d6b7b239b4292b9c77ca2dec6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2cbc8843d41b760c52b9ca5ccfb6d940bd454136
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702704"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164819"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
-部署资源时，经常需要检索有关资源提供程序和类型的信息。 在本文中，学习如何：
+部署资源时，经常需要检索有关资源提供程序和类型的信息。 例如, 如果要存储密钥和机密, 请使用 KeyVault 资源提供程序。 此资源提供程序提供名为保管库的资源类型, 用于创建密钥保管库。
+
+资源类型的名称采用以下格式：{resource-provider}/{resource-type}。 Key Vault 的资源类型为 **Microsoft.KeyVault/vaults**。
+
+在本文中，学习如何：
 
 * 查看 Azure 中的所有资源提供程序
 * 检查资源提供程序的注册状态
@@ -39,28 +43,28 @@ ms.locfileid: "64702704"
 查看所有资源提供程序和订阅的注册状态：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”  。
+2. 选择“所有服务”。
 
     ![选择“订阅”](./media/resource-manager-supported-services/select-subscriptions.png)
-3. 在“所有服务”  框中，输入“订阅”  ，然后选择“订阅”  。
+3. 在“所有服务”框中，输入“订阅”，然后选择“订阅”。
 4. 从订阅列表中选择订阅进行查看。
-5. 选择“资源提供程序”  并查看可用资源提供程序的列表。
+5. 选择“资源提供程序”并查看可用资源提供程序的列表。
 
     ![显示资源提供程序](./media/resource-manager-supported-services/show-resource-providers.png)
 
-6. 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，必须具备为资源提供程序执行 `/register/action` 操作的权限。 此操作包含在“参与者”和“所有者”角色中。 若要注册资源提供程序，请选择“注册”  。 在上面的屏幕截图中，对于“Microsoft.Blueprint”  突出显示了“注册”  链接。
+6. 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，必须具备为资源提供程序执行 `/register/action` 操作的权限。 此操作包含在“参与者”和“所有者”角色中。 若要注册资源提供程序，请选择“注册”。 在上面的屏幕截图中，对于“Microsoft.Blueprint”突出显示了“注册”链接。
 
     当订阅中仍有某个资源提供程序的资源类型时，不能注销该资源提供程序。
 
 查看特定资源提供程序的信息：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”  。
+2. 选择“所有服务”。
 
     ![选择“所有服务”](./media/resource-manager-supported-services/more-services.png)
 
-3. 在“所有服务”  框中，输入“资源浏览器”  ，然后选择“资源浏览器”  。
-4. 通过选择向右箭头来展开“提供程序”  。
+3. 在“所有服务”框中，输入“资源浏览器”，然后选择“资源浏览器”。
+4. 通过选择向右箭头来展开“提供程序”。
 
     ![选择“提供程序”](./media/resource-manager-supported-services/select-providers.png)
 

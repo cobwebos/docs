@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/16/2019
-ms.openlocfilehash: 6357b5a477390f484a47167a0b9d2e524d37c9ac
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/29/2019
+ms.openlocfilehash: 73aeea42cd843716c845d7712539ae5c81f03dca
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035775"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173068"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
-自动故障转移组是一项 SQL 数据库功能，可便于管理 SQL 数据库服务器中一组数据库或托管实例中所有数据库到另一区域的复制和故障转移。 它是建立在现有[活动异地复制](sql-database-active-geo-replication.md)功能基础之上的声明性抽象，旨在简化异地复制的数据库的大规模部署和管理。 可以手动启动故障转移，也可以基于用户定义的策略委托 SQL 数据库服务进行故障转移。 使用后一种做法可在发生下述情况后自动恢复次要区域中的多个相关数据库：灾难性故障或其他导致主要区域中 SQL 数据库服务完全或部分丧失可用性的计划外事件。 一个故障转移组可以包含一个或多个数据库，通常由同一个应用程序使用。 此外，你还可以使用可读辅助数据库卸载只读查询工作负荷。 由于自动故障转移组涉及多个数据库，因此这些数据库必须在主服务器上进行配置。 故障转移组中数据库的主服务器和辅助服务器必须位于同一订阅中。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器。
+自动故障转移组是一项 SQL 数据库功能，可便于管理 SQL 数据库服务器中一组数据库或托管实例中所有数据库到另一区域的复制和故障转移。 它是建立在现有[活动异地复制](sql-database-active-geo-replication.md)功能基础之上的声明性抽象，旨在简化异地复制的数据库的大规模部署和管理。 可以手动启动故障转移，也可以基于用户定义的策略委托 SQL 数据库服务进行故障转移。 使用后一种做法可在发生下述情况后自动恢复次要区域中的多个相关数据库：灾难性故障或其他导致主要区域中 SQL 数据库服务完全或部分丧失可用性的计划外事件。 一个故障转移组可以包含一个或多个数据库，通常由同一个应用程序使用。 此外，你还可以使用可读辅助数据库卸载只读查询工作负荷。 由于自动故障转移组涉及多个数据库，因此这些数据库必须在主服务器上进行配置。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器。
 
 > [!NOTE]
 > 如果在 SQL 数据库服务器上使用单一数据库或共用数据库，并要在相同或不同的区域中使用多个辅助数据库，请使用[活动异地复制](sql-database-active-geo-replication.md)。 
@@ -191,12 +191,20 @@ ms.locfileid: "70035775"
 
   若要确保故障转移后与主要实例的连接不中断，主要实例和辅助实例必须位于同一 DNS 区域。 将会保证同一个多域 (SAN) 证书可用于对与故障转移组中的两个实例之一建立的客户端连接进行身份验证。 准备好将应用程序部署到生产环境后，在不同的区域中创建一个辅助实例，并确保它与主要实例共享 DNS 区域。 为此，可以使用 Azure 门户、PowerShell 或 REST API 指定 `DNS Zone Partner` 可选参数。 
 
-  有关在主要实例所在的同一 DNS 区域中创建辅助实例的详细信息，请参阅[使用托管实例管理故障转移组（预览版）](#powershell-managing-failover-groups-with-managed-instances-preview)。
+  有关在与主实例相同的 DNS 区域中创建辅助实例的详细信息, 请参阅[创建辅助托管实例](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance)。
 
 - **在两个实例之间启用复制流量**
 
   由于每个实例隔离在其自身的 VNet 中，因此，必须允许这些 VNet 之间的双向流量。 请参阅 [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
+- **在不同订阅中的托管实例之间创建故障转移组**
+
+  可以在两个不同订阅中的托管实例之间创建故障转移组。 使用 PowerShell API 时, 可以通过为辅助实例指定`PartnerSubscriptionId`参数来执行此操作。 使用 REST API 时, `properties.managedInstancePairs`参数中包含的每个实例 ID 都可以有自己的 subscriptionID。 
+  
+  > [!IMPORTANT]
+  > Azure 门户不支持跨不同订阅的故障转移组。
+
+  
 - **将故障转移组配置为管理整个实例的故障转移**
 
   故障转移组将管理实例中所有数据库的故障转移。 创建某个组后，实例中的每个数据库将自动异地复制到辅助实例。 无法使用故障转移组针对一部分数据库启动部分故障转移。
@@ -326,34 +334,16 @@ ms.locfileid: "70035775"
 > 有关示例脚本，请参阅[为单一数据库配置并故障转移一个故障转移组](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 >
 
-### <a name="powershell-managing-failover-groups-with-managed-instances-preview"></a>PowerShell：使用托管实例管理故障转移组（预览版）
+### <a name="powershell-managing-sql-database-failover-groups-with-managed-instances"></a>PowerShell：管理包含托管实例的 SQL 数据库故障转移组 
 
-#### <a name="install-the-newest-pre-release-version-of-powershell"></a>安装 PowerShell 的最新预发行版
-
-1. 将 PowerShellGet 模块更新到 1.6.5（或最新预览版）。 请参阅 [PowerShell 预览版站点](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview)。
-
-   ```powershell
-      install-module PowerShellGet -MinimumVersion 1.6.5 -force
-   ```
-
-2. 在新的 PowerShell 窗口中执行以下命令：
-
-   ```powershell
-      import-module PowerShellGet
-      get-module PowerShellGet #verify version is 1.6.5 (or newer)
-      install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
-      import-module azurerm.sql
-   ```
-
-#### <a name="powershell-commandlets-to-create-an-instance-failover-group"></a>用于创建实例故障转移组的 PowerShell cmdlet
-
-| API | 描述 |
+| Cmdlet | 描述 |
 | --- | --- |
-| New-AzureRmSqlDatabaseInstanceFailoverGroup |此命令会创建故障转移组，并将其同时注册到主服务器和辅助服务器|
-| Set-AzureRmSqlDatabaseInstanceFailoverGroup |修改故障转移组的配置|
-| Get-AzureRmSqlDatabaseInstanceFailoverGroup |检索故障转移组配置|
-| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |触发故障转移组到辅助服务器的故障转移|
-| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | 删除故障转移组|
+| [新-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |此命令会创建故障转移组，并将其同时注册到主服务器和辅助服务器|
+| [AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |修改故障转移组的配置|
+| [AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |检索故障转移组配置|
+| [AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |触发故障转移组到辅助服务器的故障转移|
+| [AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | 删除故障转移组|
+|  | |
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API：使用单一数据库和共用数据库管理 SQL 数据库故障转移组
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 80bc5ef78a73430dea23bdd644767d9fa9b3c9a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b079d311e357f4dfb94e55fbca3cafdec198ade9
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124678"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171903"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory 域服务：常见问题解答 (FAQ)
 本页面解答有关 Azure Active Directory 域服务的常见问题。 请随时返回查看更新信息。
@@ -79,7 +79,7 @@ ms.locfileid: "70124678"
 否。 无法在 Azure AD 域服务服务的域上修改组成员身份。 这同样适用于用户属性。 但是，可以在 Azure AD 中或本地域上更改组成员身份或用户属性。 此类更改会自动同步到 Azure AD 域服务。
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>对 Azure AD 目录的更改需要多长时间才可在托管域中显示？
-在 Azure AD 目录中使用 Azure AD UI 或 PowerShell 进行的更改将同步到托管域中。 此同步过程在后台运行。 初始同步完成后，Azure AD 中的更改通常需要约 20 分钟才会在托管域中反映。
+使用 Azure AD UI 或 PowerShell 在 Azure AD 目录中所做的更改将自动同步到托管域。 此同步过程在后台运行。 没有定义用于完成所有对象更改的时间段。
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>能否扩展 Azure AD 域服务提供的托管域的架构？
 否。 托管域的架构由 Microsoft 管理。 Azure AD 域服务不支持架构扩展。

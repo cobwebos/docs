@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: c8ffa7b65e4f97fa537299bf542ba377da026064
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626299"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70174587"
 ---
 内存优化 VM 大小提供适用于关系数据库服务器、中到大型规模的缓存和内存中分析的高内存 CPU 比率。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。
 
@@ -147,7 +147,7 @@ Mv2 系列 VM 的 Intel®超线程技术功能
 
 <sup>1</sup>这些大型 vm 需要以下受支持的来宾操作系统之一:Windows Server 2016、Windows Server 2019、SLES 12 SP4、SLES 15。
 
-<sup>2</sup> Mv2 系列 vm 仅为第2代。 如果使用的是 Linux, 请参阅以下部分, 了解如何查找和选择 SUSE Linux 映像。
+<sup>2</sup> Mv2 系列 vm 仅为[第2代](/azure/virtual-machines/linux/generation-2)。 如果使用的是 Linux, 请参阅以下部分, 了解如何查找和选择 SUSE Linux 映像。
 
 #### <a name="find-a-suse-image"></a>查找 SUSE 映像
 

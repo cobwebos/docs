@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 05/08/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6cfe83f16dfb5d7d0e3ca5253081e30abb9029c9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e7e613adc98f6cec2fe8f369f1a6413cba6179c1
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173517"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170752"
 ---
 还可以在代码中将函数应用设置值读取为环境变量。 有关详细信息，请参阅以下特定于语言的参考主题的“环境变量”部分：
 
@@ -24,3 +24,4 @@ ms.locfileid: "67173517"
 * [Java](../articles/azure-functions/functions-reference-java.md#environment-variables)
 * [JavaScript](../articles/azure-functions/functions-reference-node.md#environment-variables)
 * [PowerShell](../articles/azure-functions/functions-reference-powershell.md#environment-variables)
+* [Python](../articles/azure-functions/functions-reference-python.md#environment-variables)

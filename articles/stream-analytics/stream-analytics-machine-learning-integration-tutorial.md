@@ -9,15 +9,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2d74488f60f21e3644a7a04579bfab7e70882b01
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ab510f7ee2f95a2c3373c0514c31554598451b27
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621546"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173332"
 ---
-# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>通过使用 Azure Stream Analytics 和 Azure 机器学习工作室 （预览版） 执行情绪分析
-本文介绍如何快速设置集成了 Azure 机器学习工作室的简单 Azure Stream Analytics 作业。 你将使用 Cortana Intelligence 库中的机器学习情绪分析模型来实时分析流文本数据并确定情绪分数。 可以使用 Cortana Intelligence Suite 完成此任务，不必担心构建情绪分析模型的复杂性。
+# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>通过 Azure 流分析和 Azure 机器学习工作室 (预览版) 执行情绪分析
+本文介绍如何快速设置集成了 Azure 机器学习工作室的简单 Azure 流分析作业。 你将使用 Cortana Intelligence 库中的机器学习情绪分析模型来实时分析流文本数据并确定情绪分数。 可以使用 Cortana Intelligence Suite 完成此任务，不必担心构建情绪分析模型的复杂性。
 
 可以将从本文学习的知识应用于诸如下列方案：
 
@@ -45,7 +45,7 @@ ms.locfileid: "67621546"
 概括来说，若要完成本文展示的任务，需要执行以下操作：
 
 1. 创建一个 Azure 存储帐户和一个 blob 存储容器，并将一个 CSV 格式的输入文件上传到该容器。
-3. 从 Cortana Intelligence 库中的情绪分析模型添加到 Azure 机器学习工作室工作区并将该模型部署为机器学习工作区中的 web 服务。
+3. 将 Cortana Intelligence 库中的一个情绪分析模型添加到 Azure 机器学习工作室工作区，并将该模型部署为机器学习工作区中的 Web 服务。
 5. 创建将此 Web 服务作为函数进行调用的流分析作业，以确定所输入文本的情绪。
 6. 启动流分析作业，并检查输出。
 
@@ -145,7 +145,7 @@ ms.locfileid: "67621546"
 
    ![新的流分析作业输入的设置](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
-1. 单击“保存” 。
+1. 单击“保存”。
 
 ### <a name="configure-the-job-output"></a>配置作业输出
 作业将结果发送到它从中获取输入的同一 blob 存储。 
@@ -156,7 +156,7 @@ ms.locfileid: "67621546"
 
 3. 使用以下值填写“Blob 存储”边栏选项卡：
 
-   |字段  |值  |
+   |字段  |ReplTest1  |
    |---------|---------|
    |**输出别名** | 使用名称 `datamloutput` 并选择“从订阅选择 Blob 存储”       |
    |**存储帐户**  |  选择前面创建的存储帐户。  |
@@ -165,7 +165,7 @@ ms.locfileid: "67621546"
 
    ![新的流分析作业输出的设置](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
 
-4. 单击“保存” 。   
+4. 单击“保存”。   
 
 
 ### <a name="add-the-machine-learning-function"></a>添加机器学习函数 
@@ -179,7 +179,7 @@ ms.locfileid: "67621546"
 
 3. 使用以下值填写“Azure 机器学习函数”边栏选项卡：
 
-   |字段  |值  |
+   |字段  |ReplTest1  |
    |---------|---------|
    | **函数别名** | 使用名称 `sentiment` 并选择“手动提供 Azure 机器学习函数设置”，该选项会提供输入 URL 和密钥的选项。      |
    | **URL**| 粘贴 Web 服务 URL。|
@@ -187,7 +187,7 @@ ms.locfileid: "67621546"
   
    ![用于向流分析作业添加机器学习函数的设置](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
-4. 单击“保存” 。
+4. 单击“保存”。
 
 ### <a name="create-a-query-to-transform-the-data"></a>创建查询来转换数据
 

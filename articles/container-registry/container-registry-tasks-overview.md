@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 1459b6fc45bb3d875b4869d1dcb4302dec21eb96
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: bc32ce59a7ec99278fb193f375d4ca945c227d2f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114806"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172194"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>利用 ACR 任务自动生成和维护容器映像
 
@@ -49,6 +49,13 @@ ms.locfileid: "70114806"
 | GitHub 分支 | GitHub 存储库的特定分支。| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub 子文件夹 | GitHub 存储库中某个子文件夹内的文件。 示例显示分支和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | 远程 tarball | 远程 Web 服务器上某个压缩存档中的文件。 | `http://remoteserver/myapp.tar.gz` |
+
+默认情况下, ACR 任务为 Linux OS 和 amd64 体系结构生成映像。 `--platform`指定标记以便为其他体系结构生成 Windows 映像或 Linux 映像。 指定操作系统, 并根据需要指定支持的体系结构格式 (例如`--platform Linux/arm`)。 对于 arm 体系结构, 可以选择指定 OS/体系结构/变体格式的变体`--platform Linux/arm64/v8`(例如):
+
+| OS | 体系结构|
+| --- | ------- | 
+| Linux | amd64<br/>单臂<br/>arm64<br/>386 |
+| Windows | amd64 |
 
 ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成到 CI/CD 解决方案。 通过执行包含[服务主体][az-login-service-principal]的[AZ login][az-login] , CI/CD 解决方案可以发出[az acr build][az-acr-build]命令来启动映像生成。
 

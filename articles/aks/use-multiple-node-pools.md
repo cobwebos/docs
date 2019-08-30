@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: caeb89332bd46b4f0cf2d0f9e5654aebca4d765d
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: b08ce504e96d09b7406f3d8fb1b2afc2c1925e90
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147257"
+ms.locfileid: "70164148"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>预览-创建和管理 Azure Kubernetes 服务中群集的多个节点池 (AKS)
 
@@ -24,7 +24,7 @@ ms.locfileid: "70147257"
 本文介绍如何在 AKS 群集中创建和管理多个节点池。 此功能目前处于预览状态。
 
 > [!IMPORTANT]
-> AKS 预览功能是可选的自助服务。 预览按 "原样" 提供, 并从服务级别协议和有限担保中排除。 AKS 预览版是以最大努力为基础的客户支持部分覆盖的。 因此, 这些功能并不用于生产。 有关其他信息, 请参阅以下支持文章:
+> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能不应用于生产。 有关其他信息，请参阅以下支持文章：
 >
 > * [AKS 支持策略][aks-support-policies]
 > * [Azure 支持常见问题][aks-faq]
@@ -171,7 +171,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ## <a name="upgrade-a-node-pool"></a>升级节点池
  
 > [!NOTE]
-> 群集或节点池上的升级和缩放操作是互相排斥的。 不能同时升级和缩放群集或节点池。 相反, 每个操作类型必须在目标资源上完成, 然后才能在该相同资源上发出下一个请求。 有关详细信息, 请参阅[故障排除指南](https://aka.ms/aks-pending-upgrade)。
+> 群集或节点池上的升级和缩放操作是互相排斥的。 不能让群集或节点池同时升级和缩放， 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 有关详细信息, 请参阅[故障排除指南](https://aka.ms/aks-pending-upgrade)。
 
 在第一步中创建 AKS 群集时, 指定了`--kubernetes-version` *1.13.10*的。 这会为控制平面和初始节点池设置 Kubernetes 版本。 可以通过不同的命令来升级控制平面和节点池的 Kubernetes 版本。 命令用于升级控制平面, `az aks nodepool upgrade`而用于升级单个节点池。 `az aks upgrade`
 
@@ -486,68 +486,68 @@ Events:
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "clusterName": {
-      "type": "string",
-      "metadata": {
-        "description": "The name of your existing AKS cluster."
-      }
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of your existing AKS cluster."
+            }
+        },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "The location of your existing AKS cluster."
+            }
+        },
+        "agentPoolName": {
+            "type": "string",
+            "defaultValue": "myagentpool",
+            "metadata": {
+                "description": "The name of the agent pool to create or update."
+            }
+        },
+        "vnetSubnetId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The Vnet subnet resource ID for your existing AKS cluster."
+            }
+        }
     },
-    "location": {
-      "type": "string",
-      "metadata": {
-        "description": "The location of your existing AKS cluster."
-      }
+    "variables": {
+        "apiVersion": {
+            "aks": "2019-04-01"
+        },
+        "agentPoolProfiles": {
+            "maxPods": 30,
+            "osDiskSizeGB": 0,
+            "agentCount": 3,
+            "agentVmSize": "Standard_DS2_v2",
+            "osType": "Linux",
+            "vnetSubnetId": "[parameters('vnetSubnetId')]"
+        }
     },
-    "agentPoolName": {
-      "type": "string",
-      "defaultValue": "myagentpool",
-      "metadata": {
-        "description": "The name of the agent pool to create or update."
-      }
-    },
-    "vnetSubnetId": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "The Vnet subnet resource ID for your existing AKS cluster."
-      }
-    }
-  },
-  "variables": {
-    "apiVersion": {
-      "aks": "2019-04-01"
-    },
-    "agentPoolProfiles": {
-      "maxPods": 30,
-      "osDiskSizeGB": 0,
-      "agentCount": 3,
-      "agentVmSize": "Standard_DS2_v2",
-      "osType": "Linux",
-      "vnetSubnetId": "[parameters('vnetSubnetId')]"
-    }
-  },
-  "resources": [
-    {
-      "apiVersion": "2019-04-01",
-      "type": "Microsoft.ContainerService/managedClusters/agentPools",
-      "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
-      "location": "[parameters('location')]",
-      "properties": {
-            "maxPods": "[variables('agentPoolProfiles').maxPods]",
-            "osDiskSizeGB": "[variables('agentPoolProfiles').osDiskSizeGB]",
-            "count": "[variables('agentPoolProfiles').agentCount]",
-            "vmSize": "[variables('agentPoolProfiles').agentVmSize]",
-            "osType": "[variables('agentPoolProfiles').osType]",
-            "storageProfile": "ManagedDisks",
-      "type": "VirtualMachineScaleSets",
-            "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
-            "orchestratorVersion": "1.13.10"
-      }
-    }
-  ]
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.ContainerService/managedClusters/agentPools",
+            "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "maxPods": "[variables('agentPoolProfiles').maxPods]",
+                "osDiskSizeGB": "[variables('agentPoolProfiles').osDiskSizeGB]",
+                "count": "[variables('agentPoolProfiles').agentCount]",
+                "vmSize": "[variables('agentPoolProfiles').agentVmSize]",
+                "osType": "[variables('agentPoolProfiles').osType]",
+                "storageProfile": "ManagedDisks",
+                "type": "VirtualMachineScaleSets",
+                "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
+                "orchestratorVersion": "1.13.10"
+            }
+        }
+    ]
 }
 ```
 

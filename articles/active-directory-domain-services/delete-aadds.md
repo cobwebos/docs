@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 2f9b7f5342753c27bd8159056c8f162a5a4b78d3
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: d5917ad94212c8b18d4362528bdfbafb02aec808
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473547"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171970"
 ---
 # <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户禁用 Azure Active Directory 域服务
 本文演示如何使用 Azure 门户为 Azure AD 目录禁用 Azure Active Directory (AD) 域服务。
@@ -40,14 +40,14 @@ ms.locfileid: "67473547"
 
     ![选择要删除的域](./media/getting-started/domain-services-delete-select-domain.png)
 
-3. 在“概述”页上，单击“删除”按钮。  
+3. 在“概述”页上，单击“删除”按钮。
 
     ![删除域](./media/getting-started/domain-services-delete-domain.png)
 
-4. 若要确认删除，请键入托管域的 DNS 域名。 完成后单击“删除”按钮  。
+4. 若要确认删除，请键入托管域的 DNS 域名。 完成后单击“删除”按钮。
 
     ![删除域确认](./media/getting-started/domain-services-delete-domain-confirm.png)
 
-大约 15 到 20 分钟后托管域将被删除。
+删除托管域可能需要15-20 分钟或更长时间。
 
 欢迎各位[分享反馈](contact-us.md)，让我们了解哪些功能可在你们今后选择 Azure AD 域服务时提供帮助。 此外，这些反馈可帮助我们改进服务，使其更好地满足部署需求，适合具体的用例。

@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: fa34baa7569b0552708cd1a9b57d79186e5acd57
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 4be1ed779ad424d30ac34fd55f117ada3ed9c7a2
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669553"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70166673"
 ---
 标准化的虚拟机 (VM) 映像允许组织迁移到云, 并确保部署中的一致性。 映像通常包括预定义的安全和配置设置以及必需的软件。 设置自己的映像管道需要时间、基础结构和设置, 但使用 Azure VM 映像生成器时, 只需提供一个描述映像的简单配置, 将其提交给服务, 然后构建并分发映像。
  
@@ -73,7 +73,7 @@ Azure 映像生成器是一种完全托管的 Azure 服务, 可通过 Azure 资�
 
 1. 以一个 json 文件的形式创建图像模板。 此 json 文件包含有关映像源、自定义和分发的信息。 [Azure 映像生成器 GitHub 存储库](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)中提供了多个示例。
 1. 将其提交给服务, 这将在指定的资源组中创建一个映像模板项目。 在后台, 映像生成器将根据需要下载源映像或 ISO, 以及脚本。 它们存储在在订阅中自动创建的单独资源组中, 格式为:IT_\<DestinationResourceGroup > _\<TemplateName >。 
-1. 一旦创建了映像模板, 就可以生成映像。 在背景图像生成器中, 使用模板和源文件在 IT_\<DestinationResourceGroup > _\<TemplateName > 资源组中创建 VM、网络和存储。
+1. 一旦创建了映像模板, 就可以生成映像。 在背景图像生成器中, 使用模板和源文件在 IT_\<DestinationResourceGroup > _\<TemplateName > 资源组中创建 VM (D1v2)、网络、公共 IP 和存储。
 1. 在创建映像的过程中, 映像生成器会根据模板分发其图像, 然后在创建的 IT_\<DestinationResourceGroup > _\<TemplateName > 资源组中删除其他资源进程。
 
 

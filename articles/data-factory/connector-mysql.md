@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b17b6d12dc60546a29d37cfa12fe1f11186579e1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: fcf56e8088af25c14c022039bf8862f2dc21c77a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967455"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172565"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -25,6 +25,9 @@ ms.locfileid: "68967455"
 > * [当前版本](connector-mysql.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 MySQL 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+
+>[!NOTE]
+>若要将数据从或复制到[Azure Database for MySQL](../mysql/overview.md)服务, 请使用专用[Azure Database for MySQL 连接器](connector-azure-database-for-mysql.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -40,7 +43,7 @@ ms.locfileid: "68967455"
 
 对于低于 3.7 的自承载 IR 版本，需要在集成运行时计算机上安装[适用于 Microsoft Windows 的 MySQL 连接器/Net](https://dev.mysql.com/downloads/connector/net/)（6.6.5 和 6.10.7 之间的版本）。 此 32 位驱动程序与 64 位 IR 兼容。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -173,11 +176,11 @@ MySQL 链接的服务支持以下属性：
 
 ### <a name="mysql-as-source"></a>以 MySQL 作为源
 
-要从 MySQL 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
+要从 MySQL 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动**source**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
+| type | 复制活动 source 的 type 属性必须设置为：**RelationalSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**

@@ -14,15 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019
-ms.openlocfilehash: 4075ceae6c40a6be8ee2b9f6580a57fafb96e17e
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.custom: seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 84f035a55256ab22c823b2aaed9c9c2400eebf5b
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663426"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173410"
 ---
-# <a name="how-to-use-service-bus-queues-with-java"></a>如何通过 Java 使用服务总线队列
+# <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>通过 Java 使用 Azure 服务总线队列发送和接收消息
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 在本教程中，你将了解如何创建 Java 应用程序来向服务总线队列发送消息以及从中接收消息。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "68663426"
     2. 创建一个服务总线**命名空间**。 
     3. 获取**连接字符串**。
     4. 创建一个服务总线**队列**。
-3. 安装[AZURE SDK For Java][Azure SDK for Java]。 
+3. 安装 [Azure SDK for Java][Azure SDK for Java]。 
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
