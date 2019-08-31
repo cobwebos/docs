@@ -3,15 +3,15 @@ title: Azure 资源类型支持的移动操作
 description: 列出了可移动到新资源组或订阅的 Azure 资源类型。
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: a588d4e4b1978b572488dcd5d53698cbb8f7d311
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 3100ce897a09c2747c2b339662c699d197ba73d7
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997290"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194844"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出了 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。

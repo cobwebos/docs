@@ -3,15 +3,15 @@ title: 针对资源的 Azure 资源管理器标记支持
 description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服务的详细信息。
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 452230a263e623f53346fcdb8cf310e73f171aee
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bf10274e8c492363cb54c5610ff8d912ab308d1c
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848606"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194717"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。 标记为“支持标记”的列指示资源类型是否具有标记的属性。 标记为“在成本报表中标记”的列指示该资源类型是否将标记传递给成本报表。
@@ -24,7 +24,7 @@ ms.locfileid: "68848606"
 > - [AADDomainServices](#microsoftaaddomainservices)
 > - [加载项](#microsoftaddons)
 > - [ADHybridHealthService](#microsoftadhybridhealthservice)
-> - [Microsoft Advisor](#microsoftadvisor)
+> - [Microsoft.Advisor](#microsoftadvisor)
 > - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
@@ -49,7 +49,7 @@ ms.locfileid: "68848606"
 > - [Microsoft.Cdn](#microsoftcdn)
 > - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
-> - [ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
+> - [Microsoft.ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
 > - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
@@ -90,10 +90,10 @@ ms.locfileid: "68848606"
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
-> - [Microsoft. 功能](#microsoftfeatures)
+> - [Microsoft.Features](#microsoftfeatures)
 > - [Microsoft. 库](#microsoftgallery)
 > - [Microsoft.Genomics](#microsoftgenomics)
-> - [GuestConfiguration](#microsoftguestconfiguration)
+> - [Microsoft.GuestConfiguration](#microsoftguestconfiguration)
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft.hardwaresecuritymodules](#microsofthardwaresecuritymodules)
 > - [Microsoft.HDInsight](#microsofthdinsight)
@@ -114,7 +114,7 @@ ms.locfileid: "68848606"
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [ManagedLab](#microsoftmanagedlab)
 > - [ManagedServices](#microsoftmanagedservices)
-> - [Microsoft. 管理](#microsoftmanagement)
+> - [Microsoft.Management](#microsoftmanagement)
 > - [Microsoft.Maps](#microsoftmaps)
 > - [Microsoft Marketplace](#microsoftmarketplace)
 > - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
@@ -138,7 +138,7 @@ ms.locfileid: "68848606"
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft RemoteApp](#microsoftremoteapp)
 > - [ResourceGraph](#microsoftresourcegraph)
-> - [ResourceHealth](#microsoftresourcehealth)
+> - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
 > - [Microsoft.Scheduler](#microsoftscheduler)
@@ -163,7 +163,7 @@ ms.locfileid: "68848606"
 > - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
 > - [Microsoft.StorSimple](#microsoftstorsimple)
 > - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
-> - [Microsoft. 订阅](#microsoftsubscription)
+> - [Microsoft.Subscription](#microsoftsubscription)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
 > - [Microsoft.Web](#microsoftweb)
@@ -231,7 +231,7 @@ ms.locfileid: "68848606"
 > | alertsMetaData | 否 |否 |
 > | alertsSummary | 否 |否 |
 > | alertsSummaryList | 否 |否 |
-> | 意见 | 否 |否 |
+> | 反馈 | 否 |否 |
 > | smartDetectorAlertRules | 否 |否 |
 > | smartDetectorRuntimeEnvironments | 否 |否 |
 > | smartGroups | 否 |否 |
@@ -521,8 +521,8 @@ ms.locfileid: "68848606"
 > | domainNames/serviceCertificates | 否 |否 |
 > | domainNames/slots | 否 |否 |
 > | domainNames/slots/roles | 否 |否 |
-> | domainNames/槽位/role/metricDefinitions | 否 |否 |
-> | domainNames/插槽/角色/指标 | 否 |否 |
+> | domainNames/slots/roles/metricDefinitions | 否 |否 |
+> | domainNames/slots/roles/metrics | 否 |否 |
 > | moveSubscriptionResources | 否 |否 |
 > | operatingSystemFamilies | 否 |否 |
 > | operatingSystems | 否 |否 |
@@ -571,11 +571,11 @@ ms.locfileid: "68848606"
 > | quotas | 否 |否 |
 > | storageAccounts | 是 |是 |
 > | storageAccounts/metricDefinitions | 否 |否 |
-> | storageAccounts/指标 | 否 |否 |
+> | storageAccounts/metrics | 否 |否 |
 > | storageAccounts/services | 否 |否 |
 > | storageAccounts/services/diagnosticSettings | 否 |否 |
 > | storageAccounts/services/metricDefinitions | 否 |否 |
-> | storageAccounts/服务/指标 | 否 |否 |
+> | storageAccounts/services/metrics | 否 |否 |
 > | storageAccounts/vmImages | 否 |否 |
 > | vmImages | 否 |否 |
 
@@ -603,12 +603,12 @@ ms.locfileid: "68848606"
 > | diskEncryptionSets | 是 |是 |
 > | 磁盘 | 是 |是 |
 > | galleries | 是 |是 |
-> | 库/应用程序 | 是 |是 |
-> | 库/应用程序/版本 | 是 |是 |
+> | galleries/applications | 是 |是 |
+> | galleries/applications/versions | 是 |是 |
 > | galleries/images | 是 |是 |
 > | galleries/images/versions | 是 |是 |
 > | hostGroups | 是 |是 |
-> | hostGroups/主机 | 是 |是 |
+> | hostGroups/hosts | 是 |是 |
 > | 映像 | 是 |是 |
 > | proximityPlacementGroups | 是 |是 |
 > | restorePointCollections | 是 |是 |
@@ -1041,7 +1041,7 @@ ms.locfileid: "68848606"
 > | namespaces/eventhubs | 否 |否 |
 > | namespaces/eventhubs/authorizationrules | 否 |否 |
 > | namespaces/eventhubs/consumergroups | 否 |否 |
-> | 命名空间/networkrulesets | 否 |否 |
+> | namespaces/networkrulesets | 否 |否 |
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
@@ -1177,7 +1177,7 @@ ms.locfileid: "68848606"
 > | hsmPools | 是 |是 |
 > | vaults | 是 |是 |
 > | vaults/accessPolicies | 否 |否 |
-> | 保管库/eventGridFilters | 否 |否 |
+> | vaults/eventGridFilters | 否 |否 |
 > | vaults/secrets | 否 |否 |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
@@ -1186,7 +1186,7 @@ ms.locfileid: "68848606"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | clusters | 是 |是 |
-> | 群集/attacheddatabaseconfigurations | 否 |否 |
+> | clusters/attacheddatabaseconfigurations | 否 |否 |
 > | clusters/databases | 否 |否 |
 > | clusters/databases/dataconnections | 否 |否 |
 > | clusters/databases/eventhubconnections | 否 |否 |
@@ -1242,7 +1242,7 @@ ms.locfileid: "68848606"
 > | ------------- | ----------- | ----------- |
 > | labaccounts | 是 |是 |
 
-## <a name="microsoftmanagedservices"></a>ManagedServices
+## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
@@ -1397,9 +1397,9 @@ ms.locfileid: "68848606"
 > | expressRoutePorts | 是 |是 |
 > | expressRouteServiceProviders | 否 |否 |
 > | firewallPolicies | 是 |是 |
-> | frontdoors | 是, 但受限制 (请参阅[下面的注释](#frontdoor)) |是 |
-> | frontdoorWebApplicationFirewallManagedRuleSets | 是, 但受限制 (请参阅[下面的注释](#frontdoor)) |否 |
-> | frontdoorWebApplicationFirewallPolicies | 是, 但受限制 (请参阅[下面的注释](#frontdoor)) |是 |
+> | frontdoors | 是，但受限制（请参见[下面的注释](#frontdoor)） |是 |
+> | frontdoorWebApplicationFirewallManagedRuleSets | 是，但受限制（请参见[下面的注释](#frontdoor)） |否 |
+> | frontdoorWebApplicationFirewallPolicies | 是，但受限制（请参见[下面的注释](#frontdoor)） |是 |
 > | getDnsResourceReference | 否 |否 |
 > | internalNotify | 否 |否 |
 > | loadBalancers | 是 |否 |
@@ -1418,7 +1418,7 @@ ms.locfileid: "68848606"
 > | privateDnsZones | 是 |是 |
 > | privateDnsZones/A | 否 |否 |
 > | privateDnsZones/AAAA | 否 |否 |
-> | privateDnsZones/所有 | 否 |否 |
+> | privateDnsZones/all | 否 |否 |
 > | privateDnsZones/CNAME | 否 |否 |
 > | privateDnsZones/MX | 否 |否 |
 > | privateDnsZones/PTR | 否 |否 |
@@ -1648,7 +1648,7 @@ ms.locfileid: "68848606"
 > | allowedConnections | 否 |否 |
 > | applicationWhitelistings | 否 |否 |
 > | assessmentMetadata | 否 |否 |
-> | 风险 | 否 |否 |
+> | assessments | 否 |否 |
 > | AutoProvisioningSettings | 否 |否 |
 > | Compliances | 否 |否 |
 > | dataCollectionAgents | 否 |否 |
@@ -1710,7 +1710,7 @@ ms.locfileid: "68848606"
 > | namespaces/authorizationrules | 否 |否 |
 > | namespaces/disasterrecoveryconfigs | 否 |否 |
 > | namespaces/eventgridfilters | 否 |否 |
-> | 命名空间/networkrulesets | 否 |否 |
+> | namespaces/networkrulesets | 否 |否 |
 > | namespaces/queues | 否 |否 |
 > | namespaces/queues/authorizationrules | 否 |否 |
 > | namespaces/topics | 否 |否 |
@@ -1730,11 +1730,11 @@ ms.locfileid: "68848606"
 > | containerGroups | 是 |是 |
 > | containerGroupSets | 是 |是 |
 > | edgeclusters | 是 |是 |
-> | edgeclusters/应用程序 | 否 |否 |
+> | edgeclusters/applications | 否 |否 |
 > | 网络 | 是 |是 |
 > | secretstores | 是 |是 |
-> | secretstores/证书 | 否 |否 |
-> | secretstores/机密 | 否 |否 |
+> | secretstores/certificates | 否 |否 |
+> | secretstores/secrets | 否 |否 |
 > | 卷 | 是 |是 |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
@@ -1795,7 +1795,7 @@ ms.locfileid: "68848606"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | 是 | 是 |
-> | managedInstances/databases | 是 (请参阅[下面的注释](#sqlnote)) | 是 |
+> | managedInstances/databases | 是（请参见[下面的注释](#sqlnote)） | 是 |
 > | managedInstances/databases/backupShortTermRetentionPolicies | 否 | 否 |
 > | managedInstances/databases/schemas/tables/columns/sensitivityLabels | 否 | 否 |
 > | managedInstances/databases/vulnerabilityAssessments | 否 | 否 |
@@ -1807,7 +1807,7 @@ ms.locfileid: "68848606"
 > | 服务器 | 是 | 是 |
 > | servers/administrators | 否 | 否 |
 > | servers/communicationLinks | 否 | 否 |
-> | servers/databases | 是 (请参阅[下面的注释](#sqlnote)) | 是 |
+> | servers/databases | 是（请参见[下面的注释](#sqlnote)） | 是 |
 > | servers/encryptionProtector | 否 | 否 |
 > | servers/firewallRules | 否 | 否 |
 > | servers/keys | 否 | 否 |
@@ -1974,15 +1974,15 @@ ms.locfileid: "68848606"
 > | serverFarms | 是 |是 |
 > | serverFarms/eventGridFilters | 否 |否 |
 > | 站点 | 是 |是 |
-> | 站点/配置  | 否 | 否 |
+> | sites/config  | 否 | 否 |
 > | sites/eventGridFilters | 否 |否 |
 > | sites/hostNameBindings | 否 |否 |
-> | sites/Networkconfig.netcfg | 否 |否 |
+> | sites/networkConfig | 否 |否 |
 > | sites/premieraddons | 是 |是 |
 > | sites/slots | 是 |是 |
-> | 站点/槽/eventGridFilters | 否 |否 |
+> | sites/slots/eventGridFilters | 否 |否 |
 > | sites/slots/hostNameBindings | 否 |否 |
-> | 站点/槽/Networkconfig.netcfg | 否 |否 |
+> | sites/slots/networkConfig | 否 |否 |
 > | sourceControls | 否 |否 |
 > | validate | 否 |否 |
 > | verifyHostingEnvironmentVnet | 否 |否 |

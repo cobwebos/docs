@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 545860a394c7eac953c1cbacc9dd05fc3737f6c1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7b800a7ef38624dbe89a61dd04e2bd97b02066bb
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856173"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191930"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 
@@ -200,6 +200,7 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[datastore1.as_download(), datastore2.path('./foo').as_download(), datastore3.as_upload(path_on_compute='./bar.pkl')])
 ```
+
 ### <a name="compute-and-datastore-matrix"></a>计算和数据存储矩阵
 
 数据存储目前支持将连接信息存储到下表中列出的存储服务。 此矩阵显示了不同计算目标和数据存储方案的可用数据访问功能。 详细了解 Azure 机器学习的[计算目标](how-to-set-up-training-targets.md#compute-targets-for-training)。
@@ -217,6 +218,17 @@ est = Estimator(source_directory='your code directory',
 
 > [!NOTE]
 > 在某些情况下, 使用`as_download()` `as_mount()`而不是高度迭代、大型数据进程运行速度更快; 这可以通过 experimentally 进行验证。
+
+### <a name="accessing-source-code-during-training"></a>在定型期间访问源代码
+
+与 Azure 文件共享相比, azure blob 存储具有更高的吞吐量速度, 并将扩展到大量并行启动的作业。 出于此原因, 我们建议配置运行以使用 blob 存储来传输源代码文件。
+
+下面的代码示例在运行配置中指定用于源代码传输的 blob 数据存储。
+
+```python 
+# workspaceblobstore is the default blob storage
+run_config.source_directory_data_store = "workspaceblobstore" 
+```
 
 ## <a name="access-data-during-scoring"></a>在评分过程中访问数据
 

@@ -1,27 +1,21 @@
 ---
-title: 设置数据科学虚拟机的通用标识 - Azure | Microsoft Docs
+title: 设置公共标识
+titleSuffix: Azure Data Science Virtual Machine
 description: 了解如何创建可跨多个 Data Science Virtual Machine 使用的公共用户帐户。 可以使用 Azure Active Directory 或本地 Active Directory 对 Data Science Virtual Machine 的用户进行身份验证。
 keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析, 团队数据科学过程
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/08/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 34303c8832a58e4d97ba4e712d624edf321b84a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.topic: conceptual
+ms.date: 05/08/2018
+ms.openlocfilehash: 5cd310dac28b999af3d21c46b108abdc6d5779b5
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558286"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192236"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>在数据科学虚拟机上设置通用标识
 

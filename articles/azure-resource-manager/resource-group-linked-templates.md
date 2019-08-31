@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: c79429d1a39e975c6bcc7fce191846a6205f9a86
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b48988c04f6b387a8124a812a836e2b92a9d3ada
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311701"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194378"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -83,14 +83,14 @@ ms.locfileid: "68311701"
 > [!NOTE]
 > 对于嵌套模板，不能使用嵌套模板中定义的参数或变量。 可以使用主模板中的参数和变量。 在前面的示例中，`[variables('storageName')]` 从主模板（而不是嵌套模板）中检索值。 此限制不适用于外部模版。
 >
-> 对于嵌套模板中定义的两个资源, 一个资源依赖于另一个资源, 则依赖项的值只是从属资源的名称:
+> 如果在嵌套模板内定义了两个资源并且一个资源依赖于另一个资源，则依赖项的值就是依赖资源的名称：
 > ```json
 > "dependsOn": [
 >   "[variables('storageAccountName')]"
 > ],
 > ```
 >
-> 对于在嵌套模板`reference`中部署的资源, 不能在嵌套模板的 "输出" 部分中使用函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
+> 对于已在嵌套模板中部署的资源，不能在嵌套模板的 outputs 节使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
 
 嵌套模板需要与标准模板[相同的属性](resource-group-authoring-templates.md)。
 
@@ -479,6 +479,8 @@ done
 尽管链接模板必须可从外部使用，但它无需向公众正式发布。 可以将模板添加到只有存储帐户所有者可以访问的专用存储帐户。 然后，在部署期间创建共享访问签名 (SAS) 令牌来启用访问。 将该 SAS 令牌添加到链接模板的 URI。 即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也将记录在部署操作中。 若要限制公开，请设置令牌的到期时间。
 
 也可将参数文件限制为通过 SAS 令牌进行访问。
+
+目前, 无法链接到位于[Azure 存储防火墙](../storage/common/storage-network-security.md)后面的存储帐户中的模板。
 
 以下示例演示在链接到模板时如何传递 SAS 令牌：
 

@@ -6,20 +6,20 @@ author: tfitzmac
 keywords: 部署错误, azure 部署, 部署到 azure
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 07/28/2019
+ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 639f6b3b29b7effa12de79335d44b0193f3f9932
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: df5362028a38a86ba8df46efae2e3c3109856463
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638542"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194358"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure 资源管理器时的常见 Azure 部署错误
 
 本文介绍了一些常见的 Azure 部署错误，并提供了有关如何解决这些错误的信息。 如果找不到部署错误的错误代码，请参阅[查找错误代码](#find-error-code)。
 
-如果你正在查找有关错误代码的信息, 并且本文未提供此信息, 请告知我们。 在此页的底部, 你可以留下反馈。 将跟踪 GitHub 问题的反馈。 
+如果你正在查找有关错误代码的信息, 但本文未提供该信息, 请告知我们。 在此页的底部, 你可以留下反馈。 将跟踪 GitHub 问题的反馈。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -41,7 +41,7 @@ ms.locfileid: "69638542"
 | ImageNotFound | 检查 VM 映像设置。 |  |
 | InUseSubnetCannotBeDeleted | 尝试更新资源时可能会遇到此错误, 并且通过删除和创建资源来处理请求。 确保指定所有未更改值。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | 获取相应租户的访问令牌。 只能从帐户所属的租户获取该令牌。 | |
-| InvalidContentLink | 很可能尝试过链接到不可用的嵌套模板。 再次确认为嵌套模板提供的 URI。 如果模板存在于存储帐户中，请确保 URI 可访问。 你可能需要传递 SAS 令牌。 | [链接的模板](resource-group-linked-templates.md) |
+| InvalidContentLink | 您很可能尝试链接到不存在的嵌套模板。 再次确认为嵌套模板提供的 URI。 如果模板存在于存储帐户中，请确保 URI 可访问。 你可能需要传递 SAS 令牌。 目前, 无法链接到位于[Azure 存储防火墙](../storage/common/storage-network-security.md)后面的存储帐户中的模板。 请考虑将模板移动到其他存储库, 如 GitHub。 | [链接的模板](resource-group-linked-templates.md) |
 | InvalidParameter | 为资源提供的某个值与预期值不匹配。 此错误可能由许多不同的状况造成。 例如，密码强度可能不足，或者 Blob 名称可能不正确。 错误消息应指出需要更正哪些值。 | |
 | InvalidRequestContent | 部署值包括无法识别的值, 或者缺少必需的值。 确认资源类型的值。 | [模板参考](/azure/templates/) |
 | InvalidRequestFormat | 在运行部署时启用调试日志记录, 并验证请求的内容。 | [调试日志记录](#enable-debug-logging) |
@@ -65,7 +65,7 @@ ms.locfileid: "69638542"
 | PrivateIPAddressInReservedRange | 指定的 IP 地址包括 Azure 所需的地址范围。 更改 IP 地址以避免保留的范围。 | [IP 地址](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
 | PrivateIPAddressNotInSubnet | 指定的 IP 地址超出子网范围。 更改 IP 地址，使之在子网范围内。 | [IP 地址](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
 | PropertyChangeNotAllowed | 无法在已部署的资源上更改某些属性。 更新资源时，请限制为对允许的属性进行更改。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
-| RequestDisallowedByPolicy | 订阅包含阻止尝试在部署期间执行的操作的资源策略。 查找阻止该操作的策略。 如果可能, 请更改部署以满足策略中的限制。 | [解决策略问题](resource-manager-policy-requestdisallowedbypolicy-error.md) |
+| RequestDisallowedByPolicy | 订阅中包含的资源策略可防止在部署期间尝试执行的操作。 查找阻止该操作的策略。 如果可能, 请更改部署以满足策略中的限制。 | [解决策略问题](resource-manager-policy-requestdisallowedbypolicy-error.md) |
 | ReservedResourceName | 提供不包含保留名称的资源名称。 | [保留的资源名称](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | 等待删除操作完成。 | |
 | ResourceGroupNotFound | 检查部署的目标资源组的名称。 目标资源组必须已存在于订阅中。 检查订阅上下文。 | [Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |

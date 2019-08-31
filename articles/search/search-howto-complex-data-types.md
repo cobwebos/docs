@@ -2,7 +2,7 @@
 title: 如何为复杂数据类型建模 - Azure 搜索
 description: 可以在 Azure 搜索索引中使用 ComplexType 和 Collections 数据类型为嵌套或分层数据结构建模。
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 services: search
@@ -10,22 +10,22 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: e7e6ddefd13d669c949389bc4fad85fb6cff4d3a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b9c9b35adc0dde032723c3c60adedf5b2e7b4cb6
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621364"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183207"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>如何在 Azure 搜索中为复杂数据类型建模
 
-在多个形状可以来自外部数据集用于填充 Azure 搜索索引。 有时，它们包括分层或嵌套子结构。 示例可能包括多个地址的单个客户、 多个颜色和大小的单个 SKU，单个书籍的多位作者等等。 在建模术语中，可能会看到这些结构称为*复杂*，*复合*，*复合*，或者*聚合*数据类型。 Azure 搜索使用的这一概念术语**复杂类型**。 在 Azure 搜索中，复杂类型使用进行建模**复杂字段**。 复杂的字段是包含子级 （子字段） 可以是任何数据类型，包括其他复杂类型的字段。 这可以以类似的方式与编程语言中的结构化的数据类型。
+用于填充 Azure 搜索索引的外部数据集可以有多个形状。 有时它们包含分层或嵌套的子结构。 示例可能包括单个客户的多个地址、单个 SKU 的多种颜色和大小、单个书籍的多个作者等等。 在建模术语中, 你可能会看到这些结构称为*复杂*、*复合*、*复合*或*聚合*数据类型。 Azure 搜索用于此概念的术语是**复杂类型**。 在 Azure 搜索中, 复杂类型使用**复杂字段**进行建模。 "复杂字段" 是包含子字段 (子字段) 的字段, 它们可以是任何数据类型, 包括其他复杂类型。 这与编程语言中的结构化数据类型的工作方式类似。
 
-复杂的字段表示是在文档中，单个对象或对象，具体取决于数据类型的数组。 类型的字段`Edm.ComplexType`表示单个对象，类型的字段时`Collection(Edm.ComplexType)`表示对象的数组。
+复杂字段表示文档中的单个对象或对象的数组, 具体取决于数据类型。 类型`Edm.ComplexType`为的字段表示单个对象, 而类型`Collection(Edm.ComplexType)`为的字段表示对象的数组。
 
-Azure 搜索原生支持复杂类型和集合。 这些类型，可在 Azure 搜索索引中的几乎所有 JSON 结构都建模。 在旧版的 Azure 搜索 API 中，只能导入平展的行集。 在最新版本中，索引可以更密切地对应于源数据。 换言之，如果源数据使用复杂类型，则索引也可以使用复杂类型。
+Azure 搜索原生支持复杂类型和集合。 这些类型使你可以在 Azure 搜索索引中为几乎任何 JSON 结构建模。 在旧版的 Azure 搜索 API 中，只能导入平展的行集。 在最新版本中，索引可以更密切地对应于源数据。 换言之，如果源数据使用复杂类型，则索引也可以使用复杂类型。
 
-若要开始，我们建议使用 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)，可以在 Azure 门户上“导入数据”向导中加载该数据集。  该向导会检测源中的复杂类型，并根据检测到的结构建议一个索引架构。
+若要开始，我们建议使用 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)，可以在 Azure 门户上“导入数据”向导中加载该数据集。 该向导会检测源中的复杂类型，并根据检测到的结构建议一个索引架构。
 
 > [!Note]
 > `api-version=2019-05-06` 正式支持复杂类型。 
@@ -34,7 +34,7 @@ Azure 搜索原生支持复杂类型和集合。 这些类型，可在 Azure 搜
 
 ## <a name="example-of-a-complex-structure"></a>复杂结构的示例
 
-以下 JSON 文档由简单字段和复杂字段构成。 复杂字段（例如 `Address` 和 `Rooms`）包含子字段。 `Address` 具有一组这些子字段的值，因为它是单个对象在文档中。 相反，`Rooms` 包含其子字段的多个值集，集合中的每个对象各有一个值集。
+以下 JSON 文档由简单字段和复杂字段构成。 复杂字段（例如 `Address` 和 `Rooms`）包含子字段。 `Address`为这些子字段提供单个值集, 因为它是文档中的单个对象。 相反，`Rooms` 包含其子字段的多个值集，集合中的每个对象各有一个值集。
 
 ```json
 {
@@ -65,7 +65,7 @@ Azure 搜索原生支持复杂类型和集合。 这些类型，可在 Azure 搜
 
 与处理任何索引定义时一样，可以使用门户、[REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) 或 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 创建包含复杂类型的架构。 
 
-以下示例演示了包含简单字段、集合与复杂类型的 JSON 索引架构。 请注意，在复杂类型中，与顶级字段一样，每个子字段包含一个类型，有时还包含属性。 架构对应于以上示例数据。 `Address` 是一个复杂的字段，不是一个集合 （一家酒店都有一个地址）。 `Rooms` 是复杂集合字段（一家酒店有多间客房）。
+以下示例演示了包含简单字段、集合与复杂类型的 JSON 索引架构。 请注意，在复杂类型中，与顶级字段一样，每个子字段包含一个类型，有时还包含属性。 架构对应于以上示例数据。 `Address`是一个不是集合的复杂字段 (一个旅馆有一个地址)。 `Rooms` 是复杂集合字段（一家酒店有多间客房）。
 
 <!---
 For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
@@ -100,7 +100,7 @@ Indexers are a different story. When defining an indexer, in particular one used
 
 ## <a name="updating-complex-fields"></a>更新复杂字段
 
-一般情况下，应用于字段的所有[重建索引规则](search-howto-reindex.md)仍会应用于复杂字段。 主要规则在这里，重述一些添加字段不需要重新生成索引，但大多数修改执行操作。
+一般情况下，应用于字段的所有[重建索引规则](search-howto-reindex.md)仍会应用于复杂字段。 在这里, 重述几个主要规则, 添加字段不需要重新生成索引, 但大多数修改都是如此。
 
 ### <a name="structural-updates-to-the-definition"></a>对定义的结构更新
 
@@ -110,7 +110,7 @@ Indexers are a different story. When defining an indexer, in particular one used
 
 ### <a name="data-updates"></a>数据更新
 
-更新现有文档索引中包含`upload`操作的工作方式相同复杂和简单字段-替换所有字段。 但是， `merge` (或`mergeOrUpload`时应用于现有文档) 不起作用相同的所有字段。 具体而言，`merge`不支持合并集合中的元素。 为基元类型的集合和复杂集合存在此限制。 若要更新集合，您将需要检索完整的集合值进行的更改，并将包含新集合在索引 API 请求。
+使用`upload`操作更新索引中的现有文档的方式对于复杂字段和简单字段都是相同的, 所有字段都将被替换。 但是, `merge` (或`mergeOrUpload`应用于现有文档时) 不会在所有字段中起作用。 具体而言`merge` , 不支持合并集合中的元素。 对于基元类型和复杂集合的集合存在此限制。 若要更新集合, 需要检索完整的集合值, 进行更改, 然后在索引 API 请求中包括新集合。
 
 ## <a name="searching-complex-fields"></a>搜索复杂字段
 
@@ -120,7 +120,7 @@ Indexers are a different story. When defining an indexer, in particular one used
 
     search=Address/City:Portland AND Address/State:OR
 
-与此类似的查询*无关联*用于全文搜索，与筛选器不同。 在筛选器中，通过一系列复杂的子字段的查询使用关联中的范围变量[`any`或`all` ](search-query-odata-collection-operators.md)。 上面的 Lucene 查询返回包含"波特兰，Maine"和"波特兰，俄勒冈州"，以及其他城市俄勒冈州的文档。 这是因为每个子句适用于在整个文档中，其字段的所有值，因此不存在的"当前子文档"的概念。 有关这方面的详细信息，请参阅[Azure 搜索中的了解 OData 集合筛选器](search-query-understand-collection-filters.md)。
+与筛选器不同 , 此类查询与全文搜索不相关。 在筛选器中, 通过使用[ `any`或`all`](search-query-odata-collection-operators.md)中的范围变量来关联复杂集合的子字段上的查询。 上述 Lucene 查询返回包含 "Maine" 和 "俄勒冈州" 的文档以及俄勒冈州的其他城市。 出现这种情况的原因是, 每个子句都适用于其在整个文档中的字段的所有值, 因此没有 "当前子文档" 的概念。 有关此内容的详细信息, 请参阅[了解 Azure 搜索中的 OData 集合筛选器](search-query-understand-collection-filters.md)。
 
 ## <a name="selecting-complex-fields"></a>选择复杂字段
 
@@ -132,37 +132,37 @@ Indexers are a different story. When defining an indexer, in particular one used
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>筛选、分面和排序复杂字段
 
-用作筛选和带字段搜索的 [OData 路径语法](query-odata-filter-orderby-syntax.md)同样也可用于分面、排序和选择搜索请求中的字段。 对于复杂类型，可以应用规则来控制可将哪些子字段标记为可排序或可分面。 这些规则的详细信息，请参阅[创建索引 API 引用](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。
+用作筛选和带字段搜索的 [OData 路径语法](query-odata-filter-orderby-syntax.md)同样也可用于分面、排序和选择搜索请求中的字段。 对于复杂类型，可以应用规则来控制可将哪些子字段标记为可排序或可分面。 有关这些规则的详细信息, 请参阅[创建索引 API 参考](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。
 
 ### <a name="faceting-sub-fields"></a>分面子字段
 
 除非类型为 `Edm.GeographyPoint` 或 `Collection(Edm.GeographyPoint)`，否则任何子字段都可标记为可分面。
 
-分面结果中返回的文档计数进行计算的父文档 （酒店） 不是复杂集合 （聊天室） 中的子文档。 例如，假设某家酒店有 20 间“套房”类型的客房。 给定此分面参数`facet=Rooms/Type`，分面计数将是一个用于旅馆房间的不 20。
+在分面结果中返回的文档数计算为父文档 (宾馆), 而不是复杂集合 (房间) 中的子文档。 例如，假设某家酒店有 20 间“套房”类型的客房。 给定此方面参数`facet=Rooms/Type`后, 多面计数将是旅馆的一个, 而不是房间的20个。
 
 ### <a name="sorting-complex-fields"></a>排序复杂字段
 
-排序操作将应用于文档（酒店）而不是子文档（客房）。 在必须将复杂类型集合，例如聊天室，请务必认识到，不能在对排序聊天室根本。 事实上，不能对任何集合进行排序。
+排序操作将应用于文档（酒店）而不是子文档（客房）。 如果你有一个复杂类型的集合 (如聊天室), 请务必认识到根本就不能对文件组进行排序。 事实上, 您不能对任何集合进行排序。
 
-排序操作时工作字段具有单个值每个文档，该字段是一个简单的字段，还是复杂类型中的子字段。 例如，`Address/City`可以是可排序，因为因此每个酒店，只能将一个地址`$orderby=Address/City`将对按市/县的酒店进行排序。
+当字段具有每个文档的单个值、字段是简单字段还是复杂类型中的子字段时, 排序操作将起作用。 例如, 允许`Address/City`可排序, 因为每个酒店只有一个地址, 因此`$orderby=Address/City`将按城市对酒店进行排序。
 
-### <a name="filtering-on-complex-fields"></a>对复杂字段进行筛选
+### <a name="filtering-on-complex-fields"></a>筛选复杂字段
 
-您可以引用子字段的筛选器表达式中的复杂字段。 只需使用相同[OData 路径语法](query-odata-filter-orderby-syntax.md)用于分面、 排序和选择的字段。 例如，以下筛选器将在加拿大返回的所有酒店：
+您可以引用筛选器表达式中的复杂字段的子字段。 只需使用用于分面、排序和选择字段的相同[OData 路径语法](query-odata-filter-orderby-syntax.md)。 例如, 以下筛选器将返回加拿大的所有酒店:
 
     $filter=Address/Country eq 'Canada'
 
-若要筛选的复杂集合字段，可以使用**lambda 表达式**与[`any`并`all`运算符](search-query-odata-collection-operators.md)。 在这种情况下，**范围变量**的 lambda 表达式是具有子字段的对象。 您可以参考标准 OData 路径语法使用这些子字段。 例如，以下筛选器将返回与至少一个高级聊天室的所有酒店和所有非的-吸烟聊天室：
+若要对复杂集合字段进行筛选, 可以将**lambda 表达式**与[ `any`和`all`运算符](search-query-odata-collection-operators.md)一起使用。 在这种情况下, lambda 表达式的**范围变量**是具有子字段的对象。 可以通过标准 OData 路径语法来引用这些子字段。 例如, 以下筛选器将返回至少具有一个高级房间和所有非吸烟房间的所有酒店:
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-因为顶级简单字段后，简单的子字段的复杂字段只能包含筛选器中如果它们具有**可筛选**属性设置为`true`索引定义中。 有关详细信息，请参阅[创建索引 API 引用](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。
+与顶级简单字段一样, 复杂字段的简单子字段只能包含在筛选器中, 如果它们在索引定义中具有设置为的`true`可筛选属性。 有关详细信息, 请参阅[创建索引 API 参考](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。
 
 ## <a name="next-steps"></a>后续步骤
 
-尝试在“导入数据”向导中练习 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)。  需要使用自述文件中提供的 Cosmos DB 连接信息来访问这些数据。
+尝试在“导入数据”向导中练习 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)。 需要使用自述文件中提供的 Cosmos DB 连接信息来访问这些数据。
 
-获取该信息后，向导中的第一步是创建新的 Azure Cosmos DB 数据源。 进一步上在向导中，转到目标索引页中，您将看到索引具有复杂类型。 请创建并加载此索引，然后执行查询来了解新结构。
+获取该信息后，向导中的第一步是创建新的 Azure Cosmos DB 数据源。 在向导中, 当您转到目标索引页时, 您将看到一个具有复杂类型的索引。 请创建并加载此索引，然后执行查询来了解新结构。
 
 > [!div class="nextstepaction"]
 > [快速入门：用于导入、索引编制和查询的门户向导](search-get-started-portal.md)

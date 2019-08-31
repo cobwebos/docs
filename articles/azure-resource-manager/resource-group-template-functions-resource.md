@@ -3,15 +3,15 @@ title: Azure 资源管理器模板函数 - 资源 | Microsoft Docs
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: eddd99be9d4a30e3e71c806a3f98c6be6800e8fb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 85462e78b3660546bad80ef69f332522bf015549
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095752"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194809"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -342,7 +342,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 | 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 引用以前部署的资源时, 请提供资源 ID。 |
+| resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源时，请提供资源 ID。 |
 | apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本, 请参阅[模板参考](/azure/templates/)。 |
 | 'Full' |否 |string |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
@@ -397,29 +397,29 @@ reference 函数检索以前部署的资源或在当前模板中部署的资源�
 
 reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](resource-group-create-multiple.md#property-iteration)一起使用时，可以使用 `input` 的 reference 函数，因为表达式已分配给资源属性。 不能将其与 `count` 一起使用，因为必须在解析 reference 函数之前确定计数。
 
-不能在[嵌套模板](resource-group-linked-templates.md#nested-template)的输出中使用 reference 函数来返回已在嵌套模板中部署的资源。 而是使用[链接的模板](resource-group-linked-templates.md#external-template-and-external-parameters)。
+不能在[嵌套模板](resource-group-linked-templates.md#nested-template)的输出中使用引用函数返回已在嵌套模板中部署的资源， 只能使用[链接模板](resource-group-linked-templates.md#external-template-and-external-parameters)。
 
 如果在有条件部署的资源中使用 **reference** 函数，则会对该函数进行评估，即使资源尚未部署。  如果 **reference** 函数引用某个不存在的资源，则会出现错误。 使用 **if** 函数确保仅在部署资源时才评估函数。 请查看示例模板的 [if 函数](resource-group-template-functions-logical.md#if)，该模板将 if 和 reference 用于进行条件部署的资源。
 
-### <a name="implicit-dependency"></a>隐式依赖关系
+### <a name="implicit-dependency"></a>隐式依赖项
 
 如果在同一模板内预配了被引用资源且通过其名称（而非资源 ID）引用该资源，则使用 reference 函数会隐式声明一个资源依赖于另一个资源。 也不需要同时使用 dependsOn 属性。 只有当引用的资源已完成部署后，才会对函数求值。
 
 ### <a name="resource-name-or-identifier"></a>资源名称或标识符
 
-引用同一模板中部署的资源时, 请提供该资源的名称。
+引用部署在同一模板中的资源时，请提供资源的名称。
 
 ```json
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-引用未部署在同一模板中的资源时, 请提供资源 ID。
+引用没有部署在同一模板中的资源时，请提供资源 ID。
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-若要避免对所引用的资源有歧义, 可以提供完全限定的资源名称。
+为了避免对你要引用的资源产生误解，可以提供完全限定的资源名称。
 
 ```json
 "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')))]"
@@ -427,7 +427,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 向资源构造完全限定的引用时，类型和名称的分段组合顺序并不是这两者的简单串联。 相反，在命名空间后，需采用“类型/名称”对从最不具体到最具体的序列：
 
-**{resource provider-namespace}/{parent-resource-type}/{parent-resource-name} [/{child-resource-type}/{child-resource-name}]**
+**{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]**
 
 例如：
 
@@ -578,7 +578,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 }
 ```
 
-仅为包含由其他服务托管的资源的资源组返回**managedBy**属性。 对于托管应用程序、Databricks 和 AKS, 属性的值是管理资源的资源 ID。
+只有在资源组包含的资源由另一服务托管时，才会返回 **managedBy** 属性。 对于托管应用程序、Databricks 和 AKS, 属性的值是管理资源的资源 ID。
 
 ### <a name="remarks"></a>备注
 
@@ -598,7 +598,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 ]
 ```
 
-还可以使用 resourceGroup 函数将资源组中的标记应用于资源。 有关详细信息, 请参阅[从资源组应用标记](resource-group-using-tags.md#apply-tags-from-resource-group)。
+也可使用 resourceGroup 函数将资源组提供的标记应用到资源。 有关详细信息，请参阅[应用资源组提供的标记](resource-group-using-tags.md#apply-tags-from-resource-group)。
 
 ### <a name="resource-group-example"></a>资源组示例
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 7/01/2019
+ms.date: 08/30/2019
 ms.author: aahi
-ms.openlocfilehash: 6604e5d5b3b77955c9e5f78df5d2a5b804bf09ef
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e857401591d45048962e9f606973dbf59dfe99c8
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883581"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194314"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>向必应视觉搜索 API 发送搜索查询
 
@@ -73,7 +73,7 @@ ms.locfileid: "68883581"
 
 以下是请求应指定的查询参数。 至少应包括`mkt`查询参数:
 
-| 名称 | ReplTest1 | type | 必填 |
+| 姓名 | ReplTest1 | 类型 | 必填 |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | 表示结果来源的双字符国家/地区代码。<br /><br /> 如果设置此参数，则还必须指定 [Accept-language](#acceptlanguage) 标头。 必应使用从语言列表中找到的第一个受支持语言，并将语言与指定的国家/地区代码相结合以确保从哪个市场返回结果。 如果语言列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场。 或者，可以将聚合或默认市场用于结果，而不是指定一个。<br /><br /> 仅当指定多个语言时，才可以使用此查询参数和 `Accept-Language` 查询参数；否则，应使用 `mkt` 和 `setLang` 查询参数。<br /><br /> 此参数和 [mkt](#mkt) 查询参数相互排斥&mdash;不可同时指定两者。 | String | 否       |
 | <a name="mkt" />mkt   | 产生结果的市场。 <br /><br /> **注意：** 如果已知, 应始终指定市场。 指定市场有助于必应路由请求，并返回适当的最佳响应。<br /><br /> 此参数和 [cc](#cc) 查询参数相互排斥&mdash;不可同时指定两者。 | String | 是      |
@@ -242,7 +242,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 
 有关默认见解的列表, 请参阅[默认 insights 标记](../default-insights-tag.md)。
 
-剩余的标记包含用户可能感兴趣的其他见解。 例如，如果图像包含文本，其中一个标记可能包含 TextResults 见解（包含已识别文本）。 或者, 如果 Bing 识别图像中的某个实体 (即人员、地点或事物), 其中一个标记可能会标识实体。 视觉搜索还可以返回一组派生自输入图像的不同术语（标记）。 这些标记使用户能够浏览在图像中找到的概念。 例如，如果输入图像是一位著名运动员，其中一个标记可能是体育（包含指向体育图像的链接）。
+剩余的标记包含用户可能感兴趣的其他见解。 例如，如果图像包含文本，其中一个标记可能包含 TextResults 见解（包含已识别文本）。 或者, 如果 Bing 识别图像中的某个实体 (即, 区域性众所周知的/常用人员、地点或事物), 其中一个标记可能会标识实体。 视觉搜索还可以返回一组派生自输入图像的不同术语（标记）。 这些标记使用户能够浏览在图像中找到的概念。 例如，如果输入图像是一位著名运动员，其中一个标记可能是体育（包含指向体育图像的链接）。
 
 每个标记包含可用于对见解进行分类的显示名称、用于标识该见解适用于的感兴趣区域边框、见解本身和图像的缩略图。 例如，如果图像中的人员穿着运动衫，其中一个标记可能包含限定运动衫的边框，并包括 VisualSearch 和 ProductVisualSearch 见解。 另一个标记可能包含 ImageResults 见解（其中包含 /images/search API 请求的 URL，用于获取与主题相关的图像；或 Bing.com 搜索 URL，用于将用户转到 Bing.com 图像搜索结果）。
 
@@ -368,7 +368,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
     }
 ```
 
-如果图像包含识别的实体，如人物、位置或事物，其中一个标记可能包含 Entity 见解。
+如果映像包含可识别的实体 (如区域性众所周知的人员、地点或物品), 其中一个标记可能包含实体见解。
 
 ```json
     {

@@ -2,7 +2,7 @@
 title: 语言检测认知搜索技能 - Azure 搜索
 description: 计算非结构化的文本，并针对每个文本，返回语言标识符和表示 Azure 搜索扩充管道中分析长度的得分。
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 14163b959a6e91406133ca2f5a125c7e2df967ad
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 8375d41e3ece3bdd97b218925a8b1b6d45fc327d
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635812"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186366"
 ---
 #   <a name="language-detection-cognitive-skill"></a>语言检测认知技能
 

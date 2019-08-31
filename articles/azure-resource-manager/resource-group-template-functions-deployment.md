@@ -3,15 +3,15 @@ title: Azure 资源管理器模板函数 - 部署 | Microsoft Docs
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索部署信息的函数。
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9cf81058d79d474a4d61195850636e428a1dbd0d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 236fbb9e4ed3283ecf9147e6eb5033fb906a127b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206476"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194351"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的部署函数 
 
@@ -152,14 +152,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="parameters" />
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 `parameters(parameterName)`
 
 返回一个参数值。 指定的参数名称必须已在模板的 parameters 节中定义。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |string |要返回的参数名称。 |
 
@@ -246,12 +246,12 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | stringOutput | String | option 1 |
 | intOutput | Int | 1 |
 | objectOutput | Object | {"one": "a", "two": "b"} |
-| arrayOutput | Array | [1, 2, 3] |
+| arrayOutput | 阵列 | [1, 2, 3] |
 | crossOutput | String | option 1 |
 
 要使用 Azure CLI 部署此示例模板，请使用：
@@ -273,9 +273,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回变量的值。 指定的变量名称必须已在模板的 variables 节中定义。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 
@@ -349,10 +349,10 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
-| exampleOutput2 | Array | [1, 2, 3, 4] |
+| exampleOutput2 | 阵列 | [1, 2, 3, 4] |
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 

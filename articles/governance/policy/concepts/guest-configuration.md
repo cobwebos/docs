@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b6c9e50334a25b505655a49a02cd98165d04740b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 269d13e0b64d2da7a21316b16c88acde46ba1722
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164953"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194637"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -130,6 +130,11 @@ Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“�
 ### <a name="multiple-assignments"></a>多个分配
 
 来宾配置策略目前仅支持对每台计算机分配相同的来宾分配, 即使策略分配使用不同的参数也是如此。
+
+## <a name="built-in-resource-modules"></a>内置资源模块
+
+安装来宾配置扩展时, "GuestConfiguration" PowerShell 模块包含在最新版本的 DSC 资源模块中。 可以使用模块页[GuestConfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/)中的 "手动下载" 链接从 PowerShell 库下载此模块。
+可以将 "nupkg" 文件格式重命名为 ".zip" 以解压缩和查看。
 
 ## <a name="client-log-files"></a>客户端日志文件
 

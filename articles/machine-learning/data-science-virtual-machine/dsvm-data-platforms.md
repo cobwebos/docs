@@ -1,27 +1,21 @@
 ---
-title: 数据科学虚拟机的数据平台 - Azure | Microsoft Docs
-description: 了解 Data Science Virtual Machine 支持的数据平台和工具。
+title: 支持的数据平台
+titleSuffix: Azure Data Science Virtual Machine
+description: 了解 Azure Data Science Virtual Machine 支持的数据平台和工具。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: a0fe4ee33769a6d8cf14f60dcc0c4615bb00c5e8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e0ba013f7739e7ade717136cb5507af630263a18
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565299"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192206"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
 
@@ -33,7 +27,7 @@ ms.locfileid: "68565299"
 
 | | |
 | ------------- | ------------- |
-| 这是什么?   | 本地关系数据库实例      |
+| 它是什么？   | 本地关系数据库实例      |
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 使用小型数据集在本地进行快速开发 <br/> 运行数据库内 R   |
 | 示例链接      |    New York City 数据集的小型示例在 SQL 数据库 `nyctaxi` 中加载。 <br/> 可在以下位置找到显示 Microsoft R 和数据库内分析的 Jupyter 示例：<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
@@ -68,7 +62,7 @@ SQL Server 采用标准方式安装。 可在 `C:\Program Files\Microsoft SQL Se
 
 | | |
 | ------------- | ------------- |
-| 这是什么?   | 常用 Apache Spark 平台的独立（单个进程内节点）实例，用于快速大规模数据处理和机器学习的系统     |
+| 它是什么？   | 常用 Apache Spark 平台的独立（单个进程内节点）实例，用于快速大规模数据处理和机器学习的系统     |
 | 支持的 DSVM 版本      | Linux <br /> Windows（试验）      |
 | 典型用途      | *使用小型数据集在本地快速开发 Spark/PySpark 应用程序，稍后在大型 Spark 群集（比如 Azure HDInsight）上部署<br/> *测试 Microsoft R Server Spark 上下文 <br />*使用 SparkML 或 Microsoft 的开源 [MMLSpark](https://github.com/Azure/mmlspark) 库来生成 ML 应用程序  |
 | 示例链接      |    Jupyter 示例： <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft R Server（Spark 上下文）：/dsvm/samples/MRS/MRSSparkContextSample.R |

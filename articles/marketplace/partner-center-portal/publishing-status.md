@@ -1,18 +1,18 @@
 ---
 title: 检查你的商业应用商店产品/服务的发布状态
 description: 检查通过 Microsoft 合作伙伴中心的商业 Marketplace 发布产品/服务所需的验证、认证和预览步骤的状态。
-author: mattwojo
+author: ChJenk
 manager: evansma
-ms.author: mattwoj
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: c547ad256e6ba44da4ef81aa2a3aa2c77ba24815
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 77cb18a858ca87acbb8182bf708e403010251365
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982736"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191779"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>检查你的商业应用商店产品/服务的发布状态
 

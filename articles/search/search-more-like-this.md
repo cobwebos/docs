@@ -2,7 +2,7 @@
 title: Azure 搜索中的 moreLikeThis（预览版）- Azure 搜索
 description: Azure 搜索 REST API 中公开了有关 moreLikeThis 功能（预览）功能的初步文档。
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: rest-api
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 4d1c691e570d3cfc7e0475c02e4c60ed6ffa8440
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d7c816c545c6647907aa9d700a4eb6ed91277465
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485352"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182304"
 ---
 # <a name="morelikethis-in-azure-search"></a>Azure 搜索中的 moreLikeThis
 

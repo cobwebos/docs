@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 3feb0b2b50851903bbd6799f46d489879e62bf43
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9395fa5ba5ae8dfa6ff03aabd1a27942ca4fa60a
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876223"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195186"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (C#)
 
@@ -356,10 +356,10 @@ ms.locfileid: "69876223"
 
 ### <a name="properties"></a>属性
 
-| 类型            | 显示名称 | 字段名 | 数据类型 |
-| --------------- | ------------ | ---------- | --------- |
-| 设备属性 | 模具号   | dieNumber  | 数字    |
-| 文本            | 位置     | 位置   | 不适用       |
+| 类型            | 显示名称 | 字段名 | 数据类型                              |
+| --------------- | ------------ | ---------- | -------------------------------------- |
+| 设备属性 | 模具号   | dieNumber  | 号                                 |
+| Location        | Location     | location   | {lat: float, long: float, alt？: float} |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -17,16 +17,16 @@ ms.date: 07/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0a31fab8dd1490b58e743c149e4a54cae11bed1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: b2b30b6463ed3d58ec1565f3c49f98388ad09ed4
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988345"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186291"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
 
-通过 Azure Active Directory (Azure AD) 报告，可以获取确定环境运行状况所需的信息。
+通过 Azure Active Directory (Azure AD) 报表, 您可以获取确定环境的工作方式所需的信息。
 
 报告体系结构包括以下组件：
 
@@ -83,7 +83,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 - activities
 - 状态
 - 目标
-- 发起人(操作者)
+- 发起者（参与者/执行组件）
 - 日期范围
 
 ![审核日志](./media/concept-audit-logs/filter.png "审核日志")

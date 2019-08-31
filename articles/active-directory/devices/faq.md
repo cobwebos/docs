@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57bc2ca38b5166cfba39fb20254e169ce016ea12
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 0a6b1782b9822877850f7c223dd80eed008ef706
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706318"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193188"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -281,12 +281,19 @@ ms.locfileid: "68706318"
 
 ## <a name="azure-ad-register-faq"></a>Azure AD 注册常见问题解答
 
-### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>问:如何实现在设备上本地删除 Azure AD 注册设备？
+### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>问:如何实现删除设备在本地 Azure AD 注册状态吗？
 
 **答:** 
 - 对于 Windows 10 Azure AD 注册的设备, 请访问**设置** > "**帐户** > " "**访问工作或学校**"。 选择帐户，然后选择“断开连接”。 设备注册为 Windows 10 上的每个用户配置文件。
 - 对于 iOS 和 Android, 你可以使用 Microsoft Authenticator 应用程序**设置** > "**设备注册**", 然后选择 "**注销设备**"。
 - 对于 macOS, 可以使用 Microsoft Intune 公司门户应用程序从管理中取消注册设备, 并删除任何注册。 
+
+---
+### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>问:如何阻止用户在公司 Windows 10 设备上添加其他工作帐户 (Azure AD 注册)？
+
+**答:** 启用以下注册表, 阻止用户将其他工作帐户添加到加入企业域、Azure AD 联接或混合 Azure AD 加入 Windows 10 设备。 此策略还可用于阻止加入域的计算机无意中获取 Azure AD 注册到同一个用户帐户。 
+
+`HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
 ---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>问:是否可以注册 Android 或 iOS BYOD 设备？

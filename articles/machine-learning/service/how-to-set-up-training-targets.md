@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1ee18abfab2cf286ee010bd6d25dfbc5a38cebb
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c9bc9d64d7f21498acd5cb0c23447e7ff77de629
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011568"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195575"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标 
+# <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型定型的计算目标 
 
 使用 Azure 机器学习服务可以在不同的资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-targets)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以为模型部署创建计算目标，如[“部署模型的位置和方式”](how-to-deploy-and-where.md)中所述。
 
@@ -47,33 +47,9 @@ Azure 机器学习服务为不同的计算目标提供不同的支持。 典型�
 
 训练时，通常会在本地计算机上开始，然后在不同的计算目标上运行该训练脚本。 使用 Azure 机器学习服务可以在各种计算目标上运行脚本，而无需更改脚本。 
 
-只需使用**运行配置**为每个计算目标定义环境即可。  然后，当你想要在不同的计算目标上运行训练试验时，可以指定该计算的运行配置。
+只需在**运行配置**中为每个计算目标定义环境。  然后，当你想要在不同的计算目标上运行训练试验时，可以指定该计算的运行配置。 有关指定环境并将其绑定到运行配置的详细信息, 请参阅[创建和管理用于定型和部署的环境](how-to-use-environments.md)
 
 本文的最后详细介绍了如何[提交试验](#submit)。
-
-### <a name="manage-environment-and-dependencies"></a>管理环境和依赖项
-
-创建运行配置时，需要确定如何管理计算目标上的环境和依赖项。 
-
-#### <a name="system-managed-environment"></a>系统管理的环境
-
-若要通过 [Conda](https://conda.io/docs/) 管理 Python 环境和脚本依赖项，请使用系统管理的环境。 默认已采用系统管理的环境，这是最常见的选项。 系统管理的环境在远程计算目标上非常有用，尤其是无法配置该目标时。 
-
-只需使用 [CondaDependency 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py)指定每个包依赖项即可。然后，Conda 将在工作区中的 **aml_config** 目录内创建名为 **conda_dependencies.yml** 的、包含包依赖项列表的文件，并在你提交训练试验时设置 Python 环境。 
-
-新环境的初始设置可能需要几分钟才能完成，具体取决于所需依赖项的大小。 只要包列表保持不变，就只需设置一次。
-  
-以下代码演示了一个需要 scikit-learn 的系统管理环境示例：
-    
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_system_managed)]
-
-#### <a name="user-managed-environment"></a>用户管理的环境
-
-对于用户管理的环境，你需要负责设置环境，并在计算目标上安装训练脚本所需的每个包。 如果已配置训练环境（例如，在本地计算机上），可以通过将 `user_managed_dependencies` 设置为 True 来跳过设置步骤。 Conda 将不检查你的环境，也不会安装任何组件。
-
-以下代码演示了一个为用户管理的环境配置训练运行的示例：
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
 
 ## <a name="whats-an-estimator"></a>估计器是什么？
 
@@ -390,7 +366,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 你可以使用 Azure 机器学习服务的[VS Code 扩展](how-to-vscode-tools.md#create-and-manage-compute-targets)来访问、创建和管理与工作区关联的计算目标。
 
-## <a id="submit"></a>提交训练运行
+## <a id="submit"></a>使用 Azure 机器学习 SDK 提交培训运行
 
 创建运行配置后，可以使用它来运行试验。  对于所有类型的计算目标，用于提交训练运行的代码模式都是相同的：
 
@@ -430,8 +406,70 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 或者可以：
 
 * 根据[使用评估器训练机器学习模型](how-to-train-ml-models.md)中所述，使用 `Estimator` 对象提交试验。
-* [使用 CLI 扩展](reference-azure-machine-learning-cli.md#experiments)提交试验。
+* 提交用于[超参数优化](how-to-tune-hyperparameters.md)的 HyperDrive 运行。
 * 通过[VS Code 扩展](how-to-vscode-tools.md#train-and-tune-models)提交试验。
+
+## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>使用 Azure 机器学习 CLI 创建运行配置并提交运行
+
+您可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)和[机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)来创建运行配置, 并将运行中的运行提交到不同的计算目标。 以下示例假定你已有 Azure 机器学习工作区, 并使用`az login` CLI 命令登录到 Azure。 
+
+### <a name="create-run-configuration"></a>创建运行配置
+
+创建运行配置的最简单方法是导航包含机器学习 Python 脚本的文件夹, 并使用 CLI 命令
+
+```azurecli
+az ml folder attach
+```
+
+此命令创建一个子`.azureml`文件夹, 其中包含不同计算目标的模板运行配置文件。 可以复制和编辑这些文件, 以自定义配置, 例如添加 Python 包或更改 Docker 设置。  
+
+### <a name="create-an-experiment"></a>创建试验
+
+首先, 为您的运行创建一个试验
+
+```azurecli
+az ml experiment create -n <experiment>
+```
+
+### <a name="script-run"></a>脚本运行
+
+若要提交脚本运行, 请执行命令
+
+```azurecli
+az ml run submit-script -e <experiment> -c <runconfig> my_train.py
+```
+
+### <a name="hyperdrive-run"></a>HyperDrive 运行
+
+可以将 HyperDrive 与 Azure CLI 结合使用来执行参数优化运行。 首先, 创建以下格式的 HyperDrive 配置文件。 有关超参数优化参数的详细信息, 请参阅[优化模型的超参数](how-to-tune-hyperparameters.md)一文。
+
+```yml
+# hdconfig.yml
+sampling: 
+    type: random # Supported options: Random, Grid, Bayesian
+    parameter_space: # specify a name|expression|values tuple for each parameter.
+    - name: --penalty # The name of a script parameter to generate values for.
+      expression: choice # supported options: choice, randint, uniform, quniform, loguniform, qloguniform, normal, qnormal, lognormal, qlognormal
+      values: [0.5, 1, 1.5] # The list of values, the number of values is dependent on the expression specified.
+policy: 
+    type: BanditPolicy # Supported options: BanditPolicy, MedianStoppingPolicy, TruncationSelectionPolicy, NoTerminationPolicy
+    evaluation_interval: 1 # Policy properties are policy specific. See the above link for policy specific parameter details.
+    slack_factor: 0.2
+primary_metric_name: Accuracy # The metric used when evaluating the policy
+primary_metric_goal: Maximize # Maximize|Minimize
+max_total_runs: 8 # The maximum number of runs to generate
+max_concurrent_runs: 2 # The number of runs that can run concurrently.
+max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
+```
+
+将此文件与运行配置文件一起添加。 然后使用以下内容提交 HyperDrive 运行:
+```azurecli
+az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
+```
+
+请注意 .runconfig 和 HyperDrive config 中的*参数空间*中的*参数*部分。它们包含要传递给训练脚本的命令行参数。 .Runconfig 中的值在每次迭代中保持不变, 而 HyperDrive config 中的范围将循环访问。 不要在这两个文件中指定相同的参数。
+
+有关这些```az ml``` CLI 命令和完整参数集的更多详细信息, 请参阅[参考文档](reference-azure-machine-learning-cli.md)。
 
 <a id="gitintegration"></a>
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2fb7496f16359f01ddbbe6db31b2d047a2ab4df
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 322a1d25ed434d8be674288b1b13d6ecf961590b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012810"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193560"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>快速入门：使用 QnA Maker API 服务门户创建知识库
 
@@ -67,7 +67,7 @@ ms.locfileid: "70012810"
 
 ## <a name="next-steps"></a>后续步骤
 
-为了节省成本, 可以[共享](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker)某些但不是所有为 QnA Maker 创建的 Azure 资源。
+为了节省成本, 可以[共享](set-up-qnamaker-service-azure.md#share-existing-services-with-qna-maker)某些但不是所有为 QnA Maker 创建的 Azure 资源。
 
 > [!div class="nextstepaction"]
-> [添加个人聊天内容](./chit-chat-knowledge-base.md)
+> [添加带有元数据的问题](../quickstarts/add-question-metadata-portal.md)

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f30ac3d5e20b3f797e083972ac179fd29f6b1475
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847993"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182538"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>将现有模型用于 Azure 机器学习服务
 
@@ -76,23 +76,40 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 
 ## <a name="define-inference-configuration"></a>定义推理配置
 
-推理配置定义用于运行已部署模型的环境。 推理配置引用以下文件, 这些文件用于在部署模型时运行模型:
+推理配置定义用于运行已部署模型的环境。 推理配置引用以下实体, 这些实体用于在部署模型时运行模型:
 
-* 运行时。 对于运行时, 唯一有效的值当前为 Python。
 * 一个项脚本。 此文件 (名`score.py`为) 在部署的服务启动时加载模型。 它还负责接收数据, 将数据传递到模型, 然后返回响应。
-* Conda 环境文件。 此文件定义运行模型和条目脚本所需的 Python 包。 
+* Azure 机器学习服务[环境](how-to-use-environments.md)。 环境定义运行模型和条目脚本所需的软件依赖关系。
 
-下面的示例演示了使用 Python SDK 的基本推理配置:
+下面的示例演示如何使用 SDK 来创建环境, 然后将其用于推理配置:
 
 ```python
 from azureml.core.model import InferenceConfig
+from azureml.core import Environment
+from azureml.core.environment import CondaDependencies
 
-inference_config = InferenceConfig(runtime= "python", 
-                                   entry_script="score.py",
-                                   conda_file="myenv.yml")
+# Create the environment
+myenv = Environment(name="myenv")
+conda_dep = CondaDependencies()
+
+# Define the packages needed by the model and scripts
+conda_dep.add_conda_package("tensorflow")
+conda_dep.add_conda_package("numpy")
+conda_dep.add_conda_package("scikit-learn")
+conda_dep.add_pip_package("keras")
+
+# Adds dependencies to PythonSection of myenv
+myenv.python.conda_dependencies=conda_dep
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
 
-有关详细信息, 请参阅[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)参考。
+有关详细信息，请参阅以下文章：
+
++ [如何使用环境](how-to-use-environments.md)。
++ [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)引用。
+
 
 CLI 从 YAML 文件加载推理配置:
 
@@ -102,6 +119,20 @@ CLI 从 YAML 文件加载推理配置:
    "runtime": "python",
    "condaFile": "myenv.yml"
 }
+```
+
+使用 CLI 时, conda 环境在推理配置引用的`myenv.yml`文件中定义。 以下 YAML 是此文件的内容:
+
+```yaml
+name: inference_environment
+dependencies:
+- python=3.6.2
+- tensorflow
+- numpy
+- scikit-learn
+- pip:
+    - azureml-defaults
+    - keras
 ```
 
 有关推理配置的详细信息, 请参阅[部署具有 Azure 机器学习服务的模型](how-to-deploy-and-where.md)。
@@ -190,24 +221,6 @@ def predict(text, include_neutral=True):
 ```
 
 有关输入脚本的详细信息, 请参阅[部署模型与 Azure 机器学习 service](how-to-deploy-and-where.md)。
-
-### <a name="conda-environment"></a>Conda 环境
-
-下面的 YAML 介绍了运行模型和条目脚本所需的 conda 环境:
-
-```yaml
-name: inference_environment
-dependencies:
-- python=3.6.2
-- tensorflow
-- numpy
-- scikit-learn
-- pip:
-    - azureml-defaults
-    - keras
-```
-
-有关详细信息, 请参阅[部署模型和 Azure 机器学习服务](how-to-deploy-and-where.md)。
 
 ## <a name="define-deployment"></a>定义部署
 

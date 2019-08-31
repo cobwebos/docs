@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: f7617348a98899251dcd3b8f1645c40bd297ffdb
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b994f75327cb78cd422d75682ee68ea7840a87e8
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073559"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193960"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理
 
@@ -84,6 +84,9 @@ ms.locfileid: "70073559"
 
 > [!WARNING]
 > 如果使用 Azure AD 或第三方身份验证，请在应用程序网关中启用[基于 cookie 的会话相关性](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity)功能。
+
+> [!WARNING]
+> 若要防止应用程序网关 WAF 中断在开发人员门户中下载 OpenAPI 规范, 需要禁用防火墙规则`942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`。
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
 

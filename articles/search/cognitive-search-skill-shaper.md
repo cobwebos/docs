@@ -2,7 +2,7 @@
 title: 整形程序认知搜索技能 - Azure 搜索
 description: 从非结构化数据中提取元数据和结构化信息，并将其整形为 Azure 搜索扩充管道中的复杂类型。
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: c67080cf5ffb06cd0b0ee45ea673bc45557570b0
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 22a8f891eaf72dbec9c1ec103508c81effb14b08
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638903"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186318"
 ---
 #   <a name="shaper-cognitive-skill"></a>整形程序认知技能
 

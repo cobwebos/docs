@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 577bf7f157eb89da360fa6cbdd4d22c1054f234f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: daf2781113016b20c19a6b8f5365033f1ff1479b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966710"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195272"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用活动学习改善知识库
 
@@ -56,7 +56,7 @@ QnA Maker 获取有关哪种答案是最佳答案的明确反馈, 这一点很�
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>升级运行时版本以使用活动学习
 
-运行时版本 4.4.0 及更高版本支持主动学习。 如果你的知识库是在早期版本上创建的，请[升级运行时](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates)以使用此功能。 
+运行时版本 4.4.0 及更高版本支持主动学习。 如果你的知识库是在早期版本上创建的，请[升级运行时](set-up-qnamaker-service-azure.md#get-latest-runtime-updates)以使用此功能。 
 
 ## <a name="turn-on-active-learning-to-see-suggestions"></a>开启活动学习以查看建议
 
@@ -181,7 +181,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP 请求属性|名称|类型|用途|
+|HTTP 请求属性|姓名|类型|用途|
 |--|--|--|--|
 |URL 路由参数|知识库 ID|string|知识库的 GUID。|
 |主机子域|QnAMaker 资源名称|string|你的 Azure 订阅中 QnA Maker 的主机名。 发布知识库后, 可以在 "设置" 页上找到此功能。 |

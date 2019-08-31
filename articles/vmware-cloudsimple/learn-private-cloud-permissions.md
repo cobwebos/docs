@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ab74b37fa8adc58f8641893b4168f71c453b0fdd
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0c617cbd17d9b9620c957eec45aadd962db34831
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972706"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194123"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>VMware vCenter 的 CloudSimple 私有云权限模型
 
@@ -24,7 +24,7 @@ CloudSimple 保留对私有云环境的完全管理访问权限。 为每个 Clo
 在创建私有云时, 将在 vCenter 单一登录域中创建**CloudOwner**用户, 并使用**云所有者角色**访问权限来管理私有云中的对象。 此用户还可以设置其他[VCenter 标识源](set-vcenter-identity.md), 并将其他用户设置为私有云 vCenter。
 
 > [!NOTE]
-> CloudSimple 私有云 vCenter 的默认用户是`cloudowner@cloudsimple.local`在创建私有云时, 无需将其链接到本地 vCenter。
+> CloudSimple 私有云 vCenter 的默认用户是cloudowner@cloudsimple.local在创建私有云时。
 
 ## <a name="user-groups"></a>用户组
 

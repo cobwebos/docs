@@ -1,27 +1,21 @@
 ---
-title: 数据科学虚拟机数据引入工具 - Azure | Microsoft 文档
+title: 数据引入工具
+titleSuffix: Azure Data Science Virtual Machine
 description: 了解 Data Science Virtual Machine 上预安装的数据引入工具和实用工具。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: vijetaj
-ms.openlocfilehash: 58bfab43d39f050e19687c30a61e05892fffc3f2
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 2d3d37bcb6ee4bae82d82cf676211e9e1546cfad
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060604"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191990"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>数据科学虚拟机数据引入工具
 

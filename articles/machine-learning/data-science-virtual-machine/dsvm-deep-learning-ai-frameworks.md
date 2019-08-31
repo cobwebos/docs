@@ -1,30 +1,23 @@
 ---
 title: 深入了解 & AI 框架
-titleSuffix: Azure Data Science Virtual Machines
-description: Azure Data Science Virtual Machine 上的深度学习框架和工具, 包括 TensorFlow、PyTorch、Keras、Caffe、MXNet、Horovod、Theano、Chainer 等。
+titleSuffix: Azure Data Science Virtual Machine
+description: Azure Data Science Virtual Machine 上可用的深度学习框架和工具, 包括 TensorFlow、PyTorch、Keras、Caffe、MXNet、Horovod、Theano、Chainer 等。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 08/11/2019
-ms.author: vijetaj
-ms.openlocfilehash: 3c9510b99bbdc7db292ecdc0bf59aadc305cf0c8
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: bcf5228b6d6055c4b2e716ca6b34878a3bb3b870
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035844"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192170"
 ---
-# <a name="deep-learning-and-ai-frameworks"></a>深度学习和人工智能框架
+# <a name="deep-learning-and-ai-frameworks-for-azure-data-science-vm"></a>适用于 Azure Data Science VM 的深度学习和 AI 框架
 [Data Science Virtual Machine](https://aka.ms/dsvm) (DSVM) 支持许多深度学习框架, 可帮助使用预测分析和认知功能 (如图像和语言理解) 构建人工智能 (AI) 应用程序。
 
 DSVM 上提供的深度学习框架包括:

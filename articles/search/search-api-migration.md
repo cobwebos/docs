@@ -2,19 +2,19 @@
 title: 升级到最新的 Azure 搜索服务 REST API 版本 - Azure 搜索
 description: 查看 API 版本的差异，了解将现有代码迁移到最新 Azure 搜索服务 REST API 版本所需的操作。
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 85a8ddf4ce87d7ac8ce460c0aff56311a2ea4578
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c1f7fdb1f349c9e31ba63d79a9b9e26ea9f09da
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540697"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182386"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>升级到最新的 Azure 搜索服务 REST API 版本
 如果使用的是早期版本的 [Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/)，本文有助于升级应用程序，以便使用正式发布的最新 API 版本 2019-05-06。
@@ -39,7 +39,7 @@ REST API 版本 2019-05-06 包含某些针对早期版本进行的更改。 这�
 
 有多个预览版功能版本与此正式版更新相一致。 若要查看新的预览版功能列表，请参阅[搜索 REST API 版本 2019-05-06-Preview](search-api-preview.md)。
 
-## <a name="breaking-changes"></a>重大变化
+## <a name="breaking-changes"></a>中断性变更
 
 在 api-version=2019-05-06 中，包含以下功能的现有代码将会中断。
 

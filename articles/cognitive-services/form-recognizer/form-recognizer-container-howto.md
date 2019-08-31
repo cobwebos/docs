@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/29/2019
 ms.author: dapine
-ms.openlocfilehash: 3c0129275ecf78e6a4e6b9286f975ded2b6f9ae3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 25ea4c96a0e392db2af9c25a150696ca2b25b2dd
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051205"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164540"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>安装和运行表单识别器容器
 
@@ -58,28 +58,25 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 
 | 容器 | 最低要求 | 建议 |
 |-----------|---------|-------------|
-|cognitive-services-form-recognizer | 2核, 4 GB 内存 | 4核, 8 GB 内存 |
+| 表单识别器 | 2核, 4 GB 内存 | 4核, 8 GB 内存 |
+| 识别文本 | 1核, 8 GB 内存 | 2核, 8 GB 内存 |
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
-* TPS - 每秒事务数
 * 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
 > [!Note]
 > 最小值和建议值基于 Docker 限制，而不是基于主机资源。
 
-## <a name="get-the-container-image-with-the-docker-pull-command"></a>使用 docker pull 命令获取容器映像
+## <a name="get-the-container-images-with-the-docker-pull-command"></a>通过 docker pull 命令获取容器映像
 
-以下存储库提供表单识别器的容器映像：
+以下容器注册表中提供了**窗体识别器**和**识别文本**产品/服务的容器映像:
 
-| 容器 | 存储库 |
+| 容器 | 完全限定的映像名称 |
 |-----------|------------|
-| cognitive-services-form-recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| 表单识别器 | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| 识别文本 | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-若要使用 `cognitive-services-recognize-text` [容器](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)而不是表单识别器服务，请确保在使用 `docker pull` 命令时使用正确的容器名称： 
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
+你将需要这两个容器, 请注意,[本文外详细介绍](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)了**识别器文本**容器。
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -91,6 +88,15 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
+```
+### <a name="docker-pull-for-the-recognize-text-container"></a>适用于“识别文本”容器的 Docker 拉取
+
+#### <a name="recognize-text"></a>识别文本
+
+若要获取识别文本容器, 请使用以下命令:
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>如何使用容器

@@ -1,19 +1,19 @@
 ---
 title: 在一个服务中针对内容隔离进行多租户建模 - Azure 搜索
 description: 了解使用 Azure 搜索时多租户 SaaS 应用程序的通用设计模式。
-manager: jlembicz
+manager: nitinme
 author: LiamCavanagh
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: liamca
-ms.openlocfilehash: b3e47fc0c46c638a51e6555ccbdc1885f081c149
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 8b7538da41241f005298537c2969e5fce72b3c38
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640550"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182232"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>多租户 SaaS 应用程序与 Azure 搜索的设计模式
 多租户应用程序可以为无法看到或共享任何其他租户数据的任意数量的租户，提供相同服务和功能。 本文档讨论的租户隔离策略适用于使用 Azure 搜索生成的多租户应用程序。

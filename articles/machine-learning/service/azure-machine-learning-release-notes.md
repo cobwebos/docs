@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1e35baf24b59e7864982d131f44f79458e0d9015
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 01ee8e5b9d7ab1e8ab4086e559ce8dd8df76252f
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971491"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182700"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -84,6 +84,7 @@ ms.locfileid: "69971491"
     + 允许 AutoML 用户删除在预测时不够长的培训系列。
     + 允许 AutoML 用户从预测集中不存在的测试集中删除粒度。
     + 现在, AutoMLStep 将通过 automl config 传递到后端, 以避免发生更改或添加新的配置参数的任何问题。
+    + AutoML Data Guardrail 现为公共预览版。 在定型后, 用户将看到一个数据 Guardrail 报告 (用于分类/回归任务), 并且还可以通过 SDK API 访问它。
   + **azureml-train-core**
     + 在 PyTorch 估计器中添加了 torch 1.2 支持。
   + **azureml-小组件**

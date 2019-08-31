@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061370"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183184"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ)
 
@@ -143,7 +143,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 1. 选择“查看所有应用程序”
 1. 选择名为“b2c-extensions-app”的应用程序，选择“删除”，然后在出现提示时选择“是”。
 1. 在 "**管理**" 下选择 "**用户设置**"。
-1. 在 " **LinkedIn 帐户连接**" 下, 选择 "**否**", 然后选择 "**保存**"。
+1. 如果存在, 则在 " **LinkedIn 帐户连接**" 下, 选择 "**否**", 然后选择 "**保存**"。
 1. 在“管理”下，选择“属性”
 1. 在“Azure 资源的访问管理”下，选择“是”，然后选择“保存”。
 1. 从 Azure 门户注销，然后重新登录以刷新你的访问权限。

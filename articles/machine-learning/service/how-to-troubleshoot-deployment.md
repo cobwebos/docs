@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24716a9b9fa5174d899cf0678b83b2da0c59957c
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358668"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183539"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>排查 Azure 机器学习 service Azure Kubernetes Service 和 Azure 容器实例部署问题
 
@@ -204,6 +204,9 @@ print(prediction)
 
 在本地测试过程中, 可能需要更新`score.py`文件, 以添加日志记录或尝试解决已发现的任何问题。 若要重新加载对`score.py`文件的更改`reload()`, 请使用。 例如, 下面的代码重新加载该服务的脚本, 然后向其发送数据。 使用更新`score.py`的文件对数据进行评分:
 
+> [!IMPORTANT]
+> `reload`方法仅适用于本地部署。 有关将部署更新到另一个计算目标的信息, 请参阅[部署模型](how-to-deploy-and-where.md#update)的 "更新" 部分。
+
 ```python
 service.reload()
 print(service.run(input_data=test_sample))
@@ -240,7 +243,7 @@ print(ws.webservices['mysvc'].get_logs())
 
 使用[检查 Docker 日志](#dockerlog)部分中的信息来检查日志。
 
-## <a name="function-fails-getmodelpath"></a>函数故障：get_model_path()
+## <a name="function-fails-get_model_path"></a>函数故障：get_model_path()
 
 通常, 在`init()`计分脚本的函数中, 将调用[_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-)函数, 以在容器中查找模型文件或模型文件的文件夹。 如果找不到模型文件或文件夹, 该函数将失败。 调试此错误的最简单方法是在容器 shell 中运行以下 Python 代码：
 
@@ -255,7 +258,7 @@ print(Model.get_model_path(model_name='my-best-model'))
 
 如果将日志记录级别设置为 "调试", 则可能会导致记录额外的信息, 这可能有助于识别故障。
 
-## <a name="function-fails-runinputdata"></a>函数故障：run(input_data)
+## <a name="function-fails-runinput_data"></a>函数故障：run(input_data)
 
 如果服务部署成功，但在向评分终结点发布数据时崩溃，可在 `run(input_data)` 函数中添加错误捕获语句，以便转而返回详细的错误消息。 例如：
 

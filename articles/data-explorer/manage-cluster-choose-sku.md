@@ -1,18 +1,18 @@
 ---
 title: 为 Azure 数据资源管理器群集选择正确的 VM SKU
 description: 本文介绍如何为 Azure 数据资源管理器群集选择最佳 SKU 大小。
-author: avnera
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 2eb23a65196ac4f6456f50dbbbfd9e4b484ad171
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 8293fd2d84189cc1f1df3564abbfdcbf86e3543e
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515727"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186747"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>为 Azure 数据资源管理器群集选择正确的 VM SKU 
 
@@ -83,7 +83,7 @@ Azure 数据资源管理器提供两种类型的群集:
 |L16s_1| 存储优化 | 2.6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
 
 * 可以使用 Azure 数据资源管理器[LISTSKUS API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet)查看每个区域的已更新 VM SKU 列表。 
-* 了解有关[各种计算 sku](/azure/virtual-machines/windows/sizes-compute)的详细信息。 
+* 了解有关[各种 sku](/azure/virtual-machines/windows/sizes)的详细信息。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/29/2019
+ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5d6f1fcba5d93cbd4efb63cd080848258eb2a262
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 096b6a13c85d04ebeb4f2ffae72acdd8629ae886
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172893"
+ms.locfileid: "70191747"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -649,6 +649,7 @@ ms.locfileid: "70172893"
 |AADClusterApplication|string，默认值为“”|Static|表示群集的 Web API 应用程序名称或 ID |
 |AADLoginEndpoint|string，默认值为“”|Static|为非默认环境 (例如 azure 政府 "https:\//login.microsoftonline.us") 指定的 AAD 登录终结点 (默认为 azure 商业版) |
 |AADTenantId|string，默认值为“”|Static|租户 ID (GUID) |
+|AcceptExpiredPinnedClusterCertificate|bool，默认值为 FALSE|动态|指示是否接受指纹声明的过期群集证书的标志仅适用于群集证书;以便使群集保持活动状态。 |
 |AdminClientCertThumbprints|string，默认值为“”|动态|管理员角色客户端使用的证书的指纹。 该参数是以逗号分隔的名称列表。 |
 |AADTokenEndpointFormat|string，默认值为“”|Static|为非默认环境 (例如 azure 政府 "https:\//login.microsoftonline.us/{0}") 指定的 AAD 令牌终结点 (默认为 azure 商业版) |
 |AdminClientClaims|string，默认值为“”|动态|管理员客户端所需的所有可能的声明；其格式与 ClientClaims 相同；此列表会从内部添加到 ClientClaims；所以不需要另外将相同的条目添加到 ClientClaims。 |

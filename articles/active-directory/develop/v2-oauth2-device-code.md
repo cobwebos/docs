@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 274c4e89ff3f996cc71cdacdfb7b5b72e813ae4b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: fdd99899494e9f7b3c0caa4e83f18803b969db1e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297658"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192717"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 设备代码流
 
@@ -35,7 +35,7 @@ Microsoft 标识平台支持[设备代码授予](https://tools.ietf.org/html/dra
 >
 > 受邀加入 Azure AD 租户的个人帐户可以使用设备流授予，但只能在该租户的上下文中使用。
 >
-> 作为附加说明, `verification_uri_complete`此时不包含或支持响应字段。  
+> 作为附加说明, `verification_uri_complete`此时不包含或支持响应字段。  我们提到这样做的原因是, 如果您阅读了`verification_uri_complete`标准, 则您看到的是设备代码流标准的可选部分。
 
 > [!NOTE]
 > Microsoft 标识平台终结点并非支持所有 Azure Active Directory 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](active-directory-v2-limitations.md)。
@@ -99,10 +99,10 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 ```
 
-| 参数 | 需要 | 描述|
+| 参数 | 必填 | 描述|
 | -------- | -------- | ---------- |
 | `grant_type` | 必填 | 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | 需要 | 必须与初始请求中使用的 `client_id` 匹配。 |
+| `client_id`  | 必填 | 必须与初始请求中使用的 `client_id` 匹配。 |
 | `device_code`| 必填 | 设备授权请求中返回的 `device_code`。  |
 
 ### <a name="expected-errors"></a>预期错误

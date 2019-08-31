@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: a86dd021d8f9cfe275b3af3f0cb71b99857c26d7
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 753f0bece5b8b52ebb50ab2a6e93056ce209cfbc
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971523"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183560"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基本映像部署模型
 
@@ -23,7 +23,7 @@ ms.locfileid: "69971523"
 
 将定型模型部署到 web 服务或 IoT Edge 设备时, 将创建一个包含用于处理传入请求的 web 服务器的包。
 
-Azure 机器学习服务提供了一个默认 Docker 基本映像, 因此你无需担心如何创建它。 你还可以使用创建的自定义基本映像作为_基本映像_。 
+Azure 机器学习服务提供了一个默认 Docker 基本映像, 因此你无需担心如何创建它。 你还可以使用 Azure 机器学习服务__环境__选择特定的基本映像, 或使用你提供的自定义映像。
 
 为部署创建映像时, 将使用基本映像作为起始点。 它提供基本的操作系统和组件。 然后, 部署过程会在部署之前将其他组件 (如模型、conda 环境和其他资产) 添加到映像。
 
@@ -193,6 +193,8 @@ Microsoft 在可公开访问的存储库上提供了几个 docker 映像, 可用
 > [!IMPORTANT]
 > 只有使用 CUDA 或 TensorRT 的 Microsoft 映像才能 Microsoft Azure 服务上使用。
 
+有关详细信息, 请参阅[Azure 机器学习 service 容器](https://github.com/Azure/AzureML-Containers)。
+
 > [!TIP]
 >__如果您的模型在 Azure 机器学习计算上定型__, 则使用 Azure 机器学习 SDK 的__版本1.0.22 或更高版本__, 则在训练过程中将创建一个图像。 若要发现此映像的名称, 请`run.properties["AzureML.DerivedImageName"]`使用。 下面的示例演示如何使用此映像:
 >
@@ -203,29 +205,50 @@ Microsoft 在可公开访问的存储库上提供了几个 docker 映像, 可用
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>将映像与 Azure 机器学习 SDK 一起使用
 
-若要使用自定义映像, 请`base_image`将[推理配置对象](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)的属性设置为映像的地址:
+若要使用存储在**工作区的 Azure 容器注册表**中的映像, 或者使用可**公开访问的容器注册表**, 请设置以下[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)属性:
+
++ `docker.enabled=True`
++ `docker.base_image`：设置为注册表, 并将路径设置为图像的路径。
 
 ```python
-# use an image from a registry named 'myregistry'
-inference_config.base_image = "myregistry.azurecr.io/myimage:v1"
+from azureml.core import Environment
+# Create the environment
+myenv = Environment(name="myenv")
+# Enable Docker and reference an image
+myenv.docker.enabled = True
+myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-此格式适用于你的工作区的 Azure 容器注册表中存储的两个映像以及可公开访问的容器注册表。 例如, 以下代码使用 Microsoft 提供的默认映像:
+若要使用不在工作区中的__专用容器注册表__中的映像, 则必须使用`docker.base_image_registry`指定存储库的地址以及用户名和密码:
 
 ```python
-# use an image available in public Container Registry without authentication
-inference_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+# Set the container registry information
+myenv.docker.base_image_repository.address = "myregistry.azurecr.io"
+myenv.docker.base_image_repository.username = "username"
+myenv.docker.base_image_repository.password = "password"
 ```
 
-若要使用不在工作区中的__专用容器注册表__中的映像, 则必须指定存储库的地址以及用户名和密码:
+定义环境后, 将其与[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)对象一起使用, 以定义模型和 web 服务将在其中运行的推理环境。
 
 ```python
-# Use an image available in a private Container Registry
-inference_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
-inference_config.base_image_registry.address = "myregistry.azurecr.io"
-inference_config.base_image_registry.username = "username"
-inference_config.base_image_registry.password = "password"
+from azureml.core.model import InferenceConfig
+# Use environment in InferenceConfig
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
+
+此时, 你可以继续进行部署。 例如, 以下代码片段将使用推理配置和自定义映像在本地部署 web 服务:
+
+```python
+from azureml.core.webservice import LocalWebservice, Webservice
+
+deployment_config = LocalWebservice.deploy_configuration(port=8890)
+service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+service.wait_for_deployment(show_output = True)
+print(service.state)
+```
+
+有关部署的详细信息, 请参阅[部署具有 Azure 机器学习服务的模型](how-to-deploy-and-where.md)。
 
 ### <a name="use-an-image-with-the-machine-learning-cli"></a>使用带有机器学习 CLI 的映像
 

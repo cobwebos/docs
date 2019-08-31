@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 387865ac229acc5d16f595b96c76e7c9a014e991
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: d626a7768e7070360a6f0249486bfa83407fe998
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062131"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192066"
 ---
 # <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习结果
 
@@ -80,7 +80,7 @@ ms.locfileid: "70062131"
 AUC_macro| AUC 是接收方操作特性曲线下面的区域。 Macro 是每个类的 AUC 算术平均值。  | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
 AUC_Micro| AUC 是接收方操作特性曲线下面的区域。 微的计算方法是将每个类中的真正的正值和假正值组合在一起。| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
 AUC_Weighted  | AUC 是接收方操作特性曲线下面的区域。 加权是每个类的分数的算术平均值, 由每个类中的真实实例的数目加权。| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
-accuracy|Accuracy 是与真实标签完全匹配的预测标签百分比。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |None|
+accuracy|Accuracy 是与真实标签完全匹配的预测标签百分比。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |无|
 average_precision_score_macro|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 宏是每个类的平均精度分数的算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="macro"|
 average_precision_score_micro|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 微计算是通过在每个截止时合并真正的正值和假正值, 来全局计算。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="micro"|
 average_precision_score_weighted|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 加权是每个类的平均精度分数的算术平均值, 由每个类中的真实实例的数目加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="weighted"|
@@ -88,7 +88,7 @@ balanced_accuracy|平衡准确度是每个类的召回率算术平均值。|[计
 f1_score_macro|F1 评分是精度和召回率的调和平均值。 宏是每个类的 F1 分数的算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="macro"|
 f1_score_micro|F1 评分是精度和召回率的调和平均值。 微通过计算总真实正值、假负和误报计算出全局计算。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="micro"|
 f1_score_weighted|F1 评分是精度和召回率的调和平均值。 按每个类的 F1 评分类频率计算的加权平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
-log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 对于在{0,1} ca-yt = 1 的情况下具有 true 标签 ca-yt 和估计概率 yp 的单个示例, 日志丢失为-log P (&#124;ca-yt yp) =-(ca-yt log (yp) + (1-ca-yt) log (1-yp))。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|无|
+log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 对于在{0,1} ca-yt = 1 的情况下具有 true 标签 ca-yt 和估计概率 yp 的单个示例, 日志丢失为-log P (&#124;ca-yt yp) =-(ca-yt log (yp) + (1-ca-yt) log (1-yp))。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|None|
 norm_macro_recall|规范化宏召回率是已规范化的宏召回率，因此，随机性能的评分为 0，完美性能的评分为 1。 这是通过 norm_macro_recall: = (recall_score_macro-R)/(1-R) 实现的, 其中 R 是用于随机预测的 recall_score_macro 的预期值 (即, 对二元分类使用 R = 0.5, 对 C 类分类问题使用 R = (1/C))。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "宏" |
 precision_score_macro|Precision 是标记为特定类的，实际位于该类中的元素百分比。 宏是每个类的精度算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
 precision_score_micro|Precision 是标记为特定类的，实际位于该类中的元素百分比。 通过计算总的实际正值和假正值, 对微进行全局计算。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
@@ -102,7 +102,7 @@ weighted_accuracy|加权准确度是精确的, 其中每个示例给定的权重
 
 混淆矩阵用于描述分类模型的性能。 每一行显示真实类的实例，每一列表示预测类的实例。 混淆矩阵显示给定模型的正确分类标签和错误分类标签。
 
-对于分类问题，Azure 机器学习会自动为生成的每个模型提供一个混淆矩阵。 对于每个混淆矩阵，自动化机器学习将以绿色显示正确分类的标签，以红色显示错误分类的标签。 圆的大小表示该箱中的样本数。 此外，相邻的条形图中会提供每个预测标签和每个真实标签的频率计数。 
+对于分类问题，Azure 机器学习会自动为生成的每个模型提供一个混淆矩阵。 对于每个混淆矩阵, 自动 ML 都将显示每个预测标签和每个真正标签的交集的频率。 颜色越暗, 矩阵特定部分中的计数就越高。 理想情况下, 最暗的颜色将沿着矩阵的对角线。 
 
 示例 1：准确度不佳的分类模型![准确度不佳的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 

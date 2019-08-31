@@ -3,15 +3,15 @@ title: Azure 服务的 Azure 资源管理器资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5f5ffbd9b1f2bde08023d1758792fab54c2885f7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b500a7b2c74acbd4e035e710f7e25f1aacd86126
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442604"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194863"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -32,13 +32,13 @@ ms.locfileid: "67442604"
 | Microsoft.AppConfiguration | core |
 | Microsoft.Authorization | [Azure 资源管理器](index.yml) |
 | Microsoft.Automation | [自动化](../automation/index.yml) |
-| Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../active-directory-b2c/index.yml) |
+| Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../active-directory-b2c/index.yml) |
 | Microsoft.AzureStack | core |
 | Microsoft.Batch | [批处理](../batch/index.yml) |
 | Microsoft.Billing | [Billing](/azure/billing/) |
 | Microsoft.BingMaps | [必应地图](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft.BizTalkServices | [BizTalk 服务](../logic-apps/logic-apps-move-from-mabs.md) |
-| Microsoft.Blockchain | [区块链的 azure 服务](/azure/blockchain/workbench/) |
+| Microsoft.Blockchain | [Azure 区块链服务](/azure/blockchain/workbench/) |
 | Microsoft.Blueprint | [Azure 蓝图](/azure/governance/blueprints/) |
 | Microsoft.BotService | [Azure 机器人服务](/azure/bot-service/) |
 | Microsoft.Cache | [用于 Redis 的 Azure 缓存](/azure/azure-cache-for-redis/) |
@@ -53,14 +53,14 @@ ms.locfileid: "67442604"
 | Microsoft.CognitiveServices | [认知服务](/azure/cognitive-services/) |
 | Microsoft.Commerce | core |
 | Microsoft.Compute | [虚拟机](/azure/virtual-machines/) |
-| Microsoft.Consumption | [成本的管理](/azure/cost-management/) |
+| Microsoft.Consumption | [成本管理](/azure/cost-management/) |
 | Microsoft.ContainerInstance | [容器实例](/azure/container-instances/) |
 | Microsoft.ContainerRegistry | [容器注册表](/azure/container-registry/) |
 | Microsoft.ContainerService | [Azure Kubernetes 服务 (AKS)](/azure/aks/) |
 | Microsoft.ContentModerator | [Azure 内容审查器](../cognitive-services/content-moderator/index.yml) |
-| Microsoft.CostManagement | [成本的管理](/azure/cost-management/) |
+| Microsoft.CostManagement | [成本管理](/azure/cost-management/) |
 | Microsoft.CustomerInsights | Customer Insights |
-| Microsoft.CustomerLockbox | 客户密码箱适用于 Microsoft Azure |
+| Microsoft.CustomerLockbox | Microsoft Azure 的客户密码箱 |
 | Microsoft.CustomProviders | [Azure 自定义提供程序](../managed-applications/custom-providers-overview.md) |
 | Microsoft.DataBox | [Azure Data Box](/azure/databox-family/) |
 | Microsoft.DataBoxEdge | [Azure Data Box Edge](../databox-online/data-box-edge-overview.md) |
@@ -75,25 +75,25 @@ ms.locfileid: "67442604"
 | Microsoft.DBforPostgreSQL | [Azure Database for PostgreSQL](/azure/postgresql/) |
 | Microsoft.DeploymentManager | [Azure 部署管理器](deployment-manager-overview.md) |
 | Microsoft.Devices | [IoT 中心](/azure/iot-hub/)<br />[IoT 中心设备预配服务](/azure/iot-dps/) |
-| Microsoft.DevSpaces | [Azure 开发人员空格](/azure/dev-spaces/) |
+| Microsoft.DevSpaces | [Azure Dev Spaces](/azure/dev-spaces/) |
 | Microsoft.DevTestLab | [Azure 实验室服务](../lab-services/index.yml) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../cosmos-db/index.yml) |
 | Microsoft.DomainRegistration | [应用服务](/azure/app-service/) |
 | Microsoft.EnterpriseKnowledgeGraph | 企业知识图 |
 | Microsoft.EventGrid | [事件网格](/azure/event-grid/) |
 | Microsoft.EventHub | [事件中心](../event-hubs/index.yml) |
-| Microsoft.Features | [Azure Resource Manager](index.yml) |
+| Microsoft.Features | [Azure 资源管理器](index.yml) |
 | Microsoft.Genomics | [Microsoft 基因组学](/azure/genomics/) |
 | Microsoft.GuestConfiguration | [Azure Policy](../governance/policy/index.yml) |
-| Microsoft.HanaOnAzure | [在 Azure 上的 SAP HANA](../virtual-machines/workloads/sap/hana-overview-architecture.md) |
+| Microsoft.HanaOnAzure | [Azure 上的 SAP HANA](../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft.HardwareSecurityModules | [Azure 专用 HSM](../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../hdinsight/index.yml) |
-| Microsoft.HealthcareApis | [用于 FHIR 的 azure API](../healthcare-apis/index.yml) |
+| Microsoft.HealthcareApis | [用于 FHIR 的 Azure API](../healthcare-apis/index.yml) |
 | Microsoft.ImportExport | [Azure 导入/导出](../storage/common/storage-import-export-service.md) |
 | microsoft.insights | [Azure Monitor](../azure-monitor/index.yml) |
 | Microsoft.Intune | [Intune](/intune/) |
-| Microsoft.IoTCentral | [IoT 中心](/azure/iot-central/) |
-| Microsoft.IoTSpaces | [Azure 的数字孪生](../digital-twins/index.yml) |
+| Microsoft.IoTCentral | [IoT Central](/azure/iot-central/) |
+| Microsoft.IoTSpaces | [Azure 数字孪生](../digital-twins/index.yml) |
 | Microsoft.KeyVault | [Key Vault](../key-vault/index.yml) |
 | Microsoft.Kusto | [Azure 数据资源管理器](../data-explorer/index.yml) |
 | Microsoft.LabServices | [Azure 实验室服务](../lab-services/index.yml) |
@@ -113,12 +113,12 @@ ms.locfileid: "67442604"
 | Microsoft.MarketplaceApps | core |
 | Microsoft.MarketplaceOrdering | core |
 | Microsoft.Media | [媒体服务](../media-services/index.yml) |
-| Microsoft.Migrate | [Azure 迁移](../migrate/migrate-overview.md) |
+| Microsoft.Migrate | [Azure Migrate](../migrate/migrate-overview.md) |
 | Microsoft.MixedReality | [Azure 空间定位点](/azure/spatial-anchors/) |
 | Microsoft.NetApp | [Azure NetApp 文件](../azure-netapp-files/index.yml) |
-| Microsoft.Network | [虚拟网络](../virtual-network/index.yml)<br />[负载均衡器](../load-balancer/index.yml)<br />[应用程序网关](../application-gateway/index.yml)<br />[Azure DNS](../dns/index.yml)<br />[ExpressRoute](../expressroute/index.yml)<br />[VPN 网关](../vpn-gateway/index.yml)<br />[流量管理器](../traffic-manager/index.yml)<br />[网络观察程序](../network-watcher/index.yml)<br />[Azure 防火墙](../firewall/index.yml)<br />[Azure 的第一道防线服务](../frontdoor/index.yml)<br />[Azure 堡垒](/azure/bastion/) |
+| Microsoft.Network | [虚拟网络](../virtual-network/index.yml)<br />[负载均衡器](../load-balancer/index.yml)<br />[应用程序网关](../application-gateway/index.yml)<br />[Azure DNS](../dns/index.yml)<br />[ExpressRoute](../expressroute/index.yml)<br />[VPN 网关](../vpn-gateway/index.yml)<br />[流量管理器](../traffic-manager/index.yml)<br />[网络观察程序](../network-watcher/index.yml)<br />[Azure 防火墙](../firewall/index.yml)<br />[Azure Front Door 服务](../frontdoor/index.yml)<br />[Azure 堡垒](/azure/bastion/) |
 | Microsoft.NotificationHubs | [通知中心](../notification-hubs/index.yml) |
-| Microsoft.OffAzure | [Azure 迁移](../migrate/migrate-overview.md) |
+| Microsoft.OffAzure | [Azure Migrate](../migrate/migrate-overview.md) |
 | Microsoft.OperationalInsights | [Azure Monitor](../azure-monitor/index.yml) |
 | Microsoft.OperationsManagement | [Azure Monitor](../azure-monitor/index.yml) |
 | Microsoft.PolicyInsights | [Azure Policy](../governance/policy/index.yml) |
@@ -127,7 +127,7 @@ ms.locfileid: "67442604"
 | Microsoft.PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
 | Microsoft.RecoveryServices | [Site Recovery](../site-recovery/index.yml) |
 | Microsoft.Relay | [Azure Relay](../service-bus-relay/relay-what-is-it.md) |
-| Microsoft.ResourceGraph | [Azure 资源的关系图](/azure/governance/resource-graph/) |
+| Microsoft.ResourceGraph | [Azure 资源关系图](/azure/governance/resource-graph/) |
 | Microsoft.ResourceHealth | core |
 | Microsoft.Resources | [Azure 资源管理器](index.yml) |
 | Microsoft.SaaS | core |
@@ -150,10 +150,10 @@ ms.locfileid: "67442604"
 | microsoft.support | core |
 | Microsoft.TimeSeriesInsights | [时序见解](../time-series-insights/index.yml) |
 | microsoft.visualstudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
-| Microsoft.VMwareCloudSimple | [Azure 通过 CloudSimple VMware 解决方案](/azure/vmware-cloudsimple/) |
+| Microsoft.VMwareCloudSimple | [Azure VMware 解决方案 (按 CloudSimple)](/azure/vmware-cloudsimple/) |
 | Microsoft.Web | [应用服务](../app-service/index.yml)<br />[函数](../azure-functions/index.yml) |
 | Microsoft.WindowsDefenderATP | [Windows Defender 高级威胁防护](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection) |
-| Microsoft.WindowsIoT | [Windows 10 IoT 核心版服务](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
+| Microsoft.WindowsIoT | [Windows 10 IoT Core Services](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
 | Microsoft.WorkloadMonitor | [Azure Monitor](../azure-monitor/index.yml) |
 
 ## <a name="next-steps"></a>后续步骤

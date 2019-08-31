@@ -1,29 +1,23 @@
 ---
-title: 在数据科学虚拟机上安全存储访问凭据 - Azure | Microsoft Docs
+title: 安全存储访问凭据
+titleSuffix: Azure Data Science Virtual Machine
 description: 了解如何在 Data Science Virtual Machine 上安全地存储访问凭据。 你将了解如何使用托管服务标识和 Azure Key Vault 来存储访问凭据。
 keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析, 团队数据科学过程
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/08/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 1374cbef41f40ea270f3c4d84c68d08e7db095bc
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.topic: conceptual
+ms.date: 05/08/2018
+ms.openlocfilehash: 17e611007d2b5400497597946159826df7aa4848
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051618"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195613"
 ---
-# <a name="store-access-credentials-securely-on-a-data-science-virtual-machine"></a>安全地在 Data Science Virtual Machine 上存储访问凭据
+# <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>在 Azure Data Science Virtual Machine 上安全地存储访问凭据
 
 通常, 云应用程序中的代码包含用于对云服务进行身份验证的凭据。 如何管理和保护这些凭据是构建云应用程序的已知挑战。 理想情况下, 凭据绝不会出现在开发人员工作站上, 也不会被签入到源代码管理中。
 

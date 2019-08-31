@@ -1,23 +1,23 @@
 ---
-title: 没有800计数限制的 Azure 资源
-description: 列出资源组中可包含800个以上实例的 Azure 资源类型。
+title: 没有 800 计数限制的 Azure 资源
+description: 列出可以在一个资源组中有 800 多个实例的 Azure 资源类型。
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 7/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: a796896450a5b786e3b78aeddd81e6d66b02eb94
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: eec448dcbf1c550b6b0a0ee0f17505fd6ddd3c74
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700452"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194736"
 ---
-# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>资源不限于每个资源组800个实例
+# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
-默认情况下, 可以在每个资源组中部署最多800个资源类型的实例。 但是, 某些资源类型不受800实例限制的限制。 本文列出了资源组中可包含800个以上实例的 Azure 资源类型。 所有其他资源类型限制为800实例。
+默认情况下，就单个资源类型来说，可以在每个资源组中部署最多 800 个实例。 不过，某些资源类型没有 800 个实例的限制。 本文列出了可以在一个资源组中有 800 多个实例的 Azure 资源类型。 所有其他资源类型有 800 个实例的限制。
 
-对于某些资源类型, 需要联系支持人员以删除800实例限制。 本文中注明了这些资源类型。
+就某些资源类型来说，若要移除 800 个实例的限制，需联系支持部门。 这些资源类型已在本文中注明。
 
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
@@ -44,9 +44,9 @@ ms.locfileid: "68700452"
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 * registries/buildTasks
-* 注册表/buildTasks/listSourceRepositoryProperties
+* registries/buildTasks/listSourceRepositoryProperties
 * registries/buildTasks/steps
-* 注册表/buildTasks/步骤/listBuildArguments
+* registries/buildTasks/steps/listBuildArguments
 * registries/eventGridFilters
 * registries/replications
 * registries/tasks
@@ -112,11 +112,11 @@ ms.locfileid: "68700452"
 * privateDnsZones/SOA
 * privateDnsZones/SRV
 * privateDnsZones/TXT
-* privateDnsZones/所有
+* privateDnsZones/all
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* publicIPAddresses-联系支持人员以扩展限制。
+* publicIPAddresses - 若要提高限制，请联系支持部门。
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
@@ -127,7 +127,7 @@ ms.locfileid: "68700452"
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
-* workspaceCollections-联系支持人员以扩展限制。
+* workspaceCollections - 若要提高限制，请联系支持部门。
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
@@ -144,4 +144,4 @@ ms.locfileid: "68700452"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关配额和限制的完整列表, 请参阅[Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。
+有关配额和限制的完整列表，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。

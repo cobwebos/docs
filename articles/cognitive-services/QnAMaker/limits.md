@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c7b0dc39d2da403383f245b9ff3227734c58cbbe
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423457"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193482"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -44,19 +44,31 @@ ms.locfileid: "68423457"
 
 ## <a name="metadata-limits"></a>元数据限制
 
+### <a name="by-azure-search-pricing-tier"></a>按 Azure 搜索定价层
+
 每个知识库的元数据字段的最大数目取决于 **[Azure 搜索层限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** 。
 
 |**Azure 搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |每个 QnA Maker 服务的元数据字段的最大数量（包括所有知识库）|1,000|100*|1,000|1,000|1,000|1,000|
 
+### <a name="by-name-and-value"></a>按名称和值
+
+下表列出了元数据名称和值可接受的长度和可接受的字符。
+
+|项|允许的字符|Regex 模式匹配|最大字符数|
+|--|--|--|--|
+|姓名|可用<br>字母数字 (字母和数字)<br>`_`强调|`^[a-zA-Z0-9_]+$`|100|
+|ReplTest1|允许除以外的所有内容<br>`:`开头<br>`|`(垂直管道)|`^[^:|]+$`|500|
+|||||
+
 ## <a name="knowledge-base-content-limits"></a>知识库内容限制
 知识库中内容的总体限制：
 * 答案文本的长度：25,000
 * 问题文本的长度：1,000
 * 元数据键/值文本的长度：100
-* 支持的元数据名称字符：字母、数字和 _  
-* 支持的元数据值字符：除 : 和 | 以外的所有字符 
+* 支持的元数据名称字符：字母、数字和`_`  
+* 支持的元数据值字符：除和`:`之外的所有`|` 
 * 文件名长度：200
 * 支持的文件格式:：“.tsv”、“.pdf”、“.txt”、“.docx”、“.xlsx”。
 * 备用问题的最大数量：300
@@ -78,8 +90,4 @@ ms.locfileid: "68423457"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解何时以及如何更改服务层级：
-
-* [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku):如果你需要在知识库中具有更多的源文件或更大的文档, 请在当前层外升级 QnA Maker 服务定价层。
-* [应用服务](how-to/upgrade-qnamaker-service.md#upgrade-app-service):当知识库需要处理来自客户端应用的更多请求时，请升级应用服务定价层。
-* [Azure 搜索](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service):当计划拥有许多知识库时，请升级 Azure 搜索服务定价层。
+了解何时以及如何更改[服务定价层](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)。

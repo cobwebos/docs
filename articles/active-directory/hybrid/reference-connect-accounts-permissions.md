@@ -17,12 +17,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5460033902b71174dc3a10615811f657081f0e4
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64919172"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186298"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
@@ -32,23 +32,28 @@ ms.locfileid: "64919172"
 
 Azure AD Connect 使用 3 个帐户，将信息从本地或 Windows Server Active Directory 同步到 Azure Active Directory。  这些帐户是：
 
-- AD DS 连接器帐户：用于将信息读/写到 Windows Server Active Directory 
+- AD DS 连接器帐户：用于将信息读/写到 Windows Server Active Directory
 
-- ADSync 服务帐户：用于运行同步服务和访问 SQL 数据库 
+- ADSync 服务帐户：用于运行同步服务和访问 SQL 数据库
 
-- Azure AD 连接器帐户：用于将信息写入 Azure AD 
+- Azure AD 连接器帐户：用于将信息写入 Azure AD
 
-除了用于运行 Azure AD Connect 的这三个帐户外，还需要以下其他帐户以安装 Azure AD Connect。  其中包括：
+除了用于运行 Azure AD Connect 的这三个帐户外，还需要以下其他帐户以安装 Azure AD Connect。  这些是：
 
 - **本地管理员帐户**：将安装 Azure AD Connect 并且在计算机上具有本地管理员权限的管理员。
 
 - **AD DS 企业管理员帐户**：可以选择使用此帐户创建上面的“AD DS 连接器帐户”。
 
-- Azure AD 全局管理员帐户：用于创建 Azure AD 连接器帐户和配置 Azure AD  。
+- Azure AD 全局管理员帐户：用于创建 Azure AD 连接器帐户和配置 Azure AD。
 
-- SQL SA 帐户（可选）：用于使用完整版 SQL Server 时创建 ADSync 数据库  。  此 SQL Server 对 Azure AD Connect 安装而言可能是本地或远程的。  此帐户可能是企业管理员的帐户。  现在，可以由 SQL 管理员在带外进行数据库预配，然后由具有数据库所有者权限的 Azure AD Connect 管理员完成安装。  有关详细信息，请参阅[使用 SQL 委派的管理员权限安装 Azure AD Connect](how-to-connect-install-sql-delegation.md)
+- SQL SA 帐户（可选）：用于使用完整版 SQL Server 时创建 ADSync 数据库。  此 SQL Server 对 Azure AD Connect 安装而言可能是本地或远程的。  此帐户可能是企业管理员的帐户。  现在，可以由 SQL 管理员在带外进行数据库预配，然后由具有数据库所有者权限的 Azure AD Connect 管理员完成安装。  有关详细信息，请参阅[使用 SQL 委派的管理员权限安装 Azure AD Connect](how-to-connect-install-sql-delegation.md)
 
-## <a name="installing-azure-ad-connect"></a>安装 Azure AD Connect
+> [!NOTE]
+> 支持从 ESAE 管理林 (也称为 "Red 林") 管理 Azure AD Connect 中使用的管理帐户。
+> 专用管理林允许组织在安全控制比生产环境更强的环境中托管管理帐户、工作站和组。
+> 若要了解有关专用管理林的详细信息, 请参阅[ESAE 管理林设计方法](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
+
+## <a name="installing-azure-ad-connect"></a>正在安装 Azure AD Connect
 Azure AD Connect 安装向导提供提供两种不同的路径：
 
 * 在“快速设置”中，此向导需要更多权限。  这样便可以轻松设置配置，而无需创建用户或配置权限。
@@ -73,7 +78,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS 连接器帐户需要快速设置权限
 创建 AD DS 连接器帐户，用于读取和写入 Windows Server AD，如果由快速设置创建，该帐户具有以下权限：
 
-| 权限 | 用途 |
+| 权限 | 用于 |
 | --- | --- |
 | <li>复制目录更改</li><li>复制所有目录更改 |密码哈希同步 |
 | 读取/写入所有用户属性 |导入和执行 Exchange 混合部署 |
@@ -90,7 +95,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 
 | 向导页 | 收集的凭据 | 所需的权限 | 用途 |
 | --- | --- | --- | --- |
-| 不适用 |运行安装向导的用户 |本地服务器的管理员 |<li>创建用于运行同步服务的 ADSync 服务帐户。 |
+| 不可用 |运行安装向导的用户 |本地服务器的管理员 |<li>创建用于运行同步服务的 ADSync 服务帐户。 |
 | 连接到 Azure AD |Azure AD 目录凭据 |Azure AD 中的全局管理员角色 |<li>在 Azure AD 目录中启用同步。</li>  <li>创建在 Azure AD 中用于持续同步操作的 Azure AD 连接器帐户。</li> |
 | 连接到 AD DS |本地 Active Directory 凭据 |Active Directory 中企业管理员 (EA) 组的成员 |<li>在 Active Directory 中创建 AD DS 连接器帐户并向其授予权限。 同步期间，所创建的该帐户用于读取和写入目录信息。</li> |
 
@@ -107,7 +112,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 
 | 向导页 | 收集的凭据 | 所需的权限 | 用途 |
 | --- | --- | --- | --- |
-| 不适用 |运行安装向导的用户 |<li>本地服务器的管理员</li><li>只有 SQL 中的系统管理员 (SA) 才可使用 SQL Server 完整版。</li> |默认情况下，将创建充当同步引擎服务帐户的本地帐户。 只有在管理员未指定特定帐户时才创建该帐户。 |
+| 不可用 |运行安装向导的用户 |<li>本地服务器的管理员</li><li>只有 SQL 中的系统管理员 (SA) 才可使用 SQL Server 完整版。</li> |默认情况下，将创建充当同步引擎服务帐户的本地帐户。 只有在管理员未指定特定帐户时才创建该帐户。 |
 | 安装同步服务，服务帐户选项 |AD 或本地用户帐户凭据 |用户，权限由安装向导授予 |如果管理员指定了帐户，则此帐户将用作同步服务的服务帐户。 |
 | 连接到 Azure AD |Azure AD 目录凭据 |Azure AD 中的全局管理员角色 |<li>在 Azure AD 目录中启用同步。</li>  <li>创建在 Azure AD 中用于持续同步操作的 Azure AD 连接器帐户。</li> |
 | 连接目录 |要连接到 Azure AD 的每个林的本地 Active Directory 凭据 |权限随所启用的功能而定，可在“创建 AD DS 连接器帐户”中查找 |在同步期间，将使用此帐户读取和写入目录信息。 |
@@ -119,17 +124,17 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 ### <a name="create-the-ad-ds-connector-account"></a>创建 AD DS 连接器帐户
 
 >[!IMPORTANT]
->内部版本 1.1.880.0（发布于 2018 年 8 月）中引入了名为 ADSyncConfig.psm1 的新 PowerShell 模块，其中包括有助于为 Azure AD DS 连接器帐户配置正确 Active Directory 权限的 cmdlet 集合  。
+>内部版本 1.1.880.0（发布于 2018 年 8 月）中引入了名为 ADSyncConfig.psm1 的新 PowerShell 模块，其中包括有助于为 Azure AD DS 连接器帐户配置正确 Active Directory 权限的 cmdlet 集合。
 >
 >有关详细信息，请参阅 [Azure AD Connect：配置 AD DS 连接器帐户权限](how-to-connect-configure-ad-ds-connector-account.md)
 
-“连接目录”  页上指定的帐户必须在安装之前存在于 Active Directory 中。  Azure AD Connect 版本 1.1.524.0 及更高版本提供了相应选项，让 Azure AD Connect 向导创建用于连接 Active Directory 的 AD DS 连接器帐户  。  
+“连接目录”页上指定的帐户必须在安装之前存在于 Active Directory 中。  Azure AD Connect 版本 1.1.524.0 及更高版本提供了相应选项，让 Azure AD Connect 向导创建用于连接 Active Directory 的 AD DS 连接器帐户。  
 
 还必须向它授予所需的权限。 安装向导不会验证权限，任何问题只能在同步期间发现。
 
 需要哪些权限取决于启用的可选功能。 如果有多个域，则必须对林中的所有域授予权限。 如果某项功能未启动，则默认的**域用户**权限已足够。
 
-| Feature | 权限 |
+| 功能 | 权限 |
 | --- | --- |
 | ms DS ConsistencyGuid 功能 |对[设计概念 - 使用 ms-DS-ConsistencyGuid 作为 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 中所述的 ms-DS-ConsistencyGuid 属性的写入权限。 | 
 | 密码哈希同步 |<li>复制目录更改</li>  <li>复制所有目录更改 |
@@ -146,7 +151,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 >从版本 1.1.484 开始，Azure AD Connect 引入了一个回归 bug，导致需要 sysadmin 权限才能升级 SQL 数据库。  在内部版本 1.1.647 中解决了此 bug。  若要升级到此版本，需要 sysadmin 权限。  Dbo 权限是不够的。  如果尝试在没有 sysadmin 权限的情况下升级 Azure AD Connect，升级将失败，之后 Azure AD Connect 将不再正常工作。  Microsoft 已意识到此问题，并在努力更正此问题。
 
 
-| 主体 | 所需的权限 | 用途 |
+| 主体 | 所需的权限 | 用于 |
 | --- | --- | --- |
 | 运行安装向导的用户 |本地服务器的管理员 |更新二进制文件 |
 | 运行安装向导的用户 |ADSyncAdmins 的成员 |对同步规则和其他配置进行更改。 |
@@ -206,7 +211,7 @@ VSA 旨在当同步引擎和 SQL 位于同一服务器上时使用。 如果使�
 #### <a name="group-managed-service-account"></a>组托管服务帐户
 如果使用远程 SQL Server，则建议使用**组托管服务帐户**。 若要详细了解如何为组托管服务帐户准备 Active Directory ，请参阅 [Group Managed Service Accounts Overview](https://technet.microsoft.com/library/hh831782.aspx)（组托管服务帐户概述）。
 
-若要使用此选项，请[安装所需的组件](how-to-connect-install-custom.md#install-required-components)页上选择“使用现有的服务帐户”，然后选择“托管服务帐户”。    
+若要使用此选项，请[安装所需的组件](how-to-connect-install-custom.md#install-required-components)页上选择“使用现有的服务帐户”，然后选择“托管服务帐户”。  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
 还支持使用[独立托管服务帐户](https://technet.microsoft.com/library/dd548356.aspx)。 但是，这些帐户只能在本地计算机上使用，因此使用这些帐户相对默认虚拟服务帐户而言并没有好处。
 
@@ -234,14 +239,14 @@ VSA 旨在当同步引擎和 SQL 位于同一服务器上时使用。 如果使�
 
 使用该帐户的服务器名称可以根据用户名的第二个部分来识别。 在上图中，服务器名称为 DC1。 如果部署了暂存服务器，每个服务器都有自身的帐户。
 
-该帐户带有永不过期的长复杂密码。 系统为其授予了特殊角色“目录同步帐户”  ，该角色仅可执行目录同步任务。 此特殊内置角色不能在 Azure AD Connect 向导之外授予。 Azure 门户显示具有“用户”角色  的此帐户。
+该帐户带有永不过期的长复杂密码。 系统为其授予了特殊角色“目录同步帐户”，该角色仅可执行目录同步任务。 此特殊内置角色不能在 Azure AD Connect 向导之外授予。 Azure 门户显示具有“用户”角色的此帐户。
 
 Azure AD 将同步服务帐户数目限制为 20 个。 若要在 Azure AD 中获取现有 Azure AD 服务帐户的列表，请运行以下 Azure AD PowerShell cmdlet：`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
 若要删除未使用的 Azure AD 服务帐户，请运行以下 Azure AD PowerShell cmdlet：`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->可以使用上述 PowerShell 命令之前将需要安装[Azure Active Directory PowerShell for Graph 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module)并连接到你的 Azure AD 使用实例[Connect-azuread](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)
+>在可以使用上述 PowerShell 命令之前, 你将需要安装[Azure Active Directory PowerShell For Graph 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module), 并使用[AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)连接到 Azure AD 实例
 
 有关如何管理或重置 Azure AD Connect 帐户密码的更多信息，请参阅[管理 Azure AD Connect 帐户](how-to-connect-azureadaccount.md)
 

@@ -1,7 +1,7 @@
 ---
 title: 使用知识存储（预览版）中的投影 - Azure 搜索
 description: 保存并塑造 AI 索引管道中的扩充数据，以便在除搜索以外的方案中使用
-manager: eladz
+manager: nitinme
 author: vkurpad
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.subservice: cognitive-search
-ms.openlocfilehash: 4fa669eaf96c08d7a2e1e7255ff6b1f6ff7b4f14
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2dd61a4511d406fefec5aacd0702fa732f79de92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639836"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186232"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>在 Azure 搜索中使用知识存储中的投影
 

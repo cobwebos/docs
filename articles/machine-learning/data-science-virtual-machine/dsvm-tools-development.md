@@ -1,29 +1,23 @@
 ---
-title: 数据科学虚拟机数据开发工具 - Azure | Microsoft Docs
-description: 了解 Data Science Virtual Machine 上预安装的工具和集成开发环境。
+title: 开发工具
+titleSuffix: Azure Data Science Virtual Machine
+description: 了解 Data Science Virtual Machine 上提供的工具和集成开发环境。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: vijetaj
-ms.openlocfilehash: 8f9dad0fb007945b69b75daadfdb12f61dc4defb
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6ff4d92cb3730716c532332bf426132fcbb8e122
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074307"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191952"
 ---
-# <a name="development-tools-on-the-data-science-virtual-machine"></a>数据科学虚拟机开发工具
+# <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine 上的开发工具
 
 Data Science Virtual Machine (DSVM) 在高效集成开发环境 (IDE) 中捆绑了几个常用工具。 以下是 DSVM 中提供的一些工具。
 

@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 235ad37c5cf5f8ac7e801a6d25e961d32c1b7aad
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: ee8a17846495a122f7432e66c3e343a00dd0a015
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164925"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194623"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建来宾配置策略
 
@@ -367,6 +367,13 @@ GitHub 上的一篇文章提供了一个用于创建用于 Linux 计算机的 GP
 
 发布内容后, 会将名称`GuestConfigPolicyCertificateValidation`和值`enabled`的标记追加到需要进行代码签名的所有虚拟机。 可以使用 Azure 策略大规模传递此标记。 请参阅[应用标记及其默认值](../samples/apply-tag-default-value.md)示例。
 完成此标记后, 使用`New-GuestConfigurationPolicy` cmdlet 生成的策略定义将通过来宾配置扩展启用要求。
+
+## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>效果来宾配置策略分配疑难解答
+
+预览中提供了一个工具, 用于帮助排查 Azure 策略来宾配置分配问题。
+该工具处于预览阶段, 已作为模块名称 "[来宾配置疑难解答](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/)" 发布到 PowerShell 库。
+
+有关此工具中的 cmdlet 的详细信息, 请使用 PowerShell 中的 Get-help 命令显示内置指南。  当工具获取频繁更新时, 这是获取最新信息的最佳方式。
 
 ## <a name="next-steps"></a>后续步骤
 

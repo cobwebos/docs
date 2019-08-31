@@ -3,23 +3,23 @@ title: 由资源类型进行的 Azure 资源管理器完全模式删除
 description: 显示资源类型如何在 Azure 资源管理器模板中进行完全模式删除。
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7f804e61f77b745aa654852f4c1413a8f4bf53b4
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: d783ab9c12952393f0a74b245109dda58bff3927
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779947"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194402"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
 
 本文描述了资源类型如何在不是以完全模式部署的模板中进行删除。
 
-当类型不在以完整模式部署的模板中时, 将删除标记为 **"是"** 的资源类型。
+标记为 **Yes** 的资源类型不在以完全模式部署的模板中时，将会删除该类型。
 
-如果不在模板中, 则不会自动删除标记为 "**否**" 的资源类型。但是, 如果删除父资源, 它们将被删除。 有关此行为的完整描述，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
+标记为 **No** 的资源类型不在模板中时不会自动删除；但是，如果删除了父资源，则会删除它们。 有关此行为的完整描述，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
 
 跳转到资源提供程序命名空间：
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "68779947"
 > - [AADDomainServices](#microsoftaaddomainservices)
 > - [加载项](#microsoftaddons)
 > - [ADHybridHealthService](#microsoftadhybridhealthservice)
-> - [Microsoft Advisor](#microsoftadvisor)
+> - [Microsoft.Advisor](#microsoftadvisor)
 > - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
@@ -52,7 +52,7 @@ ms.locfileid: "68779947"
 > - [Microsoft.Cdn](#microsoftcdn)
 > - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
-> - [ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
+> - [Microsoft.ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
 > - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
@@ -93,10 +93,10 @@ ms.locfileid: "68779947"
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
-> - [Microsoft. 功能](#microsoftfeatures)
+> - [Microsoft.Features](#microsoftfeatures)
 > - [Microsoft. 库](#microsoftgallery)
 > - [Microsoft.Genomics](#microsoftgenomics)
-> - [GuestConfiguration](#microsoftguestconfiguration)
+> - [Microsoft.GuestConfiguration](#microsoftguestconfiguration)
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft.hardwaresecuritymodules](#microsofthardwaresecuritymodules)
 > - [Microsoft.HDInsight](#microsofthdinsight)
@@ -117,7 +117,7 @@ ms.locfileid: "68779947"
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [ManagedLab](#microsoftmanagedlab)
 > - [ManagedServices](#microsoftmanagedservices)
-> - [Microsoft. 管理](#microsoftmanagement)
+> - [Microsoft.Management](#microsoftmanagement)
 > - [Microsoft.Maps](#microsoftmaps)
 > - [Microsoft Marketplace](#microsoftmarketplace)
 > - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
@@ -141,7 +141,7 @@ ms.locfileid: "68779947"
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft RemoteApp](#microsoftremoteapp)
 > - [ResourceGraph](#microsoftresourcegraph)
-> - [ResourceHealth](#microsoftresourcehealth)
+> - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
 > - [Microsoft.Scheduler](#microsoftscheduler)
@@ -166,7 +166,7 @@ ms.locfileid: "68779947"
 > - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
 > - [Microsoft.StorSimple](#microsoftstorsimple)
 > - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
-> - [Microsoft. 订阅](#microsoftsubscription)
+> - [Microsoft.Subscription](#microsoftsubscription)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
 > - [Microsoft.Web](#microsoftweb)
@@ -234,7 +234,7 @@ ms.locfileid: "68779947"
 > | alertsMetaData | 否 |
 > | alertsSummary | 否 |
 > | alertsSummaryList | 否 |
-> | 意见 | 否 |
+> | 反馈 | 否 |
 > | smartDetectorAlertRules | 否 |
 > | smartDetectorRuntimeEnvironments | 否 |
 > | smartGroups | 否 |
@@ -524,8 +524,8 @@ ms.locfileid: "68779947"
 > | domainNames/serviceCertificates | 否 |
 > | domainNames/slots | 否 |
 > | domainNames/slots/roles | 否 |
-> | domainNames/槽位/role/metricDefinitions | 否 |
-> | domainNames/插槽/角色/指标 | 否 |
+> | domainNames/slots/roles/metricDefinitions | 否 |
+> | domainNames/slots/roles/metrics | 否 |
 > | moveSubscriptionResources | 否 |
 > | operatingSystemFamilies | 否 |
 > | operatingSystems | 否 |
@@ -574,11 +574,11 @@ ms.locfileid: "68779947"
 > | quotas | 否 |
 > | storageAccounts | 是 |
 > | storageAccounts/metricDefinitions | 否 |
-> | storageAccounts/指标 | 否 |
+> | storageAccounts/metrics | 否 |
 > | storageAccounts/services | 否 |
 > | storageAccounts/services/diagnosticSettings | 否 |
 > | storageAccounts/services/metricDefinitions | 否 |
-> | storageAccounts/服务/指标 | 否 |
+> | storageAccounts/services/metrics | 否 |
 > | storageAccounts/vmImages | 否 |
 > | vmImages | 否 |
 
@@ -606,12 +606,12 @@ ms.locfileid: "68779947"
 > | diskEncryptionSets | 是 |
 > | 磁盘 | 是 |
 > | galleries | 是 |
-> | 库/应用程序 | 是 |
-> | 库/应用程序/版本 | 是 |
+> | galleries/applications | 是 |
+> | galleries/applications/versions | 是 |
 > | galleries/images | 是 |
 > | galleries/images/versions | 是 |
 > | hostGroups | 是 |
-> | hostGroups/主机 | 是 |
+> | hostGroups/hosts | 是 |
 > | 映像 | 是 |
 > | proximityPlacementGroups | 是 |
 > | restorePointCollections | 是 |
@@ -1045,7 +1045,7 @@ ms.locfileid: "68779947"
 > | namespaces/eventhubs | 否 |
 > | namespaces/eventhubs/authorizationrules | 否 |
 > | namespaces/eventhubs/consumergroups | 否 |
-> | 命名空间/networkrulesets | 否 |
+> | namespaces/networkrulesets | 否 |
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
@@ -1181,7 +1181,7 @@ ms.locfileid: "68779947"
 > | hsmPools | 是 |
 > | vaults | 是 |
 > | vaults/accessPolicies | 否 |
-> | 保管库/eventGridFilters | 否 |
+> | vaults/eventGridFilters | 否 |
 > | vaults/secrets | 否 |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
@@ -1190,7 +1190,7 @@ ms.locfileid: "68779947"
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | clusters | 是 |
-> | 群集/attacheddatabaseconfigurations | 否 |
+> | clusters/attacheddatabaseconfigurations | 否 |
 > | clusters/databases | 否 |
 > | clusters/databases/dataconnections | 否 |
 > | clusters/databases/eventhubconnections | 否 |
@@ -1246,7 +1246,7 @@ ms.locfileid: "68779947"
 > | ------------- | ----------- |
 > | labaccounts | 是 |
 
-## <a name="microsoftmanagedservices"></a>ManagedServices
+## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
@@ -1422,7 +1422,7 @@ ms.locfileid: "68779947"
 > | privateDnsZones | 是 |
 > | privateDnsZones/A | 否 |
 > | privateDnsZones/AAAA | 否 |
-> | privateDnsZones/所有 | 否 |
+> | privateDnsZones/all | 否 |
 > | privateDnsZones/CNAME | 否 |
 > | privateDnsZones/MX | 否 |
 > | privateDnsZones/PTR | 否 |
@@ -1647,7 +1647,7 @@ ms.locfileid: "68779947"
 > | allowedConnections | 否 |
 > | applicationWhitelistings | 否 |
 > | assessmentMetadata | 否 |
-> | 风险 | 否 |
+> | assessments | 否 |
 > | AutoProvisioningSettings | 否 |
 > | Compliances | 否 |
 > | dataCollectionAgents | 否 |
@@ -1709,7 +1709,7 @@ ms.locfileid: "68779947"
 > | namespaces/authorizationrules | 否 |
 > | namespaces/disasterrecoveryconfigs | 否 |
 > | namespaces/eventgridfilters | 否 |
-> | 命名空间/networkrulesets | 否 |
+> | namespaces/networkrulesets | 否 |
 > | namespaces/queues | 否 |
 > | namespaces/queues/authorizationrules | 否 |
 > | namespaces/topics | 否 |
@@ -1729,11 +1729,11 @@ ms.locfileid: "68779947"
 > | containerGroups | 是 |
 > | containerGroupSets | 是 |
 > | edgeclusters | 是 |
-> | edgeclusters/应用程序 | 否 |
+> | edgeclusters/applications | 否 |
 > | 网络 | 是 |
 > | secretstores | 是 |
-> | secretstores/证书 | 否 |
-> | secretstores/机密 | 否 |
+> | secretstores/certificates | 否 |
+> | secretstores/secrets | 否 |
 > | 卷 | 是 |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
@@ -1965,15 +1965,15 @@ ms.locfileid: "68779947"
 > | serverFarms | 是 |
 > | serverFarms/eventGridFilters | 否 |
 > | 站点 | 是 |
-> | 站点/配置  | 否 |
+> | sites/config  | 否 |
 > | sites/eventGridFilters | 否 |
 > | sites/hostNameBindings | 否 |
-> | sites/Networkconfig.netcfg | 否 |
+> | sites/networkConfig | 否 |
 > | sites/premieraddons | 是 |
 > | sites/slots | 是 |
-> | 站点/槽/eventGridFilters | 否 |
+> | sites/slots/eventGridFilters | 否 |
 > | sites/slots/hostNameBindings | 否 |
-> | 站点/槽/Networkconfig.netcfg | 否 |
+> | sites/slots/networkConfig | 否 |
 > | sourceControls | 否 |
 > | validate | 否 |
 > | verifyHostingEnvironmentVnet | 否 |

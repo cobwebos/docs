@@ -1,18 +1,18 @@
 ---
 title: 如何在合作伙伴中心管理商业 Marketplace 帐户
 description: 了解如何在合作伙伴中心管理商业 Marketplace 帐户。
-author: mattwojo
+author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f0557f21e791dd22df16451003d5efcfc72c56b4
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.date: 08/30/2019
+ms.openlocfilehash: 99f981698daf12bf7d493159fc7fd08a98a28104
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164737"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194267"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>如何在合作伙伴中心管理商业 Marketplace 帐户 
 
@@ -305,9 +305,15 @@ ms.locfileid: "70164737"
 公司的用户可以在合作伙伴中心为商业市场计划分配以下角色和权限。 
 
 |**角色**|**权限**|
-|----------------------------------|:---------------------------------|
-
-|Manager | •可以访问除税务和支出设置之外的所有 Microsoft 帐户功能 |     | •可以管理用户、角色和工作帐户 (租户) | |开发人员 | •可以管理和发布产品/服务 |     | •可以查看某些发布者报表 | |全局管理 | •与商业应用商店不相关 | |业务参与者 | •与商业应用商店不相关 | |财务参与者 | •与商业应用商店不相关 | |营销人员 | •与商业应用商店不相关 |
+|----------------------------------|---------------------------------|
+|管理员|-可以访问除税务和支出设置之外的所有 Microsoft 帐户功能|
+|      |-可以管理用户、角色和工作帐户 (租户)|
+|开发人员|-可管理和发布产品/服务|
+|      |-可以查看某些发布者报表|
+|全局管理员|-与商用 marketplace 无关|
+|业务参与者|-与商用 marketplace 无关|
+|财务参与者|-与商用 marketplace 无关|
+|营销人员|-与商用 marketplace 无关|
 
 有关在合作伙伴中心的其他区域 (例如 Azure Active Directory (AD)、云解决方案提供商 (CSP)、控制面板供应商 (CPV)、来宾用户或 Microsoft 合作伙伴网络 (MPN)) 管理角色和权限的详细信息, 请参阅[分配用户角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。
 
