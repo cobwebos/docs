@@ -54,7 +54,7 @@ JSON Blob 元数据符合以下模型：
 | 特性 | 类型 | 描述 |
 | --- | --- | --- |
 | **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
-| **名称** |String | Blob 的用户友好名称 |
+| **name** |String | Blob 的用户友好名称 |
 | **type** | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
 | **typeId** | 整数 | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
 | **subtype** | String | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
