@@ -1,28 +1,20 @@
 ---
-title: 了解如何使用 Linux Data Science Virtual Machine
-titleSuffix: Azure
+title: 探索 Linux
+titleSuffix: Azure Data Science Virtual Machine
 description: 如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-editor: cgronlun
-ms.custom: seodec18
-ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: 8100108adc7115921948d3e8f10e415bc2705fbd
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 0f0f75a3ac6f258cbcd13ee24dabb870f1a37fbf
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051645"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192026"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
 本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。

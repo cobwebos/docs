@@ -3,15 +3,15 @@ title: Azure 资源管理器模板函数 - 数组和对象 | Microsoft Docs
 description: 介绍可在 Azure 资源管理器模板中用来处理数组和对象的函数。
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: ec671c8698676b237021352e963ba08e0ddfe47e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: cd4a74a9e9e9bb1c91a0a7a103a1cfb861fa7770
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698224"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194415"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的数组和对象函数
 
@@ -99,7 +99,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | ReplTest1 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | intOutput | 阵列 | [1] |
 | stringOutput | 阵列 | ["efgh"] |
@@ -126,7 +126,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要测试是否为 null 的第一个值。 |
 | 其他参数 |否 |int、string、array 或 object |要测试是否为 null 的其他值。 |
@@ -214,7 +214,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要串联的第一个数组或字符串。 |
 | 其他参数 |否 |数组或字符串 |按顺序排列的串联的其他数组或字符串。 |
@@ -303,7 +303,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 姓名 | 类型 | 值 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
@@ -474,7 +474,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | ReplTest1 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | stringArray | Array | ["a", "b", "c"] |
 | intArray | 阵列 | [1, 2, 3] |
@@ -554,7 +554,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | ReplTest1 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -620,7 +620,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | ReplTest1 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -699,7 +699,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | ReplTest1 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | objectOutput | 对象 | {"one": "a", "three": "c"} |
 | arrayOutput | 阵列 | ["two", "three"] |
@@ -723,7 +723,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |string |要转换为 JSON 的值。 |
 
@@ -771,7 +771,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | jsonOutput | Object | {"a": "b"} |
 | nullOutput | Boolean | True |
@@ -798,7 +798,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
 
@@ -837,7 +837,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | ReplTest1 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -859,13 +859,13 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="length"></a>length
 `length(arg1)`
 
-返回数组中的元素数、字符串中的字符或对象中的根级属性。
+返回数组中的元素数、字符串中的字符数或对象中的根级属性数。
 
 ### <a name="parameters"></a>Parameters
 
 | 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |数组、字符串或对象 |用于获取元素数的数组, 要用于获取字符数的字符串, 或用于获取根级别属性数的对象的数组。 |
+| arg1 |是 |数组、字符串或对象 |用于获取元素数的数组、用于获取字符数的字符串，或用于获取根级属性数的对象。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -925,7 +925,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | ReplTest1 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
@@ -1001,7 +1001,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -1027,7 +1027,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
@@ -1065,7 +1065,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | ReplTest1 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -1130,7 +1130,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | ReplTest1 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | rangeOutput | 阵列 | [5, 6, 7] |
 
@@ -1291,7 +1291,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | ReplTest1 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | arrayOutput | 阵列 | ["one", "two"] |
 | stringOutput | String | 开 |
@@ -1317,7 +1317,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于联接元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于联接元素的第二个值。 |
@@ -1370,7 +1370,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | ReplTest1 |
+| 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | 阵列 | ["one", "two", "three", "four"] |

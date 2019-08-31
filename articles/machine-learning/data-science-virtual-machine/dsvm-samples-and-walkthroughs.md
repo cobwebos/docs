@@ -1,35 +1,29 @@
 ---
-title: Data Science Virtual Machine 示例和演练 - Azure | Microsoft Docs
+title: 示例 & 演练
+titleSuffix: Azure Data Science Virtual Machine
 description: 通过这些示例和演练, 了解如何使用 Data Science Virtual Machine 处理常见任务和方案。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: vijetaj
-ms.openlocfilehash: 628c516553c2304739229c53d725645c799d06ce
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f3d683ffb91639db64000efa2d9791d13d84b79b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047837"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195677"
 ---
-# <a name="samples-on-data-science-virtual-machines"></a>Data Science Virtual Machine 示例
+# <a name="samples-on-azure-data-science-virtual-machines"></a>Azure 数据科学虚拟机上的示例
 
 Azure 数据科学虚拟机 (Dsvm) 包括一组全面的示例代码。 这些示例包括 Python 和 R 等语言的 Jupyter 笔记本和脚本。
 > [!NOTE]
 > 有关如何在数据科学虚拟机上运行 Jupyter 笔记本的详细信息, 请参阅[Access Jupyter](#access-jupyter)部分。
 
-## <a name="quick-reference-of-samples"></a>示例快速参考
+## <a name="available-samples"></a>可用示例
 | 示例类别 | 描述 | 位置 |
 | ------------- | ------------- | ------------- |
 | R 语言  | 示例说明了如何连接到基于 Azure 的云数据存储的方案, 以及如何比较开源 R 和 Microsoft Machine Learning Server。 它们还介绍了如何在 Microsoft Machine Learning Server 和 SQL Server 上操作模型。 <br/> [R 语言](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|

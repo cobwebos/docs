@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 2b2879a1ebcf01a0433873e8da77c4ce55a078cd
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2d8f0fce3cb8f1cd8fdb596cb4e238a79d6cee4c
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647015"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193503"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>选择 QnA Maker 部署的容量
 
@@ -45,9 +45,9 @@ QnA Maker 服务依赖于三个 Azure 资源：
 | 开发/测试环境   | 标准 SKU         | 已共享      | 基本        | 分别最多发布 14 KB、2 GB 大小    |
 | 生产环境 | 标准 SKU         | 基本       | 标准     | 分别最多发布 49 KB、25 GB 大小 |
 
-若要对 QnA Maker 堆栈进行升级，请参阅[升级 QnA Maker 服务](../How-To/upgrade-qnamaker-service.md)。
+若要对 QnA Maker 堆栈进行升级，请参阅[升级 QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [升级 QnA Maker 服务](../How-To/upgrade-qnamaker-service.md)
+> [升级 QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)

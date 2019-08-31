@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 093c5878cd2f7df63502a7aff686824af3c88078
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934693"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195086"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 本文介绍一系列 Azure 标识管理和访问控制安全最佳实践。 这些最佳做法衍生自我们的 [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) 经验和客户经验。
@@ -93,7 +93,7 @@ ms.locfileid: "68934693"
 > 你需要选择关键帐户将驻留的目录, 以及使用的管理工作站是否由新的云服务或现有的进程管理。 使用现有的管理和标识预配过程可能会降低某些风险, 但也可能造成攻击者损害本地帐户并切换到云的风险。 你可能想要为不同的角色 (例如, IT 管理员和业务单元管理员) 使用不同的策略。 可以使用两个选项。 第一种方法是创建不与本地 Active Directory 实例同步的 Azure AD 帐户。 将你的管理员工作站加入到 Azure AD, 你可以使用 Microsoft Intune 管理和修补。 第二种方法是通过同步到本地 Active Directory 实例, 使用现有的管理员帐户。 使用 Active Directory 域中的现有工作站进行管理和安全。
 
 ## <a name="manage-connected-tenants"></a>管理连接的租户
-你的安全组织需要了解来评估风险, 并确定是否遵循组织的策略和任何法规要求。 你应确保安全组织能够查看与你的生产环境和网络 (通过[Azure ExpressRoute](../../expressroute/expressroute-introduction.md)或[站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)) 连接的所有订阅。 Azure AD 中的[全局管理员/公司管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator)可以将其访问权限提升到 "[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)" 角色, 并查看连接到你的环境的所有订阅和托管组。
+你的安全组织需要了解来评估风险, 并确定是否遵循组织的策略和任何法规要求。 你应确保安全组织能够查看与你的生产环境和网络 (通过[Azure ExpressRoute](../../expressroute/expressroute-introduction.md)或[站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)) 连接的所有订阅。 Azure AD 中的[全局管理员/公司管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions)可以将其访问权限提升到 "[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)" 角色, 并查看连接到你的环境的所有订阅和托管组。
 
 请参阅[提升访问权限以管理所有 Azure 订阅和管理组](../../role-based-access-control/elevate-access-global-admin.md), 以确保你和你的安全组可以查看连接到你的环境的所有订阅或管理组。 评估风险后, 应删除此提升的访问权限。
 
