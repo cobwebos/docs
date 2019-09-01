@@ -50,7 +50,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 | 特性 | 类型 | 描述 |
 | --- | --- | --- |
 | id | string | 事件的唯一标识符。 |
-| 主题 | string | 事件主题的发布者定义路径。 |
+| subject | string | 事件主题的发布者定义路径。 |
 | data | object | 特定于资源提供程序的事件数据。 |
 | eventType | string | 此事件源的一个注册事件类型。 |
 | eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
