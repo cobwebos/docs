@@ -119,9 +119,9 @@ Azure Maps 帐户发出以下事件类型：
 | -------- | ---- | ----------- |
 | apiCategory | string | 事件的 API 类别。 |
 | apiName | string | 事件的 API 名称。 |
-| issues | 对象 | 列出处理过程中遇到的问题。 如果返回了任何问题，则不会随响应一起返回几何图形。 |
+| issues | object | 列出处理过程中遇到的问题。 如果返回了任何问题，则不会随响应一起返回几何图形。 |
 | responseCode | 数字 | HTTP 响应代码 |
-| geometries | 对象 | 列出围栏几何图形，这些几何图形包含坐标位置，或者覆盖该位置周围的 searchBuffer。 |
+| geometries | object | 列出围栏几何图形，这些几何图形包含坐标位置，或者覆盖该位置周围的 searchBuffer。 |
 
 当 Maps API 中发生错误时，将返回 error 对象。 error 对象具有以下属性：
 
