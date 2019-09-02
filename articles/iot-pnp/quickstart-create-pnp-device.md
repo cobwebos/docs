@@ -1,5 +1,5 @@
 ---
-title: 创建 Azure IoT 即插即用预览版设备 | Microsoft Docs
+title: 创建 IoT 即插即用预览版设备 | Microsoft Docs
 description: 使用设备功能模型生成设备代码。 然后运行设备代码，并查看设备是否可连接到 IoT 中心。
 author: miagdp
 ms.author: miag
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 7cfa6e63f74233e9a3fab8f235584fdbe01e67d9
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 386c2fa23e8d01f696ef3cf6078bac5fcec58f05
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881536"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050134"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>快速入门：使用设备功能模型创建 IoT 即插即用设备
 

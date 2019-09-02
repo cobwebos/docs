@@ -1,51 +1,95 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 应用程序管理文档
+summary: 通过 Azure Active Directory 可以对云和本地应用程序进行安全无缝的访问。 此外，还无需管理密码。 最终用户一次登录即可访问 Office 365 和数以千计的其他应用程序。 使用我们的快速入门、教程和指南了解如何管理和部署应用程序。
 metadata:
-  title: Azure AD 应用程序管理文档 - Azure Active Directory
-  description: 了解如何使用 Azure Active Directory 管理和部署应用程序。
-  services: active-directory
-  author: barbkess
-  manager: daveba
-  layout: LandingPage
-  ms.assetid: null
-  ms.service: active-directory
-  ms.topic: landing-page
-  ms.date: 09/14/2018
-  ms.author: barbkess
-abstract:
+  title: 应用程序管理文档
   description: 通过 Azure Active Directory 可以对云和本地应用程序进行安全无缝的访问。 此外，还无需管理密码。 最终用户一次登录即可访问 Office 365 和数以千计的其他应用程序。 使用我们的快速入门、教程和指南了解如何管理和部署应用程序。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: '使用 Azure AD 确保对应用程序的访问安全 (1:47)'
-    href: 'https://youtu.be/BSUuXXcJKCk/'
-    width: 250
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何添加应用程序以使用户可以通过 Azure Active Directory 对其进行访问。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
-            text: 添加应用程序
-            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal'
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
-            text: 查看应用程序
-            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal'
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何为应用程序启用简单、安全的登录过程。
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">SaaS 应用程序教程</a>'
-          - html: <a href="/azure/active-directory/manage-apps/application-proxy-add-on-premises-application">添加通过应用程序代理访问的本地应用</a>
+  ms.service: active-directory
+  ms.subservice: manage-apps
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 08/16/2019
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: acb99eab233836f46c1e1dfe4c857fb2e80ed3de
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70127547"
+landingContent:
+- title: 关于应用程序管理
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是应用程序管理？
+      url: what-is-application-management.md
+- title: 管理云应用和单一登录
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 了解单一登录
+      url: what-is-single-sign-on.md
+    - text: 最终用户体验
+      url: end-user-experiences.md
+  - linkListType: quickstart
+    links:
+    - text: 添加库应用
+      url: add-application-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: 添加非库应用
+      url: add-non-gallery-app.md
+    - text: 配置单一登录
+      url: configure-single-sign-on-non-gallery-applications.md
+    - text: 向应用分配用户或组
+      url: assign-user-or-group-access-portal.md
+- title: 为应用预配用户和组
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 自动用户预配是什么？
+      url: user-provisioning.md
+  - linkListType: concept
+    links:
+    - text: 使用 SCIM 预配用户和组
+      url: use-scim-to-provision-users-and-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置自动用户预配
+      url: configure-automatic-user-provisioning-portal.md
+    - text: 自定义属性映射
+      url: customize-application-attributes.md
+    - text: 检查预配状态
+      url: application-provisioning-when-will-provisioning-finish-specific-user.md
+  - linkListType: reference
+    links:
+    - text: 为属性映射编写表达式
+      url: functions-for-customizing-application-data.md
+- title: 使用应用程序代理发布本地应用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是应用程序代理？
+      url: what-is-application-proxy.md
+  - linkListType: concept
+    links:
+    - text: 应用程序代理计划
+      url: application-proxy-deployment-plan.md
+  - linkListType: tutorial
+    links:
+    - text: 添加本地应用
+      url: application-proxy-add-on-premises-application.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置连接器以使用代理服务器
+      url: application-proxy-configure-connectors-with-proxy-servers.md
+    - text: 配置自定义主页
+      url: application-proxy-configure-custom-home-page.md
+  - linkListType: deploy
+    links:
+    - text: 使用应用程序代理发布远程桌面
+      url: application-proxy-integrate-with-remote-desktop-services.md
+    - text: 通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问
+      url: application-proxy-integrate-with-sharepoint-server.md

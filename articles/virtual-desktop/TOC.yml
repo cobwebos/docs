@@ -66,6 +66,8 @@
       href: fslogix-containers-azure-files.md
     - name: 合作伙伴集成
       href: partners.md
+    - name: Windows 10 Enterprise 多会话常见问题解答
+      href: windows-10-multisession-faq.md
 - name: 故障排除
   items:
     - name: 故障排除概述、反馈和支持

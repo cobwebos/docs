@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/25/2019
+ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 74e0539095701ec104495bf5a44dec668494d444
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033325"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207175"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD Identity Governance？
 
@@ -69,6 +69,18 @@ ms.locfileid: "70033325"
 ![特权访问权限生命周期](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
 Azure AD Privileged Identity Management (PIM) 提供用于保护 Azure AD、Azure 和其他 Microsoft Online Services 中的资源访问权限的其他定制控制措施。  Azure AD PIM 提供的实时访问和角色更改警报功能，以及多重身份验证和条件访问，共同提供了一套综合性的监管控制措施，可帮助保护公司的资源（目录、Office 365 和 Azure 资源角色）。 与处理其他形式的访问权限一样，组织可以使用访问评审来针对充当管理员角色的所有用户配置定期的访问权限重新认证。
+
+## <a name="least-privileged-roles"></a>最小特权角色
+
+使用 PIM 允许用户的管理权限受到限制, 以提高安全性。 下面是在 Azure AD 标识调控功能中进行配置的最低权限目录角色: 
+
+| 功能 | 最小特权角色 |
+| ------- | --------------------- |
+| 权利管理 | 用户管理员 (将 SharePoint Online 网站添加到目录 (需要全局管理员) 除外) |
+| 使用条款 | 安全管理员或条件访问管理员 |
+| 访问审阅 | 用户管理员 (需要特权角色管理员的 Azure 或 Azure AD 角色的访问评审除外) |
+|Privileged Identity Management | 特权角色管理员 |
+
 
 ## <a name="getting-started"></a>入门
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 48733a8c2a554fc62c7731b6c0fb4ef5b8d45159
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5b44bfd94dffa14fcd501f5e0ddea11309adabf6
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450177"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907845"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -81,11 +81,17 @@ ms.locfileid: "67450177"
 > [!WARNING]
 > Azure Front Door 服务目前仅支持 Front Door 配置所在的同一订阅中的 Key Vault 帐户。 选择不包含你的 Front Door 的订阅中的 Key Vault 会导致失败。
 
-2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。
+2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。 将证书上传为**证书**对象，而不是**机密**。
+
+> [!IMPORTANT]
+> 必须以 PFX 格式上传证书，而**无需**密码保护。
 
 #### <a name="register-azure-front-door-service"></a>注册 Azure Front Door 服务
 
 通过 PowerShell 将 Azure Front Door 服务的服务主体注册为 Azure Active Directory 中的应用。
+
+> [!NOTE]
+> 每个租户只需要执行**一**次此操作。
 
 1. 根据需要在本地计算机上的 PowerShell 中安装 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
@@ -95,18 +101,19 @@ ms.locfileid: "67450177"
 
 #### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>授予 Azure Front Door 服务对 Key Vault 的访问权限
  
-在 Azure Key Vault 帐户中为 Azure Front Door 服务授予对“机密”下的证书的访问权限。
+授予 Azure Front Door 服务访问 Azure Key Vault 帐户中的证书的权限。
 
 1. 在 Key Vault 帐户的“设置”下，选择“访问策略”，然后选择“添加新策略”以创建新策略   。
 
 2. 在“选择主体”中搜索 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**，然后选择“Microsoft.Azure.Frontdoor”。   单击“选择”  。
 
+3. 在“机密权限”  中，选择 **Get** 以允许 Front Door 检索证书。
 
-3. 在“机密权限”中，选择“获取”以允许 Front Door 执行这些权限来获取并列出证书   。 
+4. 在“证书权限”  中，选择 **Get** 以允许 Front Door 检索证书。
 
-4. 选择“确定”  。 
+5. 选择“确定”  。 
 
-    Azure Front Door 服务现在可以访问此 Key Vault 和存储在其中的证书（机密）。
+    Azure Front Door 服务现在可以访问此 Key Vault 和存储在其中的证书。
  
 #### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>选择要部署的 Azure Front Door 服务的证书
  
@@ -140,7 +147,7 @@ ms.locfileid: "67450177"
 
 CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* 是 Front Door 的默认 .azurefd.net 主机名：
 
-| 名称            | 类型  | 值                 |
+| Name            | 类型  | 值                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 

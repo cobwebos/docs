@@ -11,15 +11,15 @@ ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: aahi
-ms.custom: seodec2018, seo-java-july2019
-ms.openlocfilehash: a4a8535aa204cbad76d4da4c466c0f4aba99db9a
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 3cd7af766b3881eb1abe054105423aaa3d0591de
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489655"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124071"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-java"></a>快速入门：使用必应图像搜索 REST API 和 Java 来搜索图像
+# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>快速入门：使用必应图像搜索 API（一种 Azure 认知服务）搜索图像 
 
 使用本快速入门开始向必应图像搜索 API 发送搜索请求。 此 Java 应用程序会向 API 发送搜索查询，并在结果中显示第一个图像的 URL。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 

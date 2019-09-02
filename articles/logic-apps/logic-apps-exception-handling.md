@@ -1,21 +1,20 @@
 ---
-title: 错误和异常处理 - Azure 逻辑应用 | Microsoft Docs
+title: 错误和异常处理-Azure 逻辑应用
 description: 了解 Azure 逻辑应用中的错误和异常处理模式
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: dereklee
 ms.author: deli
-manager: jeconnoc
+ms.reviewer: klam, estfan, LADocs
 ms.date: 01/31/2018
 ms.topic: article
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60996564"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208176"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -29,7 +28,7 @@ ms.locfileid: "60996564"
 
 重试策略类型如下所示： 
 
-| type | 描述 | 
+| 类型 | 描述 | 
 |------|-------------| 
 | **默认** | 此策略可*按指数级增长*间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 | 
 | **指数间隔**  | 此策略会等待从指数增长的范围中随机选定的时间间隔，然后再发送下一个请求。 | 
@@ -80,7 +79,7 @@ ms.locfileid: "60996564"
 
 可选
 
-| ReplTest1 | type | 描述 |
+| ReplTest1 | 类型 | 描述 |
 |-------|------|-------------|
 | <*minimum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最小时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
 | <*maximum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最大时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
@@ -114,7 +113,7 @@ ms.locfileid: "60996564"
 }
 ```
 
-### <a name="none"></a>无
+### <a name="none"></a>None
 
 要指定操作或触发器不重试失败的请求，请将 <retry-policy-type> 设置为 `none`。
 
@@ -219,13 +218,15 @@ ms.locfileid: "60996564"
 
 有关作用域的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。
 
+<a name="get-results-from-failures"></a>
+
 ### <a name="get-context-and-results-for-failures"></a>获取失败的上下文和结果
 
-尽管从作用域中捕获失败非常有用，但可能还需要借助上下文来确切了解失败的操作以及返回的任何错误或状态代码。 `@result()` 表达式提供某范围内所有操作结果的相关上下文。
+尽管从作用域中捕获失败非常有用，但可能还需要借助上下文来确切了解失败的操作以及返回的任何错误或状态代码。
 
-`@result()` 表达式采用单个参数（范围名称），并返回该范围内所有操作结果的数组。 这些操作对象包含与 **\@actions ()** 对象相同的属性, 例如操作的开始时间、结束时间、状态、输入、相关 id 和输出。 若要为作用域内任何失败的操作发送上下文, 可以轻松地将 **\@result ()** 函数与**runAfter**属性配对。
+[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result)函数提供有关作用域中所有操作的结果的上下文。 `result()`函数接受单个参数, 即作用域的名称, 并返回一个数组, 该数组包含该范围内的所有操作结果。 这些操作对象包含与`@actions()`对象相同的属性, 例如操作的开始时间、结束时间、状态、输入、相关 id 和输出。 若要为作用域内任何失败的操作发送上下文, 可以轻松地将`@result()`表达式`runAfter`与属性配对。
 
-若要针对具有**失败**结果的作用域中的每个操作运行操作, 并将结果数组筛选为失败的操作, 可以对 **\@result ()** 和 **[筛选数组](../connectors/connectors-native-query.md)** 操作进行配对, 并[**为每个**](../logic-apps/logic-apps-control-flow-loops.md)循环配对。 可采用筛选的结果数组并使用 For Each 循环对每个失败执行操作。 
+若要针对具有**失败**结果的作用域中的每个操作运行操作, 并将结果数组筛选为失败的操作, 可以将`@result()`表达式与[**筛选数组**](../connectors/connectors-native-query.md)操作和[**for each**](../logic-apps/logic-apps-control-flow-loops.md)循环配对。 可采用筛选的结果数组并使用 For Each 循环对每个失败执行操作。
 
 以下示例（后附详细说明）发送一个 HTTP POST 请求，其中包含范围内“My_Scope”中失败的任何操作的响应正文：
 
@@ -317,7 +318,7 @@ ms.locfileid: "60996564"
 }
 ```
 
-若要执行不同的异常处理模式，可以使用本文中前面所述的表达式。 可选择在范围外执行单个异常处理操作，使此操作接受筛选后的整个失败数组，然后再删除 For Each 操作。 您还可以根据前面所述, 在 **\@result ()** 响应中包含其他有用的属性。
+若要执行不同的异常处理模式，可以使用本文中前面所述的表达式。 可选择在范围外执行单个异常处理操作，使此操作接受筛选后的整个失败数组，然后再删除 For Each 操作。 如前面所述，还可以包含 **\@result()** 响应中其他有用的属性。
 
 ## <a name="azure-diagnostics-and-metrics"></a>Azure 诊断和指标
 

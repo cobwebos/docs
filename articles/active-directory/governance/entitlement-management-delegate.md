@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 064724b3c6a5faa485850ecdfa3d3759d3631be0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124914"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207134"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 权利管理（预览版）中委托任务
 
@@ -117,6 +117,7 @@ ms.locfileid: "70124914"
 | [云应用管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  |  | :heavy_check_mark: |  |
 | 用户 | 目录所有者 | 仅限组所有者 | 仅限组所有者 | 仅限应用所有者 |  |
 
+若要确定任务的最小特权角色, 还可以[在 Azure Active Directory 中通过管理任务引用管理员角色](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)。
 
 ## <a name="add-a-catalog-creator"></a>添加目录创建者
 

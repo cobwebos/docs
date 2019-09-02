@@ -1,42 +1,63 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 数据目录文档
+summary: 了解如何设置数据目录，以便组织查找、了解和使用数据源。 教程、REST API 参考和其他文档介绍了如何规划和设置数据存储库，数据使用者可在其中发现可用数据源，学习主题专家分享的知识。
 metadata:
-  title: Azure 数据目录文档 - 教程和 API 参考
-  meta.description: 'Learn how to set up a data catalog where your organization can find, understand, and consume data sources. Tutorials, API reference, and other documentation.'
-  services: data-catalog
-  author: JasonWHowell
+  author: jasonwhowell
+  description: 了解如何设置组织可在其中查找、了解和使用数据源的数据目录。 教程、API 参考和其他文档。
   ms.author: jasonh
+  ms.date: 08/30/2019
   ms.service: data-catalog
   ms.topic: landing-page
-  ms.date: 07/01/2019
-abstract:
-  description: 了解如何使用可帮助组织与团队发现、了解和使用数据源的数据目录。 教程、REST API 参考和其他文档介绍了如何规划和设置数据存储库，数据使用者可在其中发现可用数据源，学习主题专家分享的知识。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何部署第一个 Azure 数据目录：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/data-catalog.svg
-            text: Azure 门户
-            href: 'https://docs.microsoft.com/azure/data-catalog/data-catalog-get-started'
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何注册、搜索、批注、管理和删除 Azure 数据目录中的资产：
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="register-data-assets-tutorial">在 Azure 数据目录中注册数据资产</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: <p><a href="/rest/api/datacatalog/">REST API 参考</a></p><p><a href="/rest/api/datacatalog/data-catalog-search-syntax-reference">搜索语法参考</a></p>
+  ms.openlocfilehash: eb60085cd76fa9d3857b5e284b2cdd03f35fcb13
+  ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/30/2019
+  ms.locfileid: "70172684"
+landingContent:
+- title: 关于 Azure 数据目录
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 数据目录？
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: 了解如何部署第一个数据目录
+      url: data-catalog-get-started.md
+  - linkListType: concept
+    links:
+    - text: 常见问题
+      url: data-catalog-frequently-asked-questions.md
+- title: 注册数据资产
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 了解如何注册、搜索、批注、管理和删除资产
+      url: register-data-assets-tutorial.md
+  - linkListType: concept
+    links:
+    - text: 支持的数据源
+      url: data-catalog-dsr.md
+  - linkListType: how-to-guide
+    links:
+    - text: 注册数据源
+      url: data-catalog-how-to-register.md
+- title: 数据目录 REST API 编程
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 使用 REST 创建数据目录应用
+      url: /rest/api/datacatalog/get-started-creating-a-data-catalog-app
+  - linkListType: reference
+    links:
+    - text: REST API 参考
+      url: /rest/api/datacatalog/
+  - linkListType: how-to-guide
+    links:
+    - text: 如何创建数据目录应用
+      url: /rest/api/datacatalog/register-a-client-app
+  - linkListType: reference
+    links:
+    - text: 搜索语法参考
+      url: /rest/api/datacatalog/data-catalog-search-syntax-reference

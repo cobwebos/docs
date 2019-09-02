@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1cb9cd72908dc88ef2890764bc8d3fad88a82707
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: b5a21bd144558459ac60ae2da405f9ea57ca2fd1
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951908"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020191"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>在 Azure 应用服务中使用 PostgreSQL 生成 Python (Django) Web 应用
 
@@ -140,13 +140,13 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-在浏览器中导航至 `http://localhost:8000` 。 应该看到消息 `No polls are available.`。 
+在浏览器中转到 `http://localhost:8000`。 应该看到消息 `No polls are available.`。 
 
-导航到 `http://localhost:8000/admin`，使用在上一步创建的管理员用户登录。 单击“问题”旁边的“添加”，创建一个包含一些选项的轮询问题。  
+转到 `http://localhost:8000/admin`，使用在上一步创建的管理员用户登录。 选择“问题”旁边的“添加”，创建一个包含一些选项的轮询问题。  
 
 ![在本地运行的 Python Django 应用程序](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-再次导航到 `http://localhost:8000`，此时会看到轮询问题已显示。
+再次转到 `http://localhost:8000`，此时会看到该轮询问题已显示。
 
 Django 示例应用程序在数据库中存储用户数据。 如果成功添加轮询问题，应用会将数据写入本地 PostgreSQL 数据库。
 
@@ -269,13 +269,13 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-再次导航到 `http://localhost:8000`。 应该会再次看到消息 `No polls are available.`。 
+再次转到 `http://localhost:8000`。 应该会再次看到消息 `No polls are available.`。 
 
-导航到 `http://localhost:8000/admin`，使用已创建的管理员用户登录，然后像以前一样创建轮询问题。
+转到 `http://localhost:8000/admin`，使用已创建的管理员用户登录，然后像以前一样创建轮询问题。
 
 ![在本地运行的 Python Django 应用程序](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-再次导航到 `http://localhost:8000`，此时会看到轮询问题已显示。 现在，应用正将数据写入 Azure 中的数据库。
+再次转到 `http://localhost:8000`，此时会看到该轮询问题已显示。 现在，应用正将数据写入 Azure 中的数据库。
 
 ## <a name="deploy-to-azure"></a>“部署到 Azure”
 
@@ -386,7 +386,7 @@ http://<app-name>.azurewebsites.net
 
 应用服务会检测存储库中的 Django 项目，其方式是在每个由 `manage.py startproject` 默认创建的子目录中查找 _wsgi.py_。 找到该文件后，就会加载 Django Web 应用。 若要详细了解应用服务如何加载 Python 应用，请参阅[配置内置的 Python 映像](how-to-configure-python.md)。
 
-导航到 `<app-name>.azurewebsites.net`，使用已创建的同一管理员用户登录。 可以根据需要尝试创建更多的轮询问题。
+转到 `<app-name>.azurewebsites.net`，使用已创建的同一管理员用户登录。 可以根据需要尝试创建更多的轮询问题。
 
 ![在本地运行的 Python Django 应用程序](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
@@ -400,7 +400,7 @@ http://<app-name>.azurewebsites.net
 
 转到 [Azure 门户](https://portal.azure.com)查看创建的应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。 
+从左侧菜单中选择“应用程序服务”，并选择 Azure 应用的名称。 
 
 ![在门户中导航到 Azure 应用](./media/tutorial-python-postgresql-app/app-resource.png)
 

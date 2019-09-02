@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: brjohnst
-ms.openlocfilehash: 42d3a4a0840e7241666f66a09e7e6b11342cbfbc
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 3f167ee082b751f6bd686c0543db6a262615e486
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182265"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208244"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>如何使用 .NET 应用程序中的 Azure 搜索
 
@@ -579,7 +579,7 @@ SDK 使用 JSON.NET 对文档进行序列化和反序列化。 如果需要, 可
 * 在代码中的属性名称与索引中的字段名称之间进行映射。
 * 创建可用于将属性映射到文档字段的自定义属性。
 
-可以在 GitHub 上的 Azure 搜索 .NET SDK 的单元测试中找到实现自定义序列化的示例。 一个好的起点是[此文件夹](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Search/Search.Tests/Tests/Models)。 它包含了自定义序列化测试所用的类。
+可以在 GitHub 上的 Azure 搜索 .NET SDK 的单元测试中找到实现自定义序列化的示例。 一个好的起点是[此文件夹](https://github.com/Azure/azure-sdk-for-net/tree/4f6f4e4c90200c1b0621c4cead302a91e89f2aba/sdk/search/Microsoft.Azure.Search/tests/Tests/Models)。 它包含了自定义序列化测试所用的类。
 
 ### <a name="searching-for-documents-in-the-index"></a>在索引中搜索文档
 示例应用程序的最后一步是在索引中搜索某些文档:

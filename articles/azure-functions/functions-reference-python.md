@@ -13,30 +13,22 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 637205bd4ad438d7efbee6fb304b0a934aefdfdf
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 88d9ab0063b6cf2803332d7af50190c659b3e6fe
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615899"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207208"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
-本文介绍了如何使用 Python 开发 Azure Functions。 以下内容假定你已阅读 [Azure Functions 开发人员指南](functions-reference.md)。
+本文介绍了如何使用 Python 开发 Azure Functions。 以下内容假定你已阅读 [Azure Functions 开发人员指南](functions-reference.md)。 
+
+有关 Python 中的独立函数示例项目, 请参阅[Python 函数示例](/samples/browse/?products=azure-functions&languages=python)。 
 
 ## <a name="programming-model"></a>编程模型
 
-Azure 函数应是 Python 脚本中处理输入并生成输出的无状态方法。 默认情况下，运行时期望此方法在 `__init__.py` 文件中作为名为 `main()` 的全局方法实现。
-
-可以通过在 *function.json* 文件中指定 `scriptFile` 和 `entryPoint` 属性来更改默认配置。 例如，下面的 _function.json_ 指示运行时使用 _main.py_ 文件中的 `customentry()` 方法作为 Azure 函数的入口点。
-
-```json
-{
-  "scriptFile": "main.py",
-  "entryPoint": "customentry",
-  ...
-}
-```
+Azure Functions 要求函数在 Python 脚本中作为无状态方法来处理输入并生成输出。 默认情况下，运行时期望此方法在 `__init__.py` 文件中作为名为 `main()` 的全局方法实现。 还可以[指定备用入口点](#alternate-entry-point)。
 
 来自触发器和绑定的数据使用在 *function.json* 配置文件中定义的 `name` 属性，通过方法特性绑定到函数。 例如，下面的 _function.json_ 描述一个由名为 `req` 的 HTTP 请求触发的简单函数：
 
@@ -66,7 +58,7 @@ def main(req):
     return f'Hello, {user}!'
 ```
 
-（可选）若要利用代码编辑器提供的 Intellisense 和自动完成功能，还可以使用 Python 类型注释来声明函数中的属性类型和返回类型。 
+你还可以使用 Python 类型注释在函数中显式声明属性类型和返回类型。 这有助于你使用由许多 Python 代码编辑器提供的 intellisense 和自动完成功能。
 
 ```python
 import azure.functions
@@ -79,9 +71,23 @@ def main(req: azure.functions.HttpRequest) -> str:
 
 使用 [ azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python) 包中附带的 Python 注释将输入和输出绑定到方法。
 
+## <a name="alternate-entry-point"></a>备用入口点
+
+您可以选择在`scriptFile` *函数 json*文件中指定和`entryPoint`属性, 从而更改函数的默认行为。 例如，下面的 _function.json_ 指示运行时使用 _main.py_ 文件中的 `customentry()` 方法作为 Azure 函数的入口点。
+
+```json
+{
+  "scriptFile": "main.py",
+  "entryPoint": "customentry",
+  "bindings": [
+      ...
+  ]
+}
+```
+
 ## <a name="folder-structure"></a>文件夹结构
 
-Python 函数项目的文件夹结构如下所示：
+Python 函数项目的文件夹结构类似于以下示例:
 
 ```
  FunctionApp
@@ -227,12 +233,48 @@ def main(req):
 
 | 方法                 | 描述                                |
 | ---------------------- | ------------------------------------------ |
-| logging.**critical(_message_)**   | 在根记录器中写入具有 CRITICAL 级别的消息。  |
-| logging.**error(_message_)**   | 在根记录器中写入具有 ERROR 级别的消息。    |
-| logging.**warning(_message_)**    | 在根记录器中写入具有 WARNING 级别的消息。  |
-| logging.**info(_message_)**    | 在根记录器中写入具有 INFO 级别的消息。  |
-| logging.**debug(_message_)** | 在根记录器中写入具有 DEBUG 级别的消息。  |
+| **`critical(_message_)`**   | 在根记录器中写入具有 CRITICAL 级别的消息。  |
+| **`error(_message_)`**   | 在根记录器中写入具有 ERROR 级别的消息。    |
+| **`warning(_message_)`**    | 在根记录器中写入具有 WARNING 级别的消息。  |
+| **`info(_message_)`**    | 在根记录器中写入具有 INFO 级别的消息。  |
+| **`debug(_message_)`** | 在根记录器中写入具有 DEBUG 级别的消息。  |
 
+若要了解有关日志记录的详细信息, 请参阅[Monitor Azure Functions](functions-monitoring.md)。
+
+## <a name="http-trigger-and-bindings"></a>HTTP 触发器和绑定
+
+HTTP 触发器在函数 jon 文件中定义。 `name`绑定的必须与函数中的命名参数匹配。 在前面的示例中, 使用了`req`一个绑定名称。 此参数是一个[HttpRequest]对象, 并返回一个[httpresponse.cache]对象。
+
+通过[HttpRequest]对象, 可以获取请求标头、查询参数、路由参数和消息正文。 
+
+下面的示例来自 Python 的[HTTP 触发器模板](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python)。 
+
+```python
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    headers = {"my-http-header": "some-value"}
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+            
+    if name:
+        return func.HttpResponse(f"Hello {name}!", headers=headers)
+    else:
+        return func.HttpResponse(
+             "Please pass a name on the query string or in the request body",
+             headers=headers, status_code=400
+        )
+```
+
+在此函数中, `name`查询参数的值是`params`从[HttpRequest]对象的参数获取的。 使用`get_json`方法读取 JSON 编码的消息正文。 
+
+同样, 你可以在返回`status_code`的`headers` [httpresponse.cache]对象中为响应消息设置和。
+                                                              
 ## <a name="async"></a>异步
 
 建议使用 `async def` 语句将 Azure 函数编写为异步协同例程。
@@ -245,7 +287,7 @@ async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-如果 main() 函数是同步函数（无 `async` 限定符），则我们会在 `asyncio` 线程池中自动运行该函数。
+如果 main () 函数是同步的 (没有限定符), 我们会在`asyncio`线程池中自动运行该函数。
 
 ```python
 # Would be run in an asyncio thread-pool
@@ -297,6 +339,26 @@ def main(req):
     # ... use CACHED_DATA in code
 ```
 
+## <a name="environment-variables"></a>环境变量
+
+在函数中,[应用程序设置](functions-app-settings.md)(如服务连接字符串) 在执行过程中公开为环境变量。 可以通过声明`import os`并`setting = os.environ["setting-name"]`使用来访问这些设置。
+
+下面的示例获取[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings), 其中包含名为`myAppSetting`的键:
+
+```python
+import logging
+import os
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    # Get the setting named 'myAppSetting'
+    my_app_setting_value = os.environ["myAppSetting"]
+    logging.info(f'My app setting value:{my_app_setting_value}')
+```
+
+对于本地开发, 应用程序设置将[保留在本地的设置文件中](functions-run-local.md#local-settings-file)。  
+
 ## <a name="python-version-and-package-management"></a>Python 版本和包管理
 
 当前，Azure Functions 仅支持 Python 3.6.x（CPython 正式分发版）。
@@ -317,6 +379,8 @@ pip install -r requirements.txt
 
 准备好进行发布时，请确保所有依赖项都已在 *requirements.txt* 文件（位于项目目录的根目录）中列出。 Azure Functions 可以[远程生成](functions-deployment-technologies.md#remote-build)这些依赖项。
 
+从发布中排除的项目文件和文件夹 (包括虚拟环境文件夹) 将在 funcignore 文件中列出。  
+
 若要部署到 Azure 并执行远程生成, 请使用以下命令:
 
 ```bash
@@ -336,9 +400,9 @@ The terminal process terminated with exit code: 1
 func azure functionapp publish <app name> --build-native-deps
 ```
 
-实际上，Core Tools 会使用 docker 将 [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) 映像作为本地计算机上的容器来运行。 它随后会使用此环境从源分发版生成并安装所需模块，然后再打包它们以便最终部署到 Azure。
+实际上，Core Tools 会使用 docker 将 [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) 映像作为本地计算机上的容器来运行。 在此环境中, 它随后会构建并安装源分发中所需的模块, 然后将它们打包, 以便最终部署到 Azure。
 
-若要构建依赖项并使用持续交付 (CD) 系统发布, 请[使用 Azure DevOps 管道](functions-how-to-azure-devops.md)。 
+若要构建依赖项并使用持续交付 (CD) 系统发布, 请[使用 Azure Pipelines](functions-how-to-azure-devops.md)。 
 
 ## <a name="unit-testing"></a>单元测试
 
@@ -462,6 +526,39 @@ class TestFunction(unittest.TestCase):
 
 所有已知问题和功能请求都使用 [GitHub 问题](https://github.com/Azure/azure-functions-python-worker/issues)列表进行跟踪。 如果遇到 GitHub 中未列出的问题，请打开“新问题”并提供问题的详细说明。
 
+### <a name="cross-origin-resource-sharing"></a>跨域资源共享
+
+Azure Functions 支持跨域资源共享 (CORS)。 CORS 是[在门户中](functions-how-to-use-azure-function-app-settings.md#cors)和通过[Azure CLI](/cli/azure/functionapp/cors)配置的。 CORS 允许的源列表应用于 function app 级别。 启用 CORS 后, 响应包括`Access-Control-Allow-Origin`标头。 有关详细信息，请参阅 [跨域资源共享](functions-how-to-use-azure-function-app-settings.md#cors)。
+
+Python function apps[目前不支持](https://github.com/Azure/azure-functions-python-worker/issues/444)允许的源列表。 由于此限制, 你必须在 HTTP 函数中`Access-Control-Allow-Origin`明确设置标头, 如以下示例中所示:
+
+```python
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    # Define the allow origin headers.
+    headers = {"Access-Control-Allow-Origin": "https://contoso.com"}
+
+    # Set the headers in the response.
+    return func.HttpResponse(
+            f"Allowed origin '{headers}'.",
+            headers=headers, status_code=200
+    )
+``` 
+
+确保还更新了函数 json, 以支持 OPTIONS HTTP 方法:
+
+```json
+    ...
+      "methods": [
+        "get",
+        "post",
+        "options"
+      ]
+    ...
+```
+
+Chrome 浏览器使用此方法来协商允许的来源列表。 
+
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅以下资源：
@@ -473,3 +570,7 @@ class TestFunction(unittest.TestCase):
 * [HTTP 和 Webhook 绑定](functions-bindings-http-webhook.md)
 * [存储绑定](functions-bindings-storage-queue.md)
 * [计时器触发器](functions-bindings-timer.md)
+
+
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
+[Httpresponse.cache]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python

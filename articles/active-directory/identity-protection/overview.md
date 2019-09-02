@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a542d3208d5871d88c966fffc65cf16e0fbeee
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 8b89cab41061376fc1d8b4cbffc8fe87b9677688
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335390"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125677"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护是什么？
 
@@ -45,10 +45,10 @@ Azure Active Directory 标识保护不只是一个监视和报告工具。 若�
 - 计算登录风险级别
 - 计算用户风险级别
 
-**调查风险事件：**
+**调查风险检测：**
 
-- 针对风险事件发送通知
-- 使用相关的区分上下文的信息调查风险事件
+- 针对风险检测发送通知
+- 使用相关的上下文的信息调查风险检测
 - 提供基本工作流来跟踪调查
 - 轻松使用补救措施，例如密码重置
 
@@ -76,10 +76,10 @@ Azure Active Directory 标识保护不只是一个监视和报告工具。 若�
 
 Azure Active Directory 标识保护分析配置，并检测影响用户标识的漏洞。 有关详细信息，请参阅[“Azure Active Directory 标识保护”检测到的漏洞](vulnerabilities.md)。
 
-### <a name="risk-events"></a>风险事件
+### <a name="risk-detections"></a>风险检测
 
-Azure Active Directory 使用自适应机器学习算法和试探法来检测与用户标识相关的可疑操作。 系统为检测到的每个可疑操作创建记录。 这些记录也称为风险事件。  
-有关详细信息，请参阅 [Azure Active Directory 风险事件](../active-directory-identity-protection-risk-events.md)。
+Azure Active Directory 使用自适应机器学习算法和试探法来检测与用户标识相关的可疑操作。 系统为检测到的每个可疑操作创建记录。 这些记录也称为风险检测。  
+有关更多详细信息，请参阅 [Azure Active Directory 风险检测](../active-directory-identity-protection-risk-events.md)。
 
 ## <a name="investigation"></a>调查
 
@@ -89,10 +89,10 @@ Azure Active Directory 使用自适应机器学习算法和试探法来检测与
 
 在仪表板中可以访问：
 
-- “已标记为存在风险的用户”、“风险事件”和“漏洞”等报告   
+- 报告，例如**已标记为有风险的用户**、**风险检测**和**漏洞**
 - 各种设置，例如“安全策略”、“通知”和“多重身份验证注册”的配置   
 
-这通常是调查的起点，在调查过程中查看风险事件相关活动、日志和其他相关信息可以确定是否需要采取补救或缓解措施，了解标识如何遭到入侵，以及遭到入侵的标识如何被利用。
+这通常是调查的起点，在调查过程中查看风险检测相关活动、日志和其他相关信息可以确定是否需要采取补救或缓解措施，了解标识如何受到安全威胁，以及受到安全威胁的标识如何被使用。
 
 可以将调查活动绑定到 Azure Active Directory Protection 发送的每封电子邮件[通知](notifications.md)。
 

@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 993654f22e3eaec0758366b85501c4c93373f2bc
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 5a362d2610e6feb85de730c086070636f3afa2b9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968117"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906670"
 ---
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [JDK 7 或更高版本](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](https://gradle.org/install/)
-* 适用于文本翻译的 Azure 订阅密钥
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>使用 Gradle 初始化项目
 
@@ -89,11 +87,12 @@ public class Translate {
 }
 ```
 
-将以下行添加到 `Translate` 类。 你会注意到，除了 `api-version`，还有两个参数已追加到 `url`。 这些参数用于设置翻译输出。 在此示例中，它设置为德语 (`de`) 和意大利语 (`it`)。 确保更新订阅密钥值。
+将以下行添加到 `Translate` 类。 首先，从环境变量中读取订阅密钥和终结点。 然后，你会注意到，除了 `api-version` 之外，还向 `url` 追加了两个参数。 这些参数用于设置翻译输出。 在此示例中，它设置为德语 (`de`) 和意大利语 (`it`)。 
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-String url = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de,it";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/translate?api-version=3.0&to=de,it";
 ```
 
 如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。

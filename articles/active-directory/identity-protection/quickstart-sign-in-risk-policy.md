@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bb1e29735a860f5dc3b6ce8996af9fcd4962871
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ed5e5e26a27e13ba09ffcc97e0b2b0f1b37bc8bd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335301"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127698"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>快速入门：使用“Azure Active Directory 标识保护”检测到会话风险后阻止访问  
 
@@ -34,7 +34,7 @@ ms.locfileid: "68335301"
 
 - 对 Azure AD Premium P2 版本的访问权限 - Azure AD 标识保护是一项 Azure AD Premium P2 功能  。 
 - **标识保护** - 本快速入门中的方案需要启用“标识保护”。 如果不知道如何启用“标识保护”，请参阅[启用 Azure Active Directory 标识保护](../identity-protection/enable.md)。
-- **Tor 浏览器** - [Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en)可帮助保护你在网络中的隐私。 “标识保护”将来自 Tor 浏览器的登录检测为“从匿名 IP 地址登录”，这种登录存在中等风险级别。  有关详细信息，请参阅 [Azure Active Directory 风险事件](../reports-monitoring/concept-risk-events.md)。  
+- **Tor 浏览器** - [Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en)可帮助保护你在网络中的隐私。 “标识保护”将来自 Tor 浏览器的登录检测为“从匿名 IP 地址登录”，这种登录存在中等风险级别。  有关详细信息，请参阅 [Azure Active Directory 风险检测](../reports-monitoring/concept-risk-events.md)。  
 - 名为 Alain Charon 的测试帐户：如果不知道如何创建测试帐户，请参阅[添加新用户](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)  。
 
 ## <a name="test-your-sign-in"></a>测试登录 
@@ -48,7 +48,7 @@ ms.locfileid: "68335301"
 
 ## <a name="create-your-conditional-access-policy"></a>创建条件访问策略 
 
-本快速入门中的方案使用 Tor 浏览器中的登录名生成检测到的“从匿名 IP 地址登录”风险事件。  此风险事件的风险级别为中等。 若要响应此风险事件，请将登录风险条件设置为中。 
+本快速入门中的方案使用 Tor 浏览器中的登录名生成检测到的“从匿名 IP 地址登录”风险检测。  此风险检测的风险级别为中等。 若要响应此风险检测，请将登录风险条件设置为中等。 
 
 此部分介绍如何创建所需的登录风险条件访问策略。 在策略中，设置：
 

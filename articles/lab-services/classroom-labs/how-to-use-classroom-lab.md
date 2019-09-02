@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8987a22d4546fe887d1dda9adff8f46afe667618
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: a7d1249d68ddd4a161d1c0476e5f56e80c4d32f9
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644989"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032016"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>如何访问 Azure 实验室服务中的课堂实验室
 本文介绍如何注册到课堂实验室、查看可以访问的所有实验室、在实验室中启动/停止 VM 以及连接到 VM。 
@@ -55,6 +55,30 @@ ms.locfileid: "69644989"
 2. 执行以下步骤之一： 
     1. 对于 Windows 虚拟机，将 RDP 文件保存到硬盘上   。 打开要连接到虚拟机的 RDP 文件。 使用从教师/教授处获得的用户名和密码登录到计算机   。 
     3. 对于 **Linux** 虚拟机，可以使用 **SSH** 或 **RDP**（如果已启用）连接到它们。 有关详细信息，请参阅[为 Linux 计算机启用远程桌面连接](how-to-enable-remote-desktop-linux.md)。 
+    1. 如果使用 **Mac** 连接到实验室 VM，请按照下一部分中的说明进行操作。 
+
+## <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>在 Mac 上使用 RDP 连接到 VM
+本部分说明学生如何使用 RDP 从 Mac 连接到 VM。
+
+### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>步骤 1：在 Mac 上安装 Microsoft 远程桌面
+1. 在 Mac 上打开应用商店，然后搜索“Microsoft 远程桌面”  。
+
+    ![Microsoft 远程桌面](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
+1. 安装最新版本的 Microsoft 远程桌面。 
+
+### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>步骤 2：使用 RDP 从 Mac 访问 VM
+1. 在安装了 **Microsoft 远程桌面**的计算机上打开下载的 **RDP** 文件。 它应该开始连接到 VM。 
+
+    ![连接到 VM](../media/how-to-use-classroom-lab/connect-linux-vm.png)
+1. 如果收到以下警告，请选择“继续”  。 
+
+    ![证书警告](../media/how-to-use-classroom-lab/certificate-error.png)
+1. 应会看到 VM。 
+
+    > [!NOTE]
+    > 以下示例适用于 CentOS Linux VM。 
+
+    ![VM](../media/how-to-use-classroom-lab/vm-ui.png)
 
 ## <a name="progress-bar"></a>进度栏 
 磁贴上的进度栏会显示对分配给你的[配额小时](how-to-configure-student-usage.md#set-quotas-for-users)数已使用的小时数。 此时间是在实验室的计划时间之外，额外分配给你的时间。 进度栏和进度栏下文本的颜色会根据以下情况而变化：

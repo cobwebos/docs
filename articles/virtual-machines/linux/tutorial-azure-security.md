@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 671b7de8852b0aac30e35b76d89eb4489a206f91
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0ac5c95fa51ca5032f5d3e057af2064f872ea15c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708552"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081715"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>教程：使用 Azure 安全中心监视 Linux 虚拟机
 
@@ -72,7 +71,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 
 ## <a name="view-vm-configuration-health"></a>查看 VM 配置运行状况
 
-打开数据收集并设置安全策略后，安全中心将开始提供警报和建议。 部署 VM 时，将安装数据收集代理。 然后，安全中心内将填充新 VM 的数据。 有关 VM 配置运行状况的详细信息，请参阅[在安全中心保护 VM](../../security-center/security-center-virtual-machine-recommendations.md)。 
+打开数据收集并设置安全策略后，安全中心将开始提供警报和建议。 部署 VM 时，将安装数据收集代理。 然后，安全中心内将填充新 VM 的数据。 有关 VM 配置运行状况的详细信息，请参阅[在安全中心保护 VM](../../security-center/security-center-virtual-machine-protection.md)。 
 
 收集数据时，每个 VM 和相关 Azure 资源的资源运行状况会聚合。 这些信息会显示在易于阅读的图表中。 
 
@@ -104,7 +103,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 
 ## <a name="view-detected-threats"></a>查看检测到的威胁
 
-除了资源配置建议外，安全中心还显示威胁检测警报。 安全警报功能聚合从每个 VM、Azure 网络日志和连接的合作伙伴解决方案中收集的数据，以便检测针对 Azure 资源的安全威胁。 有关安全中心威胁检测功能的详细信息，请参阅 [Azure 安全中心检测功能](../../security-center/security-center-detection-capabilities.md)。
+除了资源配置建议外，安全中心还显示威胁检测警报。 安全警报功能聚合从每个 VM、Azure 网络日志和连接的合作伙伴解决方案中收集的数据，以便检测针对 Azure 资源的安全威胁。 有关安全中心威胁检测功能的深入信息，请参阅[安全中心如何检测威胁？](../../security-center/security-center-alerts-overview.md#detect-threats)。
 
 安全警报功能要求将安全中心定价层从“免费”提升到“标准”。   迁移到这个更高的定价层后，可以**免费试用**。 
 

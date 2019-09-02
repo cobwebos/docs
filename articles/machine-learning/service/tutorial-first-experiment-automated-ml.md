@@ -10,39 +10,38 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 08/14/2019
-ms.openlocfilehash: e53cd92a9dfd8f823918fb38e14c2b73c2ce071f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 01228dc01b8006a0a2476ddbbd6fa8ff430e280a
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534423"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982761"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>教程：使用自动化机器学习创建第一个分类模型
 
 本教程介绍如何在不编写任何代码行的情况下，在 Azure 门户（预览版）中创建第一个自动化机器学习试验。 本示例将创建一个分类模型来预测某家金融机构的客户是否会认购定期存款产品。
 
-你将使用 Azure 机器学习服务的自动化机器学习功能和 Azure 门户开始自动化机器学习过程。 系统会自动执行算法选择和超参数优化。 自动化机器学习技术会对算法和超参数的多种组合进行迭代访问，直到找到符合条件的最佳模型。
+利用自动机器学习，可以自动完成耗时的任务。 自动机器学习会快速循环访问算法和超参数的多个组合，以帮助你根据所选的成功指标找到最佳模型。
 
-本教程将介绍以下任务：
+本教程介绍如何执行以下任务：
 
 > [!div class="checklist"]
-> * 配置 Azure 机器学习服务工作区。
-> * 创建试验。
-> * 自动训练分类模型。
-> * 查看训练运行详细信息。
+> * 创建 Azure 机器学习服务工作区。
+> * 运行自动机器学习试验。
+> * 查看试验详细信息。
 > * 部署模型。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://aka.ms/AMLFree)。
 
-* 下载 [**bankmarketing_train.csv** ](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) 数据文件。 **y** 列指示客户是否认购了定期存款产品，该列稍后在本教程中将标识为预测目标列。 
+* 下载 [**bankmarketing_train.csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) 数据文件。 **y** 列指示客户是否认购了定期存款产品，该列稍后在本教程中将标识为预测目标列。 
 
 ## <a name="create-a-workspace"></a>创建工作区
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-an-experiment"></a>创建试验
+## <a name="create-and-run-the-experiment"></a>创建并运行试验
 
 这些步骤将引导你完成从选择数据到选择主要指标和模型类型的整个试验设置。 
 
@@ -50,8 +49,6 @@ ms.locfileid: "69534423"
 此时会显示“欢迎使用自动化机器学习”屏幕，因为这是使用自动化机器学习创建的第一次试验。 
 
     ![Azure 门户导航窗格](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
-
-
 
 1. 选择“创建试验”。  然后输入 **my-1st-automl-experiment** 作为试验名称。
 
@@ -72,14 +69,11 @@ ms.locfileid: "69534423"
 
 1. 选择“上传”，并选择本地计算机中的“bankmarketing_train.csv”文件，以将其上传到默认容器。   公共预览版仅支持本地文件上传和 Azure Blob 存储帐户。 上传完成后，从列表中选择该文件。 
 
-    [![选择数据文件](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
-
 1. 在“预览”选项卡中可以进一步为此试验配置数据。 
 
     在“预览”选项卡上指定数据包含标头。  该服务默认包含用于训练的所有特征（列）。 对于本示例，请向右滚动并**忽略** **day_of_week** 特征。
 
     ![“预览”选项卡中的配置](media/tutorial-1st-experiment-automated-ml/preview-tab-config.gif)
-
 
     >[!NOTE]
     > 数据分析不适用于最小节点数为零的计算资源。
@@ -103,9 +97,7 @@ ms.locfileid: "69534423"
 
 1. 选择“启动”以运行试验。 
 
-   当试验启动时，你会看到一个空白的“运行详细信息”屏幕，其顶部显示了以下状态。  
-
-      ![正在准备运行](media/tutorial-1st-experiment-automated-ml/run-preparing.png)
+   当试验启动时，你会看到一个空白的“运行详细信息”屏幕，其顶部显示了以下状态。 
       
 试验准备过程需要花费几分钟时间。 该过程完成后，状态消息将更改为“运行正在运行”。 
 
@@ -137,11 +129,9 @@ ms.locfileid: "69534423"
     
 1. 选择“部署”。 
 
-    部署成功完成后，将显示以下消息：
-
-    ![部署完毕](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png)
+    部署成功完成后，将显示部署完成消息。
     
-    现在，你已获得一个正常运行的、可以生成预测结果的 Web 服务。
+现在，你已获得一个正常运行的、可以生成预测结果的 Web 服务。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -167,7 +157,6 @@ ms.locfileid: "69534423"
 
 > [!div class="nextstepaction"]
 > [使用 Web 服务](how-to-consume-web-service.md)
-
 
 + 详细了解[预处理](how-to-create-portal-experiments.md#preprocess)。
 + 详细了解[数据分析](how-to-create-portal-experiments.md#profile)。

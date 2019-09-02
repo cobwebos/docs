@@ -1,68 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Privileged Identity Management 文档
+summary: 使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以限制对特权角色的现有管理员访问权限，发现谁具有访问权限以及查看特权访问。
 metadata:
-  document_id: null
-  title: Azure AD Privileged Identity Management (PIM) 文档 | Microsoft Docs
+  title: Privileged Identity Management 文档
   description: 了解如何使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 以限制对特权角色的现有管理员访问权限，发现谁具有访问权限以及查看特权访问。
   services: active-directory
-  author: rolyon
-  manager: mtillman
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: pim
   ms.topic: landing-page
-  ms.date: 09/04/2018
-  ms.author: rolyon
-abstract:
-  description: 使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以限制对特权角色的现有管理员访问权限，发现谁具有访问权限以及查看特权访问。
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-pim.png
-      width: 200
-    title: '保护通往你王国的钥匙 (42:45)'
-    href: 'https://www.youtube.com/embed/w7wTpZYJJeQ'
-    width: 200
-sections:
-  - title: 符合条件且处于活动状态的角色用户的操作指南
-    items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/Azure Active Directory_COLOR.svg
-            title: Azure AD 角色
-          - image:
-              src: media/index/Cubes.svg
-            title: Azure 资源
-        rows:
-          - title: 激活我的角色
-            values:
-              - href: /azure/active-directory/privileged-identity-management/pim-how-to-activate-role
-              - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-activate-your-roles
-  - title: 管理员的操作指南
-    items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/Azure Active Directory_COLOR.svg
-            title: Azure AD 角色
-          - image:
-              src: media/index/Cubes.svg
-            title: Azure 资源
-        rows:
-          - title: 分配角色
-            values:
-              - href: /azure/active-directory/privileged-identity-management/pim-how-to-add-role-to-user
-              - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-assign-roles
-          - title: 审批请求
-            values:
-              - href: /azure/active-directory/privileged-identity-management/azure-ad-pim-approval-workflow
-              - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-approval-workflow
-          - title: 配置角色设置
-            values:
-              - href: /azure/active-directory/privileged-identity-management/pim-how-to-change-default-settings
-              - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-configure-role-settings
+  ms.collection: 
+  author: curtand
+  ms.author: curtand
+  ms.date: 08/28/2019
+  ms.openlocfilehash: b1782c41bce2de6a9da0858519dfeb87f6597df8
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70127401"
+landingContent:
+- title: 关于 Privileged Identity Management
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure AD PIM？
+      url: pim-configure.md
+  - linkListType: concept
+    links:
+    - text: 许可要求
+      url: subscription-requirements.md
+  - linkListType: video
+    links:
+    - text: 保护通往你王国的钥匙
+      url: https://www.youtube.com/embed/w7wTpZYJJeQ
+- title: 入门
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 部署 PIM
+      url: pim-deployment-plan.md
+    - text: 开始使用 PIM
+      url: pim-getting-started.md
+- title: 激活我的角色（符合条件且处于活动状态的角色用户）
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 激活 Azure AD 角色
+      url: pim-how-to-activate-role.md
+    - text: 激活我的 Azure 资源角色
+      url: pim-resource-roles-activate-your-roles.md
+- title: 分配角色
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 分配 Azure AD 角色
+      url: pim-how-to-add-role-to-user.md
+    - text: 分配 Azure 资源角色
+      url: pim-resource-roles-assign-roles.md
+- title: 审批请求
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 审批 Azure AD 角色的请求
+      url: azure-ad-pim-approval-workflow.md
+    - text: 审批 Azure 资源角色的请求
+      url: pim-resource-roles-approval-workflow.md
+- title: 配置角色设置
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 配置 Azure AD 角色设置
+      url: pim-how-to-change-default-settings.md
+    - text: 配置 Azure 资源角色设置
+      url: pim-resource-roles-configure-role-settings.md

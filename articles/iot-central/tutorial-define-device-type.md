@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: fd3ec276fdc95ad326d14a5b21e8ab793b154080
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: db9f7e75af01ed83c39ef3a37ab2612426ef6ea4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875784"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099607"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新的设备类型
 
@@ -49,7 +49,7 @@ ms.locfileid: "69875784"
 
 若要完成本教程，需要一个 Azure IoT Central 应用程序。 如果已完成[创建 Azure IoT Central 应用程序](quick-deploy-iot-central.md)快速入门，则可以重复使用此快速入门中创建的应用程序。 否则，请完成以下步骤，以创建一个空的 Azure IoT Central 应用程序：
 
-1. 导航到 Azure IoT Central 的“[应用程序管理器](https://aka.ms/iotcentral)”页。
+1. 导航到 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站。
 
 2. 输入用于访问 Azure 订阅的电子邮件地址和密码：
 

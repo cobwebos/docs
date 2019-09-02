@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: fd1be6e2354a87bfb0de87b85fe46a1feb42100c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 56a73449c69010bc97122023f7dcbc9e3a9df154
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881596"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048006"
 ---
-# <a name="what-is-azure-iot-plug-and-play-preview"></a>Azure IoT 即插即用预览版是什么？
+# <a name="what-is-iot-plug-and-play-preview"></a>什么是 IoT 即插即用预览版？
 
 IoT 即插即用预览版使解决方案开发人员能够将设备与其解决方案相集成，而无需编写任何嵌入式代码。 IoT 即插即用的核心是描述设备功能的设备功能模型架构。  此架构是一个 JSON 文档，结构化为一组包含以下对象的定义的接口：
 

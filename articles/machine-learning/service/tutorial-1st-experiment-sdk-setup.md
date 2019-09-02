@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: cc16f3c8ea287e78d7b7b4d9a56f5a2e82c26f01
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 7ed81375912613995d573b110607e7913adfd10f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515338"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051659"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>教程：开始创建第一个 ML 试验
 
@@ -73,7 +73,12 @@ ms.locfileid: "69515338"
     > [!TIP]
     > 此文件夹位于工作区中的[存储容器](concept-workspace.md#resources)上，而不是位于笔记本 VM 本身上。  可以删除笔记本 VM，但仍保留所有工作。  稍后创建新的笔记本 VM 时，它将加载此同一文件夹。 如果将工作区与他人共享，则他人会看到你的文件夹，你会看到他人的文件夹。
 
-1. 打开 `samples-*` 子目录，然后打开 `tutorials/tutorial-1st-experiment-sdk-train.ipynb` 以运行本系列教程的**第二部分**。
+1. 打开 `samples-*` 子目录，然后打开 `tutorials/tutorial-1st-experiment-sdk-train.ipynb`
+
+> [!Warning]
+> 确保打开 `tutorial-1st-experiment-sdk-train.ipynb` 文件，而**不**是同名的 `.yml` 文件。 
+
+在本教程的**第二部分**中，你将运行 `tutorial-1st-experiment-sdk-train.ipynb` 中的代码来训练机器学习模型。
 
 ## <a name="end"></a> 清理资源
 

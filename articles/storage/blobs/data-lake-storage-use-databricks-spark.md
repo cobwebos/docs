@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a283f6cbcf4dc345a8c55192507c461f33244d6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855446"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992267"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 数据
 
@@ -124,20 +124,20 @@ ms.locfileid: "68855446"
 2. 若要复制 *.csv* 帐户中的数据，请输入以下命令。
 
    ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
    * 将 `<csv-folder-path>` 占位符值替换为 .csv 文件的路径  。
 
    * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
-   * 将 `<file-system-name>` 占位符替换为你要为文件系统提供的任何名称。
+   * 将 `<container-name>` 占位符替换为你要为容器指定的任何名称。
 
-## <a name="create-a-file-system-and-mount-it"></a>创建并装载文件系统
+## <a name="create-a-container-and-mount-it"></a>创建容器并将其装载
 
-在本部分，你将在存储帐户中创建一个文件系统和文件夹。
+在本部分中，你将在存储帐户中创建容器和文件夹。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，转到所创建的 Azure Databricks 服务，然后选择“启动工作区”。 
+1. 在 [Azure 门户](https://portal.azure.com)中，转到你创建的 Azure Databricks 服务，然后选择“启动工作区”。 
 
 2. 在左侧选择“工作区”  。 在**工作区**下拉列表中，选择**创建** > **笔记本**。
 
@@ -158,12 +158,12 @@ ms.locfileid: "68855446"
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
     dbutils.fs.mount(
-    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    source = "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/folder1",
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
 
-18. 在此代码块中，请将 `appId`、`password`、`tenant` 和 `storage-account-name` 占位符值替换为在完成本教程的先决条件时收集的值。 将 `file-system-name` 占位符值替换为在上一步中为 ADLS 文件系统指定的名称。
+18. 在此代码块中，请将 `appId`、`password`、`tenant` 和 `storage-account-name` 占位符值替换为在完成本教程的先决条件时收集的值。 将 `container-name` 占位符值替换为在上一步中为容器指定的名称。
 
 使用这些值替换上述占位符。
 
@@ -173,7 +173,7 @@ ms.locfileid: "68855446"
 
    * `storage-account-name` 是 Azure Data Lake Storage Gen2 存储帐户的名称。
 
-   * 将 `file-system-name` 占位符替换为你要为文件系统提供的任何名称。
+   * 将 `container-name` 占位符替换为你要为容器指定的任何名称。
 
    > [!NOTE]
    > 在生产设置中，请考虑将密码存储在 Azure Databricks 中。 然后，将查找密钥（而不是密码）添加到代码块中。 完成了本快速入门之后，请参阅 Azure Databricks 网站上的 [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) 一文以查看此方法的示例。

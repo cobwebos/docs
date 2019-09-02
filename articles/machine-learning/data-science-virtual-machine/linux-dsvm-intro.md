@@ -1,7 +1,7 @@
 ---
 title: 创建 CentOS Linux Data Science Virtual Machine
 titleSuffix: Azure
-description: 在 Azure 上配置和创建 Linux 数据科学虚拟机，用于进行分析和机器学习。
+description: 在 Azure 中创建并配置用于分析和机器学习的 Linux Data Science Virtual Machine。
 services: machine-learning
 documentationcenter: ''
 author: vijetajo
@@ -16,366 +16,417 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: 50dd51cc204a6a22d14873114ba6d98e2a174251
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c0464253c55aa5e51e8e86686405ea6b107c8382
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592018"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047722"
 ---
-# <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Linux CentOS 数据科学虚拟机
+# <a name="provision-a-linux-centos-data-science-virtual-machine-in-azure"></a>在 Azure 中预配 Linux CentOS Data Science Virtual Machine
 
-Linux 数据科学虚拟机是基于 CentOS 的 Azure 虚拟机，附带一组预安装的工具。 这些工具通常用于进行数据分析和机器学习。 所含关键软件组件包括：
+Linux Data Science Virtual Machine (DSVM) 是基于 CentOS 的 Azure 虚拟机。 Linux DSVM 随附一系列预安装的工具，用于进行数据分析和机器学习。 
 
-* 操作系统：Linux CentOS 分发版。
-* Microsoft R Server Developer Edition
-* Anaconda Python 分发版（2.7 和 3.5 版），包括常用数据分析库
-* JuliaPro - 具有常用科学和数据分析库的 Julia 语言的特选分发
-* 独立 Spark 实例和单节点 Hadoop（HDFS、Yarn）
-* JupyterHub - 支持 R、Python、PySpark 和 Julia 内核的多用户 Jupyter 笔记本服务器
-* Azure 存储资源管理器
-* 用于管理 Azure 资源的 Azure 命令行接口 (CLI)
-* PostgresSQL 数据库
-* 机器学习工具
-  * [Cognitive Toolkit](https://github.com/Microsoft/CNTK)：Microsoft Research 提供的深度学习软件工具包。
-  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit)：一种快速机器学习系统，支持在线、哈希、allreduce、缩减、learning2search、主动和交互式学习等技术。
-  * [XGBoost](https://xgboost.readthedocs.org/en/latest/)：一种提供快速、准确的提升树实现的工具。
-  * [Rattle](https://togaware.com/rattle/)（用于实现轻松学习的 R 分析工具）：该工具使在 R 中开始数据分析和机器学习变得简单，支持基于 GUI 的数据浏览和使用自动 R 代码生成进行建模。
-* Java、Python、node.js、Ruby 和 PHP 中的 Azure SDK
-* R 和 Python 中的库，供 Azure 机器学习和其他 Azure 服务使用
-* 开发工具和编辑器（RStudio、PyCharm、IntelliJ、Emacs、gedit、vi）
+Linux DSVM 包含的关键软件组件包括：
 
+* Linux CentOS 分发版操作系统。
+* Microsoft Machine Learning Server。
+* Anaconda Python 分发版（3.5 和 2.7 版），包括常用数据分析库。
+* JuliaPro：Julia 语言和常用科学与数据分析库的特选分发版。
+* Spark 独立实例和单节点 Hadoop（HDFS、YARN）。
+* JupyterHub：支持 R、Python、PySpark 和 Julia 内核的多用户 Jupyter Notebook 服务器。
+* Azure 存储资源管理器下载。
+* Azure CLI：用于管理 Azure 资源的 Azure 命令行接口。
+* PostgresSQL 数据库。
+* 机器学习工具：
+  * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK)：Microsoft Research 开发的深度学习软件工具包。
+  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit)：一种快速机器学习系统，支持在线哈希、allreduce、化简、learning2search、主动和交互式学习等技术。
+  * [XGBoost](https://xgboost.readthedocs.org/en/latest/)：一种可提供快速、准确地提升树实现的工具。
+  * [Rattle](https://togaware.com/rattle/)：一种可帮助在 R 中轻松开始进行数据分析和机器学习的工具。 Rattle 使用自动 R 代码生成提供基于 GUI 的数据探索和建模。
+* Java、Python、Node.js、Ruby 和 PHP 中的 Azure SDK。
+* R 和 Python 中的库，供 Azure 机器学习和其他 Azure 服务使用。
+* 开发工具和编辑器（RStudio、PyCharm、IntelliJ、Emacs、gedit、vi）。
 
-执行数据科学涉及对一系列任务的迭代：
+数据科学涉及对一系列任务的迭代：
 
-1. 查找、加载和预处理数据
-1. 构建和测试模型
-1. 部署模型以在智能应用程序中使用
+1. 查找、加载和预处理数据。
+1. 生成和测试模型。
+1. 部署模型以在智能应用程序中使用。
 
-数据科学家使用各种工具完成这些任务。 找到软件的适当版本，并下载、编译和安装这些版本，这一过程可能耗时较长。
+数据科学家使用各种工具完成这些任务。 找到适当软件的版本，然后下载、编译并安装这些版本，可能是一个相当耗时的工作。
 
-Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始分析项目。 它支持处理各种语言版本的任务，包括 R、Python、SQL、Java 和 C++。 Eclipse 提供 IDE，可开发易于使用的代码并对其进行测试。 使用 VM 中包含的 Azure SDK，可在适用于 Microsoft 云平台的 Linux 上使用各种服务来生成应用程序。 此外，还可以访问其他预安装语言，如 Ruby、Perl、PHP 和 node.js。
+Linux DSVM 可大大减轻这种负担。 使用 Linux DSVM 可以快速启动分析项目。 Linux DSVM 可帮助你处理各种语言版本的任务，包括 R、Python、SQL、Java 和 C++。 Eclipse 提供一个易于使用的 IDE 来开发和测试代码。 使用 DSVM 中包含的 Azure SDK，可在适用于 Microsoft 云平台的 Linux 上使用各种服务来生成应用程序。 已预装其他语言，包括 Ruby、Perl、PHP 和 Node.js。
 
-此数据科学 VM 映像不产生软件费用。 只需根据使用该 VM 映像预配的虚拟机大小，支付相应的 Azure 硬件使用费。 有关费用计算的更多详细信息，请访问 [Azure 市场上的 VM 商品信息页](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)。
-
-## <a name="other-versions-of-the-data-science-virtual-machine"></a>其他版本的数据科学虚拟机
-[Ubuntu](dsvm-ubuntu-intro.md) 映像同样可用，它包含多种与 CentOS 映像相同的工具以及加深度学习框架。 [Windows](provision-vm.md) 映像同样可用。
+DSVM 映像不会产生软件费用。 只需根据使用该 DSVM 映像预配的虚拟机大小，支付相应的 Azure 硬件使用费。 有关计算费的详细信息，请参阅 Azure 市场中的 [Data Science Virtual Machine for Linux (CentOS) 列表](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)。
 
 ## <a name="prerequisites"></a>先决条件
-创建 Linux 数据科学虚拟机之前，必须具备以下条件：
 
-* **Azure 订阅**：若要获取一项订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户**：若要创建帐户，请参阅[创建 Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)。 或者，如果不想使用现有帐户，可以在创建 VM 过程中创建存储帐户。
+在创建 Linux Data Science Virtual Machine之前，必须符合以下先决条件：
 
-## <a name="create-your-linux-data-science-virtual-machine"></a>创建 Linux 数据科学虚拟机
-以下是创建 Linux 数据科学虚拟机实例的步骤：
+* **Azure 订阅**：若要获取 Azure 订阅，请参阅[创建免费的 Azure 帐户](https://azure.microsoft.com/free/)。
+* **Azure 存储帐户**：若要获取 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)。 如果你不想要使用现有的 Azure 存储帐户，可以在创建 DSVM 时创建一个存储帐户。
 
-1. 导航到 [Azure 门户](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vmlinuxdsvm)上的虚拟机列表。
-1. 单击底部的“创建”  打开向导。![configure-data-science-vm](./media/linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
-1. 以下部分提供用于创建 Microsoft 数据科学虚拟机的向导中每个步骤的输入（在上一图片的右侧枚举）。 以下是配置每个步骤所需的输入：
-   
-   a. **基本信息**：
-   
-   * **名称**：待创建的数据科学服务器的名称。
-   * **用户名**：第一个帐户登录 ID。
-   * **密码**：第一个帐户密码（可以使用 SSH 公钥而非密码）。
-   * **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
-   * **资源组**：可以创建新组或使用现有组。
-   * **位置**：选择最合适的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近物理位置以实现最快的网络访问。
-   
-   b. **大小**：
-   
-   * 选择能满足功能需求和成本约束的服务器类型。 选择“查看全部”  查看 VM 大小的更多选择。
-   
-   c. **设置**：
-   
-   * **磁盘类型**：如果喜欢固态硬盘 (SSD)，请选择“高级”  。 否则，请选择“标准”  。
-   * **存储帐户**：可以在订阅中创建新的 Azure 存储帐户，或者使用位于与向导的“基本信息”  步骤中选择的相同位置的现有帐户。
-   * **其他参数**：大多数情况下，只需使用默认值。 若考虑使用非默认值，请将鼠标悬停在信息链接上获取特定字段的帮助。
-   
-   d. **汇总**：
-   
-   * 验证输入的所有信息是否正确。
-   
-   e. **购买**：
-   
-   * 若要开始预配，请单击“购买”  。 提供交易条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。
+## <a name="other-versions-of-the-data-science-virtual-machine"></a>其他版本的 Data Science Virtual Machine
 
-预配约需要 10 到 20 分钟。 预配的状态在 Azure 门户上显示。
+以下版本也提供了 Data Science Virtual Machine：
+
+* [Ubuntu](dsvm-ubuntu-intro.md)：Ubuntu 映像包含多种与 CentOS 映像相同的工具，其中包括深度学习框架。 
+* [Windows](provision-vm.md)
+
+## <a name="create-a-linux-data-science-virtual-machine"></a>创建 Linux Data Science Virtual Machine
+
+若要创建 Linux DSVM 的实例：
+
+1. 转到 [Azure 门户](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vmlinuxdsvm)中的虚拟机列表。
+1. 选择“创建”打开向导。 
+
+   ![用于配置 Data Science Virtual Machine 的向导](./media/linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
+1. 在向导的每个步骤中输入或选择以下信息：
+   
+   **1** **基本信息**：
+
+      * **名称**：要创建的数据科学服务器的名称。
+      * **用户名**：第一个帐户登录 ID。
+      * **密码**：第一个帐户密码。 （可以使用 SSH 公钥代替密码。）
+      * **订阅**：如果你有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须有权创建该订阅的资源。
+      * **资源组**：可创建新的资源组或使用现有组。
+      * **位置**：选择用于 DSVM 的数据中心。 在大多数情况下，请选择包含大部分数据的数据中心，或者最接近实际位置的数据中心（实现最快的网络访问速度）。
+   
+   **2** **大小**：选择能满足功能要求和成本约束的服务器类型。 选择“查看全部”  查看 VM 大小的更多选择。
+   
+   
+   **3** **设置**：
+      * **磁盘类型**：如果你偏好固态硬盘 (SSD)，请选择“高级”  。 否则，请选择“标准”  。
+      * **存储帐户**：可以在订阅中创建新的 Azure 存储帐户，或者使用位于与向导的“基本信息”步骤中选择的相同位置的现有 Azure 帐户  。
+      * **其他参数**：在大多数情况下，只需使用默认值来配置其他参数。 若要查看非默认值，请将鼠标悬停在参数的信息链接上。
+   
+   **4** **摘要**：验证输入的信息是否正确。
+   
+   **5** **购买**：若要开始预配，请选择“购买”。  此时会提供交易条款的链接。 除了在“大小”中选择的服务器大小所产生的计算费用外，DSVM 没有任何其他费用  。
+
+预配过程将花费 10-20 分钟。 预配的状态在 Azure 门户中显示。
 
 ## <a name="how-to-access-the-linux-data-science-virtual-machine"></a>如何访问 Linux 数据科学虚拟机
-创建 VM 后，可使用 SSH 登录。 使用在步骤 3 的**基本信息**部分中为文本 shell 接口创建的帐户凭据。 可在 Windows 上下载 [Putty](https://www.putty.org) 之类的 SSH 客户端工具。 如果喜欢图形桌面（X Windows系统），可以在 Putty 上使用 X11 转发或安装 X2Go 客户端。
+
+创建 DSVM 后，可使用 SSH 登录到其中。 使用在向导的“基本信息”部分中为文本 shell 接口创建的帐户凭据  。 可在 Windows 上下载 [PuTTY](https://www.putty.org) 之类的 SSH 客户端工具。 如果你偏好图形桌面（X Windows系统），可以在 PuTTY 上使用 X11 转发或安装 X2Go 客户端。
 
 > [!NOTE]
-> 在测试方面，X2Go 客户端的性能明显优于 X11 转发。 建议对图形桌面界面使用 X2Go 客户端。
-> 
-> 
+> 在测试方面，X2Go 客户端的性能优于 X11 转发。 建议对图形桌面界面使用 X2Go 客户端。
 
-## <a name="installing-and-configuring-x2go-client"></a>安装和配置 X2Go 客户端
-Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 若要连接到 Linux VM 图形桌面，请在客户端上执行以下操作：
+## <a name="install-and-configure-the-x2go-client"></a>安装并配置 X2Go 客户端
 
-1. 从 [X2Go ](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。    
-1. 运行 X2Go 客户端，并选择“新建会话”  。 这会打开具有多个选项卡的配置窗口。 输入下列配置参数:
+Linux DSVM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 若要连接到 Linux DSVM 图形桌面，请在客户端上完成以下过程：
+
+1. 从 [X2Go ](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。
+1. 运行 X2Go 客户端。 选择“新建会话”  。 此时会打开包含多个选项卡的配置窗口。 输入下列配置参数:
    * **会话选项卡**：
-     * **主机**：Linux Data Science VM 的主机名或 IP 地址。
-     * **登录名**：Linux VM 上的用户名。
-     * **SSH 端口**：保留默认值 22。
-     * **会话类型**：将值更改为“XFCE”。 Linux VM 目前仅支持 XFCE 桌面。
-   * **媒体选项卡**：如果无需使用声音支持和客户端打印功能，则可将其关闭。
-   * **共享文件夹**：如果希望将目录从客户端计算机装入 Linux VM，则在此选项卡上添加要与 VM 共享的客户端计算机目录。
+     * **主机**：输入 Linux DSVM 的主机名或 IP 地址。
+     * **登录名**：在 Linux DSVM 上输入用户名。
+     * **SSH 端口**：保留默认值“22”。 
+     * **会话类型**：将值更改为“XFCE”  。 Linux DSVM 目前仅支持 XFCE 桌面。
+   * “媒体”选项卡：  如果无需使用声音支持和客户端打印功能，可将其关闭。
+   * **共享文件夹**：如果你希望将目录从客户端计算机装载到 Linux DSVM，请添加要与 DSVM 共享的客户端计算机目录。
 
-通过 X2Go 客户端使用 SSH 客户端或 XFCE 图形桌面登录 VM 后，即可开始使用 VM 上安装和配置的工具。 在 XFCE 上，可看到许多工具的应用程序菜单快捷方式和桌面图标。
+通过 X2Go 客户端使用 SSH 客户端或 XFCE 图形桌面登录到 DSVM 后，即可开始使用 DSVM 上安装并配置的工具。 在 XFCE 上，可看到许多工具的应用程序菜单快捷方式和桌面图标。
 
 ## <a name="tools-installed-on-the-linux-data-science-virtual-machine"></a>安装在 Linux 数据科学虚拟机上的工具
-### <a name="microsoft-r-server"></a>Microsoft R Server
-R 是数据分析和机器学习的最常用语言之一。 如果要使用 R 进行分析，则 VM 需具有带 Microsoft R Open (MRO) 和数学内核库 (MKL) 的 Microsoft R Server (MRS)。 MKL 优化分析算法中常用的数学运算。 MRO 与 CRAN-R 100％ 兼容，在 CRAN 中发布的任何 R 库都可以安装在 MRO 上。 使用 MRS 可将 R 模型缩放和实施为 Web 服务。 可以在其中一个默认编辑器（如 RStudio、vi、Emacs 或 gedit）中编辑 R 程序。 如果使用 Emacs 编辑器，请注意，确保已预安装了 Emacs 包 ESS (Emacs Speaks Statistics)，其可简化 Emacs 编辑器中处理 R 文件的工作。
 
-若要启动 R 控制台，只需在 shell 中键入 **R**。 执行该操作将进入交互式环境。 要开发 R 程序，通常使用 Emacs、vi 或 gedit 等编辑器，并在 R 中运行脚本。使用 RStudio，便拥有一个完整的图形 IDE 环境来开发 R 程序。
+### <a name="machine-learning-server"></a>Machine Learning Server
 
-还提供一个 R 脚本，可用于安装[前 20 个 R 程序包](https://www.kdnuggets.com/2015/06/top-20-r-packages.html)（如果需要）。 此脚本可以在 R 交互式界面中运行，可以通过在 shell 中键入 **R** 来输入此脚本（如前所述）。  
+R 是数据分析和机器学习的最常用语言之一。 若要使用 R 进行分析，可以利用 DSVM 中带有 Microsoft R Open 和数学内核库的 Machine Learning Server。 数学内核库可优化分析算法中常用的数学运算。 R Open 与 CRAN R 完全兼容。在 CRAN 中发布的任何 R 库可安装在 R Open 上。 
+
+可以使用 Machine Learning Server 将 R 模型缩放和实施为 Web 服务。 可以在其中一个默认编辑器（如 RStudio、vi 或 Emacs）中编辑 R 程序。 Emacs 编辑器已预装在 DSVM 上。 Emacs ESS (Emacs Speaks Statistics) 可简化 Emacs 编辑器中 R 文件的处理。
+
+若要打开 R 控制台，请在 shell 中输入 **R**。执行此命令将进入交互式环境。 若要开发 R 程序，通常会使用 Emacs 或 vi 等编辑器，然后在 R 中运行脚本。RStudio 提供一个完整的图形 IDE 来开发 R 程序。
+
+DSVM 中包含了一个用于安装[最重要的 20 个 R 包](https://www.kdnuggets.com/2015/06/top-20-r-packages.html)的 R 脚本。 在 R 交互式界面中可以运行此脚本。 如前所述，若要打开该界面，请在 shell 中输入 **R**。  
 
 ### <a name="python"></a>Python
-为方便使用 Python 进行开发，已安装 Anaconda Python 分发版 2.7 和 3.5。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。 可以使用默认文本编辑器。 此外，可以使用 Spyder，它是与 Anaconda Python 分发版捆绑在一起的 Python IDE。 Spyder 需要图形桌面或 X11 转发。 图形桌面中提供了 Spyder 的快捷方式。
 
-由于同时拥有 Python 2.7 和 Python 3.5，因此需专门激活要在当前会话中使用的所需 Python 版本（conda 环境）。 激活过程会将 PATH 变量设置为所需的 Python 版本。
+Python 3.5 和 2.7 环境中已安装 Anaconda Python。 2\.7 环境称为“根”，3.5 环境称为“py35”   。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。
 
-若要激活 Python 2.7 conda 环境，请从 shell 运行以下命令：
+默认为 py35 环境。 若要激活根 (2.7) 环境，请使用以下命令：
 
-    source /anaconda/bin/activate root
+```bash
+source activate root
+```
 
-Python 2.7 安装在 */anaconda/bin* 中。
+若要再次激活 py35 环境，请使用以下命令：
 
-若要激活 Python 3.5 conda 环境，请从 shell 运行以下命令：
+```bash
+source activate py35
+```
 
-    source /anaconda/bin/activate py35
+若要调用 Python 交互式会话，请在 shell 中输入 **python**。 
 
+使用 Conda 或 pip 安装其他 Python 库。 对于 pip，如果不想要使用默认值，请先激活正确的环境：
 
-Python 3.5 安装在 */anaconda/envs/py35/bin* 中。
+```bash
+source activate root
+pip install <package>
+```
 
-若要调用 Python 交互式会话，只需在 shell 中键入 **python**。 如果在图形界面上或已设置 X11 转发，则可以通过键入 **pycharm** 启动 PyCharm Python IDE。
+或者，指定到 pip 的完整路径：
 
-若要安装其他 Python 库，需要在 sudo 下运行 ```conda``` 或 ```pip``` 命令，并提供 Python 包管理器（conda 或 pip）的完整路径，以便安装到正确的 Python 环境。 例如：
+```bash
+/anaconda/bin/pip install <package>
+```
 
-    sudo /anaconda/bin/pip install <package> #pip for Python 2.7
-    sudo /anaconda/envs/py35/bin/pip install <package> #pip for Python 3.5
-    sudo /anaconda/bin/conda install [-n py27] <package> #conda for Python 2.7, default behavior
-    sudo /anaconda/bin/conda install -n py35 <package> #conda for Python 3.5
+对于 Conda，始终应指定环境名称（py35 或根）：
 
+```bash
+conda install <package> -n py35
+```
+
+如果在图形界面上操作或者已设置 X11 转发，可以输入 **pycharm** 打开 PyCharm Python IDE。 可以使用默认文本编辑器。 此外，可以使用 Spyder，它是与 Anaconda Python 分发版捆绑在一起的 Python IDE。 Spyder 需要图形桌面或 X11 转发。 图形桌面中提供了 Spyder 的快捷方式。
 
 ### <a name="jupyter-notebook"></a>Jupyter 笔记本
-Anaconda 分发版还附带 Jupyter 笔记本 - 用于共享代码和分析的环境。 可通过 JupyterHub 访问 Jupyter notebook。 使用本地 Linux 用户名和密码登录。
 
-已使用 Python 2、Python 3 和 R 内核预配置 Jupyter 笔记本服务器。 可通过名为“Jupyter Notebook”的桌面图标启动浏览器，以访问该笔记本服务器。 如果通过 SSH 或 X2Go 客户端登录 VM，则还可以通过访问 [https://localhost:8000/](https://localhost:8000/) 来访问 Jupyter 笔记本服务器。
+Anaconda 分发版还附带 Jupyter Notebook - 用于共享代码和分析的环境。 通过 JupyterHub 访问 Jupyter Notebook。 使用本地 Linux 用户名和密码登录。
+
+Jupyter Notebook 服务器中已预配置 Python 2、Python 3 和 R 内核。 使用“Jupyter Notebook”桌面图标打开浏览器并访问 Jupyter Notebook 服务器。  如果通过 SSH 或 X2Go 客户端访问 DSVM，则还可以通过 https:\//localhost:8000/ 访问 Jupyter Notebook 服务器。
 
 > [!NOTE]
 > 如果收到任何证书警告，请选择继续。
-> 
-> 
 
-可以从任何主机访问 Jupyter 笔记本服务器。 只需键入 *https://\<VM DNS name or IP Address\>:8000/*
+可以从任何主机访问 Jupyter 笔记本服务器。 输入 **https:\//\<DSVM DNS 名称或 IP 地址\>:8000/** 。
 
 > [!NOTE]
-> 默认情况下，配置 VM 时，防火墙中会打开端口 8000。
-> 
-> 
+> 默认情况下，配置 DSVM 时，防火墙中会打开端口 8000。 
 
-我们已经打包了两个示例笔记本（分别在 Python 和 R 中）。通过使用本地 Linux 用户名和密码向 Jupyter 笔记本进行身份验证后，可以在笔记本主页上看到示例链接。 通过选择“新建”  并选择相应的语言内核，可创建新笔记本。 如果没有看到“新建”  按钮，请点击左上角的“Jupyter”  图标转到笔记本服务器的主页。
+Microsoft 已打包两个示例笔记本（分别在 Python 和 R 中）。使用本地 Linux 用户名和密码对 Jupyter Notebook 进行身份验证后，可以在 Jupyter Notebook 主页上看到示例的链接。 若要创建新的笔记本，请选择“新建”，然后选择要使用的语言内核。  如果未看到“新建”按钮，请选择左上角的“Jupyter”图标转到 Notebook 服务器的主页。  
 
-### <a name="apache-spark-standalone"></a>Apache Spark Standalone 
-Apache Spark 的独立实例预安装在 Linux DSVM 上，帮助用户先在本地开发 Spark 应用程序，再在大型群集上进行测试和部署。 可以通过 Jupyter 内核运行 PySpark 程序。 打开 Jupyter 并单击“新建”  按钮时，应该能够看到可用内核列表。 “Spark - Python”是 PySpark 内核。借助它，可以使用 Python 语言生成 Spark 应用程序。 还可以使用 Python IDE（如 PyCharm 或 Spyder）生成 Spark 程序。 由于这是独立实例，因此 Spark 堆栈会在调用方客户端程序中运行。 与在 Spark 群集上开发相比，这样可以更快、更轻松地排查问题。 
+### <a name="spark-standalone"></a>Spark 独立版 
 
-Jupyter 上提供了一个示例 PySpark 笔记本，该笔记本可以在 Jupyter 主目录下的“SparkML”目录 ($HOME/notebooks/SparkML/pySpark) 中找到。 
+一个 Spark 独立版模式实例已预装在 Linux DSVM 上，以帮助你在本地开发 Spark 应用程序，然后在大型群集上对其进行测试和部署。 
 
-如果要用 R for Spark 编程，可以使用 Microsoft R Server、SparkR 或 sparklyr。 
+可以通过 Jupyter 内核运行 PySpark 程序。 打开 Jupyter 时，选择“新建”按钮即可看到可用内核的列表  。 “Spark - Python”是 PySpark 内核。借助它可以使用 Python 语言生成 Spark 应用程序  。 还可以使用 Python IDE（如 PyCharm 或 Spyder）生成 Spark 程序。 
 
-在 Microsoft R Server 的 Spark 上下文中运行之前，需要执行一次性设置步骤以启用本地单节点 Hadoop HDFS 和 Yarn 实例。 默认情况下，Hadoop 服务已安装但在 DSVM 上禁用。 若要启用它，需要首次以 root 身份运行以下命令：
+在此独立实例中，Spark 堆栈会在调用方客户端程序中运行。 与在 Spark 群集上进行开发相比，使用此功能可以更快、更轻松地排查问题。
 
-    echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
-    cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
-    chmod 0600 ~hadoop/.ssh/authorized_keys
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
-    chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
-    systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+Jupyter 提供一个示例 PySpark 笔记本。 可以在 Jupyter 主目录下的 SparkML 目录中找到该笔记本 ($HOME/notebooks/SparkML/pySpark)。 
 
-不需要 Hadoop 相关服务时，可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 停止这些服务。`/dsvm/samples/MRS` 目录中提供了演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 MRS 的示例。 
+若要以 R for Spark 编程，可以使用 Machine Learning Server、SparkR 或 sparklyr。 
+
+在 Machine Learning Server 的 Spark 上下文中运行之前，需要执行一次性的设置步骤来启用本地单节点 Hadoop HDFS 和 YARN 实例。 默认情况下，Hadoop 服务已安装但在 DSVM 上禁用。 若要启用 Hadoop 服务，请首次以 root 身份运行以下命令：
+
+```bash
+echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
+cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
+chmod 0600 ~hadoop/.ssh/authorized_keys
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
+chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
+systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+```
+
+不需要 Hadoop 相关的服务时，可以通过运行 `systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn` 来停止这些服务。
+
+/dsvm/samples/MRS 目录中提供了一个示例，演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 Machine Learning Server。
 
 ### <a name="ides-and-editors"></a>IDE 和编辑器
-可以选择多个代码编辑器。 这包括 vi/VIM、Emacs、gEdit、PyCharm、RStudio、Eclipse 和 IntelliJ。 gEdit、Eclipse、IntelliJ、RStudio 和 PyCharm 是图形编辑器，需登录到图形桌面才能使用。 这些编辑器具有用以启动的桌面和应用程序菜单快捷方式。
 
-**VIM** 和 **Emacs** 是基于文本的编辑器。 Emacs 上已安装名为 Emacs Speaks Statistics (ESS) 的附加包，使得在 Emacs 编辑器中使用 R 更轻松。 可在 [ESS](https://ess.r-project.org/) 了找到更多信息。
+可以从多个代码编辑器中进行选择，包括 vi/VIM、Emacs、gedit、PyCharm、RStudio、Eclipse、LaTeX 和 IntelliJ。 
 
-**Eclipse** 是一种开放源 - 支持多种语言的可扩展 IDE。 Java 开发人员版是安装在 VM 上的实例。 可安装适用于数种常用语言的插件，以扩展环境。 Eclipse 中还安装有插件，名为**用于 Eclipse 的 Azure 工具包**。 它允许使用支持 Java 等语言的 Eclipse 开发环境创建、开发、测试和部署 Azure 应用程序。 还有一个**用于 Java 的 Azure SDK**，允许从 Java 环境中访问不同的 Azure 服务。 有关用于 Eclipse 的 Azure 工具包的详细信息，请参阅[用于 Eclipse 的 Azure 工具包](../../azure-toolkit-for-eclipse.md)。
+* gedit、Eclipse、IntelliJ、R Studio 和 PyCharm 是图形编辑器。 若要使用它们，必须登录到图形桌面。 可以使用桌面和应用程序菜单中的快捷方式打开它们。
 
-**LaTex** 通过 texlive 包和 Emacs 外接程序 [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) 包进行安装，这简化了在 Emacs 中创作 LaTex 文档的过程。  
+* Vim 和 Emacs 是基于文本的编辑器。 Emacs 上的 ESS 附加包可以简化 Emacs 编辑器中 R 的处理。 可在 [ESS 网站](https://ess.r-project.org/)上找到更多信息。
+
+* Eclipse 是支持多种语言的开源可扩展 IDE。 面向 Java 开发人员的 Eclipse IDE 是安装在 DSVM 上的版本。 可安装适用于多种常用语言的插件来扩展环境。 
+
+  DSVM 上还随 Eclipse 一起安装了 Azure Toolkit for Eclipse 插件。 借助 Azure Toolkit for Eclipse，可以使用支持 Java 等语言的 Eclipse 开发环境来创建、开发、测试和部署 Azure 应用程序。
+
+  DSVM 上还随 Azure Toolkit for Eclipse 一起安装了 Azure SDK for Java。 使用 Azure SDK for Java 可从 Java 环境内部访问不同的 Azure 服务。 
+  
+  有关详细信息，请参阅[用于 Eclipse 的 Azure 工具包](/java/azure/eclipse/azure-toolkit-for-eclipse)。
+
+* LaTeX 是通过 texlive 包连同名为 [AUCTeX](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) 的 Emacs 附加包一起安装的。 此包简化了 Emacs 中 LaTeX 文档的创作。 
 
 ### <a name="databases"></a>数据库
-#### <a name="postgres"></a>Postgres
-在服务运行时且 initdb 已完成的情况下，开放源数据库 **Postgres** 在VM上可用。 仍需要创建数据库和用户。 有关详细信息，请参阅 [Postgres 文档](https://www.postgresql.org/docs/)。  
 
-#### <a name="graphical-sql-client"></a>图形化 SQL 客户端
-**SQuirrel SQL** 是一个图形化 SQL 客户端，用于连接到不同的数据库（如 Microsoft SQL Server、Postgres 和 MySQL）和运行 SQL 查询。 可从图形桌面会话运行（例如使用 X2Go 客户端）。 要调用 SQuirrel SQL，可通过桌面上的图标将其启动，或者在 shell 上运行以下命令。
+在 Linux DSVM 中可以访问多个数据库和命令行工具。
 
-    /usr/local/squirrel-sql-3.7/squirrel-sql.sh
+#### <a name="postgressql"></a>PostgresSQL
 
-首次使用前，需设置驱动程序和数据库别名。 JDBC 驱动程序位于：
+在服务正在运行时且 initdb 已完成的情况下，可在 DSVM 上使用开放源数据库 PostgresSQL。 必须创建数据库和用户。 有关详细信息，请参阅 [PostgresSQL 文档](https://www.postgresql.org/docs/)。  
 
-*/usr/share/java/jdbcdrivers*
+#### <a name="squirrel-sql"></a>SQuirreL SQL
 
-有关详细信息，请参阅 [SQuirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots)。
+SQuirreL SQL 是一个图形 SQL 客户端，可以连接到各种数据库（包括 SQL Server、PostgresSQL 和 MySQL）并运行 SQL 查询。 可以使用桌面图标从图形桌面会话运行 SQuirreL SQL（例如，通过 X2Go 客户端）。 或者，可以在 shell 中使用以下命令运行该客户端：
 
-#### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>用于访问 Microsoft SQL Server 的命令行工具
+```bash
+/usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
+```
+
+首次使用前，需设置驱动程序和数据库别名。 JDBC 驱动程序位于 /usr/share/java/jdbcdrivers 中。
+
+有关详细信息，请参阅 [SQuirreL SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots)。
+
+#### <a name="command-line-tools-for-accessing-sql-server"></a>用于访问 SQL Server 的命令行工具
+
 SQL Server 的 ODBC 驱动程序包还附带两个命令行工具：
 
-**bcp**：bcp 实用工具在 Microsoft SQL Server 实例与用户指定格式的数据文件之间批量复制数据。 bcp 实用工具可用于将大量新行导入 SQL Server 表，或将表中的数据导出到数据文件。 要将数据导入表，必须使用为该表创建的格式文件，或了解表的结构以及对其列有效的数据类型。
+* **bcp**：bcp 工具可在 SQL Server 实例与用户指定格式的数据文件之间批量复制数据。 可以使用 bcp 工具将大量新行导入 SQL Server 表，或者将表中的数据导出到数据文件。 要将数据导入表中，必须使用为该表创建的格式文件。 或者，必须了解表的结构，以及对其列有效的数据类型。
 
-有关详细信息，请参阅[使用 bcp 连接](https://msdn.microsoft.com/library/hh568446.aspx)。
+  有关详细信息，请参阅[使用 bcp 进行连接](https://msdn.microsoft.com/library/hh568446.aspx)。
 
-**sqlcmd**：可以在命令提示符中，使用 sqlcmd 实用工具输入 Transact-SQL 语句以及系统过程和脚本文件。 此实用工具使用 ODBC 执行 Transact-SQL 批处理。
+* **sqlcmd**：可以在命令提示符下，使用 sqlcmd 实用工具输入 Transact-SQL 语句、系统过程和脚本文件。 sqlcmd 实用工具使用 ODBC 执行 Transact-SQL 批处理。
 
-有关详细信息，请参阅[使用 sqlcmd 连接](https://msdn.microsoft.com/library/hh568447.aspx)。
+  有关详细信息，请参阅[使用 sqlcmd 进行连接](https://msdn.microsoft.com/library/hh568447.aspx)。
 
-> [!NOTE]
-> 此实用工具在 Linux 和 Windows 平台之间存在差异。 有关详细信息，请参阅文档。
-> 
-> 
+  > [!NOTE]
+  > 此工具在 Linux 和 Windows 平台之间存在差异。 有关详细信息，请参阅文档。
 
 #### <a name="database-access-libraries"></a>数据库访问库
-R 和 Python 中提供可访问数据库的库。
 
-* 在 R 中，**RODBC** 包或 **dplyr** 包允许在数据库服务器上查询或执行 SQL 语句。
-* 在 Python 中，**pyodbc** 库提供使用 ODBC 作为基础层的数据库访问。  
+在 R 和 Python 中可以使用数据库访问库。
 
-若要访问 **Postgres**：
-
-* 从 R 访问：使用包 **RPostgreSQL**。
-* 从 Python访问：使用 **psycopg2** 库。
+* 在 R 中，可以使用 RODBC 包或 dplyr 包在数据库服务器上查询或运行 SQL 语句。
+* 在 Python 中，pyodbc 库提供使用 ODBC 作为基础层的数据库访问。
 
 ### <a name="azure-tools"></a>Azure 工具
-VM 上安装有以下 Azure 工具：
 
-* **Azure 命令行接口**：Azure CLI 允许通过 shell 命令创建和管理 Azure 资源。 若要调用 Azure 工具，只需键入 **azure 帮助**。 有关详细信息，请参阅 [Azure CLI 文档页](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
-* **Microsoft Azure 存储资源管理器**：Microsoft Azure 存储资源管理器是一个图形工具，用于浏览在 Azure 存储帐户中存储的对象，以及将数据上传到 Azure Blob 和从中下载数据。 可通过桌面快捷方式图标访问存储资源管理器。 可以通过键入 **StorageExplorer** 从 shell 提示符调用。 需从 X2Go 客户端登录，或者安装 X11 转发。
-* **Azure 库**：下面是一些预安装的库。
+DSVM 上已安装以下 Azure 工具：
+
+* **Azure CLI**：可以使用 Azure 中的命令行接口通过 shell 命令创建和管理 Azure 资源。 若要打开 Azure 工具，请输入 **azure help**。 有关详细信息，请参阅 [Azure CLI 文档页](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
+* **Azure 存储资源管理器**：Azure 存储资源管理器是一个图形工具，用于浏览在 Azure 存储帐户中存储的对象，以及将数据上传到 Azure Blob 和从中下载数据。 可通过桌面快捷方式图标访问存储资源管理器。 还可以通过输入 **StorageExplorer** 从 shell 提示符打开此工具。 必须从 X2Go 客户端登录，或设置 X11 转发。
+* **Azure 库**：DSVM 上已预装以下库：
   
-  * **Python**：Python 中已安装的 Azure 相关库包括 **azure**、**azureml**、**pydocumentdb** 和 **pyodbc**。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 使用第四个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可以通过使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库。 输入 **pip 列表**查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
-  * **R**：R 中的已安装 Azure 相关库包括 **AzureML** 和 **RODBC**。
-  * **Java**：可在 VM 上的 **/dsvm/sdk/AzureSDKJava** 目录中找到 Azure Java 库列表。 密钥库是 Azure 存储和用于 SQL Server 的管理 API、Azure Cosmos DB 和 JDBC 驱动程序。  
+  * **Python**：Python 中的 Azure 相关库包括 *azure*、*azureml*、*pydocumentdb* 和 *pyodbc*。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 使用第四个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可以通过使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库。 输入 **pip 列表**查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
+  * **R**：R 中的 Azure 相关库包括 AzureML 和 RODBC。
+  * **Java**：可在 DSVM 上的 /dsvm/sdk/AzureSDKJava 目录中找到 Azure Java 库列表。 密钥库是 Azure 存储和用于 SQL Server 的管理 API、Azure Cosmos DB 和 JDBC 驱动程序。  
 
-可以从预安装的 Firefox 浏览器访问 [Azure 门户](https://portal.azure.com)。 在 Azure 门户中，可以创建、管理和监视 Azure 资源。
+可以从预装的 Firefox 浏览器访问 [Azure 门户](https://portal.azure.com)。 在 Azure 门户中，可以创建、管理和监视 Azure 资源。
 
 ### <a name="azure-machine-learning"></a>Azure 机器学习
-Azure 机器学习是完全托管的云服务，允许构建、部署和共享预测分析解决方案。 从 Azure 机器学习工作室中构建实验和模型。 可从数据科学虚拟机上的 Web 浏览器，通过访问 [Microsoft Azure 机器学习](https://studio.azureml.net)来访问 Azure 机器学习工作室。
 
-登录 Azure 机器学习工作室后，可以访问实验画布，可在其中生成机器学习算法的逻辑流。 还可以访问在 Azure 机器学习上托管的 Jupyter 笔记本，并且可以无缝使用机器学习工作室中的实验。 通过将已构建的机器学习模型包装在 Web 服务接口中，来对它们执行操作。 这使得以任何语言编写的客户端都能从机器学习模型中调用预测。 有关详细信息，请参阅[机器学习文档](https://azure.microsoft.com/documentation/services/machine-learning/)。
+Azure 机器学习是完全托管的云服务，可用于生成、部署和共享预测分析解决方案。 从 Azure 机器学习工作室中构建实验和模型。 若要从 DSVM 上的 Web 浏览器访问 Azure 机器学习，请参阅 [Microsoft Azure 机器学习](https://studio.azureml.net)。
 
-还可以在 VM 上的 R 或 Python 中构建模型，并在 Azure 机器学习上将其部署到生产中。 我们已在 R (**AzureML**) 和 Python (**azureml**) 中分别安装了库以启用此功能。
+登录到 Azure 机器学习工作室后，可以使用试验画布来生成机器学习算法的逻辑流。 还可以访问 Azure 机器学习上托管的 Jupyter Notebook。 Notebook 可与机器学习工作室中的试验无缝配合。 
 
-要深入了解如何将 R 和 Python 中的模型部署到 Azure 机器学习，请参阅[可在数据科学虚拟机上执行的十项操作](vm-do-ten-things.md)（特别是“使用 R 或 Python 构建模型并使用 Azure 机器学习对其进行操作”部分）。
+将生成的机器学习模型包装在 Web 服务接口中可将其操作化。 实施机器学习模型使得以任何语言编写的客户端都能从这些模型中调用预测。 有关详细信息，请参阅[机器学习文档](https://azure.microsoft.com/documentation/services/machine-learning/)。
+
+还可以在 DSVM 上的 R 或 Python 中生成模型，然后在 Azure 机器学习中将其部署到生产环境。 Microsoft 已安装 R 中的库 (**AzureML**) 和 Python 中的库 (**azureml**) 以支持此功能。
+
+有关如何将 R 和 Python 中的模型部署到 Azure 机器学习的信息，请参阅 [Data Science Virtual Machine 的十大功能](vm-do-ten-things.md)。
 
 > [!NOTE]
-> 这些说明专为 Windows 版本的数据科学 VM 编写。 但是其中提供的有关将模型部署到 Azure 机器学习的信息也适用于 Linux VM。
-> 
-> 
+> [Data Science Virtual Machine 的十大功能](vm-do-ten-things.md)中的说明适用于 Windows 版 DSVM。 但是，有关将模型部署到 Azure 机器学习的信息也适用于 Linux DSVM。
 
 ### <a name="machine-learning-tools"></a>机器学习工具
-VM 附带一些已经预编译并已在本地预安装的机器学习工具和算法。 其中包括：
+
+DSVM 随附一些已预编译并已在本地预装的机器学习工具和算法。 其中包括：
 
 * **Microsoft 认知工具包**：深度学习工具包。
 * **Vowpal Wabbit**：一种快速的在线学习算法。
-* **xgboost**：提供经过优化的提升树算法的工具。
+* **XGBoost**：提供经过优化的提升树算法的工具。
 * **Python**：Anaconda Python 附带机器学习算法，这些算法含有库（如 Scikit-learn）。 可以通过使用 `pip install` 命令安装其他库。
-* **R**：有可供 R 使用的丰富的机器学习函数库。一些预安装的库包括lm、glm、randomForest 和 rpart。 可通过运行以下内容安装其他库：
-  
-        install.packages(<lib name>)
+* **R**：有丰富的机器学习函数库可供 R 使用。预装的库包括 lm、glm、randomForest 和 rpart。 运行 `install.packages(<lib name>)` 可安装其他库。
 
-以下是一些关于列表中前三个机器学习工具的附加信息。
+后续部分将更详细介绍 Microsoft Cognitive Toolkit、Vowpal Wabbit 和 XGBoost。
 
 #### <a name="microsoft-cognitive-toolkit"></a>Microsoft 认知工具包
-这是开放源、深入学习工具包。 它是命令行工具 (cntk)，且已存在于 PATH 中。
 
-若要运行基础示例，请在 shell 中执行以下命令：
+Microsoft Cognitive Toolkit 是一个开源深度学习工具包。 它是一个命令行工具 (CNTK)，已在 PATH 中指定。
 
-    cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
-    cntk configFile=lr_bs.cntk makeMode=false command=Train
+若要运行基本示例，请在 shell 中运行以下命令：
 
-有关详细信息，请参阅 [GitHub](https://github.com/Microsoft/CNTK) 的 CNTK 部分，以及 [CNTK wiki](https://github.com/Microsoft/CNTK/wiki)。
+```bash
+cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
+cntk configFile=lr_bs.cntk makeMode=false command=Train
+```
+
+有关详细信息，请参阅 [GitHub CNTK 存储库](https://github.com/Microsoft/CNTK)和 [CNTK wiki](https://github.com/Microsoft/CNTK/wiki)。
 
 #### <a name="vowpal-wabbit"></a>Vowpal Wabbit
-Vowpal Wabbit 是一种使用在线、哈希、allreduce、缩减、learning2search、主动和交互式学习等技术的机器学习系统。
 
-若要在基础示例上运行该工具，请执行以下操作：
+Vowpal Wabbit 是一种使用 online、hashing、allreduce、reductions、learning2search、主动和交互式学习等技术的机器学习系统。
 
-    cp -r /dsvm/tools/VowpalWabbit/demo vwdemo
-    cd vwdemo
-    vw house_dataset
+若要对基本示例运行该工具，请运行以下命令：
 
-该目录中存在其他更大的演示。 有关 VW 的详细信息，请参阅 [GitHub 的本部分内容](https://github.com/JohnLangford/vowpal_wabbit)，以及 [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki)。
+```bash
+cp -r /dsvm/tools/VowpalWabbit/demo vwdemo
+cd vwdemo
+vw house_dataset
+```
 
-#### <a name="xgboost"></a>xgboost
-这是一个为提升（树）算法设计和优化的库。 此库的目标是将计算机的计算限制推向极致，以满足提供可缩放、可移植且精确的大规模树提升的需求。
+Vowpal Wabbit 演示目录包含其他更详细的演示。 有关 Vowpal Wabbit 的详细信息，请参阅 [GitHub Vowpal Wabbit 存储库](https://github.com/JohnLangford/vowpal_wabbit)和 [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki)。
 
-它作为命令行及 R 库提供。
+#### <a name="xgboost"></a>XGBoost
 
-要在 R 中使用此库，可以启动交互式 R 会话（只需在 shell 中键入**R**），并加载库。
+XGBoost 库是为提升（树）算法设计和优化的库。 XGBoost 库的目标是将计算机的计算限制推向极致，以满足提供可缩放、可移植且精确的大规模树提升的需求。
 
-下面是可以在 R 提示符中运行的一个简单示例：
+XGBoost 作为命令行和 R 库提供。
 
-    library(xgboost)
+若要在 R 中使用 XGBoost 库，请启动交互式 R 会话（在 shell 中输入 **R**），然后加载该库。
 
-    data(agaricus.train, package='xgboost')
-    data(agaricus.test, package='xgboost')
-    train <- agaricus.train
-    test <- agaricus.test
-    bst <- xgboost(data = train$data, label = train$label, max.depth = 2,
-                    eta = 1, nthread = 2, nround = 2, objective = "binary:logistic")
-    pred <- predict(bst, test$data)
+下面是可以在 R 提示符下运行的一个简单示例：
 
-若要运行 xgboost 命令行，下面是要在 shell 中执行的命令：
+```R
+library(xgboost)
 
-    cp -r /dsvm/tools/xgboost/demo/binary_classification/ xgboostdemo
-    cd xgboostdemo
-    xgboost mushroom.conf
+data(agaricus.train, package='xgboost')
+data(agaricus.test, package='xgboost')
+train <- agaricus.train
+test <- agaricus.test
+bst <- xgboost(data = train$data, label = train$label, max.depth = 2,
+                eta = 1, nthread = 2, nround = 2, objective = "binary:logistic")
+pred <- predict(bst, test$data)
+```
 
+若要运行 XGBoost 命令行，请在 shell 中运行以下命令：
 
-将 .Model 文件写入到指定目录。 有关此演示示例的信息，可在 [GitHub](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification) 上了解。
+```bash
+cp -r /dsvm/tools/xgboost/demo/binary_classification/ xgboostdemo
+cd xgboostdemo
+xgboost mushroom.conf
+```
 
-有关 xgboost 的详细信息，请参阅 [xgboost 文档页](https://xgboost.readthedocs.org/en/latest/)及其 [GitHub 存储库](https://github.com/dmlc/xgboost)。
+一个 .model 文件将写入到指定的目录。 有关 GitHub 上的此演示示例的信息，请参阅[二元分类](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification)。
+
+有关 XGBoost 的详细信息，请参阅 [XGBoost 文档](https://xgboost.readthedocs.org/en/latest/)和 [XGBoost GitHub 存储库](https://github.com/dmlc/xgboost)。
 
 #### <a name="rattle"></a>Rattle
-Rattle (**R** **A**nalytical **T**ool **T**o **L**earn **E**asily) 使用基于 GUI 的数据浏览和建模。 它提供数据的统计和可视化摘要，转换可轻松建模的数据，从数据构建不受监督和受监督的模型，以图形方式呈现模型的性能，以及对新数据集进行评分。 它还生成 R 代码，用于复制 UI 中可直接在 R 中运行或用作进一步分析的起点的操作。
 
-若要运行 Rattle，需进入图形桌面登录会话。 在终端上键入 ```R```，进入 R 环境。 在 R 提示符中，输入以下命令：
+Rattle (*R* *A*nalytical *T*ool *T*o *L*earn *E*asily) 使用基于 GUI 的数据浏览和建模。 Rattle：
+- 呈现数据的统计和可视化摘要。
+- 转换可随时建模的数据。
+- 基于数据生成非监督式和监督式模型。
+- 以图形方式呈现模型性能。
+- 对新数据集评分。
+- 生成 R 代码。
+- 复制 UI 中可直接在 R 中运行或用作其他分析的起点的操作。
 
-    library(rattle)
-    rattle()
+若要运行 Rattle，必须登录到图形桌面会话。 在终端中，输入 **R** 打开 R 环境。 在 R 提示符中，输入以下命令：
 
-现在，将打开具有一组选项卡的图形界面。 下面是 Rattle 中使用示例天气数据集并构建模型所需的快速入门步骤。 以下某些步骤中，系统会提示自动安装并加载尚未安装在系统上的某些必需 R 包。
+```R
+library(rattle)
+rattle()
+```
+
+此时会打开包含一组选项卡的图形界面。 在 Rattle 中执行以下快速入门步骤，使用示例天气数据集并生成模型。 在某些步骤中，系统会提示自动安装并加载尚未安装在系统上的某些必需 R 包。
 
 > [!NOTE]
-> 如果无权在系统目录（默认）中安装包，可能会在 R 控制台窗口中看到一个提示，提醒将包安装到个人库中。 如果看到这些提示，请回复 y  。
-> 
-> 
+> 如果你无权在系统目录（默认目录）中安装包，可能会在 R 控制台窗口中看到一个提示，指出包将安装到个人库中。 如果看到这些提示，请输入 **y**。
 
-1. 单击“执行”  。
-1. 这会弹出一个对话框，询问是否要使用示例气象数据集。 单击“是”  加载示例。
-1. 单击“模型”  选项卡。
-1. 单击“执行”  生成决策树。
-1. 单击“绘制”  显示决策树。
-1. 单击“林”  单选按钮，并单击“执行”  生成随机林。
-1. 单击“评估”  选项卡。
-1. 单击“风险”  单选按钮，并单击“执行”  ，以显示两个风险（累积）性能绘图。
-1. 单击“日志”  选项卡，显示上述操作生成的 R 代码。
-   （由于当前版本 Rattle 中的 bug，需在日志文本中的“导出此日志...”  前插入 *#* 字符。）
-1. 单击“导出”  按钮，将名为 *weather_script.R* 的 R 脚本文件保存到主文件夹。
+1. 选择“执行”  。
+1. 此时会出现一个对话框，提示是否要加载示例气象数据集。 选择“是”以加载示例。 
+1. 选择“模型”选项卡。 
+1. 选择“执行”以生成决策树。 
+1. 选择“绘制”以显示决策树。 
+1. 选择“林”选项，然后选择“执行”以生成随机林。  
+1. 选择“评估”选项卡。 
+1. 选择“风险”选项，然后选择“执行”以显示两个“风险(累积)”性能绘图。   
+1. 选择“日志”选项卡以显示为上述操作生成的 R 代码。  （由于当前 Rattle 版本中的 bug，必须在日志文本中的“导出此日志”前面插入 **#** 字符。） 
+1. 选择“导出”按钮，将名为 *weather_script.R* 的 R 脚本文件保存到主文件夹。 
 
-可以退出 Rattle 和 R。现在，可以修改生成的 R 脚本或者直接使用，可使其随时运行以重复在 Rattle UI 中完成的所有操作。 特别是对于 R 的初学者而言，这是一种简单方法，可用于在图形界面中快速进行分析和机器学习，同时在 R 中自动生成可修改和/或用于学习的代码。
+可以退出 Rattle 和 R。现在，可以修改生成的 R 脚本。 或者，可以按原样使用该脚本，并可随时运行它来重复 Rattle UI 中的所有操作。 尤其是对于 R 初学者而言，使用此方法可在简单的图形界面中快速执行分析和机器学习，同时在 R 中自动生成代码来修改项目或用于学习。
 
 ## <a name="next-steps"></a>后续步骤
+
 以下是继续学习和探索的方法：
 
-* [Linux 数据科学虚拟机上的数据科学](linux-dsvm-walkthrough.md)演练展示了如何使用此处预配的 Linux 数据科学 VM 执行数个常见的数据科学任务。 
-* 通过尝试本文中介绍的工具，探索数据科学 VM 上的各种数据科学工具。 还可以在虚拟机内的 shell 上运行 *dsvm-more-info*，获取有关 VM 上安装的工具的基本介绍和详细信息。  
-* 通过使用 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)，了解如何系统地构建端到端分析解决方案。
-* 若要了解使用 Cortana Analytics 套件的机器学习和数据分析示例，请访问 [Cortana Analytics 库](https://gallery.cortanaanalytics.com)。
-
+* [适用于 Linux 的 Data Science Virtual Machine 上的数据科学](linux-dsvm-walkthrough.md)演练演示了如何使用此处预配的 Linux DSVM 执行多种常见的数据科学任务。 
+* 请在 DSVM 上尝试探索本文中所述的各种数据科学工具。 还可以在虚拟机上的 shell 中运行 `dsvm-more-info`，获取有关 DSVM 上安装的工具的基本介绍和信息指南。  
+* 通过使用 [Team Data Science Process](https://aka.ms/tdsp)，了解如何系统地构建端到端分析解决方案。
+* 访问 [Azure AI 库](https://gallery.azure.ai/)，获取使用 Azure AI 服务的机器学习和数据分析示例。

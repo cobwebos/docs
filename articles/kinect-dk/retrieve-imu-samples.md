@@ -7,12 +7,12 @@ ms.date: 06/26/2019
 ms.prod: kinect-dk
 ms.topic: conceptual
 keywords: kinect, azure, 配置, 深度, 彩色, RBG, 相机, 传感器, sdk, IMU, 运动传感器, 运动, 陀螺仪, 加速度传感器, FPS
-ms.openlocfilehash: 8866e4aaef608aaf9e7bf7d451b758cf9b10c8ed
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d759784966b5c68c28adf9fc71a32f8cd5691559
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621379"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099436"
 ---
 # <a name="retrieve-azure-kinect-imu-samples"></a>检索 Azure Kinect IMU 样本
 
@@ -27,7 +27,7 @@ ms.locfileid: "67621379"
 > [!NOTE]
 > 仅当彩色和/或深度相机正在运行时，IMU 传感器才能正常工作。 IMU 传感器不能单独工作。
 
-若要启动相机，请使用 [k4a_device_start_cameras](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga4dc81cbeb54b07e4bbb7d639c448f6eb.html#ga4dc81cbeb54b07e4bbb7d639c448f6eb)。
+若要启动相机，请使用 [k4a_device_start_cameras()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gaad7a85e1e5471810262442fc4a8e217a.html#gaad7a85e1e5471810262442fc4a8e217a)。
 
 ```C
 k4a_device_configuration_t config = K4A_DEVICE_CONFIG_INIT_DISABLE_ALL;

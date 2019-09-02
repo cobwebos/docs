@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 08/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 1361224fb59a32ca227c5ea1e6cc92a4b0fdff6e
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 1ac91853c78a33645c0ccb234437e3cabc188f88
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541814"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70076900"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk：常见问题
 
@@ -113,7 +113,7 @@ A.  若要加快复制过程：
 - 使用多个会话。
 - 不通过网络共享进行复制（否则可能受到网络速度的限制）可确保使数据驻留在磁盘所连接到计算机本地。
 - 在整个复制过程中，确保使用 USB 3.0 或更高版本。 下载并使用 [USBView 工具](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview)，以识别已连接到计算机的 USB 控制器和 USB 设备。
-- 为用于复制数据的计算机建立性能基准。 下载并使用 [Bluestop FIO 工具](https://bluestop.org/fio/)来建立服务器硬件的性能基准。
+- 为用于复制数据的计算机建立性能基准。 下载并使用 [Bluestop FIO 工具](https://ci.appveyor.com/project/axboe/fio)来建立服务器硬件的性能基准。 选择最新的 x86 或 x64 版本，选择“项目”  选项卡，然后下载 MSI。
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>问： 如果源数据包含小型文件（几个 KB 或 MB），如何加速数据复制？
 A.  若要加快复制过程：

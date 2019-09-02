@@ -7,12 +7,12 @@ ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: a179c5919f647b567b2109ec1a73ac8bb6cda36b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 7f55599c917011180ebb140d53defc0aca3acbb2
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479866"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983110"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 蓝图示例的控制映射
 
@@ -326,7 +326,7 @@ Azure 存储高级威胁防护会检测试图访问或利用存储帐户的异�
 - 在存储帐户上部署高级威胁防护
 
 > [!NOTE]
-> 具体 Azure Policy 定义的可用性因 Azure 政府版和其他国家/地区云的不同而异。
+> 特定 Azure Policy 定义的可用性在 Azure 政府和其他国家云中可能会有所不同。
 
 ## <a name="next-steps"></a>后续步骤
 

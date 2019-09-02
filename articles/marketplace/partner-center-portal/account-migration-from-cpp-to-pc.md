@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: f5db715ecb7d5523f5f52a356198eb547f69d4f8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 661adb755d076b0cc6114a287855482165ccb817
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194292"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208090"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>从云合作伙伴门户到合作伙伴中心的帐户迁移
 
@@ -26,13 +26,13 @@ ms.locfileid: "70194292"
 
 单击横幅以启动帐户迁移过程。 应输入以下项:
 
-### <a name="work-e-mail-address"></a>工作电子邮件地址
+### <a name="work-email-address"></a>工作电子邮件地址
 
 在大多数情况下, 使用登录到 CPP 时所用的电子邮件地址登录。 在某些情况下, 必须使用不同的电子邮件地址:
 
-* Microsoft 帐户:如果 CPP 帐户是 Microsoft 帐户, 则需要输入与租户关联的有效工作电子邮件地址, 该地址为其注册了 MPN ID。 
+* Microsoft 帐户：如果 CPP 帐户是 Microsoft 帐户, 则需要输入与租户关联的有效工作电子邮件地址, 该地址是为其注册 MPN ID 的。
 
-* 租户不匹配:如果工作电子邮件地址不属于与你的 CPP 帐户上存在的 Microsoft 合作伙伴网络 ID 相关联的租户, 则会看到错误。 若要移动此错误, 请输入与租户关联的电子邮件地址。 错误消息将提供租户的名称。 
+* 租户不匹配:如果工作电子邮件地址不属于与你的 CPP 帐户上存在的 Microsoft 合作伙伴网络 ID 相关联的租户, 则会看到错误。 若要移动此错误, 请输入与租户关联的电子邮件地址。 错误消息将提供租户的名称。
 
 ### <a name="sign-up-for-microsoft-partner-network-program"></a>注册 Microsoft 合作伙伴网络程序
 

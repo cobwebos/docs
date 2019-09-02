@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62814bb1e2934c406dc5fb1eb3b3bc3f3d2ee3b7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3799496d13259c943847625a2cf6a39a8edb1d35
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135561"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207243"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -143,6 +143,11 @@ ms.locfileid: "70135561"
 更新企业应用程序自助服务 | 企业应用程序所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 云应用程序管理员、应用程序管理员
 更新单一登录属性 | 企业应用程序所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 云应用程序管理员、应用程序管理员
 
+## <a name="entitlement-management"></a>权利管理
+任务 | 最小特权角色 | 其他角色
+---- | --------------------- | ----------------
+将资源添加到目录 | 用户管理员 | 通过权限管理, 你可以将此任务委托给目录所有者 ([请参阅文档](../governance/entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager))
+将 SharePoint Online 网站添加到目录 | 全局管理员
 
 
 ## <a name="groups"></a>个组

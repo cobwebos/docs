@@ -7,12 +7,12 @@ ms.date: 08/07/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d7419f6133ab32cdea3f44a8def1f736f48c1c4e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1f12545bce29d0ca32c7c7a62c56b8c9604c4268
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934144"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983138"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 蓝图示例的控制映射
 
@@ -318,7 +318,7 @@ Azure 存储高级威胁防护会检测试图访问或利用存储帐户的异�
 - 在存储帐户上部署高级威胁防护
 
 > [!NOTE]
-> 具体 Azure Policy 定义的可用性因 Azure 政府版和其他国家/地区云的不同而异。 
+> 特定 Azure Policy 定义的可用性在 Azure 政府和其他国家云中可能会有所不同。 
 
 ## <a name="next-steps"></a>后续步骤
 

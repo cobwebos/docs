@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 9b87e6736d37d5b03630b642fee310269e8b080a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eeda78c69c21fafcbe64071422bf7d73a4737249
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100423"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208315"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -171,7 +171,7 @@ ms.locfileid: "70100423"
 
 1. **向 SQL Server VM 资源提供程序注册后, 能否升级 SQL Server 2008/2008 R2 实例？**
 
-   是的。 你可以使用任何安装媒体来升级 SQL Server 的版本和版本, 然后将[SQL IaaS 扩展模式](virtual-machines-windows-sql-server-agent-extension.md#change-management-modes)从_无代理_升级到_完整_版本。 这样做将使你能够访问 SQL IaaS 扩展的所有优点, 例如门户可管理性、自动备份和自动修补。 
+   是的。 你可以使用任何安装媒体来升级 SQL Server 的版本和版本, 然后将[SQL IaaS 扩展模式](virtual-machines-windows-sql-register-with-resource-provider.md#change-management-modes)从_无代理_升级到_完整_版本。 这样做将使你能够访问 SQL IaaS 扩展的所有优点, 例如门户可管理性、自动备份和自动修补。 
 
 ## <a name="general"></a>常规
 

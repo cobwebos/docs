@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 091fb7cb9e74166b1e01c00834c2346dd2f0fd8b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835539"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207188"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -59,7 +59,7 @@ ms.locfileid: "68835539"
 
     ![“属性”页](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. 在另一个窗口中打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)，然后执行以下步骤：
+6. 在另一个窗口中打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer), 然后执行以下步骤:
 
     a. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
@@ -186,7 +186,7 @@ ms.locfileid: "68835539"
 
 若要更新现有角色，请执行以下步骤：
 
-1. 打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。
+1. 打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)"。
 
 2. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
@@ -224,7 +224,7 @@ ms.locfileid: "68835539"
 
 若要删除现有角色，请执行以下步骤：
 
-1. 在另一个窗口中打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。
+1. 在另一个窗口中打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
 
 2. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 

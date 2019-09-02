@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0f386faa5a18282c9e60bdb282e01dcd53f9de4f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114301"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207155"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -60,7 +60,7 @@ Azure 存储具有某些[容量限制](../azure-subscription-service-limits.md#s
 
 ## <a name="choose-a-cluster-type"></a>选择群集类型
 
-群集类型确定 HDInsight 群集配置为运行的工作负荷，例如 [Apache Hadoop](https://hadoop.apache.org/)、[Apache Storm](https://storm.apache.org/)、[Apache Kafka](https://kafka.apache.org/) 或 [Apache Spark](https://spark.apache.org/)。 有关可用群集类型的详细说明，请参阅 [Azure HDInsight 简介](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight)。 每个群集类型具有一个特定的部署拓扑，该拓扑附带大小和节点数方面的要求。
+群集类型确定 HDInsight 群集配置为运行的工作负荷，例如 [Apache Hadoop](https://hadoop.apache.org/)、[Apache Storm](https://storm.apache.org/)、[Apache Kafka](https://kafka.apache.org/) 或 [Apache Spark](https://spark.apache.org/)。 有关可用群集类型的详细说明，请参阅 [Azure HDInsight 简介](hdinsight-overview.md#cluster-types-in-hdinsight)。 每个群集类型具有一个特定的部署拓扑，该拓扑附带大小和节点数方面的要求。
 
 ## <a name="choose-the-vm-size-and-type"></a>选择 VM 大小和类型
 

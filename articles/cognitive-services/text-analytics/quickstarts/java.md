@@ -10,15 +10,15 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/30/2019
 ms.author: aahi
-ms.custom: seo-java-july2019
-ms.openlocfilehash: 437456ecb700b2efb60f2f6269643ca39d8775e2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.custom: seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 438a1290b5807d69b5b867c4afc3c1ca0e3a7203
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697530"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128170"
 ---
-# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Java 调用文本分析认知服务
+# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>快速入门：使用 Java 调用 Azure 文本分析认知服务
 <a name="HOLTop"></a>
 
 本文展示了如何将 [文本分析 API](//go.microsoft.com/fwlink/?LinkID=759711) 与 Java 配合使用来[检测语言](#Detect)、[分析情绪](#SentimentAnalysis)、[提取关键短语](#KeyPhraseExtraction)以及[识别链接的实体](#Entities)。

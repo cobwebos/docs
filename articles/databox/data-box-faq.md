@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: f1a1a8a6b32567a1571c70e76a4ae6c570d27ca5
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
-ms.translationtype: HT
+ms.openlocfilehash: f9afd3ae1d1d5d6235cf8bd0a6350a782ea6afbe
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900574"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142927"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题
 
@@ -89,7 +89,7 @@ A. 可以克隆以前的订单。 克隆操作会创建与以前相同的订单�
 ## <a name="configure-and-connect"></a>配置和连接
 
 ### <a name="q-how-do-i-unlock-the-data-box"></a>问： 如何解锁 Data Box？ 
-A.  在 Azure 门户中，转到 Data Box 订单，并导航到“设备详细信息”  。 复制解锁密码。 在 Data Box 上使用此密码登录本地 Web UI。 有关详细信息，请转到[教程：为 Azure Data Box 拆除包装、连接电缆并连接到它](data-box-deploy-set-up.md)。
+A.  在 Azure 门户中，转到 Data Box 订单，并导航到“设备详细信息”。 复制解锁密码。 在 Data Box 上使用此密码登录本地 Web UI。 有关详细信息，请转到[教程：为 Azure Data Box 拆除包装、连接电缆并连接到它](data-box-deploy-set-up.md)。
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>问： 是否可以使用 Linux 主机建立连接并将数据复制到 Data Box？
 A.  是的。 可以使用 Data Box 连接 SMB 和 NFS 客户端。 有关详细信息，请转到主机的[受支持操作系统](data-box-system-requirements.md)列表。
@@ -130,10 +130,10 @@ A. Data Box 上不支持端口通道配置、多路径 IO (MPIO) 配置或 vLAN 
 A.  可以在 Azure 门户中跟踪 Data Box 的订单状态。 创建订单时，系统还会提示你提供通知电子邮件。 如果已提供，则在订单状态发生任何变化时，你都会收到电子邮件通知。 详细了解如何[配置通知电子邮件](data-box-portal-ui-admin.md#edit-notification-details)。
 
 ### <a name="q-how-do-i-return-the-device"></a>问： 如何退回设备？ 
-A.  Microsoft 将在电子墨水显示屏上显示发货标签。 如果发货标签未显示在电子墨水显示屏上，请转至“概述”>“下载发货标签”  。 下载并打印标签，将标签插入设备上的透明塑料标签中，然后将设备放在运输承运商位置。 
+A.  Microsoft 将在电子墨水显示屏上显示发货标签。 如果发货标签未显示在电子墨水显示屏上，请转至“概述”>“下载发货标签”。 下载并打印标签，将标签插入设备上的透明塑料标签中，然后将设备放在运输承运商位置。 
 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>问： 我收到电子邮件通知，提示我的设备已到达 Azure 数据中心。 如何了解数据是否正在上传？
-A. 可转到 Azure 门户中的 Data Box 订单，然后转到“概况”  。 如果将数据上传到 Azure 已启动，将在右窗格中看到复制进度。 
+A. 可转到 Azure 门户中的 Data Box 订单，然后转到“概况”。 如果将数据上传到 Azure 已启动，将在右窗格中看到复制进度。 
 
 ## <a name="migrate-data"></a>迁移数据
 
@@ -159,7 +159,7 @@ A.  若要加快复制过程：
 - 使用多个数据复制流。 例如，在 Robocopy 中使用多线程选项。 有关所用的确切命令的详细信息，请转到[教程：将数据复制到 Azure Data Box 并进行验证](data-box-deploy-copy-data.md)。
 - 使用多个会话。
 - 不通过网络共享进行复制（否则可能受到网络速度的限制）可确保在 Data Box 连接到的计算机本地驻留数据。
-- 为用于复制数据的计算机建立性能基准。 下载并使用 [Bluestop FIO 工具](https://bluestop.org/fio/)来建立服务器硬件的性能基准。
+- 为用于复制数据的计算机建立性能基准。 下载并使用 [Bluestop FIO 工具](https://ci.appveyor.com/project/axboe/fio)来建立服务器硬件的性能基准。 选择最新的 x86 或 x64 版本，选择“项目”选项卡，然后下载 MSI。
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:
@@ -192,7 +192,7 @@ A. 我们会尽快为你提供一个 Data Box 设备。 我们优先从离你的
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>问： 电子墨水显示屏未显示退货发货标签。 我该怎么办？
 A. 如果电子墨水显示屏未显示退货发货标签，请执行以下步骤：
 - 取下上一次发货留下的旧发货标签和任何便签。
-- 在 Azure 门户中转到订单。 转到“概述”  和“下载发货标签”  。 有关详细信息，请转到[下载发货标签](data-box-portal-admin.md#download-shipping-label)。
+- 在 Azure 门户中转到订单。 转到“概述”和“下载发货标签”。 有关详细信息，请转到[下载发货标签](data-box-portal-admin.md#download-shipping-label)。
 - 打印发货标签并将其插入附加到设备的透明塑料封套中。 
 - 请确保发货标签清晰可见。 
 
@@ -203,7 +203,7 @@ A.  传输期间，Data Box 的以下功能可帮助保护数据。
 有关详细信息，请转到 [Data Box 的安全功能](data-box-security.md)。  
 
 ### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>问： 我已完成“准备交付”，并关闭了设备。 是否仍能向 Data Box 添加更多数据？
-A. 是的。 可以打开设备并添加更多数据。 完成数据复制后，需要再次运行“准备交付”  。
+A. 是的。 可以打开设备并添加更多数据。 完成数据复制后，需要再次运行“准备交付”。
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>问： 我收到了我的设备，但它无法启动。 如何将设备寄回？
 A. 如果设备无法启动，请转到 Azure 门户中的订单。 下载发货标签，将其贴在设备上。 有关详细信息，请转到[下载发货标签](data-box-portal-admin.md#download-shipping-label)。
@@ -211,7 +211,7 @@ A. 如果设备无法启动，请转到 Azure 门户中的订单。 下载发货
 ## <a name="verify-and-upload"></a>验证和上传
 
 ### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-data-box-back"></a>问： 寄回 Data Box 后，多久可以访问我在 Azure 中的数据？ 
-A.  一旦“数据复制”的订单状态显示为“已完成”，应该立即就能访问数据   。
+A.  一旦“数据复制”的订单状态显示为“已完成”，应该立即就能访问数据。
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>问： 上传后，我的数据位于 Azure 中的哪个位置？
 A.  将数据复制到 Data Box 中时，数据将上传到 Azure 存储帐户中的以下一个路径，具体取决于数据是块 Blob、页 Blob 还是 Azure 文件。
@@ -226,7 +226,7 @@ A.  如果容器名称包含大写字母，这些名称会自动转换为小写�
 - [块 blob 和页 blob 约定](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>问： 如何验证已复制到 Data Box 的数据？
-A.  数据复制完成后，运行“准备交付”即可验证数据  。 验证过程中，Data Box 将生成文件列表和数据的校验和。 可以下载文件列表，并根据源数据中的文件验证该列表。 有关详细信息，请转到[准备交付](data-box-deploy-picked-up.md#prepare-to-ship)。
+A.  数据复制完成后，运行“准备交付”即可验证数据。 验证过程中，Data Box 将生成文件列表和数据的校验和。 可以下载文件列表，并根据源数据中的文件验证该列表。 有关详细信息，请转到[准备交付](data-box-deploy-picked-up.md#prepare-to-ship)。
 
 ### <a name="q-what-happens-to-my-data-after-i-have-returned-the-data-box"></a>问： 退回 Data Box 后，我的数据会发生什么情况？
 A.  完成将数据复制到 Azure 的过程后，会根据 NIST SP 800-88 修订版 1 中的指导原则，安全擦除 Data Box 磁盘中的数据。 有关详细信息，请转到[从 Data Box 中擦除数据](data-box-deploy-picked-up.md#erasure-of-data-from-data-box)。
@@ -250,7 +250,7 @@ A.  以下报表可用于支持监管链：
 A.  承运人跟踪日志在 Data Box 订单历史记录中捕获。 设备已返回 Azure 数据中心且其中的数据已清理后，此报告可用。 如立即需要，还可直接转到运营商的网站，使用订单跟踪号码获取跟踪信息。
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我能否自己将 Data Box 送到 Azure 数据中心？ 
-A.  不是。 Azure 数据中心目前不接受客户或 UPS 以外的承运人交付 Data Box。
+A.  否。 Azure 数据中心目前不接受客户或 UPS 以外的承运人交付 Data Box。
 
 
 ## <a name="next-steps"></a>后续步骤

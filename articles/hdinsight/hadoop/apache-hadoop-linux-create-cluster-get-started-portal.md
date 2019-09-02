@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: f92cb247afb25562a96373c28534549a2f16d8c9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 0e3ee1620d9dc004f3b3b0804fc42cc0d427a7ef
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67805596"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036423"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Hadoop 群集
 
@@ -32,7 +32,7 @@ ms.locfileid: "67805596"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 门户中，导航到“创建资源” > “Analytics” > “HDInsight”    。
+1. 在 Azure 门户中，转到“创建资源” > “Analytics” > “HDInsight”    。
 
     ![Azure 门户上的 Databricks](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight.png "Azure 门户上的 Databricks")
 
@@ -45,7 +45,7 @@ ms.locfileid: "67805596"
     |群集类型     | 暂时跳过此步骤。 在此过程的下一步骤中提供此输入。|
     |群集登录用户名和密码    | 默认登录名为“admin”  。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”  。|
     |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”  。  可以提供其他名称作为 SSH 用户名。 |
-    |对 SSH 使用群集登录密码| 选中此复选框，让 SSH 用户使用与提供给群集登录用户相同的密码。|
+    |对 SSH 使用群集登录密码| 选中此复选框，让 SSH 用户使用与提供给群集登录用户的密码相同的密码。|
     |Resource group     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
     |位置    | 选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 |
 

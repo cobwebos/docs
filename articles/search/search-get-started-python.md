@@ -1,7 +1,7 @@
 ---
 title: Python 快速入门：使用 REST API 创建、加载和查询索引 - Azure 搜索
 description: 介绍如何使用 Python、Jupyter Notebooks 和 Azure 搜索 REST API 创建索引、加载数据以及运行查询。
-ms.date: 07/11/2019
+ms.date: 08/28/2019
 author: heidisteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 308e296ba5306949e87e68f14c8c219b85825af4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 352d26a1f3e781f7dbb6e502caea44bdb45b398a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656796"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129403"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在 Python 中使用 Jupyter Notebooks 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -71,6 +71,8 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
+
+   如果收到 ConnectionError `"Failed to establish a new connection"`，请验证 api-key 是主管理密钥还是辅助管理密钥，以及所有前导和尾随字符（`?` 和 `/`）是否已到位。
 
 1. 在第三个单元格中构建请求。 此 GET 请求针对搜索服务的索引集合，并选择现有索引的名称属性。
 

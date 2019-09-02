@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 344dddb4e16f23ae40028c090c499d210adb8837
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f58785b17a1e6236636744c32dac07a6c9ed138d
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855457"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992252"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据
 
@@ -92,26 +92,26 @@ ms.locfileid: "68855457"
 
    此命令会提取 **.csv** 文件。
 
-4. 使用以下命令创建 Data Lake Storage Gen2 文件系统。
+4. 使用以下命令创建 Data Lake Storage Gen2 容器。
 
    ```bash
-   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   将 `<file-system-name>` 占位符替换为你要为文件系统提供的名称。
+   将 `<container-name>` 占位符替换为你要为容器指定的名称。
 
    将 `<storage-account-name>` 占位符替换为存储帐户的名称。
 
 5. 使用以下命令创建目录。
 
    ```bash
-   hdfs dfs -mkdir -p abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
+   hdfs dfs -mkdir -p abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
    ```
 
 6. 使用以下命令将 *.csv* 文件复制到目录：
 
    ```bash
-   hdfs dfs -put "<file-name>.csv" abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
+   hdfs dfs -put "<file-name>.csv" abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
    ```
 
    如果文件名包含空格或特殊字符，请对文件名使用引号。
@@ -128,7 +128,7 @@ ms.locfileid: "68855457"
    nano flightdelays.hql
    ```
 
-2. 修改以下文本，将 `<file-system-name>` 和 `<storage-account-name>` 占位符值替换为文件系统名称和存储帐户名称。 然后将文本复制并粘贴到 nano 控制台中，方法是同时按 SHIFT 键和鼠标右键单击按钮。
+2. 修改以下文本，将 `<container-name>` 和 `<storage-account-name>` 占位符替换为容器和存储帐户名称。 然后将文本复制并粘贴到 nano 控制台中，方法是同时按 SHIFT 键和鼠标右键单击按钮。
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -160,14 +160,14 @@ ms.locfileid: "68855457"
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
 
     -- Drop the delays table if it exists
     DROP TABLE delays;
     -- Create the delays table and populate it with data
     -- pulled in from the CSV file (via the external table defined previously)
     CREATE TABLE delays
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
     AS
     SELECT YEAR AS year,
         FL_DATE AS flight_date,
@@ -218,7 +218,7 @@ ms.locfileid: "68855457"
     GROUP BY origin_city_name;
     ```
 
-   此查询会检索遇到天气延迟的城市的列表以及平均延迟时间，并将其保存到 `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库。
+   此查询会检索遇到天气延迟的城市的列表以及平均延迟时间，并将其保存到 `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库。
 
 7. 若要退出 Beeline，请在提示符处输入 `!quit`。
 
@@ -300,7 +300,7 @@ ms.locfileid: "68855457"
 
 ## <a name="export-and-load-the-data"></a>导出和加载数据
 
-在前面的部分中，已经在 `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 位置复制了转换后的数据。 本部分使用 Sqoop 将数据从 `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 导出到在 Azure SQL 数据库中创建的表。
+在前面的部分中，已经在 `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 位置复制了转换后的数据。 本部分使用 Sqoop 将数据从 `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 导出到在 Azure SQL 数据库中创建的表。
 
 1. 使用以下命令验证 Sqoop 是否可以查看 SQL 数据库：
 
@@ -313,7 +313,7 @@ ms.locfileid: "68855457"
 2. 使用以下命令将 **hivesampletable** 表中的数据导出到 **delays** 表：
 
    ```bash
-   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<file-system-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
+   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<container-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
    ```
 
    Sqoop 连接到包含 **delays** 表的数据库，并将数据从 `/tutorials/flightdelays/output` 目录导出到 **delays** 表。

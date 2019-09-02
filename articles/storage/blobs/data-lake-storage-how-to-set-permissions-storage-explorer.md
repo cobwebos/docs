@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 530e37400881ace2de603aed6875ed236e45f2c7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2cc93ad9ae1d9d6d21064a2a80c3d62bf661dabc
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847420"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992279"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2 设置文件和目录级别权限
 
@@ -28,11 +28,11 @@ Azure Data Lake Storage Gen2 中存储的文件支持细化权限和访问控制
 
 ## <a name="prerequisites"></a>先决条件
 
-为了以最佳效果描述该过程，我们要求你完成我们的 [Azure 存储资源管理器快速入门](data-lake-storage-Explorer.md)。 这可确保你的存储帐户处于最合适的状态（文件系统已创建并且数据已上传到其中）。
+为了以最佳效果描述该过程，我们要求你完成我们的 [Azure 存储资源管理器快速入门](data-lake-storage-Explorer.md)。 这可确保你的存储帐户处于最合适的状态（容器已创建并且数据已上传到其中）。
 
 ## <a name="managing-access"></a>管理访问权限
 
-你可以在文件系统的根目录中设置权限。 为此，你必须使用有权执行此操作的个人帐户登录到 Azure 存储资源管理器（而不是使用连接字符串）。 请右键单击文件系统，然后选择“管理权限”，打开“管理权限”对话框   。
+可以在容器的根目录中设置权限。 为此，你必须使用有权执行此操作的个人帐户登录到 Azure 存储资源管理器（而不是使用连接字符串）。 右键单击容器，然后选择“管理权限”，打开“管理权限”对话框   。
 
 ![Microsoft Azure 存储资源管理器 - 管理目录访问权限](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 

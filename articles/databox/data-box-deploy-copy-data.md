@@ -6,16 +6,28 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 6b2a0655173405008e0bccf3e31a8db391da6127
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 9f5ccc255310ca42ef39586860c0861b945ac6e9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496290"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098885"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>教程：通过 SMB 将数据复制到 Azure Data Box
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="copy-data-to-azure-data-box"></a>将数据复制到 Azure Data Box
+
+::: zone-end
+
+::: zone target="docs"
 
 本教程介绍如何使用本地 Web UI 连接到主机并从中复制数据。
 
@@ -208,7 +220,62 @@ ms.locfileid: "66496290"
     
    ![在仪表板上检查可用空间和已用空间](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
+::: zone-end
 
+::: zone target="chromeless"
+
+可以通过 SMB、NFS、REST、数据复制服务将数据从源服务器复制到 Data Box 或托管磁盘。
+
+在每种情况下，请确保共享和文件夹名称以及数据大小遵循 [Azure 存储和 Data Box 服务限制](data-box-limits.md)中所述的准则。
+
+## <a name="copy-data-via-smb"></a>通过 SMB 复制数据
+
+1. 如果使用 Windows 主机，请使用以下命令连接到 SMB 共享：
+
+    `\\<IP address of your device>\ShareName`
+
+2. 若要获取共享访问凭据，请在 Data Box 的本地 Web UI 中转到“连接和复制”页面。 
+3. 使用与 SMB 兼容的文件复制工具（如 Robocopy）将数据复制到共享。 
+
+有关分步说明，请转至[教程：通过 SMB 将数据复制到 Azure Data Box](data-box-deploy-copy-data.md)。
+
+## <a name="copy-data-via-nfs"></a>通过 NFS 复制数据
+
+1. 如果使用 NFS 主机，请使用以下命令在 Data Box 上装载 NFS 共享：
+
+    `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
+
+2. 若要获取共享访问凭据，请在 Data Box 的本地 Web UI 中转到“连接和复制”页面。 
+3. 使用 `cp` 或 `rsync` 命令复制数据。
+
+有关分步说明，请转至[教程：通过 NFS 将数据复制到 Azure Data Box](data-box-deploy-copy-data-via-nfs.md)。
+
+## <a name="copy-data-via-rest"></a>通过 REST 复制数据
+
+1. 若要通过 REST API 使用 Data Box Blob 存储复制数据，可以通过 *http* 或 *https* 进行连接。
+2. 若要将数据复制到 Data Box Blob 存储，可以使用 AzCopy。
+
+有关分步说明，请转至[教程：通过 REST API 将数据复制到 Azure Data Box Blob 存储](data-box-deploy-copy-data-via-nfs.md)。
+
+## <a name="copy-data-via-data-copy-service"></a>通过数据复制服务复制数据
+
+1. 若要使用数据复制服务复制数据，需要创建一个作业。 在 Data Box 的本地 Web UI 中，转到“管理”>“复制数据”>“创建”。  
+2. 填写参数并创建作业。
+
+有关分步说明，请转至[教程：使用数据复制服务将数据复制到 Azure Data Box](data-box-deploy-copy-data-via-copy-service.md)。
+
+## <a name="copy-data-to-managed-disks"></a>将数据复制到托管磁盘
+
+1. 订购 Data Box 设备时，应该选择托管磁盘作为存储目标。
+2. 可以通过 SMB 或 NFS 共享连接到 Data Box。
+3. 然后，可以通过 SMB 或 NFS 工具复制数据。
+
+有关分步说明，请转至[教程：在 Azure 中使用 Data Box 作为托管磁盘导入数据](data-box-deploy-copy-data-from-vhds.md)。
+
+::: zone-end
+
+
+::: zone target="docs"
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -224,4 +291,6 @@ ms.locfileid: "66496290"
 
 > [!div class="nextstepaction"]
 > [将 Azure Data Box 寄送到 Microsoft](./data-box-deploy-picked-up.md)
+
+::: zone-end
 

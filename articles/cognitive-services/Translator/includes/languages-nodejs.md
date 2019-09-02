@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 6b1fff913defce20aff41f685c5b96f0547faaca
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: fd8b4ae06018de1d03ca60e836534a535c8f5df8
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968213"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906937"
 ---
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
-本快速入门需要：
-
-* [Node 8.12.x 或更高版本](https://nodejs.org/en/)
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
@@ -31,6 +29,14 @@ const uuidv4 = require('uuid/v4');
 
 若要构造 HTTP 请求以及为 `'X-ClientTraceId'` 标头创建唯一标识符，必须使用这些模块。
 
+## <a name="set-the-endpoint"></a>设置终结点
+
+此示例将尝试从环境变量 `TRANSLATOR_TEXT_ENDPOINT` 读取文本翻译终结点。 如果不熟悉环境变量，则可将 `endpoint` 设置为字符串并注释掉条件语句。
+
+```javascript
+lorum ipsum
+```
+
 ## <a name="configure-the-request"></a>配置请求
 
 使用通过请求模块提供的 `request()` 方法，可以以 `options` 对象的形式传递 HTTP 方法、URL、请求参数、标头和 JSON 正文。 在此代码片段中，我们将配置请求：
@@ -41,7 +47,7 @@ const uuidv4 = require('uuid/v4');
 ```javascript
 let options = {
     method: 'GET',
-    baseUrl: 'https://api.cognitive.microsofttranslator.com/',
+    baseUrl: endpoint,
     url: 'languages',
     qs: {
       'api-version': '3.0',

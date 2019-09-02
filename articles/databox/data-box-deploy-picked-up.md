@@ -6,16 +6,28 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 7/08/2019
+ms.date: 8/27/2019
 ms.author: alkohli
-ms.openlocfilehash: db0f0ac3073687b7c1cd8ca60e459e4bb3aa03f4
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 368439d6e15d6c94bbb96d67fcb48ab006234c95
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626356"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098826"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>教程：寄回 Azure Data Box 并验证上传到 Azure 的数据
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="return-data-box-and-verify-data-upload-to-azure"></a>退回 Data Box 并验证上传到 Azure 的数据
+
+::: zone-end
+
+::: zone target="docs"
 
 本教程介绍如何退回 Azure Data Box 和验证上传到 Azure 的数据。
 
@@ -39,12 +51,32 @@ ms.locfileid: "67626356"
 
 [!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
+::: zone-end
+
+::: zone target="chromeless"
+
+数据复制完成后，准备并寄送设备。 当设备到达 Azure 数据中心时，数据会自动上传到 Azure。
+
+## <a name="prepare-to-ship"></a>准备交付
+
+在准备寄送之前，请确保复制作业已完成。
+
+1. 在本地 Web UI 中转到“准备交付”页面，开始发货准备。  
+2. 通过本地 Web UI 关闭设备。 移除设备的电缆。 
+
+接下来的步骤根据在何处退回设备而定。
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="ship-data-box-back"></a>寄回 Data Box
 
 确保数据复制到设备已完成，并且“准备交付”  运行成功。 根据要寄送设备的区域，过程会有所不同。
 
+::: zone-end
 
-### <a name="ship-in-us-canada-europe"></a>在美国、加拿大和欧洲寄送
+## <a name="ship-in-us-canada-europe"></a>在美国、加拿大和欧洲寄送
 
 如果在美国、加拿大或欧洲退回设备，请执行以下步骤。
 
@@ -60,9 +92,8 @@ ms.locfileid: "67626356"
     也可以在最近的卸货位置放置 Data Box，而不是安排提货。
 4. 承运人提取 Data Box 并进行扫描后，门户中的订单状态将更新为“已提货”。  此外还会显示一个跟踪 ID。
 
-### <a name="ship-in-asia-pacific-region"></a>在亚太地区寄送
 
-#### <a name="ship-in-australia"></a>在澳大利亚寄送
+## <a name="ship-in-australia"></a>在澳大利亚寄送
 
 澳大利亚的 Azure 数据中心会提供额外的安全通知。 所有入境装运必须收到提前通知。 若要在澳大利亚寄送，请执行以下步骤。
 
@@ -89,13 +120,12 @@ ms.locfileid: "67626356"
 
 如果需要，可以将电子邮件发送到 Azure@quantiumsolutions.com 或打电话联系 Quantium Solution 支持人员。
 
-
 有关如何通过打电话对订单进行查询，下面提供了相应的步骤：
 
 - 首先发送一封取件电子邮件。
 - 在打电话时提供订单名称。
 
-#### <a name="ship-in-japan"></a>在日本寄送 
+## <a name="ship-in-japan"></a>在日本寄送 
 
 1. 保留寄送设备所用的原始包装盒供退回寄送时使用。
 2. 关闭设备电源并拔下电缆。
@@ -125,6 +155,7 @@ ms.locfileid: "67626356"
 - 电子邮件：Customerservice.JP@quantiumsolutions.com 
 - 电话：03-5755-0150 
 
+::: zone target="docs"
 
 ## <a name="verify-data-upload-to-azure"></a>验证 Azure 中的数据上传
 
@@ -155,9 +186,21 @@ ms.locfileid: "67626356"
 
     - 如果复制了 VHDX 或动态/差异 VHD，则 VHDX/VHD 会作为页 blob 上传到暂存存储帐户，但 VHD 转换到托管磁盘将失败。 请转到临时“存储帐户”>“Blob”，然后选择相应的容器 - 标准 SSD、标准 HDD 或高级 SSD  。 VHD 作为页 blob 上传到暂存存储帐户。
 
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>验证 Azure 中的数据上传
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+::: zone-end
+
 ## <a name="erasure-of-data-from-data-box"></a>从 Data Box 中擦除数据
  
 上传到 Azure 完成后，Data Box 将根据 [NIST SP 800-88 修订版 1 准则](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)擦除其磁盘上的数据。
+
+::: zone target="docs"
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -174,5 +217,7 @@ ms.locfileid: "67626356"
 
 > [!div class="nextstepaction"]
 > [使用本地 Web UI 管理 Azure Data Box](./data-box-local-web-ui-admin.md)
+
+::: zone-end
 
 

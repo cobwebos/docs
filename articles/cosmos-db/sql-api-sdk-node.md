@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 4292b2e83c55ce62db777d846206e5857bf81ca7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: de1c1b93b813f71b321da0625bc60e0762a859c7
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142575"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207961"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -414,7 +414,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 使用已停用的 SDK 对 Cosmos DB 发出的任何请求都会被服务拒绝。
 
 > [!WARNING]
-> 适用于 SQL API 的 Node SDK 的所有版本1.x 将于**2020 年8月30日**停用。
+> 适用于 SQL API 的节点客户端 SDK 的所有版本1.x 将于**2020 年8月30日**停用。 这只会影响客户端节点 SDK, 而不会影响服务器端脚本 (存储过程、触发器和 Udf)。
 > 
 >
 <br/>

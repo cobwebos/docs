@@ -8,49 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 9da6b6ba3ab697887e55f9077b44cf6fa100a981
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1bb7a6737115f903391997a5430c32f9a40465f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707968"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207108"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>在 Apache Hadoop on HDInsight 中使用 MapReduce
 
-了解如何在 HDInsight 群集上运行 MapReduce 作业。 
-
-## <a id="whatis"></a>什么是 MapReduce
-
-Apache Hadoop MapReduce 是一个软件框架，用于编写处理海量数据的作业。 输入的数据将拆分为独立的区块。 每个区块跨群集中的节点并行进行处理。 MapReduce 作业包括两个函数：
-
-* **映射器**：使用输入数据，对数据进行分析（通常使用筛选器和排序操作），并发出元组（键/值对）
-
-* **化简器**：使用映射器发出的元组并执行汇总运算，以基于映射器数据创建更小的合并结果
-
-下图演示了一个基本的单词计数 MapReduce 作业示例：
-
-![HDI.WordCountDiagram][image-hdi-wordcountdiagram]
-
-此作业的输出是文本中每个单词出现次数的计数。
-
-* 映射器将输入文本中的每行用作一个输入并将其拆分为多个单词。 每当一个单词出现时，mapper 发出一个键/值对，其中在该单词后跟一个 1。 输出在发送到化简器之前经过排序。
-* 随后，化简器会计算每个单词的计数的和并发出一个键/值对（包含单词，后跟该单词的总出现次数）。
-
-MapReduce 可使用多种语言实现。 Java 是最常见的实现，本文档中使用该语言进行演示。
-
-## <a name="development-languages"></a>开发语言
-
-基于 Java 和 Java 虚拟机的语言或框架可作为 MapReduce 作业直接运行。 在本文档中使用的示例是 Java MapReduce 应用程序。 C#、Python 等非 Java 语言或独立可执行文件必须使用 **Hadoop 流式处理**。
-
-Hadoop 流式处理通过 STDIN 和 STDOUT 与映射器和化简器通信。 映射器和化简器从 STDIN 中一次读取一行数据，并将输出写入 STDOUT。 映射器和化简器读取或发出的每行必须采用制表符分隔的键/值对格式：
-
-    [key]/t[value]
-
-有关详细信息，请参阅 [Hadoop Streaming](https://hadoop.apache.org/docs/r1.2.1/streaming.html)（Hadoop 流式处理）。
-
-有关将 Hadoop 流式处理与 HDInsight 配合使用的示例，请参阅以下文档：
-
-* [开发 C# MapReduce 作业](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+了解如何在 HDInsight 群集上运行 MapReduce 作业。
 
 ## <a id="data"></a>示例数据
 
@@ -158,7 +125,6 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定�
 
 * [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
 
-
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-develop-mapreduce-jobs]: apache-hadoop-develop-deploy-java-mapreduce-linux.md
@@ -167,5 +133,3 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定�
 
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-[image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif

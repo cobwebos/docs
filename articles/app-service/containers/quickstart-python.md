@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/29/2019
+ms.date: 08/23/2019
 ms.author: cephalin
-ms.openlocfilehash: 163876d63ba2127dd3f3444e95b284918e60e368
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: d4f1cd5193f29e929c822966ca427c6e6ebf67de
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951998"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070974"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中创建 Python 应用
 
@@ -37,7 +36,7 @@ ms.locfileid: "68951998"
 
 ## <a name="download-the-sample-locally"></a>将示例下载到本地
 
-在终端窗口中运行以下命令，将示例应用程序克隆到本地计算机，并导航到包含示例代码的目录。
+在终端窗口中运行以下命令，将示例应用程序克隆到本地计算机，并转到包含示例代码的目录。
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
@@ -65,7 +64,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-打开 Web 浏览器并导航到 `http://localhost:5000/` 处的示例应用。
+打开 Web 浏览器并转到 `http://localhost:5000/` 处的示例应用。
 
 此时会看到来自示例应用的 Hello World!  消息显示在页面中。
 
@@ -82,7 +81,7 @@ flask run
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 接下来请运行以下命令，将示例应用存储库克隆到快速入门目录。
@@ -158,7 +157,7 @@ Python 示例代码在包含内置映像的 Linux 上的应用服务中运行。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 
-在 Cloud Shell 中，键入 `code application.py` 以打开 Cloud Shell 编辑器。
+在 Cloud Shell 中，输入 `code application.py` 以打开 Cloud Shell 编辑器。
 
 ![对 application.py 进行编码](media/quickstart-python/code-applicationpy.png)
 
@@ -184,7 +183,7 @@ az webapp up -n <app-name> -l <location-name>
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。
 
-在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
+从左侧菜单中选择“应用程序服务”，并选择 Azure 应用的名称。 
 
 ![在门户中导航到 Azure 应用](./media/quickstart-python/app-service-list.png)
 

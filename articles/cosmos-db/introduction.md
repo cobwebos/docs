@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: overview
 ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: ee863b6003444ec099753a6488f3fe4078338e60
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 5e53a671c866b9482296622d19d4ad6bec46829d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384120"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905293"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
@@ -23,6 +23,11 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 > [!div class="nextstepaction"]
 > [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
+
+还可以使用 [Cosmos DB 启动程序](https://azurecosmosdb.github.io/CosmosBootstrap/)在 Azure Cosmos DB 上加速构建或迁移应用程序。 当你注册此程序时，将为你分配 Azure Cosmos DB 工程师以协助你的项目，他们可以帮助你将数据迁移到 Azure Cosmos DB 或在 Azure Cosmos DB 上构建新应用程序。
+
+> [!div class="nextstepaction"]
+> [注册 Cosmos DB 启动程序](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ![Azure Cosmos DB 是 Microsoft 的全球分布式数据库服务，可以弹性扩展，已保证低延迟，有五个一致性模型，并提供全面 SLA 的保证](./media/introduction/azure-cosmos-db.png)
 

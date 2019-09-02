@@ -1,105 +1,172 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 虚拟网络文档
+summary: 了解如何使用 Azure 虚拟网络。 快速入门、教程和示例等等，显示了如何部署虚拟网络，如何控制流量筛选和路由，以及如何将虚拟网络连接到其他虚拟网络。
 metadata:
-  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
-  title: 虚拟网络文档 - 教程、快速入门和 API 参考 | Microsoft Docs
-  meta.description: 'Learn how to use Azure Virtual Network. Quickstarts, tutorials, samples, and more, show you how to deploy a virtual network, control traffic filtering and routing, and connect a virtual network to other virtual networks.'
-  services: virtual-network
-  author: KumudD
-  manager: twooley
-  ms.service: virtual-network
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 03/23/2018
-  ms.author: kumud
-abstract:
+  title: Azure 虚拟网络文档 - 教程、快速入门、API 参考
   description: 了解如何使用 Azure 虚拟网络。 快速入门、教程和示例等等，显示了如何部署虚拟网络，如何控制流量筛选和路由，以及如何将虚拟网络连接到其他虚拟网络。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何创建虚拟网络，如何将虚拟机部署到其中，以及如何在虚拟机与 Internet 之间进行通信。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-network/media/index/portal.svg'
-            text: Azure 门户
-            href: /azure/virtual-network/quick-create-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-network/media/index/powershell.svg'
-            text: Azure PowerShell
-            href: /azure/virtual-network/quick-create-powershell
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-network/media/index/cli.svg'
-            text: Azure CLI
-            href: /azure/virtual-network/quick-create-cli
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何创建和连接虚拟网络以及如何控制路由和筛选。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/virtual-network/tutorial-filter-network-traffic">筛选网络流量</a>
-          - html: <a href="/azure/virtual-network/tutorial-create-route-table-portal">路由网络流量</a>
-          - html: <a href="/azure/virtual-network/tutorial-restrict-network-access-to-resources">限制对资源的网络访问</a>
-          - html: <a href="/azure/virtual-network/tutorial-connect-virtual-networks-portal">连接虚拟网络</a>
-  - title: 利用 Microsoft Learn 掌握技能
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: "\_Azure 联网简介"
-            href: /learn/modules/intro-to-azure-networking/
-            image:
-              src: /learn/achievements/intro-to-azure-networking.svg
-              href: /learn/modules/intro-to-azure-networking/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure">更多交互式学习...</a>
-  - title: 免费 Pluralsight 视频培训
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 管理员
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-          - title: Azure 解决方案架构师
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-          - title: 面向 AWS 管理员的 Azure 管理
-            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-  - title: 示例
-    items:
-      - type: paragraph
-        text: 常见任务的脚本示例。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/virtual-network/cli-samples">Azure CLI</a>
-          - html: <a href="/azure/virtual-network/powershell-samples">PowerShell</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: '<p><a href="/powershell/module/az.network#networking">PowerShell</a></p><p><a href="/cli/azure/network">Azure CLI</a></p>'
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/virtual-network/">REST API 参考</a></p>
+  services: virtual-network
+  ms.service: virtual-network
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 08/28/2019
+  ms.openlocfilehash: f96f011eedc297b3f48d8b8dda177198809bb564
+  ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70142942"
+landingContent:
+- title: 关于虚拟网络
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 虚拟网络？
+      url: virtual-networks-overview.md
+  - linkListType: concept
+    links:
+    - text: 虚拟网络常见问题解答
+      url: virtual-networks-overview.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建虚拟网络
+      url: quick-create-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建、更改或删除虚拟网络
+      url: manage-virtual-network.md
+    - text: 添加、更改或删除子网
+      url: virtual-network-manage-subnet.md
+- title: 保护网络流量的安全
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 网络安全组
+      url: security-overview.md
+    - text: 应用程序安全组
+      url: security-overview.md#application-security-groups
+    - text: 虚拟网络服务终结点
+      url: virtual-network-service-endpoints-overview.md
+    - text: 虚拟网络安全常见问题解答
+      url: virtual-networks-faq.md#security
+  - linkListType: tutorial
+    links:
+    - text: 使用网络安全组筛选网络流量
+      url: tutorial-filter-network-traffic.md
+    - text: 使用服务终结点限制网络访问
+      url: tutorial-restrict-network-access-to-resources.md
+    - text: 使用应用程序安全组
+      url: manage-network-security-group.md#work-with-application-security-groups
+  - linkListType: learn
+    links:
+    - text: 保护和隔离对 Azure 资源的访问
+      url: https://docs.microsoft.com/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
+- title: 连接虚拟网络
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 虚拟网络对等互连
+      url: virtual-network-peering-overview.md
+    - text: 虚拟网络对等互连常见问题解答
+      url: virtual-networks-faq.md#vnet-peering
+  - linkListType: tutorial
+    links:
+    - text: 通过虚拟网络对等互连连接 VNet
+      url: tutorial-connect-virtual-networks-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: 同一部署模型 - 同一订阅
+      url: tutorial-connect-virtual-networks-powershell.md
+    - text: 同一部署模型 - 不同订阅
+      url: create-peering-different-subscriptions.md
+    - text: 不同部署模型 - 同一订阅
+      url: create-peering-different-deployment-models.md
+    - text: 不同部署模型 - 不同订阅
+      url: create-peering-different-deployment-models-subscriptions.md
+  - linkListType: learn
+    links:
+    - text: 通过对等互连跨虚拟网络通信
+      url: https://docs.microsoft.com/learn/modules/integrate-vnets-with-vnet-peering
+- title: 路由网络流量
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 通过路由表路由网络流量
+      url: virtual-networks-udr-overview.md
+  - linkListType: tutorial
+    links:
+    - text: 路由网络流量 - 门户
+      url: tutorial-create-route-table-portal.md
+- title: 创建 IP 地址
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IP 地址类型和分配方法
+      url: virtual-network-ip-addresses-overview-arm.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建、更改或删除公共 IP 地址
+      url: virtual-network-public-ip-address.md
+    - text: 将公共 IP 地址添加到 VM
+      url: associate-public-ip-address-vm.md
+    - text: 创建具有静态 IP 地址的 VM
+      url: virtual-network-deploy-static-pip-arm-portal.md
+    - text: 为 VM 配置静态专用 IP 地址
+      url: virtual-networks-static-private-ip-arm-pportal.md
+    - text: 将多个 IP 地址分配到 VM
+      url: virtual-network-multiple-ip-addresses-powershell.md
+- title: 创建虚拟网络的 IPv6
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 虚拟网络的 IPv6 是什么？
+      url: ipv6-overview.md
+  - linkListType: deploy
+    links:
+    - text: 部署 IPV6 双堆栈应用程序 - 标准负载均衡器
+      url: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+    - text: 部署 IPV6 双堆栈应用程序 - 基本负载均衡器
+      url: virtual-network-ipv4-ipv6-dual-stack-powershell.md
+- title: 监视虚拟网络
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 虚拟网络终端接入点 (TAP)
+      url: virtual-network-tap-overview.md
+    - text: 虚拟网络 TAP 常见问题解答
+      url: virtual-networks-faq.md#virtual-network-tap
+  - linkListType: how-to-guide
+    links:
+    - text: 创建虚拟网络 TAP
+      url: tutorial-tap-virtual-network-cli.md
+- title: 管理 IP 服务
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IP 地址类型和分配方法
+      url: virtual-network-ip-addresses-overview-arm.md
+    - text: Azure 虚拟网络的 IPv6 是什么？
+      url: ipv6-overview.md
+    - text: 公共 IP 地址前缀
+      url: public-ip-address-prefix.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建、更改或删除公共 IP 地址
+      url: virtual-network-public-ip-address.md
+    - text: 部署 IPV6 双堆栈应用程序
+      url: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+    - text: 创建、更改或删除公共 IP 地址前缀
+      url: manage-public-ip-address-prefix.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/network
+    - text: Azure PowerShell
+      url: /powershell/module/az.network
+    - text: REST
+      url: /rest/api/virtual-network

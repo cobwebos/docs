@@ -1,21 +1,21 @@
 ---
 title: 将块 Blob 存储在设备上 - Azure IoT Edge |Microsoft Docs
 description: 了解分层和生存时间功能、查看支持的 Blob 存储操作，以及连接到 Blob 存储帐户。
-author: kgremban
+author: arduppal
 manager: mchad
-ms.author: kgremban
-ms.reviewer: kgremban
+ms.author: arduppal
+ms.reviewer: arduppal
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 861b5c3ee6d5661339788e7a27ba70557d0ea267
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: f2b26e3418e264c2613a183570c7e27f75ab5d63
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947033"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208223"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>在 IoT Edge 上通过 Azure Blob 存储将数据存储在边缘
 
@@ -79,24 +79,24 @@ Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)�
 
 此设置的名称为 `deviceToCloudUploadProperties`
 
-| 字段 | 可能的值 | 说明 | 环境变量 |
-| ----- | ----- | ---- | ---- |
-| uploadOn | true、false | 默认情况`false`下, 设置为。 如果要启用此功能, 请将此字段设置为`true`。 | `deviceToCloudUploadProperties__uploadOn={false,true}` |
-| uploadOrder | NewestFirst、OldestFirst | 用于选择将数据复制到 Azure 的顺序。 默认情况`OldestFirst`下, 设置为。 顺序由 Blob 的上次修改时间确定 | `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"`是一个连接字符串, 用于指定要将数据上传到的存储帐户。 指定 `Azure Storage Account Name`、`Azure Storage Account Key` 或 `End point suffix`。 添加用于上传数据的适当 Azure EndpointSuffix，它在全局 Azure、政府 Azure 和 Microsoft Azure Stack 中是不同的。 <br><br> 可在此处选择指定 Azure 存储 SAS 连接字符串。 但必须在此属性过期时进行更新。  | `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
-| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | 允许你指定要上传到 Azure 的容器名称。 此模块允许指定源和目标容器名称。 如果未指定目标容器名称，系统会自动分配 `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` 作为容器名称。 可以创建目标容器名称的模板字符串，具体请查看“可能的值”列。 <br>* %h -> IoT 中心名称（3 到 50 个字符）。 <br>* %d -> IoT Edge 设备 ID（1 到 129 个字符）。 <br>* %m -> 模块名称（1 到 64 个字符）。 <br>* %c -> 源容器名称（3 到 63 个字符）。 <br><br>容器名称的最大大小为 63 个字符。尽管系统会自动分配目标容器名称，但如果容器大小超过 63 个字符，系统会将每个部分（IoTHubName、IotEdgeDeviceID、ModuleName、SourceContainerName）修剪为 15 个字符。 | `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target: <targetName>` |
-| deleteAfterUpload | true、false | 默认情况`false`下, 设置为。 将它设置为 `true` 时，它会在数据上传到云存储以后自动删除数据。 | `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
+| 属性 | 可能的值 | 说明 |
+| ----- | ----- | ---- |
+| uploadOn | true、false | 默认情况`false`下, 设置为。 如果要启用此功能, 请将此字段设置为`true`。 <br><br> 环境变量:`deviceToCloudUploadProperties__uploadOn={false,true}` |
+| uploadOrder | NewestFirst、OldestFirst | 用于选择将数据复制到 Azure 的顺序。 默认情况`OldestFirst`下, 设置为。 此顺序由 Blob 的上次修改时间决定。 <br><br> 环境变量:`deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"`是一个连接字符串, 用于指定要将数据上传到的存储帐户。 指定 `Azure Storage Account Name`、`Azure Storage Account Key` 或 `End point suffix`。 添加用于上传数据的适当 Azure EndpointSuffix，它在全局 Azure、政府 Azure 和 Microsoft Azure Stack 中是不同的。 <br><br> 可在此处选择指定 Azure 存储 SAS 连接字符串。 但必须在此属性过期时进行更新。 <br><br> 环境变量:`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | 允许你指定要上传到 Azure 的容器名称。 此模块允许指定源和目标容器名称。 如果未指定目标容器名称，系统会自动分配 `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` 作为容器名称。 可以创建目标容器名称的模板字符串，具体请查看“可能的值”列。 <br>* %h -> IoT 中心名称（3 到 50 个字符）。 <br>* %d -> IoT Edge 设备 ID（1 到 129 个字符）。 <br>* %m -> 模块名称（1 到 64 个字符）。 <br>* %c -> 源容器名称（3 到 63 个字符）。 <br><br>容器名称的最大大小为 63 个字符。尽管系统会自动分配目标容器名称，但如果容器大小超过 63 个字符，系统会将每个部分（IoTHubName、IotEdgeDeviceID、ModuleName、SourceContainerName）修剪为 15 个字符。 <br><br> 环境变量:`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target: <targetName>` |
+| deleteAfterUpload | true、false | 默认情况`false`下, 设置为。 如果将其设置为`true`, 则在完成上传到云存储时, 它将自动删除数据。 <br><br> 环境变量:`deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
 
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
 此设置的名称为 `deviceAutoDeleteProperties`
 
-| 字段 | 可能的值 | 说明 | 环境变量 |
-| ----- | ----- | ---- | ---- |
-| deleteOn | true、false | 默认情况`false`下, 设置为。 如果要启用此功能, 请将此字段设置为`true`。 | `deviceAutoDeleteProperties__deleteOn={false,true}` |
-| deleteAfterMinutes | `<minutes>` | 以分钟为单位指定时间。 达到此值时，模块会自动删除本地存储中的 Blob | `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
-| retainWhileUploading | true、false | 默认情况下，它设置为 `true`。在 deleteAfterMinutes 分钟过后，它会保留上传到云存储的 Blob。 可以将它设置为 `false`。在 deleteAfterMinutes 分钟过后，它会删除数据。 注意:要使此属性生效，应将 uploadOn 设置为 true| `deviceAutoDeleteProperties__retainWhileUploading={false,true}` |
+| 属性 | 可能的值 | 说明 |
+| ----- | ----- | ---- |
+| deleteOn | true、false | 默认情况`false`下, 设置为。 如果要启用此功能, 请将此字段设置为`true`。 <br><br> 环境变量:`deviceAutoDeleteProperties__deleteOn={false,true}` |
+| deleteAfterMinutes | `<minutes>` | 以分钟为单位指定时间。 此模块将在此值过期时自动从本地存储中删除 blob。 <br><br> 环境变量:`deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
+| retainWhileUploading | true、false | 默认情况下，它设置为 `true`。在 deleteAfterMinutes 分钟过后，它会保留上传到云存储的 Blob。 可以将它设置为 `false`。在 deleteAfterMinutes 分钟过后，它会删除数据。 注意:对于此属性, uploadOn 应设置为 true。 <br><br> 环境变量:`deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>使用 SMB 共享作为本地存储
 在 Windows 主机上部署此模块的 Windows 容器时, 可以提供 SMB 共享作为本地存储路径。
@@ -175,7 +175,12 @@ Azure Blob 存储文档包括多种语言的快速入门示例代码。 可以�
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - [Java](../storage/blobs/storage-quickstart-blobs-java-v10.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
+    - 使用此 SDK 时遇到已知问题, 因为此版本的模块不会返回 blob 创建时间。 因此, 很少有列表 blob 等方法不起作用。 解决方法: 在 blob 客户端上将 API 版本显式设置为 "2017-04-17"。 <br>示例：`block_blob_service._X_MS_VERSION = '2017-04-17'`
 - [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
+- [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-v10.md)
+- [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
+- [Go](../storage/blobs/storage-quickstart-blobs-go.md)
+- [PHP](../storage/blobs/storage-quickstart-blobs-php.md)
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>通过 Azure 存储资源管理器连接到本地存储
 

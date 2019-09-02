@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 49f3f608ff34847905b219047af843db00da78c4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 15960c39878e0c8ae22f94197ed1937597f1ee02
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480047"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126135"
 ---
 ::: zone target="docs"
 
@@ -29,6 +29,16 @@ ms.locfileid: "68480047"
 > * 连接到磁盘并获取支持密钥
 > * 在 Windows 客户端上解锁磁盘
 > * 在 Linux 客户端上解锁磁盘
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>打开包装、连接和解锁 Azure Data Box Disk
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -282,7 +292,7 @@ ms.locfileid: "68480047"
         ``` 
         .\DataBoxDiskUnlock.exe
         ```
-    -  提供从 Azure 门户中的“常规”>“设备详细信息”  获取的密钥。 此时会显示分配给磁盘的驱动器号。 
+    -  从 Azure 门户中的“常规”>“设备详细信息”  获取密钥，并在此处提供。 此时会显示分配给磁盘的驱动器号。 
 4. 若要在 Linux 客户端上解锁磁盘，请打开终端。 转到软件下载到的文件夹。 键入以下命令以更改文件权限，以便可以执行这些文件： 
 
     ```
@@ -294,7 +304,7 @@ ms.locfileid: "68480047"
     ```
     sudo ./DataBoxDiskUnlock_Prep.sh
     ```
-    运行 Data Box Disk 解锁工具。 提供通过转到 Azure 门户中的“常规”>“设备详细信息”  获取的密钥。 （可选）在单引号内指定要解锁的 BitLocker 加密卷列表。
+    运行 Data Box Disk 解锁工具。 从 Azure 门户中的“常规”>“设备详细信息”  获取密钥，并在此处提供。 （可选）在单引号内指定要解锁的 BitLocker 加密卷列表。
 
     ```
     sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’
@@ -303,7 +313,9 @@ ms.locfileid: "68480047"
 
 解锁磁盘后，可以查看磁盘的内容。
 
-有关如何设置和解锁磁盘的详细信息，请参阅[教程：打开包装、连接和解锁 Azure Data Box Disk](data-box-disk-deploy-set-up.md)。
+有关如何设置磁盘的详细信息，请转至[打开 Data Box Disk 的包装](data-box-disk-deploy-set-up.md#unpack-your-disks)。
+
+有关如何解锁磁盘的详细信息，请转到[在 Windows 客户端上解锁 Data Box Disk](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)。
 
 ::: zone-end
 

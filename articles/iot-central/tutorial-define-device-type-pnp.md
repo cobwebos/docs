@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a622aa85d1d0a9dcd5d5ad9b2b30e7a3120ea974
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 660b2ead146695657ae13444cb7936eff8224f3a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878628"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099516"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>教程：在 Azure IoT Central 应用程序中定义新的设备类型（预览版功能）
 
@@ -44,7 +44,7 @@ ms.locfileid: "69878628"
 
 若要完成本教程，需要一个 Azure IoT Central 应用程序。 如果已完成[创建 Azure IoT Central 应用程序](quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)快速入门，则可以重复使用此快速入门中创建的应用程序。 否则，请完成以下步骤，以创建一个空的 Azure IoT Central 应用程序：
 
-1. 导航到 Azure IoT Central 的[应用程序管理器](https://aka.ms/iotcentral)页。
+1. 导航到 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站。
 
 1. 如果你有一个 Azure 订阅，请使用用于访问该订阅的凭据登录，否则请使用 Microsoft 帐户登录：
 
@@ -70,7 +70,7 @@ ms.locfileid: "69878628"
 
     有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)。
 
-还需要获取包含 [IoT 即插即用](https://aka.ms/iot-pnp-docs)设备功能模型的 **EnvironmentalSensorInline.capabilitymodel.json** 文件的本地副本。 可以从[此处](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)下载它。 在页面上单击右键，然后选择“另存为”。 
+还需要获取包含 [IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)设备功能模型的 **EnvironmentalSensorInline.capabilitymodel.json** 文件的本地副本。 可以从[此处](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)下载它。 在页面上单击右键，然后选择“另存为”。 
 
 下载该文件后，在文本编辑器中将其打开，并将出现的两个 `<YOUR_COMPANY_NAME_HERE>` 替换为自己的名称。 请仅使用字符 a-z、A-Z、0-9 和下划线。
 
@@ -90,11 +90,11 @@ ms.locfileid: "69878628"
 
 1. 若要添加新的设备模板，请在“设备模板”页上选择“+ 新建”。  
 
-1. 从设备功能模型列表中选择“自定义”。 
+1. 从模板列表中选择“自定义”  。
 
 1. 输入“环境传感器”作为设备模板的名称。 
 
-1. 选择“导入功能模型”，以基于 JSON 文件创建新的设备功能模型。  导航到本地计算机上保存 **EnvironmentalSensorInline.capabilitymodel.json** 文件的文件夹。 选择文件“EnvironmentalSensorInline.capabilitymodel.json”，然后选择“导入”。  环境传感器功能模型包括“环境传感器”和“设备信息”接口：  
+1. 选择“导入功能模型”，以基于 JSON 文件创建新的设备功能模型。  导航到本地计算机上保存 **EnvironmentalSensorInline.capabilitymodel.json** 文件的文件夹。 选择文件“EnvironmentalSensorInline.capabilitymodel.json”，然后选择“打开”。   环境传感器功能模型包括“环境传感器”和“设备信息”接口：  
 
     ![环境传感器设备功能模型](./media/tutorial-define-device-type-pnp/newdevicecapabilitymodel.png)
 
@@ -147,9 +147,9 @@ ms.locfileid: "69878628"
 
 设备仪表板可让操作员使用图表和指标来可视化设备。 构建人员可以定义要在设备仪表板上显示的信息。 可为设备定义多个仪表板。 若要创建一个仪表板来可视化环境传感器遥测数据，请依次选择“视图”、“可视化设备”：  
 
-1. 所有设备属性、云属性、遥测和静态选项将在右侧面板中列出。 可将其中的任意项拖放到视图中。 将属性拖放到视图中。 可以使用齿轮图标配置磁贴。
+1. 所有设备属性、云属性、遥测和静态选项都在“属性”  下列出。 可将其中的任意项拖放到视图中。 将“亮度级别”  属性拖到视图中。 可以使用齿轮图标配置磁贴。
 
-1. 若要添加用于绘制遥测数据的图表，请选择“湿度”和“温度”，然后选择“合并”。    若要以任何不同的格式（例如饼图或条形图）查看此图表，请选择磁贴顶部的“更改可视化效果”按钮。 
+1. 若要添加用于绘制遥测数据的图表，请选择“湿度”和“温度”，然后选择“合并”。    若要以不同的格式（例如饼图或条形图）查看此图表，请选择磁贴顶部的“更改可视化效果”按钮。 
 
 1. 选择“保存”以保存视图： 
 
@@ -161,7 +161,7 @@ ms.locfileid: "69878628"
 
 若要创建窗体用于查看和编辑环境传感器属性：
 
-1. 选择“编辑设备和云数据”磁贴。 
+1. 导航到“环境传感器”  模板中的“视图”  。 选择“编辑设备和云数据”  磁贴以添加新视图。
 
 1. 输入窗体名称“环境传感器属性”。 
 
@@ -169,10 +169,9 @@ ms.locfileid: "69878628"
 
 1. 选择“亮度级别”和“设备状态”设备属性。   然后选择“添加部分”。  将部分的标题编辑为“传感器属性”。  选择“应用”。 
 
-1. 选择“剩余电池电量”、“设备型号”、“固件版本”、“制造商”和“序列号”设备属性。      然后选择“添加部分”。  将部分的标题编辑为“设备属性”。  选择“应用”。 
+1. 选择“设备型号”  、“软件版本”  、“制造商”  和“处理器制造商”  设备属性。 然后选择“添加部分”。  将部分的标题编辑为“设备属性”。  选择“应用”。 
 
 1. 选择“保存”以保存视图。 
-
 
 ## <a name="publish-device-template"></a>发布设备模板
 

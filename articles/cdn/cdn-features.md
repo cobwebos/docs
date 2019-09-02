@@ -12,19 +12,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/05/2019
+ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e34fbe200420fef1653e21bb44ac2f7e0de90fb7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 6826c1340de16891933b290eb29bd4fb8d120974
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593868"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127924"
 ---
 # <a name="compare-azure-cdn-product-features"></a>比较 Azure CDN 产品功能
 
-Azure 内容分发网络 (CDN) 包括四个产品：“来自 Microsoft 的 Azure CDN Standard”、“来自 Akamai 的 Azure CDN Standard”、“来自 Verizon 的 Azure CDN Standard”和“来自 Verizon 的 Azure CDN Premium”     。 有关将**来自 Verizon 的标准 Azure CDN** 配置文件迁移到**来自 Verizon 的高级 Azure CDN** 的信息，请参阅[将 Azure CDN 配置文件从标准 Verizon 迁移到高级 Verizon](cdn-migrate.md)。
+Azure 内容分发网络 (CDN) 包括四个产品：“来自 Microsoft 的 Azure CDN Standard”、“来自 Akamai 的 Azure CDN Standard”、“来自 Verizon 的 Azure CDN Standard”和“来自 Verizon 的 Azure CDN Premium”     。 有关将**来自 Verizon 的标准 Azure CDN** 配置文件迁移到**来自 Verizon 的高级 Azure CDN** 的信息，请参阅[将 Azure CDN 配置文件从标准 Verizon 迁移到高级 Verizon](cdn-migrate.md)。 请注意，虽然存在从标准 Verizon 到高级 Verizon 的升级路径，但目前没有其他产品之间的转换机制。
 
 下表比较了每个产品的可用功能。
 

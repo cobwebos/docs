@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e820ed25cae23a2dad37c807eb3e188161eaecbf
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 2063dd22e3253b0707f6920f3a5c0c7a6bb01126
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617692"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992325"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>创建 Azure Data Lake Storage Gen2 存储帐户
 
-Azure Data Lake Storage Gen2 [支持分层命名空间](data-lake-storage-introduction.md)，该命名空间提供了一个适合与 Hadoop 分布式文件系统 (HDFS) 配合使用的基于本机目录的文件系统。 可以通过 [ABFS 驱动程序](data-lake-storage-abfs-driver.md)从 HDFS 访问 Data Lake Storage Gen2 数据。
+Azure Data Lake Storage Gen2 [支持分层命名空间](data-lake-storage-introduction.md)，该命名空间提供了一个适合与 Hadoop 分布式文件系统 (HDFS) 配合使用的基于本机目录的容器。 可以通过 [ABFS 驱动程序](data-lake-storage-abfs-driver.md)从 HDFS 访问 Data Lake Storage Gen2 数据。
 
 本快速入门展示了如何使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 或通过 [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 创建帐户。
 

@@ -4,19 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b0150fc362f607a9622073492c7cd6b4d0513cb3
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 5510088925b7a628417c7f3c11bb89c5ce915381
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967957"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906653"
 ---
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [Prerequisites](prerequisites-go.md)]
 
-本快速入门需要：
-
-* [Go](https://golang.org/doc/install)
-* 适用于文本翻译的 Azure 订阅密钥
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
@@ -38,28 +35,33 @@ import (
 
 ## <a name="create-the-main-function"></a>创建 main 函数
 
-此示例将尝试从环境变量 `TRANSLATOR_TEXT_KEY` 读取文本翻译订阅密钥。 如果不熟悉环境变量，则可将 `subscriptionKey` 设置为字符串并注释掉条件语句。
+此示例将尝试从以下环境变量中读取文本翻译订阅密钥和终结点：`TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscriptionKey` 和 `endpoint` 设置为字符串并注释掉条件语句。
 
 将以下代码复制到项目中：
 
 ```go
 func main() {
     /*
-     * Read your subscription key from an env variable.
-     * Please note: You can replace this code block with
-     * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
-     * want to use env variables. If so, be sure to delete the "os" import.
-     */
-    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
-    if subscriptionKey == "" {
-       log.Fatal("Environment variable TRANSLATOR_TEXT_KEY is not set.")
+    * Read your subscription key from an env variable.
+    * Please note: You can replace this code block with
+    * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
+    * want to use env variables. If so, be sure to delete the "os" import.
+    */
+    if "" == os.Getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY") {
+      log.Fatal("Please set/export the environment variable TRANSLATOR_TEXT_SUBSCRIPTION_KEY.")
     }
+    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY")
+    if "" == os.Getenv("TRANSLATOR_TEXT_ENDPOINT") {
+      log.Fatal("Please set/export the environment variable TRANSLATOR_TEXT_ENDPOINT.")
+    }
+    endpoint := os.Getenv("TRANSLATOR_TEXT_ENDPOINT")
+    uri := endpoint + "/transliterate?api-version=3.0"
     /*
-     * This calls our transliterate function, which we'll
+     * This calls our breakSentence function, which we'll
      * create in the next section. It takes a single argument,
      * the subscription key.
      */
-    transliterate(subscriptionKey)
+    transliterate(subscriptionKey, uri)
 }
 ```
 
@@ -68,7 +70,7 @@ func main() {
 创建文本直译函数。 此函数将接受一个参数，即文本翻译订阅密钥。
 
 ```go
-func transliterate(subscriptionKey string) {
+func transliterate(subscriptionKey string, uri string) {
     /*  
      * In the next few sections, we'll add code to this
      * function to make a request and handle the response.
@@ -82,7 +84,7 @@ func transliterate(subscriptionKey string) {
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
-u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0")
+u, _ := url.Parse(uri)
 q := u.Query()
 q.Add("language", "ja")
 q.Add("fromScript", "jpan")
@@ -100,9 +102,9 @@ u.RawQuery = q.Encode()
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
 body := []struct {
-    Text string
+  Text string
 }{
-    {Text: "こんにちは"},
+  {Text: "こんにちは"},
 }
 b, _ := json.Marshal(body)
 ```

@@ -1,35 +1,51 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Bastion 文档
+### YamlMime:Landing
+title: Azure Bastion 文档（预览版）
+summary: 了解如何使用 Azure Bastion 来连接到虚拟机。 直接在 Azure 门户中配置与虚拟机之间通过 SSL 的安全、无缝 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。
 metadata:
-  document_id: null
-  title: Bastion
-  meta.description: Learn how to use Azure Bastion
-  author: cherylmc
-  ms.service: Bastion
+  title: Azure Bastion 文档（预览版）
+  description: 了解如何使用 Azure Bastion 来连接到虚拟机。 直接在 Azure 门户中配置与虚拟机之间通过 SSL 的安全、无缝 RDP/SSH 连接。
+  services: bastion
+  ms.service: bastion
   ms.topic: landing-page
-  ms.date: 07/02/2019
+  author: cherylmc
   ms.author: cherylmc
-abstract:
-  description: 了解如何使用 Azure Bastion 来连接到虚拟机。 直接在 Azure 门户中配置与虚拟机之间通过 SSL 的安全、无缝 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://go.microsoft.com/fwlink/?linkid=2095604'
-      width: 250
-    title: '使用 Azure Bastion (1:03)'
-    href: 'https://go.microsoft.com/fwlink/?linkid=2095517'
-    width: 250
-sections:
-  - title: 创建和管理 Azure Bastion（预览版）
-    items:
-      - type: paragraph
-        text: 了解如何配置 Azure Bastion 主机并连接到虚拟机。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/bastion/bastion-create-host-portal">创建和修改 Azure Bastion 主机</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">连接到 Windows 虚拟机</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">连接到 Linux 虚拟机</a>
-          - html: <a href="/azure/bastion/bastion-faq">阅读 Azure Bastion 常见问题解答</a>
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 6854e6ec4bd36ea38fa0e1f9cd46f95e11144be6
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70128121"
+landingContent:
+- title: 关于 Azure Bastion（预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Bastion？
+      url: bastion-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Bastion 常见问题解答
+      url: bastion-faq.md
+- title: 入门
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建 Bastion 主机
+      url: bastion-create-host-portal.md
+    - text: 连接到虚拟机 (Linux)
+      url: bastion-connect-vm-ssh.md
+    - text: 连接到虚拟机 (Windows)
+      url: bastion-connect-vm-rdp.md
+  - linkListType: video
+    links:
+    - text: 使用 Azure Bastion
+      url: https://go.microsoft.com/fwlink/?linkid=2095517
+- title: 使用虚拟机会话
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 复制和粘贴
+      url: bastion-vm-copy-paste.md
+    - text: 全屏视图
+      url: bastion-vm-full-screen.md

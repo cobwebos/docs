@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7cf87c3a146f51666a2c24c7cd0d6e9425159225
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228401"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905231"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用以前版本的 Azure Migrate
 
@@ -246,7 +246,6 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
 
 受 System Center Operations Manager 2012 R2 或更高版本监视的计算机无需安装 MMA 代理。 服务映射与 Operations Manager MMA 集成，以收集必要的依赖项数据。 [了解详细信息](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)。 需要安装依赖项代理。
 
-
 ### <a name="install-the-dependency-agent"></a>安装依赖项代理
 
 1. 若要在 Windows 计算机上安装依赖项代理，请双击安装程序文件，然后按照向导操作。
@@ -254,9 +253,11 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- 深入了解针对 [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) 和 [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) 操作系统的依赖项代理支持。
-- [详细了解](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)如何使用脚本来安装依赖项代理。
+- 详细了解针对 Windows 和 Linux 操作系统的 [Dependency agent 支持](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)。
+- [详细了解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)如何使用脚本来安装依赖项代理。
 
+>[!NOTE]
+> 参考的“用于 VM 的 Azure Monitor”一文提供了部署 Dependency agent 的系统先决条件和方法的概述，也适用于服务映射解决方案。
 
 ### <a name="create-a-group-with-dependency-mapping"></a>通过依赖项映射创建组
 

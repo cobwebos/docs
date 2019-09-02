@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, 传感器, 查看器, 可视化, 深度, rgb, 颜色, imu, 音频, 麦克风, 点云
-ms.openlocfilehash: 6d7acda9c72c995e789ac620e4e1f3b08d3666ec
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c2a4ee3359b1c8338f9d33bbf73f8f6318e15d31
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453458"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114436"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect 查看器
 
@@ -23,6 +23,8 @@ ms.locfileid: "67453458"
 * 体验不同的相机设置。
 * 读取设备配置。
 * 播放使用 [Azure Kinect 录制器](azure-kinect-recorder.md)录制的内容。
+
+有关 Azure Kinect 查看器的详细信息，请观看[如何使用 Azure Kinect 视频](https://www.microsoft.com/videoplayer/embed/RE3hNwG)。
 
 Azure Kinect 查看器是[开源的](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/tree/develop/tools/k4aviewer)，可作为一个例子来演示如何使用 API。
 

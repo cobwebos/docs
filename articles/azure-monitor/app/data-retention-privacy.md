@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 18129c625630e7e21e2139ea3967ba5152bc0b30
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: df441a55ef4a9a40fe4defcabca5f667eeddbf29
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991182"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207288"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -100,7 +100,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 Microsoft 只使用这些数据来向你提供服务。
 
 ## <a name="where-is-the-data-held"></a>数据保存在哪个位置？
-* 在美国、欧洲或东南亚。 创建新的 Application Insights 资源时，可以选择存储位置。 
+* 创建新的 Application Insights 资源时，可以选择存储位置。 [在此处](https://azure.microsoft.com/global-infrastructure/services/?products=all)了解有关每个区域 Application Insights 可用性的详细信息。
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>这是否意味着必须在美国、欧洲或东南亚托管我的应用？
 * 否。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。

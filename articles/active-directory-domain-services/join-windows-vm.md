@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: c3c3252ec2fd850a763bbbf089d470df5173843f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612535"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073888"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>教程：将 Windows Server 虚拟机加入托管域
 
@@ -34,7 +34,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 若要完成本教程，需要以下各资源：
 
 * 一个有效的 Azure 订阅。
-    * 如果还没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
@@ -77,8 +77,8 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     在“公共入站端口”下，请选择“允许所选端口”的选项   。 从“选择入站端口”的下拉菜单中，选择“RDP”   。
 
-5. 完成后，选择“下一步:  磁盘”。
-6. 从“OS 磁盘类型”的下拉菜单中，选择“标准 SSD”，然后选择“下一步:    网络”。
+5. 完成后，选择“下一步: **磁盘”** 。
+6. 从“OS 磁盘类型”的下拉菜单中，选择“标准 SSD”，然后选择“下一步:   **网络”  。
 7. VM 必须连接到 Azure 虚拟网络子网，该子网可以与其中部署 Azure AD DS 托管域的子网通信。 建议将 Azure AD DS 托管域部署到其自己的专用子网中。 请不要将 VM 部署在与 Azure AD DS 托管域相同的子网中。
 
     可以通过两种主要方法来部署 VM 并连接到相应的虚拟网络子网：
@@ -153,15 +153,23 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 1. 若要完成加入 Azure AD DS 托管域的过程，请重启 VM。
 
 > [!TIP]
-> 还可以使用具有 [Add-Computer][add-computer] cmdlet 的 PowerShell 将 VM 加入域。 以下示例加入 CONTOSO 域，然后重启 VM  。 出现提示时，输入属于 Azure AD DC 管理员组的用户的凭据  ：
+> 可以通过 PowerShell 使用 [Add-Computer][add-computer] cmdlet 将 VM 加入域。 以下示例加入 CONTOSO 域，然后重启 VM  。 出现提示时，输入属于 Azure AD DC 管理员组的用户的凭据  ：
 >
 > `Add-Computer -DomainName CONTOSO -Restart`
+>
+> 若要在不连接到 VM 并手动配置连接的情况下将 VM 加入域，还可以探索 [Set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell cmdlet 的用法。
 
 重启 Windows Server VM 后，Azure AD DS 托管域中应用的所有策略都将推送到 VM。 现在还可以使用适当的域凭据登录到 Windows Server VM。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 在下一个教程中，你将使用此 Windows Server VM 安装管理工具，以便管理 Azure AD DS 托管域。 如果不想继续学习本系列教程，请查看以下清理步骤，以[禁用 RDP](#disable-rdp) 或[删除 VM](#delete-the-vm)。 否则，[请继续学习下一个教程](#next-steps)。
+
+### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>将 VM 取消加入 Azure AD DS 托管域
+
+若要从 Azure AD DS 托管域中删除 VM，请再次执行[将 VM 加入域](#join-the-vm-to-the-azure-ad-ds-managed-domain)的步骤。 不要加入 Azure AD DS 托管域，而是选择加入工作组，例如默认的 WORKGROUP  。 VM 重新启动后，将从 Azure AD DS 托管域中删除计算机对象。
+
+如果你[删除 VM](#delete-the-vm) 而未取消加入域，则 Azure AD DS 中将保留一个孤立的计算机对象。
 
 ### <a name="disable-rdp"></a>禁用 RDP
 
@@ -231,3 +239,4 @@ Windows Server VM 应成功加入 Azure AD DS 托管域，加入方式与常规�
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
 [jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
+[set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 05/21/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 09d12c817e9e8678cf96c63c0bff623923f7074d
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 999b9ed88b6ff2c14defd3424c0fb541b7cf5d8e
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978840"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050094"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Azure Cosmos DB 的用于 MongoDB 的 API：支持的功能和语法
 
@@ -332,7 +332,7 @@ Cosmos DB 支持在最低层进行自动本机复制。 此逻辑经过扩展，
 
 ## <a name="sharding"></a>分片
 
-Cosmos DB 支持服务器端自动分片。 不支持手动分片命令。
+Azure Cosmos DB 支持服务器端自动分片。 它自动管理分片的创建、放置和均衡。 Azure Cosmos DB 不支持手动分片命令，这意味着你不必调用 shardCollection、addShard、balancerStart、moveChunk 等命令。只需在创建容器或查询数据时指定分片键。
 
 ## <a name="next-steps"></a>后续步骤
 

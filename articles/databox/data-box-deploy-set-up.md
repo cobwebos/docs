@@ -6,16 +6,28 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 6a725784c419b67f7738b70ad867d2d6ef8b0785
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4e997998c345e1cbd6ff784aaf84bc9f605f691c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795962"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098641"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>教程：为 Azure Data Box 连接电缆并连接到它
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="cable-and-connect-to-your-device"></a>为设备连接电缆并连接到它
+
+::: zone-end
+
+::: zone target="docs"
 
 本教程介绍了如何为 Azure Data Box 连接电缆、连接到它以及将其打开。
 
@@ -64,6 +76,38 @@ ms.locfileid: "65795962"
 
     ![Data Box 电源按钮](media/data-box-deploy-set-up/data-box-powered-door-open.png)
 
+::: zone-end
+
+::: zone target="chromeless"
+
+收到设备后，需要为设备连接电缆并连接到设备。 
+
+## <a name="cable-your-device"></a>连接设备电缆
+
+1. 如果有证据表明设备已被串改或受损，请勿继续。 请联系 Microsoft 支持部门，让其寄送更换设备。
+2. 进行设备布线时，请确保有以下电缆：
+    
+    - （已包括）接地电源线，规格为 10 安或更高，一端有 IEC60320 C-13 连接器，用于连接到设备。
+    - 一根 RJ-45 CAT 6 网线（用于 MGMT 网络接口）
+    - 两根 10 GbE SFP+ Twinax 铜线（用于 10 Gbps DATA 1、DATA 2 网络接口）
+    - 一根 RJ-45 CAT 6A 网线或一根 RJ-45 CAT 6 网线（用于 DATA 3 网络接口，分别配置为 10 Gbps 或 1 Gbps）
+
+3. 在平面上移除和放置设备。 
+    
+4. 进行设备布线，如下所示。  
+
+    ![已连接了电缆的 Data Box 设备底板](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)  
+
+    1. 将电源线连接到设备。
+    2. 使用 RJ-45 CAT 6 网线将主机连接到设备上的管理端口 (MGMT)。 
+    3. 使用 SFP+ Twinax 铜线连接至少一个 10 Gbps（首选超过 1 Gbps）的网络接口，DATA 1 或 DATA 2 用于数据。 
+    4. 打开设备。 电源按钮位于设备的前面板上。
+
+::: zone-end
+
+::: zone target="docs"
+
+
 ## <a name="connect-to-your-device"></a>连接到设备
 
 执行以下步骤来使用本地 Web UI 和门户 UI 设置设备。
@@ -92,6 +136,22 @@ ms.locfileid: "65795962"
 
 在设备设置完成后，可以连接到设备共享并将数据从计算机复制到设备。 
 
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="connect-your-device"></a>连接设备
+
+1. 若要获取设备密码，请在 [Azure 门户](https://portal.azure.com)中转到“常规”>“设备详细信息”。 
+2. 在用于连接到 Data Box 的计算机上，将静态 IP 地址 192.168.100.5 和子网 255.255.255.0 分配给以太网适配器。 通过 `https://192.168.100.10` 访问设备的本地 Web UI。 打开设备后，进行连接可能需要长达 5 分钟的时间。 
+3. 从 Azure 门户使用密码登录。 此时会出现一个错误，指出网站的安全证书有问题。 按照特定于浏览器的说明转到该网页。
+4. 默认情况下，10 Gbps（或 1 Gbps）数据接口的网络设置被配置为 DHCP。 如果需要，可以将该接口配置为静态，并提供一个 IP 地址。 
+
+::: zone-end
+
+
+::: zone target="docs"
+
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了有关 Azure Data Box 的主题，例如：
@@ -104,4 +164,6 @@ ms.locfileid: "65795962"
 
 > [!div class="nextstepaction"]
 > [将数据复制到 Azure Data Box](./data-box-deploy-copy-data.md)
+
+::: zone-end
 

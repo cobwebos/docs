@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 2b28c38d2444f227d26df1f9ca2d70876ff41064
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 016d004a538a1313ca31f36b46e961098051785c
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260593"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051710"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理邮件列表请求
 
@@ -37,7 +38,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 ![完成的逻辑应用概览](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-overview.png)
 
-如果还没有 Azure 订阅，可以在开始前<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
+如果还没有 Azure 订阅，可以在开始前[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,7 +48,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-使用 Azure 帐户凭据登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。
+使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-your-logic-app"></a>创建逻辑应用
 
@@ -196,7 +197,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
    | **列表 ID** | test-members-ML | MailChimp 邮件列表的名称 | 
-   | **Status** | subscribed | 新成员的订阅状态。 有关详细信息，请参阅 <a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">Manage subscribers with the MailChimp API</a>（使用 MailChimp API 管理订户）。 | 
+   | **Status** | subscribed | 新成员的订阅状态。 有关详细信息，请参阅 [Manage subscribers with the MailChimp API](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/)（使用 MailChimp API 管理订户）。 | 
    | **电子邮件地址** | <*new-member-email-address*> | 在参数列表或动态内容列表的“收到新电子邮件时”下选择“发件人”，以便传入新成员的电子邮件地址。   
    |  |  |  | 
 

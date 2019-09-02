@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: cc062f830facb0d617dc649ecd17acfff0a740af
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7fa2a5088e2eae039d43ecf0db080190f74cd772
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69618927"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125219"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教程：创建和配置 Azure Active Directory 域服务实例
 
@@ -43,6 +43,9 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 * 需要在 Azure AD 目录中拥有“全局管理员”特权才能启用 Azure AD DS。 
 * 需要在 Azure 订阅中拥有“参与者”特权才能创建所需的 Azure AD DS 资源。 
 * 必须在 Azure AD 租户中[配置自助式密码重置][configure-sspr]。
+
+> [!IMPORTANT]
+> 创建 Azure AD DS 托管域后，无法将实例移到其他资源组、虚拟网络、订阅等。部署 Azure AD DS 实例时，请注意选择最合适的订阅、资源组、区域和虚拟网络。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -222,6 +225,6 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 [network-considerations]: network-considerations.md
 [create-dedicated-subnet]: ../virtual-network/virtual-network-manage-subnet.md#add-a-subnet
 [scoped-sync]: scoped-synchronization.md
-[on-prem-sync]: active-directory-ds-getting-started-password-sync-synced-tenant.md
+[on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services

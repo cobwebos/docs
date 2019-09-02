@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: f4d2afd65ec06c331498ce974e933fe08c8e67dd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 432580017cec548b7ecd7cf766aa8f5cdb2253cc
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935191"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113600"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用数据库作业自动完成管理任务
 
@@ -43,7 +43,7 @@ Azure SQL 数据库允许创建和计划可针对一个或多个数据库定期�
 
 在 Azure SQL 数据库中可以使用以下作业计划技术：
 
-- **SQL 代理作业**是经典的且经过实战检验的 SQL Server 作业计划组件，可在托管实例中使用。 SQL 代理作业在单一数据库中不可用。
+- **SQL 代理作业**是经典的且经过实战检验的 SQL Server 作业计划组件，可在托管实例中使用。 SQL 代理作业在 Azure SQL 单一数据库中不可用。
 - **弹性数据库作业（预览）** 是针对一个或多个 Azure SQL 数据库执行自定义作业的作业计划服务。
 
 值得注意的是，SQL 代理（可以在本地使用以及作为 SQL 数据库托管实例的一部分使用）与数据库弹性作业代理（适用于 Azure SQL 数据库中的单一数据库和 SQL 数据仓库中的数据库）之间存在一些差异。

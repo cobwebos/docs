@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17cea353df0337b062b89cd440f79f7869450f8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9289bfe9e90186896a753e5853d81d2f06669917
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113209"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125180"
 ---
-# <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>教程：使用风险事件触发多重身份验证和密码更改
+# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>教程：使用风险检测来触发多重身份验证和密码更改
 
 本教程需启用 Azure Active Directory (Azure AD) 标识保护，这是一项 Azure AD Premium P2 功能，不仅仅是一项监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，以便自动响应风险行为。 这些策略可以进行自动阻止，也可以启动修正，包括要求进行密码更改和强制进行多重身份验证。
 
 Azure AD 标识保护策略可以在现有的条件访问策略基础上使用，充当另一层保护。 用户也许从来不会触发某项需要这其中的某个策略的风险行为，但作为管理员，你知道他们是受到保护的。
 
-可能会触发风险事件的项目包括：
+可能触发风险检测的一些项包括：
 
 * 具有已泄漏凭据的用户
 * 从匿名 IP 地址登录

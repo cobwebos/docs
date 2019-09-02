@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7a4a1c24211e644a796b4e60537978c327501383
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b344e5fefdef6cd25dcafc0577b9fbbd7f0e398d
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325788"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050621"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure 中部署容器实例
 
@@ -67,7 +67,7 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-如果容器的 `ProvisioningState` 为 **Succeeded**，则在浏览器中导航到其 FQDN。 如果看到一个与下图类似的网页，那么恭喜你了！ 现已成功将 Docker 容器中运行的应用程序部署到 Azure。
+如果容器的 `ProvisioningState` 为 **Succeeded**，则在浏览器中转到其 FQDN。 如果看到类似于下图的网页，那么恭喜你！ 现已成功将 Docker 容器中运行的应用程序部署到 Azure。
 
 ![浏览器屏幕截图，显示应用程序在 Azure 容器实例中运行][aci-app-browser]
 

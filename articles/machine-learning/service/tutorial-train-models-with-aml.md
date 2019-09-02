@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/08/2019
+ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 90f745d3ef5fd4442a184a51d82cd61b12828e15
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534799"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036193"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>教程：使用 Azure 机器学习通过 MNIST 数据和 scikit-learn 训练映像分类模型
 
@@ -96,11 +96,11 @@ experiment_name = 'sklearn-mnist'
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-an-existing-compute-resource"></a>创建或附加现有的计算资源
+### <a name="create-or-attach-an-existing-compute-target"></a>创建或附加现有的计算目标
 
 Azure 机器学习计算是一项托管服务，可让数据科学家在 Azure 虚拟机群集上训练机器学习模型。 示例包括带 GPU 支持的 VM。 在本教程中，你将创建 Azure 机器学习计算作为训练环境。 如果工作区中尚无计算群集，以下代码将创建计算群集。
 
- 创建计算群集需要大约 5 分钟  。 如果工作区中已有计算，该代码将使用它，并跳过创建过程。
+ **创建计算目标需要大约 5 分钟。** 如果计算资源已经在工作区中，则代码将使用它并跳过创建过程。
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -211,9 +211,9 @@ plt.show()
 
 ### <a name="upload-data-to-the-cloud"></a>将数据上传到云
 
-现在，通过将数据从本地计算机上传到 Azure，使该数据可以远程访问。 然后，远程定型时可以访问这些数据。 数据存储是与你的工作区相关联的方便构造，用于上传/下载数据。 可以使用数据存储与远程计算目标交互。 它由 Azure blob 存储帐户提供支持。
+在运行 Notebook 的计算机上下载并使用了训练数据。  在下一部分中，你将针对远程 Azure 机器学习计算训练模型。  远程计算资源还需要访问数据。 若要提供访问权限，请将数据上传到与你的工作区关联的集中式数据存储。 在云中使用远程计算目标时，此数据存储提供对数据的快速访问，就像在 Azure 数据中心中一样。
 
-MNIST 文件被上传到数据存储根目录下一个名为 `mnist` 的目录：
+将 MNIST 文件上传到数据存储根目录下名为 `mnist` 的目录中。 有关详细信息，请参阅[访问数据存储中的数据](how-to-access-data.md)。
 
 ```python
 ds = ws.get_default_datastore()

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 2425d14e43abd98d80bef8ce01e1c1c5f73a78a0
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 358f55594037f4a468d31265f4e65a6ec4d7ef28
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833078"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020142"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>快速入门：使用 Python 和 Azure Cosmos DB 生成表 API 应用
 
@@ -82,7 +82,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。 
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“连接字符串”  。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择“连接字符串”  。 
 
     ![在“连接字符串”窗格中查看并复制“连接字符串”](./media/create-table-python/connection-string.png)
 
@@ -100,7 +100,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 1. 在 Visual Studio 中，右键单击**解决方案资源管理器**中的项目，选择当前 Python 环境，并右键单击。
 
-2. 选择“安装 Python 包”，并键入 **azure-storage-table**
+2. 选择“安装 Python 包”，并输入 **azure-storage-table**
 
 3. 按 F5 运行应用程序。 应用会显示在浏览器中。 
 

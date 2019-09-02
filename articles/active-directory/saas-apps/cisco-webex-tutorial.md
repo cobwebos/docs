@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6aab04826a3c06b595859c0f41f658b6e5d3432
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1adda943676eb4918369d3cb8027f559d5dd0f6e
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562300"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050015"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex Meetings 集成
 
@@ -118,7 +118,7 @@ ms.locfileid: "69562300"
 
     d. 选择“源”作为“属性”  。
 
-    e. 在“源属性”  列表中，键入为该行显示的属性值。
+    e. 在“源属性”列表中，从下拉列表中选择为该行显示的属性值。 
 
     f. 单击“ **保存**”。
 

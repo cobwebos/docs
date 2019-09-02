@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 02/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 65bf4e973ce33b2898abf585fe306a8bc85c64a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477797"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126019"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "67477797"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Box Disk
+## <a name="get-started-with-azure-data-box-disk"></a>Azure Data Box Disk 入门 
 
 ::: zone-end
 
@@ -40,7 +40,7 @@ ms.locfileid: "67477797"
 
 ::: zone target="chromeless"
 
-本快速入门介绍如何使用 Azure 门户部署 Azure Data Box 磁盘。 这些步骤包括检查先决条件、解锁磁盘、连接数据并将数据复制到磁盘，以便上传到 Azure。
+本指南介绍如何在 Azure 门户中部署 Azure Data Box Disk。 这些步骤包括检查先决条件、解锁磁盘、连接数据并将数据复制到磁盘，以便上传到 Azure。
 
 ::: zone-end
 
@@ -60,10 +60,11 @@ ms.locfileid: "67477797"
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>先决条件
 
 - 已按照以下教程订购了 Data Box Disk：[教程：订购 Azure Data Box Disk](data-box-disk-deploy-ordered.md)。
 - 已收到磁盘，并且门户中的作业状态已更新为“已交付”。 
+- 你已经检查了收到的磁盘数量，并且每个磁盘有一根连接电缆。
 - 你有一台可用的客户端计算机，可以从中复制数据。 客户端计算机必须：
 
     - 运行[支持的操作系统](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)。

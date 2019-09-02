@@ -8,7 +8,9 @@
   items:
     - name: 创建新的知识库
       href: How-To/create-knowledge-base.md
-    - name: 从知识库中获取答案
+    - name: 添加带有元数据的问题
+      href: quickstarts/add-question-metadata-portal.md
+    - name: 获取答案
       items:
         - name: 使用 Postman
           href: Quickstarts/get-answer-from-kb-using-postman.md
@@ -40,7 +42,7 @@
               href: 'Quickstarts/create-knowledge-rest-api-nodejs.md##publish-a-knowledge-base'
             - name: Python
               href: Quickstarts/publish-kb-python.md
-        - name: 从知识库中获取答案
+        - name: 获取答案
           items:
             - name: 'C#'
               href: Quickstarts/get-answer-from-knowledge-base-csharp.md
@@ -125,20 +127,15 @@
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: 管理服务
       items:
-        - name: 设置 QnA Maker 服务
+        - name: 管理资源
           href: How-To/set-up-qnamaker-service-azure.md
-        - name: 获取有关知识库的分析
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: 获取分析
           href: How-To/get-analytics-knowledge-base.md
-        - name: 管理密钥
-          href: How-To/key-management.md
-        - name: 为 QnA Maker 开发选择容量
+        - name: 选择容量
           href: Tutorials/choosing-capacity-qnamaker-deployment.md
-        - name: 升级 QnA Maker 服务
-          href: How-To/upgrade-qnamaker-service.md
-        - name: 为 QnA Maker 创建业务连续性计划
+        - name: 创建业务连续性计划
           href: How-To/business-continuity-plan.md
-        - name: 排查 QnAMaker 运行时问题并对其更新
-          href: How-To/troubleshooting-runtime.md
     - name: 使用 REST API
       items:
         - name: 'C#'

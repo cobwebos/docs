@@ -4,19 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a56744173974b470999f846da49d144f2013fbb
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 55ad3591a8c2e7d5de6d1efe255e0f3a4b3c11bd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968085"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907024"
 ---
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
-* [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
-* [Json.NET NuGet 包](https://www.nuget.org/packages/Newtonsoft.Json/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
-* 适用于文本翻译的 Azure 订阅密钥
+[!INCLUDE [Setup and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-net-core-project"></a>创建 .NET Core 项目
 
@@ -46,6 +43,31 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
+## <a name="get-subscription-information-from-environment-variables"></a>从环境变量获取订阅信息
+
+将以下行添加到 `Program` 类。 这些行将从环境变量中读取订阅密钥和终结点，并在遇到任何问题时引发错误。
+
+```csharp
+private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
+private static readonly string subscriptionKey = Environment.GetEnvironmentVariable(key_var);
+
+private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
+private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
+
+static Program()
+{
+    if (null == subscriptionKey)
+    {
+        throw new Exception("Please set/export the environment variable: " + key_var);
+    }
+    if (null == endpoint)
+    {
+        throw new Exception("Please set/export the environment variable: " + endpoint_var);
+    }
+}
+// The code in the next section goes here.
+```
+
 ## <a name="create-a-function-to-get-alternate-translations"></a>创建获取备用翻译的函数
 
 在 `Program` 类中创建名为 `AltTranslation` 的函数。 该类封装用于调用 Dictionary 资源的代码，并将结果输出到控制台。
@@ -60,14 +82,14 @@ static void AltTranslation()
 }
 ```
 
-## <a name="set-the-subscription-key-host-name-and-path"></a>设置订阅密钥、主机名称和路径
+## <a name="construct-the-uri"></a>构造 URI
 
-将以下行添加到 `AltTranslation` 函数。 你会注意到，除了 `api-version`，还有两个参数已追加到 `route`。 这些参数用于设置翻译的输入和输出。 在此示例中，上述项为英语 (`en`) 和西班牙语 (`es`)。
+将以下行添加到 `AltTranslation` 函数。 你会注意到，除了 `api-version` 之外，还声明了另外两个参数。 这些参数用于设置翻译的输入和输出。 在此示例中，上述项为英语 (`en`) 和西班牙语 (`es`)。
 
 ```csharp
-string host = "https://api.cognitive.microsofttranslator.com";
-string route = "/dictionary/lookup?api-version=3.0&from=en&to=es";
-string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+string route = "/dictionary/lookup?api-version=3.0";
+static string params_ = "from=en&to=es";
+static string uri = endpoint + path + params_;
 ```
 
 接下来需创建 JSON 对象并将其序列化，其中包含要翻译的文本。 请记住，可以在 `body` 数组中传递多个对象。
@@ -76,8 +98,6 @@ string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 System.Object[] body = new System.Object[] { new { Text = @"Elephants" } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
-
-
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>实例化客户端并发出请求
 
@@ -109,7 +129,7 @@ using (var request = new HttpRequestMessage())
 request.Method = HttpMethod.Post;
 
 // Construct the full URI
-request.RequestUri = new Uri(host + route);
+request.RequestUri = new Uri(uri);
 
 // Add the serialized JSON object to your request
 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
@@ -142,7 +162,8 @@ static string PrettyPrint(string s)
 
 ```csharp
 AltTranslation();
-Console.ReadLine();
+Console.WriteLine("Press any key to continue.");
+Console.ReadKey();
 ```
 
 ## <a name="run-the-sample-app"></a>运行示例应用

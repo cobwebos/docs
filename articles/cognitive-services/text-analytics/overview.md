@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: ee4551f6a31436ef2322fcea3a0c479b45036993
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697615"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032676"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
@@ -81,7 +81,7 @@ ms.locfileid: "68697615"
 
 ## <a name="data-limits"></a>数据限制
 
-所有的文本分析 API 终结点都接受原始文本数据。 当前限制为每个文档最多包含 5,120 个字符；如果需要分析更大的文档，可将它们分解成较小的区块。 如果仍然需要提高限制，请[联系我们](https://azure.microsoft.com/overview/sales-number/)讨论具体要求。
+所有的文本分析 API 终结点都接受原始文本数据。 当前限制为每个文档最多包含 5,120 个字符；如果需要分析更大的文档，可将它们分解成较小的区块。
 
 | 限制 | 值 |
 |------------------------|---------------|
@@ -93,7 +93,7 @@ ms.locfileid: "68697615"
 
 | 层          | 每秒请求数 | 每分钟请求数 |
 |---------------|---------------------|---------------------|
-| 多服务 | 1000                | 1000                |
+| S/多服务 | 1000                | 1000                |
 | S0/F0         | 100                 | 300                 |
 | S1            | 200                 | 300                 |
 | S2            | 300                 | 300                 |

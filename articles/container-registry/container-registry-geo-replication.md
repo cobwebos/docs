@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 50ab3fc92fc980638547bb090c5d0d78aa20ab5f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172268"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208008"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -97,8 +97,19 @@ ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“
 * 异地复制注册表中的每个区域在设置后都是独立的。 Azure 容器注册表 SLA 适用于每个异地复制区域。
 * 当你从异地复制注册表中推送或拉取映像时，后台的 Azure 流量管理器会将请求发送到位于离你最近的区域中的注册表。
 * 将映像或标记更新推送到最近的区域后，Azure 容器注册表需要一些时间将清单和层复制到你选择加入的其余区域。 较大的映像比较小的映像复制所需的时间更长。 映像和标记通过最终一致性模型在复制区域之间进行同步。
-* 若要管理依赖于异地复制注册表的推送更新的工作流，建议你配置 [Webhook](container-registry-webhook.md) 以响应推送事件。 你可以在异地复制注册表中设置区域性 Webhook，以跟踪在异地复制区域内完成的推送事件。
+* 若要管理依赖于异地复制的推送更新的工作流, 建议你将[webhook](container-registry-webhook.md)配置为响应推送事件。 你可以在异地复制注册表中设置区域性 Webhook，以跟踪在异地复制区域内完成的推送事件。
 
+## <a name="delete-a-replica"></a>删除副本
+
+为注册表配置副本后, 如果不再需要它, 可以随时将其删除。 使用 Azure 门户或其他工具 (如 Azure CLI 中的[az acr replication delete](/cli/azure/acr/replication#az-acr-replication-delete)命令) 删除副本。
+
+删除 Azure 门户中的副本:
+
+1. 导航到 Azure 容器注册表, 然后选择 "**复制**"。
+1. 选择副本的名称, 然后选择 "**删除**"。 确认是否要删除副本。
+
+> [!NOTE]
+> 不能删除注册表的*主区域*中的注册表副本, 即您创建注册表的位置。 只能通过删除注册表本身来删除主副本。
 
 ## <a name="geo-replication-pricing"></a>异地复制定价
 

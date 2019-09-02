@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.topic: quickstart
 ms.date: 06/26/2019
 keywords: azure, kinect, 开发人员工具包, azure dk, 设置, 硬件, 快速, usb, 电源, 查看器, 传感器, 流, 安装, SDK, 固件
-ms.openlocfilehash: 9fece3c8313a641b5038d5eb6d5c6b480aced7fb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0d5af1febfc1ae8dfb7a4ade7f42b70a0bb69ff8
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451338"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012229"
 ---
 # <a name="quickstart-set-up-your-azure-kinect-dk"></a>快速入门：设置 Azure Kinect DK
 
@@ -43,6 +43,10 @@ ms.locfileid: "67451338"
 
 1. 选择[下载 SDK](sensor-sdk-download.md) 的链接。
 2. 在电脑上安装 SDK。
+
+## <a name="update-firmware"></a>更新固件
+
+新版本的传感器 SDK 1.2 需要下载附带的固件更新。 可以按照[如何更新固件指南](update-device-firmware.md)中的步骤更新设备固件。
 
 ## <a name="verify-that-the-device-streams-data"></a>验证设备是否流式传输数据
 

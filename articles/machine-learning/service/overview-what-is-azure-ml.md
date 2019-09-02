@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dea5e174c66685f889595ab15b3edf57dd02493
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: a8e19c89cec00bba05eb74e752268e1da43a1ac0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018232"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035851"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
@@ -108,8 +108,9 @@ Azure 机器学习服务提供 SDK **和**可视界面（预览版），可以�
 - [创建机器学习服务工作区](how-to-manage-workspace.md)以开始使用。
 
 - 按照完整的教程进行操作：
+  + [创建工作区并训练第一个 ML 模型](tutorial-1st-experiment-sdk-setup.md)
   + [使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)
-  + [准备数据并使用自动化机器学习来自动训练回归模型](tutorial-data-prep.md)
+
 
 - 了解[机器学习管道](/azure/machine-learning/service/concept-ml-pipelines)，以便生成、优化和管理机器学习方案。
 

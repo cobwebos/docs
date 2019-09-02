@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a6c12a2fdc8616dd6f7107d11e8f6c77401811fb
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8a567dbbd8c5e752b8d9294623a5f4d3f37e5a05
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968005"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906805"
 ---
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [JDK 7 或更高版本](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](https://gradle.org/install/)
-* 适用于文本翻译的 Azure 订阅密钥
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>使用 Gradle 初始化项目
 
@@ -44,7 +42,7 @@ plugins {
     application
 }
 application {
-    mainClassName = "LengthSentence"
+    mainClassName = "BreakSentence"
 }
 repositories {
     mavenCentral()
@@ -65,11 +63,11 @@ dependencies {
 mkdir -p src/main/java
 ```
 
-接下来，在此文件夹中，创建一个名为 `LengthSentence.java` 的文件。
+接下来，在此文件夹中，创建一个名为 `BreakSentence.java` 的文件。
 
 ## <a name="import-required-libraries"></a>导入所需的库
 
-打开 `LengthSentence.java` 并添加以下 import 语句：
+打开 `BreakSentence.java` 并添加以下 import 语句：
 
 ```java
 import java.io.*;
@@ -85,22 +83,23 @@ import com.squareup.okhttp.*;
 首先，为你的项目创建一个公共类：
 
 ```java
-public class LengthSentence {
+public class BreakSentence {
   // All project code goes here...
 }
 ```
 
-将以下行添加到 `LengthSentence` 类。 你会注意到，除了 `api-version`，还可以定义输入语言。 在此示例中，语言为英语。
+将以下行添加到 `BreakSentence` 类。 首先，从环境变量中读取订阅密钥和终结点。 然后，你会注意到，除了 `api-version`，还可以定义输入语言。 在此示例中，语言为英语。
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0&language=en";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/breaksentence?api-version=3.0&language=en";
 ```
 如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="create-a-client-and-build-a-request"></a>创建客户端并生成请求
 
-将以下行添加到 `LengthSentence` 类来实例化 `OkHttpClient`：
+将以下行添加到 `BreakSentence` 类来实例化 `OkHttpClient`：
 
 ```java
 // Instantiates the OkHttpClient.
@@ -145,8 +144,8 @@ public static String prettify(String json_text) {
 ```java
 public static void main(String[] args) {
     try {
-        LengthSentence lengthSentenceRequest = new LengthSentence();
-        String response = lengthSentenceRequest.Post();
+        BreakSentence breakSentenceRequest = new BreakSentence();
+        String response = BreakSentenceRequest.Post();
         System.out.println(prettify(response));
     } catch (Exception e) {
         System.out.println(e);

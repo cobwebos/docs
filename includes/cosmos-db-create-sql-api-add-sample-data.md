@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 08/07/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 6656c374ae0ff4aae7f99fd340e9e25e5cbc67d1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f80efbac256871af073354f23317c447d6a85f1e
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854141"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020173"
 ---
 现在可以使用数据资源管理器将数据添加到新容器。
 
-1. 在“数据资源管理器”中展开“Tasks”数据库，然后展开“Items”容器。    选择“项”，然后单击“新建项”。  
+1. 在“数据资源管理器”中展开“Tasks”数据库，然后展开“Items”容器。    依次选择“项”、“新建项”。  
 
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
   

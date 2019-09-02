@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 07/01/2019
+ms.date: 08/27/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 260d2774eecb42d0234c33e40b4f10680a4fbfbd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ebb6c05645a991d22ac30ee013e5a51007994eb6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932237"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073854"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -67,6 +67,8 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |S4    |    400     |    100     |
 |S8*    |    320     |    200     |
 |S9*    |    640    |    400     |
+|S8v2*    |    640     |    200     |
+|S9v2*    |    1280    |    400     |
 
 \* 并未在所有区域推出。  
 
@@ -82,34 +84,35 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |加拿大中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |美国东部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
 |美国东部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
-|美国东部 2     |     S8、S9   |    1    |
+|美国东部 2     |     S8、S9、S8v2、S9v2   |    1    |
 |美国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
 |美国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
-|美国西部     |    S8、S9   |    2  |
+|美国西部     |    S8、S9、S8v2、S9v2   |    2  |
 |美国西部 2    |    B1、B2、S0、S1、S2、S4、D1    |    3   |
-|美国西部 2    |    S8、S9  |    1     |
+|美国西部 2    |    S8、S9、S8v2、S9v2  |    1     |
 
 ### <a name="europe"></a>欧洲
 
 |区域  | 支持的计划 | 查询副本（仅限标准计划） |
 |---------|---------|:---------:|
 |北欧     |    B1、B2、S0、S1、S2、S4、D1      |    7     |
+|北欧     |    S8v2、S9v2      |    3     |
 |英国南部     |    B1、B2、S0、S1、S2、S4、D1      |     1    |
 |西欧     |    B1、B2、S0、S1、S2、S4、D1   |    7    |
-|西欧    |   S8、S9  |  1  |
+|西欧    |   S8、S9、S8v2、S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>亚太区 
 
 |区域  | 支持的计划 | 查询副本（仅限标准计划） |
 |---------|---------|:---------:|
 |澳大利亚东部     |    B1、B2、S0、S1、S2、S4     |    3     |
-|澳大利亚东部     |    S8、S9    |    1     |
+|澳大利亚东部     |    S8、S9、S8v2、S9v2    |    1     |
 |澳大利亚东南部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |日本东部     |   B1、B2、S0、S1、S2、S4、D1       |    1     |
-|东南亚     |     B1、B2、S0、S1、S2、S4、S8、S9、D1     |   1      |
+|东南亚     |     B1、B2、S0、S1、S2、S4、S8、S9、S8v2、S9v2、D1     |   1      |
 |印度西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>按需求缩放
@@ -246,7 +249,7 @@ Azure Analysis Services 文档还包含 [GitHub 问题](https://docs.microsoft.c
 
 ## <a name="blogs"></a>博客
 
-信息会不断更新。 请通过 [Analysis Services 团队博客](https://blogs.msdn.microsoft.com/analysisservices/)和 [Azure 博客](https://azure.microsoft.com/blog/)获取最新信息。
+信息会不断更新。 请通过 [Power BI 博客](https://powerbi.microsoft.com/blog/category/analysis-services/)和 [Azure 博客](https://azure.microsoft.com/blog/)获取最新信息。
 
 ## <a name="community"></a>社区
 

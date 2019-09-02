@@ -156,6 +156,9 @@
     - name: 从门户更新现有分配
       displayName: 'lock, errors'
       href: ./how-to/update-existing-assignments.md
+    - name: 为蓝图操作员配置环境
+      displayName: 'rbac, user-assigned, managed, identity, management group'
+      href: ./how-to/configure-for-blueprint-operator.md
     - name: 将蓝图作为代码管理（社区）
       href: 'https://github.com/Azure/azure-blueprints/blob/master/README.md'
 - name: 故障排除

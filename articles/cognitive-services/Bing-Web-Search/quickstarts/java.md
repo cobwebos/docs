@@ -10,15 +10,15 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: aahi
-ms.custom: seodec2018, seo-java-july2019
-ms.openlocfilehash: 42cb270955846f1333b79389c3ca979dc4808f05
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 24197cc708789381e0f160268bea96b25457ba8f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489633"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123727"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>快速入门：使用必应 Web 搜索 REST API 和 Java 搜索网页
+# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>快速入门：使用 Java 通过必应 Web 搜索 REST API（一种 Azure 认知服务）搜索 Web
 
 使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。 这个 Java 应用程序会向该 API 发送一个搜索请求并显示响应。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 

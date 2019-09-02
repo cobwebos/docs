@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 7f43507566109a52b914f27e37e5392345ec2eaf
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6e3bf7b4fb60d81ff8883c2592de3739572bf2fa
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946167"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997800"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>快速入门：使用自定义视觉 Node.js SDK 创建对象检测项目
 
@@ -26,20 +26,19 @@ ms.locfileid: "68946167"
 - 安装了 [Node.js 8](https://www.nodejs.org/en/download/) 或更高版本。
 - 安装了 [npm](https://www.npmjs.com/)。
 
+[!INCLUDE [get-keys](includes/get-keys.md)]
+
+[!INCLUDE [node-get-images](includes/node-get-images.md)]
+
+
 ## <a name="install-the-custom-vision-sdk"></a>安装自定义视觉 SDK
 
-若要安装适用于 Node.js 的自定义视觉服务 SDK，请运行以下命令：
+若要在项目中安装适用于 Node.js 的自定义视觉服务 SDK，请运行以下命令：
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
-
-可以下载图像以及 [Node.js 示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)。
-
-[!INCLUDE [get-keys](includes/get-keys.md)]
-
-[!INCLUDE [node-get-images](includes/node-get-images.md)]
 
 ## <a name="add-the-code"></a>添加代码
 
@@ -47,9 +46,10 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ### <a name="create-the-custom-vision-service-project"></a>创建自定义视觉服务项目
 
-将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。 请注意，创建对象检测和图像分类项目之间的区别是 **create_project** 调用中指定的域。
+将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在相应的定义中插入订阅密钥，并将 sampleDataRoot 路径值设置为图像文件夹路径。 请确保终结点值与你在 [Customvision.ai](https://www.customvision.ai/) 创建的训练和预测终结点匹配。 请注意，创建对象检测和图像分类项目之间的区别是 **create_project** 调用中指定的域。
 
 ```javascript
+const fs = require('fs');
 const util = require('util');
 const TrainingApi = require("@azure/cognitiveservices-customvision-training");
 const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");

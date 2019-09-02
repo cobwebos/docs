@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 08/28/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aefa6d21488b617b26ddefe5fa4fc61cdd203f96
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e13ab3378857bd0254d7cb2fb98249ccc24b1cb7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032523"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125632"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 若要将本地应用程序添加到 Azure AD，需要：
 
-* 一个 [Microsoft Azure AD 基本版或高级版订阅](https://azure.microsoft.com/pricing/details/active-directory)
+* 一个 [Microsoft Azure AD Premium 订阅](https://azure.microsoft.com/pricing/details/active-directory)
 * 一个应用程序管理员帐户
 * 用户标识必须从本地目录同步，或直接在 Azure AD 租户中创建。 标识同步允许 Azure AD 在授予用户对应用代理发布的应用程序的访问权限之前对用户进行预身份验证，并获得执行单一登录 (SSO) 所需的用户标识符信息。
 

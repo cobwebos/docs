@@ -58,6 +58,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: 概念
   items:
+    - name: 模板部署
+      href: template-deployment-overview.md
     - name: 模板文件结构
       displayName: 'parameters,variables,resources,outputs,condition'
       href: resource-group-authoring-templates.md
@@ -83,6 +85,8 @@
   items:
     - name: 创建模板
       items:
+        - name: 开发工具 - VS Code
+          href: resource-manager-tools-vs-code.md
         - name: 创建模板
           href: how-to-create-template.md
         - name: 子资源名称和类型

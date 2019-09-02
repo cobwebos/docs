@@ -37,10 +37,12 @@
       href: concept-usage-insights-report.md
     - name: 有风险的登录
       href: concept-risky-sign-ins.md
-    - name: 风险事件
+    - name: 风险检测
       href: concept-risk-events.md
     - name: 有风险的用户
       href: concept-user-at-risk.md
+    - name: 预配日志
+      href: concept-provisioning-logs.md
     - name: 报告 API
       href: concept-reporting-api.md
     - name: Azure Monitor 中的 Azure AD 日志

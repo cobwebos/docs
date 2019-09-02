@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf5770cf052a478ea56f906efc19698554a1cd0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: cd3907231ce3963d43fa8279039a736b63fc2043
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989723"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127280"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>什么是 Azure Active Directory 报表？
 
@@ -54,9 +54,9 @@ ms.locfileid: "68989723"
 
 - 在“Azure Active Directory 免费版和基本版”中，获取一个列表，其中包含标记为存在风险的用户和风险登录。  
 
--  Azure Active Directory Premium 1 版本还允许你检查每个报表中检测到的部分潜在性风险事件，从而扩展了该模型。 
+-  Azure Active Directory Premium 1 版本扩展了这个模型，它还允许你检查每个报告检测到的一些潜在风险检测。 
 
--  Azure Active Directory Premium 2 版本提供有关潜在风险事件的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
+-  Azure Active Directory Premium 2 版本提供有关潜在风险检测的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
 
 
 ## <a name="activity-reports"></a>活动报表

@@ -4,17 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: d37efdaf7e8f2b2b2cb6d3c5fcc90e166feab96a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 34ff0e792fc388f3083e2d490b2658822793988f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968189"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906917"
 ---
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [JDK 7 或更高版本](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](https://gradle.org/install/)
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>使用 Gradle 初始化项目
 
@@ -88,10 +87,12 @@ public class GetLanguages {
 }
 ```
 
-将以下行添加到 `GetLanguages` 类：
+将以下行添加到 `GetLanguages` 类。 你会注意到，将从环境变量中读取订阅密钥和终结点：
 
 ```java
-String url = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/languages?api-version=3.0";
 ```
 
 如果使用的是认知服务多服务订阅，则还必须在请求参数中包括 `Ocp-Apim-Subscription-Region`。 [详细了解如何使用多服务订阅进行身份验证](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。

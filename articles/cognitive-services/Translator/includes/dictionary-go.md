@@ -4,23 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 39f78e78ade206b73e64796e8d25243e20bb146d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b646f1994c83dba18b246dc3738729058ce6922d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968037"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907082"
 ---
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [Prerequisites](prerequisites-go.md)]
 
-本快速入门需要：
-
-* [Go](https://golang.org/doc/install)
-* 适用于文本翻译的 Azure 订阅密钥
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
-使用喜欢的 IDE/编辑器创建新的 Go 项目，或在桌面上创建新的文件夹。 然后，将此代码片段复制到项目/文件夹的 `alt-translations.go` 文件中。
+使用喜欢的 IDE/编辑器创建新的 Go 项目，或在桌面上创建新的文件夹。 然后，将此代码片段复制到项目/文件夹的 `dictionaryLookup.go` 文件中。
 
 ```go
 package main
@@ -38,28 +35,33 @@ import (
 
 ## <a name="create-the-main-function"></a>创建 main 函数
 
-此示例将尝试从环境变量 `TRANSLATOR_TEXT_KEY` 读取文本翻译订阅密钥。 如果不熟悉环境变量，则可将 `subscriptionKey` 设置为字符串并注释掉条件语句。
+此示例将尝试从以下环境变量中读取文本翻译订阅密钥和终结点：`TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscriptionKey` 和 `endpoint` 设置为字符串并注释掉条件语句。
 
 将以下代码复制到项目中：
 
 ```go
 func main() {
     /*
-     * Read your subscription key from an env variable.
-     * Please note: You can replace this code block with
-     * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
-     * want to use env variables. Then, be sure to delete the "os" import.
-     */
-    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
-    if subscriptionKey == "" {
-       log.Fatal("Environment variable TRANSLATOR_TEXT_KEY is not set.")
+    * Read your subscription key from an env variable.
+    * Please note: You can replace this code block with
+    * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
+    * want to use env variables. If so, be sure to delete the "os" import.
+    */
+    if "" == os.Getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY") {
+      log.Fatal("Please set/export the environment variable TRANSLATOR_TEXT_SUBSCRIPTION_KEY.")
     }
+    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY")
+    if "" == os.Getenv("TRANSLATOR_TEXT_ENDPOINT") {
+      log.Fatal("Please set/export the environment variable TRANSLATOR_TEXT_ENDPOINT.")
+    }
+    endpoint := os.Getenv("TRANSLATOR_TEXT_ENDPOINT")
+    uri := endpoint + "/dictionary/lookup?api-version=3.0"
     /*
-     * This calls our altTranslations function, which we'll
+     * This calls our breakSentence function, which we'll
      * create in the next section. It takes a single argument,
      * the subscription key.
      */
-    altTranslations(subscriptionKey)
+    dictionaryLookup(subscriptionKey, uri)
 }
 ```
 
@@ -68,7 +70,7 @@ func main() {
 让我们创建获取备用翻译的函数。 此函数将接受一个参数，即文本翻译订阅密钥。
 
 ```go
-func altTranslations(subscriptionKey string) {
+func dictionaryLookup(subscriptionKey string, uri string) {
     /*  
      * In the next few sections, we'll add code to this
      * function to make a request and handle the response.
@@ -82,7 +84,7 @@ func altTranslations(subscriptionKey string) {
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
-u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0")
+u, _ := url.Parse(uri)
 q := u.Query()
 q.Add("from", "en")
 q.Add("to", "es")
@@ -149,7 +151,7 @@ fmt.Printf("%s\n", prettyJSON)
 就是这样，你已构建了一个简单的程序。该程序可以调用文本翻译 API 并返回 JSON 响应。 现在，可以运行该程序了：
 
 ```console
-go run alt-translations.go
+go run dictionaryLookup.go
 ```
 
 如果希望将你的代码与我们的进行比较，请查看 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go) 上提供的完整示例。

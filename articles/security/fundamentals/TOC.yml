@@ -1,0 +1,334 @@
+- name: 基础知识文档
+  href: index.md
+- name: 体系结构和设计
+  href: overview.md
+  expanded: false
+  items:
+    - name: 高级威胁检测
+      displayName: 'vulnerability, virus, IDs, incident'
+      href: threat-detection.md
+    - name: Azure 日志记录和审核
+      displayName: incident
+      href: log-audit.md
+    - name: Azure 网络安全
+      displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
+      href: abstract-network-security.md
+    - name: Azure 无服务器平台安全
+      href: abstract-serverless-platform-security.md
+    - name: Azure 中的容器安全性
+      href: abstract-container-security.md
+    - name: 实现运营安全
+      displayName: 'policy, policies, azure monitor, soc'
+      href: abstract-operational-security.md
+    - name: Azure 云中的隔离
+      displayName: trust boundary
+      href: isolation-choices.md
+    - name: 安全混合网络体系结构
+      displayName: trust boundary
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+    - name: 安全技术功能
+      href: technical-capabilities.md
+    - name: 开发 Azure 上的安全应用
+      href: abstract-develop-secure-apps.md
+- name: 数据安全与加密
+  href: encryption-overview.md
+  items:
+    - name: 数据库安全
+      href: database-security-overview.md
+      items:
+        - name: 最佳做法
+          href: database-best-practices.md
+        - name: 安全清单
+          href: database-security-checklist.md
+    - name: 磁盘加密
+      items:
+        - name: 最佳做法
+          displayName: transit
+          href: data-encryption-best-practices.md
+        - name: 静态数据加密
+          href: encryption-atrest.md
+        - name: IaaS VM 的磁盘加密
+          items:
+            - name: 关于 Azure 磁盘加密
+              displayName: 'BitLocker, bek'
+              href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
+            - name: 快速入门
+              items:
+                - name: 使用 Azure CLI 加密 Linux VM
+                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-cli-quickstart'
+                - name: 使用 Azure PowerShell 加密 Linux VM
+                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-powershell-quickstart'
+                - name: 使用 Azure CLI 加密 Windows VM
+                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-cli-quickstart'
+                - name: 使用 Azure PowerShell 加密 Windows VM
+                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-powershell-quickstart'
+            - name: Azure 磁盘加密
+              items:
+                - name: 磁盘加密先决条件
+                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites'
+                - name: 适用于 Windows VM 的磁盘加密
+                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-windows'
+                - name: 适用于 Linux VM 的磁盘加密
+                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux'
+                - name: 将磁盘加密与虚拟机规模集扩展排序配合使用
+                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-extension-sequencing'
+                - name: 有关磁盘加密的附录
+                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-appendix'
+                - name: 磁盘加密常见问题解答
+                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq'
+                - name: 故障排除
+                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg'
+                - name: 使用 Azure AD 应用的 Azure 磁盘加密（以前的版本）
+                  displayName: active directory
+                  items:
+                    - name: 使用 Azure AD 应用的磁盘加密先决条件
+                      displayName: active directory
+                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites-aad'
+                    - name: 使用 Azure AD 应用的磁盘加密（用于 Windows VM）
+                      displayName: active directory
+                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-windows-aad'
+                    - name: 使用 Azure AD 应用的磁盘加密（用于 Linux VM）
+                      displayName: active directory
+                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux-aad'
+    - name: Azure 存储安全
+      href: storage-overview.md
+    - name: 存储安全指南
+      href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+    - name: 客户密码箱
+      href: customer-lockbox-overview.md
+- name: 平台和基础结构
+  items:
+    - name: 基础结构安全性
+      href: infrastructure.md
+      items:
+        - name: 物理安全性
+          href: physical-security.md
+        - name: 可用性
+          href: infrastructure-availability.md
+        - name: 组件和边界
+          href: infrastructure-components.md
+        - name: 网络体系结构
+          displayName: 'ssl, https'
+          href: infrastructure-network.md
+        - name: 生产网络
+          href: production-network.md
+        - name: SQL 数据库
+          href: infrastructure-sql.md
+        - name: 操作
+          href: infrastructure-operations.md
+        - name: 监视
+          href: infrastructure-monitoring.md
+        - name: 完整性
+          href: infrastructure-integrity.md
+        - name: 数据保护
+          href: protection-customer-data.md
+    - name: Microsoft 反恶意软件
+      displayName: virus
+      href: antimalware.md
+    - name: IaaS 安全
+      href: virtual-machines-overview.md
+      items:
+        - name: 最佳做法 - IaaS 工作负荷
+          displayName: patch
+          href: iaas.md
+        - name: Azure 市场映像
+          href: azure-marketplace-images.md
+    - name: 身份管理
+      href: identity-management-overview.md
+      items:
+        - name: 选择 Azure AD 身份验证
+          displayName: 'identity, active directory, seamless sso'
+          href: choose-ad-authn.md
+        - name: 安全清单
+          displayName: 'identity, active directory, password'
+          href: steps-secure-identity.md
+        - name: 选择无密码
+          displayName: 'identity, active directory, passwordless'
+          href: ad-passwordless.md
+        - name: 最佳做法
+          displayName: 'password, identity, active directory'
+          href: identity-management-best-practices.md
+        - name: 对订阅管理员强制实施 MFA
+          displayName: identity
+          href: global-admin.md
+    - name: 网络安全
+      displayName: 'firewall, ssl, vpn, IDs, gateway, https, azure application gateway, application gateway, ips, waf'
+      href: network-overview.md
+      items:
+        - name: 最佳做法
+          href: network-best-practices.md
+        - name: DDoS 保护
+          href: ddos-best-practices.md
+        - name: 边界安全
+          href: network-best-practices.md
+- name: 应用程序
+  items:
+    - name: PaaS
+      href: paas-deployments.md
+      items:
+        - name: 适用于 PaaS 的 Azure 应用服务
+          href: paas-applications-using-app-services.md
+        - name: 适用于 PaaS 的 Azure 存储
+          href: paas-applications-using-storage.md
+        - name: 适用于 PaaS 的 DB 最佳做法
+          href: paas-applications-using-sql.md
+    - name: IoT
+      href: iot-overview.md
+      items:
+        - name: IoT 安全最佳实践
+          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-security-best-practices?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+        - name: IoT 安全
+          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-security-architecture?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json#security-in-iot'
+        - name: 保护 IoT 部署
+          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-security-deployment?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+    - name: Azure Service Fabric 安全
+      href: service-fabric-overview.md
+      items:
+        - name: 最佳做法
+          href: service-fabric-best-practices.md
+        - name: 安全清单
+          href: service-fabric-checklist.md
+- name: 监视、审核和操作
+  href: management-monitoring-overview.md
+  items:
+    - name: 审核和日志记录
+      items:
+        - name: 安全管理
+          displayName: 'vulnerability, incident, virus,'
+          href: 'https://docs.microsoft.com/azure/security-center/security-center-intro?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+        - name: 远程管理安全
+          href: management.md
+        - name: Azure 日志集成
+          items:
+            - name: 介绍
+              href: azure-log-integration-overview.md
+            - name: 入门
+              href: azure-log-integration-get-started.md
+            - name: 集成 Azure AD 审核日志
+              displayName: active directory
+              href: azure-log-integration-ad.md
+            - name: 集成安全中心警报
+              displayName: splunk
+              href: 'https://docs.microsoft.com/azure/security-center/security-center-export-data-to-siem?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+            - name: 集成 Key Vault 中的日志
+              displayName: keyvault
+              href: azure-log-integration-keyvault-eventhub.md
+            - name: 常见问题解答
+              href: azure-log-integration-faq.md
+    - name: 运营安全
+      href: operational-overview.md
+      items:
+        - name: 最佳做法
+          href: operational-best-practices.md
+        - name: 安全清单
+          href: operational-checklist.md
+- name: 管理和符合性
+  displayName: 'blueprint, privacy, certifications'
+  items:
+    - name: 受 AU 保护
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: IaaS Web 应用程序
+          href: ../blueprints/au-protected-iaaswa-overview.md
+        - name: PaaS Web 应用程序
+          href: ../blueprints/au-protected-paaswa-overview.md
+    - name: FedRAMP
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: 按审核范围划分的 Azure 服务
+          href: ../compliance/azure-services-in-fedramp-auditscope.md
+        - name: 数据分析
+          href: ../blueprints/fedramp-analytics-overview.md
+        - name: 数据仓库
+          href: ../blueprints/fedramp-datawarehouse-overview.md
+        - name: IaaS Web 应用程序
+          href: ../blueprints/fedramp-iaaswa-overview.md
+        - name: PaaS Web 应用程序
+          href: ../blueprints/fedramp-paaswa-overview.md
+    - name: FFIEC
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: 数据分析
+          href: ../blueprints/ffiec-analytics-overview.md
+        - name: 数据仓库
+          href: ../blueprints/ffiec-dw-overview.md
+        - name: IaaS Web 应用程序
+          href: ../blueprints/ffiec-iaaswa-overview.md
+        - name: PaaS Web 应用程序
+          href: ../blueprints/ffiec-paaswa-overview.md
+    - name: HIPAA/HITRUST
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: 运行状况数据和 AI
+          href: ../blueprints/azure-health.md
+    - name: NIST SP 800-171
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: 数据分析
+          href: ../blueprints/nist171-analytics-overview.md
+        - name: 数据仓库
+          href: ../blueprints/nist171-datawarehouse-overview.md
+        - name: IaaS Web 应用程序
+          href: ../blueprints/nist171-iaaswa-overview.md
+        - name: PaaS Web 应用程序
+          href: ../blueprints/nist171-paaswa-overview.md
+    - name: PCI DSS
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: 数据分析
+          href: ../blueprints/pcidss-analytics-overview.md
+        - name: 数据仓库
+          href: ../blueprints/pcidss-dw-overview.md
+        - name: IaaS Web 应用程序
+          href: ../blueprints/pcidss-iaaswa-overview.md
+        - name: PaaS Web 应用程序
+          href: ../blueprints/pcidss-paaswa-overview.md
+    - name: SCCA
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: 保护 Azure 计算体系结构
+          href: ../compliance/secure-azure-computing-architecture.md
+    - name: TIC
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: 与 Azure 的受信任 Internet 连接
+          href: ../compliance/compliance-tic.md
+    - name: UK NHS
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: 数据分析
+          href: ../blueprints/uknhs-analytics-overview.md
+        - name: 数据仓库
+          href: ../blueprints/uknhs-datawarehouse-overview.md
+        - name: IaaS Web 应用程序
+          href: ../blueprints/uknhs-iaaswa-overview.md
+        - name: PaaS Web 应用程序
+          href: ../blueprints/uknhs-paaswa-overview.md
+    - name: 英国官方
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: IaaS Web 应用程序
+          href: ../blueprints/ukofficial-iaaswa-overview.md
+        - name: PaaS Web 应用程序
+          href: ../blueprints/ukofficial-paaswa-overview.md
+- name: 白皮书
+  href: white-papers.md
+- name: Azure 安全服务
+  href: services-technologies.md
+- name: 技术概述
+  href: overviews.md
+- name: 最佳做法
+  href: best-practices-and-patterns.md
+- name: 资源
+  items:
+    - name: 常见安全属性
+      href: common-security-attributes.md
+    - name: Azure 安全 MVP 计划
+      href: mvp.md
+    - name: 网络安全咨询
+      href: cyber-services.md
+    - name: 记录安全事件支持票证
+      href: event-support-ticket.md
+    - name: 渗透测试
+      displayName: penetration
+      href: pen-testing.md

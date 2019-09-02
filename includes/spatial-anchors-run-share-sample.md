@@ -4,12 +4,12 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: b46a2b18309851bbe2934980137a53d2de6f6efc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1007533df077c58d9e4d57f9e86b035730ea917f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "67135357"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69903860"
 ---
 ## <a name="set-up-your-device-in-unity"></a>在 Unity 中设置设备
 
@@ -29,7 +29,7 @@ ms.locfileid: "67135357"
 
 [!INCLUDE [Configure Unity Scene](spatial-anchors-unity-configure-scene.md)]
 
-在“检查器”窗格中，输入 `Sharing Anchors Service url`（来自 ASP.NET Web 应用 Azure 部署）作为 `Base Sharing Url` 的值，并将 `index.html` 替换为 `api/anchors`  。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
+在“项目”窗格中，导航到 `Assets\AzureSpatialAnchors.Examples\Resources`  。 选择 `SpatialAnchorSamplesConfig`。 然后，在“检查器”  窗格中，输入 `Sharing Anchors Service url`（来自 ASP.NET Web 应用 Azure 部署）作为 `Base Sharing Url` 的值，将 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
 
 选择“文件” > “保存”，从而保存场景   。
 

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: def218564511b65809e776f97d0962b72f72adc2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 17e27fcbd0e31c8602869be3d884888fe4fe7db0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898143"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095815"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>教程：在 Azure 部署管理器（公共预览版）中使用运行状况检查
 
@@ -235,8 +235,8 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 为了简化本教程，拓扑模板和项目将在以下位置共享，因此你不需要准备自己的副本。 若要使用自己的副本，请遵照以下文档中的说明操作：[教程：将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)。
 
-* 拓扑模板：\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json)
-* 项目存储：\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* 拓扑模板：https:\//armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
+* 项目存储：https:\//armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
 
 若要部署拓扑，请选择“尝试”打开 Cloud shell，然后粘贴 PowerShell 脚本  。
 
@@ -265,8 +265,8 @@ New-AzResourceGroupDeployment `
 
 为了简化本教程，修订的推出模板将在以下位置共享，因此你不需要准备自己的副本。 若要使用自己的副本，请遵照以下文档中的说明操作：[教程：将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)。
 
-* 拓扑模板：\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json)
-* 项目存储：\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* 拓扑模板：https:\//armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
+* 项目存储：https:\//armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
 
 使用在[创建运行状况检查服务模拟器](#create-a-health-check-service-simulator)中创建的不正常状态 URL。 对于 **managedIdentityID**，请参阅[创建用户分配的托管标识](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity)。
 

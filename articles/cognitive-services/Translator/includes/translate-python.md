@@ -4,19 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 32a784d0b359c21aa17c7ed73081c01a37f01e90
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 648842e86410985e3a6fb21f474b9df9d14e109d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968125"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906701"
 ---
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [Prerequisites](prerequisites-python.md)]
 
-本快速入门需要：
-
-* Python 2.7.x 或 3.x
-* 适用于文本翻译的 Azure 订阅密钥
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
@@ -24,10 +21,7 @@ ms.locfileid: "68968125"
 
 ```python
 # -*- coding: utf-8 -*-
-import os
-import requests
-import uuid
-import json
+import os, requests, uuid, json
 ```
 
 > [!NOTE]
@@ -35,27 +29,25 @@ import json
 
 第一个注释告知 Python 解释器使用 UTF-8 编码。 然后导入必需的模块，以便从环境变量读取订阅密钥、构造 HTTP 请求、创建唯一标识符，以及处理文本翻译 API 返回的 JSON 响应。
 
-## <a name="set-the-subscription-key-base-url-and-path"></a>设置订阅密钥、基 URL 和路径
+## <a name="set-the-subscription-key-endpoint-and-path"></a>设置订阅密钥、终结点和路径
 
-此示例将尝试从环境变量 `TRANSLATOR_TEXT_KEY` 读取文本翻译订阅密钥。 如果不熟悉环境变量，则可将 `subscriptionKey` 设置为字符串并注释掉条件语句。
+此示例将尝试从以下环境变量中读取文本翻译订阅密钥和终结点：`TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscription_key` 和 `endpoint` 设置为字符串并注释掉条件语句。
 
 将以下代码复制到项目中：
 
 ```python
-# Checks to see if the Translator Text subscription key is available
-# as an environment variable. If you are setting your subscription key as a
-# string, then comment these lines out.
-if 'TRANSLATOR_TEXT_KEY' in os.environ:
-    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
-else:
-    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
-    exit()
-# If you want to set your subscription key as a string, uncomment the line
-# below and add your subscription key.
-#subscriptionKey = 'put_your_key_here'
+key_var_name = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
+if not key_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
+subscription_key = os.environ[key_var_name]
+
+endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
 ```
 
-文本翻译全局终结点设置为 `base_url`。 `path` 设置 `translate` 路由并确定我们需使用 API 的版本 3。
+文本翻译全局终结点设置为 `endpoint`。 `path` 设置 `translate` 路由并确定我们需使用 API 的版本 3。
 
 `params` 用于设置输出语言。 在此示例中，我们将从英文翻译为意大利文和德文：`it` 和 `de`。
 
@@ -63,10 +55,9 @@ else:
 > 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：翻译](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate)。
 
 ```python
-base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/translate?api-version=3.0'
 params = '&to=de&to=it'
-constructed_url = base_url + path + params
+constructed_url = endpoint + path + params
 ```
 
 ## <a name="add-headers"></a>添加标头
@@ -77,7 +68,7 @@ constructed_url = base_url + path + params
 
 ```python
 headers = {
-    'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Ocp-Apim-Subscription-Key': subscription_key,
     'Content-type': 'application/json',
     'X-ClientTraceId': str(uuid.uuid4())
 }

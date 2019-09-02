@@ -9,17 +9,16 @@ ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 48b053b6520bff2ac83cd02af31194f81413e92c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 5c668d1d0783300333e4d0b78c93fe5e7a9d0dd0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598748"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069240"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>应用服务环境简介 #
  
@@ -63,7 +62,7 @@ ASE 由前端和辅助角色组成。 前端负责处理 HTTP/HTTPS 终止以及
 
 客户无需管理前端和辅助角色。 客户扩展其应用服务计划时，会自动添加所有基础结构。 在 ASE 中创建或缩放应用服务计划时，将在适当的情况下添加或删除所需的基础结构。
 
-ASE 每月会产生统一的基础结构使用费，该费率不会随 ASE 的大小变化而改变。 此外，每个应用服务计划 vCPU 也会产生费用。 ASE 中托管的所有应用都在“隔离”定价 SKU 中。 有关 ASE 定价的相关信息，请参阅[应用服务定价][Pricing]页并查看 ASE 的可用选项。
+ASE 每月会产生统一的基础结构使用费，该费率不会随 ASE 的大小变化而改变。 此外，每个应用服务计划 vCPU 也会产生费用。 ASE 中托管的所有应用都在“隔离”定价 SKU 中。 有关 ASE 定价的信息，请参阅[应用服务定价][Pricing]页并查看 ASE 的可用选项。
 
 ## <a name="virtual-network-support"></a>虚拟网络支持 ##
 

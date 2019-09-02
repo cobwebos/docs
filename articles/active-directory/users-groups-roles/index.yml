@@ -1,46 +1,83 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 企业用户管理文档 - Azure Active Directory
+summary: 可以通过组和管理员角色分配等 Azure AD 用户管理服务快速完成重要任务。 分配许可证、向组或用户分配应用程序访问权限，或者委托用于分发标识管理任务的权限。
 metadata:
-  document_id: null
   title: Azure Active Directory 用户、组、角色和许可证文档
-  description: 了解如何使用用户、组、角色和许可证管理向租户中的 Azure 云服务进行身份验证。
+  description: 了解如何使用用户、组、角色和许可证来管理向组织中的 Azure 云服务进行的身份验证。
   services: active-directory
-  ms.subservice: users-groups-roles
-  author: curtand
-  manager: mtillman
   ms.service: active-directory
+  ms.subservice: users-groups-roles
+  manager: mtillman
   ms.topic: landing-page
-  ms.date: 01/31/2019
+  ms.date: 08/28/2019
+  author: curtand
   ms.author: curtand
-abstract:
-  description: 组和管理员角色分配等 Azure AD 用户管理工具将帮助你更快地完成重要任务并适应增长。 可以将 SaaS 应用的访问权限或许可证分配给组而不是个人，或者委托权限以分散 Azure AD 标识管理开销。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何使用 Azure Active Directory 中的管理工具
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">将用户添加到 Azure AD</a>
-          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">将许可证分配给用户</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">注册 Azure AD Premium</a>
-          - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-expiration">为用户创建的组设置过期策略</a>
-          - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-naming-policy">为用户创建的组设置命名策略</a>
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何动态填充 Azure Active Directory 中的组
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/users-groups-roles/groups-dynamic-tutorial">创建动态填充的组</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 参考链接
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0">Azure AD PowerShell cmdlet</a></p>'
+  ms.openlocfilehash: 4689a573bf8d58aa9734af97ea66f78ab4e5707a
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70126929"
+landingContent:
+- title: 关于用户、组、角色和许可证
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 大型组织的用户、组、许可和角色
+      url: directory-overview-user-model.md
+    - text: 自定义角色概述
+      url: roles-custom-overview.md
+  - linkListType: concept
+    links:
+    - text: 委托管理权限
+      url: roles-concept-delegation.md
+    - text: 比较 Azure RBAC 角色与 Azure AD 管理员角色
+      url: https://docs.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 添加用户
+      url: https://review.docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - text: 设置组的过期策略
+      url: groups-quickstart-expiration.md
+    - text: 将许可证分配给用户
+      url: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+- title: 分配 Azure AD 管理员角色
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 PowerShell 分配角色
+      url: roles-assign-powershell.md
+    - text: 使用 Graph API 分配角色
+      url: roles-assign-graph.md
+    - text: 按任务委托角色
+      url: roles-delegate-by-task.md
+    - text: 委托应用程序管理权限
+      url: roles-delegate-app-roles.md
+- title: 分配许可证
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 为一组用户授权
+      url: licensing-groups-assign.md
+    - text: PowerShell 许可示例
+      url: licensing-ps-examples.md
+- title: 管理组
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建动态组
+      url: groups-create-rule.md
+    - text: PowerShell 中的组设置
+      url: groups-settings-v2-cmdlets.md
+    - text: 设置组的命名策略
+      url: groups-naming-policy.md
+- title: 添加域
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 添加自定义域名
+      url: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - text: 管理自定义域名
+      url: domains-manage.md

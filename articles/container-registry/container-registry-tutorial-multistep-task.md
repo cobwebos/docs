@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c78c2c8279972108aee12b9b386175d0f27b7fee
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 339b13201934b1ba5cd4f53c21d50b62814c36eb
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310415"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905379"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时在云中运行多步骤容器工作流
 
@@ -332,7 +332,7 @@ az acr task create \
     --name example2 \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
     --branch master \
-    --file taskmulti-image.yaml \
+    --file taskmulti-multiregistry.yaml \
     --git-access-token $GIT_PAT \
     --set regDate=mycontainerregistrydate.azurecr.io
 ```
@@ -363,7 +363,7 @@ az acr task credential add --name example2 \
 az acr task run --registry $ACR_NAME --name example2
 ```
 
-默认情况下，执行此命令时，`az acr task run` 命令会将日志流式传输到控制台。 与前面一样，输出将显示每个任务步骤的运行进度。 该输出经过简化，只显示关键步骤
+默认情况下，执行此命令时，`az acr task run` 命令会将日志流式传输到控制台。 与前面一样，输出将显示每个任务步骤的运行进度。 该输出已经过简化，只显示关键步骤。
 
 输出：
 

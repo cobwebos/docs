@@ -3,19 +3,20 @@ title: 教程：自动处理电子邮件和附件 - Azure 逻辑应用
 description: 教程 - 创建自动化工作流，以便使用 Azure 逻辑应用、Azure 存储和 Azure Functions 处理电子邮件和附件
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
-manager: carmonm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: ee232b54bc4d65d6380a6f2a1d1c88ee7dcf53c3
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: e7c27d284ef93d15c5ac9a6228205e79518f2ffa
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312667"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051787"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>教程：使用 Azure 逻辑应用自动处理电子邮件和附件
 
@@ -61,9 +62,9 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
    | 设置 | 值 | 说明 |
    |---------|-------|-------------|
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅的名称 |  
-   | **资源组** | LA-Tutorial-RG | 用于组织和管理相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称。 <p>**注意：** 资源组存在于特定的区域内。 本教程中的项目可能不在所有区域提供，请尽可能尝试使用同一区域。 |
-   | **存储帐户名称** | attachmentstorageacct | 存储帐户的名称 |
-   | **位置** | 美国西部 | 用于存储存储帐户信息的区域 |
+   | **资源组** | <Azure-resource-group>  | 用于组织和管理相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称。 此示例使用“LA-Tutorial-RG”。 <p>**注意：** 资源组存在于特定的区域内。 本教程中的项目可能不在所有区域提供，请尽可能尝试使用同一区域。 |
+   | **存储帐户名称** | <*Azure-storage-account-name*> | 你的存储帐户名称，必须包含 3-24 个字符，并且只能包含小写字母和数字。 此示例使用“attachmentstorageacct”。 |
+   | **位置** | <*Azure-region*> | 用于存储存储帐户相关信息的区域。 此示例使用“美国西部”。 |
    | **性能** | 标准 | 此设置指定支持的数据类型以及用于存储数据的介质。 请参阅[存储帐户的类型](../storage/common/storage-introduction.md#types-of-storage-accounts)。 |
    | **帐户种类** | 常规用途 | [存储帐户类型](../storage/common/storage-introduction.md#types-of-storage-accounts) |
    | **复制** | 本地冗余存储 (LRS) | 此设置指定如何复制、存储、管理和同步数据。 请参阅[本地冗余存储 (LRS)：适用于 Azure 存储的低成本数据冗余](../storage/common/storage-redundancy-lrs.md)。 |

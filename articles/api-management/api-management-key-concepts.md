@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 3934dbb01c3b9f3219c5e649d97371850b8daadc
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230621"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073433"
 ---
 # <a name="about-api-management"></a>关于 API 管理
 
@@ -94,7 +93,7 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 有关详细信息，请参阅[如何创建和使用组][How to create and use groups]。
 
 ## <a name="developers"> </a> 开发人员
-开发人员表示 API 管理服务实例中的用户帐户。 可以让管理员创建或邀请开发人员加入，也可以让开发人员从[开发人员门户][Developer portal]注册。 每个开发人员是一个或多个组的成员，并且可以订阅授予这些组的可见性的产品。
+开发人员表示 API 管理服务实例中的用户帐户。 管理员可以创建或邀请开发人员加入，或他们可以从“ [开发人员门户][Developer portal]”注册。 每个开发人员是一个或多个组的成员，并且可以订阅授予这些组的可见性的产品。
 
 当开发人员订阅某个产品时，会向其授予该产品的主密钥和辅助密钥。 在调用产品的 API 时使用此键。
 
@@ -106,7 +105,7 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 在任何 API 管理策略中，策略表达式可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流](/azure/api-management/api-management-advanced-policies#choose)和[设置变量](/azure/api-management/api-management-advanced-policies#set-variable)策略）基于策略表达式。 有关详细信息，请参阅[高级策略](/azure/api-management/api-management-advanced-policies#AdvancedPolicies)和[策略表达式](/azure/api-management/api-management-policy-expressions)。
 
 
-有关 API 管理策略的完整列表，请参阅[策略参考][Policy reference]。 有关使用和配置策略的详细信息，请参阅 [API 管理策略][API Management policies]。 有关使用速率限制和配额策略创建产品的教程，请参阅[如何创建和配置高级产品设置][How create and configure advanced product settings]。
+有关 API 管理策略的完整列表，请参阅 [策略参考][Policy reference]。 有关使用和配置策略的详细信息，请参阅 [API 管理策略][API Management policies]。 有关使用速率限制和配额策略创建产品的教程，请参阅 [如何创建和配置高级产品设置][How create and configure advanced product settings]。
 
 
 ## <a name="developer-portal"> </a> 开发人员门户

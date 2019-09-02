@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 17fee1f01bf883aa2a9845fe4f2817fb806056dd
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516242"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051629"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教程：训练第一个 ML 模型
 
@@ -31,14 +31,18 @@ ms.locfileid: "69516242"
 
 ## <a name="prerequisites"></a>先决条件
 
-唯一的先决条件是已完成上一篇教程：[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
+唯一的先决条件是运行本教程的第一部分：[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
+
+在本教程的这一部分中，你将运行在第一部分结束时打开的示例 Jupyter Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` 中的代码。 本文将介绍此 Notebook 中的相同代码。
 
 ## <a name="connect-workspace-and-create-experiment"></a>连接工作区并创建试验
 
-导入 `Workspace` 类，并使用函数 `from_config().` 从文件 `config.json` 中加载订阅信息。默认情况下，这会查找当前目录中的 JSON 文件，但你也可以使用 `from_config(path="your/file/path")` 指定一个路径参数以指向该文件。 如果你在工作区中的云笔记本服务器上运行此笔记本，则该文件会自动包含在根目录中。
+导入 `Workspace` 类，并使用函数 `from_config().` 从文件 `config.json` 中加载订阅信息。默认情况下，这会查找当前目录中的 JSON 文件，但你也可以使用 `from_config(path="your/file/path")` 指定一个路径参数以指向该文件。 在云笔记本服务器中，该文件自动位于根目录中。
 
 如果以下代码要求进行额外的身份验证，只需在浏览器中粘贴链接，然后输入身份验证令牌即可。
 
+> [!TIP]
+> 如果你不熟悉 Jupyter Notebook，请通过单击代码单元并按 **Shift+Enter** 来运行代码，以便一次运行一个单元。 或者，若要一次运行整个 Notebook，请单击顶部菜单栏上的“单元”  ，然后单击“全部运行”  。
 
 ```python
 from azureml.core import Workspace

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 2fd9ccff68eb368107a299af02a54ae6fc6cc0e2
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: edb9e50cceed95d8ca77567e7c1228704b5f177d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946149"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982368"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>快速入门：使用自定义视觉 Node.js SDK 创建图像分类项目
 
@@ -45,7 +45,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ### <a name="create-the-custom-vision-service-project"></a>创建自定义视觉服务项目
 
-将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。
+将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在相应的定义中插入订阅密钥，并将 sampleDataRoot 路径值设置为图像文件夹路径。 请确保终结点值与你在 [Customvision.ai](https://www.customvision.ai/) 创建的训练和预测终结点匹配。
 
 ```javascript
 const util = require('util');

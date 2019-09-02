@@ -1,5 +1,5 @@
 ---
-title: 创建和测试 Azure IoT 即插即用预览版设备 | Microsoft Docs
+title: 创建和测试 IoT 即插即用预览版设备 | Microsoft Docs
 description: 向设备开发人员介绍如何使用 VS Code 为 IoT 即插即用预览版设备创建和测试新的设备功能模型。
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 5a03eea84d0d68f06b432014fc4374e799914d67
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 10eb9655371177a52d1c1a5a9118665015076b35
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878718"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047963"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>教程：使用 Visual Studio Code 创建和测试设备功能模型
 

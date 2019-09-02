@@ -7,18 +7,19 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a4e217ce3fcfae0f7d103c545ff385f2dffe582d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eeabb4547e3c02ebf540e6d156df97954e612fbc
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100498"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208337"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>使用 SQL VM 资源提供程序在 Azure 中注册 SQL Server 虚拟机
 
@@ -38,13 +39,15 @@ ms.locfileid: "70100498"
 
 - 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
 - 一个[SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。 
-- [Azure CLI](/cli/azure/install-azure-cli)和[PowerShell](/powershell/azure/new-azureps-module-az)。 
+- [Azure CLI](/cli/azure/install-azure-cli)或[PowerShell](/powershell/azure/new-azureps-module-az)的最新版本。 
 
 
 ## <a name="register-with-sql-vm-resource-provider"></a>向 SQL VM 资源提供程序注册
-如果 VM 上未安装[SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md), 则可以通过指定轻型 SQL 管理模式向 SQL VM 资源提供程序注册。 在轻型 SQL 管理模式下, SQL VM 资源提供程序将在[轻型模式下](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode)自动安装 Sql IaaS 扩展, 并验证 SQL Server 实例元数据;这不会重新启动 SQL Server 服务。 将 SQL VM 资源提供程序注册为 "PAYG" 或 "AHUB" 时, 需要提供所需的 SQL Server 许可证类型。
+如果 VM 上未安装[SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md), 则可以通过指定轻型 SQL 管理模式向 SQL VM 资源提供程序注册。 
 
-在[轻型模式下](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode)向 SQL VM 资源提供程序注册将确保合规性并启用灵活的许可以及就地 SQL Server 版更新。 故障转移群集实例和多实例部署只能在轻型模式下在 SQL VM 资源提供程序中注册。 可以按照 Azure 门户上的说明升级到[完整模式](virtual-machines-windows-sql-server-agent-extension.md#install-in-full-mode), 并通过 SQL Server 随时重新启动来启用全面的可管理性功能集。 
+如果在注册过程中指定了轻型, SQL VM 资源提供程序将在[轻型模式下](#change-management-modes)自动安装 Sql IaaS 扩展, 并验证 SQL Server 实例元数据;这不会重新启动 SQL Server 服务。 将 SQL VM 资源提供程序注册为 "PAYG" 或 "AHUB" 时, 需要提供所需的 SQL Server 许可证类型。
+
+在轻型模式下向 SQL VM 资源提供程序注册将确保合规性并启用灵活的许可以及就地 SQL Server 版更新。 故障转移群集实例和多实例部署只能在轻型模式下在 SQL VM 资源提供程序中注册。 你可以随时[升级](#change-management-modes)到完整管理模式, 但这样做将重新启动 SQL Server 服务。 
 
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
@@ -59,7 +62,7 @@ ms.locfileid: "70100498"
      # Register SQL VM with 'Lightweight' SQL IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-        -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  
+        -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='PAYG';sqlManagement='LightWeight'}  
   
   ```
 
@@ -70,7 +73,7 @@ ms.locfileid: "70100498"
   ```azurecli-interactive
   # Register Enterprise or Standard self-installed VM in Lightweight mode
 
-  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type AHUB 
+  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type PAYG 
 
   ```
 
@@ -83,7 +86,7 @@ ms.locfileid: "70100498"
   ```
 ---
 
-如果已在 VM 上安装 SQL IaaS 扩展, 则使用 SQL VM 资源提供程序注册只需创建 SqlVirtualMachine/SqlVirtualMachines 类型的元数据资源。 下面是在 VM 上已安装 SQL IaaS 扩展时要向 SQL VM 资源提供程序注册的代码片段。 将 SQL VM 资源提供程序注册为 "PAYG" 或 "AHUB" 时, 需要提供所需的 SQL Server 许可证类型。
+如果已手动将 SQL IaaS 扩展安装到 VM, 则可以通过创建 SqlVirtualMachine/SqlVirtualMachines 类型的元数据资源, 以完全模式向 SQL VM 资源提供程序注册。 下面是在 VM 上已安装 SQL IaaS 扩展时要向 SQL VM 资源提供程序注册的代码片段。 需要提供所需的 SQL Server 许可证类型作为 "PAYG" 或 "AHUB"。 若要以完全管理模式注册, 请使用以下 PowerShell 命令:
 
   ```powershell-interactive
   # Get the existing  Compute VM
@@ -92,13 +95,13 @@ ms.locfileid: "70100498"
    # Register with SQL VM resource provider
    New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
       -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB'}
+      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='PAYG'}
   ```
 
 
 ## <a name="register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms"></a>在 Windows Server 2008 Vm 上注册 SQL Server 2008 或 2008 R2
 
-Windows Server 2008 上安装的 SQL Server 2008 和 2008 R2 可以在[无代理](virtual-machines-windows-sql-server-agent-extension.md)模式下注册到 SQL VM 资源提供程序。 此选项可确保符合性, 并允许在 Azure 门户中监视 SQL Server VM 功能有限。
+Windows Server 2008 上安装的 SQL Server 2008 和 2008 R2 可以在[无代理模式下](#change-management-modes)注册到 SQL VM 资源提供程序。 此选项可确保符合性, 并允许在 Azure 门户中监视 SQL Server VM 功能有限。
 
 下表详细说明了在注册过程中提供的参数的可接受值:
 
@@ -118,7 +121,7 @@ Windows Server 2008 上安装的 SQL Server 2008 和 2008 R2 可以在[无代理
           
     New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
       -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB'; `
+      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='PAYG'; `
        sqlManagement='NoAgent';sqlImageSku='Standard';sqlImageOffer='SQL2008R2-WS2008'}
   ```
 
@@ -126,7 +129,7 @@ Windows Server 2008 上安装的 SQL Server 2008 和 2008 R2 可以在[无代理
 
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
-   --license-type AHUB --sql-mgmt-type NoAgent 
+   --license-type PAYG --sql-mgmt-type NoAgent 
    --image-sku Enterprise --image-offer SQL2008-WS2008R2
  ```
 
@@ -166,6 +169,67 @@ Windows Server 2008 上安装的 SQL Server 2008 和 2008 R2 可以在[无代理
 ---
 
 错误表明 SQL Server VM 尚未注册到资源提供程序。 
+
+## <a name="change-management-modes"></a>更改管理模式
+
+对于 SQL Server IaaS 扩展, 有三种可管理性模式: 
+
+- **完整**模式提供所有功能, 但需要重新启动 SQL Server 和系统管理员权限。 这是默认情况下安装的选项。 使用它来管理包含单个实例的 SQL Server VM。 
+
+- **轻型**不需要重新启动 SQL Server, 但它仅支持更改 SQL Server 的许可证类型和版本。 SQL Server 对于具有多个实例的 Vm 或参与故障转移群集实例 (FCI) 的 Vm, 请使用此选项。 
+
+- **NoAgent**专用于在 Windows Server 2008 上安装 SQL Server 2008 和 SQL Server 2008 R2。 
+
+你可以使用 PowerShell 查看 SQL Server IaaS 代理的当前模式: 
+
+  ```powershell-interactive
+     #Get the SqlVirtualMachine
+     $sqlvm = Get-AzResource -Name $vm.Name  -ResourceGroupName $vm.ResourceGroupName  -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines
+     $sqlvm.Properties.sqlManagement
+  ```
+
+如果 SQL Server 安装了*轻型*IaaS 扩展的 vm, 则可以使用 Azure 门户将模式升级到_完整_模式。 将操作系统升级到 Windows 2008 R2 及更高版本后,_无代理_模式下的 SQL Server vm 可以升级到_完整_版本。 不可能进行降级-若要执行此操作, 你将需要完全卸载 SQL IaaS 扩展并重新安装它。 
+
+若要将代理模式升级到完整模式: 
+
+
+### <a name="azure-portal"></a>Azure 门户
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 中转到[SQL 虚拟机](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)资源。 
+1. 选择 SQL Server 虚拟机, 然后选择 "**概述**"。 
+1. 对于 NoAgent 或轻型 IaaS 模式下的 SQL Server Vm, 请选择 " **SQL IaaS 扩展消息仅提供许可证类型" 和 "版本更新**"。
+
+   ![用于从门户更改模式的选择](media/virtual-machines-windows-sql-server-agent-extension/change-sql-iaas-mode-portal.png)
+
+1. 选中 "**我同意在虚拟机上重新启动 SQL Server 服务**" 复选框, 然后选择 "**确认**" 将 IaaS 模式升级到 full。 
+
+    ![确认在虚拟机上重新启动 SQL Server 服务的复选框](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
+
+### <a name="command-line"></a>命令行
+
+# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+
+运行以下 Az CLI 代码片段:
+
+  ```azurecli-interactive
+  # Update to full mode
+
+  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
+  ```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+运行以下 PowerShell 代码片段:
+
+  ```powershell-interactive
+  # Update to full mode
+
+  $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
+  $SqlVm.Properties.sqlManagement="Full"
+  $SqlVm | Set-AzResource -Force
+  ```
+---
 
 ## <a name="register-the-sql-vm-resource-provider-with-a-subscription"></a>向订阅注册 SQL VM 资源提供程序 
 

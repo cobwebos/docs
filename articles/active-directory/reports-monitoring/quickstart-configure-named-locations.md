@@ -16,17 +16,17 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 540bc8a4dbfda83ff6e0480bc216a38742bbef2b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1513dba19221e64d40551ffb13a5e9f33fd9858f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988080"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127237"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中配置命名位置
 
 通过命名位置，可在组织中标记受信任的 IP 地址范围。 Azure AD 使用命名位置以：
-- 检测[风险事件](concept-risk-events.md)中的误报。 从受信任的位置登录可降低用户的登录风险。   
+- 检测[风险检测](concept-risk-events.md)中的误报。 从受信任的位置登录可降低用户的登录风险。   
 - 配置[基于位置的条件访问](../conditional-access/location-condition.md)。
 
 在本快速入门中，你将了解如何在环境中配置命名位置。

@@ -3,7 +3,7 @@ documentType: LandingData
 title: Azure 机器学习服务文档
 metadata:
   title: Azure 机器学习服务文档 - 教程和 API 参考 | Microsoft Docs
-  description: Azure 机器学习服务提供了 SDK 和服务，以用于快速准备数据并训练和部署机器学习模型。 通过自动缩放计算和管道，提高生产效率并降低成本。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。 通过我们的快速入门和教程开始使用。
+  description: Azure 机器学习服务提供 SDK 和服务，用于快速训练和部署机器学习模型。 通过自动缩放计算和管道，提高生产效率并降低成本。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。 通过我们的快速入门和教程开始使用。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -16,7 +16,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Azure 机器学习服务提供了 SDK 和服务，以用于快速准备数据并训练和部署机器学习模型。 可通过自动缩放计算和管道，提高生产效率并降低成本。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。 通过我们的快速入门和教程开始使用。
+  description: Azure 机器学习服务提供 SDK 和服务，用于快速训练和部署机器学习模型。 可通过自动缩放计算和管道，提高生产效率并降低成本。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。 通过我们的快速入门和教程开始使用。
   aside:
     image:
       alt: null
@@ -30,7 +30,7 @@ sections:
   - title: 分步教程
     items:
       - type: paragraph
-        text: 了解如何准备数据、设置试验、训练机器学习模型并将机器学习模型投入使用。
+        text: 了解如何设置试验、训练机器学习模型并使之可操作。
       - type: paragraph
         text: <b>使用 Azure 门户</b>（一种易于使用的无代码界面）进行机器学习：
       - type: list

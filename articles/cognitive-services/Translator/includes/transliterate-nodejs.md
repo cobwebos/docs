@@ -4,19 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 64ba910af24886c77404f4ca16e6963cf6efe25d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 4395e0a14819021bd1e4ae32c89ffb0cf8e07d00
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967997"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906498"
 ---
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
-本快速入门需要：
-
-* [Node 8.12.x 或更高版本](https://nodejs.org/en/)
-* 适用于文本翻译的 Azure 订阅密钥
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
@@ -32,23 +29,23 @@ const uuidv4 = require('uuid/v4');
 
 若要构造 HTTP 请求以及为 `'X-ClientTraceId'` 标头创建唯一标识符，必须使用这些模块。
 
-## <a name="set-the-subscription-key"></a>设置订阅密钥
+## <a name="set-the-subscription-key-and-endpoint"></a>设置订阅密钥和终结点
 
-此代码会尝试从环境变量 `TRANSLATOR_TEXT_KEY` 读取文本翻译订阅密钥。 如果不熟悉环境变量，则可将 `subscriptionKey` 设置为字符串并注释掉条件语句。
+此示例将尝试从以下环境变量中读取文本翻译订阅密钥和终结点：`TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscriptionKey` 和 `endpoint` 设置为字符串并注释掉条件语句。
 
 将以下代码复制到项目中：
 
 ```javascript
-/* Checks to see if the subscription key is available
-as an environment variable. If you are setting your subscription key as a
-string, then comment these lines out.
-
-If you want to set your subscription key as a string, replace the value for
-the Ocp-Apim-Subscription-Key header as a string. */
-const subscriptionKey = process.env.TRANSLATOR_TEXT_KEY;
-if (!subscriptionKey) {
-  throw new Error('Environment variable for your subscription key is not set.')
-};
+var key_var = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY';
+if (!process.env[key_var]) {
+    throw new Error('Please set/export the following environment variable: ' + key_var);
+}
+var subscriptionKey = process.env[key_var];
+var endpoint_var = 'TRANSLATOR_TEXT_ENDPOINT';
+if (!process.env[endpoint_var]) {
+    throw new Error('Please set/export the following environment variable: ' + endpoint_var);
+}
+var endpoint = process.env[endpoint_var];
 ```
 
 ## <a name="configure-the-request"></a>配置请求
@@ -61,7 +58,7 @@ if (!subscriptionKey) {
 ```javascript
 let options = {
     method: 'POST',
-    baseUrl: 'https://api.cognitive.microsofttranslator.com/',
+    baseUrl: endpoint,
     url: 'transliterate',
     qs: {
       'api-version': '3.0',

@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 99f981698daf12bf7d493159fc7fd08a98a28104
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8c3b9523f6e6991723b0da721dbf7667ee340772
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194267"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207968"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>如何在合作伙伴中心管理商业 Marketplace 帐户 
 
@@ -151,7 +151,7 @@ ms.locfileid: "70194267"
 
 ## <a name="manage-users"></a>管理用户
 
-合作伙伴中心的 "**用户**" 部分 (在 "**帐户设置**" 下) 让你使用 Azure AD 来管理有权访问你的合作伙伴中心帐户的用户、组和 Azure AD 应用程序。 请注意, 若要管理用户, 必须使用[工作帐户](./company-work-accounts.md)(关联的 Azure AD 租户) 登录。 若要管理不同工作帐户/租户中的用户, 你需要注销, 然后以具有该工作帐户/租户的**管理员**权限的用户身份重新登录。 
+合作伙伴中心的 "**用户**" 部分 (在 "**帐户设置**" 下) 让你使用 Azure AD 来管理有权访问你的合作伙伴中心帐户的用户、组和 Azure AD 应用程序。 为了管理用户, 必须使用[工作帐户](./company-work-accounts.md)(关联的 Azure AD 租户) 登录。 若要管理不同工作帐户/租户中的用户, 你需要注销, 然后以具有该工作帐户/租户的**管理员**权限的用户身份重新登录。 
 
 使用工作帐户 (Azure AD 租户) 登录后, 可以:
 - [添加或删除用户](#add-or-remove-users)
@@ -300,20 +300,19 @@ ms.locfileid: "70194267"
 4.  如果要创建更多密钥, 请选择 "**添加其他密钥**"。
 
 
-### <a name="define-user-roles-and-permissions"></a>定义用户角色和权限
+## <a name="define-user-roles-and-permissions"></a>定义用户角色和权限
 
-公司的用户可以在合作伙伴中心为商业市场计划分配以下角色和权限。 
+公司的用户可以在合作伙伴中心为商业市场计划分配以下角色和权限:
 
-|**角色**|**权限**|
-|----------------------------------|---------------------------------|
-|管理员|-可以访问除税务和支出设置之外的所有 Microsoft 帐户功能|
-|      |-可以管理用户、角色和工作帐户 (租户)|
-|开发人员|-可管理和发布产品/服务|
-|      |-可以查看某些发布者报表|
-|全局管理员|-与商用 marketplace 无关|
-|业务参与者|-与商用 marketplace 无关|
-|财务参与者|-与商用 marketplace 无关|
-|营销人员|-与商用 marketplace 无关|
+- **Manager**
+  - 可以访问除税务和支出设置之外的所有 Microsoft 帐户功能
+  - 可以管理用户、角色和工作帐户 (租户)
+- **开发人员**
+  - 可以管理和发布产品/服务
+  - 可以查看一些发布服务器报表
+
+> [!NOTE]
+> "全球管理员"、"业务参与者"、"财务参与者" 和 "营销人员" 角色不在商业市场计划中使用, 并且没有关联的权限。
 
 有关在合作伙伴中心的其他区域 (例如 Azure Active Directory (AD)、云解决方案提供商 (CSP)、控制面板供应商 (CPV)、来宾用户或 Microsoft 合作伙伴网络 (MPN)) 管理角色和权限的详细信息, 请参阅[分配用户角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。
 

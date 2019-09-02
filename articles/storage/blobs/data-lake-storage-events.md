@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: ce132c6a6859156b209a26b5950eb6a509f446fc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5a85e3b16a5a93fedd6a2257f5601b0673f825ad
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656126"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904651"
 ---
 # <a name="tutorial-use-azure-data-lake-storage-gen2-events-to-update-a-databricks-delta-table"></a>教程：使用 Azure Data Lake Storage Gen2 事件更新 Databricks Delta 表
 
@@ -140,10 +140,9 @@ ms.locfileid: "69656126"
 
     spark.conf.set("fs.azure.account.auth.type", "OAuth")
     spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-    spark.conf.set("fs.azure.account.oauth2.client.id", "<appId")
+    spark.conf.set("fs.azure.account.oauth2.client.id", "<appId>")
     spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
     spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant>/oauth2/token")
-    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
 
     adlsPath = 'abfss://data@contosoorders.dfs.core.windows.net/'
     inputPath = adlsPath + dbutils.widgets.get('source_file')
@@ -151,6 +150,9 @@ ms.locfileid: "69656126"
     ```
 
     此代码将创建名为 **source_file** 的小组件。 稍后你将创建一个 Azure 函数，用于调用此代码并将文件路径传递到该小组件。  此代码还使用存储帐户对你的服务主体进行身份验证，并创建要在其他单元中使用的一些变量。
+
+    > [!NOTE]
+    > 在生产设置中，请考虑将身份验证密钥存储在 Azure Databricks 中。 然后，将查找密钥（而不是身份验证密钥）添加到代码块。 <br><br>例如，不使用这行代码：`spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`，而是使用以下代码行：`spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`。 <br><br>完成了本教程之后，请参阅 Azure Databricks 网站上的 [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) 一文以查看此方法的示例。
 
 2. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 
@@ -309,7 +311,7 @@ ms.locfileid: "69656126"
         log.LogInformation(eventGridEvent.Data.ToString());
 
         if (eventGridEvent.EventType == "Microsoft.Storage.BlobCreated" | | eventGridEvent.EventType == "Microsoft.Storage.FileRenamed") {
-            var fileData = ((JObject)(eventGridEvent.Data)) .ToObject<StorageBlobCreatedEventData>();
+            var fileData = ((JObject)(eventGridEvent.Data)).ToObject<StorageBlobCreatedEventData>();
             if (fileData.Api == "FlushWithClose") {
                 log.LogInformation("Triggering Databricks Job for file: " + fileData.Url);
                 var fileUrl = new Uri(fileData.Url);
@@ -382,6 +384,27 @@ ms.locfileid: "69656126"
    返回的表将显示最新记录。
 
    ![表中显示最新记录](./media/data-lake-storage-events/final_query.png "表中显示最新记录")
+
+6. 若要更新此记录，请创建名为 `customer-order-update.csv` 的文件，将以下信息粘贴到该文件中，然后将其保存到本地计算机。
+
+   ```
+   InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
+   536371,99999,EverGlow Single,22,1/1/2018 9:01,33.85,20993,Sierra Leone
+   ```
+
+   除了订单数量从 `228` 更改为 `22` 外，此 CSV 文件几乎与前一文件相同。
+
+7. 在存储资源管理器中，将此文件上传到存储帐户的 **input** 文件夹。
+
+8. 再次运行 `select` 查询以查看更新后的增量表。
+
+   ```
+   %sql select * from customer_data
+   ```
+
+   返回的表将显示更新后的记录。
+
+   ![已更新的记录显示在表中](./media/data-lake-storage-events/final_query-2.png "已更新的记录显示在表中")
 
 ## <a name="clean-up-resources"></a>清理资源
 

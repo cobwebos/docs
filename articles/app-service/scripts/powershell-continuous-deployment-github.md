@@ -10,27 +10,25 @@ tags: azure-service-management
 ms.assetid: 42f901f8-02f7-4869-b22d-d99ef59f874c
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: d60fc1afbd129471ba56dddb6e2d5beba5ca2330
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc8be33ede80070b8e9928e01d07b6066f1c887c
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136484"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113580"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>从 GitHub 使用连续部署创建 Web 应用
 
-此示例脚本使用其相关资源，在应用服务中创建 Web 应用，并在 Git 存储库中设置连续部署。 有关不进行连续部署的 GitHub 部署，请参阅[从 GitHub 创建 Web 应用并部署代码](powershell-deploy-github.md)。
+此示例脚本使用其相关资源，在应用服务中创建 Web 应用，然后设置从 GitHub 存储库[持续部署](../deploy-continuous-deployment.md)。 有关不进行连续部署的 GitHub 部署，请参阅[从 GitHub 创建 Web 应用并部署代码](powershell-deploy-github.md)。
 
 必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Connect-AzAccount` 创建与 Azure 的连接。 同时，请确保：
 
-- 已使用 `az login` 命令创建与 Azure 的连接。
-- 应用程序代码在拥有的公共或专用 GitHub 存储库中。
-- 已[在 GitHub 帐户中创建访问令牌](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)。
+- 应用程序代码在拥有的公共或专用 GitHub 存储库中。 若要获得自动生成，请根据[准备存储库](../deploy-continuous-deployment.md#prepare-your-repository)表构建存储库。
+- 已[在 GitHub 帐户中创建个人访问令牌](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)。
 
 ## <a name="sample-script"></a>示例脚本
 

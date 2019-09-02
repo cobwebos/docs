@@ -1,22 +1,20 @@
 ---
 title: 使用 Azure Functions Core Tools | Microsoft Docs
 description: 了解如何通过本地计算机上的命令提示符或终端编写和测试 Azure 函数，然后在 Azure Functions 中运行这些函数。
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 4bad9db6af6d368c943619bc2105f3fba0b7eb7b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fc77ef6786fbd16ecfeb34397ead11be8b107176
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096162"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207285"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -414,6 +412,8 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ## <a name="publish"></a>发布到 Azure
 
 Azure Functions Core Tools 支持两种类型的部署：通过 [Zip Deploy](functions-deployment-technologies.md#zip-deploy) 将函数项目文件直接部署到函数应用，以及[部署自定义 Docker 容器](functions-deployment-technologies.md#docker-container)。 必须已[在 Azure 订阅中创建了一个函数应用](functions-cli-samples.md#create)，你将向其部署代码。 应该生成需要编译的项目，以便可以部署二进制文件。
+
+项目文件夹可能包含不应发布的特定于语言的文件和目录。 排除的项在根项目文件夹中的 funcignore 文件中列出。     
 
 ### <a name="project-file-deployment"></a>部署（项目文件）
 

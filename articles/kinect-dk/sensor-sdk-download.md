@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装
-ms.openlocfilehash: c3271ffdce011c2731842fe52800f637c975e030
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 056d6cc890c0f866eb7a6e5a1fda88d9b0468f5c
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606120"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012859"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect 传感器 SDK 下载
 
@@ -28,10 +28,12 @@ ms.locfileid: "67606120"
 
 ## <a name="windows-download-link"></a>Windows 下载链接
 
-[Microsoft 安装程序](https://download.microsoft.com/download/E/B/D/EBDBB3C1-ED3F-4236-96D6-2BCB352F3710/Azure%20Kinect%20SDK%201.1.0.msi) | [GitHub 源代码](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/releases/tag/v1.1.0)
+[Microsoft 安装程序](http://download.microsoft.com/download/1/9/8/198048e8-63f2-45c6-8f96-1fd541d1b4bc/Azure%20Kinect%20SDK%201.2.0.msi) | [GitHub 源代码](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/releases/tag/v1.2.0)
 
 > [!NOTE]
-> 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect SDK 1.0.2”。 你将要在此路径中查找文章中参考的工具。
+> 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect SDK 1.2”。 你将要在此路径中查找文章中参考的工具。
+
+可以在 [GitHub](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md) 上找到以前版本的 Azure Kinect 传感器 SDK 和固件。
 
 ## <a name="linux-installation-instructions"></a>Linux 安装说明
 

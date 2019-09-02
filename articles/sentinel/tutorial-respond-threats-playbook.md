@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/25/2019
+ms.date: 8/21/2019
 ms.author: rkarlin
-ms.openlocfilehash: cd3288e308308729cf9b97e3c699d489857840a8
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 08c88df2f8ccc69f213687209d1d003f3bb1c7b8
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780372"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018800"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>教程：在 Azure Sentinel 预览版中设置自动威胁响应
 
@@ -105,8 +105,6 @@ SIEM/SOC 团队可能会定期收到海量的安全警报。 生成的警报量�
 若要实现自动响应，请执行以下操作：
 
 1. 选择要对其实现自动响应的警报。
-1. 从 Azure Sentinel 工作区导航菜单中，选择“分析”  。
-1. 选择要自动响应的警报。 
 1. 在“编辑警报规则”  页的“实时自动化”  下，选择要在匹配此警报规则时运行的“触发的 Playbook”  。
 1. 选择“保存”。 
 

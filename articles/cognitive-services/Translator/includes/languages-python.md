@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 62a90e30b281a7a9b0d1369893cf58fb12086a0b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 7f14a12d5de64206f64e8c7205beb2c59c4f1f2a
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968181"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906985"
 ---
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [Prerequisites](prerequisites-python.md)]
 
-本快速入门需要：
-
-* Python 2.7.x 或 3.x
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
@@ -23,10 +21,7 @@ ms.locfileid: "68968181"
 
 ```python
 # -*- coding: utf-8 -*-
-import os
-import requests
-import uuid
-import json
+import os, requests, uuid, json
 ```
 
 > [!NOTE]
@@ -34,17 +29,25 @@ import json
 
 第一个注释告知 Python 解释器使用 UTF-8 编码。 然后导入必需的模块，以便从环境变量读取订阅密钥、构造 HTTP 请求、创建唯一标识符，以及处理文本翻译 API 返回的 JSON 响应。
 
-## <a name="set-the-base-url-and-path"></a>设置基 URL 和路径
+## <a name="set-the-endpoint-and-path"></a>设置终结点和路径
 
-文本翻译全局终结点设置为 `base_url`。 `path` 设置 `languages` 路由并确定我们需使用 API 的版本 3。
+此示例将尝试从环境变量 `TRANSLATOR_TEXT_ENDPOINT` 读取文本翻译终结点。 如果不熟悉环境变量，则可将 `endpoint` 设置为字符串并注释掉条件语句。
+
+```python
+endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
+```
+
+文本翻译全局终结点设置为 `endpoint`。 `path` 设置 `languages` 路由并确定我们需使用 API 的版本 3。
 
 >[!NOTE]
 > 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：语言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)。
 
 ```python
-base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/languages?api-version=3.0'
-constructed_url = base_url + path
+constructed_url = endpoint + path
 ```
 
 ## <a name="add-headers"></a>添加标头

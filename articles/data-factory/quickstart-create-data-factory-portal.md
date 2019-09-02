@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: d5213ff21d92bf811b05802e4cb2ffab9b9a29c6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 5baa8c78ad581a00a3601706f31cf815359120c7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648384"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077046"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入门：使用 Azure 数据工厂 UI 创建数据工厂
 
@@ -71,7 +71,7 @@ ms.locfileid: "69648384"
 ## <a name="create-a-linked-service"></a>创建链接服务
 在此过程中，请创建一个链接服务，将 Azure 存储帐户链接到数据工厂。 链接服务包含的连接信息可供数据工厂服务用来在运行时连接到它。
 
-1. 选择“连接”  ，然后选择工具栏中的“新建”按钮。  
+1. 选择“连接”  ，然后选择工具栏上的“新建”  按钮（“连接”  按钮位于左栏底部的“工厂资源”  下）。 
 
 1. 在“新建链接服务”页中，选择“Azure Blob 存储”，然后选择“继续”。    
 

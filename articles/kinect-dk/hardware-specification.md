@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, 规格, 硬件, DK, 功能, 深度, 颜色, RGB, IMU, 麦克风, 阵列
-ms.openlocfilehash: 889d8c44cc0de0a53e25a3363cfcec59513105f9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: affdcf61350e4844295375dd621afc24c5138d44
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534977"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907697"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK 硬件规格 
 
@@ -207,7 +207,9 @@ Azure Kinect DK 在出厂之前已校准。 可通过传感器 SDK 以编程方�
 - 最大线缆长度 < 10 米
 - 支持立体声和单音线缆
 
-有关[外部同步设置](https://aka.ms/support)的更多详细信息
+在同步捕获中使用多个深度相机的线缆时，深度相机捕获应相互偏移 160us 或更多，以避免深度相机干扰。
+
+有关[外部同步设置](https://support.microsoft.com/help/4494429)的更多详细信息
 
 ## <a name="device-recovery"></a>设备恢复
 
@@ -215,7 +217,7 @@ Azure Kinect DK 在出厂之前已校准。 可通过传感器 SDK 以编程方�
 
 ![Azure Kinect DK 恢复按钮](./media/resources/hardware-specs-media/recovery.png)
 
-若要恢复设备，请参阅[此处的说明](https://aka.ms/support)。
+若要恢复设备，请参阅[此处的说明](https://support.microsoft.com/help/4494277)。
 
 ## <a name="next-steps"></a>后续步骤
 

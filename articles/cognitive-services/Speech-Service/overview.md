@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0aa4286d8cb630f221613bebd13f7ea722224ac6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624263"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068851"
 ---
 # <a name="what-are-the-speech-services"></a>什么是语音服务？
 
@@ -84,12 +84,10 @@ GitHub 中提供了每个 Azure 语音服务的示例代码。 这些示例涵�
 
 Azure 语音服务能够很好地与内置模型配合工作，但是，你可能想要根据自己的产品或环境，进一步自定义和优化体验。 自定义选项的范围从声学模型优化，到专属于自有品牌的语音字体。 生成自定义模型后，可将其与任何 Azure 语音服务配合使用。
 
-| 语音服务 | 模型 | 说明 |
-|----------------|-------|-------------|
-| 语音转文本 | [声学模型](how-to-customize-acoustic-models.md) | 为特定环境（例如汽车或工厂车间）中使用的应用程序、工具或设备创建自定义声学模型，每个模型具有特定的录制条件。 示例包括带有口音的讲话、特定的背景噪音，或使用特定的麦克风录制音频。 |
-| | [语言模型](how-to-customize-language-model.md) | 创建自定义语言模型来改善特定领域的词汇和语法的听录，例如医疗术语中或 IT 行话。 |
-| | [发音模型](how-to-customize-pronunciation.md) | 借助自定义发音模型，可以定义语音形式以及字词或术语的显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 .txt 文件）即可。 |
-| 文本转语音 | [语音字体](how-to-customize-voice-font.md) | 使用自定义语音字体可为自有品牌创建可识别的独一无二的声音。 只需使用少量的数据即可开始创建。 提供的数据越多，语音字体就越自然，且越接近人类语音。 |
+| 语音服务 | 平台 | 说明 |
+|----------------|-------------|-------------|
+| 语音转文本 | [自定义语音](https://aka.ms/customspeech) | 根据需要和可用数据自定义语音识别模型。 克服语音识别障碍，如说话风格、词汇和背景噪音。 |
+| 文本转语音 | [自定义语音](https://aka.ms/customvoice) | 使用可用语音数据为文本转语音应用生成可识别的独一无二的语音。 可以通过调整一组语音参数来进一步微调语音输出。 |
 
 ## <a name="reference-docs"></a>参考文档
 

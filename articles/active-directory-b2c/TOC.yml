@@ -309,7 +309,7 @@
           href: b2clogin.md
         - name: 将 Web API 迁移到 b2clogin.com
           href: multiple-token-endpoints.md
-          displayName: 'migrate, b2clogin, owin, jwt'
+          displayName: 'migrate, b2clogin, owin'
     - name: 自动化
       items:
         - name: 导出使用情况报表
@@ -318,6 +318,9 @@
           href: active-directory-b2c-devquickstarts-graph-dotnet.md
     - name: 审核日志
       href: active-directory-b2c-reference-audit-logs.md
+    - name: 安全 API 管理 API
+      href: secure-api-management.md
+      displayName: 'apim, api management, migrate, b2clogin.com'
     - name: 合规性
       items:
         - name: 用户访问权限

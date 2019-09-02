@@ -59,6 +59,8 @@
       items:
         - name: 推送和拉取映像
           href: container-registry-get-started-docker-cli.md
+        - name: 推送和拉取 OCI 项目
+          href: container-registry-oci-artifacts.md
         - name: 查看存储库
           href: container-registry-repositories.md
         - name: 导入容器映像

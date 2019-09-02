@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: 73aeea42cd843716c845d7712539ae5c81f03dca
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.date: 08/30/2019
+ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173068"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208344"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
@@ -92,7 +92,7 @@ ms.locfileid: "70173068"
 
 - **只读故障转移策略**
 
-  默认禁用只读侦听器的故障转移功能。 这可确保在辅助数据库脱机时，主数据库的性能不会受到影响。 但是，这也意味辅助数据库恢复前，只读会话将无法连接。 如果无法容许只读会话停机，但能够以主数据库的潜在性能降级为代价将主数据库临时用于只读和读写流量，则可以为只读侦听器启用故障转移。 在这种情况下，如果辅助节点不可用，则会将只读流量自动重定向到主要节点。
+  默认禁用只读侦听器的故障转移功能。 这可确保在辅助数据库脱机时，主数据库的性能不会受到影响。 但是，这也意味辅助数据库恢复前，只读会话将无法连接。 如果你不能容忍只读会话的停机时间, 并且可以暂时为只读和读写流量使用主副本, 但代价是在主站点的潜在性能下降的情况下, 你可以为只读侦听器启用故障转移通过配置`AllowReadOnlyFailoverToPrimary`属性。 在这种情况下，如果辅助节点不可用，则会将只读流量自动重定向到主要节点。
 
 - **计划内故障转移**
 
@@ -112,7 +112,7 @@ ms.locfileid: "70173068"
 
 - **数据丢失宽限期**
 
-  由于主数据库和辅助数据库是使用异步复制进行同步的，因此故障转移可能会导致数据丢失。 可以自定义自动故障转移策略，以便反映应用程序对数据丢失的容错。 通过配置 **GracePeriodWithDataLossHours**，可以控制系统启动可能导致数据丢失的故障转移之前的等待时间。
+  由于主数据库和辅助数据库是使用异步复制进行同步的，因此故障转移可能会导致数据丢失。 可以自定义自动故障转移策略，以便反映应用程序对数据丢失的容错。 通过配置`GracePeriodWithDataLossHours`, 可以控制系统启动可能导致数据丢失的故障转移之前的等待时间。
 
 - **多个故障转移组**
 
@@ -155,7 +155,7 @@ ms.locfileid: "70173068"
 
 - **使用只读侦听器处理只读工作负荷**
 
-  如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 对于只读的会话，请使用 `<fog-name>.secondary.database.windows.net` 作为服务器 URL，连接将自动定向到辅助节点。 此外，还建议使用 **ApplicationIntent=ReadOnly** 在连接字符串中指示读取意向。
+  如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 对于只读的会话，请使用 `<fog-name>.secondary.database.windows.net` 作为服务器 URL，连接将自动定向到辅助节点。 此外, 还建议使用`ApplicationIntent=ReadOnly`连接字符串读取意图。 如果要确保在故障转移后只读工作负荷可以重新连接, 或者当辅助服务器脱机时, 请确保配置`AllowReadOnlyFailoverToPrimary`故障转移策略的属性。 
 
 - **可应对性能下降的问题**
 
@@ -166,7 +166,7 @@ ms.locfileid: "70173068"
 
 - **可应对数据丢失的问题**
 
-  如果检测到服务中断，SQL 会等待 **GracePeriodWithDataLossHours** 指定的期限。 默认值为 1 小时。 如果不能承受丢失数据，请确保设置 **GracePeriodWithDataLossHours** 到一个足够大的数字，如 24 小时。 使用手动组故障转移从辅助节点故障回复到主要节点。
+  如果检测到服务中断, 则 SQL 会等待指定`GracePeriodWithDataLossHours`的时间段。 默认值为 1 小时。 如果您无法承受丢失数据, 请确保将设置`GracePeriodWithDataLossHours`为足够大的数字, 如24小时。 使用手动组故障转移从辅助节点故障回复到主要节点。
 
   > [!IMPORTANT]
   > DTU 少于或等于 800、使用异地复制的数据库超过 250 个的弹性数据库池可能会遇到更长的计划故障转移和性能下降等问题。  这些问题更可能在写密集型工作负荷下发生，例如，异地复制终结点广泛分隔于各个地理位置，或者每个数据库使用多个辅助终结点。  当异地复制滞后随着时间推移增加时，这些问题的症状便会显现。  这种滞后可以使用 [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) 进行监视。  如果发生这些问题，缓解方法包括增加池 DTU 的数量或者减少同一池中异地复制数据库的数量。
@@ -305,10 +305,10 @@ ms.locfileid: "70173068"
 
 ## <a name="preventing-the-loss-of-critical-data"></a>防止丢失关键数据
 
-由于广域网的延迟时间较长，连续复制使用了异步复制机制。 在发生故障时，异步复制会不可避免地丢失某些数据。 但是，某些应用程序可能要求不能有数据丢失。 为了保护这些关键更新，应用程序开发人员可以在提交事务后立即调用 [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) 系统过程。 调用 **sp_wait_for_database_copy_sync** 会阻止调用线程，直到将上次提交的事务传输到辅助数据库。 但是，它不会等待传输的事务提交到辅助数据库进行重播。 **sp_wait_for_database_copy_sync** 的作用域是一个具体的连续复制链路。 对主数据库具有连接权限的任何用户都可以调用此过程。
+由于广域网的延迟时间较长，连续复制使用了异步复制机制。 在发生故障时，异步复制会不可避免地丢失某些数据。 但是，某些应用程序可能要求不能有数据丢失。 为了保护这些关键更新，应用程序开发人员可以在提交事务后立即调用 [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) 系统过程。 调用`sp_wait_for_database_copy_sync`会阻止调用线程, 直到将上次提交的事务传输到辅助数据库。 但是，它不会等待传输的事务提交到辅助数据库进行重播。 `sp_wait_for_database_copy_sync`的作用域限定为特定的连续复制链接。 对主数据库具有连接权限的任何用户都可以调用此过程。
 
 > [!NOTE]
-> sp_wait_for_database_copy_sync 将在故障转移后防止数据丢失，但它不会保证读取访问的完全同步。 **sp_wait_for_database_copy_sync** 过程调用导致的延迟可能很明显，具体取决于调用时的事务日志大小。
+> `sp_wait_for_database_copy_sync`在故障转移后防止数据丢失, 但不保证读取访问的完全同步。 `sp_wait_for_database_copy_sync`过程调用导致的延迟可能会很大, 并且取决于调用时事务日志的大小。
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>故障转移组和时间点还原
 

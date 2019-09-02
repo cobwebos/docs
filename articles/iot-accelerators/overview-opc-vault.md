@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 40a9016ac7a10175b51f0fb6f072dd089bde3a51
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 44315790116545dd888aed533731bbf01abe801d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606280"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997305"
 ---
 # <a name="what-is-opc-vault"></a>什么是 OPC 保管库？
 
@@ -30,3 +30,10 @@ OPC 保管库是可以配置、注册和管理云中 OPC UA 服务器与客户�
 下图演示了完整的 OPC 保管库体系结构。
 
 ![OPC 保管库体系结构](media/overview-opc-vault-architecture/opc-vault.png)
+
+## <a name="next-steps"></a>后续步骤
+
+了解 OPC 保管库及其用途后，建议接下来完成以下步骤：
+
+> [!div class="nextstepaction"]
+> [OPC 保管库体系结构](overview-opc-vault-architecture.md)

@@ -60,6 +60,8 @@
           href: access-cloudsimple-portal.md
         - name: 本地防火墙配置
           href: on-premises-firewall-configuration.md
+        - name: 访问 vSphere 客户端
+          href: vcenter-access.md
         - name: 管理节点
           items:
             - name: 预配节点
@@ -94,23 +96,19 @@
               href: public-ips.md
             - name: 设置 VPN 连接
               href: vpn-gateway.md
-            - name: 获取虚拟网络连接到 CloudSimple 时的对等机信息
+            - name: 与 CloudSimple 的虚拟网络连接
               href: virtual-network-connection.md
-            - name: 访问完成管理任务所需的 vSphere 客户端提升特权
-              href: 'https://docs.azure.cloudsimple.com/vsphere-access/'
         - name: 管理 CloudSimple 门户帐户
           items:
             - name: 查看帐户摘要
               href: account.md
             - name: 查看用户列表
               href: users.md
-            - name: 设置与私有云的虚拟网络连接
-              href: virtual-network-connection.md
-        - name: 设置私有云的 VMware 虚拟机
+        - name: 设置 CloudSimple 虚拟机
           items:
-            - name: 在 Azure 中创建 VM
+            - name: 在 Azure 中创建 CloudSimple VM
               href: azure-create-vm.md
-            - name: 在 Azure 中管理 VM
+            - name: 在 Azure 中管理 CloudSimple VM
               href: azure-manage-vm.md
     - name: 操作指南
       items:
@@ -126,12 +124,14 @@
               href: migration-layer-2-vpn.md
         - name: 私有云网络
           items:
-            - name: 本地与私有云之间的 VPN 连接
+            - name: 与私有云的 VPN 连接
               href: set-up-vpn.md
             - name: 通过 ExpressRoute 进行的本地网络连接
               href: on-premises-connection.md
             - name: 通过 ExpressRoute 进行的 Azure 虚拟网络连接
               href: azure-expressroute-connection.md
+            - name: 配置 DNS 名称解析
+              href: on-premises-dns-setup.md
         - name: VMware 平台
           items:
             - name: 了解私有云权限模型

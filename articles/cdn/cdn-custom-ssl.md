@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f22273a28d5e4207712bdba71ef788629d51916e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1f7c212b7bb850816557feb53099973986bab587
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321667"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114495"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域中配置 HTTPS
 
@@ -130,7 +130,7 @@ ms.locfileid: "68321667"
 
     ![访问策略设置](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. 在“机密权限”中，选择“获取”以允许 CDN 执行这些权限来获取并列出证书   。 
+3. 选择“获取机密权限”  ，然后获取并列出**证书权限**，以允许 CDN 执行这些权限来获取和列出证书。 
 
 4. 选择“确定”  。 
 
@@ -312,6 +312,9 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
     如果 Microsoft 经分析后发现，只是向应用程序发出了仅 SNI 客户端请求，则现有的域将在未来几个月逐渐迁移到单个证书。 如果 Microsoft 检测到向应用程序发出了一些非 SNI 客户端请求，则域将保留在 SAN 证书和基于 IP 的 TLS/SSL 中。 在任何情况下，对服务或客户端请求的支持都不会中断，不管这些请求是否为 SNI。
 
+7. *证书续订如何处理自带证书？*
+
+    若要确保将较新的证书部署到 PoP 基础结构，只需将新证书上传到 Azure Key Vault，然后在 Azure CDN 上的 SSL 设置中，选择最新的证书版本并点击“保存”。 然后 Azure CDN 将传播新的已更新证书。 
 
 ## <a name="next-steps"></a>后续步骤
 

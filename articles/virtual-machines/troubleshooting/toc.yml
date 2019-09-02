@@ -96,20 +96,27 @@
   href: reset-network-interface.md
 - name: 重新启动 VM 或调整其大小
   href: restart-resize-error-troubleshooting.md
-- name: 使用串行控制台
+- name: 串行控制台
+  href: serial-console-overview.md
   items:
-    - name: Linux VM
+    - name: 适用于 Linux 的串行控制台
       href: serial-console-linux.md
       items:
         - name: 串行控制台 GRUB/单用户模式
           href: serial-console-grub-single-user-mode.md
         - name: 串行控制台 NMI/SysRq
           href: serial-console-nmi-sysrq.md
-    - name: Windows VM
+    - name: 适用于 Windows 的串行控制台
       href: serial-console-windows.md
       items:
         - name: CMD 和 PowerShell 命令
           href: serial-console-cmd-ps-commands.md
+    - name: 启用和禁用串行控制台
+      href: serial-console-enable-disable.md
+    - name: 串行控制台中的电源选项
+      href: serial-console-power-options.md
+    - name: 常见串行控制台错误
+      href: serial-console-errors.md
 - name: 删除存储资源时出错
   href: storage-resource-deletion-errors.md
 - name: 删除经典存储资源时出错
@@ -153,6 +160,8 @@
 - name: 启动错误
   href: boot-error-troubleshoot.md
   items:
+    - name: Azure 虚拟机启动错误
+      href: troubleshoot-vm-boot-error.md
     - name: 启动诊断
       href: boot-diagnostics.md
     - name: BitLocker 错误

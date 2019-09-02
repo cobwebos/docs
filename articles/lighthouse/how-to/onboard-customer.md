@@ -4,15 +4,15 @@ description: 了解如何将客户载入到 Azure 委派资源管理，使你能
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: d1876977d819b50569b6f07242af91fb1d6832ee
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934320"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012063"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -20,7 +20,7 @@ ms.locfileid: "68934320"
 
 如果要为多位客户管理资源，可重复此过程。 随后，当授权用户登录到你的租户时，可跨客户租赁范围向此用户授权，使其无需登录到每个单独的客户租户即可执行管理操作。
 
-可将 Microsoft 合作伙伴网络 (MPN) ID 与载入的订阅相关联，以跟踪你在客户参与中的影响。 有关详细信息，请参阅[将合作伙伴 ID 链接到 Azure 帐户](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)。
+可将 Microsoft 合作伙伴网络 (MPN) ID 与加入的订阅相关联，以跟踪你在客户参与中的影响并获得认可。 有关详细信息，请参阅[将合作伙伴 ID 链接到 Azure 帐户](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)。 请注意，你需要为你管理资源的每个客户租户分别执行此关联。 
 
 > [!NOTE]
 > 可在客户购买发布到 Azure 市场的托管服务产品（公共或专用）时将其自动载入。 有关详细信息，请参阅[将托管服务产品发布到 Azure 市场](publish-managed-services-offers.md)。 还可对发布到 Azure 市场的产品/服务使用此处所述的流程。

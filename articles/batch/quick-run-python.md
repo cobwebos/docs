@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a2420f98bb07686b548dc6641df77dd0fdf7028b
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 8b35d2441db654278f9d66f3cbb4e7a79d70e835
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562810"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128052"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>快速入门：使用 Python API 运行你的第一个 Batch 作业
 
@@ -47,7 +47,7 @@ ms.locfileid: "69562810"
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-导航到包含 Python 脚本 `python_quickstart_client.py` 的目录。
+转到包含 Python 脚本 `python_quickstart_client.py` 的目录。
 
 在 Python 开发环境中使用 `pip` 安装所需的包。
 
@@ -230,7 +230,7 @@ for task in tasks:
 
 应用自动删除所创建的存储容器，并允许你选择是否删除 Batch 池和作业。 只要有节点在运行，就会对池收费，即使没有计划作业。 不再需要池时，请将其删除。 删除池时会删除节点上的所有任务输出。 
 
-若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。 
+若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后选择“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤
 

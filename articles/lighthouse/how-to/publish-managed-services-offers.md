@@ -4,26 +4,26 @@ description: 了解如何发布将客户载入到 Azure 委派资源管理的托
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: bb2f26a170bbd60eb927bd00f6def7d033fafee9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f9d3fad2a98647bcd10d54c03a76e95bc3e05227
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810831"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011867"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
-在本文中，你将学习如何使用[云合作伙伴门户](https://cloudpartner.azure.com/)将公共或专用托管服务产品发布到 [Azure 市场](https://azuremarketplace.microsoft.com)，从而能针对 Azure 委派资源管理载入购买此产品/服务的客户。 
+在本文中，你将学习如何使用[云合作伙伴门户](https://cloudpartner.azure.com/)将公共或专用托管服务产品发布到 [Azure 市场](https://azuremarketplace.microsoft.com)，从而能针对 Azure 委派资源管理载入购买此产品/服务的客户。
 
 > [!NOTE]
-> 要创建和发布这些产品/服务，需要有效的[合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。 如果还没有帐户，[注册过程](https://aka.ms/joinmarketplace)将引导你按照步骤在合作伙伴中心创建帐户并注册商业市场计划。 你的 Microsoft 合作伙伴网络 (MPN) ID 将[自动关联](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)你发布的产品/服务，以跟踪你在客户参与中的影响。
+> 若要创建和发布这些产品/服务，需要拥有有效的[合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。 如果还没有帐户，[注册过程](https://aka.ms/joinmarketplace)将引导你按照步骤在合作伙伴中心创建帐户并注册商业市场计划。 你的 Microsoft 合作伙伴网络 (MPN) ID 将[自动关联](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)你发布的产品/服务，以跟踪你在客户参与中的影响。
 >
 > 如果不想将产品/服务发布到 Azure 市场，可使用 Azure 资源管理器模板手动载入客户。 有关详细信息，请参阅[将客户载入到 Azure 委派资源管理](onboard-customer.md)。
 
-与将其他任何类型的产品/服务发布到 Azure 市场相比，发布托管服务产品的过程很类似。 要了解此过程，请参阅 [Azure 市场和 AppSource 发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)和[管理 Azure 和 AppSource 市场产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers)。
+与将其他任何类型的产品/服务发布到 Azure 市场相比，发布托管服务产品的过程很类似。 要了解此过程，请参阅 [Azure 市场和 AppSource 发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)和[管理 Azure 和 AppSource 市场产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers)。 还应查看[商业市场认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies)，特别是[托管服务](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)部分。
 
 > [!IMPORTANT]
 > 托管服务产品中的每个计划都有一个“清单详细信息”部分，你在此处定义租户中将有权访问委派资源组和/或购买该计划的客户的订阅的 Azure Active Directory (Azure AD) 实体  。 请注意，此处包括的任何组（或用户/服务主体）将对购买此计划的每位客户具有相同的权限。 要分配不同的组来应对每位客户，需要发布单独的专门针对每位用户的计划。
@@ -89,7 +89,7 @@ ms.locfileid: "67810831"
 |**标题**     |  套餐的标题，通常是较长的正式名称。 此标题将在市场中突出显示。 最大长度为 50 个字符。 大多数情况下，此名称应与你在“产品/服务设置”部分输入的名称相同   。       |
 |**摘要**     | 产品/服务用途或功能的简要说明。 通常显示在标题下方。 最大长度为 100 个字符。        |
 |**长摘要**     | 产品/服务用途或功能的详细摘要。 最大长度为 256 个字符。        |
-|**说明**     | 有关产品/服务的详细信息。 此字段不得超过 3000 个字符，且支持简单的 HTML 格式。        |
+|**说明**     | 有关产品/服务的详细信息。 此字段不得超过 3000 个字符，且支持简单的 HTML 格式。 必须在说明中的某个位置包含“托管服务”字样。       |
 |**营销标识符**     | 唯一的 URL 友好标识符。 它将在此产品/服务的市场 URL 中使用。 例如，如果发布者 ID 为 contoso，营销标识符为 sampleApp，则产品/服务在 Azure 市场中的 URL 为 https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp    。        |
 |**预览订阅 ID**     | 添加 1 到 100 个订阅标识符。 在产品/服务上线之前，与这些订阅关联的客户将可在 Azure 市场中查看此产品/服务。 建议在此处包含你自己的订阅，以便在向客户提供产品/服务之前，可预览其在 Azure 市场中的显示方式。  （在此预览期间，Microsoft 支持和工程团队也将能够查看你的产品/服务。）   |
 |**有用链接**     | 与你的产品/服务相关的 URL，例如文档、发行说明、常见问题解答等等。        |
@@ -112,7 +112,7 @@ ms.locfileid: "67810831"
 - 特大徽标的背景不得为黑色、白色或透明。 请确保背景色较深，因为嵌入的文本将显示为白色。
 - 一旦使用特大图标发布产品/服务，便不能将其删除（但如果需要，可使用其他版本进行更新）。
 
-如果需要，可在“潜在顾客管理”部分中，选择将存储潜在顾客的 CRM 系统  。 
+可在“潜在顾客管理”部分中，选择将存储潜在顾客的 CRM 系统  。 请注意，根据[托管服务认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)，需要**潜在顾客目标**。
 
 最后，在“法律”部分提供隐私策略 URL 和使用条款    。 还可在此处指定是否对此产品/服务使用[标准协定](https://docs.microsoft.com/azure/marketplace/standard-contract)。
 
