@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: a61ddf57d4f01fcaf4a949add29c677aa94060a9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 6b13eab0824307ef42f25d52a293f0f22818c1aa
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827858"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210030"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>使用 Azure 数据工厂将数据从 data lake 或数据仓库迁移到 Azure 
 
@@ -60,3 +60,4 @@ Azure 数据工厂是一种典型的在线数据迁移工具, 用于通过网络
 ## <a name="next-steps"></a>后续步骤
 
 - [将数据从 AWS S3 迁移到 Azure](data-migration-guidance-s3-azure-storage.md)
+- [将数据从本地 hadoop 群集迁移到 Azure](data-migration-guidance-hdfs-azure-storage.md)

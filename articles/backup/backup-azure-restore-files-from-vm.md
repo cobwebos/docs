@@ -7,14 +7,14 @@ manager: carmonm
 keywords: 项目级恢复; 从 Azure VM 备份恢复文件; 从 Azure VM 还原文件
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/01/2019
+ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 67ba9ba9bc85213ec479a90d205ed9570c62bf8c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954615"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210370"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -68,7 +68,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
     - download.microsoft.com
     - 恢复服务 URL（地区名称是指恢复服务保管库的区域）
         - https:\//pod01-rec2.geo-name.backup.windowsazure.com (适用于 Azure 公共地域)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (适用于 Azure 中国)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (适用于 Azure 中国世纪互联)
         - https:\//pod01-rec2.geo-name.backup.windowsazure.us (适用于 Azure 美国政府)
         - https:\//pod01-rec2.geo-name.backup.windowsazure.de (适用于 Azure 德国)
     - 出站端口 3260
@@ -247,7 +247,7 @@ $ mount [RAID Disk Path] [/mountpath]
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>选择恢复点（谁可以生成脚本）
 
-此脚本可以访问 VM 数据，必须控制谁可以首先生成它，这很重要。 若要生成此脚本，用户需登录 Azure 门户并应该获得 [RBAC 授权](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)。
+此脚本可以访问 VM 数据，必须控制谁可以首先生成它，这很重要。 需要登录 Azure 门户, 并应[获得 RBAC 授权](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)才能生成脚本。
 
 文件恢复所需的授权级别与 VM 还原和磁盘还原所需的授权级别相同。 换句话说，只有那些有权查看 VM 数据的用户可以生成此脚本。
 

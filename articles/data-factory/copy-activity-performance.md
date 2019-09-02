@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 05ecfdc4f082aaa44fe54e6b807a1c5faf84eb8d
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 22c83b1fe53a9209fd243fe807bb76718cbdcbbd
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996463"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211697"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
 > [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本:"]
@@ -181,6 +181,7 @@ Azure 数据工厂提供以下性能优化功能:
 | 复制方案 | 由服务确定的默认并行复制计数 |
 | --- | --- |
 | 在基于文件的存储之间复制数据 |取决于文件大小以及用于在两个云数据存储之间复制数据的 DIU 数，或自承载集成运行时计算机的物理配置。 |
+| 已启用分区选项 (包括[Oracle](connector-oracle.md#oracle-as-source)、 [Teradata](connector-teradata.md#teradata-as-source)、 [Sap 表](connector-sap-table.md#sap-table-as-source)和[sap 开放式集线器](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)) 从关系数据存储复制|4 |
 | 将数据从任何源存储复制到 Azure 表存储 |4 |
 | 所有其他复制方案 |1 |
 

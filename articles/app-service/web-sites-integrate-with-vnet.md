@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a96c02d1d7d2fae43e0a5915e9233bde842ce621
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066670"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210116"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
 本文档介绍 Azure 应用服务虚拟网络集成功能，并说明如何在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中使用应用对其进行设置。 使用 [Azure 虚拟网络][VNETOverview] (VNet) 可将多个 Azure 资源置于无法通过 Internet 路由的网络中。  
@@ -110,7 +110,7 @@ VNet 集成不支持某些功能，其中包括：
 
 #### <a name="web-app-for-containers"></a>用于容器的 Web 应用
 
-如果在 Linux 上使用带有内置映像的应用服务, 则区域 VNet 集成功能无需进行其他更改即可工作。 如果使用用于容器的 Web 应用, 则需要修改 docker 映像才能使用 VNet 集成。 在 docker 映像中, 使用端口环境变量作为主 web 服务器的侦听端口, 而不是使用硬编码的端口号。 在容器启动时, 应用服务平台会自动设置端口环境变量。
+如果在 Linux 上使用带有内置映像的应用服务, 则区域 VNet 集成功能无需进行其他更改即可工作。 如果使用用于容器的 Web 应用, 则需要修改 docker 映像才能使用 VNet 集成。 在 docker 映像中, 使用端口环境变量作为主 web 服务器的侦听端口, 而不是使用硬编码的端口号。 在容器启动时, 应用服务平台会自动设置端口环境变量。 如果你使用的是 SSH, 则必须将 SSH 守护程序配置为侦听 SSH_PORT 环境变量在使用区域 VNet 集成时指定的端口号。
 
 ### <a name="service-endpoints"></a>服务终结点
 

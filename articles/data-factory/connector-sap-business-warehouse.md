@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cd17dcb7a9f68c25617c9e6b928ddebebcdbddbe
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60309107"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211723"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -25,6 +25,9 @@ ms.locfileid: "60309107"
 > * [当前版本](connector-sap-business-warehouse.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP Business Warehouse (BW) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+
+>[!TIP]
+>若要了解 ADF 全面支持 SAP 数据集成方案, 请参阅[使用 Azure 数据工厂的 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf), 并提供详细的简介、comparsion 和指南。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -36,7 +39,7 @@ ms.locfileid: "60309107"
 - 使用 MDX 查询从 InfoCubes 和 QueryCubes（包括 BEx 查询）复制数据。
 - 使用基本身份验证复制数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要使用此 SAP Business Warehouse 连接器，需要：
 
@@ -61,7 +64,7 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapBw** | 是 |
-| server | SAP BW 实例所驻留的服务器的名称。 | 是 |
+| 服务器 | SAP BW 实例所驻留的服务器的名称。 | 是 |
 | systemNumber | SAP BW 系统的系统编号。<br/>允许值：用字符串表示的两位十进制数。 | 是 |
 | clientId | SAP W 系统中的客户端的客户端 ID。<br/>允许值：用字符串表示的三位十进制数。 | 是 |
 | userName | 有权访问 SAP 服务器的用户名。 | 是 |

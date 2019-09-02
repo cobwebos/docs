@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 709fb3be37850be37d6378652921ce26f4ff15fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: dcea3c1ab715a79ebecd913885fbf9bbee61606a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/02/2019
 ms.locfileid: "60242218"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
@@ -37,21 +37,21 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 ## <a name="is-seamless-sso-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>能否在 [Microsoft Azure 德国云](https://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure 政府云](https://azure.microsoft.com/features/gov/)中使用无缝 SSO？
 
-不。 无缝 SSO 只能在全球范围内的 Azure AD 实例中使用。
+否。 无缝 SSO 只能在全球范围内的 Azure AD 实例中使用。
 
-## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>哪些应用程序可以利用无缝 SSO 的 `domain_hint` 或 `login_hint` 参数功能？
+## <a name="what-applications-take-advantage-of-domain_hint-or-login_hint-parameter-capability-of-seamless-sso"></a>哪些应用程序可以利用无缝 SSO 的 `domain_hint` 或 `login_hint` 参数功能？
 
 以下非详尽列表列出了可将这些参数发送到 Azure AD 的部分应用程序，因此使用无缝 SSO 可为用户提供无提示登录体验（即用户无需输入其用户名或密码）：
 
-| 应用程序名称 | 可供使用的应用程序 URL |
+| 应用程序名 | 可供使用的应用程序 URL |
 | -- | -- |
 | 访问面板 | https:\//myapps.microsoft.com/contoso.com |
 | Outlook 网页版 | https:\//outlook.office365.com/contoso.com |
-| Office 365 门户 | https:\//portal.office.com?domain_hint=contoso.com、 https:\//www.office.com?domain_hint=contoso.com |
+| Office 365 门户 | https:\//portal.office.com？ domain_hint = contoso, https:\//www.office.com？ domain_hint = contoso .com |
 
-此外，用户获得静默登录体验，如果应用程序发送登录请求向 Azure AD 终结点将设置为租户-即，https:\//login.microsoftonline.com/contoso.com/ <...> 或 https:\//login.microsoftonline.com/ < tenant_ID > / <...>-而不是 Azure AD 常见终结点-即，https:\//login.microsoftonline.com/common/ <...>。 以下为提出此类登录请求的应用程序的非详尽列表。
+此外, 如果应用程序将登录请求发送到 Azure AD 的终结点 (即, https:\//login.microsoftonline.com/contoso.com/<), 则用户将获得无提示登录体验。> 或 https:\//login.microsoftonline.com/<tenant_ID>/<.。>-而不是 Azure AD 公用终结点, 即 https:\//login.microsoftonline.com/common/< .。。>。 以下为提出此类登录请求的应用程序的非详尽列表。
 
-| 应用程序名称 | 可供使用的应用程序 URL |
+| 应用程序名 | 可供使用的应用程序 URL |
 | -- | -- |
 | SharePoint Online | https:\//contoso.sharepoint.com |
 | Azure 门户 | https:\//portal.azure.com/contoso.com |
@@ -66,7 +66,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 ## <a name="what-is-the-difference-between-the-single-sign-on-experience-provided-by-azure-ad-joinactive-directory-azureadjoin-overviewmd-and-seamless-sso"></a>[Azure AD 加入](../active-directory-azureadjoin-overview.md) 与无缝 SSO 提供的单一登录体验有何不同？
 
-如果用户的设备注册了 Azure AD，[Azure AD 加入](../active-directory-azureadjoin-overview.md)会向用户提供 SSO。 这些设备不必已加入域。 使用主刷新令牌或 PRT（而非 Kerberos）提供 SSO。   用户体验在 Windows 10 设备上最佳。 在 Microsoft Edge 浏览器上，SSO 会自动实现。 也可在 Chrome 上实现，但需要使用浏览器扩展插件。
+如果用户的设备注册了 Azure AD，[Azure AD 加入](../active-directory-azureadjoin-overview.md)会向用户提供 SSO。 这些设备不必已加入域。 使用主刷新令牌或 PRT（而非 Kerberos）提供 SSO。 用户体验在 Windows 10 设备上最佳。 在 Microsoft Edge 浏览器上，SSO 会自动实现。 也可在 Chrome 上实现，但需要使用浏览器扩展插件。
 
 可同时在租户上使用 Azure AD 加入和无缝 SSO。 这两种功能互补。 如果同时开启这两项功能，将先通过 Azure AD 加入实现 SSO，再进行无缝 SSO。
 
@@ -110,8 +110,8 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 #### <a name="option-a-disable-using-azure-ad-connect"></a>选项 A：使用 Azure AD Connect 进行禁用
 
-1. 运行 Azure AD Connect，选择“更改用户登录页”，并单击“下一步”。  
-2. 取消选中“启用单一登录”选项。  在向导中继续操作。
+1. 运行 Azure AD Connect，选择“更改用户登录页”，并单击“下一步”。
+2. 取消选中“启用单一登录”选项。 在向导中继续操作。
 
 完成向导后，将在租户上禁用无缝 SSO。 但是，屏幕上将显示以下消息：
 
@@ -130,7 +130,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 5. 调用 `Enable-AzureADSSO -Enable $false`。
 
 >[!IMPORTANT]
->使用 PowerShell 禁用无缝 SSO 不会更改 Azure AD Connect 中的状态。 无缝 SSO 在“更改用户登录”  页面中将显示为已启用。
+>使用 PowerShell 禁用无缝 SSO 不会更改 Azure AD Connect 中的状态。 无缝 SSO 在“更改用户登录”页面中将显示为已启用。
 
 ### <a name="step-2-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>步骤 2. 获取已在其中启用了无缝 SSO 的 AD 林列表
 
@@ -147,6 +147,6 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 ## <a name="next-steps"></a>后续步骤
 
 - [**快速入门**](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
-- [深入技术探究  ](how-to-connect-sso-how-it-works.md) - 了解此功能如何运作。
+- [深入技术探究](how-to-connect-sso-how-it-works.md) - 了解此功能如何运作。
 - [**故障排除**](tshoot-connect-sso.md) - 了解如何解决此功能的常见问题。
-- [UserVoice  ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

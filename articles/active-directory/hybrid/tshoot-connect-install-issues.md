@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e077127681f8bd7b650ab22f2d036efd7f9733ee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e75ad29c5b4a76de5317991995f132c6cb53bbe3
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60454759"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211846"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>故障排除：Azure AD Connect 安装问题
 
@@ -45,7 +45,7 @@ ms.locfileid: "60454759"
 
 * [联机 Azure Active Directory 的连接问题](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity)。
 
-* [在本地 Active Directory 的权限问题](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)。
+* [本地 Active Directory 的权限问题](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)。
 
 ## <a name="recommended-documents"></a>**建议的文档**
 * [Azure AD Connect 的先决条件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
@@ -58,7 +58,7 @@ ms.locfileid: "60454759"
 
 ## <a name="next-steps"></a>后续步骤
 - [Azure AD Connect 同步](how-to-connect-sync-whatis.md)。
-- [什么是混合标识？](whatis-hybrid-identity.md)。
+- [什么是混合标识？](whatis-hybrid-identity.md)
 
 
 

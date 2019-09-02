@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644881"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70209632"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例 T-sql 差异、限制和已知问题
 
@@ -30,7 +30,7 @@ ms.locfileid: "69644881"
 - [安全性](#security)包括[审核](#auditing)、[证书](#certificates)、[凭据](#credential)、[加密提供程序](#cryptographic-providers)、[登录名和用户名](#logins-and-users)以及[服务密钥和服务主密钥](#service-key-and-service-master-key)方面的差异。
 - [配置](#configuration)包括[缓冲池扩展](#buffer-pool-extension)、[排序规则](#collation)、[兼容性级别](#compatibility-levels)、[数据库镜像](#database-mirroring)、[数据库选项](#database-options)、[SQL Server 代理](#sql-server-agent)以及[表选项](#tables)方面的差异。
 - [功能](#functionalities)包括[BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc),[分布式事务](#distributed-transactions),[扩展事件](#extended-events),[外部库](#external-libraries), [filestream 和 FileTable](#filestream-and-filetable),[全文语义搜索](#full-text-semantic-search)、[链接服务器](#linked-servers)、 [PolyBase](#polybase)、[复制](#replication)、[还原](#restore-statement)、 [Service Broker](#service-broker)、[存储过程、函数和触发器](#stored-procedures-functions-and-triggers)。
-- [环境设置](#Environment), 如 vnet 和子网配置。
+- [环境设置](#Environment)，例如 VNet 和子网配置。
 
 其中大多数功能都是体系结构约束, 表示服务功能。
 
@@ -278,7 +278,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="sql-server-agent"></a>SQL Server 代理
 
-- 当前在托管实例中不支持启用和禁用 SQL Server 代理。 SQL 代理始终运行。
+- 目前，托管实例不支持启用和禁用 SQL Server 代理。 SQL 代理始终运行。
 - SQL Server 代理设置为只读。 托管实例`sp_set_agent_properties`不支持该过程。 
 - 作业(Job)
   - 支持 T-SQL 作业步骤。
@@ -301,7 +301,7 @@ WITH PRIVATE KEY (<private_key_options>)
   - 不支持代理。
 - 不支持事件日志。
 
-当前不支持以下 SQL 代理功能:
+目前不支持以下 SQL 代理功能：
 
 - 代理
 - 针对空闲 CPU 计划作业
@@ -338,6 +338,10 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支持 `CREATE ASSEMBLY FROM FILE`。 请参阅 [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql)。
 - `ALTER ASSEMBLY` 不能引用文件。 请参阅 [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql)。
 
+### <a name="database-mail-db_mail"></a>数据库邮件 (db_mail)
+ - `sp_send_dbmail`无法使用@file_attachments参数发送 atachments。 此过程不能访问本地文件系统和 extental 共享或 Azure blob 存储。
+ - 请参阅与`@query`参数和身份验证相关的已知问题。
+ 
 ### <a name="dbcc"></a>DBCC
 
 托管实例不支持 SQL Server 中启用的未记录 DBCC 语句。
@@ -405,8 +409,8 @@ WITH PRIVATE KEY (<private_key_options>)
 - 支持快照和双向复制类型。 不支持合并复制、对等复制和可更新订阅。
 - [事务复制](sql-database-managed-instance-transactional-replication.md)可用于托管实例上的公共预览版, 但有一些限制:
     - 所有类型的复制参与者 (发布服务器、分发服务器、请求订阅服务器和推送订阅服务器) 都可放置在托管实例上, 但不能将发布服务器和分发服务器放置在不同的实例上。
-    - 托管实例可以与 SQL Server 的最新版本通信。 请在[此处](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)查看受支持的版本。
-    - 事务复制有一些[额外的网络要求](sql-database-managed-instance-transactional-replication.md#requirements)。
+    - 托管实例可以与 SQL Server 的最新版本通信。 请在[此处](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)查看支持的版本。
+    - 事务复制有一些[其他的网络要求](sql-database-managed-instance-transactional-replication.md#requirements)。
 
 有关配置复制的信息, 请参阅[复制教程](replication-with-sql-database-managed-instance.md)。
 
@@ -517,14 +521,14 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="subnet"></a>Subnet
 -  不能将任何其他资源 (例如虚拟机) 放入部署了托管实例的子网中。 使用其他子网部署这些资源。
-- 子网必须具有足够数量的可用[IP 地址](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 最小值为 16, 但建议至少在子网中包含32个 IP 地址。
-- [无法将服务终结点与托管实例的子网相关联](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 创建虚拟网络时，请务必禁用“服务终结点”选项。
-- 在某个区域中, 可以部署的 Vcore 和实例类型有一些[限制和限制](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)。
-- 某些[安全规则必须应用于子网](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。
+- 子网必须有足够数量的可用 [IP 地址](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 至少为 16 个，但建议在子网中至少有 32 个 IP 地址。
+- [不能将服务终结点与托管实例的子网相关联](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 创建虚拟网络时，请务必禁用“服务终结点”选项。
+- 可以在某个区域部署的 vCore 数和实例类型存在一些[约束和限制](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)。
+- 存在一些[必须在子网上应用的安全规则](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。
 
 ### <a name="vnet"></a>VNET
-- 可以使用资源模型-不支持 VNet 的经典模型来部署 VNet。
-- 创建托管实例后, 不支持将托管实例或 VNet 移到另一个资源组或订阅。
+- VNet 可以使用资源模型进行部署 - 不支持适用于 VNet 的经典模型。
+- 创建托管实例后，不支持将托管实例或 VNet 移到另一个资源组或订阅。
 - 某些服务 (如应用服务环境、逻辑应用和托管实例, 用于异地复制、事务复制或通过链接服务器) 无法访问不同区域中的托管实例, 如果它们的 Vnet 使用[global对等互连](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。 可以通过 ExpressRoute 或 vnet 到 vnet 网关连接到这些资源。
 
 ### <a name="tempdb"></a>TEMPDB
@@ -537,6 +541,14 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ## <a name="Issues"></a>已知问题
 
+### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>无法进行身份验证使用安全连接 (SSL) 连接到外部邮件服务器
+
+**日期**2019年8月
+
+[使用安全连接 (SSL) 配置](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail)的数据库邮件无法在 Azure 外部的某些电子邮件服务器上进行身份验证。 这是即将解决的安全配置问题。
+
+**解决方法：** 临时删除安全连接 (SSL) 将在问题得到解决之前, 形成数据库邮件配置。 
+
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>跨数据库 Service Broker 对话框必须在服务层升级后重新初始化
 
 **日期**2019年8月
@@ -547,7 +559,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="impersonification-of-aad-login-types-is-not-supported"></a>不支持 AAD 登录类型的 Impersonification
 
-**日期**2019年7月
+**日期**2019 年 7 月
 
 不支持`EXECUTE AS USER`使用`EXECUTE AS LOGIN`或以下 AAD 主体的模拟:
 -   化名为 AAD 的用户。 在这种情况下`15517`, 将返回以下错误。

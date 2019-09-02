@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08ace7170a982fbaa186b77b27e342f16349aadd
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c922799b650de7f921cc0493eb3feb2ad90b9d92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613305"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183149"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C：用户迁移
 
@@ -139,7 +139,9 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 
 ## <a name="step-2-pre-migration-application-sample"></a>步骤 2：预迁移应用程序示例
 
-[下载并运行示例代码][UserMigrationSample]。 可以下载 .zip 文件格式的示例代码。
+可在社区维护`azure-ad-b2c/user-migration`的 GitHub 存储库中找到预迁移代码示例:
+
+[azure-ad-b2c/用户迁移/预迁移][UserMigrationSample-code]GitHub
 
 ### <a name="step-21-edit-the-migration-data-file"></a>步骤 2.1：编辑迁移数据文件
 
@@ -364,7 +366,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 
 ## <a name="optional-download-the-complete-policy-files"></a>（可选）下载完整的策略文件
 
-完成[自定义策略入门][B2C-GetStartedCustom]演练后, 建议使用自己的自定义策略文件来构建方案。 对于参考, 我们提供了[示例策略文件][UserMigrationSample]。
+完成[自定义策略入门][B2C-GetStartedCustom]演练后, 建议使用自己的自定义策略文件来构建方案。 对于参考, 我们提供了[示例策略文件][UserMigrationSample-policy]。
 
 [AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
 [AD-Powershell]: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2
@@ -375,4 +377,5 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 [B2C-GraphQuickStart]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet
 [B2C-NavContext]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-navigate-to-b2c-context
 [Portal]: https://portal.azure.com/
-[UserMigrationSample]: https://github.com/azure-ad-b2c/user-migration
+[UserMigrationSample-code]: https://github.com/azure-ad-b2c/user-migration/tree/master/pre-migration/source-code
+[UserMigrationSample-policy]: https://github.com/azure-ad-b2c/user-migration/tree/master/pre-migration/policy
