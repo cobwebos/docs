@@ -23,14 +23,14 @@ ms.locfileid: "68599235"
 ---
 # <a name="resource-governance"></a>资源调控
 
-在同一节点或群集上运行多个服务时，其中一个服务可能会占用更多资源，导致相应流程中的其他服务缺少资源。 这种问题称为“邻近干扰”问题。 借助 Azure Service Fabric，开发者可以为每个服务指定资源保留和限制，从而保证并限制资源使用。
+在同一节点或群集上运行多个服务时，其中一个服务可能会占用更多资源，导致相应流程中的其他服务缺少资源。 这种问题称为“邻近干扰”问题。 借助 Azure Service Fabric，开发者可以为每个服务指定资源预留和限制，从而保证并限制资源使用。
 
 > 继续阅读本文之前，建议先熟悉 [Service Fabric 应用程序模型](service-fabric-application-model.md)和 [Service Fabric 托管模型](service-fabric-hosting-model.md)。
 >
 
 ## <a name="resource-governance-metrics"></a>资源调控指标
 
-根据[服务包](service-fabric-application-model.md)，Service Fabric 支持资源治理。 可以在代码包之间进一步划分分配到服务包的资源。 指定的资源限制也意味着资源保留。 Service Fabric 支持使用两个内置[指标](service-fabric-cluster-resource-manager-metrics.md)，为每个服务包指定 CPU 和内存：
+根据[服务包](service-fabric-application-model.md)，Service Fabric 支持资源治理。 可以在代码包之间进一步划分分配到服务包的资源。 指定的资源限制也意味着资源预留。 Service Fabric 支持使用两个内置[指标](service-fabric-cluster-resource-manager-metrics.md)，为每个服务包指定 CPU 和内存：
 
 * *CPU*（指标名称 `servicefabric:/_CpuCores`）：主机计算机上可用的逻辑内核。 所有节点上的全部内核都进行了相同的加权。
 
@@ -46,7 +46,7 @@ ms.locfileid: "68599235"
 
 ## <a name="resource-governance-mechanism"></a>资源治理机制
 
-Service Fabric 运行时当前不提供资源保留。 当进程或容器打开时，运行时就会将资源限制设置为创建时定义的负载。 此外，如果资源超额，运行时还会拒绝打开新服务包。 为了更好地理解此过程的工作原理，请以下面包含两个 CPU 内核的节点为例（等同于内存治理机制）：
+Service Fabric 运行时当前不提供资源预留。 当进程或容器打开时，运行时就会将资源限制设置为创建时定义的负载。 此外，如果资源超额，运行时还会拒绝打开新服务包。 为了更好地理解此过程的工作原理，请以下面包含两个 CPU 内核的节点为例（等同于内存治理机制）：
 
 1. 首先，在节点上放置一个需要一个 CPU 内核的容器。 运行时打开此容器，并将 CPU 限制设置为一个内核。 此容器无法使用多个内核。
 
@@ -135,9 +135,9 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 
 在此示例中，服务包 ServicePackageA 在驻留的节点上拥有一个内核的资源。 此服务包有两个代码包（CodeA1 和 CodeA2），并且都指定了 `CpuShares` 参数。 CpuShares 512:256 的比例将核心划分到两个代码包中。
 
-因此，在此示例中，CodeA1 分得三分之二个内核，CodeA2 分得三分之一个内核（和相同的软保证保留）。 如果没有为代码包指定 CpuShares，Service Fabric 会在这两个代码包之间平分内核。
+因此，在此示例中，CodeA1 分得三分之二个内核，CodeA2 分得三分之一个内核（和相同的软保证预留）。 如果没有为代码包指定 CpuShares，Service Fabric 会在这两个代码包之间平分内核。
 
-内存限制是绝对的，所以这两个代码包都限制为 1024 MB 内存（和相同的软保证保留）。 代码包（容器或进程）无法分配到超出此限制的内存。如果尝试这样做，则会抛出内存不足异常。 若要强制执行资源限制，服务包中的所有代码包均应指定内存限制。
+内存限制是绝对的，所以这两个代码包都限制为 1024 MB 内存（和相同的软保证预留）。 代码包（容器或进程）无法分配到超出此限制的内存。如果尝试这样做，则会抛出内存不足异常。 若要强制执行资源限制，服务包中的所有代码包均应指定内存限制。
 
 ### <a name="using-application-parameters"></a>使用应用程序参数
 

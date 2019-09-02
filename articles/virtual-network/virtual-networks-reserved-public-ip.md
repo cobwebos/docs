@@ -53,7 +53,7 @@ ms.locfileid: "60789071"
 
 ### <a name="using-azure-powershell-classic"></a>使用 Azure PowerShell（经典）
 
-在使用保留 IP 之前，必须先将其添加到订阅。 从美国中部位置提供的公共 IP 地址池创建保留 IP，如下所示  ：
+在使用保留 IP 之前，必须先将其添加到订阅。 从美国中部位置提供的公共 IP 地址池创建保留 IP，如下所示：
 
 > [!NOTE]
 > 对于经典部署模型，必须安装 Azure PowerShell 的服务管理版本。 有关详细信息，请参阅[安装 Azure PowerShell 服务管理模块](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0)。 
@@ -83,7 +83,7 @@ Get-AzureReservedIP
     OperationStatus      : Succeeded
 
 >[!NOTE]
->使用 PowerShell 创建保留 IP 地址时，不能指定要在其中创建保留 IP 的资源组。 Azure 将其自动放置于名为默认网络  的资源组中。 如果使用 [Azure 门户](https://portal.azure.com)创建保留 IP，可指定所选的任何资源组。 但是，如果在默认网络  以外的资源组中创建保留 IP，每当使用 `Get-AzureReservedIP` 和 `Remove-AzureReservedIP` 等命令引用保留 IP 时，必须引用名称“Group resource-group-name reserved-ip-name”  。  例如，如果在名为 myResourceGroup  的资源组中创建名为 myReservedIP  的保留 IP，必须将保留 IP 的名称引用为“Group myResourceGroup myReservedIP”  。   
+>使用 PowerShell 创建保留 IP 地址时，不能指定要在其中创建保留 IP 的资源组。 Azure 将其自动放置于名为默认网络的资源组中。 如果使用 [Azure 门户](https://portal.azure.com)创建保留 IP，可指定所选的任何资源组。 但是，如果在默认网络以外的资源组中创建保留 IP，每当使用 `Get-AzureReservedIP` 和 `Remove-AzureReservedIP` 等命令引用保留 IP 时，必须引用名称“Group resource-group-name reserved-ip-name”。  例如，如果在名为 myResourceGroup 的资源组中创建名为 myReservedIP 的保留 IP，必须将保留 IP 的名称引用为“Group myResourceGroup myReservedIP”。   
 
 
 某个 IP 成为保留 IP 后，它就会始终与订阅相关联，直至将它删除。 删除保留 IP，如下所示：
@@ -93,7 +93,7 @@ Remove-AzureReservedIP -ReservedIPName "MyReservedIP"
 ```
 
 ### <a name="using-azure-cli-classic"></a>使用 Azure CLI（经典）
-使用 Azure 经典 CLI 从美国中部位置提供的公共 IP 地址池创建保留 IP，如下所示  ：
+使用 Azure 经典 CLI 从美国中部位置提供的公共 IP 地址池创建保留 IP，如下所示：
 
 > [!NOTE]
 > 对于经典部署，必须使用 Azure 经典 CLI。 有关安装 Azure 经典 CLI 的信息，请参阅[安装 Azure 经典 CLI](https://docs.microsoft.com/cli/azure/install-classic-cli?view=azure-cli-latest)
@@ -126,7 +126,7 @@ azure network reserved-ip list
  azure network reserved-ip delete MyReservedIP
  ```
 ## <a name="reserve-the-ip-address-of-an-existing-cloud-service"></a>保留现有云服务的 IP 地址
-添加 `-ServiceName` 参数即可保留现有云服务的 IP 地址。 保留美国中部位置中 TestService 云服务的 IP 地址，如下所示   ：
+添加 `-ServiceName` 参数即可保留现有云服务的 IP 地址。 保留美国中部位置中 TestService 云服务的 IP 地址，如下所示：
 
 - 使用 Azure PowerShell（经典）：
 
@@ -148,7 +148,7 @@ azure network reserved-ip list
     ```
 
 ## <a name="associate-a-reserved-ip-to-a-new-cloud-service"></a>将保留 IP 关联到新的云服务
-下面的脚本将创建新的保留 IP，然后将其关联到名为 TestService  的新云服务。
+下面的脚本将创建新的保留 IP，然后将其关联到名为 TestService 的新云服务。
 
 ### <a name="using-azure-powershell-classic"></a>使用 Azure PowerShell（经典）
 ```powershell
@@ -161,7 +161,7 @@ New-AzureVMConfig -Name TestVM -InstanceSize Small -ImageName $image.ImageName `
 | New-AzureVM -ServiceName TestService -ReservedIPName MyReservedIP -Location "Central US"
 ```
 > [!NOTE]
-> 创建用于云服务的保留 IP 时，仍需使用 VIP:&lt;端口号>  来引用 VM，以便进行入站通信。 使用保留 IP 并不意味着可以直接连接到 VM。 保留 IP 将分配给 VM 所部署到的云服务。 如果想要直接通过 IP 连接到 VM，则必须配置实例层级公共 IP。 实例层级公共 IP 是一类可直接分配给 VM 的公共 IP（称为 ILPIP）。 它不能保留。 有关详细信息，请参阅[实例层级公共 IP (ILPIP)](virtual-networks-instance-level-public-ip.md) 一文。
+> 创建用于云服务的保留 IP 时，仍需使用 VIP:&lt;端口号> 来引用 VM，以便进行入站通信。 使用保留 IP 并不意味着可以直接连接到 VM。 保留 IP 将分配给 VM 所部署到的云服务。 如果想要直接通过 IP 连接到 VM，则必须配置实例层级公共 IP。 实例层级公共 IP 是一类可直接分配给 VM 的公共 IP（称为 ILPIP）。 它不能保留。 有关详细信息，请参阅[实例层级公共 IP (ILPIP)](virtual-networks-instance-level-public-ip.md) 一文。
 > 
 
 ## <a name="remove-a-reserved-ip-from-a-running-deployment"></a>从正在运行的部署中删除保留 IP
@@ -187,7 +187,7 @@ azure network reserved-ip disassociate MyReservedIP TestService asmtest8942
 ```
 
 > [!NOTE]
-> 从正在运行的部署中删除保留 IP 并不会从订阅中删除保留 IP。 它只是释放该 IP，以供订阅中的其他资源使用。
+> 从正在运行的部署中删除预留 IP 并不会从订阅中删除预留 IP。 它只是释放该 IP，以供订阅中的其他资源使用。
 > 
 
 若要从订阅中完全删除保留 IP，请运行以下命令：
@@ -207,7 +207,7 @@ azure network reserved-ip delete MyReservedIP
 
 ### <a name="using-azure-powershell-classic"></a>使用 Azure PowerShell（经典）
 
-以下命令将使用名为 TestVM2  的新 VM 创建名为 TestService2  的云服务。 然后，名为 MyReservedIP  的现有保留 IP 将关联到云服务。
+以下命令将使用名为 TestVM2 的新 VM 创建名为 TestService2 的云服务。 然后，名为 MyReservedIP 的现有保留 IP 将关联到云服务。
 
 ```powershell
 $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}

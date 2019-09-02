@@ -8,7 +8,7 @@ metadata:
   manager: carmonm
   ms.service: resource-graph
   ms.topic: landing-page
-  ms.date: 05/06/2019
+  ms.date: 08/25/2019
   ms.author: dacoulte
 abstract:
   description: Azure Resource Graph 文档可帮助你配置和学习查询语言，以便大规模发现和探索资源。
@@ -20,6 +20,11 @@ sections:
       - type: list
         style: icon48
         items:
+          - image:
+              alt: Azure Resource Graph 资源管理器
+              src: ./media/arg_explorer.svg
+            text: Resource Graph 资源管理器
+            href: first-query-portal.md
           - image:
               alt: Azure CLI
               src: ./media/cli.svg

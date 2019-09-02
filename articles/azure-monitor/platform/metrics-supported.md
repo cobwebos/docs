@@ -48,7 +48,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |MemoryLimitHigh|内存: 内存上限|字节|Average|内存上限，来自配置文件。|ServerResourceType|
 |MemoryLimitLow|内存: 内存下限|字节|Average|内存下限，来自配置文件。|ServerResourceType|
 |MemoryLimitVertiPaq|内存: 内存 VertiPaq 限制|字节|Average|内存中限制，来自配置文件。|ServerResourceType|
-|配额|内存: 配额|字节|Average|当前内存配额（字节）。 内存配额也称为内存授予或内存保留。|ServerResourceType|
+|配额|内存: 配额|字节|Average|当前内存配额（字节）。 内存配额也称为内存授予或内存预留。|ServerResourceType|
 |QuotaBlocked|内存: 阻止的配额|Count|Average|在其他内存配额被释放之前已阻止的当前的配额请求数。|ServerResourceType|
 |VertiPaqNonpaged|内存: VertiPaq 未分页|字节|Average|工作集中被锁定的供内存中引擎使用的内存字节数。|ServerResourceType|
 |VertiPaqPaged|内存: VertiPaq 已分页|字节|Average|用于内存中数据的已分页内存字节数。|ServerResourceType|

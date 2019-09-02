@@ -4,9 +4,9 @@
 - name: 概述
   expanded: true
   items:
-    - name: 什么是数据科学 VM？
+    - name: 什么是 Data Science Virtual Machine？
       href: overview.md
-    - name: 什么是地理 AI 数据科学 VM？
+    - name: 什么是 Geo AI DSVM？
       href: geo-ai-dsvm-overview.md
 - name: 快速入门
   expanded: true
@@ -17,7 +17,7 @@
       href: dsvm-ubuntu-intro.md
     - name: 创建 CentOS DSVM
       href: linux-dsvm-intro.md
-    - name: 创建地理 AI 数据科学 VM
+    - name: 创建地理 AI DSVM
       href: provision-geo-ai-dsvm.md
 - name: 概念
   items:

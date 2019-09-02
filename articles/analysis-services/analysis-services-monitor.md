@@ -55,7 +55,7 @@ Analysis Services 提供 Azure 指标资源管理器中的指标, 它是门户�
 |MemoryLimitLow|内存: 内存下限|字节|Average|内存下限，来自配置文件。|
 |MemoryLimitVertiPaq|内存: 内存 VertiPaq 限制|字节|Average|内存中限制，来自配置文件。|
 |MemoryUsage|内存: 内存使用率|字节|Average|服务器进程的内存使用量（在计算清理器内存价格时使用）。 等于计数器 Process\PrivateBytes 加上内存映射的数据的大小，并且将忽略由内存中分析引擎 (VertiPaq) 映射或分配的超出了引擎内存限制的任何内存。|
-|配额|内存: 配额|字节|Average|当前内存配额（字节）。 内存配额也称为内存授予或内存保留。|
+|配额|内存: 配额|字节|Average|当前内存配额（字节）。 内存配额也称为内存授予或内存预留。|
 |QuotaBlocked|内存: 阻止的配额|Count|Average|在其他内存配额被释放之前已阻止的当前的配额请求数。|
 |VertiPaqNonpaged|内存: VertiPaq 未分页|字节|Average|工作集中被锁定的供内存中引擎使用的内存字节数。|
 |VertiPaqPaged|内存: VertiPaq 已分页|字节|Average|用于内存中数据的已分页内存字节数。|

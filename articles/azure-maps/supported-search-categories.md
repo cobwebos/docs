@@ -82,7 +82,7 @@ ms.locfileid: "64727144"
 | MOTORING\_ORGANIZATION\_OFFICE | 机动车协会办公室 |
 | MOUNTAIN\_PASS | 山道 |
 | MUSEUM | 博物馆 |
-| NATIVE\_RESERVATION | 当地保留地、保留地 |
+| NATIVE\_RESERVATION | 当地预留、预留 |
 | NIGHTLIFE | 酒吧、卡拉OK厅、爵士乐俱乐部、私人会所、酒吧、喜剧会所、鸡尾酒吧、舞厅、夜生活 |
 | NON\_GOVERNMENTAL\_ORGANIZATION | 非政府组织 |
 | OPEN\_PARKING\_AREA | 露天停车场、停车场 |
