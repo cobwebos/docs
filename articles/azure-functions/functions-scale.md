@@ -45,14 +45,14 @@ ms.locfileid: "69874939"
 
 下表指出了在 Windows 或 Linux 上运行应用时，目前对三个托管计划的支持级别：
 
-| | 消耗量计划 | 高级计划 | 专用计划 |
+| | 消耗计划 | 高级计划 | 专用计划 |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | GA | 预览 | GA |
 | Linux | GA | 预览 | GA |
 
-## <a name="consumption-plan"></a>消耗量计划
+## <a name="consumption-plan"></a>消耗计划
 
-使用消耗计划时，会根据传入事件数自动添加和删除 Azure Functions 主机实例。 这个无服务器计划会自动缩放，仅在函数运行时，才会产生计算资源费用。 在消费计划中，函数执行在可配置的时间段后超时。
+使用消耗计划时，会根据传入事件数自动添加和删除 Azure Functions 主机实例。 这个无服务器计划会自动缩放，仅在函数运行时，才会产生计算资源费用。 在消耗计划中，函数执行在可配置的时间段后超时。
 
 账单将基于执行数量、执行时间和所用内存。 账单是基于函数应用内的所有函数聚合而生成的。 有关详细信息，请参阅 [Azure Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)。
 
@@ -125,7 +125,7 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-此命令的输出为 `dynamic` 时，函数应用采用消耗量计划。 此命令的输出为 `ElasticPremium` 时，函数应用采用高级计划。 所有其他值均表示应用服务计划的不同层。
+此命令的输出为 `dynamic` 时，函数应用采用消耗计划。 此命令的输出为 `ElasticPremium` 时，函数应用采用高级计划。 所有其他值均表示应用服务计划的不同层。
 
 ## <a name="storage-account-requirements"></a>存储帐户要求
 

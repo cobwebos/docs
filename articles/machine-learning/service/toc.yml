@@ -290,12 +290,18 @@
               href: ../algorithm-module-reference/edit-metadata.md
             - name: 清理缺失数据
               href: ../algorithm-module-reference/clean-missing-data.md
+            - name: 特征哈希
+              href: ../algorithm-module-reference/feature-hashing.md
+            - name: 从文本中提取 N 元语法特征
+              href: ../algorithm-module-reference/extract-n-gram-features-from-text.md
             - name: 添加列
               href: ../algorithm-module-reference/add-columns.md
             - name: 添加行
               href: ../algorithm-module-reference/add-rows.md
             - name: 删除重复的行
               href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: 预处理文本
+              href: ../algorithm-module-reference/preprocess-text.md
             - name: 联接数据
               href: ../algorithm-module-reference/join-data.md
             - name: 拆分数据
