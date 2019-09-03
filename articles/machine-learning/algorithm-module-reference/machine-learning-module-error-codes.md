@@ -2081,7 +2081,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|  
 |------------------------|  
 |GitHub 访问错误。|  
-|GitHub 访问错误。 [https://doi.org/10.13012/J8PN93H8]({0})|  
+|GitHub 访问错误。 {0}|  
   
 
 ## <a name="error-0148"></a>错误0148  

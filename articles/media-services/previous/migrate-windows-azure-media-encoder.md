@@ -64,7 +64,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>高级方案 
 
-如果已使用其架构为 WAME 创建了自己的编码预设, 则会有一个[等效的架构用于 Media Encoder Standard](media-services-mes-schema.md)。 如果有关于如何将较旧的设置映射到新编码器的问题, 请通过mailto:amshelp@microsoft.com  
+如果已使用其架构为 WAME 创建了自己的编码预设, 则会有一个[等效的架构用于 Media Encoder Standard](media-services-mes-schema.md)。 如果有关于如何将较旧的设置映射到新编码器的问题, 请通过 mailto:amshelp@microsoft.com  
 
 ## <a name="known-differences"></a>已知差异 
 
