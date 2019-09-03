@@ -9,22 +9,26 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: 507a6d998f83f5a399f78566967067d0ed92f8b0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: dee813cbe1da6a6300f65b7005bf4a4b0226112a
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534393"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208534"
 ---
 1. 使用将所使用的 Azure 订阅的凭据登录到 [Azure 门户](https://portal.azure.com/)。 
 
 1. 在 Azure 门户的左上角，选择“+ 创建资源”  。
+
+      ![创建新资源](media/aml-create-in-portal/portal-create-resource.png)
 
 1. 使用搜索栏查找“机器学习服务工作区”  。
 
 1. 选择“机器学习服务工作区”  。
 
 1. 在“机器学习服务工作区”窗格中，选择“创建”以开始   。
+
+  
 
 1. 通过提供工作区名称、订阅、资源组和位置来配置新工作区。
 
@@ -37,7 +41,10 @@ ms.locfileid: "69534393"
 
 1. 完成工作区配置后，选择“创建”  。 
 
-   创建工作区可能需要一些时间。
+   > [!Warning] 
+   > 在云中创建工作区可能需要几分钟时间。
 
-   完成创建后，会显示部署成功消息。 若要查看新工作区，请选择“转到资源”  。
+   完成创建后，会显示部署成功消息。 
+ 
+ 1. 若要查看新工作区，请选择“转到资源”  。
 
