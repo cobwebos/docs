@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 09ef80742c931c9b7e8f8c2e2cf0b9e373ad6184
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 3141a32437e56bcefe830bc94109e93208e0258d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015777"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232158"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>教程：将 iPass SmartConnect 配置为自动用户预配
 
@@ -57,7 +57,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 在将 iPass SmartConnect 配置为 Azure AD 的自动用户预配之前, 需要从 iPass SmartConnect 管理员控制台中检索配置信息:
 
 1. 若要检索对 iPass SmartConnect SCIM 终结点进行身份验证所需的持有者令牌, 请参阅第一次设置 iPass SmartConnect, 因为仅提供此值。 
-2. 如果你没有持有者令牌, 请联系 [iPass SmartConnect 的支持团队] (mailto:help@ipass.com) 来检索新的令牌。
+2. 如果你没有持有者令牌, 请联系[IPass SmartConnect 支持团队](mailto:help@ipass.com)来检索新的令牌。
 
 ## <a name="add-ipass-smartconnect-from-the-gallery"></a>从库中添加 iPass SmartConnect
 

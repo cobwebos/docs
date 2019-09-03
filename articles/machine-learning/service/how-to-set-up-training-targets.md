@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9bc9d64d7f21498acd5cb0c23447e7ff77de629
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 07176fbe22e70658856dd266687a15d719e78e9f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195575"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231082"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型定型的计算目标 
 
@@ -422,6 +422,19 @@ az ml folder attach
 ```
 
 此命令创建一个子`.azureml`文件夹, 其中包含不同计算目标的模板运行配置文件。 可以复制和编辑这些文件, 以自定义配置, 例如添加 Python 包或更改 Docker 设置。  
+
+### <a name="structure-of-run-configuration-file"></a>运行配置文件的结构
+
+运行配置文件的格式 YAML, 以下部分
+ * 要运行的脚本及其参数
+ * 计算目标名称, 可以是 "本地", 也可以是工作区中计算的名称。
+ * 用于执行运行的参数: 框架, 用于分布式运行的 communicator, 最大持续时间和计算节点数。
+ * 环境部分。 有关本部分中的字段的详细信息, 请参阅[创建和管理用于培训和部署的环境](how-to-use-environments.md)。
+   * 若要指定要为运行安装的 Python 包, 请创建[conda 环境文件](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually), 并设置__condaDependenciesFile__字段。
+ * 运行历史记录详细信息以指定日志文件文件夹, 以及启用或禁用输出收集和运行历史记录快照。
+ * 特定于所选框架的配置详细信息。
+ * 数据引用和数据存储的详细信息。
+ * 用于创建新群集的机器学习计算的特定配置详细信息。
 
 ### <a name="create-an-experiment"></a>创建试验
 

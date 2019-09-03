@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: ddce94cab0067c34ad056a40251d79c5470ba460
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: bec1c0c3523e6d9cfb0b2fdbc7a093ffe0637743
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996569"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232500"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -197,9 +197,9 @@ Teradata 链接服务支持以下属性:
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为`TeradataSource`。 | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时, 需要在查询中挂接任何对应的内置分区参数。 有关示例, 请参阅[从 Teradata 并行复制](#parallel-copy-from-teradata)部分。 | 否（如果指定了数据集中的表） |
-| partitionOptions | 指定用于从 Teradata 加载数据的数据分区选项。 <br>允许的值为：**None**（默认值）、**Hash** 和 **DynamicRange**。<br>启用`None`分区选项后, 还会在复制活动上[`parallelCopies`](copy-activity-performance.md#parallel-copy)配置设置。 这将确定并行加载 Teradata 数据库中的数据的并行度。 例如, 你可以将此设置为4。 | 否 |
+| partitionOptions | 指定用于从 Teradata 加载数据的数据分区选项。 <br>允许的值为：**None**（默认值）、**Hash** 和 **DynamicRange**。<br>启用分区选项 (即, 不`None`是) 时, 从 Teradata 数据库并发加载数据的并行度由复制活动的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 | 否 |
 | partitionSettings | 指定数据分区的设置组。 <br>当 partition 选项不`None`为时应用。 | 否 |
-| partitionColumnName | 指定并行复制范围分区使用的源列（**整数类型**）的名称。 如果未指定此参数, 则将自动检测该表的主键, 并将其用作分区列。 <br>当 partition 选项为`Hash`或`DynamicRange`时应用。 如果使用查询来检索源数据, 请在 where 子句`?AdfHashPartitionCondition`中`?AdfRangePartitionColumnName`使用挂钩或。 请参阅[从 Teradata 进行并行复制](#parallel-copy-from-teradata)部分中的示例。 | 否 |
+| partitionColumnName | 指定将由范围分区或哈希分区用于并行复制的源列的名称。 如果未指定, 则自动检测表的主索引, 并将其用作分区列。 <br>当 partition 选项为`Hash`或`DynamicRange`时应用。 如果使用查询来检索源数据, 请在 where 子句`?AdfHashPartitionCondition`中`?AdfRangePartitionColumnName`使用挂钩或。 请参阅[从 Teradata 进行并行复制](#parallel-copy-from-teradata)部分中的示例。 | 否 |
 | partitionUpperBound | 要向其复制数据的分区列的最大值。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据, 则在`?AdfRangePartitionUpbound` WHERE 子句中挂接。 有关示例, 请参阅[从 Teradata 并行复制](#parallel-copy-from-teradata)部分。 | 否 |
 | partitionLowerBound | 要向其复制数据的分区列的最小值。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionLowbound`中挂接。 有关示例, 请参阅[从 Teradata 并行复制](#parallel-copy-from-teradata)部分。 | 否 |
 
@@ -247,7 +247,7 @@ Teradata 链接服务支持以下属性:
 
 启用分区副本时, 数据工厂对 Teradata 源运行并行查询以按分区加载数据。 并行度由 "复制" 活动[`parallelCopies`](copy-activity-performance.md#parallel-copy)的设置控制。 例如, 如果将设置`parallelCopies`为 4, 则数据工厂会同时生成并运行基于指定分区选项和设置的四个查询, 每个查询将从 Teradata 数据库中检索部分数据。
 
-使用数据分区启用并行复制是个好主意, 尤其是在从 Teradata 数据库加载大量数据时。 下面是针对不同方案的建议配置。 将数据复制到基于文件的数据存储时, 将 recommanded 写入文件夹作为多个文件 (仅指定文件夹名称), 在这种情况下, 性能比写入单个文件更好。
+建议使用数据分区启用并行复制, 尤其是从 Teradata 数据库加载大量数据时。 下面是针对不同方案的建议配置。 将数据复制到基于文件的数据存储时, 将 recommanded 写入文件夹作为多个文件 (仅指定文件夹名称), 在这种情况下, 性能比写入单个文件更好。
 
 | 应用场景                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

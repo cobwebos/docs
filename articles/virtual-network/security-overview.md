@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: ca4908e642644ccbf349841d143bfcc18e944025
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 25c732d1311e2bcffe0fda0d5e427d5df5f99da6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305837"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70065931"
 ---
 # <a name="security-groups"></a>安全组
 <a name="network-security-groups"></a>
@@ -33,13 +33,13 @@ ms.locfileid: "68305837"
 
 |属性  |说明  |
 |---------|---------|
-|名称|网络安全组中的唯一名称。|
+|姓名|网络安全组中的唯一名称。|
 |Priority | 介于 100 和 4096 之间的数字。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。|
 |源或目标| 可以是任何值，也可以是单个 IP 地址、无类别域际路由 (CIDR) 块（例如 10.0.0.0/24）、[服务标记](#service-tags)或[应用程序安全组](#application-security-groups)。 如果为 Azure 资源指定一个地址，请指定分配给该资源的专用 IP 地址。 在 Azure 针对入站流量将公共 IP 地址转换为专用 IP 地址后，系统会处理网络安全组，然后由 Azure 针对出站流量将专用 IP 地址转换为公共 IP 地址。 详细了解 Azure [IP 地址](virtual-network-ip-addresses-overview-arm.md)。 指定范围、服务标记或应用程序安全组可以减少创建的安全规则数。 在一个规则中指定多个单独的 IP 地址和范围（不能指定多个服务标记或应用程序组）的功能称为[扩充式安全规则](#augmented-security-rules)。 只能在通过资源管理器部署模型创建的网络安全组中创建扩充式安全规则。 在通过经典部署模型创建的网络安全组中，不能指定多个 IP 地址和 IP 地址范围。 详细了解 [Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。|
 |Protocol     | TCP、UDP、ICMP 或 Any。|
 |Direction| 该规则是应用到入站还是出站流量。|
 |端口范围     |可以指定单个端口或端口范围。 例如，可以指定 80 或 10000-10005。 指定范围可以减少创建的安全规则数。 只能在通过资源管理器部署模型创建的网络安全组中创建扩充式安全规则。 在通过经典部署模型创建的网络安全组中，不能在同一个安全规则中指定多个端口或端口范围。   |
-|Action     | 允许或拒绝        |
+|操作     | 允许或拒绝        |
 
 在允许或拒绝流量之前，将使用 5 元组信息（源、源端口、目标、目标端口和协议）按优先级对网络安全组安全规则进行评估。 将为现有连接创建流记录。 是允许还是拒绝通信取决于流记录的连接状态。 流记录允许网络安全组有状态。 例如，如果针对通过端口 80 访问的任何地址指定了出站安全规则，则不需要指定入站安全规则来响应出站流量。 如果通信是从外部发起的，则只需指定入站安全规则。 反之亦然。 如果允许通过某个端口发送入站流量，则不需要指定出站安全规则来响应通过该端口发送的流量。
 删除启用了流的安全规则时，现有连接不一定会中断。 当连接停止并且至少几分钟内在任一方向都没有流量流过时，流量流会中断。
@@ -54,40 +54,40 @@ ms.locfileid: "68305837"
 
 服务标记表示一组 IP 地址前缀，帮助最大程度地降低安全规则创建过程的复杂性。 无法创建自己的服务标记，也无法指定要将哪些 IP 地址包含在标记中。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 
 
-以下服务标记可用于[网络安全组规则](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)。 末尾带有星号的服务标记 (即 AzureCloud *) 也可在[Azure 防火墙网络规则](https://docs.microsoft.com/azure/firewall/service-tags)中使用。 
+可在[网络安全组规则](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中使用以下服务标记。 末尾带有星号的服务标记 (即 AzureCloud *) 也可在[Azure 防火墙网络规则](https://docs.microsoft.com/azure/firewall/service-tags)中使用。 
 
-* **VirtualNetwork**（资源管理器）（如果是经典部署模型，则为 **VIRTUAL_NETWORK**）：此标记包括虚拟网络地址空间 (为虚拟网络定义的所有 CIDR 范围)、所有连接的本地地址空间、将虚拟网络或连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的虚拟网络[对等互连](virtual-network-peering-overview.md)和地址[用户定义路由](virtual-networks-udr-overview.md)上使用的前缀。 请注意, 此标记可能包含默认路由。 
+* **ApiManagement***（仅限资源管理器）：此标记表示 APIM 专用部署的管理流量地址前缀。 如果指定 ApiManagement 作为值，则会允许或拒绝发往 ApiManagement 的流量。 对于入站/出站安全规则，建议使用此标记。 
+* **AppService***（仅限资源管理器）：此标记表示 Azure AppService 服务的地址前缀。 如果指定 AppService 作为值，则会允许或拒绝发往 AppService 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AppService，则可采用以下格式 AppService.[区域名称] 指定该区域。 对于 WebApps 前端的出站安全规则，建议使用此标记。  
+* **AppServiceManagement***（仅限资源管理器）：此标记表示应用服务环境专用部署的管理流量地址前缀。 如果指定 AppServiceManagement 作为值，则会允许或拒绝发往 AppServiceManagement 的流量。 对于入站/出站安全规则，建议使用此标记。 
+* **AzureActiveDirectory***（仅限资源管理器）：此标记表示 AzureActiveDirectory 服务的地址前缀。 如果指定 AzureActiveDirectory 作为值，则会允许或拒绝发往 AzureActiveDirectory 的流量。 对于出站安全规则，建议使用此标记。
+* **AzureActiveDirectoryDomainServices*** (仅资源管理器):此标记表示 Azure Active Directory 域服务专用部署的管理流量的地址前缀。 如果为值指定*AzureActiveDirectoryDomainServices* , 则允许或拒绝流量发送到 AzureActiveDirectoryDomainServices。 对于入站/出站安全规则，建议使用此标记。  
+* **AzureBackup***（仅限资源管理器）：此标记表示 AzureBackup 服务的地址前缀。 如果指定 *AzureBackup* 作为值，则会允许或拒绝发往 AzureBackup 的流量。 此标记依赖于**存储**和**AzureActiveDirectory**标记。 对于出站安全规则，建议使用此标记。 
+* **AzureCloud*** (仅资源管理器):此标记表示 Azure 的 IP 地址空间，包括所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)。 如果指定 AzureCloud 作为值，则会允许或拒绝发往 Azure 公共 IP 地址的流量。 如果只想允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureCloud, 可以指定以下格式的区域 AzureCloud。[region name]。 对于出站安全规则，建议使用此标记。 
+* **AzureConnectors***（仅限资源管理器）：此标记表示用于探测/后端连接的逻辑应用连接器的地址前缀。 如果指定 AzureConnectors 作为值，则会允许或拒绝发往 AzureConnectors 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AzureConnectors，则可采用以下格式 AzureConnectors.[区域名称] 指定该区域。 对于入站安全规则，建议使用此标记。 
+* **AzureContainerRegistry***（仅限资源管理器）：此标记表示 Azure 容器注册表服务的地址前缀。 如果指定 AzureContainerRegistry 作为值，则会允许或拒绝发往 AzureContainerRegistry 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AzureContainerRegistry，则可采用以下格式 AzureContainerRegistry.[区域名称] 指定该区域。 对于出站安全规则，建议使用此标记。 
+* **AzureCosmosDB***（仅限资源管理器）：此标记表示 Azure Cosmos 数据库服务的地址前缀。 如果指定 *AzureCosmosDB* 作为值，则会允许或拒绝发往 AzureCosmosDB 的流量。 如果仅希望允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureCosmosDB，则可以在以下格式的 AzureCosmosDB.[region name] 中指定区域。 对于出站安全规则，建议使用此标记。 
+* **AzureDataLake*** (仅资源管理器):此标记表示 Azure Data Lake 服务的地址前缀。 如果指定 AzureDataLake 作为值，则会允许或拒绝发往 AzureDataLake 的流量。 对于出站安全规则，建议使用此标记。 
+* **AzureKeyVault***（仅限资源管理器）：此标记表示 Azure KeyVault 服务的地址前缀。 如果指定 *AzureKeyVault* 作为值，则会允许或拒绝发往 AzureKeyVault 的流量。 如果仅希望允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureKeyVault，则可以在以下格式的 AzureKeyVault.[region name] 中指定区域。 此标记依赖于 **AzureActiveDirectory** 标记。 对于出站安全规则，建议使用此标记。  
 * **AzureLoadBalancer**（资源管理器）（如果是经典部署模型，则为 **AZURE_LOADBALANCER**）：此标记表示 Azure 的基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](security-overview.md#azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 如果不使用 Azure 负载均衡器，则可替代此规则。
-* **Internet**（资源管理器）（如果是经典部署模型，则为 **INTERNET**）：此标记表示虚拟网络外部的 IP 地址空间，可以通过公共 Internet 进行访问。 地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。
-* **AzureCloud*** (仅资源管理器):此标记表示 Azure 的 IP 地址空间，包括所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)。 如果指定 AzureCloud 作为值，则会允许或拒绝发往 Azure 公共 IP 地址的流量  。 如果只想允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureCloud, 可以指定以下格式的区域 AzureCloud。[region name]。 对于出站安全规则, 建议使用此标记。 
-* **AzureTrafficManager*** (仅资源管理器):此标记表示 Azure 流量管理器探测 IP 地址的 IP 地址空间。 有关流量管理器探测 IP 地址的详细信息，请参阅 [Azure 流量管理器常见问题解答](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 建议为入站安全规则使用此标记。  
-* **存储器*** (仅资源管理器):此标记表示 Azure 存储服务的 IP 地址空间。 如果指定 *Storage* 作为值，则会允许或拒绝发往存储的流量。 如果只想允许访问特定[区域](https://azure.microsoft.com/regions)中的存储, 则可以指定以下格式存储中的区域。[region name]。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。 对于出站安全规则, 建议使用此标记。 
-* **Sql*** (仅资源管理器):此标记表示 Azure SQL 数据库、Azure Database for MySQL、Azure Database for PostgreSQL 和 Azure SQL 数据仓库服务的地址前缀。 如果指定 *Sql* 作为值，则会允许或拒绝发往 Sql 的流量。 如果只想允许对特定[区域](https://azure.microsoft.com/regions)中的 Sql 进行访问, 则可以使用以下格式的 sql. [region name] 来指定区域。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 SQL 数据库或服务器。 对于出站安全规则, 建议使用此标记。 
-* **AzureCosmosDB*** (仅资源管理器):此标记表示 Azure Cosmos 数据库服务的地址前缀。 如果指定 *AzureCosmosDB* 作为值，则会允许或拒绝发往 AzureCosmosDB 的流量。 如果仅希望允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureCosmosDB，则可以在以下格式的 AzureCosmosDB.[region name] 中指定区域。 对于出站安全规则, 建议使用此标记。 
-* **AzureKeyVault*** (仅资源管理器):此标记表示 Azure KeyVault 服务的地址前缀。 如果指定 *AzureKeyVault* 作为值，则会允许或拒绝发往 AzureKeyVault 的流量。 如果仅希望允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureKeyVault，则可以在以下格式的 AzureKeyVault.[region name] 中指定区域。 此标记依赖于**AzureActiveDirectory**标记。 对于出站安全规则, 建议使用此标记。  
-* **EventHub*** (仅资源管理器):此标记表示 Azure EventHub 服务的地址前缀。 如果指定 EventHub 作为值，则会允许或拒绝发往 EventHub 的流量  。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 EventHub，则可采用以下格式 EventHub.[区域名称] 指定该区域。 对于出站安全规则, 建议使用此标记。 
-*  (仅限资源管理器):此标记表示使用高级服务层的 Azure ServiceBus 服务的地址前缀。 如果指定 ServiceBus 作为值，则会允许或拒绝发往 ServiceBus 的流量  。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 ServiceBus，则可采用以下格式 ServiceBus.[区域名称] 指定该区域。 对于出站安全规则, 建议使用此标记。 
-* **MicrosoftContainerRegistry*** (仅资源管理器):此标记表示 Microsoft 容器注册表服务的地址前缀。 如果指定 MicrosoftContainerRegistry 作为值，则会允许或拒绝发往 MicrosoftContainerRegistry 的流量  。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 MicrosoftContainerRegistry，则可采用以下格式 MicrosoftContainerRegistry.[区域名称] 指定该区域。 对于出站安全规则, 建议使用此标记。 
-* **AzureContainerRegistry*** (仅资源管理器):此标记表示 Azure 容器注册表服务的地址前缀。 如果指定 AzureContainerRegistry 作为值，则会允许或拒绝发往 AzureContainerRegistry 的流量  。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AzureContainerRegistry，则可采用以下格式 AzureContainerRegistry.[区域名称] 指定该区域。 对于出站安全规则, 建议使用此标记。 
-* **AppService*** (仅资源管理器):此标记表示 Azure AppService 服务的地址前缀。 如果指定 AppService 作为值，则会允许或拒绝发往 AppService 的流量  。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AppService，则可采用以下格式 AppService.[区域名称] 指定该区域。 对于出站安全规则, 建议将此标记用于 WebApps 前端。  
-* **AppServiceManagement*** (仅资源管理器):此标记表示应用服务环境专用部署的管理流量的地址前缀。 如果指定 AppServiceManagement 作为值，则会允许或拒绝发往 AppServiceManagement 的流量  。 建议为入站/出站安全规则使用此标记。 
-* **ApiManagement*** (仅资源管理器):此标记表示 APIM 专用部署的管理流量的地址前缀。 如果指定 ApiManagement 作为值，则会允许或拒绝发往 ApiManagement 的流量  。 建议为入站/出站安全规则使用此标记。 
-* **AzureConnectors*** (仅资源管理器):此标记表示用于探测/后端连接的逻辑应用连接器的地址前缀。 如果指定 AzureConnectors 作为值，则会允许或拒绝发往 AzureConnectors 的流量  。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AzureConnectors，则可采用以下格式 AzureConnectors.[区域名称] 指定该区域。 建议为入站安全规则使用此标记。 
-* **GatewayManager**（仅限资源管理器）：此标记表示 VPN/应用网关专用部署的管理流量的地址前缀。 如果指定 GatewayManager 作为值，则会允许或拒绝发往 GatewayManager 的流量  。 建议为入站安全规则使用此标记。 
-* **AzureDataLake*** (仅资源管理器):此标记表示 Azure Data Lake 服务的地址前缀。 如果指定 AzureDataLake 作为值，则会允许或拒绝发往 AzureDataLake 的流量  。 对于出站安全规则, 建议使用此标记。 
-* **AzureActiveDirectory*** (仅资源管理器):此标记表示 AzureActiveDirectory 服务的地址前缀。 如果指定 AzureActiveDirectory 作为值，则会允许或拒绝发往 AzureActiveDirectory 的流量  。 对于出站安全规则, 建议使用此标记。
-* **AzureMonitor*** (仅资源管理器):此标记表示 Log Analytics、App Insights、AzMon 和自定义指标 (g 终结点) 的地址前缀。 如果指定 AzureMonitor 作为值，则会允许或拒绝发往 AzureMonitor 的流量  。 对于 Log Analytics, 此标记与**存储**标记相关。 对于出站安全规则, 建议使用此标记。
-* **ServiceFabric*** (仅资源管理器):此标记表示 ServiceFabric 服务的地址前缀。 如果指定 ServiceFabric 作为值，则会允许或拒绝发往 ServiceFabric 的流量  。 对于出站安全规则, 建议使用此标记。 
-* **AzureMachineLearning*** (仅资源管理器):此标记表示 AzureMachineLearning 服务的地址前缀。 如果指定 AzureMachineLearning 作为值，则会允许或拒绝发往 AzureMachineLearning 的流量  。 对于出站安全规则, 建议使用此标记。 
-* **BatchNodeManagement*** (仅资源管理器):此标记表示 Azure Batch 专用部署的管理流量的地址前缀。 如果为值指定 *BatchNodeManagement*，则允许或拒绝从 Batch 服务到计算节点的流量。 建议为入站/出站安全规则使用此标记。 
-* **AzureBackup*** (仅资源管理器):此标记表示 AzureBackup 服务的地址前缀。 如果为值指定*AzureBackup* , 则允许或拒绝流量发送到 AzureBackup。 此标记与**存储**和**AzureActiveDirectory**标记相关。对于出站安全规则, 建议使用此标记。 
-* **AzureActiveDirectoryDomainServices*** (仅资源管理器):此标记表示 Azure Active Directory 域服务专用部署的管理流量的地址前缀。 如果为值指定*AzureActiveDirectoryDomainServices* , 则允许或拒绝流量发送到 AzureActiveDirectoryDomainServices。 建议为入站/出站安全规则使用此标记。  
-* **SqlManagement*** (仅资源管理器):此标记表示 SQL 专用部署的管理流量的地址前缀。 如果为值指定*SqlManagement* , 则允许或拒绝流量发送到 SqlManagement。 建议为入站/出站安全规则使用此标记。 
-* **CognitiveServicesManagement**(仅资源管理器):此标记表示认知服务的流量的地址前缀。 如果为值指定*CognitiveServicesManagement* , 则允许或拒绝流量发送到 CognitiveServicesManagement。 对于出站安全规则, 建议使用此标记。  
-* **Dynamics365ForMarketingEmail**(仅资源管理器):此标记表示 Dynamics 365 营销电子邮件服务的地址前缀。 如果为值指定*Dynamics365ForMarketingEmail* , 则允许或拒绝流量发送到 Dynamics365ForMarketingEmail。 如果只想允许访问特定[区域](https://azure.microsoft.com/regions)中的 Dynamics365ForMarketingEmail, 可以指定以下格式的区域 Dynamics365ForMarketingEmail。[region name]。
+* **AzureMachineLearning*** (仅资源管理器):此标记表示 AzureMachineLearning 服务的地址前缀。 如果指定 AzureMachineLearning 作为值，则会允许或拒绝发往 AzureMachineLearning 的流量。 对于出站安全规则，建议使用此标记。 
+* **AzureMonitor***（仅限资源管理器）：此标记表示 Log Analytics、App Insights、AzMon 和自定义指标 (g 终结点) 的地址前缀。 如果指定 AzureMonitor 作为值，则会允许或拒绝发往 AzureMonitor 的流量。 对于 Log Analytics，此标记依赖于 **Storage** 标记。 对于出站安全规则，建议使用此标记。
 * **AzurePlatformDNS**(仅资源管理器):此标记表示作为基本基础结构服务的 DNS。 如果为值指定*AzurePlatformDNS* , 则可以禁用 DNS 的默认[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 使用此标记时请务必小心。 建议在使用此标记之前进行测试。 
 * **AzurePlatformIMDS**(仅资源管理器):此标记表示 IMDS, 它是一个基本基础结构服务。 如果为值指定*AzurePlatformIMDS* , 则可以禁用 IMDS 的默认[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 使用此标记时请务必小心。 建议在使用此标记之前进行测试。 
 * **AzurePlatformLKM**(仅资源管理器):此标记表示 Windows 授权或密钥管理服务。 如果为值指定*AzurePlatformLKM* , 则可以禁用许可的默认[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 使用此标记时请务必小心。 建议在使用此标记之前进行测试。 
+* **AzureTrafficManager***（仅限资源管理器）：此标记表示 Azure 流量管理器探测 IP 地址的 IP 地址空间。 有关流量管理器探测 IP 地址的详细信息，请参阅 [Azure 流量管理器常见问题解答](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 对于入站安全规则，建议使用此标记。  
+* **BatchNodeManagement***（仅限资源管理器）：此标记表示 Azure Batch 专用部署的管理流量地址前缀。 如果为值指定 *BatchNodeManagement*，则允许或拒绝从 Batch 服务到计算节点的流量。 对于入站/出站安全规则，建议使用此标记。 
+* **CognitiveServicesManagement**（仅限资源管理器）：此标记表示认知服务的流量地址前缀。 如果指定*CognitiveServicesManagement* 作为值，则会允许或拒绝发往 CognitiveServicesManagement 的流量。 对于出站安全规则，建议使用此标记。  
+* **Dynamics365ForMarketingEmail**(仅资源管理器):此标记表示 Dynamics 365 营销电子邮件服务的地址前缀。 如果为值指定*Dynamics365ForMarketingEmail* , 则允许或拒绝流量发送到 Dynamics365ForMarketingEmail。 如果只想允许访问特定[区域](https://azure.microsoft.com/regions)中的 Dynamics365ForMarketingEmail, 可以指定以下格式的区域 Dynamics365ForMarketingEmail。[region name]。
+* **EventHub***（仅限资源管理器）：此标记表示 Azure EventHub 服务的地址前缀。 如果指定 EventHub 作为值，则会允许或拒绝发往 EventHub 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 EventHub，则可采用以下格式 EventHub.[区域名称] 指定该区域。 对于出站安全规则，建议使用此标记。 
+* **GatewayManager**（仅限资源管理器）：此标记表示 VPN/应用网关专用部署的管理流量地址前缀。 如果指定 GatewayManager 作为值，则会允许或拒绝发往 GatewayManager 的流量。 对于入站安全规则，建议使用此标记。 
+* **Internet**（资源管理器）（如果是经典部署模型，则为 **INTERNET**）：此标记表示虚拟网络外部的 IP 地址空间，可以通过公共 Internet 进行访问。 地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。
+* **MicrosoftContainerRegistry***（仅限资源管理器）：此标记表示 Microsoft 容器注册表服务的地址前缀。 如果指定 MicrosoftContainerRegistry 作为值，则会允许或拒绝发往 MicrosoftContainerRegistry 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 MicrosoftContainerRegistry，则可采用以下格式 MicrosoftContainerRegistry.[区域名称] 指定该区域。 对于出站安全规则，建议使用此标记。 
+* **ServiceBus***（仅限资源管理器）：此标记表示使用高级服务层的 Azure ServiceBus 服务的地址前缀。 如果指定 ServiceBus 作为值，则会允许或拒绝发往 ServiceBus 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 ServiceBus，则可采用以下格式 ServiceBus.[区域名称] 指定该区域。 对于出站安全规则，建议使用此标记。 
+* **ServiceFabric***（仅限资源管理器）：此标记表示 ServiceFabric 服务的地址前缀。 如果指定 ServiceFabric 作为值，则会允许或拒绝发往 ServiceFabric 的流量。 对于出站安全规则，建议使用此标记。 
+* **Sql***（仅限资源管理器）：此标记表示 Azure SQL 数据库、Azure Database for MySQL、Azure Database for PostgreSQL 和 Azure SQL 数据仓库服务的地址前缀。 如果指定 *Sql* 作为值，则会允许或拒绝发往 Sql 的流量。 如果只想允许对特定[区域](https://azure.microsoft.com/regions)中的 Sql 进行访问, 则可以使用以下格式的 sql. [region name] 来指定区域。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 SQL 数据库或服务器。 对于出站安全规则，建议使用此标记。 
+* **SqlManagement***（仅限资源管理器）：此标记表示 SQL 专用部署的管理流量地址前缀。 如果指定 *SqlManagement* 作为值，则会允许或拒绝发往 SqlManagement 的流量。 对于入站/出站安全规则，建议使用此标记。 
+* **Storage***（仅限资源管理器）：此标记表示 Azure 存储服务的 IP 地址空间。 如果指定 *Storage* 作为值，则会允许或拒绝发往存储的流量。 如果只想允许访问特定[区域](https://azure.microsoft.com/regions)中的存储, 则可以指定以下格式存储中的区域。[region name]。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。 对于出站安全规则，建议使用此标记。 
+* **VirtualNetwork**（资源管理器）（如果是经典部署模型，则为 **VIRTUAL_NETWORK**）：此标记包括虚拟网络地址空间（为虚拟网络定义的所有 CIDR 范围）、所有连接的本地地址空间，以及[对等互连](virtual-network-peering-overview.md)的虚拟网络，或已连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)的虚拟网络，以及在[用户定义的路由](virtual-networks-udr-overview.md)上使用的地址前缀。 请注意，此标记可能包含默认路由。 
 
 > [!NOTE]
 > Azure 服务的服务标记表示来自所使用的特定云的地址前缀。 
@@ -98,10 +98,10 @@ ms.locfileid: "68305837"
 ### <a name="service-tags-in-on-premises"></a>本地服务标记  
 你可以使用以下 Azure[公共](https://www.microsoft.com/download/details.aspx?id=56519)、[美国政府](https://www.microsoft.com/download/details.aspx?id=57063)、[中国](https://www.microsoft.com/download/details.aspx?id=57062)和[德国](https://www.microsoft.com/download/details.aspx?id=57064)云的每周发布的前缀详细信息下载和集成本地防火墙列表。
 
-你还可以使用**服务标记发现 API** (公共预览版) 以编程方式检索此信息- [REST](https://aka.ms/discoveryapi_rest)、 [Azure PowerShell](https://aka.ms/discoveryapi_powershell)和[Azure CLI](https://aka.ms/discoveryapi_cli)。 
+也可以使用**服务标记发现 API**（公共预览版）- [REST](https://aka.ms/discoveryapi_rest)、[Azure PowerShell](https://aka.ms/discoveryapi_powershell) 和 [Azure CLI](https://aka.ms/discoveryapi_cli) 以编程方式检索此信息。 
 
 > [!NOTE]
-> 以下每周发布 (旧版本) 适用于 Azure[公共](https://www.microsoft.com/en-us/download/details.aspx?id=41653)、[中国](https://www.microsoft.com/en-us/download/details.aspx?id=42064)和[德国](https://www.microsoft.com/en-us/download/details.aspx?id=54770)云将于2020年6月30日弃用。 请开始使用以上所述的更新发布。 
+> 以下每周发布 (旧版本) 适用于 Azure[公共](https://www.microsoft.com/en-us/download/details.aspx?id=41653)、[中国](https://www.microsoft.com/en-us/download/details.aspx?id=42064)和[德国](https://www.microsoft.com/en-us/download/details.aspx?id=54770)云将于2020年6月30日弃用。 请开始使用上面所述的更新发布。 
 
 ## <a name="default-security-rules"></a>默认安全规则
 
@@ -111,43 +111,43 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Priority|Source|源端口|目标|目标端口|Protocol|Access|
+|Priority|Source|源端口|目标|目标端口|Protocol|访问权限|
 |---|---|---|---|---|---|---|
-|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Any|Allow|
+|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|任意|Allow|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Priority|Source|源端口|目标|目标端口|Protocol|Access|
+|Priority|Source|源端口|目标|目标端口|Protocol|访问权限|
 |---|---|---|---|---|---|---|
-|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Any|Allow|
+|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|任意|Allow|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Priority|Source|源端口|目标|目标端口|Protocol|Access|
+|Priority|Source|源端口|目标|目标端口|Protocol|访问权限|
 |---|---|---|---|---|---|---|
-|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Any|拒绝|
+|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|任意|拒绝|
 
 ### <a name="outbound"></a>出站
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Priority|Source|源端口| 目标 | 目标端口 | Protocol | Access |
+|Priority|Source|源端口| 目标 | 目标端口 | Protocol | 访问权限 |
 |---|---|---|---|---|---|---|
-| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Any | Allow |
+| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 任意 | Allow |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Priority|Source|源端口| 目标 | 目标端口 | Protocol | Access |
+|Priority|Source|源端口| 目标 | 目标端口 | Protocol | 访问权限 |
 |---|---|---|---|---|---|---|
-| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Any | Allow |
+| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 任意 | Allow |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Priority|Source|源端口| 目标 | 目标端口 | Protocol | Access |
+|Priority|Source|源端口| 目标 | 目标端口 | Protocol | 访问权限 |
 |---|---|---|---|---|---|---|
-| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Any | 拒绝 |
+| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 任意 | 拒绝 |
 
-在“源”和“目标”列表中，“VirtualNetwork”、“AzureLoadBalancer”和“Internet”是[服务标记](#service-tags)，而不是 IP 地址。      在 "协议" 列中,**任何**包括 TCP、UDP 和 ICMP。 创建规则时, 可以指定 TCP、UDP、ICMP 或任何。 “源”和“目标”列中的“0.0.0.0/0”表示所有地址。    Azure 门户、Azure CLI 或 Powershell 等客户端可以使用 * 或任何字符来表示此表达式。
+在“源”和“目标”列表中，“VirtualNetwork”、“AzureLoadBalancer”和“Internet”是[服务标记](#service-tags)，而不是 IP 地址。 在 "协议" 列中,**任何**包括 TCP、UDP 和 ICMP。 创建规则时, 可以指定 TCP、UDP、ICMP 或任何。 “源”和“目标”列中的“0.0.0.0/0”表示所有地址。 Azure 门户、Azure CLI 或 Powershell 等客户端可以使用 * 或任何字符来表示此表达式。
  
 不能删除默认规则，但可以通过创建更高优先级的规则来替代默认规则。
 
@@ -163,7 +163,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 若要让流量从 Internet 流到 Web 服务器，此规则是必需的。 由于来自 Internet 的入站流量被 [DenyAllInbound](#denyallinbound) 默认安全规则拒绝，因此 *AsgLogic* 或 *AsgDb* 应用程序安全组不需更多规则。
 
-|Priority|Source|源端口| 目标 | 目标端口 | Protocol | Access |
+|Priority|Source|源端口| 目标 | 目标端口 | Protocol | 访问权限 |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | Allow |
 
@@ -171,15 +171,15 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 由于 [AllowVNetInBound](#allowvnetinbound) 默认安全规则允许在同一虚拟网络中的资源之间进行的所有通信，因此需要使用此规则来拒绝来自所有资源的流量。
 
-|Priority|Source|源端口| 目标 | 目标端口 | Protocol | Access |
+|Priority|Source|源端口| 目标 | 目标端口 | Protocol | 访问权限 |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Any | 拒绝 |
+| 120 | * | * | AsgDb | 1433 | 任意 | 拒绝 |
 
 ### <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 
 此规则允许从 *AsgLogic* 应用程序安全组到 *AsgDb* 应用程序安全组的流量。 此规则的优先级高于 *Deny-Database-All* 规则的优先级。 因此，此规则在 *Deny-Database-All* 规则之前处理，这样系统就会允许来自 *AsgLogic* 应用程序安全组的流量，而阻止所有其他流量。
 
-|Priority|Source|源端口| 目标 | 目标端口 | Protocol | Access |
+|Priority|Source|源端口| 目标 | 目标端口 | Protocol | 访问权限 |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
 
@@ -242,7 +242,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
   如果是在 2017 年 11 月 15 日之前创建的 Azure 订阅，则除了能够使用 SMTP 中继服务，还可以直接通过 TCP 端口 25 发送电子邮件。 如果是在 2017 年 11 月 15 日之后创建的订阅，则可能无法直接通过端口 25 发送电子邮件。 经端口 25 的出站通信行为取决于订阅类型，如下所示：
 
      - **企业协议**：允许端口 25 的出站通信。 可以将出站电子邮件直接从虚拟机发送到外部电子邮件提供商，不受 Azure 平台的限制。 
-     - **即用即付：** 阻止所有资源通过端口 25 进行出站通信。 如需将电子邮件从虚拟机直接发送到外部电子邮件提供商（不使用经身份验证的 SMTP 中继），可以请求去除该限制。 Microsoft 会自行审核和批准此类请求，并且只在进行防欺诈检查后授予相关权限。 若要提交请求，请建立一个问题类型为“技术”、“虚拟网络连接”、“无法发送电子邮件（SMTP/端口 25）”的支持案例。    在支持案例中，请详细说明为何你的订阅需要将电子邮件直接发送到邮件提供商，而不经过经身份验证的 SMTP 中继。 如果订阅得到豁免，则只有在豁免日期之后创建的虚拟机能够经端口 25 进行出站通信。
+     - **即用即付：** 阻止所有资源通过端口 25 进行出站通信。 如需将电子邮件从虚拟机直接发送到外部电子邮件提供商（不使用经身份验证的 SMTP 中继），可以请求去除该限制。 Microsoft 会自行审核和批准此类请求，并且只在进行防欺诈检查后授予相关权限。 若要提交请求，请建立一个问题类型为“技术”、“虚拟网络连接”、“无法发送电子邮件（SMTP/端口 25）”的支持案例。 在支持案例中，请详细说明为何你的订阅需要将电子邮件直接发送到邮件提供商，而不经过经身份验证的 SMTP 中继。 如果订阅得到豁免，则只有在豁免日期之后创建的虚拟机能够经端口 25 进行出站通信。
      - **MSDN、Azure Pass、Azure 开放许可、教育、BizSpark 和免费试用版**：阻止所有资源通过端口 25 进行出站通信。 不能请求去除该限制，因为不会针对请求授予相关权限。 若需从虚拟机发送电子邮件，则需使用 SMTP 中继服务。
      - **云服务提供商**：如果无法使用安全的 SMTP 中继，通过云服务提供商消耗 Azure 资源的客户可以通过其云服务提供商创建支持案例，请求提供商代表他们创建取消阻止案例。
 

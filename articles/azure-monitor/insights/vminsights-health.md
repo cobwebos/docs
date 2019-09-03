@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 18297410842b432af0093a71406df71f7e03db9d
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602052"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233172"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>了解 Azure 虚拟机的运行状况
 
@@ -80,7 +80,7 @@ Azure 包含监视空间中特定角色或任务的服务，但不提供 Azure �
 - 处理器时间百分比总计
 - 操作系统可用内存 (MB)
 
-## <a name="sign-in-to-the-azure-portal"></a>登录 Azure 门户
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 若要登录，请转到 [Azure 门户](https://portal.azure.com)。
 
@@ -94,11 +94,11 @@ Azure 包含监视空间中特定角色或任务的服务，但不提供 Azure �
 
 ![用于 VM 的 Azure Monitor 针对所选 Azure 虚拟机显示的运行状况概述](./media/vminsights-health/vminsights-directvm-health-01.png)
 
-在 "**来宾 VM 运行状况**" 部分中, 表显示了 vm 的运行状况标准监视的性能组件的运行状况汇总, 以及由不正常组件引发的 vm 运行状况警报总数。 这些组件包括“CPU”、“内存”、“磁盘”和“网络”。 展开 "来宾 VM 运行状况" 旁的 v 形, 查看其组件的运行状况。
+“来宾 VM 运行状况”部分的表显示了按 VM 的运行状况条件监视的性能组件的运行状况汇总，以及由不正常组件引发的 VM 运行状况警报总数。 这些组件包括“CPU”、“内存”、“磁盘”和“网络”。 展开“来宾 VM 运行状况”旁边的 V 形图标，查看其组件的运行状况。
 
-![选择的 Azure 虚拟机用于 VM 的 Azure Monitor 组件运行状态](./media/vminsights-health/vminsights-directvm-health-02.png)
+![所选 Azure 虚拟机的用于 VM 的 Azure Monitor 组件的运行状况状态](./media/vminsights-health/vminsights-directvm-health-02.png)
 
-选择组件旁边的状态将在所选组件的上下文中打开运行状况诊断体验。 它显示该组件的状态组合, 描述用于计算其运行状况的运行状况条件。 有关详细信息，请参阅[运行状况诊断和使用运行状况条件](#health-diagnostics)。 有关警报的详细信息, 请参阅[警报](#alerts)。
+选择组件旁边的状态会在所选组件的上下文中打开运行状况诊断体验。 它会显示该组件的状态组成，介绍使用了哪些运行状况条件来计算其运行状况。 有关详细信息，请参阅[运行状况诊断和使用运行状况条件](#health-diagnostics)。 有关警报的详细信息，请参阅[警报](#alerts)。
 
 下表介绍了为 VM 定义的运行状况状态：
 
@@ -158,11 +158,11 @@ Azure 包含监视空间中特定角色或任务的服务，但不提供 Azure �
 
 ![Red Hat Linux VM 的汇总信息示例](./media/vminsights-health/vminsights-rollup-vm-rehl-01.png)
 
-单击 "**显示运行状况**" 复选框, 将为表中筛选结果返回运行状况状态。  
+单击“显示运行状况”复选框，就会在表中返回已筛选结果的运行状况状态。  
 
-![Red Hat Linux Vm 的示例运行状况状态](./media/vminsights-health/vminsights-rollup-vm-rehl-02.png)
+![Red Hat Linux VM 的运行状况状态示例](./media/vminsights-health/vminsights-rollup-vm-rehl-02.png)
 
-对于列表中的任何一项, 可以单击相应的运行状况诊断, 以启动运行状况诊断, 其中显示了如何评估所选 VM 的运行状况。 
+对于列表中的任何项，均可单击相应的运行状况状态来启动运行状况诊断，后者会显示如何评估所选 VM 的运行状况。 
 
 在“虚拟机”页中，如果选择“VM 名称”列下的某个 VM 的名称，则会定向到“VM 实例”页。 此页提供影响所选 VM 的警报和运行状况条件问题的更多详细信息。 选择页面左上角的“运行状况”图标筛选运行状况详细信息，以查看哪些组件不正常。 还可以查看不正常组件引发的 VM 运行状况警报（已按警报严重性分类）。
 
@@ -170,7 +170,7 @@ Azure 包含监视空间中特定角色或任务的服务，但不提供 Azure �
 
 ![所选 Azure 虚拟机的 VM 见解](./media/vminsights-health/vminsights-directvm-health.png)
 
-Azure Monitor "页中的"**虚拟机 (预览)** "显示 VM 和警报的汇总运行状况状态。 此运行状况按严重性分类，表示运行状况从正常更改为不正常时根据条件引发的 VM 运行状况警报。 选择“出现严重状况的 VM”会打开一个页面，其中列出了处于严重运行状况的一个或多个 VM。
+“Azure Monitor 中的虚拟机(预览版)”页显示 VM 的运行状况汇总状态和警报。 此运行状况按严重性分类，表示运行状况从正常更改为不正常时根据条件引发的 VM 运行状况警报。 选择“出现严重状况的 VM”会打开一个页面，其中列出了处于严重运行状况的一个或多个 VM。
 
 选择某个 VM 的运行状况会显示该 VM 的“运行状况诊断”视图。 在此视图中可以确定哪个运行状况条件反映了运行状况问题。 当“运行状况诊断”页打开时，它会显示所有 VM 组件，以及这些组件的关联运行状况条件和当前运行状况。
 
@@ -285,7 +285,7 @@ Azure Monitor "页中的"**虚拟机 (预览)** "显示 VM 和警报的汇总运
 
 用于 VM 的 Azure Monitor 运行状况功能与 [Azure 警报](../../azure-monitor/platform/alerts-overview.md)相集成。 当预定义的条件在检测到从正常状态更改为不正常状态时，它会引发警报。 警报按严重性分类 - 严重性 0 到 4，严重性 0 表示最高严重性级别。
 
-警报不与操作组相关联，在触发警报时会发出通知。 订阅所有者必须遵循[配置警报](#configure-alerts)部分所述的步骤配置通知。
+警报不与操作组相关联，在触发警报时会发出通知。 订阅范围内具有所有者角色的用户必须按照[配置警报](#configure-alerts)部分中的步骤配置通知。
 
 “运行状况”仪表板的“警报”部分下显示了按严重性分类的 VM 运行状况警报总数。 选择警报总数或者对应于某个严重性级别的编号时，“警报”页将会打开并列出与所选内容匹配的所有警报。
 
@@ -301,7 +301,7 @@ Azure Monitor "页中的"**虚拟机 (预览)** "显示 VM 和警报的汇总运
 
 |柱形图 |描述 |
 |-------|------------|
-|订阅 |选择一个 Azure 订阅。 只有选定订阅中的警报才会包含在视图中。 |
+|订阅 |选择 Azure 订阅。 只有选定订阅中的警报才会包含在视图中。 |
 |资源组 |选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
 |资源类型 |选择一个或多个资源类型。 默认情况下，仅选择目标虚拟机的警报并将其列在此视图中。 仅在指定资源组后，才显示此列。 |
 |Resource |选择资源。 只有包含该资源（作为目标）的警报才会包含在视图中。 仅在指定资源类型后，才显示此列。 |

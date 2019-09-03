@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 3158ebddf6ffe5594c9daf0fd9f3e3fe980c0b24
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845667"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230969"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -151,7 +151,7 @@ HUB | 是 | 是
 组件 | **要求** | **详细信息**
 --- | --- | ---
 来宾操作系统 | Site Recovery 支持 [Azure 支持的](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)所有操作系统。  | 如果不支持，先决条件检查会失败。
-来宾操作系统体系结构 | 64 位 | 如果不支持，先决条件检查会失败。
+来宾操作系统体系结构 | 32位 (Windows Server 2008)/64-bit | 如果不支持，先决条件检查会失败。
 操作系统磁盘大小 | 第 1 代 VM 最大 2,048 GB。<br/><br/> 第 2 代 VM 最大 300 GB。  | 如果不支持，先决条件检查会失败。
 操作系统磁盘计数 | 1 | 如果不支持，先决条件检查会失败。
 数据磁盘计数 | 16 个或更少  | 如果不支持，先决条件检查会失败。
@@ -166,13 +166,13 @@ VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基�
 
 ## <a name="recovery-services-vault-actions"></a>恢复服务保管库操作
 
-**Action** |  **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
+**Action** |  **Hyper-V（包含 VMM）** | **不包含 VMM 的 Hyper-V**
 --- | --- | ---
 跨资源组移动保管库<br/><br/> 订阅内和跨订阅移动 | 否 | 否
 跨资源组移动存储、网络和 Azure VM<br/><br/> 订阅内和跨订阅移动 | 否 | 否
 
 > [!NOTE]
-> 将 Hyper-VM（使用/不使用 SCVMM 进行管理）从本地复制到 Azure 时，只能从一个特定环境（Hyper-V 站点或 SCVMM）复制到一个 AD 租户（如果适用）。
+> 将 Hyper-v 从本地复制到 Azure 时, 你只能从一个特定环境中复制一个 AD 租户-Hyper-v 站点或适用于 VMM 的 Hyper-v。
 
 
 ## <a name="provider-and-agent"></a>提供程序和代理

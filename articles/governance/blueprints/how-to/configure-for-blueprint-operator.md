@@ -1,5 +1,5 @@
 ---
-title: 为蓝图运算符配置环境
+title: 为蓝图操作员配置环境
 description: 了解如何配置 Azure 环境, 以便与蓝图运算符内置的基于角色的访问控制 (RBAC) 角色一起使用。
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,14 +7,14 @@ ms.date: 08/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8c39eadc6f1448e19ffee6d741cc50a7b6e09475
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 27f7c747dfd39fed7a67924da71b9293979e0f94
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70148604"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231889"
 ---
-# <a name="configure-your-environment-for-a-blueprint-operator"></a>为蓝图运算符配置环境
+# <a name="configure-your-environment-for-a-blueprint-operator"></a>为蓝图操作员配置环境
 
 可以将蓝图定义和蓝图分配的管理分配给不同的团队。 在运营团队负责管理这些集中控制的蓝图定义的分配时, 架构师或调控团队通常负责管理蓝图定义的生命周期管理。
 

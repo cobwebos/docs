@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c6980d11fa5fe3733e351923d058d1ad0a1677e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 66dbfa40d5a19c7f15ed2772740b84652ae3e58c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084922"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231269"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
@@ -64,10 +64,10 @@ ms.locfileid: "70084922"
 ### <a name="windows-down-level-devices"></a>Windows 下层设备
 
 - Windows 8.1
-- Windows 7。 有关 Windows 7 的支持信息, 请查看此文章[对 windows 7 的支持正在结束](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)
+- Windows 7。 有关 Windows 7 的支持信息, 请参阅对[windows 7 的支持正在结束](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)。
 - Windows Server 2012 R2
 - Windows Server 2012
-- Windows Server 2008 R2
+- Windows Server 2008 R2。 有关 Windows Server 2008 和 2008 R2 的支持信息, 请参阅[准备 Windows server 2008 支持结束](https://www.microsoft.com/cloud-platform/windows-server-2008)。
 
 第一个规划步骤是审查环境，并确定是否需要支持 Windows 下层设备。
 

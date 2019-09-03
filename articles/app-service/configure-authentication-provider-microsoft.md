@@ -1,6 +1,6 @@
 ---
 title: 配置 Microsoft 帐户身份验证 - Azure 应用服务
-description: 了解如何为应用服务应用程序配置 Microsoft 帐户身份验证。
+description: 了解如何为应用服务应用配置 Microsoft 帐户身份验证。
 author: mattchenderson
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 5ef0cb2da26fcc00d1daf4b2dd0faf8bde8b743b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0832c1e5f10cdb8e1d7a2edbb88162230ab13401
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098526"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233078"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>如何将应用服务应用程序配置为使用 Microsoft 帐户登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -61,7 +61,7 @@ ms.locfileid: "70098526"
 
 4. 可有可无若要限制对 Microsoft 帐户用户的访问, 请将 "**请求未经身份验证时要执行的操作**" 设置为 "**使用 Microsoft 帐户登录**"。 这会要求对所有请求进行身份验证，所有未经身份验证的请求将重定向到 Microsoft 帐户进行身份验证。
 
-> [!CAUTION]
+> [!NOTE]
 > 以这种方式限制访问权限适用于对应用的所有调用, 对于需要公开提供的主页的应用, 与在许多单页应用程序中一样。 对于此类应用程序, 可以首选 "**允许匿名请求 (无操作)** ", 应用手动启动登录, 如[此处](overview-authentication-authorization.md#authentication-flow)所述。
 
 5. 单击“保存”。

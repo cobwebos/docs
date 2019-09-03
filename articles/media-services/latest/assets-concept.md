@@ -9,30 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d0a81d5d7ce8e7569b77007b6ad9c322cf626f16
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 2f2dea922b7a3ba45ad6493ce94f0c52649dfa68
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670697"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230990"
 ---
 # <a name="assets"></a>资产
 
-Azure 媒体服务中[资产](https://docs.microsoft.com/rest/api/media/assets)包含数字文件 （包括视频、 音频、 图像、 缩略图集合、 文本轨道和隐藏式字幕文件） 的 Azure 存储中存储有关的信息。 
+在 Azure 媒体服务中,[资产](https://docs.microsoft.com/rest/api/media/assets)包含有关存储在 azure 存储中的数字文件 (包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件) 的信息。 
 
 资产将映射到 [Azure 存储帐户](storage-account-concept.md)中的 Blob 容器，资产中的文件作为块 Blob 存储在该容器中。 当帐户使用常规用途 v2 (GPv2) 存储时，媒体服务支持 Blob 层。 使用 GPv2 可将文件移到[冷存储或存档存储](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)。 **存档**存储适合存档不再需要的源文件（例如，编码后的源文件）。
 
 建议仅将**存档**存储用于已编码的，并且其编码作业输出已放入输出 Blob 容器中的极大型源文件。 要与资产关联的、用于流式传输或分析内容的输出容器中的 Blob 必须位于**热**或**冷**存储层中。
 
+### <a name="naming-blobs"></a>命名 blob
+
+资产内文件/blob 的名称必须遵循[blob 名称要求](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)和[NTFS 名称要求](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)。 这些要求的原因是, 可将文件从 blob 存储复制到本地 NTFS 磁盘进行处理。
+
 ## <a name="upload-digital-files-into-assets"></a>将数字文件上传到资产
 
-数字文件将上传到存储并与资产相关联后，可以在媒体服务编码、 流式处理、 分析内容的工作流中使用它们。 一个常见的媒体服务工作流是上传、编码和流式传输文件。 本部分概述常规步骤。
+将数字文件上传到存储区并将其与资产相关联后, 可在媒体服务编码、流式传输、分析内容工作流中使用它们。 一个常见的媒体服务工作流是上传、编码和流式传输文件。 本部分概述常规步骤。
 
 > [!TIP]
-> 开始开发之前，请查看[使用媒体服务 v3 Api 进行开发](media-services-apis-overview.md)（包括访问 Api，命名约定，等等信息。）
+> 开始开发之前, 请查看[通过媒体服务 V3 api 进行开发](media-services-apis-overview.md)(包括有关访问 api 的信息、命名约定等)
 
 1. 使用媒体服务 v3 API 创建新的“输入”资产。 此操作在与媒体服务帐户关联的存储帐户中创建一个容器。 API 返回容器名称（例如 `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`）。
    
@@ -87,21 +91,21 @@ curl -X PUT \
 
 有关完整示例，请参阅[从本地文件创建作业输入](job-input-from-local-file-how-to.md)。 在媒体服务 v3 中，还可以从 HTTPS URL 创建作业的输入（请参阅[从 HTTPS URL 创建作业输入](job-input-from-http-how-to.md)）。
 
-## <a name="map-v3-asset-properties-to-v2"></a>V3 资产属性映射到 v2
+## <a name="map-v3-asset-properties-to-v2"></a>将 v3 资产属性映射到 v2
 
-下表显示如何[资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)的 v3 中的属性将映射到 v2 中的资产的属性。
+下表显示了 v3 中[资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)的属性映射到 V2 中资产的属性的方式。
 
 |v3 属性|v2 属性|
 |---|---|
-|id-（唯一） 的完整 Azure 资源管理器路径中，请参阅示例[资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
-|名称-（唯一） 请参阅[命名约定](media-services-apis-overview.md#naming-conventions) ||
+|id-(唯一) 完整的 Azure 资源管理器路径, 请参阅[资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate)中的示例||
+|名称-(唯一) 请参阅[命名约定](media-services-apis-overview.md#naming-conventions) ||
 |alternateId|AlternateId|
-|assetId|（唯一） 值以开始 id-`nb:cid:UUID:`前缀。|
-|created|已创建|
-|description|名称|
+|assetId|Id-(唯一) 值以`nb:cid:UUID:`前缀开头。|
+|已创建|已创建|
+|description|姓名|
 |lastModified|LastModified|
 |storageAccountName|StorageAccountName|
-|storageEncryptionFormat| 选项 （创建选项）|
+|storageEncryptionFormat| 选项 (创建选项)|
 |type||
 
 ## <a name="storage-side-encryption"></a>存储端加密

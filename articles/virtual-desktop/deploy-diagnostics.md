@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: d5f0dbf916096b608495c0cc1017d919616653d4
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 625515223da12751b7765baa795bc68d2a7b46b4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899706"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233251"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -154,7 +154,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的:
 
 若要为诊断工具部署 Azure 资源管理模板, 请执行以下操作:
 
-1.  请参阅 GitHub Azure RDS-模板页。
+1.  请参阅 [GitHub AZURE RDS-模板页](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy)。
 2.  将模板部署到 Azure 并按照模板中的说明进行操作。 请确保提供以下信息:
 
     -   客户端-Id

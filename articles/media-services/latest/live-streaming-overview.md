@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: 5883c1aa20af106dd39bffc95036ee90f312ffea
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: bac784ea3050111184e2908fe5656a1d16545a99
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051593"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231014"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -96,7 +96,7 @@ ms.locfileid: "70051593"
     * 停止实时事件。 实时事件在停止后，不会产生任何费用。 当需要重新启动它时，它会采用相同的引入 URL，因此，无需重新配置编码器。
     * 除非你想要继续以点播流形式提供实时事件的存档，否则可以停止流式处理终结点。 如果实时事件处于停止状态，则不会产生任何费用。
 
-实时事件在停止后会自动转换为点播内容。 即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。
+实时输出要存档到的资产, 在删除实时输出时, 会自动成为按需资产。 必须先删除所有实时输出, 然后才能停止实时事件。 可以使用可选的标志[removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body)自动删除停止时的实时输出。 
 
 > [!TIP]
 > 请参阅[实时流式处理教程](stream-live-tutorial-with-api.md), 这篇文章介绍了实现上述步骤的代码。

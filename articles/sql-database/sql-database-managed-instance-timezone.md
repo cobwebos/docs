@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 08/14/2019
-ms.openlocfilehash: a02709ffde144e7bd5e4d05fcd0e07c5d84a15fb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 09/03/2019
+ms.openlocfilehash: e81ae2fc563300402339fc40893fbbdbbd326dcd
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035834"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233240"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL 数据库托管实例中的时区
 
@@ -31,7 +31,7 @@ ms.locfileid: "69035834"
 
 支持的时区集继承自托管实例的底层操作系统。 它会定期更新，以获取新的时区定义并反映对现有时区所做的更改。
 
-[夏令时/时区更改策略](https://aka.ms/time)保证了2010前的历史准确性。
+[夏时制/时区更改策略](https://aka.ms/time)保证了 2010 年以来的历史记录的准确性。
 
 受支持时区名称的列表是通过 [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) 系统视图公开的。
 
@@ -83,37 +83,19 @@ ms.locfileid: "69035834"
 
 ### <a name="point-in-time-restore"></a>时间点还原
 
-<del>执行时点还原时, 还原到的时间将解释为 UTC 时间。 这样, 就可以避免因夏令时而产生的任何歧义, 并避免其发生更改。<del>
-
- >[!WARNING]
-  > 当前行为并不在上面的语句的行内, 并且还原到的时间将按从其执行自动数据库备份的源托管实例的时区解释。 我们正在努力更正此行为, 以将给定的时间点解释为 UTC 时间。
+执行时间点还原时，要还原到的时间将解释为 UTC 时间。 这样, 就可以避免因夏令时而产生的任何歧义, 并避免其发生更改。
 
 ### <a name="auto-failover-groups"></a>自动故障转移组
 
 不强制要求在故障转移组中的主要和辅助实例之间使用相同的时区，但我们强烈建议这样做。
 
   >[!WARNING]
-  > 我们强烈建议对故障转移组中的主要和辅助实例使用相同的时区。 不强制要求在主要和辅助实例之间使用相同的时区，因为这种情况非常罕见。 必须知道，在手动或自动故障转移时，辅助实例将保留其原始时区。
+  > 我们强烈建议对故障转移组中的主要和辅助实例使用相同的时区。 由于某些罕见用例不会强制实施跨主实例和辅助实例的相同时区。 必须知道，在手动或自动故障转移时，辅助实例将保留其原始时区。
 
 ## <a name="limitations"></a>限制
 
 - 无法更改现有托管实例的时区。
 - 从 SQL Server 代理作业启动的外部进程不会观察实例的时区。
-
-## <a name="known-issues"></a>已知问题
-
-执行时间点还原 (PITR) 操作时, 还原到的时间将被解释为在从中执行自动数据库备份的托管实例上的每个时区集, 即使 PITR 的门户页建议将时间解释为 UTC。
-
-例如：
-
-假设从中获取自动备份的实例的时区设置为东部标准时间 (UTC-5)。
-时间点还原的门户页建议你选择还原到的时间为 UTC 时间:
-
-![使用门户进行本地时间的 PITR](media/sql-database-managed-instance-timezone/02-pitr-with-nonutc-timezone.png)
-
-但是, 还原到的时间实际上被解释为东部标准时间, 在此特定示例数据库中, 将还原为东部标准时间上午9点, 而不是 UTC 时间。
-
-如果要将时间点还原到 UTC 时间的特定时间点, 请首先计算源实例的时区中的等效时间, 并在门户或 PowerShell/CLI 脚本中使用该时间。
 
 ## <a name="list-of-supported-time-zones"></a>支持的时区列表
 

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 4f5c10536992f51ac61815507a3869e521520299
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170713"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233119"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>通过 Visual Studio Code 将 Python 部署到 Azure Functions
 
@@ -56,7 +56,7 @@ ms.locfileid: "70170713"
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-安装函数扩展后, 通过导航到**azure 登录到 azure 帐户:函数**资源管理器中, 选择 "**登录到 Azure**", 然后按照提示进行操作。
+安装函数扩展后, 请转到**azure 以登录到 azure 帐户:函数**资源管理器中, 选择 "**登录到 Azure**", 然后按照提示进行操作。
 
 ![通过 Visual Studio Code 登录到 Azure](media/tutorial-vs-code-serverless-python/azure-sign-in.png)
 
@@ -207,7 +207,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ## <a name="debug-locally"></a>本地调试
 
-1. 创建函数项目时, Visual Studio Code 扩展还会在中创建一个启动配置, `.vscode/launch.json`其中包含名为 "**附加到 Python 函数**" 的单个配置。 此配置意味着你只需按 F5 或使用调试资源管理器来启动项目:
+1. 创建函数项目时, Visual Studio Code 扩展还会在中创建一个启动配置, `.vscode/launch.json`其中包含名为 "**附加到 Python 函数**" 的单个配置。 此配置意味着只需选择**F5**或使用 "调试资源管理器" 启动项目:
 
     ![显示函数启动配置的调试浏览器](media/tutorial-vs-code-serverless-python/launch-configuration.png)
 
@@ -393,7 +393,7 @@ func azure functionapp logstream <app_name> --browser
     }
     ```
 
-1. 按 F5 或选择 "**调试** > " "**开始调试**" 菜单命令, 启动调试器。 "**输出**" 窗口现在应显示项目中的两个终结点:
+1. 通过选择 " **F5** " 或选择 "**调试** > " "**开始调试**" 菜单命令来启动调试器。 "**输出**" 窗口现在应显示项目中的两个终结点:
 
     ```output
     Http Functions:
@@ -479,15 +479,15 @@ _绑定_使你可以将函数代码连接到 Azure 存储等资源, 而无需编
             )
     ```
 
-1. 若要在本地测试这些更改, 请按 F5 或选择 "**调试** > " "**开始调试**" 菜单命令, 在 Visual Studio Code 中再次启动调试器。 与 "**输出**" 窗口之前一样, 应显示项目中的终结点。
+1. 若要在本地测试这些更改, 请通过选择 " **F5** " 或选择 "**调试** > " "**开始调试**" 菜单命令, 在 Visual Studio Code 中再次启动调试器。 与 "**输出**" 窗口之前一样, 应显示项目中的终结点。
 
 1. 在浏览器中, 访问 URL `http://localhost:7071/api/HttpExample?name=VS%20Code`以创建对 HttpExample 终结点的请求, 该终结点还应将消息写入队列。
 
 1. 若要验证是否已将消息写入 "outqueue" 队列 (在绑定中指定), 可以使用以下三种方法之一:
 
-    1. 登录到[Azure 门户](https://portal.azure.com), 然后导航到包含函数项目的资源组。 在该资源组中, "本地" 并导航到项目的存储帐户, 然后导航到 "**队列**"。 在该页上, 导航到 "outqueue", 它应显示所有记录的消息。
+    1. 登录到[Azure 门户](https://portal.azure.com), 然后访问包含函数项目的资源组。 在该资源组中, 找到并打开该项目的存储帐户, 然后中转到 "**队列**"。 在该页上, 请参阅 "outqueue", 它应显示所有记录的消息。
 
-    1. 使用与 Visual Studio 集成的 Azure 存储资源管理器导航并检查队列, 如[使用 Visual Studio Code 将函数连接到 Azure 存储](functions-add-output-binding-storage-queue-vs-code.md)中所述, 特别是[检查输出队列](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue)部分。
+    1. 使用与 Visual Studio 集成的 Azure 存储资源管理器打开并检查队列, 如[使用 Visual Studio Code 将函数连接到 Azure 存储](functions-add-output-binding-storage-queue-vs-code.md)中所述, 尤其是[检查输出队列](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue)部分。
 
     1. 使用 Azure CLI 查询存储队列, 如[查询存储队列](functions-add-output-binding-storage-queue-python.md#query-the-storage-queue)中所述。
     

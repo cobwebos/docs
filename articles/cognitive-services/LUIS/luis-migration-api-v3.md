@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: 82285b27822b6c93f8efc24579bb99c308649ac0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5b0516f3d610c0a518d6afc461dddebfb68a7c5d
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932672"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213514"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>预览版：迁移到 API 版本 3.x, 适用于 LUIS 应用
 
@@ -108,7 +108,7 @@ V3 API 包含不同的查询字符串参数。
 }
 ```
 
-|属性|type|Version|默认|用途|
+|属性|类型|Version|默认|用途|
 |--|--|--|--|--|
 |`dynamicLists`|array|仅 V3|非必需。|使用[动态列表](#dynamic-lists-passed-in-at-prediction-time)可以扩展已在 LUIS 应用中的已训练且已发布的现有列表实体。|
 |`externalEntities`|array|仅 V3|非必需。|[外部实体](#external-entities-passed-in-at-prediction-time)可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 |
@@ -164,7 +164,7 @@ const score = intents[topIntentName];
 响应 JSON 架构已发生更改，允许：
 
 * 消除原始言语 `query` 与返回的预测 `prediction` 之间的差别。
-* 更轻松地以编程方式访问预测的数据。 可以按意向和实体的 **named** 访问值，而无需枚举 V2 中的数组。 对于预测的实体角色，将返回角色名称，因为它在整个应用中是唯一的。
+* 更轻松地以编程方式访问预测的数据。 您可以通过**名称**为意向和实体访问值, 而不是在 V2 中枚举数组。 对于预测的实体角色，将返回角色名称，因为它在整个应用中是唯一的。
 * 将遵循数据类型（如果已确定）。 数字不再作为字符串返回。
 * 第一个优先级预测信息与其他元数据之间的差别在 `$instance` 对象中返回。 
 
@@ -380,7 +380,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
 可选的 `resolution` 属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。 
 
@@ -418,7 +418,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
     },
     "dynamicLists": [
         {
-            "listEntityName":"ProductList",
+            "listEntity*":"ProductList",
             "requestLists":[
                 {
                     "name": "Azure Cognitive Services",

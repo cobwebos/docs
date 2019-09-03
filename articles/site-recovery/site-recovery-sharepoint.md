@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: bc6d9e7214d2b7cd009e7562357bed420e49f185
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325111"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231476"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复
 
@@ -34,7 +34,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保了解以下知识：
 
@@ -56,7 +56,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 ## <a name="site-recovery-support"></a>Site Recovery 支持
 
-制作本文时，使用了装有 Windows Server 2012 R2 Enterprise 的 VMware 虚拟机。 使用了 SharePoint 2013 Enterprise Edition 和 SQL server 2014 Enterprise Edition。 由于 Site Recovery 复制不区分应用程序，因此本文提供的建议应该也适用于后续方案。
+Site Recovery 与应用程序无关, 应与在支持的计算机上运行的任何 SharePoint 版本配合使用。 制作本文时，使用了装有 Windows Server 2012 R2 Enterprise 的 VMware 虚拟机。 使用了 SharePoint 2013 Enterprise Edition 和 SQL server 2014 Enterprise Edition。
 
 ### <a name="source-and-target"></a>源和目标
 
@@ -65,15 +65,8 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 **Hyper-V** | 是 | 是
 **VMware** | 是 | 是
 **物理服务器** | 是 | 是
-**Azure** | NA | 是
+**Azure** | 不可用 | 是
 
-### <a name="sharepoint-versions"></a>SharePoint 版本
-支持以下 SharePoint Server 版本。
-
-* SharePoint Server 2013 Standard
-* SharePoint Server 2013 Enterprise
-* SharePoint Server 2016 Standard
-* SharePoint Server 2016 Enterprise
 
 ### <a name="things-to-keep-in-mind"></a>要点
 
@@ -100,7 +93,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
     ![选择网络](./media/site-recovery-sharepoint/select-network.png)
 
 
-* 如果使用的是静态 IP，请在“目标 IP”字段中指定希望虚拟机采用的 IP 
+* 如果使用的是静态 IP，请在“目标 IP”字段中指定希望虚拟机采用的 IP
 
     ![设置静态 IP](./media/site-recovery-sharepoint/set-static-ip.png)
 
@@ -111,7 +104,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 | **Where** | **源** | **目标**|
 | --- | --- | --- |
-| 公共 DNS | SharePoint 站点的公共 DNS <br/><br/> 例如：sharepoint.contoso.com | 流量管理器 <br/><br/> contososharepoint.trafficmanager.net |
+| 公共 DNS | SharePoint 站点的公共 DNS <br/><br/> 例如：sharepoint.contoso.com | 通信管理器 <br/><br/> contososharepoint.trafficmanager.net |
 | 本地 DNS | sharepointonprem.contoso.com | 本地场中的公共 IP |
 
 
@@ -196,7 +189,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 有关针对 AD 和 DNS 执行测试故障转移的指导，指参阅[针对 AD 和 DNS 的测试故障转移注意事项](site-recovery-active-directory.md#test-failover-considerations)文档。
 
-有关为 SQL Always ON 可用性组执行测试故障转移的指导, 请参阅[Azure Site Recovery 执行应用程序灾难恢复和测试故障转移](site-recovery-sql.md#disaster-recovery-of-an-application)文档。
+有关为 SQL Always ON 可用性组执行测试故障转移的指导，请参阅[使用 Azure Site Recovery 执行应用程序 DR 并执行测试故障转移](site-recovery-sql.md#disaster-recovery-of-an-application)一文。
 
 ## <a name="doing-a-failover"></a>执行故障转移
 执行故障转移时，请遵循[此指南](site-recovery-failover.md)。

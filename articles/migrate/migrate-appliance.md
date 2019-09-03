@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e2faa47a58283623747ae569de22e1c57df1a51f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827318"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231143"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -72,6 +72,9 @@ NIC 写入吞吐量 (MB/秒) | net.transmitted.average  |VM 大小的计算
 
 ## <a name="collected-metadata-vmware"></a>收集的元数据-VMware
 
+> [!NOTE]
+> Azure Migrate 设备发现的元数据用于在将应用程序迁移到 Azure、执行 Azure 适用性分析、应用程序依赖关系分析和成本规划时, 帮助你适当调整应用程序的大小。 Microsoft 不会将此数据与任何许可证相容性审核相对使用。
+
 下面是设备收集并发送到 Azure 的 VMware VM 元数据的完整列表。
 
 **数据** | **计数器**
@@ -85,7 +88,7 @@ VM 说明 | vm.Summary.Config.Annotation
 操作系统类型 | vm.SummaryConfig.GuestFullName
 引导类型 | vm.Config.Firmware
 内核数 | vm.Config.Hardware.NumCPU
-内存(MB) | vm.Config.Hardware.MemoryMB
+内存 (MB) | vm.Config.Hardware.MemoryMB
 磁盘数量 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk).count
 磁盘大小列表 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
 网络适配器列表 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualEthernet).count
@@ -109,7 +112,7 @@ IPv6 地址 | vm.Guest.Net
 读取吞吐量 (MB/秒) | net.received.average
 写入吞吐量 (MB/秒) | net.transmitted.average
 **清单路径详细信息** | 
-名称 | container.GetType().Name
+姓名 | container.GetType().Name
 子对象类型 | container.ChildType
 引用详细信息 | container.MoRef
 父级详细信息 | Container.Parent
@@ -122,6 +125,9 @@ IPv6 地址 | vm.Guest.Net
 
 
 ## <a name="collected-performance-data-hyper-v"></a>收集的性能数据-Hyper-v
+
+> [!NOTE]
+> Azure Migrate 设备发现的元数据用于在将应用程序迁移到 Azure、执行 Azure 适用性分析、应用程序依赖关系分析和成本规划时, 帮助你适当调整应用程序的大小。 Microsoft 不会将此数据与任何许可证相容性审核相对使用。
 
 下面是设备收集并发送到 Azure 的 VMware VM 性能数据。
 
@@ -156,7 +162,7 @@ VM 可使用的最大内存 | Msvm_MemorySettingData | 限制
 VM 电源状态 | Msvm_ComputerSystem | EnabledState
 **每磁盘详细信息** | 
 磁盘标识符 | Msvm_VirtualHardDiskSettingData | VirtualDiskId
-虚拟硬盘类型 | Msvm_VirtualHardDiskSettingData | type
+虚拟硬盘类型 | Msvm_VirtualHardDiskSettingData | 类型
 虚拟硬盘大小 | Msvm_VirtualHardDiskSettingData | MaxInternalSize
 虚拟硬盘父项 | Msvm_VirtualHardDiskSettingData | ParentPath
 **每 NIC 详细信息** | 

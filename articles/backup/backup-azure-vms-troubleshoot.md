@@ -8,18 +8,40 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 2f645d290175db9692649d825323313fc207a014
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 69d75f9050560eb4a9e394241316c0474fffe7cc
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210281"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232464"
 ---
-# <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
+# <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
+
 可以使用下面列出的信息排查使用 Azure 备份时遇到的错误：
 
 ## <a name="backup"></a>备份
+
 本部分介绍 Azure 虚拟机的备份操作失败。
+
+### <a name="basic-troubleshooting"></a>基本故障排除
+
+* 确保 VM 代理 (WA 代理) 是[最新版本](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent-on-the-virtual-machine)。
+* 请确保 Windows 或 Linux VM 操作系统版本受支持, 请参阅[IAAS Vm 备份支持矩阵](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas)。
+* 验证其他备份服务未运行。
+   * 若要确保没有快照扩展问题, 请[卸载扩展以强制重新加载, 然后重试备份](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load)。
+* 验证 VM 是否有 internet 连接。
+   * 请确保其他备份服务未运行。
+* 从`Services.msc`中, 确保**Windows Azure 来宾代理**服务正在**运行**。 如果缺少**Windows Azure 来宾代理**服务, 请通过[在恢复服务保管库中备份 Azure vm](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)来安装它。
+* **事件日志**可能会显示来自其他备份产品的备份失败, 例如 Windows Server backup, 而不是由 Azure 备份导致。 使用以下步骤来确定问题是否与 Azure 备份有关:
+   * 如果事件源或消息中有一个条目**备份**错误, 请检查 AZURE IaaS VM 备份是否成功, 以及是否使用所需的快照类型创建了还原点。
+    * 如果 Azure 备份正常运行, 则问题可能与另一种备份解决方案一起使用。 
+    * 下面是一个事件查看器错误示例, 其中 Azure 备份正常运行, 但 "Windows Server 备份" 失败:<br>
+    ![Windows Server 备份失败](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+    * 如果 Azure 备份失败, 请在本文的常见 VM 备份错误一节中查找相应的错误代码。 
+
+## <a name="common-issues"></a>常见问题
+
+下面是 Azure 虚拟机上的备份失败的常见问题。
 
 ## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime - 从保管库复制备份的数据超时
 
@@ -36,7 +58,7 @@ ms.locfileid: "70210281"
 备份操作失败，因为 VM 处于“已失败”状态。 VM 状态应该是“正在运行”、“已停止”、“已停止(已解除分配)”，才能成功进行备份。
 
 * 如果 VM 处于“运行”和“关闭”之间的瞬时状态，请等待状态更改。 然后触发备份作业。
-*  如果 VM 是 Linux VM 并使用安全性增强的 Linux 内核模块，则需要从安全策略排除 Azure Linux 代理路径 (/var/lib/waagent)，确保已安装备份扩展。
+* 如果 VM 是 Linux VM 并使用安全性增强的 Linux 内核模块，则需要从安全策略排除 Azure Linux 代理路径 (/var/lib/waagent)，确保已安装备份扩展。
 
 ## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed - 无法冻结一个或多个 VM 装入点以获取文件系统一致性快照
 
@@ -178,7 +200,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 | 错误详细信息 | 解决方法 |
 | --- | --- |
-| 此作业类型不支持取消： <br>请等待作业完成。 |无 |
+| 此作业类型不支持取消： <br>请等待作业完成。 |None |
 | 该作业未处于可取消状态： <br>请等待作业完成。 <br>**or**<br> 所选作业未处于可取消状态： <br>请等待作业完成。 |这项作业很可能快完成了。 等待作业完成。|
 | 备份不能取消该作业，因为它没有正在进行： <br>仅支持取消正在进行的作业。 尝试取消正在进行的作业。 |由于临时状态而发生此错误。 请稍等片刻，并重试取消操作。 |
 | 备份未能取消作业： <br>请等待作业完成。 |无 |
@@ -192,7 +214,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | 指定的虚拟网络配置不正确： <br>指定其他虚拟网络配置，然后重试。 |无 |
 | 指定的云服务使用与要还原的虚拟机的配置不匹配的保留 IP： <br>指定不使用保留的 IP 的其他云服务。 或者选择要还原的其他恢复点。 |无 |
 | 云服务已达到其输入终结点数量的限制： <br>通过指定其他云服务或使用现有终结点重试该操作。 |无 |
-| 恢复服务保管库和目标存储帐户位于两个不同的区域： <br>确保还原操作中指定的存储帐户与恢复服务保管库位于同一 Azure 区域中。 |无 |
+| 恢复服务保管库和目标存储帐户位于两个不同的区域： <br>确保还原操作中指定的存储帐户与恢复服务保管库位于同一 Azure 区域中。 |None |
 | 为还原操作指定的存储帐户不受支持： <br>仅支持具有本地冗余或异地冗余复制设置的基本或标准存储帐户。 选择受支持的存储帐户。 |无 |
 | 为还原操作指定的存储帐户的类型不是联机状态： <br>确保还原操作中指定的存储帐户处于联机状态。 |如果 Azure 存储中出现暂时性错误或中断，可能会发生此错误。 请选择另一个存储帐户。 |
 | 资源组配额已达限制： <br>请从 Azure 门户中删除某些资源组，或者与 Azure 支持部门联系，以提高限额。 |无 |

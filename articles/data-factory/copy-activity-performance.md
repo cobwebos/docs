@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 22c83b1fe53a9209fd243fe807bb76718cbdcbbd
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: f760917ae8f4ab11902799e36973ae896c4a2b43
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211697"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232351"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
 > [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本:"]
@@ -181,7 +181,7 @@ Azure 数据工厂提供以下性能优化功能:
 | 复制方案 | 由服务确定的默认并行复制计数 |
 | --- | --- |
 | 在基于文件的存储之间复制数据 |取决于文件大小以及用于在两个云数据存储之间复制数据的 DIU 数，或自承载集成运行时计算机的物理配置。 |
-| 已启用分区选项 (包括[Oracle](connector-oracle.md#oracle-as-source)、 [Teradata](connector-teradata.md#teradata-as-source)、 [Sap 表](connector-sap-table.md#sap-table-as-source)和[sap 开放式集线器](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)) 从关系数据存储复制|4 |
+| 从关系数据存储中复制已启用分区选项 (包括[Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [Teradata](connector-teradata.md#teradata-as-source)、 [sap 表](connector-sap-table.md#sap-table-as-source)和[sap 开放式集线器](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
 | 将数据从任何源存储复制到 Azure 表存储 |4 |
 | 所有其他复制方案 |1 |
 
@@ -193,7 +193,7 @@ Azure 数据工厂提供以下性能优化功能:
 **需要注意的要点：**
 
 - 在基于文件的存储之间复制数据时，**parallelCopies** 确定文件级别的并行度。 单个文件内的区块化会自动透明地在文件下进行。 它旨在对给定源数据存储类型使用最佳区块大小，以并行独立方式将数据加载到 **parallelCopies**。 数据移动服务在运行时用于复制操作的并行复制的实际数量不超过所拥有的文件数。 如果复制行为是 **mergeFile**，复制活动无法利用文件级别的并行度。
-- 如果从不基于文件的存储 ( [Oracle](connector-oracle.md#oracle-as-source)、 [Teradata](connector-teradata.md#teradata-as-source)、 [Sap 表](connector-sap-table.md#sap-table-as-source)和[SAP 开放中心](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)连接器除外) 将数据复制到基于文件的存储, 则数据移动服务忽略**parallelCopies**属性。 即使指定了并行性，在此情况下也不适用。
+- 如果从不基于文件的存储 ( [Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [Teradata](connector-teradata.md#teradata-as-source)、 [sap 表](connector-sap-table.md#sap-table-as-source)和[sap 开放式中心](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)连接器除外) 将数据复制到基于文件的存储, 则数据移动服务将忽略**parallelCopies**属性。 即使指定了并行性，在此情况下也不适用。
 - **parallelCopies** 属性独立于 **dataIntegrationUnits**。 前者跨所有数据集成单元进行计数。
 - 为 **parallelCopies** 属性指定值时，请考虑源和接收器数据存储上的负载会增加。 另外请考虑到，如果复制活动由自承载集成运行时提供支持（例如，使用混合复制时），则自承载集成运行时的负载也会增加。 尤其在有多个活动或针对同一数据存储运行的相同活动有并发运行时，会发生这种负载增加的情况。 如果注意到数据存储或自承载集成运行时负载过重，请降低 **parallelCopies**  值以减轻负载。
 

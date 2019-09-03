@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/06/2019
+ms.date: 06/10/2019
 ms.author: v-mohabe
-ms.openlocfilehash: e87ea5f6d8a92f18fc1b289ebf9ffd1cc0326812
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 12739bf230eb7a2d5afa4edd57dbc2761907ec4e
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845895"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231349"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机 (Vm)、虚拟机规模集、IaaS 容器和非 Azure (包括本地) 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的, 它从计算机读取各种安全相关配置和事件日志, 并将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还将故障转储文件复制到工作区。
@@ -41,7 +41,7 @@ ms.locfileid: "68845895"
 > 默认情况下自动设置处于关闭状态。 若要将安全中心设置为默认安装自动预配，请将自动预配设置为“打开”。
 >
 
-当启用自动预配时, 安全中心会在所有支持的 Azure Vm 和创建的任何新 Vm 上预配 Log Analytics 代理。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Log Analytics 代理扩展](#manualagent)。
+当启用自动预配时, 安全中心会在所有支持的 Azure Vm 和创建的任何新 Vm 上预配 Log Analytics 代理。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Log Analytics 代理扩展](#manual-agent)。
 
 
 
@@ -59,7 +59,7 @@ ms.locfileid: "68845895"
 
 >[!NOTE]
 > - 有关如何预配现有安装的说明，请参阅[对现有的代理安装进行自动预配](#preexisting)。
-> - 有关手动预配的说明, 请参阅[手动安装 Log Analytics 代理扩展](#manualagent)。
+> - 有关手动预配的说明, 请参阅[手动安装 Log Analytics 代理扩展](#manual-agent)。
 > - 有关关闭自动预配的说明，请参阅[关闭自动预配](#offprovisioning)。
 > - 有关如何使用 PowerShell 加入安全中心的说明，请参阅[使用PowerShell 自动加入 Azure 安全中心](security-center-powershell-onboarding.md)。
 >
@@ -151,7 +151,7 @@ ms.locfileid: "68845895"
 > 
 > 可以根据要在工作区中存储的四组事件为订阅和工作区选择正确的筛选策略： 
 
-- **无** - 禁用安全事件存储。 此设置为默认设置。
+- **无** - 禁用安全事件存储。 此为默认设置。
 - 最小 – 一个较小事件集，适合希望最大程度地减小事件量的客户。
 - 通用 – 这是一个事件集，可满足大多数客户的需求，使他们可以进行完整的审核跟踪。
 - 所有事件 - 适用于想要确保存储所有事件的客户。
@@ -240,7 +240,7 @@ ms.locfileid: "68845895"
 >  禁用自动预配不会从预配代理的 Azure Vm 删除 Log Analytics 代理。 有关删除 OMS 扩展的信息，请参阅[如何删除安全中心安装的 OMS 扩展](security-center-faq.md#remove-oms)。
 >
     
-## 手动代理预配 <a name="manualagent"></a>
+## 手动代理预配 <a name="manual-agent"></a>
  
 可以通过多种方式手动安装 Log Analytics 代理。 手动安装时，请务必禁用自动预配。
 

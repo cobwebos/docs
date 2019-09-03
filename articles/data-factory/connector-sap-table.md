@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: faae9ae335e391afac4ed2ef75472f1fecdaca86
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 94bdeebcecdf924468f022ac95867bd82df5a793
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211675"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231321"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
@@ -35,9 +35,9 @@ ms.locfileid: "70211675"
 - 在以下产品中从 SAP 表复制数据：
 
   - SAP ERP 中心组件 (SAP ECC) 7.01 或更高版本（包含在 2015 年之后发布的最新 SAP 支持包堆栈中）。
-  - SAP Business Warehouse (SAP BW) 7.01 或更高版本。
+  - SAP Business 仓库 (SAP BW) 版本7.01 或更高版本 (在2015之后发布的最新 SAP 支持包堆栈中)。
   - SAP S/4HANA。
-  - SAP Business Suite 7.01 或更高版本中的其他产品。
+  - SAP Business Suite 版本7.01 或更高版本中的其他产品 (在2015之后发布的最新 SAP 支持包堆栈中)。
 
 - 从 SAP 透明表、共用表、聚集表和视图复制数据。
 - 使用基本身份验证或安全网络通信 (SNC)（如果已配置 SNC）复制数据。

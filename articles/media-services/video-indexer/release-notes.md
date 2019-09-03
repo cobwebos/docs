@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/29/2019
 ms.author: juliako
-ms.openlocfilehash: b627a78edef1c0b0fe6b3ed011678145aea397ae
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a7d178972a8c8b413e3c6336c403348f1eb78abb
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845881"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232596"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -28,7 +28,44 @@ ms.locfileid: "68845881"
 * Bug 修复
 * 已弃用的功能
 
-## <a name="july-2019"></a>2019年7月
+## <a name="august-2019"></a>2019 年 8 月
+ 
+### <a name="video-indexer-deployed-in-uk-south"></a>英国南部中部署的视频索引器
+
+你现在可以在英国南部区域创建视频索引器付费帐户。
+
+### <a name="new-editorial-shot-type-insights-available"></a>新的编辑快照类型见解可用
+
+添加到视频截图的新标记提供了编辑 "拍摄类型", 以使用内容创建工作流中所用的常见编辑短语来识别它们: 极端特写、特写、宽、中、两个拍摄、户外、室内、左面和右面 (可在JSON)。
+
+### <a name="new-people-and-locations-entities-extraction-available"></a>新人员和位置实体提取可用
+
+视频索引器通过视频的 OCR 和脚本来识别命名位置和用户通过自然语言处理 (NLP)。 视频索引器使用机器学习算法来识别在视频中调用特定位置 (例如, Eiffel 塔) 或人员 (例如 John Doe) 的时间。
+
+### <a name="keyframes-extraction-in-native-resolution"></a>以本机分辨率提取关键帧
+
+视频索引器提取的关键帧在视频的原始分辨率中可用。
+ 
+### <a name="ga-for-training-custom-face-models-from-images"></a>为从图像定型自定义面部模型提供 GA
+
+从预览模式转为 GA 的图像 (可通过 API 和门户中获取) 进行的训练。
+
+> [!NOTE]
+> 与 "公开预览版" 过渡无关。
+
+### <a name="hide-gallery-toggle-option"></a>隐藏库切换选项
+
+用户可以选择在门户中隐藏 "库" 选项卡 (类似于隐藏 "示例" 选项卡)。
+ 
+### <a name="maximum-url-size-increased"></a>最大 URL 大小增加
+
+支持在为视频编制索引时使用 URL 查询字符串 4096 (而不是 2048)。
+ 
+### <a name="support-for-multi-lingual-projects"></a>支持多语言项目
+
+现在可以基于用不同语言编制索引的视频 (仅 API) 创建项目。
+
+## <a name="july-2019"></a>2019 年 7 月
 
 ### <a name="editor-as-a-widget"></a>作为小组件的编辑器
 

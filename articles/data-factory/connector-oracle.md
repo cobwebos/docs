@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 9c27b81717c32ccf4c78143a3d3d31de7181c5fe
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 90adacffd947be38b447117bfe64242bed3a90af
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996632"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231360"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -206,7 +206,7 @@ Oracle 链接服务支持以下属性:
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为`OracleSource`。 | 是 |
 | oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时, 需要在查询中挂接任何对应的内置分区参数。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
-| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许值包括：**None**（默认值）、**PhysicalPartitionsOfTable** 和 **DynamicRange**。<br>启用`None`分区选项后, 还会在复制活动上[`parallelCopies`](copy-activity-performance.md#parallel-copy)配置设置。 这将确定并行加载 Oracle 数据库中的数据的并行度。 例如, 你可以将此设置为4。 | 否 |
+| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许值包括：**None**（默认值）、**PhysicalPartitionsOfTable** 和 **DynamicRange**。<br>启用分区选项 (即, 不`None`是) 时, 从 Oracle 数据库并发加载数据的并行度由复制活动的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 | 否 |
 | partitionSettings | 指定数据分区的设置组。 <br>当 partition 选项不`None`为时应用。 | 否 |
 | partitionNames | 需要复制的物理分区的列表。 <br>当 partition 选项为`PhysicalPartitionsOfTable`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfTabularPartitionName`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 | partitionColumnName | 指定并行复制范围分区使用的源列（**整数类型**）的名称。 如果未指定此参数, 则将自动检测该表的主键, 并将其用作分区列。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据, 则在 WHERE 子句`?AdfRangePartitionColumnName`中挂接。 有关示例, 请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
@@ -295,7 +295,7 @@ Oracle 链接服务支持以下属性:
 
 启用分区副本时, 数据工厂对 Oracle 源运行并行查询以按分区加载数据。 并行度由 "复制" 活动[`parallelCopies`](copy-activity-performance.md#parallel-copy)的设置控制。 例如, 如果将设置`parallelCopies`为 4, 则数据工厂会同时基于指定的分区选项和设置生成并运行四个查询, 每个查询将从 Oracle 数据库中检索部分数据。
 
-使用数据分区启用并行复制是一个不错的主意, 尤其是在从 Oracle 数据库加载大量数据时。 下面是针对不同方案的建议配置。 将数据复制到基于文件的数据存储时, 将 recommanded 写入文件夹作为多个文件 (仅指定文件夹名称), 在这种情况下, 性能比写入单个文件更好。
+建议你在使用数据分区时启用并行复制, 尤其是在从 Oracle 数据库加载大量数据时。 下面是针对不同方案的建议配置。 将数据复制到基于文件的数据存储时, 将 recommanded 写入文件夹作为多个文件 (仅指定文件夹名称), 在这种情况下, 性能比写入单个文件更好。
 
 | 应用场景                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

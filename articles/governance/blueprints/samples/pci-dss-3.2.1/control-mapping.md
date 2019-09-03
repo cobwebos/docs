@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c2dbfa5f6c9d679582a1834f2ff645c5ff79c51e
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d7d62770bc0e2683fc7bc1554493954c0e98758b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515690"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232687"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>控制 PCI DSS v 3.2.1 蓝图示例的映射
 
@@ -32,7 +32,7 @@ ms.locfileid: "69515690"
 
 此蓝图通过分配[Azure 策略](../../../policy/overview.md)定义 (强制执行特定的如何控件并审核弱加密设置的使用), 帮助你通过使用如何控件来强制实施策略。 了解 Azure 资源中的哪些位置采用欠佳的加密配置有助于采取纠正措施，以确保根据信息安全策略配置资源。 具体而言, 此蓝图分配的策略需要对 SQL 数据库进行透明数据加密;审核存储帐户和自动化帐户变量上缺少加密。 此外, 还提供了用于处理与存储帐户、Function Apps、WebApp、API 应用和 Redis 缓存的不安全连接的策略, 以及审核未加密 Service Fabric 通信。
 
-- 只能通过 HTTPS 访问 Function App
+- 应该只能通过 HTTPS 访问函数应用
 - 只能通过 HTTPS 访问 Web 应用程序
 - 只能通过 HTTPS 访问 API 应用
 - 应在 SQL 数据库上启用透明数据加密
@@ -48,11 +48,11 @@ ms.locfileid: "69515690"
 
 此蓝图通过分配用于监视 Azure 中缺少系统更新、操作系统漏洞、SQL 漏洞和虚拟机漏洞的[Azure 策略](../../../policy/overview.md)定义, 帮助你管理信息系统漏洞安全中心。 Azure 安全中心提供报告功能，使你能够实时洞察已部署的 Azure 资源的安全状态。
 
-- 在 Azure 安全中心监视 Endpoint Protection 的缺失情况
+- 监视 Azure 安全中心 Endpoint Protection 的缺失情况
 - 为 Windows Server 部署默认 Microsoft IaaSAntimalware 扩展
 - 在 SQL Server 上部署威胁检测
 - 应在计算机上安装系统更新
-- 应修复计算机上安全配置中的漏洞
+- 应该修复计算机上安全配置中的漏洞
 - 应该修复 SQL 数据库中的漏洞
 - 应该通过漏洞评估解决方案修复漏洞
 
@@ -110,7 +110,7 @@ Azure 实施基于角色的访问控制 (RBAC), 以帮助你管理哪些用户�
 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来帮助确保记录系统事件，这些定义用于审核在 Azure 资源上的日志设置。
 诊断日志针对 Azure 资源中执行的操作提供见解。 Azure 日志依赖于同步的内部时钟创建各个资源中事件的时间相关记录。
 
-- 应在 SQL Server 上的高级数据安全设置上启用审核
+- 应在 SQL Server 的高级数据安全设置上启用审核
 - 审核诊断设置
 - 审核 SQL 服务器级别审核设置
 - 在 SQL Server 上部署审核

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 2499842eeb2dd5a8fa845ed364a6aea7418acc8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824411"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231984"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>创建和使用 Web 应用程序防火墙 v2 自定义规则
 
@@ -127,7 +127,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-2"></a>示例 2
 
-要阻止来自 198.168.5.4/24 范围内的 IP 地址的所有请求。
+要阻止来自 198.168.5.0/24 范围内的 IP 地址的所有请求。
 
 在此示例中, 将阻止来自 IP 地址范围的所有流量。 规则的名称为*myrule1* , 优先级设置为100。
 
@@ -140,7 +140,7 @@ $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $False
 
 $rule = New-AzApplicationGatewayFirewallCustomRule `
@@ -166,7 +166,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
             "matchVariable": "RemoteAddr",
             "operator": "IPMatch",
             "matchValues": [
-              "192.168.5.4/24"
+              "192.168.5.0/24"
             ]
           }
         ]
@@ -175,11 +175,11 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-对应的 CRS 规则:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.4/24" "id:7001,deny"`
+对应的 CRS 规则:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-3"></a>示例 3
 
-在此示例中, 你想要阻止用户代理*evilbot*, 以及 192.168.5.4/24 范围内的流量。 若要实现此目的, 可以创建两个单独的匹配条件, 并将它们放在同一个规则中。 这可确保用户代理标头中的 evilbot**和**192.168.5.4/24 范围内的 IP 地址被阻止。
+在此示例中, 你想要阻止用户代理*evilbot*, 以及 192.168.5.0/24 范围内的流量。 若要实现此目的, 可以创建两个单独的匹配条件, 并将它们放在同一个规则中。 这可确保用户代理标头中的 evilbot**和**192.168.5.0/24 范围内的 IP 地址被阻止。
 
 逻辑: p**和**q
 
@@ -194,7 +194,7 @@ $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $False
 
 $condition2 = New-AzApplicationGatewayFirewallCondition `
@@ -229,7 +229,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
               "operator": "IPMatch", 
               "negateCondition": false, 
               "matchValues": [ 
-                "192.168.5.4/24" 
+                "192.168.5.0/24" 
               ] 
             }, 
             { 
@@ -251,7 +251,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 ## <a name="example-4"></a>示例 4
 
-在此示例中, 你想要阻止请求是在 IP 地址范围*192.168.5.4/24*以外, 还是不能使用用户代理字符串 (即 , 用户不使用 chrome 浏览器)。 由于此逻辑使用**或**, 因此, 这两个条件在不同的规则中, 如下面的示例中所示。 *myrule1*和*myrule2*都需要匹配才能阻止流量。
+在此示例中, 你想要阻止请求是在 IP 地址范围*192.168.5.0/24*以外, 还是不能使用用户代理字符串 (即 , 用户不使用 chrome 浏览器)。 由于此逻辑使用**或**, 因此, 这两个条件在不同的规则中, 如下面的示例中所示。 *myrule1*和*myrule2*都需要匹配才能阻止流量。
 
 逻辑: **not** (p**和**q) = **not** p**或 not** q。
 
@@ -266,7 +266,7 @@ $variable2 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $True
 
 $condition2 = New-AzApplicationGatewayFirewallCondition `
@@ -307,7 +307,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
             "operator": "IPMatch",
             "negateCondition": true,
             "matchValues": [
-              "192.168.5.4/24"
+              "192.168.5.0/24"
             ]
           }
         ]

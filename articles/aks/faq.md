@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 0e3a29e6e8f21658f03fb7fc059b54aa167496d4
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 6d122b3ac1504db0a2d22fea749c6c94174e4ff9
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147177"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233140"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -66,7 +66,7 @@ Azure 会按照夜间计划自动将安全修补程序应用于群集中的 Linu
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>我是否可为 AKS 节点资源组提供自己的名称？
 
-是的。 默认情况下，AKS 将节点资源组命名为 *MC_clustername_resourcegroupname_location*，但你可以提供自己的名称。
+是的。 默认情况下, AKS 将命名节点资源组*MC_resourcegroupname_clustername_location*, 但也可以提供自己的名称。
 
 若要指定自己的资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 *0.3.2* 或更高版本。 使用 [az aks create][az-aks-create] 命令创建 AKS 群集时，请使用 *--node-resource-group* 参数并指定资源组的名称。 如果[使用 Azure 资源管理器模板][aks-rm-template]来部署 AKS 群集, 则可以使用*nodeResourceGroup*属性来定义资源组名称。
 
@@ -110,7 +110,7 @@ AKS 目前尚未与 Azure Key Vault 本机集成。 但是，[Kubernetes 项目�
 
 是的, Windows Server 容器在预览版中可用。 若要在 AKS 中运行 Windows Server 容器, 请创建一个运行 Windows Server 作为来宾 OS 的节点池。 Windows Server 容器只能使用 Windows Server 2019。 若要开始, 请参阅[使用 Windows Server 节点池创建 AKS 群集][aks-windows-cli]。
 
-对于节点池, windows Server 支持包括 Kubernetes 项目中的上游 Windows Server 的一些限制。 有关这些限制的详细信息, 请参阅[Windows Server 容器中的 AKS 限制][aks-windows-limitations]。
+Windows Server 对节点池的支持在 Kubernetes 项目中包含属于上游 Windows Server 的一些限制。 有关这些限制的详细信息, 请参阅[Windows Server 容器中的 AKS 限制][aks-windows-limitations]。
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS 是否提供服务级别协议？
 
@@ -135,55 +135,55 @@ AKS 代理节点按标准 Azure 虚拟机计费, 因此, 如果你已为在 AKS 
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>能否在 Azure 租户之间移动/迁移群集？
 
-`az aks update-credentials`命令可用于在 Azure 租户之间移动 AKS 群集。 按照[选择更新或创建服务主体](https://docs.microsoft.com/azure/aks/update-credentials)中的说明进行操作, 然后[使用新凭据更新 aks 群集](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials)。
+可以使用 `az aks update-credentials` 命令在 Azure 租户之间移动 AKS 群集。 按[选择更新或创建服务主体](https://docs.microsoft.com/azure/aks/update-credentials)中的说明操作，然后[使用新凭据更新 AKS 群集](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials)。
 
-## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>是否可以在订阅之间移动/迁移群集？
+## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>我可以在订阅之间移动/迁移群集吗？
 
-当前不支持在订阅之间移动群集。
+目前不支持在订阅之间移动群集。
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>是否可以将我的 AKS 群集从当前的 azure 订阅移到另一个？ 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>是否可以将 AKS 群集从当前的 Azure 订阅移到另一个订阅？ 
 
 不支持在 Azure 订阅之间移动 AKS 群集及其关联的资源。
 
-## <a name="why-is-my-cluster-delete-taking-so-long"></a>为什么群集删除花费很长时间呢？ 
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>为何群集删除需要如此长的时间？ 
 
-大多数群集会在用户请求时删除;在某些情况下, 特别是在客户引入自己的资源组或执行跨 RG 任务删除时, 可能需要额外的时间或失败。 如果删除有问题, 请仔细检查是否在 RG 上没有锁, RG 之外的任何资源是否与 RG 关联, 等等。
+大多数群集是按用户请求删除的；某些情况下，尤其是在客户引入自己的资源组或执行跨 RG 任务的情况下，删除操作可能需要更多的时间，或者可能会失败。 如果在删除时出现问题，请仔细检查，确保没有在 RG 上进行锁定、RG 之外的任何资源均已取消与 RG 的关联，等等。
 
-## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>如果我的 pod/部署状态为 "NodeLost" 或 "未知", 是否仍可升级我的群集？
+## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>如果 Pod/部署处于“NodeLost”或“未知”状态，是否仍然可以升级群集？
 
-您可以, 但 AKS 不推荐这样做。 理想情况下, 应在群集状态为已知且正常时执行升级。
+可以，但是 AKS 不建议这样做。 理想情况下，升级应该在群集状态已知且正常的情况下完成。
 
-## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>如果群集中的一个或多个节点处于不正常状态或已关闭, 是否可以执行升级？
+## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>如果我有一个群集的一个或多个节点处于“运行不正常”状态或关闭状态，是否可以进行升级？
 
-不, 请删除/删除处于失败状态的任何节点, 或在升级之前从群集中删除。
+否。请删除/移除任何处于故障状态的节点或因为其他原因从群集中移除的节点，然后再进行升级。
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>我运行了群集删除, 但出现了错误`[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>我运行了群集删除操作，但出现错误：`[Errno 11001] getaddrinfo failed` 
 
-最常见的原因是, 具有一个或多个网络安全组 (Nsg) 仍在使用并与群集关联的用户。  请删除它们, 然后重试删除。
+这种情况最可能的原因是用户有一个或多个网络安全组 (NSG) 仍在使用并与群集相关联。  请将网络安全组删除，然后再次尝试群集删除操作。
 
-## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>我运行了升级, 但现在我的 pod 处于崩溃循环, 并且准备情况探测失败了？
+## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>我运行了升级，但现在我的 Pod 处于崩溃循环中，且就绪情况探测失败。
 
-请确认你的服务主体未过期。  请参阅：[AKS 服务主体](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)和[AKS 更新凭据](https://docs.microsoft.com/azure/aks/update-credentials)。
+请确认你的服务主体尚未过期。  请参阅：[AKS 服务主体](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)和 [AKS 更新凭据](https://docs.microsoft.com/azure/aks/update-credentials)。
 
-## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>我的群集运行正常, 但突然无法预配 LoadBalancers、装载 Pvc 等。 
+## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>我的群集在运行，但突然不能预配 LoadBalancers，不能装载 PVC，等等。 
 
-请确认你的服务主体未过期。  请参阅：[AKS 服务主体](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)和[AKS 更新凭据](https://docs.microsoft.com/azure/aks/update-credentials)。
+请确认你的服务主体尚未过期。  请参阅：[AKS 服务主体](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)和 [AKS 更新凭据](https://docs.microsoft.com/azure/aks/update-credentials)。
 
-## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>能否使用虚拟机规模集 Api 手动进行缩放？
+## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>是否可以使用虚拟机规模集 API 手动进行缩放？
 
-不支持, 不支持使用虚拟机规模集 Api 缩放操作。 使用 AKS Api (`az aks scale`)。
+否。使用虚拟机规模集 API 进行的缩放操作不受支持。 请使用 AKS API (`az aks scale`)。
 
-## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>能否使用虚拟机规模集手动缩放到0个节点？
+## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>是否可以使用虚拟机规模集手动缩放到 0 个节点？
 
-不支持, 不支持使用虚拟机规模集 Api 缩放操作。
+否。使用虚拟机规模集 API 进行的缩放操作不受支持。
 
-## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>是否可以停止或取消分配所有 Vm？
+## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>是否可以停止或解除分配我的所有 VM？
 
-尽管 AKS 具有可经受此类配置并从中恢复的复原机制, 但这不是推荐的配置。
+虽然 AKS 的复原机制可以经受此类配置并从其恢复，但我们建议你不要这样进行配置。
 
-## <a name="can-i-use-custom-vm-extensions"></a>能否使用自定义 VM 扩展？
+## <a name="can-i-use-custom-vm-extensions"></a>是否可以使用自定义 VM 扩展？
 
-没有 AKS 是托管服务, 不支持操作 IaaS 资源。 安装自定义组件等。 请使用 kubernetes Api 和机制。 例如, 利用 Daemonset 安装所需的组件。
+否。AKS 是一项托管服务，不支持操作 IaaS 资源。 若要安装自定义组件等内容， 请利用 Kubernetes 的 API 和机制。 例如，利用 DaemonSets 安装所需组件。
 
 <!-- LINKS - internal -->
 

@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e76abcac94a877e6bc7ea5c417c77c8c2febff
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 70e3267792f27a170efa26cc4267d1b25045a099
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032695"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231240"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>混合 Azure AD 加入所需的配置后任务
 
@@ -31,12 +31,12 @@ ms.locfileid: "70032695"
 完成所有配置步骤后，运行 Windows 10 和 Windows Server 2016 的所有已加入域的设备会自动注册到 Azure AD。 如果你希望进行受控的实施而不是执行这种自动注册，可以使用组策略有选择地启用或禁用自动实施。  在开始其他配置步骤之前, 应设置此组策略:
 * 在 Active Directory 中创建组策略对象。
 * 将其命名为 (ex- Hybrid Azure AD join)。
-* 编辑并转到：“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“设备注册”。
+* 编辑并继续:“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“设备注册”。
 
 >[!NOTE]
 >对于 2012R2，请通过“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“工作区加入”>“自动工作区加入客户端计算机”完成策略设置
 
-* 禁用此设置：“将已加入域的计算机注册为设备”。
+* 启用此设置:“将已加入域的计算机注册为设备”。
 * 依次单击“应用”、“确定”。
 * 将 GPO 链接到所选的位置（组织单位、安全组或所有设备的域）。
 

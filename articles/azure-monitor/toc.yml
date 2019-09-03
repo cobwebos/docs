@@ -476,8 +476,6 @@
               items:
                 - name: SharePoint 站点
                   href: app/sharepoint.md
-                - name: Dynamics CRM
-                  href: app/sample-mscrm.md
                 - name: Windows 桌面
                   href: app/windows-desktop.md
         - name: 容器

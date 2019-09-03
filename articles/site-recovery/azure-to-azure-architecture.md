@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 6882476cabc3dc3a737f31eeeb4ccd92e5ea6ee0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d415f303976ae454cb99f07e8d6e15e338e24d7d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872746"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231468"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -66,7 +66,7 @@ ms.locfileid: "69872746"
 **策略设置** | **详细信息** | **默认**
 --- | --- | ---
 **恢复点保留期** | 指定 Site Recovery 保留恢复点的时间长短 | 24 小时
-**应用一致性快照频率** | Site Recovery 创建应用一致性快照的频率。 | 每隔 60 分钟。
+**应用一致性快照频率** | Site Recovery 创建应用一致性快照的频率。 | 每4小时
 
 ### <a name="managing-replication-policies"></a>管理复制策略
 
