@@ -45,7 +45,7 @@ sections:
         items:
           - html: <a href="tutorial-1st-experiment-sdk-setup">设置环境并训练第一个 ML 试验</a>。
           - html: <a href="tutorial-train-models-with-aml">训练和部署图像分类模型。</a>
-          - html: <a href="tutorial-data-prep">准备数据并使用自动 ML 来预测出租车费用。</b></a>
+          - html: <a href="tutorial-auto-train-models">使用自动 ML 预测出租车费用。</b></a>
           - html: <a href="how-to-run-batch-predictions">使用 ML 管道对大数据集运行批量预测。</b></a>
   - title: 示例
     items:

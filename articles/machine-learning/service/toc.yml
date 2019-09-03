@@ -33,10 +33,10 @@
               href: tutorial-auto-train-models.md
     - name: 可视界面
       items:
-        - name: 训练回归模型
+        - name: 1. 训练回归模型
           displayName: studio
           href: ui-tutorial-automobile-price-train-score.md
-        - name: 部署回归模型
+        - name: 2. 部署回归模型
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: 自动化机器学习
