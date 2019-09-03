@@ -1,6 +1,6 @@
 ---
 title: 市场‎商业交易功能和注意事项 | Azure
-description: 本文介绍产品/服务类型的交易定价、计费、开具发票和付款注意事项。
+description: 本文介绍套餐类型的交易定价、计费、开具发票和付款注意事项。
 services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
 author: yijenj
 manager: nuno costa
@@ -231,7 +231,7 @@ Microsoft 使客户能够订购、许可和使用出版商软件, 经受 Microso
 
 **虚拟机** 
 
-从免费、自带许可或即用即付定价模型中选择，并显示为在产品/服务级别定义的 SKU。 在客户的 Azure 帐单上，Microsoft 将发布者软件许可证费用与隐含的 Azure 基础结构费用分开显示。 Azure 基础结构费用取决于发布者软件使用情况。
+从免费、自带许可或即用即付定价模型中选择，并显示为在套餐级别定义的 SKU。 在客户的 Azure 帐单上，Microsoft 将发布者软件许可证费用与隐含的 Azure 基础结构费用分开显示。 Azure 基础结构费用取决于发布者软件使用情况。
 
 **Azure 应用程序：解决方案模板或托管应用** 
 

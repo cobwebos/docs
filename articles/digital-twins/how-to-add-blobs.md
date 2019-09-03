@@ -111,7 +111,7 @@ Swagger 文档完整详细地介绍了这些模型架构。
 | 特性 | type | 描述 |
 | --- | --- | --- |
 | **id** | String | Blob 的唯一标识符 |
-| **名称** |String | Blob 的用户友好名称 |
+| **name** |String | Blob 的用户友好名称 |
 | **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
 | **type** | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
 | **typeId** | 整数 | Blob 类型 ID - 不能使用 *type* 和 *typeId* |

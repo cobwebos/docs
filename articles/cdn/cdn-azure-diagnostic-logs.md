@@ -53,15 +53,15 @@ ms.locfileid: "67594206"
 
 登录到 [Azure 门户](https://portal.azure.com)。 如果还没有为工作流启用 CDN，请在继续操作之前[创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
 
-1. 在 Azure 门户中，导航到“CDN 配置文件”。 
+1. 在 Azure 门户中，导航到“CDN 配置文件”。
 
 2. 在 Azure 门户中，搜索一个 CDN 配置文件或者从仪表板中选择一个。 然后，选择要为其启用诊断日志的 CDN 终结点。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
 
-3. 在“监视”部分中选择“诊断日志”。 
+3. 在“监视”部分中选择“诊断日志”。
 
-   此时将显示“诊断日志”  页。
+   此时将显示“诊断日志”页。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
 
@@ -69,69 +69,69 @@ ms.locfileid: "67594206"
 
 若要使用存储帐户来存储日志，请执行以下步骤：
     
-1. 对于“名称”  ，输入你的诊断日志设置的名称。
+1. 对于“名称”，输入你的诊断日志设置的名称。
  
-2. 选择“存档到存储帐户”  ，然后选择“CoreAnalytics”  。 
+2. 选择“存档到存储帐户”，然后选择“CoreAnalytics”。 
 
-2. 对于“保留期(天数)”  ，请选择保留天数。 如果保留期为 0 天，则会无限期存储日志。 
+2. 对于“保留期(天数)”，请选择保留天数。 如果保留期为 0 天，则会无限期存储日志。 
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
 
-3. 选择“存储帐户”  。
+3. 选择“存储帐户”。
 
-    此时将显示“选择存储帐户”页面。 
+    此时将显示“选择存储帐户”页面。
 
-4. 从下拉列表中选择一个存储帐户，然后选择“确定”。 
+4. 从下拉列表中选择一个存储帐户，然后选择“确定”。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/cdn-select-storage-account.png)
 
-5. 完成诊断日志设置后，选择“保存”。 
+5. 完成诊断日志设置后，选择“保存”。
 
 ### <a name="logging-with-azure-monitor"></a>使用 Azure Monitor 的日志记录
 
 若要使用 Azure Monitor 来存储日志，请执行以下步骤：
 
-1. 从“诊断日志”页面中，选择“发送到 Log Analytics”   。 
+1. 从“诊断日志”页面中，选择“发送到 Log Analytics”。 
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
 2. 选择**配置**若要配置 Azure Monitor 日志记录。 
 
-   此时将显示“Log Analytics 工作区”  页。
+   此时将显示“Log Analytics 工作区”页。
 
     >[!NOTE] 
     >OMS 工作区现在称为 Log Analytics 工作区。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
-3. 选择“新建工作区”  。
+3. 选择“新建工作区”。
 
-    此时将显示“Log Analytics 工作区”  页。
+    此时将显示“Log Analytics 工作区”页。
 
     >[!NOTE] 
     >OMS 工作区现在称为 Log Analytics 工作区。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. 对于 Log Analytics 工作区  ，输入 Log Analytics 工作区名称。 Log Analytics 工作区名称必须唯一，只能包含字母、数字和连字符；不允许空格和下划线。 
+4. 对于 Log Analytics 工作区，输入 Log Analytics 工作区名称。 Log Analytics 工作区名称必须唯一，只能包含字母、数字和连字符；不允许空格和下划线。 
 
-5. 对于“订阅”，从下拉列表中选择一个现有的订阅。  
+5. 对于“订阅”，从下拉列表中选择一个现有的订阅。 
 
-6. 对于“资源组”  ，创建一个新资源组或选择现有的资源组。
+6. 对于“资源组”，创建一个新资源组或选择现有的资源组。
 
-7. 对于“位置”  ，从下拉列表中选择一个位置。
+7. 对于“位置”，从下拉列表中选择一个位置。
 
-8. 如果希望将日志配置保存到仪表板，请选择“固定到仪表板”  。 
+8. 如果希望将日志配置保存到仪表板，请选择“固定到仪表板”。 
 
-9. 选择“确定”以完成配置。 
+9. 选择“确定”以完成配置。
 
-10. 创建工作区后，会返回到“诊断日志”页面。  确认新 Log Analytics 工作区的名称。
+10. 创建工作区后，会返回到“诊断日志”页面。 确认新 Log Analytics 工作区的名称。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/09_Return-to-logging.png)
 
-11. 选择“CoreAnalytics”  ，然后选择“保存”  。
+11. 选择“CoreAnalytics”，然后选择“保存”。
 
-12. 若要查看新的 Log Analytics 工作区，请从 CDN 终结点页选择“核心分析”。 
+12. 若要查看新的 Log Analytics 工作区，请从 CDN 终结点页选择“核心分析”。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
@@ -172,9 +172,9 @@ ms.locfileid: "67594206"
 ### <a name="using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器
 首先需要一款可访问存储帐户内容的工具，才可从 Azure 存储帐户访问核心分析数据。 市场上有多种可用的工具，但推荐使用 Microsoft Azure 存储资源管理器。 若要下载该工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。 下载并安装软件后，请将其配置为使用已配置为 CDN 诊断日志目标的同一 Azure 存储帐户。
 
-1.  打开 Microsoft Azure 存储资源管理器 
+1.  打开 Microsoft Azure 存储资源管理器
 2.  找到存储帐户
-3.  展开该存储帐户下的“Blob 容器”节点。 
+3.  展开该存储帐户下的“Blob 容器”节点。
 4.  选择名为 *insights-logs-coreanalytics* 的容器。
 5.  结果显示在右窗格中，从第一级开始，类似于 *resourceId=* 。 继续选择每个级别，直至找到 *PT1H.json* 文件。 有关路径的说明，请参阅 [Blob 路径格式](cdn-azure-diagnostic-logs.md#blob-path-format)。
 6.  每个 Blob *PT1H.json* 文件表示特定 CDN 终结点或其自定义域一小时内的分析日志。
@@ -187,7 +187,7 @@ ms.locfileid: "67594206"
 
 ```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
 
-字段说明： 
+字段说明：
 
 |ReplTest1|描述|
 |-------|---------|
@@ -223,7 +223,7 @@ Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境�
 
 ![Log Analytics 工作区](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
-图 3 - Log Analytics 存储库 
+图 3 - Log Analytics 存储库
 
 使用管理解决方案可通过各种方式显示数据。 可从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)获取管理解决方案。
 
@@ -236,11 +236,11 @@ Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境�
 1.   使用你的 Azure 订阅登录到 Azure 门户并转到你的仪表板。
     ![Azure 仪表板](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
-2. 在“新建”页面中，在“市场”下，选择“监视 + 管理”。   
+2. 在“新建”页面中，在“市场”下，选择“监视 + 管理”。
 
     ![市场](./media/cdn-diagnostics-log/14_Marketplace.png)
 
-3. 在“监视 + 管理”页面中，选择“查看全部”。  
+3. 在“监视 + 管理”页面中，选择“查看全部”。
 
     ![查看全部](./media/cdn-diagnostics-log/15_See-all.png)
 
@@ -248,11 +248,11 @@ Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境�
 
     ![查看全部](./media/cdn-diagnostics-log/16_Search-for.png)
 
-5. 选择“Azure CDN 核心分析”  。 
+5. 选择“Azure CDN 核心分析”。 
 
     ![查看全部](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6. 选择“创建”后，系统会要求创建一个新的 Log Analytics 工作区或使用现有的 Log Analytics 工作区  。 
+6. 选择“创建”后，系统会要求创建一个新的 Log Analytics 工作区或使用现有的 Log Analytics 工作区。 
 
     ![查看全部](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
@@ -264,7 +264,7 @@ Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境�
 
     ![查看全部](./media/cdn-diagnostics-log/20_Automation.png)
 
-9. 创建自动化帐户后，即可添加解决方案。 选择“创建”  按钮。
+9. 创建自动化帐户后，即可添加解决方案。 选择“创建”按钮。
 
     ![查看全部](./media/cdn-diagnostics-log/21_Ready.png)
 
@@ -274,7 +274,7 @@ Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境�
 
     选择你创建的 Log Analytics 工作区以转到你的工作区。 
 
-11. 选择“OMS 门户”磁贴来查看新解决方案  。
+11. 选择“OMS 门户”磁贴来查看新解决方案。
 
     ![查看全部](./media/cdn-diagnostics-log/23_workspace.png)
 
@@ -292,13 +292,13 @@ Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境�
 
      ![查看全部](./media/cdn-diagnostics-log/26_Further-detail.png)
 
-### <a name="offers-and-pricing-tiers"></a>产品和定价层
+### <a name="offers-and-pricing-tiers"></a>套餐和定价层
 
-可在[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)查看管理解决方案的产品/服务和定价层。
+可在[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)查看管理解决方案的套餐和定价层。
 
 ### <a name="customizing-views"></a>自定义视图
 
-可使用“视图设计器”自定义数据视图  。 若要开始设计，请转到 Log Analytics 工作区并选择“视图设计器”磁贴。 
+可使用“视图设计器”自定义数据视图。 若要开始设计，请转到 Log Analytics 工作区并选择“视图设计器”磁贴。
 
 ![视图设计器](./media/cdn-diagnostics-log/27_Designer.png)
 

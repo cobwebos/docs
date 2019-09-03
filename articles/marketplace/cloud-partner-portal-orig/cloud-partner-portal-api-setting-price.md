@@ -1,6 +1,6 @@
 ---
 title: 虚拟机产品/服务的定价 |Azure Marketplace
-description: 说明指定虚拟机产品/服务定价的三种方法。
+description: 说明指定虚拟机套餐定价的三种方法。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
@@ -14,10 +14,10 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 07/13/2019
 ms.locfileid: "67868749"
 ---
-<a name="pricing-for-virtual-machine-offers"></a>虚拟机产品/服务的定价
+<a name="pricing-for-virtual-machine-offers"></a>虚拟机套餐的定价
 ==================================
 
-指定虚拟机产品/服务定价的方法有三种：自定义核心定价、按核心定价和电子表格定价。
+指定虚拟机套餐定价的方法有三种：自定义核心定价、按核心定价和电子表格定价。
 
 
 <a name="customized-core-pricing"></a>自定义核心定价
@@ -87,7 +87,7 @@ ms.locfileid: "67868749"
 <a name="spreadsheet-pricing"></a>电子表格定价
 -------------------
 
-发布者还可以将其定价电子表格上传到临时存储位置，然后像其他文件项目一样在请求中包含 URI。 然后上传电子表格，进行转换以评估指定的价格表，最后使用定价信息更新产品/服务。 对产品/服务的后续 GET 请求将返回电子表格 URI 和该区域的评估价格。
+发布者还可以将其定价电子表格上传到临时存储位置，然后像其他文件项目一样在请求中包含 URI。 然后上传电子表格，进行转换以评估指定的价格表，最后使用定价信息更新套餐。 对产品/服务的后续 GET 请求将返回电子表格 URI 和该区域的评估价格。
 
 ``` json
      "virtualMachinePricing": 

@@ -419,7 +419,7 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-cancel-operations.md
         - name: 投入使用
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
-        - name: 虚拟机产品/服务的定价
+        - name: 虚拟机套餐的定价
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
         - name: 排查身份验证错误
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md

@@ -198,7 +198,7 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 | 服务器负载 |[使用率图表 - Redis 服务器负载](cache-how-to-monitor.md#usage-charts) |
 | 内存使用率 |[缓存性能 - 大小](cache-faq.md#cache-performance) |
 
-若要升级缓存，请单击“立即升级”以更改定价层并[缩放](#scale)缓存。 有关选择定价层的详细信息，请参阅[应使用哪种 Azure Redis 缓存产品和大小？](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+若要升级缓存，请单击“立即升级”以更改定价层并[缩放](#scale)缓存。 有关选择定价层的详细信息，请参阅[应使用哪种 Azure Redis 缓存套餐和大小？](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
 ### <a name="scale"></a>缩放

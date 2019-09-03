@@ -216,7 +216,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 - [购买 MSDN 订阅](https://www.visualstudio.com/products/how-to-buy-vs)。
 - 如果具有企业协议，请通过 [Enterprise 开发/测试套餐](https://azure.microsoft.com/offers/ms-azr-0148p)创建 Azure 订阅。
 
-若要深入了解每个 MSDN 产品/服务的 Azure 信用额度，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
+若要深入了解每个 MSDN 套餐的 Azure 信用额度，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
 
 
 ### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>如何自动删除实验室中的所有 VM？

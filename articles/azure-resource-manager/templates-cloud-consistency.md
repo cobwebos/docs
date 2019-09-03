@@ -485,7 +485,7 @@ Azure Stack 环境中的特定资源具有独特属性，必须在模板中考�
 
 ### <a name="ensure-vm-images-are-available"></a>确保 VM 映像可用
 
-Azure 提供丰富的精选 VM 映像。 这些映像已创建好，准备供 Microsoft 和合作伙伴部署。 这些映像构成平台上 VM 的基础。 但云一致模板应该仅引用可用的参数 - 尤其是可用于全球 Azure、Azure 主权云或 Azure Stack 的 VM 映像的发布服务器、产品和 SKU。
+Azure 提供丰富的精选 VM 映像。 这些映像已创建好，准备供 Microsoft 和合作伙伴部署。 这些映像构成平台上 VM 的基础。 但云一致模板应该仅引用可用的参数 - 尤其是可用于全球 Azure、Azure 主权云或 Azure Stack 的 VM 映像的发布服务器、套餐和 SKU。
 
 要检索位置中的可用 VM 映像列表，请运行以下 Azure CLI 命令：
 

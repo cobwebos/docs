@@ -64,7 +64,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>高级方案 
 
-如果你已使用其架构为 AME 创建了自己的编码预设, 则[Media Encoder Standard 有等效的架构](media-services-mes-schema.md)。 如果有关于如何将较旧的设置映射到新编码器的问题, 请通过mailto:amshelp@microsoft.com  
+如果你已使用其架构为 AME 创建了自己的编码预设, 则[Media Encoder Standard 有等效的架构](media-services-mes-schema.md)。 如果有关于如何将较旧的设置映射到新编码器的问题, 请通过 mailto:amshelp@microsoft.com  
 ## <a name="known-differences"></a>已知差异 
 
 Media Encoder Standard 更可靠、更可靠, 具有更好的性能, 并产生比旧的 AME 编码器更好的输出质量。 此外： 

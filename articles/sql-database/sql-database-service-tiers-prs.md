@@ -83,7 +83,7 @@ ms.locfileid: "68566635"
 
 ## <a name="take-advantage-of-our-new-offers"></a>利用我们的新产品/服务
 
-基于 vCore 的购买模型中的服务层级享受特别优惠，与许可证涵盖的定价相比，最多可将成本节省 80%。 与附带[面向 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)的许可证涵盖定价相比，附带积极软件保障的 SQL Server Standard 或 Enterprise 版许可证最多可将成本节省 55%。 可将混合权益和 [Azure SQL 数据库预留容量](sql-database-reserved-capacity.md)定价相结合，在提前承诺使用一年或三年时，最多将成本节省 80%。  立即从 Azure 门户激活两项权益。
+基于 vCore 的购买模型中的服务层级享受特惠套餐，与许可证涵盖的定价相比，最多可将成本节省 80%。 与附带[面向 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)的许可证涵盖定价相比，附带积极软件保障的 SQL Server Standard 或 Enterprise 版许可证最多可将成本节省 55%。 可将混合权益和 [Azure SQL 数据库预留容量](sql-database-reserved-capacity.md)定价相结合，在提前承诺使用一年或三年时，最多将成本节省 80%。  立即从 Azure 门户激活两项权益。
 
 如果对此项变更有任何疑问或疑虑，或者如需迁移的帮助，请联系 [Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
