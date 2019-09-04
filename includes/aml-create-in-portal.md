@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: dee813cbe1da6a6300f65b7005bf4a4b0226112a
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 11287ee5ca0df3e51bca20b39c35eb5ce33b88bd
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208534"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231065"
 ---
 1. 使用将所使用的 Azure 订阅的凭据登录到 [Azure 门户](https://portal.azure.com/)。 
 
@@ -28,9 +28,7 @@ ms.locfileid: "70208534"
 
 1. 在“机器学习服务工作区”窗格中，选择“创建”以开始   。
 
-  
-
-1. 通过提供工作区名称、订阅、资源组和位置来配置新工作区。
+1. 提供以下信息来配置新工作区：
 
    字段|说明 
    ---|---
