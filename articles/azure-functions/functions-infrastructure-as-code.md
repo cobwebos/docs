@@ -12,12 +12,12 @@ ms.server: functions
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: 3d60e5e4aae3457ae04cd7e4ecfe4f9253a04751
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 976121e2fd7af280ccc959ba2a93aceb4ae2bdea
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085405"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276833"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -30,7 +30,7 @@ ms.locfileid: "70085405"
 - [基于 Azure 应用服务计划的函数应用]
 
 > [!NOTE]
-> Azure Functions 托管的高级计划目前处于预览阶段。 有关详细信息, 请参阅[Azure Functions 高级计划](functions-premium-plan.md)。
+> Azure Functions 托管的高级计划目前处于预览阶段。 有关详细信息，请参阅[Azure Functions 高级计划](functions-premium-plan.md)。
 
 ## <a name="required-resources"></a>所需资源
 
@@ -43,10 +43,10 @@ Azure Functions 部署通常包括以下资源：
 | [Application Insights](../azure-monitor/app/app-insights-overview.md)组件 | 可选    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
 | [托管计划](./functions-scale.md)                                             | 可选<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
-<sup>1</sup>仅当您选择在[高级计划](./functions-premium-plan.md)(预览中) 或[应用服务计划](../app-service/overview-hosting-plans.md)上运行函数应用时, 才需要托管计划。
+<sup>1</sup>仅当您选择在[高级计划](./functions-premium-plan.md)（预览中）或[应用服务计划](../app-service/overview-hosting-plans.md)上运行函数应用时，才需要托管计划。
 
 > [!TIP]
-> 虽然不是必需的, 但强烈建议您为应用程序配置 Application Insights。
+> 虽然不是必需的，但强烈建议您为应用程序配置 Application Insights。
 
 <a name="storage"></a>
 ### <a name="storage-account"></a>存储帐户
@@ -87,7 +87,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="application-insights"></a>Application Insights
 
-建议使用 Application Insights 来监视函数应用。 该 Application Insights 资源的定义类型为 " **Microsoft Insights/组件**" 和 " **web**:
+建议使用 Application Insights 来监视函数应用。 该 Application Insights 资源的定义类型为 " **Microsoft Insights/组件**" 和 " **web**：
 
 ```json
         {
@@ -106,7 +106,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
         },
 ```
 
-此外, 需要使用`APPINSIGHTS_INSTRUMENTATIONKEY`应用程序设置向函数应用提供检测密钥。 此属性在`appSettings` `siteConfig`对象的集合中指定:
+此外，需要使用`APPINSIGHTS_INSTRUMENTATIONKEY`应用程序设置向函数应用提供检测密钥。 此属性在`appSettings` `siteConfig`对象的集合中指定：
 
 ```json
 "appSettings": [
@@ -121,7 +121,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 托管计划的定义是变化的，并且可能是下列项之一：
 * [消耗计划](#consumption)（默认值）
-* [高级计划](#premium)(预览版)
+* [高级计划](#premium)（预览版）
 * [应用服务计划](#app-service-plan)
 
 ### <a name="function-app"></a>Function App
@@ -195,16 +195,22 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 消耗计划是一种特殊的“serverfarm”资源。 对于 Windows，可以通过为 `computeMode` 和 `sku` 属性使用 `Dynamic` 值来指定它：
 
 ```json
-{
-    "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
-    "name": "[variables('hostingPlanName')]",
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "computeMode": "Dynamic",
-        "sku": "Dynamic"
-    }
+{  
+   "type":"Microsoft.Web/serverfarms",
+   "apiVersion":"2016-09-01",
+   "name":"[variables('hostingPlanName')]",
+   "location":"[resourceGroup().location]",
+   "properties":{  
+      "name":"[variables('hostingPlanName')]",
+      "computeMode":"Dynamic"
+   },
+   "sku":{  
+      "name":"Y1",
+      "tier":"Dynamic",
+      "size":"Y1",
+      "family":"Y",
+      "capacity":0
+   }
 }
 ```
 
@@ -264,7 +270,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 #### <a name="linux"></a>Linux
 
-在 Linux 上, 函数应用必须将其`kind`设置为`functionapp,linux`, `reserved`并且它必须将属性设置为`true`:
+在 Linux 上，函数应用必须将其`kind`设置为`functionapp,linux`， `reserved`并且它必须将属性设置为`true`：
 
 ```json
 {
@@ -308,7 +314,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ## <a name="deploy-on-premium-plan"></a>部署高级计划
 
-高级计划提供与消耗计划相同的缩放, 但包括专用资源和附加功能。 若要了解详细信息, 请参阅[Azure Functions 高级计划 (预览)](./functions-premium-plan.md)。
+高级计划提供与消耗计划相同的缩放，但包括专用资源和附加功能。 若要了解详细信息，请参阅[Azure Functions 高级计划（预览）](./functions-premium-plan.md)。
 
 ### <a name="create-a-premium-plan"></a>创建高级计划
 
@@ -329,7 +335,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
-高级计划中的函数应用必须`serverFarmId`将属性设置为前面创建的计划的资源 ID。 此外, 高级计划还需要站点配置中的两个附加设置: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`和`WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
+高级计划中的函数应用必须`serverFarmId`将属性设置为前面创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`和`WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
 
 ```json
 {
@@ -405,7 +411,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-若要在 Linux 上运行应用, 还必须将设置`kind`为`Linux`:
+若要在 Linux 上运行应用，还必须将设置`kind`为`Linux`：
 
 ```json
 {
@@ -465,7 +471,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-Linux 应用还应在下`linuxFxVersion` `siteConfig`包括属性。 如果只是部署代码, 则此值的值由所需的运行时堆栈确定:
+Linux 应用还应在下`linuxFxVersion` `siteConfig`包括属性。 如果只是部署代码，则此值的值由所需的运行时堆栈确定：
 
 | 堆栈            | 示例值                                         |
 |------------------|-------------------------------------------------------|
@@ -511,7 +517,7 @@ Linux 应用还应在下`linuxFxVersion` `siteConfig`包括属性。 如果只�
 }
 ```
 
-如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md), 则必须将其`linuxFxVersion`指定为, 并包括允许请求映像的配置, 如[用于容器的 Web 应用](/azure/app-service/containers)中所示。 此外, 将`WEBSITES_ENABLE_APP_SERVICE_STORAGE`设置`false`为, 因为容器本身中提供了应用内容:
+如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其`linuxFxVersion`指定为，并包括允许请求映像的配置，如[用于容器的 Web 应用](/azure/app-service/containers)中所示。 此外，将`WEBSITES_ENABLE_APP_SERVICE_STORAGE`设置`false`为，因为容器本身中提供了应用内容：
 
 ```json
 {

@@ -7,12 +7,12 @@ ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8cbefcbadc14c1249d2783f1539e40c99c3be66c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 14e957986df7a114b8c865ee82e2ac447683dc2c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231569"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257173"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 
@@ -24,9 +24,9 @@ ms.locfileid: "70231569"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 从左侧页面中选择 "**分配的蓝图**", 然后使用 "搜索" 框筛选蓝图分配, 查找失败的分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项。
+1. 从左侧页面中选择 "**分配的蓝图**"，然后使用 "搜索" 框筛选蓝图分配，查找失败的分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项。
 
-1. 左键单击状态为 "_失败_" 的蓝图, 或右键单击并选择 "**查看分配详细信息**"。
+1. 左键单击状态为 "_失败_" 的蓝图，或右键单击并选择 "**查看分配详细信息**"。
 
 1. 蓝图分配页面顶部有一个红色横幅警告，指出此分配已失败。 单击横幅任意位置可获取更多详细信息。
 
@@ -63,7 +63,7 @@ ms.locfileid: "70231569"
 
 #### <a name="resolution"></a>分辨率
 
-若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图将该函数放置在项目中，使其按预期动态化。 有关详细信息, 请参阅[模板文件结构-语法](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax)。
+若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图将该函数放置在项目中，使其按预期动态化。 有关详细信息，请参阅[Azure 资源管理器模板中的语法和表达式](../../../azure-resource-manager/template-expressions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

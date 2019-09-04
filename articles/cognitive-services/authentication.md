@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: b69bd39e97cc97830142c8b1911f1116927643b2
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467512"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276780"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
@@ -23,13 +23,13 @@ ms.locfileid: "68467512"
 * [使用单服务订阅密钥进行身份验证](#authenticate-with-a-single-service-subscription-key)
 * [使用多服务订阅密钥进行身份验证](#authenticate-with-a-multi-service-subscription-key)
 * [使用令牌进行身份验证](#authenticate-with-an-authentication-token)
-* [在 Azure Active Directory (AAD) 中进行身份验证](#authenticate-with-azure-active-directory)
+* [在 Azure Active Directory （AAD）中进行身份验证](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>先决条件
 
 在发出请求之前，需要具有 Azure 帐户和 Azure 认知服务订阅。 如果已有帐户，请继续并跳到下一节。 如果还没有帐户，我们会提供指南，可在几分钟内完成设置：[创建 Azure 认知服务帐户](cognitive-services-apis-create-account.md)。
 
-创建帐户或激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/my-apis)后, 可以从[Azure 门户](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)获取订阅密钥。
+创建帐户或激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/my-apis)后，可以从[Azure 门户](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)获取订阅密钥。
 
 ## <a name="authentication-headers"></a>身份验证标头
 
@@ -66,7 +66,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>使用多服务订阅密钥进行身份验证
 
 >[!WARNING]
-> 目前，以下服务不支持多服务密钥：QnA Maker、语音服务和自定义视觉。
+> 目前，以下服务不支持多服务密钥：QnA Maker、语音服务、自定义视觉和异常探测器。
 
 此选项仍使用订阅密钥对请求进行身份验证。 主要区别在于订阅密钥未绑定到特定服务，而单个密钥可用于对多个认知服务的请求进行身份验证。 有关区域可用性、支持的功能和定价的信息，请参阅[认知服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: c9320c8d0cf512bc9145accc07ab4c79630a7c84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61c10055a7f85f849fc366211eb41382c4c3039b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808886"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275203"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google BigQuery 复制数据
 
@@ -52,9 +52,9 @@ Google BigQuery 链接服务支持以下属性。
 
 ### <a name="using-user-authentication"></a>使用用户身份验证
 
-将“authenticationType”属性设置为“UserAuthentication”  ，并指定以下属性及上节所述的泛型属性：
+将“authenticationType”属性设置为“UserAuthentication”，并指定以下属性及上节所述的泛型属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 |:--- |:--- |:--- |
 | clientId | 应用程序的 ID，用于生成刷新令牌。 | 否 |
 | clientSecret | 应用程序的机密，用于生成刷新令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
@@ -88,9 +88,9 @@ Google BigQuery 链接服务支持以下属性。
 
 ### <a name="using-service-authentication"></a>使用服务身份验证
 
-将“authenticationType”属性设置为“ServiceAuthentication”  ，并指定以下属性及上节所述的泛型属性。 此身份验证类型只能在自承载 Integration Runtime 上使用。
+将“authenticationType”属性设置为“ServiceAuthentication”，并指定以下属性及上节所述的泛型属性。 此身份验证类型只能在自承载 Integration Runtime 上使用。
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 |:--- |:--- |:--- |
 | email | 用于 ServiceAuthentication 的服务帐户电子邮件 ID。 它只能在自承载集成运行时上使用。  | 否 |
 | keyFilePath | .p12 密钥文件的完整路径，该文件用于对服务帐户电子邮件地址进行身份验证。 | 否 |
@@ -128,7 +128,9 @@ Google BigQuery 链接服务支持以下属性。
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**GoogleBigQueryObject** | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| dataset | Google BigQuery 数据集的名称。 |否（如果指定了活动源中的“query”）  |
+| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
+| tableName | 表名称。 支持此属性是为了向后兼容。 对于新工作负荷， `dataset`请`table`使用和。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -137,11 +139,12 @@ Google BigQuery 链接服务支持以下属性。
     "name": "GoogleBigQueryDataset",
     "properties": {
         "type": "GoogleBigQueryObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<GoogleBigQuery linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -152,7 +155,7 @@ Google BigQuery 链接服务支持以下属性。
 
 ### <a name="googlebigquerysource-as-a-source-type"></a>以 GoogleBigQuerySource 作为源类型
 
-要从 Google BigQuery 复制数据，请将复制活动中的源类型设置为“GoogleBigQuerySource”  。 复制活动的 **source** 节支持以下属性。
+要从 Google BigQuery 复制数据，请将复制活动中的源类型设置为“GoogleBigQuerySource”。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

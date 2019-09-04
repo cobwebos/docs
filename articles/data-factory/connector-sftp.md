@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 37bdcb48dcd37bf81aac8f5c2e1213d7f0deb327
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f51e93ff164c0ec2352c1a57eb698a4374fbe5c9
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966437"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276925"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从 SFTP 服务器复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -177,12 +177,12 @@ SFTP 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
 
-- 对于**Parquet (分隔文本和二进制格式**), 请参阅[Parquet, 分隔文本和二进制格式数据集](#format-based-dataset)部分。
-- 对于其他格式 (如**ORC/Avro/JSON 格式**), 请参阅[其他格式数据集](#other-format-dataset)部分。
+- 对于**Parquet （分隔文本、avro 和二进制格式**），请参阅[Parquet，分隔文本、avro 和二进制格式数据集](#format-based-dataset)部分。
+- 对于其他格式（如**ORC/JSON 格式**），请参阅[其他格式数据集](#other-format-dataset)部分。
 
-### <a name="format-based-dataset"></a>Parquet, 分隔文本和二进制格式数据集
+### <a name="format-based-dataset"></a>Parquet，分隔文本、Avro 和二进制格式数据集
 
-若要将数据复制到**Parquet (以分隔符分隔的文本或二进制格式**), 请参阅基于格式的数据集和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 SFTP 支持以下属性：
+若要将数据复制到**Parquet （以分隔符分隔的文本或二进制格式**），请参阅基于格式的数据集和支持的设置的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [Avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 SFTP 支持以下属性：
 
 | 属性   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -221,7 +221,7 @@ SFTP 链接的服务支持以下属性：
 
 ### <a name="other-format-dataset"></a>其他格式数据集
 
-若要从**ORC/Avro/JSON 格式**的 SFTP 复制数据, 支持以下属性:
+若要以**ORC/JSON 格式**从 SFTP 复制数据，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -276,12 +276,12 @@ SFTP 链接的服务支持以下属性：
 
 ### <a name="sftp-as-source"></a>以 SFTP 作为源
 
-- 若要从**Parquet 复制, 分隔文本和二进制格式**, 请参阅[Parquet, 分隔文本和二进制格式源](#format-based-source)部分。
-- 若要从其他格式 (如**ORC/Avro/JSON 格式**) 复制, 请参阅[其他格式源](#other-format-source)部分。
+- 若要从**Parquet、带分隔符的文本、avro 和二进制格式**复制，请参阅[Parquet，分隔文本、avro 和二进制格式源](#format-based-source)部分。
+- 若要从其他格式（如**ORC/JSON 格式**）复制，请参阅[其他格式源](#other-format-source)部分。
 
-#### <a name="format-based-source"></a>Parquet, 分隔文本和二进制格式源
+#### <a name="format-based-source"></a>Parquet，分隔文本、Avro 和二进制格式源
 
-若要从 Parquet 复制数据 **(带分隔符的文本或二进制格式**), 请参阅基于格式的复制活动源和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的复制源中 `storeSettings` 设置下的 SFTP 支持以下属性：
+若要从 Parquet 复制数据 **（带分隔符的文本或二进制格式**），请参阅基于格式的复制活动源和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [Avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文。 基于格式的复制源中 `storeSettings` 设置下的 SFTP 支持以下属性：
 
 | 属性                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -339,7 +339,7 @@ SFTP 链接的服务支持以下属性：
 
 #### <a name="other-format-source"></a>其他格式源
 
-若要从**ORC/Avro/JSON 格式**的 SFTP 复制数据, 复制活动**源**部分支持以下属性:
+若要以**ORC/JSON 格式**从 SFTP 复制数据，复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

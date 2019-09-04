@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f2ffd88b21d8cf331435a030199b562e6b5b979f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b9d853cc0de08b64f2e0f5530e153724d9eeddda
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840266"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277098"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
 
@@ -35,7 +35,7 @@ ms.locfileid: "68840266"
 ## <a name="text-format"></a>文本格式
 
 >[!NOTE]
->数据工厂引入了新的带分隔符的文本格式数据集，请参阅[带分隔符的文本格式](format-delimited-text.md)一文了解详细信息。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
+>数据工厂引入了新的分隔文本格式数据集，请参阅包含详细信息的[分隔文本格式](format-delimited-text.md)文章。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
 
 如果想要读取或写入某个文本文件，请将数据集的 `format` 节中的 `type` 属性设置为 **TextFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [TextFormat 示例](#textformat-example)部分，了解如何进行配置。
 
@@ -413,7 +413,7 @@ ms.locfileid: "68840266"
 ## <a name="parquet-format"></a>Parquet 格式
 
 >[!NOTE]
->数据工厂引入了新的 Parquet 格式数据集，请参见 [Parquet 格式](format-parquet.md)一文了解详细信息。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
+>数据工厂引入了新的 Parquet 格式数据集，有关详细信息，请参阅[Parquet format](format-parquet.md)文章。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
 
 若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为 **ParquetFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 例如：
 
@@ -458,11 +458,11 @@ ms.locfileid: "68840266"
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/二进制 | UInt64 | Decimal |
-| 单身 | Float | 不可用 | 不可用 |
+| Single | Float | 不可用 | 不可用 |
 | Double | Double | 不可用 | 不可用 |
 | Decimal | Binary | Decimal | Decimal |
 | String | Binary | Utf8 | Utf8 |
-| 日期时间 | Int96 | 不可用 | 不可用 |
+| DateTime | Int96 | 不可用 | 不可用 |
 | TimeSpan | Int96 | 不可用 | 不可用 |
 | DateTimeOffset | Int96 | 不可用 | 不可用 |
 | ByteArray | Binary | 不可用 | 不可用 |
@@ -508,11 +508,11 @@ ms.locfileid: "68840266"
 | UInt32 | 长 |
 | Int64 | 长 |
 | UInt64 | String |
-| 单身 | Float |
+| Single | Float |
 | Double | Double |
 | Decimal | Decimal |
 | String | String |
-| 日期时间 | 时间戳 |
+| DateTime | 时间戳 |
 | DateTimeOffset | 时间戳 |
 | TimeSpan | 时间戳 |
 | ByteArray | Binary |
@@ -520,6 +520,9 @@ ms.locfileid: "68840266"
 | 字符 | Char(1) |
 
 ## <a name="avro-format"></a>AVRO 格式
+
+>[!NOTE]
+>数据工厂引入了新的 Avro 格式数据集，有关详细信息，请参阅[Avri format](format-avro.md)文章。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
 
 若要分析 Avro 文件或以 Avro 格式写入数据，请将 `format` `type` 属性设置为 **AvroFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 例如：
 
@@ -538,7 +541,7 @@ ms.locfileid: "68840266"
 
 ## <a name="binary-format"></a>二进制格式
 
-有关详细信息, 请参阅[二进制格式](format-binary.md)一文。
+有关详细信息，请参阅[二进制格式](format-binary.md)一文。
 
 ## <a name="compression-support"></a>压缩支持
 

@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 2bfb094994bcc6f41044a08aab6eb0155967638e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d3365f0a893c80043c93091c3e4e91382bdcd67e
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231426"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275862"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
-> [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本:"]
+> [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本："]
 > * [Version1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [当前版本](connector-azure-sql-data-warehouse.md)
 
@@ -234,7 +234,9 @@ Azure SQL 数据仓库链接服务支持以下属性：
 | 属性  | 说明                                                  | 必选                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 **type** 属性必须设置为 **AzureSqlDWTable**。 | 是                         |
-| tableName | 链接服务引用的 Azure SQL 数据仓库实例中的表名称或视图名称。 | 对于源为“No”，对于接收器为“Yes” |
+| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| tableName | 具有架构的表/视图的名称。 支持此属性是为了向后兼容。 对于新工作负荷， `schema`请`table`使用和。 | 对于源为“No”，对于接收器为“Yes” |
 
 #### <a name="dataset-properties-example"></a>数据集属性示例
 
@@ -250,7 +252,8 @@ Azure SQL 数据仓库链接服务支持以下属性：
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }
@@ -379,7 +382,7 @@ GO
 | writeBatchSize    | **每批**要插入到 SQL 表中的行数。 仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，数据工厂会根据行大小动态确定适当的批大小。 | 否                                            |
 | writeBatchTimeout | 超时前等待批量插入操作完成的时间。仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **timespan**。 例如：“00:30:00”（30 分钟）。 | 否                                            |
 | preCopyScript     | 每次运行时，将数据写入到 Azure SQL 数据仓库之前，指定复制活动要运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |
-| disableMetricsCollection | 数据工厂收集用于复制性能优化和建议的指标, 例如 SQL 数据仓库 Dwu。 如果你担心此行为, 请指定`true`将其关闭。 | 否（默认值为 `false`） |
+| disableMetricsCollection | 数据工厂收集用于复制性能优化和建议的指标，例如 SQL 数据仓库 Dwu。 如果你担心此行为，请指定`true`将其关闭。 | 否（默认值为 `false`） |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL 数据仓库接收器示例
 
@@ -403,7 +406,7 @@ GO
 
 使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 是将大量数据加载到高吞吐量 Azure SQL 数据仓库的有效方法。 使用 PolyBase 而非默认 BULKINSERT 机制可以实现吞吐量的巨大增加。 有关带有用例的演练，请参阅[将 1 TB 的数据加载到 Azure SQL 数据仓库](v1/data-factory-load-sql-data-warehouse.md)。
 
-* 如果源数据位于**Azure Blob 中、Azure Data Lake Storage Gen1 或 Azure Data Lake Storage Gen2**并且**格式与 PolyBase 兼容**, 则可以使用复制活动直接调用 POLYBASE, 使 Azure SQL 数据仓库从源中提取数据。 有关详细信息，请参阅 **[使用 PolyBase 直接复制](#direct-copy-by-using-polybase)** 。
+* 如果源数据位于**Azure Blob 中、Azure Data Lake Storage Gen1 或 Azure Data Lake Storage Gen2**并且**格式与 PolyBase 兼容**，则可以使用复制活动直接调用 POLYBASE，使 Azure SQL 数据仓库从源中提取数据。 有关详细信息，请参阅 **[使用 PolyBase 直接复制](#direct-copy-by-using-polybase)** 。
 * 如果 PolyBase 最初不支持源数据存储和格式，请改用 **[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)** 功能。 暂存复制功能也能提供更高的吞吐量。 它自动将数据转换为 PolyBase 兼容的格式。 它将数据存储在 Azure Blob 存储中。 然后，它将数据载入 SQL 数据仓库。
 
 >[!TIP]
@@ -432,14 +435,14 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob、Azure Data Lake Storage Gen1
 2. **源数据格式**为 **Parquet**、**ORC** 或“分隔文本”，使用以下配置：
 
    1. 文件夹路径不包含通配符筛选器。
-   2. 文件名为空, 或指向单个文件。 如果在复制活动中指定通配符文件名, 则只能为`*`或。 `*.*`
-   3. `rowDelimiter`**默认值**为, **\n**、 **\r\n**或 **\r**。
-   4. `nullValue`保留为默认值或设置为**空字符串**(""), 并且`treatEmptyAsNull`保留为默认值或设置为 true。
+   2. 文件名为空，或指向单个文件。 如果在复制活动中指定通配符文件名，则只能为`*`或。 `*.*`
+   3. `rowDelimiter`**默认值**为， **\n**、 **\r\n**或 **\r**。
+   4. `nullValue`保留为默认值或设置为**空字符串**（""），并且`treatEmptyAsNull`保留为默认值或设置为 true。
    5. `encodingName`保留为默认值或设置为**utf-8**。
    6. `quoteChar`、`escapeChar` 和 `skipLineCount` 未指定。 PolyBase 支持跳过可以在 ADF 中配置为 `firstRowAsHeader` 的标头行。
    7. `compression` 可为**无压缩**、**GZip** 或 **Deflate**。
 
-3. 如果源是文件夹, 则必须`recursive`将 "复制活动" 设置为 "true"。
+3. 如果源是文件夹，则必须`recursive`将 "复制活动" 设置为 "true"。
 
 ```json
 "activities":[

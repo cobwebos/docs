@@ -8,18 +8,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 1882e994c5d062d3ca841025edb61965f7eb0aa0
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: e21ae2f8eda4521effa5b7db686fe72241aa4cdb
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967052"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276282"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据
 
-Azure Data Lake Storage Gen2 (ADLS Gen2) 是专用于[Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中内置的大数据分析的一组功能。 它可使用文件系统和对象存储范例与数据进行交互。
+Azure Data Lake Storage Gen2 （ADLS Gen2）是专用于[Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中内置的大数据分析的一组功能。 它可使用文件系统和对象存储范例与数据进行交互。
 
 本文概述如何向/从 Azure Data Lake Storage Gen2 复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
@@ -41,7 +41,7 @@ Azure Data Lake Storage Gen2 (ADLS Gen2) 是专用于[Azure Blob 存储](../stor
 >如果启用分层命名空间，则当前 Blob 和 Data Lake Storage Gen2 API 之间没有操作的互操作性。 如果遇到“ErrorCode=FilesystemNotFound”错误，详细消息为“指定的文件系统不存在”，这是由于指定的接收器文件系统是通过 Blob API 而非其他地方的 Data Lake Storage Gen2 API 创建的。 若要解决此问题，请指定其名称不同于已存在的 Blob 容器名称的一个新文件系统。 然后，数据工厂在复制数据期间将自动创建该文件系统。
 
 >[!NOTE]
->如果在 Azure 存储防火墙设置上启用“允许受信任的 Microsoft 服务访问此存储帐户”选项，则使用 Azure Integration Runtime 连接 Data Lake Storage Gen2 将失败并显示“已禁止”错误。 由于不将数据工厂视为受信任的 Microsoft 服务, 因此会显示错误消息。 请改用自承载集成运行时进行连接。
+>如果在 Azure 存储防火墙设置上启用“允许受信任的 Microsoft 服务访问此存储帐户”选项，则使用 Azure Integration Runtime 连接 Data Lake Storage Gen2 将失败并显示“已禁止”错误。 由于不将数据工厂视为受信任的 Microsoft 服务，因此会显示错误消息。 请改用自承载集成运行时进行连接。
 
 ## <a name="get-started"></a>开始使用
 
@@ -75,7 +75,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定此属性，则使用默认的 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
->使用帐户密钥身份验证时, 不支持辅助 ADLS 文件系统终结点。 可以使用其他身份验证类型。
+>使用帐户密钥身份验证时，不支持辅助 ADLS 文件系统终结点。 可以使用其他身份验证类型。
 
 **示例：**
 
@@ -207,12 +207,12 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 
 有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)。
 
-- 对于**Parquet (分隔文本和二进制格式**), 请参阅[Parquet, 分隔文本和二进制格式数据集](#format-based-dataset)部分。
-- 对于其他格式 (如**ORC/Avro/JSON 格式**), 请参阅[其他格式数据集](#other-format-dataset)部分。
+- 对于**Parquet （分隔文本、Avro 和二进制格式**），请参阅[Parquet，分隔文本和二进制格式数据集](#format-based-dataset)部分。
+- 对于其他格式（如**ORC/JSON 格式**），请参阅[其他格式数据集](#other-format-dataset)部分。
 
-### <a name="format-based-dataset"></a>Parquet, 分隔文本和二进制格式数据集
+### <a name="format-based-dataset"></a>Parquet，分隔文本、Avro 和二进制格式数据集
 
-若要将数据复制到**Parquet (以分隔符分隔的文本或二进制格式**), 请参阅基于格式的数据集和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 Data Lake Storage Gen2 支持以下属性：
+若要将数据复制到**Parquet、带分隔符的文本、avro 或二进制格式**，请参阅基于格式的数据集和支持的设置的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 Data Lake Storage Gen2 支持以下属性：
 
 | 属性   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -253,7 +253,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 
 ### <a name="other-format-dataset"></a>其他格式数据集
 
-若要将数据与**ORC/Avro/JSON 格式**的 Data Lake Storage Gen2 一起复制, 支持以下属性:
+若要将数据与**ORC/JSON 格式**的 Data Lake Storage Gen2 一起复制，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -304,12 +304,12 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 
 ### <a name="azure-data-lake-storage-gen2-as-a-source-type"></a>Azure Data Lake Storage Gen2 作为源类型
 
-- 若要从**Parquet 复制, 分隔文本和二进制格式**, 请参阅[Parquet, 分隔文本和二进制格式源](#format-based-source)部分。
-- 若要从其他格式 (如**ORC/Avro/JSON 格式**) 复制, 请参阅[其他格式源](#other-format-source)部分。
+- 若要从**Parquet、带分隔符的文本、Avro 和二进制格式**复制，请参阅[Parquet，分隔文本和二进制格式源](#format-based-source)部分。
+- 若要从其他格式（如**ORC/JSON 格式**）复制，请参阅[其他格式源](#other-format-source)部分。
 
-#### <a name="format-based-source"></a>Parquet, 分隔文本和二进制格式源
+#### <a name="format-based-source"></a>Parquet，分隔文本、Avro 和二进制格式源
 
-若要从 Parquet 复制数据 **(带分隔符的文本或二进制格式**), 请参阅基于格式的复制活动源和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的复制源中的 `storeSettings` 设置下的 Data Lake Storage Gen2 支持以下属性：
+若要从 Parquet 复制数据 **，分隔文本、avro 或二进制格式**，请[参阅 Parquet 格式](format-parquet.md)、[分隔文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和基于格式的复制活动源的[二进制格式](format-binary.md)文章和支持的设置. 基于格式的复制源中的 `storeSettings` 设置下的 Data Lake Storage Gen2 支持以下属性：
 
 | 属性                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -367,7 +367,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 
 #### <a name="other-format-source"></a>其他格式源
 
-若要从**ORC/Avro/JSON 格式**的 Data Lake Storage Gen2 中复制数据, 复制活动**源**部分支持以下属性:
+若要复制**ORC/JSON 格式**的 Data Lake Storage Gen2 数据，复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -409,12 +409,12 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 
 ### <a name="azure-data-lake-storage-gen2-as-a-sink-type"></a>Azure Data Lake Storage Gen2 作为接收器类型
 
-- 若要复制到**Parquet (带分隔符的文本或二进制格式**), 请参阅[Parquet, 分隔文本和二进制格式接收器](#format-based-sink)部分。
-- 若要复制到其他格式 (如**ORC/Avro/JSON 格式**), 请参阅[其他格式接收器](#other-format-sink)部分。
+- 若要复制到**Parquet （分隔文本、Avro 或二进制格式**），请参阅[Parquet，分隔文本和二进制格式接收器](#format-based-sink)部分。
+- 若要复制到其他格式（如**ORC/JSON 格式**），请参阅[其他格式接收器](#other-format-sink)部分。
 
-#### <a name="format-based-sink"></a>Parquet, 分隔文本和二进制格式接收器
+#### <a name="format-based-sink"></a>Parquet，分隔文本、Avro 和二进制格式接收器
 
-若要将数据复制到**Parquet (带分隔符的文本或二进制格式**), 请参阅基于格式的复制活动接收器上的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)文章和支持的设置。 基于格式的复制接收器中的 `storeSettings` 设置下的 Data Lake Storage Gen2 支持以下属性：
+若要将数据复制到**Parquet、带分隔符的文本、avro 或二进制格式**，请参阅基于格式的复制活动接收器上的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文以及支持的设置。 基于格式的复制接收器中的 `storeSettings` 设置下的 Data Lake Storage Gen2 支持以下属性：
 
 | 属性                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -462,7 +462,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 
 #### <a name="other-format-sink"></a>其他格式接收器
 
-若要将数据复制到**ORC/Avro/JSON 格式**的 Data Lake Storage Gen2, **sink**部分支持以下属性:
+若要将数据复制到**ORC/JSON 格式**的 Data Lake Storage Gen2， **sink**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -529,26 +529,26 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 ## <a name="preserve-acls-from-data-lake-storage-gen1"></a>保留 Data Lake Storage Gen1 中的 Acl
 
 >[!TIP]
->若要将数据从 Azure Data Lake Storage Gen1 复制到一般的 Gen2 中, 请参阅[使用 Azure 数据工厂将 Azure Data Lake Storage Gen1 数据复制到 Gen2](load-azure-data-lake-storage-gen2-from-gen1.md)和最佳实践。
+>若要将数据从 Azure Data Lake Storage Gen1 复制到一般的 Gen2 中，请参阅[使用 Azure 数据工厂将 Azure Data Lake Storage Gen1 数据复制到 Gen2](load-azure-data-lake-storage-gen2-from-gen1.md)和最佳实践。
 
-将 Azure Data Lake Storage Gen1 中的文件复制到 Gen2 时, 可以选择保留 POSIX 访问控制列表 (Acl) 和数据。 有关访问控制的详细信息, 请参阅 Azure Data Lake Storage Gen2 中 Azure Data Lake Storage Gen1 和[access control](../storage/blobs/data-lake-storage-access-control.md)中的[访问控制](../data-lake-store/data-lake-store-access-control.md)。
+将 Azure Data Lake Storage Gen1 中的文件复制到 Gen2 时，可以选择保留 POSIX 访问控制列表（Acl）和数据。 有关访问控制的详细信息，请参阅 Azure Data Lake Storage Gen2 中 Azure Data Lake Storage Gen1 和[access control](../storage/blobs/data-lake-storage-access-control.md)中的[访问控制](../data-lake-store/data-lake-store-access-control.md)。
 
-可以使用 Azure 数据工厂复制活动保存以下类型的 Acl。 您可以选择一个或多个类型:
+可以使用 Azure 数据工厂复制活动保存以下类型的 Acl。 您可以选择一个或多个类型：
 
-- **ACL**:复制并保留对文件和目录的 POSIX 访问控制列表。 它将完整的现有 Acl 从源复制到接收器。 
+- **ACL**：复制并保留对文件和目录的 POSIX 访问控制列表。 它将完整的现有 Acl 从源复制到接收器。 
 - **所有者**：复制并保留文件和目录的拥有用户。 需要超级用户访问接收器 Data Lake Storage Gen2。
-- **组**:复制并保留所属的文件和目录组。 需要超级用户对接收器 Data Lake Storage Gen2 或拥有用户的访问权限 (如果拥有用户也是目标组的成员)。
+- **组**：复制并保留所属的文件和目录组。 需要超级用户对接收器 Data Lake Storage Gen2 或拥有用户的访问权限（如果拥有用户也是目标组的成员）。
 
-如果指定从文件夹复制, 则如果`recursive`将设置为 true, 则数据工厂将复制该给定文件夹及其下的文件和目录的 acl。 如果指定从单个文件复制, 则会复制该文件上的 Acl。
+如果指定从文件夹复制，则如果`recursive`将设置为 true，则数据工厂将复制该给定文件夹及其下的文件和目录的 acl。 如果指定从单个文件复制，则会复制该文件上的 Acl。
 
 >[!IMPORTANT]
->选择保留 Acl 时, 请确保为数据工厂授予足够高的权限, 以便在接收器 Data Lake Storage Gen2 帐户上运行。 例如, 使用帐户密钥身份验证, 或将存储 Blob 数据所有者角色分配给服务主体或托管标识。
+>选择保留 Acl 时，请确保为数据工厂授予足够高的权限，以便在接收器 Data Lake Storage Gen2 帐户上运行。 例如，使用帐户密钥身份验证，或将存储 Blob 数据所有者角色分配给服务主体或托管标识。
 
-将 source 作为 Data Lake Storage Gen1 配置为具有二进制复制选项或二进制格式, 并将接收器配置为带有二进制复制选项或二进制格式的 Data Lake Storage Gen2 时, 可以在 "**复制数据工具设置**" 页上或在用于活动创作的**复制活动** > **设置**选项卡。
+将 source 作为 Data Lake Storage Gen1 配置为具有二进制复制选项或二进制格式，并将接收器配置为带有二进制复制选项或二进制格式的 Data Lake Storage Gen2 时，可以在 "**复制数据工具设置** **" 页**上或在用于活动创作的**复制活动** > **设置**选项卡。
 
 ![Data Lake Storage Gen1 Gen2 保留 ACL](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
 
-下面是 JSON 配置的示例 (请参阅`preserve`): 
+下面是 JSON 配置的示例（请参阅`preserve`）： 
 
 ```json
 "activities":[

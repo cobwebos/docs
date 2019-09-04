@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 912a063a5a831f2eade4678719723a56548b57ee
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a20c6e90f38e6443597fdf50edd3d4766dc71096
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967530"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275293"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -122,12 +122,12 @@ FTP 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
 
-- 对于**Parquet (分隔文本和二进制格式**), 请参阅[Parquet, 分隔文本和二进制格式数据集](#format-based-dataset)部分。
-- 对于其他格式 (如**ORC/Avro/JSON 格式**), 请参阅[其他格式数据集](#other-format-dataset)部分。
+- 对于**Parquet （分隔文本、avro 和二进制格式**），请参阅[Parquet，分隔文本、avro 和二进制格式数据集](#format-based-dataset)部分。
+- 对于其他格式（如**ORC/JSON 格式**），请参阅[其他格式数据集](#other-format-dataset)部分。
 
-### <a name="format-based-dataset"></a>Parquet, 分隔文本和二进制格式数据集
+### <a name="format-based-dataset"></a>Parquet，分隔文本、Avro 和二进制格式数据集
 
-若要从 Parquet 复制数据 **(带分隔符的文本或二进制格式**), 请参阅基于格式的数据集和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 FTP 支持以下属性：
+若要从 Parquet 复制数据 **（带分隔符的文本或二进制格式**），请参阅基于格式的数据集和支持的设置的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [Avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 FTP 支持以下属性：
 
 | 属性   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -166,7 +166,7 @@ FTP 链接服务支持以下属性：
 
 ### <a name="other-format-dataset"></a>其他格式数据集
 
-若要以**ORC/Avro/JSON 格式**从 FTP 复制数据, 支持以下属性:
+若要以**ORC/JSON 格式**从 FTP 复制数据，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -217,12 +217,12 @@ FTP 链接服务支持以下属性：
 
 ### <a name="ftp-as-source"></a>FTP 作为源
 
-- 若要从**Parquet 复制, 分隔文本和二进制格式**, 请参阅[Parquet, 分隔文本和二进制格式源](#format-based-source)部分。
-- 若要从其他格式 (如**ORC/Avro/JSON 格式**) 复制, 请参阅[其他格式源](#other-format-source)部分。
+- 若要从**Parquet、带分隔符的文本、avro 和二进制格式**复制，请参阅[Parquet，分隔文本、avro 和二进制格式源](#format-based-source)部分。
+- 若要从其他格式（如**ORC/JSON 格式**）复制，请参阅[其他格式源](#other-format-source)部分。
 
-#### <a name="format-based-source"></a>Parquet, 分隔文本和二进制格式源
+#### <a name="format-based-source"></a>Parquet，分隔文本、Avro 和二进制格式源
 
-若要从 Parquet 复制数据 **(带分隔符的文本或二进制格式**), 请参阅基于格式的复制活动源和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的复制源中 `storeSettings` 设置下的 FTP 支持以下属性：
+若要从 Parquet 复制数据 **，分隔文本、avro 或二进制格式**，请[参阅 Parquet 格式](format-parquet.md)、[分隔文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和基于格式的复制活动源的[二进制格式](format-binary.md)文章和支持的设置. 基于格式的复制源中 `storeSettings` 设置下的 FTP 支持以下属性：
 
 | 属性                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -281,7 +281,7 @@ FTP 链接服务支持以下属性：
 
 #### <a name="other-format-source"></a>其他格式源
 
-若要以**ORC/Avro/JSON 格式**从 FTP 复制数据, 复制活动**源**部分支持以下属性:
+若要以**ORC/JSON 格式**从 FTP 复制数据，复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

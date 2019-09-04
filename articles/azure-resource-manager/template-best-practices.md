@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf6a5b07dd72c4e2364281b755e77e642f8fe167
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 161539aaec4d3b7162405f437b7fb3dd1f6a00e6
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542982"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258852"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure 资源管理器模板最佳做法
 
@@ -151,7 +151,7 @@ ms.locfileid: "69542982"
 
 使用[变量](resource-group-authoring-templates.md#variables)时，以下信息可以提供帮助：
 
-* 对变量名称使用 camel 大小写。
+* 对变量名称使用混合大小写。
 
 * 针对需要在模板中多次使用的值使用变量。 如果一次只使用一个值，则硬编码值可使模板更易于阅读。
 
@@ -175,7 +175,7 @@ ms.locfileid: "69542982"
 
 * 将子资源设置为依赖于其父资源。
 
-* 会自动从依赖项顺序中删除 [condition 元素](resource-group-authoring-templates.md#condition)设置为 false 的资源。 像始终部署了资源那样设置依赖项。
+* 会自动从依赖项顺序中删除 [condition 元素](conditional-resource-deployment.md)设置为 false 的资源。 像始终部署了资源那样设置依赖项。
 
 * 让依赖项级联，无需对其进行显式设置。 例如，虚拟机依赖于虚拟网络接口，虚拟网络接口依赖于虚拟网络和公共 IP 地址。 因此，虚拟机在所有这三个资源之后部署，但请勿将虚拟机显式设置为依赖于所有这三个资源。 此方法阐明了依赖顺序，在以后更改模板会更容易。
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: b4bd61ea74055a04718d8a9d8d5ccd42671af2ac
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: eead9e0fec8ac4322bc7816de4a4774f8be8129c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638350"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257958"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>上下文子类型的实体角色
 
@@ -55,7 +55,7 @@ Schedule the meeting from 8 to 9
 
 ## <a name="are-multiple-entities-in-an-utterance-the-same-thing-as-roles"></a>言语中的多个实体是否与角色相同？ 
 
-多个实体可以存在于一个言语中，无需使用角色即可提取这些实体。 如果句子的上下文指示实体的哪个版本具有值, 则应使用角色。 
+多个实体可以存在于一个言语中，无需使用角色即可提取这些实体。 如果句子的上下文指示实体的哪个版本具有值，则应使用角色。 
 
 ### <a name="dont-use-roles-for-duplicates-without-meaning"></a>不要对没有含义的重复项使用角色
 
@@ -93,7 +93,7 @@ Schedule the meeting from 8 to 9
 
 ## <a name="entity-roles-versus-collaborator-roles"></a>实体角色与协作者角色
 
-实体角色适用于 LUIS 应用的数据模型。 [协作者](luis-concept-collaborator.md)角色适用于创作访问级别。 
+实体角色适用于 LUIS 应用的数据模型。 [协作者或参与者](luis-concept-keys.md#contributions-from-other-authors)角色适用于创作访问级别。 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 

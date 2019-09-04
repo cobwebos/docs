@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 20c27a3e4e9a96a19b347e5ef57ab9fb3c047140
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f054d0665c49ee048451681a7cc34d2a648a6e9e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194430"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240224"
 ---
 ::: zone target="docs"
 
@@ -30,7 +30,7 @@ ms.locfileid: "70194430"
 
 # <a name="review-prerequisites"></a>查看先决条件
 
-1. 必须使用教程对 Data Box Disk 进行排序:排序 Azure Data Box Disk。 已收到磁盘, 每个磁盘都有一个连接电缆。
+1. 必须使用[教程对 Data Box Disk 进行排序：排序 Azure Data Box Disk](data-box-disk-deploy-ordered.md)。 已收到磁盘，每个磁盘都有一个连接电缆。
 2. 你有一台可用的客户端计算机，可以从中复制数据。 客户端计算机必须：
 
     - 运行受支持的操作系统。

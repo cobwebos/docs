@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/29/2019
+ms.date: 09/04/2019
 ms.author: dalek
-ms.openlocfilehash: f2ea87f237fa5cca8a4b1f6773d2b47729cfb5b0
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: f0a3930cfb3ff403e0ce9d9be308370810e2065a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147548"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277013"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -35,7 +35,7 @@ ms.locfileid: "70147548"
 ### <a name="data-volume-details"></a>数据量详细信息
 
 * 数据量是 Application Insights 收到的遥测数据的字节数。 数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。 对于[导入到 Analytics 中的表格数据](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import)，数据量的衡量标准是发送到 Application Insights 的文件的未压缩大小。
-* 自 2018 年 4 月起，应用程序的数据量费用将在名为“数据引入”的新计费表中报告。 此新计量器跨监视技术 (如 Application Insights 和 Log Analytics) 共享, 并且当前位于服务名称**Log Analytics**下。 
+* 自 2018 年 4 月起，应用程序的数据量费用将在名为“数据引入”的新计费表中报告。 此新计量器跨监视技术（如 Application Insights 和 Log Analytics）共享，并且当前位于服务名称**Log Analytics**下。 
 * 定价未考虑[实时指标流](../../azure-monitor/app/live-stream.md)数据。
 
 > [!NOTE]
@@ -67,11 +67,11 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 
 ## <a name="managing-your-data-volume"></a>管理数据卷 
 
-若要了解应用发送的数据量, 可以:
+若要了解应用发送的数据量，可以：
 
 * 转到“使用情况和预估成本”页查看每日数据量图表。 
 * 在指标资源管理器中，添加新图表。 对于图表指标，选择“数据点容量”。 启用“分组”，并按数据类型分组。
-* `systemEvents`使用数据类型。 例如, 若要查看最后一天的数据量引入, 则查询如下:
+* `systemEvents`使用数据类型。 例如，若要查看最后一天的数据量引入，则查询如下：
 
 ```kusto
 systemEvents 
@@ -84,7 +84,7 @@ systemEvents
 
 可以在[Azure 日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)中使用此查询来设置数据卷上的警报。 
 
-可以通过以下三种方式管理要发送的数据量:
+可以通过以下三种方式管理要发送的数据量：
 
 * **采样**：可以使用采样减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 采样是你可用来调整发送数据量的主要工具。 了解有关[采样功能](../../azure-monitor/app/sampling.md)的详细信息。
  
@@ -92,7 +92,7 @@ systemEvents
 
     除非为高流量应用程序请求了更高的最大值，否则最大上限是 1000 GB/天。 
     
-    有关每日上限的警告电子邮件将发送到作为 Application Insights 资源的这些角色的成员的帐户:"ServiceAdmin", "全局", "CoAdmin", "Owner"。
+    有关每日上限的警告电子邮件将发送到作为 Application Insights 资源的这些角色的成员的帐户："ServiceAdmin"，"全局"，"CoAdmin"，"Owner"。
 
     设置每日上限时，务必小心。 你的目标应该是“永远不会达到每日上限”。 如果达到每日上限，会丢失当天剩余时间的数据，无法监视应用程序。 若要更改每日上限，请使用“每日容量上限”选项。 可在“使用情况和预估成本”窗格中访问此选项（本文后面会详述）。
     
@@ -116,9 +116,11 @@ systemEvents
 
 不使用每日容量上限，而是使用[采样](../../azure-monitor/app/sampling.md)，将数据量调整到所需级别。 然后，仅在应用程序意外开始发送远高于预期的遥测量时，才使用每日上限作为“最后的手段”。
 
-若要更改每日上限, 请在 "**使用情况和预估成本**" 页的 "Application Insights 资源的"**配置**"部分中, 选择"**每日上限**"。
+若要更改每日上限，请在“使用情况和预估成本”页中 Application Insights 资源的“配置”部分中，选择“每日上限”。
 
 ![调整每日遥测数据量上限](./media/pricing/pricing-003.png)
+
+若要[通过 Azure 资源管理器更改每日上限](../../azure-monitor/app/powershell.md)，要更改的属性为`dailyQuota`。  通过 Azure 资源管理器你还可以设置`dailyQuotaResetTime`和每日`warningThreshold`上限。 
 
 ## <a name="sampling"></a>采样
 [采样](../../azure-monitor/app/sampling.md)是一种方法，可降低向应用发送遥测的速率，同时仍可在诊断搜索过程中查找相关事件。 此外，还可保留正确的事件计数。
@@ -149,15 +151,15 @@ systemEvents
 ## <a name="change-the-data-retention-period"></a>更改数据保留期
 
 > [!NOTE]
-> 我们暂时删除了此功能, 但解决了可能出现的问题。  我们将在2019年9月推出。
+> 我们暂时删除了此功能，但解决了可能出现的问题。  我们将在2019年9月推出。
 
-Application Insights 资源的默认保留期为90天。 可以为每个 Application Insights 资源选择不同的保留期。 完整的可用保留期集为30、60、90、120、180、270、365、550或730。 
+Application Insights 资源的默认保留期为 90 天。 可以为每个 Application Insights 资源选择不同的保留期。 完整的可用保留期集为 30、60、90、120、180、270、365、550 或 730 天。 
 
-若要更改保留期, 请从 Application Insights 资源转到 "**使用情况和预估成本**" 页, 然后选择 "**数据保留**" 选项:
+若要更改保留期，请从 Application Insights 资源转到“使用情况和预估成本”页，然后选择“数据保留”选项：
 
 ![调整每日遥测数据量上限](./media/pricing/pricing-005.png)
 
-如果为较长的保留期启用了计费, 则保留的数据超过90天将按照当前为 Azure Log Analytics 数据保留计费的相同费率进行计费。 有关详细信息, 请参阅[Azure Monitor 定价 "页](https://azure.microsoft.com/pricing/details/monitor/)。 通过[投票此建议](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031), 随时了解可变保留进度。 
+当为延长保留期启用了计费时，保留时间超过 90 天的数据将按照当前针对 Azure Log Analytics 数据保留的计费费率进行计费。 请访问[“Azure Monitor 定价”页](https://azure.microsoft.com/pricing/details/monitor/)了解更多信息。 通过[投票支持此建议](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)，随时了解可变保留进度的最新情况。 
 
 ## <a name="limits-summary"></a>限制摘要
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b0881cb6dac9ec83d2126942c758508e760f9c83
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598009"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274426"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>从笔记本内安装包
 
@@ -66,9 +66,19 @@ install_github('<user>/<repo>')
 
 ```fsharp
 Paket.Package
-[ "MathNet.Numerics"
-"MathNet.Numerics.FSharp"
-]
+  [ "MathNet.Numerics"
+    "MathNet.Numerics.FSharp"
+  ]
+```
+
+然后加载 paket 生成器：
+```fsharp
+#load "Paket.Generated.Refs.fsx"
+```
+
+打开库：
+```fsharp
+open MathNet.Numerics
 ```
 
 ## <a name="next-steps"></a>后续步骤

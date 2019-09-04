@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 4922f863802524b8abc85581ae3c3acea8fabe48
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 05182b42be232ade4c4206abb9c68e632ad31c03
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839860"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275987"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Azure 文件存储复制数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "68839860"
 
 具体而言，此 Azure 文件存储连接器支持按原样复制文件，或者使用[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析/生成文件。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -46,9 +46,9 @@ Azure 文件存储链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**FileServer**。 | 是 |
-| 主机 | 将 Azure 文件存储终结点指定为： <br/>-使用 UI：指定 `\\<storage name>.file.core.windows.net\<file service name>`<br/>-使用 JSON：`"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`。 | 是 |
+| host | 将 Azure 文件存储终结点指定为： <br/>-使用 UI：指定 `\\<storage name>.file.core.windows.net\<file service name>`<br/>-使用 JSON：`"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`。 | 是 |
 | userid | 将要访问 Azure 文件存储的用户指定为： <br/>-使用 UI：指定 `AZURE\<storage name>`<br/>-使用 JSON：`"userid": "AZURE\\<storage name>"`。 | 是 |
-| 密码 | 指定存储访问密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| password | 指定存储访问密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |对于源为“No”，对于接收器为“Yes” |
 
 >[!IMPORTANT]
@@ -85,12 +85,12 @@ Azure 文件存储链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
 
-- 对于**Parquet (分隔文本和二进制格式**), 请参阅[Parquet, 分隔文本和二进制格式数据集](#format-based-dataset)部分。
-- 对于其他格式 (如**ORC/Avro/JSON 格式**), 请参阅[其他格式数据集](#other-format-dataset)部分。
+- 对于**Parquet （分隔文本、avro 和二进制格式**），请参阅[Parquet，分隔文本、avro 和二进制格式数据集](#format-based-dataset)部分。
+- 对于其他格式（如**ORC/JSON 格式**），请参阅[其他格式数据集](#other-format-dataset)部分。
 
-### <a name="format-based-dataset"></a>Parquet, 分隔文本和二进制格式数据集
+### <a name="format-based-dataset"></a>Parquet，分隔文本、Avro 和二进制格式数据集
 
-若要将数据复制到**Parquet (以分隔符分隔的文本或二进制格式**), 请参阅基于格式的数据集和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 Azure 文件存储支持以下属性：
+若要将数据复制到**Parquet、带分隔符的文本、avro 或二进制格式**，请参阅基于格式的数据集和支持的设置的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 Azure 文件存储支持以下属性：
 
 | 属性   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -130,7 +130,7 @@ Azure 文件存储链接的服务支持以下属性：
 
 ### <a name="other-format-dataset"></a>其他格式数据集
 
-若要将数据从 Azure 文件存储复制到**ORC/Avro/JSON 格式**的数据, 请支持以下属性:
+若要将数据从 Azure 文件存储复制到**ORC/JSON 格式**的数据，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -184,12 +184,12 @@ Azure 文件存储链接的服务支持以下属性：
 
 ### <a name="azure-file-storage-as-source"></a>用作源的 Azure 文件存储
 
-- 若要从**Parquet 复制, 分隔文本和二进制格式**, 请参阅[Parquet, 分隔文本和二进制格式源](#format-based-source)部分。
-- 若要从其他格式 (如**ORC/Avro/JSON 格式**) 复制, 请参阅[其他格式源](#other-format-source)部分。
+- 若要从**Parquet、带分隔符的文本、avro 和二进制格式**复制，请参阅[Parquet，分隔文本、avro 和二进制格式源](#format-based-source)部分。
+- 若要从其他格式（如**ORC/JSON 格式**）复制，请参阅[其他格式源](#other-format-source)部分。
 
-#### <a name="format-based-source"></a>Parquet, 分隔文本和二进制格式源
+#### <a name="format-based-source"></a>Parquet，分隔文本、Avro 和二进制格式源
 
-若要从 Parquet 复制数据 **(带分隔符的文本或二进制格式**), 请参阅基于格式的复制活动源和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的复制源中 `storeSettings` 设置下的 Azure 文件存储支持以下属性：
+若要从 Parquet 复制数据 **，分隔文本、avro 或二进制格式**，请[参阅 Parquet 格式](format-parquet.md)、[分隔文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和基于格式的复制活动源的[二进制格式](format-binary.md)文章和支持的设置. 基于格式的复制源中 `storeSettings` 设置下的 Azure 文件存储支持以下属性：
 
 | 属性                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -247,7 +247,7 @@ Azure 文件存储链接的服务支持以下属性：
 
 #### <a name="other-format-source"></a>其他格式源
 
-若要从**ORC/Avro/JSON 格式**的 Azure 文件存储复制数据, 复制活动**源**部分支持以下属性:
+若要以**ORC/JSON 格式**从 Azure 文件存储复制数据，复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -289,12 +289,12 @@ Azure 文件存储链接的服务支持以下属性：
 
 ### <a name="azure-file-storage-as-sink"></a>用作接收器的 Azure 文件存储
 
-- 若要复制到**Parquet (带分隔符的文本或二进制格式**), 请参阅[Parquet, 分隔文本和二进制格式接收器](#format-based-sink)部分。
-- 若要复制到其他格式 (如**ORC/Avro/JSON 格式**), 请参阅[其他格式接收器](#other-format-sink)部分。
+- 若要复制到**Parquet （分隔文本、avro 或二进制格式**），请参阅[Parquet，分隔文本、avro 和二进制格式接收器](#format-based-sink)部分。
+- 若要复制到其他格式（如**ORC/JSON 格式**），请参阅[其他格式接收器](#other-format-sink)部分。
 
-#### <a name="format-based-sink"></a>Parquet, 分隔文本和二进制格式接收器
+#### <a name="format-based-sink"></a>Parquet，分隔文本、Avro 和二进制格式接收器
 
-若要将数据复制到**Parquet (带分隔符的文本或二进制格式**), 请参阅基于格式的复制活动接收器上的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)文章和支持的设置。 基于格式的复制接收器中 `storeSettings` 设置下的 Azure 文件存储支持以下属性：
+若要将数据复制到**Parquet、带分隔符的文本、avro 或二进制格式**，请参阅基于格式的复制活动接收器上的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文以及支持的设置。 基于格式的复制接收器中 `storeSettings` 设置下的 Azure 文件存储支持以下属性：
 
 | 属性                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -342,12 +342,12 @@ Azure 文件存储链接的服务支持以下属性：
 
 #### <a name="other-format-sink"></a>其他格式接收器
 
-若要以**ORC/Avro/JSON 格式**将数据复制到 Azure 文件存储,**接收器**部分支持以下属性:
+若要以**ORC/JSON 格式**将数据复制到 Azure 文件存储，**接收器**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**FileSystemSink** |是 |
-| copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定文件名, 则合并文件名将为指定名称;否则, 将自动生成文件名。 | 否 |
+| copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定文件名，则合并文件名将为指定名称;否则，将自动生成文件名。 | 否 |
 | maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否 |
 
 **示例：**

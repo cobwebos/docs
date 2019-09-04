@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8a53ed1eea66c976c46a21378a9c48a1ad5ce902
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: c82d8b90d9da44ab8f4b8ea0aa0e063ea70350e2
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508203"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258963"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
@@ -21,9 +21,9 @@ ms.locfileid: "67508203"
 
 ## <a name="complete-mode"></a>完整模式
 
-在完整模式下，资源管理器删除资源组中已存在但尚未在模板中指定的资源  。 由于[条件](resource-group-authoring-templates.md#condition)的计算结果为 false，因此不会删除模板中指定但未部署的资源。
+在完整模式下，资源管理器删除资源组中已存在但尚未在模板中指定的资源。 由于[条件](conditional-resource-deployment.md)的计算结果为 false，因此不会删除模板中指定但未部署的资源。
 
-使用具有完整模式时要小心[复制循环](resource-group-create-multiple.md)。 解决复制循环之后，在模板中未指定任何资源被删除。
+将完整模式与[复制循环](resource-group-create-multiple.md)一起使用时要小心。 在解析复制循环后会删除模板中未指定的任何资源。
 
 资源类型处理完整模式删除的方式有所不同。 当父资源不在以完整模式部署的模板中时，将自动删除该资源。 而某些子资源不在模板中时，不会将其自动删除。 但是，如果删除父资源，则会删除这些子资源。 
 
@@ -43,9 +43,9 @@ ms.locfileid: "67508203"
 
 ## <a name="incremental-mode"></a>增量模式
 
-在增量模式下，资源管理器保留资源组中已存在但尚未在模板中指定的未更改资源  。
+在增量模式下，资源管理器保留资源组中已存在但尚未在模板中指定的未更改资源。
 
-但是，当重新部署现有资源在增量模式下，结果是一个不同的。 指定的资源，而不仅仅是要更新的所有属性。 常见的误解是认为未指定的属性保持不变。 如果未指定某些属性，资源管理器会将更新解释为覆盖这些值。
+但是，以增量模式重新部署现有资源时，结果会有所不同。 指定资源的所有属性，而不仅仅是要更新的属性。 一个常见的误解是认为未指定的属性会保持不变。 如果未指定某些属性，资源管理器会将更新解释为覆盖这些值。
 
 ## <a name="example-result"></a>示例结果
 
@@ -63,14 +63,14 @@ ms.locfileid: "67508203"
 * 资源 B
 * 资源 D
 
-在“增量”模式下部署时，资源组具有： 
+在“增量”模式下部署时，资源组具有：
 
 * 资源 A
 * 资源 B
 * 资源 C
 * 资源 D
 
-在“完整”模式下部署时，会删除资源 C。  资源组具有：
+在“完整”模式下部署时，会删除资源 C。 资源组具有：
 
 * 资源 A
 * 资源 B

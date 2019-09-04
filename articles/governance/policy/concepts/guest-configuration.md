@@ -7,34 +7,32 @@ ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 054f9ed21ee0d7ef725c2b7eee8174c53374b5bc
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
-ms.translationtype: HT
+ms.openlocfilehash: 06a767af71f457273e0e20d1248d64c22b3563e7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232258"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274950"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
-除了审核和[修正](../how-to/remediate-resources.md)azure 资源以外, azure 策略还可以审核计算机内部的设置。 验证由来宾配置扩展和客户端执行。 扩展通过客户端验证设置，例如操作系统的配置、应用程序配置或状态以及环境设置等等。
+除了审核和[修正](../how-to/remediate-resources.md)azure 资源以外，azure 策略还可以审核计算机内部的设置。 验证由来宾配置扩展和客户端执行。 扩展通过客户端验证设置，例如操作系统的配置、应用程序配置或状态以及环境设置等等。
 
-目前, Azure 策略来宾配置仅在计算机内部执行设置审核。
+目前，Azure 策略来宾配置仅对计算机内的设置执行审核。
 尚不能应用配置。
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="extension-and-client"></a>扩展和客户端
 
-若要审核虚拟机中的设置, 请启用[虚拟机扩展](../../../virtual-machines/extensions/overview.md)。 该扩展下载适用的策略分配和相应的配置定义。
+若要审核虚拟机中的设置，请启用[虚拟机扩展](../../../virtual-machines/extensions/overview.md)。 该扩展下载适用的策略分配和相应的配置定义。
 
-### <a name="limits-set-on-the-exension"></a>对 exension 设置的限制
+### <a name="limits-set-on-the-extension"></a>扩展上设置的限制
 
-为了限制扩展影响在计算机内运行的应用程序, 不允许来宾配置超过超过 5% 的 CPU 使用率。
-这适用于 Microsoft 提供的配置 "内置" 的 boh 和客户创作的自定义配置。
+为了限制扩展影响在计算机内运行的应用程序，不允许来宾配置超过超过 5% 的 CPU 使用率。
+这同时适用于 Microsoft 为 "内置" 提供的配置以及客户创作的自定义配置。
 
 ## <a name="register-guest-configuration-resource-provider"></a>注册来宾配置资源提供程序
 
-必须注册资源提供程序，之后才能使用来宾配置。 可以通过门户或通过 PowerShell 注册。 如果来宾配置策略的分配是通过门户完成的, 则会自动注册资源提供程序。
+必须注册资源提供程序，之后才能使用来宾配置。 可以通过门户或通过 PowerShell 注册。 如果来宾配置策略的分配是通过门户完成的，则会自动注册资源提供程序。
 
 ### <a name="registration---portal"></a>注册 - 门户
 
@@ -59,7 +57,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="validation-tools"></a>验证工具
 
-在计算机内部, 来宾配置客户端使用本地工具来运行审核。
+在计算机内部，来宾配置客户端使用本地工具来运行审核。
 
 下表显示了每个受支持操作系统上本地工具的列表：
 
@@ -70,7 +68,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ### <a name="validation-frequency"></a>验证频率
 
-来宾配置客户端每 5 分钟检查一次新内容。 在收到来宾分配后，将按 15 分钟的时间间隔检查设置。 在审核完成后，结果会立即发送到来宾配置资源提供程序。 当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。 这会导致 Azure Policy 评估 Azure 资源管理器属性。 按需 Azure 策略评估检索来宾配置资源提供程序中的最新值。 但是, 它不会触发对计算机内配置的新审核。
+来宾配置客户端每 5 分钟检查一次新内容。 在收到来宾分配后，将按 15 分钟的时间间隔检查设置。 在审核完成后，结果会立即发送到来宾配置资源提供程序。 当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。 这会导致 Azure Policy 评估 Azure 资源管理器属性。 按需 Azure 策略评估检索来宾配置资源提供程序中的最新值。 但是，它不会触发对计算机内配置的新审核。
 
 ## <a name="supported-client-types"></a>支持的客户端类型
 
@@ -87,7 +85,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 |Suse|SLES|12 SP3|
 
 > [!IMPORTANT]
-> 来宾配置可以审核运行受支持的操作系统的节点。 如果你想要审核使用自定义映像的虚拟机, 则需要复制**DeployIfNotExists**定义, 并修改**If**部分以包括你的映像属性。
+> 来宾配置可以审核运行受支持的操作系统的节点。 如果你想要审核使用自定义映像的虚拟机，则需要复制**DeployIfNotExists**定义，并修改**If**部分以包括你的映像属性。
 
 ### <a name="unsupported-client-types"></a>不支持的客户端类型
 
@@ -95,49 +93,49 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="guest-configuration-extension-network-requirements"></a>来宾配置扩展网络要求
 
-要与 Azure 中的来宾配置资源提供程序通信, 计算机需要对端口**443**上的 Azure 数据中心的出站访问。 如果你使用的是 Azure 中的专用虚拟网络, 并且不允许出站流量, 则必须使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置例外。 目前, Azure 策略来宾配置不存在服务标记。
+要与 Azure 中的来宾配置资源提供程序通信，计算机需要对端口**443**上的 Azure 数据中心的出站访问。 如果你使用的是 Azure 中的专用虚拟网络，并且不允许出站流量，则必须使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置例外。 目前，Azure 策略来宾配置不存在服务标记。
 
-对于 IP 地址列表, 你可以下载[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。 只需允许对部署了 Vm 的区域中的 Ip 进行出站访问。
+对于 IP 地址列表，你可以下载[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。 只需允许对部署了 Vm 的区域中的 Ip 进行出站访问。
 
 > [!NOTE]
 > Azure 数据中心 IP 地址 XML 文件列出了 Microsoft Azure 数据中心使用的 IP 地址范围。 文件中包含计算、SQL 和存储范围。 每周都将发布更新的文件。 该文件反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 建议每周下载新的 XML 文件。 然后，更新网站以正确地标识 Azure 中运行的服务。 Azure ExpressRoute 用户应注意，此文件过去经常在每个月的第一周更新 Azure 空间的边界网关协议 (BGP) 播发。
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 
-每个按来宾配置审核运行都需要两个策略定义: **DeployIfNotExists**定义和**AuditIfNotExists**定义。 **DeployIfNotExists**定义用于通过来宾配置代理和其他组件来准备计算机以支持[验证工具](#validation-tools)。
+每个按来宾配置审核运行都需要两个策略定义： **DeployIfNotExists**定义和**AuditIfNotExists**定义。 **DeployIfNotExists**定义用于通过来宾配置代理和其他组件来准备计算机以支持[验证工具](#validation-tools)。
 
 “DeployIfNotExists”策略定义验证并更正以下项目：
 
-- 验证是否已为计算机分配了要评估的配置。 如果当前没有分配, 请通过以下方法获取分配并准备计算机:
+- 验证是否已为计算机分配了要评估的配置。 如果当前没有分配，请通过以下方法获取分配并准备计算机：
   - 使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)向计算机进行身份验证
   - 安装 Microsoft.GuestConfiguration 扩展的最新版本
   - 安装[验证工具](#validation-tools)和依赖项（如果需要）
 
-如果**DeployIfNotExists**分配不符合, 则可以使用[补救任务](../how-to/remediate-resources.md#create-a-remediation-task)。
+如果**DeployIfNotExists**分配不符合，则可以使用[补救任务](../how-to/remediate-resources.md#create-a-remediation-task)。
 
-**DeployIfNotExists**分配符合要求后, **AuditIfNotExists**策略分配将使用本地验证工具来确定配置分配是符合还是不符合。
+**DeployIfNotExists**分配符合要求后， **AuditIfNotExists**策略分配将使用本地验证工具来确定配置分配是符合还是不符合。
 验证工具向来宾配置客户端提供结果。 客户端将结果转发给来宾扩展，使其可通过来宾配置资源提供程序使用。
 
 Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“符合性”节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/getting-compliance-data.md)。
 
 > [!NOTE]
 > **AuditIfNotExists**策略需要**DeployIfNotExists**策略才能返回结果。
-> 如果没有**DeployIfNotExists**, 则**AuditIfNotExists**策略会将 "0 个 0" 资源显示为状态。
+> 如果没有**DeployIfNotExists**，则**AuditIfNotExists**策略会将 "0 个 0" 资源显示为状态。
 
 来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：*Linux 和 Windows 计算机*内的审核密码安全设置包含18个策略。 对于 Windows 有六个 DeployIfNotExists 和 AuditIfNotExists 对，对于 Linux 有三个对。 在每种情况下，都可使用定义内的逻辑验证仅基于[策略规则](definition-structure.md#policy-rule)定义评估目标操作系统。
 
 ### <a name="multiple-assignments"></a>多个分配
 
-来宾配置策略目前仅支持对每台计算机分配相同的来宾分配, 即使策略分配使用不同的参数也是如此。
+来宾配置策略目前仅支持对每台计算机分配相同的来宾分配，即使策略分配使用不同的参数也是如此。
 
 ## <a name="built-in-resource-modules"></a>内置资源模块
 
-安装来宾配置扩展时, "GuestConfiguration" PowerShell 模块包含在最新版本的 DSC 资源模块中。 可以使用模块页[GuestConfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/)中的 "手动下载" 链接从 PowerShell 库下载此模块。
+安装来宾配置扩展时，"GuestConfiguration" PowerShell 模块包含在最新版本的 DSC 资源模块中。 可以使用模块页[GuestConfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/)中的 "手动下载" 链接从 PowerShell 库下载此模块。
 可以将 "nupkg" 文件格式重命名为 ".zip" 以解压缩和查看。
 
 ## <a name="client-log-files"></a>客户端日志文件
 
-来宾配置扩展将日志文件写入以下位置:
+来宾配置扩展将日志文件写入以下位置：
 
 Windows：`C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
 
@@ -145,9 +143,35 @@ Linux：`/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<ve
 
 其中`<version>`指的是当前版本号。
 
+### <a name="collecting-logs-remotely"></a>远程收集日志
+
+对来宾配置配置或模块进行故障排除的第一步应该是`Test-GuestConfigurationPackage`按照[测试来宾配置包](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)中的步骤使用 cmdlet。  如果未成功，则收集客户端日志有助于诊断问题。
+
+#### <a name="windows"></a>Windows
+
+如果要使用 Azure VM 运行命令功能从 Windows 计算机的日志文件中捕获信息，则可以使用以下 PowerShell 脚本示例。 有关从 Azure 门户或使用 Azure PowerShell 运行脚本的详细信息，请参阅[使用 Run 命令在 WINDOWS VM 中运行 PowerShell 脚本](../../../virtual-machines/windows/run-command.md)。
+
+```powershell
+$linesToIncludeBeforeMatch = 0
+$linesToIncludeAfterMatch = 10
+$latestVersion = Get-ChildItem -Path 'C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\' | ForEach-Object {$_.FullName} | Sort-Object -Descending | Select-Object -First 1
+Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCManagedEngine' -CaseSensitive -Context $linesToIncludeBeforeMatch,$linesToIncludeAfterMatch | Select-Object -Last 10
+```
+
+#### <a name="linux"></a>Linux
+
+如果你想要使用 Azure VM 运行命令功能从 Linux 计算机的日志文件中捕获信息，以下示例 Bash 脚本可能会很有帮助。 有关从 Azure 门户或使用 Azure CLI 运行脚本的详细信息，请参阅[在 LINUX VM 中使用 Run 命令运行 shell 脚本](../../../virtual-machines/linux/run-command.md)
+
+```Bash
+linesToIncludeBeforeMatch=0
+linesToIncludeAfterMatch=10
+latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfiguration.ConfigurationforLinux-*" -maxdepth 1 -print | sort -z | sed -n 1p)
+egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
+```
+
 ## <a name="guest-configuration-samples"></a>来宾配置示例
 
-策略来宾配置的示例可在以下位置找到:
+策略来宾配置的示例可在以下位置找到：
 
 - [示例索引-来宾配置](../samples/index.md#guest-configuration)
 - [Azure 策略示例 GitHub](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)存储库。
