@@ -7,16 +7,16 @@ ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 869be11639fd4e957a991cadb44f2714875ddf7e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d9aadc477c3f39cfbb108d2f3eece0c9e0b06264
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232723"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239143"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
-Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../../management-groups/overview.md)中的资源提供的见解和控制度。 可通过许多不同的方式运用这种控制，例如，防止在错误的位置创建资源、强制实施常见且一致的标记用法，或者审核相应配置和设置的现有资源。 在所有情况下, 数据均由 Azure 策略生成, 使你能够了解环境的符合性状态。
+Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../../management-groups/overview.md)中的资源提供的见解和控制度。 可通过许多不同的方式运用这种控制，例如，防止在错误的位置创建资源、强制实施常见且一致的标记用法，或者审核相应配置和设置的现有资源。 在所有情况下，数据均由 Azure 策略生成，使你能够了解环境的符合性状态。
 
 可通过多种方式访问策略和计划分配生成的符合性信息：
 
@@ -28,11 +28,9 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 > [!WARNING]
 > 如果符合性状态被报告为“未注册”，请验证是否已注册 **Microsoft.PolicyInsights** 资源提供程序，并验证用户是否具有适当的基于角色的访问控制 (RBAC) 权限，如 [Azure Policy 中的 RBAC](../overview.md#rbac-permissions-in-azure-policy) 所述。
 
-[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
-
 ## <a name="evaluation-triggers"></a>评估触发器
 
-已完成的评估周期的结果通过 `PolicyStates` 和 `PolicyEvents` 操作在 `Microsoft.PolicyInsights` 资源提供程序中获取。 有关 Azure Policy Insights REST API 操作的详细信息, 请参阅[Azure Policy insights](/rest/api/policy-insights/)。
+已完成的评估周期的结果通过 `PolicyStates` 和 `PolicyEvents` 操作在 `Microsoft.PolicyInsights` 资源提供程序中获取。 有关 Azure Policy Insights REST API 操作的详细信息，请参阅[Azure Policy insights](/rest/api/policy-insights/)。
 
 已分配的策略和计划的评估会在各种事件后发生：
 
@@ -144,11 +142,11 @@ Azure 门户展示了一个图形体验用于可视化和了解环境中的符�
 
 <a name="change-history-preview"></a>
 
-当资源被确定为**不符合**时, 有许多可能的原因。 若要确定资源不**符合**的原因或要确定更改的原因, 请参阅[确定不符合性](./determine-non-compliance.md)。
+当资源被确定为**不符合**时，有许多可能的原因。 若要确定资源不**符合**的原因或要确定更改的原因，请参阅[确定不符合性](./determine-non-compliance.md)。
 
 ## <a name="command-line"></a>命令行
 
-可以使用 REST API（包括使用 [ARMClient](https://github.com/projectkudu/ARMClient)）或 Azure PowerShell 来检索门户中提供的相同信息。 有关 REST API 的完整详细信息, 请参阅[Azure 策略见解](/rest/api/policy-insights/)参考。 REST API 参考页上针对每个操作提供了一个绿色的“试用”按钮，使用该按钮可在浏览器中直接试用该操作。
+可以使用 REST API（包括使用 [ARMClient](https://github.com/projectkudu/ARMClient)）或 Azure PowerShell 来检索门户中提供的相同信息。 有关 REST API 的完整详细信息，请参阅[Azure 策略见解](/rest/api/policy-insights/)参考。 REST API 参考页上针对每个操作提供了一个绿色的“试用”按钮，使用该按钮可在浏览器中直接试用该操作。
 
 若要在 Azure PowerShell 中使用以下示例，请使用此示例代码构造身份验证令牌。 然后，将示例中的 $restUri 替换为字符串，以检索随后可分析的 JSON 对象。
 
@@ -177,7 +175,7 @@ $response
 
 ### <a name="summarize-results"></a>汇总结果
 
-使用 REST API 时，可以按容器、定义或分配进行汇总。 下面是使用 Azure 策略见解的[订阅汇总](/rest/api/policy-insights/policystates/summarizeforsubscription)的订阅级别的汇总示例:
+使用 REST API 时，可以按容器、定义或分配进行汇总。 下面是使用 Azure 策略见解的[订阅汇总](/rest/api/policy-insights/policystates/summarizeforsubscription)的订阅级别的汇总示例：
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
@@ -287,7 +285,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
-有关查询策略事件的详细信息, 请参阅[Azure 策略事件](/rest/api/policy-insights/policyevents)参考文章。
+有关查询策略事件的详细信息，请参阅[Azure 策略事件](/rest/api/policy-insights/policyevents)参考文章。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -415,7 +413,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-如果你具有与`AzureActivity`订阅相关联的[Activity Log Analytics 解决方案](../../../azure-monitor/platform/activity-log-collect.md)的`AzureActivity` [Log Analytics 工作区](../../../log-analytics/log-analytics-overview.md), 则还可以使用简单的 Kusto 查询和数据表. 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
+如果你具有与`AzureActivity`订阅相关联的[Activity Log Analytics 解决方案](../../../azure-monitor/platform/activity-log-collect.md)的`AzureActivity` [Log Analytics 工作区](../../../log-analytics/log-analytics-overview.md)，则还可以使用简单的 Kusto 查询和数据表. 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
 
 
 ![使用 Azure Monitor 日志的 Azure 策略符合性](../media/getting-compliance-data/compliance-loganalytics.png)

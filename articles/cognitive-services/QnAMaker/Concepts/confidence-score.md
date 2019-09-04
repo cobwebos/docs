@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 48b38e88ea6d0d99a0734aa36716020ced6e3d78
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 14339a61e48866d51089db9a0008a3de982b1710
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193619"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277106"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的置信度分数
 如果用户查询的匹配依据为知识库，QnA Maker 会返回相关答案和置信度分数。 此分数指明了答案是给定用户查询的正确匹配答案的置信度。 
@@ -46,16 +46,16 @@ ms.locfileid: "70193619"
 |0|无匹配，因此未返回任何答案。|“服务费用是多少”|
 
 ## <a name="choose-a-score-threshold"></a>选择分数阈值
-上表指明了大多数知识库上应该会出现的分数。 不过, 由于每个 KB 都不同, 并且具有不同类型的词、意向和目标, 因此我们建议你测试并选择最适合你的阈值。 默认情况下, 阈值设置为 0, 以便返回所有可能的答案。 建议用于大多数 Kb 的阈值为**50**。
+上表指明了大多数知识库上应该会出现的分数。 不过，由于每个 KB 都不同，并且具有不同类型的词、意向和目标，因此我们建议你测试并选择最适合你的阈值。 默认情况下，阈值设置为0，以便返回所有可能的答案。 建议用于大多数 Kb 的阈值为**50**。
 
 选择阈值时，请务必平衡“准确度”和“覆盖率”，并根据自己的需求来调整阈值。
 
 - 如果“准确度”（或精准率）对方案更为重要，请提高阈值。 这样，每次返回的答案的置信度都会更高，且更有可能就是用户所要找的答案。 在这种情况下，最终可能会导致更多问题没有答案。 例如，如果将阈值设置为 70，可能会错过一些含糊不清的示例（例如，“什么是保存和定型？”）。
 
-- 如果“覆盖率”（或召回率）更为重要，且希望尽可能多地回答问题（即使答案与用户问题仅部分相关，也不例外），请降低阈值。 也就是说，可能会更多出现以下情况：答案并未回答用户实际查询，而是提供了其他一些相关答案。 *例如:* 如果你将阈值设置为**30**, 则可能会提供类似于 "可以在何处编辑我的 KB？" 的查询的答案。
+- 如果“覆盖率”（或召回率）更为重要，且希望尽可能多地回答问题（即使答案与用户问题仅部分相关，也不例外），请降低阈值。 也就是说，可能会更多出现以下情况：答案并未回答用户实际查询，而是提供了其他一些相关答案。 *例如：* 如果你将阈值设置为**30**，则可能会提供类似于 "可以在何处编辑我的 KB？" 的查询的答案。
 
 > [!NOTE]
-> 较新版本的 QnA Maker 包括对评分逻辑的改进，并可能影响你的阈值。 每次更新服务时，请务必测试阈值并在必要时调整阈值。 可以在[此处](https://www.qnamaker.ai/UserSettings)查看 QnA 服务版本，并在[此处](../How-To/set-up-qnamaker-service-azure.md#get-latest-runtime-updates)了解如何获取最新更新。
+> 较新版本的 QnA Maker 包括对评分逻辑的改进，并可能影响你的阈值。 每次更新服务时，请务必测试阈值并在必要时调整阈值。 可以在[此处](https://www.qnamaker.ai/UserSettings)查看 QnA 服务版本，并在[此处](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)了解如何获取最新更新。
 
 ## <a name="set-threshold"></a>设置阈值 
 

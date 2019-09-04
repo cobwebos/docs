@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 65b6eb07a866db405af3e5bc609a540c36f148a8
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 84109cf04588a5de6fb3fd946a89b5dfee4baa1b
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186442"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259154"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>如何处理和提取认知搜索方案中的图像中的信息
 
@@ -34,16 +34,15 @@ ms.locfileid: "70186442"
 | 配置参数 | 描述 |
 |--------------------|-------------|
 | imageAction   | 如果在遇到嵌入图像或图像文件时无需执行任何操作，请将此项设置为 "none"。 <br/>设置为 "generateNormalizedImages" 会在文档破解过程中生成一系列规范化的图像。<br/>设置为“generateNormalizedImagePerPage”，以生成一系列规范化的图像，对于数据源中的 PDF 文件，每一页呈现为一个输出图像。  对于非 PDF 文件类型，该功能与“generateNormalizedImages”相同。<br/>对于任何不是“none”的选项，这些图像会在 *normalized_images* 字段中公开。 <br/>默认为 "none"。 将 "dataToExtract" 设置为 "contentAndMetadata" 时，此配置仅与 Blob 数据源相关。 <br/>将从给定文档中提取最多 1000 个图像。 如果在文档中有超过 1000 个图像，则将提取前 1000 个，并将生成警告。 |
-|  normalizedImageMaxWidth | 生成的规范化图像的最大宽度（以像素为单位）。 默认为 2000。|
-|  normalizedImageMaxHeight | 生成的规范化图像的最大高度（以像素为单位）。 默认为 2000。|
+|  normalizedImageMaxWidth | 生成的规范化图像的最大宽度（以像素为单位）。 默认为 2000。 允许的最大值为10000。 | 
+|  normalizedImageMaxHeight | 生成的规范化图像的最大高度（以像素为单位）。 默认为 2000。 允许的最大值为10000。|
 
 > [!NOTE]
 > 如果将 *imageAction* 属性设置为 "none" 之外的其他值，则只能将 *parsingMode* 属性设置为 "default"。  在索引器配置中，只能将这两个属性中的一个设置为非默认值。
 
 将 **parsingMode** 参数设置为 `json`（将每个 Blob 作为单个文档进行索引编制）或 `jsonArray`（如果 Blob 包含 JSON 数组，且需要将数组的每个元素视为单独的文档）。
 
-将规范化图像的最大宽度和高度默认设置为 2000 像素是考虑到 [OCR 技术](cognitive-search-skill-ocr.md)所能够支持的最大大小以及[图像分析技术](cognitive-search-skill-image-analysis.md)。 如果提高最大限制，则在处理较大的图像时可能会失败。
-
+将规范化图像的最大宽度和高度默认设置为 2000 像素是考虑到 [OCR 技术](cognitive-search-skill-ocr.md)所能够支持的最大大小以及[图像分析技术](cognitive-search-skill-image-analysis.md)。 对于非英语语言， [OCR 技能](cognitive-search-skill-ocr.md)支持最大宽度和高度4200，为英语提供10000。  如果增加最大限制，则根据技能组合的定义和文档的语言，处理可能会对较大的图像失败。 
 
 可以指定[索引器定义](https://docs.microsoft.com/rest/api/searchservice/create-indexer)中所述的 imageAction，如下所示：
 
@@ -72,7 +71,7 @@ ms.locfileid: "70186442"
 | originalHeight      | 图像在规范化之前的原始高度。 |
 | rotationFromOriginal |  在创建规范化图像过程中进行的逆时针旋转（以度为单位）。 值的范围为 0 度到 360 度。 此步骤从图像读取由照相机或扫描仪生成的元数据。 通常为 90 度的倍数。 |
 | contentOffset | 从其提取图像的内容字段中的字符偏移。 此字段仅适用于包含嵌入图像的文件。 |
-| pageNumber | 如果图像是从 PDF 提取或呈现的, 则此字段包含从1开始提取或呈现的 PDF 中的页码。  如果图像不是来自 PDF, 则此字段将为0。  |
+| pageNumber | 如果图像是从 PDF 提取或呈现的，则此字段包含从1开始提取或呈现的 PDF 中的页码。  如果图像不是来自 PDF，则此字段将为0。  |
 
  *normalized_images* 的示例值：
 ```json

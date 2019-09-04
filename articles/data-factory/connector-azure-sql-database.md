@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a8ab2039cde11876d853b411ca09a51e96e2ca0a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: c9192a6d6b8cf122092963f2352af8bb6e5a6c21
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233043"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275920"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
-> [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本:"]
+> [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本："]
 > * [版本 1](v1/data-factory-azure-sql-connector.md)
 > * [当前版本](connector-azure-sql-database.md)
 
@@ -234,7 +234,9 @@ Azure SQL 数据库链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlTable。 | 是 |
-| tableName | 链接服务引用的 Azure SQL 数据库实例中的表名称或视图名称。 | 对于源为“No”，对于接收器为“Yes” |
+| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| tableName | 具有架构的表/视图的名称。 支持此属性是为了向后兼容。 对于新工作负荷， `schema`请`table`使用和。 | 对于源为“No”，对于接收器为“Yes” |
 
 #### <a name="dataset-properties-example"></a>数据集属性示例
 
@@ -250,7 +252,8 @@ Azure SQL 数据库链接服务支持以下属性：
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }
@@ -262,18 +265,18 @@ Azure SQL 数据库链接服务支持以下属性：
 
 ### <a name="azure-sql-database-as-the-source"></a>Azure SQL 数据库作为源
 
-若要从 Azure SQL 数据库复制数据, 复制活动**源**部分支持以下属性:
+若要从 Azure SQL 数据库复制数据，复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的**type**属性必须设置为**AzureSqlSource**。 对于向后兼容性, 仍支持 "SqlSource" 类型。 | 是 |
+| type | 复制活动源的**type**属性必须设置为**AzureSqlSource**。 对于向后兼容性，仍支持 "SqlSource" 类型。 | 是 |
 | sqlReaderQuery | 此属性使用自定义 SQL 查询来读取数据。 例如 `select * from MyTable`。 | 否 |
 | sqlReaderStoredProcedureName | 从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 | 否 |
 | storedProcedureParameters | 存储过程的参数。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否 |
 
 **需要注意的要点：**
 
-- 如果为**AzureSqlSource**指定**sqlReaderQuery** , 则复制活动对 Azure SQL 数据库源运行此查询以获取数据。 也可通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程，前提是存储过程使用参数。
+- 如果为**AzureSqlSource**指定**sqlReaderQuery** ，则复制活动对 Azure SQL 数据库源运行此查询以获取数据。 也可通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程，前提是存储过程使用参数。
 - 如果不指定 **sqlReaderQuery** 或 **sqlReaderStoredProcedureName**，则数据集 JSON 的“structure”节中定义的列用于构建查询。 查询 `select column1, column2 from mytable` 针对 Azure SQL 数据库运行。 如果数据集定义没有“structure”，则会从表中选择所有列。
 
 #### <a name="sql-query-example"></a>SQL 查询示例
@@ -368,11 +371,11 @@ GO
 > [!TIP]
 > 若要详细了解支持的写入行为、配置和最佳做法，请参阅[有关将数据载入 Azure SQL 数据库的最佳做法](#best-practice-for-loading-data-into-azure-sql-database)。
 
-若要将数据复制到 Azure SQL 数据库, 请在复制活动**接收器**部分中支持以下属性:
+若要将数据复制到 Azure SQL 数据库，请在复制活动**接收器**部分中支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的**type**属性必须设置为**AzureSqlSink**。 对于向后兼容性, 仍支持 "SqlSink" 类型。 | 是 |
+| type | 复制活动接收器的**type**属性必须设置为**AzureSqlSink**。 对于向后兼容性，仍支持 "SqlSink" 类型。 | 是 |
 | writeBatchSize | 每批要插入到 SQL 表中的行数。<br/> 允许的值为 **integer**（行数）。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。 | 否 |
 | writeBatchTimeout | 超时前等待批插入操作完成的时间。<br/> 允许的值为 **timespan**。 例如“00:30:00”（30 分钟）。 | 否 |
 | preCopyScript | 将数据写入到 Azure SQL 数据库之前，指定复制活动要运行的 SQL 查询。 每次运行复制仅调用该查询一次。 使用此属性清理预加载的数据。 | 否 |
@@ -380,7 +383,7 @@ GO
 | storedProcedureTableTypeParameterName |存储过程中指定的表类型的参数名称。  |否 |
 | sqlWriterTableType |要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |否 |
 | storedProcedureParameters |存储过程的参数。<br/>允许的值为名称和值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否 |
-| disableMetricsCollection | 数据工厂收集指标 (如 Azure SQL 数据库 Dtu), 以获取复制性能优化和建议。 如果你担心此行为, 请指定`true`将其关闭。 | 否（默认值为 `false`） |
+| disableMetricsCollection | 数据工厂收集指标（如 Azure SQL 数据库 Dtu），以获取复制性能优化和建议。 如果你担心此行为，请指定`true`将其关闭。 | 否（默认值为 `false`） |
 
 **示例 1：追加数据**
 
@@ -521,7 +524,7 @@ END
 
 当内置复制机制无法使用时，还可使用存储过程。 例如，在将源数据最终插入目标表之前应用额外的处理。 额外处理的示例包括合并列、查找其他值以及将数据插入多个表。
 
-以下示例演示如何使用存储过程在 Azure SQL 数据库数据库中的表内执行 upsert。 假设输入数据和接收器 **Marketing** 表各有三列：**ProfileID**、**State** 和 **Category**。 根据**配置文件 id**列执行 upsert, 并仅将其应用于名为 "ProductA" 的特定类别。
+以下示例演示如何使用存储过程在 Azure SQL 数据库数据库中的表内执行 upsert。 假设输入数据和接收器 **Marketing** 表各有三列：**ProfileID**、**State** 和 **Category**。 根据**配置文件 id**列执行 upsert，并仅将其应用于名为 "ProductA" 的特定类别。
 
 1. 在数据库中，使用与 **sqlWriterTableType** 相同的名称定义表类型。 表类型的架构与输入数据返回的架构相同。
 
@@ -550,7 +553,7 @@ END
     END
     ```
 
-3. 在 Azure 数据工厂中, 在复制活动中定义**SQL 接收器**部分, 如下所示:
+3. 在 Azure 数据工厂中，在复制活动中定义**SQL 接收器**部分，如下所示：
 
     ```json
     "sink": {

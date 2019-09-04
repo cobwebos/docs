@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9d8ae3a95262b1554e7e97fac8375a44743bf4df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb792034e49b0f8f663eb9ee968ea6fac1372373
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344659"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278609"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>执行数据科学任务：探索、建模和部署
 
 典型的数据科学任务包括数据探索、建模和部署。 本文介绍如何使用**交互式数据探索、分析和报告 (IDEAR)** 与**自动建模和报告 (AMAR)** 实用工具来完成多个常见数据科学任务，例如交互式数据探索、数据分析、报告和建模。 此外，还概述了用于通过如下所述的各种工具包和数据平台在生产环境中部署模型的选项：
 
-- [Azure 机器学习](../service/index.yml)
+- [Azure 机器学习](../index.yml)
 - [包含机器学习服务的 SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
@@ -73,7 +73,7 @@ YAML 文件用于指定：
 ### <a name="model-management"></a>模型管理
 生成多个模型后，往往需要配置一个系统来注册和管理这些模型。 通常，需要创建脚本或 API 的组合，以及后端数据库或版本控制系统。 可考虑用于这些管理任务的几个选项包括：
 
-1. [Azure 机器学习 - 模型管理服务](../service/index.yml)
+1. [Azure 机器学习 - 模型管理服务](../index.yml)
 2. [MIT 提供的 ModelDB](https://mitdbg.github.io/modeldb/) 
 3. [用作模型管理系统的 SQL-Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)

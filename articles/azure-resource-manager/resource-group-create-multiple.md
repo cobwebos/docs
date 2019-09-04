@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 09/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: dbacec6e8f91480996150e73f2a81dbcde67550b
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494790"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258896"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的资源、属性或变量迭代
 
@@ -43,13 +43,13 @@ ms.locfileid: "68494790"
 
 本文将更详细地介绍这两种用法。 有关教程，请参阅[教程：使用资源管理器模板创建多个资源实例](./resource-manager-tutorial-create-multiple-instances.md)。
 
-如需指定究竟是否部署资源，请参阅 [condition 元素](resource-group-authoring-templates.md#condition)。
+如需指定究竟是否部署资源，请参阅 [condition 元素](conditional-resource-deployment.md)。
 
 ## <a name="copy-limits"></a>复制限制
 
 若要指定迭代次数，请为 count 属性提供值。 count 不能超过 800。
 
-count 不能为负数。 如果使用 REST API 版本 **2019-05-10** 或更高版本部署模板，则可以将 count 设置为零。 更早版本的 REST API 不支持将 count 设为零。 目前，Azure CLI 或 PowerShell 不支持将 count 设为零，但在未来的版本中将添加该支持。
+count 不能为负数。 如果部署 Azure PowerShell 2.6 或更高版本的模板，或者 REST API 版本**2019-05-10**或更高版本，则可以将 count 设置为零。 PowerShell 和 REST API 的早期版本不支持计数为零。 目前，Azure CLI 不支持计数为零，但在未来的版本中将添加该支持。
 
 将[完整模式部署](deployment-modes.md)与复制一起使用时要小心。 如果以完整模式重新部署到资源组，则在解析复制循环后会删除模板中未指定的任何资源。
 
@@ -141,7 +141,7 @@ count 不能为负数。 如果使用 REST API 版本 **2019-05-10** 或更高�
 * storagefabrikam
 * storagecoho
 
-默认情况下，资源管理器将并行创建资源。 它不限制并行部署的资源数, 而不是模板中800资源的总限制。 不会保证它们的创建顺序。
+默认情况下，资源管理器将并行创建资源。 除了模板中 800 个资源的总限制外，它对并行部署的资源数量没有限制。 不会保证它们的创建顺序。
 
 但是，可能需要指定按顺序部署资源。 例如，在更新生产环境时，可能需要错开更新，使得任何一次仅更新一定数量。 若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将 `batchSize` 设置为一次要部署的实例数量。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
 

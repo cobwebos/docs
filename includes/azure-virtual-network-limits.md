@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: e55b191e937b6c9f8183b3878b264eb50401b3f1
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a37280fddf34221a9d08501ef55c6b069cd877a4
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903966"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242601"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>网络限制-Azure 资源管理器以下限制仅适用于通过**Azure 资源管理器**每个订阅的每个区域管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "69903966"
 | --- | --- | --- |
 | 公共 IP 地址数 - 动态 | 基本版为 1,000。 |联系支持人员。 |
 | 公共 IP 地址数 - 静态 | 基本版为 1,000。 |联系支持人员。 |
-| 公共 IP 地址数 - 静态 | 标准版为 200。|联系支持人员。 |
+| 公共 IP 地址数 - 静态 | 标准为1000。|联系支持人员。 |
 | 公共 IP 前缀长度 | /28 | 联系支持人员。 |
 
 #### <a name="load-balancer"></a>负载均衡器限制
@@ -65,11 +65,11 @@ ms.locfileid: "69903966"
 | 每个 IP 配置的规则数 | 299 |
 | 每个 NIC 的规则数 | 300 |
 | 前端 IP 配置，基本 | 200 |
-| 前端 IP 配置, 标准 | 600 |
+| 前端 IP 配置，标准 | 600 |
 | 后端池，基本 | 100，单个可用性集 |
-| 后端池, 标准 | 1000, 单一虚拟网络 |
-| 每个负载均衡器的后端资源, 标准<sup>1</sup> | 150 |
-| 高可用性端口, 标准版 | 每个内部前端1个 |
+| 后端池，标准 | 1000，单一虚拟网络 |
+| 每个负载均衡器的后端资源，标准<sup>1</sup> | 150 |
+| 高可用性端口，标准版 | 每个内部前端1个 |
 
 <sup>1</sup>限制是最多 150 种资源，采用独立虚拟机资源、可用性集资源和虚拟机规模集资源的任意组合。
 

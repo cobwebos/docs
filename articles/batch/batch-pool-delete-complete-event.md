@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 3ad48fdba298a10d94a32e31e432c0c88b35b658
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9bf50bd19ca3f4316c4c2ddbcdd3333745ebefd7
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094841"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258562"
 ---
 # <a name="pool-delete-complete-event"></a>池删除完成事件
 
@@ -34,9 +34,9 @@ ms.locfileid: "70094841"
 
 |元素|类型|说明|
 |-------------|----------|-----------|
-|id|String|池的 id。|
-|startTime|DateTime|池删除开始的时间。|
-|endTime|DateTime|池删除完成的时间。|
+|`id`|String|池的 ID。|
+|`startTime`|DateTime|池删除开始的时间。|
+|`endTime`|DateTime|池删除完成的时间。|
 
 ## <a name="remarks"></a>备注
 有关池调整大小操作的状态和错误代码的详细信息，请参阅[从帐户中删除池](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account)。

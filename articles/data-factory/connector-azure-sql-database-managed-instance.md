@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0cc7313531e92aa0f57b09a9252902848297bdbf
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: f664e0419396eaf60c037c2adfde70df0034cc5b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996661"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275995"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库托管实例复制数据
 
@@ -72,7 +72,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 ### <a name="sql-authentication"></a>SQL 身份验证
 
-**示例 1: 使用 SQL 身份验证**
+**示例1：使用 SQL 身份验证**
 
 ```json
 {
@@ -93,7 +93,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 }
 ```
 
-**示例 2: 在 Azure Key Vault 中使用带密码的 SQL 身份验证**
+**示例2：在 Azure Key Vault 中使用带密码的 SQL 身份验证**
 
 ```json
 {
@@ -134,13 +134,13 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
     - 应用程序密钥
     - 租户 ID
 
-3. 为 Azure 数据工厂托管标识[创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。 在 SQL Server Management Studio (SSMS) 中, 使用作为**sysadmin**的 SQL Server 帐户连接到托管实例。 在**master**数据库中, 运行以下 t-sql:
+3. 为 Azure 数据工厂托管标识[创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。 在 SQL Server Management Studio （SSMS）中，使用作为**sysadmin**的 SQL Server 帐户连接到托管实例。 在**master**数据库中，运行以下 t-sql：
 
     ```sql
     CREATE LOGIN [your application name] FROM EXTERNAL PROVIDER
     ```
 
-4. 为 Azure 数据工厂托管标识[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 从或连接到要复制数据的数据库, 运行以下 T-sql: 
+4. 为 Azure 数据工厂托管标识[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 从或连接到要复制数据的数据库，运行以下 T-sql： 
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER
@@ -154,7 +154,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 6. 在 Azure 数据工厂中配置 Azure SQL 数据库托管实例链接的服务。
 
-**示例: 使用服务主体身份验证**
+**示例：使用服务主体身份验证**
 
 ```json
 {
@@ -189,13 +189,13 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 1. 按照以下步骤为[你的托管实例预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)。
 
-2. 为 Azure 数据工厂托管标识[创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。 在 SQL Server Management Studio (SSMS) 中, 使用作为**sysadmin**的 SQL Server 帐户连接到托管实例。 在**master**数据库中, 运行以下 t-sql:
+2. 为 Azure 数据工厂托管标识[创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。 在 SQL Server Management Studio （SSMS）中，使用作为**sysadmin**的 SQL Server 帐户连接到托管实例。 在**master**数据库中，运行以下 t-sql：
 
     ```sql
     CREATE LOGIN [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-3. 为 Azure 数据工厂托管标识[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 从或连接到要复制数据的数据库, 运行以下 T-sql: 
+3. 为 Azure 数据工厂托管标识[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 从或连接到要复制数据的数据库，运行以下 T-sql： 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER
@@ -209,7 +209,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 5. 在 Azure 数据工厂中配置 Azure SQL 数据库托管实例链接的服务。
 
-**示例: 使用托管标识身份验证**
+**示例：使用托管标识身份验证**
 
 ```json
 {
@@ -239,7 +239,9 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为**AzureSqlMITable**。 | 是 |
-| tableName |此属性是链接服务引用的数据库实例中的表名称或视图名称。 | 对于源为“No”，对于接收器为“Yes” |
+| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| tableName | 具有架构的表/视图的名称。 支持此属性是为了向后兼容。 对于新工作负荷， `schema`请`table`使用和。 | 对于源为“No”，对于接收器为“Yes” |
 
 **示例**
 
@@ -255,7 +257,8 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }
@@ -267,7 +270,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 ### <a name="azure-sql-database-managed-instance-as-a-source"></a>将 Azure SQL 数据库托管实例作为源
 
-若要从 Azure SQL 数据库托管实例复制数据, 复制活动源部分支持以下属性:
+若要从 Azure SQL 数据库托管实例复制数据，复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -278,7 +281,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 **请注意以下几点：**
 
-- 如果为**SqlMISource**指定**sqlReaderQuery** , 则复制活动对托管实例源运行此查询以获取数据。 也可通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程，前提是存储过程使用参数。
+- 如果为**SqlMISource**指定**sqlReaderQuery** ，则复制活动对托管实例源运行此查询以获取数据。 也可通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程，前提是存储过程使用参数。
 - 如果不指定 **sqlReaderQuery** 或 **sqlReaderStoredProcedureName** 属性，则数据集 JSON 的“structure”节中定义的列用于构建查询。 查询 `select column1, column2 from mytable` 针对托管实例运行。 如果数据集定义没有“structure”，则会从表中选择所有列。
 
 示例：**使用 SQL 查询**
@@ -373,7 +376,7 @@ GO
 > [!TIP]
 > 若要详细了解支持的写入行为、配置和最佳做法，请参阅[将数据加载到 Azure SQL 数据库托管实例中的最佳做法](#best-practice-for-loading-data-into-azure-sql-database-managed-instance)。
 
-若要将数据复制到 Azure SQL 数据库托管实例, 请在复制活动接收器部分中支持以下属性:
+若要将数据复制到 Azure SQL 数据库托管实例，请在复制活动接收器部分中支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -525,7 +528,7 @@ END
 
 当内置复制机制无法使用时，还可使用存储过程。 例如，在将源数据最终插入目标表之前应用额外的处理。 额外处理的示例包括合并列、查找其他值以及将数据插入多个表。
 
-以下示例演示如何使用存储过程，在 SQL Server 数据库中的表内执行 upsert。 假设输入数据和接收器 **Marketing** 表各有三列：**ProfileID**、**State** 和 **Category**。 根据**配置文件 id**列执行 upsert, 并仅将其应用于名为 "ProductA" 的特定类别。
+以下示例演示如何使用存储过程，在 SQL Server 数据库中的表内执行 upsert。 假设输入数据和接收器 **Marketing** 表各有三列：**ProfileID**、**State** 和 **Category**。 根据**配置文件 id**列执行 upsert，并仅将其应用于名为 "ProductA" 的特定类别。
 
 1. 在数据库中，使用与 **sqlWriterTableType** 相同的名称定义表类型。 表类型的架构与输入数据返回的架构相同。
 
@@ -554,7 +557,7 @@ END
     END
     ```
 
-3. 在 Azure 数据工厂中, 在复制活动中定义**SQL MI 接收器**节, 如下所示:
+3. 在 Azure 数据工厂中，在复制活动中定义**SQL MI 接收器**节，如下所示：
 
     ```json
     "sink": {

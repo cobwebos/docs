@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 2bdec0c70e9f11ca40e0ff9e1aa87898c94e119c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: c774725d4a4db4f624cd3980041b2974dfc8ed28
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232991"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275550"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -32,6 +32,7 @@ ms.locfileid: "70232991"
 
 具体而言，此 DB2 连接器支持以下 IBM DB2 平台和版本，以及分布式关系数据库结构 (DRDA) SQL 访问管理器 (SQLAM) 版本 9、版本 10 和版本 11：
 
+* IBM DB2 for z/OS 12。1
 * IBM DB2 for z/OS 11.1
 * IBM DB2 for z/OS 10.1
 * IBM DB2 for i 7.3
@@ -99,14 +100,16 @@ DB2 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 DB2 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 DB2 数据集支持的属性列表。
 
-要从 DB2 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
+若要从 DB2 复制数据，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**RelationalTable** | 是 |
-| tableName | DB2 数据库中的表的名称。 | 否（如果指定了活动源中的“query”） |
+| type | 数据集的 type 属性必须设置为：**Db2Table** | 是 |
+| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
+| tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 将`schema` 和`table`用于新工作负荷。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -115,15 +118,18 @@ DB2 链接服务支持以下属性：
     "name": "DB2Dataset",
     "properties":
     {
-        "type": "RelationalTable",
+        "type": "Db2Table",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<DB2 linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+如果使用`RelationalTable`的是类型化的数据集，则仍支持原样，但建议使用新的数据集。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
@@ -131,11 +137,11 @@ DB2 链接服务支持以下属性：
 
 ### <a name="db2-as-source"></a>DB2 作为源
 
-要从 DB2 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动**source**部分支持以下属性：
+若要从 DB2 复制数据，复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动 source 的 type 属性必须设置为：**RelationalSource** | 是 |
+| type | 复制活动 source 的 type 属性必须设置为：**Db2Source** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
@@ -159,7 +165,7 @@ DB2 链接服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "Db2Source",
                 "query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""
             },
             "sink": {
@@ -169,6 +175,8 @@ DB2 链接服务支持以下属性：
     }
 ]
 ```
+
+如果使用`RelationalSource`的是类型化的源，则仍支持原样，但建议使用新的源。
 
 ## <a name="data-type-mapping-for-db2"></a>DB2 的数据类型映射
 

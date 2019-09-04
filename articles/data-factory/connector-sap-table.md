@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 94bdeebcecdf924468f022ac95867bd82df5a793
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 1d64a25fc60a1a1cbe1ed04f87a57556b7de0b88
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231321"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259023"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
 本文概述如何使用 Azure 数据工厂中的复制活动从 SAP 表复制数据。 有关详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
 
 >[!TIP]
->若要了解 ADF 全面支持 SAP 数据集成方案, 请参阅[使用 Azure 数据工厂的 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf), 并提供详细的简介、comparsion 和指南。
+>若要了解 ADF 全面支持 SAP 数据集成方案，请参阅[使用 Azure 数据工厂的 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，并提供详细的简介、comparsion 和指南。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -35,9 +35,9 @@ ms.locfileid: "70231321"
 - 在以下产品中从 SAP 表复制数据：
 
   - SAP ERP 中心组件 (SAP ECC) 7.01 或更高版本（包含在 2015 年之后发布的最新 SAP 支持包堆栈中）。
-  - SAP Business 仓库 (SAP BW) 版本7.01 或更高版本 (在2015之后发布的最新 SAP 支持包堆栈中)。
+  - SAP Business 仓库（SAP BW）版本7.01 或更高版本（在2015之后发布的最新 SAP 支持包堆栈中）。
   - SAP S/4HANA。
-  - SAP Business Suite 版本7.01 或更高版本中的其他产品 (在2015之后发布的最新 SAP 支持包堆栈中)。
+  - SAP Business Suite 版本7.01 或更高版本中的其他产品（在2015之后发布的最新 SAP 支持包堆栈中）。
 
 - 从 SAP 透明表、共用表、聚集表和视图复制数据。
 - 使用基本身份验证或安全网络通信 (SNC)（如果已配置 SNC）复制数据。
@@ -226,7 +226,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 <br/>
 >以 `partitionOption` 和 `partitionOnInt` 为例，每个分区中的行数的计算公式为：(处于 `partitionUpperBound` 与 `partitionLowerBound` 之间的总行数)/`maxPartitionsNumber`。<br/>
 <br/>
->若要并行加载数据分区以提高副本速度, 并行度由复制活动的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 例如, 如果将设置`parallelCopies`为 4, 则数据工厂会同时基于指定的分区选项和设置生成并运行四个查询, 每个查询将从 SAP 表中检索部分数据。 强烈建议您创建`maxPartitionsNumber` `parallelCopies`属性值的倍数。 将数据复制到基于文件的数据存储时, 还 recommanded 将文件夹作为多个文件写入 (仅指定文件夹名称), 在这种情况下, 性能比写入单个文件更好。
+>若要并行加载数据分区以提高副本速度，并行度由复制活动的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 例如，如果将设置`parallelCopies`为4，则数据工厂会同时基于指定的分区选项和设置生成并运行四个查询，每个查询将从 SAP 表中检索部分数据。 强烈建议您创建`maxPartitionsNumber` `parallelCopies`属性值的倍数。 将数据复制到基于文件的数据存储时，还 recommanded 将文件夹作为多个文件写入（仅指定文件夹名称），在这种情况下，性能比写入单个文件更好。
 
 在 `rfcTableOptions` 中，可以使用以下常用 SAP 查询运算符来筛选行：
 

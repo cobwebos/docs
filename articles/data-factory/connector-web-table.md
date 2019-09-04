@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 09de2919b22ebb088b23c1ab59f60d182657a2f1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0ee573f26f717c0ed8ad36f1a06fe557d423e3c1
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720413"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274714"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
-> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-web-table-connector.md)
 > * [当前版本](connector-web-table.md)
 
@@ -38,11 +38,11 @@ ms.locfileid: "68720413"
 
 具体而言，此 Web 表连接器支持**从 HTML 页提取表内容**。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要使用此 Web 表连接器，需要设置自托管集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -80,7 +80,7 @@ Web 表链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Web 表数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Web 表数据集支持的属性列表。
 
 要从 Web 表复制数据，请将数据集的 type 属性设置为“WebTable”。 支持以下属性：
 

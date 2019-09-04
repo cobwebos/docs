@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 09/04/2018
 ms.author: jingwang
-ms.openlocfilehash: 9e1dde57dc1903e87704bd55fb0b942b7cc349e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 68584e3eeeb7363818b534065ed4cbd7e0d937a9
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61261797"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276215"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -36,7 +36,7 @@ ms.locfileid: "61261797"
 > [!TIP]
 > 若要在从 Redshift 复制大量数据时获得最佳性能，请考虑通过 Amazon S3 使用内置的 Redshift UNLOAD。 有关详细信息，请参阅[使用 UNLOAD 从Amazon Redshift 复制数据](#use-unload-to-copy-data-from-amazon-redshift)部分。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果使用[自承载集成运行时](create-self-hosted-integration-runtime.md)将数据复制到本地数据存储，请授权集成运行时（使用计算机的 IP 地址）对 Amazon Redshift 群集的访问权限。 有关说明，请参阅[授予对群集的访问权限](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)。
 * 如果要将数据复制到 Azure 数据存储，请参阅 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)，了解 Azure 数据中心使用的计算 IP 地址和 SQL 范围。
@@ -54,7 +54,7 @@ Amazon Redshift 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为：**AmazonRedshift** | 是 |
-| server |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
+| 服务器 |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
 | port |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否，默认值为 5439 |
 | database |Amazon Redshift 数据库名称。 |是 |
 | username |有权访问数据库的用户的名称。 |是 |
@@ -89,14 +89,16 @@ Amazon Redshift 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Amazon Redshift 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Amazon Redshift 数据集支持的属性列表。
 
-要从 Amazon Redshift 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
+若要从 Amazon Redshift 复制数据，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**RelationalTable** | 是 |
-| tableName | Amazon Redshift 中的表的名称。 | 否（如果指定了活动源中的“query”） |
+| type | 数据集的 type 属性必须设置为：**AmazonRedshiftTable** | 是 |
+| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
+| tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 将`schema` 和`table`用于新工作负荷。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -105,15 +107,18 @@ Amazon Redshift 链接的服务支持以下属性：
     "name": "AmazonRedshiftDataset",
     "properties":
     {
-        "type": "RelationalTable",
+        "type": "AmazonRedshiftTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Amazon Redshift linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+如果使用`RelationalTable`的是类型化的数据集，则仍支持原样，但建议使用新的数据集。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
@@ -121,7 +126,7 @@ Amazon Redshift 链接的服务支持以下属性：
 
 ### <a name="amazon-redshift-as-source"></a>作为源的 Amazon Redshift
 
-要从 Amazon Redshift 复制数据，请将复制活动中的源类型设置为“AmazonRedshiftSource”。 复制活动源部分支持以下属性：
+要从 Amazon Redshift 复制数据，请将复制活动中的源类型设置为“AmazonRedshiftSource”。 复制活动**source**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

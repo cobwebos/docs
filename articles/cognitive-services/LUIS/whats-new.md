@@ -1,5 +1,5 @@
 ---
-title: 新增功能-语言理解 (LUIS)
+title: 新增功能-语言理解（LUIS）
 titleSuffix: Azure Cognitive Services
 description: 本文包含有关语言理解的新闻。
 author: diberry
@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: a7f64a07378b5ef0085fe77018d6b202984bc1a3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: b29fdf4e5b3f2719865820695f659df7e75e19b5
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945828"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256428"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
@@ -24,12 +24,18 @@ ms.locfileid: "68945828"
 
 ## <a name="release-notes"></a>发行说明 
 
+### <a name="september-3-2019"></a>2019年9月3日
+
+* Azure 创作资源-[立即迁移](luis-migration-authoring.md)。
+* 预构建实体的土耳其语支持
+* 意大利语对 datetimeV2 的支持
+
 ### <a name="july-23-2019"></a>2019年7月23日
 
 * 将[识别器文本](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3)更新为1.2。3
     * 意大利语的年龄、温度、维度和币种识别器。
-    * 为了正确计算基于感恩节的日期, 可以改进英语的假日识别。
-    * 法语日期时间的改进, 可减少非日期和非时间实体的误报。
+    * 为了正确计算基于感恩节的日期，可以改进英语的假日识别。
+    * 法语日期时间的改进，可减少非日期和非时间实体的误报。
     * 支持在英文 DateRange 中提供日历/学校/财政年度和首字母缩写词。
     * 改进了中文和日语的 PhoneNumber 识别。
     * 改进了对英语 NumberRange 的支持。

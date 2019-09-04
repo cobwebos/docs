@@ -8,15 +8,15 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 30bd7c68ae1c88aba288b515d0ec32581f90b868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b33f0dec9e6ec685b19e01ce82cfe4adec88b575
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088188"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258605"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>使用应用服务和 Azure Functions 的 Key Vault 引用（预览版）
 
@@ -184,3 +184,27 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 
 > [!NOTE] 
 > 在此示例中，源代码管理部署取决于应用程序设置。 这通常是不安全的行为，因为应用设置更新是以异步方式表现的。 不过，由于我们已包括 `WEBSITE_ENABLE_SYNC_UPDATE_SITE` 应用程序设置，因此更新是同步的。 这意味着源代码管理部署只有在应用程序设置已完全更新后才会开始。
+
+## <a name="troubleshooting-key-vault-references"></a>Key Vault 引用疑难解答
+
+如果引用未正确解析，则将改用引用值。 这意味着，对于应用程序设置，将创建值具有`@Microsoft.KeyVault(...)`语法的环境变量。 这可能导致应用程序引发错误，因为它需要特定结构的机密。
+
+最常见的原因是， [Key Vault 访问策略](#granting-your-app-access-to-key-vault)的配置错误。 但是，这也可能是由于机密已不再存在，或者引用本身中存在语法错误。
+
+如果语法正确，则可以通过使用内置检测程序来检查当前的解决状态，来查看其他错误原因。
+
+### <a name="using-the-detector-for-app-service"></a>使用应用程序服务的检测程序
+
+1. 在门户中，导航到你的应用。
+2. 选择 "**诊断并解决 prolems**"。
+3. 选择 "**可用性和性能**"，然后选择 " **Web 应用"。**
+4. 查找**Key Vault 应用程序设置诊断**，并单击 "**详细信息**"。
+
+
+### <a name="using-the-detector-for-azure-functions"></a>使用探测器进行 Azure Functions
+
+1. 在门户中，导航到你的应用。
+2. 导航到 "**平台功能"。**
+3. 选择 "**诊断并解决 prolems**"。
+4. 选择 "**可用性和性能**"，然后选择 "**函数应用关闭" 或 "报告错误"。**
+5. 单击 " **Key Vault 应用程序设置**" "诊断"。

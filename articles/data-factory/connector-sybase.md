@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 55ff6d37f18f4ffa2f12e17bd33dd196b77f79af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab2035ec344e07d88e2ac4ffb19cb1b2361f2e92
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473053"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277468"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -35,7 +35,7 @@ ms.locfileid: "61473053"
 - SAP Sybase SQL 随处 (ASA) **版本 16 和更高版本**；不支持智能和 ASE。
 - 使用**Basic**或 **Windows** 身份验证复制数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 要使用此 Sybase 连接器，需要：
 
@@ -55,7 +55,7 @@ Sybase 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Sybase** | 是 |
-| server | Sybase 服务器的名称。 |是 |
+| 服务器 | Sybase 服务器的名称。 |是 |
 | database | Sybase 数据库的名称。 |是 |
 | authenticationType | 用于连接 Sybase 数据库的身份验证类型。<br/>允许值包括：**Basic** 和 **Windows**。 |是 |
 | username | 指定用于连接到 Sybase 数据库的用户名。 |是 |
@@ -89,13 +89,13 @@ Sybase 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Sybase 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Sybase 数据集支持的属性列表。
 
-要从 Sybase 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
+若要从 Sybase 复制数据，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**RelationalTable** | 是 |
+| type | 数据集的 type 属性必须设置为：**SybaseTable** | 是 |
 | tableName | Sybase 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -104,15 +104,18 @@ Sybase 链接的服务支持以下属性：
 {
     "name": "SybaseDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "SybaseTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Sybase linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+如果使用`RelationalTable`的是类型化的数据集，则仍支持原样，但建议使用新的数据集。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
@@ -120,11 +123,11 @@ Sybase 链接的服务支持以下属性：
 
 ### <a name="sybase-as-source"></a>以 Sybase 作为源
 
-要从 Sybase 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
+若要从 Sybase 复制数据，复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
+| type | 复制活动 source 的 type 属性必须设置为：**SybaseSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
@@ -148,7 +151,7 @@ Sybase 链接的服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SybaseSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -158,6 +161,8 @@ Sybase 链接的服务支持以下属性：
     }
 ]
 ```
+
+如果使用`RelationalSource`的是类型化的源，则仍支持原样，但建议使用新的源。
 
 ## <a name="data-type-mapping-for-sybase"></a>Sybase 的数据类型映射
 

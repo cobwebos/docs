@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 8c7c8faad70022ba985a4041fd578becbaf70078
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0bd97a6b1636d4b540c616958e5531c86362f597
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966870"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276624"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据
 
@@ -25,7 +25,7 @@ ms.locfileid: "68966870"
 
 此 REST 连接器、[HTTP 连接器](connector-http.md)和 [Web 表连接器](connector-web-table.md)之间的区别如下：
 
-- **REST 连接器**专门支持从 RESTful API 复制数据。 
+- **REST 连接器**专门支持从 RESTful api 复制数据; 
 - **HTTP 连接器**是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 在此 REST 连接器可用之前，可以偶尔使用 HTTP 连接器从 RESTful API 复制数据，这是受支持的，但 HTTP 连接器与 REST 连接器相比功能较少。
 - **Web 表连接器**用于从 HTML 网页中提取表内容。
 
@@ -61,7 +61,7 @@ REST 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **RestService**。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
-| enableServerCertificateValidation | 连接到终结点时是否要验证服务器端 SSL 证书。 | 否<br /> （默认值为 true） |
+| enableServerCertificateValidation | 连接到终结点时是否验证服务器端 SSL 证书。 | 否<br /> （默认值为 true） |
 | authenticationType | 用于连接到 REST 服务的身份验证类型。 允许的值为 **Anonymous**、**Basic**、**AadServicePrincipal** 和 **ManagedServiceIdentity**。 有关其他属性和示例，请参阅下面的相应部分。 | 是 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则此属性使用默认 Azure Integration Runtime。 |否 |
 
@@ -175,50 +175,23 @@ REST 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | 否 |
-| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post。 | 否 |
-| additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
-| requestBody | HTTP 请求的正文。 | 否 |
-| paginationRules | 用于撰写下一页请求的分页规则。 有关详细信息，请参阅[分页支持](#pagination-support)部分。 | 否 |
 
-**示例 1：对分页使用 Get 方法**
+如果在数据集中`requestMethod`设置`additionalHeaders` `requestBody` 、和`paginationRules` ，则仍支持原样，而建议使用活动源中的新模型。
+
+**示例：**
 
 ```json
 {
     "name": "RESTDataset",
     "properties": {
         "type": "RestResource",
+        "typeProperties": {
+            "relativeUrl": "<relative url>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<REST linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "additionalHeaders": {
-                "x-user-defined": "helloworld"
-            },
-            "paginationRules": {
-                "AbsoluteUrl": "$.paging.next"
-            }
-        }
-    }
-}
-```
-
-**示例 2：使用 Post 方法**
-
-```json
-{
-    "name": "RESTDataset",
-    "properties": {
-        "type": "RestResource",
-        "linkedServiceName": {
-            "referenceName": "<REST linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "requestMethod": "Post",
-            "requestBody": "<body for POST REST request>"
         }
     }
 }
@@ -232,15 +205,19 @@ REST 链接服务支持以下属性：
 
 ### <a name="rest-as-source"></a>REST 作为源
 
-复制活动源部分支持以下属性：
+复制活动**source**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **RestSource**。 | 是 |
+| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post。 | 否 |
+| additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
+| requestBody | HTTP 请求的正文。 | 否 |
+| paginationRules | 用于撰写下一页请求的分页规则。 有关详细信息，请参阅[分页支持](#pagination-support)部分。 | 否 |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。  | 否 |
 | requestInterval | 发送下一页请求之前等待的时间。 默认值为 **00:00:01** |  否 |
 
-**示例**
+**示例 1：对分页使用 Get 方法**
 
 ```json
 "activities":[
@@ -262,6 +239,46 @@ REST 链接服务支持以下属性：
         "typeProperties": {
             "source": {
                 "type": "RestSource",
+                "additionalHeaders": {
+                    "x-user-defined": "helloworld"
+                },
+                "paginationRules": {
+                    "AbsoluteUrl": "$.paging.next"
+                },
+                "httpRequestTimeout": "00:01:00"
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+**示例 2：使用 Post 方法**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromREST",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<REST input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "RestSource",
+                "requestMethod": "Post",
+                "requestBody": "<body for POST REST request>",
                 "httpRequestTimeout": "00:01:00"
             },
             "sink": {
@@ -274,7 +291,7 @@ REST 链接服务支持以下属性：
 
 ## <a name="pagination-support"></a>分页支持
 
-通常，REST API 将单个请求的响应有效负载大小限制在合理的数字以下；返回大量的数据时，它会将结果拆分到多个页面，并要求调用方发送连续的请求来获取下一页结果。 一般情况下，一个页面的请求是动态的，由上一页响应中返回的信息构成。
+通常情况下，REST API 会根据合理的数目限制单个请求的响应负载大小;在返回大量数据时，它会将结果拆分为多个页面，并要求调用方发送连续请求以获取结果的下一页。 一般情况下，一个页面的请求是动态的，由上一页响应中返回的信息构成。
 
 此泛型 REST 连接器支持以下分页模式： 
 
@@ -285,7 +302,7 @@ REST 链接服务支持以下属性：
 * 下一个请求的标头 = 当前响应正文中的属性值
 * 下一个请求的标头 = 当前响应标头中的标头值
 
-**分页规则**定义为包含一个或多个区分大小写的键值对的数据集中的字典。 该配置将用于从第二页开始生成请求。 当连接器收到 HTTP 状态代码 204（无内容），或者“paginationRules”中的任意 JSONPath 表达式返回 null 时，连接器将停止迭代。
+**分页规则**定义为包含一个或多个区分大小写的键/值对的数据集中的字典。 该配置将用于从第二页开始生成请求。 当连接器获取 HTTP 状态代码204（没有内容）或 "paginationRules" 中的任何 JSONPath 表达式返回 null 时，连接器将停止循环访问。
 
 分页规则中**支持的键**：
 
@@ -336,23 +353,19 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 }
 ```
 
-相应的 REST 数据集配置（尤其是 `paginationRules`）如下所示：
+对应的 REST 复制活动源配置特别`paginationRules`是：
 
 ```json
-{
-    "name": "MyFacebookAlbums",
-    "properties": {
-            "type": "RestResource",
-            "typeProperties": {
-                "relativeUrl": "albums",
-                "paginationRules": {
-                    "AbsoluteUrl": "$.paging.next"
-                }
-            },
-            "linkedServiceName": {
-                "referenceName": "MyRestService",
-                "type": "LinkedServiceReference"
-            }
+"typeProperties": {
+    "source": {
+        "type": "RestSource",
+        "paginationRules": {
+            "AbsoluteUrl": "$.paging.next"
+        },
+        ...
+    },
+    "sink": {
+        "type": "<sink type>"
     }
 }
 ```

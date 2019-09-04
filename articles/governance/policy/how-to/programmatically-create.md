@@ -7,20 +7,18 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: d158950749a9704276a666b58101bb5ad9dcbc42
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 1039073aaaf9d1a6b7bd9ac21a95c73871ce3ba3
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232643"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239028"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>以编程方式创建策略和查看符合性数据
 
 本文逐步讲解如何以编程方式创建和管理策略。 Azure 策略定义对资源强制实施不同的规则和影响。 强制实施可确保资源始终符合企业标准和服务级别协议。
 
 有关符合性的信息，请参阅[获取符合性数据](getting-compliance-data.md)。
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,7 +28,7 @@ ms.locfileid: "70232643"
 
 1. 将 Azure PowerShell 模块更新到最新版本。 有关详细信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 有关最新版本的详细信息，请参阅 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。
 
-1. 使用 Azure PowerShell 注册 Azure 策略见解资源提供程序, 验证订阅是否适用于资源提供程序。 若要注册资源提供程序，必须具有为资源提供程序运行注册操作所需的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
+1. 使用 Azure PowerShell 注册 Azure 策略见解资源提供程序，验证订阅是否适用于资源提供程序。 若要注册资源提供程序，必须具有为资源提供程序运行注册操作所需的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
 
    ```azurepowershell-interactive
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
@@ -147,7 +145,7 @@ ms.locfileid: "70232643"
 
    将前面的 {subscriptionId} 替换为你的订阅的 ID，或将 {managementGroupId} 替换为你的[管理组](../../management-groups/overview.md)的 ID。
 
-   有关查询结构的详细信息, 请参阅[Azure 策略定义–创建或更新](/rest/api/resources/policydefinitions/createorupdate)和[策略定义–在管理组中创建或更新](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   有关查询结构的详细信息，请参阅[Azure 策略定义–创建或更新](/rest/api/resources/policydefinitions/createorupdate)和[策略定义–在管理组中创建或更新](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
 
 使用以下过程创建策略分配，并在资源组级别分配策略定义。
 
@@ -229,7 +227,7 @@ ms.locfileid: "70232643"
    - 订阅 - `/subscriptions/{subID}`
    - 管理组 - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-可以使用 PowerShell 通过以下命令获取 Azure 策略定义 ID:
+可以使用 PowerShell 通过以下命令获取 Azure 策略定义 ID：
 
 ```azurecli-interactive
 az policy definition show --name 'Audit Storage Accounts with Open Public Networks'

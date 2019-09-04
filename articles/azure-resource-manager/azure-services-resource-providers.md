@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: b500a7b2c74acbd4e035e710f7e25f1aacd86126
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 3df481245db8d737032d1abf5906a2ffe949a2fe
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194863"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275711"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -102,9 +102,9 @@ ms.locfileid: "70194863"
 | Microsoft.LogAnalytics | [Azure Monitor](../azure-monitor/index.yml) |
 | Microsoft.Logic | [逻辑应用](../logic-apps/index.yml) |
 | Microsoft.MachineLearning | [机器学习工作室](../machine-learning/studio/index.yml) |
-| Microsoft.MachineLearningCompute | [机器学习服务](../machine-learning/service/index.yml) |
-| Microsoft.MachineLearningModelManagement | [机器学习服务](../machine-learning/service/index.yml) |
-| Microsoft.MachineLearningServices | [机器学习服务](../machine-learning/service/index.yml) |
+| Microsoft.MachineLearningCompute | [机器学习服务](../machine-learning/index.yml) |
+| Microsoft.MachineLearningModelManagement | [机器学习服务](../machine-learning/index.yml) |
+| Microsoft.MachineLearningServices | [机器学习服务](../machine-learning/index.yml) |
 | Microsoft.ManagedIdentity | [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/index.yml) |
 | Microsoft.ManagedLab | [Azure 实验室服务](../lab-services/index.yml) |
 | Microsoft.Management | [管理组](/azure/governance/management-groups/) |
@@ -150,7 +150,7 @@ ms.locfileid: "70194863"
 | microsoft.support | core |
 | Microsoft.TimeSeriesInsights | [时序见解](../time-series-insights/index.yml) |
 | microsoft.visualstudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
-| Microsoft.VMwareCloudSimple | [Azure VMware 解决方案 (按 CloudSimple)](/azure/vmware-cloudsimple/) |
+| Microsoft.VMwareCloudSimple | [Azure VMware 解决方案（按 CloudSimple）](/azure/vmware-cloudsimple/) |
 | Microsoft.Web | [应用服务](../app-service/index.yml)<br />[函数](../azure-functions/index.yml) |
 | Microsoft.WindowsDefenderATP | [Windows Defender 高级威胁防护](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection) |
 | Microsoft.WindowsIoT | [Windows 10 IoT Core Services](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |

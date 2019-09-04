@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099433"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242364"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -103,21 +103,21 @@ ms.locfileid: "70099433"
 | 每 5 分钟的内容吞吐量 | 600 MB | 可根据需要在多个应用中分发工作负荷。 |
 ||||
 
-### <a name="integration-service-environment-ise"></a>Integration service 环境 (ISE)
+### <a name="integration-service-environment-ise"></a>Integration service 环境（ISE）
 
-下面是高级 SKU 的吞吐量限制:
+下面是高级 SKU 的吞吐量限制：
 
 | 姓名 | 限制 | 说明 |
 |------|-------|-------|
-| 基本单位执行限制 | 当基础结构容量达到 80% 时系统受到限制 | 提供 ~ 4000 每分钟执行的操作, 即每月约160000000个操作执行 | |
-| 缩放单位执行限制 | 当基础结构容量达到 80% 时系统受到限制 | 每个缩放单位每分钟可提供 ~ 2000 的其他操作执行次数, 每月大约80000000个操作执行 | |
+| 基本单位执行限制 | 当基础结构容量达到 80% 时系统受到限制 | 提供 ~ 4000 每分钟执行的操作，即每月约160000000个操作执行 | |
+| 缩放单位执行限制 | 当基础结构容量达到 80% 时系统受到限制 | 每个缩放单位每分钟可提供 ~ 2000 的其他操作执行次数，每月大约80000000个操作执行 | |
 | 可添加的最大缩放单位 | 10 | |
 ||||
 
 若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
 
 > [!NOTE]
-> 由于此 SKU 没有任何服务级别协议 (SLA) 或扩展功能,[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)没有发布的限制。 仅将此 SKU 用于试验、开发和测试, 而不是生产或性能测试。
+> 由于此 SKU 没有任何服务级别协议（SLA）或扩展功能，[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)没有发布的限制。 仅将此 SKU 用于试验、开发和测试，而不是生产或性能测试。
 
 <a name="request-limits"></a>
 
@@ -178,27 +178,27 @@ ms.locfileid: "70099433"
 
 ## <a name="integration-account-limits"></a>集成帐户限制
 
-每个 Azure 订阅都有以下集成帐户限制:
+每个 Azure 订阅都有以下集成帐户限制：
 
 * 每个 Azure 区域一个[免费层](../logic-apps/logic-apps-pricing.md#integration-accounts)集成帐户
 
-* 1000集成帐户总数, 包括[开发人员和高级 sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)上任何[integration SERVICE 环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的集成帐户。
+* 1000集成帐户总数，包括[开发人员和高级 sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)上任何[integration SERVICE 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的集成帐户。
 
-* 每个 ISE, 无论是[开发人员还是高级版](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), 都限于5个集成帐户:
+* 每个 ISE，无论是[开发人员还是高级版](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)，都限于5个集成帐户：
 
   | ISE SKU | 集成帐户限制 |
   |---------|----------------------------|
-  | **高级** | 仅限5个[标准](../logic-apps/logic-apps-pricing.md#integration-accounts)帐户, 包括免费的一个标准帐户。 不允许免费帐户或基本帐户。 |
-  | **开发人员** | 5总计-[免费](../logic-apps/logic-apps-pricing.md#integration-accounts)(限制为1个帐户) 和[标准](../logic-apps/logic-apps-pricing.md#integration-accounts)组合或所有标准帐户。 不允许使用基本帐户。 使用[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)进行试验、开发和测试, 但不适用于生产或性能测试。 |
+  | **高级** | 仅限5个[标准](../logic-apps/logic-apps-pricing.md#integration-accounts)帐户，包括免费的一个标准帐户。 不允许免费帐户或基本帐户。 |
+  | **开发人员** | 5总计-[免费](../logic-apps/logic-apps-pricing.md#integration-accounts)（限制为1个帐户）和[标准](../logic-apps/logic-apps-pricing.md#integration-accounts)组合或所有标准帐户。 不允许使用基本帐户。 使用[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)进行试验、开发和测试，但不适用于生产或性能测试。 |
   |||
 
-额外费用适用于你在 ISE 附带的集成帐户之外添加的集成帐户。 若要了解 ISEs 的定价和计费工作原理, 请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率, 请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
+额外费用适用于你在 ISE 附带的集成帐户之外添加的集成帐户。 若要了解 ISEs 的定价和计费工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
 <a name="artifact-number-limits"></a>
 
 ### <a name="artifact-limits-per-integration-account"></a>每个集成帐户的项目限制
 
-下面是每个集成帐户层项目数的限制。 有关定价费率, 请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 若要了解集成帐户的定价和计费工作原理, 请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts)。
+下面是每个集成帐户层项目数的限制。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 若要了解集成帐户的定价和计费工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts)。
 
 > [!NOTE]
 > 仅将免费层用于探索应用场景，而非生产应用场景。 此层限制吞吐量和使用情况，并且不具有服务级别协议 (SLA)。
@@ -260,11 +260,9 @@ ms.locfileid: "70099433"
 
 同一区域中的所有逻辑应用都使用相同的 IP 地址范围。 若要支持逻辑应用通过 [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 和其他 HTTP 请求直接发出的调用，请根据这些逻辑应用所在的区域，使用逻辑应用服务所用的所有[入站](#inbound)和[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“入站”和“出站”标题下，并按区域进行排序。 
 
-若要支持 [Microsoft 托管的连接器](../connectors/apis-list.md)发出的调用，请根据逻辑应用所在的区域，使用这些连接器所用的所有[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“出站”标题下，并按区域进行排序。
+若要支持 [Microsoft 托管的连接器](../connectors/apis-list.md)发出的调用，请根据逻辑应用所在的区域，使用这些连接器所用的所有[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“出站”标题下，并按区域进行排序。 对于在 integration service 环境（ISE）中运行的逻辑应用，请确保[打开这些端口](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)。
 
-对于在 integration service 环境 (ISE) 中运行的逻辑应用, 请确保[打开这些端口](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)。
-
-对于 [Azure 政府](../azure-government/documentation-government-overview.md)和 [Azure 中国世纪互联](https://docs.microsoft.com/azure/china/)，连接器的保留 IP 地址目前不可用。
+对于自定义连接器、 [Azure 政府](../azure-government/documentation-government-overview.md)和[Azure 中国世纪互联](https://docs.microsoft.com/azure/china/)，固定或保留的 IP 地址不可用。
 
 > [!IMPORTANT]
 >

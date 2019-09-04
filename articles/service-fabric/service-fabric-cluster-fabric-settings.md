@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 096b6a13c85d04ebeb4f2ffae72acdd8629ae886
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: cdbb545e981e50e23bbbb011dc54577acf7974f7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191747"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241754"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -236,8 +236,8 @@ ms.locfileid: "70191747"
 |UserMaxStandByReplicaCount |Int，默认值为 1 |动态|系统为用户服务保留的默认最大备用副本数。 |
 |UserReplicaRestartWaitDuration |以秒为单位的时间，默认值为 60.0 \* 30 |动态|指定以秒为单位的时间范围。 当持久化副本不可用时，Windows Fabric 在创建新的替换副本（需要状态的副本）前，会等待该副本恢复正常，等待时间即为此持续时间。 |
 |UserStandByReplicaKeepDuration |以秒为单位的时间，默认值为 3600.0 \* 24 \* 7 |动态|指定以秒为单位的时间范围。 持久化副本从不可用状态恢复时，可能已被替换为另一副本。 此定时器决定 FM 在放弃备用副本之前保留其多长时间。 |
-|WaitForInBuildReplicaSafetyCheckTimeout|TimeSpan, 默认值为 Common:: TimeSpan:: FromSeconds (60 * 10)|动态|指定以秒为单位的时间范围。 可选 WaitForInBuildReplica 安全检查超时的配置条目。 此配置为节点停用和升级定义 WaitForInBuildReplica 安全检查的超时时间。 如果满足以下任一条件, 则此安全检查将失败:-正在创建主副本, ft 目标副本集大小 > 1-如果当前副本在生成中并且是持久的, 则为, 如果这是当前的主副本并且正在生成新的副本, 则将跳过此安全检查如果超时到期 (即使之前的条件之一仍为 true), 则 ped。 |
-|WaitForReconfigurationSafetyCheckTimeout|TimeSpan, 默认值为 Common:: TimeSpan:: FromSeconds (60.0 * 10)|动态|指定以秒为单位的时间范围。 可选 WaitForReconfiguration 安全检查超时的配置条目。 此配置定义节点停用和升级的 WaitForReconfiguration 安全检查的超时时间。 如果要检查的副本是正在重新配置的分区的一部分, 则此安全检查将失败。 即使分区仍处于重新配置下, 此超时到期后, 也会跳过安全检查。|
+|WaitForInBuildReplicaSafetyCheckTimeout|TimeSpan，默认值为 Common：： TimeSpan：： FromSeconds （60 * 10）|动态|指定以秒为单位的时间范围。 可选 WaitForInBuildReplica 安全检查超时的配置条目。 此配置为节点停用和升级定义 WaitForInBuildReplica 安全检查的超时时间。 如果满足以下任一条件，则此安全检查将失败：-正在创建主副本，ft 目标副本集大小 > 1-如果当前副本在生成中并且是持久的，则为，如果这是当前的主副本并且正在生成新的副本，则将跳过此安全检查如果超时到期（即使之前的条件之一仍为 true），则 ped。 |
+|WaitForReconfigurationSafetyCheckTimeout|TimeSpan，默认值为 Common：： TimeSpan：： FromSeconds （60.0 * 10）|动态|指定以秒为单位的时间范围。 可选 WaitForReconfiguration 安全检查超时的配置条目。 此配置定义节点停用和升级的 WaitForReconfiguration 安全检查的超时时间。 如果要检查的副本是正在重新配置的分区的一部分，则此安全检查将失败。 即使分区仍处于重新配置下，此超时到期后，也会跳过安全检查。|
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -311,7 +311,7 @@ ms.locfileid: "70191747"
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |Bool，默认值为 false |Static|群集运行状况评估策略：启用按应用程序类型的运行状况评估。 |
-|MaxSuggestedNumberOfEntityHealthReports|Int，默认值为 500 |动态|在对监视器的运行状况报告逻辑提出担忧之前，实体可以拥有的最大健康报告数。 每个运行状况实体应具有相对较少的运行状况报告。 如果报告计数高于此数字，则监视器的实现可能存在问题。 如果某个实体具有过多的报告，则评估该实体时，将通过警告运行状况报告来标记该实体。 |
+|MaxSuggestedNumberOfEntityHealthReports|Int，默认值为100 |动态|在对监视器的运行状况报告逻辑提出担忧之前，实体可以拥有的最大健康报告数。 每个运行状况实体应具有相对较少的运行状况报告。 如果报告计数高于此数字，则监视器的实现可能存在问题。 如果某个实体具有过多的报告，则评估该实体时，将通过警告运行状况报告来标记该实体。 |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 
@@ -644,14 +644,14 @@ ms.locfileid: "70191747"
 ## <a name="security"></a>安全性
 | **Parameter** | **允许的值** |**升级策略**| **指导或简短说明** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|string，默认值为“”|Static|为非默认环境 (例如 azure 政府 "https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml") 指定 AAD Cert 终结点格式 (默认为 azure 商业版) |
+|AADCertEndpointFormat|string，默认值为“”|Static|为非默认环境（例如 azure 政府 "https：\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml"）指定 AAD Cert 终结点格式（默认为 azure 商业版） |
 |AADClientApplication|string，默认值为“”|Static|表示 Fabric 客户端的本机客户端应用程序名称或 ID |
 |AADClusterApplication|string，默认值为“”|Static|表示群集的 Web API 应用程序名称或 ID |
-|AADLoginEndpoint|string，默认值为“”|Static|为非默认环境 (例如 azure 政府 "https:\//login.microsoftonline.us") 指定的 AAD 登录终结点 (默认为 azure 商业版) |
+|AADLoginEndpoint|string，默认值为“”|Static|为非默认环境（例如 azure 政府 "https：\//login.microsoftonline.us"）指定的 AAD 登录终结点（默认为 azure 商业版） |
 |AADTenantId|string，默认值为“”|Static|租户 ID (GUID) |
 |AcceptExpiredPinnedClusterCertificate|bool，默认值为 FALSE|动态|指示是否接受指纹声明的过期群集证书的标志仅适用于群集证书;以便使群集保持活动状态。 |
 |AdminClientCertThumbprints|string，默认值为“”|动态|管理员角色客户端使用的证书的指纹。 该参数是以逗号分隔的名称列表。 |
-|AADTokenEndpointFormat|string，默认值为“”|Static|为非默认环境 (例如 azure 政府 "https:\//login.microsoftonline.us/{0}") 指定的 AAD 令牌终结点 (默认为 azure 商业版) |
+|AADTokenEndpointFormat|string，默认值为“”|Static|为非默认环境（例如 azure 政府 "https：\//login.microsoftonline.us/{0}"）指定的 AAD 令牌终结点（默认为 azure 商业版） |
 |AdminClientClaims|string，默认值为“”|动态|管理员客户端所需的所有可能的声明；其格式与 ClientClaims 相同；此列表会从内部添加到 ClientClaims；所以不需要另外将相同的条目添加到 ClientClaims。 |
 |AdminClientIdentities|string，默认值为“”|动态|管理员角色结构客户端的 Windows 标识；用于授权特权结构操作。 该参数是以逗号分隔的列表；每个条目是域帐户名或组名称。 为方便起见，自动向运行 fabric.exe 的帐户分配管理员角色；组 ServiceFabricAdministrators 也是这样。 |
 |AppRunAsAccountGroupX509Folder|字符串，默认为 /home/sfuser/sfusercerts |Static|AppRunAsAccountGroup X509 证书和私钥所在的文件夹 |

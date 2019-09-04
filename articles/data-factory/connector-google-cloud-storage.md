@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: fba6feb035e47cfdfbe830ea628fc91cb483a907
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ef47426d80011b1c3e5f65675e4206a2afb98ef8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840279"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275167"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google 云存储复制数据
 
@@ -41,7 +41,7 @@ ms.locfileid: "68840279"
 - **对于复制活动执行：** 对象操作需要 `s3:GetObject` 和 `s3:GetObjectVersion` 权限。
 - **对于数据工厂 GUI 创作**：测试连接以及浏览/导航文件路径等操作额外需要适用于 Bucket 操作的 `s3:ListAllMyBuckets` 和 `s3:ListBucket`/`s3:GetBucketLocation` 权限。 如果不想授予这些权限，请跳过“链接服务创建”页面中的测试连接，并直接在“数据集设置”中指定路径。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)] 
 
@@ -84,12 +84,12 @@ Google 云存储链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-- 对于**Parquet (分隔文本和二进制格式**), 请参阅[Parquet, 分隔文本和二进制格式数据集](#format-based-dataset)部分。
-- 对于其他格式 (如**ORC/Avro/JSON 格式**), 请参阅[其他格式数据集](#other-format-dataset)部分。
+- 对于**Parquet （分隔文本、avro 和二进制格式**），请参阅[Parquet，分隔文本、avro 和二进制格式数据集](#format-based-dataset)部分。
+- 对于其他格式（如**ORC/JSON 格式**），请参阅[其他格式数据集](#other-format-dataset)部分。
 
-### <a name="format-based-dataset"></a>Parquet, 分隔文本和二进制格式数据集
+### <a name="format-based-dataset"></a>Parquet，分隔文本、Avro 和二进制格式数据集
 
-若要从 Parquet 复制数据 **(带分隔符的文本或二进制格式**), 请参阅基于格式的数据集和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 Google 云存储支持以下属性：
+若要从 Parquet 复制数据 **（带分隔符的文本或二进制格式**），请参阅基于格式的数据集和支持的设置的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [Avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 Google 云存储支持以下属性：
 
 | 属性   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -130,7 +130,7 @@ Google 云存储链接服务支持以下属性：
 
 ### <a name="other-format-dataset"></a>其他格式数据集
 
-若要复制**ORC/Avro/JSON 格式**的 Google 云存储中的数据, 支持以下属性:
+若要从**ORC/JSON 格式**的 Google 云存储中复制数据，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -183,12 +183,12 @@ Google 云存储链接服务支持以下属性：
 
 ### <a name="google-cloud-storage-as-source"></a>Google 云存储用作源
 
-- 若要从**Parquet 复制, 分隔文本和二进制格式**, 请参阅[Parquet, 分隔文本和二进制格式源](#format-based-source)部分。
-- 若要从其他格式 (如**ORC/Avro/JSON 格式**) 复制, 请参阅[其他格式源](#other-format-source)部分。
+- 若要从**Parquet、带分隔符的文本、avro 和二进制格式**复制，请参阅[Parquet，分隔文本、avro 和二进制格式源](#format-based-source)部分。
+- 若要从其他格式（如**ORC/JSON 格式**）复制，请参阅[其他格式源](#other-format-source)部分。
 
-#### <a name="format-based-source"></a>Parquet, 分隔文本和二进制格式源
+#### <a name="format-based-source"></a>Parquet，分隔文本、Avro 和二进制格式源
 
-若要从 Parquet 复制数据 **(带分隔符的文本或二进制格式**), 请参阅基于格式的复制活动源和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的复制源中 `storeSettings` 设置下的 Google 云存储支持以下属性：
+若要从 Parquet 复制数据 **（带分隔符的文本或二进制格式**），请参阅基于格式的复制活动源和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [Avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文。 基于格式的复制源中 `storeSettings` 设置下的 Google 云存储支持以下属性：
 
 | 属性                 | 说明                                                  | 必选                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
@@ -247,7 +247,7 @@ Google 云存储链接服务支持以下属性：
 
 #### <a name="other-format-source"></a>其他格式源
 
-若要复制**ORC/Avro/JSON 格式**的 Google 云存储中的数据, 复制活动**源**部分支持以下属性:
+若要复制**ORC/JSON 格式**的 Google 云存储中的数据，复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

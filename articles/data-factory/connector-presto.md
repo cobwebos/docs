@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b0bbfe973f18067284514e39d36442a63bd3efc8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19c450a1832e725fa5fbf171b991a6b617291cfe
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60508885"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276706"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Presto 复制数据
 
@@ -44,12 +44,12 @@ Presto 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：Presto  | 是 |
+| type | type 属性必须设置为：Presto | 是 |
 | host | Presto 服务器的 IP 地址或主机名。 （即 192.168.222.160）  | 是 |
 | serverVersion | Presto 服务器的版本。 （即 0.148-t）  | 是 |
 | catalog | 针对服务器的所有请求的目录上下文。  | 是 |
 | port | Presto 服务器用来侦听客户端连接的 TCP 端口。 默认值为 8080。  | 否 |
-| authenticationType | 用于连接到 Presto 服务器的身份验证机制。 <br/>允许值包括：匿名、LDAP   | 是 |
+| authenticationType | 用于连接到 Presto 服务器的身份验证机制。 <br/>允许值包括：匿名、LDAP | 是 |
 | username | 用于连接到 Presto 服务器的用户名。  | 否 |
 | password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | enableSsl | 指定是否使用 SSL 加密到服务器的连接。 默认值为 false。  | 否 |
@@ -87,12 +87,14 @@ Presto 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Presto 数据集支持的属性列表。
 
-要从 Presto 复制数据，请将数据集的 type 属性设置为“PrestoObject”  。 支持以下属性：
+要从 Presto 复制数据，请将数据集的 type 属性设置为“PrestoObject”。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：PrestoObject  | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| type | 数据集的 type 属性必须设置为：PrestoObject | 是 |
+| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
+| tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 将`schema` 和`table`用于新工作负荷。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -101,11 +103,12 @@ Presto 链接服务支持以下属性：
     "name": "PrestoDataset",
     "properties": {
         "type": "PrestoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Presto linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -116,11 +119,11 @@ Presto 链接服务支持以下属性：
 
 ### <a name="presto-as-source"></a>以 Presto 作为源
 
-要从 Presto 复制数据，请将复制活动中的源类型设置为“PrestoSource”  。 复制活动源  部分支持以下属性：
+要从 Presto 复制数据，请将复制活动中的源类型设置为“PrestoSource”。 复制活动**source**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：PrestoSource  | 是 |
+| type | 复制活动源的 type 属性必须设置为：PrestoSource | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**

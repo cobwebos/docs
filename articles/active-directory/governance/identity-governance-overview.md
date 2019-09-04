@@ -16,12 +16,12 @@ ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e0539095701ec104495bf5a44dec668494d444
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: a17b64cbfffbe9cabd909bccb16d55c07bba8bb0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207175"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241455"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD Identity Governance？
 
@@ -72,13 +72,13 @@ Azure AD Privileged Identity Management (PIM) 提供用于保护 Azure AD、Azur
 
 ## <a name="least-privileged-roles"></a>最小特权角色
 
-使用 PIM 允许用户的管理权限受到限制, 以提高安全性。 下面是在 Azure AD 标识调控功能中进行配置的最低权限目录角色: 
+最佳做法是使用最少特权角色在标识管理中执行管理任务。 建议根据需要使用 Azure AD PIM 激活角色，以执行这些任务。 下面是用于配置标识调控功能的权限最少的目录角色： 
 
 | 功能 | 最小特权角色 |
 | ------- | --------------------- |
-| 权利管理 | 用户管理员 (将 SharePoint Online 网站添加到目录 (需要全局管理员) 除外) |
+| 权利管理 | 用户管理员（将 SharePoint Online 网站添加到目录（需要全局管理员）除外） |
 | 使用条款 | 安全管理员或条件访问管理员 |
-| 访问审阅 | 用户管理员 (需要特权角色管理员的 Azure 或 Azure AD 角色的访问评审除外) |
+| 访问审阅 | 用户管理员（需要特权角色管理员的 Azure 或 Azure AD 角色的访问评审除外） |
 |Privileged Identity Management | 特权角色管理员 |
 
 
@@ -93,7 +93,7 @@ Azure AD Privileged Identity Management (PIM) 提供用于保护 Azure AD、Azur
 
 ![标识监管入门](./media/identity-governance-overview/getting-started.png)
 
-如果你对标识调控功能有任何反馈, 请单击 "Azure 门户中的 **" 获取反馈 "** , 以提交你的反馈。 团队定期查看你的反馈。
+如果你对标识调控功能有任何反馈，请单击 "Azure 门户中的 **" 获取反馈 "** ，以提交你的反馈。 团队定期查看你的反馈。
 
 ## <a name="next-steps"></a>后续步骤
 

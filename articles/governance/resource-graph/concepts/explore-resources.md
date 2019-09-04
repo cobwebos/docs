@@ -7,18 +7,16 @@ ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 58470dddafb29b6a2e5fa8ec0b474dd5da778799
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231543"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241128"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 浏览 Azure 资源
 
 Azure Resource Graph 提供快速、大规模浏览和发现 Azure 资源的功能。 它专为快速响应而设计，是了解你的环境以及构成 Azure 资源的属性的好方法。
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="explore-virtual-machines"></a>浏览虚拟机
 
@@ -109,7 +107,7 @@ JSON 结果的结构类似于下面的示例：
 ]
 ```
 
-属性告诉我们有关虚拟机资源本身的其他信息, 这些信息来自 SKU、OS、磁盘、标记以及其所属的资源组和订阅。
+属性告诉我们有关虚拟机资源本身的其他信息，这些信息来自 SKU、OS、磁盘、标记以及其所属的资源组和订阅。
 
 ### <a name="virtual-machines-by-location"></a>按位置列出的虚拟机
 
@@ -258,7 +256,7 @@ JSON 结果的结构类似于下面的示例：
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>浏览虚拟机以查找公共 IP 地址
 
-这组查询首先查找并存储连接到虚拟机的所有网络接口 (NIC) 资源。 然后, 查询使用 Nic 列表来查找作为公共 IP 地址的每个 IP 地址资源, 并存储这些值。 最后, 查询提供公共 IP 地址的列表。
+这组查询首先查找并存储连接到虚拟机的所有网络接口（NIC）资源。 然后，查询使用 Nic 列表来查找作为公共 IP 地址的每个 IP 地址资源，并存储这些值。 最后，查询提供公共 IP 地址的列表。
 
 ```azurecli-interactive
 # Use Resource Graph to get all NICs and store in the 'nics.txt' file
@@ -276,7 +274,7 @@ $nics = Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines'
 $nics.nic
 ```
 
-使用下一个查询中的文件 (Azure CLI) 或变量 (Azure PowerShell) 获取相关的网络接口资源详细信息, 其中存在连接到 NIC 的公共 IP 地址。
+使用下一个查询中的文件（Azure CLI）或变量（Azure PowerShell）获取相关的网络接口资源详细信息，其中存在连接到 NIC 的公共 IP 地址。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file
@@ -294,7 +292,7 @@ $ips = Search-AzGraph -Query "where type =~ 'Microsoft.Network/networkInterfaces
 $ips.publicIp
 ```
 
-最后, 使用存储在文件中的公共 IP 地址资源的列表 (Azure CLI) 或变量 (Azure PowerShell) 从相关对象获取实际的公共 IP 地址, 并显示。
+最后，使用存储在文件中的公共 IP 地址资源的列表（Azure CLI）或变量（Azure PowerShell）从相关对象获取实际的公共 IP 地址，并显示。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'ips.txt' file to get the IP address of the public IP address resources

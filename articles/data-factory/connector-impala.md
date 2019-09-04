@@ -10,21 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a344c94561c43652e360f7da02c16877e4d70529
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 01712508b15be947f4c3d7df401ad431d9f25455
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966969"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276383"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Impala 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Impala 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!IMPORTANT]
-> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
+> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -95,7 +95,9 @@ Impala 链接服务支持以下属性。
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**ImpalaObject** | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
+| tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 将`schema` 和`table`用于新工作负荷。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -104,11 +106,12 @@ Impala 链接服务支持以下属性。
     "name": "ImpalaDataset",
     "properties": {
         "type": "ImpalaObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Impala linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

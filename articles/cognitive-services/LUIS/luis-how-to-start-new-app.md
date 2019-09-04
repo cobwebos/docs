@@ -9,19 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 87244169aa8e50ddd503086121dd84f5d50c5df4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5939886f68a877c4cfad752fe93c4f0eca8f80cf
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932775"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258498"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>在 LUIS 门户中创建新的 LUIS 应用
 可通过多种方法创建 LUIS 应用。 可以在 [LUIS](https://www.luis.ai) 门户中创建 LUIS 应用，也可以通过 LUIS 创作 [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) 创建。
 
 ## <a name="using-the-luis-portal"></a>使用 LUIS 门户
+
 可以通过以下几种方式在 LUIS 门户中创建新应用：
 
 * 从一个空应用开始，创建意向、表述和实体。
@@ -39,6 +40,8 @@ ms.locfileid: "68932775"
 <a name="import-new-app"></a>
 <a name="delete-app"></a>
  
+
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-new-app-in-luis"></a>在 LUIS 中创建新应用
 

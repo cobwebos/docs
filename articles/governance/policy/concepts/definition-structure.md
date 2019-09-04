@@ -7,12 +7,12 @@ ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 988fc124a68ef07981c0f36334778be326fff3a2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232273"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239186"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -67,8 +67,6 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 所有 Azure 策略示例均在[Azure 策略示例](../samples/index.md)中。
 
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
-
 ## <a name="mode"></a>模式
 
 **模式**的配置取决于策略是以 Azure 资源管理器属性还是资源提供程序属性为目标。
@@ -89,7 +87,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 目前支持的唯一资源提供程序模式`Microsoft.ContainerService.Data`是管理[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的许可控制器规则。
 
 > [!NOTE]
-> [适用于 Kubernetes 的 Azure 策略](rego-for-aks.md)处于公共预览中, 仅支持内置策略定义。
+> [适用于 Kubernetes 的 Azure 策略](rego-for-aks.md)处于公共预览中，仅支持内置策略定义。
 
 ## <a name="parameters"></a>Parameters
 
@@ -399,7 +397,7 @@ Azure Policy 支持以下类型的效果：
 - **AuditIfNotExists**：如果资源不存在，则启用审核
 - **DeployIfNotExists**：如果资源不存在，则部署一个资源
 - **Disabled**：不评估资源是否符合策略规则
-- **EnforceRegoPolicy**: 在 Azure Kubernetes Service (预览版) 中配置开放策略代理招生控制器
+- **EnforceRegoPolicy**：在 Azure Kubernetes Service （预览版）中配置开放策略代理招生控制器
 
 对于 **append**，必须提供以下详细信息：
 

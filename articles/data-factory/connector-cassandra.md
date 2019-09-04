@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b42313a83be413a9c34a45fca946ea165f8fc9a3
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 7d3f29327f9a671a631b01ad688da3a523a7b0c8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967046"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275844"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>使用 Azure 数据工厂从 Cassandra 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -44,7 +44,7 @@ ms.locfileid: "68967046"
 
 集成运行时提供内置 Cassandra 驱动程序，因此从/向 Cassandra 复制数据时，无需手动安装任何驱动程序。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -93,7 +93,7 @@ Cassandra 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Cassandra 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Cassandra 数据集支持的属性列表。
 
 要从 Cassandra 复制数据，请将数据集的 type 属性设置为“CassandraTable”。 支持以下属性：
 
@@ -130,11 +130,11 @@ Cassandra 链接的服务支持以下属性：
 
 ### <a name="cassandra-as-source"></a>以 Cassandra 作为源
 
-要从 Cassandra 复制数据，请将复制活动中的源类型设置为“CassandraSource”。 复制活动源部分支持以下属性：
+要从 Cassandra 复制数据，请将复制活动中的源类型设置为“CassandraSource”。 复制活动**source**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**CassandraSource** | 是 |
+| type | 复制活动 source 的 type 属性必须设置为：**CassandraSource** | 是 |
 | query |使用自定义查询读取数据。 SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 keyspace name.table name 来表示要查询的表。 |否（如果指定了数据集中的“tableName”和“keyspace”）。 |
 | consistencyLevel |一致性级别指定在将数据返回到客户端应用程序之前必须响应读取请求的副本的数量。 Cassandra 会检查指定数量的副本，以使数据满足读取请求。 有关详细信息，请参阅 [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html)（配置数据一致性）。<br/><br/>允许值包括：**ONE**、**TWO**、**THREE**、**QUORUM**、**ALL**、**LOCAL_QUORUM**、**EACH_QUORUM** 和 **LOCAL_ONE**。 |否（默认值为 `ONE`） |
 

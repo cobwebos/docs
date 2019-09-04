@@ -6,12 +6,12 @@ ms.service: governance
 ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 028b4cbf62bf9ed0b3b38f54d3b787a8c1368da0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fd9a8e00072bfb8d3a0e57fb552822588111019
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242954"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241200"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -21,8 +21,6 @@ ms.locfileid: "66242954"
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
-
 ## <a name="change-the-name-of-a-management-group"></a>更改管理组的名称
 
 可以使用门户、PowerShell 或 Azure CLI 更改管理组的名称。
@@ -31,13 +29,13 @@ ms.locfileid: "66242954"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。  
+1. 选择“所有服务” > “管理组”。
 
 1. 选择要重命名的管理组。
 
-1. 选择**详细信息**。
+1. 选择 "**详细信息**"。
 
-1. 选择页面顶部的“重命名组”选项。 
+1. 选择页面顶部的“重命名组”选项。
 
    ![“管理组”页面上的“重命名组”选项](./media/detail_action_small.png)
 
@@ -45,7 +43,7 @@ ms.locfileid: "66242954"
 
    ![用于重命名管理组的“重命名组”窗格](./media/rename_context.png)
 
-1. 选择“保存”。 
+1. 选择**保存**。
 
 ### <a name="change-the-name-in-powershell"></a>在 PowerShell 中更改名称
 
@@ -73,19 +71,19 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
    - 若要将管理组移到另一个管理组，请参阅[在层次结构中移动管理组](#move-management-groups-in-the-hierarchy)。
 
-1. 你在管理组（“所有者”、“参与者”或“管理组参与者”）中拥有写入权限。 若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。  有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../../role-based-access-control/overview.md)。  
+1. 你在管理组（“所有者”、“参与者”或“管理组参与者”）中拥有写入权限。 若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../../role-based-access-control/overview.md)。  
 
 ### <a name="delete-in-the-portal"></a>在门户中删除
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。  
+1. 选择“所有服务” > “管理组”。
 
 1. 选择要删除的管理组。
 
-1. 选择**详细信息**。
+1. 选择 "**详细信息**"。
 
-1. 选择“删除” 
+1. 选择“删除”
 
     > [!TIP]
     > 如果该图标已禁用，将鼠标指针悬停在该图标上可显示原因。
@@ -96,7 +94,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
    ![“确认删除组”窗口](./media/delete_confirm.png)
 
-1. 请选择“是”。 
+1. 请选择“是”。
 
 ### <a name="delete-in-powershell"></a>在 PowerShell 中删除
 
@@ -122,11 +120,11 @@ az account management-group delete --name 'Contoso'
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。  
+1. 选择“所有服务” > “管理组”。
 
 1. 此时会加载管理组层次结构页。 可以在该页中浏览你有权访问的所有管理组和订阅。 选择组名会将你带到层次结构中的下一级别。 导航的工作方式与文件资源管理器一样。
 
-1. 若要查看管理组的详细信息，请选择管理组标题旁边的“(详细信息)”  链接。 如果此链接不可用，则表示你无权查看该管理组。
+1. 若要查看管理组的详细信息，请选择管理组标题旁边的“(详细信息)”链接。 如果此链接不可用，则表示你无权查看该管理组。
 
    ![主要](./media/main.png)
 
@@ -206,14 +204,14 @@ az account management-group show --name 'Contoso' -e -r
 若要移动订阅，则下述所有 RBAC 权限都必须为 true：
 
 - 子订阅中的“所有者”角色。
-- 在目标父管理组上的"所有者"、"参与者"或"管理组参与者"角色。
-- 在现有的父管理组上的"所有者"、"参与者"或"管理组参与者"角色。
+- 目标父管理组上的 "所有者"、"参与者" 或 "管理组参与者" 角色。
+- 现有父管理组上的 "所有者"、"参与者" 或 "管理组参与者" 角色。
 
-如果目标或现有的父管理组是根管理组，不适用的权限要求。 由于根管理组是默认登录点的所有新管理组和订阅，不需要在其上移动项的权限。
+如果目标或现有的父管理组是根管理组，则不会应用权限要求。 由于根管理组是所有新管理组和订阅的默认登陆点，因此不需要在其上移动项目。
 
-如果对订阅的所有者角色继承自当前管理组，仅限移动目标。 你仅可以将订阅移到另一个管理组必须所有者角色。 您不能将其移到管理组将失去订阅的所有权，因为是参与者。 如果你直接分配到 （从管理组不继承） 的订阅的所有者角色，，您可以将其移到任何管理组您参与者。
+如果订阅的所有者角色继承自当前管理组，则移动目标会受到限制。 只能将订阅移动到拥有 "所有者" 角色的另一个管理组。 你不能将其移动到你作为参与者的管理组，因为你将失去订阅的所有权。 如果你直接分配给订阅的所有者角色（不是从管理组继承），则可以将其移动到你作为参与者的任何管理组。
 
-若要在 Azure 门户中查看自己拥有哪些权限，请选择管理组，然后选择“标识和访问管理”。  有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../../role-based-access-control/overview.md)。
+若要在 Azure 门户中查看自己拥有哪些权限，请选择管理组，然后选择“标识和访问管理”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../../role-based-access-control/overview.md)。
 
 ### <a name="move-subscriptions-in-the-portal"></a>在门户中移动订阅
 
@@ -221,11 +219,11 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。  
+1. 选择“所有服务” > “管理组”。
 
 1. 选择要设为父级的管理组。
 
-1. 在页面顶部，选择“添加订阅”  。
+1. 在页面顶部，选择“添加订阅”。
 
 1. 在列表中选择具有正确 ID 的订阅。
 
@@ -237,7 +235,7 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。  
+1. 选择“所有服务” > “管理组”。
 
 1. 选择要设为当前父级的管理组。  
 
@@ -245,13 +243,13 @@ az account management-group show --name 'Contoso' -e -r
 
    ![管理组上的“移动”选项](./media/move_small.png)
 
-1. 选择“移动”  。
+1. 选择“移动”。
 
-1. 在打开的菜单中，选择“父管理组”。 
+1. 在打开的菜单中，选择“父管理组”。
 
    ![用于更改父组的“移动”窗格](./media/move_small_context.png)
 
-1. 选择“保存”。 
+1. 选择**保存**。
 
 ### <a name="move-subscriptions-in-powershell"></a>在 PowerShell 中移动订阅
 
@@ -283,17 +281,17 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups-in-the-hierarchy"></a>在层次结构中移动管理组  
 
-移动父管理组时，该组下的层次结构会随之移动。 您需要访问的移动管理组，请参阅[访问的管理组](index.md#management-group-access)。
+移动父管理组时，该组下的层次结构会随之移动。 对于需要移动管理组的访问权限，请参阅[管理组访问](index.md#management-group-access)。
 
 ### <a name="move-management-groups-in-the-portal"></a>在门户中移动管理组
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。  
+1. 选择“所有服务” > “管理组”。
 
 1. 选择要设为父级的管理组。
 
-1. 在页面顶部，选择“添加管理组”  。
+1. 在页面顶部，选择“添加管理组”。
 
 1. 在打开的菜单中，选择要使用新管理组或现有管理组。
 
@@ -302,7 +300,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
    ![将管理组移动到新的或现有组](./media/add_context_MG.png)
 
-1. 选择“保存”。 
+1. 选择**保存**。
 
 ### <a name="move-management-groups-in-powershell"></a>在 PowerShell 中移动管理组
 

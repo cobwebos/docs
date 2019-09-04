@@ -1,5 +1,5 @@
 ---
-title: 常见问题 (FAQ)-LUIS
+title: 常见问题（FAQ）-LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 author: diberry
@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: b80c32fea0d62bb5800a677ff30cb0787e83afa2
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7874a2bad63a4c5b47545c06a91228e64d523849
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945840"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258794"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -78,7 +78,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 <a name="luis-collaborating"></a>
 
-## <a name="collaborating"></a>协作
+## <a name="collaborating-and-contributing"></a>协作和参与
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>如何使用 Azure Active Directory (Azure AD) 或基于角色的访问控制 (RBAC) 来为协作者提供对 LUIS 的访问权限？
 
@@ -87,6 +87,31 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 <a name="luis-endpoint"></a>
 
 ## <a name="endpoint"></a>终结点
+
+### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>我收到了一个 HTTP 403 错误状态代码。 如何解决问题？
+
+当你的定价层超出每秒的事务数或每月的事务数时，将获得403和429错误状态代码。 增加定价层，或使用语言理解[容器](luis-container-howto.md)。
+
+使用所有这些免费1000终结点查询或超出定价层的每月事务配额时，会收到 HTTP 403 错误状态代码。 
+
+若要修复此错误，需要[将定价层更改](luis-how-to-azure-subscription.md#change-pricing-tier)为较高的层，或者[创建新资源](get-started-portal-deploy-app.md#create-the-endpoint-resource)并[将其分配给应用](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)。
+
+此错误的解决方案包括：
+
+* 在[Azure 门户](https://portal.azure.com)的语言理解资源上，在**资源管理-> 定价层**上，将定价层更改为更高的 TPS 层。 如果资源已分配给语言理解应用，则无需在语言理解门户中执行任何操作。
+*  如果你的使用量超过了最高定价层，请在其前面添加更多语言理解资源和负载均衡器。 具有 Kubernetes 或 Docker Compose 的[语言理解容器](luis-container-howto.md)有助于此。
+
+### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>我收到了一个 HTTP 429 错误状态代码。 如何解决问题？
+
+当你的定价层超出每秒的事务数或每月的事务数时，将获得403和429错误状态代码。 增加定价层，或使用语言理解[容器](luis-container-howto.md)。
+
+每秒的事务数超过定价层时，将返回此状态代码。  
+
+解决方案包括：
+
+* 如果你不在最高层，可以[增加定价层](luis-how-to-azure-subscription.md#change-pricing-tier)。
+* 如果你的使用量超过了最高定价层，请在其前面添加更多语言理解资源和负载均衡器。 具有 Kubernetes 或 Docker Compose 的[语言理解容器](luis-container-howto.md)有助于此。
+* 你可以通过在收到此状态代码时自行实现的[重试策略来设置](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)客户端应用程序请求。 
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>我的终结点查询返回了意外的结果。 我该怎么办？
 
@@ -102,7 +127,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化](luis-glossary.md#token)。 原始值和标记化值均可用于[数据提取](luis-concept-data-extraction.md#tokenized-entity-returned)。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>如何创建并分配 LUIS 终结点密钥？
-根据[服务](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md)。 在 **[密钥和终结点](luis-how-to-azure-subscription.md)** 页上[分配密钥](luis-how-to-azure-subscription.md)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
+根据[服务](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md)。 在 " **[Azure 资源](luis-how-to-azure-subscription.md)** " 页上[分配密钥](luis-how-to-azure-subscription.md)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md)。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>如何解释 LUIS 分数？
 系统应该使用最高得分意向，不管其值如何。 例如，分数低于 0.5（不到 50%）不一定意味着 LUIS 的置信度低。 提供更多训练数据有助于提高最可能意向的[分数](luis-concept-prediction-score.md)。
@@ -123,10 +148,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>我的 LUIS 应用昨天还可以正常使用，但今天却出现 403 错误。 我没有更改应用。 如何解决问题？
-按照以下[说明](#how-do-i-create-and-assign-a-luis-endpoint-key)创建 LUIS 终结点密钥并将其分配给应用。 然后, 必须将客户端应用程序的 HTTP 请求更改为终结点才能[使用新的终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。 如果在其他区域创建了新资源, 则也要更改 HTTP 客户端请求的区域。
+按照以下[说明](#how-do-i-create-and-assign-a-luis-endpoint-key)创建 LUIS 终结点密钥并将其分配给应用。 然后，必须将客户端应用程序的 HTTP 请求更改为终结点才能[使用新的终结点密钥](luis-concept-keys.md)。 如果在其他区域创建了新资源，则也要更改 HTTP 客户端请求的区域。
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>如何保护 LUIS 终结点安全？
-请参阅[保护终结点安全](luis-concept-security.md#securing-the-endpoint)。
+请参阅[保护终结点安全](luis-concept-keys.md#securing-the-endpoint)。
 
 ## <a name="working-within-luis-limits"></a>在 LUIS 限制内操作
 
@@ -179,23 +204,21 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>为什么分配给我应用的终结点密钥多于我分配的？
 为方便起见，每个 LUIS 应用在终结点列表中都有创作/初学者密钥。 此密钥仅允许命中终结点几次，因此你可以试用 LUIS。  
 
-如果应用在 LUIS 正式发布 (GA) 之前已存在，则会自动分配订阅中的 LUIS 终结点密钥。 这样做是为了方便 GA 迁移。 Azure 门户中的任何新 LUIS 终结点密钥都 _会自动分配给 LUIS。
+如果应用在 LUIS 正式发布 (GA) 之前已存在，则会自动分配订阅中的 LUIS 终结点密钥。 这样做是为了方便 GA 迁移。 Azure 门户中的任何新 LUIS 终结点密钥都_不_会自动分配给 LUIS。
 
 ## <a name="key-management"></a>密钥管理
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>如何了解我需要什么密钥，从哪里获取它，以及使用它来做什么？ 
 
-若要了解[创作密钥](luis-how-to-account-settings.md)与[终结点预测密钥](luis-how-to-azure-subscription.md)之间的差异，请参阅 [LUIS 中的创作密钥和查询预测终结点密钥](luis-concept-keys.md)。 
+请参阅[LUIS 中的创作和查询预测终结点密钥](luis-concept-keys.md)，了解创作密钥与预测运行时密钥之间的差异。 
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>我收到有关超出配额的错误。 如何解决问题？ 
 
-请参阅[修复 HTTP 状态代码 403 和 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) 以了解详细信息。
+请参阅修复 HTTP 状态代码[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429](#i-received-an-http-429-error-status-code-how-do-i-fix-it)以了解详细信息。
 
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>我需要处理更多的终结点查询。 我该怎么做？ 
 
-请参阅[修复 HTTP 状态代码 403 和 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) 以了解详细信息。
-
-
+请参阅修复 HTTP 状态代码[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429](#i-received-an-http-429-error-status-code-how-do-i-fix-it)以了解详细信息。
 
 ## <a name="app-management"></a>应用管理
 

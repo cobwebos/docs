@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: edf475ac11168c33a6b11ccda3482ac44579e8d8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bc914d27e9bea15a625dd2cd196401d733f8cfb8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726225"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275934"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 搜索索引
 
-> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-search-connector.md)
 > * [当前版本](connector-azure-search.md)
 
@@ -31,7 +31,7 @@ ms.locfileid: "68726225"
 
 可以将数据从任何支持的源数据存储复制到 Azure 搜索索引。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -49,7 +49,7 @@ Azure 搜索链接的服务支持以下属性：
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 > [!IMPORTANT]
-> 将数据从云数据存储复制到 Azure 搜索索引时, 在 Azure 搜索链接服务中, 需要在 connactVia 中使用显式区域引用 Azure Integration Runtime。 将此区域设置为 Azure 搜索所在的位置。 从 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime) 了解更多信息。
+> 将数据从云数据存储复制到 Azure 搜索索引时，在 Azure 搜索链接服务中，需要在 connactVia 中使用显式区域引用 Azure Integration Runtime。 将此区域设置为 Azure 搜索所在的位置。 从 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime) 了解更多信息。
 
 **示例：**
 
@@ -75,9 +75,9 @@ Azure 搜索链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Azure 搜索数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Azure 搜索数据集支持的属性列表。
 
-若要将数据复制到 Azure 搜索, 支持以下属性:
+若要将数据复制到 Azure 搜索，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -113,7 +113,7 @@ Azure 搜索链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**AzureSearchIndexSink** | 是 |
+| type | 复制活动 source 的 type 属性必须设置为：**AzureSearchIndexSink** | 是 |
 | writeBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。<br/><br/>允许值包括：**Merge**（默认值）和 **Upload**。 | 否 |
 | writeBatchSize | 缓冲区大小达到 writeBatchSize 时会数据上传到 Azure 搜索索引。 有关详细信息，请参阅 [WriteBatchSize 属性](#writebatchsize-property)。<br/><br/>允许的值为：整数 1 到 1,000；默认值为 1000。 | 否 |
 
