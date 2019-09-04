@@ -307,14 +307,14 @@ ms.locfileid: "70232432"
 
 | 属性 | 类型 | 描述 |
 | -------- | ---- | ----------- |
-| API | string | 触发事件的操作。 |
+| api | string | 触发事件的操作。 |
 | clientRequestId | string | 用于存储 API 操作的客户端提供的请求 id。 此 id 可用于在日志中使用 "客户端请求 id" 字段与 Azure 存储诊断日志关联, 可以使用 "x-客户端请求 id" 标头在客户端请求中提供。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
 | requestId | string | 用于存储 API 操作的服务生成的请求 ID。 可用于通过 Azure 存储诊断日志中的“request-id-header”字段关联到这些日志，并且由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
 | eTag | string | 可用于根据条件执行操作的值。 |
 | contentType | string | 为 Blob 指定的内容类型。 |
-| contentLength | 整数 | Blob 大小，以字节为单位。 |
+| contentLength | integer | Blob 大小，以字节为单位。 |
 | blobType | string | Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。 |
-| contentOffset | 号 | 在事件触发应用程序完成写入文件时, 所执行的写入操作的偏移量 (以字节为单位)。 <br>仅对具有分层命名空间的 blob 存储帐户触发的事件显示。|
+| contentOffset | number | 在事件触发应用程序完成写入文件时, 所执行的写入操作的偏移量 (以字节为单位)。 <br>仅对具有分层命名空间的 blob 存储帐户触发的事件显示。|
 | destinationUrl |string | 操作完成后将存在的文件的 url。 例如, 如果重命名了某个文件, 则`destinationUrl`该属性将包含新文件名的 url。 <br>仅对具有分层命名空间的 blob 存储帐户触发的事件显示。|
 | sourceUrl |string | 操作前存在的文件的 url。 例如, 如果重命名了某个文件, 则`sourceUrl`将在重命名操作之前包含原始文件名的 url。 <br>仅对具有分层命名空间的 blob 存储帐户触发的事件显示。 |
 | url | string | Blob 的路径。 <br>如果客户端使用 Blob REST API, 则 url 将采用以下结构:  *\<\<\<\>blob.core.windows.net/\>/-name 文件名\>* . <br>如果客户端使用 Data Lake Storage REST API, 则 url 将具有以下结构:  *\</\>\>\<dfs.core.windows.net/\<文件-名称文件。\>* . |
