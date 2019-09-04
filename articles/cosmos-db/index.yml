@@ -9,7 +9,7 @@ metadata:
   ms.author: sngun
   ms.service: cosmos-db
   ms.topic: landing-page
-  ms.date: 05/20/2019
+  ms.date: 09/01/2019
 abstract:
   description: Azure Cosmos DB 是完全托管的数据库服务，具有统包全球分布和透明多主数据库复制功能。 你可以对数据库中的事务数据运行全球分布的低延迟运营与分析工作负荷和 AI。 参考我们的快速入门、教程和示例，了解如何使用 Azure Cosmos DB。
   aside:

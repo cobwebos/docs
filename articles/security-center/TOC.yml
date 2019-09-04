@@ -131,24 +131,16 @@
           href: security-center-vulnerability-assessment-recommendations.md
         - name: 威胁报告
           href: security-center-threat-report.md
-        - name: 自定义警报
-          href: security-center-custom-alert.md
         - name: 警报置信度分数
           href: security-center-confidence-score.md
-        - name: 安全警报地图和威胁智能
-          href: security-center-threat-intel.md
         - name: 调查
           href: security-center-investigation.md
         - name: 管理调查用户数据
           href: security-center-investigation-user-data.md
         - name: 逻辑应用演练手册
           href: security-center-playbooks.md
-        - name: 搜索
-          href: security-center-search.md
         - name: 规划和操作
           href: security-center-planning-and-operations-guide.md
-        - name: 自定义安全配置
-          href: security-center-customize-os-security-config.md
 - name: 引用
   items:
     - name: REST API

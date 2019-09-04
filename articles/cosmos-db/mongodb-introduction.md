@@ -28,7 +28,7 @@ Azure Cosmos DB 服务对 Cassandra、MongoDB、Gremlin 和 Azure 表存储等�
 
 ## <a name="key-benefits"></a>主要优点
 
-[此文](introduction.md)介绍了完全托管式、全局分布式数据库即服务 Cosmos DB 的主要优势。 此外，Cosmos DB 通过本机实现流行 NoSQL API 的网络协议来提供以下优势：
+[此文](introduction.md)介绍了 Cosmos DB（完全托管的全局分布式数据库即服务）的主要优势。 此外，Cosmos DB 通过本机实现流行 NoSQL API 的网络协议来提供以下优势：
 
 * 轻松将应用程序迁移到 Cosmos DB，同时保留应用程序逻辑的重要部分。
 * 使应用程序保持可移植性，并继续保持云供应商的不可知性。

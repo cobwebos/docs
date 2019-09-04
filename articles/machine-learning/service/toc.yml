@@ -1,5 +1,5 @@
 - name: Azure 机器学习服务文档
-  href: index.yml
+  href: ../index.yml
 - name: 概述
   expanded: true
   items:

@@ -1,5 +1,5 @@
 - name: Azure 机器学习服务
-  href: service/index.yml
+  href: service/overview-what-is-azure-ml.md
 - name: Azure 机器学习工作室
   href: studio/index.yml
 - name: 比较 Microsoft 的 ML 产品
