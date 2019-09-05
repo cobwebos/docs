@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 73d7aebf3dbff59320e0ef92cbd54811503c71b4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792275"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163988"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>教程：通过使用 Azure Database for PostgreSQL - 超大规模 (Citus)（预览版）设计多租户数据库
 
@@ -153,6 +153,8 @@ done
 返回到 psql 内部，大容量加载数据。 请务必在下载数据文件的目录中运行 psql。
 
 ```sql
+SET CLIENT_ENCODING TO 'utf8';
+
 \copy companies from 'companies.csv' with csv
 \copy campaigns from 'campaigns.csv' with csv
 \copy ads from 'ads.csv' with csv

@@ -7,13 +7,12 @@ ms.date: 04/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 98b05f74f0d6f7d20b5aa7ed77047818f217f147
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 688c591cbe94c69c73779843011cb24c3d2fd4cf
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691178"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241097"
 ---
 # <a name="starter-resource-graph-queries"></a>初学者资源图表查询
 
@@ -36,8 +35,6 @@ ms.locfileid: "64691178"
 > - [显示特定别名的非重复值](#distinct-alias-values)
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="language-support"></a>语言支持
 
@@ -96,7 +93,7 @@ Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Co
 
 ## <a name="a-nameshow-sortedshow-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted"/> 按名称及其 OS 类型显示前五个虚拟机
 
-此查询将使用 `limit` 仅检索按名称排序的五条匹配记录。 Azure 资源的类型为 `Microsoft.Compute/virtualMachines`。 `project` 告诉 Azure 资源图表要包含哪些属性。
+此查询将使用 `top` 仅检索按名称排序的五条匹配记录。 Azure 资源的类型为 `Microsoft.Compute/virtualMachines`。 `project` 告诉 Azure 资源图表要包含哪些属性。
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -270,7 +267,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 |
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases" | ConvertTo-Json
 ```
 
 ## <a name="a-namedistinct-alias-valuesshow-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values"/> 显示特定别名的非重复值

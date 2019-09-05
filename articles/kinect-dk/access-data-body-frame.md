@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: 人体, 帧, azure, kinect, 跟踪, 提示
-ms.openlocfilehash: 8133d2c761a7c44a4d028a77bd6cb3a133a18033
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 287a10aaee6780e731a13cdfa06e41bbfaad080f
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871772"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241303"
 ---
 # <a name="access-data-in-body-frame"></a>访问人体帧中的数据
 
@@ -76,4 +76,4 @@ k4a_capture_release(input_capture);
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
->[Azure Kinect 人体跟踪 SDK](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html)
+>[Azure Kinect 人体跟踪 SDK](https://microsoft.github.io/Azure-Kinect-Body-Tracking/)

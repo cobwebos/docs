@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905231"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142079"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用以前版本的 Azure Migrate
 
@@ -201,7 +201,7 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
 1. 若要将 Log Analytics 工作区附加到项目，请在“概述”>“Essentials”中，单击“需要配置”    。
 2. 可以创建新的工作区或附加现有的工作区：
   - 若要创建新的工作区，请指定名称。 在与迁移项目相同的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的区域内创建工作区。
-  - 附加现有的工作区时，可以从迁移项目所在订阅中的所有可用工作区进行选择。 只有在[受支持的服务映射区域](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)中创建的那些工作区才会列出。 若要附加工作区，请确保对该工作区有“读取者”访问权限。
+  - 附加现有的工作区时，可以从迁移项目所在订阅中的所有可用工作区进行选择。 只有在[受支持的服务映射区域](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)中创建的那些工作区才会列出。 若要附加工作区，请确保对该工作区有“读取者”访问权限。
 
 > [!NOTE]
 > 你无法更改与迁移项目关联的工作区。

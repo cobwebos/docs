@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 88fd480f87c3a33af1d16e57d6687d739dc1ec7d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5d0807fb03c8518286a369f50df62f0ec0b23c2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66123415"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140770"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
@@ -67,11 +66,11 @@ ms.locfileid: "66123415"
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure 服务访问 SQL 服务器
 
-对于 SQL 数据库和 SQL 数据仓库，请允许 Azure 服务访问 SQL 服务器。 确保针对 Azure SQL 服务器，将“允许访问 Azure 服务”设置切换为“打开”状态。 此设置允许数据工厂服务从 Azure SQL 数据库中读取数据，并将数据写入 Azure SQL 数据仓库。 若要验证并启用此设置，请执行以下步骤：
+对于 SQL 数据库和 SQL 数据仓库，请允许 Azure 服务访问 SQL 服务器。 确保针对 Azure SQL 服务器，将“允许访问 Azure 服务”设置切换为“打开”状态。   此设置允许数据工厂服务从 Azure SQL 数据库中读取数据，并将数据写入 Azure SQL 数据仓库。 若要验证并启用此设置，请执行以下步骤：
 
-1. 单击左侧的“所有服务”，然后单击“SQL Server”。
-2. 选择服务器，并单击“设置”下的“防火墙”。
-3. 在“防火墙设置”页中，单击“允许访问 Azure 服务”对应的“打开”。
+1. 单击左侧的“所有服务”  ，然后单击“SQL Server”  。
+2. 选择服务器，并单击“设置”  下的“防火墙”  。
+3. 在“防火墙设置”页中，单击“允许访问 Azure 服务”对应的“打开”。   
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
@@ -109,7 +108,7 @@ ms.locfileid: "66123415"
         ```
 
     * 只有 Azure 订阅的参与者或管理员才可以创建数据工厂实例。
-    * 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+    * 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 ## <a name="create-linked-services"></a>创建链接服务
 

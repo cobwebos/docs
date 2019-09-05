@@ -11,18 +11,18 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 40a2f8716b438837cf3efe300286ab9053fc8b07
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 22f9ff8c493e850152e1fd74c8787e2cde507685
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035820"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308851"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
 为了给改进后的[体系结构](concept-azure-machine-learning-architecture.md)让路，2018 年 9 月版本弃用并替换了 Azure Machine Learning Workbench 应用程序和其他一些早期功能。
 
-为改善用户体验，此版本包含许多重大更新，这些更新由客户反馈促成。 从实验运行到模型部署的核心功能没有变化。 但现在，可以使用可靠的 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> 和 [Azure CLI](reference-azure-machine-learning-cli.md) 来完成机器学习任务和管道。
+为改善用户体验，此版本包含许多重大更新，这些更新由客户反馈促成。 从实验运行到模型部署的核心功能没有变化。 但现在，可以使用可靠的 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a> 和 [Azure CLI](reference-azure-machine-learning-cli.md) 来完成机器学习任务和管道。
 
 在旧版 Azure 机器学习服务中创建的大多数项目，都存储在自己的本地存储或云存储中。 这些项目永远不会消失。
 
@@ -37,7 +37,7 @@ ms.locfileid: "70035820"
 最新版 Azure 机器学习服务包括以下功能：
 + [简化的 Azure 资源模型](concept-azure-machine-learning-architecture.md)。
 + [全新门户 UI](how-to-track-experiments.md)，用于管理试验和计算目标。
-+ 更全面的全新 Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>。
++ 更全面的全新 Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>。
 + 已扩充的全新 [Azure CLI 扩展](reference-azure-machine-learning-cli.md)，用于机器学习。
 
 重新设计的[架构](concept-azure-machine-learning-architecture.md)，易于使用。 无需使用多个 Azure 资源和帐户，只需使用 [Azure 机器学习服务工作区](concept-workspace.md)即可。 可以在 [Azure 门户](how-to-manage-workspace.md)中快速创建工作区。 通过使用工作区，多个用户可以存储定型和部署计算目标、模型试验、Docker 映像、已部署模型等。
@@ -50,7 +50,7 @@ ms.locfileid: "70035820"
 
 于 2019 年 1 月 9 日，对 Machine Learning Workbench、Azure 机器学习试验和模型管理帐户及其相关 SDK 和 CLI 的支持已经结束。
 
-通过此 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md) 和[门户](how-to-manage-workspace.md)即可使用所有最新功能。
+通过此 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md) 和[门户](how-to-manage-workspace.md)即可使用所有最新功能。
 
 ## <a name="what-about-run-histories"></a>运行历史记录又如何？
 
@@ -100,9 +100,9 @@ run = exp.submit(source_directory=script_folder,
 
 ## <a name="what-about-the-old-sdk-and-cli"></a>旧的 SDK 和 CLI 又如何？
 
-它们将继续正常运行到 1 月。 请参阅前面的[时间线](#timeline)。 建议开始使用最新 SDK 或 CLI 新建试验和模型。
+请参阅前面的[时间线](#timeline)。 建议开始使用最新 SDK 或 CLI 新建试验和模型。
 
-在最新版本中，使用全新 Python SDK，可以在任何 Python 环境中与 Azure 机器学习服务进行交互。 了解如何安装最新版 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>。 还可以结合使用更新后的 [Azure 机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)和丰富的 `az ml` 命令集，在任何命令行环境（包括 Azure Cloud Shell）中与服务进行交互。
+在最新版本中，使用全新 Python SDK，可以在任何 Python 环境中与 Azure 机器学习服务进行交互。 了解如何安装最新版 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>。 还可以结合使用更新后的 [Azure 机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)和丰富的 `az ml` 命令集，在任何命令行环境（包括 Azure Cloud Shell）中与服务进行交互。
 
 ## <a name="what-about-visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools for AI 怎么样？
 
@@ -112,7 +112,7 @@ run = exp.submit(source_directory=script_folder,
 
 ## <a name="what-about-domain-packages"></a>域包又如何？
 
-计算机视觉、文本分析和预测的域包无法与最新版 Azure 机器学习结合使用。 不过，仍可以使用最新版 Azure 机器学习 Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>，生成并定型计算机视觉、文本分析和预测模型。 若要了解如何迁移使用计算机视觉、文本分析和预测包构建的已有模型，请联系 [AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com)。
+计算机视觉、文本分析和预测的域包无法与最新版 Azure 机器学习结合使用。 不过，仍可以使用最新版 Azure 机器学习 Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>，生成并定型计算机视觉、文本分析和预测模型。 若要了解如何迁移使用计算机视觉、文本分析和预测包构建的已有模型，请联系 [AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com)。
 
 ## <a name="next-steps"></a>后续步骤
 

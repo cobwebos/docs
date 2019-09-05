@@ -1,7 +1,7 @@
 ---
 title: 有关在索引管道中调用认知服务 API 的 C# 教程 - Azure 搜索
 description: 在本教程中，在用于数据提取和转换的 Azure 搜索索引中分步完成数据提取、自然语言和图像 AI 处理的示例。
-manager: eladz
+manager: nitinme
 author: MarkHeff
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 58252bdbad8e7775add3805c28b2da076c07d9aa
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ad0710a3492eeecd56989e627211da5d4a5e0e0a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636058"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186252"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C# 教程：在 Azure 搜索索引管道中调用认知服务 API
 

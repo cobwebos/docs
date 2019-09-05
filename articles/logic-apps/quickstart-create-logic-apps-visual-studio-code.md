@@ -12,12 +12,12 @@ ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: f0b568289a50b9883e6e0f1cba6b793c9e6e90e8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: b9f9a402ecde09dd00c2b070f784858a141e556b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051734"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309006"
 ---
 # <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>快速入门：创建和管理自动化逻辑应用工作流 - Visual Studio Code
 
@@ -41,7 +41,7 @@ ms.locfileid: "70051734"
 
 * 下载并安装以下工具（如果没有）： 
 
-  * [Visual Studio Code 版本 1.25.1 或更高版本]("https://code.visualstudio.com/)，免费提供
+  * [Visual Studio Code 版本 1.25.1 或更高版本](https://code.visualstudio.com/)，免费提供
 
   * 适用于 Azure 逻辑应用的 Visual Studio Code 扩展
 

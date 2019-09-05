@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, sdk, 人体, 跟踪, 关节, 应用程序, 第一个
-ms.openlocfilehash: 138ed6b30e2756e0170061aa96069e3a9a3d79ca
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9a5596b121f1e21274986b73d68008bc372a5cf4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099438"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233053"
 ---
 # <a name="quickstart-build-your-first-azure-kinect-body-tracking-application"></a>快速入门：生成第一个 Azure Kinect 人体跟踪应用程序
 
@@ -75,7 +75,8 @@ k4a_calibration_t sensor_calibration;
 k4a_device_get_calibration(device, deviceConfig.depth_mode, deviceConfig.color_resolution, &sensor_calibration);
 
 k4abt_tracker_t tracker = NULL;
-k4abt_tracker_create(&sensor_calibration, &tracker);
+k4abt_tracker_configuration_t tracker_config = K4ABT_TRACKER_CONFIG_DEFAULT;
+k4abt_tracker_create(&sensor_calibration, tracker_config, &tracker);
 ```
 
 ## <a name="get-captures-from-the-azure-kinect-device"></a>从 Azure Kinect 设备获取捕获
@@ -167,7 +168,8 @@ int main()
         "Get depth camera calibration failed!");
 
     k4abt_tracker_t tracker = NULL;
-    VERIFY(k4abt_tracker_create(&sensor_calibration, &tracker), "Body tracker initialization failed!");
+    k4abt_tracker_configuration_t tracker_config = K4ABT_TRACKER_CONFIG_DEFAULT;
+    VERIFY(k4abt_tracker_create(&sensor_calibration, tracker_config, &tracker), "Body tracker initialization failed!");
 
     int frame_count = 0;
     do

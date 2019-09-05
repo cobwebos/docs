@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 244779e647c4b184b036b1a5ea77aac199be5994
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0c5b9a16a7b52239f1ef16d42e1b4be344863a04
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269395"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140622"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -71,7 +70,7 @@ ms.locfileid: "59269395"
 
 1. 打开 SQL Server Management Studio，连接到本地 SQL Server 数据库。
 
-1. 在“服务器资源管理器”中，右键单击数据库，然后选择“新建查询”。
+1. 在“服务器资源管理器”中  ，右键单击数据库，然后选择“新建查询”。 
 
 1. 对数据库运行以下 SQL 命令，以便创建名为 `customer_table` 和 `project_table` 的表：
 
@@ -110,7 +109,7 @@ ms.locfileid: "59269395"
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>在 Azure SQL 数据库中创建目标表
 1. 打开 SQL Server Management Studio，连接到 SQL Server 数据库。
 
-1. 在“服务器资源管理器”中，右键单击数据库，然后选择“新建查询”。
+1. 在“服务器资源管理器”中  ，右键单击数据库，然后选择“新建查询”。 
 
 1. 对 SQL 数据库运行以下 SQL 命令，以便创建名为 `customer_table` 和 `project_table` 的表：  
     
@@ -272,7 +271,7 @@ END
     The specified Data Factory name 'ADFIncMultiCopyTutorialFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
-* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
@@ -706,26 +705,26 @@ END
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务”，使用关键字“数据工厂”进行搜索，然后选择“数据工厂”。 
+1. 选择“所有服务”，使用关键字“数据工厂”进行搜索，然后选择“数据工厂”。    
 
     ![数据工厂菜单](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-data-factories-menu-1.png)
 
-1. 在数据工厂列表中搜索你的数据工厂，然后选择它来打开“数据工厂”页。 
+1. 在数据工厂列表中搜索你的数据工厂，然后选择它来打开“数据工厂”页。  
 
     ![搜索你的数据工厂](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-search-data-factory-2.png)
 
-1. 在“数据工厂”页中，选择“监视和管理”磁贴。 
+1. 在“数据工厂”页中，选择“监视和管理”磁贴。   
 
     ![“监视和管理”磁贴](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-monitor-manage-tile-3.png)
 
-1. **数据集成应用程序**在单独的选项卡中打开。可以看到所有管道运行及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 选择“参数”列中的链接即可查看传递至管道的参数。 如果出现错误，请查看“错误”列中的链接。 选择“操作”列中的链接。 
+1. **数据集成应用程序**在单独的选项卡中打开。可以看到所有管道运行及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。   选择“参数”列中的链接即可查看传递至管道的参数。 如果出现错误，请查看“错误”  列中的链接。 选择“操作”列中的链接。  
 
     ![管道运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
-1. 选择“操作”列中的链接时，可以看到以下页面，其中显示管道的所有活动运行： 
+1. 选择“操作”列中的链接时，可以看到以下页面，其中显示管道的所有  活动运行： 
 
     ![活动运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-activity-runs-5.png)
 
-1. 若要回到“管道运行”视图，请选择“管道”，如图所示。 
+1. 若要回到“管道运行”  视图，请选择“管道”  ，如图所示。 
 
 ## <a name="review-the-results"></a>查看结果
 在 SQL Server Management Studio 中对目标 SQL 数据库运行以下查询，验证数据是否已从源表复制到目标表： 
@@ -803,15 +802,15 @@ VALUES
     ```powershell
     $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
-1. 按照[监视管道](#monitor-the-pipeline)部分的说明监视管道运行。 由于管道状态为“正在进行”，因此可以在“操作”下看到另一操作链接，用于取消管道运行。 
+1. 按照[监视管道](#monitor-the-pipeline)部分的说明监视管道运行。 由于管道状态为“正在进行”，因此可以在“操作”下看到另一操作链接，用于取消管道运行。   
 
     ![“正在进行”的管道运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-6.png)
 
-1. 选择“刷新”对列表进行刷新，直到管道运行成功。 
+1. 选择“刷新”  对列表进行刷新，直到管道运行成功。 
 
     ![刷新管道运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-succeded-7.png)
 
-1. 也可选择“操作”下的“查看活动运行”链接，查看与此管道运行相关联的所有活动运行。 
+1. 也可选择“操作”下的“查看活动运行”链接，查看与此管道运行相关联的所有活动运行。   
 
 ## <a name="review-the-final-results"></a>查看最终结果
 在 SQL Server Management Studio 中对目标数据库运行以下查询，验证更新的/全新的数据是否已从源表复制到目标表。 

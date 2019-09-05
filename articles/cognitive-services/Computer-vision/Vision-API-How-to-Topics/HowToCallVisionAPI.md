@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 35e6ad922ab54748165fcf8e273d93ee44bc42cc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 97b9e0defb3f349a6e202572bc0e3005d5d87e9c
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564524"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141206"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>示例：如何调用计算机视觉 API
 
@@ -47,19 +47,19 @@ ms.locfileid: "68564524"
 
 每次调用计算机视觉 API 都需要订阅密钥。 此密钥需要通过查询字符串参数传递，或者在请求头中指定。
 
-要获取免费试用的密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
+可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
 
 1. 通过查询字符串传递订阅密钥，将以下内容视为计算机视觉 API 示例：
 
-```https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>```
+    ```https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>```
 
 1. 在 HTTP 请求标头中也可指定传递订阅密钥：
 
-```ocp-apim-subscription-key: <Your subscription key>```
+    ```ocp-apim-subscription-key: <Your subscription key>```
 
 1. 使用客户端库时，通过 VisionServiceClient 的构造函数传入订阅密钥：
 
-```var visionClient = new VisionServiceClient("Your subscriptionKey");```
+    ```var visionClient = new VisionServiceClient("Your subscriptionKey");```
 
 ## <a name="upload-an-image-to-the-computer-vision-api-service-and-get-back-tags-descriptions-and-celebrities"></a>将图像上传到计算机视觉 API 服务并取回标记、说明和名人
 

@@ -1,5 +1,5 @@
 ---
-title: 获取意向，Go - LUIS
+title: 快速入门：获取意向，Go - LUIS
 titleSuffix: Azure Cognitive Services
 description: 此 Go 快速入门使用可用的公共 LUIS 应用从会话文本中确定用户的意向。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: c4c2d94544739b0611d19705a669d124295947d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1fc36b8e1240751ce85d61c761cd069dcdad207e
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563836"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307564"
 ---
 # <a name="quickstart-get-intent-using-go"></a>快速入门：使用 Go 获取意向
 

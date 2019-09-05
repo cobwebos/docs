@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b997451a25f8a093491a322376db95ea53165893
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 50c6c2a1f8be979d10b77793adb168e6bd276e49
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989158"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258870"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>教程：在 Azure 资源管理器模板中使用条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "68989158"
 
 本教程仅介绍使用条件的基本方案。 有关详细信息，请参阅：
 
-* [模板文件结构：条件](./resource-group-authoring-templates.md#condition)。
+* [模板文件结构：条件](conditional-resource-deployment.md)。
 * [在 Azure 资源管理器模板中有条件地部署资源](/azure/architecture/building-blocks/extending-templates/conditional-deploy)。
 * [模板函数：If](./resource-group-template-functions-logical.md#if)。
 * [用于 Azure 资源管理器模板的比较函数](./resource-group-template-functions-comparison.md)

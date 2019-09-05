@@ -3,23 +3,20 @@ title: 构建第一个数据工厂（Azure 门户）| Microsoft Docs
 description: 本教程使用 Azure 门户中的数据工厂编辑器创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 2a7e2f9e5018bdad2a1ed2c6edcb727a2ffdcddd
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: b60f6adf6c13bc86fb4c4604dda7d4b92963b7ca
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839120"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140574"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教程：使用 Azure 门户生成第一个数据工厂
 > [!div class="op_single_selector"]

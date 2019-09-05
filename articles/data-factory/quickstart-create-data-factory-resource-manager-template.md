@@ -8,19 +8,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 2b25dff29563dcf44077465f3e563d04f04b3119
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7826d34b3489fce9d71da051345cf066b756ef8b
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66157033"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140969"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板创建 Azure 数据工厂
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [当前版本](quickstart-create-data-factory-resource-manager-template.md)
 
@@ -402,7 +402,7 @@ DeploymentDebugLogLevel :
     RuntimeState      : Stopped
     ```
     
-    请注意，触发器的运行时状态为“已停止”。
+    请注意，触发器的运行时状态为“已停止”。 
 5. **启动触发器**。 触发器在相应时间运行在模板中定义的管道。 也就是说，如果在下午 2:25 执行此命令，则触发器会在下午 3 点首次运行管道。 然后，触发器会每小时运行一次管道，直至为触发器指定的结束时间。
 
     ```powershell
@@ -435,33 +435,33 @@ DeploymentDebugLogLevel :
 
 ## <a name="monitor-the-pipeline"></a>监视管道
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)以后，单击“所有服务”，使用 **data fa** 之类的关键字进行搜索，然后选择“数据工厂”。
+1. 登录到 [Azure 门户](https://portal.azure.com/)以后，单击“所有服务”，使用 **data fa** 之类的关键字进行搜索，然后选择“数据工厂”。  
 
     ![浏览数据工厂菜单](media/quickstart-create-data-factory-resource-manager-template/browse-data-factories-menu.png)
 
-2. 在“数据工厂”页中单击已创建的数据工厂。 根据需要使用数据工厂的名称对列表进行筛选。
+2. 在“数据工厂”  页中单击已创建的数据工厂。 根据需要使用数据工厂的名称对列表进行筛选。
 
     ![选择数据工厂](media/quickstart-create-data-factory-resource-manager-template/select-data-factory.png)
 
-3. 在“数据工厂”页中，单击“监视和管理”磁贴。
+3. 在“数据工厂”页中，单击“监视和管理”磁贴。 
 
     ![“监视和管理”磁贴](media/quickstart-create-data-factory-resource-manager-template/monitor-manage-tile.png)
 
-4. “数据集成应用程序”会在 Web 浏览器的单独选项卡中打开。 如果监视器选项卡未处于活动状态，请切换到**监视器选项卡**。请注意，管道运行已由**计划程序触发器**触发。
+4.  “数据集成应用程序”会在 Web 浏览器的单独选项卡中打开。 如果监视器选项卡未处于活动状态，请切换到**监视器选项卡**。请注意，管道运行已由**计划程序触发器**触发。
 
     ![监视管道运行](media/quickstart-create-data-factory-resource-manager-template/monitor-pipeline-run.png)
 
     > [!IMPORTANT]
-    > 仅在整点（例如，早晨 4 点、早晨 5 点、早晨 6 点，等等）查看管道运行。 当时间到达下一小时时，单击工具栏上的“刷新”以刷新列表。
+    > 仅在整点（例如，早晨 4 点、早晨 5 点、早晨 6 点，等等）查看管道运行。 当时间到达下一小时时，单击工具栏上的“刷新”以刷新列表。 
 
-5. 单击“操作”列中的链接。
+5. 单击“操作”列中的链接。 
 
     ![管道操作链接](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
 6. 此时会看到与管道运行相关联的活动运行。 在本快速入门中，管道只有一个活动，其类型为：“复制”。 因此会看到该活动的一个运行。
 
     ![活动运行](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
-7. 单击“输出”列下的链接。 此时会在“输出”窗口中看到复制操作的输出。 单击最大化按钮可查看完整输出。 可以关闭最大化输出窗口，也可以直接关闭它。
+7. 单击“输出”列下的链接。  此时会在“输出”窗口中看到复制操作的输出。  单击最大化按钮可查看完整输出。 可以关闭最大化输出窗口，也可以直接关闭它。
 
     ![输出窗口](media/quickstart-create-data-factory-resource-manager-template/output-window.png)
 8. 看到运行成功/失败以后，即可停止触发器。 触发器一小时运行管道一次。 每次运行时，管道会将同一文件从 input 文件夹复制到 output 文件夹。 若要停止触发器，请在 PowerShell 窗口中运行以下命令。

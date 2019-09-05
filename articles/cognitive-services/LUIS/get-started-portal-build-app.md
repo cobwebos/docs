@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f54643883028d93b56c7e122f43db95bb6d0b8c1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ff666437790a1e32dde83f9e3be90b4c62637181
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560879"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307724"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中创建新应用
 
@@ -23,9 +23,9 @@ ms.locfileid: "68560879"
 
 生成应用是免费的操作，不需要 Azure 订阅。 做好部署应用的准备以后，请参阅[有关如何部署应用的快速入门](get-started-portal-deploy-app.md)。 该快速入门介绍如何创建 Azure 认知服务资源并将其分配到应用。
 
-## <a name="create-an-app"></a>创建应用
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
-1. 在浏览器中打开 [LUIS 门户](https://www.luis.ai)并登录。 首次登录时，需要创建一个免费的 LUIS 门户用户帐户。
+## <a name="create-an-app"></a>创建应用
 
 1. 在上下文工具栏中选择“创建新应用”。 
 

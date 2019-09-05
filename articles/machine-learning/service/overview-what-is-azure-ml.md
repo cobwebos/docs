@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8e19c89cec00bba05eb74e752268e1da43a1ac0
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 822bbd004035d9745535942c508cae6702e5b99b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035851"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278117"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
@@ -35,9 +35,12 @@ Azure 机器学习服务提供了一个基于云的环境，你可以使用这�
 + [Jupyter 笔记本](https://jupyter.org)：可以在其中使用 [SDK](https://docs.microsoft.com/azure/machine-learning/service/#reference) 编写你自己的代码，例如[这些示例笔记本](https://aka.ms/aml-notebooks)
 + [Visual Studio Code 扩展](how-to-vscode-tools.md)
 
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
+
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>通过 Azure 机器学习服务，我可以执行哪些操作？
 
-将 <a href="https://aka.ms/aml-sdk" target="_blank">Azure 机器学习 Python SDK</a> 与开源 Python 包配合使用，或者使用[可视界面（预览版）](ui-tutorial-automobile-price-train-score.md)，你自己可以在 Azure 机器学习服务工作区中生成并训练高度精确的机器学习和深度学习模型。
+将 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure 机器学习 Python SDK</a> 与开源 Python 包配合使用，或者使用[可视界面（预览版）](ui-tutorial-automobile-price-train-score.md)，你自己可以在 Azure 机器学习服务工作区中生成并训练高度精确的机器学习和深度学习模型。
 
 可以从开源 Python 包中提供的许多机器学习组件（例如 <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>、<a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>、<a href="https://pytorch.org" target="_blank">PyTorch</a> 和 <a href="https://mxnet.io" target="_blank">MXNet</a>）中进行选择。
 
@@ -45,7 +48,7 @@ Azure 机器学习服务提供了一个基于云的环境，你可以使用这�
 
 ### <a name="code-first-experience"></a>代码优先体验
 
-开始使用 <a href="https://aka.ms/aml-sdk" target="_blank">Azure 机器学习 Python SDK</a> 在本地计算机上训练，然后横向扩展到运行。 借助许多可用的[计算目标](how-to-set-up-training-targets.md)（例如 Azure 机器学习计算和 [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)）以及[高级超参数优化服务](how-to-tune-hyperparameters.md)，可以利用云的强大功能更快地生成更好的模型。
+开始使用 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure 机器学习 Python SDK</a> 在本地计算机上训练，然后横向扩展到运行。 借助许多可用的[计算目标](how-to-set-up-training-targets.md)（例如 Azure 机器学习计算和 [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)）以及[高级超参数优化服务](how-to-tune-hyperparameters.md)，可以利用云的强大功能更快地生成更好的模型。
 
 也可使用 SDK [自动完成模型训练和优化](tutorial-auto-train-models.md)。
 
@@ -63,7 +66,7 @@ Azure 机器学习服务提供了一个基于云的环境，你可以使用这�
 
 有了正确的模型以后，即可轻松地将其用在 Web 服务中、IoT 设备上或 Power BI 中。 有关详细信息，请参阅有关[部署方式及位置](how-to-deploy-and-where.md)的文章。
 
-然后，可以使用[适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 或 [Azure 门户](https://portal.azure.com/)来管理已部署的模型。
+然后，可以使用[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 门户](https://portal.azure.com/)来管理已部署的模型。
 
 可以使用这些模型[实时](how-to-consume-web-service.md)返回预测，或者在有大量数据的情况下[异步](how-to-run-batch-predictions.md)返回预测。
 

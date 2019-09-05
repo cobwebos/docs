@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d03e43ab2c26131c35eb78815d34cd959cc785
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 78daf578647e087fcc673d612ce24814a53ee331
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347516"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213575"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>教程：将 JFrog Artifactory 与 Azure Active Directory 集成
 
@@ -95,11 +95,11 @@ ms.locfileid: "68347516"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [JFrog Artifactory 客户端支持团队](https://support.jfrog.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. JFrog Artifactory 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
+1. JFrog Artifactory 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
     ![image](common/edit-attribute.png)
 
-1. 除上述属性以外，JFrog Artifactory 应用程序还要求在 SAML 响应中传回其他几个属性。 在“组声明(预览)”对话框中的“用户属性和声明”部分，执行以下步骤 ****   ****  ：
+1. 除上述属性以外，JFrog Artifactory 应用程序还要求在 SAML 响应中传回其他几个属性。 在“组声明(预览)”对话框中的“用户属性和声明”部分，执行以下步骤   ：
 
     a. 单击“声明中返回的组”旁边的**笔**。 
 

@@ -1,5 +1,5 @@
 ---
-title: 在 QnA Maker 中创建、发布和回答问题
+title: 教程：在 QnA Maker 中创建、发布和回答问题
 titleSuffix: Azure Cognitive Services
 description: 通过基于 Web 的公共 FAQ 创建包含问答的新知识库。 保存、训练和发布知识库。 发布知识库后，使用 cURL 命令发送问题并接收解答。 然后创建机器人，并使用相同的问题测试机器人。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: a13e0cb0e594571344b16d007ef13475b384b73d
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.openlocfilehash: 6cc509b9f9a9087fbe832dbd35b3dfd8d60a6577
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692997"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308061"
 ---
 # <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>教程：在 QnA Maker 门户中创建知识库
 

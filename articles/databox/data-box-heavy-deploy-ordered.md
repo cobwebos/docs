@@ -8,12 +8,13 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: c7fbd37ff8d40f27e0ca18a6f9816d3d96422ab9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.localizationpriority: high
+ms.openlocfilehash: dce3549bde4c62245e1d2b1f8ac0c88c0b70260c
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592410"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241393"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>教程：订购 Azure Data Box Heavy
 
@@ -80,7 +81,7 @@ Azure Data Box Heavy 是一个混合解决方案，可以快速、方便、可�
 
     |设置  |值  |
     |---------|---------|
-    |订阅     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 订阅链接到计费帐户。       |
+    |Subscription     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 订阅链接到计费帐户。       |
     |传输类型     | 选择“导入到 Azure”。         |
     |来源国家/地区     | 选择数据当前所在的国家/地区。         |
     |目标 Azure 区域     | 选择要在其中传输数据的 Azure 区域。        |
@@ -95,8 +96,8 @@ Azure Data Box Heavy 是一个混合解决方案，可以快速、方便、可�
     
     |设置  |值  |
     |---------|---------|
-    |名称     | 提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
-    |资源组     | 使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
+    |Name     | 提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
+    |Resource group     | 使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
     |目标 Azure 区域     | 选择存储帐户的区域。 <br> 有关详细信息，请转到[适用区域](https://azure.microsoft.com/global-infrastructure/services/?products=databox)。        |
     |存储目标     | 从存储帐户和/或托管磁盘中进行选择。 <br> 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个或多个存储帐户。 <br>Data Box Heavy 可以与最多 10 个存储帐户关联。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 <br> 不支持 Azure Data Lake Storage Gen 2 帐户。 请参阅[设备支持的存储帐户](data-box-heavy-system-requirements.md#supported-storage-accounts)。 <br>支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请了解如何[将 Azure Data Box 服务添加为受信任的服务](../storage/common/storage-network-security.md#exceptions)。|
 

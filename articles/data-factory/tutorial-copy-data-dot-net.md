@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: dbf45853f5f7a440578f3a9005831a4ef63d85e7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 49b5b03356790bd45b2ad29897a57b746af1abe1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65778865"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140689"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Blob 复制到 Azure SQL 数据库
 
@@ -42,8 +41,8 @@ ms.locfileid: "65778865"
 * **Azure 存储帐户**。 可将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
 * **Azure SQL 数据库**。 将数据库用作**接收器**数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)一文获取创建步骤。
 * **Visual Studio** 2015 或 2017。 本文中的演练使用 Visual Studio 2017。
-* **下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)**。
-* 按照[此说明](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)**在 Azure Active Directory 中创建应用程序**。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**身份验证密钥**和**租户 ID**。 按照同一文章中的说明将应用程序分配到“参与者”角色。
+* **下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)** 。
+* 按照[此说明](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)**在 Azure Active Directory 中创建应用程序**。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**身份验证密钥**和**租户 ID**。 按照同一文章中的说明将应用程序分配到“参与者”角色。 
 
 ### <a name="create-a-blob-and-a-sql-table"></a>创建 blob 和 SQL 表
 
@@ -76,11 +75,11 @@ ms.locfileid: "65778865"
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. 允许 Azure 服务访问 SQL Server。 确保 Azure SQL Server 的“允许访问 Azure 服务”设置处于“打开”状态，以便数据工厂服务可以将数据写入 Azure SQL Server。 若要验证并启用此设置，请执行以下步骤：
+2. 允许 Azure 服务访问 SQL Server。 确保 Azure SQL Server 的“允许访问 Azure 服务”  设置处于“打开”  状态，以便数据工厂服务可以将数据写入 Azure SQL Server。 若要验证并启用此设置，请执行以下步骤：
 
-    1. 单击左侧的“更多服务”中心，并单击“SQL Server”。
-    2. 选择服务器，并单击“设置”下的“防火墙”。
-    3. 在“防火墙设置”页中，单击“允许访问 Azure 服务”对应的“打开”。
+    1. 单击左侧的“更多服务”  中心，并单击“SQL Server”  。
+    2. 选择服务器，并单击“设置”  下的“防火墙”  。
+    3. 在“防火墙设置”页中，单击“允许访问 Azure 服务”对应的“打开”。   
 
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
@@ -88,15 +87,15 @@ ms.locfileid: "65778865"
 使用 Visual Studio 2015/2017 创建 C# .NET 控制台应用程序。
 
 1. 启动 **Visual Studio**。
-2. 单击“文件”，指向“新建”并单击“项目”。
-3. 从右侧项目类型列表中选择“Visual C#” -> “控制台应用(.NET Framework)”。 需要 .NET 4.5.2 版或更高版本。
+2. 单击“文件”，指向“新建”并单击“项目”。   
+3. 从右侧项目类型列表中选择“Visual C#”   -> “控制台应用(.NET Framework)”  。 需要 .NET 4.5.2 版或更高版本。
 4. 输入 **ADFv2Tutorial** 作为名称。
 5. 单击“确定”以创建该项目  。
 
 ## <a name="install-nuget-packages"></a>安装 NuGet 包
 
-1. 单击“工具” -> “NuGet 包管理器” -> “包管理器控制台”。
-2. 在“包管理器控制台”中，运行以下命令来安装包。 有关详细信息，请参阅 [Microsoft.Azure.Management.DataFactory nuget 包](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
+1. 单击“工具”   -> “NuGet 包管理器”   -> “包管理器控制台”  。
+2. 在“包管理器控制台”  中，运行以下命令来安装包。 有关详细信息，请参阅 [Microsoft.Azure.Management.DataFactory nuget 包](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
@@ -120,7 +119,7 @@ ms.locfileid: "65778865"
     ```
 
     
-2. 将以下代码添加到 **Main** 方法以设置变量。 将占位符替换为自己的值。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+2. 将以下代码添加到 **Main** 方法以设置变量。 将占位符替换为自己的值。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
     ```csharp
     // Set variables

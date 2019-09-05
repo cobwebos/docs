@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 8678bacb48bdf63abb2ce517f1bead83d86a5827
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: d4376632b8f912cd76f3af5e9a8819b75f8144b6
+ms.sourcegitcommit: dcea3c1ab715a79ebecd913885fbf9bbee61606a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113746"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70209481"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure 数据工厂
 
@@ -314,7 +314,7 @@ ms.locfileid: "70113746"
 
 在此步骤中，将创建管道运行。
 
-1. 运行 **Invoke-AzDataFactoryV2Pipeline** cmdlet 以创建一个管道运行。 此 cmdlet 返回管道运行 ID，用于将来的监视。
+运行 **Invoke-AzDataFactoryV2Pipeline** cmdlet 以创建一个管道运行。 此 cmdlet 返回管道运行 ID，用于将来的监视。
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline `

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 2b888a275b08c7011c6e0b60ff1cd1d70b42f465
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 008ecf221dfcc069f6ac3b2ee3d8e5e46056c83c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559843"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308138"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>使用 Java 从知识库获取问题的答案
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>快速入门：使用 Java 从知识库获取问题的答案
 
 本快速入门详细介绍如何以编程方式从已发布的 QnA Maker 知识库获取答案。 知识库包含来自[数据源](../Concepts/data-sources-supported.md)的问题和答案，例如常见问题解答。 [问题](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)将发送到 QnA Maker 服务。 [响应](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)包含最常见的预测答案。 
 

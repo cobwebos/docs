@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6c06d789e6a005c0079f889cead6a75f4d0baf19
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c4eba3e08e403243e76ac891d3bfcb59f12cad85
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875701"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211909"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>浏览 Azure IoT Central UI
 
@@ -39,9 +39,29 @@ ms.locfileid: "69875701"
 
 使用左侧导航菜单来访问应用程序的不同区域。 可以选择“<”  或“>”  来展开或折叠导航栏：
 
-| 菜单 | 说明 |
-| ---- | ----------- |
-| ![左侧导航菜单](media/overview-iot-central-tour/navigationbar.png) | <ul><li>“仪表板”  按钮可显示应用程序仪表板。 构建者可以为操作员自定义仪表板。 用户也可以创建自己的仪表板。</li><li>“Device Explorer”  按钮列出与应用程序中的每个设备模板关联的模拟设备和真实设备。 操作员可以使用“Device Explorer”  来管理已连接的设备。</li><li>“设备集”  按钮可以用来查看和创建设备集。 操作员可以将设备集创建为由查询指定的设备的逻辑集合。</li><li>“分析”  按钮显示从设备和设备集的设备遥测数据得出的分析。 操作员可以基于设备数据创建自定义视图来从应用程序获得见解。</li><li>“作业”按钮通过让你创建和运行作业来执行大规模更新，从而实现批量设备管理  。</li><li>“设备模板”按钮  显示构建者用于创建和管理设备模板的工具。</li><li>“连续数据导出”按钮供管理员用来配置连续导出，可以将数据导出到其他 Azure 服务，例如存储和队列。 </li><li>“管理”  按钮显示应用程序管理页面，管理员可以在其中管理应用程序设置、用户和角色。</li></ul> |
+:::row:::
+  :::column span="":::
+      ![Left navigation menu](media/overview-iot-central-tour/navigationbar.png)
+  :::column-end:::
+  :::column span="2":::
+
+      **Dashboard** displays your application dashboard. As a builder, you can customize the dashboard for your operators. Users can also create their own  dashboards.
+    
+      **Device Explorer** lists the simulated and real devices associated with each device template in the application. As an operator, you use the **Device Explorer** to manage your connected devices.
+    
+      **Device Sets** enables you to view and create device sets. As an operator, you can create device sets as a logical collection of devices specified by a query.
+    
+      **Analytics** shows analytics derived from device telemetry for devices and device sets. As an operator, you can create custom views on top of device data to derive insights from your application.
+    
+      **Jobs** enables bulk device management by having you create and run jobs to perform updates at scale.
+    
+      **Device Templates** shows the tools a builder uses to create and manage device templates.
+    
+      **Continuous Data Export** enables an administrator to configure a continuous export to other Azure services such as storage and queues.
+    
+      **Administration** shows the application administration pages where an administrator can manage application settings, users, and roles.
+   :::column-end:::
+:::row-end:::
 
 ## <a name="search-help-and-support"></a>搜索、帮助和支持
 

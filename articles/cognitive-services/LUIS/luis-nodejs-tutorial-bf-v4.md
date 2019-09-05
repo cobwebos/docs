@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: a06bd5a1a061de82230e93b867ea88e333b3cc93
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8455a9c9ecff89643e090f1d763a44f97f5779f5
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442557"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70206882"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>教程：通过 Node.js 使用启用了语言理解的 Web 应用机器人 
 
@@ -47,8 +47,8 @@ ms.locfileid: "67442557"
     |设置|目的|建议的设置|
     |--|--|--|
     |机器人名称|资源名称|`luis-nodejs-bot-` + `<your-name>`，例如 `luis-nodejs-bot-johnsmith`|
-    |订阅|要在其中创建机器人的订阅。|你的主要订阅。
-    |资源组|Azure 资源的逻辑组|创建一个新组用于存储此机器人使用的所有资源，并将该组命名为 `luis-nodejs-bot-resource-group`。|
+    |Subscription|要在其中创建机器人的订阅。|你的主要订阅。
+    |Resource group|Azure 资源的逻辑组|创建一个新组用于存储此机器人使用的所有资源，并将该组命名为 `luis-nodejs-bot-resource-group`。|
     |位置|Azure 区域 - 不一定要与 LUIS 创作或发布区域相同。|`westus`|
     |定价层|用于服务请求限制和计费。|`F0` 是免费层。
     |应用程序名称|将机器人部署到云（例如，humanresourcesbot.azurewebsites.net）时，该名称用作子域。|`luis-nodejs-bot-` + `<your-name>`，例如 `luis-nodejs-bot-johnsmith`|
@@ -339,7 +339,7 @@ ms.locfileid: "67442557"
 
 1. 在机器人模拟器中，输入以下言语来预订机票： 
 
-    ```bot
+    ```console
     Book a flight from Paris to Berlin on March 22, 2020
     ```
 

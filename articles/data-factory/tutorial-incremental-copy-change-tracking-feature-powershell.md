@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 117b6d53a3392e8a4f75d5d1966e3f48fb66d5ce
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 36a160ad3c6b925931c6274a44cfb5492d6a562a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966410"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140640"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -235,7 +234,7 @@ ms.locfileid: "68966410"
 ### <a name="create-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
 在此步骤中，将 Azure SQL 数据库链接到数据工厂。
 
-1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 **&lt;server&gt;、&lt;database name **、&lt;user id&gt; 和 &lt;password&gt;** 分别替换为自己的 Azure SQL Server 名称、数据库名称、用户 ID 和密码，然后保存文件。 
+1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 server、database name **、&lt;user id&gt; 和 &lt;password&gt;** 分别替换为自己的 Azure SQL Server 名称、数据库名称、用户 ID 和密码，然后保存文件。 
 
     ```json
     {

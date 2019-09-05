@@ -15,12 +15,12 @@ ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1b7183da84b994da8694440183e367f143722002
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: be37768a5cef38ae0dc49e12f1d83ba8005ab961
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295160"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194172"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色
 
@@ -48,7 +48,7 @@ ms.locfileid: "58295160"
 | 服务管理员 | 每个 Azure 订阅有 1 个 | <ul><li>在 [Azure 门户](https://portal.azure.com)中管理服务</li><li>将用户分配到共同管理员角色</li></ul> | 默认情况下，新订阅的帐户管理员也是服务管理员。<br>服务管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。<br>服务管理员具有 Azure 门户的完全访问权限。 |
 | 共同管理员 | 每个订阅有 200 个 | <ul><li>与服务管理员的访问特权相同，但无法更改订阅与 Azure 目录之间的关联。</li><li>将用户分配到共同管理员角色，但无法更改服务管理员</li></ul> | 共同管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。 |
 
-在 Azure 门户中，可以使用“经典管理员”选项卡管理共同管理员或查看服务管理员。
+在 Azure 门户中，可以使用“经典管理员”  选项卡管理共同管理员或查看服务管理员。
 
 ![Azure 门户中的 Azure 经典订阅管理员](./media/rbac-and-directory-admin-roles/classic-administrators.png)
 
@@ -81,11 +81,11 @@ Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/resource-
 
 只有 Azure 门户和 Azure 资源管理器 API 支持 Azure RBAC。 分配有 RBAC 角色的用户、组和应用程序无法使用 [Azure 经典部署模型 API](../azure-resource-manager/resource-manager-deployment-model.md)。
 
-在 Azure 门户中，使用 RBAC 的角色分配显示在“访问控制(IAM)”边栏选项卡上。 在整个门户中都可以找到此边栏选项卡，例如，在管理组、订阅、资源组和各种资源所在的部分。
+在 Azure 门户中，使用 RBAC 的角色分配显示在“访问控制(IAM)”边栏选项卡上。  在整个门户中都可以找到此边栏选项卡，例如，在管理组、订阅、资源组和各种资源所在的部分。
 
 ![Azure 门户中的“访问控制(IAM)”边栏选项卡](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
 
-单击“角色”选项卡时，会看到内置角色和自定义角色的列表。
+单击“角色”选项卡时，会看到内置角色和自定义角色的列表。 
 
 ![Azure 门户中的内置角色](./media/rbac-and-directory-admin-roles/roles-list.png)
 
@@ -97,11 +97,11 @@ Azure AD 管理员角色用于管理目录中的 Azure AD 资源，例如，创�
 
 | Azure AD 管理员角色 | 权限 | 说明 |
 | --- | --- | --- |
-| [全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) | <ul><li>管理对 Azure Active Directory 中所有管理功能的访问，以及与 Azure Active Directory 联合的服务</li><li>将管理员角色分配给其他人</li><li>重置任何用户和其他所有管理员的密码</li></ul> | 注册 Azure Active Directory 租户的人员将成为全局管理员。 |
+| [全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>管理对 Azure Active Directory 中所有管理功能的访问，以及与 Azure Active Directory 联合的服务</li><li>将管理员角色分配给其他人</li><li>重置任何用户和其他所有管理员的密码</li></ul> | 注册 Azure Active Directory 租户的人员将成为全局管理员。 |
 | [用户管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>创建和管理用户与组的所有方面</li><li>管理支持票证</li><li>监视服务运行状况</li><li>更改用户、支持管理员和其他用户帐户管理员的密码</li></ul> |  |
 | [计费管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>购买产品</li><li>管理订阅</li><li>管理支持票证</li><li>监视服务运行状况</li></ul> |  |
 
-在 Azure 门户中的“角色和管理员”边栏选项卡上，可以看到 Azure AD 管理员角色的列表。 有关所有 Azure AD 管理员角色的列表，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+在 Azure 门户中的“角色和管理员”边栏选项卡上，可以看到 Azure AD 管理员角色的列表。  有关所有 Azure AD 管理员角色的列表，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
 ![Azure 门户中的 Azure AD 管理员角色](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
 
@@ -118,7 +118,7 @@ Azure AD 管理员角色用于管理目录中的 Azure AD 资源，例如，创�
 
 ### <a name="do-azure-rbac-roles-and--azure-ad-administrator-roles-overlap"></a>Azure RBAC 角色与 Azure AD 管理员角色是否重叠？
 
-默认情况下，Azure RBAC 角色和 Azure AD 管理员角色不会跨越 Azure 与 Azure AD。 但是，如果全局管理员通过在 Azure 门户中选择“全局管理员可以管理 Azure 订阅和管理组”开关提升了自己的访问权限，则会针对特定租户的所有订阅为全局管理员授予[用户访问管理员](built-in-roles.md#user-access-administrator)角色（一种 RBAC 角色）。 “用户访问管理员”角色允许用户向其他用户授予对 Azure 资源的访问权限。 此开关可帮助重新获取订阅的访问权限。 有关详细信息，请参阅[以 Azure AD 管理员的身份提升访问权限](elevate-access-global-admin.md)。
+默认情况下，Azure RBAC 角色和 Azure AD 管理员角色不会跨越 Azure 与 Azure AD。 但是，如果全局管理员通过在 Azure 门户中选择“全局管理员可以管理 Azure 订阅和管理组”开关提升了自己的访问权限，则会针对特定租户的所有订阅为全局管理员授予[用户访问管理员](built-in-roles.md#user-access-administrator)角色（一种 RBAC 角色）。  “用户访问管理员”角色允许用户向其他用户授予对 Azure 资源的访问权限。 此开关可帮助重新获取订阅的访问权限。 有关详细信息，请参阅[以 Azure AD 管理员的身份提升访问权限](elevate-access-global-admin.md)。
 
 有多个 Azure AD 管理员角色（例如全局管理员和用户管理员角色）可跨越 Azure AD 和 Microsoft Office 365。 例如，如果你是全局管理员角色的成员，则会获得 Azure AD 和 Office 365 中的全局管理员功能，例如，对 Microsoft Exchange 和 Microsoft SharePoint 进行更改。 但是，在默认情况下，全局管理员无权访问 Azure 资源。
 
