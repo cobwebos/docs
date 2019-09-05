@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: ecb840d97a45479d32079766807b4f2788cc29ec
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69892023"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382906"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
 ## <a name="virtual-network-basics"></a>虚拟网络基础知识
 
 ### <a name="what-is-an-azure-virtual-network-vnet"></a>Azure 虚拟网络 (VNet) 是什么？
-Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它是对专用于订阅的 Azure 云进行的逻辑隔离。 你可以使用 VNet 设置和管理 Azure 中的虚拟专用网络 (VPN)，或者链接 VNet 与 Azure 中的其他 VNet，或链接你的本地 IT 基础结构，以创建混合或跨界解决方案。 创建的每个 VNet 具有其自身的 CIDR 块，只要 CIDR 块不重叠，即可链接到其他 VNet 和本地网络。 还可以控制 VNet 的 DNS 服务器设置并将 VNet 分离到子网中。
+Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它是对专用于订阅的 Azure 云进行的逻辑隔离。 可以使用 VNet 设置和管理 Azure 中的虚拟专用网络 (VPN)，或者链接 VNet 与 Azure 中的其他 VNet，或链接本地 IT 基础结构，以创建混合或跨界解决方案。 你创建的每个 VNet 都具有其自己的 CIDR 块，只要 CIDR 块不重叠，即可链接到其他 Vnet 和本地网络。 还可以控制 VNet 的 DNS 服务器设置并将 VNet 分离到子网中。
 
 使用 VNet：
 
@@ -70,10 +70,10 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>使用这些子网中的 IP 地址是否有任何限制？
 是的。 Azure 在每个子网中保留 5 个 IP 地址。 这些地址是 x.x.x.0-x.x.x.3 和子网的最后一个地址。 在每个子网中都为 Azure 服务保留了 x.x.x.1-x.x.x.3。   
-- x.x.x.x. x:网络地址
-- x.x.x.x. x:由 Azure 为默认网关保留
-- x.x. x. x. x. x. x. x. x. x. 3:由 Azure 保留以将 Azure DNS Ip 映射到 VNet 空间
-- x.x.x.x. x:网络广播地址
+- x.x.x.x. x：网络地址
+- x.x.x.x. x：由 Azure 为默认网关保留
+- x.x. x. x. x. x. x. x. x. x. 3：由 Azure 保留以将 Azure DNS Ip 映射到 VNet 空间
+- x.x.x.x. x：网络广播地址
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>VNet 和子网的最小和最大容量是多少？
 支持的最小子网为 /29，最大为 /8（使用 CIDR 子网定义）。
@@ -241,7 +241,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 是的。 全球 VNet 对等互连可以将不同区域中的 VNet 对等互连。 全局 VNet 对等互连在所有 Azure 公共区域、中国云区域和政府云区域中均可用。 不能通过全球对等互连的方式从 Azure 公共区域连接到国家云区域。
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>与全球 VNet 对等互连和负载均衡器相关的约束有哪些？
-如果两个虚拟网络位于不同的区域（全球 VNet 对等互连），则无法连接到使用基本负载均衡器的资源。 你可以连接到使用标准负载均衡器的资源。
+如果两个虚拟网络位于不同的区域（全局 VNet 对等互连），则无法连接到使用基本负载均衡器的资源。 你可以连接到使用标准负载均衡器的资源。
 以下资源使用基本负载均衡器，这意味着你不能跨全球 VNet 对等互连与它们进行通信：
 - 位于基本负载均衡器后的 VM
 - 采用基本负载均衡器的虚拟机规模集 
@@ -250,23 +250,23 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 - Service Fabric
 - SQL MI
 - API 管理
-- Active Directory 域服务 (添加)
+- Active Directory 域服务（添加）
 - 逻辑应用
 - HDInsight
 -   Azure Batch
 - AKS
 - 应用服务环境
 
-你可以通过 VNet 网关经由 ExpressRoute 或 VNet-to-VNet 连接到这些资源。
+可以通过 ExpressRoute 或 vnet 到 vnet 网关连接到这些资源。
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>如果虚拟网络所属的订阅位于不同的 Azure Active Directory 租户中，能否启用 VNet 对等互连？
 是的。 如果订阅属于不同的 Azure Active Directory 租户，则可以建立 VNet 对等互连（无论是本地还是全球）。 可以通过 PowerShell 或 CLI 来执行此操作。 尚不支持门户。
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>我的 VNet 对等互连连接处于“已启动”状态，为什么我不能连接？
-如果对等互连连接处于“已启动”状态，则意味着只创建了一个链接。 必须创建双向链接才能成功建立连接。 例如，若要从 VNet A 对等互连到 VNet B，必须创建从 VNetA 到 VNetB 以及从 VNetB 到 VNetA 的链接。 创建两个链接后，状态会更改为“已连接”。
+如果对等互连连接处于已*启动*状态，则表示你只创建了一个链接。 必须创建双向链接才能成功建立连接。 例如，若要从 VNet A 对等互连到 VNet B，必须创建从 VNetA 到 VNetB 以及从 VNetB 到 VNetA 的链接。 同时创建这两个链接会将状态更改为 "*已连接*"。
 
 ### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>我的 VNet 对等互连连接处于“已断开连接”状态，为什么我无法创建对等互连连接？
-VNet 对等互连连接处于“已断开连接”状态意味着创建的某个链接已被删除。 若要重新建立对等互连连接，需要删除该链接并重新创建。
+如果 VNet 对等互连连接处于*断开连接*状态，则意味着已删除其中一个创建的链接。 若要重新建立对等互连连接，你将需要删除该链接，然后重新创建它。
 
 ### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>是否可以将我的 VNet 与另一订阅中的 VNet 对等互连？
 是的。 可以跨订阅和跨区域进行 VNet 对等互连。
@@ -280,7 +280,7 @@ VNet 对等互连连接处于“已断开连接”状态意味着创建的某个
 ### <a name="is-vnet-peering-traffic-encrypted"></a>VNet 对等互连流量是否加密？
 否。 对等互连 VNet 中的资源之间的流量是专用的，处于隔离状态。 它始终局限在 Microsoft 主干上。
 
-### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>为什么我的对等互连连接处于已断开状态？
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>为什么对等互连连接处于*断开连接*状态？
 删除某个 VNet 对等互连链接时，VNet 对等互连连接就会进入“已断开”状态。 必须删除两个链接才能重新建立成功的对等互连连接。
 
 ### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>如果我从 VNetA 对等互连到 VNetB，然后又从 VNetB 对等互连到 VNetC，这是否意味着 VNetA 和 VNetC 已对等互连？
@@ -295,20 +295,20 @@ VNet 对等互连连接处于“已断开连接”状态意味着创建的某个
 ## <a name="virtual-network-tap"></a>虚拟网络 TAP
 
 ### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>可以在哪些 Azure 区域使用虚拟网络 TAP？
-虚拟网络 TAP 预览版在所有 Azure 区域中都可用。 受监视的网络接口、虚拟网络 TAP 资源和收集器或分析解决方案必须部署在同一区域中。
+虚拟网络分流预览版适用于所有 Azure 区域。 受监视的网络接口、虚拟网络 TAP 资源和收集器或分析解决方案必须部署在同一区域中。
 
 ### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>虚拟网络 TAP 是否支持对镜像数据包使用任何筛选功能？
 虚拟网络 TAP 预览版不支持筛选功能。 当 TAP 配置被添加到网络接口后，此网络接口上所有入口和出口流量的一个深层副本会被流式传输到 TAP 目标。
 
 ### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>是否可以向受监视的网络接口添加多个 TAP 配置？
-受监视的网络接口仅能拥有一个 TAP 配置。 查看单个[合作伙伴解决方案](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)，寻找将 TAP 流量的多个副本流式传输到你所选择的分析工具的功能。
+受监视的网络接口仅能拥有一个 TAP 配置。 请咨询各个[合作伙伴解决方案](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)，以便能够将多个分流流量副本流式传输到所选的分析工具。
 
 ### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>同一虚拟网络 TAP 资源是否可以聚合多个虚拟网络中来自受监视的网络接口的流量？
 是的。 同一虚拟网络 TAP 资源可用于聚合同一订阅或不同订阅中的对等虚拟网络中来自受监视的网络接口的镜像流量。 虚拟网络 TAP 资源和目标负载均衡器或目标网络接口必须位于同一订阅中。 所有订阅必须在同一 Azure Active Directory 租户下。
 
 ### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>如果我在网络接口上启用虚拟网络 TAP 配置，是否需要考虑生产流量的性能问题？
 
-虚拟网络 TAP 现为预览版。 在预览版期间，没有服务级别协议。 容量不应用于生产工作负荷。 使用 TAP 配置启用虚拟网络接口后，Azure 主机上分配给虚拟机以发送生产流量的相同资源将用于执行镜像功能并发送镜像数据包。 选择正确的 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机大小，确保有足够的资源可用于虚拟机以发送生产流量和镜像流量。
+虚拟网络 TAP 现为预览版。 在预览版期间，没有服务级别协议。 容量不应用于生产工作负荷。 当使用点击配置启用虚拟机网络接口时，将使用 Azure 主机上分配给虚拟机的相同资源来发送生产流量，以执行镜像功能并发送镜像的数据包。 选择正确的 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机大小，确保有足够的资源可用于虚拟机以发送生产流量和镜像流量。
 
 ### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>虚拟网络 TAP 是否支持适用于 [Linux](create-vm-accelerated-networking-cli.md) 或 [Windows](create-vm-accelerated-networking-powershell.md) 的加速网络？
 
@@ -321,22 +321,22 @@ VNet 对等互连连接处于“已断开连接”状态意味着创建的某个
 1. 启用 Azure 服务的服务终结点。
 2. 在 Azure 服务上设置 VNet Acl。
 
-第一步是网络端操作，第二步是服务资源端操作。 这两个步骤可以由同一管理员或不同的管理员根据授予管理员角色的 RBAC 权限执行。 建议首先在 Azure 服务端设置 VNet ACL 之前打开虚拟网络的服务终结点。 因此，必须按照上面列出的顺序执行这些步骤以设置 VNet 服务终结点。
+第一步是网络端操作，第二步是服务资源端操作。 这两个步骤可以由同一管理员或不同的管理员根据授予管理员角色的 RBAC 权限执行。 建议首先在 Azure 服务端设置 VNet ACL 之前打开虚拟网络的服务终结点。 因此，必须按照上面列出的顺序执行这些步骤，以设置 VNet 服务终结点。
 
 >[!NOTE]
 > 必须先完成上述两个操作，然后才能限制 Azure 服务对允许的 VNet 和子网的访问。 只有打开网络端 Azure 服务的服务终结点才能提供有限的访问权限。 此外，还必须在 Azure 服务端设置 VNet acl。
 
-某些服务（如 SQL 和 CosmosDB）允许通过“IgnoreMissingVnetServiceEndpoint”标志对上述序列进行异常处理。 一旦将标志设置为“True”，就可在网络端设置服务终结点之前，在 Azure 服务端设置 VNet ACL。 Azure 服务提供此标志以帮助客户在 Azure 服务上配置特定的 IP 防火墙，由于源 IP 从公共 IPv4 地址更改为专用地址，因此打开网络端的服务终结点会导致连接性下降。 在网络端设置服务终结点之前，在 Azure 服务端设置 VNet ACL 可帮助避免连接性下降。
+某些服务（例如 SQL 和 CosmosDB）通过**IgnoreMissingVnetServiceEndpoint**标志允许上述序列的异常。 将标志设置为**True**后，可以在 Azure 服务端设置 VNet acl，然后在网络端设置服务终结点。 Azure 服务提供此标志以帮助客户在 Azure 服务上配置特定的 IP 防火墙，由于源 IP 从公共 IPv4 地址更改为专用地址，因此打开网络端的服务终结点会导致连接性下降。 在网络端设置服务终结点之前，在 Azure 服务端设置 VNet ACL 可帮助避免连接性下降。
 
 ### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>是否所有 Azure 服务都位于客户提供的 Azure 虚拟网络中？ VNet 服务终结点如何与 Azure 服务一起工作？
 
-否，并非所有 Azure 服务都位于客户提供的虚拟网络中。 大多数 Azure 数据服务，如 Azure 存储、Azure SQL 和 Azure Cosmos DB，都是可以通过公共 IP 地址访问的多租户服务。 可在[此处](virtual-network-for-azure-services.md)详细了解 Azure 服务的虚拟网络集成。 
+否，并非所有 Azure 服务都位于客户提供的虚拟网络中。 大多数 Azure 数据服务（如 Azure 存储、Azure SQL 和 Azure Cosmos DB）都是可通过公共 IP 地址访问的多租户服务。 可在[此处](virtual-network-for-azure-services.md)详细了解 Azure 服务的虚拟网络集成。 
 
 使用 VNet 服务终结点功能（在网络端打开 VNet 服务终结点并在 Azure 服务端设置适当的 VNet ACL）时，从允许的 VNet 和子网访问 Azure 服务具有一定限制。
 
 ### <a name="how-does-vnet-service-endpoint-provide-security"></a>VNet 服务终结点是如何提供安全的？
 
-VNet 服务终结点功能（在网络端打开 VNet 服务终结点并在 Azure 服务端设置适当的 VNet ACL）限制 Azure 服务访问允许的 VNet 和子网，从而提供了网络级别的安全性和 Azure 服务流量的隔离。 所有使用 VNet 服务终结点的流量都在 Microsoft 主干上流动，从而提供了与公共 Internet 的另一层隔离。 此外，客户还可选择完全删除对 Azure 服务资源的公共 Internet 访问权限，并且只允许通过 IP 防火墙和 VNet ACL 的组合从其虚拟网络中访问流量，从而保护 Azure 服务资源免受未经授权的访问。      
+VNet 服务终结点功能（在网络端启用 VNet 服务终结点，并在 Azure 服务端设置相应的 VNet Acl）将 Azure 服务访问限制为允许的 VNet 和子网，从而提供网络级别的安全性并Azure 服务流量的隔离。 所有使用 VNet 服务终结点的流量都在 Microsoft 主干上流动，从而提供了与公共 Internet 的另一层隔离。 此外，客户还可选择完全删除对 Azure 服务资源的公共 Internet 访问权限，并且只允许通过 IP 防火墙和 VNet ACL 的组合从其虚拟网络中访问流量，从而保护 Azure 服务资源免受未经授权的访问。      
 
 ### <a name="what-does-the-vnet-service-endpoint-protect---vnet-resources-or-azure-service"></a>VNet 服务终结点保护什么 - VNet 资源还是 Azure 服务？
 VNet 服务终结点有助于保护 Azure 服务资源。 VNet 资源通过网络安全组 (NSG) 进行保护。
@@ -352,35 +352,35 @@ VNet 服务终结点有助于保护 Azure 服务资源。 VNet 资源通过网�
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>如果虚拟网络和 Azure 服务资源属于不同的 AD 租户，是否可打开 VNet 服务终结点并设置 VNet ACL？
 否，AD 租户不支持 VNet 服务终结点和 VNet ACL。
 
-### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-express-route-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>通过 Azure 虚拟网络网关 (VPN) 或快速路由网关连接的本地设备的 IP 地址是否可通过 VNet 服务终结点访问 Azure PaaS 服务？
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>是否可以通过 Azure 虚拟网络网关（VPN）或 ExpressRoute 网关连接到本地设备的 IP 地址通过 VNet 服务终结点访问 Azure PaaS 服务？
 默认情况下，无法从本地网络访问在虚拟网络中保护的 Azure 服务资源。 要允许来自本地的流量，还必须允许来自本地或 ExpressRoute 的公共（通常为 NAT）IP 地址。 可通过 Azure 服务资源的 IP 防火墙配置添加这些 IP 地址。
 
-### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-with-in-a-virtual-network-or-across-multiple-virtual-networks"></a>是否可使用 VNet 服务终结点功能来保护 Azure 服务到虚拟网络中的多个子网或跨多个虚拟网络？
-要在一个虚拟网络中的多个子网内或者跨多个虚拟网络保护 Azure 服务，可以针对每个子网单独启用服务终结点，然后通过在 Azure 服务端设置适当的 VNet ACL 来保护所有子网的 Azure 服务资源。
+### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-within-a-virtual-network-or-across-multiple-virtual-networks"></a>能否使用 VNet 服务终结点功能来保护虚拟网络中的多个子网或跨多个虚拟网络的 Azure 服务？
+若要为虚拟网络中的多个子网或跨多个虚拟网络确保 Azure 服务的安全，请在每个子网上的网络端单独启用服务终结点，然后通过设置Azure 服务端的相应 VNet Acl。
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>如何筛选从虚拟网络到 Azure 服务的出站流量，并且仍然使用服务终结点？
 如果想要检查或筛选从虚拟网络发往 Azure 服务的流量，可在该虚拟网络中部署网络虚拟设备。 然后，可将服务终结点应用到部署了网络虚拟设备的子网，并通过 VNet ACL 在该子网中保护 Azure 服务资源。 如果希望使用网络虚拟设备筛选将从虚拟网络发起的 Azure 服务访问限制为特定的 Azure 资源，此方案可能也很有帮助。 有关详细信息，请阅读[网络虚拟设备出口](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha)一文。
 
-### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>从 VNet 外部访问已启用虚拟网络访问控制列表 (ACL) 的 Azure 服务帐户时会发生什么情况？
+### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>访问从 VNet 外部启用虚拟网络访问控制列表（ACL）的 Azure 服务帐户会发生什么情况？
 将返回 HTTP 403 或 HTTP 404 错误。
 
 ### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>是否允许不同区域中创建的虚拟网络子网访问另一个区域中的 Azure 服务帐户？ 
 是的，对于大多数 Azure 服务，在不同区域创建的虚拟网络可以通过 VNet 服务终结点访问另一个区域的 Azure 服务。 例如，如果 Azure Cosmos DB 帐户位于美国西部或美国东部，而虚拟网络位于多个区域，该虚拟网络可以访问 Azure Cosmos DB。 存储和 SQL 是例外情况，本质上是区域性的，虚拟网络和 Azure 服务都需位于同一区域。
   
-### <a name="can-an-azure-service-have-both-vnet-acl-and-an-ip-firewall"></a>Azure 服务可同时具有 VNet ACL 和 IP 防火墙吗？
-是的，VNet ACL 和 IP 防火墙可同时存在。 这两个功能相互补充以确保隔离和安全性。
+### <a name="can-an-azure-service-have-both-a-vnet-acl-and-an-ip-firewall"></a>Azure 服务是否可以同时具有 VNet ACL 和 IP 防火墙？
+是的，VNet ACL 和 IP 防火墙可以共存。 这两个功能相互补充以确保隔离和安全性。
  
 ### <a name="what-happens-if-you-delete-a-virtual-network-or-subnet-that-has-service-endpoint-turned-on-for-azure-service"></a>如果删除为 Azure 服务打开服务终结点的虚拟网络或子网，会发生什么情况？
-删除 VNet 和子网是独立的操作，即使为 Azure 服务打开服务终结点时也支持该操作。 如果 Azure 服务设置了 VNet ACL，对于这些 VNet 和子网，当 VNet 或已打开 VNet 服务终结点的子网被删除时，与该 Azure 服务关联的 VNet ACL 信息将被禁用。
+删除 VNet 和子网是独立的操作，即使为 Azure 服务打开服务终结点时也支持该操作。 如果 Azure 服务为这些 Vnet 和子网设置了 VNet Acl，则当已启用 VNet 服务终结点的 VNet 或子网已打开时，将禁用与该 Azure 服务关联的 VNet ACL 信息。
  
-### <a name="what-happens-if-azure-service-account-that-has-vnet-service-endpoint-enabled-is-deleted"></a>如果删除启用了 VNet 服务终结点的 Azure 服务帐户会发生什么？
-删除 Azure 服务帐户是一个独立的操作，即使在网络端启用服务终结点并在 Azure 服务端设置 VNet ACL 时也支持该操作。 
+### <a name="what-happens-if-an-azure-service-account-that-has-a-vnet-service-endpoint-enabled-is-deleted"></a>如果已启用 VNet 服务终结点，则会发生什么情况？
+删除 Azure 服务帐户是一种独立的操作，即使在网络端启用了服务终结点，并且已在 Azure 服务端设置 VNet Acl，也支持此功能。 
 
 ### <a name="what-happens-to-the-source-ip-address-of-a-resource-like-a-vm-in-a-subnet-that-has-vnet-service-endpoint-enabled"></a>启用 VNet 服务终结点的资源（如子网中的 VM）的源 IP 地址会发生什么？
-启用虚拟网络服务终结点后，虚拟网络子网中资源的源 IP 地址将从公共 IPV4 地址更改为使用 Azure 虚拟网络的专用地址，以便将流量传送到 Azure 服务。 请注意，这会导致前面在 Azure 服务上设置为公共 IPv4 地址的特定 IP 防火墙失败。 
+启用虚拟网络服务终结点后，虚拟网络子网中资源的源 IP 地址将从公共 IPV4 地址更改为使用 Azure 虚拟网络的专用地址，以便将流量传送到 Azure 服务。 请注意，这可能会导致在 Azure 服务之前设置为公用 IPV4 地址的特定 IP 防火墙出现故障。 
 
-### <a name="does-service-endpoint-route-always-take-precedence"></a>服务终结点路由始终最优先吗？
-服务终结点添加的系统路由要优先于 BGP 路由，并为服务终结点流量提供最佳路由。 服务终结点始终将直接来自虚拟网络的服务流量转发到 Microsoft Azure 主干网络上的服务。 有关 Azure 如何选择路由的详细信息，请参阅 [Azure 虚拟网络流量路由](virtual-networks-udr-overview.md)。
+### <a name="does-the-service-endpoint-route-always-take-precedence"></a>服务终结点路由是否始终优先？
+服务终结点添加一个系统路由，该路由优先于 BGP 路由，并提供服务终结点流量的最佳路由。 服务终结点始终将直接来自虚拟网络的服务流量转发到 Microsoft Azure 主干网络上的服务。 有关 Azure 如何选择路由的详细信息，请参阅 [Azure 虚拟网络流量路由](virtual-networks-udr-overview.md)。
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>子网上的 NSG 如何与服务终结点配合使用？
 要访问 Azure 服务，NSG 需要允许出站连接。 如果 NSG 对所有 Internet 出站流量开放，则服务端点流量应有效。 还可仅使用服务标签将出站流量限制为服务 IP。  
@@ -393,9 +393,9 @@ VNet 服务终结点有助于保护 Azure 服务资源。 VNet 资源通过网�
 
 使用虚拟网络 (VNet) 服务终结点策略可以通过服务终结点筛选发往 Azure 服务的虚拟网络流量，以便仅允许特定的 Azure 服务资源。 终结点策略从发往 Azure 服务的虚拟网络流量提供精细的访问控制。 可在[此处](virtual-network-service-endpoint-policies-overview.md)了解有关服务终结点策略的更多信息。
 
-### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Azure Active Directory (Azure AD) 是否支持 VNet 服务终结点？
+### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Azure Active Directory （Azure AD）是否支持 VNet 服务终结点？
 
-Azure Active Directory (Azure AD) 不以本机方式支持服务终结点。 可在[此处](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)查看支持 VNet 服务终结点的 Azure 服务的完整列表。 请注意, 服务支持服务终结点下列出的 "AzureActiveDirectory" 标记用于支持服务终结点到 ADLS 第1代。 对于 ADLS 第1代, Azure Data Lake Storage Gen1 的虚拟网络集成利用虚拟网络和 Azure Active Directory (Azure AD) 之间的虚拟网络服务终结点安全, 在访问令牌中生成附加的安全声明。 然后，系统会使用这些声明对 Data Lake Storage Gen1 帐户进行虚拟网络身份验证，然后允许访问。 详细了解 [Azure Data Lake Store 第1代 VNet 集成] (.。。/data-lake-store/data-lake-store-network-security.md？ toc =% 2fazure% 2fvirtual-machines-network% 2ftoc.json
+Azure Active Directory （Azure AD）不以本机方式支持服务终结点。 可在[此处](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)查看支持 VNet 服务终结点的 Azure 服务的完整列表。 请注意，服务支持服务终结点下列出的 "AzureActiveDirectory" 标记用于支持服务终结点到 ADLS 第1代。 对于 ADLS 第1代，Azure Data Lake Storage Gen1 的虚拟网络集成利用虚拟网络和 Azure Active Directory （Azure AD）之间的虚拟网络服务终结点安全，在访问令牌中生成附加的安全声明。 然后，系统会使用这些声明对 Data Lake Storage Gen1 帐户进行虚拟网络身份验证，然后允许访问。 详细了解 [Azure Data Lake Store 第1代 VNet 集成] （.。。/data-lake-store/data-lake-store-network-security.md？ toc =% 2fazure% 2fvirtual-machines-network% 2ftoc.json
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>对于我可以从 VNet 中设置多少个 VNet 服务终结点有什么限制吗？
 虚拟网络中的 VNet 服务终结点总数没有限制。 对于 Azure 服务资源（例如 Azure 存储帐户），服务可能会对用于保护资源的子网数目施加限制。 下表显示了一些示例限制： 

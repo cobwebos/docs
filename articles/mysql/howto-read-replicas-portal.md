@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.openlocfilehash: 74f27f70c4a0752975a53b3889681d3910b1dd05
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: 275c7bc8127855712c191141ef681526da7c377b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906426"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309501"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中创建和管理只读副本
 
 本文介绍如何使用 Azure 门户在 Azure Database for MySQL 服务中创建和管理只读副本。
-
-> [!IMPORTANT]
-> 可以在主服务器所在的区域或所选的任何其他 Azure 区域创建只读副本。 跨区域复制目前为公共预览版。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,7 +47,7 @@ ms.locfileid: "69906426"
     ![Azure Database for MySQL - 副本位置](./media/howto-read-replica-portal/replica-location.png)
 
    > [!NOTE]
-   > 若要了解有关可以在中创建副本的区域的详细信息, 请访问[读取副本概念一文](concepts-read-replicas.md)。 
+   > 若要了解有关可以在中创建副本的区域的详细信息，请访问[读取副本概念一文](concepts-read-replicas.md)。 
 
 7. 选择“确定”以确认创建该副本。
 

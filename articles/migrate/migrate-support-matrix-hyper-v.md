@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 26b7f185a05bcf50db3af6bd3b75d5e61d6ec84b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279573"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376099"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>用于 Hyper-V 评估和迁移的支持矩阵
 
@@ -82,7 +82,7 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅�
 
 | **支持**                | **详细信息**               
 | :-------------------       | :------------------- |
-| **设备部署**   |  将设备部署为 Hyper-v VM。<br/> Azure Migrate 提供的设备 VM 为 Hyper-v VM 版本5.0。<br/> Hyper-v 主机必须运行 Windows Server 2012 R2 或更高版本。<br/> 主机需要足够的空间来为设备 VM 分配 16 GB RAM、8个 vcpu 和1个外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
+| **设备部署**   |  将设备部署为 Hyper-v VM。<br/> Azure Migrate 提供的设备 VM 为 Hyper-v VM 版本5.0。<br/> Hyper-v 主机必须运行 Windows Server 2012 R2 或更高版本。<br/> 主机需要足够的空间来分配 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间，以及设备 VM 的外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
 | **Azure Migrate 项目**  |  设备可以与单个项目关联。<br/> 可以将任意数量的设备与单个项目相关联。<br/> 你最多可以在一个项目中评估35000个 Vm。
 | **Hyper-V 主机**          | 一个设备最多可以连接到300个 Hyper-v 主机。
 | **发现**              | 单个设备最多可以发现 5000 Vm。

@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: gwallace
-ms.openlocfilehash: 251fd8ec3708ed154e12b0511be24eb776a48fbf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bbeaacd4c7028905e279dd5dc421414f4eafae54
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359077"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306755"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>在 Azure 云服务中使用 Socket.IO 生成 Node.js 聊天应用程序
 
@@ -104,7 +104,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
    
    > [!NOTE]
-   > 如果遇到有关启动模拟器的问题, 例如:Stop-azureemulator:发生了意外的错误。  详细信息:遇到了意外错误, 通信对象 ServiceChannel 无法用于通信, 因为它处于错误状态中。
+   > 如果遇到有关启动模拟器的问题，例如：Stop-azureemulator：发生了意外的错误。  详细信息：遇到了意外错误，通信对象 ServiceChannel 无法用于通信，因为它处于错误状态中。
    > 
    > 重新安装 AzureAuthoringTools v 2.7.1 和 AzureComputeEmulator v 2.7-确保版本匹配。
 
@@ -142,9 +142,9 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
 > 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，已了解如何创建在 Azure 云服务中托管的基本聊天应用程序。 若要了解如何在 Azure 网站中托管此应用程序, 请参阅在[azure 网站上使用 Socket.IO 生成 Node.js 聊天应用程序][chatwebsite]。
+在本教程中，已了解如何创建在 Azure 云服务中托管的基本聊天应用程序。 若要了解如何在 Azure 网站中托管此应用程序，请参阅在[azure 网站上使用 Socket.IO 生成 Node.js 聊天应用程序][chatwebsite]。
 
-有关详细信息，另请参阅 [Node.js 开发人员中心](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)。
+有关详细信息，另请参阅 [Node.js 开发人员中心](https://docs.microsoft.com/azure/javascript/)。
 
 [chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 

@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: d0f29e2c01d6295935ac56cb19c37e1ad6bbd21b
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: bd1317242f84b4d8bd039da89d991a73f6cd3781
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907387"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309310"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>通过 Azure 门户创建和管理 Azure Database for PostgreSQL（单一服务器）中的只读副本
 
 本文介绍如何使用 Azure 门户在 Azure Database for PostgreSQL 中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
-
-> [!IMPORTANT]
-> 可以在主服务器所在的区域或所选的任何其他 Azure 区域创建只读副本。 跨区域复制目前为公共预览版。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -70,14 +67,14 @@ ms.locfileid: "69907387"
     ![选择位置](./media/howto-read-replicas-portal/location-replica.png)
 
    > [!NOTE]
-   > 若要了解有关可以在中创建副本的区域的详细信息, 请访问[读取副本概念一文](concepts-read-replicas.md)。 
+   > 若要了解有关可以在中创建副本的区域的详细信息，请访问[读取副本概念一文](concepts-read-replicas.md)。 
 
 6. 选择“确定”以确认创建该副本。
 
 使用与 master 相同的计算和存储设置创建副本。 创建副本后，可以独立于主服务器更改多项设置：计算代系、vCore 数、存储和备份保留期。 定价层也可以独立更改，但“基本”层除外。
 
 > [!IMPORTANT]
-> 将主服务器设置更新为新值之前, 请将副本设置更新为一个相等或更大的值。 此操作可帮助副本保持对主副本所做的任何更改。
+> 将主服务器设置更新为新值之前，请将副本设置更新为一个相等或更大的值。 此操作可帮助副本保持对主副本所做的任何更改。
 
 创建只读副本后，可以在“复制”窗口中查看它：
 

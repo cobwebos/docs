@@ -9,52 +9,48 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: c7db2b4d49e3b9297c32d2e11ffe7c7702c17544
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ae25ffdf3f819c30fdfb1d3110042579f0b197b9
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274656"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381770"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>使用 Azure 门户创建认知服务资源
 
-使用此快速入门，通过 Azure 门户创建 Azure 认知服务资源。 成功创建认知服务资源后，你将获得可用于对应用程序进行身份验证的终结点和密钥。
+使用此快速入门，开始使用 Azure 认知服务。 在 Azure 门户中创建认知服务资源后，你将获得一个终结点和用于对应用程序进行身份验证的密钥。
+
+
+[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
 * 有效的 Azure 订阅-[免费创建一个](https://azure.microsoft.com/free/)。
 
-[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
-
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>新建 Azure 认知服务资源
 
-在创建认知服务资源之前，必须具有 Azure 资源组才能包含资源。 创建新资源时，可以选择创建新的资源组或使用现有资源组。 本文介绍如何创建新资源组。
-
-1. 登录 [Azure 门户](https://portal.azure.com)，然后单击“创建资源”。
-
-    ![选择认知服务 API](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
-
-2. 如前文所述，可以通过两种方式创建认知服务资源：使用多服务资源或单一服务资源。
+1. 创建资源。
 
     #### <a name="multi-service-resourcetabmultiservice"></a>[多服务资源](#tab/multiservice)
 
-    若要创建多服务资源，请在搜索栏中输入 "**认知服务**"。
-
-    ![搜索“认知服务”](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
-
-    在 "认知服务" 页上，选择 "**创建**"。
-
-    ![创建认知服务帐户](media/cognitive-services-apis-create-account/azurecogservsearchmulti-2.png)
+    多服务资源在门户中命名为 "**认知服务**"。 [创建认知服务资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)。
+    
+    目前，**无法**使用多服务密钥调用这些服务：QnA Maker、语音服务、自定义视觉和异常探测器。
+    
 
     #### <a name="single-service-resourcetabsingleservice"></a>[单服务资源](#tab/singleservice)
 
-    若要查看所有可用认知服务，请选择“Azure 市场”下的“AI + 机器学习”。 如果看不到你感兴趣的服务，请单击“查看全部”，并滚动到“认知服务”。 单击 "**查看更多**" 查看认知服务的整个目录。
+    使用以下链接为可用认知服务创建资源：
 
-    一旦处于感兴趣的服务上，单击 "**创建**"。
-    
-    ![选择认知服务 API](media/cognitive-services-apis-create-account/azureMarketplace.png)
-
+    | 视觉                      | 语音                  | 语言                          | 决定             | 搜索                 |
+    |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
+    | [计算机视觉](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [语音服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [沉浸式读者](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [异常探测器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [必应搜索 API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
+    | [自定义视觉服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [演讲者识别](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [语言理解 (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUIS) | [内容审查器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [必应自定义搜索](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
+    | [人脸](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [个性化体验创建服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [必应实体搜索](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
+    | [手写识别器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [文本分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |                      | [必应拼写检查](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
+    |           |                         | [文本翻译](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [必应自动建议](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
     ***
+
 3. 在“创建”页中提供以下信息：
 
     #### <a name="multi-service-resourcetabmultiservice"></a>[多服务资源](#tab/multiservice)
@@ -89,32 +85,23 @@ ms.locfileid: "70274656"
 
 ## <a name="get-the-keys-for-your-resource"></a>获取资源的密钥
 
-成功创建资源后，屏幕的右上方会出现一个弹出通知。 在通知中，单击 "**前往资源**" 以查看创建的认知服务资源。 
+成功部署资源后，单击 "**后续步骤**" 下的 "**前往资源**"。
 
-![中转到认知服务资源](media/cognitive-services-apis-create-account/cog-serv-go-to-resource.png)
+![搜索“认知服务”](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
-从打开的 "快速入门" 窗格中，可以访问终结点和密钥。
+从打开的 "快速启动" 窗格，你可以访问密钥和终结点。
 
 ![获取密钥和终结点](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 
-## <a name="pricing-tiers-and-billing"></a>定价层和计费
-
-定价层（以及您收取的费用）基于使用身份验证信息发送的事务数。 每个定价层指定：
-* 每秒允许的最大事务数（TPS）。
-* 在定价层中启用的服务功能。
-* 预定义数量的事务的成本。 超出此数量将导致服务的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)中指定额外的费用。
-
 ## <a name="clean-up-resources"></a>清理资源
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组也会删除组中包含的任何其他资源。
 
-若要使用 Azure 门户删除资源组，请执行以下操作：
-
 1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。
-2. 找到要删除的资源组，并右键单击列表右侧的“更多”按钮 (...)。
-3. 选择“删除资源组”并进行确认。
+2. 找到包含要删除的资源的资源组
+3. 右键单击 "资源组" 列表。 选择“删除资源组”并进行确认。
 
 ## <a name="see-also"></a>请参阅
 

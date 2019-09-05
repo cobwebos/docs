@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 8cfda202e57dcee4f7a783de893fb712501dfd26
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/04/2019
+ms.openlocfilehash: db2457cc3e320ac413cb245f51810b654c63aa22
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992183"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308990"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
 使用只读副本功能可将数据从 Azure Database for MariaDB 服务器复制到只读服务器。 可将主服务器中的数据复制到最多 5 个副本。 使用全局事务 ID (GTID) 通过 MariaDB 引擎的基于二进制日志 (binlog) 文件位置的复制技术以异步方式更新副本。 要详细了解 binlog 复制，请参阅 [binlog 复制概述](https://mariadb.com/kb/en/library/replication-overview/)。
-
-> [!IMPORTANT]
-> 可以在主服务器所在的区域或所选的任何其他 Azure 区域创建只读副本。 只读副本（相同区域和跨区域）当前以公共预览版提供。
 
 副本是新的服务器，可以像管理普通的 Azure Database for MariaDB 服务器一样对其进行管理。 每个只读副本按照预配计算资源的 vCore 数量以及每月 GB 存储量计费。
 
@@ -38,28 +35,25 @@ ms.locfileid: "69992183"
 ## <a name="cross-region-replication"></a>跨区域复制
 可以在主服务器所在的不同区域中创建读取副本。 跨区域复制有助于进行灾难恢复规划或使数据更接近用户的情况。
 
-> [!IMPORTANT]
-> 跨区域复制目前为公共预览版。
-
 可以在任何[Azure Database for MariaDB 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)中拥有主服务器。  主服务器可以在其配对区域或通用副本区域中拥有副本。
 
 ### <a name="universal-replica-regions"></a>通用副本区域
-无论主服务器位于何处, 始终可以在以下任何区域中创建读取副本。 下面是通用副本区域:
+无论主服务器位于何处，始终可以在以下任何区域中创建读取副本。 下面是通用副本区域：
 
 澳大利亚东部、澳大利亚东南部、美国中部、东亚、美国东部、美国东部2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部、美国西部2。
 
 
 ### <a name="paired-regions"></a>配对区域
-除通用副本区域外, 还可以在主服务器的 Azure 配对区域中创建读取副本。 如果你不知道区域对, 可以从[Azure 配对区域一文](../best-practices-availability-paired-regions.md)了解详细信息。
+除通用副本区域外，还可以在主服务器的 Azure 配对区域中创建读取副本。 如果你不知道区域对，可以从[Azure 配对区域一文](../best-practices-availability-paired-regions.md)了解详细信息。
 
-如果你使用跨区域副本进行灾难恢复计划, 则建议在配对区域中创建副本, 而不是在另一个区域中创建。 配对区域避免同时进行更新, 并划分物理隔离和数据驻留的优先级。  
+如果你使用跨区域副本进行灾难恢复计划，则建议在配对区域中创建副本，而不是在另一个区域中创建。 配对区域避免同时进行更新，并划分物理隔离和数据驻留的优先级。  
 
-但是, 有一些限制: 
+但是，有一些限制： 
 
-* 区域可用性：Azure Database for MariaDB 在美国西部2、法国中部、阿拉伯联合酋长国北部和德国中部提供。 但是, 它们的配对区域不可用。
+* 区域可用性：Azure Database for MariaDB 在美国西部2、法国中部、阿拉伯联合酋长国北部和德国中部提供。 但是，它们的配对区域不可用。
     
-* 单向对:某些 Azure 区域仅在一个方向上配对。 这些区域包括印度西部、巴西南部和 US Gov 弗吉尼亚州。 
-   这意味着印度西部的主服务器可以在印度南部创建副本。 但是, 印度南部的主服务器无法在印度西部创建副本。 这是因为西部印度的次要区域是印度南部地区, 而印度南部的次要区域不是西印度。
+* 单向对：某些 Azure 区域仅在一个方向上配对。 这些区域包括印度西部、巴西南部和 US Gov 弗吉尼亚州。 
+   这意味着印度西部的主服务器可以在印度南部创建副本。 但是，印度南部的主服务器无法在印度西部创建副本。 这是因为西部印度的次要区域是印度南部地区，而印度南部的次要区域不是西印度。
 
 
 ## <a name="create-a-replica"></a>创建副本

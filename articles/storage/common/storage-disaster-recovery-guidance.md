@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7785c6b5c575bf862b1ba0edccc75fc1c6031b08
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015642"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376453"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure 存储中的灾难恢复和存储帐户故障转移（预览版）
 
@@ -38,7 +38,7 @@ Azure 存储支持异地冗余存储帐户故障转移（预览版）。 通过�
 其他 Azure 存储冗余选项包括，跨一个区域中的可用性区域复制数据的区域冗余存储 (ZRS)，以及在一个区域中的一个数据中心内复制数据的本地冗余存储 (LRS)。 可以将配置了 ZRS 或 LRS 的存储帐户转换为使用 GRS 或 RA-GRS。 为帐户配置异地冗余存储会产生额外费用。 有关详细信息，请参阅 [Azure 存储复制](storage-redundancy.md)。
 
 > [!NOTE]
-> 区域冗余存储 (GZRS) 和读取访问权限异地冗余存储 (RA-GZRS) 目前处于预览阶段, 但在与客户管理的帐户故障转移相同的区域中尚不可用。 出于此原因, 客户当前无法通过 GZRS 和 RA GZRS 帐户来管理帐户故障转移事件。 在预览期间, Microsoft 将管理影响 GZRS/GZRS 帐户的任何故障转移事件。
+> 区域冗余存储（GZRS）和读取访问权限异地冗余存储（RA-GZRS）目前处于预览阶段，但在与客户管理的帐户故障转移相同的区域中尚不可用。 出于此原因，客户当前无法通过 GZRS 和 RA GZRS 帐户来管理帐户故障转移事件。 在预览期间，Microsoft 将管理影响 GZRS/GZRS 帐户的任何故障转移事件。
 
 > [!WARNING]
 > 异地冗余存储有数据丢失风险。 数据是异步复制到次要区域。也就是说，数据写入主要区域与数据写入次要区域之间存在延迟。 在服务中断的情况下，对主终结点执行、但尚未复制到辅助终结点的写入操作将会丢失。
@@ -117,7 +117,7 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 ## <a name="about-the-preview"></a>关于此预览版
 
-对于在 Azure 资源管理器部署中使用 GRS 或 GRS 的所有客户, 可通过预览版使用帐户故障转移。 支持常规用途 v1、常规用途 v2 和 Blob 存储帐户类型。 目前，帐户故障转移适用于下面这些区域：
+对于在 Azure 资源管理器部署中使用 GRS 或 GRS 的所有客户，可通过预览版使用帐户故障转移。 支持常规用途 v1、常规用途 v2 和 Blob 存储帐户类型。 目前，帐户故障转移适用于下面这些区域：
 
 - 美国西部 2
 - 美国中西部
@@ -167,11 +167,10 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 ### <a name="unsupported-features-or-services"></a>不支持的功能或服务
 帐户故障转移（预览版）不支持以下功能或服务：
 
-- Azure 文件同步不支持存储帐户故障转移。 不得对包含 Azure 文件共享且用作 Azure 文件同步中云终结点的存储帐户执行故障转移。 否则，将会导致同步停止，并且可能还会在有新分层文件的情况下导致意外数据丢失。  
-- 无法对使用 Azure Data Lake Storage Gen2 分层命名空间的存储帐户执行故障转移。
+- Azure 文件同步不支持存储帐户故障转移。 不得对包含 Azure 文件共享且用作 Azure 文件同步中云终结点的存储帐户执行故障转移。 执行此操作将导致同步停止工作，并且还可能导致新分层的文件出现意外数据丢失。  
 - 无法对包含已存档 blob 的存储帐户执行故障转移。 请在你不打算执行故障转移的单独存储帐户中维护已存档 blob。
 - 无法对包含高级块 blob 的存储帐户执行故障转移。 支持高级块 blob 的存储帐户暂不支持异地冗余。
-- 故障转移完成后, 以下功能将在初始启用时停止工作:[事件订阅](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview)、[生命周期策略](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)[存储分析日志记录](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging)。
+- 故障转移完成后，以下功能将在初始启用时停止工作：[事件订阅](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview)、[生命周期策略](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)[存储分析日志记录](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging)。
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>除了故障转移外，还可以复制数据
 

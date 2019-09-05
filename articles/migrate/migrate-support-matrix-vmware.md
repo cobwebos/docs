@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 7fe2c39871f1cd512da7f9a2c5146e79abbe74a6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ecceb1177d7b7015afc92f10284a9372d0cfb4a2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279598"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375314"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>用于 VMware 评估和迁移的支持矩阵
 
@@ -73,7 +73,7 @@ Azure Migrate 运行轻型设备来发现 VMware Vm，并将 VM 元数据和性�
 
 **支持** | **详细信息**
 --- | ---
-**设备部署** | 将设备部署为 VMware VM。 VCenter Server 上需要足够的资源来分配具有 32 GB RAM、8个 vcpu 和外部虚拟交换机的 VM。<br/><br/> 设备需要直接或通过代理访问 internet。<br/> 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。 
+**设备部署** | 将设备部署为 VMware VM。 VCenter Server 上需要足够的资源来分配具有 32 GB RAM 的 VM、8个 vcpu、大约 80 GB 的磁盘存储和外部虚拟交换机。<br/><br/> 设备需要直接或通过代理访问 internet。<br/> 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。 
 **Azure Migrate 项目** | 设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 你最多可以在一个项目中评估35000个 Vm。
 **发现** | 设备最多可在 vCenter Server 上发现 10000 VMware Vm。<br/> 设备可以连接到单个 vCenter Server。
 **评估组** | 最多可以在一个组中添加35000台计算机。

@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 2c90dcf1672a3d3505aaa19aec953ad97f5289bb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: be59f5fd34c52397b54146a8aeaf51f4d594452f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446215"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383348"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -44,7 +44,7 @@ ms.locfileid: "67446215"
 
     ```
 
-## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板来设置 Azure VM 上自承载 IR 
+## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板在 Azure VM 上设置自承载 IR 
 可以使用[此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime)在 Azure 虚拟机上自动完成自承载 IR 设置。 使用此模板可以轻松地在 Azure 虚拟网络中设置一个完全正常运行的、具有高可用性和可伸缩性功能的自承载 IR（前提是能够将节点计数设置为 2 或以上）。
 
 ## <a name="command-flow-and-data-flow"></a>命令流和数据流
@@ -57,7 +57,7 @@ ms.locfileid: "67446215"
 1. 数据开发者使用 PowerShell cmdlet 在 Azure 数据工厂中创建了自承载集成运行时。 目前，Azure 门户不支持此功能。
 2. 数据开发者通过指定应用于连接数据存储的自承载集成运行时实例，为本地数据存储创建了链接服务。
 3. 自承载集成运行时节点使用 Windows 数据保护应用程序编程接口 (DPAPI) 加密凭据，并将凭据保存在本地。 如果设置多个节点以实现高可用性，则凭据将跨其他节点进一步同步。 每个节点使用 DPAPI 加密凭据并将其存储在本地。 凭据同步对数据开发者透明并由自承载 IR 处理。    
-4. 数据工厂服务与自承载的集成运行时用于计划和管理作业通过通信*控制通道*，它使用共享[Azure 服务总线中继](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it#wcf-relay)。 当需要运行活动作业时，数据工厂会将请求与任何凭据信息一起加入队列（以防凭证尚未存储在自承载集成运行时）。 自承载集成运行时轮询队列后启动该作业。
+4. 数据工厂服务与自承载集成运行时通信，以通过使用共享 [Azure 服务总线中继](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it#wcf-relay)的控制通道调度和管理作业。 当需要运行活动作业时，数据工厂会将请求与任何凭据信息一起加入队列（以防凭证尚未存储在自承载集成运行时）。 自承载集成运行时轮询队列后启动该作业。
 5. 自承载集成运行时将数据从本地存储复制到云存储，反之亦然，具体取决于数据管道中复制活动的配置方式。 对于此步骤，自承载集成运行时直接通过安全 (HTTPS) 通道与基于云的存储服务（如 Azure Blob 存储）通信。
 
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>使用自承载 IR 的注意事项
@@ -72,54 +72,57 @@ ms.locfileid: "67446215"
 - 即使数据存储位于 Azure IaaS 虚拟机上的云中，也必须使用自承载集成运行时。
 - Windows Server 上安装的自承载集成运行时中的任务可能会失败，因为 Windows Server 中启用了符合 FIPS 标准的加密。 要解决此问题，请禁用服务器上符合 FIPS 标准的加密。 要禁用符合 FIPS 标准的加密，请将以下注册表值从 1（启用）更改为 0（禁用）：`HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 受支持的操作系统版本是 Windows 7 Service Pack 1、 Windows 8.1、 Windows 10、 Windows Server 2008 R2 SP1、 Windows Server 2012、 Windows Server 2012 R2、 Windows Server 2016 和 Windows Server 2019。 不支持在域控制器上安装自承载集成运行时。
+- 支持的操作系统版本有 Windows 7 Service Pack 1、Windows 8.1、Windows 10、Windows Server 2008 R2 SP1、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016 和 Windows Server 2019。 不支持在域控制器上安装自承载集成运行时。
 - 需要 .NET Framework 4.6.1 或更高版本。 如果在 Windows 7 计算机上安装自承载集成运行时，请安装 .NET Framework 4.6.1 或更高版本。 有关详细信息，请参阅 [.NET Framework 系统需求](/dotnet/framework/get-started/system-requirements)。
 - 推荐的自承载集成运行时计算机配置至少为 2 GHz，4 核，8 GB RAM 和 80 GB 磁盘。
 - 如果主机计算机进入休眠状态，则自承载集成运行时不响应数据请求。 安装自承载集成运行时之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，则自承载集成运行时安装会提示消息。
 - 只有计算机管理员才能成功安装和配置自承载集成运行时。
 - 复制活动按特定的频率发生。 计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率还很大程度上取决于正在移动的数据量。 进行多个复制作业时，会看到资源使用率在高峰期上升。
+- 如果提取 Parquet、ORC 或 Avro 格式的数据，则任务可能会失败。 文件创建在自承载集成计算机上运行，并要求以下必备组件按预期工作（请参阅[Azure 数据工厂中的 Parquet 格式](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)）。
+    - [Visual C++ 2010 可再发行组件](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe)包（x64）
+    - 来自 JRE 提供商的 Java 运行时（JRE）版本8（如[采用 OpenJDK](https://adoptopenjdk.net/)）， `JAVA_HOME`确保设置了环境变量。
 
 ## <a name="installation-best-practices"></a>安装最佳做法
 可以通过从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载 MSI 安装程序包来安装自承载集成运行时。 请参阅文章[在本地和云之间移动数据](tutorial-hybrid-copy-powershell.md)以获取分步说明。
 
 - 在主机上为自承载集成运行时配置电源计划，从而让计算机不要休眠。 如果主机进入休眠状态，则自承载集成运行时将会脱机。
 - 定期备份与自承载集成运行时相关的凭据。
-- 用于自动执行的自承载的 IR 安装操作，请参阅[节下面](#automation-support-for-self-hosted-ir-function)。  
+- 若要自动完成自承载 IR 设置操作，请参阅[以下部分](#automation-support-for-self-hosted-ir-function)。  
 
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>从下载中心安装并注册自承载 IR
 
 1. 转到 [Microsoft 集成运行时下载页](https://www.microsoft.com/download/details.aspx?id=39717)。
-2. 选择“下载”，然后选择 64 位版本（不支持 32 位版本），再选择“下一步”   。
+2. 选择“下载”，然后选择 64 位版本（不支持 32 位版本），再选择“下一步”。
 3. 直接运行 MSI 文件或将其保存到硬盘再运行。
-4. 在“欢迎”页上选择语言，然后选择“下一步”   。
-5. 接受 Microsoft 软件许可条款，然后选择“下一步”。 
-6. 选择用于安装自承载集成运行时的**文件夹**，然后选择“下一步”  。
-7. 在“准备安装”页上，选择“安装”。  
-8. 单击“完成”  ，完成安装。
+4. 在“欢迎”页上选择语言，然后选择“下一步”。
+5. 接受 Microsoft 软件许可条款，然后选择“下一步”。
+6. 选择用于安装自承载集成运行时的**文件夹**，然后选择“下一步”。
+7. 在“准备安装”页上，选择“安装”。
+8. 单击“完成”，完成安装。
 9. 使用 Azure PowerShell 获取身份验证密钥。 下面是检索身份验证密钥的 PowerShell 示例：
 
     ```powershell
     Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
-11. 在计算机上运行的 Microsoft Integration Runtime Configuration Manager 的“注册集成运行时(自承载)”  页上，执行以下步骤：
+11. 在计算机上运行的 Microsoft Integration Runtime Configuration Manager 的“注册集成运行时(自承载)”页上，执行以下步骤：
 
     a. 将身份验证密钥粘贴到文本区域。
 
-    b. 或者选择“显示身份验证密钥”  ，以查看密钥文本。
+    b. 或者选择“显示身份验证密钥”，以查看密钥文本。
 
-    c. 选择“注册”  。
+    c. 选择“注册”。
 
-## <a name="automation-support-for-self-hosted-ir-function"></a>对自动化支持自承载 IR 函数
+## <a name="automation-support-for-self-hosted-ir-function"></a>对自承载 IR 功能的自动化支持
 
 
 > [!NOTE]
-> 如果想要安装自承载的 IR Azure 虚拟机上并想要自动执行安装程序使用 Azure 资源管理器模板，请参阅[部分](#setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template)。
+> 如果计划在 Azure 虚拟机上安装自承载 IR 并想要使用 Azure 资源管理器模板自动进行设置，请参阅[部分](#setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template)。
 
-您可以使用命令行设置或管理现有的自承载 ir。 这可用于自动化安装，注册的自承载 IR 节点。 
+可以使用命令行设置或管理现有的自承载 IR。 这可以专门用来自动完成安装，以及注册自承载 IR 节点。 
 
-**Dmgcmd.exe**包含在自承载的安装中，通常位于：C:\Program Files\Microsoft Integration Runtime\3.0\Shared\ 文件夹。 这支持各种参数，可以通过命令提示符下使用自动化的批处理脚本调用。 
+**Dmgcmd.exe** 包含在自承载安装中，通常位于：C:\Program Files\Microsoft Integration Runtime\3.0\Shared\ 文件夹。 这支持各种参数，可以使用用于自动化的批处理脚本通过命令提示来调用。 
 
 *用途：* 
 
@@ -127,26 +130,26 @@ ms.locfileid: "67446215"
 dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["password"] -Loglevel <logLevel> ] 
 ```
 
- *详细信息 (参数 / 属性):* 
+ 详细信息（参数/属性）： 
 
-| 属性                                                    | 说明                                                  | 需要 |
+| 属性                                                    | 说明                                                  | 必填 |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| RegisterNewNode "`<AuthenticationKey>`"                     | 使用指定的身份验证密钥注册 Integration Runtime （自承载） 节点 | 否       |
-| EnableRemoteAccess "`<port>`" ["`<thumbprint>`"]            | 为启用远程访问当前节点上设置高可用性群集和/或启用直接对自承载 IR （而无需通过 ADF 服务） 使用的凭据设置**新 AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 从远程计算机在同一网络中。 | 否       |
-| EnableRemoteAccessInContainer "`<port>`" ["`<thumbprint>`"] | 在容器中运行的节点时启用对当前节点的远程访问 | 否       |
-| DisableRemoteAccess                                         | 禁用对当前节点的远程访问。 多节点安装程序需要远程访问。 新建-**AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet 仍适用甚至远程访问禁用时，只要在自承载 IR 节点所在的同一计算机上执行。 | 否       |
-| 键"`<AuthenticationKey>`"                                 | 覆盖/更新以前的身份验证密钥。 请注意因为这可以导致新的集成运行时的密钥时将要脱机，在上一个自承载 IR 节点。 | 否       |
-| GenerateBackupFile "`<filePath>`" "`<password>`"            | 生成当前节点的备份文件，该备份文件包含的节点密钥和数据存储凭据 | 否       |
+| RegisterNewNode "`<AuthenticationKey>`"                     | 将集成运行时（自承载）节点注册到指定的身份验证密钥 | 否       |
+| EnableRemoteAccess "`<port>`" ["`<thumbprint>`"]            | 在当前节点上启用远程访问，以便设置高可用性群集和/或启用直接针对自承载 IR（不通过 ADF 服务）通过同一网络的远程计算机中的 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 设置凭据的功能。 | 否       |
+| EnableRemoteAccessInContainer "`<port>`" ["`<thumbprint>`"] | 启用当节点在容器中运行时以远程方式访问当前节点的功能 | 否       |
+| DisableRemoteAccess                                         | 禁用对当前节点的远程访问。 进行多节点设置时，需要远程访问。 New-**AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet 在禁用远程访问的情况下仍可使用，只要在自承载 IR 节点所在的计算机上执行它即可。 | 否       |
+| Key "`<AuthenticationKey>`"                                 | 覆盖/更新以前的身份验证密钥。 请谨慎操作，因为如果此密钥是新集成运行时的，这可能导致以前的自承载 IR 节点脱机。 | 否       |
+| GenerateBackupFile "`<filePath>`" "`<password>`"            | 为当前节点生成备份文件，该备份文件包含节点密钥和数据存储凭据 | 否       |
 | ImportBackupFile "`<filePath>`" "`<password>`"              | 从备份文件还原节点                          | 否       |
-| 重新启动                                                     | 重启 Integration Runtime （自承载） 主机服务   | 否       |
-| Start                                                       | 启动 Integration Runtime （自承载） 主机服务     | 否       |
-| 停止                                                        | 停止 Integration Runtime （自承载） 更新服务        | 否       |
-| StartUpgradeService                                         | 启动 Integration Runtime （自承载） 更新服务       | 否       |
-| StopUpgradeService                                          | 停止 Integration Runtime （自承载） 更新服务        | 否       |
-| TurnOnAutoUpdate                                            | 打开 Integration Runtime （自承载） 自动更新        | 否       |
-| TurnOffAutoUpdate                                           | 关闭 Integration Runtime （自承载） 自动更新       | 否       |
-| SwitchServiceAccount "<domain\user>" ["password"]           | 设置 DIAHostService 作为新帐户运行。 使用空密码 ("") 为系统帐户或虚拟帐户 | 否       |
-| 日志级别 `<logLevel>`                                       | 设置 ETW 日志级别 （关闭、 错误、 详细或全部）。 通常由 Microsoft 支持部门进行调试时使用。 | 否       |
+| 重新启动                                                     | 重启 Integration Runtime（自承载）主机服务   | 否       |
+| Start                                                       | 启动 Integration Runtime（自承载）主机服务     | 否       |
+| 停止                                                        | 停止 Integration Runtime（自承载）更新服务        | 否       |
+| StartUpgradeService                                         | 启动 Integration Runtime（自承载）更新服务       | 否       |
+| StopUpgradeService                                          | 停止 Integration Runtime（自承载）更新服务        | 否       |
+| TurnOnAutoUpdate                                            | 启用 Integration Runtime（自承载）自动更新        | 否       |
+| TurnOffAutoUpdate                                           | 关闭 Integration Runtime（自承载）自动更新       | 否       |
+| SwitchServiceAccount "<domain\user>" ["password"]           | 将 DIAHostService 设置为以新帐户的形式运行。 对系统帐户或虚拟帐户使用空密码 ("") | 否       |
+| Loglevel `<logLevel>`                                       | 设置 ETW 日志级别（Off、Error、Verbose 或 All）。 通常在调试时由 Microsoft 支持部门使用。 | 否       |
 
    
 
@@ -162,7 +165,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 > 不需要为关联每个节点而创建新的自承载集成运行时。 可以在另一台计算机上安装自承载集成运行时，并使用同一身份验证密钥注册它。 
 
 > [!NOTE]
-> 在添加另一个节点以实现高可用性和可伸缩性之前，请确保已在第 1 个节点上启用“远程访问 Intranet”选项（Microsoft Integration Runtime Configuration Manager > “设置” > “远程访问 Intranet”）。     
+> 在添加另一个节点以实现高可用性和可伸缩性之前，请确保已在第 1 个节点上启用“远程访问 Intranet”选项（Microsoft Integration Runtime Configuration Manager > “设置” > “远程访问 Intranet”）。 
 
 ### <a name="scale-considerations"></a>扩展注意事项
 
@@ -246,7 +249,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 * 共享功能仅适用于同一 Azure Active Directory 租户中的数据工厂。
 
-* 对于 Active Directory [来宾用户](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews)，UI 中的搜索功能（使用搜索关键字列出所有数据工厂）[不起作用](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 但只要来宾用户是数据工厂的“所有者”，则无需搜索功能也能共享 IR，方法是在“分配权限”文本框中直接键入需要共享 IR 的数据工厂的 MSI，然后在 Azure 数据工厂 UI 中选择“添加”。   
+* 对于 Active Directory [来宾用户](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews)，UI 中的搜索功能（使用搜索关键字列出所有数据工厂）[不起作用](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 但只要来宾用户是数据工厂的“所有者”，则无需搜索功能也能共享 IR，方法是在“分配权限”文本框中直接键入需要共享 IR 的数据工厂的 MSI，然后在 Azure 数据工厂 UI 中选择“添加”。 
 
   > [!NOTE]
   > 此功能只能在 Azure 数据工厂 V2 中使用。 
@@ -258,20 +261,20 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 ![通知区域中的通知](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
 
 ## <a name="ports-and-firewall"></a>端口和防火墙
-需要考虑两个防火墙：在组织的中央路由器上运行的企业防火墙和在安装了自承载集成运行时的本地计算机上配置为守护程序的 Windows 防火墙。  
+需要考虑两个防火墙：在组织的中央路由器上运行的企业防火墙和在安装了自承载集成运行时的本地计算机上配置为守护程序的 Windows 防火墙。
 
 ![防火墙](media/create-self-hosted-integration-runtime/firewall.png)
 
-在企业防火墙级别，需配置以下域和出站端口： 
+在企业防火墙级别，需配置以下域和出站端口：
 
 域名 | 端口 | 描述
 ------------ | ----- | ------------
-\* .servicebus.windows.net | 443 | 用来与后端数据移动服务通信
+*.servicebus.windows.net | 443 | 用来与后端数据移动服务通信
 *.core.windows.net | 443 | 用于通过 Azure Blob 存储（如果已配置）进行临时复制
 *.frontend.clouddatahub.net | 443 | 用来与后端数据移动服务通信
 download.microsoft.com | 443 | 用于下载更新
 
-在 Windows 防火墙级别（计算机级别），通常已启用这些出站端口。  如果没有，可以在自承载集成运行时计算机上相应地配置域和端口。
+在 Windows 防火墙级别（计算机级别），通常已启用这些出站端口。 如果没有，可以在自承载集成运行时计算机上相应地配置域和端口。
 
 > [!NOTE]
 > 根据源和接收器，可能需要在企业防火墙或 Windows 防火墙中将其他域和出站端口加入允许列表。
@@ -295,7 +298,7 @@ download.microsoft.com | 443 | 用于下载更新
 
 ![指定代理](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
-配置后，自承载集成运行时使用代理服务器连接到云服务、源/目标（使用 HTTP/HTTPS 协议的源/目标）。 在初始设置期间选择“更改”链接。  此时会出现代理设置对话框。
+配置后，自承载集成运行时使用代理服务器连接到云服务、源/目标（使用 HTTP/HTTPS 协议的源/目标）。 在初始设置期间选择“更改”链接。 此时会出现代理设置对话框。
 
 ![设置代理](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 
@@ -303,15 +306,15 @@ download.microsoft.com | 443 | 用于下载更新
 
 - **不使用代理**：自承载集成运行时不显式使用任何代理来连接到云服务。
 - **使用系统代理**：自承载集成运行时使用在 diahost.exe.config 和 diawp.exe.config 中配置的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未配置代理，则自承载集成运行时无需通过代理，可直接连接到云服务。
-- **使用自定义代理**：配置用于自承载集成运行时的 HTTP 代理设置，而不使用 diahost.exe.config 和 diawp.exe.config 中的配置。必须输入“地址”和“端口”。   “用户名”和“密码”是可选的，具体取决于代理的身份验证设置。   所有设置都使用 Windows DPAPI 在自承载集成运行时进行加密，并存储在本地计算机上。
+- **使用自定义代理**：配置用于自承载集成运行时的 HTTP 代理设置，而不使用 diahost.exe.config 和 diawp.exe.config 中的配置。必须输入“地址”和“端口”。 “用户名”和“密码”是可选的，具体取决于代理的身份验证设置。 所有设置都使用 Windows DPAPI 在自承载集成运行时进行加密，并存储在本地计算机上。
 
 保存更新的代理设置之后，集成运行时主机服务会自动重启。
 
 成功注册自承载集成运行时后，如果想要查看或更新代理设置，请使用 Integration Runtime Configuration Manager。
 
-1. 打开“Microsoft Integration Runtime Configuration Manager”。 
-2. 切换到“设置”  选项卡。
-3. 在“HTTP 代理”部分选择“更改”链接，打开“设置 HTTP 代理”对话框。   
+1. 打开“Microsoft Integration Runtime Configuration Manager”。
+2. 切换到“设置”选项卡。
+3. 在“HTTP 代理”部分选择“更改”链接，打开“设置 HTTP 代理”对话框。
 4. 选择“**下一步**”。 此时会出现警告，询问是否允许保存代理设置和重启集成运行时主机服务。
 
 可以使用 Configuration Manager 工具查看和更新 HTTP 代理。
@@ -323,7 +326,7 @@ download.microsoft.com | 443 | 用于下载更新
 
 ### <a name="configure-proxy-server-settings"></a>配置代理服务器设置
 
-如果为 HTTP 代理选择“使用系统代理”  设置，则自承载集成运行时使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未指定代理，则自承载集成运行时无需通过代理，可直接连接到云服务。 以下过程说明如何更新 diahost.exe.config 文件：
+如果为 HTTP 代理选择“使用系统代理”设置，则自承载集成运行时使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未指定代理，则自承载集成运行时无需通过代理，可直接连接到云服务。 以下过程说明如何更新 diahost.exe.config 文件：
 
 1. 在文件资源管理器中，生成 C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config 的安全副本，以备份原始文件。
 2. 打开以管理员身份运行的 Notepad.exe，并打开文本文件 C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config。找到 system.net 的默认标记，如以下代码中所示：
@@ -350,7 +353,7 @@ download.microsoft.com | 443 | 用于下载更新
     ```
 3. 将配置文件保存在原始位置。 然后重启自承载集成运行时主机服务，以拾取更改。 
 
-   若要重启服务，请从控制面板使用服务小程序。 或在“Integration Runtime Configuration Manager”中依次选择“停止服务”按钮和“启动服务”。   
+   若要重启服务，请从控制面板使用服务小程序。 或在“Integration Runtime Configuration Manager”中依次选择“停止服务”按钮和“启动服务”。 
    
    如果服务未启动，很可能是将错误的 XML 标记语法添加到了编辑过的应用程序配置文件中。
 
@@ -363,7 +366,7 @@ download.microsoft.com | 443 | 用于下载更新
 如果遇到类似于以下的错误，可能是由于防火墙或代理服务器配置错误，阻止了自承载集成运行时连接到数据工厂进行自身身份验证。 若要确保正确配置防火墙和代理服务器，请参阅上一部分。
 
 * 尝试注册自承载集成运行时的时候，会收到以下错误：“无法注册此 Integration Runtime 节点！ 请确认身份验证密钥有效，且集成服务主机服务在此计算机上运行。”
-* 打开 Integration Runtime Configuration Manager 时，将看到状态为“已断开连接”  或“正在连接”  。 查看 Windows 事件日志时，在“事件查看器” > “应用程序和服务日志” > “Microsoft Integration Runtime”下，会看到错误消息，例如以下错误：   
+* 打开 Integration Runtime Configuration Manager 时，将看到状态为“已断开连接”或“正在连接”。 查看 Windows 事件日志时，在“事件查看器” > “应用程序和服务日志” > “Microsoft Integration Runtime”下，会看到错误消息，例如以下错误：
 
     ```
     Unable to connect to the remote server
@@ -371,11 +374,11 @@ download.microsoft.com | 443 | 用于下载更新
     ```
 
 ### <a name="enabling-remote-access-from-an-intranet"></a>从 Intranet 启用远程访问  
-如果使用 PowerShell 加密网络中未安装自承载集成运行时的另一台计算机上的凭据，则可以启用“从 Intranet 进行远程访问”选项。  如果运行 PowerShell 来加密已安装自承载集成运行时的同一台计算机上的凭据，则无法启用“从 Intranet 进行远程访问”。 
+如果使用 PowerShell 加密网络中未安装自承载集成运行时的另一台计算机上的凭据，则可以启用“从 Intranet 进行远程访问”选项。 如果运行 PowerShell 来加密已安装自承载集成运行时的同一台计算机上的凭据，则无法启用“从 Intranet 进行远程访问”。
 
-在添加另一个节点以实现高可用性和可伸缩性之前，应启用“从 Intranet 进行远程访问”。   
+在添加另一个节点以实现高可用性和可伸缩性之前，应启用“从 Intranet 进行远程访问”。  
 
-在自承载集成运行时安装（版本 3.3.xxxx.x 以上）期间，默认情况下，自承载集成运行时安装将在自承载集成运行时计算机上禁用“从 Intranet 进行远程访问”  。
+在自承载集成运行时安装（版本 3.3.xxxx.x 以上）期间，默认情况下，自承载集成运行时安装将在自承载集成运行时计算机上禁用“从 Intranet 进行远程访问”。
 
 如果使用的是第三方防火墙，则可以手动打开端口 8060（或用户配置的端口）。 如果在安装自承载集成运行时期间防火墙出现问题，请尝试使用以下命令在不配置防火墙的情况下安装自承载集成运行时。
 

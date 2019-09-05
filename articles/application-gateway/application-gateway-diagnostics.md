@@ -7,14 +7,14 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: d9b0c551cdfb92b380a967aaa5bdce7c278fd39e
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183572"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306191"
 ---
-# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>应用程序网关的后端运行状况、诊断日志和指标
+# <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
 使用 Azure 应用程序网关，可以通过以下方式监视资源：
 
@@ -22,7 +22,7 @@ ms.locfileid: "70183572"
 
 * [日志](#diagnostic-logging)：通过日志记录，可出于监视目的从资源保存或使用性能、访问及其他数据。
 
-* [指标](#metrics)：应用程序网关当前有七个指标可用来查看性能计数器。
+* [指标](application-gateway-metrics.md)：应用程序网关具有多个指标，可帮助你验证系统是否按预期执行。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -105,7 +105,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 可通过三种方式存储日志：
 
 * **存储帐户**：如果日志存储时间较长并且希望能根据需要随时查看，则最好使用存储帐户。
-* **事件中心**：事件中心是一种很好的选择, 用于与其他安全信息和事件管理 (SIEM) 工具集成, 以获取对资源的警报。
+* **事件中心**：事件中心是一种很好的选择，用于与其他安全信息和事件管理（SIEM）工具集成，以获取对资源的警报。
 * **Azure Monitor 日志**：Azure Monitor 日志最适合用于应用程序常规实时监视或查看趋势。
 
 ### <a name="enable-logging-through-powershell"></a>通过 PowerShell 启用日志记录
@@ -172,7 +172,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |sentBytes| 发送的数据包大小（以字节为单位）。|
 |timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
 |sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
-|host| 向后端服务器发送请求时所用的主机名。 如果正在重写后端主机名, 则此名称将反映该主机名。|
+|host| 向后端服务器发送请求时所用的主机名。 如果即将覆盖后端主机名，则此名称将反映该主机名。|
 |originalHost| 应用程序网关从客户端收到请求时使用的主机名。|
 ```json
 {
@@ -199,7 +199,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
     }
 }
 ```
-对于应用程序网关和 WAF v2, 日志显示了一些详细信息:
+对于应用程序网关和 WAF v2，日志显示了一些详细信息：
 
 |ReplTest1  |描述  |
 |---------|---------|
@@ -215,8 +215,8 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |sentBytes| 发送的数据包大小（以字节为单位）。|
 |timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
 |sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
-|sslCipher| 用于 SSL 通信的密码套件 (如果已启用 SSL)。|
-|sslProtocol| 使用的 SSL 协议 (如果已启用 SSL)。|
+|sslCipher| 用于 SSL 通信的密码套件（如果已启用 SSL）。|
+|sslProtocol| 使用的 SSL 协议（如果已启用 SSL）。|
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
 |serverStatus| 后端服务器的 HTTP 状态代码。|
 |serverResponseLatency| 后端服务器响应的延迟。|
@@ -359,67 +359,6 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 #### <a name="analyzing-access-logs-through-goaccess"></a>通过 GoAccess 分析访问日志
 
 我们发布了一个资源管理器模板，用于安装和运行应用程序网关访问日志的常用 [GoAccess](https://goaccess.io/) 日志分析器。 GoAccess 提供了宝贵的 HTTP 流量统计信息，例如唯一访问者、请求的文件、主机、操作系统、浏览器和 HTTP 状态代码等。 有关更多详细信息，请参阅 [GitHub 的资源管理器模板文件夹中的自述文件](https://aka.ms/appgwgoaccessreadme)。
-
-## <a name="metrics"></a>指标
-
-指标是某些 Azure 资源的一项功能，可在此查看门户中的性能计数器。 应用程序网关支持以下指标：
-
-- **当前连接数**
-- **失败的请求数**
-- **正常的主机计数**
-
-   可以按每个后端池进行筛选来显示特定后端池中正常的/不正常的主机数。
-
-
-- **响应状态**
-
-   可以进一步对响应状态代码分布进行归类来显示 2xx、3xx、4xx 和 5xx 类别的响应。
-
-- **吞吐量**
-- **请求总数**
-- **不正常的主机计数**
-
-   可以按每个后端池进行筛选来显示特定后端池中正常的/不正常的主机数。
-
-浏览到应用程序网关，并在“监视”下选择“指标”。 若要查看可用值，请选择“指标”下拉列表。
-
-在下图中可以看到过去 30 分钟显示的三个指标的示例：
-
-[![](media/application-gateway-diagnostics/figure5.png "度量值视图")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
-
-若要查看当前的指标列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。
-
-### <a name="alert-rules"></a>警报规则
-
-可基于资源的指标启动警报规则。 例如，如果应用程序网关的吞吐量在指定时间段内高于、低于或等于阈值，警报即可调用 webhook 或给管理员发送电子邮件。
-
-以下示例指导创建警报规则，以在吞吐量违反阈值时给管理员发送电子邮件：
-
-1. 选择 "**添加指标警报**" 以打开 "**添加规则**" 页。 你还可以从 "指标" 页访问此页。
-
-   ![“添加指标警报”按钮][6]
-
-2. 在 "**添加规则**" 页上, 填写 "名称"、"条件" 和 "通知" 部分, 然后选择 **"确定"** 。
-
-   * 在“条件”选择器中，选择以下四个值之一：**大于**、**大于或等于**、**小于**、**小于或等于**。
-
-   * 在“时间段”选择器中，选择 5 分钟到 6 小时之间的一个时间段。
-
-   * 如果选择“电子邮件所有者、参与者和读者”，则电子邮件将基于有权访问该资源的用户动态发送。 否则，可以在“其他管理员电子邮件”框中提供用户名单并以逗号分隔。
-
-   ![添加规则页][7]
-
-如果违反阈值，用户将收到类似下图内容的电子邮件：
-
-![违反阈值电子邮件][8]
-
-创建指标警报后，会显示警报列表。 它提供所有警报规则概述。
-
-![警报和规则列表][9]
-
-若要了解有关警报通知的详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
-
-若要深入了解 webhook 以及如何将其与警报搭配使用，请参阅[针对 Azure 指标警报配置 webhook](../azure-monitor/platform/alerts-webhooks.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f46757b97fb2dd38be36459e5aafb70f5b5a3bf6
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932710"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307441"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -38,6 +38,7 @@ LUIS 理解以下语言：
 | 法语(法国) |`fr-FR` |-| ✔ |✔ |✔|
 | 法语(加拿大) |`fr-CA` |-|   -   |-|✔|
 | 德语 |`de-DE` |-| ✔ |✔ |✔|
+| 印地语 | `hi-IN`|-|-|-|-|
 | 意大利语 |`it-IT` |-| ✔ |✔|✔|
 | *[日语](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|仅关键短语|
 | 韩语 |`ko-KR` |-|   -   |-|仅关键短语|
@@ -88,6 +89,7 @@ LUIS 理解以下语言：
 |法语 (fr-FR)|✔||||
 |法语 (fr-CA)|✔||||
 |德语|||✔|✔|
+| 印地语 |✔|-|-|-|-|
 |意大利语|✔||||
 |日语||||✔|
 |韩语||✔||✔|

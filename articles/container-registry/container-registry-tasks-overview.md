@@ -1,6 +1,6 @@
 ---
-title: 用 Azure 容器注册表任务自动构建和修补容器映像 (ACR 任务)
-description: ACR 任务简介, Azure 容器注册表中的一套功能, 可在云中提供安全、自动化的容器映像生成、管理和修补。
+title: 用 Azure 容器注册表任务自动构建和修补容器映像（ACR 任务）
+description: ACR 任务简介，Azure 容器注册表中的一套功能，可在云中提供安全、自动化的容器映像生成、管理和修补。
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: bc32ce59a7ec99278fb193f375d4ca945c227d2f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2d7237c1d142e9f7bb5a47294d1375040be43ac3
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172194"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308025"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>利用 ACR 任务自动生成和维护容器映像
 
@@ -28,7 +28,7 @@ ms.locfileid: "70172194"
 * [快速任务](#quick-task)：在 Azure 中按需生成并推送容器映像，无需安装本地 Docker 引擎。 请考虑云中的 `docker build`、`docker push`。 从本地源代码或 Git 存储库生成。
 * [提交源代码时生成](#automatic-build-on-source-code-commit)：将代码提交到 Git 存储库时自动触发容器映像生成。
 * [更新基础映像时生成](#automate-os-and-framework-patching)：更新映像的基础映像后触发容器映像生成。
-* [多步骤任务](#multi-step-tasks):定义生成映像、将容器作为命令运行，并将映像推送到注册表的多步骤任务。 ACR 任务的此功能支持按需任务执行和并行映像生成、测试和推送操作。
+* [多步骤任务](#multi-step-tasks)：定义生成映像、将容器作为命令运行，并将映像推送到注册表的多步骤任务。 ACR 任务的此功能支持按需任务执行和并行映像生成、测试和推送操作。
 
 ## <a name="quick-task"></a>快速任务
 
@@ -36,34 +36,17 @@ ms.locfileid: "70172194"
 
 在你提交第一行代码之前，ACR 任务的[快速任务](container-registry-tutorial-quick-task.md)功能可以通过将容器映像生成卸载到 Azure，来提供集成式开发体验。 使用快速生成可以在提交代码之前验证自动化生成定义和捕获潜在的问题。
 
-使用熟悉`docker build`的格式, Azure CLI 中的[az acr build][az-acr-build]命令采用*上下文*(要生成的文件集), 将其发送到 acr 任务, 并在默认情况下将生成的映像推送到其注册表。
+使用熟悉`docker build`的格式，Azure CLI 中的[az acr build][az-acr-build]命令采用[上下文](#context-locations)（要生成的文件集），将其发送到 acr 任务，并在默认情况下将生成的映像推送到其注册表。
 
-有关简介, 请参阅在 Azure 容器注册表中[生成和运行容器映像](container-registry-quickstart-task-cli.md)的快速入门。  
+有关简介，请参阅在 Azure 容器注册表中[生成和运行容器映像](container-registry-quickstart-task-cli.md)的快速入门。  
 
-下表显示了 ACR 任务支持的上下文位置的几个示例：
-
-| 上下文位置 | 描述 | 示例 |
-| ---------------- | ----------- | ------- |
-| 本地文件系统 | 本地文件系统上某个目录中的文件。 | `/home/user/projects/myapp` |
-| GitHub 主分支 | GitHub 存储库主分支（或其他默认分支）中的文件。  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub 分支 | GitHub 存储库的特定分支。| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub 子文件夹 | GitHub 存储库中某个子文件夹内的文件。 示例显示分支和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| 远程 tarball | 远程 Web 服务器上某个压缩存档中的文件。 | `http://remoteserver/myapp.tar.gz` |
-
-默认情况下, ACR 任务为 Linux OS 和 amd64 体系结构生成映像。 `--platform`指定标记以便为其他体系结构生成 Windows 映像或 Linux 映像。 指定操作系统, 并根据需要指定支持的体系结构格式 (例如`--platform Linux/arm`)。 对于 arm 体系结构, 可以选择指定 OS/体系结构/变体格式的变体`--platform Linux/arm64/v8`(例如):
-
-| OS | 体系结构|
-| --- | ------- | 
-| Linux | amd64<br/>单臂<br/>arm64<br/>386 |
-| Windows | amd64 |
-
-ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成到 CI/CD 解决方案。 通过执行包含[服务主体][az-login-service-principal]的[AZ login][az-login] , CI/CD 解决方案可以发出[az acr build][az-acr-build]命令来启动映像生成。
+ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成到 CI/CD 解决方案。 通过执行包含[服务主体][az-login-service-principal]的[AZ login][az-login] ，CI/CD 解决方案可以发出[az acr build][az-acr-build]命令来启动映像生成。
 
 第一篇 ACR 任务教程[使用 Azure 容器注册表任务在云中生成容器映像](container-registry-tutorial-quick-task.md)中介绍了快速任务的用法。
 
 ## <a name="automatic-build-on-source-code-commit"></a>提交源代码时自动生成
 
-当代码提交到 GitHub 或 Azure DevOps 中的 Git 存储库时, 可使用 ACR 任务自动触发容器映像生成。 生成任务, 可使用 Azure CLI 命令[az acr task][az-acr-task]进行配置, 允许你指定 Git 存储库, 还可以指定分支和 Dockerfile。 当团队将代码提交到存储库时，ACR 任务创建的 Webhook 会触发存储库中定义的容器映像的生成。
+当代码提交到 GitHub 或 Azure DevOps 中的 Git 存储库时，可使用 ACR 任务自动触发容器映像生成。 生成任务，可使用 Azure CLI 命令[az acr task][az-acr-task]进行配置，允许你指定 Git 存储库，还可以指定分支和 Dockerfile。 当团队将代码提交到存储库时，ACR 任务创建的 Webhook 会触发存储库中定义的容器映像的生成。
 
 > [!IMPORTANT]
 > 如果以前在预览期使用 `az acr build-task` 创建了任务，则需要使用 [az acr task][az-acr-task] 命令重新创建这些任务。
@@ -72,7 +55,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 ## <a name="automate-os-and-framework-patching"></a>自动执行 OS 和框架修补
 
-真正增强容器生成工作流的 ACR 任务的强大之处在于，它能够检测基础映像的更新。 在将更新的基本映像推送到注册表时, 或在公共存储库 (如 Docker Hub) 中更新基本映像时, ACR 任务可以根据它自动生成任何应用程序映像。
+真正增强容器生成工作流的 ACR 任务的强大之处在于，它能够检测基础映像的更新。 在将更新的基本映像推送到注册表时，或在公共存储库（如 Docker Hub）中更新基本映像时，ACR 任务可以根据它自动生成任何应用程序映像。
 
 在广义上，可将容器映像分类为基本映像和应用程序映像。 基本映像通常包括应用程序所基于的操作系统和应用程序框架，以及其他自定义项。 这些基础映像本身通常基于公共上游映像，例如：[Alpine Linux][base-alpine]、 [Windows][base-windows]、 [.net][base-dotnet]或[node.js][base-node]。 多个应用程序映像可以共享一个通用基本映像。
 
@@ -80,18 +63,18 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 由于 ACR 任务在生成容器映像时会动态发现基础映像依赖项，因此，ACR 任务可以检测到应用程序映像的基础映像何时发生了更新。 预配置一个[生成任务](container-registry-tutorial-base-image-update.md#create-a-task)后，ACR 任务会**自动重新生成每个应用程序映像**。 通过这种自动检测和重新生成，ACR 任务能够节省在正常情况下手动跟踪和更新引用已更新基础映像的每个应用程序映像所需的时间和精力。
 
-当基本映像位于以下位置之一时, ACR 任务将跟踪基本映像更新:
+当基本映像位于以下位置之一时，ACR 任务将跟踪基本映像更新：
 
-* 运行任务的同一 Azure 容器注册表
+* 运行任务所在的同一 Azure 容器注册表
 * 同一区域中的另一个 Azure 容器注册表 
 * Docker Hub 中的公共存储库
 * Microsoft 容器注册表中的公共存储库
 
-在第三个 ACR 任务教程中了解有关 OS 和 framework 修补的详细信息, 请参阅[通过 Azure 容器注册表任务对基础映像更新进行自动构建映像](container-registry-tutorial-base-image-update.md)。
+在第三个 ACR 任务教程中了解有关 OS 和 framework 修补的详细信息，请参阅[通过 Azure 容器注册表任务对基础映像更新进行自动构建映像](container-registry-tutorial-base-image-update.md)。
 
 ## <a name="multi-step-tasks"></a>多步骤任务
 
-多步骤任务提供基于步骤的任务定义和执行, 用于在云中构建、测试和修补容器映像。 任务步骤定义各个容器映像构建和推送操作。 它们还可以定义一个或多个容器的执行，每个步骤都使用容器作为其执行环境。
+多步骤任务提供基于步骤的任务定义和执行，用于在云中构建、测试和修补容器映像。 任务步骤定义各个容器映像构建和推送操作。 它们还可以定义一个或多个容器的执行，每个步骤都使用容器作为其执行环境。
 
 例如，可以创建一个多步骤任务来自动完成以下操作：
 
@@ -106,11 +89,32 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 若要了解多步骤任务，请参阅[在 ACR 任务中运行多步骤生成、测试和修补任务](container-registry-tasks-multi-step.md)。
 
+## <a name="context-locations"></a>上下文位置
+
+下表显示了 ACR 任务支持的上下文位置的几个示例：
+
+| 上下文位置 | 描述 | 示例 |
+| ---------------- | ----------- | ------- |
+| 本地文件系统 | 本地文件系统上某个目录中的文件。 | `/home/user/projects/myapp` |
+| GitHub 主分支 | GitHub 存储库主分支（或其他默认分支）中的文件。  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub 分支 | GitHub 存储库的特定分支。| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub 子文件夹 | GitHub 存储库中某个子文件夹内的文件。 示例显示分支和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| 远程 tarball | 远程 Web 服务器上某个压缩存档中的文件。 | `http://remoteserver/myapp.tar.gz` |
+
+## <a name="image-platforms"></a>映像平台
+
+默认情况下，ACR 任务为 Linux OS 和 amd64 体系结构生成映像。 `--platform`指定标记以便为其他体系结构生成 Windows 映像或 Linux 映像。 指定操作系统，并根据需要指定支持的体系结构格式（例如`--platform Linux/arm`）。 对于 ARM 体系结构，可以选择指定 OS/体系结构/变体格式的变体`--platform Linux/arm64/v8`（例如）：
+
+| OS | 体系结构|
+| --- | ------- | 
+| Linux | amd64<br/>单臂<br/>arm64<br/>386 |
+| Windows | amd64 |
+
 ## <a name="view-task-logs"></a>查看任务日志
 
-每个任务运行都会生成日志输出, 你可以通过检查这些输出来确定任务步骤是否成功运行。 如果使用[az acr build](/cli/azure/acr#az-acr-build)、 [az acr run](/cli/azure/acr#az-acr-run)或[az acr task run](/cli/azure/acr/task#az-acr-task-run)命令来触发任务, 则会将任务运行的日志输出流式传输到控制台, 并将其存储起来供以后检索。 查看 Azure 门户中的任务运行的日志, 或使用[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)命令。
+每个任务运行都会生成日志输出，你可以通过检查这些输出来确定任务步骤是否成功运行。 如果使用[az acr build](/cli/azure/acr#az-acr-build)、 [az acr run](/cli/azure/acr#az-acr-run)或[az acr task run](/cli/azure/acr/task#az-acr-task-run)命令来触发任务，则会将任务运行的日志输出流式传输到控制台，并将其存储起来供以后检索。 当自动触发任务（例如，通过源代码提交或基本映像更新）时，仅存储任务日志。 查看 Azure 门户中的任务运行的日志，或使用[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)命令。
 
-从2019年7月开始, 将默认保留30天内任务运行的数据和日志, 并自动清除。 如果要存档任务运行的数据, 请使用[az acr task update-run](/cli/azure/acr/task#az-acr-task-update-run)命令启用存档。 以下示例为 registry *myregistry*中的任务运行*cf11*启用存档。
+从2019年7月开始，将默认保留30天内任务运行的数据和日志，并自动清除。 如果要存档任务运行的数据，请使用[az acr task update-run](/cli/azure/acr/task#az-acr-task-update-run)命令启用存档。 以下示例为 registry *myregistry*中的任务运行*cf11*启用存档。
 
 ```azurecli
 az acr task update-run --registry myregistry --run-id cf11 --no-archive false
@@ -118,7 +122,7 @@ az acr task update-run --registry myregistry --run-id cf11 --no-archive false
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你已准备好通过在云中构建容器映像来自动修补 OS 和 framework, 请查看三部分[ACR 任务教程系列](container-registry-tutorial-quick-task.md)。
+如果你已准备好通过在云中构建容器映像来自动修补 OS 和 framework，请查看三部分[ACR 任务教程系列](container-registry-tutorial-quick-task.md)。
 
 可以选择安装[适用于 Visual Studio Code 的 Docker 扩展](https://code.visualstudio.com/docs/azure/docker)以及适用于 Azure 容器注册表的 [Azure 帐户](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)扩展。 通过 Azure 容器注册表拉取和推送映像，或者运行 ACR 任务，这一切都可以在 Visual Studio Code 中进行。
 

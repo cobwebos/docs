@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 63a8acad3c393a4c4d9c6a3b6750f1f934dad43d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: 5946c74d0075e04112e840d78dd9f5f57bec7475
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907427"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309398"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>在 Azure CLI 中创建和管理只读副本
 
 本文介绍如何使用 Azure CLI 在 Azure Database for PostgreSQL 中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
-
-> [!IMPORTANT]
-> 可以在主服务器所在的区域或所选的任何其他 Azure 区域创建只读副本。 跨区域复制目前为公共预览版。
 
 ## <a name="prerequisites"></a>先决条件
 - 用作主服务器的 [Azure Database for PostgreSQL 服务器](quickstart-create-server-up-azure-cli.md)。
@@ -68,14 +65,14 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 ```
 
 > [!NOTE]
-> 若要了解有关可以在中创建副本的区域的详细信息, 请访问[读取副本概念一文](concepts-read-replicas.md)。 
+> 若要了解有关可以在中创建副本的区域的详细信息，请访问[读取副本概念一文](concepts-read-replicas.md)。 
 
 如果尚未在“常规用途”或“内存优化”主服务器上将 `azure.replication_support` 参数设置为 **REPLICA** 并重启服务器，将会收到错误。 请在创建副本之前完成这两个步骤。
 
 使用与 master 相同的计算和存储设置创建副本。 创建副本后，可以独立于主服务器更改多项设置：计算代系、vCore 数、存储和备份保留期。 定价层也可以独立更改，但“基本”层除外。
 
 > [!IMPORTANT]
-> 将主服务器设置更新为新值之前, 请将副本设置更新为一个相等或更大的值。 此操作可帮助副本保持对主副本所做的任何更改。
+> 将主服务器设置更新为新值之前，请将副本设置更新为一个相等或更大的值。 此操作可帮助副本保持对主副本所做的任何更改。
 
 ## <a name="list-replicas"></a>列出副本
 可以使用 [az postgres server replica list](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list) 命令查看主服务器的副本的列表。

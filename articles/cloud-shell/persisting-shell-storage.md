@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
-ms.openlocfilehash: f60125123d019cbfa93bfc1b06da7ac90b54e311
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: b2823c935d11ae99ab1d87ae708945721820ad8c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742035"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306735"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -31,18 +31,35 @@ Cloud Shell 通过以下两种方法持久保存文件：
 > [!NOTE]
 > `$Home` 目录中的所有文件（如 SSH 密钥）将持久保存用户磁盘映像（存储于已装载的文件共享中）中。 在 `$Home` 目录和已装载的文件共享中持久保存信息时，请应用最佳做法。
 
-## <a name="bash-specific-commands"></a>特定于 Bash 的命令
+## <a name="clouddrive-commands"></a>clouddrive 命令
 
 ### <a name="use-the-clouddrive-command"></a>使用 `clouddrive` 命令
-使用 Cloud Shell 中的 Bash，可运行一个名为 `clouddrive` 的命令，手动更新装载到 Cloud Shell 的文件共享。
+在 Cloud Shell 中，您可以运行名`clouddrive`为的命令，这样您就可以手动更新装载到 Cloud Shell 中的文件共享。
 ![运行“clouddrive”命令](media/persisting-shell-storage/clouddrive-h.png)
+
+### <a name="list-clouddrive"></a>列出 `clouddrive`
+若要查明哪些文件共享已装载为 `clouddrive`，请运行 `df` 命令。 
+
+clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如： `//storageaccountname.file.core.windows.net/filesharename`
+
+```
+justin@Azure:~$ df
+Filesystem                                          1K-blocks   Used  Available Use% Mounted on
+overlay                                             29711408 5577940   24117084  19% /
+tmpfs                                                 986716       0     986716   0% /dev
+tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
+/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
+shm                                                    65536       0      65536   0% /dev/shm
+//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
+justin@Azure:~$
+```
 
 ### <a name="mount-a-new-clouddrive"></a>装载新的 clouddrive
 
 #### <a name="prerequisites-for-manual-mounting"></a>手动装载的先决条件
 可使用 `clouddrive mount` 命令更新与 Cloud Shell 相关联的文件共享。
 
-如果装载现有的文件共享，则存储帐户必须位于所选的 Cloud Shell 区域中。 通过从 Bash 运行 `env` 并检查 `ACC_LOCATION` 来检索位置。
+如果装载现有的文件共享，则存储帐户必须位于所选的 Cloud Shell 区域中。 通过运行`env`并`ACC_LOCATION`检查来检索位置。
 
 #### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` 命令
 
@@ -70,24 +87,7 @@ clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareNam
 ![运行 `clouddrive unmount` 命令](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> 虽然运行此命令不会删除任何资源，但手动删除映射到 Cloud Shell 的资源组、存储帐户或文件共享会清除 `$Home` 目录磁盘映像和文件共享中的任何文件。 此操作无法撤消。
-
-### <a name="list-clouddrive"></a>列出 `clouddrive`
-若要查明哪些文件共享已装载为 `clouddrive`，请运行 `df` 命令。 
-
-clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如： `//storageaccountname.file.core.windows.net/filesharename`
-
-```
-justin@Azure:~$ df
-Filesystem                                          1K-blocks   Used  Available Use% Mounted on
-overlay                                             29711408 5577940   24117084  19% /
-tmpfs                                                 986716       0     986716   0% /dev
-tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
-/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
-shm                                                    65536       0      65536   0% /dev/shm
-//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
-justin@Azure:~$
-```
+> 虽然运行此命令不会删除任何资源，但手动删除映射到 Cloud Shell 的资源组、存储帐户或文件共享会清除 `$Home` 目录磁盘映像和文件共享中的任何文件。 此操作不可撤消。
 ## <a name="powershell-specific-commands"></a>特定于 PowerShell 的命令
 
 ### <a name="list-clouddrive-azure-file-shares"></a>列出 `clouddrive` Azure 文件共享
@@ -105,7 +105,6 @@ justin@Azure:~$
 注意:如果需要在文件中定义函数并从 PowerShell cmdlet 调用，则必须包含点运算符。 例如： .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>后续步骤
-[Cloud Shell 中的 Bash 快速入门](quickstart.md) <br>
-[Cloud Shell 中的 PowerShell 快速入门](quickstart-powershell.md) <br>
+[Cloud Shell 快速入门](quickstart.md) <br>
 [了解 Microsoft Azure 文件存储](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
 [了解存储标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

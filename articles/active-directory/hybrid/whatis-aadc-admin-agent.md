@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ab3fff4294b4cda3d1554ef2761d3f4acaca35
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 222dab87ee71870e564e426d7466555893cc565b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687230"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305197"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>什么是 Azure AD Connect 管理员代理？ 
 Azure AD Connect 管理代理是 Azure Active Directory Connect 的一个新组件，可安装在 Azure Active Directory Connect 服务器上。 该组件用于从 Active Directory 环境收集特定的数据，以帮助 Microsoft 支持工程师在收到支持案例时排查问题。 
@@ -29,18 +29,20 @@ Azure AD Connect 管理代理是 Azure Active Directory Connect 的一个新组�
 Azure AD Connect 管理代理从环境中检索到的信息不会以任何形式进行存储 - 这些信息只向 Microsoft 支持工程师显示，以帮助他们调查你所提出的 Azure Active Directory Connect 相关支持案例，以及进行故障排除。Azure AD Connect 管理代理默认不会安装在 Azure AD Connect 服务器上。 
 
 ## <a name="install-the-azure-ad-connect-administration-agent-on-the-azure-ad-connect-server"></a>在 Azure AD Connect 服务器上安装 Azure AD Connect 管理代理 
-Azure AD Connect 管理代理二进制文件将放到 AAD Connect 服务器中。 若要安装该代理，请执行以下操作： 
 
+先决条件：
+1.  服务器上安装了 Azure AD Connect
+2.  服务器上安装了 Azure AD Connect Health
 
+![管理代理](media/whatis-aadc-admin-agent/adminagent0.png)
 
-1. 在管理模式下打开 PowerShell 
-2. 导航到其中的应用程序是位于的 cd"C:\Program Files\Microsoft Azure Active Directory Connect\SetupFiles"的目录 
-3. 运行 AADConnectAdminAgentSetup.exe 应用程序 
- 
-出现提示时，请输入你的 Azure AD 全局管理员凭据。 
+Azure AD Connect 管理代理二进制文件将放到 AAD Connect 服务器中。 若要安装该代理，请执行以下操作：
 
->[!NOTE]
->系统会多次提示你输入凭据，这是一个已知问题。 此问题将在下一版本中修复。
+1.  在管理模式下打开 PowerShell
+2.  导航到应用程序所在的目录 cd "C:\Program Files\Microsoft Azure Active Directory Connect\Tools"
+3.  运行 ConfigureAdminAgent
+
+出现提示时，请输入你的 Azure AD 全局管理员凭据。 这应该与 Azure AD Connect 安装过程中输入的凭据相同。
 
 安装该代理后，服务器控制面板上的“添加/删除程序”列表中会显示以下两个新程序： 
 
@@ -54,7 +56,7 @@ Microsoft 支持工程师无法更改你的系统中的任何数据，且无法�
 ## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>如果我不希望 Microsoft 支持工程师访问我的数据，该怎样做？ 
 安装该代理后，如果你不希望 Microsoft 服务工程师在处理支持请求时访问你的数据，可按如下所述通过修改服务配置文件来禁用该功能： 
 
-1.  打开**C:\Program Files\Microsoft Azure AD Connect 管理 Agent\AzureADConnectAdministrationAgentService.exe.config**在记事本中。
+1.  在记事本中打开**C:\Program Files\Microsoft Azure AD Connect Administration Agent\AzureADConnectAdministrationAgentService.exe.config** 。
 2.  按如下所示禁用 **UserDataEnabled** 设置。 如果 **UserDataEnabled** 设置存在并已设置为 true，请将其设置为 false。 如果该设置不存在，请按如下所示添加该设置。    
 
     ```xml

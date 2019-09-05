@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/05/2019
 ms.author: raynew
-ms.openlocfilehash: 5d746385a034fdf742b8958b3d1fe51ea2a3c5cf
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972180"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383205"
 ---
 # <a name="monitor-the-process-server"></a>监视进程服务器
 
@@ -57,10 +57,12 @@ ms.locfileid: "69972180"
 ![警告][yellow] | 过去 15 分钟的 CPU 利用率超过 80%
 ![警告][yellow] | 过去 15 分钟的内存使用率超过 80%
 ![警告][yellow] | 过去 15 分钟的缓存文件夹可用空间小于 30%
+![警告][yellow] | Site Recovery 每五分钟监视挂起/传出数据，并估计在30分钟内无法将进程服务器缓存中的数据上传到 Azure。
 ![警告][yellow] | 进程服务器服务在过去 15 分钟未运行
 ![关键][red] | 过去 15 分钟的 CPU 利用率超过 95%
 ![关键][red] | 过去 15 分钟的内存使用率超过 95%
 ![关键][red] | 过去 15 分钟的缓存文件夹可用空间小于 25%
+![关键][red] | Site Recovery 每五分钟监视挂起/传出数据，并估计在45分钟内无法将进程服务器缓存中的数据上传到 Azure。
 ![关键][red] | 进程服务器有 15 分钟未发出检测信号。
 
 ![表键](./media/vmware-physical-azure-monitor-process-server/table-key.png)

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: b1150d3a60e4ea7c22de5cfe7f9ea4a584c315d9
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 9fd8d6428e94007002d524d9ade99f6b368b8201
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242965"
+ms.locfileid: "70307229"
 ---
 # <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>使用 PowerShell 监视发送的数据共享的使用情况
 
@@ -42,7 +42,7 @@ New-AzDataShareInvitation -ResourceGroupName $resourceGroupName -AccountName $da
 
 | Command | 说明 |
 |---|---|
-| [新-AzDataShareInvitation](/powershell/module/az.resources/get-azdatasharesynchronizationdetails) | 创建数据共享邀请。 |
+| [新-AzDataShareInvitation](/powershell/module/az.datashare/new-azdatashareinvitation?view=azps-2.6.0) | 创建数据共享邀请。 |
 |||
 
 ## <a name="next-steps"></a>后续步骤

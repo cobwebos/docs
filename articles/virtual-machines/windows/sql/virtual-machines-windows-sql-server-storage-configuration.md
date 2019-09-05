@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: e28478d31a674d742870344b33eac6b84c3ae584
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2705b42849922ce7e3650162b8f1ff78723685c2
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123843"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309239"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 
@@ -68,7 +68,7 @@ ms.locfileid: "70123843"
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-对于现有的 SQL Server VM，可以在 Azure 门户中修改某些存储设置。 打开[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource), 然后选择 "**概述**"。 SQL Server 概述 "页显示 VM 的当前存储使用情况。 此图显示了 VM 上存在的所有驱动器。 每个驱动器的存储空间都分四个部分显示：
+对于现有的 SQL Server VM，可以在 Azure 门户中修改某些存储设置。 打开[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)，然后选择 "**概述**"。 SQL Server 概述 "页显示 VM 的当前存储使用情况。 此图显示了 VM 上存在的所有驱动器。 每个驱动器的存储空间都分四个部分显示：
 
 * SQL 数据
 * SQL 日志
@@ -110,8 +110,7 @@ Azure 会根据规范创建新驱动器。 在此方案中，Azure 将执行以�
 
 本部分提供有关在 Azure 门户中预配或配置 SQL VM 期间，Azure 自动执行的存储配置更改的参考信息。
 
-* 如果为 VM 选择的存储小于 2 TB，Azure 不会创建存储池。
-* 如果为 VM 选择了至少 2 TB 的存储，则 Azure 将配置存储池。 本主题的下一部分提供了存储池配置详细信息。
+* Azure 通过从 VM 选择的存储配置存储池。 本主题的下一部分提供了有关存储池配置的详细信息。
 * 自动存储配置始终使用[高级 SSD](../disks-types.md) P30 数据磁盘。 因此，所选 TB 数目与附加到 VM 的数据磁盘数目之间存在 1:1 映射。
 
 有关价格信息，请参阅 [磁盘存储](https://azure.microsoft.com/pricing/details/storage) 选项卡上的 **存储定价** 页。
