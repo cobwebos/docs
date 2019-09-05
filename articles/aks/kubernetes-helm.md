@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: 27d557ab12093223450fd7bc1b88c68e1f156947
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bc74ac660c5bba0624416d0a1724d959a4c385a7
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135501"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305278"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序
 
@@ -24,10 +24,10 @@ ms.locfileid: "70135501"
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-还需要安装 Helm CLI, 这是在开发系统上运行的客户端。 它使你可以通过 Helm 启动、停止和管理应用程序。 如果使用 Azure Cloud Shell，则已安装 Helm CLI。 有关本地平台上的安装说明，请参阅[安装 Helm][helm-install]。
+还需要安装 Helm CLI，这是在开发系统上运行的客户端。 它使你可以通过 Helm 启动、停止和管理应用程序。 如果使用 Azure Cloud Shell，则已安装 Helm CLI。 有关本地平台上的安装说明，请参阅[安装 Helm][helm-install]。
 
 > [!IMPORTANT]
-> Helm 要在 Linux 节点上运行。 如果群集中有 Windows Server 节点, 则必须确保 Helm pod 仅计划在 Linux 节点上运行。 还需要确保您安装的所有 Helm 图表也已计划在正确的节点上运行。 本文中的命令使用[节点选择器][k8s-node-selector]来确保将 pod 安排到正确的节点, 而不是所有 Helm 图表都公开节点选择器。 还可以考虑使用群集上的其他选项, 例如[taints][taints]。
+> Helm 要在 Linux 节点上运行。 如果群集中有 Windows Server 节点，则必须确保 Helm pod 仅计划在 Linux 节点上运行。 还需要确保您安装的所有 Helm 图表也已计划在正确的节点上运行。 本文中的命令使用[节点选择器][k8s-node-selector]来确保将 pod 安排到正确的节点，而不是所有 Helm 图表都公开节点选择器。 还可以考虑使用群集上的其他选项，例如[taints][taints]。
 
 ## <a name="create-a-service-account"></a>创建服务帐户
 
@@ -70,10 +70,12 @@ Helm 客户端和 Tiller 服务使用 TLS/SSL 进行身份验证和相互通信�
 
 ## <a name="configure-helm"></a>配置 Helm
 
-若要将基本 Tiller 部署到 AKS 群集，请使用 [helm init][helm-init] 命令。 如果群集未启用 RBAC，请删除 `--service-account` 参数和值。 如果已为 Tiller 和 Helm 配置了 TLS/SSL，请跳过此基本初始化步骤，而是提供所需的 `--tiller-tls-`，如下一个示例所示。
+若要将基本 Tiller 部署到 AKS 群集，请使用 [helm init][helm-init] 命令。 如果群集未启用 RBAC，请删除 `--service-account` 参数和值。 以下示例还将[历史记录-最大值][helm-history-max]设置为200。
+
+如果已为 Tiller 和 Helm 配置了 TLS/SSL，请跳过此基本初始化步骤，而是提供所需的 `--tiller-tls-`，如下一个示例所示。
 
 ```console
-helm init --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
+helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
 如果已在 Helm 和 Tiller 之间配置了 TLS/SSL，则提供 `--tiller-tls-*` 参数和自己证书的名称，如以下示例所示：
@@ -85,8 +87,9 @@ helm init \
     --tiller-tls-key tiller.key.pem \
     --tiller-tls-verify \
     --tls-ca-cert ca.cert.pem \
+    --history-max 200 \
     --service-account tiller \
-    --node-selectors "beta.kubernetes.io/os"="linux"
+    --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
 ## <a name="find-helm-charts"></a>查找 Helm 图表
@@ -140,12 +143,12 @@ $ helm repo update
 Hold tight while we grab the latest from your chart repositories...
 ...Skip local chart repository
 ...Successfully got an update from the "stable" chart repository
-Update Complete. ⎈ Happy Helming!⎈
+Update Complete.
 ```
 
 ## <a name="run-helm-charts"></a>运行 Helm 图表
 
-若要使用 Helm 安装图表，请使用 [helm install][helm-install] 命令并指定要安装的图表的名称。 若要查看如何在操作中安装 Helm 图表, 请使用 Helm 图表安装基本 nginx 部署。 如果配置了 TLS/SSL，请添加 `--tls` 参数以使用 Helm 客户端证书。
+若要使用 Helm 安装图表，请使用 [helm install][helm-install] 命令并指定要安装的图表的名称。 若要查看如何在操作中安装 Helm 图表，请使用 Helm 图表安装基本 nginx 部署。 如果配置了 TLS/SSL，请添加 `--tls` 参数以使用 Helm 客户端证书。
 
 ```console
 helm install stable/nginx-ingress \
@@ -180,7 +183,7 @@ flailing-alpaca-nginx-ingress-default-backend  ClusterIP     10.0.44.97  <none> 
 ...
 ```
 
-要填充 nginx 服务的*外部 IP*地址, 并允许使用 web 浏览器对其进行访问, 需要花费一两分钟的时间。
+要填充 nginx 服务的*外部 IP*地址，并允许使用 web 浏览器对其进行访问，需要花费一两分钟的时间。
 
 ## <a name="list-helm-releases"></a>列出 Helm 版本
 
@@ -195,7 +198,7 @@ flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingres
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在部署 Helm 图表时，会创建若干 Kubernetes 资源。 这些资源包括 pod、部署和服务。 若要清理这些资源，请使用 `helm delete` 命令并指定版本名称，如上一个 `helm list` 命令中所示。 下面的示例删除名为*flailing-alpaca*的版本:
+在部署 Helm 图表时，会创建若干 Kubernetes 资源。 这些资源包括 pod、部署和服务。 若要清理这些资源，请使用 `helm delete` 命令并指定版本名称，如上一个 `helm list` 命令中所示。 下面的示例删除名为*flailing-alpaca*的版本：
 
 ```console
 $ helm delete flailing-alpaca
@@ -217,6 +220,7 @@ release "flailing-alpaca" deleted
 [helm-install]: https://docs.helm.sh/using_helm/#installing-helm
 [helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
 [helm-list]: https://docs.helm.sh/helm/#helm-list
+[helm-history-max]: https://helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
 [helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
 [helm-repo-update]: https://docs.helm.sh/helm/#helm-repo-update
 [helm-search]: https://docs.helm.sh/helm/#helm-search

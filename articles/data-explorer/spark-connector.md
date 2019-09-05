@@ -7,12 +7,12 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.openlocfilehash: 0fe81926327bcccac56718cc0d06e336e1af17fe
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 6a95cbad161906bd12a608880ac694d6bdf1ed27
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165089"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383055"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>适用于 Apache Spark 的 Azure 数据资源管理器连接器（预览版）
 
@@ -21,7 +21,7 @@ ms.locfileid: "70165089"
 适用于 Spark 的 Azure 数据资源管理器连接器实施数据源和数据接收器在 Azure 数据资源管理器与 Spark 群集之间移动数据，以使用两者的功能。 使用 Azure 数据资源管理器和 Apache Spark，可以构建面向数据驱动型方案（如机器学习 (ML)、提取-转换-加载 (ETL) 和 Log Analytics）的可缩放快速应用程序。 可在批处理模式和流模式下将数据写入 Azure 数据资源管理器。
 读取 Azure 数据资源管理器的操作支持列删除和谓词下推，这样，就可以通过过滤掉 Azure 数据资源管理器中的数据来减少传输的数据量。
 
-Azure 数据资源管理器 Spark 连接器是可在任何 Spark 群集上运行的[开源项目](https://github.com/Azure/azure-kusto-spark)。
+Azure 数据资源管理器 Spark 连接器是可在任何 Spark 群集上运行的[开源项目](https://github.com/Azure/azure-kusto-spark)。 Azure 数据资源管理器 Spark 连接器使 Azure 数据资源管理器用于标准 Spark 源和接收器操作（如写入、读取和 writeStream）的有效数据存储。 
 
 > [!NOTE]
 > 尽管下面的某些示例提到了 [Azure Databricks](https://docs.azuredatabricks.net/) Spark 群集，但 Azure 数据资源管理器 Spark 连接器并不直接依赖于 Databricks 或任何其他 Spark 分发版。
@@ -90,7 +90,7 @@ mvn clean install
 
     ![导入 Azure 数据资源管理器库](media/spark-connector/db-create-library.png)
 
-1. 添加其他依赖项 (如果从 maven 使用, 则不是必需的):
+1. 添加其他依赖项（如果从 maven 使用，则不是必需的）：
 
     ![添加依赖项](media/spark-connector/db-dependencies.png)
 
@@ -159,7 +159,7 @@ Azure 数据资源管理器 Spark 连接器允许使用 [Azure AD 应用程序](
       
     ```
     
-   或使用简化的语法:
+   或使用简化的语法：
    
     ```scala
          import com.microsoft.kusto.spark.datasink.SparkIngestionProperties

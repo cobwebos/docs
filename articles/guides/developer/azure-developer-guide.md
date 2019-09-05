@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: f04dd628ae0999edd202c98521526ae70e1ff0af
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 367027a48dd51dd88de63cb163e05e0e8503755d
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141212"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308589"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -199,7 +199,7 @@ Azure 是一个全球性云平台，在世界各地的许多区域都可以使�
 
 ### <a name="choose-the-best-region-for-your-application-and-data"></a>选择应用程序和数据的最佳区域
 
-使用 Azure 的好处之一是，你可以将应用程序部署到全球范围内的各种数据中心。 你选择的区域可能会影响应用程序的性能。 例如，最好选择更接近于大部分客户的区域，以减少网络请求中的延迟。 你可能还需要选择你的区域, 以满足在某些国家/地区分发应用的法律要求。 最佳的做法是，始终将应用程序数据存储在相同的数据中心，或尽可能靠近托管应用程序的数据中心的数据中心。
+使用 Azure 的好处之一是，你可以将应用程序部署到全球范围内的各种数据中心。 你选择的区域可能会影响应用程序的性能。 例如，最好选择更接近于大部分客户的区域，以减少网络请求中的延迟。 你可能还需要选择你的区域，以满足在某些国家/地区分发应用的法律要求。 最佳的做法是，始终将应用程序数据存储在相同的数据中心，或尽可能靠近托管应用程序的数据中心的数据中心。
 
 ### <a name="multi-region-apps"></a>多区域应用
 
@@ -234,7 +234,7 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 除了 REST API，许多 Azure 服务还允许以编程方式管理应用程序中的资源，方法是通过使用特定于平台的 Azure SDK，包括用于以下开发平台的 SDK：
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/javascript/azure)
+-   [Node.js](https://docs.microsoft.com/azure/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)

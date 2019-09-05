@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 23c54a69f709ec97d895ed5965841e43ebdc560c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68254346"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306548"
 ---
 # <a name="specify-a-face-recognition-model"></a>指定人脸识别模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "68254346"
 
 对于新用户，我们建议使用最新的模型。 请继续阅读，了解如何在不同的人脸操作中指定模型，同时避免模型冲突。 如果高级用户不确定是否要切换到最新的模型，可以转到[评估不同的模型](#evaluate-different-models)部分来评估新模型，并使用当前数据集比较结果。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 读者应该熟悉 AI 人脸检测和识别的概念。 否则请先阅读以下操作指南：
 
@@ -107,7 +107,8 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 
 本文已介绍如何指定要与不同人脸服务 API 配合使用的识别模型。 接下来，请遵循相应的快速入门开始使用人脸识别。
 
-* [检测图像中的人脸](../quickstarts/csharp-detect-sdk.md)
+* [面部 .NET SDK](../Quickstarts/csharp-sdk.md)
+* [面部 Python SDK](../Quickstarts/python-sdk.md)
 
 [Face - Detect]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

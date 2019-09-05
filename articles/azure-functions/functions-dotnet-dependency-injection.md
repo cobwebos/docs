@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 05/28/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1dbbb6e7bd88e08520225515c422529dc260e1b2
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: e31f3dc166177ce36289b97d85d90a9582c9cae5
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377370"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375986"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -27,7 +27,7 @@ Azure Functions 基于 ASP.NET Core 依赖项注入功能。 在 Azure Functions
 
 对依赖项注入的支持始于 Azure Functions 2.x。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 必须先安装以下 NuGet 包，然后才能使用依赖项注入：
 
@@ -71,7 +71,7 @@ namespace MyNamespace
 
 ## <a name="use-injected-dependencies"></a>使用注入的依赖项
 
-ASP.NET Core 使用构造函数注入来使依赖项可供你的函数使用。 以下示例演示了 `IMyService` 和 `HttpClient` 依赖项是如何注入到 HTTP 触发的函数中的。
+ASP.NET Core 使用构造函数注入来使依赖项可供你的函数使用。 以下示例演示了 `IMyService` 和 `HttpClient` 依赖项是如何注入到 HTTP 触发的函数中的。 
 
 ```csharp
 using System;
@@ -112,7 +112,7 @@ namespace MyNamespace
 }
 ```
 
-使用构造函数注入意味着，如果你希望利用依赖项注入，则不应当使用静态函数。
+使用构造函数注入意味着，如果你希望利用依赖项注入，则不应当使用静态函数。 对于 cosmos 客户端，请参阅[此](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/CodeSamples/AzureFunctions/AzureFunctionsCosmosClient.cs)。
 
 ## <a name="service-lifetimes"></a>服务生存期
 
@@ -126,10 +126,10 @@ Azure Functions 应用提供与 [ASP.NET 依赖项注入](https://docs.microsoft
 
 ## <a name="logging-services"></a>日志记录服务
 
-如果需要自己的日志记录提供程序, 建议的方法是注册`ILoggerProvider`实例。 Azure Functions 自动添加 Application Insights。
+如果需要自己的日志记录提供程序，建议的方法是注册`ILoggerProvider`实例。 Azure Functions 自动添加 Application Insights。
 
 > [!WARNING]
-> 不要添加`AddApplicationInsightsTelemetry()`到服务集合, 因为它注册的服务与环境提供的服务发生冲突。
+> 不要添加`AddApplicationInsightsTelemetry()`到服务集合，因为它注册的服务与环境提供的服务发生冲突。
 
 ## <a name="function-app-provided-services"></a>函数应用提供的服务
 

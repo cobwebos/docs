@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 14f1925649a665b0e63ac37ef9ec7e3469042e3e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b8d01a383e816bfc73413d21e9cc8d51d326ab14
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242939"
+ms.locfileid: "70307184"
 ---
 # <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>使用 PowerShell 监视发送的数据共享的使用情况
 
@@ -48,8 +48,8 @@ Get-AzDataShareSynchronizationSetting -ResourceGroupName $resourceGroupName -Acc
 
 | Command | 说明 |
 |---|---|
-| [新-AzDataShareSynchronizationSetting](/powershell/module/az.resources/new-azdatasharesynchronizationsettings) | 创建共享同步。 |
-| [AzDataShareSynchronizationSetting](/powershell/module/az.resources/get-azdatasharesynchronizationsetting) | 获取共享同步的同步设置。 |
+| [新-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting?view=azps-2.6.0) | 创建共享同步。 |
+| [AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | 获取共享同步的同步设置。 |
 |||
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：使用 SAML 2.0 标识提供者进行的 Azure 上的单一登录
+title: Azure AD Connect：使用 SAML 2.0 标识提供者进行单一登录 - Azure
 description: 本文档介绍使用符合 SAML 2.0 的 Idp 进行单一登录。
 services: active-directory
 author: billmath
@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e25060152577e7947a78aa0e8d78c85cc7fd2fad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff4f1b81f476159c13d3725cd3cb1766aec7dc87
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138344"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305100"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 标识提供者 (IdP) 进行单一登录
 
@@ -41,7 +41,7 @@ Microsoft 提供此登录体验，支持将 Microsoft 云服务（例如 Office 
 >     - Windows 8 邮件客户端和 Windows 8.1 邮件客户端
 >     - Windows 10 邮件客户端
 
-其他所有客户端都不可在这种采用 SAML 2.0 标识提供者的登录方案中使用。 例如，Lync 2010 桌面客户端不能登录到该服务与 SAML 2.0 标识提供者配置为单一登录。
+其他所有客户端都不可在这种采用 SAML 2.0 标识提供者的登录方案中使用。 例如，Lync 2010 桌面客户端不能登录到已将 SAML 2.0 标识提供者配置为进行单一登录的服务。
 
 ## <a name="azure-ad-saml-20-protocol-requirements"></a>Azure AD SAML 2.0 协议需求
 本文档介绍有关 SAML 2.0 标识提供者联合 Azure AD 以启用登录到一个或多个 Microsoft 云服务（例如 Office 365）必须实现的协议和消息格式的详细需求。 此方案中所使用的 Microsoft 云服务的 SAML 2.0 信赖方 (SP-STS) 为 Azure AD。
@@ -71,8 +71,8 @@ Microsoft 提供此登录体验，支持将 Microsoft 云服务（例如 Office 
 绑定是所需的传输相关通信参数。 以下需求适用于绑定
 
 1. HTTPS 是所需的传输。
-2.  Azure AD 将登录期间提交令牌需要 HTTP POST。
-3.  Azure AD 将使用 HTTP POST 消息到标识提供者登录到标识提供程序和重定向的身份验证请求。
+2.  Azure AD 将需要使用 HTTP POST 在登录期间提交令牌。
+3.  Azure AD 将使用 HTTP POST 向标识提供者提交身份验证请求，并使用 REDIRECT 向标识提供者发送“注销”消息。
 
 ## <a name="required-attributes"></a>必需属性
 此表显示了 SAML 2.0 消息中特定属性的需求。
@@ -185,7 +185,7 @@ SAML 2.0 标识提供者需要遵循有关 Azure AD 信赖方的信息。 Azure 
 
 
 1. 以租户管理员身份连接到 Azure AD Directory：Connect-MsolService。
-2.  通过 SAML 2.0 将所需的 Office 365 域配置为使用联合：`$dom = "contoso.com" $BrandName - "Sample SAML 2.0 IDP" $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" $MyURI = "urn:uri:MySamlp2IDP" $MySigningCert = @" MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" "@ $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" $Protocol = "SAMLP" Set-MsolDomainAuthentication -DomainName $dom -FederationBrandName $dom -Authentication Federated -PassiveLogOnUri $MyURI -ActiveLogOnUri $ecpUrl -SigningCertificate $MySigningCert -IssuerUri $uri -LogOffUri $url -PreferredAuthenticationProtocol $Protocol` 
+2.  通过 SAML 2.0 将所需的 Office 365 域配置为使用联合：`$dom = "contoso.com" $BrandName - "Sample SAML 2.0 IDP" $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" $MyURI = "urn:uri:MySamlp2IDP" $MySigningCert = @" MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" "@ $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" $Protocol = "SAMLP" Set-MsolDomainAuthentication -DomainName $dom -FederationBrandName $BrandName -Authentication Federated -PassiveLogOnUri $LogOnUrl -ActiveLogOnUri $ecpUrl -SigningCertificate $MySigningCert -IssuerUri $MyURI -LogOffUri $LogOffUrl -PreferredAuthenticationProtocol $Protocol` 
 
 3.  可以从 IDP 元数据文件中获取采用 base64 编码的签名证书字符串。 现已提供此位置的示例，但根据实现的不同可能会有细微的差别。
 
@@ -258,7 +258,7 @@ Microsoft 提供了一种工具，可用于测试基于 SAML 2.0 的标识提供
 2.  单击“立即安装”开始下载并安装该工具。
 3.  选择“我无法设置与 Office 365、Azure 或其他使用 Azure Active Directory 的服务的联合”。
 4.  下载并运行该工具后，你将看到“连接性诊断”窗口。 该工具将逐步引导你测试联合连接。
-5.  Connectivity Analyzer 将打开 SAML 2.0 IDP，以便在登录、 用户主体正在测试输入的凭据：![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  Connectivity Analyzer 将开启 SAML 2.0 IDP 用以登录，请输入进行测试的用户主体凭据：![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  在联合测试登录窗口，应为配置为与 SAML 2.0 标识提供者联合的 Azure AD 租户输入帐户名和密码。 该工具会尝试使用这些凭据进行登录，并提供登录尝试期间所执行的测试的详细结果作为输出。
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. 此窗口显示了测试失败的结果。 单击“查看详细结果”将显示执行的每个测试的结果信息。 还可以将结果保存到磁盘以便共享。
@@ -271,7 +271,7 @@ Microsoft 提供了一种工具，可用于测试基于 SAML 2.0 的标识提供
 若要验证是否已正确设置单一登录，请完成以下步骤：
 
 
-1. 在已加入域的计算机上，登录到云服务使用的相同登录名称用于公司凭据。
+1. 在已加入域的计算机上，使用用于公司凭据的相同登录名登录到云服务。
 2.  在密码框内单击。 如果设置了单一登录，密码框将会灰显，并且你将看到以下消息：“你现在需要登录 &lt;your company&gt;。”
 3.  单击&lt;你的公司&gt;链接中的登录。 如果能够登录，则已设置好单一登录。
 

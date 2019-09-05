@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/23/2019
+ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: bf2b83725f8ce8e712974c182c9a11e8ed0d04f0
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: df9a7325d3ffc2362ff14b9a618ca0db7928b337
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013227"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376336"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>存储队列和服务总线队列 - 比较与对照
 本文分析 Microsoft Azure 目前提供的以下两种队列类型之间的差异和相似性：存储队列和服务总线队列。 通过使用该信息，可以比较和对照这两种技术，并可以明智地决定哪种解决方案最符合需要。
@@ -70,7 +70,7 @@ Azure 支持两种队列机制：“存储队列”和“服务总线队列”�
 | 比较条件 | 存储队列 | 服务总线队列 |
 | --- | --- | --- |
 | 排序保障 |**否** <br/><br>有关详细信息，请参阅“其他信息”部分中的第一个注意事项。</br> |**是 - 先进先出 (FIFO)**<br/><br>（通过使用消息传送会话） |
-| 传递保障 |**至少一次** |至少**一次**(使用 PeekLock 接收模式-这是默认值) <br/><br/>**最多一次**(使用 ReceiveAndDelete 接收模式) <br/> <br/> 了解有关各种[接收模式](service-bus-queues-topics-subscriptions.md#receive-modes)的详细信息  |
+| 传递保障 |**至少一次** |至少**一次**（使用 PeekLock 接收模式-这是默认值） <br/><br/>**最多一次**（使用 ReceiveAndDelete 接收模式） <br/> <br/> 了解有关各种[接收模式](service-bus-queues-topics-subscriptions.md#receive-modes)的详细信息  |
 | 原子操作支持 |**否** |**是**<br/><br/> |
 | 接收行为 |**非阻止**<br/><br/>（如果没有发现新消息，则立即完成） |**阻止超时/未超时**<br/><br/>（提供长轮询，或[“Comet 技术”](https://go.microsoft.com/fwlink/?LinkId=613759)）<br/><br/>**非阻止**<br/><br/>（通过仅使用 .NET 托管的 API） |
 | 推送样式 API |**否** |**是**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) 和 **OnMessage** 会话 .NET API。 |
@@ -85,8 +85,7 @@ Azure 支持两种队列机制：“存储队列”和“服务总线队列”�
 * 存储队列中的消息通常是先进先出的，但有时其顺序可能会颠倒。例如，当消息的可见性超时持续时间到期时（例如，由于客户端应用程序在处理过程中崩溃），就会发生这种情况。 当可见性超时到期时，消息会再次变成在队列上可见，让另一个工作线程能够取消它的排队。 此时，重新变成可见的消息可以放置在队列中（可以再次取消其排队），位于原先排在它后面的消息之后。
 * 服务总线队列中有保障的 FIFO 模式要求使用消息传送会话。 处理以“扫视与锁定”模式接收的消息时，如果应用程序发生崩溃，下一次队列接收者接受消息传送会话时，它将在失败消息的生存时间 (TTL) 期限过期后开始传递此消息。
 * 存储队列可支持标准队列方案，例如解除应用程序组件之间的关联，增加可伸缩性和容错能力、进行负载分级，以及生成过程工作流。
-* 服务总线队列支持“至少一次”传递保障。 
-* 可以避免在服务总线会话上下文中处理消息时出现的不一致，方法是：使用会话状态来存储应用程序的状态（与处理会话的消息序列的进程相关），以及使用与处理接收的消息和更新会话状态相关的事务。 在其他供应商的产品中, 这种类型的一致性功能有时会被标记为*一次*, 但事务失败会明显导致消息重新传送, 因此, 这种情况并不完全适合。
+* 可以避免在服务总线会话上下文中处理消息时出现的不一致，方法是：使用会话状态来存储应用程序的状态（与处理会话的消息序列的进程相关），以及使用与处理接收的消息和更新会话状态相关的事务。 在其他供应商的产品中，这种类型的一致性功能有时会被标记为*一次*，但事务失败会明显导致消息重新传送，因此，这种情况并不完全适合。
 * 存储队列可在多个队列、表和 Blob 上提供统一和一致的编程模型 – 对于开发人员和运营团队都是如此。
 * 服务总线队列为单个队列的上下文中的本地事务提供支持。
 * 服务总线支持的“接收与删除”模式提供了减少消息传送操作计数（和相关成本）以换取降低安全传递保证的能力。

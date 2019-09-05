@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 530f38289afb3fce85bbb025e7b699862eedbadc
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136567"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382701"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault 托管存储帐户 - PowerShell
 
@@ -21,7 +21,7 @@ ms.locfileid: "70136567"
 > - 使用应用程序标识或用户标识（而不是存储帐户凭据）对客户端应用程序进行身份验证。 
 > - 在 Azure 上运行时使用 [Azure AD 托管标识](/azure/active-directory/managed-identities-azure-resources/)。 托管标识完全消除了客户端身份验证的需要，并可以在应用程序中存储凭据，或者将凭据与应用程序一同存储。
 > - 使用同样受 Key Vault 支持的基于角色的访问控制 (RBAC) 来管理授权。
-> - 目前, AAD 访问存储帐户不能用于访问表。
+> - 目前，AAD 访问存储帐户不能用于访问表。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -50,7 +50,7 @@ Key Vault 托管存储帐户功能代你执行多种管理功能：
 ```azurepowershell-interactive
 Connect-AzAccount
 ```
-如果有多个 Azure 订阅, 可以使用[AzSubscription](/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0) cmdlet 列出这些订阅, 并指定要与[AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) cmdlet 一起使用的订阅。 
+如果有多个 Azure 订阅，可以使用[AzSubscription](/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0) cmdlet 列出这些订阅，并指定要与[AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) cmdlet 一起使用的订阅。 
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId <subscriptionId>
@@ -111,7 +111,7 @@ CanDelegate        : False
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
 
-Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -PermissionsToStorage get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
 ```
 
 请注意，Azure 门户中存储帐户的“访问策略”页不会显示存储帐户的权限。

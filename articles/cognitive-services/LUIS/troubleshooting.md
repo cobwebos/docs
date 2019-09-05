@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 7874a2bad63a4c5b47545c06a91228e64d523849
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3907a244bc2d85e7225f94b15150298fd80a032f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258794"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382342"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -265,7 +265,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 第一个问题是如果问题和 LUIS 有关或发生在 LUIS 中间件以外，则隔离。 
 
 #### <a name="resolve-issue-in-luis"></a>在 LUIS 中解决问题
-从 [LUIS 终结点](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)传递相同的言语到 LUIS。 如果收到错误，请在 LUIS 中解决该问题直到不再返回错误。 常见错误包括：
+从 [LUIS 终结点](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)传递相同的言语到 LUIS。 如果收到错误，请在 LUIS 中解决该问题直到不再返回错误。 常见错误包括：
 
 * `Out of call volume quota. Quota will be replenished in <time>.` - 此问题表明需要从创作密钥更改为[终结点密钥](luis-how-to-azure-subscription.md)，或者需要更改[服务层级](luis-how-to-azure-subscription.md#change-pricing-tier)。 
 

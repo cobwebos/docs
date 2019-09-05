@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: 8b6a6b78dc74572b22d397b5536efa1394401bbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 267c715de67df57abd30ac18966b8b3b8440810c
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868905"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376109"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虚拟机规模集模板
-[Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本系列教程演示如何创建基本规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。
+[Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)是部署成组的相关资源的好办法。 本系列教程演示如何创建基本规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。
 
 此模板简单易用。 有关更完整的规模集模板的示例，请参阅 [Azure 快速入门模板 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)，并搜索包含字符串 `vmss` 的文件夹。
 

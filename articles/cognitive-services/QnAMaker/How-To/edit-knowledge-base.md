@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1342616a0d32d8ac68965bc04f1fd3ca60146369
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 1450d6b41d9a193f8069509aacd3343ae646c6ac
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966770"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307021"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>在 QnA Maker 中编辑知识库
 
@@ -36,7 +36,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
  
 1. 选择“设置”。 可以在此处编辑必填字段“服务名称”。
   
-    |目标|Action|
+    |目标|操作|
     |--|--|
     |添加 URL|可以通过单击“管理知识库”- >“+ 添加 URL”链接，添加新的 URL，以便向知识库添加新的常见问题解答内容。|
     |删除 URL|可以通过选择删除图标（垃圾桶）来删除现有 URL。|
@@ -54,7 +54,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 
 ## <a name="add-a-qna-pair"></a>添加 QnA 对
 
-在 "**设置**" 页上, 选择 "**添加 QnA 对**" 以将新行添加到知识库表。
+在 "**编辑**" 页上，选择 "**添加 QnA 对**" 以将新行添加到知识库表。
 
 ![添加 QnA 对](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
@@ -72,7 +72,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 
 ## <a name="add-metadata"></a>添加元数据
 
-首先选择 "**查看选项**", 然后选择 "**显示元数据**", 添加元数据对。 这会显示元数据列。 接下来, 选择 **+** 签名以添加元数据对。 此对包含一个键和一个值。
+首先选择 "**查看选项**"，然后选择 "**显示元数据**"，添加元数据对。 这会显示元数据列。 接下来，选择 **+** 签名以添加元数据对。 此对包含一个键和一个值。
 
 ![添加元数据](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 

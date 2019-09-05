@@ -4,14 +4,14 @@ description: 介绍可在 Azure 资源管理器模板中使用的用于检索资
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 85462e78b3660546bad80ef69f332522bf015549
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 43369131700681de5523043f414129a2e4169f44
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194809"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306927"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -61,7 +61,6 @@ Resource Manager 提供以下用于获取资源值的函数：
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
-| Microsoft.ContainerRegistry/registries | [listPolicies](/rest/api/containerregistry/registries/listpolicies) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
 | Microsoft.ContainerRegistry/registries/webhooks | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
@@ -340,10 +339,10 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源时，请提供资源 ID。 |
-| apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本, 请参阅[模板参考](/azure/templates/)。 |
+| apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
 | 'Full' |否 |string |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 ### <a name="return-value"></a>返回值
@@ -578,7 +577,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 }
 ```
 
-只有在资源组包含的资源由另一服务托管时，才会返回 **managedBy** 属性。 对于托管应用程序、Databricks 和 AKS, 属性的值是管理资源的资源 ID。
+只有在资源组包含的资源由另一服务托管时，才会返回 **managedBy** 属性。 对于托管应用程序、Databricks 和 AKS，属性的值是管理资源的资源 ID。
 
 ### <a name="remarks"></a>备注
 
@@ -640,15 +639,15 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
 | resourceGroupName |否 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 |
 | resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
 | resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |否 |string |下一个资源名称段 (如果需要)。 |
+| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
 
-当资源类型包括更多段时, 继续添加资源名称作为参数。
+当资源类型包括更多段时，继续添加资源名称作为参数。
 
 ### <a name="return-value"></a>返回值
 
@@ -659,27 +658,27 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="remarks"></a>备注
 
-提供的参数数目因资源是否为父资源或子资源而异, 并且该资源是否在相同的订阅或资源组中。
+提供的参数数目因资源是否为父资源或子资源而异，并且该资源是否在相同的订阅或资源组中。
 
-若要获取同一订阅和资源组中父资源的资源 ID, 请提供该资源的类型和名称。
+若要获取同一订阅和资源组中父资源的资源 ID，请提供该资源的类型和名称。
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-若要获取子资源的资源 ID, 请注意资源类型中的段数。 提供资源类型的每个段的资源名称。 段的名称对应于该层次结构中存在的资源。
+若要获取子资源的资源 ID，请注意资源类型中的段数。 提供资源类型的每个段的资源名称。 段的名称对应于该层次结构中存在的资源。
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
 ```
 
-若要获取同一订阅但不同资源组中的资源的资源 ID, 请提供资源组名称。
+若要获取同一订阅但不同资源组中的资源的资源 ID，请提供资源组名称。
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
 ```
 
-若要获取不同订阅和资源组中的资源的资源 ID, 请提供订阅 ID 和资源组名称。
+若要获取不同订阅和资源组中的资源的资源 ID，请提供订阅 ID 和资源组名称。
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
