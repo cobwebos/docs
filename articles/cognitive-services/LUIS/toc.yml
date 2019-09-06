@@ -124,13 +124,13 @@
     - name: 规划应用
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: 创作应用
+    - name: 创作和运行时密钥
+      displayName: 'shared, transfer, ownership, author, access, import'
+      href: luis-concept-keys.md
+    - name: 创作应用的模型
       items:
         - name: 创作周期
           href: luis-concept-app-iteration.md
-        - name: 协作
-          displayName: 'shared, transfer, ownership, author, access, import'
-          href: luis-concept-collaborator.md
         - name: 版本控制
           href: luis-concept-version.md
           displayName: import
@@ -141,10 +141,10 @@
         - name: 实体
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
+        - name: 实体角色
+          href: luis-concept-roles.md
         - name: 陈述
           href: luis-concept-utterance.md
-        - name: 角色
-          href: luis-concept-roles.md
         - name: 预生成的模型
           href: luis-concept-prebuilt-model.md
     - name: 提高应用性能
@@ -180,13 +180,6 @@
         - name: 设计策略
           href: luis-concept-enterprise.md
           displayName: import
-    - name: 安全
-      items:
-        - name: 应用访问
-          displayName: 'public, public app, AAD, compliance, ISO, certification, trust center, import'
-          href: luis-concept-security.md
-        - name: 创作和终结点密钥
-          href: luis-concept-keys.md
 - name: 操作指南
   items:
     - name: 创建新应用
@@ -248,18 +241,22 @@
       href: luis-how-to-publish-app.md
     - name: 管理应用
       items:
-        - name: 将订阅密钥与 LUIS 应用配合使用
-          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription'
+        - name: 创作和运行时密钥
+          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: 管理版本
-          href: luis-how-to-manage-versions.md
-          diplayName: 'import, export, container'
-        - name: 管理作者和协作者
+        - name: 迁移到创作密钥
+          items:
+            - name: 概述
+              href: luis-migration-authoring.md
+            - name: 如何迁移
+              href: luis-migration-authoring-steps.md
+        - name: 作者和协作者
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
-        - name: 管理创作密钥
-          href: luis-how-to-account-settings.md
-        - name: 使用流量管理器将终结点配额分布在各个密钥上
+        - name: 使用版本
+          href: luis-how-to-manage-versions.md
+          diplayName: 'import, export, container'
+        - name: 使用流量管理器
           href: luis-traffic-manager.md
     - name: 迁移 API
       items:

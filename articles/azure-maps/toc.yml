@@ -125,6 +125,14 @@
               href: map-events.md
             - name: 使应用可供访问
               href: map-accessibility.md
+        - name: 绘图工具
+          items:
+            - name: 添加绘图工具栏
+              href: map-add-drawing-toolbar.md
+            - name: 设置绘图选项
+              href: set-drawing-options.md
+            - name: 获取形状数据
+              href: map-get-shape-data.md
         - name: 服务模块
           items:
             - name: 使用服务模块
@@ -198,7 +206,7 @@
 - name: 资源
   items:
     - name: Azure Maps 使用条款
-      href: 'https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31'
+      href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps 定价
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: 定价计算器
@@ -209,6 +217,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps 视频
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Azure Maps 案例研究
+      href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps 术语表
       href: glossary.md
     - name: 服务更新

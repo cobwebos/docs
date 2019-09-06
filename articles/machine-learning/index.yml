@@ -1,92 +1,103 @@
-### YamlMime:YamlDocument
-abstract:
-  description: 了解如何使用这些 Azure 机器学习产品在应用和网站中构建智能算法。  教程、快速入门、API 参考和示例演示了操作方法。
-documentType: LandingData
-metadata:
-  author: j-martens
-  description: 了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。
-  ms.author: jmartens
-  ms.subservice: core
-  ms.date: 8/14/2019
-  ms.devlang: na
-  ms.service: machine-learning
-  ms.tgt_pltfrm: na
-  ms.topic: landing-page
-  services: machine-learning
-  title: Azure 机器学习文档 - 教程和 API 参考 | Microsoft 文档
-sections:
-  - items:
-      - className: cardsM
-        columns: 2
-        items:
-          - href: /azure/machine-learning/service/overview-what-is-azure-ml
-            html: <p>了解该服务如何使用 CLI 和 Python 工具和库以及各种 Azure 数据和计算服务，使<br/> 数据科学家得以实现 AI 解决方案的开发和管理。 了解详细信息...</p>
-            image:
-              src: /azure/machine-learning/media/index/i_machine-learning.svg
-            title: Azure 机器学习服务
-        style: cards
-        type: list
-  - items:
-      - text: 进行设置并开始使用 Azure 机器学习服务。
-        type: paragraph
-      - text: 使用 Azure 门户（一种易于使用的无代码界面）训练、部署和管理 ML 模型：
-        type: paragraph
-      - items:
-          - html: <a href="service/ui-tutorial-automobile-price-train-score">在可视界面的拖放 UI 中训练第一个试验</a>
-          - html: <a href="service/tutorial-first-experiment-automated-ml">使用自动机器学习训练并部署你的第一个分类模型</a>
-        style: unordered
-        type: list
-      - text: 在脚本和笔记本中使用 Python SDK 训练、部署和管理 ML 模型：
-        type: paragraph
-      - items:
-          - html: <a href="service/tutorial-1st-experiment-sdk-setup">设置环境并训练第一个 ML 试验</a>
-          - html: <a href="service/tutorial-train-models-with-aml">训练和部署图像分类模型</a>
-          - html: <a href="service/tutorial-auto-train-models">使用自动 ML 预测出租车费用</a>
-        style: unordered
-        type: list
-      - text: 使用模型：
-        type: paragraph
-      - items:
-          - html: <a href="service/how-to-consume-web-service">使用请求-响应模型</a>
-          - html: <a href="service/how-to-run-batch-predictions">使用 ML 管道进行批量预测</a>
-        style: unordered
-        type: list
-    title: 分步教程
-  - items:
-      - className: cardsM
-        columns: 2
-        items:
-          - href: /azure/cognitive-services/
-            html: <p>为应用、网站和机器人提供智能算法的 API。</p>
-            image:
-              src: /azure/machine-learning/media/index/cognitive-services.png
-            title: 认知服务
-          - href: /azure/machine-learning/studio/
-            html: "<p>一项协作型拖放式工具，可以使用 R 或 Python 根据数据生成、测试和部署预测分析解决方案。\_</p>"
-            image:
-              src: /azure/machine-learning/media/index/machine-learning-studio.svg
-            title: Azure 机器学习工作室
-          - href: /sql/advanced-analytics/r/r-services
-            html: <p>数据库内分析，支持 R 和 Python。</p>
-            image:
-              src: /azure/machine-learning/media/index/logo_sql.png
-            title: SQL Server 机器学习服务
-          - href: /machine-learning-server/
-            html: <p>灵活的企业机器学习平台，支持 Windows、Linux 以及 HDInsight Spark 和 Hadoop 群集上的 R 和 Python 部署。</p>
-            image:
-              src: /azure/machine-learning/media/index/ml-server.png
-            title: Microsoft 机器学习服务器
-          - href: /azure/machine-learning/team-data-science-process
-            html: <p>一种协作型数据科学方法，可帮助团队高效交付预测分析解决方案和智能应用程序。</p>
-            image:
-              src: /azure/machine-learning/media/index/tdsp.png
-            title: Team Data Science Process
-          - href: /azure/machine-learning/data-science-virtual-machine/
-            html: <p>使用 Data Science Virtual Machine (DSVM) 和深度学习 (DLVM) 虚拟机，无需安装或配置软件即可进行实验。 它已预装了常用的数据分析、机器学习和 AI 工具。</p>
-            image:
-              src: /azure/machine-learning/media/index/virtualmachine.svg
-            title: 数据科学虚拟机
-        style: cards
-        type: list
-    title: 其他 Microsoft 机器学习技术
+### YamlMime:Landing
 title: Azure 机器学习文档
+summary: Azure 机器学习提供了 Web 界面和 SDK，以便你可以大规模快速训练并部署机器学习模型和管道。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。
+metadata:
+  title: 机器学习文档 | Azure
+  description: Azure 机器学习提供了 Web 界面和 SDK，以便你大规模快速训练并部署机器学习模型和管道。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。
+  services: machine-learning
+  ms.service: machine-learning
+  ms.subservice: core
+  ms.topic: landing-page
+  ms.collection: collection
+  author: j-martens
+  ms.author: jmartens
+  ms.date: 09/03/2019
+  ms.openlocfilehash: e2c5e592c2330f1e5514c5c59c92ff5c8a3a62b2
+  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70278313"
+landingContent:
+- title: Azure ML 入门
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用笔记本进行试验
+      url: service/tutorial-1st-experiment-sdk-setup.md
+    - text: 在可视界面中进行试验
+      url: service/ui-tutorial-automobile-price-train-score.md
+    - text: 自动执行第一个试验
+      url: service/tutorial-first-experiment-automated-ml.md
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure ML？
+      url: service/overview-what-is-azure-ml.md
+    - text: 体系结构和概念
+      url: service/concept-azure-machine-learning-architecture.md
+  - linkListType: how-to-guide
+    links:
+    - text: 设置开发环境
+      url: service/how-to-configure-environment.md
+    - text: 设置训练计算目标
+      url: service/how-to-set-up-training-targets.md
+- title: 使用 Python 进行训练
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 创建第一个 ML 试验
+      url: service/tutorial-1st-experiment-sdk-setup.md
+    - text: 训练图像分类模型
+      url: service/tutorial-train-models-with-aml.md
+    - text: 使用自动化 ML 预测出租车费用
+      url: service/tutorial-auto-train-models.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Scikit-learn 进行训练
+      url: service/how-to-train-scikit-learn.md
+    - text: 使用 TensorFlow 进行训练
+      url: service/how-to-train-tensorflow.md
+    - text: 使用 PyTorch 进行训练
+      url: service/how-to-train-pytorch.md
+    - text: 使用 Keras 进行训练
+      url: service/how-to-train-keras.md
+- title: 在可视界面中进行训练
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 训练自动化 ML 试验
+      url: service/tutorial-first-experiment-automated-ml.md
+    - text: 在可视界面中进行训练
+      url: service/ui-tutorial-automobile-price-train-score.md
+  - linkListType: how-to-guide
+    links:
+    - text: 可视界面：预测车价
+      url: service/ui-sample-regression-predict-automobile-price-basic.md
+    - text: 可视界面：预测信用风险
+      url: service/ui-sample-classification-predict-credit-risk-cost-sensitive.md
+    - text: 可视界面：预测延迟
+      url: service/ui-sample-classification-predict-flight-delay.md
+    - text: 可视界面：预测流失
+      url: service/ui-sample-classification-predict-churn.md
+- title: 部署和管理模型
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 什么是 MLOps？
+      url: service/concept-model-management-and-deployment.md
+    - text: 部署方式和位置
+      url: service/how-to-deploy-and-where.md
+    - text: 实时预测
+      url: service/how-to-consume-web-service.md
+    - text: 成批预测
+      url: service/how-to-run-batch-predictions.md
+- title: 浏览参考文档
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure ML Python SDK
+      url: https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py
+    - text: Azure ML CLI
+      url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
+    - text: 可视界面算法和模块
+      url: algorithm-module-reference/module-reference.md

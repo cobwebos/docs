@@ -273,6 +273,8 @@
           href: troubleshoot-outbound-smtp-connectivity.md
         - name: 关于 IP 地址 168.63.129.16
           href: what-is-ip-address-168-63-129-16.md
+        - name: 排查 Azure VM 连接性问题
+          href: troubleshoot-vm-connectivity.md
     - name: 经典
       items:
         - name: 创建和管理虚拟网络

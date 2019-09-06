@@ -1,53 +1,101 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Resource Graph 服务文档
+### YamlMime:Landing
+title: Azure Resource Graph 文档
+summary: 浏览所有云资源，更有效地管理云库存
 metadata:
-  title: Azure Resource Graph 文档 - 教程和 API 参考
-  description: Azure Resource Graph 是一项 Azure 服务，可实现对资源的大规模复杂查询。
-  author: DCtheGeek
-  manager: carmonm
+  title: Azure Resource Graph 文档
+  description: 浏览所有云资源，更有效地管理云库存
   ms.service: resource-graph
   ms.topic: landing-page
-  ms.date: 08/25/2019
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: Azure Resource Graph 文档可帮助你配置和学习查询语言，以便大规模发现和探索资源。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 配置 Resource Graph 并运行第一个查询。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              alt: Azure Resource Graph 资源管理器
-              src: ./media/arg_explorer.svg
-            text: Resource Graph 资源管理器
-            href: first-query-portal.md
-          - image:
-              alt: Azure CLI
-              src: ./media/cli.svg
-            text: Azure CLI
-            href: first-query-azurecli.md
-          - image:
-              alt: Azure PowerShell
-              src: ./media/powershell.svg
-            text: Azure PowerShell
-            href: first-query-powershell.md
-  - title: 反馈
-    items:
-      - type: paragraph
-        text: '若要提供有关此功能的反馈或使用查询获得帮助，请从 Azure 门户中的 <b>Azure Policy</b> 访问<b>资源图表（预览版）</b>页，并单击“反馈”。 还可以在 <a href="https://feedback.azure.com/forums/915958-azure-governance">UserVoice</a> 上向我们发送建议。'
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/cli/azure/ext/resource-graph/graph">Azure CLI</a></p><p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
-          - title: Languages
-            html: '<p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">用于 .NET 的 Azure SDK</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceGraph/">用于 .NET 的 Azure SDK (NuGet)</a></p><p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph">Azure SDK for Go</a></p><p><a href="/java/api/overview/azure/resourcegraph/management?view=azure-java-stable">Azure SDK for Java</a></p><p><a href="https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0-beta/jar">用于 Java 的 Azure SDK (Maven)</a></p><p><a href="/javascript/api/@azure/arm-resourcegraph">Azure SDK for Node</a></p><p><a href="/python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph">Azure SDK for Python</a></p><p><a href="https://rubygems.org/gems/azure_mgmt_resourcegraph">用于 Ruby 的 Azure SDK (Gem)</a></p>'
-          - title: REST
-            html: '<p><a href="/rest/api/azureresourcegraph/resources/resources">API 参考</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01">2019-04-01 (OpenAPI)</a></p>'
+  ms.date: 09/01/2019
+  ms.openlocfilehash: 1f23338b7e894b2ff58b1a5bf9565f842b273465
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70239051"
+landingContent:
+- title: 关于 Azure Resource Graph
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Resource Graph？
+      url: ./overview.md
+  - linkListType: concept
+    links:
+    - text: 查看查询语言
+      url: ./concepts/query-language.md
+  - linkListType: how-to-guide
+    links:
+    - text: 获取资源更改
+      url: ./how-to/get-resource-changes.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 第一个查询（门户）
+      url: ./first-query-portal.md
+    - text: 第一个查询 (PowerShell)
+      url: ./first-query-powershell.md
+    - text: 第一个查询 (CLI)
+      url: ./first-query-azurecli.md
+  - linkListType: concept
+    links:
+    - text: 使用 Resource Graph 进行探索
+      url: ./concepts/explore-resources.md
+  - linkListType: deploy
+    links:
+    - text: 初学者查询示例
+      url: ./samples/starter.md
+    - text: 高级查询示例
+      url: ./samples/advanced.md
+- title: 用于“大规模”
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 处理大型数据集
+      url: ./concepts/work-with-data.md
+    - text: 针对受限制请求的指南
+      url: ./concepts/guidance-for-throttled-requests.md
+- title: 参与
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure 治理 YouTube 频道
+      url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+    - text: 请求产品功能
+      url: https://feedback.azure.com/forums/915958-azure-governance?category_id=345061
+    - text: Azure 治理的技术社区
+      url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
+- title: 参考 - 下载
+  linkLists:
+  - linkListType: download
+    links:
+    - text: OpenAPI - 2019-04-01
+      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01
+    - text: 用于 .NET 的 SDK - NuGet
+      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceGraph/
+    - text: 用于 Java 的 SDK - Maven
+      url: https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0-beta/jar
+    - text: 用于 Ruby 的 SDK - Gem
+      url: https://rubygems.org/gems/azure_mgmt_resourcegraph
+- title: 参考 - SDK
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.resourcegraph/
+    - text: Azure CLI
+      url: /cli/azure/ext/resource-graph/graph
+    - text: .NET
+      url: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
+    - text: Go
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph
+    - text: Java
+      url: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable
+    - text: 节点
+      url: /javascript/api/@azure/arm-resourcegraph
+    - text: Python
+      url: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph

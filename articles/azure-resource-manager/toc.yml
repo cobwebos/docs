@@ -85,26 +85,30 @@
   items:
     - name: 创建模板
       items:
-        - name: 开发工具 - VS Code
+        - name: 使用 VS Code
           href: resource-manager-tools-vs-code.md
-        - name: 创建模板
-          href: how-to-create-template.md
-        - name: 子资源名称和类型
-          href: child-resource-name-type.md
-        - name: 在订阅级别创建资源组和资源
-          displayName: subscription level deployment
-          href: deploy-to-subscription.md
-        - name: 定义资源依赖关系
-          href: resource-group-define-dependencies.md
+        - name: 编写模板表达式
+          href: template-expressions.md
+        - name: 资源
+          items:
+            - name: 子资源名称和类型
+              href: child-resource-name-type.md
+            - name: 条件部署
+              href: conditional-resource-deployment.md
+            - name: 设置资源依赖项
+              href: resource-group-define-dependencies.md
+            - name: 设置资源位置
+              href: resource-location.md
+            - name: 使用模板扩展
+              href: resource-manager-use-extensions.md
         - name: 将模板模块化
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
         - name: 创建多个实例
           href: resource-group-create-multiple.md
-        - name: 使用模板扩展
-          href: resource-manager-use-extensions.md
-        - name: 更新资源
-          href: /azure/architecture/building-blocks/extending-templates/update-resource
+        - name: 在订阅级别创建资源组和资源
+          displayName: subscription level deployment
+          href: deploy-to-subscription.md
     - name: 部署模板
       items:
         - name: 部署 - 门户

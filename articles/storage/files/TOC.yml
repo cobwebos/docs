@@ -1,5 +1,5 @@
-- name: Azure 存储文档
-  href: /azure/storage/
+- name: Azure 文件文档
+  href: index.yml
 - name: 概述
   expanded: true
   items:

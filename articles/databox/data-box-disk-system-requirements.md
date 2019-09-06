@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: f054d0665c49ee048451681a7cc34d2a648a6e9e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.openlocfilehash: fb2fd89664517e44cf5128a5c82e583f03087061
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240224"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70307686"
 ---
 ::: zone target="docs"
 
@@ -28,9 +28,9 @@ ms.locfileid: "70240224"
 
 ::: zone target="chromeless"
 
-# <a name="review-prerequisites"></a>查看先决条件
+## <a name="review-prerequisites"></a>查看先决条件
 
-1. 必须使用[教程对 Data Box Disk 进行排序：排序 Azure Data Box Disk](data-box-disk-deploy-ordered.md)。 已收到磁盘，每个磁盘都有一个连接电缆。
+1. 你一定已使用[教程：订购 Azure Data Box Disk](data-box-disk-deploy-ordered.md) 订购了 Data Box Disk。 你已收到磁盘，每个磁盘都连接一根电缆。
 2. 你有一台可用的客户端计算机，可以从中复制数据。 客户端计算机必须：
 
     - 运行受支持的操作系统。
@@ -66,8 +66,6 @@ ms.locfileid: "70240224"
 - dislocker
 - OpenSSL
 
-::: zone target="docs"
-
 ## <a name="supported-connection"></a>支持的连接
 
 包含数据的客户端计算机必须拥有 USB 3.0 或更高版本的端口。 磁盘使用提供的数据线连接到此客户端。
@@ -86,9 +84,9 @@ ms.locfileid: "70240224"
 > 不支持 Azure Data Lake Storage Gen 2 帐户。
 
 
-## <a name="supported-storage-types-for-upload"></a>支持的用于上传的存储类型
+## <a name="supported-storage-types-for-upload"></a>上传操作支持的存储类型
 
-下面是一个列表，其中的存储类型可以使用 Data Box Disk 上传到 Azure。
+下面是使用 Data Box Disk 上传到 Azure 时支持的存储类型的列表。
 
 | **文件格式** | **说明** |
 | --- | --- |
@@ -97,6 +95,7 @@ ms.locfileid: "70240224"
 | Azure 文件  | |
 | 托管磁盘 | |
 
+::: zone target="docs"
 
 ## <a name="next-step"></a>后续步骤
 

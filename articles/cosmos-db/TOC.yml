@@ -712,6 +712,8 @@
       items:
         - name: 使用 Power BI
           href: powerbi-visualize.md
+        - name: 创建实时天气仪表板
+          href: create-real-time-weather-dashboard-powerbi.md
         - name: 使用 Qlik Sense
           href: visualize-qlik-sense.md
     - name: 与其他 Azure 服务集成

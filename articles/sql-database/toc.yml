@@ -219,10 +219,16 @@
       items:
         - name: 托管实例文档
           href: sql-database-managed-instance-index.yml
-        - name: 托管实例功能
+        - name: 托管实例概述
           href: sql-database-managed-instance.md
         - name: 托管实例常见问题解答
           href: sql-database-managed-instance-faq.md
+        - name: 实例池
+          items:
+            - name: 实例池概述
+              href: sql-database-instance-pools.md
+            - name: 实例池操作指南
+              href: sql-database-instance-pools-how-to.md
         - name: 管理 API 参考
           href: sql-database-managed-instance-create-manage.md
         - name: 资源限制

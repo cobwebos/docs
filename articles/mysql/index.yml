@@ -1,60 +1,145 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: 用于 MySQL 的 Azure 数据库文档
+### YamlMime:Landing
+title: Azure Database for MySQL 文档
+summary: Azure Database for MySQL 是一种由 MySQL 社区版提供支持的关系数据库服务。  它是完全托管的数据库即服务产品，能够处理任务关键型工作负荷，并提供可预测的性能和动态可伸缩性。 利用所选的开源工具和平台开发包含 Azure Database for MySQL 的应用程序。 参考我们的快速入门、教程和示例了解如何使用用于 MySQL 的 Azure 数据库。
 metadata:
-  document_id: 8d915ae6-9101-ad37-0736-3eaa59c2dd34
-  title: Azure MySQL 文档 - 教程和 API 参考 | Microsoft Docs
-  description: Azure Database for MySQL 是 Microsoft 云中的关系型数据库服务，它基于开源 MySQL 数据库引擎，专为开发人员而构建。
+  description: Azure Database for MySQL 是 Microsoft 云中的关系数据库服务，它专为开发人员而构建，由 MySQL 社区版提供支持。
   author: ajlam
   ms.author: andrela
+  ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.date: 02/25/2019
-abstract:
-  description: Azure Database for MySQL 是基于开源 MySQL Server 引擎的关系型数据库服务。  它是完全托管的数据库即服务产品，能够处理任务关键型工作负荷，并提供可预测的性能和动态可伸缩性。 利用所选的开源工具和平台开发包含 Azure Database for MySQL 的应用程序。 参考我们的快速入门、教程和示例了解如何使用用于 MySQL 的 Azure 数据库。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何通过以下方式创建 MySQL Database on Azure：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/virtual-machines/linux/media/index/portal.svg
-            text: Azure 门户
-            href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-portal
-          - image:
-              src: /azure/virtual-machines/linux/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-cli
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何设计数据库和开发应用：
-      - type: list
-        style: ordered
-        items:
-          - html: '设计数据库&#58; <a href="/azure/mysql/tutorial-design-database-using-portal">Azure 门户</a> | <a href="/azure/mysql/tutorial-design-database-using-cli">Azure CLI</a>'
-          - html: '创建 Web 应用&#58; <a href="https://portal.azure.com/#create/hub">Wordpress - 门户</a> | <a href="../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json">PHP - Azure CLI</a>'
-  - title: 示例
-    items:
-      - type: paragraph
-        text: 查找脚本来管理常见任务。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/mysql/sample-scripts-azure-cli">Azure CLI</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/cli/azure/mysql">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/mysql">REST API</a></p>
-          - title: Azure 资源管理器
-            html: <p><a href="/azure/templates/microsoft.dbformysql/allversions">资源管理器模板</a></p>
+  ms.openlocfilehash: 6ccf544b524ad1ccd45b0aa814610902d54c0fd9
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70309288"
+landingContent:
+- title: 关于 Azure Database for MySQL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是用于 MySQL 的 Azure 数据库？
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: 查看我们的博客
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+- title: 创建服务器
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Azure 门户创建服务器
+      url: quickstart-create-mysql-server-database-using-azure-portal.md
+    - text: 使用 Azure CLI 创建服务器
+      url: quickstart-create-mysql-server-database-using-azure-cli.md
+  - linkListType: concept
+    links:
+    - text: 了解定价层
+      url: concepts-pricing-tiers.md
+    - text: 了解限制
+      url: concepts-limits.md
+    - text: 了解支持的 MySQL 版本
+      url: concepts-supported-versions.md
+    - text: 配置服务器参数
+      url: howto-server-parameters.md
+    - text: 高可用性规划
+      url: concepts-high-availability.md
+  - linkListType: tutorial
+    links:
+    - text: 使用 Azure 门户设计数据库
+      url: tutorial-design-database-using-portal.md
+    - text: 使用 Azure CLI 设计数据库
+      url: tutorial-design-database-using-cli.md
+    - text: 在容器中部署 Wordpress
+      url: ../app-service/containers/tutorial-multi-container-app.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+    - text: 在 Azure CLI 中使用 PHP 构建 Web 应用
+      url: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+- title: 备份和迁移数据
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 备份和还原
+      url: concepts-backup.md
+    - text: 使用转储和还原进行迁移
+      url: concepts-migrate-dump-restore.md
+    - text: 使用导入和导出进行迁移
+      url: concepts-migrate-import-export.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure 门户还原服务器
+      url: howto-restore-server-portal.md
+    - text: 使用 Azure CLI 还原服务器
+      url: howto-restore-server-cli.md
+    - text: 停机时间最短的迁移
+      url: howto-migrate-online.md
+- title: 连接到 Azure Database for MySQL
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 了解防火墙
+      url: concepts-firewall-rules.md
+    - text: 了解 SSL
+      url: concepts-ssl-connection-security.md
+    - text: 了解虚拟网络
+      url: concepts-data-access-and-security-vnet.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建防火墙规则
+      url: howto-manage-firewall-using-portal.md
+    - text: 配置 SSL 连接
+      url: howto-configure-ssl.md
+    - text: 连接现有 Azure 应用服务
+      url: howto-connect-webapp.md
+    - text: 连接字符串
+      url: howto-connection-string.md
+    - text: 排查连接问题
+      url: howto-troubleshoot-common-connection-issues.md
+  - linkListType: get-started
+    links:
+    - text: 使用 MySQL Workbench 进行连接
+      url: connect-workbench.md
+    - text: 使用 PHP 进行连接
+      url: connect-php.md
+    - text: 使用 Java 进行连接
+      url: connect-java.md
+    - text: 使用 .Net 进行连接
+      url: connect-csharp.md
+    - text: 使用 Python 进行连接
+      url: connect-python.md
+    - text: 使用 Node.js 进行连接
+      url: connect-nodejs.md
+    - text: 使用 Ruby 进行连接
+      url: connect-ruby.md
+    - text: 使用 C++ 进行连接
+      url: connect-cpp.md
+    - text: 使用 Go 进行连接
+      url: connect-go.md
+- title: 复制数据
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 了解复制中数据
+      url: concepts-data-in-replication.md
+    - text: 了解只读副本
+      url: concepts-read-replicas.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置复制中数据
+      url: howto-data-in-replication.md
+    - text: 使用 Azure 门户创建只读副本
+      url: howto-read-replicas-portal.md
+- title: 使用编程 API 编写代码
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 用于常见任务的 Azure CLI 脚本
+      url: /azure/mysql/sample-scripts-azure-cli
+  - linkListType: reference
+    links:
+    - text: Azure CLI 开发人员参考
+      url: /rest/api/mysql/
+    - text: REST API 开发人员参考
+      url: /cli/azure/mysql
+    - text: Azure 资源管理器模板
+      url: /azure/templates/microsoft.dbformysql/allversions
