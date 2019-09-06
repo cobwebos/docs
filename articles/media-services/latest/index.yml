@@ -58,7 +58,7 @@ sections:
           - html: <p>本教程上传本地视频文件、对文件进行编码，并对编码的内容进行流式传输。<p/>
             href: /azure/media-services/latest/stream-files-tutorial-with-api
             title: 对上传的文件和流视频进行编码
-          - html: <p>本教程介绍如何针对直播事件进行设置， 以及如何创建直通类型的直播事件。</p>
+          - html: <p>本教程介绍如何针对直播活动进行设置， 以及如何创建直通类型的直播活动。</p>
             href: /azure/media-services/latest/stream-live-tutorial-with-api
             title: 实时广播
           - html: <p>本教程介绍如何使用 Azure 媒体服务 API 分析视频。</p>

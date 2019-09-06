@@ -118,7 +118,7 @@
       items:
         - name: 概述
           href: live-streaming-overview.md
-        - name: 实时事件和实时输出
+        - name: 直播活动和实时输出
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
         - name: 推荐的实时编码器

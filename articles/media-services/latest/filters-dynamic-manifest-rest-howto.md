@@ -22,7 +22,7 @@ ms.locfileid: "67786451"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>使用媒体服务 REST API 创建筛选器
 
-将内容传送到客户（直播流事件或点播视频）时，客户端所需的灵活性可能比默认资产的清单文件中描述的灵活性更高。 使用 Azure 媒体服务可为内容定义帐户筛选器和资产筛选器。 
+将内容传送到客户（直播流活动或点播视频）时，客户端所需的灵活性可能比默认资产的清单文件中描述的灵活性更高。 使用 Azure 媒体服务可为内容定义帐户筛选器和资产筛选器。 
 
 有关此功能和使用该方案的详细说明，请参阅[动态清单](filters-dynamic-manifest-overview.md)并[筛选器](filters-concept.md)。
 
@@ -83,7 +83,7 @@ ms.locfileid: "67786451"
 
 ## <a name="create-account-filters"></a>创建帐户筛选器
 
-在你下载的 Postman 的集合中，选择“帐户筛选器”->“创建或更新帐户筛选器”。  
+在你下载的 Postman 的集合中，选择“帐户筛选器”->“创建或更新帐户筛选器”。
 
 **PUT** HTTP 请求方法类似于：
 
@@ -91,9 +91,9 @@ ms.locfileid: "67786451"
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/accountFilters/{filterName}?api-version=2018-07-01
 ```
 
-选择“正文”  选项卡并粘贴你[之前定义的](#define-a-filter) json 代码。
+选择“正文”选项卡并粘贴你[之前定义的](#define-a-filter) json 代码。
 
-选择“发送”。  
+选择“发送”。 
 
 筛选器已创建。
 
@@ -101,7 +101,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-asset-filters"></a>创建资产筛选器  
 
-在已下载的“媒体服务 v3”Postman 集合中，选择“资产”  ->“创建或更新资产筛选器”  。
+在已下载的“媒体服务 v3”Postman 集合中，选择“资产”->“创建或更新资产筛选器”。
 
 **PUT** HTTP 请求方法类似于：
 
@@ -109,9 +109,9 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/assetFilters/{filterName}?api-version=2018-07-01
 ```
 
-选择“正文”  选项卡并粘贴你[之前定义的](#define-a-filter) json 代码。
+选择“正文”选项卡并粘贴你[之前定义的](#define-a-filter) json 代码。
 
-选择“发送”。  
+选择“发送”。 
 
 资产筛选器已创建。
 

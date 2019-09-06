@@ -60,9 +60,6 @@
   items:
     - name: 模板部署
       href: template-deployment-overview.md
-    - name: 模板文件结构
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: resource-group-authoring-templates.md
     - name: 模板最佳实践
       href: template-best-practices.md
     - name: 用于提供云一致性的模板
@@ -89,6 +86,12 @@
           href: resource-manager-tools-vs-code.md
         - name: 编写模板表达式
           href: template-expressions.md
+        - name: parameters
+          href: template-parameters.md
+        - name: 变量
+          href: template-variables.md
+        - name: 用户定义的函数
+          href: template-user-defined-functions.md
         - name: 资源
           items:
             - name: 子资源名称和类型
@@ -101,6 +104,8 @@
               href: resource-location.md
             - name: 使用模板扩展
               href: resource-manager-use-extensions.md
+        - name: Outputs
+          href: template-outputs.md
         - name: 将模板模块化
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
@@ -248,6 +253,9 @@
       href: resource-manager-async-operations.md
 - name: 引用
   items:
+    - name: 模板文件结构
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: resource-group-authoring-templates.md
     - name: 模板参考
       href: /azure/templates/
     - name: 模板函数

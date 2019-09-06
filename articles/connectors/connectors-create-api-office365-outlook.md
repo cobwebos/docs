@@ -50,17 +50,17 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
 1. 在逻辑应用中，键入“office 365”获取触发器列表：  
    
     ![](./media/connectors-create-api-office365-outlook/office365-trigger.png)
-2. 选择“Office 365 Outlook - 即将启动将要发生的事件时”  。 如果连接已存在，从下拉列表中选择日历。
+2. 选择“Office 365 Outlook - 即将启动将要发生的活动时”。 如果连接已存在，从下拉列表中选择日历。
    
     ![](./media/connectors-create-api-office365-outlook/sample-calendar.png)
    
     如果提示登录，则输入登录详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-office365-outlook.md#create-the-connection)列出了相关步骤。 
    
    > [!NOTE]
-   > 在此示例中，逻辑应用在更新日历事件时运行。 要查看此触发器的结果，请添加另一个向你发送短信的操作。 例如，添加 Twilio“发送消息”  操作，如果日历事件将在 15 分钟后启动，该操作将向你发送短信。 
+   > 在此示例中，逻辑应用在更新日历事件时运行。 要查看此触发器的结果，请添加另一个向你发送短信的操作。 例如，添加 Twilio“发送消息”操作，如果日历事件将在 15 分钟后启动，该操作将向你发送短信。 
    > 
    > 
-3. 选择“编辑”  按钮并设置“频率”  和“间隔”  值。 例如，如果希望触发器每 15 分钟轮询一次，将“频率”  设置为“分钟”  ，将“间隔”  设置为“15”  。 
+3. 选择“编辑”按钮并设置“频率”和“间隔”值。 例如，如果希望触发器每 15 分钟轮询一次，将“频率”设置为“分钟”，将“间隔”设置为“15”。 
    
     ![](./media/connectors-create-api-office365-outlook/calendar-settings.png)
 4. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。
@@ -71,18 +71,18 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
 1. 选择加号。 看到多个选项：**添加操作**，**添加条件**，或某个**详细**选项。
    
     ![](./media/connectors-create-api-office365-outlook/add-action.png)
-2. 选择“添加操作”  。
+2. 选择“添加操作”。
 3. 在文本框中，键入“office 365”获取所有可用操作的列表。
    
     ![](./media/connectors-create-api-office365-outlook/office365-actions.png) 
-4. 在我们的示例中，选择“Office 365 Outlook - 创建联系人”  。 如果连接已存在，依次选择“文件夹 ID”  、“名称”  和其他属性：  
+4. 在我们的示例中，选择“Office 365 Outlook - 创建联系人”。 如果连接已存在，依次选择“文件夹 ID”、“名称”和其他属性：  
    
     ![](./media/connectors-create-api-office365-outlook/office365-sampleaction.png)
    
     如果提示提供连接信息，则输入详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-office365-outlook.md#create-the-connection)介绍了这些属性。 
    
    > [!NOTE]
-   > 在此示例中，我们在 Office 365 Outlook 中新建联系人。 可使用来自其他触发器的输出创建联系人。 例如，添加 SalesForce“创建对象时”  触发器。 然后添加 Office 365 Outlook“创建联系人”  操作，可使用 SalesForce 字段在 Office 365 中新建联系人。 
+   > 在此示例中，我们在 Office 365 Outlook 中新建联系人。 可使用来自其他触发器的输出创建联系人。 例如，添加 SalesForce“创建对象时”触发器。 然后添加 Office 365 Outlook“创建联系人”操作，可使用 SalesForce 字段在 Office 365 中新建联系人。 
    > 
    > 
 5. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。

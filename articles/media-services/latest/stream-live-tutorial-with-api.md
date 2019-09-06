@@ -26,7 +26,7 @@ ms.locfileid: "70051577"
 > [!NOTE]
 > 尽管本教程使用了 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
 
-在 Azure 媒体服务中，[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)负责处理实时传送视频流内容。 实时事件提供输入终结点（引入 URL），然后由你将该终结点提供给实时编码器。 实时事件从实时编码器接收实时输入流，并通过一个或多个[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)使其可用于流式处理。 实时事件还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。 本教程演示如何使用 .NET Core 创建**直通**类型的直播事件。 
+在 Azure 媒体服务中，[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)负责处理实时传送视频流内容。 直播活动提供输入终结点（引入 URL），然后由你将该终结点提供给实时编码器。 直播活动从实时编码器接收实时输入流，并通过一个或多个[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)使其可用于流式处理。 直播活动还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。 本教程演示如何使用 .NET Core 创建**直通**类型的直播活动。 
 
 本教程介绍如何：    
 
@@ -64,7 +64,7 @@ ms.locfileid: "70051577"
 打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/appsettings.json)。 将值替换为在[访问 API](access-api-cli-how-to.md) 中获取的凭据。
 
 > [!IMPORTANT]
-> 此示例为每个资源使用唯一的后缀。 如果取消调试操作或者中途终止应用，则帐户中会有多个实时事件。 <br/>请务必停止正在运行的实时事件， 否则需**付费**！
+> 此示例为每个资源使用唯一的后缀。 如果取消调试操作或者中途终止应用，则帐户中会有多个直播活动。 <br/>请务必停止正在运行的直播活动， 否则需**付费**！
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>检查执行实时传送视频流的代码
 
@@ -73,8 +73,8 @@ ms.locfileid: "70051577"
 此示例为每个资源创建唯一的后缀，因此即使在没有清理的情况下运行示例多次，也不会有名称冲突。
 
 > [!IMPORTANT]
-> 此示例为每个资源使用唯一的后缀。 如果取消调试操作或者中途终止应用，则帐户中会有多个实时事件。 <br/>
-> 请务必停止正在运行的实时事件， 否则需**付费**！
+> 此示例为每个资源使用唯一的后缀。 如果取消调试操作或者中途终止应用，则帐户中会有多个直播活动。 <br/>
+> 请务必停止正在运行的直播活动， 否则需**付费**！
  
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>开始结合使用媒体服务 API 与 .NET SDK
 
@@ -82,23 +82,23 @@ ms.locfileid: "70051577"
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateMediaServicesClient)]
 
-### <a name="create-a-live-event"></a>创建直播事件
+### <a name="create-a-live-event"></a>创建直播活动
 
 本部分介绍如何创建**直通**类型的实时事件（LiveEventEncodingType 设置为 None）。 有关实时事件的可用类型的详细信息，请参阅[实时事件类型](live-events-outputs-concept.md#live-event-types)。 
  
-可能需要在创建实时事件时指定的一些事项包括：
+可能需要在创建直播活动时指定的一些事项包括：
 
 * 媒体服务位置 
-* 实时事件的流式处理协议（目前支持 RTMP 和平滑流式处理协议）。<br/>运行实时事件或其关联的实时输出时，无法更改协议选项。 如果需要其他协议，应当为每个流式处理协议创建单独的实时事件。  
-* 对引入和预览的 IP 限制。 可定义允许向该实时事件引入视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。<br/>如果未指定 IP 地址并且没有规则定义，则不会允许任何 IP 地址。 若要允许任何 IP 地址，请创建一个规则并设置 0.0.0.0/0。<br/>IP 地址必须采用以下格式之一：具有 4 个数字、CIDR 地址范围的 IpV4 地址。
-* 创建事件时，可以将其启动方式指定为自动启动。 <br/>如果将 autostart 设置为 true，则实时事件会在创建后启动。 这意味着，只要实时事件开始运行，就会开始计费。 必须显式对实时事件资源调用停止操作才能停止进一步计费。 有关详细信息，请参阅[实时事件状态和计费](live-event-states-billing.md)。
-* 要使引入 URL 具有预测性，请设置“vanity”模式。 有关详细信息，请参阅[实时事件引入 URL](live-events-outputs-concept.md#live-event-ingest-urls)。
+* 直播活动的流式处理协议（目前支持 RTMP 和平滑流式处理协议）。<br/>运行直播活动或其关联的实时输出时，无法更改协议选项。 如果需要其他协议，应当为每个流式处理协议创建单独的直播活动。  
+* 对引入和预览的 IP 限制。 可定义允许向该直播活动引入视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。<br/>如果未指定 IP 地址并且没有规则定义，则不会允许任何 IP 地址。 若要允许任何 IP 地址，请创建一个规则并设置 0.0.0.0/0。<br/>IP 地址必须采用以下格式之一：具有 4 个数字、CIDR 地址范围的 IpV4 地址。
+* 创建事件时，可以将其启动方式指定为自动启动。 <br/>如果将 autostart 设置为 true，则直播活动会在创建后启动。 这意味着，只要直播活动开始运行，就会开始计费。 必须显式对直播活动资源调用停止操作才能停止进一步计费。 有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing.md)。
+* 要使引入 URL 具有预测性，请设置“vanity”模式。 有关详细信息，请参阅[直播活动引入 URL](live-events-outputs-concept.md#live-event-ingest-urls)。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]
 
 ### <a name="get-ingest-urls"></a>获取引入 URL
 
-创建实时事件后，可以获得要提供给实时编码器的引入 URL。 编码器将使用这些 URL 来输入实时流。
+创建直播活动后，可以获得要提供给实时编码器的引入 URL。 编码器将使用这些 URL 来输入实时流。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#GetIngestURL)]
 
@@ -111,9 +111,9 @@ ms.locfileid: "70051577"
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#GetPreviewURLs)]
 
-### <a name="create-and-manage-live-events-and-live-outputs"></a>创建和管理实时事件与实时输出
+### <a name="create-and-manage-live-events-and-live-outputs"></a>创建和管理直播活动与实时输出
 
-将流传输到实时事件后，可以通过创建资产、实时输出和流定位符来启动流式传输事件。 这会存档流，并使观看者可通过流式处理终结点使用该流。 
+将流传输到直播活动后，可以通过创建资产、实时输出和流式处理定位符来启动流式传输活动。 这会存档流，并使观看者可通过流式处理终结点使用该流。 
 
 #### <a name="create-an-asset"></a>创建资产
 
@@ -132,7 +132,7 @@ ms.locfileid: "70051577"
 > [!NOTE]
 > 创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  若要开始流式传输内容并利用[动态打包](dynamic-packaging-overview.md)和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态  。 
 
-如果已使用流定位符发布了实时输出资产，则实时事件（长达 DVR 窗口长度）将继续可见，直到流定位符过期或被删除（以先发生为准）。
+如果已使用流定位符发布了实时输出资产，则直播活动（长达 DVR 窗口长度）将继续可见，直到流定位符过期或被删除（以先发生为准）。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateStreamingLocator)]
 
@@ -157,8 +157,8 @@ foreach (StreamingPath path in paths.StreamingPaths)
 如果已完成流式处理事件，并想要清理先前设置的资源，请遵循以下过程。
 
 * 停止从编码器推送流。
-* 停止实时事件。 实时事件在停止后，不会产生任何费用。 当需要重新启动它时，它会采用相同的引入 URL，因此，无需重新配置编码器。
-* 除非你想要继续以点播流形式提供实时事件的存档，否则可以停止流式处理终结点。 如果实时事件处于停止状态，则不会产生任何费用。
+* 停止直播活动。 直播活动在停止后，不会产生任何费用。 当需要重新启动它时，它会采用相同的引入 URL，因此，无需重新配置编码器。
+* 除非想要继续以点播流形式提供直播活动的存档，否则可以停止流式处理终结点。 如果直播活动处于停止状态，则不会产生任何费用。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupLiveEventAndOutput)]
 
@@ -168,7 +168,7 @@ foreach (StreamingPath path in paths.StreamingPaths)
 
 若要观看事件，请复制流式传输 URL（在运行“创建流定位符”中所述的代码时获得），然后使用所选的播放器。 可以使用 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) 来测试 https://ampdemo.azureedge.net 中的流。 
 
-实时事件在停止后会自动转换为点播内容。 即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
+直播活动在停止后会自动转换为点播内容。 即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -181,7 +181,7 @@ az group delete --name amsResourceGroup
 ```
 
 > [!IMPORTANT]
-> 让实时事件保持运行会产生费用。 请注意，如果项目/节目崩溃或因某种原因而关闭，可能会导致实时事件保持运行状态，从而产生费用。
+> 让直播活动保持运行会产生费用。 请注意，如果项目/节目崩溃或因某种原因而关闭，可能会导致直播活动保持运行状态，从而产生费用。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

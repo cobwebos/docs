@@ -187,7 +187,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 
 对 Azure 资源管理的支持实现了统一的管理和操作 API（现在所有功能已整合在一起）。
 
-从此版本开始，可以使用资源管理器模板创建实时事件。
+从此版本开始，可以使用资源管理器模板创建直播活动。
 
 #### <a name="improvement-of-asset-operations"></a>改善资产操作 
 
@@ -203,7 +203,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 
 #### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory 身份验证和 RBAC
 
-Azure AD 身份验证和基于角色的访问控制 (RBAC) 通过 Azure AD 中的角色或用户启用安全转换、实时事件、内容密钥策略或资产。
+Azure AD 身份验证和基于角色的访问控制 (RBAC) 通过 Azure AD 中的角色或用户启用安全转换、直播活动、内容密钥策略或资产。
 
 #### <a name="client-sdks"></a>客户端 SDK  
 
@@ -217,7 +217,7 @@ Azure AD 身份验证和基于角色的访问控制 (RBAC) 通过 Azure AD 中�
 - 改进的 RTMP 支持（提高了稳定性并提供了更多的源编码器支持）。
 - RTMPS 安全引入。
 
-    创建实时事件时，现在会得到 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。 
+    创建直播活动时，现在会得到 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。 
 - 24 小时转码支持。 
 - 通过 SCTE35 改进了 RTMP 中的广告信号支持。
 

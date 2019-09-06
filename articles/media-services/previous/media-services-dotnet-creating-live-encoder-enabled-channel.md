@@ -42,7 +42,7 @@ ms.locfileid: "69015509"
 以下步骤介绍创建常见的实时流式处理应用程序时涉及的任务。
 
 > [!NOTE]
-> 目前，实时事件的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amshelp@microsoft.com。
+> 目前，直播活动的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amshelp@microsoft.com。
 
 1. 将视频摄像机连接到计算机。 启动并配置一个可通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。
 
@@ -97,7 +97,7 @@ ms.locfileid: "69015509"
 * 可以发送单比特率实时流的摄像头和编码器。
 
 ## <a name="considerations"></a>注意事项
-* 目前，实时事件的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amshelp@microsoft.com。
+* 目前，直播活动的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amshelp@microsoft.com。
 * 不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
 
 ## <a name="download-sample"></a>下载示例

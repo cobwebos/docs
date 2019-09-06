@@ -149,7 +149,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 ```
 
-## <a name="delete-event"></a>删除事件
+## <a name="delete-event"></a>删除活动
 
 删除映像存储库或清单时触发的 Webhook。 删除标记时不会触发 Webhook。
 

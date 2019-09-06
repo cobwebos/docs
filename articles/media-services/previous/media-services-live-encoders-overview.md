@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务创建多比特率流时配置本地编码器 | Microsoft Docs
-description: 本主题列出的本地实时编码器可用于捕获实时事件，并将单比特率实时流发送到 AMS 通道（已启用实时编码）以供进一步处理。 本主题列出了演示如何配置所列编码器的教程链接。
+description: 本主题列出的本地实时编码器可用于捕获直播活动，并将单比特率实时流发送到 AMS 频道（已启用实时编码）以供进一步处理。 本主题列出了演示如何配置所列编码器的教程链接。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -22,7 +22,7 @@ ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708078"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>如何在使用 Azure 媒体服务时配置本地编码器以创建多比特率流
-本主题列出的本地实时编码器可用于捕获实时事件，并将单比特率实时流发送到 AMS 通道（已启用实时编码）以供进一步处理。 本主题还列出了演示如何配置所列编码器的教程链接。
+本主题列出的本地实时编码器可用于捕获直播活动，并将单比特率实时流发送到 AMS 频道（已启用实时编码）以供进一步处理。 本主题还列出了演示如何配置所列编码器的教程链接。
 
 > [!NOTE]
 > 通过 RTMP 流式处理时，检查防火墙和/或代理设置，确认出站 TCP 端口 1935 和 1936 已打开。

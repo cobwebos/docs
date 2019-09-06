@@ -36,7 +36,7 @@ ms.locfileid: "69016742"
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
 > [!NOTE]
-> 使用 Tricaster 将贡献源发送到已启用实时编码的 AMS 通道时，如果使用了 Tricaster 的某些功能（例如，在源之间快速剪切，或者切入/切出静态图像），则实时事件可能会出现视频/音频抖动。 AMS 团队正在努力解决这些问题，在此之前，不建议使用这些功能。
+> 使用 Tricaster 将贡献源发送到已启用实时编码的 AMS 频道时，如果使用了 Tricaster 的某些功能（例如，在源之间快速剪切，或者切入/切出静态图像），直播活动可能会出现视频/音频抖动。 AMS 团队正在努力解决这些问题，在此之前，不建议使用这些功能。
 >
 >
 

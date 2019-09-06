@@ -25,7 +25,7 @@ ms.locfileid: "67593493"
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>概述
-本文档介绍 Microsoft Azure CDN 中的实时统计信息。  在将内容传送到客户端时，此功能将提供实时数据（如带宽、缓存状态和并发连接数）给 CDN 配置文件。 这样就可以随时连续监视服务的运行状况，包括上线事件。
+本文档介绍 Microsoft Azure CDN 中的实时统计信息。  在将内容传送到客户端时，此功能将提供实时数据（如带宽、缓存状态和并发连接数）给 CDN 配置文件。 这样就可以随时连续监视服务的运行状况，包括上线活动。
 
 以下是可用图表：
 

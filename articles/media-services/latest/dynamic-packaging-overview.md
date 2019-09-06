@@ -60,11 +60,11 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 
 ## <a name="live-streaming-workflow"></a>实时传送视频流工作流
 
-实时事件可以是下述两种类型之一：直通或实时编码。 
+直播活动可以是下述两种类型之一：直通或实时编码。 
 
 以下是使用动态打包进行实时传送视频流的常用工作流：
 
-1. 创建[实时事件](live-events-outputs-concept.md)。
+1. 创建[直播活动](live-events-outputs-concept.md)。
 1. 获取引入 URL 并配置本地编码器以使用 URL 发送贡献源。
 1. 获取预览 URL 并使用它验证是否接收到来自编码器的输入。
 1. 创建新资产。

@@ -26,7 +26,7 @@ ms.locfileid: "67449754"
 
 ## <a name="job-related-event-types"></a>作业相关事件类型
 
-媒体服务会发出如下所述的**作业**相关事件类型。 有两类作业相关事件  ：“监视作业状态更改”和“监视作业输出状态更改”。 
+媒体服务会发出如下所述的**作业**相关事件类型。 有两类作业相关事件：“监视作业状态更改”和“监视作业输出状态更改”。 
 
 可通过订阅 JobStateChange 事件来注册所有事件。 或者，可以只订阅特定事件（例如，JobErrored、JobFinished 和 JobCanceled 等最终状态）。 
 
@@ -77,7 +77,7 @@ ms.locfileid: "67449754"
 | 事件类型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.Media.LiveEventConnectionRejected | 编码器的连接尝试被拒绝。 |
-| Microsoft.Media.LiveEventEncoderConnected | 编码器与实时事件建立连接。 |
+| Microsoft.Media.LiveEventEncoderConnected | 编码器与直播活动建立连接。 |
 | Microsoft.Media.LiveEventEncoderDisconnected | 编码器断开连接。 |
 
 请参阅后面的[架构示例](#event-schema-examples)。
@@ -97,7 +97,7 @@ ms.locfileid: "67449754"
 | Microsoft.Media.LiveEventIncomingStreamReceived | 媒体服务器收到流或连接中每个轨迹的第一个数据区块。 |
 | Microsoft.Media.LiveEventIncomingStreamsOutOfSync | 媒体服务器检测到音频和视频流不同步。用作警告，因为用户体验可能不受影响。 |
 | Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | 媒体服务器检测到来自外部编码器的任意两个视频流不同步。用作警告，因为用户体验可能不受影响。 |
-| Microsoft.Media.LiveEventIngestHeartbeat | 当实时事件正在运行时，每隔 20 秒为每个轨迹发布。 提供引入运行状况摘要。<br/><br/>最初连接编码器后，检测信号事件持续是否编码器仍处于连接状态，或不发出每隔 20 秒。 |
+| Microsoft.Media.LiveEventIngestHeartbeat | 当直播活动正在运行时，每隔 20 秒为每个轨迹发布。 提供引入运行状况摘要。<br/><br/>最初连接编码器后，检测信号事件持续是否编码器仍处于连接状态，或不发出每隔 20 秒。 |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | 媒体服务器检测到传入轨迹中存在不连续的情况。 |
 
 请参阅后面的[架构示例](#event-schema-examples)。
@@ -133,10 +133,10 @@ ms.locfileid: "67449754"
 | previousState | string | 事件发生前的作业状态。 |
 | state | string | 此事件中通知的作业的新状态。 例如，“已计划：作业已准备就绪”或“已完成：作业已完成。”|
 
-作业状态可以是以下任何一个值：已排队、已计划、正在处理、已完成、错误、已取消、正在取消       
+作业状态可以是以下任何一个值：已排队、已计划、正在处理、已完成、错误、已取消、正在取消
 
 > [!NOTE]
-> 已排队仅出现在 previousState 属性中，不出现在 state 属性中    。
+> 已排队仅出现在 previousState 属性中，不出现在 state 属性中。
 
 ### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobScheduled、JobProcessing、JobCanceling
 
@@ -317,7 +317,7 @@ ms.locfileid: "67449754"
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | streamId | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
-| ingestUrl | string | 实时事件提供的引入 URL。 |  
+| ingestUrl | string | 直播活动提供的引入 URL。 |  
 | encoderIp | string | 编码器的 IP。 |
 | encoderPort | string | 此流的来源编码器的端口。 |
 | resultCode | string | 拒绝连接的原因。 下表中列出了结果代码。 |
@@ -364,7 +364,7 @@ ms.locfileid: "67449754"
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | streamId | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中提供此 ID。 |
-| ingestUrl | string | 实时事件提供的引入 URL。 |
+| ingestUrl | string | 直播活动提供的引入 URL。 |
 | encoderIp | string | 编码器的 IP。 |
 | encoderPort | string | 此流的来源编码器的端口。 |
 
@@ -398,7 +398,7 @@ ms.locfileid: "67449754"
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | streamId | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
-| ingestUrl | string | 实时事件提供的引入 URL。 |  
+| ingestUrl | string | 直播活动提供的引入 URL。 |  
 | encoderIp | string | 编码器的 IP。 |
 | encoderPort | string | 此流的来源编码器的端口。 |
 | resultCode | string | 编码器断开连接的原因。 可能是正常断开连接，或者是由于出错而断开连接。 下表中列出了结果代码。 |
@@ -497,7 +497,7 @@ ms.locfileid: "67449754"
 | trackType | string | 轨道类型（音频/视频）。 |
 | trackName | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
 | bitrate | integer | 轨道的比特率。 |
-| ingestUrl | string | 实时事件提供的引入 URL。 |
+| ingestUrl | string | 直播活动提供的引入 URL。 |
 | encoderIp | string  | 编码器的 IP。 |
 | encoderPort | string | 此流的来源编码器的端口。 |
 | timestamp | string | 收到数据区块的第一个时间戳。 |
@@ -621,7 +621,7 @@ ms.locfileid: "67449754"
 | discontinuityCount | integer | 在过去 20 秒观察到的不连续性数目。 |
 | nonIncreasingCount | integer | 在过去 20 秒收到的具有以往时间戳的数据区块数。 |
 | unexpectedBitrate | bool | 在过去 20 秒，预期和实际比特率之差是否超过了允许的限制。 当且仅当 incomingBitrate >= 2* 比特率，或者 incomingBitrate <= 比特率/2，或者 IncomingBitrate = 0 时，此属性的值才为 true。 |
-| state | string | 实时事件的状态。 |
+| state | string | 直播活动的状态。 |
 | healthy | bool | 指示引入是否正常（基于计数和标志判断）。 如果 overlapCount = 0 并且 discontinuityCount = 0 并且 nonIncreasingCount = 0 并且 unexpectedBitrate = false，则 Healthy 为 true。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected

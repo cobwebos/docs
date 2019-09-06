@@ -22,7 +22,7 @@ ms.locfileid: "66494299"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 创建筛选器
 
-将内容传送到客户（直播流事件或点播视频）时，客户端所需的灵活性可能比默认资产的清单文件中描述的灵活性更高。 使用 Azure 媒体服务可为内容定义帐户筛选器和资产筛选器。 
+将内容传送到客户（直播流活动或点播视频）时，客户端所需的灵活性可能比默认资产的清单文件中描述的灵活性更高。 使用 Azure 媒体服务可为内容定义帐户筛选器和资产筛选器。 
 
 有关此功能和使用该方案的详细说明，请参阅[动态清单](filters-dynamic-manifest-overview.md)并[筛选器](filters-concept.md)。
 

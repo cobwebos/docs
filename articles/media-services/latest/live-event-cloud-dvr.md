@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务实时事件和云 DVR | Microsoft Docs
+title: Azure 媒体服务直播活动和云 DVR | Microsoft Docs
 description: 本文介绍了什么是实时输出，以及如何使用云 DVR。
 services: media-services
 documentationcenter: ''

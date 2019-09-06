@@ -22,7 +22,7 @@ ms.locfileid: "67150382"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
 
-在 Azure 媒体服务中，[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)可以是下述两种类型之一：实时编码和直通。 
+在 Azure 媒体服务中，[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)可以是下述两种类型之一：实时编码和直通。 
 
 ## <a name="types-comparison"></a>类型比较 
 
@@ -32,7 +32,7 @@ ms.locfileid: "67150382"
 * **LiveEventEncodingType.Standard** -的本地实时编码器发送单比特率流的实时事件和媒体服务创建多个比特率流。 如果贡献源为 720p 或更高分辨率**Default720p**预设将编码的一组 6 解析/比特率对 （详细信息按照在本文后面）。
 * **LiveEventEncodingType.Premium1080p** -的本地实时编码器发送单比特率流的实时事件和媒体服务创建多个比特率流。 Default1080p 预设指定输出组 （按照在本文后面详细信息） 的解决方法/比特率对。 
 
-| Feature | 直通实时事件 | 标准或 Premium1080p 实时事件 |
+| Feature | 直通直播活动 | 标准或 Premium1080p 实时事件 |
 | --- | --- | --- |
 | 单比特率输入在云中被编码为多比特率 |否 |是 |
 | 贡献源的最大视频分辨率 |4K（4096x2160，60 帧/秒） |1080p（1920x1088，30 帧/秒）|
@@ -58,7 +58,7 @@ ms.locfileid: "67150382"
 | 能够从贡献源出现的短时停顿中恢复|是|部分|
 | 支持非一致性输入 GOP|是|否 – 输入必须具有固定的 GOP 持续时间|
 | 支持可变帧率输入|是|否 - 输入必须是固定的帧速率。 轻微的帧率变化是容许的，例如在高速运动情况下出现的轻微帧率变化。 但贡献源不能删除帧速率 （例如，为 15 帧/秒）。|
-| 输入源丢失时，会自动关闭实时事件|否|12 小时后，如果没有运行的 LiveOutput|
+| 输入源丢失时，会自动关闭直播活动|否|12 小时后，如果没有运行的 LiveOutput|
 
 ## <a name="system-presets"></a>系统预设
 

@@ -26,7 +26,7 @@ ms.locfileid: "67785822"
 
 |标题 |描述  |
 |---------|---------|
-| [教程：Azure 自动化与事件网格和 Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |创建用于发送事件的虚拟机。 此事件触发一个用于标记虚拟机的自动化 Runbook，并触发一条发送到 Microsoft Teams 频道的消息。 |
+| [教程：Azure 自动化与事件网格和 Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |创建用于发送事件的虚拟机。 此活动触发一个用于标记虚拟机的自动化 Runbook，并触发一条发送到 Microsoft Teams 频道的消息。 |
 | [如何：通过门户订阅事件](subscribe-through-portal.md) | 使用门户订阅 Azure 订阅的事件。 |
 | [Azure CLI：订阅 Azure 订阅的事件](./scripts/event-grid-cli-azure-subscription.md) |用于在 Azure 订阅中创建事件网格订阅并将事件发送到 WebHook 的示例脚本。 |
 | [PowerShell：订阅 Azure 订阅的事件](./scripts/event-grid-powershell-azure-subscription.md)| 用于在 Azure 订阅中创建事件网格订阅并将事件发送到 WebHook 的示例脚本。 |
