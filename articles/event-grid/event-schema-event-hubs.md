@@ -64,7 +64,7 @@ ms.locfileid: "60561822"
 | eventType | string | 此事件源的一个注册事件类型。 |
 | eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | string | 事件的唯一标识符。 |
-| data | 对象 | 事件中心事件数据。 |
+| data | object | 事件中心事件数据。 |
 | dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
