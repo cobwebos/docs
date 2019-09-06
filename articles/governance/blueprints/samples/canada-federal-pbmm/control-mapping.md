@@ -7,18 +7,18 @@ ms.date: 08/21/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d88a5af1f68677dd68decb96411db06ea91ffd25
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 96b58a84befcd4a5661804b1265eae119f09977f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103651"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232818"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大联邦 PBMM 蓝图示例的控制映射
 
 以下文章详细介绍了 Azure 蓝图加拿大联邦保护的 B、中等完整性、中等可用性 (PBMM) 蓝图示例如何映射到加拿大联邦 PBMM 控制。 有关控制的详细信息，请参阅[加拿大联邦 PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4)。
 
-以下映射到**加拿大联邦 PBMM** 控制。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“\[预览\]:  审核加拿大联邦 PBMM 控制”内置策略计划。
+以下映射到**加拿大联邦 PBMM** 控制。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“ **\[预览\]：** 审核加拿大联邦 PBMM 控制”内置策略计划。
 
 ## <a name="location-constraints"></a>位置约束
 
