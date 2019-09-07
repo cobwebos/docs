@@ -1,5 +1,5 @@
 ---
-title: 创建和管理工作区
+title: 在门户中创建 Azure ML 工作区
 titleSuffix: Azure Machine Learning service
 description: 了解如何在 Azure 门户中创建、查看和删除 Azure 机器学习服务工作区。
 services: machine-learning
@@ -11,14 +11,14 @@ ms.author: shipatel
 author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: f103bde99eb5b21d06988f11ac6f17fcf50ceb31
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: df015df3c20cdb99512167e3dc3e455da2762c52
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278272"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744789"
 ---
-# <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>创建和管理 Azure 机器学习服务工作区
+# <a name="create-and-manage-azure-machine-learning-service-workspaces-in-the-azure-portal"></a>在 Azure 门户中创建和管理 Azure 机器学习服务工作区
 
 本文将介绍如何在 Azure 门户中针对 [Azure 机器学习服务](overview-what-is-azure-ml.md)创建、查看和删除 [**Azure 机器学习服务工作区**](concept-workspace.md)。  门户是开始使用工作区的最简单方法，但随着需求的更改或自动化的要求增加，你还可以[使用通过使用](reference-azure-machine-learning-cli.md) [Python 代码](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)或[通过 VS Code 扩展](how-to-vscode-tools.md#get-started-with-azure-machine-learning)来创建和删除工作区。
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: glenga
-ms.openlocfilehash: 837e29731b617fcb8da95b89668403638c4d049a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f3fd59c0d17bd9094f6887aa5ec088f9fdcdd979
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087404"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734434"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
@@ -43,7 +43,7 @@ ms.locfileid: "70087404"
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 `az group create` 命令创建资源组。 目前, Azure 事件网格不支持所有区域。 有关支持的区域的信息, 请参阅[Azure 事件网格概述](https://docs.microsoft.com/azure/event-grid/overview)。
+使用 `az group create` 命令创建资源组。 目前，Azure 事件网格不支持所有区域。 有关支持的区域的信息，请参阅[Azure 事件网格概述](https://docs.microsoft.com/azure/event-grid/overview)。
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -51,7 +51,7 @@ az group create --name eventResourceGroup --location westus2
 
 ### <a name="create-a-custom-topic"></a>创建自定义主题
 
-事件网格主题提供用户定义的终结点, 您可以将事件发布到该终结点。 用主题的唯一名称替换 `<topic_name>`。 主题名称必须唯一，因为它将用作 DNS 条目。
+事件网格主题提供用户定义的终结点，您可以将事件发布到该终结点。 用主题的唯一名称替换 `<topic_name>`。 主题名称必须唯一，因为它将用作 DNS 条目。
 
 ```bash
 az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
@@ -88,7 +88,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 }
 ```
 
-可以在[host json 文档](../functions-host-json.md#durabletask)中找到可能的 Azure 事件网格配置属性。 配置`host.json`文件后, 函数应用将生命周期事件发送到事件网格主题。 这适用于在本地和 Azure 中运行函数应用的情况。
+可以在[host json 文档](../functions-host-json.md#durabletask)中找到可能的 Azure 事件网格配置属性。 配置`host.json`文件后，函数应用将生命周期事件发送到事件网格主题。 这适用于在本地和 Azure 中运行函数应用的情况。
 
 在函数应用和 `local.setting.json` 中设置主题密钥的应用设置。 以下 JSON 是用于本地调试的 `local.settings.json` 示例。 将 `<topic_key>` 替换为主题密钥。  
 
@@ -125,6 +125,16 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 创建包含以下代码的函数：
 
+#### <a name="precompiled-c"></a>预编译 C#
+```csharp
+public static void Run([HttpTrigger] JObject eventGridEvent, ILogger log)
+{
+    log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
+}
+```
+
+#### <a name="c-script"></a>C# 脚本
+
 ```csharp
 #r "Newtonsoft.Json"
 using Newtonsoft.Json;
@@ -150,6 +160,8 @@ public static void Run(JObject eventGridEvent, ILogger log)
 ## <a name="create-durable-functions-to-send-the-events"></a>创建用于发送事件的 Durable Functions
 
 在本地计算机上，在 Durable Functions 项目中开始调试。  以下代码与 Durable Functions 的模板代码相同。 已在本地计算机上配置 `host.json` 和 `local.settings.json`。
+
+### <a name="precompiled-c"></a>预编译 C#
 
 ```csharp
 using System.Collections.Generic;
@@ -188,8 +200,8 @@ namespace LifeCycleEventSpike
 
         [FunctionName("Sample_HttpStart")]
         public static async Task<HttpResponseMessage> HttpStart(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
-            [OrchestrationClient]DurableOrchestrationClient starter,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestMessage req,
+            [OrchestrationClient] DurableOrchestrationClient starter,
             ILogger log)
         {
             // Function input comes from the request content.

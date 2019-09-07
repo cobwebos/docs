@@ -1,7 +1,7 @@
 ---
-title: 仪表板-语言理解-LUIS
+title: 仪表板 - 语言理解 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 使用分析仪表板 (可视化的报告工具) 修复意向。
+description: 使用分析仪表板（一个可视化报告工具）修复意向。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: a5c60a4c7d4f1b441ec5e8444b10594a1e67d7db
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932724"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735055"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>如何使用仪表板来改善应用
 
 使用示例言语时查找并修复已训练应用的意向问题。 仪表板显示整体性的应用信息，并突出显示应予以修复的意向。 
 
-查看仪表板分析是一个迭代过程, 请在更改和改进模型时重复此过程。
+查看仪表板分析是一个迭代过程，请在更改和改进模型时重复此过程。
 
 对于在意向中不包含任何示例言语的应用（称为仅限模式的应用），此页不会提供相关的分析。 
 
@@ -78,13 +78,13 @@ ms.locfileid: "68932724"
 
 添加示例言语的操作应由具备以下经验的人员来执行：
 
-* 对于不同意向中的言语具有较高程度的了解
-* 知道在哪种情况下，一个意向中的言语可能会与另一个意向发生混淆
-* 能够决定是否应该将两个经常相互混淆的意向折叠为单个意向，以及是否应该提取包含实体的不同数据
+* 高度了解了不同意向中的最谈话。
+* 知道最谈话在一个目的中的方式可能与其他意图混淆。
+* 可以决定是否应将两个经常相互混淆的方法折叠为一个意向。 如果是这种情况，则必须与实体一起提取不同的数据。
 
 ### <a name="patterns-and-phrase-lists"></a>模式和短语列表
 
-分析页面并不指示何时使用[模式](luis-concept-patterns.md)或[短语列表](luis-concept-feature.md)。 如果添加了这些数据, 则可以帮助进行不正确或不明确的预测, 但不会帮助数据不平衡。 
+分析页面并不指示何时使用[模式](luis-concept-patterns.md)或[短语列表](luis-concept-feature.md)。 如果添加了这些数据，则可以帮助进行不正确或不明确的预测，但不会帮助数据不平衡。 
 
 ### <a name="review-data-imbalance"></a>检查数据不平衡问题
 

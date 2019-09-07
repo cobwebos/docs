@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: b549e8bf53ca7728b18e04542c7291f0ce720cb0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9c65d6055807ee2735f1915e8ca289dc0754535b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876461"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736398"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>关于 Azure 到 Azure 复制的网络
 
@@ -48,7 +48,7 @@ ms.locfileid: "69876461"
 
 **URL** | **详细信息**  
 --- | ---
-\* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 Vm 的所有缓存存储帐户, 则可以将特定存储帐户 Url (例如: cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) 的允许列表, 而不是 blob.core.windows.net。
+\* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 Vm 的所有缓存存储帐户，则可以将特定存储帐户 Url （例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net）的允许列表，而不是 blob.core.windows.net。
 login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行授权和身份验证。
 *.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery IP”。
 *.servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery 监视 IP”。
@@ -113,7 +113,11 @@ Site Recovery IP 地址范围如下：
    中国北部 2 | 40.73.35.193 | 40.73.33.230
    中国东部 | 42.159.205.45 | 42.159.132.40
    中国东部 2 | 40.73.118.52| 40.73.100.125
-  
+   德国北部| 51.116.208.58| 51.116.58.128
+   德国中西部 | 51.116.156.176 | 51.116.154.192
+   瑞士西部 | 51.107.231.223| 51.107.154.128
+   瑞士北部 | 51.107.68.31| 51.107.58.128
+
 ## <a name="example-nsg-configuration"></a>NSG 配置示例
 
 此示例演示如何为要复制的 VM 配置 NSG 规则。

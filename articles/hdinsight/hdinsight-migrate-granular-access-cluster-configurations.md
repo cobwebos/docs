@@ -1,5 +1,5 @@
 ---
-title: 迁移到群集配置的基于角色的细化访问权限 - Azure HDInsight
+title: 迁移到精细的基于角色的访问-Azure HDInsight 群集配置
 description: 了解在迁移到 HDInsight 群集配置的基于角色的细化访问权限时，需要进行哪些更改。
 author: tylerfox
 ms.author: tyfox
@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 03bea7b9df929914e25ca97b382dc5c120b5a769
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9eb77b3e4066712aecebee4660d50baf45957cb8
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983031"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733235"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>迁移到群集配置的基于角色的细化访问权限
 
-我们正在引入一些重要更改，以支持使用更细化的基于角色的访问来获取敏感信息。 在这些更改过程中, 如果你正在使用某个[受影响的实体/方案](#am-i-affected-by-these-changes), 可能需要在**2019 年9月3日**执行一些操作。
+我们正在引入一些重要更改，以支持使用更细化的基于角色的访问来获取敏感信息。 在这些更改过程中，如果你正在使用某个[受影响的实体/方案](#am-i-affected-by-these-changes)，可能需要在**2019 年9月3日**执行一些操作。
 
 ## <a name="what-is-changing"></a>有什么变化？
 
 以前，处理“所有者”、“参与者”或“读取者”[RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)的群集用户可以通过 HDInsight API 获取机密，因为这些机密可以通过给具有 `*/read` 权限的任何人。 机密定义为值，可用于获取比用户角色允许的访问权限更高的权限。 这些值包括群集网关 HTTP 凭据、存储帐户密钥和数据库凭据等值。
 
-从2019年9月3日开始, 访问这些机密将`Microsoft.HDInsight/clusters/configurations/action`需要权限, 这意味着他们不能再由具有 "读者" 角色的用户访问。 具有此权限的角色为 "参与者"、"所有者" 和 "新 HDInsight 群集操作员" 角色 (如下所示)。
+从2019年9月3日开始，访问这些机密将`Microsoft.HDInsight/clusters/configurations/action`需要权限，这意味着他们不能再由具有 "读者" 角色的用户访问。 具有此权限的角色为 "参与者"、"所有者" 和 "新 HDInsight 群集操作员" 角色（如下所示）。
 
 另外，我们正在引入新的 [HDInisght 群集操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)角色，无需向此角色授予“参与者”或“所有者”的管理权限，即可让他们检索机密。 总结：
 
@@ -59,13 +59,13 @@ ms.locfileid: "69983031"
 
 - [**GET /configurations/{configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration)（已删除敏感信息）
     - 以前用于获取单个配置类型（包括机密）。
-    - 从2019年9月3日开始, 此 API 调用现在将返回已省略机密的单独配置类型。 若要获取所有配置（包括机密），请使用新的 POST /configurations 调用。 如果只要获取网关设置，请使用新的 POST /getGatewaySettings 调用。
+    - 从2019年9月3日开始，此 API 调用现在将返回已省略机密的单独配置类型。 若要获取所有配置（包括机密），请使用新的 POST /configurations 调用。 如果只要获取网关设置，请使用新的 POST /getGatewaySettings 调用。
 - [**GET /configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration)（已弃用）
     - 以前用于获取所有配置（包括机密）
-    - 从2019年9月3日开始, 此 API 调用将被弃用且不再受支持。 今后若要获取所有配置，请使用新的 POST /configurations 调用。 若要获取省略敏感参数的配置，请使用 GET /configurations/{configurationName} 调用。
+    - 从2019年9月3日开始，此 API 调用将被弃用且不再受支持。 今后若要获取所有配置，请使用新的 POST /configurations 调用。 若要获取省略敏感参数的配置，请使用 GET /configurations/{configurationName} 调用。
 - [**POST /configurations/{configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)（已弃用）
     - 以前用于更新网关凭据。
-    - 从2019年9月3日开始, 此 API 调用将被弃用且不再受支持。 请改用新的 POST /updateGatewaySettings。
+    - 从2019年9月3日开始，此 API 调用将被弃用且不再受支持。 请改用新的 POST /updateGatewaySettings。
 
 已添加以下替换用的 API：</span>
 
@@ -156,14 +156,14 @@ ms.locfileid: "69983031"
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>将 HDInsight 群集操作员角色分配添加到用户
 
-拥有 "[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)" 角色的用户可以将[HDInsight 群集操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)角色分配给要对敏感 HDInsight 群集配置值具有读/写访问权限的用户 (如群集网关凭据和存储帐户密钥)。
+拥有 "[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)" 角色的用户可以将[HDInsight 群集操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)角色分配给要对敏感 HDInsight 群集配置值具有读/写访问权限的用户（如群集网关凭据和存储帐户密钥）。
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
 
 添加此角色分配的最简单方法是在 Azure CLI 中使用 `az role assignment create` 命令。
 
 > [!NOTE]
-> 此命令必须由拥有 "所有者" 角色的用户运行, 因为它只能授予这些权限。 `--assignee`是要将 HDInsight 群集操作员角色分配到的用户的服务主体或电子邮件地址的名称。 如果收到权限不足错误, 请参阅下面的常见问题解答。
+> 此命令必须由拥有 "所有者" 角色的用户运行，因为它只能授予这些权限。 `--assignee`是要将 HDInsight 群集操作员角色分配到的用户的服务主体或电子邮件地址的名称。 如果收到权限不足错误，请参阅下面的常见问题解答。
 
 #### <a name="grant-role-at-the-resource-cluster-level"></a>在资源（群集）级别授予角色
 
@@ -189,20 +189,20 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ## <a name="faq"></a>常见问题
 
-### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>更新 API 请求和/或工具后, 为什么会出现 403 (禁止) 响应？
+### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>更新 API 请求和/或工具后，为什么会出现403（禁止）响应？
 
-群集配置现在位于细化的基于角色的访问控制中, 需要`Microsoft.HDInsight/clusters/configurations/*`访问这些配置的权限。 若要获取此权限, 请将 HDInsight 群集操作员、参与者或所有者角色分配给尝试访问配置的用户或服务主体。
+群集配置现在位于细化的基于角色的访问控制中，需要`Microsoft.HDInsight/clusters/configurations/*`访问这些配置的权限。 若要获取此权限，请将 HDInsight 群集操作员、参与者或所有者角色分配给尝试访问配置的用户或服务主体。
 
-### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>在运行 Azure CLI 命令将 HDInsight 群集操作员角色分配给另一个用户或服务主体时, 为什么看不到 "权限不足, 无法完成操作"？
+### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>在运行 Azure CLI 命令将 HDInsight 群集操作员角色分配给另一个用户或服务主体时，为什么看不到 "权限不足，无法完成操作"？
 
-除了拥有 "所有者" 角色外, 执行该命令的用户或服务主体还需要有足够的 AAD 权限来查找工作负责人的对象 Id。 此消息指示 AAD 权限不足。 尝试将`-–assignee` `–assignee-object-id`参数替换为, 并提供工作负责人的对象 ID 作为参数而不是名称 (对于托管标识, 则提供主体 id)。 有关详细信息, 请参阅[az role 赋值创建文档](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)的可选参数部分。
+除了拥有 "所有者" 角色外，执行该命令的用户或服务主体还需要有足够的 AAD 权限来查找工作负责人的对象 Id。 此消息指示 AAD 权限不足。 尝试将`-–assignee` `–assignee-object-id`参数替换为，并提供工作负责人的对象 ID 作为参数而不是名称（对于托管标识，则提供主体 id）。 有关详细信息，请参阅[az role 赋值创建文档](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)的可选参数部分。
 
-如果仍然不起作用, 请与 AAD 管理员联系以获取正确的权限。
+如果仍然不起作用，请与 AAD 管理员联系以获取正确的权限。
 
-### <a name="what-will-happen-if-i-take-no-action"></a>如果我不执行任何操作, 会发生什么情况？
+### <a name="what-will-happen-if-i-take-no-action"></a>如果我不执行任何操作，会发生什么情况？
 
-从2019年9月3日`GET /configurations`开始`POST /configurations/gateway` , 调用将不再`GET /configurations/{configurationName}`返回任何信息, 并且调用将不再返回敏感参数, 例如存储帐户密钥或群集密码。 这同样适用 SDK 方法和 PowerShell cmdlet。
+从2019年9月3日`GET /configurations`开始`POST /configurations/gateway` ，调用将不再`GET /configurations/{configurationName}`返回任何信息，并且调用将不再返回敏感参数，例如存储帐户密钥或群集密码。 这同样适用 SDK 方法和 PowerShell cmdlet。
 
-如果使用上面提到的 Visual Studio、VSCode、IntelliJ 或 Eclipse 的工具中的旧版本, 则在更新之前, 这些工具将不再工作。
+如果使用上面提到的 Visual Studio、VSCode、IntelliJ 或 Eclipse 的工具中的旧版本，则在更新之前，这些工具将不再工作。
 
-有关更多详细信息, 请参阅本文档中适用于你的方案的相应部分。
+有关更多详细信息，请参阅本文档中适用于你的方案的相应部分。

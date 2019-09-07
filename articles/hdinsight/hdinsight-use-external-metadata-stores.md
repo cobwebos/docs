@@ -1,6 +1,6 @@
 ---
 title: 使用外部元数据存储 - Azure HDInsight
-description: 对 HDInsight 群集使用外部元数据存储功能。
+description: 在 Azure HDInsight 群集中使用外部元数据存储，并使用最佳做法。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.openlocfilehash: 705ced82ad4edad0bb4adc057414f6b20b80d8d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38e33c0e138b115010b22cc3510b93be98546b50
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66298870"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735874"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
 
@@ -50,7 +50,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>在群集创建期间选择自定义元存储
 
-可在群集创建期间将群集指向之前所创建的 Azure SQL 数据库，还可在创建群集之后配置 SQL 数据库。 此选项与指定**存储 > 元存储设置**时从 Azure 门户创建新的 Hadoop、 Spark 或交互式 Hive 群集。
+可在群集创建期间将群集指向之前所创建的 Azure SQL 数据库，还可在创建群集之后配置 SQL 数据库。 通过 Azure 门户创建新的 Hadoop、Spark 或交互式 Hive 群集时，依次访问“存储”和“元存储”设置来指定此选项。
 
 ![HDInsight Hive 元数据存储 Azure 门户](./media/hdinsight-use-external-metadata-stores/metadata-store-azure-portal.png)
 

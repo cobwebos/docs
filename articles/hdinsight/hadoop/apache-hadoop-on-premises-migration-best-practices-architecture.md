@@ -1,19 +1,19 @@
 ---
-title: 将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 体系结构最佳做法
+title: 将本地 Apache Hadoop 群集迁移到 Azure HDInsight-体系结构
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的体系结构最佳做法。
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: d1f2b79ff3ae33adb0b6e3ce5a6d96ad38fb1562
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4243100d74515576463a6812e31625ddc0ca1f48
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693124"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735885"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 体系结构最佳做法
 
@@ -30,8 +30,8 @@ Azure HDInsight 群集是针对特定类型的计算用途设计的。 由于可
 |批处理 (ETL/ELT)|Hadoop、Spark|
 |数据仓库|Hadoop、Spark、交互式查询|
 |IoT/流式处理|Kafka、Storm、Spark|
-|NoSQL 事务处理|HBase|
-|使用内存中缓存的更快交互式查询|交互式查询|
+|NoSQL 事务处理|Hbase|
+|使用内存中缓存的更快交互式查询|Interactive Query|
 |数据科学|ML Services、Spark|
 
 下表显示了可用于创建 HDInsight 群集的各种方法。
@@ -105,7 +105,7 @@ HDInsight 对 Hive 和 Oozie 元存储使用 Azure SQL 数据库。 可通过两
 - 定期备份自定义元存储。
 - 将元存储和 HDInsight 群集保留在同一区域。
 - 使用 Azure SQL 数据库监视工具（例如 Azure 门户或 Azure Monitor 日志）监视元存储的性能和可用性。
-- 根据需要执行 **ANALYZE TABLE** 命令，以生成表和列的统计信息。 例如，`ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
+- 根据需要执行 **ANALYZE TABLE** 命令，以生成表和列的统计信息。 例如， `ANALYZE TABLE [table_name] COMPUTE STATISTICS` 。
 
 ## <a name="best-practices-for-different-workloads"></a>不同工作负荷的最佳做法
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ae6c2bd27e9192966ecffb4d4296063201fca970
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098024"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734339"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
@@ -67,7 +67,7 @@ ms.locfileid: "70098024"
 
 实现该函数的代码如下：
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# 脚本
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
@@ -88,7 +88,7 @@ ms.locfileid: "70098024"
 
 ## <a name="strongly-typed-data-transfer-net-only"></a>强类型数据传输（仅限 .NET）
 
-Orchestrator 需要多个数据段, 以便在和C# C#脚本中使用共享的[POCO 对象](../functions-reference-csharp.md#reusing-csx-code)进行强类型的数据传输:  
+Orchestrator 需要多个数据段，以便在和C# C#脚本中使用共享的[POCO 对象](../functions-reference-csharp.md#reusing-csx-code)进行强类型的数据传输：  
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
@@ -103,7 +103,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 实现如下。 与用于数据传输的 POCO 一样，用于处理 API 调用和分析响应 JSON 的逻辑已抽象化为 C# 中的共享类。 可以在 [Visual Studio 示例代码](#run-the-sample)中找到此逻辑。
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# 脚本
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
@@ -117,7 +117,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 下面是发送短信的代码：
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# 脚本
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 

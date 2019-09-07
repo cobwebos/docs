@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5573eea4e7a5322c762665d2db8e3fbed1f585a1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c10905c283619e6008dbe6ab8c4e721888b8b786
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970444"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743799"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 
@@ -24,7 +24,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 ![混合 Runbook 辅助角色概述](media/automation-hybrid-runbook-worker/automation.png)
 
-每个混合 Runbook 辅助角色都是你在安装代理时指定的混合 Runbook 辅助角色组的成员。 一个组可以包含一个代理，但是可以在一个组中安装多个代理，以实现高可用性。
+每个混合 Runbook 辅助角色都是你在安装代理时指定的混合 Runbook 辅助角色组的成员。 一个组可以包含一个代理，但是可以在一个组中安装多个代理，以实现高可用性。 每台计算机都可以将一个混合辅助角色报告托管到一个自动化帐户。
 
 在混合 Runbook 辅助角色中启动 Runbook 时，可以指定该辅助角色会在其中运行的组。 组中的每个辅助角色都会轮询 Azure 自动化以查看是否有可用作业。 如果作业可用，获取作业的第一个辅助角色将执行该作业。 作业队列的处理时间取决于混合辅助角色硬件配置文件和负载。 不能指定特定的辅助角色。 混合 Runbook 辅助角色不受 Azure 沙盒所具有的诸多限制。 它们没有磁盘空间、内存或网络套接字方面的相同限制。 混合 Runbook 辅助角色仅受混合 Runbook 辅助角色本身所拥有的资源的限制。 此外，混合 Runbook 辅助角色不受 Azure 沙盒所具有的 180 分钟[公平共享](automation-runbook-execution.md#fair-share)时间限制。 若要了解有关 Azure 沙盒和混合 Runbook 辅助角色的服务限制的详细信息，请参阅作业[限制](../azure-subscription-service-limits.md#automation-limits)页。
 
@@ -99,11 +99,11 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 ### <a name="hybrid-worker-role"></a>混合辅助角色
 
-为了使混合 Runbook 辅助角色连接到 Azure 自动化并向其注册, 它必须有权访问此部分中所述的端口号和 Url。 此访问权限位于 Microsoft Monitoring Agent 连接到 Azure Monitor 日志[所需的端口和 url](../azure-monitor/platform/agent-windows.md)的顶部。
+要使混合 Runbook 辅助角色连接并注册到 Azure 自动化，必须让其有权访问此部分所述的端口号和 URL。 除了这些端口和 URL 以外，还需要有权访问 [Microsoft Monitoring Agent 连接到 Azure Monitor 日志时要使用的端口和 URL](../azure-monitor/platform/agent-windows.md)。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-如果使用代理服务器在代理与 Azure Automation 服务之间进行通信, 请确保适当的资源可访问。 混合 Runbook 辅助角色和自动化服务发出的请求超时为30秒。 3次尝试后, 请求将失败。 如果使用防火墙来限制对 Internet 的访问，则必须将防火墙配置为允许访问。 如果将 Log Analytics 网关用作代理，请确保为混合辅助角色配置 Log Analytics 网关。 有关如何执行此操作的说明，请参阅[为自动化混合辅助角色配置 Log Analytics 网关](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)。
+如果使用代理服务器在代理与 Azure 自动化服务之间通信，请确保能够访问相应的资源。 混合 Runbook 辅助角色和自动化服务发出的请求的超时为 30 秒。 尝试 3 次后，请求将失败。 如果使用防火墙来限制对 Internet 的访问，则必须将防火墙配置为允许访问。 如果将 Log Analytics 网关用作代理，请确保为混合辅助角色配置 Log Analytics 网关。 有关如何执行此操作的说明，请参阅[为自动化混合辅助角色配置 Log Analytics 网关](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)。
 
 混合 Runbook 辅助角色与自动化通信时需要以下端口和 URL：
 

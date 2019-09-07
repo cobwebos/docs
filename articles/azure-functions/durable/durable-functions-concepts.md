@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 828bcaa8c93454ba845c30c03c76144310891123
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe3000181ed02e3640e7af48fa492f4a7db55191
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098249"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734574"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions 模式和技术概念 (Azure Functions)
 
@@ -37,6 +37,25 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure Web
 
 可以使用 Durable Functions 精简实现函数链模式，如以下示例所示：
 
+#### <a name="precompiled-c"></a>预编译 C#
+
+```csharp
+public static async Task<object> Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    try
+    {
+        var x = await context.CallActivityAsync<object>("F1");
+        var y = await context.CallActivityAsync<object>("F2", x);
+        var z = await context.CallActivityAsync<object>("F3", y);
+        return  await context.CallActivityAsync<object>("F4", z);
+    }
+    catch (Exception)
+    {
+        // Error handling or compensation goes here.
+    }
+}
+```
+
 #### <a name="c-script"></a>C# 脚本
 
 ```csharp
@@ -57,7 +76,7 @@ public static async Task<object> Run(DurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> 使用 C# 编写预编译的持久函数，与使用本示例中所示的 C# 脚本编写预编译的持久函数存在细微的差别。 在 C# 预编译函数中，必须使用相应的属性来修饰持久参数。 例如，使用 `[OrchestrationTrigger]` 属性修饰 `DurableOrchestrationContext` 参数。 在 C# 预编译持久函数中，如果未正确修饰参数，则运行时无法将变量注入该函数，并且会出现错误。 有关更多示例，请参阅 [GitHub 上的 azure-functions-durable-extension 示例](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples)。
+> 在中C#编写预编译的持久性函数与编写脚本中C#的预编译持久性函数之间存在细微的差异。 在 C# 预编译函数中，必须使用相应的属性来修饰持久参数。 例如，使用 `[OrchestrationTrigger]` 属性修饰 `DurableOrchestrationContext` 参数。 在 C# 预编译持久函数中，如果未正确修饰参数，则运行时无法将变量注入该函数，并且会出现错误。 有关更多示例，请参阅 [GitHub 上的 azure-functions-durable-extension 示例](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples)。
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
@@ -88,6 +107,29 @@ module.exports = df.orchestrator(function*(context) {
 对于一般函数，可通过使函数向某个队列发送多条消息来完成扇出。 扇入回来的难度要大得多。 若要扇入，可在一般函数中编写代码，以跟踪队列触发的函数何时结束，然后存储函数输出。 
 
 Durable Functions 扩展使用相对简单的代码处理此模式：
+
+#### <a name="precompiled-c"></a>预编译 C#
+
+```csharp
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    var parallelTasks = new List<Task<int>>();
+
+    // Get a list of N work items to process in parallel.
+    object[] workBatch = await context.CallActivityAsync<object[]>("F1");
+    for (int i = 0; i < workBatch.Length; i++)
+    {
+        Task<int> task = context.CallActivityAsync<int>("F2", workBatch[i]);
+        parallelTasks.Add(task);
+    }
+
+    await Task.WhenAll(parallelTasks);
+
+    // Aggregate all N outputs and send the result to F3.
+    int sum = parallelTasks.Sum(t => t.Result);
+    await context.CallActivityAsync("F3", sum);
+}
+```
 
 #### <a name="c-script"></a>C# 脚本
 
@@ -177,7 +219,29 @@ Durable Functions 扩展提供内置的 Webhook 用于管理长时间运行的�
 
 以下示例演示如何使用 HTTP API 模式：
 
-#### <a name="c"></a>C#
+#### <a name="precompiled-c"></a>预编译 C#
+
+```csharp
+// An HTTP-triggered function starts a new orchestrator function instance.
+[FunctionName("StartNewOrchestration")]
+public static async Task<HttpResponseMessage> Run(
+    [HttpTrigger] HttpRequestMessage req,
+    [OrchestrationClient] DurableOrchestrationClient starter,
+    string functionName,
+    ILogger log)
+{
+    // The function name comes from the request URL.
+    // The function input comes from the request content.
+    dynamic eventData = await req.Content.ReadAsAsync<object>();
+    string instanceId = await starter.StartNewAsync(functionName, eventData);
+
+    log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+
+    return starter.CreateCheckStatusResponse(req, instanceId);
+}
+```
+
+#### <a name="c-script"></a>C# 脚本
 
 ```csharp
 // An HTTP-triggered function starts a new orchestrator function instance.
@@ -233,6 +297,35 @@ module.exports = async function (context, req) {
 只需编写少量的代码行，即可使用 Durable Functions 创建多个监视器来观察任意终结点。 满足某个条件时，监视器可以结束执行；或者，[DurableOrchestrationClient](durable-functions-instance-management.md) 可以终止监视器。 可以根据特定的条件（例如指数退避）更改监视器的 `wait` 间隔。 
 
 以下代码实现一个基本的监视器：
+
+#### <a name="precompiled-c"></a>预编译 C#
+
+```csharp
+[FunctionName("Orchestrator")]
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    int jobId = context.GetInput<int>();
+    int pollingInterval = GetPollingInterval();
+    DateTime expiryTime = GetExpiryTime();
+
+    while (context.CurrentUtcDateTime < expiryTime)
+    {
+        var jobStatus = await context.CallActivityAsync<string>("GetJobStatus", jobId);
+        if (jobStatus == "Completed")
+        {
+            // Perform an action when a condition is met.
+            await context.CallActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration sleeps until this time.
+        var nextCheck = context.CurrentUtcDateTime.AddSeconds(pollingInterval);
+        await context.CreateTimer(nextCheck, CancellationToken.None);
+    }
+
+    // Perform more work here, or let the orchestration end.
+}
+```
 
 #### <a name="c-script"></a>C# 脚本
 
@@ -296,13 +389,39 @@ module.exports = df.orchestrator(function*(context) {
 
 许多自动化过程涉及到某种人机交互。 自动化过程中涉及的人机交互非常棘手，因为人的可用性和响应能力不如云服务那样高。 自动化过程可以使用超时和补偿逻辑来实现此目的。
 
-审批过程就是涉及到人机交互的业务过程的一个例子。 对于超过特定金额的支出报表, 可能需要经理的批准。 如果经理未在 72 小时内审批该开支报表（经理可能正在度假），则会启动上报过程，让其他某人（可能是经理的经理）审批。
+审批过程就是涉及到人机交互的业务过程的一个例子。 对于超过特定金额的支出报表，可能需要经理的批准。 如果经理未在 72 小时内审批该开支报表（经理可能正在度假），则会启动上报过程，让其他某人（可能是经理的经理）审批。
 
 ![人机交互模式的示意图](./media/durable-functions-concepts/approval.png)
 
 在此示例中，可以使用业务流程协调程序函数实现该模式。 业务流程协调程序使用[持久计时器](durable-functions-timers.md)请求审批。 如果发生超时，业务流程协调程序会将事务上报。 业务流程协调程序等待发生某个[外部事件](durable-functions-external-events.md)，例如，人机交互生成的通知。
 
 这些示例创建一个审批过程来演示人机交互模式：
+
+#### <a name="precompiled-c"></a>预编译 C#
+
+```csharp
+[FunctionName("Orchestrator")]
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    await context.CallActivityAsync("RequestApproval");
+    using (var timeoutCts = new CancellationTokenSource())
+    {
+        DateTime dueTime = context.CurrentUtcDateTime.AddHours(72);
+        Task durableTimeout = context.CreateTimer(dueTime, timeoutCts.Token);
+
+        Task<bool> approvalEvent = context.WaitForExternalEvent<bool>("ApprovalEvent");
+        if (approvalEvent == await Task.WhenAny(approvalEvent, durableTimeout))
+        {
+            timeoutCts.Cancel();
+            await context.CallActivityAsync("ProcessApproval", approvalEvent.Result);
+        }
+        else
+        {
+            await context.CallActivityAsync("Escalate");
+        }
+    }
+}
+```
 
 #### <a name="c-script"></a>C# 脚本
 
@@ -355,6 +474,20 @@ module.exports = df.orchestrator(function*(context) {
 
 外部客户端可以使用[内置 HTTP API](durable-functions-http-api.md#raise-event) 或通过另一个函数使用 [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) API 将事件通知传递给正在等待的业务流程协调程序函数：
 
+#### <a name="precompiled-c"></a>预编译 C#
+
+```csharp
+public static async Task Run(
+  [HttpTrigger] string instanceId,
+  [OrchestrationClient] DurableOrchestrationClient client)
+{
+    bool isApproved = true;
+    await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
+}
+```
+
+#### <a name="c-script"></a>C# 脚本
+
 ```csharp
 public static async Task Run(string instanceId, DurableOrchestrationClient client)
 {
@@ -362,6 +495,8 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
     await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
 }
 ```
+
+#### <a name="javascript"></a>Javascript
 
 ```javascript
 const df = require("durable-functions");
@@ -373,7 +508,7 @@ module.exports = async function (context) {
 };
 ```
 
-### <a name="aggregator"></a>模式 #6:聚合器（预览版）
+### <a name="aggregator"></a>模式 #6：聚合器（预览版）
 
 第六种模式是关于将一段时间内的事件数据聚合到单个可寻址的实体中。 在此模式下，聚合的数据可能来自多个源，可能分批传送，也可能分散在很长一段时间内。 聚合器可能需要在事件数据到达时对其执行操作，外部客户端可能需要查询聚合的数据。
 
@@ -471,17 +606,17 @@ Durable Functions 以透明方式使用事件溯源。 在幕后，业务流程�
 
 ## <a name="monitoring-and-diagnostics"></a>监视和诊断
 
-如果使用 Azure 应用程序 Insights 检测密钥设置 function app, 则 Durable Functions 扩展会自动将结构化跟踪数据发送到[Application Insights](../functions-monitoring.md) 。 您可以使用跟踪数据来监视业务流程的操作和进度。
+如果使用 Azure 应用程序 Insights 检测密钥设置 function app，则 Durable Functions 扩展会自动将结构化跟踪数据发送到[Application Insights](../functions-monitoring.md) 。 您可以使用跟踪数据来监视业务流程的操作和进度。
 
-下面是使用[Application Insights Analytics](../../application-insights/app-insights-analytics.md)时, Durable Functions 跟踪事件在 Application Insights 门户中的外观:
+下面是使用[Application Insights Analytics](../../application-insights/app-insights-analytics.md)时，Durable Functions 跟踪事件在 Application Insights 门户中的外观：
 
 ![Application Insights 查询结果](./media/durable-functions-concepts/app-insights-1.png)
 
-您可以在每个日志条目的`customDimensions`字段中找到有用的结构化数据。 下面是一个完全展开的条目的示例:
+您可以在每个日志条目的`customDimensions`字段中找到有用的结构化数据。 下面是一个完全展开的条目的示例：
 
 ![Application Insights 查询中的 customDimensions 字段](./media/durable-functions-concepts/app-insights-2.png)
 
-由于 Durable Task Framework 调度程序的重播行为，用户应该会看到重播操作的冗余日志项目。 冗余日志条目有助于了解核心引擎的重播行为。 [诊断](durable-functions-diagnostics.md)文章显示了筛选出重播日志的示例查询, 以便你可以仅查看 "实时" 日志。
+由于 Durable Task Framework 调度程序的重播行为，用户应该会看到重播操作的冗余日志项目。 冗余日志条目有助于了解核心引擎的重播行为。 [诊断](durable-functions-diagnostics.md)文章显示了筛选出重播日志的示例查询，以便你可以仅查看 "实时" 日志。
 
 ## <a name="storage-and-scalability"></a>存储和可伸缩性
 

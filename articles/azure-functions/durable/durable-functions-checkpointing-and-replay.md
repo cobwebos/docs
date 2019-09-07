@@ -3,18 +3,17 @@ title: Durable Functions 中的检查点和重播 - Azure
 description: 了解 Azure Functions 的 Durable Functions 扩展中的检查点和重播工作原理。
 services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 5d0527de556c25a1d369d7b22c3f62579bc508f0
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241059"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735263"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions 中的检查点和重播 (Azure Functions)
 
@@ -128,17 +127,9 @@ module.exports = df.orchestrator(function*(context) {
 
   如果业务流程协调程序代码需要获取当前日期/时间，应使用可安全重播的 [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) 或 `currentUtcDateTime` (JavaScript) API。
 
-  如果业务流程协调程序代码需生成随机 GUID，则应使用可安全重播的 [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET) API，或将 GUID 生成委托给活动函数 (JavaScript)，如下例所示：
+  如果 orchestrator 代码需要生成随机 GUID，则它应使用[NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) （.net）或`newGuid` （JavaScript） API，该 API 可安全重播。
 
-  ```javascript
-  const uuid = require("uuid/v1");
-
-  module.exports = async function(context) {
-    return uuid();
-  }
-  ```
-
-  不确定性的操作必须在活动函数中执行。 这包括与其他输入或输出绑定之间的任何交互。 这可以确保在完成首次执行之后立即生成所有不确定性值并将其保存到执行历史记录。 然后，后续执行会自动使用保存的值。
+   除了这些特殊情况外，必须在活动函数中完成非确定性运算。 这包括与其他输入或输出绑定之间的任何交互。 这可以确保在完成首次执行之后立即生成所有不确定性值并将其保存到执行历史记录。 然后，后续执行会自动使用保存的值。
 
 * 业务流程协调程序代码应是**非阻塞性的**。 例如，这就意味着没有 I/O 并且未调用 `Thread.Sleep` (.NET) 或等效 API。
 
@@ -165,7 +156,7 @@ module.exports = df.orchestrator(function*(context) {
 
 可在业务流程协调程序函数中安全等待的任务有时称为“持久任务”。 这些任务由 Durable Task Framework 创建和管理。 示例包括 `CallActivityAsync`、`WaitForExternalEvent` 和 `CreateTimer` 返回的任务。
 
-使用 `TaskCompletionSource` 对象的列表在内部管理这些持久任务。 在重播期间，这些任务在业务流程协调程序代码执行过程中予以创建，并在调度程序枚举相应历史记录事件时完成。 在重播所有历史记录之前，所有这些操作会通过单个线程以同步方式完成。 针对在历史记录重播结束时尚未完成的任何持久任务，将会执行相应的操作。例如，可能会将一条消息排队，以调用活动函数。
+使用 `TaskCompletionSource` 对象的列表在内部管理这些持久任务。 在重播期间，这些任务在业务流程协调程序代码执行过程中予以创建，并在调度程序枚举相应历史记录事件时完成。 在重播所有历史记录之前，所有这些操作会通过单个线程以同步方式完成。 在历史记录重播结束时未完成的任何持久任务都将执行相应的操作。例如，可能会将一条消息排队，以调用活动函数。
 
 借助此处所述的执行行为，我们应该可以理解业务流程协调程序函数代码为何不得将非持久任务置于 `await` 状态：调度程序线程无法等待该任务完成，并且该任务发出的任何回调可能会破坏业务流程协调程序函数的跟踪状态。 一些运行时检查可以尽量防止发生这种情况。
 

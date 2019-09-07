@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: ab633ca47f684688019b1313de61571252760a20
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f101a8885d9bf67e8bd589d7cf932b0d35cdfe32
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967747"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744503"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 
@@ -56,7 +56,7 @@ ms.locfileid: "68967747"
 ##  <a name="combine-resources-in-azure-resource-groups"></a>在 Azure 资源组中合并资源
 当今 Azure 中的典型应用程序包含多个资源，例如，托管在云服务、AKS 群集中或 Service Fabric 中的 VM 和应用服务或微服务。 这些应用程序经常利用事件中心、存储、SQL 和服务总线等依赖项。
 
-- 在 Azure 资源组中合并资源可以全面洞察构成不同应用程序的所有资源。 使用[用于资源组的 Azure Monitor](../azure-monitor/insights/resource-group-insights.md) 可以方便地跟踪整个全堆栈应用程序的运行状况和性能，并可以出于任何调查或调试目的深入到相关组件。
+- 合并 Azure 资源组中的资源，以全面了解构成不同应用程序的所有资源。 使用[用于资源组的 Azure Monitor](../azure-monitor/insights/resource-group-insights.md) 可以方便地跟踪整个全堆栈应用程序的运行状况和性能，并可以出于任何调查或调试目的深入到相关组件。
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>通过持续部署确保质量
 使用持续集成/持续部署可以根据自动测试的结果，将代码更改自动集成和部署到应用程序。 它简化了部署过程，并确保任何更改在转移到生产环境之前具有可靠的质量。

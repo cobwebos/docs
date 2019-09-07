@@ -1,18 +1,18 @@
 ---
 title: 用于 Go 的 Azure HDInsight SDK
-description: 用于 Go 的 Azure HDInsight SDK 参考
+description: 使用 Azure HDInsight SDK for 中转和 Apache Hadoop 群集的参考资料
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/8/2019
 ms.author: tyfox
 ms.custom: seodec18
-ms.openlocfilehash: 299e99d291e593ec01d2951c62541a7666565528
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: fccca42a7185f430c679e0128649575620bdce0f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977050"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733153"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>用于 Go 的 HDInsight SDK（预览版）
 
@@ -70,7 +70,7 @@ az account set -s <name or ID of subscription>
 ```
 
 > [!IMPORTANT]  
-> 如果尚未通过其他功能注册 HDInsight 资源提供程序 (例如通过 Azure 门户创建 HDInsight 群集), 则需要执行此操作一次, 然后才能进行身份验证。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令来完成此操作：
+> 如果尚未通过其他功能注册 HDInsight 资源提供程序（例如通过 Azure 门户创建 HDInsight 群集），则需要执行此操作一次，然后才能进行身份验证。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令来完成此操作：
 >```azurecli-interactive
 >az provider register --namespace Microsoft.HDInsight
 >```

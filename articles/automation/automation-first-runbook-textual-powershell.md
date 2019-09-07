@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/27/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9718185b41795da6d95486972441ee20bc250316
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ae9daaf797d3d82200ee094b63bad1f5c1ff68cc
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850701"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743821"
 ---
 # <a name="my-first-powershell-runbook"></a>我的第一个 PowerShell Runbook
 
@@ -112,8 +112,21 @@ ms.locfileid: "68850701"
    Disable-AzureRmContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
--ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+
+   # Wrap authentication in retry logic for transient network failures
+   $logonAttempt = 0
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+       $LogonAttempt++
+       # Logging in to Azure...
+       $connectionResult =    Connect-AzureRmAccount `
+                                  -ServicePrincipal `
+                                  -Tenant $connection.TenantID `
+                                  -ApplicationID $connection.ApplicationID `
+                                  -CertificateThumbprint $connection.CertificateThumbprint
+
+       Start-Sleep -Seconds 30
+   }
 
    $AzureContext = Select-AzureRmSubscription -SubscriptionId $connection.SubscriptionID
 
@@ -129,8 +142,19 @@ ms.locfileid: "68850701"
    Disable-AzureRmContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
-   -ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+       $LogonAttempt++
+       # Logging in to Azure...
+       $connectionResult =    Connect-AzureRmAccount `
+                                  -ServicePrincipal `
+                                  -Tenant $connection.TenantID `
+                                  -ApplicationID $connection.ApplicationID `
+                                  -CertificateThumbprint $connection.CertificateThumbprint
+
+       Start-Sleep -Seconds 30
+   }
    ```
 
    > [!IMPORTANT]
@@ -152,8 +176,19 @@ ms.locfileid: "68850701"
    Disable-AzureRmContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
-   -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+       $LogonAttempt++
+       # Logging in to Azure...
+       $connectionResult =    Connect-AzureRmAccount `
+                                  -ServicePrincipal `
+                                  -Tenant $connection.TenantID `
+                                  -ApplicationID $connection.ApplicationID `
+                                  -CertificateThumbprint $connection.CertificateThumbprint
+
+       Start-Sleep -Seconds 30
+   }
+
    Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
    ```
 
@@ -175,8 +210,19 @@ Runbook 当前会启动你在 Runbook 中硬编码的虚拟机，但如果在启
    Disable-AzureRmContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
-   -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+       $LogonAttempt++
+       # Logging in to Azure...
+       $connectionResult =    Connect-AzureRmAccount `
+                                  -ServicePrincipal `
+                                  -Tenant $connection.TenantID `
+                                  -ApplicationID $connection.ApplicationID `
+                                  -CertificateThumbprint $connection.CertificateThumbprint
+
+       Start-Sleep -Seconds 30
+   }
+
    Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
    ```
 
@@ -198,7 +244,7 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 PowerShell 的详细信息, 包括语言参考和学习模块, 请参阅[Powershell 文档](/powershell/scripting/overview)。
+* 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅 [PowerShell 文档](/powershell/scripting/overview)。
 * 若要开始使用图形 Runbook，请参阅 [我的第一个图形 Runbook](automation-first-runbook-graphical.md)
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
 * 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)

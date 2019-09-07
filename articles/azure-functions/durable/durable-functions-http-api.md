@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 11ae418ddbe007c6fd5aa44ef22ed7fddec9c702
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b34fd30b8e43e674b0b346672366d680d99ebd5c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087267"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734267"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions 中的 HTTP API (Azure Functions)
 
@@ -33,7 +33,11 @@ Durable Task 扩展公开了一组 HTTP API，可用于执行以下任务：
 
 [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) 类公开了一个 [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_) API，可用于生成 HTTP 响应负载，该负载中包含指向受支持的所有操作的链接。 下面的 HTTP 触发型函数示例演示了如何使用此 API：
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>预编译 C#
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
+
+### <a name="c-script"></a>C# 脚本
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
 
@@ -374,7 +378,7 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 | 字段                  | 数据类型 | 描述 |
 |------------------------|-----------|-------------|
-| **`instancesDeleted`** | 整数   | 删除的实例数。 对于单个实例，此值应始终为 `1`。 |
+| **`instancesDeleted`** | integer   | 删除的实例数。 对于单个实例，此值应始终为 `1`。 |
 
 以下是响应负载的示例（为提高可读性设置了格式）：
 
@@ -436,7 +440,7 @@ DELETE /runtime/webhooks/durabletask/instances
 
 | 字段                   | 数据类型 | 描述 |
 |-------------------------|-----------|-------------|
-| **`instancesDeleted`**  | 整数   | 删除的实例数。 |
+| **`instancesDeleted`**  | integer   | 删除的实例数。 |
 
 以下是响应负载的示例（为提高可读性设置了格式）：
 

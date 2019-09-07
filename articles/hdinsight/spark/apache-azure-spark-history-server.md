@@ -1,19 +1,19 @@
 ---
-title: 使用扩展的 Spark History Server 调试和诊断 Spark 应用程序 - Azure HDInsight
+title: 用于调试 Spark 应用程序的扩展 Spark 历史记录服务器-Azure HDInsight
 description: 使用扩展的 Spark History Server 调试和诊断 Spark 应用程序 - Azure HDInsight。
 ms.service: hdinsight
-author: jejiang
-ms.author: jejiang
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 641fc41c25746a67b4b1fe3d5316df17f14f113c
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.date: 09/04/2019
+ms.openlocfilehash: 9ba03f6b1e658e08c3d07d7ccb5e2a99e96fe69c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377261"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736456"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark History Server 调试和诊断 Apache Spark 应用程序
 
@@ -300,7 +300,7 @@ Spark History Server Web UI 如下所示：
 
 **在 Azure 门户中使用 bash 文件**
 
-1. 启动 [Azure 门户](https://ms.portal.azure.com)，并选择自己的群集。
+1. 启动[Azure 门户](https://ms.portal.azure.com)，并选择群集。
 2. 依次单击“脚本操作”、“提交新项”。 填写“提交脚本操作”表单，然后单击“创建”按钮。
     
     + **脚本类型**：选择“自定义”。
@@ -319,7 +319,7 @@ Spark History Server Web UI 如下所示：
 
 ## <a name="known-issues"></a>已知问题
 
-1.  目前, 它仅适用于 Spark 2.3 和2.4 群集。
+1.  目前，它仅适用于 Spark 2.3 和2.4 群集。
 
 2.  使用 RDD 的输入/输出数据不会显示在数据选项卡中。
 

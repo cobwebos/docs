@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a04221a61ae057185ddd8ad37bbba2d387ee5eda
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 788693698e75a24269e29c54e03af35c1853f1f6
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097987"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735206"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的永久业务流程 (Azure Functions)
 
@@ -77,7 +77,7 @@ module.exports = df.orchestrator(function*(context) {
 使用[StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)方法启动永久业务流程。 这与触发其他任何业务流程函数并无区别。  
 
 > [!NOTE]
-> 如果需要确保单独的永久业务流程正在运行, 则在启动业务流程时维护相同的`id`实例是非常重要的。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
+> 如果需要确保单独的永久业务流程正在运行，则在启动业务流程时维护相同的`id`实例是非常重要的。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]

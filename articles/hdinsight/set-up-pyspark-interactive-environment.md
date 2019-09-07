@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 工具 - 为 Visual Studio Code 设置 PySpark 交互式环境
+title: Azure HDInsight 工具-用于 Visual Studio Code 的 PySpark 交互环境
 description: 了解如何使用用于 Visual Studio Code 的 Azure HDInsight 工具来创建、提交查询和脚本。
 keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,交互式 Hive,交互式查询
 ms.service: hdinsight
@@ -8,18 +8,18 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 0e993577bda59ae4fda51d17dc175ec0b0fcd4f5
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 54adb2ec61d77ea429f7da1b88aa9347c1addfe0
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137122"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736417"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>为 Visual Studio Code 设置 PySpark 交互式环境
 
 以下步骤显示如何在 VS Code 中设置 PySpark 交互环境。
 
-我们使用 python/pip 命令在 Home 路径中生成虚拟环境  。 如果要使用其他版本，则需要手动更改默认版的 python/pip 命令  。 有关详细信息，请参阅[更新替代项](https://linux.die.net/man/8/update-alternatives)。
+我们使用 python/pip 命令在 Home 路径中生成虚拟环境。 如果要使用其他版本，则需要手动更改默认版的 python/pip 命令。 有关详细信息，请参阅[更新替代项](https://linux.die.net/man/8/update-alternatives)。
 
 1. 安装 [Python](https://www.python.org/downloads/) 和 [pip](https://pip.pypa.io/en/stable/installing/).
    
@@ -33,7 +33,7 @@ ms.locfileid: "67137122"
      > 建议手动而不是使用 MacOS 默认版本安装 Python。
 
 
-2. 通过运行以下命令，安装 virtualenv  。
+2. 通过运行以下命令，安装 virtualenv。
    
    ```
    pip install virtualenv
@@ -51,7 +51,7 @@ ms.locfileid: "67137122"
    sudo apt-get install python-dev
    ```
 
-4. 重启 VS Code 并回到运行以下命令的脚本编辑器：“HDInsight:  PySpark Interactive”。
+4. 重启 VS Code 并回到运行以下命令的脚本编辑器：“HDInsight:PySpark Interactive”。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
 title: 排查 HDInsight 群集上的作业缓慢或失败作业-Azure HDInsight
-description: 诊断和排查 HDInsight 群集速度慢或故障问题。
+description: 诊断并解决 Azure HDInsight 群集上的作业速度缓慢或失败的问题。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b7afeee554a1faee9507f0a891803024f3bc11e4
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8c50068914c1519a5522372310bd0f5863a94b39
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573615"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735788"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或作业失败问题
 
@@ -95,7 +95,7 @@ HDInsight 依赖于多个 Azure 服务。 它在 Azure HDInsight 中运行虚拟
 
 #### <a name="check-the-release-version"></a>检查发行版本
 
-将群集版本与最新的 HDInsight 发行版进行比较。 每个 HDInsight 发行版包含改进项目，例如新的应用程序、功能、修补程序和 bug 修复。 影响群集的问题可能已在最新的发行版本中得到解决。 如果可能, 请使用最新版本的 HDInsight 和相关库 (如 Apache HBase、Apache Spark 等) 重新运行群集。
+将群集版本与最新的 HDInsight 发行版进行比较。 每个 HDInsight 发行版包含改进项目，例如新的应用程序、功能、修补程序和 bug 修复。 影响群集的问题可能已在最新的发行版本中得到解决。 如果可能，请使用最新版本的 HDInsight 和相关库（如 Apache HBase、Apache Spark 等）重新运行群集。
 
 #### <a name="restart-your-cluster-services"></a>重启群集服务
 
@@ -119,7 +119,7 @@ Apache Hive、Apache Pig 或 Apache Sqoop 作业失败的常见场合之一是 [
 
 #### <a name="badgateway-502-status-code"></a>BadGateway（502 状态代码）
 
-此代码是来自网关节点的一般消息, 是最常见的失败状态代码。 发生此故障的可能原因之一是活动头节点上的 WebHCat 服务已关闭。 若要检查是否存在这种情况，请使用以下 CURL 命令：
+此代码是来自网关节点的一般消息，是最常见的失败状态代码。 发生此故障的可能原因之一是活动头节点上的 WebHCat 服务已关闭。 若要检查是否存在这种情况，请使用以下 CURL 命令：
 
 ```bash
 curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
@@ -255,7 +255,7 @@ HDInsight 群集中预配置了相关服务（例如 Hadoop、Hive、HBase 等�
 1. 使用与有故障群集相同的配置创建新的测试群集。
 2. 将第一个作业步骤提交到测试群集。
 3. 当此步骤完成处理时，请在步骤日志文件中查看错误。 连接到测试群集的主节点并在其中查看日志文件。 步骤日志文件只会在该步骤运行了一段时间、已完成或失败之后才显示。
-4. 如果第一个步骤成功，请运行下一个步骤。 如果出现错误，请在日志文件中调查错误。 如果代码中有错误, 请进行更正并重新运行该步骤。
+4. 如果第一个步骤成功，请运行下一个步骤。 如果出现错误，请在日志文件中调查错误。 如果代码中有错误，请进行更正并重新运行该步骤。
 5. 继续运行，直到所有步骤都可完成运行且不出错。
 6. 完成调试测试群集后，请将其删除。
 

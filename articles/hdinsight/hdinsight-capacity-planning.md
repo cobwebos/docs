@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight 中的群集容量规划
-description: 如何指定 HDInsight 群集的容量和性能。
+description: 确定 Azure HDInsight 群集容量和性能规划的关键问题。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 608d097f1ebad9e4e1092c7ec54a573ccb58ad81
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207155"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734662"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -82,7 +82,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 根据群集类型，增加工作节点数目可以添加更多的计算容量（例如更多的核心），但同时也可能会增大整个群集为所处理数据的内存中存储提供支持所需的内存总量。 在 VM 大小和类型的选择上，适当的群集规模通常是使用模拟工作负荷或 canary 查询凭经验选择出来的。
 
-可以扩展群集来满足峰值负载需求，然后在不再需要这些额外的节点时缩减群集。 自动[缩放功能](hdinsight-autoscale-clusters.md)可让你根据预先确定的指标和计时自动缩放群集。 有关手动缩放群集的详细信息, 请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)。
+可以扩展群集来满足峰值负载需求，然后在不再需要这些额外的节点时缩减群集。 自动[缩放功能](hdinsight-autoscale-clusters.md)可让你根据预先确定的指标和计时自动缩放群集。 有关手动缩放群集的详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)。
 
 ### <a name="cluster-lifecycle"></a>群集生命周期
 
@@ -94,7 +94,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 ### <a name="isolate-cluster-job-errors"></a>查明群集作业错误
 
-有时，多节点群集上多个映射和化简组件的并行执行可能导致出错。 若要解决此问题, 请尝试通过在单个辅助角色节点上运行并发多个作业来进行分布式测试, 然后展开此方法以在包含多个节点的群集上并发运行多个作业。 若要在 Azure 中创建单节点 HDInsight 群集, 请在门户中设置新群集时, 使用 "*自定义 (大小、设置、应用)* " 选项, 并将值1用于 "**群集大小**" 部分中的 "*工作节点数*"。
+有时，多节点群集上多个映射和化简组件的并行执行可能导致出错。 若要解决此问题，请尝试通过在单个辅助角色节点上运行并发多个作业来进行分布式测试，然后展开此方法以在包含多个节点的群集上并发运行多个作业。 若要在 Azure 中创建单节点 HDInsight 群集，请在门户中设置新群集时，使用 "*自定义（大小、设置、应用）* " 选项，并将值1用于 "**群集大小**" 部分中的 "*工作节点数*"。
 
 也可以在本地计算机上安装单节点开发环境，并在该环境中测试解决方案。 Hortonworks 为基于 Hadoop 的解决方案提供单节点本地开发环境，非常有利于初始开发、概念证明和测试。 有关详细信息，请参阅 [Hortonworks 沙盒](https://hortonworks.com/products/hortonworks-sandbox/)。
 

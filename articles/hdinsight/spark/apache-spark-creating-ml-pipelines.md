@@ -1,6 +1,6 @@
 ---
 title: 创建 Apache Spark 机器学习管道 - Azure HDInsight
-description: 使用 Apache Spark 机器学习库创建数据管道。
+description: 使用 Apache Spark 机器学习库在 Azure HDInsight 中创建数据管道。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 4ad68ef33eb469c7949c3f3efcd55d6765da4158
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 22583d82d8e422d8176fdb7cd70a98d229e8b6bb
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441868"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736385"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>创建 Apache Spark 机器学习管道
 

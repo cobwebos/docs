@@ -1,6 +1,6 @@
 ---
 title: 在 HDInsight 中将 Apache Hadoop Hive 与 Curl 配合使用 - Azure
-description: 了解如何使用 Curl 向 HDInsight 远程提交 Apache Pig 作业。
+description: 了解如何使用卷将 Apache Pig 作业远程提交到 Azure HDInsight。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 334d7b886aa4e2130a12f0c8a7919986fdac55d1
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: e1fbeb48acdfd9d09cad2616aed9793e2ff513ad
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508126"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736091"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>使用 REST 在 HDInsight 中通过 Apache Hadoop 运行 Apache Hive 查询
 
@@ -21,19 +21,19 @@ ms.locfileid: "67508126"
 
 了解如何使用 WebHCat REST API 通过 Apache Hadoop on Azure HDInsight 群集运行 Apache Hive 查询。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
-* 一个 REST 客户端。 本文档使用[Invoke-webrequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)在 Windows PowerShell 上和[Curl](https://curl.haxx.se/)上[Bash](https://docs.microsoft.com/windows/wsl/install-win10)。
+* 一个 REST 客户端。 本文档在 Windows PowerShell 上使用 [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)，在 [Bash](https://docs.microsoft.com/windows/wsl/install-win10) 上使用 [Curl](https://curl.haxx.se/)。
 
-* 如果使用 Bash，您还需要 jq，命令行的 JSON 处理器。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
+* 如果使用 Bash，还需要命令行 JSON 处理器 jq。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
-## <a name="base-uri-for-rest-api"></a>Rest API 的基本 URI
+## <a name="base-uri-for-rest-api"></a>用于 Rest API 的基 URI
 
-HDInsight 上的 REST API 基统一资源标识符 (URI) 是`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`，其中`CLUSTERNAME`是群集的名称。  URI 中的群集名称**区分大小写**。  虽然 URI 的完全限定的域名 (fqdn) 部分中的群集名称 (`CLUSTERNAME.azurehdinsight.net`) 是不区分大小写，在 URI 中的其他匹配项区分大小写。
+HDInsight 上 REST API 的基本统一资源标识符 (URI) 为 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`，其中 `CLUSTERNAME` 是群集的名称。  URI 中的群集名称**区分大小写**。  虽然 URI (`CLUSTERNAME.azurehdinsight.net`) 的完全限定域名 (FQDN) 部分中的群集名称不区分大小写，但 URI 中的其他部分是区分大小写的。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 使用 cURL 或者与 WebHCat 进行任何其他形式的 REST 通信时，必须提供 HDInsight 群集管理员的用户名和密码以对请求进行身份验证。 REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 为了有助于确保将凭据安全地发送到服务器，应始终使用安全 HTTP (HTTPS) 发出请求。
 
@@ -47,7 +47,7 @@ HDInsight 上的 REST API 基统一资源标识符 (URI) 是`https://CLUSTERNAME
 export password='PASSWORD'
 ```  
 
-**B.PowerShell**执行下面的代码并输入你的凭据在弹出窗口：
+**B.PowerShell** 执行以下代码并在弹出窗口中输入凭据：
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -181,7 +181,7 @@ $clusterName
 
     如果作业已完成，状态将是 **SUCCEEDED**。
 
-1. 在作业的状态更改为“SUCCEEDED”  后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `/example/rest`。 此地址将输出存储在群集默认存储中的 `example/curl` 目录。
+1. 在作业的状态更改为“SUCCEEDED”后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `/example/rest`。 此地址将输出存储在群集默认存储中的 `example/curl` 目录。
 
     可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 列出并下载这些文件。 有关将 Azure CLI 与 Azure 存储配合使用的详细信息，请参阅[将 Azure CLI 与 Azure 存储配合使用](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs)文档。
 

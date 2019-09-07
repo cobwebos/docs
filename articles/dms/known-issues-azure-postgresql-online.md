@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b1632ab943026578eb753014575ab53d151c33f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855018"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743541"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>联机迁移到 Azure DB for PostgreSQL 时存在的已知问题/迁移限制
 
@@ -89,6 +89,8 @@ ms.locfileid: "68855018"
 
     **解决方法**：暂时为表设置一个主键，以便迁移能够继续。 数据迁移完成后，可以删除该主键。
 
+- **限制**：迁移不支持 JSONB 数据类型。
+
 ## <a name="lob-limitations"></a>LOB 限制
 
 大型对象 (LOB) 列为可能增大的列。 对于 PostgreSQL，LOB 数据类型的示例包括 XML、JSON、IMAGE、TEXT 等。
@@ -103,7 +105,7 @@ ms.locfileid: "68855018"
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **解决方法**：如果 LOB 对象大于 32 KB, 请在[请求 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)时联系工程团队。
+    **解决方法**：如果 LOB 对象大于 32 KB，请在[请求 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)时联系工程团队。
 
 - **限制**：如果表中包含 LOB 列，切没有用于表的主键集，则数据可能不会为此表迁移。
 
@@ -153,27 +155,27 @@ COMMIT;
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>从 AWS RDS PostgreSQL 在线迁移时的限制
 
-尝试执行从 AWS RDS PostgreSQL 到 Azure Database for PostgreSQL 的联机迁移时, 可能会遇到以下错误。
+尝试执行从 AWS RDS PostgreSQL 到 Azure Database for PostgreSQL 的联机迁移时，可能会遇到以下错误。
 
 - **错误**：数据库“{database}”的表“{table}”中的列“{column}”的默认值在源服务器和目标服务器上有所不同。 在源服务器上，值为“{value on source}”，而在目标服务器上，值则为“{value on target}”。
 
-  **限制**：当源数据库和目标数据库的列架构上的默认值不同时, 将出现此错误。
-  **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息, 请参阅[Azure PostgreSQL online 迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
+  **限制**：当源数据库和目标数据库的列架构上的默认值不同时，将出现此错误。
+  **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅[Azure PostgreSQL online 迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
 
 - **错误**：目标数据库“{database}”包含“{number of tables}”个表，而源数据库“{database}”包含“{number of tables}”个表。 源数据库和目标数据库中表的数目应当匹配。
 
-  **限制**：当源数据库和目标数据库的表数不同时, 将出现此错误。
-  **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息, 请参阅[Azure PostgreSQL online 迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
+  **限制**：当源数据库和目标数据库的表数不同时，将出现此错误。
+  **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅[Azure PostgreSQL online 迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
 
 - **错误：** 源数据库 {database} 为空。
 
-  **限制**：当源数据库为空时, 会出现此错误。 这最有可能是因为已将错误的数据库选为源数据库。
-  **解决方法**：请仔细检查选定要迁移的源数据库, 然后重试。
+  **限制**：当源数据库为空时，会出现此错误。 这最有可能是因为已将错误的数据库选为源数据库。
+  **解决方法**：请仔细检查选定要迁移的源数据库，然后重试。
 
 - **错误：** 目标数据库 {database} 为空。 请迁移架构。
 
-  **限制**：如果目标数据库上没有架构, 则会出现此错误。 请确保目标上的架构与源上的架构匹配。
-  **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息, 请参阅[Azure PostgreSQL online 迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
+  **限制**：如果目标数据库上没有架构，则会出现此错误。 请确保目标上的架构与源上的架构匹配。
+  **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅[Azure PostgreSQL online 迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
 
 ## <a name="other-limitations"></a>其他限制
 
@@ -195,7 +197,7 @@ COMMIT;
     $$;
     ```
 
-- 不支持截断操作的更改处理 (连续同步)。 不支持已分区表的迁移。 检测到已分区表时，会出现以下情况：
+- 不支持截断操作的更改处理（连续同步）。 不支持已分区表的迁移。 检测到已分区表时，会出现以下情况：
 
   - 数据库将报告父表和子表列表。
   - 将创建关于目标的表，作为具有与所选表相同属性的常规表。

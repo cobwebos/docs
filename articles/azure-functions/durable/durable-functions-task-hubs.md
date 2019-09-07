@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 40144fb50a01a64bbd67d541562b4fe0842fbf10
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0a58251530467d788710b0584b15715a207e20f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097797"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734320"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
@@ -101,6 +101,8 @@ ms.locfileid: "70097797"
 
 这是一个预编译的 C# 示例，说明如何编写这样一个函数，该函数使用 [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) 来处理配置为应用设置的任务中心：
 
+### <a name="c"></a>C#
+
 ```csharp
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
@@ -119,8 +121,9 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-下面是 JavaScript 所需的配置。 `function.json` 文件中的任务中心属性通过应用设置进行设置：
+### <a name="javascript"></a>JavaScript
 
+`function.json` 文件中的任务中心属性通过应用设置进行设置：
 ```json
 {
     "name": "input",

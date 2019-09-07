@@ -1,6 +1,6 @@
 ---
 title: HDInsight 上的 Hadoop 服务所使用的端口 - Azure
-description: HDInsight 上运行的 Hadoop 服务使用的端口列表。
+description: 这会提供 Azure HDInsight 中运行 Apache Hadoop 服务使用的端口列表
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 34ab49378f9237a42bed869a6f6d67249b5238f9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 1fe66c1c171e779f48f4cc7c6767307feaafbd5f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464691"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733427"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上的 Apache Hadoop 服务所使用的端口
 
@@ -28,7 +28,7 @@ ms.locfileid: "68464691"
 > [!IMPORTANT]  
 > 如果尚未指定某个 Azure 虚拟网络作为 HDInsight 的配置选项，系统会自动创建一个 Azure 虚拟网络。 但无法将其他计算机（例如其他 Azure 虚拟机或客户端开发计算机）加入到此虚拟网络中。
 
-要将其他计算机添加到虚拟网络，必须先创建虚拟网络，然后在创建 HDInsight 群集时指定该网络。 有关详细信息, 请参阅为[HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
+要将其他计算机添加到虚拟网络，必须先创建虚拟网络，然后在创建 HDInsight 群集时指定该网络。 有关详细信息，请参阅为[HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
 
 ## <a name="public-ports"></a>公共端口
 
@@ -78,7 +78,7 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 | Ambari Web UI | 头节点 | 8080 | / | HTTP |
 | Ambari REST API | 头节点 | 8080 | /api/v1 | HTTP |
 
-示例:
+例如：
 
 * Ambari REST API：`curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
 
@@ -166,6 +166,6 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 | Livy 服务器 | 头节点 | 8998 | HTTP | &nbsp; | 用于运行语句、作业和应用程序的服务 |
 | Jupyter 笔记本 | 头节点 | 8001 | HTTP | &nbsp; | Jupyter notebook 网站 |
 
-示例:
+例如：
 
 * Livy：`curl -u admin -G "http://10.0.0.11:8998/"`。 在此示例中，`10.0.0.11` 是托管 Livy 服务的头节点的 IP 地址。

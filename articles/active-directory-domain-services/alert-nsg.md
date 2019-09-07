@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 域服务：网络安全组配置疑难解答 | Microsoft Docs
-description: Azure AD 域服务的 NSG 配置的疑难解答
+title: Azure Active Directory 域服务：排查网络安全组问题 |Microsoft Docs
+description: Azure AD 域服务的网络安全组配置疑难解答
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 08875ec23740eab7787c4a919566df521deba9a5
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 450ee5635b378ed7c4d4e4bedc1c4245f6b52d70
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473926"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "70743450"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>排查托管域的无效网络配置问题
 本文可帮助你排查和解决导致以下警报消息的与网络相关的配置错误：
@@ -28,14 +28,14 @@ ms.locfileid: "67473926"
 ## <a name="alert-aadds104-network-error"></a>警报 AADDS104：网络错误
 **警报消息：** Microsoft 程序无法访问此托管域的域控制器。*如果虚拟网络上配置的网络安全组 (NSG) 阻止访问托管域，则可能会发生这种情况。另一个可能的原因为，如果有用户定义的路由阻止来自 Internet 的传入流量。*
 
-无效的 NSG 配置是导致 Azure AD 域服务网络错误的最常见原因。 为虚拟网络配置的网络安全组 (NSG) 必须允许访问[特定端口](network-considerations.md#ports-required-for-azure-ad-domain-services)。 如果已阻止这些端口，Microsoft 将无法监视或更新托管域。 此外，Azure AD 目录与托管域之间的同步也会受到影响。 创建 NSG 时，请保持这些端口处于打开状态，以避免服务中断。
+无效的 NSG 配置是导致 Azure AD 域服务网络错误的最常见原因。 为虚拟网络配置的网络安全组 (NSG) 必须允许访问[特定端口](network-considerations.md#network-security-groups-and-required-ports)。 如果已阻止这些端口，Microsoft 将无法监视或更新托管域。 此外，Azure AD 目录与托管域之间的同步也会受到影响。 创建 NSG 时，请保持这些端口处于打开状态，以避免服务中断。
 
 ### <a name="checking-your-nsg-for-compliance"></a>检查 NSG 的合规性
 
 1. 在 Azure 门户中导航到[网络安全组](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)页面
 2. 从表中选择与启用了托管域的子网关联的 NSG。
-3. 在左侧面板的“设置”  下，单击“入站安全规则” 
-4. 就地检查规则并识别是哪些规则阻止了对[这些端口](network-considerations.md#ports-required-for-azure-ad-domain-services)的访问
+3. 在左侧面板的“设置”下，单击“入站安全规则”
+4. 就地检查规则并识别是哪些规则阻止了对[这些端口](network-considerations.md#network-security-groups-and-required-ports)的访问
 5. 通过删除规则、添加规则来编辑 NSG，或创建一个全新的 NSG，以确保合规性。 [添加规则](#add-a-rule-to-a-network-security-group-using-the-azure-portal)或创建新的合规 NSG 的步骤如下所示
 
 ## <a name="sample-nsg"></a>示例 NSG
@@ -51,8 +51,8 @@ ms.locfileid: "67473926"
 
 1. 在 Azure 门户中导航到[网络安全组](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)页面。
 2. 从表中选择与启用了托管域的子网关联的 NSG。
-3. 在左侧面板的“设置”下，单击“入站安全规则”或“出站安全规则”    。
-4. 通过单击“添加”并填写信息来创建规则  。 单击“确定”。 
+3. 在左侧面板的“设置”下，单击“入站安全规则”或“出站安全规则”。
+4. 通过单击“添加”并填写信息来创建规则。 单击 **“确定”** 。
 5. 通过在规则表中查找已创建的规则来验证规则。
 
 

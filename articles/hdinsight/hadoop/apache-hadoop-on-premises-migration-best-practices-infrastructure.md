@@ -1,19 +1,19 @@
 ---
-title: 将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
+title: 将本地 Apache Hadoop 群集迁移到 Azure HDInsight-基础结构
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的基础结构最佳做法。
 author: hrasheed-msft
 ms.reviewer: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0707f08d7c1447ff9aaae919cabfe1a668b25e3d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: dbd4cc987883c959ad9b13b60491dd2288bd5643
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404371"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735736"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
 
@@ -86,7 +86,7 @@ HDInsight 提供预先编写的脚本用于在 HDInsight 群集上安装以下�
 - 安装 Presto
 - 安装 Solr
 - 安装 Giraph
-- 预加载配置单元库
+- 预加载 Hive 库
 - 安装或升级 Mono
 
 > [!Note]  
@@ -160,7 +160,7 @@ Azure 虚拟网络可以筛选和路由网络流量，使 Azure 资源（例如 
 - 将 HDInsight 连接到 Azure 虚拟网络中的数据存储。
 - 直接访问无法通过 Internet 公开访问的 Hadoop 服务。 例如，Kafka API 或 HBase Java API。
 
-可将 HDInsight 添加到新的或现有的 Azure 虚拟网络。 如果将 HDInsight 添加到现有的虚拟网络，则需要更新现有的网络安全组和用户定义的路由，以便能够不受限制地访问 Azure 数据中心内的[多个 IP 地址](../hdinsight-management-ip-addresses.md)。 此外, 请确保不要阻止对 HDInsight 服务使用的[端口](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)的流量。
+可将 HDInsight 添加到新的或现有的 Azure 虚拟网络。 如果将 HDInsight 添加到现有的虚拟网络，则需要更新现有的网络安全组和用户定义的路由，以便能够不受限制地访问 Azure 数据中心内的[多个 IP 地址](../hdinsight-management-ip-addresses.md)。 此外，请确保不要阻止对 HDInsight 服务使用的[端口](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)的流量。
 
 > [!Note]  
 > HDInsight 目前不支持强制隧道。 强制隧道是一种子网设置，将出站 Internet 流量强制定向到设备以进行检查和记录。 在将 HDInsight 安装到子网之前删除强制隧道，或者为 HDInsight 创建新的子网。 此外，HDInsight 不支持限制出站网络连接。
@@ -172,7 +172,7 @@ Azure 虚拟网络可以筛选和路由网络流量，使 Azure 资源（例如 
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>使用 Azure 虚拟网络服务终结点安全地连接到 Azure 服务
 
-HDInsight 支持[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md), 使你能够安全地连接到 Azure Blob 存储、Azure Data Lake Storage Gen2、COSMOS DB 和 SQL 数据库。 为 Azure HDInsight 启用服务终结点后，流量将通过 Azure 数据中心内部的受保护路由传送。 在网络层实施这种增强的安全级别后，可将大数据存储帐户锁定到其指定的虚拟网络 (VNET)，同时仍可以顺畅地使用 HDInsight 群集来访问和处理这些数据。
+HDInsight 支持[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)，使你能够安全地连接到 Azure Blob 存储、Azure Data Lake Storage Gen2、COSMOS DB 和 SQL 数据库。 为 Azure HDInsight 启用服务终结点后，流量将通过 Azure 数据中心内部的受保护路由传送。 在网络层实施这种增强的安全级别后，可将大数据存储帐户锁定到其指定的虚拟网络 (VNET)，同时仍可以顺畅地使用 HDInsight 群集来访问和处理这些数据。
 
 有关详细信息，请参阅以下文章：
 
