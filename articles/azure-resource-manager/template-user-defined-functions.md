@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 71c166b9c596c3c8628f943ae5c7dbebd9c2d51c
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 227ecb57b125264e7d0eba56e634966d677e0f58
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384133"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387286"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的用户定义函数
 
@@ -73,7 +73,7 @@ ms.locfileid: "70384133"
 * 该函数不能访问变量。
 * 函数仅可使用函数中定义的参数。 在用户定义函数中使用[parameters](resource-group-template-functions-deployment.md#parameters)函数时，将限制为该函数的参数。
 * 该函数不能调用其他用户定义的函数。
-* 函数不能使用[reference](resource-group-template-functions-resource.md#reference)或[list](resource-group-template-functions-resource.md#list)函数。
+* 函数不能使用[reference](resource-group-template-functions-resource.md#reference)函数或任何[列表](resource-group-template-functions-resource.md#list)函数。
 * 该函数的参数不能具有默认值。
 
 
