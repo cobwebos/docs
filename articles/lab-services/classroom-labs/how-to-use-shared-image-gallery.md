@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 5ce0a81f6c9c886fcbe9186dd7363c38170ca580
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 65cc2d9ac2b96822f2c1b740f3180ba1d9eaf98c
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382953"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389974"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 实验室服务中使用共享映像库
 本文介绍了教师/实验室管理员如何保存模板虚拟机映像，使其可供其他人重复使用。 这些映像保存在 Azure[共享映像库](../../virtual-machines/windows/shared-image-galleries.md)中。 作为第一步，实验室管理员将现有的共享映像库附加到实验室帐户。 附加共享映像库后，在实验室帐户中创建的实验室可以将映像保存到共享映像库。 其他教师可以从共享图像库中选择此映像，以创建其类的模板。 
@@ -40,8 +40,11 @@ ms.locfileid: "70382953"
 3. 检查 "实验室" 磁贴上的状态。 
 
     ![保存映像操作的状态](../media/how-to-use-shared-image-gallery/save-image-status.png)
+4. 确认操作是否成功。
 
- 您还可以将图像上传到实验室上下文之外的共享映像库。 有关详细信息，请参阅[共享映像库概述](../../virtual-machines/windows/shared-images.md)。 
+    ![已成功保存图像操作](../media/how-to-use-shared-image-gallery/save-image-successful.png)
+
+您还可以将图像上传到实验室上下文之外的共享映像库。 有关详细信息，请参阅[共享映像库概述](../../virtual-machines/windows/shared-images.md)。 
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>使用共享映像库中的映像
 在创建新的实验室期间，教师/教授可以在模板的共享映像库中选择可用的自定义映像。

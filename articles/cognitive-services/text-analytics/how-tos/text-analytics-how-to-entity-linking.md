@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: ea7d3f56aa512b8f5998d710451ff3b37659ca13
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697840"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390263"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -39,7 +39,7 @@ ms.locfileid: "68697840"
 
 ## <a name="supported-types-for-named-entity-recognition"></a>命名实体识别支持的类型
 
-| type  | SubType | 示例 |
+| 类型  | SubType | 示例 |
 |:-----------   |:------------- |:---------|
 | 个人        | 暂无\*         | “Jeff”、“Bill Gates”     |
 | Location      | 暂无\*         | “Redmond, Washington”、“Paris”  |
@@ -52,14 +52,14 @@ ms.locfileid: "68697840"
 | 数量      | 货币      | “$10.99”     |
 | 数量      | 维度     | “10 miles”、“40 cm”     |
 | 数量      | 温度   | “32 degrees”    |
-| 日期时间      | 暂无\*         | “6:30PM February 4, 2012”      |
-| 日期时间      | Date          | “May 2nd, 2017”、“05/02/2017”   |
-| 日期时间      | Time          | “8am”、“8:00”  |
-| 日期时间      | 日期范围     | “May 2nd to May 5th”    |
-| 日期时间      | 时间范围     | “6pm to 7pm”     |
-| 日期时间      | Duration      | “1 minute and 45 seconds”   |
-| 日期时间      | 设置           | “every Tuesday”     |
-| 日期时间      | TimeZone      |    |
+| DateTime      | 暂无\*         | “6:30PM February 4, 2012”      |
+| DateTime      | Date          | “May 2nd, 2017”、“05/02/2017”   |
+| DateTime      | Time          | “8am”、“8:00”  |
+| DateTime      | 日期范围     | “May 2nd to May 5th”    |
+| DateTime      | 时间范围     | “6pm to 7pm”     |
+| DateTime      | Duration      | “1 minute and 45 seconds”   |
+| DateTime      | 设置           | “every Tuesday”     |
+| DateTime      | TimeZone      |    |
 | URL           | 暂无\*         | "https:\//www.bing.com"    |
 | Email         | 暂无\*         | "support@contoso.com" |
 
@@ -96,16 +96,16 @@ ms.locfileid: "68697840"
 
 有关请求定义的详细信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
 
-+ 创建 POST 请求  。 查看此请求的 API 文档：[实体 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
++ 创建 POST 请求。 查看此请求的 API 文档：[实体 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ 设置用于实体提取的 HTTP 终结点。 它必须包含 `/entities` 资源：`https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`
++ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便提取关键短语。 必须包括`/text/analytics/v2.1/entities`。 例如：`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`。
 
 + 设置请求标头以包括文本分析操作[的访问密钥](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 
 + 在请求正文中，提供为此分析准备的 JSON 文档集合
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)中的“API 测试控制台”来构造请求并将其 POST 到该服务  。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)中的“API 测试控制台”来构造请求并将其 POST 到该服务。
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 

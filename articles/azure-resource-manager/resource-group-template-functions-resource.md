@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 43369131700681de5523043f414129a2e4169f44
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9e50a2705982a022284e1c54bd5ed7360a2d1663
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306927"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390695"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -42,6 +42,10 @@ Resource Manager 提供以下用于获取资源值的函数：
 | resourceName 或 resourceIdentifier |是 |string |资源的唯一标识符。 |
 | apiVersion |是 |string |资源运行时状态的 API 版本。 通常情况下，格式为 **yyyy-mm-dd**。 |
 | functionValues |否 |object | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 | 
+
+### <a name="valid-uses"></a>有效使用
+
+只能在资源定义的属性和模板或部署的输出部分中使用 list 函数。 与[属性迭代](resource-group-create-multiple.md#property-iteration)一起使用时，可以使用的列表函数`input` ，因为该表达式被分配到资源属性。 不能将它们与`count`一起使用，因为必须在解决列表函数之前确定计数。
 
 ### <a name="implementations"></a>实现形式
 
@@ -339,7 +343,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源时，请提供资源 ID。 |
 | apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
@@ -639,7 +643,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
 | resourceGroupName |否 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 |

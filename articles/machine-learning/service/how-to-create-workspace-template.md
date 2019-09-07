@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 89c24512e50dedbf10d145088ec77c2e6e303d1e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 34522c9a672de51cfa53ce52c5a6a6506fcd5454
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873154"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390514"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>使用 Azure 资源管理器模板创建 Azure 机器学习服务的工作区
 
@@ -31,7 +31,7 @@ ms.locfileid: "69873154"
 
 ## <a name="resource-manager-template"></a>资源管理器模板
 
-以下资源管理器模板可用于创建 Azure 机器学习服务工作区和关联的 Azure 资源:
+以下资源管理器模板可用于创建 Azure 机器学习服务工作区和关联的 Azure 资源：
 
 [!code-json[create-azure-machine-learning-service-workspace](~/quickstart-templates/101-machine-learning-create/azuredeploy.json)]
 
@@ -55,6 +55,11 @@ ms.locfileid: "69873154"
 * **工作区名称**：Azure 机器学习工作区的友好名称。
 
     其他服务的名称将随机生成。
+
+> [!TIP]
+> 尽管与此文档关联的模板会创建新的 Azure 容器注册表，但你也可以创建新的工作区，而无需创建容器注册表。 如果工作区中存在容器注册表，则当你执行需要容器注册表的操作时，将创建一个。 例如，定型或部署模型。
+>
+> 你还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的容器。
 
 有关模板的详细信息，请参阅以下文章：
 
@@ -104,16 +109,16 @@ az group deployment create \
 
 ## <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault 访问策略和 Azure 资源管理器模板
 
-使用 Azure 资源管理器模板创建工作区和关联资源 (包括 Azure Key Vault) 时多次。 例如, 将模板多次用于与持续集成和部署管道的一部分的相同参数。
+使用 Azure 资源管理器模板创建工作区和关联资源（包括 Azure Key Vault）时多次。 例如，将模板多次用于与持续集成和部署管道的一部分的相同参数。
 
-大多数通过模板创建的资源操作都是幂等的, 但 Key Vault 每次使用模板时都将清除访问策略。 清除访问策略会断开使用该访问策略的任何现有工作区对 Key Vault 的访问。 例如, Azure Notebooks VM 的停止/创建功能可能会失败。  
+大多数通过模板创建的资源操作都是幂等的，但 Key Vault 每次使用模板时都将清除访问策略。 清除访问策略会断开使用该访问策略的任何现有工作区对 Key Vault 的访问。 例如，Azure Notebooks VM 的停止/创建功能可能会失败。  
 
-若要避免此问题, 建议采用以下方法之一:
+若要避免此问题，建议采用以下方法之一：
 
-*  不要对相同的参数多次部署模板。 或删除现有资源, 然后使用模板重新创建它们。
+*  不要对相同的参数多次部署模板。 或删除现有资源，然后使用模板重新创建它们。
   
-* 检查 Key Vault 访问策略, 然后使用这些策略设置模板的 accessPolicies 属性。
-* 检查 Key Vault 资源是否已存在。 如果是这样, 请不要通过模板重新创建它。 例如, 添加一个参数, 该参数允许你禁用 Key Vault 资源的创建 (如果已存在)。
+* 检查 Key Vault 访问策略，然后使用这些策略设置模板的 accessPolicies 属性。
+* 检查 Key Vault 资源是否已存在。 如果是这样，请不要通过模板重新创建它。 例如，添加一个参数，该参数允许你禁用 Key Vault 资源的创建（如果已存在）。
 
 ## <a name="next-steps"></a>后续步骤
 

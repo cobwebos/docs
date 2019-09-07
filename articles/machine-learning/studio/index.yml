@@ -11,47 +11,43 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 09/03/2019
-  ms.openlocfilehash: 774c63e1df815b509a88b9de25b8199b53bfafa1
-  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.date: 09/04/2019
+  ms.openlocfilehash: b6c9013d61df1a0076817af5baab0e0af6375083
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70278014"
+  ms.locfileid: "70309185"
 landingContent:
-- title: 关于机器学习工作室
+- title: 工作室入门
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: 什么是工作室？
       url: what-is-ml-studio.md
-    - text: 比较我们的 ML 产品
-      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
-- title: 工作室入门
-  linkLists:
-  - linkListType: tutorial
-    links:
     - text: 创建第一个 ML 试验
       url: create-experiment.md
     - text: 创建预测解决方案
       url: tutorial-part1-credit-risk.md
-- title: 参考
+- title: 浏览参考内容
   linkLists:
   - linkListType: reference
     links:
-    - text: 命令行 PowerShell 模块
+    - text: PowerShell 模块
       url: powershell-module.md
-    - text: 算法和模块参考
+    - text: 算法和模块
       url: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/index
     - text: REST 管理 API
       url: https://docs.microsoft.com/rest/api/machinelearning/
     - text: Web 服务错误代码
       url: web-service-error-codes.md
-- title: 更多 Azure 机器学习技术
+- title: 更多 Azure ML 技术
   linkLists:
   - linkListType: reference
     links:
     - text: Azure 机器学习服务
       url: /azure/machine-learning/
-    - text: Azure 数据科学虚拟机
+    - text: 数据科学虚拟机
       url: /azure/machine-learning/data-science-virtual-machine
+    - text: 比较我们的 ML 产品
+      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

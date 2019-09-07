@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.author: raynew
-ms.openlocfilehash: 6e31308800f72d60381f1e4ecd540482ba263851
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01772fc9bd988cb6e4c3f7a946a03235fc63dd93
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969368"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390170"
 ---
 # <a name="troubleshoot-the-process-server"></a>排查进程服务器问题
 
@@ -35,7 +35,7 @@ ms.locfileid: "65969368"
 **最佳做法** | **详细信息**
 --- |---
 **使用情况** | 确保只将配置服务器/独立进程服务器用于目标用途。 不要在该计算机上运行任何其他组件。
-IP 地址  | 确保进程服务器使用静态 IPv4 地址，且未配置 NAT。
+IP 地址 | 确保进程服务器使用静态 IPv4 地址，且未配置 NAT。
 **控制内存/CPU 使用率** |将 CPU 和内存使用率保持在 70% 以下。
 **确保有足够的可用空间** | 可用空间是指进程服务器上的缓存磁盘空间。 复制数据在上传到 Azure 之前会存储在缓存中。<br/><br/> 请将可用空间保持在 25% 以上。 如果低于 20%，与进程服务器关联的复制计算机的复制会受到限制。
 
@@ -51,15 +51,15 @@ IP 地址  | 确保进程服务器使用静态 IPv4 地址，且未配置 NAT。
 
 **警报类型** | **错误** | **故障排除**
 --- | --- | --- 
-![Healthy][green] | 无  | 进程服务器已连接且正常运行。
+![状态良好][green] | None  | 进程服务器已连接且正常运行。
 ![警告][yellow] | 指定的服务未运行。 | 1.检查服务是否正在运行。<br/> 2.如果服务已按预期方式运行，请遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。
 ![警告][yellow]  | 过去 15 分钟的 CPU 利用率超过 80%。 | 1.不要添加新计算机。<br/>2.检查使用进程服务器的 VM 数目是否符合[定义的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，并考虑设置[额外的进程服务器](vmware-azure-set-up-process-server-scale.md)。<br/>3.遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。
-![严重][red] |  过去 15 分钟的 CPU 利用率超过 95%。 | 1.不要添加新计算机。<br/>2.检查使用进程服务器的 VM 数目是否符合[定义的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，并考虑设置[额外的进程服务器](vmware-azure-set-up-process-server-scale.md)。<br/>3.遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。<br/> 4.如果问题持续出现，请针对 VMware/物理服务器复制运行[部署规划器](https://aka.ms/asr-v2a-deployment-planner)。
+![关键][red] |  过去 15 分钟的 CPU 利用率超过 95%。 | 1.不要添加新计算机。<br/>2.检查使用进程服务器的 VM 数目是否符合[定义的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，并考虑设置[额外的进程服务器](vmware-azure-set-up-process-server-scale.md)。<br/>3.遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。<br/> 4.如果问题持续出现，请针对 VMware/物理服务器复制运行[部署规划器](https://aka.ms/asr-v2a-deployment-planner)。
 ![警告][yellow] | 过去 15 分钟的内存使用率超过 80%。 |  1.不要添加新计算机。<br/>2.检查使用进程服务器的 VM 数目是否符合[定义的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，并考虑设置[额外的进程服务器](vmware-azure-set-up-process-server-scale.md)。<br/>3.遵照警告相关的任何说明操作。<br/> 4.如果问题持续出现，请遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。
-![严重][red] | 过去 15 分钟的内存使用率超过 95%。 | 1.不要添加新计算机，并考虑设置[额外的进程服务器](vmware-azure-set-up-process-server-scale.md)。<br/> 2.遵照警告相关的任何说明操作。<br/> 3. 4. 如果问题持续出现，请遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。<br/> 4.如果问题持续出现，请针对 VMware/物理服务器复制问题运行[部署规划器](https://aka.ms/asr-v2a-deployment-planner)。
+![关键][red] | 过去 15 分钟的内存使用率超过 95%。 | 1.不要添加新计算机，并考虑设置[额外的进程服务器](vmware-azure-set-up-process-server-scale.md)。<br/> 2.遵照警告相关的任何说明操作。<br/> 3. 4. 如果问题持续出现，请遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。<br/> 4.如果问题持续出现，请针对 VMware/物理服务器复制问题运行[部署规划器](https://aka.ms/asr-v2a-deployment-planner)。
 ![警告][yellow] | 过去 15 分钟的缓存文件夹可用空间小于 30%。 | 1.不要添加新计算机，并考虑设置[额外的进程服务器](vmware-azure-set-up-process-server-scale.md)。<br/>2.检查使用进程服务器的 VM 数量是否符合[指导原则](site-recovery-plan-capacity-vmware.md#capacity-considerations)。<br/> 3.遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。
-![严重][red] |  过去 15 分钟的可用空间小于 25%。 | 1.遵照警告相关的说明来解决问题。<br/> 2. 3. 遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。<br/> 3.如果问题持续出现，请针对 VMware/物理服务器复制运行[部署规划器](https://aka.ms/asr-v2a-deployment-planner)。
-![严重][red] | 进程服务器有 15 分钟或更长时间未发出检测信号。 Tmansvs 服务未与配置服务器通信。 | 1) 检查进程服务器是否已启动并运行。<br/> 2.检查 tmassvc 是否在进程服务器上运行。<br/> 3.遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。
+![关键][red] |  过去 15 分钟的可用空间小于 25%。 | 1.遵照警告相关的说明来解决问题。<br/> 2. 3. 遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。<br/> 3.如果问题持续出现，请针对 VMware/物理服务器复制运行[部署规划器](https://aka.ms/asr-v2a-deployment-planner)。
+![关键][red] | 进程服务器有 15 分钟或更长时间未发出检测信号。 Tmansvs 服务未与配置服务器通信。 | 1) 检查进程服务器是否已启动并运行。<br/> 2.检查 tmassvc 是否在进程服务器上运行。<br/> 3.遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。
 
 
 ![表键](./media/vmware-physical-azure-troubleshoot-process-server/table-key.png)
@@ -69,11 +69,11 @@ IP 地址  | 确保进程服务器使用静态 IPv4 地址，且未配置 NAT。
 
 下表汇总了应在进程服务器上运行的服务。 根据进程服务器的部署方式，这些服务存在细微的差别。 
 
-对于除 Microsoft Azure 恢复服务代理 (obengine) 以外的所有服务，请检查“启动类型”是否设置为“自动”或“自动(延迟启动)”。  
+对于除 Microsoft Azure 恢复服务代理 (obengine) 以外的所有服务，请检查“启动类型”是否设置为“自动”或“自动(延迟启动)”。
  
 **部署** | **正在运行的服务**
 --- | ---
-**配置服务器上的进程服务器** | ProcessServer;ProcessServerMonitor;cxprocessserver;InMage PushInstall;日志上传服务 (LogUpload);InMage Scout 应用程序服务;Microsoft Azure 恢复服务代理 (obengine);InMage Scout VX 代理-Sentinel/Outpost (svagents);tmansvc;World Wide Web 发布服务 (W3SVC);MySQL;Microsoft Azure Site Recovery 服务 (dra)
+**配置服务器上的进程服务器** | Scaleout-processserverProcessServerMonitor;cxprocessserverInMage PushInstall;日志上载服务（LogUpload）;InMage Scout 应用程序服务;Microsoft Azure 恢复服务代理（obengine）;InMage Scout VX Agent-Sentinel/Outpost （svagents）;tmansvcWorld Wide Web 发布服务（W3SVC）;MySQLMicrosoft Azure Site Recovery 服务（dra）
 **作为独立服务器运行的进程服务器** | ProcessServer；ProcessServerMonitor；cxprocessserver；InMage PushInstall；Log Upload Service (LogUpload)；InMage Scout Application Service；Microsoft Azure 恢复服务代理 (obengine)；InMage Scout VX Agent-Sentinel/Outpost (svagents)；tmansvc。
 **Azure 中部署的用于故障回复的进程服务器** | ProcessServer；ProcessServerMonitor；cxprocessserver；InMage PushInstall；Log Upload Service (LogUpload)
 
@@ -167,8 +167,8 @@ IP 地址  | 确保进程服务器使用静态 IPv4 地址，且未配置 NAT。
 检查进程服务器是否主动将数据推送到 Azure。
 
   1. 在进程服务器上打开任务管理器（按 Ctrl+Shift+Esc）。
-  2. 选择“性能”选项卡> “打开资源监视器”。  
-  3. 在“资源监视器”页中，选择“网络”选项卡。   在“网络活动的进程”下，检查 cbengine.exe 是否正在主动发送大量数据。 
+  2. 选择“性能”选项卡> “打开资源监视器”。
+  3. 在“资源监视器”页中，选择“网络”选项卡。在 "**具有网络活动的进程**" 下，检查 cbengine.exe 是否正在主动发送大量数据。
 
        ![存在网络活动的进程下的数量](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
@@ -176,8 +176,8 @@ IP 地址  | 确保进程服务器使用静态 IPv4 地址，且未配置 NAT。
 
 ## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>步骤 9：检查进程服务器可以连接到 Azure Blob 存储
 
-1. 在资源监视器中选择“cbengine.exe”。 
-2. 在“TCP 连接”下，检查进程服务器与 Azure 存储之间是否建立了连接。 
+1. 在资源监视器中选择“cbengine.exe”。
+2. 在“TCP 连接”下，检查进程服务器与 Azure 存储之间是否建立了连接。
 
   ![cbengine.exe 与 Azure Blob 存储 URL 之间的连接](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
@@ -185,7 +185,7 @@ IP 地址  | 确保进程服务器使用静态 IPv4 地址，且未配置 NAT。
 
 如果进程服务器与 Azure Blob 存储 URL 之间未建立连接，请检查服务是否正在运行。
 
-1. 在控制面板中选择“服务”。 
+1. 在控制面板中选择“服务”。
 2. 检查以下服务是否正在运行：
 
     - cxprocessserver
@@ -217,11 +217,11 @@ IP 地址  | 确保进程服务器使用静态 IPv4 地址，且未配置 NAT。
 
 1. 对于基于 IP 地址的防火墙规则：
 
-    a） 下载的完整列表[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+    a）下载[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的完整列表。
 
     b) 将 IP 地址范围添加到防火墙配置，以确保防火墙允许与 Azure（以及默认的 HTTPS 端口 443）通信。
 
-    c） 允许 IP 地址范围的 Azure 区域的你的订阅和 Azure 美国西部区域 （用于访问控制和标识管理）。
+    c）允许订阅的 Azure 区域的 IP 地址范围，以及 Azure 美国西部区域的 IP 地址范围（用于访问控制和标识管理）。
 
 2. 对于基于 URL 的防火墙，请将下表中列出的 URL 添加到防火墙配置。
 
@@ -233,11 +233,11 @@ IP 地址  | 确保进程服务器使用静态 IPv4 地址，且未配置 NAT。
 1. 如果使用代理服务器，请确保代理服务器名称由 DNS 服务器解析。 在注册表项 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings** 中，检查设置配置服务器时提供的值。
 2. 确保 Azure Site Recovery 代理使用相同的设置发送数据。
 
-    a） 搜索**Microsoft Azure 备份**。
+    a）搜索**Microsoft Azure 备份**。
 
-    b） 打开**Microsoft Azure 备份**，然后选择**操作** > **更改属性**。
+    b）打开**Microsoft Azure 备份**，然后选择 "**操作** > " "**更改属性**"。
 
-    c) 在“代理配置”选项卡上，代理地址应与注册表设置中显示的代理地址相同。  如果不同，请将其更改为相同的地址。
+    c) 在“代理配置”选项卡上，代理地址应与注册表设置中显示的代理地址相同。 如果不同，请将其更改为相同的地址。
 
 ## <a name="step-13-check-bandwidth"></a>步骤 13：检查带宽
 

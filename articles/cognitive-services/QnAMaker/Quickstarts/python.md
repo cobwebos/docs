@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: quickstart
-ms.date: 08/20/2019
+ms.topic: reference
+ms.date: 09/05/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: fc15b08bb293864c22b7e26c1e408b99ac58d698
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: db04dc6369fa6f66467efa64e5787d3f5ddb0b3c
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647084"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390889"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-python"></a>如何将 QnA Maker REST API 与 Python 配合使用
 <a name="HOLTop"></a>
@@ -1234,6 +1234,6 @@ print(pretty_print(result))
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>请参阅 
 
 [QnA Maker 概述](../Overview/overview.md)

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8a1914b7cf79287831e0e94c19c50107c2ac216d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851713"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390793"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理中的自定义域
 
@@ -36,11 +36,11 @@ ms.locfileid: "68851713"
 
 ## <a name="configure-a-custom-domain"></a>配置自定义域
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>先决条件
 
 配置自定义域之前，请确保根据以下要求做好准备： 
 - 一个[已添加到 Azure Active Directory 的经验证的域](../fundamentals/add-custom-domain.md)。
-- 一个用于域的、采用 PFX 文件格式的自定义证书。 
+- 一个用于域的、采用 PFX 文件格式的自定义证书。
 - 一个[通过应用程序代理发布](application-proxy-add-on-premises-application.md)的本地应用。
 
 ### <a name="configure-your-custom-domain"></a>配置自定义域
@@ -61,7 +61,7 @@ ms.locfileid: "68851713"
 6. 上传 PFX 证书，并输入证书的密码。 
 7. 选择“保存”以保存更改。 
 8. 添加用于将新外部 URL 重定向到 msappproxy.net 域的 [DNS 记录](../../dns/dns-operations-recordsets-portal.md)。
-9. 使用[nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx)命令检查是否已正确配置 DNS 记录, 以查看是否可以访问外部 URL, 并将 msapproxy.net 域显示为别名。
+9. 使用[nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx)命令检查是否已正确配置 DNS 记录，以查看是否可以访问外部 URL，并将 msapproxy.net 域显示为别名。
 
 >[!TIP] 
 >只需为每个自定义域上传一个证书。 上传证书后，可以在发布新应用时选择自定义域，而无需执行除 DNS 记录以外的其他配置。 
@@ -73,7 +73,9 @@ ms.locfileid: "68851713"
 
 只要通配符与所需的外部 URL 匹配，就可使用通配符证书。
 
-如果客户端设备上已安装证书链, 则可以使用自己的公钥基础结构 (PKI) 颁发的证书。 Intune 可用于将这些证书部署到托管设备。 对于非托管设备, 必须手动安装这些证书。
+证书必须包含私钥。
+
+如果客户端设备上已安装证书链，则可以使用自己的公钥基础结构（PKI）颁发的证书。 Intune 可用于将这些证书部署到托管设备。 对于非托管设备，必须手动安装这些证书。
 
 ### <a name="changing-the-domain"></a>更改域
 所有已验证的域显示在应用程序的“外部 URL”下拉列表中。 若要更改域，只需更新应用程序的该字段。 如果所需的域不在列表中，请[将它添加为已验证的域](../fundamentals/add-custom-domain.md)。 如果选择一个尚无关联证书的域，请遵循步骤 5 - 7 添加证书。 然后，请务必更新从新的外部 URL 重定向的 DNS 记录。 

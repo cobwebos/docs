@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a82571260f5da679202e96f5e6f72aa2db6788a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7c2e80f80ea5d7e7d5ee26eee8b26506386a6e2f
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834683"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389792"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>使用 OpenID Connect 和 Azure Active Directory 来授权访问 Web 应用程序
 
@@ -65,7 +65,7 @@ https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
 }
 ```
 
-如果你的应用程序具有自定义签名密钥作为使用[声明映射](active-directory-claims-mapping.md)功能的结果, 则必须追加`appid`包含应用 ID 的查询参数, 才能获取`jwks_uri`指向应用的签名密钥信息。 例如: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` `jwks_uri`包含的。`https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`
+如果应用因使用[声明映射](active-directory-claims-mapping.md)功能而具有自定义签名密钥，则必须追加包含应用 ID 的 `appid` 查询参数，以获取指向应用的签名密钥信息的 `jwks_uri`。 例如：`https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 的 `jwks_uri`。
 
 ## <a name="send-the-sign-in-request"></a>发送登录请求
 
@@ -181,7 +181,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | 参数 |  | 描述 |
 | --- | --- | --- |
-| post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。如果未包含此参数，系统会向用户显示一条常规消息。 |
+| post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。  如果不包含*post_logout_redirect_uri* ，则会向用户显示一般消息。 |
 
 ## <a name="single-sign-out"></a>单一登录
 

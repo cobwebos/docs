@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66305057"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390180"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -61,23 +61,40 @@ ms.locfileid: "66305057"
 * 键 - 用于筛选的事件数据中的字段。 它可以是数字、布尔值或字符串。
 * 值 - 要与键进行比较的值。
 
-使用高级筛选器的 JSON 语法是：
+如果指定具有多个值的单个筛选器，则执行**或**操作，因此键字段的值必须是下列值之一。 下面是一个示例：
 
 ```json
-"filter": {
-  "advancedFilters": [
+"advancedFilters": [
     {
-      "operatorType": "NumberGreaterThanOrEquals",
-      "key": "Data.Key1",
-      "value": 5
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/",
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
+    }
+]
+```
+
+如果指定多个不同的筛选器，则执行**和**操作，因此必须满足每个筛选条件。 下面是一个示例： 
+
+```json
+"advancedFilters": [
+    {
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/"
+        ]
     },
     {
-      "operatorType": "StringContains",
-      "key": "Subject",
-      "values": ["container1", "container2"]
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
     }
-  ]
-}
+]
 ```
 
 ### <a name="operator"></a>运算符
@@ -103,22 +120,22 @@ ms.locfileid: "66305057"
 
 所有字符串比较都不区分大小写。
 
-### <a name="key"></a>密钥
+### <a name="key"></a>Key
 
 对于事件网格架构中的事件，请使用以下键值：
 
-* Id
+* id
 * 主题
 * Subject
-* EventType
+* 事件类型
 * DataVersion
 * 事件数据（如 Data.key1）
 
 对于云事件架构中的事件，请使用以下键值：
 
 * EventId
-* source
-* EventType
+* Source
+* 事件类型
 * EventTypeVersion
 * 事件数据（如 Data.key1）
 
@@ -128,10 +145,10 @@ ms.locfileid: "66305057"
 
 值可以是：
 
-* 数字
-* 字符串
+* number
+* string
 * boolean
-* 数组
+* array
 
 ### <a name="limitations"></a>限制
 
@@ -139,7 +156,7 @@ ms.locfileid: "66305057"
 
 * 每个事件网格订阅有五个高级筛选器
 * 每个字符串值有 512 个字符
-* “in”和“not in”运算符有 5 个值  
+* “in”和“not in”运算符有 5 个值
 
 可以在多个筛选器中使用相同的键。
 

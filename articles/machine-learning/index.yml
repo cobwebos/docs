@@ -12,20 +12,20 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 09/03/2019
-  ms.openlocfilehash: e2c5e592c2330f1e5514c5c59c92ff5c8a3a62b2
-  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.openlocfilehash: 58afd4ab8576b78fc3138861c13ac39ae343b04d
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70278313"
+  ms.locfileid: "70308775"
 landingContent:
 - title: Azure ML 入门
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 使用笔记本进行试验
+    - text: Python 笔记本中的试验
       url: service/tutorial-1st-experiment-sdk-setup.md
-    - text: 在可视界面中进行试验
+    - text: 使用拖放功能进行试验
       url: service/ui-tutorial-automobile-price-train-score.md
     - text: 自动执行第一个试验
       url: service/tutorial-first-experiment-automated-ml.md
@@ -37,17 +37,17 @@ landingContent:
       url: service/concept-azure-machine-learning-architecture.md
   - linkListType: how-to-guide
     links:
-    - text: 设置开发环境
+    - text: 设置环境
       url: service/how-to-configure-environment.md
     - text: 设置训练计算目标
       url: service/how-to-set-up-training-targets.md
-- title: 使用 Python 进行训练
+- title: 试验：Python SDK
   linkLists:
   - linkListType: tutorial
     links:
     - text: 创建第一个 ML 试验
       url: service/tutorial-1st-experiment-sdk-setup.md
-    - text: 训练图像分类模型
+    - text: 对图像进行分类
       url: service/tutorial-train-models-with-aml.md
     - text: 使用自动化 ML 预测出租车费用
       url: service/tutorial-auto-train-models.md
@@ -61,23 +61,21 @@ landingContent:
       url: service/how-to-train-pytorch.md
     - text: 使用 Keras 进行训练
       url: service/how-to-train-keras.md
-- title: 在可视界面中进行训练
+- title: 试验：可视界面
   linkLists:
-  - linkListType: get-started
+  - linkListType: tutorial
     links:
-    - text: 训练自动化 ML 试验
+    - text: 使用自动化 ML 预测订阅
       url: service/tutorial-first-experiment-automated-ml.md
-    - text: 在可视界面中进行训练
+    - text: 使用线性回归预测价格
       url: service/ui-tutorial-automobile-price-train-score.md
   - linkListType: how-to-guide
     links:
-    - text: 可视界面：预测车价
-      url: service/ui-sample-regression-predict-automobile-price-basic.md
-    - text: 可视界面：预测信用风险
+    - text: 预测信用风险
       url: service/ui-sample-classification-predict-credit-risk-cost-sensitive.md
-    - text: 可视界面：预测延迟
+    - text: 预测延迟
       url: service/ui-sample-classification-predict-flight-delay.md
-    - text: 可视界面：预测流失
+    - text: 预测变动率
       url: service/ui-sample-classification-predict-churn.md
 - title: 部署和管理模型
   linkLists:

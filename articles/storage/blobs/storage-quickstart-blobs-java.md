@@ -7,19 +7,16 @@ ms.date: 02/04/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 8cb9a9c6dd2e84318cd4d05bf6e67e127fc39ce3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0aa3af754082d91c4a5994e42146d1f1f475f64d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726367"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390321"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>如何使用适用于 Java v7 的客户端库上传、下载和列出 Blob
 
 本操作指南介绍如何使用适用于 Java v7 的客户端库上传、下载和列出 Azure Blob 存储容器中的块 Blob。
-
-> [!TIP]
-> 适用于 Java 的 Azure 存储客户端库的最新版本是 v10。 Microsoft 建议尽可能使用最新版本的客户端库。 若要开始使用 v10，请参阅[快速入门：使用 Java 存储 SDK V10 上传、下载和列出 Blob](storage-quickstart-blobs-java-v10.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

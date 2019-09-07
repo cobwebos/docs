@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: raymondl
-ms.openlocfilehash: 1d94cff3eb3299692fc4172f5bb5211532ef1002
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2d90fe4d40c51b21deea23675d6b51b972429237
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697827"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390241"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>例如：如何使用文本分析提取关键短语
 
@@ -72,16 +72,16 @@ ms.locfileid: "68697827"
 
 有关请求定义的信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
 
-+ 创建 POST 请求  。 查看此请求的 API 文档：[关键短语 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)。
++ 创建 POST 请求。 查看此请求的 API 文档：[关键短语 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)。
 
-+ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便提取关键短语。 它必须包含 `/keyPhrases` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`。
++ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便提取关键短语。 必须在 URL `/text/analytics/v2.1/keyPhrases`中包含。 例如：`https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`。
 
-+ 设置请求标头以包括文本分析操作的[访问密钥](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
++ 设置请求头以包含文本分析操作的[访问密钥](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 
 + 在请求正文中，提供为此分析准备的 JSON 文档集合。
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)中的“API 测试控制台”来构造请求并将其 POST 到该服务  。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)中的“API 测试控制台”来构造请求并将其 POST 到该服务。
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 

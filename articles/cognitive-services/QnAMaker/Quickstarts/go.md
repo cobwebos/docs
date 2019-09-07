@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: quickstart
-ms.date: 08/20/2019
+ms.topic: reference
+ms.date: 09/05/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: bc1863795161342c05a5538e8f7e40e789ce695d
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: b6aa36eaeee85aec042dd215c9d6226b493d261f
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647119"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390943"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>如何将 QnA Maker REST API 与 Go 配合使用 
 <a name="HOLTop"></a>
@@ -1447,6 +1447,6 @@ func main() {
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>请参阅 
 
 [QnA Maker 概述](../Overview/overview.md)

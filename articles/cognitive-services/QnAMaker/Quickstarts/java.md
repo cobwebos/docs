@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: quickstart
-ms.date: 08/20/2019
+ms.topic: reference
+ms.date: 09/05/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: aae59747422fd9dfb53266ee9693c3380c35f73b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 617878d559c5c89e76c86bfe04fbd24484b911bb
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647131"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70391020"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-java"></a>如何将 QnA Maker REST API 与 Java 配合使用 
 <a name="HOLTop"></a>
@@ -44,7 +44,7 @@ ms.locfileid: "69647131"
 
 需要使用 [JDK 7 或 8](https://aka.ms/azure-jdks) 来编译和运行此代码。 如果你有喜欢的 Java IDE，可以使用它，但文本编辑器足以满足要求。
 
-必须创建一个具有 Microsoft QnA Maker API  的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
+必须创建一个具有 Microsoft QnA Maker API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
 
 <a name="Create"></a>
 
@@ -1055,7 +1055,7 @@ public class GetQnA {
 
 ## <a name="get-answers-to-a-question-by-using-a-knowledge-base"></a>使用知识库获取问题的答案
 
-以下代码通过“Generate answers”  方法，使用指定知识库来获取问题的答案。
+以下代码通过“Generate answers”方法，使用指定知识库来获取问题的答案。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
 1. 添加以下提供的代码。
@@ -2133,6 +2133,6 @@ public class PutAlterations {
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>请参阅 
 
 [QnA Maker 概述](../Overview/overview.md)

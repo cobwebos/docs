@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: derek1ee, LADocs
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: 76b3807727f4b5c9ab0a2c2bc21c45af1f713b83
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 3b51215e0cf48df2d3cd9df85a3d4c5641a17215
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242449"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390806"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用内联代码添加和运行代码片段
 
@@ -23,6 +23,7 @@ ms.locfileid: "70242449"
 * 在 JavaScript 中运行。 即将推出更多语言。
 * 在5秒或更少的时间内完成运行。
 * 处理最大大小为 50 MB 的数据。
+* 不需要使用[**变量**操作](../logic-apps/logic-apps-create-variables-store-values.md)，这些操作尚不受支持。
 * 使用 node.js 版本8.11.1。 有关详细信息，请参阅[标准内置对象](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。 
 
   > [!NOTE]

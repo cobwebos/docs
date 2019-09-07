@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 07176fbe22e70658856dd266687a15d719e78e9f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 27361017241ba6529b93c24ce7fb95b2c1b22a62
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231082"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389899"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型定型的计算目标 
 
@@ -47,28 +47,28 @@ Azure 机器学习服务为不同的计算目标提供不同的支持。 典型�
 
 训练时，通常会在本地计算机上开始，然后在不同的计算目标上运行该训练脚本。 使用 Azure 机器学习服务可以在各种计算目标上运行脚本，而无需更改脚本。 
 
-只需在**运行配置**中为每个计算目标定义环境。  然后，当你想要在不同的计算目标上运行训练试验时，可以指定该计算的运行配置。 有关指定环境并将其绑定到运行配置的详细信息, 请参阅[创建和管理用于定型和部署的环境](how-to-use-environments.md)
+只需在**运行配置**中为每个计算目标定义环境。  然后，当你想要在不同的计算目标上运行训练试验时，可以指定该计算的运行配置。 有关指定环境并将其绑定到运行配置的详细信息，请参阅[创建和管理用于定型和部署的环境](how-to-use-environments.md)
 
 本文的最后详细介绍了如何[提交试验](#submit)。
 
 ## <a name="whats-an-estimator"></a>估计器是什么？
 
-为了便于使用常见框架进行模型训练, Azure 机器学习 Python SDK 提供了一个替代级别更高的抽象方法, 即估计器类。 此类使你能够轻松地构造运行配置。 您可以创建和使用一般[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交使用您选择的任何学习框架的培训脚本 (如 scikit-learn)。
+为了便于使用常见框架进行模型训练，Azure 机器学习 Python SDK 提供了一个替代级别更高的抽象方法，即估计器类。 此类使你能够轻松地构造运行配置。 您可以创建和使用一般[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交使用您选择的任何学习框架的培训脚本（如 scikit-learn）。
 
-对于 PyTorch、TensorFlow 和 Chainer 任务, Azure 机器学习还提供相应的[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)和[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)估算以简化使用这些框架的操作。
+对于 PyTorch、TensorFlow 和 Chainer 任务，Azure 机器学习还提供相应的[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)和[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)估算以简化使用这些框架的操作。
 
-有关详细信息, 请参阅[用估算训练 ML 模型](how-to-train-ml-models.md)。
+有关详细信息，请参阅[用估算训练 ML 模型](how-to-train-ml-models.md)。
 
 ## <a name="whats-an-ml-pipeline"></a>什么是 ML 管道？
 
-借助 ML 管道, 你可以通过简单、速度、可移植性和重复使用优化工作流。 当通过 Azure 机器学习构建管道时, 可以专注于专业技能、机器学习, 而不是在基础结构和自动化上。
+借助 ML 管道，你可以通过简单、速度、可移植性和重复使用优化工作流。 当通过 Azure 机器学习构建管道时，可以专注于专业技能、机器学习，而不是在基础结构和自动化上。
 
-ML 管道是从多个**步骤**构造的, 这些步骤是管道中的不同计算单元。 每个步骤都可以独立运行并使用独立的计算资源。 这允许多个数据科学家在同一时间同时处理同一管道, 而不会产生过多的计算资源, 同时还可以轻松地对每个步骤使用不同的计算类型/大小。
+ML 管道是从多个**步骤**构造的，这些步骤是管道中的不同计算单元。 每个步骤都可以独立运行并使用独立的计算资源。 这允许多个数据科学家在同一时间同时处理同一管道，而不会产生过多的计算资源，同时还可以轻松地对每个步骤使用不同的计算类型/大小。
 
 > [!TIP]
-> 在训练模型时, ML 管道可以使用运行配置或估算。
+> 在训练模型时，ML 管道可以使用运行配置或估算。
 
-虽然 ML 管道可以训练模型, 但它们还可以在训练和部署模型之后准备数据。 管道的主要用例之一是批处理评分。 有关详细信息, 请[参阅管道:优化机器学习工作](concept-ml-pipelines.md)流。
+虽然 ML 管道可以训练模型，但它们还可以在训练和部署模型之后准备数据。 管道的主要用例之一是批处理评分。 有关详细信息，请[参阅管道：优化机器学习工作](concept-ml-pipelines.md)流。
 
 ## <a name="set-up-in-python"></a>在 Python 中设置
 
@@ -106,7 +106,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 可将 Azure 机器学习计算创建为运行时的计算目标。 将自动为运行创建计算。 完成运行后，会自动删除计算。 
 
 > [!NOTE]
-> 若要指定要使用的最大节点数, 通常会将`node_count`设置为节点数。 当前有 (04/04/2019) bug 阻止了此操作。 解决方法是使用`amlcompute._cluster_max_node_count`运行配置的属性。 例如， `run_config.amlcompute._cluster_max_node_count = 5` 。
+> 若要指定要使用的最大节点数，通常会将`node_count`设置为节点数。 当前有（04/04/2019） bug 阻止了此操作。 解决方法是使用`amlcompute._cluster_max_node_count`运行配置的属性。 例如， `run_config.amlcompute._cluster_max_node_count = 5` 。
 
 > [!IMPORTANT]
 > Azure 机器学习计算的基于运行的创建功能目前为预览版。 如果使用自动化超参数优化或自动化机器学习，请不要使用基于运行的创建。 若要使用超参数优化或自动化机器学习，请改为创建[持久性计算](#persistent)目标。
@@ -232,15 +232,15 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
 
 ### <a id="azbatch"></a>Azure Batch 
 
-Azure Batch 用于在云中高效运行大规模并行和高性能计算 (HPC) 应用程序。 可以在 Azure 机器学习管道中使用 AzureBatchStep 将作业提交到 Azure Batch 计算机池。
+Azure Batch 用于在云中高效运行大规模并行和高性能计算（HPC）应用程序。 可以在 Azure 机器学习管道中使用 AzureBatchStep 将作业提交到 Azure Batch 计算机池。
 
-若要将 Azure Batch 附加为计算目标, 必须使用 Azure 机器学习 SDK, 并提供以下信息:
+若要将 Azure Batch 附加为计算目标，必须使用 Azure 机器学习 SDK，并提供以下信息：
 
--   **Azure Batch 计算名称**:要在工作区内用于计算的友好名称
--   **Azure Batch 帐户名称**:Azure Batch 帐户的名称
+-   **Azure Batch 计算名称**：要在工作区内用于计算的友好名称
+-   **Azure Batch 帐户名称**：Azure Batch 帐户的名称
 -   **资源组**：包含 Azure Batch 帐户的资源组。
 
-下面的代码演示如何将 Azure Batch 附加为计算目标:
+下面的代码演示如何将 Azure Batch 附加为计算目标：
 
 ```python
 from azureml.core.compute import ComputeTarget, BatchCompute
@@ -375,9 +375,9 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 1. 等待运行任务完成。
 
 > [!IMPORTANT]
-> 提交训练运行时, 将创建包含定型脚本的目录的快照, 并将其发送到计算目标。 它也作为实验的一部分存储在工作区中。 如果更改文件并再次提交运行, 则只会上载已更改的文件。
+> 提交训练运行时，将创建包含定型脚本的目录的快照，并将其发送到计算目标。 它也作为实验的一部分存储在工作区中。 如果更改文件并再次提交运行，则只会上载已更改的文件。
 >
-> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果同时存在这两个`.amlignore`文件, 则该文件将优先。
+> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果同时存在这两个`.amlignore`文件，则该文件将优先。
 > 
 > 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 
@@ -403,42 +403,51 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
+> [!TIP]
+> 此示例默认为仅使用计算目标的一个节点进行定型。 若要使用多个节点，请将`node_count`运行配置的设置为所需的节点数。 例如，下面的代码将用于定型的节点数设置为4：
+>
+> ```python
+> src.run_config.node_count = 4
+> ```
+
 或者可以：
 
 * 根据[使用评估器训练机器学习模型](how-to-train-ml-models.md)中所述，使用 `Estimator` 对象提交试验。
 * 提交用于[超参数优化](how-to-tune-hyperparameters.md)的 HyperDrive 运行。
 * 通过[VS Code 扩展](how-to-vscode-tools.md#train-and-tune-models)提交试验。
 
+有关详细信息，请参阅[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py)和[RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py)文档。
+
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>使用 Azure 机器学习 CLI 创建运行配置并提交运行
 
-您可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)和[机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)来创建运行配置, 并将运行中的运行提交到不同的计算目标。 以下示例假定你已有 Azure 机器学习工作区, 并使用`az login` CLI 命令登录到 Azure。 
+您可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)和[机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)来创建运行配置，并将运行中的运行提交到不同的计算目标。 以下示例假定你已有 Azure 机器学习工作区，并使用`az login` CLI 命令登录到 Azure。 
 
 ### <a name="create-run-configuration"></a>创建运行配置
 
-创建运行配置的最简单方法是导航包含机器学习 Python 脚本的文件夹, 并使用 CLI 命令
+创建运行配置的最简单方法是导航包含机器学习 Python 脚本的文件夹，并使用 CLI 命令
 
 ```azurecli
 az ml folder attach
 ```
 
-此命令创建一个子`.azureml`文件夹, 其中包含不同计算目标的模板运行配置文件。 可以复制和编辑这些文件, 以自定义配置, 例如添加 Python 包或更改 Docker 设置。  
+此命令创建一个子`.azureml`文件夹，其中包含不同计算目标的模板运行配置文件。 可以复制和编辑这些文件，以自定义配置，例如添加 Python 包或更改 Docker 设置。  
 
 ### <a name="structure-of-run-configuration-file"></a>运行配置文件的结构
 
-运行配置文件的格式 YAML, 以下部分
+运行配置文件的格式 YAML，以下部分
  * 要运行的脚本及其参数
- * 计算目标名称, 可以是 "本地", 也可以是工作区中计算的名称。
- * 用于执行运行的参数: 框架, 用于分布式运行的 communicator, 最大持续时间和计算节点数。
- * 环境部分。 有关本部分中的字段的详细信息, 请参阅[创建和管理用于培训和部署的环境](how-to-use-environments.md)。
-   * 若要指定要为运行安装的 Python 包, 请创建[conda 环境文件](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually), 并设置__condaDependenciesFile__字段。
- * 运行历史记录详细信息以指定日志文件文件夹, 以及启用或禁用输出收集和运行历史记录快照。
+ * 计算目标名称，可以是 "本地"，也可以是工作区中计算的名称。
+ * 用于执行运行的参数：框架，用于分布式运行的 communicator，最大持续时间和计算节点数。
+ * 环境部分。 有关本部分中的字段的详细信息，请参阅[创建和管理用于培训和部署的环境](how-to-use-environments.md)。
+   * 若要指定要为运行安装的 Python 包，请创建[conda 环境文件](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually)，并设置__condaDependenciesFile__字段。
+ * 运行历史记录详细信息以指定日志文件文件夹，以及启用或禁用输出收集和运行历史记录快照。
  * 特定于所选框架的配置详细信息。
  * 数据引用和数据存储的详细信息。
  * 用于创建新群集的机器学习计算的特定配置详细信息。
 
 ### <a name="create-an-experiment"></a>创建试验
 
-首先, 为您的运行创建一个试验
+首先，为您的运行创建一个试验
 
 ```azurecli
 az ml experiment create -n <experiment>
@@ -446,7 +455,7 @@ az ml experiment create -n <experiment>
 
 ### <a name="script-run"></a>脚本运行
 
-若要提交脚本运行, 请执行命令
+若要提交脚本运行，请执行命令
 
 ```azurecli
 az ml run submit-script -e <experiment> -c <runconfig> my_train.py
@@ -454,7 +463,7 @@ az ml run submit-script -e <experiment> -c <runconfig> my_train.py
 
 ### <a name="hyperdrive-run"></a>HyperDrive 运行
 
-可以将 HyperDrive 与 Azure CLI 结合使用来执行参数优化运行。 首先, 创建以下格式的 HyperDrive 配置文件。 有关超参数优化参数的详细信息, 请参阅[优化模型的超参数](how-to-tune-hyperparameters.md)一文。
+可以将 HyperDrive 与 Azure CLI 结合使用来执行参数优化运行。 首先，创建以下格式的 HyperDrive 配置文件。 有关超参数优化参数的详细信息，请参阅[优化模型的超参数](how-to-tune-hyperparameters.md)一文。
 
 ```yml
 # hdconfig.yml
@@ -475,20 +484,20 @@ max_concurrent_runs: 2 # The number of runs that can run concurrently.
 max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
 ```
 
-将此文件与运行配置文件一起添加。 然后使用以下内容提交 HyperDrive 运行:
+将此文件与运行配置文件一起添加。 然后使用以下内容提交 HyperDrive 运行：
 ```azurecli
 az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
 ```
 
-请注意 .runconfig 和 HyperDrive config 中的*参数空间*中的*参数*部分。它们包含要传递给训练脚本的命令行参数。 .Runconfig 中的值在每次迭代中保持不变, 而 HyperDrive config 中的范围将循环访问。 不要在这两个文件中指定相同的参数。
+请注意 .runconfig 和 HyperDrive config 中的*参数空间*中的*参数*部分。它们包含要传递给训练脚本的命令行参数。 .Runconfig 中的值在每次迭代中保持不变，而 HyperDrive config 中的范围将循环访问。 不要在这两个文件中指定相同的参数。
 
-有关这些```az ml``` CLI 命令和完整参数集的更多详细信息, 请参阅[参考文档](reference-azure-machine-learning-cli.md)。
+有关这些```az ml``` CLI 命令和完整参数集的更多详细信息，请参阅[参考文档](reference-azure-machine-learning-cli.md)。
 
 <a id="gitintegration"></a>
 
 ## <a name="git-tracking-and-integration"></a>Git 跟踪和集成
 
-当你开始在源目录为本地 Git 存储库的训练运行时, 有关存储库的信息存储在运行历史记录中。 例如, 将在历史记录中记录存储库的当前提交 ID。
+当你开始在源目录为本地 Git 存储库的训练运行时，有关存储库的信息存储在运行历史记录中。 例如，将在历史记录中记录存储库的当前提交 ID。
 
 ## <a name="notebook-examples"></a>Notebook 示例
 

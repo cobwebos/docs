@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: a6f872880b61a5bd9510abda2f15e2edea16e940
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 78c07330558241c889f284bcaf7302ce1327b5b8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703877"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389798"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 将文件上传到媒体服务帐户
 
 在媒体服务中，可以将数字文件上传到与资产关联的 blob容器中。 [资产](https://docs.microsoft.com/rest/api/media/operations/asset)实体可以包含视频、音频、图片、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据）。 将文件上传到资产的容器中后，相关内容即安全地存储在云中供后续处理和流式传输。
 
-本文介绍如何使用 REST 将本地文件上载。
+本文介绍如何使用 REST 上传本地文件。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要完成本主题中所述的步骤，必须：
 
@@ -39,8 +39,8 @@ ms.locfileid: "67703877"
 
 本部分介绍如何创建新的资产。
 
-1. 选择“资产” -> “创建或更新资产”   。
-2. 按“发送”。 
+1. 选择“资产” -> “创建或更新资产”。
+2. 按“发送”。
 
     ![创建资产](./media/upload-files/postman-create-asset.png)
 
@@ -50,8 +50,8 @@ ms.locfileid: "67703877"
 
 本部分介绍如何获取通过所创建资产生成的 SAS URL。 所创建的 SAS URL 具有读写权限，可用于将数字文件上传到资产容器。
 
-1. 选择“资产” -> “列出资产 URL”   。
-2. 按“发送”。 
+1. 选择“资产” -> “列出资产 URL”。
+2. 按“发送”。
 
     ![上传文件](./media/upload-files/postman-create-sas-locator.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "67703877"
 
 ## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>使用上传 URL 将文件上传到 Blob 存储
 
-使用 Azure 存储 API 或 SDK，例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md)、[Java SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) 或 [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)。
+使用 Azure 存储 Api 或 Sdk （例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md)或[.net sdk](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）。
 
 ## <a name="next-steps"></a>后续步骤
 

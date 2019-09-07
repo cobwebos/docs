@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 675d3e2f0dc27e70af497284ce273e87d005a2e1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2a18362546ae3c31b06fc5294495d8f5ac5f0be3
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241071"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389942"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>预览-创建和管理 Azure Kubernetes 服务中群集的多个节点池（AKS）
 
@@ -47,14 +47,13 @@ az extension update --name aks-preview
 
 ### <a name="register-multiple-node-pool-feature-provider"></a>注册多节点池功能提供程序
 
-若要创建可使用多个节点池的 AKS 群集，请先在订阅上启用两项功能标志。 多节点池群集使用虚拟机规模集（VMSS）管理 Kubernetes 节点的部署和配置。 使用[az feature register][az-feature-register]命令注册*MultiAgentpoolPreview*和*VMSSPreview*功能标志，如以下示例中所示：
+若要创建可使用多个节点池的 AKS 群集，请先在订阅上启用一个功能标志。 使用[az feature register][az-feature-register]命令注册*MultiAgentpoolPreview*功能标志，如以下示例中所示：
 
 > [!CAUTION]
 > 在订阅上注册功能时，当前无法注册该功能。 启用某些预览功能后，默认值可用于在订阅中创建的所有 AKS 群集。 不要对生产订阅启用预览功能。 使用单独的订阅来测试预览功能并收集反馈。
 
 ```azurecli-interactive
 az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 > [!NOTE]
@@ -64,7 +63,6 @@ az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 准备就绪后，请使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
@@ -77,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 
 创建和管理支持多个节点池的 AKS 群集时，有以下限制：
 
-* 只有已成功为订阅注册了*MultiAgentpoolPreview*和*VMSSPreview*功能后，多个节点池才可用于创建的群集。 在成功注册这些功能之前，无法添加或管理已创建的现有 AKS 群集的节点池。
+* 只有已成功为订阅注册*MultiAgentpoolPreview*功能后，才可使用多个节点池。 在成功注册此功能之前，无法添加或管理已创建的现有 AKS 群集的节点池。
 * 不能删除第一个节点池。
 * 无法使用 HTTP 应用程序路由加载项。
 * 与大多数操作一样，不能使用现有的资源管理器模板来添加/更新/删除节点池。 请改用[单独的资源管理器模板](#manage-node-pools-using-a-resource-manager-template)来更改 AKS 群集中的节点池。
@@ -86,7 +84,7 @@ az provider register --namespace Microsoft.ContainerService
 
 * AKS 群集最多可以有8个节点池。
 * AKS 群集在这八个节点池中最多可以有400个节点。
-* 所有节点池必须位于同一子网中
+* 所有节点池必须位于同一子网中。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 

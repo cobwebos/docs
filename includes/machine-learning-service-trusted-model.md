@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 08/08/2019
 ms.author: larryfr
-ms.openlocfilehash: 7b42ac110fffc0397d75138155ddfb84f0a00098
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b9520e0ba7b8a80a40bb60dab351029f04ce3868
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912284"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390628"
 ---
 > [!IMPORTANT]
-> 只应使用你创建的模型或从受信任的源获取的模型。 序列化模型应作为代码处理, 因为在许多常用格式中发现了安全漏洞。 此外, 模型可能是特意训练的, 旨在提供有偏差或不准确的输出。
+> 您应仅使用您创建的或从受信任的源获取的模型。 你应将序列化模型视为代码，因为安全漏洞已被多种常用格式发现。 此外，模型可能是特意训练的，旨在提供有偏差或不准确的输出。

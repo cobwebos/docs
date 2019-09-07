@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ecb840d97a45479d32079766807b4f2788cc29ec
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382906"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389708"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -42,7 +42,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 是的。 可以在不连接到本地的情况下使用 VNet。 例如，可以在 Azure VNet 中单独运行 Microsoft Windows Server Active Directory 域控制器和 SharePoint 场。
 
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>是否可以在 VNet 之间或者 VNet 与本地数据中心之间执行 WAN 优化？
-是的。 可以通过 Azure 市场部署许多供应商提供 [WAN 优化网络虚拟设备](https://azure.microsoft.com/marketplace/?term=wan+optimization)。
+是的。 可以通过 Azure 市场部署许多供应商提供 [WAN 优化网络虚拟设备](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization)。
 
 ## <a name="configuration"></a>配置
 
