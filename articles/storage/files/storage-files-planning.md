@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aa81f181c8d062e5fd68b0fbb2445f5c37540889
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 163c3cbaeed1526f08d047c3bf357232ccb534a3
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309563"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802389"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -206,14 +206,17 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 
 标准文件共享在所有区域中可用，最高可达 5 TiB。 在某些区域，可使用 100 TiB 限制，下表列出了这些区域：
 
-|地区 |支持的冗余 |支持现有的存储帐户 |门户支持 *   |
+|地区 |支持的冗余 |支持现有的存储帐户 |门户支持 * |
 |-------|---------|---------|---------|
-|澳大利亚东部  |LRS     |否    |是|
-|法国中部  |LRS     |否    |尚不支持|
-|法国南部    |LRS     |否    |尚不支持|
-|东南亚  |LRS、ZRS|否    |是|
-|西欧     |LRS、ZRS|否    |是|
-|美国西部 2       |LRS、ZRS|否    |是|
+|澳大利亚东部 |LRS     |否    |是|
+|澳大利亚东南部|LRS     |否    |尚不支持|
+|印度中部  |LRS     |否    |尚不支持|
+|法国中部  |LRS、ZRS|否    |LRS-是，ZRS-尚未|
+|印度南部    |LRS     |否    |尚不支持|
+|东南亚 |LRS、ZRS|否    |是|
+|美国中西部|LRS     |否    |尚不支持|
+|西欧    |LRS、ZRS|否    |是|
+|美国西部 2      |LRS、ZRS|否    |是|
 
 \* 对于没有门户支持的区域，你仍可以使用 PowerShell 或 Azure 命令行接口（CLI）来创建大于 5 TiB 的共享。 或者，通过门户创建新的共享，而无需指定配额。 这会创建默认大小为 100 TiB 的共享，稍后可通过 PowerShell 或 Azure CLI 进行更新。
 

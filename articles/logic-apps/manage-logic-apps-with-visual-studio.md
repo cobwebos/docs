@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: f628be48039df63700f8e786821f29ba55cfd943
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: dd6cd16302c69266a954816868c04c8507762717
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164876"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801257"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理逻辑应用
 
@@ -85,7 +85,7 @@ ms.locfileid: "70164876"
 
 ## <a name="open-in-visual-studio"></a>在 Visual Studio 中打开
 
-在 Visual Studio 中，可以打开以前直接通过 Azure 门户或者使用 Visual Studio 作为 Azure 资源管理器项目创建和部署的逻辑应用。
+在 Visual Studio 中，你可以使用 Visual Studio 直接通过 Azure 门户或 Azure 资源组项目打开以前创建和部署的逻辑应用。
 
 1. 打开 Cloud Explorer 并找到自己的逻辑应用。 
 
@@ -123,7 +123,34 @@ ms.locfileid: "70164876"
 
 4. 当系统提示输入位置时，请浏览到该位置，并在资源管理器模板中以 JSON (.json) 文件格式保存逻辑应用的定义。 
 
-逻辑应用定义显示在资源管理器模板中的 `resources` 子节内。 现在，可以使用 Visual Studio 来编辑逻辑应用定义和资源管理器模板。 还可以将模板作为 Azure 资源管理器项目添加到 Visual Studio 解决方案中。 了解 [Visual Studio 中逻辑应用的资源管理器项目](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。 
+逻辑应用定义显示在资源管理器模板中的 `resources` 子节内。 现在，可以使用 Visual Studio 来编辑逻辑应用定义和资源管理器模板。 还可以将模板作为[Azure 资源组项目](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)添加到 Visual Studio 解决方案。 了解[Visual Studio 中逻辑应用的 Azure 资源组项目](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。 
+
+<a name="link-integration-account"></a>
+
+## <a name="link-to-integration-account"></a>链接到集成帐户
+
+若要为企业到企业（B2B）企业集成方案构建逻辑应用，可将逻辑应用链接到与逻辑应用位于同一区域中的以前创建的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 集成帐户包含 B2B 项目，例如贸易合作伙伴、协议、架构和地图，并使逻辑应用使用 B2B 连接器进行 XML 验证和平面文件编码或解码。 尽管可以[使用 Azure 门户创建此链接](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)，但在满足[先决条件](#requirements)后，也可以使用 Visual Studio，并且逻辑应用作为 JSON （json）文件存在于[Azure 资源组项目](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)中。 了解[Visual Studio 中逻辑应用的 Azure 资源组项目](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project)。
+
+1. 在 Visual Studio 中，打开包含逻辑应用的 Azure 资源组项目。
+
+1. 在解决方案资源管理器中，打开 **< 逻辑应用-名称 > json**文件的快捷菜单，然后选择 "**打开并逻辑应用设计器**"。 （键盘：Ctrl+L）
+
+   ![在逻辑应用设计器中打开逻辑应用的 json 文件](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
+
+   > [!TIP]
+   > 如果你的 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 的最新更新。
+
+1. 若要确保逻辑应用设计器具有焦点，请选择设计器的选项卡或图面，以便 "属性" 窗格显示逻辑应用的 "**集成帐户**" 属性。
+
+   !["属性" 窗格显示 "集成帐户" 属性](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties.png)
+
+1. 打开 "**集成帐户**" 列表，并选择要链接到逻辑应用的集成帐户，例如：
+
+   ![打开 "集成帐户" 属性列表](./media/manage-logic-apps-with-visual-studio/select-integration-account.png)
+
+1. 完成后，请记住保存 Visual Studio 解决方案。
+
+在 Visual Studio 中设置**集成帐户**属性并将逻辑应用保存为 Azure 资源管理器模板时，该模板还包括所选集成帐户的参数声明。 有关模板参数和逻辑应用的详细信息，请[参阅概述：自动执行逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)部署。
 
 <a name="refresh"></a>
 

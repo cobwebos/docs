@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: c8533f79dd2bf02a03ff4a37283359f3b3a5bf39
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b145b341a4db503a00d517decf6406e26f23c3cd
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066043"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802457"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
-针对 Azure [SQL 数据库](sql-database-technical-overview.md)和[SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的审核将跟踪数据库事件, 并将它们写入 Azure 存储帐户中的审核日志, Log Analytics 工作区或事件中心。 审核还可：
+针对 Azure [SQL 数据库](sql-database-technical-overview.md)和[SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的审核将跟踪数据库事件，并将它们写入 Azure 存储帐户中的审核日志，Log Analytics 工作区或事件中心。 审核还可：
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
@@ -86,10 +86,10 @@ ms.locfileid: "70066043"
 
     ![导航窗格][3]
 
-5. **新建** - 现在有多个选项，可以用来配置审核日志将写入到的位置。 你可以将日志写入 Azure 存储帐户、Azure Monitor 日志的 Log Analytics 工作区, 或使用事件中心进行消耗的事件中心。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
+5. **新建** - 现在有多个选项，可以用来配置审核日志将写入到的位置。 你可以将日志写入 Azure 存储帐户、Azure Monitor 日志的 Log Analytics 工作区，或使用事件中心进行消耗的事件中心。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
 
    > [!WARNING]
-   > 根据引入速率, 启用 Log Analytics 审核会产生成本。 请注意, 使用此[选项](https://azure.microsoft.com/pricing/details/monitor/)时的关联成本, 或考虑将审核日志存储在 Azure 存储帐户中。
+   > 根据引入速率，启用 Log Analytics 审核会产生成本。 请注意，使用此[选项](https://azure.microsoft.com/pricing/details/monitor/)时的关联成本，或考虑将审核日志存储在 Azure 存储帐户中。
 
     ![存储选项](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -117,19 +117,19 @@ ms.locfileid: "70066043"
 
 ## <a id="subheading-3"></a>分析审核日志和报告
 
-如果选择将审核日志写入 Azure Monitor 日志:
+如果选择将审核日志写入 Azure Monitor 日志：
 
 - 使用 [Azure 门户](https://portal.azure.com)。  打开相关数据库。 在数据库的“审核”页的顶部，单击“查看审核日志”。
 
     ![查看审核日志](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
-- 然后, 可以通过两种方式查看日志:
+- 然后，可以通过两种方式查看日志：
     
-    单击 "**审核记录**" 页顶部**Log Analytics**会打开 Log Analytics 工作区中的 "日志" 视图, 您可以在其中自定义时间范围和搜索查询。
+    单击 "**审核记录**" 页顶部**Log Analytics**会打开 Log Analytics 工作区中的 "日志" 视图，您可以在其中自定义时间范围和搜索查询。
     
     ![在 Log Analytics 工作区中打开](./media/sql-database-auditing-get-started/auditing-log-analytics.png)
 
-    单击 "**审核记录**" 页顶部的 "**查看仪表板**" 将打开一个显示审核日志信息的仪表板, 你可以在其中深化到安全见解、对敏感数据的访问权限等。 此仪表板旨在帮助你获取数据的安全见解。
+    单击 "**审核记录**" 页顶部的 "**查看仪表板**" 将打开一个显示审核日志信息的仪表板，你可以在其中深化到安全见解、对敏感数据的访问权限等。 此仪表板旨在帮助你获取数据的安全见解。
     还可以自定义时间范围和搜索查询。 
     ![查看 Log Analytics 仪表板](media/sql-database-auditing-get-started/auditing-view-dashboard.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "70066043"
  
 
 - 也可从 Log Analytics 边栏选项卡访问审核日志。 打开 Log Analytics 工作区，然后在“常规”部分单击“日志”。 一开始可以使用简单的查询（例如：搜索“SQLSecurityAuditEvents”）来查看审核日志。
-    在这里, 你还可以使用[Azure Monitor 日志](../log-analytics/log-analytics-log-search.md)对审核日志数据运行高级搜索。 有了 Azure Monitor 日志，就可以使用集成的搜索和自定义仪表板来轻松分析所有工作负荷和服务器上的数百万记录，获得实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅 [Azure Monitor 日志搜索参考](../log-analytics/log-analytics-log-search.md)。
+    在这里，你还可以使用[Azure Monitor 日志](../log-analytics/log-analytics-log-search.md)对审核日志数据运行高级搜索。 有了 Azure Monitor 日志，就可以使用集成的搜索和自定义仪表板来轻松分析所有工作负荷和服务器上的数百万记录，获得实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅 [Azure Monitor 日志搜索参考](../log-analytics/log-analytics-log-search.md)。
 
 如果已选择将审核日志写入到事件中心，请执行以下操作：
 
@@ -201,8 +201,6 @@ ms.locfileid: "70066043"
 
     >[!IMPORTANT]
     >在数据库级审核中，辅助数据库的存储设置与主数据库相同，因而会导致生成跨区域流量。 建议仅启用服务器级审核，并对所有数据库禁用数据库级审核。
-    > [!WARNING]
-    > 对于辅助异地复制数据库, 当前不支持在服务器级别使用事件中心或 Azure Monitor 日志作为审核日志的目标。
 
 ### <a id="subheading-6">重新生成存储密钥</a>
 
@@ -277,7 +275,7 @@ ms.locfileid: "70066043"
 - [部署启用了审核的 Azure SQL Server，以将审核日志写入事件中心](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
 
 > [!NOTE]
-> 链接的示例位于外部公共存储库中, 按 "原样" 提供, 不含任何担保, 在任何 Microsoft 支持计划/服务下均不受支持。
+> 链接的示例位于外部公共存储库中，按 "原样" 提供，不含任何担保，在任何 Microsoft 支持计划/服务下均不受支持。
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

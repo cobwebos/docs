@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/03/2019
+ms.date: 09/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: 43f858f0e08b622bcd198be3ed0166076a4f0d54
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: f864384dd5b86420fd9edf446b2573421a05f807
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734287"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801510"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -132,8 +132,8 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **台北** | Chief Telecom | 不适用 | 首席电信，FarEasTone |
 | **东京** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 日本东部 | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT EAST、Orange、Softbank、Verizon |
 | **多伦多** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 加拿大中部 | & T NetBond、钟形加拿大、CenturyLink Cloud Connect、Cologix、Equinix、IX 到 Megaport、Telus、Verizon、Zayo |
-| **华盛顿特区** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 美国东部、美国东部2 | Aryaka networks、网络，在 & T NetBond，英国电信，CenturyLink Cloud Connect，Cologix，Comcast，Coresite，Equinix，Internet2，InterCloud，Level 3 通信，Megaport，Neutrona 网络，NTT 通信，橙色，PacketFabric，冲刺（Sprint），Tata通信，Telia 电信公司，Verizon，Zayo |
-| **华盛顿特区 2** | [Coresite 场](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 美国东部、美国东部2 |Coresite | 
+| **华盛顿特区** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 美国东部、美国东部2 | Aryaka networks、网络，在 & T NetBond，英国电信，CenturyLink Cloud Connect，Cologix，Comcast，Coresite，Equinix，Internet2，InterCloud，Level 3 通信，Megaport，Neutrona 网络，NTT 通信，橙色，PacketFabric，SES，冲刺（Sprint），Tata通信，Telia 电信公司，Verizon，Zayo |
+| **华盛顿特区 2** | [Coresite 场](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 美国东部、美国东部2 |Coresite、Viasat | 
 | **苏黎世** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | 不适用 | Intercloud、Interxion |
 
  **+** 表示即将推出

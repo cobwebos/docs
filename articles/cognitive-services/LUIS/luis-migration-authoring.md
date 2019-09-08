@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: 7fe35edfbfc8f50aa9428e41e7d807a0838417ec
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: bfd11254ffccd5085701071fcdb2116ca368bc82
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259658"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801456"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
@@ -43,7 +43,7 @@ ms.locfileid: "70259658"
 迁移不是： 
 
 * 收集协作者并自动移动或添加到 Azure 创作资源的进程。 作为应用所有者，需要完成此步骤。 此步骤需要具有相应资源的权限。
-* 用于创建和分配预测运行时资源的进程。 如果需要预测运行时资源，这是[一个单独的进程](/luis-how-to-azure-subscription.md#create-runtime-resource-in-the-azure-portal)，并且保持不变。 
+* 用于创建和分配预测运行时资源的进程。 如果需要预测运行时资源，这是[一个单独的进程](luis-how-to-azure-subscription.md##create-resources-in-the-azure-portal)，并且保持不变。 
 
 ## <a name="how-are-the-apps-migrating"></a>如何迁移应用？
 

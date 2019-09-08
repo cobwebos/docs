@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 5b13c3c93f8b2d6f3eed5a32c49baf1b9d1b201e
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 738d6738469960c8b21809b9320c4d034613c4e3
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773342"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802377"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL 数据库无服务器计算层（预览版）
 
@@ -292,7 +292,7 @@ Get-AzSqlDatabase `
 - **计费量**：vCore 单位价格 * 最大值（最小 vCore 数、使用的 vCore 数、最小内存量 (GB) * 1/3、使用的内存量量 (GB) * 1/3） 
 - **计费频率**：每秒
 
-vCore 单位价格是每个 vCore 每秒的费用。 请参考 [Azure SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/single/)，获取给定区域的特定单位价格。
+VCore 单位价格是每秒 vCore 的成本。 请参考 [Azure SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/single/)，获取给定区域的特定单位价格。
 
 计费的计算量按以下指标进行公开：
 
