@@ -6,15 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 06/04/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.localizationpriority: high
+ms.openlocfilehash: b2ebb4c5a0df360cede084a90ebe5da041a08aa0
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446737"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70241373"
 ---
+::: zone target = "docs"
+
 # <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Data Box Heavy
 
 本快速入门介绍如何使用 Azure 门户部署 Azure Data Box Heavy。 步骤包括如何对 Data Box Heavy 进行布线、配置和数据复制操作，以便将数据上传到 Azure。 快速入门在 Azure 门户以及设备的本地 Web UI 中完成。
@@ -55,6 +58,7 @@ ms.locfileid: "67446737"
     - 对于 10-Gbps 线缆，需要使用 SFP+ 线缆，其一端插入 10-G 交换机，插入设备的另一端配备 QSFP+ 转 SFP+ 适配器（或 QSA 适配器）。
 - 设备背面的托盘中提供了电源线。
 
+
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
@@ -69,6 +73,16 @@ ms.locfileid: "67446737"
 4. 输入订单详细信息和发货信息。 如果该服务在你所在的区域中可用，请提供通知电子邮件地址、查看摘要，然后创建订单。
 
 创建订单后，Microsoft 会准备需发货的设备。
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+# <a name="cable-and-connect-to-your-device"></a>为设备连接电缆并连接到它
+
+检查先决条件后，为设备连接电缆并连接到设备。
+
+::: zone-end
 
 ## <a name="cable-for-power"></a>排布电源线
 
@@ -105,6 +119,9 @@ ms.locfileid: "67446737"
 完成此步骤大约需要 15-20 分钟。
 
 遵循对第一个节点使用的步骤，对设备上的第二个节点进行布线和配置。  
+
+
+::: zone target = "docs"
 
 ## <a name="copy-data"></a>复制数据
 
@@ -157,3 +174,5 @@ ms.locfileid: "67446737"
 
 > [!div class="nextstepaction"]
 > [使用 Azure 门户管理 Data Box Heavy](data-box-portal-admin.md)
+
+::: zone-end

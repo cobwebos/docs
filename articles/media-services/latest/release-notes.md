@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/07/2019
+ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: f4a859f1e63866a50167031569dca05de3e9af27
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856307"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801388"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -34,19 +34,23 @@ ms.locfileid: "68856307"
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
 
-## <a name="august-2019"></a>2019年8月
+## <a name="september-2019"></a>2019年9月
+
+媒体服务 v3 宣布推出实时事件实时线性编码的24小时 x 365 天的预览。
+ 
+## <a name="august-2019"></a>2019 年 8 月
 
 ### <a name="south-africa-regional-pair-is-open-for-media-services"></a>已为 Media Services 打开了南非区域对 
 
 媒体服务现已在南部北部和南非非洲地区推出。
 
-有关详细信息, 请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
+有关详细信息，请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
 
-## <a name="july-2019"></a>2019年7月
+## <a name="july-2019"></a>2019 年 7 月
 
 ### <a name="content-protection"></a>内容保护
 
-当流式处理使用令牌限制保护的内容时, 最终用户需要获取作为密钥传递请求的一部分发送的令牌。 使用*令牌重播防护*功能, 媒体服务客户可以设置一个限制, 该限制可用于请求密钥或许可证。 有关详细信息, 请参阅[令牌重播防护](content-protection-overview.md#token-replay-prevention)。
+当流式处理使用令牌限制保护的内容时，最终用户需要获取作为密钥传递请求的一部分发送的令牌。 使用*令牌重播防护*功能，媒体服务客户可以设置一个限制，该限制可用于请求密钥或许可证。 有关详细信息，请参阅[令牌重播防护](content-protection-overview.md#token-replay-prevention)。
 
 此功能目前已在美国中部和美国西部中部提供。
 
@@ -58,7 +62,7 @@ ms.locfileid: "68856307"
 
 此功能适用于使用[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)预设或[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms)。 
 
-请参阅示例:
+请参阅示例：
 
 * [使用 .NET 子剪辑视频](subclip-video-dotnet-howto.md)
 * [使用 REST 子剪辑视频](subclip-video-rest-howto.md)
@@ -72,21 +76,21 @@ ms.locfileid: "68856307"
 * 使用 Azure Monitor 诊断日志来监视 Media Services 密钥传送终结点发送的请求。 
 * 监视媒体服务[流式处理终结点](streaming-endpoint-concept.md)发出的指标。   
 
-有关详细信息, 请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
+有关详细信息，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
 
 ### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>动态打包中的多音频跟踪支持 
 
-当使用多个编解码器和语言的多个音频轨迹流式传输资产时,[动态打包](dynamic-packaging-overview.md)现在支持 HLS 输出的多个音频轨迹 (版本4或更高版本)。
+当使用多个编解码器和语言的多个音频轨迹流式传输资产时，[动态打包](dynamic-packaging-overview.md)现在支持 HLS 输出的多个音频轨迹（版本4或更高版本）。
 
 ### <a name="korea-regional-pair-is-open-for-media-services"></a>韩国区域对为 Media Services 开放 
 
 媒体服务现已在韩国中部和韩国南部区域推出。 
 
-有关详细信息, 请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
+有关详细信息，请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
 
 ### <a name="performance-improvements"></a>性能提升
 
-添加了更新, 其中包括媒体服务性能改进。
+添加了更新，其中包括媒体服务性能改进。
 
 * 已更新处理所支持的最大文件大小。 请参阅、[配额和限制](limits-quotas-constraints.md)。
 * [编码加快了提高](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
@@ -96,13 +100,13 @@ ms.locfileid: "68856307"
 ### <a name="new-presets"></a>新预设
 
 * 已将[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)添加到内置分析器预设。
-* 已将[ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)添加到内置编码器预设。 有关详细信息, 请参阅[内容感知编码](cae-experimental.md)。 
+* 已将[ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)添加到内置编码器预设。 有关详细信息，请参阅[内容感知编码](cae-experimental.md)。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-动态打包现在支持杜比 Atmos。 有关详细信息, 请参阅[动态打包支持的音频编解码器](dynamic-packaging-overview.md#audio-codecs)。
+动态打包现在支持杜比 Atmos。 有关详细信息，请参阅[动态打包支持的音频编解码器](dynamic-packaging-overview.md#audio-codecs)。
 
-你现在可以指定将应用于流式处理定位符的资产或帐户筛选器的列表。 有关详细信息, 请参阅[将筛选器与流式处理定位符相关联](filters-concept.md#associating-filters-with-streaming-locator)。
+你现在可以指定将应用于流式处理定位符的资产或帐户筛选器的列表。 有关详细信息，请参阅[将筛选器与流式处理定位符相关联](filters-concept.md#associating-filters-with-streaming-locator)。
 
 ## <a name="february-2019"></a>2019 年 2 月
 
@@ -252,12 +256,12 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 ### <a name="net-sdk"></a>.NET SDK
 
-.NET SDK 中提供了以下功能:
+.NET SDK 中提供了以下功能：
 
 * 转换和作业，用于对媒体内容来进行编码或分析。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
 * **流式处理定位符**，用于发布内容并将其流式传输到最终用户设备
 * **流式处理策略**和**内容密钥策略**，用于在传送内容时配置密钥传递和内容保护 (DRM)。
-* **实时事件**和**实时输出**，用于配置实时传送视频流内容的引入和归档。
+* **直播活动**和**实时输出**，用于配置实时传送视频流内容的引入和归档。
 * 资产，用于在 Azure 存储中存储和发布媒体内容。 
 * **流式处理终结点**，用于配置和缩放实时和点播媒体内容的动态打包、加密和流式处理。
 
