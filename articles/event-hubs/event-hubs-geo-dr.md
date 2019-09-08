@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 22cf2be8eaed47a9440c6798acfb4383bd84c916
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cf36c233df9f8aaf76333b0add8b1ffce869156b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611718"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773236"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中心 - 异地灾难恢复 
 
@@ -53,7 +53,7 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 -  *故障转移*：激活辅助命名空间的过程。
 
 ## <a name="supported-namespace-pairs"></a>支持的命名空间对
-支持以下主要和辅助命名空间的组合:  
+支持以下主要和辅助命名空间的组合：  
 
 | 主命名空间 | 辅助命名空间 | 支持 | 
 | ----------------- | -------------------- | ---------- |
@@ -110,13 +110,19 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 此版本需要注意以下事项：
 
-1. 在故障转移规划中，还应考虑时间因素。 例如，如果失去连接的时间超过 15 到 20 分钟，你可能会决定启动故障转移。 
+1. 按照设计，事件中心异地灾难恢复不会复制数据，因此，你无法在辅助事件中心重复使用主事件中心的旧偏移值。 建议通过以下方式之一重启事件接收方：
+
+- *EventPosition. FromStart （）* -如果要读取辅助事件中心上的所有数据。
+- *EventPosition. FromEnd （）* -如果要从连接到次要事件中心时读取所有新数据。
+- *EventPosition. FromEnqueuedTime （日期时间）* -如果想要从给定的日期和时间开始读取辅助事件中心内接收的所有数据。
+
+2. 在故障转移规划中，还应考虑时间因素。 例如，如果失去连接的时间超过 15 到 20 分钟，你可能会决定启动故障转移。 
  
-2. 未复制数据是指未复制当前处于活动状态的会话。 此外，重复检测和计划消息可能无法正常工作。 新的会话、计划消息和新的重复项可以正常工作。 
+3. 未复制数据是指未复制当前处于活动状态的会话。 此外，重复检测和计划消息可能无法正常工作。 新的会话、计划消息和新的重复项可以正常工作。 
 
-3. 故障转移复杂的分布式基础结构应至少[演练](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)一次。 
+4. 故障转移复杂的分布式基础结构应至少[演练](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)一次。 
 
-4. 同步实体可能需要一些时间，每分钟大约 50-100 个实体。
+5. 同步实体可能需要一些时间，每分钟大约 50-100 个实体。
 
 ## <a name="availability-zones"></a>可用性区域 
 

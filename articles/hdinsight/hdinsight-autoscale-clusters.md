@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 333eecb11f0bd20c747bc44419fea26765f886c5
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f7e34d2bbad5f5d8e6b063269b7e87c314fdce90
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509113"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70770695"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>自动缩放 Azure HDInsight 群集（预览）
 
@@ -31,7 +31,7 @@ Azure HDInsight 的群集自动缩放功能可以自动增加和减少群集中�
 | 不包含 ESP 的 HDInsight 3.6 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
 | 不包含 ESP 的 HDInsight 4.0 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
 | 包含 ESP 的 HDInsight 3.6 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
-| 包含 ESP 的 HDInsight 3.6 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
+| HDInsight 4.0 与 ESP | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -192,7 +192,7 @@ HDInsight 服务将计算需要多少个新的工作器节点才能满足当前�
 ![启用工作器节点的基于计划的自动缩放选项](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
 
 #### <a name="using-the-rest-api"></a>使用 REST API
-若要使用 REST API 在正在运行的群集上启用或禁用自动缩放, 请将 POST 请求发送到自动缩放终结点, 如下面的代码片段所示:
+若要使用 REST API 在正在运行的群集上启用或禁用自动缩放，请将 POST 请求发送到自动缩放终结点，如下面的代码片段所示：
 
 ```
 https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{resourceGroup Name}/providers/Microsoft.HDInsight/clusters/{CLUSTERNAME}/roles/workernode/autoscale?api-version=2018-06-01-preview
@@ -204,7 +204,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 { autoscale: { capacity: { minInstanceCount: 1, maxInstanceCount: 2 } } }
 ```
 
-请参阅上一节, 了解如何[启用基于负载的自动缩放](#load-based-autoscaling)以获取所有负载参数的完整说明。
+请参阅上一节，了解如何[启用基于负载的自动缩放](#load-based-autoscaling)以获取所有负载参数的完整说明。
 
 ## <a name="best-practices"></a>最佳实践
 

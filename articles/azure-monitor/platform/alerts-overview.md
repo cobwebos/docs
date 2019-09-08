@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: defc317618dfffd0e2b28c75b6168ec1dbda36b7
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: 3ac6ec9fe55e901e593f201b5ff71668d80d66e3
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735129"
+ms.locfileid: "70773009"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -53,7 +53,11 @@ ms.locfileid: "70735129"
 **警报说明** - 用户配置的警报规则的说明
 
 **严重性** - 警报规则中指定的条件符合后确定的警报严重性。 严重性的范围为 0 到 4。
-严重性 0 = 临界严重性 1 = 错误严重性 2 = 警告严重性 3 = 信息严重性 4 = 详细
+   - 严重性 0 = 严重
+   - 严重性 1 = 错误
+   - 严重性 2 = 警告
+   - 严重性 3 = 信息性
+   - 严重性 4 = 详细 
 
 **操作** - 触发警报时执行的特定操作。 有关详细信息，请参阅[操作组](../../azure-monitor/platform/action-groups.md)。
 

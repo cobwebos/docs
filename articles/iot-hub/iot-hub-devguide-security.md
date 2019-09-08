@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 618f118ceedb7d55caefc5e2bebceb08c1d732ac
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: fa1aa8c560f4b9cc48c7a6a761abe4d69d5d0265
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018191"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773178"
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
@@ -195,7 +195,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
 
-下面是先决条件的安装说明。
+下面是必备组件的安装说明。
 
 [!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
@@ -363,7 +363,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>为设备注册 X.509 证书
 
-[用于 C# 的 Azure IoT 服务 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service)（版本 1.0.8+）支持注册使用 X.509 证书进行身份验证的设备。 其他 API（例如设备的导入/导出）也支持 X.509 证书。
+[用于 C# 的 Azure IoT 服务 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service)（版本 1.0.8+）支持注册使用 X.509 证书进行身份验证的设备。 其他 API（例如设备的导入/导出）也支持 X.509 证书。
 
 此外，还可使用 CLI 扩展命令 [az iot hub device-identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) 配置设备的 X.509 证书。
 
@@ -390,7 +390,7 @@ await registryManager.AddDeviceAsync(device);
 
 ### <a name="use-an-x509-certificate-during-run-time-operations"></a>在运行时操作期间使用 X.509 证书
 
-[用于 .NET 的 Azure IoT 设备 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device)（版本 1.0.11+）支持使用 X.509 证书。
+[用于 .NET 的 Azure IoT 设备 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device)（版本 1.0.11+）支持使用 X.509 证书。
 
 ### <a name="c-support"></a>C\# 支持
 

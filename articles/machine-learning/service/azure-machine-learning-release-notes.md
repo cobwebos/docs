@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0880b5706f2621971a4e5c82a6db03cdd22ce4d6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 78d16e8e6fc43644cdb318f8e402c2e8bbe0363e
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278295"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772495"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -70,6 +70,12 @@ ms.locfileid: "70278295"
   + **azureml-train-core**
     + 在 sdk 中直接发生某些超参数空间定义错误，而不是服务器端。
 
+### <a name="azure-machine-learning-data-prep-sdk-v1114"></a>Azure 机器学习数据准备 SDK 1.1.14
++ **Bug 修复和改进**
+  + 已启用使用原始路径和凭据写入 ADLS/ADLSGen2。
+  + 修复了导致`include_path=True`不起作用的`read_parquet`bug。
+  + 修复`to_pandas_dataframe()`了 "属性值无效： hostSecret" 异常导致的失败。
+  + 修复了在 Spark 模式下无法在 DBFS 上读取文件的 bug。
   
 ## <a name="2019-08-19"></a>2019-08-19
 

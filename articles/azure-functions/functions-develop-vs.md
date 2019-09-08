@@ -8,39 +8,41 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: ebc900735dfbb25206c4b22e3d20da62d85c61df
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905687"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773164"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
 Visual Studio 允许你开发、测试类库函数并C#将其部署到 Azure。 如果这是你第一次体验 Azure Functions，可以在 [Azure Functions 简介](functions-overview.md)中了解详细信息。
 
-开发函数时, Visual Studio 提供了以下优势: 
+开发函数时，Visual Studio 提供了以下优势： 
 
 * 在本地开发计算机上编辑、生成和运行函数。 
-* 将 Azure Functions 项目直接发布到 Azure, 并根据需要创建 Azure 资源。 
+* 将 Azure Functions 项目直接发布到 Azure，并根据需要创建 Azure 资源。 
 * 使用C#特性直接在C#代码中声明函数绑定。
 * 开发和部署预先编译的 C# 函数。 与基于 C# 脚本的函数相比，预先编译的函数的冷启动性能更好。 
 * 可以在 C# 中编写函数的代码，同时利用 Visual Studio 开发环境的所有优势。 
 
 本文详细介绍如何使用 Visual Studio 开发C#类库功能并将其发布到 Azure。 在阅读本文之前，应先完成 [Visual Studio 的函数快速入门](functions-create-your-first-function-visual-studio.md)。 
 
-除非另有说明, 否则将显示 Visual Studio 2019 的过程和示例。 
+除非另有说明，否则将显示 Visual Studio 2019 的过程和示例。 
 
 ## <a name="prerequisites"></a>先决条件
 
-从 Visual studio 2017 开始, Visual Studio 的 Azure 开发工作负载中包含 Azure Functions 工具。 请确保在 Visual Studio 安装中包括**Azure 开发**工作负荷。
+从 Visual studio 2017 开始，Visual Studio 的 Azure 开发工作负载中包含 Azure Functions 工具。 请确保在 Visual Studio 安装中包括**Azure 开发**工作负荷。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 所需的其他资源（例如 Azure 存储帐户）将在发布过程中在订阅中创建。
 
 > [!NOTE]
-> 在 Visual Studio 2017 中, Azure 开发工作负荷将 Azure Functions 工具安装为单独的扩展。 更新 Visual Studio 2017 时, 还请确保使用的是[最新版本](#check-your-tools-version)的 Azure Functions 工具。 以下部分介绍如何在 Visual Studio 2017 中检查和 (如果需要) 更新 Azure Functions 工具扩展。 
+> 在 Visual Studio 2017 中，Azure 开发工作负荷将 Azure Functions 工具安装为单独的扩展。 更新 Visual Studio 2017 时，还请确保使用的是[最新版本](#check-your-tools-version)的 Azure Functions 工具。 以下部分介绍如何在 Visual Studio 2017 中检查和（如果需要）更新 Azure Functions 工具扩展。 
+>
+> 使用 Visual Studio 2019 时，请跳过这些部分。
 
 ### <a name="check-your-tools-version"></a>在 Visual Studio 2017 中检查工具版本
 
@@ -65,7 +67,7 @@ Visual Studio 允许你开发、测试类库函数并C#将其部署到 Azure。 
 1. 更新完成后，请选择“关闭”并重启 Visual Studio。
 
 > [!NOTE]  
-在 Visual Studio 2019 和更高版本中, Azure Functions 工具扩展将作为 Visual Studio 的一部分更新。  
+在 Visual Studio 2019 和更高版本中，Azure Functions 工具扩展将作为 Visual Studio 的一部分更新。  
 
 ## <a name="create-an-azure-functions-project"></a>创建 Azure Functions 项目
 
@@ -75,7 +77,7 @@ Visual Studio 允许你开发、测试类库函数并C#将其部署到 Azure。 
 
 * **host.json**：用于配置 Functions 主机。 在本地和 Azure 中运行时，都会应用这些设置。 有关详细信息，请参阅 [host.json 参考](functions-host-json.md)。
 
-* **local.settings.json**：维护本地运行函数时使用的设置。 在 Azure 中运行时不使用这些设置。 有关详细信息，请参阅[本地设置文件](#local-settings-file)。
+* **local.settings.json**：维护本地运行函数时使用的设置。 在 Azure 中运行时，不使用这些设置。 有关详细信息，请参阅[本地设置文件](#local-settings-file)。
 
     >[!IMPORTANT]
     >由于 local.settings.json 文件可能包含机密，因此必须将其从项目源代码管理中排除。 此文件的“复制到输出目录”设置应始终为“如果较新则复制”。 
@@ -84,7 +86,7 @@ Visual Studio 允许你开发、测试类库函数并C#将其部署到 Azure。 
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-发布项目时，不会自动上传 local.settings.json 中的设置。 为了确保这些设置也存在于 Azure 的函数应用中，必须在发布项目之后上传它们。 若要了解详细信息，请参阅[函数应用设置](#function-app-settings)。
+当你发布项目时，不会自动上载本地. json 中的设置。 为了确保这些设置也存在于 Azure 的函数应用中，必须在发布项目之后上传它们。 若要了解详细信息，请参阅[函数应用设置](#function-app-settings)。
 
 **ConnectionStrings** 中的值永远不会发布。
 
@@ -92,11 +94,11 @@ Visual Studio 允许你开发、测试类库函数并C#将其部署到 Azure。 
 
 ## <a name="configure-the-project-for-local-development"></a>为本地开发配置项目
 
-Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 AzureWebJobsStorage 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)。 若要使用模拟器，请将 AzureWebJobsStorage 的值设置为 `UseDevelopmentStorage=true`。 在部署之前, 请将此设置更改为实际的存储帐户连接字符串。
+Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 AzureWebJobsStorage 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)。 若要使用模拟器，请将 AzureWebJobsStorage 的值设置为 `UseDevelopmentStorage=true`。 在部署之前，请将此设置更改为实际的存储帐户连接字符串。
 
 若要设置存储帐户连接字符串，请执行以下操作：
 
-1. 在 Visual Studio 中, 打开**Cloud Explorer**, 展开 " > 存储帐户" "存储**帐户**", 然后在 "**属性**" 选项卡中复制 "**主连接字符串**" 值。
+1. 在 Visual Studio 中，打开**Cloud Explorer**，展开 " > 存储帐户" "存储**帐户**"，然后在 "**属性**" 选项卡中复制 "**主连接字符串**" 值。
 
 2. 在项目内，打开 local.settings.json 项目文件，并将“AzureWebJobsStorage”键的值设置为复制的连接字符串。
 
@@ -104,7 +106,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
 ## <a name="add-a-function-to-your-project"></a>将函数添加到项目
 
-在C#类库函数中, 函数使用的绑定是通过在代码中应用特性来定义的。 从提供的模板创建函数触发器时, 将应用触发器属性。 
+在C#类库函数中，函数使用的绑定是通过在代码中应用特性来定义的。 从提供的模板创建函数触发器时，将应用触发器属性。 
 
 1. 在“解决方案资源管理器”中，右键单击项目节点，然后选择“添加” > “新建项”。 选择“Azure 函数”，键入类的**名称**，然后单击“添加”。
 
@@ -146,7 +148,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
 使用触发器时，输入和输出绑定是作为绑定属性添加到函数的。 向函数添加绑定，如下所示：
 
-1. 确保已[为本地开发配置项目](#configure-the-project-for-local-development)。
+1. 请确保已[配置了用于本地开发的项目](#configure-the-project-for-local-development)。
 
 2. 为特定绑定添加适当的 NuGet 扩展包。 有关详细信息，请参阅“触发器和绑定”一文中的[使用 Visual Studio 进行本地 C# 开发](./functions-bindings-register.md#local-csharp)。 特定于绑定的 NuGet 包要求位于绑定的参考文章中。 例如，可以在[事件中心绑定参考文章](functions-bindings-event-hubs.md)中找到事件中心触发器的包要求。
 
@@ -212,7 +214,7 @@ For an example of how to test a queue triggered function, see the [queue trigger
 **本地**表示 local.settings.json 文件中的设置值，**远程**是 Azure 的函数应用中的当前设置。  选择“添加设置”以创建新的应用设置。 使用“从本地插入值”链接将设置值复制到“远程”字段。 你选择“确定”后，挂起的更改将写入本地设置文件和函数应用。
 
 > [!NOTE]
-> 默认情况下, 不会将本地. json 文件签入到源代码管理中。 这意味着, 当你从源代码管理克隆本地函数项目时, 该项目没有 在这种情况下, 你需要手动在项目根目录中创建 web.config 文件, 以便**应用程序设置**对话框按预期方式工作。 
+> 默认情况下，不会将本地. json 文件签入到源代码管理中。 这意味着，当你从源代码管理克隆本地函数项目时，该项目没有 在这种情况下，你需要手动在项目根目录中创建 web.config 文件，以便**应用程序设置**对话框按预期方式工作。 
 
 还可以采用以下这些其他方法之一来管理应用程序设置：
 

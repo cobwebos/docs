@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7ec30e2445a5ed6008256f7abcef496247922968
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
-ms.translationtype: HT
+ms.openlocfilehash: d5372ac8b31db91aaac018b203ee8868fa313fd8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744480"
+ms.locfileid: "70772991"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
@@ -171,11 +171,10 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 
 | 元素名称 | 必填 | 描述 |
 |:--|:--|:--|
-| `Type` | 是 | 操作的类型。  警报操作的类型是 Alert。 |
-| `Name` | 是 | 警报的显示名称。  这是警报规则在控制台中的显示名称。 |
-| `Description` | 否 | 警报的可选说明。 |
-| `Severity` | 是 | 警报记录的严重等级包括以下值：<br><br> 严重<br>警告<br>信息性
-
+| `type` | 是 | 操作的类型。  警报操作的类型是 Alert。 |
+| `name` | 是 | 警报的显示名称。  这是警报规则在控制台中的显示名称。 |
+| `description` | 否 | 警报的可选说明。 |
+| `severity` | 是 | 警报记录的严重等级包括以下值：<br><br> 严重<br>警告<br>信息性
 
 #### <a name="threshold"></a>阈值
 本部分是必需的。 它定义警报阈值的属性。

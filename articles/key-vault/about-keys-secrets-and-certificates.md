@@ -3,18 +3,18 @@ title: 关于 Azure 密钥保管库密钥、机密和证书 - Azure 密钥保管
 description: Azure Key Vault REST 接口概述以及密钥、机密和证书的开发人员详细信息。
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 52a0bc1b07ebf1aed55551e37ecc122ff393c0f7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8ea7fc5a318775b05c03166df3d9b457ec004273
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703918"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773129"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 
@@ -27,7 +27,7 @@ ms.locfileid: "67703918"
 
 有关 Key Vault 的更多常规信息，请参阅[什么是 Azure Key Vault？](/azure/key-vault/key-vault-whatis)
 
-## <a name="azure-key-vault"></a>Azure 密钥保管库
+## <a name="azure-key-vault"></a>Azure Key Vault
 
 以下部分提供在实现 Key Vault 服务中可以用到的常规信息。
 
@@ -76,7 +76,7 @@ Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系�
 |`keyvault-name`|Microsoft Azure Key Vault 服务中的保管库名称。<br /><br /> Key Vault 名称由用户选择，并且全局唯一。<br /><br /> Key Vault 的名称必须是 3-24 个字符，且仅包含 0-9、a-z、A-Z 和 - 的字符串。|  
 |`object-type`|对象的类型，要么为“密钥”，要么为“机密”。|  
 |`object-name`|`object-name` 是用户提供名称，在 Key Vault 中必须保持唯一。 该名称必须是 1-127 个字符，且仅包含 0-9、a-z、A-Z 和 - 的字符串。|  
-|`object-version`|`object-version` 是系统生成的 32 个字符的字符串标识符，可以选择用来对某个对象的唯一版本进行寻址。|  
+|`object-version`|`object-version`是系统生成的32字符串标识符，可选择使用 * o 寻址对象的唯一版本。|  
 
 ## <a name="key-vault-keys"></a>Key Vault 密钥
 
@@ -85,7 +85,7 @@ Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系�
 Key Vault 中的加密密钥表示为 JSON Web 密钥 [JWK] 对象。 此外，还扩展了基本 JWK/JWA 规范，以启用对于 Key Vault 实现唯一的密钥类型。 例如，使用 HSM 供应商特定的包导入密钥，可以安全传输仅可在 Key Vault HSM 中使用的密钥。  
 
 - **“软”密钥**：由 Key Vault 在软件中处理，但使用 HSM 中的系统密钥进行静态加密的一种密钥。 客户端可以导入现有 RSA 或 EC（椭圆曲线）密钥，也可以请求 Key Vault 生成该密钥。
-- **“硬”密钥**：在 HSM（硬件安全模块）中处理的密钥。 这些密钥在一个 Key Vault HSM 安全体系中受到保护（按地理位置设置安全体系，以保持隔离）。 客户端可以采用软性形式或通过从兼容 HSM 设备导出的方式来导入 RSA 或 EC 密钥。 此外，客户端还可以请求 Key Vault 生成该密钥。 此密钥类型可以将 T 属性添加到获得的 JWK 以携带 HSM 密钥材料。
+- **“硬”密钥**：在 HSM（硬件安全模块）中处理的密钥。 这些密钥在一个 Key Vault HSM 安全体系中受到保护（按地理位置设置安全体系，以保持隔离）。 客户端可以采用软性形式或通过从兼容 HSM 设备导出的方式来导入 RSA 或 EC 密钥。 此外，客户端还可以请求 Key Vault 生成该密钥。 此密钥类型会将 key_hsm 属性添加到 JWK 获取来携带 HSM 密钥材料。
 
      有关地理边界的详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/privacy/)  
 
@@ -100,17 +100,17 @@ Key Vault 支持大小为 2048、3072 和 4096 的 RSA 密钥。 Key Vault 支�
 
 ### <a name="cryptographic-protection"></a>加密保护
 
-Key Vault 使用的加密模块（HSM 或软件）经过 FIPS（美国联邦信息处理标准）验证。 因此不必执行任何特殊操作便可在 FIPS 模式下运行。 “创建”或“导入”为受 HSM 保护的密钥在 HSM 内处理，且验证为 FIPS 140-2 级别 2   。 “创建”或“导入”为受软件保护的密钥在加密模块内处理，且验证为 FIPS 140-2 级别 1   。 有关详细信息，请参阅[密钥和密钥类型](#keys-and-key-types)。
+Key Vault 使用的加密模块（HSM 或软件）经过 FIPS（美国联邦信息处理标准）验证。 因此不必执行任何特殊操作便可在 FIPS 模式下运行。 “创建”或“导入”为受 HSM 保护的密钥在 HSM 内处理，且验证为 FIPS 140-2 级别 2。 “创建”或“导入”为受软件保护的密钥在加密模块内处理，且验证为 FIPS 140-2 级别 1。 有关详细信息，请参阅[密钥和密钥类型](#keys-and-key-types)。
 
 ###  <a name="ec-algorithms"></a>EC 算法
  Key Vault 中的 EC 和 EC-HSM 密钥支持以下算法标识符。 
 
 #### <a name="curve-types"></a>曲线类型
 
--   P-256  - NIST 曲线 P-256，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
--   P-256K  - SEC 曲线 SECP256K1，在 [SEC 2：建议使用的椭圆曲线域参数](https://www.secg.org/sec2-v2.pdf)中定义。
--   P-384  - NIST 曲线 P-384，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
--   P-521  - NIST 曲线 P-521，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
+-   P-256 - NIST 曲线 P-256，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
+-   P-256K - SEC 曲线 SECP256K1，在 [SEC 2：建议使用的椭圆曲线域参数](https://www.secg.org/sec2-v2.pdf)中定义。
+-   P-384 - NIST 曲线 P-384，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
+-   P-521 - NIST 曲线 P-521，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
@@ -168,20 +168,20 @@ Key Vault 不支持“导出”操作。 在系统中设置密钥后，便无法
 
 除密钥材料外，还可以指定以下属性。 在 JSON 请求中，即使未指定任何属性，也需要属性关键字和大括号“{”“}”。  
 
-- enabled：布尔型，可选，默认值为 true   。 指定密钥是否已启用并可用于加密操作。 enabled 属性结合 nbf 和 exp 使用    。如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作     。 nbf / exp 时段外的操作会自动禁止，[特定条件](#date-time-controlled-operations)下的某些操作类型除外   。
-- *nbf*：IntDate，可选，默认值为“now”。 nbf（非过去）属性识别密钥不得用于加密操作以前的时间，[特定条件](#date-time-controlled-operations)下的某些操作类型除外  。 处理 nbf 属性要求当前日期/时间必须晚于或等于 nbf 属性中列出的非过去日期/时间   。 Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
-- *exp*：IntDate，可选，默认值为“forever”。 exp（过期时间）属性识别密钥不得用于加密操作当时或之后的过期时间，[特定条件](#date-time-controlled-operations)下的某些操作类型除外  。 处理 exp 属性要求当前日期/时间必须早于 exp 属性中列出的过期日期/时间   。 Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
+- enabled：布尔型，可选，默认值为 true。 指定密钥是否已启用并可用于加密操作。 enabled 属性结合 nbf 和 exp 使用。如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作。 nbf / exp 时段外的操作会自动禁止，[特定条件](#date-time-controlled-operations)下的某些操作类型除外。
+- *nbf*：IntDate，可选，默认值为“now”。 nbf（非过去）属性识别密钥不得用于加密操作以前的时间，[特定条件](#date-time-controlled-operations)下的某些操作类型除外。 处理 nbf 属性要求当前日期/时间必须晚于或等于 nbf 属性中列出的非过去日期/时间。 Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
+- *exp*：IntDate，可选，默认值为“forever”。 exp（过期时间）属性识别密钥不得用于加密操作当时或之后的过期时间，[特定条件](#date-time-controlled-operations)下的某些操作类型除外。 处理 exp 属性要求当前日期/时间必须早于 exp 属性中列出的过期日期/时间。 Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
 
 在包含密钥属性的任何响应中还包括以下其他只读属性：  
 
-- *created*：IntDate，可选。 created 属性指示创建此版本的密钥的时间  。 如果密钥在添加此属性之前创建，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
-- *updated*：IntDate，可选。 updated 属性指示更新此版本的密钥的时间  。 如果密钥上次更新的时间早于添加此属性的时间，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
+- *created*：IntDate，可选。 created 属性指示创建此版本的密钥的时间。 如果密钥在添加此属性之前创建，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
+- *updated*：IntDate，可选。 updated 属性指示更新此版本的密钥的时间。 如果密钥上次更新的时间早于添加此属性的时间，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
 
 有关 IntDate 和其他数据类型的详细信息，请参阅[数据类型](#data-types)  
 
 #### <a name="date-time-controlled-operations"></a>日期时间控制的操作
 
-这些在 nbf / exp 时段外的尚未生效的密钥和过期密钥适合 decrypt、unwrap 和 verify 操作（不会返回 403 禁止访问）      。 使用尚未生效状态的基本原理是允许在投入生产前测试密钥。 使用过期状态的基本原理是允许对秘钥有效期间创建的数据执行恢复操作。 此外，使用 Key Vault 策略，或通过将 enabled 密钥属性更新为 false 可以禁用访问密钥   。
+这些在 nbf / exp 时段外的尚未生效的密钥和过期密钥适合 decrypt、unwrap 和 verify 操作（不会返回 403 禁止访问）。 使用尚未生效状态的基本原理是允许在投入生产前测试密钥。 使用过期状态的基本原理是允许对秘钥有效期间创建的数据执行恢复操作。 此外，使用 Key Vault 策略，或通过将 enabled 密钥属性更新为 false 可以禁用访问密钥。
 
 有关数据类型的详细信息，请参阅[数据类型](#data-types)。
 
@@ -192,13 +192,13 @@ Key Vault 不支持“导出”操作。 在系统中设置密钥后，便无法
 可以用标记的形式指定其他特定于应用程序的元数据。 Key Vault 支持多达 15 种标记，每种标记可以有 256 个字符的名称和 256 个字符的值。  
 
 >[!Note]
->如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记   。
+>如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记。
 
 ###  <a name="key-access-control"></a>密钥访问控制
 
 Key Vault 托管的密钥的访问控制是在充当密钥容器的 Key Vault 级别提供的。 在同一 Key Vault 中，密钥的访问控制策略不同于机密的访问控制策略。 用户可以创建一个或多个保管库来保存密钥，并且需要维护方案相应的密钥分段和管理。 密钥的访问控制与机密的访问控制无关。  
 
-在保管库上的密钥访问控制条目中可以按用户/服务主体授予以下权限。 这些权限严密镜像对密钥对象允许的操作。  授予对服务主体密钥保管库中的访问是一次性操作，并且它将保持为所有 Azure 订阅相同。 可用于部署所需的任意数目的证书。 
+在保管库上的密钥访问控制条目中可以按用户/服务主体授予以下权限。 这些权限会密切镜像对密钥对象允许的操作。  向密钥保管库中的服务主体授予访问权限是一项一次性操作，对于所有 Azure 订阅，它将保持不变。 可以使用它部署所需的任意数量的证书。 
 
 - 针对密钥管理操作的权限
   - *get*：读取密钥的公共部分及其属性
@@ -238,9 +238,9 @@ Key Vault 还支持机密的 contentType 字段。 客户端可以指定机密�
 
 除机密数据外，还可以指定以下属性：  
 
-- *exp*：IntDate，可选，默认值为 **forever**。 exp（过期时间）属性标识在不应检索机密数据当时或之后的过期时间，[特定情况](#date-time-controlled-operations)除外  。 此字段仅供参考，因为它通知密钥保管库服务用户可能无法使用特定机密  。 其值必须是包含 IntDate 值的数字。   
-- *nbf*：IntDate，可选，默认值为 **now**。 nbf（非过去）属性标识在不应检索机密数据之前的时间，[特定情况](#date-time-controlled-operations)除外  。 此字段仅供参考  。 其值必须是包含 IntDate 值的数字。 
-- enabled：布尔型，可选，默认值为 true   。 此属性指定是否可以检索机密数据。 enabled 属性与 nbf 和 exp 结合使用，如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作      。 nbf 和 exp 时段外的操作会自动禁止，[特定情况](#date-time-controlled-operations)除外   。  
+- *exp*：IntDate，可选，默认值为 **forever**。 exp（过期时间）属性标识在不应检索机密数据当时或之后的过期时间，[特定情况](#date-time-controlled-operations)除外。 此字段仅供参考，因为它通知密钥保管库服务用户可能无法使用特定机密。 其值必须是包含 IntDate 值的数字。   
+- *nbf*：IntDate，可选，默认值为 **now**。 nbf（非过去）属性标识在不应检索机密数据之前的时间，[特定情况](#date-time-controlled-operations)除外。 此字段仅供参考。 其值必须是包含 IntDate 值的数字。 
+- enabled：布尔型，可选，默认值为 true。 此属性指定是否可以检索机密数据。 enabled 属性与 nbf 和 exp 结合使用，如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作。 nbf 和 exp 时段外的操作会自动禁止，[特定情况](#date-time-controlled-operations)除外。  
 
 在包含机密属性的任何响应中还包括以下其他只读属性：  
 
@@ -249,7 +249,7 @@ Key Vault 还支持机密的 contentType 字段。 客户端可以指定机密�
 
 #### <a name="date-time-controlled-operations"></a>日期时间控制的操作
 
-机密的获取操作在 nbf / exp 时段外适合尚未生效的机密和过期的机密    。 对于尚未生效的机密，调用机密的“获取”操作可用于测试目的  。 检索（获取）过期的密钥可以用于恢复操作  。
+机密的获取操作在 nbf / exp 时段外适合尚未生效的机密和过期的机密。 对于尚未生效的机密，调用机密的“获取”操作可用于测试目的。 检索（获取）过期的密钥可以用于恢复操作。
 
 有关数据类型的详细信息，请参阅[数据类型](#data-types)。  
 
@@ -277,7 +277,7 @@ Key Vault 中托管的机密的访问控制是在包含这些机密的 Key Vault
 可以用标记的形式指定其他特定于应用程序的元数据。 Key Vault 支持多达 15 种标记，每种标记可以有 256 个字符的名称和 256 个字符的值。  
 
 >[!Note]
->如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记   。
+>如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记。
 
 ## <a name="key-vault-certificates"></a>Key Vault 证书
 
@@ -304,9 +304,9 @@ Key Vault 中托管的机密的访问控制是在包含这些机密的 Key Vault
 
 创建 Key Vault 证书后，可以使用 PFX 或 PEM 格式的私钥从可寻址机密中检索该证书。 用于创建证书的策略必须指示密钥可导出。 如果策略指示密钥不可导出，则在作为机密检索私钥时，该私钥不包括在值中。  
 
-可寻址密钥与不可导出的 KV 证书的相关性变得更高。 可寻址 KV 密钥的操作从用于创建 KV 证书的 KV 证书策略的“密钥使用情况”字段映射  。  
+可寻址密钥与不可导出的 KV 证书的相关性变得更高。 可寻址 KV 密钥的操作从用于创建 KV 证书的 KV 证书策略的“密钥使用情况”字段映射。  
 
-证书支持以下两种类型的密钥：RSA 或 RSA HSM   。 仅 RSA 允许可导出，RSA HSM 不支持。  
+证书支持以下两种类型的密钥：RSA 或 RSA HSM。 仅 RSA 允许可导出，RSA HSM 不支持。  
 
 ### <a name="certificate-attributes-and-tags"></a>证书属性和标记
 
@@ -318,7 +318,7 @@ Key Vault 中托管的机密的访问控制是在包含这些机密的 Key Vault
 
 Key Vault 证书具有以下属性：  
 
--   enabled：布尔型，可选，默认值为 true   。 可以指定，以指示证书数据是否可以作为机密进行检索，或者可以作为密钥进行操作。 还可与 nbf 和 exp 结合使用，如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作     。 nbf  和 exp  时段外的操作会自动禁止。  
+-   enabled：布尔型，可选，默认值为 true。 可以指定，以指示证书数据是否可以作为机密进行检索，或者可以作为密钥进行操作。 还可与 nbf 和 exp 结合使用，如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作。 nbf 和 exp 时段外的操作会自动禁止。  
 
 在响应中还包括以下其他只读属性：
 
@@ -335,7 +335,7 @@ Key Vault 证书具有以下属性：
  客户端指定的键值对字典，类似于密钥和机密中的标记。  
 
  > [!Note]
-> 如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记   。
+> 如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记。
 
 ### <a name="certificate-policy"></a>证书策略
 
@@ -352,7 +352,7 @@ Key Vault 证书具有以下属性：
 
      - 触发器：通过距离到期的天数或生存期范围百分比指定  
 
-     - 操作：指定操作类型 - emailContacts 或 autoRenew    
+     - 操作：指定操作类型 - emailContacts 或 autoRenew  
 
 -   颁发者：有关用于颁发 x509 证书的证书颁发者的参数。  
 -   策略属性：包含与策略关联的属性  
@@ -361,7 +361,7 @@ Key Vault 证书具有以下属性：
 
 下表表示 x509 密钥使用策略映射到在创建 Key Vault 证书过程中创建的密钥的有效密钥操作。
 
-|X.509 密钥使用情况标记 |Key Vault 密钥的操作 |默认行为 |
+|X.509 密钥使用情况标记|Key Vault 密钥的操作|默认行为|
 |----------|--------|--------|
 |DataEncipherment|加密、解密| 不可用 |
 |DecipherOnly|解密| 不可用  |
@@ -378,7 +378,7 @@ Key Vault 证书对象包含与所选证书颁发者提供者进行通信的配�
 
 -   具有以下 SSL 证书的证书颁发者提供者的 Key Vault 合作伙伴
 
-|提供者名称 |**位置**|
+|提供者名称|**位置**|
 |----------|--------|
 |DigiCert|公有云和 Azure 政府中的所有密钥保管库服务位置均支持|
 |GlobalSign|公有云和 Azure 政府中的所有密钥保管库服务位置均支持|

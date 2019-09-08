@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/25/2019
-ms.openlocfilehash: c46913f24deffc7c4db95d8a77db1c49ae54b6ae
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 09/06/2019
+ms.openlocfilehash: 03f16987941f79f9161ccbc172bb2ca1a7139384
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566691"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773212"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 
-基于 DTU 的购买模型中的服务层级根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 基于 DTU 的购买模型中的所有服务层都可以灵活地更改计算规模, 使[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)最短;但是, 在一段较短的时间内, 会有一次与数据库的连接丢失的情况, 可以使用重试逻辑来缓解这种情况。 单一数据库和弹性池根据服务层级和计算大小按小时计费。
+基于 DTU 的购买模型中的服务层级根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 基于 DTU 的购买模型中的所有服务层级都提供了以最短[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)更改计算大小的灵活性；但是，在切换期间，与数据库的连接会短时间丢失，可以使用重试逻辑来缓解这种情况。 单一数据库和弹性池根据服务层级和计算大小按小时计费。
 
 > [!IMPORTANT]
 > SQL 数据库托管实例不支持基于 DTU 的购买模型。 有关详细信息，请参阅 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。
@@ -37,14 +37,14 @@ ms.locfileid: "68566691"
 |运行时间 SLA|99.99%|99.99%|99.99%|
 |备份保留|7 天|35 天|35 天|
 |CPU|低|低、中、高|中、高|
-|IO 吞吐量（近似） |每个 DTU 2.5 IOPS| 每个 DTU 2.5 IOPS | 每个 DTU 48 IOPS|
+|IO 吞吐量（近似） |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
 |IO 延迟（近似）|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
 |列存储索引 |不可用|S3 及更高版本|支持|
 |内存中 OLTP|不可用|不可用|支持|
 |||||
 
 > [!NOTE]
-> 可以结合 Azure 免费帐户在基本服务层获取免费的 Azure SQL 数据库, 以探索 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
+> 可以结合 Azure 免费帐户在基本服务层获取免费的 Azure SQL 数据库，以探索 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
 
 ## <a name="single-database-dtu-and-storage-limits"></a>单一数据库 DTU 和存储限制
 

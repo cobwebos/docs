@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e21bd2b20ac48d3719e41b1e93a82cbe5a864b7
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 923c828a3d7e9e10d79fcf079839b84c2f0e0f77
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382590"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772370"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>在 Azure Active Directory 中查看自定义角色分配
 
@@ -100,9 +100,9 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="view-assignments-of-a-role-with-single-application-scope-preview"></a>查看具有单应用程序范围的角色分配（预览）
+## <a name="view-assignments-of-single-application-scope"></a>查看单应用程序范围的分配
 
-本部分介绍如何查看具有单应用程序范围的角色分配。
+本部分介绍如何查看具有单应用程序范围的角色分配。 此功能目前处于公开预览状态。
 
 1. 在 Azure AD 组织中，以特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
 1. 选择 "**应用注册**"，然后选择 "应用注册" 来查看其属性。 可能必须选择“所有应用程序”，以便在 Azure AD 组织中查看应用注册的完整列表。

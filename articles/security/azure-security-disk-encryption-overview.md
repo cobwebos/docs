@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 07/29/2019
+ms.date: 09/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dfcc69d90daae5869c3b69c922e99eab3585e14
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 7855b1048826a9146e206226ae7326661e4609cb
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164622"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764404"
 ---
 # <a name="azure-disk-encryption-overview"></a>Azure 磁盘加密概述
 
@@ -58,7 +58,7 @@ Azure 磁盘加密支持以下客户方案：
    > [!NOTE]
    > 不支持对某些 Linux 分发版进行 OS 驱动器加密。 有关详细信息，请参阅 [Azure 磁盘加密支持的操作系统：Linux](azure-security-disk-encryption-prerequisites.md#linux)。
    
-* 在使用 Windows 存储空间配置的 VM 上启用加密（从 Windows Server 2016 开始）。 尚不支持存储空间直通 (S2D)。
+* 在使用 Windows 存储空间配置的 VM 上启用加密（从 Windows Server 2016 开始）。 尚不支持存储空间直通（S2D）。
 * 针对密钥加密密钥 (KEK) 和非 KEK 方案备份和还原加密的 VM。
 
 Azure 磁盘加密不支持以下方案、功能和技术：
@@ -72,8 +72,9 @@ Azure 磁盘加密不支持以下方案、功能和技术：
 * Azure 文件（共享文件系统）。
 * 网络文件系统 (NFS)。
 * 动态卷。
+* Windows Server 容器，为每个容器创建动态卷。
 * 临时 OS 磁盘。
-* 共享/分布式文件系统的加密, 例如 (但不限于):DFS、GFS、DRDB、CephFS 等
+* 共享/分布式文件系统的加密，例如（但不限于）：DFS、GFS、DRDB、CephFS 等
 
 ## <a name="encryption-features"></a>加密功能
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: yushwang
-ms.openlocfilehash: 323db6e7274db1a53e49b5bd7d33b2eb3700a62b
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: add6fbf0177586bc8969a563260427bc8397d97e
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376424"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773766"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 
@@ -50,6 +50,7 @@ ms.locfileid: "70376424"
 | Citrix |NetScaler MPX、SDX、VPX |10.1 及以上 |[配置指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不兼容 |
 | F5 |BIG-IP 系列 |12.0 |[配置指南](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[配置指南](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.6 |  |[配置指南](https://docs.fortinet.com/document/fortigate/6.2.0/azure-cookbook/989216/connecting-a-local-fortigate-to-an-azure-vnet-vpn) |
+| Hillstone 网络 | 下一代防火墙（NGFW） | 5.5 R7  |  | [配置指南](https://www.hillstonenet.com/wp-content/uploads/How-to-setup-Site-to-Site-VPN-between-Microsoft-Azure-and-an-on-premise-Hillstone-Networks-Security-Gateway.pdf) |
 | Internet Initiative Japan (IIJ) |SEIL 系列 |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[配置指南](https://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |不兼容 |
 | Juniper |SRX |PolicyBased：JunOS 10.2<br>Routebased：JunOS 11.4 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |J 系列 |PolicyBased：JunOS 10.4r9<br>RouteBased：JunOS 11.4 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
@@ -153,10 +154,10 @@ ms.locfileid: "70376424"
 |-  |**加密**|**身份验证**|**PFS 组**|
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |无         |
-| 2 |AES256        |SHA1              |无         |
+| 2 |AES256        |SHA1              |None         |
 | 3 |3DES          |SHA1              |无         |
 | 4 |AES256        |SHA256            |无         |
-| 5 |AES128        |SHA1              |无         |
+| 5 |AES128        |SHA1              |None         |
 | 6 |3DES          |SHA256            |无         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure 网关作为响应方
@@ -166,9 +167,9 @@ ms.locfileid: "70376424"
 | 1 |GCM AES256    |GCM (AES256)      |无         |
 | 2 |AES256        |SHA1              |无         |
 | 3 |3DES          |SHA1              |无         |
-| 4 |AES256        |SHA256            |无         |
-| 5 |AES128        |SHA1              |无         |
-| 6 |3DES          |SHA256            |None         |
+| 4 |AES256        |SHA256            |None         |
+| 5 |AES128        |SHA1              |None         |
+| 6 |3DES          |SHA256            |无         |
 | 7 |DES           |SHA1              |None         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |

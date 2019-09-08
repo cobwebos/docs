@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: accc59ee31ddb7371774da3235cc9ccff24ad641
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309228"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764305"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure 中的 Red Hat Enterprise Linux 映像
 本文介绍 Azure 市场中可用的 Red Hat Enterprise Linux (RHEL) 映像以及与其命名和保留相关的策略。
@@ -114,18 +114,19 @@ RHEL 8。0      |不可用                            | Red Hat 中没有可用�
 
 套餐| SKU | 分区 | 预配 | 说明
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 7-RAW    | RAW    | Linux 代理 | RHEL 7 系列映像。 <br> 默认情况下未附加到 EUS 存储库。
-|             | 7-LVM    | LVM    | Linux 代理 | RHEL 7 系列映像。 <br> 默认情况下未附加到 EUS 存储库。
-|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7 系列映像。 <br> 默认情况下未附加到 EUS 存储库。
-|             | 6.7      | RAW    | Linux 代理 | RHEL 6.7 映像，旧的命名约定
-|             | 6.8      | RAW    | Linux 代理 | RHEL 6.8 同上
-|             | 6.9      | RAW    | Linux 代理 | RHEL 6.9 同上
-|             | 6.10     | RAW    | Linux 代理 | RHEL 6.10 同上
-|             | 7.2      | RAW    | Linux 代理 | RHEL 7.2 同上
-|             | 7.3      | RAW    | Linux 代理 | RHEL 7.3 同上
-|             | 7.4      | RAW    | Linux 代理 | RHEL 7.4 与上面相同。 <br> 默认情况下附加到 EUS 存储库，2019年4月
-|             | 7.5      | RAW    | Linux 代理 | RHEL 7.5 与上面相同。 <br> 默认情况下附加到 EUS 存储库，截至2019年6月
-|             | 7.6      | RAW    | Linux 代理 | RHEL 7.6 与上面相同。 <br> 默认情况下，附加到 EUS 存储库，可能为2019
+RHEL          | 7-RAW    | RAW    | Linux 代理 | RHEL 7. x 映像系列。 <br> 默认情况下未附加到 EUS 存储库。
+|             | 7-LVM    | LVM    | Linux 代理 | RHEL 7. x 映像系列。 <br> 默认情况下未附加到 EUS 存储库。
+|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7. x 映像系列。 <br> 默认情况下未附加到 EUS 存储库。
+|             | 6.7      | RAW    | Linux 代理 |
+|             | 6.8      | RAW    | Linux 代理 |
+|             | 6.9      | RAW    | Linux 代理 |
+|             | 6.10     | RAW    | Linux 代理 |
+|             | 7.2      | RAW    | Linux 代理 |
+|             | 7.3      | RAW    | Linux 代理 |
+|             | 7.4      | RAW    | Linux 代理 | 默认情况下，在2019年4月之前附加到 EUS 存储库。
+|             | 7.5      | RAW    | Linux 代理 | 默认情况下，附加到 EUS 存储库，截至2019年6月。
+|             | 7.6      | RAW    | Linux 代理 | 默认情况下，附加到 EUS 存储库，可能为2019。
+|             | 7.7      | LVM    | Linux 代理 | 默认情况下附加到 EUS 存储库。
 RHEL-SAP      | 7.4      | LVM    | Linux 代理 | 用于 SAP HANA 和 Business Apps 的 RHEL 7.4
 |             | 7.5      | LVM    | Linux 代理 | 用于 SAP HANA 和 Business Apps 的 RHEL 7.5
 RHEL-SAP-HANA | 6.7      | RAW    | Linux 代理 | 用于 SAP HANA 的 RHEL 6.7

@@ -1,18 +1,27 @@
 ---
-ms.openlocfilehash: fe9879f9574fe1496ebdf20ac76fe5b759d4ea6a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+title: 容器存储库和映像
+services: cognitive-services
+author: IEvangelist
+manager: nitinme
+description: 两个表，表示所有认知服务产品的容器注册表、存储库和映像名称。
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 09/06/2019
+ms.author: dapine
+ms.openlocfilehash: 600c01fc2a273141b06996369231c2389c5d6d57
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051237"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775828"
 ---
 ### <a name="container-repositories-and-images"></a>容器存储库和映像
 
 下表列出了 Azure 认知服务提供的可用容器映像。
 
-#### <a name="public-container-registry-mcrmicrosoftcom"></a>公共 (容器注册表: `mcr.microsoft.com`)
+#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Public "无选通" （容器注册表： `mcr.microsoft.com`）
 
-Microsoft 容器注册表承载认知服务的所有公开上市 (GA) 容器。
+Microsoft 容器注册表承载认知服务的所有公开发布的 "无选通" 容器。
 
 | 服务 | 容器 | 容器注册表/存储库/映像名称 |
 |--|--|--|
@@ -21,9 +30,9 @@ Microsoft 容器注册表承载认知服务的所有公开上市 (GA) 容器。
 | [文本分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 语言检测 | `mcr.microsoft.com/azure-cognitive-services/language` |
 | [文本分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 情绪分析 | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-#### <a name="public-preview-container-registry-containerpreviewazurecrio"></a>公共预览版 (容器注册表: `containerpreview.azurecr.io`)
+#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>公共 "封闭" 预览版（容器注册表： `containerpreview.azurecr.io`）
 
-容器预览注册表承载尚未在公开上市 (GA) 的认知服务的所有 "公共预览版" 容器。 这些容器需要一个正式的访问请求才能使用它们。
+容器预览注册表承载认知服务的所有公开发布的 "封闭" 容器。 这些容器需要一个正式的访问请求才能使用它们。
 
 | 服务 | 容器 | 容器注册表/存储库/映像名称 |
 |--|--|--|
