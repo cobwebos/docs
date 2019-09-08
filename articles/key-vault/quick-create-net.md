@@ -1,190 +1,221 @@
 ---
-title: 快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密 - Azure Key Vault | Microsoft Docs
-description: 在本快速入门中，请使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
-services: key-vault
+title: 快速入门 - 适用于 .NET 的 Azure Key Vault 客户端库
+description: 提供编写 Azure SDK 客户端库快速入门时要遵循的格式和内容准则。
 author: msmbaldwin
-manager: sumedhb
+ms.author: mbaldwin
+ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 01/02/2019
-ms.author: barclayn
-ms.custom: mvc
-ms.openlocfilehash: 9ddb1db9b39ac942a3476f50aad39c98198b2a18
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c67b24d57117a248559424497939a04ce347658c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958609"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308943"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
+# <a name="quickstart-azure-key-vault-client-library-for-net"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库
 
-本快速入门演练将 Azure Web 应用程序配置为使用 Azure 资源的托管标识，以从 Azure Key Vault 读取信息所要执行的步骤。 可以通过 Key Vault 来确保信息的安全。 学习如何：
+适用于 .NET 的 Azure Key Vault 客户端库入门。 请遵循以下步骤安装包并试用基本任务的示例代码。
 
-* 创建密钥保管库。
-* 在密钥保管库中存储机密。
-* 从密钥保管库检索机密。
-* 创建 Azure Web 应用程序。
-* 为 Web 应用启用[托管服务标识](../active-directory/managed-identities-azure-resources/overview.md)。
-* 授予所需的权限，让 Web 应用程序从密钥保管库读取数据。
+Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 使用适用于 .NET 的 Key Vault 客户端库可以：
 
-在我们进一步讨论之前，请阅读 [Key Vault 基本概念](key-vault-whatis.md#basic-concepts)。
+- 提高安全性以及控制密钥和密码。
+- 在几分钟内创建并导入加密密钥。
+- 通过云扩展和全局冗余减少延迟。
+- 简化和自动化与 SSL/TLS 证书相关的任务。
+- 使用 FIPS 140-2 第 2 级验证的 HSM。
 
->[!NOTE]
->Key Vault 是一个以编程方式存储机密的中央存储库。 但要这样做，应用程序和用户需要首先向 Key Vault 进行身份验证，即提供机密。 为了遵循安全最佳做法，第一个机密需要定期轮换。 
->
->使用 [Azure 资源的托管服务标识](../active-directory/managed-identities-azure-resources/overview.md)，在 Azure 中运行的应用程序将获得由 Azure 自动管理的标识。 这有助于解决*机密采用问题*，这样用户和应用程序就可以遵循最佳做法，而不必担心轮换第一个机密。
+[API 参考文档](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-* 在 Windows 上：
-  * 带有以下工作负荷的 [Visual Studio 2019](https://www.microsoft.com/net/download/windows)：
-    * ASP.NET 和 Web 开发
-    * .NET Core 跨平台开发
-  * [.NET Core 2.1 SDK 或更高版本](https://www.microsoft.com/net/download/windows)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* [.NET Core 2.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/2.1)。
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/overview)
 
-* 在 Mac 上：
-  * 请参阅 [Visual Studio for Mac 中的新增功能](https://visualstudio.microsoft.com/vs/mac/)。
+本快速入门假设在 Windows 终端（例如 [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6)、[Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6) 或 [Azure Cloud Shell](https://shell.azure.com/)）中运行 `dotnet`、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 和 Windows 命令。
 
-* 所有平台：
-  * Git（[下载](https://git-scm.com/downloads)）。
-  * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-  * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 或更高版本。 适用于 Windows、Mac 和 Linux。
+## <a name="setting-up"></a>设置
 
-## <a name="log-in-to-azure"></a>登录 Azure
+### <a name="create-new-net-console-app"></a>创建新的 .NET 控制台应用
 
-若要使用 Azure CLI 登录到 Azure，请输入：
+在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。
+
+在控制台窗口中，使用 `dotnet new` 命令创建名为 `akv-dotnet` 的新控制台应用。
+
+
+```console
+dotnet new console -n akvdotnet
+```
+
+将目录更改为新创建的应用文件夹。 可使用以下代码生成应用程序：
+
+```console
+dotnet build
+```
+
+生成输出不应包含警告或错误。
+
+```console
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+```
+
+### <a name="install-the-package"></a>安装包
+
+在控制台窗口中，安装适用于 .NET 的 Azure Key Vault 客户端库：
+
+```console
+dotnet add package Microsoft.Azure.KeyVault
+```
+
+本快速入门还需要安装以下包：
+
+```console
+dotnet add package System.Threading.Tasks
+dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory
+dotnet add package Microsoft.Azure.Management.ResourceManager.Fluent
+```
+
+### <a name="create-a-resource-group-and-key-vault"></a>创建资源组和 Key Vault
+
+本快速入门使用预先创建的 Azure Key Vault。 可以遵循 [Azure CLI 快速入门](quick-create-cli.md)、[Azure PowerShell 快速入门](quick-create-powershell.md)或 [Azure 门户快速入门](quick-create-portal.md)中的步骤创建 Key Vault。 或者，只需运行以下 Azure CLI 命令。
+
+> [!Important]
+> 每个密钥保管库必须具有唯一的名称。 以下示例创建名为 *myKV* 的 Key Vault，但用户必须指定不同的名称，并在整个快速入门中使用指定的名称。
 
 ```azurecli
-az login
+az group create --name "myResourceGroup" -l "EastUS"
+
+az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 ```
 
-## <a name="create-a-resource-group"></a>创建资源组
+### <a name="create-a-service-principal"></a>创建服务主体
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
-
-选择一个资源组名称，然后将其填充在占位符中。
-以下示例在“美国东部”位置创建一个资源组：
+对基于云的 .NET 应用程序进行身份验证的最简单方法是使用托管标识；有关详细信息，请参阅[使用 .NET 对 Azure Key Vault 进行服务到服务的身份验证](service-to-service-authentication.md)。 不过，为简单起见，本快速入门将创建一个 .NET 控制台应用程序。 在 Azure 中对桌面应用程序进行身份验证需要使用服务主体。
+使用 Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建服务主体：
 
 ```azurecli
-# To list locations: az account list-locations --output table
-az group create --name "<YourResourceGroupName>" --location "East US"
+az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-刚刚创建的资源组将在整篇文章中使用。
+此操作将返回一系列键/值对。 
 
-## <a name="create-a-key-vault"></a>创建 key vault
+```console
+{
+  "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
+  "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
+  "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
+  "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
+```
 
-接下来，在上一步骤创建的资源组中创建密钥保管库。 提供以下信息：
+请记下 clientId、clientSecret、subscriptionId 和 tenantId，因为在下面的[对 Key Vault 进行身份验证](#authenticate-to-your-key-vault)步骤中将要用到。
 
-* Key Vault 名称：名称必须是 3-24 个字符的字符串，并且只能包含 0-9、a-z、A-Z 和连字符 (-)。
-* 资源组名称。
-* 位置：**美国东部**。
+此外还需要服务主体的 appID。 可以结合 `--show-mine` 参数运行 [az ad sp list](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) 找到该 ID：
 
 ```azurecli
-az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"
+az ad sp list --show-mine
 ```
 
-目前，只有你的 Azure 帐户才有权对这个新保管库执行任何操作。
+`appID` 将显示在返回的 JSON 中：
 
-## <a name="add-a-secret-to-the-key-vault"></a>向密钥保管库添加机密
+```json
+    "appId": "2cf5aa18-0100-445a-9438-0b93e577a3ed",
+```
 
-我们将添加机密以帮助说明这是如何工作的。 可以存储需要安全保存的，但同时也要提供给应用程序使用的 SQL 连接字符串或其他任何信息。
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>为服务主体授予对 Key Vault 的访问权限
 
-键入以下命令，在名为 **AppSecret** 的密钥保管库中创建机密。 此机密将存储值“MySecret”。 
+针对 Key Vault 创建一个访问策略，以便为服务主体授予权限。 可以使用 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令实现此目的。 我们将为服务主体授予对密钥和机密的 get、list 和 set 权限。
 
 ```azurecli
-az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <appid-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
-若要查看机密中包含的纯文本形式的值，请执行以下命令：
+## <a name="object-model"></a>对象模型
+
+使用适用于 .NET 的 Azure Key Vault 客户端库可以管理密钥和相关的资产（例如证书和机密）。 以下代码示例演示如何设置机密和检索机密。
+
+https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet 中提供了整个控制台应用。
+
+## <a name="code-examples"></a>代码示例
+
+### <a name="add-directives"></a>添加指令
+
+将以下指令添加到代码的顶部：
+
+[!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=directives)]
+
+### <a name="authenticate-to-your-key-vault"></a>对 Key Vault 进行身份验证
+
+本 .NET 快速入门依赖于使用环境变量来存储不应放入、但需要放入代码中的凭据。 
+
+在生成和运行应用之前，请使用 `setx` 命令将 `akvClientId`、`akvClientSecret`、`akvTenantId` 和 `akvSubscriptionId` 环境变量设置为上面记下的值。
+
+```console
+setx akvClientId <your-clientID>
+
+setx akvClientSecret <your-clientSecret>
+
+setx akvTenantId <your-tentantId>
+
+setx akvSubscriptionId <your-subscriptionId>
+````
+
+每次调用 `setx` 时，都应会收到响应“成功:已保存指定的值。”
+
+将这些环境变量分配到代码中的字符串，然后通过将这些字符串传递给 [KeyVaultClient 类](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)，来对应用程序进行身份验证：
+
+[!code-csharp[Authentication](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=authentication)]
+
+### <a name="save-a-secret"></a>保存机密
+
+对应用程序进行身份验证后，可以使用 [SetSecretAsync 方法](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync)将机密放入 Key Vault。这需要使用 Key Vault 的 URL，其格式为 `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`。 还需要使用机密的名称 - 我们使用了“mySecret”。  可将这些字符串分配到某个变量，以便于重复使用。
+
+[!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
+
+可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 命令来验证是否设置了机密：
 
 ```azurecli
-az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
+az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-此命令显示机密信息，包括 URI。 完成这些步骤后，密钥保管库中会出现某个机密的 URI。 请记下此信息， 后面的步骤需要用到。
+### <a name="retrieve-a-secret"></a>检索机密
 
-## <a name="clone-the-repo"></a>克隆存储库
+现在，可以使用 [GetSecretAsync 方法](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)检索以前设置的值
 
-克隆存储库，以便创建一个可以在其中编辑源的本地副本。 运行以下命令：
+[!code-csharp[Get secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=getsecret)]
 
-```
-git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
-```
-
-## <a name="open-and-edit-the-solution"></a>打开并编辑解决方案
-
-编辑 program.cs 文件，以便使用特定的密钥保管库名称运行示例：
-
-1. 浏览到 key-vault-dotnet-core-quickstart 文件夹。
-2. 在 Visual Studio 2019 中打开 key-vault-dotnet-core-quickstart.sln 文件。
-3. 打开 Program.cs 文件，将占位符 *YourKeyVaultName* 更新为以前创建的密钥保管库的名称。
-
-此解决方案使用 [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 库。
-
-## <a name="run-the-app"></a>运行应用
-
-在 Visual Studio 2019 的主菜单中，选择“调试” > “开始执行(不调试)”。   显示浏览器时，转到“关于”页。  此时会显示 **AppSecret** 的值。
-
-## <a name="publish-the-web-application-to-azure"></a>将 Web 应用程序发布到 Azure
-
-将此应用发布到 Azure，看其是否可以作为 Web 应用运行，并看能否提取机密值：
-
-1. 在 Visual Studio 中选择 **key-vault-dotnet-core-quickstart** 项目。
-2. 选择“发布”   >   “开始”。
-3. 创建新的**应用服务**，然后选择“发布”  。
-4. 将应用名称更改为“keyvaultdotnetcorequickstart”。 
-5. 选择“创建”  。
-
->[!VIDEO https://sec.ch9.ms/ch9/e93d/a6ac417f-2e63-4125-a37a-8f34bf0fe93d/KeyVault_high.mp4]
-
-## <a name="enable-a-managed-identity-for-the-web-app"></a>为 Web 应用启用托管标识
-
-虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 [Azure 资源的托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
-
-在 Azure CLI 中运行 assign-identity 命令，为此应用程序创建标识：
-
-   ```azurecli
-   az webapp identity assign --name "keyvaultdotnetcorequickstart" --resource-group "<YourResourceGroupName>"
-   ```
-
->[!NOTE]
->此过程中的命令等同于转到门户并在 Web 应用程序属性中将“标识/系统分配”设置切换为“打开”   。
-
-## <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>为应用程序分配从 Key Vault 读取机密的权限
-
-请记下将应用程序发布到 Azure 时的输出。 它应该采用以下格式：
-        
-        {
-          "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "type": "SystemAssigned"
-        }
-        
-然后，使用密钥保管库名称和 **PrincipalId** 值运行以下命令：
-
-```azurecli
-
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get list
-
-```
-
-现在运行应用程序时，会看到检索到的机密值。 上面的命令中向应用服务的标识提供了在密钥保管库上执行“get”和“list”操作的权限   。
+机密现已保存为 `keyvaultSecret.Value;`。
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请选择适用于密钥保管库的资源组，然后选择“删除”。 
 
-使用 [az keyvault delete](https://docs.microsoft.com/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) 命令删除密钥保管库：
+可以使用 Azure CLI 或 Azure PowerShell 来删除不再需要的 Key Vault 和相应的资源组。
 
 ```azurecli
-az keyvault delete --name
-                   [--resource-group]
-                   [--subscription]
+az group delete -g "myResourceGroup" -l "EastUS" 
+```
+
+```azurepowershell
+Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [深入了解 Key Vault](key-vault-whatis.md)
+在本快速入门中，你创建了一个 Key Vault、存储了一个机密，然后检索了该机密。 请查看 [GitHub 中的整个控制台应用](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet)。
+
+若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
+
+- 实现[使用 .NET 对 Azure Key Vault 进行服务到服务的身份验证](service-to-service-authentication.md)
+- 阅读 [Azure Key Vault 概述](key-vault-overview.md)
+- 参阅 [Azure Key Vault 开发人员指南](key-vault-developers-guide.md)
+- 了解[密钥、机密和证书](about-keys-secrets-and-certificates.md)
+- 查看 [Azure Key Vault 最佳做法](key-vault-best-practices.md)

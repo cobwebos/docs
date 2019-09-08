@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: 7dd313789665348ce0a7bfa2da3569867854be94
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: ae19ff5adc220326e32b82bdba676a037e98fabe
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617280"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195126"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>使用 Azure 门户创建 Azure Database for MySQL 服务器
 
@@ -28,9 +28,9 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 按照以下步骤创建 Azure Database for MySQL 服务器：
 
-1. 选择门户左上角的“创建资源”按钮 (+)。
+1. 在门户左上角选择“创建资源”  (+)。
 
-2. 选择“数据库” > “Azure Database for MySQL”。 还可以在搜索框中键入“MySQL”以查找该服务。
+2. 选择“数据库”   >   “Azure Database for MySQL”。 还可以在搜索框中输入“MySQL”  以查找该服务。
 
    ![Azure Database for MySQL 选项](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
 
@@ -40,16 +40,16 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
     **设置** | **建议的值** | **字段说明** 
     ---|---|---
-    服务器名称 | 唯一的服务器名称 | 选择用于标识 Azure Database for MySQL 服务器的唯一名称。 例如，mydemoserver。 域名 *.mysql.database.azure.com* 将追加到所提供的服务器名称后面。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 必须包含 3 到 63 个字符。
-    订阅 | 订阅 | 选择要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
-    资源组 | myresourcegroup | 提供新的或现有的资源组名称。
-    选择源 | *空白* | 选择“空白”可从头开始创建新服务器。 （如果要从现有 Azure Database for MySQL 服务器的异地备份创建服务器，请选择“备份”）。
-    服务器管理员登录名 | myadmin | 连接到服务器时需使用的登录帐户。 管理员登录名不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。
+    服务器名称 | 唯一的服务器名称 | 输入用于标识 Azure Database for MySQL 服务器的唯一名称。 例如，mydemoserver。 域名 *.mysql.database.azure.com* 将追加到所提供的服务器名称后面。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 必须包含 3 到 63 个字符。
+    Subscription | 订阅 | 选择要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
+    Resource group |  myresourcegroup | 提供新的或现有的资源组名称。
+    选择源 | *空白* | 选择“空白”  可从头开始创建新服务器。 （如果要从现有 Azure Database for MySQL 服务器的异地备份创建服务器，请选择“备份”  ）。
+    服务器管理员登录名 | myadmin | 连接到服务器时需使用的登录帐户。 管理员登录名不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。      
     密码 | *由用户选择* | 为服务器管理员帐户提供新密码。 必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字 (0-9)和非字母数字字符（!, $, #, % 等）。
     确认密码 | *由用户选择*| 确认管理员帐户密码。
     位置 | *离用户最近的区域*| 选择最靠近用户或其他 Azure 应用程序的位置。
     版本 | *最新主版本*| 最新主版本，有特定要求（即需要其他版本）的除外。
-    定价层 | **常规用途**、**第 5 代**、**2 个 vCore**、**5 GB**、**7 天**、**异地冗余** | 新服务器的计算、存储和备份配置。 选择“定价层”。 接下来，选择“常规用途”选项卡。“第 5 代”、“4 个 vCore”、“100 GB”和“7 天”分别是“计算代系”、“vCore”、“存储”和“备份保持期”的默认值。 可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从**备份冗余选项**中选择“异地冗余”。 若要保存此定价层选择，请选择“确定”。 下一个屏幕截图捕获了这些选择。
+    定价层 | **常规用途**、**第 5 代**、**2 个 vCore**、**5 GB**、**7 天**、**异地冗余** | 新服务器的计算、存储和备份配置。 选择“定价层”。  接下来，选择“常规用途”  选项卡。“第 5 代”、“4 个 vCore”、“100 GB”和“7 天”分别是“计算代系”、“vCore”、“存储”和“备份保持期”的默认值         。 可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从**备份冗余选项**中选择“异地冗余”  。 若要保存此定价层选择，请选择“确定”  。 下一个屏幕截图捕获了这些选择。
   
    > [!NOTE]
    > 如果轻量级计算和 I/O 足以满足工作负荷要求，请考虑使用“基本”定价层。 请注意，在“基本”定价层中创建的服务器以后不能扩展到“常规用途”或“内存优化”定价层。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/mysql/)。
@@ -57,9 +57,9 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
    ![“创建服务器 - 定价层”窗口](./media/quickstart-create-mysql-server-database-using-azure-portal/3-pricing-tier.png)
 
-4. 选择“创建”以预配服务器。 预配可能需要长达 20 分钟的时间。
+4. 选择“创建”  以预配服务器。 预配可能需要长达 20 分钟的时间。
    
-5. 在工具栏上选择“通知”（钟形图标）以监视部署过程。
+5. 在工具栏上选择“通知”（钟形图标）以监视部署过程。 
    
    默认情况下，将在服务器下创建以下数据库：**information_schema**、**mysql**、**performance_schema** 和 **sys**。
 
@@ -67,35 +67,35 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建了防火墙规则来为特定的 IP 地址打开防火墙，否则此防火墙会阻止外部应用程序和工具连接到服务器和服务器上的任何数据库。 
 
-1. 部署完成后，找到服务器。 可以根据需要进行搜索。 例如，从左侧菜单选择“所有资源”。 然后键入服务器名称（例如 **mydemoserver**），以搜索新创建的服务器。 从搜索结果列表中选择服务器名称。 服务器的“概述”页面随即打开，其中提供了用于进一步配置的选项。
+1. 部署完成后，找到服务器。 可以根据需要进行搜索。 例如，从左侧菜单选择“所有资源”。  然后输入服务器名称（例如 **mydemoserver**），以搜索新创建的服务器。 从搜索结果列表中选择服务器名称。 服务器的“概述”  页面随即打开，其中提供了用于进一步配置的选项。
 
-2. 在服务器页中，选择“连接安全性”。
+2. 在服务器页中，选择“连接安全性”  。
 
-3. 在“防火墙规则”标题下，选择“规则名称”列中的空白文本框，开始创建防火墙规则。 输入将访问此服务器的客户端的准确 IP 范围。
+3. 在“防火墙规则”标题下，选择“规则名称”列中的空白文本框，开始创建防火墙规则。   输入将访问此服务器的客户端的准确 IP 范围。
    
    ![连接安全性 - 防火墙规则](./media/quickstart-create-mysql-server-database-using-azure-portal/5-firewall-2.png)
 
 
 
-4. 在“连接安全性”页的上部工具栏中，选择“保存”。 等到指示更新已成功完成的通知出现后，再继续操作。 
+4. 在“连接安全性”页的上部工具栏中，选择“保存”。   等到指示更新已成功完成的通知出现后，再继续操作。 
 
    > [!NOTE]
    > 连接到 Azure Database for MySQL 时，经端口 3306 进行通信。 如果尝试从企业网络内部进行连接，则可能不允许经端口 3306 的出站流量。 如果是这样，则无法连接到服务器，除非 IT 部门打开了端口 3306。
    > 
 
 ## <a name="get-the-connection-information"></a>获取连接信息
-若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你此前可能已在本快速入门文章中记下这些值。 如果没有记下这些值，可以在 Azure 门户的服务器“概览”页或“属性”页中轻松地找到服务器名称和登录信息。
+若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你此前可能已在本快速入门文章中记下这些值。 如果没有记下这些值，可以在 Azure 门户的服务器“概览”页或“属性”页中轻松地找到服务器名称和登录信息。  
 
 若要查找这些值，请执行以下步骤： 
 
-1. 打开服务器的“概览”页。 记下“服务器名称”和“服务器管理员登录名”。 
+1. 打开服务器的“概览”  页。 记下“服务器名称”  和“服务器管理员登录名”  。 
 
 2. 将光标悬停在每个字段，然后复制图标就会显示在文本右侧。 根据需要选择复制图标即可复制这些值。
 
 在此示例中，服务器名称是 **mydemoserver.mysql.database.azure.com**，服务器管理员登录名是 **myadmin\@mydemoserver**。
 
 ## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>使用 mysql 命令行工具连接到 MySQL
-使用 mysql.exe 命令行工具连接到服务器。 可从[此处](https://dev.mysql.com/downloads/)下载 MySQL 并将其安装在计算机上。 
+使用 mysql.exe  命令行工具连接到服务器。 可从[此处](https://dev.mysql.com/downloads/)下载 MySQL 并将其安装在计算机上。 
 
 1. 若要借助 mysql 实用程序连接到 Azure Database for MySQL 服务器，请使用以下格式：
 
@@ -111,9 +111,9 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
 
     mysql 参数 |建议的值|说明
     ---|---|---
-    --host | *服务器名称* | 此前在创建 Azure Database for MySQL 服务器时使用过的服务器名称值。 示例服务器为 **mydemoserver.mysql.database.azure.com**。 请使用完全限定的域名 (\*.mysql.database.azure.com)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
-    --user | 服务器管理员登录名 |此前在创建 Azure Database for MySQL 服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为“username\@servername”。
-    -p | 等待系统提示 |如果系统提示，请提供在创建服务器时提供的密码。 注意，键入密码字符时，这些字符不会显示在 bash 提示符处。 输入密码后，选择 Enter。
+    --host | *服务器名称* | 此前在创建 Azure Database for MySQL 服务器时使用过的服务器名称值。 示例服务器为 **mydemoserver.mysql.database.azure.com**。 请使用完全限定的域名 (\*.mysql.database.azure.com)，如示例中所示。  如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
+    --user | 服务器管理员登录名  |此前在创建 Azure Database for MySQL 服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为“username\@servername”  。
+    -p |  等待系统提示 |如果系统提示，请提供在创建服务器时提供的密码。 注意，键入密码字符时，这些字符不会显示在 bash 提示符处。 输入密码后，选择 Enter  。
 
    连接后，mysql 实用程序会显示 `mysql>` 提示符，提示你键入命令。 
 
@@ -150,7 +150,7 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
    > [!TIP]
    > 有关其他命令，请参阅 [MySQL 5.7 参考手册--第 4.5.1 章](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)。
 
-5.  在 mysql> 提示符处键入以下命令，创建空数据库：
+5.  在 mysql> 提示符处键入以下命令，创建空数据库： 
     ```sql
     CREATE DATABASE quickstartdb;
     ```
@@ -158,13 +158,13 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
 
     在 Azure Database for MySQL 数据库中，可创建一个或多个数据库。 可以选择为每个服务器创建单一数据库来使用所有资源，还可以创建多个数据库来共享资源。 可以创建的数据库数目没有限制，但多个数据库共享相同的服务器资源。 
 
-6. 通过在 mysql > 提示符处键入以下命令来列出数据库：
+6. 通过在 mysql > 提示符处键入以下命令来列出数据库： 
 
     ```sql
     SHOW DATABASES;
     ```
 
-7.  键入 `\q`，然后选择 Enter 键，退出 mysql 工具。 
+7.  键入 `\q`，然后选择 Enter  键，退出 mysql 工具。 
 
 现在，你已连接到 Azure Database for MySQL 服务器并创建空白用户数据库。 请转到下一部分进行类似的练习。 下一练习使用另一常用工具（即 MySQL Workbench）连接到同一服务器。
 
@@ -173,9 +173,9 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
 
 1.  打开客户端计算机上的 MySQL Workbench 应用程序。 可以从 [Download MySQL Workbench](https://dev.mysql.com/downloads/workbench/)（下载 MySQL Workbench）下载并安装 MySQL Workbench。
 
-2. 创建新连接。 单击“MySQL 连接”标题旁边的加号 (+) 图标。
+2. 创建新连接。 选择“MySQL 连接”标题旁边的加号 (+) 图标。 
 
-3. 在“设置新连接”对话框的“参数”选项卡上，输入服务器连接信息。占位符值作为示例显示。 请将“主机名”、“用户名”和“密码”替换为自己的值。
+3. 在“设置新连接”  对话框的“参数”  选项卡上，输入服务器连接信息。占位符值作为示例显示。 请将“主机名”、“用户名”和“密码”替换为自己的值。
 
    ![设置新连接](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
 
@@ -183,15 +183,15 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
     |---|---|---|
      连接名称 | 演示连接 | 此连接的标签。 |
     连接方法 | 标准 (TCP/IP) | 标准 (TCP/IP) 就足够了。 |
-    主机名 | *服务器名称* | 此前在创建 Azure Database for MySQL 服务器时使用过的服务器名称值。 示例服务器为 **mydemoserver.mysql.database.azure.com**。 请使用完全限定的域名 (\*.mysql.database.azure.com)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。|
+    主机名 | *服务器名称* | 此前在创建 Azure Database for MySQL 服务器时使用过的服务器名称值。 示例服务器为 **mydemoserver.mysql.database.azure.com**。 请使用完全限定的域名 (\*.mysql.database.azure.com)，如示例中所示。  如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。|
      端口 | 3306 | 连接到 Azure Database for MySQL 服务器时需要使用的端口。 |
-    用户名 |  服务器管理员登录名 | 此前在创建 Azure Database for MySQL 服务器时提供的服务器管理员登录信息。 示例用户名是 **myadmin\@mydemoserver**。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username\@servername。
-    密码 | 你的密码 | 选择“在保管库中存储...”按钮来保存密码。 |
+    用户名 |  服务器管理员登录名  | 此前在创建 Azure Database for MySQL 服务器时提供的服务器管理员登录信息。 示例用户名是 **myadmin\@mydemoserver**。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username\@servername  。
+    密码 | 你的密码  | 选择“存储在保管库中”  以保存密码。 |
 
-4. 选择“测试连接”以测试是否所有参数均已正确配置。 然后选择“确定”以保存连接。 
+4. 选择“测试连接”  以测试是否所有参数均已正确配置。 然后选择“确定”  以保存连接。 
 
     > [!NOTE]
-    > 默认情况下，SSL 是在服务器上强制实施的，需要额外配置才能成功进行连接。 有关详细信息，请参阅[配置应用程序中的 SSL 连接性以安全连接到 Azure Database for MySQL](./howto-configure-ssl.md)。 就本快速入门来说，若要禁用 SSL，请转到 Azure 门户。 然后选择“连接安全性”页，禁用“强制实施 SSL”连接切换按钮。
+    > 默认情况下，SSL 是在服务器上强制实施的，需要额外配置才能成功进行连接。 有关详细信息，请参阅[配置应用程序中的 SSL 连接性以安全连接到 Azure Database for MySQL](./howto-configure-ssl.md)。 就本快速入门来说，若要禁用 SSL，请转到 Azure 门户。 然后选择“连接安全性”页，禁用“强制实施 SSL”连接切换按钮。 
 
 ## <a name="clean-up-resources"></a>清理资源
 可以通过两种方式清理在快速入门中创建的资源。 可以删除 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)，其中包括资源组中的所有资源。 若要保持其他资源原封不动，请只删除单服务器资源。
@@ -202,19 +202,19 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
 
 若要删除包括新建服务器在内的整个资源组，请执行以下步骤：
 
-1.  在 Azure 门户中查找资源组。 在左侧菜单中选择“资源组”，然后选择资源组的名称（例如 myresourcegroup 示例）。
+1.  在 Azure 门户中查找资源组。 在左侧菜单中选择“资源组”  ，然后选择资源组的名称（例如 myresourcegroup 示例）。 
 
-2.  在资源组页上，选择“删除”。 然后在框中键入确认删除的资源组的名称（例如 myresourcegroup 示例），再选择“删除”。
+2.  在资源组页上，选择“删除”  。 然后，在框中输入资源组的名称（例如，我们的示例 **myresourcegroup**）以确认删除，然后选择“删除”  。
 
 若只删除新创建的服务器，请执行以下步骤：
 
-1. 在 Azure 门户中找到服务器（如果尚未将其打开）。 在 Azure 门户左侧的菜单中，选择“所有资源”。 然后搜索所创建的服务器。
+1. 在 Azure 门户中找到服务器（如果尚未将其打开）。 在 Azure 门户左侧的菜单中，选择“所有资源”。  然后搜索所创建的服务器。
 
-2. 在“概览”页上，选择“删除”。 
+2. 在“概览”  页上，选择“删除”  。 
 
    ![Azure Database for MySQL--删除服务器](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
 
-3. 确认要删除的服务器的名称，并显示其下受影响的数据库。 在框中键入服务器名称（例如 **mydemoserver**）。 选择“删除”。
+3. 确认要删除的服务器的名称，并显示其下受影响的数据库。 在框中输入服务器名称（例如，我们的示例 **mydemoserver**）。 选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 

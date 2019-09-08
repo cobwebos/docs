@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: 6f72daa4a601df0e3592910645c2f9b35ab64431
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0218221426351b0b508021fc74693557f200b4e8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845812"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309266"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>教程：使用自动化机器学习和开放数据集生成回归模型
 
@@ -1246,7 +1246,7 @@ weather_df.head(10)
 
 重新对天气数据中的 `datetime` 字段调用 `pandas.Series.dt.normalize`，让它与 `taxi_holidays_df` 中的时间键匹配。 删除不需要的列，并筛选掉温度为 `NaN` 的记录。
 
-接下来，将天气数据分组为每日聚合天气值。 定义字典 `aggregations`，以定义如何在每日级别聚合各个字段。 对于 `snowDepth` 和 `temperature`，需要使用平均值；对于 `precipTime` 和 `precipDepth`，需要使用每日最大值。 使用 `groupby()` 函数以及聚合来对数据进行分组。 通过预览数据来确保每天都有一条记录。
+接下来，将天气数据分组为每日聚合天气值。 定义名为 `aggregations` 的字典，以定义如何在每日级别聚合每个字段。 对于 `snowDepth` 和 `temperature`，需要使用平均值；对于 `precipTime` 和 `precipDepth`，需要使用每日最大值。 使用 `groupby()` 函数以及聚合来对数据进行分组。 通过预览数据来确保每天都有一条记录。
 
 ```python
 weather_df["datetime"] = weather_df["datetime"].dt.normalize()

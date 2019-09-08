@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 03/27/2019
+ms.date: 08/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: 15abbfd8892464f3a2c21a85c07bc5b8e94e47ad
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594704"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195223"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>什么是必应视觉搜索 API？
 
-必应视觉搜索 API 返回图像见解。 你可以上传图像，也可以提供图像的 URL。 见解是视觉上类似的图像、购物源、包含图像的网页，等等。 必应视觉搜索 API 返回的见解类似于 Bing.com/images 上显示的见解。
+必应视觉搜索 API 返回图像见解。 你可以上传图像，也可以提供图像的 URL。 见解是视觉上类似的图像、购物源、包含图像的网页，等等。 必应视觉搜索 API 返回的见解类似于 Bing.com/images 上显示的见解。 
 
 如果使用[必应图像搜索 API](../bing-image-search/overview.md)，则可以使用该 API 的搜索结果中的见解标记，而无需上传图像。
 
@@ -38,6 +38,7 @@ ms.locfileid: "68594704"
 | 相关搜索                     | 其他人执行的相关搜索或基于图像内容的相关搜索。            |
 | 包含图像的网页     | 包含输入图像的网页。            |
 | 食谱                              | 包含输入图像中所示食物的食谱的网页。            |
+| 实体                             | 知名人物、场所和事物。 |
 
 除了这些见解，必应视觉搜索还可以返回各种派生自输入图像的不同字词（即标记）。 这些标记可让用户浏览在图像中找到的概念。 例如，如果输入图像是一位著名运动员，则其中一个标记可能是运动员的姓名，另一个标记可能是“体育”。 或者，如果输入图像是一个苹果馅饼，则标记可能是“苹果馅饼”、“馅饼”和“甜点”。
 

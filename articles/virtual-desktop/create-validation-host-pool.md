@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 05/08/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 732192e481f88c0cd3c78e9dac43970eb5be72e6
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3843a03b3b6d41520b121e5088fb13eac956e6fa
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840514"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163589"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教程：创建主机池以验证服务更新
 
@@ -25,7 +25,11 @@ ms.locfileid: "68840514"
 >[!NOTE]
 > 建议保留验证主机池以测试所有将来的更新。
 
-在开始之前，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做）。
+在开始之前，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做）。 然后，运行以下 cmdlet 登录到你的帐户：
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="create-your-host-pool"></a>创建主机池
 

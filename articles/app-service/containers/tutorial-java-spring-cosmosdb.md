@@ -8,15 +8,15 @@ ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18, seo-java-july2019
-ms.openlocfilehash: 625e40b4dcb8ac558831508b292fd5cbcfb90b5b
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.custom: seodec18, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 27b30bae80e2959698d71279efbfa2531498d8de
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489457"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171210"
 ---
-# <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>教程：使用 Spring 和 Azure Cosmos DB 生成 Java Web 应用
+# <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>教程：使用 Linux 上的 Azure 应用服务和 Azure Cosmos DB 生成 Java Spring Boot Web 应用
 
 本教程将指导你完成在 Azure 上生成、配置、部署和缩放 Java Web 应用的过程。 完成本教程后，你将获得一个 [Spring Boot](https://projects.spring.io/spring-boot/) 应用程序，该应用程序可在 [Linux 上运行的 Azure 应用服务](/azure/app-service/containers)运行的 [Azure Cosmos DB](/azure/cosmos-db) 中存储数据。
 

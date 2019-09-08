@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 5c310c1943eaf23423be873c6172e27c621fe109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564078"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257080"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中部署应用
 
@@ -59,11 +59,11 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
 1. 登录 [LUIS 门户](https://www.luis.ai)，从应用列表中选择“myEnglishApp”应用  。
 
-1. 在右上角的菜单中选择“管理”，然后选择“密钥和终结点”   。
+1. 在右上角菜单中选择“管理”  ，然后选择“Azure 资源”  。
 
-1. 若要添加 LUIS，请选择“分配资源 +”  。
+1. 若要添加 LUIS，请选择“添加预测资源”  。
 
-   [![将资源分配给应用](./media/get-started-portal-deploy-app/assign-resource-button.png)](./media/get-started-portal-deploy-app/assign-resource-button.png#lightbox)
+    <!-- TBD: get screenshot-->
 
 1. 选择租户、订阅和资源名称。 选择“分配资源”。 
 

@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 96f65ef17f25e1ff6ee3847507b33492642af5e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2856a52f8739b393139c437374be4846e9c67887
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067465"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276660"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>快速入门：使用 REST API 创建 Azure 数据工厂和管道
 
@@ -40,7 +40,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 * **Azure 存储帐户**。 可以将 blob 存储用作**源**和**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
 * 在 Blob 存储中创建一个 **blob 容器**，在该容器中创建一个输入**文件夹**，并向该文件夹上传一些文件。 可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具连接到 Azure Blob 存储、创建 Blob 容器、上传输入文件，以及验证输出文件。
 * 安装 **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明。 本快速入门使用 PowerShell 调用 REST API。
-* 按照[此说明](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)**在 Azure Active Directory 中创建应用程序**。 记下要在后面的步骤中使用的以下值：**应用程序 ID**、**身份验证密钥**和**租户 ID**。 将应用程序分配到“参与者”  角色。
+* 按照[此说明](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)**在 Azure Active Directory 中创建应用程序**。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**clientSecrets** 和**租户 ID**。 将应用程序分配到“参与者”  角色。
 
 ## <a name="set-global-variables"></a>设置全局变量
 
@@ -66,10 +66,10 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
     ```powershell
     $tenantID = "<your tenant ID>"
     $appId = "<your application ID>"
-    $authKey = "<your authentication key for the application>"
-    $subsId = "<your subscription ID to create the factory>"
-    $resourceGroup = "<your resource group to create the factory>"
-    $dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>"
+    $clientSecrets = "<your clientSecrets for the application>"
+    $subscriptionId = "<your subscription ID to create the factory>"
+    $resourceGroupName = "<your resource group to create the factory>"
+    $factoryName = "<specify the name of data factory to create. It must be globally unique.>"
     $apiVersion = "2018-06-01"
     ```
 
@@ -79,7 +79,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ```powershell
 $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]"https://login.microsoftonline.com/${tenantId}"
-$cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($appId, $authKey)
+$cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($appId, $clientSecrets)
 $result = $AuthContext.AcquireTokenAsync("https://management.core.windows.net/", $cred).GetAwaiter().GetResult()
 $authHeader = @{
 'Content-Type'='application/json'
@@ -93,7 +93,7 @@ $authHeader = @{
 运行以下命令以创建数据工厂：
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}?api-version=${apiVersion}"
+$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}?api-version=${apiVersion}"
 $body = @"
 {
     "name": "$dataFactoryName",
@@ -120,27 +120,27 @@ $response | ConvertTo-Json
 下面是示例响应：
 
 ```json
-{
-    "name": "<dataFactoryName>",
-    "tags": {
+{  
+    "name":"<dataFactoryName>",
+    "identity":{  
+        "type":"SystemAssigned",
+        "principalId":"<service principal ID>",
+        "tenantId":"<tenant ID>"
     },
-    "properties":  {
-        "provisioningState":  "Succeeded",
-        "loggingStorageAccountKey":  "**********",
-        "createTime":  "2017-09-14T06:22:59.9106216Z",
-        "version":  "2018-06-01"
+    "id":"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>",
+    "type":"Microsoft.DataFactory/factories",
+    "properties":{  
+        "provisioningState":"Succeeded",
+        "createTime":"2019-09-03T02:10:27.056273Z",
+        "version":"2018-06-01"
     },
-    "identity":  {
-        "type":  "SystemAssigned",
-        "principalId":  "<service principal ID>",
-        "tenantId":  "<tenant ID>"
-    },
-    "id":  "dataFactoryName",
-    "type":  "Microsoft.DataFactory/factories",
-    "location":  "East US"
+    "eTag":"\"0200c876-0000-0100-0000-5d6dcb930000\"",
+    "location":"East US",
+    "tags":{  
+
+    }
 }
 ```
-
 ## <a name="create-linked-services"></a>创建链接服务
 
 可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在此快速入门中，只需创建一个同时作为复制源和接收器存储的 Azure 存储链接服务，在示例中名为“AzureStorageLinkedService”。
@@ -150,17 +150,17 @@ $response | ConvertTo-Json
 在执行命令之前，将 &lt;accountName&gt; 和 &lt;accountKey&gt; 分别替换为 Azure 存储帐户的名称和密钥。
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/linkedservices/AzureStorageLinkedService?api-version=${apiVersion}"
+$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/linkedservices/AzureStorageLinkedService?api-version=${apiVersion}"
 $body = @"
-{
-    "name": "AzureStorageLinkedService",
-    "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>",
-                "type": "SecureString"
-            }
+{  
+    "name":"AzureStorageLinkedService",
+    "properties":{  
+        "annotations":[  
+
+        ],
+        "type":"AzureBlobStorage",
+        "typeProperties":{  
+            "connectionString":"DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>"
         }
     }
 }
@@ -172,43 +172,48 @@ $response | ConvertTo-Json
 下面是示例输出：
 
 ```json
-{
-    "id":  "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/linkedservices/AzureStorageLinkedService",
-    "name":  "AzureStorageLinkedService",
-    "properties":  {
-        "type":  "AzureStorage",
-        "typeProperties":  {
-            "connectionString":  "@{value=**********; type=SecureString}"
+{  
+    "id":"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/linkedservices/AzureStorageLinkedService",
+    "name":"AzureStorageLinkedService",
+    "type":"Microsoft.DataFactory/factories/linkedservices",
+    "properties":{  
+        "annotations":[  
+
+        ],
+        "type":"AzureBlobStorage",
+        "typeProperties":{  
+            "connectionString":"DefaultEndpointsProtocol=https;AccountName=<accountName>;"
         }
     },
-    "etag":  "0000c552-0000-0000-0000-59b1459c0000"
+    "etag":"07011a57-0000-0100-0000-5d6e14a20000"
 }
 ```
-
 ## <a name="create-datasets"></a>创建数据集
 
-定义一个数据集来表示要从源复制到接收器的数据。 在本示例中，此 Blob 数据集引用在上一步中创建的 Azure 存储链接服务。 此数据集采用一个参数，其值在使用此数据集的活动中设置。 该参数用来构造“folderPath”，该项指向数据的驻留/存储位置。
+定义一个数据集来表示要从源复制到接收器的数据。 在此示例中，将创建两个数据集：InputDataset 和 OutputDataset。 它们引用在上一部分创建的 Azure 存储链接服务。 输入数据集表示输入文件夹中的源数据。 在输入数据集定义中，请指定包含源数据的 Blob 容器 (adftutorial)、文件夹 (input) 和文件 (emp.txt)。 输出数据集表示复制到目标的数据。 在输出数据集定义中，请指定要将数据复制到的 Blob 容器 (adftutorial)、文件夹 (output) 和文件。
+
+**创建 InputDataset**
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/datasets/BlobDataset?api-version=${apiVersion}"
+$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/InputDataset?api-version=${apiVersion}"
 $body = @"
-{
-    "name": "BlobDataset",
-    "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": {
-                "value": "@{dataset().path}",
-                "type": "Expression"
-            }
+{  
+    "name":"InputDataset",
+    "properties":{  
+        "linkedServiceName":{  
+            "referenceName":"AzureStorageLinkedService",
+            "type":"LinkedServiceReference"
         },
-        "linkedServiceName": {
-            "referenceName": "AzureStorageLinkedService",
-            "type": "LinkedServiceReference"
-        },
-        "parameters": {
-            "path": {
-                "type": "String"
+        "annotations":[  
+
+        ],
+        "type":"Binary",
+        "typeProperties":{  
+            "location":{  
+                "type":"AzureBlobStorageLocation",
+                "fileName":"emp.txt",
+                "folderPath":"input",
+                "container":"adftutorial"
             }
         }
     }
@@ -221,26 +226,79 @@ $response | ConvertTo-Json
 下面是示例输出：
 
 ```json
-{
-    "id":  "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/datasets/BlobDataset",
-    "name":  "BlobDataset",
-    "properties":  {
-        "type":  "AzureBlob",
-        "typeProperties":  {
-            "folderPath":  "@{value=@{dataset().path}; type=Expression}"
+{  
+    "id":"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/datasets/InputDataset",
+    "name":"InputDataset",
+    "type":"Microsoft.DataFactory/factories/datasets",
+    "properties":{  
+        "linkedServiceName":{  
+            "referenceName":"AzureStorageLinkedService",
+            "type":"LinkedServiceReference"
         },
-        "linkedServiceName":  {
-            "referenceName":  "AzureStorageLinkedService",
-            "type":  "LinkedServiceReference"
-        },
-        "parameters":  {
-            "path":  "@{type=String}"
+        "annotations":[  
+
+        ],
+        "type":"Binary",
+        "typeProperties":{  
+            "location":"@{type=AzureBlobStorageLocation; fileName=emp.txt; folderPath=input; container=adftutorial}"
         }
     },
-    "etag":  "0000c752-0000-0000-0000-59b1459d0000"
+    "etag":"07011c57-0000-0100-0000-5d6e14b40000"
 }
 ```
+**创建 OutputDataset**
 
+```powershell
+$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/OutputDataset?api-version=${apiVersion}"
+$body = @"
+{  
+    "name":"OutputDataset",
+    "properties":{  
+        "linkedServiceName":{  
+            "referenceName":"AzureStorageLinkedService",
+            "type":"LinkedServiceReference"
+        },
+        "annotations":[  
+
+        ],
+        "type":"Binary",
+        "typeProperties":{  
+            "location":{  
+                "type":"AzureBlobStorageLocation",
+                "folderPath":"output",
+                "container":"adftutorial"
+            }
+        }
+    }
+}
+"@
+$response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Body $body
+$response | ConvertTo-Json
+```
+
+下面是示例输出：
+
+```json
+{  
+    "id":"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/datasets/OutputDataset",
+    "name":"OutputDataset",
+    "type":"Microsoft.DataFactory/factories/datasets",
+    "properties":{  
+        "linkedServiceName":{  
+            "referenceName":"AzureStorageLinkedService",
+            "type":"LinkedServiceReference"
+        },
+        "annotations":[  
+
+        ],
+        "type":"Binary",
+        "typeProperties":{  
+            "location":"@{type=AzureBlobStorageLocation; folderPath=output; container=adftutorial}"
+        }
+    },
+    "etag":"07013257-0000-0100-0000-5d6e18920000"
+}
+```
 ## <a name="create-pipeline"></a>创建管道
 
 在此示例中，此管道包含一个活动并采用两个参数 - 输入 blob 路径和输出 blob 路径。 这些参数的值是在触发/运行管道时设置的。 复制活动引用在上一步中创建的同一 blob 数据集作为输入和输出。 当该数据集用作输入数据集时，即指定了输入路径。 并且，当该数据集用作输出数据集时，即指定了输出路径。
@@ -255,42 +313,46 @@ $body = @"
             {
                 "name": "CopyFromBlobToBlob",
                 "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "BinarySource",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageReadSettings",
+                            "recursive": true
+                        }
+                    },
+                    "sink": {
+                        "type": "BinarySink",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageWriteSettings"
+                        }
+                    },
+                    "enableStaging": false
+                },
                 "inputs": [
                     {
-                        "referenceName": "BlobDataset",
-                        "parameters": {
-                            "path": "@pipeline().parameters.inputPath"
-                        },
-                    "type": "DatasetReference"
+                        "referenceName": "InputDataset",
+                        "type": "DatasetReference"
                     }
                 ],
                 "outputs": [
                     {
-                        "referenceName": "BlobDataset",
-                        "parameters": {
-                            "path": "@pipeline().parameters.outputPath"
-                        },
+                        "referenceName": "OutputDataset",
                         "type": "DatasetReference"
                     }
-                ],
-                "typeProperties": {
-                    "source": {
-                        "type": "BlobSource"
-                    },
-                    "sink": {
-                        "type": "BlobSink"
-                    }
-                }
+                ]
             }
         ],
-        "parameters": {
-            "inputPath": {
-                "type": "String"
-            },
-            "outputPath": {
-                "type": "String"
-            }
-        }
+        "annotations": []
     }
 }
 "@
@@ -301,19 +363,19 @@ $response | ConvertTo-Json
 下面是示例输出：
 
 ```json
-{
-    "id":  "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/pipelines/Adfv2QuickStartPipeline",
-    "name":  "Adfv2QuickStartPipeline",
-    "properties":  {
-        "activities":  [
-            "@{name=CopyFromBlobToBlob; type=Copy; inputs=System.Object[]; outputs=System.Object[]; typeProperties=}"
+{  
+    "id":"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/pipelines/Adfv2QuickStartPipeline",
+    "name":"Adfv2QuickStartPipeline",
+    "type":"Microsoft.DataFactory/factories/pipelines",
+    "properties":{  
+        "activities":[  
+            "@{name=CopyFromBlobToBlob; type=Copy; dependsOn=System.Object[]; policy=; userProperties=System.Object[]; typeProperties=; inputs=System.Object[]; outputs=System.Object[]}"
         ],
-        "parameters":  {
-            "inputPath":  "@{type=String}",
-            "outputPath":  "@{type=String}"
-        }
+        "annotations":[  
+
+        ]
     },
-    "etag":  "0000c852-0000-0000-0000-59b1459e0000"
+    "etag":"07012057-0000-0100-0000-5d6e14c00000"
 }
 ```
 
@@ -325,13 +387,7 @@ $response | ConvertTo-Json
 
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline/createRun?api-version=${apiVersion}"
-$body = @"
-{
-    "inputPath": "<the path to existing blob(s) to copy data from, e.g. containername/path>",
-    "outputPath": "<the blob path to copy data to, e.g. containername/path>"
-}
-"@
+$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline/createRun?api-version=${apiVersion}"
 $response = Invoke-RestMethod -Method POST -Uri $request -Header $authHeader -Body $body
 $response | ConvertTo-Json
 $runId = $response.runId
@@ -340,8 +396,8 @@ $runId = $response.runId
 下面是示例输出：
 
 ```json
-{
-    "runId":  "2f26be35-c112-43fa-9eaa-8ba93ea57881"
+{  
+    "runId":"04a2bb9a-71ea-4c31-b46e-75276b61bafc"
 }
 ```
 
@@ -350,7 +406,7 @@ $runId = $response.runId
 1. 运行以下脚本来持续检查管道运行状态，直到它完成数据复制为止。
 
     ```powershell
-    $request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelineruns/${runId}?api-version=${apiVersion}"
+    $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelineruns/${runId}?api-version=${apiVersion}"
     while ($True) {
         $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
         Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
@@ -368,72 +424,72 @@ $runId = $response.runId
     下面是示例输出：
 
     ```json
-    {
-        "key":  "000000000-0000-0000-0000-00000000000",
-        "timestamp":  "2017-09-07T13:12:39.5561795Z",
-        "runId":  "000000000-0000-0000-0000-000000000000",
-        "dataFactoryName":  "<dataFactoryName>",
-        "pipelineName":  "Adfv2QuickStartPipeline",
-        "parameters":  [
-            "inputPath: <inputBlobPath>",
-            "outputPath: <outputBlobPath>"
+    {  
+        "runId":"04a2bb9a-71ea-4c31-b46e-75276b61bafc",
+        "debugRunId":null,
+        "runGroupId":"04a2bb9a-71ea-4c31-b46e-75276b61bafc",
+        "pipelineName":"Adfv2QuickStartPipeline",
+        "parameters":{  
+    
+        },
+        "invokedBy":{  
+            "id":"2bb3938176ee43439752475aa12b2251",
+            "name":"Manual",
+            "invokedByType":"Manual"
+        },
+        "runStart":"2019-09-03T07:22:47.0075159Z",
+        "runEnd":"2019-09-03T07:22:57.8862692Z",
+        "durationInMs":10878,
+        "status":"Succeeded",
+        "message":"",
+        "lastUpdated":"2019-09-03T07:22:57.8862692Z",
+        "annotations":[  
+    
         ],
-        "parametersCount":  2,
-        "parameterNames":  [
-            "inputPath",
-            "outputPath"
-        ],
-        "parameterNamesCount":  2,
-        "parameterValues":  [
-            "<inputBlobPath>",
-            "<outputBlobPath>"
-        ],
-        "parameterValuesCount":  2,
-        "runStart":  "2017-09-07T13:12:00.3710792Z",
-        "runEnd":  "2017-09-07T13:12:39.5561795Z",
-        "durationInMs":  39185,
-        "status":  "Succeeded",
-        "message":  ""
+        "runDimension":{  
+    
+        },
+        "isLatest":true
     }
-    ```
-
-2. 运行以下脚本来检索复制活动运行详细信息，例如，读取/写入的数据的大小。
+2. Run the following script to retrieve copy activity run details, for example, size of the data read/written.
 
     ```powershell
-    $request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelineruns/${runId}/activityruns?api-version=${apiVersion}&startTime="+(Get-Date).ToString('yyyy-MM-dd')+"&endTime="+(Get-Date).AddDays(1).ToString('yyyy-MM-dd')+"&pipelineName=Adfv2QuickStartPipeline"
-    $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
+    $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelineruns/${runId}/queryActivityruns?api-version=${apiVersion}&startTime="+(Get-Date).ToString('yyyy-MM-dd')+"&endTime="+(Get-Date).AddDays(1).ToString('yyyy-MM-dd')+"&pipelineName=Adfv2QuickStartPipeline"
+    $response = Invoke-RestMethod -Method POST -Uri $request -Header $authHeader
     $response | ConvertTo-Json
     ```
-
     下面是示例输出：
 
     ```json
-    {
-        "value":  [
-            {
-                "id":  "000000000-0000-0000-0000-00000000000",
-                "timestamp":  "2017-09-07T13:12:38.4780542Z",
-                "pipelineRunId":  "000000000-0000-00000-0000-0000000000000",
-                "pipelineName":  "Adfv2QuickStartPipeline",
-                "status":  "Succeeded",
-                "failureType":  "",
-                "linkedServiceName":  "",
-                "activityName":  "CopyFromBlobToBlob",
-                "activityType":  "Copy",
-                "activityStart":  "2017-09-07T13:12:02.3299261Z",
-                "activityEnd":  "2017-09-07T13:12:38.4780542Z",
-                "duration":  36148,
-                "input":  "@{source=; sink=}",
-                "output":  "@{dataRead=331452208; dataWritten=331452208; copyDuration=22; throughput=14712.9; errors=System.Object[]; effectiveIntegrationRuntime=DefaultIntegrationRuntime (West US); usedDataIntegrationUnits=2; billedDuration=22}",
-                "error":  "@{errorCode=; message=; failureType=; target=CopyFromBlobToBlob}"
+    {  
+        "value":[  
+            {  
+                "activityRunEnd":"2019-09-03T07:22:56.6498704Z",
+                "activityName":"CopyFromBlobToBlob",
+                "activityRunStart":"2019-09-03T07:22:49.0719311Z",
+                "activityType":"Copy",
+                "durationInMs":7577,
+                "retryAttempt":null,
+                "error":"@{errorCode=; message=; failureType=; target=CopyFromBlobToBlob}",
+                "activityRunId":"32951886-814a-4d6b-b82b-505936e227cc",
+                "iterationHash":"",
+                "input":"@{source=; sink=; enableStaging=False}",
+                "linkedServiceName":"",
+                "output":"@{dataRead=20; dataWritten=20; filesRead=1; filesWritten=1; sourcePeakConnections=1; sinkPeakConnections=1; copyDuration=4; throughput=0.01; errors=System.Object[]; effectiveIntegrationRuntime=DefaultIntegrationRuntime (Central US); usedDataIntegrationUnits=4; usedParallelCopies=1; executionDetails=System.Object[]}",
+                "userProperties":"",
+                "pipelineName":"Adfv2QuickStartPipeline",
+                "pipelineRunId":"04a2bb9a-71ea-4c31-b46e-75276b61bafc",
+                "status":"Succeeded",
+                "recoveryStatus":"None",
+                "integrationRuntimeNames":"defaultintegrationruntime",
+                "executionDetails":"@{integrationRuntime=System.Object[]}"
             }
         ]
     }
     ```
-
 ## <a name="verify-the-output"></a>验证输出
 
-使用 Azure 存储资源管理器等工具检查 blob 是否已根据创建管道运行时的指定从“inputBlobPath”复制到“outputBlobPath”。
+使用 Azure 存储资源管理器检查文件是否已根据创建管道运行时的指定从“inputPath”复制到“outputPath”。
 
 ## <a name="clean-up-resources"></a>清理资源
 可以通过两种方式清理在快速入门中创建的资源。 可以删除 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)，其中包括资源组中的所有资源。 若要使其他资源保持原封不动，请仅删除在此教程中创建的数据工厂。

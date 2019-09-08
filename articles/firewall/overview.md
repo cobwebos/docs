@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 08/23/2019
+ms.date: 09/4/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: f65b1d62a9c0e6835421c2ae796f9ea390407c9a
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c685b2314d15e431ccac3470fd337ca92697e1a5
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971598"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241183"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -93,6 +93,12 @@ FQDN 标记使你可以轻松地允许已知的 Azure 服务网络流量通过�
 ## <a name="azure-monitor-logging"></a>Azure Monitor 日志记录
 
 所有事件与 Azure Monitor 集成，使你能够在存储帐户中存档日志、将事件流式传输到事件中心，或者将其发送到 Azure Monitor 日志。
+
+## <a name="pci-soc-and-iso-compliant"></a>符合 PCI、SOC 和 ISO 标准
+
+Azure 防火墙符合支付卡行业 (PCI)、服务组织控制 (SOC) 和国际标准化组织 (ISO) 标准。 它目前支持 SOC 1 类型 2、SOC 2 类型 2、SOC 3、PCI DSS 和 ISO 27001、27018、20000-1、22301、9001、27017。
+
+有关详细信息，请参阅 [Microsoft 合规性指南](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide)。
 
 ## <a name="known-issues"></a>已知问题
 

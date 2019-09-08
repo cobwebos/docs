@@ -1,5 +1,5 @@
 ---
-title: 使用适用于 Visual Studio 的 Azure 流分析工具创建流分析作业
+title: 使用 Visual Studio 创建 Azure 流分析作业
 description: 本快速入门展示了如何开始使用 Visual Studio 创建流分析作业、配置输入和输出，以及定义查询。
 services: stream-analytics
 author: mamccrea
@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: bd27495266918063c65bf4648b3453e25767e293
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb3b25387df33f8d366a088f9fa63e0dc96290bf
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076205"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173260"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>快速入门：使用适用于 Visual Studio 的 Azure 流分析工具创建流分析作业
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>快速入门：使用 Visual Studio 创建 Azure 流分析作业
 
 本快速入门展示了如何使用用于 Visual Studio 的 Azure 流分析工具创建和运行流分析作业。 示例作业从 IoT 中心设备中读取流式处理数据。 你将定义一个作业，用以计算超过 27° 时的平均温度并将生成的输出事件写入到 blob 存储中的一个新文件。
 
@@ -40,8 +40,8 @@ ms.locfileid: "67076205"
    
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
-   |订阅  | 用户的订阅\<\> |  选择要使用的 Azure 订阅。 |
-   |资源组   |   asaquickstart-resourcegroup  |   选择“新建”  ，然后输入帐户的新资源组名称。 |
+   |Subscription  | 用户的订阅\<\> |  选择要使用的 Azure 订阅。 |
+   |Resource group   |   asaquickstart-resourcegroup  |   选择“新建”  ，然后输入帐户的新资源组名称。 |
    |区域  |  \<选择离用户最近的区域\> | 选择可以在其中托管 IoT 中心的地理位置。 使用最靠近用户的位置。 |
    |IoT 中心名称  | MyASAIoTHub  |   选择 IoT 中心的名称。   |
 
@@ -114,7 +114,7 @@ ms.locfileid: "67076205"
    |源类型   |  数据流 |  选择合适的输入源：数据流或参考数据。   |
    |源  |  IoT 中心 |  选择合适的输入源。   |
    |资源  | 选择当前帐户中的数据源 | 选择手动输入数据或选择现有帐户。   |
-   |订阅  |  用户的订阅\<\>   | 选择包含创建的 IoT 中心的 Azure 订阅。   |
+   |Subscription  |  用户的订阅\<\>   | 选择包含创建的 IoT 中心的 Azure 订阅。   |
    |IoT 中心  |  MyASAIoTHub   |  选择或输入 IoT 中心的名称。 如果在同一订阅中创建 IoT 中心名称，则会自动将其删除。   |
    
 3. 让其他选项保留默认值，然后选择“保存”以保存设置。   
@@ -132,7 +132,7 @@ ms.locfileid: "67076205"
    |输出别名  |  输出   |  输入一个名称，用于标识作业的输出。   |
    |接收器   |  Blob 存储 |  选择合适的接收器。    |
    |资源  |  手动提供数据源设置 |  选择手动输入数据或选择现有帐户。   |
-   |订阅  |  用户的订阅\<\>   | 选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。   |
+   |Subscription  |  用户的订阅\<\>   | 选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。   |
    |存储帐户  |  asaquickstartstorage   |  选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。   |
    |容器  |  container1   |  选择你在存储帐户中创建的现有容器。   |
    |路径模式  |  output   |  输入要在容器内创建的文件路径的名称。   |

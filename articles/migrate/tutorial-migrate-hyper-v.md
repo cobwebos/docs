@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/09/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4a88e9dddd492d5c24698bcde8c3a1fd942eaf66
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 755bb6d019418cf9dae22ebf7ee6a3c94af3c750
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854192"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309449"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -132,6 +132,9 @@ Azure Migrate 服务器迁移运行一个轻型 Hyper-V VM 设备。
 ## <a name="replicate-hyper-v-vms"></a>复制 Hyper-V VM
 
 完成发现后，可以开始将 Hyper-V VM 复制到 Azure。
+
+> [!NOTE]
+> 最多可以同时复制 10 台计算机。 如果需要复制更多，则可以每批 10 台同时复制它们。
 
 1. 在 Azure Migrate 项目中选择“服务器”>“Azure Migrate:   服务器迁移”，然后单击“复制”。 
 2. 在“复制”>“源设置” > “你的计算机是否已虚拟化”中，选择“是，使用 Hyper-V”。     然后单击“下一页:  虚拟机”。

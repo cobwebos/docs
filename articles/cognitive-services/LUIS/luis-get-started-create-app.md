@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: e53f8d6e08b345d417ce54deacd658275cb1cd00
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5e635064af21996b7bd87b9da0f6b1ec9aa29378
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563911"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307818"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预构建的家庭自动化应用
 
@@ -26,10 +26,10 @@ ms.locfileid: "68563911"
 
 本文需要一个在 [https://www.luis.ai](https://www.luis.ai) 的 LUIS 门户中创建的免费 LUIS 帐户。 
 
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
+
 ## <a name="create-a-new-app"></a>创建新应用
 可在“我的应用”中创建和管理应用程序  。 
-
-1. 登录到 LUIS 门户。
 
 2. 选择“创建新应用”。 
 
@@ -65,7 +65,7 @@ ms.locfileid: "68563911"
 
 选择 **HomeAutomation.TurnOff** 意向。 可以看到，此意向包含一系列使用实体标记的话语。
 
-[![HomeAutomation.TurnOff 意向的屏幕截图](media/luis-quickstart-new-app/home-automation-turnon.png "Screenshot of HomeAutomation.TurnOff intent")](media/luis-quickstart-new-app/home-automation-turnon.png)
+[![HomeAutomation.TurnOff 意向的屏幕截图](media/luis-quickstart-new-app/home-automation-turnoff.png "Screenshot of HomeAutomation.TurnOff intent")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
 ## <a name="train-the-luis-app"></a>训练 LUIS 应用
 
@@ -85,6 +85,10 @@ Turn off the lights
 [![突出显示了话语的“测试”面板的屏幕截图](media/luis-quickstart-new-app/test.png "Screenshot of Test panel with utterance highlighted")](media/luis-quickstart-new-app/test.png)
 
 
+选择“检查”  以查看有关预测的详细信息。
+
+![“测试”面板的屏幕截图，其中突出显示了话语](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
+
 再次选择“测试”  ，折叠测试窗格。 
 
 <a name="publish-your-app"></a>
@@ -97,9 +101,78 @@ Turn off the lights
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-2. 将光标定位到地址中 URL 的末尾并输入 `turn off the living room light`，然后按 Enter。 浏览器会显示 HTTP 终结点的 JSON 响应。
+2. 将光标定位到地址中 URL 的末尾并输入 `turn off the living room light`，然后按 Enter。 浏览器会显示 HTTP 终结点的 JSON 响应的 V2 API 版本。
 
-    [![JSON 结果检测到意向 TurnOff 的浏览器的屏幕截图](media/luis-quickstart-new-app/turn-off-living-room.png "Screenshot of browser with JSON result detects the intent TurnOff")](media/luis-quickstart-new-app/turn-off-living-room.png)
+```json
+{
+  "query": "turn off the living room light",
+  "topScoringIntent": {
+    "intent": "HomeAutomation.TurnOff",
+    "score": 0.9753089
+  },
+  "intents": [
+    {
+      "intent": "HomeAutomation.TurnOff",
+      "score": 0.9753089
+    },
+    {
+      "intent": "HomeAutomation.QueryState",
+      "score": 0.01027893
+    },
+    {
+      "intent": "HomeAutomation.TurnUp",
+      "score": 0.006881481
+    },
+    {
+      "intent": "HomeAutomation.SetDevice",
+      "score": 0.006786365
+    },
+    {
+      "intent": "HomeAutomation.TurnDown",
+      "score": 0.005145787
+    },
+    {
+      "intent": "HomeAutomation.TurnOn",
+      "score": 0.004114749
+    },
+    {
+      "intent": "None",
+      "score": 0.000598924
+    }
+  ],
+  "entities": [
+    {
+      "entity": "living room",
+      "type": "HomeAutomation.Location",
+      "startIndex": 13,
+      "endIndex": 23,
+      "score": 0.94558233
+    },
+    {
+      "entity": "living room light",
+      "type": "HomeAutomation.DeviceName",
+      "startIndex": 13,
+      "endIndex": 29,
+      "resolution": {
+        "values": [
+          "living room light"
+        ]
+      }
+    },
+    {
+      "entity": "light",
+      "type": "HomeAutomation.DeviceType",
+      "startIndex": 25,
+      "endIndex": 29,
+      "resolution": {
+        "values": [
+          "light"
+        ]
+      }
+    }
+  ]
+}
+```
     
 ## <a name="clean-up-resources"></a>清理资源
 

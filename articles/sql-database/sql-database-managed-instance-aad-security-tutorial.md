@@ -9,12 +9,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 87bd22ec4f2cfae62d1f80284ad8346ca292d016
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37098411f465c611dc9d2e2443f369e01d6e338c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567675"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230997"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>教程：使用 Azure AD 服务器主体（登录名）确保 Azure SQL 数据库中托管实例的安全性
 
@@ -55,10 +55,12 @@ ms.locfileid: "68567675"
 
 ## <a name="limiting-access-to-your-managed-instance"></a>限制对托管实例的访问
 
-只能通过专用 IP 地址访问托管实例。 在托管实例网络的外部，无法通过任何服务终结点连接到托管实例。 与在隔离的 SQL Server 本地环境中非常类似，应用程序或用户需要访问托管实例网络 (VNet) 才能建立连接。 有关详细信息，请参阅[将应用程序连接到托管实例](sql-database-managed-instance-connect-app.md)。
+可以通过专用 IP 地址访问托管实例。 与在隔离的 SQL Server 本地环境中非常类似，应用程序或用户需要访问托管实例网络 (VNet) 才能建立连接。 有关详细信息，请参阅[将应用程序连接到托管实例](sql-database-managed-instance-connect-app.md)。
+
+还可以在托管实例上配置服务终结点，该终结点允许使用与 Azure SQL 数据库相同的方式进行公共连接。 有关详细信息，请参阅以下文章：[在 Azure SQL 数据库托管实例中配置公共终结点](sql-database-managed-instance-public-endpoint-configure.md)。
 
 > [!NOTE] 
-> 由于只能在托管实例的 VNET 内部访问托管实例，因此 [SQL 数据库防火墙规则](sql-database-firewall-configure.md)不适用。 托管实例具有自身的[内置防火墙](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)。
+> 即使启用了服务终结点，[SQL 数据库防火墙规则](sql-database-firewall-configure.md)也不适用。 托管实例使用自己的[内置防火墙](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)来管理连接。
 
 ## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>使用 SSMS 为托管实例创建 Azure AD 服务器主体（登录名）
 

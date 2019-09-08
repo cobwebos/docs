@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: anroth
-ms.openlocfilehash: ef5e1d7bb2c5b4404ce1a43bc719b7b5a242b1c7
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7faad2c432e15ed363bd1caf290e03dc75e9d298
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946252"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141065"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>快速入门：使用自定义视觉 .NET SDK 创建图像分类项目
 
@@ -103,7 +103,7 @@ CustomVisionPredictionClient endpoint = new CustomVisionPredictionClient()
 
 ### <a name="submit-an-image-to-the-default-prediction-endpoint"></a>将图像提交到默认预测终结点
 
-在此脚本中，测试图像加载到 **LoadImagesFromDisk** 方法中，模型的预测输出将显示在控制台中。
+在此脚本中，测试图像加载到 **LoadImagesFromDisk** 方法中，模型的预测输出将显示在控制台中。 publishedModelName 变量的值应该对应于自定义视觉门户的“性能”  选项卡上的“已发布为”值。 
 
 ```csharp
 // Make a prediction against the new project

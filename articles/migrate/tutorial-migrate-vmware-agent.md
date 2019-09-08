@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1ea736b560e2e910ede203e8ce8c0b157ebbce71
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: aecbaab1ed29a1acfdcb4eec53b88fc266bbab09
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640868"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309412"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
@@ -304,6 +304,11 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以便：
 
 
 ## <a name="replicate-vms"></a>复制 VM
+
+现在，选择要迁移的 VM。
+
+> [!NOTE]
+> 最多可以同时复制 10 台计算机。 如果需要复制更多，则可以每批 10 台同时复制它们。
 
 1. 在 Azure Migrate 项目中选择“服务器”>“Azure Migrate:   服务器迁移”，然后单击“复制”。 
 

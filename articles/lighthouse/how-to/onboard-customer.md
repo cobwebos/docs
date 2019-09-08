@@ -4,15 +4,15 @@ description: 了解如何将客户载入到 Azure 委派资源管理，使你能
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: dabee74dc757a8ccdc4384662f5c9bc09a1e5fbe
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012063"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165033"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -61,63 +61,8 @@ az account set --subscription <subscriptionId/name>
 az account show
 ```
 
-
-## <a name="ensure-the-customers-subscription-is-registered-for-onboarding"></a>确保客户的订阅已注册可进行载入
-
-每个订阅都必须通过手动注册 Microsoft.ManagedServices 资源提供程序获得载入授权  。 客户可按照 [Azure 资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md)中概述的步骤注册订阅。
-
-客户可通过以下方式之一确认订阅已准备好进行载入。
-
-### <a name="azure-portal"></a>Azure 门户
-
-1. 在 Azure 门户中，选择订阅。
-1. 选择“资源提供程序”  。
-1. 确认 Microsoft.ManagedServices 显示为“已注册”   。
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-这应会返回如下结果：
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-这应会返回如下结果：
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> 使用此处所述的过程加入订阅（或订阅中的一个或多个资源组）时，将为该订阅注册 **Microsoft.ManagedServices** 资源提供程序。
 
 ## <a name="define-roles-and-permissions"></a>定义角色和权限
 
@@ -129,8 +74,6 @@ Microsoft.ManagedServices  Registered
 > 角色分配必须使用基于角色的访问控制 (RBAC) [内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。 除了所有者和带有 [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) 权限的任何内置角色之外，Azure 委派资源管理当前支持其他所有内置角色。 仅支持将用户访问管理员内置角色用于下述有限用途。 此外，也不支持自定义角色和[经典订阅管理员角色](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators)。
 
 要定义授权，需要知道要向其授予访问权限的每个用户、用户组或服务主体的 ID 值。 还需知道要分配的每个内置角色的角色定义 ID。 如果没有这些信息，可通过以下方式之一进行检索。
-
-
 
 ### <a name="powershell"></a>PowerShell
 

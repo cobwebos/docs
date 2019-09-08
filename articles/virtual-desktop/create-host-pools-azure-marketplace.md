@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: f692303140db1441aa34aacef62523d7f596dba1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204739"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208380"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>教程：通过使用 Azure 市场创建主机池
 
@@ -26,7 +26,11 @@ ms.locfileid: "67204739"
 > * 将 VM 加入到 Active Directory 域。
 > * 将 VM 注册到 Windows 虚拟桌面。
 
-在开始之前，如果尚未这样做，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)，以便在 PowerShell 会话中使用。
+在开始之前，如果尚未这样做，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)，以便在 PowerShell 会话中使用。 然后，运行以下 cmdlet 登录到你的帐户：
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -40,7 +44,7 @@ ms.locfileid: "67204739"
 2. 在市场搜索窗口中输入“Windows 虚拟桌面”。 
 3. 选择“Windows 虚拟桌面 - 预配主机池”，然后选择“创建”   。
 
-遵照指导在相应的边栏选项卡中输入信息。
+然后，按照下一部分中的说明为相应边栏选项卡输入信息。
 
 ### <a name="basics"></a>基础
 
@@ -52,6 +56,9 @@ ms.locfileid: "67204739"
 4. 选择“新建”，并为新资源组提供一个名称。 
 5. 对于“位置”，请选择连接到 Active Directory 服务器的虚拟网络所在的同一位置。 
 6. 选择“确定”  。
+
+>[!IMPORTANT]
+>如果使用的是纯 Azure Active Directory 域服务和 Azure Active Directory 解决方案，请确保将主机池部署在与 Azure Active Directory 域服务相同的区域中，以避免加入域错误和凭据错误。
 
 ### <a name="configure-virtual-machines"></a>配置虚拟机
 
@@ -66,7 +73,7 @@ ms.locfileid: "67204739"
 在“虚拟机设置”边栏选项卡中，可以执行以下操作  ：
 
 >[!NOTE]
-> 如果要将 VM 加入到 Azure Active Directory 域服务 (Azure AD DS) 环境，请确保你的域加入用户也是 [AAD DC 管理员组](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group)的成员。
+> 如果要将 VM 加入到 Azure Active Directory 域服务 (Azure AD DS) 环境，请确保你的域加入用户也是 [AAD DC 管理员组](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group)的成员。
 
 1. 对于“映像源”，请选择所需的源，并输入有关如何找到和存储该源的相应信息  。 如果选择不使用托管磁盘，请选择包含 .vhd 文件的存储帐户。
 2. 输入用于将 VM 加入 Active Directory 域的域帐户的用户主体名称和密码。 在虚拟机上将会创建与此相同的用户名和密码作为本地帐户。 以后可以重置这些本地帐户。

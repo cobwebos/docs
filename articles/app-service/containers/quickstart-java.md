@@ -15,15 +15,15 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: mvc, seo-java-july2019
-ms.openlocfilehash: 4f31820357048515ddf30b53a93c03f7eecec3be
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.custom: mvc, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 10e5c31b4fbeb8af0235a067c57c3b209fe892af
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678222"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171309"
 ---
-# <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>快速入门：在 Linux 上的应用服务中创建 Java 应用
+# <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Java 应用
 
 [Linux 上的应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门介绍如何将 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 与[用于 Azure 应用服务的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)配合使用来部署 Java Web 存档 (WAR) 文件。
 > [!NOTE]

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 011345cca1ed1c763a628c94401320862182c9cc
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: f0bd4a49a35392c25b8985aa68ad4e4b66be026c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707347"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306524"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>快速入门：适用于 Python 的人脸客户端库
 
@@ -109,6 +109,14 @@ pip install --upgrade azure-cognitiveservices-Face
 
 有关更多检测方案，请参阅 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) 上的示例代码。
 
+### <a name="display-and-frame-faces"></a>显示和定格人脸
+
+下面的代码使用 DetectedFace.faceRectangle 属性将给定的图像输出到显示屏并在人脸周围绘制矩形。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
+
+![一位年轻的妇女，其脸部周围绘制了一个红色矩形](../images/face-rectangle-result.png)
+
 ## <a name="find-similar-faces"></a>查找相似人脸
 
 以下代码采用检测到的单个人脸，并搜索其他一组人脸，以找到匹配项。 找到匹配项后，它会将匹配的人脸的矩形坐标输出到控制台。 
@@ -161,14 +169,14 @@ pip install --upgrade azure-cognitiveservices-Face
 
 ## <a name="identify-a-face"></a>识别人脸
 
-以下代码采用包含多个人脸的图像，并尝试在该图像中查找每个人的标识。 它将检测到的每个人脸与 **PersonGroup**（不同 **Person** 对象的数据库，其中每个对象都有多个关联的人脸）进行比较。 
+以下代码采用包含多个人脸的图像，并尝试在该图像中查找每个人的标识。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。
 
 > [!IMPORTANT]
 > 若要运行此示例，必须先运行[创建和训练人员组](#create-and-train-a-person-group)中的代码。
 
 ### <a name="get-a-test-image"></a>获取测试图像
 
-以下代码在项目根目录中查找图像 _test-image-person-group.jpg_ ，并检测该图像中的人脸。 可以使用用于 **PersonGroup** 管理的图像查找此图像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
+以下代码在项目根目录中查找图像 _test-image-person-group.jpg_，并检测该图像中的人脸。 可以使用用于 **PersonGroup** 管理的图像查找此图像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify_testimage)]
 
@@ -188,7 +196,7 @@ pip install --upgrade azure-cognitiveservices-Face
 
 首先，必须有另一个已包含人脸资源的 Azure 订阅；可以遵循[设置](#setting-up)部分中的步骤做好此准备。 
 
-然后在脚本顶部附近创建以下变量。 还需要为 Azure 帐户的订阅 ID 以及新（目标）帐户的密钥和订阅 ID 创建新的环境变量。 
+然后在脚本顶部附近创建以下变量。 还需要为 Azure 帐户的订阅 ID 以及新（目标）帐户的密钥、终结点和订阅 ID 创建新的环境变量。 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
 

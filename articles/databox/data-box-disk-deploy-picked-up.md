@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/03/2019
+ms.localizationpriority: high
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 1104c017541b8124366a6121763318f199f3aad5
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: aab97257ff2e917dc264017043d3ca11a2ced1fc
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126088"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240211"
 ---
 ::: zone target="chromeless"
 
@@ -49,18 +50,7 @@ ms.locfileid: "70126088"
     - 我们建议使用加固的气泡袋包装磁盘。
     - 确保填塞物贴合，以避免磁盘在包装箱中发生移动。
 
-接下来的步骤根据在何处退回设备而定。 对于美国/加拿大、澳大利亚或亚洲国家/地区，说明会有所不同。
-
-- [如果在美国或加拿大境内退回设备，请安排 UPS 取件](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada)。
-- 通过访问 DHL 网站并指定航空帐单编号，[安排欧洲 DHL 取件](data-box-disk-deploy-picked-up.md#pick-up-in-europe)。
-- [在澳大利亚安排取件](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up#pick-up-in-australia)。
-- [为亚洲国家/地区安排取件](data-box-disk-deploy-picked-up.md#pick-up-in-asia)，例如日本、韩国和新加坡等。
-
-::: zone target="chromeless"
-
-承运人提取磁盘后，门户中的订单状态将更新，并显示跟踪 ID。
-
-::: zone-end
+接下来的步骤根据在何处退回设备而定。 对于美国/加拿大、欧盟 (EU)、澳大利亚或亚洲国家/地区，说明会有所不同。
 
 ### <a name="pick-up-in-us-canada"></a>在美国和加拿大取件
 
@@ -151,9 +141,6 @@ ms.locfileid: "70126088"
 
 1. 打印发货标签并将其贴在盒子上。 如果标签受损或丢失：
     - 转至“概述”>“下载发货标签”  并获取退件发货标签。
-
-        ![下载发货标签](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - 将标签粘贴在设备上。 请确保该标签是可见的。
 
 2. 请求取件：

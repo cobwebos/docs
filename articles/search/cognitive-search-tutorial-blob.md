@@ -1,7 +1,7 @@
 ---
 title: REST 教程：使用认知搜索生成 AI 扩充管道 - Azure 搜索
 description: 通过一个示例来逐步了解如何使用 Postman 和 Azure 搜索 REST API 对 JSON Blob 中内容进行文本提取和自然语言处理。
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: e647d3c66d339a60278fa7d0f078497157b3fff1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 726fdd6aeebac970142fa9225381af77114bfe42
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102826"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274116"
 ---
 # <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>教程：使用认知搜索将结构添加到“非结构化内容”
 
@@ -22,10 +22,10 @@ ms.locfileid: "70102826"
 
 > [!div class="checklist"]
 > * 从整个文档（非结构化文本，例如 Azure Blob 存储中的 PDF、MD、DOCX 和 PPTX）着手。
-> * 创建一个管道，用于提取文本、检测语言、识别实体和检测关键短语。
+> * 定义一个管道，用于提取文本、检测语言、识别实体和检测关键短语。
 > * 定义用于存储输出（原始内容，加上管道生成的名称/值对）的索引。
-> * 执行该管道以创建并加载索引。
-> * 使用全文搜索和丰富的查询语法探索内容。
+> * 执行管道以开始转换和分析，以及创建和加载索引。
+> * 使用全文搜索和丰富的查询语法浏览结果。
 
 需要创建多个服务才能完成本演练，此外还需要安装 [Postman 桌面应用](https://www.getpostman.com/)或其他 Web 测试工具来发出 REST API 调用。 
 

@@ -8,20 +8,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
-ms.custom: mvc, seo-java-august2019
+ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 977bf07c8383bb1086e7878bd10f2519cc2f40ad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9fb110eff1d498b2b20952048759c76a2dac39f2
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958637"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306490"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>快速入门：控制连接到 IoT 中心的设备 (Java)
+# <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>快速入门：使用 Java 控制连接到 Azure IoT 中心的设备
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入云，并从云管理设备。 在本快速入门中，会使用直接方法来控制连接到 IoT 中心的模拟设备  。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。
+在本快速入门中，会使用直接方法通过Java 应用程序来控制连接到 Azure IoT 中心的模拟设备  。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。 IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入云，并从云管理设备。 
 
 本快速入门使用两个预先编写的 Java 应用程序：
 
@@ -35,9 +35,9 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门中运行的两个示例应用程序是使用 Java 编写的。 开发计算机上需要有 Java SE 8 或更高版本。
+本快速入门中运行的两个示例应用程序是使用 Java 编写的。 开发计算机上需要安装 Java SE 8。
 
-可从 [Oracle](https://aka.ms/azure-jdks) 为多个平台下载 Java。
+可以从 [Java 对 Azure 和 Azure Stack 的长期支持](https://docs.microsoft.com/en-us/java/azure/jdk/?view=azure-java-stable)下载适用于多个平台的 Java SE 开发工具包 8。 请确保在“长期支持”  下选择“Java 8”  以获取 JDK 8 的下载。
 
 可以使用以下命令验证开发计算机上 Java 的当前版本：
 

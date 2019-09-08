@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a0c0795ff859b6ecf95e1627693c4a7b066081a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 999f947170528c1ae89a1cf44f714e96af7bddbf
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105333"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>教程：Azure Active Directory 与 Clever 集成
 
@@ -118,10 +118,11 @@ ms.locfileid: "67105333"
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ： 
 
-    | 名称 | 源属性|
+    | Name | 源属性|
     | ---------------| --------------- |
-    | clever.teacher.credentials.district_username|user.userprincipalname|
+    | clever.teacher.credentials.district_username|user.userprincipalname |
     | clever.student.credentials.district_username| user.userprincipalname |
+    | clever.staff.credentials.district_username| user.userprincipalname |
     | 名  | user.givenname |
     | Lastname  | user.surname |
 

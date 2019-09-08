@@ -1,31 +1,31 @@
 ---
-title: 使用 Azure 门户创建 Azure 区块链服务
-description: 使用 Azure 区块链服务创建联盟成员。
+title: 使用 Azure 门户创建 Azure 区块链服务区块链成员
+description: 使用 Azure 区块链服务创建区块链成员。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/29/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 5cb236dc38ae41b202004b7e4806d8129378cfdb
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 9f58379acd88fd93a00edc11b73b41dc3d6226a5
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417511"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241047"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 区块链服务
+# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 区块链服务区块链成员
 
-Azure 区块链服务是一个区块链平台，可以用来在智能合同中执行你的业务逻辑。 本快速入门展示了如何开始使用 Azure 门户创建托管账本。
+Azure 区块链服务是一个区块链平台，可以用来在智能合同中执行你的业务逻辑。 本快速入门展示了如何开始使用 Azure 门户创建区块链成员。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-managed-ledger"></a>创建托管账本
+## <a name="create-a-blockchain-member"></a>创建区块链成员
 
-创建 Azure 区块链服务时，会使用定义好的一组计算和存储资源。
+创建在新的或现有的联盟中运行仲裁账本协议的区块链成员。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户的左上角选择“创建资源”。 
@@ -36,9 +36,9 @@ Azure 区块链服务是一个区块链平台，可以用来在智能合同中�
 
     设置 | 说明
     --------|------------
-    区块链成员 | 选择用于标识 Azure 区块链服务成员的唯一名称。 区块链成员名称只能包含小写字母和数字。 第一个字符必须是字母。 值长度必须介于 2 到 20 个字符之间。
-    订阅 | 选择要用于你的服务的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
-    资源组 | 新的资源组名称，或订阅中的现有资源组。
+    区块链成员 | 选择用于标识 Azure 区块链服务区块链成员的唯一名称。 区块链成员名称只能包含小写字母和数字。 第一个字符必须是字母。 值长度必须介于 2 到 20 个字符之间。
+    Subscription | 选择要用于你的服务的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
+    Resource group | 新的资源组名称，或订阅中的现有资源组。
     区域 | 对于联盟的所有成员，位置必须相同。
     成员帐户密码 | 成员帐户密码用于加密为你的成员创建的 Ethereum 帐户的私钥。 你使用成员帐户和成员帐户密码进行联盟管理。
     联盟名称 | 对于新联盟，请输入唯一的名称。 如果通过某个计划加入联盟，则该值是你要加入的联盟。

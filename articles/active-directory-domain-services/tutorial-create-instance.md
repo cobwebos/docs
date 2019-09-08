@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 7fa2a5088e2eae039d43ecf0db080190f74cd772
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125219"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172056"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教程：创建和配置 Azure Active Directory 域服务实例
 
@@ -202,7 +202,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 1. 在“更改密码”页上输入现有（旧）密码，然后输入并确认新密码。 
 1. 选择“提交”。 
 
-更改密码后，需要经过几分钟时间，新密码才在 Azure AD DS 中可用。 大约 20 分钟后，便可以使用新密码登录到已加入托管域的计算机。
+更改密码后，需要几分钟才能在 Azure AD DS 中使用新密码，并成功登录已加入托管域的计算机。
 
 ## <a name="next-steps"></a>后续步骤
 
