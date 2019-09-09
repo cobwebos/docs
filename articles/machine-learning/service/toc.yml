@@ -113,10 +113,12 @@
       href: concept-deep-learning-vs-machine-learning.md
 - name: 操作指南
   items:
-    - name: 管理工作区
+    - name: 创建并管理工作区
       items:
-        - name: 为工作区使用门户
+        - name: 使用 Azure 门户
           href: how-to-manage-workspace.md
+        - name: 使用 Azure CLI
+          href: how-to-manage-workspace-cli.md
         - name: 使用 Resource Manager 模板
           displayName: arm
           href: how-to-create-workspace-template.md

@@ -22,6 +22,11 @@
       href: how-to/move-account.md
     - name: 自动载入自动化服务
       href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
+    - name: Log Analytics 工作区映射支持的区域
+      href: how-to/region-mappings.md
+    - name: 管理 Azure 自动化数据
+      href: automation-managing-data.md
+      displayName: backup
 - name: 过程自动化
   items:
     - name: 混合 Runbook 辅助角色概述
@@ -39,16 +44,10 @@
       items:
         - name: 创建 runbook
           href: automation-quickstart-create-runbook.md
-    - name: 登记
-      items:
-        - name: 从门户载入多个 VM
-          href: automation-onboard-solutions-from-browse.md
-        - name: 从 Azure VM 载入
-          href: automation-onboard-solutions-from-vm.md
-        - name: 从自动化帐户加入
-          href: automation-onboard-solutions-from-automation-account.md
     - name: 操作方法指南
       items:
+        - name: 在非工作时间启动/停止 VM
+          href: automation-solution-vm-management.md
         - name: 管理 runbook
           href: manage-runbooks.md
         - name: 创建 Runbook
@@ -86,8 +85,6 @@
               href: automation-child-runbooks.md
             - name: 将 JSON 对象传递到 Azure 自动化 Runbook
               href: automation-pass-json-string.md
-            - name: 在非工作时间启动/停止 VM
-              href: automation-solution-vm-management.md
         - name: 监视 Runbook
           items:
             - name: Runbook 输出
@@ -98,15 +95,6 @@
               displayName: 'fair share, activity log'
             - name: 图形 Runbook 中的错误处理
               href: automation-runbook-graphical-error-handling.md
-            - name: 源代码管理集成
-              href: source-control-integration.md
-              displayName: 'github, vsts, azure devops, personal access token'
-            - name: 源代码管理集成 - 传统
-              href: automation-source-control-integration-legacy.md
-              displayname: github
-            - name: 管理 Azure 自动化数据
-              href: automation-managing-data.md
-              displayName: backup
         - name: 混合 Runbook 辅助角色
           items:
             - name: 部署 Windows 混合 Runbook 辅助角色
@@ -120,6 +108,19 @@
             - name: 通过观察程序任务跟踪更新的文件
               href: automation-watchers-tutorial.md
               displayName: 'hybrid runbook worker, hybrid worker, trigger'
+        - name: 源代码管理集成
+          items:
+            - name: 源代码管理集成
+              href: source-control-integration.md
+              displayName: 'github, vsts, azure devops, personal access token'
+            - name: 源代码管理集成 - 传统
+              href: automation-source-control-integration-legacy.md
+              displayname: github
+            - name: 源代码管理与 GitHub Enterprise 的集成
+              href: automation-scenario-source-control-integration-with-github-ent.md
+              displayName: 'CI, runbooks'
+            - name: 源代码管理与 Azure DevOps 的集成
+              href: automation-scenario-source-control-integration-with-VSTS.md
     - name: 故障排除
       items:
         - name: 对混合 Runbook 辅助角色进行故障排除
@@ -297,7 +298,7 @@
       href: automation-connections.md
     - name: 凭据
       href: automation-credentials.md
-    - name: 集成模块
+    - name: 模块
       href: automation-integration-modules.md
     - name: 计划
       href: automation-schedules.md
@@ -321,11 +322,6 @@
       displayName: 'Monitor, Azure Monitor'
     - name: 创建 Amazon Web 服务 VM
       href: automation-scenario-aws-deployment.md
-    - name: 源代码管理与 GitHub Enterprise 的集成
-      href: automation-scenario-source-control-integration-with-github-ent.md
-      displayName: 'CI, runbooks'
-    - name: 源代码管理与 Azure DevOps 的集成
-      href: automation-scenario-source-control-integration-with-VSTS.md
       displayName: 'VSTS, CI, runbooks'
     - name: 在 Azure 自动化 PowerShell Runbook 中部署 Azure 资源管理器模板
       href: automation-deploy-template-runbook.md
@@ -348,14 +344,10 @@
   items:
     - name: Azure PowerShell
       href: /powershell/module/azurerm.automation
-    - name: Azure PowerShell（经典）
-      href: /powershell/module/azure/?view=azuresmps-3.7.0
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.automation
     - name: REST
       href: /rest/api/automation
-    - name: REST（经典）
-      href: 'https://msdn.microsoft.com/library/azure/mt163781'
 - name: 资源
   items:
     - name: 自动化简介视频

@@ -12,7 +12,7 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: Client
+    - name: 客户端库
       items:
         - name: 'C#'
           href: quickstarts/csharp.md
@@ -54,13 +54,13 @@
   items:
     - name: 调用文本分析 API
       href: How-tos/text-analytics-how-to-call-api.md
-    - name: 检测语言
+    - name: 语言检测
       href: How-tos/text-analytics-how-to-language-detection.md
-    - name: 分析情绪
+    - name: 情绪分析
       href: How-tos/text-analytics-how-to-sentiment-analysis.md
-    - name: 提取关键短语
+    - name: 关键短语提取
       href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: 调用命名实体识别
+    - name: 命名实体识别
       href: How-tos/text-analytics-how-to-entity-linking.md
     - name: 使用容器
       items:

@@ -1,168 +1,149 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 事件中心文档
+summary: 了解如何使用事件中心从已连接的设备和应用程序每秒引入数百万个事件。
 metadata:
-  document_id: ''
-  title: Azure 事件中心文档 - 教程、快速入门和 API 参考
-  meta.description: Learn how to use Event Hubs to ingest millions of events per second from connected IoT devices and applications on a broad set of platforms.
+  title: Azure 事件中心文档
+  description: 了解如何使用事件中心从已连接的设备和应用程序每秒引入数百万个事件。
   services: event-hubs
-  author: spelluru
-  manager: timlt
   ms.service: event-hubs
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 10/15/2018
+  ms.collection: collection
+  author: spelluru
   ms.author: spelluru
-abstract:
-  description: Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。 Apache Kafka 的事件中心使得本机 Kafka 客户端、工具和应用程序（如 Mirror Maker、Apache Flink 和 Akka Streams）可以与事件中心无缝协作（只需进行配置更改即可）。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: /azure/event-hubs/media/index/stream-big-data-kafka-event-hubs.png
-      width: 250
-    title: '使用 Kafka 和事件中心在 Azure 中对大数据进行流式处理 (1: 20:13)'
-    href: 'https://azure.microsoft.com/resources/videos/streaming-big-data-in-azure-with-kafka-and-event-hubs/'
-    width: 250
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何<b>创建</b>事件中心：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-hubs/media/index/portal.svg
-            text: Azure 门户
-            href: /azure/event-hubs/event-hubs-quickstart-portal
-          - image:
-              src: /azure/event-hubs/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/event-hubs/event-hubs-quickstart-cli
-          - image:
-              src: /azure/event-hubs/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/event-hubs/event-hubs-quickstart-powershell
-          - image:
-              src: /azure/event-hubs/media/index/logo_arm.svg
-            text: Azure 资源管理器模板
-            href: /azure/event-hubs/event-hubs-resource-manager-namespace-event-hub
-      - type: paragraph
-        text: 了解如何向事件中心<b>发送事件</b>，以及如何从事件中心<b>接收事件</b>：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-hubs/media/index/logo_net.svg
-            text: .NET framework
-            href: /azure/event-hubs/event-hubs-dotnet-framework-getstarted-send
-          - image:
-              src: /azure/event-hubs/media/index/logo_netcore.svg
-            text: .NET Standard
-            href: /azure/event-hubs/event-hubs-dotnet-standard-getstarted-send
-          - image:
-              src: /azure/event-hubs/media/index/logo_java.svg
-            text: Java
-            href: /azure/event-hubs/event-hubs-java-get-started-send
-          - image:
-              src: /azure/event-hubs/media/index/logo_python.svg
-            text: Python
-            href: /azure/event-hubs/event-hubs-python-get-started-send
-          - image:
-              src: /azure/event-hubs/media/index/logo_nodejs.svg
-            text: Node.js
-            href: /azure/event-hubs/event-hubs-node-get-started-send
-          - image:
-              src: /azure/event-hubs/media/index/logo_go.svg
-            text: Go
-            href: /azure/event-hubs/event-hubs-go-get-started-send
-          - image:
-              src: /azure/event-hubs/media/index/logo_c.svg
-            text: C
-            href: /azure/event-hubs/event-hubs-c-getstarted-send
-          - image:
-              src: /azure/event-hubs/media/index/storm_r.svg
-            text: Apache Storm
-            href: /azure/event-hubs/event-hubs-storm-getstarted-receive
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用 Azure 事件中心创建、管理事件以及对事件进行流式处理
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-visualize-anomalies">使用 Azure 流分析读取事件中心数据流并直观显示异常</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/event-hubs/store-captured-data-data-warehouse">使用事件网格和 Azure Functions 处理捕获的事件中心数据并将其迁移到 SQL 数据仓库</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-databricks/databricks-stream-from-eventhubs">使用事件中心将数据流式传输到 Azure Databricks</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/event-hubs/event-hubs-kafka-mirror-maker-tutorial">将 Kafka 代理镜像到已启用 Kafka 的事件中心</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/event-hubs/event-hubs-kafka-flink-tutorial">将 Apache Flink 连接到已启用 Kafka 的事件中心</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/event-hubs/event-hubs-kafka-akka-streams-tutorial">将 Akka Streams 连接到已启用 Kafka 的事件中心</a>'
-  - title: 利用 Microsoft Learn 掌握技能
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 使用 Azure 事件中心为大数据应用程序启用可靠消息传递
-            href: /learn/modules/enable-reliable-messaging-for-big-data-apps-using-event-hubs/
-            image:
-              src: 'https://docs.microsoft.com/learn/achievements/enable-reliable-messaging-for-big-data-apps-using-azure-event-hubs.svg'
-              href: /learn/modules/enable-reliable-messaging-for-big-data-apps-using-event-hubs/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-event-hubs">更多交互式学习...</a>
-  - title: 免费 Pluralsight 视频培训
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 面向 .NET 开发人员的 Azure 事件中心 - 基础知识
-            href: 'https://www.pluralsight.com/courses/azure-event-hubs-dotnet-developers-fundamentals'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/azure-event-hubs-dotnet-developers-fundamentals'
-  - title: 示例
-    items:
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-hubs/media/index/logo_net.svg
-            text: .NET framework
-            href: 'https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet'
-          - image:
-              src: /azure/event-hubs/media/index/logo_java.svg
-            text: Java
-            href: 'https://github.com/Azure/azure-event-hubs/tree/master/samples/Java'
-          - image:
-              src: /azure/event-hubs/media/index/logo_python.svg
-            text: Python
-            href: 'https://github.com/Azure/azure-event-hubs-python/tree/master/examples'
-          - image:
-              src: /azure/event-hubs/media/index/logo_nodejs.svg
-            text: Node.js
-            href: 'https://github.com/Azure/azure-event-hubs-node'
-          - image:
-              src: /azure/event-hubs/media/index/logo_go.svg
-            text: Go
-            href: 'https://github.com/Azure/azure-event-hubs-go/tree/master/_examples'
-          - image:
-              src: /azure/event-hubs/media/index/cli.svg
-            text: Azure CLI
-            href: 'https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/CLI'
-          - image:
-              src: /azure/event-hubs/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: 'https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell'
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/powershell/module/az.eventhub/">Azure PowerShell</a></p><p><a href="/cli/azure/eventhubs">Azure CLI</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/microsoft.servicebus.messaging">.NET Framework</a></p><p><a href="/dotnet/api/microsoft.azure.eventhubs">.NET 标准</a></p><p><a href="/java/api/overview/azure/eventhub">Java</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/eventhub/">REST API 参考</a></p>
+  ms.date: 09/05/2019
+  ms.openlocfilehash: bd96fbc12285faa7c18f9fcd09638ec8816865c8
+  ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70773190"
+landingContent:
+- title: 关于事件中心
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是事件中心？
+      url: event-hubs-about.md
+    - text: 什么是适用于 Apache Kafka 的事件中心？
+      url: event-hubs-for-kafka-ecosystem-overview.md
+    - text: 什么是事件中心捕获？
+      url: event-hubs-capture-overview.md
+    - text: 什么是事件中心专用层？
+      url: event-hubs-dedicated-overview.md
+- title: 创建事件中心
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure 门户
+      url: event-hubs-create.md
+    - text: Azure CLI
+      url: event-hubs-quickstart-cli.md
+    - text: Azure PowerShell
+      url: event-hubs-quickstart-powershell.md
+    - text: Azure 资源管理器模板
+      url: event-hubs-resource-manager-namespace-event-hub.md
+- title: 创建专用群集
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是事件中心专用层？
+      url: event-hubs-dedicated-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 创建专用事件中心群集
+      url: event-hubs-dedicated-cluster-create-portal.md
+- title: 与 Apache Kafka 集成
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是适用于 Apache Kafka 的事件中心？
+      url: event-hubs-for-kafka-ecosystem-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 流式传输到用于 Apache Kafka 的事件中心
+      url: event-hubs-quickstart-kafka-enabled-event-hubs.md
+  - linkListType: tutorial
+    links:
+    - text: 使用流分析处理事件
+      url: event-hubs-kafka-stream-analytics.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建启用了 Apache Kafka 的事件中心
+      url: event-hubs-create-kafka-enabled.md
+    - text: 在事件中心镜像 Kafka 代理
+      url: event-hubs-kafka-mirror-maker-tutorial.md
+    - text: 将 Apache Spark 连接到事件中心
+      url: event-hubs-kafka-spark-tutorial.md
+    - text: 将 Apache Flink 连接到事件中心
+      url: event-hubs-kafka-flink-tutorial.md
+    - text: 将 Apache Kafka Connect 与事件中心集成
+      url: event-hubs-kafka-connect-tutorial.md
+    - text: 将 Akka 流连接到事件中心
+      url: event-hubs-kafka-akka-streams-tutorial.md
+- title: 发送和接收事件
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET Core
+      url: event-hubs-dotnet-standard-getstarted-send.md
+    - text: Java
+      url: event-hubs-java-get-started-send.md
+    - text: Python
+      url: event-hubs-python-get-started-send.md
+    - text: Node.js
+      url: event-hubs-node-get-started-send.md
+    - text: Apache Kafka
+      url: event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs
+    - text: Apache Storm（仅接收）
+      url: event-hubs-storm-getstarted-receive.md
+    - text: Go
+      url: event-hubs-go-get-started-send.md
+- title: 捕获事件
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 将事件捕获到 Azure Blob 存储或 Azure Data Lake Storage 中
+      url: event-hubs-dedicated-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 Azure 门户启用事件捕获
+      url: event-hubs-capture-enable-through-portal.md
+    - text: 使用 Resource Manager 模板
+      url: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
+    - text: 从 Python 应用程序启用捕获
+      url: event-hubs-capture-python.md
+- title: 处理事件
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 直观显示事件中心数据流的数据异常
+      url: event-hubs-tutorial-visualize-anomalies.md
+    - text: 使用流分析处理适用于 Apache Kafka 的事件中心的事件
+      url: event-hubs-kafka-stream-analytics.md
+    - text: 使用事件中心将数据流式传输到 Azure Databricks
+      url: ../azure-databricks/databricks-stream-from-eventhubs.md
+- title: 监视和管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure Monitor 监视事件中心
+      url: event-hubs-metrics-azure-monitor.md
+    - text: 设置诊断日志
+      url: event-hubs-diagnostic-logs.md
+    - text: 自动增加吞吐量单位
+      url: event-hubs-auto-inflate.md
+    - text: 排查异常
+      url: event-hubs-messaging-exceptions.md
+- title: 安全
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用防火墙规则
+      url: event-hubs-ip-filtering.md
+    - text: 使用虚拟网络服务终结点
+      url: event-hubs-service-endpoints.md
+    - text: 配置客户管理的密钥以加密静态数据
+      url: configure-customer-managed-key.md
+    - text: 启用虚拟网络集成和防火墙
+      url: event-hubs-tutorial-virtual-networks-firewalls.md

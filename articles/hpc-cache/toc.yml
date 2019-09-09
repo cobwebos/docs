@@ -1,0 +1,34 @@
+- name: Azure HPC 缓存文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure HPC 缓存？
+      href: hpc-cache-overview.md
+- name: 概念
+  items:
+    - name: 使用聚合命名空间
+      href: hpc-cache-namespace.md
+    - name: 填充新的 Blob 存储
+      href: hpc-cache-ingest.md
+    - name: 备用数据引入方法
+      items:
+        - name: 通过并行复制填充缓存
+          href: hpc-cache-ingest-parallelcp.md
+        - name: 通过 msrsync 填充缓存
+          href: hpc-cache-ingest-msrsync.md
+        - name: 通过手动文件复制填充缓存
+          href: hpc-cache-ingest-manual.md
+- name: 操作指南
+  items:
+    - name: 先决条件
+      href: hpc-cache-prereqs.md
+    - name: 创建缓存
+      href: hpc-cache-create.md
+    - name: 添加存储
+      href: hpc-cache-add-storage.md
+    - name: 连接到缓存
+      href: hpc-cache-mount.md
+- name: 资源
+  items:
+    - name: 开具支持票证
+      href: hpc-cache-support-ticket.md
