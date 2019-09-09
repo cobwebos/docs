@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/03/2019
-ms.localizationpriority: high
+ms.date: 09/05/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: aab97257ff2e917dc264017043d3ca11a2ced1fc
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b982e0bcd87a60e29b11c7123fbe5d675ab017b3
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240211"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390409"
 ---
 ::: zone target="chromeless"
 
@@ -85,12 +85,9 @@ ms.locfileid: "70240211"
 
 澳大利亚的 Azure 数据中心会提供额外的安全通知。 所有入境装运必须收到提前通知。 对于澳大利亚的取件，请执行以下步骤。
 
-1. 向 `adbops@microsoft.com` 发送电子邮件，请求带有入境 ID 或 TAU 码的发货标签。 请在计划发货日期之前的至少 3 天发出请求，以便及时收到标签。
-2. 电子邮件主题应是：*Request for reverse shipping label with TAU code*。 请务必在电子邮件中包含以下详细信息： 
-
-    - 订单名称
-    - 地址
-    - 联系人姓名
+1. 使用提供的退货发运标签，并确保在它上面写下 TAU 代码（参考编号）。 如果缺少提供的发运标签，或者有任何其他问题，请向 [Data Box 亚洲运营部门](mailto:adbo@microsoft.com)发送电子邮件。 在主题标题中提供订单名称，并提供所面临问题的详细信息。
+3. 将标签粘贴在盒子上。 
+4. 打开链接 https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference ，在线预约取件。 
 
 ### <a name="pick-up-in-asia"></a>在亚洲取件
 

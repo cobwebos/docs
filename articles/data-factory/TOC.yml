@@ -450,8 +450,6 @@
           href: control-flow-webhook-activity.md
     - name: 数据流转换
       items:
-        - name: 固定宽度的文件
-          href: how-to-fixed-width.md
         - name: 聚合
           href: data-flow-aggregate.md
         - name: 更改行
@@ -610,6 +608,10 @@
           href: data-migration-guidance-hdfs-azure-storage.md
         - name: 将数据从本地 Netezza 服务器迁移到 Azure
           href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: 使用映射数据流进行转换
+      items:
+        - name: 处理固定宽度的文本文件
+          href: how-to-fixed-width.md
 - name: 引用
   items:
     - name: .NET

@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/04/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 15960c39878e0c8ae22f94197ed1937597f1ee02
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 91baec55cb976a3bc64ac60b1759c80e64fd18a3
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126135"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375883"
 ---
 ::: zone target="docs"
 
@@ -313,9 +314,7 @@ ms.locfileid: "70126135"
 
 解锁磁盘后，可以查看磁盘的内容。
 
-有关如何设置磁盘的详细信息，请转至[打开 Data Box Disk 的包装](data-box-disk-deploy-set-up.md#unpack-your-disks)。
-
-有关如何解锁磁盘的详细信息，请转到[在 Windows 客户端上解锁 Data Box Disk](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)。
+有关如何设置和解锁磁盘的详细信息，请参阅[设置 Data Box Disk](data-box-disk-deploy-set-up.md)。
 
 ::: zone-end
 
