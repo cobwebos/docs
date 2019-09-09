@@ -8,14 +8,14 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 4d20256381eab155d4b7532591cea85e43080ec0
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: d7c538bd98b3924b422a93bc67cac405a6e4b7af
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019801"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383122"
 ---
-# <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>作为 CSP，代表客户创建和管理 Azure IoT Central 应用程序 
+# <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>作为 CSP，代表客户创建和管理 Azure IoT Central 应用程序
 
 Microsoft 云解决方案提供商 (CSP) 计划是 Microsoft 经销商计划。 其目的是为我们的渠道合作伙伴提供一站式计划，以转售所有 Microsoft Commercial Online Services。 详细了解[云解决方案提供商计划](https://partner.microsoft.com/cloud-solution-provider)。
 
@@ -25,7 +25,7 @@ Microsoft 云解决方案提供商 (CSP) 计划是 Microsoft 经销商计划。 
 
 ![Microsoft 合作伙伴中心, 客户视图](media/howto-create-application-csp/image1.png)
 
-Azure IoT Central 将列为可用于管理的服务。 选择页面上的 "Azure IoT Central" 链接, 创建新应用程序或管理此客户的现有应用程序。
+Azure IoT Central 将列为可用于管理的服务。 选择页面上的 "Azure IoT Central" 链接，创建新应用程序或管理此客户的现有应用程序。
 
 ![可用于管理的 Azure IoT Central](media/howto-create-application-csp/image2.png)
 
@@ -33,7 +33,7 @@ Azure IoT Central 将列为可用于管理的服务。 选择页面上的 "Azure
 
 ![创建适用于 CSP 的管理器](media/howto-create-application-csp/image3.png)
 
-若要创建 Azure IoT Central 应用程序, 请选择 "**新建应用程序**" 磁贴。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。 你将找到有关以下每个字段的详细信息。
+若要创建 Azure IoT Central 应用程序，请选择 "**新建应用程序**" 磁贴。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。 你将找到有关以下每个字段的详细信息。
 
 ![适用于 CSP 的“创建应用程序”页](media/howto-create-application-csp/image4.png)
 
@@ -72,6 +72,9 @@ Azure Active Directory 租户包含用户标识、凭据和其他组织信息。
 ## <a name="region"></a>地区
 
 选择要在其中创建 Azure IoT Central 应用程序的区域。 通常应选择在地理上最靠近设备的区域，以便优化性能。
+
+> [!NOTE]
+> **预览应用程序**模板当前仅在 "**北欧**" 和 "**美国中部**" 区域提供。
 
 若要了解详细信息，请参阅 [Azure 区域](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions)。
 

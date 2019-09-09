@@ -7,18 +7,18 @@ ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7f55599c917011180ebb140d53defc0aca3acbb2
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 8c19e2fbe929fcc7084399ec17298f04875ba45c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983110"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231675"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 蓝图示例的控制映射
 
 以下文章详细说明了 Azure 蓝图 SP 800-53 R4 蓝图示例如何映射到 NIST SP 800-53 R4 控制措施。 有关控制措施的详细信息，请参阅 [NIST SP 800-53](https://nvd.nist.gov/800-53)。
 
-以下映射适用于 NIST SP 800-53 (Rev. 4) 控制措施  。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“\[预览\]：审核 NIST SP 800-53 R4 控制措施并部署特定 VM 扩展以支持审核要求”内置策略计划  。
+以下映射适用于 NIST SP 800-53 (Rev. 4) 控制措施  。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“\[预览\]：审核 NIST SP 800-53 R4 控制措施并部署特定 VM 扩展以支持审核要求”内置策略计划**。
 
 ## <a name="ac-2-account-management"></a>AC-2 帐户管理
 

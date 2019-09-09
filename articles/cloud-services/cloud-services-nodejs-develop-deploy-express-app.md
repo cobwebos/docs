@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: gwallace
-ms.openlocfilehash: b3d8e364a982f85ad9df6e48dc4d28da1e8efb40
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 080ec61df2042a4cf2eac9d5175c4681f98fd9df
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359066"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306778"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>使用 Express 在 Azure 云服务中生成并部署 Node.js Web 应用程序
 
@@ -93,7 +93,7 @@ Node.js 包含核心运行时中最小的一个功能集。
    
    ![index.jade 文件的内容。](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
    
-   Jade 是 Express 应用程序使用的默认视图引擎。 有关 Index.jade 视图引擎的详细信息, 请参阅[http://jade-lang.com][http://jade-lang.com]。
+   Jade 是 Express 应用程序使用的默认视图引擎。 有关 Index.jade 视图引擎的详细信息，请参阅[http://jade-lang.com][http://jade-lang.com]。
 2. 通过追加 **in Azure** 来修改最后一行文本。
    
    ![index.jade 文件，最后一行的内容为：p Welcome to \#{title} in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
@@ -114,7 +114,7 @@ Node.js 包含核心运行时中最小的一个功能集。
 ![Web 浏览器中显示 Express 页。 URL 指示它现在托管在 Azure 上。](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [Node.js 开发人员中心](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)。
+有关详细信息，请参阅 [Node.js 开发人员中心](https://docs.microsoft.com/azure/javascript/)。
 
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: https://expressjs.com/

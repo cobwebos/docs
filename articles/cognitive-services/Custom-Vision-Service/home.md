@@ -37,7 +37,7 @@ Azure 自定义视觉是一种认知服务，用于生成、部署和改进自�
 
 ## <a name="what-it-includes"></a>组成部分
 
-自定义视觉服务以一组本机 SDK 的形式提供，另外也可通过[自定义视觉主页](https://customvision.ai/)上的基于 Web 的界面来获取它。 可以通过一种或两种界面来创建、测试和训练模型。
+自定义视觉服务以一组本机 SDK 的形式提供，另外也可通过[自定义视觉主页](https://customvision.ai/)上的基于 Web 的界面来获取它 可以通过一种或两种界面来创建、测试和训练模型。
 
 ![Chrome 浏览器窗口中的自定义视觉主页](media/browser-home.png)
 

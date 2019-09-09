@@ -49,7 +49,7 @@ Cosmos DB 采用透明的水平分区和多主数据库复制设计，在全球�
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>保证第 99 个百分位为低延迟（全球范围内）
 
-使用 Cosmos DB，可以生成响应迅速、具全球规模的应用程序。 凭借其新颖的多主数据库复制协议和免闩锁且[优化了写入的数据库引擎](index-policy.md)，Cosmos DB 可保证全球任意位置第 99 个百分位的读取（已编入索引）和写入延迟均低于 10 毫秒。 此功能可以为高响应能力的应用持续引入数据，并提供快速查询。
+使用 Cosmos DB，可以生成响应迅速、具全球规模的应用程序。 凭借其新颖的多主数据库复制协议、免闩锁及[优化了写入的数据库引擎，](index-policy.md)，Cosmos DB 可保证全球任意位置第 99 个百分位的读取（已编入索引）和写入延迟均低于 10 毫秒。 此功能可以为高响应能力的应用持续引入数据，并提供快速查询。
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>精确定义的多个一致性选择
 

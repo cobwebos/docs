@@ -1,6 +1,6 @@
 ---
 title: 操作 HDInsight 上的 ML Services - Azure
-description: 了解如何操作 Azure HDInsight 中的 ML Services。
+description: 了解如何操作数据模型，以便在 Azure HDInsight 中通过 ML 服务进行预测。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,22 +8,22 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 36d2ebe00f735089633240914421e2259181e63e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 91407fc76d0a7555a87a8a3dcd1b3ad04ee2af80
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448972"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736222"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
 
 使用 HDInsight 中的 ML Services 群集完成数据建模后，可操作该模型进行预测。 本文提供如何执行此任务的说明。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* HDInsight 上的机器学习服务群集。 请参阅[使用 Azure 门户中创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然后选择**机器学习服务**有关**群集类型**。
+* HDInsight 上的机器学习服务群集。 参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“机器学习服务”作为“群集类型”。
 
-* 安全外壳 (SSH) 客户端：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+* 安全外壳（SSH）客户端：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>使用单机配置操作 ML Services 群集
 
@@ -48,7 +48,7 @@ ms.locfileid: "67448972"
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-1. 将提供选项供你选择。 选择第一个选项（如以下屏幕截图所示）“配置 ML Server 的操作化”  。
+1. 将提供选项供你选择。 选择第一个选项（如以下屏幕截图所示）“配置 ML Server 的操作化”。
 
     ![单机操作](./media/r-server-operationalize/admin-util-one-box-1.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "67448972"
 
 ### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>在 Apache Spark 上使用 Web 服务时延迟时间很长
 
-如果在尝试使用 Web 服务时遇到长时间的延迟，而这些服务是在 Apache Spark 计算上下文中使用 mrsdeploy 函数创建的，则可能需要添加一些缺失的文件夹。 Spark 应用程序属于名为“rserve2”的用户，不论何时使用 mrsdeploy 函数从 Web 服务调用它。  若要解决此问题，请执行以下操作：
+如果在尝试使用 Web 服务时遇到长时间的延迟，而这些服务是在 Apache Spark 计算上下文中使用 mrsdeploy 函数创建的，则可能需要添加一些缺失的文件夹。 Spark 应用程序属于名为“rserve2”的用户，不论何时使用 mrsdeploy 函数从 Web 服务调用它。 若要解决此问题，请执行以下操作：
 
     # Create these required folders for user 'rserve2' in local and hdfs:
 
@@ -142,21 +142,21 @@ ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 
 请按照下列步骤解除工作节点的授权：
 
-1. 登录到群集的 Ambari 控制台，并单击“主机”  选项卡。
+1. 登录到群集的 Ambari 控制台，并单击“主机”选项卡。
 
 1. 选择（要解除授权）的工作节点。
 
-1. 单击“操作”   > “所选主机”   > “主机”   > “打开维护模式”  。 例如，下图中，选择了对 wn3 和 wn4 解除授权。  
+1. 单击“操作” > “所选主机” > “主机” > “打开维护模式”。 例如，下图中，选择了对 wn3 和 wn4 解除授权。  
 
    ![解除辅助节点的授权](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* 选择“操作”   > “所选主机”   > “DataNodes”  > 单击“解除授权”  。
-* 选择“操作”   > “所选主机”   > “NodeManagers”  > 单击“解除授权”  。
-* 选择“操作”   > “所选主机”   > “DataNodes”  > 单击“停止”  。
-* 选择“操作”   > “所选主机”   > “NodeManagers”  > 单击“停止”  。
-* 选择“操作”   > “所选主机”   > “主机”  > 单击“停止所有组件”  。
+* 选择“操作” > “所选主机” > “DataNodes”> 单击“解除授权”。
+* 选择“操作” > “所选主机” > “NodeManagers”> 单击“解除授权”。
+* 选择“操作” > “所选主机” > “DataNodes”> 单击“停止”。
+* 选择“操作” > “所选主机” > “NodeManagers”> 单击“停止”。
+* 选择“操作” > “所选主机” > “主机”> 单击“停止所有组件”。
 * 取消选择辅助角色节点并选择头节点。
-* 选择“操作”   > “所选主机”  >“主机”   > “重启所有组件”  。
+* 选择“操作” > “所选主机”>“主机” > “重启所有组件”。
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>步骤 2：在每个已解除授权的辅助角色节点上配置计算节点
 
@@ -166,9 +166,9 @@ ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-1. 输入“1”，选择“配置 ML Server 的操作化”选项   。
+1. 输入“1”，选择“配置 ML Server 的操作化”选项。
 
-1. 输入“C”选择选项 `C. Compute node`  。 这将在辅助角色节点上配置计算节点。
+1. 输入“C”选择选项 `C. Compute node`。 这将在辅助角色节点上配置计算节点。
 
 1. 退出管理实用工具。
 
