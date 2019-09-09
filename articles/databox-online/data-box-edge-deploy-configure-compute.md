@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 7b3d725eb05c811d3fdd44516c1bde9a8dfbaaac
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b641ae62ba6e0cdacaeb46b1ffee2f02c7544763
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924336"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277116"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>教程：使用 Azure Data Box Edge 转换数据
 
@@ -53,7 +53,7 @@ ms.locfileid: "64924336"
     |字段  |值  |
     |---------|---------|
     |IoT 中心     | 选择“新建”或“现有”。   <br> 默认会使用标准层 (S1) 来创建 IoT 资源。 若要使用免费层 IoT 资源，请创建一个资源，然后选择现有的资源。 <br> 在每种情况下，IoT 中心资源都会使用 Data Box Edge 资源所用的同一个订阅和资源组。     |
-    |名称     |输入 IoT 中心资源的名称。         |
+    |Name     |输入 IoT 中心资源的名称。         |
 
     ![开始使用计算](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
 
@@ -61,6 +61,9 @@ ms.locfileid: "64924336"
     
     ![开始使用计算](./media/data-box-edge-deploy-configure-compute/configure-compute-3.png)
 
+    > [!NOTE]
+    > 如果在 IoT 中心与 Data Box Edge 设备关联之前关闭了“配置计算”  对话框，则会创建 IoT 中心，但不会在计算配置中显示 IoT 中心。 
+    
     如果在 Edge 设备上设置了 Edge 计算角色，则会创建两个设备：一个 IoT 设备，一个 IoT Edge 设备。 可在 IoT 中心资源中查看这两个设备。 某个 IoT Edge 运行时也在此 IoT Edge 设备上运行。 目前，只有 Linux 平台适用于你的 IoT Edge 设备。
 
 
@@ -108,7 +111,7 @@ ms.locfileid: "64924336"
     
     |字段  |值  |
     |---------|---------|
-    |名称     | 模块的唯一名称。 此模块是可以部署到与 Data Box Edge 相关联的 IoT Edge 设备的 Docker 容器。        |
+    |Name     | 模块的唯一名称。 此模块是可以部署到与 Data Box Edge 相关联的 IoT Edge 设备的 Docker 容器。        |
     |映像 URI     | 模块的对应容器映像的映像 URI。        |
     |需要凭据     | 如果选中此项，则会使用用户名和密码来检索具有匹配 URL 的模块。        |
     |输入共享     | 选择一个输入共享。 在本例中，Edge 本地共享是输入共享。 此处使用的模块将文件从 Edge 本地共享移到 Edge 共享，然后，这些文件将从 Edge 共享上传到云中。        |

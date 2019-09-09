@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 ADP 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 ADP 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 ADP 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/25/2019
+ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1597a4ca9cac7ba3885e863502f156d4c83aeed1
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: b031ded2022078c31bd8570c6a6317c398715480
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516392"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162657"
 ---
-# <a name="tutorial-integrate-adp-with-azure-active-directory"></a>教程：将 ADP 与 Azure Active Directory 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ADP 集成
 
 本教程介绍如何将 ADP 与 Azure Active Directory (Azure AD) 集成。 将 ADP 与 Azure AD 集成后，可以执行以下操作：
 
@@ -46,6 +46,9 @@ ms.locfileid: "68516392"
 
 * ADP 支持 **IDP** 发起的 SSO
 
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
+
 ## <a name="adding-adp-from-the-gallery"></a>从库中添加 ADP
 
 若要配置 ADP 与 Azure AD 的集成，需要从库中将 ADP 添加到托管 SaaS 应用列表。
@@ -57,21 +60,20 @@ ms.locfileid: "68516392"
 1. 在“从库中添加”  部分的搜索框中，键入 **ADP**。
 1. 从结果面板中选择“ADP”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on-for-adp"></a>配置和测试 ADP 的 Azure AD 单一登录
 
 使用名为 **B.Simon** 的测试用户配置和测试 ADP 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 ADP 中的相关用户之间建立链接关系。
 
 若要配置和测试 ADP 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 2. **[配置 ADP SSO](#configure-adp-sso)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-5. **[创建 ADP 测试用户](#create-adp-test-user)** - 在 ADP 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+    1. **[创建 ADP 测试用户](#create-adp-test-user)** - 在 ADP 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -97,33 +99,6 @@ ms.locfileid: "68516392"
 
     在“标识符(实体 ID)”文本框中，键入 URL：`https://fed.adp.com` 
 
-5. ADP 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。 声明名称将始终为“PersonImmutableID”  ，并且其值已显示为映射到 **employeeid**。
-
-    将用户从 Azure AD 映射到 ADP 是在 **employeeid** 上完成的，但可将其映射到基于应用程序设置的其他值。 因此，请先与 [ADP 支持团队](https://www.adp.com/contact-us/overview.aspx)协作，使用用户的正确标识符，并将该值与“PersonImmutableID”  声明进行映射。
-
-    ![image](common/edit-attribute.png)
-
-6. 除上述属性以外，ADP 应用程序还要求在 SAML 响应中传递回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以添加 SAML 令牌属性，如下表中所示： 
-
-    | Name | 源属性|
-    | ---------------| --------- |
-    | PersonImmutableID  | user.employeeid |
-
-    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
-
-    b. 在“名称”文本框中，键入为该行显示的属性名称。 
-
-    c. 将“命名空间”留空  。
-
-    d. 选择“源”作为“属性”  。
-
-    e. 在“源属性”  列表中，键入为该行显示的属性值。
-
-    f. 单击“ **保存**”。
-
-    > [!NOTE] 
-    > 在配置 SAML 断言前，需要联系 [ADP 支持团队](https://www.adp.com/contact-us/overview.aspx)，并为租户请求唯一用户标识符属性值。 拥有此值才能为应用程序配置自定义声明。 
-
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
@@ -132,7 +107,37 @@ ms.locfileid: "68516392"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="configure-adp-sso"></a>配置 ADP SSO
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
+
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 选择屏幕顶部的“新建用户”  。
+1. 在“用户”属性中执行以下步骤  ：
+   1. 在“名称”  字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+   1. 单击“创建”。 
+
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，将通过授予 B.Simon 访问 ADP 的权限，允许其使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在应用程序列表中，选择“ADP”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+
+   ![“用户和组”链接](common/users-groups-blade.png)
+
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+
+    ![“添加用户”链接](common/add-assign-user.png)
+
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-adp-sso"></a>配置 ADP SSO
 
 若要在 **ADP** 端配置单一登录，需要在 [ADP 网站](https://adpfedsso.adp.com/public/login/index.fcc)中上传已下载的**元数据 XML**。
 
@@ -205,41 +210,11 @@ ms.locfileid: "68516392"
  
 11. 确认测试成功后，将联合的 ADP 服务分配到单个用户或用户组（本教程稍后会介绍），并向员工推出该服务。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，将通过授予 B.Simon 访问 ADP 的权限，允许其使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“ADP”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
-1. 在“添加分配”对话框中，单击“分配”按钮。  
-
 ### <a name="create-adp-test-user"></a>创建 ADP 测试用户
 
 在本部分中，将在 ADP 中创建一个名为 B.Simon 的用户。 请与 [ADP 支持团队](https://www.adp.com/contact-us/overview.aspx)协作，将用户添加到 ADP 帐户中。 
 
-### <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -253,3 +228,4 @@ ms.locfileid: "68516392"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [通过 Azure AD 试用 ADP](https://aad.portal.azure.com)

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 549b4457ee38504001e83c4b831cd321e1542068
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f1ceae17195c08af380a7448dd4dbf3bfa3f9de2
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125479"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211870"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -35,13 +35,10 @@ ms.locfileid: "70125479"
 > ## <a name="prerequisites"></a>先决条件
 > 若要运行此示例，需要： 
 > - Java 开发工具包 (JDK) 8 或更高版本以及 Maven。
-> - 一个 Azure Active Directory (Azure AD) 租户。 有关如何获取 Azure AD 租户的详细信息，请参阅[如何获取 Azure AD 租户](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant)。
 >
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
-> 可以使用两个选项来启动快速入门应用程序：
-> * 快速：[选项 1：注册并自动配置应用，然后下载代码示例。](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * 手动：[选项 2：注册并手动配置应用程序和代码示例。](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> 可以使用两个选项来启动快速入门应用程序：“快速”（选项 1）和“手动”（选项 2）
 > 
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
@@ -123,7 +120,7 @@ ms.locfileid: "70125479"
 ### <a name="getting-msal"></a>获取 MSAL
 MSAL4J 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 可以使用 Maven 或 Gradle 将 MSAL4J 添加到应用程序，以通过对应用程序中的 pom.xml 或 build.gradle 文件进行以下更改来管理依赖项。 
 
-```
+```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>
@@ -139,7 +136,7 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
 ### <a name="msal-initialization"></a>Msal 初始化
 可以通过将以下代码添加到要在其中使用 MSAL4J 的文件的顶部，来添加对 MSAL4J 的引用： 
 
-```
+```Java
 import com.microsoft.aad.msal4j.*;
 ```
 

@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/03/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 30f9597e6a42b8bdd35a7d69594a2feb16edae30
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126183"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70231377"
 ---
 ::: zone target="docs"
 
@@ -26,9 +27,11 @@ ms.locfileid: "70126183"
 
 ## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>将数据复制到 Azure Data Box Disk 并进行验证
 
-连接并解锁磁盘后，可以将数据从源数据服务器复制到磁盘。 数据复制完成后，应验证已复制的数据。 验证可确保数据稍后将成功上传到 Azure。
+连接并解锁磁盘后，可以将数据从源数据服务器复制到磁盘。 在数据复制完成后，应该验证数据以确保它将成功上传到 Azure。
 
 ::: zone-end
+
+::: zone target="docs"
 
 本教程介绍如何从主机复制数据，然后生成校验和来验证数据完整性。
 
@@ -333,6 +336,6 @@ ms.locfileid: "70126183"
 1. 运行 `DataBoxDiskValidation.cmd` 以在驱动器的 *DataBoxDiskImport* 文件夹中进行校验和验证。
 2. 使用选项 2 验证文件并生成校验和。 根据具体的数据大小，此步骤可能需要一段时间。 如果在验证和校验和生成过程中出现任何错误，则会向你发送通知并提供指向错误日志的链接。
 
-    有关数据验证的详细信息，请参阅[验证数据](data-box-disk-deploy-copy-data.md#validate-data)。 如果在验证过程中遇到错误，请参阅[排查验证错误](data-box-disk-troubleshoot.md)。
+    有关数据验证的详细信息，请参阅[验证数据](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data)。 如果在验证过程中遇到错误，请参阅[排查验证错误](data-box-disk-troubleshoot.md)。
 
 ::: zone-end

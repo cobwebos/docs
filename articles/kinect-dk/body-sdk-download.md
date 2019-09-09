@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装, 人体, 跟踪
-ms.openlocfilehash: 32942b7f6446fe54d477e5ea5fd891001a3f2213
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e08141a2c2717dcea95b0869ee0f48b75a8069be
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840049"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233054"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>下载 Azure Kinect 人体跟踪 SDK
 
@@ -28,6 +28,7 @@ ms.locfileid: "68840049"
 
 版本       | 下载
 --------------|----------
+0.9.2 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100128) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.2)
 0.9.1 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100063) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.1)
 0.9.0 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=58402) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.0)
 
@@ -47,9 +48,20 @@ ms.locfileid: "68840049"
 如果该命令成功，则表示 SDK 可供使用。
 
 > [!NOTE]
-> 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect Body Tracking SDK 0.9.1”。 你将要在此路径中查找文章中参考的示例。
+> 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect Body Tracking SDK 0.9.2”。 你将要在此路径中查找文章中参考的示例。
 
 ## <a name="change-log"></a>更改日志
+
+### <a name="v092"></a>v0.9.2
+* [中断性变更] 更新为依赖最新的 Azure Kinect 传感器 SDK 1.2.0。
+* [API 更改] `k4abt_tracker_create` 函数将开始接受 `k4abt_tracker_configuration_t` 输入。 
+* [API 更改] 将 `k4abt_frame_get_timestamp_usec` API 更改为 `k4abt_frame_get_device_timestamp_usec`，使其更具体且与传感器 SDK 1.2.0 保持一致。
+* [功能] 允许用户在创建跟踪器时指定传感器安装方向，以便在以不同角度安装时获得更准确的人体跟踪结果。
+* [功能] 提供了新的 API `k4abt_tracker_set_temporal_smoothing` 以更改用户想要应用的时间平滑量。
+* [功能] 添加了 C++ 包装器 k4abt.hpp。
+* [功能] 添加了版本定义头文件 k4abtversion.h。
+* [Bug 修复] 修复了导致 CPU 使用率极高的 bug。
+* [Bug 修复] 修复了记录器崩溃 bug。
 
 ### <a name="v091"></a>v0.9.1
 * [Bug 修复] 修复了销毁跟踪器时的内存泄漏

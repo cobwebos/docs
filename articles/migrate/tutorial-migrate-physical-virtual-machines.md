@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/09/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 728bf785edebcd17599b6a56edea1e26ed2d2fbc
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9b1944cdad67f9f1b74c8dae95bc9d8409e56f54
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311796"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309471"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>将物理服务器或虚拟化服务器迁移到 Azure 
 
@@ -255,6 +255,11 @@ Azure Migrate 服务器迁移使用复制设备将计算机复制到 Azure。 �
     ```
 
 ## <a name="replicate-machines"></a>复制计算机
+
+现在，选择要迁移的 计算机。 
+
+> [!NOTE]
+> 最多可以同时复制 10 台计算机。 如果需要复制更多，则可以每批 10 台同时复制它们。
 
 1. 在 Azure Migrate 项目中选择“服务器”>“Azure Migrate:   服务器迁移”，然后单击“复制”。 
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e15f704fc9604bd18a1f4848e84065fc507314
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1c2d877a1dc611e02e9fbc245df230ca669a2ae4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563100"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70171445"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Slack 集成
 
@@ -47,6 +47,9 @@ ms.locfileid: "69563100"
 * Slack 支持 SP 发起的 SSO 
 * Slack 支持实时用户预配 
 * Slack 支持[自动用户预配](https://docs.microsoft.com/en-gb/azure/active-directory/saas-apps/slack-provisioning-tutorial) 
+
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="adding-slack-from-the-gallery"></a>从库中添加 Slack
 
@@ -90,36 +93,6 @@ ms.locfileid: "69563100"
 
     > [!NOTE]
     > “登录 URL”值不是实际值。 请使用实际的登录 URL 更新此值。 请联系 [Slack 客户端支持团队](https://slack.com/help/contact)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
-
-1. Slack 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
-
-    ![image](common/edit-attribute.png)
-
-    > [!NOTE]
-    > 如果你有已分配的**电子邮件地址**不在 Office365 许可证上的用户，则 **User.Email** 声明不会出现在 SAML 令牌中。 在这种情况下，我们建议改用 **user.userprincipalname** 作为要映射为**唯一标识符**的 **User.Email** 属性值。
-
-1. 在“用户属性”  对话框的“用户声明”  部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
-
-    | 名称 | 源属性 |
-    | --- | --- |
-    | first_name | user.givenname |
-    | last_name | user.surname |
-    | User.Email | user.mail |
-    | User.Username | user.userprincipalname |
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”  以打开“管理用户声明”  对话框。
-
-    b. 在“名称”文本框中，键入为该行显示的属性名称。 
-
-    c. 将“命名空间”留空  。
-
-    d. 选择“源”作为“属性”  。
-
-    e. 在“源属性”  列表中，键入为该行显示的属性值。
-
-    f. 单击“确定” 
-
-    g. 单击“ **保存**”。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -187,7 +160,7 @@ ms.locfileid: "69563100"
 
 ### <a name="create-slack-test-user"></a>创建 Slack 测试用户
 
-本部分的目的是在 Slack 中创建名为 Britta Simon 的用户。 Slack 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 尝试访问 Slack 期间，如果尚不存在用户，则会创建一个新用户。 Slack 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](slack-provisioning-tutorial.md)。
+本部分要在 Slack 中创建名为“B.Simon”的用户。 Slack 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 尝试访问 Slack 期间，如果尚不存在用户，则会创建一个新用户。 Slack 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](slack-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 如果需要手动创建用户，则需联系 [Slack 支持团队](https://slack.com/help/contact)。

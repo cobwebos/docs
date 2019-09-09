@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adda943676eb4918369d3cb8027f559d5dd0f6e
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 141d3062f231e198b3587efcdf4ae6e9a1c97ed6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050015"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162680"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex Meetings 集成
 
@@ -78,24 +78,24 @@ ms.locfileid: "70050015"
 
 1. 在 [Azure 门户](https://portal.azure.com/)的“Cisco Webex Meetings”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
-
-   ![编辑基本 SAML 配置](common/edit-urls.png)
-
-1. 在“基本 SAML 配置”  部分中，通过执行以下步骤上传已下载的**服务提供程序元数据**文件并在  **IDP**  发起的模式下配置应用程序：
-
-    >[!Note]
-    >你将获得服务提供程序元数据文件，稍后将在本教程的**配置 Cisco Webex Meetings SSO** 部分对此进行说明。 
+1. 在“使用 SAML 设置单一登录”  页上，可以通过上传“服务提供程序元数据”  文件，在  **IdP**  发起模式下配置应用程序，如下所示：
 
     a. 单击“上传元数据文件”  。
 
     b. 单击“文件夹徽标”  来选择元数据文件并单击“上传”。 
 
-    c. 成功完成服务提供程序元数据文件的上传后，**标识符**和**回复 URL** 值将自动填充在“基本 SAML 配置”部分： 
+    c. 成功完成服务提供程序元数据文件的上传后，**标识符**和**回复 URL** 值将自动填充在“基本 SAML 配置”部分中  。
 
-5. 如果要在“SP”发起的模式下配置应用程序，请执行以下步骤  ：
+    >[!Note]
+    >你将从“配置 Cisco Webex Meetings SSO”  部分获取服务提供程序元数据文件，本教程稍后将对此进行说明。 
+
+1. 如果要在“SP”  发起的模式下配置应用程序，请执行以下步骤：  
+
+    a. 在“基本 SAML 配置”  部分中，单击编辑/笔形图标。
+
+   ![编辑基本 SAML 配置](common/edit-urls.png)
     
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<customername>.webex.com`
+    b. 在“登录 URL”  文本框中，使用以下模式键入 URL：` https://<customername>.my.webex.com`
 
 5. Cisco Webex Meetings 应用程序需要特定格式的 SAML 断言，因此，我们需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
 

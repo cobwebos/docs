@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/29/2017
-ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 08/28/2019
+ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001990"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138344"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>使用 Terraform 通过 Packer 自定义映像创建 Azure 虚拟机规模集
 
@@ -124,7 +124,7 @@ resource "azurerm_public_ip" "vmss" {
   name                         = "vmss-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}"
 
   tags {
@@ -175,12 +175,12 @@ terraform apply
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>编辑基础结构以添加虚拟机规模集
 
 在此步骤中，需在以前部署的网络上创建以下资源：
-- Azure 负载均衡器，用于为应用程序提供服务并将其附加到在步骤 4 创建的公共 IP 地址
+- Azure 负载均衡器，用于为应用程序提供服务并将其附加到前面部署的公共 IP 地址。
 - 1 个 Azure 负载均衡器和规则，用于为应用程序提供服务并将其附加到之前配置的公共 IP 地址。
-- Azure 后端地址池，将其分配给负载均衡器 
-- 运行状况探测端口，供应用程序使用并在负载均衡器上配置 
-- 虚拟机规模集，位于在之前部署的 VNET 上运行的负载均衡器后端
-- [Nginx](https://nginx.org/)，位于通过自定义映像安装的虚拟机规模集的节点上
+- Azure 后端地址池，并将其分配给负载均衡器。
+- 运行状况探测端口，供应用程序使用并在负载均衡器上配置。
+- 虚拟机规模集，位于在之前部署的 VNET 上运行的负载均衡器后端。
+- [Nginx](https://nginx.org/)，位于通过自定义映像安装的虚拟机规模集的节点上。
 
 
 在 `vmss.tf` 文件的末尾添加以下代码。
@@ -290,6 +290,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
       name                                   = "IPConfiguration"
       subnet_id                              = "${azurerm_subnet.vmss.id}"
       load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+      primary = true
     }
   }
   
@@ -355,7 +356,7 @@ resource "azurerm_public_ip" "jumpbox" {
   name                         = "jumpbox-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}-ssh"
 
   tags {

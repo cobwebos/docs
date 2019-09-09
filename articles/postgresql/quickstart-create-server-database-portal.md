@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/25/2019
-ms.openlocfilehash: 152e93fefecaeaab3502ad5d974ba923727f919b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9a729376baeb03656b7b54fcb8e10a865d1f364
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443116"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195146"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建用于 PostgreSQL 的 Azure 数据库服务器
 
@@ -28,7 +28,7 @@ ms.locfileid: "67443116"
 创建的 Azure Database for PostgreSQL 服务器中包含一组已配置的[计算和存储资源](./concepts-pricing-tiers.md)。 将在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建服务器。
 
 若要创建用于 PostgreSQL 的 Azure 数据库服务器，请执行以下步骤：
-1. 选择门户左上角的“创建资源”按钮 (+)  。
+1. 在门户左上角选择“创建资源”  (+)。
 
 2. 选择“数据库”   >   “用于 PostgreSQL 的 Azure 数据库”。
 
@@ -44,8 +44,8 @@ ms.locfileid: "67443116"
 
     设置|建议的值|说明
     ---|---|---
-    订阅|订阅名称|要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
-    资源组| myresourcegroup| 新的资源组名称，或订阅中的现有资源组。
+    Subscription|订阅名称|要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
+    Resource group| myresourcegroup| 新的资源组名称，或订阅中的现有资源组。
     服务器名称 |*mydemoserver*|用于标识用于 PostgreSQL 的 Azure 数据库服务器的唯一名称。 域名 *postgres.database.azure.com* 附加到提供的服务器名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 该名称必须至少包含 3 到 63 个字符。
     数据源 | 无  | 选择“无”，从头开始创建新的服务器  。 （如果是从现有 Azure Database for PostgreSQL 服务器的异地备份创建服务器，则会选择“备份”  ）。
     管理员用户名 |*myadmin*| 连接到服务器时使用的自己的登录帐户。 管理员登录名不能是 **azure_superuser**、**azure_pg_admin**、**admin**、**administrator**、**root**、**guest** 或 **public**， 不能以 **pg_** 开头。
@@ -72,7 +72,7 @@ ms.locfileid: "67443116"
 
 用于 PostgreSQL 的 Azure 数据库会在服务器级别创建防火墙。 除非创建了规则来为特定的 IP 地址打开防火墙，否则此防火墙会阻止外部应用程序和工具连接到服务器和服务器上的任何数据库。 
 
-1. 部署完成后，找到服务器。 可以根据需要进行搜索。 例如，在左侧菜单中选择“所有资源”。  键入服务器名称（例如 **mydemoserver**）来搜索新建的服务器。 从搜索结果列表中选择服务器名称。 服务器的“概述”  页面随即打开，其中提供了用于进一步配置的选项。
+1. 部署完成后，找到服务器。 可以根据需要进行搜索。 例如，在左侧菜单中选择“所有资源”。  输入服务器名称（例如，示例 **mydemoserver**），以搜索新创建的服务器。 从搜索结果列表中选择服务器名称。 服务器的“概述”  页面随即打开，其中提供了用于进一步配置的选项。
  
     ![服务器名称搜索](./media/quickstart-create-database-portal/4-locate.png)
 
@@ -182,13 +182,13 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
     
 5. 选择“保存”。 
 
-6. 在左侧的“浏览器”窗格中，展开“服务器”节点   。 选择服务器，例如 **mydemoserver**。 单击该服务器与它建立连接。
+6. 在左侧的“浏览器”窗格中，展开“服务器”节点   。 选择服务器（例如，**mydemoserver**）以连接到它。
 
 7. 展开服务器节点，然后展开其下的“数据库”。  此列表应包括现有 *postgres* 数据库和已创建的任何其他数据库。 可以使用 Azure Database for PostgreSQL 为每个服务器创建多个数据库。
 
 8. 右键单击“数据库”，选择“创建”菜单，并选择“数据库”。   
 
-9. 在“数据库”字段中键入所选的数据库名称，例如“mypgsqldb2”。  
+9. 在“数据库”字段中输入所选的数据库名称，例如“mypgsqldb2”。  
 
 10. 从列表框中选择数据库的“所有者”。  选择服务器管理员登录名，例如“my admin”  。
 
@@ -208,7 +208,7 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
 若要删除包括新建服务器在内的整个资源组，请执行以下操作：
 1. 在门户中找到自己的资源组。 在左侧菜单中，选择“资源组”  。 然后选择资源组的名称，例如 myresourcegroup  。
 
-2. 在资源组页上，选择“删除”  。 在文本框中键入确认删除的资源组的名称，例如 myresourcegroup  。 选择“删除”。 
+2. 在资源组页上，选择“删除”  。 在文本框中输入资源组的名称（例如，示例 **myresourcegroup**），以确认删除。 选择“删除”。 
 
 仅删除新建的服务器：
 1. 在门户中找到自己的服务器（如果尚未将其打开）。 在左侧菜单中选择“所有资源”。  然后搜索所创建的服务器。
@@ -217,7 +217,7 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
 
     ![“删除”按钮](./media/quickstart-create-database-portal/12-delete.png)
 
-3. 确认要删除的服务器名称并查看其下受影响的数据库。 在文本框中键入服务器名称，例如 mydemoserver  。 选择“删除”。 
+3. 确认要删除的服务器名称并查看其下受影响的数据库。 在文本框中输入服务器名称，例如 mydemoserver  。 选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

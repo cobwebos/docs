@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3fd2a50946f0857d527c34b62687b2dbdd71298e
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073888"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172032"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>教程：将 Windows Server 虚拟机加入托管域
 
@@ -214,7 +214,7 @@ Windows Server VM 应成功加入 Azure AD DS 托管域，加入方式与常规�
 * 确保指定的用户帐户属于 AAD DC 管理员组  。
 * 请尝试使用 UPN 格式指定凭据。例如 `contosoadmin@contoso.onmicrosoft.com`。 如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，系统可能会自动生成帐户的 SAMAccountName  。 在这些情况下，帐户的 SAMAccountName 格式可能不同于所需的格式或者在本地域中使用的格式  。
 * 检查托管域是否已[启用密码同步][password-sync]。 如果没有此配置步骤，Azure AD DS 托管域中将不会出现所需的密码哈希，因此无法正确验证登录尝试。
-* 等待密码同步完成。 用户帐户的密码更改后，可能需要 15-20 分钟才能将此密码用于域加入。
+* 等待密码同步完成。 更改用户帐户的密码后，Azure AD 的自动后台同步将更新 Azure AD DS 中的密码。 密码需要一段时间才能用于加入域。
 
 ## <a name="next-steps"></a>后续步骤
 

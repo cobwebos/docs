@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 11f40d99a36493272cb6cd51e4a339c19cd0358b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d7668f49df1caca6b4261424b0d2c025a640d572
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966735"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258786"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>快速入门：适用于 .NET 的语言理解 (LUIS) 创作客户端库
 
@@ -37,9 +37,9 @@ ms.locfileid: "68966735"
 
 ## <a name="setting-up"></a>设置
 
-### <a name="get-your-language-understanding-luis-authoring-key"></a>获取语言理解 (LUIS) 创作密钥
+### <a name="get-your-language-understanding-luis-starter-key"></a>获取语言理解 (LUIS) 初学者密钥
 
-获取[创作密钥](luis-how-to-account-settings.md)，并为该密钥创建名为 `COGNITIVESERVICE_AUTHORING_KEY` 的[环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+获取[初学者密钥](luis-how-to-azure-subscription.md#starter-key)，并为该密钥[创建 环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)（名为 `COGNITIVESERVICE_AUTHORING_KEY`）。
 
 ### <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
@@ -190,7 +190,7 @@ LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的�
 
 从应用程序目录，使用 dotnet `run` 命令运行应用程序。
 
-```dotnet
+```console
 dotnet run
 ```
 

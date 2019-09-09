@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 移植, 人体, 跟踪, 关节, 层次结构, 骨骼, 连接
-ms.openlocfilehash: 7bb468b0679012c2b9d750b9d7b9bf4def924cd4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 286252bbddc5b02e18d2d06ecb18b8876f9d6434
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612433"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232456"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Azure Kinect 人体跟踪关节
 
@@ -21,7 +21,7 @@ Azure Kinect 人体跟踪可以同时跟踪多个人体。 每个人体包括帧
 
 ## <a name="joints"></a>关节
 
-关节位置和方向是相对于深度传感器参考帧的估算值。 位置以毫米为单位指定。 方向表示为规范化四元数，并与子关节之间的连接（骨骼）的局部方向。
+关节位置和方向是相对于全局深度传感器参考帧的估算值。 位置以毫米为单位指定。 方向以规范化四元数表示。
 
 ## <a name="joint-coordinates"></a>关节坐标
 

@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: faad0a0166c1b11f51f814bb6ce3351d7a017239
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7091e2bd1ee24843299721d3c21a8546197fac6f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900032"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207588"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph 服务概述
 
@@ -35,7 +35,7 @@ Azure Resource Graph 是 Azure 中的一项服务，旨在通过提供高效和�
 
 Azure 资源管理器目前支持对基本的资源字段进行查询，具体说来，这些字段包括“资源名称”、“ID”、“类型”、“资源组”、“订阅”和“位置”。 资源管理器还提供设施，用于调用各个资源提供程序以获取详细的属性，每次仅限一个资源。
 
-使用 Azure Resource Graph，可以访问资源提供程序返回的这些属性，无需对资源提供程序进行单独调用。 如需支持的资源类型的列表，请在[完整模式部署的资源](../../azure-resource-manager/complete-mode-deletion.md)表中查找“是”  。
+使用 Azure Resource Graph，可以访问资源提供程序返回的这些属性，无需对资源提供程序进行单独调用。 如需支持的资源类型的列表，请在[完整模式部署的资源](../../azure-resource-manager/complete-mode-deletion.md)表中查找“是”  。 若要查看支持的资源类型，另一种方法是通过 [Azure Resource Graph 资源管理器架构浏览器](./first-query-portal.md#schema-browser)。
 
 使用 Azure Resource Graph，可以：
 
@@ -80,7 +80,13 @@ Resource Graph 在用户级别对查询进行限制。 服务响应包含以下 
 
 ## <a name="running-your-first-query"></a>运行自己的第一个查询
 
-Resource Graph 支持 Azure CLI、Azure PowerShell 和用于 .NET 的 Azure SDK。 对于每种语言，查询结构相同。 在 [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension) 和 [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module) 中了解如何启用 Resource Graph。
+Azure Resource Graph 资源管理器是 Azure门户的一部分，支持直接在 Azure 门户中运行 Resource Graph 查询。 将结果固定为动态图表，以便向门户工作流提供实时动态信息。 有关详细信息，请参阅[使用 Azure Resource Graph 资源管理器进行第一次查询](first-query-portal.md)。
+
+Resource Graph 支持 Azure CLI、Azure PowerShell、用于 .NET 的 Azure SDK 等等。 对于每种语言，查询结构相同。 了解如何使用以下项启用 Resource Graph：
+
+- [Azure 门户和 Resource Graph 资源管理器](first-query-portal.md) 
+- [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
 ## <a name="next-steps"></a>后续步骤
 

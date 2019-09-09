@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e22b616e50929d4ac099c3412e89db426b09307
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 95c898dd36387d4474f5129943c6bd76f754ffe2
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489480"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213534"
 ---
 # <a name="tutorial-integrate-pronovos-ops-manager-with-azure-active-directory"></a>教程：将 ProNovos Ops Manager 与 Azure Active Directory 集成
 
@@ -81,7 +81,7 @@ ms.locfileid: "68489480"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，应用程序已预配置为采用“IDP”发起模式，并且已在 Azure 中预先填充了所需的 URL。 ****   ****   用户需要单击“保存”按钮来保存配置。 ****  
+1. 在基本 SAML 配置  部分，应用程序在 **IDP** 发起的模块中进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -131,7 +131,7 @@ ms.locfileid: "68489480"
 
 ### <a name="create-pronovos-ops-manager-test-user"></a>创建 ProNovos Ops Manager 测试用户
 
-在本部分，你将在 ProNovos Ops Manager 中创建名为 B.Simon 的用户。 在  [ProNovos Ops Manager 支持团队](mailto:support@pronovos.com)的配合下，将用户添加到 ProNovos Ops Manager 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，你将在 ProNovos Ops Manager 中创建名为 B.Simon 的用户。 请与 [ProNovos Ops Manager 支持团队](mailto:support@pronovos.com)协作，将用户添加到 ProNovos Ops Manager 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-sso"></a>测试 SSO 
 

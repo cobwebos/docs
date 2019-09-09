@@ -4,15 +4,15 @@ description: 介绍如何使用 Azure Migrate 以无代理方法将本地 VMware
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7fba9cbbaa15359e7e4dd95e66645dd5f4022431
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ec7d10a1d9fec43c149c068fb408211db76d19eb
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640770"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309384"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -126,7 +126,10 @@ Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure�
 
 ## <a name="replicate-vms"></a>复制 VM
 
-完成发现后，可以开始将 VMware VM 复制到 Azure。
+完成发现后，可以开始将 VMware VM 复制到 Azure。 
+
+> [!NOTE]
+> 最多可以同时复制 10 台计算机。 如果需要复制更多，则可以每批 10 台同时复制它们。 对于无代理迁移，最多可运行 100 次同时复制。
 
 1. 在 Azure Migrate 项目中选择“服务器”>“Azure Migrate:   服务器迁移”，然后单击“复制”。 
 

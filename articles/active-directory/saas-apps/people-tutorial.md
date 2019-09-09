@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 People 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 People 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 People 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 334241683f95496ce9ea0629247bb8fd53364ee9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3a9b8f08a54c978d81a8d33c61ab3d5f5fc7271f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826105"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164219"
 ---
-# <a name="tutorial-integrate-people-with-azure-active-directory"></a>教程：将 People 与 Azure Active Directory 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>教程：Azure Active Directory 单一登录 (SSO) 与 People 集成
 
 本教程介绍如何将 People 与 Azure Active Directory (Azure AD) 集成。 将 People 与 Azure AD 集成后，可以：
 
@@ -47,6 +47,9 @@ ms.locfileid: "68826105"
 * People 支持 SP 发起的 SSO 
 * 现在可以为 People 移动应用程序配置 Azure AD 以启用 SSO。 本教程在测试环境中配置并测试 Azure AD SSO。
 
+>[!NOTE]
+>此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
+
 ## <a name="adding-people-from-the-gallery"></a>从库中添加 People
 
 要通过配置将 People 集成到 Azure AD 中，需从库将 People 添加到托管式 SaaS 应用的列表中。
@@ -58,21 +61,20 @@ ms.locfileid: "68826105"
 1. 在“从库中添加”部分的搜索框中，键入“People”   。
 1. 从结果面板中选择“People”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on-for-people"></a>配置和测试 People 的 Azure AD 单一登录
 
 使用名为 **B.Simon** 的测试用户配置和测试 People 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 People 相关用户之间建立链接关系。
 
 若要配置和测试 People 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 2. **[配置 People SSO](#configure-people-sso)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-5. **[创建 People 测试用户](#create-people-test-user)** - 在 People 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    1. **[创建 People 测试用户](#create-people-test-user)** - 在 People 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -100,22 +102,6 @@ ms.locfileid: "68826105"
 6. 在“设置 People”部分中，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
-
-### <a name="configure-people-sso"></a>配置 People SSO
-
-1. 若要为应用程序配置 SSO，需要以管理员身份登录到 People 租户。
-   
-2. 在左侧菜单中，单击“设置”。 
-
-    ![配置单一登录](./media/people-tutorial/tutorial_people_001.png)
-
-3. 单击“公司”。 
-
-    ![配置单一登录](./media/people-tutorial/tutorial_people_002.png)
-
-4. 在“上传‘单一登录’SAML 元数据文件”中，单击“浏览”以上传已下载的元数据文件   。
-
-    ![配置单一登录](./media/people-tutorial/tutorial_people_003.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -147,11 +133,35 @@ ms.locfileid: "68826105"
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
+## <a name="configure-people-sso"></a>配置 People SSO
+
+1. 若要在 People 中自动执行配置，需要通过单击“安装扩展”  来安装**我的应用安全登录浏览器扩展**。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 People”，此时会将你定向到 People 应用程序  。 在此处，提供管理员凭据以登录到 People。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-6。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 People，请打开新的 Web 浏览器窗口，以管理员身份登录 People 公司站点，并执行以下步骤：
+   
+4. 在左侧菜单中，单击“设置”。 
+
+    ![配置单一登录](./media/people-tutorial/tutorial_people_001.png)
+
+5. 单击“公司”。 
+
+    ![配置单一登录](./media/people-tutorial/tutorial_people_002.png)
+
+6. 在“上传‘单一登录’SAML 元数据文件”中，单击“浏览”以上传已下载的元数据文件   。
+
+    ![配置单一登录](./media/people-tutorial/tutorial_people_003.png)
+
 ### <a name="create-people-test-user"></a>创建 People 测试用户
 
 在本部分中，将在 People 中创建名为 B.Simon 的用户。 请与 [People 客户端支持团队](mailto:customerservices@peoplehr.com)协作，在 People 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
-### <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -179,3 +189,4 @@ ms.locfileid: "68826105"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [通过 Azure AD 试用 People](https://aad.portal.azure.com)

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: c83648124f616670423b2ef459530c191d7e17e4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 044b74e1a8683c6beb0220c1cf9fb97403286a95
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325759"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972250"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器实例和容器协调器
 
@@ -61,7 +61,7 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 
 目前虚拟节点支持 Linux 容器实例。 可通过 [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) 或 [Azure门户](https://go.microsoft.com/fwlink/?linkid=2047545)开始使用虚拟节点。
 
-虚拟节点使用开源[虚拟 Kubelet][aci-connector-k8s] , 通过将其注册为具有无限容量的节点来模拟 Kubernetes [Kubelet][kubelet-doc] 。 Virtual Kubelet 调度在 Azure 容器实例中将 pod[创建为容器][pod-doc]组。
+虚拟节点使用开源[虚拟 Kubelet][aci-connector-k8s] ，通过将其注册为具有无限容量的节点来模拟 Kubernetes [Kubelet][kubelet-doc] 。 Virtual Kubelet 调度在 Azure 容器实例中将 pod[创建为容器][pod-doc]组。
 
 请参阅[虚拟 Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) 项目，以获取更多将 Kubernetes API 扩展到无服务器容器平台的示例。
 
@@ -72,6 +72,6 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 <!-- IMAGES -->
 
 <!-- LINKS -->
-[aci-connector-k8s]: https://github.com/virtual-kubelet/virtual-kubelet/tree/master/providers/azure
+[aci-connector-k8s]: https://github.com/virtual-kubelet/azure-aci
 [kubelet-doc]: https://kubernetes.io/docs/admin/kubelet/
 [pod-doc]: https://kubernetes.io/docs/concepts/workloads/pods/pod/

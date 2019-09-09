@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37a527e8cd83d292d8af8af5acd0c903c63081f2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013842"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305942"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Harness 集成
 
@@ -131,17 +131,25 @@ ms.locfileid: "70013842"
 
 ## <a name="configure-harness-sso"></a>配置 Harness SSO
 
-1. 打开新的 Web 浏览器窗口，以管理员身份登录到 Harness 公司站点。
+1. 若要在 Harness 中自动执行配置，需要通过单击“安装扩展”  来安装**我的应用安全登录浏览器扩展**。
 
-1. 在页面右上角，单击“持续安全性” ****  >“访问管理” ****  > “身份验证设置”  。
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 Harness”  会将你定向到 Harness 应用程序。 在此处，提供管理员凭据以登录到 Harness。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-6。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 Harness，请打开新的 Web 浏览器窗口，以管理员身份登录 Harness 公司站点，并执行以下步骤：
+
+4. 在页面右上角，单击“持续安全性” ****  >“访问管理” ****  > “身份验证设置”  。
 
     ![Harness 配置](./media/harness-tutorial/configure01.png)
 
-1. 在“SSO 提供程序”  部分中，单击“+ 添加 SSO 提供程序” ****  >“SAML” **** 。
+5. 在“SSO 提供程序”  部分中，单击“+ 添加 SSO 提供程序” ****  >“SAML” **** 。
 
     ![Harness 配置](./media/harness-tutorial/configure03.png)
 
-1. 在“SAML 提供程序”  弹出窗口中，执行以下步骤：
+6. 在“SAML 提供程序”  弹出窗口中，执行以下步骤：
 
     ![Harness 配置](./media/harness-tutorial/configure02.png)
 

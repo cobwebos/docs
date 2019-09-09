@@ -4,19 +4,19 @@ description: 了解如何发布将客户载入到 Azure 委派资源管理的托
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f9d3fad2a98647bcd10d54c03a76e95bc3e05227
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011867"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165251"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
-在本文中，你将学习如何使用[云合作伙伴门户](https://cloudpartner.azure.com/)将公共或专用托管服务产品发布到 [Azure 市场](https://azuremarketplace.microsoft.com)，从而能针对 Azure 委派资源管理载入购买此产品/服务的客户。
+本文介绍如何使用[云合作伙伴门户](https://cloudpartner.azure.com/)将公共或专用托管服务产品发布到 [Azure 市场](https://azuremarketplace.microsoft.com)，从而使购买产品的客户能够加入 Azure 委托资源管理的资源。
 
 > [!NOTE]
 > 若要创建和发布这些产品/服务，需要拥有有效的[合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。 如果还没有帐户，[注册过程](https://aka.ms/joinmarketplace)将引导你按照步骤在合作伙伴中心创建帐户并注册商业市场计划。 你的 Microsoft 合作伙伴网络 (MPN) ID 将[自动关联](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)你发布的产品/服务，以跟踪你在客户参与中的影响。
@@ -127,6 +127,65 @@ ms.locfileid: "70011867"
 ## <a name="publish-your-offer"></a>发布产品/服务
 
 如果你对自己提供的所有信息感到满意，则接下来就是将产品/服务发布到 Azure 市场。 选择“发布”按钮启动产品/服务上线过程  。 有关此过程的更多信息，请参阅[发布 Azure 市场和 AppSource 产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer)。
+
+## <a name="the-customer-onboarding-process"></a>客户加入过程
+
+当客户添加你的产品/服务时，他们将能够[委托一个或多个特定订阅或资源组](view-manage-service-providers.md#delegate-resources)，然后将加入这些订阅或资源组以进行 Azure 委托资源管理。 如果客户已接受产品/服务但尚未委托任何资源，则他们会在 Azure 门户[“服务提供商”  ](view-manage-service-providers.md)页中“提供商产品/服务”部分的顶部看到备注  。
+
+在加入订阅（或订阅中的资源组）之前，订阅必须通过手动注册 **Microsoft.ManagedServices** 资源提供程序来获得加入授权。 客户租户中具有“参与者”或“所有者”角色的用户可以按照 [Azure 资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md)中所述的步骤来执行此操作。
+
+然后，客户可通过以下方式之一确认订阅已准备好进行加入。
+
+### <a name="azure-portal"></a>Azure 门户
+
+1. 在 Azure 门户中，选择订阅。
+1. 选择“资源提供程序”  。
+1. 确认 Microsoft.ManagedServices 显示为“已注册”   。
+
+### <a name="powershell"></a>PowerShell
+
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if you're not using Cloud Shell
+
+Set-AzContext -Subscription <subscriptionId>
+Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
+```
+
+这应会返回如下结果：
+
+```output
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationDefinitions}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationAssignments}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {operations}
+Locations         : {}
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+```azurecli-interactive
+# Log in first with az login if you're not using Cloud Shell
+
+az account set –subscription <subscriptionId>
+az provider show --namespace "Microsoft.ManagedServices" --output table
+```
+
+这应会返回如下结果：
+
+```output
+Namespace                  RegistrationState
+-------------------------  -------------------
+Microsoft.ManagedServices  Registered
+```
 
 ## <a name="next-steps"></a>后续步骤
 

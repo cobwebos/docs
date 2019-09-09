@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/22/2019
+ms.date: 09/03/2019
 ms.author: jgao
-ms.openlocfilehash: b27caa3d91d67ad63bfbf5e7c549d690980cdd7b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 13ac8b9f6d82cc8b0060f87237ef3140cb245379
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934440"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259208"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>快速入门：使用资源管理器模板设置机密以及从 Azure Key Vault 检索机密
 
@@ -101,7 +101,9 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Key Vault 主页](https://azure.microsoft.com/services/key-vault/)
-* [Azure Key Vault 文档](index.yml)
-* [用于 Node 的 Azure SDK](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
-* [Azure REST API 参考](https://docs.microsoft.com/rest/api/keyvault/)
+在本快速入门中，你使用 Azure 资源管理器模板创建了密钥保管库和机密，并验证了部署。 若要详细了解 Key Vault 和 Azure 资源管理器，请继续阅读以下文章。
+
+- 阅读 [Azure Key Vault 概述](key-vault-overview.md)
+- 了解有关 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)的详细信息
+- 获取有关[密钥、机密和证书](about-keys-secrets-and-certificates.md)的详细信息
+- 查看 [Azure Key Vault 最佳做法](key-vault-best-practices.md)

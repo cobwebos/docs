@@ -12,40 +12,40 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: d366f363b7bd1d5306d598c9b38258eb78076b7c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 125f1bc14a376523a22984e9d8efa7848408bf7a
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472055"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035203"
 ---
 # <a name="explore-netnet-core-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 .NET/.NET Core 跟踪日志
 
 将 ILogger、NLog、log4Net 或 System.Diagnostics.Trace 生成的 ASP.NET/ASP.NET Core 应用程序诊断跟踪日志发送到 [Azure Application Insights][start]。 然后，可以浏览和搜索这些日志。 这些日志将与应用程序中的其他日志文件合并，因此，你可以识别与每个用户请求关联的跟踪，并将其关联到其他事件和异常报告。
 
 > [!NOTE]
-> 是否需要日志捕获模块？ 它是第三方记录器的有用适配器。 但如果你未使用 NLog、log4Net 或 System.Diagnostics.Trace，只需考虑直接调用 [**Application Insights TrackTrace()** ](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)。
+> 是否需要日志捕获模块？ 它是第三方记录器的有用适配器。 但如果你未使用 NLog、log4Net 或 System.Diagnostics.Trace，只需考虑直接调用 [**Application Insights TrackTrace()**](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)。
 >
 >
 ## <a name="install-logging-on-your-app"></a>在应用上安装记录
 在项目中安装所选的日志记录框架，这应该会在 app.config 或 web.config 中生成一个条目。
 
 ```XML
-    <configuration>
-      <system.diagnostics>
-    <trace autoflush="true" indentsize="0">
+ <configuration>
+  <system.diagnostics>
+    <trace>
       <listeners>
         <add name="myAppInsightsListener" type="Microsoft.ApplicationInsights.TraceListener.ApplicationInsightsTraceListener, Microsoft.ApplicationInsights.TraceListener" />
       </listeners>
     </trace>
   </system.diagnostics>
-   </configuration>
+</configuration>
 ```
 
 ## <a name="configure-application-insights-to-collect-logs"></a>配置 Application Insights 以收集日志
 [将 Application Insights 添加到项目](../../azure-monitor/app/asp-net.md)（如果尚未这样做）。 会看到一个选项以包括日志收集器。
 
-或者在解决方案资源管理器中右键单击项目并选择“配置 Application Insights”。  选择“配置跟踪集合”选项。 
+或者在解决方案资源管理器中右键单击项目并选择“配置 Application Insights”。 选择“配置跟踪集合”选项。
 
 > [!NOTE]
 > 未看到 Application Insights 菜单或日志收集器选项？ 尝试[故障排除](#troubleshooting)。
@@ -54,7 +54,7 @@ ms.locfileid: "65472055"
 如果项目类型（例如 Windows 桌面项目）不受 Application Insights 安装程序支持，请使用此方法。
 
 1. 如果计划使用 log4Net 或 NLog，请在项目中安装它。
-2. 在解决方案资源管理器中右键单击项目，然后选择“管理 NuGet 包”。 
+2. 在解决方案资源管理器中右键单击项目，然后选择“管理 NuGet 包”。
 3. 搜索“Application Insights”。
 4. 选择以下包之一：
 
@@ -154,12 +154,12 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
                    SeverityLevel.Warning,
                    new Dictionary<string,string> { {"database", db.ID} });
 
-这样便可以在“[搜索][diagnostic]”中轻松筛选出与特定数据库相关的所有特定严重性级别的消息。
+这样便可以在[搜索][diagnostic]中轻松筛选出与特定数据库相关的所有特定严重性级别的消息。
 
 ## <a name="explore-your-logs"></a>浏览日志
 在调试模式下运行应用，或者实时部署它。
 
-在 [Application Insights 门户][portal]中应用的概述窗格中，选择“[搜索][diagnostic]”。
+在 [Application Insights 门户][portal]中应用的概述窗格中，选择[“搜索”][diagnostic]。
 
 例如，可以：
 
@@ -172,21 +172,21 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 >如果应用程序发送大量数据，并且使用的是 Application Insights SDK for ASP.NET 2.0.0-beta3 或更高版本，则*自适应采样*功能可能会正常运行，但只发送一部分遥测数据。 [了解有关采样的详细信息。](../../azure-monitor/app/sampling.md)
 >
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 ### <a name="how-do-i-do-this-for-java"></a>对于 Java，我该怎么做？
 使用 [Java 日志适配器](../../azure-monitor/app/java-trace-logs.md)。
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>项目上下文菜单上没有 Application Insights 选项
-* 确保 Developer Analytics Tools 已安装在开发计算机上。 在 Visual Studio 的“工具” > “扩展和更新”中，找到“Developer Analytics Tools”。    如果它不在“已安装”选项卡中，请打开“联机”选项卡并安装它。  
+* 确保 Developer Analytics Tools 已安装在开发计算机上。 在 Visual Studio 的“工具” > “扩展和更新”中，找到“Developer Analytics Tools”。 如果它不在“已安装”选项卡中，请打开“联机”选项卡并安装它。
 * 这可能是 Developer Analytics Tools 不支持的项目类型。 使用[手动安装](#manual-installation)。
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>配置工具中没有日志适配器选项
 * 先安装日志记录框架。
 * 如果使用 System.Diagnostics.Trace，请确保[在 *web.config* 中对其进行配置](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)。
-* 确保已安装最新版本的 Application Insights。 在 Visual Studio 中，转到“工具” > “扩展和更新”，并打开“更新”选项卡。    如果其中显示了“Developer Analytics Tools”，请选择它进行更新。 
+* 确保已安装最新版本的 Application Insights。 在 Visual Studio 中，转到“工具” > “扩展和更新”，并打开“更新”选项卡。如果其中显示了“Developer Analytics Tools”，请选择它进行更新。
 
-### <a name="emptykey"></a>我收到"检测密钥不能为空"错误消息
-你可能在未安装 Application Insights 的情况下安装了日志记录适配器 Nuget 包。 在解决方案资源管理器中，右键单击“ApplicationInsights.config”并选择“更新 Application Insights”。   系统会提示你登录到 Azure 并创建 Application Insights 资源，或重复使用现有的资源。 遵照提示应该可以解决问题。
+### <a name="emptykey"></a>我收到 "检测密钥不能为空" 错误消息
+你可能在未安装 Application Insights 的情况下安装了日志记录适配器 Nuget 包。 在解决方案资源管理器中，右键单击“ApplicationInsights.config”并选择“更新 Application Insights”。 系统会提示你登录到 Azure 并创建 Application Insights 资源，或重复使用现有的资源。 遵照提示应该可以解决问题。
 
 ### <a name="i-can-see-traces-but-not-other-events-in-diagnostic-search"></a>我在诊断搜索中可以看到跟踪，但看不到其他事件
 所有事件和请求都通过管道可能需要花费一段时间。

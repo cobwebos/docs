@@ -3,16 +3,16 @@ title: Azure 蓝图概述
 description: 了解如何通过 Azure 蓝图服务在 Azure 环境中创建、定义和部署项目。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/08/2019
+ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: be7e3043172f988a429bbf02dec08bfbbc1a70b7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848437"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146104"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Azure 蓝图服务概述
 
@@ -106,14 +106,23 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 > [!NOTE]
 > 由于在订阅上创建了蓝图分配，因此必须在订阅范围授予蓝图分配和取消分配权限，或者将其继承到订阅范围。
 
-上述所有权限都包含在“所有者”角色中  。 “参与者”角色创建了蓝图并删除了蓝图权限，但并没有蓝图分配权限  。 若这些内置角色不适合安全需求，请考虑创建[自定义角色](../../role-based-access-control/custom-roles.md)。
+以下内置角色可用：
+
+|RBAC 角色 | 说明 |
+|-|-|
+|[所有者](../../role-based-access-control/built-in-roles.md#owner) | 除了其他权限以外，还包括所有与 Azure 蓝图相关的权限。 |
+|[参与者](../../role-based-access-control/built-in-roles.md#contributor) | 除了其他权限以外，还可以创建和删除蓝图定义，但不具有蓝图分配权限。 |
+|[蓝图参与者](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | 可以管理蓝图定义，但不能对其进行分配。 |
+|[蓝图操作员](../../role-based-access-control/built-in-roles.md#blueprint-operator) | 可以指定现有已发布的蓝图，但不能创建新的蓝图定义。 仅当使用用户分配的托管标识完成分配时，蓝图分配才有效。 |
+
+若这些内置角色不适合安全需求，请考虑创建[自定义角色](../../role-based-access-control/custom-roles.md)。
 
 > [!NOTE]
 > 如果使用系统分配的托管标识，则 Azure 蓝图的服务主体需要在分配的订阅上具有**所有者**角色才能启用部署。 若使用门户，则会自动为部署授予和撤消此角色。 若使用 REST API，则必须手动授予此角色，但在部署完成后仍会自动撤消此角色。 如果使用用户分配的托管标识，则只有创建蓝图分配的用户才需要“所有者”  权限。
 
 ## <a name="naming-limits"></a>命名限制
 
-下面是某些字段存在的限制列表：
+某些字段存在以下限制：
 
 |Object|字段|允许的字符|最大 Length|
 |-|-|-|-|

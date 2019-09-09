@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0e2e161c22ee87d11156c4818bd689c316799e87
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 372c65f1ac9a08d066f26e637f3af86807b35f11
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305616"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182807"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>市场中的 Azure 托管应用程序
 
@@ -177,5 +177,6 @@ SKU 在市场中显示在父级产品/服务下。 它在 Azure 门户中显示�
 
 ## <a name="next-steps"></a>后续步骤
 
+* 有关单击“发布”  后发生的情况的信息，请参阅[发布 Azure 应用程序产品/服务](../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 * 有关托管应用程序的简介，请参阅[托管应用程序概述](overview.md)。
 * 有关发布服务目录托管应用程序的信息，请参阅[创建和发布服务目录托管应用程序](publish-service-catalog-app.md)。

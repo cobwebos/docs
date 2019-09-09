@@ -2,18 +2,18 @@
 title: C# 教程：为多个数据源编制索引 - Azure 搜索
 description: 了解如何将多个数据源的数据导入单个 Azure 搜索索引。
 author: RobDixon22
-manager: HeidiSteen
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
-ms.openlocfilehash: 2776bcd095c570be500fa6ddb2675820b2259716
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840673"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241835"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C# 教程：将多个数据源的数据合并到一个 Azure 搜索
 
@@ -70,7 +70,7 @@ Azure 搜索可导入、分析多个数据源的数据并将其编入单个合�
 
 1. [登录到 Azure 门户](https://portal.azure.com)，然后导航到自己的 Azure Cosmos DB 帐户的“概述”页面。
 
-1. 在菜单栏中，单击“添加容器”。 指定“新建数据库”，并使用名称“hotel-rooms-db”  。 输入“hotel-rooms”  作为集合名称、“/HotelId”  作为分区键。 单击“确定”创建数据库和容器  。
+1. 在菜单栏中，单击“添加容器”。 指定“新建数据库”，并使用名称“hotel-rooms-db”  。 输入“hotels”  作为集合名称，输入“/HotelId”  作为分区键。 单击“确定”创建数据库和容器  。
 
    ![添加 Azure Cosmos DB 容器](media/tutorial-multiple-data-sources/cosmos-add-container.png "Add an Azure Cosmos DB container")
 

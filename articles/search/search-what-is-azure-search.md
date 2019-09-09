@@ -6,18 +6,18 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 08/21/2019
+ms.date: 09/03/2019
 ms.author: heidist
-ms.openlocfilehash: 204951f725c2885fe9f8bf33fffe83e55628dd34
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 3b0647c3a71e6ce242e7cbd0eedcca3d0fa30ded
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899681"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274056"
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
 
-Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 自定义代码调用数据引入（索引）来创建和加载索引。 另一方面，应用程序代码发出查询请求并处理响应。 搜索体验是使用 Azure 搜索中的功能在客户端中定义的，而查询是通过你创建、拥有并存储在 Azure 搜索中的持久索引执行的。
+Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 自定义代码调用数据引入（索引）来创建和加载索引。 另一方面，应用程序代码发出查询请求并处理响应。 使用 Azure 搜索中的功能在客户端中定义搜索体验，通过在服务中创建，拥有并存储的持久索引执行查询。
 
 ![Azure 搜索体系结构](media/search-what-is-azure-search/azure-search-diagram.svg "Azure 搜索体系结构")
 
