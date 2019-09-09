@@ -1,25 +1,25 @@
 ---
 title: 将 Azure Active Directory 用户同步到群集 - Azure HDInsight
-description: 将经身份验证的用户从 Azure Active Directory 同步到群集。
+description: 将通过身份验证的用户从 Azure Active Directory 同步到 HDInsight 群集。
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2be67c604bebbe9b4c4356e241d1480ca0778d4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e6534026bef139a94d2784be42025f8ea8b096ef
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688552"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811789"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>将 Azure Active Directory 用户同步到 HDInsight 群集
 
-[使用企业安全性套餐 (ESP) 的 HDInsight 群集](hdinsight-domain-joined-introduction.md)可对 Azure Active Directory (Azure AD) 用户使用强身份验证，还可使用基于角色的访问控制  (RBAC) 策略。 将用户和组添加到 Azure AD 时，可以同步需要访问群集的用户。
+[使用企业安全性套餐 (ESP) 的 HDInsight 群集](hdinsight-domain-joined-introduction.md)可对 Azure Active Directory (Azure AD) 用户使用强身份验证，还可使用基于角色的访问控制 (RBAC) 策略。 将用户和组添加到 Azure AD 时，可以同步需要访问群集的用户。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 如果你尚未执行此操作，请[使用企业安全性套餐创建 HDInsight 群集](hdinsight-domain-joined-configure.md)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "64688552"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到与 ESP 群集相关联的 Azure AD 目录。
 
-2. 从左侧菜单选择“所有用户”，然后选择“新建用户”。  
+2. 从左侧菜单选择“所有用户”，然后选择“新建用户”。
 
     ![“所有用户”窗格](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "64688552"
 
     ![“新建用户”窗格](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
 
-4. 选择“创建”  。
+4. 选择“创建”。
 
 ## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>使用 Apache Ambari REST API 来同步用户
 
@@ -45,7 +45,7 @@ ms.locfileid: "64688552"
 
 以下方法通过 Ambari REST API 使用 POST。 有关详细信息，请参阅[使用 Apache Ambari REST API 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari-rest-api.md)。
 
-1. [使用 SSH 连接到群集](hdinsight-hadoop-linux-use-ssh-unix.md)。 在 Azure 门户中，从群集的概览窗格选择“安全外壳(SSH)”按钮。 
+1. [使用 SSH 连接到群集](hdinsight-hadoop-linux-use-ssh-unix.md)。 在 Azure 门户中，从群集的概览窗格选择“安全外壳(SSH)”按钮。
 
     ![安全外壳(SSH)](./media/hdinsight-sync-aad-users-to-cluster/ssh.png)
 
@@ -120,20 +120,20 @@ ms.locfileid: "64688552"
     }
     ```
 
-5. 此结果显示，状态为“完成”，创建了一个新用户且为该用户指定了成员身份。  在此示例中，用户分配到“HiveUsers”同步的 LDAP 组，因为用户已在 Azure AD 中添加到该组。
+5. 此结果显示，状态为“完成”，创建了一个新用户且为该用户指定了成员身份。 在此示例中，用户分配到“HiveUsers”同步的 LDAP 组，因为用户已在 Azure AD 中添加到该组。
 
 > [!NOTE]  
-> 前一方法仅同步创建群集时在域设置的“访问用户组”  属性中指定的 Azure AD 组。 有关详细信息，请参阅[创建 HDInsight 群集](domain-joined/apache-domain-joined-configure.md)。
+> 前一方法仅同步创建群集时在域设置的“访问用户组”属性中指定的 Azure AD 组。 有关详细信息，请参阅[创建 HDInsight 群集](domain-joined/apache-domain-joined-configure.md)。
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>验证新添加的 Azure AD 用户
 
 打开 [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md)，验证新的 Azure AD 用户是否已添加。 浏览到 **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** ，对 Ambari Web UI 进行访问。 输入群集管理员用户名和密码。
 
-1. 在 Ambari 仪表板中，选择“管理”菜单下的“管理 Ambari”。  
+1. 在 Ambari 仪表板中，选择“管理”菜单下的“管理 Ambari”。
 
     ![管理 Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-ambari.png)
 
-2. 在页面左侧的“用户 + 组管理”菜单组下选择“用户”。  
+2. 在页面左侧的“用户 + 组管理”菜单组下选择“用户”。
 
     ![“用户”菜单项](./media/hdinsight-sync-aad-users-to-cluster/users-link.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "64688552"
 
 新用户（或任何其他域用户）在登录到 Ambari 时，使用完整的 Azure AD 用户名和域凭据。  Ambari 显示用户别名，该别名是用户在 Azure AD 中的显示名称。 新示例用户的用户名为 `hiveuser3@contoso.com`。 在 Ambari 中，这个新用户显示为 `hiveuser3`，但该用户是作为 `hiveuser3@contoso.com` 登录到 Ambari 的。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [使用 ESP 在 HDInsight 中配置 Apache Hive 策略](hdinsight-domain-joined-run-hive.md)
 * [管理 ESP HDInsight 群集](hdinsight-domain-joined-manage.md)

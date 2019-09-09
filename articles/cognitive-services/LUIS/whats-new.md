@@ -1,5 +1,5 @@
 ---
-title: 新增功能-语言理解（LUIS）
+title: 新增功能 - 语言理解 (LUIS)
 titleSuffix: Azure Cognitive Services
 description: 本文包含有关语言理解的新闻。
 author: diberry
@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: b29fdf4e5b3f2719865820695f659df7e75e19b5
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3a32499a85b1cd782c808166c516be7ad9c78913
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256428"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813283"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
@@ -27,6 +27,8 @@ ms.locfileid: "70256428"
 ### <a name="september-3-2019"></a>2019年9月3日
 
 * Azure 创作资源-[立即迁移](luis-migration-authoring.md)。
+    * 500每个 Azure 资源的应用
+    * 100每个应用的版本
 * 预构建实体的土耳其语支持
 * 意大利语对 datetimeV2 的支持
 

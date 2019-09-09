@@ -1,18 +1,18 @@
 ---
 title: 使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
-description: 使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
+description: 在 Apache Spark 上使用 Caffe 在 Azure HDInsight 中进行分布式深度学习。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: d0d68263485c5ab6e57a349317b1975862470cc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31911c6c2456ab8b4949bab6ef8e541b91fc8a2c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721519"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814194"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
 
@@ -175,7 +175,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
     # solver mode: CPU or GPU
     solver_mode: CPU
 
-![Caffe 配置](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
+![Caffe Config1](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
 
 可以根据需要更改其他行。
 
@@ -184,7 +184,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 - 将 "file:/Users/mridul/bigml/demodl/mnist_train_lmdb" 更改为 "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb"
 - 将 "file:/Users/mridul/bigml/demodl/mnist_test_lmdb/" 更改为 "wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb"
 
-![Caffe 配置](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
+![Caffe Config2](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
 
 如需详细了解如何定义网络，请查看[有关 MNIST 数据集的 Caffe 文档](https://caffe.berkeleyvision.org/gathered/examples/mnist.html)
 

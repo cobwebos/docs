@@ -1,25 +1,25 @@
 ---
-title: 在灾难恢复中将恢复计划与 Azure Site Recovery 配合使用 | Microsoft Docs
+title: 在灾难恢复中使用 Azure Site Recovery 恢复计划
 description: 了解如何通过 Azure Site Recovery 服务使用恢复计划进行灾难恢复。
 author: rayne-wiselman
 manager: carmonm
 services: site-recovery
 ms.service: site-recovery
-ms.topic: article
-ms.date: 05/30/2019
+ms.topic: conceptual
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 0df9e4b41ff89dd295fe644900b78640a083e985
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 8502e08db48700aefe51a6e4f0e79d1b08f6ca79
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514567"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814440"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
 
 本文介绍了 [Azure Site Recovery](site-recovery-overview.md) 中的恢复计划。
 
-恢复计划将计算机汇集到恢复组中。 可以通过向计划中添加顺序、说明和任务来自定义计划。 在定义计划后，可以根据它运行故障转移。  在多个恢复计划中，在其中后续计划将跳过在计算机部署/启动如果以前部署通过另一个恢复计划，可以引用计算机。
+恢复计划将计算机汇集到恢复组中。 可以通过向计划中添加顺序、说明和任务来自定义计划。 在定义计划后，可以根据它运行故障转移。  可以在多个恢复计划中引用计算机，如果先前已通过其他恢复计划部署了计划，则后续计划将跳过计算机的部署/启动。
 
 
 ## <a name="why-use-a-recovery-plan"></a>为何使用恢复计划？
@@ -83,7 +83,7 @@ ms.locfileid: "67514567"
 
 ## <a name="watch-the-video"></a>观看视频
 
-观看演示两层 WordPress 应用的上单击故障转移的快速示例视频。
+观看快速示例视频，其中显示了针对两层 WordPress 应用的单击故障转移。
     
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 

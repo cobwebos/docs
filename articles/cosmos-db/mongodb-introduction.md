@@ -22,7 +22,7 @@ ms.locfileid: "65953846"
 
 Azure Cosmos DB 服务对 Cassandra、MongoDB、Gremlin 和 Azure 表存储等常见的 NoSQL 数据库实现网络协议。 它在 Cosmos DB 中直接有效地提供网络协议的本机实现，使 NoSQL 数据库的现有客户端 SDK、驱动程序和工具能够以透明方式与 Cosmos DB 交互。 Cosmos DB 不使用数据库的任何源代码来为任何 NoSQL 数据库提供网络兼容的 API。
 
-默认情况下，Azure Cosmos DB 的用于 MongoDB 的 API 与 MongoDB 网络协议版本 3.2 兼容。 在网络协议版本 3.4 中添加的功能或查询运算符目前以预览版功能形式提供。 任何识别这些协议版本的 MongoDB 客户端驱动程序原生应该可以连接到 Cosmos DB。
+默认情况下，Azure Cosmos DB 的用于 MongoDB 的 API 与 MongoDB 网络协议版本 3.2 兼容。 在网络协议版本 3.4 中添加的功能或查询运算符目前以预览版功能形式提供。 任何识别这些协议版本的 MongoDB 客户端驱动程序应该可以本机连接到 Cosmos DB。
 
 ![Azure Cosmos DB 的用于 MongoDB 的 API](./media/mongodb-introduction/cosmosdb-mongodb.png) 
 
@@ -32,7 +32,7 @@ Azure Cosmos DB 服务对 Cassandra、MongoDB、Gremlin 和 Azure 表存储等�
 
 * 轻松将应用程序迁移到 Cosmos DB，同时保留应用程序逻辑的重要部分。
 * 使应用程序保持可移植性，并继续保持云供应商的不可知性。
-* 获得行业领先的、有 SLA 和资金保障的、以 Cosmos DB 为后盾的常用 NoSQL API。
+* 为 Cosmos DB 支持的常用 NoSQL API 获取行业领先的、有资金保障的 SLA。
 * 根据需求弹性缩放 Cosmos 数据库的预配吞吐量和存储，并且只需为使用的吞吐量和存储付费。 这可以大幅节省成本。
 * 通过多主数据库复制实现统包全局分布。
 

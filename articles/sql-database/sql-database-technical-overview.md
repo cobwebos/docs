@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 8c931521e77123844817dff0e9209f8f95f7ad59
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: f7fc5b32fb18da60816056c72dde8c53d439befe
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279899"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812189"
 ---
 # <a name="what-is-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务
 
@@ -54,7 +54,7 @@ SQL 数据库通过多个资源类型、服务层级和计算大小提供可预�
 ### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>购买模型、服务层级、计算大小和存储量
 
 SQL 数据库提供以下两种购买模型：
-- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vCore 数、内存容量，以及存储的容量和速度。 基于 vCore 的购买模型还允许使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来节省成本。 有关 Azure 混合权益的详细信息，请参阅[常见问题解答](#sql-database-frequently-asked-questions-faq)。
+- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vcore 数、内存量以及存储量和速度。 基于 vCore 的购买模型还允许使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来节省成本。 有关 Azure 混合权益的详细信息，请参阅[常见问题解答](#sql-database-frequently-asked-questions-faq)。
 - [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)：混合提供三个服务层级中的计算、内存和 IO 资源，以支持轻型到重型数据库工作负荷。 每个层级中的不同计算大小提供这些资源的不同组合，你可以向其添加更多的存储资源。
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>弹性池可以最大化资源利用率

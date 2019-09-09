@@ -1,6 +1,6 @@
 ---
-title: 创建使用 Azure CLI-Azure HDInsight 的 Apache Hadoop 群集
-description: 了解如何创建 HDInsight 群集使用跨平台 Azure CLI。
+title: 使用 Azure CLI 创建 Apache Hadoop 群集-Azure HDInsight
+description: 了解如何使用跨平台 Azure CLI 创建 Azure HDInsight 群集。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0a278cd98b0dd6c6d8f0fe9bfee81e5bafd4f543
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c26c0b16331ae01f7505e44cef3fe91b3282750b
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597674"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70809861"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 创建 HDInsight 群集
 
@@ -25,7 +25,7 @@ ms.locfileid: "65597674"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 来了解步骤。
 

@@ -6,14 +6,14 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/29/2019
-ms.openlocfilehash: 86ebfe14936f4cfbc6fc5f674ee691341eacfd47
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: f17574e5d8d129df43a195c40928b3cce4014548
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736304"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813944"
 ---
-# <a name="scenario-apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>场景：在 Azure HDInsight 中，Apache Spark 作业失败，InvalidClassException，类版本不匹配
+# <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>在 Azure HDInsight 中，Apache Spark 作业失败，InvalidClassException，类版本不匹配
 
 本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时的故障排除步骤和可能的解决方法。
 

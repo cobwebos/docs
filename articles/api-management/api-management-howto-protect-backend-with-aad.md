@@ -12,16 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 344613c50f46337ffbd7e786f6753e8030c2af22
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 653089042c87b3223b3de048b6f12056d04b0f3c
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072243"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806324"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
 本指南介绍如何结合 Azure Active Directory (Azure AD) 使用 OAuth 2.0 协议配置 Azure API 管理实例，以保护 API。 
+
+> [!NOTE]
+> 此功能适用于 API 管理的**开发人员** **版、标准**层和**高级**层。
 
 ## <a name="prerequisites"></a>先决条件
 若要执行本文中的步骤，必须提供：
@@ -49,7 +52,7 @@ ms.locfileid: "70072243"
 
 1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
     - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `backend-app`。 
-    - 在 "**支持的帐户类型**" 部分中, 选择适合你的方案的选项。 
+    - 在 "**支持的帐户类型**" 部分中，选择适合你的方案的选项。 
 
 1. 将 "**重定向 URI** " 部分留空。
 
@@ -59,15 +62,15 @@ ms.locfileid: "70072243"
 
 创建应用程序后，记下“应用程序 ID”，以便在后续步骤中使用。 
 
-1. 选择 "**公开 API** ", 然后单击 "**保存并继续**" 创建应用程序 ID URI。
+1. 选择 "**公开 API** "，然后单击 "**保存并继续**" 创建应用程序 ID URI。
 
-1. 在 "**添加作用域**" 页中, 创建 API 支持的新作用域。 (例如, 读取), 然后单击 "*添加作用域*" 以创建作用域。 重复此步骤以添加 API 支持的所有范围。
+1. 在 "**添加作用域**" 页中，创建 API 支持的新作用域。 （例如，读取），然后单击 "*添加作用域*" 以创建作用域。 重复此步骤以添加 API 支持的所有范围。
 
-1. 创建作用域后, 请记下它, 以便在后续步骤中使用。 
+1. 创建作用域后，请记下它，以便在后续步骤中使用。 
 
 ## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>在 Azure AD 中注册另一个应用程序用于表示客户端应用程序
 
-需要调用该 API 的每个客户端应用程序也必须注册到 Azure AD 中。 在此示例中, 客户端应用程序是 API 管理开发人员门户中的开发人员控制台。 下面介绍如何在 Azure AD 中注册另一个应用程序用于表示开发人员控制台。
+需要调用该 API 的每个客户端应用程序也必须注册到 Azure AD 中。 在此示例中，客户端应用程序是 API 管理开发人员门户中的开发人员控制台。 下面介绍如何在 Azure AD 中注册另一个应用程序用于表示开发人员控制台。
 
 1. 导航到[Azure 门户应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)"页。 
 
@@ -89,7 +92,7 @@ ms.locfileid: "70072243"
 
 1. 在“添加客户端密码”下，提供**说明**。 选择密钥过期时间，然后选择“添加”。
 
-创建机密后, 记下 "密钥" 值, 以便在后续步骤中使用。 
+创建机密后，记下 "密钥" 值，以便在后续步骤中使用。 
 
 ## <a name="grant-permissions-in-azure-ad"></a>在 Azure AD 中授予权限
 
@@ -103,9 +106,9 @@ ms.locfileid: "70072243"
 
 1. 在“选择 API”下，找到并选择 `backend-app`。
 
-1. 在 "**委派的权限**" 下, 选择`backend-app`适当的权限, 然后单击 "**添加权限**"。
+1. 在 "**委派的权限**" 下，选择`backend-app`适当的权限，然后单击 "**添加权限**"。
 
-1. (可选) 在 " **API 权限**" 页上, 单击页面底部的 "**授予管理员同意 < 你的租户-名称 >** , 以代表此目录中的所有用户授予同意。 
+1. （可选）在 " **API 权限**" 页上，单击页面底部的 "**授予管理员同意 < 你的租户-名称 >** ，以代表此目录中的所有用户授予同意。 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>在开发人员门户中启用 OAuth 2.0 用户授权
 
@@ -113,13 +116,13 @@ ms.locfileid: "70072243"
 
 在本示例中，开发人员控制台是 client-app。 以下步骤说明如何在开发人员门户中启用 OAuth 2.0 用户授权 
 
-1. 在 Azure 门户中, 浏览到 API 管理实例。
+1. 在 Azure 门户中，浏览到 API 管理实例。
 
 1. 选择“OAuth 2.0” > “添加”。
 
 1. 提供“显示名称”和“说明”。
 
-1. 对于“客户端注册页 URL”，请输入占位符值，如 `http://localhost`。 "**客户端注册页 URL** " 指向一个页面, 用户可以使用该页为支持此的 OAuth 2.0 提供程序创建和配置自己的帐户。 在此示例中，用户不创建和配置自己的帐户，因此使用了占位符。
+1. 对于“客户端注册页 URL”，请输入占位符值，如 `http://localhost`。 "**客户端注册页 URL** " 指向一个页面，用户可以使用该页为支持此的 OAuth 2.0 提供程序创建和配置自己的帐户。 在此示例中，用户不创建和配置自己的帐户，因此使用了占位符。
 
 1. 选择“授权代码”作为“授权类型”。
 
@@ -131,15 +134,15 @@ ms.locfileid: "70072243"
 1. 复制“OAuth 2.0 令牌终结点”，并将其粘贴到“令牌终结点 URL”文本框。 
 
     >[!IMPORTANT]
-    > 可以使用**v1**或**v2**端点。 但是, 根据你选择的版本, 以下步骤将有所不同。 建议使用 v2 终结点。 
+    > 可以使用**v1**或**v2**端点。 但是，根据你选择的版本，以下步骤将有所不同。 建议使用 v2 终结点。 
 
-1. 如果使用**v1**终结点, 请添加名为**resource**的主体参数。 对于此参数的值, 请使用后端应用的**应用程序 ID** 。 
+1. 如果使用**v1**终结点，请添加名为**resource**的主体参数。 对于此参数的值，请使用后端应用的**应用程序 ID** 。 
 
-1. 如果使用**v2**终结点, 请在 "**默认作用域**" 字段中使用为后端应用创建的作用域。
+1. 如果使用**v2**终结点，请在 "**默认作用域**" 字段中使用为后端应用创建的作用域。
 
 1. 接下来，指定客户端凭据。 这是客户端应用的凭据。
 
-1. 对于 "**客户端 ID**", 请使用客户端应用的**应用程序 id** 。
+1. 对于 "**客户端 ID**"，请使用客户端应用的**应用程序 id** 。
 
 1. 对于“客户端机密”，请使用前面为客户端应用创建的密钥。 
 
@@ -157,7 +160,7 @@ ms.locfileid: "70072243"
 
 1. 浏览到 API 管理实例，并转到“API”。
 
-2. 选择要保护的 API。 例如, 你可以使用`Echo API`。
+2. 选择要保护的 API。 例如，你可以使用`Echo API`。
 
 3. 转到“设置”。
 
@@ -170,9 +173,9 @@ ms.locfileid: "70072243"
 > [!NOTE]
 > 本部分不适用于“消耗”层，该层不支持开发人员门户。
 
-既然已在 API 上启用 OAuth 2.0 用户授权, 开发人员控制台在调用 API 之前, 将会代表用户获取访问令牌。
+既然已在 API 上启用 OAuth 2.0 用户授权，开发人员控制台在调用 API 之前，将会代表用户获取访问令牌。
 
-1. 在开发人员门户中浏览到 API 下的任意操作, 然后选择 "**试用**"。 随后会转到开发人员控制台。
+1. 在开发人员门户中浏览到 API 下的任意操作，然后选择 "**试用**"。 随后会转到开发人员控制台。
 
 2. 可以看到，“授权”部分出现了一个与刚刚添加的授权服务器对应的新项。
 
@@ -189,11 +192,11 @@ ms.locfileid: "70072243"
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>配置 JWT 验证策略以对请求进行预授权
 
-此时，当用户尝试从开发人员控制台发出调用时，系统会提示其登录。 开发人员控制台代表用户获取访问令牌, 并在向 API 发出的请求中包含该令牌。
+此时，当用户尝试从开发人员控制台发出调用时，系统会提示其登录。 开发人员控制台代表用户获取访问令牌，并在向 API 发出的请求中包含该令牌。
 
-但是, 如果有人调用你的 API 而不使用令牌或令牌无效, 该怎么办？ 例如, 尝试在不使用`Authorization`标头的情况下调用 API, 调用仍将继续。 原因是 API 管理暂时不会验证访问令牌。 它只是将 `Authorization` 标头传递给后端 API。
+但是，如果有人调用你的 API 而不使用令牌或令牌无效，该怎么办？ 例如，尝试在不使用`Authorization`标头的情况下调用 API，调用仍将继续。 原因是 API 管理暂时不会验证访问令牌。 它只是将 `Authorization` 标头传递给后端 API。
 
-可以使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略通过验证每个传入请求的访问令牌，对 API 管理中的请求进行预授权。 如果某个请求没有有效的令牌，API 管理会阻止该请求。 例如, 将以下策略添加到的`<inbound>` `Echo API`"策略" 部分。 它会检查访问令牌中的受众声明，如果令牌无效，则会返回一条错误消息。 有关如何配置策略的信息，请参阅[设置或编辑策略](set-edit-policies.md)。
+可以使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略通过验证每个传入请求的访问令牌，对 API 管理中的请求进行预授权。 如果某个请求没有有效的令牌，API 管理会阻止该请求。 例如，将以下策略添加到的`<inbound>` `Echo API`"策略" 部分。 它会检查访问令牌中的受众声明，如果令牌无效，则会返回一条错误消息。 有关如何配置策略的信息，请参阅[设置或编辑策略](set-edit-policies.md)。
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

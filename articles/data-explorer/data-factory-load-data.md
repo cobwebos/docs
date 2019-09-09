@@ -1,6 +1,6 @@
 ---
 title: 将数据从 Azure 数据工厂复制到 Azure 数据资源管理器
-description: 在本主题中，您学习如何将 （加载） 数据引入到 Azure 数据资源管理器中，通过使用 Azure 数据工厂复制工具
+description: 本主题介绍如何使用 Azure 数据工厂复制工具将数据引入（加载）到 Azure 数据资源管理器中
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,25 +8,25 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 2142fbf03daa6667b20db43f9212a2b5e6d7dd44
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b3bd9b800da4f096639d02c78b718216441621a9
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657533"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70803983"
 ---
-# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>将数据复制到 Azure 数据资源管理器使用 Azure 数据工厂 
+# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 数据资源管理器 
 
-Azure 数据资源管理器是对很多来源，如应用程序、 网站和 IoT 设备流式处理的数据量很大的实时分析的快速、 完全托管的数据分析服务。 以迭代方式浏览数据并标识模式和异常情况以改进产品，增强客户体验，监视设备，并提升操作。 探索新问题并在几分钟内获得答案。 Azure 数据工厂是一个完全托管的基于云的数据集成服务。 该服务可用于在 Azure 数据资源管理器用数据填充数据库从现有系统和节省时间时生成分析解决方案。
+Azure 数据资源管理器是一个快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等许多源流式传输的大量数据。 用户可在其中以迭代方式浏览数据，识别模式和异常以改进产品、增强客户体验、监视设备，以及提升操作性能。 他们可以探讨新的问题，并在短时间内获得解答。 Azure 数据工厂是一个完全托管的基于云的数据集成服务。 可以使用该服务在 Azure 数据资源管理器数据库中填充现有系统中的数据，并节点生成分析解决方案的时间。
 
-Azure 数据工厂提供了用于将数据加载到 Azure 数据资源管理器的以下好处：
+在将数据载入 Azure 数据资源管理器方面，Azure 数据工厂的优势如下：
 
-* **轻松设置**：无需脚本直观五步向导。
-* **丰富的数据存储支持**:对一组丰富的本地和基于云的数据存储的内置支持。 有关详细列表，请参阅表[支持的数据存储](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)。
-* **安全性和符合性**:通过 HTTPS 或 ExpressRoute 传输数据。 存在全局服务可确保数据永远不会离开地理边界。
-* **高性能**:最多 1 GB/s 数据加载到 Azure 数据资源管理器的速度。 有关详细信息，请参阅[复制活动性能](/azure/data-factory/copy-activity-performance)。
+* **轻松设置**：使用直观五步骤向导，无需编写脚本。
+* **丰富的数据存储支持**：对一组丰富的本地和基于云的数据存储的内置支持。 有关详细列表，请参阅表[支持的数据存储](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)。
+* **安全且合规**：通过 HTTPS 或 ExpressRoute 传输数据。 存在全局服务可确保数据永远不会离开地理边界。
+* **高性能**：向 Azure 数据资源管理器载入数据的速度高达 1-GB/秒。 有关详细信息，请参阅[复制活动性能](/azure/data-factory/copy-activity-performance)。
 
-本文介绍如何使用数据工厂复制数据工具将数据从 Amazon S3 加载到 Azure 数据资源管理器。 可以遵循类似的步骤来将数据复制从其他数据存储，例如[Azure Blob 存储](/azure/data-factory/connector-azure-blob-storage)， [Azure SQL 数据库](/azure/data-factory/connector-azure-sql-database)， [Azure SQL 数据仓库](/azure/data-factory/connector-azure-sql-data-warehouse)， [GoogleBigQuery](/azure/data-factory/connector-google-bigquery)，[Oracle](/azure/data-factory/connector-oracle)，和[文件系统](/azure/data-factory/connector-file-system)。
+本文介绍如何使用数据工厂复制数据工具，将数据从 Amazon S3 载入 Azure 数据资源管理器。 可以遵循类似的步骤，从 [Azure Blob 存储](/azure/data-factory/connector-azure-blob-storage)、[Azure SQL 数据库](/azure/data-factory/connector-azure-sql-database)、[Azure SQL 数据仓库](/azure/data-factory/connector-azure-sql-data-warehouse)、[Google BigQuery](/azure/data-factory/connector-google-bigquery)、[Oracle](/azure/data-factory/connector-oracle) 和[文件系统](/azure/data-factory/connector-file-system)等其他数据存储复制数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,154 +36,158 @@ Azure 数据工厂提供了用于将数据加载到 Azure 数据资源管理器�
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 选择**创建资源**门户的左上角的按钮 （+） > **Analytics** > **数据工厂**。
+1. 选择门户左上角的“创建资源”按钮 (+)，然后选择“分析” > “数据工厂”。
 
    ![新建数据工厂](media/data-factory-load-data/create-adf.png)
 
-1. 在中**新建数据工厂**页上，为以下字段提供值，然后选择**创建**。
+1. 在“新建数据工厂”页中，提供以下字段的值并选择“创建”。
 
     ![“新建数据工厂”页](media/data-factory-load-data/my-new-data-factory.png)
 
     **设置**  | **字段说明**
     |---|---|
-    | **名称** | 输入你的数据工厂的全局唯一名称。 如果收到错误 *"数据工厂名称\"LoadADXDemo\"不可用"* ，输入不同的数据工厂的名称。 有关数据工厂项目命名规则，请参阅[数据工厂命名规则](/azure/data-factory/naming-rules)。|
+    | **名称** | 输入数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 \"LoadADXDemo\" 不可用”，请输入不同的数据工厂名称。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](/azure/data-factory/naming-rules)。|
     | **订阅** | 选择要在其中创建数据工厂的 Azure 订阅。 |
-    | **资源组** | 选择**新建**并输入新的资源组的名称。 选择**使用现有**，如果有现有的资源组。 |
-    | **版本** | 选择“V2”  |
-    | **Location** | 选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置或区域中。 |
+    | **资源组** | 选择“新建”，并输入新资源组的名称。 如果你有现有的资源组，请选择“使用现有项”。 |
+    | **版本** | 选择“V2” |
+    | **Location** | 选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可位于其他位置或区域中。 |
     | | |
 
-1. 在工具栏上，监视创建过程中选择通知。 创建操作完成后，转到你创建的数据工厂。 **数据工厂**主页打开。
+1. 在工具栏上选择“通知”以监视创建过程。 创建操作完成后，转到创建的数据工厂。 此时会打开“数据工厂”主页。
 
    ![数据工厂主页](media/data-factory-load-data/data-factory-home-page.png)
 
-1. 选择**创作和监视**磁贴，启动单独的选项卡中的应用程序。
+1. 选择“创作和监视”磁贴，在单独的选项卡中启动应用程序。
 
-## <a name="load-data-into-azure-data-explorer"></a>将数据加载到 Azure 数据资源管理器
+## <a name="load-data-into-azure-data-explorer"></a>将数据载入 Azure 数据资源管理器
 
-可以从许多类型的加载数据[数据存储](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)到 Azure 数据资源管理器。 本主题详细介绍了从 Amazon S3 加载数据。
+可将许多类型的[数据存储](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)中的数据载入 Azure 数据资源管理器。 本主题详细介绍如何从 Amazon S3 加载数据。
 
-有两种方法将数据加载到 Azure 数据资源管理器使用 Azure 数据工厂：
+可以使用 Azure 数据工厂以两种方式将数据载入 Azure 数据资源管理器：
 
-* Azure 数据工厂用户界面- [**作者**选项卡](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
-* [Azure 数据工厂**复制数据**工具](/azure/data-factory/quickstart-create-data-factory-copy-data-tool)本文中使用。
+* Azure 数据工厂用户界面 -[“创作”选项卡](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)。
+* 本文中使用的 [Azure 数据工厂“复制数据”工具](/azure/data-factory/quickstart-create-data-factory-copy-data-tool)。
 
-### <a name="copy-data-from-amazon-s3-source"></a>将数据从 Amazon S3 复制 （源）
+### <a name="copy-data-from-amazon-s3-source"></a>从 Amazon S3（源）复制数据
 
-1. 在中**让我们开始吧**页上，选择**复制数据**磁贴以启动复制数据工具。
+1. 在“开始使用”页中选择“复制数据”磁贴，启动“复制数据”工具。
 
-   ![复制数据工具磁贴](media/data-factory-load-data/copy-data-tool-tile.png)
+   ![“复制数据”工具磁贴](media/data-factory-load-data/copy-data-tool-tile.png)
 
-1. 在中**属性**页上，指定**任务名称**，然后选择**下一步**。
+1. 在“属性”页中指定**任务名称**，然后选择“下一步”。
 
-    ![将源属性从复制](media/data-factory-load-data/copy-from-source.png)
+    ![从源属性复制](media/data-factory-load-data/copy-from-source.png)
 
-1. 在中**源数据存储区**页上，单击 **+ 创建新的连接**。
+1. 在“源数据存储”页中，单击“+ 创建新连接”。
 
-    ![源数据创建的连接](media/data-factory-load-data/source-create-connection.png)
+    ![源数据 - 创建连接](media/data-factory-load-data/source-create-connection.png)
 
-1. 选择**Amazon S3**，然后选择**继续**
+1. 依次选择“Amazon S3”、“继续”
 
     ![新建链接服务](media/data-factory-load-data/amazons3-select-new-linked-service.png)
 
-1. 在中**新建链接服务 (Amazon S3)** 页上，执行以下步骤：
+1. 在“新建链接服务(Amazon S3)”页中执行以下步骤：
 
     ![指定 Amazon S3 链接服务](media/data-factory-load-data/amazons3-new-linked-service-properties.png)
 
-    * 指定**名称**将新的链接服务。
-    * 选择**通过集成运行时连接**从下拉列表中的值。
-    * 指定“访问密钥 ID”  值。
-    * 指定“机密访问密钥”  值。
-    * 选择**测试连接**来测试您创建的链接的服务连接。
-    * 选择“完成”。 
+    * 指定新链接服务的**名称**。
+    * 从下拉列表中选择“通过集成运行时进行连接”值。
+    * 指定“访问密钥 ID”值。
+    * 指定“机密访问密钥”值。
+    * 选择“测试连接”以测试创建的链接服务连接。
+    * 选择“完成”。
 
-1. 在中**源数据存储区**页上，你将看到新 AmazonS31 连接。 选择“**下一步**”。
+1. 在“源数据存储”页中，可以看到新的 AmazonS31 连接。 选择“**下一步**”。
 
-   ![源数据存储创建的连接](media/data-factory-load-data/source-data-store-created-connection.png)
+   ![源数据存储 - 创建的连接](media/data-factory-load-data/source-data-store-created-connection.png)
 
-1. 在中**选择输入的文件或文件夹**页：
+1. 在“选择输入文件或文件夹”页中：
 
-    1. 浏览到想要复制的文件夹/文件。 选择的文件夹/文件。
-    1. 根据需要选择复制行为。 保持**二进制副本**未选中状态。
+    1. 浏览到要复制的文件夹/文件。 选择文件夹/文件。
+    1. 根据需要选择复制行为。 将“二进制副本”保持未选中状态。
     1. 选择“**下一步**”。
 
     ![选择输入文件或文件夹](media/data-factory-load-data/source-choose-input-file.png)
 
-1. 在中**文件格式设置**页上，选择文件并单击相关的设置**下一步**。
+1. 在“文件格式设置”页中选择文件的相关设置，然后单击“下一步”。
 
    ![选择输入文件或文件夹](media/data-factory-load-data/source-file-format-settings.png)
 
-### <a name="copy-data-into-azure-data-explorer-destination"></a>将数据复制到 Azure 数据资源管理器 （目标）
+### <a name="copy-data-into-azure-data-explorer-destination"></a>将数据复制到 Azure 数据资源管理器（目标）
 
-Azure 数据资源管理器中新建链接的服务创建要复制到 Azure 数据资源管理器目标表 （接收器） 下面指定的数据。
+现已创建新的 Azure 数据资源管理器链接服务，用于将数据复制到下面指定的 Azure 数据资源管理器目标表（接收器）。
 
-1. 在中**目标数据存储区**页上，可以使用现有数据存储连接或通过单击指定新的数据存储区 **+ 创建新的连接**。
+#### <a name="create-the-azure-data-explorer-linked-service"></a>创建 Azure 数据资源管理器链接服务
+
+1. 在“目标数据存储”页中，可以使用现有的数据存储连接，或者单击“+ 创建新连接”指定新的数据存储。
 
     ![“目标数据存储”页](media/data-factory-load-data/destination-create-connection.png)
 
-1. 在中**新建链接服务**页上，选择**Azure 数据资源管理器**，然后选择**继续**
+1. 在“新建链接服务”页中选择“Azure 数据资源管理器”，然后选择“继续”。
 
-    ![选择 Azure 数据资源管理器-新建链接服务](media/data-factory-load-data/adx-select-new-linked-service.png)
+    ![选择 Azure 数据资源管理器 - 新建链接服务](media/data-factory-load-data/adx-select-new-linked-service.png)
 
-1. 在中**新建链接服务 （Azure 数据资源管理器）** 页上，执行以下步骤：
+1. 在“新建链接服务(Azure 数据资源管理器)”页中执行以下步骤：
 
-    ![ADX 新建链接的服务](media/data-factory-load-data/adx-new-linked-service.png)
+    ![ADX - 新建链接服务](media/data-factory-load-data/adx-new-linked-service.png)
 
-   * 选择**名称**链接服务的 Azure 数据资源管理器。
-   * 在中**帐户选择方法**: 
-        * 选择**从 Azure 订阅**单选按钮，然后选择你**Azure 订阅**帐户。 然后，选择你**群集**。 请注意下拉列表将仅列出属于用户的群集。
-        * 或者，选择**手动输入**单选按钮并输入你**终结点**。
+   * 选择 Azure 数据资源管理器链接服务的**名称**。
+   * 在“帐户选择方法”中： 
+        * 选中“从 Azure 订阅”单选按钮，并选择你的 **Azure 订阅**帐户。 然后选择你的**群集**。 请注意，下拉列表中只会列出属于该用户的群集。
+        * 或者，选中“手动输入”单选按钮并输入你的**终结点**。
     * 指定**租户**。
     * 输入**服务主体 ID**。
-    * 选择**服务主体键**按钮，然后输入**服务主体键**。
-    * 选择你**数据库**从下拉菜单。 或者，选择**编辑**复选框并输入你的数据库名称。
-    * 选择**测试连接**来测试您创建的链接的服务连接。 如果您可以连接到您的设置，绿色复选标记**连接成功**将出现。
-    * 选择**完成**以完成创建链接的服务。
+    * 选择“服务主体密钥”按钮并输入**服务主体密钥**。
+    * 从下拉菜单中选择你的**数据库**。 或者，选中“编辑”复选框并输入你的数据库名称。
+    * 选择“测试连接”以测试创建的链接服务连接。 如果可以连接到设置，会出现绿色的勾选标记“连接成功”。
+    * 选择“完成”以完成链接服务的创建过程。
 
     > [!NOTE]
-    > Azure 数据工厂使用的服务主体来访问 Azure 数据资源管理器服务。 为服务主体[创建服务主体的 Azure Active Directory (Azure AD)](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal)。 不要使用**Azure 密钥保管库**方法。
+    > Azure 数据工厂使用服务主体来访问 Azure 数据资源管理器服务。 对于服务主体，请[创建 Azure Active Directory (Azure AD) 服务主体](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal)。 不要使用“Azure Key Vault”方法。
 
-1. **目标数据存储**随即打开。 您创建的 Azure 数据资源管理器数据连接是可供使用。 选择**下一步**来配置连接。
+#### <a name="configure-the-azure-data-explorer-data-connection"></a>配置 Azure 数据资源管理器数据连接
 
-    ![ADX 目标数据存储](media/data-factory-load-data/destination-data-store.png)
+1. 此时会打开“目标数据存储”。 创建的 Azure 数据资源管理器数据连接现在可供使用。 选择“下一步”以配置连接。
 
-1. 在中**表映射**，请设置目标表名称，然后选择**下一步**。
+    ![ADX - 目标数据存储](media/data-factory-load-data/destination-data-store.png)
+
+1. 在“表映射”中，设置目标表名称并选择“下一步”。
 
     ![目标数据集表映射](media/data-factory-load-data/destination-dataset-table-mapping.png)
 
-1. 在中**列映射**页：
-    * 第一个映射执行 adf 根据[ADF 架构映射](/azure/data-factory/copy-activity-schema-and-type-mapping)
-        * 设置**列映射**Azure 数据工厂目标表。 默认映射从源显示到 ADF 目标表。
+1. 在“列映射”页中：
+    * 第一个映射由 ADF 根据 [ADF 架构映射](/azure/data-factory/copy-activity-schema-and-type-mapping)执行
+        * 设置 Azure 数据工厂目标表的**列映射**。 将显示从源到 ADF 目标表的默认映射。
         * 取消选择不需要定义列映射的列。
-    * 第二个映射发生在此表格的数据引入到 Azure 数据资源管理器。 根据执行映射[CSV 映射规则](/azure/kusto/management/mappings#csv-mapping)。 请注意，即使源数据不是 CSV 格式，ADF 将数据转换为表格格式，因此，CSV 映射是在此阶段仅相关映射。
-        * 下**Azure 数据资源管理器 (Kusto) 接收器属性**添加相关**引入映射名称**（可选） 因此，列中可使用映射。
-        * 如果**引入映射名称**未指定，在定义"按名称"映射顺序**列映射**部分将发生。 如果"按名称"映射会失败，Azure 数据资源管理器将尝试引入"的列位置"order （映射的位置为默认值） 中的数据。
-    * 选择“下一步” 
+    * 将此表格数据引入 Azure 数据资源管理器时，会发生第二个映射。 映射是根据 [CSV 映射规则](/azure/kusto/management/mappings#csv-mapping)执行的。 请注意，即使源数据不采用 CSV 格式，ADF 也会将数据转换为表格格式，因此，在此阶段，只有 CSV 映射才是相关的映射。
+        * 在“Azure 数据资源管理器(Kusto)接收器属性”下，添加相关的“引入映射名称”（可选），以便可以使用列映射。
+        * 如果未指定“引入映射名称”，将采用“列映射”部分定义的“按名称”映射顺序。 如果“按名称”映射失败，Azure 数据资源管理器会尝试“按列位置”顺序（默认按位置映射）引入数据。
+    * 选择“下一步”
 
     ![目标数据集列映射](media/data-factory-load-data/destination-dataset-column-mapping.png)
 
-1. 在“设置”页中： 
-    * 设置的相关**容错容差设置**。
-    * **性能设置**:启用暂存并不适用。 **高级设置**包括成本的考虑。 如果没有特定于所需保留为是。
+1. 在“设置”页中：
+    * 设置相关的**容错设置**。
+    * **性能设置**：启用暂存的选项不适用。 “高级设置”包括成本考虑因素。 如果没有具体的需求，请将它保留原样。
     * 选择“**下一步**”。
 
-    ![将数据设置复制](media/data-factory-load-data/copy-data-settings.png)
+    ![复制数据 - 设置](media/data-factory-load-data/copy-data-settings.png)
 
-1. 在中**摘要**，查看设置，然后选择**下一步**。
+1. 在“摘要”中检查设置，然后选择“下一步”。
 
-    ![复制摘要数据](media/data-factory-load-data/copy-data-summary.png)
+    ![复制数据 - 摘要](media/data-factory-load-data/copy-data-summary.png)
 
-1. 在中**部署页**:
-    * 选择**监视器**若要切换到**监视器**选项卡，请参阅管道 （进度、 错误和数据的流） 的状态。
-    * 选择**编辑管道**编辑链接的服务、 数据集和管道。
-    * 选择**完成**到完整的副本数据任务
+1. 在“部署”页中：
+    * 选择“监视”切换到“监视”选项卡，并查看管道的状态（进度、错误和数据流）。
+    * 选择“编辑管道”以编辑链接服务、数据集和管道。
+    * 选择“完成”以完成数据复制任务。
 
     ![“部署”页](media/data-factory-load-data/deployment.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[Azure 数据资源管理器连接器](/azure/data-factory/connector-azure-data-explorer)Azure 数据工厂中。
+* 了解 Azure 数据工厂中的 [Azure 数据资源管理器连接器](/azure/data-factory/connector-azure-data-explorer)。
 
-* 详细了解如何编辑链接的服务、 数据集、 和中的管道[数据工厂 UI](/azure/data-factory/quickstart-create-data-factory-portal)。
+* 详细了解如何在[数据工厂 UI](/azure/data-factory/quickstart-create-data-factory-portal) 中编辑链接服务、数据集和管道。
 
-* 了解如何[Azure 数据资源管理器查询](/azure/data-explorer/web-query-data)用于数据查询。
+* 了解用于查询数据的 [Azure 数据资源管理器查询](/azure/data-explorer/web-query-data)。

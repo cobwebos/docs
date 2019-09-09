@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure Site Recovery 执行 Hyper-V 到辅助本地站点的灾难恢复的体系结构 | Microsoft Docs
+title: 使用 Azure Site Recovery 将 Hyper-v 灾难恢复到辅助本地站点的体系结构
 description: 本文概述使用 Azure Site Recovery 将本地 Hyper-V VM 灾难恢复到辅助 System Center VMM 站点所用的体系结构。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 05/30/2019
+ms.topic: conceptual
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 22f21f11b0c374724bc6924f30ea20a21de6ab90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d8e9c3531e031538c593cfd60d83b4ae97b4f4c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66398164"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813729"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>体系结构 - 从 Hyper-V 复制到辅助站点
 
@@ -23,7 +23,7 @@ ms.locfileid: "66398164"
 
 下面的表和图提供了用于将 Hyper-V 复制到辅助站点的组件的概要视图。
 
-组件  | **要求** | **详细信息**
+组件 | **要求** | **详细信息**
 --- | --- | ---
 **Azure** | Azure 订阅 | 在 Azure 订阅中创建恢复服务保管库，以便协调和管理不同 VMM 位置之间的复制。
 **VMM 服务器** | 需要 VMM 主位置和辅助位置。 | 我们建议在主站点和辅助站点中各提供一个 VMM 服务器。

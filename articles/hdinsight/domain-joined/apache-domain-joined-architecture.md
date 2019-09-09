@@ -1,6 +1,6 @@
 ---
 title: 使用企业安全性套餐的 Azure HDInsight 体系结构
-description: 了解如何使用企业安全性套餐规划 HDInsight 安全性。
+description: 了解如何通过企业安全性套餐规划 Azure HDInsight 安全性。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 8b8c200979b70e145fca64746547b37dee558848
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: e7983c4da4803965dabaa6a471fbea8a2fba5229
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720432"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810941"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>在 HDInsight 中使用企业安全性套餐
 
@@ -37,7 +37,7 @@ HDInsight 中的虚拟机 (VM) 将加入你提供的域。 因此，在 HDInsigh
 
 概而言之，需要在环境中设置以下项：
 
-- 一个 Active Directory 域（由 Azure AD DS 管理）。 **域名必须 39 个字符或更少的适用于 Azure HDInsight。**
+- 一个 Active Directory 域（由 Azure AD DS 管理）。 **域名必须39个字符或更少才能使用 Azure HDInsight。**
 - 在 Azure AD DS 中启用的安全 LDAP (LDAPS)。
 - HDInsight 虚拟网络和 Azure AD DS 虚拟网络之间的正常网络连接（如果为这两者选择不同的虚拟网络）。 HDInsight 虚拟网络中的 VM 应通过虚拟网络对等互连与 Azure AD DS 连接。 如果 HDInsight 和 Azure AD DS 部署在同一虚拟网络中，则会自动提供此连接，不需要执行进一步操作。
 
@@ -69,7 +69,7 @@ HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行�
    Install-Module AzureAD
    ```
 
-2. 使用全局管理员 （租户管理员） 凭据进行连接。
+2. 使用全局管理员（租户管理员）凭据连接。
    
    ```powershell
    Connect-AzureAD
@@ -81,7 +81,7 @@ HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行�
    Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
    ```
 
-4. 如果不存在，则创建服务主体。
+4. 如果它不存在，请创建服务主体。
 
    ```powershell
    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2

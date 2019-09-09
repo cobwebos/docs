@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure Site Recovery 设置 Azure VM 迁移到 Azure 后的灾难恢复 | Microsoft Docs
+title: 通过 Azure Site Recovery 在迁移到 Azure 后为 Azure Vm 设置灾难恢复
 description: 本文介绍如何准备好计算机，以便在迁移到 Azure 后使用 Azure Site Recovery 设置 Azure 区域之间的灾难恢复。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 4b764c8e7c3d97ff521add05033265f705c4136f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff35c5e23c5d8a448d62a3eeb8d15ba8d5a531e4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399519"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814530"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>设置 Azure VM 迁移到 Azure 后的灾难恢复 
 
@@ -23,7 +23,7 @@ ms.locfileid: "66399519"
 
 ## <a name="verify-migration"></a>验证迁移
 
-设置灾难恢复之前，请确保已按预期完成迁移。 若要成功完成迁移，在故障转移后，应为要迁移的每台计算机选择“完成迁移”  选项。 
+设置灾难恢复之前，请确保已按预期完成迁移。 若要成功完成迁移，在故障转移后，应为要迁移的每台计算机选择“完成迁移”选项。 
 
 ## <a name="verify-the-azure-vm-agent"></a>验证 Azure VM 代理
 
@@ -45,8 +45,8 @@ ms.locfileid: "66399519"
 检查是否已安装代理：
 
 1. 在 Azure VM 上的 C:\WindowsAzure\Packages 文件夹中，应看到 WaAppAgent.exe 文件。
-2. 右键单击该文件，在“属性”  中选择“详细信息”  选项卡。
-3. 验证“产品版本”  字段是否显示 2.6.1198.718 或更高版本。
+2. 右键单击该文件，在“属性”中选择“详细信息”选项卡。
+3. 验证“产品版本”字段是否显示 2.6.1198.718 或更高版本。
 
 [详细了解](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) Windows 的代理安装。
 
@@ -71,7 +71,7 @@ ms.locfileid: "66399519"
 ## <a name="uninstall-the-mobility-service"></a>卸载移动服务
 
 1. 使用以下方法之一从 Azure VM 上手动卸载移动服务。 
-    - 对于 Windows，在控制面板中 >“添加/删除程序”  ，卸载“Microsoft Azure Site Recovery 移动服务/主目标服务器”  。 在提升的命令提示符下，运行：
+    - 对于 Windows，在控制面板中 >“添加/删除程序”，卸载“Microsoft Azure Site Recovery 移动服务/主目标服务器”。 在提升的命令提示符下，运行：
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```

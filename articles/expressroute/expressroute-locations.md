@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2019
+ms.date: 09/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7df117dbb071081473a5651a953927cee8ddaa03
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: e758707511989cca64fdef45b1c673dd3d96d6d2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801469"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812135"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -161,7 +161,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[Vocus 组 NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | 支持 | 支持 | 奥克兰，悉尼 |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |支持 |支持 |Amsterdam2、伦敦、新加坡 |
 | **Vodafone Idea** | 支持 | 支持 | 孟买、孟买 2 |
-| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、丹佛、伦敦、洛杉矶、蒙特利尔、纽约、巴黎、西雅图、硅谷、多伦多、华盛顿特区 |
+| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、丹佛、伦敦、洛杉矶、蒙特利尔、纽约、巴黎、西雅图、硅谷、多伦多、华盛顿特区、华盛顿特区 |
 
  **+** 表示即将推出
 
@@ -198,7 +198,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持  | 不受支持 | 柏林 |
 | **T-Systems** |支持 |不受支持 |柏林 |
 
-## <a name="connectivity-through-exchange-providers"></a>通过 Exchange 提供商建立的连接
+## <a name="connectivity-through-exchange-providers"></a>通过 Exchange 提供商的连接
 
 如果前面部分中未列出连接服务提供商，仍可以建立连接。
 
@@ -216,7 +216,14 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 * 从 Exchange 连接服务提供商处订购一条 ExpressRoute 线路以连接到 Microsoft。
   * 根据 [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md) 中的步骤来设置连接。
 
-## <a name="connectivity-through-additional-service-providers"></a>通过其他服务提供商建立的连接
+## <a name="connectivity-through-satellite-operators"></a>通过附属运算符连接
+如果你是远程的并且没有光纤连接，或者想要浏览其他连接选项，则可以检查以下附属运算符。 
+
+* Intelsat
+* 工程师
+* Viasat
+
+## <a name="connectivity-through-additional-service-providers"></a>通过其他服务提供商的连接
 
 | **连接服务提供商** | **Exchange** | **位置** |
 | --- | --- | --- |
@@ -278,7 +285,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[Zertia](https://www.zertia.es)**| Level 3 | Madrid |
 | **[Zirro](https://zirro.com/services/)**| Cologix、Equinix | 蒙特利尔、多伦多 |
 
-## <a name="connectivity-through-datacenter-providers"></a>通过数据中心提供商建立的连接
+## <a name="connectivity-through-datacenter-providers"></a>通过数据中心提供程序的连接
 
 | **提供程序** | **Exchange** |
 | --- | --- |
@@ -295,7 +302,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[vXchnge](https://www.vxchnge.com/colocation-services/interconnection)** | IX 覆盖，Megaport |
 | **[T5 Datacenters](https://t5datacenters.com/network-cloud-connect/)** | IX Reach |
 
-## <a name="connectivity-through-national-research-and-education-networks-nren"></a>通过国家科研与教育网络 (NREN) 建立的连接
+## <a name="connectivity-through-national-research-and-education-networks-nren"></a>通过国家研究和教育网络（NREN）的连接
 
 | **提供程序**|
 | --- |

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 6e8f8e7d8324f23a81cd6ae3284bd6d7cff24117
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 87ac2283e96081297fdd54c1c131aa5b78a5973a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489839"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814259"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>使用 Azure Toolkit for Eclipse 为 HDInsight 群集创建 Apache Spark 应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "68489839"
 > 
 > 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 * Oracle Java 开发工具包版本 8，用于 Eclipse IDE 运行时。 可以从 [Oracle 网站](https://aka.ms/azure-jdks)下载它。
@@ -61,7 +61,7 @@ ms.locfileid: "68489839"
    ![“选择订阅”对话框](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 1. 在“Azure 资源管理器”选项卡中展开“HDInsight”，查看订阅下的 HDInsight Spark 群集。
    
-   ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-3.png)
+   ![Azure Explorer3 中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-3.png)
 1. 可以进一步展开群集名称节点，查看与群集关联的资源（例如存储帐户）。
    
    ![展开群集名称可查看资源](./media/apache-spark-eclipse-tool-plugin/view-explorer-4.png)
@@ -235,16 +235,16 @@ ms.locfileid: "68489839"
        
 2. 在“Azure 资源管理器”中展开“HDInsight”，查看订阅中的 HDInsight 群集。 标记为“角色:读取者”的群集只有仅限读取者角色权限。
 
-    ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
+    ![Azure 资源管理器角色读取器中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
 
 3. 右键单击具有“仅读取者”角色权限的群集。 从上下文菜单中选择“链接此群集”以链接群集。 输入 Ambari 用户名和密码。
 
-    ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
+    ![Azure 资源管理器链接中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
 
 4. 如果已成功链接群集，HDInsight 将会刷新。
    群集阶段将变为链接状态。
   
-    ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
+    ![Azure 资源管理器中的 HDInsight Spark 群集已链接](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
 
 
 
@@ -254,7 +254,7 @@ ms.locfileid: "68489839"
    
 2. 单击“链接此群集”以链接群集。
    
-    ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
+    ![Azure Explorer9 中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
 
 ### <a name="link-cluster-from-spark-submission-window"></a>从“Spark 提交”窗口链接群集
 
@@ -262,23 +262,23 @@ ms.locfileid: "68489839"
 
 2. 右键单击该包。 然后选择“将 Spark 应用程序提交到 HDInsight”。
    
-   ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
+   ![Azure 资源管理器中的 HDInsight Spark 群集提交](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
 
 3. 对于**群集名称**，选择具有“仅读取者”角色权限的群集。 此时会显示警告消息。可以单击“链接此群集”以链接群集。
    
-   ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-15.png)
+   ![Azure 资源管理器中的 HDInsight Spark 群集链接此](./media/apache-spark-eclipse-tool-plugin/view-explorer-15.png)
    
 ### <a name="view-storage-accounts"></a>查看存储帐户
 
 * 对于具有仅限读取者角色权限的群集，请单击“存储帐户”节点，此时会弹出“存储访问被拒绝”窗口。 
      
-   ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
+   ![Azure 资源管理器存储中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
 
-   ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
+   ![已拒绝 Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
 
 * 对于链接的群集，请单击“存储帐户”节点，此时会弹出“存储访问被拒绝”窗口。 
      
-   ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
+   ![Azure 资源管理器中的 HDInsight Spark 群集 denied2](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
 
 ## <a name="known-problems"></a>已知问题
 链接群集时，建议提供存储的凭据。
@@ -287,9 +287,9 @@ ms.locfileid: "68489839"
 
 可通过两种模式提交作业。 如果提供存储凭据，则将使用批处理模式提交作业。 否则，将使用交互模式。 如果群集正忙，可能会收到以下错误。
 
-![eclipse 在群集忙时收到错误](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
+![当群集繁忙时 eclipse 出现错误](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png "当群集繁忙时 eclipse 出现错误")
 
-![eclipse 在群集忙时收到错误](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
+![当群集忙于 yarn 时 eclipse 出现错误](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "当群集忙于 yarn 时 eclipse 出现错误")
 
 ## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)

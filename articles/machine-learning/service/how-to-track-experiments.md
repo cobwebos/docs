@@ -1,7 +1,7 @@
 ---
 title: 训练运行期间的日志指标
 titleSuffix: Azure Machine Learning service
-description: 可以跟踪试验和监视指标, 以增强模型创建过程。 了解如何将日志记录添加到训练脚本, 如何提交试验, 如何检查正在运行的作业的进度, 以及如何查看运行的记录结果。
+description: 可以跟踪试验和监视指标，以增强模型创建过程。 了解如何将日志记录添加到训练脚本，如何提交试验，如何检查正在运行的作业的进度，以及如何查看运行的记录结果。
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -12,21 +12,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0630ca28652b48b3632dbae94c5e16d6adb462c4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946382"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812284"
 ---
-# <a name="log-metrics-during-training-runs"></a>训练运行期间的日志指标
+# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>跟踪机器学习培训指标与 Azure 机器学习
 
-通过跟踪试验和监视指标来增强模型的创建过程。 在本文中, 了解如何将日志记录添加到训练脚本、提交试验运行、监视运行, 以及查看 Azure 机器学习 service 中运行的结果。
+通过跟踪试验和监视指标来增强模型的创建过程。 在本文中，了解如何将日志记录代码添加到训练脚本、提交试验运行、监视运行，以及在 Azure 机器学习服务中检查结果。
 
 > [!NOTE]
-> Azure 机器学习服务还可能在定型期间记录来自其他源的信息, 如 AutoML 或运行定型作业的 Docker 容器。 未记录这些日志。 如果遇到问题, 请与 Microsoft 支持部门联系, 他们可以在故障排除过程中使用这些日志。
+> Azure 机器学习服务还可能在训练期间记录来自其他源的信息，例如自动机器学习运行或运行定型作业的 Docker 容器。 未记录这些日志。 如果遇到问题，请与 Microsoft 支持部门联系，他们可以在故障排除过程中使用这些日志。
 
-## <a name="list-of-training-metrics"></a>训练指标列表 
+## <a name="available-metrics-to-track"></a>要跟踪的可用指标
 
 训练实验时可将以下指标添加到运行中。 若要查看可在运行中跟踪的内容的更详细列表，请参阅 [Run 类参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "68946382"
 > [!NOTE]
 > 标量、列表、行和表的指标的类型可以为：float、integer 或 string。
 
-## <a name="start-logging-metrics"></a>开始记录指标
+## <a name="choose-a-logging-option"></a>选择日志记录选项
 
 如果要跟踪或监视试验，须添加代码，用于在提交运行时启动日志记录。 以下是触发运行提交的方法：
 * __Run.start_logging__ - 将日志记录功能添加到训练脚本，并在指定试验中启动交互式日志记录会话。 **start_logging** 可创建笔记本等方案中使用的交互式运行。 试验中会话期间记录的任何指标都会添加到运行记录中。
@@ -52,7 +52,7 @@ ms.locfileid: "68946382"
 ## <a name="set-up-the-workspace"></a>设置工作区
 添加日志记录和提交试验之前，必须设置工作区。
 
-1. 加载工作区。 若要了解有关设置工作区配置的详细信息, 请参阅[工作区配置文件](how-to-configure-environment.md#workspace)。
+1. 加载工作区。 若要了解有关设置工作区配置的详细信息，请参阅[工作区配置文件](how-to-configure-environment.md#workspace)。
 
    ```python
    from azureml.core import Experiment, Run, Workspace
@@ -229,7 +229,7 @@ ms.locfileid: "68946382"
 ## <a name="view-run-details"></a>查看运行详细信息
 
 ### <a name="monitor-run-with-jupyter-notebook-widget"></a>监视器运行方式 Jupyter 笔记本小组件
-使用**ScriptRunConfig**方法提交运行时, 可以使用[Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)观看运行进度。 和运行提交一样，该小组件采用异步方式，并每隔 10-15 秒提供实时更新，直到作业完成。
+使用**ScriptRunConfig**方法提交运行时，可以使用[Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)观看运行进度。 和运行提交一样，该小组件采用异步方式，并每隔 10-15 秒提供实时更新，直到作业完成。
 
 1. 在等待运行完成的期间查看 Jupyter 小组件。
 
@@ -246,7 +246,7 @@ ms.locfileid: "68946382"
 print(run.get_portal_url())
 ```
 
-2. **[适用于自动化机器学习运行]** 从以前的运行访问图表。 替换`<<experiment_name>>`为适当的试验名称:
+2. **[适用于自动化机器学习运行]** 从以前的运行访问图表。 替换`<<experiment_name>>`为适当的试验名称：
 
    ``` 
    from azureml.widgets import RunDetails
@@ -275,7 +275,7 @@ print(run.get_portal_url())
 <a name="view-the-experiment-in-the-web-portal"></a>
 ## <a name="view-the-experiment-in-the-azure-portal"></a>在 Azure 门户中查看实验
 
-当实验完成运行时，可浏览到试验运行记录。 可以通过两种方式访问历史记录:
+当实验完成运行时，可浏览到试验运行记录。 可以通过两种方式访问历史记录：
 
 * 直接获取运行 URL ```print(run.get_portal_url())```
 * 通过提交运行名称来查看运行详细信息（在此示例中为 ```run```）。 此方法可以查看试验名称、ID、类型、状态、详细信息页、Azure 门户链接和文档链接。

@@ -1,6 +1,6 @@
 ---
 title: 将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用
-description: 了解如何在 Apache Hadoop in HDInsight 群集中运行 MapReduce 作业。
+description: 了解如何在 HDInsight 群集中的 Apache Hadoop 上运行 Apache MapReduce 作业。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: a1bb7a6737115f903391997a5430c32f9a40465f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 36413a4b7ba4dcb7e8e2af736a7dab6718f84799
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207108"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810476"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>在 Apache Hadoop on HDInsight 中使用 MapReduce
 

@@ -1,6 +1,6 @@
 ---
 title: 深入探讨 - 高级分析 - Azure HDInsight
-description: 了解高级分析如何使用算法来处理大数据。
+description: 了解高级分析如何在 Azure HDInsight 中使用算法来处理大数据。
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: ac0edf2de4337154b665b8f3898134a7c2fd1f4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 973ac928900cc02f176931ffa3865c2997e552f2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712400"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810845"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探讨 - 高级分析
 
 ## <a name="what-is-advanced-analytics-for-hdinsight"></a>什么是 HDInsight 的高级分析？
 
-HDInsight 提供可从大量结构化、非结构化和快速移动的数据中获取宝贵见解的功能。 高级分析使用高度可缩放的体系结构、统计、机器学习模型和智能仪表板提供有意义的见解。 机器学习（或预测分析）使用可从数据中的关系进行识别和学习的算法进行预测，然后引导你做出决策。 
+HDInsight 提供可从大量结构化、非结构化和快速移动的数据中获取宝贵见解的功能。 高级分析使用高度可缩放的体系结构、统计、机器学习模型和智能仪表板提供有意义的见解。 机器学习（或预测分析）使用可从数据中的关系进行识别和学习的算法进行预测，然后引导你做出决策。
 
 ## <a name="advanced-analytics-process"></a>高级分析过程
 
@@ -43,10 +43,10 @@ HDInsight 提供可从大量结构化、非结构化和快速移动的数据中�
 * 增强式 - 算法使用软件代理来确定特定上下文中的理想行为（通常在机器人中使用）
 
 
-| 算法类别| 用途 | 学习类型 | 算法 |
+| 算法类别| 使用 | 学习类型 | 算法 |
 | --- | --- | --- | -- |
 | 分类 | 将人员或事物分类成组 | 监督式 | 决策树、逻辑回归、神经网络 |
-| 群集功能 | 将一组示例分割成地缘组 | 非监督式 | K 平均值聚类 |
+| 群集 | 将一组示例分割成地缘组 | 非监督式 | K 平均值聚类 |
 | 模式检测 | 标识数据中的常见关联 | 非监督式 | 关联规则 |
 | 回归 | 预测数字结果 | 监督式 | 线性回归、神经网络 |
 | 增强式 | 确定机器人的最佳行为 | 增强式 | 蒙特卡洛仿真、DeepMind |
@@ -98,7 +98,7 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 此示例使用 Alex Krizhevsky、Vinod Nair 及 Geoffrey Hinton 编译和分发的 CIFAR-10 图像集。 CIFAR-10 数据集包含 60,000 个分属 10 个互斥类的 32×32 彩色图像：
 
-![映像](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
+![图像](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
 
 有关该数据集的详细信息，请参阅 Alex Krizhevsky 撰写的 [Learning Multiple Layers of Features from Tiny Images](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)（从微小图像中学习多层特征）。
 

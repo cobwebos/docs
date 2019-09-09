@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: b9d853cc0de08b64f2e0f5530e153724d9eeddda
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 2c8983b5d6a44834d0c9659877c857fd73805ce6
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277098"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812307"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
 
@@ -87,6 +87,9 @@ ms.locfileid: "70277098"
 * 要从文本文件复制，并想跳过不包含数据或标头信息的开头几行。 通过指定 `skipLineCount` 指明要跳过的行数。 如果文件的剩余部分包含标头行，则也可指定 `firstRowAsHeader`。 如果同时指定了 `skipLineCount` 和 `firstRowAsHeader`，则先跳过代码行，然后从输入文件读取标头信息
 
 ## <a name="json-format"></a>JSON 格式
+
+>[!NOTE]
+>数据工厂引入了新的 JSON 格式数据集，请参阅包含详细信息的[JSON](format-json.md)文章。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
 
 若要**在 Azure Cosmos DB 中按原样导入/导出 JSON 文件**，请参阅[将数据移入/移出 Azure Cosmos DB](connector-azure-cosmos-db.md) 一文中的“导入/导出 JSON 文档”部分。
 

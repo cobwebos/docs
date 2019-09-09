@@ -7,12 +7,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: eb6df3bfda131f00c04499dc80c47482229195a5
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: b21847d27dc7f444afaf1b73efa19b0b0087cfe4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623902"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811679"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流
 
@@ -26,7 +26,7 @@ ms.locfileid: "69623902"
 还可以使用 Oozie 来计划特定于某系统的作业，例如 Java 程序或 shell 脚本
 
 > [!NOTE]  
-> 用于定义与 HDInsight 配合运行的工作流的另一个选项是 Azure 数据工厂。 若要了解有关数据工厂的详细信息, 请参阅[将 Apache Pig 和 Apache Hive 与数据工厂配合使用][azure-data-factory-pig-hive]。 若要在具有企业安全性套餐的群集上使用 Oozie，请参阅[在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)。
+> 用于定义与 HDInsight 配合运行的工作流的另一个选项是 Azure 数据工厂。 若要了解有关数据工厂的详细信息，请参阅[将 Apache Pig 和 Apache Hive 与数据工厂配合使用][azure-data-factory-pig-hive]。 若要在具有企业安全性套餐的群集上使用 Oozie，请参阅[在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -258,7 +258,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
     GO
     ```
 
-    输入 `GO` 语句后，将评估前面的语句。 这些语句创建一个名为`mobiledata`的表, 由工作流使用。
+    输入 `GO` 语句后，将评估前面的语句。 这些语句创建一个名为`mobiledata`的表，由工作流使用。
 
     若要验证是否已创建该表，请使用以下命令：
 
@@ -643,7 +643,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
     > [!NOTE]  
     > 此图像只显示了作业的成功运行结果，而未显示计划工作流中的单个操作。 若要查看单个操作，请选择某个“操作”条目。
 
-    ![操作信息](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
+    ![协调器操作信息](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 
 ## <a name="troubleshooting"></a>疑难解答
 

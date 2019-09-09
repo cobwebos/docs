@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 00982ea837783a7e7a9dca257f04c77d48aceef2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6f1a0485dbae3234d476ba5df62126f05d52f435
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103117"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813345"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>使用自动数据库备份恢复 Azure SQL 数据库
 
@@ -37,7 +37,7 @@ ms.locfileid: "70103117"
 - 如果数据库最大大小超过 500 GB，将 P11–P15 还原为 S4-S12 或 P1–P6。
 - 如果数据库最大大小超过 250 GB，将 P1–P6 还原为 S4-S12。
 
-如果还原的数据库的最大大小大于目标数据库的服务层和性能级别中包含的存储量, 则会产生额外成本。 超出附送量的额外预配存储将产生额外的费用。 有关额外存储定价的详细信息，请参阅 [SQL 数据库定价页面](https://azure.microsoft.com/pricing/details/sql-database/)。 如果实际使用的空间量小于附送的存储量，可以通过将数据库最大大小设置为附送的量，来避免产生额外的费用。
+如果还原的数据库的最大大小大于目标数据库的服务层和性能级别中包含的存储量，则会产生额外成本。 超出附送量的额外预配存储将产生额外的费用。 有关额外存储定价的详细信息，请参阅 [SQL 数据库定价页面](https://azure.microsoft.com/pricing/details/sql-database/)。 如果实际使用的空间量小于附送的存储量，可以通过将数据库最大大小设置为附送的量，来避免产生额外的费用。
 
 > [!NOTE]
 > 在创建[数据库副本](sql-database-copy.md)时，将用到[自动数据库备份](sql-database-automated-backups.md)。
@@ -113,7 +113,7 @@ ms.locfileid: "70103117"
 
 可在任何 Azure 区域的任何服务器上从最新异地复制的备份中还原 SQL 数据库。 异地还原使用异地复制的备份作为源。 即使由于停电而无法访问数据库或数据中心，也依然能够请求此功能。
 
-当数据库因其所在的区域发生事故而不可用时，异地还原是默认的恢复选项。 可将数据库还原到任何其他区域中的服务器。 创建备份后，将其异地复制到其他区域中的 Azure Blob 时会出现延迟。 因此, 还原的数据库最多可以在原始数据库后一小时。 下图显示的是从其他区域中的最后一个可用备份中还原数据库。
+当数据库因其所在的区域发生事故而不可用时，异地还原是默认的恢复选项。 可将数据库还原到任何其他区域中的服务器。 创建备份后，将其异地复制到其他区域中的 Azure Blob 时会出现延迟。 因此，还原的数据库最多可以在原始数据库后一小时。 下图显示的是从其他区域中的最后一个可用备份中还原数据库。
 
 ![异地还原](./media/sql-database-geo-restore/geo-restore-2.png)
 
@@ -127,10 +127,7 @@ ms.locfileid: "70103117"
 
 ### <a name="geo-restore-using-the-azure-portal"></a>使用 Azure 门户进行异地还原
 
-若要使用 Azure 门户异地还原数据库, 请打开 "SQL 数据库" 页, 然后单击 "**添加**"。 在“选择源”文本框中，选择“备份”。 指定在选择的区域和服务器上执行还原的备份。
-
-> [!Note]
-> 托管实例不支持使用 Azure 门户异地还原， 请改用 PowerShell。
+若要使用 Azure 门户异地还原数据库，请打开 "SQL 数据库" 页，然后单击 "**添加**"。 在“选择源”文本框中，选择“备份”。 在所选的区域和服务器上指定要从中执行恢复的备份。 
 
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>使用自动备份以编程方式执行恢复
 
@@ -142,7 +139,7 @@ ms.locfileid: "70103117"
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
-- 若要还原独立或共用数据库, 请参阅[AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase)。
+- 若要还原独立或共用数据库，请参阅[AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase)。
 
   | Cmdlet | 描述 |
   | --- | --- |

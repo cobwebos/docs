@@ -1,6 +1,6 @@
 ---
 title: 在 Azure HDInsight 上安装自己的自定义 Apache Hadoop 应用程序
-description: 了解如何在 HDInsight 上安装 HDInsight 应用程序。
+description: 了解如何在 Azure HDInsight 中为 Apache Hadoop 群集安装 HDInsight 应用程序。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5fbee86f09246684a0e553114e367907ddabfa16
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 22a2eddcd94f6082d248450d825c5ba12b31571e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445505"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810341"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装自定义 Apache Hadoop 应用程序
 
@@ -27,7 +27,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 * [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 市场。
 * [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 如果想要在现有的 HDInsight 群集上安装 HDInsight 应用程序，必须有一个 HDInsight 群集。 若要创建群集，请参阅 [创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。 也可以在创建 HDInsight 群集时安装 HDInsight 应用程序。
 
 ## <a name="install-hdinsight-applications"></a>安装 HDInsight 应用程序
@@ -48,13 +48,13 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
     单击此按钮可在 Azure 门户上打开 Resource Manager 模板。  资源管理器模板位于 [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue)。  若要了解如何编写此资源管理器模板，请参阅 [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)。
-2. 在“参数”  边栏选项卡中，输入以下内容：
+2. 在“参数” 边栏选项卡中，输入以下内容：
 
    * **clusterName**：输入要安装应用程序的群集的名称。 此群集必须是现有的群集。
-3. 单击“确定”  保存参数。
-4. 在“自定义部署”边栏选项卡中输入“资源组”。    资源组是对群集、依赖存储帐户和其他资源进行分组的容器。 必须使用与群集相同的资源组。
-5. 单击“法律条款”  ，并单击“创建”  。
-6. 确认已选中“固定到仪表板”复选框，并单击“创建”。   可以从固定到门户仪表板的磁贴和门户通知查看安装状态（单击门户顶部的铃铛图标）。  安装此应用程序大约需要 10 分钟。
+3. 单击“确定” 保存参数。
+4. 在“自定义部署”边栏选项卡中输入“资源组”。  资源组是对群集、依赖存储帐户和其他资源进行分组的容器。 必须使用与群集相同的资源组。
+5. 单击“法律条款”，并单击“创建”。
+6. 确认已选中“固定到仪表板”复选框，并单击“创建”。 可以从固定到门户仪表板的磁贴和门户通知查看安装状态（单击门户顶部的铃铛图标）。  安装此应用程序大约需要 10 分钟。
 
 **若要创建群集的同时安装色调**
 
@@ -73,10 +73,10 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 **打开 Hue 门户**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中单击“HDInsight 群集”  。  如果未看到，请单击“浏览”，并单击“HDInsight 群集”。  
+2. 在左侧菜单中单击“HDInsight 群集” 。  如果未看到，请单击“浏览”，并单击“HDInsight 群集”。
 3. 单击已安装应用程序的群集。
-4. 在“设置”边栏选项卡中，单击“常规”类别下的“应用程序”。    应会显示出“已安装的应用”边栏选项卡中列出了“hue”。  
-5. 单击列表中的“hue”  列出属性。  
+4. 在“设置”边栏选项卡中，单击“常规”类别下的“应用程序”。 应会显示出“已安装的应用”边栏选项卡中列出了“hue”。
+5. 单击列表中的“hue” 列出属性。  
 6. 单击网页链接以验证网站；在浏览器中打开 HTTP 终结点以验证 Hue Web UI，并使用 SSH 打开 SSH 终结点。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="troubleshoot-the-installation"></a>排查安装问题
@@ -105,11 +105,11 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 **使用门户删除应用程序**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中单击“HDInsight 群集”  。  如果未看到，请单击“浏览”，并单击“HDInsight 群集”。  
+2. 在左侧菜单中单击“HDInsight 群集” 。  如果未看到，请单击“浏览”，并单击“HDInsight 群集”。
 3. 单击已安装应用程序的群集。
-4. 在“设置”边栏选项卡中，单击“常规”类别下的“应用程序”。    会看到已安装的应用程序列表。 有关本文中， **hue**中列出**已安装的应用**边栏选项卡。
-5. 右键单击想要删除的应用程序，并单击“删除”  。
-6. 单击“是”  确认。
+4. 在“设置”边栏选项卡中，单击“常规”类别下的“应用程序”。 会看到已安装的应用程序列表。 本文中的 "**已安装的应用**" 边栏选项卡中列出了**色调**。
+5. 右键单击想要删除的应用程序，并单击“删除”。
+6. 单击“是”确认。
 
 在门户中，还可以删除群集，或删除包含应用程序的资源组。
 

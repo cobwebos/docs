@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7801515355452306cd5e7afa709a0681c7c314
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9766b530b4d795d0f35f097de20155cdd17687ca
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562199"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812397"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>可将用户登录的 Web 应用 - 登录
 
@@ -28,14 +28,15 @@ ms.locfileid: "68562199"
 
 ## <a name="sign-in"></a>登录
 
-只需使用前一篇文章[应用的代码配置](scenario-web-app-sign-user-app-configuration.md)中的代码就能实现注销。在用户登录到你的应用后，你可能希望他们能够注销。ASP.NET Core 将为你处理注销。
+在之前的[应用程序代码配置](scenario-web-app-sign-user-app-configuration.md)中查看的代码是实现登录所需的全部代码。
+在用户登录到你的应用后，你可能希望他们能够注销。ASP.NET Core 将为你处理注销。
 
 ## <a name="what-sign-out-involves"></a>注销涉及的操作
 
 从 Web 应用注销不仅仅涉及到从 Web 应用的状态中删除有关已登录帐户的信息。
-Web 应用还必须将用户重定向到 Microsoft 标识平台`logout`终结点才能注销。当 Web 应用将用户重定向到 `logout` 终结点时，此终结点将从浏览器中清除用户的会话。 如果你的应用程序未进入`logout`终结点, 则用户将重新向你的应用程序重新进行身份验证, 而无需再次输入其凭据, 因为他们将与 Microsoft 标识平台终结点建立有效的单一登录会话。
+该 Web 应用还必须将用户重定向到 Microsoft 标识平台 `logout` 终结点才能注销。当 Web 应用将用户重定向到 `logout` 终结点时，此终结点将从浏览器中清除用户的会话。 如果应用未转到 `logout` 终结点，则用户不需要再次输入凭据就能重新通过应用的身份验证，因为他们与 Microsoft 标识平台终结点之间存在有效的单一登录会话。
 
-若要了解详细信息, 请参阅 Microsoft 标识平台中的[发送注销请求](v2-protocols-oidc.md#send-a-sign-out-request)部分[和 OpenID connect 协议](v2-protocols-oidc.md)概念文档。
+有关详细信息，请参阅 [Microsoft 标识平台和 OpenID Connect 协议](v2-protocols-oidc.md)概念文档中的[发送注销请求](v2-protocols-oidc.md#send-a-sign-out-request)部分。
 
 ## <a name="application-registration"></a>应用程序注册
 

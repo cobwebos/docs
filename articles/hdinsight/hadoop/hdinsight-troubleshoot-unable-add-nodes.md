@@ -1,19 +1,19 @@
 ---
 title: 无法将节点添加到 Azure HDInsight 群集
-description: 无法将节点添加到 Azure HDInsight 群集
+description: 排查无法在 Azure HDInsight 中将节点添加到 Apache Hadoop 群集的原因
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/31/2019
-ms.openlocfilehash: 6c2e2c7395fcc45fe74c50beb3624eabb1d395c9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 0c8fdf11f435cc459dfb8475f8983b29dfbc5d9f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828026"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810564"
 ---
-# <a name="scenario-unable-to-add-nodes-to-azure-hdinsight-cluster"></a>方案:无法将节点添加到 Azure HDInsight 群集
+# <a name="scenario-unable-to-add-nodes-to-azure-hdinsight-cluster"></a>场景：无法将节点添加到 Azure HDInsight 群集
 
 本文介绍有关在与 Azure HDInsight 群集交互时遇到的问题的故障排除步骤和可能的解决方法。
 
@@ -25,9 +25,9 @@ ms.locfileid: "68828026"
 
 原因可能有所不同。
 
-## <a name="resolution"></a>解决
+## <a name="resolution"></a>分辨率
 
-使用 "[群集大小](../hdinsight-scaling-best-practices.md)" 功能, 计算群集所需的其他核心数。 此值基于新辅助角色节点中的核心总数。 然后尝试执行以下一个或多个步骤:
+使用 "[群集大小](../hdinsight-scaling-best-practices.md)" 功能，计算群集所需的其他核心数。 此值基于新辅助角色节点中的核心总数。 然后尝试执行以下一个或多个步骤：
 
 * 检查群集的位置中是否有任何可用的内核。
 
@@ -41,6 +41,6 @@ ms.locfileid: "68828026"
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* 与[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户联系, 通过将 Azure 社区连接到适当的资源来改进客户体验: 答案、支持和专家。
+* 与[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户联系，通过将 Azure 社区连接到适当的资源来改进客户体验：答案、支持和专家。
 
-* 如果需要更多帮助, 可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息, 请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限, 并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

@@ -1,9 +1,9 @@
 ---
-title: 多重身份验证 (MFA) 和 PIM-Azure Active Directory |Microsoft Docs
+title: 多重身份验证 (MFA) 和 PIM - Azure Active Directory | Microsoft Docs
 description: 了解 Azure AD Privileged Identity Management (PIM) 如何验证多重身份验证 (MFA)。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 08/31/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8831a838a403d58d8673c6400e0dda06c03dc69f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 686c39c9fb1f1ff7c0ecf068a6612f530620d5dc
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60442669"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804298"
 ---
 # <a name="multi-factor-authentication-mfa-and-pim"></a>多重身份验证 (MFA) 和 PIM
 
 我们建议要求所有管理员使用多重身份验证 (MFA)。 这可降低因密码泄露而受到攻击的风险。
 
-可以请求用户在登录后完成 MFA 质询。 此外可以要求用户在激活角色在 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 后完成 MFA 质询。 这样一来，如果用户在登录后未完成 MFA 质询，PIM 会提示他们完成此操作。
+可以请求用户在登录后完成 MFA 质询。 还可以要求用户在 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 中激活角色后完成 MFA 质询。 这样一来，如果用户在登录后未完成 MFA 质询，PIM 会提示他们完成此操作。
 
 > [!IMPORTANT]
 > 目前，Azure MFA 仅适用于工作或学校帐户，不适用于 Microsoft 帐户（通常用于登录 Skype、Xbox、Outlook.com 等 Microsoft 服务的个人帐户）。 因此，使用 Microsoft 帐户的任何人都不是符合条件的管理员，因为他们无法使用 MFA 激活其角色。 如果这些用户需要继续使用 Microsoft 帐户管理工作负荷，请立即将其提升到永久管理员。

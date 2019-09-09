@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: aaea8a1af7ad6df89d41dc0e39d13bafbb610224
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736052"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814035"
 ---
-# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>在 Azure HDInsight 中的 Apache Spark 上使用自动化机器学习 (AutoML) 运行 Azure 机器学习工作负荷
+# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>在 HDInsight 中 Apache Spark 上通过自动机器学习运行 Azure 机器学习工作负荷
 
 Azure 机器学习简化并加速了机器学习模型的构建、培训和部署。 在自动机器学习（AutoML）中，您从具有定义的目标功能的训练数据开始，然后循环访问算法和特征选择的组合，根据定型评分自动为您的数据选择最佳模型。 HDInsight 允许客户设置具有数百个节点的群集。 在 HDInsight 群集中的 Spark 上运行的 AutoML 允许用户在这些节点上使用计算容量，以向外扩展的方式运行定型作业，以及并行运行多个定型作业。 这样，用户便可以运行 AutoML 试验，同时将计算与其他大数据工作负荷共享。
  

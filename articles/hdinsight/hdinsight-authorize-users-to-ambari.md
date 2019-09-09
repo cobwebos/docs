@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: hrasheed
-ms.openlocfilehash: 28f30270ab0a6c057ee583ccebc2a8540980c6cc
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: f5052d7e35c3d1c81a3d958bd6e340b9a6a5a244
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442174"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810695"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>授权用户访问 Apache Ambari 视图
 
@@ -97,7 +97,7 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 若要查看授予每个角色的权限列表，请单击“角色”页上“角色”表标题旁边的蓝色问号。
 
-![“角色”菜单链接](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png)
+![角色菜单链接权限](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png "角色菜单链接权限")
 
 在此页上，有两个可用于管理用户角色和组角色的不同视图：“块”和“列表”。
 

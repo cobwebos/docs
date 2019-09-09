@@ -1,9 +1,9 @@
 ---
-title: 查看对 PIM 的 Azure Active Directory 中的 Azure AD 角色的访问 |Microsoft Docs
-description: 了解如何查看在 Azure AD Privileged Identity Management (PIM) 中的 Azure AD 角色的访问。
+title: 在 PIM 中评审 Azure AD 角色的访问权限 - Azure Active Directory | Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中评审 Azure AD 角色的访问权限。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 06/21/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3850af026ea13e1920aea65e18358ebb04ef0d25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3bd548041b086eef8d788a696497163c756fd5b7
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65140967"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804424"
 ---
-# <a name="review-access-to-azure-ad-roles-in-pim"></a>评审在 PIM 中的 Azure AD 角色的访问权限
+# <a name="review-access-to-azure-ad-roles-in-pim"></a>在 PIM 中评审 Azure AD 角色的访问权限
 
-Azure Active Directory (AD) Privileged Identity Management (PIM) 简化了企业管理对 Azure AD 中的资源和 Office 365 或 Microsoft Intune 等其他 Microsoft online services 特许访问权限。  
+Azure Active Directory (AD) Privileged Identity Management (PIM) 简化了企业管理以特权身份访问 Azure AD 中的资源和其他 Microsoft 联机服务（如 Office 365 或 Microsoft Intune）的方式。  
 
 如果已被分配到某个管理角色，组织中的特权角色管理员可能要求定期确认仍然需要使用该角色来完成工作。 可以通过你所收到的电子邮件中的链接，或者直接转到 [Azure 门户](https://portal.azure.com)来执行此操作。 请遵循本文中的步骤对分配的角色执行自我审查。
 
@@ -34,18 +34,18 @@ Azure Active Directory (AD) Privileged Identity Management (PIM) 简化了企业
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 选择 Azure 门户右上角的用户名，并选择要操作的目录。
-3. 选择“所有服务”  ，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”  。
-4. 选中“固定到仪表板”  ，并单击“创建”  。 Privileged Identity Management 应用程序会打开。
+3. 选择“所有服务”，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”。
+4. 选中“固定到仪表板”，并单击“创建”。 Privileged Identity Management 应用程序会打开。
 
 ## <a name="approve-or-deny-access"></a>批准或拒绝访问权限
-批准或拒绝访问权限时，只是告诉审查人你是否仍要使用此角色。 如果想要继续充当此角色，请选择“批准”；如果不再需要此访问权限，请选择“拒绝”。   状态不会立即更改，只会在审查人应用结果之后才更改。
+批准或拒绝访问权限时，只是告诉审查人你是否仍要使用此角色。 如果想要继续充当此角色，请选择“批准”；如果不再需要此访问权限，请选择“拒绝”。 状态不会立即更改，只会在审查人应用结果之后才更改。
 请遵循以下步骤来查找并完成访问权限审查：
 
-1. 在 PIM 应用程序中，选择“审查特权访问权限”。  如果有任何挂起的访问权限审查，它们会显示在 Azure AD 的“访问权限审查”边栏选项卡中。
+1. 在 PIM 应用程序中，选择“审查特权访问权限”。 如果有任何挂起的访问权限审查，它们会显示在 Azure AD 的“访问权限审查”边栏选项卡中。
 2. 选择想要完成的审查。
 3. 除非该审查是由你创建的，否则你会显示为该审查中的唯一用户。 选中姓名旁边的复选标记。
-4. 选择“批准”或“拒绝”。   可能需要在“提供原因”文本框中提供做出该决定的原因。   
-5. 关闭“审查 Azure AD 角色”边栏选项卡。 
+4. 选择“批准”或“拒绝”。 可能需要在“提供原因”文本框中提供做出该决定的原因。  
+5. 关闭“审查 Azure AD 角色”边栏选项卡。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤

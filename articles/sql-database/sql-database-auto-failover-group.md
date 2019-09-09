@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/30/2019
-ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/06/2019
+ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208344"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806610"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
@@ -25,7 +25,7 @@ ms.locfileid: "70208344"
 > [!NOTE]
 > 如果在 SQL 数据库服务器上使用单一数据库或共用数据库，并要在相同或不同的区域中使用多个辅助数据库，请使用[活动异地复制](sql-database-active-geo-replication.md)。 
 
-将自动故障转移组与自动故障转移策略配合使用时，任何影响组中一个或多个数据库的服务中断都会导致自动故障转移。 通常, 这些事件是无法通过内置自动高可用性操作自行缓解的事件。 故障转移触发器的示例包括: SQL 租户环或控制环由于多个计算节点上的 OS 内核内存泄漏而导致的事件, 或由于在 ro 期间断了错误的网络电缆而导致一个或多个租户环关闭的事件。utine 硬件解除授权。  有关详细信息, 请参阅[SQL 数据库高可用性](sql-database-high-availability.md)。
+将自动故障转移组与自动故障转移策略配合使用时，任何影响组中一个或多个数据库的服务中断都会导致自动故障转移。 通常，这些事件是无法通过内置自动高可用性操作自行缓解的事件。 故障转移触发器的示例包括： SQL 租户环或控制环由于多个计算节点上的 OS 内核内存泄漏而导致的事件，或由于在 ro 期间断了错误的网络电缆而导致一个或多个租户环关闭的事件。utine 硬件解除授权。  有关详细信息，请参阅[SQL 数据库高可用性](sql-database-high-availability.md)。
 
 此外，自动故障转移组提供在故障转移期间保持不变的读写和只读侦听器终结点。 无论使用手动故障转移激活还是自动故障转移激活，故障转移都会将组中所有的辅助数据库切换到主数据库。 数据库故障转移完成后，会自动更新 DNS 记录，以便将终结点重定向到新的区域。 有关具体的 RPO 和 RTO 数据，请参阅[业务连续性概述](sql-database-business-continuity.md)。
 
@@ -92,7 +92,7 @@ ms.locfileid: "70208344"
 
 - **只读故障转移策略**
 
-  默认禁用只读侦听器的故障转移功能。 这可确保在辅助数据库脱机时，主数据库的性能不会受到影响。 但是，这也意味辅助数据库恢复前，只读会话将无法连接。 如果你不能容忍只读会话的停机时间, 并且可以暂时为只读和读写流量使用主副本, 但代价是在主站点的潜在性能下降的情况下, 你可以为只读侦听器启用故障转移通过配置`AllowReadOnlyFailoverToPrimary`属性。 在这种情况下，如果辅助节点不可用，则会将只读流量自动重定向到主要节点。
+  默认禁用只读侦听器的故障转移功能。 这可确保在辅助数据库脱机时，主数据库的性能不会受到影响。 但是，这也意味辅助数据库恢复前，只读会话将无法连接。 如果你不能容忍只读会话的停机时间，并且可以暂时为只读和读写流量使用主副本，但代价是在主站点的潜在性能下降的情况下，你可以为只读侦听器启用故障转移通过配置`AllowReadOnlyFailoverToPrimary`属性。 在这种情况下，如果辅助节点不可用，则会将只读流量自动重定向到主要节点。
 
 - **计划内故障转移**
 
@@ -112,7 +112,7 @@ ms.locfileid: "70208344"
 
 - **数据丢失宽限期**
 
-  由于主数据库和辅助数据库是使用异步复制进行同步的，因此故障转移可能会导致数据丢失。 可以自定义自动故障转移策略，以便反映应用程序对数据丢失的容错。 通过配置`GracePeriodWithDataLossHours`, 可以控制系统启动可能导致数据丢失的故障转移之前的等待时间。
+  由于主数据库和辅助数据库是使用异步复制进行同步的，因此故障转移可能会导致数据丢失。 可以自定义自动故障转移策略，以便反映应用程序对数据丢失的容错。 通过配置`GracePeriodWithDataLossHours`，可以控制系统启动可能导致数据丢失的故障转移之前的等待时间。
 
 - **多个故障转移组**
 
@@ -140,7 +140,7 @@ ms.locfileid: "70208344"
 ![自动故障转移](./media/sql-database-auto-failover-group/auto-failover-group.png)
 
 > [!NOTE]
-> 有关将单个数据库添加到故障转移组的详细分步教程, 请参阅[将单一数据库添加到故障转移组](sql-database-single-database-failover-group-tutorial.md)。 
+> 有关将单个数据库添加到故障转移组的详细分步教程，请参阅[将单一数据库添加到故障转移组](sql-database-single-database-failover-group-tutorial.md)。 
 
 
 在设计具有业务连续性的服务时，请遵循以下一般准则：
@@ -155,7 +155,7 @@ ms.locfileid: "70208344"
 
 - **使用只读侦听器处理只读工作负荷**
 
-  如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 对于只读的会话，请使用 `<fog-name>.secondary.database.windows.net` 作为服务器 URL，连接将自动定向到辅助节点。 此外, 还建议使用`ApplicationIntent=ReadOnly`连接字符串读取意图。 如果要确保在故障转移后只读工作负荷可以重新连接, 或者当辅助服务器脱机时, 请确保配置`AllowReadOnlyFailoverToPrimary`故障转移策略的属性。 
+  如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 对于只读的会话，请使用 `<fog-name>.secondary.database.windows.net` 作为服务器 URL，连接将自动定向到辅助节点。 此外，还建议使用`ApplicationIntent=ReadOnly`连接字符串读取意图。 如果要确保在故障转移后只读工作负荷可以重新连接，或者当辅助服务器脱机时，请确保配置`AllowReadOnlyFailoverToPrimary`故障转移策略的属性。 
 
 - **可应对性能下降的问题**
 
@@ -166,7 +166,7 @@ ms.locfileid: "70208344"
 
 - **可应对数据丢失的问题**
 
-  如果检测到服务中断, 则 SQL 会等待指定`GracePeriodWithDataLossHours`的时间段。 默认值为 1 小时。 如果您无法承受丢失数据, 请确保将设置`GracePeriodWithDataLossHours`为足够大的数字, 如24小时。 使用手动组故障转移从辅助节点故障回复到主要节点。
+  如果检测到服务中断，则 SQL 会等待指定`GracePeriodWithDataLossHours`的时间段。 默认值为 1 小时。 如果您无法承受丢失数据，请确保将设置`GracePeriodWithDataLossHours`为足够大的数字，如24小时。 使用手动组故障转移从辅助节点故障回复到主要节点。
 
   > [!IMPORTANT]
   > DTU 少于或等于 800、使用异地复制的数据库超过 250 个的弹性数据库池可能会遇到更长的计划故障转移和性能下降等问题。  这些问题更可能在写密集型工作负荷下发生，例如，异地复制终结点广泛分隔于各个地理位置，或者每个数据库使用多个辅助终结点。  当异地复制滞后随着时间推移增加时，这些问题的症状便会显现。  这种滞后可以使用 [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) 进行监视。  如果发生这些问题，缓解方法包括增加池 DTU 的数量或者减少同一池中异地复制数据库的数量。
@@ -183,7 +183,7 @@ ms.locfileid: "70208344"
 ![自动故障转移](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
 > [!NOTE]
-> 有关将托管实例添加到使用故障转移组的详细分步教程, 请参阅[将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)。 
+> 有关将托管实例添加到使用故障转移组的详细分步教程，请参阅[将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)。 
 
 如果应用程序使用托管实例作为数据层，进行业务连续性设计时，请遵循以下一般准则：
 
@@ -191,7 +191,10 @@ ms.locfileid: "70208344"
 
   若要确保故障转移后与主要实例的连接不中断，主要实例和辅助实例必须位于同一 DNS 区域。 将会保证同一个多域 (SAN) 证书可用于对与故障转移组中的两个实例之一建立的客户端连接进行身份验证。 准备好将应用程序部署到生产环境后，在不同的区域中创建一个辅助实例，并确保它与主要实例共享 DNS 区域。 为此，可以使用 Azure 门户、PowerShell 或 REST API 指定 `DNS Zone Partner` 可选参数。 
 
-  有关在与主实例相同的 DNS 区域中创建辅助实例的详细信息, 请参阅[创建辅助托管实例](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance)。
+> [!IMPORTANT]
+> 在子网中创建的第一个实例决定同一子网中的所有后续实例的 DNS 区域。 这意味着，同一子网中的两个实例不能属于不同的 DNS 区域。   
+
+  有关在与主实例相同的 DNS 区域中创建辅助实例的详细信息，请参阅[创建辅助托管实例](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance)。
 
 - **在两个实例之间启用复制流量**
 
@@ -199,7 +202,7 @@ ms.locfileid: "70208344"
 
 - **在不同订阅中的托管实例之间创建故障转移组**
 
-  可以在两个不同订阅中的托管实例之间创建故障转移组。 使用 PowerShell API 时, 可以通过为辅助实例指定`PartnerSubscriptionId`参数来执行此操作。 使用 REST API 时, `properties.managedInstancePairs`参数中包含的每个实例 ID 都可以有自己的 subscriptionID。 
+  可以在两个不同订阅中的托管实例之间创建故障转移组。 使用 PowerShell API 时，可以通过为辅助实例指定`PartnerSubscriptionId`参数来执行此操作。 使用 REST API 时， `properties.managedInstancePairs`参数中包含的每个实例 ID 都可以有自己的 subscriptionID。 
   
   > [!IMPORTANT]
   > Azure 门户不支持跨不同订阅的故障转移组。
@@ -238,6 +241,10 @@ ms.locfileid: "70208344"
   > [!IMPORTANT]
   > 使用手动组故障转移可将主要数据库移回到原始位置。 缓解导致故障转移的服务中断问题后，可将主要数据库移到原始位置。 为此，应该启动组的手动故障转移。
 
+- **确认故障转移组的已知限制**
+
+  故障转移组中的实例不支持数据库重命名和实例大小调整。 你将需要临时删除故障转移组才能执行这些操作。
+
 ## <a name="failover-groups-and-network-security"></a>故障转移组和网络安全
 
 对于某些应用程序，安全规则要求只允许特定组件（如 VM、Web 服务等）通过网络访问数据层。此要求对业务连续性设计和故障转移组的使用提出了一些挑战。 在实施此类受限访问时，请考虑以下选项。
@@ -274,12 +281,12 @@ ms.locfileid: "70208344"
 
 ## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>在托管实例及其 VNet 之间启用异地复制
 
-在两个不同的区域中的主要和辅助托管实例之间设置故障转移组时, 每个实例都是使用独立的虚拟网络隔离的。 若要允许这些 VNet 之间的复制流量，请确保满足以下先决条件：
+在两个不同的区域中的主要和辅助托管实例之间设置故障转移组时，每个实例都是使用独立的虚拟网络隔离的。 若要允许这些 VNet 之间的复制流量，请确保满足以下先决条件：
 
 1. 两个托管实例需位于不同的 Azure 区域中。
-1. 这两个托管实例必须是相同的服务层, 并且具有相同的存储大小。 
-1. 辅助托管实例必须为空 (无用户数据库)。
-1. 托管实例使用的虚拟网络需要通过[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 Express Route 连接。 当两个虚拟网络通过本地网络连接时, 请确保没有阻止端口5022和11000-11999 的防火墙规则。 不支持全局 VNet 对等互连。
+1. 这两个托管实例必须是相同的服务层，并且具有相同的存储大小。 
+1. 辅助托管实例必须为空（无用户数据库）。
+1. 托管实例使用的虚拟网络需要通过[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 Express Route 连接。 当两个虚拟网络通过本地网络连接时，请确保没有阻止端口5022和11000-11999 的防火墙规则。 不支持全局 VNet 对等互连。
 1. 两个托管实例 VNet 的 IP 地址不能重叠。
 1. 需要设置网络安全组 (NSG)，使端口 5022 和端口范围 11000~12000 保持打开，以便能够从其他托管实例子网建立入站和出站连接。 目的是允许实例之间的复制流量
 
@@ -289,7 +296,7 @@ ms.locfileid: "70208344"
 7. 辅助实例上已配置正确的 DNS 区域 ID。 DNS 区域是托管实例的属性，其 ID 包含在主机名地址中。 在每个 VNet 中创建第一个托管实例时，将生成随机字符串形式的区域 ID。同一个 ID 将分配到同一子网中的所有其他实例。 分配后，无法修改 DNS 区域。 同一故障转移组中包含的托管实例必须共享 DNS 区域。 为此，在创建辅助实例时，可以传递主要实例的区域 ID 作为 DnsZonePartner 参数的值。 
 
    > [!NOTE]
-   > 有关使用托管实例配置故障转移组的详细教程, 请参阅[将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)。
+   > 有关使用托管实例配置故障转移组的详细教程，请参阅[将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)。
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>升级或降级主数据库
 
@@ -305,10 +312,10 @@ ms.locfileid: "70208344"
 
 ## <a name="preventing-the-loss-of-critical-data"></a>防止丢失关键数据
 
-由于广域网的延迟时间较长，连续复制使用了异步复制机制。 在发生故障时，异步复制会不可避免地丢失某些数据。 但是，某些应用程序可能要求不能有数据丢失。 为了保护这些关键更新，应用程序开发人员可以在提交事务后立即调用 [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) 系统过程。 调用`sp_wait_for_database_copy_sync`会阻止调用线程, 直到将上次提交的事务传输到辅助数据库。 但是，它不会等待传输的事务提交到辅助数据库进行重播。 `sp_wait_for_database_copy_sync`的作用域限定为特定的连续复制链接。 对主数据库具有连接权限的任何用户都可以调用此过程。
+由于广域网的延迟时间较长，连续复制使用了异步复制机制。 在发生故障时，异步复制会不可避免地丢失某些数据。 但是，某些应用程序可能要求不能有数据丢失。 为了保护这些关键更新，应用程序开发人员可以在提交事务后立即调用 [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) 系统过程。 调用`sp_wait_for_database_copy_sync`会阻止调用线程，直到将上次提交的事务传输到辅助数据库。 但是，它不会等待传输的事务提交到辅助数据库进行重播。 `sp_wait_for_database_copy_sync`的作用域限定为特定的连续复制链接。 对主数据库具有连接权限的任何用户都可以调用此过程。
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync`在故障转移后防止数据丢失, 但不保证读取访问的完全同步。 `sp_wait_for_database_copy_sync`过程调用导致的延迟可能会很大, 并且取决于调用时事务日志的大小。
+> `sp_wait_for_database_copy_sync`在故障转移后防止数据丢失，但不保证读取访问的完全同步。 `sp_wait_for_database_copy_sync`过程调用导致的延迟可能会很大，并且取决于调用时事务日志的大小。
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>故障转移组和时间点还原
 
@@ -371,7 +378,7 @@ ms.locfileid: "70208344"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关详细教程, 请参阅
+- 有关详细教程，请参阅
     - [将单一数据库添加到故障转移组](sql-database-single-database-failover-group-tutorial.md)
     - [将弹性池添加到故障转移组](sql-database-elastic-pool-failover-group-tutorial.md)
     - [将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)

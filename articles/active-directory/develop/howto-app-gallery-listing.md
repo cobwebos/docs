@@ -18,16 +18,16 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0198e5f5df3d25ef825248ff78db95326dc755c2
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 5d3cbaf76489058624e56bec50b37eeb18a99ba7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477060"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812517"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>如何：在 Azure Active Directory 应用程序库中列出你的应用程序
 
-本文介绍如何在 Azure AD 应用程序库中列出应用程序、如何实现单一登录 (SSO) 和管理列表。
+本文介绍如何在 Azure AD 应用程序库中列出应用程序、如何实现单一登录（SSO）和管理列表。
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>什么是 Azure AD 应用程序库？
 
@@ -48,12 +48,7 @@ ms.locfileid: "68477060"
 
 - 对于密码 SSO，请确保你的应用程序支持窗体身份验证，以便可以进行密码保管，从而让单一登录按预期工作。
 
-- 对于自动用户预配请求，应在库中列出应用程序，并使用 SAML 2.0/WS-Fed 启用单一登录功能。 如果尚未列出，可以在门户上一起请求 SSO 和用户预配。
-
-- 需要一个永久帐户来测试, 其中至少注册了2个用户。
-
->[!NOTE]
->我们正在使用大量的 SCIM 连接器请求, 因此我们已停止在我们的门户上发出新请求。 在进一步通知之前, 请保留你的请求。 我们道歉此延迟, 这可能导致的任何不便。
+- 需要一个永久帐户来测试，其中至少注册了2个用户。
 
 ## <a name="submit-the-request-in-the-portal"></a>在门户中提交请求
 

@@ -8,14 +8,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: c85074a2b26a79dbf5e464972e7f82b5955d15f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7bb26cd35daf67a3337907aded18e3302b19d81
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692469"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813877"
 ---
-# <a name="scp-programming-guide"></a>SCP 编程指南
+# <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Storm 的 SCP 编程指南
+
 SCP 是一个用于构建实时、可靠、一致和高性能的数据处理应用程序的平台。 它在 [Apache Storm](https://storm.incubator.apache.org/) 的基础上构建而成 -- Storm 是开源软件 (OSS) 社区设计的一个流处理系统。 Storm 由 Nathan Marz 设计，在 Twitter 上进行开源。 其利用 [Apache ZooKeeper](https://zookeeper.apache.org/)（另一个 Apache 项目）来实现高可靠性的分布式协调和状态管理。 
 
 SCP 项目不仅已移植到 Windows 的 Storm 中，还为 Windows 生态系统增加了扩展和自定义。 扩展包括 .NET 开发人员经验和库，自定义包括基于 Windows 的部署。 
@@ -27,11 +28,11 @@ SCP 中的数据以连续的元组流形式建模。 一般情况下，元组首
 
 ![馈送待处理数据的队列（在数据存储中馈送数据）示意图](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
 
-在 Storm 中，应用程序拓扑定义计算图。 拓扑中的每个节点都包含处理逻辑，节点之间的链接指明数据流。 用于将输入数据注入到拓扑中的节点名为 Spout，这些节点还可排列数据  。 输入数据可驻留在文件日志、事务性数据库、系统性能计数器中或其他位置。具有输入和输出数据流的节点名为 Bolt。，这些节点执行实际数据过滤、选择和汇总  。
+在 Storm 中，应用程序拓扑定义计算图。 拓扑中的每个节点都包含处理逻辑，节点之间的链接指明数据流。 用于将输入数据注入到拓扑中的节点名为 Spout，这些节点还可排列数据。 输入数据可驻留在文件日志、事务性数据库、系统性能计数器中或其他位置。具有输入和输出数据流的节点名为 Bolt。，这些节点执行实际数据过滤、选择和汇总。
 
 SCP 支持“尽力”、“至少一次”数据处理和“恰一次”数据处理。 在分布式流处理应用程序中，数据处理过程中可能会出现各种错误，例如，网络中断、机器故障、用户代码错误等等。“至少一次”处理会在出现错误时自动重新处理原来的数据，从而确保所有数据均至少被处理一次。 “至少一次”处理简单且可靠，适用于许多应用程序。 但是，当应用程序需要确切计数时，进行“至少一次”处理是不够的，因为相同的数据有可能用于应用程序拓扑中。 在此情况下，“恰一次”处理可确保即使数据被多次重复使用和处理，结果也是正确。
 
-通过 SCP，.NET 开发人员可以开发实时数据处理应用程序，同时在后台通过 Storm 利用 Java 虚拟机 (JVM)。 .NET 和 JVM 通过 TCP 本地套接字进行通信。 基本上是每个 Spout/Bolt 是一个.NET/Java 进程对，用户逻辑作为插件的.NET 进程中运行的位置。
+通过 SCP，.NET 开发人员可以开发实时数据处理应用程序，同时在后台通过 Storm 利用 Java 虚拟机 (JVM)。 .NET 和 JVM 通过 TCP 本地套接字进行通信。 基本上，每个 Spout/螺栓都是 .NET/Java 进程对，其中用户逻辑作为插件在 .NET 进程中运行。
 
 若要在 SCP 上开发数据处理应用程序，需要执行以下几个步骤：
 
@@ -358,8 +359,8 @@ SCP.NET 添加了以下函数来定义事务性拓扑：
 | **scp-tx-batch-bolt** |exec-name<br />args<br />fields |定义事务性批处理 Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />Fields 是用于 Bolt 的输出字段。 |
 | **scp-tx-commit-bolt** |exec-name<br />args<br />fields |定义事务性 Committer Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Bolt 的输出字段 |
 | **nontx-topolopy** |topology-name<br />spout-map<br />bolt-map |使用拓扑名称、Spout 定义图和 Bolt 来定义非事务性拓扑&nbsp; |
-| **scp-spout** |exec-name<br />args<br />fields<br />parameters |定义非事务性 Spout。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Spout 的输出字段<br /><br />parameters 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
-| **scp-bolt** |exec-name<br />args<br />fields<br />parameters |定义非事务性 Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Bolt 的输出字段<br /><br />parameters 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
+| **scp-spout** |exec-name<br />args<br />fields<br />参数 |定义非事务性 Spout。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Spout 的输出字段<br /><br />parameters 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
+| **scp-bolt** |exec-name<br />args<br />fields<br />参数 |定义非事务性 Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Bolt 的输出字段<br /><br />parameters 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
 
 SCP.NET 定义了以下关键字：
 
@@ -449,7 +450,7 @@ SCP.NET 添加了一个自定义的分组方法，该方法会使用 byte[] 的�
 3. [0,1] 表示从 0 开始的字段 ID 的哈希集。
 
 ### <a name="hybrid-topology"></a>混合拓扑
-本机 Storm 是用 Java 编写的。 SCP.NET 经过增强，即可启用 C\#开发人员能够编写 C\#代码来处理其业务逻辑。 但它也支持混合拓扑，这种拓扑不仅包含 C\# Spout/Bolt，还包含 Java Spout/Bolt。
+本机 Storm 是用 Java 编写的。 SCP.NET 增强了它，使 c\#开发人员能够编写 c\#代码来处理其业务逻辑。 但它也支持混合拓扑，这种拓扑不仅包含 C\# Spout/Bolt，还包含 Java Spout/Bolt。
 
 ### <a name="specify-java-spoutbolt-in-spec-file"></a>在规范文件中指定 Java Spout/Bolt
 在规范文件中，“scp-spout”和“scp-bolt”也可用于指定 Java Spout 和 Bolt；下面是一个示例：
@@ -561,7 +562,7 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
 
 ## <a name="scp-programming-examples"></a>SCP 编程示例
 ### <a name="helloworld"></a>HelloWorld
-**HelloWorld**是一个简单的示例，若要显示的 scp.net 编程。 它使用非事务性拓扑，带有一个名为 **generator** 的 Spout，以及两个分别名为 **splitter** 和 **counter** 的 Bolt。 Spout 生成器会随机生成一些句子，然后将生成的句子发送到 拆分器   。 Bolt 拆分器会将句子拆分为字词并将其发送到计数器 Bolt   。 Bolt "counter" 使用字典记录每个字词出现的次数。
+**HelloWorld**是一个简单的示例，演示了 SCP.NET 的感受。 它使用非事务性拓扑，带有一个名为 **generator** 的 Spout，以及两个分别名为 **splitter** 和 **counter** 的 Bolt。 Spout 生成器会随机生成一些句子，然后将生成的句子发送到 拆分器。 Bolt 拆分器会将句子拆分为字词并将其发送到计数器 Bolt。 Bolt "counter" 使用字典记录每个字词出现的次数。
 
 在本示例中，有两个规范文件：**HelloWorld.spec** 和 **HelloWorld\_EnableAck.spec**。 在 C\# 代码中，可以通过从 Java 端获取 pluginConf 来确定是否已启用确认功能。
 
@@ -593,9 +594,9 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
     }
 
 ### <a name="helloworldtx"></a>HelloWorldTx
-**HelloWorldTx** 示例展示如何实施事务性拓扑。 它有一个名为生成器的 Spout、一个名为 partial-count 的批处理 Bolt 以及一个名为 count-sum 的提交 Bolt    。 还有三个预创建的 txt 文件：DataSource0.txt、DataSource1.txt 和 DataSource2.txt    。
+**HelloWorldTx** 示例展示如何实施事务性拓扑。 它有一个名为生成器的 Spout、一个名为 partial-count 的批处理 Bolt 以及一个名为 count-sum 的提交 Bolt。 还有三个预创建的 txt 文件：DataSource0.txt、DataSource1.txt 和 DataSource2.txt。
 
-在每个事务中，Spout 生成器从预先创建的三个文件中随机选择两个文件，并将那两个文件的名称发送给 partial-count Bolt   。 Bolt partial-count 从接收到的元组获取文件名，然后打开文件并计算文件中的字词数量，最后将计算出的字词数量发送给 count-sum Bolt   。 count-sum Bolt 对总计数进行汇总  。
+在每个事务中，Spout 生成器从预先创建的三个文件中随机选择两个文件，并将那两个文件的名称发送给 partial-count Bolt。 Bolt partial-count 从接收到的元组获取文件名，然后打开文件并计算文件中的字词数量，最后将计算出的字词数量发送给 count-sum Bolt。 count-sum Bolt 对总计数进行汇总。
 
 为了获得 **exactly once** 语义，提交 Bolt **count-sum** 需要判断事务是否是重复处理的事务。 在本示例中，它具有静态成员变量：
 
@@ -635,7 +636,7 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
 
 
 ### <a name="hybridtopology"></a>HybridTopology
-此拓扑包含一个 Java Spout 和一个 C\# Bolt。 它使用 SCP 平台提供的默认序列化和反序列化实现方法。 有关规范文件的详细信息，请参阅“示例\\HybridTopology”文件夹中的 HybridTopology.spec；有关如何指定 Java classpath，请参阅 SubmitTopology.bat    。
+此拓扑包含一个 Java Spout 和一个 C\# Bolt。 它使用 SCP 平台提供的默认序列化和反序列化实现方法。 有关规范文件的详细信息，请参阅“示例\\HybridTopology”文件夹中的 HybridTopology.spec；有关如何指定 Java classpath，请参阅 SubmitTopology.bat。
 
 ### <a name="scphostdemo"></a>SCPHostDemo
 本质上，本示例与 HelloWorld 相同。 唯一不同之处是，在本示例中，用户代码被编译为 DLL，而且使用 SCPHost.exe 提交拓扑。 有关更详细说明，请参阅“SCP 主机模式”部分。

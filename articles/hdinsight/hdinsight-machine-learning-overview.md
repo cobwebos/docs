@@ -1,6 +1,6 @@
 ---
 title: 机器学习概述 - Azure HDInsight
-description: 介绍 HDInsight 中的机器学习选项。
+description: Azure HDInsight 中群集的大数据机器学习选项的概述。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: ca69424ecbddc068fdaf8bb5839a647701ee27fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17615c0005a3cbc5b20cea697b4c75b5ed06ae0a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686590"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811994"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 中的机器学习
 
@@ -49,7 +49,7 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 
 为了推进自身在深度学习方面的工作，Microsoft 开发了免费、易用的开源 [Microsoft 认知工具包](https://www.microsoft.com/en-us/cognitive-toolkit/)。 各种 Microsoft 产品、世界各地需要大规模部署深度学习的公司，以及对最新算法和技术感兴趣的学生都在使用该工具包。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 ### <a name="scenarios"></a>方案
 
@@ -62,6 +62,6 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 
 ### <a name="deep-learning-resources"></a>深度学习资源
 
-* [使用 Microsoft 认知工具包深入学习模型与 Azure HDInsight Spark 群集](spark/apache-spark-microsoft-cognitive-toolkit.md)
+* [使用 Azure HDInsight Spark 群集的 Microsoft Cognitive Toolkit 深度学习模型](spark/apache-spark-microsoft-cognitive-toolkit.md)
 * [使用 Caffe on Azure HDInsight Spark 进行分布式深度学习](spark/apache-spark-deep-learning-caffe.md)
-* [数据科学虚拟机 (DSVM) 上的深度学习和人工智能框架](../machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks.md)
+* [Data Science Virtual Machine 上的深度学习和 AI 框架（DSVM）](../machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks.md)

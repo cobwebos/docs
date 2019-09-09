@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 04/29/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 01772fc9bd988cb6e4c3f7a946a03235fc63dd93
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390170"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813409"
 ---
 # <a name="troubleshoot-the-process-server"></a>排查进程服务器问题
 
@@ -51,7 +51,7 @@ IP 地址 | 确保进程服务器使用静态 IPv4 地址，且未配置 NAT。
 
 **警报类型** | **错误** | **故障排除**
 --- | --- | --- 
-![状态良好][green] | None  | 进程服务器已连接且正常运行。
+![状态良好][green] | 无  | 进程服务器已连接且正常运行。
 ![警告][yellow] | 指定的服务未运行。 | 1.检查服务是否正在运行。<br/> 2.如果服务已按预期方式运行，请遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。
 ![警告][yellow]  | 过去 15 分钟的 CPU 利用率超过 80%。 | 1.不要添加新计算机。<br/>2.检查使用进程服务器的 VM 数目是否符合[定义的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，并考虑设置[额外的进程服务器](vmware-azure-set-up-process-server-scale.md)。<br/>3.遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。
 ![关键][red] |  过去 15 分钟的 CPU 利用率超过 95%。 | 1.不要添加新计算机。<br/>2.检查使用进程服务器的 VM 数目是否符合[定义的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，并考虑设置[额外的进程服务器](vmware-azure-set-up-process-server-scale.md)。<br/>3.遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。<br/> 4.如果问题持续出现，请针对 VMware/物理服务器复制运行[部署规划器](https://aka.ms/asr-v2a-deployment-planner)。

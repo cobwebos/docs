@@ -1,19 +1,18 @@
 ---
-title: 使用 Azure Site Recovery 将 VMM 云中的 Hyper-V VM 灾难恢复到辅助站点时的支持矩阵 | Microsoft Docs
+title: 使用 Azure Site Recovery 在 VMM 云中将 Hyper-v Vm 灾难恢复到辅助站点的支持矩阵
 description: 汇总了对使用 Azure Site Recovery 将 VMM 云中的 Hyper-V VM 复制到辅助站点的支持。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: e8b8f9856fe7e0fa591ceb42aab97e92642b6098
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c3a19d44a4ac0fba37f4815b65b17c26d257dbc
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399350"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813626"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>将 Hyper-V VM 灾难恢复到辅助站点时的支持矩阵
 
@@ -72,7 +71,7 @@ Windows Server 2012 R2 | Windows Server 2012 R2 上的[Hyper-V 支持](https://d
 
 **存储（主机）** | **支持**
 --- | --- 
-NFS | 不适用
+NFS | 不可用
 SMB 3.0 |  是
 SAN (ISCSI) | 是
 多路径 (MPIO) | 是
@@ -81,15 +80,15 @@ SAN (ISCSI) | 是
 
 **配置** | **支持**
 --- | --- | 
-VMDK |  不适用
+VMDK |  不可用
 VHD/VHDX | 是（最多 16 个磁盘）
 第 2 代 VM | 是
 共享群集磁盘 | 否
 加密磁盘 | 否
-UEFI| 不适用
+UEFI| 不可用
 NFS | 否
 SMB 3.0 | 否
-RDM | 不适用
+RDM | 不可用
 磁盘 > 1 TB | 是
 包含条带化磁盘的卷 > 1 TB<br/><br/> LVM | 是
 存储空间 | 是

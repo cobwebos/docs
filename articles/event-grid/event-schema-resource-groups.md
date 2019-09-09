@@ -48,7 +48,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 ## <a name="example-event"></a>示例事件
 
-以下示例展示了 ResourceWriteSuccess 事件的架构  。 具有不同 `eventType` 值的 ResourceWriteFailure 和 ResourceWriteCancel 事件会使用相同的模式   。
+以下示例展示了 ResourceWriteSuccess 事件的架构。 具有不同 `eventType` 值的 ResourceWriteFailure 和 ResourceWriteCancel 事件会使用相同的模式。
 
 ```json
 [{
@@ -108,7 +108,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 }]
 ```
 
-以下示例展示了 ResourceDeleteSuccess 事件的架构  。 具有不同 `eventType` 值的 ResourceDeleteFailure 和 ResourceDeleteCancel 事件会使用相同的模式   。
+以下示例展示了 ResourceDeleteSuccess 事件的架构。 具有不同 `eventType` 值的 ResourceDeleteFailure 和 ResourceDeleteCancel 事件会使用相同的模式。
 
 ```json
 [{
@@ -174,7 +174,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 }]
 ```
 
-以下示例展示了 ResourceActionSuccess 事件的架构  。 具有不同 `eventType` 值的 ResourceActionFailure 和 ResourceActionCancel 事件会使用相同的模式   。
+以下示例展示了 ResourceActionSuccess 事件的架构。 具有不同 `eventType` 值的 ResourceActionFailure 和 ResourceActionCancel 事件会使用相同的模式。
 
 ```json
 [{   
@@ -249,10 +249,10 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| authorization | 对象 | 操作请求的授权。 |
-| claims | 对象 | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
+| authorization | object | 操作请求的授权。 |
+| claims | object | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
 | correlationId | string | 用于故障排除的操作 ID。 |
-| httpRequest | 对象 | 操作的详细信息。 仅在更新现有资源或删除资源时才包含此对象。 |
+| httpRequest | object | 操作的详细信息。 仅在更新现有资源或删除资源时才包含此对象。 |
 | resourceProvider | string | 操作的资源提供程序。 |
 | resourceUri | string | 操作中资源的 URI。 |
 | operationName | string | 执行的操作。 |

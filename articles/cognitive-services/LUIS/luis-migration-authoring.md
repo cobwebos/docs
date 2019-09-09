@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: bfd11254ffccd5085701071fcdb2116ca368bc82
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: ee185ca5d2e2cdda89945f0fc1e7aae32030c1be
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801456"
+ms.locfileid: "70803888"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
@@ -91,7 +91,7 @@ ms.locfileid: "70801456"
 
 ### <a name="after-the-app-is-migrated"></a>迁移应用后
 
-迁移过程完成后，你需要将应用所有者添加到 Azure 创作资源。  
+迁移过程完成后，如果需要访问原始应用，需要将应用所有者作为协作者添加到 Azure 创作资源。  
 
 ## <a name="next-steps"></a>后续步骤
 

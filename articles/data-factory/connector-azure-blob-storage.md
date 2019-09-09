@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 56d332ca00cbd47448b7e3fb8d3ab2d141380b70
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 8925ea9da06ff718f08b7be73944c75d388bc01f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061527"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814158"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Blob 存储复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -42,7 +42,7 @@ ms.locfileid: "70061527"
 - 按原样复制 Blob，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析或生成 Blob。
 
 >[!NOTE]
->如果在 Azure 存储防火墙设置上启用 _"允许受信任的 Microsoft 服务访问此存储帐户"_ 选项, 则使用 Azure Integration Runtime 连接到 Blob 存储将失败, 并出现禁用错误, 因为 ADF 不被视为受信任Microsoft 服务。 请改用自承载集成运行时进行连接。
+>如果在 Azure 存储防火墙设置上启用 _"允许受信任的 Microsoft 服务访问此存储帐户"_ 选项，则使用 Azure Integration Runtime 连接到 Blob 存储将失败，并出现禁用错误，因为 ADF 不被视为受信任Microsoft 服务。 请改用自承载集成运行时进行连接。
 
 ## <a name="get-started"></a>开始使用
 
@@ -76,7 +76,7 @@ Azure Blob 连接器支持以下身份验证类型，有关详细信息，请参
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
->使用帐户密钥身份验证时, 不支持辅助 Blob 服务终结点。 可以使用其他身份验证类型。
+>使用帐户密钥身份验证时，不支持辅助 Blob 服务终结点。 可以使用其他身份验证类型。
 
 >[!NOTE]
 >如果使用的是“AzureStorage”类型链接服务，它仍然按原样受支持，但建议今后使用此新的“AzureBlobStorage”链接服务类型。
@@ -136,7 +136,7 @@ Azure Blob 连接器支持以下身份验证类型，有关详细信息，请参
 共享访问签名对存储帐户中的资源提供委托访问。 使用共享访问签名可以在指定的时间内授予客户端对存储帐户中对象的有限访问权限。 无需共享帐户访问密钥。 共享访问签名是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 若要使用共享访问签名访问存储资源，客户端只需将共享访问签名传入到相应的构造函数或方法。 有关共享访问签名的详细信息，请参阅[共享访问签名：了解共享访问签名模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
 > [!NOTE]
->- 数据工厂现在同时支持**服务共享访问签名**和**帐户共享访问签名**。 有关共享访问签名的详细信息, 请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)。
+>- 数据工厂现在同时支持**服务共享访问签名**和**帐户共享访问签名**。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)。
 >- 在稍后的数据集配置中，文件夹路径是从容器级别开始的绝对路径。 需要配置与 SAS URI 中的路径一致的路径。
 
 > [!TIP]
@@ -315,12 +315,12 @@ Azure Blob 存储链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
 
-- 对于**Parquet (分隔文本和二进制格式**), 请参阅[Parquet, 分隔文本和二进制格式数据集](#format-based-dataset)部分。
-- 对于其他格式 (如**ORC/Avro/JSON 格式**), 请参阅[其他格式数据集](#other-format-dataset)部分。
+- 对于**Parquet （分隔文本、json、avro 和二进制格式**），请参阅[Parquet，分隔文本、json、Avro 和二进制格式数据集](#format-based-dataset)部分。
+- 对于其他格式（如**ORC/JSON 格式**），请参阅[其他格式数据集](#other-format-dataset)部分。
 
-### <a name="format-based-dataset"></a>Parquet, 分隔文本和二进制格式数据集
+### <a name="format-based-dataset"></a>Parquet，分隔文本、JSON、Avro 和二进制格式数据集
 
-若要在 Parquet 中向/从 Blob 存储复制数据 (以分隔符分隔的文本或二进制格式), 请参阅基于格式的数据集和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 Azure Blob 支持以下属性：
+若要在 Parquet 中向/从 Blob 存储复制数据，分隔文本、Avro 或二进制格式，请参阅基于格式的数据集和支持的设置的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [Avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 Azure Blob 支持以下属性：
 
 | 属性   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -362,7 +362,7 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="other-format-dataset"></a>其他格式数据集
 
-若要将数据从 Blob 存储复制到 ORC/Avro/JSON 格式, 请将数据集的 type 属性设置为 " **AzureBlob**"。 支持以下属性。
+若要将数据从 Blob 存储复制到 ORC/JSON 格式的数据，请将数据集的 type 属性设置为 " **AzureBlob**"。 支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -413,12 +413,12 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="blob-storage-as-a-source-type"></a>将 Blob 存储用作源类型
 
-- 若要从**Parquet 复制, 分隔文本和二进制格式**, 请参阅[Parquet, 分隔文本和二进制格式源](#format-based-source)部分。
-- 若要从其他格式 (如**ORC/Avro/JSON 格式**) 复制, 请参阅[其他格式源](#other-format-source)部分。
+- 若要从**Parquet 复制、分隔文本、json、avro 和二进制格式**，请参阅[Parquet，分隔文本、json、avro 和二进制格式源](#format-based-source)部分。
+- 若要从其他格式（如**ORC 格式**）进行复制，请参阅[其他格式源](#other-format-source)部分。
 
-#### <a name="format-based-source"></a>Parquet, 分隔文本和二进制格式源
+#### <a name="format-based-source"></a>Parquet，分隔文本、JSON、Avro 和二进制格式源
 
-若要在 Parquet 中向/从 Blob 存储复制数据 **(以分隔符分隔的文本或二进制格式**), 请参阅基于格式的数据集和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)一文。 基于格式的复制源中 `storeSettings` 设置下的 Azure Blob 支持以下属性：
+若要在 Parquet 中向/从 Blob 存储复制数据 **，分隔文本、JSON、Avro 和二进制格式**，请参阅基于格式的数据集的[Parquet 格式](format-parquet.md)、[分隔文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文支持的设置。 基于格式的复制源中 `storeSettings` 设置下的 Azure Blob 支持以下属性：
 
 | 属性                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -476,7 +476,7 @@ Azure Blob 存储链接服务支持以下属性：
 
 #### <a name="other-format-source"></a>其他格式源
 
-若要从**ORC、Avro 或 JSON 格式**的 Blob 存储复制数据, 请将复制活动中的源类型设置为 " **BlobSource**"。 复制活动的 **source** 节支持以下属性。
+若要以**ORC 格式**从 Blob 存储复制数据，请将复制活动中的源类型设置为 " **BlobSource**"。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -518,12 +518,12 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="blob-storage-as-a-sink-type"></a>用作接收器类型的 Blob 存储
 
-- 若要从**Parquet 复制, 分隔文本和二进制格式**, 请参阅[Parquet, 分隔文本和二进制格式源](#format-based-source)部分。
-- 若要从其他格式 (如**ORC/Avro/JSON 格式**) 复制, 请参阅[其他格式源](#other-format-source)部分。
+- 若要从**Parquet 复制、分隔文本、json、avro 和二进制格式**，请参阅[Parquet，分隔文本、json、avro 和二进制格式源](#format-based-source)部分。
+- 若要从其他格式（如**ORC 格式**）进行复制，请参阅[其他格式源](#other-format-source)部分。
 
-#### <a name="format-based-source"></a>Parquet, 分隔文本和二进制格式源
+#### <a name="format-based-source"></a>Parquet，分隔文本、JSON、Avro 和二进制格式源
 
-若要从 Parquet 中复制 Blob 存储中的数据 **(以分隔的文本或二进制格式**), 请参阅基于格式的复制活动源和支持的设置中的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)和[二进制格式](format-binary.md)文章。 基于格式的复制接收器中 `storeSettings` 设置下的 Azure Blob 支持以下属性：
+若要从 Parquet 中的 Blob 存储复制数据 **，分隔文本、JSON、Avro 和二进制格式**，请参阅基于格式的复制活动源上的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文和支持的设置。 基于格式的复制接收器中 `storeSettings` 设置下的 Azure Blob 支持以下属性：
 
 | 属性                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -571,7 +571,7 @@ Azure Blob 存储链接服务支持以下属性：
 
 #### <a name="other-format-sink"></a>其他格式接收器
 
-若要以**ORC/Avro/JSON 格式**将数据复制到 Blob 存储, 请将复制活动中的接收器类型设置为 " **BlobSink**"。 **sink** 节支持以下属性。
+若要以**ORC 格式**将数据复制到 Blob 存储，请将复制活动中的接收器类型设置为 " **BlobSink**"。 **sink** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

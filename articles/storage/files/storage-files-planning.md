@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 163c3cbaeed1526f08d047c3bf357232ccb534a3
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: dc532ed33fca5120736dfb9503d012b2877e675e
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802389"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806621"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -155,7 +155,7 @@ Azure 备份适用于高级文件共享，Azure Kubernetes 服务支持版本1.1
 
 ## <a name="file-share-redundancy"></a>文件共享冗余
 
-Azure 文件标准共享支持三个数据冗余选项：本地冗余存储（LRS）、区域冗余存储（ZRS）、异地冗余存储（GRS）和异地冗余存储（GZRS）（预览版）。
+Azure 文件标准共享支持四种数据冗余选项：本地冗余存储（LRS）、区域冗余存储（ZRS）、异地冗余存储（GRS）和异地冗余存储（GZRS）（预览版）。
 
 Azure 文件 premium 共享仅支持本地冗余存储（LRS）。
 

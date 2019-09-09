@@ -1,6 +1,6 @@
 ---
 title: 优化 Spark 作业的性能 - Azure HDInsight
-description: 介绍实现 Spark 群集最佳性能的常见策略。
+description: 显示 Azure HDInsight 中 Apache Spark 群集的最佳性能的常见策略。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 5701bb534d0fd0e25aab90f9d1035c96bb55c518
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d058c55eab3d161e625d7d4ca3ef53b36497e00
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476100"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814082"
 ---
 # <a name="optimize-apache-spark-jobs"></a>优化 Apache Spark 作业
 
@@ -23,7 +23,7 @@ ms.locfileid: "66476100"
 
 ## <a name="choose-the-data-abstraction"></a>选择数据抽象
 
-早期的 Spark 版本数据抽象化，Spark 1.3 使用 Rdd 和 1.6 引入了 Dataframe 和数据集，分别。 请仔细衡量下列优缺点：
+早期的 Spark 版本使用 Rdd 抽象数据、Spark 1.3 和1.6 分别引入 DataFrames 和数据集。 请仔细衡量下列优缺点：
 
 * **DataFrame**
     * 大多数情况下的最佳选择。
@@ -57,7 +57,7 @@ Spark 支持多种格式，比如 csv、json、xml、parquet、orc 和 avro。 S
 
 创建新的 Spark 群集时，可以选择将 Azure Blob 存储或 Azure Data Lake Storage 用作群集的默认存储。 这两个选项都能为暂时性群集提供长期存储，这样就不会在删除群集时自动删除数据。 用户可以重新创建暂时性群集，并且依然能访问数据。
 
-| 存储类型 | 文件系统 | Speed | 暂时性 | 用例 |
+| 存储类型 | 文件系统 | 极速效果色 | 暂时性 | 用例 |
 | --- | --- | --- | --- | --- |
 | Azure Blob 存储 | **wasb:** //url/ | **标准** | 是 | 暂时性群集 |
 | Azure Data Lake Storage Gen 2| **abfs[s]:** //url/ | **较快** | 是 | 暂时性群集 |

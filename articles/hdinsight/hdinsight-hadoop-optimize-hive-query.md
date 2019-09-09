@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: 218085d8d3969218be1a0557fdc477c730879cbe
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 60c725e084a18326cc4bc9cc05d02d103261f5a4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543695"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70809253"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Apache Hive 查询
 
 在 Azure HDInsight 中，有多种群集类型和技术可以运行 Apache Hive 查询。 创建 HDInsight 群集时，选择适当的群集类型有助于根据工作负荷的需求优化性能。
 
-例如，选择**交互式查询**群集类型为临时、 交互查询进行优化。 选择 Apache **Hadoop** 群集类型可以优化用作批处理的 Hive 查询。 **Spark** 和 **HBase** 群集类型也可以运行 Hive 查询。 有关针对不同 HDInsight 群集类型运行 Hive 查询的详细信息，请参阅[ Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hadoop/hdinsight-use-hive.md)。
+例如，选择 "**交互式查询**群集类型" 以优化即席的交互式查询。 选择 Apache **Hadoop** 群集类型可以优化用作批处理的 Hive 查询。 **Spark** 和 **HBase** 群集类型也可以运行 Hive 查询。 有关针对不同 HDInsight 群集类型运行 Hive 查询的详细信息，请参阅[ Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hadoop/hdinsight-use-hive.md)。
 
 默认情况下，Hadoop 群集类型的 HDInsight 群集不会进行性能优化。 本文介绍可应用于查询的一些最常见 Hive 性能优化方法。
 
@@ -29,11 +29,11 @@ ms.locfileid: "67543695"
 
 * 创建群集时，可以使用 Azure 门户、Azure PowerShell 或命令行接口指定工作节点的数目。  有关详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 以下屏幕截图显示了 Azure 门户上的工作节点配置：
   
-    ![scaleout_1][image-hdi-optimize-hive-scaleout_1]
+    ![scaleout_1](./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png "scaleout_1")
     
 * 创建后，还可以通过编辑工作节点的数目来进一步横向扩展群集，而无需重新创建：
 
-    ![scaleout_1][image-hdi-optimize-hive-scaleout_2]
+    ![scaleout_2](./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png "scaleout_2")
 
 有关缩放 HDInsight 的详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)
 
@@ -63,7 +63,7 @@ Tez 速度更快，因为：
 
 I/O 操作是运行 Hive 查询的主要性能瓶颈。 如果可以减少需要读取的数据量，即可改善性能。 默认情况下，Hive 查询扫描整个 Hive 表。 但是，对于只需扫描少量数据的查询（例如，使用筛选进行查询），此行为会产生不必要的开销。 使用 Hive 分区，Hive 查询只需访问 Hive 表中必要的数据量。
 
-Hive 分区的实现方法是将原始数据重新组织成新目录。 每个分区都有自身的文件目录。 分区由用户定义。 下图说明如何根据年  列来分区 Hive 表。 每年都会创建新的目录。
+Hive 分区的实现方法是将原始数据重新组织成新目录。 每个分区都有自身的文件目录。 分区由用户定义。 下图说明如何根据年列来分区 Hive 表。 每年都会创建新的目录。
 
 ![Hive 分区][image-hdi-optimize-hive-partitioning_1]
 
@@ -71,7 +71,7 @@ Hive 分区的实现方法是将原始数据重新组织成新目录。 每个�
 
 * **不要分区不足** - 根据仅包含少量值的列进行分区可能会导致创建很少的分区。 例如，根据性别（男性和女性）分区只会创建两个分区，从而最多只会将延迟降低一半。
 * **不要创建过多分区** - 另一种极端情况是，根据包含唯一值的列（例如，userid）创建分区会导致创建多个分区。 创建过多分区会给群集 namenode 带来很大压力，因为它必须处理大量的目录。
-* **避免数据偏斜** - 明智选择分区键，以便所有分区的大小均等。 例如，按“州”列分区可能会导致数据分布出现偏斜。  因为加利福尼亚州的人口几乎是佛蒙特州的 30 倍，分区大小可能会出现偏差，性能可能有极大的差异。
+* **避免数据偏斜** - 明智选择分区键，以便所有分区的大小均等。 例如，按“州”列分区可能会导致数据分布出现偏斜。 因为加利福尼亚州的人口几乎是佛蒙特州的 30 倍，分区大小可能会出现偏差，性能可能有极大的差异。
 
 若要创建分区表，请使用 *Partitioned By* 子句：
 
@@ -195,10 +195,9 @@ ORC（优化行纵栏式）格式是存储 Hive 数据的高效方式。 与其�
 在本文中，已学习了几种常见的 Hive 查询优化方法。 若要了解更多信息，请参阅下列文章：
 
 * [使用 HDInsight 中的 Apache Hive](hadoop/hdinsight-use-hive.md)
-* [在 HDInsight 中使用交互式查询分析航班延误数据](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [使用 HDInsight 中的交互式查询分析航班延误数据](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
 * [使用 HDInsight 中的 Apache Hive 分析 Twitter 数据](hdinsight-analyze-twitter-data-linux.md)
 
-[image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png
-[image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png
+
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: d3365f0a893c80043c93091c3e4e91382bdcd67e
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 0c8c2f2adb11a30b438fb41dca07519b2f74baf7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275862"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813590"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本："]
@@ -382,6 +382,7 @@ GO
 | writeBatchSize    | **每批**要插入到 SQL 表中的行数。 仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，数据工厂会根据行大小动态确定适当的批大小。 | 否                                            |
 | writeBatchTimeout | 超时前等待批量插入操作完成的时间。仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **timespan**。 例如：“00:30:00”（30 分钟）。 | 否                                            |
 | preCopyScript     | 每次运行时，将数据写入到 Azure SQL 数据仓库之前，指定复制活动要运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |
+| tableOption | 指定是否根据源架构自动创建接收器表（如果不存在）。 如果在复制活动中配置了暂存复制，则不支持创建自动表。 允许的值为`none` ：（默认） `autoCreate`、。 |否 |
 | disableMetricsCollection | 数据工厂收集用于复制性能优化和建议的指标，例如 SQL 数据仓库 Dwu。 如果你担心此行为，请指定`true`将其关闭。 | 否（默认值为 `false`） |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL 数据仓库接收器示例

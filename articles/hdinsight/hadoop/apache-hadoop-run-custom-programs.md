@@ -1,6 +1,6 @@
 ---
 title: 运行自定义 MapReduce 程序 - Azure HDInsight
-description: 何时以及如何在 HDInsight 中运行自定义的 MapReduce 程序。
+description: 何时以及如何在 Azure HDInsight 群集上运行自定义的 Apache MapReduce 程序。
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 5ed82fc21aedc9af394922059859f81cfba1867e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 305eefbaa674e414ab8134986e6cd526abe8208e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713092"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810740"
 ---
 # <a name="run-custom-mapreduce-programs"></a>运行自定义 MapReduce 程序
 

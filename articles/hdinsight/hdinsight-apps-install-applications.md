@@ -1,6 +1,6 @@
 ---
 title: 在 Azure HDInsight 上安装第三方应用程序
-description: 了解如何在 Azure HDInsight 上安装第三方 Hadoop 应用程序。
+description: 了解如何在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9b96294362400891113812e308ff59bd0e438b90
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8ed854a5775dfc20e258c14de51fe2066fa6caad
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873369"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810274"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序
 
@@ -65,7 +65,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 可以通过门户通知查看安装状态（选择门户顶部的铃铛图标）。 安装应用程序后，应用程序会出现在“已安装的应用”列表中。
 
 ## <a name="install-applications-during-cluster-creation"></a>在群集创建期间安装应用程序
-可以选择在创建群集时安装 HDInsight 应用程序。 在此过程中，HDInsight 应用程序会在群集创建并处于运行状态后安装。 若要使用 Azure 门户在群集创建过程中安装应用程序, 请使用 "**自定义**" 选项, 而不是使用默认的 "**快速创建**" 选项。
+可以选择在创建群集时安装 HDInsight 应用程序。 在此过程中，HDInsight 应用程序会在群集创建并处于运行状态后安装。 若要使用 Azure 门户在群集创建过程中安装应用程序，请使用 "**自定义**" 选项，而不是使用默认的 "**快速创建**" 选项。
 
 ## <a name="list-installed-hdinsight-apps-and-properties"></a>列出已安装的 HDInsight 应用和属性
 门户会显示群集的已安装 HDInsight 应用程序列表，以及每个已安装应用程序的属性。
