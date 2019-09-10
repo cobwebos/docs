@@ -49,7 +49,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 | Outlook 网页版 | https:\//outlook.office365.com/contoso.com |
 | Office 365 门户 | https:\//portal.office.com？ domain_hint = contoso, https:\//www.office.com？ domain_hint = contoso .com |
 
-此外, 如果应用程序将登录请求发送到 Azure AD 的终结点 (即, https:\//login.microsoftonline.com/contoso.com/<), 则用户将获得无提示登录体验。> 或 https:\//login.microsoftonline.com/<tenant_ID>/<.。>-而不是 Azure AD 公用终结点, 即 https:\//login.microsoftonline.com/common/< .。。>。 以下为提出此类登录请求的应用程序的非详尽列表。
+此外, 如果应用程序将登录请求发送到 Azure AD 的终结点 (即, https:\//login.microsoftonline.com/contoso.com/<), 则用户将获得无提示登录体验。> 或 https:\//login.microsoftonline.com/<tenant_ID>/<..>-而不是 Azure AD 公用终结点, 即 https:\//login.microsoftonline.com/common/<...>。 以下为提出此类登录请求的应用程序的非详尽列表。
 
 | 应用程序名 | 可供使用的应用程序 URL |
 | -- | -- |

@@ -466,7 +466,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 | --- | ---| --- | --- |
 | /oracle/\<SID >/origlogaA & mirrlogB | 高级 | None | 无需 |
 | /oracle/\<SID >/origlogaB & mirrlogA | 高级 | None | 无需 |
-| /oracle/\<SID >/sapdata1.。。北 | 高级 | 只读 | 可使用 |
+| /oracle/\<SID >/sapdata1...北 | 高级 | 只读 | 可使用 |
 | /oracle/\<SID >/oraarch | 标准 | None | 无需 |
 | Oracle 主页, saptrace, ... | 操作系统磁盘 | | 无需 |
 
@@ -482,7 +482,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 | /oracle/\<SID >/origlogaB | 高级 | None | 可使用 |
 | /oracle/\<SID >/mirrlogAB | 高级 | 无 | 可使用 |
 | /oracle/\<SID>/mirrlogBA | 高级 | 无 | 可使用 |
-| /oracle/\<SID >/sapdata1.。。北 | 高级 | 只读 | 建议  |
+| /oracle/\<SID >/sapdata1...北 | 高级 | 只读 | 建议  |
 | /oracle/\<SID >/sapdata (n + 1) * | 高级 | 无 | 可使用 |
 | /oracle/\<SID >/oraarch * | 高级 | 无 | 无需 |
 | Oracle 主页, saptrace, ... | 操作系统磁盘 | 无需 |

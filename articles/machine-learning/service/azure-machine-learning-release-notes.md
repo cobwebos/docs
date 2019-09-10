@@ -12,7 +12,7 @@ ms.date: 08/19/2019
 ms.custom: seodec18
 ms.openlocfilehash: 78d16e8e6fc43644cdb318f8e402c2e8bbe0363e
 ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/06/2019
 ms.locfileid: "70772495"
@@ -47,7 +47,7 @@ ms.locfileid: "70772495"
     mydata = all_datasets['my-data'] 
     ```
     
-    + 引入`parition_format` `Dataset.Tabular.from_delimited_files`和作为`Dataset.Tabular.from_parquet.files`参数。 每个数据路径的分区信息将基于指定的格式提取到列中。 "{column_name}" 创建字符串列，"{column_name： yyyy/MM/dd/HH/MM/ss}" 创建 datetime 列，其中，"yyyy"、"MM"、"dd"、"HH"、"mm" 和 "ss" 用于提取 datetime 类型的年、月、日、小时、分钟和秒。 Partition_format 应从第一个分区键的位置开始，直到文件路径结束。 例如，给定路径 ".。/USA/2019/01/01/data.csv ' 其中，分区是按国家/地区和时间，partition_format = '/{Country}/{PartitionDate： yyyy/MM/dd}/data .csv ' 创建值为 "USA"、日期时间列为 "PartitionDate" 且值为 "2019-01-01" 的字符串列 "Country"。
+    + 引入`parition_format` `Dataset.Tabular.from_delimited_files`和作为`Dataset.Tabular.from_parquet.files`参数。 每个数据路径的分区信息将基于指定的格式提取到列中。 "{column_name}" 创建字符串列，"{column_name： yyyy/MM/dd/HH/MM/ss}" 创建 datetime 列，其中，"yyyy"、"MM"、"dd"、"HH"、"mm" 和 "ss" 用于提取 datetime 类型的年、月、日、小时、分钟和秒。 Partition_format 应从第一个分区键的位置开始，直到文件路径结束。 例如，给定路径 "../USA/2019/01/01/data.csv ' 其中，分区是按国家/地区和时间，partition_format = '/{Country}/{PartitionDate： yyyy/MM/dd}/data .csv ' 创建值为 "USA"、日期时间列为 "PartitionDate" 且值为 "2019-01-01" 的字符串列 "Country"。
     + `to_csv_files`和`to_parquet_files`方法已添加到`TabularDataset`。 这些方法`FileDataset`通过将数据转换`TabularDataset`为指定格式的文件来实现与之间的转换。
     + 保存由 Model （）生成的 Dockerfile 时，自动登录到基本映像注册表。
     + 不再需要 "gpu_support";AzureML 现在会自动检测并使用 nvidia docker 扩展（如果可用）。 它将在未来版本中删除。

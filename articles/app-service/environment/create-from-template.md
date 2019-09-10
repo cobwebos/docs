@@ -68,7 +68,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 创建 ASE 可能需要约一小时。 然后，对于触发部署的订阅，ASE 将显示在门户的 ASE 列表中。
 
 ## <a name="upload-and-configure-the-default-ssl-certificate"></a>上传和配置“默认”SSL 证书
-SSL 证书必须与 ASE 关联，作为用于建立应用的 SSL 连接的“默认”SSL 证书。 如果 ASE 的默认 DNS 后缀是 internal-contoso.com，则需要对 *.internal-contoso.com 有效的 SSL 证书才可连接到 https://some-random-app.internal-contoso.com。 
+SSL 证书必须与 ASE 关联，作为用于建立应用的 SSL 连接的“默认”SSL 证书。 如果 ASE 的默认 DNS 后缀是 internal-contoso.com，则需要对 *.internal-contoso.com 有效的 SSL 证书才可连接到 [https://some-random-app.internal-contoso.com](https://some-random-app.internal-contoso.com )。 
 
 可通过三种方式获取有效的 SSL 证书：使用内部证书颁发机构、向外部颁发者购买证书或使用自签名证书。 无论 SSL 证书的来源如何，都需要正确配置以下证书属性：
 

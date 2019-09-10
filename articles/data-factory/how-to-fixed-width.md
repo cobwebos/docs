@@ -85,7 +85,7 @@ ms.locfileid: "70210671"
 
   ![固定宽度输出](media/data-flow/fxdoutput.png)
 
-  固定宽度数据现在由四个字符拆分, 并分配到 Col1、Col2、Col3、Col4 .。。根据上面的示例, 我将数据拆分为4列
+  固定宽度数据现在由四个字符拆分, 并分配到 Col1、Col2、Col3、Col4 ...根据上面的示例, 我将数据拆分为4列
 
 ## <a name="next-steps"></a>后续步骤
 
