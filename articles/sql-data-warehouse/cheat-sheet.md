@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 08/23/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 6c198b6d5e9ecfed3f36ddc3be831af85a913ca5
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 1bbb0148e6f4be2afc777960afcda9c727328206
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69995841"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195056"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库速查表
 此速查表提供有关生成 Azure SQL 数据仓库解决方案的有用提示和最佳做法。 在开始之前，请阅读 [Azure SQL 数据仓库的工作负荷模式和对立模式](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns)中的每个详细步骤，其中解释了 SQL 数据仓库的定义。
@@ -35,7 +35,7 @@ ms.locfileid: "69995841"
 
 ## <a name="data-migration"></a>数据迁移
 
-首先，请将数据载入 [Azure Data Lake Store](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) 或 Azure Blob 存储。 接下来，使用 PolyBase 将数据载入 SQL 数据仓库的临时表中。 使用以下配置：
+首先，请将数据载入 [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) 或 Azure Blob 存储。 接下来，使用 PolyBase 将数据载入 SQL 数据仓库的临时表中。 使用以下配置：
 
 | 设计 | 建议 |
 |:--- |:--- |
@@ -161,6 +161,6 @@ SQL 数据仓库的一个重要功能是可以[管理计算资源](sql-data-ware
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
 [数据迁移]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
-[Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
+[Azure Data Lake Storage]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
 [sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql
