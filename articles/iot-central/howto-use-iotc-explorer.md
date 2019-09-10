@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4d17f0e5273c7397bd9c6a71d14b7992d8652768
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 38cbe43e9038a47c4e222fd4744f0b844f9ddb4e
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165861"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845687"
 ---
 # <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>使用 Azure IoT Central 资源管理器监视设备连接性
 
-本主题适用于构建者和管理员  。
+本主题适用于构建者和管理员。
 
 使用 IoT Central 资源管理器 CLI，了解如何将设备发送到 IoT Central，并观察 IoT 中心孪生中的更改。 此开放源代码工具可用于更深入地了解设备连接状态，并且设备的诊断问题消息不会到达云或者设备不响应孪生更改。
 
-[请访问 GitHub 中的 iotc 资源管理器存储库。](https://aka.ms/iotciotcexplorercligithub)
+[访问 GitHub 中的 iotc 存储库。](https://aka.ms/iotciotcexplorercligithub)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 + Node.js 8.x 或更高版本 - https://nodejs.org
-+ 你的应用程序的管理员必须生成为你要在 iotc 资源管理器中使用的访问令牌
++ 应用程序的管理员必须生成访问令牌，才能在 iotc 中使用
 
-## <a name="install-iotc-explorer"></a>安装 iotc 资源管理器
+## <a name="install-iotc-explorer"></a>安装 iotc-资源管理器
 
 从命令行运行以下命令以安装：
 
@@ -37,33 +37,33 @@ npm install -g iotc-explorer
 ```
 
 > [!NOTE]
-> 通常需要运行安装命令与`sudo`类似于 Unix 的环境中。
+> 通常需要`sudo`在类似于 Unix 的环境中运行安装命令。
 
-## <a name="run-iotc-explorer"></a>运行 iotc 资源管理器
+## <a name="run-iotc-explorer"></a>运行 iotc-资源管理器
 
-以下各节介绍常见命令和选项的运行时可以使用`iotc-explorer`。 若要查看完整的命令和选项集，请将传递`--help`到`iotc-explorer`或任何其子命令。
+以下各节介绍了可在运行`iotc-explorer`时使用的常见命令和选项。 若要查看完整的命令和选项集，请`--help`传递`iotc-explorer`到或它的任何子命令。
 
 ### <a name="login"></a>登录
 
 在开始之前，需要 IoT Central 应用程序的管理员，以获取访问令牌供你使用。 管理员将执行以下步骤：
 
-1. 导航到**Administration**然后**的访问令牌**。
-1. 选择**生成令牌**。
+1. 导航到 "**管理**"，然后**访问令牌**。
+1. 选择 "**生成令牌**"。
     ![访问令牌页屏幕截图](media/howto-use-iotc-explorer/accesstokenspage.png)
 
-1. 输入标记名称，选择**下一步**，然后**副本**。
+1. 输入令牌名称，选择 "**下一步**"，然后单击 "**复制**"。
     > [!NOTE]
-    > 因此它必须关闭对话框前复制令牌值仅一次，显示。 关闭对话框之后, 它将永远不会再次显示。
+    > 令牌值仅显示一次，因此必须在关闭对话之前复制它。 关闭对话框后，将不再显示该对话框。
 
     ![复制访问令牌的对话框屏幕截图](media/howto-use-iotc-explorer/copyaccesstoken.png)
 
-可以使用该标记，如下所示登录到 CLI:
+可以使用令牌登录到 CLI，如下所示：
 
 ```cmd/sh
 iotc-explorer login "<Token value>"
 ```
 
-如果想要不具有保存在 shell 历史记录中的令牌，可以将该令牌并改为提供出现提示时：
+如果你不希望在 shell 历史记录中保留标记，则可以在出现提示时保留该令牌：
 
 ```cmd/sh
 iotc-explorer login
@@ -71,7 +71,7 @@ iotc-explorer login
 
 ### <a name="monitor-device-messages"></a>监视设备消息
 
-可以使用 `monitor-messages` 命令，在应用程序中监视来自特定设备或所有设备的消息。 此命令启动持续输出新消息到达的观察程序：
+可以使用 `monitor-messages` 命令，在应用程序中监视来自特定设备或所有设备的消息。 此命令启动观察程序，在新消息到达时持续输出它们：
 
 若要查看应用程序中的所有设备，请运行以下命令：
 
@@ -89,9 +89,9 @@ iotc-explorer monitor-messages
 iotc-explorer monitor-messages <your-device-id>
 ```
 
-也可以通过添加输出的多计算机友好格式`--raw`选项用于命令：
+还可以通过将`--raw`选项添加到命令中，输出更适合计算机的格式：
 
-```
+```cmd/sh
 iotc-explorer monitor-messages --raw
 ```
 
@@ -115,4 +115,4 @@ iotc-explorer get-twin <your-device-id> --raw
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已了解如何使用 IoT 中心资源管理器，建议下一步是探索[管理设备 IoT Central](howto-manage-devices.md)。
+现在，你已了解如何使用 IoT Central 资源管理器，接下来要做的是探索[管理设备 IoT Central](howto-manage-devices.md)。

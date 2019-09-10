@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 3c3205b64803ac4ee67997ef546ffd64c89f23b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5918cc3835d00536845a96ed81ef663867291e29
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624834"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858813"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
 
@@ -68,9 +68,9 @@ compute_target.wait_for_completion(
 
 ## <a name="access-data-using-tabulardataset-function"></a>使用 TabularDataset 函数访问数据
 
-将 X 和 y 定义`TabularDataset`为, 它们会传递到 AutoMLConfig 中的自动 ML。 `from_delimited_files`默认情况下, `infer_column_types`将设置为 true, 这将自动推断列类型。 
+将 X 和 y 定义`TabularDataset`为，它们会传递到 AutoMLConfig 中的自动 ML。 `from_delimited_files`默认情况下， `infer_column_types`将设置为 true，这将自动推断列类型。 
 
-如果要手动设置列类型, 可以将`set_column_types`参数设置为手动设置每个列的类型。 在下面的代码示例中，数据来自 sklearn 包。
+如果要手动设置列类型，可以将`set_column_types`参数设置为手动设置每个列的类型。 在下面的代码示例中，数据来自 sklearn 包。
 
 ```python
 # Create a project_folder if it doesn't exist
@@ -101,7 +101,7 @@ y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
 
 ## <a name="create-run-configuration"></a>创建运行配置
 
-若要使依赖项可用于 get_data. py 脚本, 请`RunConfiguration`定义具有定义`CondaDependencies`的对象。 对中`run_configuration` `AutoMLConfig`的参数使用此对象。
+若要使依赖项可用于 get_data. py 脚本，请`RunConfiguration`定义具有定义`CondaDependencies`的对象。 对中`run_configuration` `AutoMLConfig`的参数使用此对象。
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -227,13 +227,13 @@ RunDetails(remote_run).show()
 
 小组件将显示可用于查看和浏览单个运行详细信息的 URL。  
 
-如果你不在 Jupyter 笔记本中, 可以从运行本身显示 URL:
+如果你不在 Jupyter 笔记本中，可以从运行本身显示 URL：
 
 ```
 remote_run.get_portal_url()
 ```
 
-你的工作区中提供了相同的信息。  若要了解有关这些结果的详细信息, 请参阅[了解自动化机器学习结果](how-to-understand-automated-ml.md)。
+你的工作区中提供了相同的信息。  若要了解有关这些结果的详细信息，请参阅[了解自动化机器学习结果](how-to-understand-automated-ml.md)。
 
 ### <a name="view-logs"></a>查看日志
 
@@ -278,7 +278,7 @@ print(per_class_imp)
 
 ![模型可说明性控制台输出](./media/how-to-auto-train-remote/expl-print.png)
 
-也可通过工作区的 Azure 门户中的小组件 UI 和 Web UI 将功能重要性可视化。
+还可以通过小组件 UI、Azure 门户上的 web UI 或[工作区登陆页面（预览）](https://ml.azure.com)来可视化功能重要性。 
 
 ![模型可说明性 UI](./media/how-to-auto-train-remote/model-exp.png)
 

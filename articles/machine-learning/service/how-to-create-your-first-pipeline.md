@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 87897c031ff717fb67830cb8fa3bc5fced336418
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 12ba2991f22576dc62559d5c62dc4a0e769d2681
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278857"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858768"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中创建和运行机器学习管道
 
@@ -206,7 +206,7 @@ except ComputeTargetException:
     databricks_compute.wait_for_completion(True)
 ```
 
-有关更详细的示例，请参阅 GitHub 上的[示例笔记本](https://aka.ms/pl-databricks)。
+有关更详细的示例, 请参阅 GitHub 上的[示例笔记本](https://aka.ms/pl-databricks)。
 
 ### <a id="adla"></a>Azure Data Lake Analytics
 
@@ -256,14 +256,14 @@ except ComputeTargetException:
     adla_compute.wait_for_completion(True)
 ```
 
-有关更详细的示例，请参阅 GitHub 上的[示例笔记本](https://aka.ms/pl-adla)。
+有关更详细的示例, 请参阅 GitHub 上的[示例笔记本](https://aka.ms/pl-adla)。
 
 > [!TIP]
 > Azure 机器学习管道只能处理 Data Lake Analytics 帐户的默认数据存储中存储的数据。 如果需要处理的数据不在默认存储中，可以在训练之前使用 [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) 复制数据。
 
 ## <a id="steps"></a>构造管道步骤
 
-创建计算目标并将其附加到工作区后，就可以定义管道步骤了。 可以通过 Azure 机器学习 SDK 使用许多内置步骤。 这些步骤中最基本的是[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)，它在指定的计算目标中运行 Python 脚本：
+创建计算目标并将其附加到工作区后，就可以定义管道步骤了。 可以通过 Azure 机器学习 SDK 使用许多内置步骤。 这些步骤中最基本的是[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), 它在指定的计算目标中运行 Python 脚本:
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
@@ -278,7 +278,7 @@ trainStep = PythonScriptStep(
 )
 ```
 
-在协作环境中使用`allow_reuse`管道时，重复使用以前的结果（）是关键的，因为消除不必要的重新运行会带来灵活性。 当步骤的 script_name、输入和参数保持不变时，将使用默认行为。 当重复使用该步骤的输出时，该作业不会提交到计算，而是从上一次运行的结果立即用于下一步的运行。 如果`allow_reuse`设置为 false，则在管道执行过程中将始终为此步骤生成新的运行。 
+在协作环境中使用`allow_reuse`管道时，重复使用以前的结果（）是关键的，因为消除不必要的重新运行会带来灵活性。 当步骤的 script_name、输入和参数保持不变时，将使用默认行为。 当重复使用该步骤的输出时, 该作业不会提交到计算, 而是从上一次运行的结果立即用于下一步的运行。 如果`allow_reuse`设置为 false，则在管道执行过程中将始终为此步骤生成新的运行。 
 
 定义步骤后，使用其中的部分或所有步骤生成管道。
 
@@ -318,14 +318,14 @@ steps = [dbStep]
 pipeline1 = Pipeline(workspace=ws, steps=steps)
 ```
 
-有关详细信息，请参阅[azure 管道-步骤包](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)和[管道类](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)引用。
+有关详细信息, 请参阅[azure 管道-步骤包](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)和[管道类](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)引用。
 
 ## <a name="submit-the-pipeline"></a>提交管道
 
 提交管道时，Azure 机器学习服务检查每个步骤的依赖项，并上传指定的源目录的快照。 如果未指定源目录，则上传当前的本地目录。 快照也作为工作区试验的一部分存储。
 
 > [!IMPORTANT]
-> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果同时存在这两个`.amlignore`文件，则该文件将优先。
+> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果同时存在这两个`.amlignore`文件, 则该文件将优先。
 >
 > 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 
@@ -348,13 +348,13 @@ pipeline_run1.wait_for_completion()
 
 ![以管道方式运行实验的图](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
-有关详细信息，请参阅[试验类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)引用。
+有关详细信息, 请参阅[试验类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)引用。
 
 
 
 ## <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
 
-当你开始在源目录为本地 Git 存储库的训练运行时，有关存储库的信息存储在运行历史记录中。 例如，将在历史记录中记录存储库的当前提交 ID。
+当你开始在源目录为本地 Git 存储库的训练运行时, 有关存储库的信息存储在运行历史记录中。 例如, 将在历史记录中记录存储库的当前提交 ID。
 
 ## <a name="publish-a-pipeline"></a>发布管道
 
@@ -410,19 +410,21 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>查看已发布管道的结果
 
 查看所有已发布管道的列表及其运行详细信息：
-1. 登录到 [Azure 门户](https://portal.azure.com/)。  
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. [查看工作区](how-to-manage-workspace.md#view)以查找管道列表。
  ![机器学习管道列表](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. 选择特定的管道以查看运行结果。
 
+[工作区登陆页面（预览版）](https://ml.azure.com)中也提供了这些结果。
+
 ### <a name="disable-a-published-pipeline"></a>禁用已发布的管道
 
 若要从已发布的管道列表中隐藏管道，请将其禁用：
 
 ```
-# Get the pipeline by using its ID in the Azure portal
+# Get the pipeline by using its ID from the Azure portal
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
@@ -432,12 +434,12 @@ p.disable()
 
 ## <a name="caching--reuse"></a>缓存 & 重用  
 
-为了优化和自定义管道的行为，您可以围绕缓存和重新使用来执行一些操作。 例如，您可以选择：
-+ 在[步骤定义](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)期间设置`allow_reuse=False` ，**关闭步骤运行输出的默认重用**。 在协作环境中使用管道时，重复使用是关键的，因为消除不必要的运行可提供灵活性。 但是，您可以选择不使用。
+为了优化和自定义管道的行为，您可以围绕缓存和重新使用来执行一些操作。 例如, 您可以选择:
++ 在[步骤定义](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)期间设置`allow_reuse=False` ,**关闭步骤运行输出的默认重用**。 在协作环境中使用管道时, 重复使用是关键的, 因为消除不必要的运行可提供灵活性。 但是，您可以选择不使用。
 + 将**哈希扩展到脚本以外**，还可以使用 source_directory 将绝对路径或相对路径添加到其他文件和目录`hash_paths=['<file or directory']` 
 + 对**运行方式中的所有步骤强制执行输出重新生成**`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-默认情况下`allow_reuse` ，将启用 "步骤" 并只对主脚本文件进行哈希处理。 因此，如果给定步骤的脚本与相同（`script_name`、输入和参数）保持不变，则会重复使用上一步运行的输出，该作业不会提交到计算，而以前运行的结果将立即用于下一步骤.  
+默认情况下`allow_reuse` , 将启用 "步骤" 并只对主脚本文件进行哈希处理。 因此, 如果给定步骤的脚本与相同 (`script_name`、输入和参数) 保持不变, 则会重复使用上一步运行的输出, 该作业不会提交到计算, 而以前运行的结果将立即用于下一步骤.  
 
 ```python
 step = PythonScriptStep(name="Hello World",

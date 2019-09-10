@@ -10,64 +10,64 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 290753b866f15e09a52572fdd7a43a60fc2812d6
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575539"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859227"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>排查连接问题
 
-本文列出了有关连接到 SQL 数据仓库的常见故障排除方法。
+本文列出了与连接到 SQL 数据仓库相关的常见故障排除技术。
 - [检查服务可用性](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [检查是否已暂停或缩放操作](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
+- [检查暂停的或正在缩放的操作](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [检查防火墙设置](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
 - [检查 VNet/服务终结点设置](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [检查最新的驱动程序](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
+- [检查最新驱动程序](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
 - [检查连接字符串](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
 - [间歇性连接问题](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
 - [常见错误消息](./sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
 ## <a name="check-service-availability"></a>检查服务可用性
 
-检查该服务是否可用。 在 Azure 门户中, 请前往要尝试连接的 SQL 数据仓库。 在左侧的 TOC 面板中, 单击 "**诊断并解决问题**"。
+查看服务是否可用。 在 Azure 门户中转到尝试连接的 SQL 数据仓库。 在左侧 TOC 面板中，单击“诊断并解决问题”。
 
 ![选择资源运行状况](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-你的 SQL 数据仓库的状态将显示在此处。 如果服务未显示为 "**可用**", 请查看其他步骤。
+SQL 数据仓库的状态将显示在这里。 如果服务未显示为“可用”，请查看更多的步骤。
 
-![可用服务](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
+![服务可用](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-如果资源运行状况显示数据仓库已暂停或正在缩放, 请按照指南操作以恢复数据仓库。
+如果资源运行状况显示数据仓库已暂停或正在缩放，请按指南恢复数据仓库的操作。
 
-![服务暂停](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)有关资源运行状况的其他信息可在此处找到。
+![服务暂停](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) 可以在此处找到有关资源运行状况的其他信息。
 
-## <a name="check-for-paused-or-scaling-operation"></a>检查是否已暂停或缩放操作
+## <a name="check-for-paused-or-scaling-operation"></a>检查暂停的或正在缩放的操作
 
-检查门户, 查看是否已暂停或缩放 SQL 数据仓库。
+检查门户，看 SQL 数据仓库是已暂停还是正在缩放。
 
-![已暂停服务](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
+![服务已暂停](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-如果你发现你的服务已暂停或正在缩放, 请检查其在维护计划期间是否不会出现。 在 SQL 数据仓库*概述*门户上, 你将看到选择的维护计划。
+如果看到服务已暂停或正在缩放，请查看一下这是否是你的维护计划。 在门户的 SQL 数据仓库概览中，可以看到所选的维护计划。
 
-![概述维护计划](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
+![维护计划概览](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-否则, 请与 IT 管理员联系以验证此维护不是计划事件。 若要恢复 SQL 数据仓库, 请执行[此处](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)概述的步骤。
+否则，请与 IT 管理员联系，验证该维护是否为计划的事件。 若要恢复 SQL 数据仓库，请按[此处](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)概述的步骤操作。
 
 ## <a name="check-your-firewall-settings"></a>检查防火墙设置
 
-SQL 数据仓库通过端口 1433 进行通信。   如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 在这种情况下, 你无法连接到 Azure SQL 数据库服务器, 除非 IT 部门打开了端口1433。 有关防火墙配置的其他信息, 请参阅[此处](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal)。
+SQL 数据仓库通过端口 1433 进行通信。   如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 在这种情况下，将无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。 可从[此处](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)找到有关防火墙配置的更多信息。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>检查 VNet/服务终结点设置
 
-如果收到错误40914和 40615, 请参阅[此处的错误描述和解决方法](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)。
+如果收到 40914 和 40615 错误，请参阅[此处的错误说明和解决方法](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)。
 
-## <a name="check-for-the-latest-drivers"></a>检查最新的驱动程序
+## <a name="check-for-the-latest-drivers"></a>检查最新驱动程序
 
 ### <a name="software"></a>软件
 
-请检查以确保使用最新的工具连接到 SQL 数据仓库:
+请进行检查，确保使用最新工具连接到 SQL 数据仓库：
 
 * SSMS
 * Azure Data Studio
@@ -75,7 +75,7 @@ SQL 数据仓库通过端口 1433 进行通信。   如果尝试从企业网
 
 ### <a name="drivers"></a>驱动程序
 
-请检查以确保使用的是最新的驱动程序版本。  使用较旧版本的驱动程序可能会导致意外的行为, 因为旧驱动程序可能不支持新功能。
+请进行检查，确保使用最新的驱动程序版本。  使用旧版驱动程序可能会导致意外行为，因为旧驱动程序可能不支持新功能。
 
 * [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
 * [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
@@ -84,7 +84,7 @@ SQL 数据仓库通过端口 1433 进行通信。   如果尝试从企业网
 
 ## <a name="check-your-connection-string"></a>检查连接字符串
 
-检查以确保正确设置了连接字符串。  下面是一些示例。  可在此处找到有关[连接字符串](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings)的其他信息。
+请进行检查，确保正确设置了连接字符串。  下面是一些示例。  可在[此处](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings)找到有关连接字符串的其他信息。
 
 ADO.NET 连接字符串
 
@@ -112,11 +112,11 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>间歇性连接问题
 
-检查是否在服务器上遇到大量具有大量排队请求的负载。 可能需要为数据仓库扩展其他资源。
+检查是否在服务器上遇到具有大量排队请求的重型负载。 可能需要纵向扩展数据仓库，以获取更多资源。
 
 ## <a name="common-error-messages"></a>常见错误消息
 
-错误40914和 40615, 请在[此处查看错误说明和解决方法](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)。
+对于 40914 和 40615 错误，请参阅[此处的错误说明和解决方法](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)。
 
 ## <a name="still-having-connectivity-issues"></a>仍有连接问题？
-创建[支持票证](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket), 使工程团队能够为你提供支持。
+创建[支持票证](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)，使工程团队能够为你提供支持。

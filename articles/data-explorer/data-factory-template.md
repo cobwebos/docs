@@ -8,12 +8,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
-ms.openlocfilehash: acfcee6e8308bc508bd709c40bd1794beab3130f
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 5a6aebd276ef8658da9ca763be7da5c38a9c772a
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804725"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873428"
 ---
 # <a name="use-azure-data-factory-template-for-bulk-copy-from-database-to-azure-data-explorer"></a>使用 Azure 数据工厂模板从数据库大容量复制到 Azure 数据资源管理器
 
@@ -38,19 +38,19 @@ Azure 数据资源管理器是一个快速、完全托管的数据分析服务�
 
 SQL Server 源表格式的示例：
     
-    ```sql   
-    CREATE TABLE control_table (
-        PartitionId int,
-        SourceQuery varchar(255),
-        ADXTableName varchar(255)
-    );
-    ```
+```sql   
+CREATE TABLE control_table (
+PartitionId int,
+SourceQuery varchar(255),
+ADXTableName varchar(255)
+);
+```
     
-        |属性  |描述  | 示例
-        |---------|---------| ---------|
-        |PartitionId   |   复制顺序 | 1  |  
-        |SourceQuery   |   指示将在管道运行时中复制哪些数据的查询 | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
-        |ADXTableName  |  目标表名称 | MyAdxTable       |  
+|属性  |描述  | 示例
+|---------|---------| ---------|
+|PartitionId   |   复制顺序 | 1  |  
+|SourceQuery   |   指示将在管道运行时中复制哪些数据的查询 | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
+|ADXTableName  |  目标表名称 | MyAdxTable       |  
 
 如果你的**ControlTableDataset**采用不同的格式，请为你的格式创建一个类似的**ControlTableDataset** 。
 

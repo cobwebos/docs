@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 07/30/2019
 ms.author: erhopf
 ms.openlocfilehash: ffefde7d692950fc272ab2502ad8afe254bf48f1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68703093"
 ---
-以下限制适用于每个 Azure 订阅的认知服务资源数。 每个认知服务可能有其他限制, 有关详细信息, 请参阅[Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/)。
+以下限制适用于每个 Azure 订阅的认知服务资源数。 每个认知服务可能有其他限制，有关详细信息，请参阅[Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/)。
 
-| 类型 | 限制 | 示例 |
+| type | 限制 | 示例 |
 |------|-------|---------|
-| 认知服务资源的混合 | 最多200个认知服务资源。 | 100在美国西部2、50语音服务资源中计算机视觉的资源, 以及50美国东部的文本分析资源。 |
-| 一种认知服务资源。 | 每个区域最多100个资源, 最多包含200个认知服务资源。 | 100在美国西部2计算机视觉资源, 100 计算机视觉美国东部资源。 |
+| 认知服务资源的混合 | 最多200个认知服务资源。 | 100在美国西部2、50语音服务资源中计算机视觉的资源，以及50美国东部的文本分析资源。 |
+| 一种认知服务资源。 | 每个区域最多100个资源，最多包含200个认知服务资源。 | 100在美国西部2计算机视觉资源，100计算机视觉美国东部资源。 |

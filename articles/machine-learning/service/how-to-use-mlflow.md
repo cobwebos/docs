@@ -1,7 +1,7 @@
 ---
 title: 使用 MLflow
 titleSuffix: Azure Machine Learning service
-description: 设置 MLflow 与 Azure 机器学习以记录指标 & 项目, 并从 Databricks、本地环境或 VM 环境部署模型。
+description: 设置 MLflow 与 Azure 机器学习以记录指标 & 项目，并从 Databricks、本地环境或 VM 环境部署模型。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,14 +11,14 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: d819479c5e4bdbf8287dc7408c0f7813f5e32b13
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c7bed307373289c6a6f76117fa07ee2ee3242bfc
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900174"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860456"
 ---
-# <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>通过 MLflow 和 Azure 机器学习 service (预览版) 跟踪指标和部署模型
+# <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>通过 MLflow 和 Azure 机器学习 service （预览版）跟踪指标和部署模型
 
 本文演示如何使用 Azure 机器学习服务启用 MLflow 的跟踪 URI 和日志记录 API (统称为[MLflow 跟踪](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api))。 这样做使您能够:
 
@@ -28,7 +28,7 @@ ms.locfileid: "69900174"
 
 [MLflow](https://www.mlflow.org)是一个开源库, 用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件, 无论是在本地还是在虚拟机上 (即使在 Azure Databricks 上), 都可记录和跟踪你的培训运行指标和模型项目, 无论是在本地还是在虚拟机上进行测试。
 
-下图说明了使用 MLflow 跟踪时, 可以执行任何试验, 无论它位于虚拟机上的远程计算目标上、是否在本地计算机上, 还是在 Azure Databricks 群集上, 并跟踪其运行指标和存储模型项目在 Azure 机器学习工作区中。
+下图说明了使用 MLflow 跟踪时，可以执行任何试验，无论它位于虚拟机上的远程计算目标上、是否在本地计算机上，还是在 Azure Databricks 群集上，并跟踪其运行指标和存储模型项目在 Azure 机器学习工作区中。
 
 ![mlflow 与 azure 机器学习示意图](media/how-to-use-mlflow/mlflow-diagram-track.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "69900174"
  MLflow 跟踪只提供指标日志记录和项目存储功能, 这些功能仅在[Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)中可用。
 
 
-| | MLflow 跟踪 & 部署 | Azure 机器学习 Python SDK |  Azure 机器学习 CLI | Azure 门户|
+| | MLflow 跟踪 & 部署 | Azure 机器学习 Python SDK |  Azure 机器学习 CLI | Azure 门户或工作区登陆页面（预览）|
 |---|---|---|---|---|
 | 管理工作区 |   | ✓ | ✓ | ✓ |
 | 使用数据存储  |   | ✓ | ✓ | |
@@ -59,7 +59,7 @@ ms.locfileid: "69900174"
 
 ## <a name="track-local-runs"></a>跟踪本地运行
 
-通过 Azure 机器学习 service 的 MLflow 跟踪, 你可以将记录的指标和项目从本地运行存储到 Azure 机器学习工作区中。
+通过 Azure 机器学习 service 的 MLflow 跟踪，你可以将记录的指标和项目从本地运行存储到 Azure 机器学习工作区中。
 
 `azureml-contrib-run`安装包以使用 MLflow 跟踪, 并在 Jupyter Notebook 或代码编辑器中本地运行试验 Azure 机器学习。
 
@@ -84,7 +84,7 @@ mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 ```
 
 >[!NOTE]
->跟踪 URI 的有效时间最大为1小时或更短。 如果在某一空闲时间后重新启动脚本, 请使用 get_mlflow_tracking_uri API 来获取新的 URI。
+>跟踪 URI 的有效时间最大为1小时或更短。 如果在某一空闲时间后重新启动脚本，请使用 get_mlflow_tracking_uri API 来获取新的 URI。
 
 设置 MLflow 试验名称`set_experiment()` , 并开始`start_run()`运行定型。 然后使用`log_metric()`激活 MLflow 日志记录 API 并开始记录定型运行指标。
 
@@ -98,7 +98,7 @@ with mlflow.start_run():
 
 ## <a name="track-remote-runs"></a>跟踪远程运行
 
-通过 Azure 机器学习 service 的 MLflow 跟踪, 你可以将记录的指标和项目从远程运行存储到 Azure 机器学习工作区中。
+通过 Azure 机器学习 service 的 MLflow 跟踪，你可以将记录的指标和项目从远程运行存储到 Azure 机器学习工作区中。
 
 远程运行使你可以在更强大的计算 (例如启用 GPU 的虚拟机或机器学习计算群集) 上训练模型。 请参阅[设置模型定型的计算目标](how-to-set-up-training-targets.md), 了解不同的计算选项。
 
@@ -141,9 +141,9 @@ run = exp.submit(src)
 
 ## <a name="track-azure-databricks-runs"></a>跟踪 Azure Databricks 运行
 
-通过 Azure 机器学习 service 的 MLflow 跟踪, 你可以将 Databricks 中记录的指标和项目存储在 Azure 机器学习工作区中。
+通过 Azure 机器学习 service 的 MLflow 跟踪，你可以将 Databricks 中记录的指标和项目存储在 Azure 机器学习工作区中。
 
-若要使用 Azure Databricks 运行 Mlflow 试验, 需要首先创建[Azure Databricks 工作区和群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)
+若要使用 Azure Databricks 运行 Mlflow 试验，需要首先创建[Azure Databricks 工作区和群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)
 
 在群集中, 请确保从 PyPi 安装*mlflow*库, 以确保群集有权访问所需的函数和类。
 
@@ -203,7 +203,7 @@ mlflow.log_metric('epoch_loss', loss.item())
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>查看工作区中的指标和项目
 
-MLflow 日志记录中的指标和项目将保存在工作区中。 若要随时查看, 请导航到工作区, 并按名称查找[Azure 门户](https://portal.azure.com)上的试验, 或者运行以下代码。 
+MLflow 日志记录中的指标和项目将保存在工作区中。 若要随时查看，请导航到工作区，然后在[Azure 门户](https://portal.azure.com)或[工作区登陆页面（预览）](https://ml.azure.com)中按名称查找试验。  或运行以下代码。 
 
 ```python
 run.get_metrics()
@@ -214,13 +214,13 @@ ws.get_details()
 
 将 MLflow 试验作为 Azure 机器学习 web 服务进行部署, 可以利用 Azure 机器学习模型管理和数据偏差检测功能, 并将其应用于生产模型。
 
-下图演示了使用 MLflow 部署 API, 你可以将现有的 MLflow 模型部署为 Azure 机器学习 web 服务, 尽管它们的框架有: PyTorch、Tensorflow、scikit-learn、ONNX 等, 并在中管理你的生产模型你的工作区。
+下图演示了使用 MLflow 部署 API，你可以将现有的 MLflow 模型部署为 Azure 机器学习 web 服务，尽管它们的框架有： PyTorch、Tensorflow、scikit-learn、ONNX 等，并在中管理你的生产模型你的工作区。
 
 ![mlflow 与 azure 机器学习示意图](media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
 ### <a name="log-your-model"></a>记录模型
 
-部署之前, 请确保已保存模型, 以便可以引用它及其部署的路径位置。 在训练脚本中, 应存在类似于以下[mlflow _model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html)方法的代码, 以将模型保存到指定的输出目录。 
+部署之前，请确保已保存模型，以便可以引用它及其部署的路径位置。 在训练脚本中，应存在类似于以下[mlflow _model （）](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html)方法的代码，以将模型保存到指定的输出目录。 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -234,7 +234,7 @@ mlflow.sklearn.log_model(regression_model, model_save_path)
 
 ### <a name="retrieve-model-from-previous-run"></a>检索以前运行的模型
 
-若要检索所需的运行, 需要运行 ID 和在其中保存模型的运行历史记录中的路径。 
+若要检索所需的运行，需要运行 ID 和在其中保存模型的运行历史记录中的路径。 
 
 ```python
 # gets the list of runs for your experiment as an array
@@ -251,7 +251,7 @@ model_save_path = 'model'
 
 `mlflow.azureml.build_image()`函数以框架感知的方式从保存的模型生成 Docker 映像。 它会自动创建框架特定的推断包装器代码, 并为您指定包依赖关系。 指定模型路径、工作区、运行 ID 和其他参数。
 
-以下代码使用*运行:/< >/model*作为 scikit-learn 学习试验的 model_uri 路径生成 docker 映像。
+以下代码使用*运行：/< >/model*作为 scikit-learn 学习试验的 model_uri 路径生成 docker 映像。
 
 ```python
 import mlflow.azureml
@@ -272,7 +272,7 @@ azure_image, azure_model = mlflow.azureml.build_image(model_uri='runs:/{}/{}'.fo
 
 #### <a name="deploy-to-aci"></a>部署到 ACI
 
-通过[deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法设置部署配置。 你还可以添加标记和说明以帮助跟踪你的 web 服务。
+通过[deploy_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法设置部署配置。 你还可以添加标记和说明以帮助跟踪你的 web 服务。
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -285,7 +285,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-然后, 使用 Azure 机器学习 SDK 的[deploy_from_image ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-)方法部署该映像。 
+然后，使用 Azure 机器学习 SDK 的[deploy_from_image （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-)方法部署该映像。 
 
 ```python
 webservice = Webservice.deploy_from_image( image=azure_image, 
@@ -297,9 +297,9 @@ webservice.wait_for_deployment(show_output=True)
 ```
 #### <a name="deploy-to-aks"></a>部署到 AKS
 
-若要部署到 AKS, 你需要创建一个 AKS 群集, 并选择要部署的 Docker 映像。 在此示例中, 从 ACI 部署中引入前面创建的映像。
+若要部署到 AKS, 你需要创建一个 AKS 群集, 并选择要部署的 Docker 映像。 在此示例中，从 ACI 部署中引入前面创建的映像。
 
-若要从以前的 ACI 部署获取映像, 请使用[image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py)类。 
+若要从以前的 ACI 部署获取映像，请使用[image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py)类。 
 
 ```python
 from azureml.core.image import Image
@@ -328,7 +328,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-通过[deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法设置部署配置。 你还可以添加标记和说明以帮助跟踪你的 web 服务。
+通过[deploy_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法设置部署配置。 你还可以添加标记和说明以帮助跟踪你的 web 服务。
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -341,7 +341,7 @@ aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
 service_name ='aks-service'
 ```
 
-然后, 使用 Azure 机器学习 SDK 的[deploy_from_image ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-)方法部署该映像。 
+然后，使用 Azure 机器学习 SDK 的[deploy_from_image （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-)方法部署该映像。 
 
 ```python
 # Webservice creation using single command

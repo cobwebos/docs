@@ -1,7 +1,7 @@
 ---
 title: 训练运行期间的日志指标
 titleSuffix: Azure Machine Learning service
-description: 可以跟踪试验和监视指标，以增强模型创建过程。 了解如何将日志记录添加到训练脚本，如何提交试验，如何检查正在运行的作业的进度，以及如何查看运行的记录结果。
+description: 可以跟踪试验和监视指标, 以增强模型创建过程。 了解如何将日志记录添加到训练脚本, 如何提交试验, 如何检查正在运行的作业的进度, 以及如何查看运行的记录结果。
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0630ca28652b48b3632dbae94c5e16d6adb462c4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812284"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858721"
 ---
 # <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>跟踪机器学习培训指标与 Azure 机器学习
 
@@ -246,7 +246,7 @@ ms.locfileid: "70812284"
 print(run.get_portal_url())
 ```
 
-2. **[适用于自动化机器学习运行]** 从以前的运行访问图表。 替换`<<experiment_name>>`为适当的试验名称：
+2. **[适用于自动化机器学习运行]** 从以前的运行访问图表。 替换`<<experiment_name>>`为适当的试验名称:
 
    ``` 
    from azureml.widgets import RunDetails
@@ -273,9 +273,9 @@ print(run.get_portal_url())
 可以使用 ```run.get_metrics()``` 查看训练的模型的指标。 现在可以获取上面示例中记录的所有指标以确定最佳模型。
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-the-azure-portal"></a>在 Azure 门户中查看实验
+## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>在 Azure 门户或[工作区登录页中查看试验（预览）](https://ml.azure.com)
 
-当实验完成运行时，可浏览到试验运行记录。 可以通过两种方式访问历史记录：
+当实验完成运行时，可浏览到试验运行记录。 可以通过两种方式访问历史记录:
 
 * 直接获取运行 URL ```print(run.get_portal_url())```
 * 通过提交运行名称来查看运行详细信息（在此示例中为 ```run```）。 此方法可以查看试验名称、ID、类型、状态、详细信息页、Azure 门户链接和文档链接。

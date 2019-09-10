@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: 36d03e20c9a56d7b317b867f01c1c0b5767c802c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5c2e81cd11826a0325cd78384a22ec7eefb3a565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256994"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844868"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>使用创作和运行时资源键
 
@@ -72,6 +72,38 @@ ms.locfileid: "70256994"
     |运行时定价层|定价层确定每秒和每月的最大事务数。|
 
     创建这两个资源后，请在 LUIS 门户中分配资源。
+
+## <a name="create-resources-in-azure-cli"></a>在 Azure CLI 中创建资源
+
+使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)单独创建每个资源。 
+
+资源`kind`：
+
+* 创作`LUIS.Authoring`
+* 预测`LUIS` 
+
+1. 登录到 Azure CLI：
+
+    ```console
+    az login
+    ```
+
+    这会打开一个浏览器，允许你选择正确的帐户并提供身份验证。
+
+1. 在名`westus` `LUIS.Authoring` `my-luis-authoring-resource`为的现有资源组中，创建一个名为的LUIS创作资源，并将其命名`my-resource-group`为。 
+
+    ```console
+    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
+    ```
+
+1. 在`LUIS` `my-luis-prediction-resource`名为的`westus` _现有_资源组中，创建一个名为的**LUIS 预测终结点资源。** `my-resource-group` 如果希望吞吐量高于免费层，请将更改`F0`为。 `S0` 详细了解[定价层和吞吐量](luis-boundaries.md#key-limits)。
+
+    ```console
+    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
+    ```
+
+    > [!Note] 
+    > LUIS 门户**不**使用此密钥，除非在 LUIS 门户中将其分配到**管理-> Azure 资源**上。
 
 ## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>在 LUIS 门户中为所有应用分配创作资源
 
@@ -186,6 +218,6 @@ ms.locfileid: "70256994"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[如何使用版本](luis-how-to-manage-versions.md)来控制应用生命周期。
-* 了解包括[创作资源](/luis-concept-keys.md#authoring-key)和资源[参与者](luis-concept-keys.md#contributions-from-other-authors)的概念。
+* 了解包括[创作资源](luis-concept-keys.md#authoring-key)和资源[参与者](luis-concept-keys.md#contributions-from-other-authors)的概念。
 * 了解[如何创建](luis-how-to-azure-subscription.md)创作资源和运行时资源
 * 迁移到新的[创作资源](luis-migration-authoring.md) 

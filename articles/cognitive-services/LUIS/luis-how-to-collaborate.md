@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: e69fea4d57aaf2a0b7d3615b1eecbf99a6b13ab8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 004da6c84e6226c4de3114d32cde826cd167e1ab
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256808"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844834"
 ---
 # <a name="add-contributors-to-your-app"></a>向应用程序添加参与者
 
@@ -99,6 +99,6 @@ LUIS 使用标准的 Azure Active Directory (Azure AD) 许可流程。
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[如何使用版本](luis-how-to-manage-versions.md)来控制应用生命周期。
-* 了解包括[创作资源](/luis-concept-keys.md#authoring-key)和资源[参与者](luis-concept-keys.md#contributions-from-other-authors)的概念。
+* 了解包括[创作资源](luis-concept-keys.md#authoring-key)和资源[参与者](luis-concept-keys.md#contributions-from-other-authors)的概念。
 * 了解[如何创建](luis-how-to-azure-subscription.md)创作资源和运行时资源
 * 迁移到新的[创作资源](luis-migration-authoring.md) 

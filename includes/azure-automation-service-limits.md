@@ -9,10 +9,10 @@ ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
 ms.openlocfilehash: 2823a33b25812a69ad463433bacd9710655c9176
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67173357"
 ---
 #### <a name="process-automation"></a>流程自动化
@@ -31,8 +31,8 @@ ms.locfileid: "67173357"
 | 每个沙盒允许的最大网络套接字数量<sup>1</sup> |1,000 |仅适用于 Azure 沙盒。|
 | 每个 runbook 允许的最大运行时<sup>1</sup> |3 小时 |仅适用于 Azure 沙盒。|
 | 订阅中自动化帐户的最大数目 |无限制 ||
-| 最大数量的每个自动化帐户的混合辅助角色组|4,000||
-|可以在单个的混合 Runbook 辅助角色运行的并发作业的最大数目|50 ||
+| 每个 Automation 帐户的混合辅助角色组的最大数量|4,000||
+|可在单个混合 Runbook 辅助角色上运行的最大并发作业数|50 ||
 | Runbook 作业参数大小上限   | 512 千比特||
 | Runbook 参数数量上限   | 50|如果达到 50 个参数的限制，则可将 JSON 或 XML 字符串传递给参数，并使用 Runbook 对其进行分析。|
 | Webhook 有效负载大小上限 |  512 千比特|
@@ -43,7 +43,7 @@ ms.locfileid: "67173357"
 
 #### <a name="change-tracking-and-inventory"></a>更改跟踪和库存
 
-下表显示了每台计算机进行更改跟踪的跟踪的项限制。
+下表显示了每台计算机用于更改跟踪的跟踪项限制。
 
 | **资源** | **限制**| **说明** |
 |---|---|---|
@@ -51,13 +51,13 @@ ms.locfileid: "67173357"
 |注册表|250||
 |Windows 软件|250|不包括软件更新。|
 |Linux 包|1,250||
-|服务|250||
+|Services|250||
 |守护程序|250||
 
 #### <a name="update-management"></a>更新管理
 
-下表显示了用于更新管理的限制。
+下表显示更新管理的限制。
 
 | **资源** | **限制**| **说明** |
 |---|---|---|
-|每个更新部署的计算机的数目|1000||
+|每个更新部署的计算机数|1000||

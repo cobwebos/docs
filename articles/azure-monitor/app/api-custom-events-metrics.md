@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
 ms.openlocfilehash: 9bedb74f4e882ac6e4206ee7fef676c94dc2422d
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68717448"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
@@ -54,7 +54,7 @@ ms.locfileid: "68717448"
   * [Java 项目](../../azure-monitor/app/java-get-started.md)
   * [Node.js 项目](../../azure-monitor/app/nodejs.md)
   * [每个网页中的 JavaScript](../../azure-monitor/app/javascript.md) 
-* 在设备或 Web 服务器代码中，包括:
+* 在设备或 Web 服务器代码中包含以下内容：
 
     *C#：* `using Microsoft.ApplicationInsights;`
 
@@ -74,7 +74,7 @@ ms.locfileid: "68717448"
 private TelemetryClient telemetry = new TelemetryClient();
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 Private Dim telemetry As New TelemetryClient
@@ -132,7 +132,7 @@ appInsights.trackEvent("WinGame");
 telemetry.TrackEvent("WinGame");
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 telemetry.TrackEvent("WinGame")
@@ -318,7 +318,7 @@ appInsights.trackPageView("tab1");
 telemetry.TrackPageView("GameReviewPage");
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 telemetry.TrackPageView("GameReviewPage")
@@ -843,7 +843,7 @@ var metrics = {"Score": currentGame.Score, "Opponents": currentGame.OpponentCoun
 telemetry.trackEvent({name: "WinGame", properties: properties, measurements: metrics});
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 ' Set up some properties:
@@ -974,7 +974,7 @@ gameTelemetry.Context.Properties["Game"] = currentGame.Name;
 gameTelemetry.TrackEvent("WinGame");
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 Dim gameTelemetry = New TelemetryClient()
@@ -1075,7 +1075,7 @@ applicationInsights.setup()
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True

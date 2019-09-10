@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/21/2019
 ms.author: dapine
-ms.openlocfilehash: e29aec66d9986b509a5133f5ebe8a99a00f7b9cf
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: e79717b15cabe815debfa9fd960c0b2623e8088e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051861"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70847654"
 ---
 ## <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>将关键短语提取容器部署到 AKS 群集
 
@@ -48,7 +48,7 @@ ms.locfileid: "70051861"
     code .
     ```
 
-1. 在文本编辑器中, 创建一个名为*关键短语. yaml*的新文件, 并将以下 yaml 粘贴到其中。 请确保将和`billing/value` `apikey/value`替换为自己的信息。
+1. 在文本编辑器中，创建一个名为*关键短语. yaml*的新文件，并将以下 yaml 粘贴到其中。 请确保将和`billing/value` `apikey/value`替换为自己的信息。
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -88,7 +88,7 @@ ms.locfileid: "70051861"
     ```
 
 1. 保存该文件并关闭文本编辑器。
-1. 运行 Kubernetes `apply`命令, 并将*关键短语*文件作为其目标:
+1. 运行 Kubernetes `apply`命令，并将*关键短语*文件作为其目标：
 
     ```console
     kuberctl apply -f keyphrase.yaml
@@ -119,7 +119,7 @@ ms.locfileid: "70051861"
     kubectl get services
     ```
 
-    Pod 中*情绪*服务的运行状态的输出:
+    Pod 中*关键短语*服务的运行状态的输出：
 
     ```console
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

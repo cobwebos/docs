@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: 8b25d2395811a2197aff6d653c5038a4380021e9
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68669554"
 ---
 可以将多个数据磁盘附加到 Azure 虚拟机。 根据 VM 数据磁盘的可伸缩性和性能目标, 可以确定需要满足性能和容量要求的磁盘数量和类型。
@@ -18,7 +18,7 @@ ms.locfileid: "68669554"
 
 **对于 Azure 托管磁盘:**
 
-下表说明了每个订阅每个区域的资源数的默认值和最大限制。 对于每个资源组, 托管磁盘数、快照数和映像数没有限制。  
+下表说明了每个订阅每个区域的资源数的默认值和最大限制。 对于每个资源组，托管磁盘数、快照数和映像数没有限制。  
 
 > | Resource | 默认限制  | 最大限制 |
 > | --- | --- | --- |

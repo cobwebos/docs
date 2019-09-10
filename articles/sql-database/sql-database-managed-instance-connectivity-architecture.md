@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: aac328806e2570bd124626e916c250d481a11311
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d539bd569eee613eb43947e5fd0e3b0614ca5d79
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567587"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858616"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
@@ -96,18 +96,18 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
-| 名称       |Port                        |Protocol|Source           |目标|Action|
+| 姓名       |Port                        |Protocol|Source           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|管理  |9000、9003、1438、1440、1452|TCP     |Any              |MI SUBNET  |Allow |
-|mi_subnet   |Any                         |Any     |MI SUBNET        |MI SUBNET  |Allow |
-|health_probe|Any                         |Any     |AzureLoadBalancer|MI SUBNET  |Allow |
+|管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |Allow |
+|mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |Allow |
+|health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |Allow |
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
 
-| 姓名       |Port          |Protocol|Source           |目标|Action|
+| 姓名       |Port          |Protocol|Source           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |Allow |
-|mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
+|mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |Allow |
 
 > [!IMPORTANT]
 > 确保端口 9000、9003、1438、1440、1452 只有一个入站规则，端口 80、443、12000 只有一个出站规则。 如果单独为每个端口配置入站和出站规则，则无法通过 Azure 资源管理器部署预配托管实例。 如果这些端口在单独的规则中，则部署将会失败并出现错误代码 `VnetSubnetConflictWithIntendedPolicy`
@@ -121,7 +121,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="user-defined-routes"></a>用户定义的路由
 
-|名称|地址前缀|下一跃点|
+|姓名|地址前缀|下一跃点|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
@@ -238,4 +238,4 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
   - 通过 [Azure 门户](sql-database-managed-instance-get-started.md)。
   - 使用 [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)。
   - 使用 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)。
-  - 使用 [Azure 资源管理器模板（使用包含 SSMS 的 JumpBox）](https://portal.azure.com/)。 
+  - 使用 [Azure 资源管理器模板（使用包含 SSMS 的 JumpBox）](https://azure.microsoft.com/en-us/resources/templates/201-sqlmi-new-vnet-w-jumpbox/)。 

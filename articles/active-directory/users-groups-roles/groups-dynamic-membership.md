@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/10/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4b5f85aa99876ef6c3c9193612051085f3e0ffc0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194607"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872185"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -36,9 +36,9 @@ ms.locfileid: "70194607"
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure 门户中的规则生成器
 
-Azure AD 提供了一个规则生成器, 以便更快地创建和更新重要规则。 规则生成器支持的构造最多为五个表达式。 规则生成器使使用几个简单的表达式来形成规则变得更加容易, 但是, 它不能用于重现每个规则。 如果规则生成器不支持要创建的规则, 则可以使用文本框。
+Azure AD 提供了一个规则生成器，以便更快地创建和更新重要规则。 规则生成器支持的构造最多为五个表达式。 规则生成器使使用几个简单的表达式来形成规则变得更加容易，但是，它不能用于重现每个规则。 如果规则生成器不支持要创建的规则，则可以使用文本框。
 
-下面是我们建议使用文本框构造的高级规则或语法的一些示例:
+下面是我们建议使用文本框构造的高级规则或语法的一些示例：
 
 - 具有五个以上表达式的规则
 - 直接下属规则
@@ -46,9 +46,9 @@ Azure AD 提供了一个规则生成器, 以便更快地创建和更新重要规
 - [包含复杂表达式的规则](groups-dynamic-membership.md#rules-with-complex-expressions);例如`(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
-> 规则生成器可能无法显示在文本框中构造的某些规则。 当规则生成器无法显示规则时, 可能会看到一条消息。 规则生成器不会以任何方式更改动态组规则的支持语法、验证或处理。
+> 规则生成器可能无法显示在文本框中构造的某些规则。 当规则生成器无法显示规则时，可能会看到一条消息。 规则生成器不会以任何方式更改动态组规则的支持语法、验证或处理。
 
-有关分步说明, 请参阅[更新动态组](groups-update-rule.md)。
+有关分步说明，请参阅[更新动态组](groups-update-rule.md)。
 
 ![为动态组添加成员身份规则](./media/groups-update-rule/update-dynamic-group-rule.png)
 
@@ -358,6 +358,11 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ## <a name="rules-for-devices"></a>设备规则
 
 还可以创建一个规则来为组中的成员身份选择设备对象。 无法将用户和设备都作为组成员。 不再列出 **organizationalUnit** 属性，不应使用该属性。 此字符串由 Intune 在特定情况下设置，但 Azure AD 无法识别，因此不会根据此属性向组添加任何设备。
+
+> [!NOTE]
+> systemlabels 是不能与 Intune 一起设置的只读属性。
+>
+> 对于 Windows 10，deviceOSVersion 属性的正确格式如下：（deviceOSVersion-eq "10.0 （17763）"）。 可以通过 Get-msoldevice PowerShell cmdlet 验证格式设置。
 
 可以使用以下设备属性。
 
