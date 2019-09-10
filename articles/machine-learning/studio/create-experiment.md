@@ -19,7 +19,7 @@ ms.locfileid: "68515114"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>快速入门：在 Azure 机器学习工作室中创建你的第一个数据科学试验
 
-在本快速入门中，你将在 [Azure 机器学习工作室](what-is-ml-studio.md)中创建一个试验，用于根据制造商和技术规格等各种变量来预测汽车的价格。
+在本快速入门中，你将在 [Azure 机器学习工作室](what-is-ml-studio.md)中创建一个机器学习试验，用于根据制造商和技术规格等各种变量来预测汽车的价格。
 
 如果你不熟悉机器学习，请观看视频系列 [Data Science for Beginners](data-science-for-beginners-the-5-questions-data-science-answers.md)（适合初学者的数据科学），其中使用日常语言和概念对机器学习做了精彩的介绍。
 
@@ -96,7 +96,7 @@ ms.locfileid: "68515114"
 1. 单击[选择数据集中的列][select-columns]模块，并单击“属性”窗格中的“启动列选择器”   。
 
    - 在左侧单击“使用规则” 
-   - 在**开头为**下面，单击**所有列**。 这些规则指示[选择数据集中的列][select-columns]传递所有列（要排除的列除外）。
+   - 在**开头为**下面，单击**所有列**。 这些规则指示[选择数据集中的列][select-columns]传递所有列（但要排除的列除外）。
    - 在下拉列表中，选择“排除”  和“列名称”  ，并在文本框内部单击。 此时会显示列的列表。 选择“规范化损失”  ，该列随即添加到文本框中。
    - 单击复选标记（“确定”）按钮，关闭列选择器（右下角）。
 

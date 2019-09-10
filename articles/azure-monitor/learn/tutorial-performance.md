@@ -79,7 +79,7 @@ Application Insights 收集应用程序中不同操作的性能详细信息。 �
 ## <a name="use-logs-data-for-server"></a>使用服务器的日志数据
  日志提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 可以用它对请求和性能数据进行深度分析。
 
-1. 返回到“操作详细信息”面板，然后单击![“日志”图标](media/tutorial-performance/app-viewinlogs-icon.png)**** “在日志中查看(分析)”
+1. 返回到“操作详细信息”面板，然后单击![“日志”图标](media/tutorial-performance/app-viewinlogs-icon.png)**“在日志中查看(分析)”**
 
 2. 日志随即打开，包含对面板中每个视图的查询。  可以直接运行这些查询，或根据需要对其进行修改。  第一个查询显示此操作随时间推移的持续时间。
 

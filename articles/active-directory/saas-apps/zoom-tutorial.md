@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Zoom 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 Zoom 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Zoom 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e36d1bb91e70e21ee1940e189bfedaebafa4412
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c0d5a87d4723bcc21b75db1b31ada72823abdf02
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975943"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171413"
 ---
-# <a name="tutorial-integrate-zoom-with-azure-active-directory"></a>教程：将 Zoom 与 Azure Active Directory 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zoom 集成
 
 本教程介绍了如何将 Zoom 与 Azure Active Directory (Azure AD) 进行集成。 将 Zoom 与 Azure AD 集成后，可以：
 
@@ -89,50 +89,19 @@ ms.locfileid: "68975943"
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Zoom 客户端支持团队](https://support.zoom.us/hc/en-us)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. Zoom 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****   ****  。
-
-    ![image](common/edit-attribute.png)
-
-6. 除了上述属性，Zoom 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以添加 SAML 令牌属性，如下表所示： ****  **** 
-
-    | Name | 命名空间  |  源属性|
-    | ---------------| --------------- | --------- |
-    | 电子邮件地址  | user.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
-    | 名字  | user.givenname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |
-    | 姓氏  | user.surname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |
-    | 电话号码  | user.telephonenumber  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone` |
-    | 部门  | user.department  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department` |
-    | role |    user.assignedrole |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role` |
-
-    > [!NOTE]
-    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)
-
-    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
-
-    ![图像](common/new-save-attribute.png)
-
-    ![图像](common/new-attribute-details.png)
-
-    b. 在“名称”文本框中，键入为该行显示的属性名称。 
-
-    c. 选择“源”作为“属性”  。
-
-    d. 在“源属性”  列表中，键入为该行显示的属性值。
-
-    e. 单击“确定” 
-
-    f. 单击“ **保存**”。
-
-    > [!NOTE]
-    > Zoom 可能要求在 SAML 有效负载中有组声明，因此，如果你已创建组，则请联系 [Zoom 客户端支持团队](https://support.zoom.us/hc/en-us)并提供组信息，这样他们就也可以在自己那一端配置该组信息。 你还需要将对象 ID 提供给 [Zoom 客户端支持团队](https://support.zoom.us/hc/en-us)，这样他们就能够在自己那一端进行配置。 请按[文档](https://support.zoom.us/hc/en-us/articles/115005887566)说明获取对象 ID。
-
-4. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Zoom”部分中，根据要求复制相应 URL  。
+1. 在“设置 Zoom”部分中，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
+> [!NOTE]
+> 若要了解如何在 Azure AD 中配置角色，请参阅[为企业应用程序配置 SAML 令牌中颁发的角色声明](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)。
+
+> [!NOTE]
+> Zoom 可能需要 SAML 有效负载中有组声明。 如果你已创建任何组，请与 [Zoom 客户端支持团队](https://support.zoom.us/hc/en-us)联系并提供组信息，以便他们可以在其自己的一端配置组信息。 你还需要向 [Zoom 客户端支持团队](https://support.zoom.us/hc/en-us)提供对象 ID，以便他们可以在其自己的一端配置对象 ID。 若要获取对象 ID，请参阅[使用 Azure 配置 Zoom](https://support.zoom.us/hc/en-us/articles/115005887566)。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -156,12 +125,12 @@ ms.locfileid: "68975943"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-zoom-sso"></a>配置 Zoom SSO
@@ -242,3 +211,4 @@ ms.locfileid: "68975943"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [通过 Azure AD 试用 Zoom](https://aad.portal.azure.com/)
