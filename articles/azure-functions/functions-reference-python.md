@@ -13,18 +13,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 88d9ab0063b6cf2803332d7af50190c659b3e6fe
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 7922f07cfe08d0bd58827b59337b86387c624778
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207208"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844679"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
 本文介绍了如何使用 Python 开发 Azure Functions。 以下内容假定你已阅读 [Azure Functions 开发人员指南](functions-reference.md)。 
 
-有关 Python 中的独立函数示例项目, 请参阅[Python 函数示例](/samples/browse/?products=azure-functions&languages=python)。 
+有关 Python 中的独立函数示例项目，请参阅[Python 函数示例](/samples/browse/?products=azure-functions&languages=python)。 
 
 ## <a name="programming-model"></a>编程模型
 
@@ -73,7 +73,7 @@ def main(req: azure.functions.HttpRequest) -> str:
 
 ## <a name="alternate-entry-point"></a>备用入口点
 
-您可以选择在`scriptFile` *函数 json*文件中指定和`entryPoint`属性, 从而更改函数的默认行为。 例如，下面的 _function.json_ 指示运行时使用 _main.py_ 文件中的 `customentry()` 方法作为 Azure 函数的入口点。
+您可以选择在`scriptFile` *函数 json*文件中指定和`entryPoint`属性，从而更改函数的默认行为。 例如，下面的 _function.json_ 指示运行时使用 _main.py_ 文件中的 `customentry()` 方法作为 Azure 函数的入口点。
 
 ```json
 {
@@ -87,13 +87,14 @@ def main(req: azure.functions.HttpRequest) -> str:
 
 ## <a name="folder-structure"></a>文件夹结构
 
-Python 函数项目的文件夹结构类似于以下示例:
+Python 函数项目的文件夹结构类似于以下示例：
 
 ```
  FunctionApp
  | - MyFirstFunction
  | | - __init__.py
  | | - function.json
+ | | - example.py
  | - MySecondFunction
  | | - __init__.py
  | | - function.json
@@ -110,6 +111,12 @@ Python 函数项目的文件夹结构类似于以下示例:
 
 ```
 from __app__.SharedCode import myFirstHelperFunction
+```
+
+若要引用函数的本地模块，可以使用相对导入语法，如下所示：
+
+```
+from . import example
 ```
 
 在 Azure 中将 Functions 项目部署到函数应用时，*FunctionApp* 文件夹的整个内容应包含在包中，但不包含该文件夹本身。
@@ -239,13 +246,13 @@ def main(req):
 | **`info(_message_)`**    | 在根记录器中写入具有 INFO 级别的消息。  |
 | **`debug(_message_)`** | 在根记录器中写入具有 DEBUG 级别的消息。  |
 
-若要了解有关日志记录的详细信息, 请参阅[Monitor Azure Functions](functions-monitoring.md)。
+若要了解有关日志记录的详细信息，请参阅[Monitor Azure Functions](functions-monitoring.md)。
 
 ## <a name="http-trigger-and-bindings"></a>HTTP 触发器和绑定
 
-HTTP 触发器在函数 jon 文件中定义。 `name`绑定的必须与函数中的命名参数匹配。 在前面的示例中, 使用了`req`一个绑定名称。 此参数是一个[HttpRequest]对象, 并返回一个[httpresponse.cache]对象。
+HTTP 触发器在函数 jon 文件中定义。 `name`绑定的必须与函数中的命名参数匹配。 在前面的示例中，使用了`req`一个绑定名称。 此参数是一个[HttpRequest]对象，并返回一个[httpresponse.cache]对象。
 
-通过[HttpRequest]对象, 可以获取请求标头、查询参数、路由参数和消息正文。 
+通过[HttpRequest]对象，可以获取请求标头、查询参数、路由参数和消息正文。 
 
 下面的示例来自 Python 的[HTTP 触发器模板](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python)。 
 
@@ -271,9 +278,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         )
 ```
 
-在此函数中, `name`查询参数的值是`params`从[HttpRequest]对象的参数获取的。 使用`get_json`方法读取 JSON 编码的消息正文。 
+在此函数中， `name`查询参数的值是`params`从[HttpRequest]对象的参数获取的。 使用`get_json`方法读取 JSON 编码的消息正文。 
 
-同样, 你可以在返回`status_code`的`headers` [httpresponse.cache]对象中为响应消息设置和。
+同样，你可以在返回`status_code`的`headers` [httpresponse.cache]对象中为响应消息设置和。
                                                               
 ## <a name="async"></a>异步
 
@@ -287,7 +294,7 @@ async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-如果 main () 函数是同步的 (没有限定符), 我们会在`asyncio`线程池中自动运行该函数。
+如果 main （）函数是同步的（没有限定符），我们会在`asyncio`线程池中自动运行该函数。
 
 ```python
 # Would be run in an asyncio thread-pool
@@ -341,9 +348,9 @@ def main(req):
 
 ## <a name="environment-variables"></a>环境变量
 
-在函数中,[应用程序设置](functions-app-settings.md)(如服务连接字符串) 在执行过程中公开为环境变量。 可以通过声明`import os`并`setting = os.environ["setting-name"]`使用来访问这些设置。
+在函数中，[应用程序设置](functions-app-settings.md)（如服务连接字符串）在执行过程中公开为环境变量。 可以通过声明`import os`并`setting = os.environ["setting-name"]`使用来访问这些设置。
 
-下面的示例获取[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings), 其中包含名为`myAppSetting`的键:
+下面的示例获取[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)，其中包含名为`myAppSetting`的键：
 
 ```python
 import logging
@@ -357,7 +364,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info(f'My app setting value:{my_app_setting_value}')
 ```
 
-对于本地开发, 应用程序设置将[保留在本地的设置文件中](functions-run-local.md#local-settings-file)。  
+对于本地开发，应用程序设置将[保留在本地的设置文件中](functions-run-local.md#local-settings-file)。  
 
 ## <a name="python-version-and-package-management"></a>Python 版本和包管理
 
@@ -379,30 +386,30 @@ pip install -r requirements.txt
 
 准备好进行发布时，请确保所有依赖项都已在 *requirements.txt* 文件（位于项目目录的根目录）中列出。 Azure Functions 可以[远程生成](functions-deployment-technologies.md#remote-build)这些依赖项。
 
-从发布中排除的项目文件和文件夹 (包括虚拟环境文件夹) 将在 funcignore 文件中列出。  
+从发布中排除的项目文件和文件夹（包括虚拟环境文件夹）将在 funcignore 文件中列出。  
 
-若要部署到 Azure 并执行远程生成, 请使用以下命令:
+若要部署到 Azure 并执行远程生成，请使用以下命令：
 
 ```bash
 func azure functionapp publish <app name> --build remote
 ```
 
-如果使用的不是远程生成, 并且使用需要编译器的包, 并且不支持从 PyPI 安装许多 Linux 兼容的轮, 则在不进行本地生成的情况下发布到 Azure 将会失败, 并出现以下错误:
+如果使用的不是远程生成，并且使用需要编译器的包，并且不支持从 PyPI 安装许多 Linux 兼容的轮，则在不进行本地生成的情况下发布到 Azure 将会失败，并出现以下错误：
 
 ```
 There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
 The terminal process terminated with exit code: 1
 ```
 
-若要在本地生成并配置所需的二进制文件, 请在本地计算机上[安装 Docker](https://docs.docker.com/install/) , 并运行以下命令以使用[Azure Functions Core Tools](functions-run-local.md#v2) (func) 进行发布。 请记住将 `<app name>` 替换为 Azure 中的函数应用名称。 
+若要在本地生成并配置所需的二进制文件，请在本地计算机上[安装 Docker](https://docs.docker.com/install/) ，并运行以下命令以使用[Azure Functions Core Tools](functions-run-local.md#v2) （func）进行发布。 请记住将 `<app name>` 替换为 Azure 中的函数应用名称。 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps
 ```
 
-实际上，Core Tools 会使用 docker 将 [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) 映像作为本地计算机上的容器来运行。 在此环境中, 它随后会构建并安装源分发中所需的模块, 然后将它们打包, 以便最终部署到 Azure。
+实际上，Core Tools 会使用 docker 将 [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) 映像作为本地计算机上的容器来运行。 在此环境中，它随后会构建并安装源分发中所需的模块，然后将它们打包，以便最终部署到 Azure。
 
-若要构建依赖项并使用持续交付 (CD) 系统发布, 请[使用 Azure Pipelines](functions-how-to-azure-devops.md)。 
+若要构建依赖项并使用持续交付（CD）系统发布，请[使用 Azure Pipelines](functions-how-to-azure-devops.md)。 
 
 ## <a name="unit-testing"></a>单元测试
 
@@ -528,9 +535,9 @@ class TestFunction(unittest.TestCase):
 
 ### <a name="cross-origin-resource-sharing"></a>跨域资源共享
 
-Azure Functions 支持跨域资源共享 (CORS)。 CORS 是[在门户中](functions-how-to-use-azure-function-app-settings.md#cors)和通过[Azure CLI](/cli/azure/functionapp/cors)配置的。 CORS 允许的源列表应用于 function app 级别。 启用 CORS 后, 响应包括`Access-Control-Allow-Origin`标头。 有关详细信息，请参阅 [跨域资源共享](functions-how-to-use-azure-function-app-settings.md#cors)。
+Azure Functions 支持跨域资源共享（CORS）。 CORS 是[在门户中](functions-how-to-use-azure-function-app-settings.md#cors)和通过[Azure CLI](/cli/azure/functionapp/cors)配置的。 CORS 允许的源列表应用于 function app 级别。 启用 CORS 后，响应包括`Access-Control-Allow-Origin`标头。 有关详细信息，请参阅 [跨域资源共享](functions-how-to-use-azure-function-app-settings.md#cors)。
 
-Python function apps[目前不支持](https://github.com/Azure/azure-functions-python-worker/issues/444)允许的源列表。 由于此限制, 你必须在 HTTP 函数中`Access-Control-Allow-Origin`明确设置标头, 如以下示例中所示:
+Python function apps[目前不支持](https://github.com/Azure/azure-functions-python-worker/issues/444)允许的源列表。 由于此限制，你必须在 HTTP 函数中`Access-Control-Allow-Origin`明确设置标头，如以下示例中所示：
 
 ```python
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -545,7 +552,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     )
 ``` 
 
-确保还更新了函数 json, 以支持 OPTIONS HTTP 方法:
+确保还更新了函数 json，以支持 OPTIONS HTTP 方法：
 
 ```json
     ...

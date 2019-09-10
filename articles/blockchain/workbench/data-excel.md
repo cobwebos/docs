@@ -1,21 +1,21 @@
 ---
 title: 在 Microsoft Excel 中使用 Azure Blockchain Workbench 数据
-description: 了解如何在 Microsoft Excel 中加载和查看 Azure Blockchain Workbench SQL DB 数据。
+description: 了解如何在 Microsoft Excel 中加载和查看 Azure 区块链工作台预览 SQL 数据库数据。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 215d8b8fbc49e9f38dc89655981edce37984163a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2a5170f95ebb1b25faea7eed74b08ae446b9499
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510670"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845088"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>使用 Microsoft Excel 查看 Azure Blockchain Workbench 数据
 
@@ -30,19 +30,19 @@ ms.locfileid: "65510670"
 若要连接到 Blockchain Workbench 数据库，请执行以下操作：
 
 1. 打开 Microsoft Excel。
-2. 在“数据”  选项卡上，选择“获取数据”  。
-3. 选择“从 Azure”  ，然后选择“从 Azure SQL 数据库”  。
+2. 在“数据”选项卡上，选择“获取数据”。
+3. 选择“从 Azure”，然后选择“从 Azure SQL 数据库”。
 
    ![连接到 Azure SQL 数据库](./media/data-excel/connect-sql-db.png)
 
-4. 在“SQL Server 数据库”  对话框中：
+4. 在“SQL Server 数据库”对话框中：
 
-    * 对于“服务器”  ，输入 Blockchain Workbench 服务器的名称。
-    * 对于“数据库(可选)”  ，输入数据库的名称。
+    * 对于“服务器”，输入 Blockchain Workbench 服务器的名称。
+    * 对于“数据库(可选)”，输入数据库的名称。
 
    ![提供数据库服务器和数据库](./media/data-excel/provide-server-db.png)
 
-5. 在“SQL Server 数据库”  对话框导航栏中，选择“数据库”  。 输入用户名和密码，然后选择“连接”。   
+5. 在“SQL Server 数据库”对话框导航栏中，选择“数据库”。 输入用户名和密码，然后选择“连接”。
 
     > [!NOTE]
     > 如果使用在 Azure Blockchain Workbench 部署过程中创建的凭据，则**用户名**为 `dbadmin`。 **密码**是在部署 Blockchain Workbench 时创建的密码。
@@ -59,8 +59,8 @@ ms.locfileid: "65510670"
 
 接下来的示例展示了如何将数据从视图加载到 Excel 工作簿中。
 
-1. 在“导航器”滚动条中  ，选择“vwContractAction”  视图。 “vwContractAction”  预览显示与 Blockchain Workbench 数据库中的某个合同相关的所有操作。
-2. 选择“加载”  来检索该视图中的所有数据并将其置于 Excel 工作簿中。
+1. 在“导航器”滚动条中，选择“vwContractAction”视图。 “vwContractAction”预览显示与 Blockchain Workbench 数据库中的某个合同相关的所有操作。
+2. 选择“加载”来检索该视图中的所有数据并将其置于 Excel 工作簿中。
 
    ![从视图加载的数据](./media/data-excel/view-data.png)
 

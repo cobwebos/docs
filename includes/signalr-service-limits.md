@@ -1,6 +1,6 @@
 ---
 title: Azure SignalR 服务限制表
-description: 描述 Azure SignalR 服务的系统限制。
+description: 介绍 Azure SignalR 服务的系统限制。
 services: signalr
 documentationcenter: signalr
 author: sffamily
@@ -14,18 +14,18 @@ ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: zhshang
 ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67173351"
 ---
 | Resource | 默认限制 | 最大限制 | 
 | --- | --- | --- |
-| Azure SignalR 服务单位，每个实例免费层 |第 |第 |
-| Azure SignalR 服务单位，每个实例用于标准层 |100 |100 |
-| Azure SignalR 服务单位，每个订阅每个区域免费层|5 |5 |
-| Azure SignalR 服务单位总量对每个订阅每个区域进行计数 |150 |不受限制 |
+| 免费层的每个实例的 Azure SignalR 服务单位 |1 |1 |
+| 标准层的每个实例的 Azure SignalR 服务单位 |100 |100 |
+| 免费层的每个区域每个订阅的 Azure SignalR 服务单位|5 |5 |
+| 每个区域每个订阅的 Azure SignalR 服务单位总数 |150 |无限制 |
 | 免费层每天每个单元的连接数 |20 |20 |
 | 标准层每天每个单元的连接数 |1,000 |1,000|
 | 免费层每天每个单元包含的消息数|20,000 |20,000 |

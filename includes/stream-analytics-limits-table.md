@@ -1,19 +1,19 @@
 ---
 ms.openlocfilehash: 1bf7f3c15b40590c400e8a730de20c199bb1b4c2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67173346"
 ---
 ---
 | 限制标识符 | 限制 | 注释 |
 | --- | --- | --- |
-| 每个订阅每个区域的流式处理单位的最大数目 |500 |若要请求增加流式处理单位数超过 500 订阅，请联系[Microsoft 支持部门](https://support.microsoft.com/en-us)。 |
-| 每个作业的最大输入数目 |60 |不存在 60 个输入每个 Azure Stream Analytics 作业硬限制。 |
-| 每个作业的最大输出数目 |60 |没有 60 每个 Stream Analytics 作业输出的硬性限制。 |
-| 每个作业的最大函数数目 |60 |没有每个 Stream Analytics 作业 60 函数的硬性限制。 |
-| 每个作业的流式处理单位的最大数目 |192 |没有每个 Stream Analytics 作业 192 流式处理单位的硬性限制。 |
-| 每个区域的最大作业数目 |1,500 |每个地理区域，每个订阅可以有最多包含 1,500 位作业。 |
-| 引用数据 blob MB | 300 | 引用数据 blob 不能为大于 300 MB。 |
+| 每个区域每个订阅的最大流式处理单位数 |500 |若要请求提高订阅的流式处理单位数超过500，请联系[Microsoft 支持部门](https://support.microsoft.com/en-us)。 |
+| 每个作业的最大输入数目 |60 |每个 Azure 流分析作业的输入硬性限制为60。 |
+| 每个作业的最大输出数目 |60 |每个流分析作业存在60个输出的硬性限制。 |
+| 每个作业的最大函数数目 |60 |每个流分析作业存在60函数的硬性限制。 |
+| 每个作业的最大流式处理单位数 |192 |每个流分析作业硬性限制为192个流式处理单位。 |
+| 每个区域的最大作业数目 |1,500 |每个订阅最多可以有1500个地理区域的作业。 |
+| 引用数据 blob MB | 300 | 引用数据 blob 不能大于 300 MB。 |
 

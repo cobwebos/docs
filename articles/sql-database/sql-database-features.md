@@ -11,22 +11,22 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: fc56a2900a291ff600433a6e660dca274c7b92e7
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 2ddef73121ef2f6c145516ca114989aa12b8003c
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382853"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873515"
 ---
-# <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>功能比较：Azure SQL 数据库与 SQL Server
+# <a name="azure-sql-database-features"></a>Azure SQL 数据库功能
 
-Azure SQL 数据库与 SQL Server 共享一个通用代码库。 在 SQL server 和 Azure SQL 数据库中，大多数标准 SQL 功能是相同的。 SQL Server 和所有类型的 Azure SQL 数据库中常见的功能如下：
+Azure SQL 数据库服务使用最新稳定版本的 SQL Server 共享公共基本代码。 大多数标准 SQL 语言、查询处理和数据库管理功能在 SQL Server 和 Azure SQL 数据库中都是相同的。 SQL Server 和所有类型的 Azure SQL 数据库中常见的功能如下：
   - 语言功能-[控制流语言关键字](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow)、[游标](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql)、[数据类型](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql)、 [DML 语句](https://docs.microsoft.com/sql/t-sql/queries/queries)、[谓词](https://docs.microsoft.com/sql/t-sql/queries/predicates)、[序列号](https://docs.microsoft.com/sql/relational-databases/sequence-numbers/sequence-numbers)、[存储过程](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine)和[变量](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql)。
   - 数据库功能-[自动优化（计划强制）](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)、[更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)、[数据库排序规则](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation)、[包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)、[包含的用户](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)、[数据压缩](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression)、[数据库配置设置](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)[联机索引操作](https://docs.microsoft.com/sql/relational-databases/indexes/perform-index-operations-online)、[分区](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes)和[临时表](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables)（[请参阅入门指南](sql-database-temporal-tables.md)）。
   - 安全功能-[应用程序角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles)、[动态数据掩码](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)（[参阅入门指南](sql-database-dynamic-data-masking-get-started.md)）、[行级别安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)和威胁检测-请参阅[单一数据库和弹性池](sql-database-threat-detection.md)的入门指南和[托管实例](sql-database-managed-instance-threat-detection.md)。
   - 多模型功能-[图形处理](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview)、 [JSON 数据](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server)（[请参阅入门指南](sql-database-json-features.md)）、 [OPENXML](https://docs.microsoft.com/sql/t-sql/functions/openxml-transact-sql)、[空间](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server)、 [OPENJSON](https://docs.microsoft.com/sql/t-sql/functions/openjson-transact-sql)和[XML 索引](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql)。
 
-数据库功能取决于你创建的 Azure SQL 数据库的类型。 下表中描述了这些功能。 使用 Azure SQL 数据库，可以作为[托管实例](sql-database-managed-instance.md)、单一数据库或弹性池的一部分创建一个数据库。 如需有关差异的更多详细信息，请查看[单一数据库和弹性池](sql-database-transact-sql-information.md)或[托管实例](sql-database-managed-instance-transact-sql-information.md)中的相关页面。
+Azure SQL Database 管理数据库并保证其高可用性。 某些可能影响高可用性或无法在 PaaS world 中使用的功能在 Azure SQL 数据库中的功能有限。 此外，某些数据库功能取决于你创建的 Azure SQL 数据库的类型。 下表中描述了这些功能。 使用 Azure SQL 数据库，可以作为[托管实例](sql-database-managed-instance.md)、单一数据库或弹性池的一部分创建一个数据库。 如需有关差异的更多详细信息，请查看[单一数据库和弹性池](sql-database-transact-sql-information.md)或[托管实例](sql-database-managed-instance-transact-sql-information.md)中的相关页面。
 
 ## <a name="sql-features"></a>SQL 功能
 
@@ -116,7 +116,7 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | --- | --- | --- |
 | [活动异地复制](sql-database-active-geo-replication.md) | 是 - 除超大规模之外的所有服务层级 | 否，请参阅用作替代方案的[自动故障转移组（预览版）](sql-database-auto-failover-group.md) |
 | [自动故障转移组](sql-database-auto-failover-group.md) | 是 - 除超大规模之外的所有服务层级 | 是，[处于公开预览状态](sql-database-auto-failover-group.md)|
-| 自动缩放 | 是，但只能在[无服务器模型](sql-database-serverless.md)中。 在非服务器模式下，服务层（vCore、存储或 DTU）的更改速度快且处于联机状态。 服务层更改需要最少或没有停机时间。 | 不需要，你需要选择 "保留计算和存储"。 服务层（vCore 或最大存储）的更改处于联机状态，需要最少或没有停机时间。 |
+| 自动缩放 | 是，但只能在[无服务器模型](sql-database-serverless.md)中。 在非服务器模式下，服务层（vCore、存储或 DTU）的更改速度快且处于联机状态。 服务层更改需要最少或没有停机时间。 | 不需要, 你需要选择 "保留计算和存储"。 服务层（vCore 或最大存储）的更改处于联机状态，需要最少或没有停机时间。 |
 | [自动备份](sql-database-automated-backups.md) | 是的。 完整备份每 7 天一次，差异备份每 12 小时一次，日志备份每 5-10 分钟一次。 | 是的。 完整备份每 7 天一次，差异备份每 12 小时一次，日志备份每 5-10 分钟一次。 |
 | [自动优化（索引）](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [是](sql-database-automatic-tuning.md)| 否 |
 | [可用性区域](/azure/availability-zones/az-overview) | 是 | 否 |
@@ -127,12 +127,12 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | [异地还原](sql-database-recovery-using-backups.md#geo-restore) | 是 - 除超大规模之外的所有服务层级 | 是 - 使用 [Azure PowerShell](https://medium.com/azure-sqldb-managed-instance/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa)。 |
 | [超大规模体系结构](sql-database-service-tier-hyperscale.md) | 是 | 否 |
 | [长期备份保留 - LTR](sql-database-long-term-retention.md) | 是，将自动创建的备份最长保留 10 年。 | 还不可以。 使用 `COPY_ONLY` [手动备份](sql-database-managed-instance-transact-sql-information.md#backup)作为临时解决方法。 |
-| 暂停/继续 | 是，在[无服务器模型](sql-database-serverless.md)中 | 否 | 
+| 暂停/继续 | 是, 在[无服务器模型](sql-database-serverless.md)中 | 否 | 
 | [基于策略的管理](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | 否 | 否 |
 | 公用 IP 地址 | 是的。 访问权限可以使用防火墙或服务终结点来限制。  | 是的。 需要显式启用，且必须在 NSG 规则中启用端口 3342。 可根据需要禁用公共 IP。 有关更多详细信息，请参阅[公共终结点](sql-database-managed-instance-public-endpoint-securely.md)。 | 
 | [数据库时间点还原](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | 是 - 除超大规模之外的所有服务层级 - 请参阅 [SQL 数据库恢复](sql-database-recovery-using-backups.md#point-in-time-restore) | 是 - 请参阅 [SQL 数据库恢复](sql-database-recovery-using-backups.md#point-in-time-restore) |
 | 资源池 | 是，用作[弹性池](sql-database-elastic-pool.md) | 否。 单个托管实例可以有多个共享同一资源池的数据库。 托管实例不能共享资源。 |
-| 增加或减少（联机） | 是的，你可以更改 DTU 或保留的 Vcore 或最大停机时间，但停机时间最短。 | 是的，你可以更改保留的 Vcore 或最大的存储，但停机时间最短。 |
+| 增加或减少 (联机) | 是的, 你可以更改 DTU 或保留的 Vcore 或最大停机时间, 但停机时间最短。 | 是的, 你可以更改保留的 Vcore 或最大的存储, 但停机时间最短。 |
 | SQL 别名 | 是，请参阅[DNS 别名](dns-alias-overview.md) | 否 |
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | 是 | 是 |
 | [SQL 数据同步](sql-database-get-started-sql-data-sync.md) | 是 | 否 |

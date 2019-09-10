@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2019
+ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 9721f22eb73c68f729ced13480370f6593c58510
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: f3cacdad2986de257ae345f4baa9d14ea6c894b2
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182795"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873190"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -213,7 +213,7 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>适合 PaaS 客户的静态加密
 
-平台即服务 (PaaS) 客户的数据通常驻留在存储服务 (如 Blob 存储) 中, 但也可以缓存或存储在应用程序执行环境 (例如虚拟机) 中。 若要查看适用的静态加密选项，请检查下表中是否存在所用的存储和应用程序平台。
+平台即服务（PaaS）客户的数据通常驻留在存储服务（如 Blob 存储）中，但也可以缓存或存储在应用程序执行环境（例如虚拟机）中。 若要查看适用的静态加密选项，请检查下表中是否存在所用的存储和应用程序平台。
 
 ### <a name="encryption-at-rest-for-iaas-customers"></a>适合 IaaS 客户的静态加密
 
@@ -225,7 +225,7 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 
 #### <a name="encrypted-compute"></a>加密的计算
 
-所有托管磁盘、快照和映像都使用存储服务加密使用服务托管密钥进行加密。 更完整的静态加密解决方案确保数据永远不会以未加密形式持久保存。 在处理虚拟机上的数据时, 可以将数据保存到 Windows 页面文件或 Linux 交换文件、崩溃转储或应用程序日志。 为了确保对该数据进行静态加密，IaaS 应用程序可以在 Azure IaaS 虚拟机（Windows 或 Linux）和虚拟磁盘上使用 Azure 磁盘加密。
+所有托管磁盘、快照和映像都使用存储服务加密使用服务托管密钥进行加密。 更完整的静态加密解决方案确保数据永远不会以未加密形式持久保存。 在处理虚拟机上的数据时，可以将数据保存到 Windows 页面文件或 Linux 交换文件、崩溃转储或应用程序日志。 为了确保对该数据进行静态加密，IaaS 应用程序可以在 Azure IaaS 虚拟机（Windows 或 Linux）和虚拟磁盘上使用 Azure 磁盘加密。
 
 #### <a name="custom-encryption-at-rest"></a>自定义静态加密
 
@@ -241,7 +241,7 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 
 #### <a name="azure-storage"></a>Azure 存储
 
-所有 Azure 存储服务 (Blob 存储、队列存储、表存储和 Azure 文件) 都支持服务器端加密;某些服务还支持客户管理的密钥和客户端加密。 
+所有 Azure 存储服务（Blob 存储、队列存储、表存储和 Azure 文件）都支持服务器端加密;某些服务还支持客户管理的密钥和客户端加密。 
 
 - 服务器端：默认情况下，所有 Azure 存储服务都使用服务托管的密钥来启用服务器端加密（对应用程序而言是透明的）。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](../../storage/common/storage-service-encryption.md)。 Azure Blob 存储和 Azure 文件也支持 Azure Key Vault 中客户托管的 RSA 2048 位密钥。 有关详细信息，请参阅 [Azure Key Vault 中使用客户托管密钥的存储服务加密](../../storage/common/storage-encryption-keys-portal.md)。
 - 客户端：Azure Blob、表和队列支持客户端加密。 使用客户端加密时，客户会加密数据并将数据作为加密的 blob 上传。 密钥管理由客户执行。 有关详细信息，请参阅 [Microsoft Azure 存储的客户端加密和 Azure Key Vault](../../storage/common/storage-client-side-encryption.md)。
@@ -266,7 +266,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | Power BI                         | 是                | 预览，RSA 2048 位 | -                  |
 | **分析**                    |                    |                    |                    |
 | Azure 流分析           | 是                | -                  | -                  |
-| 事件中心                       | 是                | -                  | -                  |
+| 事件中心                       | 是                | 预览，所有 RSA 长度。 | -                  |
 | Azure Analysis Services          | 是                | -                  | -                  |
 | Azure 数据目录               | 是                | -                  | -                  |
 | Azure HDInsight 上的 Apache Kafka  | 是                | 所有 RSA 长度。   | -                  |

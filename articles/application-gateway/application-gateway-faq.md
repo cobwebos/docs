@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 3fa97c5738128907b0edad40cedf582e80c33443
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194476"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858530"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -28,7 +28,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 ### <a name="what-features-does-application-gateway-support"></a>应用程序网关支持哪些功能？
 
-应用程序网关支持自动缩放、SSL 卸载和端到端 SSL、web 应用程序防火墙 (WAF)、基于 cookie 的会话相关性、基于 URL 路径的路由、多站点托管以及其他功能。 有关受支持功能的完整列表，请参阅[应用程序网关简介](application-gateway-introduction.md)。
+应用程序网关支持自动缩放、SSL 卸载和端到端 SSL、web 应用程序防火墙（WAF）、基于 cookie 的会话相关性、基于 URL 路径的路由、多站点托管以及其他功能。 有关受支持功能的完整列表，请参阅[应用程序网关简介](application-gateway-introduction.md)。
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>应用程序网关与 Azure 负载均衡器有何不同？
 
@@ -76,7 +76,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 ### <a name="does-application-gateway-support-static-ip"></a>应用程序网关是否支持静态 IP？
 
-是的, 应用程序网关 v2 SKU 支持静态公共 IP 地址。 v1 SKU 支持静态内部 IP。
+是的，应用程序网关 v2 SKU 支持静态公共 IP 地址。 v1 SKU 支持静态内部 IP。
 
 ### <a name="does-application-gateway-support-multiple-public-ips-on-the-gateway"></a>应用程序网关是否支持在网关上使用多个公共 IP？
 
@@ -100,7 +100,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 预配新的应用程序网关 v1 SKU 部署最多需 20 分钟。 更改实例大小或计数不会出现中断，且在此期间网关仍处于活动状态。
 
-使用 v2 SKU 的大多数部署需要大约6分钟的时间进行设置。 但是, 可能需要更长的时间, 具体取决于部署的类型。 例如, 在多个可用性区域具有多个实例的部署可能需要超过6分钟。 
+使用 v2 SKU 的大多数部署需要大约6分钟的时间进行设置。 但是，可能需要更长的时间，具体取决于部署的类型。 例如，在多个可用性区域具有多个实例的部署可能需要超过6分钟。 
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>使用应用程序网关时，能否将 Exchange 服务器用作后端？
 
@@ -112,7 +112,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 如果已部署两个或更多个实例，则应用程序网关 v1 SKU 支持高可用性方案。 Azure 跨更新域和容错域分配这些实例，确保实例不会全部同时发生故障。 为了支持可伸缩性，v1 SKU 将添加同一网关的多个实例来分担负载。
 
-v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如果选择 "区域冗余", 则最新的实例也会分布在可用性区域中, 以提供区域性故障复原。
+v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如果选择 "区域冗余"，则最新的实例也会分布在可用性区域中，以提供区域性故障复原。
 
 ### <a name="how-do-i-achieve-a-dr-scenario-across-datacenters-by-using-application-gateway"></a>如何使用应用程序网关实现跨数据中心的灾难恢复方案？
 
@@ -120,7 +120,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-application-gateway-support-autoscaling"></a>应用程序网关是否支持自动缩放？
 
-是，应用程序网关 v2 SKU 支持自动缩放。 有关详细信息, 请参阅自动[缩放和区域冗余应用程序网关](application-gateway-autoscaling-zone-redundant.md)。
+是，应用程序网关 v2 SKU 支持自动缩放。 有关详细信息，请参阅自动[缩放和区域冗余应用程序网关](application-gateway-autoscaling-zone-redundant.md)。
 
 ### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>手动纵向扩展或缩减是否会导致停机？
 
@@ -198,7 +198,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有可从 v1 SKU 迁移到 v2 SKU 的指导？
 
-是的。 有关详细信息, 请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 V1 迁移到 v2](migrate-v1-v2.md)。
+是的。 有关详细信息，请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 V1 迁移到 v2](migrate-v1-v2.md)。
 
 
 ## <a name="configuration---ssl"></a>配置 - SSL
@@ -273,7 +273,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>应用程序网关是否原生与 Azure Key Vault 集成？
 
-是的, 应用程序网关 v2 SKU 支持 Key Vault。 有关详细信息, 请参阅[SSL 终止, 并 Key Vault 证书](key-vault-certs.md)。
+是的，应用程序网关 v2 SKU 支持 Key Vault。 有关详细信息，请参阅[SSL 终止，并 Key Vault 证书](key-vault-certs.md)。
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>如何配置 .com 和 .net 站点的 HTTPS 侦听器？ 
 
@@ -281,7 +281,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>是否可以在 .pfx 文件密码中使用特殊字符？
 
-不能, 在 .pfx 文件密码中仅使用字母数字字符。
+不能，在 .pfx 文件密码中仅使用字母数字字符。
 
 ## <a name="configuration---web-application-firewall-waf"></a>配置 - Web 应用程序防火墙 (WAF)
 
@@ -325,7 +325,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有可从 v1 SKU 迁移到 v2 SKU 的指导？
 
-是的。 有关详细信息, 请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 V1 迁移到 v2](migrate-v1-v2.md)。
+是的。 有关详细信息，请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 V1 迁移到 v2](migrate-v1-v2.md)。
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 
@@ -353,7 +353,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>是否可以使用应用程序网关设置警报？
 
-是的。 在应用程序网关中，警报是针对指标配置的。 有关详细信息, 请参阅[应用程序网关度量值](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#metrics)和[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
+是的。 在应用程序网关中，警报是针对指标配置的。 有关详细信息，请参阅[应用程序网关度量值](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics)和[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>如何分析应用程序网关的流量统计信息？
 
@@ -367,7 +367,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 ### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>是否存在 NSG 流日志不显示允许的流量的情况？
 
-是的。 如果配置与以下方案匹配, 则不会在 NSG 流日志中看到允许的流量:
+是的。 如果配置与以下方案匹配，则不会在 NSG 流日志中看到允许的流量：
 - 你已部署应用程序网关 v2
 - 应用程序网关子网上有 NSG
 - 已启用该 NSG 上的 NSG 流日志

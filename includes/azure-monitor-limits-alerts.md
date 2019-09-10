@@ -9,17 +9,17 @@ ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
 ms.openlocfilehash: e3b9acf38bc213db7fcde5fbb5fe26f455c0fc00
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67305256"
 ---
 | Resource | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 指标警报 （经典） |每个订阅 100 活动警报规则。 | 致电支持人员。 |
-| 指标警报 |1000 活动警报的规则每个订阅 （在公有云） 和 100 的活动警报规则，每个 Azure 中国 21Vianet 和 Azure 政府版订阅。 | 致电支持人员。 |
-| 活动日志警报 | 每个订阅 100 活动警报规则。 | 默认值相同。 |
+| 指标警报（经典） |每个订阅 100 个活动警报规则。 | 致电支持人员。 |
+| 指标警报 |在公有云中，每个订阅 1000 个活动警报规则；在 Azure 中国世纪互联和 Azure 政府服务中，每个订阅 100 个活动警报规则。 | 致电支持人员。 |
+| 活动日志警报 | 每个订阅 100 个活动警报规则。 | 与默认值相同。 |
 | 日志警报 | 512 | 致电支持人员。 |
-| 操作组 |每个订阅的 2,000 个操作组。 | 致电支持人员。 |
-| 自动缩放设置 |每个区域每个订阅 100。 | 默认值相同。 |
+| 操作组 |每个订阅 2,000 个操作组。 | 致电支持人员。 |
+| 自动缩放设置 |每个订阅每个区域 100 个。 | 与默认值相同。 |

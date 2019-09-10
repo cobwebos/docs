@@ -9,10 +9,10 @@ ms.date: 07/19/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: d5ce4c094da3a411168c7fe4c282b15ceac7bb86
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "70036666"
 ---
 下表介绍 Azure 常规用途 v1、v2 和 Blob 存储帐户的默认限制。 “传入”限制是指请求中发送到存储帐户的所有数据。 “传出”限制是指响应中从存储帐户接收的所有数据。
@@ -20,7 +20,7 @@ ms.locfileid: "70036666"
 | Resource | 默认限制 |
 | --- | --- |
 | 每个订阅每个区域的存储帐户数，包括标准帐户和高级帐户 | 250 |
-| 最大存储帐户容量 | 2 PB, 适用于美国和欧洲, 所有其他地区为 500 TB (包括英国)<sup>1</sup>|
+| 最大存储帐户容量 | 2 PB，适用于美国和欧洲，所有其他地区为 500 TB （包括英国）<sup>1</sup>|
 | 每个存储帐户的 Blob 容器、Blob、文件共享、表、队列、实体或消息数上限 | 无限制 |
 | 每个存储帐户的最大请求速率<sup>1</sup> | 每秒 20,000 个请求 |
 | 每个存储帐户的最大入口<sup>1</sup> (美国, 欧洲区域) | 25 Gbps |

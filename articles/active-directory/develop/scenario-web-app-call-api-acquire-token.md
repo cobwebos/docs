@@ -1,6 +1,6 @@
 ---
-title: Web 应用调用 web Api （获取应用程序的令牌）-Microsoft 标识平台
-description: 了解如何构建一个 Web 应用，调用 web Api （获取应用令牌）
+title: 调用 Web API 的 Web 应用（获取应用的令牌）- Microsoft 标识平台
+description: 了解如何生成调用 Web API 的 Web 应用（获取应用的令牌）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,27 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 653db995000308bb3ef78a9183696cd9d8ed1056
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3aa144c76fb0a8e479658efdb5d43361fbbc085c
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074795"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860620"
 ---
-# <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web 应用调用 web Api-获取应用程序的令牌
+# <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>调用 Web API 的 Web 应用 - 获取应用的令牌
 
-现在您已经生成客户端应用程序对象，将使用它来获取令牌，你将使用它来调用 web Api。 在 ASP.NET 或 ASP.NET Core 中，调用的 web API 然后就可以在控制器中。 它是关于：
+既然已生成客户端应用程序对象，就可以使用它来获取用于调用 web API 的令牌。 在 ASP.NET 或 ASP.NET Core 中，在控制器中调用 web API。 具体操作是：
 
-- 获取 web API 使用令牌缓存的令牌。 为此，您调用 `AcquireTokenSilent`
-- 调用受保护的 API 的访问令牌
+- 使用令牌缓存获取 Web API 的令牌。 若要获取此令牌，请`AcquireTokenSilent`调用。
+- 使用访问令牌调用受保护的 API。
 
 ## <a name="aspnet-core"></a>ASP.NET Core
 
-控制器方法受`[Authorize]`强制用户从使用 Web 应用进行身份验证的属性。 下面是调用 Microsoft Graph 的代码
+控制器方法受`[Authorize]`属性保护，该特性强制用户进行身份验证，以使用 Web 应用。 下面是调用 Microsoft Graph 的代码。
 
 ```CSharp
 [Authorize]
@@ -41,7 +41,7 @@ public class HomeController : Controller
 }
 ```
 
-下面是操作的 HomeController，获取一个令牌以调用 Microsoft Graph 的简化的代码。
+下面是 HomeController 操作的简化代码，该操作获取调用 Microsoft Graph 所需的令牌。
 
 ```CSharp
 public async Task<IActionResult> Profile()
@@ -69,23 +69,23 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-如果你想要了解详细信息中的总此方案所需的代码，请参阅第 2 阶段[2-1-Web 应用调用 Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)的步骤[ms-标识-aspnetcore 的 web 应用的教程](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)教程
+若要详细了解此方案所需的代码，请参阅[aspnetcore-webapp](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)教程的第2阶段（[2-1-Web 应用调用 Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)）步骤。
 
-有许多其他复杂性如所示：
+还有很多其他复杂性，例如：
 
-- 为 Web 应用 （在本教程提供多个实现） 实现令牌缓存
-- 当用户符号出从缓存中删除帐户
-- 调用了几个 Api，包括需要增量许可
+- 实现 Web 应用的令牌缓存（本教程介绍了几种实现）
+- 当用户注销时，从缓存中删除帐户
+- 调用多个 API，包括设置增量许可
 
 ## <a name="aspnet"></a>ASP.NET
 
-在 ASP.NET 中类似以下事项：
+ASP.NET 中的情况类似：
 
-- 通过 [Authorize] 属性受保护的控制器操作将提取的租户 ID 和用户的用户 ID`ClaimsPrincipal`控制器的成员 (ASP.NET 使用`HttpContext.User`)
-- 从中生成 MSAL.NET `IConfidentialClientApplication`
-- IT 调用`AcquireTokenSilent`机密客户端应用程序的方法 
+- 受 [授权] 属性保护的控制器操作提取控制器`ClaimsPrincipal`成员的租户 id 和用户 id。 （ASP.NET 使用`HttpContext.User`。）
+- 然后，它会生成一个 MSAL.NET `IConfidentialClientApplication`。
+- 最后，它调用`AcquireTokenSilent`机密客户端应用程序的方法。
 
-代码是类似于 ASP.NET Core 的所示的代码
+此代码类似于为 ASP.NET Core 显示的代码。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 074b9ec06818363a97253a587ac451a38999832f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837934"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844314"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
@@ -35,7 +35,7 @@ ms.locfileid: "68837934"
 当前只能为租户上的 Office 365 组配置一个过期策略。
 
 > [!NOTE]
-> 为 Office 365 组配置和使用过期策略要求你为应用过期策略的所有组的成员拥有 Azure AD Premium 许可证。
+> 为 Office 365 组配置和使用过期策略要求你拥有（但不一定）为应用过期策略的所有组的成员分配 Azure AD Premium 许可证。
 
 有关如何下载和安装 Azure AD PowerShell cmdlet 的信息，请参阅 [Azure Active Directory PowerShell for Graph 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)。
 
@@ -54,27 +54,30 @@ Role | 权限
 
 1. 使用 Azure AD 组织中的全局管理员帐户打开[Azure AD 管理中心](https://aad.portal.azure.com)。
 
-2. 选择 "**组**", 然后选择 "**过期**" 以打开过期设置。
+2. 选择 "**组**"，然后选择 "**过期**" 以打开过期设置。
   
    ![组的过期设置](./media/groups-lifecycle/expiration-settings.png)
 
-3. 在 "**过期**" 页上, 您可以:
+3. 在 "**过期**" 页上，您可以：
 
   - 设置组的生存期（天）。 可以从预设值中任选其一，或自定义一个值（应为 31 天或以上）。
   - 指定当组没有所有者时续订和过期通知应发送到的电子邮件地址。
-  - 选择会过期的 Office 365 组。 可以为以下内容设置过期时间:
+  - 选择会过期的 Office 365 组。 可以为以下内容设置过期时间：
     - **全部**Office 365 组
     - **所选**Office 365 组的列表
     - **无**以限制所有组的过期时间
   - 设置完成后，选择“保存”来保存设置。
 
 > [!NOTE]
-> 首次设置过期时，早于过期间隔的所有组将设置为 30 天后过期。 首个续订通知电子邮件将在一天内发出。 例如，组 A 创建于 400 天前，而过期间隔设置为 180 天。 应用过期策略时, 组 A 在删除前有30天, 除非所有者续订。
-> 删除并还原动态组时, 会将其视为新组, 并根据规则重新填充。 此过程可能需要长达24小时。
+> 首次设置过期时，早于过期时间间隔的任何组都将设置为30天直到过期，除非所有者续订。 首个续订通知电子邮件将在一天内发出。
+>
+> 删除并还原动态组时，会将其视为新组，并根据规则重新填充。 此过程可能需要长达24小时。
+>
+> 团队中使用的组的过期通知出现在 "团队所有者" 源中。
 
 ## <a name="email-notifications"></a>电子邮件通知
 
-如下电子邮件通知将在组过期前的 30 天、15 天和 1 天发送到 Office 365 组所有者。 电子邮件的语言由组所有者首选语言或 Azure AD 语言设置确定。 如果组所有者定义了首选语言，或多个所有者具有相同首选语言，则使用该语言。 对于所有其他情况, 将使用 Azure AD 语言设置。
+如下电子邮件通知将在组过期前的 30 天、15 天和 1 天发送到 Office 365 组所有者。 电子邮件的语言由组所有者首选语言或 Azure AD 语言设置确定。 如果组所有者定义了首选语言，或多个所有者具有相同首选语言，则使用该语言。 对于所有其他情况，将使用 Azure AD 语言设置。
 
 ![过期电子邮件通知](./media/groups-lifecycle/expiration-notification.png)
 
@@ -89,10 +92,10 @@ Role | 权限
 如果所还原的组包含文档、SharePoint 站点或其他持久对象，可能需要最多 24 小时才能完全还原该组及其内容。
 
 ## <a name="how-to-retrieve-office-365-group-expiration-date"></a>如何检索 Office 365 组到期日期
-除了访问面板, 用户可以在其中查看组详细信息 (包括到期日期和上次续订日期), 可以从 Microsoft Graph REST API Beta 检索 Office 365 组的到期日期。 Microsoft Graph Beta 中已启用 expirationDateTime 作为组属性。 可以使用 GET 请求来检索它。 有关更多详细信息, 请参阅[此示例](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example)。
+除了访问面板，用户可以在其中查看组详细信息（包括到期日期和上次续订日期），可以从 Microsoft Graph REST API Beta 检索 Office 365 组的到期日期。 Microsoft Graph Beta 中已启用 expirationDateTime 作为组属性。 可以使用 GET 请求来检索它。 有关更多详细信息，请参阅[此示例](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example)。
 
 > [!NOTE]
-> 若要在访问面板上管理组成员身份, 需要在 Azure Active Directory 组 "常规" 设置中将 "限制访问访问面板中的组" 设置为 "否"。
+> 若要在访问面板上管理组成员身份，需要在 Azure Active Directory 组 "常规" 设置中将 "限制访问访问面板中的组" 设置为 "否"。
 
 ## <a name="how-office-365-group-expiration-works-with-a-mailbox-on-legal-hold"></a>Office 365 组到期与合法保留邮箱一起使用的方式
 组到期并删除后，应用（例如 Planner、站点或 Teams）中删除的组数据将会在 30 天后永久删除，但合法保留的组邮箱将会保留下来并且不会永久删除。 管理员可以使用 Exchange cmdlets 来恢复邮箱以提取数据。 
@@ -101,9 +104,9 @@ Role | 权限
 保留策略是通过安全和合规中心配置的。 如果为 Office 365 组设置了保留策略，组到期并被删除后，组邮箱中的组对话和组站点中的文件将保留在保留容器中，保留的特定天数取决于保留策略中的定义。 到期后，用户无法查看组或其中的内容，但可以通过电子发现恢复站点和邮箱数据。
 
 ## <a name="powershell-examples"></a>PowerShell 示例
-以下示例演示了如何使用 PowerShell cmdlet 在 Azure AD 组织中配置 Office 365 组的过期设置:
+以下示例演示了如何使用 PowerShell cmdlet 在 Azure AD 组织中配置 Office 365 组的过期设置：
 
-1. 安装 PowerShell v2.0 模块并在 PowerShell 提示符下登录:
+1. 安装 PowerShell v2.0 模块并在 PowerShell 提示符下登录：
 
    ``` PowerShell
    Install-Module -Name AzureAD
@@ -148,7 +151,7 @@ Role | 权限
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-以下 cmdlet 可用于更详细地配置策略。 有关详细信息, 请参阅[PowerShell 文档](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups)。
+以下 cmdlet 可用于更详细地配置策略。 有关详细信息，请参阅[PowerShell 文档](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups)。
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy

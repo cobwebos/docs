@@ -9,16 +9,16 @@ ms.date: 06/22/2018
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: f328de00d206b58037fda800354e9634b1c374d6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67173341"
 ---
-Azure Data Lake Storage Gen1 是一个企业范围的超大规模存储库，适用于大数据分析工作负载。 数据湖存储 Gen1 可用于捕获在单个位置进行操作和探索性分析任何大小、 类型和引入速度的数据。 可以在数据湖存储 Gen1 帐户中存储的数据量没有限制。
+Azure Data Lake Storage Gen1 是一个企业范围的超大规模存储库，适用于大数据分析工作负载。 您可以使用 Data Lake Storage Gen1 在单个位置捕获任何大小、类型和引入速度的数据，以便进行操作和探索性分析。 Data Lake Storage Gen1 帐户中可以存储的数据量没有限制。
 
 | **资源** | **默认限制** | **注释** |
 | --- | --- | --- |
-| 数据湖存储 Gen1 帐户，每个订阅，每个区域最大数量 |10 | 若要请求增加此限制，请联系支持。 |
-| 每个文件或文件夹的访问 Acl，最大数目 |32 | 这是硬性限制。 使用组来管理更少项的访问权限。 |
-| 默认 Acl，每个文件或文件夹的最大数目 |32 | 这是硬性限制。 使用组来管理更少项的访问权限。 |
+| 每个订阅每个区域的 Data Lake Storage Gen1 帐户的最大数量 |10 | 若要请求增加此限制，请与支持人员联系。 |
+| 每个文件或文件夹的最大访问 Acl 数 |32 | 这是硬性限制。 使用组来管理访问权限更少的项。 |
+| 每个文件或文件夹的默认 Acl 的最大数目 |32 | 这是硬性限制。 使用组来管理访问权限更少的项。 |

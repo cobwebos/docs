@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 7afa96c3c4d1a163e323aa0bb50ec361ff74aac3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278691"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858734"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes Service 群集
 
@@ -30,7 +30,7 @@ ms.locfileid: "70278691"
 
 部署到 Azure Kubernetes 服务时，部署到__连接到工作区__的 AKS 群集。 可通过两种方式将 AKS 群集连接到工作区：
 
-* 使用 Azure 机器学习服务 SDK、机器学习 CLI 或 Azure 门户创建 AKS 群集。 此过程会自动将群集连接到工作区。
+* 使用 Azure 机器学习服务 SDK、机器学习 CLI、 [Azure 门户](https://portal.azure.com)或[工作区登陆页面（预览版）](https://ml.azure.com)创建 AKS 群集。 此过程会自动将群集连接到工作区。
 * 将现有的 AKS 群集附加到 Azure 机器学习服务工作区。 可以使用 Azure 机器学习服务 SDK、机器学习 CLI 或 Azure 门户来连接群集。
 
 > [!IMPORTANT]
@@ -58,7 +58,7 @@ ms.locfileid: "70278691"
 
 **时间估计**：大约 20 分钟。
 
-创建或附加 AKS 群集是工作区的一次过程。 可以将此群集重复用于多个部署。 如果删除群集或包含该群集的资源组，则下次需要部署时，必须创建新群集。 可以将多个 AKS 群集附加到工作区。
+创建或附加 AKS 群集是工作区的一次过程。 可以将此群集重复用于多个部署。 如果删除群集或包含该群集的资源组, 则下次需要部署时, 必须创建新群集。 可以将多个 AKS 群集附加到工作区。
 
 > [!TIP]
 > 如果要使用 Azure 虚拟网络保护 AKS 群集，必须先创建虚拟网络。 有关详细信息，请参阅[通过 Azure 虚拟网络进行安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。
@@ -93,7 +93,7 @@ aks_target.wait_for_completion(show_output = True)
 > [!IMPORTANT]
 > 对于[`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)，如果你为`agent_count`和`vm_size`选择`agent_count` `cluster_purpose` 了自`DEV_TEST`定义值，并且不是，则需要确保乘以大于或等于12个虚拟cpu。`vm_size` 例如，如果使用的是`vm_size`具有4个虚拟 cpu 的 "Standard_D3_v2"，则应`agent_count`选择3个或更多的。
 >
-> Azure 机器学习 SDK 不支持缩放 AKS 群集。 若要缩放群集中的节点，请在 Azure 门户中使用 AKS 群集的 UI。 只能更改节点计数，而不能更改群集的 VM 大小。
+> Azure 机器学习 SDK 不支持缩放 AKS 群集。 若要缩放群集中的节点, 请在 Azure 门户中使用 AKS 群集的 UI。 只能更改节点计数, 而不能更改群集的 VM 大小。
 
 有关此示例中使用的类、方法和参数的详细信息，请参阅以下参考文档：
 
@@ -112,9 +112,9 @@ az ml computetarget create aks -n myaks
 
 ## <a name="attach-an-existing-aks-cluster"></a>附加现有的 AKS 群集
 
-**估计时间：** 大约5分钟。
+**估计时间:** 大约5分钟。
 
-如果 Azure 订阅中已有 AKS 群集，并且它是版本 1.12. # #，则可以使用它来部署映像。
+如果 Azure 订阅中已有 AKS 群集, 并且它是版本 1.12. # #, 则可以使用它来部署映像。
 
 > [!TIP]
 > 现有的 AKS 群集可以位于 Azure 区域中，而不是 Azure 机器学习服务工作区。
@@ -122,16 +122,16 @@ az ml computetarget create aks -n myaks
 > 如果要使用 Azure 虚拟网络保护 AKS 群集，必须先创建虚拟网络。 有关详细信息，请参阅[通过 Azure 虚拟网络进行安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。
 
 > [!WARNING]
-> 将 AKS 群集附加到工作区时，可以通过设置`cluster_purpose`参数来定义使用群集的方式。
+> 将 AKS 群集附加到工作区时, 可以通过设置`cluster_purpose`参数来定义使用群集的方式。
 >
-> 如果未设置`cluster_purpose`参数或设置`cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`，则群集必须有至少12个可用的虚拟 cpu。
+> 如果未设置`cluster_purpose`参数或设置`cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, 则群集必须有至少12个可用的虚拟 cpu。
 >
-> 如果设置`cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`了，则群集不需要具有12个虚拟 cpu。 建议至少2个虚拟 Cpu 用于开发/测试。 但是，为开发/测试配置的群集不适用于生产级别的流量，可能会增加推理时间。 开发/测试群集也不保证容错能力。
+> 如果设置`cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`了, 则群集不需要具有12个虚拟 cpu。 建议至少2个虚拟 Cpu 用于开发/测试。 但是，为开发/测试配置的群集不适用于生产级别的流量，可能会增加推理时间。 开发/测试群集也不保证容错能力。
 
 有关使用 Azure CLI 或门户创建 AKS 群集的详细信息，请参阅以下文章：
 
 * [创建 AKS 群集（CLI）](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
-* [创建 AKS 群集（门户）](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
+* [创建 AKS 群集 (门户)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
 以下示例演示了如何将现有的 AKS 1.12. # # 群集附加到工作区：
 
@@ -210,7 +210,7 @@ print(service.get_logs())
 
 ### <a name="using-the-cli"></a>使用 CLI
 
-若要使用 CLI 进行部署，请使用以下命令。 替换`myaks`为 AKS 计算目标的名称。 替换`mymodel:1`为注册的模型的名称和版本。 替换`myservice`为要为此服务提供的名称：
+若要使用 CLI 进行部署, 请使用以下命令。 替换`myaks`为 AKS 计算目标的名称。 替换`mymodel:1`为注册的模型的名称和版本。 替换`myservice`为要为此服务提供的名称:
 
 ```azurecli-interactive
 az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json

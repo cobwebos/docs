@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533517"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844258"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -65,7 +65,7 @@ ms.locfileid: "69533517"
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>无法使用 Kubectl 日志获取日志或无法连接到 API 服务器。 我收到“来自服务器的错误：拨号后端时出错: 拨打 tcp...”。 我该怎么办？
 
-请确保默认网络安全组未被修改, 并且端口22和9000已打开以连接到 API 服务器。 使用 `kubectl get pods --namespace kube-system` 命令检查 `tunnelfront` Pod是否在 *kube-system* 命名空间中运行。 如果没有，请强制删除 Pod，它会重启。
+请确保默认网络安全组未被修改并且端口 22 和 9000 已打开以连接到 API 服务器。 使用 `kubectl get pods --namespace kube-system` 命令检查 `tunnelfront` Pod是否在 *kube-system* 命名空间中运行。 如果没有，请强制删除 Pod，它会重启。
 
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>我在尝试进行升级或缩放，并收到“消息：不允许更改属性‘imageReference’”错误。 如何修复此问题？
 
@@ -86,12 +86,12 @@ ms.locfileid: "69533517"
 
 *此故障排除帮助是从 https://aka.ms/aks-pending-upgrade*
 
-具有单个节点池的群集或具有[多个节点池](use-multiple-node-pools.md)的群集的升级和缩放操作是互斥的。 不能同时升级和缩放群集或节点池。 相反, 每个操作类型必须在目标资源上完成, 然后才能在该相同资源上发出下一个请求。 因此, 操作会在活动升级或缩放操作发生或尝试后失败时受到限制。 
+具有单个节点池的群集或具有[多个节点池](use-multiple-node-pools.md)的群集的升级和缩放操作是互斥的。 不能让群集或节点池同时升级和缩放， 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 因此，如果当前正在执行升级或缩放操作，或者曾经尝试过这些操作，但随后失败，则其他操作会受到限制。 
 
-为了帮助诊断问题, 请`az aks show -g myResourceGroup -n myAKSCluster -o table`运行以检索群集上的详细状态。 根据结果：
+若要诊断此问题，请运行 `az aks show -g myResourceGroup -n myAKSCluster -o table` 检索群集上的详细状态。 根据结果：
 
-* 如果群集正在升级，请等到该操作终止。 如果该操作成功, 请再次重试先前失败的操作。
-* 如果群集升级失败, 请按照上一部分中所述的步骤进行操作。
+* 如果群集正在升级，请等到该操作终止。 如果升级成功，请再次重试先前失败的操作。
+* 如果群集升级失败，请按前面部分所述的步骤操作。
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>是否可以将我的群集移动到其他订阅，或者说，是否可以将包含我的群集的订阅移动到新租户？
 
@@ -101,13 +101,13 @@ ms.locfileid: "69533517"
 
 *此故障排除帮助是从 aka.ms/aks-vmss-enablement*
 
-可能会收到指示 AKS 群集不在虚拟机规模集上的错误, 例如以下示例:
+可能会收到指示 AKS 群集不在虚拟机规模集上的错误，例如以下示例：
 
-**AgentPool ' AgentPool ' 已启用自动缩放, 但它不在虚拟机规模集上**
+**AgentPool ' AgentPool ' 已启用自动缩放，但它不在虚拟机规模集上**
 
-若要使用群集自动缩放程序或多节点池等功能, 必须创建使用虚拟机规模集的 AKS 群集。 如果尝试使用依赖于虚拟机规模集的功能, 并以常规的非虚拟机规模集 AKS 群集为目标, 则会返回错误。 虚拟机规模集支持目前在 AKS 中以预览版提供。
+若要使用群集自动缩放程序或多节点池等功能，必须创建使用虚拟机规模集的 AKS 群集。 如果尝试使用依赖于虚拟机规模集的功能，并以常规的非虚拟机规模集 AKS 群集为目标，则会返回错误。 虚拟机规模集支持目前在 AKS 中以预览版提供。
 
-按照相应文档中*开始步骤之前*的步骤, 正确注册虚拟机规模集功能预览并创建 AKS 群集:
+按照相应文档中*开始步骤之前*的步骤，正确注册虚拟机规模集功能预览并创建 AKS 群集：
 
 * [使用群集自动缩放程序](cluster-autoscaler.md)
 * [创建和使用多个节点池](use-multiple-node-pools.md)
@@ -121,14 +121,23 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 * AKS *MC_* 资源组名称组合了资源组名称和资源名称。 自动生成的语法 `MC_resourceGroupName_resourceName_AzureRegion` 不能超过 80 个字符。 如果需要，请缩短你的资源组名称或 AKS 群集名称的长度。
 * *dnsPrefix* 的开头和结尾必须是字母数字值。 有效字符包括字母数字值和连字符 (-)。 *dnsPrefix* 不能包含特殊字符，例如句点 (.)。
 
-## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>尝试创建、更新、缩放、删除或升级群集时收到错误, 不允许执行该操作, 因为正在执行其他操作。
+## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>尝试创建、更新、缩放、删除或升级群集时收到错误，不允许执行该操作，因为正在执行其他操作。
 
 *此故障排除帮助是从 aka.ms/aks-pending-operation*
 
-当上一个操作仍在进行时, 群集操作将受到限制。 若要检索群集的详细状态, 请使用`az aks show -g myResourceGroup -n myAKSCluster -o table`命令。 根据需要使用你自己的资源组和 AKS 群集名称。
+当上一个操作仍在进行时，群集操作会受限。 若要检索群集的详细状态，请使用 `az aks show -g myResourceGroup -n myAKSCluster -o table` 命令。 根据需要使用自己的资源组和 AKS 群集名称。
 
-基于群集状态的输出:
+根据群集状态的输出：
 
-* 如果群集处于 "成功" 或 "*失败*" 之外的任何预配状态, 请等待该操作*完成*(*升级/更新/创建/缩放/删除/迁移*)。 在上一个操作完成后, 重新尝试最新的群集操作。
+* 如果群集的预配状态不是“成功”或“失败”，请等待操作（升级/更新/创建/缩放/删除/迁移）终止。 当上一操作完成后，请重试最新的群集操作。
 
-* 如果群集的升级失败, 请执行以下所述的步骤: 我[收到群集处于失败状态的错误, 并且在修复之前, 升级或缩放将无法工作](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)。
+* 如果群集的升级失败，请按[有错误指出，我的群集处于故障状态，在解决此解决之前无法进行升级或缩放](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)中概述的步骤操作。
+
+## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>我在尝试创建新群集时找不到服务主体，但未传入现有群集时，出现错误。
+
+创建 AKS 群集时，需要使用服务主体来代表你创建资源。 AKS 提供在创建群集时创建新的功能，但这需要 Azure Active Directory 在合理的时间内完全传播新的服务主体，以便群集成功创建。 如果此传播时间太长，则群集将无法进行验证，因为它找不到可用的服务主体来执行此操作。 
+
+为此，请使用以下解决方法：
+1. 使用已在区域中传播的现有服务主体，并在创建群集时将其传递到 AKS。
+2. 如果使用自动化脚本，请在创建服务主体和创建 AKS 群集之间添加时间延迟。
+3. 如果使用 Azure 门户，请在创建过程中返回到群集设置，然后在几分钟后重试验证页面。

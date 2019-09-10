@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
 ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68698280"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
-本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移, 将展开并更新该列表以涵盖更多服务。
+本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，将展开并更新该列表以涵盖更多服务。
 
-若要了解有关 Azure 定价的详细信息, 请参阅[azure 定价概述](https://azure.microsoft.com/pricing/)。 可以通过使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来估算成本。 你还可以前往特定服务 (例如, [Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) 的定价详细信息页。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing/billing-getting-started.md)。
+若要了解有关 Azure 定价的详细信息，请参阅[azure 定价概述](https://azure.microsoft.com/pricing/)。 可以通过使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来估算成本。 你还可以前往特定服务（例如， [Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)）的定价详细信息页。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing/billing-getting-started.md)。
 
 > [!NOTE]
-> 如果要提高限制或配额超过默认限制, 请免费[打开联机客户支持请求](azure-resource-manager/resource-manager-quota-errors.md)。 此限制不能高于下表中显示的最大限制值。 如果没有最大限制列，则资源没有可调整的限制。
+> 如果要提高限制或配额超过默认限制，请免费[打开联机客户支持请求](azure-resource-manager/resource-manager-quota-errors.md)。 此限制不能高于下表中显示的最大限制值。 如果没有最大限制列，则资源没有可调整的限制。
 >
-> [免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息, 请参阅将[Azure 免费试用版订阅升级到即用即付订阅](billing/billing-upgrade-azure-subscription.md)和[免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
+> [免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅将[Azure 免费试用版订阅升级到即用即付订阅](billing/billing-upgrade-azure-subscription.md)和[免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>限制和 Azure 资源管理器
@@ -85,7 +85,7 @@ ms.locfileid: "68698280"
 * [网络](#networking-limits)
   * [应用程序网关](#application-gateway-limits)
   * [Azure DNS](#azure-dns-limits)
-  * [Azure 前门服务](#azure-front-door-service-limits)
+  * [Azure Front Door 服务](#azure-front-door-service-limits)
   * [Azure 防火墙](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [负载均衡器](#load-balancer)
@@ -388,7 +388,7 @@ ms.locfileid: "68698280"
 有关 SQL 数据库的限制，请参阅[单一数据库的 SQL 数据库资源限制](sql-database/sql-database-vcore-resource-limits-single-databases.md)、[弹性池和共用数据库的 SQL 数据库资源限制](sql-database/sql-database-vcore-resource-limits-elastic-pools.md)以及[托管实例的 SQL 数据库资源限制](sql-database/sql-database-managed-instance-resource-limits.md)。
 
 ### <a name="sql-data-warehouse-limits"></a>SQL 数据仓库限制
-有关 SQL 数据仓库的限制, 请参阅[Sql 数据仓库资源限制](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
+有关 SQL 数据仓库的限制，请参阅[Sql 数据仓库资源限制](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
 ## <a name="see-also"></a>请参阅
 - [了解 Azure 限制及如何提高限制](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)

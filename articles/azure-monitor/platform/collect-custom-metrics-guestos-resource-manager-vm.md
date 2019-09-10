@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 85f7395cbfa4ef2ba6ab448c9541b3f107eb0e96
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: ac8d059c2bcad7aaa005b4afe1fb7814d49f9339
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68249818"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844962"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -27,11 +27,13 @@ ms.locfileid: "68249818"
 
 如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/resource-group-overview.md)及其结构和语法。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+
+- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器
@@ -47,9 +49,9 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 下载这两个文件并在本地保存。
 
 ### <a name="modify-azuredeployparametersjson"></a>修改 azuredeploy.parameters.json
-打开 azuredeploy.parameters.json 文件 
+打开 azuredeploy.parameters.json 文件
 
-1. 输入 VM 的“adminUsername”和“adminPassword”的值   。 这些参数用于对 VM 进行远程访问。 为了避免 VM 被劫持，请勿使用此模板中的值。 机器人在 Internet 上扫描公共 GitHub 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。
+1. 输入 VM 的“adminUsername”和“adminPassword”的值。 这些参数用于对 VM 进行远程访问。 为了避免 VM 被劫持，请勿使用此模板中的值。 机器人在 Internet 上扫描公共 GitHub 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。
 
 1. 为 VM 创建唯一 dnsname。
 
@@ -256,7 +258,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 1. 运行以下命令，使用资源管理器模板部署 VM。
    > [!NOTE]
-   > 如果要更新现有 VM，只需将“-Mode Incremental”添加到以下命令的末尾  。
+   > 如果要更新现有 VM，只需将“-Mode Incremental”添加到以下命令的末尾。
 
    ```powershell
    New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
@@ -271,19 +273,19 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 1. 登录到 Azure 门户。
 
-2. 在左侧菜单中，选择“监视”  。
+2. 在左侧菜单中，选择“监视”。
 
-3. 在“监视”页上选择“指标”  。
+3. 在“监视”页上选择“指标”。
 
    ![“指标”页](media/collect-custom-metrics-guestos-resource-manager-vm/metrics.png)
 
-4. 将聚合时限更改为“过去 30 分钟”  。
+4. 将聚合时限更改为“过去 30 分钟”。
 
-5. 在资源下拉菜单中选择创建的 VM。 如果未更改模板中的名称，则名称应为“SimpleWinVM2”  。
+5. 在资源下拉菜单中选择创建的 VM。 如果未更改模板中的名称，则名称应为“SimpleWinVM2”。
 
-6. 在命名空间下拉菜单中，选择“azure.vm.windows.guest” 
+6. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”
 
-7. 在指标下拉菜单中，选择“内存”\%“已提交的使用字节数”  。
+7. 在指标下拉菜单中，选择“内存”\%“已提交的使用字节数”。
 
 
 ## <a name="next-steps"></a>后续步骤

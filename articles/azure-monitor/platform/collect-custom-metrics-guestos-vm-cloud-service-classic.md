@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 90e841628d989a16f504d2efd7a2c7b18335ff48
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129473"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844933"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>将来宾 OS 指标发送到 Azure Monitor 指标存储经典云服务 
 
@@ -35,11 +35,13 @@ ms.locfileid: "66129473"
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
 
+- 云服务必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
+
 ## <a name="provision-a-cloud-service-and-storage-account"></a>预配云服务和存储帐户 
 
 1. 创建并部署经典云服务 可在 [Azure 云服务和 ASP.NET 入门](../../cloud-services/cloud-services-dotnet-get-started.md)中找到经典云服务应用程序和部署示例。 
 
-2. 可以使用现有存储帐户，也可以部署新的存储帐户。 如果存储帐户与创建的经典云服务在同一区域中，那就最好了。 在 Azure 门户中，转到“存储帐户”资源边栏选项卡并选择“密钥”。   记下存储帐户名称和存储帐户密钥。 在后续步骤中需要使用此信息。
+2. 可以使用现有存储帐户，也可以部署新的存储帐户。 如果存储帐户与创建的经典云服务在同一区域中，那就最好了。 在 Azure 门户中，转到“存储帐户”资源边栏选项卡并选择“密钥”。 记下存储帐户名称和存储帐户密钥。 在后续步骤中需要使用此信息。
 
    ![存储帐户密钥](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/storage-keys.png)
 
@@ -51,7 +53,7 @@ ms.locfileid: "66129473"
 - 为此应用创建新的客户端机密。  
 - 保存密钥和客户端 ID，以便在后续步骤中使用。  
 
-对于在前面步骤中创建的应用，请为其授予你希望发布其指标的资源的“监视指标发布者”权限。  如果你计划使用此应用为许多资源发布自定义指标，则可以在资源组或订阅级别授予这些权限。  
+对于在前面步骤中创建的应用，请为其授予你希望发布其指标的资源的“监视指标发布者”权限。 如果你计划使用此应用为许多资源发布自定义指标，则可以在资源组或订阅级别授予这些权限。  
 
 > [!NOTE]
 > 诊断扩展使用服务主体向 Azure Monitor 证明身份，并发布云服务的指标。
@@ -174,15 +176,15 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
    ![指标 Azure 门户](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
-2. 在左侧菜单中，选择“监视”  。
+2. 在左侧菜单中，选择“监视”。
 
-3. 在“监视”边栏选项卡中，选择“指标预览”选项卡。  
+3. 在“监视”边栏选项卡中，选择“指标预览”选项卡。
 
 4. 在资源下拉菜单中，选择你的经典云服务。
 
-5. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”。  
+5. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”。 
 
-6. 在指标下拉菜单中，选择“内存\已提交的使用字节数”。  
+6. 在指标下拉菜单中，选择“内存\已提交的使用字节数”。 
 
 可以使用维度筛选和拆分功能查看特定角色或角色实例使用的总内存。 
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: d626a7768e7070360a6f0249486bfa83407fe998
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 60ecd71419bbf65cceab257cb97a96929d24ec08
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192066"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860559"
 ---
 # <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习结果
 
@@ -30,34 +30,34 @@ ms.locfileid: "70192066"
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
-* 使用 SDK 或 Azure 门户创建自动化机器学习试验。
+* 在 Azure 门户或你的工作区登陆页面（预览版）中，使用 SDK 创建自动化机器学习试验。
 
     * 使用 SDK 生成[分类模型](how-to-auto-train-remote.md)或[回归模型](tutorial-auto-train-models.md)
-    * 使用[Azure 门户](how-to-create-portal-experiments.md)通过上传适当的数据来创建分类或回归模型。
+    * 使用 " [Azure 门户" 或 "工作区" 登陆页（预览）](how-to-create-portal-experiments.md)通过上传适当的数据来创建分类或回归模型。
 
 ## <a name="view-the-run"></a>查看运行
 
-运行自动机器学习试验后, 可以在机器学习服务工作区中找到运行历史记录。 
+运行自动机器学习试验后，可以在机器学习服务工作区中找到运行历史记录。 
 
 1. 转到你的工作区。
 
-1. 在工作区的左侧面板中, 选择 "**试验**"。
+1. 在工作区的左侧面板中，选择 "**试验**"。
 
    ![试验菜单的屏幕截图](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
 
-1. 在试验列表中, 选择要浏览的实验。
+1. 在试验列表中，选择要浏览的实验。
 
    [![实验列表](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
 
-1. 在下表中, 选择 "**运行号码**"。
+1. 在下表中，选择 "**运行号码**"。
 
-   [试验运行![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
+   [试验运行![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png)）
 
-1. 在 "迭代" 表中, 选择要进一步浏览的模型的**迭代号**。
+1. 在 "迭代" 表中，选择要进一步浏览的模型的**迭代号**。
 
    [![试验模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
-当你使用`RunDetails` [Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)时, 还会在运行过程中看到这些相同的结果。
+当你使用`RunDetails` [Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)时，还会在运行过程中看到这些相同的结果。
 
 ## <a name="classification"></a>分类结果
 
@@ -79,30 +79,30 @@ ms.locfileid: "70192066"
 --|--|--|--|
 AUC_macro| AUC 是接收方操作特性曲线下面的区域。 Macro 是每个类的 AUC 算术平均值。  | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
 AUC_Micro| AUC 是接收方操作特性曲线下面的区域。 微的计算方法是将每个类中的真正的正值和假正值组合在一起。| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
-AUC_Weighted  | AUC 是接收方操作特性曲线下面的区域。 加权是每个类的分数的算术平均值, 由每个类中的真实实例的数目加权。| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
+AUC_Weighted  | AUC 是接收方操作特性曲线下面的区域。 加权是每个类的分数的算术平均值，由每个类中的真实实例的数目加权。| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
 accuracy|Accuracy 是与真实标签完全匹配的预测标签百分比。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |无|
 average_precision_score_macro|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 宏是每个类的平均精度分数的算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="macro"|
-average_precision_score_micro|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 微计算是通过在每个截止时合并真正的正值和假正值, 来全局计算。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="micro"|
-average_precision_score_weighted|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 加权是每个类的平均精度分数的算术平均值, 由每个类中的真实实例的数目加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="weighted"|
+average_precision_score_micro|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 微计算是通过在每个截止时合并真正的正值和假正值，来全局计算。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="micro"|
+average_precision_score_weighted|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 加权是每个类的平均精度分数的算术平均值，由每个类中的真实实例的数目加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="weighted"|
 balanced_accuracy|平衡准确度是每个类的召回率算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
 f1_score_macro|F1 评分是精度和召回率的调和平均值。 宏是每个类的 F1 分数的算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="macro"|
 f1_score_micro|F1 评分是精度和召回率的调和平均值。 微通过计算总真实正值、假负和误报计算出全局计算。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="micro"|
 f1_score_weighted|F1 评分是精度和召回率的调和平均值。 按每个类的 F1 评分类频率计算的加权平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
-log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 对于在{0,1} ca-yt = 1 的情况下具有 true 标签 ca-yt 和估计概率 yp 的单个示例, 日志丢失为-log P (&#124;ca-yt yp) =-(ca-yt log (yp) + (1-ca-yt) log (1-yp))。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|None|
-norm_macro_recall|规范化宏召回率是已规范化的宏召回率，因此，随机性能的评分为 0，完美性能的评分为 1。 这是通过 norm_macro_recall: = (recall_score_macro-R)/(1-R) 实现的, 其中 R 是用于随机预测的 recall_score_macro 的预期值 (即, 对二元分类使用 R = 0.5, 对 C 类分类问题使用 R = (1/C))。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "宏" |
+log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 对于在{0,1} ca-yt = 1 的情况下具有 true 标签 ca-yt 和估计概率 yp 的单个示例，日志丢失为-log P （&#124;ca-yt yp） =-（ca-yt log （yp） + （1-ca-yt） log （1-yp））。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|无|
+norm_macro_recall|规范化宏召回率是已规范化的宏召回率，因此，随机性能的评分为 0，完美性能的评分为 1。 这是通过 norm_macro_recall： = （recall_score_macro-R）/（1-R）实现的，其中 R 是用于随机预测的 recall_score_macro 的预期值（即，对二元分类使用 R = 0.5，对 C 类分类问题使用 R = （1/C））。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "宏" |
 precision_score_macro|Precision 是标记为特定类的，实际位于该类中的元素百分比。 宏是每个类的精度算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
-precision_score_micro|Precision 是标记为特定类的，实际位于该类中的元素百分比。 通过计算总的实际正值和假正值, 对微进行全局计算。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
-precision_score_weighted|Precision 是标记为特定类的，实际位于该类中的元素百分比。 加权是每个类的精度的算术平均值, 每个类中的真实实例的数量为加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="weighted"|
+precision_score_micro|Precision 是标记为特定类的，实际位于该类中的元素百分比。 通过计算总的实际正值和假正值，对微进行全局计算。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
+precision_score_weighted|Precision 是标记为特定类的，实际位于该类中的元素百分比。 加权是每个类的精度的算术平均值，每个类中的真实实例的数量为加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="weighted"|
 recall_score_macro|Recall 是实际位于某个类中的已正确标记的元素百分比。 宏是每个类的算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
-recall_score_micro|Recall 是实际位于某个类中的已正确标记的元素百分比。 通过计算总真实正值、假负值和假正值, 来全局计算微|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
-recall_score_weighted|Recall 是实际位于某个类中的已正确标记的元素百分比。 加权是每个类的每个类的算术平均值, 按每个类中的真实实例的数目加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
-weighted_accuracy|加权准确度是精确的, 其中每个示例给定的权重等于该示例的 true 类中的真实实例的比例。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight 是等于目标中每个元素的该类比例的向量|
+recall_score_micro|Recall 是实际位于某个类中的已正确标记的元素百分比。 通过计算总真实正值、假负值和假正值，来全局计算微|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
+recall_score_weighted|Recall 是实际位于某个类中的已正确标记的元素百分比。 加权是每个类的每个类的算术平均值，按每个类中的真实实例的数目加权。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
+weighted_accuracy|加权准确度是精确的，其中每个示例给定的权重等于该示例的 true 类中的真实实例的比例。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight 是等于目标中每个元素的该类比例的向量|
 
 ### <a name="confusion-matrix"></a>混淆矩阵
 
 混淆矩阵用于描述分类模型的性能。 每一行显示真实类的实例，每一列表示预测类的实例。 混淆矩阵显示给定模型的正确分类标签和错误分类标签。
 
-对于分类问题，Azure 机器学习会自动为生成的每个模型提供一个混淆矩阵。 对于每个混淆矩阵, 自动 ML 都将显示每个预测标签和每个真正标签的交集的频率。 颜色越暗, 矩阵特定部分中的计数就越高。 理想情况下, 最暗的颜色将沿着矩阵的对角线。 
+对于分类问题，Azure 机器学习会自动为生成的每个模型提供一个混淆矩阵。 对于每个混淆矩阵，自动 ML 都将显示每个预测标签和每个真正标签的交集的频率。 颜色越暗，矩阵特定部分中的计数就越高。 理想情况下，最暗的颜色将沿着矩阵的对角线。 
 
 示例 1：准确度不佳的分类模型![准确度不佳的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
@@ -173,9 +173,9 @@ weighted_accuracy|加权准确度是精确的, 其中每个示例给定的权重
 |指标|描述|计算|其他参数
 --|--|--|--|
 explained_variance|解释方差是数学模型计算给定数据集的方差时遵循的比例。 它是原始数据方差与误差方差之间的递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|无|
-r2_score|R2 是与输出平均值的基线模型相比，平方误差的确定系数或递减百分比。 |[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|None|
-spearman_correlation|斯皮尔曼相关是两个数据集之间的关系单一性的非参数测量法。 与皮尔逊相关不同，斯皮尔曼相关不假设两个数据集呈正态分布。 与其他相关系数一样，此参数在 -1 和 +1 之间变化，0 表示不相关。 -1 或 +1 相关表示确切的单一关系。 正相关表示 y 随着 x 的递增而递增。 负相关表示 y 随着 x 的递增而递减。|[计算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|None|
-mean_absolute_error|平均绝对误差是目标与预测之间的差的预期绝对值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|无|
+r2_score|R2 是与输出平均值的基线模型相比，平方误差的确定系数或递减百分比。 |[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|无|
+spearman_correlation|斯皮尔曼相关是两个数据集之间的关系单一性的非参数测量法。 与皮尔逊相关不同，斯皮尔曼相关不假设两个数据集呈正态分布。 与其他相关系数一样，此参数在 -1 和 +1 之间变化，0 表示不相关。 -1 或 +1 相关表示确切的单一关系。 正相关表示 y 随着 x 的递增而递增。 负相关表示 y 随着 x 的递增而递减。|[计算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|无|
+mean_absolute_error|平均绝对误差是目标与预测之间的差的预期绝对值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|None|
 normalized_mean_absolute_error|规范化平均绝对误差是平均绝对误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|除以数据范围|
 median_absolute_error|平均绝对误差是目标与预测之间的所有绝对差的中间值。 此损失值可靠地反映离群值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|None|
 normalized_median_absolute_error|规范化中间绝对误差是中间绝对误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|除以数据范围|
@@ -192,7 +192,7 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 
 示例 1：预测准确度较低的回归模型![预测准确度较低的回归模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-示例 2：在其预测中具有高准确度的回归模型预测[ ![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
+示例 2：在其预测中具有高准确度的回归[ ![模型预测](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
 
 
 
@@ -206,13 +206,13 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 
 ## <a name="explain-model"></a>模型 interpretability 和特征重要性
 
-功能重要性允许您查看每个功能在模型构造中有多宝贵。 此计算在默认情况下处于关闭状态, 因为这会显著增加运行时间。   您可以为所有模型启用模型说明, 或者只说明最佳模型。
+功能重要性允许您查看每个功能在模型构造中有多宝贵。 此计算在默认情况下处于关闭状态，因为这会显著增加运行时间。   您可以为所有模型启用模型说明，或者只说明最佳模型。
 
 可以查看整个模型的特征重要性评分，也可以查看预测模型中每个类的该评分。 可以查看每个特征的重要性如何对每个类和整个模型进行比较。
 
 ![模型解释功能](./media/how-to-understand-automated-ml/feature-importance.gif)
 
-有关启用 interpretability 功能的详细信息, 请参阅[在 Python 中配置自动 ML 试验](how-to-configure-auto-train.md#explain-the-model-interpretability)。  有关说明最佳模型的示例, 请参阅[最佳模型说明](how-to-auto-train-remote.md#explain)。
+有关启用 interpretability 功能的详细信息，请参阅[在 Python 中配置自动 ML 试验](how-to-configure-auto-train.md#explain-the-model-interpretability)。  有关说明最佳模型的示例，请参阅[最佳模型说明](how-to-auto-train-remote.md#explain)。
 
 ## <a name="next-steps"></a>后续步骤
 

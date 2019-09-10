@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95c337501c46dd9b30ff20d71a9363ab03fdb608
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: f9244dfabef8b13105ef830f9f4543da9cb2cca9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980443"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842650"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 中可配置的令牌生存期（预览版）
 
@@ -89,7 +89,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 | 多因素会话令牌最大期限 |MaxAgeSessionMultiFactor |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
 
 * <sup>1</sup>365 天是可针对这些属性设置的最大显式时间长短。
-* <sup>2</sup>若要使 Microsoft 团队 Web 客户端工作, 建议为 Microsoft 团队将 AccessTokenLifetime 设置为大于15分钟。
+* <sup>2</sup>若要使 Microsoft 团队 Web 客户端工作，建议为 Microsoft 团队将 AccessTokenLifetime 设置为大于15分钟。
 
 ### <a name="exceptions"></a>Exceptions
 | 属性 | 影响 | 默认 |
@@ -106,7 +106,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 * 如果将某个策略显式分配到服务主体，将强制实施该策略。
 * 如果未将策略显式分配到服务主体，则强制实施显式分配到服务主体的父组织的策略。
 * 如果未将策略显式分配到服务主体或组织，则强制实施分配到应用程序的策略。
-* 如果未将策略分配到服务主体、组织或应用程序对象，则强制实施默认值。 （请参阅[可配置的令牌生存期属性](#configurable-token-lifetime-properties)中的表格。）
+* 如果尚未将策略分配到服务主体、组织或应用程序对象，则强制实施默认值。 （请参阅[可配置的令牌生存期属性](#configurable-token-lifetime-properties)中的表格。）
 
 有关应用程序对象与服务主体对象之间的关系的详细信息，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 

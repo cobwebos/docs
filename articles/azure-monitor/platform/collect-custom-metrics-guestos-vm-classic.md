@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: cc0c7c4928fb03cb60bb51f74d74fdc1ab914348
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129544"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844923"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>将来宾 OS 指标发送到适用于 Windows 虚拟机（经典）的 Azure Monitor 数据存储
 
@@ -35,6 +35,8 @@ Azure Monitor [诊断扩展](https://docs.microsoft.com/azure/monitoring-and-dia
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
 
+- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
+
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>创建经典虚拟机和存储帐户
 
 1. 使用 Azure 门户创建经典 VM。
@@ -42,7 +44,7 @@ Azure Monitor [诊断扩展](https://docs.microsoft.com/azure/monitoring-and-dia
 
 1. 创建此 VM 时，请选择创建新经典存储帐户的选项。 我们会在后面的步骤中使用此存储帐户。
 
-1. 在 Azure 门户中，转到“存储帐户”资源边栏选项卡。  选择“密钥”，并记下存储帐户名称和存储帐户密钥。  在后续步骤中需要使用此信息。
+1. 在 Azure 门户中，转到“存储帐户”资源边栏选项卡。 选择“密钥”，并记下存储帐户名称和存储帐户密钥。 在后续步骤中需要使用此信息。
    ![存储访问密钥](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
 
 ## <a name="create-a-service-principal"></a>创建服务主体
@@ -187,17 +189,17 @@ Azure Monitor [诊断扩展](https://docs.microsoft.com/azure/monitoring-and-dia
 
 1.  转到 Azure 门户。 
 
-1.  在左侧菜单中，选择“监视”  。
+1.  在左侧菜单中，选择“监视”。
 
-1.  在“监视”边栏选项卡上选择“指标”   。
+1.  在“监视”边栏选项卡上选择“指标”。
 
     ![导航指标](./media/collect-custom-metrics-guestos-vm-classic/navigate-metrics.png)
 
 1. 在资源下拉菜单中，选择你的经典 VM。
 
-1. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”。 
+1. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”。
 
-1. 在指标下拉菜单中，选择“内存\已提交的使用字节数”。 
+1. 在指标下拉菜单中，选择“内存\已提交的使用字节数”。
    ![绘制指标图表](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 

@@ -241,7 +241,7 @@ $NIC | Set-AzNetworkInterface
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   www.google.com 请求应成功，而 www.microsoft.com 请求应失败。 这表明防火墙规则按预期运行。
+   [www.google.com](www.google.com) 请求应成功，而 www.microsoft.com 请求应失败。 这表明防火墙规则按预期运行。
 
 现已验证防火墙规则可正常工作：
 

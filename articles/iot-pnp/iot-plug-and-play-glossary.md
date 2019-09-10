@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 79b57a9c9f12c6014b9002b0688beae334af3587
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806509"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858846"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT 即插即用预览版术语表
 
@@ -46,9 +46,9 @@ Azure IoT Central 是一种完全托管的软件即服务解决方案，可让�
 
 当你通过[Azure IoT 认证门户](#azure-certified-for-iot-portal)提交[IoT 即插即用设备](#iot-plug-and-play-device)进行认证时，Azure IoT 认证服务将运行一组认证测试。 必须先认证设备，然后才能将设备添加到[IoT 认证设备目录](#certified-for-iot-device-catalog)。
 
-## <a name="azure-iot-device-workbench-extension"></a>Azure IoT 设备工作台扩展
+## <a name="azure-iot-tools-extension"></a>Azure IoT 工具扩展
 
-Azure IoT 设备工作台是一个[Visual Studio code](#visual-studio-code)扩展，提供了用于以下操作的集成环境：
+Azure IoT 工具是[Visual Studio code](#visual-studio-code)中的扩展的集合，可帮助你与 iot 中心进行交互并开发 iot 设备。 对于 IoT 即插即用设备开发，它可帮助你：
 
 - 创作[设备功能模型](#device-capability-model)和[接口](#interface)。
 - 发布到[模型存储库](#model-repository)。
@@ -200,4 +200,4 @@ IoT 即插即用设备通常是一种小型的独立计算设备，用于收集�
 
 ## <a name="visual-studio-code"></a>Visual Studio code
 
-Visual Studio code 是可用于多个平台的新式代码编辑器。 使用扩展（如[Azure IoT 设备工作台扩展](#azure-iot-device-workbench-extension)）可以对其进行自定义，以支持各种开发方案。
+Visual Studio code 是可用于多个平台的新式代码编辑器。 扩展（如[Azure IoT 工具包](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)中的扩展）使你可以自定义编辑器以支持各种开发方案。

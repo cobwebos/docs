@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2eff9c0edf6797c08d0ef9732c903a81a6c764a
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 54e0648ff9aab12ad6a579fc7f6e45b98a9d6d03
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733408"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861176"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -78,6 +78,12 @@ ms.locfileid: "70733408"
 * 安全组和 Office 365 组所有者，可以管理组成员身份。 这些组可能会授予对 Azure AD 或其他位置敏感或私有信息或关键配置的访问权限。
 * Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
 * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
+
+### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Azure DevOps 管理员](#azure-devops-administrator-permissions)
+
+具有此角色的用户可以管理 Azure DevOps 策略，以将新的 Azure DevOps 组织创建限制为一组可配置的用户/AAD 组。 此角色中的用户可以通过任何 Azure AD 公司的 Azure DevOps 组织来管理此策略。
+
+将来，此角色中的用户将管理所有企业 Azure DevOps 策略。
 
 ### <a name="azure-information-protection-administratorazure-information-protection-administrator-permissions"></a>[Azure 信息保护管理员](#azure-information-protection-administrator-permissions)
 
@@ -194,7 +200,7 @@ ms.locfileid: "70733408"
 此管理员可以管理 Azure Active Directory 租户与外部标识提供者之间的联合。 使用此角色时，用户可以添加新的标识提供者并配置所有可用设置（例如身份验证路径、服务 ID、已分配密钥容器）。 此用户可让租户信任来自外部标识提供者的身份验证。 对最终用户体验造成的影响取决于租户类型：
 
 * 员工与合作伙伴的 Azure Active Directory 租户： 添加联合身份验证（例如使用 Gmail）会立即影响所有尚未兑换的来宾邀请。 请参阅[添加 Google 作为 B2B 来宾用户的标识提供者](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)。
-* Azure Active Directory B2C 租户：添加联合身份验证（例如，使用 Facebook，或与其他 Azure AD 组织）不会立即影响最终用户流，直到将标识提供程序作为用户流中的选项（也称为内置策略）添加。 有关示例，请参阅[将 Microsoft 帐户配置为标识提供者](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)。 若要更改用户流，需要使用受限角色“B2C 用户流管理员”。
+* Azure Active Directory B2C 租户：添加联合身份验证（例如，使用 Facebook，或与其他 Azure AD 组织）不会立即影响最终用户流，直到将标识提供程序作为用户流中的选项（也称为内置策略）添加。 有关示例, 请参阅[将 Microsoft 帐户配置为标识提供者](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)。 若要更改用户流，需要使用受限角色“B2C 用户流管理员”。
 
 ### <a name="global-administrator--company-administratorcompany-administrator-permissions"></a>[全局管理员/公司管理员](#company-administrator-permissions)
 
@@ -229,7 +235,7 @@ ms.locfileid: "70733408"
 * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
 
 > [!NOTE]
-> 使用[管理单元（预览）](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units)可以将管理权限委派给用户子集，并将策略应用到部分用户。
+> 使用[管理单元 (预览)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units)可以将管理权限委派给用户子集, 并将策略应用到部分用户。
 >
 > 此角色以前称为[Azure 门户](https://portal.azure.com/)中的 "密码管理员"。 我们已将其名称更改为“支持管理员”，以便与 Azure AD PowerShell、Azure AD 图形 API 和 Microsoft 图形 API 中的名称相匹配。
 
@@ -491,6 +497,19 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 | microsoft. 目录/用户/密码/更新 | 更新 Office 365 组织中所有用户的密码。 有关详细信息，请参阅联机文档。 |
+
+### <a name="azure-devops-administrator-permissions"></a>Azure DevOps 管理员权限
+
+可管理 Azure DevOps 组织策略和设置。
+
+> [!NOTE]
+> 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的[角色说明](#azure-devops-administrator)。
+>
+>
+
+| **操作** | **说明** |
+| --- | --- |
+| devOps/allEntities/allTasks | 阅读并配置 Azure DevOps。 |
 
 ### <a name="azure-information-protection-administrator-permissions"></a>Azure 信息保护管理员权限
 
@@ -1496,6 +1515,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 应用程序管理员 | 应用程序管理员 | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 应用程序开发人员 | 应用程序开发人员 | CF1C38E5-3621-4004-A7CB-879624DCED7C
 身份验证管理员 | 身份验证管理员 | c4e39bd9-1100-46d3-8c65-fb160da0071f
+Azure DevOps 管理员 | Azure DevOps 管理员 | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure 信息保护管理员 | Azure 信息保护管理员 | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C 用户流管理员 | B2C 用户流管理员 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 B2C 用户流属性管理员 | B2C 用户流属性管理员 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

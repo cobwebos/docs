@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 09/09/2019
 ms.author: apimpm
-ms.openlocfilehash: b89f4d2264924983aac93fb266efd71e46bea6bf
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 44fd3f0381c25f2fe0a3e9dc4cf5b8c685486ae0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305231"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861154"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 azure 虚拟网络（Vnet）可以将任何 Azure 资源放置在可控制其访问权限的非 internet 可路由网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -79,7 +79,7 @@ ms.locfileid: "70305231"
 >
 
 > [!IMPORTANT]
-> 如果从 VNET 中删除 API 管理或更改在其中部署的 API 管理，则之前使用的 VNET 可最多 2 小时保持锁定状态。 在此期间，无法删除该 VNET 或向其部署新资源。
+> 如果从 VNET 中删除 API 管理或更改在其中部署的 API 管理，则之前使用的 VNET 可以保持锁定状态长达6小时。 在此期间，无法删除该 VNET 或向其部署新资源。 对于使用 api 版本2018-01-01 和更早版本的客户端，此行为是正确的。 使用 api 版本2019-01-01 及更高版本的客户端，一旦删除关联的 API 管理服务，就会释放 VNET。
 
 ## <a name="enable-vnet-powershell"></a>使用 PowerShell cmdlet 启用 VNET 连接
 还可以使用 PowerShell cmdlet 启用 VNET 连接

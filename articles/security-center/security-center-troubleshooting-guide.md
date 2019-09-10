@@ -1,31 +1,25 @@
 ---
 title: Azure 安全中心故障排除指南 | Microsoft Docs
-description: 本文档可以帮助排除 Azure 安全中心中的问题。
+description: 本文档可帮助解决 Azure 安全中心中的问题。
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
-ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 93656578fac52e4ba5ff96e655ea51678f2292cd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 26615819dc407e51281254c73076a1d721e6059f
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609906"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873388"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 本指南适用于信息技术 (IT) 专业人员、信息安全分析人员，以及那些组织中正在使用 Azure 安全中心并需要进行排除安全中心相关问题的云管理员。
 
 >[!NOTE]
->自 2017 年 6 月初开始，安全中心使用 Microsoft Monitoring Agent 来收集和存储数据。 请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)，了解详细信息。 本文中的信息表示转换到 Microsoft Monitoring Agent 后的安全中心功能。
+>安全中心使用 Microsoft Monitoring Agent 来收集和存储数据。 请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)，了解详细信息。
 >
 
 ## <a name="troubleshooting-guide"></a>故障排除指南
@@ -56,9 +50,9 @@ ms.locfileid: "68609906"
 ## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Microsoft Monitoring Agent 安装方案
 在计算机上安装 Microsoft Monitoring Agent 时，有两种可产生不同结果的安装方案。 支持的方案有：
 
-* 安全中心自动安装代理：在此方案中，可在“安全中心”和“日志搜索”这两个位置查看警报。 系统将向资源所属订阅的安全策略中配置的电子邮件地址，发送电子邮件通知。
+* 安全中心自动安装代理：在此方案中，可在“安全中心”和“日志搜索”这两个位置查看警报。 你将收到电子邮件通知，该通知指向资源所属订阅的安全策略中配置的电子邮件地址。
 .
-* 在位于 Azure 中的 VM 上手动安装代理：在此方案中，如果使用 2017 年 2 月前手动下载和安装的代理，则仅当对工作区所属订阅进行筛选时，才可在安全中心门户中查看警报。 如果对资源所属订阅进行筛选，则无法看到任何警报。 系统将向工作区所属订阅的安全策略中配置的电子邮件地址，发送电子邮件通知。
+* 在**位于 Azure 中的 VM 上手动安装的代理**：在这种情况下，如果使用的是在2017年2月之前手动下载和安装的代理，则只有在对工作区进行筛选时，才可以在安全中心门户中查看警报属于。 如果筛选资源所属的订阅，则不会看到任何警报。 你将收到电子邮件通知，其中显示工作区所属订阅的安全策略中配置的电子邮件地址。
 
 >[!NOTE]
 > 若要避免第二个方案中所述的行为，请确保下载最新版本的代理。
@@ -71,10 +65,10 @@ ms.locfileid: "68609906"
 |---|---|---|
 | 代理待安装 | Microsoft Monitoring Agent 安装仍在运行。  安装可能需要长达数小时的时间。 | 等待自动安装完成。 |
 | 电源状态为关闭 | VM 已停止。  Microsoft Monitoring Agent 只能安装在正在运行的 VM 上。 | 重启 VM。 |
-| Azure 虚拟机代理缺失或无效 | Microsoft Monitoring Agent 尚未安装。  需要提供有效的 Azure VM 代理才能通过安全中心安装此扩展。 | 在 VM 上安装、重新安装或升级 Azure VM 代理。 |
+| Azure VM 代理缺失或无效 | Microsoft Monitoring Agent 尚未安装。  需要提供有效的 Azure VM 代理才能通过安全中心安装此扩展。 | 在 VM 上安装、重新安装或升级 Azure VM 代理。 |
 | VM 状态表明尚未做好安装准备  | Microsoft Monitoring Agent 尚未安装，因为 VM 尚未做好安装准备。 VM 尚未做好安装准备是因为 VM 代理或 VM 预配出现问题。 | 检查 VM 的状态。 返回到门户中的“虚拟机”，选择要获取状态信息的 VM。 |
 |安装失败 - 常规错误 | Microsoft Monitoring Agent 已安装，但因错误而失败。 | [手动安装扩展](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)，或者卸载扩展，让安全中心尝试再次安装。 |
-| 安装失败 - 已安装本地代理 | Microsoft Monitoring Agent 安装失败。 安全中心识别到 VM 上已安装的本地代理 (Log Analytics 或 System Center Operations Manager)。 为了避免多宿主配置，在 VM 向两个不同的工作区报告的情况下，会停止 Microsoft Monitoring Agent 安装。 | 有两种解决方法：[手动安装扩展](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)并将其连接到所需工作区。 或者，将所需工作区设置为默认工作区，并启用自动预配代理的功能。  请参阅[启用自动预配](security-center-enable-data-collection.md)。 |
+| 安装失败 - 已安装本地代理 | Microsoft Monitoring Agent 安装失败。 安全中心识别到 VM 上已安装的本地代理（Log Analytics 或 System Center Operations Manager）。 为了避免多宿主配置，在 VM 向两个不同的工作区报告的情况下，会停止 Microsoft Monitoring Agent 安装。 | 有两种解决方法：[手动安装扩展](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)并将其连接到所需工作区。 或者，将所需工作区设置为默认工作区，并启用自动预配代理的功能。  请参阅[启用自动预配](security-center-enable-data-collection.md)。 |
 | 代理无法连接到工作区 | Microsoft Monitoring Agent 已安装，但因网络连接原因而失败。  检查是否可以进行 Internet 访问，或者是否已为代理配置有效的 HTTP 代理。 | 请参阅“监视代理网络要求”。 |
 | 代理连接到缺失或未知的工作区 | 安全中心确定，安装在 VM 上的 Microsoft Monitoring Agent 连接到的是其没有访问权限的工作区。 | 两种情况可能会发生这样的错误。 第一种情况是工作区已删除，不再存在。 请使用正确的工作区重新安装代理，或者卸载代理，让安全中心完成其自动预配安装。 第二种情况是工作区属于某个订阅的一部分，而安全中心没有该订阅的访问权限。 安全中心要求提供允许 Microsoft 安全资源提供程序访问的订阅。 若要启用此功能，请将订阅注册到 Microsoft 安全资源提供程序。 为此，可以使用 API、PowerShell、门户，或者直接在安全中心的“概览”仪表板中对订阅进行筛选。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md#azure-portal)。 |
 | 代理无响应或缺少 ID | 安全中心无法从 VM 检索扫描的安全数据，即使代理已安装。 | 代理未报告包括检测信号在内的任何数据。 代理可能已损坏，或者有不明因素在阻止流量。 或者，代理是在报告数据但却缺少 Azure 资源 ID，因此不可能将数据与 Azure VM 匹配。 若要对 Linux 进行故障排除，请参阅[适用于 Linux 的 Log Analytics 代理的故障排除指南](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)。 若要对 Windows 进行故障排除，请参阅 [Windows 虚拟机故障排除](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines)。 |

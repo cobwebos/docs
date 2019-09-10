@@ -1,19 +1,18 @@
 ---
-title: 将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵 | Microsoft Docs
+title: 将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 description: 汇总了使用 Azure Site Recovery 执行 Hyper-V VM 到 Azure 的灾难恢复时支持的组件和相关要求
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5d7ac7cf00ee59a06a914d312fd58de00515a0b4
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70230969"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873336"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -134,6 +133,7 @@ RDM | 不可用 | 不可用
 高级存储 | 是 | 是
 导入/导出服务 | 否 | 否
 在目标存储/缓存存储帐户（用来存储复制数据）上配置的用于虚拟网络的 Azure 存储防火墙 | 否 | 否
+正在修改存储帐户 | 否。 启用复制后，无法修改目标 Azure 存储帐户。 修改、禁用和重新启用灾难恢复。 | 否
 
 
 ## <a name="azure-compute-features"></a>Azure 计算功能
@@ -151,7 +151,7 @@ HUB | 是 | 是
 组件 | **要求** | **详细信息**
 --- | --- | ---
 来宾操作系统 | Site Recovery 支持 [Azure 支持的](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)所有操作系统。  | 如果不支持，先决条件检查会失败。
-来宾操作系统体系结构 | 32位 (Windows Server 2008)/64-bit | 如果不支持，先决条件检查会失败。
+来宾操作系统体系结构 | 32位（Windows Server 2008）/64-bit | 如果不支持，先决条件检查会失败。
 操作系统磁盘大小 | 第 1 代 VM 最大 2,048 GB。<br/><br/> 第 2 代 VM 最大 300 GB。  | 如果不支持，先决条件检查会失败。
 操作系统磁盘计数 | 1 | 如果不支持，先决条件检查会失败。
 数据磁盘计数 | 16 个或更少  | 如果不支持，先决条件检查会失败。
@@ -172,7 +172,7 @@ VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基�
 跨资源组移动存储、网络和 Azure VM<br/><br/> 订阅内和跨订阅移动 | 否 | 否
 
 > [!NOTE]
-> 将 Hyper-v 从本地复制到 Azure 时, 你只能从一个特定环境中复制一个 AD 租户-Hyper-v 站点或适用于 VMM 的 Hyper-v。
+> 将 Hyper-v 从本地复制到 Azure 时，你只能从一个特定环境中复制一个 AD 租户-Hyper-v 站点或适用于 VMM 的 Hyper-v。
 
 
 ## <a name="provider-and-agent"></a>提供程序和代理

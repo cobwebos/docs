@@ -9,10 +9,10 @@ ms.date: 05/14/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: ee8ff3529524a63ca2e54a64327570197f363538
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67173314"
 ---
 | 资源 | 基本 | 标准 | 高级 |
@@ -27,7 +27,7 @@ ms.locfileid: "67173314"
 | 异地复制 | 不适用 | 不适用 | [支持][geo-replication] |
 | 内容信任 | 不可用 | 不适用 | [支持][content-trust] |
 
-<sup>1</sup> 指定的存储上限是每层包含的存储量。 对于超出这些限制的图像存储，将每日针对每 GiB 进行额外收费。 有关速率信息, 请参阅[Azure 容器注册表定价][pricing]。
+<sup>1</sup> 指定的存储上限是每层包含的存储量。 对于超出这些限制的图像存储，将每日针对每 GiB 进行额外收费。 有关速率信息，请参阅[Azure 容器注册表定价][pricing]。
 
 <sup>2</sup>*读取操作数*、*写入操作数*和*带宽*是最小估计值。 Azure 容器注册表根据使用需求努力提高性能。
 

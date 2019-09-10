@@ -10,48 +10,48 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 08ceb5d795465a5759d0130618eafdccdc8c3c91
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3113ad050ec6040d4f7964e940c507024bcf002d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011524"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844983"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 
-本文介绍如何使用 Azure 机器学习服务将支持 GPU 的模型部署为 web 服务。 本文中的信息基于在 Azure Kubernetes 服务 (AKS) 上部署模型。 AKS 群集提供模型用于推理的 GPU 资源。
+本文介绍如何使用 Azure 机器学习服务将支持 GPU 的模型部署为 web 服务。 本文中的信息基于在 Azure Kubernetes 服务（AKS）上部署模型。 AKS 群集提供模型用于推理的 GPU 资源。
 
-推理或模型计分是部署模型用于进行预测的阶段。 使用 Gpu 而不是 Cpu, 可为高度可并行化的计算提供性能优势。
+推理或模型计分是部署模型用于进行预测的阶段。 使用 Gpu 而不是 Cpu，可为高度可并行化的计算提供性能优势。
 
 > [!IMPORTANT]
-> GPU 推理仅在 Azure Kubernetes 服务上受支持。
+> 对于 web 服务部署，仅 Azure Kubernetes 服务支持 GPU 推理。 对于使用__机器学习管道__的推理，仅 Azure 机器学习计算支持 gpu。 有关使用 ML 管道的详细信息，请参阅[运行批预测](how-to-run-batch-predictions.md)。 
 
 > [!TIP]
-> 尽管本文中的代码片段 usee TensorFlow 模型, 但你可以将这些信息应用到支持 Gpu 的任何机器学习框架。
+> 尽管本文中的代码片段 usee TensorFlow 模型，但你可以将这些信息应用到支持 Gpu 的任何机器学习框架。
 
 > [!NOTE]
-> 本文中的信息基于[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)一文中的信息。 本文通常会涵盖部署到 AKS, 本文介绍特定于 GPU 的部署。
+> 本文中的信息基于[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)一文中的信息。 本文通常会涵盖部署到 AKS，本文介绍特定于 GPU 的部署。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习服务工作区。 有关详细信息, 请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
+* Azure 机器学习服务工作区。 有关详细信息，请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
 
-* 安装了 Azure 机器学习 SDK 的 Python 开发环境。 有关详细信息, 请参阅[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
+* 安装了 Azure 机器学习 SDK 的 Python 开发环境。 有关详细信息，请参阅[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
 
 * 使用 GPU 的已注册模型。
 
     * 若要了解如何注册模型, 请参阅[部署模型](../service/how-to-deploy-and-where.md#registermodel)。
 
-    * 若要创建并注册用于创建此文档的 Tensorflow 模型, 请参阅[如何定型 Tensorflow 模型](how-to-train-tensorflow.md)。
+    * 若要创建并注册用于创建此文档的 Tensorflow 模型，请参阅[如何定型 Tensorflow 模型](how-to-train-tensorflow.md)。
 
 * 大致了解[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="connect-to-your-workspace"></a>连接到你的工作区
 
-若要连接到现有工作区, 请使用以下代码:
+若要连接到现有工作区，请使用以下代码：
 
 > [!IMPORTANT]
-> 此代码段需要将工作区配置保存到当前目录或其父项。 有关创建工作区的详细信息, 请参阅[创建和管理 Azure 机器学习服务工作区](how-to-manage-workspace.md)。   有关将配置保存到文件的详细信息, 请参阅[创建工作区配置文件](how-to-configure-environment.md#workspace)。
+> 此代码段需要将工作区配置保存到当前目录或其父项。 有关创建工作区的详细信息，请参阅[创建和管理 Azure 机器学习服务工作区](how-to-manage-workspace.md)。   有关将配置保存到文件的详细信息，请参阅[创建工作区配置文件](how-to-configure-environment.md#workspace)。
 
 ```python
 from azureml.core import Workspace
@@ -64,7 +64,7 @@ ws = Workspace.from_config()
 
 Azure Kubernetes 服务提供了许多不同的 GPU 选项。 您可以将其中任何一个用于模型推理。 若要全面了解功能和成本, 请参阅[N 系列 vm 列表](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series)。
 
-以下代码演示了如何为工作区创建新的 AKS 群集:
+以下代码演示了如何为工作区创建新的 AKS 群集：
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute
@@ -91,16 +91,16 @@ except ComputeTargetException:
 ```
 
 > [!IMPORTANT]
-> 只要存在 AKS 群集, Azure 就会向你收费。 完成后, 请务必删除 AKS 群集。
+> 只要存在 AKS 群集，Azure 就会向你收费。 完成后, 请务必删除 AKS 群集。
 
-有关将 AKS 与 Azure 机器学习服务一起使用的详细信息, 请参阅[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)。
+有关将 AKS 与 Azure 机器学习服务一起使用的详细信息，请参阅[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)。
 
 ## <a name="write-the-entry-script"></a>写入条目脚本
 
-条目脚本接收提交给 web 服务的数据, 将其传递给模型, 并返回计分结果。 下面的脚本将在启动时加载 Tensorflow 模型, 然后使用该模型对数据进行评分。
+条目脚本接收提交给 web 服务的数据，将其传递给模型，并返回计分结果。 下面的脚本将在启动时加载 Tensorflow 模型，然后使用该模型对数据进行评分。
 
 > [!TIP]
-> 条目脚本特定于您的模型。 例如, 脚本必须知道要用于模型的框架、数据格式等。
+> 条目脚本特定于您的模型。 例如，脚本必须知道要用于模型的框架、数据格式等。
 
 ```python
 import json
@@ -132,11 +132,11 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-此文件的名称`score.py`为。 有关输入脚本的详细信息, 请参阅 "[如何部署" 和 "部署位置](how-to-deploy-and-where.md)"。
+此文件的名称`score.py`为。 有关输入脚本的详细信息，请参阅 "[如何部署" 和 "部署位置](how-to-deploy-and-where.md)"。
 
 ## <a name="define-the-conda-environment"></a>定义 conda 环境
 
-Conda 环境文件指定服务的依赖关系。 它包括模型和条目脚本所需的依赖项。 以下 YAML 定义了 Tensorflow 模型的环境。 它指定`tensorflow-gpu`将使用在此部署中使用的 GPU:
+Conda 环境文件指定服务的依赖关系。 它包括模型和条目脚本所需的依赖项。 以下 YAML 定义了 Tensorflow 模型的环境。 它指定`tensorflow-gpu`将使用在此部署中使用的 GPU：
 
 ```yaml
 name: project_environment
@@ -153,11 +153,11 @@ channels:
 - conda-forge
 ```
 
-在此示例中, 该文件保存为`myenv.yml`。
+在此示例中，该文件保存为`myenv.yml`。
 
 ## <a name="define-the-deployment-configuration"></a>定义部署配置
 
-部署配置定义用于运行 web 服务的 Azure Kubernetes 服务环境:
+部署配置定义用于运行 web 服务的 Azure Kubernetes 服务环境：
 
 ```python
 from azureml.core.webservice import AksWebservice
@@ -168,11 +168,11 @@ gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
                                                     memory_gb=4)
 ```
 
-有关详细信息, 请参阅[AksService. deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)的参考文档。
+有关详细信息，请参阅[AksService. deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)的参考文档。
 
 ## <a name="define-the-inference-configuration"></a>定义推理配置
 
-推理配置指向入口脚本和 conda 环境文件。 它还启用 GPU 支持, 它在为 web 服务创建的 docker 映像中安装 CUDA:
+推理配置指向入口脚本和 conda 环境文件。 它还启用 GPU 支持，它在为 web 服务创建的 docker 映像中安装 CUDA：
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -183,7 +183,7 @@ inference_config = InferenceConfig(runtime="python",
                                    enable_gpu=True)
 ```
 
-有关详细信息, 请参阅[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)的参考文档。
+有关详细信息，请参阅[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)的参考文档。
 
 ## <a name="deploy-the-model"></a>部署模型
 
@@ -209,13 +209,13 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> 如果对象具有`enable_gpu=True`, 则`deployment_target`参数必须引用提供 GPU 的群集。 `InferenceConfig` 否则，部署会失败。
+> 如果对象具有`enable_gpu=True`，则`deployment_target`参数必须引用提供 GPU 的群集。 `InferenceConfig` 否则，部署会失败。
 
-有关详细信息, 请参阅[模型](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)的参考文档。
+有关详细信息，请参阅[模型](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)的参考文档。
 
 ## <a name="issue-a-sample-query-to-your-service"></a>向服务发出示例查询
 
-将测试查询发送到已部署的模型。 当你将 jpeg 图像发送到模型时, 它将对该图像进行评分。 下面的代码示例将下载测试数据, 然后选择要发送到服务的随机测试映像。 
+将测试查询发送到已部署的模型。 当你将 jpeg 图像发送到模型时, 它将对该图像进行评分。 下面的代码示例将下载测试数据，然后选择要发送到服务的随机测试映像。 
 
 ```python
 # Used to test your webservice
@@ -268,7 +268,7 @@ print("label:", y_test[random_index])
 print("prediction:", resp.text)
 ```
 
-有关创建客户端应用程序的详细信息, 请参阅[创建客户端以使用已部署的 web 服务](how-to-consume-web-service.md)。
+有关创建客户端应用程序的详细信息，请参阅[创建客户端以使用已部署的 web 服务](how-to-consume-web-service.md)。
 
 ## <a name="clean-up-the-resources"></a>清理资源
 

@@ -1,27 +1,27 @@
 ---
-title: Azure Blockchain Workbench 体系结构
-description: Azure Blockchain Workbench 体系结构及其组件的概述。
+title: Azure 区块链工作台预览体系结构
+description: Azure 区块链工作台预览体系结构及其组件概述。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/20/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5333f02edd6a4ff888e28ed36c2b78f75309f4d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d50ee0fa06f34167cd4be9e787f6e351d3ef7e3b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060905"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845216"
 ---
-# <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench 体系结构
+# <a name="azure-blockchain-workbench-preview-architecture"></a>Azure 区块链工作台预览体系结构
 
-Azure Blockchain Workbench 使用多个 Azure 组件提供解决方案，从而简化区块链应用程序的开发。 可以使用 Azure 市场中的解决方案模板部署 Blockchain Workbench。 该模板可用于选择要部署的模块和组件，包括区块链堆栈、客户端应用程序类型，以及对 IoT 集成的支持。 部署后，Blockchain Workbench 会提供对 Web 应用、iOS 应用和 Android 应用的访问权限。
+Azure 区块链工作台预览版通过使用几个 Azure 组件提供解决方案来简化区块链应用程序的开发。 可以使用 Azure 市场中的解决方案模板部署 Blockchain Workbench。 该模板可用于选择要部署的模块和组件，包括区块链堆栈、客户端应用程序类型，以及对 IoT 集成的支持。 部署后，Blockchain Workbench 会提供对 Web 应用、iOS 应用和 Android 应用的访问权限。
 
-![Blockchain Workbench 体系结构](./media/architecture/architecture.png)
+![区块链工作台体系结构](./media/architecture/architecture.png)
 
 ## <a name="identity-and-authentication"></a>标识和身份验证
 
@@ -84,7 +84,7 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 
 ## <a name="transaction-builder-and-signer"></a>事务生成器和签名器
 
-如果需要将入站消息中转站中的消息写入区块链，DLT 使用者会处理此操作。 DLT 使用者是一个服务，它会检索包含需要执行的事务的元数据的消息，然后将信息发送到事务生成器和签名器。  事务生成器和签名器根据数据和所需的区块链目标汇编区块链事务。  汇编后，事务将被签名。 私钥存储在 Azure Key Vault 中。
+如果需要将入站消息中转站中的消息写入区块链，DLT 使用者会处理此操作。 DLT 使用者是一个服务，它会检索包含需要执行的事务的元数据的消息，然后将信息发送到事务生成器和签名器。 事务生成器和签名器根据数据和所需的区块链目标汇编区块链事务。 汇编后，事务将被签名。 私钥存储在 Azure Key Vault 中。
 
  Blockchain Workbench 从 Key Vault 检索相应的私钥，并对 Key Vault 外部的事务签名。 签名后，事务将发送到事务路由器和账本。
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
 ms.openlocfilehash: cd0ec07ebfffc839fedcdc76c9aff8e86556a7de
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "70130066"
 ---
 | Resource | 默认/最大限制 | 注释 |
@@ -35,7 +35,7 @@ ms.locfileid: "70130066"
 | 并发的 WebSocket 连接数 |中型网关 20k<br> 大型网关 50k| |
 | 最大 URL 长度|8,000||
 | 最大文件上传大小：标准 |2 GB | |
-| 最大文件上传大小 WAF |中型 WAF 关, 100 MB<br>大型 WAF 网关, 500 MB| |
+| 最大文件上传大小 WAF |中型 WAF 关，100 MB<br>大型 WAF 网关，500 MB| |
 | WAF 正文大小限制，不带文件|128 KB||
 | 最大 WAF 自定义规则|100||
 | 最 WAF 排除项|100||

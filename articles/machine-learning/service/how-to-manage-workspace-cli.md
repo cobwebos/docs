@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 创建工作区
+title: 创建具有 Azure CLI 的工作区
 titleSuffix: Azure Machine Learning service
 description: 了解如何使用 Azure CLI 创建新的 Azure 机器学习服务工作区。
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: 1213e9bc3b27b8d5f6f6ef93b6eefa5a8c32be57
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392670"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873495"
 ---
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>使用 Azure 资源管理器模板创建 Azure 机器学习服务的工作区
+# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习 service 的工作区
 
 本文介绍如何使用 Azure CLI 创建 Azure 机器学习服务工作区。 Azure CLI 提供了用于管理 Azure 资源的命令。 CLI 的机器学习扩展提供了用于处理 Azure 机器学习服务资源的命令。
 

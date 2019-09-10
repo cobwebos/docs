@@ -1,6 +1,6 @@
 ---
-title: 桌面应用程序调用 web Api （应用程序注册）-Microsoft 标识平台
-description: 了解如何构建桌面应用调用 web Api （应用程序注册）
+title: 调用 Web API 的桌面应用（应用注册）- Microsoft 标识平台
+description: 了解如何构建调用 Web API 的桌面应用（应用注册）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -13,54 +13,54 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab2701a82da0b8f7bc4e23a3d947be905593e85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b996b2387e324c7e318536c2a13bdc9de39a7a5e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057218"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860882"
 ---
-# <a name="desktop-app-that-calls-web-apis---app-registration"></a>桌面应用程序调用 web Api 的应用注册
+# <a name="desktop-app-that-calls-web-apis---app-registration"></a>调用 Web API 的桌面应用 - 应用注册
 
-本文包含桌面应用程序应用程序注册 specificities。
+本文包含适用于桌面应用程序的应用注册详细信息。
 
-## <a name="supported-accounts-types"></a>受支持的帐户类型
+## <a name="supported-accounts-types"></a>支持的帐户类型
 
-支持桌面应用程序中的帐户类型取决于你想要启动的体验，因此在流上你希望使用。
+桌面应用程序中支持的帐户类型取决于您想要突出的体验。 由于这种关系，受支持的帐户类型取决于要使用的流。
 
 ### <a name="audience-for-interactive-token-acquisition"></a>交互式令牌获取的受众
 
-如果桌面应用程序使用交互式身份验证，您可以从任何用户在登录[帐户类型](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)
+如果桌面应用程序使用交互式身份验证，则可以通过任何[帐户类型](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)登录用户。
 
-### <a name="audience-for-desktop-app-silent-flows"></a>对于桌面应用程序无提示流的受众
+### <a name="audience-for-desktop-app-silent-flows"></a>桌面应用无提示流的受众
 
-- 如果你想要使用集成 Windows 身份验证或用户名/密码，你的应用程序需要在自己的租户 （LOB 开发人员），或在 Azure Active directory 组织 （ISV 方案） 中的用户登录。 这些身份验证流不支持 Microsoft 个人帐户
-- 如果你想要使用的设备代码流，你无法登录用户使用其 Microsoft 个人帐户尚未
-- 如果具有传递 B2C 颁发机构和策略的社交标识登录在用户中，只能使用交互式和用户名和密码身份验证。
+- 若要使用集成的 Windows 身份验证或用户名/密码，你的应用程序需要在你自己的租户（LOB 开发人员）或 Azure Active directory 组织（ISV 方案）中登录用户。 Microsoft 个人帐户不支持这些身份验证流。
+- 如果要使用设备代码流，则无法使用其 Microsoft 个人帐户登录用户。
+- 如果使用传入 B2C 颁发机构和策略的社交标识来登录用户，则只能使用交互式和用户-密码身份验证。
 
 ## <a name="redirect-uris"></a>重定向 URI
 
-再次重定向 Uri 使用桌面应用程序中将取决于你想要使用的流。
+要在桌面应用程序中使用的重定向 Uri 将取决于你想要使用的流。
 
-- 如果您使用的**交互式身份验证**或**设备代码流**，你将想要使用`https://login.microsoftonline.com/common/oauth2/nativeclient`。 可通过单击相应的 URL 中实现此配置**身份验证**部分，了解你的应用程序
+- 如果你使用的是**交互式身份验证**或**设备代码流**，你将需要使用`https://login.microsoftonline.com/common/oauth2/nativeclient`。 可以通过单击应用程序的 "**身份验证**" 部分中相应的 URL 来完成此配置。
   
   > [!IMPORTANT]
-  > 今天 MSAL.NET 默认情况下，在 Windows 上运行的桌面应用程序中使用另一个重定向 URI (`urn:ietf:wg:oauth:2.0:oob`)。 将来我们想要更改此默认值，并因此我们建议你使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`
+  > 目前，在默认情况下，MSAL.NET 会在 Windows 上运行的桌面应用程序中使用另一重定向 URI (`urn:ietf:wg:oauth:2.0:oob`)。 我们在将来需要更改此默认设置，因此建议你使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`
 
-- 如果您的应用程序仅使用集成 Windows 身份验证，用户名/密码，不需要注册你的应用程序的重定向 URI。 实际上，这些流执行到 Microsoft 标识平台 v2.0 终结点的往返行程，并不会对任何特定的 URI 返回调用你的应用程序。 
-- 为了区分设备代码流，集成 Windows 身份验证和用户名/密码机密客户端应用程序流，其不具有从重定向 Uri 是 （客户端凭据流使用在守护程序应用程序中），您需要 express应用程序仍然公共客户端应用程序。 此配置通过转到实现**身份验证**部分，为应用程序，以及在**高级设置**子节中，选择**是**，对问题**视为公共客户端应用程序**(在**默认客户端类型**段落)
+- 如果你的应用程序仅使用集成 Windows 身份验证或用户名/密码，则不需要为你的应用程序注册重定向 URI。 这些流执行到 Microsoft 标识平台 v2.0 终结点的往返过程，并且不会对任何特定的 URI 调用你的应用程序。
+- 若要从不具有重定向 Uri 的机密客户端应用程序流（守护程序应用程序中使用的客户端凭据流）区分设备代码流、集成的 Windows 身份验证和用户名/密码，需将应用程序是公用客户端应用程序。 若要实现此配置，请参阅应用程序的 "**身份验证**" 部分。 然后，在 "**高级设置**" 子节的 "**默认客户端类型**" 段落中，选择 **"是**"，将**应用程序视为公共客户端**。
 
   ![允许公共客户端](media/scenarios/default-client-type.png)
 
 ## <a name="api-permissions"></a>API 权限
 
-桌面应用程序代表已登录用户调用 Api。 他们需要请求委托的权限。 它们不能请求应用程序权限 (这仅在中处理[守护程序应用程序](scenario-daemon-overview.md))
+桌面应用程序为已登录用户调用 Api。 它们需要请求委托的权限。 但是，它们不能请求仅在[后台应用程序](scenario-daemon-overview.md)中处理的应用程序权限。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [桌面应用程序-应用配置](scenario-desktop-app-configuration.md)
+> [桌面应用 - 应用配置](scenario-desktop-app-configuration.md)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: d479a568ddeac29be88d0709b7544ba645274afa
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: cd1c6cf0ff5a963720df7420a5d983d24e7b4d3e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875664"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861388"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常见问题：Azure 到 Azure 的灾难恢复
 
@@ -41,7 +41,15 @@ Site Recovery 团队会与 Azure 容量管理团队合作，规划足够的基�
 ## <a name="replication"></a>复制
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>是否可以复制通过 Azure 磁盘加密启用的 VM？
-是的，可以复制此类 VM。 请参阅[将启用了 Azure 磁盘加密的虚拟机复制到另一个 Azure 区域](azure-to-azure-how-to-enable-replication-ade-vms.md)。 目前，Azure Site Recovery 仅支持运行 Windows OS 且已使用 Azure Active Directory (Azure AD) 应用启用加密的 Azure VM。
+
+是的，Site Recovery 支持启用了 Azure 磁盘加密（ADE）的 Vm 的灾难恢复。 启用复制时，所有所需的磁盘加密密钥和机密都将从源区域复制到用户上下文中的目标区域。 如果你没有相应的权限，则可以将随时可用的脚本传递给安全管理员，以复制密钥和机密。
+
+- Site Recovery 支持运行 Windows 的 Azure Vm 的 ADE。
+- Site recovery 支持 ADE 版本0.1，其中架构使用 Azure Active Directory （AAD），版本1.1，无 AAD。 [了解详细信息](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)。
+- ADE 版本1.1，必须将 Windows Vm 用于托管磁盘。
+- [详细了解](azure-to-azure-how-to-enable-replication-ade-vms.md)如何为加密的 vm 启用复制。
+
+
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>是否可将 VM 复制到另一个订阅？
 是的，可将 Azure VM 复制到同一 Azure AD 租户中的不同订阅。
@@ -129,7 +137,7 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。 用户无法更�
 不会，Site Recovery 将保留以前的所有恢复点。 根据恢复点保留时段（在本示例中为 24 小时），Site Recovery 仅在有新生成的恢复点时才替换最旧的恢复点。 在本示例中，由于某个问题而不会生成新的恢复点，到达保留时段后，所有旧恢复点将保持不变。
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>在 VM 上启用复制后，如何更改复制策略？
-转到“Site Recovery 保管库” > “Site Recovery 基础结构” > “复制策略”。    选择要编辑的策略并保存所做的更改。 任何更改也会应用到现有的所有复制。
+转到“Site Recovery 保管库” > “Site Recovery 基础结构” > “复制策略”。 选择要编辑的策略并保存所做的更改。 任何更改也会应用到现有的所有复制。
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>所有恢复点是包含 VM 的完整副本还是差异副本？
 生成的第一个恢复点包含完整副本。 任何后续恢复点包含增量更改。
@@ -181,13 +189,13 @@ Site Recovery 团队会与 Azure 容量管理团队合作，规划足够的基�
 详细了解如何[设置 VNet 的网络映射和 IP 寻址](azure-to-azure-network-mapping.md#set-up-ip-addressing-for-target-vms)。
 
 ### <a name="what-are-latest-lowest-rpo-recovery-points"></a>什么是**最新（最低 RPO）** 恢复点？
-“最新(最低 RPO)”选项首先处理已发送到 Site Recovery 服务的所有数据，为每个 VM 创建恢复点，然后将其故障转移到该恢复点。  此选项提供最低的恢复点目标 (RPO)，因为故障转移后创建的 VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
+“最新(最低 RPO)”选项首先处理已发送到 Site Recovery 服务的所有数据，为每个 VM 创建恢复点，然后将其故障转移到该恢复点。 此选项提供最低的恢复点目标 (RPO)，因为故障转移后创建的 VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
 
 ### <a name="do-latest-lowest-rpo-recovery-points-have-an-impact-on-failover-rto"></a>**最新（最低 RPO）** 恢复点是否影响故障转移 RTO？
 是的。 Site Recovery 在故障转移之前需要处理所有挂起的数据，因此，此选项的恢复时间目标 (RTO) 比其他选项更高。
 
-### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>恢复点中的“最新处理”选项指的是什么？ 
-“最新处理”选项将计划中的所有 VM 故障转移到 Site Recovery 处理的最新恢复点。  若要查看特定 VM 的最新恢复点，请检查 VM 设置中的“最新恢复点”。  此选项提供低的 RTO，因为无需费时处理未经处理的数据。
+### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>恢复点中的“最新处理”选项指的是什么？
+“最新处理”选项将计划中的所有 VM 故障转移到 Site Recovery 处理的最新恢复点。 若要查看特定 VM 的最新恢复点，请检查 VM 设置中的“最新恢复点”。 此选项提供低的 RTO，因为无需费时处理未经处理的数据。
 
 ### <a name="what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>如果主要区域的服务意外中断，会出现什么情况？
 可以在服务中断后触发故障转移。 Site Recovery 不需要从主要区域建立连接即可执行故障转移。
@@ -211,7 +219,7 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 在恢复计划中，可以创建多个组来实现定序。 每次故障转移一个组。 同一个组中的 VM 将一起故障转移，然后再故障转移另一个组中的 VM。 若要了解如何使用恢复计划为应用程序建模，请参阅[关于恢复计划](recovery-plan-overview.md#model-apps)。
 
 ### <a name="how-can-i-find-the-rto-of-a-recovery-plan"></a>如何找到恢复计划的 RTO？
-若要检查恢复计划的 RTO，请对恢复计划执行测试故障转移，然后转到“Site Recovery 作业”。 
+若要检查恢复计划的 RTO，请对恢复计划执行测试故障转移，然后转到“Site Recovery 作业”。
 在以下示例中，名为 SAPTestRecoveryPlan 的作业花费了 8 分 59 秒来故障转移所有虚拟机和执行指定的操作。
 
 ![Site Recovery 作业列表](./media/azure-to-azure-troubleshoot-errors/recoveryplanrto.PNG)

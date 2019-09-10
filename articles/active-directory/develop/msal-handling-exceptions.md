@@ -3,7 +3,7 @@ title: 错误和异常 (MSAL) | Azure
 description: 了解如何处理 MSAL 应用程序中的错误和异常、条件访问与声明质询。
 services: active-directory
 documentationcenter: dev-center-name
-author: negoe
+author: jmprieur
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/19/2019
+ms.date: 09/08/2019
 ms.author: negoe
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: fe3ad29cfd113deba5824ce25721dc543c6267c0
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 280746281fd45b3286cc76be5d3483f0cc65f90f
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305052"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872803"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>使用 MSAL 处理异常和错误
+
 Microsoft 身份验证库 (MSAL) 中的异常旨在帮助应用开发人员进行故障排除，而不会向最终用户显示。 异常消息未经本地化。
 
 处理异常和错误时，可以使用异常类型本身和错误代码来区分不同的异常。  有关错误代码的列表，请参阅[身份验证和授权错误代码](reference-aadsts-error-codes.md)。
@@ -47,13 +48,96 @@ Microsoft 身份验证库 (MSAL) 中的异常旨在帮助应用开发人员进�
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| unknown_user 消息：无法识别已登录的用户| 库无法查询当前的 Windows 已登录用户，或者此用户未加入 AD 或 AAD（不支持已加入工作区的用户）。 缓解措施 1：在 UWP 中，检查应用程序是否具有以下功能：企业身份验证、专用网络（客户端和服务器）、用户帐户信息。 缓解措施 2：实现自己的逻辑以提取用户名（例如 john@contoso.com），并使用 `AcquireTokenByIntegratedWindowsAuth` 表单来提取用户名。|
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| 此方法依赖于 Active Directory (AD) 公开的协议。 如果在 Azure Active Directory 中创建了一个用户但该用户不受 AD 的支持（“托管”用户），则此方法将会失败。 在 AD 中创建的且并受 AAD 支持的用户（“联合”用户）可以受益于这种非交互式身份验证方法。 缓解措施：使用交互式身份验证。|
 
+### `MsalUiRequiredException`
+
+当调用`AcquireTokenSilent()`时， `MsalError.InvalidGrantError`从 MSAL.NET 返回的常见状态代码之一。 此状态代码表示应用程序应再次调用身份验证库，但在交互模式（AcquireTokenInteractive 或 AcquireTokenByDeviceCodeFlow，适用于公用客户端应用程序，并在 Web 应用中执行质询）。 这是因为在颁发身份验证令牌之前，需要进行其他用户交互。
+
+大多数情况下失败，原因是令牌缓存没有与请求匹配的令牌。 `AcquireTokenSilent` 访问令牌将在1小时后过期`AcquireTokenSilent` ，并将尝试基于刷新令牌获取新的令牌（在 OAuth2 中，这是 "刷新令牌" 流）。 此流也可能因多种原因而失败，例如，如果租户管理员配置了更严格的登录策略。 
+
+交互的目标是让用户执行操作。 其中的某些条件可以让用户轻松地解决问题（例如，只需一次单击即可接受使用条款），某些条件无法使用当前配置进行解析（例如，有问题的计算机需要连接到特定的企业网络）。 某些帮助用户设置多重身份验证，或者在其设备上安装 Microsoft Authenticator。
+
+### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException`分类枚举
+
+MSAL 公开一个`Classification`字段，你可以读取该字段以提供更好的用户体验，例如，通知用户其密码已过期，或者他们需要提供使用某些资源的许可。 支持的值为`UiRequiredExceptionClassification`枚举的一部分：
+
+| 分类    | 含义           | 建议的处理 |
+|-------------------|-------------------|----------------------|
+| BasicAction | 交互身份验证流期间，用户交互可以解决条件。 | 调用 AcquireTokenInteractively （）。 |
+| AdditionalAction | 在交互身份验证流之外，与系统进行的其他补救交互可以解决条件。 | 调用 AcquireTokenInteractively （）以显示一条说明补救措施的消息。 如果用户不太可能完成补救操作，调用应用程序可能会选择隐藏需要 additional_action 的流。 |
+| MessageOnly      | 此时无法解决条件。 启动交互身份验证流将显示一条消息，说明该情况。 | 调用 AcquireTokenInteractively （）以显示一条说明条件的消息。 用户读取该消息并关闭窗口后，AcquireTokenInteractively （）将返回 UserCanceled 错误。 如果用户不太可能从消息中获益，则调用应用程序可能会选择隐藏导致 message_only 的流。|
+| ConsentRequired  | 用户同意丢失或已被吊销。 | 为用户调用 AcquireTokenInteractively （）以授予许可。 |
+| UserPasswordExpired | 用户的密码已过期。 | 调用 AcquireTokenInteractively （），以使用户可以重置其密码。 |
+| PromptNeverFailed| 在参数 prompt = never 的情况下调用交互身份验证，强制 MSAL 依赖浏览器 cookie，而不是显示浏览器。 此失败。 | 在不提示的情况下调用 AcquireTokenInteractively （）。 None |
+| AcquireTokenSilentFailed | MSAL SDK 没有足够的信息，无法从缓存中获取令牌。 这可能是因为缓存中没有任何令牌或找不到帐户。 错误消息包含更多详细信息。  | 调用 AcquireTokenInteractively （）。 |
+| None    | 未提供更多详细信息。 交互身份验证流期间，用户交互可能会解决此问题。 | 调用 AcquireTokenInteractively （）。 |
+
+## <a name="code-example"></a>代码示例
+
+```csharp
+AuthenticationResult res;
+try
+{
+ res = await application.AcquireTokenSilent(scopes, account)
+        .ExecuteAsync();
+}
+catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantError)
+{
+ switch (ex.Classification)
+ {
+  case UiRequiredExceptionClassification.None:
+   break;
+  case UiRequiredExceptionClassification.MessageOnly:
+  // You might want to call AcquireTokenInteractive(). Azure AD will show a message
+  // that explains the condition. AcquireTokenInteractively() will return UserCanceled error
+  // after the user reads the message and closes the window. The calling application may choose
+  // to hide features or data that result in message_only if the user is unlikely to benefit 
+  // from the message
+  try
+  {
+   res = await application.AcquireTokenInteractive(scopes)
+                          .ExecuteAsync();
+  }
+  catch (MsalClientException ex2) when (ex2.ErrorCode == MsalError.AuthenticationCanceledError)
+  {
+   // Do nothing. The user has seen the message
+  }
+  break;
+
+  case UiRequiredExceptionClassification.BasicAction:
+  // Call AcquireTokenInteractive() so that the user can, for instance accept terms
+  // and conditions
+
+  case UiRequiredExceptionClassification.AdditionalAction:
+  // You might want to call AcquireTokenInteractive() to show a message that explains the remedial action. 
+  // The calling application may choose to hide flows that require additional_action if the user 
+  // is unlikely to complete the remedial action (even if this means a degraded experience)
+
+  case UiRequiredExceptionClassification.ConsentRequired:
+  // Call AcquireTokenInteractive() for user to give consent.
+  
+  case UiRequiredExceptionClassification.UserPasswordExpired:
+  // Call AcquireTokenInteractive() so that user can reset their password
+  
+  case UiRequiredExceptionClassification.PromptNeverFailed:
+  // You used WithPrompt(Prompt.Never) and this failed
+  
+  case UiRequiredExceptionClassification.AcquireTokenSilentFailed:
+  default:
+  // May be resolved by user interaction during the interactive authentication flow.
+  res = await application.AcquireTokenInteractive(scopes)
+                         .ExecuteAsync(); break;
+ }
+}
+```
+
+
 ## <a name="javascript-errors"></a>JavaScript 错误
 
 MSAL 提供了一些错误对象，这些对象可对不同类型的常见错误进行抽象和分类。 它还提供了用于访问错误的特定详细信息的接口，例如错误消息处理适当的错误消息。
 
 **Error 对象**
 
-```javascript                                
+```javascript
 export class AuthError extends Error {
     // This is a short code describing the error
     errorCode: string;
@@ -63,7 +147,8 @@ export class AuthError extends Error {
     // Name of the error class
     this.name = "AuthError";
 }
-```                
+```
+
 通过扩展 error 类可以访问以下属性：
 * **AuthError.message：** 与 errorMessage 相同。
 * **AuthError.stack：** 引发的错误的堆栈跟踪。 允许跟踪错误来源位置。
@@ -111,13 +196,13 @@ myMSALObj.acquireTokenPopup(request).then(
 
 ### <a name="interaction-required-errors"></a>“需要交互”错误
 
-当你尝试使用获取令牌的非交互式方法（例如`acquireTokenSilent`），并且 MSAL 无法以无提示方式执行该操作时，将返回错误。 
+如果尝试使用非交互式方法获取令牌（例如`acquireTokenSilent`），并且 MSAL 无法以无提示方式执行该操作，则会返回错误。
 
 可能的原因包括：
 
-* 需要登录
-* 需要许可
-* 需要经历多重身份验证体验。
+* 用户需要登录
+* 用户需要同意
+* 用户需要经历多重身份验证体验。
 
 补救措施是调用 `acquireTokenPopup` 或 `acquireTokenRedirect` 等交互式方法：
 
@@ -142,7 +227,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 ```
 
 ## <a name="conditional-access-and-claims-challenges"></a>条件访问和声明质询
-以无提示方式获取令牌时，如果你尝试访问的 API 需要[条件访问声明质询](conditional-access-dev-guide.md)（例如 MFA 策略），则应用程序可能会收到错误。
+以静默方式获取令牌时，应用程序可能会在你尝试访问的 API 所需的[条件性访问声明质询](conditional-access-dev-guide.md)（如 MFA 策略）时收到错误。
 
 处理此错误的模式是使用 MSAL 以交互方式获取令牌。 以交互方式获取令牌会提示用户，并使他们能够满足所需的条件访问策略。
 
@@ -151,10 +236,10 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 ### <a name="net"></a>.NET
 从 MSAL.NET 调用需要条件访问的 API 时，应用程序需要处理声明质询异常。 此错误将显示为 [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet)，其中的 [Claims](/dotnet/api/microsoft.identity.client.msalserviceexception.claims?view=azure-dotnet) 属性不为空。
 
-若要处理声明质询，需要使用 `PublicClientApplicationBuilder` 类的 `.WithClaim()` 方法。
+若要处理声明质询，你将需要使用`.WithClaim()` `PublicClientApplicationBuilder`类的方法。
 
 ### <a name="javascript"></a>JavaScript
-使用 MSAL.js 以无提示方式获取令牌时（使用 `acquireTokenSilent`），如果你尝试访问的 API 需要[条件访问声明质询](conditional-access-dev-guide.md)（例如 MFA 策略），则应用程序可能会收到错误。
+当使用 MSAL 以静默方式`acquireTokenSilent`（使用）获取令牌时，应用程序可能会在你尝试访问的 API 所需的[条件性访问声明质询](conditional-access-dev-guide.md)（如 MFA 策略）时收到错误。
 
 处理此错误的模式是发出交互式调用（例如 `acquireTokenPopup` 或 `acquireTokenRedirect`）以获取 MSAL.js 中的令牌，如以下示例所示：
 
@@ -183,13 +268,18 @@ myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenRespo
 
 ## <a name="retrying-after-errors-and-exceptions"></a>出现错误和异常后重试
 
+在调用 MSAL 时，应实现自己的重试策略。 MSAL 对 AAD 服务发出 HTTP 调用，偶尔发生的故障可能发生，例如，网络可能会关闭或服务器过载。  
+
 ### <a name="http-error-codes-500-600"></a>HTTP 错误代码 500-600
+
 对于 HTTP 错误代码为 500-600 的错误，MSAL.NET 实现一个简单的重试一次机制。
 
 ### <a name="http-429"></a>HTTP 429
+
 如果服务令牌服务器（STS）的请求过多，将返回 HTTP 错误429，并提示你可以在时间方面重试。 可以从响应字段中`Retry-After`读取错误。
 
 #### <a name="net"></a>.NET
+
 [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) 异常以 `namedHeaders` 属性的形式公开 `System.Net.Http.Headers.HttpResponseHeaders`。 因此，可以利用错误代码中的附加信息来提高应用程序的可靠性。 对于前面所述的场景，可以使用 `RetryAfterproperty`（类型为 `RetryConditionHeaderValue`）并计算重试时间。
 
 下面是适用于守护程序应用程序的一个示例（使用客户端凭据流），但此示例也适用于任何令牌获取方法。

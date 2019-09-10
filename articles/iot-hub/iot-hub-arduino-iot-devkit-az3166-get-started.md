@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: d23d1881bb2d07d6287d648bb8ceb3e7930d547e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e4379c38d90f444102a9bbddbae64a8018defcf8
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074471"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844571"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 
@@ -76,7 +76,7 @@ ms.locfileid: "70074471"
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyNodeDevice**：所注册的设备的名称。 请按显示的方法使用 MyNodeDevice。 如果为设备选择其他名称，则需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyNodeDevice**：所注册的设备的名称。 如下所示请使用 MyNodeDevice 。 如果为设备选择其他名称，则需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
@@ -143,7 +143,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
 
     ![发送数据](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/sending-data.jpg)
 
-1. 若要验证发送到 Azure 的遥测数据, 请在 Azure Cloud Shell 中运行以下命令:
+1. 若要验证发送到 Azure 的遥测数据，请在 Azure Cloud Shell 中运行以下命令：
 
     ```bash
     az iot hub monitor-events --hub-name YourIoTHubName --output table
@@ -179,7 +179,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
 
 5. 为 VS Code 配置 Arduino 设置。
 
-    在 Visual Studio Code 中，单击“文件”>“首选项”>“设置”。 依次单击 **...** 和“打开 settings.json”。
+    在 Visual Studio Code 中，单击 "**文件" > 首选项 > 设置**（在 macOS 上，**代码 > 首选项 > 设置**）。 然后单击 "*设置*" 页右上角的 "**打开设置（JSON）** " 图标。
 
     ![安装 Azure IoT Tools](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
 
@@ -273,7 +273,7 @@ IoT DevKit 包含丰富的示例库，可以使用这些示例来了解如何将
 
     ![选定的 IoT 中心](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-selected.png)
 
-1. 在 "输出" 窗口中, 你会看到预配的 Azure IoT 中心。
+1. 在 "输出" 窗口中，你会看到预配的 Azure IoT 中心。
 
     ![已预配 IoT 中心](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-provisioned.png)
 

@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: c3d1d211f85c50a482e1dd9c482cb75477942de7
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 8f95846844f9ff498b1b99a0b7a375f1c883457d
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278204"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860478"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什么是现场可编程的入口阵列（FPGA）以及如何部署
 
@@ -84,7 +84,7 @@ Azure Fpga 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评�
 
 ## <a name="example-deploy-models-on-fpgas"></a>例如：在 FPGA 上部署模型 
 
-你可以使用 Azure 机器学习硬件加速模型将模型部署为 Fpga 上的 web 服务。 使用 Fpga 可提供超高延迟推理，即使只使用一批。 推理或模型计分是部署模型用于预测的阶段，最常见的是生产数据。
+你可以使用 Azure 机器学习硬件加速模型将模型部署为 Fpga 上的 web 服务。 使用 Fpga 可提供超高延迟推理，即使只使用一批。 推理或模型计分是部署模型用于预测的阶段, 最常见的是生产数据。
 
 
 ### <a name="prerequisites"></a>先决条件
@@ -319,7 +319,7 @@ for i in Image.list(workspace=ws):
 
 ### <a name="deploy-to-the-cloud"></a>部署到云
 
-若要将模型部署为大规模生产 Web 服务，请使用 Azure Kubernetes 服务 (AKS)。 你可以使用 Azure 机器学习 SDK、CLI 或 Azure 门户创建一个新的。
+若要将模型部署为大规模生产 Web 服务，请使用 Azure Kubernetes 服务 (AKS)。 你可以使用 Azure 机器学习 SDK、CLI、" [Azure 门户](https://portal.azure.com)" 或 "[工作区" 登陆页（预览版）](https://ml.azure.com)创建一个新的。
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget

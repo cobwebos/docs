@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 8d7346bb61fad09e3f7c9098809463285ef57e93
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 6e12a16b221a8f31d82a002fbc93b090d6f0c577
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242480"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861248"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API 管理的 IP 地址
 
@@ -102,5 +102,6 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 * 服务被删除，然后重新创建。
 * 服务订阅被[暂停](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)或[警告](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)（例如，由于未付款），然后恢复。
 * Azure 虚拟网络将添加到服务或从服务中删除。
+* API 管理服务在外部和内部 Vnet 部署模式间切换。
 
 在[多区域部署](api-management-howto-deploy-multi-region.md)中，如果某个区域已空出然后恢复，则区域 IP 地址会发生更改。

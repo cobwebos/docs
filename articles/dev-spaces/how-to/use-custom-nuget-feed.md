@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: 使用自定义 NuGet 源访问和使用 Azure Dev Space 中的 NuGet 包。
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 manager: gwallace
-ms.openlocfilehash: 44a87491d276e09e1fa8fed3f5e6803648c3e4a2
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 9df095011c1ff66ff0c85993c7c85dffe62623b8
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305400"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873255"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>在 Azure Dev Space 中使用自定义 NuGet 源
 
@@ -33,7 +33,7 @@ NuGet 源提供了一种方便方式将包源包含在项目中。 Azure Dev Spa
 </ItemGroup>
 ```
 
-在项目文件夹中创建一个[nuget .config](https://docs.microsoft.com/nuget/reference/nuget-config-file)文件, 并为 NuGet `packageSources`源`packageSourceCredentials`设置和节。 `packageSources`部分包含源 url, 必须可公开访问。 `packageSourceCredentials`是用于访问源的凭据。 例如：
+在项目文件夹中创建一个[nuget .config](https://docs.microsoft.com/nuget/reference/nuget-config-file)文件, 并为 NuGet `packageSources`源`packageSourceCredentials`设置和节。 `packageSources`部分包含源 url，必须可从 AKS 群集访问该 url。 `packageSourceCredentials`是用于访问源的凭据。 例如：
 
 ```xml
 <packageSources>

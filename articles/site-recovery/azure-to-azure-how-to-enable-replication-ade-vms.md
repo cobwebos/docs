@@ -1,34 +1,31 @@
 ---
-title: 在 Azure Site Recovery 中为启用了 Azure 磁盘加密的 Vm 配置复制 |Microsoft Docs
+title: 在 Azure Site Recovery 中为启用了 Azure 磁盘加密的 Vm 配置复制
 description: 本文介绍如何使用 Site Recovery 对启用了 Azure 磁盘加密的 VM 配置从一个 Azure 区域到另一个区域的 Azure VM 复制。
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1bb94b70510be30d676ad707ab2fbfbbcbf50833
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bf0ee89bb091a13560a7a7d8d9e77c74827d94a2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884131"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861319"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>将启用了 Azure 磁盘加密的虚拟机复制到另一个 Azure 区域
 
-本文介绍如何将启用了 Azure 磁盘加密的 VM 从一个 Azure 区域复制到另一个 Azure 区域。
+本文介绍如何将 azure 磁盘加密（ADE）启用的 azure Vm 从一个 Azure 区域复制到另一个 Azure 区域。
 
 >[!NOTE]
->Azure Site Recovery 当前仅支持运行 Windows 操作系统的支持 Azure 磁盘加密的 Vm。 只有在使用托管磁盘时, 才支持无 Azure AD 应用的支持 Azure 磁盘加密的 Vm。 不支持包含非托管磁盘的 Vm。
+> Site Recovery 当前支持具有和不包含运行 Windows 的 Vm 的 Azure Active Directory （AAD）的 ADE。  对于运行 ADE 1.1 （不使用 AAD）的计算机，Windows Vm 必须使用托管磁盘。 不支持包含非托管磁盘的 Vm。 如果从 ADE 0.1 （使用 AAD）切换到1.1，则需要在启用1.1 后禁用复制并为 VM 启用复制。
 
->[!NOTE]
->如果从 ADE V1 (使用 Azure AD 应用) 切换到 ADE V2 (无 Azure AD 应用), 则需要在启用 ADE V2 后禁用复制并启用复制。
 
 ## <a id="required-user-permissions"></a>必需的用户权限
-Site Recovery 要求用户有权在目标区域中创建密钥保管库, 并将密钥从源区域密钥保管库复制到目标区域密钥保管库。
+Site Recovery 要求用户具有在目标区域中创建密钥保管库以及将源区域密钥保管库中的密钥复制到目标区域密钥保管库的权限。
 
-若要启用从 Azure 门户复制启用磁盘加密的 Vm, 用户需要在**源区域和目标区域**密钥保管库中具有以下权限。
+若要从 Azure 门户为支持磁盘加密的 VM 启用复制，用户需要对**源区域和目标区域**密钥保管库具有以下权限。
 
 - 密钥保管库权限
     - 列出、创建和获取
@@ -79,12 +76,12 @@ Site Recovery 要求用户有权在目标区域中创建密钥保管库, 并将�
 
 ## <a name="enable-replication"></a>启用复制
 
-在此示例中, 主要的 Azure 区域是东亚的, 次要区域是南部东亚。
+在此示例中，主要的 Azure 区域是东亚的，次要区域是南部东亚。
 
 1. 在保管库中选择“+复制”。
 2. 注意以下字段。
     - **源**：VM 的起始点，在本例中为 Azure。
-    - **源位置**：要在其中保护虚拟机的 Azure 区域。 在此示例中, 源位置为 "东亚"。
+    - **源位置**：要在其中保护虚拟机的 Azure 区域。 在此示例中，源位置为 "东亚"。
     - **部署模型**：源计算机的 Azure 部署模型。
     - **源订阅**：源虚拟机所属的订阅。 它可以是恢复服务保管库所在的同一 Azure Active Directory 租户中的任一订阅。
     - **资源组**：源虚拟机所属的资源组。 所选资源组中要保护的所有 VM 会在下一步骤中列出。
@@ -138,25 +135,25 @@ Site Recovery 要求用户有权在目标区域中创建密钥保管库, 并将�
 
 ## <a id="trusted-root-certificates-error-code-151066"></a>Azure 到 Azure VM 复制过程中的密钥保管库权限问题疑难解答
 
-Azure Site Recovery 要求至少具有对源区域密钥保管库的读取权限和对目标区域密钥保管库的写入权限, 才能读取机密并将其复制到目标区域密钥保管库。 
+Azure Site Recovery 至少需要源区域密钥保管库的读取权限和目标区域密钥保管库的写入权限，才能读取机密并将其复制到目标区域密钥保管库。 
 
-**原因 1：** 你没有**源区域密钥保管库**的 "GET" 权限来读取密钥。 </br>
-**如何修复：** 无论你是否是订阅管理员, 都必须拥有对密钥保管库的访问权限, 这一点很重要。
+**原因 1：** 你没有**源区域密钥保管库**的“GET”权限，无法读取密钥。 </br>
+**如何修复：** 无论你是否是订阅管理员，都必须具有密钥保管库的 get 权限，这一点很重要。
 
-1. 请访问源区域密钥保管库, 此示例中为 "ContososourceKeyvault" >**访问策略** 
-2. 在 "**选择主体**添加用户名" 下, 例如:dradmin@contoso.com""
-3. 在 "**密钥权限**" 下选择 "获取" 
-4. 在 "**机密权限**" 下, 选择 GET 
+1. 转到源区域密钥保管库，本例中为“ContososourceKeyvault”>“访问策略” 
+2. 在“选择主体”下添加你的用户名，例如：“dradmin@contoso.com”
+3. 在“密钥权限”下，选择 GET 
+4. 在“机密权限”下，选择 GET 
 5. 保存访问策略
 
-**原因 2：** 你没有对**目标区域密钥保管库**所需的权限来写入密钥。 </br>
+**原因 2：** 你对**目标区域密钥保管库**没有写入密钥所需的权限。 </br>
 
 例如：你尝试复制源区域中包含 Key Vault *ContososourceKeyvault* 的 VM。
 你对源区域中的 Key Vault 拥有所有权限。 但在保护期间，你选择了已创建的、但没有权限的 Key Vault ContosotargetKeyvault。 发生错误。
 
 [目标密钥保管库](#required-user-permissions)所需的权限
 
-**如何修复：** 中转到**Home** > **Keyvaults** > ContosotargetKeyvaultAccess > **策略**并添加适当的权限。
+**如何修复：** 转到“主页” > “Keyvaults” > “ContosotargetKeyvault” > “访问策略”并添加相应的权限。
 
 ## <a name="next-steps"></a>后续步骤
 

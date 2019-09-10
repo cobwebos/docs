@@ -1,21 +1,21 @@
 ---
 title: Azure Blockchain Workbench 消息集成概述
-description: 有关在 Azure Blockchain Workbench 中使用消息的概述。
+description: 在 Azure 区块链工作台预览版中使用消息的概述。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 49b2bdd1780caa4ae04efbc979e2ea33e2c13c4c
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: f0a9e90f1208d690c2423196be7f59dce71eb78b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147239"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844063"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench 消息集成
 
@@ -44,7 +44,7 @@ ms.locfileid: "67147239"
 | messageSchemaVersion | 消息传送架构版本                            |
 | messageName          | **CreateUserRequest**                               |
 
-示例：
+例如：
 
 ``` json
 {
@@ -69,7 +69,7 @@ Blockchain Workbench 返回包含以下字段的响应：
 | connectionId          | 区块链连接的唯一标识符|
 | messageSchemaVersion  | 消息传送架构版本 |
 | messageName           | **CreateUserUpdate** |
-| status                | 用户创建请求的状态。  如果成功，则值为 **Success**。 如果失败，则值为 **Failure**。     |
+| 状态                | 用户创建请求的状态。  如果成功，则值为 **Success**。 如果失败，则值为 **Failure**。     |
 | additionalInformation | 基于状态提供的附加信息 |
 
 Blockchain Workbench 返回的 **create user** 成功响应示例：
@@ -118,12 +118,12 @@ Blockchain Workbench 返回的 **create user** 成功响应示例：
 | applicationName      | 应用程序的名称 |
 | version              | 应用程序的版本。 在启用了应用程序的多个版本时是必需的。 否则，版本是可选的。 有关应用程序版本控制的详细信息，请参阅 [Azure Blockchain Workbench 应用程序版本控制](version-app.md)。 |
 | workflowName         | 工作流的名称 |
-| parameters           | 合同创建请求的参数输入 |
+| 参数           | 合同创建请求的参数输入 |
 | connectionId         | 区块链连接的唯一标识符 |
 | messageSchemaVersion | 消息传送架构版本 |
 | messageName          | **CreateContractRequest** |
 
-示例：
+例如：
 
 ``` json
 { 
@@ -158,7 +158,7 @@ Blockchain Workbench 返回包含以下字段的响应：
 | connectionId             | 区块链连接的唯一标识符                               |
 | messageSchemaVersion     | 消息传送架构版本                                                         |
 | messageName              | **CreateContractUpdate**                                                      |
-| status                   | 合同创建请求的状态。  可能的值：**Submitted**、**Committed**、**Failure**。  |
+| 状态                   | 合同创建请求的状态。  可能的值：**Submitted**、**Committed**、**Failure**。  |
 | additionalInformation    | 基于状态提供的附加信息                              |
 
 Blockchain Workbench 返回的页面提交 **create contract** 响应示例：
@@ -222,12 +222,12 @@ Blockchain Workbench 返回的事务提交 **create contract** 响应示例：
 | contractLedgerIdentifier | 账本中合同的地址 |
 | version                  | 应用程序的版本。 在启用了应用程序的多个版本时是必需的。 否则，版本是可选的。 有关应用程序版本控制的详细信息，请参阅 [Azure Blockchain Workbench 应用程序版本控制](version-app.md)。 |
 | workflowFunctionName     | 工作流函数的名称 |
-| parameters               | 合同创建请求的参数输入 |
+| 参数               | 合同创建请求的参数输入 |
 | connectionId             | 区块链连接的唯一标识符 |
 | messageSchemaVersion     | 消息传送架构版本 |
 | messageName              | **CreateContractActionRequest** |
 
-示例：
+例如：
 
 ``` json
 {
@@ -261,7 +261,7 @@ Blockchain Workbench 返回包含以下字段的响应：
 | connectionId          | 区块链连接的唯一标识符 |
 | messageSchemaVersion  | 消息传送架构版本 |
 | messageName           | **CreateContractActionUpdate** |
-| status                | 合同操作请求的状态。 可能的值：**Submitted**、**Committed**、**Failure**。                         |
+| 状态                | 合同操作请求的状态。 可能的值：**Submitted**、**Committed**、**Failure**。                         |
 | additionalInformation | 基于状态提供的附加信息 |
 
 Blockchain Workbench 返回的页面提交 **create contract action** 响应示例：
@@ -350,9 +350,9 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 ### <a name="consuming-event-grid-events-with-logic-apps"></a>配合逻辑应用使用事件网格事件
 
 1. 在 Azure 门户中创建一个新的 **Azure 逻辑应用**。
-2. 在门户中打开 Azure 逻辑应用时，系统会提示选择触发器。 选择“Azure 事件网格 - 发生资源事件时”。 
+2. 在门户中打开 Azure 逻辑应用时，系统会提示选择触发器。 选择“Azure 事件网格 - 发生资源事件时”。
 3. 显示工作流设计器后，系统会提示登录。
-4. 选择订阅。 资源为 **Microsoft.EventGrid.Topics**。 从 Azure Blockchain Workbench 资源组的资源名称中选择“资源名称”。 
+4. 选择订阅。 资源为 **Microsoft.EventGrid.Topics**。 从 Azure Blockchain Workbench 资源组的资源名称中选择“资源名称”。
 5. 从 Blockchain Workbench 的资源组中选择“事件网格”。
 
 ## <a name="using-service-bus-topics-for-notifications"></a>使用服务总线主题发送通知
@@ -360,30 +360,30 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 可以使用服务总线主题通知用户有关 Blockchain Workbench 中发生的事件。 
 
 1. 浏览到 Workbench 资源组中的“服务总线”。
-2. 选择“主题”。 
-3. 选择“egress-topic”。 
+2. 选择“主题”。
+3. 选择“egress-topic”。
 4. 创建此主题的新订阅。 获取该订阅的密钥。
 5. 创建一个程序，用于订阅此订阅的事件。
 
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>配合逻辑应用使用服务总线消息
 
 1. 在 Azure 门户中创建一个新的 **Azure 逻辑应用**。
-2. 在门户中打开 Azure 逻辑应用时，系统会提示选择触发器。 在搜索框中键入“服务总线”，然后选择适合与服务总线之间的交互类型的触发器。  例如，选择“服务总线 - 主题订阅中收到邮件时(自动完成)”。 
+2. 在门户中打开 Azure 逻辑应用时，系统会提示选择触发器。 在搜索框中键入“服务总线”，然后选择适合与服务总线之间的交互类型的触发器。 例如，选择“服务总线 - 主题订阅中收到邮件时(自动完成)”。
 3. 显示工作流设计器后，指定服务总线的连接信息。
 4. 选择订阅并指定 **workbench-external** 主题。
 5. 开发应用程序的逻辑，以利用此触发器的消息。
 
 ## <a name="notification-message-reference"></a>通知消息参考
 
-具体取决于**messageName**，通知消息具有以下消息类型之一。
+根据**messageName**的不同，通知消息具有以下消息类型之一。
 
 ### <a name="block-message"></a>块消息
 
 包含有关单个块的信息。 *BlockMessage* 中的某个节包含块级信息，另一个节包含事务信息。
 
-| Name | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
-| block | 包含[块信息](#block-information) |
+| 阻止 | 包含[块信息](#block-information) |
 | transactions | 包含块的[事务信息](#transaction-information)集合 |
 | connectionId | 连接的唯一标识符 |
 | messageSchemaVersion | 消息传送架构版本 |
@@ -392,7 +392,7 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 
 #### <a name="block-information"></a>块信息
 
-| 名称              | 描述 |
+| 姓名              | 描述 |
 |-------------------|-------------|
 | blockId           | Azure Blockchain Workbench 中的块的唯一标识符 |
 | blockNumber       | 账本中块的唯一标识符 |
@@ -402,12 +402,12 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 
 #### <a name="transaction-information"></a>事务信息
 
-| 名称               | 描述 |
+| 姓名               | 描述 |
 |--------------------|-------------|
 | transactionId      | Azure Blockchain Workbench 中的事务的唯一标识符 |
 | transactionHash    | 账本中事务的哈希 |
-| from               | 事务来源账本中的唯一标识符 |
-| 至                 | 事务目标账本中的唯一标识符 |
+| 来自               | 事务来源账本中的唯一标识符 |
+| to                 | 事务目标账本中的唯一标识符 |
 | provisioningStatus | 标识事务的当前预配过程状态。 可能的值包括： </br>0 – API 已在数据库中创建事务</br>1 – 事务已发送到账本</br>2 – 事务已成功提交到账本</br>3 或 4 - 事务无法提交到账本</br>5 - 事务已成功提交到账本 |
 
 Blockchain Workbench 中的 *BlockMessage* 示例：
@@ -448,7 +448,7 @@ Blockchain Workbench 中的 *BlockMessage* 示例：
 
 包含有关合同的信息。 该消息中的某个节包含合同属性，另一个节包含事务信息。 修改了特定块的合同的所有事务包含在 transaction 节中。
 
-| 名称 | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | blockId | Azure Blockchain Workbench 中的块的唯一标识符 |
 | blockHash | 块的哈希 |
@@ -464,16 +464,16 @@ Blockchain Workbench 中的 *BlockMessage* 示例：
 
 #### <a name="modifying-transaction-information"></a>修改事务信息
 
-| Name               | 描述 |
+| 姓名               | 描述 |
 |--------------------|-------------|
 | transactionId | Azure Blockchain Workbench 中的事务的唯一标识符 |
 | transactionHash | 账本中事务的哈希 |
-| from | 事务来源账本中的唯一标识符 |
-| 至 | 事务目标账本中的唯一标识符 |
+| 来自 | 事务来源账本中的唯一标识符 |
+| to | 事务目标账本中的唯一标识符 |
 
 #### <a name="contract-properties"></a>合同属性
 
-| 名称               | 描述 |
+| 姓名               | 描述 |
 |--------------------|-------------|
 | workflowPropertyId | Azure Blockchain Workbench 中工作流属性的唯一标识符 |
 | name | 工作流属性的名称 |
@@ -560,14 +560,14 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 
 包含调用合同函数时的信息，例如函数名称、参数输入和函数调用方。
 
-| Name | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | eventName                   | **ContractFunctionInvocation** |
-| caller                      | [调用方信息](#caller-information) |
+| 调用方                      | [调用方信息](#caller-information) |
 | contractId                  | Azure Blockchain Workbench 中的合同的唯一标识符 |
 | contractLedgerIdentifier    | 账本中合同的唯一标识符 |
 | functionName                | 函数的名称 |
-| parameters                  | [参数信息](#parameter-information) |
+| 参数                  | [参数信息](#parameter-information) |
 | transaction                 | 事务信息 |
 | inTransactionSequenceNumber | 块中事务的序列号 |
 | connectionId                | 连接的唯一标识符 |
@@ -577,7 +577,7 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 
 #### <a name="caller-information"></a>调用方信息
 
-| Name | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | type | 调用方类型，例如用户或合同 |
 | id | Azure Blockchain Workbench 中调用方的唯一标识符 |
@@ -585,19 +585,19 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 
 #### <a name="parameter-information"></a>参数信息
 
-| Name | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | name | 参数名称 |
 | value | 参数值 |
 
 #### <a name="event-message-transaction-information"></a>事件消息事务信息
 
-| 名称               | 描述 |
+| 姓名               | 描述 |
 |--------------------|-------------|
 | transactionId      | Azure Blockchain Workbench 中的事务的唯一标识符 |
 | transactionHash    | 账本中事务的哈希 |
-| from               | 事务来源账本中的唯一标识符 |
-| 至                 | 事务目标账本中的唯一标识符 |
+| 来自               | 事务来源账本中的唯一标识符 |
+| to                 | 事务目标账本中的唯一标识符 |
 
 Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
@@ -640,13 +640,13 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
 包含将应用程序上传到 Workbench 时的信息，例如所上传应用程序的名称和版本。
 
-| Name | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | eventName | **ApplicationIngestion** |
 | applicationId | Azure Blockchain Workbench 中应用程序的唯一标识符 |
-| applicationName | 应用程序名称 |
+| applicationName | 应用程序名 |
 | applicationDisplayName | 应用程序显示名称 |
-| applicationVersion | 应用程序版本 |
+| applicationVersion | 应用程序版本: |
 | applicationDefinitionLocation | 应用程序配置文件所在的 URL |
 | contractCodes | 应用程序的[合同代码](#contract-code-information)集合 |
 | applicationRoles | 应用程序的[应用程序角色](#application-role-information)集合 |
@@ -658,52 +658,52 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
 #### <a name="contract-code-information"></a>合同代码信息
 
-| 名称 | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中合同代码文件的唯一标识符 |
 | ledgerId | Azure Blockchain Workbench 中账本的唯一标识符 |
-| 位置 | 合同代码文件所在的 URL |
+| location | 合同代码文件所在的 URL |
 
 #### <a name="application-role-information"></a>应用程序角色信息
 
-| Name | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中应用程序角色的唯一标识符 |
 | name | 应用程序角色的名称 |
 
 #### <a name="application-workflow-information"></a>应用程序工作流信息
 
-| Name | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中应用程序工作流的唯一标识符 |
 | name | 应用程序工作流名称 |
 | displayName | 应用程序工作流显示名称 |
-| functions | 集合的[用于应用程序工作流函数](#workflow-function-information)|
+| 函数 | [应用程序工作流的函数](#workflow-function-information)集合|
 | states | [应用程序工作流的状态](#workflow-state-information)集合 |
 | properties | 应用程序[工作流属性信息](#workflow-property-information) |
 
 ##### <a name="workflow-function-information"></a>工作流函数信息
 
-| Name | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中应用程序工作流函数的唯一标识符 |
-| name | 函数名称 |
-| parameters | 函数的参数 |
+| name | 函数名 |
+| 参数 | 函数的参数 |
 
 ##### <a name="workflow-state-information"></a>工作流状态信息
 
-| 名称 | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | name | 状态名称 |
 | displayName | 状态显示名称 |
-| style | 状态样式（success 或 failure） |
+| 样式 | 状态样式（success 或 failure） |
 
 ##### <a name="workflow-property-information"></a>工作流属性信息
 
-| Name | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中应用程序工作流属性的唯一标识符 |
-| name | 属性名称 |
+| name | 属性名 |
 | type | 属性类型 |
 
 Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
@@ -834,13 +834,13 @@ Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
 
 包含在 Workbench 中为用户分配角色时的信息，例如，谁执行了角色分配，以及角色名称和相应的应用程序。
 
-| 名称 | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | eventName | **RoleAssignment** |
 | applicationId | Azure Blockchain Workbench 中应用程序的唯一标识符 |
-| applicationName | 应用程序名称 |
+| applicationName | 应用程序名 |
 | applicationDisplayName | 应用程序显示名称 |
-| applicationVersion | 应用程序版本 |
+| applicationVersion | 应用程序版本: |
 | applicationRole        | 有关[应用程序角色](#roleassignment-application-role)的信息 |
 | assigner               | 有关[分配者](#roleassignment-assigner)的信息 |
 | assignee               | 有关[被分配者](#roleassignment-assignee)的信息 |
@@ -851,14 +851,14 @@ Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
 
 #### <a name="roleassignment-application-role"></a>RoleAssignment 应用程序角色
 
-| Name | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中应用程序角色的唯一标识符 |
 | name | 应用程序角色的名称 |
 
 #### <a name="roleassignment-assigner"></a>RoleAssignment 分配者
 
-| 名称 | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中用户的唯一标识符 |
 | type | 分配者的类型 |
@@ -866,7 +866,7 @@ Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
 
 #### <a name="roleassignment-assignee"></a>RoleAssignment 被分配者
 
-| Name | 描述 |
+| 姓名 | 描述 |
 |------|-------------|
 | id | Azure Blockchain Workbench 中用户的唯一标识符 |
 | type | 被分配者的类型 |

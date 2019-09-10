@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: c0bfbbd8b85f0b3eadf468cdd1261f52bff26abe
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: 33e21b54927280e2692a58c311e2de23e257f923
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813377"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845382"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL 数据库托管实例资源限制概述
 
@@ -65,9 +65,9 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 | 最大 tempDB 大小 | 192 - 1,920 GB（每个 vCore 为 24 GB）<br/>添加更多 vCore 以获得更多 TempDB 空间。 | 受最大实例存储大小限制。 TempDB 日志文件大小目前的限制为 24GB/vCore。 |
 | 内存中 OLTP | 不支持 | 可用 |
 | 最大会话数 | 30000 | 30000 |
-| 可读副本 | 0 | 1（包含于价格中） |
-| 定价/计费 | vCore，保留存储  <br/> 不收费的 IOPS，备份存储尚未收费。 | vCore，保留存储  <br/> 不收费的 IOPS，备份存储尚未收费。 | 
-| 折扣模型 | [预订实例](sql-database-reserved-capacity.md)<br/>[Azure 混合权益](sql-database-service-tiers-vcore.md#azure-hybrid-benefit)（不适用于开发/测试订阅） | [预订实例](sql-database-reserved-capacity.md)<br/>[Azure 混合权益](sql-database-service-tiers-vcore.md#azure-hybrid-benefit)（不适用于开发/测试订阅）|
+| [只读副本](sql-database-read-scale-out.md) | 0 | 1（包含于价格中） |
+| 定价/计费 | [vCore 和预留存储](https://azure.microsoft.com/pricing/details/sql-database/managed/)收费。 <br/>IOPS 不收取费用。<br/>备份存储尚未收费。 | [vCore 和预留存储](https://azure.microsoft.com/pricing/details/sql-database/managed/)收费。 <br/>IOPS 不收取费用。<br/>备份存储尚未收费。 | 
+| 折扣模型 | [预订实例](sql-database-reserved-capacity.md)<br/>[Azure 混合权益](sql-database-service-tiers-vcore.md#azure-hybrid-benefit)（不适用于开发/测试订阅）<br/>[企业](https://azure.microsoft.com/offers/ms-azr-0148p/)和即[用即付](https://azure.microsoft.com/offers/ms-azr-0023p/)开发/测试订阅| [预订实例](sql-database-reserved-capacity.md)<br/>[Azure 混合权益](sql-database-service-tiers-vcore.md#azure-hybrid-benefit)（不适用于开发/测试订阅）<br/>[企业](https://azure.microsoft.com/offers/ms-azr-0148p/)和即[用即付](https://azure.microsoft.com/offers/ms-azr-0023p/)开发/测试订阅|
 
 > [!NOTE]
 > - 与最大存储大小限制进行比较的实例存储大小同时包括用户和系统数据库中的数据及日志文件大小。 可以使用 <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> 系统视图来确定数据库使用的空间总量。 错误日志不会持久保存，不包括在大小中。 备份不包括在存储大小中。

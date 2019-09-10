@@ -1,59 +1,71 @@
 ---
-title: 使用 PowerShell 启用 Azure Active Directory 域服务 | Microsoft 文档
-description: 使用 PowerShell 启用 Azure Active Directory 域服务
+title: 使用 PowerShell 启用 Azure DS 域服务 |Microsoft Docs
+description: 了解如何使用 Azure AD PowerShell 和 Azure PowerShell 配置和启用 Azure Active Directory 域服务。
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: c6572ab8bc2a10039f327233f983c2e822fba3b0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 163259af3797b652c9605c171447f4a7d2576c87
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617218"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842715"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 启用 Azure Active Directory 域服务
-本文介绍如何使用 PowerShell 来启用 Azure Active Directory (AD) 域服务。
+
+Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active Directory 完全兼容的托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。 使用这些域服务就无需自行部署、管理和修补域控制器。 Azure AD DS 与现有的 Azure AD 租户集成。 这种集成可让用户使用其企业凭据登录，而你可以使用现有的组和用户帐户来保护对资源的访问。
+
+本文介绍如何使用 PowerShell 启用 Azure AD DS。
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="task-1-install-the-required-powershell-modules"></a>任务 1：安装所需的 PowerShell 模块
+## <a name="prerequisites"></a>先决条件
 
-### <a name="install-and-configure-azure-ad-powershell"></a>安装和配置 Azure AD PowerShell
-请按照本文中的说明[安装 Azure AD PowerShell 模块并连接到 Azure AD](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)。
+若要完成本文，需要以下资源：
 
-### <a name="install-and-configure-azure-powershell"></a>安装和配置 Azure PowerShell
-请按照文章中的说明[安装 Azure PowerShell 模块并连接到 Azure 订阅](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)。
+* 安装和配置 Azure PowerShell。
+    * 如果需要，请按照说明[安装 Azure PowerShell 模块并连接到 Azure 订阅](/powershell/azure/install-az-ps)。
+    * 请确保使用[AzAccount][Connect-AzAccount] cmdlet 登录到 Azure 订阅。
+* 安装并配置 Azure AD PowerShell。
+    * 如果需要，请按照说明[安装 Azure AD PowerShell 模块并连接到 Azure AD](/powershell/azure/active-directory/install-adv2)。
+    * 请确保使用[AzureAD][Connect-AzureAD] cmdlet 登录到 Azure AD 租户。
+* 需要在 Azure AD 目录中拥有“全局管理员”特权才能启用 Azure AD DS。
+* 需要在 Azure 订阅中拥有“参与者”特权才能创建所需的 Azure AD DS 资源。
 
+## <a name="create-required-azure-ad-resources"></a>创建所需 Azure AD 资源
 
-## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>任务 2：在 Azure AD 目录中创建所需的服务主体
-键入以下 PowerShell 命令，以在 Azure AD 目录中创建 Azure AD 域服务所需的服务主体。
+Azure AD DS 需要服务主体和 Azure AD 组。 这些资源让 Azure AD DS 托管域同步数据，并定义在托管域中具有管理权限的用户。
+
+首先，创建一个 Azure AD 服务主体，以便 Azure AD DS 进行通信和身份验证。 使用 ID 为*2565bd9d-da50-47d4-8b85-4c97f669dc36*的命名*域控制器服务*的特定应用程序 ID。 请勿更改此应用程序 ID。
+
+使用[get-azureadserviceprincipal][New-AzureADServicePrincipal] cmdlet 创建 Azure AD 服务主体：
+
 ```powershell
-# Create the service principal for Azure AD Domain Services.
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>任务 3：创建并配置“AAD DC 管理员”组
-下一个任务是创建管理员组，用于委托在托管域上的管理任务。
+现在创建一个名为 " *AAD DC 管理员*" 的 Azure AD 组。 然后，将向添加到此组的用户授予在 Azure AD DS 托管域上执行管理任务的权限。
+
+使用[get-azureadgroup][New-AzureADGroup] Cmdlet 创建*AAD DC 管理员*组：
+
 ```powershell
-# Create the delegated administration group for AAD Domain Services.
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
   -Description "Delegated group to administer Azure AD Domain Services" `
   -SecurityEnabled $true -MailEnabled $false `
   -MailNickName "AADDCAdministrators"
 ```
 
-现在，已创建了组，然后向该组添加几个用户。
+创建*AAD DC 管理员*组后，使用[add-azureadgroupmember][Add-AzureADGroupMember] cmdlet 将该用户添加到该组。 首先，使用[get-azureadgroup][Get-AzureADGroup] Cmdlet 获取*AAD DC 管理员*组对象 Id，然后使用[get-azureaduser][Get-AzureADUser] cmdlet 获取所需用户的对象 id。
+
+在下面的示例中，具有 UPN 的`admin@contoso.onmicrosoft.com`帐户的用户对象 ID。 将此用户帐户替换为要添加到*AAD DC 管理员*组的用户的 UPN：
+
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `
@@ -69,17 +81,18 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>任务 4：注册 Azure AD 域服务资源提供程序
-键入以下 PowerShell 命令，以注册 Azure AD 域服务的资源提供程序：
+## <a name="create-supporting-azure-resources"></a>创建支持的 Azure 资源
+
+首先，使用[AzResourceProvider][Register-AzResourceProvider] cmdlet 注册 Azure AD 域服务资源提供程序：
+
 ```powershell
-# Register the resource provider for Azure AD Domain Services with Resource Manager.
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-## <a name="task-5-create-a-resource-group"></a>任务 5：创建资源组
-键入以下 PowerShell 命令，以创建一个资源组：
+接下来，使用[AzResourceGroup][New-AzResourceGroup] cmdlet 创建资源组。 在下面的示例中，资源组名为*myResourceGroup* ，并在*westus*区域中创建。 使用自己的名称和所需区域：
+
 ```powershell
-$ResourceGroupName = "ContosoAaddsRg"
+$ResourceGroupName = "myResourceGroup"
 $AzureLocation = "westus"
 
 # Create the resource group.
@@ -88,17 +101,12 @@ New-AzResourceGroup `
   -Location $AzureLocation
 ```
 
-可以在此资源组中创建虚拟网络和 Azure AD 域服务托管域。
+为 Azure AD 域服务创建虚拟网络和子网。 将创建两个子网，一个用于*DomainServices*，一个用于*工作负荷*。 Azure AD DS 部署到专用*DomainServices*子网中。 不要将其他应用程序或工作负荷部署到此子网中。 为 Vm 的其余部分使用单独的*工作负荷*或其他子网。
 
-
-## <a name="task-6-create-and-configure-the-virtual-network"></a>任务 6：创建并配置虚拟网络
-现在，创建在其中可启用 Azure AD 域服务的虚拟网络。 确保为 Azure AD 域服务创建一个专用子网。 请不要将工作负载 VM 部署到此专用子网。
-
-键入以下 PowerShell 命令，为 Azure AD 域服务创建一个具有专用子网的虚拟网络。
+使用[AzVirtualNetworkSubnetConfig][New-AzVirtualNetworkSubnetConfig] cmdlet 创建子网，然后使用[AzVirtualNetwork][New-AzVirtualNetwork] cmdlet 创建虚拟网络。
 
 ```powershell
-$ResourceGroupName = "ContosoAaddsRg"
-$VnetName = "DomainServicesVNet_WUS"
+$VnetName = "myVnet"
 
 # Create the dedicated subnet for AAD Domain Services.
 $AaddsSubnet = New-AzVirtualNetworkSubnetConfig `
@@ -110,7 +118,7 @@ $WorkloadSubnet = New-AzVirtualNetworkSubnetConfig `
   -AddressPrefix 10.0.1.0/24
 
 # Create the virtual network in which you will enable Azure AD Domain Services.
-$Vnet=New-AzVirtualNetwork `
+$Vnet= New-AzVirtualNetwork `
   -ResourceGroupName $ResourceGroupName `
   -Location westus `
   -Name $VnetName `
@@ -118,47 +126,45 @@ $Vnet=New-AzVirtualNetwork `
   -Subnet $AaddsSubnet,$WorkloadSubnet
 ```
 
+## <a name="create-an-azure-ad-ds-managed-domain"></a>创建 Azure AD DS 托管域
 
-## <a name="task-7-provision-the-azure-ad-domain-services-managed-domain"></a>任务 7：预配 Azure AD 域服务托管域
-键入以下 PowerShell 命令，为你的目录启用 Azure AD 域服务：
+现在，让我们创建一个 Azure AD DS 托管域。 设置你的 Azure 订阅 ID，然后为托管域提供一个名称，例如*contoso.com*。 可以使用[AzSubscription][Get-AzSubscription] cmdlet 获取订阅 ID。
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
 $ManagedDomainName = "contoso.com"
-$ResourceGroupName = "ContosoAaddsRg"
-$VnetName = "DomainServicesVNet_WUS"
-$AzureLocation = "westus"
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
   -Location $AzureLocation `
   -Properties @{"DomainName"=$ManagedDomainName; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -ApiVersion 2017-06-01 -Force -Verbose
+  -Force -Verbose
 ```
 
-> [!WARNING]
-> 在预配托管域后，请不要忘记执行其他配置步骤。
-> 预配托管域后，仍需完成以下任务：
-> * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。 若要配置 DNS, 请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上, 系统会提示自动配置这些 DNS 设置。
-> * 创建所需的网络安全组规则, 以限制托管域的入站流量。 若要创建网络安全组规则, 请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上, 系统会提示自动创建相应的网络安全组规则。
-> * [启用 Azure AD 域服务的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以使最终用户能够使用其企业凭据登录到托管域。
+创建资源并将控制返回到 PowerShell 提示符需要几分钟时间。 Azure AD DS 托管域将继续在后台预配，并且最多可能需要一小时才能完成部署。 在 Azure 门户中，Azure AD DS 托管域的 "**概述**" 页在此部署阶段显示当前状态。
 
-## <a name="powershell-script"></a>PowerShell 脚本
-本文所列的用于执行所有任务的 PowerShell 脚本如下所示。 复制脚本并将其保存到扩展名为“.ps1”的文件。 在 PowerShell 中执行该脚本，或使用 PowerShell 集成脚本环境(ISE)。
+当 Azure 门户显示 Azure AD DS 托管域已完成预配后，需要完成以下任务：
+
+* 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
+    * 若要配置 DNS，请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上，系统会提示自动配置这些 DNS 设置。
+* [启用 "密码同步" Azure AD 域服务](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以便最终用户可以使用其公司凭据登录到托管域。
+
+## <a name="complete-powershell-script"></a>完整的 PowerShell 脚本
+
+以下完整的 PowerShell 脚本结合了本文中所示的所有任务。 复制该脚本并将其保存到`.ps1`扩展名为的文件中。 在本地 PowerShell 控制台或[Azure Cloud Shell][cloud-shell]中运行脚本。
 
 > [!NOTE]
-> 运行此脚本所需的权限：若要启用 Azure AD 域服务，需要是 Azure AD 目录的全局管理员。 此外，需要至少具有可在其中启用 Azure AD 域服务的虚拟网络上的“参与者”权限。
->
+> 若要启用 Azure AD DS，你必须是 Azure AD 租户的全局管理员。 还需要在 Azure 订阅中至少具有*参与者*权限。
 
 ```powershell
 # Change the following values to match your deployment.
 $AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
+$ResourceGroupName = "myResourceGroup"
+$VnetName = "myVnet"
+$AzureLocation = "westus"
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
 $ManagedDomainName = "contoso.com"
-$ResourceGroupName = "ContosoAaddsRg"
-$VnetName = "DomainServicesVNet_WUS"
-$AzureLocation = "westus"
 
 # Connect to your Azure AD directory.
 Connect-AzureAD
@@ -218,18 +224,37 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
   -Location $AzureLocation `
   -Properties @{"DomainName"=$ManagedDomainName; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -ApiVersion 2017-06-01 -Force -Verbose
+  -Force -Verbose
 ```
 
-> [!WARNING]
-> 在预配托管域后，请不要忘记执行其他配置步骤。
-> 预配托管域后，仍需完成以下任务：
-> * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。 若要配置 DNS, 请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上, 系统会提示自动配置这些 DNS 设置。
-> * 创建所需的网络安全组规则, 以限制托管域的入站流量。 若要创建网络安全组规则, 请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上, 系统会提示自动创建相应的网络安全组规则。
-> * [启用 Azure AD 域服务的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以使最终用户能够使用其企业凭据登录到托管域。
+创建资源并将控制返回到 PowerShell 提示符需要几分钟时间。 Azure AD DS 托管域将继续在后台预配，并且最多可能需要一小时才能完成部署。 在 Azure 门户中，Azure AD DS 托管域的 "**概述**" 页在此部署阶段显示当前状态。
+
+当 Azure 门户显示 Azure AD DS 托管域已完成预配后，需要完成以下任务：
+
+* 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
+    * 若要配置 DNS，请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上，系统会提示自动配置这些 DNS 设置。
+* [启用 "密码同步" Azure AD 域服务](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以便最终用户可以使用其公司凭据登录到托管域。
 
 ## <a name="next-steps"></a>后续步骤
-创建托管域后，执行以下配置任务，以使用托管域：
 
-* [更新虚拟网络的 DNS 服务器设置，以指向托管域](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
-* [启用托管域的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)
+若要查看操作中的 Azure AD DS 托管域，你可以[加入 WINDOWS VM][windows-join]，[配置安全 LDAP][tutorial-ldaps]，并[配置密码哈希同步][tutorial-phs]。
+
+<!-- INTERNAL LINKS -->
+[windows-join]: join-windows-vm.md
+[tutorial-ldaps]: tutorial-configure-ldaps.md
+[tutorial-phs]: tutorial-configure-password-hash-sync.md
+
+<!-- EXTERNAL LINKS -->
+[Connect-AzAccount]: /powershell/module/Az.Accounts/Connect-AzAccount
+[Connect-AzureAD]: /powershell/module/AzureAD/Connect-AzureAD
+[New-AzureADServicePrincipal]: /powershell/module/AzureAD/New-AzureADServicePrincipal
+[New-AzureADGroup]: /powershell/module/AzureAD/New-AzureADGroup
+[Add-AzureADGroupMember]: /powershell/module/AzureAD/Add-AzureADGroupMember
+[Get-AzureADGroup]: /powershell/module/AzureAD/Get-AzureADGroup
+[Get-AzureADUser]: /powershell/module/AzureAD/Get-AzureADUser
+[Register-AzResourceProvider]: /powershell/module/Az.Resources/Register-AzResourceProvider
+[New-AzResourceGroup]: /powershell/module/Az.Resources/New-AzResourceGroup
+[New-AzVirtualNetworkSubnetConfig]: /powershell/module/Az.Network/New-AzVirtualNetworkSubnetConfig
+[New-AzVirtualNetwork]: /powershell/module/Az.Network/New-AzVirtualNetwork
+[Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
+[cloud-shell]: /azure/cloud-shell/cloud-shell-windows-users

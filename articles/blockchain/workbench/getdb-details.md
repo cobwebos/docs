@@ -1,25 +1,25 @@
 ---
-title: 获取 Azure Blockchain Workbench 数据库详细信息
-description: 了解如何获取 Azure Blockchain Workbench 数据库和数据库服务器信息。
+title: 获取 Azure 区块链工作台预览数据库详细信息
+description: 了解如何获取 Azure 区块链工作台预览版数据库和数据库服务器信息。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 42d119acd8880458eadc1760a7cb9713f91e3f6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4a4eaab9a03aeed27e29eb645b6e22a028b243b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65509983"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845079"
 ---
-# <a name="get-information-about-your-azure-blockchain-workbench-database"></a>获取有关 Azure Blockchain Workbench 数据库的信息
+# <a name="get-information-about-your-azure-blockchain-workbench-preview-database"></a>获取有关 Azure 区块链工作台预览数据库的信息
 
-本文展示了如何获取有关 Azure Blockchain Workbench 数据库的详细信息。
+本文介绍如何获取有关 Azure 区块链工作台预览数据库的详细信息。
 
 ## <a name="overview"></a>概述
 
@@ -34,10 +34,10 @@ ms.locfileid: "65509983"
 
 若要连接到数据库，请执行以下操作：
 
-1. 使用对 Azure Blockchain Workbench 资源具有所有者权限的帐户登录到 Azure 门户  。
-2. 在左侧导航窗格中，选择“资源组”  。
+1. 使用对 Azure Blockchain Workbench 资源具有所有者权限的帐户登录到 Azure 门户。
+2. 在左侧导航窗格中，选择“资源组”。
 3. 选择你的 Blockchain Workbench 部署的资源组的名称。
-4. 选择“类型”  来对资源列表进行排序，然后选择你的 **SQL Server**。 下面的屏幕截图中的已排序列表显示了两个 SQL 数据库，一个是“master”，另一个是使用“lhgn”作为**资源前缀**的数据库。
+4. 选择“类型”来对资源列表进行排序，然后选择你的 **SQL Server**。 下面的屏幕截图中的已排序列表显示了两个 SQL 数据库，一个是“master”，另一个是使用“lhgn”作为**资源前缀**的数据库。
 
    ![已排序的 Blockchain Workbench 资源列表](./media/getdb-details/sorted-workbench-resource-list.png)
 

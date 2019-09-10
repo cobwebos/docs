@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 08/19/2019
 ms.author: tomfitz
 ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "69626298"
 ---
 | Resource | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 每个[资源组](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)的资源数（按资源类型） |800 |某些资源类型可能超过800限制。 请参阅[每个资源组不限于800实例的资源](../articles/azure-resource-manager/resources-without-rg-limit.md)。 |
+| 每个[资源组](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)的资源数（按资源类型） |800 |某些资源类型可能超过 800 的限制。 请参阅[不限于每个资源组 800 个实例的资源](../articles/azure-resource-manager/resources-without-rg-limit.md)。 |
 | 部署历史记录中每个资源组的部署数 |800<sup>1</sup> |800 |
 | 每个部署的资源数 |800 |800 |
 | 管理锁数（按唯一的作用域） |20 |20 |

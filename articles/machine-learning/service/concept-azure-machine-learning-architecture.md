@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7cb4f1a106d8caa2c43f5f17c5efa16a3ee6df2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 4e953ad732852f9ee99c7830997e2d1dc29b8f84
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011641"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845008"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -75,13 +75,13 @@ ms.locfileid: "70011641"
 
 ### <a name="workspaces"></a>工作区
 
-[工作区](concept-workspace.md)是 Azure 机器学习服务的顶级资源。 它提供了一个集中的位置来处理使用 Azure 机器学习服务时创建的所有项目。 可以与他人共享工作区。 有关工作区的详细说明, 请参阅[什么是 Azure 机器学习工作区？](concept-workspace.md)。
+[工作区](concept-workspace.md)是 Azure 机器学习服务的顶级资源。 它提供了一个集中的位置来处理使用 Azure 机器学习服务时创建的所有项目。 可以与他人共享工作区。 有关工作区的详细说明，请参阅[什么是 Azure 机器学习工作区？](concept-workspace.md)。
 
 ### <a name="experiments"></a>试验
 
 试验是指定的脚本中多个运行的分组。 它始终属于工作区。 当你提交运行时，需提供试验名称。 运行的信息存储在该试验下。 如果提交运行，并指定一个不存在的试验名称，则系统将使用新指定的名称自动创建一个新试验。
 
-有关使用试验的示例, 请参阅[教程:训练您的第](tutorial-1st-experiment-sdk-train.md)一个模型。
+有关使用试验的示例，请参阅[教程：训练您的第](tutorial-1st-experiment-sdk-train.md)一个模型。
 
 ### <a name="models"></a>Models
 
@@ -91,7 +91,7 @@ ms.locfileid: "70011641"
 
 Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何主流机器学习框架, 如 Scikit-learn、XGBoost、PyTorch、TensorFlow 和 Chainer。
 
-有关使用 scikit-learn 和估计器为模型定型的示例, 请参阅[教程:使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。
+有关使用 scikit-learn 和估计器为模型定型的示例，请参阅[教程：使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。
 
 **模型注册表**将跟踪 Azure 机器学习服务工作区中的所有模型。
 
@@ -116,22 +116,22 @@ Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何�
 
 ### <a name="estimators"></a>估算
 
-为了便于通过常用框架进行模型训练, 估计器类使你能够轻松构造运行配置。 您可以创建和使用一般[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交使用您选择的任何学习框架的培训脚本 (如 scikit-learn)。
+为了便于通过常用框架进行模型训练，估计器类使你能够轻松构造运行配置。 您可以创建和使用一般[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交使用您选择的任何学习框架的培训脚本（如 scikit-learn）。
 
-对于 PyTorch、TensorFlow 和 Chainer 任务, Azure 机器学习还提供相应的[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)和[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)估算以简化使用这些框架的操作。
+对于 PyTorch、TensorFlow 和 Chainer 任务，Azure 机器学习还提供相应的[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)和[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)估算以简化使用这些框架的操作。
 
 有关详细信息，请参阅以下文章：
 
 * [用估算训练 ML 模型](how-to-train-ml-models.md)。
-* [Azure 机器学习, 按比例为 Pytorch 深度学习模型定型](how-to-train-pytorch.md)。
-* [Azure 机器学习服务, 按比例定型并注册 TensorFlow 模型](how-to-train-tensorflow.md)。
-* [Azure 机器学习服务, 按比例定型并注册 Chainer 模型](how-to-train-chainer.md)。
+* [Azure 机器学习，按比例为 Pytorch 深度学习模型定型](how-to-train-pytorch.md)。
+* [Azure 机器学习服务，按比例定型并注册 TensorFlow 模型](how-to-train-tensorflow.md)。
+* [Azure 机器学习服务，按比例定型并注册 Chainer 模型](how-to-train-chainer.md)。
 
 ### <a name="datasets-and-datastores"></a>数据集和数据存储
 
-**Azure 机器学习数据集**(预览版) 可让你更轻松地访问和处理数据。 数据集管理各种方案 (例如模型定型和管道创建) 中的数据。 使用 Azure 机器学习 SDK, 你可以访问基础存储、浏览和准备数据、管理不同数据集定义的生命周期, 以及在定型和生产环境中使用的数据集之间进行比较。
+**Azure 机器学习数据集**(预览版) 可让你更轻松地访问和处理数据。 数据集管理各种方案 (例如模型定型和管道创建) 中的数据。 使用 Azure 机器学习 SDK，你可以访问基础存储、浏览数据以及管理不同数据集定义的生命周期。
 
-数据集提供了一些方法, 用于处理常用格式的数据, `from_delimited_files()`例如`to_pandas_dataframe()`使用或。
+数据集提供了一些方法，用于处理常用格式的数据， `from_delimited_files()`例如`to_pandas_dataframe()`使用或。
 
 有关详细信息, 请参阅[创建和注册 Azure 机器学习数据集](how-to-create-register-datasets.md)。  有关使用数据集的更多示例, 请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)。
 
@@ -151,7 +151,7 @@ Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何�
 
 ### <a name="runs"></a>运行
 
-"运行" 是训练脚本的单次执行。 Azure 机器学习记录所有运行并存储以下信息:
+"运行" 是训练脚本的单次执行。 Azure 机器学习记录所有运行并存储以下信息：
 
 * 有关运行的元数据（时间戳、持续时间等）
 * 脚本记录的指标
@@ -229,7 +229,7 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 使用机器学习管道可以创建和管理将各个机器学习阶段整合到一起的工作流。 例如, 管道可能包含数据准备、模型定型、模型部署和推理/评分阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。 
 
-管道步骤可重复使用, 如果该步骤的输出未发生更改, 则可以运行, 而无需重新运行后续步骤。 例如, 如果数据未更改, 则可以重新训练模型, 而无需重新运行成本高昂的数据准备步骤。 管道还允许数据科学家协作, 同时处理机器学习工作流的不同区域。
+管道步骤可重复使用，如果该步骤的输出未发生更改，则可以运行，而无需重新运行后续步骤。 例如，如果数据未更改，则可以重新训练模型，而无需重新运行成本高昂的数据准备步骤。 管道还允许数据科学家协作，同时处理机器学习工作流的不同区域。
 
 有关机器学习管道与此服务的详细信息，请参阅[管道和 Azure 机器学习](concept-ml-pipelines.md)。
 
