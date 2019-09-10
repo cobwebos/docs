@@ -228,10 +228,14 @@
               href: Customize-application-attributes.md
             - name: 范围筛选器
               href: define-conditional-rules-for-provisioning-user-accounts.md
+            - name: 对超出范围的用户跳过删除
+              href: skip-out-of-scope-deletions.md
             - name: 检查预配状态
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: 针对自动用户预配进行报告
               href: check-status-user-account-provisioning.md
+            - name: 导出和导入配置
+              href: export-import-provisioning-configuration.md
         - name: 排查用户预配问题
           items:
             - name: 排查用户预配问题

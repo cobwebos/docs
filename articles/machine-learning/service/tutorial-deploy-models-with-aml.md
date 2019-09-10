@@ -19,7 +19,7 @@ ms.locfileid: "70036219"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教程：在 Azure 容器实例中部署映像分类模型
 
-本教程是由两个部分构成的系列教程的第二部分  。 在[上一个教程](tutorial-train-models-with-aml.md)中，定型了机器学习模型，然后在云中的工作区内注册了模型。  
+本教程是由两个部分构成的系列教程的第二部分  。 在[上一个教程](tutorial-train-models-with-aml.md)中，训练了机器学习模型，然后在云中的工作区内注册了模型。  
 
 现在，你已准备好在 [Azure 容器实例](https://docs.microsoft.com/azure/container-instances/)中部署模型作为 Web 服务。 Web 服务是一个映像，在本例中是 Docker 映像。 它用于封装评分逻辑和模型本身。 
 

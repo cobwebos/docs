@@ -469,6 +469,8 @@
               href: bulk-executor-graph-dotnet.md
             - name: 优化 Gremlin 查询
               href: graph-execution-profile.md
+            - name: 使用资源令牌
+              href: how-to-use-resource-tokens-gremlin.md
             - name: 将图数据可视化
               href: graph-visualization.md
             - name: 存储和管理 Spring Data

@@ -173,7 +173,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | moduleId | string | 模块的唯一标识符。 此字段是仅适用于模块设备的输出。 此区分大小写的字符串最多可长达 128 个字符，并支持 ASCII 7 位字母数字字符加上以下特殊字符：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
-| deviceConnectionStateEventInfo | 对象 | 设备连接状态事件信息
+| deviceConnectionStateEventInfo | object | 设备连接状态事件信息
 | sequenceNumber | string | 一个数字，有助于指示设备已连接或设备已断开连接事件的顺序。 最新事件的序列号将大于上一个事件。 此数字可能会变化超过 1，但严格地说，是在增加。 请参阅[如何使用序列号](../iot-hub/iot-hub-how-to-order-connection-state-events.md)。 |
 
 有关**设备遥测**IoT 中心事件数据对象包含中的设备到云消息[IoT 中心消息格式](../iot-hub/iot-hub-devguide-messages-construct.md)并具有以下属性：
@@ -188,7 +188,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| twin | 对象 | 有关设备孪生（即应用程序设备元数据的云表示形式）的信息。 | 
+| twin | object | 有关设备孪生（即应用程序设备元数据的云表示形式）的信息。 | 
 | deviceID | string | 设备孪生的唯一标识符。 | 
 | etag | string | 用于确保设备孪生更新一致性的验证程序。 每个 etag 保证对于每个设备孪生是唯一的。 |  
 | deviceEtag| string | 用于确保设备注册表更新一致性的验证程序。 每个 deviceEtag 保证对于每个设备注册表是唯一的。 |
@@ -202,8 +202,8 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | primaryThumbprint | string | x509 证书的主要指纹。 |
 | secondaryThumbprint | string | x509 证书的次要指纹。 | 
 | version | integer | 一个整数，每次更新设备孪生时递增 1。 |
-| desired | 对象 | 只能由应用程序后端写入并且由设备读取的属性部分。 | 
-| reported | 对象 | 只能由设备写入并且由应用程序后端读取的属性部分。 |
+| desired | object | 只能由应用程序后端写入并且由设备读取的属性部分。 | 
+| reported | object | 只能由设备写入并且由应用程序后端读取的属性部分。 |
 | lastUpdated | string | 上次设备孪生属性更新的 ISO8601 时间戳。 | 
 
 ## <a name="next-steps"></a>后续步骤
