@@ -6,6 +6,8 @@
       href: sql-database-technical-overview.md
     - name: 我应该选择哪个 SQL 选项？
       href: sql-database-paas-vs-sql-server-iaas.md
+    - name: 功能比较
+      href: sql-database-features.md
     - name: 发行说明
       href: sql-database-release-notes.md
     - name: 网关 IP 迁移更新
@@ -390,10 +392,8 @@
               href: sql-database-advisor.md
     - name: 数据库功能
       items:
-        - name: SQL 数据库功能文档
+        - name: 概述
           href: sql-database-features-index.yml
-        - name: SQL 功能比较
-          href: sql-database-features.md
         - name: 多模型功能
           href: sql-database-multi-model-features.md
         - name: 内存中
@@ -534,6 +534,8 @@
           href: sql-database-managed-instance-connect-app.md
     - name: 加载和移动数据
       items:
+        - name: 还原时间点
+          href: sql-database-managed-instance-point-in-time-restore.md
         - name: 将资源移到新区域
           href: sql-database-move-resources-across-regions.md
         - name: 在 Azure 中复制数据库

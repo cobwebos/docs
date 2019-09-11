@@ -1,0 +1,153 @@
+### YamlMime:Landing
+title: Azure Blob 存储文档
+summary: Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 Blob 存储最适合存储巨量的非结构化数据。
+metadata:
+  title: Azure Blob 存储文档
+  description: Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 Blob 存储最适合存储巨量的非结构化数据。
+  services: storage
+  ms.service: storage
+  ms.subservice: blobs
+  ms.topic: landing-page
+  ms.collection: collection
+  author: normesta
+  ms.author: normesta
+  ms.date: 08/20/2019
+  ms.openlocfilehash: 3bc4bf920f4c780f0b73cdd75e62d8aff77b3c94
+  ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70875565"
+landingContent:
+- title: 关于 Blob 存储
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Blob 存储？
+      url: storage-blobs-overview.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Azure 门户
+      url: storage-quickstart-blobs-portal.md
+    - text: 使用存储资源管理器
+      url: storage-quickstart-blobs-storage-explorer.md
+  - linkListType: concept
+    links:
+    - text: 存储帐户概述
+      url: ../common/storage-account-overview.md
+    - text: 数据冗余
+      url: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 创建存储帐户
+      url: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: 创建块 Blob 存储帐户
+      url: storage-blob-create-account-block-blob.md
+    - text: 配置自定义域
+      url: storage-custom-domain-name.md
+- title: 分析和见解
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Data Lake Storage Gen2
+      url: data-lake-storage-introduction.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 Databricks 分析数据
+      url: data-lake-storage-quickstart-create-databricks-account.md
+  - linkListType: concept
+    links:
+    - text: 处理大数据
+      url: data-lake-storage-data-scenarios.md
+    - text: 多协议访问
+      url: data-lake-storage-multi-protocol-access.md
+    - text: 最佳做法
+      url: data-lake-storage-best-practices.md
+  - linkListType: tutorial
+    links:
+    - text: 使用 Azure Databricks 提取、转换和加载数据
+      url: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: 在 Azure HDInsight 上使用 Apache Hive 提取、转换和加载数据
+      url: data-lake-storage-tutorial-extract-transform-load-hive.md
+    - text: 使用事件网格将数据插入 Databricks 表中
+      url: data-lake-storage-events.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 与 Azure HDInsight 群集配合使用
+      url: ../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: 与 Power BI 配合使用
+      url: data-lake-storage-use-power-bi.md
+- title: 开发应用程序
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET
+      url: storage-quickstart-blobs-dotnet.md
+    - text: 使用 Python
+      url: storage-quickstart-blobs-python.md
+    - text: 将事件路由到 Web 终结点
+      url: ../../event-grid/blob-event-quickstart-portal.md
+    - text: 托管静态网站
+      url: storage-blob-static-website-how-to.md
+  - linkListType: concept
+    links:
+    - text: 处理事件
+      url: storage-blob-event-overview.md
+    - text: 静态网站
+      url: storage-blob-static-website.md
+  - linkListType: tutorial
+    links:
+    - text: 创建 Web 应用以上传图像数据
+      url: storage-upload-process-images.md
+- title: 管理安全和标识
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 授予对 Azure 存储的访问权限
+      url: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Data Lake 访问控制
+      url: data-lake-storage-access-control.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure AD 帐户访问 Blob 数据
+      url: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: 使用 RBAC 管理访问权限
+      url: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: 使用托管标识授予对 Blob 存储的访问权限
+      url: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- title: 传输数据
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 比较数据传输解决方案
+      url: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: 使用 Azure Data Box 进行脱机传输
+      url: ../../databox/data-box-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 AzCopy 进行传输
+      url: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: 使用 Azure 数据工厂进行传输
+      url: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- title: 性能和可伸缩性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 可伸缩性和性能
+      url: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: 性能和可伸缩性清单
+      url: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: tutorial
+    links:
+    - text: 针对性能和可伸缩性进行优化
+      url: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- title: 备份和存档数据
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 热存储、冷存储和存档存储
+      url: storage-blob-storage-tiers.md
+    - text: 管理 Blob 存储生命周期
+      url: storage-lifecycle-management-concepts.md

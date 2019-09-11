@@ -3,15 +3,15 @@ title: Azure 资源类型支持的移动操作
 description: 列出了可移动到新资源组或订阅的 Azure 资源类型。
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: conceptual
-ms.date: 08/23/2019
+ms.topic: reference
+ms.date: 09/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3100ce897a09c2747c2b339662c699d197ba73d7
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 9dc86fe7876a050fe67ec73a665be6141a4b98da
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194844"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801359"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出了 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
@@ -315,7 +315,7 @@ ms.locfileid: "70194844"
 > | redis | 是 | 是 |
 
 > [!IMPORTANT]
-> 如果为 Redis 实例的 Azure Cache 配置了虚拟网络, 则无法将该实例移到不同的订阅。 请参阅[网络移动限制](./move-limitations/networking-move-limitations.md)。
+> 如果为 Redis 实例的 Azure Cache 配置了虚拟网络，则无法将该实例移到不同的订阅。 请参阅[网络移动限制](./move-limitations/networking-move-limitations.md)。
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
@@ -958,8 +958,8 @@ ms.locfileid: "70194844"
 > | virtualnetworks | 是 | 是 |
 > | virtualnetworktaps | 否 | 否 |
 > | virtualwans | 否 | 否 |
-> | vpngateways (虚拟 WAN) | 否 | 否 |
-> | vpnsites (虚拟 WAN) | 否 | 否 |
+> | vpngateways （虚拟 WAN） | 否 | 否 |
+> | vpnsites （虚拟 WAN） | 否 | 否 |
 > | webapplicationfirewallpolicies | 是 | 是 |
 
 > [!IMPORTANT]
@@ -1296,7 +1296,7 @@ ms.locfileid: "70194844"
 > | 帐户/项目 | 是 | 是 |
 
 > [!IMPORTANT]
-> 若要更改 Azure DevOps 的订阅, 请参阅[更改用于计费的 Azure 订阅](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。
+> 若要更改 Azure DevOps 的订阅，请参阅[更改用于计费的 Azure 订阅](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 

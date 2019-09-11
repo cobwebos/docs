@@ -1,33 +1,32 @@
 ---
-title: 为 Hyper-V VM 到 Azure 的灾难恢复准备本地 Hyper-V 服务器 | Microsoft Docs
+title: 为 Hyper-V VM 到 Azure 的灾难恢复准备本地 Hyper-V 服务器
 description: 了解如何使用 Azure Site Recovery 服务准备本地 Hyper-V VM 以进行到 Azure 的灾难恢复。
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 05/30/2019
+ms.topic: tutorial
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: aec5632b5ea29d52426c5d065ca41e18573fd5b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: b17e42378daf51543a2664315f2971d15c288611
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399390"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813728"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>为 Hyper-V VM 到 Azure 的灾难恢复准备本地 Hyper-V 服务器
 
-本文介绍当要使用 [Azure Site Recovery](site-recovery-overview.md) 设置 Hyper-VM 到 Azure 的灾难恢复时，如何准备本地 Hyper-V 基础结构。
+本文介绍如何在要使用 [Azure Site Recovery](site-recovery-overview.md) 安排 Hyper-VM 到 Azure 的灾难恢复时准备本地 Hyper-V 基础结构。
 
 
-这是本系列的第二个教程，演示如何为本地 Hyper-V VM 设置到 Azure 的灾难恢复。 在第一个教程中，我们[设置了 Hyper-V 灾难恢复所需的 Azure 组件](tutorial-prepare-azure.md)。
+这是本系列的第二个教程，演示如何安排本地 Hyper-V VM 到 Azure 的灾难恢复。 在第一个教程中，我们[设置了 Hyper-V 灾难恢复所需的 Azure 组件](tutorial-prepare-azure.md)。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 如果 Hyper-V 主机由 System Center VMM 托管，请查看 Hyper-V 要求和 VMM 要求。
+> * 如果 Hyper-V 主机由 System Center VMM 管理，请查看 Hyper-V 要求和 VMM 要求。
 > * 准备 VMM（如果适用）。
-> * 验证是否可以通过 Internet 访问 Azure 位置。
+> * 验证对 Azure 位置的 Internet 访问。
 > * 准备 VM，以便可以在故障转移到 Azure 后访问它们。
 
 > [!NOTE]

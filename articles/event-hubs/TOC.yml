@@ -30,6 +30,18 @@
           href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java
           href: event-hubs-java-get-started-send.md
+        - name: Python
+          href: event-hubs-python-get-started-send.md
+        - name: Node.js
+          href: event-hubs-node-get-started-send.md
+        - name: Go
+          href: event-hubs-go-get-started-send.md
+        - name: C（仅发送）
+          href: event-hubs-c-getstarted-send.md
+        - name: Apache Storm（仅接收）
+          href: event-hubs-storm-getstarted-receive.md
+        - name: .NET framework
+          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 捕获事件
       items:
         - name: 使用 Azure 门户启用事件中心捕获
@@ -104,46 +116,20 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: 编程指南
           href: event-hubs-programming-guide.md
+        - name: 使用 Python 发送、接收和捕获事件
+          href: event-hubs-python.md
     - name: 处理数据
       items:
         - name: 使用 Azure 流分析处理数据
           href: process-data-azure-stream-analytics.md
-    - name: 使用客户端库
+    - name: 与 Spring Framework 集成
       items:
-        - name: .NET framework
-          items:
-            - name: 使用 .NET Framework 发送和接收事件
-              href: event-hubs-dotnet-framework-getstarted-send.md
-        - name: Java
-          items:
-            - name: 创建 Spring Cloud Stream Binder 应用
-              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
-              maintainContext: true
-            - name: 使用适用于 Apache Kafka 的 Spring Boot Starter
-              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
-              maintainContext: true
-        - name: Python
-          items:
-            - name: 使用 Python 发送和接收事件
-              href: event-hubs-python-get-started-send.md
-            - name: 使用 Python 发送、接收和捕获事件
-              href: event-hubs-python.md
-        - name: Node.js
-          items:
-            - name: 使用 Node.js 发送和接收事件
-              href: event-hubs-node-get-started-send.md
-        - name: Go
-          items:
-            - name: 使用 Go 发送和接收事件
-              href: event-hubs-go-get-started-send.md
-        - name: C（仅发送）
-          items:
-            - name: 使用 C 发送事件
-              href: event-hubs-c-getstarted-send.md
-        - name: Apache Storm（仅接收）
-          items:
-            - name: 使用 Apache Storm 接收事件
-              href: event-hubs-storm-getstarted-receive.md
+        - name: 创建 Spring Cloud Stream Binder 应用
+          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+          maintainContext: true
+        - name: 使用适用于 Apache Kafka 的 Spring Boot Starter
+          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+          maintainContext: true
     - name: 与 Apache Kafka 集成
       items:
         - name: 创建启用了 Apache Kafka 的事件中心

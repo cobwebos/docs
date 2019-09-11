@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: fb1007929a26384da60e542865c750fd1d642440
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114670"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801372"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -36,7 +36,7 @@ ms.locfileid: "70114670"
 | 内置角色 | 描述 |
 | --- | --- |
 | [所有者](#owner) | 允许管理所有功能，包括对资源的访问权限。 |
-| [参与者](#contributor) | 允许管理所有功能（对资源的访问权限除外）。 |
+| [参与者](#contributor) | 允许你管理所有内容，但不授予对资源的访问权限。 |
 | [读取者](#reader) | 允许查看所有内容，但不能进行任何更改。 |
 | [AcrDelete](#acrdelete) | acr delete |
 | [AcrImageSigner](#acrimagesigner) | ACR 映像签名程序 |
@@ -69,9 +69,9 @@ ms.locfileid: "70114670"
 | [备份读取器](#backup-reader) | 可以查看备份服务，但是不能进行更改 |
 | [计费读者](#billing-reader) | 允许对帐单数据进行读取访问 |
 | [BizTalk 参与者](#biztalk-contributor) | 允许管理 BizTalk 服务，但不允许访问这些服务。 |
-| [区块链成员节点访问 (预览)](#blockchain-member-node-access-preview) | 允许访问区块链成员节点 |
-| [蓝图参与者](#blueprint-contributor) | 可以管理蓝图定义, 但不能对其进行分配。 |
-| [蓝图运算符](#blueprint-operator) | 可以分配现有的已发布蓝图, 但无法创建新的蓝图。 注意: 仅当使用用户分配的托管标识完成分配时, 此操作才有效。 |
+| [区块链成员节点访问（预览）](#blockchain-member-node-access-preview) | 允许访问区块链成员节点 |
+| [蓝图参与者](#blueprint-contributor) | 可以管理蓝图定义，但不能对其进行分配。 |
+| [蓝图操作员](#blueprint-operator) | 可以分配现有的已发布蓝图，但无法创建新的蓝图。 注意：仅当使用用户分配的托管标识完成分配时，此操作才有效。 |
 | [CDN 终结点参与者](#cdn-endpoint-contributor) | 可以管理 CDN 终结点，但不能向其他用户授予访问权限。 |
 | [CDN 终结点读者](#cdn-endpoint-reader) | 可以查看 CDN 终结点，但不能进行更改。 |
 | [CDN 配置文件参与者](#cdn-profile-contributor) | 可以管理 CDN 配置文件及其终结点，但不能向其他用户授予访问权限。 |
@@ -141,7 +141,7 @@ ms.locfileid: "70114670"
 | [存储 Blob 数据参与者](#storage-blob-data-contributor) | 读取、写入和删除 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [存储 Blob 数据所有者](#storage-blob-data-owner) | 提供对 Azure 存储 blob 容器和数据的完全访问权限，包括分配 POSIX 访问控制。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [存储 Blob 数据读者](#storage-blob-data-reader) | 读取和列出 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
-| [存储 Blob 代理](#storage-blob-delegator) | 获取用户委托密钥, 该密钥随后可用于为使用 Azure AD 凭据签名的容器或 blob 创建共享访问签名。 有关详细信息, 请参阅[创建用户委托 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 |
+| [存储 Blob 代理](#storage-blob-delegator) | 获取用户委托密钥，该密钥随后可用于为使用 Azure AD 凭据签名的容器或 blob 创建共享访问签名。 有关详细信息，请参阅[创建用户委托 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 |
 | [存储文件数据 SMB 共享参与者](#storage-file-data-smb-share-contributor) | 允许通过 SMB 在 Azure 存储文件共享中进行读取、写入和删除访问 |
 | [存储文件数据 SMB 共享提升的参与者](#storage-file-data-smb-share-elevated-contributor) | 允许通过 SMB 在 Azure 存储文件共享中读取、写入、删除和修改 NTFS 权限 |
 | [存储文件数据 SMB 共享读取器](#storage-file-data-smb-share-reader) | 允许通过 SMB 对 Azure 文件共享进行读取访问 |
@@ -954,7 +954,7 @@ ms.locfileid: "70114670"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 可以管理蓝图定义, 但不能对其进行分配。 |
+> | **说明** | 可以管理蓝图定义，但不能对其进行分配。 |
 > | **Id** | 41077137-e803-4205-871c-5a86e6a753b4 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -973,7 +973,7 @@ ms.locfileid: "70114670"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 可以分配现有的已发布蓝图, 但无法创建新的蓝图。 注意: 仅当使用用户分配的托管标识完成分配时, 此操作才有效。 |
+> | **说明** | 可以分配现有的已发布蓝图，但无法创建新的蓝图。 注意：仅当使用用户分配的托管标识完成分配时，此操作才有效。 |
 > | **Id** | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -2698,7 +2698,7 @@ ms.locfileid: "70114670"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 获取用户委托密钥, 该密钥随后可用于为使用 Azure AD 凭据签名的容器或 blob 创建共享访问签名。 有关详细信息, 请参阅[创建用户委托 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 |
+> | **说明** | 获取用户委托密钥，该密钥随后可用于为使用 Azure AD 凭据签名的容器或 blob 创建共享访问签名。 有关详细信息，请参阅[创建用户委托 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 |
 > | **Id** | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
 > | **操作** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | 返回 Blob 服务的用户委托密钥。 |

@@ -346,6 +346,10 @@
       items:
         - name: 为属性映射编写表达式
           href: functions-for-customizing-application-data.md
+    - name: Azure AD Connect 预配代理
+      items:
+        - name: 预配代理版本历史记录
+          href: provisioning-agent-release-version-history.md
     - name: 本地应用的应用程序代理
       items:
         - name: 应用程序代理版本历史记录

@@ -27,6 +27,8 @@
       items:
         - name: 概述
           href: customize-content-models-overview.md
+        - name: 动画字符
+          href: animated-characters-recognition.md
         - name: 品牌
           href: customize-brands-model-overview.md
         - name: 语言
@@ -45,8 +47,10 @@
       href: video-indexer-output-json-v2.md
     - name: 在视频中查找确切的时刻
       href: video-indexer-search.md
-    - name: 场景、镜头和关键帧
+    - name: 检测场景、镜头和关键帧
       href: scenes-shots-keyframes.md
+    - name: 识别和转录多语言内容
+      href: multi-language-identification-transcription.md
     - name: 查看和编辑视频索引器见解
       href: video-indexer-view-edit.md
     - name: 使用编辑器来创建项目
@@ -57,6 +61,8 @@
       href: video-indexer-disaster-recovery.md
     - name: 自定义内容模型
       items:
+        - name: 动画字符
+          href: animated-characters-recognition.md
         - name: 人员
           items:
             - name: 使用视频索引器网站
