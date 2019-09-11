@@ -76,7 +76,7 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-在上面的示例中, 请注意, 响应标头的状态代码为 301, 用于重定向。 Location 标头包含应用服务的主机名, 而不是原始主机名 www.contoso.com。
+在上面的示例中, 请注意, 响应标头的状态代码为 301, 用于重定向。 Location 标头包含应用服务的主机名, 而不是原始主机名 [www.contoso.com](www.contoso.com)。
 
 ## <a name="solution-rewrite-the-location-header"></a>解决方案：重写位置标头
 
@@ -97,9 +97,9 @@ X-Powered-By: ASP.NET
 
     ![应用服务自定义域列表](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- 应用服务已准备好接受主机名称 www.contoso.com。 更改 DNS 中的 CNAME 条目, 将其指向应用程序网关的 FQDN, 例如, appgw.eastus.cloudapp.azure.com。
+- 应用服务已准备好接受主机名称 [www.contoso.com](www.contoso.com)。 更改 DNS 中的 CNAME 条目, 将其指向应用程序网关的 FQDN, 例如, appgw.eastus.cloudapp.azure.com。
 
-- 执行 DNS 查询时, 请确保域 www.contoso.com 解析为应用程序网关的 FQDN。
+- 执行 DNS 查询时, 请确保域 [www.contoso.com](www.contoso.com) 解析为应用程序网关的 FQDN。
 
 - 将自定义探测设置为禁止**从后端 HTTP 设置选取主机名**。 在 Azure 门户中, 清除 "探测设置" 中的复选框。 在 PowerShell 中, 不要在**AzApplicationGatewayProbeConfig**命令中使用 **-PickHostNameFromBackendHttpSettings**开关。 在探测的 "主机名" 字段中, 输入应用服务的 FQDN example.azurewebsites.net。 从应用程序网关发送的探测请求会在主机标头中携带此 FQDN。
 
@@ -110,7 +110,7 @@ X-Powered-By: ASP.NET
 
 - 将自定义探测关联回后端 HTTP 设置, 并验证后端是否正常。
 
-- 应用程序网关现在应将同一主机名 www.contoso.com 转发到应用服务。 重定向在同一主机名上发生。 检查下面的示例请求和响应标头。
+- 应用程序网关现在应将同一主机名 [www.contoso.com](www.contoso.com) 转发到应用服务。 重定向在同一主机名上发生。 检查下面的示例请求和响应标头。
 
 若要使用 PowerShell 实现前面的步骤, 请使用下面的示例 PowerShell 脚本。 请注意, 我们如何在探测和 HTTP 设置配置中使用 **-PickHostname**开关。
 
