@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ea124ecf6786142ac1703dab1e267b225751079
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035942"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860393"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>使用 Jupyter Notebook 探索 Azure 机器学习服务
 
@@ -27,7 +27,6 @@ ms.locfileid: "70035942"
 - [Azure 机器学习笔记本 VM](#notebookvm)
 - [自带笔记本服务器](#byo)
 - [数据科学虚拟机](#dsvm)
-- [Azure Notebook](#aznb)
 
 > [!NOTE]
 > 克隆此存储库以后，即可在 **tutorials** 文件夹中找到教程笔记本，在 **how-to-use-azureml** 文件夹中找到特定于功能的笔记本。
@@ -53,13 +52,6 @@ ms.locfileid: "70035942"
 Data Science Virtual Machine (DSVM) 是专为研究数据科学而构建的自定义 VM 映像。 如果[创建 DSVM](how-to-configure-environment.md#dsvm)，则会为你安装和配置 SDK 和笔记本服务器。 但是，你仍然需要创建工作区并克隆示例存储库。
 
 [!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
-
-<a name="aznb"></a>
-## <a name="get-samples-on-azure-notebooks"></a>获取 Azure Notebooks 上的示例
-
-在 [Azure Notebooks](https://notebooks.azure.com/) 上，会为你安装和配置 SDK 和笔记本服务器。 Azure Notebooks 提供了一个可供浏览的完全托管式轻量级笔记本环境。
-
-若要访问 Azure Notebooks 上的示例存储库，请通过 [Azure 门户](https://portal.azure.com)导航到 Azure 机器学习工作区。 在“概览”部分选择“Azure Notebooks 入门”。  
 
 ## <a name="next-steps"></a>后续步骤
 

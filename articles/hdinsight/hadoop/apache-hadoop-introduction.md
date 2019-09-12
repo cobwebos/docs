@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 08/15/2019
-ms.openlocfilehash: d6127d4fba3d2255dee28cd41179f16394545328
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 16845e5891117cc01bef5fae28cf4b36c0508651
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207227"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899561"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Hadoop？
 
@@ -30,10 +30,6 @@ Apache Hadoop MapReduce 是一个软件框架，用于编写处理海量数据�
 * **映射器**：使用输入数据，对数据进行分析（通常使用筛选器和排序操作），并发出元组（键/值对）
 
 * **化简器**：使用映射器发出的元组并执行汇总运算，以基于映射器数据创建更小的合并结果
-
-下图演示了一个基本的单词计数 MapReduce 作业示例：
-
-![HDI.WordCountDiagram][image-hdi-wordcountdiagram]
 
 此作业的输出是文本中每个单词出现次数的计数。
 

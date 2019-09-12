@@ -123,8 +123,6 @@
       href: billing-how-to-change-azure-account-profile.md
     - name: 授予对计费信息的访问权限
       href: billing-manage-access.md
-    - name: Azure 中的 EA 角色
-      href: billing-understand-ea-roles.md
     - name: Azure 中的 Microsoft 客户协议角色
       href: billing-understand-mca-roles.md
     - name: 链接合作伙伴 ID
@@ -133,8 +131,26 @@
       href: billing-view-all-accounts.md
     - name: 按发票科目管理成本
       href: billing-mca-section-invoice.md
-    - name: Microsoft 客户协议中的 EA 任务
-      href: billing-mca-enterprise-operations.md
+    - name: EA 管理
+      items:
+        - name: 在 Azure EA 门户中开始
+          href: billing-ea-portal-get-started.md
+        - name: Azure 中的 EA 角色
+          href: billing-understand-ea-roles.md
+        - name: Azure EA 门户管理
+          href: billing-ea-portal-administration.md
+        - name: Azure EA 协议和修正合同
+          href: billing-ea-portal-agreements.md
+        - name: Enterprise 注册发票
+          href: billing-ea-portal-enrollment-invoices.md
+        - name: Azure Enterprise REST API
+          href: billing-ea-portal-rest-apis.md
+        - name: Azure EA 虚拟机预留实例
+          href: billing-ea-portal-vm-reservations.md
+        - name: 排查 Azure EA 门户访问问题
+          href: billing-ea-portal-troubleshoot.md
+        - name: Microsoft 客户协议中的 EA 任务
+          href: billing-mca-enterprise-operations.md
     - name: 处理逾期未付余额
       href: billing-azure-subscription-past-due-balance.md
     - name: 为 Microsoft 客户协议设置计费帐户

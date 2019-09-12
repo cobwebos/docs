@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3790b543a1a6dcbb793dbf661441700e6fa24232
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4404f785116110d99dc242d2dae39c4a462f45e9
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611889"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376252"
 ---
 # <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
 
@@ -71,7 +71,7 @@ ms.locfileid: "69611889"
 
     若要根据源 VM 配置创建最常用的相关网络资源，请参阅以下文档：
     - [网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [负载均衡器](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [负载均衡器](https://docs.microsoft.com/azure/load-balancer)
     -  [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
     - 对于其他任何网络组件，请参阅[网络文档](https://docs.microsoft.com/azure/#pivot=products&panel=network)。
 

@@ -3,7 +3,7 @@ title: 适用于 PIM 的 Microsoft Graph API（预览版） - Azure Active Direc
 description: 介绍如何使用适用于 Azure AD Privileged Identity Management (PIM) 的 Microsoft Graph API（预览版）。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
 ms.date: 11/13/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e54ec4049b2b0cd67c148d881a64a40efff438a2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 45c7f42d536880f2578c62c6c4866b21be1cc9dc
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578962"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804553"
 ---
 # <a name="microsoft-graph-apis-for-pim-preview"></a>适用于 PIM 的 Microsoft Graph API（预览版）
 
@@ -47,7 +47,7 @@ ms.locfileid: "58578962"
 
 1. 以全局管理员身份登录到 [Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。
 
-1. 单击“修改权限”。
+1. 单击“修改权限”。 
 
     ![Graph 浏览器 - 修改权限](./media/pim-apis/graph-explorer.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "58578962"
 
     ![Graph 浏览器 - 修改权限](./media/pim-apis/graph-explorer-modify-permissions.png)
 
-1. 单击“修改权限”以应用权限更改。
+1. 单击“修改权限”以应用权限更改。 
 
 ## <a name="next-steps"></a>后续步骤
 

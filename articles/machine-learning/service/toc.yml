@@ -152,18 +152,20 @@
         - name: 设置训练环境
           displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
-        - name: 在训练期间创建估算器
-          href: how-to-train-ml-models.md
-        - name: 使用 Scikit-learn
-          href: how-to-train-scikit-learn.md
-        - name: 使用 TensorFlow
-          href: how-to-train-tensorflow.md
-        - name: 使用 Keras
-          href: how-to-train-keras.md
-        - name: 使用 PyTorch
-          href: how-to-train-pytorch.md
-        - name: 使用 Chainer
-          href: how-to-train-chainer.md
+        - name: 使用估算器训练
+          items:
+            - name: 在训练期间创建估算器
+              href: how-to-train-ml-models.md
+            - name: 使用 Scikit-learn
+              href: how-to-train-scikit-learn.md
+            - name: 使用 TensorFlow
+              href: how-to-train-tensorflow.md
+            - name: 使用 Keras
+              href: how-to-train-keras.md
+            - name: 使用 PyTorch
+              href: how-to-train-pytorch.md
+            - name: 使用 Chainer
+              href: how-to-train-chainer.md
         - name: 优化超参数
           displayName: parameter
           href: how-to-tune-hyperparameters.md
@@ -189,7 +191,7 @@
         - name: 使用自动化 ML (Python)
           displayName: SDK automl
           href: how-to-configure-auto-train.md
-        - name: 使用自动化机器学习（Azure 门户）
+        - name: 使用自动化 ML（工作区登录页）
           href: how-to-create-portal-experiments.md
         - name: 使用远程计算目标
           displayName: automl automated auto ml

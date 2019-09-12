@@ -8,18 +8,18 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d6b6dd333d04457a68c3f2452d3cc538a32b61f6
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ff135473443589650d90bfb7f3e5aa248f72e821
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230297"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861273"
 ---
 # <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>教程：使用 Ansible 在 Azure HDInsight 中配置群集
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure HDInsight](/azure/hdinsight/) 是用于处理数据的基于 Hadoop 的分析服务。 HDInsight 是用于处理结构化或非结构化大数据的 ETL（提取、转换、加载）工具。 HDInsight 支持多种[群集类型](/azure/hdinsight/hadoop/apache-hadoop-introduction#cluster-types-in-hdinsight)，而其中的每种类型支持一组不同的组件。 
+[Azure HDInsight](/azure/hdinsight/) 是用于处理数据的基于 Hadoop 的分析服务。 HDInsight 是用于处理结构化或非结构化大数据的 ETL（提取、转换、加载）工具。 HDInsight 支持多种[群集类型](/azure/hdinsight/hadoop/apache-hadoop-introduction)，而其中的每种类型支持一组不同的组件。 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -204,7 +204,7 @@ HDInsight 群集按分钟、按比例计费。
 
 ## <a name="get-the-sample-playbook"></a>获取示例 playbook
 
-可通过两种方式获取完整的示例 playbook：
+可通过两种方法获取完整示例 playbook：
 - [下载 playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) 并将其保存到 `hdinsight_create.yml`。
 - 新建名为 `hdinsight_create.yml` 的文件，并将以下内容复制到其中：
 
@@ -352,7 +352,7 @@ HDInsight 群集按分钟、按比例计费。
 
 在本部分运行 playbook 来测试本文所示的各种功能。
 
-运行 playbook 之前，进行如下更改：
+运行 playbook 之前，请进行如下更改：
 - 在 `vars` 节中，将 `{{ resource_group_name }}` 占位符替换为你的资源组名称。
 
 使用 `ansible-playbook` 命令运行 playbook：

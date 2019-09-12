@@ -7,17 +7,16 @@ author: ColbyTresness
 manager: jeconnoc
 keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: glenga
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: c54a5631222a6de261e9805f284a4dfa2801750f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9471ca3047090753c30c758f4f41c8558cdf4dd2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612921"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70744063"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
 
@@ -57,15 +56,15 @@ ms.locfileid: "67612921"
 
 首先，创建一个 HTTP 触发的函数，用以启动持久函数业务流程。
 
-1. 从 *Azure：Functions* 中，选择“创建函数”图标。
+1. 从 *Azure：Functions* 中，选择“创建函数”  图标。
 
     ![创建函数](./media/quickstart-js-vscode/create-function.png)
 
-2. 选择包含函数应用项目的文件夹，然后选择“Durable Functions HTTP 初学者”函数模板。
+2. 选择包含函数应用项目的文件夹，然后选择“Durable Functions HTTP 初学者”  函数模板。
 
     ![选择“HTTP 初学者”模板](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. 保留默认名称为 `DurableFunctionsHttpStart` 并按“Enter”，然后选择“匿名”身份验证。
+3. 保留默认名称为 `DurableFunctionsHttpStart` 并按“Enter”，然后选择“匿名”  身份验证。
 
     ![选择匿名身份验证](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
@@ -75,11 +74,11 @@ ms.locfileid: "67612921"
 
 现在，我们将创建一个业务流程协调程序来协调活动函数。
 
-1. 从 *Azure：Functions* 中，选择“创建函数”图标。
+1. 从 *Azure：Functions* 中，选择“创建函数”  图标。
 
     ![创建函数](./media/quickstart-js-vscode/create-function.png)
 
-2. 选择包含函数应用项目的文件夹，然后选择“Durable Functions 业务流程协调程序”函数模板。 将名称保留为默认值“DurableFunctionsOrchestrator”
+2. 选择包含函数应用项目的文件夹，然后选择“Durable Functions 业务流程协调程序”  函数模板。 将名称保留为默认值“DurableFunctionsOrchestrator”
 
     ![选择“业务流程协调程序”模板](./media/quickstart-js-vscode/create-function-choose-template.png)
 
@@ -89,11 +88,11 @@ ms.locfileid: "67612921"
 
 现在，我们将创建一个活动函数来实际执行解决方案的工作。
 
-1. 从 *Azure：Functions* 中，选择“创建函数”图标。
+1. 从 *Azure：Functions* 中，选择“创建函数”  图标。
 
     ![创建函数](./media/quickstart-js-vscode/create-function.png)
 
-2. 选择包含函数应用项目的文件夹，然后选择“Durable Functions 活动”函数模板。 将名称保留为默认值“Hello”。
+2. 选择包含函数应用项目的文件夹，然后选择“Durable Functions 活动”  函数模板。 将名称保留为默认值“Hello”。
 
     ![选择“活动”模板](./media/quickstart-js-vscode/create-function-choose-template.png)
 
@@ -103,16 +102,16 @@ ms.locfileid: "67612921"
 
 使用 Azure Functions Core Tools 可以在本地开发计算机上运行 Azure Functions 项目。 首次从 Visual Studio Code 启动某个函数时，系统会提示你安装这些工具。
 
-1. 在 Windows 计算机上，启动 Azure 存储模拟器并确保将 local.settings.json 的 AzureWebJobsStorage 属性设置为 `UseDevelopmentStorage=true`。
+1. 在 Windows 计算机上，启动 Azure 存储模拟器并确保将 local.settings.json 的 AzureWebJobsStorage  属性设置为 `UseDevelopmentStorage=true`  。
 
     对于存储模拟器 5.8，请确保将 local.settings.json 的 **AzureWebJobsSecretStorageType** 属性设置为 `files`。 在 Mac 或 Linux 计算机上，必须将 **AzureWebJobsStorage** 属性设置为现有 Azure 存储帐户的连接字符串。 本文中稍后将创建一个存储帐户。
 
-2. 若要测试函数，请在函数代码中设置断点并按 F5 启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。 如果这是你首次使用 Durable Functions，则会安装 Durable Functions 扩展并且生成可能需要几秒钟时间。
+2. 若要测试函数，请在函数代码中设置断点并按 F5 启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”  面板中。 如果这是你首次使用 Durable Functions，则会安装 Durable Functions 扩展并且生成可能需要几秒钟时间。
 
     > [!NOTE]
-    > JavaScript Durable Functions 需要 1.7.0 版或更高版本的 Microsoft.Azure.WebJobs.Extensions.DurableTask 扩展。 从你的 Azure Functions 应用的根文件夹运行以下命令来安装 Durable Functions 扩展 `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
+    > JavaScript Durable Functions 需要 1.7.0 版或更高版本的 Microsoft.Azure.WebJobs.Extensions.DurableTask 扩展   。 从你的 Azure Functions 应用的根文件夹运行以下命令来安装 Durable Functions 扩展 `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
 
-3. 在“终端”面板中，复制 HTTP 触发的函数的 URL 终结点。
+3. 在“终端”  面板中，复制 HTTP 触发的函数的 URL 终结点。
 
     ![Azure 本地输出](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
 
@@ -152,7 +151,7 @@ ms.locfileid: "67612921"
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
 
-1. 从“输出”面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用以下格式：
+1. 从“输出”  面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用以下格式：
 
         http://<functionappname>.azurewebsites.net/orchestrators/<functionname>
 

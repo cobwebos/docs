@@ -1,0 +1,183 @@
+### YamlMime:Hub
+title: Azure 认知服务文档
+summary: 了解如何将支持的智能算法构建到应用、网站和机器人中，以便观察、倾听、说出、理解和解释用户需求。
+metadata:
+  title: Azure 认知服务文档
+  description: 了解如何将支持的智能算法构建到应用、网站和机器人中，以便观察、倾听、说出、理解和解释用户需求。
+  ms.service: cognitive-services
+  ms.topic: hub-page
+  brand: azure
+  author: nitinme
+  ms.author: nitinme
+  manager: nitinme
+  ms.date: 09/10/2019
+  ms.openlocfilehash: 0ddceb45db81ae31685cf48a6789d47d54818f3a
+  ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/11/2019
+  ms.locfileid: "70886096"
+highlightedContent:
+  items:
+  - title: 什么是认知服务？
+    itemType: overview
+    url: ./welcome.md
+  - title: 认知服务和机器学习
+    itemType: concept
+    url: ./cognitive-services-and-machine-learning.md
+  - title: 创建认知服务资源
+    itemType: how-to-guide
+    url: ./cognitive-services-apis-create-account.md
+  - title: 认知服务中的语言支持
+    itemType: reference
+    url: ./language-support.md
+  - title: 在容器中使用认知服务
+    itemType: concept
+    url: ./cognitive-services-container-support.md
+  - title: 对请求进行身份验证
+    itemType: how-to-guide
+    url: ./authentication.md
+conceptualContent:
+  items:
+  - title: 影像
+    summary: 识别和确定你的图片、视频和数字墨迹内容，为它们添加描述文字和编制索引，并审查这些内容。
+    links:
+    - url: ./computer-vision/index.yml
+      itemType: overview
+      text: 计算机视觉
+    - url: ./Custom-Vision-Service/index.yml
+      itemType: overview
+      text: 自定义视觉
+    - url: ./face/index.yml
+      itemType: overview
+      text: 人脸
+    - url: ./form-recognizer/index.yml
+      itemType: overview
+      text: 表单识别（预览版）
+    - url: ./form-recognizer/index.yml
+      itemType: overview
+      text: 墨迹识别器（预览版）
+    - url: ./ink-recognizer/index.yml
+      itemType: overview
+      text: 视频索引器
+  - title: 语言
+    summary: 让应用能够通过预建的脚本处理自然语言、评估情绪，并了解如何识别用户需求。
+    links:
+    - url: ./immersive-reader/index.yml
+      itemType: overview
+      text: 沉浸式阅读器（预览版）
+    - url: ./luis/index.yml
+      itemType: overview
+      text: 语言理解 (LUIS)
+    - url: ./qnamaker/index.yml
+      itemType: overview
+      text: QnA Maker
+    - url: ./text-analytics/index.yml
+      itemType: overview
+      text: 文本分析
+    - url: ./translator/index.yml
+      itemType: overview
+      text: 文本翻译
+  - title: 语音
+    summary: 将语音转换为文本，将文本转换为自然语音。 从一种语言翻译成另一种语言，并启用说话人验证和识别。
+    links:
+    - url: ./speech-service/index.yml
+      itemType: overview
+      text: 语音服务
+    - url: ./speaker-recognition/home.md
+      itemType: overview
+      text: 说话人识别（预览版）
+    - url: ./speech/home.md
+      itemType: overview
+      text: 必应语音（即将停用）
+    - url: ./translator-speech/overview.md
+      itemType: overview
+      text: 语音翻译（即将停用）
+  - title: 决策服务
+    summary: 构建应用，用于呈现有助于做出明智和高效决策的建议。
+    links:
+    - url: ./anomaly-detector/index.yml
+      itemType: overview
+      text: 异常探测器（预览版）
+    - url: ./content-moderator/index.yml
+      itemType: overview
+      text: 内容审查器
+    - url: ./personalizer/index.yml
+      itemType: overview
+      text: 个性化体验创建服务（预览版）
+  - title: 搜索
+    summary: 将必应搜索 API 添加到应用，并利用该功能通过单个 API 调用实现数十亿网页、图像、视频和新闻的梳理。
+    links:
+    - url: ./Bing-Autosuggest/index.yml
+      itemType: overview
+      text: 自动建议搜索词
+    - url: ./bing-custom-search/index.yml
+      itemType: overview
+      text: 自定义搜索
+    - url: ./bing-entities-search/index.yml
+      itemType: overview
+      text: 实体搜索
+    - url: ./bing-image-search/index.yml
+      itemType: overview
+      text: 图像搜索
+    - url: ./bing-local-business-search/index.yml
+      itemType: overview
+      text: 当地企业搜索（预览版）
+    - url: ./bing-news-search/index.yml
+      itemType: overview
+      text: 新闻搜索
+    - url: ./bing-spell-check/index.yml
+      itemType: overview
+      text: 拼写检查
+    - url: ./Bing-Video-Search/index.yml
+      itemType: overview
+      text: 视频搜索
+    - url: ./bing-visual-search/index.yml
+      itemType: overview
+      text: 视觉搜索
+    - url: ./bing-web-search/index.yml
+      itemType: overview
+      text: Web 搜索
+  - title: 容器
+    summary: Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可用的 API 一样丰富的 API，并能够灵活地选择在何处部署和托管随 Docker 容器提供的服务。
+    links:
+    - url: ./cognitive-services-container-support.md
+      itemType: overview
+      text: 认知服务的容器
+    - url: ./containers/container-reuse-recipe.md
+      itemType: overview
+      text: 创建要重复使用的容器
+    - url: ./containers/azure-container-instance-recipe.md
+      itemType: how-to-guide
+      text: 在 Azure 容器实例上部署和运行容器
+    - url: ./containers/azure-kubernetes-recipe.md
+      itemType: how-to-guide
+      text: 部署到 Azure Kubernetes 服务
+    - url: ./containers/docker-compose-recipe.md
+      itemType: how-to-guide
+      text: 使用 Docker Compose 部署多个容器
+additionalContent:
+  sections:
+  - items:
+    - title: 其他资源
+      links:
+      - text: Azure CLI
+        url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+      - text: PowerShell
+        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
+    - title: REST API
+      links:
+      - text: 认知服务管理
+        url: https://docs.microsoft.com/rest/api/cognitiveservices/
+    - title: SDK
+      links:
+      - text: .Net
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet
+      - text: Go
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices
+      - text: Java
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client?view=azure-java-stable
+      - text: Node.js
+        url: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest
+      - text: Python
+        url: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python

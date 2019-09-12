@@ -1,5 +1,5 @@
 ---
-title: QnA 机器人 - Azure 机器人服务 - QnA Maker
+title: 教程：QnA 机器人 - Azure 机器人服务 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 通过现有知识库的“发布”页创建 QnA 聊天机器人。 此机器人使用 Bot Framework SDK v4。 无需编写任何代码即可生成该机器人，系统会自动提供所有代码。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 07/31/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 4bb987a5a091871bec2c0cc8cec6d9ab804bb244
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: ea6e0d266c181d930f3d18171b09d222e53da7ab
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697990"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390908"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>教程：创建使用 Azure 机器人服务 v4 的 QnA 机器人
 

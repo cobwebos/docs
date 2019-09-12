@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 11eae0e3bae501cdf39d7fe1d5d39524c1f83e6c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c5399f46106d94d593a15530ee0c223a3f5f3eaf
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036005"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802050"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>教程：创建链接的 Azure 资源管理器模板
 
@@ -287,7 +287,7 @@ echo "Linked template URI with SAS token: $templateURI"
 
 由于存储帐户现在是在链接的模板中定义的，因此必须更新 `Microsoft.Compute/virtualMachines` 资源的下述两个元素。
 
-* 重新配置 `dependOn` 元素。 存储帐户定义移到链接的模板。
+* 重新配置 `dependsOn` 元素。 存储帐户定义移到链接的模板。
 * 重新配置 `properties/diagnosticsProfile/bootDiagnostics/storageUri` 元素。 在[创建链接的模板](#create-the-linked-template)中，已添加输出值：
 
     ```json

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 63150b8924438df8d77fdd088811d9fbe3ec2d84
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967311"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376121"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>在“Azure 政府”区域和“公用”区域之间移动 Azure VM 
 
@@ -98,8 +98,8 @@ ms.locfileid: "68967311"
      请参阅以下文档，根据源 VM 配置创建最常用的相关网络资源。
 
     - [网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [负载均衡器](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [公共 IP](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [负载均衡器](https://docs.microsoft.com/azure/load-balancer)
+    - [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
     
     对于其他任何网络组件，请参阅网络[文档](https://docs.microsoft.com/azure/#pivot=products&panel=network)。 
 

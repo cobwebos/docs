@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: fbd765ef94f4dbb26f076d8bc9520b4e4860bbae
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: fb68b2f78e48dabf5b1377b7c811840a85604f53
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232773"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802422"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>部署 ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例
 
@@ -37,7 +37,7 @@ ms.locfileid: "70232773"
 
 首先，通过使用示例作为起点在环境中创建新的蓝图，来实现蓝图示例。
 
-1. 选择“所有服务”，然后在左窗格中搜索并选择“策略”。   在“策略”页上选择“蓝图”。  
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
 1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。   
 
@@ -56,7 +56,7 @@ ms.locfileid: "70232773"
 
 现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其**发布**，然后才能分配和部署它。  可根据环境和需求自定义蓝图示例的副本，但这种修改可能会将该副本移出 ISO 27001 标准。
 
-1. 选择“所有服务”，然后在左窗格中搜索并选择“策略”。   在“策略”页上选择“蓝图”。  
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
 1. 在左侧选择“蓝图定义”页。  使用筛选器找到蓝图示例的副本，然后选择它。
 
@@ -66,7 +66,7 @@ ms.locfileid: "70232773"
 
 成功**发布**蓝图示例的副本后，可将它分配到它所在的管理组中的某个订阅。 在此步骤中，需提供参数来使蓝图示例副本的每个部署保持唯一。
 
-1. 选择“所有服务”，然后在左窗格中搜索并选择“策略”。   在“策略”页上选择“蓝图”。  
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
 1. 在左侧选择“蓝图定义”页。  使用筛选器找到蓝图示例的副本，然后选择它。
 

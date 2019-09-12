@@ -274,8 +274,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: 高级威胁防护
-        - name: 安全属性
-          href: cosmos-db-security-attributes.md
+        - name: 内置安全控件
+          href: cosmos-db-security-controls.md
     - name: 企业就绪情况
       items:
         - name: 联机备份和本地还原
@@ -459,6 +459,10 @@
           items:
             - name: 响应标头
               href: gremlin-headers.md
+            - name: 限制
+              href: gremlin-limits.md
+            - name: 兼容性
+              href: gremlin-compatibility.md
         - name: 操作指南
           items:
             - name: 图形数据建模
@@ -471,6 +475,10 @@
               href: graph-execution-profile.md
             - name: 使用资源令牌
               href: how-to-use-resource-tokens-gremlin.md
+            - name: 使用区域终结点
+              href: how-to-use-regional-gremlin.md
+            - name: 访问系统文档属性
+              href: how-to-access-system-properties-gremlin.md
             - name: 将图数据可视化
               href: graph-visualization.md
             - name: 存储和管理 Spring Data

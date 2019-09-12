@@ -1,5 +1,5 @@
 ---
-title: 更改、训练应用，C# - LUIS
+title: 快速入门：更改、训练应用，C# - LUIS
 titleSuffix: Azure Cognitive Services
 description: 此 C# 快速入门将示例话语添加到家庭自动化应用并训练该应用。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 55251a553921e947e7c6522677e51e4eb1d3fa5b
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 43bbcbcad8b4c03829ba702cecfff1e64b8e27b4
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619951"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375567"
 ---
 # <a name="quickstart-change-model-using-c"></a>快速入门：使用 C# 更改模型
 

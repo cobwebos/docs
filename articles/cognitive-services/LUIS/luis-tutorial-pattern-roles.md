@@ -1,5 +1,5 @@
 ---
-title: 模式角色 - LUIS
+title: 教程：模式角色 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 模式从格式正确的模板言语中提取数据。 模板话语使用简单的实体和角色提取相关的数据，例如源位置和目标位置。
 ms.custom: seodec18
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7586a81eac95a2e4a08b045b3a2826132d9919f7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7b95dcf6a93c9abdeab9520f0a0fd80eb17dccff
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560022"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387646"
 ---
 # <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>教程：使用角色提取与上下文相关的模式
 

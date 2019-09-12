@@ -255,6 +255,10 @@
           href: manage-public-ip-address-prefix.md
     - name: 故障排除
       items:
+        - name: 排查虚拟网络对等互连问题
+          href: virtual-network-troubleshoot-peering-issues.md
+        - name: 配置和验证 VNet 或 VPN 连接
+          href: virtual-network-configure-vnet-connections.md
         - name: 网络安全组
           href: diagnose-network-traffic-filter-problem.md
         - name: 路由

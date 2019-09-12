@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 0125fa20e61890317d4df510cb668f68e5049c43
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 520eded941f625bf90204213188ac1afc94d3111
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231855"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802576"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>部署适用于 Azure 的 Microsoft 云采用框架迁移登陆区域蓝图示例
 
@@ -33,7 +33,7 @@ ms.locfileid: "70231855"
 
 首先，通过使用示例作为起点在环境中创建新的蓝图，来实现蓝图示例。
 
-1. 选择“所有服务”，然后在左窗格中搜索并选择“策略”。   在“策略”页上选择“蓝图”。  
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
 1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。   
 
@@ -51,7 +51,7 @@ ms.locfileid: "70231855"
 
 现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其**发布**，然后才能分配和部署它。  可根据环境和需求自定义蓝图示例的副本，但这种修改可能会使其偏离 CAF 迁移登陆区域指南。
 
-1. 选择“所有服务”，然后在左窗格中搜索并选择“策略”。   在“策略”页上选择“蓝图”。  
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
 1. 在左侧选择“蓝图定义”页。  使用筛选器找到蓝图示例的副本，然后选择它。
 
@@ -61,7 +61,7 @@ ms.locfileid: "70231855"
 
 成功**发布**蓝图示例的副本后，可将它分配到它所在的管理组中的某个订阅。 在此步骤中，需提供参数来使蓝图示例副本的每个部署保持唯一。
 
-1. 选择“所有服务”，然后在左窗格中搜索并选择“策略”。   在“策略”页上选择“蓝图”。  
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
 1. 在左侧选择“蓝图定义”页。  使用筛选器找到蓝图示例的副本，然后选择它。
 

@@ -419,12 +419,12 @@ Web 域提供用于搜索网站的目的和实体。
 ### <a name="intents"></a>**意向**
 意向名称 | 描述 | 示例
 ---------|----------|---------
- WebSearch | 用于导航到指定网站或在搜索引擎中搜索的请求。 | Google.com 中的搜索图面。 <br> 在 web 上查找生日快乐歌曲 <br> 请参阅 www.twitter.com。
+ WebSearch | 用于导航到指定网站或在搜索引擎中搜索的请求。 | Google.com 中的搜索图面。 <br> 在 web 上查找生日快乐歌曲 <br> 请参阅 [www.twitter.com](www.twitter.com)。
 
 ### <a name="entities"></a>**条目**
 LUIS 实体 | 实体类型 | 描述 | 示例
 ------------|-------------|-------------|---------
 SearchEngine | 列表 | 搜索引擎用户要使用。 | 必应 <br> Google
 SearchText | 简单模式。随时 | 用户要搜索的文本。 <br> _如果该网站不是搜索引擎，请将 "facebook 中的朋友" 标记为 SearchText。Url 还应标记为 SearchText。_ | 电影 <br> 深度学习 <br> Tom 巡航
-链接 | url | 网站链接。 | www.twitter.com
+链接 | url | 网站链接。 | [www.twitter.com](www.twitter.com)
 

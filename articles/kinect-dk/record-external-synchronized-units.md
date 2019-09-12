@@ -1,19 +1,19 @@
 ---
 title: 将 Azure Kinect 录制器与外部同步单元配合使用
 description: 将 Azure Kinect 录制器与外部同步单元配合使用
-author: joylital
-ms.author: joylital
+author: tesych
+ms.author: tesych
 ms.reviewer: jawirth
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, 传感器, 查看器, 外部同步, 相位延迟, 深度, RGB, 相机, 音频线, 录制器
-ms.openlocfilehash: 0b9d61aead44ffa55fdb32998a89ceade7d4f412
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a87ef1e1ee0d854c7ef22cc5268e6aaae0b0d0bd
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876782"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801092"
 ---
 # <a name="use-azure-kinect-recorder-with-external-synchronized-units"></a>将 Azure Kinect 录制器与外部同步单元配合使用
 

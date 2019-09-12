@@ -2,17 +2,17 @@
 title: 将 Azure Kinect 库添加到 Visual Studio 项目
 description: 将 Azure Kinect 库添加到项目
 author: wes-b
-ms.author: tesych
+ms.author: wesbarc
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, visual studio 2017, visual studio 2019, nuget
-ms.openlocfilehash: 65fa90f1e3fa385c49c6230441eb9a2b85d560ec
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 0adcb0baac9898a75886bcc1b835fb8e7b64b3ab
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295850"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801365"
 ---
 # <a name="add-azure-kinect-library-to-your-visual-studio-project"></a>将 Azure Kinect 库添加到 Visual Studio 项目
 

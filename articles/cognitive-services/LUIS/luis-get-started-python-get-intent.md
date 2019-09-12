@@ -1,5 +1,5 @@
 ---
-title: 获取意向，Python - LUIS
+title: 快速入门：获取意向，Python - LUIS
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将向 LUIS 终结点传递话语并返回意向和实体。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: defcb6713516952e56e6cca2d63a99ee61f5b868
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0d36c7aee77cd9ba8136a988ac98d226d7f4dc5f
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563781"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375480"
 ---
 # <a name="quickstart-get-intent-using-python"></a>快速入门：使用 Python 获取意向
 在本快速入门中，你将向 LUIS 终结点传递话语并返回意向和实体。

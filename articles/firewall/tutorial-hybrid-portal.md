@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: f7dce448b01c211441fd1e0fd530ff6ad062c303
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 08c1a8940bedb1093f618c8de53abc78f81c10dd
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114869"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918787"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
 
@@ -102,7 +102,7 @@ ms.locfileid: "70114869"
 4. 对于“名称”，请键入 **VNet-Spoke**。 
 5. 对于“地址空间”，请键入 **10.6.0.0/16**。 
 6. 对于“订阅”，请选择自己的订阅。 
-7. 对于“资源组”，请选择“Test-FW-RG”。  
+7. 对于“资源组”，请选择“FW-Hybrid-Test”。  
 8. 对于“位置”，请选择前面使用的同一位置。 
 9. 在“子网”下，为“名称”键入 **SN-Workload**。  
 10. 对于“地址范围”，请键入 **10.6.0.0/24**。 

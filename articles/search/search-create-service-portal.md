@@ -1,22 +1,22 @@
 ---
-title: 在门户中创建 Azure 搜索服务 - Azure 搜索
+title: 快速入门：在门户中创建 Azure 搜索服务 - Azure 搜索
 description: 在 Azure 门户中预配 Azure 搜索资源。 选择资源组、区域以及 SKU 或定价层。
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 08/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0aabf10b3be8f2f13abbba15d514a008f193646c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 483810f89ea4bbb3a68e616929bd7d752c4d509f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649953"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883847"
 ---
-# <a name="create-an-azure-search-service-in-the-portal"></a>在门户中创建 Azure 搜索服务
+# <a name="quickstart-create-an-azure-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 搜索服务
 
 Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 虽然 Azure 搜索可以与其他 Azure 服务轻松集成，但它也可以作为单独的组件使用，或与网络服务器上的应用或在其他云平台上运行的软件集成。
 

@@ -1,5 +1,5 @@
 ---
-title: Application Insights，Node.js - LUIS
+title: 教程：Application Insights，Node.js - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本教程将机器人和语言理解信息添加到 Application Insights 遥测数据存储。
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/16/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 72ce681b6b0e4109151b987a5f8cc4bc050aafa0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f488cfaf1e55edd8ae0d2bfd177553deb2677f8b
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563296"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387909"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>将 LUIS 结果从以 Node.js 编写的机器人添加到 Application Insights
+# <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>教程：将 LUIS 结果从以 Node.js 编写的机器人添加到 Application Insights
 本教程将机器人和语言理解信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 有了该数据后，可使用 Kusto 语言或 Power BI 对其进行查询，以便对话语的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
 
 本教程介绍如何执行下列操作：

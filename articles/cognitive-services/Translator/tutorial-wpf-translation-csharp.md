@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: f8488195ed9e115843c2dc551af52d5da010ffe7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 286b75166e6216513afc46e5779b8a2f969aeaf6
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036707"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858906"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教程：使用 WPF 创建翻译应用
 
@@ -48,7 +48,7 @@ ms.locfileid: "69036707"
 
 在继续之前，需要准备好以下各项：
 
-* 一个 Azure 认知服务订阅。 [获取认知服务密钥](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#multi-service-resource)。
+* 一个 Azure 认知服务订阅。 [获取认知服务密钥](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#create-a-new-azure-cognitive-services-resource)。
 * 一台 Windows 计算机
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/) - Community 或 Enterprise 版
 
@@ -250,7 +250,7 @@ ms.locfileid: "69036707"
 
 在此代码块中，我们已声明两个成员变量，其中包含有关可用翻译语言的信息：
 
-| 变量 | Type | 说明 |
+| 变量 | 类型 | 说明 |
 |----------|------|-------------|
 |`languageCodes` | 字符串数组 |缓存的语言代码。 Translator 服务使用短代码（例如英语为 `en`）来标识语言。 |
 |`languageCodesAndTitles` | 排序的字典 | 将用户界面中的“友好”名称映射回 API 中使用的短代码。 始终按字母顺序排序，不考虑大小写。 |

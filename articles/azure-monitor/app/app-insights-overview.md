@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: d702b2f76531bad53e3fd98645d2b6bbf0582c54
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 0f0f4da38b6b9b315508d956075840907fd46fd4
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774742"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883799"
 ---
 # <a name="what-is-application-insights"></a>什么是 Application Insights？
 Application Insights 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。  它旨在帮助持续提高性能与可用性。 它适用于本地云、混合云或任何公有云中托管的各种平台（包括 .NET、Node.js 和 Java EE）中的应用。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。 可以通过与 Visual Studio App Center 集成来监视和分析移动应用的遥测数据。
@@ -28,7 +28,7 @@ Application Insights 是多个平台上面向 Web 开发人员的可扩展应用
 
 不仅可以检测 Web 服务应用程序，还可以检测所有后台组件以及 Web 页面中的 JavaScript。 
 
-![应用中的 Application Insights 检测将遥测发送到 Application Insights 资源。](./media/app-insights-overview/01-scheme.png)
+![应用中的 Application Insights 检测将遥测发送到 Application Insights 资源。](./media/app-insights-overview/diagram.png)
 
 此外，还可以从主机环境（如性能计数器、Azure 诊断或 Docker 日志）中拉取遥测。 还可以对定期向 Web 服务发送综合请求的 Web 测试进行设置。
 
@@ -139,12 +139,6 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
 * 博客：
   * [Application Insights blog](https://azure.microsoft.com/blog/tag/application-insights)（Application Insights 博客）
-
-## <a name="videos"></a>视频
-
-- 外部视频：[使用 ASP.NET 应用程序配置 Application Insights](https://www.youtube.com/watch?v=blnGAVgMAfA)。
-- 外部视频：[使用 ASP.NET Core 和 Visual Studio 配置 Application Insights](https://www.youtube.com/watch?v=NoS9UhcR4gA&t)。
-- 外部视频：[使用 ASP.NET Core 和 Visual Studio Code 配置 Application Insights](https://youtu.be/ygGt84GDync)。
 
 <!--Link references-->
 

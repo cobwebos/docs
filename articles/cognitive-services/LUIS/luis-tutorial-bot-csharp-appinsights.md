@@ -1,5 +1,5 @@
 ---
-title: Application Insights，C# - LUIS
+title: 教程：Application Insights，C# - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本教程将机器人和语言理解信息添加到 Application Insights 遥测数据存储。
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/16/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: bc8cf9973ed6889b0820e5ada5565d0541532fa3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 51860efdcc440d6b8a4ea57777ad31fa718657b5
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560055"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772826"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-bot-in-c"></a>将 LUIS 结果从以 C# 编写的机器人添加到 Application Insights
+# <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-c"></a>教程：将 LUIS 结果从以 C# 编写的机器人添加到 Application Insights
 
 本教程将机器人和语言理解信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 有了该数据后，可使用 Kusto 语言或 Power BI 对其进行查询，以便对话语的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
 
@@ -160,7 +160,7 @@ ms.locfileid: "68560055"
 1. 在 Visual Studio 中构建并运行机器人。 
 1. 启动机器人模拟器并打开机器人。 此[步骤](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot)在上一教程中提供。
 
-1. 提问机器人一个问题。 此[步骤](luis-csharp-tutorial-bf-v4.md#ask-bot-a-question-for-the-book-flight-intent)在上一教程中提供。
+1. 提问机器人一个问题。 此[步骤](luis-csharp-tutorial-bf-v4.md##use-the-bot-emulator-to-test-the-bot)在上一教程中提供。
 
 ## <a name="view-luis-entries-in-application-insights"></a>在 Application Insights 中查看 LUIS 条目
 
