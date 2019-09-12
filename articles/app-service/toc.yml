@@ -77,8 +77,8 @@
           href: overview-authentication-authorization.md
         - name: OS 和运行时修补
           href: overview-patch-os-runtime.md
-        - name: 安全属性
-          href: app-service-security-attributes.md
+        - name: 内置安全控件
+          href: app-service-security-controls.md
         - name: 安全概述
           href: overview-security.md
     - name: 网络功能

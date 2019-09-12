@@ -145,8 +145,8 @@
       href: backup-recovery.md
     - name: 基础结构指南
       href: infrastructure-example.md
-    - name: 安全属性
-      href: virtual-machines-linux-security-attributes.md
+    - name: 内置安全控件
+      href: virtual-machines-linux-security-controls.md
 - name: 操作指南
   items:
     - name: 创建 VM

@@ -333,7 +333,7 @@
             - name: 将 TDE 与自带密钥配合使用
               href: transparent-data-encryption-byok-azure-sql.md
         - name: 安全属性
-          href: sql-database-security-attributes.md
+          href: sql-database-security-controls.md
         - name: 功能限制
           href: sql-database-feature-restrictions.md
     - name: 可伸缩性
@@ -512,6 +512,8 @@
           href: sql-database-managed-instance-migrate.md
         - name: 将 TDE 证书迁移到托管实例
           href: sql-database-managed-instance-migrate-tde-certificate.md
+        - name: 还原时间点
+          href: sql-database-managed-instance-point-in-time-restore.md
         - name: 确定托管实例子网的大小
           href: sql-database-managed-instance-determine-size-vnet-subnet.md
         - name: 为托管实例创建新的 VNet 和子网
@@ -534,8 +536,6 @@
           href: sql-database-managed-instance-connect-app.md
     - name: 加载和移动数据
       items:
-        - name: 还原时间点
-          href: sql-database-managed-instance-point-in-time-restore.md
         - name: 将资源移到新区域
           href: sql-database-move-resources-across-regions.md
         - name: 在 Azure 中复制数据库

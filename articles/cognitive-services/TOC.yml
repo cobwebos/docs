@@ -1,5 +1,5 @@
 - name: Azure 认知服务文档
-  href: index.md
+  href: index.yml
 - name: 概述
   expanded: true
   items:

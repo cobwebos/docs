@@ -770,8 +770,6 @@
                   href: log-query/get-started-portal.md
                 - name: 日志查询教程
                   href: log-query/get-started-queries.md
-                - name: 简单日志体验
-                  href: log-query/simple-logs.md
             - name: 日志数据
               items:
                 - name: 日志数据结构
@@ -1037,8 +1035,6 @@
               href: insights/solutions-resources-views.md
             - name: 最佳做法
               href: insights/solutions-best-practices.md
-            - name: 从 runbook 收集监视数据
-              href: platform/runbook-datacollect.md
 - name: 引用
   items:
     - name: 服务限制

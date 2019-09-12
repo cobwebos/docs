@@ -108,8 +108,8 @@
                   href: service-bus-managed-service-identity.md
                 - name: 通过应用程序进行身份验证
                   href: authenticate-application.md
-        - name: Azure 的常见安全属性
-          href: service-bus-messaging-security-attributes.md
+        - name: 内置安全控件
+          href: service-bus-messaging-security-controls.md
 - name: 操作指南
   items:
     - name: 创建命名空间
