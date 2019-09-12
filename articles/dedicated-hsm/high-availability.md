@@ -2,8 +2,8 @@
 title: 高可用性 - Azure 专用 HSM | Microsoft Docs
 description: Azure 专用 HSM 高可用性示例和基本注意事项
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: bf55761bb58e309f919e08530fe047a137756323
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.author: mbaldwin
+ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656542"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882248"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure 专用 HSM 高可用性
 
-Azure 专用 HSM 由 Microsoft 具有高可用性的数据中心提供支持。 但是，任何具有高可用性的数据中心都容易出现本地化故障，并且在极端情况下会出现区域级故障。 Microsoft 将 HSM 设备部署到区域中的不同数据中心以确保预配多个设备不会导致这些设备共享单个机架。 可以通过使用 Gemalto 身份 HA 组功能将这些 Hsm 与区域内的数据中心配对, 实现更高的高可用性级别。 还可以在区域之间将设备配对以在进行灾难恢复的情况下解决区域性故障转移。 使用此多层高可用性配置时，会自动解决任何设备故障以使应用程序保持正常工作。 所有数据中心的现场还具有备用设备和组件，以便可以及时更换任何失败的设备。
+Azure 专用 HSM 由 Microsoft 具有高可用性的数据中心提供支持。 但是，任何具有高可用性的数据中心都容易出现本地化故障，并且在极端情况下会出现区域级故障。 Microsoft 将 HSM 设备部署到区域中的不同数据中心以确保预配多个设备不会导致这些设备共享单个机架。 可以通过使用 Gemalto 身份 HA 组功能将这些 Hsm 与区域内的数据中心配对，实现更高的高可用性级别。 还可以在区域之间将设备配对以在进行灾难恢复的情况下解决区域性故障转移。 使用此多层高可用性配置时，会自动解决任何设备故障以使应用程序保持正常工作。 所有数据中心的现场还具有备用设备和组件，以便可以及时更换任何失败的设备。
 
 ## <a name="high-availability-example"></a>高可用性示例
 

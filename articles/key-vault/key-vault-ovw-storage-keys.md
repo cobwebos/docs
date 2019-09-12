@@ -6,14 +6,14 @@ services: key-vault
 ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
-manager: barbkess
+manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 251a7c21b671052a23f6ee18cb4278737464b25c
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 86ac58aea174ca05580da99b6bde0cc3823ab151
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744872"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883061"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>用 Azure Key Vault 和 Azure CLI 管理存储帐户密钥 
 

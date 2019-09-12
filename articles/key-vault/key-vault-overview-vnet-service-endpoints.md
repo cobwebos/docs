@@ -4,16 +4,16 @@ description: Key Vault 的虚拟网络服务终结点概述
 services: key-vault
 author: amitbapat
 ms.author: ambapat
-manager: barbkess
+manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: 45499dac3cc50e2b6e79f9ebcb1bc3e7b4330beb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2617ae7bd1c761ae7977eac518c2e40ca55da00c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165847"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883235"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -39,9 +39,9 @@ ms.locfileid: "67165847"
 以下是配置防火墙和虚拟网络所需的步骤。 无论使用的是 PowerShell、Azure CLI 还是 Azure 门户，上述步骤均适用。
 
 1. 启用 [Key Vault 日志记录](key-vault-logging.md)以查看详细的访问日志。 当防火墙和虚拟网络规则阻止访问 Key Vault 时，此操作有助于进行诊断。 （此为可选步骤，但强烈建议你执行。）
-2. 为目标虚拟网络和子网启用“Key Vault 的服务终结点”  。
+2. 为目标虚拟网络和子网启用“Key Vault 的服务终结点”。
 3. 为 Key Vault 设置防火墙和虚拟网络规则，仅限特定虚拟网络、子网和 IPv4 地址范围能够访问该 Key Vault。
-4. 如果需要所有受信任的 Microsoft 服务都能够访问此 Key Vault，则启用该选项，允许“受信任的 Azure 服务”连接到 Key Vault。 
+4. 如果需要所有受信任的 Microsoft 服务都能够访问此 Key Vault，则启用该选项，允许“受信任的 Azure 服务”连接到 Key Vault。
 
 有关详细信息，请参阅[配置 Azure 密钥保管库防火墙和虚拟网络](key-vault-network-security.md)。
 
@@ -53,12 +53,12 @@ ms.locfileid: "67165847"
 > 注意以下配置限制：
 > * 最多允许 127 条虚拟网络规则和 127 条 IPv4 规则。 
 > * 不支持使用“/31”或“/32”前缀大小的小型地址范围。 改为使用单独的 IP 地址规则配置这些范围。
-> * IP 网络规则仅适用于公共 IP 地址。 IP 规则不允许为专用网络保留的 IP 地址范围（如 RFC 1918 中所定义）。 专用网络包括以开头的地址**10。** ， **172.16 31**，并**192.168。** 。 
+> * IP 网络规则仅适用于公共 IP 地址。 IP 规则不允许为专用网络保留的 IP 地址范围（如 RFC 1918 中所定义）。 专用网络包括以**10.** 、 **172.16.-31**和192.168 开头的地址 **。** 
 > * 目前仅支持 IPv4 地址。
 
 ## <a name="trusted-services"></a>受信服务
 
-以下是允许访问 Key Vault 的受信服务列表（前提是启用了“允许受信任的服务”选项）。 
+以下是允许访问 Key Vault 的受信服务列表（前提是启用了“允许受信任的服务”选项）。
 
 |受信服务|使用方案|
 | --- | --- |
@@ -73,7 +73,7 @@ ms.locfileid: "67165847"
 |Azure 存储|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|[在 Azure Data Lake Store 中使用客户托管密钥进行数据加密](../data-lake-store/data-lake-store-encryption.md)。|
 |Azure databricks|[基于 Apache Spark 的快速、简单、协作分析服务](../azure-databricks/what-is-azure-databricks.md)|
-|Azure API 管理|[将证书部署为密钥保管库中使用 MSI 从自定义域](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
+|Azure API 管理|[使用 MSI 从 Key Vault 部署自定义域证书](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
 
 
 

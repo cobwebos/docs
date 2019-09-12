@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 02/27/2019
-ms.openlocfilehash: 58c09c71aad2b6244f6e2f3d144c033665932f50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/11/2019
+ms.openlocfilehash: 4aa18379962c289f5094795988a247f4c7e35df2
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925561"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910643"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>解决移动服务推送安装问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "64925561"
 
 ## <a name="credentials-check-errorid-95107--95108"></a>凭据检查（ErrorID：95107 和 95108）
 
-* 验证所选用户帐户在启用复制期间是否有效且准确  。
+* 验证所选用户帐户在启用复制期间是否有效且准确。
 * Azure Site Recovery 需要具有**管理员特权**的 **ROOT** 帐户或用户帐户来执行推送安装。 否则，系统会在源计算机上阻止推送安装。
   * 对于 Windows（**错误 95107**），验证该用户帐户是否具有源计算机上的本地或域管理访问权限。
   * 如果使用的不是域帐户，则需在本地计算机上禁用远程用户访问控制。
@@ -94,7 +94,7 @@ ms.locfileid: "64925561"
   * 在源服务器计算机命令行中，使用 Telnet 通过 https 端口 (135) 对配置服务器/横向扩展进程服务器执行 ping 操作（如下所示），查看是否存在任何网络连接问题或防火墙端口阻止问题。
 
      `telnet <CS/ scale-out PS IP address> <135>`
-* 此外，对于Linux VM  ，
+* 此外，对于Linux VM，
   * 检查是否已安装最新的 openssh、openssh-server 和 openssl 包。
   * 检查并确保安全外壳 (SSH) 已启用且正在端口 22 上运行。
   * SFTP 服务应运行。 在 sshd_config 文件中启用 SFTP 子系统和密码身份验证，
@@ -114,15 +114,15 @@ ms.locfileid: "64925561"
 
 进行连接性检查后，验证是否在虚拟机上启用了文件和打印机共享服务。 若要将移动代理复制到源计算机，这些设置是必需的。
 
-对于 windows 2008 R2 和以前的版本  ，
+对于 windows 2008 R2 和以前的版本，
 
 * 若要通过 Windows 防火墙启用文件和打印共享，
   * 打开“控制面板”->“系统和安全”->“Windows 防火墙”，单击左侧窗格的“高级设置”，再单击控制台树中的“入站规则”。
-  * 找到文件和打印机共享 (NB-Session-In) 以及文件和打印机共享 (SMB-In) 规则。 请依次右键单击每个规则，然后单击“启用规则”  。
+  * 找到文件和打印机共享 (NB-Session-In) 以及文件和打印机共享 (SMB-In) 规则。 请依次右键单击每个规则，然后单击“启用规则”。
 * 若要使用组策略启用文件共享，
   * 转到开始，键入 type gpmc.msc 并搜索。
   * 在导航窗格中，打开以下文件夹：本地计算机策略、用户配置、管理模板、Windows 组件和网络共享。
-  * 在详细信息窗格中，双击“防止用户共享其配置文件中的文件”  。 若要禁用组策略设置，并启用用户共享文件的功能，请单击“禁用”。 单击“确定”保存更改。 有关详细信息，请参阅[使用组策略启用或禁用文件共享](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))。
+  * 在详细信息窗格中，双击“防止用户共享其配置文件中的文件”。 若要禁用组策略设置，并启用用户共享文件的功能，请单击“禁用”。 单击“确定”保存更改。 有关详细信息，请参阅[使用组策略启用或禁用文件共享](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))。
 
 对于**更高的版本**，请遵照[安装移动服务以对 VMware VM 和物理服务器进行灾难恢复](vmware-azure-install-mobility-service.md)中的说明启用文件和打印机共享。
 
@@ -167,14 +167,14 @@ ms.locfileid: "64925561"
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>启用保护失败，因为 GRUB 配置中提到了设备名而非 UUID（ErrorID：95320)
 
 **可能的原因：** </br>
-GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/boot/grub2/grub.cfg”或“/etc/default/grub”）可能包含参数“root”和“resume”的值作为实际设备名而非 UUID   。 Site Recovery 要求 UUID 方法，因为设备名可能会在 VM 重启时发生更改，由于故障转移时 VM 可能不会出现相同的名称，从而导致问题。 例如： </br>
+GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/boot/grub2/grub.cfg”或“/etc/default/grub”）可能包含参数“root”和“resume”的值作为实际设备名而非 UUID。 Site Recovery 要求 UUID 方法，因为设备名可能会在 VM 重启时发生更改，由于故障转移时 VM 可能不会出现相同的名称，从而导致问题。 例如： </br>
 
 
-- 以下行来自 GRUB 文件 /boot/grub2/grub.cfg  。 <br>
+- 以下行来自 GRUB 文件 /boot/grub2/grub.cfg。 <br>
   *linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
 
 
-- 以下行来自 GRUB 文件 /boot/grub/menu.lst  
+- 以下行来自 GRUB 文件 /boot/grub/menu.lst
   *kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
 
 如果发现上面的粗体字符串，GRUB 具有参数“root”和“resume”的实际设备名，而不是 UUID。
@@ -241,6 +241,8 @@ VSS 安装是移动代理安装的一部分。 在生成应用程序一致恢复
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
+如果出现故障，请检查任何防病毒程序或其他服务是否处于 "正在启动" 状态。 这可能会保留对数据库服务的锁定。 这将导致安装 VSS 提供程序时出现故障。 请确保没有服务处于 "正在启动" 状态，然后重试上述操作。
+
 ### <a name="vss-exit-code-806"></a>VSS 退出代码 806
 
 当用于安装的用户帐户无权执行 CSScript 命令时会发生此错误。 请为用户帐户提供执行此脚本所需的权限，然后重试操作。
@@ -264,7 +266,7 @@ VSS 安装是移动代理安装的一部分。 在生成应用程序一致恢复
 1. 打开位于 c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log 中的安装日志。
 2. 如果存在以下错误，则表示出现了此问题：
 
-    正在取消注册现有应用程序...创建的目录对象中获取的应用程序集合 
+    正在取消注册现有应用程序...创建目录对象获取应用程序集合 
 
     错误:
 
@@ -277,7 +279,7 @@ VSS 安装是移动代理安装的一部分。 在生成应用程序一致恢复
 
 解决 DCOM 问题后，使用以下命令手动重新安装 Azure Site Recovery VSS 提供程序：
  
-**C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd**
+**C:\Program Files （x86） \Microsoft Azure Site Recovery\agent > "C:\Program Files （x86） \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd**
   
 如果应用程序一致性并不是一项关键的灾难恢复要求，则可以绕过 VSS 提供程序的安装。 
 
@@ -300,7 +302,7 @@ VSS 安装是移动代理安装的一部分。 在生成应用程序一致恢复
       ```
 
 3. 手动重新运行移动代理安装。 
-4. 当安装成功并转到下一步骤“配置”时，请删除添加的行。 
+4. 当安装成功并转到下一步骤“配置”时，请删除添加的行。
 5. 若要安装 VSS 提供程序，请以管理员身份打开命令提示符并运行以下命令：
    
     **C:\Program Files (x86)\Microsoft Azure Site Recovery\agent> .\InMageVSSProvider_Install.cmd**

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 88b1d05a47f4a8267ab936a922ac190a925bd5ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11a9fc521a7b17ae0ff2f579f173f4d43383bdd5
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510185"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880086"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD 图形 API
 
@@ -38,26 +38,28 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 拥有 B2C 租户后，需通过 [Azure 门户](https://portal.azure.com)注册应用程序。
 
 > [!IMPORTANT]
-> 若要将图形 API 用于 B2C 租户，需使用 Azure 门户中的“应用注册”服务（而非 Azure AD B2C 的“应用程序”菜单）注册应用程序    。 根据以下介绍进入相应菜单。 不能重复使用在 Azure AD B2C 的“应用程序”菜单中注册的现有 B2C 应用程序  。
+> 若要将图形 API 用于 B2C 租户，需使用 Azure 门户中的“应用注册”服务（而非 Azure AD B2C 的“应用程序”菜单）注册应用程序。 根据以下介绍进入相应菜单。 不能重复使用在 Azure AD B2C 的“应用程序”菜单中注册的现有 B2C 应用程序。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 通过在页面右上角选择帐户，选择 Azure AD B2C 租户。
-3. 在左侧导航窗格中，选择“所有服务”，单击“应用注册”，并单击“添加”。   
+3. 在左侧导航窗格中，选择 "**所有服务**"，单击 "**应用注册**"，然后单击 "**新建注册**"。
 4. 根据提示创建新的应用程序。 
-    1. 选择“Web 应用/API”  作为应用程序类型。    
-    2. 提供任一登录 URL  （例如 `https://B2CGraphAPI`），因为它与此示例不相关。  
+    1. 添加适当的名称
+    2. **仅选择此组织目录中的帐户**
+    3. 选择 " **Web** " 作为应用程序类型，并提供**任何 "登录 URL"** `https://B2CGraphAPI`（例如），因为它与此示例无关。  
+    4. 单击 "注册"。
 5. 应用程序现在会显示在应用程序列表中，单击它以获取**应用程序 ID**（也称为客户端 ID）。 复制它，因为会在后面的部分用到它。
-6. 在“设置”菜单中，单击“密钥”  。
-7. 在“密码”部分输入密钥说明，并选择持续时间，然后单击“保存”   。 复制该密钥值（也称为客户端密码），便于在之后的章节中使用。
+6. 在 "设置" 菜单中，单击 "**证书" & 机密**"。
+7. 在 "**客户端密码**" 部分中，单击 "**新建客户端密钥**"，提供机密的描述并选择持续时间，然后单击 "**添加**"。 复制机密的值（也称为客户端密码），以便在后面的部分中使用。
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>为应用程序配置创建、读取和更新权限
 现在，需要配置应用程序，以获取所有所需的创建、读取、更新和删除用户的权限。
 
 1. 继续在 Azure 门户的“应用注册”菜单中，选择应用程序。
-2. 在“设置”菜单中，单击“所需的权限”  。
-3. 在“所需的权限”菜单中，单击“Windows Azure Active Directory”  。
-4. 在“启用访问权限”菜单中，从“应用程序权限”  中选择“读取和写入目录数据”  权限，并单击“保存”  。
-5. 最后，返回“所需的权限”菜单，单击“授予权限”  按钮。
+2. 在“设置”菜单中，单击“所需的权限”。
+3. 在“所需的权限”菜单中，单击“Windows Azure Active Directory”。
+4. 在“启用访问权限”菜单中，从“应用程序权限”中选择“读取和写入目录数据”权限，并单击“保存”。
+5. 最后，返回“所需的权限”菜单，单击“授予权限”按钮。
 
 现在就有了一个有权限从 B2C 租户创建、读取和更新用户的应用程序。
 
@@ -67,7 +69,7 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 > 
 
 ## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>为应用程序配置删除或更新密码权限
-目前，“读取和写入目录数据”  权限**不**提供删除用户或更新用户密码的能力。 如果想要使应用程序能够删除用户或更新密码，就需要执行涉及 PowerShell 的这些额外步骤，否则，可以跳到下一部分。
+目前，“读取和写入目录数据”权限**不**提供删除用户或更新用户密码的能力。 如果想要使应用程序能够删除用户或更新密码，就需要执行涉及 PowerShell 的这些额外步骤，否则，可以跳到下一部分。
 
 首先，请安装 [Azure AD PowerShell v1 模块 (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)（如果还没有安装）：
 

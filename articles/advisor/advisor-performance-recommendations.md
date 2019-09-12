@@ -8,16 +8,16 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 8fdae1e12e56dcbcb56941726b0c089ad59b8fc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8647e316cc77e7e1eed5108fafccd6d70d181cf
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254653"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898187"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
-Azure 顾问性能建议有助于提高关键业务应用程序的速度和响应能力。 可通过顾问从顾问仪表板的“性能”  选项卡获取性能建议。
+Azure 顾问性能建议有助于提高关键业务应用程序的速度和响应能力。 可通过顾问从顾问仪表板的“性能”选项卡获取性能建议。
 
 ## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>减少流量管理器配置文件上的 DNS 生存时间，可更快地故障转移到正常运行的终结点
 
@@ -73,48 +73,48 @@ Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低
 将存储帐户部署模型迁移到 Azure 资源管理器（资源管理器）可利用模板部署和更多的安全选项，并可升级到 GPv2 帐户来利用 Azure 存储的最新功能。 顾问将识别使用经典部署模型的任何独立存储帐户，并建议迁移到资源管理器部署模型。
 
 > [!NOTE]
-> Azure Monitor 的经典警报计划于 2019 年 6 月停用。 建议升级经典存储帐户以使用资源管理器在新平台中保留警报功能。 有关详细信息，请参阅[经典警报停用](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)。
+> Azure Monitor 中的经典警报已于8月2019停用。 建议升级经典存储帐户以使用资源管理器在新平台中保留警报功能。 有关详细信息，请参阅[经典警报停用](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)。
 
-## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>设计你的存储帐户，以免达到最大订阅限制
+## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>设计存储帐户以避免达到最大订阅限制
 
-Azure 区域可支持最多 250 每个订阅的存储帐户。 达到限制后，将不能在该地区/订阅组合中创建任何更多的存储帐户。 顾问将检查订阅和图面上，以设计为较少的存储帐户有关的任何建议即将达到最大限制。
+对于每个订阅，Azure 区域最多支持250个存储帐户。 达到此限制后，将无法再创建该区域/订阅组合中的任何其他存储帐户。 Advisor 将检查你的订阅和表面建议，以便为接近达到最大限制的任何内容设计更少的存储帐户。
 
-## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>优化 Azure MySQL、 Azure PostgreSQL 和 Azure MariaDB 服务器的性能 
+## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>优化 Azure MySQL、Azure PostgreSQL 和 Azure MariaDB 服务器的性能 
 
-### <a name="fix-the-cpu-pressure-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-with-cpu-bottlenecks"></a>CPU 瓶颈修复你的 Azure MySQL、 Azure PostgreSQL 和 Azure MariaDB 服务器的 CPU 压力
-很长一段使用率很高的 cpu 可以导致工作负荷的慢查询性能。 增加 CPU 大小将帮助优化的数据库查询运行时并改进整体性能。 Azure 顾问将高的 CPU 使用率可能正在运行受约束的 CPU 的工作负荷的建议缩放计算在标识服务器。
+### <a name="fix-the-cpu-pressure-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-with-cpu-bottlenecks"></a>解决具有 CPU 瓶颈的 Azure MySQL、Azure PostgreSQL 和 Azure MariaDB 服务器的 CPU 压力
+在较长时间内 CPU 利用率非常高会导致工作负荷的查询性能缓慢。 增加 CPU 大小有助于优化数据库查询的运行时并提高整体性能。 Azure Advisor 将识别 CPU 使用率较高的服务器，这些服务器可能正在运行 CPU 约束的工作负荷，并建议缩放计算。
 
-### <a name="reduce-memory-constraints-on-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>减少了在 Azure MySQL、 Azure PostgreSQL 和 Azure MariaDB 服务器上的内存限制或迁移到内存优化的 SKU
-低缓存命中率可能会导致速度较慢的查询性能和更高的 IOPS。 这可能是由于错误的查询计划或运行内存密集型工作负荷。 修复的查询计划或 [将内存增加](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers)的 Azure Database for PostgreSQL 数据库服务器、 Azure MySQL 数据库服务器或 Azure MariaDB 服务器，将有助于优化数据库工作负荷的执行。 Azure 顾问标识由于此高缓冲区池改动受影响的服务器，并建议修复查询计划中，转到更高的 SKU 具有更多内存或增加存储大小，以获取更多 IOPS。
+### <a name="reduce-memory-constraints-on-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>减少对 Azure MySQL、Azure PostgreSQL 和 Azure MariaDB 服务器的内存限制，或转到内存优化 SKU
+低缓存命中率可能导致查询性能降低并增加 IOPS。 这可能是由不正确的查询计划或运行大量内存的工作负荷导致的。 修复查询计划或增加 Azure Database for PostgreSQL 数据库服务器、Azure MySQL 数据库服务器或 Azure MariaDB 服务器的 [内存](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers)，有助于优化数据库工作负荷的执行。 Azure 顾问会识别受此较高缓冲池改动影响的服务器，并建议修复查询计划，将其移到具有更多内存的更高 SKU，或增加存储大小以获得更多的 IOPS。
 
-### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>使用 Azure MySQL 或 Azure PostgreSQL 读取副本来横向扩展读取密集型工作负荷的读取
-Azure 顾问利用基于工作负荷的试探法如读取与写入服务器上标识读取密集型工作负荷在过去七天内的比率。 PostgreSQL 资源的 Azure 数据库或 MySQL 资源非常高的读/写比率的 Azure 数据库会导致查询性能变慢的 CPU 和/或内存争用。 添加 [副本](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal)中扩大到副本服务器，防止在主服务器上的 CPU 和/或内存约束的读取将有所帮助。 顾问将识别的服务器使用此类高读取密集型工作负荷并建议将添加 [读取副本](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) 来分担一些的读取工作负荷。
+### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>使用 Azure MySQL 或 Azure PostgreSQL 读取副本对读取密集型工作负荷进行横向扩展
+Azure 顾问利用基于工作负荷的试探法，例如，在过去7天内服务器上写入操作的比率，用于识别读取密集型工作负荷。 如果你的 Azure database for PostgreSQL 资源或 Azure database for MySQL 资源的读取/写入比率非常高，则可能导致 CPU 和/或内存争用导致查询性能下降。 添加 [副本](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal)将有助于扩大对副本服务器的读取，从而防止主服务器上的 CPU 和/或内存限制。 Advisor 将识别具有大量读取密集型工作负载的服务器，并建议添加 [读取副本](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) 以卸载某些读取工作负荷。
 
 
-### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>缩放到更高的 SKU，以防止连接约束 Azure MySQL、 Azure PostgreSQL 或 Azure MariaDB 服务器
-每个新连接到数据库服务器占用一些内存。 在数据库服务器的性能下降，如果连接到服务器失败由于 [上限](https://docs.microsoft.com/azure/postgresql/concepts-limits)在内存中。 Azure 顾问将识别运行具有许多连接故障的服务器，并建议升级你的服务器的连接限制，以通过纵向扩展计算或使用内存优化的 Sku，其具有更多计算每个核心提供到您的服务器的更多内存。
+### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>将 Azure MySQL、Azure PostgreSQL 或 Azure MariaDB 服务器缩放到更高的 SKU，以防止连接约束
+与数据库服务器之间的每个新连接都占用一些内存。 如果由于内存 [上限](https://docs.microsoft.com/azure/postgresql/concepts-limits)而导致到服务器的连接失败，则数据库服务器的性能会下降。 Azure Advisor 将识别运行的服务器，其中包含许多连接故障，并建议升级服务器的连接限制，通过扩展计算或使用内存优化 Sku （每个内核具有更多计算）来为服务器提供更多内存。
 
-## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>你为不同大小的缓存或 SKU，以提高缓存缩放和应用程序性能
+## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>将缓存缩放为不同大小或 SKU 以提高缓存和应用程序性能
 
-缓存实例未运行高内存压力、 高服务器负载，或高网络带宽，这可能会使其变得无响应，出现数据丢失或变得不可用时效果最佳。 顾问将确定在这种情况的缓存实例，并应用最佳实践来降低内存压力、 服务器负载或网络带宽或缩放到不同的大小或 SKU 具有更多容量的建议。
+当未在高内存压力、高服务器负载或高网络带宽下运行时，缓存实例的性能最佳，这可能会导致这些实例停止响应、丢失数据或变得不可用。 在这些情况下，顾问将标识缓存实例，并建议应用最佳做法以减少内存压力、服务器负载或网络带宽，或扩展到不同大小或具有更大容量的 SKU。
 
-## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>将区域的流量添加到你的 Azure Cosmos DB 帐户
+## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>将包含流量的区域添加到 Azure Cosmos DB 帐户
 
-顾问将检测到了流量，可以从当前未配置的区域的 Azure Cosmos DB 帐户，并且建议将添加到该区域。 这将改善来自该区域的请求的延迟，并确保发生区域故障时的可用性。 [了解有关使用 Azure Cosmos DB 的全局数据分布的详细信息](https://aka.ms/cosmos/globaldistribution)
+Advisor 将检测到 Azure Cosmos DB 帐户的流量来自当前未配置的区域，并建议添加该区域。 这会缩短来自该区域的请求的延迟时间，并在发生区域中断时确保可用性。 [详细了解 Azure Cosmos DB 的全局数据分布](https://aka.ms/cosmos/globaldistribution)
 
-## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>配置 Azure Cosmos DB 与客户进行索引策略包括或排除的路径
+## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>为客户包括或排除的路径配置 Azure Cosmos DB 索引策略
 
-Azure 顾问将标识正在使用的默认索引策略，但无法受益于基于工作负荷模式的自定义索引策略的 Cosmos DB 容器。 所有属性编制都索引的默认索引策略，但与查询筛选器中使用的显式包含或排除路径中使用自定义索引策略可以降低 Ru，然后在为索引使用的存储。 [了解有关修改索引策略的详细信息](https://aka.ms/cosmosdb/modify-index-policy)
+Azure Advisor 将识别使用默认索引策略 Cosmos DB 容器，但可以根据工作负荷模式从自定义索引策略中获益。 默认索引策略将为所有属性编制索引，但使用自定义索引策略时，查询筛选器中使用的显式包含或排除路径可以减少 ru 和用于索引的存储。 [了解有关修改索引策略的详细信息](https://aka.ms/cosmosdb/modify-index-policy)
 
 ## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>将 Azure Cosmos DB 查询页大小 (MaxItemCount) 配置为 -1 
 
-Azure 顾问会标识 Azure Cosmos DB 容器使用的查询页大小 100，建议使用更快地扫描的页大小为-1。 [了解有关最大项计数的详细信息](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+Azure 顾问将识别使用查询页面大小100的 Azure Cosmos DB 容器，并建议使用页面大小-1 以提高扫描速度。 [了解有关最大项计数的详细信息](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何访问顾问中的性能建议
 
 1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
 
-2.  在顾问仪表板中，单击“性能”  选项卡。
+2.  在顾问仪表板中，单击“性能”选项卡。
 
 ## <a name="next-steps"></a>后续步骤
 

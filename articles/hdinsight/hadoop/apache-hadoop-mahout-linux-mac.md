@@ -8,22 +8,22 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: d566b57ae12520b9eee26334a67d2e10c05f8040
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a3919cf84714b69776222fa35d3163e0915869f7
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64709084"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881972"
 ---
-# <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>通过 HDInsight (SSH) 中基于 Linux 的 Apache Hadoop 使用 Apache Mahout 生成电影推荐
+# <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>使用 Apache Mahout 和 HDInsight （SSH）中的 Apache Hadoop 生成电影建议
 
 [!INCLUDE [mahout-selector](../../../includes/hdinsight-selector-mahout.md)]
 
 了解如何使用 [Apache Mahout](https://mahout.apache.org) 机器学习库通过 Azure HDInsight 生成电影推荐。
 
-Mahout 是[机器学习](https://en.wikipedia.org/wiki/Machine_learning)适用于 Apache Hadoop 的库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
+Mahout 是适用于 Apache Hadoop 的[计算机学习](https://en.wikipedia.org/wiki/Machine_learning)库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -35,19 +35,19 @@ Mahout 是[机器学习](https://en.wikipedia.org/wiki/Machine_learning)适用�
 
 ## <a name="recommendations"></a>了解建议
 
-由 Mahout 提供的功能之一是推荐引擎。 此引擎接受 `userID`、`itemId` 和 `prefValue` 格式（项的首选项）的数据。 然后，Mahout 将执行共现分析以确定：偏好某个项的用户也偏好其他类似项  。 Mahout 然后确定拥有类似项首选项的用户，这些首选项可用于做出推荐。
+由 Mahout 提供的功能之一是推荐引擎。 此引擎接受 `userID`、`itemId` 和 `prefValue` 格式（项的首选项）的数据。 然后，Mahout 将执行共现分析以确定：偏好某个项的用户也偏好其他类似项。 Mahout 然后确定拥有类似项首选项的用户，这些首选项可用于做出推荐。
 
 下面的工作流是使用电影数据的简化示例：
 
-* **共现**：Joe、Alice 和 Bob 都喜欢电影《星球大战》  、《帝国反击战》  和《绝地大反击》  。 Mahout 可确定喜欢以上电影之一的用户也喜欢其他两部。
+* **共现**：Joe、Alice 和 Bob 都喜欢电影《星球大战》、《帝国反击战》和《绝地大反击》。 Mahout 可确定喜欢以上电影之一的用户也喜欢其他两部。
 
-* **共现**：Bob 和 Alice 还喜欢电影《幽灵的威胁》  、《克隆人的进攻》  和《西斯的复仇》  。 Mahout 可确定喜欢前面三部电影的用户也喜欢这三部电影。
+* **共现**：Bob 和 Alice 还喜欢电影《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。 Mahout 可确定喜欢前面三部电影的用户也喜欢这三部电影。
 
-* **类似性推荐**：由于 Joe 喜欢前三部电影，Mahout 会查看具有类似偏好的其他人已喜欢但 Joe 还未观看过（已喜欢/已评价）的电影。 在这种情况下，Mahout 推荐《幽灵的威胁》  、《克隆人的进攻》  和《西斯的复仇》  。
+* **类似性推荐**：由于 Joe 喜欢前三部电影，Mahout 会查看具有类似偏好的其他人已喜欢但 Joe 还未观看过（已喜欢/已评价）的电影。 在这种情况下，Mahout 推荐《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。
 
 ### <a name="understanding-the-data"></a>了解数据
 
-为方便起见， [GroupLens 研究](https://grouplens.org/datasets/movielens/)提供兼容 Mahout 的格式的电影的评价数据。 此数据在 `/HdiSamples/HdiSamples/MahoutMovieData` 中群集的默认存储中可用。
+为方便起见，[GroupLens 研究](https://grouplens.org/datasets/movielens/)以兼容 Mahout 的格式提供电影的评价数据。 此数据在 `/HdiSamples/HdiSamples/MahoutMovieData` 中群集的默认存储中可用。
 
 有两个文件，即 `moviedb.txt` 和 `user-ratings.txt`。 `user-ratings.txt` 文件在分析期间使用。 `moviedb.txt` 用于在查看结果时提供用户友好的文本信息。
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: c6f55b40b3ee077b81a3cdd6f3add7a2cad23f95
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: dca329ce598a9ecbc7da71cc1c24bf7731a4c994
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809926"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885426"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
 
@@ -356,7 +356,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
 6. 还可以使用“脚本操作”部分条目右侧的省略号 **...** 来执行操作。
 
-    ![脚本操作 - 省略号](./media/hdinsight-hadoop-customize-cluster-linux/deletepromoted.png)
+    ![脚本操作 - 省略号](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -442,7 +442,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 3. 查找“操作”列中包含 **run\_customscriptaction** 的条目。 这些条目是在运行脚本操作时创建的。
 
-    ![操作的屏幕截图](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
+    ![操作的屏幕截图](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
     若要查看 **STDOUT** 和 **STDERR** 输出，请选择 **run\customscriptaction** 条目，并通过链接向下钻取。 此输出是在脚本运行时生成的，可能包含有用的信息。
 
@@ -452,7 +452,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 * 存储日志位于 `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`。
 
-    ![脚本操作日志](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
+    ![脚本操作日志](./media/hdinsight-hadoop-customize-cluster-linux/script-action-logs-in-storage.png)
 
     在此目录下，日志分别针对**头节点**、**工作器节点**和 **Zookeeper 节点**进行组织。 请看以下示例：
 

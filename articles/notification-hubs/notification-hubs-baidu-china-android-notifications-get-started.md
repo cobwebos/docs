@@ -5,8 +5,6 @@ services: notification-hubs
 documentationcenter: android
 author: jwargo
 manager: patniko
-editor: spelluru
-ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
 ms.devlang: java
 ms.topic: conceptual
@@ -14,25 +12,25 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 06/19/2019
 ms.author: jowargo
-ms.openlocfilehash: f6a6bc9b1d4826796299d073e0edfbfcede948e7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 7a3a9affc0fd5e83c7f6046e70d198cce08cb3e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274904"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886035"
 ---
-# <a name="get-started-with-notification-hubs-using-baidu"></a>通过百度开始使用通知中心
+# <a name="deprecated-get-started-with-notification-hubs-using-baidu"></a>弃用通过百度开始使用通知中心
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 > [!IMPORTANT]
-> 本教程中已弃用。 
+> 本教程已弃用。 
 
 百度云推送是一种中国云服务，可用于将推送通知发送到移动设备。
 
 由于 Google Play 和 FCM (Firebase Cloud Messaging) 在中国不可用，必须使用其他的应用商店和推送服务。 百度就是其中的一个，也是通知中心目前所使用的。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本教程需要：
 
@@ -46,11 +44,11 @@ ms.locfileid: "67274904"
 
 要使用百度，必须有一个百度帐户。 如果已有帐户，请登录 [百度门户]，并跳到下一步。 否则请参阅以下说明创建百度帐户。  
 
-1. 转到[百度门户]并单击“登录”链接。   单击“立即注册”(Register Now) 以启动帐户注册过程。  
+1. 转到[百度门户]并单击“登录”链接。 单击“立即注册”(Register Now) 以启动帐户注册过程。
 
     ![百度注册](./media/notification-hubs-baidu-get-started/BaiduRegistration.png)
 
-2. 输入所需的详细信息（电话/电子邮件地址、密码和验证码），并单击“注册”(Signup)。 
+2. 输入所需的详细信息（电话/电子邮件地址、密码和验证码），并单击“注册”(Signup)。
 
     ![百度注册输入](./media/notification-hubs-baidu-get-started/BaiduRegistrationInput.png)
 
@@ -68,35 +66,35 @@ ms.locfileid: "67274904"
 
 在创建百度云推送项目时，将收到应用程序 ID、API 密钥和密钥。
 
-1. 登录到[百度门户]后，请单击“更多>>”。  
+1. 登录到[百度门户]后，请单击“更多>>”。
 
     ![注册 - 更多内容](./media/notification-hubs-baidu-get-started/BaiduRegistrationMore.png)
 
-2. 向下滚动“站长与开发者服务”(Webmaster and Developer Services) 部分并单击“百度云推送”(Baidu Cloud Push)。    
+2. 向下滚动“站长与开发者服务”(Webmaster and Developer Services) 部分并单击“百度云推送”(Baidu Cloud Push)。
 
     ![百度开放云平台](./media/notification-hubs-baidu-get-started/BaiduOpenCloudPlatform.png)
 
-3. 在下一页的右上角单击“登录”  (Login)。 
+3. 在下一页的右上角单击“登录”(Login)。
 
     ![百度登录](./media/notification-hubs-baidu-get-started/BaiduLogin.png)
 
-4. 然后，单击该页上的“创建应用”(Create Application)。  
+4. 然后，单击该页上的“创建应用”(Create Application)。
 
     ![百度“创建应用”](./media/notification-hubs-baidu-get-started/BaiduCreateApplication.png)
 
-5. 在下一页上单击“创建新应用”(Create New Application)。 
+5. 在下一页上单击“创建新应用”(Create New Application)。
 
     ![百度“创建新应用”](./media/notification-hubs-baidu-get-started/BaiduCreateNewApplication.png)
 
-6. 输入应用程序名称，并单击“创建”(Create)。 
+6. 输入应用程序名称，并单击“创建”(Create)。
 
     ![](./media/notification-hubs-baidu-get-started/BaiduCreateApplicationDoCreate.png)
 
-7. 成功创建百度云推送项目后，会显示一个页面，其中包含“AppID”、“API 密钥”和“密钥”。    请记下 API 密钥和密钥，因为稍后将要用到。
+7. 成功创建百度云推送项目后，会显示一个页面，其中包含“AppID”、“API 密钥”和“密钥”。 请记下 API 密钥和密钥，因为稍后将要用到。
 
     ![百度“推送机密”](./media/notification-hubs-baidu-get-started/BaiduGetSecrets.png)
 
-8. 通过单击左侧窗格中的“创建通知”(Create Notification) 来配置推送通知项目。 
+8. 通过单击左侧窗格中的“创建通知”(Create Notification) 来配置推送通知项目。
 
     ![](./media/notification-hubs-baidu-get-started/BaiduCreateNotification.png)
 
@@ -104,7 +102,7 @@ ms.locfileid: "67274904"
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6. 在通知中心选择“通知服务”，然后选择“百度(Android China)”。  
+&emsp;&emsp;6. 在通知中心选择“通知服务”，然后选择“百度(Android China)”。
 
 &emsp;&emsp;&emsp;&emsp;![Azure 通知中心 - 百度](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
@@ -112,7 +110,7 @@ ms.locfileid: "67274904"
 
 &emsp;&emsp;&emsp;&emsp;![Azure 通知中心 - 百度机密](./media/notification-hubs-baidu-get-started/NotificationHubBaiduConfigure.png)
 
-通知中心现在已配置为使用百度。  此外还有连接字符串，用于注册发送和接收推送通知的应用。
+通知中心现在已配置为使用百度。 此外还有连接字符串，用于注册发送和接收推送通知的应用。
 
 记下“访问连接信息”窗口中的 `DefaultListenSharedAccessSignature` 和 `DefaultFullSharedAccessSignature`。
 
@@ -168,7 +166,7 @@ ms.locfileid: "67274904"
 
     ![Azure 通知中心 - 百度 SDK Libs](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. 在项目的 `libs` 文件夹中，右键单击 `pushervice-x.y.z.jar` 文件，选择“作为库添加”，以便将此库包括在项目中。 
+7. 在项目的 `libs` 文件夹中，右键单击 `pushervice-x.y.z.jar` 文件，选择“作为库添加”，以便将此库包括在项目中。
 
     ![Azure 通知中心 - 百度“添加为库”](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 
@@ -469,7 +467,7 @@ ms.locfileid: "67274904"
 
 ## <a name="send-notifications-to-your-app"></a>向应用程序发送通知
 
-可以在 [Azure 门户]中快速测试通知接收情况：使用通知中心配置屏幕中的“发送”  按钮，如以下屏幕所示：
+可以在 [Azure 门户]中快速测试通知接收情况：使用通知中心配置屏幕中的“发送”按钮，如以下屏幕所示：
 
 ![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
 ![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
@@ -494,7 +492,7 @@ ms.locfileid: "67274904"
 
     ![](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
-2. 在“包管理器控制台”窗口中，将“默认项目”设置为新的控制台应用程序项目，然后在控制台窗口中执行以下命令： 
+2. 在“包管理器控制台”窗口中，将“默认项目”设置为新的控制台应用程序项目，然后在控制台窗口中执行以下命令：
 
     ```shell
     Install-Package Microsoft.Azure.NotificationHubs
@@ -532,7 +530,7 @@ ms.locfileid: "67274904"
 
 要使用实际的手机测试此应用，只需使用 USB 电缆将该手机连接到计算机。 此操作会将应用加载到连接的手机中。
 
-若要使用模拟器测试此应用，请在 Android Studio 顶部工具栏中单击“运行”，然后选择用于启动模拟器、加载和运行应用的应用。 
+若要使用模拟器测试此应用，请在 Android Studio 顶部工具栏中单击“运行”，然后选择用于启动模拟器、加载和运行应用的应用。
 
 该应用将从百度推送通知服务检索 `userId` 和 `channelId`，并注册到通知中心。
 

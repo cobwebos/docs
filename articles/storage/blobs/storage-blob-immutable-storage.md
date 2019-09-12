@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a3f9768043c9acef9640b8e286611de94e44a7ff
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941952"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910494"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>在 Azure Blob 存储中存储业务关键型数据
 
@@ -91,7 +91,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 - 对于某个存储帐户而言，使用锁定的基于时间的不可变策略的最大容器数为 1,000。
 - 最小保留时间间隔为 1 天。 最大值为 146,000 天（400 年）。
 - 对于容器而言，为了延长锁定的基于时间的不可变策略的保留时间间隔而可执行的最大编辑次数为 5。
-- 对于容器, 将为锁定的策略保留最多7个基于时间的保留策略审核日志。
+- 对于容器而言，将针对锁定策略最多保留 7 个基于时间的保留策略审核日志。
 
 ### <a name="legal-hold"></a>法定保留
 - 对于某个存储帐户而言，使用法定保留设置的最大容器数为 1,000。
@@ -103,7 +103,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 使用此功能不会产生额外的费用。 不可变数据的定价方式与常规的可变数据相同。 有关 Azure Blob 存储的定价详细信息，请参阅 [Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 不可变存储仅适用于常规用途 v2 和 Blob 存储帐户。 必须通过 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)管理这些帐户。 有关升级现有常规用途 v1 存储帐户的信息，请参阅[升级存储帐户](../common/storage-account-upgrade.md)。
 
 最新版本的 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 和 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) 支持 Azure Blob 存储的不可变存储。 此外还提供[客户端库支持](#client-libraries)。
@@ -171,11 +171,11 @@ Az.Storage 模块支持不可变存储。  若要启用该功能，请执行以�
 
 **你们是否可以提供有关 WORM 合规性的文档？**
 
-是的。 为了记录相容性, Microsoft 保留了一个领先的独立评估事务所, 该公司专用于记录管理和信息管理、Cohasset 关联, 以评估 Azure 不可变 Blob 存储及其符合性特定要求金融服务行业。 经 Cohasset 验证，在用于保留 WORM 状态的基于时间的 Blob 时，Azure 不可变 Blob 存储符合 CFTC 规则 1.31(c)-(d)、FINRA 规则 4511 和 SEC 规则 17a-4 的相关存储要求。 Microsoft 以这组规则为目标, 因为它们表示针对金融机构的记录保留内容的最具规范性指导。 [Microsoft 服务信任中心](https://aka.ms/AzureWormStorage)提供了 Cohasset 报告。 若要从 Microsoft 请求有关蠕虫符合性的证明, 请联系 Azure 支持部门。
+是的。 为了记录相容性，Microsoft 保留了一个领先的独立评估事务所，该公司专用于记录管理和信息管理、Cohasset 关联，以评估 Azure 不可变 Blob 存储及其符合性特定要求金融服务行业。 经 Cohasset 验证，在用于保留 WORM 状态的基于时间的 Blob 时，Azure 不可变 Blob 存储符合 CFTC 规则 1.31(c)-(d)、FINRA 规则 4511 和 SEC 规则 17a-4 的相关存储要求。 Microsoft 以这组规则为目标，因为它们表示针对金融机构的记录保留内容的最具规范性指导。 [Microsoft 服务信任中心](https://aka.ms/AzureWormStorage)提供了 Cohasset 报告。 若要从 Microsoft 请求有关蠕虫符合性的证明，请联系 Azure 支持部门。
 
 **此功能是只适用于块 Blob，还是也适用于页 Blob 和追加 Blob？**
 
-不可变存储可与任何 blob 类型一起使用, 因为它是在容器级别设置的, 但我们建议你将蠕虫用于主要存储块 blob 的容器。 与块 blob 不同, 任何新的页 blob 和追加 blob 都需要在蠕虫容器外部创建, 然后复制到中。 将这些 Blob 复制到 WORM 容器中后，就不再允许对追加 Blob 执行追加操作，也不允许对页 Blob 进行更改。 因此, 强烈建议在为任何活动的虚拟机存储 Vhd (页 blob) 的容器上设置蠕虫策略, 因为它会锁定 VM 磁盘。
+不可变存储可以用于任何 Blob 类型，因为它是在容器级别设置的，但我们建议你将 WORM 用于主要存储块 Blob 的容器。 与块 Blob 不同，任何新的页 Blob 和追加 Blob 需先在 WORM 容器外部创建，然后复制到容器中。 将这些 Blob 复制到 WORM 容器中后，就不再允许对追加 Blob 执行追加操作，也不允许对页 Blob 进行更改。 因此，强烈建议不要在存储 VHD（页 Blob）的容器上为任何活动的虚拟机设置 WORM 策略，因为它会锁定 VM 磁盘。
 
 **是否需要创建新的存储帐户才能使用此功能？**
 
@@ -219,7 +219,7 @@ Az.Storage 模块支持不可变存储。  若要启用该功能，请执行以�
 
 **该功能已在哪些区域推出？**
 
-Azure 公共区域、中国区域和政府区域均提供不可变存储。 如果区域中没有不可变的存储, 请联系支持人员和电子azurestoragefeedback@microsoft.com邮件。
+Azure 公共区域、中国区域和政府区域均提供不可变存储。 如果区域中没有不可变的存储，请联系支持人员和电子azurestoragefeedback@microsoft.com邮件。
 
 ## <a name="sample-powershell-code"></a>示例 PowerShell 代码
 

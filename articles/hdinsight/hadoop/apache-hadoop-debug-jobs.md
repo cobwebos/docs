@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: e5ae05b2ad1dc03bad210b1f67834865afd49df3
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810880"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882427"
 ---
-# <a name="analyze-apache-hadoop-logs"></a>分析 Apache Hadoop 日志
+# <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>在 Azure HDInsight 中分析 Apache Hadoop 日志
 
 Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件系统的 Azure 存储帐户。 该存储帐户称作默认存储帐户。 群集使用默认存储帐户上的 Azure 表存储和 Blob 存储来存储其日志。  若要了解群集的默认存储帐户，请参阅[在 HDInsight 中管理 Apache Hadoop 群集](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts)。 即使在删除群集以后，日志仍会保留在存储帐户中。
 

@@ -3,21 +3,21 @@ title: 密钥保管库 .NET 2.x API 发行说明 | Microsoft Docs
 description: .NET 开发人员可使用此 API 来编写 Azure 密钥保管库的代码
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 editor: bryanla
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: e173ff54020f2d365348ae037793cfbba3f9ed7f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 07502b4c4487a7517e2fe73b62eae0a237a6f22b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260442"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883262"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure 密钥保管库 .NET 2.0 - 发行说明和迁移指南
-以下信息有助于迁移到 C# 和 .NET 的 Azure Key Vault 库版本 2.0。  针对早期版本所编写的应用需进行更新，以支持最新版本。  为完全支持新增和改进的功能（如 Key Vault 证书），这些更改是必需的  。
+以下信息有助于迁移到 C# 和 .NET 的 Azure Key Vault 库版本 2.0。  针对早期版本所编写的应用需进行更新，以支持最新版本。  为完全支持新增和改进的功能（如 Key Vault 证书），这些更改是必需的。
 
 ## <a name="key-vault-certificates"></a>Key Vault 证书
 
@@ -41,25 +41,25 @@ Key Vault 证书管理 x509 证书，并支持以下行为：
 * 已废除 **Microsoft.Azure.KeyVault.Internal** 命名空间。
 * 以下 Azure SDK 依赖项命名空间的更改 
 
-    - Hyak.Common 现为 Microsoft.Rest   。
-    - Hyak.Common.Internals 现为 Microsoft.Rest.Serialization   。
+    - Hyak.Common 现为 Microsoft.Rest。
+    - Hyak.Common.Internals 现为 Microsoft.Rest.Serialization。
 
 ## <a name="type-changes"></a>类型更改
 
 * *Secret* 更改为 *SecretBundle*
 * *Dictionary* 更改为 *IDictionary*
-* *List\<t >, string []* 更改为*IList\<T >*
+* *List\<t >，string []* 更改为*IList\<T >*
 * *NextList* 更改为 *NextPageLink*
 
 ## <a name="return-types"></a>返回类型
 
 * **KeyList**和**SecretList**现在返回*IPage\<T >* 而不是*ListKeysResponseMessage*
-* 生成的 BackupKeyAsync 将返回 BackupKeyResult，其中包含“值”（备份 blob）    。 以前，此方法会包装且仅返回值。
+* 生成的 BackupKeyAsync 将返回 BackupKeyResult，其中包含“值”（备份 blob）。 以前，此方法会包装且仅返回值。
 
 ## <a name="exceptions"></a>Exceptions
 
 * *KeyVaultClientException* 更改为 *KeyVaultErrorException*
-* 服务错误从 exception.Error 更改为 exception.Body.Error.Message   。
+* 服务错误从 exception.Error 更改为 exception.Body.Error.Message。
 * 从 **[JsonExtensionData]** 的错误消息中删除其他信息。
 
 ## <a name="constructors"></a>构造函数
@@ -89,8 +89,8 @@ Key Vault 证书管理 x509 证书，并支持以下行为：
 
 ## <a name="class-changes"></a>类的更改
 
-* 已删除 UnixEpoch 类  。
-* Base64UrlConverter 类重命名为 Base64UrlJsonConverter   。
+* 已删除 UnixEpoch 类。
+* Base64UrlConverter 类重命名为 Base64UrlJsonConverter。
 
 ## <a name="other-changes"></a>其他更改
 
@@ -98,7 +98,7 @@ Key Vault 证书管理 x509 证书，并支持以下行为：
 
 ## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
 
-* 对于返回 vault 的操作，返回类型是包含 Vault 属性的类   。 返回类型现在是 *Vault*。
+* 对于返回 vault 的操作，返回类型是包含 Vault 属性的类。 返回类型现在是 *Vault*。
 * *PermissionsToKeys* 和 *PermissionsToSecrets* 现在是 *Permissions.Keys* 和 *Permissions.Secrets*
 * 某些返回类型的更改也适用于控制面板。
 

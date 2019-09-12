@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2caa96e0ad036bbb872de43a7d8736969cf33c42
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 706f0333f1cca984b44e0fc96a5b014d4157ce4c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812042"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879700"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>监视 Azure HDInsight 中的群集性能
 
@@ -68,7 +68,7 @@ YARN 队列管理器页的左侧显示队列的列表，以及分配给每个队
 
 在资源管理器 UI 中，从左侧菜单中选择“计划程序”。 “应用程序队列”下将显示队列的列表。 此处可看到用于每个队列的容量、作业在队列之间的分布情况，以及作业是否受资源约束。
 
-![“资源管理器 UI”菜单链接](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![资源管理器 UI 菜单](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
 
 ## <a name="storage-throttling"></a>存储限制
 

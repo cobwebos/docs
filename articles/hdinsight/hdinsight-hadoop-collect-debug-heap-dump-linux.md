@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 62c9dcc039c68b0b6c8b8bf29ed9f13f88936723
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 68be0d7d13785c9631044766a290eec93637ea64
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059488"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879972"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储
 
@@ -88,37 +88,37 @@ ms.locfileid: "67059488"
    > [!NOTE]  
    > Ambari 可能会再次提示输入用户名和密码。 如果是这样，请输入相同的帐户名和密码。
 
-2. 使用左侧的列表，选择你想要修改的服务区。 例如，**HDFS**。 在中心区域，选择“配置”  选项卡。
+2. 使用左侧的列表，选择你想要修改的服务区。 例如，**HDFS**。 在中心区域，选择“配置”选项卡。
 
-    ![“HDFS 配置”选项卡已选定的 Ambari 网站的图像](./media/hdinsight-hadoop-heap-dump-linux/serviceconfig.png)
+    ![“HDFS 配置”选项卡已选定的 Ambari 网站的图像](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
 
-3. 使用“筛选...”  条目，输入“opts”  。 仅显示包含此文本的项。
+3. 使用“筛选...”条目，输入“opts”。 仅显示包含此文本的项。
 
-    ![筛选的列表](./media/hdinsight-hadoop-heap-dump-linux/filter.png)
+    ![筛选的列表](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
 4. 查找需为其启用堆转储的服务的 **\*\_OPTS** 条目，并添加希望启用的选项。 在下图中，已将 `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` 添加到 **HADOOP\_NAMENODE\_OPTS** 条目：
 
-    ![HADOOP_NAMENODE_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
+    ![HADOOP_NAMENODE_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 
    > [!NOTE]  
    > 为映射或化简子进程启用堆转储时，需查找名为 **mapreduce.admin.map.child.java.opts** 和 **mapreduce.admin.reduce.child.java.opts** 的字段。
 
-    使用“保存”  按钮保存所做的更改。 可以输入简短的说明，描述所做的更改。
+    使用“保存”按钮保存所做的更改。 可以输入简短的说明，描述所做的更改。
 
-5. 一旦应用了所做的更改，“需要重启”  图标会显示在一个或多个服务旁边。
+5. 一旦应用了所做的更改，“需要重启”图标会显示在一个或多个服务旁边。
 
-    ![需要重新启动图标和重新启动按钮](./media/hdinsight-hadoop-heap-dump-linux/restartrequiredicon.png)
+    ![需要重新启动图标和重新启动按钮](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
 
-6. 选择需要重启的每个服务，并使用“服务操作”  按钮以“打开维护模式”  。 维护模式可以防止重启服务时从该服务生成警报。
+6. 选择需要重启的每个服务，并使用“服务操作”按钮以“打开维护模式”。 维护模式可以防止重启服务时从该服务生成警报。
 
-    ![打开维护模式菜单](./media/hdinsight-hadoop-heap-dump-linux/maintenancemode.png)
+    ![打开维护模式菜单](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
 
-7. 一旦启用维护模式，使用服务的“重启”  按钮即可“重启所有受影响的服务” 
+7. 一旦启用维护模式，使用服务的“重启”按钮即可“重启所有受影响的服务”
 
-    ![重新启动受影响的所有条目](./media/hdinsight-hadoop-heap-dump-linux/restartbutton.png)
+    ![重新启动受影响的所有条目](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
 
    > [!NOTE]  
-   > 其他服务的“重启”按钮条目可能会有所不同  。
+   > 其他服务的“重启”按钮条目可能会有所不同。
 
-8. 一旦重启服务，可使用“服务操作”  按钮“关闭维护模式”  。 这样一来，Ambari 就可以继续监视服务的警报。
+8. 一旦重启服务，可使用“服务操作”按钮“关闭维护模式”。 这样一来，Ambari 就可以继续监视服务的警报。
 

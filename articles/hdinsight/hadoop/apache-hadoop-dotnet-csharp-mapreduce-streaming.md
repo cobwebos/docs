@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: b06f19736c4d50ab7d246a5c71da04ada95b6f98
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f82ad65ecc805d5a45c78e8b190dd0eee4c340c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727363"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882333"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
@@ -42,7 +42,7 @@ __基于 Linux 的 HDInsight__ 群集使用 [Mono (https://mono-project.com)](ht
 
 有关流式处理的详细信息，请参阅 [Hadoop 流式处理](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 熟悉编写和生成面向 .NET Framework 4.5 的 C# 代码。 本文档中的各个步骤都使用 Visual Studio 2017。
 
@@ -144,29 +144,29 @@ namespace reducer
 
 ## <a name="upload-to-storage"></a>上传到存储
 
-1. 在 Visual Studio 中，打开“服务器资源管理器”  。
+1. 在 Visual Studio 中，打开“服务器资源管理器”。
 
-2. 依次展开“Azure”  和“HDInsight”  。
+2. 依次展开“Azure”和“HDInsight”。
 
-3. 如果出现提示，请输入 Azure 订阅凭据，并单击“登录”  。
+3. 如果出现提示，请输入 Azure 订阅凭据，并单击“登录”。
 
-4. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”  的条目。
+4. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”的条目。
 
-    ![显示群集存储帐户的服务器资源管理器](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/storage.png)
+    ![显示群集存储帐户的服务器资源管理器](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
 
-    * 如果此条目可以展开，则在使用 __Azure 存储帐户__作为该群集的默认存储。 要查看该群集的默认存储上的文件，请展开该条目，并双击“（默认容器）”  。
+    * 如果此条目可以展开，则在使用 __Azure 存储帐户__作为该群集的默认存储。 要查看该群集的默认存储上的文件，请展开该条目，并双击“（默认容器）”。
 
-    * 如果此条目无法展开，则在使用 __Azure Data Lake Storage__ 作为该群集的默认存储。 若要查看该群集的默认存储上的文件，请双击“（默认存储帐户）”  条目。
+    * 如果此条目无法展开，则在使用 __Azure Data Lake Storage__ 作为该群集的默认存储。 若要查看该群集的默认存储上的文件，请双击“（默认存储帐户）”条目。
 
 5. 若要上传 .exe 文件，请使用以下方法之一：
 
-   * 如果使用的是 __Azure 存储帐户__，请单击“上传”图标，并浏览到“mapper”  项目的“bin\debug”  文件夹。 最后，选择“mapper.exe”  文件，并单击“确定”  。
+   * 如果使用的是 __Azure 存储帐户__，请单击“上传”图标，并浏览到“mapper” 项目的“bin\debug”文件夹。 最后，选择“mapper.exe”文件，并单击“确定”。
 
-       ![上传图标](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
+        ![上传图标](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
     
-   * 如果使用的是 __Azure Data Lake Storage__，请右键单击文件列表中的空白区域，并选择“上传”  。 最后，选择“mapper.exe”  文件，并单击“打开”  。
+   * 如果使用的是 __Azure Data Lake Storage__，请右键单击文件列表中的空白区域，并选择“上传”。 最后，选择“mapper.exe”文件，并单击“打开”。
 
-     上传“mapper.exe”  完成后，请为“reducer.exe”  文件重复该上传过程。
+     上传“mapper.exe”完成后，请为“reducer.exe”文件重复该上传过程。
 
 ## <a name="run-a-job-using-an-ssh-session"></a>运行作业：使用 SSH 会话
 

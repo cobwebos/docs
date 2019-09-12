@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18, seo-java-august2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 8684e786de64f91acba0c61017083015288ca4eb
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c622e9af4263c844fb25dc65657998cfc82d4a2d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172789"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884211"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>使用 Java 将事件发送到 Azure 事件中心或从 Azure 事件中心接收事件
 
@@ -88,10 +88,10 @@ public class SimpleSend {
 
 ```java
         final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
-                .setNamespaceName("speventhubns") 
-                .setEventHubName("speventhub")
+                .setNamespaceName("<EVENTHUB NAMESPACE") 
+                .setEventHubName("EVENT HUB")
                 .setSasKeyName("RootManageSharedAccessKey")
-                .setSasKey("2+WMsyyy1XmUtEnRsfOmTTyGasfJgsVjGAOIN20J1Y8=");
+                .setSasKey("SHARED ACCESS KEY");
 ```
 
 ### <a name="write-code-to-send-events"></a>编写代码来发送事件
@@ -178,12 +178,12 @@ EventProcessorHost 是一个 Java 类，通过在这些事件中心管理持久�
 
 若要使用 EventProcessorHost，必须拥有 [Azure 存储帐户][Azure 存储帐户]：
 
-1. 登录[Azure 门户](https://portal.azure.com), 并在屏幕左侧选择 "**创建资源**"。
-2. 选择 "**存储**", 然后选择 "**存储帐户**"。 在“创建存储帐户”窗口中，键入存储帐户的名称。 填写其余字段, 选择所需的区域, 然后选择 "**创建**"。
+1. 登录[Azure 门户](https://portal.azure.com)，并在屏幕左侧选择 "**创建资源**"。
+2. 选择 "**存储**"，然后选择 "**存储帐户**"。 在“创建存储帐户”窗口中，键入存储帐户的名称。 填写其余字段，选择所需的区域，然后选择 "**创建**"。
    
     ![创建存储帐户](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
-3. 选择新创建的存储帐户, 然后选择 "**访问密钥**":
+3. 选择新创建的存储帐户，然后选择 "**访问密钥**"：
    
     ![获取访问密钥](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 

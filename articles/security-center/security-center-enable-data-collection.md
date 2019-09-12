@@ -2,51 +2,45 @@
 title: Azure 安全中心中的数据收集 | Microsoft Docs
 description: " 了解如何启用 Azure 安全中心中的数据收集。 "
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/10/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 12739bf230eb7a2d5afa4edd57dbc2761907ec4e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 0cbb6f022dbeded2bbfb19769595be69ec62c311
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231349"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910635"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
-安全中心从 Azure 虚拟机 (Vm)、虚拟机规模集、IaaS 容器和非 Azure (包括本地) 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的, 它从计算机读取各种安全相关配置和事件日志, 并将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还将故障转储文件复制到工作区。
+安全中心从 Azure 虚拟机（Vm）、虚拟机规模集、IaaS 容器和非 Azure （包括本地）计算机收集数据以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，它从计算机读取各种安全相关配置和事件日志，并将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还将故障转储文件复制到工作区。
 
 必须收集数据才能深入了解缺少的更新、配置不当的 OS 安全设置、终结点保护启用情况，以及运行状况和威胁检测结果。 
 
-本文提供了有关如何安装 Log Analytics 代理和设置 Log Analytics 工作区来存储所收集数据的指导。 这两项操作都需要启用数据收集。 
+本文介绍如何安装 Log Analytics 代理，以及如何设置 Log Analytics 工作区来存储所收集的数据。 这两项操作都需要启用数据收集。 
 
 > [!NOTE]
-> - 只需要对计算资源 (Vm、虚拟机规模集、IaaS 容器和非 Azure 计算机) 进行数据收集。 即使未预配代理，也能从 Azure 安全中心受益；但是，安全性会受到限制，并且上面列出的功能不受支持。  
+> - 只需要对计算资源（Vm、虚拟机规模集、IaaS 容器和非 Azure 计算机）进行数据收集。 即使未预配代理，也能从 Azure 安全中心受益；但是，安全性会受到限制，并且上面列出的功能不受支持。  
 > - 有关支持的平台列表，请参阅 [Azure 安全中心支持的平台](security-center-os-coverage.md)。
-> - 将数据存储在 Log Analytics 中, 无论是使用新工作区还是现有工作区, 都可能会产生额外的数据存储费用。 有关更多详细信息, 请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+> - 将数据存储在 Log Analytics 中，无论是使用新工作区还是现有工作区，都可能会产生额外的数据存储费用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
 ## 启用 Log Analytics 代理的自动预配<a name="auto-provision-mma"></a>
 
-若要从计算机中收集数据, 应安装 Log Analytics 代理。  可以自动完成代理的安装 (推荐), 也可以手动安装该代理。  
+若要从计算机中收集数据，应安装 Log Analytics 代理。 可以自动完成代理的安装（推荐），也可以手动安装该代理。  
 
 >[!NOTE]
 > 默认情况下自动设置处于关闭状态。 若要将安全中心设置为默认安装自动预配，请将自动预配设置为“打开”。
 >
 
-当启用自动预配时, 安全中心会在所有支持的 Azure Vm 和创建的任何新 Vm 上预配 Log Analytics 代理。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Log Analytics 代理扩展](#manual-agent)。
+当启用自动预配时，安全中心会在所有支持的 Azure Vm 和创建的任何新 Vm 上预配 Log Analytics 代理。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Log Analytics 代理扩展](#manual-agent)。
 
 
 
-若要启用自动预配 Log Analytics 代理:
-1. 在 "安全中心" 主菜单下, 选择 "**定价 & 设置**"。
+若要启用自动预配 Log Analytics 代理：
+1. 在 "安全中心" 主菜单下，选择 "**定价 & 设置**"。
 2. 单击适用的订阅
 
    ![选择订阅][7]
@@ -59,13 +53,13 @@ ms.locfileid: "70231349"
 
 >[!NOTE]
 > - 有关如何预配现有安装的说明，请参阅[对现有的代理安装进行自动预配](#preexisting)。
-> - 有关手动预配的说明, 请参阅[手动安装 Log Analytics 代理扩展](#manual-agent)。
+> - 有关手动预配的说明，请参阅[手动安装 Log Analytics 代理扩展](#manual-agent)。
 > - 有关关闭自动预配的说明，请参阅[关闭自动预配](#offprovisioning)。
 > - 有关如何使用 PowerShell 加入安全中心的说明，请参阅[使用PowerShell 自动加入 Azure 安全中心](security-center-powershell-onboarding.md)。
 >
 
 ## <a name="workspace-configuration"></a>工作区配置
-安全中心收集的数据存储在 Log Analytics 工作区中。  可以选择从存储在安全中心创建的工作区或创建的现有工作区中的 Azure VM 收集数据。 
+安全中心收集的数据存储在 Log Analytics 工作区中。 可以选择从存储在安全中心创建的工作区或创建的现有工作区中的 Azure VM 收集数据。 
 
 工作区配置是按订阅设置的，多个订阅可以使用同一个工作区。
 
@@ -87,19 +81,19 @@ ms.locfileid: "70231349"
 
 > [!NOTE]
 > 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案。 对于“免费层”，安全中心将在默认工作区中启用 *SecurityCenterFree* 解决方案。 对于“标准层”，安全中心将在默认工作区中启用 *Security* 解决方案。
-> 将数据存储在 Log Analytics 可能会产生额外的数据存储费用。 有关更多详细信息, 请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+> 将数据存储在 Log Analytics 可能会产生额外的数据存储费用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
-有关现有 log analytics 帐户的详细信息, 请参阅[现有 log analytics 客户](security-center-faq.md#existingloganalyticscust)。
+有关现有 log analytics 帐户的详细信息，请参阅[现有 log analytics 客户](security-center-faq.md#existingloganalyticscust)。
 
 ### <a name="using-an-existing-workspace"></a>使用现有工作区
 
-如果已有一个 Log Analytics 工作区，可以使用该工作区。
+如果已有现有 Log Analytics 工作区，可能需要使用同一工作区。
 
 若要使用现有 Log Analytics 工作区，必须对该工作区拥有读取和写入权限。
 
 > [!NOTE]
 > 在现有工作区中启用的解决方案将应用到与该工作区相连接的 Azure VM。 对于付费的解决方案，这可能会产生额外的费用。 出于数据隐私的考虑，请确保所选工作区位于适当的地理区域。
-> 在 log analytics 中存储数据可能会产生额外的数据存储费用。 有关更多详细信息, 请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+> 在 log analytics 中存储数据可能会产生额外的数据存储费用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
 选择现有 Log Analytics 工作区的具体步骤：
 
@@ -131,7 +125,7 @@ ms.locfileid: "70231349"
 
 5. 为要设置 Log Analytics 代理的所需工作区选择定价层。 <br>若要使用现有工作区，请设置该工作区的定价层。 这会在该工作区中安装一个安全中心解决方案（如果尚不存在）。
 
-    a.  在安全中心主菜单中, 选择 "**定价 & 设置**"。
+    a.  在安全中心主菜单中，选择 "**定价 & 设置**"。
      
     b.  选择要在其中连接代理的所需工作区。
         ![选择工作区][7] c. 设置定价层。
@@ -145,9 +139,9 @@ ms.locfileid: "70231349"
 
 
 ## <a name="data-collection-tier"></a>数据收集层
-在 Azure 安全中心选择数据收集层只会影响 Log Analytics 工作区中安全事件的存储。 Log Analytics 代理仍将收集和分析 Azure 安全中心威胁检测所需的安全事件, 而不考虑你选择在 Log Analytics 工作区中存储的安全事件层 (如果有)。 选择在工作区中存储安全事件将允许在工作区中调查、搜索和审核这些事件。 
+在 Azure 安全中心选择数据收集层只会影响 Log Analytics 工作区中安全事件的存储。 Log Analytics 代理仍将收集和分析 Azure 安全中心威胁检测所需的安全事件，而不考虑你选择在 Log Analytics 工作区中存储的安全事件层（如果有）。 选择在工作区中存储安全事件将允许在工作区中调查、搜索和审核这些事件。 
 > [!NOTE]
-> 在 log analytics 中存储数据可能会产生额外的数据存储费用。 有关更多详细信息, 请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+> 在 log analytics 中存储数据可能会产生额外的数据存储费用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 > 
 > 可以根据要在工作区中存储的四组事件为订阅和工作区选择正确的筛选策略： 
 
@@ -165,8 +159,8 @@ ms.locfileid: "70231349"
 
 为了确定属于通用和最小事件集的事件，我们与客户进行协作，参照行业标准，了解了每个事件及其使用情况的未筛选频率。 我们在此过程中使用了以下准则：
 
-- 最小 - 确保此集只涵盖可能指示成功违反的事件以及数量很少的重要事件。 例如, 此集包含用户成功和失败的登录 (事件 Id 4624、4625), 但它不包含用于审核的重要信息, 但对于检测并无意义, 它的数量相对较高。 此集的大多数数据量是登录事件和进程创建事件（事件 ID 4688）。
-- 通用 - 提供此集中的完整用户审核跟踪。 例如, 此集包含用户登录名和用户注销 (事件 ID 4634)。 我们加入审核操作，如安全组更改、关键域控制器 Kerberos 操作以及行业组织建议的其他事件。
+- 最小 - 确保此集只涵盖可能指示成功违反的事件以及数量很少的重要事件。 例如，此集包含用户成功和失败的登录（事件 Id 4624、4625），但它不包含用于审核的重要信息，但对于检测并无意义，它的数量相对较高。 此集的大多数数据量是登录事件和进程创建事件（事件 ID 4688）。
+- 通用 - 提供此集中的完整用户审核跟踪。 例如，此集包含用户登录名和用户注销（事件 ID 4634）。 我们加入审核操作，如安全组更改、关键域控制器 Kerberos 操作以及行业组织建议的其他事件。
 
 数量非常少的事件包含在通用集中，因为在所有事件中选择该集的主要动机是为了减少数量，而不是筛选出特定事件。
 
@@ -191,40 +185,40 @@ ms.locfileid: "70231349"
 >
 
 选择筛选策略的具体步骤：
-1. 在 "**数据收集**" 页上, 选择 "**安全事件**" 下的筛选策略。
+1. 在 "**数据收集**" 页上，选择 "**安全事件**" 下的筛选策略。
 2. 选择**保存**。
 
    ![选择筛选策略][5]
 
-### 对现有的代理安装进行自动预配 <a name="preexisting"></a> 
+### 预先存在的代理安装的情况下的自动预配<a name="preexisting"></a> 
 
 以下用例指定在已安装代理或扩展的情况下如何进行自动预配。 
 
-- Log Analytics 代理安装在计算机上, 而不是作为扩展 (直接代理)<br>
-如果 Log Analytics 代理直接安装在 VM 上 (而不是 Azure 扩展), 则安全中心将安装 Log Analytics 代理扩展, 并可能将 Log Analytics 代理升级到最新版本。
-安装的代理将继续向其已配置的工作区报告, 此外还会向安全中心 (在 Windows 计算机上支持多宿主) 中配置的工作区进行报告。
-如果配置的工作区是一个用户工作区 (而不是安全中心的默认工作区), 则需要在该工作区上安装 "security/" securityFree "解决方案, 以便安全中心开始处理向该工作区报告的 Vm 和计算机的事件。<br>
+- Log Analytics 代理安装在计算机上，而不是作为扩展（直接代理）<br>
+如果 Log Analytics 代理直接安装在 VM 上（而不是 Azure 扩展），则安全中心将安装 Log Analytics 代理扩展，并可能将 Log Analytics 代理升级到最新版本。
+安装的代理将继续向其已配置的工作区报告，此外还会向安全中心（在 Windows 计算机上支持多宿主）中配置的工作区进行报告。
+如果配置的工作区是一个用户工作区（而不是安全中心的默认工作区），则需要在该工作区上安装 "security/" securityFree "解决方案，以便安全中心开始处理向该工作区报告的 Vm 和计算机的事件。<br>
 <br>
-对于 Linux 计算机, 尚不支持代理多宿主, 因此, 如果检测到现有的代理安装, 则不会发生自动预配, 并且不会更改计算机的配置。
+对于 Linux 计算机，尚不支持代理多宿主，因此，如果检测到现有的代理安装，则不会发生自动预配，并且不会更改计算机的配置。
 <br>
-对于订阅上的现有计算机载入到2019-03-17 之前的安全中心, 检测到现有代理时, 将不会安装 Log Analytics 代理扩展, 并且计算机将不会受到影响。 对于这些计算机, 请参阅 "解决计算机上的监视代理运行状况问题" 建议, 以解决这些计算机上的代理安装问题。
+对于订阅上的现有计算机载入到2019-03-17 之前的安全中心，检测到现有代理时，将不会安装 Log Analytics 代理扩展，并且计算机将不会受到影响。 对于这些计算机，请参阅 "解决计算机上的监视代理运行状况问题" 建议，以解决这些计算机上的代理安装问题。
 
   
 - 计算机上已安装 System Center Operations Manager 代理<br>
-安全中心会将 Log Analytics 代理扩展与现有 Operations Manager 并行安装。 现有的 Operations Manager 代理将继续正常向 Operations Manager 服务器报告。 请注意, Operations Manager 代理和 Log Analytics 代理共享公共运行库, 在此过程中将更新为最新版本。
-注意-如果安装了 Operations Manager 代理版本 2012, 则**不要**在上启用自动设置。<br>
+安全中心会将 Log Analytics 代理扩展与现有 Operations Manager 并行安装。 现有的 Operations Manager 代理将继续正常向 Operations Manager 服务器报告。 请注意，Operations Manager 代理和 Log Analytics 代理共享公共运行库，在此过程中将更新为最新版本。
+注意-如果安装了 Operations Manager 代理版本2012，则**不要**在上启用自动设置。<br>
 
 - 存在现有的 VM 扩展<br>
-    - 将 Monitoring Agent 作为扩展安装时，扩展配置仅允许向单个工作区报告。 安全中心不会覆盖用户工作区的现有连接。 安全中心会在已连接的工作区中存储来自 VM 的安全数据, 前提是已在其上安装了 "安全" 或 "securityFree" 解决方案。 在此过程中，安全中心可将扩展版本升级到最新版本。  
-    - 若要查看现有扩展将数据发送到哪个工作区，请运行测试来[验证与 Azure 安全中心的连接](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/)。 或者, 你可以打开 Log Analytics 工作区, 选择一个工作区, 选择 VM, 然后查看 Log Analytics 代理连接。 
-    - 如果你的环境中的 Log Analytics 代理安装在客户端工作站上并向现有 Log Analytics 工作区报告, 请查看[Azure 安全中心支持的操作系统](security-center-os-coverage.md)列表, 确保你的操作系统支持, 有关详细信息, 请参阅[现有 log analytics 客户](security-center-faq.md#existingloganalyticscust)。
+    - 将 Monitoring Agent 作为扩展安装时，扩展配置仅允许向单个工作区报告。 安全中心不会覆盖用户工作区的现有连接。 安全中心会在已连接的工作区中存储来自 VM 的安全数据，前提是已在其上安装了 "安全" 或 "securityFree" 解决方案。 在此过程中，安全中心可将扩展版本升级到最新版本。  
+    - 若要查看现有扩展将数据发送到哪个工作区，请运行测试来[验证与 Azure 安全中心的连接](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/)。 或者，你可以打开 Log Analytics 工作区，选择一个工作区，选择 VM，然后查看 Log Analytics 代理连接。 
+    - 如果你的环境中的 Log Analytics 代理安装在客户端工作站上并向现有 Log Analytics 工作区报告，请查看[Azure 安全中心支持的操作系统](security-center-os-coverage.md)列表，确保你的操作系统受. 有关详细信息，请参阅[现有 log analytics 客户](security-center-faq.md#existingloganalyticscust)。
  
 ### 关闭自动预配 <a name="offprovisioning"></a>
 随时可以关闭资源的自动预配，在安全策略中关闭此设置即可。 
 
 
 1. 返回到“安全中心”主菜单，选择“安全策略”。
-2. 在要禁用自动设置的订阅的行中, 单击 "**编辑设置**"。
+2. 在要禁用自动设置的订阅的行中，单击 "**编辑设置**"。
 3. 在“安全策略 - 数据收集”边栏选项卡的“自动预配”下，选择“关闭”。
 4. 选择**保存**。
 
@@ -246,9 +240,9 @@ ms.locfileid: "70231349"
 
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Operations Management Suite VM 扩展部署 
 
-你可以手动安装 Log Analytics 代理, 因此安全中心可以从 Vm 收集安全数据, 并提供建议和警报。
+你可以手动安装 Log Analytics 代理，因此安全中心可以从 Vm 收集安全数据，并提供建议和警报。
 1. 选择自动预配 - 关闭。
-2. 创建工作区, 并为要设置 Log Analytics 代理的工作区设置定价层:
+2. 创建工作区，并为要设置 Log Analytics 代理的工作区设置定价层：
 
    a.  在安全中心主菜单中，选择“安全策略”。
      
