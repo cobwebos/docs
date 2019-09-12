@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure 的自动 ML 接口训练 & 部署模型
 titleSuffix: Azure Machine Learning service
-description: 在 Azure 门户中创建、管理和部署自动化机器学习试验
+description: 在 Azure 机器学习的工作区登陆页面（预览版）中创建、管理和部署自动化机器学习试验。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,19 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 08/02/2019
-ms.openlocfilehash: 79632a2b5862538ef702cec01a60aada14d8dbce
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.date: 09/09/2019
+ms.openlocfilehash: 3ee15b5485f4fc0f81788107ce2378c65085e000
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860489"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910422"
 ---
-# <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>在 Azure 门户中创建、浏览和部署自动化机器学习试验（预览版）
+# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>通过 Azure 机器学习的工作区登陆页面（预览版）创建、探索和部署自动化机器学习试验
 
- 本文介绍如何在 Azure 门户中创建、浏览和部署自动化机器学习试验，无需编写任何代码。 自动机器学习自动执行选择要用于特定数据的最佳算法的过程, 以便您可以快速生成机器学习模型。 [详细了解自动化机器学习](concept-automated-ml.md)。
+ 本文介绍如何在 Azure 机器学习的工作区登录页中创建、浏览和部署自动化机器学习试验，无需编写任何代码。 自动机器学习自动执行选择要用于特定数据的最佳算法的过程, 以便您可以快速生成机器学习模型。 [详细了解自动化机器学习](concept-automated-ml.md)。
 
  如果你更喜欢更多基于代码的体验, 还可以使用[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)[在 Python 中配置自动化机器学习试验](how-to-configure-auto-train.md)。
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,23 +32,26 @@ ms.locfileid: "70860489"
 
 ## <a name="get-started"></a>开始使用
 
-导航到工作区的左窗格。 选择 "创作（预览）" 部分下的 "自动机器学习。
 
-![Azure 门户导航窗格](media/how-to-create-portal-experiments/nav-pane.png)
+1. 登录到[工作区登录页](https://ml.azure.com/workspaceportal/)。 
 
- 如果这是你第一次执行任何试验，将看到 "**欢迎使用自动机器学习**屏幕"。 
+1. 选择订阅和工作区。 
+
+1. 导航到左窗格。 在 "**创作**" 部分下选择 "**自动 ML** "。
+
+[![Azure 门户导航窗格](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
+
+ 如果这是你首次执行任何试验，你会看到 "**入门**" 屏幕。 
 
 否则，你将看到**自动化机器学习**仪表板，其中概述了所有自动化机器学习试验，其中包括使用 SDK 创建的实验。 在此处, 你可以按日期、实验名称和运行状态对运行进行筛选和浏览。
 
-你还可以从[工作区登陆页面（预览）](https://ml.azure.com)访问自动机器学习。
+## <a name="create-and-run-experiment"></a>创建并运行试验
 
-## <a name="create-an-experiment"></a>创建试验
-
-选择 "**创建实验**"，并填充 "**创建新的自动机器学习试验**" 窗体。
+1. 选择 "**创建试验**" 并填充窗体。
 
 1. 输入一个唯一的实验名称。
 
-1. 为数据事件探查和定型作业选择计算。 下拉列表中提供了现有计算的列表。 若要创建新计算, 请按照步骤3中的说明进行操作。
+1. 为数据事件探查和定型作业选择计算。 下拉列表中提供了现有计算的列表。 若要创建新计算，请按照步骤4中的说明进行操作。
 
 1. 选择 "**创建新计算**"，为此试验配置计算上下文。
 
@@ -58,32 +60,40 @@ ms.locfileid: "70860489"
     计算名称| 输入用于标识计算上下文的唯一名称。
     虚拟机大小| 指定计算资源的虚拟机大小。
     其他设置| *最小节点数*：输入计算的最小节点数。 AML 计算的最小节点数为0。 若要启用数据事件探查, 必须有1个或多个节点。 <br> *最大节点数*：输入计算的最大节点数。 默认值为用于 AML 计算的6个节点。
+    
+    选择“创建”。 创建新计算可能需要几分钟时间。
 
-      选择“创建”。 创建新计算可能需要几分钟时间。
+    >[!NOTE]
+    > 你的计算名称将指示你选择/创建的计算是否已*启用分析*。 （有关详细信息，请参阅[数据分析](#profile)部分）。
 
-      >[!NOTE]
-      > 你的计算名称将指示你选择/创建的计算是否已*启用分析*。 (有关数据分析的详细信息, 请参阅 7b)。
+1. 从存储容器中选择一个数据集，或通过将本地计算机上的文件上传到容器来创建一个数据集。 公共预览版仅支持本地文件上传和 Azure blob 存储帐户。
 
-1. 为数据选择存储帐户。 
-
-1. 选择存储容器。
-
-1. 从存储容器中选择数据文件, 或将本地计算机上的文件上传到容器中。 公共预览版仅支持本地文件上传和 Azure Blob 存储帐户。
     >[!Important]
     > 定型数据的要求：
     >* 数据必须为表格格式。
     >* 要预测的值（目标列）必须在数据中存在。
 
-    [![选择数据文件](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
+    1. 若要从本地计算的文件创建新数据集，请选择 "**浏览**"，然后选择该文件。 
 
-1. 使用 "预览" 和 "配置文件" 选项卡进一步配置此试验的数据。
+    1. 为数据集指定唯一名称，并提供可选说明。 
 
-    1. 在 "**预览**" 选项卡上，指示你的数据是否包括标题，并使用每个功能列中的 "已**包含**" 按钮选择用于定型的功能（列）。
+    1. 选择 "**下一步**" 将其上传到自动使用工作区创建的默认存储容器，或选择要用于试验的存储容器。 
 
-    1. 在 "**配置文件**" 选项卡上，可以按功能查看[数据配置文件](#profile)，以及每个的分布、类型和摘要统计信息（平均值、中间值、最大/最小值等）。
+    1. 查看**设置和预览**表单的准确性。 将根据文件类型智能地填充窗体。 
 
-        >[!NOTE]
-        > 如果计算上下文未**启用分析,** 将显示以下错误消息:*数据事件探查仅适用于已在运行的计算目标*。
+        字段| 描述
+        ----|----
+        文件格式| 定义文件中存储的数据的布局和类型。
+        分隔符| 一个或多个字符，用于在纯文本或其他数据流中的独立区域之间指定边界。
+        编码| 标识要用于读取数据集的字符架构表。
+        列标题| 指示将如何处理数据集（如果有）的标头。
+        跳过行 | 指示在数据集中跳过的行数（如果有）。
+    
+        选择“**下一步**”。
+
+    1. **架构**窗体根据 "**设置" 和 "预览**" 窗体中的选择进行智能填充。 此处配置每个列的数据类型，查看列名，并为试验选择**不包括**的列。 
+            
+        选择 "**下一步"。**
 
 1. 选择定型作业类型: 分类、回归或预测。
 
@@ -94,7 +104,7 @@ ms.locfileid: "70860489"
 
     1. 选择预测范围:指示模型能够预测到未来的时间单位 (分钟/小时/天/周/月/年)。 需要进一步预测模型以预测未来, 它的准确性越低。 [了解有关预测和预测范围的详细信息](how-to-auto-train-forecast.md)。
 
-1. 可有可无高级设置: 可用于更好地控制训练作业的其他设置。
+1. 可有可无高级设置: 可用于更好地控制训练作业的其他设置。 否则，将根据试验选择和数据应用默认值。 
 
     高级设置|描述
     ------|------
@@ -165,7 +175,7 @@ Variance| 此列的数据超出其平均值的度量值。
 
 向下钻取任何输出模型, 以查看定型运行详细信息, 如性能指标和分布图。 [了解有关图表的详细信息](how-to-understand-automated-ml.md)。
 
-![迭代详细信息](media/how-to-create-portal-experiments/iteration-details.png)
+[![迭代详细信息](media/how-to-create-portal-experiments/iteration-details.png)](media/how-to-create-portal-experiments/iteration-details-expanded.png)
 
 ## <a name="deploy-your-model"></a>部署模型
 
@@ -178,7 +188,8 @@ Variance| 此列的数据超出其平均值的度量值。
     + 选项 1：若要部署最佳模型（根据定义的指标条件），请从 "运行详细信息" 页中选择 "部署最佳模型"。
 
     + 选项 2：若要从此试验部署特定的模型迭代，请向下钻取到模型以打开其运行详细信息页，然后选择 "部署模型"。
-1. 填充 "**部署模型**" 窗格，
+
+1. 填充 "**部署模型**" 窗格。
 
     字段| ReplTest1
     ----|----

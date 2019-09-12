@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: c05e72cd28c78b26b7c23a123b133d10147a4421
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 4e6825b40700fe3bd24631094a2a6060d94524cc
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810781"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882307"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>将C#用户定义函数与 HDInsight 中 Apache Hadoop 上的 Apache Hive 和 Apache Pig 配合使用
 
@@ -161,7 +161,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 4. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”的条目。
 
-    ![显示群集存储帐户的服务器资源管理器](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
+    ![显示群集存储帐户的服务器资源管理器](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
     * 如果此条目可以展开，则在使用 __Azure 存储帐户__作为该群集的默认存储。 要查看该群集的默认存储上的文件，请展开该条目，并双击“（默认容器）”。
 
@@ -171,7 +171,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
    * 如果使用的是 __Azure 存储帐户__，请单击“上传”图标，并浏览到“HiveCSharp”项目的“bin\debug”文件夹。 最后，选择 **HiveCSharp.exe** 文件并单击“确定”。
 
-       ![上传图标](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+       ![上传图标](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
     
    * 如果使用的是 __Azure Data Lake Storage__，请右键单击文件列表中的空白区域，并选择“上传”。 最后，选择“HiveCSharp.exe”文件并单击“打开”。
 

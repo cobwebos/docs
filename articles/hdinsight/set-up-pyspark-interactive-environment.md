@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 8e90be5a38ff40b748c11539e1d5c6558d198b62
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d220d81b8dc57541113f7ef1e477bb77d394e206
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814232"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879287"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>为 Visual Studio Code 设置 PySpark 交互式环境
 
@@ -43,7 +43,7 @@ ms.locfileid: "70814232"
 
 如果遇到错误消息，请通过运行以下命令来安装所需的包：
 
-   ![Python pip 版本](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+   ![libkrb5-dev 包](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
 
 ```
 sudo apt-get install libkrb5-dev

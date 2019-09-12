@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 09/10/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73784afd9577d66850596056df1974accd62e4b4
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1bd79b9a6fa8aedd45f41b64f8f81a908feab71f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844464"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883000"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 本文包含有关使用 Azure Active Directory (Azure AD) PowerShell cmdlet 创建和更新组的说明。 此内容仅适用于 Office 365 组（有时称为统一组）。 
@@ -34,13 +34,31 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 
 这些 Cmdlet 属于 Azure Active Directory PowerShell V2 模块。 有关如何在计算机上下载和安装模块的说明，请参阅文章 [Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azuread/)（Azure Active Directory PowerShell 版本 2）。 可以从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureAD/)安装模块的版本 2 发行版。
 
-## <a name="create-settings-at-the-directory-level"></a>在目录级别创建设置
-这些步骤在目录级别创建设置，这些设置适用于目录中的所有 Office 365 组。 Get-AzureADDirectorySettingTemplate cmdlet 仅在 [Azure AD PowerShell for Graph 预览模块](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)中可用。
+## <a name="install-powershell-cmdlets"></a>安装 PowerShell cmdlet
 
-1. 在 DirectorySettings cmdlet 中，必须指定要使用的 SettingsTemplate 的 ID。 如果不知道此 ID，此 cmdlet 将返回所有设置模板的列表：
+请先确保卸载任意较早版本的适用于 Windows PowerShell 的 Azure Active Directory PowerShell for Graph 模块，并安装 [Azure Active Directory PowerShell for Graph - 公共预览版 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)，然后再运行 PowerShell 命令。
+
+1. 以管理员身份打开 Windows PowerShell 应用。
+2. 卸载任何以前版本的 AzureADPreview。
+  
+   ``` PowerShell
+   Uninstall-Module AzureADPreview
+   Uninstall-Module azuread
+   ```
+
+3. 安装最新版本的 AzureADPreview。
+  
+   ``` PowerShell
+   Install-Module AzureADPreview
+
+## Create settings at the directory level
+These steps create settings at directory level, which apply to all Office 365 groups in the directory. The Get-AzureADDirectorySettingTemplate cmdlet is available only in the [Azure AD PowerShell Preview module for Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+
+1. In the DirectorySettings cmdlets, you must specify the ID of the SettingsTemplate you want to use. If you do not know this ID, this cmdlet returns the list of all settings templates:
   
    ```powershell
    Get-AzureADDirectorySettingTemplate
+
    ```
    此 cmdlet 调用返回可用的所有模板：
   

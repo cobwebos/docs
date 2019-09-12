@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 8c50068914c1519a5522372310bd0f5863a94b39
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 4e589e694c728cfbd2237a138ad9a2f2bf2342dd
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735788"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900188"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或作业失败问题
 
@@ -54,7 +54,7 @@ HDInsight 提供了许多工具用于识别和排查群集问题。 下面逐步
 
 Azure 门户可以提供此信息：
 
-![HDInsight - Azure 门户信息](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
+![HDInsight - Azure 门户信息](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
 
 还可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)：
 
@@ -119,7 +119,7 @@ Apache Hive、Apache Pig 或 Apache Sqoop 作业失败的常见场合之一是 [
 
 #### <a name="badgateway-502-status-code"></a>BadGateway（502 状态代码）
 
-此代码是来自网关节点的一般消息，是最常见的失败状态代码。 发生此故障的可能原因之一是活动头节点上的 WebHCat 服务已关闭。 若要检查是否存在这种情况，请使用以下 CURL 命令：
+此代码是来自网关节点的常规消息，也是最常见的故障状态代码。 发生此故障的可能原因之一是活动头节点上的 WebHCat 服务已关闭。 若要检查是否存在这种情况，请使用以下 CURL 命令：
 
 ```bash
 curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin

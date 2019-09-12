@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 568c4324f3b542e2b913596c1d93ffb72bbbaec7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 3ff9cfbd312e672fb89afb4838ad9f8aa6574370
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814247"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900010"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上的 ML Services 群集
 
@@ -209,7 +209,7 @@ ms.locfileid: "70814247"
    >
    >
 
-   ![添加脚本操作](./media/r-server-hdinsight-manage/submitscriptaction.png)
+   ![添加脚本操作](./media/r-server-hdinsight-manage/submit-script-action.png)
 
 4. 选择“创建”运行脚本。 脚本完成后，可在所有辅助角色节点上使用 R 包。
 

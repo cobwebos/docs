@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/08/2019
+ms.date: 09/10/2019
 ms.author: diberry
-ms.openlocfilehash: aa0c34a361ce191618d7b84e7a96557f2344284a
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
-ms.translationtype: MT
+ms.openlocfilehash: 7a6091ac1a0d54d997c40fe284d58426ecadf765
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803972"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898857"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>迁移到 Azure 创作资源的步骤
 
@@ -49,7 +49,7 @@ ms.locfileid: "70803972"
 
     对于每个协作者和应用，会打开默认的电子邮件应用程序，其中包含一种格式较轻的电子 你可以在发送电子邮件之前对其进行编辑。
 
-    电子邮件模板包含确切的应用程序 Id 和应用名称。 
+    电子邮件模板包含确切的应用程序 ID 和应用名称。 
 
     ```html
     Dear Sir/Madam,
@@ -100,6 +100,10 @@ ms.locfileid: "70803972"
 [!INCLUDE [Manage contributors for the Azure authoring resource for language understanding](./includes/manage-contributors-authoring-resource.md)]
 
 了解[如何添加参与者](luis-how-to-collaborate.md)。 
+
+## <a name="troubleshooting-errors-with-the-migration-process"></a>排查迁移过程错误
+
+如果在迁移过程`MissingSubscriptionRegistration`中在 LUIS 门户中收到包含红色通知栏的错误，请在[Azure 门户](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)或[Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)中创建认知服务资源。 详细了解[导致此错误的原因](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause)。
 
 ## <a name="next-steps"></a>后续步骤
 

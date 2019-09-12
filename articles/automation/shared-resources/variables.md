@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39282e816be875e598d7e0599eeb358a79941be7
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3fe008d20ab43636b59861bcc5a7914ba0fca17e
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478065"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910067"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
 
@@ -28,21 +28,21 @@ ms.locfileid: "67478065"
 
 由于自动化变量将会持久保存，即使 Runbook 或 DSC 配置失败，它们也仍然可用。 此行为允许一个 Runbook 设置的值随后由另一个 Runbook 使用，或由同一 Runbook 或 DSC 配置在下次运行时使用。
 
-创建变量时，可以指定将其加密存储。 加密的变量安全地存储在 Azure 自动化中并且不能从 Azure PowerShell 模块随附的 [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) cmdlet 检索变量值。 可以检索加密值的唯一方法是从 Runbook 或 DSC 配置中的 **Get-AutomationVariable** 活动进行检索。 如果你想要更改为未加密的加密的变量，您可以必须删除并重新创建为未加密的变量。
+创建变量时，可以指定将其加密存储。 加密的变量安全地存储在 Azure 自动化中并且不能从 Azure PowerShell 模块随附的 [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) cmdlet 检索变量值。 可以检索加密值的唯一方法是从 Runbook 或 DSC 配置中的 **Get-AutomationVariable** 活动进行检索。 若要将已加密的变量更改为未加密，必须删除该变量并将其重新创建为未加密的变量。
 
 >[!NOTE]
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在系统托管的密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。 此过程由 Azure 自动化管理。
 
 ## <a name="variable-types"></a>变量类型
 
-当使用 Azure 门户创建变量时，必须通过下拉列表指定一个数据类型，以便门户可以显示用于输入变量值的相应控件。 该变量并不局限于此数据类型。 如果想要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指定为“未定义”  ，则该变量的值将设置为 **$null**，并且必须使用 [Set-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable) cmdlet 或 **Set-AutomationVariable** 活动来设置该值。 无法在该门户中创建或更改复杂变量类型的值，但可以使用 Windows PowerShell 提供任何类型的值。 复杂类型将作为 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) 返回。
+当使用 Azure 门户创建变量时，必须通过下拉列表指定一个数据类型，以便门户可以显示用于输入变量值的相应控件。 该变量并不局限于此数据类型。 如果想要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指定为“未定义”，则该变量的值将设置为 **$null**，并且必须使用 [Set-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable) cmdlet 或 **Set-AutomationVariable** 活动来设置该值。 无法在该门户中创建或更改复杂变量类型的值，但可以使用 Windows PowerShell 提供任何类型的值。 复杂类型将作为 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) 返回。
 
 可以通过创建一个数组或哈希表并将其保存到变量，来将多个值存储到单一变量。
 
 以下列出自动化中的可用变量类型：
 
 * String
-* Integer
+* 整数
 * DateTime
 * Boolean
 * Null
@@ -60,7 +60,7 @@ ms.locfileid: "67478065"
 
 ## <a name="activities"></a>activities
 
-下表中的活动用于在 Runbook 和 DSC 配置中访问凭据。
+下表中的活动用于在 runbook 和 DSC 配置中访问变量。 Get-azurermautomationvariable 和 Get-automationvariable cmdlet 之间的区别在本文开头的阐述。
 
 | activities | 描述 |
 |:---|:---|
@@ -84,9 +84,9 @@ ms.locfileid: "67478065"
 
 ### <a name="to-create-a-new-variable-with-the-azure-portal"></a>使用 Azure 门户创建新变量
 
-1. 在自动化帐户中，单击“资产”  磁贴，然后在“资产”  边栏选项卡中选择“变量”  。
-2. 在“变量”  磁贴中，选择“添加变量”  。
-3. 完成“新建变量”  边栏选项卡上的选项，然后单击“创建”  保存新变量。
+1. 在自动化帐户中，单击“资产”磁贴，然后在“资产”边栏选项卡中选择“变量”。
+2. 在“变量”磁贴中，选择“添加变量”。
+3. 完成“新建变量”边栏选项卡上的选项，然后单击“创建”保存新变量。
 
 ### <a name="to-create-a-new-variable-with-windows-powershell"></a>使用 Windows PowerShell 创建新变量
 
@@ -116,7 +116,7 @@ $vmIpAddress = $vmValue.IpAddress
 
 ## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>使用 Runbook 或 DSC 配置中的变量
 
-使用 Set-AutomationVariable  活动设置 PowerShell Runbook 或 DSC 配置中自动化变量的值，并使用 Get-AutomationVariable  来检索该值。 不应在 Runbook 或 DSC 配置中使用 Set-AzureRMAutomationVariable  或 Get-AzureRMAutomationVariable  cmdlet，因为它们的效率低于工作流活动。 也不能使用 Get-AzureRMAutomationVariable  来检索安全变量的值。 从 Runbook 或 DSC 配置中创建新变量的唯一方法是使用 [New-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) cmdlet。
+使用 Set-AutomationVariable 活动设置 PowerShell Runbook 或 DSC 配置中自动化变量的值，并使用 Get-AutomationVariable 来检索该值。 不应在 Runbook 或 DSC 配置中使用 Set-AzureRMAutomationVariable 或 Get-AzureRMAutomationVariable cmdlet，因为它们的效率低于工作流活动。 也不能使用 Get-AzureRMAutomationVariable 来检索安全变量的值。 从 Runbook 或 DSC 配置中创建新变量的唯一方法是使用 [New-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) cmdlet。
 
 ### <a name="textual-runbook-samples"></a>文本 Runbook 示例
 

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: 72c516f0a6e377cc16205917967482a29b4fdfbd
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: f13d156ea34fc1c909704a18f645be62a6e09f90
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "69036218"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881341"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>映射数据流中的数据转换表达式 
 
@@ -25,22 +25,22 @@ ___
 ### <code>abs</code>
 <code><b>abs(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
 将数字对正数取模。
-* ``abs(-20) -> 20``
-* ``abs(10) -> 10``
+* ``abs(-20) -> 20``  
+* ``abs(10) -> 10``  
 ___
 ### <code>acos</code>
 <code><b>acos(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-计算余弦反值* ``acos(1) -> 0.0``
+计算余弦反值* ``acos(1) -> 0.0``  
 ___
 ### <code>add</code>
 <code><b>add(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-添加一对字符串或数字。 将日期添加到日期数。 将类似类型的数组追加到另一个数组。 与 + 运算符相同* ``add(10, 20) -> 30``
-* ``10 + 20 -> 30``
-* ``add('ice', 'cream') -> 'icecream'``
-* ``'ice' + 'cream' + ' cone' -> 'icecream cone'``
-* ``add(toDate('2012-12-12'), 3) -> 2012-12-15 (date value)``
-* ``toDate('2012-12-12') + 3 -> 2012-12-15 (date value)``
-* ``[10, 20] + [30, 40] => [10, 20, 30, 40]``
+添加一对字符串或数字。 将日期添加到日期数。 将类似类型的数组追加到另一个数组。 与 + 运算符相同* ``add(10, 20) -> 30``  
+* ``10 + 20 -> 30``  
+* ``add('ice', 'cream') -> 'icecream'``  
+* ``'ice' + 'cream' + ' cone' -> 'icecream cone'``  
+* ``add(toDate('2012-12-12'), 3) -> 2012-12-15 (date value)``  
+* ``toDate('2012-12-12') + 3 -> 2012-12-15 (date value)``  
+* ``[10, 20] + [30, 40] => [10, 20, 30, 40]``  
 ___
 ### <code>addDays</code>
 <code><b>addDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to add&gt;</i> : integral) => datetime</b></code><br/><br/>

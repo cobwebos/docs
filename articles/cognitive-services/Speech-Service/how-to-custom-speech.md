@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 6d697cd49363139cfeae2753a4f1ae40fca6e6b2
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 0f3b7826fdcc16d3094785507ec8263da39d6284
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802494"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881527"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音？
 
@@ -25,7 +25,7 @@ ms.locfileid: "70802494"
 
 你需要一个 Azure 帐户和一个语音服务订阅，然后才能使用自定义语音执行任何操作。 获得帐户后，可以准备数据、训练和测试模型、检查识别质量、评估准确性，并最终部署和使用自定义语音到文本模型。
 
-此图重点介绍组成[自定义语音门户](https://speech.microsoft.com/customspeech)的部分。 使用以下链接了解有关每个步骤的详细信息。
+此图重点介绍组成[自定义语音门户](https://aka.ms/customspeech)的部分。 使用以下链接了解有关每个步骤的详细信息。
 
 ![突出显示组成自定义语音门户的不同组件。](./media/custom-speech/custom-speech-overview.png)
 

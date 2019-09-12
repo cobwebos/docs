@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 57e5eef8563bca0e27024d6ff5a46b983273df07
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: MT
+ms.openlocfilehash: 5c533c3b0005528eae646744e8e720e2c54436e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810662"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880269"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Apache Ambari 优化 HDInsight 群集配置
 
@@ -146,7 +146,7 @@ Hive 逐行处理数据。 矢量化指示 Hive 以块（一个块包含 1,024 �
 
 若要启用 CBO，请导航到 Hive 的“配置”选项卡并搜索 `parameter hive.cbo.enable`，然后将开关按钮切换到“开”。
 
-![CBO 配置](./media/hdinsight-changing-configs-via-ambari/cbo.png)
+![CBO 配置](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
 启用 CBO 后，可使用以下附加配置参数提高 Hive 查询性能：
 

@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: acf11b8107855c6f087f63f592cdbbad3766795e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: MT
+ms.openlocfilehash: c8103f5d0df7a71df5141ece3a8d67f308a562e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811024"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884220"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企业安全性套餐管理 HDInsight 群集
 了解 HDInsight 企业安全性套餐 (ESP) 中的用户和角色，以及如何管理 ESP 群集。
@@ -60,7 +60,7 @@ ms.locfileid: "70811024"
 
 4. 还可以从 **Azure 资源管理器**取消链接群集。
    
-   ![未链接的群集 intellij](./media/apache-domain-joined-manage/unlink.png)
+   ![未链接的群集 intellij](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>使用 Eclipse 链接到已加入域的群集
 
@@ -83,7 +83,7 @@ ms.locfileid: "70811024"
 
 4. 还可以从 **Azure 资源管理器**取消链接群集。
    
-   ![未链接的群集 eclipse](./media/apache-domain-joined-manage/unlink.png)
+   ![未链接的群集 eclipse](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>使用企业安全包访问群集。
 

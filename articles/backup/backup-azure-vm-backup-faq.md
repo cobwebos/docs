@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 078c8763a08df339b9291807102e2d187d2a882f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 26d07ac0b09655e170b53af91f890f21d15afb1b
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827587"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909800"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -71,7 +71,7 @@ ms.locfileid: "68827587"
 
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Azure 备份是否支持标准 SSD 托管磁盘？
-是的, Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。
+是的，Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>可使用支持写入加速器 (WA) 的磁盘备份 VM 吗？
 无法在已启用 WA 的磁盘上拍摄快照。 但是，Azure 备份服务可以从备份中排除已启用 WA 的磁盘。
@@ -119,7 +119,13 @@ Azure 虚拟机备份策略支持的最小保留期限为 7 天，最长为 9999
 对于托管磁盘 Azure VM，通过在还原为托管磁盘时在模板中提供选项来启用还原到可用性集。 此模板具有名为“可用性集”的输入参数。
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>如何获得更快的还原性能？
-[即时还原](backup-instant-restore-capability.md)功能有助于更快地备份和从快照进行即时还原。
+[即时还原](backup-instant-restore-capability.md)功能有助于更快地备份和从快照即时还原。
+
+### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>更改已加密 VM 的密钥保管库设置时会发生什么情况？
+
+更改已加密的 VM 的 KeyVault 设置后，备份将继续使用新的详细信息集，但是，在从恢复点还原更改之前，必须先还原 KeyVault 中的机密，然后才能从创建 VM 以便. 有关详细信息，请参阅此[文](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)
+
+机密/密钥回滚等操作不需要此步骤，并且在还原后可以使用相同的 KeyVault。
 
 ## <a name="manage-vm-backups"></a>管理 VM 备份
 
@@ -137,5 +143,5 @@ Azure 虚拟机备份策略支持的最小保留期限为 7 天，最长为 9999
 
 可以从在移动操作之前创建的可用还原点还原 VM。
 
-### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy"></a>可以与同一备份策略关联的 Vm 数是否有限制？
+### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy"></a>对于可与同一备份策略关联的 VM 数是否有限制？
 有，可以从门户关联到同一备份策略的 VM 数量限制为 100 个。 我们建议，如果 VM 数超过 100 个，请创建具有相同计划或不同计划的多个备份策略。

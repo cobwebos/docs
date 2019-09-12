@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 7a243dd0eca179317309438c31c114c94f94bf00
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 706bcbed39ca2a3fe0a38eba864edb863c31b4ec
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736435"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884050"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询
 
@@ -46,7 +46,7 @@ ms.locfileid: "70736435"
 
   对于现有安装，请在菜单栏中导航到“工具” > “获取工具和功能...”打开 Visual Studio 安装程序。  然后至少选择工作负荷“Azure 开发”或“数据存储和处理”。
 
-  ![Visual Studio 安装程序的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/vs2017_installation.png)
+  ![Visual Studio 安装程序的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/vs-2017-installation.png)
 
 * Visual Studio 2013 和 2015  
   [下载 Data Lake 工具](https://www.microsoft.com/download/details.aspx?id=49504)。 请选择与 Visual Studio 版本匹配的 Data Lake 工具版本。  
@@ -195,13 +195,13 @@ ms.locfileid: "70736435"
 
       确保“交互式”已选中，然后选择“执行”。
 
-      ![查询和“执行”的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/execute.png)  
+      ![查询和“执行”的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
 
     * **批处理**  
 
       确保“批处理”已选中，然后选择“提交”。  如果选择高级提交选项，请为脚本配置“作业名称”、“参数”、“其他配置”和“状态目录”。
 
-      ![查询和“批处理”的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/batch.png)  
+      ![查询和“批处理”的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
       ![HDInsight Hadoop Hive 查询的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "提交查询")
 
@@ -224,7 +224,7 @@ ms.locfileid: "70736435"
 
 作业摘要根据选择的是“批处理”还是“交互式”模式而略有不同。
 
-![作业摘要](./media/apache-hadoop-visual-studio-tools-get-started/jobSummary.png "Hive 作业摘要")
+![作业摘要](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Hive 作业摘要")
 
 使用“刷新”按钮更新状态，直到作业状态更改为“已完成”。  
 
@@ -232,7 +232,7 @@ ms.locfileid: "70736435"
 
 * 如需“交互式”模式下的作业详细信息，请查看“输出”和“HiveServer2 输出”选项卡。
 
-  ![作业详细信息](./media/apache-hadoop-visual-studio-tools-get-started/tabs.png "Hive 作业详细信息")
+  ![作业详细信息](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Hive 作业详细信息")
 
 ### <a name="view-job-graph"></a>查看作业图
 

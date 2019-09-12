@@ -2,23 +2,23 @@
 title: 使用端到端密钥轮替和审核设置 Azure 密钥保管库 | Microsoft Docs
 description: 借助本操作指南设置密钥轮换和监视 Key Vault 日志。
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: ''
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: barclayn
-ms.openlocfilehash: 20a170963ff4a8ff9cb69d3397e66e12c1047d16
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mbaldwin
+ms.openlocfilehash: 1f60ce3a23882a48e6008b76c0eedcab99e013b2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65561188"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883450"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>使用密钥轮替和审核设置 Azure Key Vault
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 有了密钥保管库以后，即可使用它来存储密钥和机密。 应用程序不再需要保存密钥或机密，可以根据需要从保管库请求密钥或机密。 使用 Key Vault 可以更新密钥和机密，而不会影响应用程序，同时可以各种可能的方法管理密钥和机密。
 
@@ -89,19 +89,19 @@ Get-AzKeyVaultSecret –VaultName <vaultName>
 > [!NOTE]
 > 必须在与密钥保管库相同的 Azure Active Directory 租户上创建应用程序。
 
-1. 打开“Azure Active Directory”。 
-2. 选择“应用注册”。  
-3. 选择“新建应用程序注册”，以将一个应用程序添加到 Azure Active Directory。 
+1. 打开“Azure Active Directory”。
+2. 选择“应用注册”。 
+3. 选择“新建应用程序注册”，以将一个应用程序添加到 Azure Active Directory。
 
     ![在 Azure Active Directory 中打开应用程序](./media/keyvault-keyrotation/azure-ad-application.png)
 
-4. 在“创建”下，将应用程序类型保留为“Web 应用/API”，并为应用程序命名。   为应用程序指定“登录 URL”  。 此 URL 可以是任意 URL，适合本演示即可。
+4. 在“创建”下，将应用程序类型保留为“Web 应用/API”，并为应用程序命名。 为应用程序指定“登录 URL”。 此 URL 可以是任意 URL，适合本演示即可。
 
     ![创建应用程序注册](./media/keyvault-keyrotation/create-app.png)
 
-5. 将应用程序添加到 Azure Active Directory 后，应用程序页将会打开。 依次选择“设置”、“属性”。   复制“应用程序 ID”值。  后面的步骤需要用到。
+5. 将应用程序添加到 Azure Active Directory 后，应用程序页将会打开。 依次选择“设置”、“属性”。 复制“应用程序 ID”值。 后面的步骤需要用到。
 
-接下来，为应用程序生成密钥，使其可与 Azure Active Directory 交互。 若要创建密钥，请在“设置”下选择“密钥”。   记下为 Azure Active Directory 应用程序生成的新密钥。 后面的步骤需要用到。 从此部分导航出来以后，该密钥将不可用。 
+接下来，为应用程序生成密钥，使其可与 Azure Active Directory 交互。 若要创建密钥，请在“设置”下选择“密钥”。 记下为 Azure Active Directory 应用程序生成的新密钥。 后面的步骤需要用到。 从此部分导航出来以后，该密钥将不可用。 
 
 ![Azure Active Directory 应用密钥](./media/keyvault-keyrotation/create-key.png)
 
@@ -119,7 +119,7 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-在应用程序代码中，创建一个类来保存 Azure Active Directory 身份验证的方法。 在本示例中，该类名为“Utils”  。 添加以下 `using` 语句：
+在应用程序代码中，创建一个类来保存 Azure Active Directory 身份验证的方法。 在本示例中，该类名为“Utils”。 添加以下 `using` 语句：
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -173,11 +173,11 @@ var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 
 本文结合使用 Azure PowerShell 和 Azure 自动化来更改 Azure 存储帐户的访问密钥。 然后使用新密钥更新 Key Vault 机密。
 
-若要允许 Azure 自动化在 Key Vault 中设置机密值，必须获取名为 **AzureRunAsConnection** 的连接的客户端 ID。 此连接是建立 Azure 自动化实例时创建的。 若要查找此 ID，请在 Azure 自动化实例中选择“资产”。  在此处选择“连接”，然后选择“AzureRunAsConnection”服务主体。   记下“ApplicationId”值。 
+若要允许 Azure 自动化在 Key Vault 中设置机密值，必须获取名为 **AzureRunAsConnection** 的连接的客户端 ID。 此连接是建立 Azure 自动化实例时创建的。 若要查找此 ID，请在 Azure 自动化实例中选择“资产”。 在此处选择“连接”，然后选择“AzureRunAsConnection”服务主体。 记下“ApplicationId”值。
 
 ![Azure 自动化客户端 ID](./media/keyvault-keyrotation/Azure_Automation_ClientID.png)
 
-在“资产”中选择“模块”。   选择“库”，然后搜索并导入以下每个模块的更新版本： 
+在“资产”中选择“模块”。 选择“库”，然后搜索并导入以下每个模块的更新版本：
 
     Azure
     Azure.Storage
@@ -195,7 +195,7 @@ var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
-接下来，选择 Azure 自动化实例下的“Runbook”，然后选择“添加 Runbook”。   选择“快速创建”。  为 Runbook 命名，然后选择“PowerShell”作为 Runbook 类型。  可以添加说明。 最后，选择“创建”  。
+接下来，选择 Azure 自动化实例下的“Runbook”，然后选择“添加 Runbook”。 选择“快速创建”。 为 Runbook 命名，然后选择“PowerShell”作为 Runbook 类型。 可以添加说明。 最后，选择“创建”。
 
 ![创建 Runbook](./media/keyvault-keyrotation/Create_Runbook.png)
 
@@ -242,13 +242,13 @@ $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
-在编辑器窗格中，选择“测试”窗格以测试脚本。  正常运行脚本后，可以选择“发布”，并在 Runbook 配置窗格中应用 Runbook 的计划。 
+在编辑器窗格中，选择“测试”窗格以测试脚本。 正常运行脚本后，可以选择“发布”，并在 Runbook 配置窗格中应用 Runbook 的计划。
 
 ## <a name="key-vault-auditing-pipeline"></a>密钥保管库审核管道
 
-设置密钥保管库时，可以打开审核功能，收集有关对密钥保管库发出的访问请求的日志。 这些日志存储在指定的 Azure 存储帐户，可以提取、 监视和分析。 以下方案使用 Azure functions、 Azure 逻辑应用和密钥保管库审核日志来创建与 web 应用的应用程序 ID 不匹配的应用从保管库检索机密时发送一封电子邮件的管道。
+设置密钥保管库时，可以打开审核功能，收集有关对密钥保管库发出的访问请求的日志。 这些日志存储在指定的 Azure 存储帐户中，可以提取、监视和分析。 以下方案使用 Azure 函数、Azure 逻辑应用和密钥保管库审核日志创建一个管道，该管道在与 web 应用的应用 ID 不匹配的应用从保管库中检索机密时发送电子邮件。
 
-首先，必须对密钥保管库启用日志记录。 使用以下 PowerShell 命令。 (您所见中的完整详细信息[本文，了解密钥保管库日志记录](key-vault-logging.md)。)
+首先，必须对密钥保管库启用日志记录。 使用以下 PowerShell 命令。 （[有关密钥保管库的](key-vault-logging.md)详细信息，请参阅本文中的完整详细信息。）
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
@@ -259,24 +259,24 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 启用日志记录后，审核日志将开始存储在指定的存储帐户中。 这些日志包含有关访问密钥保管库的方式、时间和用户的事件。
 
 > [!NOTE]
-> 在密钥保管库运行后，有 10 分钟时间访问日志记录信息。 它通常是可比的更快。
+> 在密钥保管库运行后，有 10 分钟时间访问日志记录信息。 它通常比这更早。
 
-下一步是[创建 Azure 服务总线队列](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)。 此队列是密钥保管库审核日志的推送位置。 在队列中的审核日志消息时，逻辑应用将选取这些内容，并对它们进行操作。 使用以下步骤创建服务总线实例：
+下一步是[创建 Azure 服务总线队列](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)。 此队列是密钥保管库审核日志的推送位置。 如果审核日志消息在队列中，则逻辑应用会选取它们并对其进行操作。 使用以下步骤创建服务总线实例：
 
-1. 创建服务总线命名空间 （如果已有一个你想要使用，则跳到步骤 2）。
-2. 浏览到 Azure 门户中的服务总线实例，并选择你想要在其中创建队列的命名空间。
-3. 选择**创建资源** > **企业集成** > **服务总线**，然后输入所需的详细信息。
-4. 通过选择命名空间，然后选择查找的服务总线连接信息**连接信息**。 对于下一步部分，将需要此信息。
+1. 创建一个服务总线命名空间（如果你已有要使用的命名空间，请跳到步骤2）。
+2. 浏览到 Azure 门户中的服务总线实例，并选择要在其中创建队列的命名空间。
+3. 选择 "**创建资源** > **企业集成** > **服务总线**"，然后输入所需的详细信息。
+4. 通过选择命名空间，然后选择 "**连接信息**" 查找服务总线连接信息。 下一部分将需要此信息。
 
-下一步，[创建一个 Azure 函数](../azure-functions/functions-create-first-azure-function.md)以轮询存储帐户中的密钥保管库日志并选取新的事件。 将按计划触发此函数。
+接下来，[创建 Azure 函数](../azure-functions/functions-create-first-azure-function.md)以轮询存储帐户中的密钥保管库日志并选取新的事件。 将按计划触发此函数。
 
-若要创建 Azure function app，选择**创建资源**，在 marketplace 中搜索**Function App**，然后选择**创建**。 在创建过程中，可以使用现有的托管计划，或创建新的计划。 您还可以选择动态托管。 有关 Azure Functions 的宿主选项的详细信息，请参阅[如何缩放 Azure Functions](../azure-functions/functions-scale.md)。
+若要创建 Azure function app，请选择 "**创建资源**"，在 marketplace 中搜索 " **Function App**"，然后选择 "**创建**"。 在创建过程中，可以使用现有的托管计划，或创建新的计划。 你还可以选择动态托管。 有关 Azure Functions 托管选项的详细信息，请参阅[如何缩放 Azure Functions](../azure-functions/functions-scale.md)。
 
-创建 Azure function app 后，请转到它，然后选择**计时器**方案并**C\#** 的语言。 然后选择**创建此函数**。
+创建 Azure function app 后，请向其进行选择，然后选择该语言的**计时器**方案和**C\#**  。 然后选择 "**创建此函数**"。
 
 ![Azure Functions“开始”屏幕边栏选项卡](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
-在“开发”  选项卡上，将 run.csx 代码替换为以下内容：
+在“开发”选项卡上，将 run.csx 代码替换为以下内容：
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -388,19 +388,19 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 ```
 
 > [!NOTE]
-> 更改在前面的代码中指向存储帐户写入密钥保管库日志的位置，更早版本，创建的服务总线实例然后在密钥保管库存储日志的特定路径中的变量。
+> 更改前面的代码中的变量，以指向写入密钥保管库日志的存储帐户、之前创建的服务总线实例以及密钥保管库存储日志的特定路径。
 
 该函数在写入密钥保管库日志的存储帐户中选取最新日志文件、从该文件中获取最新事件，并将这些事件推送到服务总线队列。 
 
-由于单个文件可以有多个事件，应创建该函数也会检查以确定已选取的最后一个事件的时间戳的 sync.txt 文件。 使用此文件可确保多个时间，您都不推送相同的事件。 
+由于单个文件可以有多个事件，因此，您应创建一个同步 .txt 文件，该函数还会查看此文件，以确定选取的上一个事件的时间戳。 使用此文件可以确保不会多次推送相同的事件。 
 
-Sync.txt 文件包含上次遇到的事件的时间戳。 加载日志，它们必须按它根据其时间戳，以确保它们正确排序。
+同步 .txt 文件包含最后遇到的事件的时间戳。 加载日志时，必须根据时间戳对日志进行排序，以确保其顺序正确。
 
-对于此函数中，我们引用不是在 Azure Functions 中现成可用的几个其他库。 若要包含这些库，需要 Azure Functions 来使用 NuGet 提取它们。 下**代码**框中，选择**查看文件**。
+对于此函数，我们引用了两个不能在 Azure Functions 中使用的框的其他库。 为了包含这些库，我们需要 Azure Functions 使用 NuGet 来请求它们。 在 "**代码**" 框下，选择 "**查看文件**"。
 
-!["查看文件"选项](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
+!["查看文件" 选项](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
 
-添加名为 project.json 包含以下内容的文件：
+添加一个名为 "项目 json" 的文件，其中包含以下内容：
 
 ```json
     {
@@ -415,38 +415,38 @@ Sync.txt 文件包含上次遇到的事件的时间戳。 加载日志，它们�
     }
 ```
 
-选择后**保存**，Azure Functions 将下载必需的二进制文件。
+选择 "**保存**" 后，Azure Functions 将下载所需的二进制文件。
 
-切换到“**集成**”选项卡，为计时器参数指定一个要在函数中使用的有意义名称。 在前面的代码，该函数需要调用计时器*myTimer*。 指定[CRON 表达式](../app-service/webjobs-create.md#CreateScheduledCRON)计时器，如下所示： `0 * * * * *`。 此表达式将导致函数一次一分钟运行。
+切换到“**集成**”选项卡，为计时器参数指定一个要在函数中使用的有意义名称。 在前面的代码中，函数需要将计时器称为*myTimer*。 按如下所示为计时器指定[CRON 表达式](../app-service/webjobs-create.md#CreateScheduledCRON)： `0 * * * * *`。 此表达式将导致函数一分钟运行一次。
 
-在同一**集成**选项卡上，添加类型的输入**Azure Blob 存储**。 此输入会指向 sync.txt 文件，其中包含在查找函数的最后一个事件的时间戳。 通过使用参数名称，将在函数内访问此输入。 在前面的代码中，Azure Blob 存储输入要求参数名称为*inputBlob*。 选择 sync.txt 文件将位于其中的存储帐户 （它可以是相同或不同的存储帐户）。 在路径字段中，提供了格式的文件的路径`{container-name}/path/to/sync.txt`。
+在 "**集成**" 选项卡上，添加类型为 " **Azure Blob 存储**" 的输入。 此输入将指向包含函数查看的最后一个事件的时间戳的同步 .txt 文件。 将使用参数名称在函数内访问此输入。 在上面的代码中，Azure Blob 存储输入要求参数名称为*inputBlob*。 选择将在其中查找同步 .txt 文件的存储帐户（可以是相同或不同的存储帐户）。 在 "路径" 字段中，提供采用格式`{container-name}/path/to/sync.txt`的文件的路径。
 
-添加类型的输出**Azure Blob 存储**。 此输出将指向输入中定义的 sync.txt 文件。 该函数使用此输出将查找在最后一个事件的时间戳。 在上面的代码中，要求此参数名为 *outputBlob*。
+添加类型为 " **Azure Blob 存储**" 的输出。 此输出将指向在输入中定义的 "同步 .txt" 文件。 函数使用此输出来写入查看的最后一个事件的时间戳。 在上面的代码中，要求此参数名为 *outputBlob*。
 
-函数现在已准备就绪。 确保切换回“开发”  选项卡并保存代码。 检查输出窗口了解任何编译错误，并根据需要更正它们。 如果代码可以编译，然后该代码应现在是每隔一分钟检查密钥保管库日志并将任何新事件推送到定义的服务总线队列。 每次触发该函数时，都应该看到向日志窗口写入日志记录信息。
+函数现在已准备就绪。 确保切换回“开发”选项卡并保存代码。 检查 "输出" 窗口中是否有任何编译错误，并根据需要进行更正。 如果代码编译，则代码现在应每分钟检查密钥保管库日志，并将所有新事件推送到定义的服务总线队列。 每次触发该函数时，都应该看到向日志窗口写入日志记录信息。
 
 ### <a name="azure-logic-app"></a>Azure 逻辑应用
 
-接下来，必须创建 Azure 逻辑应用，选取函数推送到服务总线队列、 分析内容，并将发送一封电子邮件，基于匹配的条件的事件。
+接下来，必须创建一个 Azure 逻辑应用，用于选择函数推送到服务总线队列的事件、分析内容，并根据匹配的条件发送电子邮件。
 
-[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)通过选择**创建资源** > **集成** > **逻辑应用**。
+选择 "**创建资源** > 集成 > **逻辑应用**"，[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-创建逻辑应用后，请转到它并选择**编辑**。 在逻辑应用编辑器中，选择**服务总线队列**并输入你的服务总线凭据以连接到的队列。
+创建逻辑应用后，请向其进行选择，然后选择 "**编辑**"。 在逻辑应用编辑器中，选择 "**服务总线队列**" 并输入服务总线凭据以将其连接到队列。
 
 ![Azure 逻辑应用服务总线](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
-选择“添加条件”。  在条件中，切换到高级编辑器并输入下面的代码。 替换*APP_ID*与你的 web 应用的实际的应用程序 ID:
+选择“添加条件”。 在条件中，切换到 "高级编辑器"，然后输入以下代码。 将*APP_ID*替换为你的 web 应用的实际应用 ID：
 
 ```
 @equals('<APP_ID>', json(decodeBase64(triggerBody()['ContentData']))['identity']['claim']['appid'])
 ```
 
-此表达式实质上是返回**false**如果*appid*传入事件 （这是服务总线消息的正文） 中不是*appid*的应用程序。
+如果传入事件的*appid* （这是服务总线消息的正文）不是该应用的*appid* ，则此表达式实质上将返回**false** 。
 
-现在下, 创建一个操作**如果否，则不执行任何操作**。
+现在，**如果没有，** 请在下创建一个操作。
 
 ![Azure 逻辑应用选择操作](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
 
-对于操作，选择**Office 365-发送电子邮件**。 填写字段，创建当定义的条件返回 **false** 时要发送的电子邮件。 如果你没有 Office 365，查找替代方案，以获得相同的结果。
+对于操作，请选择 " **Office 365-发送电子邮件**"。 填写字段，创建当定义的条件返回 **false** 时要发送的电子邮件。 如果没有 Office 365，请查找备选方法以获得相同的结果。
 
-您现在拥有一个端到端管道，寻找新的密钥保管库审核日志一分钟一次。 它将发现的新日志推送到服务总线队列。 当新消息进入队列中时，将触发逻辑应用。 如果*appid*内事件与调用应用程序的应用 ID 不匹配，它将发送一封电子邮件。
+现在，你有了一个端到端管道，用于每分钟查找一次新的密钥保管库审核日志。 它将找到的新日志推送到服务总线队列。 当新消息进入队列中时，将触发逻辑应用。 如果事件内的*appid*与调用应用程序的应用 ID 不匹配，则会发送一封电子邮件。

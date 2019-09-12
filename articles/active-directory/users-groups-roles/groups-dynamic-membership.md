@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b5f85aa99876ef6c3c9193612051085f3e0ffc0
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872185"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909769"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -376,7 +376,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  deviceManufacturer | 任意字符串值 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意字符串值 | (device.deviceModel -eq "iPad Air")
  deviceOwnership | 个人、公司、未知 | (device.deviceOwnership -eq "Company")
- enrollmentProfileName | Apple 设备注册配置文件或 Windows Autopilot 配置文件名称 | (device.enrollmentProfileName -eq "DEP iPhones")
+ enrollmentProfileName | Apple 设备注册配置文件、设备注册-企业设备标识符（Android-展台）或 Windows Autopilot 配置文件名称 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM（适用于移动设备）<br>电脑（适用于由 Intune 电脑代理管理的计算机） | (device.managementType -eq "MDM")
  deviceId | 有效的 Azure AD 设备 ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

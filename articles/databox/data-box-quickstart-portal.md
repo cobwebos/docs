@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 47b8fdbe48514665f40114c9820fdc5def38c778
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 26578e277a9f6747063ee377e72845b599a0301b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241368"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772751"
 ---
 ::: zone target="docs"
 
@@ -80,10 +80,6 @@ ms.locfileid: "70241368"
     - 运行[支持的操作系统](data-box-system-requirements.md)。
     - 连接到高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，则可使用 1-GbE 数据链路，但复制速度会受影响。 
 6. 访问平面以放置 Data Box。 若要将设备平放或直立放置在标准机架中，机架中需要有一个 7U 插槽。
-7. 采购了以下电缆，用于将 Data Box 连接到主计算机。
-    - 一根或多根 10-GbE SFP+ Twinax 铜线或 SFP+ 光纤电缆（用于 DATA 1、DATA 2 网络接口）。 有关详细信息，请参阅 [Mellanox 支持的电缆和交换机的列表](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf)，这些电缆和交换机与具有PCI Express 3.0 网络接口的 Mellanox ConnectX®-3 Pro EN 双端口 10GBASE-T 适配器兼容。
-    - 一根 RJ-45 CAT 6 网线（用于 MGMT 网络接口）
-    - 一根 RJ-45 CAT 6A 网线或一根 RJ-45 CAT 6 网线（用于 DATA 3 网络接口，分别配置为 10 Gbps 或 1 Gbps）
 
 ::: zone-end
 

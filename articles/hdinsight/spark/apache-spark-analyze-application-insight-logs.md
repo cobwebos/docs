@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 730ecd306bf33709ed5d9fa334b64f7cd7a482dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 846239c0122f3f2cadc40e7965ae690d4ba3e538
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066493"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899864"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>使用 HDInsight 上的 Apache Spark 分析 Application Insights 遥测日志
 
@@ -21,7 +21,7 @@ ms.locfileid: "67066493"
 
 [Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) 是监视 Web 应用程序的分析服务。 可将 Application Insights 生成的遥测数据导出到 Azure 存储。 当数据位于 Azure 存储中后，可以使用 HDInsight 来分析数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 配置为使用 Application Insights 的应用程序。
 
@@ -39,7 +39,7 @@ ms.locfileid: "67066493"
 
 下图演示了本示例的服务体系结构：
 
-![演示数据从 Application Insights 流向 Blob 存储，并使用 HDInsight 上的 Spark 进行处理的示意图](./media/apache-spark-analyze-application-insight-logs/appinsightshdinsight.png)
+![演示数据从 Application Insights 流向 Blob 存储，并使用 HDInsight 上的 Spark 进行处理的示意图](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
 ### <a name="azure-storage"></a>Azure 存储
 
@@ -70,13 +70,13 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 
 ## <a name="analyze-the-data-pyspark"></a>分析数据：PySpark
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集上的 Spark。 在“快速链接”  部分中，选择“群集仪表板”  ，并从“群集仪表板”部分中选择“Jupyter Notebook”  。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集上的 Spark。 在“快速链接”部分中，选择“群集仪表板”，并从“群集仪表板”部分中选择“Jupyter Notebook”。
 
-    ![群集仪表板](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
+    ![群集仪表板](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
 
-2. 在 Jupyter 页面右上角选择“新建”  ，并选择“PySpark”  。 此时会打开新浏览器选项卡，其中包含基于 Python 的 Jupyter 笔记本。
+2. 在 Jupyter 页面右上角选择“新建”，并选择“PySpark”。 此时会打开新浏览器选项卡，其中包含基于 Python 的 Jupyter 笔记本。
 
-3. 在页面上的第一个字段（称为“单元格”  ）中输入以下文本：
+3. 在页面上的第一个字段（称为“单元格”）中输入以下文本：
 
    ```python
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
@@ -213,11 +213,11 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 
 ## <a name="analyze-the-data-scala"></a>分析数据：Scala
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集上的 Spark。 在“快速链接”  部分中，选择“群集仪表板”  ，并从“群集仪表板”部分中选择“Jupyter Notebook”  。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集上的 Spark。 在“快速链接”部分中，选择“群集仪表板”，并从“群集仪表板”部分中选择“Jupyter Notebook”。
 
-    ![群集仪表板](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
-2. 在 Jupyter 页面右上角选择“新建”  ，并选择“Scala”  。 此时会打开新浏览器选项卡，其中包含基于 Scala 的 Jupyter Notebook。
-3. 在页面上的第一个字段（称为“单元格”  ）中输入以下文本：
+    ![群集仪表板](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+2. 在 Jupyter 页面右上角选择“新建”，并选择“Scala”。 此时会打开新浏览器选项卡，其中包含基于 Scala 的 Jupyter Notebook。
+3. 在页面上的第一个字段（称为“单元格”）中输入以下文本：
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
