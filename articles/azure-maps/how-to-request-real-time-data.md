@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 75fe9c120eae99e517aa52b704fbd6c170e78649
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 4c53d1c1ffbc80e694a9a7b423b2aaf9c6d38b48
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802296"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914385"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>使用 Azure Maps 移动服务请求实时数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "70802296"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要对 Azure Maps 公共传输 Api 进行任何调用，需要一个 Maps 帐户和密钥。 有关创建帐户和检索密钥的信息，请参阅[如何管理 Azure Maps 帐户和密钥](how-to-manage-account-keys.md)。
+若要对 Azure Maps 公共传输 Api 进行任何调用，需要一个 Maps 帐户和密钥。 有关创建帐户的信息，请按照[管理帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明进行操作，并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤检索帐户的主要订阅密钥。
 
 本文使用 [Postman 应用](https://www.getpostman.com/apps)来构建 REST 调用。 可以使用你喜欢的任何 API 开发环境。
 

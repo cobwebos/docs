@@ -4,16 +4,16 @@ description: 了解如何通过企业安全性套餐管理 Azure HDInsight 群�
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: c8103f5d0df7a71df5141ece3a8d67f308a562e1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: e5062ce27e1e9367a262d263070ab01f899dfc54
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884220"
+ms.locfileid: "70918917"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企业安全性套餐管理 HDInsight 群集
 了解 HDInsight 企业安全性套餐 (ESP) 中的用户和角色，以及如何管理 ESP 群集。
@@ -34,7 +34,7 @@ ms.locfileid: "70884220"
    
 3. 可以使用命令**列出群集**来查看链接群集。 现在可以将脚本提交到此链接群集。
 
-   ![链接的群集](./media/apache-domain-joined-manage/linked-cluster.png "链接的群集")
+   ![链接的群集](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "链接的群集")
 
 4. 还可以取消链接群集，方法是从命令面板输入“HDInsight:取消链接群集”。
 
@@ -71,7 +71,7 @@ ms.locfileid: "70884220"
 
 2. 输入“群集名称”、“用户名”和“密码”，然后单击“确定”按钮以链接群集。 （可选）输入“存储帐户”、“存储密钥”，然后选择“存储资源管理器”，以便存储资源管理器在左侧树状视图中工作
    
-   ![链接群集对话 eclipse](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   ![链接群集对话 eclipse](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
    
    > [!NOTE]  
    > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。

@@ -1,106 +1,120 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: 计算机视觉 API 文档
+### YamlMime:Landing
+title: 计算机视觉文档
+summary: 使用基于云的计算机视觉 API，开发人员可以访问用于处理图像并返回信息的高级算法。 通过上传图像或指定图像 URL，Microsoft 计算机视觉算法可以基于输入和用户选择以不同方式分析可视内容。 使用快速入门、教程和示例，了解如何以不同的方式分析可视内容。
 metadata:
-  title: API 文档 - 计算机视觉
-  titleSuffix: Azure Cognitive Services
-  description: 了解如何使用计算机视觉处理图像并返回信息。 教程介绍了如何构建使用该 API 的应用。
+  title: 计算机视觉文档
+  description: 使用基于云的计算机视觉 API，开发人员可以访问用于处理图像并返回信息的高级算法。 通过上传图像或指定图像 URL，Microsoft 计算机视觉算法可以基于输入和用户选择以不同方式分析可视内容。 使用快速入门、教程和示例，了解如何以不同的方式分析可视内容。
   services: cognitive-services
-  author: nitinme
-  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: computer-vision
   ms.topic: landing-page
-  ms.date: 02/26/2019
-  ms.author: nitinme
-ms.custom: seodec18
-abstract:
-  description: 使用基于云的计算机视觉 API，开发人员可以访问用于处理图像并返回信息的高级算法。 通过上传图像或指定图像 URL，Microsoft 计算机视觉算法可以基于输入和用户选择以不同方式分析可视内容。 使用快速入门、教程和示例，了解如何以不同的方式分析可视内容。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/computer-vision-landing-page-video.png
-      width: 250
-    title: '使用视觉 API 在应用中注入智能 (05:41)'
-    href: 'https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-put-intelligence-into-your-business-apps/'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/computer-vision/home
-            html: <p>了解计算机视觉 API。</p>
-            image:
-              src: ../media/index/i_overview.svg
-              alt: “概述”图标
-            title: 什么是计算机视觉？
-          - href: /azure/cognitive-services/computer-vision/concept-recognizing-text
-            html: <p>了解有关文本识别的概念。</p>
-            image:
-              src: ../media/index/i_tasks.svg
-              alt: 任务列表图标
-            title: 识别打印文本和手写文本
-          - href: /azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi
-            html: <p>了解有关计算机视觉 API 调用的基础知识。</p>
-            image:
-              src: ../media/index/i_tasks.svg
-              alt: 任务列表图标
-            title: 调用计算机视觉 API
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 通过以下途径分析图像、生成缩略图并从图像提取文本：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_Csharp.svg
-            text: 'C&#35;'
-            alt: C sharp 徽标
-            href: quickstarts-sdk/csharp-analyze-sdk
-          - image:
-              src: media/index/logo_java.svg
-            text: Java
-            alt: Java 徽标
-            href: QuickStarts/java-analyze
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Node.js
-            alt: Node.js 徽标
-            href: QuickStarts/node-analyze
-          - image:
-              src: media/index/logo_python.svg
-            text: Python
-            alt: C Python 徽标
-            href: quickstarts-sdk/python-sdk
-          - image:
-              src: media/index/logo_go.svg
-            text: Go
-            alt: Go 徽标
-            href: QuickStarts/go-analyze
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用计算机视觉开发应用程序：
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="Tutorials/CSharpTutorial.md">使用 C# 创建计算机视觉应用</a>'
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API
-            html: '<p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44">计算机视觉 API v2.0</a></p> <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739">计算机视觉 API v1.0</a></p>'
-          - title: SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-computervision?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable">Android (Java)</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>'
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 09/04/2019
+  ms.openlocfilehash: 83286e559211d0b7066a23f925f3d9d27afbe87e
+  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70934019"
+landingContent:
+- title: 关于计算机视觉
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是计算机视觉？
+      url: Home.md
+  - linkListType: video
+    links:
+    - text: 使用视觉 API 在应用中注入智能
+      url: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-put-intelligence-into-your-business-apps/
+- title: 识别打印文本和手写文本
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 识别打印文本和手写文本
+      url: concept-recognizing-text.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts-sdk/csharp-hand-text-sdk.md
+    - text: 使用 Python SDK
+      url: quickstarts-sdk/python-sdk.md
+- title: 在图像中检测对象
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 对象检测
+      url: concept-object-detection.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts-sdk/csharp-analyze-sdk.md
+    - text: 使用 Python SDK
+      url: quickstarts-sdk/python-sdk.md
+    - text: 使用 Java SDK
+      url: quickstarts-sdk/java-sdk.md
+- title: 将内容标记应用于图像
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 内容标记
+      url: concept-tagging-images.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts-sdk/csharp-analyze-sdk.md
+    - text: 使用 Python SDK
+      url: quickstarts-sdk/python-sdk.md
+    - text: 使用 Java SDK
+      url: quickstarts-sdk/java-sdk.md
+- title: 使用容器
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 安装并运行容器
+      url: computer-vision-how-to-install-containers.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置容器
+      url: computer-vision-resource-container-config.md
+  - linkListType: deploy
+    links:
+    - text: 使用容器实例
+      url: deploy-computer-vision-on-container-instances.md
+    - text: 与 Kubernetes 和 Jenkins 配合使用
+      url: deploy-computer-vision-on-premises.md
+- title: 检测图像中的人脸
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 人脸检测
+      url: concept-detecting-faces.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 Python SDK
+      url: quickstarts-sdk/python-sdk.md
+    - text: 使用 Java SDK
+      url: quickstarts-sdk/java-sdk.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 计算机视觉 API v2.0
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44
+    - text: 计算机视觉 API v1.0
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
+    - text: Python SDK
+      url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python
+    - text: Java SDK
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
+    - text: Node.js SDK
+      url: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-computervision?view=azure-node-latest
+    - text: Go SDK
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure 命令行界面 (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list

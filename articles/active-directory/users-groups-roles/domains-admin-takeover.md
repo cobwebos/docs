@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a756f0d9fe3669ab9d0f2b4576a35be5d2112a87
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872212"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914777"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
 
@@ -43,7 +43,7 @@ ms.locfileid: "70872212"
 
 3. 在来自 Power BI 的确认电子邮件中，选择“是，是我”。
 
-4. 用 Power BI 用户帐户登录到[Microsoft 365 管理中心](https://admin.microsoft.com)。 会收到一条消息，指示如何“成为管理员”，即成为已在非托管租户中经过验证的域名的管理员。 选择“是，我想成为管理员”。
+4. 用 Power BI 用户帐户登录到[Microsoft 365 管理中心](https://portal.office.com/admintakeover)。 会收到一条消息，指示如何“成为管理员”，即成为已在非托管租户中经过验证的域名的管理员。 选择“是，我想成为管理员”。
   
    ![“成为管理员”的首个屏幕截图](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -81,7 +81,7 @@ ms.locfileid: "70872212"
 
 验证域名的所有权时，Azure AD 会从非托管租户中删除该域名并将其移动到现有租户。 非托管目录的外部管理员接管操作需要执行与内部管理员接管操作相同的 DNS TXT 验证过程。 不同之处在于，除域名外还会移动以下内容：
 
-- 位用户
+- 用户
 - 订阅
 - 许可证分配
 

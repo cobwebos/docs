@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 07/01/2019
-ms.openlocfilehash: 65c1d427939dc39aebece24b923bc4ebfbf136bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ed2ba70b803940700044e900a1b2bb6607c0f051
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861013"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934049"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
-若要从逻辑应用中访问本地数据源，请在 Azure 门户中创建本地数据网关资源。 然后，逻辑应用可以使用[本地连接器](../logic-apps/logic-apps-gateway-install.md#supported-connections)。 本文介绍[在本地计算机上下载并安装网关](../logic-apps/logic-apps-gateway-install.md)之后，如何创建 Azure 网关资源。 若要详细了解网关的工作原理，请参阅[网关的工作](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)原理。
+若要从逻辑应用中访问本地数据源，请在 Azure 门户中创建本地数据网关资源。 然后，逻辑应用可以使用[本地连接器](../connectors/apis-list.md#on-premises-connectors)。 本文说明在[本地计算机上下载并安装网关](../logic-apps/logic-apps-gateway-install.md)*后*如何创建 Azure 网关资源。 有关网关的详细信息，请参阅[网关的工作](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)原理。
 
 > [!TIP]
 > 若要连接到 Azure 虚拟网络，请考虑改为创建[*集成服务环境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 
@@ -29,6 +29,27 @@ ms.locfileid: "70861013"
 * [Microsoft Flow 本地数据网关](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Microsoft PowerApps 本地数据网关](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Azure Analysis Services 本地数据网关](../analysis-services/analysis-services-gateway.md)
+
+<a name="supported-connections"></a>
+
+## <a name="supported-data-sources"></a>支持的数据源
+
+对于 Azure 逻辑应用，本地数据网关支持以下数据源的[本地连接器](../connectors/apis-list.md#on-premises-connectors)：
+
+* BizTalk Server 2016
+* 文件系统
+* IBM DB2  
+* IBM Informix
+* IBM MQ
+* MySQL
+* Oracle Database
+* PostgreSQL
+* SAP
+* SharePoint Server
+* SQL Server
+* Teradata
+
+虽然网关本身不会产生额外成本，但[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)适用于这些连接器以及 Azure 逻辑应用中的其他操作。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -135,6 +156,13 @@ ms.locfileid: "70861013"
 <a name="faq"></a>
 
 ## <a name="frequently-asked-questions"></a>常见问题
+
+**问**：在 Azure 中创建网关资源时为何看不到我的网关安装？ <br/>
+**答**：此问题的可能原因如下：
+
+* 网关安装已由 Azure 中的另一个网关资源注册并声明。 为网关安装创建网关资源后，实例列表中不会显示这些网关安装。 若要在 Azure 门户中检查网关注册，请查看所有 Azure 订阅的“本地数据网关”类型的所有 Azure 资源。
+
+* 网关安装人员的 Azure AD 标识不同于登录 Azure 门户的人员。 请检查你是否使用了用于安装网关的同一标识登录。
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 

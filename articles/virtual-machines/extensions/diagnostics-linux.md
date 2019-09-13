@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 19aa0877c7c37083a6206e094aced40542d0ef72
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c4028ff4fef5472ba2a964f70db6d4fe11eeaba6
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092686"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918799"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -23,7 +23,7 @@ ms.locfileid: "70092686"
 > [!IMPORTANT]
 > 有关 2.3 版和更早版本，请参阅[此文档](../linux/classic/diagnostic-extension-v2.md)。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM 的运行状况。 它具有以下功能：
 
@@ -59,10 +59,10 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 
 ### <a name="sample-installation"></a>示例安装
 
-在前三行填写正确的参数，然后以 root 身份执行此脚本：
+在运行前，为第一部分中的变量填写正确的值：
 
 ```bash
-# Set your Azure VM diagnostic parameters correctly below
+# Set your Azure VM diagnostic variables correctly below
 my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 my_linux_vm=<your_azure_linux_vm_name>
 my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
@@ -135,7 +135,7 @@ storageAccountSasToken | Blob 服务和表服务的[帐户 SAS 令牌](https://a
 mdsdHttpProxy | （可选）允许扩展连接到指定存储帐户和终结点所需的 HTTP 代理信息。
 sinksConfig | （可选）可将指标和事件传递到的替换目标的详细信息。 扩展所支持的每个数据接收器的具体详细信息将在下面各节中介绍。
 
-若要在资源管理器模板内获取 SAS 令牌, 请使用**listAccountSas**函数。 有关示例模板, 请参阅[List function example](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example)。
+若要在资源管理器模板内获取 SAS 令牌，请使用**listAccountSas**函数。 有关示例模板，请参阅[List function example](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example)。
 
 可通过 Azure 门户轻松构造所需的 SAS 令牌。
 
@@ -309,7 +309,7 @@ performanceCounters 节中指定的指标样本每 15 秒收集一次，或者�
 
 元素 | ReplTest1
 ------- | -----
-sinks | （可选）LAD 将聚合指标结果发送到的接收器的名称的逗号分隔列表。 所有聚合指标都将发布到列出的每个接收器。 请参阅 [sinksConfig](#sinksconfig)。 示例：`"EHsink1, myjsonsink"`。
+sinks | （可选）LAD 将聚合指标结果发送到的接收器的名称的逗号分隔列表。 所有聚合指标都将发布到列出的每个接收器。 请参阅 [sinksConfig](#sinksconfig)。 例如：`"EHsink1, myjsonsink"`。
 type | 标识指标的实际提供程序。
 class | 与“counter”一起标识提供程序的命名空间中的特定指标。
 counter | 与“class”一起标识提供程序的命名空间中的特定指标。

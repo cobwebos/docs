@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: ee798ba624aaf9f21886edab36185fb1b6ae67f2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 30587af098b5ced7962dc45d6a059184f8b5f319
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387334"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914899"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>预览-使用 Azure CLI 在 Azure Kubernetes Service （AKS）群集上创建 Windows Server 容器
 
@@ -42,7 +42,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要使用 Windows Server 容器，需要*aks* CLI 扩展版本0.4.1 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展，然后使用[az extension update][az-extension-update]命令检查是否有任何可用更新：
+若要使用 Windows Server 容器，需要*aks* CLI 扩展版本0.4.12 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展，然后使用[az extension update][az-extension-update]命令检查是否有任何可用更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -61,7 +61,7 @@ az feature register --name WindowsPreview --namespace Microsoft.ContainerService
 ```
 
 > [!NOTE]
-> 成功注册*WindowsPreview*功能标志后创建的任何 AKS 群集都将使用此预览版群集体验。 若要继续创建常规且完全受支持的群集，请不要对生产订阅启用预览功能。 使用单独的测试或开发 Azure 订阅来测试预览功能。
+> 成功注册*WindowsPreview*功能标志后创建的任何 AKS 群集都将使用此预览版群集体验。 若要继续创建常规且完全受支持的群集, 请不要对生产订阅启用预览功能。 使用单独的测试或开发 Azure 订阅来测试预览功能。
 
 完成注册需要几分钟时间。 使用[az feature list][az-feature-list]命令检查注册状态：
 
@@ -77,12 +77,12 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="limitations"></a>限制
 
-创建和管理支持多个节点池的 AKS 群集时，有以下限制：
+创建和管理支持多个节点池的 AKS 群集时, 有以下限制:
 
 * 成功注册*WindowsPreview*后，多个节点池可用于创建的群集。 如果为订阅注册*MultiAgentpoolPreview*功能，则还可以使用多个节点池。 在成功注册此功能之前，无法添加或管理已创建的现有 AKS 群集的节点池。
 * 不能删除第一个节点池。
 
-此功能处于预览阶段，但以下附加限制适用：
+此功能处于预览阶段, 但以下附加限制适用:
 
 * AKS 群集最多可以有8个节点池。
 * AKS 群集在这八个节点池中最多可以有400个节点。
@@ -141,7 +141,7 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
-    --enable-vmss \
+    --vm-set-type VirtualMachineScaleSets \
     --network-plugin azure
 ```
 

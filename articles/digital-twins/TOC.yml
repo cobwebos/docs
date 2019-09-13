@@ -19,7 +19,7 @@
           href: tutorial-facilities-udf.md
         - name: 使用逻辑应用发出通知
           href: tutorial-facilities-events.md
-        - name: 使用 TSI 将事件可视化
+        - name: 使用时序见解将事件可视化
           href: tutorial-facilities-analyze.md
 - name: 概念
   items:

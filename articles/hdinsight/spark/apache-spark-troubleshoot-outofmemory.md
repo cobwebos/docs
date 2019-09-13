@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/15/2019
-ms.openlocfilehash: 6e7157f4e40dbc585d19affaf0c12af2e6ba60c1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 69f897d1f279279c067eeff30ac711f85d3bb89b
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813910"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915209"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 的 OutOfMemoryError 异常
 
@@ -119,11 +119,11 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 可以通过选择 Custom-spark2-defaults/Config/Advanced custom-spark2-defaults 节，在 Ambari 浏览器 UI 中执行此操作。
 
-![Advanced custom-spark2-defaults-env 部分](./media/apache-spark-ts-outofmemory-heap-space/image01.png)
+![Advanced custom-spark2-defaults-env 部分](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
 添加以下属性，将 Spark 历史记录服务器内存从1g 更改为4g： `SPARK_DAEMON_MEMORY=4g`。
 
-![Spark 属性](./media/apache-spark-ts-outofmemory-heap-space/image02.png)
+![Spark 属性](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 
 请确保从 Ambari 重新启动所有受影响的服务。
 
@@ -254,4 +254,4 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 * [@AzureSupport](https://twitter.com/azuresupport)连接-官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
-* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

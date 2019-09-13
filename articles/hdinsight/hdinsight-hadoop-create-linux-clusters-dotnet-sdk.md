@@ -1,19 +1,19 @@
 ---
 title: 使用 .NET 创建 Apache Hadoop 群集 - Azure HDInsight
 description: 了解如何使用 HDInsight .NET SDK 在 Linux for HDInsight 上创建 Apache Hadoop、Apache HBase、Apache Storm 或 Apache Spark 群集。
-author: mamccrea
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.author: mamccrea
-ms.openlocfilehash: d560c61339bd608ab9385f99583613526156ca41
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.author: hrasheed
+ms.openlocfilehash: fccb29167dc04bf75a85935eeb57b0420b151f64
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508054"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916486"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集
 
@@ -27,7 +27,7 @@ ms.locfileid: "67508054"
 >
 > 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "67508054"
 
 1. 打开 Visual Studio。
 2. 创建新的 Visual C# 控制台应用程序。
-3. 在“工具”  菜单中，单击“NuGet 包管理器”  ，并单击“包管理器控制台”  。
+3. 在“工具”菜单中，单击“NuGet 包管理器”，并单击“包管理器控制台”。
 4. 在控制台中运行下列命令以安装程序包：
 
     ```powershell
@@ -49,7 +49,7 @@ ms.locfileid: "67508054"
     ```
 
     这些命令将 .NET 库以及对这些库的引用添加到当前 Visual Studio 项目中。
-5. 在解决方案资源管理器中双击“Program.cs”  将它打开，粘贴以下代码，并提供变量的值：
+5. 在解决方案资源管理器中双击“Program.cs”将它打开，粘贴以下代码，并提供变量的值：
 
     ```csharp
     using System;

@@ -15,7 +15,7 @@
       href: quickstart-create-logic-apps-visual-studio-code.md
 - name: 教程
   items:
-    - name: 定期检查流量
+    - name: 创建基于计划的工作流
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
     - name: 管理邮件列表请求
       href: tutorial-process-mailing-list-subscriptions-workflow.md

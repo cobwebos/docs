@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB 中索引的工作原理。
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: c8e21ea89f3e23709d636ab8af4716bff76d7217
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479290"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914201"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
 
@@ -25,6 +25,7 @@ Azure Cosmos DB 是一种架构不可知的数据库，使你能够迭代应用�
 
 例如，假设存在以下项：
 
+```json
     {
         "locations": [
             { "country": "Germany", "city": "Berlin" },
@@ -36,6 +37,7 @@ Azure Cosmos DB 是一种架构不可知的数据库，使你能够迭代应用�
             { "city": "Athens" }
         ]
     }
+```
 
 该项可由以下树表示:
 
@@ -62,7 +64,7 @@ Azure Cosmos DB 将项转换为树的原因是便于按照属性在这些树中�
 
 ## <a name="index-kinds"></a>索引类型
 
-Azure Cosmos DB 目前支持三种索引:
+Azure Cosmos DB 目前支持三种类型的索引：
 
 **range** 索引类型用于：
 
@@ -70,13 +72,13 @@ Azure Cosmos DB 目前支持三种索引:
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
-    ```
+   ```
 
 - 范围查询：
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
-   ``` 
+   ```
   （适用于 `>`、`<`、`>=`、`<=`、`!=`）
 
 - `ORDER BY` 查询：
@@ -107,15 +109,27 @@ Azure Cosmos DB 目前支持三种索引:
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
-可以针对格式正确的 [GeoJSON](geospatial.md) 对象使用空间索引。 目前支持点、线串和多边形。
+可以针对格式正确的 [GeoJSON](geospatial.md) 对象使用空间索引。 当前支持点、Linestring、多边形和 MultiPolygons。
 
 **composite** 索引类型用于：
 
-- 针对多个属性的 `ORDER BY` 查询： 
+- 针对多个属性的 `ORDER BY` 查询：
 
-   ```sql
-   SELECT * FROM container c ORDER BY c.firstName, c.lastName
-   ```
+```sql
+ SELECT * FROM container c ORDER BY c.property1, c.property2
+```
+
+- 使用筛选器和`ORDER BY`进行查询。 如果将 filter 属性添加到`ORDER BY`子句中，则这些查询可以利用复合索引。
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
+```
+
+- 对两个或更多属性使用筛选器的查询，其中至少有一个属性是相等筛选器
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
+```
 
 ## <a name="querying-with-indexes"></a>使用索引进行查询
 
@@ -126,7 +140,7 @@ Azure Cosmos DB 目前支持三种索引:
 ![匹配树中的特定路径](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> 按单个属性排序的 `ORDER BY` 子句始终需要一个范围索引，如果它引用的路径不包含范围索引，则会失败。 同样，多 `ORDER BY` 查询始终需要组合索引。
+> 按单个属性排序的 `ORDER BY` 子句始终需要一个范围索引，如果它引用的路径不包含范围索引，则会失败。 同样， `ORDER BY`查询根据多个属性进行排序*始终*需要组合索引。
 
 ## <a name="next-steps"></a>后续步骤
 

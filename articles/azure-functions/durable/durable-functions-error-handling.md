@@ -9,20 +9,20 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7b357189a9ce67f27952985b78dd3134517ffba5
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 5a3cfb78fe97b52abb1406dff64132fc1b3fb985
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734310"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933432"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>处理 Durable Functions 中的错误 (Azure Functions)
 
-Durable Function 业务流程采用代码实现，并可使用编程语言的错误处理功能。 考虑到这一点，关于如何将错误处理和补偿合并到业务流程中，你实际上不需要学习任何新概念。 但应注意以下事项。
+持久函数业务流程是在代码中实现的，并且可以使用编程语言的内置错误处理功能。 无需了解将错误处理和补偿添加到业务流程中所需的任何新概念。 但应注意以下事项。
 
 ## <a name="errors-in-activity-functions"></a>活动函数中的错误
 
-活动函数中引发的任何异常都将封送回业务流程协调程序函数，并作为 `FunctionFailedException` 引发。 可在业务流程协调程序函数中编写满足需要的错误处理和补偿代码。
+在活动函数中引发的任何异常都将封送回 orchestrator 函数并引发为`FunctionFailedException`。 可在业务流程协调程序函数中编写满足需要的错误处理和补偿代码。
 
 例如，考虑使用以下业务流程协调程序函数，将一个帐户中的资金转移到另一帐户：
 
@@ -139,7 +139,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-如果目标帐户的 CreditAccount 函数调用失败，则业务流程协调程序函数通过将资金归还源帐户来进行补偿。
+如果第一个**CreditAccount**函数调用失败，则业务流程协调程序函数通过将资金贷记回源帐户来进行补偿。
 
 ## <a name="automatic-retry-on-failure"></a>失败时自动重试
 
@@ -192,18 +192,18 @@ module.exports = df.orchestrator(function*(context) {
 
 `CallActivityWithRetryAsync` (.NET) 或 `callActivityWithRetry` (JavaScript) API 带有 `RetryOptions` 参数。 使用 `CallSubOrchestratorWithRetryAsync` (.NET) 或 `callSubOrchestratorWithRetry` (JavaScript) API 的子业务流程调用均可使用这些相同的重试策略。
 
-可通过多种选项自定义自动重试策略。 包含以下内容：
+自定义自动重试策略有几个选项：
 
 * **最大尝试次数**：最大重试尝试次数。
 * **首次重试间隔**：首次尝试重试前需要等待的时间。
 * **回退系数**：用来确定回退增加速率的系数。 默认值为 1。
 * **最大重试间隔**：尝试重试之间需要等待的最长时间。
 * **重试超时**：执行重试所花费的最长时间。 默认行为是可无限期重试。
-* **处理**：可指定一个用户定义的回退，以确定是否应重试函数调用。
+* **处理**：可以指定用户定义的回调来确定是否应重试某个函数。
 
 ## <a name="function-timeouts"></a>函数超时
 
-如果业务流程协调程序内的函数调用耗时太长，建议放弃该函数调用。 本示例中执行此操作的正确方法是将 `context.CreateTimer` (.NET) 或 `context.df.createTimer` (JavaScript) 与 `Task.WhenAny` (.NET) 或 `context.df.Task.any` (JavaScript) 结合使用，创建[持久计时器](durable-functions-timers.md)，如下例中所示：
+如果在业务流程协调程序函数中完成的时间太长，可能需要放弃该函数调用。 本示例中执行此操作的正确方法是将 `context.CreateTimer` (.NET) 或 `context.df.createTimer` (JavaScript) 与 `Task.WhenAny` (.NET) 或 `context.df.Task.any` (JavaScript) 结合使用，创建[持久计时器](durable-functions-timers.md)，如下例中所示：
 
 ### <a name="precompiled-c"></a>预编译 C#
 
@@ -296,6 +296,9 @@ module.exports = df.orchestrator(function*(context) {
 如果业务流程协调程序函数失败，出现未经处理的异常，则会记录异常的详细信息，且实例的完成状态为 `Failed`。
 
 ## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> [了解永久业务流程](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
 > [了解如何诊断问题](durable-functions-diagnostics.md)

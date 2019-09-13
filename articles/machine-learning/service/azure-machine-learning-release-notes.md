@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 48da5e27184076676edb3f3b89b478bcf2fe347f
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
-ms.translationtype: HT
+ms.openlocfilehash: 2721e134e03d3d622e61085dc39a2914098ba570
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900451"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70930744"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -25,7 +25,7 @@ ms.locfileid: "70900451"
 
 ## <a name="2019-09-09"></a>2019-09-09
 
-### <a name="new-web-experience-for-azure-machine-learning-workspaces-preview"></a>Azure 机器学习工作区的新 web 体验（预览版）
+### <a name="new-web-experience-preview-for-azure-machine-learning-workspaces"></a>Azure 机器学习工作区的新 web 体验（预览） 
 使用新的 web 体验，数据科学家和数据工程师可以从准备完成其端到端机器学习生命周期，并将数据可视化到在一个位置定型和部署模型。 
 
 ![Azure 机器学习工作区 UI （预览）](./media/azure-machine-learning-release-notes/new-ui-for-workspaces.jpg)

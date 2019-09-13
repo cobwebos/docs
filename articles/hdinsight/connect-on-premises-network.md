@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: ced0655d2e8ff012b3043dd123a8483674b4c472
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404545"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918550"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>将 HDInsight 连接到本地网络
 
@@ -65,36 +65,36 @@ ms.locfileid: "68404545"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
   
-2. 从左侧菜单中, 导航到 " **+ 创建资源** > " "**计算** > **Ubuntu Server 18.04 LTS**"。
+2. 在左侧菜单中，导航到“+创建资源” > “计算” > “Ubuntu Server 18.04 LTS”。
 
-    ![创建 Ubuntu 虚拟机](./media/connect-on-premises-network/create-ubuntu-vm.png)
+    ![创建 Ubuntu 虚拟机](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
 
 3. 在“基本信息”选项卡中输入以下信息：  
   
-    | 字段 | 值 |
+    | 字段 | ReplTest1 |
     | --- | --- |
     |订阅 |选择相应的订阅。|
     |资源组 |选择包含此前创建的虚拟网络的资源组。|
     |虚拟机名称 | 输入用于标识该虚拟机的友好名称。 本示例使用 **DNSProxy**。|
     |地区 | 选择与此前创建的虚拟网络相同的区域。  并非所有 VM 大小都可在所有区域中使用。  |
     |可用性选项 |  选择所需的可用性级别。  Azure 提供一系列的选项，用于管理应用程序的可用性和复原能力。  将解决方案构建为使用可用性区域或可用性集中的已复制 VM，使应用和数据免受事件中心中断和维护事件的影响。 此示例使用“不需要基础结构冗余”。 |
-    |图像 | 离开**Ubuntu Server 18.04 LTS**。 |
-    |身份验证类型 | __密码__或 __SSH 公钥__：SSH 帐户的身份验证方法。 建议使用公钥，因为公钥更安全。 此示例使用**密码**。  有关详细信息，请参阅[创建并使用用于 Linux VM 的 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md)文档。|
+    |图像 | 保留“Ubuntu Server 18.04 LTS”。 |
+    |身份验证类型 | __密码__或 __SSH 公钥__：SSH 帐户的身份验证方法。 建议使用公钥，因为公钥更安全。 本示例使用**密码**。  有关详细信息，请参阅[创建并使用用于 Linux VM 的 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md)文档。|
     |用户名 |输入 VM 的管理员用户名。  本示例使用 **sshuser**。|
     |密码或 SSH 公钥 | 可用字段取决于针对“身份验证类型”所做的选择。  输入相应的值。|
-    |公共入站端口|选择“允许所选端口”。 然后从 "**选择入站端口**" 下拉列表中选择 " **SSH (22)** "。|
+    |公共入站端口|选择“允许所选端口”。 然后从“选择入站端口”下拉列表中选择“SSH (22)”。|
 
-    ![虚拟机基础配置](./media/connect-on-premises-network/vm-basics.png)
+    ![虚拟机基础配置](./media/connect-on-premises-network/virtual-machine-basics.png)
 
     将其他项保留为默认值，然后选择“网络”选项卡。
 
 4. 在“网络”选项卡中，输入以下信息：
 
-    | 字段 | 值 |
+    | 字段 | ReplTest1 |
     | --- | --- |
     |虚拟网络 | 选择此前创建的虚拟网络。|
     |Subnet | 选择前面创建的虚拟网络的默认子网。 请勿选择 VPN 网关所用的子网。|
-    |公共 IP | 使用会自动填充值。  |
+    |公共 IP | 使用自动填充的值。  |
 
     ![虚拟网络设置](./media/connect-on-premises-network/virtual-network-settings.png)
 
@@ -109,11 +109,11 @@ ms.locfileid: "68404545"
 
 2. 记下“公共 IP 地址/DNS 名称标签”和“专用 IP 地址”的值供以后使用。
 
-   ![公共和专用 IP 地址](./media/connect-on-premises-network/vm-ip-addresses.png)
+   ![公共和专用 IP 地址](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>安装和配置 Bind（DNS 软件）
 
-1. 使用 SSH 连接到虚拟机的公共 IP 地址。 将`sshuser`替换为你在创建 VM 时指定的 SSH 用户帐户。 以下示例将在 40.68.254.142 连接到虚拟机：
+1. 使用 SSH 连接到虚拟机的公共 IP 地址。 将 `sshuser` 替换为创建 VM 时指定的 SSH 用户帐户。 以下示例将在 40.68.254.142 连接到虚拟机：
 
     ```bash
     ssh sshuser@40.68.254.142
@@ -231,7 +231,7 @@ ms.locfileid: "68404545"
 
 若要配置虚拟网络以使用自定义 DNS 服务器，而不是 Azure 递归解析程序，请在 [Azure 门户](https://portal.azure.com)中使用以下步骤：
 
-1. 在左侧菜单中, 导航到 "**所有服务** > **网络** > " "**虚拟网络**"。
+1. 在左侧菜单中，导航到“所有服务” > “网络” > “虚拟网络”。
 
 2. 从列表中选择虚拟网络，此时会打开虚拟网络的默认视图。  
 
@@ -334,7 +334,7 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关在虚拟网络中使用 HDInsight 的详细信息, 请参阅为[Azure HDInsight 群集计划虚拟网络部署](./hdinsight-plan-virtual-network-deployment.md)。
+* 有关在虚拟网络中使用 HDInsight 的详细信息，请参阅为[Azure HDInsight 群集计划虚拟网络部署](./hdinsight-plan-virtual-network-deployment.md)。
 
 * 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 

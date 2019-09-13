@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: dd1a46ea008ce5f8fb02dd468b27494d231717f0
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 53399fbdeba44b184ef4e76c89affefd29dbc413
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483919"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915317"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)
 
@@ -103,11 +103,11 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="download-the-completed-project"></a>下载已完成的项目
 
-您可以下载从本文中创建的项目的完整版本[GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)。 但是，仍然需要按照这篇文章中的步骤提供配置设置。
+可以从 [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) 下载本文中创建的项目的完整版本。 但是，仍然需要按照本文中的步骤提供配置设置。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
-* HDInsight 上的 Apache Storm 群集。 请参阅[使用 Azure 门户中创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然后选择**Storm**有关**群集类型**。
+* HDInsight 上的 Apache Storm 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择 **Storm** 作为**群集类型**。
 
     > [!WARNING]  
     > 本文档中使用的示例需要 Storm on HDInsight 3.5 或 3.6 版。 由于重大类名更改，此示例不适用于旧版 HDInsight。 如需适用于旧式群集的示例版本，请参阅 [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases)。
@@ -133,16 +133,16 @@ topologyBuilder.SetJavaBolt(
 
 事件中心是此示例的数据源。 使用[事件中心入门](../../event-hubs/event-hubs-create.md)的“创建事件中心”部分中的信息。
 
-1. 创建事件中心后，在 Azure 门户中查看“事件中心”设置，选择“共享访问策略”   。 选择“+ 添加”  添加以下策略：
+1. 创建事件中心后，在 Azure 门户中查看“事件中心”设置，选择“共享访问策略”。 选择“+ 添加”添加以下策略：
 
-   | 名称 | 权限 |
+   | 姓名 | 权限 |
    | --- | --- |
    | writer |发送 |
    | reader |侦听 |
 
-    ![“共享访问策略”窗口的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
+    ![“共享访问策略”窗口的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
-2. 选择“读取器”  和“写入器”  策略。 复制并保存两个策略的主密钥值，因为稍后将使用这些值。
+2. 选择“读取器”和“写入器”策略。 复制并保存两个策略的主密钥值，因为稍后将使用这些值。
 
 ## <a name="configure-the-eventhubwriter"></a>配置 EventHubWriter
 
@@ -152,9 +152,9 @@ topologyBuilder.SetJavaBolt(
 
 3. 在 **EventHubWriter** 项目中，打开 **App.config** 文件。 使用此前配置的事件中心提供的信息，填充以下项的值：
 
-   | 密钥 | 值 |
+   | Key | ReplTest1 |
    | --- | --- |
-   | EventHubPolicyName |写入器（如果对具有“发送”  权限的策略使用不同名称，则改用它。） |
+   | EventHubPolicyName |写入器（如果对具有“发送”权限的策略使用不同名称，则改用它。） |
    | EventHubPolicyKey |写入者策略的密钥。 |
    | EventHubNamespace |包含事件中心的命名空间。 |
    | EventHubName |事件中心名称。 |
@@ -168,9 +168,9 @@ topologyBuilder.SetJavaBolt(
 
 2. 打开 **EventHubReader** 的 **App.config** 文件。 使用前面在事件中心配置的信息填写以下键的值：
 
-   | 密钥 | 值 |
+   | Key | ReplTest1 |
    | --- | --- |
-   | EventHubPolicyName |读取器（如果对具有“侦听”  权限的策略使用不同名称，则改用它。） |
+   | EventHubPolicyName |读取器（如果对具有“侦听”权限的策略使用不同名称，则改用它。） |
    | EventHubPolicyKey |读取者策略的密钥。 |
    | EventHubNamespace |包含事件中心的命名空间。 |
    | EventHubName |事件中心名称。 |
@@ -180,29 +180,29 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="deploy-the-topologies"></a>部署拓扑
 
-1. 在“解决方案资源管理器”  中，右键单击 **EventHubReader** 项目，并选择“提交到 Storm on HDInsight”  。
+1. 在“解决方案资源管理器”中，右键单击 **EventHubReader** 项目，并选择“提交到 Storm on HDInsight”。
 
-    ![解决方案资源管理器的屏幕截图，其中突出显示了“提交到 Storm on HDInsight”](./media/apache-storm-develop-csharp-event-hub-topology/submittostorm.png)
+    ![解决方案资源管理器的屏幕截图，其中突出显示了“提交到 Storm on HDInsight”](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
 
-2. 在“提交拓扑”  对话框中，选择“Storm 群集”  。 展开“其他配置”  ，选择“Java 文件路径”  ，选择“...”  ，选择前面下载的 JAR 文件所在的目录。 最后，单击“提交”  。
+2. 在“提交拓扑”对话框中，选择“Storm 群集”。 展开“其他配置”，选择“Java 文件路径”，选择“...”，选择前面下载的 JAR 文件所在的目录。 最后，单击“提交”。
 
-    ![“提交拓扑”对话框的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/submit.png)
+    ![“提交拓扑”对话框的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
 
-3. 提交拓扑之后，会出现“Storm 拓扑查看器”  。 **EventHubReader** 拓扑。
+3. 提交拓扑之后，会出现“Storm 拓扑查看器”。 **EventHubReader** 拓扑。
 
-    ![“Storm 拓扑查看器”的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/topologyviewer.png)
+    ![“Storm 拓扑查看器”的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
 
-4. 在“解决方案资源管理器”  中，右键单击 **EventHubWriter** 项目，并选择“提交到 Storm on HDInsight”  。
+4. 在“解决方案资源管理器”中，右键单击 **EventHubWriter** 项目，并选择“提交到 Storm on HDInsight”。
 
-5. 在“提交拓扑”  对话框中，选择“Storm 群集”  。 展开“其他配置”  ，选择“Java 文件路径”  ，选择“...”  ，并选择前面下载的 JAR 文件所在的目录。 最后，单击“提交”  。
+5. 在“提交拓扑”对话框中，选择“Storm 群集”。 展开“其他配置”，选择“Java 文件路径”，选择“...”，并选择前面下载的 JAR 文件所在的目录。 最后，单击“提交”。
 
-6. 提交拓扑之后，在“Storm 拓扑查看器”  中刷新拓扑列表以验证这两个拓扑是否正在群集上运行。
+6. 提交拓扑之后，在“Storm 拓扑查看器”中刷新拓扑列表以验证这两个拓扑是否正在群集上运行。
 
-7. 在“Storm 拓扑查看器”  中，选择 **EventHubReader** 拓扑。
+7. 在“Storm 拓扑查看器”中，选择 **EventHubReader** 拓扑。
 
-8. 若要打开 Bolt 的组件摘要，请双击图表中的“LogBolt”组件。 
+8. 若要打开 Bolt 的组件摘要，请双击图表中的“LogBolt”组件。
 
-9. 在“执行器”  部分，选择“端口”  列中的链接之一。 这会显示由组件记录的信息。 记录的信息类似于以下文本：
+9. 在“执行器”部分，选择“端口”列中的链接之一。 这会显示由组件记录的信息。 记录的信息类似于以下文本：
 
         2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
         2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
@@ -210,9 +210,9 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="stop-the-topologies"></a>停止拓扑
 
-要停止拓扑，请在“Storm 拓扑查看器”  中选择每个拓扑，并单击“终止”  。
+要停止拓扑，请在“Storm 拓扑查看器”中选择每个拓扑，并单击“终止”。
 
-![“Storm 拓扑查看器”的屏幕截图，其中突出显示了“终止”按钮](./media/apache-storm-develop-csharp-event-hub-topology/killtopology.png)
+![“Storm 拓扑查看器”的屏幕截图，其中突出显示了“终止”按钮](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
 
 ## <a name="delete-your-cluster"></a>删除群集
 

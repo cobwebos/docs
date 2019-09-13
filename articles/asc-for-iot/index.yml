@@ -61,6 +61,11 @@ sections:
             image:
               src: 'https://docs.microsoft.com/media/common/i_video.svg'
               href: 'https://youtu.be/pq5uSp9u_x0'
+          - title: 适用于 IoT 的 Microsoft Azure 安全中心 - 解决方案
+            href: 'https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek'
+            image:
+              src: 'https://docs.microsoft.com/media/common/i_video.svg'
+              href: 'https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek'
   - title: 引用
     items:
       - type: list

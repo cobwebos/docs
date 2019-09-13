@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4dfcde96957bb8fce3731e38eee62554795d795f
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 30842c787e2009b4919fef916f3c5e1f73a79bf2
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844892"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918817"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -211,13 +211,16 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 |澳大利亚东部 |LRS     |否    |是|
 |澳大利亚东南部|LRS     |否    |尚不支持|
 |印度中部  |LRS     |否    |尚不支持|
+|East US        |LRS     |否    |尚不支持|
 |法国中部 |LRS、ZRS|否    |LRS-是，ZRS-尚未|
 |法国南部   |LRS     |否    |是|
 |印度南部    |LRS     |否    |尚不支持|
 |东南亚 |LRS、ZRS|否    |是|
 |美国中西部|LRS     |否    |尚不支持|
 |西欧    |LRS、ZRS|否    |是|
+|美国西部        |LRS     |否    |尚不支持|
 |美国西部 2      |LRS、ZRS|否    |是|
+
 
 \* 对于没有门户支持的区域，你仍可以使用 PowerShell 或 Azure 命令行接口（CLI）来创建大于 5 TiB 的共享。 或者，通过门户创建新的共享，而无需指定配额。 这会创建默认大小为 100 TiB 的共享，稍后可通过 PowerShell 或 Azure CLI 进行更新。
 

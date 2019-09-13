@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 973ac928900cc02f176931ffa3865c2997e552f2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 4bec14cd3aa88d885f83142143c7a901ca82057b
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810845"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918207"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探讨 - 高级分析
 
@@ -23,7 +23,7 @@ HDInsight 提供可从大量结构化、非结构化和快速移动的数据中�
 
 ## <a name="advanced-analytics-process"></a>高级分析过程
 
-![Process](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![Process](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
 
 在识别业务问题并开始收集和处理数据之后，需要创建一个模型用于表示所要预测的问题。 该模型使用一种或多种机器学习算法做出最符合业务需求的预测类型。  大部分数据应该用于训练模型，剩余的数据用于测试或评估该模型。 
 
@@ -33,7 +33,7 @@ HDInsight 提供可从大量结构化、非结构化和快速移动的数据中�
 
 高级分析解决方案提供一套机器学习算法。 下面是算法类别和相关常见业务用例的摘要。
 
-![机器学习用例](./media/apache-hadoop-deep-dive-advanced-analytics/ml-use-cases.png)
+![机器学习用例](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
 
 除了选择最合适的算法以外，还要考虑是否需要提供用于训练的数据。 机器学习算法划分为：
 
@@ -98,7 +98,7 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 此示例使用 Alex Krizhevsky、Vinod Nair 及 Geoffrey Hinton 编译和分发的 CIFAR-10 图像集。 CIFAR-10 数据集包含 60,000 个分属 10 个互斥类的 32×32 彩色图像：
 
-![图像](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
+![图像](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
 有关该数据集的详细信息，请参阅 Alex Krizhevsky 撰写的 [Learning Multiple Layers of Features from Tiny Images](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)（从微小图像中学习多层特征）。
 
@@ -111,7 +111,7 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 在包含 4 个工作节点的群集上，10,000 个图像的前处理/评分花费了不到 1 分钟。 该模型可准确预测大约 9,100 个 (91%) 图像的标签。 混淆矩阵可演示最常见的分类错误。 例如，以下矩阵显示，与其他标签对相比，发生将狗标记成猫（以及将猫标记成狗）的错误的频率较高。
 
-![结果](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
+![结果](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
 
 ### <a name="try-it-out"></a>试试吧！
 

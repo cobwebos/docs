@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d9c546064589e82cfef367978ebea98c2c202307
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e38f118e10c9d0e2347edb7cbaa5d7b68a0e63f2
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087304"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933409"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions 中处理外部事件 (Azure Functions)
 
@@ -201,10 +201,7 @@ module.exports = async function(context, instanceId) {
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解如何设置永久业务流程](durable-functions-eternal-orchestrations.md)
-
-> [!div class="nextstepaction"]
-> [运行等待外部事件的示例](durable-functions-phone-verification.md)
+> [了解如何实现错误处理](durable-functions-error-handling.md)
 
 > [!div class="nextstepaction"]
 > [运行等待人机交互的示例](durable-functions-phone-verification.md)

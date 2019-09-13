@@ -12,20 +12,22 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: f7fc5b32fb18da60816056c72dde8c53d439befe
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d7cb473c54dc9cf735e43c65bc079fb4f21e4c97
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812189"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913989"
 ---
 # <a name="what-is-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务
 
 Azure SQL 数据库是一种通用的关系数据库托管服务，可用于为 Microsoft Azure 云中的应用程序和解决方案创建高度可用且高性能的数据存储层。 SQL 数据库可成为各种新式云应用程序的正确选择，因为它可让你使用强大的功能来处理关系数据和[非关系结构](sql-database-multi-model-features.md)（例如图形、JSON、空间和 XML）。 它基于[Microsoft SQL Server 数据库引擎](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)的最新稳定版本，并使你能够使用一组丰富的高级查询处理功能，如[高性能内存中技术](sql-database-in-memory.md)和[智能查询处理](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json).
-利用 Microsoft 的云优先策略，首先将 SQL Server 的最新功能发布到 SQL 数据库，然后再发布到 SQL Server 本身。 此方法可为你提供 SQL Server 的最新功能，这些新功能已经过数百万个数据库的测试且无任何修补或升级开销。 使用 SQL 数据库可在两个不同的购买模型中轻松定义和缩放性能：[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)和[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)。 SQL 数据库是完全托管型服务，提供内置的可用性、备份和其他常见维护操作。 Microsoft 无缝地处理 SQL 和 OS 代码的所有修补和更新，并对底层基础结构的所有管理进行了抽象。
+利用 Microsoft 的云优先策略，首先将 SQL Server 的最新功能发布到 SQL 数据库，然后再发布到 SQL Server 本身。 此方法可为你提供 SQL Server 的最新功能，这些新功能已经过数百万个数据库的测试且无任何修补或升级开销。 使用 SQL 数据库可在两个不同的购买模型中轻松定义和缩放性能：[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)和[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)。 SQL 数据库是完全托管型服务，提供内置的可用性、备份和其他常见维护操作。 Microsoft 无缝地处理 SQL 和 OS 代码的所有修补和更新, 并对底层基础结构的所有管理进行了抽象。
 
 > [!NOTE]
 > 有关 Azure SQL 数据库术语词汇表，请参阅 [SQL 数据库术语词汇表](sql-database-glossary-terms.md)
+
+## <a name="deployment-models"></a>部署模型
 
 Azure SQL 数据库提供下述适用于 Azure SQL 数据库的部署选项：
 
@@ -51,11 +53,19 @@ SQL 数据库通过多个资源类型、服务层级和计算大小提供可预�
 
 动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放，而动态可伸缩性允许在无停机时间的情况下进行手动缩放。 单个数据库支持手动动态可伸缩性，但不支持自动缩放。 若要获得更多*自动*体验，请考虑使用弹性池，它允许数据库根据各个数据库需求共享池中的资源。 但是，有一些脚本可帮助自动执行单个数据库的可伸缩性。 有关示例，请参阅[使用 PowerShell 监视和缩放单个数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
 
-### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>购买模型、服务层级、计算大小和存储量
+### <a name="purchasing-models"></a>购买模型
 
 SQL 数据库提供以下两种购买模型：
-- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vcore 数、内存量以及存储量和速度。 基于 vCore 的购买模型还允许使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来节省成本。 有关 Azure 混合权益的详细信息，请参阅[常见问题解答](#sql-database-frequently-asked-questions-faq)。
+- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vcore 数、内存量以及存储量和速度。 基于 vCore 的购买模型还允许你使用 **[SQL Server Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)** 来节省成本。 有关 Azure 混合权益的详细信息，请参阅[常见问题解答](#sql-database-frequently-asked-questions-faq)。
 - [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)：混合提供三个服务层级中的计算、内存和 IO 资源，以支持轻型到重型数据库工作负荷。 每个层级中的不同计算大小提供这些资源的不同组合，你可以向其添加更多的存储资源。
+- [无服务器模型](sql-database-serverless.md)，可根据工作负荷需求和帐单自动缩放计算，每秒使用的计算量。 此外，当仅对存储计费时，无服务器计算层将在非活动期间自动暂停数据库；当活动返回时，它将自动恢复数据库。
+
+### <a name="service-tiers"></a>服务层
+
+Azure SQL 数据库提供三个为不同类型的应用程序设计的服务层：
+- 为常见工作负荷设计的[常规用途/标准](sql-database-service-tier-general-purpose.md)服务层。 提供以预算导向的、均衡的计算和存储选项。
+- 适用于具有高事务速率和最低延迟 IO 的 OLTP 应用程序的[业务关键/高级](sql-database-service-tier-business-critical.md)服务层。 使用多个独立副本，提供最高级别的故障恢复能力。
+- 为非常大的 OLTP 数据库设计的[超大规模](sql-database-service-tier-hyperscale.md)服务层，以及自动缩放存储和缩放计算流畅地的功能。 
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>弹性池可以最大化资源利用率
 
@@ -98,7 +108,7 @@ Azure 平台提供[内置的性能监视](sql-database-performance.md)和[警报
 
 高级和业务关键服务层级中的数据库的某些功能已经与可用性组的同步功能[非常类似](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)。 较低服务层级中的数据库使用[不同但等效的机制](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)通过存储提供冗余。 有相应的逻辑可以防范单个计算机发生故障。  使用活动异地复制功能可以在灾难损毁整个区域时提供保护。
 
-Azure 可用性区域是一种高可用性问题的重头戏。  它尝试防止单个区域中的单个数据中心构建中断。  因此，它希望防止网络丢失或网络丢失。 在 SQL Azure 中，这将通过将不同的副本放置在不同的可用性区域中（与大楼不同）并以其他方式工作。
+Azure 可用性区域是一种高可用性问题的重头戏。  它尝试防止单个区域中的单个数据中心构建中断。  因此, 它希望防止网络丢失或网络丢失。 在 SQL Azure 中, 这将通过将不同的副本放置在不同的可用性区域中 (与大楼不同) 并以其他方式工作。
 
 事实上，Azure 业界领先的 99.99% 可用性服务级别协议[（SLA）](https://azure.microsoft.com/support/legal/sla/)由 Microsoft 管理的数据中心的全球网络提供支持，可帮助保持应用运行24/7。 Azure 平台完全管理每个数据库，并保证不会丢失数据并实现高百分比数据可用性。 Azure 会自动处理修补、备份、复制、故障检测；基础的潜在硬件、软件或网络故障；部署 bug 修复、故障转移、数据库升级和其他维护任务。 标准可用性是通过将计算层与存储层相隔离来实现的。 高级可用性的实现方式是将计算和存储层集成到单个节点以提高性能，然后藉此实施类似于 Always On 可用性组的技术。 有关 Azure SQL 数据库的高可用性功能的完整讨论，请参阅 [SQL 数据库可用性](sql-database-high-availability.md)。 此外，SQL 数据库还提供内置[业务连续性和全局可伸缩性](sql-database-business-continuity.md)功能，包括：
 
@@ -147,7 +157,7 @@ SQL 数据库提供针对需要监视的查询的详细见解。 SQL 数据库�
 SQL 数据库提供一系列[内置安全性和符合性功能](sql-database-security-overview.md)，帮助应用程序满足各种安全性和符合性要求。
 
 > [!IMPORTANT]
-> Azure SQL 数据库（所有部署选项）已通过了许多合规性标准的认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，你可以在其中找到最新的 SQL 数据库符合性认证列表。
+> Azure SQL 数据库（所有部署选项）已通过了许多合规性标准的认证。 有关详细信息, 请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), 你可以在其中找到最新的 SQL 数据库符合性认证列表。
 
 ### <a name="advance-threat-protection"></a>高级威胁防护
 
@@ -177,7 +187,7 @@ SQL 数据库可以保护数据。对于动态数据，它使用[传输层安全
 
 ### <a name="compliance-certification"></a>符合性认证
 
-SQL 数据库参与定期审核，并已针对多个符合性标准进行验证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，你可以在其中找到最新的 SQL 数据库符合性认证列表。
+SQL 数据库参与定期审核，并已针对多个符合性标准进行验证。 有关详细信息, 请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), 你可以在其中找到最新的 SQL 数据库符合性认证列表。
 
 ## <a name="easy-to-use-tools"></a>易于使用的工具
 
@@ -255,7 +265,7 @@ SQL 数据库客户将获得与面向 SQL Server 的 Azure 混合权益相关的
   - [适用于 SQL 数据库的 Azure CLI 示例](sql-database-cli-samples.md)
   - [适用于 SQL 数据库的 Azure PowerShell 示例](sql-database-powershell-samples.md)
 
- - 有关公布的新功能的信息，请参阅 
+ - 有关公布的新功能的信息, 请参阅 
    - **[适用于 SQL 数据库的 Azure 路线图](https://azure.microsoft.com/roadmap/?category=databases)** -用于找出新增功能和即将推出的功能的位置。
   - **[AZURE Sql 数据库博客](https://azure.microsoft.com/blog/topics/database)** -SQL Server 产品团队成员通过博客了解有关 SQL 数据库的新闻和功能。
 

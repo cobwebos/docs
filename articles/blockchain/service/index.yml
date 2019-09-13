@@ -10,12 +10,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 08/29/2019
-  ms.openlocfilehash: c5816bb2278c138a8df07c5c289d53a818614d86
-  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.openlocfilehash: 58aba8438b49b034fc78a8814869e819804cff1c
+  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70240841"
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70932809"
 landingContent:
 - title: 关于 Azure 区块链服务
   linkLists:
@@ -41,6 +41,8 @@ landingContent:
       url: create-member-cli.md
   - linkListType: quickstart
     links:
+    - text: 使用 Visual Studio Code 连接到联盟网络
+      url: connect-vscode.md
     - text: 使用 MetaMask 进行连接并使用 Remix 部署智能合约
       url: connect-metamask.md
     - text: 使用 Geth 连接到事务节点
@@ -49,7 +51,7 @@ landingContent:
       url: connect-truffle.md
   - linkListType: tutorial
     links:
-    - text: 在 Azure 区块链服务中使用智能合约
+    - text: 使用 Visual Studio Code 创建、生成和部署智能合约
       url: send-transaction.md
   - linkListType: video
     links:

@@ -37,10 +37,12 @@
       href: concepts-limits-quotas.md
 - name: 操作指南
   items:
-    - name: 使用 IoT 设备工作台
-      href: howto-use-iot-device-workbench.md
+    - name: 使用 Visual Studio 和 Visual Studio Code 进行开发
+      href: howto-develop-with-vs-vscode.md
     - name: 安装 IoT 资源管理器
       href: howto-install-iot-explorer.md
+    - name: 安装 Azure CLI 扩展
+      href: howto-install-pnp-cli.md
     - name: 载入到 IoT 门户
       href: howto-onboard-portal.md
     - name: 管理模型

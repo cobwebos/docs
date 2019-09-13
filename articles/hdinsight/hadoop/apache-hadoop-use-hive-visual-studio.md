@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: bded3ac97732a7cd18411cc9f4ef1707dbdf68e3
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 129f200bc9f61d70f4403b1154978d57e09fee26
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735820"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917487"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询
 
@@ -59,7 +59,7 @@ ms.locfileid: "70735820"
 
 6. 若要以**批处理**模式下运行同一查询，请将下拉列表从“交互式”切换到“批处理”。 请注意，执行按钮将从“执行”更改为“提交”。
 
-    ![提交 Hive 查询的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-batch-query.png)
+    ![提交 Hive 查询的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
     Hive 编辑器支持 IntelliSense。 用于 Visual Studio 的 Data Lake 工具支持在编辑 Hive 脚本时加载远程元数据。 例如，如果键入 `SELECT * FROM`，则 IntelliSense 会列出所有建议的表名称。 在指定表名称后，IntelliSense 会列出列名称。 这些工具支持大多数 Hive DML 语句、子查询和内置 UDF。 IntelliSense 只建议 HDInsight 工具栏中所选群集的元数据。
 
@@ -71,7 +71,7 @@ ms.locfileid: "70735820"
 
    如果选择高级提交选项，请为脚本配置“作业名称”、“参数”、“其他配置”和“状态目录”：
 
-    ![HDInsight Hadoop Hive 查询的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/hdinsight.visual.studio.tools.submit.jobs.advanced.png "提交查询")
+    ![HDInsight Hadoop Hive 查询的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "提交查询")
 
 ### <a name="hive-application"></a>Hive 应用程序
 
@@ -115,11 +115,11 @@ ms.locfileid: "70735820"
 
 6. 在工具栏中，选择需要用于此查询的“HDInsight 群集”。 选择“提交”，让语句以 Hive 作业的形式运行。
 
-   ![“提交”栏](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
+   ![“提交”栏](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
 
 7. “Hive 作业摘要”将会出现并显示有关正在运行的作业的信息。 在“作业状态”更改为“已完成”之前，使用“刷新”链接刷新作业信息。
 
-   ![作业摘要，显示已完成的作业](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
+   ![作业摘要，显示已完成的作业](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
 8. 使用“作业输出”链接查看此作业的输出。 它显示 `[ERROR] 3`，这是此查询返回的值。
 

@@ -13,6 +13,8 @@
       href: create-member-cli.md
     - name: 连接到事务节点
       items:
+        - name: 使用 VS Code
+          href: connect-vscode.md
         - name: 使用 MetaMask
           href: connect-metamask.md
         - name: 使用 Geth

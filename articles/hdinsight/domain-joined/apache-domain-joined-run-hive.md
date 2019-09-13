@@ -4,21 +4,21 @@ description: 了解如何为具有企业安全性套餐的 Azure HDInsight 服�
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8ffe2cfc19a7ce94e47046839f6973793b73c118
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b0213fc1a96b38b615cbd8b7b6374a6716b9f840
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441411"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918186"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Apache Hive 策略
 了解如何为 Apache Hive 配置 Apache Ranger 策略。 本文将创建两个 Ranger 策略来限制对 hivesampletable 的访问。 HDInsight 群集附带 hivesampletable。 配置这些策略后，可以使用 Excel 和 ODBC 驱动程序连接到 HDInsight 中的 Hive 表。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 * 具有企业安全性套餐的 HDInsight 群集。 请参阅[配置具有 ESP 的 HDInsight 群集](apache-domain-joined-configure.md)。
 * 装有 Office 2016、Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone 或 Office 2010 Professional Plus 的工作站。
 
@@ -37,7 +37,7 @@ ms.locfileid: "67441411"
     目前，Ranger 只能处理 Yarn 和 Hive。
 
 ## <a name="create-domain-users"></a>创建域用户
-请参阅[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)，了解如何创建 hiveruser1 和 hiveuser2。 在本文中使用的两个用户帐户。
+请参阅[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)，了解如何创建 hiveruser1 和 hiveuser2。 本文中使用这两个用户帐户。
 
 ## <a name="create-ranger-policies"></a>创建 Ranger 策略
 本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)的教程中创建的。 在下一部分，会在 Excel 中测试两个策略。
@@ -45,8 +45,8 @@ ms.locfileid: "67441411"
 **创建 Ranger 策略**
 
 1. 打开 Ranger 管理 UI。 请参阅“连接到 Apache Ranger 管理 UI”。
-2. 单击“Hive”下的“&lt;群集名称>_hive”。   应会看到两个预配置策略。
-3. 单击“添加新策略”，并输入以下值： 
+2. 单击“Hive”下的“&lt;群集名称>_hive”。 应会看到两个预配置策略。
+3. 单击“添加新策略”，并输入以下值：
 
    * 策略名称：read-hivesampletable-all
    * Hive 数据库：default
@@ -61,7 +61,7 @@ ms.locfileid: "67441411"
      > 如果“选择用户”中未填充域用户，请等待片刻时间让 Ranger 与 AAD 同步。
      >
      >
-4. 单击“添加”保存策略。 
+4. 单击“添加”保存策略。
 5. 重复最后两个步骤，创建具有以下属性的另一个策略：
 
    * 策略名称：read-hivesampletable-devicemake
@@ -79,38 +79,38 @@ ms.locfileid: "67441411"
  | 数据源名称 | 为数据源提供名称 |
  | 主机 | 输入 &lt;HDInsightClusterName>.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
  | Port | 使用 **443**。 （此端口已从 563 更改为 443。） |
- | 数据库 | 使用“默认”。  |
- | Hive 服务器类型 | 选择“Hive Server 2”  |
- | 机制 | 选择“Azure HDInsight 服务”  |
+ | 数据库 | 使用“默认”。 |
+ | Hive 服务器类型 | 选择“Hive Server 2” |
+ | 机制 | 选择“Azure HDInsight 服务” |
  | HTTP 路径 | 将此字段留空。 |
  | 用户名 | 输入 hiveuser1@contoso158.onmicrosoft.com。 如果域名不同，请更新域名。 |
  | 密码 | 输入 hiveuser1 的密码。 |
 
-在保存数据源之前，请务必单击“测试”。 
+在保存数据源之前，请务必单击“测试”。
 
 ## <a name="import-data-into-excel-from-hdinsight"></a>将数据从 HDInsight 导入 Excel
 在最后一个部分中，已配置两个策略。  hiveuser1 对所有列拥有 select 权限，hiveuser2 对两个列拥有 select 权限。 在本部分中，会模拟两个用户将数据导入 Excel。
 
 1. 在 Excel 中打开新工作簿或现有工作簿。
-2. 在“数据”  选项卡中，依次单击“从其他数据源”  、“从数据连接向导”  以启动“数据连接向导”  。
+2. 在“数据”选项卡中，依次单击“从其他数据源”、“从数据连接向导”以启动“数据连接向导”。
 
     ![打开数据连接向导][img-hdi-simbahiveodbc.excel.dataconnection]
-3. 选择“ODBC DSN”  作为数据源，并单击“下一步”  。
-4. 从 ODBC 数据源中，选择在上一步中创建的数据源名称，并单击“下一步”  。
-5. 在向导中重新输入群集的密码，然后单击“确定”  。 等待“选择数据库和表”  对话框打开。 这可能需要几秒钟时间。
-6. 选择 **hivesampletable**，并单击“下一步”。 
+3. 选择“ODBC DSN”作为数据源，并单击“下一步”。
+4. 从 ODBC 数据源中，选择在上一步中创建的数据源名称，并单击“下一步”。
+5. 在向导中重新输入群集的密码，然后单击“确定”。 等待“选择数据库和表”对话框打开。 这可能需要几秒钟时间。
+6. 选择 **hivesampletable**，并单击“下一步”。
 7. 单击 **“完成”** 。
-8. 在“导入数据”  对话框中，可更改或指定查询。 为此，请单击“属性”  。 这可能需要几秒钟时间。
-9. 单击“定义”选项卡。  命令文本为：
+8. 在“导入数据”对话框中，可更改或指定查询。 为此，请单击“属性”。 这可能需要几秒钟时间。
+9. 单击“定义”选项卡。命令文本为：
 
        SELECT * FROM "HIVE"."default"."hivesampletable"
 
    根据定义的 Ranger 策略，hiveuser1 对所有列拥有 select 权限。  因此，此查询可以使用 hiveuser1 的凭据，但不能使用 hiveuser2 的凭据。
 
    ![连接属性][img-hdi-simbahiveodbc-excel-connectionproperties]
-10. 单击“确定”  关闭“连接属性”对话框。
-11. 单击“确定”  关闭“导入数据”  对话框。  
-12. 重新输入 hiveuser1 的密码，并单击“确定”。  需要几秒钟时间才能将数据导入到 Excel 中。 完成后，应会看到 11 个数据列。
+10. 单击“确定”关闭“连接属性”对话框。
+11. 单击“确定”关闭“导入数据”对话框。  
+12. 重新输入 hiveuser1 的密码，并单击“确定”。 需要几秒钟时间才能将数据导入到 Excel 中。 完成后，应会看到 11 个数据列。
 
 测试在最后一个部分中创建的第二个策略 (read-hivesampletable-devicemake)
 

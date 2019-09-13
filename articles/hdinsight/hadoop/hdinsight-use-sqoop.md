@@ -7,14 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.openlocfilehash: 6764d8d812789c9f54fa59e10b2a3e416e583a9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 564bced9ae71213cb534393a7dcc45c929df3794
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62129393"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917367"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用
+
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
 了解如何使用 HDInsight 中的 Apache Sqoop 在 HDInsight 群集与 Azure SQL 数据库之间导入和导出数据。
@@ -45,22 +46,22 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
   
   | 字段 | 数据类型 |
   | --- | --- |
-  | clientid |字符串 |
-  | querytime |字符串 |
-  | market |字符串 |
-  | deviceplatform |字符串 |
-  | devicemake |字符串 |
-  | devicemodel |字符串 |
-  | state |字符串 |
-  | country |字符串 |
-  | querydwelltime |double |
+  | clientid |string |
+  | querytime |string |
+  | market |string |
+  | deviceplatform |string |
+  | devicemake |string |
+  | devicemodel |string |
+  | 省/自治区/直辖市 |string |
+  | country |string |
+  | querydwelltime |双 |
   | sessionid |bigint |
   | sessionpagevieworder |bigint |
 
 本文将使用这两个数据集来测试 Sqoop 导入和导出。
 
 ## <a name="create-cluster-and-sql-database"></a>设置测试环境
-群集、SQL 数据库和其他对象是在 Azure 门户中使用 Azure 资源管理器模板创建的。 可以在中找到的模板[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)。 该资源管理器模板调用 bacpac 包，以将表架构部署到 SQL 数据库。  bacpac 包位于公共 blob 容器 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac 中。 如果想要为 bacpac 文件使用私有容器，请使用模板中的以下值：
+群集、SQL 数据库和其他对象是在 Azure 门户中使用 Azure 资源管理器模板创建的。 可以在[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)中找到该模板。 该资源管理器模板调用 bacpac 包，以将表架构部署到 SQL 数据库。  bacpac 包位于公共 blob 容器 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac 中。 如果想要为 bacpac 文件使用私有容器，请使用模板中的以下值：
 
 ```json
 "storageKeyType": "Primary",
@@ -72,11 +73,11 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
 
 1. 选择以下映像在 Azure 门户中打开资源管理器模板。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 
 2. 输入以下属性：
 
-    |字段 |值 |
+    |字段 |ReplTest1 |
     |---|---|
     |订阅 |从下拉列表中选择你的 Azure 订阅。|
     |资源组 |从下拉列表中选择你的资源组，或新建一个资源组|
@@ -95,9 +96,9 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
 
     Azure SQL 服务器名称将是 `<ClusterName>dbserver`。 数据库名称将是 `<ClusterName>db`。 默认的存储帐户名将是 `e6qhezrh2pdqu`。
 
-3. 选择“我同意上述条款和条件”  。
+3. 选择“我同意上述条款和条件”。
 
-4. 选择“购买”。  此时会出现一个标题为“为模板部署提交部署”的新磁贴。 创建群集和 SQL 数据库大约需要 20 分钟时间。
+4. 选择“购买”。 此时会出现一个标题为“为模板部署提交部署”的新磁贴。 创建群集和 SQL 数据库大约需要 20 分钟时间。
 
 ## <a name="run-sqoop-jobs"></a>运行 Sqoop 作业
 
