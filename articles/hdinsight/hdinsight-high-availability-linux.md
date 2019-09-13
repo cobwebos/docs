@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1bfc17d343f6e788d22cd158fcb849c5895b019f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68405991"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879769"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
@@ -94,7 +94,7 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
 * **SSH 隧道**：如果需要访问托管在某个节点上的 Web 服务，并且该服务不在 Internet 上公开，则必须使用 SSH 隧道。 有关详细信息，请参阅[将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)文档。
 
-* **Azure 虚拟网络**：如果 HDInsight 群集是 Azure 虚拟网络的一部分，则同一虚拟网络中的任何资源都可以直接访问该群集中的所有节点。 有关详细信息, 请参阅为[HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)文档。
+* **Azure 虚拟网络**：如果 HDInsight 群集是 Azure 虚拟网络的一部分，则同一虚拟网络中的任何资源都可以直接访问该群集中的所有节点。 有关详细信息，请参阅为[HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)文档。
 
 ## <a name="how-to-check-on-a-service-status"></a>如何检查服务状态
 
@@ -106,7 +106,7 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
 出现 Ambari 页面时，该页的左侧将列出已安装的服务。
 
-![已安装的服务](./media/hdinsight-high-availability-linux/services.png)
+![已安装的服务](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
 服务旁边可能会出现一系列表示状态的图标。 可以使用页面顶部的“警报”链接查看与服务相关的任何警报。  Ambari 提供多个预定义的警报。
 
@@ -155,11 +155,11 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
 尽管服务页提供了有关每个服务的状态和配置的信息，但并不提供有关该服务正在哪个头节点上运行的信息。 若要查看此信息，请使用页面顶部的“主机”链接。 此页会显示群集内的主机，包括头节点。
 
-![主机列表](./media/hdinsight-high-availability-linux/hosts.png)
+![主机列表](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 选择一个头节点的链接会显示该节点上运行的服务与组件。
 
-![组件状态](./media/hdinsight-high-availability-linux/nodeservices.png)
+![组件状态](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 有关如何使用 Ambari 的详细信息，请参阅[使用 Apache Ambari Web UI 监视和管理 HDInsight](hdinsight-hadoop-manage-ambari.md)。
 
@@ -241,7 +241,7 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
 在 Ambari Web UI 中选择要查看其日志的服务（例如 YARN）。 然后使用“快速链接”选择要查看其日志的头节点。
 
-![使用快速链接查看日志](./media/hdinsight-high-availability-linux/viewlogs.png)
+![使用快速链接查看日志](./media/hdinsight-high-availability-linux/quick-links-view-logs.png)
 
 ## <a name="how-to-configure-the-node-size"></a>如何配置节点大小
 
@@ -251,7 +251,7 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
 * **Azure 门户**：创建群集时，可以设置群集所用节点的大小：
 
-    ![群集创建向导的图像，其中包含节点大小选项](./media/hdinsight-high-availability-linux/headnodesize.png)
+    ![群集创建向导的图像，其中包含节点大小选项](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
 
 * **Azure CLI**：使用 [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) 命令时，可以使用 `--headnode-size`、`--workernode-size` 和 `--zookeepernode-size` 参数设置头节点、辅助角色节点与 ZooKeeper 节点的大小。
 

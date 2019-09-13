@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 33e21b54927280e2692a58c311e2de23e257f923
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0dea447ed44a61b20faf9a0a1690b2bbdd674b30
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845382"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70930625"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL 数据库托管实例资源限制概述
 
@@ -39,7 +39,7 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 | vCore 数目 | 8、16、24 个 vCore | 4、8、16、24、32、40、64、80 个 vCore |
 | 最大内存（内存/核心比） | 每个 vCore 7 GB<br/>添加更多 vCore 以获得更多内存。 | 每个 vCore 5.1 GB<br/>添加更多 vCore 以获得更多内存。 |
 | 最大内存中 OLTP 内存 | 实例限制：每个 vCore 3 GB<br/>数据库限制：<br/> - 8 核：每个数据库 8 GB<br/> - 16 核：每个数据库 20 GB<br/> - 24 核：每个数据库 36 GB | 实例限制：每个 vCore 2.5 GB<br/>数据库限制：<br/> - 8 核：每个数据库 13 GB<br/> - 16 核：每个数据库 32 GB |
-| 最大实例保留存储 |  常规用途： 8 TB<br/>业务关键：1TB | 常规用途：8 TB<br/> 业务关键 1 TB、2 TB 或 4 TB，具体取决于核心数 |
+| 最大实例预留存储 |  常规用途：8 TB<br/>业务关键：1TB | 常规用途：8 TB<br/> 业务关键型 1 TB、2 TB 或 4 TB，具体取决于核心数 |
 
 > [!IMPORTANT]
 > - Gen4 硬件正在逐步推出。建议在 Gen5 硬件上部署新的托管实例。
@@ -58,6 +58,7 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 | 每个实例的数据库数目上限 | 100 | 100 |
 | 每个实例的数据库文件数目上限 | 最多 280 个 | 每个数据库 32,767 个文件 |
 | 最大文件大小 | 8 TB | 4 TB |
+| 最大日志文件大小 | 2 TB | 2 TB |
 | 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[增大文件大小以获取更多 IOPS](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5.5 k-110 K （1375/vCore）<br/>添加更多 vCore 以获得更好的 IO 性能。 |
 | 日志写入吞吐量限制 | 3 MB/s（每个 vCore）<br/>最大为 22 MB/秒（每个实例） | 4 MB/秒（每个 vCore）<br/>最大为 48 MB/秒（每个实例）|
 | 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[增大文件大小以获得更好的 IO 性能](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 不可用 |
@@ -66,8 +67,6 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 | 内存中 OLTP | 不支持 | 可用 |
 | 最大会话数 | 30000 | 30000 |
 | [只读副本](sql-database-read-scale-out.md) | 0 | 1（包含于价格中） |
-| 定价/计费 | [vCore 和预留存储](https://azure.microsoft.com/pricing/details/sql-database/managed/)收费。 <br/>IOPS 不收取费用。<br/>备份存储尚未收费。 | [vCore 和预留存储](https://azure.microsoft.com/pricing/details/sql-database/managed/)收费。 <br/>IOPS 不收取费用。<br/>备份存储尚未收费。 | 
-| 折扣模型 | [预订实例](sql-database-reserved-capacity.md)<br/>[Azure 混合权益](sql-database-service-tiers-vcore.md#azure-hybrid-benefit)（不适用于开发/测试订阅）<br/>[企业](https://azure.microsoft.com/offers/ms-azr-0148p/)和即[用即付](https://azure.microsoft.com/offers/ms-azr-0023p/)开发/测试订阅| [预订实例](sql-database-reserved-capacity.md)<br/>[Azure 混合权益](sql-database-service-tiers-vcore.md#azure-hybrid-benefit)（不适用于开发/测试订阅）<br/>[企业](https://azure.microsoft.com/offers/ms-azr-0148p/)和即[用即付](https://azure.microsoft.com/offers/ms-azr-0023p/)开发/测试订阅|
 
 > [!NOTE]
 > - 与最大存储大小限制进行比较的实例存储大小同时包括用户和系统数据库中的数据及日志文件大小。 可以使用 <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> 系统视图来确定数据库使用的空间总量。 错误日志不会持久保存，不包括在大小中。 备份不包括在存储大小中。

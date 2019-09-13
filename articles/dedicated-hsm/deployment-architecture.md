@@ -2,8 +2,8 @@
 title: 部署体系结构 - Azure 专用 HSM | Microsoft Docs
 description: 将 Azure 专用 HSM 用作应用程序体系结构的一部分时的基本设计注意事项
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: f078df7677e771d131f15056ac4a54a58a3134bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mbaldwin
+ms.openlocfilehash: 93755ded8f9db27cf8e78079f32e90cccfac2831
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60912251"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883829"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure 专用 HSM 部署体系结构
 
@@ -29,7 +29,7 @@ Azure 专用 HSM 提供 Azure 中的加密密钥存储。 它符合严格的安�
 
 HSM 分布于 Microsoft 数据中心，并可以作为高度可用解决方案的基础轻松地预配为设备对。 它们还可以跨区域部署，用于灾难恢复解决方案。 专用 HSM 可用的区域目前为：
 
-* 美国东部
+* East US
 * 美国东部 2
 * 美国西部
 * 美国中南部

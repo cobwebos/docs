@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: dca329ce598a9ecbc7da71cc1c24bf7731a4c994
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 226a3b0ffa4b770d1738e69fd04592476b9f4075
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885426"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935289"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
 
@@ -165,11 +165,11 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 3. 从“高级设置”部分中选择“脚本操作”。 在“脚本操作”部分选择“+ 提交新项”。
 
-    ![提交新脚本操作](./media/hdinsight-hadoop-customize-cluster-linux/add-script-action.png)
+    ![提交新脚本操作](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
 
 4. 使用“选择脚本”条目选择预制的脚本。 若要使用自定义脚本，请选择“自定义”。 然后提供脚本的“名称”和“Bash 脚本 URI”。
 
-    ![在“选择脚本”窗体中添加脚本](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![在“选择脚本”窗体中添加脚本](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     下表描述了窗体上的各项元素：
 
@@ -185,7 +185,7 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 5. 选择“创建”保存脚本。 然后可以使用“+ 提交新项”再添加一个脚本。
 
-    ![多个脚本操作](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts.png)
+    ![多个脚本操作](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
     添加完脚本后，选择“选择”按钮，然后选择“下一步”按钮返回到“群集摘要”部分。
 
@@ -251,7 +251,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
 4. 使用“选择脚本”条目选择预制的脚本。 若要使用自定义脚本，请选择“自定义”。 然后提供脚本的“名称”和“Bash 脚本 URI”。
 
-    ![在“选择脚本”窗体中添加脚本](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![在“选择脚本”窗体中添加脚本](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     下表描述了窗体上的各项元素：
 
@@ -438,7 +438,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 2. 从页面顶部栏中选择“操作”条目。 此时会显示通过 Ambari 在群集上执行的当前操作和以前操作的列表。
 
-    ![选中了“操作”的 Ambari Web UI 栏](./media/hdinsight-hadoop-customize-cluster-linux/ambari-nav.png)
+    ![选中了“操作”的 Ambari Web UI 栏](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
 3. 查找“操作”列中包含 **run\_customscriptaction** 的条目。 这些条目是在运行脚本操作时创建的。
 
@@ -520,4 +520,4 @@ sudo pip install azure-storage==0.20.0
 * [在 HDInsight 群集上安装并使用 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
 * [将其他存储添加到 HDInsight 群集中](hdinsight-hadoop-add-storage.md)
 
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "群集创建过程中的阶段"
+[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "群集创建过程中的阶段"

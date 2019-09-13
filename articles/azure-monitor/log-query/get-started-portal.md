@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: cf2aee475f5d3933421de45fa5b2ade687bed62f
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 18e6e162764ce190a1953a4126e4f9ef2eb717f5
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348080"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899515"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics 入门
 
@@ -32,8 +32,8 @@ ms.locfileid: "68348080"
 有关编写日志查询的教程，请参阅 [Azure Monitor 中的日志查询入门](get-started-queries.md)。<br>
 有关日志查询的详细信息，请参阅 [Azure Monitor 中的日志查询概述](log-query-overview.md)。
 
-## <a name="meet-log-analytics"></a>满足 Log Analytics
-Log Analytics 是用于写入和执行 Azure Monitor 日志查询的 web 工具。 可以通过在 Azure Monitor 菜单中选择“日志”来将其打开。 它将启动并显示一个新的空白查询。
+## <a name="meet-log-analytics"></a>了解 Log Analytics
+Log Analytics 是用来编写和执行 Azure Monitor 日志查询的 Web 工具。 可以通过在 Azure Monitor 菜单中选择“日志”来将其打开。 它将启动并显示一个新的空白查询。
 
 ![主页](media/get-started-portal/homepage.png)
 
@@ -87,9 +87,9 @@ search in (Event) "error"
 Event
 ```
 
-Log Analytics 会按以下方式自动限定结果:
+Log Analytics 会按以下依据自动限定结果的范围：
 
-- 时间范围:默认情况下，查询限制为过去 24 小时。
+- 时间范围：默认情况下，查询限制为过去 24 小时。
 - 结果数：结果数限制为最多 10,000 条记录。
 
 此查询的范围太泛，它返回了过多的结果，因此不太实用。 可以通过表元素或者在查询中显式添加筛选器来筛选结果。 通过表元素筛选结果的方法适用于现有结果集，而在查询本身中添加的筛选器会返回新的筛选结果集，因此可以生成更准确的结果。
@@ -125,7 +125,7 @@ Log Analytics 会按以下方式自动限定结果:
 
 
 ## <a name="select-a-time-range"></a>选择时间跨度
-默认情况下, Log Analytics 应用_过去24小时_的时间范围。 若要使用不同的范围，请通过时间选取器选择另一个值，然后单击“运行”。 除预设值以外，还可以使用“自定义时间范围”选项来选择查询的绝对范围。
+默认情况下，Log Analytics 应用“过去 24 小时”时间范围。 若要使用不同的范围，请通过时间选取器选择另一个值，然后单击“运行”。 除预设值以外，还可以使用“自定义时间范围”选项来选择查询的绝对范围。
 
 ![时间选取器](media/get-started-portal/time-picker.png)
 
@@ -162,7 +162,7 @@ Event
 ![智能诊断](media/get-started-portal/smart-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>固定到仪表板
-若要将图表或表固定到某个共享的 Azure 仪表板，请单击图钉图标。
+若要将图表或表固定到某个共享的 Azure 仪表板，请单击图钉图标。 请注意，此图标已移动到 "Log Analytics" 窗口顶部，不同于下面的屏幕截图。
 
 ![固定到仪表板](media/get-started-portal/pin-dashboard.png)
 
@@ -180,7 +180,7 @@ Event
 ![保存函数](media/get-started-portal/save-function.png)
 
 >[!NOTE]
->在保存或编辑保存的`a–z, A–Z, 0-9, -, _, ., <space>, (, ), |`查询时, 在 "**名称**" 字段中支持以下字符。
+>保存查询或编辑已保存的查询时，在“名称”字段中支持以下字符 - `a–z, A–Z, 0-9, -, _, ., <space>, (, ), |`。
 
 Log Analytics 查询始终保存到选定的工作区中，并与该工作区的其他用户共享。
 
@@ -190,7 +190,7 @@ Log Analytics 查询始终保存到选定的工作区中，并与该工作区的
 ![查询资源管理器](media/get-started-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>作为链接导出和共享
-Log Analytics 支持多种导出方法:
+Log Analytics 支持多种导出方法：
 
 - Excel：将结果保存为 CSV 文件。
 - Power BI：将结果导出到 Power BI。 有关详细信息，请参阅[将 Azure Monitor 日志数据导入到 Power BI 中](../../azure-monitor/platform/powerbi.md)。

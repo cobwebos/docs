@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 292fe858b85faef69b9df2dbdf54e7061ed56fa2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a3499637fb5320afe80bf4eefa634173db31f1b6
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142511"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931862"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Azure 函数活动
 
@@ -30,7 +30,7 @@ ms.locfileid: "70142511"
 
 Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) 不是 `JObject`。）除了 `JObject` 之外的任何返回类型都将失败，并且会引发用户错误*响应内容不是有效的 JObject*。
 
-| **属性** | **说明** | **必需** |
+| **Property** | **说明** | **必需** |
 | --- | --- | --- |
 | type   | type 属性必须设置为：**AzureFunction** | 是 |
 | 函数应用 URL | Azure 函数应用的 URL。 格式为 `https://<accountname>.azurewebsites.net`。 在 Azure 门户中查看函数应用时，此 URL 是 URL 部分下的值  | 是 |
@@ -39,7 +39,7 @@ Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArra
 
 ## <a name="azure-function-activity"></a>Azure 函数活动
 
-| **属性**  | **说明** | **允许的值** | **必需** |
+| **Property**  | **说明** | **允许的值** | **必需** |
 | --- | --- | --- | --- |
 | name  | 管道中活动的名称  | String | 是 |
 | type  | 活动的类型为“AzureFunctionActivity” | String | 是 |
@@ -62,10 +62,10 @@ Azure 函数活动还支持**查询**。 必须将查询包括为 `functionName`
 
 Azure Functions 会在 230 秒之后超时，无论在设置中配置的 `functionTimeout` 设置如何。 有关详细信息，请参阅[此文章](../azure-functions/functions-versions.md#timeout)。 若要解决此行为，请遵循某个异步模式或使用 Durable Functions。 Durable Functions 的好处是，它们提供自己的状态跟踪机制，因此无需实现你自己的机制。
 
-在[此文章](../azure-functions/durable/durable-functions-overview.md)中详细了解 Durable Functions。 你可以设置 Azure 函数活动来调用持久函数，这将返回具有不同 URI 的响应，例如[此示例](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery)。 因为 `statusQueryGetUri` 在函数正在运行时返回 HTTP 状态 202，因此你可以使用 Web 活动轮询函数的状态。 简单地设置一个 Web 活动并将 `url` 字段设置为 `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`。 当持久函数完成时，该函数的输出将是 Web 活动的输出。
+在[此文章](../azure-functions/durable/durable-functions-overview.md)中详细了解 Durable Functions。 你可以设置 Azure 函数活动来调用持久函数，这将返回具有不同 URI 的响应，例如[此示例](../azure-functions/durable/durable-functions-http-features.md#http-api-url-discovery)。 因为 `statusQueryGetUri` 在函数正在运行时返回 HTTP 状态 202，因此你可以使用 Web 活动轮询函数的状态。 简单地设置一个 Web 活动并将 `url` 字段设置为 `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`。 当持久函数完成时，该函数的输出将是 Web 活动的输出。
 
 
-## <a name="sample"></a>样本
+## <a name="sample"></a>示例
 
 可以在[此处](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)找到使用 Azure 函数提取 tar 文件内容的数据工厂示例。
 

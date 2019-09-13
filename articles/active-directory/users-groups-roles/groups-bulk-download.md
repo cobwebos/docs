@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72f7776fde4558a49830ecbf14c77fa50e80bf36
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
-ms.translationtype: HT
+ms.openlocfilehash: b1d0f94e9cf9b91bc365586dafc147dc73b17876
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70911067"
+ms.locfileid: "70914758"
 ---
 # <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>在 Azure Active Directory 中批量下载组的列表（预览）
 
@@ -29,7 +29,7 @@ ms.locfileid: "70911067"
 
 ## <a name="bulk-download-service-limits"></a>大容量下载服务限制
 
-用于创建组列表的每个批量活动最多可运行一小时。 这允许创建和下载至少300000组的列表。
+下载组列表的每个批量活动最多可以运行一小时。 这使你可以下载至少300000个组的列表。
 
 ## <a name="to-download-a-list-of-groups"></a>下载组列表
 

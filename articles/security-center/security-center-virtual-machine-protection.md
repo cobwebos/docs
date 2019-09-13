@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 03/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: cb6025b47aec50121a0f96f7b6cba7ad726db291
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c8f381a3440d742cca880f44b73cbc22bde92ecc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907954"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910558"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>在 Azure 安全中心保护计算机和应用程序
 Azure 安全中心可分析 Azure 资源、非 Azure 服务器以及虚拟机的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。 建议适用于以下 Azure 资源类型：虚拟机 (VM) 和计算机、应用程序、网络、SQL，以及“标识和访问”。
@@ -108,7 +108,6 @@ Azure 安全中心可分析 Azure 资源、非 Azure 服务器以及虚拟机的
 每条建议下面显示的图标有助于快速识别需要关注的 VM 和计算机以及建议的类型。 也可使用筛选器，按“资源类型”和“严重性”搜索列表。
 
 若要向下钻取每个 VM 的安全建议，请单击相应的 VM。
-此处显示 VM 或计算机的安全详细信息。 在底部可以看到建议的操作以及每个问题的严重性。
 ![云服务](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
 ### <a name="cloud-services"></a>云服务
@@ -125,7 +124,7 @@ Azure 安全中心可分析 Azure 资源、非 Azure 服务器以及虚拟机的
 ![更新 OS 版本](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png)
 
 ### <a name="app-services"></a>应用服务
-需要在订阅中启用应用服务，才能查看应用服务信息。 有关如何启用此功能的说明，请参阅[使用 Azure 安全中心保护应用服务](security-center-app-services.md)。
+若要查看应用服务信息，必须在订阅中启用应用服务。 有关启用此功能的说明，请参阅[通过 Azure 安全中心保护应用服务](security-center-app-services.md)。
 [!NOTE]
 > 监视应用服务的功能以预览版提供，仅适用于安全中心的标准层。
 
@@ -170,7 +169,7 @@ Azure 安全中心可分析 Azure 资源、非 Azure 服务器以及虚拟机的
 
    ![安装 MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-若要将新规模集设置为自动安装 Microsoft Monitoring Agent，请执行以下操作：
+若要设置新的规模集以自动安装 Microsoft Monitoring Agent：
 1. 转到 Azure Policy，单击“定义”。
 2. 搜索策略“为 Windows 虚拟机规模集部署 Log Analytics 代理”，然后单击它。
 3. 单击“分配”。

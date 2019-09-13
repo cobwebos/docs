@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 754e967a1be0b00f7ce7448744ec90690fd9f0c3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736423"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898717"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 数据目录常见问题
 本文将解答有关 Azure 数据目录服务的常见问题。
@@ -25,10 +25,10 @@ ms.locfileid: "68736423"
 ## <a name="what-are-its-target-audiences"></a>其目标受众是什么？
 数据目录专为技术用户和非技术用户而设计，包括：
 
-* 数据开发人员、BI 和分析专业人员:负责生成数据和分析内容供他人使用的人员。
-* 数据专员:了解数据、其含义以及如何使用这些数据的人员。
-* 数据使用者:需要能够轻松地发现、了解和连接到他们完成其工作所需的数据的人员, 方法是使用其选择的工具。
-* 中央 IT:需要使数百个数据源可被业务用户发现, 并且需要对数据的使用方式和人员进行监管的用户。
+* 数据开发人员、BI 和分析专业人员：负责生成数据和分析内容供他人使用的人员。
+* 数据专员：了解数据、其含义以及如何使用这些数据的人员。
+* 数据使用者：需要能够轻松地发现、了解和连接到他们完成其工作所需的数据的人员，方法是使用其选择的工具。
+* 中央 IT：需要使数百个数据源可被业务用户发现，并且需要对数据的使用方式和人员进行监管的用户。
 
 ## <a name="what-is-its-availability-by-region"></a>各个区域的可用性如何？
 数据目录服务当前在以下数据中心可用：
@@ -52,6 +52,15 @@ ms.locfileid: "68736423"
 
 ## <a name="how-do-i-request-support-for-another-data-source"></a>如何对另一数据源请求支持？
 若要提交功能请求和其他反馈，请转到 [Azure 反馈论坛上的数据目录](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources)。
+
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>尝试创建新目录时，为什么会收到错误*目录*？
+
+使用 Power BI Pro 许可证购买 Office 365 E5 时，Microsoft 会自动在订阅区域中创建默认目录。 此目录使用免费 SKU。 Office 365/Power BI 用户许可证在 Office 365 管理页中进行管理。 
+
+但是，这种类型的数据目录没有**管理员选项**，在**Azure 门户**中不可见。 您无法删除此类型的数据目录。 同样，您不能重命名数据目录，也不能将其移动到另一个区域。 
+
+如果用户使用 Power BI Pro 许可证注册 Office 365 E5，则分配有 Power BI Pro 许可证的用户帐户会自动访问数据目录。 此类用户对数据目录资产具有完全访问权限，无需管理权限。 这种类型的用户*不*是 Azure 数据目录中**目录用户**角色的一部分。
+
 
 ## <a name="how-do-i-get-started-with-data-catalog"></a>如何开始使用数据目录？
 访问[数据目录入门](data-catalog-get-started.md)是入门的最佳方式。 本文针对服务中的功能进行端到端概述。

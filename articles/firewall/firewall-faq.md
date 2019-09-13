@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: victorh
-ms.openlocfilehash: 119f28bcc4f88f0b4dc0ce65584dbce326087eba
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: da5880d27e5dd51d3a5f90b7cd6cf2e7dec50f89
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114760"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932743"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -125,7 +125,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>是否在专用网络之间进行 Azure 防火墙出站 SNAT？
 
-当目标 IP 地址是每个[IANA RFC 1918](https://tools.ietf.org/html/rfc1918)的专用 ip 范围时, Azure 防火墙不会使用 SNAT。 如果组织对专用网络使用公共 IP 地址范围，Azure 防火墙会通过 SNAT 将流量发送到 AzureFirewallSubnet 中的某个防火墙专用 IP 地址。
+当目标 IP 地址是每个[IANA RFC 1918](https://tools.ietf.org/html/rfc1918)的专用 ip 范围时，Azure 防火墙不会使用 SNAT。 如果组织对专用网络使用公共 IP 地址范围，Azure 防火墙会通过 SNAT 将流量发送到 AzureFirewallSubnet 中的某个防火墙专用 IP 地址。
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>是否支持与网络虚拟设备强制建立隧道/链接？
 
@@ -151,14 +151,17 @@ Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubn
 
 每当应用配置更改时，Azure 防火墙就会尝试更新其所有底层后端实例。 在极少见的情况下，其中的某个后端实例可能无法使用新配置进行更新，并且更新过程将会停止，并出现预配失败状态。 Azure 防火墙仍可正常运行，但应用的配置可能处于不一致状态，有些实例使用以前的配置，而有些实例则使用更新的规则集。 如果发生这种情况，请尝试再一次更新配置，直到操作成功，并且防火墙处于“成功”预配状态。
 
+### <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Azure 防火墙如何处理计划内维护和计划外故障？
+Azure 防火墙在主动-主动配置中包含多个后端节点。  对于任何计划内维护，我们有连接排出逻辑来正常更新节点。  每个 Azure 区域的非工作时间计划更新，以进一步限制中断风险。  对于计划外问题，我们将实例化一个新节点来替换失败的节点。  与新节点的连接通常在10秒内从故障时间内重新建立。
+
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>防火墙名称是否有字符限制？
 
 是的。 防火墙名称有50个字符的限制。
 
 ## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>为什么 Azure 防火墙需要/26 子网大小？
 
-在缩放时, Azure 防火墙必须预配更多虚拟机实例。 /26 地址空间可确保防火墙有足够的可用 IP 地址来容纳缩放。
+在缩放时，Azure 防火墙必须预配更多虚拟机实例。 /26 地址空间可确保防火墙有足够的可用 IP 地址来容纳缩放。
 
-## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>在服务缩放时, 防火墙子网大小是否需要更改？
+## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>在服务缩放时，防火墙子网大小是否需要更改？
 
 否。 Azure 防火墙不需要大于/26 的子网。

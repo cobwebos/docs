@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/10/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7abd0ac3d95825594dffe385bccc1672d0f71c5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 096f8b3aa6ae66e65bbbd9ea6e2204af619199dd
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66142561"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899415"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -34,7 +34,7 @@ ms.locfileid: "66142561"
 ||||
 
 <a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。   
-<a name="azsqlmanaged">2</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例在 Azure VNet 中使用专用 IP 地址运行，因此需要本地数据网关。 目前不支持 azure SQL 数据库托管实例与公共终结点。   
+<a name="azsqlmanaged">2</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例在使用专用 IP 地址的 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则需要本地数据网关。    
 <a name="databricks">3</a> - 目前不支持使用 Spark 连接器的 Azure Databricks。   
 <a name="gen2">4</a> - 目前不支持 ADLS Gen2。
 
@@ -50,9 +50,9 @@ ms.locfileid: "66142561"
 
 |数据源 | 内存中提供程序 | DirectQuery 提供程序 |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
-| SQL Server 数据仓库 |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
-| Oracle | OLE DB Provider for Oracle，适用于.NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 |
+| SQL Server |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据访问接口 |
+| SQL Server 数据仓库 |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据访问接口 |
+| Oracle | 用于 Oracle 的 OLE DB 提供程序、用于 .NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 |
 | Teradata |用于 Teradata 的 OLE DB 提供程序、用于 .NET 的 Teradata 数据提供程序 |用于 .Net 的 Teradata 数据提供程序 |
 | | | |
 
@@ -76,7 +76,7 @@ ms.locfileid: "66142561"
 |OData 源<sup>[1](#tab1400b)</sup>     |  
 |ODBC 查询     | 
 |OLE DB     |   
-|Postgre SQL 数据库<sup>[1](#tab1400b)</sup>    | 
+|PostgreSQL 数据库<sup>[1](#tab1400b)</sup>    | 
 |Salesforce 对象<sup>[1](#tab1400b)</sup> |  
 |Salesforce 报表<sup>[1](#tab1400b)</sup> |
 |SAP HANA<sup>[1](#tab1400b)</sup>    |  
@@ -98,9 +98,9 @@ ms.locfileid: "66142561"
 
 **指定提供程序**
 
-1. 在 SSDT >“表格模型浏览器”   > “数据源”  中，右键单击数据源连接，并单击“编辑数据源”  。
-2. 在“编辑连接”  中，单击“高级”  ，打开“高级属性”窗口。
-3. 在“设置高级属性”   > “提供程序”  中，选择适当的提供程序。
+1. 在 SSDT >“表格模型浏览器” > “数据源”中，右键单击数据源连接，并单击“编辑数据源”。
+2. 在“编辑连接”中，单击“高级”，打开“高级属性”窗口。
+3. 在“设置高级属性” > “提供程序”中，选择适当的提供程序。
 
 ## <a name="impersonation"></a>模拟
 某些情况下可能需要指定其他模拟帐户。 可在 Visual Studio (SSDT) 或 SSMS 中指定模拟帐户。

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/08/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844772"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932829"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
@@ -35,7 +35,8 @@ ms.locfileid: "70844772"
 
 迁移包括：
 
-* 所有者的**所有**应用。
+* LUIS、所有者和参与者的所有用户。
+* **所有**应用。
 * 单向**迁移。**
 
 所有者无法选择要迁移的应用子集，此过程不可逆。 
@@ -87,13 +88,17 @@ ms.locfileid: "70844772"
 
 ## <a name="migration-for-the-app-contributor"></a>应用参与者的迁移
 
+LUIS 的每个用户都需要迁移，包括协作者/参与者。 
+
 ### <a name="before-the-app-is-migrated"></a>迁移应用之前
 
 您可以选择导出您是其协作者的应用程序，然后将该应用程序导回 LUIS。 导入过程将创建一个新应用，其中包含你作为其所有者的新应用 ID。
 
 ### <a name="after-the-app-is-migrated"></a>迁移应用后
 
-迁移过程完成后，如果需要访问原始应用，需要将应用所有者作为协作者添加到 Azure 创作资源。  
+应用所有者需要[将电子邮件作为协作者添加到 Azure 创作资源](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)。 
+
+迁移过程完成后，LUIS 门户的 "**我的应用**" 页上提供了你拥有的任何应用。  
 
 ## <a name="next-steps"></a>后续步骤
 

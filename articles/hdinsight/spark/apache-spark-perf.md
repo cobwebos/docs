@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 8d058c55eab3d161e625d7d4ca3ef53b36497e00
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: cda974a71c0d24bda9422fb8444fbf4dec0088f9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814082"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885102"
 ---
-# <a name="optimize-apache-spark-jobs"></a>优化 Apache Spark 作业
+# <a name="optimize-apache-spark-jobs-in-hdinsight"></a>优化 HDInsight 中的 Apache Spark 作业
 
 了解如何为特定工作负荷优化 [Apache Spark](https://spark.apache.org/) 群集配置。  最常面临的难题是内存压力，这归因于不正确的配置（尤其是大小不合的执行程序）、长时间运行的操作以及导致笛卡尔操作的任务。 可通过以下方式为作业提速：使用适当的缓存，并允许[数据倾斜](#optimize-joins-and-shuffles)。 若要实现最佳性能，应监视和查看长时间运行并耗用资源的 Spark 作业执行。
 

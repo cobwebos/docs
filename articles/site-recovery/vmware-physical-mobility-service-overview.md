@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: c692b1c5b77b95e5487a847b46473906135c3d86
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: aeb00b84ac254232e0d68fd9631fb539a928e67d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261137"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931887"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 
@@ -64,20 +64,20 @@ ms.locfileid: "68261137"
 > 如果要在不同的 Azure 区域之间复制 Azure IaaS VM，请不要使用此方法。 请改用基于命令行的安装方法。
 
 1. 将安装文件复制到计算机，并运行它。
-2. 在“安装选项”  中，选择“安装移动服务”  。
-3. 选择安装位置 >“安装”。 
+2. 在“安装选项”中，选择“安装移动服务”。
+3. 选择安装位置 >“安装”。
 
     ![“移动服务安装选项”页](./media/vmware-physical-mobility-service-install-manual/mobility1.png)
 
-4. 在“安装进度”  中监视安装。 安装完成后，选择“转到配置”  ，将该服务注册到配置服务器。
+4. 在“安装进度”中监视安装。 安装完成后，选择“转到配置”，将该服务注册到配置服务器。
 
     ![“移动服务注册”页](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 
-5. 在“配置服务器详细信息”中，指定已配置的 IP 地址和通行短语。   
+5. 在“配置服务器详细信息”中，指定已配置的 IP 地址和通行短语。  
 
     ![“移动服务注册”页](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
 
-6. 选择“注册”  完成注册。
+6. 选择“注册”完成注册。
 
     ![移动服务注册最后一页](./media/vmware-physical-mobility-service-install-manual/mobility5.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "68261137"
 安装程序日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log 下。
 /Role | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 /InstallLocation| 可选参数。 指定移动服务的安装位置（任意文件夹）。
-/Platform | 必需。 指定一个平台，以便在其上安装移动服务。 对于 VMware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。
+/Platform | 必需。 指定一个平台，以便在其上安装移动服务。 对于 VMware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。<br/><br/> 如果要将 Azure Vm 视为物理计算机，请指定**VMware**。
 /Silent| 可选。 指定是否以静默模式运行安装程序。
 
 #### <a name="registration-settings"></a>注册设置
@@ -154,7 +154,7 @@ ms.locfileid: "68261137"
 #### <a name="installation-settings"></a>安装设置
 **设置** | **详细信息**
 --- | ---
-用法 | 。/install-d \<安装位置 >-r \<MS/MT > v VmWare-q
+用法 | ./install -d \<Install Location> -r \<MS/MT> -v VmWare -q
 -r | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 -d | 可选参数。 指定移动服务的安装位置：/usr/local/ASR。
 -v | 必需。 指定一个平台，以便在其上安装移动服务。 对于 VMware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6ff273236f9f8465de9ec0cda89ed3ff8996ecec
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844258"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932667"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -141,3 +141,9 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 1. 使用已在区域中传播的现有服务主体，并在创建群集时将其传递到 AKS。
 2. 如果使用自动化脚本，请在创建服务主体和创建 AKS 群集之间添加时间延迟。
 3. 如果使用 Azure 门户，请在创建过程中返回到群集设置，然后在几分钟后重试验证页面。
+
+## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>限制出站流量后收到错误
+
+在限制来自 AKS 群集的出口流量时，需要为 AKS[提供必需和可选](limit-egress-traffic.md)的出站端口/网络规则和 FQDN/应用程序规则。 如果你的设置与任何这些规则冲突，你可能无法运行某些`kubectl`命令。 创建 AKS 群集时，还可能会看到错误。
+
+验证你的设置是否不与任何必需或可选的建议出站端口/网络规则和 FQDN/应用程序规则冲突。

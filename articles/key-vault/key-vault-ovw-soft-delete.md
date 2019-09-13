@@ -4,14 +4,14 @@ ms.service: key-vault
 ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
-manager: barbkess
+manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 330337620f1732b9ccecfb2c95a0b4495476f97b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89b7dc639a3140f17a62087c5ba0d05fb6df4d7f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720521"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883136"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 
@@ -36,11 +36,11 @@ Azure Key Vault 是 Azure 资源管理器管理的跟踪资源。 Azure 资源�
 
 有此功能时，对 Key Vault 或 Key Vault 对象的 DELETE 操作是软删除，因此可以有效地在给定保留期（90 天）内保留资源，同时通过外观提示已删除对象。 该服务还提供用于恢复已删除对象的机制，从实质上撤销删除。 
 
-软删除是可选 Key Vault 行为，在此版本中默认未启用。  可以通过 [CLI](key-vault-soft-delete-cli.md) 或 [Powershell](key-vault-soft-delete-powershell.md) 来启用它。
+软删除是可选 Key Vault 行为，在此版本中默认未启用。 可以通过 [CLI](key-vault-soft-delete-cli.md) 或 [Powershell](key-vault-soft-delete-powershell.md) 来启用它。
 
 ### <a name="purge-protection"></a>清除保护 
 
-当清除保护是在保管库上或 90 天的保留期已过，才可以清除已删除状态中的对象。 这些保管库和对象可以仍恢复，确保客户将遵循的保留策略。 
+当清除保护处于开启状态时，无法清除保管库或处于已删除状态的对象，直到超过90天的保留期。 这些保管库和对象仍可以恢复，从而确保客户遵循保留策略。 
 
 清除保护是一种可选的 Key Vault 行为，**默认未启用**。 可以通过 [CLI](key-vault-soft-delete-cli.md#enabling-purge-protection) 或 [Powershell](key-vault-soft-delete-powershell.md#enabling-purge-protection) 来启用它。
 
@@ -49,7 +49,7 @@ Azure Key Vault 是 Azure 资源管理器管理的跟踪资源。 Azure 资源�
 可通过代理资源上的 POST 操作永久删除、清除 Key Vault，但此操作需要特殊权限。 通常，只有订阅所有者才能清除 Key Vault。 POST 操作可触发立即删除该保管库，且此删除不可恢复。 
 
 例外情况包括：
-- Azure 订阅已被标记为“不可删除”。  在这种情况下，只有服务可以执行实际删除，并且将作为计划的进程执行此操作。 
+- Azure 订阅已被标记为“不可删除”。 在这种情况下，只有服务可以执行实际删除，并且将作为计划的进程执行此操作。 
 - 在保管库本身上启用 --enable-purge-protection 标志。 在这种情况下，Key Vault 将自原始机密对象标记为删除以永久删除该对象起等待 90 天。
 
 ### <a name="key-vault-recovery"></a>Key Vault 恢复

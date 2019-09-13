@@ -1,5 +1,5 @@
 ---
-title: 监视和性能优化 - Azure SQL 数据库 | Microsoft Docs
+title: 监视和性能优化-Azure SQL 数据库 |Microsoft Docs
 description: 有关通过评估和改进来调整 Azure SQL 数据库性能的提示。
 services: sql-database
 ms.service: sql-database
@@ -11,109 +11,120 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: ee4bd9d61856ef4ea1afdd027d6f39e730b92d78
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 83ff39e9f3b7f95256466c74011e55ebdc22a7a9
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129204"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910531"
 ---
 # <a name="monitoring-and-performance-tuning"></a>监视和性能优化
 
-Azure SQL 数据库提供工具和方法, 可轻松监视使用情况, 添加或删除资源 (CPU、内存、i/o)、排查潜在问题, 并提供有关提高数据库性能的建议。 Azure SQL 数据库具有可自动修复数据库中的问题的功能。 自动优化可使数据库适应工作负荷并自动优化性能。 但是, 有些自定义问题可能需要进行故障排除。 本文介绍一些可用于排查性能问题的最佳做法和工具。
+Azure SQL 数据库提供的工具和方法可用于轻松监视使用情况、添加或删除资源（如 CPU、内存或 i/o）、排查潜在问题，并提供改进数据库性能的建议。 Azure SQL 数据库中的功能可以自动修复数据库中的问题。 
 
-应该执行两个主要活动, 以确保数据库正常运行。
-- [监视数据库性能](#monitoring-database-performance), 以确保分配给数据库的资源能够处理工作负荷。 如果看到数据库已达到资源限制, 请考虑:
+自动优化可使数据库适应工作负荷并自动优化性能。 但是，某些自定义问题可能需要进行故障排除。 本文介绍一些最佳实践和一些可用于排查性能问题的工具。
+
+若要确保数据库运行时没有问题，应执行以下操作：
+- [监视数据库性能](#monitor-database-performance)，以确保分配给数据库的资源能够处理工作负荷。 如果数据库命中资源限制，请考虑：
    - 识别和优化资源消耗最多的查询。
-   - 通过升级服务层来添加更多的资源。
-- [解决性能问题](#troubleshoot-performance-issues)若要确定出现潜在问题的原因, 请确定问题的根本原因。 确定根本原因后, 请执行修复此问题的步骤。
+   - 通过[升级服务层](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources)来添加更多的资源。
+- [排查性能问题](#troubleshoot-performance-problems)以确定出现潜在问题的原因，并确定问题的根本原因。 确定根本原因后，请采取措施来解决问题。
 
-## <a name="monitoring-database-performance"></a>监视数据库性能
+## <a name="monitor-database-performance"></a>监视数据库性能
 
-监视 Azure 中的 SQL 数据库的性能从监视相对于所选数据库性能级别所使用的资源开始。 应监视以下资源:
- - **Cpu 使用情况**-检查数据库是否长时间达到 100% 的 CPU 使用率。 CPU 使用率较高可能表示应该确定和优化使用最多计算能力的查询。 或者, 高 CPU 使用率可能表明数据库或实例应升级到更高的服务层。 
- - **等待统计信息**-使用[Sys.databases _os_wait_stats (transact-sql)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)确定查询遇到的等待时间。 查询可以等待资源、队列等待或外部等待。 
- - **IO 使用情况**-检查数据库是否达到基础存储的 IO 限制。
- - **内存使用情况**-数据库或实例的可用内存量与 vcore 数成正比。 验证内存是否足以满足工作负荷。 页生存期是可以指示从内存中删除页面的速度的参数之一。
+若要监视 Azure 中的 SQL 数据库的性能，请先监视与所选数据库性能级别相关的资源。 监视以下资源：
+ - **CPU 使用率**：查看数据库是否长时间达到 100% 的 CPU 使用率。 高 CPU 使用率可能表明需要标识和优化使用最多计算能力的查询。 高 CPU 使用率也可能表明数据库或实例应升级到更高的服务层。 
+ - **等待统计信息**：使用[sys. _os_wait_stats （transact-sql）](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)确定查询等待的时间。 查询可以等待资源、队列等待或外部等待。 
+ - **IO 使用情况**：查看数据库是否达到了基础存储的 IO 限制。
+ - **内存使用率**：数据库或实例的可用内存量与 Vcore 数成正比。 请确保内存足以满足工作负荷。 页生存期是可以指示是否很快从内存中删除页面的参数之一。
 
-Azure SQL 数据库服务**包括工具和资源, 可帮助进行故障排除并解决潜在的性能问题**。 通过查看[性能优化建议](sql-database-advisor.md), 可确定机会以提高和优化查询性能, 而无需更改资源。 缺少索引与查询优化不足是数据库性能不佳的常见原因。 可以应用这些优化建议来提高工作负荷的性能。 我们还可以让 Azure SQL 数据库通过应用所有已确定的建议并验证建议改善数据库性能, 从而[自动优化查询性能](sql-database-automatic-tuning.md)。
+Azure SQL Database 服务包含一些工具和资源，可帮助你排除故障和解决潜在的性能问题。 您可以通过查看[性能优化建议](sql-database-advisor.md)来确定提高和优化查询性能的机会，无需更改资源。 
 
-以下选项可用于监视数据库性能并对其进行故障排除:
+缺少索引与查询优化不足是数据库性能不佳的常见原因。 可以应用优化建议来提高工作负荷的性能。 还可以通过应用所有已确定的建议，让 Azure SQL 数据库[自动优化查询性能](sql-database-automatic-tuning.md)。 然后，验证建议是否改进了数据库性能。
 
-- 在[Azure 门户](https://portal.azure.com)中, 单击 " **SQL 数据库**", 选择数据库, 然后使用 "监视" 图表查找接近其最大利用率的资源。 默认会显示 DTU 消耗量。 单击“**编辑**”更改显示的时间范围和值。
-- SQL Server Management Studio 的工具提供了许多有用的报告, 如[性能仪表板](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard?view=sql-server-2017), 可监视资源利用率并识别最常见的资源消耗查询。[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed)可用于识别具有回归性能的查询。
-- 使用[Azure 门户](https://portal.azure.com)中的[Query Performance Insight](sql-database-query-performance.md)来识别利用资源最多的查询。 此功能仅在单一数据库和弹性池中可用。
-- 使用 [Azure SQL 数据库顾问](sql-database-advisor-portal.md)查看有关创建和删除索引、参数化查询，以及解决架构问题的建议。 此功能仅在单一数据库和弹性池中可用。
-- 使用[AZURE SQL 智能见解](sql-database-intelligent-insights.md)自动监视数据库性能。 检测到性能问题后，将生成一个包含问题的详细信息和根本原因分析 (RCA) 的诊断日志。 在可能的情况下提供性能改善建议。
-- [启用自动优化](sql-database-automatic-tuning-enable.md)，并让 Azure SQL 数据库自动修复已识别到的性能问题。
-- 使用[动态管理视图 (DMV)](sql-database-monitoring-with-dmvs.md)、[扩展事件](sql-database-xevent-db-diff-from-svr.md)和[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)更细致地排查性能问题。
+> [!NOTE]
+> 索引仅适用于单一数据库和弹性池。 索引在托管实例中不可用。
+
+从以下选项中进行选择，以监视数据库性能并对其进行故障排除：
+
+- 在[Azure 门户](https://portal.azure.com)中，选择 " **SQL 数据库**" 并选择数据库。 在 "**监视**" 图表中，查找接近其最大利用率的资源。 默认会显示 DTU 消耗量。 选择 "**编辑**" 可更改显示的时间范围和值。
+- SQL Server Management Studio 的工具提供许多有用的报告，如[性能仪表板](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard)。 使用这些报表来监视资源使用情况，并确定资源使用排名靠前的查询。 您可以使用[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed)来确定性能回归的查询。
+- 在[Azure 门户](https://portal.azure.com)中，使用[Query Performance Insight](sql-database-query-performance.md)确定使用资源最多的查询。 此功能仅适用于单一数据库和弹性池。
+- 使用[SQL 数据库顾问](sql-database-advisor-portal.md)查看建议，以帮助您创建和删除索引、参数化查询以及解决架构问题。 此功能仅适用于单一数据库和弹性池。
+- 使用[AZURE SQL 智能见解](sql-database-intelligent-insights.md)自动监视数据库性能。 检测到性能问题时，将生成诊断日志。 日志提供了问题的详细信息和根本原因分析（RCA）。 如果可能，将提供性能改进建议。
+- [启用自动优化](sql-database-automatic-tuning-enable.md)以允许 Azure SQL 数据库自动修复性能问题。
+- 使用[动态管理视图（dmv）](sql-database-monitoring-with-dmvs.md)、[扩展事件](sql-database-xevent-db-diff-from-svr.md)和[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)获取有关性能问题的更详细故障排除的帮助。
 
 > [!TIP]
-> 请参阅[性能指南](sql-database-performance-guidance.md)，了解在使用上述一种或多种方法识别性能问题后，可以利用哪些技术来提高 Azure SQL 数据库的性能。
+> 确定性能问题后，请查看我们的[性能指南](sql-database-performance-guidance.md)，查找提高 Azure SQL 数据库性能的技巧。
 
-## <a name="troubleshoot-performance-issues"></a>排查性能问题
+## <a name="troubleshoot-performance-problems"></a>排查性能问题
 
-若要诊断并解决性能问题，请先了解每个活动查询的状态，以及哪些条件导致出现了与每种工作负荷状态相关的性能问题。 若要改进 Azure SQL 数据库性能, 请了解应用程序中的每个活动查询请求是处于 "正在运行" 状态还是 "正在等待" 状态。 排查 Azure SQL 数据库中的性能问题时, 请记住以下图表, 因为我们通读本文以诊断并解决性能问题。
+若要诊断并解决性能问题，请先找出每个活动查询的状态，以及导致与每个工作负荷状态相关的性能问题的条件。 若要改进 Azure SQL 数据库性能，需要了解应用程序中的每个活动查询请求是处于 "正在运行" 状态还是 "正在等待" 状态。 解决 Azure SQL 数据库中的性能问题时，请记住下面的关系图。
 
 ![工作负荷状态](./media/sql-database-monitor-tune-overview/workload-states.png)
 
-对于出现性能问题的工作负荷，问题的原因可能是 CPU 争用（**运行相关的**条件）或单个查询正在等待某个资源（**等待相关的**条件）。
+工作负荷中的性能问题可能是由 CPU 争用（*运行相关*的条件）或正在等待某个事物的单个查询（*等待相关*的条件）引起的。
 
-**与运行相关**的问题的原因可能是:
-- **编译问题**-SQL 查询优化器可能会由于过时统计信息、要处理的行数的错误估计或所需内存的估计值不准确而产生不理想的计划。 如果知道查询在过去或其他实例上的执行速度更快 (托管实例或 SQL Server 实例), 请使用实际的执行计划并进行比较, 以确定它们是否不同。 尝试应用查询提示或重新生成统计信息, 或重新生成索引以获得更好的计划。 在 Azure SQL 数据库中启用“自动更正计划”，以自动缓解这些问题。
-- **执行问题**-如果查询计划是最佳的, 则可能会在数据库中达到资源限制 (如日志写入吞吐量) 或使用应重新生成的零碎索引。 大量需要相同资源的并发查询也可能导致执行问题。 大多数情况下, 与**等待相关**的问题与执行问题相关, 因为没有有效执行的查询可能会等待某些资源。
+运行相关的问题可能由以下原因引起：
+- **编译问题**：SQL 查询优化器可能会生成一个不理想的计划，因为有陈旧的统计信息，对要处理的行数的估计值不正确，或者所需内存的估计值不准确。 如果知道查询是在过去或另一个实例（托管实例或 SQL Server 实例）上更快执行的，请比较实际的执行计划，以确定它们是否不同。 尝试应用查询提示或重新生成统计信息或索引，以获得更好的计划。 在 Azure SQL 数据库中启用自动计划更正，以自动缓解这些问题。
+- **执行问题**：如果查询计划是最佳的，则可能会达到数据库的资源限制，如日志写入吞吐量。 或者，它可能使用应重新生成的零碎索引。 当大量并发查询需要相同的资源时，也会发生执行问题。 与*等待相关*的问题通常与执行问题相关，因为没有有效执行的查询可能会等待一些资源。
 
-**与等待相关**的问题的原因可能是:
-- **阻塞**-一个查询可能持有数据库中对象的锁, 而另一些查询尝试访问相同的对象。 使用 Dmv 或监视工具可以轻松识别阻塞查询。
-- **IO 问题**-查询可能正在等待将页写入数据文件或日志文件。 在此示例中`INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG`请参阅`PAGEIOLATCH_*` 、或等待 DMV 中的统计信息。
-- **TempDB 问题**-如果工作负荷使用临时表, 或者在计划中有 tempdb 溢出, 则查询可能会遇到 TempDB 吞吐量问题。 
-- **与内存相关的问题**: 可能没有足够的内存用于工作负荷, 因此页生存期可能会下降, 或者查询的内存量超出了所需的内存量。 在某些情况下，查询优化器中的内置智能可解决这些问题。
+等待相关的问题可能由以下原因引起：
+- **阻止**：一个查询可能持有数据库中对象的锁，而其他查询则尝试访问相同的对象。 可以通过使用 Dmv 或监视工具来确定阻塞查询。
+- **IO 问题**：查询可能正在等待将页写入数据文件或日志文件。 在这种情况下， `INSTANCE_LOG_RATE_GOVERNOR`请`WRITE_LOG`检查 DMV `PAGEIOLATCH_*`中的、或等待统计信息。
+- **TempDB 问题**：如果工作负荷使用临时表，或者计划中存在 TempDB 溢出，则查询可能会遇到 TempDB 吞吐量问题。 
+- **与内存相关的问题**：如果工作负荷没有足够的内存，则页生存期可能会下降，或者查询可能会获得比所需内存更少的内存。 在某些情况下，查询优化器中的内置智能将修复与内存相关的问题。
  
- 以下部分将介绍如何识别并解决其中的一些问题。
+以下各节说明如何识别和解决某些类型的问题。
 
-## <a name="running-related-performance-issues"></a>运行相关的性能问题
+## <a name="performance-problems-related-to-running"></a>与运行相关的性能问题
 
-一般原则是, 如果 CPU 使用率持续等于或高于 80%, 则会出现与运行相关的性能问题。 如果存在与运行相关的问题, 则可能是由于 CPU 资源不足引起的, 或者可能与下列情况之一相关:
+一般原则是，如果 CPU 使用率持续等于或高于 80%，则性能问题正在运行-相关。 与运行相关的问题可能是由于 CPU 资源不足引起的。 或者，它可能与以下条件之一相关：
 
 - 运行查询过多
 - 编译查询过多
-- 一个或多个正在执行的查询正在使用不理想的查询计划
+- 使用不理想查询计划的一个或多个执行查询
 
-如果确定存在运行相关的性能问题, 则目标是使用一种或多种方法来确定确切的问题。 用于标识运行相关问题的最常见方法包括：
+如果发现运行相关的性能问题，则您的目标是通过使用一种或多种方法来确定确切的问题。 这些方法是识别与运行相关的问题的最常见方式：
 
-- 使用 [Azure 门户](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal)监视 CPU 利用率百分比。
-- 使用以下[动态管理视图](sql-database-monitoring-with-dmvs.md)：
+- 使用[Azure 门户](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal)监视 CPU 使用率百分比。
+- 使用以下[dmv](sql-database-monitoring-with-dmvs.md)：
 
-  - [sys.databases _db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use)返回 Azure SQL 数据库的 CPU、i/o 和内存消耗。 即使数据库中没有活动, 也会每隔15秒间隔一行。 历史数据将保留一小时。
-  - [sys.resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) 返回 Azure SQL 数据库的 CPU 使用率和存储数据。 在五分钟的间隔内收集和聚合数据。
+  - [Sys.databases _db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV 返回 SQL 数据库的 CPU、i/o 和内存消耗。 即使数据库中没有活动，也会每隔15秒间隔一行。 历史数据将保留一小时。
+  - [Resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV 返回适用于 Azure SQL 数据库的 CPU 使用率和存储数据。 数据按五分钟间隔收集和聚合。
 
 > [!IMPORTANT]
-> 有关使用 _db_resource_stats 和 resource_stats Dmv 排查 CPU 利用率问题的 T-sql 查询, 请参阅[确定 cpu 性能问题](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues)。
+> 若要解决使用 _db_resource_stats 和 resource_stats Dmv 的 T-sql 查询的 CPU 使用问题，请参阅[确定 cpu 性能问题](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues)。
 
-### <a name="ParamSniffing"></a> 使用参数敏感查询执行计划问题对查询进行故障排除
+### <a name="ParamSniffing"></a>具有 PSP 问题的查询
 
-参数敏感计划 (PSP) 问题是指查询优化器生成的查询执行计划仅适用于某个或某组特定的参数值，而缓存计划对于连续执行操作中所用的参数值并非最佳。 这样一来，非最佳计划可能会导致整体工作负荷吞吐量下降并出现查询性能问题。 有关参数探查和查询处理的详细信息，请参阅[查询处理体系结构指南](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing)。
+当查询优化器生成仅对特定参数值（或一组值）最佳的查询执行计划时，将发生参数敏感计划（PSP）问题，且缓存计划对于连续使用的参数值不是最佳的执行. 这样的计划可能会导致查询性能问题并降低整体工作负荷吞吐量。 
 
-有多种解决方法用于缓解这些问题, 每个都有关联的折衷和缺点:
+有关参数嗅探和查询处理的详细信息，请参阅[查询处理体系结构指南](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing)。
 
-- 在每次执行查询时使用 [RECOMPILE](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示。 此解决方法会将编译时间和增加的 CPU 进行交易, 以获得更好的计划质量。 对于需要高吞吐量的工作负荷，通常无法使用 `RECOMPILE` 选项。
-- 使用 [OPTION (OPTIMIZE FOR…)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示将实际参数值替代为典型的参数值，以便为大部分可能的参数值生成一个足够好的计划。   此选项要求充分了解最佳参数值和相关的计划特征。
-- 使用 [OPTION (OPTIMIZE FOR UNKNOWN)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示将实际参数值替代为密度向量平均值。 另一种方法是将传入的参数值捕获到局部变量中，然后在谓词内使用局部变量，而不是使用参数本身。 在此特定修复方法中，平均密度必须*足够好*。
-- 使用 [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示完全禁用参数探查。
-- 使用 [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示防止在缓存中重新编译。 此解决方法假定缓存中已有的通用计划已经*足够好*。 你还可以禁用统计信息自动更新，以便减少收回好计划而编译新的不良计划的可能性。
-- 通过显式使用 [USE PLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示（通过显式指定、使用查询存储设置特定计划或启用[自动优化](sql-database-automatic-tuning.md)）强制执行计划。
+几种解决方法可以减轻 PSP 问题。 每个解决方法都有关联的折衷与缺点：
+
+- 在每次执行查询时使用 [RECOMPILE](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示。 此解决方法以编译时间和 CPU 增加为代价来换取更好的计划质量。 对于`RECOMPILE`需要高吞吐量的工作负荷，通常不可能使用此选项。
+- 使用[选项（OPTIMIZE FOR ...）](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query)查询提示可使用典型的参数值替代实际参数值，该参数值可生成一个足以满足大多数参数值可能性的计划。 此选项要求充分了解最佳参数值和相关的计划特征。
+- 使用[选项（"优化未知](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query)值"）查询提示替代实际参数值，而改用密度向量平均。 还可以通过捕获局部变量中的传入参数值，然后在谓词中使用局部变量，而不是使用参数本身，来实现此目的。 对于此修补程序，平均密度必须*足够好*。
+- 使用[DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query)查询提示完全禁用参数探查。
+- 使用[KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query)查询提示可防止在缓存中重新编译。 此解决方法假设已有足够的通用计划是缓存中的计划。 你还可以禁用自动统计信息更新，以减少将逐出良好计划并将编译新的错误计划的机会。
+- 通过重写查询并在查询文本中添加提示来强制[执行](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query)计划。 或通过使用查询存储或启用[自动优化](sql-database-automatic-tuning.md)来设置特定计划。
 - 将单个过程替换为一组嵌套的过程，可以根据条件逻辑和关联的参数值来使用其中每个过程。
 - 创建动态字符串执行来替代静态过程定义。
 
-有关解决这些类型的问题的详细信息, 请参阅博客文章:
+有关解决 PSP 问题的详细信息，请参阅以下博客文章：
 
 - [我气味一个参数](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)
-- [动态 sql 与参数化查询的计划质量](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)
-- [SQL Server 中的 SQL 查询优化方法:参数嗅探](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
+- [Conor 与动态的 SQL 与过程的对比和参数化查询的计划质量](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)
+- [SQL Server 中的 SQL 查询优化方法：参数嗅探](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
 
-### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>排查因参数化不当而导致的编译活动问题
+### <a name="compile-activity-caused-by-improper-parameterization"></a>由于参数化不正确而导致的编译活动
 
-当查询包含文本时，为了减少编译次数，要么数据库引擎选择自动参数化语​​句，要么用户可以将其显式参数化。 使用相同模式但不同文本值进行查询的数量过多会导致 CPU 利用率高。 同样，如果仅将查询部分参数化，导致该查询仍包含文本，则数据库引擎不会将其进一步参数化。  以下是部分参数化查询的示例：
+当查询具有文本时，数据库引擎会自动参数化语句或用户显式参数化语句，以减少编译数。 使用相同模式但不同文本值的查询的大量编译可以导致 CPU 使用率高。 同样，如果您只对继续具有文本的查询进行部分参数化，则数据库引擎不会对查询进行进一步的参数化。  
+
+下面是部分参数化查询的示例：
 
 ```sql
 SELECT * 
@@ -121,9 +132,9 @@ FROM t1 JOIN t2 ON t1.c1 = t2.c1
 WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
-在前面的示例中`t1.c1` , `@p1`将`t2.c2`使用 GUID 作为文本。 在这种情况下，如果更改 `c2` 的值，该查询将被视为不同的查询，并且将进行新的编译。 若要减少前面示例中的编译次数，解决方案还是参数化 GUID。
+在此示例中`t1.c1` ， `@p1`将采用`t2.c2` ，但继续采用 GUID 作为文本。 在这种情况下，如果您更改的`c2`值，则查询将被视为不同的查询，并且将发生新的编译。 若要在此示例中减少编译，还应参数化 GUID。
 
-以下查询显示查询哈希的查询计数，以确定查询是否已正确参数化：
+下面的查询按查询哈希显示查询计数，以确定查询是否已正确参数化：
 
 ```sql
 SELECT  TOP 10  
@@ -145,99 +156,103 @@ WHERE
 GROUP BY q.query_hash
 ORDER BY count (distinct p.query_id) DESC
 ```
-### <a name="factors-influencing-query-plan-changes"></a>影响查询计划更改的因素
 
-重新编译查询执行计划可能会导致生成的查询计划与最初缓存的计划不同。 有多种原因可能导致自动重新编译现有的原始计划：
-- 查询引用的架构发生更改
-- 对查询引用的表进行数据更改 
-- 对查询上下文选项进行更改 
+### <a name="factors-that-affect-query-plan-changes"></a>影响查询计划更改的因素
 
-由于各种原因 (包括实例重启、数据库范围内的配置更改、内存压力和显式请求清除缓存), 编译的计划可能会从缓存中弹出。 此外，使用 RECOMPILE 提示意味着不会缓存计划。
+重新编译查询执行计划可能会导致生成的查询计划与原始缓存计划不同。 由于各种原因，可能会自动重新编译现有的原始计划：
+- 此查询引用了架构中的更改。
+- 查询引用对表的数据更改。 
+- 查询上下文选项已更改。
 
-重新编译（或者在缓存逐出后重新编译）仍可能导致从最初观察到的计划生成相同的查询执行计划。  如果对计划所做的更改与以前或原始计划的更改有关, 以下是有关查询执行计划更改的最常见说明:
+由于各种原因，编译的计划可能会从缓存中弹出，例如：
 
-- **更改了物理设计**。 例如, 创建了新的索引, 以便更有效地涵盖查询的要求。 如果查询优化器决定使用该新索引的最佳方式比使用最初为第一次查询执行第一版选择的数据结构, 则可在新的编译中使用新索引。  在编译时, 对被引用对象的任何物理更改都可能会导致新的计划选择。
+- 实例重启。
+- 数据库范围的配置更改。
+- 内存压力。
+- 用于清除缓存的显式请求。
 
-- **服务器资源差异**。 在一个计划不同于 "系统 A" 和 "系统 B" 的情况下 (资源的可用性, 如可用处理器的数量), 可能会影响生成的计划。  例如，如果一个系统的处理器数较多，则可能会选择并行计划。 
+如果使用重新编译提示，则不会缓存计划。
 
-- **不同的统计信息**。 与引用的对象关联的统计信息发生了更改，或者与原始系统的统计信息有本质的差别。  如果统计信息发生更改并重新编译，则查询优化器将使用截至该特定时间点的统计信息。 修改后的统计信息可能具有不同于原始编译的数据分发和频率。  这些更改将用于估算基数（预计要流经逻辑查询树的行数）。  更改基数估算值可以引导我们选择不同的物理运算符和关联的操作顺序。  即使对统计信息进行少量的更改，也可能会导致查询执行计划发生变化。
+重新编译（或缓存逐出后的新编译）仍可能导致生成与原始相同的查询执行计划。 如果计划从以前的或原始计划中更改，则可能会出现以下说明：
 
-- **更改了数据库兼容性级别或基数估算器版本**。  更改数据库兼容性级别可以启用新的策略和功能，从而可能导致生成不同的查询执行计划。  除了数据库兼容性级别以外, 禁用或启用跟踪标志4199或更改数据库作用域配置 QUERY_OPTIMIZER_HOTFIXES 的状态还可能会影响编译时的查询执行计划选择。  跟踪标志 9481（强制旧式 CE）和 2312（强制默认 CE）也会影响计划。 
+- **更改的物理设计**：例如，新创建的索引可以更有效地涵盖查询的要求。 如果查询优化器决定使用新索引比最初为查询执行的第一个版本选择的数据结构更好，则可以对新的编译使用新的索引。  在编译时，对被引用对象的任何物理更改都可能会导致新的计划选择。
+
+- **服务器资源差异**：如果一个系统中的计划与另一个系统中的计划不同，则资源可用性（如可用处理器的数量）可能会影响生成的计划。  例如，如果一个系统有多个处理器，则可能会选择并行计划。 
+
+- **不同统计信息**：与引用对象关联的统计信息可能已更改，或者可能与原始系统的统计信息有很大差异。  如果更改了统计信息和重新编译，则查询优化器会在更改时使用从开始的统计信息。 修订的统计信息的数据分布和频率可能与原始编译的不同。  这些更改用于创建基数估算。 （*基数估算值*是预期通过逻辑查询树流动的行数。）对基数估计的更改可能会导致你选择不同的物理运算符和操作的相关顺序。  即使对统计信息进行少量的更改，也可能会导致查询执行计划发生变化。
+
+- **更改的数据库兼容级别或基数估计器版本**：更改数据库兼容级别可以启用可能导致不同查询执行计划的新策略和功能。  除了数据库兼容性级别外，已禁用或已启用的跟踪标志4199或数据库作用域配置 QUERY_OPTIMIZER_HOTFIXES 的已更改状态还可能会影响编译时的查询执行计划选择。  跟踪标志9481（强制旧版 CE）和2312（强制默认 CE）还会影响计划。 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>解决问题查询或提供更多资源
 
-识别问题后，可以优化有问题的查询，或升级计算大小或服务层级，以增加 Azure SQL 数据库的容量来满足 CPU 要求。 有关缩放单一数据库资源的信息，请参阅[缩放 Azure SQL 数据库中的单一数据库资源](sql-database-single-database-scale.md)；有关缩放弹性池资源的信息，请参阅[缩放 Azure SQL 数据库中的弹性池资源](sql-database-elastic-pool-scale.md)。 有关缩放托管实例的信息，请参阅[实例级资源限制](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)。
+确定问题后，可以调整问题查询或升级计算大小或服务层，以便增加 SQL 数据库的容量以满足 CPU 需求。 
 
-### <a name="determine-if-running-issues-due-to-increase-workload-volume"></a>确定运行问题是否是由工作负荷量增加引起的
+有关详细信息，请参阅在[AZURE Sql 数据库中缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放 azure sql 数据库中的弹性池资源](sql-database-elastic-pool-scale.md)。 有关缩放托管实例的信息，请参阅[实例级资源限制](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)。
 
-应用程序流量和工作负荷的增加可能会导致 CPU 利用率的增加，但是，要想正确诊断此问题，必须慎之又慎。 在高 CPU 方案中，回答这些问题以确定 CPU 增加是否确实是由工作负荷量变化引起的：
+### <a name="performance-problems-caused-by-increased-workload-volume"></a>由于工作负荷量增加而导致的性能问题
 
-1. 来自应用程序的查询是否是导致高 CPU 问题的原因？
-2. 对于 CPU 消耗量靠前的查询（可以识别）：
+应用程序流量和工作负荷量增加会导致 CPU 使用率增加。 但必须小心地诊断此问题。 出现高 CPU 问题时，请回答以下问题，确定增加是否是由工作负荷量的更改引起的：
 
-   - 确定同一查询是否关联了多个执行计划。 如果是，请确定原因。
-   - 对于具有相同执行计划的查询，请确定执行时间是否一致以及执行计数是否增加。 如果是，则可能由于工作负荷增加而导致性能问题。
+- 应用程序中的查询是否导致了高 CPU 问题的原因？
+- 对于最常见的 CPU 消耗查询，您可以确定：
 
-总而言之，如果查询执行计划没有以不同的方式执行，CPU 利用率却随执行计数的增加而增加，则可能出现与工作负荷增加相关的性能问题。
+   - 是否有多个与同一查询相关联的执行计划？ 如果是，为什么？
+   - 对于具有相同执行计划的查询，执行时间是否一致？ 执行计数是否增加？ 如果是这样，则工作负荷增加可能会导致性能问题。
 
-要得出是工作负荷量变化导致了 CPU 问题的结论并不容易。   需考虑的因素包括： 
+总之，如果查询执行计划未以不同的方式执行，但 CPU 使用率随执行计数一起增加，则性能问题可能与工作负荷增加相关。
 
-- **资源使用率发生了变化**
+确定驱动 CPU 问题的工作负荷量发生变化并不是很容易。 请考虑以下因素： 
 
-  以 CPU 长时间增加到 80% 的情况为例。  单凭 CPU 利用率并不能说明工作负荷量发生了变化。  即使应用程序执行的工作负荷完全相同，查询执行计划的回归和数据分布的变化也有可能导致资源使用率的增加。
+- **更改的资源使用情况**：例如，假设 CPU 使用率长时间增加到 80%。  仅 CPU 使用率并不意味着工作负荷量发生变化。 即使应用程序执行相同的工作负载，查询执行计划中的回归和数据分发的更改也会导致更多的资源使用。
 
-- **出现了新查询**
+- **新查询的外观**：应用程序可以在不同时间驱动一组新查询。
 
-   应用程序有可能在不同时间发出一组新的查询。
+- **请求数增加或减少**：此方案是工作负荷最明显的度量值。 查询数量并不一定与资源利用率增加相对应。 但是，如果其他因素未改变，此指标仍是一个非常重要的信号。
 
-- **请求数量增加或减少**
+## <a name="waiting-related-performance-problems"></a>与等待相关的性能问题 
 
-   这种情况最能说明工作负荷量的变化。 查询数量并不一定与资源利用率增加相对应。 但是，在其他因素不变的前提下，该指标仍然是一个重要信号。
+如果确定性能问题与 CPU 使用率高或运行状况不相关，则问题与等待有关。 也就是说，CPU 资源并未有效地使用，因为 CPU 正在等待某个其他资源。 在这种情况下，请确定 CPU 资源正在等待的资源。 
 
-## <a name="waiting-related-performance-issues"></a>等待相关的性能问题
+这些方法通常用于显示等待类型的顶级类别：
 
-确定不存在 CPU 消耗量较高的运行相关性能问题后，则表示出现了等待相关的性能问题。 即，由于 CPU 正在等待其他某个资源，因此 CPU 资源未得到有效利用。 对于这种情况，下一步是识别 CPU 资源正在等待哪个资源。 显示最常见等待类型类别的最常见方法包括:
+- 使用[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)可查找一段时间内每个查询的等待统计信息。 在查询存储中，等待类型合并成等待类别。 可以在[query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table)中找到等待类别到等待类型的映射。
+- 使用[sys.databases _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database)返回有关在操作期间执行的线程所遇到的所有等待的信息。 你可以使用此聚合视图诊断 Azure SQL 数据库的性能问题，以及特定查询和批处理。
+- 使用[sys.databases _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql)返回有关正在等待某个资源的任务队列的信息。
 
-- [查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)每个查询在不同时间段的等待统计信息。 在查询存储中，等待类型合并成等待类别。 等待类别到等待类型的映射在 [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table) 中提供。
-- [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) 返回有关操作期间执行的线程遇到的所有等待的信息。 可以使用此聚合视图来诊断 Azure SQL 数据库以及特定查询和批的性能问题。
-- [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) 返回有关正在等待某个资源的任务的等待队列的信息。
+在高 CPU 情况下，如果下列情况，查询存储和等待统计信息可能不会反映 CPU 使用率：
 
-在高 CPU 方案中，查询存储和等待统计信息并不一定反映 CPU 利用率，原因有二：
+- 高 CPU 消耗查询仍在执行。
+- 发生故障转移时，消耗大量 CPU 的查询正在运行。
 
-- CPU 消耗量较高的查询可能仍在执行，查询尚未完成
-- 发生故障转移时，正在运行 CPU 消耗量较高的查询
+跟踪查询存储和等待统计信息的 Dmv 只显示已成功完成和超时查询的结果。 在语句完成之前，它们不会显示当前正在执行的语句的数据。 使用动态管理视图[sys.databases _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)跟踪当前正在执行的查询和关联的工作进程时间。
 
-查询存储和等待统计信息跟踪动态管理视图仅显示成功完成的查询和超时查询的结果，而不显示当前正在执行的语句的数据（直到其完成）。 动态管理视图[sys.databases _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)允许您跟踪当前正在执行的查询和关联的辅助进程时间。
-
-如上面的图表中所示，是最常见的等待是：
+本文开头附近的图表显示最常见的等待：
 
 - 锁（阻塞）
 - I/O
-- `tempdb` 相关的争用
+- 与 TempDB 相关的争用
 - 内存授予等待
 
 > [!IMPORTANT]
-> 有关使用这些 DMV 排查这些等待相关问题的一组 T-SQL 查询，请参阅：
+> 有关使用 Dmv 对等待相关的问题进行故障排除的一组 T-sql 查询，请参阅：
 >
 > - [识别 I/O 性能问题](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
-> - [识别 `tempdb` 性能问题](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
 > - [识别内存授予等待](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
-> - [TigerToolbox - 等待和闩锁](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
-> - [TigerToolbox - usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
+> - [TigerToolbox 等待和闩锁](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
+> - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
-## <a name="improving-database-performance-with-more-resources"></a>使用更多的资源提高数据库的性能
+## <a name="improve-database-performance-with-more-resources"></a>利用更多资源提高数据库性能
 
-最后，如果没有可行的措施可以提高数据库的性能，可以更改 Azure SQL 数据库中可用的资源量。 通过更改单个数据库的[DTU 服务层](sql-database-service-tiers-dtu.md), 或随时增加弹性池的 edtu, 分配更多的资源。 或者, 如果使用的是[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md), 请更改服务层或增加分配给数据库的资源。
+如果没有可操作项可以提高数据库性能，你可以更改 Azure SQL 数据库中的可用资源量。 通过更改单个数据库的[DTU 服务层](sql-database-service-tiers-dtu.md)分配更多的资源。 或者随时增加弹性池的 Edtu。 或者，如果使用的是[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，请更改服务层或增加分配给数据库的资源。
 
-1. 对于单一数据库，可以根据需要[更改服务层级](sql-database-single-database-scale.md)或[计算资源](sql-database-single-database-scale.md)以提高数据库性能。
-2. 对于多个数据库，请考虑使用[弹性池](sql-database-elastic-pool-guidance.md)自动缩放资源。
+对于单一数据库，可以根据需要[更改服务层或计算资源](sql-database-single-database-scale.md)以提高数据库性能。 对于多个数据库，请考虑使用[弹性池](sql-database-elastic-pool-guidance.md)自动缩放资源。
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>优化和重构应用程序或数据库代码
 
-可以更改应用程序代码来最好地利用数据库、更改索引、强制计划，或使用提示来手动让数据库适应工作负荷。 查找有关手动优化和重写[性能指南主题](sql-database-performance-guidance.md)文章中的代码的指南和提示。
+您可以优化数据库的应用程序代码、更改索引、强制计划，或使用提示来手动将数据库调整为工作负荷。 有关手动优化和重写代码的信息，请参阅[性能优化指南](sql-database-performance-guidance.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要在 Azure SQL 数据库中启用自动优化并使自动优化功能完全管理工作负荷，请参阅[启用自动优化](sql-database-automatic-tuning-enable.md)。
-- 若要使用手动优化，请参阅 [Azure 门户中的优化建议](sql-database-advisor-portal.md)，然后手动应用一些可提高查询性能的建议。
-- 通过更改 [Azure SQL 数据库服务层级](sql-database-performance-guidance.md)来更改数据库中可用的资源
+- 若要在 Azure SQL 数据库中启用自动优化并让自动优化功能完全管理工作负荷，请参阅[启用自动优化](sql-database-automatic-tuning-enable.md)。
+- 若要使用手动优化，请查看[Azure 门户中的优化建议](sql-database-advisor-portal.md)。 手动应用改进查询性能的建议。
+- 通过更改[AZURE SQL 数据库服务层](sql-database-performance-guidance.md)来更改数据库中可用的资源。

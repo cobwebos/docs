@@ -2,19 +2,19 @@
 title: 如何为 Azure Key Vault 生成和传输受 HSM 保护的密钥 - Azure Key Vault | Microsoft Docs
 description: 使用这篇文章可帮助你规划、生成然后传输自己的受 HSM 保护的密钥，以便与 Azure 密钥保管库一起使用。 也称为 BYOK 或自带密钥。
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.author: barclayn
-ms.openlocfilehash: 16aebf2bb2e0c4d495aa8e3a45d3398a9aa9b9ed
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.author: mbaldwin
+ms.openlocfilehash: 3cd8cd0b72f1b3ccea557ce0e12394081329dc5b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575051"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883305"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥
 
@@ -35,15 +35,15 @@ ms.locfileid: "69575051"
 * 从脱机工作站生成密钥，这样可以减小攻击面。
 * 密钥通过密钥交换密钥 (KEK) 进行加密，且在传输到 Azure 密钥保管库 HSM 之前一直处于加密状态。 只有加密版本的密钥会离开原始工作站。
 * 该工具集会在将密钥绑定到 Azure 密钥保管库安全体系的租户密钥上设置属性。 因此，在 Azure 密钥保管库 HSM 收到和解密密钥之后，只有这些 HSM 能够使用它。 无法导出密钥。 此绑定由 nCipher Hsm 强制执行。
-* 用于加密密钥的密钥交换密钥 (KEK) 是在 Azure 密钥保管库 HSM 内部生成的，且不可导出。 HSM 会强制使 HSM 外部没有清晰版本的 KEK。 此外, 工具集还包括来自 nCipher 的证明, 即 KEK 不可导出, 并在 nCipher 制造的正版 HSM 内部生成。
-* 该工具集包括来自 nCipher 的证明, Azure Key Vault 安全体系也在 nCipher 制造的真品 HSM 上生成。 此证明可证明 Microsoft 使用的是正版硬件。
+* 用于加密密钥的密钥交换密钥 (KEK) 是在 Azure 密钥保管库 HSM 内部生成的，且不可导出。 HSM 会强制使 HSM 外部没有清晰版本的 KEK。 此外，工具集还包括来自 nCipher 的证明，即 KEK 不可导出，并在 nCipher 制造的正版 HSM 内部生成。
+* 该工具集包括来自 nCipher 的证明，Azure Key Vault 安全体系也在 nCipher 制造的真品 HSM 上生成。 此证明可证明 Microsoft 使用的是正版硬件。
 * Microsoft 会在每个地理区域都使用单独的 KEK 和单独的安全体系。 这种分离可确保密钥只能在将其加密的区域的数据中心使用。 例如，来自欧洲客户的密钥不能在北美或亚洲数据中心使用。
 
 ## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>有关 nCipher Hsm 和 Microsoft 服务的详细信息
 
-对于金融服务、高科技、制造、政府和技术领域, nCipher 安全性是一种领先的数据加密和网络安全解决方案。 对于保护公司和政府信息的40年跟踪记录, nCipher 的安全加密解决方案由五个最大的五个能源和航空公司使用。 它们的解决方案还由22个个 NATO 的国家/地区使用, 并保护超过80的全球付款交易。
+对于金融服务、高科技、制造、政府和技术领域，nCipher 安全性是一种领先的数据加密和网络安全解决方案。 对于保护公司和政府信息的40年跟踪记录，nCipher 的安全加密解决方案由五个最大的五个能源和航空公司使用。 它们的解决方案还由22个个 NATO 的国家/地区使用，并保护超过80的全球付款交易。
 
-Microsoft 与 nCipher 安全性合作, 为 Hsm 提高了作品的状态。 这些增强功能可使你能够获得托管服务的典型优势，而且无需放弃对密钥的控制权。 具体来说，这些增强功能可以让 Microsoft 管理 HSM，这样你就不必费心管理了。 作为云服务，Azure 密钥保管库无需通知即可扩大，以满足组织的使用高峰需求。 同时，密钥也会在 Microsoft 的 HSM 内部获得保护：你生成密钥并将其传输到 Microsoft 的 HSM，所以可以保留对密钥生命周期的控制权。
+Microsoft 与 nCipher 安全性合作，为 Hsm 提高了作品的状态。 这些增强功能可使你能够获得托管服务的典型优势，而且无需放弃对密钥的控制权。 具体来说，这些增强功能可以让 Microsoft 管理 HSM，这样你就不必费心管理了。 作为云服务，Azure 密钥保管库无需通知即可扩大，以满足组织的使用高峰需求。 同时，密钥也会在 Microsoft 的 HSM 内部获得保护：你生成密钥并将其传输到 Microsoft 的 HSM，所以可以保留对密钥生命周期的控制权。
 
 ## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>为 Azure 密钥保管库实现“自带密钥 (BYOK)”
 
@@ -57,8 +57,8 @@ Microsoft 与 nCipher 安全性合作, 为 Hsm 提高了作品的状态。 这�
 | --- | --- |
 | Azure 订阅 |若要创建 Azure Key Vault，需要 Azure 订阅：[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) |
 | 用于支持受 HSM 保护的密钥的 Azure 密钥保管库“高级”服务层级 |请参阅 [Azure 密钥保管库定价](https://azure.microsoft.com/pricing/details/key-vault/)网站，了解有关 Azure 密钥保管库的服务层级和功能的详细信息。 |
-| nCipher nShield Hsm、智能卡和支持软件 |你必须有权访问 nCipher 硬件安全模块以及 nCipher nShield Hsm 的基本操作知识。 有关兼容模型的列表, 请参阅[NCipher NShield 硬件安全模块](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy), 如果没有 HSM, 请参阅购买 HSM。 |
-| 以下硬件和软件：<ol><li>一种离线 x64 工作站, windows 操作系统版本最低为 Windows 7, nCipher nShield 软件至少为11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) 安装版本为 1.1.0。</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
+| nCipher nShield Hsm、智能卡和支持软件 |你必须有权访问 nCipher 硬件安全模块以及 nCipher nShield Hsm 的基本操作知识。 有关兼容模型的列表，请参阅[NCipher NShield 硬件安全模块](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy)，如果没有 HSM，请参阅购买 HSM。 |
+| 以下硬件和软件：<ol><li>一种离线 x64 工作站，windows 操作系统版本最低为 Windows 7，nCipher nShield 软件至少为11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) 安装版本为 1.1.0。</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>生成密钥并将其传输到 Azure 密钥保管库 HSM
 
@@ -190,7 +190,7 @@ KeyVault-BYOK-Tools-Germany.zip
 5385E615880AAFC02AFD9841F7BADD025D7EE819894AA29ED3C71C3F844C45D6
 
 ---
-**德国公共:**
+**德国公共：**
 
 KeyVault-BYOK-Tools-Germany-Public .zip
 
@@ -249,15 +249,15 @@ KeyVault-BYOK-Tools-Switzerland .zip
 
 ### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>步骤 2.1：通过 nCipher nShield HSM 准备断开连接的工作站
 
-在 Windows 计算机上安装 nCipher 支持软件, 然后将 nCipher nShield HSM 连接到该计算机。
+在 Windows 计算机上安装 nCipher 支持软件，然后将 nCipher nShield HSM 连接到该计算机。
 
-确保 nCipher 工具位于路径 ( **%nfast_home%\bin**) 中。 例如，请键入以下内容：
+确保 nCipher 工具位于路径（ **%nfast_home%\bin**）中。 例如，请键入以下内容：
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
   ```
 
-有关详细信息, 请参阅 nShield HSM 附带的用户指南。
+有关详细信息，请参阅 nShield HSM 附带的用户指南。
 
 ### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>步骤 2.2：在连接断开的工作站上安装 BYOK 工具集
 
@@ -273,7 +273,7 @@ KeyVault-BYOK-Tools-Switzerland .zip
 
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>步骤 3.1：将 HSM 模式更改为“I”
 
-如果使用 nCipher nShield Edge 来更改模式:1. 使用“模式”按钮突出显示所需模式。 2. 几秒钟内，按住“清除”按钮几秒钟。 如果模式发生更改，新模式的 LED 指示灯将停止闪烁并保持亮起。 状态 LED 可能会不规则地闪烁几秒钟，并在设备就绪时规则闪烁。 否则，设备保持在当前模式，相应的模式 LED 亮起。
+如果使用 nCipher nShield Edge 来更改模式：1. 使用“模式”按钮突出显示所需模式。 2. 几秒钟内，按住“清除”按钮几秒钟。 如果模式发生更改，新模式的 LED 指示灯将停止闪烁并保持亮起。 状态 LED 可能会不规则地闪烁几秒钟，并在设备就绪时规则闪烁。 否则，设备保持在当前模式，相应的模式 LED 亮起。
 
 ### <a name="step-32-create-a-security-world"></a>步骤 3.2：创建安全体系
 
@@ -294,7 +294,7 @@ KeyVault-BYOK-Tools-Switzerland .zip
 
 ### <a name="step-33-change-the-hsm-mode-to-o"></a>步骤 3.3：将 HSM 模式更改为“O”
 
-如果使用 nCipher nShield Edge 来更改模式:1. 使用“模式”按钮突出显示所需模式。 2. 几秒钟内，按住“清除”按钮几秒钟。 如果模式发生更改，新模式的 LED 指示灯将停止闪烁并保持亮起。 状态 LED 可能会不规则地闪烁几秒钟，并在设备就绪时规则闪烁。 否则，设备保持在当前模式，相应的模式 LED 亮起。
+如果使用 nCipher nShield Edge 来更改模式：1. 使用“模式”按钮突出显示所需模式。 2. 几秒钟内，按住“清除”按钮几秒钟。 如果模式发生更改，新模式的 LED 指示灯将停止闪烁并保持亮起。 状态 LED 可能会不规则地闪烁几秒钟，并在设备就绪时规则闪烁。 否则，设备保持在当前模式，相应的模式 LED 亮起。
 
 ### <a name="step-34-validate-the-downloaded-package"></a>步骤 3.4：验证下载的包
 
@@ -329,10 +329,10 @@ KeyVault-BYOK-Tools-Switzerland .zip
    * 韩国：
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-KOREA-1 -w BYOK-SecurityWorld-pkg-KOREA-1
-   * 对于南非:
+   * 对于南非：
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-SA-1 -w BYOK-SecurityWorld-pkg-SA-1
-   * 对于阿拉伯联合酋长国:
+   * 对于阿拉伯联合酋长国：
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UAE-1 -w BYOK-SecurityWorld-pkg-UAE-1
    * 澳大利亚：
@@ -350,7 +350,7 @@ KeyVault-BYOK-Tools-Switzerland .zip
    * 德国：
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
-   * 对于德国公共:
+   * 对于德国公共：
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
    * 印度：
@@ -362,7 +362,7 @@ KeyVault-BYOK-Tools-Switzerland .zip
    * 英国：
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
-   * 对于瑞士:
+   * 对于瑞士：
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-SUI-1 -w BYOK-SecurityWorld-pkg-SUI-1
 
@@ -372,7 +372,7 @@ KeyVault-BYOK-Tools-Switzerland .zip
      >
 2. 确认看到以下指示验证成功的消息：**结果:成功**
 
-此脚本验证签名人链, 直到达到 nShield 的根密钥。 此根密钥的哈希嵌入到脚本中，其值应为 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**。 还可以通过访问[nCipher 网站](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation), 单独确认该值。
+此脚本验证签名人链，直到达到 nShield 的根密钥。 此根密钥的哈希嵌入到脚本中，其值应为 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**。 还可以通过访问[nCipher 网站](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)，单独确认该值。
 
 现在已准备好新建密钥。
 
@@ -388,14 +388,14 @@ KeyVault-BYOK-Tools-Switzerland .zip
 
 * 参数 *protect* 必须设置为值 **module**，如上所示。 这会创建一个受模块保护的密钥。 BYOK 工具集不支持受 OCS 保护的密钥。
 * 将 **ident** 和 **plainname** 的 *contosokey* 值替换为任何字符串值。 为了最大程度减少管理开销并降低错误风险，建议对这两个参数使用相同的值。 **ident** 值只能包含数字、短划线和小写字母。
-* 在此示例中，pubexp 留空（默认值），但可以指定特定值。 有关详细信息, 请参阅[nCipher 文档。](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
+* 在此示例中，pubexp 留空（默认值），但可以指定特定值。 有关详细信息，请参阅[nCipher 文档。](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
 
 此命令在 %NFAST_KMDATA%\local 文件夹中创建一个标记化密钥文件，文件名以 **key_simple_** 开头，后跟在命令中指定的 **ident**。 例如：**key_simple_contosokey**。 此文件包含已加密的密钥。
 
 在安全位置备份这个标记化密钥文件。
 
 > [!IMPORTANT]
-> 稍后将自己的密钥传送到 Azure 密钥保管库时，Microsoft 就无法将此密钥导出返回给你，因此，请务必安全地备份密钥和安全体系。 有关备份密钥的指导和最佳做法, 请联系[nCipher](https://www.ncipher.com/about-us/contact-us) 。
+> 稍后将自己的密钥传送到 Azure 密钥保管库时，Microsoft 就无法将此密钥导出返回给你，因此，请务必安全地备份密钥和安全体系。 有关备份密钥的指导和最佳做法，请联系[nCipher](https://www.ncipher.com/about-us/contact-us) 。
 >
 
 
@@ -427,10 +427,10 @@ KeyVault-BYOK-Tools-Switzerland .zip
 * 韩国：
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-KOREA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-KOREA-1
-* 对于南非:
+* 对于南非：
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SA-1
-* 对于阿拉伯联合酋长国:
+* 对于阿拉伯联合酋长国：
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UAE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UAE-1
 * 澳大利亚：
@@ -448,7 +448,7 @@ KeyVault-BYOK-Tools-Switzerland .zip
 * 德国：
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
-* 对于德国公共:
+* 对于德国公共：
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
 * 印度：
@@ -460,7 +460,7 @@ KeyVault-BYOK-Tools-Switzerland .zip
 * 英国：
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
-* 对于瑞士:
+* 对于瑞士：
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1
 
@@ -470,7 +470,7 @@ KeyVault-BYOK-Tools-Switzerland .zip
 
 此命令完成后，会看到“结果:**成功**和具有降低的权限的密钥副本位于名为 key_xferacId_\<contosokey > 的文件中。
 
-可以使用以下命令通过 nCipher nShield 实用工具检查 ACL:
+可以使用以下命令通过 nCipher nShield 实用工具检查 ACL：
 
 * aclprint.py:
 
@@ -502,10 +502,10 @@ KeyVault-BYOK-Tools-Switzerland .zip
 * 韩国：
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-KOREA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-KOREA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* 对于南非:
+* 对于南非：
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* 对于阿拉伯联合酋长国:
+* 对于阿拉伯联合酋长国：
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UAE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UAE-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 * 澳大利亚：
@@ -523,7 +523,7 @@ KeyVault-BYOK-Tools-Switzerland .zip
 * 德国：
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* 对于德国公共:
+* 对于德国公共：
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 * 印度：
@@ -535,7 +535,7 @@ KeyVault-BYOK-Tools-Switzerland .zip
 * 英国：
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* 对于瑞士:
+* 对于瑞士：
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 
@@ -564,4 +564,4 @@ KeyVault-BYOK-Tools-Switzerland .zip
 
 ## <a name="next-steps"></a>后续步骤
 
-现在可以在密钥保管库中使用此受 HSM 保护的密钥。 有关详细信息, 请参阅此价格和功能[比较](https://azure.microsoft.com/pricing/details/key-vault/)。
+现在可以在密钥保管库中使用此受 HSM 保护的密钥。 有关详细信息，请参阅此价格和功能[比较](https://azure.microsoft.com/pricing/details/key-vault/)。

@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/11/2019
 ms.author: diberry
-ms.openlocfilehash: ae186209395078ed56a046aafdbe01bb513fc3a0
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: b5528d8cd23893248170bdb15588925f3c92c02b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277429"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934703"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用活动学习改善知识库
 
@@ -72,6 +72,9 @@ QnA Maker 获取有关哪种答案是最佳答案的明确反馈，这一点很�
 1. 找到 QnA Maker 服务，然后切换到“主动学习”。 
 
     [![在 "服务设置" 页上，切换活动学习功能。如果无法切换该功能，则可能需要升级您的服务。](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+
+    > [!Note]
+    > 上图中的确切版本仅显示为示例。 你的版本可能不同。 
 
     启用**活动学习**后，该知识库将基于用户提交的问题，定期提出新问题。 可以通过再次切换设置来禁用“主动学习”。
 
@@ -191,12 +194,12 @@ Content-Type: application/json
 
 JSON 正文具有几个设置：
 
-|JSON 正文属性|type|用途|
+|JSON 正文属性|类型|用途|
 |--|--|--|--|
 |`feedbackRecords`|array|反馈列表。|
 |`userId`|string|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
 |`userQuestion`|string|用户查询的确切文本。 必需。|
-|`qnaID`|号|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
+|`qnaID`|number|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
 
 示例 JSON 正文如下所示：
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3b93b0cd5053db7d8a2b6aebd30d32f542670d90
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5cb5ce82dcd5a1c22dd05c7bd6cc9485f413752e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098121"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933777"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions 中的自定义业务流程状态 (Azure Functions)
 
@@ -283,7 +283,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-## <a name="sample"></a>样本
+## <a name="sample"></a>示例
 
 在下面的示例中，首先设置了自定义状态；
 
@@ -344,4 +344,4 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解 Durable Functions 中的 HTTP API](durable-functions-http-api.md)
+> [了解持久计时器](durable-functions-timers.md)

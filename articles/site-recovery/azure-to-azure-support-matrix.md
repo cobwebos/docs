@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: dc98a0ab47e269aa99f21d3f10952cdabe2c897f
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 950ad6d5f55186b63f879bac3f0675c501b57276
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736038"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934440"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>用于将 Azure VM 从一个区域复制到另一个区域的支持矩阵
 
@@ -57,7 +57,7 @@ Azure 政府    | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚利�
 
 >[!NOTE]
 >
-> - 对于**巴西南部**，可以复制和故障转移到以下区域：美国中南部、美国西部、美国东部、美国东部2、美国西部、美国西部2和美国中北部。
+> - 对于**巴西南部**, 可以复制和故障转移到以下区域:美国中南部、美国西部、美国东部、美国东部2、美国西部、美国西部2和美国中北部。
 > - 巴西南部只能用作可使用 Site Recovery 复制 Vm 的源区域。 它不能充当目标区域。 这是因为地理距离导致延迟问题。
 > - 可以在你对其拥有相应访问权限的区域中操作。
 > - 如果你要在其中创建保管库的区域未显示，请确保你的订阅有权在该区域中创建资源。
@@ -72,6 +72,7 @@ Azure 政府    | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚利�
 **设置** | **支持** | **详细信息**
 --- | --- | ---
 常规用途 V2 存储帐户（热存储层和冷存储层） | 支持 | 建议不要使用 GPv2，因为 V2 的事务成本远高于 V1 存储帐户。
+高级存储 | 不支持 | 标准存储帐户用于缓存存储，有助于优化成本。
 虚拟网络的 Azure 存储防火墙  | 支持 | 如果你使用的是启用了防火墙的缓存存储帐户或目标存储帐户，请确保“[允许受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)”。
 
 
@@ -89,9 +90,9 @@ Windows Server 2012 R2 |
 Windows Server 2012 |
 Windows Server 2008 R2 | 运行 SP1 或更高版本
 Windows 10 (x64) |
-Windows 8.1 （x64） |
-Windows 8 （x64） |
-Windows 7 （x64） | 正在运行 SP1 或更高版本（不支持 Windows 7 RTM）
+Windows 8.1 (x64) |
+Windows 8 (x64) |
+Windows 7 (x64) | 正在运行 SP1 或更高版本 (不支持 Windows 7 RTM)
 
 #### <a name="linux"></a>Linux
 
@@ -106,7 +107,7 @@ Debian 8 | [受支持的内核版本](#supported-debian-kernel-versions-for-azur
 SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4。 [（受支持的内核版本）](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> 不支持将复制计算机从 SP3 升级到 SP4。 如果已升级复制的计算机，则需要禁用复制并在升级后重新启用复制。
 SUSE Linux Enterprise Server 11 | SP4
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7。6<br/><br/> 运行 Red Hat 兼容内核或 Unbreakable Enterprise 内核 Release 3、4 & 5 （UEK3、UEK4、UEK5） 
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7。6<br/><br/> 运行 Red Hat 兼容内核或 Unbreakable Enterprise 内核 Release 3、4 & 5 (UEK3、UEK4、UEK5) 
 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 Ubuntu 内核版本
@@ -210,7 +211,7 @@ GRS | 支持 |
 RA-GRS | 支持 |
 ZRS | 不支持 |
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持虚拟机磁盘
-虚拟网络的 Azure 存储防火墙  | 支持 | 如果限制对存储帐户的虚拟网络访问，请启用 "[允许受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)"。
+虚拟网络的 Azure 存储防火墙  | 支持 | 如果限制对存储帐户的虚拟网络访问, 请启用 "[允许受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)"。
 常规用途 V2 存储帐户（冷热存储层） | 是 | 与常规用途 V1 存储帐户相比，事务成本显著增加
 
 >[!IMPORTANT]

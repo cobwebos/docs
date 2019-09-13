@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 09/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: b9b4a33e5aee92a4e8caa7a1128538cb2f1a8a7e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233172"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933122"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>了解 Azure 虚拟机的运行状况
 
@@ -36,49 +36,52 @@ Azure 包含监视空间中特定角色或任务的服务，但不提供 Azure �
 
 本部分概述监视 Azure Windows 和 Linux VM 所依据的默认运行状况条件。 所有运行状况条件预配置为在检测到不正常状况时发送警报。
 
-### <a name="windows-vms"></a>Windows VM
+| 监视器名称 | 频率（分钟） | Lookback 持续时间（分钟） | 运算符 | 阈值 | 警报状态 | Severity | 工作负荷类别 | 
+|--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
+| 逻辑磁盘联机 | 5 | 15 | <> | 1（true） | 关键 | Sev1 | Linux | 
+| 逻辑磁盘可用空间 | 5 | 15 | < | 200 MB （警告）<br> 100 MB （严重） | 警告 | Sev1<br> Sev2 | Linux | 
+| 逻辑磁盘可用 Inode 百分比 | 5 | 15 | < | 5% | 关键 | Sev1 | Linux | 
+| 逻辑磁盘可用空间百分比 | 5 | 15 | < | 5% | 关键 | Sev1 | Linux | 
+| 网络适配器状态 | 5 | 15 | <> | 1（true） | 警告 | Sev2 | Linux | 
+| 操作系统可用兆字节内存 | 5 | 10 | < | 2.5 MB | 关键 | Sev1 | Linux | 
+| 磁盘平均值磁盘秒数/读取 | 5 | 25 | > | 0.05 秒 | 关键 | Sev1 | Linux | 
+| 磁盘平均值磁盘秒数/传输 | 5 | 25 | > | 0.05 秒 | 关键 | Sev1 | Linux | 
+| 磁盘平均值磁盘秒数/写入 | 5 | 25 | > | 0.05 秒 | 关键 | Sev1 | Linux | 
+| 磁盘状态 | 5 | 25 | <> | 1（true） | 关键 | Sev1 | Linux | 
+| 操作系统总处理器时间百分比 | 5 | 10 | >= | 95% | 关键 | Sev1 | Linux | 
+| CPU 利用率百分比总计 | 5 | 10 | >= | 95% | 关键 | Sev1 | Windows | 
+| 文件系统错误或损坏 | 60 | 60 | <> | 4 | 关键 | Sev1 | Windows | 
+| 每次读取的平均逻辑磁盘秒数 | 1 | 15 | > | 0.04 s | 警告 | Sev2 | Windows | 
+| 每次传输的平均逻辑磁盘秒数 | 1 | 15 | > | 0.04 s | 警告 | Sev2 | Windows | 
+| 每次写入逻辑磁盘的平均时间（逻辑磁盘） | 1 | 15 | > | 0.04 s | 警告 | Sev2 | Windows | 
+| 当前磁盘队列长度（逻辑磁盘） | 5 | 60 | >= | 32 | 警告 | Sev2 | Windows | 
+| 逻辑磁盘可用空间（MB） | 15 | 60 | > | 500 MB 警告<br> 300 MB 关键 | 关键 | Sev1<br> Sev2 | Windows | 
+| 逻辑磁盘可用空间（%） | 15 | 60 | > | 10% 警告<br> 5% 严重 | 关键 | Sev1<br> Sev2 | Windows |
+| 逻辑磁盘空闲时间百分比 | 15 | 360 | <= | 20% | 警告 | Sev2 | Windows | 
+| 读取使用的带宽百分比 | 5 | 60 | >= | 60% | 警告 | Sev2 | Windows | 
+| 使用的带宽百分比总计 | 5 | 60 | >= | 75% | 警告 | Sev2 | Windows | 
+| 写入使用的带宽百分比 | 5 | 60 | >= | 60% | 警告 | Sev2 | Windows | 
+| DHCP 客户端服务运行状况 | 5 | 12 | <> | 4（正在运行） | 关键 | Sev1 | Windows | 
+| DNS 客户端服务运行状况 | 5 | 12 | <> | 4（正在运行） | 关键 | Sev1 | Windows | 
+| Windows 事件日志服务运行状况 | 5 | 12 | <> | 4（正在运行） | 关键 | Sev1 | Windows | 
+| Windows 防火墙服务运行状况 | 5 | 12 | <> | 4（正在运行） | 关键 | Sev1 | Windows | 
+| RPC 服务运行状况 | 5 | 12 | <> | 4（正在运行） | 关键 | Sev1 | Windows | 
+| 服务器服务运行状况 | 5 | 12 | <> | 4（正在运行） | 关键 | Sev1 | Windows | 
+| Windows 远程管理服务运行状况 | 5 | 12 | <> | 4（正在运行） | 关键 | Sev1 | Windows | 
+| 可用内存 (MB) | 5 | 10 | < | 100 MB | 关键 | Sev1 | Windows | 
+| 可用系统页表项 | 5 | 10 | <= | 5000 | 关键 | Sev1 | Windows | 
+| 每秒内存页面数 | 5 | 10 | >= | 5000/秒 | 警告 | Sev1 | Windows | 
+| 使用的已提交内存百分比 | 5 | 10 | > | 80% | 关键 | Sev1 | Windows | 
+| 每次传输的平均磁盘秒数 | 1 | 15 | > | 0.04 s | 警告 | Sev2 | Windows | 
+| 每次写入磁盘的平均时间 | 1 | 15 | > | 0.04 s | 警告 | Sev2 | Windows | 
+| 当前的磁盘队列长度 | 5 | 60 | >= | 32 | 警告 | Sev2 | Windows | 
+| 磁盘空闲时间百分比 | 5 | 60 | >= | 20% | 警告 | Sev2 | Windows | 
 
-- 可用内存 (MB)
-- 每次写入的平均磁盘秒数（逻辑磁盘）
-- 每次写入的平均磁盘秒数（磁盘）
-- 每次读取的平均逻辑磁盘秒数
-- 每次传输的平均逻辑磁盘秒数
-- 每次读取的平均磁盘秒数
-- 每次传输的平均磁盘秒数
-- 当前磁盘队列长度（逻辑磁盘）
-- 当前磁盘队列长度（磁盘）
-- 磁盘空闲时间百分比
-- 文件系统错误或损坏
-- 逻辑磁盘可用空间 (%) 不足
-- 逻辑磁盘可用空间 (MB) 不足
-- 逻辑磁盘空闲时间百分比
-- 每秒内存页面数
-- 读取使用的带宽百分比
-- 使用的带宽百分比总计
-- 写入使用的带宽百分比
-- 使用的已提交内存百分比
-- 磁盘空闲时间百分比
-- DHCP 客户端服务运行状况
-- DNS 客户端服务运行状况
-- RPC 服务运行状况
-- 服务器服务运行状况
-- CPU 利用率百分比总计
-- Windows 事件日志服务运行状况
-- Windows 防火墙服务运行状况
-- Windows 远程管理服务运行状况
+>[!NOTE]
+>Lookback Duration 表示 "查看" 窗口检查指标值的频率，如过去五分钟。  
 
-### <a name="linux-vms"></a>Linux VM
-
-- 磁盘平均值磁盘秒数/传输
-- 磁盘平均值磁盘秒数/读取
-- 磁盘平均值磁盘秒数/写入
-- 磁盘运行状况
-- 逻辑磁盘可用空间
-- 逻辑磁盘可用空间百分比
-- 逻辑磁盘可用 Inode 百分比
-- 网络适配器运行状况
-- 处理器时间百分比总计
-- 操作系统可用内存 (MB)
+>[!NOTE]
+>Frequency 表示指标警报检查是否满足条件的频率，例如每分钟一次。  这是运行状况标准的执行速率，lookback 是计算运行状况条件的持续时间。 例如，如果条件**CPU 使用率**大于 95% 且频率为5分钟，并且在15分钟内保持大于 95% （连续3次评估周期），则运行状况条件将进行评估，并将状态更新为 "严重"严重性（如果尚未这样做）。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -324,7 +327,7 @@ Azure 包含监视空间中特定角色或任务的服务，但不提供 Azure �
 还可以更改一个或多个警报的警报状态，方法是选择这些警报，然后在“所有警报”页的左上角选择“更改状态”。 在“更改警报状态”窗格中选择一种状态，在“注释”字段中添加更改操作的说明，然后选择“确定”提交更改。 在验证信息和应用更改时，可在菜单中的“通知”下面跟踪操作进度。
 
 ### <a name="configure-alerts"></a>配置警报
-无法通过 Azure 门户管理某些警报管理任务。 必须使用 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 执行这些任务。 具体而言：
+无法通过 Azure 门户管理某些警报管理任务。 必须使用 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 执行这些任务。 尤其是在下列情况下：
 
 - 启用或禁用运行状况条件的警报
 - 针对运行状况条件警报设置通知

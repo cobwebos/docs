@@ -8,29 +8,29 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b63b68b7721dd848e6a72b3b7d9cfa38bf031b23
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: b451e501b216b02ecb052ee159d0e26343af7901
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035088"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910234"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 模块
 
 可以将业务逻辑转变为用于 Azure IoT Edge 的模块。 本文展示了如何使用 Visual Studio Code 作为主要工具来开发和调试模块。
 
-可以通过两种方法在 Visual Studio Code 中调试C#用、Node.js 或 Java 编写的模块:可在模块容器中附加一个进程，或在调试模式下启动模块代码。 若要调试使用 Python 或 C 编写的模块, 只能附加到 Linux amd64 容器中的进程。
+可以使用两种方式在 Visual Studio Code 中调试用 C#、Node.js 或 Java 编写的模块：可在模块容器中附加一个进程，或在调试模式下启动模块代码。 若要调试用 Python 或 C 编写的模块，只能将其附加到 Linux amd64 容器中的进程。
 
 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[Debugging](https://code.visualstudio.com/Docs/editor/debugging)（调试）的信息。
 
-本文提供了针对多个体系结构的多种语言开发和调试模块的说明。 目前, Visual Studio Code 为以C#、C、Python、Node.js 和 Java 编写的模块提供支持。 支持的设备体系结构为 X64 和 ARM32。 有关支持的操作系统、语言和体系结构的详细信息, 请参阅[语言和体系结构支持](module-development.md#language-and-architecture-support)。
+本文说明了如何以多种语言为多种体系结构开发和调试模块。 目前，Visual Studio Code 为用 C#、C、Python、Node.js 和 Java 编写的模块提供支持。 支持的设备体系结构为 X64 和 ARM32。 有关支持的操作系统、语言和体系结构的详细信息，请参阅[语言和体系结构支持](module-development.md#language-and-architecture-support)。
 
 >[!NOTE]
 >开发和调试对 Linux ARM64 设备的支持是[公开预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关详细信息，请参阅[在 Visual Studio Code（预览版）中开发和调试 ARM64 IoT Edge 模块](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
 
 ## <a name="prerequisites"></a>先决条件
 
-可以使用运行 Windows、macOS 或 Linux 的计算机或虚拟机作为开发计算机。 在 Windows 计算机上, 您可以开发 Windows 或 Linux 模块。 若要开发 Windows 模块, 请使用运行版本 1809/版本17763或更高版本的 Windows 计算机。 若要开发 Linux 模块, 请使用满足[Docker 桌面要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 计算机。 
+可以使用运行 Windows、macOS 或 Linux 的计算机或虚拟机作为开发计算机。 在 Windows 计算机上，可以开发 Windows 或 Linux 模块。 若要开发 Windows 模块，请使用运行版本 1809/内部版本 17763 或更高版本的 Windows 计算机。 若要开发 Linux 模块，请使用符合 [Docker Desktop 要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 计算机。 
 
 首先安装 [Visual Studio Code](https://code.visualstudio.com/)，然后添加以下扩展：
 
@@ -42,7 +42,7 @@ ms.locfileid: "69035088"
   - Java:[适用于 Visual Studio Code 的 Java 扩展包](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
   - C:[扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
-还需要安装一些其他特定于语言的工具来开发模块:
+此外还需要安装一些其他特定于语言的工具来开发模块：
 
 - C#，包括 Azure Functions：[.NET Core 2.1 SDK](https://www.microsoft.com/net/download)
 
@@ -52,7 +52,7 @@ ms.locfileid: "69035088"
 
 - Java:[Java SE 开发工具包 10](https://aka.ms/azure-jdks) 和 [Maven](https://maven.apache.org/)。 需要[设置`JAVA_HOME`环境变量](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)，使其指向 JDK 安装项目。
 
-若要生成和部署模块映像, 需要使用 Docker 来构建模块映像, 并使用容器注册表来保存模块映像:
+若要生成并部署模块映像，需使用 Docker 生成模块映像，并使用容器注册表来保存模块映像：
 
 - 开发计算机上的 [Docker Community Edition](https://docs.docker.com/install/)。
 
@@ -89,7 +89,7 @@ ms.locfileid: "69035088"
 
 1. 输入模块的名称。 选择容器注册表中唯一的名称。
 
-1. 提供模块的映像存储库的名称。 Visual Studio Code 使用“localhost:5000/<你的模块名称\>”自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：*\<注册表名称\>*.azurecr.io。 仅替换字符串的“localhost:5000”部分，以使最终结果看起来像*\<注册表名称\>.azurecr.io/\<你的模块名称\>***。
+1. 提供模块的映像存储库的名称。 Visual Studio Code 使用“localhost:5000/<你的模块名称\>”自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器类似于  **_\<注册表名称\>_ . azurecr.io**。 仅替换字符串中的**localhost： 5000**部分，使最终结果看起来像 **\<*注册表名称*\>。 azurecr.io/ _\<您的模块名称\>_** 。
 
    ![提供 Docker 映像存储库](./media/how-to-develop-csharp-module/repository.png)
 
@@ -99,14 +99,14 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 - 一个 .vscode 文件夹，包含调试配置。
 
-- 一个 modules 文件夹，包含每个模块的子文件夹。  每个模块的文件夹中都有一个文件, 即 "**模块**", 用于控制如何生成和部署模块。  需要修改此文件, 以将模块部署容器注册表从 localhost 更改为远程注册表。 此时, 只有一个模块。  但是可以在命令面板中使用以下命令添加更多模块：“Azure IoT Edge:Add IoT Edge Module”。
+- 一个 modules 文件夹，包含每个模块的子文件夹。  在每个模块的文件夹中有一个 **module.json** 文件，用于控制模块的构建和部署方式。  需修改此文件，将模块部署容器注册表从 localhost 更改为远程注册表。 现在，只有一个模块。  但是可以在命令面板中使用以下命令添加更多模块：“Azure IoT Edge:Add IoT Edge Module”。
 
 - 一个 .env 文件，列出环境变量。 如果 Azure 容器注册表是注册表，则其中将包含 Azure 容器注册表用户名和密码。
 
   > [!NOTE]
   > 仅当为模块提供了映像存储库时，才会创建环境文件。 如果接受 localhost 默认值在本地进行测试和调试，则不需要声明环境变量。
 
-- SimulatedTemperatureSensor文件将列出新模块以及模拟可用于测试的数据的示例模块。 有关部署清单如何工作的详细信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。
+- 一个 deployment.template.json 文件，列出新模块以及模拟可用于测试的数据的示例 SimulatedTemperatureSensor 模块。 有关部署清单如何工作的详细信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。
 
 ## <a name="add-additional-modules"></a>添加其他模块
 
@@ -123,7 +123,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 - Java：modules > &lt;你的模块名称&gt; > src > main > java > com > edgemodulemodules > App.java
 - C：modules > &lt;你的模块名称&gt; > main.c
 
-设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后部署到设备以开始测试而无需触及任何代码。 此模块的构建只是从数据源 (在本例中为模拟数据的 SimulatedTemperatureSensor 模块) 进行输入, 并将其传递给 IoT 中心。
+设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后部署到设备以开始测试而无需触及任何代码。 生成该模块仅为简单从源（在此示例中，为模拟数据的 SimulatedTemperatureSensor 模块）获取输入并通过管道将其传送到 IoT 中心。
 
 当你准备使用自己的代码自定义模板时，请使用 [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 生成模块，以满足 IoT 解决方案的关键需求（例如安全性、设备管理和可靠性）。
 

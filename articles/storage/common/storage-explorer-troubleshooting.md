@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 96a8eab57f1714eed4831bea01508e9140d1dfad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
-ms.translationtype: MT
+ms.openlocfilehash: 69631b39403dedab56ed75cb145d464c0e1f747c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934991"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935346"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -55,7 +55,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 在存储资源管理器中，可以通过收集连接到 Azure 资源所需的信息，来轻松访问资源。 例如，若要显示 Blob 容器，存储资源管理器会向 Blob 服务终结点发送“列出容器”请求。 若要获取该终结点，存储资源管理器会搜索你有权访问的订阅和存储帐户列表。 但是，若要查找订阅和存储帐户，存储资源管理器还需要有权访问管理层。
 
-如果没有授予任何管理层权限的角色, 存储资源管理器无法获取连接到数据层所需的信息。
+如果没有授予任何管理层权限的角色，存储资源管理器无法获取连接到数据层所需的信息。
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>如果我无法从管理员获取管理层权限，该怎么办？
 
@@ -71,7 +71,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 当存储资源管理器看到自签名或不受信任的证书时，无法再判断收到的 HTTPS 消息是否被更改。 如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
 
 1. 获取证书的 Base-64 编码 X.509 (.cer) 副本
-2. 单击“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开 .cer 文件
+2. 单击 "**编辑**→ **SSL 证书**→**导入证书**"，然后使用文件选取器查找、选择和打开 .cer 文件
 
 此问题还有可能是由于存在多个证书（根证书和中间证书）造成的。 必须添加这两个证书才能解决错误。
 
@@ -86,7 +86,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 3. 执行 `s_client -showcerts -connect microsoft.com:443`
 4. 查找自签名证书。 如果不确定哪些证书是自签名证书，请查看使用者 `("s:")` 和证书颁发者 `("i:")` 相同的任意位置。
 5. 找到任何自签名证书后，将每个证书中从“-----BEGIN CERTIFICATE-----”（含）到“-----END CERTIFICATE-----”（含）的部分复制和粘贴到新的 .cer 文件。
-6. 打开存储资源管理器，单击“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开创建的 .cer 文件。
+6. 打开存储资源管理器，单击 "**编辑**→ **SSL 证书**→**导入证书**"，然后使用文件选取器查找、选择和打开创建的 .cer 文件。
 
 如果通过上述步骤无法找到任何自签名证书，请通过反馈工具联系我们以获取更多帮助。 也可选择通过命令行使用 `--ignore-certificate-errors` 标志启动存储资源管理器。 使用此标志启动后，存储资源管理器将忽略证书错误。
 
@@ -117,7 +117,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 ### <a name="conditional-access"></a>条件访问
 
-如果在 Windows 10、Linux 或 macOS 上使用存储资源管理器, 则不支持条件访问。 这是因为存储资源管理器使用的 AAD 库有限制。
+如果在 Windows 10、Linux 或 macOS 上使用存储资源管理器，则不支持条件访问。 这是因为存储资源管理器使用的 AAD 库有限制。
 
 ## <a name="mac-keychain-errors"></a>Mac 密钥链错误
 
@@ -149,10 +149,10 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 如果成功登录后无法检索订阅，请尝试以下故障排除方法：
 
 * 验证你的帐户是否有权访问所需的订阅。 可以通过登录到尝试使用的 Azure 环境的门户，来验证是否能够访问这些订阅。
-* 请确保已使用正确的 Azure 环境 (Azure、Azure 中国世纪互联、Azure 德国、Azure 美国政府或自定义环境) 登录。
+* 请确保已使用正确的 Azure 环境（Azure、Azure 中国世纪互联、Azure 德国、Azure 美国政府或自定义环境）登录。
 * 如果使用代理，请确保已正确配置存储资源管理器代理。
 * 尝试移除并重新添加帐户。
-* 如果有“更多信息”链接，请查看针对失败的租户报告的错误消息。 如果 you'ren't 确定如何处理你看到的错误消息, 则可随意[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
+* 如果有“更多信息”链接，请查看针对失败的租户报告的错误消息。 如果 you'ren't 确定如何处理你看到的错误消息，则可随意[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
 ## <a name="cant-remove-attached-account-or-storage-resource"></a>无法删除附加的帐户或存储资源
 
@@ -215,6 +215,58 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 如果看到了帐户密钥，请在 GitHub 上提出问题，使我们能够帮助你解决问题。
 
+## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>添加新连接时出错：TypeError无法读取未定义的属性 "version"
+
+如果你在尝试添加自定义连接时收到此错误消息，则可能是本地凭据管理器中存储的连接数据已损坏。
+若要解决此问题，你可以尝试删除已损坏的本地连接，然后重新添加它们。
+
+1. 启动存储资源管理器。 在顶部菜单中，请参阅 "帮助" → "切换开发人员工具"。
+2. 在打开的窗口中，中转到 "应用程序" 选项卡→本地存储（左侧）→ file://
+3. 根据遇到问题的连接类型，查找其密钥并将其值复制到文本编辑器。 该值是自定义连接名称的数组。
+    * 存储帐户
+        * `StorageExplorer_CustomConnections_Accounts_v1`
+    * Blob 容器
+        * `StorageExplorer_CustomConnections_Blobs_v1`
+        * `StorageExplorer_CustomConnections_Blobs_v2`
+    * 文件共享
+        * `StorageExplorer_CustomConnections_Files_v1`
+    * 队列
+        * `StorageExplorer_CustomConnections_Queues_v1`
+    * 表
+        * `StorageExplorer_CustomConnections_Tables_v1`
+4. 保存当前连接名称后，将开发人员工具中的值设置为`[]`。
+
+如果要保留未损坏的连接，则可以执行以下步骤来查找损坏的连接。 如果不介意丢失所有现有连接，则可以跳过以下步骤，并遵循平台特定说明清除连接数据。
+
+1. 从文本编辑器中，将每个连接名称重新添加到开发人员工具，并检查连接是否仍在运行。
+2. 如果连接正常工作，则它不会损坏，你可以安全地将其保留。 如果连接不起作用，请从开发人员工具中删除其值并将其记录，以便以后可以将其重新添加。
+3. 重复此步骤，直到检查完所有连接。
+
+完成所有连接后，针对所有未添加回的连接名称，需要清除其损坏的数据（如果有），并通过使用存储资源管理器的正常步骤将其重新添加。
+
+# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+
+1. 打开 "开始" 菜单，搜索 "凭据管理器"，打开 "凭据管理器"。
+2. 在打开的窗口中，请参阅 "Windows 凭据"。
+3. 在 "一般凭据" 下，查找具有密钥`<connection_type_key>/<corrupted_connection_name>`的条目（ `StorageExplorer_CustomConnections_Accounts_v1/account1`例如）。
+4. 删除这些条目并重新添加连接。
+
+# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+
+1. 打开聚焦（命令空间栏）并搜索 "密钥链访问"。
+2. 查找带有密钥`<connection_type_key>/<corrupted_connection_name>`的条目（ `StorageExplorer_CustomConnections_Accounts_v1/account1`例如）。
+3. 删除这些条目并重新添加连接。
+
+# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+
+本地凭据管理因 Linux 分发而异。 如果 Linux 发行版未提供用于本地凭据管理的内置 GUI 工具，则可以安装第三方工具来管理本地凭据。 例如，可以使用[Seahorse](https://wiki.gnome.org/Apps/Seahorse/)，它是用于管理 Linux 本地凭据的开源 GUI 工具。
+
+1. 打开本地凭据管理工具，查找保存的凭据。
+2. 查找带有密钥`<connection_type_key>/<corrupted_connection_name>`的条目（ `StorageExplorer_CustomConnections_Accounts_v1/account1`例如）。
+3. 删除这些条目并重新添加连接。
+
+如果在执行这些步骤后仍然遇到此错误，或者如果你想要共享你认为损坏的连接，请在 GitHub 页上[打开问题](https://github.com/microsoft/AzureStorageExplorer/issues)。
+
 ## <a name="issues-with-sas-url"></a>SAS URL 的问题
 
 如果使用 SAS URL 连接到服务并遇到以下错误：
@@ -233,15 +285,15 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 ## <a name="linux-dependencies"></a>Linux 依赖项
 
-<!-- Storage Explorer 1.9.0 and later is available as a snap from the Snap Store. The Storage Explorer snap installs all of its dependencies with no extra hassle.
+存储资源管理器1.10.0 和更高版本可从 Snap 店进行管理。 存储资源管理器 snap 会自动安装其所有依赖项，并在新的 snap 版本可用时进行更新。 安装存储资源管理器 snap 是推荐的安装方法。
 
-Storage Explorer requires the use of a password manager, which may need to be connected manually before Storage Explorer will work correctly. You can connect Storage Explorer to your system's password manager with the following command:
+存储资源管理器要求使用密码管理器，则可能需要手动连接，然后存储资源管理器才能正常工作。 可以通过以下命令将存储资源管理器连接到系统的密码管理器：
 
 ```bash
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
-You can also download the application .tar.gz file, but you'll have to install dependencies manually. -->
+你还可以将应用程序下载为 gz 文件，但你必须手动安装依赖项。
 
 > [!IMPORTANT]
 > 仅 Ubuntu 发行版支持 .tar.gz 下载中提供的存储资源管理器。 其他发行版尚未经过验证，可能需要替代包或附加包。

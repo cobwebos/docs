@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 92274f63db78d53bdd0fa3fd440977422be3b4a1
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: eea0b930ab26e3f4d816fed69ccf8e987e6d33c7
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036287"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881345"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向或从本地文件系统复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -85,7 +85,7 @@ ms.locfileid: "70036287"
 | 应用场景 | 链接服务定义中的主机 | 数据集定义中的 folderPath |
 | --- | --- | --- |
 | 数据管理网关计算机上的本地文件夹： <br/><br/>例如：D:\\\* 或 D:\folder\subfolder\\\* |D:\\\\（适用于数据管理网关 2.0 以及更高版本） <br/><br/> localhost（适用于数据管理网关 2.0 之前的版本） |.\\\\ 或 folder\\\\subfolder（适用于数据管理网关 2.0 以及更高版本） <br/><br/>D:\\\\ 或 D:\\\\folder\\\\subfolder（适用于低于 2.0 的网关版本） |
-| 远程共享文件夹： <br/><br/>示例: \\ \\myservershare\\*或\\myserver 共享文件夹子\\文件夹\\\\\\ \\\\\\* |\\\\\\\\myserver\\\\share |.\\\\ 或 folder\\\\subfolder |
+| 远程共享文件夹： <br/><br/>示例：\\\\myserver\\share\\\* 或 \\\\myserver\\share\\folder\\subfolder\\\* |\\\\\\\\myserver\\\\share |.\\\\ 或 folder\\\\subfolder |
 
 >[!NOTE]
 >通过 UI 创作时，无需输入双反斜杠 (`\\`) 即可转义就像通过 JSON 操作一样，请指定单个反斜杠。
@@ -206,7 +206,7 @@ ms.locfileid: "70036287"
 请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文了解详细信息。
 
 ## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>向/从文件系统复制数据的 JSON 示例
-下面的示例提供示例 JSON 定义, 可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据复制到本地文件系统和 Azure Blob 存储，以及如何从本地文件系统和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据直接从任意源复制到[受支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任意接收器。
+下面的示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据复制到本地文件系统和 Azure Blob 存储，以及如何从本地文件系统和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据直接从任意源复制到[受支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任意接收器。
 
 ### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>例如：将数据从本地文件系统复制到 Azure Blob 存储
 此示例演示如何将数据从本地文件系统复制到 Azure Blob 存储。 此示例具有以下数据工厂实体：

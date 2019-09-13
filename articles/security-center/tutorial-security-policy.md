@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 4550532d36753d9b8ed472193bc833855ddd34c9
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 1820c31053c13a0f3039812b31df415bc9fa4fdc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314922"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910375"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 
@@ -56,28 +56,28 @@ ms.locfileid: "68314922"
 
 Azure Policy 由以下组件构成：
 
-- “策略”是一项规则  。
-- “计划”是一个策略集合  。
-- “分配”是将计划或策略应用于特定的范围（管理组、订阅或资源组）  。
+- “策略”是一项规则。
+- “计划”是一个策略集合。
+- “分配”是将计划或策略应用于特定的范围（管理组、订阅或资源组）。
 
 ## <a name="view-security-policies"></a>查看安全策略
 
 要在安全中心内查看安全策略，请执行以下操作：
 
-1. 在“安全中心”仪表板中，选择“安全策略”   。
+1. 在“安全中心”仪表板中，选择“安全策略”。
 
     ![“策略管理”窗格](./media/security-center-policies/security-center-policy-mgt.png)
 
-   在“策略管理”屏幕中，可以看到管理组数、订阅数、工作区数以及管理组结构  。
+   在“策略管理”屏幕中，可以看到管理组数、订阅数、工作区数以及管理组结构。
 
    > [!NOTE]
-   > “安全中心”仪表板在“订阅覆盖范围”下显示的订阅数可能会高于在“策略管理”下显示的订阅数   。 订阅覆盖范围显示标准订阅、免费订阅和“未覆盖”订阅的数量。 “未覆盖”订阅未启用“安全中心”，并且不会显示在“策略管理”下  。
+   > “安全中心”仪表板在“订阅覆盖范围”下显示的订阅数可能会高于在“策略管理”下显示的订阅数。 订阅覆盖范围显示标准订阅、免费订阅和“未覆盖”订阅的数量。 “未覆盖”订阅未启用“安全中心”，并且不会显示在“策略管理”下。
    >
 
 2. 选择想要查看其策略的订阅或管理组。
 
-   - “安全策略”屏幕反映在所选订阅或管理组上分配的策略所执行的操作  。
-   - 在顶部，使用提供的链接打开适用于订阅或管理组的每个策略“分配”  。 可以使用链接访问分配以及编辑或禁用策略。 例如，如果发现特定策略分配有效地拒绝终结点保护，则可以使用该链接访问策略以及辑或禁用它。
+   - “安全策略”屏幕反映在所选订阅或管理组上分配的策略所执行的操作。
+   - 在顶部，使用提供的链接打开适用于订阅或管理组的每个策略“分配”。 可以使用链接访问分配以及编辑或禁用策略。 例如，如果发现特定策略分配有效地拒绝终结点保护，则可以使用该链接访问策略以及辑或禁用它。
    - 在策略列表中，可以看到策略有效应用于订阅或管理组。 这意味着将考虑适用于该范围的每个策略的设置，并提供策略所执行操作的累计效果。 例如，如果一个分配禁用此策略，而另一个设置为 AuditIfNotExist，则累计效果适用于 AuditIfNotExist。 更积极的效果始终优先。
    - 策略的效果可以是：追加、审核、AuditIfNotExists、拒绝、DeployIfNotExists 和禁用。 有关如何应用效果的详细信息，请参阅[了解策略效果](../governance/policy/concepts/effects.md)。
 
@@ -98,7 +98,7 @@ Azure Policy 由以下组件构成：
 如果默认安全策略生成的建议不与你的环境相关，则可以通过禁用发送建议的策略定义将其停止。
 有关建议的详细信息，请参阅[管理安全建议](security-center-recommendations.md)。
 
-1. 在安全中心的“策略和符合性”  部分中，单击“安全策略”  。
+1. 在安全中心的“策略和符合性”部分中，单击“安全策略”。
 
    ![策略管理](./media/tutorial-security-policy/policy-management.png)
 
@@ -111,10 +111,10 @@ Azure Policy 由以下组件构成：
 
    ![禁用策略](./media/tutorial-security-policy/security-policy.png)
 
-1. 在“参数”  部分中，搜索调用要禁用的建议的策略，然后从下拉列表中选择“禁用” 
+1. 在“参数”部分中，搜索调用要禁用的建议的策略，然后从下拉列表中选择“禁用”
 
    ![禁用策略](./media/tutorial-security-policy/disable-policy.png)
-1. 单击“保存”  。
+1. 单击“保存”。
    > [!Note]
    > 禁用策略更改可能需要长达 12 小时才会生效。
 
@@ -131,9 +131,9 @@ Azure Policy 中的重要概念：
 
 - **分配**是将计划或策略应用于特定的范围（管理组、订阅等） 
 
-安全中心有一项内置计划，它包括中心内的所有安全策略。 为评估对 Azure 资源的安全中心策略，应对管理组或想访问的订阅创建一个分配。  
+安全中心有一项内置计划，它包括中心内的所有安全策略。 为评估对 Azure 资源的安全中心策略，应对管理组或想访问的订阅创建一个分配。
 
-内置计划默认启用所有安全中心策略。 你可以选择禁用内置计划中的某些策略，例如：可用将“Web 应用程序防火墙”策略的效果参数更改为“禁用”，应用除它以外的所有安全中心策略   。 
+内置计划默认启用所有安全中心策略。 你可以选择禁用内置计划中的某些策略，例如：可用将“Web 应用程序防火墙”策略的效果参数更改为“禁用”，应用除它以外的所有安全中心策略。 
 
 ### <a name="api-examples"></a>API 示例
 
@@ -228,7 +228,7 @@ Azure Policy 中的重要概念：
 |系统更新 |监视 Azure 安全中心内系统更新的缺失情况 |systemUpdatesMonitoringEffect|
 |存储加密 |审核存储帐户是否缺少 blob 加密 |storageEncryptionMonitoringEffect|
 |JIT 网络访问 |监视 Azure 安全中心内可能的网络即时(JIT)访问 |jitNetworkAccessMonitoringEffect |
-|自适应应用程序控制 |监视 Azure 安全中心内列入允许列表的可能的应用 |adaptiveApplicationControlsMonitoringEffect|
+|自适应应用程序控件 |监视 Azure 安全中心内列入允许列表的可能的应用 |adaptiveApplicationControlsMonitoringEffect|
 |网络安全组 |监视 Azure 安全中心内规则较宽松的网络访问 |networkSecurityGroupsMonitoringEffect| 
 |安全配置 |监视 Azure 安全中心的 OS 漏洞 |systemConfigurationsMonitoringEffect| 
 |终结点保护 |监视 Azure 安全中心 Endpoint Protection 的缺失情况 |endpointProtectionMonitoringEffect |

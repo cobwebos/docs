@@ -8,12 +8,12 @@ ms.author: jawilley
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b9511562b81f7ac0c1582897d703f4c5ccb89716
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 51b37c43b94ad59090f32af0d57bbefaa57f30fa
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806384"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932560"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>诊断和排查使用 Azure Cosmos DB .NET SDK 时遇到的问题
 本文介绍了将 [.NET SDK](sql-api-sdk-dotnet.md) 与 Azure Cosmos DB SQL API 帐户配合使用时的常见问题、解决方法、诊断步骤和工具。
@@ -24,8 +24,8 @@ ms.locfileid: "67806384"
 
 *   使用最新的 [SDK](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)。 不应该将预览版 SDK 用于生产。 这可以防止出现已予以修复的已知问题。
 *   查看[性能提示](performance-tips.md)并按照建议的做法进行操作。 这有助于防止缩放、延迟和其他性能问题。
-*   启用 SDK 日志记录以帮助排查问题。 因此，最好进行故障排除问题时才启用它，启用日志记录可能会影响性能。 可以启用以下日志：
-    *   使用 Azure 门户[记录指标](monitor-accounts.md)。 门户指标显示 Azure Cosmos DB 遥测数据，这有助于以确定是否对应于 Azure Cosmos DB 的问题，或者它是从客户端。
+*   启用 SDK 日志记录以帮助排查问题。 启用日志记录可能会影响性能，因此最好仅在解决问题时才启用日志记录。 可以启用以下日志：
+    *   使用 Azure 门户[记录指标](monitor-accounts.md)。 门户指标显示 Azure Cosmos DB 遥测，这有助于确定此问题是与 Azure Cosmos DB 相对应还是来自客户端。
     *   记录点操作响应中的[诊断字符串](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet)。
     *   记录所有查询响应中的 [SQL 查询指标](sql-api-query-metrics.md) 
     *   遵循有关 [SDK 日志记录]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md)的设置
@@ -48,7 +48,7 @@ ms.locfileid: "67806384"
 使用直接/TCP 连接时往往会发生 RequestTimeout，但在网关模式下也可能会发生。 下面是常见的已知原因，以及有关如何解决问题的建议。
 
 * CPU 利用率较高，导致延迟和/或请求超时。 客户可以纵向扩展主机以便为其提供更多的资源，或者可将负载分散到更多的计算机。
-* 套接字/端口可用性可能较低。 使用低于 2.0 版的 .NET SDK 时，Azure 中运行的客户端可能会遇到 [Azure SNAT (PAT) 端口耗尽]。 正因如此，我们建议始终运行最新的 SDK 版本。
+* 套接字/端口可用性可能较低。 在 Azure 中运行时，使用 .NET SDK 的客户端可以访问 Azure SNAT （PAT）端口耗尽。 若要减少出现此问题的机率，请使用最新版本的 .NET SDK。 这是为什么建议始终运行最新 SDK 版本的示例。
 * 创建多个 DocumentClient 实例可能会导致连接争用和超时问题。 遵循[性能提示](performance-tips.md)，并在整个进程中使用单个 DocumentClient 实例。
 * 用户有时会看到延迟或请求超时增大，原因是集合的预配不足、后端限制了请求，或者客户端在不提示调用方的情况下在内部重试。 检查[门户指标](monitor-accounts.md)。
 * Azure Cosmos DB 在物理分区之间均匀分配预配的总吞吐量。 请检查门户指标，以确定工作负荷是否遇到了热[分区键](partition-data.md)。 热分区键会导致消耗的聚合吞吐量 (RU/s) 看上去低于预配的 RU，但单个分区消耗的吞吐量 (RU/s) 会超过预配的吞吐量。 
@@ -78,7 +78,7 @@ ms.locfileid: "67806384"
 否则，将遇到连接问题。
 
 ### 请求速率过大<a name="request-rate-too-large"></a>
-“请求速率过大”或错误代码 429 表示请求正受到限制，因为消耗的吞吐量 (RU/s) 已超过预配的吞吐量。 SDK 会根据指定的[重试策略](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet)自动重试请求。 如果经常遇到这种失败，请考虑增大集合的吞吐量。 检查[门户的指标](use-metrics.md)若要查看您听到 429 错误。 查看[分区键](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)，以确保均匀分配存储和请求量。 
+“请求速率过大”或错误代码 429 表示请求正受到限制，因为消耗的吞吐量 (RU/s) 已超过预配的吞吐量。 SDK 会根据指定的[重试策略](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet)自动重试请求。 如果经常遇到这种失败，请考虑增大集合的吞吐量。 检查[门户的指标](use-metrics.md)，查看是否收到429错误。 查看[分区键](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)，以确保均匀分配存储和请求量。 
 
 ### <a name="slow-query-performance"></a>查询性能较低
 [查询指标](sql-api-query-metrics.md)有助于确定查询在哪个位置花费的时间最多。 在查询指标中，可以查看查询在客户端与后端上花费的时间。

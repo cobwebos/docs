@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 868efad58e14fd817729f0aa9ac785bc0f960867
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 74f33a1ce1026424a6cdb97699223aeb5ff8277f
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087036"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933128"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的子业务流程 (Azure Functions)
 
@@ -118,7 +118,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+> [!NOTE]
+> 子业务流程必须在与父业务流程相同的函数应用中定义。 如果需要在另一个函数应用中调用并等待业务流程，请考虑使用 HTTP Api 的内置支持和 HTTP 202 轮询使用者模式。 有关详细信息，请参阅[HTTP 功能](durable-functions-http-features.md)主题。
+
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解什么是任务中心以及如何配置它们](durable-functions-task-hubs.md)
+> [了解如何设置自定义业务流程状态](durable-functions-custom-orchestration-status.md)

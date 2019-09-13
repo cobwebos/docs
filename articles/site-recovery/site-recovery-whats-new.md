@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery 新增功能 | Microsoft Docs
+title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 中引入的新功能的摘要
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 5cd4b86c9c70f713a207f7feea9fa8efc06b6247
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 2d40e6fef215219035720ee64492a91fcdafb472
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146898"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933938"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -22,21 +22,61 @@ ms.locfileid: "70146898"
 
 ## <a name="supported-updates"></a>支持的更新
 
-对于 Site Recovery 组件, 我们支持 N-4 版本, 其中 N 是最新的已发布版本。 下表总结了这些情况。
+对于 Site Recovery 组件，我们支持 N-4 版本，其中 N 是最新的已发布版本。 下表总结了这些情况。
 
-**更新** |  **统一安装** | **配置服务器 .ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理** 
---- | --- | --- | --- | ---
+**更新** |  **统一安装** | **配置服务器 .ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
+--- | --- | --- | --- | --- | ---
+[汇总40](https://support.microsoft.com/help/4517283/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [汇总39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [汇总38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
 [汇总37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
 [汇总36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
-[汇总35](https://support.microsoft.com/help/4494485/) | 9.23.5163.1 | 5.1.4000.0 | 9.23.5163.1 | 5.1.4000.0 | 2.0.9156.0 
         
 
 [了解](service-updates-how-to.md)有关更新安装和支持的详细信息。
 
 
-## <a name="updates-august-2019"></a>更新 (2019 年8月)
+## <a name="updates-september-2019"></a>更新（2019年9月）
+
+### <a name="update-rollup-40"></a>更新汇总40
+
+[更新汇总 40](h https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery)提供了以下更新。
+
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）
+**问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
+
+
+
+
+### <a name="azure-vm-disaster-recovery"></a>Azure VM 灾难恢复
+
+表中汇总了 Azure VM 灾难恢复的新功能。
+
+**功能** | **详细信息**
+--- | ---
+**故障回复后清理** | 故障转移到辅助 Azure，然后故障回复到主要区域后，Site Recovery 会自动清除次要区域中的计算机。 无需手动删除 VM 和 Nic。
+**测试故障转移保留 IP 地址** | 你现在可以在灾难恢复演练期间保留源 VM 的 IP 地址，并为测试故障转移选择静态 IP 地址。
+
+## <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理服务器灾难恢复
+
+下表中总结了本月添加的功能。
+
+**功能** | **详细信息**
+--- | ---
+新进程服务器警报 | 我们添加了新的进程服务器警报。 [了解详细信息](vmware-physical-azure-monitor-process-server.md)。 
+
+## <a name="hyper-v-disaster-recovery"></a>Hyper-v 灾难恢复
+
+下表中总结了本月添加的功能。
+
+**功能** | **详细信息**
+--- | ---
+存储帐户 | Site Recovery 现在支持使用启用了基于角色的访问控制（RBAC）的存储帐户。 [详细了解](../storage/common/storage-account-manage.md#access-control)存储帐户的访问控制。 
+
+
+## <a name="updates-august-2019"></a>更新（2019年8月）
 
 ### <a name="update-rollup-39"></a>更新汇总39
 
@@ -54,14 +94,14 @@ ms.locfileid: "70146898"
 
 **功能** | **详细信息**
 --- | ---
-**无 Azure AD 加密** | 对于运行 Windows 的托管磁盘, Azure VM 复制现在支持没有 Azure AD 应用的加密。
-**用于故障转移的网络资源** | 当故障转移到另一个区域时, 你现在可以将网络资源设置 (Nsg、负载平衡、公共 IP 地址) 附加到 VM。 
+**无 Azure AD 加密** | 对于运行 Windows 的托管磁盘，Azure VM 复制现在支持没有 Azure AD 应用的加密。
+**用于故障转移的网络资源** | 当故障转移到另一个区域时，你现在可以将网络资源设置（Nsg、负载平衡、公共 IP 地址）附加到 VM。 
 
-## <a name="updates-july-2019"></a>更新 (2019 年7月)
+## <a name="updates-july-2019"></a>更新（2019 年 7 月）
 
 ### <a name="update-rollup-38"></a>更新汇总 38
 
-[更新汇总 38](https://support.microsoft.com/help/4513507/)提供了以下更新。
+[更新汇总 38](https://support.microsoft.com/help/4513507/) 提供以下更新。
 
 **更新** | **详细信息**
 --- | ---
@@ -75,7 +115,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 
 ### <a name="vmware-to-azure-disaster-recovery"></a>VMware 到 Azure 的灾难恢复
 
-复制到包含托管磁盘的 Azure VM 时, 你现在可以复制最多 8 TB 的磁盘。
+复制到包含托管磁盘的 Azure VM 时，现在可以复制最多 8 TB 的磁盘。
 
 
 ## <a name="updates-june-2019"></a>更新（2019 年 6 月）
@@ -118,7 +158,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 **功能** | **详细信息**
 --- | ---
 **复制添加的磁盘** | 为添加到已启用灾难恢复的 Azure VM 的数据磁盘启用复制。 [了解详细信息](azure-to-azure-enable-replication-added-disk.md)。
-**自动更新** | 为在启用了灾难恢复的 Azure Vm 上运行的移动服务扩展配置自动更新时, 现在可以选择要使用的现有自动化帐户, 而不是使用 Site Recovery 创建的默认帐户。 [了解详细信息](azure-to-azure-autoupdate.md)。
+**自动更新** | 为在启用了灾难恢复的 Azure Vm 上运行的移动服务扩展配置自动更新时，现在可以选择要使用的现有自动化帐户，而不是使用 Site Recovery 创建的默认帐户。 [了解详细信息](azure-to-azure-autoupdate.md)。
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理服务器灾难恢复
@@ -151,7 +191,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 **功能** | **详细信息**
 --- | ---
 **托管磁盘** | 现在可将本地 VMware VM 和物理服务器直接复制到 Azure 中的托管磁盘。 本地数据将发送到 Azure 中的缓存存储帐户，恢复点将在目标位置的托管磁盘中创建。 这可确保无需管理多个目标存储帐户。
-**配置服务器** | Site Recovery 现在支持具有多个 Nic 的配置服务器。 在保管库中注册配置服务器之前, 请将其他适配器添加到配置服务器 VM。 如果在注册之后再添加，则需要在保管库中重新注册服务器。
+**配置服务器** | Site Recovery 现在支持具有多个 NIC 的配置服务器。 先将附加的适配器添加到配置服务器 VM，然后再在保管库中注册配置服务器。 如果在注册之后再添加，则需要在保管库中重新注册服务器。
 
 
 ## <a name="updates-february-2019"></a>更新（2019 年 2 月）
@@ -200,7 +240,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 
 ### <a name="accelerated-networking-azure-vms"></a>加速网络 (Azure VM)
 
-加速网络为 VM 启用单一根 i/o 虚拟化 (SR-IOV), 从而提高网络性能。 为 Azure VM 启用复制时，Site Recovery 会检测是否启用了加速网络。 如果启用了加速网络，Site Recovery 会在故障转移后自动在目标副本 Azure VM 上针对 [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) 和 [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms) 配置加速网络。
+使用加速网络可以实现对 VM 的单根 I/O 虚拟化 (SR-IOV)，提升网络性能。 为 Azure VM 启用复制时，Site Recovery 会检测是否启用了加速网络。 如果启用了加速网络，Site Recovery 会在故障转移后自动在目标副本 Azure VM 上针对 [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) 和 [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms) 配置加速网络。
 
 [了解详细信息](azure-vm-disaster-recovery-with-accelerated-networking.md)。
 
@@ -219,7 +259,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 
 **功能** | **详细信息**
 --- | ---
-**Linux 支持** | 为 RedHat 工作站6/7 添加了支持, 并为 Ubuntu、Debian 和 SUSE 添加了新的内核版本。
+**Linux 支持** | 为 RedHat 工作站6/7 添加了支持，并为 Ubuntu、Debian 和 SUSE 添加了新的内核版本。
 **存储空间直通** | Site Recovery 支持使用存储空间直通 (S2D) 的 Azure VM。
 
 ### <a name="vmware-vmsphysical-servers-disaster-recovery"></a>VMware VM/物理服务器灾难恢复

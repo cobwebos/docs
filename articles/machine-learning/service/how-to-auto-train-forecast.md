@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 2a037a495a1e1ed211bd9a535891ccf75fdb140b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e75de16d0e16bc639a0439220a1c9dfe53e1689b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278182"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879061"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
@@ -37,7 +37,7 @@ ms.locfileid: "70278182"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习服务工作区。 若要创建工作区，请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
+* Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
 * 本文假设基本熟悉如何设置自动化机器学习试验。 按照[教程](tutorial-auto-train-models.md)或操作[方法](how-to-configure-auto-train.md)，查看基本的自动化机器学习试验设计模式。
 
 ## <a name="preparing-data"></a>准备数据
@@ -138,8 +138,12 @@ local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
 
-> [!NOTE]
-> 对于交叉验证（CV）过程，时序数据可能违反规范 K 折叠交叉验证策略的基本统计假设，因此，自动机器学习实现了一个滚动源验证过程来创建时间序列数据的交叉验证折叠。 若要使用此过程，请`n_cross_validations` `AutoMLConfig`在对象中指定参数。 您可以绕过验证并将您自己的验证集`X_valid`用于`y_valid`和参数。
+有关高级预测配置的详细代码示例，请参阅[能源需求笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)，其中包括：
+
+* 假日检测和特征化
+* 滚动-原点交叉验证
+* 可配置滞后
+* 滚动窗口聚合功能
 
 ### <a name="view-feature-engineering-summary"></a>查看功能设计摘要
 

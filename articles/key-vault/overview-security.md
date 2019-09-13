@@ -1,21 +1,21 @@
 ---
-title: Azure 密钥保管库安全 |Microsoft Docs
+title: Azure Key Vault 安全性 |Microsoft Docs
 description: 管理 Azure Key Vault、密钥和机密的访问权限。 介绍 Key Vault 的身份验证和授权模型以及如何保护 Key Vault。
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 04/18/2019
-ms.author: barclayn
+ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 5b32e4897e718e0e411caf9ba76b036f1352bde0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 728398aeec4715d15ebe44ae6d4e4bfa5f295df8
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715280"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884786"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
@@ -32,8 +32,8 @@ ms.locfileid: "64715280"
 
 对保管库的访问是通过两个界面或平面发生的。 这些平面为管理平面和数据平面。
 
-- 管理平面是管理 Key Vault 本身的位置，它是用来创建和删除保管库的界面。  你还可以读取 Key Vault 属性及管理访问策略。
-- 数据平面用于处理 Key Vault 中存储的数据。  可以添加、删除和修改密钥、机密及证书。
+- 管理平面是管理 Key Vault 本身的位置，它是用来创建和删除保管库的界面。 你还可以读取 Key Vault 属性及管理访问策略。
+- 数据平面用于处理 Key Vault 中存储的数据。 可以添加、删除和修改密钥、机密及证书。
 
 若要在任一平面中访问 Key Vault，所有调用方（用户或应用程序）必须已经过身份验证且已获得授权。 对于身份验证，这两个平面都使用 Azure Active Directory (Azure AD)。 对于授权，管理平面使用基于角色的访问控制 (RBAC)，而数据平面使用密钥保管库访问策略。
 
@@ -84,13 +84,13 @@ Key Vault 日志记录保存有关针对保管库执行的活动的信息。 Key
   - 针对 Key Vault 本身执行的操作。 这些操作包括创建、删除、设置访问策略，以及更新 Key Vault 属性（例如标记）。
   - 针对 Key Vault 中的密钥和机密执行的操作，包括：
     - 创建、修改或删除这些密钥或机密。
-    - 签名、验证、加密、解密、包装和解包密钥、获取机密，以及列出密钥和机密（及其版本）。
+    - 签名、验证、加密、解密、包装和解包密钥、获取机密、列出密钥和机密（及其版本）。
 - 导致出现 401 响应的未经身份验证的请求。 示例包括不包含持有者令牌、格式不正确或已过期，或者包含无效令牌的请求。
 
 在执行 Key Vault 操作 10 分钟后，即可访问日志记录信息。 存储帐户中的日志完全由你管理。 
 
-- 请使用标准的 Azure 访问控制方法限制可访问日志的人员，以此保护日志。
-- 删除不想继续保留在存储帐户中的日志。
+- 使用标准 Azure 访问控制方法，通过限制访问你的日志的人员来保护日志的安全。
+- 在存储帐户中删除不想继续保留的日志。
 
 有关如何安全管理存储帐户的建议，请查看 [Azure 存储安全指南](../storage/common/storage-security-guide.md)
 

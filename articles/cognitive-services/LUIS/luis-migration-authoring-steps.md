@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7a6091ac1a0d54d997c40fe284d58426ecadf765
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
-ms.translationtype: HT
+ms.openlocfilehash: 7e79d3119f5d2d0fe1894de0ab9535dd988706f8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898857"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935204"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>迁移到 Azure 创作资源的步骤
 
@@ -94,6 +94,13 @@ ms.locfileid: "70898857"
 1. 在访问你的应用程序之前，请选择 "订阅" 和 "LUIS 创作资源"，查看你可以创作的应用。
 
     ![选择 "订阅" 和 "LUIS 创作资源"，查看你可以创作的应用。](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
+
+
+## <a name="app-contributor-begins-the-migration-process"></a>应用参与者开始迁移过程
+
+按照与应用所有者相同的步骤进行迁移。 此过程将创建一个类型`LUIS.Authoring`的新创作资源。 
+
+你需要迁移你的帐户，以便作为参与者添加到其他人拥有的迁移应用程序。  
 
 ## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>迁移过程完成后，将参与者添加到创作资源
 

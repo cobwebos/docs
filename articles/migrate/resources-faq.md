@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ec4cb58692cd98a799f1dc58f60b11a0552829c8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279505"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934925"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>“Azure Migrate:常见问题 (FAQ)
 
@@ -26,6 +26,37 @@ ms.locfileid: "70279505"
 ### <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Azure Migrate 和 Azure Site Recovery 之间的区别是什么？
 
 Azure Migrate 提供了一个集中式中心，用于开始迁移、执行和跟踪计算机和工作负荷的发现和评估，并执行和跟踪计算机和工作负荷到 Azure 的迁移。 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure)是一种灾难恢复解决方案。 Azure Migrate Server 迁移使用 Azure Site Recovery 在后端来启用迁移方案，以便迁移本地计算机。
+
+### <a name="how-do-i-delete-an-azure-migrate-project"></a>如何实现删除 Azure Migrate 项目
+
+若要删除 Azure Migrate 项目及其关联的资源（包括站点、恢复服务保管库、迁移保管库、密钥保管库、评估项目等），请转到 Azure 门户中的“资源组”页面，选择在其中创建了此迁移项目的资源组，然后选择“显示隐藏的类型”。 然后选择迁移项目及其关联的资源，并将其删除。 或者，如果资源组是由此迁移项目及其关联的资源专用的，则可删除整个资源组。 请注意，此列表是为所有方案（发现、评估和迁移）创建的所有资源类型的详尽列表。 你只会在资源组中发现针对你的方案创建的资源。
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-vmware-or-physical-servers-resource-type"></a>为 VMware 或物理服务器上发现、评估或迁移的服务器创建的资源 [资源（类型）]：
+
+- "Appliancename" kv （Key vault）
+- "Appliancename" 站点（OffAzure/VMwareSites）
+- "项目名称" （migrateprojects/）
+- "项目名称" 项目（assessmentProjects/）
+- "项目名称" rsvault （恢复服务保管库）
+- "项目名称"-MigrateVault-* （恢复服务保管库）
+- migrateappligwsa*（存储帐户）
+- migrateapplilsa*（存储帐户）
+- migrateapplicsa*（存储帐户）
+- migrateapplikv*（密钥保管库）
+- migrateapplisbns16041（服务总线命名空间）
+
+注意:请注意删除存储帐户和密钥保管库，因为它们可能分别包含应用程序数据和安全密钥。
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-hyper-v-resource-type"></a>为在 Hyper-v [资源（类型）] 上发现、评估或迁移的服务器创建的资源：
+
+- "项目名称" （migrateprojects/）
+- "项目名称" 项目（assessmentProjects/）
+- HyperV*kv（密钥保管库）
+- HyperV*站点 (Microsoft.OffAzure/HyperVSites)
+- "项目名称"-MigrateVault-* （恢复服务保管库） 
+
+注意:请小心删除密钥保管库，因为它可能包含安全密钥。
+
 
 ## <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -53,7 +84,7 @@ Azure Migrate 设备会连续分析本地计算机，以测量 VM 性能数据�
 
 Azure Migrate 设备收集的数据存储在创建迁移项目时选择的 Azure 位置。 数据将安全地存储在 Microsoft 订阅中，并在删除 Azure Migrate 项目时被删除。
 
-对于依赖项可视化，如果你在 Vm 上安装代理，则依赖关系代理收集的数据将存储在美国，在 Azure 订阅中创建的 Log Analytics 工作区中。 在订阅中删除 Log Analytics 工作区时会删除此数据。 有关详细信息，请参阅[依赖项可视化](concepts-dependency-visualization.md)。
+对于依赖项可视化, 如果你在 Vm 上安装代理, 则依赖关系代理收集的数据将存储在美国, 在 Azure 订阅中创建的 Log Analytics 工作区中。 在订阅中删除 Log Analytics 工作区时会删除此数据。 有关详细信息，请参阅[依赖项可视化](concepts-dependency-visualization.md)。
 
 ### <a name="what-volume-of-data-is-uploaded-by-the-azure-migrate-appliance-during-continuous-profiling"></a>在连续分析期间，Azure Migrate 设备会上传哪些数据量？
 
@@ -86,7 +117,7 @@ Azure Migrate 设备不断地收集有关本地环境的信息。 但评估是�
 
 ### <a name="how-many-vms-can-i-discover-with-a-single-migration-appliance"></a>单个迁移设备可以发现多少个 Vm？
 
-使用单个迁移设备，最多可以发现10000个 VMware Vm 和最多5000个 Hyper-v Vm。 如果本地环境中有更多计算机，请了解如何缩放[hyper-v](scale-hyper-v-assessment.md)和[VMware](scale-vmware-assessment.md)评估。
+使用单个迁移设备，最多可以发现10000个 VMware Vm 和最多5000个 Hyper-v Vm。 如果本地环境中有更多计算机, 请了解如何缩放[hyper-v](scale-hyper-v-assessment.md)和[VMware](scale-vmware-assessment.md)评估。
 
 ### <a name="can-i-delete-the-azure-migrate-appliance-from-the-project"></a>是否可以从项目中删除 Azure Migrate 设备？
 当前不支持从项目中删除设备。 删除设备的唯一方法是删除包含与设备关联的 Azure Migrate 项目的资源组，但也会删除其他已注册的设备、发现的清单、评估和所有其他 Azure 项目与资源组中的项目关联的。
@@ -109,7 +140,7 @@ Azure Migrate Server 评估提供了迁移评估，可帮助迁移到 Azure，�
 
 Azure Migrate Server 评估是一种迁移规划工具。 Azure Site Recovery 部署规划器是一种灾难恢复规划工具。
 
-**从 VMware/Hyper-v 迁移到 Azure**：如果计划将本地服务器迁移到 Azure，请使用 Azure Migrate Server 评估进行迁移规划。 它评估本地工作负荷，并提供指导、见解和工具来帮助你将服务器迁移到 Azure。 准备好迁移计划后，可以使用 Azure Migrate Server 迁移之类的工具将计算机迁移到 Azure。
+**从 VMware/Hyper-v 迁移到 Azure**:如果计划将本地服务器迁移到 Azure，请使用 Azure Migrate Server 评估进行迁移规划。 它评估本地工作负荷，并提供指导、见解和工具来帮助你将服务器迁移到 Azure。 准备好迁移计划后，可以使用 Azure Migrate Server 迁移之类的工具将计算机迁移到 Azure。
 
 **从 VMware/hyper-v 到 Azure 的灾难恢复**：若要通过 Site Recovery 灾难恢复到 Azure，请使用 Site Recovery 部署规划器进行规划。 Site Recovery 部署规划器对本地环境进行深入的、Site Recovery 特定的评估。 它提供 Site Recovery 的建议，以实现 Vm 的复制和故障转移等成功灾难操作。
 
@@ -135,7 +166,7 @@ Azure Migrate 当前不支持[企业协议程序](https://azure.microsoft.com/of
 
 Azure Migrate 收集本地计算机的性能历史记录，并使用它在 Azure 中建议 VM 大小和磁盘类型。
 
-设备会持续分析本地环境，每隔20秒收集一次实时利用率数据。 该设备汇总了20秒的示例，每15分钟创建一个数据点。 若要创建数据点，设备将从所有20秒的示例中选择峰值值。 设备会将此数据点发送到 Azure。
+设备会持续分析本地环境, 每隔20秒收集一次实时利用率数据。 该设备汇总了20秒的示例，每15分钟创建一个数据点。 若要创建数据点，设备将从所有20秒的示例中选择峰值值。 设备会将此数据点发送到 Azure。
 
 当你在 Azure 中创建评估（基于性能持续时间和性能历史记录百分比值）时，Azure Migrate 将计算有效利用率值并将其用于调整大小。
 
@@ -145,7 +176,7 @@ Azure Migrate 收集本地计算机的性能历史记录，并使用它在 Azure
 
 ### <a name="what-is-dependency-visualization"></a>什么是依赖项可视化？
 
-利用依赖项可视化，你可以更自信地评估用于迁移的 Vm 组。 在运行评估之前，它会交叉检查计算机的依赖关系。 依赖关系可视化可帮助确保在迁移到 Azure 时避免意外中断。 Azure Migrate 使用 Azure Monitor 日志中的服务映射解决方案来启用依赖项可视化。
+利用依赖项可视化, 你可以更自信地评估用于迁移的 Vm 组。 在运行评估之前, 它会交叉检查计算机的依赖关系。 依赖关系可视化可帮助确保在迁移到 Azure 时避免意外中断。 Azure Migrate 使用 Azure Monitor 日志中的服务映射解决方案来启用依赖项可视化。
 
 > [!NOTE]
 > 依赖关系可视化在 Azure 政府版中不可用。
@@ -163,7 +194,7 @@ Azure Migrate 收集本地计算机的性能历史记录，并使用它在 Azure
 - [依赖关系代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。
 - 如果计算机没有 internet 连接，则需要下载并安装 Log Analytics 网关。
 
-不需要这些代理，除非使用的是依赖项可视化。
+不需要这些代理, 除非使用的是依赖项可视化。
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>是否可将现有的工作区用于依赖项可视化？
 
@@ -171,7 +202,7 @@ Azure Migrate 收集本地计算机的性能历史记录，并使用它在 Azure
 
 ### <a name="can-i-export-the-dependency-visualization-report"></a>是否可以导出依赖项可视化报表？
 
-不能，无法导出依赖关系可视化。 但由于 Azure Migrate 使用服务映射进行依赖关系可视化，因此可以使用[服务映射 REST API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections)获取 JSON 格式的依赖项。
+不能, 无法导出依赖关系可视化。 但由于 Azure Migrate 使用服务映射进行依赖关系可视化，因此可以使用[服务映射 REST API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections)获取 JSON 格式的依赖项。
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-the-dependency-agent"></a>如何自动执行 Microsoft Monitoring Agent （MMA）和依赖项代理的安装？
 
@@ -189,7 +220,7 @@ Azure Migrate 收集本地计算机的性能历史记录，并使用它在 Azure
 查看[用于 VM 的 Azure Monitor 支持的 Windows 和 Linux 操作系统](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)的列表。
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>是否可以将 Azure Migrate 中的依赖项可视化到超过一小时？
-否。 最多可将依赖项可视化到一小时。 您可以返回到历史记录中的特定日期（在历史记录中，每月返回一项），但可视化效果的最大持续时间是一小时。 例如，你可以在依赖关系映射中使用时间段来查看昨天的依赖项，但你只能查看一个小时的窗口。 但是，可以使用 Azure Monitor 日志来查询更长时间的[依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
+否。 最多可将依赖项可视化到一小时。 您可以返回到历史记录中的特定日期（在历史记录中，每月返回一项），但可视化效果的最大持续时间是一小时。 例如，你可以在依赖关系映射中使用时间段来查看昨天的依赖项，但你只能查看一个小时的窗口。 但是, 可以使用 Azure Monitor 日志来查询更长时间的[依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
 
 ### <a name="can-i-use-dependency-visualization-for-groups-that-contain-more-than-10-vms"></a>对于包含10个以上 Vm 的组是否可以使用依赖项可视化？
 可以可视化最多包含10个 Vm 的[组的依赖项](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 如果有10个以上 Vm 的组，我们建议将该组拆分为较小的组，然后将依赖项可视化。

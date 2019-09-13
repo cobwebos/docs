@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: d0641a1c058db59acd5e9a64b10bb57b334f82bd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 3ca9c12caa7fa9b54cd63c2655166d95477dffa2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442054"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885279"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
 
@@ -29,7 +29,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 ## <a name="connectivity"></a>连接性
 
-你的 HDInsight 群集`https://CLUSTERNAME.azurehdinsight.net`上提供了 Ambari Web UI, 其中`CLUSTERNAME`是你的群集的名称。
+你的 HDInsight 群集`https://CLUSTERNAME.azurehdinsight.net`上提供了 Ambari Web UI，其中`CLUSTERNAME`是你的群集的名称。
 
 > [!IMPORTANT]  
 > 连接到 HDInsight 上的 Ambari 需要 HTTPS。 当提示进行身份验证时，请使用在创建群集时提供的管理员帐户名称和密码。
@@ -76,7 +76,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 警报已组织成若干个默认组，可以从“警报”页面进行查看。
 
-![警报页](./media/hdinsight-hadoop-manage-ambari/alerts.png)
+![警报页](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
 可通过使用“操作”菜单并选择“管理警报组”来管理这些组。
 
@@ -92,11 +92,11 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 仪表板的“度量值”选项卡包含一系列 Widget，可让你一目了然地轻松监视群集状态。 “CPU 使用率”等多个 Widget 可在单击后提供更多信息。
 
-![包含度量值的仪表板](./media/hdinsight-hadoop-manage-ambari/metrics.png)
+![包含度量值的仪表板](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
 “热图”选项卡以绿色到红色的彩色热图显示度量值。
 
-![包含热图的仪表板](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
+![包含热图的仪表板](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
 若要了解群集内节点的详细信息，请选择“主机”。 然后选择你感兴趣的具体节点。
 
@@ -142,7 +142,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 “主机”页面列出群集中的所有主机。 若要管理主机，请遵循以下步骤。
 
-![主机页](./media/hdinsight-hadoop-manage-ambari/hosts.png)
+![主机页](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
 
 > [!NOTE]  
 > 对于 HDInsight 群集，不应使用添加、停用和重用主机的功能。

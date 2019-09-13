@@ -9,20 +9,20 @@ ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 5472a8ce2670a34174d6d39f0d90faca8a7002ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 203c57a2755a3287566a774e2878a87b847337b9
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61467447"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900658"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 Liquid 模板执行高级 JSON 转换
 
-可以在逻辑应用中通过**撰写**或**分析 JSON** 等本机数据操作完成基本 JSON 转换。 若要执行高级 JSON 转换，可以使用 [Liquid](https://shopify.github.io/liquid/)（一种用于灵活 Web 应用的开源模板语言）创建模板或映射。 Liquid 模板定义如何转换 JSON 输出，并支持更复杂的 JSON 转换，如迭代、 控制流、 变量等。 
+可以在逻辑应用中通过**撰写**或**分析 JSON** 等本机数据操作完成基本 JSON 转换。 若要执行高级 JSON 转换，可以使用 [Liquid](https://shopify.github.io/liquid/)（一种用于灵活 Web 应用的开源模板语言）创建模板或映射。 液体模板定义如何转换 JSON 输出，并支持更复杂的 JSON 转换，如迭代、控制流、变量等。 
 
-在逻辑应用中执行 Liquid 转换之前，必须首先定义 JSON 到 JSON 的映射通过映射 Liquid 模板和应用商店集成帐户中。 本文展示了如何创建并使用此 Liquid 模板或映射。 
+在逻辑应用中执行液体转换之前，必须先使用液体模板来定义 JSON 到 JSON 的映射，并将该映射存储在集成帐户中。 本文展示了如何创建并使用此 Liquid 模板或映射。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，可以[从免费的 Azure 帐户着手](https://azure.microsoft.com/free/)。 或者[注册即用即付订阅](https://azure.microsoft.com/pricing/purchase-options/)。
 
@@ -34,10 +34,10 @@ ms.locfileid: "61467447"
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>为集成帐户创建 Liquid 模板或映射
 
-1. 对于此示例，请创建此步骤中所述的示例 Liquid 模板。 在 Liquid 模板，你可以使用[Liquid 筛选](https://shopify.github.io/liquid/basics/introduction/#filters)，可使用该技术[DotLiquid](https://dotliquidmarkup.org/)和C#命名约定。 
+1. 对于此示例，请创建此步骤中所述的示例 Liquid 模板。 在液体模板中，可以使用[液体过滤器](https://shopify.github.io/liquid/basics/introduction/#filters)，使用[DotLiquid](https://dotliquidmarkup.org/)和C#命名约定。 
 
    > [!NOTE]
-   > 请确保使用的筛选器名称*句子大小写*在模板中。 否则，筛选器不会工作。
+   > 请确保筛选器名称在模板中使用*句子大小写*。 否则，筛选器将不起作用。
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -58,20 +58,20 @@ ms.locfileid: "61467447"
    }
    ```
 
-2. 登录到 [Azure 门户](https://portal.azure.com)。 在 Azure 主菜单中，选择“所有资源”  。 在搜索框中，查找并选择你的集成帐户。
+2. 登录到 [Azure 门户](https://portal.azure.com)。 在 Azure 主菜单中，选择“所有资源”。 在搜索框中，查找并选择你的集成帐户。
 
    ![选择“集成帐户”](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-3.  在“组件”  下，选择“映射”  。
+3.  在“组件”下，选择“映射”。
 
     ![选择映射](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
 
-4. 选择“添加”，并为映射提供以下详细信息  ：
+4. 选择“添加”，并为映射提供以下详细信息：
 
    | 属性 | 值 | 说明 | 
    |----------|-------|-------------|
    | **名称** | JsonToJsonTemplate | 映射的名称，在此示例中为“JsonToJsonTemplate” | 
-   | **映射类型** | **liquid** | 你的映射的类型。 对于 JSON 到 JSON 转换，必须选择“liquid”  。 | 
+   | **映射类型** | **liquid** | 你的映射的类型。 对于 JSON 到 JSON 转换，必须选择“liquid”。 | 
    | **Map** | "SimpleJsonToJsonTemplate.liquid" | 用于转换的现有 Liquid 模板或映射文件，在此示例中为“SimpleJsonToJsonTemplate.liquid”。 若要查找此文件，可使用文件选取器。 |
    ||| 
 
@@ -81,27 +81,27 @@ ms.locfileid: "61467447"
 
 1. 在 Azure 门户中，执行以下步骤[创建空的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-2. 在逻辑应用设计器中，向逻辑应用中添加[请求触发器](../connectors/connectors-native-reqres.md#use-the-http-request-trigger)。
+2. 在逻辑应用设计器中，向逻辑应用中添加[请求触发器](../connectors/connectors-native-reqres.md#add-request)。
 
-3. 在触发器下，选择“新建步骤”。  
+3. 在触发器下，选择“新建步骤”。 
    在搜索框中，输入“liquid”作为筛选器，然后选择以下操作：**将 JSON 转换为 JSON - Liquid**
 
    ![查找并选择 Liquid 操作](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
-4. 在“内容”框中单击以显示动态内容列表，并选择“正文”标记。  
+4. 在“内容”框中单击以显示动态内容列表，并选择“正文”标记。
   
    ![选择正文](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
  
-5. 从“映射”列表中选择 Liquid 模板，此示例中为“JsonToJsonTemplate”  。
+5. 从“映射”列表中选择 Liquid 模板，此示例中为“JsonToJsonTemplate”。
 
    ![选择映射](./media/logic-apps-enterprise-integration-liquid-transform/select-map.png)
 
    如果映射列表为空，则逻辑应用很可能未链接到集成帐户。 
    要将逻辑应用链接到具有 Liquid 模板或映射的集成帐户，请执行以下步骤：
 
-   1. 在逻辑应用菜单中选择“工作流设置”  。
+   1. 在逻辑应用菜单中选择“工作流设置”。
 
-   2. 从“选择集成帐户”列表中，选择集成帐户，并选择“保存”   。
+   2. 从“选择集成帐户”列表中，选择集成帐户，并选择“保存”。
 
       ![将逻辑应用链接到集成帐户](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 

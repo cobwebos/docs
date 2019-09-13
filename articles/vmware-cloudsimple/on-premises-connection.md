@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240716"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910547"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>使用 ExpressRoute 从本地连接到 CloudSimple
 
@@ -32,7 +32,7 @@ ms.locfileid: "70240716"
 
 ## <a name="scenarios"></a>方案
 
-通过将本地网络连接到私有云网络，可以通过多种方式使用私有云，其中包括：
+通过将本地网络连接到私有云网络，可以通过多种方式使用私有云，包括以下方案：
 
 * 访问私有云网络，无需创建站点到站点 VPN 连接。
 * 在私有云上使用本地 Active Directory 作为标识源。
@@ -43,6 +43,7 @@ ms.locfileid: "70240716"
 ## <a name="connecting-expressroute-circuits"></a>连接 ExpressRoute 线路
 
 若要建立 ExpressRoute 连接，必须在 ExpressRoute 线路上创建授权，并向 CloudSimple 提供授权信息。
+
 
 ### <a name="create-expressroute-authorization"></a>创建 ExpressRoute 授权
 
@@ -70,6 +71,11 @@ ms.locfileid: "70240716"
     * 问题子类型：**创建到本地的 ExpressRoute 连接**
     * 提供已复制并保存在详细信息窗格中的资源 ID 和授权密钥。
     * 为传输网络提供一个/29 网络地址空间。
+    * 是否通过 ExpressRoute 发送默认路由？
+    * 私有云流量是否应使用通过 ExpressRoute 发送的默认路由？
+
+    > [!IMPORTANT]
+    > 通过发送默认路由，你可以使用本地 internet 连接从私有云发送所有 internet 流量。  若要禁用私有云上配置的默认路由并使用本地连接默认路由，请在支持票证中提供详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
-manager: barbkess
+manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 530f38289afb3fce85bbb025e7b699862eedbadc
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 7968c045a59e86ecb89c0cc797936210b9cfb07d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382701"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883286"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault 托管存储帐户 - PowerShell
 
