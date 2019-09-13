@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 1b1e9338f92aaefab8e7754139066ac03e8b8213
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c39db870e44d4e810817b70e2793b8805088180e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142622"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932544"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB .NET Core SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -28,8 +28,8 @@ ms.locfileid: "70142622"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [大容量执行程序-.NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量执行程序-Java](sql-api-sdk-bulk-executor-java.md)
+> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
@@ -44,6 +44,11 @@ ms.locfileid: "70142622"
 
 > [!NOTE]
 > 如果你使用的是 .NET Core, 请参阅[.NET SDK](sql-api-sdk-dotnet-standard.md)的最新版本 1.x, 该版本面向 .NET Standard。 
+
+### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
+
+* 已将 PortReusePolicy 添加到 ConnectionPolicy
+* Fixed ntdll.dll！在 UWP 应用中使用 SDK 时出现 RtlGetVersion TypeLoadException 问题
 
 ### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
 
@@ -259,7 +264,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 使用已停用的 SDK 对 Azure Cosmos DB 发出的任何请求都会遭服务拒绝。
 
 > [!WARNING]
-> SQL API的 .NET Core SDK 的所有版本1.x 将于**2020 年8月30日**停用。
+> SQL API**的 .NET Core SDK 的所有版本 1.x**将于**2020 年8月30日**停用。
 > 
 >
 <br/>
@@ -267,6 +272,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.6.0](#2.6.0) |2019年8月30日 |--- |
 | [2.5.1](#2.5.1) |2019年7月 |--- |
 | [2.4.1](#2.4.1) |2019年6月20日 |--- |
 | [2.4.0](#2.4.0) |5月5日, 2019 |--- |

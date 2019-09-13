@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 431ede41e115c82c877041da4a0eb93eacf83cbd
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8017f02e694f5c9e2cd677c7b1f28c5de973d077
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142668"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932570"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>适用于 SQL API 的 Azure Cosmos DB .NET SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -28,8 +28,8 @@ ms.locfileid: "70142668"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [大容量执行程序-.NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量执行程序-Java](sql-api-sdk-bulk-executor-java.md)
+> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
@@ -44,6 +44,11 @@ ms.locfileid: "70142668"
 
 > [!NOTE]
 > 如果你正在使用 .NET Framework, 请参阅面向 .NET Standard 的[.NET SDK](sql-api-sdk-dotnet-standard.md)的最新版本1.x。 
+
+### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
+
+* 已将 PortReusePolicy 添加到 ConnectionPolicy
+* Fixed ntdll.dll！在 UWP 应用中使用 SDK 时出现 RtlGetVersion TypeLoadException 问题
 
 ### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
 
@@ -378,13 +383,14 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 使用已停用的 SDK 对 Azure Cosmos DB 发出的任何请求都会遭服务拒绝。
 
 > [!WARNING]
-> .NET SDK FOR SQL API 的所有版本1.x 将于**2020 年8月30日**停用。
+> .NET SDK for SQL **API 的所有版本 1.x**将于**2020 年8月30日**停用。
 > 
 >
 <br/>
 
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.6.0](#2.6.0) |2019年8月30日 |--- |
 | [2.5.1](#2.5.1) |2019年7月 |--- |
 | [2.4.1](#2.4.1) |2019年6月20日 |--- |
 | [2.4.0](#2.4.0) |5月5日, 2019 |--- |
