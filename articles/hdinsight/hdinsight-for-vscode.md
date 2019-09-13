@@ -292,7 +292,7 @@ ms.locfileid: "70930799"
 
     | name | description | type | 
     | :- | :- | :- | 
-    | 文件 | 包含要执行的应用程序的文件 | 路径 (必需) |
+    | file | 包含要执行的应用程序的文件 | 路径 (必需) |
     | proxyUser | 运行作业时要模拟的用户 | String |
     | className | 应用程序 Java/Spark main 类 | String |
     | args | 应用程序的命令行参数 | 字符串列表 |
@@ -317,8 +317,8 @@ ms.locfileid: "70930799"
     | id | 会话 ID | Int | 
     | appId | 此会话的应用程序 id | String |
     | appInfo | 详细的应用程序信息 | key=val 的映射 |
-    | 日志 | 日志行 | 字符串列表 |
-    | 省/自治区/直辖市 |批处理状态 | String |
+    | log | 日志行 | 字符串列表 |
+    | state |批处理状态 | String |
 
     >[!NOTE]
     >提交脚本时，"输出" 窗格中将显示已分配的 Livy 配置。
