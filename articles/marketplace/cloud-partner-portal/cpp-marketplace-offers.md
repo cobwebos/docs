@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 4bca52f19348569444ee09348c49756f64c986b7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884450"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962859"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure 和 AppSource 市场套餐
 
@@ -36,7 +36,7 @@ ms.locfileid: "68884450"
 
 *体验版*是一项市场功能，它针对启用了此功能的每个产品/服务为客户提供了一个“先试后买”演示选项。  体验版功能仅限于以下部分产品/服务类型：[Azure 应用程序](./azure-applications/cpp-azure-app-offer.md)、[Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md)、[Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md)、[Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md)、[SaaS 应用程序](./saas-app/cpp-saas-offer.md)和[虚拟机](./virtual-machine/cpp-virtual-machine-offer.md)。  此功能需要发布者创建为其产品/服务自定义的体验版模板。  有关详细信息，请参阅[体验版](./test-drive/what-is-test-drive.md)部分。
 
-可以通过应用[体验版筛选器](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive)来浏览具有体验版演示的现有市场产品/服务。 
+可以通过应用[体验版筛选器](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)来浏览具有体验版演示的现有市场产品/服务。 
 
 
 ## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure 市场和 AppSource 套餐类型
@@ -49,11 +49,11 @@ ms.locfileid: "68884450"
 | [咨询服务](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | Azure 和 AppSource | Microsoft 认可的顾问可以在 Azure 市场或 AppSource 中列出其域特定的服务。  他们的专业知识可帮助客户评估问题，以及根据业务目标创建和部署适当的解决方案。  |
 | [容器](./containers/cpp-containers-offer.md)  | Azure | 解决方案是预配为基于 Kubernetes 的服务或 Azure 容器实例的 Docker 容器映像。 |
 | [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | 一个可以扩展此企业资源规划 (ERP) 和业务管理系统的包。 |
-| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | 通过销售、服务、项目服务和现场服务模块扩展此客户资源管理 (CRM) 系统的包  |
-| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | 扩展此企业资源计划 (ERP) 服务的包, 支持高级财务、运营、制造和供应链管理 |
+| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | 通过销售、服务、项目服务和现场服务模块扩展此客户资源管理（CRM）系统的包  |
+| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | 扩展此企业资源计划（ERP）服务的包，支持高级财务、运营、制造和供应链管理 |
 | [IoT Edge 模块](./iot-edge-module/cpp-offer-process-parts.md) | Azure | 一个可在 IoT Edge 设备上运行的 Docker 兼容容器。  它包含使用自定义代码、其他 Azure 服务和第三方服务组合的小型计算模块。 |
-| [Power BI 应用](./power-bi/cpp-power-bi-offer.md) | AppSource | 一个 Power BI 应用包, 其中包含数据集、报表和仪表板 Power BI 内容的自定义 |
-| [SaaS 应用](./saas-app/cpp-saas-offer.md) | Azure | 解决方案是由发布者管理的软件即服务订阅, 用户通过使用 Azure Active Directory 的自定义接口登录。 |
+| [Power BI 应用](./power-bi/cpp-power-bi-offer.md) | AppSource | 一个 Power BI 应用包，其中包含数据集、报表和仪表板 Power BI 内容的自定义 |
+| [SaaS 应用](./saas-app/cpp-saas-offer.md) | Azure | 解决方案是由发布者管理的软件即服务订阅，用户通过使用 Azure Active Directory 的自定义接口登录。 |
 | [虚拟机](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | 解决方案包含在部署到客户订阅的单个虚拟机中。  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |
 

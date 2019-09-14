@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 09/06/2019
 ms.author: danlep
-ms.openlocfilehash: 6cf5efb33340844d782dc4481f5834d7590e745a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c0d4bd397c68fe3ed2d36404af9230e2316f3362
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172308"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959184"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 
@@ -43,7 +43,7 @@ Azure 容器注册表实现了 Docker 的[内容信任][docker-content-trust]模
 
 第一步是在注册表级别启用内容信任。 启用内容信任以后，客户端（用户或服务）即可将签名的映像推送到注册表。 在注册表上启用内容信任并不意味着只能由启用了内容信任的使用者来使用注册表。 未启用内容信任的使用者可以照常继续使用注册表。 不过，在其客户端中启用了内容信任的使用者在其注册表中只能看到签名的映像。
 
-若要为注册表启用内容信任，请先在 Azure 门户中导航到注册表。 在“策略”下选择“内容信任” > “启用” > “保存”。
+若要为注册表启用内容信任，请先在 Azure 门户中导航到注册表。 在“策略”下选择“内容信任” > “启用” > “保存”。 你还可以在 Azure CLI 中使用[az acr config content trust update][az-acr-config-content-trust-update]命令。
 
 ![在 Azure 门户中为注册表启用内容信任][content-trust-01-portal]
 
@@ -75,6 +75,9 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 ## <a name="grant-image-signing-permissions"></a>授予映像签名权限
 
 只有已获得授权的用户或系统能够向注册表推送受信任的映像。 若要向用户（或使用服务主体的系统）授予受信任映像的推送权限，请为其 Azure Active Directory 标识授予 `AcrImageSigner` 角色。 这是在 `AcrPush`（或等效）角色（此角色是将映像推送到注册表所必需的）基础上添加的角色。 有关详细信息，请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md)。
+
+> [!NOTE]
+> 不能将受信任的映像推送权限授予 Azure 容器注册表的[管理员帐户](container-registry-authentication.md#admin-account)。
 
 下面是在 Azure 门户和 Azure CLI 中授予 `AcrImageSigner` 角色的详细信息。
 
@@ -113,7 +116,8 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 
 `<service principal ID>` 可以是服务主体的 **appId**、**objectId** 或其 **servicePrincipalName** 之一。 若要详细了解如何使用服务主体和 Azure 容器注册表，请参阅[使用服务主体的 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)。
 
-在任何角色更改后，运行 `az acr login` 以刷新 Azure CLI 的本地标识令牌，以便新角色生效。
+> [!IMPORTANT]
+> 在任何角色更改后，运行 `az acr login` 以刷新 Azure CLI 的本地标识令牌，以便新角色生效。 有关验证身份的角色的信息，请参阅[使用 rbac 和 Azure CLI 管理对 azure 资源的访问](../role-based-access-control/role-assignments-cli.md)和[排查 AZURE 资源的 RBAC 问题](../role-based-access-control/troubleshooting.md)。
 
 ## <a name="push-a-trusted-image"></a>推送受信任的映像
 
@@ -214,3 +218,4 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 
 <!-- LINKS - internal -->
 [azure-cli]: /cli/azure/install-azure-cli
+[az-acr-config-content-trust-update]: /cli/azure/acr/config/content-trust#az-acr-config-content-trust-update

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: c06a338ec041c83588c3ee5126795b8c445ef469
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a660fe0f7663ac87b82038a3bd3d4c4fbf18544
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937991"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962771"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
 
@@ -21,7 +21,7 @@ ms.locfileid: "64937991"
 ## <a name="storefront-offer-details"></a>店面产品/服务详细信息
 | 店面设置 | 最佳做法 |
 |:--- |:--- |  
-| 产品名称 | 提供强有力的标题：<br> <ul> <li> 应用名称应向客户传达核心价值。 </li> <li> 在应用标题中包含搜索关键字可以提高搜索引擎结果的排名。 </li> </ul> 遵循咨询服务列表的固定标题格式：<br>[套餐名称]：[持续时间] [套餐类型]（例如，Contoso *：* 2 周实现） <br><br> 遵循品牌指南：<br>参考 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵守 [Microsoft 商标和品牌指南](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)及其他相关的产品特定指南。 |
+| 产品/服务名称 | 提供强有力的标题：<br> <ul> <li> 应用名称应向客户传达核心价值。 </li> <li> 在应用标题中包含搜索关键字可以提高搜索引擎结果的排名。 </li> </ul> 遵循咨询服务列表的固定标题格式：<br>[套餐名称]：[持续时间] [套餐类型]（例如，Contoso *：* 2 周实现） <br><br> 遵循品牌指南：<br>参考 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵守 [Microsoft 商标和品牌指南](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)及其他相关的产品特定指南。 |
 | 产品/服务描述 | 提供明确的产品/服务说明：<br> <ul> <li> 在前几句描述中清晰描述产品/服务的价值主张。 </li> <li> 请牢记，前几句话可能在搜索引擎结果中显示。 </li> <li> 不要依赖于特性和功能来销售产品。 而应该强调提供的价值。 </li> <li> 尽可能多使用行业特定用语或基于优势的措辞。</li> <li> 此外，咨询服务商品必须明确说明你提供的专业服务。 </li></ul> 核心价值主张应包含以下信息：<ul><li>产品说明。</li><li>受益于该产品的用户类型。</li><li>该产品可满足的客户需求或解决的难题。</li></ul> |
 
 ## <a name="storefront-listing-details"></a>店面列表详细信息
@@ -45,7 +45,7 @@ ms.locfileid: "64937991"
 
 从网站中的 AppSource 或 Azure 市场徽章链接到市场列表时，可在 URL 末尾包含以下查询参数，以便为强大的分析和报告功能提供支持：
 * **src**：包括路由到 AppSource 的流量的来源（例如网站、LinkedIn 或 Facebook）。
-* **mktcmpid**：市场营销活动 ID，可以包含字母、数字、下划线和连字符的任意组合，最多 16 个字符（例如 blogpost_12  ）。
+* **mktcmpid**：市场营销活动 ID，可以包含字母、数字、下划线和连字符的任意组合，最多 16 个字符（例如 blogpost_12）。
 
 以下示例 URL 包含前面所述的两个查询参数：`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
@@ -53,7 +53,7 @@ ms.locfileid: "64937991"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关市场 GTM 服务的详细信息，请转到[市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
+详细了解你的[商业应用商店权益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)。
 
 登录到[云合作伙伴门户](https://cloudpartner.azure.com)，以便创建并配置套餐。
 

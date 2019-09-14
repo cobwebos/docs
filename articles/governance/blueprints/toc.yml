@@ -32,9 +32,15 @@
       href: ./samples/index.md
     - name: 加拿大联邦 PBMM
       items:
+        - name: 概述
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/index.md
         - name: 控制映射
           displayName: 'standards, canada, federal, pbmm'
           href: ./samples/canada-federal-pbmm/control-mapping.md
+        - name: 部署步骤
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/deploy.md
     - name: CIS Microsoft Azure 基础基准
       items:
         - name: 概述

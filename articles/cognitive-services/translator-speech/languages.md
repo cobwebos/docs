@@ -3,20 +3,20 @@ title: 支持的语言 - 语音翻译 API
 titlesuffix: Azure Cognitive Services
 description: 查看语音翻译 API 支持的语言。
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ed8f693e4dc0344a0117ae9d6992b925992ef0c4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2f5b48f2dbc2d109c03613676c6a119fd971603b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446916"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965447"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>语音翻译 API 支持的语言
 
@@ -27,7 +27,7 @@ ms.locfileid: "67446916"
 | 语音语言    |
 |:----------- |
 | 阿拉伯语(现代标准)      |
-| 葡萄牙语 （巴西)     |
+| 巴西葡萄牙语     |
 | 中文(普通话)      |
 | 英语      |
 | 法语      |
@@ -43,13 +43,13 @@ ms.locfileid: "67446916"
 |:----------- |:-------------:|
 | 南非荷兰语      | `af`          |
 | 阿拉伯语       | `ar`          |
-| Bangla      | `bn`          |
+| 孟加拉语      | `bn`          |
 | 波斯尼亚语(拉丁语系)      | `bs`          |
 | 保加利亚语      | `bg`          |
 | 粤语(繁体)      | `yue`          |
 | 加泰罗尼亚语      | `ca`          |
-| 中文(简体)      | `zh-Hans`          |
-| 中文(繁体)      | `zh-Hant`          |
+| 简体中文      | `zh-Hans`          |
+| 繁体中文      | `zh-Hant`          |
 | 克罗地亚语      | `hr`          |
 | 捷克语      | `cs`          |
 | 丹麦语      | `da`          |
@@ -77,7 +77,7 @@ ms.locfileid: "67446916"
 | 韩语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
-| 马达加斯加语      | `mg`          |
+| 马拉加斯语      | `mg`          |
 | 马来语      | `ms`          |
 | 马耳他语      | `mt`          |
 | 挪威语      | `nb`          |

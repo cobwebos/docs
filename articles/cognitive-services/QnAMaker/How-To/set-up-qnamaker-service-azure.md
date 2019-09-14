@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 28ec42f1634e0546d75f81ed76b1ecbac51f6c3f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277608"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984364"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -87,6 +87,8 @@ QnA Maker 服务处理两种类型的密钥：**订阅密钥**和**终结点密�
 
 ## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>在 QnA Maker 门户中查找终结点密钥
 
+终结点与资源位于同一区域，因为终结点键用于调用知识库。
+
 可以从 [QnA Maker 门户](https://qnamaker.ai)管理终结点密钥。
 
 1. 登录到[QnA Maker 门户](https://qnamaker.ai)，中转到你的配置文件，然后选择 "**服务设置**"：
@@ -111,6 +113,8 @@ QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权�
 |应用服务|X|不能通过设计|
 |Application Insights|✔|可以共享|
 |搜索服务|✔|1. `testkb`是 QnAMaker 服务的保留名称; 其他名称不能使用它。<br>2.名称`synonym-map`的同义词映射是为 QnAMaker 服务保留的。<br>3.已发布的知识库数受搜索服务层限制。 如果有可用的可用索引，则其他服务可以使用这些索引。|
+
+了解有关[应用服务](../../../app-service/index.yml)和[搜索服务](../../../search/index.yml)的详细信息。
 
 ### <a name="using-a-single-search-service"></a>使用单个搜索服务
 
@@ -202,6 +206,8 @@ QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamak
 QnA Maker 的管理服务仅用于 QnA Maker 门户和初始数据处理。 此服务仅在美国西部区域提供。 此美国西部服务中未存储任何客户数据。
 
 ## <a name="next-steps"></a>后续步骤
+
+了解有关[应用服务](../../../app-service/index.yml)和[搜索服务](../../../search/index.yml)的详细信息。
 
 > [!div class="nextstepaction"]
 > [创建并发布知识库](../Quickstarts/create-publish-knowledge-base.md)

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 6877595f191c326ed73b347d46cb1aeb404702b5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 8bcb6caa418f7bd5c5241d06dbda69ccba360f2c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232230"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984472"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
@@ -31,11 +31,10 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 
 | 组件 | HDInsight 4.0 | HDInsight 3.6（默认） | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 |
 |---------------------------|---------------|-----------------------------|---------------|---------------|---------------|----------------------|
-| Hortonworks 数据平台 | 3.0 | 2.6 | 2.5 | 2.4 | 2.3 | 2.2 |
 | Apache Hadoop 和 YARN | 3.1.1 | 2.7.3 | 2.7.3 | 2.7.1 | 2.7.1 | 2.6.0 |
 | Apache Tez | 0.9.1 | 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.5.2 |
 | Apache Pig | 0.16.0 | 0.16.0 | 0.16.0 | 0.15.0 | 0.15.0 | 0.14.0 |
-| Apache Hive | 3.1.0 | 2.1.0, 1.2。1 | - | - | - | - |
+| Apache Hive | 3.1.0 | 2.1.0，1.2。1 | - | - | - | - |
 | Apache Tez Hive2 | - | 0.8.4 | - | - | - | - |
 | Apache Ranger | 1.1.0 | 0.7.0 | 0.6.0 | - | - | - |
 | Apache HBase | 2.0.1 | 1.1.2 | 1.1.2 | 1.1.2 | 1.1.1 | 0.98.4 |
@@ -176,7 +175,7 @@ Enterprise Security 包支持使用 Azure Data Lake Storage 作为主存储和�
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>群集的默认节点配置和虚拟机大小
 
-有关选择哪个虚拟机 Sku 作为群集的详细信息, 请参阅[Azure HDInsight 群集配置详细信息](hdinsight-supported-node-configuration.md)。
+有关选择哪个虚拟机 Sku 作为群集的详细信息，请参阅[Azure HDInsight 群集配置详细信息](hdinsight-supported-node-configuration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 - [为 HDInsight 上的 Apache Hadoop、Spark 和其他组件设置群集](hdinsight-hadoop-provision-linux-clusters.md)

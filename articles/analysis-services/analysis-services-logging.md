@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 357e7975b1c4fe44d86b7e29e96a9abb6ab63c35
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6b311135832e1ec861cf6e14e5ad7e82574294bf
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932258"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959070"
 ---
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
 
@@ -67,7 +67,7 @@ ms.locfileid: "68932258"
 
 ### <a name="all-metrics"></a>所有指标
 
-“指标”类别会记录“指标”中显示的[服务器指标](analysis-services-monitor.md#server-metrics)。
+"指标" 类别将相同的[服务器指标](analysis-services-monitor.md#server-metrics)记录到 AzureMetrics 表中。 如果使用的是查询[横向扩展](analysis-services-scale-out.md)，并且需要为每个读取副本单独使用度量值，请改用 AzureDiagnostics 表，其中**OperationName**等于**LogMetric**。
 
 ## <a name="setup-diagnostics-logging"></a>设置诊断日志记录
 
@@ -161,34 +161,60 @@ ms.locfileid: "68932258"
 
 在查询生成器中，展开 LogManagement > AzureDiagnostics。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass\_s”或某个事件名称，Log Analytics 工作区将继续构造查询。 请确保保存查询，以便稍后重复使用。
 
-### <a name="example-query"></a>示例查询
-此查询对一个模型数据库和服务器的 每个查询结束/刷新结束事件计算并返回 CPU：
+### <a name="example-queries"></a>查询示例
+
+#### <a name="example-1"></a>示例 1
+
+下面的查询为模型数据库和服务器返回每个查询的结束/刷新结束事件的持续时间。 如果向外扩展，结果将被副本中断，因为副本编号包含在 ServerName_s 中。 按 RootActivityId_g 分组可减少从 Azure 诊断 REST API 检索到的行计数，有助于保持在[Log Analytics 速率限制](https://dev.loganalytics.io/documentation/Using-the-API/Limits)中所述的限制范围内。
 
 ```Kusto
-let window =  AzureDiagnostics
-   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and ServerName_s =~"MyServerName" and DatabaseName_s == "Adventure Works Localhost" ;
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName" and DatabaseName_s =~ "MyDatabaseName" ;
 window
 | where OperationName has "QueryEnd" or (OperationName has "CommandEnd" and EventSubclass_s == 38)
 | where extract(@"([^,]*)", 1,Duration_s, typeof(long)) > 0
 | extend DurationMs=extract(@"([^,]*)", 1,Duration_s, typeof(long))
-| extend Engine_CPUTime=extract(@"([^,]*)", 1,CPUTime_s, typeof(long))
-| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g ,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs,Engine_CPUTime
-| join kind=leftouter (
-window
-    | where OperationName == "ProgressReportEnd" or (OperationName == "VertiPaqSEQueryEnd" and EventSubclass_s  != 10) or OperationName == "DiscoverEnd" or (OperationName has "CommandEnd" and EventSubclass_s != 38)
-    | summarize sum_Engine_CPUTime = sum(extract(@"([^,]*)", 1,CPUTime_s, typeof(long))) by RootActivityId_g
-    ) on RootActivityId_g
-| extend totalCPU = sum_Engine_CPUTime + Engine_CPUTime
-
+| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs
+| order by StartTime_t asc
 ```
 
+#### <a name="example-2"></a>示例 2
+
+下面的查询返回服务器的内存和 QPU 消耗。 如果向外扩展，结果将被副本中断，因为副本编号包含在 ServerName_s 中。
+
+```Kusto
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where name_s == "memory_metric" or name_s == "qpu_metric"
+| project ServerName_s, TimeGenerated, name_s, value_s
+| summarize avg(todecimal(value_s)) by ServerName_s, name_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
+
+#### <a name="example-3"></a>示例 3
+
+下面的查询返回服务器读取的行数/秒 Analysis Services 引擎性能计数器。
+
+```Kusto
+let window =  AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where parse_json(tostring(parse_json(perfobject_s).counters))[0].name == "Rows read/sec" 
+| extend Value = tostring(parse_json(tostring(parse_json(perfobject_s).counters))[0].value) 
+| project ServerName_s, TimeGenerated, Value
+| summarize avg(todecimal(Value)) by ServerName_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
 
 有数千个供你使用的查询。 若要了解有关查询的详细信息，请参阅 [Azure Monitor 日志查询入门](../azure-monitor/log-query/get-started-queries.md)。
 
 
 ## <a name="turn-on-logging-by-using-powershell"></a>使用 PowerShell 启用日志记录
 
-在此快速教程中，你将在 Analysis Services 服务器所在订阅和资源组中创建存储帐户。 然后使用 AzDiagnosticSetting 打开诊断日志记录, 并将输出发送到新存储帐户。
+在此快速教程中，你将在 Analysis Services 服务器所在订阅和资源组中创建存储帐户。 然后使用 AzDiagnosticSetting 打开诊断日志记录，并将输出发送到新存储帐户。
 
 ### <a name="prerequisites"></a>先决条件
 要完成本教程，必须备好以下资源：
@@ -244,7 +270,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 
 ### <a name="enable-logging"></a>启用日志记录
 
-若要启用日志记录, 请将 AzDiagnosticSetting cmdlet 与新存储帐户、服务器帐户和类别的变量一起使用。 运行以下命令，将“-Enabled”标志设置为“$true”：
+若要启用日志记录，请将 AzDiagnosticSetting cmdlet 与新存储帐户、服务器帐户和类别的变量一起使用。 运行以下命令，将“-Enabled”标志设置为“$true”：
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine

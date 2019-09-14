@@ -5,15 +5,15 @@ author: DCtheGeek
 manager: carmonm
 ms.service: blueprints
 ms.topic: sample
-ms.date: 08/21/2019
+ms.date: 09/04/2019
 ms.author: dacoulte
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 58deb4fff4cee21acbf99d3c4035a9941697bed4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ea2c56e35741a49d057f2261f7b53fb754a43f8b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231836"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967988"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -23,7 +23,7 @@ ms.locfileid: "70231836"
 
 |  |  |
 |---------|---------|
-| [加拿大联邦 PBMM](./canada-federal-pbmm/control-mapping.md) | 提供防护措施，以便符合加拿大联邦受保护的 B、中等完整性、中等可用性 (PBMM)。 |
+| [加拿大联邦 PBMM](./canada-federal-pbmm/index.md) | 提供防护措施，以便符合加拿大联邦受保护的 B、中等完整性、中等可用性 (PBMM)。 |
 | [CIS Microsoft Azure 基础基准](./cis-azure-1.1.0/index.md)| 提供一组策略以帮助符合 CIS Microsoft Azure 基础基准建议。 |
 | [IRS 1075](./irs-1075/index.md) | 提供用于符合 IRS 1075 的规范措施。|
 | [ISO 27001](./iso27001/index.md) | 提供用于符合 ISO 27001 的规范措施。 |

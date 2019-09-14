@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: cd67f435ff390267e01acd99594b9063db4c4ee1
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559089"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962513"
 ---
 # <a name="personalizer-settings"></a>个性化体验创建服务设置
 
@@ -67,7 +67,7 @@ ms.locfileid: "69559089"
 
 如果你希望密切跟踪用户行为变化，则高模型更新频率非常有用。 例如，涉及实时新闻、病毒内容或实时产品投标的站点。 在这些情况下，可以使用 15 分钟的频率。 对于大多数用例，更低的更新频率是有效的。 在使用个性化体验创建服务调试应用程序代码、进行演示或以交互方式测试机器学习方面时，一分钟的更新频率非常有用。
 
-![“模型更新频率”设置重新训练新个性化体验创建服务模型的频率。](media/settings/configure-model-update-frequency-settings.png)
+![“模型更新频率”设置重新训练新个性化体验创建服务模型的频率。](media/settings/configure-model-update-frequency-settings-15-minutes.png)
 
 更改此设置后，请务必选择“保存”。
 
@@ -86,7 +86,7 @@ ms.locfileid: "69559089"
 ## <a name="import-and-export-learning-policy"></a>导入和导出学习策略
 
 在“模型和策略”的“资源管理”部分，导入新的学习策略或导出当前学习策略。
-你可以从以前的导出获取学习策略文件, 或下载在脱机评估期间发现的优化策略。 对这些文件进行手动更改将影响机器学习性能和脱机评估的准确性, 并且 Microsoft 不能保证机器学习和评估的准确性, 也不能为手动编辑的策略导致的服务异常。
+你可以从以前的导出获取学习策略文件，或下载在脱机评估期间发现的优化策略。 对这些文件进行手动更改将影响机器学习性能和脱机评估的准确性，并且 Microsoft 不能保证机器学习和评估的准确性，也不能为手动编辑的策略导致的服务异常。
 
 ## <a name="next-steps"></a>后续步骤
 

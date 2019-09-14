@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 694bd3b5f14ac37229763b33fb97c17bd4e573d4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 4305213d272172cb89bfdd207b6c8106af3f4939
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69893797"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983934"
 ---
 # <a name="create-resource-manager-parameter-file"></a>创建资源管理器参数文件
 
@@ -19,7 +19,7 @@ ms.locfileid: "69893797"
 
 ## <a name="parameter-file"></a>参数文件
 
-参数文件采用以下格式:
+参数文件采用以下格式：
 
 ```json
 {
@@ -36,7 +36,7 @@ ms.locfileid: "69893797"
 }
 ```
 
-请注意, 参数值以纯文本形式存储在参数文件中。 此方法适用于不敏感的值, 例如, 为资源指定 SKU。 它不适用于敏感值 (如密码)。 如果需要将敏感值作为参数传递, 请将值存储在密钥保管库中, 并在参数文件中引用该密钥保管库。 在部署过程中会安全地检索敏感值。
+请注意，参数值以纯文本形式存储在参数文件中。 此方法适用于不敏感的值，例如，为资源指定 SKU。 它不适用于敏感值（如密码）。 如果需要将敏感值作为参数传递，请将值存储在密钥保管库中，并在参数文件中引用该密钥保管库。 在部署过程中会安全地检索敏感值。
 
 以下参数文件包括一个纯文本值和一个存储在密钥保管库中的值。
 
@@ -60,11 +60,11 @@ ms.locfileid: "69893797"
 }
 ```
 
-有关使用 key vault 中的值的详细信息, 请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](resource-manager-keyvault-parameter.md)。
+有关使用 key vault 中的值的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](resource-manager-keyvault-parameter.md)。
 
 ## <a name="define-parameter-values"></a>定义参数值
 
-若要确定如何定义参数值, 请打开要部署的模板。 查看模板的参数部分。 下面的示例显示模板中的参数。
+若要确定如何定义参数值，请打开要部署的模板。 查看模板的参数部分。 下面的示例显示模板中的参数。
 
 ```json
 "parameters": {
@@ -100,7 +100,7 @@ ms.locfileid: "69893797"
 }
 ```
 
-请注意参数的类型。 参数文件中的值必须具有相同的类型。 对于此模板, 可以将两个参数都作为字符串提供。
+请注意参数的类型。 参数文件中的值必须具有相同的类型。 对于此模板，可以将两个参数都作为字符串提供。
 
 ```json
 {
@@ -117,7 +117,7 @@ ms.locfileid: "69893797"
 }
 ```
 
-接下来, 查找默认值。 如果参数具有默认值, 则可以提供一个值, 但不一定要这样做。
+接下来，查找默认值。 如果参数具有默认值，则可以提供一个值，但不一定要这样做。
 
 ```json
 {
@@ -134,7 +134,7 @@ ms.locfileid: "69893797"
 }
 ```
 
-最后, 查看允许的值和任何限制 (如最大长度限制)。 它们告诉您可以为参数提供的值的范围。
+最后，查看允许的值和任何限制（如最大长度限制）。 它们告诉您可以为参数提供的值的范围。
 
 ```json
 {
@@ -187,9 +187,9 @@ ms.locfileid: "69893797"
 
 ## <a name="file-name"></a>文件名
 
-命名参数文件的一般约定是将 **. parameters**添加到模板名称。 例如, 如果模板的名称为**azuredeploy.json**, 则参数文件名为**azuredeploy.json**。 此命名约定可帮助你了解模板和参数之间的连接。
+命名参数文件的一般约定是将 **. parameters**添加到模板名称。 例如，如果模板的名称为**azuredeploy.json**，则参数文件名为**azuredeploy.json**。 此命名约定可帮助你了解模板和参数之间的连接。
 
-若要部署到不同的环境, 请创建多个参数文件。 命名参数文件时, 添加标识其用途的方式。 例如, 使用**azuredeploy.json-** **azuredeploy.json--** example. json
+若要部署到不同的环境，请创建多个参数文件。 命名参数文件时，添加标识其用途的方式。 例如，使用**azuredeploy.json-** **azuredeploy.json--** example. json
 
 
 ## <a name="parameter-precedence"></a>参数优先级
@@ -204,6 +204,6 @@ ms.locfileid: "69893797"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何在模板中定义参数，请参阅[了解 Azure 资源管理器模板的结构和语法](resource-group-authoring-templates.md)。
-- 有关使用 key vault 中的值的详细信息, 请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](resource-manager-keyvault-parameter.md)。
-
+- 若要了解如何在模板中定义参数，请参阅[Azure 资源管理器模板中的参数](template-parameters.md)。
+- 有关使用 key vault 中的值的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](resource-manager-keyvault-parameter.md)。
+- 有关参数的详细信息，请参阅[Azure 资源管理器模板中的参数](template-parameters.md)。

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 58591302280c67dbd0f69ebe0bc47cf95c8bfc18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956748"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962623"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure 市场和 AppSource 发布指南
 
@@ -30,7 +30,7 @@ ms.locfileid: "65956748"
 
 本指南包含在列出你的应用程序和服务之前，需要执行的步骤的相关技术和业务信息。 使用目录转到指南的不同部分并直接转到关键主题。
 
-有关 Azure 市场和 AppSource 的问题，请在“问题类型” > “市场加入”   下向我们发送消息。  我们的市场发布者载入团队将乐于为你提供帮助！ 
+有关 Azure 市场和 AppSource 的问题，请在“问题类型” > “市场加入”下向我们发送消息。  我们的市场发布者载入团队将乐于为你提供帮助！ 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>加入市场的好处 
 
@@ -52,7 +52,7 @@ ms.locfileid: "65956748"
 
 通过市场为你提供的见解和分析，深入了解商品性能。 获取有关市场活动效果、订单和付款以及如何最大化利用解决方案的营销活动的详细信息。
 
-### <a name="marketplace-go-to-market-benefits"></a>市场的市场推广权益 
+### <a name="commercial-marketplace-benefits"></a>商业应用商店权益 
 
 市场中的新上市商品有资格获得一组不同的免费权益，帮助合作伙伴在市场中拓展业务。 这些权益分为以下类别： 
 
@@ -62,9 +62,9 @@ ms.locfileid: "65956748"
 
 *   联合销售：通过市场开始或加速与 Microsoft 的合作销售。 访问程序和支持，促进与 Microsoft 团队之间的联合销售。
 
-在向市场[提交解决方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)之后，我们的加入团队会联系你，为你的发布体验提供支持。  请参阅[如何创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)有关详细信息。
+在向市场[提交解决方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)之后，我们的加入团队会联系你，为你的发布体验提供支持。  有关详细信息，请参阅[如何创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
 
-有关 Microsoft 市场推广权益以及如何在市场中扩展业务的详细信息，请参阅 [Microsoft 市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
+详细了解你的[商业应用商店权益](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)。
 
 ## <a name="next-steps"></a>后续步骤
 

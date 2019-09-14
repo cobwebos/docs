@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 3ff9cfbd312e672fb89afb4838ad9f8aa6574370
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d31eb9ccb5df9137bebb877cce169cf657113d30
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900010"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967762"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上的 ML Services 群集
 
@@ -31,7 +31,7 @@ ms.locfileid: "70900010"
 
 通过向运行 RStudio Community 版本的边缘节点添加更多用户，可以为 HDInsight 上的 ML Services 群集启用多个并发用户。 在创建 HDInsight 群集时，必须提供两个用户，即一个 HTTP 用户，一个 SSH 用户：
 
-![并发用户 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
+![并发用户 1](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
 - 群集登录用户名：一个通过 HDInsight 网关进行身份验证的 HTTP 用户，该网关用于保护所创建的 HDInsight 群集。 此 HTTP 用户用于访问 Apache Ambari UI、Apache Hadoop YARN UI 以及其他 UI 组件。
 - 安全外壳 (SSH) 用户名：一个需通过安全外壳访问群集的 SSH 用户。 此用户是适用于所有头节点、辅助角色节点和边缘节点的 Linux 系统中的用户。 因此，可以使用安全外壳访问远程群集中的任何节点。
@@ -66,7 +66,7 @@ ms.locfileid: "70900010"
 
 以下屏幕截图显示了输出。
 
-![并发用户 3](./media/r-server-hdinsight-manage/concurrent-users-2.png)
+![并发用户 3](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
 
 当系统提示输入“当前 Kerberos 密码:”时，只需按 Enter 将其忽略即可。 `useradd` 命令中的 `-m` 选项指示系统会为用户创建主文件夹，该文件夹是 RStudio Community 版本所需的。
 

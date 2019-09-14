@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae329bd031a2a57ea4fc2eec9cde1e532439bb4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7caf6eff9f5bd497ab6c3a500f3940549b198576
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561715"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959040"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>将品牌添加到组织的 Azure Active Directory 登录页面
 使用组织的徽标和自定义颜色方案，在 Azure Active Directory (Azure AD) 登录页面上提供一致外观和体验。 用户登录到组织的基于 Web 的应用（例如 Office 365，它使用 Azure AD 作为标识提供者时）时，将显示登录页面。
@@ -29,7 +29,7 @@ ms.locfileid: "68561715"
 ## <a name="customize-your-azure-ad-sign-in-page"></a>自定义 Azure AD 登录页面
 可以自定义 Azure AD 登录页面，这些页面会在用户登录到组织的特定于租户的应用时显示（例如 [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com)），或者在传递域变量时显示（例如 [ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com)）。
 
-你的自定义品牌不会立即出现在用户前往网站 (例如 www\.office.com) 时。 相反，用户必须先登录才会显示自定义品牌。
+用户访问 www\.office.com 等站点时，自定义品牌不会立即显示。 相反，用户必须先登录才会显示自定义品牌。 用户登录后，可能需要15分钟或更长时间才能显示品牌。 
 
 > [!NOTE]
 > 所有品牌元素都是可选的。 例如，如果指定没有背景图像的横幅徽标，则登录页面将显示带有目标网站（例如 Office 365）默认背景图像的徽标。<br><br>此外，登录页面品牌不会带到个人 Microsoft 帐户。 如果用户或企业访客使用个人 Microsoft 帐户登录，则其登录页面不会显示组织的品牌。
@@ -58,7 +58,7 @@ ms.locfileid: "68561715"
 
         - **横幅徽标。** 用户在“我的应用”门户页面上输入用户名后，选择要显示在登录页面上的徽标的 .png 或 .jpg 版本。
             
-            图像不能大于60像素或大于280像素。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
+            图像不能高于 60 像素或宽于 280 像素。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
 
         - **用户名提示。** 键入提示文本，如果用户忘记用户名将会显示此提示文本。 此文本必须是 Unicode，不带链接或代码，且不能超过 64 个字符。 如果访客登录到应用，我们建议不添加此提示。
 
@@ -70,7 +70,7 @@ ms.locfileid: "68561715"
 
         - **登录页背景色。** 指定在低带宽连接的情况下替代背景图像显示的十六进制颜色（例如，白色为 #FFFFFF）。 我们建议使用横幅徽标的主颜色或组织的颜色。
 
-        - **方形徽标图像。** 选择要在新 Windows 10 企业版设备的安装过程中向用户显示的组织徽标的 .png（首选）或 .jpg 图像。 此图像仅用于 Windows 身份验证，并且仅显示在使用 [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 进行部署的租户上；或者在其他 Windows 10 体验中用于密码输入页面。 在某些情况下, 它也可能出现在许可对话框中。
+        - **方形徽标图像。** 选择要在新 Windows 10 企业版设备的安装过程中向用户显示的组织徽标的 .png（首选）或 .jpg 图像。 此图像仅用于 Windows 身份验证，并且仅显示在使用 [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 进行部署的租户上；或者在其他 Windows 10 体验中用于密码输入页面。 在某些情况下，它也可能出现在“同意”对话框中。
         
             图像大小不能超过 240 x 240 像素，并且其中的文件的大小必须小于 10 KB。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
     

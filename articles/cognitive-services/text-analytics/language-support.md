@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 558ce8950a1848f0cddc247f60dd4e75dd20ccf0
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: e14cb56db6e45fe86ecd5e73766c47d29dd23fa1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305483"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984234"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文本分析 API 的语言和区域支持
 
@@ -31,14 +31,14 @@ ms.locfileid: "68305483"
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>情绪分析、关键短语提取和命名的实体识别
 
-对于情绪分析、关键短语提取和实体识别，所支持语言的列表更具选择性，因为分析器已优化为适应更多语言的语言规则。 对完整的[实体类型](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition)集的支持当前仅限于以下语言: 
+对于情绪分析、关键短语提取和实体识别，所支持语言的列表更具选择性，因为分析器已优化为适应更多语言的语言规则。 对全套[实体类型](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition)的支持目前仅限于以下语言： 
 * 英语
 * 简体中文
 * 法语
 * 德语
 * 西班牙语
 
-对于其他语言`Location` `Organization` , 仅返回和命名实体。 `Person`
+对于其他语言，仅返回 `Person`、`Location` 和 `Organization` 命名实体。
 
 ## <a name="language-list-and-status"></a>语言列表和状态
 
@@ -48,7 +48,7 @@ ms.locfileid: "68305483"
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | 阿拉伯语      | `ar`          |           |             | ✔ \*                     | |
 | 捷克语       | `cs`          |           |             | ✔ \*                     | |
-| 简体中文 | `zh-CN`|           |             | ✔         |    |
+| 简体中文 | `zh-CN`| ✔ \***     |             | ✔         |    |
 | 丹麦语      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | 荷兰语       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
 | 英语     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
@@ -58,7 +58,7 @@ ms.locfileid: "68305483"
 | 希腊语       | `el`          | ✔ \*     |             |            |     |
 | 匈牙利语   | `hu`          |           |             |  ✔ \*          |     | 
 | 意大利语     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| 日语    | `ja`          |          | ✔           |  ✔ \*          |     |
+| 日语    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
 | 韩语      | `ko`          |          | ✔           |  ✔ \*          |     |
 | 挪威语(博克马尔语) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
 | 波兰语      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
@@ -71,7 +71,9 @@ ms.locfileid: "68305483"
 
 \* 语言支持为预览版
 
-\*\*[命名实体识别](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner)和[实体链接](how-tos/text-analytics-how-to-entity-linking.md#entity-linking)都可用于此语言。    
+\*\* [命名实体识别](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner)和[实体链接](how-tos/text-analytics-how-to-entity-linking.md#entity-linking)均适用于此语言。  
+
+\** *[情绪分析 V3 公共预览版](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview)中提供
 
 ## <a name="see-also"></a>请参阅
 

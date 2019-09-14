@@ -14,19 +14,19 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 2e64f996a346e0241fd5feefb11a38a0c8605b27
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 7cd7bcd4bd10152ecd2fa60e4e8418f17db16b61
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173401"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967833"
 ---
 # <a name="use-service-bus-topics-and-subscriptions-with-java"></a>通过 Java 使用 Service Bus 主题和订阅
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-在本快速入门中，先编写 Java 代码，将消息发送到某个服务总线主题，然后从该主题的订阅中接收消息。 
+在本快速入门中，你将编写 Java 代码，以将消息发送到 Azure 服务总线主题，然后接收来自该主题的订阅的消息。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -459,7 +459,7 @@ Message sending: Id = 9
 > 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息, 请参阅[服务总线队列、主题和订阅][Service Bus queues, topics, and subscriptions]。
+有关详细信息，请参阅[服务总线队列、主题和订阅][Service Bus queues, topics, and subscriptions]。
 
 [Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/
 [Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse

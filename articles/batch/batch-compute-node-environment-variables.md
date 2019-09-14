@@ -9,20 +9,20 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 08/13/2019
+ms.date: 09/12/2019
 ms.author: lahugh
-ms.openlocfilehash: 916dceb7c5e4314df98407b4e8fa4ed75cdb308c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 995dfeaf26180b74f135ed2b74fa40faf3a12c08
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095279"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958789"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch 运行时环境变量
 
 [Azure Batch 服务](https://azure.microsoft.com/services/batch/)在计算节点上设置以下环境变量。 可以在任务命令行中引用这些环境变量，也可在命令行运行的程序和脚本中引用它们。
 
-有关将环境变量与 Batch 一起使用的详细信息, 请参阅[任务的环境设置](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks)。
+有关将环境变量用于 Batch 的详细信息，请参阅[任务的环境设置](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks)。
 
 ## <a name="environment-variable-visibility"></a>环境变量的可见性
 
@@ -48,7 +48,7 @@ ms.locfileid: "70095279"
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | 任务所属的 Batch 帐户名。                  | 所有任务。   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Batch 帐户的 URL。 | 所有任务。 | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | 所有应用包环境变量的前缀。 例如，如果应用程序“Foo”版本“1”已安装到池，则环境变量为 AZ_BATCH_APP_PACKAGE_FOO_1。 AZ_BATCH_APP_PACKAGE_FOO_1 指向下载包的位置 (文件夹)。 | 包含关联应用包的任何任务。 如果节点本身拥有应用程序包，则还可用于所有任务。 | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_APP_PACKAGE            | 所有应用包环境变量的前缀。 例如，如果应用程序“Foo”版本“1”已安装到池，则环境变量为 AZ_BATCH_APP_PACKAGE_FOO_1。 AZ_BATCH_APP_PACKAGE_FOO_1 指向下载包的位置（文件夹）。 使用默认版本的应用程序包时，请使用不带版本号的 AZ_BATCH_APP_PACKAGE 环境变量。 | 包含关联应用包的任何任务。 如果节点本身拥有应用程序包，则还可用于所有任务。 | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | 一种身份验证令牌，用于授予对一组有限的 Batch 服务操作的访问权限。 仅当[添加任务](/rest/api/batchservice/task/add#request-body)时设置 [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) 时，才会显示此环境变量。 令牌值在 Batch API 中用作凭据以创建 Batch 客户端，例如在 [BatchClient.Open() .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_) 中。 | 所有任务。 | OAuth2 访问令牌 |
 | AZ_BATCH_CERTIFICATES_DIR       | [任务工作目录][files_dirs]内的目录，会在其中为 Linux 计算节点存储证书。 此环境变量不适用于 Windows 计算节点。                                                  | 所有任务。   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | 以 `nodeIP,nodeIP` 格式列出了分配给[多实例任务][multi_instance]的节点的列表。 | 多实例主要和子任务。 | `10.0.0.4,10.0.0.5` |
@@ -60,7 +60,7 @@ ms.locfileid: "70095279"
 | AZ_BATCH_NODE_ID                | 任务分配到的节点的 ID。 | 所有任务。 | tvm-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | 如果为 `true`，则当前节点是一个专用节点。 如果为 `false`，则它是[低优先级节点](batch-low-pri-vms.md)。 | 所有任务。 | `true` |
 | AZ_BATCH_NODE_LIST              | 以 `nodeIP;nodeIP` 格式列出了分配给[多实例任务][multi_instance]的节点的列表。 | 多实例主要和子任务。 | `10.0.0.4;10.0.0.5` |
-| AZ_BATCH_NODE_MOUNTS_DIR        | 所有装载目录所在的节点级[文件系统装载](virtual-file-mount.md)位置的完整路径。 Windows 文件共享使用驱动器号, 因此对于 Windows, 装载驱动器是设备和驱动器的组成部分。  |  如果用户知道装载的目录的装载权限, 则所有任务 (包括启动任务) 都有权访问该用户。 | 例如, 在 Ubuntu 中, 位置是:`/mnt/batch/tasks/fsmounts` |
+| AZ_BATCH_NODE_MOUNTS_DIR        | 所有装载目录所在的节点级别[文件系统装载](virtual-file-mount.md)位置的完整路径。 Windows 文件共享使用驱动器号，因此对于 Windows，装载驱动器是设备和驱动器的一部分。  |  如果用户知道装载目录的装载权限，则所有任务（包括启动任务）都有权访问该用户。 | 例如，在 Ubuntu 中，位置为：`/mnt/batch/tasks/fsmounts` |
 | AZ_BATCH_NODE_ROOT_DIR          | 节点上所有[批处理目录][files_dirs]的根目录的完整路径。 | 所有任务。 | C:\user\tasks |
 | AZ_BATCH_NODE_SHARED_DIR        | 节点上[共享目录][files_dirs]的完整路径。 节点上执行的所有任务具有此目录的读取/写入权限。 在其他节点上执行的任务没有对此目录（它不是“共享”的网络目录）的远程访问权限。 | 所有任务。 | C:\user\tasks\shared |
 | AZ_BATCH_NODE_STARTUP_DIR       | 节点上[启动任务目录][files_dirs]的完整路径。 | 所有任务。 | C:\user\tasks\startup |

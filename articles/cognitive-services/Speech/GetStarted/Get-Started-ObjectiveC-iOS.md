@@ -3,20 +3,20 @@ title: 在 iOS 上的 Objective-C 中开始使用必应语音识别 API | Micros
 titlesuffix: Azure Cognitive Services
 description: 使用必应语音识别 API 开发用于将语音转换为文本的 iOS 应用程序。
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 09b7e8961e59bd6fad49408c28e9ee9a4a209cae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e42784e6d2751f7e76aec8caf1d6e1f9f09a9fd1
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515288"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965932"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>快速入门：在 iOS 上的 Objective-C 中使用必应语音识别 API
 
@@ -26,7 +26,7 @@ ms.locfileid: "60515288"
 
 本文使用一个示例应用程序演示如何开始使用语音识别 API 开发 iOS 应用程序的基础知识。 有关完整的 API 参考，请参阅[语音 SDK 客户端库参考](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="platform-requirements"></a>平台要求
 
@@ -38,9 +38,9 @@ ms.locfileid: "60515288"
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>订阅语音识别 API 并获取免费试用的订阅密钥
 
-语音 API 是认知服务（之前的项目 Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥  。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
+语音 API 是认知服务（之前的项目 Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
 
-如果想使用“意向识别”，还需要注册[语言理解智能服务 (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)  。
+如果想使用“意向识别”，还需要注册[语言理解智能服务 (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)。
 
 > [!IMPORTANT]
 > * 获取订阅密钥。 必须拥有[订阅密钥](https://azure.microsoft.com/try/cognitive-services/)才能使用语音客户端库。
@@ -136,10 +136,10 @@ ms.locfileid: "60515288"
 * **部分结果事件**：每次语音服务预测你可能会说的内容时，甚至在你说完（如果使用 `MicrophoneRecognitionClient`）或完成发送数据（如果使用 `DataRecognitionClient`）之前，都会调用此事件。
 * **错误事件**：服务检测到错误时调用。
 * **意向事件**：在最终识别结果被分析为结构化 JSON 意向后，在“WithIntent”客户端上（仅以 ShortPhrase 模式）进行调用。
-* 结果事件  ：
+* 结果事件：
   * 在 `SpeechRecognitionMode_ShortPhrase` 模式下，在你说完后调用此事件并返回 n-best 结果。
   * 在 `SpeechRecognitionMode_LongDictation` 模式下，基于服务指示的语句停顿位置，多次调用事件处理程序。
-  * 对于每个最优选择  ，返回置信度值和几种不同形式的已识别文本。 有关详细信息，请参阅[输出格式](../Concepts.md#output-format)。
+  * 对于每个最优选择，返回置信度值和几种不同形式的已识别文本。 有关详细信息，请参阅[输出格式](../Concepts.md#output-format)。
 
 ## <a name="related-topics"></a>相关主题
 

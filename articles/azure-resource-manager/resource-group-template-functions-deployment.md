@@ -4,14 +4,14 @@ description: 介绍可在 Azure 资源管理器模板中使用的用于检索部
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/03/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 236fbb9e4ed3283ecf9147e6eb5033fb906a127b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194351"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983995"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的部署函数 
 
@@ -24,8 +24,6 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 若要从资源、资源组或订阅获取值，请参阅 [Resource functions](resource-group-template-functions-resource.md)（资源函数）。
 
 <a id="deployment" />
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment"></a>deployment
 `deployment()`
@@ -136,18 +134,6 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 }
 ```
 
-要使用 Azure CLI 部署此示例模板，请使用：
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
-要使用 PowerShell 部署此示例模板，请使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
 对于使用部署功能的订阅级别模板，请参阅[订阅部署功能](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)。 它使用 `az deployment create` 或 `New-AzDeployment` 命令进行部署。
 
 <a id="parameters" />
@@ -254,17 +240,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | arrayOutput | 阵列 | [1, 2, 3] |
 | crossOutput | String | option 1 |
 
-要使用 Azure CLI 部署此示例模板，请使用：
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
-
-要使用 PowerShell 部署此示例模板，请使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
+有关使用参数的详细信息，请参阅[Azure 资源管理器模板中的参数](template-parameters.md)。
 
 <a id="variables" />
 
@@ -275,7 +251,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 
@@ -356,17 +332,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-要使用 Azure CLI 部署此示例模板，请使用：
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
-
-要使用 PowerShell 部署此示例模板，请使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
+有关使用变量的详细信息，请参阅[Azure 资源管理器模板中的变量](template-variables.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。

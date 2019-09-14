@@ -47,6 +47,10 @@
       href: /rest/api/datashare
 - name: 资源
   items:
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataShare'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: 博客
       href: 'https://azure.microsoft.com/blog/announcing-preview-of-azure-data-share/'
     - name: Microsoft 技术社区

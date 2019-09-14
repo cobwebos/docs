@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 5a613a2eb6499538199306872f2e415019552686
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a4941038288b90bcbfd61660458c564ce64add9e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567716"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958509"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
 
@@ -130,7 +130,7 @@ ms.locfileid: "68567716"
 
      1. （可选）登录到 Azure 帐户：
 
-        ![登录  Azure](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
+        ![登录 Azure](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
 
      1. 从下拉列表中选择订阅、存储帐户和 Blob 容器，或者单击“创建”来创建自己的容器。 完成后，单击“确定”：
 

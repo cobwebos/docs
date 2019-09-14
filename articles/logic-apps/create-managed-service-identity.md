@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: bb1443afa14f2a23b807af52ab8fef6ac41ea200
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: d6cf19a07829afea924d3d799b1309cfc5f6329f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934040"
+ms.locfileid: "70959973"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识进行身份验证并访问资源
 
@@ -23,7 +23,7 @@ ms.locfileid: "70934040"
 > [!NOTE]
 > 逻辑应用只能将托管标识用于支持托管标识的连接器。 目前，只有 HTTP 连接器支持托管标识。
 >
-> 当前，每个 Azure 订阅中最多可以有 10 个具有系统分配的托管标识的逻辑应用工作流。
+> 目前，在每个 Azure 订阅中，最多可以有100个逻辑应用工作流和系统分配的托管标识。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -168,7 +168,7 @@ ms.locfileid: "70934040"
    > 
    > 在“访问群体”属性中，资源 ID 值必须完全匹配 Azure AD 的预期，包括任何必需的尾部反斜杠。 
    > 可以在此[描述支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)表中找到这些资源 ID 值。 
-   > 例如，如果使用 Azure 资源管理器资源 ID，请确保 URI 具有尾部反斜杠。
+   > 例如，如果你使用的是 Azure 资源管理器资源 ID，请确保 URI 包含尾随斜杠。
 
 1. 继续按照所需方式生成逻辑应用。
 

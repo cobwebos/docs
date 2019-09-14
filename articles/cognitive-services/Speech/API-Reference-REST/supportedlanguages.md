@@ -3,20 +3,20 @@ title: 必应语音支持的语言 | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: 必应语音支持的口述语言列表。
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 2cce7203d23d5de77200fdf75ab31042d9608352
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e53980482a2d355c0fb024658f8012d65354c7a5
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866369"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965957"
 ---
 # <a name="supported-languages"></a>支持的语言
 

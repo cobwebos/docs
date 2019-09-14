@@ -7,6 +7,14 @@
       href: Home.md
 - name: 快速入门
   items:
+    - name: 使用客户端 SDK
+      items:
+        - name: .NET SDK
+          href: quickstarts-sdk/csharp-sdk.md
+        - name: Python SDK
+          href: quickstarts-sdk/python-sdk.md
+        - name: Java SDK
+          href: quickstarts-sdk/java-sdk.md
     - name: 使用 REST API
       items:
         - name: 分析远程图像
@@ -75,18 +83,6 @@
           items:
             - name: Python
               href: QuickStarts/python-domain.md
-    - name: 使用 .NET SDK
-      items:
-        - name: 分析图像
-          href: quickstarts-sdk/csharp-analyze-sdk.md
-        - name: 生成缩略图
-          href: quickstarts-sdk/csharp-thumb-sdk.md
-        - name: 提取文本
-          href: quickstarts-sdk/csharp-hand-text-sdk.md
-    - name: 使用 Python SDK
-      href: quickstarts-sdk/python-sdk.md
-    - name: 使用 Java SDK
-      href: quickstarts-sdk/java-sdk.md
 - name: 教程
   items:
     - name: 生成图像的元数据

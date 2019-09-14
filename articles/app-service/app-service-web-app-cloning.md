@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 0f4915add76ce21064b7a79ae110f608592263bd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 47efcfc4bf2b0268d6720b659786300e751e861d
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067147"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983695"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 克隆 Azure 应用服务应用
 
@@ -44,13 +44,13 @@ $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-
 New-AzAppServicePlan -Location "North Central US" -ResourceGroupName DestinationAzureResourceGroup -Name DestinationAppServicePlan -Tier Standard
 ```
 
-`New-AzWebApp`使用命令, 可在美国中北部区域创建新应用, 并将其绑定到现有的应用服务计划。 此外，还可以使用相同的资源组作为源应用，或定义新的资源组，如以下命令所示：
+`New-AzWebApp`使用命令，可在美国中北部区域创建新应用，并将其绑定到现有的应用服务计划。 此外，还可以使用相同的资源组作为源应用，或定义新的资源组，如以下命令所示：
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
 ```
 
-要克隆现有应用（包括所有关联的部署槽位），需要使用 `IncludeSourceWebAppSlots` 参数。 以下 PowerShell 命令演示如何在 `New-AzWebApp` 命令中使用该参数：
+要克隆现有应用（包括所有关联的部署槽位），需要使用 `IncludeSourceWebAppSlots` 参数。  请注意， `IncludeSourceWebAppSlots`只支持使用该参数克隆整个应用，包括其所有槽。 以下 PowerShell 命令演示如何在 `New-AzWebApp` 命令中使用该参数：
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots

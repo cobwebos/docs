@@ -1,5 +1,5 @@
 ---
-title: B2B 协作-Azure Active Directory 故障排除 |Microsoft Docs
+title: B2B 协作故障排除-Azure Active Directory |Microsoft Docs
 description: Azure Active Directory B2B 协作的常见问题的补救措施
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4185d29ff1770ed9549b4b63a2e5da579bcf054f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f91ddee8668316df69c98ed14fbcabcb06b6da82
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767158"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983399"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B 协作故障排除
 
@@ -35,7 +35,7 @@ ms.locfileid: "65767158"
 
 ## <a name="invitations-have-been-disabled-for-directory"></a>已对目录禁用邀请
 
-如果收到无权邀请用户的通知，请在“用户设置”下验证用户帐户是否有权邀请外部用户：
+如果通知你无权邀请用户，请验证你的用户帐户是否有权邀请外部用户 Azure Active Directory > 用户设置 > 外部用户 > 管理外部协作设置：
 
 ![显示外部用户设置的屏幕截图](media/troubleshoot/external-user-settings.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "65767158"
 
 受邀用户所在组织正在使用 Azure Active Directory，但其中不存在特定用户帐户（例如，用户不存在于 AAD contoso.comAzure AD contoso.com 中）。 contoso.com 的管理员可能会设置一个策略以阻止创建用户。 用户必须向其管理员进行核实以确定是否允许外部用户。 外部用户的管理员可能需要在其域中允许电子邮件验证的用户（请参阅有关允许电子邮件验证的用户的此[文章](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)）。
 
-![错误，指出租户不允许电子邮件经过验证的用户](media/troubleshoot/allow-email-verified-users.png)
+![指出租户不允许电子邮件验证的用户的错误](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>外部用户尚未存在于联合域中
 
@@ -78,15 +78,15 @@ ms.locfileid: "65767158"
 
 如果此方案非常重要，则可取消 API 邀请电子邮件，并通过所选的电子邮件机制发送邮件。 请咨询所属组织的法律顾问，确保通过这种方式发送的任何电子邮件均符合隐私法规。
 
-## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>当您尝试登录到 Azure 资源时收到"AADSTS65005"错误
+## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>尝试登录到 Azure 资源时收到 "AADSTS65005" 错误
 
-具有来宾帐户的用户无法登录，并且正在接收以下错误消息：
+具有来宾帐户的用户无法登录，并收到以下错误消息：
 
     AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
 
-用户具有 Azure 用户帐户，并且已放弃或非托管的促销型租户。 此外，还有不全局或公司中租户的管理员。
+用户具有 Azure 用户帐户，并且是已被放弃或非托管的病毒租户。 此外，租户中没有全局或公司管理员。
 
-若要解决此问题，必须接管已放弃的租户。 请参阅[以在 Azure Active Directory 中的管理员身份接管非托管目录](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 您还必须以提供直接的证据，你可以控制命名空间的访问有问题的域后缀的面向 internet 的 DNS。 租户返回到托管状态后，请与客户进行讨论是否保留用户，并已验证的域名是其组织的最佳选项。
+若要解决此问题，必须接管放弃的租户。 请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 您还必须访问面向 internet 的 DNS 以获得相关的域后缀，以便提供您控制的命名空间的直接证据。 将租户返回到托管状态后，请与客户讨论是否将用户和验证的域名作为其组织的最佳选择。
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>具有实时或“病毒性”租户的来宾用户无法重置其密码
 

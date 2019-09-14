@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 4e589e694c728cfbd2237a138ad9a2f2bf2342dd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 8ec081a758096298036efacfe1b0e6d62ed00cbd
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900188"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961931"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或作业失败问题
 
@@ -80,7 +80,7 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 可以在 Apache Ambari 中使用 Web UI 和 REST API 对 HDInsight 群集进行管理和监视。 基于 Linux 的 HDInsight 群集上已随附 Ambari。 在 Azure 门户的“HDInsight”页上选择“群集仪表板”窗格。  选择“HDInsight 群集仪表板”窗格打开 Ambari UI，并输入群集登录凭据。  
 
-![Ambari UI](./media/hdinsight-troubleshoot-failed-cluster/ambari-ui.png)
+![Ambari UI](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
 
 若要打开服务视图列表，请在 Azure 门户页上选择“Ambari 视图”。  此列表的内容取决于安装的库。 例如，可能会显示“YARN 队列管理器”、“Hive 视图”和“Tez 视图”。  选择某个服务链接以查看配置和服务信息。
 
@@ -127,7 +127,7 @@ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v
 
 Ambari 将显示一条警报，其中指出了 WebHCat 服务已在哪些主机上关闭。 可以通过在相应的主机上重启 WebHCat 服务使其恢复运行。
 
-![重启 WebHCat 服务器](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat.png)
+![重启 WebHCat 服务器](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
 
 如果 WebHCat 服务器仍未运行，请查看操作日志中的故障消息。 有关更多详细信息，请查看节点上提到的 `stderr` 和 `stdout` 文件。
 
@@ -176,7 +176,7 @@ Templeton 调用 YARN 来运行作业，Templeton 与 YARN 之间的通信可能
 
     下图显示了过度使用内存 (714.4%) 时的 joblauncher 队列。 只要默认队列中仍有可借用的容量，则此状态都是可接受的。 但是，当群集完全被占用并且 YARN 内存容量已被 100% 使用时，新作业必须等待，最终导致超时。
 
-    ![Joblauncher 队列](./media/hdinsight-troubleshoot-failed-cluster/joblauncher-queue.png)
+    ![Joblauncher 队列](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
 
     可通过两种方法解决此问题：降低新作业的提交速度，或通过扩展群集来提高旧作业的消耗速度。
 
@@ -208,7 +208,7 @@ Templeton 调用 YARN 来运行作业，Templeton 与 YARN 之间的通信可能
 
 Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务版本历史记录的信息。  错误的 Hadoop 服务库版本可能是群集故障的原因。  在 Ambari UI 中选择“管理”菜单，然后选择“堆栈和版本”。  选择页面上的“版本”选项卡查看服务版本信息：
 
-![堆栈和版本](./media/hdinsight-troubleshoot-failed-cluster/stack-versions.png)
+![堆栈和版本](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
 ## <a name="step-5-examine-the-log-files"></a>步骤 5：检查日志文件
 
@@ -232,7 +232,7 @@ HDInsight Ambari UI 中包含一些“快速链接”部分。  若要访问 HDI
 
 例如，对于 HDFS 日志：
 
-![日志文件的 Ambari 快速链接](./media/hdinsight-troubleshoot-failed-cluster/quick-links.png)
+![日志文件的 Ambari 快速链接](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-quick-links.png)
 
 ### <a name="view-hadoop-generated-log-files"></a>查看 Hadoop 生成的日志文件
 

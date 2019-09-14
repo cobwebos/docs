@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 17615c0005a3cbc5b20cea697b4c75b5ed06ae0a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0fecb41c3417d5b43e0638815d6a7d274ba461b0
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811994"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961971"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 中的机器学习
 
@@ -29,7 +29,7 @@ ms.locfileid: "70811994"
 
 [R](https://www.r-project.org/) 目前是世界上最常用的统计编程语言。 它是一种开源数据可视化工具，其社区的用户超过 250 万，并且仍在增长。 R 拥有蓬勃增长的用户群，其用户贡献的程序包超过 8,000 个，是许多需要机器学习的公司的极佳选择。 可以使用 ML Services 创建随时可与大型数据集和模型配合使用的 HDInsight 群集。 这项功能为数据科学家和统计学家提供了可通过 HDInsight 按需缩放的熟悉 R 界面，并消除了群集设置和维护方面的开销。
 
-![通过 R Server 进行预测训练](./media/hdinsight-machine-learning-overview/r-training.png)
+![通过 R Server 进行预测训练](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
 
 群集的边缘节点为连接到群集和运行 R 脚本提供了便捷的位置。  还可以选择跨群集的各个节点运行 R 脚本，只需使用 ScaleR 的 Hadoop Map Reduce 或 Spark 计算上下文即可。
 
@@ -39,7 +39,7 @@ ms.locfileid: "70811994"
 
 Azure 机器学习不仅提供预测分析建模工具，还提供完全托管的服务，可以通过此服务将预测模型部署为随时可用的 Web 服务。 Azure 机器学习是云中的完整预测分析解决方案，可以用来创建、测试、操作和管理预测模型。 可以从大型算法库中进行选择、使用基于 Web 的工作室来构建模型，然后将模型轻松部署为 Web 服务。
 
-![通过 Microsoft Azure 机器学习使高级分析可供 Hadoop 访问](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
+![通过 Microsoft Azure 机器学习使高级分析可供 Hadoop 访问](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
 使用 [Hive 查询](../machine-learning/team-data-science-process/create-features-hive.md)，在 HDInsight Hadoop 群集中创建数据特征。 *特征工程*尝试通过从原始数据创建特征，简化学习过程，从而增加学习算法的预测能力。 可以使用[“导入数据”模块](../machine-learning/studio/import-data.md)从 Azure 机器学习工作室运行 HiveQL 查询，以及访问在 Hive 中处理和在 Blob 存储中存储的数据。
 

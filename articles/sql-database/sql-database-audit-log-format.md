@@ -7,20 +7,20 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 334d277370bb8d6678679c887f6a2b89d65652c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 19795d5dc3998f601de8121176e52ef9dc83ee47
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569470"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958458"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL 数据库审核日志格式
 
-[AZURE SQL 数据库审核](sql-database-auditing.md)跟踪数据库事件, 并将这些事件写入 Azure 存储帐户中的审核日志, 或将其发送到事件中心或 Log Analytics 以进行下游处理和分析。
+[AZURE SQL 数据库审核](sql-database-auditing.md)跟踪数据库事件，并将这些事件写入 Azure 存储帐户中的审核日志，或将其发送到事件中心或 Log Analytics 以进行下游处理和分析。
 
 ## <a name="naming-conventions"></a>命名约定
 
@@ -34,15 +34,15 @@ Blob 存储中存储的审核日志存储在 Azure 存储帐户中名为 `sqldba
 
 ### <a name="event-hub"></a>事件中心
 
-审核事件将写入审核配置过程中定义的命名空间和事件中心, 并在[Apache Avro](https://avro.apache.org/)事件的正文中捕获并使用 utf-8 格式的 JSON 格式进行存储。 若要读取审核日志，可以使用 [Avro 工具](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools)或处理此格式的类似工具。
+审核事件将写入审核配置过程中定义的命名空间和事件中心，并在[Apache Avro](https://avro.apache.org/)事件的正文中捕获并使用 utf-8 格式的 JSON 格式进行存储。 若要读取审核日志，可以使用 [Avro 工具](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools)或处理此格式的类似工具。
 
 ### <a name="log-analytics"></a>Log Analytics
 
-审核事件将写入审核配置过程中定义的`AzureDiagnostics` Log Analytics 工作区, 并写入到具有类别`SQLSecurityAuditEvents`的表中。 有关 Log Analytics 搜索语言和命令的其他有用信息，请参阅 [Log Analytics 搜索参考](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search)。
+审核事件将写入审核配置过程中定义的`AzureDiagnostics` Log Analytics 工作区，并写入到具有类别`SQLSecurityAuditEvents`的表中。 有关 Log Analytics 搜索语言和命令的其他有用信息，请参阅 [Log Analytics 搜索参考](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search)。
 
 ## <a id="subheading-1"></a>审核日志字段
 
-| 名称 (Blob) | 名称 (事件中心/Log Analytics) | 描述 | Blob 类型 | 事件中心/Log Analytics 类型 |
+| 名称 (Blob) | 名称（事件中心/Log Analytics） | 描述 | Blob 类型 | 事件中心/Log Analytics 类型 |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | 操作的 ID | varchar(4) | string |
 | action_name | action_name_s | 操作的名称 | 不可用 | string |

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cf72a83035e318d3a937176bbaaebd8e298d3ad2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 358cbfb80da03d20475e591f0fd0c5b907b83b22
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390595"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984702"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -175,7 +175,7 @@ ms.locfileid: "70390595"
     >
     >   如果请求数据的格式不能由模型使用，则该脚本可以将其转换为可接受的格式。 它还可以在将响应返回给客户端之前对其进行转换。
     >
-    > * Azure 机器学习 SDK 不为 web 服务或 IoT Edge 部署提供访问数据存储或数据集的方法。 如果部署的模型需要访问在部署外部存储的数据，例如 Azure 存储帐户中的数据，则必须使用相关的 SDK 开发自定义代码解决方案。 例如，[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)。
+    > * Azure 机器学习 SDK 不为 web 服务或 IoT Edge 部署提供访问数据存储或数据集的方法。 如果部署的模型需要访问在部署外部存储的数据，例如 Azure 存储帐户中的数据，则必须使用相关的 SDK 开发自定义代码解决方案。 例如,[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)。
     >
     >   可能适用于你的方案的一种替代方法是[批处理预测](how-to-run-batch-predictions.md)，它在评分期间提供对数据存储区的访问。
 
@@ -189,7 +189,7 @@ ms.locfileid: "70390595"
 
 条目脚本接收提交给已部署 web 服务的数据，并将其传递给模型。 然后，该脚本接收模型返回的响应，并将该响应返回给客户端。 *该脚本特定于您的模型*。 它必须了解模型需要的数据并返回数据。
 
-该脚本包含用于加载和运行模型的两个函数：
+该脚本包含用于加载和运行模型的两个函数:
 
 * `init()`：通常，此函数将模型加载到全局对象。 当 web 服务的 Docker 容器启动时，此函数只运行一次。
 
@@ -241,11 +241,11 @@ dependencies:
 
 如果要使用自动生成架构，则输入脚本必须导入`inference-schema`包。
 
-定义`input_sample` 和`output_sample`变量中的输入和输出示例格式，表示 web 服务的请求和响应格式。 在`run()`函数的 input 和 output 函数修饰器中使用这些示例。 以下 scikit-learn 示例使用架构生成。
+定义`input_sample` 和`output_sample`变量中的输入和输出示例格式, 表示 web 服务的请求和响应格式。 在`run()`函数的 input 和 output 函数修饰器中使用这些示例。 以下 scikit-learn 示例使用架构生成。
 
 ##### <a name="example-entry-script"></a>示例条目脚本
 
-下面的示例演示如何接受并返回 JSON 数据：
+下面的示例演示如何接受并返回 JSON 数据:
 
 ```python
 #Example: scikit-learn and Swagger
@@ -486,7 +486,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 例如，如果没有与工作区关联的 Azure Kubernetes Service （AKS）实例，则可能还需要创建计算资源。
 
-下表提供了为每个计算目标创建部署配置的示例：
+下表提供了为每个计算目标创建部署配置的示例:
 
 | 计算目标 | 部署配置示例 |
 | ----- | ----- |
@@ -558,7 +558,7 @@ print(service.state)
 
 #### <a name="using-the-cli"></a>使用 CLI
 
-若要使用 CLI 部署模型，请使用以下命令。 替换`mymodel:1`为注册的模型的名称和版本：
+若要使用 CLI 部署模型，请使用以下命令。 替换`mymodel:1`为注册的模型的名称和版本:
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
@@ -582,7 +582,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 ## <a name="consume-web-services"></a>使用 Web 服务
 
-每个已部署的 web 服务都提供 REST API，因此你可以使用各种编程语言来创建客户端应用程序。
+每个已部署的 web 服务都提供 REST API, 因此你可以使用各种编程语言来创建客户端应用程序。
 如果已为服务启用密钥身份验证，则需要提供服务密钥作为请求标头中的令牌。
 如果已为服务启用令牌身份验证，则需要提供 Azure 机器学习 JWT 令牌作为请求标头中的持有者令牌。
 
@@ -804,6 +804,19 @@ Azure 机器学习计算目标由 Azure 机器学习服务创建和管理。 它
 
 * [Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 * [Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
+
+## <a name="download-a-model"></a>下载模型
+如果要下载模型以便在自己的执行环境中使用它，则可以使用以下 SDK/CLI 命令执行此操作：
+
+SDK
+```python
+model_path = Model(ws,'mymodel').download()
+```
+
+CLI：
+```azurecli-interactive
+az ml model download --model-id mymodel:1 --target-dir model_folder
+```
 
 ## <a name="package-models"></a>包模型
 

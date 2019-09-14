@@ -7,16 +7,16 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/21/2019
+ms.date: 09/12/2019
 ms.author: dapine
-ms.openlocfilehash: 74d95d70438431495c9072e115854b1ccfa05bcb
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f4e0770bc052044a408f2c4088f2bd5ead225aa3
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051905"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968548"
 ---
-## <a name="verify-the-language-detection-container-instance"></a>验证语言检测容器实例
+### <a name="verify-the-language-detection-container-instance"></a>验证语言检测容器实例
 
 1. 选择 "**概览**" 选项卡, 然后复制 IP 地址。
 1. 打开新的浏览器选项卡, 并输入 IP 地址。 例如，输入 `http://<IP-address>:5000 (http://55.55.55.55:5000`)。 此时会显示容器的主页, 使你知道容器正在运行。
@@ -53,7 +53,7 @@ ms.locfileid: "70051905"
 
 1. 选择“执行”以确定文本的情绪。
 
-    容器中打包的模型生成范围为0到1之间的分数, 其中0表示负情绪, 1 表示正情绪。
+    容器中打包的模型生成范围为0到1之间的分数，其中0表示负情绪，1表示正情绪。
 
     返回的 JSON 响应包括更新的文本输入的情绪：
 
@@ -127,4 +127,4 @@ ms.locfileid: "70051905"
     }
     ```
 
-现在, 我们可以按相应`id`的方式将响应负载的 JSON 数据的文档与原始请求负载文档关联。 每个文档独立对待`characterCount` , 其中包含各种统计信息, 例如和。 `transactionCount` 此外, 每个生成的文档`detectedLanguages`都具有每`name`个检测到`score`的语言的、 `iso6391Name`和的数组。 检测到多个语言时, `score`将使用来确定最可能的语言。
+现在，我们可以按相应`id`的方式将响应负载的 JSON 数据的文档与原始请求负载文档关联。 每个文档独立对待`characterCount` ，其中包含各种统计信息，例如和。 `transactionCount` 此外，每个生成的文档`detectedLanguages`都具有每`name`个检测到`score`的语言的、 `iso6391Name`和的数组。 检测到多个语言时， `score`将使用来确定最可能的语言。

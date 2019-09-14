@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: da987b5e841824dc62f3b740cae2961de9d7b293
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 62f633b617abb52e1be4003f65cc537cc9ff2a25
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872902"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983779"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 可以使用 [Azure 备份服务](backup-overview.md)备份本地计算机和工作负荷以及 Azure 虚拟机 (VM)。 本文汇总了使用 Azure 备份服务备份 Azure VM 时的支持设置和限制。
@@ -180,7 +180,7 @@ Azure VM 数据磁盘 | 备份包含 16 个或更少数据磁盘的 VM。 <br/><
 具有多个网络适配器的 VM  | 。 <br/><br/> [详细了解](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)如何还原使用特殊网络设置的 VM。
 具有公共 IP 地址的 VM    | 。<br/><br/> 将现有的公共 IP 地址与 NIC 相关联，或者在完成还原后创建一个地址，并将其与 NIC 相关联。
 NIC/子网上的网络安全组 (NSG)。 |   。
-保留的 IP 地址（静态） | 不受支持。<br/><br/> 无法备份使用保留 IP 地址且未定义终结点的 VM。
+静态 IP 地址 | 不受支持。<br/><br/> 将为从还原点创建的新 VM 分配动态 IP 地址。<br/><br/> 对于经典 Vm，不能使用保留的 IP 地址和未定义的终结点来备份虚拟机。
 动态 IP 地址 |    。<br/><br/> 如果源 VM 上的 NIC 使用动态 IP 地址，则默认情况下，已还原 VM 上的 NIC 也使用动态 IP 地址。
 Azure 流量管理器   | 。<br/><br/>如果备份的 VM 位于流量管理器中，请手动将已还原的 VM 添加到同一个流量管理器实例。
 Azure DNS | 。

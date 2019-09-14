@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f619a0179849e2ca17a0528d97ef13f0788a4838
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 09cca0eda9a82b1605323678d7442700dc1a2292
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811540"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960500"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>在 Azure HDInsight 上 Apache Kafka 自带密钥
 
@@ -58,7 +58,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
         b. 将“选项”设置为“生成”并提供密钥名称。
 
-        ![生成密钥名称](./media/apache-kafka-byok/kafka-create-a-key.png "生成密钥名称")
+        ![生成密钥名称](./media/apache-kafka-byok/apache-kafka-create-key.png "生成密钥名称")
 
         c. 选择从密钥列表中创建的密钥。
 
@@ -103,7 +103,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
    若要轮换密钥，必须具有新密钥的完整 url （请参阅[设置 Key Vault 和密钥](#setup-the-key-vault-and-keys)的步骤3）。 完成此项后，转到门户中的 Kafka 群集属性部分，并单击 "**磁盘加密密钥 URL**" 下的 "**更改密钥**"。 输入新的密钥 url，并提交以旋转密钥。
 
-   ![Kafka 轮换磁盘加密密钥](./media/apache-kafka-byok/kafka-change-key.png)
+   ![Kafka 轮换磁盘加密密钥](./media/apache-kafka-byok/apache-kafka-change-key.png)
 
 ## <a name="faq-for-byok-to-apache-kafka"></a>Apache Kafka BYOK 的常见问题解答
 

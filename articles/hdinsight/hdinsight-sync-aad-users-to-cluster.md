@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f58c847f512f2db72fdca823637192c3b638b1ae
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 9a7008ca7967135209b8fc2c341998570a2679be
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879382"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960840"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>将 Azure Active Directory 用户同步到 HDInsight 群集
 
@@ -31,11 +31,11 @@ ms.locfileid: "70879382"
 
 2. 从左侧菜单选择“所有用户”，然后选择“新建用户”。
 
-    ![“所有用户”窗格](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
+    ![“所有用户”窗格](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
 3. 完成新用户表单。 选择所创建的组，以便分配基于群集的权限。 在此示例中，请创建名为“HiveUsers”的组，以便向其分配新用户。 [示例说明](hdinsight-domain-joined-configure.md)介绍如何创建 ESP 群集，其中包括如何添加 `HiveUsers` 和 `AAD DC Administrators` 这两个组。
 
-    ![“新建用户”窗格](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
+    ![“新建用户”窗格](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
 4. 选择“创建”。
 
@@ -131,11 +131,11 @@ ms.locfileid: "70879382"
 
 1. 在 Ambari 仪表板中，选择“管理”菜单下的“管理 Ambari”。
 
-    ![管理 Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-ambari.png)
+    ![管理 Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
 2. 在页面左侧的“用户 + 组管理”菜单组下选择“用户”。
 
-    ![“用户”菜单项](./media/hdinsight-sync-aad-users-to-cluster/users-link.png)
+    ![“用户”菜单项](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
 3. 新用户应在“用户”表中列出。 “类型”设置为 `LDAP` 而非 `Local`。
 

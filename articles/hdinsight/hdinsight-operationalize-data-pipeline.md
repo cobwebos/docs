@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 524386c046534b0ef0050e15d326118b84822822
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dec3cdd63f3e3ff303bfd60ca1ae77a4c4641190
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718042"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961376"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使数据分析管道可操作化
 
-数据管道构成多个数据分析解决方案的基础  。 顾名思义，数据管道使用原始数据，对其进行清除并按需重塑，然后通常在存储处理的数据之前执行计算或聚合。 处理的数据供客户端、报表或 API 使用。 数据管道必须提供可重复的结果，无论是按计划还是由新数据触发。
+数据管道构成多个数据分析解决方案的基础。 顾名思义，数据管道使用原始数据，对其进行清除并按需重塑，然后通常在存储处理的数据之前执行计算或聚合。 处理的数据供客户端、报表或 API 使用。 数据管道必须提供可重复的结果，无论是按计划还是由新数据触发。
 
 本文介绍如何使用 HDInsight Hadoop 群集上运行的 Oozie 让数据管道可操作化，以实现可重复性。 示例方案演示的数据管道用于准备和处理航班时间序列数据。
 
@@ -25,21 +25,21 @@ ms.locfileid: "64718042"
 
 | 年 | 月 | DAY_OF_MONTH | 承运商 |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2017 | 第 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
-| 2017 | 第 | 3 | AS | 9.435449 | 5.482143 | 572289 |
-| 2017 | 第 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
+| 2017 | 1 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
+| 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
+| 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
 示例管道等待一个新时间段的航班数据到达，然后将详细航班信息存储到 Apache Hive 数据仓库，用于长期分析。 管道还创建一个较小的数据集，用于汇总每日航班数据。 此每日航班汇总数据发送到 SQL 数据库，为网站等提供报表。
 
 下图展示了此示例管道。
 
-![航班数据管道](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
+![航班数据管道](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
 
 ## <a name="apache-oozie-solution-overview"></a>Apache Oozie 解决方案概述
 
 此管道使用 HDInsight Hadoop 群集上运行的 Apache Oozie。
 
-Oozie 根据操作、工作流和协调器对管道进行描述    。 操作决定要执行的实际工作，例如运行 Hive 查询。 工作流定义操作序列。 协调器定义工作流运行的时间计划。 协调器还可依照新数据的可用性情况来启动工作流的实例。
+Oozie 根据操作、工作流和协调器对管道进行描述。 操作决定要执行的实际工作，例如运行 Hive 查询。 工作流定义操作序列。 协调器定义工作流运行的时间计划。 协调器还可依照新数据的可用性情况来启动工作流的实例。
 
 下图展示此示例 Oozie 管道的高级设计。
 
@@ -53,21 +53,21 @@ Oozie 根据操作、工作流和协调器对管道进行描述    。 操作决
 
 1. 使用 Azure 门户，创建名为 `oozie` 的新资源组，用于包含此示例使用的所有资源。
 2. 在此 `oozie` 资源组中，预配置 Azure SQL Server 和数据库。 不需要大于 S1 标准定价层的数据库。
-3. 使用 Azure 门户，导航到新部署的 SQL 数据库 的窗格，并选择“工具”  。
+3. 使用 Azure 门户，导航到新部署的 SQL 数据库 的窗格，并选择“工具”。
 
-    ![工具按钮](./media/hdinsight-operationalize-data-pipeline/sql-db-tools.png)
+    ![工具按钮](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-tools-button.png)
 
-4. 选择“查询编辑器”  。
+4. 选择“查询编辑器”。
 
-    ![查询编辑器按钮](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor.png)
+    ![查询编辑器按钮](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor1.png)
 
-5. 在“查询编辑器”窗格中，选择“登录”   。
+5. 在“查询编辑器”窗格中，选择“登录”。
 
-    ![“登录”按钮](./media/hdinsight-operationalize-data-pipeline/sql-db-login1.png)
+    ![“登录”按钮](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window1.png)
 
-6. 输入 SQL 数据库凭据并选择“确定”  。
+6. 输入 SQL 数据库凭据并选择“确定”。
 
-   ![登录窗体](./media/hdinsight-operationalize-data-pipeline/sql-db-login2.png)
+   ![登录窗体](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window2.png)
 
 7. 在“查询编辑器”文本区域中，输入以下 SQL 语句以创建 `dailyflights` 表，用于存储每次管道运行后的汇总数据。
 
@@ -88,51 +88,51 @@ Oozie 根据操作、工作流和协调器对管道进行描述    。 操作决
     GO
     ```
 
-8. 选择“运行”以执行 SQL 语句  。
+8. 选择“运行”以执行 SQL 语句。
 
-    ![“运行”按钮](./media/hdinsight-operationalize-data-pipeline/sql-db-run.png)
+    ![“运行”按钮](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-run-button.png)
 
 Azure SQL 数据库现已准备就绪。
 
 #### <a name="provision-an-hdinsight-hadoop-cluster"></a>预配置 HDInsight Hadoop 群集
 
-1. 在 Azure 门户中，选择“+新建”，并搜索 HDInsight  。
-2. 选择“创建”  。
+1. 在 Azure 门户中，选择“+新建”，并搜索 HDInsight。
+2. 选择“创建”。
 3. 在“基础知识”窗格上，为群集提供一个唯一的名称并选择 Azure 订阅。
 
-    ![HDInsight 群集名称和订阅](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)
+    ![HDInsight 群集名称和订阅](./media/hdinsight-operationalize-data-pipeline/cluster-name-subscription.png)
 
-4. 在“群集类型”窗格中，选择“Hadoop”群集类型、“Linux”操作系统和最新版本的 HDInsight 群集    。 将“群集层”保留为“标准”   。
+4. 在“群集类型”窗格中，选择“Hadoop”群集类型、“Linux”操作系统和最新版本的 HDInsight 群集。 将“群集层”保留为“标准”。
 
-    ![HDInsight 群集类型](./media/hdinsight-operationalize-data-pipeline/hdi-cluster-type.png)
+    ![HDInsight 群集类型](./media/hdinsight-operationalize-data-pipeline/hdinsight-cluster-type.png)
 
-5. 选择“选择”以应用群集类型选择  。
-6. 通过提供登录密码并从列表选择 `oozie` 资源组，完成“基础知识”窗格，然后选择“下一步”   。
+5. 选择“选择”以应用群集类型选择。
+6. 通过提供登录密码并从列表选择 `oozie` 资源组，完成“基础知识”窗格，然后选择“下一步”。
 
-    ![HDInsight 基础知识窗格](./media/hdinsight-operationalize-data-pipeline/hdi-basics.png)
+    ![HDInsight 基础知识窗格](./media/hdinsight-operationalize-data-pipeline/hdinsight-basics-pane.png)
 
-7. 在“存储”窗格中，将主存储类型保留设置为“Azure 存储”，选择“新建”并为新帐户提供名称    。
+7. 在“存储”窗格中，将主存储类型保留设置为“Azure 存储”，选择“新建”并为新帐户提供名称。
 
-    ![HDInsight 存储帐户设置](./media/hdinsight-operationalize-data-pipeline/hdi-storage.png)
+    ![HDInsight 存储帐户设置](./media/hdinsight-operationalize-data-pipeline/storage-account-settings.png)
 
-8. 对于“元存储设置”，在“为 Hive 选择 SQL 数据库”下选择之前创建的数据库   。
+8. 对于“元存储设置”，在“为 Hive 选择 SQL 数据库”下选择之前创建的数据库。
 
-    ![HDInsight Hive 元存储设置](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-hive.png)
+    ![HDInsight Hive 元存储设置](./media/hdinsight-operationalize-data-pipeline/hive-metastore-settings.png)
 
-9. 选择“SQL 数据库身份验证”  。
+9. 选择“SQL 数据库身份验证”。
 
     ![HDInsight Hive 元存储身份验证](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
 
-10. 输入 SQL 数据库用户名和密码，然后选择“选择”  。 
+10. 输入 SQL 数据库用户名和密码，然后选择“选择”。 
 
        ![HDInsight Hive 元存储身份验证登录](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
 
-11. 回到“元存储设置”窗格，选择用于 Oozie 元数据存储的数据库，并按以往方式进行身份验证  。 
+11. 回到“元存储设置”窗格，选择用于 Oozie 元数据存储的数据库，并按以往方式进行身份验证。 
 
        ![HDInsight 元存储设置](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
 12. 选择“**下一步**”。
-13. 在“摘要”窗格上，选择“创建”以部署群集   。
+13. 在“摘要”窗格上，选择“创建”以部署群集。
 
 ### <a name="verify-ssh-tunneling-setup"></a>验证 SSH 隧道设置
 
@@ -151,7 +151,7 @@ Azure SQL 数据库现已准备就绪。
 
     http:\//headnodehost:8080
 
-3. 若要从 Ambari 中访问“Oozie Web 控制台”，请依次选择“Oozie”、“快速链接”和“Oozie Web 控制台”     。
+3. 若要从 Ambari 中访问“Oozie Web 控制台”，请依次选择“Oozie”、“快速链接”和“Oozie Web 控制台”。
 
 ### <a name="configure-hive"></a>配置 Hive
 
@@ -176,11 +176,11 @@ Azure SQL 数据库现已准备就绪。
 示例数据现在可用。 但是，管道需要两个用于处理的 Hive 表，一个用于传入数据 (`rawFlights`)，一个用于汇总数据 (`flights`)。 在 Ambari 中创建这些表，如下所示。
 
 1. 通过导航到 http:\//headnodehost:8080 登录 Ambari。
-2. 从服务列表选择“Hive”  。
+2. 从服务列表选择“Hive”。
 
     ![在 Ambari 中选择 Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
-3. 选择 Hive 视图 2.0 标签旁的“转到视图”  。
+3. 选择 Hive 视图 2.0 标签旁的“转到视图”。
 
     ![在 Ambari 中选择 Hive 视图](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
@@ -209,7 +209,7 @@ Azure SQL 数据库现已准备就绪。
     LOCATION '/example/data/flights'
     ```
 
-5. 选择“执行”以创建表  。
+5. 选择“执行”以创建表。
 
     ![Ambari 中的 Hive 查询](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
@@ -239,7 +239,7 @@ Azure SQL 数据库现已准备就绪。
     );
     ```
 
-7. 选择“执行”以创建表  。
+7. 选择“执行”以创建表。
 
 ### <a name="create-the-oozie-workflow"></a>创建 Oozie 工作流
 
@@ -425,9 +425,9 @@ day=03
 | hiveDataFolder | Azure 存储中指向临时表包含的数据的路径。 |
 | sqlDatabaseConnectionString | 指向 Azure SQL 数据库的 JDBC 语法连接字符串。 |
 | sqlDatabaseTableName | Azure SQL 数据库中插入了汇总行的表的名称。 保留为 `dailyflights`。 |
-| year | 用于计算航班汇总的日期的年份部分。 原样保留。 |
+| 年 | 用于计算航班汇总的日期的年份部分。 原样保留。 |
 | 月份 | 用于计算航班汇总的日期的月份部分。 原样保留。 |
-| day | 用于计算航班汇总的日期的月份部分的日期。 原样保留。 |
+| 天 | 用于计算航班汇总的日期的月份部分的日期。 原样保留。 |
 
 > [!NOTE]  
 > 确保先使用特定于环境的值更新 `job.properties` 文件的副本，再部署和运行 Oozie 工作流。
@@ -461,11 +461,11 @@ day=03
 
         oozie job -config job.properties -run
 
-7. 使用 Oozie Web 控制台观察状态。 从 Ambari 内部，依次选择“Oozie”、“快速链接”和“Oozie Web 控制台”    。 在“工作流作业”选项卡下，选择“所有作业”   。
+7. 使用 Oozie Web 控制台观察状态。 从 Ambari 内部，依次选择“Oozie”、“快速链接”和“Oozie Web 控制台”。 在“工作流作业”选项卡下，选择“所有作业”。
 
     ![Oozie Web 控制台工作流](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
-8. 当状态为 SUCCEEDED（成功）时，查询 SQL 数据库表以查看插入行。 使用 Azure 端口，导航到 SQL 数据库的窗格，选择“工具”，然后打开“查询编辑器”   。
+8. 当状态为 SUCCEEDED（成功）时，查询 SQL 数据库表以查看插入行。 使用 Azure 端口，导航到 SQL 数据库的窗格，选择“工具”，然后打开“查询编辑器”。
 
         SELECT * FROM dailyflights
 
@@ -550,7 +550,7 @@ day=03
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    协调器负责按照 `frequency` 属性指定的间隔，在 `start` 和 `end` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上面的协调器定义中，协调器被配置为从 2017 年 1 月 1 日到 2017 年 1 月 5 日运行操作。 频率通过 [Oozie 表达式语言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)频率表达式 `${coord:days(1)}` 设置为 1 天。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”  。 例如，若要处理 2017 年 1 月 1 日的数据，协调器将把操作的名义时间计划为 2017-01-01T00:00:00 GMT。
+    协调器负责按照 `frequency` 属性指定的间隔，在 `start` 和 `end` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上面的协调器定义中，协调器被配置为从 2017 年 1 月 1 日到 2017 年 1 月 5 日运行操作。 频率通过 [Oozie 表达式语言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)频率表达式 `${coord:days(1)}` 设置为 1 天。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”。 例如，若要处理 2017 年 1 月 1 日的数据，协调器将把操作的名义时间计划为 2017-01-01T00:00:00 GMT。
 
 * 第 2 点：在工作流的日期范围内，`dataset` 元素指定 HDFS 中查找特定日期范围的数据的位置，并配置 Oozie 如何确定数据是否还可进行处理。
 
@@ -638,7 +638,7 @@ sqlDatabaseTableName=dailyflights
     oozie job -config job.properties -run
     ```
 
-5. 使用 Oozie Web 控制台验证状态，这一次选择“协调器作业”选项卡，然后选择“全部作业”   。
+5. 使用 Oozie Web 控制台验证状态，这一次选择“协调器作业”选项卡，然后选择“全部作业”。
 
     ![Oozie Web 控制台协调器作业](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 

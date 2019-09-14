@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: d924f0eb89984fbe77f94eff553d00a25b4b7a3a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 485c79bab90295cf9af9ef1dbbc209d46931a485
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309617"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984942"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>为数据库服务器使用虚拟网络服务终结点和规则
 
@@ -244,7 +244,7 @@ PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdletNew-AzSqlServ
 3. 将“允许访问 Azure 服务”控件设置为“禁用”。
 
     > [!IMPORTANT]
-    > 如果将此控件设置为“启用”，则 Azure SQL 数据库服务器接受来自任何子网的通信。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 针对 SQL 数据库结合使用 Microsoft Azure 虚拟网络服务终结点功能和虚拟网络规则功能，可以降低安全风险。
+    > 如果将控制设置为 "打开"，则 Azure SQL 数据库服务器接受来自 Azure 边界内的任何子网的通信，即从可识别为 Azure 数据中心定义的范围内的某个 IP 地址发起。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 针对 SQL 数据库结合使用 Microsoft Azure 虚拟网络服务终结点功能和虚拟网络规则功能，可以降低安全风险。
 
 4. 在“虚拟网络”部分单击“+ 添加现有项”控件。
 

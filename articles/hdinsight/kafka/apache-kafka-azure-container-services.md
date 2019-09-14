@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: dc2c3e557f295bd3125c09d9b839716159dcf50b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e87ac268ab5448f38470f46bd6b0c7f2cdd204ce
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446461"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960592"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>将 Azure Kubernetes 服务与 Apache Kafka on HDInsight 配合使用
 
@@ -24,7 +24,7 @@ ms.locfileid: "67446461"
 > [!NOTE]  
 > 本文重点讲解需要执行哪些步骤才能让 Azure Kubernetes 服务与 Kafka on HDInsight 通信。 示例本身只是一个用于演示配置工作原理的基本 Kafka 客户端。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Azure 订阅
@@ -35,7 +35,7 @@ ms.locfileid: "67446461"
 * Azure Kubernetes 服务
 * Azure 虚拟网络
 
-此外，本文档还假设读者已学完了 [Azure Kubernetes 服务教程](../../aks/tutorial-kubernetes-prepare-app.md)。 本文将创建一个容器服务下创建 Kubernetes 群集，容器注册表，并配置`kubectl`实用程序。
+此外，本文档还假设读者已学完了 [Azure Kubernetes 服务教程](../../aks/tutorial-kubernetes-prepare-app.md)。 本文创建容器服务，创建 Kubernetes 群集和容器注册表，并配置该`kubectl`实用工具。
 
 ## <a name="architecture"></a>体系结构
 
@@ -63,13 +63,13 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 ## <a name="configure-virtual-network-peering"></a>配置虚拟网络对等互连
 
-1. 在 [Azure 门户](https://portal.azure.com)中选择“资源组”，找到包含 AKS 群集虚拟网络的资源组。  该资源组名为 `MC_<resourcegroup>_<akscluster>_<location>`。 `resourcegroup` 和 `akscluster` 条目是在其中创建群集的资源组的名称，并且是该群集的名称。 `location` 是在其中创建群集的位置。
+1. 在 [Azure 门户](https://portal.azure.com)中选择“资源组”，找到包含 AKS 群集虚拟网络的资源组。 该资源组名为 `MC_<resourcegroup>_<akscluster>_<location>`。 `resourcegroup` 和 `akscluster` 条目是在其中创建群集的资源组的名称，并且是该群集的名称。 `location` 是在其中创建群集的位置。
 
-2. 在该资源组中，选择“虚拟网络”资源。 
+2. 在该资源组中，选择“虚拟网络”资源。
 
-3. 选择“地址空间”。  记下列出的地址空间。
+3. 选择“地址空间”。 记下列出的地址空间。
 
-4. 若要为 HDInsight 创建虚拟网络，请依次选择“+ 创建资源”、“网络”、“虚拟网络”。   
+4. 若要为 HDInsight 创建虚拟网络，请依次选择“+ 创建资源”、“网络”、“虚拟网络”。
 
     > [!IMPORTANT]  
     > 输入新虚拟网络的值时，使用的地址空间不得与 AKS 群集网络使用的地址空间重叠。
@@ -78,48 +78,48 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
     等到创建完虚拟网络，然后转到下一步。
 
-5. 若要在 HDInsight 网络与 AKS 群集网络之间配置对等互连，请选择虚拟网络，然后选择“对等互连”。  选择“+ 添加”，然后使用以下值填充表单： 
+5. 若要在 HDInsight 网络与 AKS 群集网络之间配置对等互连，请选择虚拟网络，然后选择“对等互连”。 选择“+ 添加”，然后使用以下值填充表单：
 
    * __名称__：输入此对等互连配置的唯一名称。
    * __虚拟网络__：使用此字段选择 **AKS 群集**的虚拟网络。
 
-     将其他所有字段保留默认值，然后选择“确定”以配置对等互连。 
+     将其他所有字段保留默认值，然后选择“确定”以配置对等互连。
 
-6. 若要在 AKS 群集网络与 HDInsight 网络之间配置对等互连，请选择“AKS 群集虚拟网络”，然后选择“对等互连”。   选择“+ 添加”，然后使用以下值填充表单： 
+6. 若要在 AKS 群集网络与 HDInsight 网络之间配置对等互连，请选择“AKS 群集虚拟网络”，然后选择“对等互连”。 选择“+ 添加”，然后使用以下值填充表单：
 
    * __名称__：输入此对等互连配置的唯一名称。
    * __虚拟网络__：使用此字段选择 __HDInsight 群集__的虚拟网络。
 
-     将其他所有字段保留默认值，然后选择“确定”以配置对等互连。 
+     将其他所有字段保留默认值，然后选择“确定”以配置对等互连。
 
 ## <a name="install-apache-kafka-on-hdinsight"></a>安装 Apache Kafka on HDInsight
 
 创建 Kafka on HDInsight 群集时，必须加入前面针对 HDInsight 创建的虚拟网络。 有关创建 Kafka 群集的详细信息，请参阅[创建 Apache Kafka 群集](apache-kafka-get-started.md)文档。
 
 > [!IMPORTANT]  
-> 创建群集时，必须使用“高级设置”加入针对 HDInsight 创建的虚拟网络。 
+> 创建群集时，必须使用“高级设置”加入针对 HDInsight 创建的虚拟网络。
 
 ## <a name="configure-apache-kafka-ip-advertising"></a>配置 Apache Kafka IP 播发
 
 使用以下步骤将 Kafka 配置为播发 IP 地址而不是域名：
 
-1. 使用 Web 浏览器转到 https://CLUSTERNAME.azurehdinsight.net 。 将 CLUSTERNAME  替换为 Kafka on HDInsight 群集的名称。
+1. 使用 Web 浏览器转到 https://CLUSTERNAME.azurehdinsight.net 。 将 CLUSTERNAME 替换为 Kafka on HDInsight 群集的名称。
 
     出现提示时，使用群集的 HTTPS 用户名称密码。 将显示群集的 Ambari Web UI。
 
-2. 要查看 Kafka 的相关信息，请从左侧列表中选择“Kafka”  。
+2. 要查看 Kafka 的相关信息，请从左侧列表中选择“Kafka”。
 
     ![Kafka 突出显示的服务列表](./media/apache-kafka-azure-container-services/select-kafka-service.png)
 
-3. 要查看 Kafka 配置，请在顶端的中间位置选择“配置”  。
+3. 要查看 Kafka 配置，请在顶端的中间位置选择“配置”。
 
-    ![Kafka 的配置链接](./media/apache-kafka-azure-container-services/select-kafka-config.png)
+    ![Kafka 的配置链接](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
-4. 要查找“kafka-env”  配置，请在右上方的“筛选器”  字段中输入 `kafka-env`。
+4. 要查找“kafka-env” 配置，请在右上方的“筛选器”字段中输入 `kafka-env`。
 
     ![Kafka 配置，适用于 kafka-env](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
 
-5. 要配置 Kafka 来播发 IP 地址，请将下列文本添加到“kafka-env-template”  字段的底部：
+5. 要配置 Kafka 来播发 IP 地址，请将下列文本添加到“kafka-env-template”字段的底部：
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -129,23 +129,23 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. 要配置 Kafka 侦听的接口，请在右上方的“筛选器”  字段中输入 `listeners`。
+6. 要配置 Kafka 侦听的接口，请在右上方的“筛选器”字段中输入 `listeners`。
 
-7. 要将 Kafka 配置为侦听所有网络接口，请将“侦听器”字段的值更改为 `PLAINTEXT://0.0.0.0:9092`。 
+7. 要将 Kafka 配置为侦听所有网络接口，请将“侦听器”字段的值更改为 `PLAINTEXT://0.0.0.0:9092`。
 
-8. 单击“保存”  按钮保存配置。 输入描述更改的文本消息。 保存更改后，请选择“确定”  。
+8. 单击“保存”按钮保存配置。 输入描述更改的文本消息。 保存更改后，请选择“确定”。
 
-    ![保存配置按钮](./media/apache-kafka-azure-container-services/save-button.png)
+    ![保存配置按钮](./media/apache-kafka-azure-container-services/save-configuration-button.png)
 
-9. 要防止在重启 Kafka 时出错，请使用“服务操作”  按钮，并选择“打开维护模式”  。 选择“确定”完成操作。
+9. 要防止在重启 Kafka 时出错，请使用“服务操作”按钮，并选择“打开维护模式”。 选择“确定”完成操作。
 
     ![服务操作，其中已突出显示“打开维护”](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
 
-10. 要重启 Kafka，请使用“重启”按钮，然后选择“重启所有受影响的项”。   确认重启，在操作完成后再使用“确定”  按钮。
+10. 要重启 Kafka，请使用“重启”按钮，然后选择“重启所有受影响的项”。 确认重启，在操作完成后再使用“确定”按钮。
 
-    ![重启按钮，其中突出显示了所有受影响的重启项](./media/apache-kafka-azure-container-services/restart-button.png)
+    ![重启按钮，其中突出显示了所有受影响的重启项](./media/apache-kafka-azure-container-services/restart-required-button.png)
 
-11. 要禁用维护模式，请使用“服务操作”  按钮，并选择“关闭维护模式”  。 选择“确定”  完成操作。
+11. 要禁用维护模式，请使用“服务操作”按钮，并选择“关闭维护模式”。 选择“确定”完成操作。
 
 ## <a name="test-the-configuration"></a>测试配置
 
@@ -212,9 +212,9 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 11. 打开 Web 浏览器并输入服务的外部 IP 地址。 随后将显示下图所示的页面：
 
-    ![网页图像](./media/apache-kafka-azure-container-services/test-web-page.png)
+    ![网页图像](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
 
-12. 在字段中输入文本，然后选择“发送”按钮。  数据将发送到 Kafka。 然后，应用程序中的 Kafka 使用者将读取消息，并将其添加到“来自 Kafka 的消息”部分。 
+12. 在字段中输入文本，然后选择“发送”按钮。 数据将发送到 Kafka。 然后，应用程序中的 Kafka 使用者将读取消息，并将其添加到“来自 Kafka 的消息”部分。
 
     > [!WARNING]  
     > 可能会收到消息的多个副本。 如果在连接后刷新浏览器，或者在浏览器中与应用程序建立多个连接，则通常会发生此问题。

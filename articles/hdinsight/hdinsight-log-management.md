@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5264491220a4b0756a2a9f0a96aae4ed67809618
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 4e9a6a9ca435971d64ec8f59203a518287e6db4e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879457"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961000"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>管理 HDInsight 群集的日志
 
@@ -79,11 +79,11 @@ Apache Ambari 提供 Web UI 和 REST API 来简化 HDInsight 群集的管理、�
 
 若要打开服务视图列表，请在 Azure 门户页上选择 HDInsight 对应的“Ambari 视图”窗格。  此列表的内容根据安装的库而异。  例如，可能会显示“YARN 队列管理器”、“Hive 视图”和“Tez 视图”。  选择任一服务链接以查看配置和服务信息。  Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务版本历史记录的信息。 若要导航到 Ambari UI 的此部分，请选择“管理”菜单，然后选择“堆栈和版本”。  选择“版本”选项卡查看服务版本信息。
 
-![堆栈和版本](./media/hdinsight-log-management/stack-versions.png)
+![堆栈和版本](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-使用 Ambari UI 可以下载群集中特定主机（或节点）上运行的任一（或所有）服务的配置。  选择“主机”菜单，然后选择所需主机的链接。 在该主机的页面上，依次选择“主机操作”按钮和“下载客户端配置”。 
+使用 Ambari UI 可以下载群集中特定主机（或节点）上运行的任一（或所有）服务的配置。  选择“主机”菜单，然后选择所需主机的链接。 在该主机的页面上，依次选择“主机操作”按钮和“下载客户端配置”。
 
-![主机客户端配置](./media/hdinsight-log-management/client-configs.png)
+![主机客户端配置](./media/hdinsight-log-management/download-client-configs.png)
 
 ### <a name="view-the-script-action-logs"></a>查看脚本操作日志
 

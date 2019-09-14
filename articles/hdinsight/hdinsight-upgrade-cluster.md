@@ -4,15 +4,16 @@ description: 了解将 Azure HDInsight 群集升级到较新版本的准则。
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: f4458b33edb9d55c30de8c5168668743abb33161
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811646"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960702"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>将 HDInsight 群集升级到更新版本
 要利用最新的 HDInsight 功能，我们建议将 HDInsight 群集升级到最新版本。 遵循以下准则升级 HDInsight 群集版本。
@@ -23,7 +24,7 @@ ms.locfileid: "70811646"
 ## <a name="upgrade-tasks"></a>升级任务
 升级 HDInsight 群集的工作流如下所示。
 
-![升级工作流示意图](./media/hdinsight-upgrade-cluster/upgrade-workflow.png)
+![升级工作流示意图](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. 请阅读本文档的每个部分，了解在升级 HDInsight 群集时可能需要进行的更改。
 2. 创建群集作为测试/质量保证环境。 有关创建群集的详细信息，请参阅[了解如何创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
