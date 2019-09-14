@@ -5,15 +5,15 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 03/22/2019
+ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227799"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934111"
 ---
 ## <a name="create-the-webapi-project"></a>创建 WebAPI 项目
 
@@ -185,6 +185,9 @@ ms.locfileid: "68227799"
         }
     }
     ```
+    > [!IMPORTANT]
+    > 输入中心的名称和 DefaultFullSharedAccessSignature，然后继续   。 
+    
 7. 接下来将创建一个名为 **RegisterController** 的新控制器。 在“解决方案资源管理器”中，右键单击“控制器”文件夹，选择“添加”，并选择“控制器”。   
 
 8. 选择“Web API 2 控制器 - 空”  ，并选择“添加”  。

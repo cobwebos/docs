@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 8/27/2019
+ms.date: 09/10/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5b78dc8b815802502cda5baf2bf5e9646922d671
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 194b90ab27d02c1fa3eb05bb3ddd78395d351599
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241428"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898180"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ ms.locfileid: "70241428"
 
 ::: zone-end
 
-## <a name="ship-in-us-canada-europe"></a>在美国、加拿大和欧洲寄送
+## <a name="in-us-canada-europetabin-us-canada-europe"></a>[在美国、加拿大和欧洲](#tab/in-us-canada-europe)
 
 如果在美国、加拿大或欧洲退回设备，请执行以下步骤。
 
@@ -94,7 +94,7 @@ ms.locfileid: "70241428"
 4. 承运人提取 Data Box 并进行扫描后，门户中的订单状态将更新为“已提货”。  此外还会显示一个跟踪 ID。
 
 
-## <a name="ship-in-australia"></a>在澳大利亚寄送
+## <a name="in-australiatabin-australia"></a>[在澳大利亚](#tab/in-australia)
 
 澳大利亚的 Azure 数据中心会提供额外的安全通知。 所有入境装运必须收到提前通知。 若要在澳大利亚寄送，请执行以下步骤。
 
@@ -126,7 +126,7 @@ ms.locfileid: "70241428"
 - 首先发送一封取件电子邮件。
 - 在打电话时提供订单名称。
 
-## <a name="ship-in-japan"></a>在日本寄送 
+## <a name="in-japantabin-japan"></a>[在日本](#tab/in-japan) 
 
 1. 保留寄送设备所用的原始包装盒供退回寄送时使用。
 2. 关闭设备电源并拔下电缆。

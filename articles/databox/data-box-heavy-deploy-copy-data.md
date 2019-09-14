@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 4267b8299e13f1705b218e65b268c45bd5a658e2
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 475e628901a96334976dbdbbaa8b362197ec3bc3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240303"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914036"
 ---
 ::: zone target = "docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70240303"
 
 ::: zone target = "chromeless"
 
-## <a name="copy-data-to-azure-data-box-heavy"></a>将数据复制到 Azure Data Box Heavy
+# <a name="copy-data-to-azure-data-box-heavy"></a>将数据复制到 Azure Data Box Heavy
 
 ::: zone-end
 
@@ -333,7 +333,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/data
 3. 然后，可以通过 SMB 或 NFS 工具复制数据。
 4. 重复上述步骤，将数据连接并复制到 Data Box Heavy 的第二个节点。
 
-有关分步说明，请转至[教程：在 Azure 中使用 Data Box Heavy 作为托管磁盘导入数据](data-box-heavy-deploy-copy-data-from-vhds.md)。
+有关分步说明，请转至[教程：使用 Data Box Heavy 将数据导入为 Azure 中的托管磁盘](data-box-heavy-deploy-copy-data-from-vhds.md)。
 
 ::: zone-end
 
