@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 240b2110db66af0982e4e1bf95d3715cbe733a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0e11949804e0c3de52db315424f83905516b4da8
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816520"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996600"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>排查 Azure 文件性能问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "68816520"
 
 ### <a name="cause-1-share-experiencing-throttling"></a>原因 1：共享遇到限制
 
-高级共享上的默认配额为 100 GiB, 它提供100的基线 IOPS (可能会突然增长到300一小时)。 有关预配及其与 IOPS 的关系的详细信息, 请参阅规划指南中的 "[预配共享](storage-files-planning.md#provisioned-shares)" 部分。
+高级共享上的默认配额为 100 GiB, 它提供100的基线 IOPS (可能会突然增长到300一小时)。 有关预配及其与 IOPS 的关系的详细信息，请参阅规划指南中的 "[预配共享](storage-files-planning.md#provisioned-shares)" 部分。
 
 若要确认共享是否受到限制, 可以在门户中利用 Azure 指标。
 
@@ -85,6 +85,7 @@ ms.locfileid: "68816520"
 
 - 获取更大核心的 VM 可能有助于提高吞吐量。
 - 从多个 Vm 运行客户端应用程序会增加吞吐量。
+
 - 尽可能使用 REST Api。
 
 ## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>与 Windows 客户端相比, Linux 客户端上的吞吐量大大降低。
@@ -95,8 +96,9 @@ ms.locfileid: "68816520"
 
 ### <a name="workaround"></a>解决方法
 
-- 将负载分散到多个 Vm
+- 跨多个 Vm 分散负载。
 - 在同一 VM 上, 使用具有**nosharesock**选项的多个装入点, 并将负载分散到这些装入点。
+- 在 Linux 上，尝试装载**nostrictsync**选项，以避免在每个 fsync 调用上强制进行 SMB 刷新。 对于 Azure 文件，此选项不会干扰数据 consistentcy，但可能会导致目录列表（**ls-l**命令）上的文件元数据过时。 直接查询文件的元数据（**stat**命令）将返回最新的文件元数据。
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>涉及大量打开/关闭操作的元数据繁重工作负荷的高延迟。
 

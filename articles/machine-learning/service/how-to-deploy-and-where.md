@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 08/06/2019
+ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 358cbfb80da03d20475e591f0fd0c5b907b83b22
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: ff3a19a543f87833420f585bbdf7891cc7589746
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984702"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997206"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -764,7 +764,7 @@ print(response.json())
 ### <a id="azuremlcompute"></a>批处理推理
 Azure 机器学习计算目标由 Azure 机器学习服务创建和管理。 它们可用于来自 Azure 机器学习管道的批处理预测。
 
-有关使用 Azure 机器学习计算进行批处理推理的演练，请参阅[如何运行批预测](how-to-run-batch-predictions.md)。
+有关使用 Azure 机器学习计算进行批处理推理的演练，请参阅[如何运行批预测](tutorial-pipeline-batch-scoring-classification.md)。
 
 ### <a id="iotedge"></a>IoT Edge 推理
 对部署到边缘的支持处于预览阶段。 有关详细信息，请参阅[将 Azure 机器学习部署为 IoT Edge 模块](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning)。

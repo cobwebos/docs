@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 096f8b3aa6ae66e65bbbd9ea6e2204af619199dd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899415"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993384"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -42,7 +42,7 @@ ms.locfileid: "70899415"
 **提供程序**   
 连接到 Azure 数据源的内存中和 DirectQuery 模型使用用于 SQL Server 的 .NET Framework 数据提供程序。
 
-## <a name="on-premises-data-sources"></a>本地数据源
+## <a name="other-data-sources"></a>其他数据源
 
 从 Azure AS 服务器连接到本地数据源需要使用本地网关。 使用网关时，需要 64 位提供程序。
 
@@ -113,6 +113,10 @@ ms.locfileid: "70899415"
 对于云数据源：
 
 * 如果使用 SQL 身份验证，则模拟应为服务帐户。
+
+## <a name="oauth-credentials"></a>OAuth 凭据
+
+对于1400和更高兼容级别的表格模型，Azure SQL 数据库、Azure SQL 数据仓库、Dynamics 365 和 SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 SSMS 设置凭据。
 
 ## <a name="next-steps"></a>后续步骤
 [本地网关](analysis-services-gateway.md)   

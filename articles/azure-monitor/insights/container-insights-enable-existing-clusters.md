@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/19/2019
+ms.date: 09/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 650729269370bfcd6608b82fc14c3306da1ed222
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0153d39e1307458baa920d8e9107c8931242014e
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624436"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996268"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>启用对已部署的 Azure Kubernetes 服务 (AKS) 群集的监视
 
@@ -49,17 +49,51 @@ az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMana
 provisioningState       : Succeeded
 ```
 
-如果希望与现有工作区集成，请使用以下命令指定该工作区。
+### <a name="integrate-with-an-existing-workspace"></a>与现有工作区集成
 
-```azurecli
-az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG --workspace-resource-id <ExistingWorkspaceResourceID> 
-```
+如果要将与现有工作区集成，请执行以下步骤，以首先确定`--workspace-resource-id`参数所需的 Log Analytics 工作区的完整资源 ID，然后运行命令来启用监视外接程序指定的工作区。  
 
-输出如下所示：
+1. 使用以下命令列出有权访问的所有订阅：
 
-```azurecli
-provisioningState       : Succeeded
-```
+    ```azurecli
+    az account list --all -o table
+    ```
+
+    输出如下所示：
+
+    ```azurecli
+    Name                                  CloudName    SubscriptionId                        State    IsDefault
+    ------------------------------------  -----------  ------------------------------------  -------  -----------
+    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    ```
+
+    复制 " **SubscriptionId**" 的值。
+
+2. 使用以下命令切换到承载 Log Analytics 工作区的订阅：
+
+    ```azurecli
+    az account set -s <subscriptionId of the workspace>
+    ```
+
+3. 下面的示例以默认 JSON 格式显示订阅中的工作区列表。 
+
+    ```
+    az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
+    ```
+
+    在输出中找到工作区名称，然后将该 Log Analytics 工作区的完整资源 ID 复制到字段**id**下。
+ 
+4. 运行以下命令以启用监视外接程序，并替换`--workspace-resource-id`参数的值。 字符串值必须在双引号内：
+
+    ```azurecli
+    az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id  “/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>”
+    ```
+
+    输出如下所示：
+
+    ```azurecli
+    provisioningState       : Succeeded
+    ```
 
 ## <a name="enable-using-terraform"></a>使用 Terraform
 
@@ -234,7 +268,7 @@ provisioningState       : Succeeded
 
 4. 使用 AKS 群集的“AKS 概述”页面中的值，编辑 **aksResourceId** 和 **aksResourceLocation** 的值。 **workspaceResourceId** 的值是 Log Analytics 工作区的完整资源 ID，其中包含工作区名称。 
 
-    编辑**aksResourceTagValues**的值以匹配为 AKS 群集指定的现有标记值。
+    编辑 **aksResourceTagValues** 的值，以匹配为 AKS 群集指定的现有标记值。
 
 5. 将此文件以“existingClusterParam.json”文件名保存到本地文件夹。
 

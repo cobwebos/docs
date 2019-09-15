@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 2d23b2b39844d48c6414d269f8d69d7b96fff272
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 13a7769e310bcd0cb28eddbf9dded3fe1d62eec7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860309"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993684"
 ---
-# <a name="publishing-integrated-solutions"></a>发布-集成解决方案
+# <a name="publishing-integrated-solutions"></a>发布集成解决方案
 
 集成解决方案结合了多个 ISV 点解决方案技术，以及系统集成商（SI）的部署和服务，并将其作为[咨询服务产品](https://docs.microsoft.com/azure/marketplace/consulting-services)/服务在 marketplace 中列出。
 
@@ -89,5 +89,9 @@ ms.locfileid: "70860309"
 ## <a name="going-to-market-with-your-integrated-solution"></a>通过集成解决方案进入市场 
 
 一旦你的解决方案位于 Azure Marketplace 或 AppSource 中，你将需要通过市场营销活动推动认知和需求的生成。 查看[项目计划和时间线](https://aka.ms/AA5qiuc)中列出的活动，包括合作伙伴可以在自己的团队中推动的活动，以及另一个活动。 然后，为已发布到 marketplace 中的合作伙伴提供[市场推广权益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits)。 所有集成解决方案产品/服务都有资格获得试用级别的权益。
+
+## <a name="next-steps"></a>后续步骤
+
+有关在 Marketplace 中购买集成解决方案的信息，请参阅[集成解决方案](https://docs.microsoft.com/azure/marketplace/integrated-solutions)。
 
 ---

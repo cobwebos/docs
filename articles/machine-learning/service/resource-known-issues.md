@@ -1,7 +1,7 @@
 ---
 title: 已知问题与故障排除
-titleSuffix: Azure Machine Learning service
-description: 获取 Azure 机器学习服务的已知问题、解决方法和故障排除的列表。
+titleSuffix: Azure Machine Learning
+description: 获取有关 Azure 机器学习的已知问题、解决方法和疑难解答的列表。
 services: machine-learning
 author: j-martens
 ms.author: jmartens
@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 96af61089f2b7b85d58a8a2ab61936459cef158b
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ffbc919333c43c04f461498a513d098ce8fe628f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858689"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996591"
 ---
-# <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure 机器学习服务的已知问题和故障排除
+# <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
-本文可帮助你查找和更正使用 Azure 机器学习服务时遇到的错误或失败。
+本文可帮助你查找和更正使用 Azure 机器学习时遇到的错误或故障。
 
 ## <a name="visual-interface-issues"></a>视觉对象接口问题
 
@@ -87,7 +87,7 @@ Databricks 和 Azure 机器学习问题。
 
 ### <a name="failure-when-installing-packages"></a>安装包时失败
 
-安装更多包时，Azure 机器学习 SDK 安装在 Azure Databricks 上失败。 某些包（如 `psutil`）可能会导致冲突。 若要避免安装错误，请通过冻结库版本来安装包。 此问题与 Databricks 相关，而不是与 Azure 机器学习服务 SDK 相关。 其他库也可能会遇到此问题。 例如：
+安装更多包时，Azure 机器学习 SDK 安装在 Azure Databricks 上失败。 某些包（如 `psutil`）可能会导致冲突。 若要避免安装错误，请通过冻结库版本来安装包。 此问题与 Databricks 相关，不适用于 Azure 机器学习 SDK。 其他库也可能会遇到此问题。 例如：
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -143,7 +143,7 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 如果在请求帮助时可以提供诊断信息，有时会很有帮助。 若要查看某些日志，请访问[Azure 门户](https://portal.azure.com)并访问工作区，并选择 "**工作区" > 试验 > 运行 > 日志**。  你还可以在[工作区登陆页面（预览）](https://ml.azure.com)的**试验**部分中找到此信息。
 
 > [!NOTE]
-> Azure 机器学习服务在定型期间记录来自各种来源的信息，例如 AutoML 或运行训练作业的 Docker 容器。 其中许多日志没有记录。 如果遇到问题，请与 Microsoft 支持部门联系，他们可以在故障排除过程中使用这些日志。
+> Azure 机器学习在定型期间记录来自各种来源的信息，如 AutoML 或运行训练作业的 Docker 容器。 其中许多日志没有记录。 如果遇到问题，请与 Microsoft 支持部门联系，他们可以在故障排除过程中使用这些日志。
 
 ## <a name="activity-logs"></a>活动日志
 

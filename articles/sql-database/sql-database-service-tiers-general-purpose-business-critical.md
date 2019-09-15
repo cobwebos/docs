@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 02/23/2019
-ms.openlocfilehash: 8709d88c4d21a40ac8ebb27e5c1669d8f5fa3555
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 41acef4ebe13ac6152d795db4adfae5a6ae1ad91
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934224"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995431"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL 数据库服务层级
 
@@ -46,8 +46,6 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 | | 托管实例  | 32 GB – 8 TB | 不可用 | 32 GB – 4 TB |
 | **TempDB 大小** | 单一数据库/弹性池 | [每 vCore 32 GB](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | [每 vCore 32 GB](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute) | [每 vCore 32 GB](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
 | | 托管实例  | [每 vCore 24 GB](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | 不可用 | 最大 4 TB-受[存储大小限制](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
-| **IO 吞吐量** | 单一数据库 | [每 vCore 500 IOPS](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | 有效 IOPs 将取决于工作负荷。 | [每 vCore 4000 IOPS](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute)|
-| | 托管实例 | [每个文件 100-250MB/秒和 500-7500 IOPS](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | 不可用 | [每 vCore 1375 IOPS](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 | **日志写入吞吐量** | 单一数据库 | [每 vCore 1.875 MB/秒（最多 30 MB/秒）](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | 100 MB/秒 | [每个 vCore 6 MB/秒（最大 96 MB/秒）](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
 | | 托管实例 | [每个 vCore 3 MB/秒（最多 22 MB/秒）](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | 不可用 | [每个 vcore 4 MB/s （最大 48 MB/秒）](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 |**可用性**|全部| 99.99% |  [99.95%，具有一个辅助副本，99.99%，具有更多副本](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [具有区域冗余单一数据库的 99.995%](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |

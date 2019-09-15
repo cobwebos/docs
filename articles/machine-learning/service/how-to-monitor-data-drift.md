@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
-ms.date: 07/08/2019
-ms.openlocfilehash: 7d47b74d4fef3676101f3f624dcacb832dcedc3a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.date: 09/13/2019
+ms.openlocfilehash: 80c5ad26150547263469c9f59366e270bf660335
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858710"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993226"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service （AKS）的模型上检测数据偏差（预览）
 
@@ -133,7 +133,6 @@ datadrift_contribution|导致偏移的功能的重要性。|
 
 * 使用 Jupyter[小组件。](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`
 * 对任何`datadrift`运行对象使用[函数。`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)
-* 查看模型中的 Azure 门户的度量值。
 * 从[工作区登录页](https://ml.azure.com)的 "**模型**" 部分查看指标（预览）。
 
 以下 Python 示例演示如何绘制相关的数据偏差指标。 可以使用返回的度量值生成自定义可视化效果：
@@ -159,17 +158,16 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-可以在 "Azure 门户" 或 "工作区" 登陆页面（预览）的 "模型详细信息" 页上查看数据偏移检测程序的配置。
+在[工作区登陆页面（预览）](https://ml.azure.com)的 "**详细信息**" 选项卡中的 "**模型**" 下，可以查看数据偏移检测程序的配置。
 
-![Azure 门户数据偏移配置](media/how-to-monitor-data-drift/drift_config.png)
+![Azure 门户数据偏移](media/how-to-monitor-data-drift/drift-config.png)
 
-## <a name="view-results-in-azure-portal"></a>查看 Azure 门户中的结果
+## <a name="view-results-in-your-workspace-landing-page"></a>在工作区登录页中查看结果
 
-若要在[Azure 门户](https://portal.azure.com)中查看工作区中的结果，请导航到 "模型" 页。 在模型的 "详细信息" 选项卡上，将显示数据偏移配置。 现在可以使用 "数据偏移（预览）" 选项卡，直观显示数据偏差指标。 
+若要在[工作区登录页（预览版）](https://ml.azure.com)中查看工作区中的结果，请导航到 "模型" 页。 在模型的 "详细信息" 选项卡上，将显示数据偏移配置。 现在，**数据偏移**选项卡可用来可视化数据偏差指标。 
 
-![Azure 门户数据偏移](media/how-to-monitor-data-drift/drift_ui.png)
+[![工作区登录页数据偏移](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
 
-[工作区登陆页面（预览）](https://ml.azure.com)的模型详细信息中也提供了这些结果。
 
 ## <a name="receiving-drift-alerts"></a>接收偏移警报
 

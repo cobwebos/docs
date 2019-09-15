@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 1571fc449bd40063c531f9942fe9b51da56f783c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e276340041e69101190645caad9dbf6de57abd95
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764321"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996499"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -173,4 +173,4 @@ PostgreSQL 要求只读副本上的 `max_connections` 参数值大于或等于�
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[在 Azure 门户中创建和管理只读副本](howto-read-replicas-portal.md)。
-* 了解如何[创建和管理 Azure CLI 中的读取副本](howto-read-replicas-cli.md)。
+* 了解如何[创建和管理 Azure CLI 和 REST API 中的读取副本](howto-read-replicas-cli.md)。

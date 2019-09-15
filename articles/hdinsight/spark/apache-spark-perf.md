@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: cda974a71c0d24bda9422fb8444fbf4dec0088f9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885102"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995563"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>优化 HDInsight 中的 Apache Spark 作业
 
@@ -96,7 +96,7 @@ Spark 在运行时会将数据放在内存中，因此，管理内存资源是�
 
 如果使用 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)，则 YARN 会控制每个 Spark 节点上的所有容器使用的最大内存总和。  下图展示了一些键对象及其关系。
 
-![YARN Spark 内存管理](./media/apache-spark-perf/yarn-spark-memory.png)
+![YARN Spark 内存管理](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
 若要解决显示“内存不足”消息的问题，请尝试：
 

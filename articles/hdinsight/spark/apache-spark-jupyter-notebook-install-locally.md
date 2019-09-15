@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 489685485af4e3c8868f7e0281d2f81464a166f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6ce3ff8e00bc92911a7405de1bb0bb7286fb5c15
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066183"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993767"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight 上的 Apache Spark
 
@@ -28,7 +28,7 @@ ms.locfileid: "67066183"
 
 有关适用于装有 HDInsight 群集的 Jupyter 笔记本的自定义内核和 Spark magic 的详细信息，请参阅 [Kernels available for Jupyter notebooks with Apache Spark Linux clusters on HDInsight](apache-spark-jupyter-notebook-kernels.md)（适用于装有 HDInsight 上的 Apache Spark Linux 群集的 Jupyter 笔记本的内核）。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 此处所列的先决条件不适用于安装 Jupyter。 这些先决条件适用于安装笔记本之后将 Jupyter 笔记本连接到 HDInsight 群集。
 
@@ -36,20 +36,20 @@ ms.locfileid: "67066183"
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>在计算机上安装 Jupyter 笔记本
 
-必须先安装 Python 才能安装 Jupyter 笔记本。 [Anaconda 分发版](https://www.anaconda.com/download/)会安装 Python 和 Jupyter Notebook。
+必须先安装 Python 才能安装 Jupyter 笔记本。 [Anaconda 分发版](https://www.anaconda.com/download/)将安装 Python 和 Jupyter Notebook。
 
-下载适用于平台的 [Anaconda 安装程序](https://www.anaconda.com/download/)，并运行安装程序。 运行安装向导时，请确保选择将 Anaconda 添加到 PATH 变量的选项。  此外，请参阅[使用 Anaconda 安装 Jupyter](https://jupyter.readthedocs.io/en/latest/install.html)。
+下载适用于平台的 [Anaconda 安装程序](https://www.anaconda.com/download/)，并运行安装程序。 运行安装向导时，请确保选择将 Anaconda 添加到 PATH 变量的选项。  另请参阅[使用 Anaconda 安装 Jupyter](https://jupyter.readthedocs.io/en/latest/install.html)。
 
 ## <a name="install-spark-magic"></a>安装 Spark magic
 
-1. 输入以下命令以安装 Spark magic 之一。 此外，请参阅[sparkmagic 文档](https://github.com/jupyter-incubator/sparkmagic#installation)。
+1. 输入以下命令之一以安装 Spark magic。 另请参阅 [sparkmagic 文档](https://github.com/jupyter-incubator/sparkmagic#installation)。
 
     |群集版本 | 安装命令 |
     |---|---|
-    |v3.6 和 3.5 版 |`pip install sparkmagic==0.12.7`|
+    |v3.6 和 v3.5 |`pip install sparkmagic==0.12.7`|
     |v3.4|`pip install sparkmagic==0.2.3`|
 
-1. 确保`ipywidgets`已正确安装通过运行以下命令：
+1. 确保通过运行以下命令正确安装了 `ipywidgets`：
 
     ```cmd
     jupyter nbextension enable --py --sys-prefix widgetsnbextension
@@ -57,15 +57,15 @@ ms.locfileid: "67066183"
 
 ## <a name="install-pyspark-and-spark-kernels"></a>安装 PySpark 和 Spark 内核
 
-1. 确定位置`sparkmagic`安装通过输入以下命令：
+1. 通过输入以下命令确定 `sparkmagic` 的安装位置：
 
     ```cmd
     pip show sparkmagic
     ```
 
-    然后将你的工作目录更改为使用上述命令标识的位置。
+    然后，将工作目录更改为使用上述命令确定的位置。
 
-1. 从新工作目录中，输入一个或多个以下命令以安装所需的 kernel(s):
+1. 从新的工作目录输入以下一个或多个命令，以安装所需的内核：
 
     |内核 | 命令 |
     |---|---|
@@ -74,7 +74,7 @@ ms.locfileid: "67066183"
     |PySpark|`jupyter-kernelspec install sparkmagic/kernels/pysparkkernel`|
     |PySpark3|`jupyter-kernelspec install sparkmagic/kernels/pyspark3kernel`|
 
-1. 可选。 输入以下命令以启用的服务器扩展插件：
+1. 可选。 输入以下命令以启用服务器扩展：
 
     ```cmd
     jupyter serverextension enable --py sparkmagic
@@ -82,7 +82,7 @@ ms.locfileid: "67066183"
 
 ## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>配置 Spark magic 以连接到 HDInsight Spark 群集
 
-在本部分中，你将配置前面安装连接到 Apache Spark 群集的 Spark magic。
+在本部分中，将之前安装的 Spark magic 配置为连接到 Apache Spark 群集。
 
 1. 使用以下命令启动 Python shell：
 
@@ -90,7 +90,7 @@ ms.locfileid: "67066183"
     python
     ```
 
-2. Jupyter 配置信息通常存储在用户主目录中。 输入以下命令，以标识主目录中，并创建一个名为文件夹 **.sparkmagic**。  将输出完整路径。
+2. Jupyter 配置信息通常存储在用户主目录中。 输入以下命令来标识主目录，并创建一个名为 **.sparkmagic** 的文件夹。  将输出完整路径。
 
     ```python
     import os
@@ -126,7 +126,7 @@ ms.locfileid: "67066183"
 
     |模板值 | 新值 |
     |---|---|
-    |{USERNAME}|群集登录名，默认值是`admin`。|
+    |{USERNAME}|群集登录名，默认为 `admin`。|
     |{CLUSTERDNSNAME}|群集名称|
     |{BASE64ENCODEDPASSWORD}|实际密码的 base64 编码密码。  可在 [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/) 中生成 base64 密码。|
     |`"livy_server_heartbeat_timeout_seconds": 60`|如果使用 `sparkmagic 0.12.7`（群集 v3.5 和 v3.6），请保留此值。  如果使用 `sparkmagic 0.2.3`（群集 v3.4），请替换为 `"should_heartbeat": true`。|
@@ -144,12 +144,12 @@ ms.locfileid: "67066183"
 
 6. 验证是否可以使用内核随附的 Spark magic。 执行以下步骤。
 
-    a. 创建新的笔记本。 在右侧一角选择“新建”  。 应会看到默认内核 **Python 2** 和 **Python 3**，以及安装的内核。 实际值根据安装时所做的选择而有所不同。  选择“PySpark”。 
+    a. 创建新的笔记本。 在右侧一角选择“新建”。 应会看到默认内核 **Python 2** 和 **Python 3**，以及安装的内核。 实际值根据安装时所做的选择而有所不同。  选择“PySpark”。
 
-    ![Jupyter 笔记本中的内核](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Jupyter 笔记本中的内核")
+    ![Jupyter 笔记本中的内核](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter 笔记本中的内核")
 
     > [!IMPORTANT]  
-    > 选择“新建”后，检查 shell 中是否出现任何错误。   如果看到错误 `TypeError: __init__() got an unexpected keyword argument 'io_loop'`，原因可能是遇到了某些 Tornado 版本中的已知问题。  如果出现此情况，请停止内核，然后使用以下命令降级 Tornado 安装：`pip install tornado==4.5.3`。
+    > 选择“新建”后，检查 shell 中是否出现任何错误。  如果看到错误 `TypeError: __init__() got an unexpected keyword argument 'io_loop'`，原因可能是遇到了某些 Tornado 版本中的已知问题。  如果出现此情况，请停止内核，然后使用以下命令降级 Tornado 安装：`pip install tornado==4.5.3`。
 
     b. 运行以下代码片段。
 

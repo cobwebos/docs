@@ -4,14 +4,14 @@ description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: bf10274e8c492363cb54c5610ff8d912ab308d1c
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 7b8d3de3eaa9cdbb945879f2acc283d74c8b4e82
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194717"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996832"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。 标记为“支持标记”的列指示资源类型是否具有标记的属性。 标记为“在成本报表中标记”的列指示该资源类型是否将标记传递给成本报表。
@@ -21,7 +21,6 @@ ms.locfileid: "70194717"
 跳转到资源提供程序命名空间：
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
-> - [AADDomainServices](#microsoftaaddomainservices)
 > - [加载项](#microsoftaddons)
 > - [ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Microsoft.Advisor](#microsoftadvisor)
@@ -29,6 +28,7 @@ ms.locfileid: "70194717"
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
 > - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [AppPlatform](#microsoftappplatform)
 > - [Microsoft. 证明](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
 > - [Microsoft.Automation](#microsoftautomation)
@@ -62,14 +62,12 @@ ms.locfileid: "70194717"
 > - [Microsoft.ContentModerator](#microsoftcontentmoderator)
 > - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
-> - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
 > - [CustomerLockbox](#microsoftcustomerlockbox)
 > - [CustomProviders](#microsoftcustomproviders)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
 > - [Microsoft.DataCatalog](#microsoftdatacatalog)
-> - [Microsoft.DataConnect](#microsoftdataconnect)
 > - [Microsoft.DataFactory](#microsoftdatafactory)
 > - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft.DataLakeStore](#microsoftdatalakestore)
@@ -112,7 +110,6 @@ ms.locfileid: "70194717"
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
-> - [ManagedLab](#microsoftmanagedlab)
 > - [ManagedServices](#microsoftmanagedservices)
 > - [Microsoft.Management](#microsoftmanagement)
 > - [Microsoft.Maps](#microsoftmaps)
@@ -154,6 +151,7 @@ ms.locfileid: "70194717"
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft .SQL](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [Microsoft.StorageCache](#microsoftstoragecache)
@@ -179,13 +177,6 @@ ms.locfileid: "70194717"
 > | DomainServices | 是 |是 |
 > | DomainServices/oucontainer | 否 |否 |
 > | DomainServices/ReplicaSets | 是 |是 |
-
-## <a name="microsoftaaddomainservices"></a>AADDomainServices
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 支持标记 | 在成本报表中标记 |
-> | ------------- | ----------- | ----------- |
-> | domains | 否 |否 |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
@@ -232,7 +223,7 @@ ms.locfileid: "70194717"
 > | alertsSummary | 否 |否 |
 > | alertsSummaryList | 否 |否 |
 > | 反馈 | 否 |否 |
-> | smartDetectorAlertRules | 否 |否 |
+> | smartDetectorAlertRules | 是 |是 |
 > | smartDetectorRuntimeEnvironments | 否 |否 |
 > | smartGroups | 否 |否 |
 
@@ -259,6 +250,13 @@ ms.locfileid: "70194717"
 > | ------------- | ----------- | ----------- |
 > | configurationStores | 是 |是 |
 > | configurationStores/eventGridFilters | 否 |否 |
+
+## <a name="microsoftappplatform"></a>AppPlatform
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 在成本报表中标记 |
+> | ------------- | ----------- | ----------- |
+> | 春天颜色 | 是 |是 |
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
 
@@ -328,6 +326,10 @@ ms.locfileid: "70194717"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
+> | hybridDataManagers | 是 |是 |
+> | postgresInstances | 是 |是 |
+> | sqlBigDataClusters | 是 |是 |
+> | sqlInstances | 是 |是 |
 > | sqlServerRegistrations | 是 |是 |
 > | sqlServerRegistrations/sqlServers | 否 |否 |
 
@@ -354,11 +356,28 @@ ms.locfileid: "70194717"
 > | ------------- | ----------- | ----------- |
 > | billingAccounts | 否 |否 |
 > | billingAccounts/协议 | 否 |否 |
+> | billingAccounts/billingPermissions | 否 |否 |
 > | billingAccounts/billingProfiles | 否 |否 |
+> | billingAccounts/billingProfiles/billingPermissions | 否 |否 |
+> | billingAccounts/billingProfiles/billingRoleAssignments | 否 |否 |
+> | billingAccounts/billingProfiles/billingRoleDefinitions | 否 |否 |
 > | billingAccounts/billingProfiles/billingSubscriptions | 否 |否 |
+> | billingAccounts/billingProfiles/createBillingRoleAssignment | 否 |否 |
+> | billingAccounts/billingProfiles/customers | 否 |否 |
 > | billingAccounts/billingProfiles/invoices | 否 |否 |
 > | billingAccounts/billingProfiles/invoices/pricesheet | 否 |否 |
 > | billingAccounts/billingProfiles/invoiceSections | 否 |否 |
+> | billingAccounts/billingProfiles/invoiceSections/billingPermissions | 否 |否 |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleAssignments | 否 |否 |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleDefinitions | 否 |否 |
+> | billingAccounts/billingProfiles/invoiceSections/billingSubscriptions | 否 |否 |
+> | billingAccounts/billingProfiles/invoiceSections/createBillingRoleAssignment | 否 |否 |
+> | billingAccounts/billingProfiles/invoiceSections/initiateTransfer | 否 |否 |
+> | billingAccounts/billingProfiles/invoiceSections/products | 否 |否 |
+> | billingAccounts/billingProfiles/invoiceSections/products/transfer | 否 |否 |
+> | billingAccounts/billingProfiles/invoiceSections/products/updateAutoRenew | 否 |否 |
+> | billingAccounts/billingProfiles/invoiceSections/事务 | 否 |否 |
+> | billingAccounts/billingProfiles/invoiceSections/传输 | 否 |否 |
 > | billingAccounts/BillingProfiles/patchOperations | 否 |否 |
 > | billingAccounts/billingProfiles/paymentMethods | 否 |否 |
 > | billingAccounts/billingProfiles/policies | 否 |否 |
@@ -366,10 +385,17 @@ ms.locfileid: "70194717"
 > | billingAccounts/billingProfiles/pricesheetDownloadOperations | 否 |否 |
 > | billingAccounts/billingProfiles/products | 否 |否 |
 > | billingAccounts/billingProfiles/transactions | 否 |否 |
+> | billingAccounts/billingRoleAssignments | 否 |否 |
+> | billingAccounts/billingRoleDefinitions | 否 |否 |
 > | billingAccounts/billingSubscriptions | 否 |否 |
+> | billingAccounts/createBillingRoleAssignment | 否 |否 |
 > | billingAccounts/createInvoiceSectionOperations | 否 |否 |
 > | billingAccounts/客户 | 否 |否 |
 > | billingAccounts/customers/billingSubscriptions | 否 |否 |
+> | billingAccounts/customers/initiateTransfer | 否 |否 |
+> | billingAccounts/客户/产品 | 否 |否 |
+> | billingAccounts/客户/事务 | 否 |否 |
+> | billingAccounts/客户/转移 | 否 |否 |
 > | billingAccounts/departments | 否 |否 |
 > | billingAccounts/enrollmentAccounts | 否 |否 |
 > | billingAccounts/invoices | 否 |否 |
@@ -392,11 +418,11 @@ ms.locfileid: "70194717"
 > | billingAccounts/products | 否 |否 |
 > | billingAccounts/transactions | 否 |否 |
 > | billingPeriods | 否 |否 |
-> | billingPermissions | 否 |否 |
+> | BillingPermissions | 否 |否 |
 > | billingProperty | 否 |否 |
-> | billingRoleAssignments | 否 |否 |
-> | billingRoleDefinitions | 否 |否 |
-> | createBillingRoleAssignment | 否 |否 |
+> | BillingRoleAssignments | 否 |否 |
+> | BillingRoleDefinitions | 否 |否 |
+> | CreateBillingRoleAssignment | 否 |否 |
 > | departments | 否 |否 |
 > | enrollmentAccounts | 否 |否 |
 > | invoices | 否 |否 |
@@ -404,6 +430,7 @@ ms.locfileid: "70194717"
 > | transfers/acceptTransfer | 否 |否 |
 > | transfers/declineTransfer | 否 |否 |
 > | transfers/operationStatus | 否 |否 |
+> | 传输/validateTransfer | 否 |否 |
 > | validateAddress | 否 |否 |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
@@ -570,12 +597,16 @@ ms.locfileid: "70194717"
 > | publicImages | 否 |否 |
 > | quotas | 否 |否 |
 > | storageAccounts | 是 |是 |
+> | storageAccounts/blobServices | 否 |否 |
+> | storageAccounts/fileServices | 否 |否 |
 > | storageAccounts/metricDefinitions | 否 |否 |
 > | storageAccounts/metrics | 否 |否 |
+> | storageAccounts/queueServices | 否 |否 |
 > | storageAccounts/services | 否 |否 |
 > | storageAccounts/services/diagnosticSettings | 否 |否 |
 > | storageAccounts/services/metricDefinitions | 否 |否 |
 > | storageAccounts/services/metrics | 否 |否 |
+> | storageAccounts/tableServices | 否 |否 |
 > | storageAccounts/vmImages | 否 |否 |
 > | vmImages | 否 |否 |
 
@@ -747,25 +778,6 @@ ms.locfileid: "70194717"
 > | showbackRules | 否 |否 |
 > | Views | 否 |否 |
 
-## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 支持标记 | 在成本报表中标记 |
-> | ------------- | ----------- | ----------- |
-> | hubs | 是 |是 |
-> | hubs/authorizationPolicies | 否 |否 |
-> | hubs/connectors | 否 |否 |
-> | hubs/connectors/mappings | 否 |否 |
-> | hubs/interactions | 否 |否 |
-> | hubs/kpi | 否 |否 |
-> | hubs/links | 否 |否 |
-> | hubs/profiles | 否 |否 |
-> | hubs/roleAssignments | 否 |否 |
-> | hubs/roles | 否 |否 |
-> | hubs/suggestTypeSchema | 否 |否 |
-> | hubs/views | 否 |否 |
-> | hubs/widgetTypes | 否 |否 |
-
 ## <a name="microsoftcustomerlockbox"></a>Microsoft.CustomerLockbox
 
 > [!div class="mx-tableFixed"]
@@ -810,15 +822,12 @@ ms.locfileid: "70194717"
 > | ------------- | ----------- | ----------- |
 > | catalogs | 是 |是 |
 > | datacatalogs | 是 |是 |
+> | datacatalogs/数据源 | 否 |否 |
+> | datacatalogs/数据源/扫描 | 否 |否 |
+> | datacatalogs/数据源/扫描/数据集 | 否 |否 |
+> | datacatalogs/数据源/扫描/触发器 | 否 |否 |
 > | datacatalogs/scantargets | 否 |否 |
 > | datacatalogs/scantargets/dataset | 否 |否 |
-
-## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 支持标记 | 在成本报表中标记 |
-> | ------------- | ----------- | ----------- |
-> | connectionManagers | 是 |是 |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -936,7 +945,6 @@ ms.locfileid: "70194717"
 > | ------------- | ----------- | ----------- |
 > | applicationgroups | 是 |是 |
 > | applicationgroups/应用程序 | 否 |否 |
-> | applicationgroups/assignedusers | 否 |否 |
 > | applicationgroups/startmenuitems | 否 |否 |
 > | hostpools | 是 |是 |
 > | hostpools/sessionhosts | 否 |否 |
@@ -1081,6 +1089,7 @@ ms.locfileid: "70194717"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
+> | autoManagedVmConfigurationProfiles | 是 |是 |
 > | guestConfigurationAssignments | 否 |否 |
 > | software | 否 |否 |
 > | softwareUpdateProfile | 否 |否 |
@@ -1207,6 +1216,7 @@ ms.locfileid: "70194717"
 > | hostingEnvironments | 是 |是 |
 > | integrationAccounts | 是 |是 |
 > | integrationServiceEnvironments | 是 |是 |
+> | integrationServiceEnvironments/managedApis | 是 |是 |
 > | isolatedEnvironments | 是 |是 |
 > | workflows | 是 |是 |
 
@@ -1234,13 +1244,6 @@ ms.locfileid: "70194717"
 > | ------------- | ----------- | ----------- |
 > | 标识 | 否 |否 |
 > | userAssignedIdentities | 是 |是 |
-
-## <a name="microsoftmanagedlab"></a>Microsoft.ManagedLab
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 支持标记 | 在成本报表中标记 |
-> | ------------- | ----------- | ----------- |
-> | labaccounts | 是 |是 |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
@@ -1348,8 +1351,11 @@ ms.locfileid: "70194717"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
+> | holographicsBroadcastAccounts | 是 |是 |
+> | objectUnderstandingAccounts | 是 |是 |
 > | remoteRenderingAccounts | 是 |是 |
 > | spatialAnchorsAccounts | 是 |是 |
+> | surfaceReconstructionAccounts | 是 |是 |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1475,6 +1481,7 @@ ms.locfileid: "70194717"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
+> | clusters | 是 |是 |
 > | 设备 | 否 |否 |
 > | linkTargets | 否 |否 |
 > | storageInsightConfigs | 否 |否 |
@@ -1501,6 +1508,8 @@ ms.locfileid: "70194717"
 > | legacyPeerings | 否 |否 |
 > | peerAsns | 否 |否 |
 > | 对等 | 是 |是 |
+> | peeringServiceProviders | 否 |否 |
+> | peeringServices | 是 |是 |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
@@ -1596,21 +1605,18 @@ ms.locfileid: "70194717"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | 部署 | 否 |否 |
+> | 部署 | 是 |否 |
 > | deployments/operations | 否 |否 |
 > | links | 否 |否 |
 > | notifyResourceJobs | 否 |否 |
 > | providers | 否 |否 |
-> | resourceGroups | 否 |否 |
+> | resourceGroups | 是 |否 |
 > | 资源 | 否 |否 |
 > | 订阅 | 否 |否 |
 > | subscriptions/providers | 否 |否 |
-> | subscriptions/resourceGroups | 否 |否 |
-> | subscriptions/resourcegroups/resources | 否 |否 |
 > | subscriptions/resources | 否 |否 |
 > | subscriptions/tagnames | 否 |否 |
 > | subscriptions/tagNames/tagValues | 否 |否 |
-> | 标记 | 否 |否 |
 > | tenants | 否 |否 |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1626,7 +1632,6 @@ ms.locfileid: "70194717"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | 流 | 是 |是 |
 > | jobcollections | 是 |是 |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1661,6 +1666,7 @@ ms.locfileid: "70194717"
 > | iotSecuritySolutions/analyticsModels/aggregatedAlerts | 否 |否 |
 > | iotSecuritySolutions/analyticsModels/aggregatedRecommendations | 否 |否 |
 > | jitNetworkAccessPolicies | 否 |否 |
+> | Networkdata.xml | 否 |否 |
 > | playbookConfigurations | 是 |是 |
 > | 策略 | 否 |否 |
 > | pricings | 否 |否 |
@@ -1693,6 +1699,7 @@ ms.locfileid: "70194717"
 > | ------------- | ----------- | ----------- |
 > | 聚合 | 否 |否 |
 > | alertRules | 否 |否 |
+> | alertRuleTemplates | 否 |否 |
 > | 书签 | 否 |否 |
 > | cases | 否 |否 |
 > | dataConnectors | 否 |否 |
@@ -1814,6 +1821,7 @@ ms.locfileid: "70194717"
 > | servers/restorableDroppedDatabases | 否 | 否 |
 > | servers/serviceobjectives | 否 | 否 |
 > | servers/tdeCertificates | 否 | 否 |
+> | virtualClusters | 否 | 否 |
 
 <a id="sqlnote" />
 
@@ -1919,6 +1927,7 @@ ms.locfileid: "70194717"
 > | ------------- | ----------- | ----------- |
 > | 取消 | 否 |否 |
 > | CreateSubscription | 否 |否 |
+> | 启用 | 否 |否 |
 > | 重命名 | 否 |否 |
 > | SubscriptionDefinitions | 否 |否 |
 > | SubscriptionOperations | 否 |否 |

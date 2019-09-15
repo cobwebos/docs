@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: heidist
-ms.openlocfilehash: f6cc119387482e4f5403e91de98916cbe2aaff2a
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 60dfae48b0aa1d6e0d9bc8e79d5ff2dedd744fd5
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963494"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993578"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-search"></a>如何为 Azure 搜索中的导入和索引建模关系 SQL 数据
 
@@ -152,11 +152,11 @@ ON Rooms$.HotelID = Hotels$.HotelID
 
 ## <a name="next-steps"></a>后续步骤
 
-您可以使用[导入数据向导](search-import-data-portal.md)对行集编制索引，这类似于本文中所述的行集。 向导将在*聊天室*中检测嵌入的 JSON 集合，并推断提供适当复杂类型集合的索引架构。 
+使用您自己的数据集，您可以使用 "[导入数据" 向导](search-import-data-portal.md)来创建和加载索引。 向导将检测嵌入的 JSON 集合（如包含在*聊天室*中的集合），并推导包含复杂类型集合的索引架构。 
 
   "![导入数据" 向导推导的索引]"(media/index-sql-relational-data/search-index-rooms-complex-collection.png "导入数据\" 向导推导的索引")
 
-若要完成导入并创建可用的索引，必须自行选择密钥并设置属性。 如果你不熟悉此向导，请尝试以下快速入门来了解基本步骤。
+尝试以下快速入门以了解 "导入数据" 向导的基本步骤。
 
 > [!div class="nextstepaction"]
 > [快速入门：使用 Azure 门户创建搜索索引](search-get-started-portal.md)

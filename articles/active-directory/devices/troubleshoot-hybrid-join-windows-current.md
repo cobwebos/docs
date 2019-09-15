@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b0b5bd5972e544c4254ee0f425e27cc8c465f0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297574"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995191"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>混合 Azure Active Directory 联接设备的故障排除 
 
@@ -98,7 +98,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined：否  
 
-此字段指示设备是否以个人设备的形式注册到 Azure AD（标记为“已加入工作区”）。  对于已加入域，同时已加入混合 Azure AD 的计算机，此值应为 **NO**。 如果值为 **YES**，则表示在完成混合 Azure AD 加入之前已添加工作或学校帐户。 在这种情况下，如果使用 Windows 10 周年更新版 (1607)，则会忽略该帐户。
+此字段指示设备是否以个人设备的形式注册到 Azure AD（标记为“已加入工作区”）。 对于已加入域，同时已加入混合 Azure AD 的计算机，此值应为 **NO**。 如果值为 **YES**，则表示在完成混合 Azure AD 加入之前已添加工作或学校帐户。 在这种情况下，如果使用 Windows 10 周年更新版 (1607)，则会忽略该帐户。
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined：是  
 
@@ -212,13 +212,13 @@ WamDefaultAuthority: organizations
 
 ###### <a name="network-errors"></a>网络错误
 
-- **WININET_E_CANNOT_CONNECT**(0x80072efd/-2147012867)
+- **WININET_E_CANNOT_CONNECT**（0x80072efd/-2147012867）
    - 原因：无法与服务器建立连接
    - 解决方法：确保网络连接到所需的 Microsoft 资源。 有关详细信息, 请参阅[网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)。
 - **WININET_E_TIMEOUT**(0x80072ee2/-2147012894)
    - 原因：常规网络超时。
    - 解决方法：确保网络连接到所需的 Microsoft 资源。 有关详细信息, 请参阅[网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)。
-- **WININET_E_DECODING_FAILED**(0x80072f8f/-2147012721)
+- **WININET_E_DECODING_FAILED**（0x80072f8f/-2147012721）
    - 原因：网络堆栈无法解码来自服务器的响应。
    - 解决方法：确保网络代理不干扰并修改服务器响应。
 
@@ -362,7 +362,7 @@ WamDefaultAuthority: organizations
 - **WININET_E_TIMEOUT**(0x80072ee2/-2147012894)
    - 原因：一般网络超时尝试在 DRS 注册设备
    - 解决方法：检查与`https://enterpriseregistration.windows.net`之间的网络连接。
-- **WININET_E_NAME_NOT_RESOLVED**(0x80072ee7/-2147012889)
+- **WININET_E_NAME_NOT_RESOLVED**（0x80072ee7/-2147012889）
    - 原因：无法解析服务器名称或地址。
    - 解决方法：检查与`https://enterpriseregistration.windows.net`之间的网络连接。 确保主机名的 DNS 解析在 n/w 和设备上是准确的。
 - **WININET_E_CONNECTION_ABORTED**(0x80072efe/-2147012866)
@@ -371,13 +371,13 @@ WamDefaultAuthority: organizations
 
 ##### <a name="federated-join-server-errors"></a>联合联接服务器错误
 
-| 服务器错误代码 | 服务器错误消息 | 可能的原因 | 解决方法 |
+| 服务器错误代码 | 服务器错误消息 | 可能的原因 | 分辨率 |
 | --- | --- | --- | --- |
 | 目录错误 | 你的请求暂时受到限制。 请在300秒后重试。 | 应为错误。 可能是由于快速连续发出多个注册请求引起的。 | 在 cooldown 期限后重试联接 |
 
 ##### <a name="sync-join-server-errors"></a>同步联接服务器错误
 
-| 服务器错误代码 | 服务器错误消息 | 可能的原因 | 解决方法 |
+| 服务器错误代码 | 服务器错误消息 | 可能的原因 | 分辨率 |
 | --- | --- | --- | --- |
 | 目录错误 | AADSTS90002:找<UUID>不到租户。 如果租户没有活动的订阅, 则可能发生此错误。 请咨询订阅管理员。 | SCP 对象中的租户 ID 不正确 | 请确保 SCP 对象配置了正确的 Azure AD 租户 ID 和活动订阅, 并存在于租户中。 |
 | 目录错误 | 找不到具有给定 ID 的设备对象。 | 需要同步联接的错误。 设备对象尚未从 AD 同步到 Azure AD | 等待 Azure AD Connect 同步完成, 同步完成后的下一次加入尝试将解决此问题 |
@@ -404,6 +404,9 @@ WamDefaultAuthority: organizations
 - 备用登录 ID
 - 找不到 HTTP 代理
 
+## <a name="known-issues"></a>已知问题
+- 在 "设置-> 帐户"-> 访问工作或学校，混合 Azure AD 加入的设备可能会显示两个不同的帐户，一个用于 Azure AD，另一个用于本地 AD，在连接到移动热点或外部 WiFi 网络时。 这只是一个 UI 问题，不会对功能产生任何影响。 
+ 
 ## <a name="next-steps"></a>后续步骤
 
 继续[使用 dsregcmd.exe 命令对设备进行故障排除](troubleshoot-device-dsregcmd.md)

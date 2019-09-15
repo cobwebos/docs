@@ -4,14 +4,14 @@ description: 显示资源类型如何在 Azure 资源管理器模板中进行完
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/04/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: d783ab9c12952393f0a74b245109dda58bff3927
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: d8238dddee041573d9b122e62cec66118c681ef6
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194402"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995266"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
 
@@ -24,7 +24,6 @@ ms.locfileid: "70194402"
 跳转到资源提供程序命名空间：
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
-> - [AADDomainServices](#microsoftaaddomainservices)
 > - [加载项](#microsoftaddons)
 > - [ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Microsoft.Advisor](#microsoftadvisor)
@@ -32,6 +31,7 @@ ms.locfileid: "70194402"
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
 > - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [AppPlatform](#microsoftappplatform)
 > - [Microsoft. 证明](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
 > - [Microsoft.Automation](#microsoftautomation)
@@ -65,14 +65,12 @@ ms.locfileid: "70194402"
 > - [Microsoft.ContentModerator](#microsoftcontentmoderator)
 > - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
-> - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
 > - [CustomerLockbox](#microsoftcustomerlockbox)
 > - [CustomProviders](#microsoftcustomproviders)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
 > - [Microsoft.DataCatalog](#microsoftdatacatalog)
-> - [Microsoft.DataConnect](#microsoftdataconnect)
 > - [Microsoft.DataFactory](#microsoftdatafactory)
 > - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft.DataLakeStore](#microsoftdatalakestore)
@@ -115,7 +113,6 @@ ms.locfileid: "70194402"
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
-> - [ManagedLab](#microsoftmanagedlab)
 > - [ManagedServices](#microsoftmanagedservices)
 > - [Microsoft.Management](#microsoftmanagement)
 > - [Microsoft.Maps](#microsoftmaps)
@@ -157,6 +154,7 @@ ms.locfileid: "70194402"
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft .SQL](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [Microsoft.StorageCache](#microsoftstoragecache)
@@ -182,13 +180,6 @@ ms.locfileid: "70194402"
 > | DomainServices | 是 |
 > | DomainServices/oucontainer | 否 |
 > | DomainServices/ReplicaSets | 是 |
-
-## <a name="microsoftaaddomainservices"></a>AADDomainServices
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 完整模式删除 |
-> | ------------- | ----------- |
-> | domains | 否 |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
@@ -235,7 +226,7 @@ ms.locfileid: "70194402"
 > | alertsSummary | 否 |
 > | alertsSummaryList | 否 |
 > | 反馈 | 否 |
-> | smartDetectorAlertRules | 否 |
+> | smartDetectorAlertRules | 是 |
 > | smartDetectorRuntimeEnvironments | 否 |
 > | smartGroups | 否 |
 
@@ -262,6 +253,13 @@ ms.locfileid: "70194402"
 > | ------------- | ----------- |
 > | configurationStores | 是 |
 > | configurationStores/eventGridFilters | 否 |
+
+## <a name="microsoftappplatform"></a>AppPlatform
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 完整模式删除 |
+> | ------------- | ----------- |
+> | 春天颜色 | 是 |
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
 
@@ -331,6 +329,10 @@ ms.locfileid: "70194402"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
+> | hybridDataManagers | 是 |
+> | postgresInstances | 是 |
+> | sqlBigDataClusters | 是 |
+> | sqlInstances | 是 |
 > | sqlServerRegistrations | 是 |
 > | sqlServerRegistrations/sqlServers | 否 |
 
@@ -357,11 +359,28 @@ ms.locfileid: "70194402"
 > | ------------- | ----------- |
 > | billingAccounts | 否 |
 > | billingAccounts/协议 | 否 |
+> | billingAccounts/billingPermissions | 否 |
 > | billingAccounts/billingProfiles | 否 |
+> | billingAccounts/billingProfiles/billingPermissions | 否 |
+> | billingAccounts/billingProfiles/billingRoleAssignments | 否 |
+> | billingAccounts/billingProfiles/billingRoleDefinitions | 否 |
 > | billingAccounts/billingProfiles/billingSubscriptions | 否 |
+> | billingAccounts/billingProfiles/createBillingRoleAssignment | 否 |
+> | billingAccounts/billingProfiles/customers | 否 |
 > | billingAccounts/billingProfiles/invoices | 否 |
 > | billingAccounts/billingProfiles/invoices/pricesheet | 否 |
 > | billingAccounts/billingProfiles/invoiceSections | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/billingPermissions | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleAssignments | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleDefinitions | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/billingSubscriptions | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/createBillingRoleAssignment | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/initiateTransfer | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/products | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/products/transfer | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/products/updateAutoRenew | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/事务 | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/传输 | 否 |
 > | billingAccounts/BillingProfiles/patchOperations | 否 |
 > | billingAccounts/billingProfiles/paymentMethods | 否 |
 > | billingAccounts/billingProfiles/policies | 否 |
@@ -369,10 +388,17 @@ ms.locfileid: "70194402"
 > | billingAccounts/billingProfiles/pricesheetDownloadOperations | 否 |
 > | billingAccounts/billingProfiles/products | 否 |
 > | billingAccounts/billingProfiles/transactions | 否 |
+> | billingAccounts/billingRoleAssignments | 否 |
+> | billingAccounts/billingRoleDefinitions | 否 |
 > | billingAccounts/billingSubscriptions | 否 |
+> | billingAccounts/createBillingRoleAssignment | 否 |
 > | billingAccounts/createInvoiceSectionOperations | 否 |
 > | billingAccounts/客户 | 否 |
 > | billingAccounts/customers/billingSubscriptions | 否 |
+> | billingAccounts/customers/initiateTransfer | 否 |
+> | billingAccounts/客户/产品 | 否 |
+> | billingAccounts/客户/事务 | 否 |
+> | billingAccounts/客户/转移 | 否 |
 > | billingAccounts/departments | 否 |
 > | billingAccounts/enrollmentAccounts | 否 |
 > | billingAccounts/invoices | 否 |
@@ -395,11 +421,11 @@ ms.locfileid: "70194402"
 > | billingAccounts/products | 否 |
 > | billingAccounts/transactions | 否 |
 > | billingPeriods | 否 |
-> | billingPermissions | 否 |
+> | BillingPermissions | 否 |
 > | billingProperty | 否 |
-> | billingRoleAssignments | 否 |
-> | billingRoleDefinitions | 否 |
-> | createBillingRoleAssignment | 否 |
+> | BillingRoleAssignments | 否 |
+> | BillingRoleDefinitions | 否 |
+> | CreateBillingRoleAssignment | 否 |
 > | departments | 否 |
 > | enrollmentAccounts | 否 |
 > | invoices | 否 |
@@ -407,6 +433,7 @@ ms.locfileid: "70194402"
 > | transfers/acceptTransfer | 否 |
 > | transfers/declineTransfer | 否 |
 > | transfers/operationStatus | 否 |
+> | 传输/validateTransfer | 否 |
 > | validateAddress | 否 |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
@@ -573,12 +600,16 @@ ms.locfileid: "70194402"
 > | publicImages | 否 |
 > | quotas | 否 |
 > | storageAccounts | 是 |
+> | storageAccounts/blobServices | 否 |
+> | storageAccounts/fileServices | 否 |
 > | storageAccounts/metricDefinitions | 否 |
 > | storageAccounts/metrics | 否 |
+> | storageAccounts/queueServices | 否 |
 > | storageAccounts/services | 否 |
 > | storageAccounts/services/diagnosticSettings | 否 |
 > | storageAccounts/services/metricDefinitions | 否 |
 > | storageAccounts/services/metrics | 否 |
+> | storageAccounts/tableServices | 否 |
 > | storageAccounts/vmImages | 否 |
 > | vmImages | 否 |
 
@@ -750,25 +781,6 @@ ms.locfileid: "70194402"
 > | showbackRules | 否 |
 > | Views | 否 |
 
-## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 完整模式删除 |
-> | ------------- | ----------- |
-> | hubs | 是 |
-> | hubs/authorizationPolicies | 否 |
-> | hubs/connectors | 否 |
-> | hubs/connectors/mappings | 否 |
-> | hubs/interactions | 否 |
-> | hubs/kpi | 否 |
-> | hubs/links | 否 |
-> | hubs/profiles | 否 |
-> | hubs/roleAssignments | 否 |
-> | hubs/roles | 否 |
-> | hubs/suggestTypeSchema | 否 |
-> | hubs/views | 否 |
-> | hubs/widgetTypes | 否 |
-
 ## <a name="microsoftcustomerlockbox"></a>Microsoft.CustomerLockbox
 
 > [!div class="mx-tableFixed"]
@@ -813,15 +825,12 @@ ms.locfileid: "70194402"
 > | ------------- | ----------- |
 > | catalogs | 是 |
 > | datacatalogs | 是 |
+> | datacatalogs/数据源 | 否 |
+> | datacatalogs/数据源/扫描 | 否 |
+> | datacatalogs/数据源/扫描/数据集 | 否 |
+> | datacatalogs/数据源/扫描/触发器 | 否 |
 > | datacatalogs/scantargets | 否 |
 > | datacatalogs/scantargets/dataset | 否 |
-
-## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 完整模式删除 |
-> | ------------- | ----------- |
-> | connectionManagers | 是 |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -940,7 +949,6 @@ ms.locfileid: "70194402"
 > | ------------- | ----------- |
 > | applicationgroups | 是 |
 > | applicationgroups/应用程序 | 否 |
-> | applicationgroups/assignedusers | 否 |
 > | applicationgroups/startmenuitems | 否 |
 > | hostpools | 是 |
 > | hostpools/sessionhosts | 否 |
@@ -1085,6 +1093,7 @@ ms.locfileid: "70194402"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
+> | autoManagedVmConfigurationProfiles | 是 |
 > | guestConfigurationAssignments | 否 |
 > | software | 否 |
 > | softwareUpdateProfile | 否 |
@@ -1211,6 +1220,7 @@ ms.locfileid: "70194402"
 > | hostingEnvironments | 是 |
 > | integrationAccounts | 是 |
 > | integrationServiceEnvironments | 是 |
+> | integrationServiceEnvironments/managedApis | 是 |
 > | isolatedEnvironments | 是 |
 > | workflows | 是 |
 
@@ -1238,13 +1248,6 @@ ms.locfileid: "70194402"
 > | ------------- | ----------- |
 > | 标识 | 否 |
 > | userAssignedIdentities | 是 |
-
-## <a name="microsoftmanagedlab"></a>Microsoft.ManagedLab
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 完整模式删除 |
-> | ------------- | ----------- |
-> | labaccounts | 是 |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
@@ -1352,8 +1355,11 @@ ms.locfileid: "70194402"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
+> | holographicsBroadcastAccounts | 是 |
+> | objectUnderstandingAccounts | 是 |
 > | remoteRenderingAccounts | 是 |
 > | spatialAnchorsAccounts | 是 |
+> | surfaceReconstructionAccounts | 是 |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1474,6 +1480,7 @@ ms.locfileid: "70194402"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
+> | clusters | 是 |
 > | 设备 | 否 |
 > | linkTargets | 否 |
 > | storageInsightConfigs | 否 |
@@ -1500,6 +1507,8 @@ ms.locfileid: "70194402"
 > | legacyPeerings | 否 |
 > | peerAsns | 否 |
 > | 对等 | 是 |
+> | peeringServiceProviders | 否 |
+> | peeringServices | 是 |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
@@ -1625,7 +1634,6 @@ ms.locfileid: "70194402"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
-> | 流 | 是 |
 > | jobcollections | 是 |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1660,6 +1668,7 @@ ms.locfileid: "70194402"
 > | iotSecuritySolutions/analyticsModels/aggregatedAlerts | 否 |
 > | iotSecuritySolutions/analyticsModels/aggregatedRecommendations | 否 |
 > | jitNetworkAccessPolicies | 否 |
+> | Networkdata.xml | 否 |
 > | playbookConfigurations | 是 |
 > | 策略 | 否 |
 > | pricings | 否 |
@@ -1692,6 +1701,7 @@ ms.locfileid: "70194402"
 > | ------------- | ----------- |
 > | 聚合 | 否 |
 > | alertRules | 否 |
+> | alertRuleTemplates | 否 |
 > | 书签 | 否 |
 > | cases | 否 |
 > | dataConnectors | 否 |
@@ -1813,6 +1823,7 @@ ms.locfileid: "70194402"
 > | servers/restorableDroppedDatabases | 否 |
 > | servers/serviceobjectives | 否 |
 > | servers/tdeCertificates | 否 |
+> | virtualClusters | 否 |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
@@ -1910,6 +1921,7 @@ ms.locfileid: "70194402"
 > | ------------- | ----------- |
 > | 取消 | 否 |
 > | CreateSubscription | 否 |
+> | 启用 | 否 |
 > | 重命名 | 否 |
 > | SubscriptionDefinitions | 否 |
 > | SubscriptionOperations | 否 |

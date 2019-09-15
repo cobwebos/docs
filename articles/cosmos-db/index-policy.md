@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 86ac042bdddce36f00be71cc5109618bec909d90
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 60b323c12e5c548c974a7d660d08861637ac2381
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914172"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996666"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
@@ -29,7 +29,7 @@ Azure Cosmos DB 支持两种索引模式：
 - **一致**：如果容器的索引策略设置为“一致”，则创建、更新或删除项时，索引将以同步方式更新。 这意味着，读取查询的一致性是[为帐户配置的一致性](consistency-levels.md)。
 - **无**：如果容器的索引策略设置为“无”，则会有效地针对该容器禁用索引。 将容器用作单纯的键-值存储时，通常会使用此设置，在此情况下无需使用辅助索引。 它还有助于加速批量插入操作。
 
-此外，还应将索引策略中的 "**自动**" 属性设置为 " **true**"。 如果将此属性设置为 true，则允许 Azure Cosmos DB 在编写文档时自动为它们编制索引。
+默认情况下，索引策略设置为`automatic`。 这是通过将索引策略`automatic`中的属性设置为来`true`实现的。 如果将此属性`true`设置为，则允许 Azure CosmosDB 在文档写入时自动编制文档索引。
 
 ## <a name="including-and-excluding-property-paths"></a>包含和排除属性路径
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9cfced0860b206e41b3e9f82f1ed2b92867e6b39
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 42323af40ee18a965363321196a04aa75c00aa40
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914842"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996940"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的标准 SKU 负载均衡器
 
@@ -277,6 +277,8 @@ azure-vote-front    LoadBalancer   10.0.227.198   52.179.23.131   80:31201/TCP  
 
 当使用*标准*SKU 负载平衡器以及默认情况下创建的托管出站公共 ip 时，可以使用*负载平衡器托管 ip 计数*参数来扩展托管出站公共 ip 的数量。
 
+若要更新现有群集，请运行以下命令。 还可以在创建群集时将此参数设置为具有多个托管出站公共 Ip。
+
 ```azurecli-interactive
 az aks update \
     --resource-group myResourceGroup \
@@ -284,11 +286,15 @@ az aks update \
     --load-balancer-managed-outbound-ip-count 2
 ```
 
-上面的示例将*myResourceGroup*中*myAKSCluster*群集的托管出站公共 ip 数设置为*2* 。 你还可以在创建群集时使用*负载均衡器托管 ip 计数*参数设置初始托管的出站公共 ip 数目。 托管出站公共 Ip 的默认数量为1。
+上面的示例将*myResourceGroup*中*myAKSCluster*群集的托管出站公共 ip 数设置为*2* 。 
+
+你还可以在创建群集时使用*负载平衡器托管 ip 计数*参数设置初始的托管出站公共 ip 数，方法是附加`--load-balancer-managed-outbound-ip-count`参数并将其设置为所需的值。 托管出站公共 Ip 的默认数量为1。
 
 ## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>可选-提供自己的公共 Ip 或传出的前缀
 
-使用*标准*sku 负载平衡器时，AKS 群集会自动在为 AKS 群集创建的同一资源组中创建公共 ip，并将公共 ip 分配到*标准*SKU 负载均衡器。 或者，可以分配自己的公共 IP。
+使用*标准*sku 负载平衡器时，AKS 群集会自动在为 AKS 群集创建的同一资源组中创建公共 ip，并将公共 ip 分配到*标准*SKU 负载均衡器。 或者，可以在创建群集时分配自己的公共 IP，也可以更新现有群集的负载均衡器属性。
+
+通过引入多个 IP 地址或前缀，可以在定义单个负载均衡器对象后面的 IP 地址时定义多个支持服务。 特定节点的出口终结点将取决于与之关联的服务。
 
 > [!IMPORTANT]
 > 你必须将*标准*Sku 公共 Ip 与*标准*sku 一起用于你的负载均衡器。 可以使用[az network 公共 ip show][az-network-public-ip-show]命令验证公共 IP 的 SKU：
@@ -324,8 +330,6 @@ az network public-ip prefix show --resource-group myResourceGroup --name myPubli
 
 上述命令显示*myResourceGroup*资源组中的*myPublicIPPrefix*公共 IP 前缀的 ID。
 
-将*az aks update*命令与前一个命令的 id 结合使用，其中包含*负载平衡器-出站 ip 前缀*参数。
-
 下面的示例将*负载均衡器--ip 前缀*参数与上一个命令的 id 结合使用。
 
 ```azurecli-interactive
@@ -337,6 +341,36 @@ az aks update \
 
 > [!IMPORTANT]
 > 公共 Ip 和 IP 前缀必须与 AKS 群集位于同一个订阅中。
+
+### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>在创建群集时定义自己的公共 IP 或前缀
+
+你可能想要在创建群集时引入自己的 IP 地址或 IP 前缀，以支持允许列表出口终结点等方案。 将上面显示的相同参数附加到群集创建步骤，在群集的生命周期开始时定义自己的公共 Ip 和 IP 前缀。
+
+在开始时，使用*az aks create*命令和*负载均衡器--ip*参数来创建一个具有公共 ip 的新群集。
+
+```
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
+```
+
+使用*az aks create*命令和*负载均衡器-* ------------
+
+```
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
+```
 
 ## <a name="clean-up-the-standard-sku-load-balancer-configuration"></a>清理标准 SKU 负载平衡器配置
 

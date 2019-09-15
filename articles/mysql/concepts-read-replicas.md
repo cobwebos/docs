@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 7e1f27738ae5a87cfb84fad955f80ad2f2eb910f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: cdcb4832408b9e26e692a055e06bfb55e2fdfe96
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773322"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993101"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -155,4 +155,4 @@ Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[使用 Azure 门户创建和管理只读副本](howto-read-replicas-portal.md)
-- 了解如何[使用 Azure CLI 创建和管理只读副本](howto-read-replicas-cli.md)
+- 了解如何[使用 Azure CLI 和 REST API 创建和管理读取副本](howto-read-replicas-cli.md)

@@ -1,7 +1,7 @@
 ---
 title: 版本新增内容
-titleSuffix: Azure Machine Learning service
-description: 了解 Azure 机器学习服务的最新更新以及机器学习和数据准备 Python SDK。
+titleSuffix: Azure Machine Learning
+description: 了解 Azure 机器学习和机器学习和数据准备 Python Sdk 的最新更新。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2721e134e03d3d622e61085dc39a2914098ba570
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 26d66dad1e9953ddcbdbe0fd3b495bb3e418b3e7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70930744"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993422"
 ---
-# <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
+# <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
-本文介绍 Azure 机器学习服务版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[**主要 sdk For Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)参考页。 
+本文介绍 Azure 机器学习版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[**主要 sdk For Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)参考页。 
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
@@ -557,7 +557,7 @@ ms.locfileid: "70930744"
 + 运行报表和运行详细信息页中的实时图表和指标更新
 + 更新了运行详细信息页中的日志、输出和快照的文件查看器。
 + "试验" 选项卡中新的和改进的报表创建体验。 
-+ 添加了从 "Azure 机器学习服务" 工作区的 "概述" 页下载 .config 文件的功能。
++ 添加了从 "Azure 机器学习" 工作区的 "概述" 页下载配置 json 文件的功能。
 + 支持从 Azure Databricks 工作区创建机器学习服务工作区 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -576,7 +576,7 @@ ms.locfileid: "70930744"
 + [快速启动预配置的笔记本 VM](tutorial-1st-experiment-sdk-setup.md) , 该 VM 具有最新版本的 Azure 机器学习 SDK 和相关包。
 + 通过 Azure Active Directory 身份验证和授权等经验证的技术 (如 HTTPS) 来保护访问。
 + Azure 机器学习工作区 blob 存储帐户中的笔记本和代码的可靠云存储。 可以安全地删除笔记本 VM, 而不会丢失工作。
-+ 预安装的示例笔记本, 用于探索和试验 Azure 机器学习服务功能。
++ 预安装了用于浏览和试验 Azure 机器学习功能的示例笔记本。
 + Azure Vm 的完整自定义功能、任何 VM 类型、任何包、任何驱动程序。 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -873,7 +873,7 @@ Azure 机器学习 SDK for Python v 1.0.30 已发布。
 
 ## <a name="2018-12-04-general-availability"></a>2018-12-04：正式版
 
-Azure 机器学习服务现已公开发布。
+Azure 机器学习现已正式发布。
 
 ### <a name="azure-machine-learning-compute"></a>Azure 机器学习计算
 在此版本中，我们将宣告一个通过 [Azure 机器学习计算](how-to-set-up-training-targets.md#amlcompute)获得的全新托管计算体验。 此计算目标替换适用于 Azure 机器学习的 Azure Batch AI 计算。 
@@ -985,7 +985,7 @@ Azure 机器学习服务现已公开发布。
 ## <a name="2018-11-05"></a>2018-11-05
 
 ### <a name="azure-portal"></a>Azure 门户 
-Azure 机器学习服务的 Azure 门户具有以下更新：
+Azure 机器学习的 Azure 门户具有以下更新：
   * 针对已发布的管道提供了一个新的“管道”选项卡。
   * 增加了以下支持：将现有 HDInsight 群集附加为计算目标。
 
@@ -1098,4 +1098,4 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读 [Azure 机器学习服务](../service/overview-what-is-azure-ml.md)的概述。
+阅读 [Azure 机器学习](../service/overview-what-is-azure-ml.md)的概述。

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: d6a8ac97aa3896eaf98651f5f1120fcc6bf25516
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: c71bf9be94799c2b109d57393e70e99a0710e252
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814119"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995537"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>调试 Azure HDInsight 中运行的 Apache Spark 作业
 
@@ -29,14 +29,14 @@ ms.locfileid: "70814119"
 ## <a name="track-an-application-in-the-yarn-ui"></a>在 YARN UI 中跟踪应用程序
 1. 启动 YARN UI。 在“群集仪表板”下单击“Yarn”。
    
-    ![启动 YARN UI](./media/apache-spark-job-debugging/launch-yarn-ui.png)
+    ![启动 YARN UI](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
    
    > [!TIP]  
    > 或者，也可以从 Ambari UI 启动 YARN UI。 若要启动 Ambari UI，请在“群集仪表板”下单击“Ambari 主页”。 在 Ambari UI 中依次单击“YARN”、“快速链接”、活动的资源管理器和“资源管理器 UI”。 
 
 2. 由于 Spark 作业是使用 Jupyter 笔记本启动的，因此应用程序的名称为 **remotesparkmagics**（这是从笔记本启动的所有应用程序的名称）。 单击应用程序名称旁边的应用程序 ID，以获取有关该作业的详细信息。 此时将启动应用程序视图。
    
-    ![查找 Spark 应用程序 ID](./media/apache-spark-job-debugging/find-application-id.png)
+    ![查找 Spark 应用程序 ID](./media/apache-spark-job-debugging/find-application-id1.png)
    
     对于从 Jupyter 笔记本启动的应用程序，在退出笔记本之前，其状态始终是“正在运行”。
 3. 从应用程序视图中，可以进一步深入以找到与应用程序和日志 (stdout/stderr) 关联的容器。 也可以通过单击“跟踪 URL”对应的链接来启动 Spark UI，如下所示。 
@@ -48,13 +48,13 @@ ms.locfileid: "70814119"
 
 1. 若要启动 Spark UI，请在应用程序视图中，单击“跟踪 URL”旁边的链接，如上面的屏幕截图中所示。 可以看到，应用程序启动的所有 Spark 作业正在 Jupyter 笔记本中运行。
    
-    ![查看 Spark 作业](./media/apache-spark-job-debugging/view-spark-jobs.png)
+    ![查看 Spark 作业](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 2. 单击“执行器”选项卡以查看每个执行器的处理和存储信息。 还可以通过单击“线程转储”链接来检索调用堆栈。
    
     ![查看 Spark 执行器](./media/apache-spark-job-debugging/view-spark-executors.png)
 3. 单击“阶段”选项卡以查看与应用程序关联的阶段。
    
-    ![查看 Spark 阶段](./media/apache-spark-job-debugging/view-spark-stages.png "查看 Spark 阶段")
+    ![查看 Spark 阶段](./media/apache-spark-job-debugging/view-apache-spark-stages.png "查看 Spark 阶段")
    
     每个阶段可能有多个任务，可以查看这些任务的执行统计信息，如下所示。
    

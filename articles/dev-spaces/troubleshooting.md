@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: b16a7d874f15747c14df1d728be824fac76de2be
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019650"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993950"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -333,10 +333,10 @@ configurations:
 
 ### <a name="reason"></a>Reason
 
-使用尝试附加到调试器的 node.js 应用程序的节点 (该节点) 已超过*inotify _user_watches*值。 在某些情况下, [ *inotify _user_watches*的默认值可能太小, 无法直接将调试器附加到 pod](https://github.com/Azure/AKS/issues/772)。
+使用尝试附加到调试器的 node.js 应用程序的节点（该节点）已超过*inotify _user_watches*值。 在某些情况下， [ *inotify _user_watches*的默认值可能太小，无法直接将调试器附加到 pod](https://github.com/Azure/AKS/issues/772)。
 
 ### <a name="try"></a>尝试
-此问题的一种临时解决方法是增加群集中每个节点上的*inotify _user_watches*的值, 然后重新启动该节点以使更改生效。
+此问题的一种临时解决方法是增加群集中每个节点上的*inotify _user_watches*的值，然后重新启动该节点以使更改生效。
 
 ## <a name="new-pods-are-not-starting"></a>新盒未启动
 
@@ -445,10 +445,10 @@ azure-cli                         2.0.60 *
 
 ### <a name="reason"></a>Reason
 
-当你在开发环境中运行服务时, 该服务的 pod 会[注入额外的用于检测的容器](how-dev-spaces-works.md#prepare-your-aks-cluster), 并且 pod 中的所有容器都需要为水平 Pod 自动缩放设置资源限制和请求。 
+当你在开发环境中运行服务时，该服务的 pod 会[注入额外的用于检测的容器](how-dev-spaces-works.md#prepare-your-aks-cluster)，并且 pod 中的所有容器都需要为水平 Pod 自动缩放设置资源限制和请求。 
 
 
-可以通过将`azds.io/proxy-resources`批注添加到 pod 规范, 为注入的容器 (devspaces) 应用资源请求和限制。应将该值设置为一个 JSON 对象, 该对象表示代理的容器规范的资源部分。
+可以通过将`azds.io/proxy-resources`批注添加到 pod 规范，为注入的容器（devspaces）应用资源请求和限制。应将该值设置为一个 JSON 对象，该对象表示代理的容器规范的资源部分。
 
 ### <a name="try"></a>尝试
 
@@ -456,3 +456,40 @@ azure-cli                         2.0.60 *
 ```
 azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
 ```
+
+## <a name="error-unauthorized-authentication-required-when-trying-to-use-a-docker-image-from-a-private-registry"></a>尝试使用专用注册表中的 Docker 映像时出现 "未授权：需要身份验证" 错误
+
+### <a name="reason"></a>Reason
+
+你使用的是需要进行身份验证的专用注册表中的 Docker 映像。 你可以使用[imagePullSecrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets)通过此专用注册表允许开发人员共享空间，并请求映像。
+
+### <a name="try"></a>尝试
+
+若要使用 imagePullSecrets，请在使用映像的命名空间中[创建 Kubernetes 机密](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)。 然后提供机密作为中`azds.yaml`的 imagePullSecret。
+
+下面是在中`azds.yaml`指定 imagePullSecrets 的示例。
+
+```
+kind: helm-release
+apiVersion: 1.1
+build:
+  context: $BUILD_CONTEXT$
+  dockerfile: Dockerfile
+install:
+  chart: $CHART_DIR$
+  values:
+  - values.dev.yaml?
+  - secrets.dev.yaml?
+  set:
+    # Optional, specify an array of imagePullSecrets. These secrets must be manually created in the namespace.
+    # This will override the imagePullSecrets array in values.yaml file.
+    # If the dockerfile specifies any private registry, the imagePullSecret for the registry must be added here.
+    # ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    #
+    # This uses credentials from secret "myRegistryKeySecretName".
+    imagePullSecrets:
+      - name: myRegistryKeySecretName
+```
+
+> [!IMPORTANT]
+> 在中`azds.yaml`设置 imagePullSecrets 将重写中指定`values.yaml`的 imagePullSecrets。

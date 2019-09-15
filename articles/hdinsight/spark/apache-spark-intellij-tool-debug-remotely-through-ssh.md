@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 9690e114f9ae01c4aee71145525fdda2eff4701c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 844901d9c689d5a04312b52101572854f4d7fe6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814178"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70994015"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>通过 SSH 在 HDInsight 群集上调试 Apache Spark 的应用程序 Azure Toolkit for IntelliJ
 
@@ -77,7 +77,7 @@ ms.locfileid: "70814178"
 1. 打开 SparkCore_wasbloTest 脚本，右键单击脚本编辑器，然后选择“运行 [Spark 作业]XXX”选项来执行本地运行。
 1. 本地运行完成后，可以看到输出文件保存到当前的项目资源管理器的“数据” > “默认”中。
 
-    ![本地运行结果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
+    ![本地运行结果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 1. 执行本地运行和本地调试时，工具已自动设置默认的本地运行配置。 打开右上角的“[HDInsight 上的 Spark] XXX”配置，可以看到已在“HDInsight 上的 Apache Spark”下创建了“[HDInsight 上的 Spark]XXX”。 切换到“本地运行”选项卡。
 
     ![本地运行配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
@@ -114,13 +114,11 @@ ms.locfileid: "70814178"
 
 1. 完成配置设置后，可以对远程群集运行项目，或执行远程调试。
    
-   ![远程运行按钮](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run.png)
+   ![远程运行按钮](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png)
 
 1. 单击“断开连接”按钮，这样，提交日志就不显示在左面板中。 但是，它仍在在后端上运行。
 
-   ![远程运行结果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
-
-
+   ![远程运行结果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
 
 ### <a name="scenario-2-perform-remote-debugging"></a>方案 2：执行远程调试
 1. 设置断点，然后单击“远程调试”图标。 与远程提交的区别是需要配置 SSH 用户名/密码。
@@ -148,7 +146,7 @@ ms.locfileid: "70814178"
 
 1. 右键单击“调试”选项卡上的目标，然后选择“设置值”。 接下来，输入变量的新值。 然后选择 **Enter** 保存该值。 
 
-   ![Set value](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value.png) 
+   ![Set value](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
 
 1. 选择“恢复程序”图标继续运行程序。 这一次不会捕获到异常。 可以看到项目成功运行，无任何异常。
 

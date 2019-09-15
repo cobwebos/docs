@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mlearned
-ms.openlocfilehash: 5aa8268fee7d43ad13ea8710760ba493683f502e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f150103c8e9534bfd1bb93d20e3d65d715767184
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126884"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996966"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板
 
@@ -36,34 +36,47 @@ az aks browse --resource-group myResourceGroup --name myAKSCluster
 
 此命令在开发系统与 Kubernetes API 之间创建一个代理，并在 Web 浏览器中打开 Kubernetes 仪表板。 如果 Web 浏览器未打开到 Kubernetes 仪表板，请复制并在 Azure CLI 中粘贴所记录的 URL 地址，通常为 `http://127.0.0.1:8001`。
 
-![Kubernetes web 仪表板的 "登录" 页](./media/kubernetes-dashboard/dashboard-login.png)
+<!--
+![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
 
-你可以使用以下选项登录到群集的仪表板:
+You have the following options to sign in to your cluster's dashboard:
 
-* [Kubeconfig 文件][kubeconfig-file]。 你可以使用[az aks 获取][az-aks-get-credentials]kubeconfig 文件。
-* 标记, 如[服务帐户令牌][aks-service-accounts]或用户令牌。 在[启用 aad 的群集][aad-cluster]上, 此令牌将为 aad 令牌。 你可以使用`kubectl config view`来列出 kubeconfig 文件中的令牌。 有关创建用于 AKS 群集的 AAD 令牌的更多详细信息, 请参阅[使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成][aad-cluster]。
-* 默认的仪表板服务帐户, 如果单击 "*跳过*", 则将使用该帐户。
+* A [kubeconfig file][kubeconfig-file]. You can generate a kubeconfig file using [az aks get-credentials][az-aks-get-credentials].
+* A token, such as a [service account token][aks-service-accounts] or user token. On [AAD-enabled clusters][aad-cluster], this token would be an AAD token. You can use `kubectl config view` to list the tokens in your kubeconfig file. For more details on creating an AAD token for use with an AKS cluster see [Integrate Azure Active Directory with Azure Kubernetes Service using the Azure CLI][aad-cluster].
+* The default dashboard service account, which is used if you click *Skip*.
 
 > [!WARNING]
-> 请勿公开 Kubernetes 仪表板, 无论使用哪种身份验证方法。
+> Never expose the Kubernetes dashboard publicly, regardless of the authentication method used.
 > 
-> 设置 Kubernetes 仪表板的身份验证时, 建议对默认仪表板服务帐户使用令牌。 令牌允许每个用户使用各自的权限。 使用默认的仪表板服务帐户, 用户可以绕过自己的权限, 而改用服务帐户。
+> When setting up authentication for the Kubernetes dashboard, it is recommended that you use a token over the default dashboard service account. A token allows each user to use their own permissions. Using the default dashboard service account may allow a user to bypass their own permissions and use the service account instead.
 > 
-> 如果你选择使用默认的仪表板服务帐户, 并且你的 AKS 群集使用 RBAC, 则必须先创建一个*ClusterRoleBinding* , 然后才能正确地访问该仪表板。 默认情况下，Kubernetes 仪表板是使用最小读取访问权限部署的，并且显示 RBAC 访问错误。 群集管理员可以选择向 *kubernetes-dashboard* 服务帐户授予更多访问权限，但这可能会导致需要进行权限提升。 还可以集成 Azure Active Directory 身份验证来提供更精细的访问权限级别。
+> If you do choose to use the default dashboard service account and your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 >
-> 若要创建绑定，请使用 [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] 命令，如以下示例所示。 **此示例绑定不应用任何其他身份验证组件, 可能会导致使用不安全。**
+> To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command as shown in the following example. **This sample binding does not apply any additional authentication components and may lead to insecure use.**
 >
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 > 
-> 现在可以访问启用了 RBAC 的群集中的 Kubernetes 仪表板。 若要启动 Kubernetes 仪表板，请使用 [az aks browse][az-aks-browse] 命令，如上一步所述。
+> You can now access the Kubernetes dashboard in your RBAC-enabled cluster. To start the Kubernetes dashboard, use the [az aks browse][az-aks-browse] command as detailed in the previous step.
 >
-> 如果你的群集不使用 RBAC, 则不建议创建*ClusterRoleBinding*。
+> If your cluster does not use RBAC, it is not recommended to create a *ClusterRoleBinding*.
+> 
+> For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
+
+After you choose a method to sign in, the Kubernetes dashboard is displayed. If you chose to use *token* or *skip*, the Kubernetes dashboard will use the permissions of the currently logged in user to access the cluster.
+-->
+
+> [!IMPORTANT]
+> 如果 AKS 群集使用 RBAC，则必须先创建 *ClusterRoleBinding*，然后才能正确访问仪表板。 默认情况下，Kubernetes 仪表板是使用最小读取访问权限部署的，并且显示 RBAC 访问错误。 Kubernetes 仪表板当前不支持使用用户提供的凭据来确定访问权限级别，而是使用授予给服务帐户的角色。 群集管理员可以选择向 *kubernetes-dashboard* 服务帐户授予更多访问权限，但这可能会导致需要进行权限提升。 还可以集成 Azure Active Directory 身份验证来提供更精细的访问权限级别。
+> 
+> 若要创建绑定，请使用[kubectl create clusterrolebinding][kubectl-create-clusterrolebinding]命令。 下面的示例演示如何创建一个示例绑定，但是，此示例绑定不会应用任何其他身份验证组件，并可能导致使用不安全。 Kubernetes 仪表板将对有权访问该 URL 的任何人开放。 请勿公开 Kubernetes 仪表板。
+>
+> ```console
+> kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+> ```
 > 
 > 有关使用不同身份验证方法的详细信息，请参阅有关[访问控制][dashboard-authentication]的 Kubernetes 仪表板 wiki。
-
-选择用于登录的方法后, 将显示 "Kubernetes" 仪表板。 如果选择使用*令牌*或*跳过*, Kubernetes 仪表板将使用当前登录的用户的权限来访问群集。
 
 ![Kubernetes Web 仪表板的概述页](./media/kubernetes-dashboard/dashboard-overview.png)
 

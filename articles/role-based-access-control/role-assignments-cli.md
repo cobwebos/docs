@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: bc5deb614e2ac6e47ff3bf241943df92d97699b2
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 1b898f42fa6f66fba7c84daa67769249642bd986
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295175"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996485"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>使用 RBAC 和 Azure CLI 管理对 Azure 资源的访问权限
 
 可以通过[基于角色的访问控制 (RBAC)](overview.md) 方式管理对 Azure 资源的访问权限。 本文介绍如何使用 RBAC 和 Azure CLI 来管理用户、组和应用程序的访问权限。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要管理访问，需要具有以下任一项：
 
@@ -97,7 +97,7 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 az role definition list --name <role_name>
 ```
 
-下面的示例列出了“参与者”  角色定义：
+下面的示例列出了“参与者”角色定义：
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -137,7 +137,7 @@ az role definition list --name "Contributor"
 
 ### <a name="list-actions-of-a-role"></a>列出角色的操作
 
-以下示例仅列出了“参与者”角色的 actions  和 notActions  ： 
+以下示例仅列出了“参与者”角色的 actions 和 notActions：
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -156,7 +156,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-以下示例仅列出了“虚拟机参与者”角色的 actions： 
+以下示例仅列出了“虚拟机参与者”角色的 actions：
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
@@ -192,7 +192,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 az role assignment list --assignee <assignee>
 ```
 
-默认情况下，将显示仅直接分配到订阅范围内。 若要查看分配的资源或组作用域，请使用`--all`; 若要查看继承的 asisgnments，请使用`--include-inherited`。
+默认情况下，将仅显示范围为订阅的直接分配。 若要查看按资源或组划分作用域`--all`的分配，请使用和查看`--include-inherited`继承的分配，使用。
 
 以下示例列出的角色分配直接分配给 *patlong\@contoso.com* 用户：
 
@@ -213,9 +213,9 @@ az role assignment list --all --assignee patlong@contoso.com --output json | jq 
 }
 ```
 
-### <a name="list-role-assignments-for-a-resource-group"></a>列出资源组的角色分配
+### <a name="list-role-assignments-at-a-resource-group-scope"></a>列出资源组范围内的角色分配
 
-若要列出存在的针对资源组的角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list)：
+若要列出资源组作用域中存在的角色分配，请使用[az role 指配 list](/cli/azure/role/assignment#az-role-assignment-list)：
 
 ```azurecli
 az role assignment list --resource-group <resource_group>
@@ -224,15 +224,17 @@ az role assignment list --resource-group <resource_group>
 以下示例列出 *pharma-sales* 资源组的角色分配：
 
 ```azurecli
-az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
 ```Output
 {
+  "principalName": "patlong@contoso.com",
   "roleDefinitionName": "Backup Operator",
   "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
 }
 {
+  "principalName": "patlong@contoso.com",
   "roleDefinitionName": "Virtual Machine Contributor",
   "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
 }
@@ -240,19 +242,43 @@ az role assignment list --resource-group pharma-sales --output json | jq '.[] | 
 ...
 ```
 
+### <a name="list-role-assignments-at-a-subscription-scope"></a>列出订阅范围内的角色分配
+
+若要列出订阅范围内的所有角色分配，请使用[az role 分配 list](/cli/azure/role/assignment#az-role-assignment-list)。 若要获取订阅 ID，可以在 Azure 门户中的 "**订阅**" 边栏选项卡上找到，也可以使用[az account list](/cli/azure/account#az-account-list)。
+
+```azurecli
+az role assignment list --subscription <subscription_name_or_id>
+```
+
+```Example
+az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```
+
+### <a name="list-role-assignments-at-a-management-group-scope"></a>列出管理组范围内的角色分配
+
+若要列出管理组作用域的所有角色分配，请使用[az role 分配 list](/cli/azure/role/assignment#az-role-assignment-list)。 若要获取管理组 ID，你可以在 Azure 门户的 "**管理组**" 边栏选项卡中找到它，也可以使用[az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list)。
+
+```azurecli
+az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
+```
+
+```Example
+az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```
+
 ## <a name="grant-access"></a>授予访问权限
 
 在 RBAC 中，若要授予访问权限，请创建角色分配。
 
-### <a name="create-a-role-assignment-for-a-user"></a>为用户创建角色分配
+### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>在资源组范围内为用户创建角色分配
 
-若要为资源组范围的用户创建角色分配，请使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create)：
+若要在资源组范围内授予用户访问权限，请使用[az role create create](/cli/azure/role/assignment#az-role-assignment-create)。
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-以下示例将“虚拟机参与者”角色  分配给 *pharma-sales* 资源组范围内的 *patlong\@contoso.com* 用户：
+以下示例将“虚拟机参与者”角色分配给 *pharma-sales* 资源组范围内的 *patlong\@contoso.com* 用户：
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
@@ -263,7 +289,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee patlon
 很多时候角色名称可能会更改，例如：
 
 - 你使用的是自己的自定义角色，你决定更改名称。
-- 你使用的是预览版角色，其名称中有“(预览)”字样。  发布角色时重命名了角色。
+- 你使用的是预览版角色，其名称中有“(预览)”字样。 发布角色时重命名了角色。
 
 > [!IMPORTANT]
 > 预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
@@ -277,7 +303,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee patlon
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-以下示例将[“虚拟机参与者”角色](built-in-roles.md#virtual-machine-contributor)分配给 *pharma-sales* 资源组范围内的 *patlong\@contoso.com* 用户。 若要获取唯一的角色 ID，可以使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list) 命令，也可以参阅 [Azure 资源的内置角色](built-in-roles.md)。
+下面的示例将[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给*医药*资源组作用域上的 *\@patlong contoso.com*用户。 若要获取唯一的角色 ID，可以使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list) 命令，也可以参阅 [Azure 资源的内置角色](built-in-roles.md)。
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -285,39 +311,67 @@ az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee
 
 ### <a name="create-a-role-assignment-for-a-group"></a>为组创建角色分配
 
-若要为组创建角色分配，请使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create)：
+若要授予对组的访问权限，请使用[az role create create](/cli/azure/role/assignment#az-role-assignment-create)。 若要获取组的 ID，可以使用 [az ad group list](/cli/azure/ad/group#az-ad-group-list) 或 [az ad group show](/cli/azure/ad/group#az-ad-group-show)。
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-以下示例将“读者”角色  分配给订阅范围内 ID 为 22222222-2222-2222-2222-222222222222 的“Ann Mack 团队”组。  若要获取组的 ID，可以使用 [az ad group list](/cli/azure/ad/group#az-ad-group-list) 或 [az ad group show](/cli/azure/ad/group#az-ad-group-show)。
+下面的示例将*读者*角色分配给订阅范围内 ID 为22222222-2222-2222-2222-222222222222 的*王 Mack 团队*组。
 
 ```azurecli
 az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000
 ```
 
-以下示例将“虚拟机参与者”角色  分配给名为 *pharma-sales-project-network* 的虚拟网络的资源范围内 ID 为 22222222-2222-2222-2222-222222222222 的“Ann Mack 团队”组  ：
+下面的示例将*虚拟机参与者*角色分配给名为*医药*的虚拟网络的资源范围内 ID 为22222222-2222-2222-2222-222222222222 的*王 Mack 团队*组。
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network
 ```
 
-### <a name="create-a-role-assignment-for-an-application"></a>为应用程序创建角色分配
+### <a name="create-a-role-assignment-for-an-application-at-a-resource-group-scope"></a>为资源组范围内的应用程序创建角色分配
 
-若要为应用程序创建角色，请使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create)：
+若要授予对应用程序的访问权限，请使用[az role create create](/cli/azure/role/assignment#az-role-assignment-create)。 若要获取应用程序的对象 ID，可以使用 [az ad app list](/cli/azure/ad/app#az-ad-app-list) 或 [az ad app show](/cli/azure/ad/app#az-ad-app-show)。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group>
 ```
 
-以下示例将“虚拟机参与者”角色  分配给 *pharma-sales* 资源组范围内对象 ID 为 44444444-4444-4444-4444-444444444444 的应用程序。 若要获取应用程序的对象 ID，可以使用 [az ad app list](/cli/azure/ad/app#az-ad-app-list) 或 [az ad app show](/cli/azure/ad/app#az-ad-app-show)。
+以下示例将“虚拟机参与者”角色分配给 *pharma-sales* 资源组范围内对象 ID 为 44444444-4444-4444-4444-444444444444 的应用程序。
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales
 ```
 
-## <a name="remove-access"></a>删除访问权限
+### <a name="create-a-role-assignment-for-a-user-at-a-subscription-scope"></a>为订阅范围内的用户创建角色分配
+
+若要在订阅范围向用户授予访问权限，请使用[az role create create](/cli/azure/role/assignment#az-role-assignment-create)。 若要获取订阅 ID，可以在 Azure 门户中的 "**订阅**" 边栏选项卡上找到，也可以使用[az account list](/cli/azure/account#az-account-list)。
+
+```azurecli
+az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
+```
+
+下面的示例将*读取*者角色分配给订阅范围内的*annm\@example.com*用户。
+
+```azurecli
+az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
+```
+
+### <a name="create-a-role-assignment-for-a-user-at-a-management-group-scope"></a>为管理组范围内的用户创建角色分配
+
+若要向管理组范围内的用户授予访问权限，请使用[az role create create](/cli/azure/role/assignment#az-role-assignment-create)。 若要获取管理组 ID，你可以在 Azure 门户的 "**管理组**" 边栏选项卡中找到它，也可以使用[az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list)。
+
+```azurecli
+az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
+```
+
+下面的示例将*计费读取*者角色分配给管理组作用域上的*alain\@example.com*用户。
+
+```azurecli
+az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
+```
+
+## <a name="remove-access"></a>撤消访问权限
 
 在 RBAC 中，若要删除访问权限，请使用 [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) 删除角色分配：
 
@@ -325,16 +379,22 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
 ```
 
-以下示例在 *pharma-sales* 资源组上从 *patlong\@contoso.com* 用户删除“虚拟机参与者”角色分配  ：
+以下示例在 *pharma-sales* 资源组上从 *patlong\@contoso.com* 用户删除“虚拟机参与者”角色分配：
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales
 ```
 
-以下示例将“读者”角色  从订阅范围内 ID 为 22222222-2222-2222-2222-222222222222 的“Ann Mack 团队”组删除。  若要获取组的 ID，可以使用 [az ad group list](/cli/azure/ad/group#az-ad-group-list) 或 [az ad group show](/cli/azure/ad/group#az-ad-group-show)。
+下面的示例从订阅范围内的 ID 为22222222-2222-2222-2222-222222222222 的*王 Mack 团队*组中删除*Reader*角色。 若要获取组的 ID，可以使用 [az ad group list](/cli/azure/ad/group#az-ad-group-list) 或 [az ad group show](/cli/azure/ad/group#az-ad-group-show)。
 
 ```azurecli
-az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --scope /subscriptions/00000000-0000-0000-0000-000000000000
+az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
+```
+
+以下示例从管理组作用域中的*alain\@example.com*用户删除*计费读取*者角色。 若要获取管理组的 ID，你可以使用[az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list)。
+
+```azurecli
+az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group
 ```
 
 ## <a name="next-steps"></a>后续步骤

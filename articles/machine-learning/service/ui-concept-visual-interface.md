@@ -1,7 +1,7 @@
 ---
 title: 可视界面
-titleSuffix: Azure Machine Learning service
-description: 了解组成 Azure 机器学习服务的可视化界面（预览）的术语、概念和工作流。
+titleSuffix: Azure Machine Learning
+description: 了解构成 Azure 机器学习的可视化界面（预览）的术语、概念和工作流。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860400"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996527"
 ---
-# <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Azure 机器学习服务的视觉界面是什么？ 
+# <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>什么是用于 Azure 机器学习的视觉对象接口？ 
 
-利用 Azure 机器学习 service 的可视界面（预览），可以在不编写代码的情况下准备数据、定型、测试、部署、管理和跟踪机器学习模型。
+利用的视觉界面（预览 Azure 机器学习），可以在不编写代码的情况下准备数据、定型、测试、部署、管理和跟踪机器学习模型。
 
 无需编程，您可以直观地连接[数据集](#dataset)和[模块](#module)来构造模型。
 
-视觉对象接口使用 Azure 机器学习服务[工作区](concept-workspace.md)来执行以下操作：
+视觉对象接口使用 Azure 机器学习[工作区](concept-workspace.md)执行以下操作：
 
 + 将[试验](#experiment)的项目写入工作区。
 + 访问[数据集](#dataset)。

@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: be1da90ef089da412545ac8af6fabb04198d821c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 4357a91a87648885def69d8e75e19e38a5a3f751
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880185"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993722"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>合作伙伴中心的商业市场分析
 
@@ -26,7 +26,6 @@ ms.locfileid: "70880185"
 |[订购](#orders-dashboard)|采用图形和可下载格式的订单信息|
 |[客户](#customer-dashboard)|有关客户的信息，包括增长趋势，以图形和可下载的格式提供|
 |[下载](#downloads-dashboard)|过去30天内的下载请求列表|
-|[评级和评论](#ratings-and-reviews)| 有关评级和评论的信息将留给他们获得的产品/服务。
 
 ## <a name="summary-dashboard"></a>“摘要”仪表板
 
@@ -245,7 +244,7 @@ ms.locfileid: "70880185"
 | 云实例名称：Azure 政府 | 顺序| 政府特定的 Microsoft 云，适用于以下某个政府：中国、德国或美国美国。| |
 | 客户所在城市| 客户| 客户提供的城市名称。 城市可能不同于客户的 Azure 订阅中的城市。||
 | 客户通信语言  | 客户| 客户的首选通信语言。||
-| 客户公司名称 | Customer、Order | 客户提供的公司名称。 名称可能不同于客户的 Azure 订阅中的城市。|  |
+| 客户公司名称 | Customer、Order | 客户提供的公司名称。 名称可能与客户的 Azure 订阅中的名称不同。|  |
 | 客户所在国家/地区 | Customer、Order | 客户提供的国家/地区名称。 国家/地区可能不同于客户的 Azure 订阅中的国家/地区。|  |
 | 客户电子邮件| 客户| 最终客户提供的电子邮件地址。 电子邮件可能与客户的 Azure 订阅中的电子邮件地址不同。||
 | 客户名字| 客户| 客户提供的名称。 名称可能不同于客户的 Azure 订阅中提供的名称。| |
@@ -286,38 +285,3 @@ ms.locfileid: "70880185"
 | 提供程序名称| 客户| Microsoft 与最终客户之间的关系所涉及的提供者的名称。 如果客户是通过分销商的企业，则这将是经销商。 如果涉及到云解决方案提供商（CSP），则此为 CSP。|
 | SKU| 顺序| 在发布过程中定义的 SKU 名称。 产品/服务可能有许多 Sku，但 SKU 只能与单个产品/服务相关联。||
 | 试用结束日期| 顺序| 此订单的试用期将要结束或已结束的日期。||
-
-## <a name="ratings-and-reviews"></a>评级和评论
-
-当客户在这两个市场中浏览、搜索和购买产品/服务时，他们可以对他们获得的产品/服务进行评级和审查。 他们能够提交新的评级或评论，并更新或删除已提交的评级或评论。 在产品/服务的产品显示页的 "查看" 选项卡上，可以在 Azure marketplace 或 AppSource 中发布评论。 客户可以包含其评分或评论的名称，也可以匿名发布。  
-
-> [!NOTE]
-> 客户可以仅对他们所拥有的评级和评论做出更改。
-
-**评级 & 查看 "仪表板**显示客户活动的趋势和见解。 它提供的图形表示形式：
-
-- 评级 & 审核  
-- 查看注释
-
-### <a name="marketplace-storefront-tabs"></a>Marketplace 店面选项卡
-
-发布者可以在 AppSource & Azure Marketplace "选项卡中单独查看其产品/服务指标。 若要查看特定的产品指标，请从下拉列表中选择 "**产品/服务**"：
-
-![合作伙伴中心分析产品/服务下拉列表](./media/analyze-offer-dropdown.png)
-
-### <a name="ratings-and-reviews-summary"></a>评分和评论摘要
-
-"分级 & 查看摘要" 部分显示了下面所选日期范围内的指标：
-
-- **平均评分：** 客户为所选产品/服务提交的所有评级的加权平均星形评级。
-- **评级细目：** 按提交分级的客户计数对星级评级的细分。 条形图按实际和修订的分级堆积（已更新评级计数）。
-- **总评分：** 已提交的评级总计。 此计数还包括具有和不含评论的分级。
-- **具有评审的评级：** 提交的评论计数。
-
-![合作伙伴中心分析评分和评论摘要](./media/analyze-ratings-summary.png)
-
-### <a name="review-comments"></a>查看注释
-
-在发布时，将按时间顺序显示评审。 默认视图显示所有评审。 您可以使用下拉菜单中的**筛选**器通过星级进行筛选。 您还可以搜索在评审中显示的关键字。  
-
-![合作伙伴中心分析评审评论](./media/analyze-reviews.png)

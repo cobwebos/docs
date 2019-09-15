@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: ba4e1e933b00aa8ca74be30a6ea5e1a22844b15f
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858502"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993466"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL 数据库无服务器计算层（预览版）
 
@@ -132,7 +132,7 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 |审核|查看审核记录。<br>更新或查看审核策略。|
 |数据屏蔽|添加、修改、删除或查看数据屏蔽规则|
 |透明数据加密|查看透明数据加密的状况或状态|
-|查询（性能）数据存储|修改或查看查询存储设置；自动优化|
+|查询（性能）数据存储|修改或查看 query store 设置|
 |自动优化|自动优化建议的应用和验证，例如自动索引|
 |数据库复制|创建数据库作为副本。<br>导出到 BACPAC 文件。|
 |SQL 数据同步|按照可配置的时间表或手动执行中心和成员数据库之间的同步|
@@ -282,7 +282,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>资源限制
 
-有关资源限制，请参阅[无服务器计算层](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。
+有关资源限制的信息，请参阅[无服务器计算层](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。
 
 ## <a name="billing"></a>帐单
 

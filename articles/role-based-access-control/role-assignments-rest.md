@@ -12,15 +12,15 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3602e4ca83e828270ebef56c688670b896ca58a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86ee030e8c97cf3033b9d2d76b8125c64ecf8065
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472735"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996473"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>使用 RBAC 和 REST API 管理对 Azure 资源的访问权限
 
@@ -36,25 +36,24 @@ ms.locfileid: "66472735"
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter={filter}
     ```
 
-1. 在 URI 中，将“{scope}”  替换为要列出角色分配的范围。
+1. 在 URI 中，将“{scope}”替换为要列出角色分配的范围。
 
-    | 范围 | Type |
+    | 范围 | 类型 |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | 订阅 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
-    
-       
-     > [!NOTE]
-     > 在上面的示例在不使用资源提供程序 Microsoft.web 是引用的应用服务实例。 同样可以使用任何其他资源提供程序，并构建范围 URI。 若要了解详细信息，请参阅[Azure 资源提供程序和类型](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)和支持[Azure RM 资源提供程序操作](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations)。  
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
+    | `subscriptions/{subscriptionId1}` | 订阅 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+
+    在前面的示例中，microsoft 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅[Azure 资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md)以及受支持的[azure 资源管理器资源提供程序操作](resource-provider-operations.md)。  
      
-1. 将“{filter}”  替换为筛选角色分配列表时要应用的条件。
+1. 将“{filter}”替换为筛选角色分配列表时要应用的条件。
 
-    | 筛选器 | 描述 |
+    | 筛选 | 描述 |
     | --- | --- |
-    | `$filter=atScope()` | 列出了仅指定的范围不包括子范围内的角色分配的角色分配。 |
-    | `$filter=principalId%20eq%20'{objectId}'` | 列出指定的用户、 组或服务主体的角色分配。 |
-    | `$filter=assignedTo('{objectId}')` | 列出指定的用户或服务主体的角色分配。 如果用户具有的角色分配的组的成员，也会列出该角色分配。 此筛选器是可传递组，这意味着，如果用户组的成员，该组有角色分配的另一个组的成员，还会列出该角色分配。 此筛选器仅接受用户或服务主体的对象 id。 不能为组传递的对象 id。 |
+    | `$filter=atScope()` | 只列出指定范围内的角色分配，而不包括子范围内的角色分配。 |
+    | `$filter=principalId%20eq%20'{objectId}'` | 列出指定用户、组或服务主体的角色分配。 |
+    | `$filter=assignedTo('{objectId}')` | 列出指定用户或服务主体的角色分配。 如果用户是具有角色分配的组的成员，则该角色分配也会列出。 此筛选器对于组是可传递的，这意味着如果用户是组的成员，并且该组是具有角色分配的另一个组的成员，则该角色分配也会列出。 此筛选器仅接受用户或服务主体的对象 ID。 不能传递组的对象 ID。 |
 
 ## <a name="grant-access"></a>授予访问权限
 
@@ -73,29 +72,37 @@ ms.locfileid: "66472735"
     ```json
     {
       "properties": {
-        "roleDefinitionId": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
+        "roleDefinitionId": "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
         "principalId": "{principalId}"
       }
     }
     ```
-    
-1. 在 URI 内，将“{scope}”  替换为角色分配的范围。
 
-    | 范围 | Type |
+1. 在 URI 内，将“{scope}”替换为角色分配的范围。
+
+    | 范围 | 类型 |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | 订阅 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
+    | `subscriptions/{subscriptionId1}` | 订阅 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Resource |
 
-1. 将“{roleAssignmentName}”  替换为角色分配的 GUID 标识符。
+1. 将“{roleAssignmentName}”替换为角色分配的 GUID 标识符。
 
-1. 在请求正文中，将“{subscriptionId}”  替换为你的订阅标识符。
+1. 在请求正文中，将 *{scope}* 替换为角色分配的作用域。
 
-1. 将“{roleDefinitionId}”  替换为角色定义标识符。
+    | 范围 | type |
+    | --- | --- |
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
+    | `subscriptions/{subscriptionId1}` | 订阅 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Resource |
 
-1. 将“{principalId}”  替换为将分配有角色的用户、组或服务主体的对象标识符。
+1. 将“{roleDefinitionId}”替换为角色定义标识符。
 
-## <a name="remove-access"></a>删除访问权限
+1. 将“{principalId}”替换为将分配有角色的用户、组或服务主体的对象标识符。
+
+## <a name="remove-access"></a>撤消访问权限
 
 在 RBAC 中，若要删除访问权限，请删除角色分配。 若要删除角色分配，请使用[角色分配 - Delete](/rest/api/authorization/roleassignments/delete) REST API。 若要调用此 API，必须具有对 `Microsoft.Authorization/roleAssignments/delete` 操作的访问权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)具有对此操作的访问权限。
 
@@ -107,15 +114,16 @@ ms.locfileid: "66472735"
     DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
     ```
 
-1. 在 URI 内，将“{scope}”  替换为删除角色分配的范围。
+1. 在 URI 内，将“{scope}”替换为删除角色分配的范围。
 
-    | 范围 | Type |
+    | 范围 | 类型 |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | 订阅 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
+    | `subscriptions/{subscriptionId1}` | 订阅 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Resource |
 
-1. 将“{roleAssignmentName}”  替换为角色分配的 GUID 标识符。
+1. 将“{roleAssignmentName}”替换为角色分配的 GUID 标识符。
 
 ## <a name="next-steps"></a>后续步骤
 

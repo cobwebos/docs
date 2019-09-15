@@ -13,20 +13,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 6b62bee2a6159cfd1aa1d7278f0b1ffa744f3a87
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: ebf7b712dda19b396b044235bf194a5dd402ffac
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124006"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996417"
 ---
 # <a name="azure-serial-console-for-windows"></a>适用于 Windows 的 Azure 串行控制台
 
-Azure 门户中的串行控制台提供对 Windows 虚拟机 (Vm) 和虚拟机规模集实例的基于文本的控制台的访问。 此串行连接连接到 VM 或虚拟机规模集实例的 COM1 串行端口, 提供与网络或操作系统状态无关的访问权限。 串行控制台只能通过使用 Azure 门户进行访问, 而只允许访问角色为 "参与者" 或 "虚拟机" 或 "虚拟机规模集" 的用户使用。
+Azure 门户中的串行控制台提供对 Windows 虚拟机（Vm）和虚拟机规模集实例的基于文本的控制台的访问。 此串行连接连接到 VM 或虚拟机规模集实例的 COM1 串行端口，提供与网络或操作系统状态无关的访问权限。 串行控制台只能通过使用 Azure 门户进行访问，而只允许访问角色为 "参与者" 或 "虚拟机" 或 "虚拟机规模集" 的用户使用。
 
-串行控制台的工作方式与 Vm 和虚拟机规模集实例的工作方式相同。 在此文档中, 除非另有说明, 否则, 所有对 Vm 的提及将隐式包含虚拟机规模集实例。
+串行控制台的工作方式与 Vm 和虚拟机规模集实例的工作方式相同。 在此文档中，除非另有说明，否则，所有对 Vm 的提及将隐式包含虚拟机规模集实例。
 
-有关适用于 Linux 的串行控制台文档, 请参阅[适用于 linux 的 Azure 串行控制台](serial-console-linux.md)。
+有关适用于 Linux 的串行控制台文档，请参阅[适用于 linux 的 Azure 串行控制台](serial-console-linux.md)。
 
 > [!NOTE]
 > 串行控制台已在全球 Azure 区域正式发布。 串行控制台目前不可用于 Azure 政府云或 Azure 中国云。
@@ -47,16 +47,16 @@ Azure 门户中的串行控制台提供对 Windows 虚拟机 (Vm) 和虚拟机�
 ## <a name="enable-serial-console-functionality-for-windows-server"></a>为 Windows Server 启用串行控制台功能
 
 > [!NOTE]
-> 如果在串行控制台中看不到任何内容, 请确保已在 VM 或虚拟机规模集上启用启动诊断。
+> 如果在串行控制台中看不到任何内容，请确保已在 VM 或虚拟机规模集上启用启动诊断。
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>在自定义或更低版本的映像中启用串行控制台
-Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控制台](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC)。 SAC 在服务器版本的 Windows 上受支持，但在客户端版本（例如 Windows 10、Windows 8 或 Windows 7）上不可用。
+Azure 上的更新版本的 Windows Server 映像在默认情况下已启用[特殊管理控制台](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx)（SAC）。 SAC 在服务器版本的 Windows 上受支持，但在客户端版本（例如 Windows 10、Windows 8 或 Windows 7）上不可用。
 
-对于较旧的 Windows Server 映像（在 2018 年 2 月之前创建），可以通过 Azure 门户的运行命令功能自动启用串行控制台。 在 Azure 门户中, 选择 "**运行命令**", 然后从列表中选择名为 " **EnableEMS** " 的命令。
+对于较旧的 Windows Server 映像（在 2018 年 2 月之前创建），可以通过 Azure 门户的运行命令功能自动启用串行控制台。 在 Azure 门户中，选择 "**运行命令**"，然后从列表中选择名为 " **EnableEMS** " 的命令。
 
 ![运行命令列表](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
 
-或者, 若要为2018年2月之前创建的 Windows Vm/虚拟机规模集手动启用串行控制台, 请执行以下步骤:
+或者，若要为2018年2月之前创建的 Windows Vm/虚拟机规模集手动启用串行控制台，请执行以下步骤：
 
 1. 通过使用远程桌面连接到 Windows 虚拟机
 1. 从管理命令提示符运行以下命令：
@@ -115,7 +115,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
     ![打开 PowerShell 实例](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
 ### <a name="use-the-serial-console-for-nmi-calls"></a>使用串行控制台进行 NMI 调用
-不可屏蔽的中断 (NMI) 旨在创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。 如今, 程序员和系统管理员通常使用 NMI 作为一种机制来对未响应的系统进行调试或故障排除。
+不可屏蔽的中断 (NMI) 旨在创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。 如今，程序员和系统管理员通常使用 NMI 作为一种机制来对未响应的系统进行调试或故障排除。
 
 可以使用命令栏上的键盘图标通过串行控制台向 Azure 虚拟机发送 NMI。 传送 NMI 后，虚拟机配置将控制系统的响应方式。 可以将 Windows 配置为在收到 NMI 时崩溃并创建内存转储文件。
 
@@ -124,20 +124,20 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 有关配置 Windows 在收到 NMI 时创建故障转储文件的信息，请参阅[如何使用 NMI 生成故障转储文件](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)。
 
 ### <a name="use-function-keys-in-serial-console"></a>在串行控制台中使用函数密钥
-针对 Windows VM 中的串行控制台的使用情况，将启用函数密钥。 利用串行控制台下拉列表中的 F8 可以很方便地进入高级启动设置菜单，但串行控制台与所有其他功能键兼容。 根据使用串行控制台的计算机, 你可能需要按键盘上的**Fn** + **F1** (或 F2, F3 等)。
+针对 Windows VM 中的串行控制台的使用情况，将启用函数密钥。 利用串行控制台下拉列表中的 F8 可以很方便地进入高级启动设置菜单，但串行控制台与所有其他功能键兼容。 根据使用串行控制台的计算机，你可能需要按键盘上的**Fn** + **F1** （或 F2，F3 等）。
 
 ### <a name="use-wsl-in-serial-console"></a>在串行控制台中使用 WSL
 针对 Windows Server 2019 或更高版本，已启用 Windows Subsystem for Linux (WSL)，因此如果运行 Windows Server 2019 或更高版本，也可以启用 WSL 以用于串行控制台。 这对于熟悉 Linux 命令的用户可能有所帮助。 有关为 Windows Server 启用 WSL 的说明，请参阅[安装指南](https://docs.microsoft.com/windows/wsl/install-on-server)。
 
 ### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>在串行控制台中重启 Windows VM/虚拟机规模集实例
-可以通过导航到 "电源" 按钮, 然后单击 "重新启动 VM", 在串行控制台内启动重新启动。 这将发起 VM 重启，你将在 Azure 门户中看到有关重启的通知。
+可以通过导航到 "电源" 按钮，然后单击 "重新启动 VM"，在串行控制台内启动重新启动。 这将发起 VM 重启，你将在 Azure 门户中看到有关重启的通知。
 
-当你可能想要访问启动菜单而不离开串行控制台体验时, 这非常有用。
+当你可能想要访问启动菜单而不离开串行控制台体验时，这非常有用。
 
 ![Windows 串行控制台重启](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-windows.gif)
 
 ## <a name="disable-the-serial-console"></a>禁用串行控制台
-默认情况下, 所有订阅都启用了串行控制台访问。 可以在订阅级别或 VM/虚拟机规模集级别禁用串行控制台。 有关详细说明, 请访问[启用和禁用 Azure 串行控制台](./serial-console-enable-disable.md)。
+默认情况下，所有订阅都启用了串行控制台访问。 可以在订阅级别或 VM/虚拟机规模集级别禁用串行控制台。 有关详细说明，请访问[启用和禁用 Azure 串行控制台](./serial-console-enable-disable.md)。
 
 ## <a name="serial-console-security"></a>串行控制台安全性
 
@@ -183,13 +183,13 @@ RDP 配置问题 | 访问串行控制台并更改设置。 有关详细信息，
 
 问题                             |   缓解
 :---------------------------------|:--------------------------------------------|
-在出现连接标题后按 **Enter** 不会显示登录提示。 | 有关详细信息，请参阅[按 Enter 不起任何作用](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果运行的自定义 VM、强化设备或启动配置导致 Windows 无法正确连接到串行端口的启动配置，则可能会发生此错误。 如果你运行的是 Windows 10 VM, 则也会发生此错误, 因为只有 Windows Server Vm 配置为启用 EMS。
-连接到 Windows VM 时，仅显示运行状况信息| 如果尚未为 Windows 映像启用特殊管理控制台，则会发生此错误。 有关如何在 Windows VM 上手动启用 SAC 的说明，请参阅[在自定义或更低版本的映像中启用串行控制台](#enable-the-serial-console-in-custom-or-older-images)。 有关详细信息，请参阅 [Windows 运行状况信号](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)。
+在出现连接标题后按 **Enter** 不会显示登录提示。 | 有关详细信息，请参阅[按 Enter 不起任何作用](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果运行的自定义 VM、强化设备或启动配置导致 Windows 无法正确连接到串行端口的启动配置，则可能会发生此错误。 如果你运行的是 Windows 10 VM，则也会发生此错误，因为只有 Windows Server Vm 配置为启用 EMS。
+连接到 Windows VM 时，仅显示运行状况信息| 如果尚未为 Windows 映像启用特殊管理控制台，则会出现此错误。 有关如何在 Windows VM 上手动启用 SAC 的说明，请参阅[在自定义或更低版本的映像中启用串行控制台](#enable-the-serial-console-in-custom-or-older-images)。 有关详细信息，请参阅 [Windows 运行状况信号](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)。
 如果已启用内核调试，则无法在 SAC 提示符下键入内容。 | 通过 RDP 连接到 VM，并从权限提升的命令提示符运行 `bcdedit /debug {current} off`。 如果无法建立 RDP 连接，可将 OS 磁盘附加到另一个 Azure VM，并且在该磁盘附加为数据磁盘时通过运行 `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` 对其进行修改，然后换回磁盘。
 如果原始内容具有重复的字符，则粘贴到 SAC 结果中的 PowerShell 将产生第三个字符。 | 解决方法是运行 `Remove-Module PSReadLine` 以从当前会话中卸载 PSReadLine 模块。 此操作不会删除或卸载该模块。
 某些键盘输入会生成奇怪的 SAC 输出（例如 [A、[3~）。 | SAC 提示符不支持 [VT100](https://aka.ms/vtsequences) 转义序列。
 无法粘贴长字符串。 | 串行控制台将粘贴到终端的字符串长度限制为 2048 个字符，以防止串行端口带宽过载。
-串行控制台不能使用具有分层命名空间的 Azure Data Lake Storage Gen2 的存储帐户。 | 这是分层命名空间的已知问题。 若要缓解此情况, 请确保不使用 Azure Data Lake Storage Gen2 创建 VM 的启动诊断存储帐户。 仅可在创建存储帐户时设置此选项。 你可能需要创建单独的启动诊断存储帐户, 而不启用 Azure Data Lake Storage Gen2 来缓解此问题。
+串行控制台不能使用具有分层命名空间的 Azure Data Lake Storage Gen2 的存储帐户。 | 这是分层命名空间的已知问题。 若要缓解此情况，请确保不使用 Azure Data Lake Storage Gen2 创建 VM 的启动诊断存储帐户。 仅可在创建存储帐户时设置此选项。 你可能需要创建单独的启动诊断存储帐户，而不启用 Azure Data Lake Storage Gen2 来缓解此问题。
 
 
 ## <a name="frequently-asked-questions"></a>常见问题

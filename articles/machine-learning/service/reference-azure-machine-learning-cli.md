@@ -1,7 +1,7 @@
 ---
 title: 机器学习 CLI 扩展
-titleSuffix: Azure Machine Learning service
-description: 了解适用于 Azure CLI 的 Azure 机器学习的机器学习 CLI 扩展。 Azure CLI 是一个跨平台命令行实用工具，可让你使用 Azure 云中的资源。 借助该机器学习扩展可以使用 Azure 机器学习服务。
+titleSuffix: Azure Machine Learning
+description: 了解适用于 Azure CLI 的 Azure 机器学习的机器学习 CLI 扩展。 Azure CLI 是一个跨平台命令行实用工具，可让你使用 Azure 云中的资源。 机器学习扩展使你能够使用 Azure 机器学习。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: jordane
 author: jpe316
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6c5068512f8ba26f7710bca7c0fccb98e0a5be33
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 85ebcc36d32b86ec2640ce7ce02190deaab19d6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996750"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997082"
 ---
-# <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>将 CLI 扩展用于 Azure 机器学习服务
+# <a name="use-the-cli-extension-for-azure-machine-learning"></a>使用 CLI 扩展进行 Azure 机器学习
 
-Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)（适用于 Azure 平台的跨平台命令行接口）的一个扩展。 此扩展提供用于处理 Azure 机器学习服务的命令。 它允许您自动执行机器学习活动。 以下列表提供了一些可以通过 CLI 扩展执行的示例操作:
+Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)（适用于 Azure 平台的跨平台命令行接口）的一个扩展。 此扩展提供用于处理 Azure 机器学习的命令。 它允许您自动执行机器学习活动。 以下列表提供了一些可以通过 CLI 扩展执行的示例操作：
 
 + 运行试验以创建机器学习模型
 
@@ -28,11 +28,11 @@ Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?vie
 
 + 打包、部署和跟踪机器学习模型的生命周期
 
-CLI 不能取代 Azure 机器学习 SDK。 它是一种补充工具, 经过优化, 可处理高度参数化的任务, 这些任务非常适合自动化。
+CLI 不能取代 Azure 机器学习 SDK。 它是一种补充工具，经过优化，可处理高度参数化的任务，这些任务非常适合自动化。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 若要使用 CLI，必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+* 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
 
@@ -61,7 +61,7 @@ az ml -h
 
 ## <a name="update-the-extension"></a>更新扩展
 
-若要更新机器学习 CLI 扩展, 请使用以下命令:
+若要更新机器学习 CLI 扩展，请使用以下命令：
 
 ```azurecli-interactive
 az extension update -n azure-cli-ml
@@ -80,21 +80,21 @@ az extension remove -n azure-cli-ml
 
 以下命令演示如何使用 CLI 来管理 Azure 机器学习所用的资源。
 
-+ 如果还没有资源组, 请创建一个资源组:
++ 如果还没有资源组，请创建一个资源组：
 
     ```azurecli-interactive
     az group create -n myresourcegroup -l westus2
     ```
 
-+ 创建 Azure 机器学习服务工作区：
++ 创建 Azure 机器学习工作区：
 
     ```azurecli-interactive
     az ml workspace create -w myworkspace -g myresourcegroup
     ```
 
-    有关详细信息, 请参阅[az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)。
+    有关详细信息，请参阅[az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)。
 
-+ 将工作区配置附加到文件夹, 以启用 CLI 上下文感知。
++ 将工作区配置附加到文件夹，以启用 CLI 上下文感知。
 
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
@@ -110,7 +110,7 @@ az extension remove -n azure-cli-ml
     az ml datastore attach-blob  -n datastorename -a accountname -c containername
     ```
 
-    有关详细信息, 请参阅[az ml 数据存储附加 blob](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-attach-blob)。
+    有关详细信息，请参阅[az ml 数据存储附加 blob](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-attach-blob)。
 
 + 将文件上传到数据存储。
 
@@ -118,7 +118,7 @@ az extension remove -n azure-cli-ml
     az ml datastore upload  -n datastorename -p sourcepath
     ```
 
-    有关详细信息, 请参阅[az ml 数据存储上传](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-upload)。
+    有关详细信息，请参阅[az ml 数据存储上传](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-upload)。
 
 + 将 AKS 群集附加为计算目标。
 
@@ -126,7 +126,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget attach aks -n myaks -i myaksresourceid -g myresourcegroup -w myworkspace
     ```
 
-    有关详细信息, 请参阅[az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks)
+    有关详细信息，请参阅[az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks)
 
 + 创建新的 AMLcompute 目标。
 
@@ -134,7 +134,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
     ```
 
-    有关详细信息, 请参阅[az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)。
+    有关详细信息，请参阅[az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)。
 
 ## <a id="experiments"></a>运行试验
 
@@ -145,7 +145,7 @@ az extension remove -n azure-cli-ml
     ```
 
     > [!TIP]
-    > 命令创建一个`.azureml`子目录, 其中包含两个示例 .runconfig 文件。 `az ml folder attach` 
+    > 命令创建一个`.azureml`子目录，其中包含两个示例 .runconfig 文件。 `az ml folder attach` 
     >
     > 如果你的 Python 脚本以编程方式创建运行配置对象, 则可以使用[.runconfig ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-)将其另存为 .runconfig 文件。
     >
@@ -153,7 +153,7 @@ az extension remove -n azure-cli-ml
 
     有关详细信息, 请参阅[az ml run 提交脚本](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
 
-* 查看实验列表:
+* 查看实验列表：
 
     ```azurecli-interactive
     az ml experiment list
@@ -163,41 +163,41 @@ az extension remove -n azure-cli-ml
 
 ## <a name="environment-management"></a>环境管理
 
-以下命令演示了如何为工作区创建、注册和列出 Azure 机器学习服务[环境](how-to-configure-environment.md):
+以下命令演示了如何创建、注册和列出工作区 Azure 机器学习[环境](how-to-configure-environment.md)：
 
-+ 为环境创建基架文件:
++ 为环境创建基架文件：
 
     ```azurecli-interactive
     az ml environment scaffold -n myenv -d myenvdirectory
     ```
 
-    有关详细信息, 请参阅[az ml 环境基架](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-scaffold)。
+    有关详细信息，请参阅[az ml 环境基架](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-scaffold)。
 
-+ 注册环境:
++ 注册环境：
 
     ```azurecli-interactive
     az ml environment register -d myenvdirectory
     ```
 
-    有关详细信息, 请参阅[az ml 环境 register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-register)。
+    有关详细信息，请参阅[az ml 环境 register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-register)。
 
-+ 列出注册环境:
++ 列出注册环境：
 
     ```azurecli-interactive
     az ml environment list
     ```
 
-    有关详细信息, 请参阅[az ml 环境 list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-list)。
+    有关详细信息，请参阅[az ml 环境 list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-list)。
 
-+ 下载已注册的环境:
++ 下载已注册的环境：
 
     ```azurecli-interactive
     az ml environment download -n myenv -d downloaddirectory
     ```
 
-    有关详细信息, 请参阅[az ml 环境下载](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download)。
+    有关详细信息，请参阅[az ml 环境下载](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download)。
 
-## <a name="model-registration-profiling-deployment"></a>模型注册, 分析, 部署
+## <a name="model-registration-profiling-deployment"></a>模型注册，分析，部署
 
 以下命令演示如何注册已训练的模型，然后将其部署为生产服务：
 
@@ -207,25 +207,25 @@ az extension remove -n azure-cli-ml
     az ml model register -n mymodel -p sklearn_regression_model.pkl
     ```
 
-    有关详细信息, 请参阅[az ml model register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register)。
+    有关详细信息，请参阅[az ml model register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register)。
 
-+ **可选**分析模型, 获取部署的最佳 CPU 和内存值。
++ **可选**分析模型，获取部署的最佳 CPU 和内存值。
     ```azurecli-interactive
     az ml model profile -n myprofile -m mymodel:1 --ic inferenceconfig.json -d "{\"data\": [[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}" -t myprofileresult.json
     ```
 
-    有关详细信息, 请参阅[az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)。
+    有关详细信息，请参阅[az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)。
 
 + 将模型部署到 AKS
     ```azurecli-interactive
     az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget
     ```
     
-    有关推理配置文件架构的详细信息, 请参阅[推理配置架构](#inferenceconfig)。
+    有关推理配置文件架构的详细信息，请参阅[推理配置架构](#inferenceconfig)。
     
-    有关部署配置文件架构的详细信息, 请参阅[部署配置架构](#deploymentconfig)。
+    有关部署配置文件架构的详细信息，请参阅[部署配置架构](#deploymentconfig)。
 
-    有关详细信息, 请参阅[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)。
+    有关详细信息，请参阅[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)。
 
 <a id="inferenceconfig"></a>
 

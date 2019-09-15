@@ -1,7 +1,7 @@
 ---
 title: 部署故障排除指南
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure Kubernetes 服务和使用 Azure 机器学习 service 的 Azure 容器实例解决、解决和排查常见的 Docker 部署错误。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习使用 Azure Kubernetes 服务和 Azure 容器实例解决、解决常见的 Docker 部署错误，并对其进行故障排除。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 08b9434dbcca96ff57e2c8182693023a5eb2eea9
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183539"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997159"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>排查 Azure 机器学习 service Azure Kubernetes Service 和 Azure 容器实例部署问题
+# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure 机器学习 Azure Kubernetes 服务和 Azure 容器实例部署的故障排除
 
-了解如何使用 Azure 机器学习服务解决或解决 Azure 容器实例 (ACI) 和 Azure Kubernetes Service (AKS) 的常见 Docker 部署错误。
+了解如何使用 Azure 机器学习在 Azure 容器实例（ACI）和 Azure Kubernetes Service （AKS）上解决或解决常见的 Docker 部署错误。
 
-在 Azure 机器学习服务中部署模型时，系统将执行大量任务。 部署任务包括：
+在 Azure 机器学习中部署模型时，系统将执行多个任务。 部署任务包括：
 
 1. 在工作区模型注册表中注册模型。
 
@@ -46,7 +46,7 @@ ms.locfileid: "70183539"
 
 如果遇到任何问题，首先需要将部署任务（上述）分解为单独的步骤，以查出问题所在。
 
-如果你使用的是[webservice ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) api 或[deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) api, 则将部署分解成任务非常有用, 因为这两个函数都作为单个操作执行上述步骤。 通常, 这些 Api 是非常方便的, 但通过将它们替换为以下 API 调用, 有助于在排除故障时分解这些步骤。
+如果你使用的是[webservice （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) api 或[deploy_from_model （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) api，则将部署分解成任务非常有用，因为这两个函数都作为单个操作执行上述步骤。 通常, 这些 Api 是非常方便的, 但通过将它们替换为以下 API 调用, 有助于在排除故障时分解这些步骤。
 
 1. 注册模型。 下面是一些示例代码：
 
@@ -90,7 +90,7 @@ ms.locfileid: "70183539"
 
 ## <a name="image-building-fails"></a>映像生成失败
 
-如果无法生成 Docker 映像, [wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-)或[wait_for_deployment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-)调用将失败, 并会出现一些可能提供某些线索的错误消息。 还可以从图像生成日志中找到错误的更多详细信息。 下面是一些显示如何发现映像生成日志 URI 的代码示例。
+如果无法生成 Docker 映像， [wait_for_creation （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-)或[wait_for_deployment （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-)调用将失败，并会出现一些可能提供某些线索的错误消息。 还可以从图像生成日志中找到错误的更多详细信息。 下面是一些显示如何发现映像生成日志 URI 的代码示例。
 
 ```python
 # if you already have the image object handy
@@ -205,7 +205,7 @@ print(prediction)
 在本地测试过程中, 可能需要更新`score.py`文件, 以添加日志记录或尝试解决已发现的任何问题。 若要重新加载对`score.py`文件的更改`reload()`, 请使用。 例如, 下面的代码重新加载该服务的脚本, 然后向其发送数据。 使用更新`score.py`的文件对数据进行评分:
 
 > [!IMPORTANT]
-> `reload`方法仅适用于本地部署。 有关将部署更新到另一个计算目标的信息, 请参阅[部署模型](how-to-deploy-and-where.md#update)的 "更新" 部分。
+> `reload`方法仅适用于本地部署。 有关将部署更新到另一个计算目标的信息，请参阅[部署模型](how-to-deploy-and-where.md#update)的 "更新" 部分。
 
 ```python
 service.reload()
@@ -245,7 +245,7 @@ print(ws.webservices['mysvc'].get_logs())
 
 ## <a name="function-fails-get_model_path"></a>函数故障：get_model_path()
 
-通常, 在`init()`计分脚本的函数中, 将调用[_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-)函数, 以在容器中查找模型文件或模型文件的文件夹。 如果找不到模型文件或文件夹, 该函数将失败。 调试此错误的最简单方法是在容器 shell 中运行以下 Python 代码：
+通常，在`init()`计分脚本的函数中，将调用[_model_path （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-)函数，以在容器中查找模型文件或模型文件的文件夹。 如果找不到模型文件或文件夹, 该函数将失败。 调试此错误的最简单方法是在容器 shell 中运行以下 Python 代码：
 
 ```python
 from azureml.core.model import Model
@@ -285,10 +285,10 @@ Azure Kubernetes 服务部署支持自动缩放, 这允许添加副本以支持�
 
 * 更改自动缩放功能创建新副本的利用率级别。
     
-    默认情况下, 自动缩放目标利用率设置为 70%, 这意味着服务可处理多达 30% 的每秒请求数 (RPS) 的高峰。 可以通过将设置`autoscale_target_utilization`为较低的值来调整利用率目标。
+    默认情况下，自动缩放目标利用率设置为 70%，这意味着服务可处理多达 30% 的每秒请求数（RPS）的高峰。 可以通过将设置`autoscale_target_utilization`为较低的值来调整利用率目标。
 
     > [!IMPORTANT]
-    > 此更改不会导致*更快地*创建副本。 而是以较低的利用率阈值创建。 将值更改为 30% 会导致在使用率达到 30% 时创建副本, 而不是等待服务达到 70% 的利用率。
+    > 此更改不会导致*更快地*创建副本。 而是以较低的利用率阈值创建。 将值更改为 30% 会导致在使用率达到 30% 时创建副本，而不是等待服务达到 70% 的利用率。
     
     如果 web 服务已在使用当前的最大副本, 但仍看到503状态代码, 请增加`autoscale_max_replicas`该值以增加副本的最大数量。
 
@@ -346,7 +346,7 @@ Azure Kubernetes 服务部署支持自动缩放, 这允许添加副本以支持�
 
         ```json
         {
-            "name": "Azure Machine Learning service: Docker Debug",
+            "name": "Azure Machine Learning: Docker Debug",
             "type": "python",
             "request": "attach",
             "port": 5678,
@@ -479,7 +479,7 @@ myregistry.azurecr.io/myimage:1
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. 若要将 VS Code 附加到容器中的 PTVSD, 请打开 VS Code 并使用 F5 键或选择 "__调试__"。 出现提示时, 选择__Azure 机器学习服务:Docker 调试__配置。 还可从侧栏中选择 "调试" 图标, __Azure 机器学习服务:"调试__ " 下拉菜单中的 Docker 调试条目, 然后使用绿色箭头附加调试器。
+1. 若要将 VS Code 附加到容器中的 PTVSD, 请打开 VS Code 并使用 F5 键或选择 "__调试__"。 出现提示时，请__选择 Azure 机器学习：Docker 调试__配置。 还可以从侧栏中选择 "调试" 图标， __Azure 机器学习："调试__ " 下拉菜单中的 Docker 调试条目, 然后使用绿色箭头附加调试器。
 
     !["调试" 图标、"启动调试" 按钮和配置选择器](media/how-to-troubleshoot-deployment/start-debugging.png)
 

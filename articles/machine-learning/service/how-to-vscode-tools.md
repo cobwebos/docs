@@ -1,6 +1,6 @@
 ---
 title: 使用 Visual Studio Code 进行机器学习
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 了解如何安装 Azure Machine Learning for Visual Studio Code 并在 Azure 机器学习中创建试验。
 services: machine-learning
 ms.service: machine-learning
@@ -10,24 +10,24 @@ ms.author: ronglu
 author: ronglums
 ms.date: 7/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1d18006e6ec3ff1659f8fb80f8cf6766797d76b
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 0507080a390a4bb9f981b0d911961337e9b2c62a
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114432"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997179"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code 入门
 
 本文介绍如何使用用于 Azure 机器学习的扩展来 Visual Studio Code 训练和部署机器学习和深度学习模型。
 
-[Azure 机器学习服务](overview-what-is-azure-ml.md)为本地和远程计算目标上运行的试验提供支持。 对于每个试验，可跟踪多次运行，因为通常需要以迭代方式尝试不同的技术、超参数等。 Azure 机器学习可用于跟踪自定义指标和试验运行，以确保数据科学可再现性和可审核性。
+[Azure 机器学习](overview-what-is-azure-ml.md)为本地和远程计算目标上运行的试验提供支持。 对于每个试验，可跟踪多次运行，因为通常需要以迭代方式尝试不同的技术、超参数等。 Azure 机器学习可用于跟踪自定义指标和试验运行，以确保数据科学可再现性和可审核性。
 
 你还可以部署这些模型, 以满足测试和生产需求。
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
++ 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
 + 必须安装 Visual Studio Code。 Visual Studio Code 是在桌面上运行的轻型但功能强大的源代码编辑器。 它附带了对 Python 和其他编程语言的内置支持。 如果尚未安装 Visual Studio Code, 请了解操作[方法](https://code.visualstudio.com/docs/setup/setup-overview)。
 
@@ -69,13 +69,13 @@ ms.locfileid: "70114432"
 
    ![选择解释器](./media/vscode-tools-for-ai/python.png)
 
-1. 在窗口的右下角, 会出现一个通知, 指示正在自动安装[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 。 新创建的 Python 环境是本地的和私有的, 它具有使用 Azure 机器学习服务的 Visual Studio Code 先决条件。
+1. 在窗口的右下角, 会出现一个通知, 指示正在自动安装[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 。 新创建的 Python 环境是本地的和专用的，它具有使用 Azure 机器学习的 Visual Studio Code 先决条件。
 
    ![安装用于 Python 的 Azure 机器学习 SDK](./media/vscode-tools-for-ai/runtimedependencies.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>开始使用 Azure 机器学习
 
-在 Visual Studio Code 中开始训练和部署机器学习模型之前, 需要在云中创建一个[Azure 机器学习服务工作区](concept-workspace.md)。 此工作区将包含模型和资源。 
+在 Visual Studio Code 中开始训练和部署机器学习模型之前，需要在云中创建一个[Azure 机器学习工作区](concept-workspace.md)。 此工作区将包含模型和资源。 
 
 若要创建工作区并添加第一个试验:
 
@@ -117,7 +117,7 @@ ms.locfileid: "70114432"
 
 1. 在 "Visual Studio Code" 活动栏上, 选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
 
-2. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。 在下面的示例图像中, 订阅名称为**免费试用版**, 工作区为**TeamWorkspace**。 
+2. 在树视图中，展开 Azure 订阅并 Azure 机器学习 "工作区。 在下面的示例图像中, 订阅名称为**免费试用版**, 工作区为**TeamWorkspace**。 
 
 3. 在工作区节点下，右键单击“计算”节点，再选择“创建计算”。
 
@@ -147,7 +147,7 @@ Visual Studio Code 扩展会自动创建本地计算目标, 并为本地计算�
 
 1. 在 "Visual Studio Code" 活动栏上, 选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
 
-1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。 
+1. 在树视图中，展开 Azure 订阅并 Azure 机器学习 "工作区。 
 
 1. 在 "工作区" 节点下, 展开 "**计算**" 节点, 然后右键单击要使用的计算的**运行配置**。 
 
@@ -167,7 +167,7 @@ Visual Studio Code 扩展会自动创建本地计算目标, 并为本地计算�
 
 #### <a name="the-conda-dependencies-file"></a>conda 依赖项文件
 
-默认情况下, 将为你创建新的 conda 环境, 并管理你的安装依赖项。 但是, 必须在*aml_config/conda_dependencies*文件中指定依赖项及其版本。 
+默认情况下, 将为你创建新的 conda 环境, 并管理你的安装依赖项。 但是，必须在*aml_config/conda_dependencies*文件中指定依赖项及其版本。 
 
 默认*aml_config/conda_dependencies*中的以下代码片段指定`tensorflow=1.12.0`了。 如果未指定依赖项的版本, 将使用最新版本。 可以在配置文件中添加其他依赖项。
 
@@ -196,7 +196,7 @@ dependencies:
 
 1. 在 "Visual Studio Code" 活动栏上, 选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
 
-1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。 
+1. 在树视图中，展开 Azure 订阅并 Azure 机器学习 "工作区。 
 
 1. 在编辑器窗口中, 右键单击 Python 脚本, 然后选择 **"AML:在 Azure 中作为试验运行**。 
 
@@ -224,7 +224,7 @@ dependencies:
 
 1. 在 "Visual Studio Code" 活动栏上, 选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
 
-1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。
+1. 在树视图中，展开 Azure 订阅并 Azure 机器学习 "工作区。
 
 1. 在工作区节点下，右键单击“模型”，再选择“注册模型”。
 
@@ -247,13 +247,13 @@ dependencies:
 + 用于测试的 Azure 容器实例 (ACI)。
 + 用于生产的 Azure Kubernetes 服务 (AKS)。
 
-不需要事先创建 ACI 容器来进行测试, 因为会动态创建 ACI 容器。 但是, 您需要提前配置 AKS 群集。 有关详细信息, 请参阅[部署具有 Azure 机器学习服务的模型](how-to-deploy-and-where.md)。
+不需要事先创建 ACI 容器来进行测试, 因为会动态创建 ACI 容器。 但是, 您需要提前配置 AKS 群集。 有关详细信息，请参阅[部署模型与 Azure 机器学习](how-to-deploy-and-where.md)。
 
 部署 web 服务:
 
 1. 在 "Visual Studio Code" 活动栏上, 选择 "Azure" 图标。 此时会显示“Azure 机器学习”边栏。
 
-1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。
+1. 在树视图中，展开 "Azure 订阅" 和 "Azure 机器学习" 工作区。
 
 1. 在工作区节点下，展开“模型”节点。
 

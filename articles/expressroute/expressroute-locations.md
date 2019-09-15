@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/09/2019
+ms.date: 09/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: b7672ff83dac31968dff7ef7a66ff40b36b69d59
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: ebd6e2fa38284a1bdaf6c3d28fb32568ae228d74
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845190"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993086"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -144,7 +144,6 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[Spark NZ](https://www.sparkdigital.co.nz/solutions/connectivity/cloud-connect/)** |支持 |支持 |奥克兰, 悉尼 |
 | **[Sprint](https://business.sprint.com/solutions/cloud-networking/)** |支持 |支持 |芝加哥、硅谷、华盛顿特区 |
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |支持 |支持 |阿姆斯特丹、钦奈、中国香港特别行政区、伦敦、孟买、圣保罗、硅谷、新加坡、华盛顿特区 |
-| **Telecity Group** |支持 |支持 |阿姆斯特丹 |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |支持 |支持 |阿姆斯特丹、圣保罗 |
 | **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)**  |支持 |支持 |伦敦 |
 | **Telenor** |支持 |支持 |阿姆斯特丹、伦敦 |
@@ -157,7 +156,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |支持 |支持 |达拉斯、+ 洛杉矶|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |支持 |支持 |Sao Paulo |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、中国香港特别行政区、伦敦、孟买、硅谷、新加坡、悉尼、东京、多伦多、华盛顿特区 |
-| **Viasat** | 支持 | 支持 | 华盛顿特区 2 |
+| **[Viasat](http://www.directcloud.viasatbusiness.com/)** | 支持 | 支持 | 华盛顿特区 2 |
 | **[Vocus 组 NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | 支持 | 支持 | 奥克兰, 悉尼 |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |支持 |支持 |Amsterdam2、伦敦、新加坡 |
 | **Vodafone Idea** | 支持 | 支持 | 孟买、孟买 2 |
@@ -221,7 +220,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 
 * Intelsat
 * [工程师](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)
-* Viasat
+* [Viasat](http://www.directcloud.viasatbusiness.com/)
 
 ## <a name="connectivity-through-additional-service-providers"></a>通过其他服务提供商的连接
 
@@ -264,13 +263,13 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[Masergy](https://www.masergy.com/solutions/hybrid-networking/cloud-marketplace/microsoft-azure)** | Equinix | 华盛顿特区 |
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** | Teraco | 开普敦、约翰内斯堡 |
 | **[NexGen Networks](https://www.nexgen-net.com/nexgen-networks-direct-connect-microsoft-azure-expressroute.html)** | Interxion | 伦敦 |
-| **[Nianet](https://nianet.dk/produkter/internet/microsoft-expressroute)** |Telecity | 阿姆斯特丹、法兰克福 |
+| **[Nianet](https://nianet.dk/produkter/internet/microsoft-expressroute)** |Equinix | 阿姆斯特丹、法兰克福 |
 | **[后期电信卢森堡](https://www.teralinksolutions.com/cloud-connectivity/cloudbridge-to-azure-expressroute/)**|Equinix | 阿姆斯特丹 |
 | **[Proximus](https://www.proximus.be/en/id_b_cl_proximus_external_cloud_connect/companies-and-public-sector/discover/magazines/expert-blog/proximus-external-cloud-connect.html)**|Equinix | 阿姆斯特丹、都柏林、伦敦、巴黎 |
 | **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | 法兰克福 |  
 | **Rogers** | Cologix、Equinix | 蒙特利尔、多伦多 |
 | **[彩虹企业](https://enterprise.spectrum.com/services/cloud/cloud-connect.html)** | Equinix | 芝加哥、达拉斯、洛杉矶、纽约、硅谷 | 
-| **[Tamares Telecom](https://www.tamarestelecom.com/our-services/#Connectivity)** | Telecity | 伦敦 | 
+| **[Tamares Telecom](https://www.tamarestelecom.com/our-services/#Connectivity)** | Equinix | 伦敦 | 
 | **[TDC Erhverv](https://tdc.dk/Produkter/cloudaccessplus)** | Equinix | 阿姆斯特丹 | 
 | **[Telecom Italia Sparkle](https://www.tisparkle.com/our-platform/corporate-platform/sparkle-cloud-connect#catalogue)**| Equinix | 阿姆斯特丹 |
 | **[Telekom Deutschland GmbH](https://cloud.telekom.de/de/infrastruktur/managed-it-services/managed-hybrid-infrastructure-mit-microsoft-azure)** | Interxion | 阿姆斯特丹、法兰克福 |

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 6c1104ba340f23a76d5b9b4167f895f5a115152c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 8faa6338179eb1540eb4f9a375bf3bc696c745f3
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773287"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995379"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -155,4 +155,4 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[使用 Azure 门户创建和管理只读副本](howto-read-replicas-portal.md)
-- 了解如何[使用 Azure CLI 创建和管理只读副本](howto-read-replicas-cli.md)
+- 了解如何[使用 Azure CLI 和 REST API 创建和管理读取副本](howto-read-replicas-cli.md)
