@@ -1,35 +1,35 @@
 ---
-title: 适用于 Azure Cosmos DB SQL 查询运算符
-description: 了解有关 Azure Cosmos DB 的 SQL 运算符的信息。
+title: Azure Cosmos DB 的 SQL 查询运算符
+description: 了解 Azure Cosmos DB 的 SQL 运算符。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: eecc1522f8c260286c7dd7fc4c2e58d5d8caa8fb
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 899355ad7331a3df8cd5d647a573dc15e3a0bb14
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342752"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003380"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB 中的运算符
 
-本文详细介绍了 Azure Cosmos db 支持的各种运算符。
+本文详细介绍 Azure Cosmos DB 支持的各种运算符。
 
 ## <a name="equality-and-comparison-operators"></a>相等和比较运算符
 
 下表显示了 SQL API 中任意两个 JSON 类型之间等式比较的结果。
 
-| **Op** | 未定义  | Null  | **Boolean** | **数字** | **String** | **Object** | 数组  |
+| **Op** | 未定义 | Null | **布尔值** | **数字** | **字符串** | **对象** | 数组 |
 |---|---|---|---|---|---|---|---|
-| 未定义  | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
-| Null  | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Boolean** | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined |
-| **数字** | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined |
-| **String** | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined |
-| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined |
-| 数组  | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** |
+| 未定义 | 未定义 | 未定义 | 未定义 | 未定义 | 未定义 | 未定义 | 未定义 |
+| Null | 未定义 | **正常** | 未定义 | 未定义 | 未定义 | 未定义 | 未定义 |
+| **布尔值** | 未定义 | 未定义 | **正常** | 未定义 | 未定义 | 未定义 | 未定义 |
+| **数字** | 未定义 | 未定义 | 未定义 | **正常** | 未定义 | 未定义 | 未定义 |
+| **字符串** | 未定义 | 未定义 | 未定义 | 未定义 | **正常** | 未定义 | 未定义 |
+| **对象** | 未定义 | 未定义 | 未定义 | 未定义 | 未定义 | **正常** | 未定义 |
+| 数组 | 未定义 | 未定义 | 未定义 | 未定义 | 未定义 | 未定义 | **正常** |
 
 对于 `>`、`>=`、`!=`、`<` 和 `<=` 等比较运算符，跨类型的比较或者两个对象或数组之间的比较会生成 `Undefined`。  
 
@@ -41,27 +41,27 @@ ms.locfileid: "67342752"
 
 **OR 运算符**
 
-| 或 | True | False | Undefined |
+| OR | True | False | 未定义 |
 | --- | --- | --- | --- |
 | True |True |True |True |
-| False |True |False |Undefined |
-| Undefined |True |Undefined |Undefined |
+| False |True |False |未定义 |
+| 未定义 |True |未定义 |未定义 |
 
 **AND 运算符**
 
-| AND | True | False | Undefined |
+| AND | True | False | 未定义 |
 | --- | --- | --- | --- |
 | True |True |False |Undefined |
 | False |False |False |False |
-| Undefined |Undefined |False |Undefined |
+| 未定义 |未定义 |False |未定义 |
 
 **NOT 运算符**
 
-| NOT |  |
+| 非 |  |
 | --- | --- |
 | True |False |
 | False |True |
-| Undefined |Undefined |
+| 未定义 |未定义 |
 
 
 ## <a name="-operator"></a>* 运算符
@@ -97,6 +97,6 @@ ms.locfileid: "67342752"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [关键字](sql-query-keywords.md)
 - [SELECT 子句](sql-query-select.md)

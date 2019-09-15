@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: b78f81e16afbd044306c6697e0d8823bdd02b81a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: aa25bbb54893fa84bb345a317850df4125faed25
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232871"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003304"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>适用于 Azure 的 Microsoft 云采用框架基础蓝图示例概述
 
@@ -27,7 +27,7 @@ CAF 基础蓝图示例在 Azure 中部署建议的基础结构资源，这些资
 
 此实现纳入多项 Azure 服务，这些服务用于提供安全的、全面受监视的、面向企业的基础。 此环境包括：
 
-- 一个 [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) 实例，用于托管对共享服务环境中部署的 VM 使用的机密
+- 一个 [Azure Key Vault](../../../../key-vault/key-vault-overview.md) 实例，用于托管对共享服务环境中部署的 VM 使用的机密
 - 部署 [Log Analytics](../../../../azure-monitor/overview.md)，以便确保从开始安全部署起所有操作和服务都记录到一个中心位置的[存储帐户](../../../../storage/common/storage-introduction.md)，用于诊断日志记录
 - 部署 [Azure 安全中心](../../../../security-center/security-center-intro.md)（标准版），从而为已迁移的工作负荷提供威胁防护
 - 该蓝图还定义并部署 [Azure 策略](../../../policy/overview.md)，用于 

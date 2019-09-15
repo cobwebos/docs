@@ -1,7 +1,7 @@
 ---
-title: 训练运行期间的日志指标
-titleSuffix: Azure Machine Learning service
-description: 可以跟踪试验和监视指标, 以增强模型创建过程。 了解如何将日志记录添加到训练脚本, 如何提交试验, 如何检查正在运行的作业的进度, 以及如何查看运行的记录结果。
+title: 记录 ML 试验 & 度量值
+titleSuffix: Azure Machine Learning
+description: 监视 Azure ML 试验和监视运行指标，以增强模型创建过程。 将日志记录添加到定型脚本并查看运行的记录结果。  请使用 start_logging 或 ScriptRunConfig。
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -10,21 +10,21 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a37ed7c7f39324a7fb4750389c0d76c36539c3cc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858721"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002710"
 ---
-# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>跟踪机器学习培训指标与 Azure 机器学习
+# <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
 
-通过跟踪试验和监视指标来增强模型的创建过程。 在本文中，了解如何将日志记录代码添加到训练脚本、提交试验运行、监视运行，以及在 Azure 机器学习服务中检查结果。
+通过跟踪试验和监视运行指标来增强模型的创建过程。 在本文中，了解如何将日志记录代码添加到训练脚本、提交试验运行、监视运行，并在 Azure 机器学习中检查结果。
 
 > [!NOTE]
-> Azure 机器学习服务还可能在训练期间记录来自其他源的信息，例如自动机器学习运行或运行定型作业的 Docker 容器。 未记录这些日志。 如果遇到问题，请与 Microsoft 支持部门联系，他们可以在故障排除过程中使用这些日志。
+> Azure 机器学习还可以在训练期间记录来自其他源的信息，例如自动机器学习运行或运行训练作业的 Docker 容器。 未记录这些日志。 如果遇到问题，请与 Microsoft 支持部门联系，他们可以在故障排除过程中使用这些日志。
 
 ## <a name="available-metrics-to-track"></a>要跟踪的可用指标
 
@@ -65,7 +65,7 @@ ms.locfileid: "70858721"
 
 **start_logging** 可创建笔记本等方案中使用的交互式运行。 试验中会话期间记录的任何指标都会添加到运行记录中。
 
-下面的示例在本地 Jupyter 笔记本中本地训练简单的 sklearn 岭模型。 若要详细了解如何将试验提交到不同的环境，请参阅[使用 Azure 机器学习服务为模型定型设置计算目标](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets)。
+下面的示例在本地 Jupyter 笔记本中本地训练简单的 sklearn 岭模型。 若要详细了解如何将试验提交到不同的环境，请参阅[设置用于模型定型的计算目标 Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets)。
 
 1. 在本地 Jupyter 笔记本中创建训练脚本。 
 
@@ -91,7 +91,7 @@ ms.locfileid: "70858721"
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. 使用 Azure 机器学习服务 SDK 添加试验跟踪并将持久化模型上传到试验运行记录。 以下代码添加标记、日志，并将模型文件上传到试验运行。
+2. 使用 Azure 机器学习 SDK 添加试验跟踪，并将持久化模型上传到试验运行记录。 以下代码添加标记、日志，并将模型文件上传到试验运行。
 
    ```python
     # Get an experiment object from Azure Machine Learning

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 01ab4f6f0535f137c7ffeb99c36ecd1e831de6f7
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 15223c59f270dc562e521697186cfaf7f30073b9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727665"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004111"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure 日志集成教程：使用事件中心处理 Azure Key Vault 事件
 
@@ -44,7 +44,7 @@ ms.locfileid: "68727665"
 
 有关本教程提到的服务的详细信息，请参阅： 
 
-- [Azure Key Vault](/azure/key-vault/key-vault-whatis)
+- [Azure Key Vault](/azure/key-vault/key-vault-overview)
 - [Azure 事件中心](/azure/event-hubs/event-hubs-what-is-event-hubs)
 - [Azure 日志集成](azure-log-integration-overview.md)
 
@@ -72,7 +72,7 @@ ms.locfileid: "68727665"
 
    如果已安装了 Windows Server 2016，则已至少具有 PowerShell 5.0。 如果使用的是任何其他版本的 Windows Server，则可能安装了较早版本的 PowerShell。 可以通过在 PowerShell 窗口中输入 ```get-host``` 来检查版本。 如果未安装 PowerShell 5.0，可以[下载它](https://www.microsoft.com/download/details.aspx?id=50395)。
 
-   至少安装了 PowerShell 5.0 后, 可以按照[安装 Azure PowerShell](/powershell/azure/install-az-ps)中的说明继续安装最新版本。
+   至少安装了 PowerShell 5.0 后，可以按照[安装 Azure PowerShell](/powershell/azure/install-az-ps)中的说明继续安装最新版本。
 
 
 ## <a name="create-supporting-infrastructure-elements"></a>创建支持基础结构元素
@@ -87,7 +87,7 @@ ms.locfileid: "68727665"
    >[!NOTE]
    >如果这是你首次从此计算机登录到 Azure，将会看到一条有关允许 Microsoft 收集 PowerShell 使用情况数据的消息。 建议启用此数据收集，因为该数据将用来改进 Azure PowerShell。
 
-1. 身份验证成功后, 你将登录。 请记下订阅 ID 和订阅名称，因为将需要使用它们完成后面的步骤。
+1. 身份验证成功后，你将登录。 请记下订阅 ID 和订阅名称，因为将需要使用它们完成后面的步骤。
 
 1. 创建变量来存储后面将使用的值。 输入以下每个 PowerShell 行。 可能需要调整值来匹配你的环境。
     - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'```（你的订阅名称可能不同。 可以在前面命令的输出中看到该名称。）
@@ -121,7 +121,7 @@ ms.locfileid: "68727665"
     a. ```$locationObjects = Get-AzLocation```    
     b. ```$locations = @('global') + $locationobjects.location```
     
-    如果此时输入`$locations` , 则会看到位置名称没有由 AzLocation 返回的附加信息。
+    如果此时输入`$locations` ，则会看到位置名称没有由 AzLocation 返回的附加信息。
 1. 创建 Azure 资源管理器日志配置文件： 
     
     ```Add-AzLogProfile -Name $name -ServiceBusRuleId $sbruleid -Locations $locations```
@@ -129,7 +129,7 @@ ms.locfileid: "68727665"
     有关 Azure 日志配置文件的详细信息，请参阅 [Azure 活动日志概述](../../azure-monitor/platform/activity-logs-overview.md)。
 
 > [!NOTE]
-> 尝试创建日志配置文件时可能会收到错误消息。 然后, 可以查看 AzLogProfile 和 AzLogProfile 的文档。 如果运行 AzLogProfile, 则会看到日志配置文件的相关信息。 可以通过输入 ```Remove-AzLogProfile -name 'Log Profile Name'``` 命令来删除现有的日志配置文件。
+> 尝试创建日志配置文件时可能会收到错误消息。 然后，可以查看 AzLogProfile 和 AzLogProfile 的文档。 如果运行 AzLogProfile，则会看到日志配置文件的相关信息。 可以通过输入 ```Remove-AzLogProfile -name 'Log Profile Name'``` 命令来删除现有的日志配置文件。
 >
 >![Resource Manager 配置文件错误](./media/azure-log-integration-keyvault-eventhub/rm-profile-error.png)
 

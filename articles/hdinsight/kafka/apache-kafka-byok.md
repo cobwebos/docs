@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 09cca0eda9a82b1605323678d7442700dc1a2292
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960500"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000098"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>在 Azure HDInsight 上 Apache Kafka 自带密钥
 
@@ -146,5 +146,5 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/key-vault-whatis.md)
+* 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/key-vault-overview.md)
 * 若要开始使用 Azure Key Vault，请参阅 [Azure Key Vault 入门](../../key-vault/key-vault-overview.md)。

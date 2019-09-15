@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB 中的参数化的查询
-description: 了解有关参数化 SQL 查询
+title: Azure Cosmos DB 中的参数化查询
+description: 了解 SQL 参数化查询
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: 2bfc22346c1dd43d7d3c2937ffc286e48ae774d0
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 45c1344c32e35f60f35ba8ed105e912d92574cce
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342848"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003607"
 ---
-# <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB 中的参数化的查询
+# <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB 中的参数化查询
 
 Cosmos DB 支持使用带有常用 @ 表示法的参数进行查询。 参数化 SQL 为用户输入提供可靠的处理和转义，可防止通过 SQL 注入发生意外的数据泄露。
 
@@ -55,5 +55,5 @@ Cosmos DB 支持使用带有常用 @ 表示法的参数进行查询。 参数化
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文档数据](modeling-data.md)

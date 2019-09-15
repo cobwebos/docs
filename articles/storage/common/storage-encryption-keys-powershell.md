@@ -9,12 +9,12 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6c9adf1c00503ec7f1cbf4a3405c303eea2d2292
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 1b94f1686c2893c1c69bc846d3a0d29084975b7a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034885"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002180"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>通过 PowerShell 配置客户管理的密钥用于 Azure 存储加密
 
@@ -24,7 +24,7 @@ ms.locfileid: "69034885"
 
 > [!IMPORTANT]
 > 将客户管理的密钥用于 Azure 存储加密需要为 Key Vault 配置两个必需的属性：“软删除”和“不要清除”。 在 Azure 门户中创建新的 Key Vault 时，默认会启用这些属性。 但是，如果需要针对现有的 Key Vault 启用这些属性，必须使用 PowerShell 或 Azure CLI。
-> 仅支持 RSA 密钥和密钥大小2048。
+> 仅支持 RSA 密钥以及密钥大小 2048。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>将标识分配到存储帐户
 
@@ -38,7 +38,7 @@ $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
     -AssignIdentity
 ```
 
-有关使用 PowerShell 配置系统分配的托管标识的详细信息, 请参阅[使用 powershell 在 AZURE VM 上配置 azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)。
+有关使用 PowerShell 配置系统分配的托管标识的详细信息，请参阅[使用 PowerShell 在 Azure VM 上配置 Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)。
 
 ## <a name="create-a-new-key-vault"></a>创建新的 Key Vault
 
@@ -97,4 +97,4 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 ## <a name="next-steps"></a>后续步骤
 
 - [静态数据的 Azure 存储加密](storage-service-encryption.md) 
-- [什么是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
+- [什么是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

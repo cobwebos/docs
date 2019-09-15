@@ -1,6 +1,6 @@
 ---
 title: 在虚拟网络中保护试验和推理
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure 虚拟网络中的 Azure 机器学习中保护试验/培训作业和推理/评分作业。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: fcd47cdf3968e8c8a204cb15f10dd41c4eaab641
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: f12c77a25bad9781d5f23b9563f6684997a2a6c4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885670"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002797"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 
@@ -23,13 +23,13 @@ ms.locfileid: "70885670"
 
 **虚拟网络**充当安全边界，将 Azure 资源与公共 internet 隔离开来。 你也可以将 Azure 虚拟网络加入本地网络。 通过加入网络，可以安全地训练模型并访问已部署的模型以进行推断。
 
-Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算资源（或[计算目标](concept-compute-target.md)）用于定型和部署模型。 可以在虚拟网络中创建目标。 例如，你可以使用 Microsoft Data Science Virtual Machine 训练模型，然后将模型部署到 Azure Kubernetes 服务（AKS）。 有关虚拟网络的详细信息，请参阅[Azure 虚拟网络概述](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。
+Azure 机器学习依赖于其他 Azure 服务计算资源。 计算资源（或[计算目标](concept-compute-target.md)）用于定型和部署模型。 可以在虚拟网络中创建目标。 例如，你可以使用 Microsoft Data Science Virtual Machine 训练模型，然后将模型部署到 Azure Kubernetes 服务（AKS）。 有关虚拟网络的详细信息，请参阅[Azure 虚拟网络概述](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。
 
 本文还提供了有关*高级安全设置*的详细信息，以及基本或实验用例所不需要的信息。 本文的某些部分提供各种方案的配置信息。 您无需按顺序或完整地完成说明。
 
 ## <a name="prerequisites"></a>先决条件
 
-+ Azure 机器学习服务[工作区](how-to-manage-workspace.md)。
++ Azure 机器学习[工作区](how-to-manage-workspace.md)。
 
 + [Azure 虚拟网络服务](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)和[IP 网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)的常规工作知识。
 
@@ -45,7 +45,7 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
 
 1. 在 Azure 门户中，请前往附加到工作区的存储。
 
-   [![附加到 Azure 机器学习服务工作区的存储](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
+   [![附加到 Azure 机器学习工作区的存储](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
 1. 在 " **Azure 存储空间**" 页上，选择 "__防火墙和虚拟网络__"。
 
@@ -74,7 +74,7 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
     ```
 
 > [!IMPORTANT]
-> 可以将 Azure 机器学习服务的_默认存储帐户_，也可以在虚拟网络中放置_非默认存储_帐户。
+> 你可以在虚拟网络中为 Azure 机器学习或_非默认存储帐户_放置_默认存储帐户_。
 >
 > 创建工作区时，会自动预配默认存储帐户。
 >
@@ -82,7 +82,7 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
 
 ## <a name="use-a-key-vault-instance-with-your-workspace"></a>将密钥保管库实例与工作区配合使用
 
-Azure 机器学习服务使用与工作区关联的密钥保管库实例来存储以下凭据：
+Azure 机器学习使用与工作区关联的密钥保管库实例来存储以下凭据：
 * 关联的存储帐户连接字符串
 * 密码到 Azure 容器存储库实例
 * 数据存储的连接字符串
@@ -90,7 +90,7 @@ Azure 机器学习服务使用与工作区关联的密钥保管库实例来存�
 若要在虚拟网络后使用 Azure Key Vault Azure 机器学习试验功能，请执行以下操作：
 1. 中转到与工作区关联的密钥保管库。
 
-   [![与 Azure 机器学习服务工作区关联的密钥保管库](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
+   [![与 Azure 机器学习工作区关联的密钥保管库](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
 
 1. 在 " **Key Vault** " 页上的左窗格中，选择 "__防火墙和虚拟网络__"。
 
@@ -110,7 +110,7 @@ Azure 机器学习服务使用与工作区关联的密钥保管库实例来存�
 若要在虚拟网络中使用 Azure 机器学习计算实例，必须满足以下网络要求：
 
 > [!div class="checklist"]
-> * 该虚拟网络必须与 Azure 机器学习服务工作区位于同一订阅和区域。
+> * 虚拟网络必须位于与 Azure 机器学习工作区相同的订阅和区域中。
 > * 为计算群集指定的子网必须具有足够的未分配 IP 地址，才能容纳群集目标 Vm 的数量。 如果子网没有足够的未分配 IP 地址，则将对该群集进行部分分配。
 > * 查看虚拟网络的订阅或资源组的安全策略或锁定是否限制了管理虚拟网络的权限。 如果打算通过限制流量来保护虚拟网络，请为计算服务留出一些打开的端口。 有关详细信息，请参阅[所需的端口](#mlcports)部分。
 > * 如果要在一个虚拟网络中放置多个计算群集，则可能需要为一个或多个资源请求增加配额。
@@ -157,7 +157,7 @@ Azure 机器学习服务使用与工作区关联的密钥保管库实例来存�
 - 限制出站流量：
    - Azure 存储，使用__Region_Name__的__服务标记__（例如 EastUS）
    - Azure 容器注册表，使用__AzureContainerRegistry. Region_Name__的__服务标记__（例如 AzureContainerRegistry EastUS）
-   - Azure 机器学习服务，使用__AzureMachineLearning__的__服务标记__
+   - Azure 机器学习，使用__AzureMachineLearning__的__服务标记__
 
 下图显示了 Azure 门户中的 NSG 规则配置：
 
@@ -189,7 +189,7 @@ Azure 机器学习服务使用与工作区关联的密钥保管库实例来存�
 
 若要创建机器学习计算群集，请执行以下操作：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择你的 Azure 机器学习服务工作区。
+1. 在[Azure 门户](https://portal.azure.com)中，选择 Azure 机器学习工作区。
 
 1. 在__应用程序__部分，选择 "__计算__"，然后选择 "__添加计算__"。
 
@@ -248,7 +248,7 @@ except ComputeTargetException:
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>使用虚拟机或 HDInsight 群集
 
 > [!IMPORTANT]
-> Azure 机器学习服务仅支持运行 Ubuntu 的虚拟机。
+> Azure 机器学习仅支持运行 Ubuntu 的虚拟机。
 
 若要在工作区中使用虚拟网络中的虚拟机或 Azure HDInsight 群集，请执行以下操作：
 
@@ -257,7 +257,7 @@ except ComputeTargetException:
 
     * [使用 Azure 虚拟网络扩展 HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
 
-1. 若要允许 Azure 机器学习服务与 VM 或群集上的 SSH 端口通信，请为网络安全组配置源条目。 SSH 端口通常是端口 22。 若要允许来自此源的流量，请执行以下操作：
+1. 若要允许 Azure 机器学习与 VM 或群集上的 SSH 端口通信，请为网络安全组配置源条目。 SSH 端口通常是端口 22。 若要允许来自此源的流量，请执行以下操作：
 
     * 在 "__源__" 下拉列表中，选择 "__服务标记__"。
 
@@ -279,7 +279,7 @@ except ComputeTargetException:
 
     如果你不想使用默认的出站规则，并且想要限制对虚拟网络的出站访问权限，请参阅[限制虚拟网络的出站连接](#limiting-outbound-from-vnet)部分。
 
-1. 将 VM 或 HDInsight 群集附加到 Azure 机器学习服务工作区。 有关详细信息，请参阅[设置模型训练的计算目标](how-to-set-up-training-targets.md)。
+1. 将 VM 或 HDInsight 群集附加到 Azure 机器学习工作区。 有关详细信息，请参阅[设置模型训练的计算目标](how-to-set-up-training-targets.md)。
 
 <a id="aksvnet"></a>
 
@@ -292,11 +292,11 @@ except ComputeTargetException:
 >
 > AKS 实例和 Azure 虚拟网络必须位于同一区域。 如果在虚拟网络中保护工作区使用的 Azure 存储帐户，则这些帐户必须与 AKS 实例位于同一虚拟网络中。
 
-1. 在[Azure 门户](https://portal.azure.com)中，请确保控制虚拟网络的 NSG 具有一个入站规则，该规则是使用__AzureMachineLearning__作为**源**为 Azure 机器学习服务启用的。
+1. 在[Azure 门户](https://portal.azure.com)中，确保控制虚拟网络的 NSG 具有一个入站规则，该规则是使用__AzureMachineLearning__作为**源**为 Azure 机器学习启用的。
 
-    [!["Azure 机器学习服务" 添加计算窗格](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
+    [![Azure 机器学习添加计算窗格](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
 
-1. 选择 Azure 机器学习服务工作区。
+1. 选择 Azure 机器学习工作区。
 
 1. 在__应用程序__部分，选择 "__计算__"，然后选择 "__添加计算__"。
 
@@ -316,7 +316,7 @@ except ComputeTargetException:
 
     - 在 " __docker 桥地址__" 框中，输入 docker 桥地址。 此 IP 地址将分配给 Docker 网桥。 它不得位于任何子网 IP 范围或 Kubernetes 服务地址范围内（例如，172.17.0.1/16）。
 
-   ![Azure 机器学习服务：机器学习计算虚拟网络设置](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
+   ![Azure 机器学习：机器学习计算虚拟网络设置](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
 1. 确保控制虚拟网络的 NSG 组已为评分终结点启用了入站安全规则，以便可以从虚拟网络外部调用它。
    > [!IMPORTANT]

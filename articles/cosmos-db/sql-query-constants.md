@@ -1,33 +1,33 @@
 ---
 title: Azure Cosmos DB 中的 SQL 常量
-description: 了解有关 Azure Cosmos DB 中的 SQL 常量
+description: 了解 Azure Cosmos DB 中的 SQL 常量
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: ed337c8330eb8b3e4ad97c92cca1d0c5977f9588
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 41cafeb76b7b9481a78ffcff179676d0aa7bf6fd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342629"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002049"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL 查询常量  
 
  常数也称为文本值或标量值，是表示特定数据值的符号。 常数的格式取决于它代表的值的数据类型。  
   
- 受支持的标量数据类型：   
+ 受支持的标量数据类型：  
   
-|类型 |值顺序 |  
+|类型|值顺序|  
 |-|-|  
-|未定义 |单个值：未定义 |  
-|**Null**|单个值：null |  
-|布尔值 |值："false"、"true"   。|  
+|未定义|单个值：未定义|  
+|**Null**|单个值：null|  
+|布尔值|值："false"、"true"。|  
 |**数字**|双精度浮点数，IEEE 754 标准。|  
-|字符串 |零个或多个 Unicode 字符序列。 字符串必须用单引号或双引号括起来。|  
-|数组 |零个或多个元素序列。 每个元素可以是任何标量数据类型，一个值除**Undefined**。|  
-|**Object**|零个或多个名称/值对的无序集。 当名称为一个Unicode字符串，值可以属于任何标量数据类型，“未定义”除外  。|  
+|字符串|零个或多个 Unicode 字符序列。 字符串必须用单引号或双引号括起来。|  
+|数组|零个或多个元素序列。 每个元素可以是任何标量数据类型的值，但 **Undefined** 除外。|  
+|**对象**|零个或多个名称/值对的无序集。 当名称为一个Unicode字符串，值可以属于任何标量数据类型，“未定义”除外。|  
   
 ## <a name="bk_syntax"></a>语法
   
@@ -59,7 +59,7 @@ ms.locfileid: "67342629"
   
 ```  
   
-##  <a name="bk_arguments"></a> 自变量
+##  <a name="bk_arguments"></a> 参数
   
 * `<undefined_constant>; Undefined`  
   
@@ -67,7 +67,7 @@ ms.locfileid: "67342629"
   
 * `<null_constant>; null`  
   
-  表示 Null 类型的 null 值   。  
+  表示 Null 类型的 null 值。  
   
 * `<boolean_constant>`  
   
@@ -75,11 +75,11 @@ ms.locfileid: "67342629"
   
 * `false`  
   
-  表示 Boolean 类型的 false 值  。  
+  表示 Boolean 类型的 false 值。  
   
 * `true`  
   
-  表示 Boolean 类型的 true 值  。  
+  表示 Boolean 类型的 true 值。  
   
 * `<number_constant>`  
   
@@ -118,5 +118,5 @@ ms.locfileid: "67342629"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文档数据](modeling-data.md)

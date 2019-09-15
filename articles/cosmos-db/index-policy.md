@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 60b323c12e5c548c974a7d660d08861637ac2381
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 944c05a28eb33c659bf4aaa600985530122f8d3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996666"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000327"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
@@ -26,8 +26,11 @@ ms.locfileid: "70996666"
 
 Azure Cosmos DB 支持两种索引模式：
 
-- **一致**：如果容器的索引策略设置为“一致”，则创建、更新或删除项时，索引将以同步方式更新。 这意味着，读取查询的一致性是[为帐户配置的一致性](consistency-levels.md)。
-- **无**：如果容器的索引策略设置为“无”，则会有效地针对该容器禁用索引。 将容器用作单纯的键-值存储时，通常会使用此设置，在此情况下无需使用辅助索引。 它还有助于加速批量插入操作。
+- **一致**：创建、更新或删除项时，将同步更新索引。 这意味着，读取查询的一致性是[为帐户配置的一致性](consistency-levels.md)。
+- **无**：在容器上禁用索引。 将容器用作单纯的键-值存储时，通常会使用此设置，在此情况下无需使用辅助索引。 它还可用于提高大容量操作的性能。 大容量操作完成后，可将索引模式设置为一致，然后使用[IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2)进行监视，直到完成。
+
+> [!NOTE]
+> Cosmos DB 还支持延迟索引模式。 当引擎没有执行任何其他工作时，延迟索引会以较低的优先级对索引执行更新。 这可能导致查询结果**不一致或不完整**。 此外，对于大容量操作，使用延迟索引替代 "无" 也不会带来任何好处，因为对索引模式进行的任何更改都将导致删除并重新创建索引。 出于此原因，我们建议使用该客户。 若要提高大容量操作的性能，请将索引模式设置为 "无"，然后返回`IndexTransformationProgress`到一致模式并监视容器上的属性，直到完成。
 
 默认情况下，索引策略设置为`automatic`。 这是通过将索引策略`automatic`中的属性设置为来`true`实现的。 如果将此属性`true`设置为，则允许 Azure CosmosDB 在文档写入时自动编制文档索引。
 

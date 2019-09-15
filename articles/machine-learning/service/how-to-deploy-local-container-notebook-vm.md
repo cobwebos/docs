@@ -1,7 +1,7 @@
 ---
 title: 如何将模型部署到笔记本 Vm
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用笔记本 Vm 将 Azure 机器学习服务模型部署为 web 服务。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用笔记本 Vm 将 Azure 机器学习模型部署为 web 服务。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,34 +10,34 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 08/08/2019
-ms.openlocfilehash: d6b26dfe1eb8ea65dd7c751a148c599123b0f6db
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 046f998038c47a48a8528bf36d87ac836395eec2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947755"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002827"
 ---
 # <a name="deploy-a-model-to-notebook-vms"></a>将模型部署到笔记本 Vm
 
-了解如何使用 Azure 机器学习服务将模型部署为笔记本 VM 上的 web 服务。 如果满足以下条件之一, 则使用笔记本 Vm:
+了解如何使用 Azure 机器学习在笔记本 VM 上将模型部署为 web 服务。 如果满足以下条件之一，则使用笔记本 Vm：
 
 - 你需要快速部署并验证你的模型。
 - 正在测试一个开发中的模型。
 
 > [!TIP]
-> 将模型从笔记本 VM 上的 Jupyter Notebook 部署到同一 VM 上的 web 服务是_本地部署_。 在这种情况下, "本地" 计算机是笔记本 VM。 有关部署的详细信息, 请参阅[部署具有 Azure 机器学习服务的模型](how-to-deploy-and-where.md)。
+> 将模型从笔记本 VM 上的 Jupyter Notebook 部署到同一 VM 上的 web 服务是_本地部署_。 在这种情况下，"本地" 计算机是笔记本 VM。 有关部署的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个 Azure 机器学习服务工作区, 其中包含运行的笔记本 VM。 有关详细信息, 请参阅[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
+- 一个运行了笔记本 VM 的 Azure 机器学习工作区。 有关详细信息，请参阅[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
 ## <a name="deploy-to-the-notebook-vms"></a>部署到笔记本 Vm
 
-笔记本 VM 上包含了演示本地部署的示例笔记本。 使用以下步骤加载笔记本, 并将模型部署为 VM 上的 web 服务:
+笔记本 VM 上包含了演示本地部署的示例笔记本。 使用以下步骤加载笔记本，并将模型部署为 VM 上的 web 服务：
 
-1. 在[Azure 门户](https://portal.azure.com)中, 选择 Azure 机器学习笔记本 vm。
+1. 在[Azure 门户](https://portal.azure.com)中，选择 Azure 机器学习笔记本 vm。
 
-1. 打开子目录, 然后打开`how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`。 `samples-*` 打开后, 运行笔记本。
+1. 打开子目录，然后打开`how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`。 `samples-*` 打开后，运行笔记本。
 
     ![笔记本上运行的本地服务的屏幕截图](media/how-to-deploy-local-container-notebookvm/deploy-local-service.png)
 
@@ -45,11 +45,11 @@ ms.locfileid: "68947755"
 
     ![正在运行的本地服务端口的屏幕截图](media/how-to-deploy-local-container-notebookvm/deploy-local-service-port.png)
 
-1. 若要从笔记本 VM 测试服务, 请使用`https://localhost:<local_service.port>` URL。 若要从远程客户端测试, 请获取在笔记本 VM 上运行的服务的公共 URL。可以使用以下公式来确定公共 URL;`https://<notebookvm_name>-<local_service_port>.<azure_region_of_notebook>.notebooks.azureml.net/score`. 例如， `https://mynotebookvm-6789.eastus2.notebooks.azureml.net/score` 。
+1. 若要从笔记本 VM 测试服务，请使用`https://localhost:<local_service.port>` URL。 若要从远程客户端测试，请获取在笔记本 VM 上运行的服务的公共 URL。可以使用以下公式来确定公共 URL;`https://<notebookvm_name>-<local_service_port>.<azure_region_of_notebook>.notebooks.azureml.net/score`. 例如， `https://mynotebookvm-6789.eastus2.notebooks.azureml.net/score` 。
 
 ## <a name="test-the-service"></a>测试服务
 
-若要将示例数据提交到正在运行的服务, 请使用以下代码。 将的值`service_url`替换为上一步中的 URL:
+若要将示例数据提交到正在运行的服务，请使用以下代码。 将的值`service_url`替换为上一步中的 URL：
 
 ```python
 import requests

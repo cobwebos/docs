@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB 中的 WHERE 子句
-description: 了解 Azure Cosmos DB SQL WHERE 子句
+description: 了解 Azure Cosmos DB 的 SQL WHERE 子句
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6a942e48ffea7785fe971cc2f8fa66e8569ed672
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 362024868de269ed64a440a25e8c19c5b68bef80
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342875"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003474"
 ---
 # <a name="where-clause"></a>WHERE 子句
 
@@ -33,7 +33,7 @@ WHERE <filter_condition>
   
 - `<scalar_expression>`  
   
-   表示要计算的值的表达式。 请参阅[标量表达式](sql-query-scalar-expressions.md)有关详细信息。  
+   表示要计算的值的表达式。 有关详细信息，请参阅[标量表达式](sql-query-scalar-expressions.md)。  
   
 
 ## <a name="remarks"></a>备注
@@ -109,5 +109,5 @@ WHERE <filter_condition>
 ## <a name="next-steps"></a>后续步骤
 
 - [入门](sql-query-getting-started.md)
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [FROM 子句](sql-query-from.md)

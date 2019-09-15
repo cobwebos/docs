@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cdb1b49af5d3a85dc1853e5964c1cdfdd5c3a7cd
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 679de2d3a5519e57978239ddd75a4b9fa2ffef3c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716673"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998762"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的技术配置文件
 
@@ -34,10 +34,9 @@ ms.locfileid: "68716673"
 - [OAuth2](oauth2-technical-profile.md) - 与任何 OAuth 2.0 协议标识提供者联合。
 - [Openid](openid-connect-technical-profile.md) connect-联合身份验证与任何 OpenID connect 协议标识提供者。
 - [声明转换](claims-transformation-technical-profile.md) - 调用输出声明转换，针对一组输出声明来操作声明值、验证声明或设置默认值。
-- [RESTful 提供程序](restful-technical-profile.md)-对 REST API 服务的调用, 例如验证用户输入、丰富用户数据或与业务线应用程序集成。
+- [RESTful 提供程序](restful-technical-profile.md)-对 REST API 服务的调用，例如验证用户输入、丰富用户数据或与业务线应用程序集成。
 - [SAML2](saml-technical-profile.md) - 与任何 SAML 协议标识提供者联合。
 - [自断言](self-asserted-technical-profile.md) - 与用户交互。 例如，收集用户的凭据进行登录、呈现注册页或密码重置。
-- WsFed - 与任何 WsFed 议标识提供者联合。
 - [会话管理](active-directory-b2c-reference-sso-custom.md) - 处理不同类型的会话。
 - **Application Insights**
 

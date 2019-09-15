@@ -1,6 +1,6 @@
 ---
 title: 在生产模型上收集数据
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure Blob 存储中收集 Azure 机器学习输入模型数据。
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 16fac492fe4c193ecd7ffa7eeff1e884acb742ae
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: d836b600a39b73f60c0847c5a9642f396fb70d17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860520"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002858"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
 
-在本文中，你可以了解如何将已部署到 Azure Kubernetes 群集 (AKS) 的 Azure 机器学习服务中的输入模型数据收集到 Azure Blob 存储中。 
+在本文中，可以了解如何从已部署到 azure Kubernetes 群集（AKS）的 Azure 机器学习收集输入模型数据到 Azure Blob 存储。 
 
 启用后，收集的这些数据可帮助你：
 * [监视数据偏离](how-to-monitor-data-drift.md), 因为生产数据进入你的模型
@@ -50,9 +50,9 @@ Blob 中输出数据的路径遵循以下语法：
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+- 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
-- 一个 Azure 机器学习服务工作区、一个包含脚本的本地目录，以及所安装的用于 Python 的 Azure 机器学习 SDK。 了解如何通过[如何配置开发环境](how-to-configure-environment.md)一文满足这些先决条件。
+- 已安装 Azure 机器学习工作区、一个包含脚本的本地目录以及用于 Python 的 Azure 机器学习 SDK。 了解如何使用[如何配置开发环境](how-to-configure-environment.md)文档来获得这些先决条件。
 
 - 要部署到 Azure Kubernetes 服务 (AKS) 的经过训练的机器学习模型。 如果没有模型，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程。
 
@@ -61,7 +61,7 @@ Blob 中输出数据的路径遵循以下语法：
 - [设置环境](how-to-configure-environment.md)并安装[监视 SDK](https://aka.ms/aml-monitoring-sdk)。
 
 ## <a name="enable-data-collection"></a>启用数据收集
-无论通过 Azure 机器学习服务或其他工具部署的模型如何，都可以启用数据收集。 
+无论通过 Azure 机器学习或其他工具部署的模型是什么，都可以启用数据收集。 
 
 若要启用数据收集，需要执行以下操作：
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: 6c16b38cce31c45158a5871c10dbd01339da9203
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: be10d144fadb21a695c5573c82681a26136e71d4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845433"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004092"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure 逻辑应用中保护访问和数据
 
@@ -185,7 +185,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 在逻辑应用运行期间，在传输过程中使用[传输层安全性（TLS）](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)和[静态](../security/fundamentals/encryption-atrest.md)加密所有数据。 逻辑应用完成运行后，你可以查看该运行的历史记录，包括运行的步骤以及每个操作的状态、持续时间、输入和输出。 这些丰富的详细信息可让你深入了解逻辑应用的运行方式，以及可以从何处开始排查出现的任何问题。
 
-访问逻辑应用的运行历史记录时，逻辑应用将对该访问进行身份验证，并提供指向逻辑应用的运行中来自请求和响应的输入和输出的链接。 但是，对于处理任何密码、机密、密钥或其他敏感信息的操作，你需要阻止他人查看和访问该数据。 例如，如果逻辑应用从 [Azure Key Vault](../key-vault/key-vault-whatis.md) 获取机密，以便在对 HTTP 操作进行身份验证时使用，则你需要在视图中隐藏该机密。
+访问逻辑应用的运行历史记录时，逻辑应用将对该访问进行身份验证，并提供指向逻辑应用的运行中来自请求和响应的输入和输出的链接。 但是，对于处理任何密码、机密、密钥或其他敏感信息的操作，你需要阻止他人查看和访问该数据。 例如，如果逻辑应用从 [Azure Key Vault](../key-vault/key-vault-overview.md) 获取机密，以便在对 HTTP 操作进行身份验证时使用，则你需要在视图中隐藏该机密。
 
 若要控制对逻辑应用运行历史记录中的输入和输出的访问，可使用以下选项：
 
@@ -370,7 +370,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md#parameters)自动化部署时，可以使用 `securestring` 和 `secureobject` 类型定义在部署时计算的受保护模板参数。 若要定义模板参数，请使用模板的顶级 `parameters` 节，该节不同于工作流定义的 `parameters` 节。 若要提供模板参数的值，请使用单独的[参数文件](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values)。
 
-例如，如果使用机密，则可以定义并使用可在部署时从 [Azure Key Vault](../key-vault/key-vault-whatis.md) 检索这些机密的受保护模板参数。 然后，可以在参数文件中引用 Key Vault 和机密。 有关详细信息，请参阅以下主题：
+例如，如果使用机密，则可以定义并使用可在部署时从 [Azure Key Vault](../key-vault/key-vault-overview.md) 检索这些机密的受保护模板参数。 然后，可以在参数文件中引用 Key Vault 和机密。 有关详细信息，请参阅以下主题：
 
 * [在部署时使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 * 本主题稍后的[保护 Azure 资源管理器模板中的参数](#secure-parameters-deployment-template)。
@@ -425,7 +425,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>保护 Azure 资源管理器模板中的参数
 
-逻辑应用的资源管理器模板包含多个 `parameters` 节。 若要保护密码、密钥、机密和其他敏感信息，请使用 `securestring` 或 `secureobject` 类型在模板级别和工作流定义级别定义受保护参数。 然后，可将这些值存储在 [Azure Key Vault](../key-vault/key-vault-whatis.md) 中，并使用[参数文件](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values)来引用 Key Vault 和机密。 模板在部署时将检索该信息。 有关详细信息，请参阅[在部署时使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/resource-manager-keyvault-parameter.md)。
+逻辑应用的资源管理器模板包含多个 `parameters` 节。 若要保护密码、密钥、机密和其他敏感信息，请使用 `securestring` 或 `secureobject` 类型在模板级别和工作流定义级别定义受保护参数。 然后，可将这些值存储在 [Azure Key Vault](../key-vault/key-vault-overview.md) 中，并使用[参数文件](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values)来引用 Key Vault 和机密。 模板在部署时将检索该信息。 有关详细信息，请参阅[在部署时使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/resource-manager-keyvault-parameter.md)。
 
 下面是有关这些 `parameters` 节的详细信息：
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0d97ca91466516b8722ecca77d19078399a258f7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814095"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001768"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上 Apache Spark 群集的资源 
 
@@ -51,17 +51,19 @@ Spark History Server Web UI 如下所示：
 ![HDInsight Spark History Server](./media/apache-spark-resource-manager/hdinsight-spark-history-server.png)
 
 ## <a name="open-the-yarn-ui"></a>打开 YARN UI
+
 可以使用 YARN UI 来监视 Spark 群集上当前运行的应用程序。
 
 1. 从 [Azure 门户](https://portal.azure.com/)打开 Spark 群集。 有关详细信息，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。
 2. 在“快速链接”中，单击“群集仪表板”，并单击“YARN”。
 
-    ![启动 YARN UI](./media/apache-spark-resource-manager/launch-yarn-ui.png)
+    ![启动 YARN UI](./media/apache-spark-resource-manager/hdi-launch-apache-yarn.png)
 
    > [!TIP]  
    > 或者，也可以从 Ambari UI 启动 YARN UI。 要启动 Ambari UI，请单击“群集仪表板”，并单击“HDInsight 群集仪表板”。 在 Ambari UI 中依次单击“YARN”、“快速链接”、活动的资源管理器和“资源管理器 UI”。
 
 ## <a name="optimize-clusters-for-spark-applications"></a>针对 Spark 应用程序优化群集
+
 根据应用程序的要求，可用于 Spark 配置的三个关键参数为 `spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory`。 执行器是针对 Spark 应用程序启动的进程。 它在辅助角色节点上运行，负责执行应用程序的任务。 执行器的默认数目和每个群集的执行器大小是根据辅助角色节点数目和辅助角色节点大小计算的。 这些信息存储在群集头节点上的 `spark-defaults.conf` 中。
 
 这三个配置参数可在群集级别配置（适用于群集上运行的所有应用程序），也可以针对每个应用程序指定。
@@ -76,7 +78,7 @@ Spark History Server Web UI 如下所示：
 
 3. 单击“保存”以保存配置更改。 在页面顶部，系统会提示是否重启所有受影响的服务。 请单击“重启”。
 
-    ![重新启动服务](./media/apache-spark-resource-manager/restart-services.png)
+    ![重新启动服务](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>更改 Jupyter 笔记本中运行的应用程序的参数
 对于在 Jupyter 笔记本中运行的应用程序，可以使用 `%%configure` magic 进行配置更改。 理想情况下，必须先在应用程序开头进行此类更改，再运行第一个代码单元。 这可以确保在创建 Livy 会话时会配置应用到该会话。 如果想要更改处于应用程序中后面某个阶段的配置，必须使用 `-f` 参数。 但是，这样做会使应用程序中的所有进度丢失。
@@ -135,21 +137,21 @@ Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，�
 ## <a name="restart-the-jupyter-service"></a>重新启动 Jupyter 服务
 启动 Ambari Web UI，如本文开头所示。 在左侧导航窗格中，依次单击“Jupyter”、“服务操作”和“全部重启”。 这会在所有头节点上启动 Jupyter 服务。
 
-![重启 Jupyter](./media/apache-spark-resource-manager/restart-jupyter.png "重启 Jupyter")
+![重启 Jupyter](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "重启 Jupyter")
 
 ## <a name="monitor-resources"></a>监视资源
 启动 Yarn UI，如本文开头所示。 在屏幕顶部的“群集指标”表中，选中“已用内存”和“内存总计”列的值。 如果这 2 个值很接近，则可能资源不足，无法启动下一个应用程序。 这同样适用于“已用 VCore”和“VCore 总计”列。 此外，在主视图中，如果有应用程序保持“已接受”状态，而不转换为“正在运行”或“失败”状态，这也可能指示该应用程序未获得足够的资源来启动。
 
-![资源限制](./media/apache-spark-resource-manager/resource-limit.png "资源限制")
+![资源限制](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "资源限制")
 
 ## <a name="kill-running-applications"></a>终止正在运行的应用程序
 1. 在 Yarn UI 中，从左侧面板中，单击“正在运行”。 在正在运行的应用程序的列表中，确定要终止的应用程序，并单击 **ID**。
 
-    ![终止 App1](./media/apache-spark-resource-manager/kill-app1.png "终止 App1")
+    ![终止 App1](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "终止 App1")
 
 2. 单击右上角的“终止应用程序”，然后单击“确定”。
 
-    ![终止 App2](./media/apache-spark-resource-manager/kill-app2.png "终止 App2")
+    ![终止 App2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "终止 App2")
 
 ## <a name="see-also"></a>请参阅
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](apache-spark-job-debugging.md)

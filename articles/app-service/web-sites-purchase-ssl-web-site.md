@@ -15,16 +15,16 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: d6d3e91bef6c4f837b068d755994b2f3268600da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7c899bae6cf36e68664a3ce60939f72a4b5bd1ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074040"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001210"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
-本教程介绍如何通过在 [Azure 密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)中创建（购买）应用服务证书，然后将其绑定到应用服务应用来保护[应用服务应用](https://docs.microsoft.com/azure/app-service/)或[函数应用](https://docs.microsoft.com/azure/azure-functions/)。
+本教程介绍如何通过在 [Azure 密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-overview)中创建（购买）应用服务证书，然后将其绑定到应用服务应用来保护[应用服务应用](https://docs.microsoft.com/azure/app-service/)或[函数应用](https://docs.microsoft.com/azure/azure-functions/)。
 
 > [!TIP]
 > App Service 证书可用于任何 Azure 或非 Azure 服务，且不限于应用服务。 为此，需要创建应用服务证书的本地 PFX 副本，以便随时随地使用它。 有关详细信息，请参阅[创建应用服务证书的本地 PFX 副本](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/)。
@@ -50,7 +50,7 @@ ms.locfileid: "70074040"
 | 设置 | 描述 |
 |-|-|
 | 姓名 | 应用服务证书证书的友好名称。 |
-| 裸域主机名 | 在此处指定根域。 颁发的证书*同时*保护根域和`www`子域。 在颁发的证书中, "公用名" 字段包含根域, "使用者可选名称" 字段`www`包含该域。 若要仅保护子域，请在此处指定子域的完全限定域名（例如，`mysubdomain.contoso.com`）。|
+| 裸域主机名 | 在此处指定根域。 颁发的证书*同时*保护根域和`www`子域。 在颁发的证书中，"公用名" 字段包含根域，"使用者可选名称" 字段`www`包含该域。 若要仅保护子域，请在此处指定子域的完全限定域名（例如，`mysubdomain.contoso.com`）。|
 | 订阅 | 托管 Web 应用的数据中心。 |
 | 资源组 | 包含证书的资源组。 例如，可以使用新资源组，或选择与应用服务应用相同的资源组。 |
 | 证书 SKU | 确定要创建的证书类型是标准证书还是[通配符证书](https://wikipedia.org/wiki/Wildcard_certificate)。 |
@@ -64,7 +64,7 @@ ms.locfileid: "70074040"
 
 ![插入已准备好存储在 KV 中的图像](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 是一项 Azure 服务，可帮助保护云应用程序和服务使用的加密密钥和机密。 它是为应用服务证书所选的存储。
+[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 是一项 Azure 服务，可帮助保护云应用程序和服务使用的加密密钥和机密。 它是为应用服务证书所选的存储。
 
 在“Key Vault 状态”页，单击“Key Vault 存储库”以创建新的保管库或选择现有保管库。 如果选择创建新的保管库，请使用下表以帮助配置保管库，然后单击“创建”。 查看如何在同一订阅和资源组中创建新的 Key Vault。
 
@@ -123,7 +123,7 @@ ms.locfileid: "70074040"
 
 ## <a name="rekey-certificate"></a>为证书重新生成密钥
 
-如果你认为证书的私钥已泄露, 则可以重新生成证书。 在 "[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)" 页中选择证书, 然后从左侧导航栏中选择 "重新**生成密钥并同步**"。
+如果你认为证书的私钥已泄露，则可以重新生成证书。 在 "[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)" 页中选择证书，然后从左侧导航栏中选择 "重新**生成密钥并同步**"。
 
 单击 "重新**生成密钥**" 以启动进程。 此过程需要 1 - 10 分钟才能完成。
 
@@ -131,14 +131,14 @@ ms.locfileid: "70074040"
 
 通过重新生成证书的密钥，将使用证书颁发机构颁发的新证书滚动更新现有证书。
 
-重新生成密钥操作完成后, 单击 "**同步**"。同步操作会自动更新应用服务中证书的主机名绑定, 而不会导致应用程序停机。
+重新生成密钥操作完成后，单击 "**同步**"。同步操作会自动更新应用服务中证书的主机名绑定，而不会导致应用程序停机。
 
 > [!NOTE]
-> 如果未单击 "**同步**", 应用服务会在48小时内自动同步证书。
+> 如果未单击 "**同步**"，应用服务会在48小时内自动同步证书。
 
 ## <a name="renew-certificate"></a>续订证书
 
-若要在任何时候启用证书自动续订，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格的“自动续订设置”。 默认情况下, 应用服务证书的有效期为1年。
+若要在任何时候启用证书自动续订，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格的“自动续订设置”。 默认情况下，应用服务证书的有效期为1年。
 
 选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 60 天自动续订。
 
@@ -146,10 +146,10 @@ ms.locfileid: "70074040"
 
 若要改为手动续订证书，请单击“手动续订”。 可以请求在到期前 60 天手动续订证书。
 
-续订操作完成后, 单击 "**同步**"。同步操作会自动更新应用服务中证书的主机名绑定, 而不会导致应用程序停机。
+续订操作完成后，单击 "**同步**"。同步操作会自动更新应用服务中证书的主机名绑定，而不会导致应用程序停机。
 
 > [!NOTE]
-> 如果未单击 "**同步**", 应用服务会在48小时内自动同步证书。
+> 如果未单击 "**同步**"，应用服务会在48小时内自动同步证书。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 

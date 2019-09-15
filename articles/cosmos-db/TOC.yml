@@ -555,7 +555,7 @@
             - name: Python
               href: table-sdk-python.md
             - name: 表存储 REST API
-              href: /rest/api/storageservices/Table-Service-Concepts
+              href: /rest/api/storageservices/table-service-rest-api
     - name: Etcd API
       items:
         - name: 介绍

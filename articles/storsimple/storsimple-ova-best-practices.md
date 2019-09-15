@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b5ffc16a7c9dacef3036ca5ce225265252dcdf5d
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a8aed646f03b777722518152354cfe80cea043a0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516767"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002805"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple 虚拟阵列最佳实践
 
@@ -79,9 +79,9 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 * 120 GB 的本地预留空间（用于 1 TB 分层卷/共享）
 * 330 GB 用于本地固定卷或共享（在 300 GB 预配大小的基础上增加 10% 的本地预留空间）
 
-到目前为止, 本地层所需的总空间是:240 GB + 120 GB + 330 GB = 690 GB。
+到目前为止，本地层所需的总空间是：240 GB + 120 GB + 330 GB = 690 GB。
 
-其次，本地层所需的空间至少要与最大的单个预留空间一样大。 需要从云快照还原时，就要用到此额外空间量。 在此示例中, 最大本地预订为 330 GB (包括文件系统的保留), 因此你可以将其添加到 690 GB:690 GB + 330 GB = 1020 GB。
+其次，本地层所需的空间至少要与最大的单个预留空间一样大。 需要从云快照还原时，就要用到此额外空间量。 在此示例中，最大本地预订为 330 GB （包括文件系统的保留），因此你可以将其添加到 690 GB：690 GB + 330 GB = 1020 GB。
 在执行其他后续还原操作时，始终可以释放以前还原操作的空间。
 
 第三，需要本地总空间的 15% 来存储本地快照，因此只剩 85% 的空间可供使用。 在本示例中，这大约是 1020 GB，即 0.85 &ast; 预配的数据磁盘 TB 数。 因此，预配的数据磁盘是 (1020&ast;(1/0.85))= 1200 GB = 1.20 TB ~ 1.25 TB（四舍五入为最接近的四分位数）
@@ -103,7 +103,7 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 * 240 GB 本地预留空间（用于 2 TB 分层卷/共享）
 * 330 GB 用于本地固定卷或共享（在 300 GB 预配空间的基础上增加 10% 的本地预留空间）
 
-本地层所需的总空间是:240 GB + 330 GB = 570 GB
+本地层所需的总空间是：240 GB + 330 GB = 570 GB
 
 还原所需的最小本地空间是 330 GB。
 
@@ -199,7 +199,7 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 ### <a name="data-security-and-encryption"></a>数据安全与加密
 StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机密性和完整性。 使用这些功能时，建议遵循以下最佳实践： 
 
-* 先定义用于生成 AES-256 加密的云存储加密密钥，然后将数据从虚拟阵列发送到云。 如果数据一开始就已加密，则不需要此密钥。 使用密钥管理系统（例如 [Azure 密钥保管库](../key-vault/key-vault-whatis.md)）可以生成并妥善保存密钥。
+* 先定义用于生成 AES-256 加密的云存储加密密钥，然后将数据从虚拟阵列发送到云。 如果数据一开始就已加密，则不需要此密钥。 使用密钥管理系统（例如 [Azure 密钥保管库](../key-vault/key-vault-overview.md)）可以生成并妥善保存密钥。
 * 在通过 StorSimple Manager 服务配置存储帐户时，请务必启用 SSL 模式来创建用于在 StorSimple 设备与云之间实现网络通信的安全隧道。
 * 定期重新生成存储帐户的密钥（通过访问 Azure 存储服务），反映管理员列表更改造成的访问权限更改。
 * 虚拟阵列上的数据先压缩并进行重复数据删除，再发送到 Azure。 不建议在 Windows Server 主机上使用“重复数据删除”角色服务。

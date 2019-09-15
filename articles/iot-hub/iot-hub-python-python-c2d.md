@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 340d728a45da4e392c85ab4ba7ce822f7762da3b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 4cda59448856630468076ef63c51b8a216a31bd0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147386"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001954"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中心发送云到设备消息 (Python)
 
@@ -29,7 +29,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 * 在设备上接收云到设备的消息。
 
-* 从解决方案后端, 请求传递从 IoT 中心发送到设备的消息的确认 (*反馈*)。
+* 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈）。
 
 可以在 [IoT 中心开发人员指南](iot-hub-devguide-messaging.md)中找到有关云到设备消息的详细信息。
 
@@ -54,93 +54,48 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 2. 在 **SimulatedDevice.py** 文件的开头添加以下 `import` 语句和变量：
 
    ```python
-    import time
-    import sys
-    import iothub_client
-    from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
-    from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError
+    import threading
+    from azure.iot.device import IoTHubDeviceClient
 
-    RECEIVE_CONTEXT = 0
-    WAIT_COUNT = 10
-    RECEIVED_COUNT = 0
-    RECEIVE_CALLBACKS = 0
+    RECEIVED_MESSAGES = 0
     ```
 
 3. 将以下代码添加到 **SimulatedDevice.py** 文件。 将“{deviceConnectionString}”占位符值替换为你在[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-python.md)快速入门中创建的设备的设备连接字符串：
 
     ```python
-    # choose AMQP or AMQP_WS as transport protocol
-    PROTOCOL = IoTHubTransportProvider.AMQP
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
 4. 添加以下函数，用以在控制台中输出收到的消息：
 
     ```python
-    def receive_message_callback(message, counter):
-        global RECEIVE_CALLBACKS
-        message_buffer = message.get_bytearray()
-        size = len(message_buffer)
-        print ( "Received Message [%d]:" % counter )
-        print ( "    Data: <<<%s>>> & Size=%d" % (message_buffer[:size].decode('utf-8'), size) )
-        map_properties = message.properties()
-        key_value_pair = map_properties.get_internals()
-        print ( "    Properties: %s" % key_value_pair )
-        counter += 1
-        RECEIVE_CALLBACKS += 1
-        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
-        return IoTHubMessageDispositionResult.ACCEPTED
-
-    def iothub_client_init():
-        client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-
-        client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
-
-        return client
-
-    def print_last_message_time(client):
-        try:
-            last_message = client.get_last_message_receive_time()
-            print ( "Last Message: %s" % time.asctime(time.localtime(last_message)) )
-            print ( "Actual time : %s" % time.asctime() )
-        except IoTHubClientError as iothub_client_error:
-            if iothub_client_error.args[0].result == IoTHubClientResult.INDEFINITE_TIME:
-                print ( "No message received" )
-            else:
-                print ( iothub_client_error )
+    def message_listener(client):
+        global RECEIVED_MESSAGES
+        while True:
+            message = client.receive_message()
+            RECEIVED_MESSAGES += 1
+            print("Message received")
+            print( "    Data: <<{}>>".format(message.data) )
+            print( "    Properties: {}".format(message.custom_properties))
+            print( "    Total calls received: {}".format(RECEIVED_MESSAGES))
     ```
 
 5. 添加以下代码，用以初始化客户端并等待接收云到设备消息：
 
     ```python
-    def iothub_client_init():
-        client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-
-        client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
-
-        return client
-
     def iothub_client_sample_run():
         try:
             client = iothub_client_init()
 
+            message_listener_thread = threading.Thread(target=message_listener, args=(client,))
+            message_listener_thread.daemon = True
+            message_listener_thread.start()
+
             while True:
-                print ( "IoTHubClient waiting for commands, press Ctrl-C to exit" )
+                time.sleep(1000)
 
-                status_counter = 0
-                while status_counter <= WAIT_COUNT:
-                    status = client.get_send_status()
-                    print ( "Send status: %s" % status )
-                    time.sleep(10)
-                    status_counter += 1
-
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error %s from IoTHub" % iothub_error )
-            return
         except KeyboardInterrupt:
-            print ( "IoTHubClient sample stopped" )
-
-        print_last_message_time(client)
+            print ( "IoTHubDeviceClient sample stopped" )
     ```
 
 6. 添加以下 main 函数：
@@ -148,8 +103,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     ```python
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Python sample..." )
-        print ( "    Protocol %s" % PROTOCOL )
-        print ( "    Connection string=%s" % CONNECTION_STRING )
+        print ( "IoTHubDeviceClient waiting for commands, press Ctrl-C to exit" )
 
         iothub_client_sample_run()
     ```
@@ -158,13 +112,13 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-在本文中, 你将创建一个后端服务, 通过在将[遥测从设备发送到 iot 中心](quickstart-send-telemetry-python.md)中创建的 iot 中心发送云到设备的消息。 若要发送云到设备的消息, 服务需要**服务连接**权限。 默认情况下, 每个 IoT 中心都创建有一个名为 "**服务**" 的共享访问策略, 该策略将授予此权限。
+在本文中，你将创建一项后端服务，用于通过你在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-python.md)中创建的 IoT 中心发送云到设备消息。 若要发送云到设备消息，服务需要“服务连接”权限。 默认情况下，每个 IoT 中心都使用名为 **service** 的共享访问策略创建，该策略授予此权限。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="send-a-cloud-to-device-message"></a>发送云到设备的消息
 
-在本部分中，将创建一个 Python 控制台应用，用于向模拟设备应用发送云到设备消息。 需要在[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-python.md)快速入门中添加的设备的设备 ID。 你还需要之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。
+在本部分中，将创建一个 Python 控制台应用，用于向模拟设备应用发送云到设备消息。 需要在[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-python.md)快速入门中添加的设备的设备 ID。 还需要先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。
 
 1. 使用文本编辑器，创建一个 **SendCloudToDeviceMessage.py** 文件。
 
@@ -183,7 +137,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-3. 将以下代码添加到 **SendCloudToDeviceMessage.py** 文件。 用之前记下的 IoT 中心连接字符串和设备 ID 替换 "{iot 中心连接字符串}" 和 "{device id}" 占位符值:
+3. 将以下代码添加到 **SendCloudToDeviceMessage.py** 文件。 将“{iot hub connection string}”和“{device id}”占位符值替换为之前记下的 IoT 中心连接字符串和设备 ID：
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

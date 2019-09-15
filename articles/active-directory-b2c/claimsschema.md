@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 132dd91ba121fc5939a0f30194fe4abdd3755414
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847055"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999103"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-ClaimsSchema  元素定义了可以引用为策略的一部分的声明类型。 声明架构是发出声明的位置。 声明可以是名字、姓氏、显示名称、电话号码等。 ClaimsSchema 元素包含 ClaimType  元素的列表。 ClaimType  元素包含 Id  属性，它是声明名称。
+ClaimsSchema 元素定义了可以引用为策略的一部分的声明类型。 声明架构是发出声明的位置。 声明可以是名字、姓氏、显示名称、电话号码等。 ClaimsSchema 元素包含 ClaimType 元素的列表。 ClaimType 元素包含 Id 属性，它是声明名称。
 
 ```XML
 <BuildingBlocks>
@@ -40,19 +40,19 @@ ClaimsSchema  元素定义了可以引用为策略的一部分的声明类型。
 
 ## <a name="claimtype"></a>ClaimType
 
-ClaimType  元素包含以下属性：
+ClaimType 元素包含以下属性：
 
 | 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 用于声明类型的标识符。 其他元素可以在策略中使用此标识符。 |
 
-ClaimType  元素包含以下元素：
+ClaimType 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 匹配项 | 描述 |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | 在各种屏幕上向用户显示的标题。 可将值[本地化](localization.md)。 |
+| 显示名称 | 0:1 | 在各种屏幕上向用户显示的标题。 可将值[本地化](localization.md)。 |
 | 数据类型 | 0:1 | 声明类型。 可以使用 boolean、date、dateTime、int、long、string、stringCollection、alternativeSecurityIdCollection 等数据类型。 |
-| DefaultPartnerClaimTypes | 0:1 | 用于指定协议的合作伙伴默认声明类型。 可以覆盖 InputClaim  或 OutputClaim  元素中指定的 PartnerClaimType  中的值。 将此元素用于指定协议的默认名称。  |
+| DefaultPartnerClaimTypes | 0:1 | 用于指定协议的合作伙伴默认声明类型。 可以覆盖 InputClaim 或 OutputClaim 元素中指定的 PartnerClaimType 中的值。 将此元素用于指定协议的默认名称。  |
 | Mask | 0:1 | 显示声明时可以应用的掩码字符的可选字符串。 例如，电话号码 324-232-4343 可以屏蔽为 XXX-XXX-4343。 |
 | UserHelpText | 0:1 | 可帮助用户了解其用途的声明类型的说明。 可将值[本地化](localization.md)。 |
 | UserInputType | 0:1 | 应在手动输入声明类型的声明数据时可供用户使用的输入控制的类型。 请参阅稍后在此页中定义的用户输入类型。 |
@@ -61,20 +61,20 @@ PredicateValidationReference| 0:1 | 对 **PredicateValidationsInput** 元素的�
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
-DefaultPartnerClaimTypes  可能包含以下元素：
+DefaultPartnerClaimTypes 可能包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 匹配项 | 描述 |
 | ------- | ----------- | ----------- |
 | Protocol | 0:n | 具有其默认合作伙伴声明类型名称的协议的列表。 |
 
-Protocol  元素包含以下属性：
+Protocol 元素包含以下属性：
 
 | 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
-| Name | 是 | Azure AD B2C 支持的有效协议的名称。 可能的值包括：OAuth1、OAuth2、SAML2、OpenIdConnect、WsFed 或 WsTrust。 |
+| Name | 是 | Azure AD B2C 支持的有效协议的名称。 可能的值有：OAuth1、OAuth2、SAML2、OpenIdConnect。 |
 | PartnerClaimType | 是 | 要使用的声明类型名称。 |
 
-在以下示例中，当标识体验框架与 SAML2 标识提供者或信赖方应用交互时，surname  声明将映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`，如果使用 OpenIdConnect 和 OAuth2，该声明将映射到 `family_name`。
+在以下示例中，当标识体验框架与 SAML2 标识提供者或信赖方应用交互时，surname 声明将映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`，如果使用 OpenIdConnect 和 OAuth2，该声明将映射到 `family_name`。
 
 ```XML
 <ClaimType Id="surname">
@@ -88,7 +88,7 @@ Protocol  元素包含以下属性：
 </ClaimType>
 ```
 
-因此，Azure AD B2C 发布的 JWT 令牌会忽略 `family_name`，而不是 ClaimType 名称 surname  。
+因此，Azure AD B2C 发布的 JWT 令牌会忽略 `family_name`，而不是 ClaimType 名称 surname。
 
 ```JSON
 {
@@ -100,16 +100,16 @@ Protocol  元素包含以下属性：
 }
 ```
 
-### <a name="mask"></a>Mask
+### <a name="mask"></a>掩码
 
-Mask  元素包含以下属性：
+Mask 元素包含以下属性：
 
-| 特性 | 需要 | 描述 |
+| 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | `Type` | 是 | 声明掩码的类型。 可能的值：`Simple` 或 `Regex`。 `Simple` 值表示简单的文本掩码应用于字符串声明的前导部分。 `Regex` 值指示正则表达式总体上应用于字符串声明。  如果指定了 `Regex` 值，则还必须通过要使用的正则表达式定义可选属性。 |
-| `Regex` | 否 | 如果 **`Type`** 设置为`Regex`, 请指定要使用的正则表达式。
+| `Regex` | 否 | 如果将 **`Type`** 设置为 `Regex`，请指定要使用的正则表达式。
 
-以下示例将配置具有 `Simple` 掩码的 PhoneNumber  声明：
+以下示例将配置具有 `Simple` 掩码的 PhoneNumber 声明：
 
 ```XML
 <ClaimType Id="PhoneNumber">
@@ -122,9 +122,9 @@ Mask  元素包含以下属性：
 
 标识体验框架呈现电话号码的同时隐藏了前六个数字：
 
-![在浏览器中显示的电话号码声明, 其中前六个数字由 Xs 屏蔽](./media/claimsschema/mask.png)
+![浏览器中显示的电话号码声明，其中前六位数字由 X 掩码](./media/claimsschema/mask.png)
 
-以下示例将配置具有 `Regex` 掩码的 AlternateEmail  声明：
+以下示例将配置具有 `Regex` 掩码的 AlternateEmail 声明：
 
 ```XML
 <ClaimType Id="AlternateEmail">
@@ -137,35 +137,35 @@ Mask  元素包含以下属性：
 
 标识体验框架仅呈现电子邮件地址和电子邮件域名的第一个字母：
 
-![浏览器中显示的电子邮件声明, 其中包含星号掩码字符](./media/claimsschema/mask-regex.png)
+![浏览器中显示的电子邮件声明，其中字符由星号掩码](./media/claimsschema/mask-regex.png)
 
 
 ### <a name="restriction"></a>限制
 
-Restriction  元素可能包含以下属性：
+Restriction 元素可能包含以下属性：
 
 | 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | MergeBehavior | 否 | 用于将枚举值与具有相同标识符的父策略中的 ClaimType 合并的方法。 覆盖基本策略中指定的声明时，请使用此属性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值是应追加到父策略中指定的集合的末尾的数据集合。 `Prepend` 值是应在父策略中指定的集合之前添加的数据集合。 `ReplaceAll` 值是应忽略的父策略中指定的数据集合。 |
 
-Restriction  元素包含以下元素：
+Restriction 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 匹配项 | 描述 |
 | ------- | ----------- | ----------- |
 | 枚举 | 1:n | 可让用户在用户界面中为声明选择的可用选项，例如下拉列表中的值。 |
 | 模式 | 1:1 | 要使用的正则表达式。 |
 
 ### <a name="enumeration"></a>枚举
 
-Enumeration  元素包含以下属性：
+Enumeration 元素包含以下属性：
 
 | 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
-| Text | 是 | 在用户界面中向用户显示的此选项的显示字符串。 |
-|值 | 是 | 与此选项关联的声明值。 |
+| 文本 | 是 | 在用户界面中向用户显示的此选项的显示字符串。 |
+|ReplTest1 | 是 | 与此选项关联的声明值。 |
 | SelectByDefault | 否 | 指示默认情况下是否应在 UI 中选择此选项。 可能的值：True 或 False。 |
 
-以下示例将配置默认值设置为 `New York` 的  “城市”下拉列表声明：
+以下示例将配置默认值设置为 `New York` 的“城市”下拉列表声明：
 
 ```XML
 <ClaimType Id="city">
@@ -186,14 +186,14 @@ Enumeration  元素包含以下属性：
 
 ### <a name="pattern"></a>模式
 
-Pattern  元素可以包含以下属性：
+Pattern 元素可以包含以下属性：
 
 | 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | RegularExpression | 是 | 此类型的声明必须匹配才能有效的正则表达式。 |
 | HelpText | 否 | 此声明的模式或正则表达式。 |
 
-以下示例将配置具有正则表达式输入验证和帮助文本的 email  声明：
+以下示例将配置具有正则表达式输入验证和帮助文本的 email 声明：
 
 ```XML
 <ClaimType Id="email">
@@ -212,17 +212,17 @@ Pattern  元素可以包含以下属性：
 
 标识体验框架呈现具有电子邮件格式输入验证的电子邮件地址声明：
 
-![显示 regex 限制触发的错误消息的文本框](./media/claimsschema/pattern.png)
+![显示由正则表达式限制触发的错误消息的 TextBox](./media/claimsschema/pattern.png)
 
 ## <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C 支持各种用户输入类型，例如在手动输入声明类型的声明数据时可以使用的文本框、密码和下拉列表。 使用[自断言技术配置文件](self-asserted-technical-profile.md)从用户收集信息时，必须指定 UserInputType  。
+Azure AD B2C 支持各种用户输入类型，例如在手动输入声明类型的声明数据时可以使用的文本框、密码和下拉列表。 使用[自断言技术配置文件](self-asserted-technical-profile.md)从用户收集信息时，必须指定 UserInputType。
 
 ### <a name="textbox"></a>TextBox
 
-TextBox  用户输入类型用于提供单行文本框。
+TextBox 用户输入类型用于提供单行文本框。
 
-![显示声明类型中指定的属性的 TextBox](./media/claimsschema/textbox.png)
+![显示在声明类型中指定的属性的 TextBox](./media/claimsschema/textbox.png)
 
 ```XML
 <ClaimType Id="displayName">
@@ -235,9 +235,9 @@ TextBox  用户输入类型用于提供单行文本框。
 
 ### <a name="emailbox"></a>EmailBox
 
-EmailBox  用户输入类型用于提供基本电子邮件输入字段。
+EmailBox 用户输入类型用于提供基本电子邮件输入字段。
 
-![显示声明类型中指定的属性的 EmailBox](./media/claimsschema/emailbox.png)
+![显示在声明类型中指定的属性的 EmailBox](./media/claimsschema/emailbox.png)
 
 ```XML
 <ClaimType Id="email">
@@ -253,7 +253,7 @@ EmailBox  用户输入类型用于提供基本电子邮件输入字段。
 
 ### <a name="password"></a>密码
 
-Password  用户输入类型用于记录用户输入的密码。
+Password 用户输入类型用于记录用户输入的密码。
 
 ![使用具有 password 的声明类型](./media/claimsschema/password.png)
 
@@ -268,7 +268,7 @@ Password  用户输入类型用于记录用户输入的密码。
 
 ### <a name="datetimedropdown"></a>DateTimeDropdown
 
-DateTimeDropdown  用户输入类型用于提供一组用来选择日、月和年的下拉列表。 可以使用 Predicates 和 PredicateValidations 元素来控制最小日期值和最大日期值。 有关详细信息，请参阅 [Predicates 和 PredicateValidations](predicates.md) 的  “配置日期范围”部分。
+DateTimeDropdown 用户输入类型用于提供一组用来选择日、月和年的下拉列表。 可以使用 Predicates 和 PredicateValidations 元素来控制最小日期值和最大日期值。 有关详细信息，请参阅 [Predicates 和 PredicateValidations](predicates.md) 的“配置日期范围”部分。
 
 ![使用具有 datetimedropdown 的声明类型](./media/claimsschema/datetimedropdown.png)
 
@@ -283,7 +283,7 @@ DateTimeDropdown  用户输入类型用于提供一组用来选择日、月和�
 
 ### <a name="radiosingleselect"></a>RadioSingleSelect
 
-RadioSingleSelect  用户输入类型用于提供允许用户选择一个选项的单选按钮集合。
+RadioSingleSelect 用户输入类型用于提供允许用户选择一个选项的单选按钮集合。
 
 ![使用具有 radiodsingleselect 的声明类型](./media/claimsschema/radiosingleselect.png)
 
@@ -302,7 +302,7 @@ RadioSingleSelect  用户输入类型用于提供允许用户选择一个选项�
 
 ### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-DropdownSingleSelect  用户输入类型用于提供允许用户选择一个选项的下拉框。
+DropdownSingleSelect 用户输入类型用于提供允许用户选择一个选项的下拉框。
 
 ![使用具有 dropdownsingleselect 的声明类型](./media/claimsschema/dropdownsingleselect.png)
 
@@ -321,7 +321,7 @@ DropdownSingleSelect  用户输入类型用于提供允许用户选择一个选�
 
 ### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-CheckboxMultiSelect  用户输入类型用于提供允许用户选择多个选项的复选框集合。
+CheckboxMultiSelect 用户输入类型用于提供允许用户选择多个选项的复选框集合。
 
 ![使用具有 checkboxmultiselect 的声明类型](./media/claimsschema/checkboxmultiselect.png)
 
@@ -340,7 +340,7 @@ CheckboxMultiSelect  用户输入类型用于提供允许用户选择多个选�
 
 ### <a name="readonly"></a>Readonly
 
-Readonly  用户输入类型用于提供要显示声明和值的只读字段。
+Readonly 用户输入类型用于提供要显示声明和值的只读字段。
 
 ![使用具有 readonly 的声明类型](./media/claimsschema/readonly.png)
 
@@ -356,7 +356,7 @@ Readonly  用户输入类型用于提供要显示声明和值的只读字段。
 
 ### <a name="paragraph"></a>Paragraph
 
-Paragraph  用户输入类型用于提供仅在段落标记中显示文本的字段。 例如，&lt;p&gt;文本&lt;/p&gt;。
+Paragraph 用户输入类型用于提供仅在段落标记中显示文本的字段。 例如，&lt;p&gt;文本&lt;/p&gt;。
 
 ![使用具有 paragraph 的声明类型](./media/claimsschema/paragraph.png)
 
@@ -375,4 +375,4 @@ Paragraph  用户输入类型用于提供仅在段落标记中显示文本的字
 </ClaimType>
 ```
 
-若要显示 responseMsg  声明中的 Enumeration  值之一，请使用 `GetMappedValueFromLocalizedCollection` 或 `CreateStringClaim` 声明转换。 有关详细信息，请参阅[字符串声明转换](string-transformations.md)
+若要显示 responseMsg 声明中的 Enumeration 值之一，请使用 `GetMappedValueFromLocalizedCollection` 或 `CreateStringClaim` 声明转换。 有关详细信息，请参阅[字符串声明转换](string-transformations.md)

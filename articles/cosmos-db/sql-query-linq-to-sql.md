@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: ce9d96a90a2463d1ab8e1a9774a019e38ca681f4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ad6dcf7307955300a781a7a649b6ac76b3c69589
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036034"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003560"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 到 SQL 转换
 
@@ -63,7 +63,7 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 - **SelectMany**：允许将数组展开到 SQL JOIN 子句。 用于将表达式链接或嵌套到对数组元素应用的筛选器。
 - **OrderBy** 和 **OrderByDescending**：使用 ASC 或 DESC 转换为 ORDER BY。
 - 用于聚合的 **Count**、**Sum**、**Min**、**Max** 和 **Average** 运算符及其异步等效项 **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync** 和 **AverageAsync**。
-- **CompareTo**：转换为范围比较。 通常用于字符串, 因为它们在 .NET 中不可比较。
+- **CompareTo**：转换为范围比较。 通常用于字符串，因为它们在 .NET 中不可比较。
 - **Take**：转换为 SQL TOP，用于限制查询中的结果。
 - **数学函数**：支持从 .NET `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan` 和 `Truncate` 转换为等效的 SQL 内置函数。
 - **字符串函数**：支持从.NET  `Concat`、`Contains`、`Count`、`EndsWith`、`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd` 和 `TrimStart` 转换为等效的 SQL 内置函数。
@@ -324,5 +324,5 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文档数据](modeling-data.md)

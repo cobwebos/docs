@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: ca2f346950d84fda736437f439efc5d35e342799
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5329323122d8470b19055040b6f00b6db7c0e75f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934575"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998950"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric 安全性概述
 [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 解决了开发和管理云应用程序的难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放且可靠的工作负荷。
@@ -88,7 +88,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
 2.  **事件聚合**：需要先收集和聚合生成的事件才能显示这些事件。 通常建议使用 [Azure 诊断](../../service-fabric/service-fabric-diagnostics-event-aggregation-wad.md)（类似于基于代理的日志集合）或 [EventFlow](../../service-fabric/service-fabric-diagnostics-event-aggregation-eventflow.md)（进程内日志集合）。
 
-3.  **分析**：需可视化事件并能够以某种格式访问事件，以便进行分析和显示。 有多个平台可用于监视和诊断数据的分析和可视化。 建议[Azure Monitor 日志](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md)和[Azure 应用程序 Insights](../../service-fabric/service-fabric-diagnostics-event-analysis-appinsights.md) , 因为它们与 Service Fabric 很好地集成。
+3.  **分析**：需可视化事件并能够以某种格式访问事件，以便进行分析和显示。 有多个平台可用于监视和诊断数据的分析和可视化。 建议[Azure Monitor 日志](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md)和[Azure 应用程序 Insights](../../service-fabric/service-fabric-diagnostics-event-analysis-appinsights.md) ，因为它们与 Service Fabric 很好地集成。
 
 还可使用 [Azure Monitor](../../azure-monitor/overview.md) 来监视构建 Service Fabric 群集时所在的许多 Azure 资源。
 
@@ -132,7 +132,7 @@ X.509 数字证书通常用于验证客户端与服务器。 它们还用于对�
 ### <a name="manage-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的机密
 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。
 
-可以使用 [Azure Key Vault](../../key-vault/key-vault-whatis.md) 来管理密钥和机密。 但是，在应用程序中使用机密与特定的云平台无关。 可将应用程序部署到在任意位置托管的群集。 此流程包括四个主要步骤：
+可以使用 [Azure Key Vault](../../key-vault/key-vault-overview.md) 来管理密钥和机密。 但是，在应用程序中使用机密与特定的云平台无关。 可将应用程序部署到在任意位置托管的群集。 此流程包括四个主要步骤：
 
 1.  获取数据加密证书。
 2.  在群集中安装证书。

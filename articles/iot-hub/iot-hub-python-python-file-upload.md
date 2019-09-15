@@ -8,14 +8,14 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 37ea126952451eae81c548a11f70b9a258808d34
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 6dfbcc7a3e76842546326742d801c913451855f3
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147358"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001127"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>用 IoT 中心 (Python) 将文件从设备上传到云
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中心将文件从设备上传到云 (Python)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
@@ -35,6 +35,9 @@ ms.locfileid: "70147358"
 * FileUpload.py，该应用使用 Python 设备 SDK 将文件上传到存储中。
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+> [!NOTE]
+> 本指南使用已弃用的 V1 Python SDK，因为尚未在新的 V2 SDK 中实现文件上传功能。
 
 ## <a name="prerequisites"></a>先决条件
 

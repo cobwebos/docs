@@ -1,7 +1,7 @@
 ---
 title: 使用 GPU 为推理部署模型
-titleSuffix: Azure Machine Learning service
-description: 本文介绍如何使用 Azure 机器学习服务将支持 GPU 的 Tensorflow 深度学习模型部署为 web 服务。服务和评分推理请求。
+titleSuffix: Azure Machine Learning
+description: 本文介绍如何使用 Azure 机器学习将支持 GPU 的 Tensorflow 深度学习模型部署为 web 服务。服务和评分推理请求。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 3113ad050ec6040d4f7964e940c507024bcf002d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: bfed4daed51e95bb0b86ef187d45722e2c3a25ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844983"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002773"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 
-本文介绍如何使用 Azure 机器学习服务将支持 GPU 的模型部署为 web 服务。 本文中的信息基于在 Azure Kubernetes 服务（AKS）上部署模型。 AKS 群集提供模型用于推理的 GPU 资源。
+本文介绍如何使用 Azure 机器学习将支持 GPU 的模型部署为 web 服务。 本文中的信息基于在 Azure Kubernetes 服务（AKS）上部署模型。 AKS 群集提供模型用于推理的 GPU 资源。
 
 推理或模型计分是部署模型用于进行预测的阶段。 使用 Gpu 而不是 Cpu，可为高度可并行化的计算提供性能优势。
 
@@ -34,7 +34,7 @@ ms.locfileid: "70844983"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习服务工作区。 有关详细信息，请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
+* Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 * 安装了 Azure 机器学习 SDK 的 Python 开发环境。 有关详细信息，请参阅[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
 
@@ -51,7 +51,7 @@ ms.locfileid: "70844983"
 若要连接到现有工作区，请使用以下代码：
 
 > [!IMPORTANT]
-> 此代码段需要将工作区配置保存到当前目录或其父项。 有关创建工作区的详细信息，请参阅[创建和管理 Azure 机器学习服务工作区](how-to-manage-workspace.md)。   有关将配置保存到文件的详细信息，请参阅[创建工作区配置文件](how-to-configure-environment.md#workspace)。
+> 此代码段需要将工作区配置保存到当前目录或其父项。 有关创建工作区的详细信息，请参阅[创建和管理 Azure 机器学习工作区](how-to-manage-workspace.md)。   有关将配置保存到文件的详细信息，请参阅[创建工作区配置文件](how-to-configure-environment.md#workspace)。
 
 ```python
 from azureml.core import Workspace
@@ -93,7 +93,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > 只要存在 AKS 群集，Azure 就会向你收费。 完成后, 请务必删除 AKS 群集。
 
-有关将 AKS 与 Azure 机器学习服务一起使用的详细信息，请参阅[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)。
+有关将 AKS 与 Azure 机器学习一起使用的详细信息，请参阅[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)。
 
 ## <a name="write-the-entry-script"></a>写入条目脚本
 

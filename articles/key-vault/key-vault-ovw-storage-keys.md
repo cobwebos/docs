@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 86ac58aea174ca05580da99b6bde0cc3823ab151
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 68c9279333e9ee92cbca1034f70801c153b6cdb8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883061"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000547"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>用 Azure Key Vault 和 Azure CLI 管理存储帐户密钥 
 
@@ -158,7 +158,7 @@ Key Vault 是在所有 Azure AD 租户中预先注册的 Microsoft 应用程序�
 - 使用服务主体和证书。 
 - 使用服务主体和密码。 不建议使用此方法。
 
-有关详细信息，请[参阅 Azure Key Vault：基本概念](key-vault-whatis.md#basic-concepts)。
+有关详细信息，请[参阅 Azure Key Vault：基本概念](basic-concepts.md)。
 
 下面的示例演示如何获取共享访问签名令牌。 您可以在创建共享访问签名定义后提取令牌。 
 

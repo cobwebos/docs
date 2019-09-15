@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 27e5323e2c9fed3886b2ddf175a2c67718ad52d0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959153"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002282"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
 
@@ -231,7 +231,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>是否可以手动设置配置服务器，而不使用模板进行设置？
 
-我们建议使用最新版本的开放虚拟机格式 (OVF) 模板来[创建配置服务器 VM](vmware-azure-deploy-configuration-server.md)。 如果你无法使用该模板（例如，无法访问 VMware 服务器），请从门户[下载](physical-azure-set-up-source.md)安装程序文件并设置配置服务器。
+建议使用最新版本的开放虚拟化格式（OVF）模板[创建配置服务器 VM](vmware-azure-deploy-configuration-server.md) 。 如果你无法使用该模板（例如，无法访问 VMware 服务器），请从门户[下载](physical-azure-set-up-source.md)安装程序文件并设置配置服务器。
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>是否可将配置服务器复制到多个区域？
 

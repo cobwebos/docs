@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 5aaad8c44328e1cc2aeb7729e3e221665823a467
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0bba755ec5683e988bb8ae3f2308a1c298b228b0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073024"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000567"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL 数据库和 SQL 数据仓库数据发现和分类
 
-数据发现 & 分类提供了内置于 Azure SQL 数据库的高级功能, 用于 & **发现**、**分类**、**保护**数据库中的敏感数据。
+数据发现 & 分类提供了内置于 Azure SQL 数据库的高级**功能，用于** & **发现**、**分类**、**保护**数据库中的敏感数据。
 
 发现最敏感的数据（业务、财务、医疗保健、个人身份数据 (PII)，等等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
 
@@ -77,7 +77,7 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-2. 导航到 Azure SQL 数据库窗格“安全”标题下的“高级数据安全”。 单击 "启用高级数据安全性", 然后单击 "**数据发现" & 分类**卡 "。
+2. 导航到 Azure SQL 数据库窗格“安全”标题下的“高级数据安全”。 单击 "启用高级数据安全性"，然后单击 "**数据发现" & 分类**卡 "。
 
    ![扫描数据库](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -137,6 +137,8 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 - 添加/更新一列或多列分类：[添加敏感度分类](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 - 删除一列或多列分类：[删除敏感度分类](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - 查看数据库上的所有分类：[sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+
+### <a name="manage-classifications-using-rest-apis"></a>使用 Rest Api 管理分类
 
 此外，还可以使用 REST API 通过编程方式管理分类。 已发布的 REST API 支持以下操作：
 

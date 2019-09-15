@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: e6f6ba131a4fb5dd31f113afd2b6de2d65aeaea0
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 828ec2b925535df3f925093466556447e703cd76
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915171"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003825"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
 
@@ -135,7 +135,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
 
 2. 在“新建项目”窗口中，展开“已安装” > “模板”，然后选择“Azure Data Lake”。 从模板列表中，选择“Storm 应用程序”。 在屏幕底部，输入 WordCount 作为应用程序名称。
 
-    ![“新建项目”窗口的屏幕截图](./media/apache-storm-develop-csharp-visual-studio-topology/new-project.png)
+    ![“新建项目”窗口的屏幕截图](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
 3. 创建项目后，应有以下文件：
 
@@ -338,7 +338,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
 
 Spout 和 Bolt 以图形方式排列，用于定义数据在组件之间的流动方式。 此拓扑的图形如下：
 
-![组件的排列方式关系图](./media/apache-storm-develop-csharp-visual-studio-topology/wordcount-topology.png)
+![组件的排列方式关系图](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
 
 句子从 Spout 发出，分布到 Splitter Bolt 的实例。 Splitter Bolt 将句子分割成多个单词，并将这些单词分布到 Counter Bolt。
 
@@ -461,7 +461,6 @@ return topologyBuilder;
   > [!NOTE]  
   > 此版本还演示了如何使用文本文件中的 clojure 代码作为 Java 组件。
 
-
 若要切换在提交项目时使用的拓扑，请将 `[Active(true)]` 语句移到要在提交给群集之前使用的拓扑。
 
 > [!NOTE]  
@@ -571,15 +570,15 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
    > [!NOTE]
    > 将拓扑部署到群集之前，请记得将“输出类型”改回“类库”。
 
-2. 在“解决方案资源管理器”中，右键单击项目，然后选择“添加” > “新建项”。 选择“类”，并输入 **LocalTest.cs** 作为类名。 最后，单击“添加”。
+1. 在“解决方案资源管理器”中，右键单击项目，然后选择“添加” > “新建项”。 选择“类”，并输入 **LocalTest.cs** 作为类名。 最后，单击“添加”。
 
-3. 打开 **LocalTest.cs**，在顶部添加以下 **using** 语句：
+1. 打开 **LocalTest.cs**，在顶部添加以下 **using** 语句：
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-4. 使用以下代码作为 **LocalTest** 类的内容：
+1. 使用以下代码作为 **LocalTest** 类的内容：
 
     ```csharp
     // Drives the topology components
@@ -681,9 +680,9 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
     Console.ReadKey();
     ```
 
-2. 保存更改，然后单击“F5”，或选择“调试” > “开始调试”以启动项目。 随后应会出现一个控制台窗口，并记录测试进行的状态。 出现“测试已完成”后，请按任意键关闭窗口。
+1. 保存更改，然后单击“F5”，或选择“调试” > “开始调试”以启动项目。 随后应会出现一个控制台窗口，并记录测试进行的状态。 出现“测试已完成”后，请按任意键关闭窗口。
 
-3. 使用“Windows 资源管理器”找到包含项目的目录。 例如：**C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**。 在此目录中打开 **Bin**，并单击“调试”。 应可看到运行测试时生成的文本文件：sentences.txt、counter.txt 和 splitter.txt。 打开每个文本文件并检查数据。
+1. 使用“Windows 资源管理器”找到包含项目的目录。 例如：**C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**。 在此目录中打开 **Bin**，并单击“调试”。 应可看到运行测试时生成的文本文件：sentences.txt、counter.txt 和 splitter.txt。 打开每个文本文件并检查数据。
 
    > [!NOTE]  
    > 字符串数据保存为这些文件中的十进制值数组。 例如，**splitter.txt** 文件中的 \[[97,103,111]] 是单词 *and*。

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: be6d54886f23b0fa219b1e4b8948b4a4c51f5864
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a3ded11ac6a68e82fba76e7551699f29f3cb6075
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716824"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998417"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略
 
@@ -27,12 +27,12 @@ ms.locfileid: "68716824"
 
 | | 用户流 | 自定义策略 |
 |-|-------------------|-----------------|
-| 目标用户 | 具有或不具有标识专业知识的所有应用程序开发人员。 | 标识专业人员、系统集成人员、顾问和内部标识团队。 它们熟悉 OpenID Connect 流并了解标识提供者和基于声明的身份验证。 |
+| 目标用户 | 具有或不具有标识专业知识的所有应用程序开发人员。 | 标识专业人员、系统集成人员、顾问和内部标识团队。 他们能够熟悉运作 OpenID Connect 流，并了解标识提供者和基于声明的身份验证。 |
 | 配置方法 | 具有用户友好用户界面 (UI) 的 Azure 门户。 | 直接编辑 XML 文件，并上传到 Azure 门户。 |
-| UI 自定义 | 完全 UI 自定义, 包括 HTML、CSS 和 JavaScript。<br><br>使用自定义字符串实现多语言支持。 | 相同 |
+| UI 自定义 | 完整的 UI 自定义包括 HTML、CSS 和 JavaScript。<br><br>使用自定义字符串实现多语言支持。 | 相同 |
 | 属性自定义 | 标准和自定义属性。 | 相同 |
 | 令牌和会话管理 | 自定义令牌和多个会话选项。 | 相同 |
-| 标识提供者 | 预定义的本地或社交提供程序以及大多数 OIDC 标识提供程序, 如与 Azure Active Directory 租户的联合。 | 基于标准的 OIDC、OAUTH 和 SAML。  还可以通过结合使用与 REST Api 进行身份验证。 |
+| 标识提供者 | 预定义的本地或社交提供程序以及大多数 OIDC 标识提供者，例如与 Azure Active Directory 租户进行的联合身份验证。 | 基于标准的 OIDC、OAUTH 和 SAML。  也可通过集成 REST API 进行身份验证。 |
 | 标识任务 | 使用本地帐户或许多社交帐户注册或登录。<br><br>自助密码重置。<br><br>配置文件编辑。<br><br>多重身份验证。<br><br>自定义令牌和会话。<br><br>访问令牌流。 | 使用自定义标识提供者或自定义范围完成与用户流相同的任务。<br><br>注册时在另一系统中预配用户帐户。<br><br>使用自己的电子邮件服务提供程序发送欢迎电子邮件。<br><br>使用 Azure AD B2C 外部的用户存储。<br><br>使用 API 通过受信任的系统验证用户提供的信息。 |
 
 ## <a name="policy-files"></a>策略文件
@@ -55,7 +55,7 @@ Azure 中的客户标识和访问管理 (CIAM) 服务包括：
 
 Azure AD B2C 依次与标识提供程序、用户、其他系统和本地用户目录交互，以完成标识任务。 例如，登录用户、注册新用户或重置密码。 “标识体验框架”和策略（亦称为“用户旅程”或“信任框架策略”）可建立多方信任并显式定义执行组件、操作、协议和要完成的步骤顺序。
 
-标识体验框架是一个完全可配置的、策略驱动的、基于云的 Azure 平台, 用于协调标准协议格式 (例如 OpenID Connect、OAuth、SAML、WSFed) 和几个非标准的实体之间的信任, 例如 REST基于 API 的系统间声明交换。 该框架创建支持 HTML 和 CSS 的用户友好的白标体验。
+标识体验框架是一个完全可配置的、策略驱动的、基于云的 Azure 平台，用于协调标准协议格式（例如 OpenID Connect、OAuth、SAML）和几个非标准的实体之间的信任，例如 REST基于 API 的系统间声明交换。 该框架创建支持 HTML 和 CSS 的用户友好的白标体验。
 
 自定义策略以一个或多个采用 XML 格式的文件表示，这些文件在分层链中相互引用。 XML 元素定义声明架构、声明转换、内容定义、声明提供程序、技术配置文件、用户旅程业务流程步骤，以及其他元素。 自定义策略可作为一个或多个 XML 文件进行访问，这些文件在信赖方调用时由标识体验框架执行。 配置自定义策略的开发人员必须严谨地定义信任关系，以包含元数据终结点和确切的声明交换定义，并配置每个标识提供者所需的机密、密钥和证书。
 

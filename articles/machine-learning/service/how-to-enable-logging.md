@@ -1,7 +1,7 @@
 ---
-title: 在 Azure 机器学习服务中启用日志记录
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用默认的 Python 日志记录包以及 SDK 特定的功能，在 Azure 机器学习服务中启用日志记录。
+title: 在 Azure 机器学习中启用日志记录
+titleSuffix: Azure Machine Learning
+description: 了解如何使用默认的 Python 日志记录包和使用 SDK 特定功能在 Azure 机器学习中启用日志记录。
 ms.author: trbye
 author: trevorbye
 services: machine-learning
@@ -10,14 +10,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 9deb369dc812616cd7256bbab4101531ca08f127
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847925"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002751"
 ---
-# <a name="enable-logging-in-azure-machine-learning-service"></a>在 Azure 机器学习服务中启用日志记录
+# <a name="enable-logging-in-azure-machine-learning"></a>在 Azure 机器学习中启用日志记录
 
 借助 Azure 机器学习 Python SDK，可以使用默认的 Python 日志记录包以及 SDK 特定的功能启用日志记录，以便在门户中进行本地日志记录，以及对工作区进行日志记录。 日志可为开发人员提供有关应用程序状态的实时信息，并可以帮助诊断错误或警告。 本文介绍如何针对以下场景启用日志记录：
 
@@ -27,7 +27,7 @@ ms.locfileid: "68847925"
 > * 部署的模型
 > * Python `logging` 设置
 
-[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。 有关 SDK 的详细信息, 请使用[指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。 有关 SDK 的详细信息, 请使用[指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
 ## <a name="training-models-and-compute-target-logging"></a>训练模型和计算目标日志记录
 

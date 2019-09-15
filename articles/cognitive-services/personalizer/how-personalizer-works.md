@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/13/2019
 ms.author: diberry
-ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034369"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002892"
 ---
 # <a name="how-personalizer-works"></a>个性化体验创建服务的工作原理
 
@@ -89,31 +89,6 @@ ms.locfileid: "70034369"
 * 机器人特征和音调：对于可以改变音调、话语冗长性和书写方式的机器人，请考虑以个性化方式改变这些特征。
 * 通知和警报内容：决定要在警报中使用哪些文本，以提高用户的参与度。
 * 通知和警报时间：以个性化方式学习何时要将通知发送给用户，以提高其参与度。
-
-## <a name="checklist-for-applying-personalizer"></a>应用个性化体验创建服务的核对清单
-
-可以应用个性化体验创建服务的场合包括：
-
-* 为应用程序制定了业务目标或可用性目标。
-* 在应用程序中做出有关要向用户显示哪些数据的上下文决策可以改善该目标。
-* 可以并且应该从集体用户行为和总体奖励评分中学习最佳选择。
-* 个性化机器学习的使用遵循[负责使用准则](ethics-responsible-use.md)和团队的选择。
-* 决策可以表达为基于一组有限的选项对最佳选择（[操作](concepts-features.md#actions-represent-a-list-of-options)）进行排名。
-* 该选项的适用程度的确定方式包括衡量用户行为的某些方面，并以 -1 到 1 的数字来表达此衡量结果。
-* 奖励评分不会引入过多的混淆或外部因素，具体而言，试验持续时间足够短，以便在奖励评分仍然相关的情况下可对其进行计算。
-* 可将排名上下文表达为至少包含 5 个特征的字典，你认为这些特征有助于做出正确的选择，并且它们不包括个人身份信息
-* 你已获得有关每个操作的信息（至少包含 5 个属性或特征的字典），你认为这些信息有助于个性化体验创建服务做出正确的选择。
-* 可将数据保留足够长的时间，以累积至少 100,000 次交互的历史记录。
-
-## <a name="machine-learning-considerations-for-applying-personalizer"></a>应用个性化体验创建服务时的机器学习注意事项
-
-个性化体验创建服务基于强化学习 - 由提供的反馈传授的机器学习方法。 
-
-在以下情况下，个性化体验创建服务的学习效果最佳：
-* 如果问题随时变化（例如新闻或时装的偏向），有足够的事件建立在最佳个性化的基础之上。 个性化体验创建服务可适应现实世界的不断变化，但如果未提供足够的事件和数据用于发现和解决新的模式，则结果不会是最佳的。 应选择发生频率够高的用例。 考虑查找每日至少发生 500 次的用例。
-* 上下文和操作提供足够多的特征用于促进学习。
-* 每次调用要排名的操作数目少于 50 个。
-* 数据保留设置允许个性化体验创建服务收集足够的数据来执行脱机评估和策略优化。 这通常是至少 50,000 个数据点。
 
 ## <a name="how-to-use-personalizer-in-a-web-application"></a>如何在 Web 应用程序中使用个性化体验创建服务
 

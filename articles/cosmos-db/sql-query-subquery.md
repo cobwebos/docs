@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: tisande
-ms.openlocfilehash: 4181a44e87d59d35d424a51c8fedc89523223f90
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: cea9963f5073834a24ede44306eb89414909fc83
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342849"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003478"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 子查询示例
 
 子查询是嵌套在另一个查询中的查询。 子查询也称为内部查询或内部选择。 包含子查询的语句通常称为外部查询。
 
-本文介绍 Azure Cosmos DB 中的 SQL 子查询及其常见用例。 可以针对预加载的营养数据集运行本文档中的所有示例查询[Azure Cosmos DB 查询板块](https://www.documentdb.com/sql/demo)。
+本文介绍 Azure Cosmos DB 中的 SQL 子查询及其常见用例。 本文档中的所有示例查询都可以针对预加载在 [Azure Cosmos DB 查询操场](https://www.documentdb.com/sql/demo)上的营养数据集运行。
 
 ## <a name="types-of-subqueries"></a>子查询的类型
 
@@ -120,11 +120,11 @@ WHERE AvgNutritionValue > 80
 
 ## <a name="mimic-join-with-external-reference-data"></a>模拟与外部引用数据的联接
 
-你可能经常需要引用极少发生变化的静态数据，例如度量单位或国家/地区代码。 它是更好的做法不重复的每个文档的此类数据。 避免这种复制可以节省存储空间，并通过保持较小的文档大小来提高写入性能。 可以使用子查询通过引用数据的集合来模拟内部联接语义。
+你可能经常需要引用极少发生变化的静态数据，例如度量单位或国家/地区代码。 最好不要为每个文档重复此类数据。 避免这种复制可以节省存储空间，并通过保持较小的文档大小来提高写入性能。 可以使用子查询通过引用数据的集合来模拟内部联接语义。
 
 例如，假设存在以下引用数据集：
 
-| **单位** | **Name**            | **乘数** | **基础单位** |
+| **单位** | **名称**            | **乘数** | **基础单位** |
 | -------- | ------------------- | -------------- | ------------- |
 | ng       | 纳克            | 1.00E-09       | 克          |
 | µg       | 微克           | 1.00E-06       | 克          |
@@ -366,9 +366,9 @@ SELECT EXISTS (SELECT VALUE undefined)
 SELECT EXISTS (SELECT undefined) 
 ```
 
-该子查询在对象中的选定列表内括住值列表。 所选的列表不包含任何值，如果子查询将返回单个值{}。 此值已定义，因此 EXISTS 求值为 true。
+该子查询在对象中的选定列表内括住值列表。 如果选定的列表没有值，子查询将返回单个值 "{}"。 此值已定义，因此 EXISTS 求值为 true。
 
-### <a name="example-rewriting-arraycontains-and-join-as-exists"></a>示例：将 ARRAY_CONTAINS 和 JOIN 重写为 EXISTS
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>例如：将 ARRAY_CONTAINS 和 JOIN 重写为 EXISTS
 
 ARRAY_CONTAINS 的一个常见用例是根据某个项在数组中的存在性筛选某个文档。 在本例中，我们将检查 tags 数组是否包含名为“orange”的项。
 
@@ -397,7 +397,7 @@ JOIN n IN c.nutrients
 WHERE n.units= "mg" AND n.nutritionValue > 0
 ```
 
-对于集合中的每个文档，将使用其数组元素执行叉积计算。 使用此 JOIN 操作可以根据数组中的属性进行筛选。 但是，此查询的 RU 的使用量将很重要。 例如，如果 1,000 个文档包含每个数组中的 100 个项，则它会扩展为 1,000 x 100（即 100,000）个元组。
+对于集合中的每个文档，将使用其数组元素执行叉积计算。 使用此 JOIN 操作可以根据数组中的属性进行筛选。 但是，此查询的 RU 消耗将很重要。 例如，如果 1,000 个文档包含每个数组中的 100 个项，则它会扩展为 1,000 x 100（即 100,000）个元组。
 
 使用 EXISTS 可以帮助避免这种高开销的叉积计算：
 
@@ -519,5 +519,5 @@ JOIN n IN (SELECT VALUE ARRAY(SELECT t FROM t in c.tags WHERE t.name != 'infant 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文档数据](modeling-data.md)

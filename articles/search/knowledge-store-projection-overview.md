@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.subservice: cognitive-search
-ms.openlocfilehash: 2dd61a4511d406fefec5aacd0702fa732f79de92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 85376bddbfbf8249438c9027eaf4dc63b83fe2fe
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186232"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004019"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>在 Azure 搜索中使用知识存储中的投影
 
@@ -34,7 +34,7 @@ Azure 搜索允许通过编制索引功能附带的 AI 认知技能和自定义�
 
 + **对象**：需要数据和扩充内容的 JSON 表示形式时，可将对象投影保存为 Blob。
 
-若要查看上下文中定义的投影，请执行[如何开始使用知识存储](knowledge-store-howto.md)中的每个步骤
+若要查看在上下文中定义的投影，请逐步了解[如何开始使用知识 store](knowledge-store-howto.md)。
 
 ## <a name="projection-groups"></a>投影组
 
@@ -66,6 +66,9 @@ Azure 搜索允许通过编制索引功能附带的 AI 认知技能和自定义�
 ### <a name="defining-a-table-projection"></a>定义表投影
 
 在技能集的 `knowledgeStore` 元素中定义表投影时，请先将扩充树中的某个节点映射到表源。 此节点通常是添加到技能列表的、用于生成需要投影到表的“整形程序”技能的输出。 选择投影的节点可以分片，以投影到多个表。 表定义是要投影的表列表。 
+
+#### <a name="projection-slicing"></a>投影切片
+定义表投影组时，可以将扩充树中的单个节点切片为多个相关表。 添加源路径为现有表投影的子节点的表将导致子节点从父节点上切分并投影到新的相关表中。 这使您可以在可以作为所有表投影的源的整形程序技能中定义单个节点。
 
 每个表需要三个属性：
 
@@ -166,7 +169,7 @@ Azure 搜索允许通过编制索引功能附带的 AI 认知技能和自定义�
 
 分析时，可以方便地在 Power BI 中浏览数据，只需将 Azure 表存储设置为数据源即可。 可以利用数据内部的关系，十分轻松地基于数据创建一组可视化效果。
 
-或者, 如果您需要在数据科学管道中使用大量数据, 则可以将[blob 中的数据加载到 Pandas 数据帧](../machine-learning/team-data-science-process/explore-data-blob.md)中。
+或者，如果您需要在数据科学管道中使用大量数据，则可以将[blob 中的数据加载到 Pandas 数据帧](../machine-learning/team-data-science-process/explore-data-blob.md)中。
 
 最后，如果需要从知识存储导出数据，可以使用 Azure 数据工厂提供的连接器来导出数据，然后将其载入所选的数据库。 
 

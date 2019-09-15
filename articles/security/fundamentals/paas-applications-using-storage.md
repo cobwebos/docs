@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 9d88b8101f37fde5d1ab8ac11253884b6534e3b5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726769"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999169"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 存储保护 PaaS Web 和移动应用程序的最佳做法
 本文介绍 Azure 存储安全在保护平台即服务 (PaaS) Web 和移动应用程序方面的最佳做法。 这些最佳实践衍生自我们的 Azure 经验和客户经验。
@@ -71,7 +71,7 @@ Azure 存储提供了以下四种服务：Blob 存储、表存储、队列存储
 ## <a name="use-client-side-encryption-for-high-value-data"></a>对高价值数据使用客户端加密
 通过客户端加密，可在上传到 Azure 存储之前以编程方式加密传输中的数据，并在检索数据时以编程方式解密数据。 这提供传输中的数据加密，但也提供静态数据加密。 客户端加密是最安全的加密数据方法，但它要求以编程方式更改应用程序，并将密钥管理程序放在正确的位置。
 
-客户端加密还可以对加密密钥进行单独控制。 可生成和管理自己的加密密钥。 客户端加密使用信封技术，其中 Azure 存储客户端库生成内容加密密钥 (CEK)，然后使用密钥加密密钥 (KEK) 包装（加密）密钥。 KEK 由密钥标识符标识，可以是非对称密钥对或对称密钥，还可以在本地托管或存储在 [Azure Key Vault](/azure/key-vault/key-vault-whatis) 中。
+客户端加密还可以对加密密钥进行单独控制。 可生成和管理自己的加密密钥。 客户端加密使用信封技术，其中 Azure 存储客户端库生成内容加密密钥 (CEK)，然后使用密钥加密密钥 (KEK) 包装（加密）密钥。 KEK 由密钥标识符标识，可以是非对称密钥对或对称密钥，还可以在本地托管或存储在 [Azure Key Vault](/azure/key-vault/key-vault-overview) 中。
 
 客户端加密内置于 Java 和 .NET 存储客户端库中。 有关在客户端应用程序中加密数据并生成和管理自己的加密密钥的信息，请参阅[适用于 Microsoft Azure 存储的客户端加密和 Azure Key Vault](/azure/storage/common/storage-client-side-encryption)。
 

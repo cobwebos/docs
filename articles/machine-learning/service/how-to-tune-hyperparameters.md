@@ -1,7 +1,7 @@
 ---
 title: 优化模型的超参数
-titleSuffix: Azure Machine Learning service
-description: 使用 Azure 机器学习服务，有效地优化深度学习/机器学习模型的超参数。 您将了解如何定义参数搜索空间, 指定要优化的主要指标, 并提前终止性能不佳的运行。
+titleSuffix: Azure Machine Learning
+description: 使用 Azure 机器学习有效优化深度学习/机器学习模型的超参数。 您将了解如何定义参数搜索空间，指定要优化的主要指标，并提前终止性能不佳的运行。
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: cb4023be41377846ed209b3d6702188f5d79ba00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873075"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999392"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务优化模型的超参数
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>通过 Azure 机器学习优化模型的超参数
 
-使用 Azure 机器学习服务有效地优化模型的超参数。  超参数优化包括以下步骤：
+使用 Azure 机器学习有效优化模型的超参数。  超参数优化包括以下步骤：
 
 * 定义参数搜索空间
 * 指定要优化的主要指标  
@@ -45,7 +45,7 @@ ms.locfileid: "69873075"
 
 ### <a name="types-of-hyperparameters"></a>超参数的类型
 
-每个超参数既可以是离散的, 也可以是连续的, 并且具有由[参数表达式](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py)描述的值的分布。
+每个超参数既可以是离散的，也可以是连续的，并且具有由[参数表达式](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py)描述的值的分布。
 
 #### <a name="discrete-hyperparameters"></a>离散超参数 
 
@@ -94,7 +94,7 @@ ms.locfileid: "69873075"
 
 ### <a name="sampling-the-hyperparameter-space"></a>超参数空间采样
 
-还可以指定参数采样方法来取代超参数空间定义。 Azure 机器学习服务支持随机采样、网格采样和贝叶斯采样。
+还可以指定参数采样方法来取代超参数空间定义。 Azure 机器学习支持随机采样、网格采样和 Bayesian 采样。
 
 #### <a name="random-sampling"></a>随机采样
 
@@ -186,7 +186,7 @@ run_logger.log("accuracy", float(val_accuracy))
 * `evaluation_interval`：应用策略的频率。 每次训练脚本都会将主要指标计数记录为一个间隔。 因此，如果 `evaluation_interval` 为 1，则训练脚本每次报告主要指标时，都会应用策略。 如果 `evaluation_interval` 为 2，则训练脚本每两次报告主要指标时会应用策略。 如果未指定，则默认将 `evaluation_interval` 设置为 1。
 * `delay_evaluation`：将第一个策略评估延迟指定的间隔数。 这是一个可选参数，可让所有配置运行初始设置的最小间隔数，避免训练运行过早终止。 如果已指定，则每隔大于或等于 delay_evaluation 的 evaluation_interval 倍数应用策略。
 
-Azure 机器学习服务支持以下提前终止策略。
+Azure 机器学习支持以下早期终止策略。
 
 ### <a name="bandit-policy"></a>老虎机策略
 
@@ -234,7 +234,7 @@ from azureml.train.hyperdrive import TruncationSelectionPolicy
 early_termination_policy = TruncationSelectionPolicy(evaluation_interval=1, truncation_percentage=20, delay_evaluation=5)
 ```
 
-在此示例中，将在每个间隔应用提前终止策略，从评估间隔 5 开始。 如果某个运行的时间间隔为 5, 则该运行会在时间间隔5终止。
+在此示例中，将在每个间隔应用提前终止策略，从评估间隔 5 开始。 如果某个运行的时间间隔为5，则该运行会在时间间隔5终止。
 
 ### <a name="no-termination-policy"></a>无终止策略
 
@@ -246,7 +246,7 @@ policy=None
 
 ### <a name="default-policy"></a>默认策略
 
-如果未指定任何策略, 超参数优化服务将允许执行所有定型运行, 直到完成。
+如果未指定任何策略，超参数优化服务将允许执行所有定型运行，直到完成。
 
 >[!NOTE] 
 >如果你正在寻找既可以节省成本又不会终止有前景的作业的保守策略，则可以使用 `evaluation_interval` 为 1 且 `delay_evaluation` 为 5 的中间值停止策略。 这属于保守的设置，可以提供大约 25%-35% 的节省，且不会造成主要指标损失（基于我们的评估数据）。
@@ -275,7 +275,7 @@ max_total_runs=20,
 max_concurrent_runs=4
 ```
 
-此代码将超参数优化试验配置为使用最多20个总运行, 每次运行四个配置。
+此代码将超参数优化试验配置为使用最多20个总运行，每次运行四个配置。
 
 ## <a name="configure-experiment"></a>配置试验
 
@@ -304,7 +304,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` 是要分配给超参数优化试验的名称，`workspace` 是要在其中创建试验的工作区（有关试验的详细信息，请参阅 [Azure 机器学习的工作原理](concept-azure-machine-learning-architecture.md)）
+`experiment_name`分配给超参数优化试验的名称， `workspace`是要在其中创建试验的工作区（有关试验的详细信息，请参阅[如何 Azure 机器学习工作？](concept-azure-machine-learning-architecture.md)）
 
 ## <a name="visualize-experiment"></a>将实验可视化
 

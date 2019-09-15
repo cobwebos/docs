@@ -1,31 +1,31 @@
 ---
-title: 获取 SQL 查询性能和执行度量值
-description: 了解如何检索 SQL 查询执行指标和配置文件的 Azure Cosmos DB 请求的 SQL 查询性能。
+title: 获取 SQL 查询性能和执行指标
+description: 了解如何检索 SQL 查询执行指标并分析 Azure Cosmos DB 请求的 SQL 查询性能。
 author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: girobins
-ms.openlocfilehash: b4017666956d0e01ea19781fb4f1ce2dde15fff5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48b9a67de5c870a187ee008bd97265760ca6c341
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481559"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998368"
 ---
-# <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>获取 SQL 查询执行指标和分析查询性能，使用.NET SDK
+# <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>使用 .NET SDK 获取 SQL 查询执行指标并分析查询性能
 
-本文介绍如何分析 Azure Cosmos DB 上的 SQL 查询性能。 完成此分析使用`QueryMetrics`从.NET SDK 检索，并且此处详细介绍。 [QueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.querymetrics.aspx)是后端查询执行有关的信息的强类型的对象。 中更详细地阐述了这些指标[优化查询性能](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics)一文。
+本文介绍如何分析 Azure Cosmos DB 中的 SQL 查询性能。 可以使用从 .NET SDK 检索到且在本文中详述的 `QueryMetrics` 来执行这种分析。 [QueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.querymetrics.aspx) 是一个强类型化对象，包含有关后端查询执行的信息。 [优化查询性能](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics)一文中更详细地阐述了这些指标。
 
 ## <a name="set-the-feedoptions-parameter"></a>设置 FeedOptions 参数
 
-有关的所有重载[DocumentClient.CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx)采用一个可选[FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx)参数。 此选项，可以进行调整和参数化查询执行。 
+[DocumentClient.CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) 的所有重载采用可选的 [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) 参数。 此选项涉及到如何优化和参数化查询执行。 
 
-若要收集的 Sql 查询执行指标，必须设置参数[PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics)中[FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx)到`true`。 设置`PopulateQueryMetrics`为 true 将使它，以便`FeedResponse`将包含相关`QueryMetrics`。 
+若要收集 SQL 查询执行指标，必须将 [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) 中的参数 [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) 设置为 `true`。 如果将 `PopulateQueryMetrics` 设置为 true，`FeedResponse` 将包含相关的 `QueryMetrics`。 
 
-## <a name="get-query-metrics-with-asdocumentquery"></a>获取与 AsDocumentQuery() 查询度量值
-下面的代码示例演示如何使用时是否检索度量值[AsDocumentQuery()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx)方法：
+## <a name="get-query-metrics-with-asdocumentquery"></a>使用 AsDocumentQuery() 获取查询指标
+以下代码示例演示使用 [AsDocumentQuery()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) 方法时如何检索指标：
 
 ```csharp
 // Initialize this DocumentClient and Collection
@@ -62,7 +62,7 @@ while (documentQuery.HasMoreResults)
 ```
 ## <a name="aggregating-querymetrics"></a>聚合 QueryMetrics
 
-在上一节中注意到没有对多个调用[ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx)方法。 每次调用返回`FeedResponse`具有的字典对象`QueryMetrics`; 一个用于查询的每个延续任务。 下面的示例演示如何聚合这些`QueryMetrics`使用 LINQ:
+上一部分提到，已多次调用 [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) 方法。 每次调用都会返回一个包含 `QueryMetrics` 字典的 `FeedResponse` 对象；每次延续查询都会返回一个此类对象。 以下示例演示如何使用 LINQ 聚合这些 `QueryMetrics`：
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -82,9 +82,9 @@ QueryMetrics aggregatedQueryMetrics = queryMetricsList.Aggregate((curr, acc) => 
 Console.WriteLine(aggregatedQueryMetrics);
 ```
 
-## <a name="grouping-query-metrics-by-partition-id"></a>对查询指标按分区 ID 进行分组
+## <a name="grouping-query-metrics-by-partition-id"></a>按分区 ID 将查询指标分组
 
-可以分组`QueryMetrics`由分区 id。 按分区 ID 进行分组，可了解特定分区是否导致性能问题时与其他。 下面的示例演示如何进行分组`QueryMetrics`与 linq 结合使用：
+可按分区 ID 将 `QueryMetrics` 分组。 按分区 ID 分组可将特定的分区与其他分区进行比较，以此判断该分区是否导致性能问题。 以下示例演示如何使用 LINQ 将 `QueryMetrics` 分组：
 
 ```csharp
 List<KeyValuePair<string, QueryMetrics>> partitionedQueryMetrics = new List<KeyValuePair<string, QueryMetrics>>();
@@ -113,9 +113,9 @@ foreach(IGrouping<string, KeyValuePair<string, QueryMetrics>> grouping in groupe
 }
 ```
 
-## <a name="linq-on-documentquery"></a>LINQ DocumentQuery 上
+## <a name="linq-on-documentquery"></a>LINQ on DocumentQuery
 
-此外可以获取`FeedResponse`从 LINQ 查询使用`AsDocumentQuery()`方法：
+还可以使用 `AsDocumentQuery()` 方法从 LINQ 查询中获取 `FeedResponse`：
 
 ```csharp
 IDocumentQuery<Document> linqQuery = client.CreateDocumentQuery(collection.SelfLink, feedOptions)
@@ -127,9 +127,9 @@ FeedResponse<Document> feedResponse = await linqQuery.ExecuteNextAsync<Document>
 IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetrics;
 ```
 
-## <a name="expensive-queries"></a>消耗资源的查询
+## <a name="expensive-queries"></a>高开销的查询
 
-您可以捕获由每个查询的请求单位数来调查消耗资源的查询或使用高吞吐量的查询。 可以使用获取的请求费用[RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx)属性中的`FeedResponse`。 若要了解有关如何获取使用 Azure 门户和不同的 Sdk 的请求费用的详细信息，请参阅[找到的请求单位费用](find-request-unit-charge.md)一文。
+可以捕获每个查询消耗的请求单位数，以调查高开销的查询，或者消耗了大量吞吐量的查询。 可以使用 `FeedResponse` 中的 [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) 属性获取请求费用。 若要详细了解如何使用 Azure 门户和不同的 SDK 获取请求费用，请参阅[查找请求单位费用](find-request-unit-charge.md)一文。
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -148,7 +148,7 @@ while (documentQuery.HasMoreResults)
 
 ## <a name="get-the-query-execution-time"></a>获取查询执行时间
 
-在计算时执行的客户端的查询所需的时间，请确保仅包含要调用的时间`ExecuteNextAsync`方法并不基本代码的其他部分。 只是这些调用将帮助你在计算查询执行时间，在下面的示例所示：
+计算执行客户端查询所需的时间时，请确保仅包含调用 `ExecuteNextAsync` 方法所需的时间，而不要包含基代码的其他部分。 只是考虑这些调用就能帮助你计算查询执行所需的时间，如以下示例所示：
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -166,11 +166,11 @@ while (documentQuery.HasMoreResults)
 DoSomeLogging(queryExecutionTimeEndToEndTotal.Elapsed);
 ```
 
-## <a name="scan-queries-commonly-slow-and-expensive"></a>扫描查询 （通常慢速且昂贵）
+## <a name="scan-queries-commonly-slow-and-expensive"></a>扫描查询（通常速度缓慢且开销较高）
 
-扫描查询是指不由提供的索引，因而，很多的查询返回的结果集之前加载文档。
+扫描查询是指不由索引提供服务的查询，因此，在返回结果集之前需要加载许多文档。
 
-下面是扫描查询的示例：
+下面是扫描查询的一个示例：
 
 ```sql
 SELECT VALUE c.description 
@@ -178,7 +178,7 @@ FROM   c
 WHERE UPPER(c.description) = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, JUNIOR"
 ```
 
-此查询的筛选器使用系统函数右上角，从该索引并不提供。 执行此查询针对大型集合生成第一个延续的以下查询指标：
+此查询的筛选器使用系统函数 UPPER，该函数不是由索引提供服务。 针对大型集合执行此查询在首次延续时生成了以下查询指标：
 
 ```
 QueryMetrics
@@ -213,15 +213,15 @@ Retrieved Document Count                 :          60,951
 Retrieved Document Size                  :     399,998,938 bytes
 ```
 
-此查询加载 60,951 文档，总和 399,998,938 字节。 正在加载这么多字节会导致高成本或请求单位费用。 它还采用较长时间才能执行查询，这是清除与所用的总时间属性：
+此查询加载了 60,951 个文档，总共为 399,998,938 字节。 加载这么多的字节会导致开销或请求单位费用增大。 它还花费了较长时间来执行查询，花费在属性上的明确总时间为：
 
 ```
 Total Query Execution Time               :        4,500.34 milliseconds
 ```
 
-这意味着该查询用了 4.5 长时间执行 （并且这是只有一个继续符）。
+这意味着，执行该查询花费了 4.5 秒（而且这只是第一次延续）。
 
-若要优化此示例查询，避免使用筛选器中的上限。 相反，文档会创建或更新时，`c.description`必须在所有大写字符插入值。 该查询然后将变为： 
+若要优化此示例查询，请避免在筛选器中使用 UPPER。 在创建或更新文档时，必须插入全大写的 `c.description` 值。 然后，该查询将变成： 
 
 ```sql
 SELECT VALUE c.description 
@@ -229,9 +229,9 @@ FROM   c
 WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, JUNIOR"
 ```
 
-此查询现在就可通过索引进行处理。
+现在，可以从索引为此查询提供服务。
 
-若要了解有关优化查询性能的详细信息，请参阅[优化查询性能](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics)一文。
+若要详细了解如何优化查询性能，请参阅[优化查询性能](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics)一文。
 
 ## <a id="References"></a>参考
 
@@ -244,4 +244,4 @@ WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, 
 
 - [优化查询性能](sql-api-query-metrics.md)
 - [索引概述](index-overview.md)
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)

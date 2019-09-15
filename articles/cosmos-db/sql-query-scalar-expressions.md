@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB SQL 查询中的标量表达式
-description: 了解有关 Azure Cosmos DB 的标量表达式的 SQL 语法。
+description: 了解 Azure Cosmos DB 的标量表达式 SQL 语法。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4464c39a45c47c680a13f3ebc34841b47ee0d7c6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c35ad65a584f8ee95142e9bc85a58b5b6cd99744
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342581"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003529"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL 查询中的标量表达式
 
-[SELECT 子句](sql-query-select.md)支持标量表达式。 标量表达式是符号和运算符的组合，经计算后可获得单个值。 标量表达式的示例包括： 常量、 属性引用、 数组元素引用、 别名引用或函数调用。 标量表达式可以合并到复杂的表达式使用运算符。
+[SELECT 子句](sql-query-select.md)支持标量表达式。 标量表达式是符号和运算符的组合，经计算后可获得单个值。 标量表达式的示例包括：常量、属性引用、数组元素引用、别名引用或函数调用。 可以使用运算符将标量表达式组合成复杂表达式。
 
 ## <a name="syntax"></a>语法
   
@@ -55,15 +55,15 @@ ms.locfileid: "67342581"
 - `input_alias`  
   
    表示由 `FROM` 子句引入，由 `input_alias` 定义的值。  
-  该值不得是“未定义”  –输入中的“未定义”值将被跳过  。  
+  该值不得是“未定义”–输入中的“未定义”值将被跳过。  
   
 - `<scalar_expression>.property_name`  
   
-   表示对象的属性值。 如果不存在此属性或属性引用上一个值，该值不是一个对象，则表达式的计算结果**未定义**值。  
+   表示对象的属性值。 如果该属性不存在或在非对象的值上引用了该属性，则表达式的求值结果为“未定义”值。  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   表示具有名称的属性的值`property_name`或具有索引的数组元素`array_index`的数组。 如果不存在属性/数组索引，或对非对象/数组的值引用了属性/数组索引，则表达式的求值结果为未定义值。  
+   表示名为 `property_name` 的属性的值或数组中索引为 `array_index` 的数组元素的值。 如果不存在属性/数组索引，或对非对象/数组的值引用了属性/数组索引，则表达式的求值结果为未定义值。  
   
 - `unary_operator <scalar_expression>`  
   
@@ -99,11 +99,11 @@ ms.locfileid: "67342581"
   
 ## <a name="remarks"></a>备注
   
-  调用内置或用户定义的标量函数时，必须定义所有参数。 如果未定义任何参数，则不会调用该函数，且结果也将为未定义。  
+  调用内置的或用户定义的标量函数时，必须定义所有参数。 如果未定义任何参数，则不会调用该函数，且结果也将为未定义。  
   
   创建对象时，将跳过任何已分配未定义值的属性，并且在创建的对象中不包含该属性。  
   
-  创建数组时，将跳过任何已分配“未定义”值  的元素值，并且在创建的对象中不包含该值。 这将导致下一个定义的元素取代该值时，创建的数组将不含跳过的索引。  
+  创建数组时，将跳过任何已分配“未定义”值的元素值，并且在创建的对象中不包含该值。 这将导致下一个定义的元素取代该值时，创建的数组将不含跳过的索引。  
 
 ## <a name="examples"></a>示例
 
@@ -142,5 +142,5 @@ ms.locfileid: "67342581"
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Cosmos DB 简介](introduction.md)
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [子查询](sql-query-subquery.md)

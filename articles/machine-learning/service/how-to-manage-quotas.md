@@ -1,6 +1,6 @@
 ---
 title: 管理和请求资源配额
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 本操作指南介绍 Azure 机器学习资源的各种配额以及如何查看和请求更多的配额。
 services: machine-learning
 ms.service: machine-learning
@@ -11,26 +11,26 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bc0455b34ebdcb080e0cd702e58d8163228b60ff
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 2ee819625f772c96ac6c5a771935da17ee05f3aa
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278067"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002686"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>管理和请求 Azure 资源的配额
 
-与其他 Azure 服务一样，与 Azure 机器学习服务关联的某些资源存在限制。 这些限制范围为可以创建的工作区数的上限，以限制用于模型定型或推理/计分的实际基础计算。 
+与其他 Azure 服务一样，与 Azure 机器学习关联的某些资源存在限制。 这些限制范围为可以创建的工作区数的上限，以限制用于模型定型或推理/计分的实际基础计算。 
 
 本文提供关于为你的订阅中各种 Azure 资源预配置的限制的更多详细信息，同时还包括为每种资源类型请求配额增加的可用链接。 这些限制用于防止由于欺诈导致的预算超支，并且符合 Azure 容量限制。
 
-在设计和纵向扩展生产工作负载的 Azure 机器学习服务资源时，请记住这些配额。 例如，如果你的群集无法访问指定的节点数，则你可能已达到订阅的 Azure 机器学习计算核心数限制。 如果想将限制或配额提高到默认值限制以上，可以免费打开联机客户支持请求。 由于 Azure 容量限制，无法将限制提高到超过下表中显示的最大限制值。 如果没有“最大限制”列，则资源没有可调整的限制。
+在为生产工作负荷设计和扩展 Azure 机器学习资源时，请记住这些配额。 例如，如果你的群集无法访问指定的节点数，则你可能已达到订阅的 Azure 机器学习计算核心数限制。 如果想将限制或配额提高到默认值限制以上，可以免费打开联机客户支持请求。 由于 Azure 容量限制，无法将限制提高到超过下表中显示的最大限制值。 如果没有“最大限制”列，则资源没有可调整的限制。
 
 ## <a name="special-considerations"></a>特殊注意事项
 
 + 配额是一种信用限制，不附带容量保证。 如果有大规模容量需求，请与 Azure 支持部门联系。
 
-+ 配额在订阅中的所有服务之间共享，包括 Azure 机器学习服务。 唯一的例外是 Azure 机器学习计算，它的配额独立于核心计算配额。 在评估容量需求时，请务必计算所有服务的配额使用情况。
++ 你的配额在你的订阅中的所有服务（包括 Azure 机器学习）之间共享。 唯一的例外是 Azure 机器学习计算，它的配额独立于核心计算配额。 在评估容量需求时，请务必计算所有服务的配额使用情况。
 
 + 默认限制根据产品/服务类别类型（例如免费试用、即用即付）和系列（例如 Dv2、F、G 等）而有所不同。
 
