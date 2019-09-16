@@ -306,12 +306,12 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         |---|---|
         | Source | Any |
         | Source port ranges | * |
-        | 目标 | Any |
+        | Destination | Any |
         | Destination port range | 636 |
         | Protocol | Any |
         | Action | Allow |
         | Priority | \<所需数量\> |
-        | 姓名 | Port_LDAP_636 |
+        | Name | Port_LDAP_636 |
 
     ![入站安全规则](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
