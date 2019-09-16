@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 8fd3aedd2e371e511730fd98751ae3214545c489
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034585"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996219"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET Standard API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -34,13 +34,16 @@ ms.locfileid: "70034585"
 |**报告问题**|[报告问题](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes-for-200-series"></a>2\.0.0 系列的发行说明
-2.0.0 系列采用[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的依赖项, 并对 Cosmos DB 终结点执行性能改进和命名空间合并。
+2.0.0 系列采用[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的依赖项，并对 Cosmos DB 终结点执行性能改进和命名空间合并。
 
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
-* 2\.0.0 表 SDK 的初始预览, 它依赖于[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的性能改进和命名空间合并, 以 Cosmos DB 端点。 公共 API 保持不变。
+* 2\.0.0 表 SDK 的初始预览，它依赖于[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的性能改进和命名空间合并，以 Cosmos DB 端点。 公共 API 保持不变。
 
 ## <a name="release-notes-for-100-series"></a>1\.0.0 系列发行说明
 1.0.0 系列依赖于[Microsoft. Azure](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)。
+
+### <a name="a-name105105"></a><a name="1.0.5"/>1.0.5
+* 在 TableClientConfiguration 下引入新配置，以使用 Rest 执行器与 Cosmos DB 进行通信表 API
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5-预览
 * Bug 修复
@@ -82,19 +85,20 @@ ms.locfileid: "70034585"
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
 Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
 
-这种跨平台 .NET Standard 库将替换 .NET Framework 库[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) 。) 将替换[CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。
+这种跨平台 .NET Standard 库将替换 .NET Framework 库[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) 。）将替换[CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。
 
 ### <a name="200-series"></a>2.0.0 系列
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [2.0.0-preview](#2.0.0-preview) |Auguest 22, 2019 |--- |
+| [2.0.0-preview](#2.0.0-preview) |Auguest 22，2019 |--- |
 
 ### <a name="100-series"></a>1.0.0 系列
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [1.0.5-预览](#1.0.5-preview) |Auguest 20, 2019 |--- |
-| [1.0.4](#1.0.4) |Auguest 12, 2019 |--- |
-| [1.0.4-预览](#1.0.4-preview) |2019年7月26日 |--- |
+| [1.0.5](#1.0.5) |2019年9月13日 |--- |
+| [1.0.5-预览](#1.0.5-preview) |Auguest 20，2019 |--- |
+| [1.0.4](#1.0.4) |Auguest 12，2019 |--- |
+| [1.0.4-预览](#1.0.4-preview) |2019 年 6 月 26 日 |--- |
 | 1.0.2-预览 |5月2日, 2019 |--- |
 | [1.0.1](#1.0.1) |2019年4月19日 |--- |
 | [1.0.0](#1.0.0) |2019 年 3 月 13 日 |--- |
