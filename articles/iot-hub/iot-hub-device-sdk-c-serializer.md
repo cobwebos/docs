@@ -17,15 +17,15 @@ ms.locfileid: "68883152"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关序列化程序的详细信息
 
-本系列中的第一篇文章介绍了[适用于 C 语言的 Azure IoT 设备 SDK 简介](iot-hub-device-sdk-c-intro.md)。下一篇文章提供了[适用于 C 语言的 Azure IoT 设备 SDK - IoTHubClient](iot-hub-device-sdk-c-iothubclient.md) 的更详细说明。 此文章通过提供其余组件（**序列化程序**库）的更详细说明来完成 SDK 的覆盖范围。
+本系列中的第一篇文章介绍了[适用于 C 语言的 Azure IoT 设备 SDK 简介](iot-hub-device-sdk-c-intro.md)。下一篇文章提供了[适用于 C 语言的 Azure IoT 设备 SDK - IoTHubClient](iot-hub-device-sdk-c-iothubclient.md) 的更详细说明。 此文章通过提供其余组件（**serializer**库）的更详细说明来完成 SDK 的覆盖范围。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-该介绍性文章描述了如何使用**序列化程序**库将事件发送到 IoT 中心和从该中心接收消息。 在此文章中，通过提供如何使用**序列化程序**宏语言对数据建模的更完整说明，扩展了这个讨论。 本文还包含更多有关该库如何序列化消息（以及在某些情况下，如何控制序列化行为）的详细信息。 此外，介绍可以修改以判断所要创建的模型大小的某些参数。
+该介绍性文章描述了如何使用**serializer**库将事件发送到 IoT 中心和从该中心接收消息。 在此文章中，通过提供如何使用**serializer**宏语言对数据建模的更完整说明，扩展了这个讨论。 本文还包含更多有关该库如何序列化消息（以及在某些情况下，如何控制序列化行为）的详细信息。 此外，介绍可以修改以判断所要创建的模型大小的某些参数。
 
-最后，本文将回顾前面文章中讲到的一些主题，例如消息和属性处理。 正如我们了解的那样，这些功能使用**序列化程序**库的方式与使用 **IoTHubClient** 库一样。
+最后，本文将回顾前面文章中讲到的一些主题，例如消息和属性处理。 正如我们了解的那样，这些功能使用**serializer**库的方式与使用 **IoTHubClient** 库一样。
 
-此文章中所述的所有内容都基于**序列化程序** SDK 示例。 如果想要继续，请参阅适用于 C 语言的 Azure IoT 设备 SDK 中包含的 **simplesample\_amqp** 和 **simplesample\_http** 应用程序。
+此文章中所述的所有内容都基于**serializer** SDK 示例。 如果想要继续，请参阅适用于 C 语言的 Azure IoT 设备 SDK 中包含的 **simplesample\_amqp** 和 **simplesample\_http** 应用程序。
 
 可在 GitHub 存储库中找到[**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)中查看 API 的详细信息。
 
