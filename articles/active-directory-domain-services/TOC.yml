@@ -89,7 +89,7 @@
       items:
         - name: 部署 Azure AD 应用程序代理
           href: deploy-azure-app-proxy.md
-        - name: 为 SharePoint Server 配置对配置文件同步的支持
+        - name: 为 SharePoint Server 启用配置文件同步
           href: deploy-sp-profile-sync.md
     - name: 故障排除
       items:

@@ -4,6 +4,8 @@
   items:
     - name: 关于 Azure 门户
       href: azure-portal-overview.md
+    - name: 开始使用 Azure 快速入门中心
+      href: azure-portal-quickstart-center.md
     - name: 支持的浏览器和设备
       href: azure-portal-supported-browsers-devices.md
 - name: 概念
@@ -25,7 +27,7 @@
     - name: 导出或删除用户设置
       href: azure-portal-export-delete-settings.md
     - name: Azure 门户“操作说明”视频系列
-      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
+      href: azure-portal-video-series.md
 - name: 引用
   items:
     - name: 键盘快捷方式

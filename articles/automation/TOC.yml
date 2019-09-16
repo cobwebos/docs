@@ -236,7 +236,7 @@
         - name: 入门
           href: automation-dsc-getting-started.md
           displayName: DSC
-        - name: 管理 Linux 配置
+        - name: 管理计算机的配置
           href: automation-quickstart-dsc-configuration.md
           displayName: 'DSC, state configuration, config, node configuration, node'
     - name: 登记

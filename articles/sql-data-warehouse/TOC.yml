@@ -129,10 +129,16 @@
               href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
         - name: 具体化视图
           items:
+            - name: 性能优化指南
+              href: performance-tuning-materialized-views.md
             - name: 创建
               href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
             - name: 更改
               href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: 有序聚集列存储索引
+          items:
+            - name: 性能优化指南
+              href: performance-tuning-ordered-CCI.md
         - name: 结果集缓存
           href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: 表

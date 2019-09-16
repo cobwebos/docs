@@ -1,0 +1,91 @@
+### YamlMime:Landing
+title: Azure Data Lake Analytics 文档
+summary: 使用 Data Lake Analytics 可以运行可扩展为大规模数据集的大数据分析作业。
+metadata:
+  title: Azure Data Lake Analytics
+  description: 使用 Data Lake Analytics 可以运行可扩展为大规模数据集的大数据分析作业。
+  services: service
+  ms.service: data-lake-analytics
+  ms.subservice: subservice
+  ms.topic: landing-page
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: a370cf424d7ebdf32fcdd2e0f8653e2e36b7162b
+  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/14/2019
+  ms.locfileid: "70997241"
+landingContent:
+- title: 关于 Data Lake Analytics
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Data Lake Analytics？
+      url: data-lake-analytics-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 在 Azure 门户中创建 U-SQL 作业
+      url: data-lake-analytics-get-started-portal.md
+    - text: 使用 Azure CLI 创建 U-SQL 作业
+      url: data-lake-analytics-get-started-cli.md
+    - text: 在 Visual Studio Code 中创建 U-SQL 作业
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+- title: 学习 U-SQL 语言
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: U-SQL 入门
+      url: data-lake-analytics-u-sql-get-started.md
+    - text: U-SQL 语言参考
+      url: https://docs.microsoft.com/u-sql/
+    - text: U-SQL 目录入门
+      url: data-lake-analytics-u-sql-catalog.md
+    - text: 使用用户定义的运算符
+      url: data-lake-analytics-u-sql-develop-user-defined-operators.md
+- title: 开发 U-SQL 程序
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用适用于 Visual Studio 的 Data Lake 工具
+      url: data-lake-analytics-data-lake-tools-get-started.md
+    - text: 在 Visual Studio 中使用 U-SQL 数据库项目
+      url: data-lake-analytics-data-lake-tools-develop-usql-database.md
+    - text: 使用作业浏览器和作业视图
+      url: data-lake-analytics-data-lake-tools-view-jobs.md
+    - text: 调试用户定义的 C# 代码
+      url: data-lake-analytics-debug-u-sql-jobs.md
+    - text: 使用针对 Visual Studio Code 的 Azure Data Lake 工具
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+    - text: 在 Visual Studio Code 中将自定义代码与 U-SQL 结合使用
+      url: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+    - text: 使用 SSIS 计划作业
+      url: data-lake-analytics-schedule-jobs-ssis.md
+- title: 管理 Data Lake Analytics
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure 门户进行管理
+      url: data-lake-analytics-manage-use-portal.md
+    - text: 使用 Azure CLI 进行管理
+      url: data-lake-analytics-manage-use-cli.md
+    - text: 使用 .NET 应用进行管理
+      url: data-lake-analytics-manage-use-dotnet-sdk.md
+    - text: 在 Azure 门户中添加用户
+      url: data-lake-analytics-add-users.md
+    - text: 使用策略管理 Azure Data Lake Analytics
+      url: data-lake-analytics-policies.md
+- title: 持续集成和持续部署
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 设置 CI/CD 管道
+      url: data-lake-analytics-cicd-overview.md
+    - text: 管理 U-SQL 程序集
+      url: data-lake-analytics-cicd-manage-assemblies.md
+    - text: 测试 U-SQL 脚本
+      url: data-lake-analytics-cicd-test.md
+    - text: 使用 U-SQL SDK
+      url: data-lake-analytics-u-sql-sdk.md

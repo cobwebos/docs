@@ -81,6 +81,8 @@
       href: search-lucene-query-architecture.md
     - name: 认知搜索
       href: cognitive-search-concept-intro.md
+    - name: 技能集
+      href: cognitive-search-working-with-skillsets.md
     - name: 知识存储
       href: knowledge-store-concept-intro.md
     - name: 投影
@@ -166,9 +168,7 @@
         - name: 为复杂数据类型建模
           href: search-howto-complex-data-types.md
         - name: 为关系数据建模
-          href: search-example-adventureworks-modeling.md
-        - name: 为多层分面建模
-          href: search-example-adventureworks-multilevel-faceting.md
+          href: index-sql-relational-data.md
     - name: 加载数据
       items:
         - name: 数据导入概述
@@ -241,10 +241,14 @@
           href: cognitive-search-resources-documentation.md
     - name: 知识存储（预览版）
       items:
-        - name: 使用 Power BI 进行连接
-          href: knowledge-store-connect-powerbi.md
+        - name: 在 Azure 门户中创建知识库
+          href: knowledge-store-create-portal.md
         - name: 使用 REST 和 Postman 创建
           href: knowledge-store-howto.md
+        - name: 使用存储资源管理器进行查看
+          href: knowledge-store-view-storage-explorer.md
+        - name: 使用 Power BI 进行连接
+          href: knowledge-store-connect-power-bi.md
     - name: 查询数据
       items:
         - name: 创建基本查询
@@ -273,6 +277,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: 了解集合筛选器
           href: search-query-understand-collection-filters.md
+        - name: 多层 facet 的示例
+          href: search-example-adventureworks-multilevel-faceting.md
     - name: 处理结果
       items:
         - name: 与页相关的功能

@@ -1,9 +1,9 @@
-- name: Azure 机器学习服务文档
+- name: Azure 机器学习文档
   href: ../index.yml
 - name: 概述
   expanded: true
   items:
-    - name: 什么是 Azure 机器学习服务？
+    - name: 什么是 Azure 机器学习？
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
     - name: 体系结构和术语
@@ -31,6 +31,11 @@
             - name: 自动训练 ML 模型
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
+        - name: 使用管道进行批量评分（高级）
+          items:
+            - name: 对分类模型进行批量评分
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
     - name: 可视界面
       items:
         - name: 1. 训练回归模型
@@ -122,7 +127,7 @@
         - name: 使用 Resource Manager 模板
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: "设置开发环境\_"
+    - name: 设置开发环境
       items:
         - name: 配置开发环境
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'

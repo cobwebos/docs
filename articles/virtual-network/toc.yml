@@ -253,6 +253,10 @@
           href: virtual-network-public-ip-address.md
         - name: 公共 IP 前缀
           href: manage-public-ip-address-prefix.md
+    - name: 跨区域移动
+      items:
+        - name: 虚拟网络 - 门户
+          href: virtual-network-azure-to-azure-migrate-vnet-portal.md
     - name: 故障排除
       items:
         - name: 排查虚拟网络对等互连问题
