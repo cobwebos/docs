@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 8925ea9da06ff718f08b7be73944c75d388bc01f
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5ba530a614dd7eb064e1d9b5a59fc00b9280ef0a
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814158"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008625"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Blob 存储复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -33,6 +33,7 @@ ms.locfileid: "70814158"
 - [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)
+- [删除活动](delete-activity.md)
 
 具体而言，此 Blob 存储连接器支持：
 
@@ -638,6 +639,18 @@ Azure Blob 存储链接服务支持以下属性：
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
 从“映射数据流”中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)了解详细信息。
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+
+## <a name="getmetadata-activity-properties"></a>GetMetadata 活动属性
+
+若要了解有关属性的详细信息，请查看[GetMetadata 活动](control-flow-get-metadata-activity.md) 
+
+## <a name="delete-activity-properties"></a>删除活动属性
+
+若要了解有关属性的详细信息，请选中 "[删除活动](delete-activity.md)"
 
 ## <a name="next-steps"></a>后续步骤
 

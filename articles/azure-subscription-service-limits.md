@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 0f036462eb9b37b4ec783bcf8957d307cc55f7ac
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "68698280"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018522"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，将展开并更新该列表以涵盖更多服务。
@@ -89,8 +89,9 @@ ms.locfileid: "68698280"
   * [Azure 防火墙](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [负载均衡器](#load-balancer)
-  * [公共 IP 地址](#publicip-address)
   * [网络观察程序](#network-watcher-limits)
+  * [公共 IP 地址](#publicip-address)
+  * [专用链接](#private-link-limits)
   * [流量管理器](#traffic-manager-limits)
   * [虚拟网络](#networking-limits)
 * [通知中心](#notification-hubs-limits)
@@ -168,6 +169,9 @@ ms.locfileid: "68698280"
 
 #### <a name="network-watcher-limits"></a>网络观察程序限制
 [!INCLUDE [network-watcher-limits](../includes/network-watcher-limits.md)]
+
+#### <a name="private-link-limits"></a>专用链接限制
+[!INCLUDE [private-link-limits](../includes/private-link-limits.md)]
 
 #### <a name="traffic-manager-limits"></a>流量管理器限制
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]

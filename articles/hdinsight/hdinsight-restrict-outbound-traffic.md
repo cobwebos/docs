@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 829f3e730b4993a6a7f32a9224d3c6c38bd4c06e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 070365c79e14b80c50c70aa3277a6eddd9286a37
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811955"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018749"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>使用防火墙配置 Azure HDInsight 群集的出站网络流量（预览）
 
@@ -63,7 +63,8 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
    | **名称** | **源地址** | **Protocol:Port** | **目标 FQDN** | **说明** |
    | --- | --- | --- | --- | --- |
    | Rule_2 | * | https:443 | login.windows.net | 允许 Windows 登录活动 |
-   | Rule_3 | * | https:443,http:80 | <storage_account_name.blob.core.windows.net> | 如果群集由 WASB 提供支持，则为 WASB 添加一个规则。 若只使用 https 连接，请确保在存储帐户上启用 [需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)。 |
+   | Rule_3 | * | https:443 | login.microsoftonline.com | 允许 Windows 登录活动 |
+   | Rule_4 | * | https:443,http:80 | <storage_account_name.blob.core.windows.net> | 如果群集由 WASB 提供支持，则为 WASB 添加一个规则。 若只使用 https 连接，请确保在存储帐户上启用 [需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)。 |
 
 1. 单击“添加”。
 

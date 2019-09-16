@@ -30,7 +30,7 @@ ms.locfileid: "66399203"
 >
 
 ## <a name="overview"></a>概述
-预配 VM 后，可使用项目来部署和设置应用程序  。 项目由项目定义文件和存储在 Git 存储库的文件夹中的其他脚本文件组成。 项目定义文件包含 JSON 和可用于指定要在 VM 上安装的内容的表达式。 例如，可以定义项目名称、要运行的命令，以及运行命令时可用的参数。 可以按名称引用项目定义文件中的其他脚本文件。
+预配 VM 后，可使用项目来部署和设置应用程序。 项目由项目定义文件和存储在 Git 存储库的文件夹中的其他脚本文件组成。 项目定义文件包含 JSON 和可用于指定要在 VM 上安装的内容的表达式。 例如，可以定义项目名称、要运行的命令，以及运行命令时可用的参数。 可以按名称引用项目定义文件中的其他脚本文件。
 
 ## <a name="artifact-definition-file-format"></a>项目定义文件格式
 以下示例显示组成定义文件基本结构的各个部分：
@@ -137,7 +137,7 @@ ms.locfileid: "66399203"
 
 1. 安装 JSON 编辑器。 需要一个 JSON 编辑器来处理项目定义文件。 建议使用 [Visual Studio Code](https://code.visualstudio.com/)，它适用于 Windows、Linux 和 OS X。
 2. 获取示例 artifactfile.json 定义文件。 查看开发测试实验室团队在我们的 [GitHub 存储库](https://github.com/Azure/azure-devtestlab)中创建的项目。 我们已创建资源丰富的项目库，可帮助你创建自己的项目。 下载项目定义文件并对其进行更改以创建自己的项目。
-3. 利用 IntelliSense。 使用 IntelliSense 查看可用于构建项目定义文件的有效元素。 此外还可以查看元素值的不同选项。 例如，编辑“targetOsType”元素时，IntelliSense 显示 Windows 或 Linux 两种选择  。
+3. 利用 IntelliSense。 使用 IntelliSense 查看可用于构建项目定义文件的有效元素。 此外还可以查看元素值的不同选项。 例如，编辑“targetOsType”元素时，IntelliSense 显示 Windows 或 Linux 两种选择。
 4. 将项目存储在[开发测试实验室的公共 Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)或[自己的 Git 存储库](devtest-lab-add-artifact-repo.md)中。 在公共存储库中，可以查看他人共享的项目，可以直接使用或自定义它们来满足自己的需求。
    
    1. 为每个项目创建单独的目录。 目录名称应与项目名称相同。

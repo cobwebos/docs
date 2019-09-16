@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2019
 ms.author: jonbeck
 ms.openlocfilehash: ba5e8d22670f459654d403a166840d9f8cd7f8a6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 09/16/2019
 ms.locfileid: "70082067"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>内存优化虚拟机大小

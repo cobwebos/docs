@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: f59455374299e25d0c5d6a06c7ec9efc1f220ecf
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0f29df02e8242872311df3d4cb660d46bbc2cee3
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733495"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018785"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -80,11 +80,11 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 ## <a name="cluster-name"></a>群集名称
 
 HDInsight 群集名称具有以下限制：
-- 允许的字符： a-z、0-9、a-z 
+- 允许的字符：a-z、0-9、A-Z 
 - 最大长度：59
-- 保留名称：应用
+- 保留的名称：apps
 - 群集命名范围适用于所有订阅中的所有 Azure。 因此，群集名称在全球范围内必须是唯一的。
-- VNET 中的前6个字符必须唯一
+- 前 6 个字符必须在 VNET 中唯一
 
 ## <a name="cluster-login-and-ssh-username"></a>群集登录和 SSH 用户名
 使用 HDInsight 群集时，可以在群集创建期间配置两个用户帐户：
@@ -93,15 +93,15 @@ HDInsight 群集名称具有以下限制：
 * SSH 用户：用于通过 SSH 连接到群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 HTTP 用户名具有以下限制：
-- 允许的特殊字符： _ 和@ 
-- 不允许使用字符： #;。 ""\/，： '！ *？ $ （{}） [] < > | &--= +% ~ ^ space
+- 允许的特殊字符：_ 和 @ 
+- 不允许的字符：#;."',\/:`!*?$(){}[]<>|&--=+%~^空格
 - 最大长度：20
 
 SSH 用户名具有以下限制：
-- 允许的特殊字符： _ 和@ 
-- 不允许使用字符： #;。 ""\/，： '！ *？ $ （{}） [] < > | &--= +% ~ ^ space
+- 允许的特殊字符：_ 和 @ 
+- 不允许的字符：#;."',\/:`!*?$(){}[]<>|&--=+%~^空格
 - 最大长度：64
-- 保留名称： hadoop、用户、oozie、hive、mapred、ambari、zookeeper、tez、hdfs、sqoop、yarn、hcat、ams、hbase、风暴、管理员、管理员、用户、user1、测试、用户 123 2、user3、admin1、actuser、管理员2、、、guest、john、owner、root、server、sql、support、support_388945a0、sys、test2、test3、user4、user5、spark
+- 保留的名称：hadoop、users、oozie、hive、mapred、ambari-qa、zookeeper、tez、hdfs、sqoop、yarn、hcat、ams、hbase、storm、administrator、admin、user、user1、test、user2、test1、user3、admin1、1、123、a、actuser、adm、admin2、aspnet、backup、console、david、guest、john、owner、root、server、sql、support、support_388945a0、sys、test2、test3、user4、user5、spark
 
 企业安全数据包允许将 HDInsight 与 Active Directory 和 Apache Ranger 集成。 可使用企业安全数据包创建多个用户。
 
@@ -111,10 +111,21 @@ SSH 用户名具有以下限制：
 
 ## <a name="storage-endpoints-for-clusters"></a>群集的存储终结点
 
-虽然 Hadoop 的本地安装使用 Hadoop 分布式文件系统 (HDFS) 作为群集上的存储，但在云中，会使用连接到群集的存储终结点。 HDInsight 群集使用 [Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-store.md) 或 [Azure 存储中的 Blob](hdinsight-hadoop-use-blob-storage.md)。 使用 Azure 存储或 Data Lake Storage 意味着可以安全地删除用于计算的 HDInsight 群集，同时仍保留数据。 
+虽然 Hadoop 的本地安装使用 Hadoop 分布式文件系统 (HDFS) 作为群集上的存储，但在云中，会使用连接到群集的存储终结点。 使用云存储意味着可以安全地删除用于计算的 HDInsight 群集，同时仍保留数据。 
+
+HDInsight 群集可以使用以下存储选项：
+
+* Azure Data Lake Storage Gen2
+* Azure Data Lake Storage Gen1
+* Azure 存储常规用途 v2
+* Azure 存储常规用途 v1
+* Azure 存储块 blob （**仅支持作为辅助存储**）
+
+有关 HDInsight 存储选项的详细信息，请参阅[比较用于 Azure hdinsight 群集的存储选项](hdinsight-hadoop-compare-storage-options.md)。
 
 > [!WARNING]  
 > 不支持在 HDInsight 群集之外的其他位置使用其他存储帐户。
+
 
 在配置期间，对于默认存储终结点，需要指定 Azure 存储帐户的 Blob 容器或 Data Lake Storage。 默认存储包含应用程序日志和系统日志。 可以选择指定群集可访问的其他链接的 Azure 存储帐户和 Data Lake Storage 帐户。 HDInsight 群集与从属存储帐户必须位于相同的 Azure 位置。
 
@@ -174,12 +185,12 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 ### <a name="number-of-nodes-for-each-cluster-type"></a>每种群集类型的节点数
 每种群集类型都有自身的节点数、节点术语和默认的 VM 大小。 下表中的括号内列出了每个节点类型的节点数目。
 
-| 类型 | Nodes | 关系图 |
+| type | Nodes | 关系图 |
 | --- | --- | --- |
 | Hadoop |头节点 (2)、工作器节点 (1+) |![HDInsight Hadoop 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | Hbase |头服务器 (2)，区域服务器 (1+)，主控/ZooKeeper 节点 (3) |![HDInsight HBase 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
 | Storm |Nimbus 节点 (2)，监督程序服务器 (1+)，ZooKeeper 节点 (3) |![HDInsight Storm 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |头节点（2），辅助角色节点（1 +），ZooKeeper 节点（3）（对于 A1 ZooKeeper VM 大小免费） |![HDInsight Spark 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| Spark |头节点 (2), 辅助角色节点 (1 +), ZooKeeper 节点 (3) (对于 A1 ZooKeeper VM 大小免费) |![HDInsight Spark 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 有关详细信息，请参阅“HDInsight 提供了哪些 Hadoop 组件和版本？”中的[群集的默认节点配置和虚拟机大小](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)
 
@@ -211,7 +222,7 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 若要了解在使用各种 SDK 创建群集或使用 Azure PowerShell 时，应使用什么值指定 VM 大小，请参阅[用于 HDInsight 群集的 VM 大小](../cloud-services/cloud-services-sizes-specs.md#size-tables)。 从此链接文章中，使用表“大小”列中的值。
 
 > [!IMPORTANT]  
-> 如果群集中需要32个以上的辅助角色节点，则必须选择至少具有8个核心和 14 GB RAM 的头节点大小。
+> 如果群集中需要32个以上的辅助角色节点, 则必须选择至少具有8个核心和 14 GB RAM 的头节点大小。
 
 有关详细信息，请参阅[虚拟机的大小](../virtual-machines/windows/sizes.md)。 有关不同大小的定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。   
 
@@ -249,9 +260,9 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 ## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>高级设置：使用虚拟网络扩展群集
 如果解决方案需要分布在多种 HDInsight 群集类型上的技术， [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network) 可以连接所需的群集类型。 此配置允许群集以及部署到群集的任何代码直接相互通信。
 
-有关将 Azure 虚拟网络与 HDInsight 配合使用的详细信息，请参阅为[Hdinsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
+有关在 HDInsight 中使用 Azure 虚拟网络的详细信息，请参阅[规划 HDInsight 的虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
 
-有关在一个 Azure 虚拟网络中使用两种群集类型的示例，请参阅[将 Apache Spark 结构化流式处理与 Apache Kafka 配合使用](hdinsight-apache-kafka-spark-structured-streaming.md)。 有关将 HDInsight 与虚拟网络配合使用的详细信息（包括虚拟网络的特定配置要求），请参阅为[HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
+有关在一个 Azure 虚拟网络中使用两种群集类型的示例，请参阅[将 Apache Spark 结构化流式处理与 Apache Kafka 配合使用](hdinsight-apache-kafka-spark-structured-streaming.md)。 有关在 HDInsight 中使用虚拟网络的详细信息（包括虚拟网络的特定配置要求），请参阅[规划 HDInsight 的虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

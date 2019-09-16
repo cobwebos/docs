@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c8ffa7b65e4f97fa537299bf542ba377da026064
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
+ms.lasthandoff: 09/16/2019
 ms.locfileid: "70174587"
 ---
 内存优化 VM 大小提供适用于关系数据库服务器、中到大型规模的缓存和内存中分析的高内存 CPU 比率。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。
 
 * Ev3 系列在超线程配置中采用 E5-2673 v4 2.3 GHz (Broadwell) 处理器，针对最常规用途的工作负荷提供了更好的价值主张，因此 Ev3 适用于大多数其他云的常规用途 VM。  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存也得到了扩展（从 7 GiB/vCPU 到 8 GiB/vCPU）。  Ev3 是 D/Dv2 系列的高内存 VM 大小产品的后继产品。
 
-* Eav3 系列和 Easv3 系列在多线程配置中利用 AMD 的 2.35 Ghz EPYC<sup>TM</sup> 7452V 处理器, 最多可使用 256mb L3 缓存, 同时增加了运行大多数内存优化工作负荷的选项。  Eav3 系列和 Easv3 具有与 Ev3 & Esv3 系列相同的内存和磁盘配置。
+* Eav3 系列和 Easv3 系列在多线程配置中利用 AMD 的 2.35 Ghz EPYC<sup>TM</sup> 7452V 处理器，最多可使用 256mb L3 缓存，同时增加了运行大多数内存优化工作负荷的选项。  Eav3 系列和 Easv3 具有与 Ev3 & Esv3 系列相同的内存和磁盘配置。
 
-* Mv2 系列提供云中任意 VM 的最高 vCPU 计数 (最高为208个 vcpu) 和最大内存 (最大为 5.7 TiB)。 它非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。
+* Mv2 系列提供云中任意 VM 的最高 vCPU 计数（最高为208个 vcpu）和最大内存（最大为 5.7 TiB）。 它非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。
 
-* M 系列提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.8 TiB）。 它也适用于极大型数据库或其他应用程序, 这些应用程序可以受益于高 vCPU 计数和大量内存。
+* M 系列提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.8 TiB）。 它也适用于极大型数据库或其他应用程序，这些应用程序可以受益于高 vCPU 计数和大量内存。
 
 * Dv2 系列、G 系列和 DSv2/GS 适用于需要更快个 vcpu、更好的临时存储性能或具有更高内存需求的应用程序。 它们为许多企业级应用程序提供强大的组合。
 
@@ -67,9 +67,9 @@ ESv3 系列实例基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，
 
 高级存储缓存：支持
 
-Easv3 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452V processor, 可实现 Fmax ghz 的提升3.35 并使用高级存储。 Easv3 系列大小适用于内存密集型企业应用程序。
+Easv3 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452V processor，可实现 Fmax ghz 的提升3.35 并使用高级存储。 Easv3 系列大小适用于内存密集型企业应用程序。
 
-| Size | vCPU | 内存：GiB | 临时存储 (SSD):GiB |
+| Size | vCPU | 内存：GiB | 临时存储（SSD）：GiB |
 |---|---|---|---|
 | Standard_E2as_v3  | 2  | 16  | 32  |
 | Standard_E4as_v3  | 4  | 32  | 64  |
@@ -116,9 +116,9 @@ Ev3 系列实例基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，�
 
 高级存储缓存：不受支持
 
-Eav3 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452V processor, 可实现 Fmax ghz 的提升3.35 并使用高级存储。 Eav3 系列大小适用于内存密集型企业应用程序。 数据磁盘存储与虚拟机分开计费。 若要使用高级存储磁盘, 请使用 Easv3 系列大小。 Easv3 大小的定价和计费标准与 Eav3 系列相同。
+Eav3 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452V processor，可实现 Fmax ghz 的提升3.35 并使用高级存储。 Eav3 系列大小适用于内存密集型企业应用程序。 数据磁盘存储与虚拟机分开计费。 若要使用高级存储磁盘，请使用 Easv3 系列大小。 Easv3 大小的定价和计费标准与 Eav3 系列相同。
 
-| Size | vCPU | 内存：GiB | 临时存储 (SSD):GiB |
+| Size | vCPU | 内存：GiB | 临时存储（SSD）：GiB |
 |---|---|---|---|---|---|
 | Standard_E2a_v3  | 2  | 16  | 50   |
 | Standard_E4a_v3  | 4  | 32  | 100  |
@@ -136,40 +136,40 @@ Eav3 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452V processor, 可实�
 
 写入加速器：[支持](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-Mv2 系列提供高吞吐量、低延迟、直接映射的本地 NVMe 存储, 该存储在超线程 Intel®强®白金 GHz (Skylake) 处理器上运行, 所有核心基础频率为 2.5 GHz, 最大 turbo 频率为 3.8 GHz。 所有 Mv2 系列虚拟机大小均可使用标准和高级永久性磁盘。 Mv2 系列实例是内存优化的 VM 大小, 提供无与伦比的计算性能, 可支持大型内存中数据库和工作负荷, 并且非常适合用于关系数据库服务器、大型缓存和内存中的高内存学. 
+Mv2 系列提供高吞吐量、低延迟、直接映射的本地 NVMe 存储，该存储在超线程 Intel®强®白金 GHz （Skylake）处理器上运行，所有核心基础频率为 2.5 GHz，最大 turbo 频率为 3.8 GHz。 所有 Mv2 系列虚拟机大小均可使用标准和高级永久性磁盘。 Mv2 系列实例是内存优化的 VM 大小，提供无与伦比的计算性能，可支持大型内存中数据库和工作负荷，并且非常适合用于关系数据库服务器、大型缓存和内存中的高内存学. 
 
 |Size | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/Mbps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/Mbps | 最大 NIC 数/预期网络带宽 (Mbps) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| Standard_M208ms_v2<sup>1、2</sup> | 208 | 5700 | 4096 | 64 | 80000/800 (7040) | 40000 / 1000 | 8 / 16000 |
-| Standard_M208s_v2<sup>1、2</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040) | 40000 / 1000 | 8 / 16000 |
+| Standard_M208ms_v2<sup>1、2</sup> | 208 | 5700 | 4096 | 64 | 80000/800 （7040） | 40000 / 1000 | 8 / 16000 |
+| Standard_M208s_v2<sup>1、2</sup> | 208 | 2850 | 4096 | 64 | 80000/800 （7040） | 40000 / 1000 | 8 / 16000 |
 
 Mv2 系列 VM 的 Intel®超线程技术功能  
 
-<sup>1</sup>这些大型 vm 需要以下受支持的来宾操作系统之一:Windows Server 2016、Windows Server 2019、SLES 12 SP4、SLES 15。
+<sup>1</sup>这些大型 vm 需要以下受支持的来宾操作系统之一：Windows Server 2016、Windows Server 2019、SLES 12 SP4、SLES 15。
 
-<sup>2</sup> Mv2 系列 vm 仅为[第2代](/azure/virtual-machines/linux/generation-2)。 如果使用的是 Linux, 请参阅以下部分, 了解如何查找和选择 SUSE Linux 映像。
+<sup>2</sup> Mv2 系列 vm 仅为第2代。 如果使用的是 Linux，请参阅以下部分，了解如何查找和选择 SUSE Linux 映像。
 
 #### <a name="find-a-suse-image"></a>查找 SUSE 映像
 
-若要在 Azure 门户中选择合适的 SUSE Linux 映像: 
+若要在 Azure 门户中选择合适的 SUSE Linux 映像： 
 
-1. 在 Azure 门户中, 选择 "**创建资源**" 
+1. 在 Azure 门户中，选择 "**创建资源**" 
 1. 搜索 "SUSE SAP" 
-1. SLES for SAP 第2代映像可用作即用即付, 或自带订阅 (BYOS)。 在搜索结果中, 展开所需的图像类别:
+1. SLES for SAP 第2代映像可用作即用即付，或自带订阅（BYOS）。 在搜索结果中，展开所需的图像类别：
 
-    * 适用于 SAP 的 SUSE Linux Enterprise Server (SLES)
-    * 适用于 SAP 的 SUSE Linux Enterprise Server (SLES) (BYOS)
+    * 适用于 SAP 的 SUSE Linux Enterprise Server （SLES）
+    * 适用于 SAP 的 SUSE Linux Enterprise Server （SLES）（BYOS）
     
-1. 与 Mv2 系列兼容的 SUSE 图像以名称`GEN2:`作为前缀。 以下 SUSE 映像适用于 Mv2 系列 Vm:
+1. 与 Mv2 系列兼容的 SUSE 图像以名称`GEN2:`作为前缀。 以下 SUSE 映像适用于 Mv2 系列 Vm：
 
-    * GEN2SUSE Linux Enterprise Server (SLES) 12 SP4 for SAP 应用程序
-    * GEN2SUSE Linux Enterprise Server (SLES) 15 for SAP 应用程序
-    * GEN2SUSE Linux Enterprise Server (SLES) 12 SP4 for SAP 应用程序 (BYOS)
-    * GEN2SUSE Linux Enterprise Server (SLES) 15 for SAP 应用程序 (BYOS)
+    * GEN2SUSE Linux Enterprise Server （SLES） 12 SP4 for SAP 应用程序
+    * GEN2SUSE Linux Enterprise Server （SLES） 15 for SAP 应用程序
+    * GEN2SUSE Linux Enterprise Server （SLES） 12 SP4 for SAP 应用程序（BYOS）
+    * GEN2SUSE Linux Enterprise Server （SLES） 15 for SAP 应用程序（BYOS）
 
 #### <a name="select-a-suse-image-via-azure-cli"></a>通过 Azure CLI 选择 SUSE 映像
 
-若要查看 Mv2 系列 vm 当前可用的 SLES for SAP 映像列表, 请使用以下[`az vm image list`](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list)命令:
+若要查看 Mv2 系列 vm 当前可用的 SLES for SAP 映像列表，请使用以下[`az vm image list`](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list)命令：
 
 ```azurecli
 az vm image list --output table --publisher SUSE --sku gen2 --all

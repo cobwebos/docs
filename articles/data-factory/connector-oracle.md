@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 28c7ca6470e15f4ff1f5e80df2ab63fa19da1544
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 318014ec10bda0fa0ead9787067bb30f57707930
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277789"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008573"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -27,6 +27,11 @@ ms.locfileid: "70277789"
 本文概述如何使用 Azure 数据工厂中的复制活动将数据从和复制到 Oracle 数据库。 它基于[复制活动概述](copy-activity-overview.md)进行构建。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 Oracle 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 Oracle 数据库复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Oracle 数据库。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -210,7 +215,7 @@ Oracle 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为`OracleSource`。 | 是 |
 | oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何对应的内置分区参数。 有关示例，请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
-| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许值包括：**None**（默认值）、**PhysicalPartitionsOfTable** 和 **DynamicRange**。<br>启用分区选项（即，不`None`是）时，从 Oracle 数据库并发加载数据的并行度由复制活动的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 | 否 |
+| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许值包括：**无**（默认值）、 **PhysicalPartitionsOfTable**和**DynamicRange**。<br>启用分区选项（即，不`None`是）时，从 Oracle 数据库并发加载数据的并行度由复制活动的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 | 否 |
 | partitionSettings | 指定数据分区的设置组。 <br>当 partition 选项不`None`为时应用。 | 否 |
 | partitionNames | 需要复制的物理分区的列表。 <br>当 partition 选项为`PhysicalPartitionsOfTable`时应用。 如果使用查询来检索源数据，则在 WHERE 子句`?AdfTabularPartitionName`中挂接。 有关示例，请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 | partitionColumnName | 指定并行复制范围分区使用的源列（**整数类型**）的名称。 如果未指定此参数，则将自动检测该表的主键，并将其用作分区列。 <br>当 partition 选项为`DynamicRange`时应用。 如果使用查询来检索源数据，则在 WHERE 子句`?AdfRangePartitionColumnName`中挂接。 有关示例，请参阅[从 Oracle 并行复制](#parallel-copy-from-oracle)部分。 | 否 |
@@ -370,6 +375,9 @@ Oracle 链接服务支持以下属性：
 > [!NOTE]
 > 不支持数据类型 INTERVAL YEAR TO MONTH 和 INTERVAL DAY TO SECOND。
 
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: f13d156ea34fc1c909704a18f645be62a6e09f90
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: aa2bfd09bba863f416c75a3e4f5a9c2523b51541
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881341"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018545"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>映射数据流中的数据转换表达式 
 
@@ -24,32 +24,33 @@ ms.locfileid: "70881341"
 ___
 ### <code>abs</code>
 <code><b>abs(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-将数字对正数取模。
-* ``abs(-20) -> 20``  
-* ``abs(10) -> 10``  
+数字的绝对值。
+* ``abs(-20) -> 20``
+* ``abs(10) -> 10``
 ___
 ### <code>acos</code>
 <code><b>acos(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-计算余弦反值* ``acos(1) -> 0.0``  
+计算余弦反值* ``acos(1) -> 0.0``
 ___
 ### <code>add</code>
 <code><b>add(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-添加一对字符串或数字。 将日期添加到日期数。 将类似类型的数组追加到另一个数组。 与 + 运算符相同* ``add(10, 20) -> 30``  
-* ``10 + 20 -> 30``  
-* ``add('ice', 'cream') -> 'icecream'``  
-* ``'ice' + 'cream' + ' cone' -> 'icecream cone'``  
-* ``add(toDate('2012-12-12'), 3) -> 2012-12-15 (date value)``  
-* ``toDate('2012-12-12') + 3 -> 2012-12-15 (date value)``  
-* ``[10, 20] + [30, 40] => [10, 20, 30, 40]``  
+添加一对字符串或数字。 将日期添加到日期数。 将持续时间添加到时间戳。 将类似类型的数组追加到另一个数组。 与 + 运算符相同* ``add(10, 20) -> 30``
+* ``10 + 20 -> 30``
+* ``add('ice', 'cream') -> 'icecream'``
+* ``'ice' + 'cream' + ' cone' -> 'icecream cone'``
+* ``add(toDate('2012-12-12'), 3) -> toDate('2012-12-15')``
+* ``toDate('2012-12-12') + 3 -> toDate('2012-12-15')``
+* ``[10, 20] + [30, 40] -> [10, 20, 30, 40]``
+* ``toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS') + (days(1) + hours(2) - seconds(10)) -> toTimestamp('2019-02-04 07:19:18.871', 'yyyy-MM-dd HH:mm:ss.SSS')``
 ___
 ### <code>addDays</code>
 <code><b>addDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to add&gt;</i> : integral) => datetime</b></code><br/><br/>
-将日期添加到日期或时间戳。 与日期的 + 运算符相同* ``addDays(toDate('2016-08-08'), 1) -> 2016-08-09``
+将日期添加到日期或时间戳。 与日期的 + 运算符相同* ``addDays(toDate('2016-08-08'), 1) -> toDate('2016-08-09')``
 ___
 ### <code>addMonths</code>
-<code><b>addMonths(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;months to add&gt;</i> : integral) => datetime</b></code><br/><br/>
-将月份添加到日期或时间戳* ``addMonths(toDate('2016-08-31'), 1) -> 2016-09-30``
-* ``addMonths(toTimestamp('2016-09-30 10:10:10'), -1) -> 2016-08-31 10:10:10``
+<code><b>addMonths(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;months to add&gt;</i> : integral, [<i>&lt;value3&gt;</i> : string]) => datetime</b></code><br/><br/>
+将月份添加到日期或时间戳。 您可以选择传递时区* ``addMonths(toDate('2016-08-31'), 1) -> toDate('2016-09-30')``
+* ``addMonths(toTimestamp('2016-09-30 10:10:10'), -1) -> toTimestamp('2016-08-31 10:10:10')``
 ___
 ### <code>and</code>
 <code><b>and(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
@@ -70,34 +71,35 @@ ___
 ___
 ### <code>avg</code>
 <code><b>avg(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-获取列的值的平均值* ``avg(sales) -> 7523420.234``
+获取列的值的平均值* ``avg(sales)``
 ___
 ### <code>avgIf</code>
 <code><b>avgIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
-基于条件获取列的值的平均值* ``avgIf(region == 'West', sales) -> 7523420.234``
+基于条件获取列的值的平均值* ``avgIf(region == 'West', sales)``
 ___
 ### <code>byName</code>
-<code><b>byName(<i>&lt;column name&gt;</i> : string) => any</b></code><br/><br/>
-在流中按名称选择列值。 如果有多个匹配项，则返回第一个匹配项。 如果没有匹配项，则返回 NULL 值。 返回的值必须是由一个类型转换函数（TO_DATE，TO_STRING ...）转换的类型。设计时已知的列名应该只按名称进行寻址。 不支持计算输入，但可以使用参数替换* ``toString(byName('parent')) -> appa``
-* ``toLong(byName('income')) -> 9000000000009``
-* ``toBoolean(byName('foster')) -> false``
-* ``toLong(byName($debtCol)) -> 123456890``
-* ``birthDate -> 12/31/2050``
-* ``toString(byName('Bogus Column')) -> NULL``
+<code><b>byName(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+在流中按名称选择列值。 可以将可选流名称作为第二个参数传递。 如果有多个匹配项，则返回第一个匹配项。 如果没有匹配项，则返回 NULL 值。 返回的值必须是由一个类型转换函数（TO_DATE，TO_STRING ...）转换的类型。设计时已知的列名应该只按名称进行寻址。 不支持计算输入，但可以使用参数替换* ``toString(byName('parent'))``
+* ``toLong(byName('income'))``
+* ``toBoolean(byName('foster'))``
+* ``toLong(byName($debtCol))``
+* ``toString(byName('Bogus Column'))``
+* ``toString(byName('Bogus Column', 'DeriveStream'))``
 ___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
-根据流中的相对位置（从1开始）选择列值。 如果位置超出界限，则返回 NULL 值。 返回的值必须是由类型转换函数之一转换的类型（TO_DATE，TO_STRING ...）不支持计算输入，但可以使用参数替换* ``toString(byPosition(1)) -> amma``
-* ``toDecimal(byPosition(2), 10, 2) -> 199990.99``
-* ``toBoolean(byName(4)) -> false``
-* ``toString(byName($colName)) -> family``
-* ``toString(byPosition(1234)) -> NULL``
+根据流中的相对位置（从1开始）选择列值。 如果位置超出界限，则返回 NULL 值。 返回的值必须是由类型转换函数之一转换的类型（TO_DATE，TO_STRING ...）不支持计算输入，但可以使用参数替换* ``toString(byPosition(1))``
+* ``toDecimal(byPosition(2), 10, 2)``
+* ``toBoolean(byName(4))``
+* ``toString(byName($colName))``
+* ``toString(byPosition(1234))``
 ___
 ### <code>case</code>
 <code><b>case(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, <i>&lt;false_expression&gt;</i> : any, ...) => any</b></code><br/><br/>
-根据备用条件应用一个值或另一个值。 如果输入数为偶数，则对于最后一个条件，另一个为 NULL* ``case(custType == 'Premium', 10, 4.5)``
-* ``case(custType == 'Premium', price*0.95, custType == 'Elite',   price*0.9, price*2)``
-* ``case(dayOfWeek(saleDate) == 1, 'Sunday', dayOfWeek(saleDate) == 6, 'Saturday')``
+根据备用条件应用一个值或另一个值。 如果输入数为偶数，则将另一个值默认为最后一个条件的 NULL 值* ``case(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``
+* ``case(10 + 20 == 25, 'bojjus', 'do' < 'go', 'gunchus') -> 'gunchus'``
+* ``isNull(case(10 + 20 == 25, 'bojjus', 'do' > 'go', 'gunchus')) -> true``
+* ``case(10 + 20 == 25, 'bojjus', 'do' > 'go', 'gunchus', 'dumbo') -> 'dumbo'``
 ___
 ### <code>cbrt</code>
 <code><b>cbrt(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
@@ -119,20 +121,19 @@ ___
 ___
 ### <code>concat</code>
 <code><b>concat(<i>&lt;this&gt;</i> : string, <i>&lt;that&gt;</i> : string, ...) => string</b></code><br/><br/>
-将字符串的可变数字连接在一起。 与字符串的 + 运算符相同* ``concat('Awesome', 'Cool', 'Product') -> 'AwesomeCoolProduct'``
-* ``'Awesome' + 'Cool' + 'Product' -> 'AwesomeCoolProduct'``
-* ``concat(addrLine1, ' ', addrLine2, ' ', city, ' ', state, ' ', zip)``
-* ``addrLine1 + ' ' + addrLine2 + ' ' + city + ' ' + state + ' ' + zip``
+将字符串的可变数字连接在一起。 与包含字符串的 + 运算符相同 * ``concat('dataflow', 'is', 'awesome') -> 'dataflowisawesome'``
+* ``'dataflow' + 'is' + 'awesome' -> 'dataflowisawesome'``
+* ``isNull('sql' + null) -> true``
 ___
 ### <code>concatWS</code>
 <code><b>concatWS(<i>&lt;separator&gt;</i> : string, <i>&lt;this&gt;</i> : string, <i>&lt;that&gt;</i> : string, ...) => string</b></code><br/><br/>
-使用分隔符将字符串的可变数字连接在一起。 第一个参数为分隔符* ``concatWS(' ', 'Awesome', 'Cool', 'Product') -> 'Awesome Cool Product'``
-* ``concatWS(' ' , addrLine1, addrLine2, city, state, zip) ->``
-* ``concatWS(',' , toString(order_total), toString(order_discount))``
+使用分隔符将字符串的可变数字连接在一起。 第一个参数为分隔符* ``concatWS(' ', 'dataflow', 'is', 'awesome') -> 'dataflow is awesome'``
+* ``isNull(concatWS(null, 'dataflow', 'is', 'awesome')) -> true``
+* ``concatWS(' is ', 'dataflow', 'awesome') -> 'dataflow is awesome'``
 ___
 ### <code>cos</code>
 <code><b>cos(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-计算余弦值* ``cos(10) -> -0.83907152907``
+计算余弦值* ``cos(10) -> -0.8390715290764524``
 ___
 ### <code>cosh</code>
 <code><b>cosh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
@@ -140,70 +141,74 @@ ___
 ___
 ### <code>count</code>
 <code><b>count([<i>&lt;value1&gt;</i> : any]) => long</b></code><br/><br/>
-获取值的聚合计数。 如果指定了可选列，则将忽略计数中的 NULL 值* ``count(custId) -> 100``
-* ``count(custId, custName) -> 50``
-* ``count() -> 125``
-* ``count(iif(isNull(custId), 1, NULL)) -> 5``
+获取值的聚合计数。 如果指定了可选列，则将忽略计数中的 NULL 值* ``count(custId)``
+* ``count(custId, custName)``
+* ``count()``
+* ``count(iif(isNull(custId), 1, NULL))``
 ___
 ### <code>countDistinct</code>
 <code><b>countDistinct(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => long</b></code><br/><br/>
-获取一组列的非重复值的聚合计数* ``countDistinct(custId, custName) -> 60``
+获取一组列的非重复值的聚合计数* ``countDistinct(custId, custName)``
 ___
 ### <code>countIf</code>
 <code><b>countIf(<i>&lt;value1&gt;</i> : boolean, [<i>&lt;value2&gt;</i> : any]) => long</b></code><br/><br/>
-根据条件获取值的聚合计数。 如果指定了可选列，则将忽略计数中的 NULL 值* ``countIf(state == 'CA' && commission < 10000, name) -> 100``
+根据条件获取值的聚合计数。 如果指定了可选列，则将忽略计数中的 NULL 值* ``countIf(state == 'CA' && commission < 10000, name)``
 ___
 ### <code>covariancePopulation</code>
 <code><b>covariancePopulation(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-获取两个列之间的总体协方差* ``covariancePopulation(sales, profit) -> 122.12``
+获取两个列之间的总体协方差* ``covariancePopulation(sales, profit)``
 ___
 ### <code>covariancePopulationIf</code>
 <code><b>covariancePopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number, <i>&lt;value3&gt;</i> : number) => double</b></code><br/><br/>
-基于条件，获取两列的总体协方差* ``covariancePopulationIf(region == 'West', sales) -> 122.12``
+基于条件，获取两列的总体协方差* ``covariancePopulationIf(region == 'West', sales)``
 ___
 ### <code>covarianceSample</code>
 <code><b>covarianceSample(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-获取两个列的样本协方差* ``covarianceSample(sales, profit) -> 122.12``
+获取两个列的样本协方差* ``covarianceSample(sales, profit)``
 ___
 ### <code>covarianceSampleIf</code>
 <code><b>covarianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number, <i>&lt;value3&gt;</i> : number) => double</b></code><br/><br/>
-基于条件，获取两个列的样本协方差* ``covarianceSampleIf(region == 'West', sales, profit) -> 122.12``
+基于条件，获取两个列的样本协方差* ``covarianceSampleIf(region == 'West', sales, profit)``
 ___
 ### <code>crc32</code>
 <code><b>crc32(<i>&lt;value1&gt;</i> : any, ...) => long</b></code><br/><br/>
-根据位长度计算不同基元数据类型的列集的 CRC32 哈希，值只能为 0(256)、224、256、384、512。 它可用于计算行的指纹* ``crc32(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 3630253689``
+根据位长度计算不同基元数据类型的列集的 CRC32 哈希，值只能为 0(256)、224、256、384、512。 它可用于计算行的指纹* ``crc32(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 3630253689L``
 ___
 ### <code>cumeDist</code>
 <code><b>cumeDist() => integer</b></code><br/><br/>
 CumeDist 函数计算某个值相对于分区中所有值的位置。 结果是前面的行数，或者等于当前行在分区中的顺序除以窗口分区中的总行数。 排序中的任何并列值都将计算为相同的位置。
-* ``cumeDist() -> 1``
+* ``cumeDist()``
 ___
 ### <code>currentDate</code>
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
 当此作业开始运行时获取当前日期。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 当地时区用作默认值。
-* ``currentDate() -> 12-12-2030``
-* ``currentDate('PST') -> 12-31-2050``
+* ``currentDate() == toDate('2250-12-31') -> false``
+* ``currentDate('PST')  == toDate('2250-12-31') -> false``
 ___
 ### <code>currentTimestamp</code>
 <code><b>currentTimestamp() => timestamp</b></code><br/><br/>
-获取作业开始与本地时区一起运行时的当前时间戳* ``currentTimestamp() -> 12-12-2030T12:12:12``
+获取作业开始与本地时区一起运行时的当前时间戳* ``currentTimestamp() == toTimestamp('2250-12-31 12:12:12') -> false``
 ___
 ### <code>currentUTC</code>
 <code><b>currentUTC([<i>&lt;value1&gt;</i> : string]) => timestamp</b></code><br/><br/>
-获取 UTC 格式的当前时间戳。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 它默认为当前时区* ``currentUTC() -> 12-12-2030T19:18:12``
-* ``currentUTC('Asia/Seoul') -> 12-13-2030T11:18:12``
+获取 UTC 格式的当前时间戳。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 它默认为当前时区* ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``
+* ``currentUTC() != toTimestamp('2050-12-12 19:18:12') -> true``
 ___
 ### <code>dayOfMonth</code>
 <code><b>dayOfMonth(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
-获取给定日期的月份日期* ``dayOfMonth(toDate('2018-06-08')) -> 08``
+获取给定日期的月份日期* ``dayOfMonth(toDate('2018-06-08')) -> 8``
 ___
 ### <code>dayOfWeek</code>
 <code><b>dayOfWeek(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
-获取给定日期的星期日期。 1-星期日，2-星期一 ...，7-星期六* ``dayOfWeek(toDate('2018-06-08')) -> 7``
+获取给定日期的星期日期。 1-星期日，2-星期一 ...，7-星期六* ``dayOfWeek(toDate('2018-06-08')) -> 6``
 ___
 ### <code>dayOfYear</code>
 <code><b>dayOfYear(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
 获取给定日期的一年中的某一天* ``dayOfYear(toDate('2016-04-09')) -> 100``
+___
+### <code>days</code>
+<code><b>days(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+天数的持续时间（以毫秒为单位）* ``days(2) -> 172800000L``
 ___
 ### <code>degrees</code>
 <code><b>degrees(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
@@ -211,7 +216,7 @@ ___
 ___
 ### <code>denseRank</code>
 <code><b>denseRank(<i>&lt;value1&gt;</i> : any, ...) => integer</b></code><br/><br/>
-计算某个值在值组中的排名。 结果是 1 加上前面的行数，或者等于当前行在分区中的顺序。 值不会在序列中生成空隙。 即使数据未排序并在值中查找更改，密集排名仍有效* ``denseRank(salesQtr, salesAmt) -> 1``
+计算某个值在值组中的排名。 结果是 1 加上前面的行数，或者等于当前行在分区中的顺序。 值不会在序列中生成空隙。 即使数据未排序并在值中查找更改，密集排名仍有效* ``denseRank(salesQtr, salesAmt)``
 ___
 ### <code>divide</code>
 <code><b>divide(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
@@ -220,19 +225,19 @@ ___
 ___
 ### <code>endsWith</code>
 <code><b>endsWith(<i>&lt;string&gt;</i> : string, <i>&lt;substring to check&gt;</i> : string) => boolean</b></code><br/><br/>
-检查字符串是否以提供的字符串结尾* ``endsWith('great', 'eat') -> true``
+检查字符串是否以提供的字符串结尾* ``endsWith('dumbo', 'mbo') -> true``
 ___
 ### <code>equals</code>
 <code><b>equals(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
 “等于”比较运算符。 与 = = 运算符相同* ``equals(12, 24) -> false``
-* ``12==24 -> false``
-* ``'bad'=='bad' -> true``
-* ``'good'== NULL -> false``
-* ``NULL===NULL -> false``
+* ``12 == 24 -> false``
+* ``'bad' == 'bad' -> true``
+* ``isNull('good' == toString(null)) -> true``
+* ``isNull(null == null) -> true``
 ___
 ### <code>equalsIgnoreCase</code>
 <code><b>equalsIgnoreCase(<i>&lt;value1&gt;</i> : string, <i>&lt;value2&gt;</i> : string) => boolean</b></code><br/><br/>
-忽略大小写的“等于”比较运算符。 与 < = > 运算符相同* ``'abc'<==>'abc' -> true``
+忽略大小写的“等于”比较运算符。 与 < = > 运算符相同* ``'abc'<=>'Abc' -> true``
 * ``equalsIgnoreCase('abc', 'Abc') -> true``
 ___
 ### <code>factorial</code>
@@ -241,13 +246,13 @@ ___
 ___
 ### <code>false</code>
 <code><b>false() => boolean</b></code><br/><br/>
-始终返回 false 值。 如果有一个名为 "false" 的列，请使用函数语法（false （））* ``isDiscounted == false()``
-* ``isDiscounted() == false``
+始终返回 false 值。 如果有一个名为 "false" 的列，请使用函数语法（false （））* ``(10 + 20 > 30) -> false``
+* ``(10 + 20 > 30) -> false()``
 ___
 ### <code>first</code>
 <code><b>first(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : boolean]) => any</b></code><br/><br/>
-获取列组的第一个值。 如果省略第二个参数 ignoreNulls，则假定为 false* ``first(sales) -> 12233.23``
-* ``first(sales, false) -> NULL``
+获取列组的第一个值。 如果省略第二个参数 ignoreNulls，则假定为 false* ``first(sales)``
+* ``first(sales, false)``
 ___
 ### <code>floor</code>
 <code><b>floor(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
@@ -255,35 +260,52 @@ ___
 ___
 ### <code>fromUTC</code>
 <code><b>fromUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-转换为 UTC 格式的时间戳。 你可以选择以 "GMT"、"PST"、"UTC"、"中美洲/开曼" 形式传递时区。 它默认为当前时区* ``fromUTC(currentTimeStamp()) -> 12-12-2030T19:18:12``
-* ``fromUTC(currentTimeStamp(), 'Asia/Seoul') -> 12-13-2030T11:18:12``
+转换为 UTC 格式的时间戳。 你可以选择以 "GMT"、"PST"、"UTC"、"中美洲/开曼" 形式传递时区。 它默认为当前时区* ``fromUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``
+* ``fromUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``
 ___
 ### <code>greater</code>
 <code><b>greater(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
 “大于”比较运算符。 与 > 运算符相同* ``greater(12, 24) -> false``
-* ``'abcd' > 'abc' -> true``
+* ``('dumbo' > 'dum') -> true``
+* ``(toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS') > toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> true``
 ___
 ### <code>greaterOrEqual</code>
 <code><b>greaterOrEqual(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-“大于等于”比较运算符。 与 > = 运算符相同* ``greaterOrEqual(12, 12) -> false``
-* ``'abcd' >= 'abc' -> true``
+“大于等于”比较运算符。 与 > = 运算符相同* ``greaterOrEqual(12, 12) -> true``
+* ``('dumbo' >= 'dum') -> true``
 ___
 ### <code>greatest</code>
 <code><b>greatest(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/>
-返回输入值列表中的最大值。 如果所有输入均为 null，则返回 null* ``greatest(10, 30, 15, 20) -> 30``
-* ``greatest(toDate('12/12/2010'), toDate('12/12/2011'), toDate('12/12/2000')) -> '12/12/2011'``
+返回值列表中的最大值作为输入跳过 null 值。 如果所有输入均为 null，则返回 null* ``greatest(10, 30, 15, 20) -> 30``
+* ``greatest(10, toInteger(null), 20) -> 20``
+* ``greatest(toDate('2010-12-12'), toDate('2011-12-12'), toDate('2000-12-12')) -> toDate('2011-12-12')``
+* ``greatest(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS'), toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')) -> toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')``
+___
+### <code>hasColumn</code>
+<code><b>hasColumn(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => boolean</b></code><br/><br/>
+按名称检查流中的列值。 可以将可选流名称作为第二个参数传递。  设计时已知的列名应该只按名称进行寻址。 不支持计算输入，但可以使用参数替换* ``hasColumn('parent')``
 ___
 ### <code>hour</code>
 <code><b>hour(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
 获取时间戳的小时值。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 当地时区用作默认值。
-* ``hour(toTimestamp('2009-07-30T12:58:59')) -> 12``
-* ``hour(toTimestamp('2009-07-30T12:58:59'), 'PST') -> 12``
+* ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12``
+* ``hour(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 12``
+___
+### <code>hours</code>
+<code><b>hours(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+小时数的持续时间（以毫秒为单位）* ``hours(2) -> 7200000L``
 ___
 ### <code>iif</code>
 <code><b>iif(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, [<i>&lt;false_expression&gt;</i> : any]) => any</b></code><br/><br/>
-根据条件应用一个值或另一个值。 如果未指定其他值，则将其视为 NULL。 这两个值必须兼容（numeric，string ...）* ``iif(custType == 'Premium', 10, 4.5)``
-* ``iif(amount > 100, 'High')``
-* ``iif(dayOfWeek(saleDate) == 6, 'Weekend', 'Weekday')``
+根据条件应用一个值或另一个值。 如果未指定其他值，则将其视为 NULL。 这两个值必须兼容（numeric，string ...）* ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``
+* ``iif(10 > 30, 'dumbo', 'gumbo') -> 'gumbo'``
+* ``iif(month(toDate('2018-12-01')) == 12, 345.12, 102.67) -> 345.12``
+___
+### <code>iifNull</code>
+<code><b>iifNull(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => any</b></code><br/><br/>
+检查该值是否不为 NULL，并返回该值，否则返回该替换值。 它测试所有输入，直到找到第一个非 null 值* ``iifNull(10, 20) -> 10``
+* ``iifNull(null, 20, 40) -> 20``
+* ``iifNull('bojjus', 'bo', 'dumbo') -> 'dumbo'``
 ___
 ### <code>in</code>
 <code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
@@ -292,80 +314,85 @@ ___
 ___
 ### <code>initCap</code>
 <code><b>initCap(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-将每个单词的第一个字母转换为大写。 以空格分隔的形式标识字词* ``initCap('cool iceCREAM') -> 'Cool IceCREAM'``
+将每个单词的第一个字母转换为大写。 以空格分隔的形式标识字词* ``initCap('cool iceCREAM') -> 'Cool Icecream'``
 ___
 ### <code>instr</code>
 <code><b>instr(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string) => integer</b></code><br/><br/>
-在字符串中查找子字符串的位置（从 1 开始）。 如果未找到，则返回0* ``instr('great', 'eat') -> 3``
-* ``instr('microsoft', 'o') -> 7``
+在字符串中查找子字符串的位置（从 1 开始）。 如果未找到，则返回0* ``instr('dumbo', 'mbo') -> 3``
+* ``instr('microsoft', 'o') -> 5``
 * ``instr('good', 'bad') -> 0``
 ___
 ### <code>isDelete</code>
 <code><b>isDelete([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-检查该行是否标记为删除。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isDelete() -> true``
-* ``isDelete(1) -> false``
+检查该行是否标记为删除。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isDelete()``
+* ``isDelete(1)``
 ___
 ### <code>isError</code>
 <code><b>isError([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-检查该行是否标记为错误。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isError() -> true``
-* ``isError(1) -> false``
+检查该行是否标记为错误。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isError()``
+* ``isError(1)``
 ___
 ### <code>isIgnore</code>
 <code><b>isIgnore([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-检查该行是否标记为忽略。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isIgnore() -> true``
-* ``isIgnore(1) -> false``
+检查该行是否标记为忽略。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isIgnore()``
+* ``isIgnore(1)``
 ___
 ### <code>isInsert</code>
 <code><b>isInsert([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-检查该行是否标记为插入。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isInsert() -> true``
-* ``isInsert(1) -> false``
+检查该行是否标记为插入。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isInsert()``
+* ``isInsert(1)``
 ___
 ### <code>isMatch</code>
 <code><b>isMatch([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-检查查找时是否匹配该行。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isMatch() -> true``
-* ``isMatch(1) -> false``
+检查查找时是否匹配该行。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isMatch()``
+* ``isMatch(1)``
 ___
 ### <code>isNull</code>
 <code><b>isNull(<i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
 检查值是否为 NULL* ``isNull(NULL()) -> true``
-* ``isNull('') -> false'``
+* ``isNull('') -> false``
 ___
 ### <code>isUpdate</code>
 <code><b>isUpdate([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-检查该行是否标记为更新。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isUpdate() -> true``
-* ``isUpdate(1) -> false``
+检查该行是否标记为更新。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isUpdate()``
+* ``isUpdate(1)``
+___
+### <code>isUpsert</code>
+<code><b>isUpsert([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
+检查该行是否标记为插入。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引的默认值为1* ``isUpsert()``
+* ``isUpsert(1)``
 ___
 ### <code>kurtosis</code>
 <code><b>kurtosis(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-获取列的峰值* ``kurtosis(sales) -> 122.12``
+获取列的峰值* ``kurtosis(sales)``
 ___
 ### <code>kurtosisIf</code>
 <code><b>kurtosisIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-基于条件，获取列的峰值* ``kurtosisIf(region == 'West', sales) -> 122.12``
+基于条件，获取列的峰值* ``kurtosisIf(region == 'West', sales)``
 ___
 ### <code>lag</code>
 <code><b>lag(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look before&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
-获取当前行之前由第一个参数计算的 n 行的值。 第二个参数是要返回的行数，默认值为1。 如果没有多个行，则返回值为 null 的值，除非指定了默认值* ``lag(amount, 2) -> 60``
-* ``lag(amount, 2000, 100) -> 100``
+获取当前行之前由第一个参数计算的 n 行的值。 第二个参数是要返回的行数，默认值为1。 如果没有多个行，则返回值为 null 的值，除非指定了默认值* ``lag(amount, 2)``
+* ``lag(amount, 2000, 100)``
 ___
 ### <code>last</code>
 <code><b>last(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : boolean]) => any</b></code><br/><br/>
-获取列组的最后一个值。 如果省略第二个参数 ignoreNulls，则假定为 false* ``last(sales) -> 523.12``
-* ``last(sales, false) -> NULL``
+获取列组的最后一个值。 如果省略第二个参数 ignoreNulls，则假定为 false* ``last(sales)``
+* ``last(sales, false)``
 ___
 ### <code>lastDayOfMonth</code>
 <code><b>lastDayOfMonth(<i>&lt;value1&gt;</i> : datetime) => date</b></code><br/><br/>
-获取给定日期的月份的最后日期* ``lastDayOfMonth(toDate('2009-01-12')) -> 2009-01-31``
+获取给定日期的月份的最后日期* ``lastDayOfMonth(toDate('2009-01-12')) -> toDate('2009-01-31')``
 ___
 ### <code>lead</code>
 <code><b>lead(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look after&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
-获取当前行之后由第一个参数计算的 n 行的值。 第二个参数是要向前看的行数，默认值为1。 如果没有多个行，则返回值为 null 的值，除非指定了默认值* ``lead(amount, 2) -> 60``
-* ``lead(amount, 2000, 100) -> 100``
+获取当前行之后由第一个参数计算的 n 行的值。 第二个参数是要向前看的行数，默认值为1。 如果没有多个行，则返回值为 null 的值，除非指定了默认值* ``lead(amount, 2)``
+* ``lead(amount, 2000, 100)``
 ___
 ### <code>least</code>
 <code><b>least(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/>
 “小于等于”比较运算符。 与 < = 运算符相同* ``least(10, 30, 15, 20) -> 10``
-* ``least(toDate('12/12/2010'), toDate('12/12/2011'), toDate('12/12/2000')) -> '12/12/2000'``
+* ``least(toDate('2010-12-12'), toDate('2011-12-12'), toDate('2000-12-12')) -> toDate('2000-12-12')``
 ___
 ### <code>left</code>
 <code><b>left(<i>&lt;string to subset&gt;</i> : string, <i>&lt;number of characters&gt;</i> : integral) => string</b></code><br/><br/>
@@ -374,17 +401,18 @@ ___
 ___
 ### <code>length</code>
 <code><b>length(<i>&lt;value1&gt;</i> : string) => integer</b></code><br/><br/>
-返回字符串的长度* ``length('kiddo') -> 5``
+返回字符串的长度* ``length('dumbo') -> 5``
 ___
 ### <code>lesser</code>
 <code><b>lesser(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-“小于”比较运算符。 与 < 运算符相同* ``lesser(12 < 24) -> true``
-* ``'abcd' < 'abc' -> false``
+“小于”比较运算符。 与 < 运算符相同* ``lesser(12, 24) -> true``
+* ``('abcd' < 'abc') -> false``
+* ``(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS') < toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')) -> true``
 ___
 ### <code>lesserOrEqual</code>
 <code><b>lesserOrEqual(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
 “小于等于”比较运算符。 与 < = 运算符相同* ``lesserOrEqual(12, 12) -> true``
-* ``'abcd' <= 'abc' -> false``
+* ``('dumbo' <= 'dum') -> false``
 ___
 ### <code>levenshtein</code>
 <code><b>levenshtein(<i>&lt;from string&gt;</i> : string, <i>&lt;to string&gt;</i> : string) => integer</b></code><br/><br/>
@@ -398,7 +426,7 @@ ___
 ___
 ### <code>locate</code>
 <code><b>locate(<i>&lt;substring to find&gt;</i> : string, <i>&lt;string&gt;</i> : string, [<i>&lt;from index - 1-based&gt;</i> : integral]) => integer</b></code><br/><br/>
-从特定的位置开始，在字符串中查找子字符串的位置（从 1 开始）。 如果省略位置，则视为从字符串开头查找。 如果未找到，则返回0* ``locate('eat', 'great') -> 3``
+从特定的位置开始，在字符串中查找子字符串的位置（从 1 开始）。 如果省略位置，则视为从字符串开头查找。 如果未找到，则返回0* ``locate('mbo', 'dumbo') -> 3``
 * ``locate('o', 'microsoft', 6) -> 7``
 * ``locate('bad', 'good') -> 0``
 ___
@@ -416,60 +444,70 @@ Lowercases 字符串* ``lower('GunChus') -> 'gunchus'``
 ___
 ### <code>lpad</code>
 <code><b>lpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/>
-在左侧使用提供的填充内容填充字符串，直到达到特定的长度。 如果字符串等于或大于该长度，则* ``lpad('great', 10, '-') -> '___--great'``将其视为无
-* ``lpad('great', 4, '-') -> 'great'`` 
-*操作 "" lpad （"出色"、8、"< >"）-> "< ><great'``
+在左侧使用提供的填充内容填充字符串，直到达到特定的长度。 如果字符串等于或大于长度，则将* ``lpad('dumbo', 10, '-') -> '-----dumbo'``其修整为长度
+* ``lpad('dumbo', 4, '-') -> 'dumb'`` 
+* "" lpad （"dumbo"、8、"< >"）-> "< ><dumbo'``
 ___
 ### <code>ltrim</code>
-<code><b>ltrim(<i>&lt;string to trim&gt;</i> : string, <i>&lt;trim characters&gt;</i> : string) => string</b></code><br/><br/>
-在左侧裁剪掉前导和尾随字符的字符串。 如果未指定第二个参数，则裁剪掉空格。 否则，它将修整第二个参数中指定的任何字符* ``ltrim('!--!wor!ld!', '-!') -> 'wor!ld!'``
+<code><b>ltrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
+在左侧裁剪掉前导和尾随字符的字符串。 如果未指定第二个参数，则裁剪掉空格。 否则，它将修整第二个参数中指定的任何字符* ``ltrim('  dumbo  ') -> 'dumbo  '``
+* ``ltrim('!--!du!mbo!', '-!') -> 'du!mbo!'``
 ___
 ### <code>max</code>
 <code><b>max(<i>&lt;value1&gt;</i> : any) => any</b></code><br/><br/>
-获取列的最大值* ``MAX(sales) -> 12312131.12``
+获取列的最大值* ``max(sales)``
 ___
 ### <code>maxIf</code>
 <code><b>maxIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-基于条件，获取列的最大值* ``maxIf(region == 'West', sales) -> 99999.56``
+基于条件，获取列的最大值* ``maxIf(region == 'West', sales)``
 ___
 ### <code>md5</code>
 <code><b>md5(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/>
-计算不同基元数据类型的列集的 MD5 摘要，并返回 32 字符十六进制字符串。 它可用于计算行的指纹* ``md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 'c1527622a922c83665e49835e46350fe'``
+计算不同基元数据类型的列集的 MD5 摘要，并返回 32 字符十六进制字符串。 它可用于计算行的指纹* ``md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '4ce8a880bd621a1ffad0bca905e1bc5a'``
 ___
 ### <code>mean</code>
 <code><b>mean(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-获取列值的中间值。 与 AVG 相同* ``mean(sales) -> 7523420.234``
+获取列值的中间值。 与 AVG 相同* ``mean(sales)``
 ___
 ### <code>meanIf</code>
 <code><b>meanIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
-根据条件获取列值的中间值。 与 avgIf 相同* ``meanIf(region == 'West', sales) -> 7523420.234``
+根据条件获取列值的中间值。 与 avgIf 相同* ``meanIf(region == 'West', sales)``
 ___
 ### <code>millisecond</code>
 <code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
 获取日期的毫秒值。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 当地时区用作默认值。
 * ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``
 ___
+### <code>milliseconds</code>
+<code><b>milliseconds(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+毫秒数的持续时间（以毫秒为单位）* ``seconds(2) -> 2L``
+___
 ### <code>min</code>
 <code><b>min(<i>&lt;value1&gt;</i> : any) => any</b></code><br/><br/>
-获取列的最小值* ``min(sales) -> 00.01``
-* ``min(orderDate) -> 12/12/2000``
+获取列的最小值 * ``min(sales)``
 ___
 ### <code>minIf</code>
 <code><b>minIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-基于条件，获取列的最小值* ``minIf(region == 'West', sales) -> 00.01``
+基于条件，获取列的最小值* ``minIf(region == 'West', sales)``
 ___
 ### <code>minus</code>
 <code><b>minus(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-减去数字。 从日期数中减去日期。 与-operator 相同* ``minus(20, 10) -> 10``
+减去数字。 从日期数中减去日期。 减时间戳的持续时间。 减两个时间戳以毫秒为单位。 与-operator 相同* ``minus(20, 10) -> 10``
 * ``20 - 10 -> 10``
-* ``minus(toDate('2012-12-15'), 3) -> 2012-12-12 (date value)``
-* ``toDate('2012-12-15') - 3 -> 2012-12-13 (date value)``
+* ``minus(toDate('2012-12-15'), 3) -> toDate('2012-12-12')``
+* ``toDate('2012-12-15') - 3 -> toDate('2012-12-12')``
+* ``toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS') + (days(1) + hours(2) - seconds(10)) -> toTimestamp('2019-02-04 07:19:18.871', 'yyyy-MM-dd HH:mm:ss.SSS')``
+* ``toTimestamp('2019-02-03 05:21:34.851', 'yyyy-MM-dd HH:mm:ss.SSS') - toTimestamp('2019-02-03 05:21:36.923', 'yyyy-MM-dd HH:mm:ss.SSS') -> -2072``
 ___
 ### <code>minute</code>
 <code><b>minute(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
 获取时间戳的分钟值。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 当地时区用作默认值。
-* ``minute(toTimestamp('2009-07-30T12:58:59')) -> 58``
-* ``minute(toTimestamp('2009-07-30T12:58:59', 'PST')) -> 58``
+* ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58``
+* ``minute(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 58``
+___
+### <code>minutes</code>
+<code><b>minutes(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+分钟数的持续时间（以毫秒为单位）* ``minutes(2) -> 120000L``
 ___
 ### <code>mod</code>
 <code><b>mod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
@@ -481,9 +519,9 @@ ___
 获取日期或时间戳的月份值* ``month(toDate('2012-8-8')) -> 8``
 ___
 ### <code>monthsBetween</code>
-<code><b>monthsBetween(<i>&lt;from date/timestamp&gt;</i> : datetime, <i>&lt;to date/timestamp&gt;</i> : datetime, [<i>&lt;time zone&gt;</i> : boolean], [<i>&lt;value4&gt;</i> : string]) => double</b></code><br/><br/>
-获取两个 datesYou 之间的月数，可以通过 "GMT"、"PST"、"UTC"、"中美洲/开曼" 形式传递可选时区。 当地时区用作默认值。
-* ``monthsBetween(toDate('1997-02-28 10:30:00'), toDate('1996-10-30')) -> 3.94959677``
+<code><b>monthsBetween(<i>&lt;from date/timestamp&gt;</i> : datetime, <i>&lt;to date/timestamp&gt;</i> : datetime, [<i>&lt;roundoff&gt;</i> : boolean], [<i>&lt;time zone&gt;</i> : string]) => double</b></code><br/><br/>
+获取两个日期之间的月数。 您可以舍入计算。您可以以 "GMT"、"PST"、"UTC"、"中美洲/开曼" 的形式传递可选时区。 当地时区用作默认值。
+* ``monthsBetween(toTimestamp('1997-02-28 10:30:00'), toDate('1996-10-30')) -> 3.94959677``
 ___
 ### <code>multiply</code>
 <code><b>multiply(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
@@ -493,8 +531,8 @@ ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
 NTile 函数将每个窗口分区的行分割为从 1 到 `n` 的 `n` 桶。 桶值最大相差 1。 如果分区中的行数不能均匀分割成桶数，则余值将逐个分布在每个桶中，从第一个桶开始。 NTile 函数可用于计算 tertiles、四分位数、十分位数和其他常见汇总统计信息。 在初始化期间，该函数将计算两个变量：常规 bucket 的大小将额外添加一行。 这两个变量都以当前分区的大小为基础。 在计算过程中，该函数将跟踪当前行号、当前桶号，以及发生桶更改的行号 (bucketThreshold)。 如果当前行号达到桶的阈值，则桶值将会加 1，阈值将按桶大小增加（如果当前桶已填充，则额外加 1）。
-* ``nTile() -> 1``
-* ``nTile(numOfBuckets) -> 1``
+* ``nTile()``
+* ``nTile(numOfBuckets)``
 ___
 ### <code>negate</code>
 <code><b>negate(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
@@ -502,29 +540,29 @@ ___
 ___
 ### <code>nextSequence</code>
 <code><b>nextSequence() => long</b></code><br/><br/>
-返回下一个唯一序列。 该数字仅在分区内是连续的，并以 partitionId 为前缀。* ``nextSequence() -> 12313112``
+返回下一个唯一序列。 该数字仅在分区内是连续的，并以 partitionId 为前缀。* ``nextSequence() == 12313112 -> false``
 ___
 ### <code>normalize</code>
 <code><b>normalize(<i>&lt;String to normalize&gt;</i> : string) => string</b></code><br/><br/>
-规范化字符串值以区分重音的 unicode 字符* ``normalize('boys') -> 'boys'``
+规范化字符串值以区分重音的 unicode 字符* ``regexReplace(normalize('bo²s'), `\p{M}`, '') -> 'boys'``
 ___
 ### <code>not</code>
 <code><b>not(<i>&lt;value1&gt;</i> : boolean) => boolean</b></code><br/><br/>
 逻辑求反运算符* ``not(true) -> false``
-* ``not(premium)``
+* ``not(10 == 20) -> true``
 ___
 ### <code>notEquals</code>
 <code><b>notEquals(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-“不等于”比较运算符。 等同于！ = 运算符* ``12!=24 -> true``
-* ``'abc'!='abc' -> false``
+“不等于”比较运算符。 等同于！ = 运算符* ``12 != 24 -> true``
+* ``'bojjus' != 'bo' + 'jjus' -> false``
 ___
 ### <code>null</code>
 <code><b>null() => null</b></code><br/><br/>
-返回 NULL 值。 如果存在名为“null”的列，则使用函数 syntax(null())。 使用的任何操作都将导致 NULL* ``custId = NULL (for derived field)``
-* ``custId == NULL -> NULL``
-* ``'nothing' + NULL -> NULL``
-* ``10 * NULL -> NULL'``
-* ``NULL == '' -> NULL'``
+返回 NULL 值。 如果存在名为“null”的列，则使用函数 syntax(null())。 使用的任何操作都将导致 NULL* ``isNull('dumbo' + null) -> true``
+* ``isNull(10 * null) -> true``
+* ``isNull('') -> false``
+* ``isNull(10 + 20) -> false``
+* ``isNull(10/0) -> true``
 ___
 ### <code>or</code>
 <code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
@@ -542,7 +580,7 @@ ___
 ___
 ### <code>rank</code>
 <code><b>rank(<i>&lt;value1&gt;</i> : any, ...) => integer</b></code><br/><br/>
-计算某个值在值组中的排名。 结果是 1 加上前面的行数，或者等于当前行在分区中的顺序。 值将在序列中生成空隙。 即使数据未排序并在值中查找更改，名次仍有效* ``rank(salesQtr, salesAmt) -> 1``
+计算某个值在值组中的排名。 结果是 1 加上前面的行数，或者等于当前行在分区中的顺序。 值将在序列中生成空隙。 即使数据未排序并在值中查找更改，名次仍有效* ``rank(salesQtr, salesAmt)``
 ___
 ### <code>regexExtract</code>
 <code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/>
@@ -561,15 +599,16 @@ ___
 ___
 ### <code>regexSplit</code>
 <code><b>regexSplit(<i>&lt;string to split&gt;</i> : string, <i>&lt;regex expression&gt;</i> : string) => array</b></code><br/><br/>
-基于正则表达式的分隔符拆分字符串并返回字符串数组* ``regexSplit('oneAtwoBthreeC', '[CAB]') -> ['one', 'two', 'three']``
-* ``regexSplit('oneAtwoBthreeC', '[CAB]')[1] -> 'one'``
-* ``regexSplit('oneAtwoBthreeC', '[CAB]')[0] -> NULL``
-* ``regexSplit('oneAtwoBthreeC', '[CAB]')[20] -> NULL``
+基于正则表达式的分隔符拆分字符串并返回字符串数组* ``regexSplit('bojjusAgunchusBdumbo', `[CAB]`) -> ['bojjus', 'gunchus', 'dumbo']``
+* ``regexSplit('bojjusAgunchusBdumboC', `[CAB]`) -> ['bojjus', 'gunchus', 'dumbo', '']``
+* ``(regexSplit('bojjusAgunchusBdumboC', `[CAB]`)[1]) -> 'bojjus'``
+* ``isNull(regexSplit('bojjusAgunchusBdumboC', `[CAB]`)[20]) -> true``
 ___
 ### <code>replace</code>
-<code><b>replace(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string, <i>&lt;substring to replace&gt;</i> : string) => string</b></code><br/><br/>
-在给定字符串中将出现的所有子字符串替换为另一个子字符串* ``replace('doggie dog', 'dog', 'cat') -> 'catgie cat'``
-* ``replace('doggie dog', 'dog', '') -> 'gie'``
+<code><b>replace(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string, [<i>&lt;substring to replace&gt;</i> : string]) => string</b></code><br/><br/>
+在给定字符串中将出现的所有子字符串替换为另一个子字符串。 如果省略最后一个参数，则默认为空字符串* ``replace('doggie dog', 'dog', 'cat') -> 'catgie cat'``
+* ``replace('doggie dog', 'dog', '') -> 'gie '``
+* ``replace('doggie dog', 'dog') -> 'gie '``
 ___
 ### <code>reverse</code>
 <code><b>reverse(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
@@ -582,7 +621,8 @@ ___
 ___
 ### <code>rlike</code>
 <code><b>rlike(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
-检查字符串是否与给定的正则表达式模式匹配* ``rlike('200.50', '(\d+).(\d+)') -> true``
+检查字符串是否与给定的正则表达式模式匹配* ``rlike('200.50', `(\d+).(\d+)`) -> true``
+* ``rlike('bogus', `M[0-9]+.*`) -> false``
 ___
 ### <code>round</code>
 <code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/>
@@ -592,34 +632,39 @@ ___
 ___
 ### <code>rowNumber</code>
 <code><b>rowNumber() => integer</b></code><br/><br/>
-为窗口中从1开始的行分配顺序行号* ``rowNumber() -> 1``
+为窗口中从1开始的行分配顺序行号* ``rowNumber()``
 ___
 ### <code>rpad</code>
 <code><b>rpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/>
-在右侧使用提供的填充内容填充字符串，直到达到特定的长度。 如果字符串等于或大于长度，则* ``rpad('great', 10, '-') -> 'great___--'``将其视为无
-* ``rpad('great', 4, '-') -> 'great'`` 
-* ``rpad('great', 8, '<>') -> 'great<><'`` 
+在右侧使用提供的填充内容填充字符串，直到达到特定的长度。 如果字符串等于或大于长度，则将其剪裁到长度* ``rpad('dumbo', 10, '-') -> 'dumbo-----'``rtrim 
+* ``rpad('dumbo', 4, '-') -> 'dumb'`` 
+* ``rpad('dumbo', 8, '<>') -> 'dumbo<><'`` 
 ___
-### <code>rtrim</code>操作 rtrim</code>
-<code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, <i>&lt;trim characters&gt;</i> : string) => string</b></code><br/><br/>
-在右侧裁剪掉前导和尾随字符的字符串。 如果未指定第二个参数，则裁剪掉空格。 否则，它将修整第二个参数中指定的任何字符* ``rtrim('!--!wor!ld!', '-!') -> '!--!wor!ld'``
+### <code>rtrim</code></code>
+<code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
+在右侧裁剪掉前导和尾随字符的字符串。 如果未指定第二个参数，则裁剪掉空格。 否则，它将修整第二个参数中指定的任何字符* ``rtrim('  dumbo  ') -> '  dumbo'``
+* ``rtrim('!--!du!mbo!', '-!') -> '!--!du!mbo'``
 ___
 ### <code>second</code>
 <code><b>second(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
 获取日期的秒值。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 当地时区用作默认值。
-* ``second(toTimestamp('2009-07-30T12:58:59')) -> 59``
+* ``second(toTimestamp('2009-07-30 12:58:59')) -> 59``
+___
+### <code>seconds</code>
+<code><b>seconds(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+秒数的持续时间（以毫秒为单位）* ``seconds(2) -> 2000L``
 ___
 ### <code>sha1</code>
 <code><b>sha1(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/>
-计算不同基元数据类型的列集的 SHA-1 摘要，并返回 40 字符十六进制字符串。 它可用于计算行的指纹* ``sha1(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '63849fd2abb65fbc626c60b1f827bd05573f0cea'``
+计算不同基元数据类型的列集的 SHA-1 摘要，并返回 40 字符十六进制字符串。 它可用于计算行的指纹* ``sha1(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '46d3b478e8ec4e1f3b453ac3d8e59d5854e282bb'``
 ___
 ### <code>sha2</code>
 <code><b>sha2(<i>&lt;value1&gt;</i> : integer, <i>&lt;value2&gt;</i> : any, ...) => string</b></code><br/><br/>
-计算一组具有不同基元数据类型的列的 SHA-1 摘要（给定位长度，只能为值0（256）、224、256、384、512）。 它可用于计算行的指纹* ``sha2(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 'd3b2bff62c3a00e9370b1ac85e428e661a7df73959fa1a96ae136599e9ee20fd'``
+计算一组具有不同基元数据类型的列的 SHA-1 摘要（给定位长度，只能为值0（256）、224、256、384、512）。 它可用于计算行的指纹* ``sha2(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 'afe8a553b1761c67d76f8c31ceef7f71b66a1ee6f4e6d3b5478bf68b47d06bd3'``
 ___
 ### <code>sin</code>
 <code><b>sin(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-计算正弦值* ``sin(2) -> 0.90929742682``
+计算正弦值* ``sin(2) -> 0.9092974268256817``
 ___
 ### <code>sinh</code>
 <code><b>sinh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
@@ -627,20 +672,20 @@ ___
 ___
 ### <code>skewness</code>
 <code><b>skewness(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-获取列的偏斜度* ``skewness(sales) -> 122.12``
+获取列的偏斜度* ``skewness(sales)``
 ___
 ### <code>skewnessIf</code>
 <code><b>skewnessIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-基于条件，获取列的偏斜度* ``skewnessIf(region == 'West', sales) -> 122.12``
+基于条件，获取列的偏斜度* ``skewnessIf(region == 'West', sales)``
 ___
 ### <code>slice</code>
 <code><b>slice(<i>&lt;array to slice&gt;</i> : array, <i>&lt;from 1-based index&gt;</i> : integral, [<i>&lt;number of items&gt;</i> : integral]) => array</b></code><br/><br/>
 从位置提取数组的子集。 位置从 1 开始。 如果省略长度，则默认为字符串的结尾* ``slice([10, 20, 30, 40], 1, 2) -> [10, 20]``
 * ``slice([10, 20, 30, 40], 2) -> [20, 30, 40]``
 * ``slice([10, 20, 30, 40], 2)[1] -> 20``
-* ``slice([10, 20, 30, 40], 2)[0] -> NULL``
-* ``slice([10, 20, 30, 40], 2)[20] -> NULL``
-* ``slice([10, 20, 30, 40], 8) -> []``
+* ``isNull(slice([10, 20, 30, 40], 2)[0]) -> true``
+* ``isNull(slice([10, 20, 30, 40], 2)[20]) -> true``
+* ``slice(['a', 'b', 'c', 'd'], 8) -> []``
 ___
 ### <code>soundex</code>
 <code><b>soundex(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
@@ -648,13 +693,13 @@ ___
 ___
 ### <code>split</code>
 <code><b>split(<i>&lt;string to split&gt;</i> : string, <i>&lt;split characters&gt;</i> : string) => array</b></code><br/><br/>
-基于分隔符拆分字符串并返回字符串数组* ``split('100,200,300', ',') -> ['100', '200', '300']``
-* ``split('100,200,300', '|') -> ['100,200,300']``
-* ``split('100, 200, 300', ', ') -> ['100', '200', '300']``
-* ``split('100, 200, 300', ', ')[1] -> '100'``
-* ``split('100, 200, 300', ', ')[0] -> NULL``
-* ``split('100, 200, 300', ', ')[20] -> NULL``
-* ``split('100200300', ',') -> ['100200300']``
+基于分隔符拆分字符串并返回字符串数组* ``split('bojjus,guchus,dumbo', ',') -> ['bojjus', 'guchus', 'dumbo']``
+* ``split('bojjus,guchus,dumbo', '|') -> ['bojjus,guchus,dumbo']``
+* ``split('bojjus, guchus, dumbo', ', ') -> ['bojjus', 'guchus', 'dumbo']``
+* ``split('bojjus, guchus, dumbo', ', ')[1] -> 'bojjus'``
+* ``isNull(split('bojjus, guchus, dumbo', ', ')[0]) -> true``
+* ``isNull(split('bojjus, guchus, dumbo', ', ')[20]) -> true``
+* ``split('bojjusguchusdumbo', ',') -> ['bojjusguchusdumbo']``
 ___
 ### <code>sqrt</code>
 <code><b>sqrt(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
@@ -662,39 +707,39 @@ ___
 ___
 ### <code>startsWith</code>
 <code><b>startsWith(<i>&lt;string&gt;</i> : string, <i>&lt;substring to check&gt;</i> : string) => boolean</b></code><br/><br/>
-检查字符串是否以提供的字符串开头* ``startsWith('great', 'gr') -> true``
+检查字符串是否以提供的字符串开头* ``startsWith('dumbo', 'du') -> true``
 ___
 ### <code>stddev</code>
 <code><b>stddev(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-获取列的标准偏差* ``stdDev(sales) -> 122.12``
+获取列的标准偏差* ``stdDev(sales)``
 ___
 ### <code>stddevIf</code>
 <code><b>stddevIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-基于条件，获取列的标准偏差* ``stddevIf(region == 'West', sales) -> 122.12``
+基于条件，获取列的标准偏差* ``stddevIf(region == 'West', sales)``
 ___
 ### <code>stddevPopulation</code>
 <code><b>stddevPopulation(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-获取列的总体标准偏差* ``stddevPopulation(sales) -> 122.12``
+获取列的总体标准偏差* ``stddevPopulation(sales)``
 ___
 ### <code>stddevPopulationIf</code>
 <code><b>stddevPopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-基于条件，获取列的总体标准偏差* ``stddevPopulationIf(region == 'West', sales) -> 122.12``
+基于条件，获取列的总体标准偏差* ``stddevPopulationIf(region == 'West', sales)``
 ___
 ### <code>stddevSample</code>
 <code><b>stddevSample(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-获取列的样本标准偏差* ``stddevSample(sales) -> 122.12``
+获取列的样本标准偏差* ``stddevSample(sales)``
 ___
 ### <code>stddevSampleIf</code>
 <code><b>stddevSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-基于条件，获取列的样本标准偏差* ``stddevSampleIf(region == 'West', sales) -> 122.12``
+基于条件，获取列的样本标准偏差* ``stddevSampleIf(region == 'West', sales)``
 ___
 ### <code>subDays</code>
 <code><b>subDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to subtract&gt;</i> : integral) => datetime</b></code><br/><br/>
-从日期中减去月份。 与 date 的-operator 相同* ``subDays(toDate('2016-08-08'), 1) -> 2016-08-09``
+从日期或时间戳中减去月份。 与 date 的-operator 相同* ``subDays(toDate('2016-08-08'), 1) -> toDate('2016-08-07')``
 ___
 ### <code>subMonths</code>
 <code><b>subMonths(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;months to subtract&gt;</i> : integral) => datetime</b></code><br/><br/>
-从日期或时间戳中减去月份* ``subMonths(toDate('2016-09-30'), 1) -> 2016-08-31``
+从日期或时间戳中减去月份* ``subMonths(toDate('2016-09-30'), 1) -> toDate('2016-08-31')``
 ___
 ### <code>substring</code>
 <code><b>substring(<i>&lt;string to subset&gt;</i> : string, <i>&lt;from 1-based index&gt;</i> : integral, [<i>&lt;number of characters&gt;</i> : integral]) => string</b></code><br/><br/>
@@ -705,21 +750,21 @@ ___
 ___
 ### <code>sum</code>
 <code><b>sum(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-获取数值列的聚合总和* ``sum(col) -> value``
+获取数值列的聚合总和* ``sum(col)``
 ___
 ### <code>sumDistinct</code>
 <code><b>sumDistinct(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-获取数值列的非重复值的聚合和* ``sumDistinct(col) -> value``
+获取数值列的非重复值的聚合和* ``sumDistinct(col)``
 ___
 ### <code>sumDistinctIf</code>
 <code><b>sumDistinctIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
-根据条件获取数字列的聚合总数。 条件可以基于任何列* ``sumDistinctIf(state == 'CA' && commission < 10000, sales) -> value``
-* ``sumDistinctIf(true, sales) -> SUM(sales)``
+根据条件获取数字列的聚合总数。 条件可以基于任何列* ``sumDistinctIf(state == 'CA' && commission < 10000, sales)``
+* ``sumDistinctIf(true, sales)``
 ___
 ### <code>sumIf</code>
 <code><b>sumIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
-根据条件获取数字列的聚合总数。 条件可以基于任何列* ``sumIf(state == 'CA' && commission < 10000, sales) -> value``
-* ``sumIf(true, sales) -> SUM(sales)``
+根据条件获取数字列的聚合总数。 条件可以基于任何列* ``sumIf(state == 'CA' && commission < 10000, sales)``
+* ``sumIf(true, sales)``
 ___
 ### <code>tan</code>
 <code><b>tan(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
@@ -729,16 +774,20 @@ ___
 <code><b>tanh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 计算双曲正切值* ``tanh(0) -> 0.0``
 ___
+### <code>toBinary</code>
+<code><b>toBinary(<i>&lt;value1&gt;</i> : any) => binary</b></code><br/><br/>
+将任何数字/日期/时间戳/字符串转换为二进制表示形式* ``toBinary(3) -> [0x11]``
+___
 ### <code>toBoolean</code>
 <code><b>toBoolean(<i>&lt;value1&gt;</i> : string) => boolean</b></code><br/><br/>
 将值（"t"、"true"、"y"、"是"、"1"）转换为 true，并将（"f"、"false"、"n"、"否"、"0"）转换为 false，并将 NULL 值转换为其他任何值* ``toBoolean('true') -> true``
 * ``toBoolean('n') -> false``
-* ``toBoolean('truthy') -> NULL``
+* ``isNull(toBoolean('truthy')) -> true``
 ___
 ### <code>toDate</code>
 <code><b>toDate(<i>&lt;string&gt;</i> : any, [<i>&lt;date format&gt;</i> : string]) => date</b></code><br/><br/>
-将字符串转换为给定可选日期格式的日期。 有关所有可能的格式，请参阅 Java SimpleDateFormat。 如果省略日期格式，则接受以下组合。 [yyyy，yyyy-[M] M，yyyy-[M] M-[d] d，yyyy-[M] M-[d] d，yyyy-[M] M-[d] d，yyyy-[M] M-[d] dT *]* ``toDate('2012-8-8') -> 2012-8-8``
-* ``toDate('12/12/2012', 'MM/dd/yyyy') -> 2012-12-12``
+使用可选输入日期格式将输入日期字符串转换为日期。 有关可用格式，请参阅 Java 的 SimpleDateFormat。 如果省略输入日期格式，则默认格式为 yyyy-[M] M-[d] d。 接受的格式为： [yyyy，yyyy-[M] M，yyyy-[M] M-[d] d，yyyy-[M] M-[d] dT *]* ``toDate('2012-8-18') -> toDate('2012-08-18')``
+* ``toDate('12/18/2012', 'MM/dd/yyyy') -> toDate('2012-12-18')``
 ___
 ### <code>toDecimal</code>
 <code><b>toDecimal(<i>&lt;value&gt;</i> : any, [<i>&lt;precision&gt;</i> : integral], [<i>&lt;scale&gt;</i> : integral], [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => decimal(10,0)</b></code><br/><br/>
@@ -756,9 +805,9 @@ ___
 ___
 ### <code>toFloat</code>
 <code><b>toFloat(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => float</b></code><br/><br/>
-将任何数字或字符串转换为浮点值。 可以使用可选的 Java 十进制格式进行转换。 截断任何 double* ``toFloat(123.45) -> 123.45``
-* ``toFloat('123.45') -> 123.45``
-* ``toFloat('$123.45', '$###.00') -> 123.45``
+将任何数字或字符串转换为浮点值。 可以使用可选的 Java 十进制格式进行转换。 截断任何 double* ``toFloat(123.45) -> 123.45f``
+* ``toFloat('123.45') -> 123.45f``
+* ``toFloat('$123.45', '$###.00') -> 123.45f``
 ___
 ### <code>toInteger</code>
 <code><b>toInteger(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => integer</b></code><br/><br/>
@@ -786,37 +835,40 @@ ___
 * ``toString(123.78, '000000.000') -> '000123.780'``
 * ``toString(12345, '##0.#####E0') -> '12.345E3'``
 * ``toString(toDate('2018-12-31')) -> '2018-12-31'``
-* ``toString(toDate('2018-12-31'), 'MM/dd/yy') -> '12/31/18'``
+* ``isNull(toString(toDate('2018-12-31', 'MM/dd/yy'))) -> true``
 * ``toString(4 == 20) -> 'false'``
 ___
 ### <code>toTimestamp</code>
 <code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/>
-根据可选的时间戳格式将字符串转换为日期。 有关所有可能的格式，请参阅 Java SimpleDateFormat。 如果省略时间戳，则使用默认模式 yyyy-[M] M-[d] d hh： mm： ss [. f ...]* ``toTimestamp('2016-12-31 00:12:00') -> 2012-8-8T00:12:00``
-* ``toTimestamp('2016/12/31T00:12:00', 'MM/dd/yyyyThh:mm:ss') -> 2012-12-12T00:12:00``
+将字符串转换为给定可选时间戳格式的时间戳。 有关所有可能的格式，请参阅 Java SimpleDateFormat。 如果省略时间戳，则使用默认模式 yyyy-[M] M-[d] d hh： mm： ss [. f ...]。 您可以以 "GMT"、"PST"、"UTC"、"中美洲/开曼" 的形式传递可选时区。Timestamp 最多支持值为999的毫秒准确度* ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``
+* ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``
+* ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``
+* ``millisecond(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``
 ___
 ### <code>toUTC</code>
 <code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-将时间戳转换为 UTC。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 它默认为当前时区* ``toUTC(currentTimeStamp()) -> 12-12-2030T19:18:12``
-* ``toUTC(currentTimeStamp(), 'Asia/Seoul') -> 12-13-2030T11:18:12``
+将时间戳转换为 UTC。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 它默认为当前时区* ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``
+* ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``
 ___
 ### <code>translate</code>
 <code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/>
-将字符串中的一组字符替换为另一组字符。 字符的替换1到1个* ``translate('(Hello)', '()', '[]') -> '[Hello]'``
-* ``translate('(Hello)', '()', '[') -> '[Hello'``
+将字符串中的一组字符替换为另一组字符。 字符的替换1到1个* ``translate('(bojjus)', '()', '[]') -> '[bojjus]'``
+* ``translate('(gunchus)', '()', '[') -> '[gunchus'``
 ___
 ### <code>trim</code>
 <code><b>trim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
-裁剪掉前导和尾随字符的字符串。 如果未指定第二个参数，则裁剪掉空格。 否则，它将修整第二个参数中指定的任何字符* ``trim('!--!wor!ld!', '-!') -> 'wor!ld'``
+裁剪掉前导和尾随字符的字符串。 如果未指定第二个参数，则裁剪掉空格。 否则，它将修整第二个参数中指定的任何字符* ``trim('  dumbo  ') -> 'dumbo'``
+* ``trim('!--!du!mbo!', '-!') -> 'du!mbo'``
 ___
 ### <code>true</code>
 <code><b>true() => boolean</b></code><br/><br/>
-始终返回 true 值。 如果存在名为 "true" 的列，请使用函数语法（true （））* ``isDiscounted == true()``
-* ``isDiscounted() == true``
+始终返回 true 值。 如果存在名为 "true" 的列，请使用函数语法（true （））* ``(10 + 20 == 30) -> true``
+* ``(10 + 20 == 30) -> true()``
 ___
 ### <code>typeMatch</code>
 <code><b>typeMatch(<i>&lt;type&gt;</i> : string, <i>&lt;base type&gt;</i> : string) => boolean</b></code><br/><br/>
-匹配列的类型。 仅可用于模式表达式。 number 匹配 short、integer、long、double、float 或 decimal、integer 与 short、integer、long、decimal 匹配 double、float、decimal 和 datetime 匹配 date 或 timestamp type* ``typeMatch(type, 'number') -> true``
-* ``typeMatch('date', 'number') -> false``
+匹配列的类型。 仅可用于模式表达式。 number 匹配 short、integer、long、double、float 或 decimal、integer 与 short、integer、long、decimal 匹配 double、float、decimal 和 datetime 匹配 date 或 timestamp type* ``typeMatch(type, 'number')``
+* ``typeMatch('date', 'datetime')``
 ___
 ### <code>upper</code>
 <code><b>upper(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
@@ -824,31 +876,35 @@ Uppercases 字符串* ``upper('bojjus') -> 'BOJJUS'``
 ___
 ### <code>variance</code>
 <code><b>variance(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-获取列的方差* ``variance(sales) -> 122.12``
+获取列的方差* ``variance(sales)``
 ___
 ### <code>varianceIf</code>
 <code><b>varianceIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-基于条件，获取列的方差* ``varianceIf(region == 'West', sales) -> 122.12``
+基于条件，获取列的方差* ``varianceIf(region == 'West', sales)``
 ___
 ### <code>variancePopulation</code>
 <code><b>variancePopulation(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-获取列的总体方差* ``variancePopulation(sales) -> 122.12``
+获取列的总体方差* ``variancePopulation(sales)``
 ___
 ### <code>variancePopulationIf</code>
 <code><b>variancePopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-基于条件，获取列的总体方差* ``variancePopulationIf(region == 'West', sales) -> 122.12``
+基于条件，获取列的总体方差* ``variancePopulationIf(region == 'West', sales)``
 ___
 ### <code>varianceSample</code>
 <code><b>varianceSample(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-获取列的无偏差方差* ``varianceSample(sales) -> 122.12``
+获取列的无偏差方差* ``varianceSample(sales)``
 ___
 ### <code>varianceSampleIf</code>
 <code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-基于条件，获取列的无偏差方差* ``varianceSampleIf(region == 'West', sales) -> 122.12``
+基于条件，获取列的无偏差方差* ``varianceSampleIf(region == 'West', sales)``
 ___
 ### <code>weekOfYear</code>
 <code><b>weekOfYear(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
 获取给定日期的一年中的第几周* ``weekOfYear(toDate('2008-02-20')) -> 8``
+___
+### <code>weeks</code>
+<code><b>weeks(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+周数的持续时间（以毫秒为单位）* ``weeks(2) -> 1209600000L``
 ___
 ### <code>xor</code>
 <code><b>xor(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>

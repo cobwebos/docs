@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 5671c3e36a49680b72b1f7b138cbd6e9c0bc4313
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 877d0a17b9ff06e9b9ac2c843c1847c9cb9726e4
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914852"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018712"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>预览-自动缩放群集以满足 Azure Kubernetes 服务（AKS）上的应用程序需求
 
@@ -104,7 +104,7 @@ az aks create \
 ## <a name="change-the-cluster-autoscaler-settings"></a>更改群集自动缩放程序设置
 
 > [!IMPORTANT]
-> 如果已在订阅上启用*多个代理池*功能，请跳到 "[使用多个代理池自动缩放" 部分](##use-the-cluster-autoscaler-with-multiple-node-pools-enabled)。 启用了多个代理池的群集要求使用`az aks nodepool`命令集来更改节点池特定属性， `az aks`而不是。 以下说明假定你尚未启用多个节点池。 若要检查是否已启用该功能， `az feature  list -o table`请运行， `Microsoft.ContainerService/multiagentpoolpreview`并查找。
+> 如果已在订阅上启用*多个代理池*功能，请跳到 "[使用多个代理池自动缩放" 部分](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)。 启用了多个代理池的群集要求使用`az aks nodepool`命令集来更改节点池特定属性， `az aks`而不是。 以下说明假定你尚未启用多个节点池。 若要检查是否已启用该功能， `az feature  list -o table`请运行， `Microsoft.ContainerService/multiagentpoolpreview`并查找。
 
 在上一步中，若要创建 AKS 群集或更新现有节点池，请将 "群集自动缩放程序最小节点计数" 设置为 " *1*"，并将 "最大节点计数" 设置为*3*。 随着应用程序需求发生变化，可能需要调整群集自动缩放程序节点计数。
 

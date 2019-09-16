@@ -8,16 +8,16 @@ ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu
-ms.openlocfilehash: 15cb31a3157b034089b1518a4e70eeb93ecc449e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 97c03ad294bba1f8a0285fff4595991ca0acc8b5
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617099"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018279"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>从 Linux 上的应用服务中的 Azure 存储提供内容
 
-本指南展示了如何在 Linux 上的应用服务中使用 [Azure 存储](/azure/storage/common/storage-introduction)提供静态内容。 优势包括内容受保护，内容可移植，可以访问多个应用以及使用多种传输方法。
+本指南展示了如何在 Linux 上的应用服务中使用 [Azure 存储](/azure/storage/common/storage-introduction)提供静态内容。 优点包括受保护的内容、内容可移植性、持久存储、对多个应用的访问和多种传输方法。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,7 +29,7 @@ ms.locfileid: "67617099"
 > [!NOTE]
 > Azure 存储是非默认存储并且单独计费，不包括在 Web 应用中。
 >
-> 将你自己的存储不支持使用存储防火墙配置，因为基础结构限制。
+> 自带存储不支持使用存储防火墙配置，因为存在基础结构限制。
 >
 
 创建一个 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli)。
@@ -72,11 +72,11 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
 ```
 
-## <a name="use-custom-storage-in-docker-compose"></a>使用自定义存储在 Docker Compose
+## <a name="use-custom-storage-in-docker-compose"></a>在 Docker Compose 中使用自定义存储
 
-Azure 存储可装载的多容器应用使用自定义 id。若要查看自定义 id 名称，请运行[ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)。
+可以使用自定义 id 在多容器应用中装载 Azure 存储。若要查看自定义 id 名称，请[`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)运行。
 
-在你*docker-compose.yml*文件中，映射`volumes`选项设为`custom-id`。 例如：
+在*docker-compose.yml*文件中，将`volumes`选项映射到。 `custom-id` 例如：
 
 ```yaml
 wordpress:

@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor 中的 azure SQL Analytics 解决方案 |Microsoft Docs
+title: Azure Monitor 中的 Azure SQL Analytics 解决方案 |Microsoft Docs
 description: Azure SQL Analytics 解决方案可帮助你管理 Azure SQL 数据库
 services: log-analytics
 ms.service: log-analytics
@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 0617dc617309d49cdc7c8cddd4e91619b873b914
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60538145652f3539768e6deb591352a1765488fd
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785680"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71019010"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -32,15 +32,15 @@ Azure SQL Analytics 是一种高级云监视解决方案，用于通过单一虚
 
 ## <a name="connected-sources"></a>连接的源
 
-Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输 Azure SQL 数据库（单一数据库、共用数据库和托管实例数据库）的诊断遥测数据。 因为该解决方案不使用代理连接到 Azure Monitor，该解决方案不支持监视的托管的 SQL Server 的本地或在 Vm 中，请参阅下面的兼容性表。
+Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输 Azure SQL 数据库（单一数据库、共用数据库和托管实例数据库）的诊断遥测数据。 由于解决方案不使用代理连接到 Azure Monitor，因此该解决方案不支持监视本地或 Vm 中承载的 SQL Server，请参阅下面的兼容性表。
 
 | 连接的源 | 支持 | 描述 |
 | --- | --- | --- |
-| [Azure 诊断](../platform/collect-azure-metrics-logs.md) | **是** | Azure 指标和日志数据由 Azure 直接发送到 Azure Monitor 日志中。 |
-| [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | 否 | Azure 监视器不会从存储帐户读取数据。 |
+| [Azure 诊断](../platform/collect-azure-metrics-logs.md) | **是** | Azure 指标和日志数据将由 Azure 直接发送到 Azure Monitor 日志。 |
+| [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | 否 | Azure Monitor 不从存储帐户中读取数据。 |
 | [Windows 代理](../platform/agent-windows.md) | 否 | 该解决方案不使用直接 Windows 代理。 |
 | [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | 该解决方案不使用直接Linux 代理。 |
-| [System Center Operations Manager 管理组](../platform/om-agents.md) | 否 | 该解决方案不使用从 Operations Manager 代理直接连接到 Azure Monitor。 |
+| [System Center Operations Manager 管理组](../platform/om-agents.md) | 否 | 解决方案不使用从 Operations Manager 代理到 Azure Monitor 的直接连接。 |
 
 ## <a name="configuration"></a>配置
 使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的流程，将 Azure SQL Analytics（预览）解决方案添加到 Log Analytics 工作区。
@@ -55,11 +55,11 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输
 
 ## <a name="using-the-solution"></a>使用解决方案
 
-将解决方案添加到工作区时，“Azure SQL Analytics”磁贴也会添加到工作区并显示在“概览”中。 选择查看摘要链接来加载磁贴内容。
+将解决方案添加到工作区时，“Azure SQL Analytics”磁贴也会添加到工作区并显示在“概览”中。 选择“查看摘要”链接可加载磁贴内容。
 
-![Azure SQL Analytics 摘要磁贴](./media/azure-sql/azure-sql-sol-tile-01.png)
+![Azure SQL Analytics“摘要”磁贴](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-加载后，磁贴将显示在该解决方案接收来自诊断遥测数据的托管实例中的 Azure SQL 数据库、 弹性池、 托管实例和数据库数。
+加载后，该磁贴显示解决方案从其中接收诊断遥测数据的 Azure SQL 数据库、弹性池、托管实例和托管实例中数据库的数目。
 
 ![“Azure SQL Analytics”磁贴](./media/azure-sql/azure-sql-sol-tile-02.png)
 
@@ -104,10 +104,10 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输
 | 透视 | 描述 | SQL 数据库和弹性池支持 | 托管实例支持 |
 | --- | ------- | ----- | ----- |
 | 资源（按类型） | 对监视的所有资源进行计数的透视。 | 是 | 是 |
-| 洞察力 | 提供对性能智能见解的分层向下钻取。 | 是 | 是 |
+| 见解 | 提供对性能智能见解的分层向下钻取。 | 是 | 是 |
 | 错误 | 提供对数据库上发生的 SQL 错误的分层向下钻取。 | 是 | 是 |
 | 超时 | 提供对数据库上发生的 SQL 超时的分层向下钻取。 | 是 | 否 |
-| 阻止 | 提供对数据库上发生的 SQL 阻止的分层向下钻取。 | 是 | 否 |
+| 方块 | 提供对数据库上发生的 SQL 阻止的分层向下钻取。 | 是 | 否 |
 | 数据库等待 | 提供对数据库级别上的 SQL 等待统计信息的分层向下钻取。 包含总等待时间汇总和每个类型的等待时间。 |是 | 是 |
 | 查询持续时间 | 提供对查询执行统计信息的分层向下钻取，例如查询持续时间、CPU 使用情况、数据 IO 使用情况和日志 IO 使用情况。 | 是 | 是 |
 | 查询等待 | 按等待类型提供对查询等待统计信息的分层向下钻取。 | 是 | 是 |
@@ -159,7 +159,6 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输
     $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/recommendedActions/write");
     $role.Actions.Add("Microsoft.Sql/servers/databases/automaticTuning/read");
     $role.Actions.Add("Microsoft.Sql/servers/databases/automaticTuning/write");
-    $role.Actions.Add("Microsoft.Sql/servers/databases/*");
     $role.Actions.Add("Microsoft.Sql/servers/advisors/read");
     $role.Actions.Add("Microsoft.Sql/servers/advisors/write");
     $role.Actions.Add("Microsoft.Sql/servers/advisors/recommendedActions/read");
@@ -193,7 +192,7 @@ AzureMetrics
 ```
 
 > [!NOTE]
-> - 设置此警报的预要求是该监视的数据库流到解决方案的基本指标。
+> - 设置此警报的前提要求是受监视的数据库将基本指标流式传输到解决方案。
 > - 若要改为获取高 DTU 结果，请将 MetricName 值 cpu_percent 替换为 dtu_consumption_percent。
 
 #### <a name="high-cpu-on-azure-sql-database-elastic-pools"></a>Azure SQL 数据库弹性池的 CPU 利用率较高
@@ -208,7 +207,7 @@ AzureMetrics
 ```
 
 > [!NOTE]
-> - 设置此警报的预要求是该监视的数据库流到解决方案的基本指标。
+> - 设置此警报的前提要求是受监视的数据库将基本指标流式传输到解决方案。
 > - 若要改为获取高 DTU 结果，请将 MetricName 值 cpu_percent 替换为 dtu_consumption_percent。
 
 #### <a name="azure-sql-database-storage-in-average-above-95-in-the-last-1-hr"></a>Azure SQL 数据库存储在过去 1小时的平均值超过 95%
@@ -225,7 +224,7 @@ AzureMetrics
 ```
 
 > [!NOTE]
-> - 设置此警报的预要求是该监视的数据库流到解决方案的基本指标。
+> - 设置此警报的前提要求是受监视的数据库将基本指标流式传输到解决方案。
 > - 此查询要求将警报规则设置为当存在来自查询的结果时（> 0 个结果，表示某些数据库上存在此条件）触发。 输出是在所定义的 time_range 内高于 storage_threshold 的数据库资源的列表。
 > - 输出是在所定义的 time_range 内高于 storage_threshold 的数据库资源的列表。
 

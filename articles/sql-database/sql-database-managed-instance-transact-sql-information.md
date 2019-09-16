@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 29fd82eb0253f2f7f6b9bc8b6a84882e2372124c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 388e676fbabf427801688cbfb47a1455444fd02e
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984974"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018994"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例 T-sql 差异、限制和已知问题
 
@@ -339,14 +339,14 @@ WITH PRIVATE KEY (<private_key_options>)
 - `ALTER ASSEMBLY` 不能引用文件。 请参阅 [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql)。
 
 ### <a name="database-mail-db_mail"></a>数据库邮件（db_mail）
- - `sp_send_dbmail`无法使用@file_attachments参数发送附件。 此过程不能访问本地文件系统和 extertal 共享或 Azure blob 存储。
+ - `sp_send_dbmail`无法使用@file_attachments参数发送附件。 不能从此过程访问本地文件系统和外部共享或 Azure Blob 存储。
  - 请参阅与`@query`参数和身份验证相关的已知问题。
  
 ### <a name="dbcc"></a>DBCC
 
 托管实例不支持 SQL Server 中启用的未记录 DBCC 语句。
 
-- 仅支持有限数量的全局 `Trace flags`。 不支持会话级 `Trace flags`。 请参阅[跟踪标志](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql)。
+- 仅支持有限数量的全局跟踪标志。 不支持会话级 `Trace flags`。 请参阅[跟踪标志](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql)。
 - [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) 和 [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) 使用有限数量的全局跟踪标志。
 - 无法使用带有 REPAIR_ALLOW_DATA_LOSS、REPAIR_FAST 和 REPAIR_REBUILD 选项的 [DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql)，因为无法在 `SINGLE_USER` 模式中设置数据库 - 请参阅 [ALTER DATABASE 的差异](#alter-database-statement)。 潜在的数据库损坏将由 Azure 支持团队处理。 如果你注意到应予以修复的数据库损坏，请联系 Azure 支持部门。
 
@@ -415,7 +415,7 @@ WITH PRIVATE KEY (<private_key_options>)
 若要了解如何配置复制，请参阅[复制教程](replication-with-sql-database-managed-instance.md)。
 
 
-如果对[故障转移组](sql-database-auto-failover-group.md)中的数据库启用了复制，则托管实例管理员必须清理旧的主节点上的所有发布内容，然后在故障转移后，在新的主节点上重新配置这些发布内容。 在此方案中，需要执行以下活动：
+如果对[故障转移组](sql-database-auto-failover-group.md)中的数据库启用了复制，则托管实例管理员必须清除旧主副本上的所有发布，并在发生故障转移后在新的主副本上重新配置这些发布。 在此方案中，需要执行以下活动：
 
 1. 停止数据库上运行的所有复制作业（如果有）。
 2. 通过在发布服务器数据库上运行以下脚本，删除发布服务器中的订阅元数据：
@@ -479,8 +479,8 @@ WITH PRIVATE KEY (<private_key_options>)
 - 无法在托管实例上还原包含本文档所述的任何限制的数据库的 `.BAK` 文件（例如 `FILESTREAM` 或 `FILETABLE` 对象）。
 - 无法还原包含多个备份集的 `.BAK` 文件。 
 - 无法还原包含多个日志文件的 `.BAK` 文件。
-- 对于包含大于8TB 的数据库的备份、活动的内存中 OLTP 对象，或每个实例超过280个文件的文件数，无法在常规用途实例上还原。 
-- 在“业务关键”实例上，无法还原包含 4TB 以上的数据库或内存中 OLTP 对象，且总大小超过[资源限制](sql-database-managed-instance-resource-limits.md)中所述大小的备份。
+- 对于包含大于 8 TB 的数据库的备份、活动的内存中 OLTP 对象或每个实例超过280个文件的文件数，无法在常规用途实例上还原。 
+- 如果备份包含大于 4 TB 的数据库或内存中 OLTP 对象，但其总大小大于[资源限制](sql-database-managed-instance-resource-limits.md)中描述的大小，则无法在业务关键实例上还原。
 有关 restore 语句的信息，请参阅 [RESTORE 语句](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)。
 
  > [!IMPORTANT]
@@ -544,6 +544,16 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ## <a name="Issues"></a>已知问题
 
+### <a name="missing-validations-in-restore-process"></a>还原进程中缺少验证
+
+**日期：** 09月2019
+
+`RESTORE`语句和内置时间点还原不会对还原的数据库执行某些 nessecary 检查：
+- **DBCC CHECKDB**  -  `DBCC CHECKDB`语句不会对还原的数据库执行。`RESTORE` 如果原始数据库已损坏，或者在将备份文件复制到 Azure blob 存储时损坏了该数据库，则不会执行自动备份，Azure 支持人员将与客户联系。 
+- 内置的时间点还原过程不会检查业务关键实例的自动备份是否包含[内存中 OLTP 对象](sql-database-in-memory.md#in-memory-oltp)。 
+
+**解决方法**：请确保在执行备份之前`DBCC CHECKDB`在源数据库上执行，并使用`WITH CHECKSUM`备份中的选项来避免可能在托管实例上还原的潜在损坏。 如果要在常规用途层上还原源数据库，请确保源数据库不包含[内存中 OLTP 对象](sql-database-in-memory.md#in-memory-oltp)。
+
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>在故障转移后，可能需要重新配置业务关键服务层上的 Resource Governor
 
 **日期：** 09月2019
@@ -552,19 +562,19 @@ WITH PRIVATE KEY (<private_key_options>)
 
 **解决方法**：如果`ALTER RESOURCE GOVERNOR RECONFIGURE`你使用的是[Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)，则在启动实例时，将定期或作为 sql 代理作业的一部分运行。
 
-### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>无法进行身份验证使用安全连接（SSL）连接到外部邮件服务器
+### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>无法使用安全连接（SSL）对外部邮件服务器进行身份验证
 
 **日期：** 2019 年 8 月
 
 [使用安全连接（SSL）配置](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail)的数据库邮件无法在 Azure 外部的某些电子邮件服务器上进行身份验证。 这是即将解决的安全配置问题。
 
-**解决方法：** 临时删除安全连接（SSL）将在问题得到解决之前，形成数据库邮件配置。 
+**解决方法：** 暂时从数据库邮件配置中删除安全连接（SSL），直到问题得到解决。 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>跨数据库 Service Broker 对话框必须在服务层升级后重新初始化
 
 **日期：** 2019 年 8 月
 
-更改服务层操作后，跨数据库 Service Broker 对话框将停止向其他数据库中的服务传递消息。 消息不会**丢失**，并且可以在发送方队列中找到它们。 在托管实例中对 vCore 或实例存储大小进行任何更改都会导致 [sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) 视图中所有数据库的 `service_broke_guid` 值发生更改。 引用`DIALOG`其他数据库中的 Service broker 的任何使用[BEGIN DIALOG](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql)语句创建的都将停止向目标服务传递消息消息。
+更改服务层操作后，跨数据库 Service Broker 对话框将停止向其他数据库中的服务传递消息。 消息不会**丢失**，并且可以在发送方队列中找到它们。 在托管实例中对 vCore 或实例存储大小进行任何更改都会导致 [sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) 视图中所有数据库的 `service_broke_guid` 值发生更改。 引用`DIALOG`其他数据库中的 Service broker 的任何使用[BEGIN DIALOG](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql)语句创建的都将停止向目标服务传递消息。
 
 **解决方法：** 先停止使用跨数据库 Service Broker 对话的任何活动，再更新服务层级，然后重新初始化这些活动。 如果存在服务层更改后未传递的剩余消息，请从源队列中读取消息，并将其重新发送到目标队列。
 
@@ -592,7 +602,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 **日期：** 2019 年 1 月
 
-SQL Server Management Studio 与 SQL Server Data Tools 不完全支持 Azure Acctive Directory 登录名和用户。
+SQL Server Management Studio 和 SQL Server Data Tools 并不完全支持 Azure Active directory 登录名和用户。
 - 目前不支持将 Azure AD 服务器主体（登录名）和用户（公共预览版）与 SQL Server Data Tools 配合使用。
 - Azure AD 服务器主体（登录名）和用户（公共预览版）的脚本在 SQL Server Management Studio 中不受支持。
 
@@ -612,7 +622,7 @@ SQL Server Management Studio 与 SQL Server Data Tools 不完全支持 Azure Acc
 
 每个“常规用途”托管实例都为 Azure 高级磁盘空间保留了最多 35 TB 存储空间。 每个数据库文件放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35 TB 的 Azure 存储大小限制。
 
-例如，“常规用途”托管实例可将一个大小为 1.2 TB 的大文件放在 4 TB 的磁盘上。 它还可以将 248 个 1 GB 的文件放在单独的 128 GB 磁盘上。 在本示例中：
+例如，一个常规用途的托管实例可能有一个大小为 1.2 TB 的大型文件，大小为 4 TB 的磁盘。 它还可能具有每个大小为 1 GB 的248文件，每个文件放在单独的 128 GB 磁盘上。 在本示例中：
 
 - 分配的磁盘存储总大小为 1 x 4 TB + 248 x 128 GB = 35 TB。
 - 实例上的数据库的总预留空间为 1 x 1.2 TB + 248 x 1 GB = 1.4 TB。
@@ -629,7 +639,7 @@ SQL Server Management Studio 与 SQL Server Data Tools 不完全支持 Azure Acc
 
 ### <a name="error-logs-arent-persisted"></a>不保留错误日志
 
-托管实例中可用的错误日志不会持久保留，并且它们的大小不包括在最大存储限制中。 在发生故障转移时可能会自动清除错误日志。 错误日志历史记录中可能存在间隔，因为托管实例在多个虚拟机上移动了几次。
+托管实例中可用的错误日志不会持久保留，并且它们的大小不包括在最大存储限制中。 在发生故障转移时可能会自动清除错误日志。 错误日志历史记录中可能存在间隔，因为在多个虚拟机上多次移动了托管实例。
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>跨同一实例中的两个数据库的事务范围不受支持
 

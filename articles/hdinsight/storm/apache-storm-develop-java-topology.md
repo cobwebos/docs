@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 3cdf2255208069e20f5a230cc2acd82a628fdcfd
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 41ed51fc0cec9843525275613cca211d2e1bf409
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840211"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018614"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>以 Java 语言创建 Apache Storm 拓扑
 
@@ -25,7 +25,7 @@ ms.locfileid: "68840211"
 > [!NOTE]  
 > [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount) 中提供了本文档中创建的 Storm 拓扑示例的完整版本。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)
 
@@ -487,7 +487,7 @@ public class WordCount extends BaseBasicBolt {
 
 下图是此拓扑的组件的基本原理图。
 
-![显示 Spout 和 Bolt 排列方式的示意图](./media/apache-storm-develop-java-topology/wordcount-topology.png)
+![显示 Spout 和 Bolt 排列方式的示意图](./media/apache-storm-develop-java-topology/word-count-topology1.png)
 
 若要实现该拓扑，请输入以下命令，以创建并打开新文件 `WordCountTopology.java`：
 
