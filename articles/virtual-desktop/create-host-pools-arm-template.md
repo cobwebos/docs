@@ -42,7 +42,7 @@ ms.locfileid: "70163739"
 
 1. 向下滚动并右键单击“部署到 Azure”，然后选择“复制链接位置”。
 2. 打开一个文本编辑器（例如记事本）并在其中粘贴该链接。
-3. 紧靠在 https://portal.azure.com/ "" 和井号标签 (#) 之前, 请输入一个 at 符号 (@), 后跟租户域名。 下面是应使用的格式示例: https://portal.azure.com/@Contoso.onmicrosoft.com#create/ 。
+3. 紧靠在 "https://portal.azure.com/ " 和井号标签 (#) 之前, 请输入一个 at 符号 (@), 后跟租户域名。 下面是应使用的格式示例: https://portal.azure.com/@Contoso.onmicrosoft.com#create/ 。
 4. 以对“云解决方案提供商”订阅拥有“管理员/参与者”权限的用户身份登录到 Azure 门户。
 5. 将已复制到文本编辑器的链接粘贴到地址栏中。
 

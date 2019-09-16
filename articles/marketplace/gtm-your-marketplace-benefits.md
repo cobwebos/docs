@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: d1a0f3ea46922b8a684c269c13df068e0c879cbd
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
-ms.translationtype: HT
+ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309035"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962705"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>你的商业应用商店权益
 
@@ -74,7 +74,7 @@ Marketplace 奖励旨在支持你在增长的特定阶段，从了解活动开�
 
 [市场奖励计划](https://aka.ms/marketplacerewards)中提供了所有这些优势的详细说明。
 
-除了奖励权益外，已发布到 Microsoft AppSource 的业务应用程序合作伙伴可以通过[ISV Connect](https://partner.microsoft.com/en-us/solutions/business-applications/isv-overview)为其提供补充编程。 这包括专门满足业务应用程序合作伙伴需求的技术、营销和销售支持。
+除了奖励权益外，已发布到 Microsoft AppSource 的业务应用程序合作伙伴可以通过[ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview)为其提供补充编程。 这包括专门满足业务应用程序合作伙伴需求的技术、营销和销售支持。
 
 ## <a name="marketplace-rewards-requirements-and-restrictions"></a>Marketplace 奖励要求和限制
 
@@ -101,9 +101,9 @@ Microsoft 保留吊销和终止市场奖励权益的权利：
 
 ## <a name="next-steps"></a>后续步骤
 
-如果在云合作伙伴门户中创建了产品/服务，请登录以创建或配置产品/服务。
+如果在[云合作伙伴门户](https://cloudpartner.azure.com)中创建了产品/服务，请登录以创建或配置产品/服务。
 
-如果你在合作伙伴中心创建了你的产品/服务，请登录以创建或配置你的产品/服务。
+如果你在[合作伙伴中心](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)创建了你的产品/服务，请登录以创建或配置你的产品/服务。
 
 查看[可供你使用的自助服务资源](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
 

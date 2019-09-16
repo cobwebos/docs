@@ -142,4 +142,4 @@ export type Configuration = {
 这些值只适合从 MSAL Angular 包装器库向下传递：
 - **unprotectedResources**：可选。  不受保护资源的 URI 数组。 MSAL 不会将令牌附加到包含这些 URI 的传出请求。 默认为 `null`。
 
-- **protectedResourceMap**：可选。  资源到范围的映射，MSAL 在 Web API 调用中使用这种映射自动附加访问令牌。 将获取资源的单个访问令牌。 因此, 可以按如下所示映射特定的资源路径: https://graph.microsoft.com/v1.0/me {""、["用户读取"]} 或资源的应用程序 URL: {"https://graph.microsoft.com/"、["用户读取"、"邮件发送"]}。 对于 CORS 调用，必须进行这种映射。 默认为 `null`。
+- **protectedResourceMap**：可选。  资源到范围的映射，MSAL 在 Web API 调用中使用这种映射自动附加访问令牌。 将获取资源的单个访问令牌。 因此, 可以按如下所示映射特定的资源路径: "https://graph.microsoft.com/v1.0/me" {""、["用户读取"]} 或资源的应用程序 URL: {"https://graph.microsoft.com/"、["用户读取"、"邮件发送"]}。 对于 CORS 调用，必须进行这种映射。 默认为 `null`。
