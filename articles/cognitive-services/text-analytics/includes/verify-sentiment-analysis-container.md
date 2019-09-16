@@ -7,16 +7,16 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/21/2019
+ms.date: 09/12/2019
 ms.author: dapine
-ms.openlocfilehash: cbc5ad63dd944eb53d3a8052e75744cb5c3709ea
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 2e201b4ec0d1364ea99b376171efabad65af0a50
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051173"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968550"
 ---
-## <a name="verify-the-sentiment-analysis-container-instance"></a>验证情绪分析容器实例
+### <a name="verify-the-sentiment-analysis-container-instance"></a>验证情绪分析容器实例
 
 1. 选择 "**概览**" 选项卡, 然后复制 IP 地址。
 1. 打开新的浏览器选项卡, 并输入 IP 地址。 例如，输入 `http://<IP-address>:5000 (http://55.55.55.55:5000`)。 此时会显示容器的主页, 使你知道容器正在运行。
@@ -67,7 +67,7 @@ ms.locfileid: "70051173"
 
 1. 选择“执行”以确定文本的情绪。
 
-    容器中打包的模型生成范围为0到1之间的分数, 其中0表示负情绪, 1 表示正情绪。
+    容器中打包的模型生成范围为0到1之间的分数，其中0表示负情绪，1表示正情绪。
 
     返回的 JSON 响应包括更新的文本输入的情绪：
 

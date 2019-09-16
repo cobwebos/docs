@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 3b242ff8ee3e635493cd501cf37ffc7c78a57d91
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563316"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984861"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -43,7 +43,7 @@ ms.locfileid: "69563316"
 | 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 例如：YYYY/MM/DD |
 |时间格式 | 可选。 如果在前缀路径中使用时间令牌，可以指定组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV 和 Avro。|
-| 编码 | 如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前，UTF-8 是仅受支持的编码格式。|
+| 编码 | 如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。|
 | 分隔符 | 仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。|
 | 格式 | 仅适用于 JSON 序列化。 “行分隔”指定通过新行分隔各个 JSON 对象，从而格式化输出。 “数组”指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。|
 | 身份验证模式 | 你可以使用[托管标识](stream-analytics-managed-identities-adls.md)或用户令牌授权访问你的 Data Lake Storage 帐户。 授予访问权限后, 你可以通过更改用户帐户密码、删除此作业 Data Lake Storage 输出或删除流分析作业, 来撤销访问权限。 |
@@ -70,7 +70,7 @@ ms.locfileid: "69563316"
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>Blob 存储和 Azure Data Lake Gen2
 
-在全球范围内, 提供 Azure Data Lake Gen2 的出口作为预览功能提供。 你可以通过在我们的[请求窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)中提供其他详细信息来请求对预览版的访问权限。
+在全球范围内，提供 Azure Data Lake Gen2 的出口作为预览功能提供。 你可以通过在我们的[请求窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)中提供其他详细信息来请求对预览版的访问权限。
 
 Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于在云中存储大量非结构化数据。 有关 Blob 存储及其用法的简介, 请参阅[使用 Azure 门户上传、下载和列出 blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
 
@@ -88,7 +88,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV、Avro 和 Parquet。 |
 |最小行数 (仅 Parquet)|每批的最小行数。 对于 Parquet, 每个批处理都将创建一个新文件。 当前默认值为2000行, 允许的最大值为10000行。|
 |最长时间 (仅 Parquet)|每批的最长等待时间。 在此之后, 即使未满足最小行要求, 也会将该批写入输出。 当前默认值为1分钟, 允许的最大值为2小时。 如果 blob 输出具有路径模式频率, 则等待时间不能大于分区时间范围。|
-| 编码    | 如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前，UTF-8 是仅受支持的编码格式。 |
+| 编码    | 如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。 |
 | 分隔符   | 仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
 | 格式      | 仅适用于 JSON 序列化。 “行分隔”指定通过新行分隔各个 JSON 对象，从而格式化输出。 “数组”指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。 |
 
@@ -119,7 +119,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 | 分区键列 | 可选。 包含事件中心输出的分区键的列。 |
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV 和 Avro。 |
 | 编码 | 对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式。 |
-| 分隔符 | 仅适用于 CSV 序列化。 流分析支持一些常用分隔符，以便采用 CSV 格式序列化数据。 支持的值为逗号、分号、空格、制表符和竖线。 |
+| 分隔符 | 仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
 | 格式 | 仅适用于 JSON 序列化。 “行分隔”指定通过新行分隔各个 JSON 对象，从而格式化输出。 “数组”指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。 |
 | 属性列 | 可选。 需要作为传出消息的用户属性而不是有效负载附加的逗号分隔列。 [输出的自定义元数据属性](#custom-metadata-properties-for-output)部分详细介绍了此功能。 |
 
@@ -207,7 +207,7 @@ datetime | String | String |  datetime | String
 | 队列策略密钥 |用于对服务总线命名空间的访问权限进行身份验证的共享访问密钥。 |
 | 事件序列化格式 |输出数据的序列化格式。 支持 JSON、CSV 和 Avro。 |
 | 编码 |对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式。 |
-| 分隔符 |仅适用于 CSV 序列化。 流分析支持一些常用分隔符，以便采用 CSV 格式序列化数据。 支持的值为逗号、分号、空格、制表符和竖线。 |
+| 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
 | 格式 |仅适用于 JSON 类型。 “行分隔”指定通过新行分隔各个 JSON 对象，从而格式化输出。 “数组”指定输出会被格式化为 JSON 对象的数组。 |
 | 属性列 | 可选。 需要作为传出消息的用户属性而不是有效负载附加的逗号分隔列。 [输出的自定义元数据属性](#custom-metadata-properties-for-output)部分详细介绍了此功能。 |
 
@@ -226,8 +226,8 @@ datetime | String | String |  datetime | String
 | 主题策略名称 |在创建服务总线主题时, 还可以在该主题的 "**配置**" 选项卡上创建共享访问策略。每个共享访问策略具有名称、所设权限以及访问密钥。 |
 | 主题策略密钥 |用于对服务总线命名空间的访问权限进行身份验证的共享访问密钥。 |
 | 事件序列化格式 |输出数据的序列化格式。 支持 JSON、CSV 和 Avro。 |
-| 编码 |如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前，UTF-8 是仅受支持的编码格式。 |
-| 分隔符 |仅适用于 CSV 序列化。 流分析支持一些常用分隔符，以便采用 CSV 格式序列化数据。 支持的值为逗号、分号、空格、制表符和竖线。 |
+| 编码 |如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。 |
+| 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
 | 属性列 | 可选。 需要作为传出消息的用户属性而不是有效负载附加的逗号分隔列。 [输出的自定义元数据属性](#custom-metadata-properties-for-output)部分详细介绍了此功能。 |
 
 分区数[基于服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。
@@ -272,7 +272,7 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions �
 当 Azure 流分析收到 Azure 函数发出的 413 ("http 请求实体过大") 异常时, 它将减少其发送到 Azure Functions 的批的大小。 在 Azure Function 代码中，使用此异常以确保 Azure 流分析不会发送过大的批。 此外, 请确保函数中使用的最大批处理计数和大小值与在流分析门户中输入的值一致。
 
 > [!NOTE]
-> 在测试连接过程中, 流分析会将空的批发送到 Azure Functions, 以测试两个是否工作之间的连接。 请确保函数应用处理空的批处理请求, 以确保测试连接通过。
+> 在测试连接过程中，流分析会将空的批发送到 Azure Functions，以测试两个是否工作之间的连接。 请确保函数应用处理空的批处理请求，以确保测试连接通过。
 
 此外, 在某个时间范围内没有事件登陆的情况下, 不会生成任何输出。 因此, 不会调用**computeResult**函数。 此行为与内置窗口化聚合函数一致。
 
@@ -310,7 +310,7 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions �
 | Azure 服务总线主题 | 是 | 自动选择。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。| 与输出主题中的分区数量相同。  |
 | Azure 服务总线队列 | 是 | 自动选择。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。| 与输出队列中的分区数量相同。 |
 | Azure Cosmos DB | 是 | 基于查询中的 PARTITION BY 子句。 | 按照[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
-| Azure Functions | 否 | 无 | 不适用。 |
+| Azure Functions | 是 | 基于查询中的 PARTITION BY 子句。 | 按照[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 
 还可以使用`INTO <partition count>`查询中的 (参见[INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) 子句来控制输出编写器的数目, 这在实现所需的作业拓扑时非常有用。 如果输出适配器未分区，则一个输入分区中缺少数据将导致延迟最多可达延迟到达的时间量。 在这种情况下, 输出将合并到单个编写器, 这可能会导致管道中出现瓶颈。 若要了解有关延迟到达策略的详细信息, 请参阅[Azure 流分析事件顺序注意事项](stream-analytics-out-of-order-and-late-events.md)。
 

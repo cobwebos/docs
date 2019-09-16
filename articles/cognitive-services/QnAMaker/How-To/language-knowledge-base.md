@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 63eb13dd131fcc1c424c02fdac10f531cc9f0282
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5e50c814fef24aa799549d055ad6496f5bdf05e0
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876625"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961470"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>QnA Maker 的知识库内容的语言支持
 
@@ -29,19 +29,11 @@ QnA Maker 支持多种语言版本的知识库内容。 但是，每个 QnA Make
 
     ![选择“Azure 搜索”资源](../media/qnamaker-how-to-language-kb/select-azsearch.png)
 
-1. 选择 testkb 索引。 此 Azure 搜索索引始终是第一个创建的索引，其中包含该服务中所有知识库的已保存内容。 
+1. 选择 "**索引**"，然后选择 " **testkb** " 索引。 这是创建的第一个 Azure 搜索索引，其中包含该服务中所有知识库的保存内容。 
 
-    ![选择测试知识库](../media/qnamaker-how-to-language-kb/select-testkb.png)
+1. 选择**字段**可以查看索引中的字段。
 
-1. "选择**字段**" 部分显示_testkb_详细信息。
-
-    ![选择字段](../media/qnamaker-how-to-language-kb/selectfields.png)
-
-1. 选中“分析器”对应的框以查看语言详细信息。
-
-    ![选择分析器](../media/qnamaker-how-to-language-kb/select-analyzer.png)
-
-1. 你应会发现_分析器_设置为特定语言。 在从导入的文件和 Url 创建知识库的过程中, 会自动检测到此语言。 一旦创建资源，就不能更改此语言。
+1. `questions` 和`answer`字段的分析器列设置为特定语言。 在从导入的文件和 Url 创建知识库的过程中，会自动检测到此语言。 一旦创建资源，就不能更改此语言。
 
     ![选定分析器](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
 

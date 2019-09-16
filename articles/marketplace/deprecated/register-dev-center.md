@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6ba008ffdf0fe00d6720b0968dc42bfcfc651c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0dd53689f7528e73845ab47a9791f062e0f2cb0c
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258964"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962788"
 ---
 # <a name="register-in-dev-center"></a>在开发人员中心内注册  
 若要帮助确认你登录的不是个人浏览器帐户，请打开一个新的 Internet Explorer InPrivate 或 Chrome Incognito 浏览会话。  
@@ -24,7 +24,7 @@ ms.locfileid: "66258964"
 <!--
     ![Boxes for phone info in the Help us protect your account wizard](./media/marketplace-publishers-guide/registerdevcenteremail.png)  
 -->
-3.  在 `Registration - Account Info` 部分中，从“帐户所在国家/地区”下拉菜单中选择你的帐户所在的国家/地区。   
+3.  在 `Registration - Account Info` 部分中，从“帐户所在国家/地区”下拉菜单中选择你的帐户所在的国家/地区。  
 <!--
     ![Account info with box for country/region](./media/marketplace-publishers-guide/devcenterregistrationaccountinfo.png)  
 -->
@@ -32,30 +32,30 @@ ms.locfileid: "66258964"
     >To sell your services in Azure Marketplace, verify that your registered entity is from one of the approved *sell-from* countries/regions. The location restriction is required for payout and taxation reasons. 
     >*   For more information, visit the Azure Marketplace Participation Policies page located at [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).  
 
-4.  对于“帐户类型”  ，选择 `Company` 单选按钮。  
+4.  对于“帐户类型”，选择 `Company` 单选按钮。  
     *   若要获取有关帐户类型的详细信息并且帮助确定哪种帐户类型最适合你，请访问位于 [docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees) 的“帐户类型、位置和费用”页。  
 
     单击“下一步”按钮。  
 
-5.  在“发布者显示名称”中输入显示名称（通常为公司名称）  。  
+5.  在“发布者显示名称”中输入显示名称（通常为公司名称）。  
 
     >[!NOTE]
     >当你的产品/服务列出时，在开发人员中心内输入的发布者显示名称不会显示在 Azure 市场中，但是必须填写此框才能完成注册过程。 
 
-6.  对于“联系人信息”，输入进行帐户验证所需的信息  。 
+6.  对于“联系人信息”，输入进行帐户验证所需的信息。 
 
     >[!IMPORTANT]
     >必须提供准确的联系信息。 验证过程使用你的联系信息在开发人员中心内批准你的公司。 
 
-1.  在“公司审批者”中输入审批者的联系信息  。 审批者验证你是否有权在开发人员中心内为你的组织创建帐户。  
+1.  在“公司审批者”中输入审批者的联系信息。 审批者验证你是否有权在开发人员中心内为你的组织创建帐户。  
 
     单击“下一步”按钮。  
 <!--
     !["Account info" page with sections highlighted](./media/marketplace-publishers-guide/devcenterregistrationpayment.png)  
 -->
 8.  在 `Registration - Payment` 部分中，必须输入你的付款信息来为你的开发人员中心帐户付款。  
-    *   对于“促销代码”，请输入用于抵扣注册费用的促销代码。   
-    *   对于“账单”，请提供你的信用卡信息。  在受支持的市场中，可以使用 PayPal 信息来替换信用卡。  
+    *   对于“促销代码”，请输入用于抵扣注册费用的促销代码。  
+    *   对于“账单”，请提供你的信用卡信息。 在受支持的市场中，可以使用 PayPal 信息来替换信用卡。  
 
     单击“下一步”按钮。  
 <!--
@@ -70,7 +70,7 @@ ms.locfileid: "66258964"
     单击“完成”按钮发送确认电子邮件。  
 11. 使用你的产品/服务的计费模型选择后续步骤。  
 
-    | 计费模式 | 后续步骤 |  
+    | 计费模型 | 后续步骤 |  
     |:--- |:--- |  
     | 免费 | 转到云合作伙伴门户。<ul> <li>若要在 Azure 市场中进行发布，请使用位于 [cloudpartner.azure.com](https://cloudpartner.azure.com) 的云合作伙伴门户页面。</li> </ul> |  
     | 商用(交易) | 更新你的帐户信息。<ul> <li>有关添加帐户信息的详细信息，请访问[如何添加银行和税务信息](#add-bank-information)部分。</li> </ul> |  
@@ -144,7 +144,7 @@ ms.locfileid: "66258964"
   > Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“事务处理”商品类型的费用。 Microsoft 通过开发人员中心帐户注册来验证公司的法律、税务和银行信息。 有关详细信息，请单击[此处](https://docs.microsoft.com/azure/marketplace/become-publisher)。
 
 * **如何开始使用开发人员中心注册？**
-  > 为避免重复，请确认你的公司尚未注册任何开发人员中心帐户。 必须使用要与开发人员帐户关联的 Microsoft 帐户登录。 如果没有 Microsoft 帐户，可在[此处](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1)创建一个新帐户。 （示例：contoso_marketplace@live.com）若要登录并注册，请转到 https://dev.windows.com/en-us/registration?accountProgram=Azure
+  > 为避免重复，请确认你的公司尚未注册任何开发人员中心帐户。 必须使用要与开发人员帐户关联的 Microsoft 帐户登录。 如果没有 Microsoft 帐户，可在[此处](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1)创建一个新帐户。 （示例：contoso_marketplace@live.com）若要登录并注册，请转到 https://dev.windows.com/registration?accountProgram=Azure
   > <br>若要详细了解注册过程，请单击[此处](https://docs.microsoft.com/azure/marketplace/register-dev-center)。</br>
 
 * **应选择“个人”还是“公司”帐户类型？**
@@ -157,7 +157,7 @@ ms.locfileid: "66258964"
   > 请确保输入的邮政编码也是正确的。 系统会执行城市和邮政编码验证。
 
 * **如何获取促销代码？**
-  > 填写[市场注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)表单即可接收开发人员中心促销代码。 请参阅如何[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)有关详细信息。
+  > 填写[市场注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)表单即可接收开发人员中心促销代码。 有关详细信息, 请参阅如何[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
  
 * **完成注册后预期会出现什么情况？**
   > 查找来自 verify@microsoft.com 的、主题为“需要执行的操作：通过 Microsoft 验证电子邮件帐户”的电子邮件。 请单击有时间限制的验证链接以完成注册。 *如果在 24 小时内未收到电子邮件，请检查垃圾邮件文件夹。*
@@ -182,7 +182,7 @@ ms.locfileid: "66258964"
   > 如果未在开发人员中心帐户中填写税务和银行信息，则无法发布事务处理产品/服务。  有关添加帐户信息的详细信息，请访问[如何添加银行和税务信息](https://docs.microsoft.com/azure/marketplace/register-dev-center)。
 
 * **是否可以更改开发人员中心 Microsoft 登录帐户？**
-  > 不。 创建开发人员中心后，无法更改所有者帐户。 必须使用所需的 Microsoft 帐户重新开始创建新的开发人员中心帐户。
+  > 否。 创建开发人员中心后，无法更改所有者帐户。 必须使用所需的 Microsoft 帐户重新开始创建新的开发人员中心帐户。
 
 * **遇到开发人员中心注册相关的问题时，在哪里可以联系支持人员？**
   若要访问支持，请访问位于 [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) 的 Windows 开发人员支持页面。 

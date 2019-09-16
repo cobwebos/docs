@@ -7,16 +7,16 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/21/2019
+ms.date: 09/12/2019
 ms.author: dapine
-ms.openlocfilehash: 1a14ea186b3e1127928a36600d1047a633aea568
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 1e2001c1f4cb2da195a3dcd0ca8fe198de8dd264
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051883"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968549"
 ---
-## <a name="verify-the-key-phrase-extraction-container-instance"></a>验证关键短语提取容器实例
+### <a name="verify-the-key-phrase-extraction-container-instance"></a>验证关键短语提取容器实例
 
 1. 选择 "**概览**" 选项卡, 然后复制 IP 地址。
 1. 打开新的浏览器选项卡, 并输入 IP 地址。 例如，输入 `http://<IP-address>:5000 (http://55.55.55.55:5000`)。 此时会显示容器的主页, 使你知道容器正在运行。
@@ -100,4 +100,4 @@ ms.locfileid: "70051883"
     }
     ```
 
-我们现在可以将响应有效负载的 JSON 数据的文档 `id` 关联到原始请求有效负载文档 `id`。 生成的文档具有一个`keyPhrases`数组, 其中包含已从相应输入文档中提取的关键短语的列表。 此外, 每个生成的文档都`characterCount`有`transactionCount`各种统计信息, 例如和。
+我们现在可以将响应有效负载的 JSON 数据的文档 `id` 关联到原始请求有效负载文档 `id`。 生成的文档具有一个`keyPhrases`数组，其中包含已从相应输入文档中提取的关键短语的列表。 此外，每个生成的文档都`characterCount`有`transactionCount`各种统计信息，例如和。

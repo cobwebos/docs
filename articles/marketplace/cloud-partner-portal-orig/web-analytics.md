@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4b75b2cbd629204e7edbf1196eec9b03cb7a6736
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6b2a7981452b47a3992b6c0efee286878e143fb
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943159"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962886"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -29,7 +29,7 @@ ms.locfileid: "64943159"
 <a name="microsoft-campaigns"></a>**Microsoft 营销活动**
 -----------------------
 
-为了扩展套餐以及跟踪套餐的扩展情况，我们在云合作伙伴门户上启用了“Microsoft 营销活动”功能。  营销活动是最新支持的市场功能，可用于跟踪在应用详细信息页中发送客户的不同渠道。
+为了扩展套餐以及跟踪套餐的扩展情况，我们在云合作伙伴门户上启用了“Microsoft 营销活动”功能。 营销活动是最新支持的市场功能，可用于跟踪在应用详细信息页中发送客户的不同渠道。
 
 ### <a name="how-to-make-a-campaign"></a>**如何创建营销活动**
 
@@ -71,7 +71,7 @@ ms.locfileid: "64943159"
     2.  登陆页面 URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
 3. 用户单击\"试用我的产品\"链接，然后进入 AppSource。
     1. 推荐 URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. 登陆页面 URL（**请确保在此 URL 中添加 utm\_campaign 和 utm\_source**）= [https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?**utm\_ campaign=MyCampaignAdName&utm\_ source=MySourceAdName**](https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    2. 登陆页面 URL（**请确保在此 URL 中添加 utm\_campaign 和 utm\_source**）= [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_ campaign=MyCampaignAdName&utm\_ source=MySourceAdName**](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>如何评估营销活动的成功度
 -----------------------------------------

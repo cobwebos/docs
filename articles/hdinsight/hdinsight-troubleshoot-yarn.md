@@ -6,12 +6,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 8bfe249b0295bc860cf17a006c3787ff8afa676b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 15ef18663a42153c11a55d4c5963d47f0e2514d6
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573706"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961697"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hadoop YARN 进行故障排除
 
@@ -33,27 +33,27 @@ ms.locfileid: "69573706"
 
 1. 依次选择“Abari 视图”图标和网格模式。 接下来，选择“YARN 队列管理器”。
 
-    ![选择“Ambari 视图”图标](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
+    ![选择“Ambari 视图”图标](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. 选择 **default** 队列。
 
-    ![选择 default 队列](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+    ![选择 default 队列](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. 将 **default** 队列的**容量**从 50% 更改为 25%。 将 **thriftsvr** 队列的**容量**更改为 25%。
 
-    ![将 default 和 thriftsvr 队列的容量更改为 25%](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+    ![将 default 和 thriftsvr 队列的容量更改为 25%](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. 若要创建新队列，请选择“添加队列”。
 
-    ![选择“添加队列”](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
+    ![选择“添加队列”](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. 为新队列命名
 
-    ![为队列 Spark 命名](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
+    ![为队列 Spark 命名](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. 将**容量**值保留为 50%，并选择“操作”按钮。
 
-    ![选择“操作”按钮](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
+    ![选择“操作”按钮](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. 选择“保存并刷新队列”。
 
-    ![选择“保存并刷新队列”](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
+    ![选择“保存并刷新队列”](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
 YARN 计划程序 UI 中会立即显示这些更改。
 
@@ -139,6 +139,6 @@ YARN 计划程序 UI 中会立即显示这些更改。
 
 - 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-- [@AzureSupport](https://twitter.com/azuresupport)连接-官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源: 答案、支持和专家。
+- [@AzureSupport](https://twitter.com/azuresupport)连接-官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
-- 如果需要更多帮助, 可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息, 请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限, 并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

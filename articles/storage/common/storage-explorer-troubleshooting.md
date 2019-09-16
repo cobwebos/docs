@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 69631b39403dedab56ed75cb145d464c0e1f747c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: 3a95d52f2a0aa07094f91b0653fcb94ff1f88d44
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935346"
+ms.locfileid: "70958993"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -264,6 +264,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 1. 打开本地凭据管理工具，查找保存的凭据。
 2. 查找带有密钥`<connection_type_key>/<corrupted_connection_name>`的条目（ `StorageExplorer_CustomConnections_Accounts_v1/account1`例如）。
 3. 删除这些条目并重新添加连接。
+---
 
 如果在执行这些步骤后仍然遇到此错误，或者如果你想要共享你认为损坏的连接，请在 GitHub 页上[打开问题](https://github.com/microsoft/AzureStorageExplorer/issues)。
 

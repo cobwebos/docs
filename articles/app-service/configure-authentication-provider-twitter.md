@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d49b8bf9c62813023c1a1e06e0f8fc0d7809f48d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f7154da76b41198c208d02b8c563ba26ff8101a1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232053"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983599"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>如何将应用服务应用程序配置为使用 Twitter 登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "70232053"
 ## <a name="register"> </a>向 Twitter 注册应用程序
 1. 登录到 [Azure 门户]并导航到应用程序。 复制 **URL**。 你将使用它来配置你的 Twitter 应用。
 2. 导航到 [Twitter 开发人员]网站，使用 Twitter 帐户凭据登录，并单击“创建新应用”。
-3. 为新应用输入“名称”和“描述”。 在“网站”值中，粘贴应用程序的 **URL**。 然后, 对于 "**回调 url**", 键入应用服务应用的 URL 并追加路径`/.auth/login/aad/callback`。 例如， `https://contoso.azurewebsites.net/.auth/login/twitter/callback` 。 请务必使用 HTTPS 方案。
+3. 为新应用输入“名称”和“描述”。 在“网站”值中，粘贴应用程序的 **URL**。 然后，对于 "**回调 url**"，键入应用服务应用的 URL 并追加路径`/.auth/login/twitter/callback`。 例如， `https://contoso.azurewebsites.net/.auth/login/twitter/callback` 。 请务必使用 HTTPS 方案。
 4. 在页面底部，请阅读并接受条款。 然后单击“创建 Twitter 应用程序”。 将显示应用程序详细信息。
 5. 单击“设置”选项卡，选中“允许使用此应用程序进行 Twitter 登录”，并单击“更新设置”。
 6. 选择“密钥和访问令牌”选项卡。记下“使用者密钥(API 密钥)”和“使用者机密(API 机密)”的值。
@@ -52,7 +52,7 @@ ms.locfileid: "70232053"
 4. （可选）要限制只有通过 Twitter 帐户身份验证的用户可以访问站点，请将“请求未经身份验证时需执行的操作”设置为“Twitter”。 这会要求对所有请求进行身份验证，而所有未经身份验证的请求会被重定向到 Twitter 进行身份验证。
 
 > [!NOTE]
-> 以这种方式限制访问权限适用于对应用的所有调用, 对于需要公开提供的主页的应用, 与在许多单页应用程序中一样。 对于此类应用程序, 可以首选 "**允许匿名请求 (无操作)** ", 应用手动启动登录, 如[此处](overview-authentication-authorization.md#authentication-flow)所述。
+> 以这种方式限制访问权限适用于对应用的所有调用，对于需要公开提供的主页的应用，与在许多单页应用程序中一样。 对于此类应用程序，可以首选 "**允许匿名请求（无操作）** "，应用手动启动登录，如[此处](overview-authentication-authorization.md#authentication-flow)所述。
 
 5. 单击“保存”。
 

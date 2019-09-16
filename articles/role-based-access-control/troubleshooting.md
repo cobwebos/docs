@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: c3ca873cb4dd49d77ba818b3d05c3aa41e89276f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: eb7c2cb4a20c89f3a54f23e354d56e5dc3711ef0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982723"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967107"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>对 Azure 资源的 RBAC 问题进行故障排除
 
@@ -175,13 +175,15 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 创建或�
 
 ## <a name="azure-functions-and-write-access"></a>Azure Functions 和写访问权限
 
-[Azure Functions](../azure-functions/functions-overview.md) 的某些功能需要写入权限。 例如, 如果为用户分配了 "[读者](built-in-roles.md#reader)" 角色, 则他们将无法查看函数应用中的函数。 门户将显示 (无访问权限)。
+[Azure Functions](../azure-functions/functions-overview.md) 的某些功能需要写入权限。 例如，如果为用户分配了 "[读者](built-in-roles.md#reader)" 角色，则他们将无法查看函数应用中的函数。 门户将显示 (无访问权限)。
 
 ![函数应用无访问权限](./media/troubleshooting/functionapps-noaccess.png)
 
-读者可单击“平台功能”选项卡，然后单击“所有设置”查看与函数应用（类似于 Web 应用）相关的一些设置，但无法修改任何这些设置。 若要访问这些功能, 您将需要 "[参与者](built-in-roles.md#contributor)" 角色。
+读者可单击“平台功能”选项卡，然后单击“所有设置”查看与函数应用（类似于 Web 应用）相关的一些设置，但无法修改任何这些设置。 若要访问这些功能，您将需要 "[参与者](built-in-roles.md#contributor)" 角色。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](role-assignments-portal.md)
-* [查看 Azure 资源的 RBAC 更改的活动日志](change-history-report.md)
+
+- [来宾用户故障排除](role-assignments-external-users.md#troubleshoot)
+- [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](role-assignments-portal.md)
+- [查看 Azure 资源的 RBAC 更改的活动日志](change-history-report.md)
 

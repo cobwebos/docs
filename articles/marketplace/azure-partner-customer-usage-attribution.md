@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 98d33dd1aad726d4da8499006166dfd2c043378f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 40170540458b7bc7ddb30f88117d472858937e8c
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977156"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962936"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -129,7 +129,7 @@ export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 
 通过 Azure 提供商的1.21.0 版本提供对 Terraform 的支持: [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019)。  此支持适用于通过 Terraform 部署解决方案的所有合作伙伴以及 Azure 提供商 (版本1.21.0 或更高版本) 部署和计量的所有资源。
 
-Azure provider for Terraform 添加了名为[*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id)的新可选字段, 可在其中指定用于解决方案的跟踪 GUID。 此字段的值还可源自*ARM_PARTNER_ID*环境变量。
+Azure provider for Terraform 添加了名为[*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id)的新可选字段，可在其中指定用于解决方案的跟踪 GUID。 此字段的值还可源自*ARM_PARTNER_ID*环境变量。
 
 ```
 provider "azurerm" {
@@ -142,7 +142,7 @@ provider "azurerm" {
 如果合作伙伴要通过客户使用情况所跟踪的 Terraform 获取其部署, 需要执行以下操作:
 
 * 创建 GUID (应为每个产品/服务或 SKU 添加 GUID)
-* 更新其 Azure 提供程序, 将*partner_id*的值设置为 GUID (不要将 guid 预修复为 "pid-", 只需将其设置为实际 GUID)
+* 更新其 Azure 提供程序，将*partner_id*的值设置为 GUID （不要将 guid 预修复为 "pid-"，只需将其设置为实际 GUID）
 
 ## <a name="create-guids"></a>创建 GUID
 
@@ -247,7 +247,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>报告
 
-可以在合作伙伴中心的 "分析" 仪表板中找到客户使用情况归属的报表。 ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). 若要查看报表, 必须使用合作伙伴中心凭据进行登录。 如果在报告或登录时遇到任何问题, 请按照获取支持部分中的说明创建支持请求。
+可以在合作伙伴中心的 "分析" 仪表板中找到客户使用情况归属的报表。 ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). 若要查看报表, 必须使用合作伙伴中心凭据进行登录。 如果在报告或登录时遇到任何问题, 请按照获取支持部分中的说明创建支持请求。
 
 选择 "合作伙伴关联类型" 下拉列表中的 "跟踪的模板" 以查看报表。
 
@@ -269,7 +269,7 @@ foreach ($deployment in $deployments){
 
 有两个支持通道取决于你面临的问题。
 
-如果在合作伙伴中心遇到任何问题, 如查看客户使用情况报表或登录, 请在此处创建支持请求, 其中包含合作伙伴中心支持团队:[https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+如果在合作伙伴中心遇到任何问题, 如查看客户使用情况报表或登录, 请在此处创建支持请求, 其中包含合作伙伴中心支持团队:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 

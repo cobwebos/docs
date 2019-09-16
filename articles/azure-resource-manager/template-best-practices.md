@@ -1,22 +1,17 @@
 ---
 title: Azure 资源管理器模板的最佳做法
 description: 介绍创作 Azure 资源管理器模板的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/16/2019
+ms.date: 09/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 361fcc6b60e863ee43d348cedd6b1571f3f563a2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bd3167b7f0daf7ebd595b2c33b1147140415c3de
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812909"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983825"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure 资源管理器模板最佳做法
 
@@ -47,7 +42,8 @@ ms.locfileid: "70812909"
 如果资源组的区域临时不可用，则不能更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍将按预期运行，但你无法更新它们。 若要将风险降至最低，请将资源组和资源定位在同一区域中。
 
 ## <a name="parameters"></a>Parameters
-使用[参数](resource-group-authoring-templates.md#parameters)时，本部分中的信息可以提供帮助。
+
+使用[参数](template-parameters.md)时，本部分中的信息可以提供帮助。
 
 ### <a name="general-recommendations-for-parameters"></a>有关参数的一般建议
 
@@ -149,7 +145,7 @@ ms.locfileid: "70812909"
 
 ## <a name="variables"></a>变量
 
-使用[变量](resource-group-authoring-templates.md#variables)时，以下信息可以提供帮助：
+使用[变量](template-variables.md)时，以下信息可以提供帮助：
 
 * 对变量名称使用混合大小写。
 
@@ -286,7 +282,7 @@ ms.locfileid: "70812909"
 
 ## <a name="outputs"></a>outputs
 
-如果使用模板创建公共 IP 地址，请包含 [outputs 节](resource-group-authoring-templates.md#outputs)，用于返回 IP 地址和完全限定域名 (FQDN) 的详细信息。 部署后，可以使用输出值轻松检索有关公共 IP 地址和 FQDN 的详细信息。
+如果使用模板创建公共 IP 地址，请包含 [outputs 节](template-outputs.md)，用于返回 IP 地址和完全限定域名 (FQDN) 的详细信息。 部署后，可以使用输出值轻松检索有关公共 IP 地址和 FQDN 的详细信息。
 
 ```json
 "outputs": {

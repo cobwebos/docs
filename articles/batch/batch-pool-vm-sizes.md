@@ -11,15 +11,15 @@ ms.service: batch
 ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 09/12/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f894a7438c56c3830eb62c516447195f10fc3b76
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e3d96ad7783c43dba6b69f6b11acccf790d0d6c9
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094671"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983755"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
 
@@ -44,17 +44,19 @@ ms.locfileid: "70094671"
 | A 系列 | 除 Standard_A0 外的所有大小 | 任意 |
 | Av2 系列 | 所有大小 | 任意 |
 | B 系列 | 无 | 不可用 |
-| DC 系列 | None | 不可用 |
-| Dv2、Dsv2 系列 | 所有大小 | 任意 |
+| DC 系列 | 无 | 不可用 |
+| Dv2，DSv2 系列 | 所有大小 | 任意 |
 | Dv3、Dsv3 系列 | 所有大小 | 任意 |
-| [内存优化大小](../virtual-machines/linux/sizes-memory.md) | 无 | 不可用 |
+| Ev3，Esv3 系列 | 所有大小 | 任意 |
 | Fsv2 系列 | 所有大小 | 任意 |
 | H 系列 | 所有大小 | 任意 |
-| Hb 系列<sup>2</sup> | 所有大小 | 任意 |
-| Hc 系列<sup>2</sup> | 所有大小 | 任意 |
+| HB-ACCT-WC 系列<sup>2</sup> | 所有大小 | 任意 |
+| HC 系列<sup>2</sup> | 所有大小 | 任意 |
 | Ls 系列 | 所有大小 | 任意 |
 | Lsv2 系列 | 无 | 不可用 |
-| M 系列 | Standard_M64ms（仅限低优先级）、Standard_M128s（仅限低优先级） | 任意 |  
+| M 系列 | Standard_M64ms（仅限低优先级）、Standard_M128s（仅限低优先级） | 任意 |
+| Mv2 系列 | 无 | 不可用 |
+| NC 系列 | 所有大小 | 任意 |
 | NCv2 系列<sup>2</sup> | 所有大小 | 任意 |
 | NCv3 系列<sup>2</sup> | 所有大小 | 任意 |
 | ND 系列<sup>2</sup> | 所有大小 | 任意 |

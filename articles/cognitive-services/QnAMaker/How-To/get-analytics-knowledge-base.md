@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: ebc06057dfa4bce72821ddf807cda46270e8ff3e
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 5c55084a57e46931049841f5011941b2115e9e69
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70206832"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961527"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>获取有关知识库的分析
 
@@ -26,9 +26,7 @@ ms.locfileid: "70206832"
 
     ![选择你的 Application Insights 资源](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. 选择“分析”。 此时将打开一个新窗口，可以在其中查询 QnA Maker 遥测数据。
-
-    ![选择 Analytics](../media/qnamaker-how-to-analytics-kb/analytics.png)
+2. 选择“Log Analytics”。 此时将打开一个新窗口，可以在其中查询 QnA Maker 遥测数据。
 
 3. 粘贴以下查询并运行它。
 
@@ -48,7 +46,7 @@ ms.locfileid: "70206832"
 
     选择“运行”以运行查询。
 
-    ![运行查询](../media/qnamaker-how-to-analytics-kb/run-query.png)
+    [![运行查询，确定用户的问题、解答和评分](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
 ## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>运行查询来获取有关 QnA Maker 知识库的其他分析
 

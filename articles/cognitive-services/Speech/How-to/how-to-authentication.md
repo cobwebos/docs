@@ -3,20 +3,20 @@ title: 向必应语音进行身份验证 | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: 请求身份验证，才能使用必应语音 API
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 11d6256fb63452b849a80abab181876d14b3b6a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d1e708ff29293b87935d0d191ba44ad4a11917a0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515058"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965656"
 ---
 # <a name="authenticate-to-the-speech-api"></a>对语音 API 进行身份验证
 
@@ -29,13 +29,13 @@ ms.locfileid: "60515058"
 
 ## <a name="use-a-subscription-key"></a>使用订阅密钥
 
-若要使用语音服务，必须首先订阅作为认知服务（以前称为 Project Oxford）一部分的语音 API。 可从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取免费试用的订阅密钥。 选择语音 API 后，选择“获取 API 密钥”以获取密钥  。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
+若要使用语音服务，必须首先订阅作为认知服务（以前称为 Project Oxford）一部分的语音 API。 可从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取免费试用的订阅密钥。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
 
 若要长期使用或增加配额，请注册 [Azure 帐户](https://azure.microsoft.com/free/)。
 
 若要使用语音 REST API，需要传递请求标头 `Ocp-Apim-Subscription-Key` 字段中的订阅密钥。
 
-名称| 格式| 描述
+姓名| 格式| 描述
 ----|-------|------------
 Ocp-Apim-Subscription-Key | ASCII | YOUR_SUBSCRIPTION_KEY
 

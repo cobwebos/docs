@@ -3,20 +3,20 @@ title: 通过客户端库开始使用必应语音识别 API | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: 使用 Microsoft 认知服务中的必应语音客户端库开发将语音转换为文本的应用程序。
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 89eb18a2b4af76f6489442dc66ab12d0840e92c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ea0c9e7104b29456749c7f1af2a671b32a8fde2
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515216"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966846"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>必应语音服务客户端库入门
 

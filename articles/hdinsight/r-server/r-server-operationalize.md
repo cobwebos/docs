@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 91407fc76d0a7555a87a8a3dcd1b3ad04ee2af80
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 4980b4d3a4ec7165a4aba3d02561f6c666150924
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736222"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967670"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
 
@@ -50,31 +50,31 @@ ms.locfileid: "70736222"
 
 1. 将提供选项供你选择。 选择第一个选项（如以下屏幕截图所示）“配置 ML Server 的操作化”。
 
-    ![单机操作](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![单框 op1](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. 现在将提供选项供你选择要操作 ML Server 的方式。 输入 **A** 从提供的选项中选择第一项。
 
-    ![单机操作](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![单框 op2](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. 出现提示时，输入然后再次输入本地管理员用户的密码。
 
 1. 应看到提示操作成功的输出。 系统还会提示你从菜单中选择另一个选项。 选择 E 以返回到主菜单。
 
-    ![单机操作](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![单框 op3](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. （可选）通过运行诊断测试来执行诊断检查，如下所示：
 
     a. 从主菜单中，选择 **6** 运行诊断测试。
 
-    ![单机操作](./media/r-server-operationalize/diagnostic-1.png)
+    ![diagnostic1](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
     b. 从“诊断测试”菜单中选择 **A**。出现提示时，输入为本地管理员用户提供的密码。
 
-    ![单机操作](./media/r-server-operationalize/diagnostic-2.png)
+    ![diagnostic2](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. 验证输出是否显示总体运行状况通过测试。
 
-    ![单机操作](./media/r-server-operationalize/diagnostic-3.png)
+    ![diagnostic3](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. 从显示的菜单选项中，输入 **E** 返回到主菜单，然后输入 **8** 退出管理员实用程序。
 

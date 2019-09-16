@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: 74ccf2af2d379b3c1966543885df6ebe5cf0f47a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 67f338b583ef428b8dd04e859a5204fd708ce434
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059421"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962007"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Hue
 
@@ -54,9 +54,9 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
    > 若要在 HDInsight 群集上安装 Hue，建议的头节点大小为至少 A4（8 核、14 GB 内存）。
    >
    >
-2. 在“可选配置”  边栏选项卡上，选择“脚本操作”  ，并提供如下信息：
+2. 在“可选配置”边栏选项卡上，选择“脚本操作”，并提供如下信息：
 
-    ![为 Hue 提供脚本操作参数](./media/hdinsight-hadoop-hue-linux/hue-script-action.png "为 Hue 提供脚本操作参数")
+    ![为 Hue 提供脚本操作参数](./media/hdinsight-hadoop-hue-linux/hdi-hue-script-action.png "为 Hue 提供脚本操作参数")
 
    * **名称**：输入脚本操作的友好名称。
    * **脚本 URI**： https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
@@ -64,7 +64,7 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
    * **辅助角色**：将此项留空。
    * **ZOOKEEPER**：将此项留空。
    * **参数**：将此项留空。
-3. 在“脚本操作”  的底部，使用“选择”  按钮保存配置。 最后，使用“可选配置”  边栏选项卡底部的“选择”  按钮保存可选配置信息。
+3. 在“脚本操作”的底部，使用“选择”按钮保存配置。 最后，使用“可选配置”边栏选项卡底部的“选择”按钮保存可选配置信息。
 4. 继续按[预配 Linux 上的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)中所述预配群集。
 
 ## <a name="use-hue-with-hdinsight-clusters"></a>将 Hue 与 HDInsight 群集搭配使用
@@ -91,7 +91,7 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     这是 Hue 网站所在的主头节点的主机名。
-4. 使用浏览器打开 Hue 门户网站位于 http:\//HOSTNAME:8888。 将 HOSTNAME 替换为在上一步骤中获取的名称。
+4. 使用浏览器打开 http：\//HOSTNAME：8888的色调门户。 将 HOSTNAME 替换为在上一步骤中获取的名称。
 
    > [!NOTE]  
    > 第一次登录时，系统会提示创建帐户来登录 Hue 门户。 在此处指定的凭据只能用于该门户，并且与预配群集时指定的管理员或 SSH 用户凭据不相关。
@@ -101,21 +101,21 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
     ![登录到 Hue 门户](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "为 Hue 门户指定凭据")
 
 ### <a name="run-a-hive-query"></a>运行 Hive 查询
-1. 在 Hue 门户中，单击“查询编辑器”  ，并单击“Hive”  打开 Hive 编辑器。
+1. 在 Hue 门户中，单击“查询编辑器”，并单击“Hive”打开 Hive 编辑器。
 
     ![使用 Hive](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "使用 Hive")
-2. 在“帮助”  选项卡上的“数据库”  下面，应会看到 **hivesampletable**。 这是 HDInsight 上的所有 Hadoop 群集随附的示例表。 在右窗格中输入示例查询，并在下方窗格的“结果”  选项卡中查看输出，如屏幕截图所示。
+2. 在“帮助”选项卡上的“数据库”下面，应会看到 **hivesampletable**。 这是 HDInsight 上的所有 Hadoop 群集随附的示例表。 在右窗格中输入示例查询，并在下方窗格的“结果”选项卡中查看输出，如屏幕截图所示。
 
     ![运行 Hive 查询](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "运行 Hive 查询")
 
-    也可以使用“图表”  选项卡查看结果的视觉表示形式。
+    也可以使用“图表”选项卡查看结果的视觉表示形式。
 
 ### <a name="browse-the-cluster-storage"></a>浏览群集存储
-1. 在 Hue 门户中，单击菜单栏右上角的“文件浏览器”  。
+1. 在 Hue 门户中，单击菜单栏右上角的“文件浏览器”。
 2. 默认情况下，文件浏览器在 **/user/myuser** 目录中打开。 单击路径中用户目录前面的正斜杠，以转到与群集关联的 Azure 存储容器的根目录。
 
     ![使用文件浏览器](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "使用文件浏览器")
-3. 右键单击某个文件或文件夹，以查看可用的操作。 使用右侧的“上传”  按钮，将文件上传到当前目录。 使用“新建”  按钮创建新的文件或目录。
+3. 右键单击某个文件或文件夹，以查看可用的操作。 使用右侧的“上传”按钮，将文件上传到当前目录。 使用“新建”按钮创建新的文件或目录。
 
 > [!NOTE]  
 > Hue 文件浏览器只能显示与 HDInsight 群集关联的默认容器的内容。 与群集关联的任何其他存储帐户/容器将无法使用文件浏览器访问。 不过，与群集关联的其他容器始终可供 Hive 作业访问。 例如，如果在 Hive 编辑器中输入 `dfs -ls wasb://newcontainer@mystore.blob.core.windows.net` 命令，也可以看到其他容器的内容。 在此命令中，**newcontainer** 不是与群集关联的默认容器。
@@ -135,7 +135,7 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
    ![Hue 门户错误](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Hue 门户错误")
 
    这是由已知问题造成的。 解决方法如下：修改 Ambari，使活动 Resource Manager 也在主头节点上运行。
-5. 当 HDInsight 群集使用 Azure 存储（使用 `wasb://`）时，Hue 能识别 WebHDFS。 因此，搭配脚本操作使用的自定义脚本会安装 WebWasb，这是用来与 WASB 通信的 WebHDFS 兼容服务。 因此，即使 Hue 门户中显示 HDFS（例如，将鼠标移到“文件浏览器”  上时），也应该将它解释为 WASB。
+5. 当 HDInsight 群集使用 Azure 存储（使用 `wasb://`）时，Hue 能识别 WebHDFS。 因此，搭配脚本操作使用的自定义脚本会安装 WebWasb，这是用来与 WASB 通信的 WebHDFS 兼容服务。 因此，即使 Hue 门户中显示 HDFS（例如，将鼠标移到“文件浏览器”上时），也应该将它解释为 WASB。
 
 ## <a name="next-steps"></a>后续步骤
 * [在 HDInsight 群集上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Giraph。 Giraph 可让你使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。

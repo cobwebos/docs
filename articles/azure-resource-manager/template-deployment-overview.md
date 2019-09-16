@@ -4,14 +4,14 @@ description: 介绍如何使用 Azure 资源管理器模板来部署资源。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/07/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 61e9bbabee969280c07521edb05d67ba68c0c58e
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 6d0d162f0f6f3024f6b4b63b8df1df9fd413afc8
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802015"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965298"
 ---
 # <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 
@@ -21,43 +21,35 @@ ms.locfileid: "70802015"
 
 若要实现 Azure 解决方案的基础结构代码，请使用 Azure 资源管理器模板。 该模板是一个 JavaScript 对象表示法（JSON）文件，用于定义项目的基础结构和配置。 该模板使用声明性语法，这使你可以陈述打算部署的内容，而无需编写编程命令序列来创建它。 在模板中，指定要部署的资源以及这些资源的属性。
 
-## <a name="benefits-of-resource-manager-templates"></a>资源管理器模板的优点
+## <a name="why-choose-resource-manager-templates"></a>为什么选择资源管理器模板？
 
-资源管理器模板具有以下优点：
+如果要尝试决定使用资源管理器模板和其他某个基础结构作为代码服务，请考虑使用模板的以下优点：
 
-* 以组的形式部署、管理和监视解决方案的所有资源，而不是单独处理这些资源。
+* **声明性语法**：资源管理器模板允许以声明方式创建和部署整个 Azure 基础结构。 例如，你不仅可以部署虚拟机，还可以部署网络基础结构、存储系统和可能需要的任何其他资源。
 
-* 在整个开发生命周期内重复部署解决方案，并确保资源在一致状态中部署。
+* 可**重复的结果**：在整个开发生命周期内重复部署基础结构，并以一致的方式部署资源。 模板是幂等的，这意味着你可以多次部署同一模板并获取相同状态的相同资源类型。 你可以开发一个表示所需状态的模板，而不是开发多个单独的模板来表示更新。
 
-* 通过声明性模板而非脚本来管理基础结构。
-
-如果尝试决定使用资源管理器模板还是使用其他某个基础结构作为代码服务，请考虑以下优点模板：
-
-* 新的 Azure 服务和功能在模板中立即可用。 一旦资源提供程序引入了新资源，就可以通过模板部署这些资源。 对于其他基础结构作为代码服务，需要等待第三方为新资源实现接口。
-
-* 模板部署由模板的单个提交来处理，而不是通过多个命令性命令进行处理。 资源管理器协调相互依赖的资源的部署，以便按正确的顺序创建这些资源。 它分析模板，并根据资源之间的引用确定部署的正确顺序。
+* **业务流程**：您不必担心排序操作的复杂性。 资源管理器协调相互依赖的资源的部署，以便按正确的顺序创建这些资源。 如果可能，资源管理器会以并行方式部署资源，以便部署比串行部署更快。 通过一个命令而不是通过多个命令命令来部署模板。
 
    ![模板部署比较](./media/template-deployment-overview/template-processing.png)
 
-* 模板部署在 Azure 门户中进行跟踪。 您可以查看部署历史记录并获取有关模板部署的信息。 您可以查看部署的模板、传入的参数值以及任何输出值。 其他基础结构，因为代码服务不是通过门户进行跟踪。
+* **内置验证**：只有通过验证后，才会部署模板。 资源管理器在开始部署之前检查模板，以确保部署成功。 你的部署不太可能在半完成状态中停止。
+
+* **模块化文件**：你可以将模板分解为更小的可重复使用的组件，并在部署时将它们链接在一起。 还可以在另一个模板内嵌套一个模板。
+
+* **创建任何 Azure 资源**：你可以立即在模板中使用新的 Azure 服务和功能。 一旦资源提供程序引入了新资源，就可以通过模板部署这些资源。 使用新服务之前，无需等待工具或模块进行更新。
+
+* **跟踪的部署**：在 Azure 门户中，可以查看部署历史记录并获取有关模板部署的信息。 您可以查看部署的模板、传入的参数值以及任何输出值。 其他基础结构，因为代码服务不是通过门户进行跟踪。
 
    ![部署历史记录](./media/template-deployment-overview/deployment-history.png)
 
-* 模板部署进行预航班验证。 资源管理器在开始部署之前检查模板，以确保部署成功。 你的部署不太可能在半完成状态中停止。
+* **作为代码的策略**：[Azure 策略](../governance/policy/overview.md)是一种作为代码框架的策略，用于自动进行管理。 如果你使用的是 Azure 策略，则在通过模板部署时，将在不符合的资源上执行策略更正。
 
-* 如果你使用的是[Azure 策略](../governance/policy/overview.md)，则在通过模板部署时，将在不符合的资源上执行策略更正。
+* **部署蓝图**：你可以利用 Microsoft 提供的[蓝图](../governance/blueprints/overview.md)来满足法规和合规性标准。 这些蓝图包括用于各种体系结构的预建模板。
 
-* Microsoft 提供了部署[蓝图](../governance/blueprints/overview.md)来满足法规和合规性标准。 这些蓝图包括用于各种体系结构的预建模板。
+* 可**导出代码**：可以通过导出资源组的当前状态或查看用于特定部署的模板，获取现有资源组的模板。 查看[导出的模板](export-template-portal.md)是了解模板语法的有用方法。
 
-## <a name="idempotent"></a>幂
-
-幂等只是指您可以多次运行相同的操作并获得相同的结果。 部署资源管理器模板是幂等的。 可以多次部署同一模板，并获取相同状态的相同资源类型。 这一概念很重要，因为它意味着您是将模板重新部署到现有资源组还是将模板部署到新的资源组。
-
-假设已在资源组中部署了三个资源，然后决定需要添加第四个资源。 可以将第四个资源添加到现有模板，而不是创建仅包含新资源的新模板。 将新模板部署到已有三个资源的资源组时，资源管理器确定要执行的操作。
-
-如果资源已存在于资源组中，并且请求中未包含对属性的任何更新，则不执行任何操作。 如果资源存在但属性已更改，则会更新现有资源。 如果该资源不存在，将创建新资源。
-
-在部署完成后，您一定相信资源始终处于预期状态。
+* **创作工具**：您可以[Visual Studio Code](resource-manager-tools-vs-code.md)和模板工具扩展创建模板。 你将获得 intellisense、语法突出显示、行内帮助以及许多其他语言功能。
 
 ## <a name="template-file"></a>模板文件
 
@@ -74,20 +66,6 @@ ms.locfileid: "70802015"
 * [资源](resource-group-authoring-templates.md#resources)-指定要部署的资源。
 
 * [输出](template-outputs.md)-从已部署的资源返回值。
-
-## <a name="template-features"></a>模板功能
-
-资源管理器分析依赖关系，以确保按正确的顺序创建资源。 大多数依赖项都是隐式确定的。 但是，您可以显式设置依赖关系，以确保在一个资源之前部署另一个资源。 有关详细信息，请参阅[在 Azure 资源管理器模板中定义依赖关系](resource-group-define-dependencies.md)。
-
-可以将资源添加到模板，并根据需要进行部署。 通常，会传入一个参数值，该值指示是否需要部署资源。 有关详细信息，请参阅[资源管理器模板中的条件部署](conditional-resource-deployment.md)。
-
-您可以使用复制元素来指定变量、属性或资源的多个实例，而不是模板中多次重复的 JSON 块。 有关详细信息，请参阅[Azure 资源管理器模板中的资源、属性或可变迭代](resource-group-create-multiple.md)。
-
-## <a name="export-templates"></a>导出模板
-
-可以通过导出资源组的当前状态或查看用于特定部署的模板，获取现有资源组的模板。 查看[导出的模板](export-template-portal.md)是了解模板语法的有用方法。
-
-从门户创建解决方案时，该解决方案会自动包含部署模板。 无需从头开始创建模板，因为可以从解决方案的模板着手，并根据特定需求自定义该模板。 有关示例，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](./resource-manager-quickstart-create-templates-use-the-portal.md)。
 
 ## <a name="template-deployment-process"></a>模板部署进程
 
@@ -146,6 +124,7 @@ REQUEST BODY
 ## <a name="next-steps"></a>后续步骤
 
 * 有关模板文件中的属性的信息，请参阅[了解 Azure 资源管理器模板的结构和语法](resource-group-authoring-templates.md)。
-* 若要开始开发模板，请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](resource-manager-tools-vs-code.md)。
-* 有关资源管理器服务（包括其管理功能）的简介，请参阅[Azure 资源管理器概述](resource-group-overview.md)。
-
+* 若要显式设置依赖关系，以便在另一个资源之前部署一个资源，请参阅[在 Azure 资源管理器模板中定义依赖项](resource-group-define-dependencies.md)。
+* 可以将资源添加到模板，并根据需要进行部署。 有关详细信息，请参阅[资源管理器模板中的条件部署](conditional-resource-deployment.md)。
+* 您可以指定一个变量、属性或资源的多个实例，而不是模板中多次重复的 JSON 块。 有关详细信息，请参阅[Azure 资源管理器模板中的资源、属性或可变迭代](resource-group-create-multiple.md)。
+* 若要了解有关导出模板的[信息，请参阅快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](./resource-manager-quickstart-create-templates-use-the-portal.md)。

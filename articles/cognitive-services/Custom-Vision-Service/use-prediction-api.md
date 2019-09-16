@@ -10,48 +10,46 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 22955ba4b885b264210dc8788f2a410b785b28b4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883968"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966951"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>将模型与预测 API 配合使用
 
-训练模型后, 可以通过将图像提交到预测 API 终结点以编程方式测试图像。
+训练模型后，可以通过将图像提交到预测 API 终结点以编程方式测试图像。
 
 > [!NOTE]
-> 本文档演示如何使用 C# 将图像提交到预测 API。 有关详细信息和示例, 请参阅[预测 API 参考](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)。
+> 本文档演示如何使用 C# 将图像提交到预测 API。 有关详细信息和示例，请参阅[预测 API 参考](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)。
 
 ## <a name="publish-your-trained-iteration"></a>发布定型的迭代
 
 从[自定义影像服务网页](https://customvision.ai)，选择你的项目，然后选择“性能”选项卡。
 
-若要将图像提交到预测 API, 首先需要发布迭代进行预测, 这可以通过选择 " __" 并为已发布的迭代指定名称来完成。 这会使你的模型可通过自定义视觉 Azure 资源的预测 API 进行访问。
+若要将图像提交到预测 API，首先需要发布迭代进行预测，这可以通过选择 "__发布__" 并为已发布的迭代指定名称来完成。 这会使你的模型可通过自定义视觉 Azure 资源的预测 API 进行访问。
 
-![显示 "性能" 选项卡, 并在 "发布" 按钮的周围显示一个红色矩形。](./media/use-prediction-api/unpublished-iteration.png)
+![显示 "性能" 选项卡，并在 "发布" 按钮的周围显示一个红色矩形。](./media/use-prediction-api/unpublished-iteration.png)
 
-成功发布模型后, 你将在左侧边栏中显示 "已发布" 标签, 并且其名称将显示在迭代的说明中。
+成功发布模型后，你将在左侧边栏中显示 "已发布" 标签，并且其名称将显示在迭代的说明中。
 
-![显示 "性能" 选项卡, 并在 "已发布" 标签和已发布的迭代的名称周围显示一个红色矩形。](./media/use-prediction-api/published-iteration.png)
+![显示 "性能" 选项卡，并在 "已发布" 标签和已发布的迭代的名称周围显示一个红色矩形。](./media/use-prediction-api/published-iteration.png)
 
 ## <a name="get-the-url-and-prediction-key"></a>获取 URL 和预测密钥
 
-在您的模型发布后, 您可以通过选择 " __" 来检索所需的信息。 这将打开一个对话框, 其中包含有关使用预测 API 的信息, 包括 __和 __。
+在您的模型发布后，您可以通过选择 "__预测 URL__" 来检索所需的信息。 这将打开一个对话框，其中包含有关使用预测 API 的信息，包括__预测 URL__和__预测键__。
 
 !["性能" 选项卡显示在 "预测 URL" 按钮周围显示一个红色矩形。](./media/use-prediction-api/published-iteration-prediction-url.png)
 
-![将显示 "性能" 选项卡, 并在 "预测 URL" 值周围显示一个红色矩形, 用于使用图像文件和预测键值。](./media/use-prediction-api/prediction-api-info.png)
+![将显示 "性能" 选项卡，并在 "预测 URL" 值周围显示一个红色矩形，用于使用图像文件和预测键值。](./media/use-prediction-api/prediction-api-info.png)
 
-> [!TIP]
-> 你还可以在 " __" 边栏选项卡下的 " [Azure 门户](https://portal.azure.com)" 页中找到与项目关联的 Azure 资源自定义视觉。
 
-在本指南中, 你将使用本地映像, 因此,**如果你有一个图像文件**到临时位置, 请复制下的 URL。 同时复制相应的 __值。
+在本指南中，你将使用本地映像，因此，**如果你有一个图像文件**到临时位置，请复制下的 URL。 同时复制相应的__预测密钥__值。
 
 ## <a name="create-the-application"></a>创建应用程序
 
-1. 在 Visual Studio 中, 创建一个C#新的控制台应用程序。
+1. 在 Visual Studio 中，创建一个C#新的控制台应用程序。
 
 1. 使用以下代码作为“Program.cs”文件的主体。
 
@@ -117,7 +115,7 @@ ms.locfileid: "68883968"
 
 ## <a name="run-the-application"></a>运行应用程序
 
-当你运行应用程序时, 系统将提示你在控制台中输入图像文件的路径。 然后, 将图像提交到预测 API, 并将预测结果作为 JSON 格式的字符串返回。 下面是一个示例响应。
+当你运行应用程序时，系统将提示你在控制台中输入图像文件的路径。 然后，将图像提交到预测 API，并将预测结果作为 JSON 格式的字符串返回。 下面是一个示例响应。
 
 ```json
 {
@@ -134,9 +132,9 @@ ms.locfileid: "68883968"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本指南中, 您学习了如何使用C# SDK 以编程方式将图像提交到自定义图像分类器/检测程序并接收响应。 接下来, 了解如何使用C#完成端到端方案, 或使用其他语言 SDK 开始使用。
+在本指南中，您学习了如何使用C# SDK 以编程方式将图像提交到自定义图像分类器/检测程序并接收响应。 接下来，了解如何使用C#完成端到端方案，或使用其他语言 SDK 开始使用。
 
-* [快速入门: .NET SDK](csharp-tutorial.md)
+* [快速入门： .NET SDK](csharp-tutorial.md)
 * [快速入门：Python SDK](python-tutorial.md)
 * [快速入门：Java SDK](java-tutorial.md)
 * [快速入门：Node SDK](node-tutorial.md)

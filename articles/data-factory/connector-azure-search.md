@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: bc914d27e9bea15a625dd2cd196401d733f8cfb8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c2165d0ff16233766918f9e274324b02d1bf1ac8
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275934"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962099"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 搜索索引
 
@@ -113,7 +113,7 @@ Azure 搜索链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动 source 的 type 属性必须设置为：**AzureSearchIndexSink** | 是 |
+| type | 复制活动源的 type 属性必须设置为：**AzureSearchIndexSink** | 是 |
 | writeBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。<br/><br/>允许值包括：**Merge**（默认值）和 **Upload**。 | 否 |
 | writeBatchSize | 缓冲区大小达到 writeBatchSize 时会数据上传到 Azure 搜索索引。 有关详细信息，请参阅 [WriteBatchSize 属性](#writebatchsize-property)。<br/><br/>允许的值为：整数 1 到 1,000；默认值为 1000。 | 否 |
 
@@ -164,7 +164,7 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 ]
 ```
 
-### <a name="data-type-support"></a>数据类型支持
+## <a name="data-type-support"></a>数据类型支持
 
 下表指定是否支持某个 Azure 搜索数据类型。
 
@@ -178,6 +178,8 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 | DataTimeOffset | Y |
 | String Array | N |
 | GeographyPoint | N |
+
+当前不支持其他数据类型，例如 ComplexType。 有关 Azure 搜索支持的数据类型的完整列表，请参阅[支持的数据类型（Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

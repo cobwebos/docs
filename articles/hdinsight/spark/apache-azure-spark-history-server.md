@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9ba03f6b1e658e08c3d07d7ccb5e2a99e96fe69c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: fad2c83138f211e83e9462182d33f6169cbdb833
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736456"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968153"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark History Server 调试和诊断 Apache Spark 应用程序
 
@@ -47,23 +47,23 @@ Spark History Server Web UI 如下所示：
 
 + 分别选择“输入”、“输出”和“表操作”选项卡，以检查其中的信息。
 
-    ![数据选项卡](./media/apache-azure-spark-history-server/sparkui-data-tabs.png)
+    ![数据选项卡](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
 + 单击“复制”按钮复制所有行。
 
-    ![数据复制](./media/apache-azure-spark-history-server/sparkui-data-copy.png)
+    ![数据复制](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
 
 + 单击“csv”按钮将所有数据保存为 CSV 文件。
 
-    ![数据保存](./media/apache-azure-spark-history-server/sparkui-data-save.png)
+    ![数据保存](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
 
 + 在“搜索”字段中输入关键字进行搜索，搜索结果会立即显示。
 
-    ![数据搜索](./media/apache-azure-spark-history-server/sparkui-data-search.png)
+    ![数据搜索](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
 
 + 单击列标题将表排序，单击加号展开某行以显示更多详细信息，或单击减号折叠某行。
 
-    ![数据表](./media/apache-azure-spark-history-server/sparkui-data-table.png)
+    ![数据表](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
 
 + 单击右侧的“部分下载”按钮下载单个文件；选定的文件将下载到本地，如果该文件不再存在，则会打开一个显示错误消息的新选项卡。
 
@@ -75,7 +75,7 @@ Spark History Server Web UI 如下所示：
 
 + 如果一个页面中显示的行数过多，单击表下面的编号可以浏览不同的页面。 
 
-    ![数据页](./media/apache-azure-spark-history-server/sparkui-data-page.png)
+    ![数据页](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
 
 + 将鼠标悬停在“数据”旁边的问号上以显示工具提示，或单击问号获取更多信息。
 
@@ -93,7 +93,7 @@ Spark History Server Web UI 如下所示：
 
 + 默认情况下，图形中会显示所有作业，可按“作业 ID”筛选作业。
 
-    ![图形 - 作业 ID](./media/apache-azure-spark-history-server/sparkui-graph-jobid.png)
+    ![图形 - 作业 ID](./media/apache-azure-spark-history-server/apache-spark-graph-jobid.png)
 
 + 默认已选择“进度”，用户可以在“显示”下拉列表中选择“已读取/已写入”来检查数据流。
 
@@ -211,15 +211,15 @@ Spark History Server Web UI 如下所示：
 5. 现在，该属性设置为 **false**。
 6. 单击 **保存** 以保存配置。
 
-    ![功能关闭](./media/apache-azure-spark-history-server/sparkui-turn-off.png)
+    ![功能关闭](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
 7. 在左面板中单击“Spark2”，在“摘要”选项卡下单击“Spark2 History Server”。
 
-    ![重启 server1](./media/apache-azure-spark-history-server/sparkui-restart-1.png) 
+    ![重启 server1](./media/apache-azure-spark-history-server/apache-spark-restart1.png) 
 
 8. 单击“重启 Spark2 History Server”以重启 History Server。
 
-    ![重启 server2](./media/apache-azure-spark-history-server/sparkui-restart-2.png)  
+    ![重启 server2](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 
 9. 刷新 Spark History Server Web UI，该服务将还原到社区版本。
 
@@ -236,7 +236,7 @@ Spark History Server Web UI 如下所示：
 
 3. 提供遇到的错误的标题和说明，将 zip 文件拖放到编辑字段中，然后单击“提交新问题”。
 
-    ![提出问题](./media/apache-azure-spark-history-server/sparkui-file-issue.png)
+    ![提出问题](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
 
 ### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3.通过修补方案升级 jar 文件
@@ -314,7 +314,7 @@ Spark History Server Web UI 如下所示：
    + 选中“头节点”和“工作节点”。
    + **参数**：按照 bash 用法设置参数。
 
-     ![上传日志或升级修补程序](./media/apache-azure-spark-history-server/sparkui-upload2.png)
+     ![上传日志或升级修补程序](./media/apache-azure-spark-history-server/apache-spark-upload1.png)
 
 
 ## <a name="known-issues"></a>已知问题

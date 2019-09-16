@@ -1,22 +1,22 @@
 ---
 title: 规划 Azure HDInsight 的虚拟网络
-description: 了解如何规划 Azure 虚拟网络部署, 以将 HDInsight 连接到其他云资源或数据中心内的资源。
+description: 了解如何规划 Azure 虚拟网络部署，以将 HDInsight 连接到其他云资源或数据中心内的资源。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 135855ee33f783e85b398c7f9716c2c897633de9
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: a0c9c729081da9f6c7b8f549a4906d432af6ecb2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779545"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961645"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
 
-本文提供有关将[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)与 azure HDInsight 配合使用的背景信息。 它还讨论了在为 HDInsight 群集实现虚拟网络之前必须做出的设计和实施决策。 规划阶段完成后, 可以继续为[Azure HDInsight 群集创建虚拟网络](hdinsight-create-virtual-network.md)。 有关正确配置网络安全组和用户定义的路由所需的 HDInsight 管理 IP 地址的详细信息, 请参阅[HDInsight 管理 ip 地址](hdinsight-management-ip-addresses.md)。
+本文提供有关将 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)与 Azure HDInsight 配合使用的背景信息。 其中介绍了在为 HDInsight 群集实施虚拟网络之前必须做出的设计和实施决策。 规划阶段完成后，可以继续[为 Azure HDInsight 群集创建虚拟网络](hdinsight-create-virtual-network.md)。 有关正确配置网络安全组和用户定义的路由所需的 HDInsight 管理 IP 地址的详细信息，请参阅 [HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
 
 使用 Azure 虚拟网络支持以下方案：
 
@@ -25,9 +25,9 @@ ms.locfileid: "68779545"
 * 直接访问无法通过 Internet 公开访问的 [Apache Hadoop](https://hadoop.apache.org/) 服务。 例如，[Apache Kafka](https://kafka.apache.org/) API 或 [Apache HBase](https://hbase.apache.org/) Java API。
 
 > [!IMPORTANT]
-> 在 VNET 中创建 HDInsight 群集会创建多个网络资源, 例如 Nic 和负载均衡器。 请勿删除这些网络资源, 因为群集在 VNET 中正常工作需要它们。
+> 在 VNET 中创建 HDInsight 群集时会创建多个网络资源，例如 NIC 和负载均衡器。 请**勿**删除这些网络资源，因为群集需要它们才能在 VNET 中正常运行。
 >
-> 2019年2月28日以后, 将在同一 HDInsight 群集资源组中预配在 VNET 中创建的新 HDInsight 群集的网络资源 (如 Nic、磅等)。 以前，这些资源在 VNET 资源组中预配。 当前运行的群集以及那些在没有 VNET 的情况下创建的群集没有任何更改。
+> 2019 年 2 月 28 日以后，在 VNET 中创建的新 HDInsight 群集的网络资源（例如 NIC、LB 等）会在同一 HDInsight 群集资源组中进行预配。 以前，这些资源在 VNET 资源组中预配。 当前运行的群集以及那些在没有 VNET 的情况下创建的群集没有任何更改。
 
 ## <a name="planning"></a>规划
 
@@ -117,7 +117,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 * Internet 上的任何可用资源。 例如，microsoft.com、windowsupdate.com。
 
-* 位于同一 Azure 虚拟网络中的任何资源（通过使用资源的内部 DNS 名称）。 例如, 使用默认名称解析时, 以下是分配给 HDInsight 辅助角色节点的内部 DNS 名称的示例:
+* 位于同一 Azure 虚拟网络中的任何资源（通过使用资源的内部 DNS 名称）。 例如，在使用默认的名称解析时，下面是分配给 HDInsight 工作器节点的内部 DNS 名称示例：
 
   * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
   * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
@@ -212,7 +212,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 作为托管服务，HDInsight 需要对 HDInsight 运行状况和管理服务具有不受限制的访问权限，以处理从 VNET 传入和传出的流量。 使用 NSG 时，必须确保这些服务仍然可以与 HDInsight 群集进行通信。
 
-![在 Azure 自定义 VNET 中创建的 HDInsight 实体示意图](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
+![在 Azure 自定义 VNET 中创建的 HDInsight 实体示意图](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
 
 ### <a name="hdinsight-with-network-security-groups"></a>使用网络安全组的 HDInsight
 
@@ -220,7 +220,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 1. 标识你计划用于 HDInsight 的 Azure 区域。
 
-2. 标识 HDInsight 所需的 IP 地址。 有关详细信息, 请参阅[HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
+2. 标识 HDInsight 所需的 IP 地址。 有关详细信息，请参阅 [HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
 
 3. 为计划将 HDInsight 安装到其中的子网创建或修改网络安全组。
 
@@ -238,7 +238,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 ## <a id="hdinsight-ip"></a>需要的 IP 地址
 
-如果使用网络安全组或用户定义的路由来控制流量, 请参阅[HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
+如果使用网络安全组或用户定义的路由来控制流量，请参阅 [HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
     
 ## <a id="hdinsight-ports"></a>所需的端口
 
@@ -250,9 +250,9 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关创建 Azure 虚拟网络的代码示例和示例, 请参阅[创建 Azure HDInsight 群集的虚拟网络](hdinsight-create-virtual-network.md)。
+* 有关演示如何创建 Azure 虚拟网络的代码示例和操作示例，请参阅[为 Azure HDInsight 群集创建虚拟网络](hdinsight-create-virtual-network.md)。
 * 有关将 HDInsight 配置为连接到本地网络的端到端示例，请参阅[将 HDInsight 连接到本地网络](./connect-on-premises-network.md)。
-* 若要在 Azure 虚拟网络中配置 Apache HBase 群集, 请参阅[在 Azure 虚拟网络中的 HDInsight 上创建 Apache hbase 群集](hbase/apache-hbase-provision-vnet.md)。
+* 若要了解如何在 Azure 虚拟网络中配置 Apache HBase 群集，请参阅[在 Azure 虚拟网络中的 HDInsight 上创建 Apache HBase 群集](hbase/apache-hbase-provision-vnet.md)。
 * 要了解如何配置 Apache HBase 异地复制，请参阅[在 Azure 虚拟网络中设置 Apache HBase 群集复制](hbase/apache-hbase-replication.md)。
 * 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 * 有关网络安全组的详细信息，请参阅[网络安全组](../virtual-network/security-overview.md)。

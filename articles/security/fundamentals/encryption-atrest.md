@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 78062dd92d20da365bb4f3d9c21cc4d576bae01f
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3e745d5f38d5623aab17ef7a3e3fbfa2c616e6d4
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918870"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984855"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -272,6 +272,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | Azure Analysis Services          | 是                | -                  | -                  |
 | Azure 数据目录               | 是                | -                  | -                  |
 | Azure HDInsight 上的 Apache Kafka  | 是                | 所有 RSA 长度。   | -                  |
+| Azure 数据资源管理器              | 是                | -                  | -                  |
 | Azure 数据工厂               | 是                | -                  | -                  |
 | Azure Data Lake Store            | 是                | 是，RSA 2048 位  | -                  |
 | **容器**                   |                    |                    |                    |

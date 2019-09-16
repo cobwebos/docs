@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9464b408f43f55cb75a57798b098be6335328e3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: d5f271f75a4faa7067f8a52d63a34772780c6448
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136528"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959910"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -33,7 +33,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure 政府 | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
 | 系统分配 | 可用 | 预览 | 预览 | 预览 | 
-| 用户分配 | 预览 | 预览 | 预览 | 预览 |
+| 用户分配 | 可用 | 预览 | 预览 | 预览 |
 
 请参阅以下列表来配置 Azure 虚拟机的托管标识（在可用的区域中）：
 
@@ -48,7 +48,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 |托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure 政府 | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
 | 系统分配 | 可用 | 预览 | 预览 | 预览 |
-| 用户分配 | 预览 | 预览 | 预览 | 预览 |
+| 用户分配 | 可用 | 预览 | 预览 | 预览 |
 
 请参阅以下列表来配置 Azure 虚拟机规模集的托管标识（在可用的区域中）：
 
@@ -210,7 +210,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
-| Azure 全球 | `https://eventhubs.azure.net` | 预览 |
+| Azure 全球 | `https://eventhubs.azure.net` | 可用 |
 | Azure 政府 |  | 不可用 |
 | Azure 德国 |   | 不可用 |
 | Azure 中国世纪互联 |  | 不可用 |
@@ -219,7 +219,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
-| Azure 全球 | `https://servicebus.azure.net`  | 预览 |
+| Azure 全球 | `https://servicebus.azure.net`  | 可用 |
 | Azure 政府 |  | 不可用 |
 | Azure 德国 |   | 不可用 |
 | Azure 中国世纪互联 |  | 不可用 |

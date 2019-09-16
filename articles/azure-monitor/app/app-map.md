@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ce44be5bae5aaa8f86d04068cce1c4bc919b0893
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f895aa9aa4bc66c32f10d290b7ee708345be8c9b
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126961"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983763"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -119,9 +119,9 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**ASP.NET apps:将初始值设定项加载到活动 TelemetryConfiguration**
+**ASP.NET 应用：将初始值设定项加载到活动 TelemetryConfiguration**
 
-在 Applicationinsights.config 中:
+在 ApplicationInsights.config 中：
 
 ```xml
     <ApplicationInsights>
@@ -147,9 +147,9 @@ ASP.NET Web 应用程序的另一种方法是在代码中（例如在 Global.asp
 ```
 
 > [!NOTE]
-> 使用`ApplicationInsights.config`或使用`TelemetryConfiguration.Active`添加初始值设定项对 ASP.NET Core 应用程序无效。 
+> 使用 `ApplicationInsights.config` 或使用 `TelemetryConfiguration.Active` 添加初始值设定项对于 ASP.NET Core 应用程序无效。 
 
-**ASP.NET Core 应用:将初始值设定项加载到 TelemetryConfiguration**
+**ASP.NET Core 应用：将初始值设定项加载到 TelemetryConfiguration**
 
 对于 [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) 应用程序，添加新的 `TelemetryInitializer` 是通过将其添加到依赖项注入容器来完成的，如下所示。 这是在 `Startup.cs` 类的 `ConfigureServices` 方法中完成的。
 
@@ -272,6 +272,6 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解相关工作原理 Application Insights 参阅 [遥测相关文章] (https://docs.microsoft.com/azure/application-insights/application-insights-correlation) 。
+* 若要详细了解相关工作原理 Application Insights 参阅[遥测相关文章](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)。
 * [端到端事务诊断体验](transaction-diagnostics.md)将所有 Application Insights 监视的组件中的服务器端遥测关联到一个视图中。
-* 有关 ASP.NET Core 和 ASP.NET 中的高级关联方案, 请参阅[跟踪自定义操作](custom-operations-tracking.md)一文。
+* 有关 ASP.NET Core 和 ASP.NET 中的高级关联方案，请参阅[跟踪自定义操作](custom-operations-tracking.md)一文。

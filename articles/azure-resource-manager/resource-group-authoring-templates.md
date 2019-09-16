@@ -4,14 +4,14 @@ description: 使用声明性 JSON 语法描述 Azure 资源管理器模板的结
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: d396b6b48687e451396849cc256c25f847a219cf
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 4a5c1a99911c31f539d4f55adefb2c5f06243dd0
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306844"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984099"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 
@@ -84,6 +84,8 @@ ms.locfileid: "70306844"
 | maxLength |否 |string、secure string 和 array 类型参数的最大长度，此值是包容性的。 |
 | description |否 |通过门户向用户显示的参数的说明。 有关详细信息，请参阅[模板中的注释](#comments)。 |
 
+有关如何使用参数的示例，请参阅[Azure 资源管理器模板中的参数](template-parameters.md)。
+
 ## <a name="variables"></a>变量
 
 在 variables 节中构造可在整个模板中使用的值。 不需要定义变量，但使用变量可以减少复杂的表达式，从而简化模板。
@@ -116,6 +118,8 @@ ms.locfileid: "70306844"
 ```
 
 有关使用 `copy` 为变量创建多个值的信息，请参阅[变量迭代](resource-group-create-multiple.md#variable-iteration)。
+
+有关如何使用变量的示例，请参阅[Azure 资源管理器模板中的变量](template-variables.md)。
 
 ## <a name="functions"></a>函数
 
@@ -159,6 +163,8 @@ ms.locfileid: "70306844"
 | 参数-值 |否 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 |
 | 输出类型 |是 |输出值的类型。 输出值支持的类型与函数输入参数相同。 |
 | output-值 |是 |计算并从函数返回的模板语言表达式。 |
+
+有关如何使用自定义函数的示例，请参阅[Azure 资源管理器模板中的用户定义函数](template-user-defined-functions.md)。
 
 ## <a name="resources"></a>资源
 
@@ -259,6 +265,8 @@ ms.locfileid: "70306844"
 | condition |否 | 指示此输出值是否返回的布尔值。 如果为 `true`，则该值包含在部署的输出中。 如果为 `false`，则此部署将跳过输出值。 如果未指定，则默认值为 `true`。 |
 | type |是 |输出值的类型。 输出值支持的类型与模板输入参数相同。 如果指定 **securestring** 作为输出类型，则值不会显示在部署历史记录中，并且无法从另一个模板检索。 若要在多个模板中使用机密值，请在 Key Vault 中存储该机密，并在参数文件中引用该机密。 有关详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](resource-manager-keyvault-parameter.md)。 |
 | value |是 |评估并作为输出值返回的模板语言表达式。 |
+
+有关如何使用输出的示例，请参阅[Azure 资源管理器模板中的输出](template-outputs.md)。
 
 <a id="comments" />
 

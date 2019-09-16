@@ -3,20 +3,20 @@ title: 必应语音故障排除 | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: 如何解决使用必应语音服务时出现的问题。
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f222d9d4cf6c56dea0832938dcb132cf711491bc
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1213045867f84efd6d77aebff12b8c8725d82d08
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934063"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965566"
 ---
 # <a name="troubleshooting-bing-speech"></a>必应语音故障排除
 
@@ -131,7 +131,7 @@ curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive
 
 ## <a name="the-recognitionstatus-in-the-response-is-initialsilencetimeout"></a>响应中的 `RecognitionStatus` 为 `InitialSilenceTimeout`
 
-音频数据通常是导致此问题的原因。 例如，
+音频数据通常是导致此问题的原因。 例如，应用于对象的
 
 - 音频在开始时有较长的静音时间。 该服务将在几秒钟后停止识别并返回 `InitialSilenceTimeout`。
 - 音频使用了不受支持的编解码器格式，这导致音频数据被视为静音。
