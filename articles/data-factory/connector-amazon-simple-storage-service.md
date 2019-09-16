@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: aebcefadf4dfdb9301a01b0b4117e8aa2e429898
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e11c6d23e93701e1608e1c444deb47c80543789e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276522"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813297"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -25,7 +25,8 @@ ms.locfileid: "70276522"
 
 本文概述了如何从 Amazon 简单存储服务 (Amazon S3) 复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
-有关从 Amazon S3 到 Azure 存储的数据迁移方案，请参阅[使用 Azure 数据工厂将数据从 Amazon s3 迁移到 Azure 存储](data-migration-guidance-s3-azure-storage.md)中的详细信息。
+>[!TIP]
+>有关从 Amazon S3 到 Azure 存储的数据迁移方案，请参阅[使用 Azure 数据工厂将数据从 Amazon s3 迁移到 Azure 存储](data-migration-guidance-s3-azure-storage.md)中的详细信息。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -100,12 +101,12 @@ Amazon S3 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
 
-- 对于**Parquet （分隔文本、Avro 和二进制格式**），请参阅[Parquet，分隔文本和二进制格式数据集](#format-based-dataset)部分。
-- 对于其他格式（如**ORC/JSON 格式**），请参阅[其他格式数据集](#other-format-dataset)部分。
+- 对于**Parquet （分隔文本、json、avro 和二进制格式**），请参阅[Parquet，分隔文本、json、Avro 和二进制格式数据集](#format-based-dataset)部分。
+- 有关**ORC 格式**等其他格式，请参阅[其他格式数据集](#other-format-dataset)部分。
 
-### <a name="format-based-dataset"></a>Parquet，分隔文本、Avro 和二进制格式数据集
+### <a name="format-based-dataset"></a>Parquet，分隔文本、JSON、Avro 和二进制格式数据集
 
-若要从 Parquet 中的 Amazon S3 复制数据 **，分隔文本、Avro 或二进制格式**，请参阅基于格式的数据集和支持的设置的[Parquet 格式](format-parquet.md)、[分隔文本格式](format-delimited-text.md)、 [Avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文。 基于格式的数据集中 `location` 设置下的 Amazon S3 支持以下属性：
+若要从 Parquet 复制数据 **，分隔文本、JSON、Avro 和二进制格式**，请参阅基于格式的数据集和支持的[Parquet 格式](format-parquet.md)、[带分隔符的文本格式](format-delimited-text.md)、 [avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文设置。 基于格式的数据集中 `location` 设置下的 Amazon S3 支持以下属性：
 
 | 属性   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -147,7 +148,7 @@ Amazon S3 链接的服务支持以下属性：
 
 ### <a name="other-format-dataset"></a>其他格式数据集
 
-若要将数据从 Amazon S3 复制到**ORC/JSON 格式**，支持以下属性：
+若要以**ORC 格式**从 Amazon S3 复制数据，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -229,12 +230,12 @@ Amazon S3 链接的服务支持以下属性：
 
 ### <a name="amazon-s3-as-source"></a>作为源的 Amazon S3
 
-- 若要从**Parquet 复制、带分隔符的文本、Avro 和二进制格式**，请参阅[Parquet、带分隔符的文本和二进制格式源](#format-based-source)部分。
-- 若要从其他格式（如**ORC/JSON 格式**）复制，请参阅[其他格式源](#other-format-source)部分。
+- 若要从**Parquet 复制、分隔文本、json、avro 和二进制格式**，请参阅[Parquet，分隔文本、json、avro 和二进制格式源](#format-based-source)部分。
+- 若要从其他格式（如**ORC 格式**）进行复制，请参阅[其他格式源](#other-format-source)部分。
 
-#### <a name="format-based-source"></a>Parquet，分隔文本、Avro 和二进制格式源
+#### <a name="format-based-source"></a>Parquet，分隔文本、JSON、Avro 和二进制格式源
 
-若要从 Parquet 中的 Amazon S3 复制数据 **，分隔文本、Avro 或二进制格式**，请参阅基于格式的复制活动源的[Parquet 格式](format-parquet.md)、[分隔文本格式](format-delimited-text.md)、 [Avro 格式](format-avro.md)和[二进制格式](format-binary.md)一文支持的设置。 基于格式的复制源中 `storeSettings` 设置下的 Amazon S3 支持以下属性：
+若要从 **Parquet 中的 Amazon S3 复制数据，** ，请参阅基于格式的复制活动源和 支持的设置[Parquet 格式](format-parquet.md), [分隔文本格式](format-delimited-text.md) [Avro 格式](format-avro.md)和[二进制文件格式](format-binary.md)。 基于格式的复制源中 `storeSettings` 设置下的 Amazon S3 支持以下属性：
 
 | 属性                 | 说明                                                  | 必选                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
@@ -293,7 +294,7 @@ Amazon S3 链接的服务支持以下属性：
 
 #### <a name="other-format-source"></a>其他格式源
 
-若要从**ORC/JSON 格式**的 Amazon S3 复制数据，复制活动**源**部分支持以下属性：
+若要以**ORC 格式**从 Amazon S3 复制数据，复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
