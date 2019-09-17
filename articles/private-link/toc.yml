@@ -1,0 +1,78 @@
+- name: Azure 专用链接文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure 专用链接？
+      href: private-link-overview.md
+- name: 快速入门
+  items:
+    - name: 创建专用终结点
+      items:
+        - name: Azure 门户
+          href: create-private-endpoint-portal.md
+        - name: Azure CLI
+          href: create-private-endpoint-cli.md
+        - name: Azure PowerShell
+          href: create-private-endpoint-powershell.md
+    - name: 创建专用链接服务
+      items:
+        - name: Azure PowerShell
+          href: create-private-link-service-powershell.md
+        - name: Azure CLI
+          href: create-private-link-service-cli.md
+- name: 概念
+  items:
+    - name: 专用终结点
+      href: private-endpoint-overview.md
+    - name: 专用链接服务
+      href: private-link-service-overview.md
+- name: 如何
+  items:
+    - name: 专门连接到存储帐户
+      href: create-private-endpoint-storage-portal.md
+    - name: 对专用终结点禁用网络策略
+      href: disable-private-endpoint-network-policy.md
+    - name: 对专用链接服务禁用网络策略
+      href: disable-private-link-service-network-policy.md
+    - name: 管理专用终结点
+      href: manage-private-endpoint.md
+- name: 引用
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network
+    - name: Azure PowerShell
+      href: /powershell/module/az.network
+    - name: .NET
+      href: /api/overview/azure/virtual-network
+    - name: Java
+      href: /java/api/
+    - name: Node.js
+      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/virtualnetwork/privateendpoints
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.network/allversions
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+- name: 资源
+  items:
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: 网络博客
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: 网络论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: 网络反馈
+      href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/virtual-network'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
+    - name: 常见问题解答
+      href: private-link-faq.md

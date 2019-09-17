@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: 专用链接文档
+summary: 使用 Azure 专用链接，可以通过虚拟网络中的专用终结点访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有/合作伙伴服务。  虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 你还可以在虚拟网络中创建自己的专用链接服务，并将其专门提供给自己的客户。
+metadata:
+  title: 专用链接文档 - 快速入门、操作指南和 API 参考
+  description: 了解如何使用 Azure 专用链接服务。 快速入门和教程介绍了如何部署专用链接服务。
+  ms.service: virtual-network
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 09/16/2019
+  ms.openlocfilehash: 867c20b96f8a48aeb52e455d718057e686ddfcbe
+  ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/16/2019
+  ms.locfileid: "71020205"
+landingContent:
+- title: 关于 Azure 专用链接
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是专用链接？
+      url: private-link-overview.md
+- title: 连接到 Azure 服务
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是专用终结点？
+      url: private-endpoint-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 创建专用终结点
+      url: create-private-endpoint-portal.md
+- title: 构建自己的专用链接服务
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是专用链接服务？
+      url: private-link-service-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建专用链接服务
+      url: create-private-link-service-powershell.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/network
+    - text: Azure PowerShell
+      url: /powershell/module/az.network
+    - text: REST
+      url: /rest/api/virtualnetwork/privatelinkservices

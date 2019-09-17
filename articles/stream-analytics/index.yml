@@ -1,73 +1,215 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: 流分析文档
+### YamlMime:Landing
+title: Azure 流分析文档
+summary: Azure 流分析是一项完全托管的实时分析服务，旨在帮助你分析和处理可用于触发警报和操作的快速移动数据流。 参考我们的快速入门、教程和示例，了解如何使用 Azure 流分析。
 metadata:
-  title: Azure 流分析文档 - 教程和 API 参考
-  meta.description: 'Learn how to run IoT analytics in the cloud with fully-managed event processing. Analyze data in real time from applications, sensors, devices, and more.'
-  services: stream-analytics
-  author: mamccrea
-  ms.author: mamccrea
+  title: Azure 流分析文档
+  description: Azure 流分析是一项完全托管的实时分析服务，旨在帮助你分析和处理可用于触发警报和操作的快速移动数据流。 参考我们的快速入门、教程和示例，了解如何使用 Azure 流分析。
+  services: service
   ms.service: stream-analytics
   ms.topic: landing-page
-  ms.date: 06/21/2019
-abstract:
-  description: 流分析是一项完全托管的 PaaS 服务，用于帮助你实时分析和处理来自 IoT 设备、应用程序、点击流等来源的快速移动数据流，并在必要时触发警报和操作。 参考我们的快速入门、教程和示例，了解如何使用 Azure 流分析。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/streaming-analytics-thumbnail.png
-      width: 250
-    title: '从云到智能边缘 - 使用 Azure 流分析驱动实时决策。 (1:02:11)'
-    href: 'https://azure.microsoft.com/resources/videos/build-2019-from-cloud-to-the-intelligent-edge-drive-real-time-decisions-with-azure-stream-analytics/'
-    width: 250
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何部署第一个 Azure 流分析作业：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/stream-analytics.svg
-            text: Azure 门户
-            href: 'https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: PowerShell
-            href: 'https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-powershell'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Visual Studio
-            href: 'https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Visual Studio Code
-            href: 'https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code'
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何部署、管理和监视 Azure 流分析作业：
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="stream-analytics-manage-job">通过创建流分析作业来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化</a>
-          - html: <a href="stream-analytics-with-azure-functions">从 Azure 流分析作业运行 Azure Functions</a>
-          - html: <a href="stream-analytics-javascript-user-defined-functions">在 Azure 流分析作业中运行 JavaScript 用户定义函数</a>
-          - html: <a href="stream-analytics-tools-visual-studio-cicd-vsts">使用 Azure 管道通过 CI/CD 部署 Azure 流分析作业</a>
-          - html: '<a href="stream-analytics-edge-csharp-udf">为 Azure 流分析 Edge 作业（预览版）编写 C# 用户定义函数</a>'
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 预览
-            html: '<p><a href="stream-analytics-previews#public-previews">公共预览版</a></p><p><a href="stream-analytics-previews#other-previews">个人预览版</a></p>'
-          - title: 命令行
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.streamanalytics/#stream_analytics">Azure PowerShell</a></p>'
-          - title: 语言
-            html: '<p><a href="/dotnet/api/microsoft.azure.management.streamanalytics?view=azuremgmtstreamanalytics-1.8.3">.NET</a></p><p><a href="https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference">流分析查询语言</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/streamanalytics">REST API 参考</a></p>
+  author: mamccrea
+  ms.author: mamccrea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: a4573c9f6938db56eba80da084004a620a54e9e4
+  ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/16/2019
+  ms.locfileid: "71018858"
+landingContent:
+- title: 关于 Azure 流分析
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Azure 门户创建作业
+      url: stream-analytics-quick-create-portal.md
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 流分析？
+      url: stream-analytics-introduction.md
+    - text: Azure 流分析解决方案模式
+      url: stream-analytics-solution-patterns.md
+  - linkListType: whats-new
+    links:
+    - text: 流分析兼容性级别
+      url: stream-analytics-compatibility-level.md
+    - text: 流分析预览功能
+      url: stream-analytics-previews.md
+  - linkListType: concept
+    links:
+    - text: 选择流分析技术
+      url: streaming-technologies.md
+    - text: 为作业选择开发工具
+      url: feature-comparison.md
+- title: 将作业连接到数据源
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 了解输入类型
+      url: stream-analytics-add-inputs.md
+  - linkListType: concept
+    links:
+    - text: 对输入数据进行流式处理
+      url: stream-analytics-define-inputs.md
+    - text: 联接参考数据以便于查找
+      url: stream-analytics-use-reference-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 SQL 数据库中的参考数据
+      url: sql-reference-data.md
+    - text: 排查输入连接问题
+      url: stream-analytics-troubleshoot-input.md
+    - text: 处理“用于事件中心的 Apache Kafka”事件
+      url: ../event-hubs/event-hubs-kafka-stream-analytics.md
+    - text: 处理来自 Azure 事件中心的数据
+      url: ../event-hubs/process-data-azure-stream-analytics.md
+- title: 将数据发送到输出接收器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 了解输出类型
+      url: stream-analytics-define-outputs.md
+  - linkListType: concept
+    links:
+    - text: 输出到 Cosmos DB
+      url: stream-analytics-documentdb-output.md
+    - text: 输出到 Azure SQL 数据库
+      url: stream-analytics-sql-output-perf.md
+    - text: 自定义 Blob 输出分区
+      url: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - text: 输出错误处理策略
+      url: stream-analytics-output-error-policy.md
+  - linkListType: how-to-guide
+    links:
+    - text: 排查输出连接问题
+      url: stream-analytics-troubleshoot-output.md
+- title: 监视作业并排查其问题
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: “监视”简介
+      url: stream-analytics-monitoring.md
+    - text: 使用 Azure PowerShell 监视作业
+      url: stream-analytics-monitor-and-manage-jobs-use-powershell.md
+    - text: 使用 Azure .NET SDK 创建作业监视器
+      url: stream-analytics-monitor-jobs.md
+    - text: 从 Visual Studio 中监视和管理作业
+      url: stream-analytics-monitor-jobs-use-vs.md
+    - text: 使用诊断日志进行故障排除
+      url: stream-analytics-job-diagnostic-logs.md
+    - text: 使用作业关系图进行调试
+      url: stream-analytics-job-diagram-with-metrics.md
+    - text: 排查数据错误
+      url: data-errors.md
+- title: 查看临时概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 通用查询模式
+      url: stream-analytics-stream-analytics-query-patterns.md
+    - text: 了解流分析中的时间处理
+      url: stream-analytics-time-handling.md
+    - text: 内部检查点和重播
+      url: stream-analytics-concepts-checkpoint-replay.md
+- title: 使用流分析查询转换数据
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 开窗函数简介
+      url: stream-analytics-window-functions.md
+    - text: 地理空间函数简介
+      url: stream-analytics-geospatial-functions.md
+    - text: 分析 JSON 和 Avro 数据
+      url: stream-analytics-parsing-json.md
+  - linkListType: how-to-guide
+    links:
+    - text: 排查查询逻辑问题
+      url: stream-analytics-troubleshoot-query.md
+    - text: 编写 JavaScript 用户定义的聚合
+      url: stream-analytics-javascript-user-defined-aggregates.md
+    - text: 为 IoT Edge 作业开发 .NET 用户定义的函数
+      url: stream-analytics-edge-csharp-udf-methods.md
+  - linkListType: tutorial
+    links:
+    - text: 运行 JavaScript 用户定义的函数
+      url: stream-analytics-javascript-user-defined-functions.md
+    - text: 对流分析 Edge 作业运行 C# 用户定义的函数
+      url: stream-analytics-edge-csharp-udf.md
+- title: 通过机器学习进行分析
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用机器学习来检测异常
+      url: stream-analytics-machine-learning-anomaly-detection.md
+    - text: 使用 Azure 机器学习工作室执行情绪分析
+      url: stream-analytics-machine-learning-integration-tutorial.md
+    - text: 使用机器学习工作室函数扩展作业
+      url: stream-analytics-scale-with-machine-learning-functions.md
+- title: 利用开发人员工具创建和管理作业
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Visual Studio Code 探索作业
+      url: vscode-local-run.md
+    - text: 在 Visual Studio Code 中使用示例数据测试查询
+      url: vscode-local-run.md
+    - text: 安装适用于 Visual Studio 的工具
+      url: stream-analytics-tools-for-visual-studio-install.md
+    - text: 在 Visual Studio 中使用示例数据测试查询
+      url: stream-analytics-vs-tools-local-run.md
+    - text: 在 Visual Studio 中使用实时数据测试查询
+      url: stream-analytics-live-data-local-testing.md
+    - text: 在 Visual Studio 中查看作业
+      url: stream-analytics-tools-for-visual-studio-edge-jobs.md
+    - text: 在 Visual Studio 中开发 IoT Edge 作业
+      url: stream-analytics-tools-for-visual-studio-edge-jobs.md
+- title: 试用流分析教程和解决方案
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 创建和管理作业
+      url: stream-analytics-manage-job.md
+    - text: 触发 Azure 函数
+      url: stream-analytics-with-azure-functions.md
+  - linkListType: how-to-guide
+    links:
+    - text: 构建带有地理围栏和地理空间聚合功能的解决方案
+      url: geospatial-scenarios.md
+    - text: 在 IoT Edge 上运行作业
+      url: stream-analytics-edge.md
+    - text: 构建情绪分析解决方案
+      url: stream-analytics-twitter-sentiment-analysis-trends.md
+    - text: 实时欺诈检测
+      url: stream-analytics-real-time-fraud-detection.md
+    - text: 构建 IoT 解决方案
+      url: stream-analytics-build-an-iot-solution-using-stream-analytics.md
+    - text: 高频交易模拟
+      url: stream-analytics-high-frequency-trading.md
+    - text: 基于可调整规则阈值的警报
+      url: stream-analytics-threshold-based-rules.md
+- title: 部署流分析作业
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 在 Azure Pipelines 中通过 CI/CD 部署作业
+      url: stream-analytics-tools-visual-studio-cicd-vsts.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Visual Studio Code 设置 CI/CD 管道
+      url: setup-cicd-vs-code.md
+    - text: 使用 Visual Studio 设置 CI/CD 管道
+      url: stream-analytics-tools-for-visual-studio-cicd.md
+    - text: 使用 REST API 为 IoT Edge 作业设置 CI/CD
+      url: stream-analytics-cicd-api.md
+- title: 扩展流分析作业
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 利用流单元进行缩放
+      url: stream-analytics-streaming-unit-consumption.md
+    - text: 利用查询并行度进行缩放
+      url: stream-analytics-parallelization.md
+    - text: 扩展作业以增加吞吐量
+      url: stream-analytics-scale-jobs.md
+    - text: 通过重新分区优化处理
+      url: repartition.md
