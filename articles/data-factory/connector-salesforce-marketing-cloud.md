@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 6548f4add8a794276bd4e7f7fa3c0bd7e24a2d5c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: f20cccb87bf2da53086f2e7bb14edddaa57b991e
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726010"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010555"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Salesforce Marketing Cloud 复制数据
 
@@ -28,6 +28,11 @@ ms.locfileid: "68726010"
 
 ## <a name="supported-capabilities"></a>支持的功能
 
+以下活动支持此 Salesforce 营销云连接器：
+
+- [复制活动](copy-activity-overview.md)与[支持的源矩阵](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
+
 可以将数据从 Salesforce Marketing Cloud 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 Salesforce Marketing Cloud 连接器支持 OAuth 2 身份验证。 它在 [Salesforce Marketing Cloud REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm) 的基础上构建。
@@ -35,7 +40,7 @@ Salesforce Marketing Cloud 连接器支持 OAuth 2 身份验证。 它在 [Sales
 >[!NOTE]
 >此连接器不支持检索自定义对象或自定义数据扩展。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
 
@@ -110,7 +115,7 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 
 ### <a name="salesforce-marketing-cloud-as-source"></a>Salesforce Marketing Cloud 作为源
 
-要从 Salesforce Marketing Cloud 复制数据，请将复制活动中的源类型设置为 SalesforceMarketingCloudSource。 复制活动源部分支持以下属性：
+要从 Salesforce Marketing Cloud 复制数据，请将复制活动中的源类型设置为 SalesforceMarketingCloudSource。 复制活动**source**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -148,6 +153,10 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

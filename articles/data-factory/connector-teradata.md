@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: f17a7ef2131662cdb9ef4d138303556215810fba
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b91ec46d47814418de21e9afe3e6e5534473c921
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959013"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008966"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata Vantage 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -28,6 +28,11 @@ ms.locfileid: "70959013"
 本文概述如何使用 Azure 数据工厂中的复制活动从 Teradata Vantage 复制数据。 它基于[复制活动概述](copy-activity-overview.md)进行构建。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 Teradata 连接器：
+
+- [复制活动](copy-activity-overview.md)与[支持的源矩阵](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 Teradata Vantage 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -328,6 +333,11 @@ Teradata 链接服务支持以下属性：
 | VarChar |String |
 | VarGraphic |不受支持。 在源查询中应用显式强制转换。 |
 | Xml |不受支持。 在源查询中应用显式强制转换。 |
+
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

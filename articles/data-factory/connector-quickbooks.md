@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 2c490c9eb23ad62559a6246f1588f80080851014
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: b5d4febbb8e068ca8f922145c1e7255ab7a587ac
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726051"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010580"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 QuickBooks Online 复制数据
 
@@ -28,13 +28,18 @@ ms.locfileid: "68726051"
 
 ## <a name="supported-capabilities"></a>支持的功能
 
+以下活动支持此 QuickBooks 连接器：
+
+- [复制活动](copy-activity-overview.md)与[支持的源矩阵](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
+
 可以将数据从 QuickBooks Online 复制到任何受支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
 
 此连接器当前仅支持 1.0a 版本，这意味着需要具有在 2017 年 7 月 17 日之前创建的应用开发者帐户。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -47,7 +52,7 @@ QuickBooks 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为：**QuickBooks** | 是 |
-| 终结点 | QuickBooks Online 服务器的终结点。 （即 quickbooks.api.intuit.com）  | 是 |
+| endpoint | QuickBooks Online 服务器的终结点。 （即 quickbooks.api.intuit.com）  | 是 |
 | companyId | QuickBooks 公司授权的公司 ID。 有关如何查找公司 ID 的信息，请参阅[如何查找我的公司 ID？](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)。 | 是 |
 | consumerKey | OAuth 1.0 身份验证的使用者密钥。 | 是 |
 | consumerSecret | OAuth 1.0 身份验证的使用者机密。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -118,7 +123,7 @@ QuickBooks 链接的服务支持以下属性：
 
 ### <a name="quickbooks-as-source"></a>QuickBooks 作为源
 
-要从 QuickBooks Online 复制数据，请将复制活动中的源类型设置为 **QuickBooksSource**。 复制活动源部分支持以下属性：
+要从 QuickBooks Online 复制数据，请将复制活动中的源类型设置为 **QuickBooksSource**。 复制活动**source**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -159,6 +164,11 @@ QuickBooks 链接的服务支持以下属性：
 ## <a name="copy-data-from-quickbooks-desktop"></a>从 Quickbooks Desktop 复制数据
 
 Azure 数据工厂中的复制活动不能直接从 Quickbooks Desktop 复制数据。 若要从 Quickbooks Desktop 复制数据，请将 Quickbooks 数据导出到一个逗号分隔值 (CSV) 文件，然后将该文件上传到 Azure Blob 存储。 从该存储中，可以使用数据工厂将数据复制到所选的接收器。
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

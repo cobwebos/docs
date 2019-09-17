@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 72019b3bf5c17525b9a0dd8afc126f1bfc248041
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 9a5592c0c5fa06d8319b91c6d624a74c83bdeb1f
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274444"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010431"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -30,6 +30,11 @@ ms.locfileid: "70274444"
 >若要了解 ADF 全面支持 SAP 数据集成方案，请参阅[使用 Azure 数据工厂的 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，并提供详细的简介、comparsion 和指南。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 SAP HANA 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 SAP HANA 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -178,7 +183,7 @@ SAP HANA 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动 source 的 type 属性必须设置为：**SapHanaSource** | 是 |
+| type | 复制活动源的 type 属性必须设置为：**SapHanaSource** | 是 |
 | query | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | 是 |
 | packetSize | 指定将数据拆分为多个块的网络数据包大小（Kb）。 如果要复制大量数据，则在大多数情况下，增加数据包大小可能会提高 SAP HANA 的读取速度。 调整数据包大小时，建议执行性能测试。 | 否。<br>默认值为2048（2MB）。 |
 
@@ -249,6 +254,10 @@ SAP HANA 链接的服务支持以下属性：
 | VARCHAR            | String                         |
 | TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

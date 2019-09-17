@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: 2617ae7bd1c761ae7977eac518c2e40ca55da00c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b39482f5c753fbfe6cc6663dda4f5381300c2c21
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883235"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71017256"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -60,7 +60,7 @@ ms.locfileid: "70883235"
 
 以下是允许访问 Key Vault 的受信服务列表（前提是启用了“允许受信任的服务”选项）。
 
-|受信服务|使用方案|
+|受信服务|支持的使用方案|
 | --- | --- |
 |Azure 虚拟机部署服务|[将证书从客户托管的 Key Vault 部署到 VM](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)。|
 |Azure 资源管理器模板部署服务|[在部署期间传递安全值](../azure-resource-manager/resource-manager-keyvault-parameter.md)。|

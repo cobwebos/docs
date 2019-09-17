@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2d40e6fef215219035720ee64492a91fcdafb472
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 867a2dc9739e839a6957190f93311a811556df15
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933938"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010249"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -59,7 +59,7 @@ ms.locfileid: "70933938"
 **故障回复后清理** | 故障转移到辅助 Azure，然后故障回复到主要区域后，Site Recovery 会自动清除次要区域中的计算机。 无需手动删除 VM 和 Nic。
 **测试故障转移保留 IP 地址** | 你现在可以在灾难恢复演练期间保留源 VM 的 IP 地址，并为测试故障转移选择静态 IP 地址。
 
-## <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理服务器灾难恢复
+### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理服务器灾难恢复
 
 下表中总结了本月添加的功能。
 
@@ -67,13 +67,13 @@ ms.locfileid: "70933938"
 --- | ---
 新进程服务器警报 | 我们添加了新的进程服务器警报。 [了解详细信息](vmware-physical-azure-monitor-process-server.md)。 
 
-## <a name="hyper-v-disaster-recovery"></a>Hyper-v 灾难恢复
+### <a name="hyper-v-disaster-recovery"></a>Hyper-v 灾难恢复
 
 下表中总结了本月添加的功能。
 
 **功能** | **详细信息**
 --- | ---
-存储帐户 | Site Recovery 现在支持使用启用了基于角色的访问控制（RBAC）的存储帐户。 [详细了解](../storage/common/storage-account-manage.md#access-control)存储帐户的访问控制。 
+存储帐户 | Site Recovery 现在支持将启用了防火墙的存储帐户用于 Hyper-v 到 Azure 的灾难恢复。  你可以选择 "支持防火墙的存储帐户" 作为目标帐户，或选择 "缓存存储"。 如果使用启用防火墙的帐户，请确保启用允许受信任的 Microsoft 服务的选项。
 
 
 ## <a name="updates-august-2019"></a>更新（2019年8月）

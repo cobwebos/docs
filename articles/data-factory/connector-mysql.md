@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: d76b51aa5117e662e9ff17bb91516c758de3071c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: d75fce09f1f90e64463488bc1da8d8bb8c2f1d14
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277710"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009666"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -31,6 +31,11 @@ ms.locfileid: "70277710"
 
 ## <a name="supported-capabilities"></a>支持的功能
 
+以下活动支持此 MySQL 连接器：
+
+- [复制活动](copy-activity-overview.md)与[支持的源矩阵](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
+
 可以将数据从 MySQL 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，此 MySQL 连接器支持 5.6 和5.7 版本的 MySQL。
@@ -41,7 +46,7 @@ ms.locfileid: "70277710"
 
 集成运行时提供内置 MySQL 驱动程序（从版本 3.7 开始），因此无需手动安装任何驱动程序。
 
-对于低于 3.7 的自承载 IR 版本，需要在集成运行时计算机上安装[适用于 Microsoft Windows 的 MySQL 连接器/Net](https://dev.mysql.com/downloads/connector/net/)（6.6.5 和 6.10.7 之间的版本）。 此 32 位驱动程序与 64 位 IR 兼容。
+对于低于 3.7 的自承载 IR 版本，需要在集成运行时计算机上安装[适用于 Microsoft Windows 的 MySQL 连接器/Net](https://dev.mysql.com/downloads/connector/net/)（6.6.5 和 6.10.7 之间的版本）。 此32位驱动程序与64位 IR 兼容。
 
 ## <a name="getting-started"></a>入门
 
@@ -63,7 +68,7 @@ MySQL 链接的服务支持以下属性：
 
 | 属性 | 描述 | 选项 | 必填 |
 |:--- |:--- |:--- |:--- |
-| SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 SSL 加密和验证。 例如 `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
+| SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 SSL 加密和验证。 例如，`SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
 | UseSystemTrustStore | 此选项指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 例如 `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(Default)** | 否 |
 
 **示例：**
@@ -183,7 +188,7 @@ MySQL 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动 source 的 type 属性必须设置为：**MySqlSource** | 是 |
+| type | 复制活动源的 type 属性必须设置为：**MySqlSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
@@ -266,6 +271,11 @@ MySQL 链接的服务支持以下属性：
 | `tinytext` |`String` |
 | `varchar` |`String` |
 | `year` |`Int` |
+
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

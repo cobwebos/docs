@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 0bba755ec5683e988bb8ae3f2308a1c298b228b0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000567"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009995"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL 数据库和 SQL 数据仓库数据发现和分类
 
@@ -142,10 +142,13 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 此外，还可以使用 REST API 通过编程方式管理分类。 已发布的 REST API 支持以下操作：
 
-- [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) - 创建或更新给定列的敏感度标签
+- [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate)-创建或更新给定列的敏感度标签
 - [删除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) - 删除给定列的敏感度标签
+- [禁用建议](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation)-对给定列禁用敏感性建议
+- [启用建议](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation)-对给定列启用敏感性建议（默认情况下，对所有列启用建议）
 - [获取](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) - 获取给定列的敏感度标签
 - [按数据库列出当前项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 获取给定数据库的当前敏感度标签
+
 - [按数据库列出建议项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 获取给定数据库的建议敏感度标签
 
 ## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>使用 Azure PowerShell 管理数据发现和分类

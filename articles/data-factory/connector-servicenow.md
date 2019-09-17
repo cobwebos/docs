@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: c9ffd5a173bcfae41e08babbadae1e67047ed452
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 451def8ccfae947f4be6bebb015c1b34ac44c7f4
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725984"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010410"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>使用 Azure 数据工厂从 ServiceNow 复制数据
 
@@ -25,11 +25,16 @@ ms.locfileid: "68725984"
 
 ## <a name="supported-capabilities"></a>支持的功能
 
+以下活动支持此 ServiceNow 连接器：
+
+- [复制活动](copy-activity-overview.md)与[支持的源矩阵](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
+
 可以将数据从 ServiceNow 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -42,10 +47,10 @@ ServiceNow 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**ServiceNow** | 是 |
-| 终结点 | ServiceNow 服务器的终结点 (`http://<instance>.service-now.com`)。  | 是 |
+| endpoint | ServiceNow 服务器的终结点 (`http://<instance>.service-now.com`)。  | 是 |
 | authenticationType | 可使用的身份验证类型。 <br/>允许值包括：**Basic** **OAuth2** | 是 |
-| userName | 用户名用于连接到 ServiceNow 服务器，进行基本和 OAuth2 身份验证。  | 是 |
-| 密码 | 基本和 OAuth2 身份验证的用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| username | 用户名用于连接到 ServiceNow 服务器，进行基本和 OAuth2 身份验证。  | 是 |
+| password | 基本和 OAuth2 身份验证的用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | clientId | OAuth2 身份验证的客户端 ID。  | 否 |
 | clientSecret | OAuth2 身份验证的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
@@ -106,7 +111,7 @@ ServiceNow 链接服务支持以下属性：
 
 ### <a name="servicenow-as-source"></a>以 ServiceNow 作为源
 
-要从 ServiceNow 复制数据，请将复制活动中的源类型设置为“ServiceNowSource”。 复制活动源部分支持以下属性：
+要从 ServiceNow 复制数据，请将复制活动中的源类型设置为“ServiceNowSource”。 复制活动**source**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -164,6 +169,11 @@ ServiceNow 有 2 个不同的架构，一个是“实际”，返回实际数据
 ### <a name="index"></a>索引
 
 ServiceNow 表索引有助于提高查询性能，请参阅[创建表索引](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html)。
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

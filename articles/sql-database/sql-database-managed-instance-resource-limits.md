@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/27/2019
-ms.openlocfilehash: 0dea447ed44a61b20faf9a0a1690b2bbdd674b30
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 09/16/2019
+ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70930625"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010191"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL 数据库托管实例资源限制概述
 
-本文概述 Azure SQL 数据库托管实例的资源限制，并介绍如何请求提高这些限制。
+本文概述了 Azure SQL 数据库托管实例的技术特性和资源限制，并提供了有关如何请求增加这些限制的信息。
 
 > [!NOTE]
-> 有关支持的功能和 T-SQL 语句的差异，请参阅[功能差异](sql-database-features.md)和 [T-SQL 语句支持](sql-database-managed-instance-transact-sql-information.md)。
+> 有关支持的功能和 T-SQL 语句的差异，请参阅[功能差异](sql-database-features.md)和 [T-SQL 语句支持](sql-database-managed-instance-transact-sql-information.md)。 有关单一数据库和托管实例中的服务层之间的常规 differencess，请参阅[服务层比较](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison)。
 
 ## <a name="instance-level-resource-limits"></a>实例级别的资源限制
 
@@ -43,11 +43,11 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 
 > [!IMPORTANT]
 > - Gen4 硬件正在逐步推出。建议在 Gen5 硬件上部署新的托管实例。
-> - 此时，Gen4 硬件在以下区域中提供：北欧、西欧、美国东部、美国中南部、美国中北部、美国西部2、美国中部、加拿大中部、印度南部和韩国中部。
+> - 目前，Gen4 硬件仅在以下区域提供：北欧、西欧、美国东部、美国中南部、美国中北部、美国西部2、美国中部、加拿大中部、印度南部和韩国中部。
 
 ### <a name="service-tier-characteristics"></a>服务层特征
 
-托管实例有两个服务层级：“常规用途”和“业务关键”。 这些层提供不同的功能，如下表所述：
+托管实例有两个服务层级：[常规用途](sql-database-service-tier-general-purpose.md)和[业务关键](sql-database-service-tier-business-critical.md)。 这些层提供了[不同的功能](sql-database-service-tiers-general-purpose-business-critical.md)，如下表中所述：
 
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
@@ -73,6 +73,9 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 > - 吞吐量和 IOPS 还取决于不受托管实例显式限制的页面大小。
 > 你可以使用自动故障转移组在不同的 Azure 区域中创建另一个可读副本。
 
+> [!NOTE]
+> 有关详细信息，请查看[本文中托管实例池中的资源限制](sql-database-instance-pools.md#instance-pools-resource-limitations)。
+
 ## <a name="supported-regions"></a>支持的区域
 
 托管实例只能在[支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)中创建。 若要在当前不支持的区域中创建托管实例，可以[通过 Azure 门户发送支持请求](#obtaining-a-larger-quota-for-sql-managed-instance)。
@@ -93,7 +96,7 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 支持的订阅类型针对每个区域可包含有限的资源数。 托管实例根据订阅类型对每个 Azure 区域实施两种默认限制：
 
 - **子网限制**：在单一区域中部署托管实例的子网数上限。
-- **vCore 限制**：可跨单一区域的所有实例部署的 vCore 数上限。
+- **vCore 限制**：可跨单一区域的所有实例部署的 vCore 数上限。 实例的总数不受限于，只要它在 vCore 限制内。
 
 > [!Note]
 > 这些限制是默认设置，不是技术限制。 如果在当前区域中需要更多托管实例，可以[在 Azure 门户中创建特殊支持请求](#obtaining-a-larger-quota-for-sql-managed-instance)，以根据需要提高限制。 或者，可以在另一个 Azure 区域中创建新的托管实例，而不需要发送支持请求。

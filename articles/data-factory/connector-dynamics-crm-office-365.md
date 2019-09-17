@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 3f7bf3ce8c01e82fa69b3b041b573b4b31a719d2
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 18fdb14430eee97ff2780d963abf3e5ceafe1126
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514089"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009397"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 
@@ -25,15 +25,20 @@ ms.locfileid: "67514089"
 
 ## <a name="supported-capabilities"></a>支持的功能
 
+以下活动支持此连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
+
 可以将数据从 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Dynamics 365 (Common Data Service) 或 Dynamics CRM。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-此 Dynamics 连接器支持 Dynamics 版本 7.x 到两个 9.x 联机或本地。 更具体地说，
+此 Dynamics 连接器支持联机或本地的 Dynamics 版本 7.x 到 9.x。 更具体地说，
 
 - 版本 7.x 映射到 Dynamics CRM 2015
-- 版本 8.x 映射到 Dynamics CRM 2016 和早期版本的 Dynamics 365
-- 版本 9.x 映射到更高版本的 Dynamics 365
+- 版本 8.x 映射到 Dynamics CRM 2016 和 Dynamics 365 的早期版本
+- 版本 9.x 映射到 Dynamics 365 的更高版本
 
-请参阅下表上的支持的身份验证类型和相应的 Dynamics 版本/产品的配置。 IFD 是“Internet Facing Deployment”（面向 Internet 的部署）的缩写。
+请参阅下表，了解各种 Dynamics 版本/产品支持的身份验证类型和配置。 IFD 是“Internet Facing Deployment”（面向 Internet 的部署）的缩写。
 
 | Dynamics 版本 | 身份验证类型 | 链接的服务示例 |
 |:--- |:--- |:--- |
@@ -50,7 +55,7 @@ ms.locfileid: "67514089"
 
 此连接器不支持其他应用程序类型，如 Finance and Operations、Talent 等。
 
-此 Dynamics 连接器构建的[Dynamics XRM 工具](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)。
+此 Dynamics 连接器基于 [Dynamics XRM 工具](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)构建。
 
 >[!TIP]
 >若要从 **Dynamics 365 Finance and Operations** 复制数据，可以使用 [Dynamics AX 连接器](connector-dynamics-ax.md)。
@@ -108,7 +113,7 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>带有 IFD 的本地 Dynamics 365 和 Dynamics CRM
 
-与 Dynamics 联机进行对比的其他属性是“hostName”和“port”。 
+与 Dynamics 联机进行对比的其他属性是“hostName”和“port”。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -117,7 +122,7 @@ Dynamics 链接服务支持以下属性。
 | hostName | 本地 Dynamics 服务器的主机名称。 | 是 |
 | port | 本地 Dynamics 服务器的端口。 | 否，默认端口为 443 |
 | organizationName | Dynamics 实例的组织名称。 | 是 |
-| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为带有 IFD 的本地 Dynamics 指定“Ifd”  | 是 |
+| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为带有 IFD 的本地 Dynamics 指定“Ifd” | 是 |
 | username | 指定用于连接到 Dynamics 的用户名。 | 是 |
 | password | 指定为 username 指定的用户帐户的密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“No”，对于接收器为“Yes” |
@@ -164,7 +169,7 @@ Dynamics 链接服务支持以下属性。
 > [!IMPORTANT]
 >- 从 Dynamics 复制数据时，Dynamics 数据集中的“结构”部分是可选的但强烈建议使用，以确保确定性复制结果。 该节定义要复制的 Dynamics 数据的列名和数据类型。 有关详细信息，请参阅[数据集结构](concepts-datasets-linked-services.md#dataset-structure-or-schema)和 [Dynamics 的数据类型映射](#data-type-mapping-for-dynamics)。
 >- 在创作 UI 中导入架构时，ADF 通过对 Dynamics 查询结果中的前几行进行采样来初始化结构构造，将省略其中不含任何值的列。 如果没有明确的结构定义，则相同的行为也适用于复制执行。 可以根据需要查看列并将更多列添加到 Dynamics 数据集架构/结构，这将在副本运行时起作用。
->- 向 Dynamics 复制数据时，Dynamics 数据集中的“structure”节是可选的。 若要将复制到哪些列由源数据架构确定。 如果源是不包含标头的 CSV 文件，请在输入数据集中指定包含列名称和数据类型的“结构”。 这些值将按顺序逐个映射到 CSV 文件中的字段。
+>- 向 Dynamics 复制数据时，Dynamics 数据集中的“structure”节是可选的。 要复制到哪些列由源数据架构确定。 如果源是不包含标头的 CSV 文件，请在输入数据集中指定包含列名称和数据类型的“结构”。 这些值将按顺序逐个映射到 CSV 文件中的字段。
 
 **示例：**
 
@@ -208,7 +213,7 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-as-a-source-type"></a>将 Dynamics 用作源类型
 
-要从 Dynamics 复制数据，请将复制活动中的源类型设置为“DynamicsSource”  。 复制活动的 **source** 节支持以下属性。
+要从 Dynamics 复制数据，请将复制活动中的源类型设置为“DynamicsSource”。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -272,7 +277,7 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-as-a-sink-type"></a>将 Dynamics 用作接收器类型
 
-要向 Dynamics 复制数据，请将复制活动中的接收器类型设置为“DynamicsSink”  。 复制活动 **sink** 节支持以下属性。
+要向 Dynamics 复制数据，请将复制活动中的接收器类型设置为“DynamicsSink”。 复制活动 **sink** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -282,11 +287,11 @@ Dynamics 链接服务支持以下属性。
 | ignoreNullValues | 指示是否忽略 null 值从输入数据（键字段除外）期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：执行更新插入/更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入/更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
 
 >[!NOTE]
->接收器“writeBatchSize”  和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance.md#parallel-copy)”  的默认值都是 10。 因此，会将 100 条记录同时提交到 Dynamics。
+>接收器“writeBatchSize”和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance.md#parallel-copy)” 的默认值都是 10。 因此，会将 100 条记录同时提交到 Dynamics。
 
 对于 Dynamics 365（联机版），存在[每个组织进行 2 次并发批量调用](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)的限制。 如果超出此限制，则会在执行第一个请求之前引发“服务器忙”错误。 保持“writeBatchSize”小于或等于 10 可避免这种并发调用的限制。
 
-“writeBatchSize”  和“parallelCopies”  的最佳组合取决于实体的架构，例如列数、行大小、与这些调用挂钩的插件/工作流/工作流活动的数量等。10 writeBatchSize * 10 parallelCopies 的默认设置是基于 Dynamics 服务提供的建议设置，该服务可用于大多数 Dynamics 实体，但可能无法获得最佳性能。 你可以通过在复制活动设置中调整组合来调整性能。
+“writeBatchSize”和“parallelCopies”的最佳组合取决于实体的架构，例如列数、行大小、与这些调用挂钩的插件/工作流/工作流活动的数量等。10 writeBatchSize * 10 parallelCopies 的默认设置是基于 Dynamics 服务提供的建议设置，该服务可用于大多数 Dynamics 实体，但可能无法获得最佳性能。 你可以通过在复制活动设置中调整组合来调整性能。
 
 **示例：**
 
@@ -330,7 +335,7 @@ Dynamics 链接服务支持以下属性。
 
 | Dynamics 数据类型 | 数据工厂临时数据类型 | 支持用作源 | 支持用作接收器 |
 |:--- |:--- |:--- |:--- |
-| AttributeTypeCode.BigInt | Long | ✓ | ✓ |
+| AttributeTypeCode.BigInt | 长 | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
 | AttributeType.Customer | Guid | ✓ | |
 | AttributeType.DateTime | Datetime | ✓ | ✓ |
@@ -350,7 +355,11 @@ Dynamics 链接服务支持以下属性。
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> Dynamics 数据类型 AttributeType.CalendarRules、 AttributeType.MultiSelectPicklist 和 AttributeType.PartyList 不受支持。
+> Dynamics 数据类型 AttributeType.CalendarRules、AttributeType.MultiSelectPicklist 和 AttributeType.PartyList 不受支持。
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

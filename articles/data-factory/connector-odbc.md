@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a20a901d5fde251fdc1a044795615acdc1d61c5b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1096505a8789d722594cff13841e97930846ee53
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277631"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010639"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 ODBC 数据存储复制数据
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -27,6 +27,11 @@ ms.locfileid: "70277631"
 本文概述了如何在 Azure 数据工厂中使用复制活动从/向 ODBC 数据存储复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 ODBC 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可将数据从 ODBC 源复制到任何受支持的接收器数据存储，或者从任何受支持的源数据存储复制到 ODBC 接收器。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -56,7 +61,7 @@ ODBC 链接服务支持以下属性：
 | authenticationType | 用于连接 ODBC 数据存储的身份验证类型。<br/>允许值包括：**Basic** 和 **Anonymous**。 | 是 |
 | userName | 如果使用基本身份验证，请指定用户名。 | 否 |
 | password | 指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
-| 凭据 | 连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 示例：`"RefreshToken=<secret refresh token>;"`。 将此字段标记为 SecureString。 | 否 |
+| 凭据 | 连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 例如：`"RefreshToken=<secret refresh token>;"`。 将此字段标记为 SecureString。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
 **示例 1：使用 Basic 身份验证**
@@ -154,7 +159,7 @@ ODBC 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动 source 的 type 属性必须设置为：**OdbcSource** | 是 |
+| type | 复制活动源的 type 属性必须设置为：**OdbcSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
@@ -277,6 +282,11 @@ ODBC 链接服务支持以下属性：
 ```
 
 从头开始阅读文章，了解在复制操作中将 ODBC 数据存储用作源/接收器数据存储的详细信息。
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+
 
 ## <a name="troubleshoot-connectivity-issues"></a>解决连接问题
 

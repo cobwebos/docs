@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/04/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 173e261266bffd042e12b327e26fda3a4e55ea4b
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 4fb88cbed4e73a7cea2b0ccf01b1429a3ff321f3
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898988"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018180"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>有助于保护使用 Azure 备份的云工作负荷的安全功能
 
@@ -26,47 +26,47 @@ ms.locfileid: "70898988"
 
 ### <a name="supported-regions"></a>支持的区域
 
-目前，美国中部地区和东亚支持软删除。
+目前在美国西部、东亚、加拿大中部、加拿大东部、法国中部、法国南部、韩国中部、韩国南部、英国南部、英国西部、澳大利亚东部、澳大利亚东南部、北欧、美国西部、西2、美国中部、美国西部东亚、美国中北部、美国中南部、日本东部、日本西部、印度南部、印度中部、印度西部、美国东部2、瑞士北部、瑞士西部和所有国家地区。
 
 ### <a name="soft-delete-for-vms"></a>Vm 的软删除
 
 1. 为了删除 VM 的备份数据，必须停止备份。 在 Azure 门户中，请参阅恢复服务保管库，右键单击备份项，然后选择 "**停止备份**"。
 
-    ![Azure 门户备份项的屏幕截图](./media/backup-azure-security-feature-cloud/backup-stopped.png)
+   ![Azure 门户备份项的屏幕截图](./media/backup-azure-security-feature-cloud/backup-stopped.png)
 
 2. 在下面的窗口中，您将可以选择是删除还是保留备份数据。 如果选择 "**删除备份数据**"，然后**停止备份**，则不会永久删除 VM 备份。 相反，备份数据将以软删除状态保留14天。 如果选择了 "**删除备份数据**"，则会将 "删除电子邮件" 警报发送到配置的电子邮件 ID，通知用户14天的备份数据保留期为14天。 此外，在第12天发送一封电子邮件警报，它会向你发送两天时间，指出已删除的数据恢复。 删除会推迟到第15天的时间，永久删除将发生，并发送最终的电子邮件警报，告知永久删除数据。
 
-    ![Azure 门户的屏幕截图，停止备份屏幕](./media/backup-azure-security-feature-cloud/delete-backup-data.png)
+   ![Azure 门户的屏幕截图，停止备份屏幕](./media/backup-azure-security-feature-cloud/delete-backup-data.png)
 
 3. 在14天内，在恢复服务保管库中，软删除的 VM 旁边会显示一个红色的 "软删除" 图标。
 
-    ![处于软删除状态的 Azure 门户、VM 的屏幕截图](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+   ![处于软删除状态的 Azure 门户、VM 的屏幕截图](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
-> [!NOTE]
-> 如果保管库中存在任何软删除的备份项，则无法在该时间删除该保管库。 请在永久删除备份项后尝试删除保管库，并在保管库中保留未处于软删除状态的项目。
+   > [!NOTE]
+   > 如果保管库中存在任何软删除的备份项，则无法在该时间删除该保管库。 请在永久删除备份项后尝试删除保管库，并在保管库中保留未处于软删除状态的项目。
 
 4. 若要还原软删除的 VM，必须先将其删除。 若要删除，请选择软删除的 VM，然后单击 "**撤消**删除" 选项。
 
-     ![Azure 门户，删除 VM 的屏幕截图](./media/backup-azure-security-feature-cloud/choose-undelete.png)
+   ![Azure 门户，删除 VM 的屏幕截图](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
-将出现一条警告消息，指出如果选择了 "删除删除"，则会删除 VM 的所有还原点，并可将其用于执行还原操作。 VM 将保留为 "停止保护并保留数据" 状态，备份暂停，备份数据永久保留，无备份策略生效。
+   将出现一条警告消息，指出如果选择了 "删除删除"，则会删除 VM 的所有还原点，并可将其用于执行还原操作。 VM 将保留为 "停止保护并保留数据" 状态，备份暂停，备份数据永久保留，无备份策略生效。
 
- ![Azure 门户的屏幕截图，确认撤消删除 VM](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+   ![Azure 门户的屏幕截图，确认撤消删除 VM](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
-此时，你还可以通过从选定的还原点选择 "**还原 vm** " 来还原 vm。  
+   此时，你还可以通过从选定的还原点选择 "**还原 vm** " 来还原 vm。  
 
    ![Azure 门户，Restore VM 选项的屏幕截图](./media/backup-azure-security-feature-cloud/restore-vm.png)
 
-> [!NOTE]
-> 只有在用户执行**恢复备份**操作后，垃圾回收器才会运行并清除过期的恢复点。
+   > [!NOTE]
+   > 只有在用户执行**恢复备份**操作后，垃圾回收器才会运行并清除过期的恢复点。
 
 5. 完成删除操作后，状态将返回到 "停止备份并保留数据"，然后可以选择 "**恢复备份**"。 **恢复备份**操作返回处于活动状态的备份项，该备份项与定义备份和保留计划的用户选择的备份策略相关联。
 
-      ![Azure 门户，恢复备份选项的屏幕截图](./media/backup-azure-security-feature-cloud/resume-backup.png)
+   ![Azure 门户，恢复备份选项的屏幕截图](./media/backup-azure-security-feature-cloud/resume-backup.png)
 
 此流程图显示了备份项的不同步骤和状态：
 
-   ![软删除备份项的生命周期](./media/backup-azure-security-feature-cloud/lifecycle.png)
+![软删除备份项的生命周期](./media/backup-azure-security-feature-cloud/lifecycle.png)
 
 有关详细信息，请参阅[下面的常见问题](backup-azure-security-feature-cloud.md#frequently-asked-questions)部分。
 
@@ -101,23 +101,23 @@ Azure 存储在将数据保存到云时会自动加密数据。 加密可以保�
 #### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-delete-operation-is-complete"></a>是否可以配置在删除操作完成后，数据将在软删除状态中保留的天数？
 
 不可以。删除操作完成后，它会固定到14天的额外保留期。
-  
+ 
 #### <a name="do-i-need-to-pay-the-cost-for-this-additional-14-day-retention"></a>是否需要支付额外的14天保留期的成本？
 
 不能，这14天的额外保留期作为软删除功能的一部分免费提供。
-  
+ 
 #### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>如果数据处于软删除状态，是否可以执行还原操作？
 
 不需要，你需要撤消删除软删除的资源才能还原。 "撤消删除" 操作会将资源恢复为 "停止保护"，并将 "**保留数据" 状态**恢复到任意时间点。 在此状态下，垃圾回收器将保持暂停状态。
-  
+ 
 #### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>我的快照是否与保管库中的恢复点遵循相同的生命周期？
 
-是的。
-  
+是。
+ 
 #### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>如何对软删除的资源再次触发计划的备份？
 
 删除后的恢复操作将再次保护该资源。 恢复操作将备份策略与选定的保留期一起触发计划的备份。 另外，当恢复操作完成后，垃圾回收器就会立即运行。 如果要从超过其到期日期的恢复点执行还原，则建议在触发恢复操作之前执行此操作。
-  
+ 
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>如果保管库中有软删除的项，是否可以删除保管库？
 
 如果保管库中存在软删除状态的备份项，则无法删除恢复服务保管库。 删除操作14天后，将永久删除软删除的项。 只有在清除了所有软删除项之后，才能删除保管库。  

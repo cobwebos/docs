@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: 5d7ac7cf00ee59a06a914d312fd58de00515a0b4
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 75a8207cd214a63258ddb167b887fe83b7aa032a
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873336"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008828"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -132,8 +132,8 @@ RDM | 不可用 | 不可用
 静态加密 (SSE)| 是 | 是
 高级存储 | 是 | 是
 导入/导出服务 | 否 | 否
-在目标存储/缓存存储帐户（用来存储复制数据）上配置的用于虚拟网络的 Azure 存储防火墙 | 否 | 否
-正在修改存储帐户 | 否。 启用复制后，无法修改目标 Azure 存储帐户。 修改、禁用和重新启用灾难恢复。 | 否
+启用了防火墙的 Azure 存储帐户 | 否  | 是。 对于目标存储和缓存。
+修改存储帐户 | 否。 启用复制后，无法修改目标 Azure 存储帐户。 修改、禁用和重新启用灾难恢复。 | 否
 
 
 ## <a name="azure-compute-features"></a>Azure 计算功能

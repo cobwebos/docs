@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 0c8c2f2adb11a30b438fb41dca07519b2f74baf7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 29f5b9b704bcf4648e9c24516d8eff5429a0ce1d
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813590"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009958"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本："]
@@ -28,7 +28,7 @@ ms.locfileid: "70813590"
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-以下活动支持此 Azure Blob 连接器：
+以下活动支持此 Azure SQL 数据仓库连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)表的[复制活动](copy-activity-overview.md)
 - [映射数据流](concepts-data-flow-overview.md)
@@ -379,7 +379,7 @@ GO
 | rejectType        | 指定 **rejectValue** 选项是文本值还是百分比。<br/><br/>允许的值为 **Value**（默认值）和 **Percentage**。 | 否                                            |
 | rejectSampleValue | 确定在 PolyBase 重新计算被拒绝行的百分比之前要检索的行数。<br/><br/>允许的值为 1、2 等。 | 如果 **rejectType** 是 **percentage**，则为“是” |
 | useTypeDefault    | 指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 中的参数部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。<br><br> | 否                                            |
-| writeBatchSize    | **每批**要插入到 SQL 表中的行数。 仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，数据工厂会根据行大小动态确定适当的批大小。 | 否                                            |
+| writeBatchSize    | **每批**要插入到 SQL 表中的行数。 仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，数据工厂根据行大小动态确定适当的批大小。 | 否                                            |
 | writeBatchTimeout | 超时前等待批量插入操作完成的时间。仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **timespan**。 例如：“00:30:00”（30 分钟）。 | 否                                            |
 | preCopyScript     | 每次运行时，将数据写入到 Azure SQL 数据仓库之前，指定复制活动要运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |
 | tableOption | 指定是否根据源架构自动创建接收器表（如果不存在）。 如果在复制活动中配置了暂存复制，则不支持创建自动表。 允许的值为`none` ：（默认） `autoCreate`、。 |否 |
@@ -440,7 +440,7 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob、Azure Data Lake Storage Gen1
    3. `rowDelimiter`**默认值**为， **\n**、 **\r\n**或 **\r**。
    4. `nullValue`保留为默认值或设置为**空字符串**（""），并且`treatEmptyAsNull`保留为默认值或设置为 true。
    5. `encodingName`保留为默认值或设置为**utf-8**。
-   6. `quoteChar`、`escapeChar` 和 `skipLineCount` 未指定。 PolyBase 支持跳过可以在 ADF 中配置为 `firstRowAsHeader` 的标头行。
+   6. `quoteChar`、`escapeChar` 和 `skipLineCount` 未指定。 PolyBase 支持跳过标题行，可将其配置`firstRowAsHeader`为在 ADF 中进行配置。
    7. `compression` 可为**无压缩**、**GZip** 或 **Deflate**。
 
 3. 如果源是文件夹，则必须`recursive`将 "复制活动" 设置为 "true"。
@@ -555,8 +555,8 @@ PolyBase 负载限制为小于 1 MB 的行。 不能用它加载到 VARCHR(MAX)�
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
-解决方案是在复制活动接收器 -> PolyBase 设置中取消选中“使用类型默认值”选项（为 false）。 “[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
-)”是 PolyBase 本机配置，用于指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。 
+解决方案是在复制活动接收器 -> PolyBase 设置中取消选中“使用类型默认值”选项（为 false）。 "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
+)" 是一个 polybase 本机配置，它指定当 PolyBase 从文本文件中检索数据时如何处理分隔文本文件中的缺失值。 
 
 **`tableName`在 Azure SQL 数据仓库中**
 
@@ -625,6 +625,14 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的 Blob 
 | uniqueidentifier                      | Guid                           |
 | varbinary                             | Byte[]                         |
 | varchar                               | String, Char[]                 |
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+
+## <a name="getmetadata-activity-properties"></a>GetMetadata 活动属性
+
+若要了解有关属性的详细信息，请查看[GetMetadata 活动](control-flow-get-metadata-activity.md) 
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md##supported-data-stores-and-formats)。
