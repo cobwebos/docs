@@ -1,6 +1,6 @@
 ---
-title: 对于个人订阅即用即付费率使用 azure 预订使用情况
-description: 了解如何读取使用情况以了解如何应用的 Azure 保留在单个订阅中使用即用即付费率。
+title: 采用即用即付费率的个人订阅的 Azure 预留使用情况
+description: 了解如何读取使用情况，以了解如何为采用即用即付费率的个人订阅应用 Azure 预留。
 author: bandersmsft
 manager: yashr
 tags: billing
@@ -12,13 +12,13 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 11f05c3de50f2f82173b6666d304887fbc2038cc
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490363"
 ---
-# <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>了解有关在单个订阅中使用即用即付费率订阅 Azure 预订使用情况
+# <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>了解采用即用即付费率的个人订阅的 Azure 预留使用情况
 
 使用[“预留”页](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)中的 ReservationId 和 [Azure 帐户门户](https://account.azure.com)中的使用情况文件评估预留使用情况。
 
@@ -33,7 +33,7 @@ ms.locfileid: "67490363"
 | 字段 | 值 |
 |---| :---: |
 |预订 ID |8117adfb-1d94-4675-be2b-f3c1bca808b6|
-|数量 |第|
+|数量 |1|
 |SKU | Standard_DS1_v2|
 |区域 | eastus |
 
@@ -59,7 +59,7 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 4. “计量 ID”是预留的计量 ID。  此计量的成本是 0 美元。 对于任何符合预留折扣条件的 VM，将显示此计量 ID。
 5. Standard_DS1_v2 是 1 vCPU VM，此 VM 在不使用 Azure 混合权益的情况下部署。 因此，此计量涉及 Windows 软件的额外费用。 若要查找与 D 系列 1 核心 VM 相对应的计量，请参阅 [Azure 虚拟机预留实例 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)。 如果有 Azure 混合权益，则不会收取此额外费用。
 
-## <a name="usage-for-sql-database--cosmos-db-reservations"></a>SQL 数据库和 Cosmos DB 保留项的使用情况
+## <a name="usage-for-sql-database--cosmos-db-reservations"></a>SQL 数据库和 Cosmos DB 预留的使用情况
 
 以下部分将以 Azure SQL 数据库为例来描述使用情况报表。 也可以使用相同的步骤来获取 Azure Cosmos DB 的使用情况。
 
@@ -69,7 +69,7 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 |---| --- |
 |预订 ID |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |数量 |2|
-|产品| SQL 数据库第 4 代（双核）|
+|Products| SQL 数据库第 4 代（双核）|
 |区域 | eastus |
 
 ### <a name="statement-section-of-csv-file"></a>CSV 文件的声明部分

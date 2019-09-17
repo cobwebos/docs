@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure SQL 数据库的保留折扣 |Microsoft Docs
-description: 了解如何将预订折扣应用到正在运行的 Azure SQL 数据库。
+title: 了解 Azure SQL 数据库的预留折扣 | Microsoft Docs
+description: 了解如何对运行中的 Azure SQL 数据库应用预留折扣。
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -13,25 +13,25 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 4b4c6b390e9b3a0cf764f998523fe3c1cdc66026
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60370281"
 ---
-# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>如何将预订折扣应用于 Azure SQL 数据库
+# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>如何对 Azure SQL 数据库应用预留折扣
 
 购买 Azure SQL 数据库预留容量后，预留折扣会自动应用到与预留属性和数量匹配的 SQL 数据库。 预留涵盖 SQL 数据库的计算成本。 将按标准费率收取软件、存储和网络费用。 可以通过 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来包含 SQL 数据库的许可成本。
 
 对于虚拟机预留实例，请参阅[了解 Azure 虚拟机预留实例折扣](billing-understand-vm-reservation-charges.md)。
 
-## <a name="how-reservation-discount-is-applied"></a>如何应用预订折扣
+## <a name="how-reservation-discount-is-applied"></a>如何应用预留折扣
 
-预订折扣是"*使用-it-或-丢失-it*"。 因此，如果任何小时内没有匹配的资源，然后您丢失预订数量的该小时。 不能执行将转发未使用保留的小时数。
+预留折扣为“使用或丢失”  。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
 
-在关闭资源时，将预订折扣将自动应用于指定范围内的另一个匹配的资源。 如果没有匹配找到资源在指定范围内，则保留的时间为*丢失*。
+关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失  。
 
-## <a name="discount-applied-to-sql-databases"></a>折扣应用于 SQL 数据库
+## <a name="discount-applied-to-sql-databases"></a>应用到 SQL 数据库的折扣
 
  SQL 数据库预留容量折扣按小时应用到正在运行的 SQL 数据库。 购买的预留容量将与运行中 SQL 数据库产生的计算用量进行匹配。 对于不是整小时运行的 SQL 数据库，预留将自动应用到与预留属性匹配其他 SQL 数据库。 折扣可以应用到同时运行的 SQL 数据库。 如果与预留属性匹配的 SQL 数据库不是整小时运行，则无法获得该小时的完整预留折扣权益。
 
@@ -49,7 +49,7 @@ ms.locfileid: "60370281"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
 

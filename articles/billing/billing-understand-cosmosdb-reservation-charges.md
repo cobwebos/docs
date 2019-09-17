@@ -10,21 +10,21 @@ ms.date: 04/13/2019
 ms.author: banders
 ms.reviewer: sngun
 ms.openlocfilehash: d5a13e4466234d73bafe8dbe76cae92955cf64bd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60370741"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>了解如何将预留折扣应用于 Azure Cosmos DB
 
 购买 Azure Cosmos DB 保留容量后，预留折扣会自动应用到与预留属性和数量匹配的 Azure Cosmos DB 资源。 预留涵盖为 Azure Cosmos DB 资源预配的吞吐量。 它不涵盖软件、网络、存储或预定义的容器费用。
 
-## <a name="how-reservation-discount-is-applied"></a>如何应用预订折扣
+## <a name="how-reservation-discount-is-applied"></a>如何应用预留折扣
 
-预订折扣是"*使用-it-或-丢失-it*"。 因此，如果任何小时内没有匹配的资源，然后您丢失预订数量的该小时。 不能执行将转发未使用保留的小时数。
+预留折扣为“使用或丢失”  。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
 
-在关闭资源时，将预订折扣将自动应用于指定范围内的另一个匹配的资源。 如果没有匹配找到资源在指定范围内，则保留的时间为*丢失*。
+关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失  。
 
 ## <a name="reservation-discount-applied-to-azure-cosmos-db-accounts"></a>预留折扣应用于 Azure Cosmos DB 帐户
 
@@ -39,25 +39,25 @@ ms.locfileid: "60370741"
 
 |计量描述  |区域 |比率  |
 |---------|---------|---------|
-|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东南部  |  亚太东南部    |   第      |
-|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东部 |   亚太东部   |    第     |
-|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲北部|  欧洲北部       |    第     |
-|Azure Cosmos DB - 100 RU/秒/小时 - 韩国南部|    韩国南部     |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲西部|    欧洲西部     |      第   |
-|Azure Cosmos DB - 100 RU/秒/小时 - 韩国中部|   韩国中部    |       第  |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部|   英国南部      |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国西部|   英国西部      |    第     |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国北部 |   英国北部    |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部 2|   英国南部 2      |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部 2|  美国东部 2     |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国中北部|   美国中北部      |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部|   美国西部      |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国中部| 美国中部        |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部 2|   美国西部 2      |      第   |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国中西部|   美国中西部      |       第  |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部|   美国东部      |  第       |
-|Azure Cosmos DB - 100 RU/秒/小时 - 南非北部|     南非北部    |   第      |
-|Azure Cosmos DB - 100 RU/秒/小时 - 南非西部 |    南非西部      |    第     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东南部  |  亚太东南部    |   1      |
+|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东部 |   亚太东部   |    1     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲北部|  欧洲北部       |    1     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 韩国南部|    韩国南部     |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲西部|    欧洲西部     |      1   |
+|Azure Cosmos DB - 100 RU/秒/小时 - 韩国中部|   韩国中部    |       1  |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部|   英国南部      |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国西部|   英国西部      |    1     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国北部 |   英国北部    |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部 2|   英国南部 2      |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部 2|  美国东部 2     |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国中北部|   美国中北部      |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部|   美国西部      |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国中部| 美国中部        |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部 2|   美国西部 2      |      1   |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国中西部|   美国中西部      |       1  |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部|   美国东部      |  1       |
+|Azure Cosmos DB - 100 RU/秒/小时 - 南非北部|     南非北部    |   1      |
+|Azure Cosmos DB - 100 RU/秒/小时 - 南非西部 |    南非西部      |    1     |
 |Azure Cosmos DB - 100 RU/秒/小时 - 印度南部|    印度南部     |    1.0375    |
 |Azure Cosmos DB - 100 RU/秒/小时 - 加拿大东部|   加拿大东部      |    1.1      |
 |Azure Cosmos DB - 100 RU/秒/小时 - 日本东部|   日本东部      |    1.125     |
@@ -120,7 +120,7 @@ Azure 计费系统将向第一个处理且与预留配置相匹配的实例分�
 * [什么是适用于 Azure 的预留](../billing/billing-save-compute-costs-reservations.md)  
 * [通过 Azure Cosmos DB 保留容量预付 Azure Cosmos DB 资源费用](../cosmos-db/cosmos-db-reserved-capacity.md)  
 * [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)  
-* [管理 Azure 的保留项](../billing/billing-manage-reserved-vm-instance.md)  
+* [管理 Azure 预留](../billing/billing-manage-reserved-vm-instance.md)  
 * [了解即用即付订阅的预留使用情况](../billing/billing-understand-reserved-instance-usage.md)  
 * [了解企业合约的预留使用情况](../billing/billing-understand-reserved-instance-usage-ea.md)
 * [了解 CSP 订阅的预留使用情况](https://docs.microsoft.com/partner-center/azure-reservations)

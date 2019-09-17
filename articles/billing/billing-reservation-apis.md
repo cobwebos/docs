@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 08/02/2019
 ms.author: banders
 ms.openlocfilehash: 36bc403c4000e58541f22c2cb44f77a28e81cb72
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68779890"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>适用于 Azure 预留自动化的 API
@@ -30,9 +30,9 @@ ms.locfileid: "68779890"
 
 ## <a name="buy-a-reservation"></a>购买预留项
 
-你可以使用 REST Api 以编程方式购买 Azure 预订和软件计划。 若要了解详细信息, 请参阅[保留订单-采购 API](/rest/api/reserved-vm-instances/reservationorder/purchase)。
+可以使用 REST API 以编程方式购买 Azure 预留和软件计划。 若要了解详细信息，请参阅[预留订单 - 购买 API](/rest/api/reserved-vm-instances/reservationorder/purchase)。
 
-下面是使用 REST API 购买的示例请求:
+以下是使用 REST API 进行购买的示例请求：
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/<GUID>?api-version=2019-04-01
@@ -61,7 +61,7 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 }
 ```
 
-你还可以在 Azure 门户中购买保留项。 有关详细信息，请参阅以下文章：
+也可在 Azure 门户中购买预留。 有关详细信息，请参阅以下文章：
 
 服务计划：
 - [虚拟机](../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)
@@ -84,7 +84,7 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 - 确保组织创建的虚拟机数与预留的 VM 大小相匹配。
 - 确保已启用实例大小灵活性。 有关详细信息，请参阅[管理预留 - 更改预留 VM 实例的优化设置](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
 - 将预留范围更改为共享，使其应用得更广。 有关详细信息，请参阅[管理预留 - 更改预留的范围](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)。
-- 交换未使用的数量。 有关详细信息, 请参阅[管理预订](billing-manage-reserved-vm-instance.md)。
+- 交换未使用的数量。 有关详细信息，请参阅[管理预留](billing-manage-reserved-vm-instance.md)。
 
 ## <a name="give-access-to-reservations"></a>授予对预留的访问权限
 
@@ -104,11 +104,11 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 
 ## <a name="change-scope-for-a-reservation"></a>更改预留范围
 
-预订的作用域可以是单个订阅、单个资源组或计费上下文中的所有订阅。 如果将范围设置为单个订阅或单个资源组, 则预订将与所选订阅中正在运行的资源相匹配。 如果删除或移动订阅或资源组, 则不会使用保留。  如果将范围设置为共享，Azure 会将预留与计费上下文内所有订阅中运行的资源匹配。 计费上下文依赖于用于购买预留的订阅。 你可以选择购买范围或在购买后随时更改。 有关详细信息，请参阅[管理预留 - 更改范围](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)。
+预留范围可以是计费上下文中的单个订阅、单个资源组或所有订阅。 如果将范围设置为单个订阅或单个资源组，预留将与所选订阅中正在运行的资源进行匹配。 如果删除或移动订阅或资源组，则不会使用预留。  如果将范围设置为共享，Azure 会将预留与计费上下文内所有订阅中运行的资源匹配。 计费上下文依赖于用于购买预留的订阅。 可以在购买时选择范围，也可以在购买后随时更改范围。 有关详细信息，请参阅[管理预留 - 更改范围](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)。
 
 若要以编程方式更改范围，请使用 API [预留 - 更新](/rest/api/reserved-vm-instances/reservation/update)。
 
-## <a name="learn-more"></a>了解详情
+## <a name="learn-more"></a>了解详细信息
 
 - [什么是适用于 Azure 的预留](billing-save-compute-costs-reservations.md)
 - [了解 VM 预留折扣的应用方式](billing-understand-vm-reservation-charges.md)

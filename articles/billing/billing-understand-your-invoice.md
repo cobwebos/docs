@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60369913"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>了解 Microsoft Azure 发票的条款
@@ -44,7 +44,7 @@ ms.locfileid: "60369913"
 
 ![发票的帐户信息部分](./media/billing-understand-your-invoice/1.png)
 
-| 术语 | 描述 |
+| 术语 | 说明 |
 | --- | --- |
 | 客户 PO 号 |可选采购订单号，由你分配用于跟踪 |
 | 发票号 |由 Microsoft 生成的唯一发票号，用于跟踪 |
@@ -56,7 +56,7 @@ ms.locfileid: "60369913"
 | 帐户所有者电子邮件地址 | 注册 Microsoft Azure 帐户时使用的帐户电子邮件地址。 <br /><br />如何更改电子邮件地址，请参阅[如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息](billing-how-to-change-azure-account-profile.md)。 |
 
 ### <a name="understand-the-invoice-summary"></a>了解发票汇总
-发票的“发票摘要”部分汇总了上次计费周期之后的总交易量，以及当前的使用费。
+发票的“发票摘要”部分汇总了上次计费周期之后的总交易量，以及当前的使用费  。
 
 ![发票摘要部分](./media/billing-understand-your-invoice/2.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "60369913"
 #### <a name="understand-the-previous-charges"></a>了解过去的收费
 发票的前期结余、付款和未付余额部分汇总了上次计费周期之后的交易。
 
-| 术语 | 描述 |
+| 术语 | 说明 |
 | --- | --- |
 | 前期结余 |上次计费周期中结余的总金额 |
 | 付款 |应用到上次计费周期的总付款金额和信用额度 |
@@ -74,7 +74,7 @@ ms.locfileid: "60369913"
 #### <a name="understand-the-current-charges"></a>了解当前费用
 发票的“当前费用”部分显示有关当前计费周期中每月费用的详细信息。
 
-| 术语 | 描述 |
+| 术语 | 说明 |
 | --- | --- |
 | 使用费 |使用费是当前计费周期中，对订阅收取的每月总费用|
 | 折扣 |应用到当前计费周期的服务折扣|
@@ -84,7 +84,7 @@ ms.locfileid: "60369913"
 
 下表介绍发票第二页中显示的买方和付款说明。
 
-| 术语 |描述 |
+| 术语 |说明 |
 | --- | --- |
 | 买方 |该帐户上的配置文件地址。 <br/><br/>如果需要更改地址，请参阅[如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息](billing-how-to-change-azure-account-profile.md)。|
 | 付款说明 |关于付款方式的说明（例如通过信用卡或通过发票付款）。 |
@@ -97,11 +97,11 @@ ms.locfileid: "60369913"
 
 下表介绍了显示在发票中的使用费列标题。
 
-| 术语 |描述 |
+| 术语 |说明 |
 | --- | --- |
 | Name |标识该次使用的最上层服务 |
-| Type |定义 Azure 服务类型，该类型可能会影响费率 |
-| Resource |标识已使用计量的度量单位 |
+| 类型 |定义 Azure 服务类型，该类型可能会影响费率 |
+| 资源 |标识已使用计量的度量单位 |
 | 区域 |标识某些服务的数据中心的位置，这些服务根据数据中心位置进行定价 |
 | 已耗用 |计费周期期间使用的计量的量 |
 | 附送 |当前计费周期中免费附送的计量的量 |
@@ -116,4 +116,4 @@ ms.locfileid: "60369913"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: ca641813e8b01a39d31a56e3730424b0fa1d6436
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "69657042"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>排查 Azure 订阅登录问题
@@ -27,11 +27,11 @@ ms.locfileid: "69657042"
 
 ### <a name="page-hangs-in-the-loading-status"></a>页面在加载状态下挂起
 
-如果 internet 浏览器页面挂起, 请尝试执行以下每个步骤, 直到可以访问 Azure 门户。
+如果 Internet 浏览器页面挂起，请尝试执行以下每个步骤，直到能够访问 Azure 门户为止。
 
 - 刷新页面。
 - 使用另一个 Internet 浏览器。
-- 使用浏览器的专用浏览模式。 对于 Internet Explorer:单击 "**工具** > " "**安全** > " "**InPrivate 浏览**", 然后浏览并登录到[Azure 门户](https://portal.azure.com/)或[Azure 帐户中心](https://account.azure.com/Subscriptions)。
+- 使用浏览器的专用浏览模式。 对于 Internet Explorer：单击“工具”   > “安全”   > “InPrivate 浏览”  ，然后浏览并登录到 [Azure 门户](https://portal.azure.com/)或 [Azure 帐户中心](https://account.azure.com/Subscriptions)。
 
 ### <a name="you-are-automatically-signed-in-as-a-different-user"></a>用户以其他用户身份自动登录
 
@@ -39,11 +39,11 @@ ms.locfileid: "69657042"
 
 若要解决此问题，请尝试下列方法：
 
-- 清除缓存并删除 Internet Cookie。 在 internet Explorer 中, 单击 "**工具** > " "**Internet 选项** > " "**删除**"。 确保选中临时文件、cookie、密码和浏览历史记录的复选框，并单击“删除”。
-- 重置 Internet Explorer 设置，还原所做的任何个人设置。 单击 "**工具** > " "**Internet 选项** > " "**高级**> 选中"**删除个人设置**"框 >**重置**。
-- 使用浏览器的专用浏览模式。 对于 Internet Explorer:单击 "**工具** > " "**安全** > " "**InPrivate 浏览**", 然后浏览并登录到[Azure 门户](https://portal.azure.com/)或[Azure 帐户中心](https://account.azure.com/Subscriptions)。
+- 清除缓存并删除 Internet Cookie。 在 Internet Explorer 中，单击“工具”   >   “Internet 选项” >   “删除”。 确保选中临时文件、cookie、密码和浏览历史记录的复选框，并单击“删除”。
+- 重置 Internet Explorer 设置，还原所做的任何个人设置。 单击“工具”   >   “Internet 选项” >   “高级”> 选中“删除个人设置”  框 >“重置”  。
+- 使用浏览器的专用浏览模式。 对于 Internet Explorer：单击“工具”   > “安全”   > “InPrivate 浏览”  ，然后浏览并登录到 [Azure 门户](https://portal.azure.com/)或 [Azure 帐户中心](https://account.azure.com/Subscriptions)。
 
-### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>我可以登录, 但*找不到任何订阅*
+### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>可以登录，但看到“找不到任何订阅” 
 
 如果选择了错误的目录，或者帐户没有足够的权限，会出现此问题。
 
@@ -52,7 +52,7 @@ ms.locfileid: "69657042"
 解决此问题：
 
 - 通过单击右上角的帐户确保已选择正确的 Azure 目录。
-- 如果已选择正确的 Azure 目录, 但仍收到错误消息, 请将帐户[添加为所有者](billing-add-change-azure-subscription-administrator.md)。
+- 如果已选择正确的 Azure 目录，但仍收到错误消息，请将帐户[添加为所有者](billing-add-change-azure-subscription-administrator.md)。
 
 **场景 2：** [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)收到错误消息
 
@@ -60,9 +60,9 @@ ms.locfileid: "69657042"
 
 1. 登录到 [Azure 门户中的订阅视图](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
 
-2. 选择要检查的订阅，并关注“设置”下的信息。
+2. 选择要检查的订阅，并关注“设置”  下的信息。
 
-3. 选择“属性”。 订阅的帐户管理员会显示在“帐户管理员”框中。
+3. 选择“属性”。  订阅的帐户管理员会显示在“帐户管理员”框中。 
 
 ## <a name="additional-help-resources"></a>其他帮助资源
 

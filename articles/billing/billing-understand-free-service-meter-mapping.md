@@ -1,5 +1,5 @@
 ---
-title: 服务测定仪映射 Azure 免费帐户
+title: Azure 免费帐户的服务到测定仪映射
 description: 了解免费帐户包含的服务的服务测定仪映射。
 author: amberbhargava
 manager: amberb
@@ -12,17 +12,17 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 8022c065d73aafc53d3dcb77e79c3e6320e0ce39
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490404"
 ---
 # <a name="understand-free-service-to-meter-mapping"></a>了解免费服务测定仪映射
 
-各 Azure 服务根据测定仪发出使用率，Azure 计费系统据此向用户收取服务费用。 以更好地了解免费服务使用情况，让我们看一下服务测定仪映射的服务。 若要了解如何创建免费服务，请参阅[创建 Azure 免费帐户包含的免费服务](billing-create-free-services-included-free-account.md)。
+各 Azure 服务根据测定仪发出使用率，Azure 计费系统据此向用户收取服务费用。 为了更好地了解免费服务使用情况，让我们来看一下这些服务的服务到测定仪映射。 若要了解如何创建免费服务，请参阅[创建 Azure 免费帐户包含的免费服务](billing-create-free-services-included-free-account.md)。
 
-## <a name="service-to-meter-mapping-for-eligible-services"></a>服务测定仪映射为符合条件的服务
+## <a name="service-to-meter-mapping-for-eligible-services"></a>符合条件的服务的服务到测定仪映射
 
 |    服务   | Azure 门户上的测定仪名称 | 使用率文件/API 中的测定仪名称 | 测定仪 ID |
 | ------------ | -------------------------- | -------------------------| -------- |
@@ -40,19 +40,19 @@ ms.locfileid: "67490404"
 | 热块 Blob 存储 | 标准 IO – 热块 Blob (GB) – 本地冗余 | 标准 IO – 热块 Blob (GB) – 免费 | 67a3a3fd-826f-42c1-8843-bffa14f0da13
 | 热块 Blob 存储 | 标准 IO – 热块 Blob 写入操作（以 10,000 计） | 标准 IO – 热块 Blob 写入操作（以 10,000 计）– 免费 | b34bbb76-edce-4c2d-a288-81a2db1fea53
 | 热块 Blob 存储  | 标准 IO – 热块 Blob 写入/列出操作（以 10,000 计） | 标准 IO – 热块 Blob 写入/列出操作（以 10,000 计）– 免费 | 7e68cf36-1198-4d3b-baa7-86a74c5b3079
-| 托管磁盘<sup>1</sup>  | 标准托管磁盘/快照 (GB) – 本地冗余 | 标准托管磁盘/快照 (GB) – 免费 | ad94c237-52a5-4804-ae65-38c5bf85ef42
-| 托管磁盘<sup>1</sup>  | 标准托管磁盘操作数（以 10,000 计） | 标准托管磁盘操作数（以 10,000 计）– 免费 | 82cc6ea4-0abd-43ac-acc0-ec34edf0f14c
-| 托管磁盘<sup>1</sup>  | 高级存储 – 页 Blob/P6（单元数）– 本地冗余 | 高级存储 – 页 Blob/P6（单元数）– 免费 | 2b98c168-27ca-4cc1-b509-e887dec87657
+| 托管磁盘 <sup>1</sup>  | 标准托管磁盘/快照 (GB) – 本地冗余 | 标准托管磁盘/快照 (GB) – 免费 | ad94c237-52a5-4804-ae65-38c5bf85ef42
+| 托管磁盘 <sup>1</sup>  | 标准托管磁盘操作数（以 10,000 计） | 标准托管磁盘操作数（以 10,000 计）– 免费 | 82cc6ea4-0abd-43ac-acc0-ec34edf0f14c
+| 托管磁盘 <sup>1</sup>  | 高级存储 – 页 Blob/P6（单元数）– 本地冗余 | 高级存储 – 页 Blob/P6（单元数）– 免费 | 2b98c168-27ca-4cc1-b509-e887dec87657
 | SQL 数据库 | 标准 S0 数据库天数 – SQL 数据库 | 标准 S0 数据库天数 – 免费 | dd6b69d3-9be0-4a91-abff-2c58bbcafd1d
-| 共享 – 带宽<sup>2</sup> | 数据发送 (GB) | 数据发送 (GB) – 免费 | 0fc067a1-65d2-46da-b24b-7a9cbe2c69bd
+| 共享 - 带宽 <sup>2</sup> | 数据发送 (GB) | 数据发送 (GB) – 免费 | 0fc067a1-65d2-46da-b24b-7a9cbe2c69bd
 
-<sup>1</sup>如果创建 Windows 虚拟机，并选择托管的磁盘，你将使用托管的磁盘测定仪作为虚拟机的一部分。
+<sup>1</sup> 如果创建 Windows 虚拟机，并选择托管磁盘，则将使用托管磁盘测定仪作为虚拟机的一部分。
 
-<sup>2</sup>可以通过多个服务使用共享计量。 例如，虚拟机和存储都根据数据发送 (GB) 测定仪发出使用率。
+<sup>2</sup> 可以通过多个服务使用共享测定仪。 例如，虚拟机和存储都根据数据发送 (GB) 测定仪发出使用率。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
-- [升级你的订阅](billing-upgrade-azure-subscription.md)
+- [升级订阅](billing-upgrade-azure-subscription.md)

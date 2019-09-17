@@ -1,7 +1,7 @@
 ---
-title: 适用于 Microsoft Azure 支付帐单 |Microsoft Docs
-description: 介绍如何在 Azure 门户中支付发票
-keywords: 计费、 说明、 截止日期，平衡，请立即付款
+title: 支付 Microsoft Azure 帐单 | Microsoft Docs
+description: 介绍如何在 Azure 门户中支付账单
+keywords: 账单, 逾期未付, 余额, 立即付款,
 services: billing
 documentationcenter: ''
 author: jureid
@@ -16,43 +16,43 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: banders
 ms.openlocfilehash: acb361cb2fd261265339fddca83c4f1b2e59a1c5
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67495540"
 ---
-# <a name="how-to-pay-your-bill-for-microsoft-azure"></a>如何向你的帐单付款适用于 Microsoft Azure
+# <a name="how-to-pay-your-bill-for-microsoft-azure"></a>如何支付 Microsoft Azure 帐单
 
-本文适用于通过 Azure 网站注册了 Azure 的 Microsoft 客户协议的客户。 [检查你对 Microsoft 客户协议的访问](#check-access-to-a-microsoft-customer-agreement)。
+本文适用于通过 Azure 网站注册 Azure 且签订了 Microsoft 客户协议的客户。 [检查对 Microsoft 客户协议的访问权限](#check-access-to-a-microsoft-customer-agreement)。
 
-你计费的配置文件的默认付款方式可以为信用卡或检查/网络传输。 如果你有 Azure 信用额度，这些会自动应用到你的发票每个计费周期。 若要成为可通过检查/电子转账付款，请参阅[如何用发票付款](billing-how-to-pay-by-invoice.md)。
+计费对象信息的默认付款方式可以是信用卡或支票/电汇。 如果你有 Azure 额度，这些额度将在每个计费周期自动应用于你的账单。 若要有资格用支票/电汇付款，请参阅[如何按发票付款](billing-how-to-pay-by-invoice.md)。
 
-如果默认付款方式是检查/网络传输，您可以到发票底部列出的地址发送付款。 或者，您可以在线支付使用 Azure 门户中的信用卡。
+如果默认付款方式是支票/电汇，你可以将付款发送到发票底部列出的地址。 或者，可以在 Azure 门户中使用信用卡在线支付。
 
-如果默认付款方式的信用卡，我们将自动信用卡费用生成发票后每个计费周期。 您还可以通过付费联机 Azure 门户中如果你想要使用其他信用卡或自动费用失败。
+如果默认付款方式是信用卡，则在生成账单后，我们会在每个计费周期内自动向你的信用卡收取费用。 如果要使用不同的信用卡或自动收费失败，你也可以在 Azure 门户中在线支付。
 
 ## <a name="pay-now-in-the-azure-portal"></a>在 Azure 门户中立即付款
 
-您必须是计费的配置文件所有者、 参与者或发票管理器为在 Azure 门户中的发票付款。
+必须是计费对象信息所有者、参与者或发票管理者才能在 Azure 门户中支付账单。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在“成本管理 + 计费”  中进行搜索。
-1. 在中**概述**边栏选项卡中，单击*摘要*选项卡。
+1. 在“概述”边栏选项卡中，单击“摘要”选项卡。  
 
-    ![显示摘要选项卡的屏幕截图](./media/billing-how-to-pay-bill/billing-account-overview.png)
+    ![显示“摘要”选项卡的屏幕截图](./media/billing-how-to-pay-bill/billing-account-overview.png)
 
-1. 如果具有到期或已逾期开发票时，你将看到总应付金额。
-1. 单击蓝色**立即付款**按钮。
+1. 如果你有到期或逾期未付账单，则会看到应付总金额。
+1. 单击蓝色“立即付款”  按钮。
 
-    ![显示的屏幕截图支付立即按钮](./media/billing-how-to-pay-bill/paynow-button-overview.png)
+    ![显示“立即付款”按钮的屏幕截图](./media/billing-how-to-pay-bill/paynow-button-overview.png)
 
-1. 在新边栏选项卡，单击**选择支付方式**选择现有信用卡或添加新帐户。<!-- screenshot of select payment method link -->
-1. 选择支付方法，请单击**立即付款**。
+1. 在新边栏选项卡中，单击“选择付款方式”  以选择现有信用卡或添加新信用卡。<!-- screenshot of select payment method link -->
+1. 选择付款方式后，单击“立即付款”  。
 
-发票的状态将更新以支付发票边栏选项卡中。 
+“账单”边栏选项卡中账单的状态将更新为“已支付”。 
 
 <!-- pay now from invoice blade -->
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

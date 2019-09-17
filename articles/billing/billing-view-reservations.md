@@ -13,32 +13,32 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 21bf96866c14615009a17279ff2fdd04bf4116ad
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490266"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>在 Azure 门户中查看 Azure 保留项
+# <a name="view-azure-reservations-in-the-azure-portal"></a>在 Azure 门户中查看 Azure 预留
 
-根据你的订阅类型和权限，有两种方法查看 Azure 的保留项。
+根据你的订阅类型和权限，有多种方法可用来查看 Azure 预留。
 
-## <a name="view-purchased-reservations"></a>查看已购买的预订
+## <a name="view-purchased-reservations"></a>查看购买的预留
 
-默认情况下，在购买预留时，你和帐户管理员可以查看预留。 你和帐户管理员会自动获取预订订单和保留上的所有者角色。 若要允许其他人查看预订，必须将它们作为添加**所有者**或**读取器**预订的预订订单上。
+默认情况下，在购买预留时，你和帐户管理员可以查看预留。 你和帐户管理员自动获得预留订单和预留的“所有者”角色。 若要允许其他人查看预留，必须将其添加为预留订单或预留的“所有者”或“读者”。  
 
 有关详细信息，请参阅[添加或更改可以管理预留的用户](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
 
 若要以所有者或读者身份查看预留，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 搜索**预订**。
-    ![显示 Azure 门户的搜索的屏幕截图](./media/billing-view-reservation/portal-reservation-search.png)  
-3. 此列表显示所有保留了所有者或读取器角色。 每个保留项显示的最后一个已知的使用率百分比。  
-    ![显示的预订列表示例](./media/billing-view-reservation/view-reservations.png)
-4. 选择一个保留项和最近五天内，请参阅利用率趋势。  
-    ![示例中显示保留利用率趋势](./media/billing-view-reservation/reservation-utilization.png)
-5. 此外可以获取[预订利用率](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)使用保留实例使用情况 API 和与[Microsoft Azure 使用情况见解 Power BI 内容包](/power-bi/service-connect-to-azure-consumption-insights)。
+2. 搜索“预留”  。
+    ![显示 Azure 门户搜索的屏幕截图](./media/billing-view-reservation/portal-reservation-search.png)  
+3. 该列表显示你对其具有“所有者”或“读者”角色的所有预留。 每个预留显示最后已知的利用率百分比。  
+    ![显示预留列表的示例](./media/billing-view-reservation/view-reservations.png)
+4. 选择一个预留并查看过去五天的利用率趋势。  
+    ![显示预留利用率趋势的示例](./media/billing-view-reservation/reservation-utilization.png)
+5. 还可以使用预留实例使用情况 API 和 [Microsoft Azure 使用见解 Power BI 内容包](/power-bi/service-connect-to-azure-consumption-insights)获取[预留利用率](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)。
 
 如果需要更改某个预留的范围，拆分某个预留，或者更改谁可以管理预留，请参阅[管理 Azure 预留](billing-manage-reserved-vm-instance.md)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "67490266"
 若要在 Azure 门户中查看预留交易，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索**成本管理 + 计费**。
+1. 搜索“成本管理 + 计费”  。
 
     ![显示了 Azure 门户搜索的屏幕截图](./media/billing-view-reservation/portal-cm-billing-search.png)
 
@@ -65,8 +65,8 @@ ms.locfileid: "67490266"
 
 若要了解有关 Azure 预留的详细信息，请参阅以下文章：
 
-- [什么是 Azure 的保留项？](billing-save-compute-costs-reservations.md)
-- [管理 Azure 的保留项](billing-manage-reserved-vm-instance.md)
+- [什么是 Azure 预留？](billing-save-compute-costs-reservations.md)
+- [管理 Azure 预留](billing-manage-reserved-vm-instance.md)
 
 购买服务计划：
 
@@ -74,9 +74,9 @@ ms.locfileid: "67490266"
 - [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 
-购买的软件计划：
+购买软件计划：
 
-- [预付款购买的 Red Hat 软件计划从 Azure 保留项](../virtual-machines/linux/prepay-rhel-software-charges.md)
+- [通过 Azure 预留为 Red Hat 软件计划预付费](../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [通过 Azure 预留为 SUSE 软件计划预付费](../virtual-machines/linux/prepay-suse-software-charges.md)
 
 了解使用情况：
@@ -87,4 +87,4 @@ ms.locfileid: "67490266"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

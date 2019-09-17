@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure 企业成本视图
+title: 排查 Azure 企业成本查看问题
 description: 了解如何解决 Azure 门户中可能遇到的有关组织成本查看的任何问题。
 author: bandersmsft
 manager: amberb
@@ -12,10 +12,10 @@ ms.date: 07/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 83f7f424b265582a3830c02973cbbb9962ddfbfb
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67491265"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>排查企业成本查看问题
@@ -39,7 +39,7 @@ ms.locfileid: "67491265"
 
 ## <a name="asset-is-unavailable"></a>资产不可用
 
-如果你收到一条错误消息指出**此资产不可用**时尝试访问订阅或管理组，然后不具有正确角色来查看此项目。  
+如果在尝试访问订阅或管理组时收到错误消息指出“此资产不可用”  ，则不具有正确角色来查看此项目。  
 
 ![显示“资产不可用”消息的屏幕截图。](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
