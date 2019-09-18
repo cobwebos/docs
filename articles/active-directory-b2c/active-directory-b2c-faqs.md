@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C 的常见问题解答（FAQ）
-description: 有关 Azure Active Directory B2C 的常见问题的解答。
+title: 有关 Azure Active Directory B2C 的常见问题解答 (FAQ)
+description: 有关 Azure Active Directory B2C 的常见问题解答。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8bd1bee82941953e96eed1defa04c9fddef3e293
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d852b786c1cc1c1eb9d39b931f9b8a142f969815
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809203"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065870"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ)
 
-此页面解答了有关 Azure Active Directory (Azure AD) B2C 的常见问题。 请随时返回查看更新信息。
+本页回答了有关 Azure Active Directory B2C （Azure AD B2C）的常见问题。 请随时返回查看更新信息。
 
 ### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>为什么我在 Azure 门户中无法访问 Azure AD B2C 扩展？
 
@@ -37,7 +37,7 @@ Azure AD B2C 不用于 Microsoft Office 365 用户的身份验证。 Azure AD �
 
 在 Azure AD 租户中，属于租户的用户使用 `<xyz>@<tenant domain>` 形式的电子邮件地址登录。 `<tenant domain>` 是租户中已验证域之一或初始的 `<...>.onmicrosoft.com` 域。 此类型的帐户是工作或学校帐户。
 
-在 Azure AD B2C 租户中，大多数应用都希望用户使用任意电子邮件地址（例如 joe@comcast.net、bob@gmail.com、sarah@contoso.com 或 jim@live.com）登录。 此类型的帐户是本地帐户。 我们还支持任意用户名作为本地帐户（例如，joe、bob、sarah 或 jim）。 在 Azure 门户中配置 Azure AD B2C 的标识提供者时，可以选择这两种本地帐户类型中的一种。 在 Azure AD B2C 租户中，选择 "**标识提供者**"，选择 "**本地帐户**"，然后选择 "**用户名**"。
+在 Azure AD B2C 租户中，大多数应用都希望用户使用任意电子邮件地址（例如 joe@comcast.net、bob@gmail.com、sarah@contoso.com 或 jim@live.com）登录。 此类型的帐户是本地帐户。 我们还支持任意用户名作为本地帐户（例如，joe、bob、sarah 或 jim）。 在 Azure 门户中配置 Azure AD B2C 的标识提供者时，可以选择这两种本地帐户类型中的一种。 在 Azure AD B2C 租户中，依次选择“标识提供者”、“本地帐户”和“用户名”。
 
 应用程序的用户帐户必须始终通过注册用户流、注册或登录用户流，或使用 Azure AD Graph API 创建。 在 Azure 门户中创建的用户帐户仅用于管理租户。
 

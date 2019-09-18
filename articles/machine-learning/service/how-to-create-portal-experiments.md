@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 的自动 ML 接口训练 & 部署模型
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 在 Azure 机器学习的工作区登陆页面（预览版）中创建、管理和部署自动化机器学习试验。
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 3ee15b5485f4fc0f81788107ce2378c65085e000
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 3a47977f2589227347582dc6fcaff25120e380d7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910422"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034831"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>通过 Azure 机器学习的工作区登陆页面（预览版）创建、探索和部署自动化机器学习试验
 
@@ -26,9 +26,9 @@ ms.locfileid: "70910422"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
-* Azure 机器学习服务工作区。 请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
+* Azure 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 ## <a name="get-started"></a>开始使用
 

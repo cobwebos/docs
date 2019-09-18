@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a543b17633b99bea63d72f46ba856a8b4593d16a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: bec09e5cd053774902083c6dd042c1ed4b293d20
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439553"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066666"
 ---
 # <a name="language-support-for-qna-maker"></a>QnA Maker 的语言支持
 
@@ -35,26 +35,26 @@ QnA Maker 支持提取任何语言页面中的问题/解答，但对于以下语
 
 ## <a name="primary-language-detection"></a>主语言检测
 
-用于检测的主要语言设置的 QnA Maker 资源并在第一个文档或 URL 添加到第一个知识库时，该资源上创建的所有知识库。 不能更改的语言。 
+将第一个文档或 URL 添加到第一个知识库时，将为 QnA Maker 资源以及在该资源上创建的所有知识库设置用于检测的主要语言。 不能更改此语言。 
 
-如果用户计划以支持多种语言，它们需要有新的 QnA Maker 资源的每种语言。 了解如何[创建基于语言的 QnA Maker 知识库](../how-to/language-knowledge-base.md)。  
+如果用户计划支持多种语言，则他们需要为每种语言提供新的 QnA Maker 资源。 了解如何[创建基于语言的 QnA Maker 知识库](../how-to/language-knowledge-base.md)。  
 
-验证的主要语言通过执行以下步骤：
+通过以下步骤验证主要语言：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。  
-1. 查找并选择所需 QnA Maker 的资源的一部分创建的 Azure 搜索资源。 Azure 搜索资源名称将以与 QnA Maker 资源相同的名称开头，并且将具有类型**Search 服务**。 
-1. 从**概述**页的搜索资源中，选择**索引**。 
-1. 选择 testkb  索引。
-1. 选择**字段**选项卡。 
-1. 视图**分析器**的列**问题**并**答案**字段。 
+1. 查找并选择作为 QnA Maker 资源的一部分创建的 Azure 搜索资源。 Azure 搜索资源名称将以与 QnA Maker 资源相同的名称开始，并将具有类型**搜索服务**。 请记住，只有一个 QnA Maker 资源可链接到一个 Azure 搜索资源。
+1. 从搜索资源的 "**概述**" 页中，选择 "**索引**"。 
+1. 选择 testkb 索引。
+1. 选择 "**字段**" 选项卡。 
+1. 查看**问题**和**答案**字段的**分析器**列。 
 
 
 ## <a name="query-matching-and-relevance"></a>查询匹配和相关性
 QnA Maker 依赖于 Azure 搜索中的[语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)来提供结果。 针对 En-* 语言提供了特殊的重新排名功能以实现更好的相关性。
 
-虽然 Azure 搜索功能对于支持的语言而言都相同，但 QnA Maker 还有基于 Azure 搜索结果的额外排名器。 在此排名器模型中，我们使用一些特殊的语义和基于 word 的功能在 en-*，，尚不可用的其他语言。 我们并未将这些功能可用，因为它们是内部机制的 QnA Maker 排名程序的一部分。 
+虽然 Azure 搜索功能对于支持的语言而言都相同，但 QnA Maker 还有基于 Azure 搜索结果的额外排名器。 在此 ranker 模型中，我们使用了一些特殊的语义和 en 中基于 word 的功能，这些功能尚不适用于其他语言。 我们并不提供这些功能，因为它们是 QnA Maker ranker 的内部工作的一部分。 
 
-QnA Maker[会自动检测该知识库的语言](#primary-language-detection)创建过程并相应地设置分析器。 可以采用以下语言创建知识库。 
+QnA Maker 在创建过程中[自动检测知识库的语言](#primary-language-detection)，并相应地设置分析器。 可以采用以下语言创建知识库。 
 
 |支持的语言|
 |-----|

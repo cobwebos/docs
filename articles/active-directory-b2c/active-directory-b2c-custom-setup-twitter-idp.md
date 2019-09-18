@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 557d25c4921c9906be75bce03c326903e63432de
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: bfe8b1297b155ecd947140149c13da6c3a08c3c8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464797"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065987"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 Twitter 帐户的登录
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文展示了如何在 Azure Active Directory (Azure AD) B2C 中使用[自定义策略](active-directory-b2c-overview-custom.md)为来自 Twitter 帐户的用户实现登录。
+本文说明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](active-directory-b2c-overview-custom.md)为 Twitter 帐户的用户启用登录。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - 完成 [Azure Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
 - 如果还没有 Twitter 帐户，请在 [Twitter 注册页面](https://twitter.com/signup)上创建一个。
@@ -46,7 +46,7 @@ ms.locfileid: "68464797"
 你需要存储前面在 Azure AD B2C 租户中记录的机密密钥。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含你的租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 在“概述”页上选择“标识体验框架”。
 5. 选择“策略密钥”，然后选择“添加”。
@@ -110,7 +110,7 @@ ms.locfileid: "68464797"
 
 ### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
 
-至此, 已配置策略, 以便 Azure AD B2C 知道如何与 Twitter 帐户通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
+至此，已配置策略，以便 Azure AD B2C 知道如何与 Twitter 帐户通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
 
 1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
 2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
@@ -157,7 +157,7 @@ ms.locfileid: "68464797"
 通过在租户中创建的应用程序与 Azure AD B2C 进行通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含你的租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 选择“应用程序”，然后选择“添加”。
 5. 输入应用程序的名称，例如 *testapp1*。

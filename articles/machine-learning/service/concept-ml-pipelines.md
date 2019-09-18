@@ -1,6 +1,6 @@
 ---
 title: 什么是 ML 管道
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 本文介绍通过适用于 Python 的 Azure 机器学习 SDK 生成的机器学习管道，以及使用管道的优势。 机器学习 (ML) 管道由数据科学家用来生成、优化和管理其机器学习工作流。
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2547ca3af3039af53cb5fd5b244669b9152c21b3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 07efde7c3664ba1866e59f23c31b9c385ed9c366
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993287"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035488"
 ---
-# <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>什么是 ML 管道 Azure 机器学习服务？
+# <a name="what-are-ml-pipelines-in-azure-machine-learning"></a>什么是 ML 管道 Azure 机器学习？
 
-了解你可以通过 Azure 机器学习 service 构建和管理的机器学习管道。 
+了解可以通过 Azure 机器学习生成和管理的机器学习管道。 
 
 使用机器学习 (ML) 管道，数据科学家、数据工程师和 IT 专业人员可以按以下内容涉及的步骤进行协作：
 + 数据准备，例如规范化和转换
@@ -30,7 +30,7 @@ ms.locfileid: "70993287"
 
 了解如何[创建你的第一个管道](how-to-create-your-first-pipeline.md)。
 
-![Azure 机器学习服务中的机器学习管道](./media/concept-ml-pipelines/pipeline-flow.png)
+![Azure 机器学习中的机器学习管道](./media/concept-ml-pipelines/pipeline-flow.png)
 
 <a name="compare"></a>
 ### <a name="which-azure-pipeline-technology-should-i-use"></a>我应该使用哪种 Azure 管道技术？

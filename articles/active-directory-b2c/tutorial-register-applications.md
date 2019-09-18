@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/23/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 651c15c8206f7956bb35520f9c5837cb0c9308f9
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 06b2c273f41bfa74ee968b6fd6676e83767ce8b2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980697"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063256"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册应用程序
 
-必须在你管理的租户中注册应用程序，然后这些[应用程序](active-directory-b2c-apps.md)才能与 Azure Active Directory (Azure AD) B2C 交互。 本教程介绍如何使用 Azure 门户注册 Web 应用程序。
+必须先在你管理的租户中注册[应用程序](active-directory-b2c-apps.md)，然后才能与 Azure Active Directory B2C （Azure AD B2C）交互。 本教程介绍如何使用 Azure 门户注册 Web 应用程序。
 
 在本文中，学习如何：
 
@@ -35,7 +35,7 @@ ms.locfileid: "69980697"
 
 ## <a name="register-a-web-application"></a>注册 Web 应用程序
 
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 1. 选择“应用程序”，然后选择“添加”。
 1. 输入应用程序的名称。 例如，“webapp1”。
@@ -44,10 +44,10 @@ ms.locfileid: "69980697"
 
     出于测试目的（如本教程），可以将其设置为 `https://jwt.ms`，以便显示令牌的内容以供检查。 对于本教程，请将**回复 URL** 设置为 `https://jwt.ms`。
 
-    以下限制适用于回复 Url:
+    以下限制适用于回复 Url：
 
     * 回复 URL 必须以方案`https`开头。
-    * 回复 URL 区分大小写。 它的大小写必须与正在运行的应用程序的 URL 路径匹配。 例如, 如果你的应用程序包括在其路径`.../abc/response-oidc`中, 请不要在 "答复 URL" 中指定。 `.../ABC/response-oidc` 由于 web 浏览器将路径视为区分大小写, 因此在重`.../abc/response-oidc`定向到不匹配`.../ABC/response-oidc`的 URL 时可能会排除与关联的 cookie。
+    * 回复 URL 区分大小写。 它的大小写必须与正在运行的应用程序的 URL 路径匹配。 例如，如果你的应用程序包括在其路径`.../abc/response-oidc`中，请不要在 "答复 URL" 中指定。 `.../ABC/response-oidc` 由于 web 浏览器将路径视为区分大小写，因此在重`.../abc/response-oidc`定向到不匹配`.../ABC/response-oidc`的 URL 时可能会排除与关联的 cookie。
 
 1. 单击 "**创建**" 以完成应用程序注册。
 

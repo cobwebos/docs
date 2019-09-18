@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: e21f3eed7e631c974d34f148b85843b055deaf60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71631cd2394efd6743bc0e80a458fed2678d4be0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706851"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076249"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>将 Apache Hive 用作提取、转换和加载 (ETL) 工具
 
@@ -23,7 +23,7 @@ ms.locfileid: "64706851"
 
 下图提供 ETL 自动化用例和模型的概述。 将转换输入数据以生成适当的输出。  在转换期间，数据可以更改形状、数据类型甚至语言。  ETL 过程可将英制转换为公制、更改时区和提高精确度，以便与目标中现有的数据相符。  ETL 过程还可将新数据与现有数据相结合来更新报告，或者提供现有数据的更深入见解。  然后，应用程序（例如报告工具和服务）能以所需的格式使用此数据。
 
-![将 Apache Hive 用作 ETL](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
+![Apache Hive 为 ETL 体系结构](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
 在导入大量文本文件（例如 CSV）或数量较少但经常更改的文本文件或上述两者兼具的 ETL 过程中，通常使用 Hadoop。  Hive 是一个很好的工具，可以在将数据载入数据目标之前先准备好数据。  在 Hive 中，可以基于 CSV 创建架构，然后使用类似于 SQL 的语言来生成与数据交互的 MapReduce 程序。 
 

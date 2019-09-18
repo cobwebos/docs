@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3ab2bf0334b58f3a5ac8ad4abacfcc45e0366240
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917750"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077015"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>将 Apache Ambari Hive 视图与 HDInsight 中的 Apache Hadoop 配合使用
 
@@ -34,7 +34,7 @@ ms.locfileid: "70917750"
 
 3. 在视图列表中，选择“Hive 视图”。
 
-    ![已选中 Hive 视图](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    ![Apache Ambari 选择 Apache Hive 视图](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
     Hive 视图页面类似于下图：
 
@@ -98,25 +98,25 @@ ms.locfileid: "70917750"
 若要显示查询的 Tez UI，请选择工作表下方的 " **TEZ ui** " 选项卡。
 
 > [!IMPORTANT]  
-> Tez 不用于解析所有查询。 无需使用 Tez 即可解析许多查询。 
+> Tez 不用于解析所有查询。 无需使用 Tez 即可解析许多查询。
 
 ## <a name="view-job-history"></a>查看作业历史记录
 
 “作业”选项卡显示 Hive 查询的历史记录。
 
-![作业历史记录图像](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+![Apache Hive 查看作业 "选项卡历史记录](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>数据库表
 
 可使用“表”选项卡处理 Hive 数据库内的表。
 
-![表选项卡图像](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+!["Apache Hive 表" 选项卡的图像](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>已保存的查询
 
 在“查询”选项卡中，可以按需要保存查询。 保存查询后，可通过“已保存的查询”选项卡对其重复进行使用。
 
-![“保存的查询”选项卡图像](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Apache Hive 查看已保存的查询 "选项卡](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > 保存的查询存储在默认群集存储中。 可在路径 `/user/<username>/hive/scripts` 下找到保存的查询。 它们存储为纯文本 `.hql` 文件。
@@ -129,7 +129,7 @@ ms.locfileid: "70917750"
 
 使用 Hive 视图顶部的“UDF”选项卡，声明并保存一组 UDF。 可以在**查询编辑器**中使用这些 UDF。
 
-![UDF 选项卡图像](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+![Apache Hive 查看 Udf 选项卡显示](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
 将 UDF 添加到 Hive 视图后，“插入 UDF”按钮将显示在“查询编辑器”底部。 选择此项会显示 Hive 视图中定义的 UDF 的下拉列表。 选择 UDF 会将 HiveQL 语句添加到查询以启用 UDF。
 

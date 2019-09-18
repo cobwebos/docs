@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d153238c58d72874ddbf7979e68423e21ea7c020
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8784a06306f59015b95293d90ff5509dcfcae045
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073159"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057938"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。  可以将备份配置为保持不变的时间。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。
@@ -39,7 +39,7 @@ ms.locfileid: "70073159"
    - [SQL 数据库](https://azure.microsoft.com/services/sql-database/)
    - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
    - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
-   - [MySQL 应用内产品](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
+   - [MySQL 应用内产品](https://azure.microsoft.com/en-us/blog/mysql-in-app-preview-app-service/)
  
 
 > [!NOTE]
@@ -122,7 +122,7 @@ ms.locfileid: "70073159"
 使用部分备份可以精确选择需要备份的文件。
 
 > [!NOTE]
-> 备份中的单个数据库的最大大小为 4GB, 但备份的总最大大小为10GB
+> 备份中的单个数据库的最大大小为4GB，但备份的总最大大小为10GB
 
 ### <a name="exclude-files-from-your-backup"></a>从备份中排除文件
 假定应用中包含的日志文件和静态映像已经过备份且不会发生更改。 这种情况下，可排除这些文件夹和文件，以免其存储在将来的备份中。 若要从备份中排除文件和文件夹，请在应用的 `D:\home\site\wwwroot` 文件夹中创建一个 `_backup.filter` 文件。 指定要在此文件中排除的文件和文件夹列表。 

@@ -1,7 +1,7 @@
 ---
 title: 什么是工作区
-titleSuffix: Azure Machine Learning service
-description: 工作区是 Azure 机器学习服务的顶级资源。 它保留所有定型运行的历史记录，包括日志、指标、输出和脚本的快照。 您可以使用此信息来确定哪个训练运行生成最佳模型
+titleSuffix: Azure Machine Learning
+description: 工作区是 Azure 机器学习的顶级资源。 它保留所有定型运行的历史记录，包括日志、指标、输出和脚本的快照。 您可以使用此信息来确定哪个训练运行生成最佳模型
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: ef060c083109a7096b62ebb35f2b49bb37a371b8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 84aad0f1a797bb7eccf1872bd291e72ecefa7eee
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860502"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035320"
 ---
-# <a name="what-is-an-azure-machine-learning-service-workspace"></a>什么是 Azure 机器学习服务工作区？
+# <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
-工作区是 Azure 机器学习服务的顶级资源，提供了一个集中的位置来处理使用 Azure 机器学习服务时创建的所有项目。  工作区保存所有定型运行的历史记录，包括日志、指标、输出和脚本的快照。 使用此信息可以确定哪个训练运行产生最佳模型。  
+工作区是 Azure 机器学习的顶级资源，提供了一个集中的位置来处理使用 Azure 机器学习时创建的所有项目。  工作区保存所有定型运行的历史记录，包括日志、指标、输出和脚本的快照。 使用此信息可以确定哪个训练运行产生最佳模型。  
 
 使用所需的模型后，可将其注册到工作区。 然后，使用已注册的模型和评分脚本，将其部署到 Azure 容器实例、Azure Kubernetes 服务或基于 REST 的 HTTP 终结点作为现场可编程的入口数组（FPGA）。 你还可以将模型部署到 Azure IoT Edge 设备作为模块。
 
@@ -103,9 +103,9 @@ ms.locfileid: "70860502"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用 Azure 机器学习服务，请参阅：
+若要开始 Azure 机器学习，请参阅：
 
-+ [Azure 机器学习服务概述](overview-what-is-azure-ml.md)
++ [Azure 机器学习概述](overview-what-is-azure-ml.md)
 + [创建工作区](how-to-manage-workspace.md)
 + [管理工作区](how-to-manage-workspace.md)
 + [教程：训练模型](tutorial-train-models-with-aml.md)

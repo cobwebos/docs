@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure 资源管理器模板创建工作区
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 资源管理器模板创建新的 Azure 机器学习服务工作区。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 资源管理器模板创建新的 Azure 机器学习工作区。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,28 +10,28 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 34522c9a672de51cfa53ce52c5a6a6506fcd5454
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 7e0897f92dd5ead939cbae9d6bf269bd22152419
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390514"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034782"
 ---
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>使用 Azure 资源管理器模板创建 Azure 机器学习服务的工作区
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
-本文介绍几种使用 Azure 资源管理器模板创建 Azure 机器学习服务工作区的方法。 使用资源管理器模板可以轻松地通过单个协调操作创建资源。 模板是一个 JSON 文档，定义部署所需的资源。 它还可以指定部署参数。 使用模板时，参数用于提供输入值。
+本文介绍几种使用 Azure 资源管理器模板创建 Azure 机器学习工作区的方法。 使用资源管理器模板可以轻松地通过单个协调操作创建资源。 模板是一个 JSON 文档，定义部署所需的资源。 它还可以指定部署参数。 使用模板时，参数用于提供输入值。
 
 有关详细信息，请参阅[使用 Azure 资源管理器模板部署应用程序](../../azure-resource-manager/resource-group-template-deploy.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+* 一个 **Azure 订阅**。 如果没有，请尝试[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
 * 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="resource-manager-template"></a>资源管理器模板
 
-以下资源管理器模板可用于创建 Azure 机器学习服务工作区和关联的 Azure 资源：
+以下资源管理器模板可用于创建 Azure 机器学习工作区和关联的 Azure 资源：
 
 [!code-json[create-azure-machine-learning-service-workspace](~/quickstart-templates/101-machine-learning-create/azuredeploy.json)]
 
@@ -109,16 +109,16 @@ az group deployment create \
 
 ## <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault 访问策略和 Azure 资源管理器模板
 
-使用 Azure 资源管理器模板创建工作区和关联资源（包括 Azure Key Vault）时多次。 例如，将模板多次用于与持续集成和部署管道的一部分的相同参数。
+使用 Azure 资源管理器模板创建工作区和关联资源 (包括 Azure Key Vault) 时多次。 例如, 将模板多次用于与持续集成和部署管道的一部分的相同参数。
 
-大多数通过模板创建的资源操作都是幂等的，但 Key Vault 每次使用模板时都将清除访问策略。 清除访问策略会断开使用该访问策略的任何现有工作区对 Key Vault 的访问。 例如，Azure Notebooks VM 的停止/创建功能可能会失败。  
+大多数通过模板创建的资源操作都是幂等的, 但 Key Vault 每次使用模板时都将清除访问策略。 清除访问策略会断开使用该访问策略的任何现有工作区对 Key Vault 的访问。 例如, Azure Notebooks VM 的停止/创建功能可能会失败。  
 
-若要避免此问题，建议采用以下方法之一：
+若要避免此问题, 建议采用以下方法之一:
 
-*  不要对相同的参数多次部署模板。 或删除现有资源，然后使用模板重新创建它们。
+*  不要对相同的参数多次部署模板。 或删除现有资源, 然后使用模板重新创建它们。
   
-* 检查 Key Vault 访问策略，然后使用这些策略设置模板的 accessPolicies 属性。
-* 检查 Key Vault 资源是否已存在。 如果是这样，请不要通过模板重新创建它。 例如，添加一个参数，该参数允许你禁用 Key Vault 资源的创建（如果已存在）。
+* 检查 Key Vault 访问策略, 然后使用这些策略设置模板的 accessPolicies 属性。
+* 检查 Key Vault 资源是否已存在。 如果是这样, 请不要通过模板重新创建它。 例如, 添加一个参数, 该参数允许你禁用 Key Vault 资源的创建 (如果已存在)。
 
 ## <a name="next-steps"></a>后续步骤
 

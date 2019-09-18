@@ -1,6 +1,6 @@
 ---
 title: 深度学习与机器学习
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 了解深度学习与机器学习以及这两个概念与人工智能的关系。 可在欺诈检测、语音和面部识别、情绪分析和时序预测等方案中应用深度学习。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 3b0546c42ddd5252b35d1a77d7b152733beec233
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: cff31916f837141ae54f3c14dd125be6a92a5008
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240962"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035505"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>深度学习与机器学习
 
@@ -106,9 +106,9 @@ Feedforward 神经网络是最基本的人工神经网络类型。 在 feedforwa
 
 ## <a name="next-steps"></a>后续步骤
 
-以下文章说明了如何在[Azure 机器学习服务](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri)中使用深度学习技术：
+以下文章说明了如何在[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri)中使用深度学习技术：
 
 - [使用 TensorFlow 模型为手写数字分类](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 - [使用 TensorFlow 估计器和 Keras 对手写数字进行分类](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 - [使用 Pytorch 模型对图像进行分类](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-- [使用 Chainer 模型为手写数字分类](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [使用 Chainer 模型为手写数字分类](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)

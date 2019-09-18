@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 08/30/2019
+ms.date: 09/16/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 143da0374dbd38f96dd0d44e3e1d1bbe3339b58f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: aa8d91b5b400525dfd0f0a2db32c3c66daa0b06f
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174586"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71032701"
 ---
 | 类别 | 数据存储 | 支持用作源 | 支持用作接收器 | 受 [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) 支持 | 由[自承载 IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime)支持 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -25,7 +25,7 @@ ms.locfileid: "70174586"
 | &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  |
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  |
+| &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure 文件存储](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL 数据库](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |✓ |✓ |✓ |✓  |
@@ -86,7 +86,7 @@ ms.locfileid: "70174586"
 | &nbsp; |[Oracle Eloqua（预览）](../articles/data-factory/connector-oracle-eloqua.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Responsys（预览）](../articles/data-factory/connector-oracle-responsys.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle 服务云（预览）](../articles/data-factory/connector-oracle-service-cloud.md) |✓ | |✓ |✓  |
-| &nbsp; |[PayPal (预览版)](../articles/data-factory/connector-paypal.md) |✓ | |✓ |✓  |
+| &nbsp; |[PayPal （预览版）](../articles/data-factory/connector-paypal.md) |✓ | |✓ |✓  |
 | &nbsp; |[QuickBooks（预览）](../articles/data-factory/connector-quickbooks.md) |✓ | |✓ |✓  |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Salesforce 服务云](../articles/data-factory/connector-salesforce-service-cloud.md) |✓ |✓ |✓ |✓  |
@@ -96,9 +96,9 @@ ms.locfileid: "70174586"
 | &nbsp; |[ServiceNow](../articles/data-factory/connector-servicenow.md) |✓ | |✓ |✓  |
 | &nbsp; |[Shopify（预览）](../articles/data-factory/connector-shopify.md) |✓ | |✓ |✓  |
 | &nbsp; |[Square（预览）](../articles/data-factory/connector-square.md) |✓ | |✓ |✓  |
-| &nbsp; |[Web 表 (HTML 表)](../articles/data-factory/connector-web-table.md) |✓ | | |✓  |
+| &nbsp; |[Web 表（HTML 表）](../articles/data-factory/connector-web-table.md) |✓ | | |✓  |
 | &nbsp; |[Xero（预览）](../articles/data-factory/connector-xero.md) |✓ | |✓ |✓  |
 | &nbsp; |[Zoho（预览）](../articles/data-factory/connector-zoho.md) |✓ | |✓ |✓  |
 
 > [!NOTE]
-> 如果连接器被标记为*预览版*, 则可以尝试, 并向我们提供反馈。 若要依赖于解决方案中的预览连接器, 请联系[Azure 支持](https://azure.microsoft.com/support/)。
+> 如果连接器被标记为*预览版*，则可以尝试，并向我们提供反馈。 若要依赖于解决方案中的预览连接器，请联系[Azure 支持](https://azure.microsoft.com/support/)。

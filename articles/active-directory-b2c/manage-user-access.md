@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ba36ece6b221908bfbaae58430a52b4753c2ed6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 98d3fa50f405658b33f879ed8e7b95667cddcedf
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846779"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064134"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
 
-本文介绍如何使用 Azure Active Directory (AD) B2C 管理用户对应用程序的访问。 应用程序中的访问管理包括：
+本文介绍如何使用 Azure Active Directory B2C （Azure AD B2C）管理用户对应用程序的访问权限。 应用程序中的访问管理包括：
 
 - 识别未成年人，以及控制用户对应用程序的访问。
 - 要求未成年人在使用应用程序之前经过家长的同意。
@@ -56,7 +56,7 @@ ms.locfileid: "67846779"
 
 5. 未成年人或成人撤消同意时，可以使用 Azure AD 图形 API 将 **consentProvidedForMinor** 更改为 **denied**。 或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
 
-有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](active-directory-b2c-reference-custom-attr.md)。 使用 Azure AD 图形 API 解决扩展属性时，必须使用长版本的属性，例如 *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*:2011-01-01T00:00:00Z  。
+有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](active-directory-b2c-reference-custom-attr.md)。 使用 Azure AD 图形 API 解决扩展属性时，必须使用长版本的属性，例如 *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*:2011-01-01T00:00:00Z。
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>收集出生日期和国家/地区数据
 
@@ -112,7 +112,7 @@ ms.locfileid: "67846779"
 
 下图显示了建议的用户流：
 
-![显示建议的验收用户流的流程图图示](./media/manage-user-access/user-flow.png)
+![显示建议的接受用户流的流程图](./media/manage-user-access/user-flow.png)
 
 下面是声明中基于 DateTime 的使用条款许可状态示例：
 

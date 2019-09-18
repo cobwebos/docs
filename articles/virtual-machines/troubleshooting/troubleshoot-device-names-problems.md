@@ -4,7 +4,7 @@ description: 说明 Linux VM 设备名更改的原因以及解决此问题的方
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 0350b6bdc990ed6c2de60e3e98c3768b18d0d636
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710421"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058205"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>排查 Linux VM 设备名更改问题
 
@@ -42,11 +42,11 @@ ms.locfileid: "67710421"
 
 若要解决此问题，请使用持久命名。 有四个方法可使用持久命名：按文件系统标签、按 UUID、按 ID 或按路径。 我们建议对 Azure Linux VM 使用文件系统标签或 UUID。
 
-大多数分发都提供 `fstab` nofail 或 nobootwait 参数   。 在启动时若无法装载磁盘，这些参数可使系统启动。 有关这些参数的详细信息，请查看分发文档。 有关在添加数据磁盘时如何将 Linux VM 配置为使用 UUID 的信息，请参阅[连接到 Linux VM 以装载新磁盘](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)。
+大多数分发都提供 `fstab` nofail 或 nobootwait 参数。 在启动时若无法装载磁盘，这些参数可使系统启动。 有关这些参数的详细信息，请查看分发文档。 有关在添加数据磁盘时如何将 Linux VM 配置为使用 UUID 的信息，请参阅[连接到 Linux VM 以装载新磁盘](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)。
 
 在 VM 上安装 Azure Linux 代理后，该代理使用 Udev 规则在 /dev/disk/azure 路径下构造一组符号链接。 应用程序和脚本使用 Udev 规则来识别附加到 VM 的磁盘，以及磁盘类型和磁盘 LUN。
 
-如果已有编辑你 fstab 中以 VM 无法启动并且您不能以 ssh 方式连接到 VM 的方式，可以使用[VM 的串行控制台](./serial-console-linux.md)输入[单用户模式下](./serial-console-grub-single-user-mode.md)和修改你 fstab。
+如果已按照无法启动 VM 的方式编辑 fstab，但无法通过 SSH 连接到 VM，则可以使用[VM 串行控制台](./serial-console-linux.md)输入[单用户模式](./serial-console-grub-single-user-mode.md)并修改 fstab。
 
 ### <a name="identify-disk-luns"></a>识别磁盘 LUN
 
@@ -153,7 +153,7 @@ Azure Linux 代理 Udev 规则在 /dev/disk/azure 路径下构造一组符号链
 有关详细信息，请参阅以下文章：
 
 - [Ubuntu：使用 UUID](https://help.ubuntu.com/community/UsingUUID)
-- [Red Hat:持久命名](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
+- [Red Hat：永久性命名](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
 - [Linux：UUID 有什么作用](https://www.linux.com/news/what-uuids-can-do-you)
 - [Udev：新式 Linux 系统中的设备管理简介](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
 

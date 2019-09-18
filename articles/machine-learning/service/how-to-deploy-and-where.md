@@ -1,7 +1,7 @@
 ---
 title: 部署模型的方式和位置
-titleSuffix: Azure Machine Learning service
-description: 了解部署 Azure 机器学习服务模型的方式和位置，包括 Azure 容器实例、Azure Kubernetes 服务、Azure IoT Edge 和现场可编程的入口数组。
+titleSuffix: Azure Machine Learning
+description: 了解部署 Azure 机器学习模型的方式和位置，包括 Azure 容器实例、Azure Kubernetes 服务、Azure IoT Edge 和现场可编程的入口数组。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ff3a19a543f87833420f585bbdf7891cc7589746
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: f70975749be52e8498488d7019bf5cb8d858df54
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997206"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034689"
 ---
-# <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
+# <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 
 了解如何在 Azure 云中将机器学习模型部署为 web 服务，或 Azure IoT Edge 设备。
 
@@ -29,11 +29,11 @@ ms.locfileid: "70997206"
 1. 将模型部署到计算目标。
 1. 测试已部署的模型，也称为 "web 服务"。
 
-有关部署工作流中所涉及的概念的详细信息，请参阅[管理、部署和监视 Azure 机器学习服务的模型](concept-model-management-and-deployment.md)。
+有关部署工作流中所涉及的概念的详细信息，请参阅[管理、部署和监视具有 Azure 机器学习的模型](concept-model-management-and-deployment.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 机器学习服务工作区。 有关详细信息，请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
+- Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 - 模型。 如果没有训练的模型，则可以使用[本教程](https://aka.ms/azml-deploy-cloud)中提供的模型和依赖项文件。
 
@@ -41,7 +41,7 @@ ms.locfileid: "70997206"
 
 ## <a name="connect-to-your-workspace"></a>连接到你的工作区
 
-下面的代码演示如何使用缓存到本地开发环境中的信息连接到 Azure 机器学习服务工作区：
+下面的代码演示如何使用缓存到本地开发环境中的信息连接到 Azure 机器学习工作区：
 
 + **使用 SDK**
 
@@ -118,7 +118,7 @@ ms.locfileid: "70997206"
 
 ### <a name="register-a-model-from-a-local-file"></a>从本地文件注册模型
 
-您可以通过提供模型的本地路径来注册模型。 你可以提供文件夹或单个文件的路径。 您可以使用此方法注册使用 Azure 机器学习服务训练的模型，然后下载。 你还可以使用此方法来注册在 Azure 机器学习之外训练的模型。
+您可以通过提供模型的本地路径来注册模型。 你可以提供文件夹或单个文件的路径。 您可以使用此方法来注册使用 Azure 机器学习训练的模型，然后再下载。 你还可以使用此方法来注册在 Azure 机器学习之外训练的模型。
 
 [!INCLUDE [trusted models](../../../includes/machine-learning-service-trusted-model.md)]
 
@@ -154,7 +154,7 @@ ms.locfileid: "70997206"
 
 有关详细信息，请参阅[模型类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)的文档。
 
-有关使用 Azure 机器学习服务外部训练的模型的详细信息，请参阅[如何部署现有模型](how-to-deploy-existing-model.md)。
+若要详细了解如何使用 Azure 机器学习外部训练的模型，请参阅[如何部署现有模型](how-to-deploy-existing-model.md)。
 
 <a name="target"></a>
 
@@ -214,7 +214,7 @@ model_path = Model.get_model_path('sklearn_mnist')
 
 #### <a name="optional-automatic-schema-generation"></a>可有可无自动生成架构
 
-若要为 web 服务自动生成架构，请在一个已定义的类型对象的构造函数中提供输入和/或输出的示例。 类型和示例用于自动创建架构。 然后，Azure 机器学习服务在部署期间为 web 服务创建[OpenAPI](https://swagger.io/docs/specification/about/) （Swagger）规范。
+若要为 web 服务自动生成架构，请在一个已定义的类型对象的构造函数中提供输入和/或输出的示例。 类型和示例用于自动创建架构。 然后 Azure 机器学习在部署过程中创建 web 服务的[OpenAPI](https://swagger.io/docs/specification/about/) （Swagger）规范。
 
 当前支持这些类型：
 
@@ -630,7 +630,7 @@ print(response.json())
     "swagger": "2.0",
     "info": {
         "title": "myservice",
-        "description": "API specification for the Azure Machine Learning service myservice",
+        "description": "API specification for Azure Machine Learning myservice",
         "version": "1.0"
     },
     "schemes": [
@@ -762,7 +762,7 @@ print(response.json())
 有关可根据规范创建客户端库的实用工具，请参阅[codegen](https://github.com/swagger-api/swagger-codegen)。
 
 ### <a id="azuremlcompute"></a>批处理推理
-Azure 机器学习计算目标由 Azure 机器学习服务创建和管理。 它们可用于来自 Azure 机器学习管道的批处理预测。
+Azure 机器学习通过 Azure 机器学习创建和管理计算目标。 它们可用于来自 Azure 机器学习管道的批处理预测。
 
 有关使用 Azure 机器学习计算进行批处理推理的演练，请参阅[如何运行批预测](tutorial-pipeline-batch-scoring-classification.md)。
 
@@ -776,7 +776,7 @@ Azure 机器学习计算目标由 Azure 机器学习服务创建和管理。 它
 
 ## <a name="continuously-deploy-models"></a>持续部署模型
 
-可以使用[Azure DevOps](https://azure.microsoft.com/services/devops/)的机器学习扩展来持续部署模型。 如果在 Azure 机器学习服务工作区中注册了新的机器学习模型，则可以使用 Azure DevOps 的机器学习扩展来触发部署管道。
+可以使用[Azure DevOps](https://azure.microsoft.com/services/devops/)的机器学习扩展来持续部署模型。 如果在 Azure 机器学习工作区中注册了新的机器学习模型，则可以使用 Azure DevOps 的机器学习扩展来触发部署管道。
 
 1. 注册[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)，这会使应用程序持续集成和交付到任何平台或云。 （请注意，Azure Pipelines 与[机器学习管道](concept-ml-pipelines.md#compare)不同。）
 
@@ -784,7 +784,7 @@ Azure 机器学习计算目标由 Azure 机器学习服务创建和管理。 它
 
 1. 安装[Azure Pipelines 的机器学习扩展](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList)。
 
-1. 使用服务连接设置与 Azure 机器学习服务工作区的服务主体连接，以便你可以访问你的项目。 单击 "项目设置"，选择 "**服务连接**"，然后选择 " **Azure 资源管理器**：
+1. 使用服务连接设置与 Azure 机器学习工作区的服务主体连接，以便你可以访问你的项目。 单击 "项目设置"，选择 "**服务连接**"，然后选择 " **Azure 资源管理器**：
 
     [![选择 Azure 资源管理器](media/how-to-deploy-and-where/view-service-connection.png)](media/how-to-deploy-and-where/view-service-connection-expanded.png)
 

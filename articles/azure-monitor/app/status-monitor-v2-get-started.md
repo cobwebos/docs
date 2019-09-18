@@ -3,7 +3,7 @@ title: Azure 状态监视器 v2-入门 |Microsoft Docs
 description: 状态监视器 v2 的快速入门指南。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: a0c836c8ef947e190a0090b3435eec1c53ded436
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d9c354edac3cbd3faccaa261654e56f858befdf6
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326261"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058234"
 ---
 # <a name="get-started-with-status-monitor-v2"></a>状态监视器 v2 入门
 
@@ -31,7 +31,7 @@ ms.locfileid: "68326261"
 
 ## <a name="download-and-install-via-powershell-gallery"></a>通过 PowerShell 库下载并安装
 
-### <a name="install-prerequisites"></a>安装必备组件
+### <a name="install-prerequisites"></a>安装先决条件
 以管理员身份运行 PowerShell。
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
@@ -91,5 +91,5 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
 使用状态监视器 v2 执行更多操作：
 
-- 查看[详细说明, 详细](status-monitor-v2-detailed-instructions.md)了解此处提供的命令。
+- 有关此处找到的命令的说明，请查看[详细说明](status-monitor-v2-detailed-instructions.md)。
 - 使用我们的指南可[排查状态监视器 v2 问题](status-monitor-v2-troubleshoot.md)。

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 959d959cd269884b3b75c4c23bfd0054ae64ced7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812832"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033632"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>规划 Azure AD 应用程序代理部署
 
@@ -64,7 +64,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 *  **Azure 载入**：在部署应用程序代理之前，必须从本地目录同步用户标识，或直接在 Azure AD 租户中创建用户标识。 标识同步允许 Azure AD 在授予用户对应用代理发布的应用程序的访问权限之前对用户进行预身份验证，并获得执行单一登录 (SSO) 所需的用户标识符信息。
 
-* **条件性访问要求**：我们不建议使用应用程序代理进行 intranet 访问，因为这会增加影响用户的延迟。 建议将应用程序代理与预身份验证和条件访问策略一起使用，以便从 internet 进行远程访问。  提供 intranet 使用条件性访问的方法是实现应用程序的现代化，使其能够 diretly 使用 AAD 进行身份验证。 有关详细信息，请参阅将[应用程序迁移到 AAD 的资源](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)。 
+* **条件性访问要求**：我们不建议使用应用程序代理进行 intranet 访问，因为这会增加影响用户的延迟。 建议将应用程序代理与预身份验证和条件访问策略一起使用，以便从 internet 进行远程访问。  提供 intranet 使用条件性访问的方法是实现应用程序的现代化，使其能够直接使用 AAD 进行身份验证。 有关详细信息，请参阅将[应用程序迁移到 AAD 的资源](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)。 
 
 * **服务限制**：若要防止单个租户过度资源，有每个应用程序和租户设置的限制限制。 若要查看这些限制，请参阅[Azure AD 服务限制和限制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。 这些限制基于比典型的使用量更高的基准，并为大多数部署提供充足的缓冲区。
 
@@ -239,7 +239,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 3. 在 "**预身份验证**" 字段中，使用下拉列表选择 " **Azure Active Directory**"，然后选择 "**保存**"。
 
-启用预身份验证后，Azure AD 将首先质询用户进行身份验证，如果单一登录 configued，则后端应用程序也会在授予对应用程序的访问权限之前验证用户。 将预身份验证模式从 Passthrough 改为 Azure AD 还会通过 HTTPS 配置外部 URL，因此，最初为 HTTP 配置的所有应用程序现在都将通过 HTTPS 进行保护。
+启用预身份验证后，Azure AD 将首先质询用户进行身份验证，如果配置了单一登录，则后端应用程序也会在授予对应用程序的访问权限之前验证用户。 将预身份验证模式从 Passthrough 改为 Azure AD 还会通过 HTTPS 配置外部 URL，因此，最初为 HTTP 配置的所有应用程序现在都将通过 HTTPS 进行保护。
 
 ### <a name="enable-single-sign-on"></a>启用单一登录
 
@@ -292,11 +292,11 @@ Microsoft 在为 Azure AD 提供执行所需任务的最低权限的原则。 [�
 
 ### <a name="reporting-and-monitoring"></a>报告和监视
 
-Azure AD 通过[审核日志和报告，](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs)更深入地了解组织的应用程序使用情况和操作运行状况。 应用程序代理还可以轻松地从 Azure AD 门户和 Windows 事件日志监视连接器。
+Azure AD 通过[审核日志和报告，](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)更深入地了解组织的应用程序使用情况和操作运行状况。 应用程序代理还可以轻松地从 Azure AD 门户和 Windows 事件日志监视连接器。
 
 #### <a name="application-audit-logs"></a>应用程序审核日志
 
-这些日志提供有关通过应用程序代理和设备以及访问应用程序的用户的应用程序登录的详细信息。 [审核日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs)位于 "Azure 门户" 和 "[审核 API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) " 中的 "导出"。 此外，应用程序还可以[使用 "使用情况" 和 "见解报表](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report)"。
+这些日志提供有关通过应用程序代理和设备以及访问应用程序的用户的应用程序登录的详细信息。 [审核日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)位于 "Azure 门户" 和 "[审核 API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) " 中的 "导出"。 此外，应用程序还可以[使用 "使用情况" 和 "见解报表](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context)"。
 
 #### <a name="application-proxy-connector-monitoring"></a>应用程序代理连接器监视
 

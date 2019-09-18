@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a14c648e55c25c6244f1ba09d5b73bf31e5f7337
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b872fcfbc2ead2cebdd32ff718b582c13af314e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509311"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065581"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用多重身份验证
 
-Azure Active Directory (Azure AD) B2C 直接集成了 [Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md)，因此你可以为应用程序中的注册和登录体验添加第二层安全性。 无需编写一行代码便可启用多重身份验证。 如果已经创建了注册和登录用户流，则仍然可以启用多重身份验证。
+Azure Active Directory B2C （Azure AD B2C）直接与[Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md)集成，以便你可以在应用程序中添加另一个安全层来注册和登录体验。 无需编写一行代码便可启用多重身份验证。 如果已经创建了注册和登录用户流，则仍然可以启用多重身份验证。
 
 此功能有助于应用程序处理以下方案：
 
@@ -32,20 +32,20 @@ Azure Active Directory (Azure AD) B2C 直接集成了 [Azure 多重身份验证]
 
 ![设置多重身份验证](./media/active-directory-b2c-reference-mfa/add-policy.png)
 
-将“多重身份验证”  设置为“启用”  。
+将“多重身份验证”设置为“启用”。
 
-可以使用“运行用户流”  来验证体验。 确认以下场景：
+可以使用“运行用户流”来验证体验。 确认以下场景：
 
 在多重身份验证步骤发生之前，在租户中创建了一个客户帐户。 在执行此步骤期间，会要求客户提供一个电话号码并对其进行验证。 如果验证成功，则会将电话号码附加到帐户供以后使用。 即使客户取消或退出登录，也可能会要求客户在下次登录时再次验证电话号码（启用了多重身份验证时）。
 
 ## <a name="add-multi-factor-authentication"></a>添加多重身份验证
 
-可以在之前创建的用户流上启用多重身份验证。 
+可以在之前创建的用户流上启用多重身份验证。
 
 若要启用多重身份验证，请执行以下操作：
 
-1. 打开用户流，然后选择“属性”  。 
-2. 在“多重身份验证”  旁边，选择“启用”  。
-3. 单击页顶部的“保存”。 
+1. 打开用户流，然后选择“属性”。
+2. 在“多重身份验证”旁边，选择“启用”。
+3. 单击页顶部的“保存”。
 
 

@@ -3,7 +3,7 @@ title: Azure 状态监视器 v2 API 参考：获取状态 |Microsoft Docs
 description: 状态监视器 v2 API 参考。 Get-ApplicationInsightsMonitoringStatus. 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,21 +12,21 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 50703ede205b42032e9618c1b16b0de2bd7f3a23
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c3982e7eb78c1113c73a8e7e9d7b00ad403ac486
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424140"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058262"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>状态监视器 v2 API：ApplicationInsightsMonitoringStatus
+# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>状态监视器 v2 API：Get-ApplicationInsightsMonitoringStatus
 
 本文介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
 
 ## <a name="description"></a>描述
 
-此 cmdlet 提供有关状态监视器的疑难解答信息。
-使用此 cmdlet 调查 PowerShell 模块的监视状态、版本, 并检查正在运行的进程。
+此 cmdlet 提供有关状态监视器的故障排除信息。
+使用此 cmdlet 调查监视状态、PowerShell 模块的版本，以及检查正在运行的进程。
 此 cmdlet 将报告监视所需的版本信息和密钥文件相关信息。
 
 > [!IMPORTANT] 
@@ -36,7 +36,7 @@ ms.locfileid: "68424140"
 
 ### <a name="example-application-status"></a>例如：应用程序状态
 
-运行命令`Get-ApplicationInsightsMonitoringStatus`以显示网站的监视状态。
+运行 `Get-ApplicationInsightsMonitoringStatus` 命令来显示网站的监视状态。
 
 ```
 PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
@@ -72,17 +72,17 @@ ProcessId              : 5184
 AppAlreadyInstrumented : true
 ```
 
-在此示例中为;
-- **计算机标识符**是用于唯一标识服务器的匿名 ID。 如果创建支持请求, 我们将需要此 ID 来查找服务器的日志。
-- IIS 中的**默认网站**已停止
-- 已在 IIS 中启动**DemoWebApp111** , 但未收到任何请求。 此报告显示没有正在运行的进程 (ProcessId: 未找到)。
-- **DemoWebApp222**正在运行并且正在监视 (检测到: true)。 基于用户配置, 检测密钥的 xxxxxxxxx123 是此站点的匹配项。
-- 已使用 Application Insights SDK 手动检测了**DemoWebApp333** 。 状态监视器检测到 SDK, 不会监视此站点。
+在此示例中，
+- **计算机标识符**是一个匿名 ID，用于唯一标识服务器。 如果你创建支持请求，我们需要该 ID 来查找你的服务器的日志。
+- “默认网站”在 IIS 中处于“已停止”状态
+- **DemoWebApp111** 已在 IIS 中启动，但尚未收到任何请求。 此报告显示没有正在运行的进程（ProcessId：找不到）。
+- **DemoWebApp222** 正在运行且正受监视（已检测：是）。 根据用户配置，此站点的检测密钥 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 匹配。
+- **DemoWebApp333** 已使用 Application Insights SDK 进行手动检测。 状态监视器检测到 SDK，不会监视此站点。
 
 
 ### <a name="example-powershell-module-information"></a>例如：PowerShell 模块信息
 
-运行命令`Get-ApplicationInsightsMonitoringStatus -PowerShellModule`以显示当前模块的相关信息:
+运行 `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` 命令可显示有关当前模块的信息：
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
@@ -176,13 +176,13 @@ listdlls64.exe -accepteula w3wp
 
 ### <a name="no-parameters"></a>（不带参数）
 
-默认情况下, 此 cmdlet 将报告 web 应用程序的监视状态。
-使用此选项可查看是否已成功检测你的应用程序。
-还可以查看与站点匹配的检测密钥。
+默认情况下，此 cmdlet 会报告 Web 应用程序的监视状态。
+使用此选项来查看是否已成功检测应用程序。
+也可查看哪个检测密钥已与站点匹配。
 
 
 ### <a name="-powershellmodule"></a>-PowerShellModule
-可选。 使用此开关报告监视所需的 Dll 的版本号和路径。
+可选。 使用此开关报告监视所需的 DLL 的版本号和路径。
 如果需要标识任何 DLL 的版本（包括 Application Insights SDK），请使用此选项。
 
 ### <a name="-inspectprocess"></a>-InspectProcess

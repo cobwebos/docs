@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2019
+ms.date: 09/16/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cf3eead3a56297efa3bea90ef48eb464ad63da0
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898517"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033752"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>如何：在 Azure Active Directory 应用程序库中列出你的应用程序
 
@@ -48,12 +48,7 @@ ms.locfileid: "70898517"
 
 - 对于密码 SSO，请确保你的应用程序支持窗体身份验证，以便可以进行密码保管，从而让单一登录按预期工作。
 
-- 对于自动用户预配请求，应在库中列出应用程序，并使用 SAML 2.0/WS-Fed 启用单一登录功能。 如果尚未列出，可以在门户上一起请求 SSO 和用户预配。
-
 - 需要一个永久帐户来测试，其中至少注册了2个用户。
-
-> [!NOTE]
-> 我们正在使用大量的 SCIM 连接器请求, 因此我们已停止在我们的门户上发出新请求。 在进一步通知之前, 请保留你的请求。 对于这种延迟，我们深表歉意，这可能导致的任何不便。
 
 ## <a name="submit-the-request-in-the-portal"></a>在门户中提交请求
 

@@ -4,14 +4,14 @@ description: 如何将客户端连接到 Azure HPC 缓存服务
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0ccd256ed399fff7c364883ada45d2d15c75a120
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 46f221fd7c340b7f321d317f0e7493448d83177c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775346"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036952"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>装载 Azure HPC 缓存
 
@@ -19,13 +19,13 @@ ms.locfileid: "70775346"
 
 使用在 "缓存概述" 页上列出的装入地址和创建存储目标时设置的虚拟命名空间路径。 
 
-![Azure HPC 缓存实例的 "概述" 页的屏幕截图，右下方的 "装入地址" 列表周围有一个突出显示框](media/mount-addresses.png)
+![Azure HPC 缓存实例的 "概述" 页的屏幕截图，右下方的 "装入地址" 列表周围有一个突出显示框](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
 > 缓存装入地址对应于缓存的子网中的网络接口。 这些 nic 出现在名称以结尾`-cluster-nic-`的资源组中。 请勿更改或删除这些接口，否则缓存将不可用。
 
-虚拟命名空间路径显示在 "**存储目标**" 页中。 
-![缓存的 "存储目标" 面板的屏幕截图，表的 "路径" 列中的条目周围有一个突出显示框](media/storage-target-path.png)
+虚拟命名空间路径显示在 "**存储目标**" 页中。 单击目标名称可查看详细信息，包括关联的聚合命名空间路径（或路径）。 
+![缓存的 "存储目标" 面板的屏幕截图，表的 "路径" 列中的条目周围有一个突出显示框](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="mount-command-syntax"></a>装载命令语法
 

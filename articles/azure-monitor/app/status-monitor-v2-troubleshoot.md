@@ -3,7 +3,7 @@ title: Azure 状态监视器 v2 疑难解答和已知问题 |Microsoft Docs
 description: 状态监视器 v2 的已知问题和故障排除示例。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e34beba32eace370664893225dd85b6f4b79c886
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c3e9bffaf3b533ef8fbe3e32c1dca671fb67c911
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424104"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058298"
 ---
 # <a name="troubleshooting-status-monitor-v2"></a>对状态监视器 v2 进行故障排除
 
@@ -78,13 +78,13 @@ HttpModule 无法注入到此共享配置中。
 
 ### <a name="iis-nested-applications"></a>IIS 嵌套应用程序
 
-我们不会在1.0 版的 IIS 中检测嵌套的应用程序。
-我们将在[此处](https://github.com/microsoft/ApplicationInsights-Home/issues/369)跟踪此问题。
+在 1.0 版中，我们不在 IIS 中检测嵌套应用程序。
+我们正在[此处](https://github.com/microsoft/ApplicationInsights-Home/issues/369)跟踪此问题。
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>高级 SDK 配置不可用。
 
-SDK 配置未向最终用户公开, 版本为1.0。
-我们将在[此处](https://github.com/microsoft/ApplicationInsights-Home/issues/375)跟踪此问题。
+在 1.0 版中，SDK 配置不向最终用户公开。
+我们正在[此处](https://github.com/microsoft/ApplicationInsights-Home/issues/375)跟踪此问题。
 
     
     

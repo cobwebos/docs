@@ -4,7 +4,7 @@ description: 了解 Azure 中的访问控制列表
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: 83d66c84-8f6b-4388-8767-cd2de3e72d76
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 3a7155380a51273d376226c6be7a004f386181ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38655a9da103d1d669f87c6195be7f17702f9348
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035239"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056678"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>什么是终结点访问控制列表？
 
 > [!IMPORTANT]
-> Azure 提供两个不同[部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)用于创建和处理资源：资源管理器部署模型和经典部署模型。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。 
+> Azure 具有用于创建和处理资源的两个不同的[部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)：资源管理器部署模型和经典部署模型。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。 
 
 终结点访问控制列表 (ACL) 是可用于 Azure 部署的安全增强。 利用 ACL，你可以选择允许还是拒绝虚拟机终结点的流量。 此数据包筛选功能额外提供了一层安全性。 只能为终结点指定网络 ACL， 无法为虚拟网络或虚拟网络中包含的特定子网指定 ACL。 建议尽可能使用网络安全组 (NSG)，而不要使用 ACL。 使用 NSG 时，终结点访问控制列表将被替换并不再强制执行。 若要了解有关 NSG 的详细信息，请参阅[网络安全组概述](security-overview.md)
 

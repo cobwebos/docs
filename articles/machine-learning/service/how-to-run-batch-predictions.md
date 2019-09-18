@@ -1,7 +1,7 @@
 ---
 title: 对包含管道的大型数据运行批预测
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务对大量数据进行异步批量预测。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习在大量数据上异步生成批处理预测。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: b0d8eef025efb6398f1d7c734ca558540b157fef
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128255"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034282"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>对包含 Azure 机器学习管道的大型数据集运行批处理预测
 
-本文介绍如何使用 Azure 机器学习 service 通过 ML 管道对大量数据进行异步预测。
+本文介绍如何使用 Azure 机器学习的 ML 管道异步对大量数据进行预测。
 
 批量预测（或批量评分）可以针对异步应用程序空前未有的吞吐量进行经济有效的推理。 批量预测管道可以进行缩放，以便在数 TB 生产数据的基础上进行推理。 批量预测针对高吞吐量的即发即弃预测进行优化，适用于大量的数据。
 
@@ -30,7 +30,7 @@ ms.locfileid: "70128255"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+- 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
 - 配置安装 Azure 机器学习 SDK 所需的开发环境。 有关详细信息，请参阅[配置 Azure 机器学习的开发环境](how-to-configure-environment.md)。
 
@@ -114,7 +114,7 @@ output_dir = PipelineData(name="scores",
 
 ### <a name="set-up-compute-target"></a>设置计算目标
 
-在 Azure 机器学习中，*计算*（或*计算目标*）是指在机器学习管道中执行计算步骤的计算机或群集。 例如, 可以使用[AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py)类创建计算 Azure 机器学习。
+在 Azure 机器学习中，*计算*（或*计算目标*）是指在机器学习管道中执行计算步骤的计算机或群集。 例如，可以使用[AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py)类创建计算 Azure 机器学习。
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -358,4 +358,4 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看此端到端工作, 请在[GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)中尝试使用 batch 计分笔记本, 或访问[Azure 体系结构中心](/azure/architecture/reference-architectures/ai/batch-scoring-python)来查看示例解决方案体系结构。
+若要查看此端到端工作，请在[GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)中尝试使用 batch 计分笔记本，或访问[Azure 体系结构中心](/azure/architecture/reference-architectures/ai/batch-scoring-python)来查看示例解决方案体系结构。

@@ -4,7 +4,7 @@ description: 排查 Azure 资源管理器部署模型中的 Linux 虚拟机部�
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6aed61f13da8f6a29c1c3fa619af58cb720ea8e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 230319471dbf62bf64ee980d84c360807687ce17
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089953"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058233"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>排查 Azure 中的 Linux 虚拟机部署问题
 
@@ -84,7 +84,7 @@ ms.locfileid: "70089953"
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>能否将现有经典 VM 添加到可用性集？
 
-是的。 可以将现有经典 VM 添加到新的或现有的可用性集。 有关详细信息，请参阅[将现有虚拟机添加到可用性集](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)。
+是。 可以将现有经典 VM 添加到新的或现有的可用性集。 有关详细信息，请参阅[将现有虚拟机添加到可用性集](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)。
 
 
 ## <a name="next-steps"></a>后续步骤

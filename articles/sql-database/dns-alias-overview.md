@@ -7,16 +7,16 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
-ms.reviewer: genemi, ayolubek, jrasnick
+author: rohitnayakmsft
+ms.author: rohitna
+ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 3d0a4b5890ed5758f4045459815fb4ebbffe75c6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5d37b41fa7b51871f9ce1b21c62de1f9ab7f3b82
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550657"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058566"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL 数据库的 DNS 别名
 
@@ -29,7 +29,7 @@ DNS 别名的常见用途包括：
 - 为 Azure SQL Server 创建易记的名称。
 - 在初始开发期间，别名可以指向测试 SQL 数据库服务器。 应用程序上线后，你可以修改别名以引用生产服务器。 从测试到生产的转换不需要对连接到数据库服务器的多个客户端的配置进行任何修改。
 - 假设只将应用程序中的唯一数据库移到了另一个 SQL 数据库服务器。 此时，可以修改别名，而无需修改多个客户端的配置。
-- 地区性中断期间, 使用异地还原在不同的服务器和区域中恢复数据库。 您可以修改您的现有别名, 使其指向新服务器, 以便现有的客户端应用程序可以重新连接到该服务器。 
+- 在区域服务中断期间，你可以使用异地还原在不同的服务器和区域中恢复数据库。 你可以修改现有别名以指向新服务器，以便现有客户端应用程序可以重新连接到它。 
 
 ## <a name="domain-name-system-dns-of-the-internet"></a>Internet 的域名系统 (DNS)
 
@@ -49,7 +49,7 @@ Azure SQL 数据库的 DNS 别名功能有助于实现以下方案：
 
 ### <a name="cross-region-support"></a>跨区域支持
 
-灾难恢复可将 SQL 数据库服务器转移到不同的地理区域。 对于使用 DNS 别名的系统, 可以避免查找并更新所有客户端的所有连接字符串的需要。 可将别名更新为指向现在正在托管数据库的新 SQL 数据库服务器。
+灾难恢复可将 SQL 数据库服务器转移到不同的地理区域。 对于使用 DNS 别名的系统，不需要查找并更新所有客户端的所有连接字符串。 可将别名更新为指向现在正在托管数据库的新 SQL 数据库服务器。
 
 ## <a name="properties-of-a-dns-alias"></a>DNS 别名的属性
 
@@ -104,7 +104,7 @@ Azure SQL 数据库的 DNS 别名功能有助于实现以下方案：
 - 延迟最长为 2 分钟：最长需要 2 分钟才能更新或删除 DNS 别名。
   - 不管延迟时间有多短，别名都会使客户端连接立即停止引用旧服务器。
 - DNS 查找：目前，检查给定 DNS 别名引用哪台服务器的唯一权威方法是执行 [DNS 查找](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup)。
-- _不支持表审核:_ 在已对数据库上启用表审核的 Azure SQL 数据库服务器上，无法使用 DNS 别名。
+- _不支持表审核：_ 在已对数据库上启用表审核的 Azure SQL 数据库服务器上，无法使用 DNS 别名。
   - 表审核已弃用。
   - 我们建议改用 [Blob 审核](sql-database-auditing.md)。
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 896e1fb3e93fc0a542f0dca75cc1d87b3a2c237c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306191"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057899"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -173,7 +173,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
 |sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
 |host| 向后端服务器发送请求时所用的主机名。 如果即将覆盖后端主机名，则此名称将反映该主机名。|
-|originalHost| 应用程序网关从客户端收到请求时使用的主机名。|
+|originalHost| 应用程序网关从客户端接收请求时所用的主机名。|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -219,7 +219,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |sslProtocol| 使用的 SSL 协议（如果已启用 SSL）。|
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
 |serverStatus| 后端服务器的 HTTP 状态代码。|
-|serverResponseLatency| 后端服务器响应的延迟。|
+|serverResponseLatency| 后端服务器的响应延迟。|
 |host| 请求的主机标头中列出的地址。|
 ```json
 {
@@ -309,6 +309,8 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |details.data     | 在请求中找到的匹配规则的特定数据。         |
 |details.file     | 包含此规则的配置文件。        |
 |details.line     | 配置文件中触发事件的行号。       |
+|主机名   | 应用程序网关的主机名或 IP 地址。    |
+|transactionId  | 给定事务的唯一 ID，有助于对同一请求中发生的多个规则冲突进行分组。   |
 
 ```json
 {
@@ -333,6 +335,8 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
       "file": "rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf",
       "line": "865"
     }
+    "hostname": "40.90.218.100", 
+    "transactionId": "AYAcUqAcAcAcAcAcASAcAcAc"
   }
 } 
 

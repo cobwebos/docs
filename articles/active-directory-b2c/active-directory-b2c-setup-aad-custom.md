@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c8efc4b7bbee6b3209160b570e3e70bfccfc72e
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 527c7120ad2d890c8abf32d29827ed7454b0ebfd
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964508"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065306"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>使用自定义策略在 Azure Active Directory B2C 中设置 Azure Active Directory 帐户登录
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介绍如何在 Azure Active Directory (Azure AD) B2C 中通过使用[自定义策略](active-directory-b2c-overview-custom.md)让用户从 Azure Active Directory (Azure AD) 组织登录。
+本文介绍如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](active-directory-b2c-overview-custom.md)，从 Azure Active Directory （Azure AD）组织中启用用户登录。
 
 ## <a name="prerequisites"></a>先决条件
 

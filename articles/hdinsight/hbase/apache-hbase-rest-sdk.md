@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: f833d045f297679ae3629f8e0afe20b3ca834821
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: d998ff44804a2dcd2b3282679a9cb53f893991e3
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885562"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077169"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>使用 .NET SDK for Apache HBase
 
@@ -114,7 +114,7 @@ await client.StoreCellsAsync("RestSDKTable", set);
 
 HBase 可实现 [Cloud BigTable](https://cloud.google.com/bigtable/)，因此数据格式如下所示：
 
-![具有“群集用户”角色的用户](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
+![Apache HBase 示例数据输出](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
 ## <a name="select-data"></a>选择数据
 

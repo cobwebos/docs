@@ -10,32 +10,32 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dfc1ef732c8456356de82f7fe026476fdfc075b
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 92ac1e6a85023d49ceb8242b93651a60da3d2166
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227131"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064186"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-可以向 Azure Active Directory (Azure AD) B2C 应用程序添加自己的 JavaScript 客户端代码。 若要为应用程序启用 JavaScript, 则必须将元素添加到[自定义策略](active-directory-b2c-overview-custom.md), 选择[页面布局](page-layout.md), 并在请求中使用[b2clogin.com](b2clogin.md) 。 本文介绍如何更改自定义策略以启用脚本执行。
+您可以将自己的 JavaScript 客户端代码添加到您的 Azure Active Directory B2C （Azure AD B2C）应用程序中。 若要为应用程序启用 JavaScript, 则必须将元素添加到[自定义策略](active-directory-b2c-overview-custom.md), 选择[页面布局](page-layout.md), 并在请求中使用[b2clogin.com](b2clogin.md) 。 本文介绍如何更改自定义策略以启用脚本执行。
 
 > [!NOTE]
-> 如果要为用户流启用 JavaScript, 请参阅[Azure Active Directory B2C 中的 javascript 和页面布局版本](user-flow-javascript-overview.md)。
+> 如果要为用户流启用 JavaScript，请参阅 [Azure Active Directory B2C 中的 JavaScript 和页面布局版本](user-flow-javascript-overview.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-为应用程序的用户界面元素选择页面布局。 如果打算使用 JavaScript, 则需要为自定义策略中的所有内容定义定义页面布局版本。
+为应用程序的用户界面元素选择页面布局。 如果打算使用 Javascript，需要为自定义策略中的所有内容定义定义一个页面布局版本。
 
 ## <a name="add-the-scriptexecution-element"></a>添加 ScriptExecution 元素
 
-通过向 [RelyingParty](relyingparty.md)元素添加 ScriptExecution 元素来启用脚本执行  。
+通过向 [RelyingParty](relyingparty.md)元素添加 ScriptExecution 元素来启用脚本执行。
 
-1. 打开自定义策略文件。 例如，SignUpOrSignin.xml  。
-2. 向 RelyingParty 的 UserJourneyBehaviors 元素添加 ScriptExecution 元素    ：
+1. 打开自定义策略文件。 例如，SignUpOrSignin.xml。
+2. 向 RelyingParty 的 UserJourneyBehaviors 元素添加 ScriptExecution 元素：
 
     ```XML
     <RelyingParty>
@@ -72,7 +72,7 @@ ms.locfileid: "68227131"
 
 ### <a name="show-or-hide-a-password"></a>显示或隐藏密码
 
-帮助客户成功注册的一种常见的方式是：允许他们查看他们作为密码输入的内容。 该选项使用户能够根据需要轻松查看和更正密码，从而帮助用户登录。 任何密码类型的字段都有一个带有“显示密码”标签的复选框  。  这使用户能够看到纯文本形式的密码。 使自断言页面的注册或登录模板中包括以下代码片段：
+帮助客户成功注册的一种常见的方式是：允许他们查看他们作为密码输入的内容。 该选项使用户能够根据需要轻松查看和更正密码，从而帮助用户登录。 任何密码类型的字段都有一个带有“显示密码”标签的复选框。  这使用户能够看到纯文本形式的密码。 使自断言页面的注册或登录模板中包括以下代码片段：
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -118,7 +118,7 @@ setupPwdTogglers();
 
 ### <a name="add-terms-of-use"></a>添加使用条款
 
-使需要包含“使用条款”复选框的页面中含有以下代码  。 本地帐户注册和社交帐户注册页面中通常需要该复选框。
+使需要包含“使用条款”复选框的页面中含有以下代码。 本地帐户注册和社交帐户注册页面中通常需要该复选框。
 
 ```Javascript
 function addTermsOfUseLink() {

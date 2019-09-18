@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a3ded11ac6a68e82fba76e7551699f29f3cb6075
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 335b6c1a12f3786d7c0f1083f5b052aaac4beccb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998417"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065777"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-自定义策略是定义 Azure Active Directory (Azure AD) B2C 租户行为的配置文件。 用户流在 Azure AD B2C 门户中预定义，用于最常见的标识任务。 标识开发人员可以完全编辑自定义策略来完成许多不同的任务。
+自定义策略是定义 Azure Active Directory B2C （Azure AD B2C）租户行为的配置文件。 用户流在 Azure AD B2C 门户中预定义，用于最常见的标识任务。 标识开发人员可以完全编辑自定义策略来完成许多不同的任务。
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>比较用户流和自定义策略
 

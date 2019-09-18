@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 0d0329be0b7f864edbfc3c2aabc08f1742359670
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376099"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066775"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>用于 Hyper-V 评估和迁移的支持矩阵
 
@@ -27,9 +27,9 @@ ms.locfileid: "70376099"
 **部署** | **详细***
 --- | ---
 **评估本地 Hyper-v Vm** | [设置](tutorial-prepare-hyper-v.md)第一次评估。<br/><br/> [运行](scale-hyper-v-assessment.md)大规模评估。
-**将 Hyper-V VM 迁移到 Azure** | [尝试](tutorial-migrate-hyper-v.md)迁移到 Azure。 
+**将 Hyper-V VM 迁移到 Azure** | [尝试](tutorial-migrate-hyper-v.md)迁移到 Azure。
 
-Azure Migrate 服务器迁移不支持迁移使用 System Center Virtual Machine Manager （VMM）管理的 Hyper-v 服务器。 
+Azure Migrate 服务器迁移不支持迁移使用 System Center Virtual Machine Manager （VMM）管理的 Hyper-v 服务器。
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate 项目
 
@@ -44,10 +44,13 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅�
   Azure 政府 | US Gov 弗吉尼亚州
   亚太区 | 东亚或东南亚
   澳大利亚 | 澳大利亚东部或澳大利亚东南部
+  巴西 | 巴西南部
   加拿大 | 加拿大中部或加拿大东部
   欧洲 | 欧洲北部或欧洲西部
+  法国 | 法国中部
   印度 | 印度中部或印度南部
   日本 |  日本东部或日本西部
+  韩国 | 韩国中部或韩国南部
   英国 | 英国南部或英国西部
   美国 | 美国中部或美国西部2
 
@@ -87,7 +90,7 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。 Azure 订阅�
 | **Hyper-V 主机**          | 一个设备最多可以连接到300个 Hyper-v 主机。
 | **发现**              | 单个设备最多可以发现 5000 Vm。
 | **评估组**       | 最多可以在一个组中添加35000台计算机。
-| **评估**             | 在单个评估中，最多可以评估 35000 Vm。
+| **评估**             | 在单个评估中, 最多可以评估 35000 Vm。
 
 
 

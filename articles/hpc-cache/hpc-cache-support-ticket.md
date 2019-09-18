@@ -4,42 +4,27 @@ description: 如何打开 Azure HPC 缓存帮助请求
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: a252243ae84516fe06a89ef1119c4b4ce58dbeef
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d845195940fdba81562acf4c0cfe9069245bd34c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775619"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036891"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache"></a>为 Azure HPC 缓存打开支持票证
 
 使用 Azure 门户打开支持票证。 导航到你的缓存实例，然后单击显示在侧栏底部的 "**新建支持请求**" 链接。
 
-> [!NOTE]
-> 在预览期间，你还可以使用[此链接](<https://support.microsoft.com/supportforbusiness/productselection?sapId=6b415938-2927-0d9d-6c3c-fbacea64e42d>)打开产品 Azure HPC 缓存（预览版）的支持案例。
+若要在没有活动缓存时打开票证，请使用 Azure 门户中的主**帮助 + 支持**页。 选择 "**新建支持请求**"，然后选择 "**技术**" 以获取特定于 Azure HPC 缓存的帮助。
 
-<!-- add screenshot of form with thing to select product etc. -->
+从列表中选择你的订阅。
 
-<!-- 
-[ xxx update procedure - this is copied from Azure FXT Edge Filer but Azure HPC Cache has context, you don't need to fill in everything xxx ]
+若要查找 Azure HPC 缓存预览服务，请单击 "**所有服务**" 按钮，然后搜索 HPC。
 
-1. Open the [Azure portal](https://portal.azure.com/) and sign in.
-1. In the left panel, scroll to the bottom and click **Help + support**.
-1. Click **New support request**. 
+!["支持请求-基本" 选项卡的屏幕截图，部分填写，如所述](media/hpc-cache-support-request.png)
 
-   ![Screenshot of blank support request form](media/fxt-support-blank.png)
+填写你的信息和首选项的其余字段，然后在准备就绪时提交票证。
 
-1. Fill out the request form.  
-    1. In the **Basics** tab, choose the **Issue type** ``Technical``. 
-    1. Select your subscription. 
-    1. Under **Service**, select **Azure FXT Edge Filer**. You might need to click the **All services** filter control to find it. 
-    1. Enter a **Summary** and choose the **Problem type**. 
-    ![Screenshot of blank support request form](media/fxt-support-populated.png) 
-    1. Click **Next** to continue. 
-1. In the **Details** tab, add more information about the problem and how to contact you. You can upload a file related to the problem. 
-1. In **Review + create**, check the information and click the **Create** button to submit your request.
-
-After you submit the request, you will receive a confirmation email with a ticket number. A support staff member will contact you about the request.
--->
+提交请求后，将收到一封包含票证号的确认电子邮件。 支持人员成员将与你联系你的请求。

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: c81eccaa2b3a4335f034b9667f6e7be317635f43
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 094ae511337556ef0c67c86f6d8692cae005430a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933391"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033964"
 ---
 # <a name="http-api-reference"></a>HTTP API 引用
 
@@ -28,7 +28,7 @@ Durable Functions 扩展公开了一组内置 HTTP Api，可用于在[业务流�
 | **`connection`** | 查询字符串    | 用于存储帐户的连接字符串的名称。 如果未指定，则使用函数应用的默认连接字符串。 |
 | **`systemKey`**  | 查询字符串    | 需要授权密钥才可调用 API。 |
 
-`systemKey`是 Azure Functions 主机自动生成的授权密钥。 它可专门向 Durable Task 扩展 API 授予访问权限，且可通过与管理[其他授权密钥](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)相同的方式进行管理。 发现 `systemKey` 值的最简单的方法是使用上文提及的 `CreateCheckStatusResponse` API。
+`systemKey`是 Azure Functions 主机自动生成的授权密钥。 它可专门向 Durable Task 扩展 API 授予访问权限，且可通过与管理[其他授权密钥](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)相同的方式进行管理。 您可以使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)api （如`systemKey` .net 中的`CreateCheckStatusResponse`和`CreateHttpManagementPayload` api）或`createCheckStatusResponse`和来生成包含正确`taskHub`的、 `connection`和查询字符串值的 url。`createHttpManagementPayload` JavaScript 中的 api。
 
 后面几节介绍扩展支持的特殊 HTTP API，并提供有关其用法的示例。
 

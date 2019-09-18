@@ -3,21 +3,21 @@ title: Azure 状态监视器 v2 概述 |Microsoft Docs
 description: 状态监视器 v2 的概述。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 0264cf3a972c35edb3ad6dc600ca39bdaa076dfd
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333684"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057834"
 ---
 # <a name="status-monitor-v2"></a>状态监视器 v2
 
@@ -28,7 +28,7 @@ ms.locfileid: "68333684"
 
 ## <a name="powershell-gallery"></a>PowerShell 库
 
-状态监视器 v2 位于以下位置: https://www.powershellgallery.com/packages/Az.ApplicationMonitor 。
+状态监视器 v2 位于此处： https://www.powershellgallery.com/packages/Az.ApplicationMonitor 。
 
 ![PowerShell 库](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -45,7 +45,7 @@ ms.locfileid: "68333684"
 - [Get-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-get-config.md)
 - [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md)
 - [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
-- [ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
+- [Start-ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
 
 ## <a name="troubleshooting"></a>疑难解答
 - [故障排除](status-monitor-v2-troubleshoot.md)
@@ -59,10 +59,18 @@ ms.locfileid: "68333684"
   *是*。 可以通过多种方式下载状态监视器 v2。 如果计算机可以访问 Internet，则可以使用 `-Proxy` 参数登录到 PowerShell 库。
 还可以手动下载此模块，并将其安装到计算机上或直接使用它。
 上述每个选项都在[详细说明](status-monitor-v2-detailed-instructions.md)中进行了说明。
+
+- 状态监视器 v2 支持 ASP.NET Core 应用程序吗？
+
+  *否*。 有关启用对 ASP.NET Core 应用程序的监视的说明，请参阅[ASP.NET Core 应用程序的 Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。 无需为 ASP.NET Core 的应用程序安装 StatusMonitor。 即使在 IIS 中承载 ASP.NET Core 应用程序，也是如此。
   
+状态监视器 v2 支持 ASP.NET Core 应用程序吗？ 
+
+  *否*。 请按照[以下](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)说明启用对 ASP.NET Core 应用程序的监视。 不需要为 ASP.NET Core 的应用程序安装 StatusMonitor。 即使在 IIS 中承载 ASP.NET Core 应用程序，也是如此。
+
 - 如何验证启用是否成功？
 
-  - [ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) cmdlet 可用于验证启用是否成功。
+  - [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) cmdlet 可用于验证启用是否成功。
   - 我们建议你使用[实时指标](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)来快速确定应用是否正在发送遥测数据。
 
   - 还可以使用 [Log Analytics](../log-query/get-started-portal.md) 列出当前正在发送遥测数据的所有云角色：

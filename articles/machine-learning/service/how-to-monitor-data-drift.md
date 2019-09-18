@@ -1,7 +1,7 @@
 ---
 title: 在 AKS 部署上检测数据偏移（预览版）
-titleSuffix: Azure Machine Learning service
-description: 在 Azure 机器学习服务中的 Azure Kubernetes 服务部署的模型上检测数据偏差。
+titleSuffix: Azure Machine Learning
+description: 在 Azure 机器学习中检测 Azure Kubernetes Service 部署的模型的数据偏差。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 09/13/2019
-ms.openlocfilehash: 80c5ad26150547263469c9f59366e270bf660335
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 59cce0b56a4e54208a454c9f71d9a4c8576b0a8b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993226"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034360"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service （AKS）的模型上检测数据偏差（预览）
 
-本文介绍如何监视已部署模型的定型数据集和推理数据之间的数据偏移。 在机器学习的上下文中，经过训练的机器学习模型可能会因为偏差而遇到下降的预测性能。 使用 Azure 机器学习服务，可以监视数据偏移，在检测到偏差时，服务可以向你发送电子邮件警报。
+本文介绍如何监视已部署模型的定型数据集和推理数据之间的数据偏移。 在机器学习的上下文中，经过训练的机器学习模型可能会因为偏差而遇到下降的预测性能。 使用 Azure 机器学习，可以监视数据偏移，在检测到偏差时，服务可以向你发送电子邮件警报。
 
 ## <a name="what-is-data-drift"></a>什么是数据偏移？
 
@@ -27,7 +27,7 @@ ms.locfileid: "70993226"
 
 ## <a name="what-can-i-monitor"></a>可以监视哪些内容？
 
-使用 Azure 机器学习服务，可以监视 AKS 上部署的模型的输入，并将此数据与模型的定型数据集进行比较。 固定时间间隔，推理数据是[快照和分析](how-to-explore-prepare-data.md)的，然后针对基线数据集进行计算，以生成数据偏移分析： 
+使用 Azure 机器学习，可以监视 AKS 上部署的模型的输入，并将此数据与模型的定型数据集进行比较。 固定时间间隔，推理数据是[快照和分析](how-to-explore-prepare-data.md)的，然后针对基线数据集进行计算，以生成数据偏移分析： 
 
 + 度量数据偏移量（称为偏移系数）。
 + 按功能测量数据偏移量，并通知哪些功能导致了数据偏移。
@@ -38,20 +38,20 @@ ms.locfileid: "70993226"
 > [!Note]
 > 此服务处于 "（预览版）" 和 "配置选项限制"。 有关详细信息和更新，请参阅我们的[API 文档](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py)和[发行说明](azure-machine-learning-release-notes.md)。 
 
-### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>如何在 Azure 机器学习服务中监视数据偏移
+### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>如何监视数据偏移 Azure 机器学习
 
-使用 Azure 机器学习服务，数据偏移通过数据集或部署来监视。 若要监视数据偏移，请指定基线数据集，这通常是模型的定型数据集。 第二个数据集（通常是从部署中收集的模型输入数据）根据基线数据集进行测试。 这两个数据集都被分析并输入到数据偏移监视服务。 训练机器学习模型来检测两个数据集之间的差异。 模型的性能转换为偏移系数，这会测量两个数据集之间的偏差量。 使用[model interpretability](machine-learning-interpretability-explainability.md)，将计算构成偏移系数的特征。 在数据集配置文件中，将跟踪有关每个功能的统计信息。 
+使用 Azure 机器学习，数据偏移通过数据集或部署来监视。 若要监视数据偏移，请指定基线数据集，这通常是模型的定型数据集。 第二个数据集（通常是从部署中收集的模型输入数据）根据基线数据集进行测试。 这两个数据集都被分析并输入到数据偏移监视服务。 训练机器学习模型来检测两个数据集之间的差异。 模型的性能转换为偏移系数，这会测量两个数据集之间的偏差量。 使用[model interpretability](machine-learning-interpretability-explainability.md)，将计算构成偏移系数的特征。 在数据集配置文件中，将跟踪有关每个功能的统计信息。 
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+- Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 - 安装了适用于 Python 的 Azure 机器学习 SDK。 按照 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 中的说明执行以下操作：
 
     - 创建 Miniconda 环境
     - 安装用于 Python 的 Azure 机器学习 SDK
 
-- [Azure 机器学习服务工作区](how-to-manage-workspace.md)。
+- [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 - 工作区[配置文件](how-to-configure-environment.md#workspace)。
 
@@ -173,7 +173,7 @@ datadrift.disable_schedule()
 
 通过设置偏移系数警报阈值并提供电子邮件地址，每当偏移系数超过阈值时，就会自动发送[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)电子邮件警报。 
 
-为了设置自定义警报和操作，所有数据偏差指标都存储在与 Azure 机器学习服务工作区一起创建的[Application Insights](how-to-enable-app-insights.md)资源中。 可以跟踪电子邮件警报中的链接到 Application Insights 查询。
+为了设置自定义警报和操作，所有数据偏差指标都存储在与 Azure 机器学习工作区一起创建的[Application Insights](how-to-enable-app-insights.md)资源中。 可以跟踪电子邮件警报中的链接到 Application Insights 查询。
 
 ![数据偏移电子邮件警报](media/how-to-monitor-data-drift/drift_email.png)
 

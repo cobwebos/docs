@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6adc5dfa740d440e78bf2f276447c4585503d7c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e407b26091ad559ab458f76d94e2460660ecd14f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606472"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036612"
 ---
 # <a name="heading"></a>在 Azure 上处理 SQL Server 虚拟机中的数据
 本文档介绍如何浏览数据，并针对存储在 Azure 的 SQL Server VM 中的数据生成功能。 可通过使用 SQL 或 Python 等编程语言的数据整理来实现上述目的。
@@ -87,7 +87,7 @@ ms.locfileid: "65606472"
 * 符号指示地球上的四个方向：东、南、西、北。
 * 非零的百位数代表经度，而不是纬度！
 * 十位数提供约 1000 公里的位置。 提供处于哪个大洲或海洋的有用信息。
-* 个位（十进制度）代表 111 公里以上的（60 海里，约 69 英里）位置。 它可以告诉用户大致哪一个州或国家/地区中我们是。
+* 个位（十进制度）代表 111 公里以上的（60 海里，约 69 英里）位置。 它可以大致了解你所在的州、国家或地区。
 * 第一个小数位值达 11.1 km：可将相邻的大城市区分开。
 * 第二位小数值达 1.1 km：可将村庄分开。
 * 第三位小数值达 110 m：可以定大型农业区域或工业园区。
@@ -116,7 +116,7 @@ ms.locfileid: "65606472"
 > 
 
 ### <a name="sql-aml"></a>连接到 Azure 机器学习
-新生成的功能可作为列添加到现有表或存储在新表中，也可与原始表结合以进行机器学习。 如果已经创建，可使用 Azure 机器学习中的[导入数据][import-data]模块生成或访问功能，如下所示：
+新生成的功能可作为列添加到现有表或存储在新表中，也可与原始表结合以进行机器学习。 如果已创建功能，可以使用 Azure 机器学习中的 "[导入数据][import-data]" 模块生成或访问功能，如下所示：
 
 ![azureml 读取器][1] 
 

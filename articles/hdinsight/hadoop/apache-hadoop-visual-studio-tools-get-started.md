@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 706bcbed39ca2a3fe0a38eba864edb863c31b4ec
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 44a076ee6979e207ac3992f76d3b89cc188d53b8
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884050"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076297"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询
 
@@ -83,7 +83,7 @@ ms.locfileid: "70884050"
 
 4. 在服务器资源管理器中，会显示现有 HDInsight 群集的列表。 如果没有任何群集，可以使用 Azure 门户、Azure PowerShell 或 HDInsight SDK 创建一个群集。 有关详细信息，请参阅[创建 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 
-   ![服务器资源管理器中的用于 Visual Studio 的 Data Lake 工具群集列表的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "服务器资源管理器中的用于 Visual Studio 的 Data Lake 工具群集列表")
+   ![服务器资源管理器中的 Data Lake Tools For Visual Studio 群集列表](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "服务器资源管理器中的 Data Lake Tools For Visual Studio 群集列表")
 
 5. 展开 HDInsight 群集。 将显示**Hive 数据库**、默认存储帐户、链接的存储帐户和**Hadoop 服务日志**。 可以进一步展开条目。
 
@@ -113,11 +113,11 @@ ms.locfileid: "70884050"
 ## <a name="explore-linked-resources"></a>浏览链接的资源
 在“服务器资源管理器”中，可以看到默认存储帐户和任何链接的存储帐户。 如果展开默认存储帐户，则可以看到存储帐户中的容器。 默认存储帐户和默认容器将处于标记状态。 右键单击任何容器即可查看容器内容。
 
-![服务器资源管理器中用于 Visual Studio 的 Data Lake 工具列表列表链接资源的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png "列表链接资源")
+![适用于 Visual Studio 的 Data Lake 工具服务器资源管理器中的链接资源](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png "列出链接的资源")
 
 打开一个容器后，可以使用以下按钮来上传、删除和下载 Blob：
 
-![服务器资源管理器中用于 Visual Studio 的 Data Lake 工具 Blob 操作的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png "在服务器资源管理器中上传、删除和下载 Blob")
+![用于 Visual Studio blob 操作的 Data Lake 工具服务器资源管理器](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png "在服务器资源管理器中上传、删除和下载 blob")
 
 ## <a name="run-interactive-apache-hive-queries"></a>运行交互式 Apache Hive 查询
 [Apache Hive](https://hive.apache.org) 是构建于 Hadoop 之上的数据仓库基础结构。 Hive 用于数据汇总、查询和分析。 可以使用用于 Visual Studio 的 Data Lake 工具从 Visual Studio 运行 Hive 查询。 有关 Hive 的详细信息，请参阅[将 Apache Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)。
@@ -201,7 +201,7 @@ ms.locfileid: "70884050"
 
       确保“批处理”已选中，然后选择“提交”。  如果选择高级提交选项，请为脚本配置“作业名称”、“参数”、“其他配置”和“状态目录”。
 
-      ![查询和“批处理”的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
+      ![Visual Studio 查询和批处理选项](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
       ![HDInsight Hadoop Hive 查询的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "提交查询")
 
@@ -224,7 +224,7 @@ ms.locfileid: "70884050"
 
 作业摘要根据选择的是“批处理”还是“交互式”模式而略有不同。
 
-![作业摘要](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Hive 作业摘要")
+![Apache Hive 作业摘要 "选项卡显示](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Hive 作业摘要")
 
 使用“刷新”按钮更新状态，直到作业状态更改为“已完成”。  
 
@@ -232,7 +232,7 @@ ms.locfileid: "70884050"
 
 * 如需“交互式”模式下的作业详细信息，请查看“输出”和“HiveServer2 输出”选项卡。
 
-  ![作业详细信息](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Hive 作业详细信息")
+  ![Visual Studio Apache Hive 作业详细信息](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Hive 作业详细信息")
 
 ### <a name="view-job-graph"></a>查看作业图
 
@@ -242,14 +242,13 @@ ms.locfileid: "70884050"
 
 即使已将 Tez 指定为执行引擎，但如果未启动 Tez 应用程序，则也可能不会显示作业图。  可能的原因是作业不包含 DML 语句，或者在未启动 Tez 应用程序的情况下 DML 语句可以返回。 例如，`SELECT * FROM table1` 不会启动 Tez 应用程序。
 
-![作业图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png "Hive 作业摘要")
-
+![Visual Studio Apache Hive 作业图形](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png "Hive 作业摘要")
 
 ### <a name="task-execution-detail"></a>任务执行详细信息
 
 在作业图中，可以选择“任务执行详细信息”获取 Hive 作业的结构化和可视化信息。 也可以获取更多的作业详细信息。 如果出现性能问题，可以使用此视图来获取该问题的更多详细信息。 例如，可以了解每个任务的运行方式和详细信息（数据读取/写入、计划/开始/结束时间，等等）， 以便根据可视化信息优化作业配置或系统体系结构。
 
-![Data Lake Visual Studio 工具“任务执行视图”窗口的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png "任务执行视图")
+![Data Lake Visual Studio Tools 任务执行视图窗口](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png "任务执行视图")
 
 
 ### <a name="view-hive-jobs"></a>查看 Hive 作业

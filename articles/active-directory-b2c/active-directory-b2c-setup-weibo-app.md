@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 428149fbc015037fa8c92bad6fe72cbd97aad5d7
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 4a019c3f197f123486dd28dc2bdb46e34f6cabc4
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622246"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064906"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过微博帐户注册与登录
 
@@ -23,7 +23,7 @@ ms.locfileid: "69622246"
 
 ## <a name="create-a-weibo-application"></a>创建 Weibo 应用程序
 
-要将微博帐户用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要在表示它的租户中创建一个应用程序。 如果还没有 Weibo 帐户, 可以在[https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us)注册。
+若要在 Azure Active Directory B2C （Azure AD B2C）中使用 Weibo 帐户作为标识提供者，需要在租户中创建表示它的应用程序。 如果还没有微博帐户，可以在 [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us) 注册。
 
 1. 使用微博帐户凭据登录[微博开发人员门户](https://open.weibo.com/)。
 1. 登录后，选择右上角的显示名称。
@@ -49,10 +49,10 @@ ms.locfileid: "69622246"
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>将微博帐户配置为标识提供者
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-1. 通过在顶部菜单中选择 "**目录 + 订阅**" 筛选器并选择包含租户的目录, 确保使用的是包含 Azure AD B2C 租户的目录。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
-1. 选择 "**标识提供者**", 然后选择 " **Weibo (预览版)** "。
-1. 输入“名称”。 例如, *Weibo*。
-1. 对于 "**客户端 ID**", 请输入之前创建的 Weibo 应用程序的应用密钥。
-1. 对于**客户端密码**, 请输入你记录的应用密码。
+1. 选择“标识提供者”，然后选择“微博(预览)”。
+1. 输入“名称”。 例如，Weibo。
+1. 对于**客户端 ID**，输入你之前创建的 Weibo 应用程序的应用密钥。
+1. 对于**客户端密码**，输入你记录的应用机密。
 1. 选择**保存**。

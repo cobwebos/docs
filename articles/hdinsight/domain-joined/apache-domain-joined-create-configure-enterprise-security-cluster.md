@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: 24c00d8d5db7c36746d68ad10edc4db4f76e0aac
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 482e3e534486a226783e2377c10b074a087e67ed
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918729"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037297"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>在 Azure HDInsight 中创建和配置企业安全性套餐群集
 
@@ -25,7 +25,7 @@ Azure HDInsight 的企业安全性套餐提供对 Azure 中 Apache Hadoop 群集
 
 在你自己的环境中使用此过程之前，请安装 Active Directory 和域名服务（DNS）。 同时，启用 Azure Active Directory 和同步本地用户帐户以 Azure Active Directory。
 
-![体系结构关系图](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0002.png)
+![Azure Active Directory 体系结构关系图](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0002.png)
 
 ## <a name="create-on-premises-environment"></a>创建本地环境
 
@@ -75,19 +75,19 @@ Azure HDInsight 的企业安全性套餐提供对 Azure 中 Apache Hadoop 群集
 
     1. 在 "**新建对象-用户**" 屏幕中`HDIUser` ，输入作为 "**用户登录名**"，然后单击 "**下一步**"。
 
-        ![创建第一个管理员用户](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0020.png)
+        ![创建第一个管理员用户对象](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0020.png)
 
     1. 在出现的弹出窗口中，输入新帐户的所需密码。 选中 "**密码永不过期**" 复选框。 HDIClick**正常**。
     1. 单击 "**完成**" 创建新帐户。
     1. 创建其他用户`HDIAdmin`。
 
-        ![创建第二个管理用户](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0024.png)
+        ![创建第二个管理员用户对象](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0024.png)
 
 1. 在 " **Active Directory 用户和计算机**" 屏幕中，单击 "**操作** > " "**新建** > **组**"。 创建`HDIUserGroup`为新组。
 
     ![新建 Active Directory 组](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-group.png)
 
-    ![创建新的 group2](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0028.png)
+    !["创建新对象组" 对话框](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0028.png)
 
 1. 将在上一步中创建的**HDIUser**添加到**HDIUserGroup**作为成员。
 
@@ -96,7 +96,7 @@ Azure HDInsight 的企业安全性套餐提供对 Azure 中 Apache Hadoop 群集
     1. 在`HDIUser`标有 "**输入要选择的对象名称**" 框中输入，然后单击 **"确定"** 。
     1. 为另一个帐户重复前面的步骤`HDIAdmin`
 
-        ![向组中添加成员](./media/apache-domain-joined-create-configure-enterprise-security-cluster/active-directory-add-users-to-group.png)
+        ![向组 HDIUserGroup 添加成员 HDIUser](./media/apache-domain-joined-create-configure-enterprise-security-cluster/active-directory-add-users-to-group.png)
 
 你现在已创建了 Active Directory 环境，以及两个用户和一个用于访问 HDInsight 群集的用户组。
 
@@ -116,7 +116,7 @@ Azure HDInsight 的企业安全性套餐提供对 Azure 中 Apache Hadoop 群集
 
 ![创建新的 azure active directory](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-directory.png)
 
-![创建新的自定义域](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-custom-domain.png)
+![Azure AD 中，创建一个新的自定义域](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-custom-domain.png)
 
 ## <a name="configure-your-azure-ad-tenant"></a>配置 Azure AD 租户
 
@@ -133,11 +133,11 @@ Azure HDInsight 的企业安全性套餐提供对 Azure 中 Apache Hadoop 群集
 
     1. 单击 "**组**" 部分，搜索 " **AAD DC 管理员**"，然后单击 "**选择**"。
 
-        ![个组](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0038.png)
+        !["Azure Active Directory 组" 对话框](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0038.png)
 
     1. 单击 "**目录角色**" 部分，然后选择右侧的 "**全局管理员**"。 单击“确定”。
 
-        ![目录角色](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0040.png)
+        ![Azure Active Directory 角色 "对话框](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0040.png)
 
     1. 输入用户的密码。 单击“创建”。
 
@@ -150,27 +150,33 @@ Azure HDInsight 的企业安全性套餐提供对 Azure 中 Apache Hadoop 群集
 1. [下载 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
 
 1. 在域控制器上安装 Microsoft Azure Active Directory 连接。
+
     1. 打开你在上一步中下载的可执行文件，并同意许可条款。 单击 **“继续”** 。
 
-        ![Azure AD Connect](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0052.png)
+        ![欢迎使用 Azure AD Connect 对话框](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0052.png)
 
     1. 单击 "**使用快速设置**" 并完成安装。
 
-        ![使用快速设置](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0054.png)
+        ![Azure AD Connect 快速设置](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0054.png)
 
 ### <a name="configure-sync-with-on-premises-domain-controller"></a>配置与本地域控制器的同步
 
 1. 在 "**连接到 Azure AD** " 屏幕上，输入 Azure AD 的全局管理员的用户名和密码。 单击 " **下一步**"。 这是你在`fabrikamazureadmin@hdifabrikam.com`配置 AD 租户时创建的用户名。
-    ![连接到 Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
+
+    ![连接到 Azure Active Directory ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
+
 1. 在 "**连接到 Active Directory 域服务**" 屏幕上，输入企业管理员帐户的用户名和密码。 单击 " **下一步**"。 这是之前创建`HDIFabrikam\HDIFabrikamAdmin`的用户名和匹配的密码。
 
    ![连接到 Active Directory 域服务](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
 1. 在 " **Azure AD 登录配置**" 页上，单击 "**下一步**"。
     ![Azure AD 登录配置](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
+
 1. 在 "已准备好配置" 屏幕上，单击 " **安装**"。
-    ![安装](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png)
+
+    !["准备配置" 对话框 Azure AD Connect](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png)
+
 1. 显示 "**配置完成**" 屏幕时，单击 "**退出**"。
-    ![配置完成](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
+    ![Azure AD 配置完成](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
 
 1. 完成同步后，确认在 IAAS Active Directory 上创建的用户是否同步到 Azure Active Directory。
     1. 登录到 Azure 门户。
@@ -213,23 +219,23 @@ Azure HDInsight 的企业安全性套餐提供对 Azure 中 Apache Hadoop 群集
     1. 选择订阅。
     1. 指定资源组**HDIFabrikam-CentralUS**和**美国中部**的**位置**。
 
-        ![Azure AD-DS 基本详细信息](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0084.png)
+        ![Azure AD 域服务基本详细信息](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0084.png)
 
 1. 在 "**网络**" 屏幕上，选择你用之前的 powershell 脚本创建的网络（**HDIFabrikam**）和子网（**AADDS**）。 或者，你可以使用 "**新建**" 选项立即创建虚拟网络。
 
-    ![选择网络](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png)
+    ![Azure AD 域服务创建虚拟网络](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png)
 
 1. 在 "**管理员" 组**屏幕上，你应该会看到一条通知，指出已创建了一个名为 " **AAD DC 管理员**" 的组来管理此组。 您可以选择修改此组的成员身份，但本文的步骤并不需要这样做。 单击 **“确定”** 。
 
-    ![查看管理员组](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0088.png)
+    ![查看 Azure AD 管理员组](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0088.png)
 
 1. 在 "**同步**" 屏幕上，选择 "**全部**"，然后单击 **"确定"** 以启用完成同步。
 
-    ![启用同步](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0090.png)
+    ![启用 Azure AD 域服务同步](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0090.png)
 
 1. 在 "**摘要**" 屏幕上，验证 AZURE AD-DS 的详细信息，然后单击 **"确定"** 。
 
-    ![验证详细信息](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0092.png)
+    ![启用 Azure AD 域服务摘要](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0092.png)
 
 1. 启用 Azure AD-DS 后，本地域名服务 (DNS) 服务器将在 AD 虚拟机 (VM) 上运行。
 
@@ -248,7 +254,7 @@ Azure HDInsight 的企业安全性套餐提供对 Azure 中 Apache Hadoop 群集
 
 1. 在方案 Azure AD-DS 配置为使用 IP 地址10.0.0.4 和10.0.0.5，在 AADDS VNet 上设置与下图中显示的 IP 地址相同的 IP 地址。
 
-    ![查看自定义 DNS 服务器](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0098.png)
+    ![查看自定义 DNS 服务器对话框](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0098.png)
 
 ## <a name="securing-ldap-traffic"></a>保护 LDAP 流量
 
@@ -276,13 +282,13 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 1. 添加管理本地计算机上的证书的证书管理单元。
 1. 展开 " **证书（本地计算机）** "，展开 " **个人**"，然后展开 " **证书**"。 个人存储区中应存在新证书。 此证书将颁发给完全限定的主机名。
 
-    ![验证证书创建](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0102.png)
+    ![验证本地证书创建](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0102.png)
 
 1. 在右侧窗格中，右键单击在上一步中创建的证书，指向 " **所有任务**"，然后单击 " **导出**"。
 
 1. 在 " **导出私钥** " 页上，单击 **"是，导出私钥**"。 私钥是从将导入密钥的计算机读取加密消息所必需的。
 
-    ![导出私钥](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png)
+    ![证书向导，"导出私钥" 页](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png)
 
 1. 在 " **导出文件格式** " 页上，保留默认设置，然后单击 " **下一步**"。 
 1. 在 " **密码** " 页上，键入私钥的密码，选择 " **TripleDES** " 作为 "**加密**"，然后单击 "**下一步**"。
@@ -295,7 +301,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
     1. 浏览在您的计算机上导出的 .pfx 证书文件。
     1. 输入证书密码。
 
-    ![启用安全 ldap](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0113.png)
+    ![Azure AD-DS，启用安全 ldap](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0113.png)
 
 1. 现在，你已启用安全 LDAP，请通过启用端口636确保可以访问它。
     1. 单击**HDIFabrikam-CentralUS**资源组中的网络安全组**AADDS-HDIFabrikam.com-NSG** 。
@@ -313,7 +319,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         | Priority | \<所需数量\> |
         | Name | Port_LDAP_636 |
 
-    ![入站安全规则](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
+    !["添加入站安全规则" 对话框](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
 1. `HDIFabrikamManagedIdentity`是用户分配的托管标识，HDInsight 域服务参与者角色已启用到托管标识，这将使此标识能够读取、创建、修改和删除域服务操作。
 
@@ -347,7 +353,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
     1. 选择 "**自定义**" `10.0.0.5`，然后输入`10.0.0.4`和。
     1. 单击“保存”。
 
-        ![保存自定义 DNS 设置](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
+        ![保存虚拟网络的自定义 DNS 设置](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
 
 1. 创建新的启用 ESP 的 HDInsight Spark 群集。
     1. 单击 "**自定义（大小、设置、应用）** "。
@@ -359,13 +365,13 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
         1. 单击 "**群集访问组**"，然后选择 " **HDIUserGroup**"。 将来添加到此组中的任何用户都能够访问 HDInsight 群集。
 
-            ![选择群集访问组](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
+            ![选择群集访问组 HDIUserGroup](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
 
     1. 完成群集配置的其他步骤，并验证**群集摘要**上的详细信息。 单击“创建”。
 
 1. 使用管理员`https://CLUSTERNAME.azurehdinsight.net` `hdiadmin@hdifabrikam.com`用户名和密码登录到新创建的群集的 Ambari UI。
 
-    ![登录到 Ambari](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
+    ![Apache Ambari UI 登录窗口](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
 
 1. 单击群集仪表板中的 "**角色**"。
 1. 在 "**角色**" 页上，在 "**将角色分配给这些**组" 下，输入**Hdiusergroup**将其分配给**群集管理员**角色。
@@ -374,7 +380,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
 1. 打开 SSH 客户端，并使用之前在本地 Active Directory 中创建的**hdiuser**登录到群集。
 
-    ![通过 SSH 登录到群集](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0139.jpg)
+    ![通过 SSH 客户端登录到群集](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0139.jpg)
 
 如果你可以使用此帐户登录，则已将 ESP 群集正确地配置为与本地 active directory 同步。
 

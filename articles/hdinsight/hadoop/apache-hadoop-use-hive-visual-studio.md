@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 129f200bc9f61d70f4403b1154978d57e09fee26
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917487"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076283"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询
 
@@ -115,9 +115,9 @@ ms.locfileid: "70917487"
 
 6. 在工具栏中，选择需要用于此查询的“HDInsight 群集”。 选择“提交”，让语句以 Hive 作业的形式运行。
 
-   ![“提交”栏](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
+   ![Azure HDInsight 工具栏提交](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
 
-7. “Hive 作业摘要”将会出现并显示有关正在运行的作业的信息。 在“作业状态”更改为“已完成”之前，使用“刷新”链接刷新作业信息。
+7. “Hive 作业摘要”会出现并显示有关正在运行的作业的信息。 在“作业状态”更改为“已完成”之前，使用“刷新”链接刷新作业信息。
 
    ![作业摘要，显示已完成的作业](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 

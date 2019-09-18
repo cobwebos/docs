@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ad43af0f6f9bd8d5d78cef78b26345436169c0fd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918550"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034135"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>将 HDInsight 连接到本地网络
 
@@ -40,7 +40,7 @@ ms.locfileid: "70918550"
 
 在下面的关系图中，绿线表示以虚拟网络的 DNS 后缀结尾的资源请求。 蓝线表示本地网络或公共 Internet 上的资源请求。
 
-![本文档将使用如何解析配置中的 DNS 请求的关系图](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+![如何在配置中解析 DNS 请求的关系图](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -96,7 +96,7 @@ ms.locfileid: "70918550"
     |Subnet | 选择前面创建的虚拟网络的默认子网。 请勿选择 VPN 网关所用的子网。|
     |公共 IP | 使用自动填充的值。  |
 
-    ![虚拟网络设置](./media/connect-on-premises-network/virtual-network-settings.png)
+    ![HDInsight 虚拟网络设置](./media/connect-on-premises-network/virtual-network-settings.png)
 
     将其他项保留为默认值，然后选择“查看 + 创建”。
 

@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bf8d4889c277d59d0c42894281a89345fbf90a84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: b1bfa945843d185a46f1f1d79fd4dab0e991c769
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716695"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063809"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-RelyingParty 元素指定用户旅程，以执行当前对 Azure Active Directory (Azure AD) B2C 的请求。 它还指定依赖方 (RP) 应用程序需要作为已颁发令牌一部分的声明列表。 RP 应用程序（例如 Web、移动或桌面应用程序）调用 RP 策略文件。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 多个应用程序可以使用相同的 RP 策略，单个应用程序可以使用多个策略。 所有 RP 应用程序都接收具有相同声明的令牌，用户会经历相同的用户旅程。
+**RelyingParty**元素指定要将当前请求强制用于 Azure Active Directory B2C （Azure AD B2C）的用户旅程。 它还指定依赖方 (RP) 应用程序需要作为已颁发令牌一部分的声明列表。 RP 应用程序（例如 Web、移动或桌面应用程序）调用 RP 策略文件。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 多个应用程序可以使用相同的 RP 策略，单个应用程序可以使用多个策略。 所有 RP 应用程序都接收具有相同声明的令牌，用户会经历相同的用户旅程。
 
 下面的示例演示 B2C_1A_signup_signin 策略文件中的 RelyingParty 元素：
 

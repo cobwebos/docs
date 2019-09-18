@@ -4,7 +4,7 @@ description: 排查在 Azure 中创建、重启经典 VM 或重设其大小时�
 services: azure-service-management
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: bb939e23-77fc-4948-96f7-5037761c30e8
@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 7cd7897e3a0b940bbc636b2fbc3dbbc13b7cf540
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d43176e04337c2faf7be0bea682428056bc4ab46
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505525"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059197"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>针对经典部署模型中的分配失败情况进行故障排除的步骤
 
@@ -116,7 +116,7 @@ New_General* 或 New_VMSizeNotSupported*
 
 **群集固定的原因**
 
-在引入区域虚拟网络之前，必须先将虚拟网络与地缘组进行关联。 因此，计算资源放入地缘组绑定的相同约束，如中所述"分配案例：地缘组 （VM/服务邻近性）"一节。 计算资源已绑定到一个群集。
+在引入区域虚拟网络之前，必须先将虚拟网络与地缘组进行关联。 因此，放置在地缘组中的计算资源受与 "分配方案：相关性组（VM/服务邻近性） "一节。 计算资源已绑定到一个群集。
 
 **解决方法**
 

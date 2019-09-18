@@ -4,14 +4,14 @@ description: 使用 Azure HPC 缓存的先决条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7bd1268784df50168e03673ac809b3a5854e2be7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 50c60e38b58815be04cfb892c3622b9579529e67
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775333"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036859"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
@@ -22,7 +22,7 @@ ms.locfileid: "70775333"
 建议使用付费订阅。
 
 > [!NOTE]
-> 在公共预览版中，Azure HPC 缓存团队必须先将订阅添加到访问列表，然后才能将其用于创建缓存实例。 此过程有助于确保每个客户从其测试缓存获得高质量的响应能力。 填写[此窗体](https://aka.ms/onboard-hpc-cache)以请求访问。
+> 在预览版本中，Azure HPC 缓存团队必须先将订阅添加到访问列表，然后才能将其用于创建缓存实例。 此过程有助于确保每个客户从其测试缓存获得高质量的响应能力。 填写[此窗体](https://aka.ms/onboard-hpc-cache)以请求访问。
 
 ## <a name="network-infrastructure"></a>网络基础结构
 

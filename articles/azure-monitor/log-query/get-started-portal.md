@@ -8,16 +8,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: 18e6e162764ce190a1953a4126e4f9ef2eb717f5
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 950768326228960192f48d99e5c5fa849b2c2bda
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899515"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076828"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics 入门
 
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+> [!NOTE]
+> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中执行此操作。 如果没有，则使用我们的[演示环境](https://portal.loganalytics.io/demo)，其中包含大量示例数据。
 
 本教程介绍如何在 Azure 门户中使用 Log Analytics 来编写 Azure Monitor 日志查询。 具体内容包括：
 

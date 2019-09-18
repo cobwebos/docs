@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: e5062ce27e1e9367a262d263070ab01f899dfc54
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: b98c62908885bc13cd5f473967cc70709af693d2
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918917"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034118"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企业安全性套餐管理 HDInsight 群集
 了解 HDInsight 企业安全性套餐 (ESP) 中的用户和角色，以及如何管理 ESP 群集。
@@ -21,69 +21,73 @@ ms.locfileid: "70918917"
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>使用 VSCode 链接到已加入域的群集
 
 可以使用 Apache Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：`user1@contoso.com`）链接安全 Apache Hadoop 群集。
+
 1. 按 CTRL+SHIFT+P 打开命令面板，然后输入“HDInsight:链接群集”。
 
-   ![链接群集命令](./media/apache-domain-joined-manage/link-cluster-command.png)
+   ![命令面板，链接群集](./media/apache-domain-joined-manage/link-cluster-command.png)
 
 2. 输入 HDInsight 群集 URL -> 输入用户名 -> 输入密码 -> 选择群集类型 -> 如果通过验证，将显示成功信息。
-   
-   ![“链接群集”对话框](./media/apache-domain-joined-manage/link-cluster-process.png)
+
+   ![链接群集过程步骤对话框](./media/apache-domain-joined-manage/link-cluster-process.png)
 
    > [!NOTE]  
-   > 如果群集已登录到 Azure 订阅中并且已链接群集，则使用链接用户名和密码。 
-   
+   > 如果群集已登录到 Azure 订阅中并且已链接群集，则使用链接用户名和密码。
+
 3. 可以使用命令**列出群集**来查看链接群集。 现在可以将脚本提交到此链接群集。
 
-   ![链接的群集](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "链接的群集")
+   ![列出群集命令输出验证](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "链接的群集")
 
 4. 还可以取消链接群集，方法是从命令面板输入“HDInsight:取消链接群集”。
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>使用 IntelliJ 链接到已加入域的群集
 
-可以使用 Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：`user1@contoso.com`）链接安全 hadoop 群集。 
+可以使用 Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：`user1@contoso.com`）链接安全 hadoop 群集。
+
 1. 从 **Azure 资源管理器**单击“链接群集”。
 
    ![链接群集上下文菜单 intellij](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. 输入**群集名称**、**用户名**和**密码**。 如果获得身份验证失败，需要检查用户名和密码。 或者，添加存储帐户、存储密钥，然后从存储容器中选择一个容器。 存储信息用于左侧树中的存储资源管理器
-   
-   ![链接群集对话框 intellij](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+
+   ![Azure 资源管理器链接群集对话框 intellij](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
    > [!NOTE]  
    > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。
-   > ![IntelliJ 中的存储资源管理器](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
+   > 
+   > ![IntelliJ 中的 Azure 资源管理器存储帐户](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
 
-   
 3. 如果输入信息正确，可以在 **HDInsight** 节点中看到链接的群集。 现在可以将应用程序提交到此链接群集。
 
-   ![链接群集 intellij](./media/apache-domain-joined-manage/linked-cluster-intellij.png "链接的群集 intellij]")
+   ![Azure 资源管理器链接群集 intellij](./media/apache-domain-joined-manage/linked-cluster-intellij.png "链接的群集 intellij]")
 
 4. 还可以从 **Azure 资源管理器**取消链接群集。
-   
-   ![未链接的群集 intellij](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
+
+   ![Azure 资源管理器取消链接群集 intellij](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>使用 Eclipse 链接到已加入域的群集
 
 可以使用 Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：`user1@contoso.com`）链接安全 hadoop 群集。
+
 1. 从 **Azure 资源管理器**单击“链接群集”。
 
    ![链接群集上下文菜单 eclipse](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. 输入“群集名称”、“用户名”和“密码”，然后单击“确定”按钮以链接群集。 （可选）输入“存储帐户”、“存储密钥”，然后选择“存储资源管理器”，以便存储资源管理器在左侧树状视图中工作
-   
-   ![链接群集对话 eclipse](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
-   
+
+   ![Azure 资源管理器链接群集对话框 eclipse](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
+
    > [!NOTE]  
    > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。
-   > ![Eclipse 中的存储资源管理器](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
+   > 
+   > ![Eclipse 中的 Azure 资源管理器存储帐户](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
 
 3. 单击“确定”按钮后，如果输入信息正确，可以在 **HDInsight** 节点中看到链接的群集。 现在可以将应用程序提交到此链接群集。
 
-   ![链接群集 eclipse](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![Azure 资源管理器链接群集 eclipse](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
 
 4. 还可以从 **Azure 资源管理器**取消链接群集。
    
-   ![未链接的群集 eclipse](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
+   ![Azure 资源管理器取消链接群集 eclipse](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>使用企业安全包访问群集。
 
@@ -104,8 +108,8 @@ ms.locfileid: "70918917"
 
 使用标准 API 从安全角度获得帮助。 此外，可获得以下优势：
 
-1.  **管理** - 可以使用标准 API（Livy、HS2 等）管理代码和自动执行作业。
-2.  **审核** - 使用 SSH 时，没有办法审核哪些用户已通过 SSH 登录到群集。 通过标准终结点构造作业时就不会出现这种情况，因为这些作业将在用户上下文中执行。 
+- **管理** - 可以使用标准 API（Livy、HS2 等）管理代码和自动执行作业。
+- **审核** - 使用 SSH 时，没有办法审核哪些用户已通过 SSH 登录到群集。 通过标准终结点构造作业时就不会出现这种情况，因为这些作业将在用户上下文中执行。 
 
 
 
@@ -183,11 +187,11 @@ HDInsight 企业安全性套餐具有以下角色：
 4. 使用群集管理员域用户名和密码登录到 Ambari。
 5. 在右上角单击“管理员”下拉菜单，并单击“管理 Ambari”。
 
-    ![ESP HDInsight 管理 Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    ![ESP HDInsight 管理 Apache Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
     UI 如下所示：
 
-    ![ESP HDInsight Ambari 管理 UI](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    ![ESP HDInsight Apache Ambari 管理 UI](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>列出从 Active Directory 同步的域用户
 1. 打开 Ambari 管理 UI。  请参阅[打开 Ambari 管理 UI](#open-the-ambari-management-ui)。

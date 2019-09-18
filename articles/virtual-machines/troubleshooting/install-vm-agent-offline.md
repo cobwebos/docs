@@ -4,7 +4,7 @@ description: 了解如何在脱机模式下安装 Azure VM 代理。
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 018f27999c4f69c0868e2a8fde6535346c7d0377
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 438143d3253f1cab1afb958a90f427dcba59a98e
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090364"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059237"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>在脱机模式下安装 Azure 虚拟机代理 
 
@@ -37,7 +37,7 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
 ### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>步骤 1：将 VM 的 OS 磁盘作为数据磁盘附加到另一 VM
 
-1. 为受影响的 VM 的 OS 磁盘拍摄快照, 从快照创建磁盘, 然后将该磁盘附加到故障排除 VM。 有关详细信息, 请参阅[使用 Azure 门户将 OS 磁盘附加到恢复 VM, 对 WINDOWS VM 进行故障排除](troubleshoot-recovery-disks-portal-windows.md)。 对于经典 VM, 请删除 VM 并保留 OS 磁盘, 然后将 OS 磁盘附加到故障排除 VM。
+1. 为受影响的 VM 的 OS 磁盘拍摄快照，从快照创建磁盘，然后将该磁盘附加到故障排除 VM。 有关详细信息，请参阅[使用 Azure 门户将 OS 磁盘附加到恢复 VM，对 WINDOWS VM 进行故障排除](troubleshoot-recovery-disks-portal-windows.md)。 对于经典 VM，请删除 VM 并保留 OS 磁盘，然后将 OS 磁盘附加到故障排除 VM。
 
 2.  连接到故障排除 VM。 转到“计算机管理” > “磁盘管理”。 确认 OS 磁盘处于联机状态，并且已将驱动器号分配到磁盘分区。
 
@@ -45,7 +45,7 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
 1.  远程桌面连接到故障排除 VM。
 
-2.  在疑难解答 VM 中, 浏览到已附加的 OS 磁盘, 打开 \windows\system32\config 文件夹。 将此文件夹中的所有文件复制为备份，以备回滚之需。
+2.  在疑难解答 VM 中，浏览到已附加的 OS 磁盘，打开 \windows\system32\config 文件夹。 将此文件夹中的所有文件复制为备份，以备回滚之需。
 
 3.  启动注册表编辑器 (regedit.exe)。
 
@@ -98,7 +98,7 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
 10.  选择“BROKENSOFTWARE”。 在菜单上，选择“文件” > “卸载配置单元”
 
-11.  分离 OS 磁盘, 然后[更改受影响的 VM 的 os 磁盘](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)。 对于经典 VM, 请使用修复的 OS 磁盘创建新的 VM。
+11.  分离 OS 磁盘，然后[更改受影响的 VM 的 os 磁盘](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)。 对于经典 VM，请使用修复的 OS 磁盘创建新的 VM。
 
 12.  访问 VM。 请注意，RdAgent 正在运行，并且正在生成日志。
 

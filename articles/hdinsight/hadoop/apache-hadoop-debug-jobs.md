@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882427"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059219"
 ---
 # <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>在 Azure HDInsight 中分析 Apache Hadoop 日志
 
@@ -110,7 +110,7 @@ Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件�
 ### <a name="access-the-ambari-ui"></a>访问 Ambari UI
 在 Azure 门户中，单击某个 HDInsight 群集名称以打开群集窗格。 在群集窗格中，单击“仪表板”。
 
-![启动群集仪表板](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
+![HDInsight 启动群集仪表板](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
 
 ### <a name="access-the-yarn-ui"></a>访问 Yarn UI
@@ -120,7 +120,7 @@ Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件�
 
 * **获取群集状态**。 在左窗格中展开“群集”，并单击“关于”。 此时会显示群集状态详细信息，例如总分配内存、所用核心数、群集资源管理器状态、群集版本等。
   
-    ![启动群集仪表板 yarn](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "启动群集仪表板 yarn")
+    ![HDInsight 启动群集仪表板 yarn](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "HDInsight 启动群集仪表板 yarn")
 * **获取节点状态**。 在左窗格中展开“群集”，并单击“节点”。 此时会列出群集中的所有节点、每个节点的 HTTP 地址、分配给每个节点的资源等。
 * **监视作业状态**。 在左窗格中展开“群集”，并单击“应用程序”列出群集中的所有作业。 若要查看特定状态（例如“新”、“已提交”、“正在运行”等）的作业，请单击“应用程序”下的相应链接。 可以进一步单击作业名称以查找该作业的详细信息，例如输出、日志等。
 

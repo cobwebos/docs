@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3ff9a694dca0d2a205c27569a7c744f482b662ec
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3e954a6c714e525e5bbefe8f62c798cf8ac9a517
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100645"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036389"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -267,11 +267,22 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 - 故障转移群集的名称
 - 故障转移群集的 IP 地址。 可以使用群集节点所在的同一 Azure 虚拟网络和子网中未使用的 IP 地址。
 
-以下 PowerShell 可创建故障转移群集。 使用节点的名称（虚拟机名称）以及 Azure VNET 中可用的 IP 地址更新脚本：
+#### <a name="windows-server-2008-2016"></a>Windows Server 2008-2016
+
+以下 PowerShell 为**Windows Server 2008-2016**创建一个故障转移群集。 使用节点的名称（虚拟机名称）以及 Azure VNET 中可用的 IP 地址更新脚本：
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
+
+#### <a name="windows-server-2019"></a>Windows Server 2019
+
+以下 PowerShell 为 Windows Server 2019 创建一个故障转移群集。  有关详细信息，请查看博客[故障转移群集：群集网络对象](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)。  使用节点的名称（虚拟机名称）以及 Azure VNET 中可用的 IP 地址更新脚本：
+
+```powershell
+New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
+```
+
 
 ### <a name="create-a-cloud-witness"></a>创建云见证
 

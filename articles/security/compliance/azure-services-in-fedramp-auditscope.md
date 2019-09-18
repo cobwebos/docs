@@ -1,24 +1,24 @@
 ---
 title: FedRAMP 和 DoD SRG 审核范围中的 Azure 服务
 description: 本文包含适用于 Azure 公共和 Azure 政府的表，这些表说明了 FedRAMP （中等对比高）和 DoD SRG （影响级别为2、4或5）已达到给定服务的审核范围。
-author: davib
-ms.author: davib
+author: Jain-Garima
+ms.author: gjain
 ms.date: 5/17/2019
 ms.topic: article
 ms.service: security
 ms.reviewer: rochiou
-ms.openlocfilehash: bdf63601e8456a2b99cee655872138ad97afe47f
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 1a0bfa4b5bfba1bae6d8bc3267aa4ceb376c79af
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375321"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076620"
 ---
 # <a name="azure-services-by-fedramp-and-dod-cc-srg-audit-scope"></a>按 FedRAMP 和 DoD CC SRG 审核范围的 Azure 服务
 
 Microsoft 的政府云服务应满足美国联邦风险 & 授权管理计划（FedRAMP）和美国国防部的苛刻要求，从信息影响级别2到步骤5。 部署受保护的服务，包括 Azure 政府版、Office 365 美国政府和 Dynamics 365 政府、联邦和国防机构可以利用一系列丰富的符合性服务。
 
-本文提供了跨 Azure 的范围内云服务和用于 FedRAMP 的 Azure 政府版和 DoD CC SRG 符合性产品/服务的详细列表。
+本文提供了跨 Azure 公共服务的范围内云服务和用于 FedRAMP 的 Azure 政府版和 DoD CC SRG 符合性产品/服务的详细列表。
 
 #### <a name="terminologysymbols-used"></a>使用的术语/符号
 
@@ -29,7 +29,7 @@ Microsoft 的政府云服务应满足美国联邦风险 & 授权管理计划（F
 * 计划 2019 = 表示正在进行服务检查，并将在2019中实现证书。
 
 ## <a name="azure-public-services-by-audit-scope"></a>按审核范围的 Azure 公共服务
-| _上次更新时间：2019年8月_ |
+| _上次更新时间：2019年9月_ |
 
 | Azure 服务| DoD CC SRG IL 2 | FedRAMP 中等 | FedRAMP 高 | 计划2019 |
 | ------------ |:---------------:|:----------------:|:------------:|:------------:|
@@ -39,14 +39,15 @@ Microsoft 的政府云服务应满足美国联邦风险 & 授权管理计划（F
 | [自动化](https://azure.microsoft.com/services/automation/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Active Directory （免费版和基本版）](https://azure.microsoft.com/services/active-directory/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Active Directory （高级 P1 + P2）](https://azure.microsoft.com/services/active-directory/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) |  |  |  | :heavy_check_mark: |
-| [Azure Active Directory 域服务](https://azure.microsoft.com/services/active-directory-ds/) | |  |  | :heavy_check_mark: |
+| [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Azure Active Directory 域服务](https://azure.microsoft.com/services/active-directory-ds/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Azure Active Directory 预配服务](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/user-provisioning)| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure 高级威胁防护](https://azure.microsoft.com/features/azure-advanced-threat-protection/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure 顾问](https://azure.microsoft.com/services/advisor/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [用于 FHIR 的 Azure API](https://azure.microsoft.com/services/azure-api-for-fhir/) |  |  |  | :heavy_check_mark: |
 | [Azure 机器人服务](https://docs.microsoft.com/azure/bot-service/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Azure 存档存储](https://azure.microsoft.com/services/storage/archive/) |  |  |  | :heavy_check_mark: |
+| [Azure 存档存储](https://azure.microsoft.com/services/storage/archive/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure 容器服务](https://docs.microsoft.com/azure/container-service/) |  |  |  | :heavy_check_mark: |
 | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure 成本管理](https://azure.microsoft.com/services/cost-management/) | |  |  | :heavy_check_mark: |
@@ -55,12 +56,12 @@ Microsoft 的政府云服务应满足美国联邦风险 & 授权管理计划（F
 | [Azure Data Lake Storage Gen1](https://azure.microsoft.com/services/storage/data-lake-storage/) |  |  |  | :heavy_check_mark: |
 | [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Azure Database for MariaDB](https://azure.microsoft.com/services/mariadb/) |  |  |  | :heavy_check_mark: |
+| [Azure Database for MariaDB](https://azure.microsoft.com/services/mariadb/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure 数据库迁移服务](https://azure.microsoft.com/services/database-migration/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Databricks](https://azure.microsoft.com/services/databricks/) |  |  |  |  |
 | [Azure Data Lake 存储](https://azure.microsoft.com/services/storage/data-lake-storage/) |  |  |  | :heavy_check_mark: |
 | [Azure DDoS 防护](https://azure.microsoft.com/services/ddos-protection/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Azure 专用 HSM](https://azure.microsoft.com/services/azure-dedicated-hsm/) |  |  |  | :heavy_check_mark: |
+| [Azure 专用 HSM](https://azure.microsoft.com/services/azure-dedicated-hsm/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure DevOps （以前称为 VSTS）](https://azure.microsoft.com/services/devops/) | |  |  | |
 | [Azure 开发测试实验室](https://azure.microsoft.com/services/devtest-lab/) |  |  |  | :heavy_check_mark: |
 | [Azure DNS](https://azure.microsoft.com/services/dns/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
@@ -98,13 +99,14 @@ Microsoft 的政府云服务应满足美国联邦风险 & 授权管理计划（F
 | [容器注册表](https://azure.microsoft.com/services/container-registry/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [内容交付网络](https://azure.microsoft.com/services/cdn/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [数据目录](https://azure.microsoft.com/services/data-catalog/) |  |  |  | :heavy_check_mark: |
-| [数据工厂](https://azure.microsoft.com/services/data-factory/) |  |  |  | :heavy_check_mark: |
+| [数据工厂](https://azure.microsoft.com/services/data-factory/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Dynamics 365 for Finance and Operations](https://dynamics.microsoft.com/en-us/finance-and-operations/overview/) |  |  |  | :heavy_check_mark: |
 | [事件网格](https://azure.microsoft.com/services/event-grid/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Defender 高级威胁防护](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Microsoft Defender 高级威胁防护](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [事件中心](https://azure.microsoft.com/services/event-hubs/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [ExpressRoute](https://azure.microsoft.com/services/expressroute/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [流](https://docs.microsoft.com/flow/getting-started) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [函数](https://azure.microsoft.com/services/functions/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [函数](https://azure.microsoft.com/services/functions/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
 | [HDInsight](https://azure.microsoft.com/services/hdinsight/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [导入/导出](https://azure.microsoft.com/services/storage/import-export/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [IoT Central](https://azure.microsoft.com/services/iot-central/) |  |  |  | :heavy_check_mark: |
@@ -151,7 +153,7 @@ Microsoft 的政府云服务应满足美国联邦风险 & 授权管理计划（F
 
 
 ## <a name="azure-government-services-by-audit-scope"></a>按审核范围的 Azure 政府服务
-| _上次更新时间：2019年8月_ |
+| _上次更新时间：2019年9月_ |
 
 | Azure 服务 | DoD CC SRG IL 2 | DoD CC SRG IL 4 | DoD CC SRG IL 5 | FedRAMP 高 | 计划2019
 | ------------- |:---------------:|:---------------:|:---------------:|:------------:|:------------:
@@ -164,19 +166,19 @@ Microsoft 的政府云服务应满足美国联邦风险 & 授权管理计划（F
 | [Azure 高级威胁防护](https://azure.microsoft.com/features/azure-advanced-threat-protection/)  |  |  |  |  | :heavy_check_mark:
 | [Azure 顾问](https://azure.microsoft.com/services/advisor/) | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure 蓝图](https://azure.microsoft.com/services/blueprints/)  |  |  |  |  | :heavy_check_mark:
-| [Azure 机器人服务](https://docs.microsoft.com/azure/bot-service/) |  |  |  |  | :heavy_check_mark:
-| [Azure 存档存储](https://azure.microsoft.com/services/storage/archive/) |  |  |  |  | :heavy_check_mark:
+| [Azure 蓝图](https://azure.microsoft.com/services/blueprints/)  | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
+| [Azure 机器人服务](https://docs.microsoft.com/azure/bot-service/) | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
+| [Azure 存档存储](https://azure.microsoft.com/services/storage/archive/) | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
 | [容器注册表](https://azure.microsoft.com/services/container-registry/) | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure 成本管理](https://azure.microsoft.com/services/cost-management/)  |  |  |  |  | :heavy_check_mark:
-| [Azure Data Box Edge](https://azure.microsoft.com/services/databox/edge/) |  |  |  |  | :heavy_check_mark:
+| [Azure Data Box Edge](https://azure.microsoft.com/services/databox/edge/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)  | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [Azure DB for MySQL](https://azure.microsoft.com/services/mysql/)| :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [用于 PostgreSQL 的 Azure DB](https://azure.microsoft.com/services/postgresql/) | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [Azure DB for MariaDB](https://azure.microsoft.com/services/mariadb/)  | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [Azure DDoS 防护](https://azure.microsoft.com/services/ddos-protection/) |  |  |  |  | :heavy_check_mark:
-| [Azure 专用 HSM](https://azure.microsoft.com/services/azure-dedicated-hsm/) |  |  |  |  | :heavy_check_mark:
+| [Azure 专用 HSM](https://azure.microsoft.com/services/azure-dedicated-hsm/) | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
 | [Azure 开发测试实验室](https://azure.microsoft.com/services/devtest-lab/)  | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [Azure DNS](https://azure.microsoft.com/services/dns/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)  | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:

@@ -1,7 +1,7 @@
 ---
 title: 什么是自动 ML ML/automl
-titleSuffix: Azure Machine Learning service
-description: 了解 Azure 机器学习服务如何自动选取算法，以及如何通过它来生成模型，以便使用你提供的参数和条件为模型选择最佳算法，从而节省时间。
+titleSuffix: Azure Machine Learning
+description: 了解 Azure 机器学习如何自动为你选择算法，并使用提供的参数和标准为你的模型选择最佳算法，从而为你节省时间，从而为你节省时间。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7347be086cd9e85dda7b8271548ccb44e8114ff
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 32ff1ba599f4f95cc413bc2bb2c3bbc442405022
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882032"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035708"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -39,7 +39,7 @@ ms.locfileid: "70882032"
 
 ## <a name="how-automated-ml-works"></a>自动 ML ML 的工作方式
 
-使用**Azure 机器学习服务**，可以使用以下步骤来设计和运行自动 ML 培训试验：
+使用**Azure 机器学习**，可以使用以下步骤来设计和运行自动 ML 培训试验：
 
 1. **确定要解决的 ML 问题**：分类、预测或回归
 
@@ -53,7 +53,7 @@ ms.locfileid: "70882032"
 
   ![自动机器学习](./media/how-to-automated-ml/automl-concept-diagram2.png)
 
-在训练过程中，Azure 机器学习服务会创建多个并行管道，尝试使用不同的算法和参数。 一旦到达试验中定义的退出条件，它就会停止。
+在训练过程中，Azure 机器学习会创建多个尝试不同算法和参数的并行管道。 一旦到达试验中定义的退出条件，它就会停止。
 
 你还可以检查记录的运行信息，其中[包含](how-to-understand-automated-ml.md)在运行期间收集的指标。 训练运行会生成一个 Python 序列化对象`.pkl` （文件），其中包含模型和数据预处理。
 

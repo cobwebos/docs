@@ -1,7 +1,7 @@
 ---
 title: 自动训练时序预测模型
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务使用自动机器学习来训练时序预测回归模型。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习通过自动化机器学习来训练时序预测回归模型。
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -10,16 +10,16 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: e75de16d0e16bc639a0439220a1c9dfe53e1689b
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: c49d8000888d4094ea1df47920c1927747927f5c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879061"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035047"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
-本文介绍如何在 Azure 机器学习服务中使用自动化机器学习来训练时序预测回归模型。 配置预测模型类似于使用自动机器学习设置标准回归模型，但存在某些配置选项和预处理步骤来处理时序数据。 下面的示例演示如何执行以下操作：
+本文介绍如何使用 Azure 机器学习中的自动化机器学习来训练时序预测回归模型。 配置预测模型类似于使用自动机器学习设置标准回归模型，但存在某些配置选项和预处理步骤来处理时序数据。 下面的示例演示如何执行以下操作：
 
 * 准备时序建模的数据
 * 在[`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig)对象中配置特定的时序参数
@@ -37,7 +37,7 @@ ms.locfileid: "70879061"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
+* Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 * 本文假设基本熟悉如何设置自动化机器学习试验。 按照[教程](tutorial-auto-train-models.md)或操作[方法](how-to-configure-auto-train.md)，查看基本的自动化机器学习试验设计模式。
 
 ## <a name="preparing-data"></a>准备数据

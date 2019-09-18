@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 4554214b74b4d09fa40e355270208bebda4076b7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775255"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037213"
 ---
 # <a name="add-storage"></a>添加存储
 
@@ -27,13 +27,15 @@ ms.locfileid: "70775255"
 
 使用缓存创建向导的 "**存储目标**" 选项卡来定义在创建缓存实例时的存储。
 
-!["存储目标" 页的屏幕截图](media/create-targets.png)
+![存储目标页面的屏幕截图](media/hpc-cache-storage-targets-pop.png)
 
 单击 "**添加存储目标**" 链接以添加存储。
 
 ## <a name="add-storage-targets-from-the-cache"></a>从缓存添加存储目标
 
 在 Azure 门户中，打开缓存实例，并单击左侧边栏中的 "**存储目标**"。 "存储目标" 页将列出所有现有目标，并提供一个用于添加新目标的链接。
+
+![边栏上的 "存储目标" 链接的屏幕截图，在 "配置" 标题下，这介于 "类别标题" 设置和 "监视" 之间](media/hpc-cache-storage-targets-sidebar.png)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>添加新的 Azure Blob 存储目标
 
@@ -52,15 +54,13 @@ ms.locfileid: "70775255"
 
 * **虚拟命名空间路径**-为此存储目标设置面向客户端的 filepath。 阅读[配置聚合命名空间](hpc-cache-namespace.md)，了解有关虚拟命名空间功能的详细信息。
 
-<!--  The namespace path value must end with a slash (``/``) and should not start with one.  -->
-
 完成后，单击 **"确定"** 以添加存储目标。
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>向你的帐户添加访问控制角色
 
 Azure HPC 缓存使用[基于角色的访问控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/index)来授权缓存应用程序访问 Azure Blob 存储目标的存储帐户。
 
-存储帐户所有者必须为用户 "StorageCache 资源提供程序" 显式添加 "滚动[存储帐户参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)" 和 "[存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)"。
+存储帐户所有者必须为用户 "StorageCache 资源提供程序" 显式添加角色 "[存储帐户参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)" 和 "[存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)"。
 
 可以提前完成此操作，也可以通过单击页面上添加 Blob 存储目标的链接来完成此操作。
 

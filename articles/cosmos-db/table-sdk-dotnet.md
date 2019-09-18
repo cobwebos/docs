@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: aa9752cdc2148036b3edff8a6002dc81ebff6312
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 5e98c40384207c77b4ea7e9557a7d1ebebd95e47
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036306"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058588"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明
 
@@ -38,6 +38,10 @@ ms.locfileid: "69036306"
 >
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
+
+* Bug 修复
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 
@@ -76,7 +80,7 @@ ms.locfileid: "69036306"
 
 Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
 
-`Microsoft.Azure.CosmosDB.Table`该库目前仅可用于 .NET Framework, 并处于维护模式, 即将弃用。 新特性和功能以及优化仅添加到 .NET Standard 库[Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)中, 因此建议升级到 [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)。
+`Microsoft.Azure.CosmosDB.Table`该库目前仅可用于 .NET Framework，并处于维护模式，即将弃用。 新特性和功能以及优化仅添加到 .NET Standard 库[Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)中, 因此建议升级到 [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)。
 
 [Windowsazure.storage-windowsazure.storage-premiumtable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview)预览版包已弃用。 WindowsAzure.Storage-PremiumTable SDK 将在 2018 年 11 月 15 日停用，到时将不允许向已停用的 SDK 发出请求。 
 
@@ -85,6 +89,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.1.2](#2.1.2) |2019年9月16日| |
 | [2.1.0](#2.1.0) |2019 年 1 月 22 日|2020年4月01日 |
 | [2.0.0](#2.0.0) |2018 年 9 月 26 日|2020年3月01日 |
 | [1.1.3](#1.1.3) |2018 年 7 月 17 日|2019年12月01日 |

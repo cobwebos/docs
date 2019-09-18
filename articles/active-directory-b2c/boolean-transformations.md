@@ -10,24 +10,24 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0a08849340d19055a03f85ca401757a81cd2c95d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da4fc4704ee72210e180ef95fe6a821c8d116fa2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511740"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064579"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文演示了在 Azure Active Directory (Azure AD) B2C 中使用标识体验框架架构的布尔型声明转换的过程。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
+本文提供了有关在 Azure Active Directory B2C （Azure AD B2C）中使用标识体验框架架构的布尔声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="andclaims"></a>AndClaims
 
 执行两个布尔型 inputClaims 的 And 运算并使用运算结果设置 outputClaim。
 
-| Item  | TransformationClaimType  | 数据类型  | 说明 |
+| 项  | TransformationClaimType  | 数据类型  | 说明 |
 |-------| ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim1 | boolean | 第一个要评估的 ClaimType。 |
 | InputClaim | inputClaim2  | boolean | 第二个要评估的 ClaimType。 |
@@ -40,7 +40,7 @@ ms.locfileid: "66511740"
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isEmailNotExist" TransformationClaimType="inputClaim1" />
     <InputClaim ClaimTypeReferenceId="isSocialAccount" TransformationClaimType="inputClaim2" />
-  </InputClaims>                    
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="presentEmailSelfAsserted" TransformationClaimType="outputClaim" />
   </OutputClaims>
@@ -60,12 +60,12 @@ ms.locfileid: "66511740"
 
 检查两个声明的布尔值是否相等，如果不等，将引发异常。
 
-| Item | TransformationClaimType  | 数据类型  | 说明 |
+| 项 | TransformationClaimType  | 数据类型  | 说明 |
 | ---- | ------------------------ | ---------- | ----- |
 | inputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
 
-AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationBooleanValueIsNotEqual  自断言技术配置文件元数据控制向用户显示的技术配置文件。
+AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationBooleanValueIsNotEqual 自断言技术配置文件元数据控制向用户显示的技术配置文件。
 
 ![AssertStringClaimsAreEqual 执行](./media/boolean-transformations/assert-execution.png)
 
@@ -93,7 +93,7 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
 </TechnicalProfile>
 ```
 
-自断言技术配置文件调用验证 login-NonInteractive  技术配置文件。
+自断言技术配置文件调用验证 login-NonInteractive 技术配置文件。
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -117,7 +117,7 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
 
 执行布尔型 inputClaim 的 Not 运算并使用运算结果设置 outputClaim。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | boolean | 要运算的声明。 |
 | OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType（true 或 false）。 |
@@ -141,11 +141,11 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
 - 输出声明：
     - **outputClaim**: true
 
-## <a name="orclaims"></a>OrClaims 
+## <a name="orclaims"></a>OrClaims
 
 执行两个布尔型 inputClaims 的 Or 运算并使用运算结果设置 outputClaim。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | boolean | 第一个要评估的 ClaimType。 |
 | InputClaim | inputClaim2 | boolean | 第二个要评估的 ClaimType。 |
@@ -158,7 +158,7 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isLastTOSAcceptedNotExists" TransformationClaimType="inputClaim1" />
     <InputClaim ClaimTypeReferenceId="isLastTOSAcceptedGreaterThanNow" TransformationClaimType="inputClaim2" />
-  </InputClaims>                    
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="presentTOSSelfAsserted" TransformationClaimType="outputClaim" />
   </OutputClaims>

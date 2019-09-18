@@ -10,27 +10,27 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42129870c6ab2bb5e58bdf9aaa323a3d64b479f8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 12ddbe9f43baf68f6c11c9b720a0f684316af46a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644926"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065321"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>将 REST API 声明交换添加到 Azure Active Directory B2C 中的自定义策略
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-可以将与 RESTful API 的交互添加到 Azure Active Directory (Azure AD) B2C 中的[自定义策略](active-directory-b2c-overview-custom.md)。 本文介绍如何创建与 RESTful services 交互的 Azure AD B2C 用户旅程。
+可以在 Azure Active Directory B2C （Azure AD B2C）中将与 RESTful API 的交互添加到[自定义策略](active-directory-b2c-overview-custom.md)中。 本文介绍如何创建与 RESTful services 交互的 Azure AD B2C 用户旅程。
 
-交互包括声明 REST API 声明和 Azure AD B2C 之间的信息交换。 声明交换具有以下特征:
+交互包括声明 REST API 声明和 Azure AD B2C 之间的信息交换。 声明交换具有以下特征：
 
 - 可以设计为业务流程步骤。
 - 可以触发外部操作。 例如，它可能会在外部数据库中记录事件。
 - 可用于提取值并将其存储在用户数据库中。
 - 可以更改执行流。
 
-本文中所述的方案包括以下操作:
+本文中所述的方案包括以下操作：
 
 1. 在外部系统中查找用户。
 2. 获取用户完成注册所在的城市。
@@ -39,13 +39,13 @@ ms.locfileid: "69644926"
 ## <a name="prerequisites"></a>先决条件
 
 - 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
-- 要交互的 REST API 终结点。 本文使用简单的 Azure 函数作为示例。 若要创建 Azure 函数, 请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)。
+- 要交互的 REST API 终结点。 本文使用简单的 Azure 函数作为示例。 若要创建 Azure 函数，请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)。
 
 ## <a name="prepare-the-api"></a>准备 API
 
-在本部分中, 将准备 Azure 函数以便接收的值`email`, 然后返回的`city`值可由 Azure AD B2C 用作声明。
+在本部分中，将准备 Azure 函数以便接收的值`email`，然后返回的`city`值可由 Azure AD B2C 用作声明。
 
-更改创建的 Azure 函数的 run.csx 文件, 以使用以下代码:
+更改创建的 Azure 函数的 run.csx 文件，以使用以下代码：
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -86,7 +86,7 @@ public class ResponseContent
 
 技术配置文件为声明交换提供配置。
 
-打开*trustframeworkextensions.xml*文件, 并在**ClaimsProviders**元素中添加以下**ClaimsProvider** xml 元素。
+打开*trustframeworkextensions.xml*文件，并在**ClaimsProviders**元素中添加以下**ClaimsProvider** xml 元素。
 
 ```XML
 <ClaimsProvider>
@@ -115,9 +115,9 @@ public class ResponseContent
 </ClaimsProvider>
 ```
 
-**InputClaims**元素定义发送到 REST 服务的声明。 在此示例中, 声明`givenName`的值作为声明`email`发送给 REST 服务。 **OutputClaims**元素定义了需要来自 REST 服务的声明。
+**InputClaims**元素定义发送到 REST 服务的声明。 在此示例中，声明`givenName`的值作为声明`email`发送给 REST 服务。 **OutputClaims**元素定义了需要来自 REST 服务的声明。
 
-上述`AuthenticationType`注释并`AllowInsecureAuthInProduction`指定移动到生产环境时应进行的更改。 若要了解如何保护用于生产的 RESTful Api, 请参阅通过[证书身份验证](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)实现基本身份验证和安全 RESTful Api[安全 RESTful api](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) 。
+上述`AuthenticationType`注释并`AllowInsecureAuthInProduction`指定移动到生产环境时应进行的更改。 若要了解如何保护用于生产的 RESTful Api，请参阅通过[证书身份验证](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)实现基本身份验证和安全 RESTful Api[安全 RESTful api](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) 。
 
 ## <a name="add-the-claim-definition"></a>添加声明定义
 
@@ -140,7 +140,7 @@ public class ResponseContent
 
 在许多用例中，可将 REST API 调用用作业务流程步骤。 用户成功完成某个任务（例如首次注册）后，可以使用业务流程步骤对外部系统进行更新；或者使用它来对配置文件进行更新，以保持信息同步。 在本例中，业务流程步骤用于在完成配置文件编辑后，对提供给应用程序的信息做出补充。
 
-向配置文件编辑用户旅程中添加步骤。 对用户进行身份验证后 (以下 XML 中的业务流程步骤 1-4), 并且用户提供了更新的配置文件信息 (步骤 5)。 将*trustframeworkbase.xml*文件中的配置文件编辑用户旅程 XML 代码复制到**UserJourneys**元素中的*trustframeworkextensions.xml*文件。 然后作为步骤6进行修改。
+向配置文件编辑用户旅程中添加步骤。 对用户进行身份验证后（以下 XML 中的业务流程步骤1-4），并且用户提供了更新的配置文件信息（步骤5）。 将*trustframeworkbase.xml*文件中的配置文件编辑用户旅程 XML 代码复制到**UserJourneys**元素中的*trustframeworkextensions.xml*文件。 然后作为步骤6进行修改。
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
@@ -150,7 +150,7 @@ public class ResponseContent
 </OrchestrationStep>
 ```
 
-用户旅程的最终 XML 应如下例所示:
+用户旅程的最终 XML 应如下例所示：
 
 ```XML
 <UserJourney Id="ProfileEdit">
@@ -212,7 +212,7 @@ public class ResponseContent
 
 编辑*profileedit.xml*文件并将其添加`<OutputClaim ClaimTypeReferenceId="city" />`到**OutputClaims**元素中。
 
-添加新声明后, 技术配置文件如下例所示:
+添加新声明后，技术配置文件如下例所示：
 
 ```XML
 <TechnicalProfile Id="PolicyProfile">
@@ -229,13 +229,13 @@ public class ResponseContent
 
 ## <a name="upload-your-changes-and-test"></a>上传更改并进行测试
 
-1. （可选：）在继续操作之前, 保存文件的现有版本 (下载)。
-2. 上传*trustframeworkextensions.xml*和*profileedit.xml* , 然后选择覆盖现有文件。
+1. （可选：）在继续操作之前，保存文件的现有版本（下载）。
+2. 上传*trustframeworkextensions.xml*和*profileedit.xml* ，然后选择覆盖现有文件。
 3. 选择**B2C_1A_ProfileEdit**。
 4. 对于自定义策略的 "概述" 页上的 "**选择应用程序**", 请选择前面注册的名为*webapp1*的 web 应用程序。 请确保**回复 URL**是`https://jwt.ms`。
-4. 选择 "**立即运行**"。 用你的帐户凭据登录, 然后单击 "**继续**"。
+4. 选择 "**立即运行**"。 用你的帐户凭据登录，然后单击 "**继续**"。
 
-如果所有内容都已正确设置, 则令牌将包含带有`city`值`Redmond`的新声明。
+如果所有内容都已正确设置，则令牌将包含带有`city`值`Redmond`的新声明。
 
 ```JSON
 {
@@ -261,7 +261,7 @@ public class ResponseContent
 
 [参考：RESTful 技术配置文件](restful-technical-profile.md)
 
-若要了解如何保护 Api, 请参阅以下文章:
+若要了解如何保护 Api，请参阅以下文章：
 
 * [使用基本身份验证（用户名和密码）保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [使用客户端证书保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

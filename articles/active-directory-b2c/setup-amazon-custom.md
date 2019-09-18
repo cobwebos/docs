@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 46b58aad8a5cb71744aca9baaa3a27d4d1efe8e2
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: bac37eed33535962ac0f1e6dbb34d8c396507682
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655259"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063630"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置 Amazon 帐户登录
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介绍如何让 Amazon 帐户的用户在 Azure Active Directory (Azure AD) B2C 中使用[自定义策略](active-directory-b2c-overview-custom.md)登录。
+本文介绍如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](active-directory-b2c-overview-custom.md)，从 Amazon 帐户启用用户登录。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,27 +33,27 @@ ms.locfileid: "67655259"
 若要让 Amazon 帐户的用户登录，需要创建一个 Amazon 应用程序。
 
 1. 使用 Amazon 帐户凭据登录 [Amazon 开发人员中心](https://login.amazon.com/)。
-2. 如果未曾登录过，请单击“注册”  ，按照开发人员注册步骤，并接受策略。
-3. 选择“注册新应用程序”  。
-4. 输入“名称”  、“说明”、  和“隐私声明 URL”  ，然后单击“保存”  。 隐私声明是你管理的页面，用于向用户提供隐私信息。
-5. 在“Web 设置”  部分中，复制“客户端 ID”  的值。 选择“显示机密”  来获取客户端机密，然后复制它。 将 Amazon 帐户配置为租户中的标识提供者时需要这两个值。 “客户端密钥”  是一个重要的安全凭据。
-6. 在“Web 设置”  部分中，选择“编辑”  ，然后在“允许的 JavaScript 来源”  中输入 `https://your-tenant-name.b2clogin.com`并在“允许的返回 URL”  中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称。 输入租户名称时，全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
-7. 单击“保存”  。
+2. 如果未曾登录过，请单击“注册”，按照开发人员注册步骤，并接受策略。
+3. 选择“注册新应用程序”。
+4. 输入“名称”、“说明”、和“隐私声明 URL”，然后单击“保存”。 隐私声明是你管理的页面，用于向用户提供隐私信息。
+5. 在“Web 设置”部分中，复制“客户端 ID”的值。 选择“显示机密”来获取客户端机密，然后复制它。 将 Amazon 帐户配置为租户中的标识提供者时需要这两个值。 “客户端密钥”是一个重要的安全凭据。
+6. 在“Web 设置”部分中，选择“编辑”，然后在“允许的 JavaScript 来源”中输入 `https://your-tenant-name.b2clogin.com`并在“允许的返回 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称。 输入租户名称时，全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
+7. 单击“保存”。
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-4. 在“概述”页上选择“标识体验框架”  。
-5. 选择“策略密钥”  ，然后选择“添加”  。
-6. 对于“选项”  ，请选择 `Manual`。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+4. 在“概述”页上选择“标识体验框架”。
+5. 选择“策略密钥”，然后选择“添加”。
+6. 对于“选项”，请选择 `Manual`。
 7. 输入策略密钥的**名称**。 例如， `AmazonSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
-8. 在“机密”中，输入前面记录的应用程序机密  。
-9. 在“密钥用法”处选择 `Signature`。 
-10. 单击“创建”。 
+8. 在“机密”中，输入前面记录的应用程序机密。
+9. 在“密钥用法”处选择 `Signature`。
+10. 单击“创建”。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -112,9 +112,9 @@ ms.locfileid: "67655259"
 
 现已配置策略，因此 Azure AD B2C 知道如何与 Azure AD 目录通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
 
-1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”   。
-2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件  。
-3. 单击“上传” 。 
+1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
+2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
+3. 单击“上传” 。
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
 
@@ -157,12 +157,12 @@ ms.locfileid: "67655259"
 通过在租户中创建的应用程序与 Azure AD B2C 进行通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-4. 选择“应用程序”，然后选择“添加”   。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+4. 选择“应用程序”，然后选择“添加”。
 5. 输入应用程序的名称，例如 *testapp1*。
-6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`   。
-7. 单击“创建”。 
+6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`。
+7. 单击“创建”。
 
 ## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 
@@ -173,4 +173,4 @@ ms.locfileid: "67655259"
 3. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_amazon`
 4. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，以匹配所创建的新用户旅程的 ID (SignUpSignAmazon)。
 5. 保存更改并上传文件，然后选择列表中的新策略。
-6. 确保在“选择应用程序”字段选择你创建的 Azure AD B2C 应用程序，然后单击“立即运行”对其进行测试   。
+6. 确保在“选择应用程序”字段选择你创建的 Azure AD B2C 应用程序，然后单击“立即运行”对其进行测试。

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 中的自定义策略中定义 OpenID Connect 技术配置文件 |Microsoft Docs
-description: 在 Azure Active Directory B2C 中的自定义策略中定义 OpenID Connect 技术配置文件。
+title: 在 Azure Active Directory B2C 的自定义策略中定义 OpenID Connect 技术配置文件 | Microsoft Docs
+description: 在 Azure Active Directory B2C 的自定义策略中定义 OpenID Connect 技术配置文件。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1e8f03b17c5e8ea68affa9fe83875382fd5d8512
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: b1262d34f93ecbcdb71586fd551d28fde477f92a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716703"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063943"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OpenID Connect 技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C 支持[OpenID connect](https://openid.net/2015/04/17/openid-connect-certification-program/)协议标识提供者。 OpenID Connect 1.0 在 OAuth 2.0 基础上提供一个标识层，代表现代身份验证协议的最新技术。 使用 OpenID Connect 技术配置文件, 可以与 OpenID Connect 的标识提供者 (如 Azure AD) 联合。 与标识提供者联合允许用户使用其现有的社交或企业标识登录。
+Azure Active Directory B2C （Azure AD B2C）为[OpenID connect](https://openid.net/2015/04/17/openid-connect-certification-program/)协议标识提供程序提供支持。 OpenID Connect 1.0 在 OAuth 2.0 基础上提供一个标识层，代表现代身份验证协议的最新技术。 使用 OpenID Connect 技术配置文件，可以与基于 OpenID Connect 的标识提供者（如 Azure AD）联合。 与标识提供者联合允许用户使用其现有的社交或企业标识登录。
 
 ## <a name="protocol"></a>Protocol
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) B2C 支持[OpenID connect](https://openid.net/
 
 ## <a name="output-claims"></a>输出声明
 
-**OutputClaims**元素包含由 OpenID connect 标识提供程序返回的声明列表。 可能需要将策略中定义的声明名称映射到标识提供者中定义的名称。 如果设置了 `DefaultValue` 属性，则还可以包含标识提供者不会返回的声明。
+**OutputClaims** 元素包含 OpenID Connect 标识提供者返回的声明列表。 可能需要将策略中定义的声明名称映射到标识提供者中定义的名称。 如果设置了 `DefaultValue` 属性，则还可以包含标识提供者不会返回的声明。
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
@@ -98,11 +98,11 @@ Azure Active Directory (Azure AD) B2C 支持[OpenID connect](https://openid.net/
 
 ## <a name="redirect-uri"></a>重定向 URI
 
-配置标识提供者的重定向 URI 时，请输入 `https://login.microsoftonline.com/te/tenant/oauth2/authresp`。 请确保将**租户**替换为你的租户名称 (例如 contosob2c.onmicrosoft.com) 或租户的 ID。 重定向 URI 需要采用全小写形式。
+配置标识提供者的重定向 URI 时，请输入 `https://login.microsoftonline.com/te/tenant/oauth2/authresp`。 请确保将**租户**替换为你的租户名称（例如 contosob2c.onmicrosoft.com）或租户的 ID。 重定向 URI 需要采用全小写形式。
 
 如果使用 **b2clogin.com** 域而不是 **login.microsoftonline.com**，请确保使用 b2clogin.com 而不是 login.microsoftonline.com。
 
-示例:
+例如：
 
 - [使用自定义策略添加 Microsoft Account (MSA) 作为标识提供者](active-directory-b2c-custom-setup-msa-idp.md)
 - [使用 Azure AD 帐户登录](active-directory-b2c-setup-aad-custom.md)

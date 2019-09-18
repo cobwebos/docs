@@ -1,6 +1,6 @@
 ---
 title: 创建数据集以访问包含 azureml 数据集的数据
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 了解如何从各种源创建数据集，以及如何将数据集注册到工作区
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 8f684a9c0c40774c8c17a08801997c569be74c8d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 6c3a8d62bd6b3650f834540bd7bb13027792b091
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993343"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076969"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>在 Azure 机器学习中创建和访问数据集（预览）
 
@@ -34,9 +34,9 @@ ms.locfileid: "70993343"
 
 若要创建和使用数据集，需要：
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
-* [Azure 机器学习服务工作区](how-to-manage-workspace.md)
+* [Azure 机器学习工作区](how-to-manage-workspace.md)
 
 * [安装的适用于 Python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包含 azureml 数据集包。
 
@@ -45,8 +45,10 @@ ms.locfileid: "70993343"
 
 ## <a name="dataset-types"></a>数据集类型
 
-数据集根据用户在定型中使用它们的方式分类为各种类型。 数据集类型列表：
+根据用户在定型中使用数据集的方式，将数据集分为两种类型。 
+
 * [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)通过分析提供的文件或文件列表，以表格格式表示数据。 这使你能够将数据具体化为 pandas 数据帧。 可以通过 csv、tsv、parquet 文件、SQL 查询结果等来创建对象。`TabularDataset`有关完整列表，请访问我们的[文档](https://aka.ms/tabulardataset-api-reference)。
+
 * [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py)引用数据存储或公用 url 中的单个或多个文件。 这使您能够将文件下载或装载到您的计算中。 文件可以是任何格式，这使得各种机器学习方案（包括深度学习）更广泛。
 
 若要了解有关即将发生的 API 更改的详细信息，请参阅[此处](https://aka.ms/tabular-dataset)。
@@ -55,7 +57,7 @@ ms.locfileid: "70993343"
 
 通过创建数据集，可以创建对数据源位置的引用以及其元数据的副本。 数据会保留在其现有位置，因此不会产生额外的存储成本。
 
-要使数据 Azure 机器学习服务可访问，必须从[Azure 数据存储](how-to-access-data.md)或公共 web url 中的路径创建数据集。
+要使数据可 Azure 机器学习访问，必须从[Azure 数据存储](how-to-access-data.md)或公共 web url 中的路径创建数据集。
 
 若要从[Azure 数据存储](how-to-access-data.md)创建数据集：
 
@@ -79,11 +81,11 @@ datastore = Datastore.get(workspace, datastore_name)
 
 ### <a name="create-tabulardatasets"></a>创建 TabularDatasets
 
-可以通过 SDK 或使用工作区登陆页面（预览版）创建 TabularDatasets。
+可以通过 SDK 或使用工作区登陆页面（预览版）创建 TabularDatasets。 可以从数据中的列指定时间戳，或将路径模式数据存储在中以启用 timeseries 特征，这允许按时间轻松有效地进行筛选。 
 
-#### <a name="sdk"></a>SDK 
+#### <a name="using-the-sdk"></a>使用 SDK 
 
-使用`TabularDatasetFactory`类`from_delimited_files()`的方法读取 csv 或 tsv 格式的文件，并创建未注册的 TabularDataset。 如果要从多个文件读取，结果将聚合为一个表格表示形式。
+使用`TabularDatasetFactory`类[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-)的方法读取 csv 或 tsv 格式的文件，并创建未注册的 TabularDataset。 如果要从多个文件读取，结果将聚合为一个表格表示形式。
 
 ```Python
 # create a TabularDataset from multiple paths in datastore
@@ -108,7 +110,26 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings，Mrs Bradley （Florence Briggs 。|女|38.0|1|0|电脑17599|71.2833|C85|C
 2|3|1|3|Heikkinen，未命中。 Laina|女|26.0|0|0|STON/O2。 3101282|7.9250||S
 
-#### <a name="workspace-landing-page"></a>工作区登录页 
+使用`TabularDataset`类[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)的方法可以按时间轻松有效地进行筛选。 可在[此处](http://aka.ms/azureml-tsd-notebook)找到更多示例和详细信息。 
+
+```Python
+# create a TabularDataset with timeseries trait
+datastore_paths = [(datastore, 'weather/*/*/*/data.parquet')]
+
+# get a coarse timestamp column from the path pattern
+dataset = Dataset.Tabular.from_parquet_files(path=datastore_path, partition_format='weather/{coarse_time:yyy/MM/dd}/data.parquet')
+
+# set coarse timestamp to the virtual column created, and fine grain timestamp from a column in the data
+dataset = dataset.with_timestamp_columns(fine_grain_timestamp='datetime', coarse_grain_timestamp='coarse_time')
+
+# filter with timeseries trait specific methods 
+data_slice = dataset.time_before(datetime(2019, 1, 1))
+data_slice = dataset.time_after(datetime(2019, 1, 1))
+data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1)) 
+data_slice = dataset.time_recent(timedelta(weeks=1, days=1))                  
+```
+
+#### <a name="using-the-workspace-landing-page"></a>使用工作区登录页 
 
 登录到[工作区登录页](https://ml.azure.com)，通过 web 体验创建数据集。 目前，工作区登录页仅支持创建 TabularDatasets。
 
@@ -120,7 +141,7 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 ### <a name="create-filedatasets"></a>创建 FileDatasets
 
-使用`FileDatasetFactory`类`from_files()`的方法可加载任意格式的文件，并创建未注册的 FileDataset。
+使用`FileDatasetFactory`类[`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)的方法可加载任意格式的文件，并创建未注册的 FileDataset。
 
 ```Python
 # create a FileDataset from multiple paths in datastore
@@ -138,11 +159,12 @@ web_paths = [
            ]          
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
+
 ## <a name="register-datasets"></a>注册数据集
 
 若要完成创建过程，请将数据集注册到工作区：
 
-`register()`使用方法可将数据集注册到工作区，以便与其他人共享数据集，并在各种试验中重复使用。
+[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-)使用方法可将数据集注册到工作区，以便与其他人共享数据集，并在各种试验中重复使用。
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,

@@ -1,7 +1,7 @@
 ---
 title: 设置 Python 开发环境
-titleSuffix: Azure Machine Learning service
-description: 了解在使用 Azure 机器学习服务时如何配置开发环境。 本文介绍如何使用 Conda 环境，如何创建配置文件，以及如何配置自己的基于云的笔记本服务器、Jupyter 笔记本、Azure Databricks、Ide、代码编辑器和 Data Science Virtual Machine。
+titleSuffix: Azure Machine Learning
+description: 了解如何在使用 Azure 机器学习时配置开发环境。 本文介绍如何使用 Conda 环境，如何创建配置文件，以及如何配置自己的基于云的笔记本服务器、Jupyter 笔记本、Azure Databricks、Ide、代码编辑器和 Data Science Virtual Machine。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,16 +11,16 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 933ae5b70d8e0485360a94ede1fff99c02f75a4c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860580"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034876"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
-本文介绍如何将开发环境配置为使用 Azure 机器学习服务。 Azure 机器学习服务与平台无关。 开发环境的唯一硬性要求是 Python 3。 还建议使用独立的环境，如 Anaconda 或 Virtualenv。
+本文介绍如何配置开发环境以使用 Azure 机器学习。 Azure 机器学习不可知平台。 开发环境的唯一硬性要求是 Python 3。 还建议使用独立的环境，如 Anaconda 或 Virtualenv。
 
 下表显示了本文中所述的每个开发环境以及优点和缺点。
 
@@ -40,7 +40,7 @@ ms.locfileid: "70860580"
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。 工作区是您开始使用自己的[基于云的笔记本服务器](#notebookvm)、 [DSVM](#dsvm)或[Azure Databricks](#aml-databricks)所需的所有工作区。
+Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。 工作区是您开始使用自己的[基于云的笔记本服务器](#notebookvm)、 [DSVM](#dsvm)或[Azure Databricks](#aml-databricks)所需的所有工作区。
 
 若要为[本地计算机](#local)安装 SDK 环境, 请[Jupyter Notebook 服务器](#jupyter)或[Visual Studio Code](#vscode)你还需要:
 
@@ -70,7 +70,7 @@ Azure 机器学习服务工作区。 若要创建工作区, 请参阅[创建 Azu
   + 深度学习框架的选择
 
 
-  如果你使用的是代码, VM 将包括教程和示例, 以帮助你了解如何使用 Azure 机器学习服务。 示例笔记本存储在工作区的 Azure Blob 存储帐户中, 使其可在 Vm 之间共享。 运行时, 它们还可以访问工作区的数据存储和计算资源。
+  如果你使用的是代码，VM 将包括教程和示例，以帮助你了解如何使用 Azure 机器学习。 示例笔记本存储在工作区的 Azure Blob 存储帐户中, 使其可在 Vm 之间共享。 运行时, 它们还可以访问工作区的数据存储和计算资源。
 
 + **简单安装**:随时从 Azure 机器学习工作区中创建一个。 仅提供名称并指定 Azure VM 类型。 请通过本[教程立即试用：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
@@ -145,7 +145,7 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
     print(azureml.core.VERSION)
     ```
 
-1. 若要将 DSVM 配置为使用你的 Azure 机器学习服务工作区，请参阅[创建工作区配置文件](#workspace)部分。
+1. 若要将 DSVM 配置为使用 Azure 机器学习工作区，请参阅[创建工作区配置文件](#workspace)部分。
 
 有关详细信息，请参阅 [Data Science Virtual Machine](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)。
 
@@ -255,7 +255,7 @@ Jupyter Notebook 是 [Jupyter 项目](https://jupyter.org/)的一部分。 它�
     sys.path
     ```
     
-1. 若要将 Jupyter Notebook 配置为使用你的 Azure 机器学习服务工作区，请转到[创建工作区配置文件](#workspace)部分。
+1. 若要配置 Jupyter Notebook 以使用 Azure 机器学习工作区，请参阅[创建工作区配置文件](#workspace)部分。
 
 
 ### <a id="vscode"></a>Visual Studio Code
@@ -287,7 +287,7 @@ Visual Studio Code 是跨平台代码编辑器。 它依赖于本地 Python 3 �
 ## <a name="azure-databricks"></a>Azure Databricks
 Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它通过基于 CPU 或 GPU 的计算群集提供基于笔记本的协作环境。
 
-Azure Databricks 如何与 Azure 机器学习服务一起使用:
+Azure Databricks 如何处理 Azure 机器学习：
 + 您可以使用 Spark MLlib 来训练模型, 并从 Azure Databricks 内将模型部署到 ACI/AKS。
 + 你还可以在具有 Azure Databricks 的特殊 Azure ML SDK 中使用[自动机器学习](concept-automated-ml.md)功能。
 + 您可以使用 Azure Databricks 作为[Azure 机器学习管道](concept-ml-pipelines.md)中的计算目标。
@@ -355,7 +355,7 @@ Sdk for Databricks, **_无_** 自动机器![学习 Azure 机器学习 sdk for Da
 
 ## <a id="workspace"></a>创建工作区配置文件
 
-工作区配置文件是一个 JSON 文件，用于告知 SDK 如何与 Azure 机器学习服务工作区进行通信。 该文件命名为 *config.json*，其格式如下：
+工作区配置文件是一个 JSON 文件，它告知 SDK 如何与 Azure 机器学习工作区进行通信。 该文件命名为 *config.json*，其格式如下：
 
 ```json
 {

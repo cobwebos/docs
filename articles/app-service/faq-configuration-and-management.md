@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 0b78b05e30185487df0b06d861b60b63741dc938
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 217601a430b40772eaf1f24c8e1501bc4b4fcae5
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073187"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055315"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
 
@@ -71,7 +71,7 @@ ms.locfileid: "70073187"
     * 值 = *所需时区*
 3. 选择**保存**。
 
-有关可接受的值，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”列。
+对于在 Windows 上运行的应用服务，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)文章中的 "**时区**" 列获取接受值。 对于在 Linux 上运行的应用服务，将[TZ 数据库名称](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)设置为时区值。 下面是 TZ 数据库名称的示例：美洲/Adak。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>为何我的连续 Web 作业有时会失败？
 
@@ -96,7 +96,7 @@ ms.locfileid: "70073187"
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>是否可以导出应用服务证书以在 Azure 外部使用（如用于在其他位置承载的网站）？ 
 
-应用服务证书被视为 Azure 资源。 不应在 Azure 服务外部使用它们。 无法导出它们以在 Azure 外部使用。 有关详细信息，请参阅[应用服务证书和自定义域的常见问题解答](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)。
+是的，你可以将其导出以在 Azure 外部使用。 有关详细信息，请参阅[应用服务证书和自定义域的常见问题解答](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)。
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>是否可以导出应用服务证书以用于其他 Azure 云服务？
 
@@ -166,7 +166,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>如何在应用服务 Web 应用中阻止端口？
 
-在应用服务共享租户环境中，由于基础结构的性质，因此无法阻止特定端口。 对于 Visual Studio 远程调试, TCP 端口4020、4022和4024也可能已打开。
+在应用服务共享租户环境中，由于基础结构的性质，因此无法阻止特定端口。 对于 Visual Studio 远程调试，TCP 端口4020、4022和4024也可能已打开。
 
 在应用服务环境中，可完全控制入站和出站流量。 可以使用网络安全组限制或阻止特定端口。 有关应用服务环境的详细信息，请参阅[应用服务环境简介](https://azure.microsoft.com/blog/introducing-app-service-environment/)。
 

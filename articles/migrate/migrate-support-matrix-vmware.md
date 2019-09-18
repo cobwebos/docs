@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: ecceb1177d7b7015afc92f10284a9372d0cfb4a2
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a0ca483005cf1f5aaadcd7a6107b092d581d6773
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375314"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067756"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>用于 VMware 评估和迁移的支持矩阵
 
@@ -43,10 +43,13 @@ ms.locfileid: "70375314"
 Azure 政府 | US Gov 弗吉尼亚州
 亚太区 | 东亚或东南亚
 澳大利亚 | 澳大利亚东部或澳大利亚东南部
+巴西 | 巴西南部
 加拿大 | 加拿大中部或加拿大东部
 欧洲 | 欧洲北部或欧洲西部
+法国 | 法国中部
 印度 | 印度中部或印度南部
 日本 |  日本东部或日本西部
+韩国 | 韩国中部或韩国南部
 英国 | 英国南部或英国西部
 美国 | 美国中部或美国西部2
 
@@ -73,11 +76,11 @@ Azure Migrate 运行轻型设备来发现 VMware Vm，并将 VM 元数据和性�
 
 **支持** | **详细信息**
 --- | ---
-**设备部署** | 将设备部署为 VMware VM。 VCenter Server 上需要足够的资源来分配具有 32 GB RAM 的 VM、8个 vcpu、大约 80 GB 的磁盘存储和外部虚拟交换机。<br/><br/> 设备需要直接或通过代理访问 internet。<br/> 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。 
+**设备部署** | 将设备部署为 VMware VM。 VCenter Server 上需要足够的资源来分配具有 32 GB RAM 的 VM、8个 vcpu、大约 80 GB 的磁盘存储和外部虚拟交换机。<br/><br/> 设备需要直接或通过代理访问 internet。<br/> 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。
 **Azure Migrate 项目** | 设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 你最多可以在一个项目中评估35000个 Vm。
 **发现** | 设备最多可在 vCenter Server 上发现 10000 VMware Vm。<br/> 设备可以连接到单个 vCenter Server。
 **评估组** | 最多可以在一个组中添加35000台计算机。
-**评估** | 在单个评估中，最多可以评估 35000 Vm。
+**评估** | 在单个评估中, 最多可以评估 35000 Vm。
 
 
 ## <a name="assessment-url-access-requirements"></a>评估-URL 访问要求

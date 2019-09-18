@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13beafe9a6937b0404a58d3508a9aba9892ac04d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 50cb5a76c6b19668fc23147244d65a0d996ebf90
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073879"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033723"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同步：为 Office 365 资源配置首选数据位置
 本主题的目的是介绍如何在 Azure Active Directory (Azure AD) Connect 同步中配置首选数据位置的属性。当某人使用了 Office 365 中的多地域功能时，你使用此属性来指定用户的 Office 365 数据的地理位置。 （术语*区域*和*地域*可以互换使用。）
@@ -61,7 +61,7 @@ Office 365 中支持多地域的区域包括：
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect 对同步的支持
 
-Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象的 **preferredDataLocation** 属性进行同步。 具体而言：
+Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象的 **preferredDataLocation** 属性进行同步。 尤其是在下列情况下：
 
 * Azure AD 连接器中对象类型 **User** 的架构已扩展，现在包含 **preferredDataLocation** 属性。 该属性为单值字符串类型。
 * Metaverse 中对象类型 **Person** 的架构已扩展，现在包含 **preferredDataLocation** 属性。 该属性为单值字符串类型。
@@ -172,7 +172,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
 
-    范围筛选器确定要将此出站同步规则应用到哪些 Azure AD 对象。 在本示例中，我们将使用与“Out to AD – User Identity”OOB（现成）同步规则中相同的范围筛选器。 它可以防止将同步规则应用到未从本地 Active Directory 同步的 **User** 对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
+    范围筛选器确定要将此出站同步规则应用到哪些 Azure AD 对象。 在此示例中，我们将使用 "Out to Azure AD – User Identity" OOB （现成）同步规则中的相同范围筛选器。 它可以防止将同步规则应用到未从本地 Active Directory 同步的 **User** 对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
 
 6. 转到“转换”选项卡并实现以下转换规则：
 

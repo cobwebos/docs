@@ -9,18 +9,18 @@ ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 95002eb73277176d4a8aeaa40deea4d96c39a755
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82f78ba50a6717c1d14e4921bb3c46a3525ad2cf
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512411"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063501"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 解决方案和培训
 
-借助 Azure Active Directory (Azure AD) B2C，组织能够实现帮助其与客户建立联系的业务解决方案。 以下解决方案指南和培训是可供下载的文档，能够帮助你了解这些解决方案。
+Azure Active Directory B2C （Azure AD B2C）使组织能够实现业务解决方案，帮助他们与客户联系。 以下解决方案指南和培训是可供下载的文档，能够帮助你了解这些解决方案。
 
-| 标题 | 描述 |
+| Title | 描述 |
 | ----- | ----------- |
 | [使用 Azure AD B2C 进行客户标识管理](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | 在本服务概述中，来自 Azure AD B2C 团队的 Parakh Jain ([@jainparakh](https://twitter.com/jainparakh)) 概要介绍了服务的工作原理，并展示了如何快速将 B2C 连接到 ASP.NET Core 应用程序。 |
 | [使用 Azure AD B2C 的优点](https://aka.ms/b2coverview) | 了解 Azure AD B2C 的优点和常见方案，以及应用程序可以如何利用此 CIAM 服务。 |

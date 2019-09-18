@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: a08fc7d7822b4aeddafb588fdb73e86559ce2b12
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 84e423ac055c074028df217060a548b932823496
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849172"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033387"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>使用 Azure Monitor 中的应用程序更改分析（预览版）
 
@@ -49,7 +49,7 @@ ms.locfileid: "68849172"
 ### <a name="dependency-changes"></a>依赖项更改
 
 对资源依赖项的更改也可能会导致 Web 应用出现问题。 例如，如果某个 Web 应用调用 Redis 缓存，Redis 缓存 SKU 可能会影响该 Web 应用的性能。 若要检测依赖项的更改，更改分析将检查 Web 应用的 DNS 记录。 它通过这种方式识别所有应用组件中可能导致出现问题的更改。
-目前支持以下依赖项:
+目前支持以下依赖项：
 - Web Apps
 - Azure 存储
 - Azure SQL
@@ -87,60 +87,42 @@ ms.locfileid: "68849172"
 
 ### <a name="enable-change-analysis-at-scale"></a>大规模启用更改分析
 
-如果订阅包含大量的 Web 应用，在 Web 应用级别启用该服务的做法就不够有效。 对于这种情况，请遵照以下说明。
+如果订阅包含大量的 Web 应用，在 Web 应用级别启用该服务的做法就不够有效。 运行以下脚本以启用订阅中的所有 web 应用。
 
-### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>为订阅注册更改分析资源提供程序
+先决条件：
+* PowerShell Az Module。 按照[安装 Azure PowerShell 模块中的](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.6.0)说明进行操作
 
-1. 注册更改分析功能标志（预览版）。 由于功能标志目前为预览版，因此需要将它注册才能让订阅看到它：
+运行以下脚本：
 
-   1. 打开 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)。
+```PowerShell
+# Log in to your Azure subscription
+Connect-AzAccount
 
-      ![更改 Cloud Shell 的屏幕截图](./media/change-analysis/cloud-shell.png)
+# Get subscription Id
+$SubscriptionId = Read-Host -Prompt 'Input your subscription Id'
 
-   1. 将 shell 类型更改为**PowerShell**。
+# Make Feature Flag visible to the subscription
+Set-AzContext -SubscriptionId $SubscriptionId
 
-      ![更改 Cloud Shell 的屏幕截图](./media/change-analysis/choose-powershell.png)
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
 
-   1. 运行以下 PowerShell 命令：
 
-        ``` PowerShell
-        Set-AzContext -Subscription <your_subscription_id> #set script execution context to the subscription you are trying to enable
-        Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
-        Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
-        ```
+# Enable each web app
+$webapp_list = Get-AzWebApp | Where-Object {$_.kind -eq 'app'}
+foreach ($webapp in $webapp_list)
+{
+    $tags = $webapp.Tags
+    $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
+    Set-AzResource -ResourceId $webapp.Id -Tag $tags -Force
+}
 
-1. 为订阅注册更改分析资源提供程序。
+```
 
-   - 转到“订阅”，并选择要在更改服务中启用的订阅。 然后选择资源提供程序：
 
-        ![显示如何注册更改分析资源提供程序的屏幕截图](./media/change-analysis/register-rp.png)
-
-       - 选择“Microsoft.ChangeAnalysis”。 然后在页面顶部，选择“注册”。
-
-       - 启用资源提供程序后，可在 Web 应用中设置一个隐藏的标记，用于检测部署级别的更改。 若要设置隐藏的标记，请遵照“无法提取更改分析信息”中的说明。
-
-   - 或者，可以使用 PowerShell 脚本注册资源提供程序：
-
-        ```PowerShell
-        Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
-
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
-        ```
-
-        若要使用 PowerShell 在 Web 应用中设置隐藏的标记，请运行以下命令：
-
-        ```powershell
-        $webapp=Get-AzWebApp -Name <name_of_your_webapp>
-        $tags = $webapp.Tags
-        $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
-        Set-AzResource -ResourceId <your_webapp_resourceid> -Tag $tag
-        ```
-
-     > [!NOTE]
-     > 添加隐藏的标记后，可能仍需等待最长 4 个小时，才能开始看到更改。 结果之所以延迟出现，是因为更改分析每隔 4 小时扫描一次 Web 应用。 采用 4 小时计划可以限制扫描对性能造成的影响。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 为[Azure 应用服务应用](azure-web-apps.md)启用 Application Insights。
-- 启用[AZURE VM 和 azure 虚拟机规模集的 IIS 托管应用](azure-vm-vmss-apps.md)的 Application Insights。
+- 为 [Azure 应用服务应用](azure-web-apps.md)启用 Application Insights。
+- 为 [Azure VM 和 Azure 虚拟机规模集的 IIS 托管应用](azure-vm-vmss-apps.md)启用 Application Insights。
 - 详细了解有助于增强更改分析功能的 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)。

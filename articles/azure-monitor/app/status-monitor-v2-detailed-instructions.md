@@ -3,7 +3,7 @@ title: Azure 状态监视器 v2 详细说明 |Microsoft Docs
 description: 有关如何开始使用状态监视器 v2 的详细说明。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 02f4fa45cbfa619825478520961b6411459973e4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 791db3de897231667d184f08ee152705c59a1e35
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326280"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057855"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>状态监视器 v2：详细说明
 
 本文介绍如何载入到 PowerShell 库和下载 ApplicationMonitor 模块。
-所含的最常见参数是你需要入门的最常见参数。
-我们还提供了手动下载说明, 以防你无法访问 internet。
+包含了开始使用所需的最常见参数。
+我们还提供了手动下载说明，以防你无法访问 Internet。
 
 ## <a name="get-an-instrumentation-key"></a>获取检测密钥
 
@@ -162,8 +162,8 @@ SerializationVersion           1.1.0.1
 ### <a name="manually-download-the-latest-nupkg-file"></a>手动下载最新的 nupkg 文件
 
 1. 转到  https://www.powershellgallery.com/packages/Az.ApplicationMonitor 。
-2. 在“版本历史记录”表中选择文件的最新版本。 
-3. 在“安装选项”下选择“手动下载”。  
+2. 在“版本历史记录”表中选择文件的最新版本。
+3. 在“安装选项”下选择“手动下载”。
 
 ### <a name="option-1-install-into-a-powershell-modules-directory"></a>选项 1：安装到 PowerShell 模块目录中
 将手动下载的 PowerShell 模块安装到 PowerShell 目录中，使之可被 PowerShell 会话发现。

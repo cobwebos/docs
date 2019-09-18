@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 30587af098b5ced7962dc45d6a059184f8b5f319
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 8e00053d5ce7c481b026d2fe0ce590d7b8799d8a
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914899"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075456"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>预览-使用 Azure CLI 在 Azure Kubernetes Service （AKS）群集上创建 Windows Server 容器
 
@@ -149,7 +149,7 @@ az aks create \
 > 如果出现密码验证错误，请尝试在另一个区域中创建资源组。
 > 然后尝试创建包含新资源组的群集。
 
-片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。
+片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。 有时，可能需要花费超过几分钟的时间才能设置群集。 在这种情况下，最多允许10分钟。 
 
 ## <a name="add-a-windows-server-node-pool"></a>添加 Windows Server 节点池
 
@@ -264,7 +264,7 @@ service/sample created
 
 ## <a name="test-the-application"></a>测试应用程序
 
-应用程序运行时，Kubernetes 服务将向 Internet 公开应用程序前端。 此过程可能需要几分钟才能完成。
+应用程序运行时，Kubernetes 服务将向 Internet 公开应用程序前端。 此过程可能需要几分钟才能完成。 有时，可能需要花费超过几分钟的时间来预配服务。 在这种情况下，最多允许10分钟。
 
 若要监视进度，请将 [kubectl get service][kubectl-get] 命令与 `--watch` 参数配合使用。
 

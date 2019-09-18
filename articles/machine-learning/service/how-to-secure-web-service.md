@@ -1,7 +1,7 @@
 ---
 title: 使用 SSL 保护 web 服务
-titleSuffix: Azure Machine Learning service
-description: 了解如何通过启用 HTTPS 来保护通过 Azure 机器学习服务部署的 web 服务。 HTTPS 使用传输层安全性（TLS）来保护客户端中的数据，这是一种用于安全套接字层（SSL）的替换。 客户端还使用 HTTPS 来验证 web 服务的身份。
+titleSuffix: Azure Machine Learning
+description: 了解如何通过启用 HTTPS 来保护通过 Azure 机器学习部署的 web 服务。 HTTPS 使用传输层安全性（TLS）来保护客户端中的数据，这是一种用于安全套接字层（SSL）的替换。 客户端还使用 HTTPS 来验证 web 服务的身份。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8805e065c92b42013c1e56f20b4a032d280cb8ac
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ce60806c26359ae682f5ab468e4f4265d3572c87
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772526"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034381"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>通过 SSL 使用 SSL 来保护 web 服务 Azure 机器学习
 
-本文介绍如何保护通过 Azure 机器学习服务部署的 web 服务。
+本文介绍如何保护通过 Azure 机器学习部署的 web 服务。
 
 使用[HTTPS](https://en.wikipedia.org/wiki/HTTPS)限制对 web 服务的访问并保护客户端提交的数据。 HTTPS 通过对两者之间的通信进行加密来帮助保护客户端和 web 服务之间的通信。 加密使用[传输层安全性（TLS）](https://en.wikipedia.org/wiki/Transport_Layer_Security)。 TLS 有时仍称为*安全套接字层*（SSL），这是 tls 的前身。
 
@@ -151,7 +151,7 @@ aci_config = AciWebservice.deploy_configuration(
 
   在左侧窗格中的 "**设置**" 下的 "**配置**" 选项卡上，更新 AKS 群集的公共 IP 地址的 DNS。 （请参阅下图。）公共 IP 地址是一种资源类型，它是在包含 AKS 代理节点和其他网络资源的资源组下创建的。
 
-  [![Azure 机器学习服务：保护具有 SSL 的 web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure 机器学习：保护具有 SSL 的 web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>更新 SSL 证书
 

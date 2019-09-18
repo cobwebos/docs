@@ -1,50 +1,48 @@
 ---
-title: Azure 存储的高级威胁防护
-description: 配置 Azure 存储高级威胁防护以检测帐户活动中的异常情况，并通知用户可能有害的访问帐户尝试。
+title: 适用于 Azure 存储的高级威胁防护
+description: 为 Azure 存储配置高级威胁防护，以检测帐户活动中的异常，并通知可能有害的访问帐户尝试。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 2a88e778458da3c5faace401863998dda746ac75
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 21204a7a2fb5a6907a8af9cb91fe8b018f7a4714
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051491"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076490"
 ---
-# <a name="advanced-threat-protection-for-azure-storage"></a>Azure 存储的高级威胁防护
+# <a name="advanced-threat-protection-for-azure-storage"></a>适用于 Azure 存储的高级威胁防护
 
-Azure 存储高级威胁防护提供额外的一层安全智能，用于检测试图访问或利用存储帐户的异常或可能有害的企图。 借助此保护层，用户无需成为安全专家，也无需管理安全监视系统便可以解决威胁。 
+适用于 Azure 存储的高级威胁防护提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 这一层保护使你可以在不是安全专家或管理安全监视系统的情况下解决威胁。
 
-当发生异常时, 将触发安全警报。  这些安全警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成, 还会通过电子邮件发送给订阅管理员, 并详细介绍了可疑活动以及如何调查和修正威胁的建议。
+当发生异常时, 将触发安全警报。 这些安全警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成, 还会通过电子邮件发送给订阅管理员, 并详细介绍了可疑活动以及如何调查和修正威胁的建议。
 
 > [!NOTE]
-> * Azure 存储的高级威胁防护目前仅适用于 Blob 存储。
-> * 有关定价详细信息 (包括免费的30天试用版), 请参阅[Azure 安全中心定价页]( https://azure.microsoft.com/pricing/details/security-center/)。
-> * Azure 存储的 ATP 功能当前在 Azure 政府版和主权的云区域中不可用。
+> Azure 存储的高级威胁防护目前仅适用于 Blob 存储。 它在 Azure 政府版和主权云区域中不可用。 有关定价详细信息 (包括免费的30天试用版), 请参阅[Azure 安全中心定价页]( https://azure.microsoft.com/pricing/details/security-center/)。
 
-适用于 Azure 存储的高级威胁防护引入对 Blob 存储的读取、写入和删除请求的诊断日志进行威胁检测。 若要调查高级威胁防护中的警报, 可以使用存储分析日志记录查看相关的存储活动。 有关详细信息, 请参阅如何[配置存储分析日志记录](storage-monitor-storage-account.md#configure-logging)。
+适用于 Azure 存储的高级威胁防护引入对 Blob 存储的读取、写入和删除请求的诊断日志进行威胁检测。 若要调查高级威胁防护中的警报，可以使用存储分析日志记录查看相关的存储活动。 有关详细信息，请参阅在[Azure 门户中监视存储帐户](storage-monitor-storage-account.md#configure-logging)中的 "**配置日志记录**"。
 
-## <a name="set-up-advanced-threat-protection"></a>设置高级威胁防护 
+## <a name="set-up-advanced-threat-protection"></a>设置高级威胁防护
 
-### <a name="using-the-portal"></a>使用门户
+默认情况下，将为你的存储帐户启用高级威胁防护。 可以通过多种方式来配置高级威胁防护，如以下部分中所述。
 
-1. 在 [https://portal.azure.com](https://portal.azure.com/) 中启动 Azure 门户。
+### <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-2. 导航到想要保护的 Azure 存储帐户的配置页面。 在“设置”页面中，选择“高级威胁防护”。
+1. 启动 [Azure 门户](https://portal.azure.com/)。
+1. 导航到你的 Azure 存储帐户。 在 "**设置**" 下，选择 "**高级安全**"。
+1. 选择 "高级安全配置" 页上的 "**设置**" 链接。
+1. 将**高级安全**设置为 **"开"** 。
+1. 单击 "**保存**" 以保存新的或更新的策略。
 
-3. 在“高级威胁防护”配置边栏选项卡中
-    * **打开**高级*威胁防护*
-    * 单击“保存”以保存新的或更新的高级威胁防护策略。 （图像中的价格仅用于示例目的。）
-
-![打开 Azure 存储高级威胁防护](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
+    ![打开 Azure 存储高级威胁防护](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="using-azure-security-center"></a>使用 Azure 安全中心
 
-当你订阅 Azure 安全中心的 "标准" 层时, 会自动对所有存储帐户设置高级威胁防护。 你可以在特定订阅下为你的存储帐户启用或禁用高级威胁防护, 如下所示:
+当你订阅 Azure 安全中心的 "标准" 层时，会自动对所有存储帐户设置高级威胁防护。 你可以在特定订阅下为你的存储帐户启用或禁用高级威胁防护，如下所示：
 
 1. 在[Azure 门户](https://portal.azure.com)中启动**Azure 安全中心**。
 1. 在主菜单中, 单击 "**定价 & 设置**"。
@@ -60,9 +58,9 @@ Azure 存储高级威胁防护提供额外的一层安全智能，用于检测�
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
-使用 Azure 资源管理器模板来部署启用了高级威胁防护的 Azure 存储帐户。 有关详细信息, 请参阅[具有高级威胁防护的存储帐户](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)。
+使用 Azure 资源管理器模板来部署启用了高级威胁防护的 Azure 存储帐户。 有关详细信息，请参阅[具有高级威胁防护的存储帐户](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)。
 
-### <a name="using-azure-policy"></a>使用 Azure 策略
+### <a name="using-an-azure-policy"></a>使用 Azure 策略
 
 使用 Azure 策略在特定订阅或资源组中的存储帐户之间启用高级威胁防护。
 
@@ -71,7 +69,7 @@ Azure 存储高级威胁防护提供额外的一层安全智能，用于检测�
 1. 搜索 "**部署高级威胁防护存储帐户**" 策略。
 
      ![搜索策略](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
-  
+
 1. 选择 Azure 订阅或资源组。
 
     ![选择订阅或组](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
@@ -80,7 +78,8 @@ Azure 存储高级威胁防护提供额外的一层安全智能，用于检测�
 
     !["策略定义" 页](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="using-rest-api"></a>使用 REST API
+### <a name="using-the-rest-api"></a>使用 REST API
+
 使用 Rest API 命令创建、更新或获取特定存储帐户的高级威胁防护设置。
 
 * [高级威胁防护-创建](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
@@ -90,9 +89,9 @@ Azure 存储高级威胁防护提供额外的一层安全智能，用于检测�
 
 使用以下 PowerShell cmdlet:
 
-  * [启用高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-  * [获取高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-  * [禁用高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+* [启用高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+* [获取高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+* [禁用高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ## <a name="explore-security-anomalies"></a>探索安全异常
 
@@ -102,10 +101,9 @@ Azure 存储高级威胁防护提供额外的一层安全智能，用于检测�
 * 存储帐户名称
 * 事件时间
 * 存储类型
-* 可能的原因 
+* 可能的原因
 * 调查步骤
 * 修正步骤
-
 
 电子邮件还包含有关可能原因的详细信息以及用于调查和缓解潜在威胁的建议操作。
 
@@ -117,10 +115,9 @@ Azure 存储高级威胁防护提供额外的一层安全智能，用于检测�
 
 ## <a name="protection-alerts"></a>保护警报
 
-警报是因访问或攻击存储帐户的异常且可能有害的尝试而生成的。 有关这些警报的列表, 请参阅[Azure 存储](../../security-center/security-center-alerts-data-services.md#azure-storage)警报
+警报是因访问或攻击存储帐户的异常且可能有害的尝试而生成的。 有关 Azure 存储的警报的列表，请参阅[Azure 安全中心中的数据服务威胁检测](../../security-center/security-center-alerts-data-services.md#azure-storage)警报中的**存储**部分。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解有关[Azure 存储帐户中的日志的](/rest/api/storageservices/About-Storage-Analytics-Logging)详细信息
-
 * 了解有关 [Azure 安全中心](../../security-center/security-center-intro.md)的详细信息

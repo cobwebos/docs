@@ -1,6 +1,6 @@
 ---
 title: 创建、运行和跟踪机器学习管道
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 使用适用于 Python 的 Azure 机器学习 SDK 创建和运行机器学习管道。 使用 ML 管道来创建和管理将机器学习（ML）阶段结合在一起的工作流。 这些阶段包括数据准备、模型定型、模型部署和推理/评分。
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 12ba2991f22576dc62559d5c62dc4a0e769d2681
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: f1a0db395b86f473d2372a5ca779020e54186e45
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858768"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034843"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中创建和运行机器学习管道
 
@@ -26,11 +26,11 @@ ms.locfileid: "70858768"
 
 ML 管道的每个阶段（如数据准备和模型定型）都可以包含一个或多个步骤。
 
-你创建的 ML 管道对 Azure 机器学习服务[工作区](how-to-manage-workspace.md)的成员可见。 
+你创建的 ML 管道对 Azure 机器学习[工作区](how-to-manage-workspace.md)的成员可见。 
 
 ML 管道使用远程计算目标进行计算，并使用与该管道关联的中间数据和最终数据的存储。 它们可在支持的[Azure 存储](https://docs.microsoft.com/azure/storage/)位置读取和写入数据。
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -283,7 +283,7 @@ trainStep = PythonScriptStep(
 定义步骤后，使用其中的部分或所有步骤生成管道。
 
 > [!NOTE]
-> 定义步骤或生成管道时，不会将任何文件或数据上传到 Azure 机器学习服务。
+> 定义步骤或生成管道时，不会将任何文件或数据上传到 Azure 机器学习。
 
 ```python
 # list of steps to run
@@ -322,7 +322,7 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 
 ## <a name="submit-the-pipeline"></a>提交管道
 
-提交管道时，Azure 机器学习服务检查每个步骤的依赖项，并上传指定的源目录的快照。 如果未指定源目录，则上传当前的本地目录。 快照也作为工作区试验的一部分存储。
+提交管道时，Azure 机器学习会检查每个步骤的依赖项，并上传指定的源目录的快照。 如果未指定源目录，则上传当前的本地目录。 快照也作为工作区试验的一部分存储。
 
 > [!IMPORTANT]
 > 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果同时存在这两个`.amlignore`文件, 则该文件将优先。

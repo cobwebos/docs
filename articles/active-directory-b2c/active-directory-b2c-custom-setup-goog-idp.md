@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a5b0d236424803056530eed81d9821fbafa14309
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 45b0d499f04de2bb20eeec913abaef11632fb504
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952843"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066099"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略设置 Google 帐户登录
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介绍如何让 Google 帐户的用户使用 Azure Active Directory (Azure AD) B2C 中的[自定义策略](active-directory-b2c-overview-custom.md)登录。
+本文说明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](active-directory-b2c-overview-custom.md)，从 Google 帐户启用用户登录。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,7 +48,7 @@ ms.locfileid: "68952843"
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含你的租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 在“概述”页上选择“标识体验框架”。
 5. 选择“策略密钥”，然后选择“添加”。
@@ -147,7 +147,7 @@ ms.locfileid: "68952843"
 准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 Google 帐户通信以接收令牌。
 
 1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
-2. 添加以下**ClaimsExchange**元素, 以确保为用于**TargetClaimsExchangeId**的 ID 使用相同的值:
+2. 添加以下**ClaimsExchange**元素，以确保为用于**TargetClaimsExchangeId**的 ID 使用相同的值：
 
     ```XML
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
@@ -162,7 +162,7 @@ ms.locfileid: "68952843"
 通过在租户中创建的应用程序与 Azure AD B2C 进行通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含你的租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 选择“应用程序”，然后选择“添加”。
 5. 输入应用程序的名称，例如 *testapp1*。

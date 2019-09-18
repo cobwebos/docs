@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d82785a0f833afb6a9c675fc7022ed19e96c7fc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8acf499d4d82c49096e4e5beff8209d0970b421
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511315"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064340"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-可以自定义任何[自我断言技术配置文件](self-asserted-technical-profile.md)的外观。 Azure Active Directory (Azure AD) B2C 在客户的浏览器中运行代码，并使用称为“跨域资源共享”(CORS) 的现代方法。 
+可以自定义任何[自我断言技术配置文件](self-asserted-technical-profile.md)的外观。 Azure Active Directory B2C （Azure AD B2C）在客户的浏览器中运行代码，并使用称为跨域资源共享（CORS）的现代方法。
 
 若要自定义用户界面，请在包含自定义 HTML 内容的 **ContentDefinition** 元素中指定一个 URL。 在自我断言技术配置文件或 **OrchestrationStep** 中，指向该内容定义标识符。 内容定义可以包含 **LocalizedResourcesReferences** 元素，该元素指定要加载的本地化资源列表。 Azure AD B2C 将用户界面元素与从 URL 加载的 HTML 内容合并，然后向用户显示页面。
 
@@ -61,45 +61,45 @@ ms.locfileid: "66511315"
 
 **ContentDefinition** 元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
-| Id | 是 | 内容定义标识符。 其值为本页稍后的“内容定义 ID”部分指定的值。  |
+| Id | 是 | 内容定义标识符。 其值为本页稍后的“内容定义 ID”部分指定的值。 |
 
 **ContentDefinition** 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 匹配项 | 描述 |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | 一个字符串，包含内容定义 HTML5 页面的 URL。 |
-| RecoveryUri | 0:1 | 一个字符串，包含用于显示内容定义相关错误的 HTML 页面的 URL。 | 
-| DataUri | 1:1 | 一个字符串，包含一个 HTML 文件的相对 URL，该文件提供要为步骤调用的用户体验。 |  
-| 元数据 | 1:1 | 一个键/值对集合，包含内容定义使用的元数据。 | 
+| RecoveryUri | 0:1 | 一个字符串，包含用于显示内容定义相关错误的 HTML 页面的 URL。 |
+| DataUri | 1:1 | 一个字符串，包含一个 HTML 文件的相对 URL，该文件提供要为步骤调用的用户体验。 |
+| 元数据 | 1:1 | 一个键/值对集合，包含内容定义使用的元数据。 |
 | LocalizedResourcesReferences | 0:1 | 本地化的资源引用集合。 使用此元素可以自定义用户界面和声明属性的本地化。 |
 
 ### <a name="datauri"></a>DataUri
 
 **DataUri** 元素用于指定页面标识符。 Azure AD B2C 使用页面标识符来加载和启动 UI 元素与客户端 JavaScript。 值的格式为 `urn:com:microsoft:aad:b2c:elements:page-name:version`。  下表列出了可以使用的页面标识符。
 
-| 值 |   描述 |
+| ReplTest1 |   描述 |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | 遇到异常或错误时显示错误页面。 |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | 列出可供用户在登录期间选择的标识提供者。 | 
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 此值还提供“使我保持登录功能”和“忘记了密码?” 链接。 | 
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | 列出可供用户在登录期间选择的标识提供者。 |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 此值还提供“使我保持登录功能”和“忘记了密码?” 链接。 |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 |
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | 在注册或登录期间使用短信或语音来验证电话号码。 |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | 显示一个窗体，让用户创建或更新其个人资料。 | 
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | 显示一个窗体，让用户创建或更新其个人资料。 |
 
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 **LocalizedResourcesReferences** 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 匹配项 | 描述 |
 | ------- | ----------- | ----------- |
-| LocalizedResourcesReference | 1:n | 内容定义的本地化资源引用列表。 | 
+| LocalizedResourcesReference | 1:n | 内容定义的本地化资源引用列表。 |
 
 **LocalizedResourcesReferences** 元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | 语言 | 是 | 一个字符串，包含符合 RFC 5646“用于标识语言的标记”的策略支持的语言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的标识符。 |
@@ -141,7 +141,7 @@ ms.locfileid: "66511315"
 
 **ContentDefinition** 元素的 ID 属性指定与内容定义相关的页面类型。 该元素定义要在其中应用自定义 HTML5/CSS 模板的上下文。 下表描述了标识体验框架识别的内容定义 ID 集及其相关的页面类型。 可以使用任意 ID 创建自己的内容定义。
 
-| ID | 默认模板 | 描述 | 
+| id | 默认模板 | 描述 |
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **错误页面** - 遇到异常或错误时显示错误页面。 |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **标识提供者选项页面** - 列出可供用户在登录期间选择的标识提供者。 选项通常是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |
@@ -153,4 +153,4 @@ ms.locfileid: "66511315"
 | **api.selfasserted** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **社交帐户注册页面** - 显示一个窗体，用户在使用社交标识提供者的现有帐户注册时必须填写此窗体。 除了密码输入字段之外，此页面类似于前面的社交帐户注册页面。 |
 | **api.selfasserted.profileupdate** | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **个人资料更新页面** - 显示用户在更新其个人资料时可以访问的窗体。 除了密码输入字段之外，此页面类似于社交帐户注册页面。 |
 | **api.signuporsignin** | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **统一注册或登录页面** - 处理用户注册和登录过程。 用户可以使用企业标识提供者、社交标识提供者（例如 Facebook 或 Google+）或本地帐户。 |
- 
+

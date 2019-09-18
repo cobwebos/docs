@@ -3,18 +3,18 @@ title: 验证到达 Microsoft Azure 虚拟网络的 VPN 吞吐量 | Microsoft Do
 description: 本文旨在帮助用户验证从本地资源到达 Azure 虚拟机的网络吞吐量。
 services: vpn-gateway
 author: cherylmc
-manager: jasmc
+manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 1531bbe97c842fbae2ffe7df41f19a3a7be689d5
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 9c2f50c49037305663330a3c455e40291b9e6242
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228337"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058802"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量
 
@@ -29,8 +29,8 @@ ms.locfileid: "68228337"
 
 VPN 网关连接涉及以下组件：
 
-* 本地 VPN 设备 (查看已[验证的 vpn 设备](vpn-gateway-about-vpn-devices.md#devicetable)的列表。)
-* 公共 internet
+* 本地 VPN 设备（请查看[已验证 VPN 设备](vpn-gateway-about-vpn-devices.md#devicetable)的列表。）
+* 公共 Internet
 * Azure VPN 网关
 * Azure VM
 
@@ -44,27 +44,27 @@ VPN 网关连接涉及以下组件：
 1. 确定 Azure VPN 网关的吞吐量限制。 如需帮助，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md#gwsku)的“网关 SKU”部分。
 1. 确定与 VM 大小相应的 [Azure VM 吞吐量指南](../virtual-machines/virtual-machines-windows-sizes.md)。
 1. 确定 Internet 服务提供商 (ISP) 的带宽。
-1. 通过获取 VM、VPN 网关或 ISP 的最小带宽来计算预期吞吐量;它以每秒兆位数 (/) 除以 8 (8) 来度量。
+1. 使用 VM、VPN 网关或 ISP 的最小带宽来计算预期的吞吐量；其度量方式是兆位/每秒 (/) 除以八 (8)。
 
-如果计算出的吞吐量无法满足应用程序的基准吞吐量要求, 则必须增加识别为瓶颈的资源的带宽。 若要调整 Azure VPN 网关的大小，请参阅[更改网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。 若要调整虚拟机的大小，请参阅[调整 VM 的大小](../virtual-machines/virtual-machines-windows-resize-vm.md)。 如果未遇到预期的 Internet 带宽, 则还可与 ISP 联系。
+如果计算得出的吞吐量无法满足应用程序的基准吞吐量需求，则必须提高已被确定为瓶颈的资源的带宽。 若要调整 Azure VPN 网关的大小，请参阅[更改网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。 若要调整虚拟机的大小，请参阅[调整 VM 的大小](../virtual-machines/virtual-machines-windows-resize-vm.md)。 如果 Internet 的带宽不及预期，也可联系 ISP。
 
 > [!NOTE]
-> VPN 网关吞吐量是所有 Site-to-Site\VNET-to-VNET 或点到站点连接的聚合。
+> VPN 网关吞吐量是所有站点到站点\VNET 到 VNET 或点到站点连接的聚合。
 
 ## <a name="validate-network-throughput-by-using-performance-tools"></a>使用性能工具验证网络吞吐量
 
 此验证应在非高峰时段执行，因为测试期间的 VPN 隧道吞吐量饱和度无法给出准确的结果。
 
-此测试将使用 iPerf 工具来实施，此工具在 Windows 和 Linux 上均可使用，并且有“客户端”和“服务器”两种模式。 它仅限适用于 Windows Vm 的3Gbps。
+此测试将使用 iPerf 工具来实施，此工具在 Windows 和 Linux 上均可使用，并且有“客户端”和“服务器”两种模式。 对于 Windows VM，其限速为 3Gbps。
 
-此工具不会对磁盘执行任何读/写操作。 它只会生成从一端至另一端的自生成 TCP 流量。 它根据用于测量客户端和服务器节点间可用带宽的试验生成统计信息。 在两个节点间进行测试时, 一个节点充当服务器, 另一个节点充当客户端。 完成此测试后, 建议你反转节点的角色, 以测试两个节点上的上传和下载吞吐量。
+此工具不会对磁盘执行任何读/写操作。 它只会生成从一端至另一端的自生成 TCP 流量。 它已生成的统计信息基于各种旨在测量客户端和服务器节点间可用带宽的试验。 在两个节点间进行测试时，一个节点充当服务器，另一个节点充当客户端。 完成此测试后，建议对调两个节点的角色，以测试它们的上传和下载吞吐量。
 
 ### <a name="download-iperf"></a>下载 iPerf
 
 下载 [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)。 有关详情，请参阅 [iPerf 文档](https://iperf.fr/iperf-doc.php)。
 
  > [!NOTE]
- > 本文中讨论的第三方产品由独立于 Microsoft 的公司生产。 Microsoft 对这些产品的性能和可靠性不作任何明示或默示担保。
+ > 本文所讨论的第三方产品由独立于 Microsoft 的公司生产。 Microsoft 对这些产品的性能和可靠性不作任何明示或默示担保。
 
 ### <a name="run-iperf-iperf3exe"></a>运行 iPerf (iperf3.exe)
 
@@ -72,7 +72,7 @@ VPN 网关连接涉及以下组件：
 
 1. 在两个节点上，为端口 5001 启用防火墙例外。
 
-   **Windows**：以管理员身份运行以下命令：
+   **Windows：** 以管理员身份运行以下命令：
 
    ```CMD
    netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
@@ -86,7 +86,7 @@ VPN 网关连接涉及以下组件：
 
    **Azure Linux：** Azure Linux 映像具有限制性较低的防火墙。 如果有应用程序在侦听某个端口，则流量会被允许通过。 受保护的自定义映像可能需要显式打开端口。 常见的 Linux 操作系统层防火墙包括 `iptables`、`ufw` 或 `firewalld`。
 
-1. 在服务器节点上，更改为从中提取 iperf3.exe 的目录。 然后, 在服务器模式下运行 iPerf, 并将其设置为侦听端口5001上的以下命令:
+1. 在服务器节点上，更改为从中提取 iperf3.exe 的目录。 然后，在服务器模式下运行 iPerf 并将其设置为侦听端口 5001，如以下命令所示：
 
    ```CMD
    cd c:\iperf-3.1.2-win65
@@ -95,7 +95,7 @@ VPN 网关连接涉及以下组件：
    ```
 
    > [!Note]
-   > 端口5001可自定义, 以在你的环境中考虑特定的防火墙限制。
+   > 可以根据环境中的特定防火墙限制自定义端口 5001。
 
 1. 在客户端节点上，更改为从中提取 iperf 工具的目录，并运行以下命令：
 
@@ -103,7 +103,7 @@ VPN 网关连接涉及以下组件：
    iperf3.exe -c <IP of the iperf Server> -t 30 -p 5001 -P 32
    ```
 
-   客户端将端口5001上的三十秒流量定向到服务器。 标志 "-P" 表示我们正在建立32同时连接到服务器节点。
+   客户端将端口 5001 上 30 秒的流量引导到服务器。 标志“-P”表明我们正同时发出 32 个连至服务器节点的连接。
 
    以下屏幕显示了本示例中的输出：
 
@@ -115,10 +115,10 @@ VPN 网关连接涉及以下组件：
    iperf3.exe -c IPofTheServerToReach -t 30 -p 5001 -P 32  >> output.txt
    ```
 
-1. 完成前面的步骤后, 请执行与反向角色相同的步骤, 以使服务器节点现在为客户端节点, 反之亦然。
+1. 完成上述步骤后，请调换角色以使服务器节点变为客户端节点（反之亦然），然后执行相同的步骤。
 
 > [!Note]
-> Iperf 不是唯一的工具。 [NTTTCP 是用于测试的替代解决方案](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing)。
+> Iperf 不是唯一工具。 [NTTTCP 是用于测试的备用解决方案](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing)。
 
 ## <a name="test-vms-running-windows"></a>测试运行 Windows 的 Vm
 
@@ -224,12 +224,12 @@ VPN 网关连接涉及以下组件：
 
 即使使用上述步骤评估的总体吞吐量 (iPERF/NTTTCP/等等) 都很好, 当使用 Windows 资源管理器或拖放到 RDP 会话时, 可能会遇到文件断开缓慢的情况。 此问题通常是由以下的一个或两个因素造成的：
 
-* 文件复制应用程序（如 Windows 资源管理器和 RDP）在复制文件时没有使用多个线程。 为了提高性能，请通过多线程文件复制应用程序（如 [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx)）使用 16 或 32 个线程来复制文件。 若要更改 Richcopy 中的文件复制线程数目，请单击“操作”   > “复制选项”   > “文件复制”  。
+* 文件复制应用程序（如 Windows 资源管理器和 RDP）在复制文件时没有使用多个线程。 为了提高性能，请通过多线程文件复制应用程序（如 [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx)）使用 16 或 32 个线程来复制文件。 若要更改 Richcopy 中的文件复制线程数目，请单击“操作” > “复制选项” > “文件复制”。
 
    ![文件复制缓慢问题](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
    > [!Note]
-   > 并非所有应用程序都能正常工作, 并且并非所有应用程序/进程都利用了所有线程。 如果运行测试, 则可以看到某些线程为空, 不提供准确的吞吐量结果。
+   > 并非所有应用程序都能正常工作, 并且并非所有应用程序/进程都利用了所有线程。 如果运行测试，则可以看到某些线程为空，不提供准确的吞吐量结果。
    > 若要检查您的应用程序文件传输性能, 请使用多线程, 方法是增加或减少线程数, 以便找到应用程序或文件传输的最佳吞吐量。
 
 * VM 磁盘读/写速度不够快。 有关详细信息，请参阅 [Azure 存储器故障排除](../storage/common/storage-e2e-troubleshooting.md)。
@@ -258,10 +258,10 @@ VPN 网关连接涉及以下组件：
 
 如果在输入 MS 网络主干之前, 在任何跃点上注意到延迟时间较高, 则可能需要通过 Internet 服务提供商进行进一步调查。
 
-如果从 "msn.net" 内的跃点中发现了很大的异常延迟峰值, 请联系 MS 支持以进行进一步调查。
+如果从 "msn.net" 内的跃点中发现了很大的异常延迟峰值，请联系 MS 支持以进行进一步调查。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息或帮助, 请查看以下链接:
+有关详细信息或帮助，请查看以下链接：
 
 * [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

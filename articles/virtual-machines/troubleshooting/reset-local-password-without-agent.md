@@ -4,7 +4,7 @@ description: 如何在 Azure 来宾代理未安装或者未在 VM 上正常运�
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 75d6c10ded4038297689835d5ff012f344540e6f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6faab5bffaddbbd5d8deb9c3834bf3d8fe3e3445
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638855"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058642"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>脱机重置 Azure VM 的本地 Windows 密码
 如果已安装 Azure 来宾代理，可以使用 [Azure 门户或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 重置 Azure 中 VM 的本地 Windows 密码。 此方法是重置 Azure VM 密码的主要方法。 如果遇到了 Azure 来宾代理无响应的问题，或者上传自定义映像后无法安装，可以手动重置 Windows 密码。 本文详细说明如何通过将源 OS 虚拟磁盘附加到另一个 VM 来重置本地帐户密码。 本文所述的步骤不适用于 Windows 域控制器。 
@@ -32,7 +32,7 @@ ms.locfileid: "69638855"
 1. 停止受影响的 VM。
 1. 为 VM 的 OS 磁盘创建快照。
 1. 从快照创建 OS 磁盘的副本。
-1. 将复制的 OS 磁盘附加并装入到另一个 Windows VM, 并在磁盘上创建一些配置文件。 这些文件将帮助你重置密码。
+1. 将复制的 OS 磁盘附加并装入到另一个 Windows VM，并在磁盘上创建一些配置文件。 这些文件将帮助你重置密码。
 1. 从故障排除 VM 中卸载并分离复制的 OS 磁盘。
 1. 交换受影响的 VM 的 OS 磁盘。
 
@@ -43,7 +43,7 @@ ms.locfileid: "69638855"
 
 在执行以下步骤之前，始终应该尝试使用 [Azure 门户或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 来重置密码。 在开始之前，请确保备份 VM。
 
-1. 为受影响的 VM 的 OS 磁盘拍摄快照, 从快照创建磁盘, 然后将该磁盘附加到故障排除 VM。 有关详细信息, 请参阅[使用 Azure 门户将 OS 磁盘附加到恢复 VM, 对 WINDOWS VM 进行故障排除](troubleshoot-recovery-disks-portal-windows.md)。
+1. 为受影响的 VM 的 OS 磁盘拍摄快照，从快照创建磁盘，然后将该磁盘附加到故障排除 VM。 有关详细信息，请参阅[使用 Azure 门户将 OS 磁盘附加到恢复 VM，对 WINDOWS VM 进行故障排除](troubleshoot-recovery-disks-portal-windows.md)。
 2. 使用远程桌面连接到故障排除 VM。
 3. 在源 VM 的驱动器上的 `\Windows\System32\GroupPolicy` 中创建 `gpt.ini`（如果存在 gpt.ini，请将它重命名为 gpt.ini.bak）：
    
@@ -85,7 +85,7 @@ ms.locfileid: "69638855"
    
     定义新密码时，必须符合针对 VM 配置的密码复杂性要求。
 
-6. 在 Azure 门户中, 将磁盘从故障排除 VM 中分离出来。
+6. 在 Azure 门户中，将磁盘从故障排除 VM 中分离出来。
 
 7. [更改受影响的 VM 的 OS 磁盘](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)。
 
@@ -109,7 +109,7 @@ ms.locfileid: "69638855"
 
 1. 在 Azure 门户中删除受影响的 VM。 删除 VM 只会删除元数据，以及 Azure 中对 VM 的引用。 删除 VM 时，会保留虚拟磁盘：
    
-   * 在 Azure 门户中选择 VM, 然后单击 "*删除*":
+   * 在 Azure 门户中选择 VM，然后单击 "*删除*"：
      
      ![删除现有 VM](./media/reset-local-password-without-agent/delete-vm-classic.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "69638855"
      
       ![选择存储帐户](./media/reset-local-password-without-agent/disks-select-storage-account-classic.png)
      
-   3. 选中 "*显示经典存储帐户*" 框, 然后选择源容器。 源容器通常为 *vhd*：
+   3. 选中 "*显示经典存储帐户*" 框，然后选择源容器。 源容器通常为 *vhd*：
      
       ![选择存储容器](./media/reset-local-password-without-agent/disks-select-container-classic.png)
 
@@ -147,10 +147,10 @@ ms.locfileid: "69638855"
      
       ![查看附加的数据磁盘](./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png)
 
-4. 在源 VM 的驱动器`gpt.ini` `gpt.ini` 上创建`gpt.ini.bak`(如果存在, 请重命名为): `\Windows\System32\GroupPolicy`
+4. 在源 VM 的驱动器`gpt.ini` `gpt.ini` 上创建`gpt.ini.bak`（如果存在，请重命名为）： `\Windows\System32\GroupPolicy`
    
    > [!WARNING]
-   > 请确保不会意外地在中`C:\Windows`创建以下文件, 即故障排除 VM 的 OS 驱动器。 应该在源 VM 的、作为数据磁盘附加的 OS 驱动器中创建以下文件。
+   > 请确保不会意外地在中`C:\Windows`创建以下文件，即故障排除 VM 的 OS 驱动器。 应该在源 VM 的、作为数据磁盘附加的 OS 驱动器中创建以下文件。
    
    * 将以下代码行添加到创建的 `gpt.ini` 文件中：
      
@@ -191,7 +191,7 @@ ms.locfileid: "69638855"
    
    1. 在 Azure 门户中选择故障排除 VM，并单击“磁盘”。
    
-   2. 选择步骤2中附加的数据磁盘, 单击 "**分离**", 然后单击 **"确定"** 。
+   2. 选择步骤2中附加的数据磁盘，单击 "**分离**"，然后单击 **"确定"** 。
 
      ![分离磁盘](./media/reset-local-password-without-agent/data-disks-classic.png)
      
@@ -216,7 +216,7 @@ ms.locfileid: "69638855"
     * 从`%windir%\System32\GroupPolicy\Machine\Scripts`
       * 取消`scripts.ini`
     * 从`%windir%\System32\GroupPolicy`
-      * 删除`gpt.ini` (如果`gpt.ini`之前已存在, 并且你已将`gpt.ini.bak`其重命名`.bak`为, 请`gpt.ini`将该文件重命名回)
+      * 删除`gpt.ini` （如果`gpt.ini`之前已存在，并且你已将`gpt.ini.bak`其重命名`.bak`为，请`gpt.ini`将该文件重命名回）
 
 ## <a name="next-steps"></a>后续步骤
 如果仍然无法使用远程桌面建立连接，请参阅 [RDP 故障排除指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 [详细的 RDP 故障排除指南](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)探讨的是故障排除方法而不是具体的步骤。 也可以通过[提出 Azure 支持请求](https://azure.microsoft.com/support/options/)来获得人工协助。

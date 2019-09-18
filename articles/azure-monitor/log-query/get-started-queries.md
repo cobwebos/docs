@@ -13,22 +13,24 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: b03109ee5cdb76247bf3be6fda97e0cf6e434f17
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 6eb066e04cfa561a4fa443b8c8f9582e286a4d7b
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296093"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076757"
 ---
-# <a name="get-started-with-log-queries-in-azure-monitor"></a>开始使用 Azure Monitor 中的日志查询
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询入门
 
 
 > [!NOTE]
-> 应完成[开始使用 Azure 监视器 Log Analytics](get-started-portal.md)之前完成本教程。
+> 在完成本教程之前，应当先完成 [Azure Monitor Log Analytics 入门](get-started-portal.md)。
 
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+> [!NOTE]
+> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中执行此操作。 如果没有，则使用我们的[演示环境](https://portal.loganalytics.io/demo)，其中包含大量示例数据。
 
-在本教程中您将了解如何在 Azure Monitor 中编写日志查询。 具体内容包括：
+
+本教程介绍如何在 Azure Monitor 中编写日志查询。 具体内容包括：
 
 - 了解查询结构
 - 将查询结果排序
@@ -38,8 +40,8 @@ ms.locfileid: "67296093"
 - 定义和使用自定义字段
 - 聚合和分组结果
 
-在 Azure 门户中使用 Log Analytics 的教程，请参阅[开始使用 Azure 监视器 Log Analytics](get-started-portal.md)。<br>
-Azure Monitor 中的日志查询的更多详细信息，请参阅[日志概述在 Azure Monitor 中查询](log-query-overview.md)。
+有关在 Azure 门户中使用 Log Analytics 的教程，请参阅 [Azure Monitor Log Analytics 入门](get-started-portal.md)。<br>
+有关 Azure Monitor 中的日志查询的详细信息，请参阅 [Azure Monitor 中的日志查询概述](log-query-overview.md)。
 
 ## <a name="writing-a-new-query"></a>编写新查询
 查询可以从表名或 *search* 命令开始。 首先应从表名开始，因为它为查询定义了明确的范围，并可以改善查询性能和结果的相关性。
@@ -71,10 +73,10 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-此查询在 *SecurityEvent* 表中搜索包含短语“Cryptographic”的记录。 返回并显示了其中的 10 条记录。 如果省略 `in (SecurityEvent)` 部分并直接运行 `search "Cryptographic"`，则搜索将遍历所有表，因此花费的时间更长且更低效。 
+此查询在 *SecurityEvent* 表中搜索包含短语“Cryptographic”的记录。 返回并显示了其中的 10 条记录。 如果省略 `in (SecurityEvent)` 部分并直接运行 `search "Cryptographic"`，则搜索将遍历所有表，因此花费的时间更长且更低效。
 
 > [!WARNING]
-> 搜索查询不基于表的查询比通常慢，因为它们具有处理更多的数据。 
+> 搜索查询通常比基于表的查询慢，因为它们必须处理更多数据。 
 
 ## <a name="sort-and-top"></a>sort 和 top
 虽然 **take** 可用于获取一些记录，但选择和显示的结果不遵循特定的顺序。 若要获取排序的视图，可按首选列**排序**：
@@ -84,7 +86,7 @@ SecurityEvent
 | sort by TimeGenerated desc
 ```
 
-不过，这可能会返回过多的结果，此外可能需要一段时间。 上述查询按 TimeGenerated 列将整个 SecurityEvent 表排序。  然后，Analytics 门户将结果限制为仅显示 10,000 条记录。 当然，这种方法不是最佳的。
+不过，这可能会返回过多的结果，此外可能需要一段时间。 上述查询按 TimeGenerated 列将整个 SecurityEvent 表排序。 然后，Analytics 门户将结果限制为仅显示 10,000 条记录。 当然，这种方法不是最佳的。
 
 仅获取最新 10 条记录的最佳方式是使用 **top**，它会在服务器端将整个表排序，然后返回前几条记录：
 
@@ -138,7 +140,7 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>指定时间范围
 
 ### <a name="time-picker"></a>时间选取器
-时间选取器位于“运行”按钮的旁边，指示我们只查询过去 24 小时的记录。 这是应用到所有查询的默认时间范围。 如果只要获取过去一个小时的记录，请选择“过去一小时”并再次运行查询。 
+时间选取器位于“运行”按钮的旁边，指示我们只查询过去 24 小时的记录。 这是应用到所有查询的默认时间范围。 如果只要获取过去一个小时的记录，请选择“过去一小时”并再次运行查询。
 
 ![时间选取器](media/get-started-queries/timepicker.png)
 
@@ -190,7 +192,7 @@ SecurityEvent
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Summarize：聚合行组
-使用 **summarize** 可以根据一个或多个列标识记录组，并向其应用聚合。 summarize  最常见的用途是计数  ，可以返回每个组中的结果数。
+使用 **summarize** 可以根据一个或多个列标识记录组，并向其应用聚合。 summarize 最常见的用途是计数，可以返回每个组中的结果数。
 
 以下查询检查过去一小时的所有 *Perf* 记录，按 *ObjectName* 将其分组，然后统计每个组中的记录数： 
 ```Kusto

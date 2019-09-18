@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7683812c5ee98d21d5aa8191a88926669b2ed120
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6485b7c102977f4fb6963418084f4da050c68558
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102366"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036524"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>教程：在 Azure VM 中手动配置 Always On 可用性组
 
@@ -81,6 +81,9 @@ ms.locfileid: "70102366"
    | 确认 |除非使用的是存储空间，否则请使用默认值。 请参阅此表后面的备注。 |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>设置 Windows Server 故障转移群集 IP 地址
+
+  > [!NOTE]
+  > 在 Windows Server 2019 上，群集将创建**分布式服务器名称**，而不是**群集网络名称**。 如果使用的是 Windows Server 2019，请跳过本教程中引用群集核心名称的任何步骤。 可以使用[PowerShell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019)创建群集网络名称。 查看博客[故障转移群集：群集网络对象](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)以获取详细信息。 
 
 1. 在“故障转移群集管理器”中，向下滚动到“群集核心资源”，并展开群集详细信息。 应会看到“名称”和“IP 地址”资源都处于“已失败”状态。 不能将 IP 地址资源联机，因为向该群集分配的 IP 地址与计算机本身的地址相同，因此该地址为重复地址。
 

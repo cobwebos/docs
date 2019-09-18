@@ -1,7 +1,7 @@
 ---
 title: 体系结构 & 重要概念
-titleSuffix: Azure Machine Learning service
-description: 了解组成 Azure 机器学习服务的体系结构、术语、概念和工作流。
+titleSuffix: Azure Machine Learning
+description: 了解构成 Azure 机器学习的体系结构、术语、概念和工作流。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4e953ad732852f9ee99c7830997e2d1dc29b8f84
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845008"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035596"
 ---
-# <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
+# <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作方式：体系结构和概念
 
-了解 Azure 机器学习服务的体系结构、概念和工作流。 下图显示该服务的主要组件，以及使用该服务时的常规工作流：
+了解 Azure 机器学习的体系结构、概念和工作流。 下图显示该服务的主要组件，以及使用该服务时的常规工作流：
 
-![Azure 机器学习服务体系结构和工作流](./media/concept-azure-machine-learning-architecture/workflow.png)
+![Azure 机器学习体系结构和工作流](./media/concept-azure-machine-learning-architecture/workflow.png)
 
 ## <a name="workflow"></a>工作流
 
@@ -47,10 +47,10 @@ ms.locfileid: "70845008"
 +  与[适用于 python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)的任何 Python 环境中的服务进行交互。
 + 通过[AZURE 机器学习 CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)自动执行机器学习活动。
 + 用[Azure 机器学习 VS Code 扩展](how-to-vscode-tools.md)在 Visual Studio Code 中编写代码
-+ 在不编写代码的情况下, 可以使用[Azure 机器学习服务的可视界面 (预览版)](ui-concept-visual-interface.md)来执行工作流步骤。
++ 使用[visual interface （预览版） for Azure 机器学习](ui-concept-visual-interface.md)在不编写代码的情况下执行工作流步骤。
 
 > [!NOTE]
-> 本文定义了 Azure 机器学习服务使用的术语和概念，但未定义 Azure 平台的术语和概念。 有关 Azure 平台术语的详细信息，请参阅 [Microsoft Azure 词汇表](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)。
+> 尽管本文定义 Azure 机器学习所使用的术语和概念，但它并不定义 Azure 平台的术语和概念。 有关 Azure 平台术语的详细信息，请参阅 [Microsoft Azure 词汇表](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)。
 
 ## <a name="glossary"></a>术语表
 
@@ -62,7 +62,7 @@ ms.locfileid: "70845008"
 + <a href="#datasets-and-datastores">数据集 & 数据存储</a>
 + <a href="#compute-targets">计算目标</a>
 + <a href="#training-scripts">训练脚本</a>
-+ <a href="#runs">Run</a>
++ <a href="#runs">运行</a>
 + <a href="#github-tracking-and-integration">Git 跟踪</a>
 + <a href="#snapshots">快照</a>
 + <a href="#activities">活动</a>
@@ -75,7 +75,7 @@ ms.locfileid: "70845008"
 
 ### <a name="workspaces"></a>工作区
 
-[工作区](concept-workspace.md)是 Azure 机器学习服务的顶级资源。 它提供了一个集中的位置来处理使用 Azure 机器学习服务时创建的所有项目。 可以与他人共享工作区。 有关工作区的详细说明，请参阅[什么是 Azure 机器学习工作区？](concept-workspace.md)。
+[工作区](concept-workspace.md)是 Azure 机器学习的顶级资源。 使用 Azure 机器学习时，它提供了一个集中的位置来处理所创建的所有项目。 可以与他人共享工作区。 有关工作区的详细说明，请参阅[什么是 Azure 机器学习工作区？](concept-workspace.md)。
 
 ### <a name="experiments"></a>试验
 
@@ -87,13 +87,13 @@ ms.locfileid: "70845008"
 
 简单地说，模型是一段接受输入并生成输出的代码。 创建机器学习模型将涉及选择算法、为其提供数据以及优化超参数。 培训是一个迭代过程，将生成经过培训的模型，它会封装模型在培训过程中学到的内容。
 
-模型通过 Azure 机器学习中的运行生成。 还可以使用在 Azure 机器学习外部训练的模型。 可在 Azure 机器学习服务工作区中注册模型。
+模型通过 Azure 机器学习中的运行生成。 还可以使用在 Azure 机器学习外部训练的模型。 可以在 Azure 机器学习工作区中注册模型。
 
-Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何主流机器学习框架, 如 Scikit-learn、XGBoost、PyTorch、TensorFlow 和 Chainer。
+Azure 机器学习与框架无关。 创建模型时, 可以使用任何主流机器学习框架, 如 Scikit-learn、XGBoost、PyTorch、TensorFlow 和 Chainer。
 
-有关使用 scikit-learn 和估计器为模型定型的示例，请参阅[教程：使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。
+有关使用 scikit-learn 和估计器为模型定型的示例，请参阅[教程：使用 Azure 机器学习](tutorial-train-models-with-aml.md)训练图像分类模型。
 
-**模型注册表**将跟踪 Azure 机器学习服务工作区中的所有模型。
+**模型注册表**将跟踪 Azure 机器学习工作区中的所有模型。
 
 模型按名称和版本标识。 每次使用与现有相同的名称注册模型时，注册表都会假定它是新版本。 该版本将递增并且新模型会以同一名称注册。
 
@@ -124,8 +124,8 @@ Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何�
 
 * [用估算训练 ML 模型](how-to-train-ml-models.md)。
 * [Azure 机器学习，按比例为 Pytorch 深度学习模型定型](how-to-train-pytorch.md)。
-* [Azure 机器学习服务，按比例定型并注册 TensorFlow 模型](how-to-train-tensorflow.md)。
-* [Azure 机器学习服务，按比例定型并注册 Chainer 模型](how-to-train-chainer.md)。
+* [Azure 机器学习，大规模定型和注册 TensorFlow 模型](how-to-train-tensorflow.md)。
+* [Azure 机器学习，大规模定型和注册 Chainer 模型](how-to-train-chainer.md)。
 
 ### <a name="datasets-and-datastores"></a>数据集和数据存储
 
@@ -147,7 +147,7 @@ Azure 机器学习服务与框架无关。 创建模型时, 可以使用任何�
 
 若要定型模型，你可以指定包含培训脚本和关联文件的目录。 此外，还可指定一个试验名称，用于存储在训练期间收集的信息。 在训练期间，会将整个目录复制到训练环境（计算目标），并启动运行配置指定的脚本。 目录的快照同样存储在工作区中的试验下。
 
-有关示例，请参阅[教程：使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。
+有关示例，请参阅[教程：使用 Azure 机器学习](tutorial-train-models-with-aml.md)训练图像分类模型。
 
 ### <a name="runs"></a>运行
 
@@ -193,7 +193,7 @@ Azure 机器学习可以创建两种类型的映像：
 * **FPGA 映像**：部署到 Azure 中的现场可编程门阵列时使用。
 * **Docker 映像**：部署到 FPGA 以外的计算目标时使用。 例如，部署到 Azure 容器实例和 Azure Kubernetes 服务时。
 
-Azure 机器学习服务提供了默认情况下使用的基本映像。 你还可以提供自己的自定义映像。
+Azure 机器学习提供了一个默认情况下使用的基本映像。 你还可以提供自己的自定义映像。
 
 ### <a name="image-registry"></a>映像注册表
 
@@ -239,8 +239,8 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 ### <a name="next-steps"></a>后续步骤
 
-若要开始使用 Azure 机器学习服务，请参阅：
+若要开始 Azure 机器学习，请参阅：
 
-* [什么是 Azure 机器学习服务？](overview-what-is-azure-ml.md)
-* [创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)
+* [什么是 Azure 机器学习？](overview-what-is-azure-ml.md)
+* [创建 Azure 机器学习工作区](how-to-manage-workspace.md)
 * [教程（第 1 部分）：训练模型](tutorial-train-models-with-aml.md)

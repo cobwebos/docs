@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: de72daa6d34ea54517d5a21d7467a62d8097581c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: e64905cdfeac8d507df1c3dd92c245cb910a79b2
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882696"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033573"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>使用 Power Query 将 Excel 连接到 Apache Hadoop
 Microsoft 大数据解决方案的一个关键功能是，将 Microsoft 商业智能 (BI) 组件与 Azure HDInsight 中的 Apache Hadoop 群集相集成。 一个主要的例子是能够使用 Microsoft Power Query for Excel 加载项将 Excel 连接到包含 Hadoop 群集关联数据的 Azure 存储帐户。 本文将逐步说明如何设置和使用 Power Query 来查询与 HDInsight 管理的 Hadoop 群集关联的数据。
@@ -57,13 +57,13 @@ Power Query 可以导入已输出的数据，或者导入由在 HDInsight 群集
 4. 对于“帐户名称”，请输入与群集相关联的 Azure Blob 存储帐户名称，并单击“确定”。 此帐户可以是默认存储帐户或链接的存储帐户。  格式为 *https://&lt;StorageAccountName>.blob.core.windows.net/* 。
 5. 对于“帐户密钥”，请输入 Blob 存储帐户的密钥，并单击“保存”。 （只有在第一次访问此存储时才需要输入帐户信息。）
 6. 在“查询编辑器”左侧的“导航器”窗格中，双击 Blob 存储容器名称 。 默认情况下，该容器名称与群集名称相同。
-7. 在“名称”列中找到 **HiveSampleData.txt**（文件夹路径是 **../hive/warehouse/hivesampletable/** ），并单击 HiveSampleData.txt 左侧的“二进制”。 HiveSampleData.txt 随所有群集提供。 （可选）可使用自己的文件。
-   
-    ![HDI.PowerQuery.ImportData](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
+7. 在“名称”列中找到 **HiveSampleData.txt**（文件夹路径是 **../hive/warehouse/hivesampletable/** ），并单击 HiveSampleData.txt 左侧的“二进制”。 HiveSampleData.txt 随所有群集提供。 （可选）可以使用自己的文件。
+
+    ![HDI Excel power query 导入数据](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
 
 8. 如果需要，可以重命名列名称。 准备就绪后，单击“关闭并加载”。  数据已加载到工作簿：
-   
-    ![HDI.PowerQuery.ImportedTable](./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png)
+
+    ![HDI Excel power query 导入表](./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png)
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，已了解如何使用 Power Query 将数据从 HDInsight 检索到 Excel 中。 同样地，也可以将来自 HDInsight 的数据检索到 Azure SQL 数据库中。 也可以将数据上传到 HDInsight 中。 若要了解更多信息，请参阅下列文章：

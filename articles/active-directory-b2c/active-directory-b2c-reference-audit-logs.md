@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbb748e9856b6de9004d57e4393e205ddfcfffb4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998810"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033829"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
@@ -92,12 +92,13 @@ Azure 门户提供对 Azure AD B2C 租户中的审核日志事件的访问。
 * Microsoft Graph
   * 程序读取所有审核日志数据
 
-你可以对 B2C 租户中的现有应用程序注册启用这些权限，或者创建专用于审核日志自动化的新权限。
+你可以在 B2C 租户内的现有 Azure Active Directory 应用程序注册中启用这些权限，或者创建专用于审核日志自动化的新权限。
 
 若要创建新的应用程序、分配所需的 API 权限并创建客户端密钥，请执行以下步骤：
 
-1. 注册应用程序
-    1. 登录到[Azure 门户](https://portal.azure.com)，切换到包含 Azure AD B2C 租户的目录，然后浏览到 " **Azure AD B2C**"。
+1. 在 Azure Active Directory 中注册应用程序
+    1. 登录到[Azure 门户](https://portal.azure.com)并切换到包含 Azure AD B2C 租户的目录。
+    1. 从左侧菜单中选择 " **Azure Active Directory** （*不*Azure AD B2C）"。 或者选择 "**所有服务**"，搜索并选择 " **Azure Active Directory**"。
     1. 在左侧菜单中的 "**管理**" 下，选择 "**应用注册（旧）** "。
     1. 选择**新的应用程序注册**
     1. 输入应用程序的名称。 例如，"*审核日志" 应用*。

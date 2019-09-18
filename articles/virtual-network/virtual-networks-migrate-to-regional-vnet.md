@@ -4,7 +4,7 @@ description: 了解如何将虚拟网络（经典）从地缘组迁移到区域�
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: 84febcb9-bb8b-4e79-ab91-865ad9de41cb
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: d3bb93d12a217e6d9066d037ff92f071b6139ab3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d33d9ec4eadeaa3a082103f1ad699e2fc3010e3b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648629"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058402"
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>将虚拟网络（经典）从地缘组迁移到区域
 
@@ -50,9 +50,9 @@ ms.locfileid: "60648629"
    
     编辑网络配置文件中的以下行，将相应值替换成自己的值： 
    
-    **旧值：** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
+    **旧值：** \<VirtualNetworkSitename = "VNetUSWest" AffinityGroup = "VNetDemoAG"\> 
    
-    **新值：** \<VirtualNetworkSitename="VNetUSWest" Location="West US"\>
+    **新值：** \<VirtualNetworkSitename = "VNetUSWest" Location = "美国西部"\>
 3. 保存所做的更改，并将网络配置[导入](virtual-networks-using-network-configuration-file.md#import)到 Azure。
 
 > [!NOTE]

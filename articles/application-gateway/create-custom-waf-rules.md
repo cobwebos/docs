@@ -1,24 +1,24 @@
 ---
-title: 创建和使用 Azure Web 应用程序防火墙 (WAF) v2 自定义规则
-description: 本文提供了有关如何在 Azure 应用程序网关上创建 Web 应用程序防火墙 (WAF) v2 自定义规则的信息。
+title: 创建并使用 Azure Web 应用程序防火墙 (WAF) v2 自定义规则
+description: 本文介绍如何在 Azure 应用程序网关中创建 Web 应用程序防火墙 (WAF) v2 自定义规则。
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 71f2357ba2c2d3e978e4f967ad09fee763586a7c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231984"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058312"
 ---
-# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>创建和使用 Web 应用程序防火墙 v2 自定义规则
+# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>创建并使用 Web 应用程序防火墙 v2 自定义规则
 
-Azure 应用程序网关 Web 应用程序防火墙 (WAF) v2 为 Web 应用程序提供保护。 此保护由开放式 Web 应用程序安全项目 (OWASP) 核心规则集 (CRS) 提供。 在某些情况下, 您可能需要创建自己的自定义规则来满足您的特定需要。 有关 WAF 自定义规则的详细信息, 请参阅[自定义 web 应用程序防火墙规则概述](custom-waf-rules-overview.md)。
+Azure 应用程序网关 Web 应用程序防火墙 (WAF) v2 可为 Web 应用程序提供保护。 该保护通过打开 Web 应用程序安全性项目 (OWASP) 核心规则集 (CRS) 来提供。 在某些情况下，可能需要根据具体需求创建自己的自定义规则。 有关 WAF 自定义规则的详细信息，请参阅[自定义 Web 应用程序防火墙规则概述](custom-waf-rules-overview.md)。
 
-本文介绍一些可创建的示例自定义规则, 以及如何将其与 v2 WAF 一起使用。 若要了解如何使用 Azure PowerShell 通过自定义规则部署 WAF, 请参阅[使用 Azure PowerShell 配置 Web 应用程序防火墙自定义规则](configure-waf-custom-rules.md)。
+本文介绍一些示例性的自定义规则，这些规则可以通过 v2 WAF 创建并使用。 若要了解如何使用 Azure PowerShell 通过自定义规则来部署 WAF，请参阅[使用 Azure PowerShell 配置 Web 应用程序防火墙自定义规则](configure-waf-custom-rules.md)。
 
 >[!NOTE]
 > 如果应用程序网关未使用 WAF 层，会在右侧窗格中显示“将应用程序网关升级到 WAF 层”选项。
@@ -27,9 +27,9 @@ Azure 应用程序网关 Web 应用程序防火墙 (WAF) v2 为 Web 应用程序
 
 ## <a name="example-1"></a>示例 1
 
-你知道有一个名为 " *evilbot* " 的机器人, 你希望阻止它对你的网站进行爬网。 在这种情况下, 会在请求标头中阻止用户代理*evilbot* 。
+你知道有一个名为 *evilbot* 的机器人，你想要阻止其对你的网站进行爬网。 在这种情况下，需在请求标头中阻止 User-Agent *evilbot*。
 
-逻辑: p
+逻辑：p
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -51,7 +51,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-下面是相应的 JSON:
+下面是相应的 JSON：
 
 ```json
   {
@@ -75,11 +75,11 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-若要查看使用此自定义规则部署的 WAF, 请参阅[使用 Azure PowerShell 配置 Web 应用程序防火墙自定义规则](configure-waf-custom-rules.md)。
+若要查看使用此自定义规则部署的 WAF，请参阅[使用 Azure PowerShell 配置 Web 应用程序防火墙自定义规则](configure-waf-custom-rules.md)。
 
-### <a name="example-1a"></a>示例1a
+### <a name="example-1a"></a>示例 1a
 
-可以使用正则表达式来完成相同的操作:
+可以使用正则表达式完成同样的事情：
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -101,7 +101,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-和相应的 JSON:
+相应的 JSON：
 
 ```json
   {
@@ -129,9 +129,9 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 要阻止来自 198.168.5.0/24 范围内的 IP 地址的所有请求。
 
-在此示例中, 将阻止来自 IP 地址范围的所有流量。 规则的名称为*myrule1* , 优先级设置为100。
+在此示例中，需阻止来自某个 IP 地址范围的所有流量。 规则名称为 *myrule1*，优先级设置为 100。
 
-逻辑: p
+逻辑：p
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -151,7 +151,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-下面是相应的 JSON:
+下面是相应的 JSON：
 
 ```json
   {
@@ -175,13 +175,13 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-对应的 CRS 规则:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
+相应的 CRS 规则：`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-3"></a>示例 3
 
-在此示例中, 你想要阻止用户代理*evilbot*, 以及 192.168.5.0/24 范围内的流量。 若要实现此目的, 可以创建两个单独的匹配条件, 并将它们放在同一个规则中。 这可确保用户代理标头中的 evilbot**和**192.168.5.0/24 范围内的 IP 地址被阻止。
+在此示例中，你想要阻止用户代理*evilbot*，以及 192.168.5.0/24 范围内的流量。 为此，可以创建两个独立的匹配条件，将其置于同一规则中。 这可以确保如果用户代理标头中的*evilbot* **和**192.168.5.0/24 范围内的 IP 地址匹配，则会阻止请求。
 
-逻辑: p**和**q
+逻辑：p **and** q
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -212,7 +212,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
    -Action Block
 ```
 
-下面是相应的 JSON:
+下面是相应的 JSON：
 
 ```json
 { 
@@ -251,9 +251,9 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 ## <a name="example-4"></a>示例 4
 
-在此示例中, 你想要阻止请求是在 IP 地址范围*192.168.5.0/24*以外, 还是不能使用用户代理字符串 (即 , 用户不使用 chrome 浏览器)。 由于此逻辑使用**或**, 因此, 这两个条件在不同的规则中, 如下面的示例中所示。 *myrule1*和*myrule2*都需要匹配才能阻止流量。
+在此示例中，你想要阻止请求是在 IP 地址范围*192.168.5.0/24*以外，还是不能使用用户代理*字符串（即，用户不使用*chrome 浏览器）。 由于此逻辑使用 **or**，因此这两个条件位于不同的规则中，如以下示例所示。 *myrule1* 和 *myrule2* 都需要匹配才能阻止流量。
 
-逻辑: **not** (p**和**q) = **not** p**或 not** q。
+逻辑：**not** (p **and** q) = **not** p **or not** q。
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -291,7 +291,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-和相应的 JSON:
+相应的 JSON：
 
 ```json
 {
@@ -336,11 +336,11 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-## <a name="example-5"></a>示例5
+## <a name="example-5"></a>示例 5
 
-要阻止自定义注 SQLI。 由于此处使用的逻辑为**或**, 并且所有值都在*RequestUri*中, 因此所有*MatchValues*都可以位于以逗号分隔的列表中。
+你希望阻止自定义 SQLI。 由于此处使用的逻辑为 **or**，且所有值都在 *RequestUri* 中，因此可以将所有 *MatchValues* 置于逗号分隔的列表中。
 
-逻辑: p**或**q**或**r
+逻辑：p **or** q **or** r
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -359,7 +359,7 @@ $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-对应的 JSON:
+相应的 JSON：
 
 ```json
   {
@@ -385,7 +385,7 @@ $rule1 = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-备用 Azure PowerShell:
+备用 Azure PowerShell：
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -436,7 +436,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-对应的 JSON:
+相应的 JSON：
 
 ```json
   {
@@ -495,6 +495,6 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="next-steps"></a>后续步骤
 
-创建自定义规则后, 可以了解如何查看 WAF 日志。 有关详细信息，请参阅[应用程序网关诊断](application-gateway-diagnostics.md#diagnostic-logging)。
+创建自定义规则后，可以了解如何查看 WAF 日志。 有关详细信息，请参阅[应用程序网关诊断](application-gateway-diagnostics.md#diagnostic-logging)。
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png

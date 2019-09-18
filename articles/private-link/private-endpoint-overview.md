@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 031055dce66361cc128ed42a4d0c942ccb5a3b82
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: c2f26c1f672644edd4993010c64062ee4108ca40
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017966"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057822"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -55,8 +55,8 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 |**专用链接服务**（您自己的服务）   |  PrivateLinkServices/网络       | 空 |
 |**Azure SQL 数据库** | Microsoft.Sql/servers    |  Sql Server （sqlServer）        |
 |**Azure SQL 数据仓库** | Microsoft.Sql/servers    |  Sql Server （sqlServer）        |
-|**Azure 存储**  | （StorageAccounts/）    |  Blob （blob、blob_secondary）<BR> Table （table，table_secondary）<BR> Queue （queue，queue_secondary）<BR> 文件（file，file_secondary）<BR> Web （web、web_secondary）        |
-|**Azure Data Lake Storage Gen2**  | （StorageAccounts/）    |  Blob （blob、blob_secondary）       |
+|**Azure 存储**  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）<BR> Table （table，table_secondary）<BR> Queue （queue，queue_secondary）<BR> 文件（file，file_secondary）<BR> Web （web、web_secondary）        |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）       |
  
  
 ## <a name="network-security-of-private-endpoints"></a>专用终结点的网络安全 

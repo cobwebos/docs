@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 4b6e5d90d72e84f3a8a54ea0aadcad687b598b2d
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 7b266a21aabf37765de4f4f94cd3939cec697585
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010347"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058519"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 > [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本："]
@@ -158,7 +158,9 @@ SQL Server 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 SqlServerTable。 | 是 |
-| tableName |此属性是链接服务引用的 SQL Server 数据库实例中的表名称或视图名称。 | 对于源为“No”，对于接收器为“Yes” |
+| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| tableName | 具有架构的表/视图的名称。 支持此属性是为了向后兼容。 对于新工作负荷， `schema`请`table`使用和。 | 对于源为“No”，对于接收器为“Yes” |
 
 **示例**
 
@@ -174,7 +176,8 @@ SQL Server 链接服务支持以下属性：
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }

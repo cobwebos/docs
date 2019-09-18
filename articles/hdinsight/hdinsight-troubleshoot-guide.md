@@ -3,15 +3,16 @@ title: Azure HDInsight 故障排除指南
 description: 使用 Azure HDInsight 对 Apache Hadoop 工作负荷进行故障排除。 此分步文档说明如何使用 HDInsight 解决 Apache Hive、Apache Spark、Apache YARN、Apache HBase、HDFS 和 Apache Storm 的常见问题。
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: f0d94da2163337e0169b717dfc819dcdd6ae7f18
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 15fbf1ad27a8931df28fafd8f0411efec42e2985
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900100"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076609"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>使用 Azure HDInsight 进行故障排除
 

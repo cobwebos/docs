@@ -1,7 +1,7 @@
 ---
 title: 企业安全性
-titleSuffix: Azure Machine Learning service
-description: 安全地使用 Azure 机器学习服务：身份验证、授权、网络安全、数据加密和监视。
+titleSuffix: Azure Machine Learning
+description: 安全地使用 Azure 机器学习：身份验证、授权、网络安全、数据加密和监视。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: e1029ad34a05d342e5aed5bb30407dee7c914f3c
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 309cef6ec058d8192bc7a6341b49a59c0000a305
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873561"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035559"
 ---
-# <a name="enterprise-security-for-the-azure-machine-learning-service"></a>Azure 机器学习服务的企业安全性
+# <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
-在本文中，你将了解 Azure 机器学习服务可用的安全功能。
+在本文中，你将了解 Azure 机器学习可用的安全功能。
 
 使用云服务时，最佳做法是仅将访问权限限制为需要它的用户。 首先了解服务使用的身份验证和授权模型。 你可能还希望限制网络访问，或通过云安全地加入本地网络中的资源。 数据加密也是非常重要的，无论是静态的还是在服务之间移动数据。 最后，您需要能够监视服务并生成所有活动的审核日志。
 
@@ -28,10 +28,10 @@ ms.locfileid: "70873561"
 如果 Azure Active Directory （Azure AD）配置为使用多重身份验证，则支持多重身份验证。 身份验证过程如下：
 
 1. 客户端登录到 Azure AD 并获取 Azure 资源管理器令牌。  完全支持用户和服务主体。
-1. 客户端将令牌提供给 Azure 资源管理器和所有 Azure 机器学习服务。
+1. 客户端将令牌提供给 Azure 资源管理器和所有 Azure 机器学习。
 1. 机器学习服务向用户计算目标（例如机器学习计算）提供机器学习服务标记。 在运行完成后，用户计算目标使用此标记回拨到机器学习服务。 范围限制为工作区。
 
-[![Azure 机器学习服务中的身份验证](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
+[![Azure 机器学习中的身份验证](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Web 服务部署的身份验证
 
@@ -94,9 +94,9 @@ print(token)
 * 参与者
 * 读者
 
-下表列出了一些主要 Azure 机器学习服务操作和可执行这些操作的角色：
+下表列出了一些主要 Azure 机器学习操作和可执行这些操作的角色：
 
-| Azure 机器学习服务操作 | 所有者 | 参与者 | 读者 |
+| Azure 机器学习操作 | 所有者 | 参与者 | 读者 |
 | ---- |:----:|:----:|:----:|
 | 创建工作区 | ✓ | ✓ | |
 | 共享工作区 | ✓ | |  |
@@ -132,11 +132,11 @@ print(token)
 
 建议管理员不要向上表中提到的资源撤销对托管标识的访问权限。 你可以使用 "重新同步密钥" 操作还原访问权限。
 
-Azure 机器学习服务在每个工作区区域的订阅中创建`aml-`一个`Microsoft-AzureML-Support-App-`其他应用程序（名称以或开头）和参与者级别的访问权限。 例如，如果你在美国东部有一个工作区，在同一订阅中的北欧中有另一个工作区，你会看到其中两个应用程序。 通过这些应用程序，Azure 机器学习服务可以帮助你管理计算资源。
+Azure 机器学习将在每个工作区区域的订阅`aml-`中`Microsoft-AzureML-Support-App-`创建一个其他应用程序（名称以或开头）和参与者级别的访问权限。 例如，如果你在美国东部有一个工作区，在同一订阅中的北欧中有另一个工作区，你会看到其中两个应用程序。 通过这些应用程序，Azure 机器学习可帮助你管理计算资源。
 
 ## <a name="network-security"></a>网络安全
 
-Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算资源（计算目标）用于训练和部署模型。 可以在虚拟网络中创建这些计算目标。 例如，你可以使用 Azure Data Science Virtual Machine 来训练模型，然后将模型部署到 AKS。  
+Azure 机器学习依赖于其他 Azure 服务计算资源。 计算资源（计算目标）用于训练和部署模型。 可以在虚拟网络中创建这些计算目标。 例如，你可以使用 Azure Data Science Virtual Machine 来训练模型，然后将模型部署到 AKS。  
 
 有关详细信息，请参阅[如何在虚拟网络中运行试验和推理](how-to-enable-virtual-network.md)。
 
@@ -146,7 +146,7 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
 
 #### <a name="azure-blob-storage"></a>Azure Blob 存储
 
-Azure 机器学习服务将快照、输出和日志存储在 Azure Blob 存储帐户中，该帐户与 Azure 机器学习服务工作区和你的订阅相关联。 Azure Blob 存储中存储的所有数据都静态地与 Microsoft 托管密钥一起加密。
+Azure 机器学习在与 Azure 机器学习工作区和订阅关联的 Azure Blob 存储帐户中存储快照、输出和日志。 Azure Blob 存储中存储的所有数据都静态地与 Microsoft 托管密钥一起加密。
 
 有关如何对存储在 Azure Blob 存储中的数据使用自己的密钥的信息，请参阅[Azure Key Vault 中使用客户托管密钥的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)。
 
@@ -156,15 +156,15 @@ Azure 机器学习服务将快照、输出和日志存储在 Azure Blob 存储�
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Azure 机器学习服务将指标和元数据存储在与由 Azure 机器学习服务管理的 Microsoft 订阅关联的 Azure Cosmos DB 实例中。 存储在 Azure Cosmos DB 中的所有数据都是通过 Microsoft 管理的密钥加密的。
+Azure 机器学习将指标和元数据存储在与由 Azure 机器学习管理的 Microsoft 订阅关联的 Azure Cosmos DB 实例中。 存储在 Azure Cosmos DB 中的所有数据都是通过 Microsoft 管理的密钥加密的。
 
 #### <a name="azure-container-registry"></a>Azure 容器注册表
 
-注册表中的所有容器映像（Azure 容器注册表）都静态加密。 Azure 会在存储映像之前自动对其进行加密，并在 Azure 机器学习服务拉入映像时，自动将其解密。
+注册表中的所有容器映像（Azure 容器注册表）都静态加密。 Azure 会在存储映像之前自动对其进行加密，并在 Azure 机器学习拉入映像时动态解密。
 
 #### <a name="machine-learning-compute"></a>机器学习计算
 
-存储在 Azure 存储中的每个计算节点的 OS 磁盘都在 Azure 机器学习服务存储帐户中通过 Microsoft 托管的密钥进行加密。 此计算目标是暂时的，当没有排队的运行时，通常会缩小群集。 底层虚拟机已取消预配，操作系统磁盘被删除。 OS 磁盘不支持 Azure 磁盘加密。
+存储在 Azure 存储中的每个计算节点的 OS 磁盘都在 Azure 机器学习存储帐户中通过 Microsoft 托管的密钥进行加密。 此计算目标是暂时的，当没有排队的运行时，通常会缩小群集。 底层虚拟机已取消预配，操作系统磁盘被删除。 OS 磁盘不支持 Azure 磁盘加密。
 
 每个虚拟机还具有一个本地临时磁盘用于操作系统操作。 如果需要，可以使用磁盘来暂存定型数据。 磁盘未加密。
 若要深入了解 Azure 中的静态加密如何工作，请参阅[静态 Azure 数据加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)。
@@ -177,13 +177,13 @@ Azure 机器学习服务将指标和元数据存储在与由 Azure 机器学习�
 
 ### <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 
-Azure 机器学习服务使用与工作区关联的 Azure Key Vault 实例来存储各种类型的凭据：
+Azure 机器学习使用与工作区关联的 Azure Key Vault 实例来存储各种类型的凭据：
 
 * 关联的存储帐户连接字符串
 * 密码到 Azure 容器存储库实例
 * 数据存储的连接字符串
 
-用于计算目标（如 Azure HDInsight 和 Vm）的 SSH 密码和密钥存储在与 Microsoft 订阅关联的单独密钥保管库中。 Azure 机器学习服务不会存储用户提供的任何密码或密钥。 相反，它会生成、授权并存储自己的 SSH 密钥，以连接到 Vm 和 HDInsight 来运行试验。
+用于计算目标（如 Azure HDInsight 和 Vm）的 SSH 密码和密钥存储在与 Microsoft 订阅关联的单独密钥保管库中。 Azure 机器学习不存储用户提供的任何密码或密钥。 相反，它会生成、授权并存储自己的 SSH 密钥，以连接到 Vm 和 HDInsight 来运行试验。
 
 每个工作区都具有关联的系统分配的托管标识，该标识与工作区同名。 此托管标识可以访问密钥保管库中的所有密钥、机密和证书。
 
@@ -191,7 +191,7 @@ Azure 机器学习服务使用与工作区关联的 Azure Key Vault 实例来存
 
 ### <a name="metrics"></a>指标
 
-你可以使用 Azure Monitor 度量值来查看和监视 Azure 机器学习服务工作区的指标。 在[Azure 门户](https://portal.azure.com)中，选择工作区，然后选择 "**度量值**"：
+你可以使用 Azure Monitor 度量值来查看和监视 Azure 机器学习工作区的指标。 在[Azure 门户](https://portal.azure.com)中，选择工作区，然后选择 "**度量值**"：
 
 [![显示工作区的示例指标的屏幕截图](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
@@ -220,9 +220,9 @@ Azure 机器学习服务使用与工作区关联的 Azure Key Vault 实例来存
 
 下图显示了 "创建工作区" 工作流。
 
-* 用户登录到某个受支持的 Azure 机器学习服务客户端（Azure CLI、Python SDK、Azure 门户），并请求适当的 Azure 资源管理器令牌 Azure AD。
+* 用户登录到某个受支持的 Azure 机器学习客户端 Azure AD （Azure CLI、Python SDK、Azure 门户），并请求适当的 Azure 资源管理器令牌。
 * 用户调用 Azure 资源管理器来创建工作区。 
-* Azure 资源管理器联系 Azure 机器学习服务资源提供程序来设置工作区。
+* Azure 资源管理器联系 Azure 机器学习资源提供程序来设置工作区。
 
 创建工作区时，会在用户的订阅中创建其他资源：
 
@@ -239,7 +239,7 @@ Azure 机器学习服务使用与工作区关联的 Azure Key Vault 实例来存
 
 下图显示了代码快照工作流。
 
-与 Azure 机器学习服务工作区关联的是包含源代码的目录（试验）（训练脚本）。 这些脚本存储在本地计算机和云中（在订阅的 Azure Blob 存储中）。 代码快照用于执行或检查历史审核。
+与 Azure 机器学习工作区关联的是包含源代码的目录（试验）（训练脚本）。 这些脚本存储在本地计算机和云中（在订阅的 Azure Blob 存储中）。 代码快照用于执行或检查历史审核。
 
 [![代码快照工作流](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
@@ -247,10 +247,10 @@ Azure 机器学习服务使用与工作区关联的 Azure Key Vault 实例来存
 
 下图显示了定型工作流。
 
-* 将调用 Azure 机器学习服务，其中包含上一部分中保存的代码快照的快照 ID。
-* Azure 机器学习服务创建一个运行 ID （可选）和一个机器学习服务令牌，计算目标（如机器学习计算/Vm）稍后使用该令牌与机器学习服务通信。
+* 在上一部分中保存的代码快照的快照 ID 调用 Azure 机器学习。
+* Azure 机器学习创建一个运行 ID （可选）和一个机器学习服务令牌，计算目标（如机器学习计算/Vm）稍后使用该令牌与机器学习服务通信。
 * 你可以选择托管计算目标（如机器学习计算）或非托管计算目标（例如 Vm）来运行你的培训作业。 以下是两种情况下的数据流：
-   * Vm/HDInsight，由 Microsoft 订阅中的密钥保管库中的 SSH 凭据访问。 Azure 机器学习服务在以下计算目标上运行管理代码：
+   * Vm/HDInsight，由 Microsoft 订阅中的密钥保管库中的 SSH 凭据访问。 Azure 机器学习在以下计算目标上运行管理代码：
 
    1. 准备环境。 （Docker 是 Vm 和本地计算机的选项。 请参阅以下步骤，机器学习计算来了解如何在 Docker 容器上运行试验。）
    1. 下载代码。
@@ -266,7 +266,7 @@ Azure 机器学习服务使用与工作区关联的 Azure Key Vault 实例来存
 
 #### <a name="querying-runs-and-metrics"></a>查询运行和度量值
 
-在下流关系图中，当定型计算目标将运行指标从 Cosmos DB 数据库中的存储写入 Azure 机器学习服务时，将发生此步骤。 客户端可以调用 Azure 机器学习服务。 机器学习将从 Cosmos DB 数据库中转而取度量值，并将其返回给客户端。
+在下流关系图中，当定型计算目标将运行度量写入 Cosmos DB 数据库中的存储 Azure 机器学习时，将发生此步骤。 客户端可以调用 Azure 机器学习。 机器学习将从 Cosmos DB 数据库中转而取度量值，并将其返回给客户端。
 
 [![训练工作流](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
@@ -292,7 +292,7 @@ Azure 机器学习服务使用与工作区关联的 Azure Key Vault 实例来存
 * [如何运行批量预测](how-to-run-batch-predictions.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
-* [Azure 机器学习服务 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [在 Azure 虚拟网络中使用 Azure 机器学习服务](how-to-enable-virtual-network.md)
+* [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [将 Azure 机器学习与 Azure 虚拟网络配合使用](how-to-enable-virtual-network.md)
 * [有关构建建议系统的最佳实践](https://github.com/Microsoft/Recommenders)
 * [在 Azure 上生成实时建议 API](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

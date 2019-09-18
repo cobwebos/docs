@@ -1,7 +1,7 @@
 ---
 title: 用 Chainer 训练深度学习神经网络
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习的 Chainer 估计器类在企业规模上运行 PyTorch 训练脚本。  示例脚本 classifis 手写数字图像，使用在 numpy 顶部运行的 Chainer Python 库来构建深度学习神经网络。
+description: 了解如何使用 Azure 机器学习的 Chainer 估计器类在企业规模上运行 PyTorch 训练脚本。  示例脚本使用在 numpy 上运行的 Chainer Python 库来分类手写数字图像，以生成深度学习神经网络。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 91e638793d77a6d38f9813345829720d98545293
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 79c0cadc1b266a6d160cd36fc21dcaf36637a2b1
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002719"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076408"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>大规模定型并注册 Chainer 模型 Azure 机器学习
 
@@ -84,7 +84,7 @@ os.makedirs(project_folder, exist_ok=True)
 
 若要使用 Azure ML 的跟踪和指标功能，请在训练脚本中添加少量的 Azure ML 代码。  训练脚本**chainer_mnist。 py**演示如何使用脚本中的`Run`对象将一些指标记录到 Azure ML 运行中。
 
-提供的训练脚本使用 chainer `datasets.mnist.get_mnist`函数中的示例数据。  对于您自己的数据，您可能需要使用 "[上传数据集" 和 "脚本](how-to-train-keras.md#upload-dataset-and-scripts)" 等步骤，使数据在训练过程中可用。
+提供的训练脚本使用 chainer `datasets.mnist.get_mnist`函数中的示例数据。  对于您自己的数据，您可能需要使用 "[上传数据集" 和 "脚本](how-to-train-keras.md)" 等步骤，使数据在训练过程中可用。
 
 将训练脚本**chainer_mnist**复制到项目目录中。
 

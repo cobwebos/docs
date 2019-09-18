@@ -1,7 +1,7 @@
 ---
 title: 计算目标：在何处定型和部署模型
-titleSuffix: Azure Machine Learning service
-description: 定义要将模型定型或部署到 Azure 机器学习服务的位置。
+titleSuffix: Azure Machine Learning
+description: 定义要将模型定型或部署到 Azure 机器学习的位置。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/10/2019
-ms.openlocfilehash: b2e4c9160ccad66b04dd30979f0568da68836d76
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fe60b740312ee49510ea931bba1346ceaef9f31a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860583"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035521"
 ---
-#  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Azure 机器学习服务中的计算目标是什么？ 
+#  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标？ 
 
 **计算目标**是指定的计算资源/环境，你可以在其中运行训练脚本或托管你的服务部署。 此位置可以是本地计算机, 也可以是基于云的计算资源。 使用计算目标可以轻松地更改计算环境，而无需更改代码。  
 
@@ -29,7 +29,7 @@ ms.locfileid: "70860583"
 
 ## <a name="train"></a>训练计算目标
 
-Azure 机器学习服务在不同的计算资源中具有不同的支持。  你还可以附加自己的计算资源，但对各种方案的支持可能会有所不同。
+Azure 机器学习在不同的计算资源中具有不同的支持。  你还可以附加自己的计算资源，但对各种方案的支持可能会有所不同。
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -46,7 +46,7 @@ Azure 机器学习服务在不同的计算资源中具有不同的支持。  你
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure 机器学习计算（托管）
 
-托管计算资源由 Azure 机器学习服务创建和管理。 此计算针对机器学习工作负荷进行了优化。 Azure 机器学习计算是在5月30日2019的托管计算。 将来可能会添加其他托管的计算资源。
+托管计算资源由 Azure 机器学习创建和管理。 此计算针对机器学习工作负荷进行了优化。 Azure 机器学习计算是在5月30日2019的托管计算。 将来可能会添加其他托管的计算资源。
 
 您可以使用 Azure 机器学习计算进行培训，使用 batch 推断（预览版）。  使用此计算资源，你可以：
 
@@ -59,7 +59,7 @@ Azure 机器学习服务在不同的计算资源中具有不同的支持。  你
 
 ## <a name="unmanaged-compute"></a>非托管计算
 
-非托管计算目标*不*受 Azure 机器学习服务的管理。 在 Azure 机器学习之外创建这种类型的计算目标，并将其附加到工作区。 非托管计算资源可能需要其他步骤来维护或提高机器学习工作负荷的性能。
+非托管计算目标*不*受 Azure 机器学习管理。 在 Azure 机器学习之外创建这种类型的计算目标，并将其附加到工作区。 非托管计算资源可能需要其他步骤来维护或提高机器学习工作负荷的性能。
 
 ## <a name="next-steps"></a>后续步骤
 

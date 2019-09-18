@@ -8,24 +8,24 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/01/2019
-ms.openlocfilehash: c6994127b504cba31df051c757295f3e575bc23f
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.date: 09/01/2019
+ms.openlocfilehash: 3a197ab8d8c44229328c63330bcbc99fb2e64f01
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931210"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077273"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
-在[从 Azure 逻辑应用连接到本地数据源](../logic-apps/logic-apps-gateway-connection.md)之前，请在本地计算机上下载并安装本地数据网关。 该网关充当桥，可在本地数据源和逻辑应用之间提供快速数据传输和加密。 可以将相同的网关安装与其他云服务（例如 Power BI、Microsoft Flow、PowerApps 和 Azure Analysis Services）结合使用。 有关如何使用这些服务的网关的信息，请参阅以下文章：
+在[从 Azure 逻辑应用连接到本地数据源](../logic-apps/logic-apps-gateway-connection.md)之前，请在本地计算机上下载并安装本地[数据网关](https://aka.ms/on-premises-data-gateway-installer)。 该网关充当桥，可在本地数据源和逻辑应用之间提供快速数据传输和加密。 可以将相同的网关安装与其他云服务（例如 Power BI、Microsoft Flow、PowerApps 和 Azure Analysis Services）结合使用。 有关如何使用这些服务的网关的信息，请参阅以下文章：
 
 * [Microsoft Power BI 本地数据网关](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 * [Microsoft PowerApps 本地数据网关](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Microsoft Flow 本地数据网关](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Azure Analysis Services 本地数据网关](../analysis-services/analysis-services-gateway.md)
 
-本文介绍如何下载、安装和设置本地数据网关，以便可以从 Azure 逻辑应用访问本地数据源。 你还可以在本主题的后面部分了解有关[数据网关如何工作的](#gateway-cloud-service)详细信息。
+本文介绍如何下载、安装和设置本地数据网关，以便可以从 Azure 逻辑应用访问本地数据源。 你还可以在本主题的后面部分了解有关[数据网关如何工作的](#gateway-cloud-service)详细信息。 有关网关的详细信息，请参阅[什么是本地网关](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)？
 
 <a name="requirements"></a>
 
@@ -264,8 +264,8 @@ Microsoft 云服务使用[Azure Active Directory （Azure AD）](../active-direc
 
 有关详细信息，请参阅以下主题：
 
-* [本地数据网关常见问题解答](https://docs.microsoft.com/data-integration/service-gateway-onprem-faq)
-* [本地数据网关故障排除](https://docs.microsoft.com/data-integration/gateway-service-gateway-tshoot)
+* [本地数据网关常见问题解答](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [本地数据网关故障排除](https://docs.microsoft.com/data-integration/gateway/gateway-service-gateway-tshoot)
 * [监视和优化网关性能](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>后续步骤

@@ -3,7 +3,7 @@ title: Azure 状态监视器 v2 API 参考：启用监视 |Microsoft Docs
 description: 状态监视器 v2 API 参考。 ApplicationInsightsMonitoring。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: d3963889e3604fb67cb526b992e7ca27b1212b59
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 8742316697e6d6c8178bb02c8e7288499c655b6b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326357"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033132"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring"></a>状态监视器 v2 API：ApplicationInsightsMonitoring
+# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring"></a>状态监视器 v2 API：Enable-ApplicationInsightsMonitoring
 
 本文介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
 
@@ -88,9 +88,9 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 - **MachineFilter** 是计算机或 VM 名称所需的 C# 正则表达式。
     - “.*”将匹配所有项
     - “ComputerName”将仅匹配具有指定确切名称的计算机。
-- **AppFilter**是 IIS 站点C#名称所需的正则表达式。 可以通过运行命令[iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite)获取服务器上的站点列表。
+- **AppFilter** 是 IIS 站点名称所需的 C# 正则表达式。 可以通过运行命令 [get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite) 获取服务器上的站点列表。
     - “.*”将匹配所有项
-    - "SiteName" 将仅与指定的名称完全匹配的 IIS 站点。
+    - “SiteName”将仅匹配具有指定确切名称的 IIS 站点。
 - 需要 **InstrumentationKey** 才能监视与上述两个筛选器匹配的应用。
     - 如果要定义排除监视的规则，请将此值保留为 null。
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 8bb6ca0483a7bc0a5af63a1fae7e5e5a5415abba
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: dfe531f8b298be1d90df45f57918f87744912949
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810311"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077061"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -170,7 +170,7 @@ Ambari 提供由其 RESTful API 提供支持的直观、易用的 Hadoop 管理 
 
 1. 选择“群集仪表板”。
 
-    ![HDInsight Hadoop 群集菜单](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
+    ![HDInsight Apache Hadoop 群集菜单](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
 
 1. 从新页面中选择“Ambari 主页”。
 1. 输入群集用户名和密码。  默认群集用户名为“admin”。

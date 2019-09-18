@@ -1,46 +1,47 @@
 ---
 title: Azure HDInsight 管理 IP 地址
-description: 了解必须允许哪些 IP 地址来自的入站流量, 以便正确配置网络安全组和用户定义的路由, 以便与 Azure HDInsight 建立虚拟网络连接。
+description: 了解必须允许来自哪些 IP 地址的入站流量，以便为 Azure HDInsight 中的虚拟网络正确配置网络安全组和用户定义的路由。
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 0a41d1d57257db8f88481766e65eb8ee7569da87
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3f0b31cd3d37c3040ff99a89c1a5201b413fd3fc
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479201"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076637"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 地址
 
-如果使用网络安全组 (Nsg) 或用户定义的路由 (Udr) 来控制到 HDInsight 群集的入站流量, 则必须确保群集可以与关键 Azure 运行状况和管理服务通信。  这些服务的某些 IP 地址是特定于区域的, 其中某些地址适用于所有 Azure 区域。 如果使用的不是自定义 DNS，则可能还需要允许来自 Azure DNS 服务的流量。
+如果使用网络安全组 (NSG) 或用户定义的路由 (UDR) 来控制流向 HDInsight 群集的入站流量，则必须确保群集能够与关键的 Azure 运行状况和管理服务通信。  这些服务的有些 IP 地址特定于区域，而有些则适用于所有 Azure 区域。 如果不使用自定义 DNS，则可能还需要允许来自 Azure DNS 服务的流量。
 
-以下部分讨论了必须允许的特定 IP 地址。
+以下部分介绍了必须允许的特定 IP 地址。
 
 ## <a name="azure-dns-service"></a>Azure DNS 服务
 
 如果使用的是 Azure 提供的 DNS 服务，则允许通过端口 53 从 __168.63.129.16__ 进行访问。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。 如果使用的是自定义 DNS，请跳过此步骤。
 
-## <a name="health-and-management-services-all-regions"></a>运行状况和管理服务:所有区域
+## <a name="health-and-management-services-all-regions"></a>运行状况和管理服务：所有区域
 
-允许 Azure HDInsight 运行状况和管理服务的下列 IP 地址的流量适用于所有 Azure 区域:
+对于适用于所有 Azure 区域的 Azure HDInsight 运行状况和管理服务，允许来自其以下 IP 地址的流量：
 
-| 源 IP 地址 | 目标  | Direction |
+| 源 IP 地址 | Destination  | Direction |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*:443 | 入站 |
 | 23.99.5.239 | \*:443 | 入站 |
 | 168.61.48.131 | \*:443 | 入站 |
 | 138.91.141.162 | \*:443 | 入站 |
 
-## <a name="health-and-management-services-specific-regions"></a>运行状况和管理服务:特定区域
+## <a name="health-and-management-services-specific-regions"></a>运行状况和管理服务：特定的区域
 
-允许 Azure HDInsight 运行状况和管理服务在资源所在的特定 Azure 区域中列出的 IP 地址的流量:
+对于位于资源所在特定 Azure 区域中的 Azure HDInsight 运行状况和管理服务，允许来自以下 IP 地址的流量：
 
 > [!IMPORTANT]  
-> 如果未列出你使用的 Azure 区域, 则仅使用上一节中的四个 IP 地址。
+> 如果未列出所用的 Azure 区域，则仅使用前面部分所列的四个 IP 地址。
 
 | Country | 地区 | 允许的源 IP 地址 | 允许的目标 | Direction |
 | ---- | ---- | ---- | ---- | ----- |
@@ -79,7 +80,7 @@ ms.locfileid: "68479201"
 
 有关详细信息，请参阅[控制网络流量](hdinsight-plan-virtual-network-deployment.md#networktraffic)一节。
 
-如果你使用的是用户定义的路由 (Udr), 则应指定路由, 并允许从 VNET 到上述 Ip 的出站流量, 并将下一个跃点设置为 "Internet"。
+如果使用用户定义的路由 (UDR)，则应当指定一个路由并允许来自 VNET 的出站流量到达下一跃点设置为“Internet”的上述 IP。
 
 ## <a name="next-steps"></a>后续步骤
 

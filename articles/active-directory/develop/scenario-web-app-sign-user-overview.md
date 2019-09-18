@@ -15,22 +15,22 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95aeeacfd85dd79453bff4e365e5b050039f77b9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 7b898a93b87811fa5139e148a3273d7051af851b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852465"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056291"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>方案:用于登录用户的 Web 应用
+# <a name="scenario-web-app-that-signs-in-users"></a>场景：用于登录用户的 Web 应用
 
 了解生成一个可以通过 Microsoft 标识平台登录用户的 Web 应用所需的一切。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 如果需要创建第一个可移植 (ASP.NET Core) Web 应用来登录用户，请按以下快速入门操作：
 
@@ -55,7 +55,7 @@ ms.locfileid: "68852465"
 
 ## <a name="specifics"></a>详情
 
-- 在应用程序注册期间，需提供一个回复 URI，或多个回复 URI（如果将应用部署到多个位置）。 在某些情况下 (ASP.NET/ASP.NET Core)，需启用 IDToken。 最后需设置注销 URI，方便应用程序响应用户注销。
+- 在应用程序注册期间，需提供一个回复 URI，或多个回复 URI（如果将应用部署到多个位置）。 在某些情况下（ASP.NET/ASP.NET Core），需要启用 ID 令牌。 最后需设置注销 URI，方便应用程序响应用户注销。
 - 在应用程序代码中，需提供方便 Web 应用向其委托登录的机构。 可能需要自定义令牌验证（尤其是在 ISV 方案中）。
 - Web 应用程序支持任何帐户类型。 有关详细信息，请参阅[支持的帐户类型](v2-supported-account-types.md)。
 

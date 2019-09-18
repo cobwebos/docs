@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: f9a2bd4c4ec176e018948a7a5a01603d075a7ea2
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: ca3fec3dbb4fbe77a1d375c0329275b7b799d06b
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018005"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067852"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 创建专用终结点
 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Azure 资源（例如虚拟机）能够与专用链接资源进行私下通信。 
@@ -182,25 +182,38 @@ mstsc /v:<publicIpAddress>
 2. 输入在创建 VM 时指定的用户名和密码。
   > [!NOTE]
   > 你可能需要选择 "更多选项" > "使用其他帐户"，以便指定在创建 VM 时输入的凭据。 
+  
 3. 选择 **"确定"** 。 
 4. 可能会收到证书警告。 如果这样做，请选择 **"是" 或 "**   **继续**"。 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>从 VM 中私下访问 SQL 数据库服务器
 
 1. 在 myVM 的远程桌面中，打开 PowerShell。
-2. Enternslookup myserver.database.windows.net 您将收到类似于下面的消息：Azure PowerShellCopy 服务器：未知地址：168.63.129.16 非权威应答：名称： myserver.privatelink.database.windows.net 地址：10.0.0.5 别名： myserver.database.windows.net
-3. 安装 SQL Server Management Studio
-4. 在 "连接到服务器" 中，输入或选择以下信息：设置值服务器类型选择数据库引擎。
-      服务器名称选择 "myserver.database.windows.net 用户名" 输入创建过程中提供的用户名。
-      密码输入创建过程中提供的密码。
-      记住密码选择是。
-5. 选择 "连接"。
-6. 浏览左侧菜单中的数据库。 
-7. 同时创建或查询来自 mydatabase 的信息
-8. 关闭与 *myVM*的远程桌面连接。 
+2. 输入 `nslookup myserver.database.windows.net`。 
 
-## <a name="clean-up-resources"></a>清理资源 
-使用完专用终结点、SQL 数据库服务器和 VM 后，请使用[AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)删除该资源组及其包含的所有资源：
+    将收到类似于下面的消息：
+    ```azurepowershell
+    Server:  UnKnown
+    Address:  168.63.129.16
+    Non-authoritative answer:
+    Name:    myserver.privatelink.database.windows.net
+    Address:  10.0.0.5
+    Aliases:   myserver.database.windows.net
+3. Install SQL Server Management Studio
+4. In Connect to server, enter or select this information:
+    Setting Value
+      Server type   Select Database Engine.
+      Server name   Select myserver.database.windows.net
+      Username  Enter a username provided during creation.
+      Password  Enter a password provided during creation.
+      Remember password Select Yes.
+5. Select Connect.
+6. Browse Databases from left menu. 
+7. (Optionally) Create or query information from mydatabase
+8. Close the remote desktop connection to *myVM*. 
+
+## Clean up resources 
+When you're done using the private endpoint, SQL Database server and the VM, use [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) to remove the resource group and all the resources it has:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

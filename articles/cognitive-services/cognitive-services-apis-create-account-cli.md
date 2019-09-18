@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: e57bb55f5bbeba9cb476672723511a4d19c46165
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: cd00f49aea08e5c94a9206b64f66f4424ef3ca04
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383258"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057653"
 ---
-# <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口（CLI）创建认知服务资源
+# <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
-使用此快速入门，通过[Azure 命令行界面（CLI）](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)开始使用 Azure 认知服务。 认知服务由你在 Azure 订阅中创建的 Azure[资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示。 创建资源后，请使用生成的密钥和终结点对应用程序进行身份验证。 
+使用本快速入门可通过 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 开始使用 Azure 认知服务。 认知服务由你在 Azure 订阅中创建的 Azure [资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示。 创建资源后，请使用生成的密钥和终结点对应用程序进行身份验证。 
 
 
 本快速入门介绍如何使用 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 注册 Azure 认知服务以及创建包含单服务或多服务订阅的帐户。 这些服务由 Azure [资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示，可用于连接到一个或多个 Azure 认知服务 API。
@@ -42,7 +42,7 @@ az login
  
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>创建新的 Azure 认知服务资源组
 
-在创建认知服务资源之前，必须具有 Azure 资源组才能包含资源。 创建新资源时，可以选择创建新的资源组或使用现有资源组。 本文介绍如何创建新资源组。
+在创建认知服务资源之前，必须具有 Azure 资源组才能包含该资源。 在创建新资源时，可以选择新建资源组，或使用现有的资源组。 本文介绍如何创建新资源组。
 
 ### <a name="choose-your-resource-group-location"></a>选择资源组位置
 
@@ -138,7 +138,7 @@ az cognitiveservices account list-kinds
 ```azurecli-interactive
 az cognitiveservices account create \
     --name anomaly-detector-resource \
-    --group cognitive-services-resource-group \
+    --resource-group cognitive-services-resource-group \
     --kind AnomalyDetector \
     --sku F0 \
     --location westus2 \
@@ -173,9 +173,9 @@ az login
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果要清理并删除认知服务资源，则可以将其删除或资源组。 删除资源组也会删除组中包含的任何其他资源。
+如果要清理并删除认知服务资源, 则可以将其删除或资源组。 删除资源组也会删除该组中包含的任何其他资源。
 
-若要删除资源组及其关联的资源，请使用 az group delete 命令。
+若要删除资源组及其关联的资源, 请使用 az group delete 命令。
 
 ```azurecli-interactive
 az group delete --name storage-resource-group

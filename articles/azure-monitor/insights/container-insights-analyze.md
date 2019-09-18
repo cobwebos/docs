@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2019
+ms.date: 09/17/2019
 ms.author: magoedte
-ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 945dc6c35eacab99db28172703e1aebed10bd58a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744578"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067090"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 了解 AKS 群集性能
 对于容器 Azure Monitor，可以使用性能图表和运行状况状态从两个角度监视 Azure Kubernetes 服务（AKS）群集的工作负荷。 可以直接从 AKS 群集进行监视，也可以从 Azure Monitor 监视订阅中的所有 AKS 群集。 监视特定的 AKS 群集时，还可以查看 Azure 容器实例。
@@ -170,9 +170,13 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 选择页面顶部的 "控制器" 或 "容器"，查看这些对象的状态和资源利用率。 若要查看内存使用率，请在 "**指标**" 下拉列表中选择 "**内存 RSS** " 或 "**内存工作集**"。 仅 Kubernetes 1.8 版和更高版本支持**内存 RSS**。 否则，看到的 **Min&nbsp;%** 值会显示为 *NaN&nbsp;%* ，它表示未定义或无法表示的值的数值数据类型值。
 
-**内存工作集**显示随附的内存和虚拟内存（缓存），并且是应用程序使用的总大小。 **内存 RSS**只显示主内存（而不是常驻内存）。 此指标显示可用内存的实际容量。
-
 ![容器节点性能视图](./media/container-insights-analyze/containers-node-metric-dropdown.png)
+
+**内存工作集**显示随附的内存和虚拟内存（缓存），并且是应用程序使用的总大小。 **内存 RSS**只显示主内存（而不是常驻内存）。 此指标显示可用内存的实际容量。 驻留内存和虚拟内存之间有何区别？
+
+- 驻留内存或主内存是可用于群集节点的实际计算机内存量。
+
+- 在内存压力下，虚拟内存是操作系统用于将数据从内存交换到磁盘的保留硬盘空间（缓存），然后在需要时将数据提取回内存。
 
 默认情况下，性能数据基于过去六个小时，但你可以使用左上角的 " **TimeRange** " 选项更改该窗口。 您还可以通过在百分点选择器中选择 "**最小值**"、"**平均值**"、"第**50** **个"、** **"最**大值"、"**最大值**" 来筛选时间范围 
 

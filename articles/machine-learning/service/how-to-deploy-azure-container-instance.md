@@ -1,7 +1,7 @@
 ---
 title: 如何将模型部署到 Azure 容器实例
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 容器实例将 Azure 机器学习服务模型部署为 web 服务。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 容器实例将 Azure 机器学习模型部署为 web 服务。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: cb80cb92ef93132aae3c57e74c108293da3a7834
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 27988edaf9d6fe70288352b0ba45945e32976d4d
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279139"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034637"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
 
-了解如何使用 Azure 机器学习服务将模型部署为 Azure 容器实例（ACI）上的 web 服务。 如果满足以下条件之一，请使用 Azure 容器实例：
+了解如何使用 Azure 机器学习将模型部署为 Azure 容器实例（ACI）上的 web 服务。 如果满足以下条件之一，请使用 Azure 容器实例：
 
 - 你需要快速部署并验证你的模型。 不需要提前创建 ACI 容器。 它们是在部署过程中创建的。
 - 正在测试一个开发中的模型。 
@@ -28,7 +28,7 @@ ms.locfileid: "70279139"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 机器学习服务工作区。 有关详细信息，请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
+- Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 - 已在工作区中注册的机器学习模型。 如果没有已注册的模型，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
@@ -68,7 +68,7 @@ print(service.state)
 
 ### <a name="using-the-cli"></a>使用 CLI
 
-若要使用 CLI 进行部署，请使用以下命令。 替换`mymodel:1`为注册的模型的名称和版本。 替换`myservice`为要为此服务提供的名称：
+若要使用 CLI 进行部署, 请使用以下命令。 替换`mymodel:1`为注册的模型的名称和版本。 替换`myservice`为要为此服务提供的名称:
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json

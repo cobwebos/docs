@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7cbde2beb03c174facbd145954387a31f6158a9a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 0bc373649b19b75a8f137e82bf839ac5b27b8692
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654188"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065000"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 Salesforce SAML 提供程序的登录
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文展示了如何在 Azure Active Directory (Azure AD) B2C 中使用[自定义策略](active-directory-b2c-overview-custom.md)为来自 Salesforce 组织的用户实现登录。 可以通过将 [SAML 技术配置文件](saml-technical-profile.md)添加到自定义策略来实现登录。
+本文说明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](active-directory-b2c-overview-custom.md)为 Salesforce 组织中的用户启用登录。 可以通过将 [SAML 技术配置文件](saml-technical-profile.md)添加到自定义策略来实现登录。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,38 +32,38 @@ ms.locfileid: "67654188"
 ### <a name="set-up-salesforce-as-an-identity-provider"></a>将 Salesforce 设置为标识提供者
 
 1. [登录到 Salesforce](https://login.salesforce.com/)。
-2. 在左侧菜单中的“设置”  下面，展开“标识”  ，然后选择“标识提供者”  。
-3. 选择“启用标识提供者”  。
-4. 在“选择证书”  下，选择希望 Salesforce 用于与 Azure AD B2C 进行通信的证书。 可以使用默认证书。
-5. 单击“保存”  。
+2. 在左侧菜单中的“设置”下面，展开“标识”，然后选择“标识提供者”。
+3. 选择“启用标识提供者”。
+4. 在“选择证书”下，选择希望 Salesforce 用于与 Azure AD B2C 进行通信的证书。 可以使用默认证书。
+5. 单击“保存”。
 
 ### <a name="create-a-connected-app-in-salesforce"></a>在 Salesforce 中创建连接的应用
 
-1. 在“标识提供者”  页面上，选择“现在通过已连接应用创建服务提供程序”。  请单击此处”。
-2. 在“基本信息”  下，为连接的应用输入所需值。
-3. 在“Web 应用设置”  下，选中“启用 SAML”  复选框。
-4. 在“实体 ID”  字段中，输入以下 URL。 确保将 `your-tenant` 的值替换为你的 Azure AD B2C 租户的名称。
+1. 在“标识提供者”页面上，选择“现在通过已连接应用创建服务提供程序”。请单击此处”。
+2. 在“基本信息”下，为连接的应用输入所需值。
+3. 在“Web 应用设置”下，选中“启用 SAML”复选框。
+4. 在“实体 ID”字段中，输入以下 URL。 确保将 `your-tenant` 的值替换为你的 Azure AD B2C 租户的名称。
 
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
       ```
 
-6. 在“ACS URL”  字段中，输入以下 URL。 确保将 `your-tenant` 的值替换为你的 Azure AD B2C 租户的名称。
+6. 在“ACS URL”字段中，输入以下 URL。 确保将 `your-tenant` 的值替换为你的 Azure AD B2C 租户的名称。
 
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
       ```
-7. 滚动到列表底部，然后单击“保存”  。
+7. 滚动到列表底部，然后单击“保存”。
 
 ### <a name="get-the-metadata-url"></a>获取元数据 URL
 
-1. 在连接的应用的概述页上，单击“管理”  。
-2. 复制“元数据发现终结点”  的值，然后保存它。 在本文后面部分将使用它。
+1. 在连接的应用的概述页上，单击“管理”。
+2. 复制“元数据发现终结点”的值，然后保存它。 在本文后面部分将使用它。
 
 ### <a name="set-up-salesforce-users-to-federate"></a>设置 Salesforce 用户以进行联合
 
-1. 在连接的应用的“管理”  页上，单击“管理配置文件”  。
-2. 选择要与 Azure AD B2C 联合的配置文件（或用户组）。 以系统管理员身份，选中“系统管理员”  复选框，以便可以使用 Salesforce 帐户进行联合。
+1. 在连接的应用的“管理”页上，单击“管理配置文件”。
+2. 选择要与 Azure AD B2C 联合的配置文件（或用户组）。 以系统管理员身份，选中“系统管理员”复选框，以便可以使用 Salesforce 帐户进行联合。
 
 ## <a name="generate-a-signing-certificate"></a>生成签名证书
 
@@ -88,15 +88,15 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 你需要将已创建的证书存储在 Azure AD B2C 租户中。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-4. 在“概述”页上选择“标识体验框架”  。
-5. 选择“策略密钥”  ，然后选择“添加”  。
-6. 对于“选项”  ，请选择 `Upload`。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+4. 在“概述”页上选择“标识体验框架”。
+5. 选择“策略密钥”，然后选择“添加”。
+6. 对于“选项”，请选择 `Upload`。
 7. 输入策略的**名称**。 例如，SAMLSigningCert。 前缀 `B2C_1A_` 将自动添加到你的密钥的名称中。
 8. 浏览找到并选择你创建的 B2CSigningCert.pfx 证书。
-9. 输入证书的密码。 
-3. 单击“创建”。 
+9. 输入证书的密码。
+3. 单击“创建”。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -154,9 +154,9 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 
 现在，你已配置了策略，因此 Azure AD B2C 知道如何与 Salesforce 帐户进行通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
 
-1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”   。
-2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件  。
-3. 单击“上传” 。 
+1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
+2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
+3. 单击“上传” 。
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
 
@@ -199,12 +199,12 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 通过在租户中创建的应用程序与 Azure AD B2C 进行通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-4. 选择“应用程序”，然后选择“添加”   。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+4. 选择“应用程序”，然后选择“添加”。
 5. 输入应用程序的名称，例如 *testapp1*。
-6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`   。
-7. 单击“创建”。 
+6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`。
+7. 单击“创建”。
 
 ## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 
@@ -215,4 +215,4 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 3. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_salesforce`
 4. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，以匹配所创建的新用户旅程的 ID (SignUpSignInSalesforce)。
 5. 保存更改并上传文件，然后选择列表中的新策略。
-6. 确保在“选择应用程序”字段选择你创建的 Azure AD B2C 应用程序，然后单击“立即运行”对其进行测试   。
+6. 确保在“选择应用程序”字段选择你创建的 Azure AD B2C 应用程序，然后单击“立即运行”对其进行测试。

@@ -2,17 +2,18 @@
 title: Azure HDInsight 中的托管标识
 description: 提供 Azure HDInsight 中托管标识的实现概述。
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 30631c4b71d1e8f3b0380a39bab49b900df32621
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02ea164a1fa29b494801623d418be73fc47d069c
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427635"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077085"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的托管标识
 
@@ -26,9 +27,9 @@ ms.locfileid: "66427635"
 
 在 Azure HDInsight 中，托管标识是在群集的每个节点上预配的。 但是，这些标识组件只可由 HDInsight 服务使用。 目前没有任何支持的方法可用于通过 HDInsight 群集节点上安装的托管标识生成访问令牌。 对于某些 Azure 服务，托管标识是使用某个终结点实现的。使用该终结点，可以自行获取用来与其他 Azure 服务交互的访问令牌。
 
-## <a name="create-a-managed-identity"></a>创建托管的标识
+## <a name="create-a-managed-identity"></a>创建托管标识
 
-可以使用任何以下方法创建管理的标识：
+可以通过以下任何方法创建托管标识：
 
 * [Azure 门户](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
@@ -43,7 +44,7 @@ Azure HDInsight 中的多种方案都会使用托管标识。 有关详细的设
 
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [企业安全性套餐](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
-* [Kafka 自带密钥 (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
+* [Kafka 创建自己的密钥（BYOK）](kafka/apache-kafka-byok.md#get-started-with-byok)
 
 ## <a name="next-steps"></a>后续步骤
 

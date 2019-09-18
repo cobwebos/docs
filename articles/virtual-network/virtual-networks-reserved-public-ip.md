@@ -4,7 +4,7 @@ description: 了解保留 IP 地址（经典），以及如何使用 Azure Power
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: 34652a55-3ab8-4c2d-8fb2-43684033b191
 ms.service: virtual-network
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: 8afed4eb1add0ba3a7db474e54b2f78a0babab06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 675e7a7b557a3f19ea4d8d4960316c3859cbb9c1
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789071"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058476"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>保留 IP 地址（经典部署）
 
@@ -37,9 +37,9 @@ ms.locfileid: "60789071"
 * **想要 IP 始终与云服务相关联，即使 VM 处于停止或释放状态下**。 如果想要通过即使在云服务中的 VM 处于关闭或停止（释放）状态下也不会更改的 IP 地址来访问服务。
 * **想要确保 Azure 的出站流量使用可预测的 IP 地址**。 可以将本地防火墙配置为仅允许来自特定 IP 地址的流量。 通过保留 IP，可以了解源 IP 地址，无需因为 IP 更改而更新防火墙规则。
 
-## <a name="faqs"></a>常见问题解答
+## <a name="faqs"></a>常见问题
 - 可以将保留 IP 用于所有 Azure 服务吗？
-    不。 保留 IP 只能用于通过 VIP 公开的 VM 和云服务实例角色。
+    否。 保留 IP 只能用于通过 VIP 公开的 VM 和云服务实例角色。
 - 我可以有多少个保留 IP？
     有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md#networking-limits)一文。
 - 保留 IP 是否收费？
@@ -47,7 +47,7 @@ ms.locfileid: "60789071"
 - 如何保留某个 IP 地址？
     可以使用 PowerShell、[Azure 管理 REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) 或 [Azure 门户](https://portal.azure.com)在 Azure 区域中保留 IP 地址。 保留 IP 地址将关联到订阅。
 - 我是否可将保留 IP 用于基于地缘组的 VNet？
-    不。 仅区域 VNet 支持保留 IP。 与地缘组关联的 VNet 不支持保留 IP。 有关如何将 VNet 与区域或地缘组关联的详细信息，请参阅[关于区域 VNet 和地缘组](virtual-networks-migrate-to-regional-vnet.md)一文。
+    否。 仅区域 VNet 支持保留 IP。 与地缘组关联的 VNet 不支持保留 IP。 有关如何将 VNet 与区域或地缘组关联的详细信息，请参阅[关于区域 VNet 和地缘组](virtual-networks-migrate-to-regional-vnet.md)一文。
 
 ## <a name="manage-reserved-vips"></a>管理保留 VIP
 
@@ -103,7 +103,7 @@ Remove-AzureReservedIP -ReservedIPName "MyReservedIP"
 ```azurecli
 azure network reserved-ip create <name> <location>
 ```
-示例：
+例如：
  ```azurecli
  azure network reserved-ip create MyReservedIP centralus
  ```
@@ -121,7 +121,7 @@ azure network reserved-ip list
  ```azurecli
  azure network reserved-ip delete <name>
  ```
-  示例：  
+  例如：  
  ```azurecli
  azure network reserved-ip delete MyReservedIP
  ```
@@ -141,7 +141,7 @@ azure network reserved-ip list
     ```azurecli
      azure network reserved-ip create <name> <location> -r <service-name> -d <deployment-name>
     ```
-    示例：
+    例如：
 
     ```azurecli
       azure network reserved-ip create MyReservedIP centralus -r TestService -d asmtest8942
@@ -180,7 +180,7 @@ Remove-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName Test
 azure network reserved-ip disassociate <name> <service-name> <deployment-name>
 ```
 
-示例：
+例如：
 
 ```azurecli
 azure network reserved-ip disassociate MyReservedIP TestService asmtest8942
@@ -197,7 +197,7 @@ azure network reserved-ip disassociate MyReservedIP TestService asmtest8942
 ```azurecli
 azure network reserved-ip delete <name>
 ```
-示例：
+例如：
 
 ```azurecli
 azure network reserved-ip delete MyReservedIP
@@ -226,7 +226,7 @@ Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestSer
 ```azurecli
 azure network reserved-ip associate <name> <service-name> <deployment-name>
 ```
-示例：
+例如：
 ```azurecli
 azure network reserved-ip associate MyReservedIP TestService asmtest8942
 ```

@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 6857697423e494c515bd052cb42af3ad1d9fe188
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207134"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057780"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 权利管理（预览版）中委托任务
 
@@ -69,7 +69,7 @@ ms.locfileid: "70207134"
 
 | Role | 描述 |
 | --- | --- |
-| 目录创建者 | 创建和管理目录。 通常，该角色是不充当全局管理员的 IT 管理员，或者是资源集合的资源所有者。 创建目录的人员将自动成为该目录的第一个目录所有者，并可以添加其他目录所有者。 |
+| 目录创建者 | 创建和管理目录。 通常，该角色是不充当全局管理员的 IT 管理员，或者是资源集合的资源所有者。 创建目录的人员将自动成为该目录的第一个目录所有者，并可以添加其他目录所有者。 目录创建者无法管理或查看他们不拥有的目录，也无法将他们不拥有的资源添加到目录中。 如果目录创建者需要管理其他目录或添加不拥有的资源，则他们可以请求成为该目录或资源的共同所有者。 |
 | 目录所有者 | 编辑和管理现有目录。 通常，该角色是 IT 管理员或资源所有者，或者是目录所有者指定的用户。 |
 | 访问包管理者 | 编辑和管理目录中的所有现有访问包。 |
 
@@ -107,8 +107,8 @@ ms.locfileid: "70207134"
 
 | Azure AD 目录角色 | 权利管理角色 | 可以添加安全组 | 可以添加 Office 365 组 | 可以添加应用 | 可以添加 SharePoint Online 站点 |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [全局管理员](../users-groups-roles/directory-assign-admin-roles.md) | 不适用 |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [用户管理员](../users-groups-roles/directory-assign-admin-roles.md) | 不适用 |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [全局管理员](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [用户管理员](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Intune 管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Exchange 管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  | :heavy_check_mark: |  |  |
 | [Teams 服务管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  | :heavy_check_mark: |  |  |
@@ -117,7 +117,7 @@ ms.locfileid: "70207134"
 | [云应用管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  |  | :heavy_check_mark: |  |
 | 用户 | 目录所有者 | 仅限组所有者 | 仅限组所有者 | 仅限应用所有者 |  |
 
-若要确定任务的最小特权角色, 还可以[在 Azure Active Directory 中通过管理任务引用管理员角色](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)。
+若要确定任务的最小特权角色，还可以[在 Azure Active Directory 中通过管理任务引用管理员角色](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)。
 
 ## <a name="add-a-catalog-creator"></a>添加目录创建者
 
@@ -139,7 +139,15 @@ ms.locfileid: "70207134"
 
 ## <a name="add-a-catalog-owner-or-an-access-package-manager"></a>添加目录所有者或访问包管理者
 
-若要委托目录或目录中访问包的管理权限，请将用户添加到目录所有者或访问包管理者角色。 创建目录的任何人将成为第一个目录所有者。 遵循以下步骤将用户分配到目录所有者或访问包管理者角色。
+若要委派管理目录或访问目录中的包，请将用户添加到目录所有者或访问包管理器角色。 创建目录的任何人将成为第一个目录所有者。 
+
+分配的目录所有者或访问包管理器必须熟悉此项目。 如果项目中涉及到一天的操作，目录创建者应创建访问包，并且他们知道以下信息：
+- 需要哪些资源
+- 需要访问权限的用户
+- 谁需要审批访问权限
+- 项目的最后时间
+
+目录创建者应该将任务委托给项目主管，如果不涉及到项目的日常操作，则将创建和管理访问包。 按照以下步骤将用户分配到目录所有者或访问包管理器角色：
 
 **必备角色：** 全局管理员、用户管理员或目录所有者
 
