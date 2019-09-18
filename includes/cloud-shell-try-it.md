@@ -4,12 +4,12 @@ ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: 75860e5f53c8a8539632d27dd6202c7fa53ad76a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: fdb4ddc43c1fcde55da8186bd2c09b709eb41374
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047964"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055239"
 ---
 ## <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
@@ -19,9 +19,9 @@ Azure 托管 Azure Cloud Shell（一个可通过浏览器使用的交互式 shel
 
 | 选项 | 示例/链接 |
 |-----------------------------------------------|---|
-| 选择代码块右上角的“试用”。  选择“试用”  不会自动将代码复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/cli-try-it.png) |
-| 转到 [https://shell.azure.com](https://shell.azure.com) 或选择“启动 Cloud Shell”  按钮可在浏览器中打开 Cloud Shell。 | [![在新窗口中启动 Cloud Shell](media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
-| 选择 [Azure 门户](https://portal.azure.com)右上方菜单栏中的“Cloud Shell”  按钮。 | ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| 选择代码块右上角的“试用”。  选择“试用”  不会自动将代码复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| 转到 [https://shell.azure.com](https://shell.azure.com) 或选择“启动 Cloud Shell”  按钮可在浏览器中打开 Cloud Shell。 | [![在新窗口中启动 Cloud Shell](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| 选择 [Azure 门户](https://portal.azure.com)右上方菜单栏中的“Cloud Shell”  按钮。 | ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
 若要在 Azure Cloud Shell 中运行本文中的代码，请执行以下操作：
 

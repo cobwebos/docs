@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3ef848d12e3a39c3bd83ea44fcb86d67bbdb38dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1e12a5cbdf145bb95fc2166a20ca1e9a77539cf
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735924"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059561"
 ---
 本文使用 PowerShell cmdlet。 若要运行这些 cmdlet，可以使用 Azure Cloud Shell（在 Azure 中托管并通过浏览器使用的交互式 shell 环境）。 Azure Cloud Shell 随预安装的 Azure PowerShell cmdlet 一起提供。
 
@@ -23,7 +23,7 @@ ms.locfileid: "66735924"
 
 |  |   |
 |-----------------------------------------------|---|
-| 选择代码块右上角的“试用”。  这__不__会自动将文本复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/cli-try-it.png) |
-| 在浏览器中打开 [shell.azure.com](https://shell.azure.com)。 | [![“启动 Azure Cloud Shell”按钮](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
-| 选择 [Azure 门户](https://portal.azure.com)右上角菜单上的“Cloud Shell”  按钮。 | ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| 选择代码块右上角的“试用”。  这__不__会自动将文本复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| 在浏览器中打开 [shell.azure.com](https://shell.azure.com)。 | [![“启动 Azure Cloud Shell”按钮](./media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| 选择 [Azure 门户](https://portal.azure.com)右上角菜单上的“Cloud Shell”  按钮。 | ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 

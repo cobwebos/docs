@@ -22,6 +22,7 @@
     - name: 添加通过应用程序代理访问的本地应用
       href: application-proxy-add-on-premises-application.md
 - name: 概念
+  expanded: true
   items:
     - name: 云应用和单一登录
       items:
@@ -240,6 +241,8 @@
           items:
             - name: 排查用户预配问题
               href: application-provisioning-config-problem.md
+            - name: “预配”日志
+              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
             - name: 同步属性以进行映射 - 库应用
               href: user-provisioning-sync-attributes-for-mapping.md
             - name: 花费数小时 - 库应用
