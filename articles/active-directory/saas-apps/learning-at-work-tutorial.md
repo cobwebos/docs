@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f04e6f8df55059e2aa2981f85f40e487c6f0f8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3249957fa20c208d0fd06c676200753163d4bfc8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823680"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376078"
 ---
 # <a name="tutorial-integrate-learning-at-work-with-azure-active-directory"></a>教程：将 Learning at Work 与 Azure Active Directory 集成
 
@@ -90,9 +90,9 @@ ms.locfileid: "68823680"
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Learning at Work 客户端支持团队](https://www.learninga-z.com/site/contact/support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. Learning at Work 应用程序要求使用特定格式的 SAML 断言，这需要向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 与 **user.userprincipalname**相映射。
+5. Learning at Work 应用程序要求使用特定格式的 SAML 断言，这需要向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。
 
-    可以根据组织设置更新 Azure AD 中的 **nameidentifier** 值，此值需要与 SABA 云中的“用户 ID”匹配，因此，需要单击“编辑”图标来编辑属性映射，并更改属性映射。   ****  
+    可以根据组织设置更新 Azure AD 中的 nameidentifier 值，此值需要与 SABA 云中的“用户 ID”匹配，因此，需要单击“编辑”图标来编辑属性映射，并更改属性映射。   
 
     ![image](common/edit-attribute.png)
 
@@ -130,17 +130,17 @@ ms.locfileid: "68823680"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-learning-at-work-test-user"></a>创建 Learning at Work 测试用户
 
-在本部分，你将在 Learning at Work 中创建名为 B.Simon 的用户。 请与  [Learning at Work 支持团队](https://www.learninga-z.com/site/contact/support)协作，将用户添加到 Learning at Work 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分，你将在 Learning at Work 中创建名为 B.Simon 的用户。 请与 [Learning at Work 支持团队](https://www.learninga-z.com/site/contact/support)协作，将用户添加到 Learning at Work 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-sso"></a>测试 SSO 
 

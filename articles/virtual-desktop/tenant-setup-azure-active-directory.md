@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 09/06/2019
 ms.author: helohr
-ms.openlocfilehash: cd80ed3c3db2453a333c87ed706dd358ba248b47
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 66441e852ebe0a391a5807b90eeadae230130815
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516179"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734450"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>教程：在 Windows 虚拟桌面预览版中创建租户
 
@@ -49,7 +49,7 @@ ms.locfileid: "69516179"
    >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
    >```
 
-2. 使用全局管理员帐户登录到 Windows 虚拟桌面许可页。 例如，如果你所在的组织是 Contoso，则你的帐户可能是 admin@contoso.com 或 admin@contoso.onmicrosoft.com。  
+2. 使用全局管理员帐户登录到 Windows 虚拟桌面许可页。 例如，如果你所在的组织是 Contoso，则你的帐户可能是 admin@contoso.com 或 admin@contoso.onmicrosoft.com。
 3. 选择“接受”  。
 4. 等待一分钟，以便 Azure AD 可以记录同意。
 5. 打开浏览器并开始使用 [Windows 虚拟桌面客户端应用](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback)的管理员同意流。
@@ -78,6 +78,7 @@ ms.locfileid: "69516179"
    ![一张屏幕截图，其中显示负责管理“Windows 虚拟桌面”企业应用程序的用户和组。 该屏幕截图仅显示“默认访问”的一项分配。](media/tenant-default-access.png)
 5. 选择“+ 添加用户”，然后在“添加分配”边栏选项卡中选择“用户和组”    。
 6. 搜索用于创建 Windows 虚拟桌面租户的用户帐户。 为简单起见，可以使用全局管理员帐户。
+   - 如果使用的是 Microsoft 标识提供程序（如 contosoadmin@live.com 或 contosoadmin@outlook.com），则可能无法登录到 Windows 虚拟桌面。 建议改为使用特定于域的帐户（如 admin@contoso.com 或 admin@contoso.onmicrosoft.com）。
 
    ![该屏幕截图显示选来添加为“TenantCreator”的用户。](media/tenant-assign-user.png)
 

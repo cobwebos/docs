@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 19654a4902ae64e5de63ffc93a8d143cc518e254
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 60ae2136c3fa934c178de95f51d490e570f45faa
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697733"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845340"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>示例：使用文本分析检测情绪
 
@@ -80,7 +80,7 @@ ms.locfileid: "68697733"
 
 + 创建 POST 请求。 若要查看此请求的 API 文档，请参阅[情绪分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)。
 
-+ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便进行情绪分析。 它必须包含 `/sentiment` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`。
++ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便进行情绪分析。 必须在 URL 中包括 `/text/analytics/v2.1/sentiment`。 例如：`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`。
 
 + 设置请求头以包含文本分析操作的[访问密钥](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 
@@ -139,8 +139,8 @@ ms.locfileid: "68697733"
 > [!NOTE]
 > * 情绪分析 v3 的请求格式和[数据限制](../overview.md#data-limits)与上一版本相同。
 > * 目前，情绪分析 v3：
->    * 只支持英语。
->    * 已在以下区域发布：`Central US`、`Central Canada`、`East Asia`。
+>    * 当前支持英语、简体中文和日语。
+>    * 可供以下区域使用：`Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe` 和 `West US 2`。
 
 |Feature |说明  |
 |---------|---------|

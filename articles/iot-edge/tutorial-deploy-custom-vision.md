@@ -9,12 +9,12 @@ ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 63485a41016033b00f787fc8c938b8da7135d657
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 145b643999ff6e4af99ec50c9b0120fc9f11a212
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840138"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858937"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
@@ -39,7 +39,10 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始学习本教程之前，应已完成上一篇教程，了解如何设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，应已准备好以下必备组件： 
+>[!TIP]
+>本教程是 [Raspberry Pi 3 上的自定义视觉和 Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) 示例项目的简化版本。 本教程旨在在云 VM 上运行，并使用静态图像训练和测试图像分类器，这对于刚开始评估 IoT Edge 上的自定义视觉的用户非常有用。 该示例项目使用物理硬件并设置一个实时相机源，用于训练和测试图像分类器，这对于想要尝试更详细的真实应用场景的用户非常有用。
+
+在开始学习本教程之前，应已完成上一篇教程，了解如何设置用于开发 Linux 容器的环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，应已准备好以下必备组件： 
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 一个[运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
@@ -51,7 +54,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* 适用于 Visual Studio Code 的 [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 扩展
+* [适用于 Visual Studio Code 的 Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>使用自定义视觉生成图像分类器
 
@@ -167,7 +170,7 @@ Visual Studio Code 窗口会加载 IoT Edge 解决方案工作区。
 
 ### <a name="select-your-target-architecture"></a>选择目标体系结构
 
-目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发模块。 需要选择针对每种解决方案的体系结构，因为容器是针对每种体系结构类型构建和运行的。 默认设置为 Linux AMD64。 
+目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发模块。 需要选择面向每个解决方案的体系结构，因为每种体系结构类型的容器的生成和运行方式均不相同。 默认值为 Linux AMD64，我们将在本教程中使用此功能。 
 
 1. 打开命令面板并搜索 **Azure IoT Edge:Set Default Target Platform for Edge Solution**，或选择窗口底部侧栏中的快捷方式图标。 
 
@@ -191,7 +194,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 6. 打开 classifier 文件夹中的 **module.json** 文件。 
 
-7. 更新 **platforms** 参数，使之指向已添加的新 Dockerfile，同时删除自定义视觉模块目前不支持的 ARM32 体系结构和 AMD64.debug 选项。 
+7. 更新 **platforms** 参数，使其指向你添加的新 Dockerfile，并删除 AMD64 之外的所有选项，这是我们在本教程中唯一使用的体系结构。 
 
    ```json
    "platforms": {
@@ -351,7 +354,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 3. 浏览到 IoT Edge 解决方案目录，将测试图像粘贴到 **modules** / **cameraCapture** 文件夹中。 该图像应该置于你在上一部分编辑的 main.py 文件所在的文件夹中。 
 
-3. 在 Visual Studio Code 中打开适用于 cameraCapture 模块的 **Dockerfile.amd64** 文件。 （ARM32 目前不受自定义视觉模块的支持）。 
+3. 在 Visual Studio Code 中打开适用于 cameraCapture 模块的 **Dockerfile.amd64** 文件。 
 
 4. 在建立工作目录 `WORKDIR /app` 的行后面，添加以下代码行： 
 

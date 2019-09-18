@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/12/2019
+ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 44c823653ecbad1c4dd1fd35b676c8a6d8bd1620
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: a9b5eecd97b078c9446e28d971f900c4cf65130f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206659"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845533"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>教程：通过使用 PowerShell 创建服务主体和角色分配
 
@@ -38,13 +38,9 @@ ms.locfileid: "67206659"
     Install-Module AzureAD
     ```
 
-2. 结合引号中的值（请将这些值替换为与会话相关的值）运行以下 cmdlet。
+2. [下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)。
 
-    ```powershell
-    $myTenantName = "<my-tenant-name>"
-    ```
-
-3. 在同一 PowerShell 会话中，遵照本文中的所有说明操作。 如果关闭窗口，然后重新打开该窗口，则操作可能无法正常进行。
+3. 在同一 PowerShell 会话中，遵照本文中的所有说明操作。 如果通过关闭窗口并稍后重新打开该窗口来中断 PowerShell 会话，则该过程可能无法运行。
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>在 Azure Active Directory 中创建服务主体
 
@@ -56,34 +52,9 @@ $aadContext = Connect-AzureAD
 $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayName "Windows Virtual Desktop Svc Principal"
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
-
-## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>在 Windows 虚拟桌面预览版中创建角色分配
-
-创建服务主体后，可以使用它来登录到 Windows 虚拟桌面。 请确保使用有权创建角色分配的帐户登录。
-
-首先[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做），以便在 PowerShell 会话中使用。
-
-运行以下 PowerShell cmdlet 连接到 Windows 虚拟桌面，并为服务主体创建角色分配。
-
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
-```
-
-## <a name="sign-in-with-the-service-principal"></a>使用服务主体登录
-
-为服务主体创建角色分配后，请通过运行以下 cmdlet，确保该服务主体可以登录到 Windows 虚拟桌面：
-
-```powershell
-$creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
-```
-
-登录后，请使用该服务主体测试几个 Windows 虚拟桌面 PowerShell cmdlet，以确保一切正常工作。
-
 ## <a name="view-your-credentials-in-powershell"></a>在 PowerShell 中查看凭据
 
-在结束 PowerShell 会话之前，请查看凭据并将其记下，以备将来参考。 请务必记下密码，因为关闭此 PowerShell 会话后，便无法检索密码。
+在为服务主体创建角色分配之前，请查看凭据并将其记下以供将来参考。 请务必记下密码，因为关闭此 PowerShell 会话后，便无法检索密码。
 
 下面是应该记下的三个凭据，以及用于获取这些凭据的 cmdlet：
 
@@ -104,6 +75,36 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $
     ```powershell
     $svcPrincipal.AppId
     ```
+
+## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>在 Windows 虚拟桌面预览版中创建角色分配
+
+接下来，需要创建角色分配，以便服务主体可以登录到 Windows 虚拟桌面。 请确保使用有权创建角色分配的帐户登录。
+
+首先[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做），以便在 PowerShell 会话中使用。
+
+运行以下 PowerShell cmdlet 连接到 Windows 虚拟桌面，并显示你的租户。
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+Get-RdsTenant
+```
+
+找到要为其创建角色分配的租户的租户名称时，请在以下 cmdlet 中使用该名称：
+
+```powershell
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
+```
+
+## <a name="sign-in-with-the-service-principal"></a>使用服务主体登录
+
+为服务主体创建角色分配后，请通过运行以下 cmdlet，确保该服务主体可以登录到 Windows 虚拟桌面：
+
+```powershell
+$creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
+```
+
+登录后，请使用该服务主体测试几个 Windows 虚拟桌面 PowerShell cmdlet，以确保一切正常工作。
 
 ## <a name="next-steps"></a>后续步骤
 

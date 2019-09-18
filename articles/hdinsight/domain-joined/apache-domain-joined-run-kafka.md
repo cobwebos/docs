@@ -1,18 +1,18 @@
 ---
-title: 教程 - 使用企业安全性套餐在 HDInsight 中配置 Apache Kafka 策略 - Azure
+title: 教程 - Azure HDInsight 中具有企业安全性套餐的 Apache Kafka
 description: 教程 - 了解如何使用企业安全性套餐为 Azure HDInsight 中的 Kafka 配置 Apache Ranger 策略。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 06/24/2019
-ms.openlocfilehash: ba16a975aa3b1e60393006ef49a7e422c572931e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 09/04/2019
+ms.openlocfilehash: 6cac4bd05f2acf5b11a8235a4bc1e0d09e0c4dc7
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441368"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885940"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览版）在 HDInsight 中配置 Apache Kafka 策略
 
@@ -64,7 +64,7 @@ ms.locfileid: "67441368"
    * “*”表示字符出现零次或多次。
    * “?”表示单个字符。
 
-   ![Apache Ranger 管理 UI 创建策略](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   ![Apache Ranger 管理 UI 创建策略 1](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
 
    如果“选择用户”  中未自动填充域用户，请等待片刻时间让 Ranger 与 Azure AD 同步。
 
@@ -79,7 +79,7 @@ ms.locfileid: "67441368"
    |选择用户  |  marketing_user1 |
    |权限  | 发布、使用、创建 |
 
-   ![Apache Ranger 管理 UI 创建策略](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   ![Apache Ranger 管理 UI 创建策略 2](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
 6. 选择“添加”以保存策略。 
 

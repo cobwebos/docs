@@ -1,6 +1,6 @@
 ---
 title: 排查 Azure 注册问题
-description: 解决在 Microsoft Azure 门户帐户中心尝试注册新帐户时出现的问题。
+description: 解决尝试在 Microsoft Azure 门户帐户中心注册新帐户时遇到的问题。
 author: v-miegge
 manager: na
 editor: v-jesits
@@ -13,39 +13,39 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: 5032762c1275d3f1c8d1a020a54d20555f8ba3fe
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "70242438"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>排查 Azure 注册问题
 
-尝试在 Microsoft Azure 门户或 Azure 帐户中心注册新帐户时，可能会遇到问题。 在解决问题之前，请先验证以下内容：
+尝试在 Microsoft Azure 门户或 Azure 帐户中心注册新帐户时，可能会遇到问题。 对问题进行故障排除前，请先验证以下内容：
 
-- 你为 Azure 帐户配置文件提供的信息（包括联系人电子邮件地址、街道地址和电话号码）正确无误。
-- 信用卡信息正确。
-- 你还没有 Microsoft 帐户具有相同的信息。
+- 为 Azure 帐户个人资料提供的信息（包括联系电子邮件地址、街道地址和电话号码）正确无误。
+- 信用卡信息正确无误。
+- 尚未拥有包含相同信息的 Microsoft 帐户。
 
 ## <a name="resolutions"></a>解决方法
 
-若要解决任何错误，请选择尝试注册 Azure 时遇到的问题。
+若要解决错误，请选择你尝试注册 Azure 时遇到的问题。
 
-### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>错误：*由于你的帐户存在问题，我们无法继续注册。请联系计费支持人员。*
+### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>错误：“由于你的帐户存在问题，我们无法处理注册。  请联系计费支持人员。”
 
 若要解决该问题，请执行以下步骤：
 
 1. 使用帐户管理员凭据登录到 [Azure 帐户中心](https://account.azure.com/Profile)。
 
-2. 选择“编辑详细信息”。
+2. 选择“编辑详细信息”  。
 
 3. 确保所有地址字段都已完成并且有效。
 
-4. 注册 Azure 订阅时，请确保信用卡注册的帐单地址与银行记录匹配。
+4. 注册 Azure 订阅时，请确保信用卡注册的账单地址与银行记录相符。
 
-如果继续收到错误消息，请尝试使用其他浏览器进行注册。
+如果继续收到错误消息，请尝试使用其他浏览器注册。
 
-### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>进度栏在 "*按卡身份验证*" 部分中挂起。
+### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>“使用卡进行身份验证”部分中的进度条挂起。 
 
 要通过卡完成身份验证，则浏览器必须允许第三方 cookie。
 
@@ -53,34 +53,34 @@ ms.locfileid: "70242438"
  
 使用以下步骤更新浏览器的 cookie 设置。
 
-1. 如果使用的是 Chrome，请选择 "**设置** > " "**显示高级设置** > "**隐私** > **内容设置**"。 清除 "**阻止第三方 cookie 和站点数据**"。
+1. 如果使用的是 Chrome，请选择“设置”   > “显示高级设置”   > “隐私”   > “内容设置”  。 清除“阻止第三方 Cookie 和站点数据”  。
 
-2. 如果使用的是 Microsoft Edge，请选择 "**设置** > " "**查看高级设置** > " "**cookie** > **不阻止 cookie**"。
+2. 如果使用的是 Microsoft Edge，请选择“设置”   > “查看高级设置”   > “Cookie”   > “不阻止 Cookie”  。
 
-3. 刷新 Azure 注册页，然后检查问题是否已解决。
+3. 刷新 Azure 注册页，然后检查问题是否得以解决。
 
-4. 如果刷新未解决此问题，请退出并重新启动浏览器，然后重试。
+4. 如果刷新后未解决此问题，请退出并重启浏览器，然后重试。
 
 ### <a name="credit-card-form-doesnt-support-my-billing-address"></a>信用卡窗体不支持我的帐单地址
 
-你的帐单地址必须位于你在 "**关于**" 部分中选择的国家/地区。 请确保选择了正确的国家/地区。
+你的账单地址必须位于你在“关于你”部分中选择的国家/地区内。  确保选择了正确的国家/地区。
 
 ### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>注册帐户验证过程中没有收到短信或电话
 
-尽管该过程通常很简单，但要交付验证码最多可能需要四分钟。 你为验证输入的电话号码不会存储为帐户的联系号码。
+虽然此过程通常很快，但可能需要花费长达四分钟的时间验证码才会送达。 输入的电话号码仅用于验证，不会存储为帐户的联系号码。
 
 下面是一些其他提示：
 
-- 电话语音（VoiP）电话号码不能用于电话验证过程。
-- 仔细检查输入的电话号码，包括下拉菜单中所选的国家/地区代码。
-- 如果你的手机未收到短信 (SMS)，请尝试使用“呼叫我”选项。
-- 确保电话可以接收来自基于美国电话号码的呼叫或短信。
+- 电话验证过程中不能使用基于 IP 的语音 (VoiP) 电话号码。
+- 再次确认输入的电话号码，包括在下拉菜单中选择的国家/地区代码。
+- 如果你的手机未收到短信 (SMS)，请尝试使用“呼叫我”  选项。
+- 确保你的手机可以收到从基于美国的电话号码打来的电话或发来的短信消息。
 
-当你获取短信或电话呼叫时，请在文本框中输入你收到的代码。
+收到短信或电话呼叫时，在文本框中输入你收到的代码。
 
 ### <a name="credit-card-declined-or-not-accepted"></a>信用卡被拒绝或不被接受
 
-对于 Azure 订阅，不接受虚拟或预付信用卡或借记卡支付。 若要查看其他可能导致卡被拒绝的原因，请参阅在[Azure 注册中拒绝](https://support.microsoft.com/help/4042960)借记卡或信用卡。
+虚拟或预付信用卡或借记卡不能作为 Azure 订阅有效的付款选项。 要查看可能导致卡被拒绝的其他原因，请参阅[借记卡或信用卡在注册 Azure 时被拒绝](https://support.microsoft.com/help/4042960)。
 
 ### <a name="free-trial-is-not-available"></a>免费试用版不可用
 
@@ -88,39 +88,39 @@ ms.locfileid: "70242438"
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>我看到我的免费试用帐户上产生了费用
 
-注册后，你可能会看到你的信用卡帐户上的小型验证保留。 这会在三到五天内删除。 如果你为如何管理成本而担忧，请阅读有关[防止意外成本](billing-getting-started.md)的详细信息。
+在注册后，你可能会看到你的信用卡帐户上存在少量验证费用， 这在 3 到 5 天内会被删除。 如果你为如何管理成本而担忧，请阅读有关[防止意外成本](billing-getting-started.md)的详细信息。
 
 ### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>无法激活 MSDN、BizSpark、BizSparkPlus 或 MPN 等 Azure 权益计划
 
-请确保使用正确的登录凭据。 然后，查看福利计划，确保你有资格。
+请确保使用正确的登录凭据。 然后检查权益计划，以确保符合资格。
 
 - MSDN 
-  - 在[MSDN 帐户页](https://msdn.microsoft.com/subscriptions/manage/default.aspx)中验证资格状态。
-  - 如果你无法验证你的状态，请与[MSDN 订阅客户服务中心](https://msdn.microsoft.com/library/aa493452.aspx)联系。
+  - 在 [MSDN 帐户页](https://msdn.microsoft.com/subscriptions/manage/default.aspx)上验证资格状态。
+  - 如果无法验证资格状态，请联系 [MSDN 订阅客服中心](https://msdn.microsoft.com/library/aa493452.aspx)。
 - 适用于初创企业的 Microsoft
-  - 登录到[microsoft for 启动门户](https://startups.microsoft.com/#start-two)，验证 microsoft 的资格状态以进行启动。
-  - 如果你无法验证状态，则可以在[Microsoft for 启动论坛](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups)上获取帮助。
+  - 登录到[适用于初创企业的 Microsoft 门户](https://startups.microsoft.com/#start-two)，验证你的资格状态，看你是否符合适用于初创企业的 Microsoft 的资格。
+  - 如果无法验证你的状态，可以在[适用于初创企业的 Microsoft 论坛](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups)上获取帮助。
 - MPN 
-  - 登录到[MPN 门户](https://mspartner.microsoft.com/Pages/Locale.aspx)，验证资格状态。 如果拥有相应的[云平台能力](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx)，可能会符合其他权益的资格。
-  - 如果无法验证状态，请联系[MPN 支持](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx)。
+  - 登录到 [MPN 门户](https://mspartner.microsoft.com/Pages/Locale.aspx)，验证资格状态。 如果拥有相应的[云平台能力](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx)，可能会符合其他权益的资格。
+  - 如果无法验证资格状态，请联系 [MPN 支持](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx)。
 
-### <a name="cant-activate-new-azure-in-open-subscription"></a>无法激活新的 Azure 开放订阅
+### <a name="cant-activate-new-azure-in-open-subscription"></a>无法激活新的 Azure 开放许可订阅
 
-若要创建 Azure 开放订阅，你必须有一个有效的联机服务激活（OSA）密钥，该密钥至少具有一个与之关联的 Azure 开放服务。 如果没有 OSA 密钥，请联系[microsoft](https://pinpoint.microsoft.com/)确定中列出的 microsoft 合作伙伴之一。
+若要创建 Azure 开放许可订阅，必须具备有效的在线服务激活 (OSA) 密钥，该密钥至少有一个与之关联的 Azure 开放许可令牌。 如果没有 OSA 密钥，请联系 [Microsoft Pinpoint](https://pinpoint.microsoft.com/) 中列出的其中一个 Microsoft 合作伙伴。
 
-### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>错误：*你不具备 Azure 订阅的资格*
+### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>错误：你不符合 Azure 订阅资格 
 
-若要解决此问题，请仔细检查以下各项是否成立：
+若要解决这一问题，请仔细检查以下项是否属实：
 
-- 你为 Azure 帐户配置文件提供的信息（包括联系人电子邮件地址、街道地址和电话号码）正确无误。
-- 信用卡信息正确。
-- 你还没有使用相同信息的 Microsoft 帐户。
+- 为 Azure 帐户个人资料提供的信息（包括联系电子邮件地址、街道地址和电话号码）正确无误。
+- 信用卡信息正确无误。
+- 尚未拥有使用相同信息的 Microsoft 帐户。
 
-### <a name="error-your-current-account-type-is-not-supported"></a>错误：*当前的帐户类型不受支持*
+### <a name="error-your-current-account-type-is-not-supported"></a>错误：你当前的帐户类型不受支持 
 
-如果帐户在[非托管 Azure AD 目录](../active-directory/users-groups-roles/directory-self-service-signup.md)中注册，并且它不在组织的 Azure AD 目录中，则可能出现此问题。 
+如果帐户注册在[非托管 Azure AD 目录](../active-directory/users-groups-roles/directory-self-service-signup.md)中，不在组织的 Azure AD 目录中，则可能出现此问题。 
 
-若要解决此问题，请使用其他帐户注册 Azure 帐户，或接管非托管的 AD 目录。 有关详细信息，请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](../active-directory/users-groups-roles/domains-admin-takeover.md)。
+若要解决此问题，请使用另一帐户注册 Azure 帐户，或者接管非托管 AD 目录。 有关详细信息，请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](../active-directory/users-groups-roles/domains-admin-takeover.md)。
  
 ## <a name="additional-help-resources"></a>其他帮助资源
 

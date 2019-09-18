@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: baf694fbc3176732d43094c8d20ee112af927f16
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b890fe1a9ef30e18a54ced9f48015bed39298807
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186473"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858878"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>教程：使用 Visual Studio Code 创建和测试设备功能模型
 
@@ -35,10 +35,10 @@ ms.locfileid: "70186473"
 若要使用本教程所述的设备功能模型，需要：
 
 * [Visual Studio Code](https://code.visualstudio.com/download)：VS Code 适用于多个平台
-* VS Code 中的 Azure IoT Device Workbench 扩展。 使用以下步骤在 VS Code 中安装 Azure IoT Device Workbench 扩展：
+* [适用于 VS Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 扩展包。 使用以下步骤在 VS Code 中安装扩展包：
 
     1. 在 VS Code 中选择“扩展”选项卡。 
-    1. 搜索 **Azure IoT Device Workbench**。
+    1. 搜索“Azure IoT Tools”  。
     1. 选择“安装”  。
 
 若要生成本教程所述的在 Windows 上生成的 C 代码，需要：
@@ -61,7 +61,7 @@ ms.locfileid: "70186473"
 
 ## <a name="model-your-device"></a>为设备建模
 
-使用数字孪生定义语言创建设备功能模型。  模型通常包括多个接口定义文件和一个模型文件。  **适用于 VS Code 的 Azure IoT Device Workbench 扩展**包含一些可帮助你创建和编辑这些 JSON 文件的工具。
+使用数字孪生定义语言创建设备功能模型。  模型通常包括多个接口定义文件和一个模型文件。   “适用于 VS Code 的 Azure IoT Tools”包含一些可帮助你创建和编辑这些 JSON 文件的工具。
 
 ### <a name="create-the-interface-file"></a>创建接口文件
 
@@ -298,7 +298,7 @@ ms.locfileid: "70186473"
 
 ## <a name="generate-code"></a>生成代码
 
-可以使用**适用于 VS Code 的 Azure IoT Device Workbench 扩展**基于模型生成主干 C 代码。 若要在 VS Code 中生成主干代码：
+可以使用“适用于 VS Code 的 Azure IoT Tools”基于模型生成主干 C 代码  。 若要在 VS Code 中生成主干代码：
 
 1. 按 **Ctrl+Shift+P** 打开命令面板。
 

@@ -2,50 +2,79 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 2/20/2019
+ms.date: 08/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 27fcf32a9a268488da318567d3edc55d23bd8967
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 99a7dec6936b86af4ab9b80d266cd886dae66d12
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482346"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381815"
 ---
-1. 启动 Visual Studio 2019。
+若要创建 Visual Studio 项目以用于 C++ 桌面开发，需要设置 Visual Studio 开发选项，创建项目，选择目标体系结构，然后安装语音 SDK。 
 
-1. 确保“使用 C++ 进行的桌面开发”  工作负荷可用。 在 Visual Studio 菜单栏中选择“工具”   >   “获取工具和功能”，以便打开 Visual Studio 安装程序。 如果此工作负荷已启用，请跳到下一步。
+### <a name="set-up-visual-studio-development-options"></a>设置 Visual Studio 开发选项
 
-    ![Visual Studio 工作负荷选项卡的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
+若要开始，请确保已在 Visual Studio 中正确设置以用于 C++ 桌面开发：
 
-    否则，请勾选“使用 C++ 进行的桌面开发”旁边的框。 
+1. 打开 Visual Studio 2019 以显示“开始”  窗口。
 
-1. 确保 **NuGet 包管理器**组件可用。 切换到 Visual Studio 安装程序对话框的“单个组件”  选项卡，选择“NuGet 包管理器”（如果尚未启用）。 
+   ![启动窗口 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png) 
 
-      ![Visual Studio 的“单个组件”选项卡的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-nuget-package-manager.png)
+1. 选择“继续但无需代码”  ，转到 Visual Studio IDE。
 
-1.  如需启用 C++ 工作负荷或 NuGet，请选择对话框右下角的“修改”。 安装新功能需要一定的时间。 如果两项功能均已启用，请改为关闭对话框。
+1. 在 Visual Studio 菜单栏中，选择“工具”   > “获取工具和功能”  以打开 Visual Studio 安装程序并查看“修改”  对话框。
 
-1. 创建新的 Visual C++ Windows 桌面 Windows 控制台应用程序。 首先，从菜单中选择“文件” > “新建” > “项目”    。 在“新建项目”对话框的左窗格中，展开“已安装” > “Visual C++” > “Windows 桌面”，     然后选择“Windows 控制台应用程序”。  在项目名称处，输入 helloworld  。
+   ![“工作负载”选项卡，“修改”对话框，Visual Studio 安装程序](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
-    ![“新建项目”对话框屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
+1. 在“工作负载”  选项卡的“Windows”  下，找到“使用 C++ 的桌面开发”工作负载  。 如果尚未选择该工作负载旁边的复选框，请选中。
 
-1. 如果运行 64 位 Windows，可以使用 Visual Studio 工具栏中的下拉菜单将生成平台切换为 `x64`。 （64 位版本的 Windows 可以运行 32 位应用程序，因此这不是必需的。）
+1. 在“单个组件”  选项卡中，找到“Nuget 包管理器”  复选框。 如果尚未选中此复选框，请选中。
 
-    ![Visual Studio 工具栏的屏幕截图，其中突出显示了 x64 选项](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-02-switch-to-x64.png)
+1. 选择角上的标签为“关闭”  或“修改”  的按钮。 （按钮名称会有所不同，具体取决于你是否选择了任何功能以进行安装。）如果选择“修改”  ，将开始安装，这可能需要一段时间。
 
-1. 在解决方案资源管理器中，右键单击该解决方案，然后选择“为解决方案管理 NuGet 包”。 
+1. 关闭 Visual Studio 安装程序。
 
-    ![解决方案资源管理器的屏幕截图，其中突出显示了“为解决方案管理 NuGet 包”选项](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
+### <a name="create-the-project-and-select-the-target-architecture"></a>创建项目并选择目标体系结构
 
-1. 在右上角的“包源”字段中，选择“nuget.org”   。搜索 `Microsoft.CognitiveServices.Speech` 包，并将其安装到“helloworld”项目中  。
+接下来，创建项目：
 
-    ![“管理解决方案包”对话框的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
+1. 在 Visual Studio 菜单栏中，选择“文件”   > “新建”   > “项目”  以显示“创建新项目”  窗口。
 
-    > [!NOTE]
-    > 认知服务语音 SDK 的当前版本是 `1.5.0`。
+   ![创建新项目 C++ - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
 
-1. 接受显示的许可证即可开始安装 NuGet 包。
+1. 找到“控制台应用”并将其选中  。 确保选择此项目类型的 C++ 版本（而不是 C# 或 Visual Basic）。
 
-    ![“接受许可证”对话框的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-05-nuget-license.png)
+1. 选择“下一步”  以显示“配置新项目”  屏幕。
 
-安装此包后，在包管理器控制台中会显示一条确认消息。
+   ![配置 Visual Studio 项目 C++ - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-configure-your-new-project.png)
+
+1. 在“项目名称”  中输入 `helloworld`。
+
+1. 在“位置”  中，导航到并选择或创建用于保存项目的文件夹。
+
+现在选择目标平台体系结构。 在 Visual Studio 工具栏中，找到“解决方案平台”  下拉框。 （如果找不到，请选择“查看”   > “工具栏”   > “标准”  以显示包含“解决方案平台”的工具栏  。）如果运行的是 64 位 Windows，请在下拉框中选择“x64”  。 64 位 Windows 也可以运行 32 位应用程序，因此可以根据自己的偏好选择“x86”  。
+
+### <a name="install-the-speech-sdk"></a>安装语音 SDK
+
+最后，安装[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)，并在项目中引用语音 SDK：
+
+1. 在“解决方案资源管理器”  中，右键单击你的解决方案，然后选择“管理解决方案的 NuGet 包”  以转到“Nuget - 解决方案”  窗口。
+
+1. 选择“浏览”  。
+
+   ![NuGet - “解决方案”选项卡，Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
+
+1. 在“包源”  中，选择“nuget.org”  。
+
+1. 在“搜索”  框中，输入 `Microsoft.CognitiveServices.Speech`，然后在该包显示在搜索结果中之后选择该包。
+
+   ![安装 Microsoft.CognitiveServices.Speech C++ 包 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
+
+1. 在搜索结果旁的“包状态”窗格中，选择“helloworld”  项目。
+
+1. 选择“安装”  。
+
+1. 在“预览更改”  对话框中，选择“确定”  。
+
+1. 在“接受许可证”  对话框中，查看许可证，然后选择“我接受”  。 包安装开始，安装完成后，“输出”  窗格将显示类似于以下文本的消息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.6.0' to helloworld`。 

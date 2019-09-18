@@ -1,22 +1,22 @@
 ---
 title: 快速入门：翻译文本 - 文本翻译
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何使用文本翻译 API 将文本从一种语言翻译成另一种语言。
+description: 本快速入门介绍如何使用文本翻译 API 翻译文本。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/19/2019
+ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 0d79443ed1e424a3cb8b6c059ac9b6bc62293029
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 28dac7fffc6bb08e02c9d1af80f4237a40ceed65
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906740"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70393937"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-text"></a>快速入门：使用文本翻译 API 翻译文本
 

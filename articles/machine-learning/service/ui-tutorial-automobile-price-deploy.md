@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 1e30650f932d15d23d7ffe7bd9b9fe07e9872511
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891621"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858635"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>教程：使用可视界面部署机器学习模型
 
@@ -118,6 +118,8 @@ ms.locfileid: "69891621"
 1. 选择“部署”；随即会列出使用该模型的所有 Web 服务。  选择 Web 服务名称会转到 Web 服务详细信息页。 在此页中，可以获取 Web 服务的更多详细信息。
 
     [![详细运行报告的屏幕截图](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
+
+也可以在[工作区登陆页面（预览版）](https://ml.azure.com)的“模型”和“终结点”部分中找到这些模型和部署   。
 
 ## <a name="clean-up-resources"></a>清理资源
 

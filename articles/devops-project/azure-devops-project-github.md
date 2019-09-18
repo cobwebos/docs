@@ -4,25 +4,24 @@ description: 可以通过 Azure DevOps Projects 轻松地在 Azure 上开始操�
 services: vsts
 documentationcenter: vs-devops-build
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.prod: devops
 ms.technology: devops-cicd
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 88ee15a3b5cc53542d9e098dee485b8a526bb9a6
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 2abe24ad65e1e8997b48a28b35ec0e65162022f2
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161746"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898011"
 ---
 # <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>教程：使用 Azure DevOps Projects 为现有的代码创建 CI/CD 管道
 
@@ -74,7 +73,7 @@ Azure DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建
 
 1. 创建新的 Azure DevOps 组织，或选择现有的组织。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入 Azure DevOps 中项目的名称。 
+    a. 输入 Azure DevOps 中项目的名称。 
     
     b. 选择 Azure 订阅和位置，输入应用程序的名称，然后选择“完成”。 
 

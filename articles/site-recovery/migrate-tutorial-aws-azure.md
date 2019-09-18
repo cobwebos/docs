@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bb60fa216c10b11b6a47c029fbef3698c6f7bd6d
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663503"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873302"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
@@ -30,6 +30,10 @@ ms.locfileid: "68663503"
 > * 运行到 Azure 的一次性故障转移
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+
+
+> [!NOTE]
+    > 现在可以使用 Azure Migrate 服务将 AWS 实例迁移到 Azure。 [了解详细信息](../migrate/tutorial-migrate-physical-virtual-machines.md)。
 
 ## <a name="prerequisites"></a>先决条件
 - 确保要迁移的 VM 运行的是支持的 OS 版本。 支持的版本包括： 
@@ -91,11 +95,11 @@ ms.locfileid: "68663503"
 1. 在 [Azure 门户](https://portal.azure.com)中，选择 **“创建资源”** > **“网络”** >
     **“虚拟网络”** 。
 3. 对于“名称”  ，请输入 **myMigrationNetwork**。
-4. 保留“地址空间”  的默认值。
+4. 保留“地址空间”  的默认值（必须输入值）。
 5. 对于“订阅”，请选择要使用的订阅。 
 6. 对于“资源组”  ，请选择“使用现有”  ，然后选择“migrationRG”  。
 7. 对于“位置”  ，选择“西欧”  。
-8. 在“子网”  下，保留“名称”  和“IP 范围”  的默认值。
+8. 在“子网”  下，保留“名称”  和“IP 范围”  的默认值（必须输入值）。
 9. 添加针对 DDoS 防护设置的说明。
 10. 让“服务终结点”选项保持禁用状态。 
 11. 添加针对防火墙设置的说明。

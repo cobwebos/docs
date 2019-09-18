@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 IntelliJ 在 Azure HDInsight 中创建适用于 Spark 的 Scala Maven 应用程序
+title: 教程：使用 IntelliJ 创建适用于 Spark 的 Scala Maven 应用程序 - Azure HDInsight
 description: 教程 - 使用 Apache Maven 作为生成系统，并使用 IntelliJ IDEA 提供的适用于 Scala 的现有 Maven 原型，创建使用 Scala 编写的 Spark 应用程序。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 263eea88182a947eccc8a57450432fce8d2fcfc9
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3ffb28ba6c2e6170198a0a360315b7d71f059c34
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839715"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899885"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>教程：使用 IntelliJ 在 HDInsight 中创建适用于 Apache Spark 的 Scala Maven 应用程序
 
@@ -177,27 +177,27 @@ ms.locfileid: "68839715"
 
     2. 在“项目结构”窗口中，导航到“项目” > “+” > “JAR” > “从包含依赖项的模块...”。     
 
-        ![创建 JAR](./media/apache-spark-create-standalone-application/create-jar-1.png)
+        ![创建 JAR1](./media/apache-spark-create-standalone-application/create-jar-1.png)
 
     3. 在“从模块创建 JAR”窗口中，选择“主类”文本框中的文件夹图标。  
 
     4. 在“选择主类”窗口中，选择默认显示的类，然后选择“确定”   。
 
-        ![创建 JAR](./media/apache-spark-create-standalone-application/create-jar-2.png)
+        ![创建 JAR2](./media/apache-spark-create-standalone-application/create-jar-2.png)
 
     5. 在“从模块创建 JAR”窗口中，确保已选择“提取到目标 JAR”选项，然后选择“确定”    。  这设置会创建包含所有依赖项的单个 JAR。
 
-        ![创建 JAR](./media/apache-spark-create-standalone-application/create-jar-3.png)
+        ![创建 JAR3](./media/apache-spark-create-standalone-application/create-jar-3.png)
 
     6. “输出布局”  选项卡列出了所有包含为 Maven 项目一部分的 jar。 可以选择并删除 Scala 应用程序不直接依赖的 jar。 对于此处创建的应用程序，可以删除最后一个（SparkSimpleApp 编译输出）以外的所有 jar  。 选择要删除的 jar，然后选择减号 **-** 。
 
-        ![创建 JAR](./media/apache-spark-create-standalone-application/delete-output-jars.png)
+        ![创建 JAR4](./media/apache-spark-create-standalone-application/delete-output-jars.png)
 
         请务必选中“包含在项目生成中”复选框，以确保每次生成或更新项目时都创建 jar  。 依次选择“应用”、“确定”   。
 
     7. 若要创建 jar，请导航到“生成” > “生成项目” > “生成”。    该项目将在大约 30 秒内完成编译。  输出 jar 会在 **\out\artifacts** 下创建。
 
-        ![创建 JAR](./media/apache-spark-create-standalone-application/output.png)
+        ![output](./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png)
 
 ## <a name="run-the-application-on-the-apache-spark-cluster"></a>在 Apache Spark 群集上运行应用程序
 

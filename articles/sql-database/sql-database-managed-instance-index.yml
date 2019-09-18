@@ -62,26 +62,6 @@ sections:
           - title: 高级安全
             href: /azure/sql-database/sql-database-security-index
             html: <p>使用内置的 Azure SQL 数据库安全功能保护实例和数据库。<p>
-  - title: 新功能和预览版功能
-    items:
-      - type: paragraph
-        text: 我们正在持续通过新功能来改进托管实例：
-      - type: list
-        style: unordered
-        items:
-          - html: （预览版）<a href="/azure/sql-database/sql-database-instance-pools">实例池</a> - 提供一种方便且经济高效的方式，用于将小型 SQL 实例迁移到云。
-          - html: '<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 硬件代系上的 4 Vcore</a>'
-          - html: '<a href="https://aka.ms/sql-mi-visual-studio-subscribers" >对 Visual Studio 订阅者的订阅提供 Azure 每月信用额度支持</a>'
-          - html: '支持 <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019">SharePoint 2016 和 sharepoint 2019</a> 以及 <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central</a>'
-          - html: '在实例创建过程中<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">配置时区</a>。'
-          - html: '使用<a href="https://aka.ms/managed-instance-collation">你选择的服务器级排序规则</a>创建实例。'
-          - html: '利用异地还原功能，可以<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">使用 PowerShell 将数据库还原到另一个数据中心</a>。'
-          - html: '（预览版）<a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">使用 PowerShell 重新创建已删除的数据库</a>'
-          - html: 托管实例由<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">内置防火墙</a>提供保护。
-          - html: '（预览版）在迁移已启用了透明数据加密 (TDE) 的本地数据库时<a href="https://aka.ms/managed-instance-tde-byok">自带加密密钥</a>。'
-          - html: '（预览版）使用<a href="https://aka.ms/managed-instance-failover-groups">地理分布式故障转移组</a>将实例的副本保留在另一个区域中并确保你的数据在发生区域性灾难的情况下仍然可用。'
-          - html: '为时间点还原<a href="https://aka.ms/managed-instance-configurable-backup-retention">配置长达 35 天的备份保留期</a>。 请注意，长期备份保留（最长 10 年）仍未启用，你可以使用<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">纯副本备份</a>作为替代方法。'
-          - html: '（预览版）使用 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> 创建<a href="https://aka.ms/managed-instance-aadlogins">实例级 Azure AD 服务器主体（登录名）</a>。'
   - title: 5 分钟快速入门
     items:
       - type: paragraph

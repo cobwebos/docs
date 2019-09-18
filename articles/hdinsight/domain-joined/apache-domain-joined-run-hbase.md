@@ -1,18 +1,18 @@
 ---
-title: 教程 - 使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略 - Azure
+title: 教程 - 使用企业安全性套餐配置 Apache HBase - Azure
 description: 教程 - 了解如何使用企业安全性套餐为 Azure HDInsight 中的 HBase 配置 Apache Ranger 策略。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.openlocfilehash: 04592ba307cd696c20778d4a79f03be2eb0ac987
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 09/04/2019
+ms.openlocfilehash: 72e268628560618fb6fa47843f5125d9126a9f3e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274394"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885161"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>教程：使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略
 
@@ -100,7 +100,7 @@ ms.locfileid: "67274394"
 
 2. “策略列表”屏幕将显示针对此群集创建的所有 Ranger 策略。  可以列出一个预先配置的策略。 单击“添加新策略”。 
 
-    ![Apache Ranger 管理 UI 创建策略](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Apache Ranger HBase 策略列表](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
 3. 在“创建策略”屏幕上输入以下值  ：
 
@@ -119,7 +119,7 @@ ms.locfileid: "67274394"
    * `*` 表示字符出现零次或多次。
    * `?` 表示单个字符。
 
-   ![Apache Ranger 管理 UI 创建策略](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![Apache Ranger 策略创建 sales](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >如果“选择用户”  中未自动填充域用户，请等待片刻时间让 Ranger 与 Azure AD 同步。
@@ -138,7 +138,7 @@ ms.locfileid: "67274394"
    |选择用户  | marketing_user1 |
    |权限  | 读取 |
 
-   ![Apache Ranger 管理 UI 创建策略](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![Apache Ranger 策略创建 marketing](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. 单击“添加”保存策略。 
 
@@ -146,7 +146,7 @@ ms.locfileid: "67274394"
 
 根据配置的 Ranger 策略，**sales_user1** 可以查看 `Name` 和 `Contact` 列系列中的列的所有数据。 **marketing_user1** 只能查看 `Contact` 列系列中的数据。
 
-### <a name="access-data-as-salesuser1"></a>以 sales_user1 的身份访问数据
+### <a name="access-data-as-sales_user1"></a>以 sales_user1 的身份访问数据
 
 1. 打开与群集的新 SSH 连接。 使用以下命令登录到群集：
 
@@ -188,7 +188,7 @@ ms.locfileid: "67274394"
     2 row(s) in 0.1000 seconds
     ```
 
-### <a name="access-data-as-marketinguser1"></a>以 marketing_user1 的身份访问数据
+### <a name="access-data-as-marketing_user1"></a>以 marketing_user1 的身份访问数据
 
 1. 打开与群集的新 SSH 连接。 使用以下命令以 **marketing_user1** 身份登录：
 

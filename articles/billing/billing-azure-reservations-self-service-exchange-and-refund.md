@@ -1,6 +1,6 @@
 ---
-title: Azure 预订的自助服务交换和退款
-description: 了解如何交换或退款 Azure 预留。
+title: Azure 预留的自助交换和退款
+description: 了解如何进行 Azure 预留的交换或退款。
 author: yashesvi
 manager: yashesvi
 ms.service: billing
@@ -11,79 +11,79 @@ ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
 ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "69543022"
 ---
-# <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预订的自助服务交换和退款
+# <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预留的自助交换和退款
 
-Azure 预订提供了灵活性, 有助于满足不断发展的需求。 可以用一个预留来交换同一类型的另一个预留。 如果不再需要某个预留，也可以请求预留退款，每年最多 50,000 美元。
+Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预留来交换同一类型的另一个预留。 如果不再需要某个预留，也可以请求预留退款，每年最多 50,000 美元。
 
-美国政府企业协议客户不能使用自助交换和取消功能。 支持其他美国政府订阅类型, 包括即用即付和 CSP。
+美国政府企业协议客户不能使用自助交换和取消功能。 可以使用其他的美国政府订阅类型，包括即用即付和 CSP。
 
-您必须拥有保留订单的所有者访问权限, 才能交换或退款现有预订。
+若要请求对现有的预留进行交换或退款，你必须具有预留订单的所有者访问权限。
 
-## <a name="exchange-an-existing-reserved-instance"></a>交换现有的预订实例
+## <a name="exchange-an-existing-reserved-instance"></a>交换现有的预留实例
 
-可以在[Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)中通过三个快速步骤来交换预订。
+可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)中通过三个快速步骤来交换预留。
 
-1. 选择要退款的预订, 并单击 " **Exchange**"。  
-    ![显示要返回的保留的示例图像](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
-2. 选择要购买的 VM 产品并键入数量。 请确保新的采购总额大于返回总计。 在[购买之前确定正确的大小](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)。  
-    ![显示要使用 exchange 购买的 VM 产品的示例图像](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
-3. 查看并完成该事务。  
-    ![示例图像显示与 exchange 一起购买的 VM 产品, 完成返回](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
+1. 选择要退款的预留，然后单击“交换”。   
+    ![显示要返回的预留的示例图像](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
+2. 选择要购买的 VM 产品并键入数量。 确保新的采购总计超出返回总计。 [购买之前确定正确的大小](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)。  
+    ![显示要通过交换进行购买的 VM 产品的示例图像](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
+3. 复查并完成交易。  
+    ![显示要通过交换进行购买的 VM 产品的示例图像，完成返回](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
 
-若要退款预订, 请参阅**预订详细信息**, 然后单击 "**退款**"。
+若要请求预留退款，请转到“预留详细信息”，单击“退款”。  
 
-## <a name="how-transactions-are-processed"></a>处理事务的方式
+## <a name="how-transactions-are-processed"></a>处理交易的方式
 
-首先, Microsoft 取消了现有预订, 并为该预订退款了估价。 如果有 exchange, 则会处理新的购买。 Microsoft 根据你的帐户类型和付款方式, 使用以下方法之一处理退款:
+首先，Microsoft 取消现有的预留，然后退回针对该预留进行按比例计价的款项。 如果存在交换，则处理新的购买。 Microsoft 使用以下方法之一处理退款，具体取决于你的帐户类型和付款方式：
 
 ### <a name="enterprise-agreement-customers"></a>企业协议客户
 
-如果原始购买使用一次, 则将金钱承诺用于交换和退款。 自原始购买以来的任何超额发票都将重新打开并 rerated, 以确保使用货币承诺。 如果使用预订的货币承诺期限不再处于活动状态, 则会将信用额度添加到当前的企业协议货币承诺条款。
+款项将添加到进行交换和退款的货币承诺，前提是原始购买是使用其中一个进行的。 任何自原始购买以来生成的超额发票会重新打开并重新计费，确保使用货币承诺。 如果通过预留购买的货币承诺期限不再有效，则会将额度添加到当前的企业协议货币承诺期限。
 
-如果原始购买内容为超额购买, Microsoft 将发出信用凭单。
+如果原始购买是以超额形式完成的，则 Microsoft 会发出信用票据。
 
-### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>即用即付发票付款和 CSP 计划
+### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>即用即付发票款项和 CSP 计划
 
-原始预订采购发票会被取消, 然后将为退款创建新发票。 对于交换, 新发票显示退款和新购买。 根据购买情况调整退款金额。 如果你只是退款了某个预订, 则按比例调整金额将保留在 Microsoft, 并将其调整为将来的预订购买。
+先取消原始预留购买发票，然后针对退款创建新发票。 对于交换，新发票会显示退款和新的购买。 退款金额根据购买进行调整。 如果你只要求预留退款，则按比例调整后的金额将留给 Microsoft，针对将来的预留购买再进行调整。
 
 ### <a name="pay-as-you-go-credit-card-customers"></a>即用即付信用卡客户
 
-将取消原始发票, 并创建新发票。 钱退还给用于原始购买的信用卡。 如果更改了卡, 请[联系支持人员](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+先取消原始发票，然后创建新发票。 款项退给用于原始购买的信用卡。 如果你更改了信用卡，请[联系支持部门](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
-## <a name="cancel-exchange-and-refund-policies"></a>取消、交换和退款策略
+## <a name="cancel-exchange-and-refund-policies"></a>取消、交换和退款政策
 
-Azure 具有以下用于取消、交换和退款的策略。
+对于取消、交换和退款，Azure 提供以下策略。
 
-**Exchange 策略**
+**交换策略**
 
-- 可以返回多个现有保留来购买同一类型的新预订。 不能为另一种类型交换保留。 例如, 你不能返回 VM 预留来购买 SQL 保留。
-- 只有预订所有者才能处理交换。 [了解如何添加或更改可以管理预订的用户](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
-- 交换将作为退款和重新购买进行处理–为取消和新购买创建不同的事务。 对于您所进行的预留, 按比例预留量将会返还。 你需要为新的购买付费。 按比例预留量是返回的预订的每日按比例剩余值。
-- 即使用于购买预订的企业协议已过期, 并且已续订为新协议, 你也可以交换或退款预订。
-- 你可以使用 exchange 更改任何预订属性, 如大小、区域、数量和条款。
-- 新的采购总额应等于或大于返回的金额。
-- 从 exchange 开始, 作为 exchange 的一部分购买的新预订具有新的条款。
-- 交换没有惩罚或年度限制。
+- 可以返回多个现有的预留，以便购买同一类型的新预留。 不能使用一种类型的预留来交换另一种类型的预留。 例如，不能通过退回 VM 预留的方式来购买 SQL 预留。
+- 只有预留所有者可以处理交换。 [了解如何添加或更改可以管理预留的用户](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
+- 交换以退款和重新购买的形式处理 – 将为取消和新的购买创建不同的交易。 将会针对折价的预留按比例退回预留金额。 新的购买按全价收费。 按比例计价的预留金额是要返回的预留的每日按比例计价的剩余价值。
+- 即使用于购买预留的企业协议过期且已作为新协议续订，你也可以请求进行预留交换或退款。
+- 可以通过交换更改任何预留属性，例如大小、区域、数量以及期限。
+- 新购买的金额总计应等于或大于返回的金额。
+- 在交换过程中购买的新预留有一个新的期限，其开始时间为进行交换的时间。
+- 进行交换时，没有罚金，也没有年度限制。
 
 **退款策略**
-- 如果取消预留, 可能会提前终止 12%。
-- 你为取消而收到的退款是余额提前的余额减去 12% 的提前终止费。 若要取消, 请跳到 Azure 门户中的预订, 然后选择 "**退款**"。
-- 在12个月的滚动窗口中, 总退款金额不能超过 $50000 美元。
-- 根据购买价格的最低价格或预订的当前价格计算退款。
-- 只有预订所有者才能处理退款。 [了解如何添加或更改可以管理预订的用户](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
-- Microsoft 保留在任何退货中收取 12% 损失的权利。 此处罚目前并未收费, 但会在将来收费。
+- 如果取消预留，可能会产生 12% 的提前终止费。
+- 进行取消时收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要取消，请在 Azure 门户中访问该预留，并选择“退款”  。
+- 在为期 12 个月的滚动时限中，总退款金额不能超过 50,000 美元。
+- 退款根据购买价格和当前预留价格中的最低者计算。
+- 只有预留所有者可以处理退款。 [了解如何添加或更改可以管理预留的用户](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
+- 对于任何退货，Microsoft 保留收取 12% 罚金的权利。 罚金目前不会收取，但会在以后收取。
 
-## <a name="exchange-non-premium-storage-for-premium-storage"></a>适用于高级存储的 Exchange 非高级存储
+## <a name="exchange-non-premium-storage-for-premium-storage"></a>以非高级存储交换高级存储
 
-你可以将为不支持高级存储的 VM 大小购买的预订交换为相应的 VM 大小。 例如, _f1s-f16s_的_F1_ 。 若要进行交换, 请参阅预订详细信息, 然后单击 " **exchange**"。 Exchange 不会重置保留实例的条款, 也不会创建新的事务。
+可以将购买时其 VM 大小不支持高级存储的预留交换成其 VM 大小支持高级存储的预留。 例如，以 _F1_ 交换 _F1s_。 若要进行交换，请转到“预留详细信息”，单击“交换”。  交换不会重置预留实例的期限，也不创建新的交易。
 
-## <a name="need-help-contact-us"></a>需要帮助? 请联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: f0bd4a49a35392c25b8985aa68ad4e4b66be026c
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 2a74dbe9c306c1bf2420fdaac78a9b9183cacab1
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306524"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376140"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>快速入门：适用于 Python 的人脸客户端库
 
@@ -26,6 +26,7 @@ ms.locfileid: "70306524"
 * 查找相似人脸
 * 创建和训练人员组
 * 识别人脸
+* 验证人脸
 * 创建用于数据迁移的快照
 
 [参考文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [包 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [示例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
@@ -90,6 +91,7 @@ pip install --upgrade azure-cognitiveservices-Face
 * [查找相似人脸](#find-similar-faces)
 * [创建和训练人员组](#create-and-train-a-person-group)
 * [识别人脸](#identify-a-face)
+* [验证人脸](#verify-faces)
 * [创建用于数据迁移的快照](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>验证客户端
@@ -185,6 +187,32 @@ pip install --upgrade azure-cognitiveservices-Face
 **identify** 方法采用检测到的人脸数组，并将其与 **PersonGroup** 进行比较。 如果检测到的某个人脸与某个人相匹配，则它会保存结果。  此代码将详细的匹配结果输出到控制台。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify)]
+
+## <a name="verify-faces"></a>验证人脸
+
+验证操作采用某个人脸 ID 和其他人脸 ID 或 Person 对象，并确定它们是否属于同一个人  。
+
+以下代码检测两个源图像中的人脸，然后针对从目标图像检测到的人脸来验证它们。
+
+### <a name="get-test-images"></a>获取测试图像
+
+以下代码块声明将指向验证操作的源和目标图像的变量。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_baseurl)]
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_photos)]
+
+### <a name="detect-faces-for-verification"></a>检测人脸进行验证
+
+以下代码检测源和目标图像中的人脸并将其保存到变量中。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_detect)]
+
+### <a name="get-verification-results"></a>获取验证结果
+
+以下代码将每个源图像与目标图像进行比较并打印出一条消息，指示它们是否属于同一个人。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
 
 ## <a name="take-a-snapshot-for-data-migration"></a>创建用于数据迁移的快照
 
