@@ -7,25 +7,25 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 50264b1364f40ff5e68ae4a93783d62837c167b3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d881ffff81119167f54b5ef8f0c5e2c1ad1e4791
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898818"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075134"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
 在 AKS 群集的生命周期中，经常需要升级到最新的 Kubernetes 版本。 必须应用最新的 Kubernetes 安全版本，或者通过升级来获取最新功能。 本文演示如何在 AKS 群集中升级主组件或单个默认的节点池。
 
-对于使用多个节点池或 Windows Server 节点的 AKS 群集 (当前在 AKS 中为预览版), 请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
+对于使用多个节点池或 Windows Server 节点的 AKS 群集（当前在 AKS 中为预览版），请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 ## <a name="before-you-begin"></a>开始之前
 
 本文要求运行 Azure CLI 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 > [!WARNING]
-> AKS 群集升级触发 cordon 并排出节点。 如果可用的计算配额较低, 升级可能会失败。  有关详细信息, 请参阅[增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289)。
+> AKS 群集升级会触发节点的隔离和排空。 如果可用计算配额较低，则升级可能会失败。  有关详细信息，请参阅[增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289)。
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>检查是否有可用的 AKS 群集升级
 
@@ -36,23 +36,27 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 ```
 
 > [!NOTE]
-> 升级 AKS 群集时，不能跳过 Kubernetes 次要版本。 例如, 允许在*1.12* -> . x*1.13.*  -> x 或*1.13.* x*1.14*之间进行升级, 但*1.12* -> *1.14*不是。
+> 升级 AKS 群集时，不能跳过 Kubernetes 次要版本。 例如，允许从 1.12.x 升级到 1.13.x，或者从 1.13.x 升级到 1.14.x，但不允许从 1.12.x 升级到 1.14.x。
 >
-> 若要从*1.12.*  -> x*1.14*升级, 请 -> 首先从*1.12.* x*1.13.* x 升级, 然后从*1.13. x* -> *1.14*升级。
+> 若要从 1.12.x 升级到 1.14.x，请先从 1.12.x 升级到 1.13.x，然后再从 1.13.x 升级到 1.14.x。
 
-以下示例输出显示可将群集升级到版本*1.13.9*和*1.13.10*:
+以下示例输出显示可将群集升级到版本*1.13.9*和*1.13.10*：
 
 ```console
 Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
 -------  ----------------  ---------------  -----------------  ---------------
 default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
 ```
+如果没有可用的升级，你将获得：
+```console
+ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
+```
 
 ## <a name="upgrade-an-aks-cluster"></a>升级 AKS 群集
 
 如果有一系列适用于 AKS 群集的版本，则可使用 [az aks upgrade][az-aks-upgrade] 命令进行升级。 在升级过程中，AKS 将向运行指定 Kubernetes 版本的群集添加一个新节点，然后仔细地一次[隔离并清空][kubernetes-drain]一个旧节点，将对正在运行的应用程序造成的中断情况降到最低。 确认新节点运行应用程序 Pod 以后，就会删除旧节点。 此过程会重复进行，直至群集中的所有节点都已升级完毕。
 
-下面的示例将群集升级到版本*1.13.10*:
+下面的示例将群集升级到版本*1.13.10*：
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
@@ -66,7 +70,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-以下示例输出显示群集现在运行*1.13.10*:
+以下示例输出显示群集现在运行*1.13.10*：
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
