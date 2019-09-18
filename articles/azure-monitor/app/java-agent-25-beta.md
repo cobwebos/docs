@@ -35,7 +35,7 @@ ms.locfileid: "68298316"
   * **Logback**
 
 * **更好的操作命名:** (用于在门户中聚合请求)
-  *  基于`@RequestMapping`的弹簧。
+  * 基于`@RequestMapping`的弹簧。
   * **Jax-rs-** 基于`@Path`。 
 
 若要使用 Java 代理，请在服务器上安装该代理。 必须通过[Application Insights JAVA SDK][java]来检测你的 web 应用。 
@@ -95,10 +95,10 @@ ms.locfileid: "68298316"
 
 键:`JAVA_OPTS` 值：`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0-BETA.jar`
 
-对于最新版本的 Java 代理, 请查看此处[](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)的版本。 
+对于最新版本的 Java 代理, 请查看 [此](https://github.com/Microsoft/ApplicationInsights-Java/releases
+)处的版本。 
 
-代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 可以通过转到“开发工具”   > “高级工具”   > “调试控制台”  并查看站点目录的内容，确认你的代理处于正确的应用服务目录中。    
+代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 可以通过转到“开发工具” > “高级工具” > “调试控制台”并查看站点目录的内容，确认你的代理处于正确的应用服务目录中。    
 
 * 保存设置并重启应用。 （这些步骤仅适用于 Windows 上运行的应用程序服务。）
 
@@ -122,7 +122,7 @@ ms.locfileid: "68298316"
 
 理想情况下，所有服务都已更新为支持 W3C 协议的较新版 SDK 时，就会出现这种情况。 强烈建议尽快迁移到提供 W3C 支持的新版 SDK。
 
-请确保[传入](correlation.md#w3c-distributed-tracing)和传出（代理）配置完全相同  。
+请确保[传入](correlation.md#w3c-distributed-tracing)和传出（代理）配置完全相同。
 
 ## <a name="view-the-data"></a>查看数据
 在 Application Insights 资源中, 聚合的远程依赖项和方法执行时间显示[在 "性能" 磁贴下][metrics]。

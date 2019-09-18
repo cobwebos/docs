@@ -1,6 +1,6 @@
 ---
-title: 优化预购买 Azure Databricks 成本
-description: 了解如何可以针对 Azure Databricks 费用预付具有预留容量以节省资金。
+title: 通过预购优化 Azure Databricks 成本
+description: 了解如何预付 Azure Databricks 费用，以便通过预留容量来节省资金。
 services: billing
 author: yashesvi
 manager: yashar
@@ -9,67 +9,67 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: banders
 ms.openlocfilehash: 99eb4de86aa227d558bec54d011a0b1548d27cf0
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67811253"
 ---
-# <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>优化预购买 Azure Databricks 成本
+# <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>通过预购优化 Azure Databricks 成本
 
-可以将它们保存在 Azure Databricks 上时预购买 Azure Databricks 单位 (DBU) 成本为一年或三年提交单位 (DBCU)。 可以在购买期限内随时使用预先购买的 DBCUs。 与不同的 Vm，提前购买的单位按小时永不过期，并在购买的期限内随时使用。
+如果预购一到三年的 Azure Databricks 提交单位 (DBCU)，则可节省 Azure Databricks 单位 (DBU) 成本。 在购买期限内，可以随时使用预购的 DBCU。 与 VM 不同，预购单位不会按小时到期，可以在购买期限内随时使用它们。
 
-任何 Azure Databricks 使用会自动减去从提前购买 dbu 进行计费。 您不必重新部署或将提前购买的计划分配到 Azure Databricks 工作区以获取 DBU 使用情况以获取预购买折扣。
+任何 Azure Databricks 使用量都会自动从预购的 DBU 中扣除。 若要获取预购折扣，无需重新部署预购计划，也无需将预购计划分配到 Azure Databricks 工作区以使用 DBU。
 
-预购折扣仅适用于 DBU 使用情况。 计算、 存储和网络等其他费用将单独收费。
+预购折扣仅适用于 DBU 使用情况。 计算、存储和网络等其他费用单独收费。
 
-## <a name="determine-the-right-size-to-buy"></a>确定要购买的正确大小
+## <a name="determine-the-right-size-to-buy"></a>确定要购买的适当大小
 
-Databricks 预购买适用于所有 Databricks 工作负荷和层。 您可以将预购作为的预付费 Databricks 提交单元池。 使用情况会从该池，而不考虑工作负荷或层中。 使用情况扣除的以下比率：
+Databricks 预购适用于所有 Databricks 工作负荷和层。 可以将预购视为预付费 Databricks 提交单位池。 无论工作负荷或层如何，都会从池中扣除使用量。 使用量将按以下比率扣除：
 
-| **工作负载** | **DBU 应用程序比-标准层** | **DBU 应用程序比-高级层** |
+| **工作负载** | **DBU 应用比率 - 标准层** | **DBU 应用比率 - 高级层** |
 | --- | --- | --- |
 | 数据分析 | 0.4 | 0.55 |
 | 数据工程 | 0.15 | 0.30 |
-| 数据工程轻量 | 0.07 | 0.22 |
+| 轻量数据工程 | 0.07 | 0.22 |
 
-例如，当数量的数据分析 – 使用标准层时，提前购买的 Databricks 提交单位扣除 0.4 单位。
+例如，当使用一定数量的“数据分析 - 标准层”时，预购的 Databricks 提交单位将扣除 0.4 个单位。
 
-在购买之前，计算不同的工作负荷和层所耗用的总 DBU 数量。 使用前面的比率为 DBCU 规范化，然后运行下一次或三年的总使用率投影。
+在购买之前，请针对不同工作负荷和层级计算消耗的总 DBU 数量。 使用前面的比率针对 DBCU 进行规范化，然后针对下一个一年或三年运行总使用量预测。
 
 ## <a name="purchase-databricks-commit-units"></a>购买 Databricks 提交单位
 
-您可以购买 Databricks 计划[Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D)。 若要购买保留的容量，必须具有至少一个企业订阅的所有者角色。
+可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D)中购买 Databricks 计划。 若要购买预留容量，你必须拥有至少一个企业订阅的“所有者”角色。
 
-- 目前，预先购买仅适用于企业协议客户。
-- 您必须至少一个企业订阅的所有者角色。
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”  。 或者，如果禁用了该设置，你必须是订阅的 EA 管理员。
+- 目前，预购仅适用于企业协议客户。
+- 你必须至少具有一个企业订阅的所有者角色。
+- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 
-**若要购买：**
+**若要进行购买，请执行以下操作：**
 
 1. 转到 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D)。
-1. 选择一个订阅。 使用**订阅**列表来选择用于支付的预留容量的订阅。 订阅的付款方式进行收费的预留容量的预付费用。 从注册的货币承诺余额中扣除费用或作为超额收取费用。
-1. 选择作用域。 使用**作用域**列表选择订阅范围内：
-    - **单一资源组范围**— 将预订折扣应用于在所选的资源组中匹配的资源。
-    - **单一订阅范围内**— 将预订折扣应用于所选订阅中匹配的资源。
-    - **共享范围**-预订折扣适用于匹配符合条件的订阅中计费上下文中的资源。 对于企业协议客户，计费上下文是注册。
-1. 选择你想要购买并完成购买多少 Azure Databricks 提交单位。
+1. 选择一个订阅。 使用“订阅”列表，选择用于支付预留容量费用的订阅。  将向订阅的付款方式收取预留容量的前期成本。 从注册的货币承诺余额中扣除费用或作为超额收取费用。
+1. 选择一个范围。 使用“范围”列表来选择订阅范围： 
+    - **单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。
+    - **单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。
+    - **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于企业协议客户，计费上下文为注册。
+1. 选择要购买多少 Azure Databricks 提交单位，然后完成购买。
 
 
-![在 Azure 门户中显示 Azure Databricks 采购示例](./media/billing-prepay-databricks-reserved-capacity/data-bricks-pre-purchase.png)
+![一个示例，显示 Azure 门户中的 Azure Databricks 购买](./media/billing-prepay-databricks-reserved-capacity/data-bricks-pre-purchase.png)
 
-## <a name="change-scope-and-ownership"></a>更改作用域和所有权
+## <a name="change-scope-and-ownership"></a>更改范围和所有权
 
-对预订购买后，可以进行以下类型的更改：
+可以在购买后对预留进行以下类型的更改：
 
-- 更新预订范围
-- 基于角色的访问
+- 更新预留范围
+- 基于角色的访问权限
 
-您无法拆分或合并 Databricks 提交单元预购买。 有关管理预订的详细信息，请参阅[购买后管理预订](billing-manage-reserved-vm-instance.md)。
+不能拆分或合并 Databricks 提交单位预购。 若要详细了解如何管理预留，请参阅[在购买后管理预留](billing-manage-reserved-vm-instance.md)。
 
 ## <a name="cancellations-and-exchanges"></a>取消和更换
 
-Databricks 预购买计划不支持取消和 exchange。 所有购买都不可更改。
+Databricks 预购计划不支持取消和交换操作。 所有购买都是最终购买。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
@@ -79,5 +79,5 @@ Databricks 预购买计划不支持取消和 exchange。 所有购买都不可�
 
 - 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
   - [什么是 Azure 预订？](billing-save-compute-costs-reservations.md)
-  - [了解如何应用 Azure Databricks 预购买 DBCU 折扣](billing-reservation-discount-databricks.md)
+  - [了解如何应用 Azure Databricks 预购 DBCU 折扣](billing-reservation-discount-databricks.md)
   - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)

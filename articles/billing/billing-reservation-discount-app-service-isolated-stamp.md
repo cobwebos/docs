@@ -1,6 +1,6 @@
 ---
-title: 如何将预订折扣应用于 Azure App Service 隔离的 Stamp
-description: 了解如何将预订折扣应用于 Azure App Service 隔离的戳记。
+title: 预留折扣如何应用于 Azure 应用服务独立印花
+description: 了解预留折扣如何应用于 Azure 应用服务独立印花。
 services: billing
 author: yashesvi
 manager: yashar
@@ -9,47 +9,47 @@ ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: banders
 ms.openlocfilehash: cb4b371deadb1ae9e6ae048c3157809aff857c9d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68298251"
 ---
-# <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>如何将预订折扣应用于 Azure App Service 隔离的 Stamp
+# <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>预留折扣如何应用于 Azure 应用服务独立印花
 
-购买独立应用服务戳记费预留容量后, 预订折扣将自动应用于区域中的戳记。 预订折扣适用于由单独的戳记费用计量器发出的使用情况。 辅助角色、附加前端以及与该戳记关联的任何其他资源将继续按固定费率计费。
+购买 Azure 应用服务独立印花费保留容量后，预留折扣将自动应用到某个区域中的印花费。 预留折扣适用于独立印花费计量发出的用量。 辅助角色、其他前端以及任何其他与印花关联的资源继续按常规费率计费。
 
-## <a name="reservation-discount-application"></a>预订折扣应用程序
+## <a name="reservation-discount-application"></a>预留折扣应用
 
-独立应用服务邮票费折扣适用于每小时运行隔离的戳记。 如果在一小时内未部署 stamp, 则会在该小时内浪费预留容量。 它不会执行。
+应用服务独立印花费折扣按小时应用到正在运行的独立印花。 如果在一个小时内没有部署印花，则该小时的预留容量将浪费。 它不会结转。
 
-购买后, 您购买的预订将与在特定区域中运行的独立戳记匹配。 如果关闭该戳记, 预订折扣将自动应用于在该区域中运行的任何其他 stamp。 如果不存在任何 stamp, 则将保留应用于在该区域中创建的下一个 stamp。
+购买后，你购买的预留将与在特定区域中运行的独立印花相匹配。 如果关闭该印花，则预留折扣将自动应用于在该区域运行的任何其他印花。 如果不存在印花，预留折扣会应用到在该区域创建的下一个印花。
 
-如果在一小时内未运行 stamp, 预订将自动应用于同一时间段内的其他匹配的 stamp。
+如果印花未运行一整小时，预留折扣会自动应用到该小时内同一区域中的其他匹配印花。
 
-## <a name="choose-a-stamp-type---windows-or-linux"></a>选择戳记类型-Windows 或 Linux
+## <a name="choose-a-stamp-type---windows-or-linux"></a>选择印花类型 - Windows 或 Linux
 
-默认情况下, 空的独立标记会发出 Windows 戳记计量器。 例如, 当没有部署辅助角色时。 部署 Windows 辅助角色时, 它会继续发出计量。 如果部署 Linux 辅助角色, 则计量器将更改为 Linux 戳记计量器。 在部署 Linux 和 Windows 辅助角色时, 戳记会发出 Windows 计量器。
+默认情况下，空的独立印花发出 Windows 印花计量。 例如，在没有部署辅助角色的情况下。 如果部署 Windows 辅助角色，它会继续发出此计量。 如果部署 Linux 辅助角色，则计量更改为 Linux 印花计量。 同时部署 Linux 和 Windows 辅助角色时，印花发出 Windows 记量。
 
-因此, 在戳记的整个生命周期内, 戳记会在 Windows 和 Linux 之间发生变化。 同时, 预订是特定于操作系统的。 需要购买支持计划部署到戳记的工作人员的预订。 仅限 windows 的 stamp 和混合戳记使用 Windows 保留。 只有 Linux 工作人员的 stamp 使用 Linux 保留。
+因此，印花计量可以在印花生存期中在 Windows 和 Linux 之间来回变换。 另外，预留特定于操作系统。 需要购买一个支持计划部署到印花的辅助角色的预留。 仅限 Windows 的印花和混合印花使用 Windows 预留。 只包含 Linux 辅助角色的印花使用 Linux 预留。
 
-仅当你计划_仅_在 stamp 中安装 linux 辅助角色时, 你才应该购买 linux 预订。
+只购买 Linux 预留的前提是计划只  在印花中部署 Linux 辅助角色。
 
 ## <a name="discount-examples"></a>折扣示例
 
-下面的示例演示如何根据部署, 应用独立的戳记费用保留实例折扣。
+以下示例演示了如何根据部署应用独立印花费预留实例折扣。
 
-- **示例 1**:你在不带独立应用服务戳记的区域中购买单独的保留戳记容量的一个实例。 将新的 stamp 部署到区域并支付该戳记的保留费率。
-- **示例 2**：您在已部署了独立应用服务戳记的区域中购买一个独立的保留戳记容量实例。 开始接收已部署的 stamp 的保留速率。
-- **示例 3**:你在已部署了独立应用服务戳记的区域中购买一个独立的保留戳记容量实例。 开始接收部署的戳记上的保留速率。 稍后, 您将删除该戳记并部署一个新的戳记。 您将收到新 stamp 的保留费率。 没有已部署的 stamp, 折扣不会接管。
-- **示例 4**:在某个区域中购买一个独立 Linux 保留戳记容量的实例, 然后将新的 Stamp 部署到该区域。 如果标记最初是在没有辅助角色的情况下部署的, 则会发出 Windows 戳记计量器。 未收到任何折扣。 在部署第一个 Linux 辅助角色时, 它会发出 Linux 戳记计量器, 并应用保留折扣。 如果稍后将 windows 辅助角色部署到戳记, 则戳记会恢复为 Windows。 你不再接收到隔离 Linux 保留戳记保留项的折扣。
+- **示例 1**：在没有应用服务独立印花的区域中购买独立预留印花容量的一个实例。 将一个新的印花部署到该区域，为该印花按预留费率付款。
+- **示例 2**：在已经部署应用服务独立印花的区域中购买独立预留印花容量的一个实例。 开始收到已部署印花的预留费率。
+- **示例 3**：在已经部署应用服务独立印花的区域中购买独立预留印花容量的一个实例。 开始收到已部署印花的预留费率。 稍后，删除该印花并部署新印花。 收到新印花的预留费率。 对于没有部署印花的时段，折扣不会结转。
+- **示例 4**：在某个区域中购买独立 Linux 预留印花容量的一个实例，然后向该区域部署新印花。 印花一开始部署时没有辅助角色，它发出 Windows 印花计量。 未收到任何折扣。 当第一个 Linux 辅助角色部署到印花时，它发出 Linux 印花计量，此时会应用预留折扣。 如果随后将 Windows 辅助角色部署到印花，印花计量会恢复为 Windows。 你不再收到独立 Linux 预留印花预留项的折扣。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解如何管理预留，请参阅[管理 Azure 预留](billing-manage-reserved-vm-instance.md)。
-- 若要详细了解预购买独立应用服务戳记保留容量以节省资金, 请参阅支付[预留容量 Azure App Service 隔离的戳记](billing-prepay-app-service-isolated-stamp.md)。
+- 若要详细了解如何预先购买应用服务独立印花预留容量以节省资金，请参阅[通过预留容量预先支付 Azure 应用服务独立印花费](billing-prepay-app-service-isolated-stamp.md)。
 - 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
   - [什么是 Azure 预订？](billing-save-compute-costs-reservations.md)
   - [管理 Azure 中的预留](billing-manage-reserved-vm-instance.md)
-  - [使用即用即付费率了解订阅的保留使用情况](billing-understand-reserved-instance-usage.md)
+  - [了解采用即用即付费率的订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
   - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
