@@ -17,7 +17,7 @@
       href: quick-create-net.md
     - name: 设置和检索机密 - Node.js
       href: quick-create-node.md
-    - name: 设置和检索机密 - 资源管理器模板
+    - name: 设置和检索机密 - 模板
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: 教程

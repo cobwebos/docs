@@ -104,6 +104,8 @@
               href: concepts-monitoring.md
             - name: 服务器日志
               href: concepts-server-logs.md
+            - name: 审核日志
+              href: concepts-audit.md
             - name: 查询存储
               items:
                 - name: 查询存储
