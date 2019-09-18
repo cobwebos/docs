@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 66fa7c2f61af250e4b63b67f6941bed768bd94c4
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 03b279e6193c55141b80a5fadc9d39c7c1681006
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541928"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915140"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>教程：开发适用于 Windows 设备的 IoT Edge 模块
 
@@ -194,13 +194,13 @@ IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge �
 
 6. 找到 $edgeAgent 所需属性的 **modules** 属性。 
 
-   此处应该列出两个模块。 第一个模块是 **tempSensor**，该模块默认包含在所有模板中，提供可用于测试模块的模拟温度数据。 第二个模块是作为此项目的一部分创建的 **IotEdgeModule1** 模块。
+   此处应该列出两个模块。 第一个模块是 **SimulatedTemperatureSensor**，该模块默认包含在所有模板中，提供可用于测试模块的模拟温度数据。 第二个模块是作为此项目的一部分创建的 **IotEdgeModule1** 模块。
 
    此模块属性声明要将哪些模块包含到设备部署中。 
 
 7. 找到 $edgeHub 所需属性的 **routes** 属性。 
 
-   IoT Edge 中心模块的某个函数可在部署中的所有模块之间路由消息。 查看 routes 属性中的值。 第一个路由 **IotEdgeModule1ToIoTHub** 使用通配符 ( **\*** ) 将来自任何输出队列的任何消息包含到 IotEdgeModule1 模块中。 这些消息进入 *$upstream*，后者是指示 IoT 中心的保留名称。 第二个路由 **sensorToIotEdgeModule1** 接收来自 tempSensor 模块的消息，并将其路由到 IotEdgeModule1 模块的 *input1* 输入队列。 
+   IoT Edge 中心模块的某个函数可在部署中的所有模块之间路由消息。 查看 routes 属性中的值。 第一个路由 **IotEdgeModule1ToIoTHub** 使用通配符 ( **\*** ) 将来自任何输出队列的任何消息包含到 IotEdgeModule1 模块中。 这些消息进入 *$upstream*，后者是指示 IoT 中心的保留名称。 第二个路由 sensorToIotEdgeModule1 接收来自 SimulatedTemperatureSensor 模块的消息，并将其路由到 IotEdgeModule1 模块的 input1 输入队列   。 
 
    ![查看 deployment.template.json 中的路由](./media/tutorial-develop-for-windows/deployment-routes.png)
 
@@ -284,14 +284,14 @@ IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge �
 
 4. 在 Cloud Explorer 中展开 IoT Edge 设备的详细信息，以查看设备上的模块。
 
-5. 使用“刷新”按钮更新设备状态，以查看 tempSensor 和 IotEdgeModule1 模块是否已部署到设备  。 
+5. 使用“刷新”按钮更新设备状态，以查看 SimulatedTemperatureSensor 和 IotEdgeModule1 模块是否已部署到设备  。 
 
 
    ![查看在 IoT Edge 设备上运行的模块](./media/tutorial-develop-for-windows/view-running-modules.png)
 
 ## <a name="view-messages-from-device"></a>查看设备消息
 
-IotEdgeModule1 代码通过其输入队列接收消息，并通过其输出队列传递消息。 部署清单声明了将消息从 tempSensor 传递到 IotEdgeModule1，再将消息从 IotEdgeModule1 转发到 IoT 中心的路由。 适用于 Visual Studio 的 Azure IoT Edge Tools 允许查看从各个设备到达 IoT 中心的消息。 
+IotEdgeModule1 代码通过其输入队列接收消息，并通过其输出队列传递消息。 部署清单声明了将消息从 SimulatedTemperatureSensor 传递到 IotEdgeModule1，再将消息从 IotEdgeModule1 转发到 IoT 中心的路由。 适用于 Visual Studio 的 Azure IoT Edge Tools 允许查看从各个设备到达 IoT 中心的消息。 
 
 1. 在 Visual Studio Cloud Explorer 中，选择部署到其中的 IoT Edge 设备的名称。 
 
@@ -315,7 +315,7 @@ IotEdgeModule1 代码通过其输入队列接收消息，并通过其输出队�
    iotedge list
    ```
 
-   应该看到四个模块：两个 IoT Edge 运行时模块、tempSensor 和 IotEdgeModule1。 全部四个模块都应列为“正在运行”。
+   应该看到四个模块：两个 IoT Edge 运行时模块、SimulatedTemperatureSensor 和 IotEdgeModule1。 全部四个模块都应列为“正在运行”。
 
 * 检查特定模块的日志：
 
@@ -325,7 +325,7 @@ IotEdgeModule1 代码通过其输入队列接收消息，并通过其输出队�
 
    IoT Edge 模块区分大小写。 
 
-   tempSensor 和 IotEdgeModule1 日志应显示其正在处理的消息。 edgeAgent 模块负责启动其他模块，因此其日志将包含有关实施部署清单的信息。 如果有任何模块未列出或未运行，则 edgeAgent 日志可能包含相关错误信息。 edgeHub 模块负责模块和 IoT 中心之间的通信。 如果模块已启动并运行，但消息未到达 IoT 中心，则 edgeHub 日志可能包含相关错误信息。 
+   SimulatedTemperatureSensor 和 IotEdgeModule1 日志应显示其正在处理的消息。 edgeAgent 模块负责启动其他模块，因此其日志将包含有关实施部署清单的信息。 如果有任何模块未列出或未运行，则 edgeAgent 日志可能包含相关错误信息。 edgeHub 模块负责模块和 IoT 中心之间的通信。 如果模块已启动并运行，但消息未到达 IoT 中心，则 edgeHub 日志可能包含相关错误信息。 
 
 ## <a name="next-steps"></a>后续步骤
 

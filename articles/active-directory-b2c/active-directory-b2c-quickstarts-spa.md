@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure Active Directory B2C 为单页应用设置登录 | Microsoft Docs
+title: 快速入门 - 使用 Azure Active Directory B2C 为单页应用设置登录
 description: 运行一个使用 Azure Active Directory B2C 提供帐户登录的示例单页应用程序。
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 10/24/2018
+ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 47df2cbdf0b083cf672353471d1ef51e03507475
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 353cbae59a26f6e1efd566b99a04318321740590
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835341"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914433"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为单页应用设置登录
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
 - 带有 ASP.NET 和 Web 开发  工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 - 安装 [Node.js](https://nodejs.org/en/download/)
-- Facebook、Google、Microsoft 或 Twitter 中的社交帐户。
+- Facebook、Google 或 Microsoft 中的社交帐户。
 - 从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)或克隆示例 Web 应用。
 
     ```
@@ -58,9 +58,9 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
     ![浏览器中显示的单页应用程序示例应用](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
 
-    此示例支持多个注册选项，包括使用社交标识提供者，或者使用电子邮件地址来创建本地帐户。 对于本快速入门，将使用 Facebook、Google、Microsoft 或 Twitter 社交标识提供者帐户。
+    此示例支持多个注册选项，包括使用社交标识提供者，或者使用电子邮件地址来创建本地帐户。 对于本快速入门，将使用 Facebook、Google 或 Microsoft 社交标识提供者帐户。
 
-2. Azure AD B2C 为示例 Web 应用的虚构品牌“Wingtip Toys”提供了一个自定义登录页。 要使用社交标识提供者注册，请单击要使用的标识提供者按钮。
+2. Azure AD B2C 为示例 Web 应用程序的虚构公司“Fabrikam”提供了一个登录页。 要使用社交标识提供者注册，请单击要使用的标识提供者按钮。
 
     ![显示标识提供者的“登录”或“注册”页面按钮](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
 

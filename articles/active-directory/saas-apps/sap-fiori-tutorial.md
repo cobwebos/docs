@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 SAP Fiori 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 SAP Fiori 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 SAP Fiori 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 77ad13bf-e56b-4063-97d0-c82a19da9d56
 ms.service: active-directory
@@ -13,83 +13,69 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 897685eb967e03cfd30182eec6b237e27386496c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 50d1875ce2529222e8ff7472c48bf6d4dd878667
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092154"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772869"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>教程：Azure Active Directory 与 SAP Fiori 的集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SAP Fiori 集成
 
-本教程介绍如何将 SAP Fiori 与 Azure Active Directory (Azure AD) 集成。
+本教程介绍如何将 SAP Fiori 与 Azure Active Directory (Azure AD) 集成。 将 SAP Fiori 与 Azure AD 集成后，可以：
 
-将 SAP Fiori 与 Azure AD 集成提供以下优势：
+* 在 Azure AD 中控制谁有权访问 SAP Fiori。
+* 让用户使用其 Azure AD 帐户自动登录到 SAP Fiori。
+* 在一个中心位置（Azure 门户）管理帐户。
 
-* 可以使用 Azure AD 控制有权限访问 SAP Fiori 的人员。
-* 用户可使用其 Azure AD 帐户（单一登录）自动登录到 SAP Fiori。
-* 可在一个中心位置（即 Azure 门户）管理帐户。
-
-有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 SAP Fiori 的集成，需要准备好以下各项：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果还没有 Azure AD 订阅，可在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
-* 启用了单一登录的 SAP Fiori 订阅。
-* 需要 SAP Fiori 7.20 或更高版本。
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 SAP Fiori 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
-在本教程中，将在测试环境中配置和测试 Azure AD 单一登录，并将 SAP Fiori 与 Azure AD 集成。
+本教程在测试环境中配置并测试 Azure AD SSO。
 
-SAP Fiori 支持以下功能：
+* SAP Fiori 支持 **SP** 发起的 SSO
 
-* **SP 发起的单一登录**
+> [!NOTE]
+> 对于 SAP Fiori 启动的 iFrame 身份验证，我们建议在 SAML AuthnRequest 中使用 IsPassive  参数进行无提示身份验证。 有关 IsPassive  参数的详细信息，请参阅 [Azure AD SAML 单一登录](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol)信息
 
-## <a name="add-sap-fiori-in-the-azure-portal"></a>在 Azure 门户中添加 SAP Fiori
+## <a name="adding-sap-fiori-from-the-gallery"></a>从库中添加 SAP Fiori
 
-若要将 SAP Fiori 与 Azure AD 集成，必须将 SAP Fiori 添加到托管 SaaS 应用列表中。
+若要配置 SAP Fiori 与 Azure AD 的集成，需要从库中将 SAP Fiori 添加到托管 SaaS 应用列表。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“从库中添加”部分的搜索框中，键入“SAP Fiori”   。
+1. 从结果面板中选择“SAP Fiori”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-1. 在左侧菜单中，选择“Azure Active Directory”  。
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-fiori"></a>配置和测试 SAP Fiori 的 Azure AD 单一登录
 
-    ![“Azure Active Directory”选项](common/select-azuread.png)
+使用名为 B.Simon  的测试用户配置并测试 SAP Fiori 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 SAP Fiori 相关用户之间建立链接关系。
 
-1. 选择“企业应用程序” > “所有应用程序”   。
+若要配置和测试 SAP Fiori 的 Azure AD SSO，请完成以下构建基块：
 
-    ![“企业应用程序”窗格](common/enterprise-applications.png)
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. **[配置 SAP Fiori SSO](#configure-sap-fiori-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 SAP Fiori 测试用户](#create-sap-fiori-test-user)** - 在 SAP Fiori 中创建 B.Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-1. 若要添加应用程序，请选择“新建应用程序”  。
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
-    ![“新建应用程序”选项](common/add-new-app.png)
-
-1. 在搜索框中，输入“SAP Fiori”  。 在搜索结果中选择“SAP Fiori”，并选择“添加”   。
-
-    ![结果列表中的“SAP Fiori”](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-
-在本部分，我们基于名为 **Britta Simon** 的测试用户来配置并测试 SAP Fiori 的 Azure AD 单一登录。 要正常使用单一登录，需要在 Azure AD 用户与 SAP Fiori 相关用户之间建立链接关系。
-
-若要配置并测试 SAP Fiori 的 Azure AD 单一登录，必须完成以下构建基块：
-
-| 任务 | 说明 |
-| --- | --- |
-| **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** | 使用户能够使用此功能。 |
-| **[配置 SAP Fiori 单一登录](#configure-sap-fiori-single-sign-on)** | 在应用程序中配置单一登录设置。 |
-| **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** | 测试名为 Britta Simon 的用户的 Azure AD 单一登录。 |
-| **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** | 使 Britta Simon 能够使用 Azure AD 单一登录。 |
-| **[创建 SAP Fiori 测试用户](#create-an-sap-fiori-test-user)** | 在 SAP Fiori 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。 |
-| **[测试单一登录](#test-single-sign-on)** | 验证配置是否正常工作。 |
-
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-
-在本部分中，将在 Azure 门户中使用 SAP Fiori 配置 Azure AD 单一登录。
+按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 打开新的 Web 浏览器窗口，以管理员身份登录 SAP Fiori 公司站点。
 
@@ -150,31 +136,23 @@ SAP Fiori 支持以下功能：
 
     ![“SAP SAML 2.0 元数据”对话框中的“下载元数据”链接](./media/sapfiori-tutorial/tutorial-sapnetweaver-generatesp.png)
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“SAP Fiori”应用程序集成窗格中，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“SAP Fiori”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
+1. 在“选择单一登录方法”页上选择“SAML”   。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
-    ![“单一登录”选项](common/select-sso.png)
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“选择单一登录方法”窗格中，选择“SAML”或“SAML/WS-Fed”模式以启用单一登录    。
+1. 在“基本 SAML 配置”  部分，如果有**服务提供程序元数据文件**，请执行以下步骤：
 
-    ![单一登录选择模式](common/select-saml-option.png)
+    a. 单击“上传元数据文件”  。
 
-1. 在“设置 SAML 单一登录”窗格中，选择“编辑”（铅笔图标）以打开“基本 SAML 配置”窗格    。
+    ![上传元数据文件](common/upload-metadata.png)
 
-    ![编辑基本 SAML 配置](common/edit-urls.png)
+    b. 单击“文件夹徽标”  来选择元数据文件并单击“上传”。 
 
-1. 在“基本 SAML 配置”部分完成以下步骤： 
+    ![选择元数据文件](common/browse-upload-metadata.png)
 
-    1. 选择“上传元数据文件”  。
-
-        ![“上传元数据文件”选项](common/upload-metadata.png)
-
-   1. 要选择元数据文件，请选择文件夹图标，然后选择“上传”  。
-
-       ![选择元数据文件，然后选择“上传”按钮](common/browse-upload-metadata.png)
-
-1. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“基本 SAML 配置”窗格中    。 在“登录 URL”框中，输入具有以下模式的 URL：https:\//\<公司的 SAP Fiori 实例\>  。
-
-    ![SAP Fiori 域和 URL 单一登录信息](common/sp-identifier-reply.png)
+    c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“基本 SAML 配置”窗格中    。 在“登录 URL”  框中，输入具有以下模式的 URL：`https:\//\<your company instance of SAP Fiori\>`。
 
     > [!NOTE]
     > 有一些客户报告了与“回复 URL”值配置错误相关的错误  。 如果遇到此错误，可以使用以下 PowerShell 脚本为实例设置正确的回复 URL：
@@ -202,21 +180,46 @@ SAP Fiori 支持以下功能：
        ![“管理用户声明”窗格](./media/sapfiori-tutorial/nameidattribute.png)
 
        ![“管理用户声明”窗格中的“转换”部分](./media/sapfiori-tutorial/nameidattribute1.png)
+    
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
+    ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，选择“联合元数据 XML”旁边的“下载”     。 根据需要选择下载选项。 将证书保存在计算机上。
-
-    ![证书下载选项](common/metadataxml.png)
-
-1. 在“设置 SAP Fiori”部分，根据需要复制以下 URL  ：
-
-    * 登录 URL
-    * Azure AD 标识符
-    * 注销 URL
+1. 在“设置 SAP Fiori”部分中，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="configure-sap-fiori-single-sign-on"></a>配置 SAP Fiori 单一登录
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
+
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 选择屏幕顶部的“新建用户”  。
+1. 在“用户”属性中执行以下步骤  ：
+   1. 在“名称”  字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+   1. 单击“创建”。 
+
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分，你将通过授予 B.Simon 访问 SAP Fiori 的权限，使其能够使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在“应用程序”列表中，选择“SAP Fiori”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+
+   ![“用户和组”链接](common/users-groups-blade.png)
+
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+
+    ![“添加用户”链接](common/add-assign-user.png)
+
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-sap-fiori-sso"></a>配置 SAP Fiori 单一登录
 
 1. 登录到 SAP 系统并转到事务代码 SAML2  。 将打开显示 SAML 配置页面的新浏览器窗口。
 
@@ -298,61 +301,11 @@ SAP Fiori 支持以下功能：
 
     ![SAP 中“SAML 2.0 配置”对话框中的“确定”选项](./media/sapfiori-tutorial/configuration2.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-在本部分中，会在 Azure 门户中创建名为“Britta Simon”的测试用户。
-
-1. 在 Azure 门户中，选择“Azure Active Directory” > “用户” > “所有用户”。   
-
-    ![“用户”和“所有用户”选项](common/users.png)
-
-1. 选择“新建用户”。 
-
-    ![“新建用户”选项](common/new-user.png)
-
-1. 在“用户”窗格中完成以下步骤： 
-
-    1. 在“姓名”  框中，输入 **BrittaSimon**。
-  
-    1. 在“用户名”框中，输入“brittasimon\@\<your-company-domain>.\<extension>”   。 例如，brittasimon\@contoso.com  。
-
-    1. 选中“显示密码”复选框  。 记下“密码”框中显示的值  。
-
-    1. 选择“创建”  。
-
-    ![“用户”窗格](common/user-properties.png)
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，通过授予 Britta Simon 访问 SAP Fiori 的权限，使其可使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序” > “所有应用程序” > “SAP Fiori”    。
-
-    ![“企业应用程序”窗格](common/enterprise-applications.png)
-
-1. 在“应用程序”列表中，选择“SAP Fiori”  。
-
-    ![“应用程序”列表中的“SAP Fiori”链接](common/all-applications.png)
-
-1. 在菜单中选择“用户和组”  。
-
-    ![“用户和组”选项](common/users-groups-blade.png)
-
-1. 选择“添加用户”。  然后，在“添加分配”窗格中选择“用户和组”。  
-
-    ![“添加分配”窗格](common/add-assign-user.png)
-
-1. 在“用户和组”窗格中，在用户列表中选择“Britta Simon”   。 选择“选择”。 
-
-1. 如果希望在 SAML 断言中使用角色值，请在“选择角色”窗格中，从列表中为用户选择相关的角色  。 选择“选择”。 
-
-1. 在“添加分配”窗格中选择“分配”   。
-
-### <a name="create-an-sap-fiori-test-user"></a>创建 SAP Fiori 测试用户
+### <a name="create-sap-fiori-test-user"></a>创建 SAP Fiori 测试用户
 
 在本部分，我们将在 SAP Fiori 中创建名为 Britta Simon 的用户。 与内部 SAP 专家团队或组织 SAP 合作伙伴合作，以便在 SAP Fiori 平台中添加用户。
 
-### <a name="test-single-sign-on"></a>测试单一登录
+## <a name="test-sso"></a>测试 SSO
 
 1. 在 SAP Fior 中激活身份提供程序 Azure AD 后，请尝试访问以下一个 URL 以测试单一登录（不应看到输入用户名和密码的提示）：
 
@@ -368,10 +321,12 @@ SAP Fiori 支持以下功能：
 
 1. 如果系统提示输入用户名和密码，请启用跟踪以帮助诊断问题。 请使用以下 URL 进行跟踪：https:\//\<sapurl\>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN#。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="additional-resources"></a>其他资源
 
-若要了解更多信息，请查看下列文章：
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [用于将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [在 Azure AD 中试用 SAP Fiori](https://aad.portal.azure.com/)

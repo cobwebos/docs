@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/24/2019
-ms.openlocfilehash: 0b3af3d29e6e938f0301d751a79170c7c1964b45
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 09/10/2019
+ms.openlocfilehash: 8944a5adbe1b9e129b4a95c64aaa7a75fb96ac82
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243802"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845582"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教程：使用 DMS（预览版）将 Oracle 联机迁移到 Azure Database for PostgreSQL
 
@@ -166,27 +166,6 @@ ms.locfileid: "66243802"
 
     应会收到响应 `'YES'`。
 
-> [!IMPORTANT]
-> 对于此方案的公共预览版，Azure 数据库迁移服务支持 Oracle 版本 10g 或 11g。 运行 Oracle 版本 12c 或更高版本的客户应注意，ODBC 驱动程序必须至少使用身份验证协议版本 8 连接到 Oracle。 对于版本 12c 或更高版本的 Oracle 源，必须按如下所述配置身份验证协议：
->
-> * 更新 SQLNET.ORA：
->
->    ```
->    SQLNET.ALLOWED_LOGON_VERSION_CLIENT = 8
->    SQLNET.ALLOWED_LOGON_VERSION_SERVER = 8
->    ```
->
-> * 重启计算机，使新设置生效。
-> * 更改现有用户的密码：
->
->    ```
->    ALTER USER system IDENTIFIED BY {pswd}
->    ```
->
->   有关详细信息，请参阅[此网页](http://www.dba-oracle.com/t_allowed_login_version_server.htm)。
->
-> 最后，请记住，更改身份验证协议可能会影响客户端身份验证。
-
 ## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>评估将 Oracle 迁移到 Azure Database for PostgreSQL 所要投入的工作量
 
 我们建议使用 ora2pg 来评估从 Oracle 迁移到 Azure Database for PostgreSQL 所要投入的工作量。 使用 `ora2pg -t SHOW_REPORT` 指令创建一份报告，以列出所有 Oracle 对象、估算的迁移成本（以开发人员天数为单位），以及在转换过程中可能需要特别注意的某些数据库对象。
@@ -215,67 +194,60 @@ psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.dat
 
 ## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>在 Azure Database for PostgreSQL 中设置架构
 
-Oracle 默认将 schema.table.column 保留为全大写，而 PostgreSQL 将 schema.table.column 保留为小写。 要让 Azure 数据库迁移服务开始将 Oracle 中的数据转移到 Azure Database for PostgreSQL，schema.table.column 的大小写格式必须与 Oracle 源相同。
+在 Azure 数据库迁移服务中开始迁移管道之前，可以选择转换 Oracle 表架构、存储过程、包和其他数据库对象，通过使用 ora2pg 使它们与 Postgres 兼容。 有关如何使用 ora2pg 的详细说明，请参阅以下链接：
 
-例如，如果 Oracle 源的架构为 “HR”.”EMPLOYEES”.”EMPLOYEE_ID”，则 PostgreSQL 架构必须使用相同的格式。
+* [在 Windows 上安装 ora2pg](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf)
+* [Oracle 到 Azure PostgreSQL 迁移指南](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
 
-为了确保 Oracle 和 Azure Database for PostgreSQL 的 schema.table.column 大小写格式相同，我们建议执行以下步骤。
+Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访问已连接 Oracle 源中的表架构，并在 Azure Database for PostgreSQL 中创建一个兼容的表架构。 请确保在 Azure 数据库迁移服务完成创建架构和移动数据的操作后，在 Azure Database for PostgreSQL 中验证和检查架构格式。
+
+> [!IMPORTANT]
+> Azure 数据库迁移服务仅创建表架构；不会创建其他数据库对象，如存储过程、包、索引等。
+
+同时确保删除目标数据库中的外键，以运行完全加载。 有关可用于删除外键的脚本，请参阅[此文](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)中的“迁移示例架构”部分。  使用 Azure 数据库迁移服务运行完整加载和同步。
+
+### <a name="when-the-postgresql-table-schema-already-exists"></a>如果已存在 PostgreSQL 表架构
+
+如果在使用 Azure 数据库迁移服务开始数据移动之前使用 ora2pg 等工具创建 PostgreSQL 架构，请将源表映射到 Azure 数据库迁移服务中的目标表。
+
+1. 当你创建新的 Oracle 到 Azure Database for PostgreSQL 迁移项目时，系统将提示你在“选择架构”步骤中选择“目标数据库”和“目标架构”。 填写目标数据库和目标架构。
+
+   ![显示门户订阅](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
+
+2. “迁移设置”  屏幕将显示 Oracle 源中的表的列表。 Azure 数据库迁移服务将尝试基于表名称匹配源表和目标表。 如果存在多个具有不同大小写的匹配目标表，你可以选择要映射到的目标表。
+
+    ![显示门户订阅](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> 可以使用不同的方法来派生大写架构。 我们正在努力改进并自动化此步骤。
+> 如果需要将源表名称映射到名称不同的表，请发送电子邮件到 [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com)，我们可以提供一个脚本来自动执行此过程。
 
-1. 使用 ora2pg 导出小写的架构。 在表创建 SQL 脚本中，使用大写的“SCHEMA”手动创建架构。
-2. 将剩余的 Oracle 对象（例如触发器、序列、过程、类型和函数）导入到 Azure Database for PostgreSQL 中。
-3. 若将 TABLE 和 COLUMN 转换为大写，请运行以下脚本：
+### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>如果不存在 PostgreSQL 表架构
 
-   ```
-   -- INPUT: schema name
-   set schema.var = “HR”;
+如果目标 PostgreSQL 数据库不包含任何表架构信息，Azure 数据库迁移服务将转换源架构，并在目标数据库中重新创建它。 请记住，Azure 数据库迁移服务仅创建表架构；不会创建其他数据库对象，如存储过程、包、索引等。
+若要让 Azure 数据库迁移服务为你创建架构，请确保目标环境包含的架构没有现有表。 如果 Azure 数据库迁移服务发现任何表，则该服务会假定该架构是由外部工具（如 ora2pg）创建的。
 
-   -- Generate statements to rename tables and columns
-   SELECT 1, 'SET search_path = "' ||current_setting('schema.var')||'";'
-   UNION ALL 
-   SELECT 2, 'alter table "'||c.relname||'" rename '||a.attname||' to "'||upper(a.attname)||'";'
-   FROM pg_class c
-   JOIN pg_attribute a ON a.attrelid = c.oid
-   JOIN pg_type t ON a.atttypid = t.oid
-   LEFT JOIN pg_catalog.pg_constraint r ON c.oid = r.conrelid
-    AND r.conname = a.attname
-   WHERE c.relnamespace = (select oid from pg_namespace where nspname=current_setting('schema.var')) AND a.attnum > 0 AND c.relkind ='r'
-   UNION ALL
-   SELECT 3, 'alter table '||c.relname||' rename to "'||upper(c.relname)||'";'
-   FROM pg_catalog.pg_class c
-    LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
-   WHERE c.relkind ='r' AND n.nspname=current_setting('schema.var')
-   ORDER BY 1;
-   ```
+> [!IMPORTANT]
+> Azure 数据库迁移服务要求使用 Azure 数据库迁移服务或 ora2pg 等工具（而非同时使用两者）以相同的方式创建所有表。
 
-* 删除目标数据库中的外键，以运行完整加载。 有关可用于删除外键的脚本，请参阅[此文](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)中的“迁移示例架构”部分。 
-* 使用 Azure 数据库迁移服务运行完整加载和同步。
-* 当目标 Azure Database for PostgreSQL 实例中的数据与源同步后，在 Azure 数据库迁移服务中执行数据库交接。
-* 若要将 SCHEMA、TABLE 和 COLUMN 转换为小写（如果应用程序查询要求 Azure Database for PostgreSQL 的架构采用小写），请运行以下脚本：
+开始操作：
 
-  ```
-  -- INPUT: schema name
-  set schema.var = hr;
-  
-  -- Generate statements to rename tables and columns
-  SELECT 1, 'SET search_path = "' ||current_setting('schema.var')||'";'
-  UNION ALL
-  SELECT 2, 'alter table "'||c.relname||'" rename "'||a.attname||'" to '||lower(a.attname)||';'
-  FROM pg_class c
-  JOIN pg_attribute a ON a.attrelid = c.oid
-  JOIN pg_type t ON a.atttypid = t.oid
-  LEFT JOIN pg_catalog.pg_constraint r ON c.oid = r.conrelid
-     AND r.conname = a.attname
-  WHERE c.relnamespace = (select oid from pg_namespace where nspname=current_setting('schema.var')) AND a.attnum > 0 AND c.relkind ='r'
-  UNION ALL
-  SELECT 3, 'alter table "'||c.relname||'" rename to '||lower(c.relname)||';'
-  FROM pg_catalog.pg_class c
-     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
-  WHERE c.relkind ='r' AND n.nspname=current_setting('schema.var')
-  ORDER BY 1;
-  ```
+1. 根据应用程序的要求，在目标数据库中创建架构。 默认情况下，PostgreSQL 表架构和列名称采用小写。 而 Oracle 表架构和列默认全部采用大写。
+2. 在“选择架构”步骤中，指定目标数据库和目标架构。
+3. 根据在 Azure Database for PostgreSQL 中创建的架构，Azure 数据库迁移服务使用以下转换规则：
+
+    如果 Oracle 源中的架构名称与 Azure Database for PostgreSQL 中的架构名称匹配，则 Azure 数据库迁移服务将*使用与目标相同的大小写来创建表架构*。
+
+    例如：
+
+    | 源 Oracle 架构 | 目标 PostgreSQL 数据库架构 | DMS 已创建 schema.table.column |
+    | ------------- | ------------- | ------------- |
+    | HR | targetHR.public | public.countries.country_id |
+    | HR | targetHR.trgthr | trgthr.countries.country_id |
+    | HR | targetHR.TARGETHR | “TARGETHR”.”COUNTRIES”.”COUNTRY_ID” |
+    | HR | targetHR.HR | “HR”.”COUNTRIES”.”COUNTRY_ID” |
+    | HR | targetHR.Hr | *无法映射混合大小写 |
+
+    *若要在目标 PostgreSQL 中创建混合大小写架构和表名，请联系 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)。 我们可以提供一个脚本，用于在目标 PostgreSQL 数据库中设置混合大小写表架构。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 

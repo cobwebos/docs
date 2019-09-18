@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 4a0c9d16474ddf032ff88382bc240713bc734ff8
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 82996db232fde0424ccc8e3e478a70a5892231e6
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211900"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884831"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>浏览 Azure IoT Central UI（预览功能）
 
@@ -44,24 +44,23 @@ ms.locfileid: "70211900"
       ![Left navigation menu](media/overview-iot-central-tour-pnp/navigationbar.png)
   :::column-end:::
   :::column span="2":::
+     “仪表板”  显示应用程序仪表板。 构建者可以为操作员自定义仪表板。 用户也可以创建自己的仪表板。
+     
+     “设备”  列出与应用程序中的每个设备模板关联的模拟设备和真实设备。 操作员可以使用“Device Explorer”  来管理已连接的设备。
 
-      **Dashboard** displays your application dashboard. As a builder, you can customize the dashboard for your operators. Users can also create their own  dashboards.
-    
-      **Devices** lists the simulated and real devices associated with each device template in the application. As an operator, you use the **Device Explorer** to manage your connected devices.
-    
-      **Device groups** lets you view and create device groups. As an operator, you can create device groups as a logical collections of devices specified by a query.
+     “设备组”  允许你查看和创建设备组。 操作员可以将设备组创建为由查询指定的设备的逻辑集合。
 
-      **Rules** lets you edit rules that fire based on device telemetry and trigger customizable actions.
-    
-      **Analytics** shows analytics derived from device telemetry for devices and device groups. As an operator, you can create custom views on top of device data to derive insights from your application.
-    
-      **Jobs** enables bulk device management by having you create and run jobs to update your devices at scale.
-    
-      **Device templates** shows the tools a builder uses to create and manage device templates.
-    
-      **Data export** enables an administrator to configure a continuous export to other Azure services such as storage and queues.
-    
-      **Administration** shows the application administration pages where an administrator can manage application settings, users, and roles.
+     “规则”  允许你编辑基于设备遥测触发的规则，并触发可自定义的操作。
+
+     “分析”  显示从设备和设备组的设备遥测数据得出的分析。 操作员可以基于设备数据创建自定义视图来从应用程序获得见解。
+
+     “作业”  通过让你创建和运行作业来大规模更新设备，来实现批量设备管理。
+
+     “设备模板”  显示构建者用于创建和管理设备模板的工具。
+
+     “数据导出”  让管理员能够配置连续导出，将数据导出到其他 Azure 服务，例如存储和队列。
+
+     “管理”  显示应用程序管理页，管理员可以在其中管理应用程序设置、用户和角色。
    :::column-end:::
 :::row-end:::
 

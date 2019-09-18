@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在 Azure 门户中生成 AI 扩充的索引 - Azure 搜索
+title: 快速入门：在 Azure 门户中了解认知搜索 AI 扩充 - Azure 搜索
 description: 使用 Azure 门户和示例数据，在 Azure 搜索索引门户中添加数据提取、自然语言和图像处理技能。
 manager: nitinme
 author: HeidiSteen
@@ -7,16 +7,16 @@ services: search
 ms.service: search
 ms.subservice: cognitive-search
 ms.topic: quickstart
-ms.date: 07/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: a4654e5895e9c7768b9fa6b975ef848294bcc8cc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: ff32be5410876d1ba61b3bce2fd5f57868745e50
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648910"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881093"
 ---
-# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>快速入门：在 Azure 搜索中使用认知技能创建 AI 索引管道
+# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>快速入门：在 Azure 搜索中使用认知技能创建 AI 扩充管道
 
 Azure 搜索与[认知服务](https://azure.microsoft.com/services/cognitive-services/)相集成，可将内容提取、自然语言处理 (NLP) 和图像处理技能添加到 Azure 搜索索引管道，使不可搜索或非结构化的内容具有更高的可搜索性。 
 
@@ -45,7 +45,7 @@ Azure 搜索与[认知服务](https://azure.microsoft.com/services/cognitive-ser
 
 [认知服务](https://azure.microsoft.com/services/cognitive-services/)提供 AI。 本快速入门包含了在指定管道时添加这些内联资源的步骤。 无需提前设置帐户。
 
-需要使用 Azure 服务将输入提供给索引管道。 可以使用 [Azure 搜索索引器](search-indexer-overview.md)支持的任何数据源，但 Azure 表存储除外，因为它不支持 AI 索引。 本快速入门使用 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)作为源数据文件的容器。 
+需要使用 Azure 服务将输入提供给索引管道。 可以使用 [Azure 搜索索引器](search-indexer-overview.md)支持的任何数据源。 本快速入门使用 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)作为源数据文件的容器。 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>设置 Azure Blob 服务并加载示例数据
 

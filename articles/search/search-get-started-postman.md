@@ -1,5 +1,5 @@
 ---
-title: REST 快速入门：使用 Postman 创建、加载和查询索引 - Azure 搜索
+title: 快速入门：使用 REST API 在 Postman 中创建搜索索引 - Azure 搜索
 description: 了解如何使用 Postman 调用 Azure 搜索 REST API 并了解示例数据和定义。
 author: HeidiSteen
 manager: nitinme
@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 07/11/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: b1fcca0b135852660890f9f7591ee115d2ef2b47
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 138fd3d50a5f462c6a0ad954043f107c3c250917
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656775"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881540"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 搜索索引
 > [!div class="op_single_selector"]

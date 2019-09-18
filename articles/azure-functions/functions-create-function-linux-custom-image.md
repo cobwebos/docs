@@ -1,22 +1,19 @@
 ---
 title: 在 Linux 上使用自定义映像创建 Azure Functions
 description: 了解如何创建在自定义 Linux 映像中运行的 Azure Functions。
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
-ms.devlang: azure-cli
-manager: jeconnoc
-ms.openlocfilehash: 525cb444ad7b1b78de867f83539ac338ddd144e9
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 1865b1b96b5b8794f1518d639825ccd2f1dcd090
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562932"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773138"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>在 Linux 上使用自定义映像创建函数
 
@@ -56,7 +53,7 @@ ms.locfileid: "69562932"
 
 ## <a name="create-the-local-function-app-project"></a>创建本地函数应用项目
 
-从命令行运行以下命令，以便在当前本地目录的 `MyFunctionProj` 文件夹中创建一个函数应用项目。
+从命令行运行以下命令，以便在当前本地目录的 `MyFunctionProj` 文件夹中创建一个函数应用项目。 对于 Python 项目，你[必须在虚拟环境中运行](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional)。
 
 ```bash
 func init MyFunctionProj --docker
@@ -68,7 +65,7 @@ func init MyFunctionProj --docker
 
 * `dotnet`：创建一个 .NET Core 类库项目 (.csproj)。
 * `node`：创建一个 JavaScript 项目。
-* `python`：创建 Python 项目。
+* `python`：创建 Python 项目。  
 
 执行命令后，看到的内容如以下输出所示：
 
@@ -146,9 +143,8 @@ docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 
 ![在本地测试函数应用。](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-可以选择再次测试函数，这一次请使用以下 URL 在本地容器中进行：
-
-`http://localhost:8080/api/myhttptrigger?name=<yourname>`
+> [!NOTE]
+> 此时，尝试调用特定 HTTP 函数时，会收到 HTTP 401 错误响应。 这是因为函数在本地容器中的运行方式与在 Azure 中的运行方式相同，这意味着需要功能键。 由于尚未将容器发布到函数应用，因此没有可用的功能键。 稍后你将看到，当你使用核心工具发布容器时，将显示功能键。 如果要测试在本地容器中运行的函数，可以将[授权密钥](functions-bindings-http-webhook.md#authorization-keys)更改为 `anonymous`。 
 
 验证容器中的函数应用后，请停止执行。 现在，可将自定义映像推送到 Docker 中心帐户。
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/23/2019
+ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0d5a87d4723bcc21b75db1b31ada72823abdf02
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5f9d727154adf0a2099d7a9144c109cef9c91238
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171413"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743970"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zoom 集成
 
@@ -44,7 +44,8 @@ ms.locfileid: "70171413"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Zoom 支持 **SP** 发起的 SSO
+* Zoom 支持 SP  发起的 SSO 
+* Zoom 支持[自动  用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)。
 
 ## <a name="adding-zoom-from-the-gallery"></a>从库中添加 Zoom
 
@@ -87,7 +88,7 @@ ms.locfileid: "70171413"
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`<companyname>.zoom.us` 
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Zoom 客户端支持团队](https://support.zoom.us/hc/en-us)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Zoom 客户端支持团队](https://support.zoom.us/hc/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -101,7 +102,7 @@ ms.locfileid: "70171413"
 > 若要了解如何在 Azure AD 中配置角色，请参阅[为企业应用程序配置 SAML 令牌中颁发的角色声明](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)。
 
 > [!NOTE]
-> Zoom 可能需要 SAML 有效负载中有组声明。 如果你已创建任何组，请与 [Zoom 客户端支持团队](https://support.zoom.us/hc/en-us)联系并提供组信息，以便他们可以在其自己的一端配置组信息。 你还需要向 [Zoom 客户端支持团队](https://support.zoom.us/hc/en-us)提供对象 ID，以便他们可以在其自己的一端配置对象 ID。 若要获取对象 ID，请参阅[使用 Azure 配置 Zoom](https://support.zoom.us/hc/en-us/articles/115005887566)。
+> Zoom 可能需要 SAML 有效负载中有组声明。 如果你已创建任何组，请与 [Zoom 客户端支持团队](https://support.zoom.us/hc/)联系并提供组信息，以便他们可以在其自己的一端配置组信息。 你还需要向 [Zoom 客户端支持团队](https://support.zoom.us/hc/)提供对象 ID，以便他们可以在其自己的一端配置对象 ID。 若要获取对象 ID，请参阅[使用 Azure 配置 Zoom](https://support.zoom.us/hc/articles/115005887566)。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -172,30 +173,10 @@ ms.locfileid: "70171413"
 
 ### <a name="create-zoom-test-user"></a>创建 Zoom 测试用户
 
-为了使 Azure AD 用户能够登录到 Zoom，必须将其预配到 Zoom 中。 就 Zoom 来说，预配任务需要手动完成。
-
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>若要预配用户帐户，请执行以下步骤：
-
-1. 以管理员身份登录到 **Zoom** 公司站点。
-
-2. 单击“帐户管理”  选项卡，并单击“用户管理”  。
-
-3. 在“用户管理”部分，单击“添加用户”  。
-
-    ![用户管理](./media/zoom-tutorial/ic784703.png "用户管理")
-
-4. 在“添加用户”  页上，执行以下步骤：
-
-    ![添加用户](./media/zoom-tutorial/ic784704.png "添加用户")
-
-    a. 对于“用户类型”  ，请选择“基本”  。
-
-    b. 在“电子邮件”  文本框中，键入要预配的有效 Azure AD 帐户的电子邮件地址。
-
-    c. 单击“添加”  。
+本部分的目标是在 Zoom 中创建一个名为 B.Simon 的用户。 Zoom 支持在默认情况下启用的自动用户预配。 有关如何配置自动用户预配的更多详细信息，请参见[此处](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)。
 
 > [!NOTE]
-> 可以使用 Zoom 提供的任何其他 Zoom 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
+> 如果需要手动创建用户，则需要联系 [Zoom 客户端支持团队](https://support.zoom.us/hc/)
 
 ## <a name="test-sso"></a>测试 SSO 
 

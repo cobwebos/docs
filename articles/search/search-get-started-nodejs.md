@@ -1,5 +1,5 @@
 ---
-title: Node.js 快速入门：使用 Azure 搜索 REST API 创建、加载和查询索引 - Azure 搜索
+title: 快速入门：使用 REST API 在 Node.js 中创建搜索索引 - Azure 搜索
 description: 适用于 Azure 搜索的 Node.js 示例，演示如何通过 JavaScript 创建索引、将数据载入索引以及查询索引。
 author: lobrien
 manager: nitinme
@@ -8,16 +8,16 @@ services: search
 ms.service: search
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: b22a6371522674895465afac88e68f556ab09bcb
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4e17247ea412b5472a0c23fd74ff7e53f375710d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656305"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881501"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>快速入门：在 Node.js 中创建 Azure 搜索索引
+# <a name="quickstart-create-an-azure-search-index-in-nodejs-using-rest-apis"></a>快速入门：使用 REST API 在 Node.js 中创建 Azure 搜索索引
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)

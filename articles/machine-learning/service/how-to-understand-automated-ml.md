@@ -51,7 +51,7 @@ ms.locfileid: "70999441"
 
 1. 在下表中，选择 "**运行号码**"。
 
-   [试验运行![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png)）
+   [![试验运行](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png)）
 
 1. 在 "迭代" 表中，选择要进一步浏览的模型的**迭代号**。
 

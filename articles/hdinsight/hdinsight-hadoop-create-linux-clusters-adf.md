@@ -1,5 +1,5 @@
 ---
-title: '教程：使用数据工厂在 Azure HDInsight 中创建按需 Apache Hadoop 群集 '
+title: 教程：Azure HDInsight 中的按需 Apache Hadoop 群集 - 数据工厂
 description: 教程 - 了解如何使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 7af70de91a7f7696be3b003fec11390d6db9ba60
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854985"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736181"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>教程：使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -253,7 +253,7 @@ Write-host "`nScript completed" -ForegroundColor Green
     | 属性 | 值 |
     | --- | --- |
     | Name | 输入 `HDInsightLinkedService` 。|
-    | Type | 选择“按需 HDInsight”  。 |
+    | 类型 | 选择“按需 HDInsight”  。 |
     | Azure 存储链接服务 | 选择 `HDIStorageLinkedService`。 |
     | 群集类型 | 选择“hadoop”  |
     | 生存时间 | 提供在自动删除 HDInsight 群集之前希望该群集保留的持续时间。|

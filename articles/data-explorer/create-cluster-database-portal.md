@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: cfab883f9b9b063bd51b9fdb7306d45371449180
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 079f87dec67f98d502d135fc012b5523211d5957
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406092"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381788"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>快速入门：创建 Azure 数据资源管理器群集和数据库
 
@@ -55,9 +55,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     | Resource group | 你的资源组 | 使用现有资源组或创建新资源组。 |
     | 群集名称 | 唯一的群集名称 | 选择用于标识群集的唯一名称。 域名 *[region].kusto.windows.net* 将追加到所提供的群集名称。 名称只能包含小写字母和数字。 它必须包含 4 到 22 个字符。
     | 区域 | 美国西部  或美国西部 2  | 对于本快速入门，请选择“美国西部”  或“美国西部 2”  （如果使用可用性区域）。 对于生产系统，请选择最能满足你需求的区域。
-    | 可用性区域 | 1  、2  和/或 3  | 对于区域冗余支持的区域，请选择实例将驻留在哪些区域（可选）。 默认情况下，会在同一数据中心创建群集节点。 使用 [Azure 可用性区域](/azure/availability-zones/az-overview)将群集实例放置在同一区域的不同可用性区域中。 通过选择多个可用性区域，可以消除单一故障点并确保高可用性。 
+    | 可用性区域 | 1  、2  和/或 3  | 将群集实例放置在同一区域的不同可用性区域中（可选）。 [Azure 可用性区域](/azure/availability-zones/az-overview)是同一 Azure 区域中独特的物理位置。 它们保护 Azure 数据资源管理器群集和数据不会在部分区域发生故障。 默认情况下，会在同一数据中心创建群集节点。 通过选择多个可用性区域，可以消除单一故障点并确保高可用性。 仅在群集创建过程中可以部署到可用性区域，后续无法修改。
     | 计算规格 | *D13_v2* | 对于本快速入门，请选择价格最低的规范。 对于生产系统，请选择最能满足你需求的规范。
-    | | |
+    | | | |
 
 1. 选择“查看 + 创建”以查看群集的详细信息，选择“创建”以预配群集   。 预配通常需要大约 10 分钟。
 

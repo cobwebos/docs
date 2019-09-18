@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 822bbd004035d9745535942c508cae6702e5b99b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 99514002f0a259b7e981c2db498e72865d4f1bd4
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278117"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858654"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
@@ -32,7 +32,7 @@ Azure 机器学习服务提供了一个基于云的环境，你可以使用这�
 
 使用如下所示的丰富工具浏览并准备数据、训练并测试模型，以及对其进行部署：
 + [可视界面](ui-tutorial-automobile-price-train-score.md)：可以在其中拖放模块，以便构建试验，然后部署模型
-+ [Jupyter 笔记本](https://jupyter.org)：可以在其中使用 [SDK](https://docs.microsoft.com/azure/machine-learning/service/#reference) 编写你自己的代码，例如[这些示例笔记本](https://aka.ms/aml-notebooks)
++ [Jupyter 笔记本](https://jupyter.org)：可以在其中使用 [SDK](https://docs.microsoft.com/azure/machine-learning) 编写你自己的代码，例如[这些示例笔记本](https://aka.ms/aml-notebooks)
 + [Visual Studio Code 扩展](how-to-vscode-tools.md)
 
 
@@ -66,7 +66,7 @@ Azure 机器学习服务提供了一个基于云的环境，你可以使用这�
 
 有了正确的模型以后，即可轻松地将其用在 Web 服务中、IoT 设备上或 Power BI 中。 有关详细信息，请参阅有关[部署方式及位置](how-to-deploy-and-where.md)的文章。
 
-然后，可以使用[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 门户](https://portal.azure.com/)来管理已部署的模型。
+然后，可以使用[适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)、[Azure 门户](https://portal.azure.com/)或[工作区登陆页面（预览版）](https://ml.azure.com)来管理已部署的模型。
 
 可以使用这些模型[实时](how-to-consume-web-service.md)返回预测，或者在有大量数据的情况下[异步](how-to-run-batch-predictions.md)返回预测。
 
@@ -93,7 +93,7 @@ Azure 机器学习服务提供 SDK **和**可视界面（预览版），可以�
 |界面的模块| 很多 | 常用模块的初始集|
 |训练计算目标| 专用计算目标，仅限 CPU 支持| 支持 Azure 机器学习计算、GPU 或 CPU。<br/>（其他在 SDK 中受支持的计算）|
 |部署计算目标| 专用 Web 服务格式，不可自定义 | 企业安全选项和 Azure Kubernetes 服务。 <br/>（SDK 中支持的[其他计算](how-to-deploy-and-where.md)） |
-|自动化模型训练和超参数优化 | 否 | 在可视界面中尚不支持。 <br/> （在 SDK 和 Azure 门户中受支持。） |
+|自动化模型训练和超参数优化 | 否 | 在可视界面中尚不支持。 <br/> （在 SDK 和 Azure 门户/工作区登陆页面中受支持。） |
 
 参考以下教程试用可视界面（预览版）：[教程：使用可视界面预测汽车价格](ui-tutorial-automobile-price-train-score.md)。
 

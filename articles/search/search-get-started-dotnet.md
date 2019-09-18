@@ -1,5 +1,5 @@
 ---
-title: C# 快速入门：使用 .NET SDK 创建、加载和查询索引 - Azure 搜索
+title: 快速入门：使用 C# 通过 .NET SDK 创建搜索索引 - Azure 搜索
 description: 介绍如何使用 C# 和 Azure 搜索 .NET SDK 创建索引，加载数据和运行查询。
 author: heidisteen
 manager: nitinme
@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/11/2019
-ms.openlocfilehash: 6a77ecd91c0d04f0b449d25686578784921987bf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 09/10/2019
+ms.openlocfilehash: bda9c29fe3af0bd7d9a6ec61dd5fe40a8e9cc339
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649819"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881585"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>快速入门：使用 C# 通过 .NET SDK 创建 Azure 搜索索引
 > [!div class="op_single_selector"]

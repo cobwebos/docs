@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0882be0419cbbbc7d94cb8d517e27bdb06a780
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: e7d0810c393cf9b6060f456c5ff01d03673b62a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013932"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861307"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Watch by Colors 集成
 
@@ -57,7 +57,6 @@ ms.locfileid: "70013932"
 1. 在“从库中添加”部分的搜索框中，键入“Watch by Colors”   。
 1. 从结果面板中选择“Watch by Colors”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>配置和测试 Watch by Colors 的 Azure AD 单一登录
 
 使用名为 **B.Simon** 的测试用户配置和测试 Watch by Colors 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Watch by Colors 相关用户之间建立链接关系。
@@ -81,7 +80,7 @@ ms.locfileid: "70013932"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，应用程序已预配置为采用“IDP”发起模式，并且已在 Azure 中预先填充了所需的 URL。 ****   ****   用户需要单击“保存”按钮来保存配置。 ****  
+1. 在“基本  **SAML** 配置”部分，应用程序已预配置为采用“ **IDP**”发起模式，并且已在 Azure 中预先填充了所需的 URL。   用户需要单击“保存”按钮来保存配置。 ****  
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -113,23 +112,31 @@ ms.locfileid: "70013932"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-watch-by-colors-sso"></a>配置 Watch by Colors SSO
 
-1. 打开新的 Web 浏览器窗口，以管理员身份登录 Watch by Colors 公司站点，并执行以下步骤：
+1. 若要在 Watch by Colors 中自动执行配置，需要通过单击“安装扩展”  来安装“我的应用安全登录浏览器扩展”  。
 
-1. 在页面右上角，单击“个人资料”   > “帐户设置”   > “SSO (单一登录)”  。
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 Watch by Colors”  会使你转到 Watch by Colors 应用程序。 在此处，请提供管理员凭据以登录到 Watch by Colors。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-5。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 Watch by Colors，请打开新的 Web 浏览器窗口，以管理员身份登录 Watch by Colors 公司站点，并执行以下步骤：
+
+4. 在页面右上角，单击“个人资料”   > “帐户设置”   > “SSO (单一登录)”  。
 
     ![Watch by Colors 配置](./media/watch-by-colors-tutorial/config01.png)
 
-1. 在“SSO (单一登录)”  页上，执行以下步骤：
+5. 在“SSO (单一登录)”  页上，执行以下步骤：
 
     ![Watch by Colors 配置](./media/watch-by-colors-tutorial/config02.png)
 
@@ -183,5 +190,5 @@ ms.locfileid: "70013932"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [通过 Azure AD 试用 Slack](https://aad.portal.azure.com/)
+- [在 Azure AD 中试用 Watch by Colors](https://aad.portal.azure.com/)
 

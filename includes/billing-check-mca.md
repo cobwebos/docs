@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: d163c88469ec767c8e0d18f5978ecb61f7997c8b
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490337"
 ---
-检查以确定是否有权访问计费帐户的 Microsoft 客户协议的协议类型。
+检查协议类型以确定你是否有权访问 Microsoft 客户协议的计费帐户。
  
 1. 登录到 [Azure 门户]( http://portal.azure.com)。
  
@@ -19,11 +19,11 @@ ms.locfileid: "67490337"
  
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-check-mca/billing-search-cost-management-billing.png)
  
-3. 如果只是一个计费作用域中有权访问，请选择**属性**从左上方。 有权访问计费帐户的 Microsoft 客户协议计费帐户类型是否**Microsoft 客户协议**。
+3. 如果仅有权访问一个计费范围，请从左侧选择“属性”  。 如果计费帐户类型为“Microsoft 客户协议”  ，则有权访问 Microsoft 客户协议的计费帐户。
  
-    ![在属性页中显示 microsoft 客户协议的屏幕截图](./media/billing-check-mca/billing-mca-property.png)
+    ![显示“属性”页中的 Microsoft 客户协议的屏幕截图](./media/billing-check-mca/billing-mca-property.png)
  
-4. 如果你有权访问多个计费作用域时，检查付费帐户列中的类型。 有权访问计费帐户的 Microsoft 客户协议的任何范围的计费帐户类型是否**Microsoft 客户协议**。
+4. 如果有权访问多个计费范围，请检查“计费帐户”列中的类型。 如果任何范围的计费帐户类型为“Microsoft 客户协议”  ，则有权访问 Microsoft 客户协议的计费帐户。
  
-    ![计费帐户列表页中显示 microsoft 客户协议的屏幕截图](./media/billing-check-mca/billing-mca-in-the-list.png)
+    ![显示“计费帐户列表”页中的 Microsoft 客户协议的屏幕截图](./media/billing-check-mca/billing-mca-in-the-list.png)
  

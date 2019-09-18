@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 156486f4f4f0df3d4bb4ab76492709bbecfb8eb5
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c737447c3a3bd2d76d3ed620b7c61aaa81250130
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906587"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70393810"
 ---
 ## <a name="set-up"></a>设置
 
@@ -23,4 +23,4 @@ Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使
 从试用订阅或资源获取密钥后，创建两个[环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)：
 
 * `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` - 文本翻译资源的订阅密钥。
-* `TRANSLATOR_TEXT_ENDPOINT` - 资源的区域终结点或自定义子域名。
+* `TRANSLATOR_TEXT_ENDPOINT` - 文本翻译的全局终结点。 使用 `https://api.cognitive.microsofttranslator.com/`。

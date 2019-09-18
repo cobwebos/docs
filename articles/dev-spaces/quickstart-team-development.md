@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务进行 Kubernetes 团队开发
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: cb1cc62125e668544eb4af9f84b477b273bfe30e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0abfe655e30b62829a7d353b6da85bb51e378f6d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706255"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842585"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>快速入门：使用 Azure Dev Spaces 在 Kubernetes 上进行团队开发
 
@@ -39,7 +39,7 @@ ms.locfileid: "67706255"
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
 此外，还会创建包含一个节点的 *MyAKS* 群集，该节点使用 *Standard_DS2_v2* 大小并禁用了 RBAC。
@@ -146,12 +146,12 @@ azds space select -n dev/azureuser2 -y
 
 ```cmd
 $ azds space list
-Name            Selected
---------------  --------
-default         False
-dev             False
-dev/azureuser1  False
-dev/azureuser2  True
+   Name            DevSpacesEnabled
+-  --------------  ----------------
+   default         False
+   dev             True
+   dev/azureuser1  True
+*  dev/azureuser2  True
 ```
 
 使用 `azds list-uris` 显示该示例应用程序在当前所选空间（即 *dev/azureuser2*）中的 URL。
@@ -201,6 +201,9 @@ Service 'bikesharingweb' port 80 (http) is available at http://localhost:54256
 通过打开 `azds up` 命令输出中显示的公共 URL，导航到 *dev/azureuser2* 开发空间的 *bikesharingweb* 服务。 选择“Aurelia Briggs (客户)”作为用户。  检查右上角是否显示了更新的文本。 如果此项更改未立即出现，你可能需要刷新页面或清除浏览器缓存。
 
 ![Azure Dev Spaces 单车共享示例应用程序已更新](media/quickstart-team-development/bikeshare-update.png)
+
+> [!NOTE]
+> 在运行 `azds up` 时导航到服务时，HTTP 请求跟踪也会显示在 `azds up` 命令的输出中。 这些跟踪有助于对服务进行故障排除和调试。 可以在运行 `azds up` 时使用 `--disable-http-traces` 来禁用这些跟踪。
 
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>检查其他开发空间是否未更改
 

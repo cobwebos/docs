@@ -1,21 +1,21 @@
 ---
-title: 教程 - Azure Toolkit for IntelliJ：为 HDInsight 群集创建 Spark 应用程序
+title: 教程 - Azure Toolkit for IntelliJ：适用于 HDInsight 群集的 Spark 应用程序
 description: 教程 - 使用 Azure Toolkit for IntelliJ 开发以 Scala 编写的 Spark 应用程序，并将其提交到 HDInsight Spark 群集。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/26/2019
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 32f5ff2ebc9d938b1936d7f2929af83d552a543d
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: b13eb6f61aed37344e0df3c864e021f68a4ca85b
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489862"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900289"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>教程：使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序
+# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>教程：使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序
 
 本教程演示如何使用 Azure Toolkit for IntelliJ 插件开发以 [Scala](https://www.scala-lang.org/) 编写的 Apache Spark 应用程序，并直接从 IntelliJ 集成开发环境 (IDE) 将其提交到 HDInsight Spark 群集。 可按多种方式使用该插件：
 
@@ -135,27 +135,27 @@ ms.locfileid: "68489862"
 
 1. 在菜单栏中，导航到“视图” > “工具窗口” > “Azure 资源管理器”。   
        
-   ![“Azure 资源管理器”链接](./media/apache-spark-intellij-tool-plugin/show-azure-explorer.png)
+   ![显示 Azure 资源管理器](./media/apache-spark-intellij-tool-plugin/show-azure-explorer.png)
 
 2. 在 Azure 资源管理器中右键单击“Azure”节点，然后选择“登录”。  
    
-   ![“Azure 资源管理器”链接](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
+   ![资源管理器右键单击 Azure](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
 
 3. 在“Azure 登录”  对话框中，依次选择“设备登录”、“登录”   。
 
-    ![“Azure 登录”对话框](./media/apache-spark-intellij-tool-plugin/view-explorer-2.png)
+    ![视图资源管理器 2](./media/apache-spark-intellij-tool-plugin/view-explorer-2.png)
 
 4. 在“Azure 设备登录”对话框中单击“复制并打开”。  
    
-   ![“Azure 登录”对话框](./media/apache-spark-intellij-tool-plugin/view-explorer-5.png)
+   ![视图资源管理器 5](./media/apache-spark-intellij-tool-plugin/view-explorer-5.png)
 
 5. 在浏览器界面中粘贴代码，然后单击“下一步”  。
    
-   ![“Azure 登录”对话框](./media/apache-spark-intellij-tool-plugin/view-explorer-6.png)
+   ![视图资源管理器 6](./media/apache-spark-intellij-tool-plugin/view-explorer-6.png)
 
 6. 输入 Azure 凭据，然后关闭浏览器。
    
-   ![“Azure 登录”对话框](./media/apache-spark-intellij-tool-plugin/view-explorer-7.png)
+   ![视图资源管理器 7](./media/apache-spark-intellij-tool-plugin/view-explorer-7.png)
 
 7. 登录之后，“选择订阅”  对话框会列出与凭据关联的所有 Azure 订阅。 选择你的订阅，然后选择“选择”按钮。 
 
@@ -163,7 +163,7 @@ ms.locfileid: "68489862"
 
 8. 在“Azure 资源管理器”中展开“HDInsight”，查看订阅中的 HDInsight Spark 群集。  
 
-    ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-intellij-tool-plugin/view-explorer-3.png)
+    ![视图资源管理器 3](./media/apache-spark-intellij-tool-plugin/view-explorer-3.png)
 
 9.  若要查看与群集关联的资源（例如存储帐户），可以进一步展开群集名称节点。
 
@@ -213,7 +213,7 @@ ms.locfileid: "68489862"
 
 2. 还可以从 **Azure 资源管理器**取消链接群集。
 
-   ![取消链接的群集](./media/apache-spark-intellij-tool-plugin/unlink.png)
+   ![取消链接的群集](./media/apache-spark-intellij-tool-plugin/hdi-unlinked-cluster.png)
 
 ## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>在 HDInsight Spark 群集中运行 Spark Scala 应用程序
 
@@ -377,17 +377,17 @@ ms.locfileid: "68489862"
        
 2. 在“Azure 资源管理器”中展开“HDInsight”，查看订阅中的 HDInsight 群集。   标记为“角色:读取者”的群集只有仅限读取者角色权限。 
 
-    ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-intellij-tool-plugin/view-explorer-15.png)
+    ![视图资源管理器 15](./media/apache-spark-intellij-tool-plugin/view-explorer-15.png)
 
 3. 右键单击具有仅限读取者角色权限的群集。 从上下文菜单中选择“链接此群集”以链接群集。  输入 Ambari 用户名和密码。
 
   
-    ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-intellij-tool-plugin/view-explorer-11.png)
+    ![视图资源管理器 11](./media/apache-spark-intellij-tool-plugin/view-explorer-11.png)
 
 4. 如果已成功链接群集，HDInsight 将会刷新。
    群集阶段将变为链接状态。
   
-    ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-intellij-tool-plugin/view-explorer-8.png)
+    ![视图资源管理器 8](./media/apache-spark-intellij-tool-plugin/view-explorer-8.png)
 
 ### <a name="link-cluster-by-expanding-jobs-node"></a>通过展开“作业”节点来链接群集
 
@@ -395,7 +395,7 @@ ms.locfileid: "68489862"
    
 2. 单击“链接此群集”以链接群集。 
    
-    ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-intellij-tool-plugin/view-explorer-9.png)
+    ![视图资源管理器 9](./media/apache-spark-intellij-tool-plugin/view-explorer-9.png)
 
 ### <a name="link-cluster-from-rundebug-configurations-window"></a>从“运行/调试配置”窗口链接群集
 
@@ -403,21 +403,21 @@ ms.locfileid: "68489862"
    
 2. 对于“Spark 群集(仅限 Linux)”，请选择一个具有仅限读取者角色权限的群集。  此时会显示警告消息。可以单击“链接此群集”以链接群集。 
    
-   ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-intellij-tool-plugin/create-config-1.png)
+   ![创建配置 1](./media/apache-spark-intellij-tool-plugin/create-config-1.png)
    
 ### <a name="view-storage-accounts"></a>查看存储帐户
 
 * 对于具有仅限读取者角色权限的群集，请单击“存储帐户”节点，此时会弹出“存储访问被拒绝”窗口。   可以单击“打开 Azure 存储资源管理器”以打开存储资源管理器。 
      
-   ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-intellij-tool-plugin/view-explorer-14.png)
+   ![视图资源管理器 14](./media/apache-spark-intellij-tool-plugin/view-explorer-14.png)
 
-   ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-intellij-tool-plugin/view-explorer-10.png)
+   ![视图资源管理器 10](./media/apache-spark-intellij-tool-plugin/view-explorer-10.png)
 
 * 对于链接的群集，请单击“存储帐户”节点，此时会弹出“存储访问被拒绝”窗口。   可以单击“打开 Azure 存储”以打开存储资源管理器。 
      
-   ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-intellij-tool-plugin/view-explorer-13.png)
+   ![视图资源管理器 13](./media/apache-spark-intellij-tool-plugin/view-explorer-13.png)
 
-   ![Azure 资源管理器中的 HDInsight Spark 群集](./media/apache-spark-intellij-tool-plugin/view-explorer-12.png)
+   ![视图资源管理器 12](./media/apache-spark-intellij-tool-plugin/view-explorer-12.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>转换现有 IntelliJ IDEA 应用程序以使用用于 IntelliJ 的 Azure 工具包
 

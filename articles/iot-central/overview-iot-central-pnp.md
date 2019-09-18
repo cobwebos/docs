@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: bfdad0d81599035e7d8c270ec4e8ee8d6a45125e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997744"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858926"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Azure IoT Central（预览版功能）是什么？
 
@@ -62,7 +62,8 @@ Azure IoT Central 是一个完全托管的 IoT 软件即服务解决方案，可
 - 不支持数组架构类型。
 - 不支持应用程序模板导出和应用程序复制。
 - 仅支持 C 设备 SDK 以及 Node.js 设备和服务 SDK。
-- 仅在选定区域提供。
+- 它仅适用于欧洲北部和美国中部地区。
+- 必须在同一文件中以内联方式定义设备功能模型的所有接口。
 
 ## <a name="personas"></a>角色
 

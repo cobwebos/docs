@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-ms.date: 07/29/2019
-ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 09/09/2019
+ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640038"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845297"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>快速入门：使用 Azure 门户、PowerShell 和 Azure CLI 在 Azure SQL 数据库中创建单一数据库
 
@@ -30,8 +30,8 @@ ms.locfileid: "68640038"
 
 在预配或无服务器（预览版）计算层中可以创建单一数据库。
 
-- 预配计算层中的单一数据库具有已定义数量的预分配计算资源以及使用两个[购买模型](sql-database-purchase-models.md)之一的一系列内存和存储资源。
-- 无服务器计算层中的单一数据库具有一系列自动扩展的计算资源，以及指定数量的每内核内存和指定数量的存储资源，且仅在[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中提供。
+- 预配计算层中的单一数据库已使用两个[购买模型](sql-database-purchase-models.md)之一预分配固定数量的计算资源，包括 CPU 和内存。
+- 无服务器计算层中的单一数据库具有一系列计算资源，包括可自动扩展且仅在[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中提供的 CPU 和内存。
 
 创建单一数据库时，也定义一个 [SQL 数据库服务器](sql-database-servers.md)来管理它并将它放置在指定区域的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中。
 

@@ -1,5 +1,5 @@
 ---
-title: 审核终结点话语 - LUIS
+title: 教程：审核终结点话语 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 通过验证或更正 LUIS 不确定的、通过 LUIS HTTP 终结点收到的陈述，改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: dd5c0012bad567623fdfc0a70760f692aafe0e3e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f81066ed21702dfe94ad7897adc3b82ed5a49f4d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563320"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387520"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教程：通过查看终结点话语来修复不确定的预测
 在本教程中，你将通过验证或更正 LUIS 不确定的、通过 LUIS HTTPS 终结点收到的陈述，改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。 你应当在计划的 LUIS 维护中定期评审终结点陈述。 
@@ -85,15 +85,17 @@ ms.locfileid: "68563320"
     |:--|:--|:--|
     |`I'm looking for a job with Natural Language Processing`|GetJobInfo|工作 -“自然语言处理”|
 
+    若要将 `natural language processing` 从 keyPhrase 实体更改为工作实体，请选择该短语，然后从列表中选择“工作”  。 如果要为不同的实体仅选择部分 keyPhrase 文本，则需要删除 keyPhrase 实体，使用不同的实体进行标记，然后将 keyPhrase 实体重新应用到应用。 
+
     添加话语会将话语从“评审终结点话语”  移到 **GetJobInformation** 意向。 此终结点表述现在是该意向的一个示例表述。 
 
     除了正确匹配此话语外，还应将更多话语添加到 **GetJobInformation** 意向。 这是一项练习，需要你自行完成。 每个意向（**None** 意向除外）的示例表述数目应该基本相同。 **None** 意向应包含应用中总表述数的 10%。 
 
-1. 审核此意向中的剩余表述，标记不正确的表述并纠正“匹配的意向”。 
+    审核此意向中的剩余表述，标记不正确的表述并纠正“匹配的意向”。 
 
-1. 此列表应该再也不会有这些表述。 如果出现更多的表述，请继续完成列表中的项目，纠正意向并标记缺失的实体，直至此列表为空。 
+    “查看终结点话语”列表应不再具有这些话语。  如果出现更多的表述，请继续完成列表中的项目，纠正意向并标记缺失的实体，直至此列表为空。 
 
-1. 选择“筛选器”列表中的下一意向，然后继续纠正表述并对实体进行标记。 请记住，每个意向的最后一步是选择表述行中的“添加到匹配的意向”，或者勾选每个意向的框，然后选择表上面的“添加所选项”。  
+    选择“筛选器”列表中的下一意向，然后继续纠正表述并对实体进行标记。 请记住，每个意向的最后一步是选择表述行中的“添加到匹配的意向”，或者勾选每个意向的框，然后选择表上面的“添加所选项”。  
 
     继续操作，直到筛选器列表中的所有意向和实体都具有空列表。 这是一个很小的应用。 审核过程只需数分钟。 
 

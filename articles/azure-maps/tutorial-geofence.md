@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b4e9b72be5d03e0b3441983ca991a16688f5f4cd
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085314"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916465"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>使用 Azure Maps 设置地域隔离区
 
@@ -36,7 +36,7 @@ ms.locfileid: "58085314"
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户 
 
-若要完成本教程中的步骤，首先需要参阅[管理帐户和密钥](how-to-manage-account-keys.md)以创建并管理采用 S1 定价层的帐户订阅。
+若要完成本教程中的步骤，请按照[管理帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤获取适用于你的帐户的主订阅密钥。
 
 ## <a name="upload-geofences"></a>上传地域隔离区
 
@@ -56,11 +56,11 @@ ms.locfileid: "58085314"
     
     URL 路径中的 GEOJSON 参数表示正在上传的数据的数据格式。
 
-3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。 将 subscription-key 值替换为 Azure Maps 订阅密钥。
+3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。  将 subscription-key 值替换为 Azure Maps 订阅密钥。
    
     ![Postman 中的键值对参数](./media/tutorial-geofence/postman-key-vals.png)
 
-4. 单击“正文”，选择原始输入格式，然后从下拉列表中选择“JSON”作为输入格式。 提供以下 JSON 作为要上传的数据：
+4. 单击“正文”，选择原始输入格式，然后从下拉列表中选择“JSON”作为输入格式  。 提供以下 JSON 作为要上传的数据：
 
    ```JSON
    {

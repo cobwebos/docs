@@ -1680,7 +1680,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |------------------------|  
 |模块定义文件包含错误。|  
 |模块定义文件 "{0}" 包含错误。|  
-|模块定义文件 "{0}" 包含错误。 [https://doi.org/10.13012/J8PN93H8]({1})|  
+|模块定义文件 "{0}" 包含错误。 {1}|  
   
 
 ## <a name="error-0114"></a>错误0114  

@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure Active Directory B2C 为 ASP.NET 应用程序设置登录 | Microsoft Docs
+title: 快速入门 - 使用 Azure Active Directory B2C 为 ASP.NET 应用程序设置登录
 description: 运行一个使用 Azure Active Directory B2C 提供帐户登录的示例 ASP.NET Web 应用。
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 647ea3bdeb914b97fe131d32078ddb610d4d163e
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 5f5cae82e23fed6a30d5f7ac63a5718c2a057a7d
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835476"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914295"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为 ASP.NET 应用程序设置登录
 
@@ -26,14 +26,14 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 ## <a name="prerequisites"></a>先决条件
 
 - 带有 ASP.NET 和 Web 开发  工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
-- Facebook、Google、Microsoft 或 Twitter 中的社交帐户。
+- Facebook、Google 或 Microsoft 中的社交帐户。
 - 从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip)或克隆示例 Web 应用程序。
 
     ```
     git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
     ```
 
-    示例解决方案中有下述两个项目：
+    示例解决方案中有两个项目：
 
     - **TaskWebApp** - 一个用于创建和编辑任务列表的 Web 应用程序。 此 Web 应用程序使用**注册或登录**用户流来注册或登录用户。
     - **TaskService** - 一个 Web API，支持创建、读取、更新和删除任务列表的功能。 此 Web API 受 Azure AD B2C 保护，可以通过 Web 应用程序进行调用。
@@ -55,11 +55,11 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
     ![浏览器中的示例 ASP.NET Web 应用，突出显示了注册/签名链接](media/active-directory-b2c-quickstarts-web-app/web-app-sign-in.png)
 
-    此示例支持多个注册选项，包括使用社交标识提供者，或者使用电子邮件地址来创建本地帐户。 对于本快速入门，将使用 Facebook、Google、Microsoft 或 Twitter 社交标识提供者帐户。
+    此示例支持多个注册选项，包括使用社交标识提供者，或者使用电子邮件地址来创建本地帐户。 对于本快速入门，将使用 Facebook、Google 或 Microsoft 社交标识提供者帐户。
 
-2. Azure AD B2C 为示例 Web 应用程序的虚构品牌“Wingtip Toys”提供了一个自定义登录页。 要使用社交标识提供者注册，请单击要使用的标识提供者按钮。
+2. Azure AD B2C 为示例 Web 应用程序的虚构公司“Fabrikam”提供了一个登录页。 要使用社交标识提供者注册，请单击要使用的标识提供者按钮。
 
-    ![显示标识提供者按钮的“登录或注册”页面](media/active-directory-b2c-quickstarts-web-app/sign-in-or-sign-up-web.png)
+    ![显示标识提供者的“登录”或“注册”页面按钮](media/active-directory-b2c-quickstarts-web-app/sign-in-or-sign-up-web.png)
 
     请使用社交帐户凭据进行身份验证（登录）并授权应用程序读取社交帐户的信息。 通过授予访问权限，应用程序可以从社交帐户检索个人资料信息，如姓名和城市。
 

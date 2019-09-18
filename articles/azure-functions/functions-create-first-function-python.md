@@ -1,8 +1,6 @@
 ---
 title: 在 Azure 中创建 HTTP 触发的函数
 description: 了解如何使用 Azure Functions Core Tools 和 Azure CLI 在 Azure 中创建你的第一个 Python 函数。
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 04/24/2019
@@ -10,13 +8,13 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
-manager: jeconnoc
-ms.openlocfilehash: 5b90702f89af260a67b69bf96c2e079a45298723
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+manager: gwallace
+ms.openlocfilehash: 28169bfb8dead65c543a3752a709f33487854e60
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575441"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844728"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>在 Azure 中创建 HTTP 触发的函数
 
@@ -28,7 +26,7 @@ ms.locfileid: "69575441"
 
 在开始之前，必须具有以下各项：
 
-+ 安装 [Python 3.6](https://www.python.org/downloads/)。
++ 安装 [Python 3.6.x](https://www.python.org/downloads/)。
 
 + 安装 [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.7.1575 或更高版本。
 
@@ -40,7 +38,13 @@ ms.locfileid: "69575441"
 
 ## <a name="create-and-activate-a-virtual-environment-optional"></a>创建并激活虚拟环境（可选）
 
-若要在本地开发和测试 Python 函数，建议使用 Python 3.6 环境。 运行以下命令来创建并激活一个名为 `.venv` 的虚拟环境。
+若要在本地开发和测试 Python 函数，建议使用 Python 3.6 环境。 运行以下命令来创建并激活一个名为 `.venv` 的虚拟环境。 
+
+> [!NOTE]
+> 如果 Python 未在 Linux 分发版上安装 venv，则可以使用以下命令安装它：
+> ```command
+> sudo apt-get install python3-venv
+>
 
 ### <a name="bash"></a>Bash：
 
@@ -104,7 +108,7 @@ func new
 
 以下命令启动函数应用，该应用使用 Azure 中相同的 Azure Functions 运行时本地运行。
 
-```bash
+```console
 func host start
 ```
 
@@ -134,7 +138,7 @@ Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-        HttpTrigger: http://localhost:7071/api/MyHttpTrigger
+        HttpTrigger: http://localhost:7071/api/HttpTrigger
 
 [8/27/2018 10:38:27 PM] Host started (29486ms)
 [8/27/2018 10:38:27 PM] Job host started
@@ -168,7 +172,33 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 
 现在，可以将本地函数项目发布到 Azure 中的函数应用了。
 
-[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
+## <a name="deploy-the-function-app-project-to-azure"></a>将函数应用项目部署到 Azure
+
+在 Azure 中创建函数应用后，可以使用 [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools 命令将项目代码部署到 Azure。 在这些示例中，将 `<APP_NAME>` 替换为上一步中应用的名称。
+
+```command
+func azure functionapp publish <APP_NAME> --build remote
+```
+
+`--build remote` 选项通过部署包中的文件在 Azure 中远程生成 Python 项目。 
+
+你将看到类似于以下内容的输出，为了提高可读性，已经截断了这些输出：
+
+```output
+Getting site publishing info...
+...
+
+Preparing archive...
+Uploading content...
+Upload completed successfully.
+Deployment completed successfully.
+Syncing triggers...
+Functions in myfunctionapp:
+    HttpTrigger - [httpTrigger]
+        Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
+```
+
+复制 `HttpTrigger` 的 `Invoke url` 值，现在可以使用它在 Azure 中测试函数。 该 URL 包含一个 `code` 查询字符串值，该值是你的函数密钥。 此密钥使得其他人难以在 Azure 中调用你的 HTTP 触发器终结点。
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 

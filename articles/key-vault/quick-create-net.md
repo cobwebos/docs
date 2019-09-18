@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c67b24d57117a248559424497939a04ce347658c
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: b61dab28ff3fb6710e59e6209282c71a8f52f674
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308943"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914875"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库
 
@@ -156,7 +156,7 @@ https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/ak
 
 ### <a name="authenticate-to-your-key-vault"></a>对 Key Vault 进行身份验证
 
-本 .NET 快速入门依赖于使用环境变量来存储不应放入、但需要放入代码中的凭据。 
+本 .NET 快速入门依赖于使用环境变量来存储不应放入代码中的凭据。 
 
 在生成和运行应用之前，请使用 `setx` 命令将 `akvClientId`、`akvClientSecret`、`akvTenantId` 和 `akvSubscriptionId` 环境变量设置为上面记下的值。
 

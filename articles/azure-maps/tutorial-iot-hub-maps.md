@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: b88d355ec1784b3b613369e90cd5fac99d3d69a6
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898341"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916410"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>使用 Azure Maps 实现 IoT 空间分析
 
@@ -41,10 +41,10 @@ ms.locfileid: "69898341"
 ```JSON
 {
     "data": {
-         "properties": {
+        "properties": {
             "Engine": "ON"
-         },
-         "systemProperties": {
+        },
+        "systemProperties": {
             "iothub-content-type": "application/json",
             "iothub-content-encoding": "utf-8",
             "iothub-connection-device-id": "ContosoRentalDevice",
@@ -52,13 +52,13 @@ ms.locfileid: "69898341"
             "iothub-connection-auth-generation-id": "636959817064335548",
             "iothub-enqueuedtime": "2019-06-18T00:17:20.608Z",
             "iothub-message-source": "Telemetry"
-         },
-         "body": { 
-                    "location": { 
-                        "type": "Point",
-                        "coordinates": [ -77.025988698005662, 38.9015330523316 ]
-                     } 
-                 } 
+        },
+        "body": { 
+            "location": { 
+                "type": "Point",
+                "coordinates": [ -77.025988698005662, 38.9015330523316 ]
+            } 
+        } 
     }
 }
 ```
@@ -104,7 +104,7 @@ ms.locfileid: "69898341"
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户 
 
-若要基于 Azure Maps 空间分析实现业务逻辑，需要在创建的资源组中创建一个 Azure Maps 帐户。 遵照[管理帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)中的说明使用 S1 定价层创建一个 Azure Maps 帐户订阅，并参阅[身份验证详细信息](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details)了解如何获取订阅密钥。
+若要基于 Azure Maps 空间分析实现业务逻辑，需要在创建的资源组中创建一个 Azure Maps 帐户。 按照[管理帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤获取帐户的主要订阅密钥。
 
 
 ### <a name="create-a-storage-account"></a>创建存储帐户

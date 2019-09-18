@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 56a73449c69010bc97122023f7dcbc9e3a9df154
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048006"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858987"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>什么是 IoT 即插即用预览版？
 
@@ -63,7 +63,7 @@ IoT 即插即用适用于两种类型的开发人员：
 
 1. 创作设备软件或固件，用于实现设备功能模型和接口中声明的功能。 Azure IoT SDK 包含用于实现设备功能模型的 API。
 
-[IoT Device Workbench for VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) 扩展提供许多辅助功能。 例如，设备开发人员可以使用该扩展基于功能模型生成主干 C 项目。 但是，也可以使用任何 IDE 来创作和实现设备功能模型。
+[适用于 VS Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 扩展包提供许多辅助功能。 例如，设备开发人员可以使用该扩展基于功能模型生成主干 C 项目。 但是，也可以使用任何 IDE 来创作和实现设备功能模型。
 
 ## <a name="certify-an-iot-plug-and-play-device"></a>认证 IoT 即插即用设备
 
@@ -76,6 +76,7 @@ IoT 即插即用适用于两种类型的开发人员：
 - 发布到 IoT 认证设备目录。
 
 ## <a name="regional-availability"></a>区域可用性
+
 在公共预览期，IoT 即插即用可在北欧、美国中部和日本东部区域使用。 请确保在这其中的一个区域创建中心。
 
 ## <a name="message-quotas-in-iot-hub"></a>IoT 中心的消息配额

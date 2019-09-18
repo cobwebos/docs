@@ -1,6 +1,6 @@
 ---
-title: 快速入门 - 使用 Azure Active Directory B2C 为桌面应用设置登录 | Microsoft Docs
-description: 运行一个使用 Azure Active Directory B2C 提供帐户登录的示例 ASP.NET 桌面应用程序。
+title: 快速入门 - 使用 Azure Active Directory B2C 为桌面应用设置登录
+description: 运行一个使用 Azure Active Directory B2C 提供帐户登录的示例 WPF 桌面应用程序。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 636e47c1d0c689dd9660f8bf01ada571d3824961
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 98d312dbafd399cc8b92e2c4fb70499853c214b5
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835462"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914264"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为桌面应用设置登录
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 ## <a name="prerequisites"></a>先决条件
 
 - 带有 ASP.NET 和 Web 开发  工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
-- Facebook、Google、Microsoft 或 Twitter 中的社交帐户。
+- Facebook、Google 或 Microsoft 中的社交帐户。
 - 从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip)或克隆示例 Web 应用。
 
     ```
@@ -45,10 +45,10 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
     ![示例 WPF 应用程序的屏幕截图](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
 
-    此示例支持多个注册选项。 这些选项包括使用社交标识提供者，或者使用电子邮件地址来创建本地帐户。 对于本快速入门，将使用 Facebook、Google、Microsoft 或 Twitter 社交标识提供者帐户。
+    此示例支持多个注册选项。 这些选项包括使用社交标识提供者，或者使用电子邮件地址来创建本地帐户。 对于本快速入门，将使用 Facebook、Google 或 Microsoft 社交标识提供者帐户。
 
 
-2. Azure AD B2C 为示例 Web 应用的虚构品牌“Wingtip Toys”提供了一个自定义登录页。 要使用社交标识提供者注册，请单击要使用的标识提供者按钮。
+2. Azure AD B2C 为示例 Web 应用程序的虚构公司“Fabrikam”提供了一个登录页。 要使用社交标识提供者注册，请单击要使用的标识提供者按钮。
 
     ![显示标识提供者的“登录”或“注册”页面](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
 
@@ -66,7 +66,7 @@ Azure AD B2C 提供允许用户更新个人资料的功能。 示例 Web 应用�
 
     ![WPF 示例应用中突出显示的“编辑配置文件”按钮](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
 
-2. 选择与创建的帐户相关联的标识提供者。 例如，如果创建帐户时使用 Twitter 作为标识提供者，那么选择使用 Twitter 来修改关联的个人资料详细信息。
+2. 选择与创建的帐户相关联的标识提供者。 例如，如果创建帐户时使用 Facebook 作为标识提供者，那么选择使用 Facebook 来修改关联的个人资料详细信息。
 
 3. 更改“显示名称”或“城市”，然后单击“继续”。   
 

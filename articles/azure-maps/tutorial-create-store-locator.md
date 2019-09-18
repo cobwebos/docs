@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4cc21a4dbab7d5114eed8414c6530eab5f42bb00
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 2b68da881edd0406a85692d6e0586427a57b7806
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478860"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916438"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>使用 Azure Maps 创建店铺定位器
 
@@ -35,7 +35,7 @@ ms.locfileid: "68478860"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程中的示例，首先需要[创建 Azure Maps 帐户](./tutorial-search-location.md#createaccount)并[获取帐户的订阅密钥](./tutorial-search-location.md#getkey)。
+若要完成本教程中的步骤，首先需要[创建 Azure Maps 帐户](./tutorial-search-location.md#createaccount)并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤获取帐户的主订阅密钥。
 
 ## <a name="design"></a>设计
 

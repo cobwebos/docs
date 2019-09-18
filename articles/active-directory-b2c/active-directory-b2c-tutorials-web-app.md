@@ -1,21 +1,21 @@
 ---
-title: 教程 - 在 Web 应用程序中启用身份验证 - Azure Active Directory B2C | Microsoft Docs
+title: 教程 - 在 Web 应用程序中启用身份验证 - Azure Active Directory B2C
 description: 有关如何使用 Azure Active Directory B2C 为 ASP.NET Web 应用程序提供用户登录功能的教程。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 2066a7848efaf067dddde3d5db1decfc88d94436
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464764"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914214"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 在 Web 应用程序中启用身份验证
 
@@ -32,8 +32,8 @@ ms.locfileid: "68464764"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [创建用户流](tutorial-create-user-flows.md)，以便在应用程序中启用用户体验。
-- 安装带有 ASP.NET 和 Web 开发  工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+* [创建用户流](tutorial-create-user-flows.md)，以便在应用程序中启用用户体验。
+* 安装带有 ASP.NET 和 Web 开发  工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 
 ## <a name="update-the-application"></a>更新应用程序
 
@@ -58,15 +58,21 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 示例解决方案中包含以下两个项目：
 
-- **TaskWebApp** - 创建和编辑任务列表。 该示例使用**注册或登录**用户流来注册或登录用户。
+- **TaskWebApp** - 创建和编辑任务列表。 该示例使用注册或登录  用户流来注册或登录用户。
 - **TaskService** - 支持创建、读取、更新和删除任务列表功能。 该 API 受 Azure AD B2C 的保护，由 TaskWebApp 调用。
 
-将示例更改为使用已在租户中注册的应用程序，包括前面记下的应用程序 ID 和密钥。 此外，配置所创建的用户流。 该示例在 Web.config 文件中将配置值作为设置来定义。 若要更改设置，请执行以下操作：
+将示例更改为使用已在租户中注册的应用程序，包括前面记下的应用程序 ID 和密钥。 此外，配置所创建的用户流。 该示例在 Web.config  文件中将配置值作为设置来定义。
+
+更新 Web.config 文件中的设置以处理用户流：
 
 1. 在 Visual Studio 中打开 **B2C-WebAPI-DotNet** 解决方案。
-2. 在 **TaskWebApp** 项目中打开 **Web.config** 文件。 将 `ida:Tenant` 的值替换为所创建租户的名称。 将 `ida:ClientId` 的值替换为所记录的应用程序 ID。 将 `ida:ClientSecret` 的值替换为所记录的密钥。 在将客户端密码添加到 Web.config 之前，必须对其进行 XML 编码。
-3. 在 **Web.config** 文件中，将 `ida:SignUpSignInPolicyId` 的值替换为 `b2c_1_signupsignin1`。 将 `ida:EditProfilePolicyId` 的值替换为 `b2c_1_profileediting1`。 将 `ida:ResetPasswordPolicyId` 的值替换为 `b2c_1_passwordreset1`。
-
+1. 在 **TaskWebApp** 项目中打开 **Web.config** 文件。
+    1. 将 `ida:Tenant` 和 `ida:AadInstance` 的值替换为所创建租户的名称。
+    1. 将 `ida:ClientId` 的值替换为所记录的应用程序 ID。
+    1. 将 `ida:ClientSecret` 的值替换为所记录的密钥。 在将客户端密码添加到 Web.config 之前，必须对其进行 XML 编码。
+    1. 将 `ida:SignUpSignInPolicyId` 的值替换为 `b2c_1_signupsignin1`。
+    1. 将 `ida:EditProfilePolicyId` 的值替换为 `b2c_1_profileediting1`。
+    1. 将 `ida:ResetPasswordPolicyId` 的值替换为 `b2c_1_passwordreset1`。
 
 ## <a name="run-the-sample"></a>运行示例
 
