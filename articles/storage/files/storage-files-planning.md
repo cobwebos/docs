@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4c13c0b7601257c120c46ec341156a8e8bba332f
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: da9ab6eef98a602635e5e92dca3bd5628846ce62
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967788"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036337"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -95,7 +95,7 @@ Azure 备份适用于高级文件共享, Azure Kubernetes 服务支持版本1.13
 目前, 不能在标准文件共享和高级文件共享之间直接转换。 如果要切换到任一层, 必须在该层中创建新的文件共享, 并手动将数据从原始共享复制到所创建的新共享。 可以使用支持的任何 Azure 文件复制工具 (例如 Robocopy 或 AzCopy) 来执行此操作。
 
 > [!IMPORTANT]
-> 高级文件共享仅适用于 LRS, 可用于提供存储帐户的大多数区域。 若要确定高级文件共享当前是否在你的区域中可用, 请参阅 Azure 的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)" 页。
+> 在大多数区域中，LRS 提供高级文件共享，这些区域提供存储帐户，并在较小的区域部分中使用 ZRS。 若要确定高级文件共享当前是否在你的区域中可用, 请参阅 Azure 的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)" 页。 若要找出支持 ZRS 的区域，请参阅[支持范围和区域可用性](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)。
 
 #### <a name="provisioned-shares"></a>预配的共享
 
@@ -157,7 +157,7 @@ Azure 备份适用于高级文件共享, Azure Kubernetes 服务支持版本1.13
 
 Azure 文件标准共享支持四种数据冗余选项：本地冗余存储（LRS）、区域冗余存储（ZRS）、异地冗余存储（GRS）和异地冗余存储（GZRS）（预览版）。
 
-Azure 文件 premium 共享仅支持本地冗余存储 (LRS)。
+Azure 文件 premium 共享支持 LRS 和 ZRS，ZRS 目前在一小部分区域中提供。
 
 以下部分介绍了不同的冗余选项之间的差异：
 

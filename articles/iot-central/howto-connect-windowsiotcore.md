@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b14d6f70f4c4163f16c8275f4e071da6a9e0bc78
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 3513dc0a1928168d6313e9d49a8f3d5d27aca781
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019825"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066331"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序
 
@@ -43,15 +43,29 @@ ms.locfileid: "70019825"
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
-在 Azure IoT Central 应用程序中，使用 " **Device Explorer** " 页从**Windows 10 IoT Core**设备模板添加真实设备。 记下设备连接详细信息（**作用域 id**、**设备 id**和**主密钥**）。 有关详细信息，请参阅[获取连接信息](howto-generate-connection-string.md#get-connection-information)。
+在 Azure IoT Central 应用程序中，使用 " **Device Explorer** " 页从**Windows 10 IoT Core**设备模板添加真实设备。 记下设备连接详细信息（**作用域 id**、**设备 id**和**主密钥**）。
 
 ## <a name="prepare-the-device"></a>准备设备
 
-为了使设备能够连接到 IoT Central，它需要一个连接字符串。
+为了使设备能够连接到 IoT Central，它需要一个连接字符串：
 
-[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
+1. 使用 `dps-keygen` 命令行实用程序生成连接字符串：
 
-若要使设备代码访问连接字符串，请将其保存到 Windows 10  IoT Core 设备上文件夹`C:\Data\Users\DefaultAccount\Documents\`中名为 iothub 的文件中。
+    若要安装[密钥生成器实用程序](https://github.com/Azure/dps-keygen)，请运行以下命令：
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+
+1. 若要生成连接字符串，请使用之前记下的连接详细信息运行以下命令：
+
+    ```cmd/sh
+    dps-keygen -di:<Device ID> -dk:<Primary or Secondary Key> -si:<Scope ID>
+    ```
+
+1. 复制 `dps-keygen` 输出中的连接字符串，以便在设备代码中使用。
+
+若要使设备代码访问连接字符串，请将其保存到 Windows 10 IoT Core 设备上文件夹`C:\Data\Users\DefaultAccount\Documents\`中名为 iothub 的文件中。
 
 若要将**iothub**文件从台式计算机复制到设备上的`C:\Data\Users\DefaultAccount\Documents\`文件夹，可以使用[Windows 设备门户](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal)：
 

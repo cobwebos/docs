@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f535bc7d67198b3fe06326260bc1910b6afd36f2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 13eedeb66d826d212b814fac321f920e78758cb8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346771"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063743"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持。 Azure AD B2C 在输入声明集合中将数据发送到 RESTful 服务，在输出声明集合中接收返回的数据。 使用 RESTful 服务集成，可以：
+Azure Active Directory B2C （Azure AD B2C）为你自己的 RESTful 服务提供支持。 Azure AD B2C 在输入声明集合中将数据发送到 RESTful 服务，在输出声明集合中接收返回的数据。 使用 RESTful 服务集成，可以：
 
 - **验证用户输入数据** - 防止将格式不当的数据保存到 Azure AD B2C。 如果用户提供的值无效，RESTful 服务会返回错误消息，指示用户提供有效条目。 例如，可以验证用户提供的电子邮件地址是否在客户数据库中存在。
 - **覆盖输入声明** - 可以重新设置输入声明中的值的格式。 例如，如果用户使用全小写或全大写字母输入了名字，则你可以设置该名字的格式，只将第一个字母大写。
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 <TechnicalProfile Id="REST-UserMembershipValidator">
   <DisplayName>Validate user input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-  ...    
+  ...
 ```
 
 ## <a name="input-claims"></a>输入声明
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 - 映射到 **loyaltyNumber** 声明名称的 **MembershipId** 声明。
 
-技术配置文件还会返回标识提供者不返回的声明： 
+技术配置文件还会返回标识提供者不返回的声明：
 
 - 默认值设置为 `true` 的 **loyaltyNumberIsNew** 声明。
 
@@ -85,11 +85,11 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 | 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
-| ServiceUrl | 是 | REST API 终结点的 URL。 | 
-| AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值：`None`、`Basic` 或 `ClientCertificate`。 `None` 值表示 REST API 不是匿名的。 `Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 `ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）能够访问你的服务。 | 
-| SendClaimsIn | 否 | 指定如何将输入声明发送到 RESTful 声明提供程序。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输入声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输入声明。 `Header` 值是在请求标头中发送的输入声明。 `QueryString` 值是在请求查询字符串中发送的输入声明。 | 
-| ClaimsFormat | 否 | 指定输出声明的格式。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输出声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输出声明。 `Header` 值是在请求标头中发送的输出声明。 `QueryString` 值是在请求查询字符串中发送的输出声明。 | 
-| DebugMode | 否 | 在调试模式下运行技术配置文件。 在调试模式下，REST API 可以返回更多信息。 请参阅“返回错误消息”部分。 | 
+| ServiceUrl | 是 | REST API 终结点的 URL。 |
+| AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值：`None`、`Basic` 或 `ClientCertificate`。 `None` 值表示 REST API 不是匿名的。 `Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 `ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）能够访问你的服务。 |
+| SendClaimsIn | 否 | 指定如何将输入声明发送到 RESTful 声明提供程序。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输入声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输入声明。 `Header` 值是在请求标头中发送的输入声明。 `QueryString` 值是在请求查询字符串中发送的输入声明。 |
+| ClaimsFormat | 否 | 指定输出声明的格式。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输出声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输出声明。 `Header` 值是在请求标头中发送的输出声明。 `QueryString` 值是在请求查询字符串中发送的输出声明。 |
+| DebugMode | 否 | 在调试模式下运行技术配置文件。 在调试模式下，REST API 可以返回更多信息。 请参阅“返回错误消息”部分。 |
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
@@ -111,7 +111,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 | 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | 是 | 用于身份验证的用户名。 | 
+| BasicAuthenticationUsername | 是 | 用于身份验证的用户名。 |
 | BasicAuthenticationPassword | 是 | 用于身份验证的密码。 |
 
 以下示例演示了使用基本身份验证的技术配置文件：
@@ -136,7 +136,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 | 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
-| ClientCertificate | 是 | 用于身份验证的 X509 证书（RSA 密钥集）。 | 
+| ClientCertificate | 是 | 用于身份验证的 X509 证书（RSA 密钥集）。 |
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -159,13 +159,13 @@ REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该
 
 | 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
-| version | 是 | 1.0.0 | 
-| 状态 | 是 | 409 | 
-| code | 否 | 来自 RESTful 终结点提供程序的错误代码，启用 `DebugMode` 后会显示。 | 
-| requestId | 否 | 来自 RESTful 终结点提供程序的请求标识符，启用 `DebugMode` 后会显示。 | 
-| userMessage | 是 | 向用户显示的错误消息。 | 
-| developerMessage | 否 | 问题的详细说明及其解决方法，启用 `DebugMode` 后会显示。 | 
-| moreInfo | 否 | 指向其他信息的 URI，启用 `DebugMode` 后会显示。 | 
+| version | 是 | 1.0.0 |
+| 状态 | 是 | 409 |
+| code | 否 | 来自 RESTful 终结点提供程序的错误代码，启用 `DebugMode` 后会显示。 |
+| requestId | 否 | 来自 RESTful 终结点提供程序的请求标识符，启用 `DebugMode` 后会显示。 |
+| userMessage | 是 | 向用户显示的错误消息。 |
+| developerMessage | 否 | 问题的详细说明及其解决方法，启用 `DebugMode` 后会显示。 |
+| moreInfo | 否 | 指向其他信息的 URI，启用 `DebugMode` 后会显示。 |
 
 以下示例演示了一个以 JSON 格式返回错误消息的 REST API：
 
@@ -175,9 +175,9 @@ REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该
   "status": 409,
   "code": "API12345",
   "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
-  "userMessage": "Message for the user", 
-  "developerMessage": "Verbose description of problem and how to fix it.", 
-  "moreInfo": "https://restapi/error/API12345/moreinfo" 
+  "userMessage": "Message for the user",
+  "developerMessage": "Verbose description of problem and how to fix it.",
+  "moreInfo": "https://restapi/error/API12345/moreinfo"
 }
 ```
 
@@ -196,8 +196,8 @@ public class ResponseContent
 }
 ```
 
-## <a name="examples"></a>示例:
-- [在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换](active-directory-b2c-custom-rest-api-netfw.md) 
+## <a name="examples"></a>例如：
+- [在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换](active-directory-b2c-custom-rest-api-netfw.md)
 - [使用 HTTP 基本身份验证保护 RESTful 服务](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [使用客户端证书保护 RESTful 服务](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 - [演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换](active-directory-b2c-rest-api-validation-custom.md)

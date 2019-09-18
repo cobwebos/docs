@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 4357a91a87648885def69d8e75e19e38a5a3f751
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 87ecf534fa7d4f3609882f5f18b314c246e388bd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993722"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036650"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>合作伙伴中心的商业市场分析
 
@@ -250,7 +250,7 @@ ms.locfileid: "70993722"
 | 客户名字| 客户| 客户提供的名称。 名称可能不同于客户的 Azure 订阅中提供的名称。| |
 | 客户 ID | Customer、Order | 分配给客户的唯一标识符。 一个客户可以有零个或多个 Azure Marketplace 订阅。|  |
 | 客户邮政编码  | 客户| 客户提供的邮政编码。 代码可能与客户的 Azure 订阅中提供的邮政编码不同。| |
-| 客户所在的州/省| 客户| 客户提供的省/市/自治区（address）。 状态可能不同于客户的 Azure 订阅中提供的姓氏。| |
+| 客户所在的州/省| 客户| 客户提供的省/市/自治区（address）。 状态可能与客户的 Azure 订阅中提供的状态不同。| |
 | 购买日期| 客户| 客户购买您发布的任何产品/服务的第一天。| |
 | 丢失日期| 客户| 客户取消上次购买的所有产品/服务的最后日期。||
 | 是新客户  | 顺序| 此值将确定新客户首次获取一个或多个产品/服务。 如果在 "获取日期" 的同一日历月份内，值将为 "是"。 如果客户在报告的日历月之前购买了任何产品，则值将为 "否"。 |

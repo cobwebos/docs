@@ -1,6 +1,6 @@
 ---
 title: 创建客户端以使用部署的 Web 服务
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 了解如何使用在通过 Azure 机器学习模型部署模型时生成的 Web 服务。 该 Web 服务公开一个 REST API。 使用所选的编程语言为此 API 创建客户端。
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5f57be9a1fc5d260ce580b969c8f92c87aea17a8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e005cf0860faeaad7010ea4da3ca1c5227ade14b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279128"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034799"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
@@ -43,7 +43,7 @@ ms.locfileid: "70279128"
 * `auth_enabled`-如果启用密钥身份验证， `True`则为; `False`否则为。
 * `token_auth_enabled`-如果启用令牌身份验证， `True`则为; `False`否则为。
 * `scoring_uri` - REST API 地址。
-* `swagger_uri`-OpenAPI 规范的地址。 如果已启用自动生成架构，则可以使用此 URI。 有关详细信息，请参阅[部署具有 Azure 机器学习服务的模型](how-to-deploy-and-where.md#schema)。
+* `swagger_uri`-OpenAPI 规范的地址。 如果已启用自动生成架构，则可以使用此 URI。 有关详细信息，请参阅[部署模型与 Azure 机器学习](how-to-deploy-and-where.md#schema)。
 
 可通过三种方式检索已部署的 Web 服务的此信息：
 

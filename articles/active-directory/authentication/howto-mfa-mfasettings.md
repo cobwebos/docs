@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eab92f044f62a1ca32062753f824ea76a2726a8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: cf732ec97a57a5bc1d2bcaa39e5fd14a305504d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860281"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075503"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -403,6 +403,8 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 >当用户通过 Azure 多重身份验证服务器或第三方多重身份验证解决方案对 AD FS 执行双重验证时，“记住多重身份验证”功能与 AD FS 的“使我保持登录”功能不兼容。
 >
 >如果你的用户在 AD FS 中选择“使我保持登录”同时将其设备标记为信任多重身份验证，则“记住多重身份验证”天数过期后不会自动验证该用户。 Azure AD 将请求全新双重验证，但 AD FS 将返回包含原始多重身份验证声明和日期的令牌，而不是重新执行双重验证。 **此反应会引发 Azure AD 和 AD FS 之间的验证循环。**
+>
+>"**记住多重身份验证**" 功能与 b2b 用户不兼容，在登录到受邀的租户时，b2b 用户不会看到此功能。
 >
 
 ### <a name="enable-remember-multi-factor-authentication"></a>启用“记住多重身份验证”

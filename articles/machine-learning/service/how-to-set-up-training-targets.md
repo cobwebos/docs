@@ -1,6 +1,6 @@
 ---
 title: 为模型训练创建和使用计算目标
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 为机器学习模型训练配置训练环境（计算目标）。 可以轻松地在训练环境之间切换。 在本地开始训练。 如果需要横向扩展，请切换到基于云的计算目标。
 services: machine-learning
 author: heatherbshapiro
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a34ccf5201b81a2c74c2eccd0ec3f311a1158ab
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7c3bae2fff9e20ed9427c72b5f5f632d975f9f94
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860539"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034415"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型定型的计算目标 
 
-使用 Azure 机器学习服务可以在不同的资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-targets)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以为模型部署创建计算目标，如[“部署模型的位置和方式”](how-to-deploy-and-where.md)中所述。
+使用 Azure 机器学习，可以在各种资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-targets)）上训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以为模型部署创建计算目标，如[“部署模型的位置和方式”](how-to-deploy-and-where.md)中所述。
 
-您可以使用 Azure 机器学习 SDK、Azure 门户、工作区登陆页面（预览）、Azure CLI 或 Azure 机器学习 VS Code 扩展来创建和管理计算目标。 如果通过其他服务（例如 HDInsight 群集）创建了计算目标，可以通过将其附加到 Azure 机器学习服务工作区来使用它们。
+您可以使用 Azure 机器学习 SDK、Azure 门户、工作区登陆页面（预览）、Azure CLI 或 Azure 机器学习 VS Code 扩展来创建和管理计算目标。 如果计算目标是通过其他服务（例如 HDInsight 群集）创建的，则可以通过将其附加到 Azure 机器学习工作区来使用它们。
  
 本文介绍如何使用各种计算目标进行模型训练。  适用于所有计算目标的步骤遵循相同的工作流：
 1. __创建__计算目标（如果没有）。
@@ -35,7 +35,7 @@ ms.locfileid: "70860539"
 
 ## <a name="compute-targets-for-training"></a>训练的计算目标
 
-Azure 机器学习服务为不同的计算目标提供不同的支持。 典型的模型开发生命周期从开发/试验少量的数据开始。 在此阶段，我们建议使用本地环境。 例如，本地计算机或基于云的 VM。 针对更大的数据集扩展训练或执行分布式训练时，我们建议使用 Azure 机器学习计算来创建可在每次提交运行时自动缩放的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为各种方案提供的支持可能有所不同，详情如下：
+Azure 机器学习在不同的计算目标之间具有不同的支持。 典型的模型开发生命周期从开发/试验少量的数据开始。 在此阶段，我们建议使用本地环境。 例如，本地计算机或基于云的 VM。 针对更大的数据集扩展训练或执行分布式训练时，我们建议使用 Azure 机器学习计算来创建可在每次提交运行时自动缩放的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为各种方案提供的支持可能有所不同，详情如下：
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -45,7 +45,7 @@ Azure 机器学习服务为不同的计算目标提供不同的支持。 典型�
 
 ## <a name="whats-a-run-configuration"></a>什么是运行配置？
 
-训练时，通常会在本地计算机上开始，然后在不同的计算目标上运行该训练脚本。 使用 Azure 机器学习服务可以在各种计算目标上运行脚本，而无需更改脚本。
+训练时，通常会在本地计算机上开始，然后在不同的计算目标上运行该训练脚本。 通过 Azure 机器学习，你可以在不同的计算目标上运行脚本，而无需更改脚本。
 
 只需在**运行配置**中为每个计算目标定义环境。  然后，当你想要在不同的计算目标上运行训练试验时，可以指定该计算的运行配置。 有关指定环境并将其绑定到运行配置的详细信息，请参阅[创建和管理用于定型和部署的环境](how-to-use-environments.md)。
 
@@ -143,7 +143,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
 ### <a id="vm"></a>远程虚拟机
 
-Azure 机器学习还支持将自己的计算资源附加到工作区。 任意远程 VM 就是这样一种资源类型（前提是可从 Azure 机器学习服务访问它）。 该资源可以是 Azure VM，也可以是组织内部或本地的远程服务器。 具体而言，在指定 IP 地址和凭据（用户名和密码，或 SSH 密钥）的情况下，可以使用任何可访问的 VM 进行远程运行。
+Azure 机器学习还支持将自己的计算资源附加到工作区。 这种类型的资源类型是任意远程 VM，只要可从 Azure 机器学习访问。 该资源可以是 Azure VM，也可以是组织内部或本地的远程服务器。 具体而言，在指定 IP 地址和凭据（用户名和密码，或 SSH 密钥）的情况下，可以使用任何可访问的 VM 进行远程运行。
 
 可以使用系统生成的 conda 环境、现有的 Python 环境或 Docker 容器。 若要在 Docker 容器中执行，必须在 VM 上运行 Docker 引擎。 需要一个比本地计算机更灵活的基于云的开发/试验环境时，此功能特别有用。
 
@@ -327,7 +327,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 ### <a id="portal-reuse"></a>附加计算目标
 
-若要使用在 Azure 机器学习服务工作区外部创建的计算目标，必须附加它们。 附加计算目标会使其可供你的工作区使用。
+若要使用在 Azure 机器学习工作区之外创建的计算目标，必须附加它们。 附加计算目标会使其可供你的工作区使用。
 
 遵循上述步骤查看计算目标的列表。 然后使用以下步骤来附加计算目标： 
 
@@ -356,7 +356,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 ## <a name="set-up-with-cli"></a>设置 CLI
 
-可以使用适用于 Azure 机器学习服务的 [CLI 扩展](reference-azure-machine-learning-cli.md)访问与工作区关联的计算目标。  可以使用 CLI 执行以下操作：
+您可以使用 Azure 机器学习的[CLI 扩展](reference-azure-machine-learning-cli.md)访问与工作区关联的计算目标。  可以使用 CLI 执行以下操作：
 
 * 创建托管计算目标
 * 更新托管计算目标
@@ -366,7 +366,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 ## <a name="set-up-with-vs-code"></a>设置 VS Code
 
-你可以使用 Azure 机器学习服务的[VS Code 扩展](how-to-vscode-tools.md#create-and-manage-compute-targets)来访问、创建和管理与工作区关联的计算目标。
+你可以使用 Azure 机器学习的[VS Code 扩展](how-to-vscode-tools.md#create-and-manage-compute-targets)来访问、创建和管理与工作区关联的计算目标。
 
 ## <a id="submit"></a>使用 Azure 机器学习 SDK 提交培训运行
 
@@ -515,4 +515,4 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 * 了解如何[有效地调整超参数](how-to-tune-hyperparameters.md)以构建更好的模型。
 * 训练模型后，了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
 * 查看 [RunConfiguration 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK 参考。
-* [通过 Azure 虚拟网络使用 Azure 机器学习服务](how-to-enable-virtual-network.md)
+* [在 Azure 虚拟网络中使用 Azure 机器学习](how-to-enable-virtual-network.md)

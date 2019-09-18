@@ -10,18 +10,67 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 26d66dad1e9953ddcbdbe0fd3b495bb3e418b3e7
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5191f8b565762e9377f3718cc147c96e491f5a0d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993422"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067735"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[**主要 sdk For Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)参考页。 
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
+
+## <a name="2019-09-16"></a>2019-09-16
+
+### <a name="azure-machine-learning-sdk-for-python-v1062"></a>用于 Python 的 Azure 机器学习 SDK 1.0.62
+
++ **新功能**
+  + 介绍了 TabularDataset 上的 timeseries 特征。 利用这种特性，可以轻松地对 TabularDataset 的数据进行时间戳筛选，例如，在某个时间范围内或在最新的数据之间执行所有数据。 若要了解有关 TabularDataset 上的 timeseries 特征的信息， https://aka.ms/azureml-data 请访问文档 https://aka.ms/azureml-tsd-notebook 或示例笔记本。 
+  + 已启用 TabularDataset 和 FileDataset 的培训。 请访问 https://aka.ms/dataset-tutorial 以获取示例笔记本。 
+  
+  + **azureml-train-core**
+    + 添加了 PyTorch 估计器中的 Nccl 和 Gloo 支持
+  
++ **Bug 修复和改进**
+  + **automl-核心**
+    + 弃用了 AutoML 设置 "lag_length" 和 LaggingTransformer。
+    + 修复了输入数据的正确验证（如果以数据流格式指定）
+    + 修改了 fit_pipeline py 以生成图形 json 并上传到项目。 
+    + 使用 Cytoscape 在 userrun 下呈现关系图。
+  + **azureml-core**
+    + 再次设置 ADB 代码中的异常处理，并根据新的错误处理对进行更改
+    + 为笔记本 Vm 添加了自动 MSI 身份验证。
+    + 修复 bug，因为重试失败，可能会上传损坏或空模型。
+    + 修复了在`DataReference`模式`DataReference`更改时名称发生更改的 bug （例如，在`as_upload`调用`as_download`、或`as_mount`时）。
+    + 为`mount_point` 和设置`FileDataset.download`和可选。 `target_path` `FileDataset.mount`
+    + 如果在未分配精细时间戳列的情况下调用时间 serials 相关 API，或者删除了指定的时间戳列，则会引发时间戳列除外。
+    + 应为 serials 列分配其类型为 Date 的列，否则应为 exception
+    + 分配 API "with_timestamp_columns" 的时间 serials 列可能不会使用无值精细/粗时间戳列名称，这将清除以前分配的时间戳列。
+    + 当删除粗粒度或细化时间戳列时，将会引发异常，指示在删除列表中排除时间戳列或调用不包含 "无值" 的 with_time_stamp 以释放时间戳后，可以执行删除操作。表列
+    + 当 "保留列" 列表中未包含粗粒度或细化时间戳列时，将引发异常，并指示用户在保留列列表中包含 timestamp 列或调用 with_time_stamp 为 None 后可以执行的操作值以释放时间戳列。
+    + 添加了已注册模型大小的日志记录。
+  + **azureml-explain-model**
+    + 修复了 "打包" python 包未安装时输出到控制台的警告："使用的 lightgbm 版本低于支持的版本，请升级到大于2.2.1 的版本"
+    + 修复了有关包含许多功能的全局说明的分片下载模型说明
+    + 修复了关于输出说明中缺少初始化示例的模拟说明
+    + 修复了使用两种不同类型的模型上传时在设置属性时的可变错误
+    + 添加了 get_raw 参数以计分说明（），因此一个计分说明可以返回工程和原始值。
+  + **azureml-train-automl**
+    + 介绍了 AutoML 中的公共 Api，以便支持 AutoML 说明通过将 AutoML 特征化分离，并说明了 sdk-更新的支持 AutoML 说明的方式说明机型.
+    + 从远程定型环境中删除 azureml-默认值。
+    + 已将基于 FileCacheStore 的默认缓存存储位置从 "" 更改为 "AzureFileCacheStore"。
+    + 修复了输入数据的正确验证（如果以数据流格式指定）
+  + **azureml-train-core**
+    + 已还原 source_directory_data_store 弃用。
+    + 添加了替代 azureml 安装包版本的功能。 
+    + 在`environment_definition`估算的参数中添加了 dockerfile 支持。
+    + 简化了估算中的分布式培训参数。
+         ```py 
+        from azureml.train.dnn import TensorFlow, Mpi, ParameterServer 
+        ```
 
 ## <a name="2019-09-09"></a>2019-09-09
 

@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ed57a9fa3b041961ce220e8f10d9aed5e7bef60e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7b3ce6a4e72b90c6fd642b92d4a92eb02f4c92c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511928"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063200"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户流版本
 
 >[!IMPORTANT]
-> 除非标识为“推荐”，否则本文中列出的任何用户流均处于公开预览状态  。 应仅为生产应用程序使用推荐的用户流。
+> 除非标识为“推荐”，否则本文中列出的任何用户流均处于公开预览状态。 应仅为生产应用程序使用推荐的用户流。
 
-Azure Active Directory (Azure AD) B2C 中的用户流可帮助设置完全描述客户标识体验的常见[策略](active-directory-b2c-reference-policies.md)。 这些体验包括注册、登录、密码重置和配置文件编辑。 在 Azure AD B2C 中，可从推荐用户流和预览用户流的集合中进行选择。 
+Azure Active Directory B2C （Azure AD B2C）中的用户流可帮助你设置完全描述客户身份体验的常见[策略](active-directory-b2c-reference-policies.md)。 这些体验包括注册、登录、密码重置和配置文件编辑。 在 Azure AD B2C 中，可从推荐用户流和预览用户流的集合中进行选择。
 
-新用户流将作为新版本添加。 随着用户流变得稳定，将建议使用这些用户流。 如果用户流已经过全面测试，则会将其标记为“推荐”  。 在标记为“推荐”之前，均将用户流视为处于预览状态。 对任何生产应用程序使用推荐的用户流，但从其他版本中选择以在可用时测试新功能。 不应使用旧版本的推荐用户流。
+新用户流将作为新版本添加。 随着用户流变得稳定，将建议使用这些用户流。 如果用户流已经过全面测试，则会将其标记为“推荐”。 在标记为“推荐”之前，均将用户流视为处于预览状态。 对任何生产应用程序使用推荐的用户流，但从其他版本中选择以在可用时测试新功能。 不应使用旧版本的推荐用户流。
 
 ## <a name="v1"></a>V1
 
