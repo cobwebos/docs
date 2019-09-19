@@ -1,54 +1,51 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: “Azure 上的 Chef Software”文档
+summary: 了解如何使用 Chef Software 产品来部署和管理 Azure 资源。
 metadata:
-  title: “Azure 上的 Chef Software”文档 - 教程、示例、参考和资源
-  description: Chef Software 为 Linux 和 Windows 提供了一个 DevOps 自动化平台，用于管理物理服务器配置和虚拟服务器配置。 使用快速入门和教程，了解如何使用 Chef Software 产品自动执行“基础结构即代码 (IaC)”脚本并在 Azure 上管理和部署虚拟机。
+  title: “Azure 上的 Chef Software”文档
+  description: 了解如何使用 Chef Software 产品来部署和管理 Azure 资源。
+  services: azure
   ms.service: chef
-  keywords: 'chef, azure, devops, 教程, 示例, 参考'
-  author: tomarchermsft
-  manager: jeconnoc
+  ms.topic: landing-page
+  author: TomArcherMsft
   ms.author: tarcher
-  ms.topic: landing page
-  ms.date: 08/27/2018
-abstract:
-  description: Chef Software 为 Linux 和 Windows 提供了一个 DevOps 自动化平台，用于管理物理服务器配置和虚拟服务器配置。 使用快速入门和教程，了解如何使用 Chef Software 产品自动执行“基础结构即代码 (IaC)”脚本并在 Azure 上管理和部署虚拟机。
-  aside:
-    image:
-      alt: Chef 徽标
-      height: 133
-      width: 48
-      src: media/chef.png
-    title: null
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 安装并配置 Chef，然后使用它在 Azure 中创建 Linux 虚拟机。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/media/index/azure_dev-9.svg
-            text: 安装并配置 Chef
-            href: ./chef-extension-portal.md
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用 Chef Software 工具创建并管理 Azure 计算和网络基础结构。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/virtual-machines/windows/chef-automation">使用 Chef 自动执行 Azure 虚拟机部署</a>。
-  - title: 资源和工具
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Chef Automate
-            html: '<p><a href="https://docs.chef.io/chef_automate.html">Chef Automate 概述</a></p> <p><a href="https://docs.chef.io/install_chef_automate.html">Chef Automate 安装指南</a></p> <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate">Azure 市场上的 Chef Automate</a></p>'
-          - title: Chef Software 工具
-            html: '<p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks">Chef Azure DevOps 扩展</a></p> <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks">Habitat Azure DevOps 扩展</a></p>'
-          - title: Chef Software 新闻
-            html: '<p><a href="https://blog.chef.io/">Chef Software 博客</a></p>'
+  ms.date: 09/17/2019
+  ms.openlocfilehash: 615f2cb8e60ec21417e4b65a0bcaaa72629f34ea
+  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71086807"
+landingContent:
+- title: 关于 Azure 上的 Chef Software
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于 Azure 上的 Chef
+      url: chef-overview.md
+    - text: 关于 Azure 上的 Habitat
+      url: chef-habitat-overview.md
+    - text: 关于 Azure 上的 InSpec
+      url: chef-inspec-overview.md
+  - linkListType: architecture
+    links:
+    - text: Azure Chef 扩展
+      url: https://docs.chef.io/azure_portal.html#azure-chef-extension
+- title: 安装和配置 Chef Software 产品
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Azure 门户安装 Chef
+      url: chef-extension-portal.md
+  - linkListType: download
+    links:
+    - text: Chef Azure DevOps Services 扩展
+      url: https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks
+    - text: Habitat Azure DevOps Services 扩展
+      url: https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks
+- title: 管理虚拟机
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 创建 Windows VM
+      url: /azure/virtual-machines/windows/chef-automation?/azure/chef/toc.json&bc=/azure/bread/toc.json

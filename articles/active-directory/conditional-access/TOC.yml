@@ -19,10 +19,10 @@
 - name: 概念
   expanded: false
   items:
-    - name: 采用条件访问
-      href: howto-conditional-access-adoption-kit.md
     - name: 常用条件访问策略
       href: concept-conditional-access-policy-common.md
+    - name: 条件访问策略组件
+      href: concept-conditional-access-policies.md
     - name: 条件
       href: conditions.md
     - name: 位置条件

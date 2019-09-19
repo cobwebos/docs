@@ -100,6 +100,8 @@
       href: acs-aks-migration.md
     - name: 受支持的 Kubernetes 版本
       href: supported-kubernetes-versions.md
+    - name: 主机 OS 中的安全强化
+      href: security-hardened-vm-host-image.md
 - name: 操作指南
   items:
     - name: 群集操作
@@ -116,7 +118,7 @@
         - name: 删除 AKS 群集
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: 使用 AKS 群集创建 ACR（预览版）
+        - name: 创建具有 AKS 群集的 ACR
           href: cluster-container-registry-integration.md
         - name: 创建虚拟节点
           items:

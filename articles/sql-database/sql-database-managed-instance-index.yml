@@ -44,6 +44,9 @@ sections:
           - title: VNet 集成
             href: /azure/sql-database/sql-database-managed-instance-connectivity-architecture
             html: <p>使用专用 IP 地址将安全服务放置在专用 Azure VNet 中。</p>
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: <p>一个经济高效的解决方案，用于部署多个可以共享资源的托管实例。</p>
+            title: 实例池
           - title: 轻松迁移
             href: /azure/sql-database/sql-database-managed-instance-get-started-restore
             html: <p>使用本机还原可以轻松地将本地数据库迁移到 Azure 云。</p>
@@ -59,9 +62,6 @@ sections:
           - title: 服务层
             href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
             html: <p>根据业务需求，在“常规用途”和“业务关键”服务层级之间做出选择。</p>
-          - title: 高级安全
-            href: /azure/sql-database/sql-database-security-index
-            html: <p>使用内置的 Azure SQL 数据库安全功能保护实例和数据库。<p>
   - title: 5 分钟快速入门
     items:
       - type: paragraph
@@ -93,6 +93,12 @@ sections:
               - href: null
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/set-azsqlinstance#examples'
+              - href: null
+          - title: 创建新实例池
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
               - href: null
           - title: 配置 Azure 网络环境
             values:

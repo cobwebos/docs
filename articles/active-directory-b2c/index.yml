@@ -12,12 +12,12 @@ metadata:
   author: mmacy
   ms.author: marsma
   ms.date: 08/29/2019
-  ms.openlocfilehash: 445e3bf68b3ce75ca2d9e51dc6f69c638f2f6b44
-  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.openlocfilehash: ea07432d4637b06ae69fc12ff30122a9ae3d2098
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/27/2019
-  ms.locfileid: "70061355"
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71075745"
 landingContent:
 - title: 了解基础知识
   linkLists:
@@ -33,10 +33,10 @@ landingContent:
       url: tutorial-register-applications.md
     - text: 设置用户流
       url: tutorial-create-user-flows.md
-  - linkListType: learn
+  - linkListType: video
     links:
-    - text: 视频：使用 Azure AD B2C 进行客户标识管理
-      url: https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C
+    - text: 什么是 Azure AD B2C？ (9:35)
+      url: https://www.youtube.com/watch?v=GmBKlXED9Ug
 - title: 将标识添加到 ASP.NET 应用
   linkLists:
   - linkListType: quickstart
@@ -105,6 +105,10 @@ landingContent:
       url: customize-ui-overview.md
     - text: 允许使用 Facebook 帐户登录
       url: active-directory-b2c-setup-fb-app.md
+  - linkListType: video
+    links:
+    - text: 如何配置基本策略 (9:41)
+      url: https://www.youtube.com/watch?v=nWJ3m82536A
 - title: 构建高级标识方案
   linkLists:
   - linkListType: concept
@@ -121,3 +125,7 @@ landingContent:
       url: active-directory-b2c-setup-commonaad-custom.md
     - text: 使用 REST API 添加自己的业务逻辑
       url: active-directory-b2c-rest-api-validation-custom.md
+  - linkListType: video
+    links:
+    - text: Azure AD B2C 的高级用例 (4:54)
+      url: https://www.youtube.com/watch?v=-ZmPBuMZY-Y

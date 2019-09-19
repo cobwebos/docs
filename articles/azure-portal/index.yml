@@ -1,45 +1,77 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 门户文档
+summary: Azure 门户是一种基于 Web 的统一控制台，它提供了命令行工具的替代方法。 可以通过 Azure 门户管理 Azure 订阅。 生成、管理和监视一切内容，从简单的 Web 应用到复杂的云部署。 为资源的组织视图创建自定义仪表板，并配置辅助功能选项以获得最佳体验。
 metadata:
-  description: 了解如何使用 Azure 门户并创建自定义仪表板。
-  services: azure portal
-  documentationcenter: ''
-  author: kfollis
-  manager: mtillman
-  editor: ''
-  ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
+  title: Azure 门户文档
+  description: 了解如何使用基于 Web 的 Azure 门户控制台管理 Azure 订阅和资源。
+  services: Azure portal
   ms.service: azure-portal
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.tgt_pltfrm: na
-  ms.workload: na
-  ms.date: 10/08/2018
+  ms.collection: collection
+  author: kfollis
   ms.author: kfollis
-abstract:
-  description: Azure 门户是一个基于 Web 的统一控制台，用于生成、管理和监视从简单 Web 应用到复杂云应用程序的一切内容。 它包括可自定义仪表板和可访问性选项。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/azure-preview-portal-supported-browsers-devices
-            html: <p>在所有最新的台式机、平板设备和浏览器上运行 Azure 门户。</p>
-            title: 支持的浏览器和设备
-          - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
-            html: <p>在 Azure 门户中更改对比度或颜色主题。</p>
-            title: 启用高对比度
-          - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
-            html: <p>了解整个 Azure 门户中使用的键盘快捷方式。</p>
-            title: 键盘快捷方式
-          - href: /azure/azure-portal/azure-portal-dashboards
-            html: <p>创建多个仪表板，并与对 Azure 订阅有访问权限的其他用户共享。</p>
-            title: 创建并共享 Azure 仪表板
-          - href: /azure/azure-portal/azure-portal-dashboard-share-access
-            html: <p>发布仪表板并与组织中的其他用户进行共享。</p>
-            title: 通过使用 RBAC 共享仪表板
-          - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
-            html: <p>以编程方式为组织创建和发布仪表板</p>
-            title: 以编程方式创建 Azure 仪表板
+  ms.date: 09/17/2019
+  ms.openlocfilehash: 7fdd6f95ee2f84abc151f5c6e6e7929df2bc57a1
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71076658"
+landingContent:
+- title: 关于 Azure 门户
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 门户？
+      url: azure-portal-overview.md
+    - text: 支持的浏览器和设备
+      url: azure-portal-supported-browsers-devices.md
+- title: 自定义 Azure 门户
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建并共享自定义仪表板
+      url: azure-portal-dashboards.md
+    - text: 管理收藏夹
+      url: azure-portal-add-remove-sort-favorites.md
+- title: 管理对 Azure 门户的访问
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 将 Azure 门户 URL 加入安全列表
+      url: azure-portal-safelist-urls.md
+    - text: 仪表板的基于角色的访问控制
+      url: azure-portal-dashboard-share-access.md
+  - linkListType: learn
+    links:
+    - text: 管理 Azure 中的资源
+      url: /learn/paths/manage-resources-in-azure/
+    - text: 使用基于角色的访问控制 (RBAC) 保护 Azure 资源
+      url: /learn//modules/secure-azure-resources-with-rbac/
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 通过 Azure 快速入门中心上手使用
+      url: azure-portal-quickstart-center.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure 门户“操作说明”视频系列
+      url: azure-portal-video-series.md
+  - linkListType: learn
+    links:
+    - text: Azure 基础
+      url: /learn/paths/azure-fundamentals/
+    - text: 云概念 - 云计算原则
+      url: /learn/modules/principles-cloud-computing/
+- title: 使用辅助功能选项
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 键盘快捷方式
+      url: azure-portal-keyboard-shortcuts.md
+  - linkListType: how-to-guide
+    links:
+    - text: 启用高对比度
+      url: azure-portal-change-theme-high-contrast.md

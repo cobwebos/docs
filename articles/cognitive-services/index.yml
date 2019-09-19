@@ -10,13 +10,13 @@ metadata:
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 09/12/2019
-  ms.openlocfilehash: 2bb26de076096ff47d38ddb12b1bc17f4aeafb34
-  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.date: 09/16/2019
+  ms.openlocfilehash: f762586bf04ceab8cd0c81880a86df7d43507038
+  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/13/2019
-  ms.locfileid: "70965463"
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71087559"
 highlightedContent:
   items:
   - title: 什么是认知服务？
@@ -53,7 +53,7 @@ conceptualContent:
       text: 人脸
     - url: ./form-recognizer/index.yml
       itemType: overview
-      text: 表单识别（预览版）
+      text: 表单识别器（预览版）
     - url: ./ink-recognizer/index.yml
       itemType: overview
       text: 墨迹识别器（预览版）
@@ -93,7 +93,7 @@ conceptualContent:
     - url: ./translator-speech/overview.md
       itemType: overview
       text: 语音翻译（即将停用）
-  - title: 决策服务
+  - title: 决策
     summary: 构建应用，用于呈现有助于做出明智和高效决策的建议。
     links:
     - url: ./anomaly-detector/index.yml
@@ -138,12 +138,12 @@ conceptualContent:
     - url: ./bing-web-search/index.yml
       itemType: overview
       text: Web 搜索
-  - title: 容器
+  - title: 认知服务容器
     summary: Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可用的 API 一样丰富的 API，并能够灵活地选择在何处部署和托管随 Docker 容器提供的服务。
     links:
     - url: ./cognitive-services-container-support.md
       itemType: overview
-      text: 认知服务的容器
+      text: 认知服务容器
     - url: ./containers/container-reuse-recipe.md
       itemType: overview
       text: 创建要重复使用的容器

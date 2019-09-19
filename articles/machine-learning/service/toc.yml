@@ -31,7 +31,7 @@
             - name: 自动训练 ML 模型
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
-        - name: 使用管道进行批量评分（高级）
+        - name: 机器学习管道（高级）
           items:
             - name: 对分类模型进行批量评分
               displayName: pipelines

@@ -1,64 +1,87 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: “Azure 上的 Ansible”文档
+summary: 了解如何使用 Ansible 自动执行云预配、配置管理和应用程序部署。
 metadata:
-  title: “Azure 上的 Ansible”文档 - 教程、示例、参考和资源
+  title: “Azure 上的 Ansible”文档
   description: 了解如何使用 Ansible 自动执行云预配、配置管理和应用程序部署。
-  ms.service: azure
-  keywords: 'ansible, azure, devops, 教程, 示例, 参考'
-  author: tomarchermsft
-  manager: jeconnoc
-  ms.author: tarcher
+  services: azure
+  ms.service: ansible
   ms.topic: landing-page
-  ms.date: 04/22/2019
-abstract:
-  description: '使用 <a href="https://www.ansible.com">Ansible</a> 自动执行云预配、配置管理和应用程序部署。'
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 安装 Ansible 并将其用于在 Azure 中创建和管理 Linux 虚拟机。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/media/index/azure_dev-9.svg
-            text: 安装 Ansible
-            href: /azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-          - image:
-              src: /azure/media/index/VirtualMachine.svg
-            text: 配置 Linux VM
-            href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-          - image:
-              src: /azure/media/index/VirtualMachine.svg
-            text: 管理 Linux VM
-            href: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用 Ansible 创建并管理 Azure 计算、网络和存储基础结构。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">创建 Linux 虚拟机，包括虚拟网络、公共 IP 地址和虚拟网络接口卡。</a>
-          - html: <a href="./ansible-run-playbook-in-cloudshell">使用 Azure Cloud Shell 中的 Bash 运行 Ansible。</a>
-          - html: <a href="./ansible-manage-azure-dynamic-inventories">创建和管理 Azure 资源的动态库存。</a>
-          - html: <a href="./ansible-create-configure-vmss">在 Azure 中创建和管理虚拟机规模集。</a>
-          - html: <a href="./ansible-deploy-app-vmss">将应用程序部署到 Azure 中的虚拟机规模集。</a>
-          - html: <a href="./ansible-create-configure-aks">创建和管理 Azure Kubernetes 服务群集。</a>
-          - html: <a href="./ansible-create-configure-application-gateway">使用 Azure 应用程序网关管理 Web 流量。</a>
-          - html: <a href="./ansible-auto-scale-vmss">使用 Ansible 在 Azure 中自动缩放虚拟机规模集。</a>
-          - html: <a href="./ansible-scale-azure-web-apps">使用 Ansible 缩放 Azure 应用服务 Web 应用。</a>
-          - html: <a href="./ansible-create-configure-route-table">使用 Ansible 创建、更改或删除 Azure 路由表。</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Playbook 角色
-            html: '<p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>'
-          - title: 发行版和功能
-            html: <p><a href="./ansible-matrix.md">模块和角色的功能对照表</a></p>
-          - title: 工具
-            html: '<p><a href="https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible">适用于 Ansible 的 Visual Studio Code 扩展</a></p>'
+  author: TomArcherMsft
+  ms.author: tarcher
+  ms.date: 09/11/2019
+  ms.openlocfilehash: 8a33d1b9661ef84294a35c51ecd42a59dde68f23
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71075061"
+landingContent:
+- title: 关于 Azure 上的 Ansible
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于 Azure 上的 Ansible
+      url: ansible-overview.md
+  - linkListType: architecture
+    links:
+    - text: Ansible 模块和版本矩阵
+      url: ansible-matrix.md
+- title: 安装并配置 Ansible
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 将 Ansible 解决方案模板部署到 CentOS
+      url: ansible-deploy-solution-template.md
+    - text: 在 Linux 虚拟机上安装 Ansible
+      url: /azure/virtual-machines/linux/ansible-install-configure
+    - text: 在 Cloud Shell 中运行 Playbook
+      url: ansible-run-playbook-in-cloudshell.md
+  - linkListType: tutorial
+    links:
+    - text: 配置动态库存
+      url: ansible-manage-azure-dynamic-inventories.md
+  - linkListType: download
+    links:
+    - text: 适用于 Ansible 的 Visual Studio Code 扩展
+      url: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
+- title: 管理虚拟机
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 配置 Linux 虚拟机
+      url: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+    - text: 管理 Linux 虚拟机
+      url: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+- title: 管理虚拟机规模集
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 配置虚拟机规模集
+      url: ansible-create-configure-vmss.md
+    - text: 将应用程序部署到虚拟机规模集
+      url: ansible-deploy-app-vmss.md
+    - text: 自动缩放虚拟机规模集
+      url: ansible-auto-scale-vmss.md
+    - text: 更新自定义映像
+      url: ansible-vmss-update-image.md
+- title: 管理虚拟网络
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 配置对等互连
+      url: ansible-vnet-peering-configure.md
+    - text: 配置路由表
+      url: ansible-create-configure-route-table.md
+- title: 管理 AKS
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 配置 AKS 群集
+      url: ansible-create-configure-aks.md
+    - text: 配置 Azure CNI 网络
+      url: ansible-aks-configure-cni-networking.md
+    - text: 配置 kubenet 网络
+      url: ansible-aks-configure-kubenet-networking.md
+    - text: 在 AKS 群集中配置 RBAC 角色
+      url: ansible-aks-configure-rbac.md

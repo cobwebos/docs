@@ -51,9 +51,11 @@
           href: data-box-edge-contact-microsoft-support.md
     - name: 发行说明
       items:
-        - name: 1905 - 最新版
+        - name: 1906 - 最新
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
           href: data-box-gateway-1905-release-notes.md
-        - name: 正式版
+        - name: 正式发布版 (GA)
           href: data-box-gateway-release-notes.md
 - name: Data Box Edge
   items:
@@ -115,9 +117,11 @@
           href: data-box-edge-return-device.md
     - name: 发行说明
       items:
-        - name: 1905 - 最新版
+        - name: 1906 - 最新
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
           href: data-box-gateway-1905-release-notes.md
-        - name: 正式版
+        - name: 正式发布版 (GA)
           href: data-box-gateway-release-notes.md
 - name: 资源
   items:

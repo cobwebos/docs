@@ -225,3 +225,5 @@
       href: 'https://docs.microsoft.com/search/index?search=QnAMaker'
     - name: 博客
       href: 'https://blog.botframework.com/category/QnAMaker/'
+- name: QnA Maker 门户
+  href: 'https://www.qnamaker.ai'
