@@ -58,7 +58,7 @@ ms.locfileid: "67203036"
 
 | 属性 | 必选 | Type | 描述 |
 | --- | --- | --- | --- |
-| sourceType | 是 |   | 运行的源的类型。 允许的值为“Microsoft.Logic/workflows”  和“自定义”  。 |
+| sourceType | 是 |   | 运行的源的类型。 允许的值为“Microsoft.Logic/workflows”  和“custom”  。 |
 | source | 是 |   | 如果源类型为 **Microsoft.Logic/workflows**，则源信息必须遵循此架构。 如果源类型为“自定义”  ；架构为 JToken。 |
 | systemId | 是 | String | 逻辑应用系统 ID。 |
 | runId | 是 | String | 逻辑应用运行 ID。 |
