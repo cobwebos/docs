@@ -4,7 +4,7 @@ description: 排查 Azure 应用服务中的域和 SSL 证书问题
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.service: app-service-web
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 097d4ea45827223a5d3e64a2d1ca326569db9958
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: a6c3b8485a3243d7c89ab409a2fb83b1b045c9ba
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113539"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121982"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
@@ -190,7 +190,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 应用服务证书已续订，但使用应用服务证书的应用仍在使用旧证书。 此外，出现需要 HTTPS 协议的警告。
 
 #### <a name="cause"></a>原因 
-应用服务会在48小时内自动同步证书。 在轮换或更新证书时，应用程序有时仍会检索旧证书，而不是最近更新的证书。 原因是同步证书资源的作业尚未运行。 单击 "同步"。同步操作会自动更新应用服务中证书的主机名绑定, 而不会导致应用程序停机。
+应用服务会在48小时内自动同步证书。 在轮换或更新证书时，应用程序有时仍会检索旧证书，而不是最近更新的证书。 原因是同步证书资源的作业尚未运行。 单击 "同步"。同步操作会自动更新应用服务中证书的主机名绑定，而不会导致应用程序停机。
  
 #### <a name="solution"></a>解决方案
 
@@ -276,7 +276,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 **购买网站的自定义域后是否必须配置该域？**
 
-通过 Azure 门户购买某个域时，应用服务应用程序会自动配置为使用该自定义域。 你不需要执行任何额外的步骤。 有关详细信息, 请[观看 Azure App Service 自助:](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)在 Channel9 上添加自定义域名。
+通过 Azure 门户购买某个域时，应用服务应用程序会自动配置为使用该自定义域。 你不需要执行任何额外的步骤。 有关详细信息，请[观看 Azure App Service 自助：](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)在 Channel9 上添加自定义域名。
 
 **是否可以使用在 Azure 门户中购买的域来指向 Azure VM？**
 
@@ -312,7 +312,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 **是否可以在订阅中的另一个 Azure 应用服务应用中使用域？**
 
-是的。 在 Azure 门户中访问“自定义域和 SSL”边栏选项卡时，会看到购买的域。 可将应用配置为使用其中的任何域。
+是。 在 Azure 门户中访问“自定义域和 SSL”边栏选项卡时，会看到购买的域。 可将应用配置为使用其中的任何域。
 
 **是否可将域从一个订阅转移到另一个订阅？**
 

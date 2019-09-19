@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 7c018ad15ee653bcdc903492028ec5ed058dbd14
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 4c01cd36d489d8e7128bed645c8cb1127c6c0c25
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992237"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130405"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>将大数据分析解决方案从 Azure Data Lake Storage Gen1 升级到 Azure Data Lake Storage Gen2
 
@@ -45,7 +45,7 @@ ms.locfileid: "69992237"
 
 图 2 显示了如何使用特定技术实现这些组件的示例。
 
-图 1 中的存储功能由 Data Lake Storage Gen1（图 2）提供。 请注意数据流中的各种组件使用 REST API 或 Java SDK 与 Data Lake Storage Gen1 交互的方式。 另请注意跨领域功能组件和 Data Lake Storage Gen1 交互的方式。 预配组件使用 Azure 资源模板, 而使用 Azure Monitor 日志的监视组件利用来自 Data Lake Storage Gen1 的操作数据。
+图 1 中的存储功能由 Data Lake Storage Gen1（图 2）提供。 请注意数据流中的各种组件使用 REST API 或 Java SDK 与 Data Lake Storage Gen1 交互的方式。 另请注意跨领域功能组件和 Data Lake Storage Gen1 交互的方式。 预配组件使用 Azure 资源模板，而使用 Azure Monitor 日志的监视组件利用来自 Data Lake Storage Gen1 的操作数据。
 
 要将解决方案升级从使用 Data Lake Storage Gen1 升级到Data Lake Storage Gen2，需要复制数据和元数据，重新挂钩数据流，然后，所有组件都需要能够配合 Data Lake Storage Gen2 使用。
 
@@ -82,7 +82,7 @@ ms.locfileid: "69992237"
 | |并行分析工作负荷的优化性能。 高吞吐量和 IOPS。 | 并行分析工作负荷的优化性能。 高吞吐量和 IOPS。 | 现已提供 |
 | 虚拟网络 (VNet) 支持  | [使用虚拟网络集成](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-network-security)  | [使用 Azure 存储的服务终结点](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) | 现已提供 |
 | 大小限制 | 无帐户大小、文件大小或文件数量限制 | 帐户大小或文件数量没有限制。 文件大小限制为 5 TB。 | 现已提供|
-| 异地冗余| 本地冗余 (LRS) | 本地冗余 (LRS) 区域冗余 (ZRS) 地域冗余 (GRS) 读取访问地域冗余 (RA-GRS) 请参阅[此处](https://docs.microsoft.com/azure/storage/common/storage-redundancy), 了解详细信息| 现已提供 |
+| 异地冗余| 本地冗余 (LRS) | 本地冗余（LRS）区域冗余（ZRS）地域冗余（GRS）读取访问地域冗余（RA-GRS）请参阅[此处](https://docs.microsoft.com/azure/storage/common/storage-redundancy)，了解详细信息| 现已提供 |
 | 适用区域 | 参见[此处](https://azure.microsoft.com/regions/) | 所有 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)                                                                                                                                                                                                                                                                                                                                       | 现已提供                                                                                                                           |
 | 价格                                       | 参阅[定价](https://azure.microsoft.com/pricing/details/data-lake-store/)                                                                            | 参阅[定价](https://azure.microsoft.com/pricing/details/storage/data-lake/)                                                                                                                                                                                                                                                                                                                                         |                                                                                                                                           |
 | 可用性 SLA                            | [请参阅 SLA](https://azure.microsoft.com/support/legal/sla/data-lake-store/v1_0/)                                                                   | [请参阅 SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_3/)                                                                                                                                                                                                                                                                                                                                                | 现已提供                                                                                                                           |
@@ -90,9 +90,9 @@ ms.locfileid: "69992237"
 
 ### <a name="programming-interfaces"></a>编程接口
 
-此表介绍可用于自定义应用程序的 API 集。 为了使某些内容更清晰, 我们已将这些 API 集分为2种类型: 管理 Api 和文件系统 Api。
+此表介绍可用于自定义应用程序的 API 集。 为了使某些内容更清晰，我们已将这些 API 集分为2种类型：管理 Api 和文件系统 Api。
 
-管理 Api 可帮助你管理帐户, 而文件系统 Api 可帮助你对文件和文件夹进行操作。
+管理 Api 可帮助你管理帐户，而文件系统 Api 可帮助你对文件和文件夹进行操作。
 
 |  API 集                           |  Data Lake Storage Gen1                                                                                                                                                                                                                                                                                                   | Data Lake Storage Gen2 可用性 - 共享密钥验证 | Data Lake Storage Gen2 可用性 - OAuth 验证                                                                                                  |
 |----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -235,7 +235,7 @@ Data Lake Storage Gen1 将特定消息和数据推送到其他服务，有助于
 
 * 如果使用的工具无法复制 ACL 或者你不想复制 ACL，需要在适当的顶级手动设置目标上的 ACL。 可以使用存储资源管理器来执行此操作。 确保这些 ACL 是默认 ACL，以便复制的文件和文件夹继承它们。
 
-* 在 Data Lake Storage Gen1 中，可以设置的 ACL 的最高级别位于帐户的根目录。 但是, 在 Data Lake Storage Gen2 中, 可设置 Acl 的最高级别为容器中的根文件夹, 而不是整个帐户。 因此，如果要在帐户级别设置默认 ACL，则需要在 Data Lake Storage Gen2 帐户中的所有文件系统中复制这些 ACL。
+* 在 Data Lake Storage Gen1 中，可以设置的 ACL 的最高级别位于帐户的根目录。 但是，在 Data Lake Storage Gen2 中，可设置 Acl 的最高级别为容器中的根文件夹，而不是整个帐户。 因此，如果要在帐户级别设置默认 ACL，则需要在 Data Lake Storage Gen2 帐户中的所有文件系统中复制这些 ACL。
 
 * 两个存储系统之间的文件命名限制是不同的。 从 Data Lake Storage Gen2 复制到 Data Lake Storage Gen1 时，尤其应注意这些差异，因为后者具有更多约束限制。
 
@@ -249,7 +249,7 @@ Data Lake Storage Gen1 将特定消息和数据推送到其他服务，有助于
 
 Data Lake Storage Gen1 的 URI 方案在[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store)进行了详细介绍，但从广义上讲，它是 adl：//mydatalakestore.azuredatalakestore.net/ \<file_path\>。
 
-[此处](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)详细说明了用于访问 Data Lake Storage Gen2 文件的 URI 方案, 但却广泛地说明了`abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>`这一点。
+[此处](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)详细说明了用于访问 Data Lake Storage Gen2 文件的 URI 方案，但却广泛地说明了`abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`这一点。
 
 需要浏览现有的应用程序，并确保已适当地更改 URI，使其指向 Data Lake Storage Gen2。 此外，还需要添加适当的凭据。 最后，如何停用原始应用程序并替换为新的应用程序需要与整体升级策略密切保持一致。
 
@@ -327,7 +327,7 @@ Data Lake Storage Gen1 的 URI 方案在[此处](https://docs.microsoft.com/azur
 
 ### <a name="post-upgrade"></a>升级后
 
-转移操作完成后，最后的步骤将涉及到全面验证。 这包括但不限于验证数据已通过可靠方式复制, 验证 Acl 是否已正确设置, 验证端到端管道是否正常运行等。完成验证后，现在可以关闭旧的管道，删除源 Data Lake Storage Gen1 帐户并全速运用基于 Data Lake Storage Gen2 的解决方案。
+转移操作完成后，最后的步骤将涉及到全面验证。 这包括但不限于验证数据已通过可靠方式复制，验证 Acl 是否已正确设置，验证端到端管道是否正常运行等。完成验证后，现在可以关闭旧的管道，删除源 Data Lake Storage Gen1 帐户并全速运用基于 Data Lake Storage Gen2 的解决方案。
 
 ## <a name="conclusion"></a>结束语
 

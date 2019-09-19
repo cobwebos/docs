@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: f560887a48ce4754b26a54ef0e18093c5577af34
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996527"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128802"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>什么是用于 Azure 机器学习的视觉对象接口？ 
 
@@ -95,8 +95,8 @@ Web 服务在应用程序和评分模型之间提供了一个接口。 外部应
 
 * 通过[教程了解有关预测分析和机器学习的基本知识：使用可视界面预测汽车价格](ui-tutorial-automobile-price-train-score.md)
 * 使用其中一个示例并进行修改以满足你的需求：
-    * [示例 1-回归：预测价格](ui-sample-regression-predict-automobile-price-basic.md)
-    * [示例 2-回归：预测价格和比较算法](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-    * [示例 3-分类：预测信用风险](ui-sample-classification-predict-credit-risk-basic.md)
-    * [示例 4-分类：预测信用风险（区分成本）](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-    * [示例 5-分类：预测变动率、亲和力和向上销售](ui-sample-classification-predict-churn.md)
+    * [示例 1-回归：预测价格](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+    * [示例 2-回归：预测价格和比较算法](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+    * [示例 3-分类：预测信用风险](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+    * [示例 4-分类：预测信用风险（区分成本）](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+    * [示例 5-分类：预测变动率、亲和力和向上销售](how-to-ui-sample-classification-predict-churn.md)

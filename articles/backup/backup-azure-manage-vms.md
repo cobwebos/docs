@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0e8dacb97b6ccfb57573fc21c3a4df3694cc7ec8
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 9e7d6a027a60590396446479aecf1644ef753ecf
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098401"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130172"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>通过 Azure 备份服务管理 Azure VM 备份
 
@@ -164,6 +164,13 @@ ms.locfileid: "71098401"
 
   > [!NOTE]
   > 删除备份数据时，将删除所有关联的恢复点。 无法选择要删除的特定恢复点。
+
+### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>主数据源不再存在的备份项
+
+- 如果在不停止保护的情况下删除或移动了为 Azure 备份配置的 Azure Vm，则计划的备份作业和按需（即席）备份作业都将失败，并出现错误 UserErrorVmNotFoundV2。 对于失败的即席备份作业（未显示失败的计划作业），备份预检查将显示为 "严重"。 
+- 这些备份项目在系统中保持活动状态，这与用户设置的备份和保留策略有关。 这些 Azure Vm 的备份数据将根据保留策略进行保留。 过期的恢复点（最后一个恢复点除外）根据备份策略中设置的保持期进行清理。
+- 建议用户删除主数据源不再存在的备份项，以避免任何额外成本，如果不再需要删除资源的备份项/数据，因为最后一个恢复点将被永久保留，并且用户收费为根据适用的备份定价。
+
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[通过 VM 的设置备份 Azure VM](backup-azure-vms-first-look-arm.md)。

@@ -12,19 +12,19 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: b86f08fbcb661ae4266658016de7aa92da785bf9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070599"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129709"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
 
-当你将 web 应用、Linux 上的 web 应用、移动后端或 API 应用部署到[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)时, 你可以使用单独的部署槽而不是默认生产槽 (当你在**标准**版、**高级版**或隔离版下运行时)应用服务计划层。 部署槽是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 
+当你将 web 应用、Linux 上的 web 应用、移动后端或 API 应用部署到[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)时，你可以使用单独的部署槽而不是默认生产槽（当你在**标准**版、**高级版**或隔离版下运行时）应用服务计划层。 部署槽是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 
 
 将应用程序部署到非生产槽具有以下优点：
 
@@ -48,7 +48,7 @@ ms.locfileid: "70070599"
     ![添加新的部署插槽](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > 如果应用尚未处于 "**标准**"、"**高级**" 或 "**独立**" 层中, 你将收到一条消息, 指示用于启用过渡发布的支持层。 此时，可选择“升级”，转到应用的“缩放”选项卡，然后继续。
+   > 如果应用尚未处于 "**标准**"、"**高级**" 或 "**独立**" 层中，你将收到一条消息，指示用于启用过渡发布的支持层。 此时，可选择“升级”，转到应用的“缩放”选项卡，然后继续。
    > 
 
 3. 在“添加槽”对话框中，为槽提供一个名称，并选择是否要从其他部署槽中克隆应用配置。 选择“添加”以继续。
@@ -67,7 +67,7 @@ ms.locfileid: "70070599"
 
 6. 选择此槽资源页中的应用 URL。 部署槽有其自己的主机名，同时也是动态应用。 若要限制对部署槽的公共访问权限，请参阅 [Azure 应用服务 IP 限制](app-service-ip-restrictions.md)。
 
-即使从其他槽克隆设置，新部署槽位也无内容。 例如, 可以[通过 Git 发布到此槽](app-service-deploy-local-git.md)。 可以从其他存储库分支或不同的存储库部署到槽。 
+即使从其他槽克隆设置，新部署槽位也无内容。 例如，可以[使用 Git 发布到此槽](app-service-deploy-local-git.md)。 可以从其他存储库分支或不同的存储库部署到槽。 
 
 <a name="AboutConfiguration"></a>
 
@@ -220,6 +220,9 @@ ms.locfileid: "70070599"
 - `WEBSITE_SWAP_WARMUP_PING_PATH`：用于对你的站点进行预热的 ping 路径。 通过指定以斜杠开头的自定义路径作为值来添加此应用设置。 例如 `/statuscheck`。 默认值为 `/`。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`：预热操作的有效 HTTP 响应代码。 使用以逗号分隔的 HTTP 代码列表添加此应用设置。 例如 `200,202`。 如果返回的状态代码不在列表中，则预热和交换操作会停止。 默认情况下，所有响应代码都是有效的。
 
+> [!NOTE]
+> `<applicationInitialization>`是每个应用程序启动的一部分，在这种情况下，这两个应用设置仅适用于槽交换。
+
 如果遇到任何问题，请参阅[排查交换问题](#troubleshoot-swaps)。
 
 ## <a name="monitor-a-swap"></a>监视交换
@@ -240,7 +243,7 @@ ms.locfileid: "70070599"
 
 1. 转到应用的资源页，然后选择“部署槽”。
 
-2. 在要路由到的槽的“流量 %”列中，指定一个百分比（介于 0 到 100 之间）以表示要路由的总流量。 选择**保存**。
+2. 在要路由到的槽的“流量 %”列中，指定一个百分比（介于 0 到 100 之间）以表示要路由的总流量。 选择“保存”。
 
     ![设置流量百分比](./media/web-sites-staged-publishing/RouteTraffic.png)
 
@@ -368,6 +371,8 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
     </conditions>
     ```
 - 某些 [IP 限制规则](app-service-ip-restrictions.md)可能会阻止交换操作将 HTTP 请求发送到应用。 以 `10.` 和 `100.` 开头的 IPv4 地址范围是部署内部的地址。 应允许这些地址连接到你的应用。
+
+- 槽交换后，应用可能会遇到意外的重新启动。 这是因为，在交换之后，主机名绑定配置会不同步，而不会导致重新启动。 但是，某些基础存储事件（例如存储卷故障转移）可以检测到这些差异并强制重新启动所有工作进程。 若要最大程度地减少这种重新启动类型，请在*所有槽*上设置[ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`应用设置](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)。 但是，此应用*设置不适用于*WINDOWS COMMUNICATION FOUNDATION （WCF）应用。
 
 ## <a name="next-steps"></a>后续步骤
 [阻止对非生产槽进行访问](app-service-ip-restrictions.md)

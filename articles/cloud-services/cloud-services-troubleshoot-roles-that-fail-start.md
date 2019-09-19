@@ -4,7 +4,7 @@ description: 以下是云服务角色无法启动的一些常见原因。 此外
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 9e1ae9ca6106a6a55e0cfc933ad47a5944ed5abb
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945398"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122736"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
 以下是一些与无法启动的 Azure 云服务角色相关的常见问题和解决方案。
@@ -74,8 +74,8 @@ DLL 或程序集缺失的症状可能为：
 现在，导航到网站将返回更明确的错误消息：
 
 * '/' 应用程序中出现服务器错误。
-* 描述:执行当前 web 请求期间发生未处理的异常。 请检查堆栈跟踪信息，以了解有关该错误以及代码中导致错误的出处的详细信息。
-* 异常详细信息：System.IO.FIleNotFoundException:无法加载文件或程序集 "Windowsazure.storage. StorageClient, Version = 1.1.0.0, Culture = 中立, PublicKeyToken = 31bf856ad364e35" 或其依赖项之一。 系统找不到指定文件。
+* 说明:执行当前 web 请求期间发生未处理的异常。 请检查堆栈跟踪信息，以了解有关该错误以及代码中导致错误的出处的详细信息。
+* 异常详细信息：System.IO.FIleNotFoundException:无法加载文件或程序集 "Windowsazure.storage. StorageClient，Version = 1.1.0.0，Culture = 中立，PublicKeyToken = 31bf856ad364e35" 或其依赖项之一。 系统找不到指定的文件。
 
 例如：
 

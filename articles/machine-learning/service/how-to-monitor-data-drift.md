@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 09/13/2019
-ms.openlocfilehash: 59cce0b56a4e54208a454c9f71d9a4c8576b0a8b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3b3fbce40c93389037435a7cdb1271e773163de3
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034360"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123271"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service （AKS）的模型上检测数据偏差（预览）
 
@@ -23,7 +23,7 @@ ms.locfileid: "71034360"
 
 ## <a name="what-is-data-drift"></a>什么是数据偏移？
 
-当向生产中的模型提供的数据不同于用于定型模型的数据时，会发生数据偏移。 这是模型准确性在一段时间内的最常见原因之一，因此，监视数据偏移可帮助检测模型性能问题。 
+在机器学习的上下文中，数据偏移是模型输入数据中的更改，导致模型性能下降。 这是模型准确性在一段时间内的最常见原因之一，因此，监视数据偏移可帮助检测模型性能问题。 
 
 ## <a name="what-can-i-monitor"></a>可以监视哪些内容？
 

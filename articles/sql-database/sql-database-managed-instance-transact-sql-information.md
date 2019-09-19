@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 388e676fbabf427801688cbfb47a1455444fd02e
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: dc01f8556fb1c88899cae1a8767cb23d6b6041eb
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018994"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128870"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例 T-sql 差异、限制和已知问题
 
@@ -543,6 +543,14 @@ WITH PRIVATE KEY (<private_key_options>)
 托管实例将详细信息放在错误日志中。 错误日志中记录了很多内部系统事件。 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息，请参阅[托管实例 – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)。
 
 ## <a name="Issues"></a>已知问题
+
+### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongioing-database-restore"></a>Ongioing 数据库还原操作阻止更改服务层和 create instance 操作
+
+**日期：** 09月2019
+
+正在`RESTORE`进行的语句、数据迁移服务迁移过程和内置时间点还原将阻止更新服务层或调整现有实例的大小，并创建新实例，直到还原过程完成。 还原过程将在运行还原过程的同一子网中阻止这些操作。 实例池中的实例不受影响。 创建或更改服务层操作不会失败或超时-还原过程完成或取消后，它们将继续。
+
+**解决方法**：等待还原过程完成，如果创建或更新服务层操作的优先级较高，则取消还原过程。
 
 ### <a name="missing-validations-in-restore-process"></a>还原进程中缺少验证
 

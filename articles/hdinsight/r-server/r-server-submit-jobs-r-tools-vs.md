@@ -1,19 +1,19 @@
 ---
 title: 从针对 Visual Studio 的 R 工具提交作业 - Azure HDInsight
 description: 从本地 Visual Studio 计算机将 R 作业提交到 HDInsight 群集。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 1323e46d734d047f68652d0b21902e03182e6b62
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967882"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130256"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>从针对 Visual Studio 的 R 工具提交作业
 
@@ -41,7 +41,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
    2. 转到“R 工具”菜单项，然后选择“数据科学设置...”。
 
-       ![数据科学设置...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Visual Studio 数据科学设置](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
       > 通过使用步骤 1 中的方法，也可以保存和还原个性化的数据科学家布局，而不必重复使用“数据科学设置”命令。
@@ -56,11 +56,11 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 6. 从文件顶部开始，按 Ctrl+Enter 将每一行发送到 R 交互窗口（一次一行）。 某些行可能需要一些时间，因为它们要安装程序包。
     * 或者，也可以选择 R 文件中的所有行 (Ctrl+A)，然后全部执行 (Ctrl+Enter) 或选择工具栏上的“交互执行”图标。
 
-        ![执行交互式](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        ![Visual Studio 执行交互式](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. 在运行完脚本中的所有行以后，应该会看到类似于下面的输出：
 
-    ![工作区](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    ![Visual Studio 工作区 R 工具](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>将作业提交到 HDInsight ML Services 群集
 
@@ -96,7 +96,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![设置 Spark 上下文](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   ![apache spark 设置上下文](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. 在 R 交互窗口中执行以下命令：
 
@@ -113,17 +113,17 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
     1. 从 Azure 的 HDInsight ML Services 群集窗格中，选择左侧菜单中的“存储帐户”。
 
-        ![存储帐户](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        ![Azure HDInsight 存储帐户](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. 选择群集的默认存储帐户，记下容器/目录名称。
 
     3. 从存储帐户窗格的左侧菜单中选择“容器”。
 
-        ![容器](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        ![Azure HDInsight 存储容器](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
     4. 选择群集的容器名称，浏览到 **user** 文件夹（可能需要单击列表底部的“加载更多”），然后依次选择“RevoShare”、“newUser”。 `people.json` 文件应显示在 `newUser` 文件夹中。
 
-        ![复制的文件](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
+        ![HDInsight 复制的文件文件夹位置](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. 用完当前 Apache Spark 上下文后，必须将其停止。 不能同时运行多个上下文。
 
@@ -135,4 +135,3 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
 * [适用于 HDInsight 上的 ML Services 的计算上下文选项](r-server-compute-contexts.md)
 * [将 ScaleR 和 SparkR 合并](../hdinsight-hadoop-r-scaler-sparkr.md)提供了航班延迟预测示例。
-

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: c49d8000888d4094ea1df47920c1927747927f5c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 5339d963b84c5922138d53e44abe9340d55b4dde
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035047"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130233"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
@@ -95,10 +95,10 @@ y_test = X_test.pop("sales_quantity").values
 |`time_column_name`|用于指定输入数据中的日期时间列，这些数据用于生成时序并推断其频率。|✓|
 |`grain_column_names`|定义输入数据中各个序列组的名称。 如果未定义颗粒，则假定数据集为一系列时间。||
 |`max_horizon`|定义以时间序列频率为单位的最大预期预测范围。 单位基于定型数据的时间间隔（例如每月、每周预测应预测）。|✓|
-|`target_lags`|在模型定型之前的前几个延迟目标值。||
+|`target_lags`|要基于数据频率延迟目标值的行数。 这表示为一个列表或单个整数。||
 |`target_rolling_window_size`|*n*用于生成预测值的历史时间段，< = 定型集大小。 如果省略，则*n*为完全定型集的大小。||
 
-将时间序列设置创建为字典对象。 `day_datetime`将设置`time_column_name`为数据集中的字段。 定义参数以确保为数据创建**两个单独的时序组**; 一个用于存储 A 和 B。 `max_horizon`最后，将设置为50以预测整个测试集。 `grain_column_names` 使用`target_rolling_window_size`将一个预测时段设置为10个周期，并使用`target_lags`参数将目标值2个句点提前。
+将时间序列设置创建为字典对象。 `day_datetime`将设置`time_column_name`为数据集中的字段。 定义参数以确保为数据创建**两个单独的时序组**; 一个用于存储 A 和 B。 `max_horizon`最后，将设置为50以预测整个测试集。 `grain_column_names` 将预测时段设置为10个周期`target_rolling_window_size`，并为`target_lags`参数指定两个时间段的目标值的单个 lag。
 
 ```python
 time_series_settings = {
@@ -111,8 +111,14 @@ time_series_settings = {
 }
 ```
 
+
+
 > [!NOTE]
 > 自动机器学习预处理步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，训练期间应用的相同预处理步骤将自动应用于输入数据。
+
+通过`grain_column_names`在上述代码片段中定义，AutoML 将创建两个单独的时序组，也称为多个时间序列。 如果未定义任何颗粒，AutoML 将假定该数据集是单个时间系列。 若要了解有关单个时间系列的详细信息，请参阅[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。
+
+
 
 现在，创建一个`AutoMLConfig`标准对象， `forecasting`指定任务类型，然后提交试验。 模型完成后，检索最佳的运行迭代。
 

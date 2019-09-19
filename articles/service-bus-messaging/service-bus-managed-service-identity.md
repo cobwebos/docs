@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 139ebe02727bab8cc80f6f0c6bbbd2156f025c21
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: a35ad4f8d480b0f95f4dc782aa06734e33bc54f8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70992310"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130313"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 验证托管标识以访问 Azure 服务总线资源
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。
@@ -31,7 +31,7 @@ ms.locfileid: "70992310"
  1. 首先，对安全主体的身份进行身份验证，并返回 OAuth 2.0 令牌。 请求令牌的资源名称为`https://servicebus.azure.net`。
  1. 接下来，令牌作为请求的一部分传递到服务总线服务，以授权访问指定的资源。
 
-身份验证步骤要求应用程序请求在运行时包含 OAuth 2.0 访问令牌。 如果应用程序在 Azure 实体（如 Azure VM、虚拟机规模集或 Azure Function app）内运行，则它可以使用托管标识来访问资源。 若要了解如何对服务总线服务的托管标识发出的请求进行身份验证，请参阅[使用 Azure 资源的 Azure Active Directory 和托管标识对 Azure 服务总线资源的访问权限进行身份验证](service-bus-managed-service-identity.md)。 
+身份验证步骤要求应用程序请求在运行时包含 OAuth 2.0 访问令牌。 如果应用程序在 Azure 实体（如 Azure VM、虚拟机规模集或 Azure Function app）内运行，则它可以使用托管标识来访问资源。 
 
 授权步骤需要将一个或多个 RBAC 角色分配给安全主体。 Azure 服务总线提供了包含服务总线资源的权限集的 RBAC 角色。 分配给安全主体的角色确定了该主体拥有的权限。 若要详细了解如何将 RBAC 角色分配到 Azure 服务总线，请参阅[Azure 服务总线的内置 RBAC 角色](#built-in-rbac-roles-for-azure-service-bus)。 
 
@@ -111,7 +111,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 4.  在 "**添加角色分配**" 页上，选择要分配的 Azure 服务总线角色。 然后搜索以查找已注册的服务标识以分配角色。
     
     !["添加角色分配" 页](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  选择**保存**。 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识具有 Azure 服务总线数据所有者。
+5.  选择“保存”。 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识具有 Azure 服务总线数据所有者。
     
     ![分配给角色的标识](./media/service-bus-managed-service-identity/role-assigned.png)
 

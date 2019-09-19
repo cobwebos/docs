@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: efac8755be8435ae7929fdcb2ecedb4959c363b9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 953699793d81485e3828b9fb46de8523d2b7674e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097145"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130003"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文本分析 API 的语言和区域支持
 
@@ -49,7 +49,7 @@ ms.locfileid: "71097145"
 | 阿拉伯语      | `ar`          |           |             | ✔ \*                     | |
 | 捷克语       | `cs`          |           |             | ✔ \*                     | |
 | 简体中文 | `zh-hans`| ✔ \***     |             | ✔         |    |
-| 中文-繁体 | `zh-hant`| ✔ \***     |             | ✔         |    |
+| 中文-繁体 | `zh-hant`| ✔ \***     |             |          |    |
 | 丹麦语      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | 荷兰语       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
 | 英语     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |

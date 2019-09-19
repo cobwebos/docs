@@ -7,16 +7,16 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/21/2019
+ms.date: 09/19/2019
 ms.author: dapine
-ms.openlocfilehash: 2593f07ac30df77936c56785956b9e906ef683be
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: e3051a72a115e711a99ecd68756967e2cef0cc04
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051916"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130052"
 ---
-## <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>将语言检测容器部署到 AKS 群集
+### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>将语言检测容器部署到 AKS 群集
 
 1. 打开 Azure CLI, 并登录到 Azure。
 
@@ -48,7 +48,7 @@ ms.locfileid: "70051916"
     code .
     ```
 
-1. 在文本编辑器中, 创建名为*yaml*的新文件, 然后将以下 yaml 粘贴到其中。 请确保将和`billing/value` `apikey/value`替换为自己的信息。
+1. 在文本编辑器中，创建名为*yaml*的新文件，然后将以下 yaml 粘贴到其中。 请确保将和`billing/value` `apikey/value`替换为自己的信息。
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -88,7 +88,7 @@ ms.locfileid: "70051916"
     ```
 
 1. 保存该文件并关闭文本编辑器。
-1. 运行 Kubernetes `apply`命令, 并将*yaml*文件作为其目标:
+1. 运行 Kubernetes `apply`命令，并将*yaml*文件作为其目标：
 
     ```console
     kuberctl apply -f language.yaml
@@ -119,7 +119,7 @@ ms.locfileid: "70051916"
     kubectl get services
     ```
 
-    Pod 中*语言*服务的运行状态的输出:
+    Pod 中*语言*服务的运行状态的输出：
 
     ```console
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

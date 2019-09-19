@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 09/16/2019
-ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: d0356ff61ec8073e7fe69c3b09cbbdd8845fb787
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010191"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128916"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL 数据库托管实例资源限制概述
 
@@ -52,18 +52,18 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
 | vCore 数目\* | 第 4 代：8、16、24<br/>Gen5：4、8、16、24、32、40、64、80 | Gen4：8、16、24 <br/> Gen5：4、8、16、24、32、40、64、80 |
-| 最大内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：40.8 GB - 408 GB (5.1GB/vCore)<br/>添加更多 vCore 以获得更多内存。 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：40.8 GB - 408 GB (5.1GB/vCore)<br/>添加更多 vCore 以获得更多内存。 |
-| 最大实例预留存储大小 | - 2 TB，适用于 4 个 vCore（仅限 Gen5）<br/>- 8 TB，适用于其他大小 | Gen4：1 TB <br/> Gen5： <br/>- 1 TB，适用于 4、8、16 个 vCore<br/>- 24 个 vCore 2 TB<br/>- 32、40、64、80 个 vCore 4 TB |
-| 最大数据库大小 | 8 TB | 4 TB |
-| 每个实例的数据库数目上限 | 100 | 100 |
-| 每个实例的数据库文件数目上限 | 最多 280 个 | 每个数据库 32,767 个文件 |
-| 最大文件大小 | 8 TB | 4 TB |
-| 最大日志文件大小 | 2 TB | 2 TB |
+| 最大内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：20.4 GB-408 GB （5.1 GB/vCore）<br/>添加更多 vCore 以获得更多内存。 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：20.4 GB-408 GB （5.1 GB/vCore）<br/>添加更多 vCore 以获得更多内存。 |
+| 最大实例存储大小（保留） | - 2 TB，适用于 4 个 vCore（仅限 Gen5）<br/>- 8 TB，适用于其他大小 | Gen4：1 TB <br/> Gen5： <br/>- 1 TB，适用于 4、8、16 个 vCore<br/>- 24 个 vCore 2 TB<br/>- 32、40、64、80 个 vCore 4 TB |
+| 最大数据库大小 | 当前可用实例大小（最大为 2 TB-8 TB，具体取决于 Vcore 数）。 | 最高当前可用实例大小（最大 1 TB-4 TB，取决于 Vcore 数）。 |
+| 最大 tempDB 大小 | 限制为 24 GB/vCore （96-1920 GB）和当前可用的实例大小。<br/>添加更多 vCore 以获得更多 TempDB 空间。 | 最多当前可用的实例大小。 TempDB 日志文件大小目前的限制为 24GB/vCore。 |
+| 每个实例的数据库数目上限 | 100，除非已达到实例存储大小限制。 | 100，除非已达到实例存储大小限制。 |
+| 每个实例的数据库文件数目上限 | 最大为280，除非已达到实例存储大小或[Azure 高级磁盘存储空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)的限制。 | 每个数据库32767个文件，除非已达到实例存储大小限制。 |
+| 最大文件大小 | 限制为 8 TB，当前可用的实例大小（最大 2 TB-8 TB）和[Azure 高级磁盘存储分配空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)。 | 限制为 4 TB 和当前可用的实例大小（最大为 1 TB-4 TB）。 |
+| 最大日志文件大小 | 仅限 2 TB、目前可用的实例大小和[Azure 高级磁盘存储分配空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)。 | 仅限 2 TB 和当前可用的实例大小。 |
 | 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[增大文件大小以获取更多 IOPS](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5.5 k-110 K （1375/vCore）<br/>添加更多 vCore 以获得更好的 IO 性能。 |
-| 日志写入吞吐量限制 | 3 MB/s（每个 vCore）<br/>最大为 22 MB/秒（每个实例） | 4 MB/秒（每个 vCore）<br/>最大为 48 MB/秒（每个实例）|
-| 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[增大文件大小以获得更好的 IO 性能](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 不可用 |
+| 日志写入吞吐量限制（每个实例） | 3 MB/s（每个 vCore）<br/>最大 22 MB/秒 | 4 MB/秒（每个 vCore）<br/>最大 48 MB/s |
+| 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[增大文件大小以获得更好的 IO 性能](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 不受限制。 |
 | 存储 IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
-| 最大 tempDB 大小 | 192 - 1,920 GB（每个 vCore 为 24 GB）<br/>添加更多 vCore 以获得更多 TempDB 空间。 | 受最大实例存储大小限制。 TempDB 日志文件大小目前的限制为 24GB/vCore。 |
 | 内存中 OLTP | 不支持 | 可用 |
 | 最大会话数 | 30000 | 30000 |
 | [只读副本](sql-database-read-scale-out.md) | 0 | 1（包含于价格中） |
@@ -93,10 +93,10 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 
 ## <a name="regional-resource-limitations"></a>区域资源限制
 
-支持的订阅类型针对每个区域可包含有限的资源数。 托管实例根据订阅类型对每个 Azure 区域实施两种默认限制：
+支持的订阅类型针对每个区域可包含有限的资源数。 对于每个 Azure 区域，托管实例有两个默认限制（可以根据订阅类型的类型，通过在[Azure 门户中创建特殊支持请求](#obtaining-a-larger-quota-for-sql-managed-instance)来增加按需增加）：
 
 - **子网限制**：在单一区域中部署托管实例的子网数上限。
-- **vCore 限制**：可跨单一区域的所有实例部署的 vCore 数上限。 实例的总数不受限于，只要它在 vCore 限制内。
+- **vCore unit 限制**：可在单个区域中的所有实例之间部署的 vCore 单位的最大数目。 一个 GP vCore 使用一个 vCore 单元，一个 BC vCore 采用4个 vCore 单位。 实例的总数不受限于，只要它在 vCore 单元限制内。
 
 > [!Note]
 > 这些限制是默认设置，不是技术限制。 如果在当前区域中需要更多托管实例，可以[在 Azure 门户中创建特殊支持请求](#obtaining-a-larger-quota-for-sql-managed-instance)，以根据需要提高限制。 或者，可以在另一个 Azure 区域中创建新的托管实例，而不需要发送支持请求。

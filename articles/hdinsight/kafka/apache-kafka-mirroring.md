@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.openlocfilehash: 8565ee03ddff67afb3700aa1cda91ae696a0fc93
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 270bc5401e58f4e5c99cae3c5ab06b4f03ae9543
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960242"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123247"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题
 
@@ -84,7 +84,7 @@ ms.locfileid: "70960242"
     1. 单击“添加”。
     1. 在 "**添加对等互连**" 屏幕上，输入详细信息，如以下屏幕截图所示。
 
-        ![添加 vnet 对等互连](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        ![HDInsight Kafka 添加 vnet 对等互连](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. 配置 IP 广告：
     1. 请参阅主要群集的 Ambari 仪表板： `https://PRIMARYCLUSTERNAME.azurehdinsight.net`。
@@ -104,7 +104,7 @@ ms.locfileid: "70960242"
     1. 在**保存配置更改**时单击 **"确定"** 。
     1. 单击 > "需要重新**启动**"**通知中的**"重新启动"。 单击 "**确认全部重启**"。
 
-        ![重新启动 kafka 节点](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+        ![Apache Ambari 重新启动所有受影响的](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. 配置 Kafka 以侦听所有网络接口。
     1. 停留在 " **Services** > **Kafka**"**下的 "配置" 选项**卡上。 在**Kafka Broker**部分，将 "**侦听器**" 属性`PLAINTEXT://0.0.0.0:9092`设置为。
@@ -115,7 +115,7 @@ ms.locfileid: "70960242"
     1. 单击 "Ambari 仪表板" 上的 "**主机**"。
     1. 记下代理和 Zookeeper 的 IP 地址。 代理节点将**w)** 作为主机名的前两个字母，zookeeper 节点将**zk**作为主机名的前两个字母。
 
-        ![查看 ip 地址](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+        ![Apache Ambari 查看节点 ip 地址](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. 对于第二个群集，请重复上述三个步骤**kafka**：配置 IP 播发，设置侦听器，并记下 "Broker" 和 "ZOOKEEPER" IP 地址。
 
@@ -251,7 +251,7 @@ ms.locfileid: "70960242"
         6. 更改的值`auto.create.topics.enable`为 true，然后选择__保存__。 添加注释，然后选择__保存__。
         7. 选择 __Kafka__ 服务，选择__重启__，然后选择__重启所有受影响的__。 出现提示时，选择“确认全部重启”。
 
-        ![配置主题自动创建](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        ![kafka 启用自动创建主题](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
 ## <a name="start-mirrormaker"></a>启动 MirrorMaker
 

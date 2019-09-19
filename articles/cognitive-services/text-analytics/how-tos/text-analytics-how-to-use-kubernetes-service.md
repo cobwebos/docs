@@ -1,25 +1,25 @@
 ---
 title: 运行 Azure Kubernetes 服务-文本分析
 titleSuffix: Azure Cognitive Services
-description: 将文本分析容器映像部署到 Azure Kubernetes 服务, 并在 web 浏览器中对其进行测试。
+description: 将文本分析容器映像部署到 Azure Kubernetes 服务，并在 web 浏览器中对其进行测试。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 09/19/2019
 ms.author: dapine
-ms.openlocfilehash: c0c3c3483b73564e136035f04f9e4139b34f463f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: db1c26805f76b0ca8991a562531b4476b6899d86
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051894"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130081"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>将文本分析容器部署到 Azure Kubernetes 服务
 
-了解如何将 Azure 认知服务[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers)容器映像部署到 Azure Kubernetes 服务 (AKS)。 此过程说明如何创建文本分析资源、如何创建关联的情绪分析映像, 以及如何从浏览器中执行这两种操作的业务流程。 使用容器可以从管理基础结构中转移, 而不是关注应用程序开发。
+了解如何将 Azure 认知服务[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers)容器映像部署到 Azure Kubernetes 服务（AKS）。 此过程说明如何创建文本分析资源、如何创建关联的情绪分析映像, 以及如何从浏览器中执行这两种操作的业务流程。 使用容器可以从管理基础结构中转移, 而不是关注应用程序开发。
 
 ## <a name="prerequisites"></a>先决条件
 
