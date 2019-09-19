@@ -132,7 +132,7 @@ BackendAddressPoolsText : [
 
 **解决方案：** 如果看到此错误，请检查以下各项：
 
-1.  请检查是否可以使用浏览器或 PowerShell 在 HTTP 设置中提到的端口连接到后端服务器，例如，可以使用以下命令：Test-netconnection-ComputerName www.bing.com-端口443
+1.  请检查是否可以使用浏览器或 PowerShell 在 HTTP 设置中提到的端口连接到后端服务器，例如，可以使用以下命令：Test-netconnection-ComputerName [www.bing.com](www.bing.com)-端口443
 
 2.  如果提到的端口不是所需的端口，请输入用于连接到后端服务器的应用程序网关的正确端口号
 
