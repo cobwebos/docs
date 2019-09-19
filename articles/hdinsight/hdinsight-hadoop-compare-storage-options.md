@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 5cb3b5c2d36707875c87bd589e3d96c0a2f4f939
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: MT
+ms.openlocfilehash: ced2c888a412a72643bb0c12fceb7e83d39936cf
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885186"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098731"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比较用于与 Azure HDInsight 群集配合使用的存储选项
 
@@ -28,10 +28,10 @@ ms.locfileid: "70885186"
 
 | 存储服务 | 帐户类型 | 命名空间类型 | 支持的服务 | 支持的性能层 | 支持的访问层 | HDInsight 版本 | 群集类型 |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| 常规用途 V2 | 层次结构（文件系统） | Blob | 标准 | 热、冷、存档 | 3.6+ | 全部 |
-|Azure 存储| 常规用途 V2 | Object | Blob | 标准 | 热、冷、存档 | 3.6+ | 全部 |
-|Azure 存储| 常规用途 V1 | Object | Blob | 标准 | 不可用 | 全部 | 全部 |
-|Azure 存储| Blob 存储 * * | Object | 块 Blob | 标准 | 热、冷、存档 | 全部 | 全部 |
+|Azure Data Lake Storage Gen2| 常规用途 V2 | 层次结构（文件系统） | Blob | 标准 | 热、冷、存档 | 3.6+ | All |
+|Azure 存储| 常规用途 V2 | Object | Blob | 标准 | 热、冷、存档 | 3.6+ | All |
+|Azure 存储| 常规用途 V1 | Object | Blob | 标准 | 不可用 | All | All |
+|Azure 存储| Blob 存储 * * | Object | 块 Blob | 标准 | 热、冷、存档 | All | All |
 |Azure Data Lake Storage Gen1| 不可用 | 层次结构（文件系统） | 不可用 | 不可用 | 不可用 | 仅3。6 | 除 HBase 之外的所有 |
 
 \* * 对于 HDInsight 群集，只有辅助存储帐户可以是 BlobStorage 类型。
@@ -129,7 +129,7 @@ Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无
 
 下图提供了 Azure 存储的 HDInsight 存储体系结构的抽象视图：
 
-![显示 Hadoop 群集使用 HDFS API 来访问 Blob 存储中的结构化和非结构化数据，并在其中存储这些数据的示意图](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "HDInsight 存储体系结构")
+![HDInsight 存储体系结构](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "HDInsight 存储体系结构")
 
 HDInsight 提供对在本地附加到计算节点的分布式文件系统的访问。 可使用完全限定 URI 访问该文件系统，例如：
 

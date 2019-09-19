@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: af67fb2d35344ec6134a107a553fa48661dc0770
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fc1e80433a09d8a56f2900ab6b24dd3804db56ac
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095096"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086773"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>在 Batch 池中预配 Linux 计算节点
 
@@ -69,7 +69,7 @@ Batch 节点代理是一个程序，它在池中的每个节点上运行，并�
 ## <a name="create-a-linux-pool-batch-python"></a>创建 Linux 池：批处理 Python
 以下代码片段演示了如何使用[适用于 Python 的 Microsoft Azure Batch 客户端库][py_batch_package]创建 Ubuntu Server 计算节点池。 有关 Batch Python 模块的参考文档可在“阅读文档”上的 [azure.batch package][py_batch_docs] 包处找到。
 
-此代码片段显式创建 [ImageReference][py_imagereference]，并指定它的每个属性（publisher、offer、SKU、version）。 但在生产代码中, 建议使用[list_node_agent_skus][py_list_skus]方法在运行时从可用映像和节点代理 SKU 组合中进行确定和选择。
+此代码片段显式创建 [ImageReference][py_imagereference]，并指定它的每个属性（publisher、offer、SKU、version）。 但在生产代码中，建议使用[list_node_agent_skus][py_list_skus]方法在运行时从可用映像和节点代理 SKU 组合中进行确定和选择。
 
 ```python
 # Import the required modules from the
@@ -125,7 +125,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-如前文所述, 建议使用[list_node_agent_skus][py_list_skus]方法从当前支持的节点代理/应用商店映像组合中动态选择, 而不是显式创建[ImageReference][py_imagereference] 。 以下 Python 代码片段演示如何使用此方法。
+如前文所述，建议使用[list_node_agent_skus][py_list_skus]方法从当前支持的节点代理/应用商店映像组合中动态选择，而不是显式创建[ImageReference][py_imagereference] 。 以下 Python 代码片段演示如何使用此方法。
 
 ```python
 # Get the list of node agents from the Batch service
@@ -207,7 +207,7 @@ ImageReference imageReference = new ImageReference(
 ```
 
 ## <a name="list-of-virtual-machine-images"></a>虚拟机映像列表
-下表列出了本文上次更新时，与可用 Batch 节点代理兼容的市场虚拟机映像。 请务必注意，此列表并非永久不变，因为可能随时会添加或删除映像和节点代理。 建议 Batch 应用程序和服务始终使用[list_node_agent_skus][py_list_skus] (Python) 或[ListNodeAgentSkus][net_list_skus] (Batch .net) 来确定和选择当前可用的 sku。
+下表列出了本文上次更新时，与可用 Batch 节点代理兼容的市场虚拟机映像。 请务必注意，此列表并非永久不变，因为可能随时会添加或删除映像和节点代理。 建议 Batch 应用程序和服务始终使用[list_node_agent_skus][py_list_skus] （Python）或[ListNodeAgentSkus][net_list_skus] （Batch .net）来确定和选择当前可用的 sku。
 
 > [!WARNING]
 > 以下列表可随时更改。 请始终使用 Batch API 中提供的列出节点代理 SKU 方法来列出运行 Batch 作业时兼容的虚拟机和节点代理 SKU。
@@ -337,19 +337,19 @@ GitHub 上 [azure-batch-samples][github_samples] 存储库中的 [Python 代码�
 [github_samples_pyclient]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/python_tutorial_client.py
 [portal]: https://portal.azure.com
 [net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[net_computenodeuser]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenodeuser.aspx
+[net_computenodeuser]: /dotnet/api/microsoft.azure.batch.computenodeuser?view=azure-dotnet
 [net_imagereference]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.imagereference.aspx
 [net_list_skus]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listnodeagentskus.aspx
 [net_pool_ops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.aspx
-[net_ssh_key]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenodeuser.sshpublickey.aspx
+[net_ssh_key]: /dotnet/api/microsoft.azure.batch.computenodeuser.sshpublickey?view=azure-dotnet#Microsoft_Azure_Batch_ComputeNodeUser_SshPublicKey
 [nuget_batch_net]: https://www.nuget.org/packages/Microsoft.Azure.Batch/
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 [py_account_ops]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations
 [py_azure_sdk]: https://pypi.python.org/pypi/azure
 [py_batch_docs]: https://azure-sdk-for-python.readthedocs.io/batch.html
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
-[py_computenodeuser]: https://docs.microsoft.com/python/api/azure.batch.models.computenodeuser
-[py_imagereference]: https://docs.microsoft.com/python/api/azure.mgmt.batch.models.imagereference
+[py_computenodeuser]: /python/api/azure-batch/azure.batch.models.computenodeuser
+[py_imagereference]: /python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference
 [py_list_skus]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

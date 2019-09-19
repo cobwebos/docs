@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: d96f25adeb1447338510cb18ae1570aca2e42c8e
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: a50f2d9bc50b235b2b7375b90288e72609f36eff
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010338"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089895"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Oracle 服务云复制数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "71010338"
 
 以下活动支持此 Oracle 服务云连接器：
 
-- [复制活动](copy-activity-overview.md)与[支持的源矩阵](copy-activity-overview.md)
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 Oracle 服务云复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。

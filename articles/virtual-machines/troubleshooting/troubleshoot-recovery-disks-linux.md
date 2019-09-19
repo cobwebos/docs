@@ -4,7 +4,7 @@ description: 了解如何通过使用 Azure CLI 将 OS 磁盘连接到恢复 VM 
 services: virtual-machines-linux
 documentationCenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: b1aca591437738b29786f50c2a5291ab456f3416
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: faa15e9cf6288bcd4014cbc03dcf9d82a2047bde
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876696"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088371"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>通过使用 Azure CLI 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
 如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure CLI 将虚拟硬盘连接到另一个 Linux VM，以修复任何错误，然后重新创建原始 VM。 
@@ -29,7 +29,7 @@ ms.locfileid: "69876696"
 1. 停止受影响的 VM。
 1. 从 VM 的 OS 磁盘拍摄快照。
 1. 从 OS 磁盘快照创建磁盘。
-1. 出于故障排除目的, 将新的 OS 磁盘附加并装载到另一个 Linux VM。
+1. 出于故障排除目的，将新的 OS 磁盘附加并装载到另一个 Linux VM。
 1. 连接到故障排除 VM。 编辑文件或运行任何工具以修复新 OS 磁盘上的问题。
 1. 从故障排除 VM 中卸载并分离新的 OS 磁盘。
 1. 更改受影响 VM 的 OS 磁盘。
@@ -39,7 +39,7 @@ ms.locfileid: "69876696"
 > [!Important]
 > 本文中的脚本仅适用于使用[托管磁盘](../linux/managed-disks-overview.md)的 VM。 
 
-在下面的示例中, 请将参数名称替换为自己的值`myResourceGroup` , `myVM`例如和。
+在下面的示例中，请将参数名称替换为自己的值`myResourceGroup` ， `myVM`例如和。
 
 ## <a name="determine-boot-issues"></a>确定启动问题
 检查串行输出以确定 VM 不能正常启动的原因。 一个常见示例是 `/etc/fstab`中存在无效条目，或底层虚拟硬盘已删除或移动。
@@ -105,14 +105,14 @@ az disk create --resource-group $resourceGroup --name $osDisk --sku $storageType
 
 ```
 
-如果资源组和源快照不在同一区域, 你将在运行`az disk create`时收到 "找不到资源" 错误。 在这种情况下, 你`--location <region>`必须指定将磁盘创建到与源快照相同的区域中。
+如果资源组和源快照不在同一区域，你将在运行`az disk create`时收到 "找不到资源" 错误。 在这种情况下，你`--location <region>`必须指定将磁盘创建到与源快照相同的区域中。
 
-现在，可以创建原始 OS 磁盘的副本。 可以将此新磁盘安装到另一个 Windows VM, 以便进行故障排除。
+现在，可以创建原始 OS 磁盘的副本。 可以将此新磁盘安装到另一个 Windows VM，以便进行故障排除。
 
 ## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>将新的虚拟硬盘附加到另一个 VM
-在后续几个步骤中，将使用另一个 VM 进行故障排除。 将磁盘附加到此故障排除 VM, 以浏览和编辑磁盘的内容。 此过程允许您更正任何配置错误或者查看其他应用程序或系统日志文件。
+在后续几个步骤中，将使用另一个 VM 进行故障排除。 将磁盘附加到此故障排除 VM，以浏览和编辑磁盘的内容。 此过程允许您更正任何配置错误或者查看其他应用程序或系统日志文件。
 
-此脚本将磁盘`myNewOSDisk`附加到 VM: `MyTroubleshootVM`
+此脚本将磁盘`myNewOSDisk`附加到 VM： `MyTroubleshootVM`
 
 ```azurecli
 # Get ID of the OS disk that you just created.
@@ -179,7 +179,7 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
     sudo umount /dev/sdc1
     ```
 
-2. 现在从 VM 中分离虚拟硬盘。 退出故障排除 VM 的 SSH 会话:
+2. 现在从 VM 中分离虚拟硬盘。 退出故障排除 VM 的 SSH 会话：
 
     ```azurecli
     az vm disk detach -g MyResourceGroup --vm-name MyTroubleShootVm --name myNewOSDisk
