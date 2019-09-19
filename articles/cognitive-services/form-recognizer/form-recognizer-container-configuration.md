@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 4a490e8a9f111985df9c9e8c9f73bc36d686cc2a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: af30719ead8464d0420734818203b8070eb5d145
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348696"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105100"
 ---
 # <a name="configure-form-recognizer-containers"></a>配置表单识别器容器
 
@@ -31,9 +31,9 @@ ms.locfileid: "68348696"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 ApiKey 的值必须是表单识别器资源的有效密钥，该资源是在“Billing 配置设置”部分为 `Billing` 指定的。 
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 ApiKey 的值必须是表单识别器资源的有效密钥，该资源是在“Billing 配置设置”部分为 `Billing` 指定的。
 
-可以在 Azure 门户的“表单识别器资源管理”的“密钥”下找到此设置。  
+可以在 Azure 门户的“表单识别器资源管理”的“密钥”下找到此设置。
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -41,11 +41,11 @@ ms.locfileid: "68348696"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 设置指定 Azure 上用于计量容器账单信息的表单识别器资源的终结点 URI。  此配置设置的值必须是 Azure 上表单识别器资源的有效终结点 URI。  容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器账单信息的表单识别器资源的终结点 URI。 此配置设置的值必须是 Azure 上表单识别器资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
-可以在 Azure 门户的“表单识别器概览”的“终结点”下找到此设置。  
+可以在 Azure 门户的“表单识别器概览”的“终结点”下找到此设置。
 
-|必填| 名称 | 数据类型 | 描述 |
+|必填| 姓名 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>例如：<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
@@ -74,7 +74,7 @@ ms.locfileid: "68348696"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](form-recognizer-container-howto.md#the-host-computer)的装载位置。
 
-|可选| 名称 | 数据类型 | 描述 |
+|可选| 姓名 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |必填| `Input` | String | 输入装入点的目标。 默认值为 `/input`。    <br><br>例如：<br>`--mount type=bind,src=c:\input,target=/input`|
 |必填| `Output` | String | 输出装入点的目标。 默认值为 `/output`。  <br><br>例如：<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -90,16 +90,17 @@ ms.locfileid: "68348696"
 
 | 占位符 | ReplTest1 |
 |-------------|-------|
-|{FORM_RECOGNIZER_API_KEY} | 用于启动容器的密钥。 可以从 Azure 门户的“表单识别器密钥”页获取它。  |
-|{FORM_RECOGNIZER_ENDPOINT_URI} | 可以从 Azure 门户的“表单识别器概览”页获取计费终结点 URI 值。|
-|{COMPUTER_VISION_API_KEY}| 可以从 Azure 门户的“计算机视觉 API 密钥”页获取此密钥。|
-|{COMPUTER_VISION_ENDPOINT_URI}|计费终结点。 如果使用基于云的计算机视觉资源，则可以从 Azure 门户的“计算机视觉 API 概览”页获取 URI 值。 如果使用 *cognitive-services-recognize-text* 容器，请使用在 `docker run` 命令中传递给容器的计费终结点 URL。|
+| **{FORM_RECOGNIZER_API_KEY}** | 用于启动容器的密钥。 可以从 Azure 门户的“表单识别器密钥”页获取它。 |
+| **{FORM_RECOGNIZER_ENDPOINT_URI}** | 可以从 Azure 门户的“表单识别器概览”页获取计费终结点 URI 值。|
+| **{COMPUTER_VISION_API_KEY}** | 可以从 Azure 门户的“计算机视觉 API 密钥”页获取此密钥。|
+| **{COMPUTER_VISION_ENDPOINT_URI}** | 计费终结点。 如果使用基于云的计算机视觉资源，则可以从 Azure 门户的“计算机视觉 API 概览”页获取 URI 值。 如果你使用的是*认知服务识别文本*容器，请使用传递给`docker run`命令中的容器的计费终结点 URL。 |
+
+有关如何获取这些值的详细信息，请参阅[收集必需的参数](form-recognizer-container-howto.md#gathering-required-parameters)。
+
+[!INCLUDE [cognitive-services-custom-subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > 若要运行该容器，请指定 `Eula`、`Billing` 和 `ApiKey` 选项；否则，该容器不会启动。 有关详细信息，请参阅[计费](#billing-configuration-setting)。
-
-> [!NOTE] 
-> ApiKey 值是 Azure 表单识别器“资源密钥”页中提供的“密钥”  。
 
 ## <a name="form-recognizer-container-docker-examples"></a>表单识别器容器 Docker 示例
 

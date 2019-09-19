@@ -1,18 +1,18 @@
 ---
 title: Azure 专用链接常见问题（FAQ）
 description: 了解 Azure 专用链接。
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7e08c91636089abf25e46e1303097fc27b2d75b1
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 32e570e098c9a3f95dfc5393348cccb1ebe1fb60
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037508"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104583"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure 专用链接常见问题（FAQ）
 
@@ -23,8 +23,8 @@ ms.locfileid: "71037508"
 - **[Azure 专用终结点](private-endpoint-overview.md)** ：Azure 专用终结点是一个网络接口，该接口将你私下并安全地连接到由 Azure 专用链接提供支持的服务。 你可以使用专用终结点连接到支持专用链接或你自己的专用链接服务的 Azure PaaS 服务。
 - **[Azure 专用链接服务](private-link-service-overview.md)** ：Azure 专用链接服务是服务提供商创建的服务。 目前，专用链接服务可附加到标准负载均衡器的前端 IP 配置。 
 
-### <a name="how-is-traffic-being-send-when-using-private-link"></a>使用专用链接时如何发送通信？
-流量是使用 Microsoft 主干进行私下发送的。 它不会遍历 internet。  
+### <a name="how-is-traffic-being-sent-when-using-private-link"></a>使用专用链接时如何发送流量？
+使用 Microsoft 主干来私下发送流量。 它不会遍历 internet。  
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>服务终结点和专用终结点之间的区别是什么？
 - 使用专用终结点时，会将网络访问权限授予给定服务后面提供粒度分段的特定资源，同时流量可以从本地到达服务资源，而无需使用公共终结点。

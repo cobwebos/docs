@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: f9fd346d4c4eaed0797d564fe52dd44e9f0e240a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd51cc2d5f95598154b76b5da8e3fc9e4801100d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65795648"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104950"
 ---
 # <a name="mapping-data-flow-conditional-split-transformation"></a>映射数据流有条件拆分转换
 
@@ -31,4 +31,4 @@ ms.locfileid: "65795648"
 
 ## <a name="next-steps"></a>后续步骤
 
-常见数据流转换与有条件拆分一起使用：[联接转换](data-flow-join.md)， [Loopup 转换](data-flow-lookup.md)，[选择转换](data-flow-select.md)
+用于有条件拆分的常见数据流转换：[联接转换](data-flow-join.md)，[查找转换](data-flow-lookup.md)，[选择转换](data-flow-select.md)

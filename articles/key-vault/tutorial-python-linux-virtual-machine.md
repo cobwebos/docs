@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: f002a4d67ee782b11cd8f39784eb48b136328c89
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 48095a2d446c8f85bab9d9268e924e29fe9a9f21
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876709"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003895"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>教程：使用 Linux VM 和 Python 应用在 Azure 密钥保管库中存储机密
 
@@ -30,7 +30,7 @@ Azure Key Vault 用于保护机密，例如访问应用程序、服务和 IT 资
 > * 授予所需的权限，让控制台应用程序从密钥保管库读取数据
 > * 从密钥保管库检索机密
 
-在进一步讨论之前，确保了解[有关密钥保管库的基本概念](key-vault-whatis.md#basic-concepts)。
+在进一步讨论之前，确保了解[有关密钥保管库的基本概念](basic-concepts.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

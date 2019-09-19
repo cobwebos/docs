@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9cf15595270e0a0040e565be8319c13e3f5da306
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
-ms.translationtype: HT
+ms.openlocfilehash: eda0d6e8fe56b985c3b29fa80cee880444d63741
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092217"
+ms.locfileid: "71105292"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 外部负载均衡器移到另一个区域
 
@@ -179,7 +179,7 @@ ms.locfileid: "71092217"
 
     ```
 
-6.  若要编辑上面移动的目标公共 IP 的值，你必须首先获取资源 ID，然后将其复制并粘贴到文件**json**文件中。  获取 ID：
+6.  若要编辑上面移动的目标公共 IP 的值，你必须首先获取资源 ID，然后将其复制并粘贴到**参数 json**文件中。 获取 ID：
     
     1. 在另一个浏览器选项卡或窗口中登录到[Azure 门户](http://portal.azure.com) > **资源组**。
     2. 在上述步骤中找到包含移动的公共 IP 的目标资源组，然后单击该资源组。
@@ -187,19 +187,19 @@ ms.locfileid: "71092217"
     4. 在右侧的边栏选项卡中，突出显示**资源 ID**并将其复制到剪贴板。  或者，可以单击**资源 ID**路径右侧的 "**复制到剪贴板**" 按钮。
     5. 将资源 ID 粘贴到 "**值**" 属性中，并在其他浏览器窗口或选项卡中打开**编辑参数**编辑器：
 
-    ```json
-       ```json
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-          "loadBalancers_myLoadbalancer_ext_name": {
-          "value": "<target-external-lb-name>"
-    },
-          "publicIPAddresses_myPubIP_in_externalid": {
-          "value": "<target-publicIP-resource-ID>"
-    },
+        ```json
+           ```json
+           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+           "contentVersion": "1.0.0.0",
+           "parameters": {
+              "loadBalancers_myLoadbalancer_ext_name": {
+              "value": "<target-external-lb-name>"
+        },
+              "publicIPAddresses_myPubIP_in_externalid": {
+              "value": "<target-publicIP-resource-ID>"
+        },
 
-    ```
+        ```
     6. 在联机编辑器中单击 "**保存**"。
    
 

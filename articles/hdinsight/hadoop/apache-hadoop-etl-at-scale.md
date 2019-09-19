@@ -8,20 +8,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: e4168b2aec73efcaa282398cbe145df49a117da0
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810760"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066941"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
 
-提取、转换和加载 (ETL) 是从各种源获取数据、将数据收集到标准位置、进行清理和处理，最终将其载入数据存储供查询的过程。 传统的 ETL 过程是导入数据、就地清理该数据，然后将其存储在关系数据引擎中。 使用 HDInsight 时，各种 Apache Hadoop 生态系统组件都支持大规模执行 ETL。 
+提取、转换和加载 (ETL) 是从各种源获取数据、将数据收集到标准位置、进行清理和处理，最终将其载入数据存储供查询的过程。 传统的 ETL 过程是导入数据、就地清理该数据，然后将其存储在关系数据引擎中。 使用 HDInsight 时，各种 Apache Hadoop 生态系统组件都支持大规模执行 ETL。
 
 在 ETL 过程中使用 HDInsight 可以通过以下管道来总结：
 
-![HDInsight ETL 概述](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+![可扩展的 HDInsight ETL 概述](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
 
 以下部分探讨每个 ETL 阶段及其关联的组件。
 
@@ -35,11 +35,11 @@ ms.locfileid: "70810760"
 
 Apache Oozie 是一个管理 Hadoop 作业的工作流协调系统。 Oozie 在 HDInsight 群集中运行，并与 Hadoop 堆栈集成。 Oozie 支持 Apache Hadoop MapReduce、Apache Pig、Apache Hive 和 Apache Sqoop 的 Hadoop 作业。 Oozie 还可用于安排特定于某系统的作业，例如 Java 程序或 shell 脚本。
 
-有关详细信息，请参阅[在 HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。如需深入演示如何使用 Oozie 驱动端到端管道，请参阅[操作数据管道](../hdinsight-operationalize-data-pipeline.md)。 
+有关详细信息，请参阅[在 HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。如需深入演示如何使用 Oozie 驱动端到端管道，请参阅[操作数据管道](../hdinsight-operationalize-data-pipeline.md)。
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
 
-Azure 数据工厂以平台即服务的形式提供业务流程功能。 它是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 
+Azure 数据工厂以平台即服务的形式提供业务流程功能。 它是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。
 
 使用 Azure 数据工厂可以：
 

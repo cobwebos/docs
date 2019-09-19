@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 5d287165e77597943d298178689c216497361570
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: e9ecc34566e6e534b7489c934c0d5fa3b34e219b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879667"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104479"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -45,7 +45,7 @@ Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无
 ## <a name="hdinsight-storage-architecture"></a>HDInsight 存储体系结构
 下图提供了使用 Azure 存储时的 HDInsight 存储体系结构的抽象视图：
 
-![Hadoop 群集使用 HDFS API 来访问 Blob 存储中的结构化和非结构化数据，并在其中存储这些数据。](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "HDInsight Storage Architecture")
+![Hadoop 群集使用 HDFS API 来访问 Blob 存储中的数据并将其存储在 Blob 存储中](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "HDInsight 存储体系结构")
 
 HDInsight 提供对在本地附加到计算节点的分布式文件系统的访问。 可使用完全限定 URI 访问该文件系统，例如：
 
@@ -73,6 +73,7 @@ HDInsight 提供对在本地附加到计算节点的分布式文件系统的访�
 Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键值对，没有目录层次结构。 不过，可在键名称中使用斜杠字符 (/)，使其看起来像存储在目录结构中的文件。 例如，Blob 的键可以是 *input/log1.txt*。 不存在实际的 *input* 目录，但由于键名称中包含斜杠字符，因此使其看起来像一个文件路径。
 
 ## <a id="benefits"></a>Azure 存储的优点
+
 在 Azure 区域中的存储帐户资源附近创建计算群集的方式使计算群集不归置计算群集和存储资源的隐含性能成本得到了缓解，在这种情况下，高速网络使用于访问 Azure 存储中的数据的计算节点。
 
 在 Azure 存储而非 HDFS 中存储数据有几个好处：
@@ -93,6 +94,7 @@ Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键
 > 大多数 HDFS 命令（例如 `ls`、`copyFromLocal` 和 `mkdir`）仍按预期工作。 只有特定于本机 HDFS 实现（称作 DFS）的命令在 Azure 存储上会显示不同的行为，例如 `fschk` 和 `dfsadmin`。
 
 ## <a name="address-files-in-azure-storage"></a>确定 Azure 存储中文件的地址
+
 用于从 HDInsight 访问 Azure 存储中的文件的 URI 方案为：
 
 ```config
@@ -125,6 +127,7 @@ example/jars/hadoop-mapreduce-examples.jar
 > 在 HDInsight 外部使用 Blob 时，大多数实用程序无法识别 WASB 格式，应该改用基本的路径格式，如 `example/jars/hadoop-mapreduce-examples.jar`。
 
 ##  <a name="blob-containers"></a>Blob 容器
+
 若要使用 Blob，请先创建 [Azure 存储帐户](../storage/common/storage-create-storage-account.md)。 在此过程中，可指定在其中创建存储帐户的 Azure 区域。 群集和存储帐户必须位于同一区域。 Hive 元存储 SQL Server 数据库和 Apache Oozie 元存储 SQL Server 数据库也必须位于同一区域。
 
 无论所创建的每个 Blob 位于何处，它都属于 Azure 存储帐户中的某个容器。 此容器可以是在 HDInsight 外部创建的现有的 Blob，也可以是为 HDInsight 群集创建的容器。
