@@ -4,7 +4,7 @@ description: 了解如何排查使用远程桌面服务连接到虚拟机时出�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 845e9c17d6f7facb4e24f3069b3622b6449295ca
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9f7957fb0e6e888367c1f8ded1abfb3828697cbb
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103338"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087096"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
 
@@ -40,7 +40,7 @@ ms.locfileid: "70103338"
     **源**：      服务控制管理器 </br>
     **日期**：        2017 年 12 月 16 日上午 11:19:36</br>
     **事件 ID**：    7022</br>
-    **任务类别**：无</br>
+    **任务类别**：None</br>
     **级别**：       Error</br>
     **关键字**：    经典</br>
     **用户**：        不可用</br>

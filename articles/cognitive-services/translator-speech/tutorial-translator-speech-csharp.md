@@ -3,20 +3,20 @@ title: 教程：语音翻译 API C#
 titleSuffix: Azure Cognitive Services
 description: 使用语音翻译 API 实时翻译文本。
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a3853dd810182948e12b578c33b8cb91bef4b1cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 669322aefb152729cc120abc0d7a52ce9d1151da
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445586"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965286"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>教程：以 C# 编写的语音翻译应用程序
 

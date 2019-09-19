@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 45aa1354f6009d5eccd48f85f993bae8949139e3
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
-ms.translationtype: HT
+ms.openlocfilehash: ed466b072a771c3aa288a96fa4a0037c31b875f9
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058976"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091997"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
 
@@ -282,17 +282,109 @@ ms.locfileid: "71058976"
 
 - **原因**：Azure function 活动定义不完整。
 
-- **建议**：请检查输入 AzureFunction 活动 JSON 定义是否具有名为 "method" 的属性。
+- **建议**：检查输入 AzureFunction 活动 JSON 定义是否具有名为 "method" 的属性。
 
 
 ### <a name="error-code--3612"></a>错误代码：3612
 
 - **消息**：`Azure function activity missing LinkedService definition in JSON.`
 
-- **原因**：Azure function 活动定义不完整。
+- **原因**：Azure function 活动定义可能不完整。
 
 - **建议**：请检查输入 AzureFunction 活动 JSON 定义是否有链接的服务详细信息。
 
+
+## <a name="azure-machine-learning"></a>Azure 机器学习
+
+
+### <a name="error-code--4101"></a>错误代码：4101
+
+- **消息**：`AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
+
+- **原因**：错误的格式或缺少属性的定义。
+
+- **建议**：请检查是否已将活动定义为正确的数据。
+
+
+### <a name="error-code--4110"></a>错误代码：4110
+
+- **消息**：AzureMLExecutePipeline 活动在 JSON 中缺少 LinkedService 定义。
+
+- **原因**：AzureMLExecutePipeline 活动定义不完整。
+
+- **建议**：请检查输入 AzureMLExecutePipeline 活动 JSON 定义是否有链接的服务详细信息。
+
+
+### <a name="error-code--4111"></a>错误代码：4111
+
+- **消息**：`AzureMLExecutePipeline activity has wrong LinkedService type in JSON. Expected LinkedService type: '%expectedLinkedServiceType;', current LinkedService type: Expected LinkedService type: '%currentLinkedServiceType;'.`
+
+- **原因**：活动定义不正确。
+
+- **建议**：请检查输入 AzureMLExecutePipeline 活动 JSON 定义是否有正确的链接服务详细信息。
+
+
+### <a name="error-code--4112"></a>错误代码：4112
+
+- **消息**：`AzureMLService linked service has invalid value for property '%propertyName;'.`
+
+- **原因**：错误的格式或缺少属性的定义。
+
+- **建议**：请检查链接的服务定义是否有正确的数据。
+
+
+### <a name="error-code--4121"></a>错误代码：4121
+
+- **消息**：`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **原因**：用于访问 Azure ML 服务的凭据已过期。
+
+- **建议**：请验证凭据是否有效，然后重试
+
+
+### <a name="error-code--4122"></a>错误代码：4122
+
+- **消息**：`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **原因**：AzureML 服务链接服务中提供的凭据无效或没有操作的权限。
+
+- **建议**：请验证链接服务中的凭据是否有效，以及是否有权访问 AzureML 服务。
+
+
+### <a name="error-code--4123"></a>错误代码：4123
+
+- **消息**：`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **原因**：`Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+
+- **建议**：请检查活动属性的值，以匹配链接服务中指定的已发布 Azure ML 管道的预期负载。
+
+
+### <a name="error-code--4124"></a>错误代码：4124
+
+- **消息**：`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **原因**：已发布的 Azure ML 管道终结点不存在。
+
+- **建议**：请验证 Azure ML 服务中是否存在链接的服务中指定的已发布 Azure ML 管道终结点。
+
+
+### <a name="error-code--4125"></a>错误代码：4125
+
+- **消息**：`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **原因**：Azure ML 服务上出现服务器错误。
+
+- **建议**：请稍后重试。 如果问题仍然存在，请联系 Azure ML 服务团队以获得帮助。
+
+
+### <a name="error-code--4126"></a>错误代码：4126
+
+- **消息**：`AzureML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in AzureMLService for more error loggings.`
+
+- **原因**：AzureML 管道运行失败。
+
+- **建议**：请查看 AzureMLService 以了解更多错误 rsyslog 并修复 ML 管道
 
 
 ## <a name="custom"></a>自定义
@@ -316,6 +408,15 @@ ms.locfileid: "71058976"
 - **原因**：批处理访问密钥或池名称不正确。
 
 - **建议**：验证链接的服务中的池名称和批处理访问密钥。
+
+
+### <a name="error-code--2502"></a>错误代码：2502
+
+- **消息**：`Cannot access user storage account; please check storage account settings.`
+
+- **原因**：存储帐户名称或访问密钥不正确。
+
+- **建议**：验证链接的服务中的存储帐户名称和访问密钥。
 
 
 ### <a name="error-code--2504"></a>错误代码：2504
@@ -472,7 +573,7 @@ ms.locfileid: "71058976"
 
 ## <a name="web-activity"></a>Web 活动
 
-### <a name="error-code--2310"></a>错误代码：2310
+### <a name="error-code--2108"></a>错误代码：2108
 
 - **消息**：`Invalid HttpMethod: '...'.`
 
@@ -559,6 +660,25 @@ ms.locfileid: "71058976"
 - **原因**：Web 活动正文不正确。
 
 - **建议**：使用 Fiddler 或 Postman 检查终结点。
+
+
+### <a name="error-code--2208"></a>错误代码：2208
+
+- **消息**：`Invoking Web Activity failed with HttpStatusCode - {0}.`
+
+- **原因**：目标服务返回失败状态。
+
+- **建议**：使用 Fiddler/Postman 验证该请求。
+
+
+### <a name="error-code--2308"></a>错误代码：2308
+
+- **消息**：`No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
+
+- **原因**：此错误可能有多种原因，如网络连接性、DNS 失败、服务器证书验证或超时。
+
+- **建议**：使用 Fiddler/Postman 验证该请求。
+
 
 若要使用 Fiddler 创建监视的 web 应用程序的 HTTP 会话, 请执行以下操作:
 

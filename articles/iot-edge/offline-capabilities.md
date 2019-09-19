@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5d618f12b2a83b0aee145470aff900e26241b705
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 80a38767121f5c54afe51a7d4d788716fe9547e2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147283"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091363"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能
 
@@ -38,13 +38,13 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 IoT
 
    从 IoT 中心断开连接时，IoT Edge 设备及其部署模块和任何 IoT 子设备都可以无限期运行。 模块和子设备可以在脱机状态下通过在 IoT Edge 中心进行身份验证来启动和重新启动。 上游绑定到 IoT 中心的遥测存储在本地。 模块之间或 loT 子设备之间的通信通过直接方法或消息来维护。 
 
-4. **重新连接和重新同步 IoT 中心**
+4. **与 IoT 中心重新连接和重新同步**
 
    一旦还原与 IoT 中心的连接，IoT Edge 设备会再次同步。 本地存储的消息按照它们存储的相同顺序传递。 模块和设备的所需属性和报告属性之间的差异已得到协调。 IoT Edge 设备更新对其分配的 IoT 子设备集所做的任何更改。
 
 ## <a name="restrictions-and-limits"></a>约束和限制
 
-本文中介绍的扩展脱机功能[IoT Edge 版本1.0.7 或更高版本](https://github.com/Azure/azure-iotedge/releases)中可用。 早期版本有一个脱机功能子集。 不具备扩展脱机功能的现有 IoT Edge 设备不能通过更改运行时版本进行升级，但是必须用新的 IoT Edge 设备标识重新配置才能获得这些功能。 
+本文所述的扩展脱机功能可在 [IoT Edge 1.0.7 版或更高版本](https://github.com/Azure/azure-iotedge/releases)中获得。 早期版本有一个脱机功能子集。 不具备扩展脱机功能的现有 IoT Edge 设备不能通过更改运行时版本进行升级，但是必须用新的 IoT Edge 设备标识重新配置才能获得这些功能。 
 
 除了美国东部以外，所有提供 IoT 中心的区域都提供扩展的脱机支持。
 
@@ -110,7 +110,7 @@ az iot hub device-identity add-children \
 
 ## <a name="specify-dns-servers"></a>指定 DNS 服务器 
 
-为了提高可靠性，强烈建议指定在环境中使用的 DNS 服务器地址。 参阅[故障排除文章中所述的设置 DNS 服务器](troubleshoot.md#resolution-7)的两个选项。
+为了提高可靠性，强烈建议指定在环境中使用的 DNS 服务器地址。 若要为 IoT Edge 设置 DNS 服务器，请参阅故障排除一文中的["边缘代理模块](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device)的解决方法"。
 
 ## <a name="optional-offline-settings"></a>可选脱机设置
 
@@ -138,18 +138,18 @@ az iot hub device-identity add-children \
 
 ### <a name="host-storage-for-system-modules"></a>系统模块的主机存储
 
-默认情况下, 消息和模块状态信息存储在 IoT Edge 中心的本地容器文件系统中。 为了提高可靠性, 尤其是在脱机操作时, 还可以在主机 IoT Edge 设备上存储存储。
+默认情况下，消息和模块状态信息存储在 IoT Edge 中心的本地容器文件系统中。 为了提高可靠性，尤其是在脱机操作时，还可以在主机 IoT Edge 设备上存储存储。
 
-若要在主机系统上设置存储, 请为指向容器中的存储文件夹的 IoT Edge 中心和 IoT Edge 代理创建环境变量。 然后，使用创建选项将存储文件夹绑定到主机上的文件夹。 
+若要在主机系统上设置存储，请为指向容器中的存储文件夹的 IoT Edge 中心和 IoT Edge 代理创建环境变量。 然后，使用创建选项将存储文件夹绑定到主机上的文件夹。 
 
 可以在 Azure 门户的“配置高级 Edge 运行时设置”部分配置环境变量和 IoT Edge 中心模块的创建选项。 
 
-1. 对于 IoT Edge 中心和 IoT Edge 代理, 添加一个名为**storageFolder**的环境变量, 指向模块中的一个目录。
-1. 对于 IoT Edge 集线器和 IoT Edge 代理, 添加 "绑定", 将主计算机上的本地目录连接到模块中的一个目录。 例如： 
+1. 对于 IoT Edge 中心和 IoT Edge 代理，添加一个名为**storageFolder**的环境变量，指向模块中的一个目录。
+1. 对于 IoT Edge 集线器和 IoT Edge 代理，添加 "绑定"，将主计算机上的本地目录连接到模块中的一个目录。 例如： 
 
    ![为本地存储添加创建选项和环境变量](./media/offline-capabilities/offline-storage.png)
 
-或者, 你可以在部署清单中直接配置本地存储。 例如： 
+或者，你可以在部署清单中直接配置本地存储。 例如： 
 
 ```json
 "systemModules": {
@@ -193,7 +193,7 @@ az iot hub device-identity add-children \
 
 例如，`"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` 表示主机系统上的目录 /etc/iotedge/storage 映射到容器上的目录 /iotedge/storage/。 或是对于 Windows 系统的另一个示例，`"Binds":["C:\\temp:C:\\contemp"]` 表示主机系统上的目录 C:\\temp 映射到容器上的目录 C:\\contemp。 
 
-在 Linux 设备上, 请确保 IoT Edge 集线器的用户配置文件 "UID 1000" 具有主机系统目录的 "读取"、"写入" 和 "执行" 权限。 这些权限是必需的, 以便 IoT Edge 中心可以将消息存储在目录中, 并在以后检索这些消息。 (IoT Edge 代理以 root 身份运行, 因此无需其他权限。)管理 Linux 系统上的目录权限有多种方法, 包括使用`chown`更改目录所有者, 然后`chmod`更改权限。 例如：
+在 Linux 设备上，请确保 IoT Edge 集线器的用户配置文件 "UID 1000" 具有主机系统目录的 "读取"、"写入" 和 "执行" 权限。 这些权限是必需的，以便 IoT Edge 中心可以将消息存储在目录中，并在以后检索这些消息。 （IoT Edge 代理以 root 身份运行，因此无需其他权限。）管理 Linux 系统上的目录权限有多种方法，包括使用`chown`更改目录所有者，然后`chmod`更改权限。 例如：
 
 ```bash
 sudo chown 1000 <HostStoragePath>
@@ -207,5 +207,5 @@ sudo chmod 700 <HostStoragePath>
 详细了解如何为父/子设备连接设置透明网关： 
 
 * [配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)
-* [在 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)
+* [通过 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)
 * [将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)

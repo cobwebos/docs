@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 67f3fd8f3166abac987e8fefbbf4a020f165c8bf
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951870"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091816"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>消息会话：先进先出 (FIFO) 
 
@@ -40,6 +40,9 @@ ms.locfileid: "68951870"
 在门户中，选中下图中展示的复选框设置标志：
 
 ![][2]
+
+> [!NOTE]
+> 在队列或订阅上启用会话时，客户端应用程序无法***再***发送/接收常规消息。 所有消息都必须作为会话的一部分进行发送（通过设置会话 id）并接收会话接收。
 
 会话 API 存在于队列和订阅客户端上。 可以使用一个命令性模型，控制会话和消息的接收时间；还可以使用一个基于处理程序的模型（类似于 OnMessage），此模型简化了接收循环的管理操作。
 
@@ -79,13 +82,13 @@ ms.locfileid: "68951870"
 
 ## <a name="impact-of-delivery-count"></a>传递计数的影响
 
-会话上下文中每条消息的传递数定义与会话的由于没有中的定义略有不同。 下面是一个表, 汇总了传递计数增加的时间。
+会话上下文中每条消息的传递数定义与会话的由于没有中的定义略有不同。 下面是一个表，汇总了传递计数增加的时间。
 
 | 应用场景 | 消息的传递计数是否递增 |
 |----------|---------------------------------------------|
-| 会话被接受, 但会话锁过期 (由于超时) | 是 |
-| 会话被接受, 会话中的消息不会完成 (即使它们已被锁定), 会话也会关闭 | 否 |
-| 接受会话, 消息完成, 然后显式关闭会话 | 不适用 (这是标准流。 此处的消息将从会话中删除) |
+| 会话被接受，但会话锁过期（由于超时） | 是 |
+| 会话被接受，会话中的消息不会完成（即使它们已被锁定），会话也会关闭 | 否 |
+| 接受会话，消息完成，然后显式关闭会话 | 不适用（这是标准流。 此处的消息将从会话中删除） |
 
 ## <a name="next-steps"></a>后续步骤
 

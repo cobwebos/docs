@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: hrasheed
-ms.openlocfilehash: bcc29902628f4e7051d6a838d2e9ac145df9e45e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 533bd750056f2e961ca9239e995fbfc62b2381d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916921"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076686"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>授权用户访问 Apache Ambari 视图
 
@@ -30,7 +30,7 @@ Active Directory 用户可以使用其域凭据登录到群集节点。 他们�
 
 要访问 [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) 上的 Ambari 管理页面，请浏览到 **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** 。 输入创建群集时定义的群集管理员用户名和密码。 接下来，在 Ambari 仪表板中，选择“管理”菜单下面的“管理 Ambari”：
 
-![管理 Ambari](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
+![Apache Ambari 仪表板管理](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>授予对 Apache Hive 视图的权限
 
@@ -38,11 +38,11 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 1. 在管理页中，选择左侧“视图”菜单标题下面的“视图”链接。
 
-    ![“视图”链接](./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png)
+    ![Apache Ambari 视图视图链接](./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png)
 
 2. 在“视图”页中，展开“HIVE”行。 有一个默认的 Hive 视图，它是在将 Hive 服务添加到群集时创建的。 还可以根据需要创建更多的 Hive 视图实例。 选择一个 Hive 视图：
 
-    ![视图 - Hive 视图](./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png)
+    ![HDInsight 视图-Apache Hive 视图](./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png)
 
 3. 滚动到“视图”页的底部。 在“权限”部分下面，可使用两个选项向域用户授予对该视图的权限：
 
@@ -54,20 +54,20 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
    * 开始键入用户名，随后会看到以前定义的名称的下拉列表。
 
-     ![用户自动填充](./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png)
+     ![Apache Ambari 用户自动完成](./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png)
 
    * 选择或完成键入用户名。 若要将此用户名添加为新用户，请选择“新建”按钮。
 
    * 若要保存更改，请选中**蓝色复选框**。
 
-     ![用户已输入](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
+     ![Apache Ambari 授予用户权限](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
 
 1. 若要添加组，请选择“添加组”按钮。
 
    * 开始键入组名称。 选择现有组名称或添加新组的过程与添加用户的过程相同。
    * 若要保存更改，请选中**蓝色复选框**。
 
-     ![组已输入](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
+     ![Apache Ambari grant 权限](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
 
 若要向某个用户分配该视图的使用权限，但不希望该用户成为拥有其他权限的组的成员，那么，将用户直接添加到视图的做法就很有效。 若要降低管理开销，向组分配权限的做法可能更简便。
 
@@ -77,7 +77,7 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 若要将用户和组分配到 Tez 视图实例，请如前所述，展开“视图”页上的“TEZ”行。
 
-![视图 - Tez 视图](./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png)
+![HDInsight 视图-Apache Tez 视图](./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png)
 
 若要添加用户或组，请重复上一部分中的步骤 3 - 5。
 
@@ -93,11 +93,11 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 若要管理角色，请转到 **Ambari 管理页**，在左侧的“群集”菜单组中选择“角色”链接。
 
-![“角色”菜单链接](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
+![Apache Ambari 角色菜单链接](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 
 若要查看授予每个角色的权限列表，请单击“角色”页上“角色”表标题旁边的蓝色问号。
 
-![角色菜单链接权限](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "角色菜单链接权限")
+![Apache Ambari 角色菜单链接权限](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Apache Ambari 角色菜单链接权限")
 
 在此页上，有两个可用于管理用户角色和组角色的不同视图：“块”和“列表”。
 
@@ -105,7 +105,7 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 “块”独行显示每个角色，提供前面所述的“向这些用户分配角色”和“向这些组分配角色”选项。
 
-![角色块视图](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
+![Apache Ambari 角色阻止视图](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
 
 ### <a name="list-view"></a>列表视图
 
@@ -113,11 +113,11 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 * “列表”视图的“用户”类别显示所有用户的列表，可让我们在下拉列表中选择每个用户的角色。
 
-    ![角色列表视图 - 用户](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
+    ![Apache Ambari 角色列表视图-用户](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
 *  “列表”视图的“组”类别显示所有组，以及分配给每个组的角色。 在本示例中，组列表已从群集“域”设置的“访问用户组”属性中指定的 Azure AD 组同步。 请参阅[在启用了 ESP 的情况下创建 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)。
 
-    ![角色列表视图 - 组](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
+    ![Apache Ambari 角色列表视图-组](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
     在上图中，为“hiveusers”组分配了“群集用户”角色。 这是一个只读的角色，允许该组的用户查看但不允许更改服务配置和群集指标。
 
@@ -125,13 +125,13 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 我们已向 Azure AD 域用户“hiveuser1”分配了访问 Hive 和 Tez 视图的权限。 当我们启动 Ambari Web UI 并输入该用户的域凭据（电子邮件格式的 Azure AD 用户名，以及密码）时，该用户会重定向到 Ambari 的“视图”页。 在此页中，该用户可以选择任何可访问的视图。 该用户无法访问站点的其他任何部分，包括仪表板、服务、主机、警报或管理页。
 
-![拥有仅限查看权限的用户](./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png)
+![仅具有视图的 Apache Ambari 用户](./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png)
 
 ## <a name="log-in-to-ambari-as-a-cluster-user"></a>以群集用户的身份登录到 Ambari
 
 我们已将 Azure AD 域用户“hiveuser2”分配到“群集用户”角色。 此角色有权访问仪表板和所有菜单项。 群集用户有权使用的选项比管理员要少。 例如，hiveuser2 可以查看每个服务的配置，但不能编辑这些配置。
 
-![具有“群集用户”角色的用户](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
+![Apache Ambari 仪表板显示](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
 
 ## <a name="next-steps"></a>后续步骤
 

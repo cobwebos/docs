@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fc0f259a4866f7eb2438938c7a10989db9200aa4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976972"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000662"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 日志记录
 
@@ -35,7 +35,7 @@ ms.locfileid: "68976972"
 > 本文提供有关更新诊断日志记录的 Azure PowerShell 说明。 也可以使用 Azure 门户的“诊断日志”部分的 Azure Monitor 来更新诊断日志记录。  
 >
 
-有关 Key Vault的概述信息，请参阅[什么是 Azure Key Vault？](key-vault-whatis.md)。 有关 Key Vault 可用位置的信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
+有关 Key Vault的概述信息，请参阅[什么是 Azure Key Vault？](key-vault-overview.md)。 有关 Key Vault 可用位置的信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
 
 ## <a name="prerequisites"></a>先决条件
 

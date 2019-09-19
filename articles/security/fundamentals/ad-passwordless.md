@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d1c69cd1cf9990fc77a24e18d87690210453cf75
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899948"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091953"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>没有密码的世界 Azure Active Directory
 
@@ -107,9 +107,9 @@ Windows Hello 企业版提供了一种方便的登录体验, 用于对用户进�
 
 #### <a name="user-manages-their-windows-hello-for-business-credentials"></a>用户管理其 Windows Hello 企业版凭据
 
-[MICROSOFT PIN 重置服务](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset)是 Azure AD 中的一项功能, 使用户能够根据需要重置其 PIN。 使用组策略、Microsoft Intune 或兼容的 MDM, 管理员可以配置 Windows 10 设备以安全地使用 Microsoft PIN 重置服务, 该服务使用户可以通过设置或在锁定屏幕上重置其忘记的 PIN, 而无需重新注册。
+[MICROSOFT PIN 重置服务](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset)是 Azure AD 中的一项功能, 使用户能够根据需要重置其 PIN。 使用组策略、Microsoft Intune 或兼容的 MDM, 管理员可以配置 Windows 10 设备以安全地使用 Microsoft PIN 重置服务, 该服务使用户可以通过设置或在锁定屏幕上重置其忘记的 PIN, 而无需重新注册。
 
-有时用户必须回退到使用密码。 [自助服务密码重置](../../active-directory/authentication/howto-sspr-deployment.md)(SSPR) 是另一项 Azure AD 功能, 使用户能够重置其密码, 而无需联系 IT 员工。 在使用服务之前, 用户必须注册以进行自助密码重置。 注册过程中, 用户选择一个或多个由其组织启用的身份验证方法。 SSPR 使用户无论在何处或是当天的时间, 都可以快速地取消阻止并继续工作。 通过允许用户取消阻止其自身, 你的组织可以降低大多数常见密码相关问题的非生产时间和高支持成本。
+有时用户必须回退到使用密码。 [自助服务密码重置](../../active-directory/authentication/howto-sspr-deployment.md)(SSPR) 是另一项 Azure AD 功能, 使用户能够重置其密码, 而无需联系 IT 员工。 在使用服务之前, 用户必须注册以进行自助密码重置。 注册过程中, 用户选择一个或多个由其组织启用的身份验证方法。 SSPR 使用户无论在何处或是当天的时间, 都可以快速地取消阻止并继续工作。 由于用户可以自行消除阻碍，组织可以降低大多数常见密码相关问题造成的非产出时间和较高的支持成本。
 
 ## <a name="passwordless-sign-in-with-microsoft-authenticator"></a>无密码登录 Microsoft Authenticator
 
@@ -125,7 +125,7 @@ Windows Hello 企业版提供了一种方便的登录体验, 用于对用户进�
 
 * 已为最终用户启用 Azure 多重身份验证
 
-* 建议用户使用 Microsoft Intune 或第三方移动设备管理 (MDM) 解决方案来注册其设备, 以便简化应用程序的部署
+* 建议用户使用 Microsoft Intune 或第三方移动设备管理（MDM）解决方案来注册其设备，以便简化应用程序的部署
 
 假如满足了这些要求, 管理员就可以使用[Windows PowerShell](../../active-directory/authentication/howto-authentication-passwordless-phone.md)在租户中启用无密码手机登录。 在租户中启用手机登录后, 最终用户可以选择使用手机登录, 方法是在应用的**帐户**屏幕上选择其工作或学校帐户, 然后选择 "**启用手机登录**"。
 

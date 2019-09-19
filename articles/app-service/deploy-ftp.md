@@ -11,16 +11,16 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/30/2018
+ms.date: 09/18/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: f239fb4464d2e7f67b91a2d18c21b089ffd52b27
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070488"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098073"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
@@ -72,9 +72,9 @@ ms.locfileid: "70070488"
 
 为了增强安全性，只应启用基于 SSL 的 FTP。 如果不使用 FTP 部署，也可禁用 FTP 和 FTPS。
 
-如果应用的资源页位于 [Azure 门户](https://portal.azure.com)中，请在左侧导航中选择“应用设置”。
+在[Azure 门户](https://portal.azure.com)的应用的资源页面中，从左侧导航栏中选择 "**配置** > **常规设置**"。
 
-若要禁用未加密的 FTP，请选择“仅 FTPS”。 若要将 FTP 和 FTPS 都禁用，请选择“禁用”。 完成后，单击“保存”。 如果使用“仅 FTPS”，则必须通过导航到 Web 应用的“SSL 设置”边栏选项卡来强制实施 TLS 1.2 或更高版本。 TLS 1.0 和 1.1 不支持“仅 FTPS”。
+若要禁用未加密的 FTP，请仅在**ftp 状态**中选择**FTPS** 。 若要完全禁用 FTP 和 FTPS，请选择 "**禁用**"。 完成后，单击“保存”。 如果**仅使用 FTPS**，则必须通过导航到 web 应用的 " **TLS/SSL 设置**" 边栏选项卡来强制使用 tls 1.2 或更高版本。 TLS 1.0 和 1.1 不支持“仅 FTPS”。
 
 ![禁用 FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 

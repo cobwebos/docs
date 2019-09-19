@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: e14cb56db6e45fe86ecd5e73766c47d29dd23fa1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: efac8755be8435ae7929fdcb2ecedb4959c363b9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984234"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097145"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文本分析 API 的语言和区域支持
 
@@ -48,16 +48,17 @@ ms.locfileid: "70984234"
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | 阿拉伯语      | `ar`          |           |             | ✔ \*                     | |
 | 捷克语       | `cs`          |           |             | ✔ \*                     | |
-| 简体中文 | `zh-CN`| ✔ \***     |             | ✔         |    |
+| 简体中文 | `zh-hans`| ✔ \***     |             | ✔         |    |
+| 中文-繁体 | `zh-hant`| ✔ \***     |             | ✔         |    |
 | 丹麦语      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | 荷兰语       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
-| 英语     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
+| 英语     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
 | 芬兰语     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| 法语      | `fr`          | ✔        | ✔           |  ✔            |     |
+| 法语      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
 | 德语      | `de`          | ✔ \*     | ✔           |  ✔           |     |
 | 希腊语       | `el`          | ✔ \*     |             |            |     |
 | 匈牙利语   | `hu`          |           |             |  ✔ \*          |     | 
-| 意大利语     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
+| 意大利语     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |
 | 日语    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
 | 韩语      | `ko`          |          | ✔           |  ✔ \*          |     |
 | 挪威语(博克马尔语) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |

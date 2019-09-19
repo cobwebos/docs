@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c722dc6af2b98adb60045d530bb38de7762027d5
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 2f81c0affb78d5944b8ba910cccfa0be655f1a6f
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477894"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097938"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure 自动化中的 Az 模块支持
 
@@ -22,7 +22,7 @@ Azure 自动化支持在 runbook 中使用 [Azure Powershell Az 模块](/powersh
 
 ## <a name="considerations"></a>注意事项
 
-在 Azure 自动化中使用 Az 模块时，需要考虑很多事项。 自动化帐户中更高级别的解决方案可以使用 runbook 和模块。 编辑 runbook 或升级模块可能会导致 runbook 出现问题。 在导入新的 `Az` 模块前，应该在单独的自动化帐户中认真测试所有 runbook 和解决方案。 对模块的任何修改都会对更高级别的解决方案产生负面影响，例如更新管理以及在非工作时间启动/停止 VM。 建议不要更改包含任何解决方案的自动化帐户中的模块和 runbook。 此行为并非特定于 Az 模块。 在自动化帐户中引入任何更改时，都应考虑此行为。
+在 Azure 自动化中使用 Az 模块时，需要考虑很多事项。 自动化帐户中更高级别的解决方案可以使用 runbook 和模块。 编辑 runbook 或升级模块可能会导致 runbook 出现问题。 在导入新的 `Az` 模块前，应该在单独的自动化帐户中认真测试所有 runbook 和解决方案。 对模块的任何修改都可能导致[启动/停止](automation-solution-vm-management.md)解决方案不良。 建议不要更改包含任何解决方案的自动化帐户中的模块和 runbook。 此行为并非特定于 Az 模块。 在自动化帐户中引入任何更改时，都应考虑此行为。
 
 在自动化帐户中导入 `Az` 模块的行为不会在 runbook 使用的 PowerShell 会话中自动导入该模块。 在以下情况中，模块会导入到 PowerShell 会话中：
 
@@ -53,11 +53,11 @@ Azure 自动化支持在 runbook 中使用 [Azure Powershell Az 模块](/powersh
 
 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) 模块是其他 `Az.*` 模块的依赖项。 因此，需要先将此模块导入自动化帐户，然后才能导入任何其他模块。
 
-在自动化帐户中，选择“共享资源”下的“模块”   。 单击“浏览库”，打开“浏览库”页   。  在搜索栏中，输入模块名称（例如 `Az.Accounts`）。 在 PowerShell 模块页，单击“导入”，将模块导入自动化帐户  。
+在自动化帐户中，选择“共享资源”下的“模块”。 单击“浏览库”，打开“浏览库”页。  在搜索栏中，输入模块名称（例如 `Az.Accounts`）。 在 PowerShell 模块页，单击“导入”，将模块导入自动化帐户。
 
 ![从自动化帐户导入模块](media/az-modules/import-module.png)
 
-还可以通过搜索模块，使用 [PowerShell 库](https://www.powershellgallery.com)完成此导入过程。 找到模块后，选择该模块，然后在“Azure 自动化”选项卡下，单击“部署到 Azure 自动化”   。
+还可以通过搜索模块，使用 [PowerShell 库](https://www.powershellgallery.com)完成此导入过程。 找到模块后，选择该模块，然后在“Azure 自动化”选项卡下，单击“部署到 Azure 自动化”。
 
 ![直接从库中导入模块](media/az-modules/import-gallery.png)
 

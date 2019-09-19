@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: ce1d0542530c4f190ace52d45e2369d6ecc18772
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1fd4e9156e29133b1db4fe9ab9a0825eb1aa3b55
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384081"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097578"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关上的后端运行状况问题
 ==================================================
@@ -81,10 +81,10 @@ BackendAddressPoolsText : [
 "后端运行状况" 选项卡的 "详细信息" 列中显示的消息可提供有关该问题的详细信息，并根据这些信息开始解决问题。
 
 > [!NOTE]
-> 默认探测请求的格式<protocol>为：//127.0.0.1：<port>/，例如， <http://127.0.0.1/>对于端口80上的 http 探测，只会将 http 状态代码200-399 作为正常响应的响应。 协议和目标端口从 HTTP 设置继承而来。 如果你希望应用程序网关在不同的协议、主机名或路径上探测，并接受其他状态代码为 "正常"，请配置自定义探测，并将其与 HTTP 设置关联。
+> 以\<\>协议\>：//127.0.0.1：\<端口/的格式发送默认探测请求，例如， <http://127.0.0.1/>对于端口80上的 http 探测，只考虑 http 状态代码200-399 的响应正常响应。 协议和目标端口从 HTTP 设置继承而来。 如果你希望应用程序网关在不同的协议、主机名或路径上探测，并接受其他状态代码为 "正常"，请配置自定义探测，并将其与 HTTP 设置关联。
 
-### <a name="error-messages"></a>错误消息
-
+<a name="error-messages"></a>错误消息
+------------------------
 #### <a name="backend-server-timeout"></a>后端服务器超时
 
 **消息：** 后端响应应用程序网关\'运行状况探测所花的时间超过了探测设置中的超时阈值。
@@ -257,7 +257,7 @@ BackendAddressPoolsText : [
 > [!NOTE]
 > 如果后端服务器未与 TLS 握手中的根 > 中间（如果适用） > 叶，则也可能会出现上述错误。 若要验证，可以从任何客户端使用 OpenSSL 命令，并使用应用程序网关探测中配置的设置连接到后端服务器。
 
-例如，
+例如，应用于对象的
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```

@@ -5,6 +5,7 @@ description: 了解如何在经典部署模型中使用 Azure 经典 CLI 创建�
 services: load-balancer
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 991e6554df62591dea5c126f8ea82704373d6ffd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0b061da308f2e8635cf1722cb6a735624501374
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60781233"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090979"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>开始使用 Azure 经典 CLI 创建内部负载均衡器
 
@@ -75,7 +76,7 @@ azure service internal-load-balancer add --serviceName mytestcloud --internalLBN
 
 有关详细信息，请查看 `azure service internal-load-balancer --help` 。
 
-可以使用命令 `azure service internal-load-balancer list` 云服务名称  查看内部负载均衡器属性。
+可以使用命令 `azure service internal-load-balancer list` 云服务名称查看内部负载均衡器属性。
 
 下面是数据的示例：
 
@@ -98,7 +99,7 @@ azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 
 
 ### <a name="step-3"></a>步骤 3
 
-使用 `azure vm show` 虚拟机名称  验证负载均衡器配置
+使用 `azure vm show` 虚拟机名称验证负载均衡器配置
 
 ```azurecli
 azure vm show DB1

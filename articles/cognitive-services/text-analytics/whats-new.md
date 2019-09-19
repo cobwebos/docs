@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4c6499cd0e105e28954b6d4df667c71a51b9ccff
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 432d81b4282e45bc2f33d098e618f2edd152628b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017758"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098025"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -28,7 +28,7 @@ ms.locfileid: "71017758"
 * 为文本中的不同情绪自动添加标签。
 * 在文档和句子级别上情绪分析和输出。 
 
-它支持英语`Australia East`、日语和简体中文，可用于以下区域：、 `Southeast Asia` `North Europe` `Central Canada`、 `Central US`、 `East Asia`、 `East US` `East US 2` `South Central US` 、、、、、 `UK South`、 `West Europe`和。`West US 2`
+它支持英语、法语、意大利语、日语、简体中文和繁体中文，并在以下`Australia East`区域提供：、 `Central Canada`、 `Central US`、 `East Asia`、 `East US` `East US 2`、、 `North Europe`、 `Southeast Asia`、 `South Central US`、 `UK South`、和。`West Europe` `West US 2`
 
 > [!div class="nextstepaction"]
 > [详细了解情绪分析 v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)

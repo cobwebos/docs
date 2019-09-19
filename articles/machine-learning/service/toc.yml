@@ -152,6 +152,9 @@
         - name: 添加和注册数据集
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
+        - name: 使用数据集进行训练
+          displayName: 'data, dataset'
+          href: how-to-train-with-datasets.md
     - name: 训练模型
       items:
         - name: 设置训练环境

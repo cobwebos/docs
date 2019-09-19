@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: ae3e45ece1bd53846ab7728c29c0da1b709fe42c
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: eab6e7e0fb834447a55b67dfc9a17c470e9e3361
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915948"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091772"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -82,7 +82,7 @@ ms.locfileid: "70915948"
 
 | 状态 | 描述 |
 |:---|:---|
-| 新 | 此问题刚刚检测到，尚未进行评审。 |
+| 新建 | 此问题刚刚检测到，尚未进行评审。 |
 | 已确认 | 管理员已审查警报，并已开始进行处理。 |
 | 已关闭 | 问题已解决。 关闭某个警报后，可通过将其更改为另一种状态来重新打开它。 |
 
@@ -202,9 +202,9 @@ ms.locfileid: "70915948"
   }
 }
 ```
-您可以查询警报中的[重要](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields)字段。
+您可以查询警报中的[重要](alerts-common-schema-definitions.md#essentials)字段。
 
-使用[警报管理 REST API](https://aka.ms/alert-management-api)获取有关特定警报的详细信息，包括[警报上下文](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields)字段。
+使用[警报管理 REST API](https://aka.ms/alert-management-api)获取有关特定警报的详细信息，包括[警报上下文](alerts-common-schema-definitions.md#alert-context)字段。
 
 ## <a name="next-steps"></a>后续步骤
 

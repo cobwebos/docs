@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: 75a8207cd214a63258ddb167b887fe83b7aa032a
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 784bf15a58e25ba4cba18494adc295343d0c175a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008828"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098895"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -132,7 +132,7 @@ RDM | 不可用 | 不可用
 静态加密 (SSE)| 是 | 是
 高级存储 | 是 | 是
 导入/导出服务 | 否 | 否
-启用了防火墙的 Azure 存储帐户 | 否  | 是。 对于目标存储和缓存。
+启用了防火墙的 Azure 存储帐户 | 是。 对于目标存储和缓存。 | 是。 对于目标存储和缓存。
 修改存储帐户 | 否。 启用复制后，无法修改目标 Azure 存储帐户。 修改、禁用和重新启用灾难恢复。 | 否
 
 

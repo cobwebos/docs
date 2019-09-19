@@ -11,12 +11,12 @@ ms.date: 01/04/2019
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: c4a3fc20e806ec91ed2646e6131f682bf5c80e38
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: eb7a7eb8e1bdacae4b74e3a0019a376c440fe4d5
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140836"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091979"
 ---
 # <a name="templates"></a>模板
 
@@ -56,7 +56,7 @@ ms.locfileid: "70140836"
 
     -   从 \<源\> 复制到 \<目标\>
 
-        -   从 Amazon S3 复制到 Azure Data Lake Store Gen 2
+        -   [从 Amazon S3 到 Azure Data Lake Store 第2代](solution-template-migration-s3-azure.md)
 
         -   从 Google Big Query 复制到 Azure Data Lake Store Gen 2
 
