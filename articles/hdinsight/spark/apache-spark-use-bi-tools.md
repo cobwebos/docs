@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/16/2019
-ms.openlocfilehash: 319668ac81b390f9a8bf70da36dd3cf1508f5c37
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: bb803861fa64beb0b4afe2202230209493f42a1d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885175"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003662"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>教程：使用 Power BI 在 HDInsight 中分析 Apache Spark 数据
 
@@ -46,7 +46,7 @@ ms.locfileid: "70885175"
 
     输出如下所示：
 
-    ![在 Spark 中显示表](./media/apache-spark-use-bi-tools/show-tables.png)
+    ![在 Spark 中显示表](./media/apache-spark-use-bi-tools/apache-spark-show-tables.png)
 
     如果在开始本教程之前关闭笔记本，这会清除 `hvactemptable`，使其不包含在输出中。  只有元存储中存储的 Hive 表（由“isTemporary”列下的“False”表示）可从 BI 工具中进行访问   。 在本教程中，将连接到创建的 hvac 表  。
 
@@ -59,7 +59,7 @@ ms.locfileid: "70885175"
 
     输出如下所示：
 
-    ![在 Spark 中显示 hvac 表中的行](./media/apache-spark-use-bi-tools/select-limit.png)
+    ![在 Spark 中显示 hvac 表中的行](./media/apache-spark-use-bi-tools/apache-spark-select-limit.png)
 
 3. 请在 Notebook 的“文件”菜单中选择“关闭并停止”   。 关闭笔记本以释放资源。
 
@@ -127,31 +127,32 @@ ms.locfileid: "70885175"
 Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分，首先发布数据集和报表。 然后，将报表固定到仪表板。 仪表板通常用于重点处理报表中的数据子集；此报表中只有一个可视化效果，但仍可用于完成此步骤。
 
 1. 打开 Power BI Desktop。
-2. 在“开始”选项卡上，单击“发布”   。
+
+1. 在“开始”选项卡上，单击“发布”   。
 
     ![从 Power BI Desktop 发布](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "从 Power BI Desktop 发布")
 
-2. 选择要将数据集发布和报告到的工作区，然后单击“选择”  。 在下图中，默认选择“我的工作区”  。
+1. 选择要将数据集发布和报告到的工作区，然后单击“选择”  。 在下图中，默认选择“我的工作区”  。
 
     ![选择要将数据集发布和报告到的工作区](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "选择要将数据集发布和报告到的工作区") 
 
-3. 发布成功后，单击“在 Power BI 中打开 BuildingTemperature.pbix”  。
+1. 发布成功后，单击“在 Power BI 中打开 BuildingTemperature.pbix”  。
 
     ![发布成功，请单击输入凭据](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "发布成功，请单击输入凭据") 
 
-4. 在 Power BI 服务中，单击“输入凭据”  。
+1. 在 Power BI 服务中，单击“输入凭据”  。
 
     ![在 Power BI 服务中输入凭据](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "在 Power BI 服务中输入凭据")
 
-5. 单击“编辑凭据”  。
+1. 单击“编辑凭据”  。
 
     ![在 Power BI 服务中编辑凭据](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "在 Power BI 服务中编辑凭据")
 
-6. 输入 HDInsight 登录帐户信息，然后单击“登录”  。 默认帐户名为 admin  。
+1. 输入 HDInsight 登录帐户信息，然后单击“登录”  。 默认帐户名为 admin  。
 
     ![登录 Spark 群集](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "登录 Spark 群集")
 
-7. 在左窗格中，转到“工作区” > “我的工作区” > “报表”，然后单击 BuildingTemperature     。
+1. 在左窗格中，转到“工作区” > “我的工作区” > “报表”，然后单击 BuildingTemperature     。
 
     ![报表位于左窗格的报表下](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "报表位于左窗格的报表下")
 
@@ -159,15 +160,15 @@ Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分�
 
     现可在 Power BI 服务中使用 Power BI Desktop 中创建的视觉对象。 
 
-8. 将游标悬停在可视化效果上，然后单击右上角的固定图标。
+1. 将游标悬停在可视化效果上，然后单击右上角的固定图标。
 
     ![Power BI 服务中的报表](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Power BI 服务中的报表")
 
-9. 选择“新的仪表板”，输入名称 `Building temperature`，再单击“固定”  。
+1. 选择“新的仪表板”，输入名称 `Building temperature`，再单击“固定”  。
 
     ![固定到新的仪表板](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "固定到新仪表板")
 
-10. 在报表中，单击“转到仪表板”  。 
+1. 在报表中，单击“转到仪表板”  。
 
 视觉对象已固定到仪表板 - 可在报表中添加其他视觉对象，并将其固定在同一仪表板上。 有关报表和仪表板的详细信息，请参阅 [Power BI 中的报表](https://powerbi.microsoft.com/documentation/powerbi-service-reports/)和 [Power BI 中的仪表板](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)。
 

@@ -1,20 +1,20 @@
 ---
 title: Hadoop 的高可用性 - Azure HDInsight
 description: 了解 HDInsight 群集如何使用附加的头节点提高可靠性和可用性。 了解这种方式对 Ambari 和 Hive 等 Hadoop 服务造成怎样的影响，以及如何使用 SSH 分别连接到每个头节点。
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1bfc17d343f6e788d22cd158fcb849c5895b019f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 615b1e4c5684084b6c5f88d26293b993c1efbf1f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879769"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104412"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
@@ -106,7 +106,7 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
 出现 Ambari 页面时，该页的左侧将列出已安装的服务。
 
-![已安装的服务](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
+![Apache Ambari 安装的服务](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
 服务旁边可能会出现一系列表示状态的图标。 可以使用页面顶部的“警报”链接查看与服务相关的任何警报。  Ambari 提供多个预定义的警报。
 
@@ -155,11 +155,11 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
 尽管服务页提供了有关每个服务的状态和配置的信息，但并不提供有关该服务正在哪个头节点上运行的信息。 若要查看此信息，请使用页面顶部的“主机”链接。 此页会显示群集内的主机，包括头节点。
 
-![主机列表](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
+![Apache Ambari 头节点主机列表](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 选择一个头节点的链接会显示该节点上运行的服务与组件。
 
-![组件状态](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
+![Apache Ambari 组件状态](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 有关如何使用 Ambari 的详细信息，请参阅[使用 Apache Ambari Web UI 监视和管理 HDInsight](hdinsight-hadoop-manage-ambari.md)。
 

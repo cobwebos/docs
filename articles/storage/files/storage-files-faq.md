@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 0fe893ae95b31b1b676a982a60166041a0ad964d
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: cc827f52d227ee36620bd215dfcba96b433804d3
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015909"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103061"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -68,14 +68,14 @@ ms.locfileid: "69015909"
 
 * <a id="redundancy-options"></a>
   **Azure 文件支持哪些存储冗余选项？**  
-    目前, Azure 文件支持本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和异地冗余存储 (GZRS) (预览版)。 将来我们计划支持读取访问权限异地冗余存储 (RA-GRS)，但目前还没有可分享的日程表。
+    目前，Azure 文件支持本地冗余存储（LRS）、区域冗余存储（ZRS）、异地冗余存储（GRS）和异地冗余存储（GZRS）（预览版）。 将来我们计划支持读取访问权限异地冗余存储 (RA-GRS)，但目前还没有可分享的日程表。
 
 * <a id="tier-options"></a>
   **Azure 文件支持哪些存储层？**  
-    Azure 文件支持两种存储层: 高级和标准。 标准文件共享是在常规用途 (GPv1 或 GPv2) 存储帐户中创建的, 高级文件共享是在 FileStorage 存储帐户中创建的。 了解有关如何创建[标准文件共享](storage-how-to-create-file-share.md)和[高级文件共享](storage-how-to-create-premium-fileshare.md)的详细信息。 
+    Azure 文件支持两种存储层：高级和标准。 标准文件共享是在常规用途（GPv1 或 GPv2）存储帐户中创建的，高级文件共享是在 FileStorage 存储帐户中创建的。 了解有关如何创建[标准文件共享](storage-how-to-create-file-share.md)和[高级文件共享](storage-how-to-create-premium-fileshare.md)的详细信息。 
     
     > [!NOTE]
-    > 不能从 Blob 存储帐户或*高级*常规用途 (GPv1 或 GPv2) 存储帐户创建 Azure 文件共享。 标准 Azure 文件共享必须仅在*标准*常规用途帐户中创建, 并且只能在 FileStorage 存储帐户中创建高级 azure 文件共享。 *高级*常规用途 (GPv1 和 GPv2) 存储帐户仅适用于高级页 blob。 
+    > 不能从 Blob 存储帐户或*高级*常规用途（GPv1 或 GPv2）存储帐户创建 Azure 文件共享。 标准 Azure 文件共享必须仅在*标准*常规用途帐户中创建，并且只能在 FileStorage 存储帐户中创建高级 azure 文件共享。 *高级*常规用途（GPv1 和 GPv2）存储帐户仅适用于高级页 blob。 
 
 * <a id="give-us-feedback"></a>
   **我非常希望可以将某项特定功能添加到 Azure 文件。你们会添加它吗？**  
@@ -89,7 +89,7 @@ ms.locfileid: "69015909"
 
 * <a id="cross-domain-sync"></a>
   **是否可以在同一个同步组中同时包含已加入域的服务器和未加入域的服务器？**  
-    是的。 同步组可以包含具有不同的 Active Directory 成员身份的服务器终结点，即使它们未加入域。 虽然从严格意义上讲这种配置可用，但不建议将此作为常规配置，因为在某个服务器上为文件和文件夹定义的访问控制列表 (ACL) 可能无法由同步组中的其他服务器实施。 为获得最佳结果，建议在同一个 Active Directory 林中的服务器之间、在不同 Active Directory 林中但已建立信任关系的服务器之间，或未加入域的服务器之间进行同步。 我们建议你避免混合使用这些配置。
+    是。 同步组可以包含具有不同的 Active Directory 成员身份的服务器终结点，即使它们未加入域。 虽然从严格意义上讲这种配置可用，但不建议将此作为常规配置，因为在某个服务器上为文件和文件夹定义的访问控制列表 (ACL) 可能无法由同步组中的其他服务器实施。 为获得最佳结果，建议在同一个 Active Directory 林中的服务器之间、在不同 Active Directory 林中但已建立信任关系的服务器之间，或未加入域的服务器之间进行同步。 我们建议你避免混合使用这些配置。
 
 * <a id="afs-change-detection"></a>
   **我通过 SMB 或门户在 Azure 文件共享中直接创建了一个文件。多久后该文件才会同步到同步组中的服务器上？**  
@@ -100,7 +100,7 @@ ms.locfileid: "69015909"
    
     \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
 
-    例如，如果 CentralServer 是较早写入的位置，则 CompanyReport.docx 的第一个冲突将变为 CompanyReport-CentralServer.docx。 第二个冲突将被命名为 CompanyReport-CentralServer-1.docx。
+    例如，如果 CentralServer 是较早写入的位置，则 CompanyReport.docx 的第一个冲突将变为 CompanyReport-CentralServer.docx。 第二个冲突将被命名为 CompanyReport-CentralServer-1.docx。 Azure 文件同步支持每个文件100个冲突文件。 达到最大冲突文件数后，该文件将无法同步，直到冲突文件数小于100。
 
 * <a id="afs-storage-redundancy"></a>
   **Azure 文件同步是否支持异地冗余存储？**  
@@ -144,14 +144,14 @@ ms.locfileid: "69015909"
 
 * <a id="afs-os-support"></a>
   **我是否可以将 Azure 文件同步与 Windows Server 2008 R2、Linux 或我的网络连接存储 (NAS) 设备一起使用？**  
-    目前, Azure 文件同步仅支持 Windows Server 2019、Windows Server 2016 和 Windows Server 2012 R2。 目前，我们暂无可分享的其他计划，但我们愿意根据客户需求支持其他平台。 请在 [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 上告知你想要我们支持的平台。
+    目前，Azure 文件同步仅支持 Windows Server 2019、Windows Server 2016 和 Windows Server 2012 R2。 目前，我们暂无可分享的其他计划，但我们愿意根据客户需求支持其他平台。 请在 [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 上告知你想要我们支持的平台。
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **为什么分层文件存在于服务器终结点命名空间之外？**  
     在 Azure 文件同步代理版本 3 之前，Azure 文件同步阻止将分层文件移到服务器终结点之外但位于服务器终结点所在卷上的其他位置。 复制操作、非分层文件的移动操作以及将分层文件移到其他卷的操作不受影响。 这种行为的原因在于以下隐含假设：文件资源管理器和其他 Windows API 在同一卷上的移动操作是（近乎）即时重命名操作。 这意味着，移动会使文件资源管理器或其他移动方法（如命令行或 PowerShell）看起来没有响应，而 Azure 文件同步会从云中召回数据。 从 [Azure 文件同步代理版本 3.0.12.0](storage-files-release-notes.md#supported-versions) 开始，Azure 文件同步将允许将分层文件移到服务器终结点之外。 我们通过允许分层文件作为服务器终结点之外的分层文件存在，然后在后台召回该文件以避免前面提到的负面影响。 这意味着在同一卷上的移动是即时的，在移动完成后，我们要完成将文件召回到磁盘的所有工作。 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
-  **服务器上的 Azure 文件同步 (同步、云分层等) 出现问题。是否应删除并重新创建服务器终结点？**  
+  **服务器上的 Azure 文件同步（同步、云分层等）出现问题。是否应删除并重新创建服务器终结点？**  
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
@@ -170,7 +170,7 @@ ms.locfileid: "69015909"
 * <a id="ad-support"></a>
 **Azure 文件是否支持基于标识的身份验证和访问控制？**  
     
-    是的, Azure 文件支持 Azure AD 域服务 (Azure AD DS) 利用基于标识的身份验证和访问控制。 使用 Azure 文件的 SMB Azure AD DS 身份验证, 可让已加入域的 Windows Vm Azure AD Windows Vm 使用 Azure AD 凭据访问共享、目录和文件。 有关更多详细信息, 请参阅[Azure 文件概述 Azure Active Directory 域服务 (AZURE AD DS) 身份验证支持 SMB 访问](storage-files-active-directory-overview.md)。 
+    是的，Azure 文件支持 Azure AD 域服务（Azure AD DS）利用基于标识的身份验证和访问控制。 使用 Azure 文件的 SMB Azure AD DS 身份验证，可让已加入域的 Windows Vm Azure AD Windows Vm 使用 Azure AD 凭据访问共享、目录和文件。 有关更多详细信息，请参阅[Azure 文件概述 Azure Active Directory 域服务（AZURE AD DS）身份验证支持 SMB 访问](storage-files-active-directory-overview.md)。 
 
     Azure 文件还提供了另外两种方法来管理访问控制：
 
@@ -178,7 +178,7 @@ ms.locfileid: "69015909"
 
     - Azure 文件同步会保留所有自定义 ACL 或 DACL（无论基于 Active Directory 或本地目录），并复制到其同步到的所有服务器终结点。 由于 Windows 服务器已经可以使用 Active Directory 进行身份验证，因此，在全面支持基于 Active Directory 的身份验证和实现对 ACL 的支持前，Azure 文件同步是一个有效的临时选择。
     
-    若要全面表示 Azure 存储服务支持的所有协议, 可以参阅[授权访问 Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
+    若要全面表示 Azure 存储服务支持的所有协议，可以参阅[授权访问 Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
 
 * <a id="ad-support-devices"></a>
 **Azure 文件 Azure AD DS 身份验证是否支持使用连接到 Azure AD 的设备中的 Azure AD 凭据进行 SMB 访问？**
@@ -188,7 +188,7 @@ ms.locfileid: "69015909"
 * <a id="ad-support-rest-apis"></a>
 **是否有支持获取/设置/复制目录/文件 NTFS ACL 的 REST API？**
 
-    目前, 我们不支持 REST Api 获取、设置或复制目录或文件的 NTFS Acl。
+    目前，我们不支持 REST Api 获取、设置或复制目录或文件的 NTFS Acl。
 
 * <a id="ad-vm-subscription"></a>
 **我是否可以从不同订阅下的 VM 使用 Azure AD 凭据访问 Azure 文件？**
@@ -198,12 +198,12 @@ ms.locfileid: "69015909"
 * <a id="ad-support-subscription"></a>
 **能否使用不同于与文件共享关联的主租户的 Azure AD 租户来启用 Azure 文件 Azure AD DS 身份验证？**
 
-    不能, Azure 文件仅支持与与文件共享位于同一订阅中的 Azure AD 租户 Azure AD DS 集成。 只有一个订阅可以与 Azure AD 租户相关联。
+    不能，Azure 文件仅支持与与文件共享位于同一订阅中的 Azure AD 租户 Azure AD DS 集成。 只有一个订阅可以与 Azure AD 租户相关联。
 
 * <a id="ad-linux-vms"></a>
 **Azure 文件 Azure AD DS 身份验证是否支持 Linux Vm？**
 
-    否, 不支持从 Linux Vm 进行身份验证。
+    否，不支持从 Linux Vm 进行身份验证。
 
 * <a id="ad-aad-smb-afs"></a>
 **能否在 Azure 文件同步管理的文件共享上利用 Azure 文件 Azure AD DS 身份验证？**
@@ -213,7 +213,7 @@ ms.locfileid: "69015909"
 * <a id="encryption-at-rest"></a>
 **如何确保已静态加密 Azure 件共享？**  
 
-    是的。 有关详细信息，请参阅 [Azure 存储服务加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+    是。 有关详细信息，请参阅 [Azure 存储服务加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 * <a id="access-via-browser"></a>
 **如何使用 Web 浏览器提供对特定文件的访问权限？**  
@@ -228,7 +228,7 @@ ms.locfileid: "69015909"
 * <a id="ip-restrictions"></a>
 **是否对 Azure 文件共享实现 IP 限制？**  
 
-    是的。 可以在存储帐户级别对 Azure 文件共享的权限进行限制。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+    是。 可以在存储帐户级别对 Azure 文件共享的权限进行限制。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 * <a id="data-compliance-policies"></a>
 **Azure 文件支持哪些数据符合性策略？**  
@@ -274,7 +274,7 @@ ms.locfileid: "69015909"
 
 * <a id="snapshot-limits"></a>
 **对我可使用的共享快照数有限制吗？**  
-    是的。 Azure 文件可以最多保留 200 张共享快照。 共享快照不计入共享配额，因此，对所有共享快照使用的总空间没有单独的共享限制。 存储帐户限制仍然适用。 在达到 200 个共享快照之后，必须删除旧的共享快照才可创建新的共享快照。
+    是。 Azure 文件可以最多保留 200 张共享快照。 共享快照不计入共享配额，因此，对所有共享快照使用的总空间没有单独的共享限制。 存储帐户限制仍然适用。 在达到 200 个共享快照之后，必须删除旧的共享快照才可创建新的共享快照。
 
 * <a id="snapshot-cost"></a>
 **共享快照的费用是多少？**  
@@ -315,7 +315,7 @@ ms.locfileid: "69015909"
 
 * <a id="restore-snapshotted-file-to-other-share"></a>
 **是否可以将数据从共享快照还原到不同的存储帐户？**  
-    是的。 可以将共享快照文件复制到原始位置或备用位置，其中包括位于同一区域或不同区域的相同/不同的存储帐户。 你还可以将文件复制到本地位置或任何其他云。    
+    是。 可以将共享快照文件复制到原始位置或备用位置，其中包括位于同一区域或不同区域的相同/不同的存储帐户。 你还可以将文件复制到本地位置或任何其他云。    
   
 ### <a name="clean-up-share-snapshots"></a>清除共享快照
 * <a id="delete-share-keep-snapshots"></a>
@@ -344,7 +344,7 @@ ms.locfileid: "69015909"
 
 * <a id="need-larger-share"></a>
 **哪些大小适用于 Azure 文件共享？**  
-    Azure 文件共享大小 (高级和标准) 最多可以扩展到 100 TiB。 高级文件共享的最大大小为 100 TiB, 可作为 GA 提供。 标准文件共享的大小最多为5个 TiB 作为 GA 产品提供, 而大小最高可达 100 TiB。 请参阅 "规划指南" 中的 "[更大的文件共享 (标准层)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) " 一节, 了解有关 "标准" 层的更大文件共享预览的载入说明。
+    Azure 文件共享大小（高级和标准）最多可以扩展到 100 TiB。 高级文件共享的最大大小为 100 TiB，可作为 GA 提供。 标准文件共享的大小最多为5个 TiB 作为 GA 产品提供，而大小最高可达 100 TiB。 请参阅 "规划指南" 中的 "[更大的文件共享（标准层）](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) " 一节，了解有关 "标准" 层的更大文件共享预览的载入说明。
 
 * <a id="open-handles-quota"></a>
 **多少个客户端可以同时访问同一文件？**    

@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: dapine
-ms.openlocfilehash: 3cc61798fb5e5ecba91fef93a743b492dce75211
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 893beb479ee42f5de39d6e2e52251ab4113e3e43
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966736"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105075"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -112,7 +112,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
 
-使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 有关如何获取`{Endpoint_URI}`和`{API_Key}`值的详细信息，请参阅[收集必需的参数](#gathering-required-parameters)。
+使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 有关如何获取`{ENDPOINT_URI}`和`{API_KEY}`值的详细信息，请参阅[收集必需的参数](#gathering-required-parameters)。
 
 可用的[命令示例](../text-analytics-resource-container-config.md#example-docker-run-commands) `docker run` 。
 

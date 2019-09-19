@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 3cad1a73dd98928ed12748e2acffaea158dc5924
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 594edab4e6a69edb49c8a1ce407c9fd943d11f2b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010295"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103159"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL 数据库功能
 
@@ -114,8 +114,8 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 
 | **平台功能** | **单一数据库和弹性池** | **托管实例和实例池** |
 | --- | --- | --- |
-| [活动异地复制](sql-database-active-geo-replication.md) | 是 - 除超大规模之外的所有服务层级 | 否，请参阅用作替代方案的[自动故障转移组（预览版）](sql-database-auto-failover-group.md) |
-| [自动故障转移组](sql-database-auto-failover-group.md) | 是 - 除超大规模之外的所有服务层级 | 是，[处于公开预览状态](sql-database-auto-failover-group.md)|
+| [活动异地复制](sql-database-active-geo-replication.md) | 是 - 除超大规模之外的所有服务层级 | 否，请参阅[自动故障转移组](sql-database-auto-failover-group.md)作为替代方法 |
+| [自动故障转移组](sql-database-auto-failover-group.md) | 是 - 除超大规模之外的所有服务层级 | 是，请参阅[自动故障转移组](sql-database-auto-failover-group.md)|
 | 自动缩放 | 是，但只能在[无服务器模型](sql-database-serverless.md)中。 在非服务器模式下，服务层（vCore、存储或 DTU）的更改速度快且处于联机状态。 服务层更改需要最少或没有停机时间。 | 否，需要选择预留的计算和存储。 服务层（vCore 或最大存储）的更改处于联机状态，需要最少或没有停机时间。 |
 | [自动备份](sql-database-automated-backups.md) | 是。 完整备份每 7 天一次，差异备份每 12 小时一次，日志备份每 5-10 分钟一次。 | 是。 完整备份每 7 天一次，差异备份每 12 小时一次，日志备份每 5-10 分钟一次。 |
 | [自动优化（索引）](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [是](sql-database-automatic-tuning.md)| 否 |

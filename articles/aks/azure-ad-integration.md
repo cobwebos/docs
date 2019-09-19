@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: mlearned
-ms.openlocfilehash: 5dabbb6458d0d0d4af51490bea0c3f38a7c5c41d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542892"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103793"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>将 Azure Active Directory 与 Azure Kubernetes Service 集成
 
@@ -86,7 +86,7 @@ ms.locfileid: "69542892"
 
     e. 选择“添加权限”以保存更新。
 
-    f. 在“授予许可”下，选择“授予管理员许可”。 如果当前帐户不是租户管理员，则此按钮可用。
+    f. 在“授予许可”下，选择“授予管理员许可”。 此按钮不可用，当前正在使用的帐户未作为租户管理员列出。
 
     成功授予权限后，门户中会显示以下通知：
 

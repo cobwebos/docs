@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07a978004ee8d2e25772f0d393529cbb509380a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d0ac86dcdb698c554c40325d6a20d6d27de908f8
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967229"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104386"
 ---
 # <a name="tutorial-integrate-apptio-with-azure-active-directory"></a>教程：将 Apptio 与 Azure Active Directory 集成
 
@@ -85,7 +85,7 @@ ms.locfileid: "68967229"
 
     在“标识符”文本框中键入值：`urn:federation:apptio` 
 
-5. Apptio 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
+5. Apptio 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
     ![image](common/edit-attribute.png)
 
@@ -142,12 +142,12 @@ ms.locfileid: "68967229"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-apptio-sso"></a>配置 Apptio SSO
@@ -156,7 +156,7 @@ ms.locfileid: "68967229"
 
 ### <a name="create-apptio-test-user"></a>创建 Apptio 测试用户
 
-在本部分中，将在 Apptio 中创建名为 B.Simon 的用户。 请与  [Apptio 支持团队](https://www.apptio.com/about/contact)协作，在 Apptio 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Apptio 中创建名为 B.Simon 的用户。 请与 [Apptio 支持团队](https://www.apptio.com/about/contact)协作，将用户添加到 Apptio 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

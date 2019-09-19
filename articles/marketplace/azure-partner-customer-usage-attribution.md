@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 40170540458b7bc7ddb30f88117d472858937e8c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 0bbe0e9718a25fdff76e591bf388bf829518502e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962936"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105610"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -166,43 +166,28 @@ GUID 是由 32 位十六进制数字组成的唯一参考编号。 若要创建�
 
 必须注册 Guid, 才能启用客户使用归属。
 
-模板 GUID 的所有注册需通过 Azure 市场云合作伙伴门户 (CPP) 完成。
+模板 Guid 的所有注册都在合作伙伴中心内完成。
 
-将 GUID 添加到模板或用户代理并在 CPP 中注册 GUID 后，系统将跟踪所有部署。
+将 GUID 添加到模板或用户代理中后，在伙伴中心中注册 GUID 后，将跟踪所有部署。
 
-1. 向 [Azure 市场](https://aka.ms/listonazuremarketplace)提出申请，并获取 CPP 的访问权限。
+1. 注册为[商业 marketplace 发布者](https://aka.ms/JoinMarketplace)。
 
-   * 合作伙伴必须[在 CPP 中拥有个人资料](https://docs.microsoft.com/azure/marketplace/become-publisher)。 我们建议在 Azure 市场或 AppSource 中列出产品/服务。
+   * 合作伙伴必须[在合作伙伴中心提供一个配置文件](https://docs.microsoft.com/azure/marketplace/become-publisher)。 我们建议在 Azure 市场或 AppSource 中列出产品/服务。
    * 合作伙伴可以注册多个 GUID。
    * 合作伙伴可为非市场解决方案模板和产品/服务注册 GUID。
 
-1. 登录[云合作伙伴平台](https://cloudpartner.azure.com/)。
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard)。
 
-1. 在右上角选择自己的帐户图标，然后选择“发布者个人资料”。
+1. 在右上角，选择 "设置" 齿轮图标，然后选择 "**开发人员设置**"。
 
-   ![选择“发布者个人资料”](media/marketplace-publishers-guide/guid-image-for-lu.png)
+1. 在 "**帐户设置" 页**上，选择 "**添加跟踪 GUID"。**
 
-1. 在“个人资料”页上，选择“添加跟踪 GUID”。
-
-   ![选择“添加跟踪 GUID”](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
-
-1. 在“跟踪 GUID”框中输入跟踪 GUID。 只输入 GUID，不要包括 **pid-** 前缀。 在“自定义说明”框中，输入产品/服务名称或说明。
-
-   ![个人资料页](media/marketplace-publishers-guide/guid-dev-center-login.png)
-
-   ![输入 GUID 和产品/服务的说明](media/marketplace-publishers-guide/guid-dev-center-example.png)
+1. 在 " **GUID** " 框中，输入你的跟踪 GUID。 只输入 GUID，不要包括 **pid-** 前缀。 在 "**说明**" 框中，输入产品/服务名称或说明。
 
 1. 若要注册多个 GUID，请再次选择“添加跟踪 GUID”。 页面上会显示其他框。
 
-   ![再次选择“添加跟踪 GUID”](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
-
-   ![输入另一个 GUID 和产品/服务的说明](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
-
 1. 选择**保存**。
 
-   ![选择“保存”](media/marketplace-publishers-guide/guid-dev-center-save.png)
-
-将 GUID 添加到模板或用户代理并在 CPP 中注册 GUID 后，系统将跟踪所有部署。
 
 ## <a name="verify-the-guid-deployment"></a>验证 GUID 部署
 

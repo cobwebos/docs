@@ -1,6 +1,6 @@
 ---
-title: 使用从 ADAL.NET 到 MSAL.NET 的 Microsoft Authenticator 迁移 Xamarin iOS 应用程序 |Microsoft
-description: 了解如何使用 Microsoft Authenticator 从适用于 .NET 的 Azure AD 身份验证库（ADAL.NET）将 Xamarin iOS 应用程序迁移到适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）
+title: 将使用 Microsoft Authenticator 的 Xamarin iOS 应用程序从 ADAL.NET 迁移到 MSAL.NET |Microsoft
+description: 了解如何将使用 Microsoft Authenticator 的 Xamarin iOS 应用程序从适用于 .NET 的 Azure AD 身份验证库（ADAL.NET）迁移到适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）。
 documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
@@ -16,33 +16,33 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 609aeeada78985466cb7c254cab32864e5d84b0e
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 4426c070d2fd2e26e0d4368a94996bc32e95129d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70875648"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103954"
 ---
-# <a name="migrating-ios-applications-using-microsoft-authenticator-from-adalnet-to-msalnet"></a>使用从 ADAL.NET 到 MSAL.NET 的 Microsoft Authenticator 迁移 iOS 应用程序
+# <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>将使用 Microsoft Authenticator 的 iOS 应用程序从 ADAL.NET 迁移到 MSAL.NET
 
-你已在使用 ADAL.NET 和 iOS broker，可以迁移到 MSAL.NET [Microsoft 身份验证库](msal-overview.md)，这就支持从版本4.3 开始的 iOS 上的代理。 
+你使用的是适用于 .NET 的 Azure Active Directory 身份验证库（ADAL.NET）和 iOS 代理。 现在可以迁移到适用于 .NET 的[Microsoft 身份验证库](msal-overview.md)（MSAL.NET），它支持从版本4.3 开始的 iOS 上的代理。 
 
-在何处入门？ 本文将帮助你将 Xamarin iOS 应用从 ADAL 迁移到 MSAL。
+你应从何处着手？ 本文可帮助你将 Xamarin iOS 应用从 ADAL 迁移到 MSAL。
 
 ## <a name="prerequisites"></a>先决条件
-本文档假定你已有与 iOS broker 集成的 Xamarin iOS 应用。 如果不这样做，最好直接转到 MSAL.NET，并在其中开始执行 broker 实现。 有关使用新的应用程序在 MSAL.NET 中调用 iOS 代理的详细信息，请参阅[此文档](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications)。
+本文假设已有一个集成了 iOS 代理的 Xamarin iOS 应用。 如果不这样做，请直接转到 MSAL.NET，并在其中开始执行 broker 实现。 有关如何使用新的应用程序在 MSAL.NET 中调用 iOS 代理的信息，请参阅[此文档](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications)。
 
 ## <a name="background"></a>后台
 
 ### <a name="what-are-brokers"></a>什么是代理？
 
-"代理" 是 Microsoft 提供的、Android 和 iOS 上的应用程序（[Microsoft Authenticator](https://www.microsoft.com/account/authenticator)在 Ios 和 android 上，Intune 公司门户 android 上）。 
+代理是 Microsoft 在 Android 和 iOS 上提供的应用程序。 （请参阅 iOS 和 Android 上的[Microsoft Authenticator](https://www.microsoft.com/account/authenticator)应用和 android 上的 Intune 公司门户应用。） 
 
 它们启用：
 
-- 单一登录，
-- 某些[条件访问策略](../conditional-access/overview.md)需要的设备标识（请参阅[设备管理](../conditional-access/conditions.md#device-platforms)）
-- 应用程序标识验证，在某些企业方案中也是必需的（请参阅["Intune 移动应用程序管理" 或 MAM](https://docs.microsoft.com/intune/mam-faq)）
+- 单一登录。
+- 设备标识，这是某些[条件访问策略](../conditional-access/overview.md)所必需的。 有关详细信息，请参阅[设备管理](../conditional-access/conditions.md#device-platforms)。
+- 应用程序身份验证，在某些企业方案中也是必需的。 有关详细信息，请参阅[Intune 移动应用程序管理（MAM）](https://docs.microsoft.com/intune/mam-faq)。
 
 ## <a name="migrate-from-adal-to-msal"></a>从 ADAL 迁移到 MSAL
 
@@ -51,7 +51,9 @@ ms.locfileid: "70875648"
 <table>
 <tr><td>当前 ADAL 代码：</td><td>MSAL 对应项：</td></tr>
 <tr><td>
-在 ADAL.NET 中，每个身份验证上下文启用了 broker 支持，默认情况下它处于禁用状态。 `useBroker` 必须`PlatformParameters`在构造函数中将标志设置为 true，以便调用 broker：
+在 ADAL.NET 中，基于每个身份验证上下文启用了 broker 支持。 此项默认禁用。 必须设置 
+
+`useBroker`在`PlatformParameters`构造函数中将标记为 true 以调用 broker：
 
 ```CSharp
 public PlatformParameters(
@@ -80,7 +82,7 @@ page.BrokerParameters = new PlatformParameters(
 ```
 
 </td><td>
-在 MSAL.NET 中，将基于每个公共客户端应用程序启用 broker 支持。 此项默认禁用。 若要启用它，请使用： 
+在 MSAL.NET 中，代理支持按 PublicClientApplication 启用。 此项默认禁用。 若要启用它，请使用 
 
 `WithBroker()`参数（默认设置为 true），以便调用 broker：
 
@@ -91,7 +93,7 @@ var app = PublicClientApplicationBuilder
                 .WithReplyUri(redirectUriOnIos)
                 .Build();
 ```
-在“获取令牌”调用中：
+在获取令牌调用中：
 ```CSharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
@@ -100,11 +102,13 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-2-set-a-uiviewcontroller"></a>步骤 2：设置 UIViewController()
-在 ADAL.NET 中，你作为 PlatformParameters 的一部分传入 UIViewController （请参阅步骤1中的示例）。 但是，在 MSAL.NET 中，为开发人员提供更大的灵活性，则使用对象窗口，但在正常的 iOS 使用中不需要。 但是，若要使用 broker，需要设置对象窗口，以便发送和接收来自 broker 的响应。 
+在 ADAL.NET 中，你作为的`PlatformParameters`一部分传入了 UIViewController。 （请参阅步骤1中的示例。）在 MSAL.NET 中，为开发人员提供更大的灵活性，可以使用对象窗口，但在常规的 iOS 使用中不需要此窗口。 若要使用 broker，请设置对象窗口，以便发送和接收来自代理的响应。 
 <table>
 <tr><td>当前 ADAL 代码：</td><td>MSAL 对应项：</td></tr>
 <tr><td>
-UIViewController 会传递到 iOS 特定平台中的 PlatformParamters。
+将 UIViewController 传递到 
+
+`PlatformParameters`在 iOS 特定平台中。
 
 ```CSharp
 page.BrokerParameters = new PlatformParameters(
@@ -113,11 +117,10 @@ page.BrokerParameters = new PlatformParameters(
           PromptBehavior.SelectAccount);
 ```
 </td><td>
-在 MSAL.NET 中，需要执行以下两项操作来设置适用于 iOS 的对象窗口：
+在 MSAL.NET 中，你可以执行以下两项操作来设置适用于 iOS 的对象窗口：
 
-1) 在 `AppDelegate.cs` 中，将 `App.RootViewController` 设置为新的 `UIViewController()`。 此分配将确保有 UIViewController 调用 broker。 如果未正确设置此参数，可能会收到以下错误：`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
-2) 在 AcquireTokenInteractive 调用中，使用`.WithParentActivityOrWindow(App.RootViewController)`
-并将引用传递给 you'will 使用的对象窗口。
+1. 在`AppDelegate.cs`中， `App.RootViewController`将设置为`UIViewController()`新的。 此分配可确保有 UIViewController 调用 broker。 如果未正确设置，则可能会收到此错误：`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
+1. 在 AcquireTokenInteractive 调用上，使用`.WithParentActivityOrWindow(App.RootViewController)`，并传入要使用的对象窗口的引用。
 
 例如：
 
@@ -130,7 +133,7 @@ page.BrokerParameters = new PlatformParameters(
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
-在“获取令牌”调用中：
+在获取令牌调用中：
 ```CSharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
@@ -140,9 +143,9 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>步骤 3：更新 AppDelegate 以处理回调
-ADAL 和 MSAL 都将调用 broker，而 broker 将依次通过`OpenUrl` `AppDelegate`类的方法回调到应用程序。 [此处](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS/_edit#step-two-update-appdelegate-to-handle-the-callback)提供的详细信息
+ADAL 和 MSAL 都调用 broker，而 broker 又通过`OpenUrl` `AppDelegate`类的方法回调到你的应用程序。 有关详细信息，请参阅[此文档](msal-net-use-brokers-with-xamarin-apps.md#step-2-update-appdelegate-to-handle-the-callback)。
 
-： heavy_check_mark：**ADAL.NET 和 MSAL.NET 之间没有更改**
+在 ADAL.NET 和 MSAL.NET 之间没有任何更改。
 
 ### <a name="step-4-register-a-url-scheme"></a>步骤 4：注册 URL 方案
 ADAL.NET 和 MSAL.NET 使用 Url 来调用 broker，并将 broker 响应返回给应用程序。 在应用的`Info.plist`文件中注册 URL 方案，如下所示：
@@ -179,13 +182,14 @@ The
 ```
 
 > [!NOTE]
->  此 URL 方案将成为 RedirectUri 的一部分，用于在从 broker 收到响应时唯一标识应用
+> 此 URL 方案成为重定向 URI 的一部分，用于在应用接收来自代理的响应时唯一标识该应用。
 
 </table>
 
-### <a name="step-5-lsapplicationqueriesschemes"></a>步骤 5：LSApplicationQueriesSchemes
+### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>步骤 5：将 broker 标识符添加到 LSApplicationQueriesSchemes 部分
 
-ADAL.NET 和 MSAL.NET 都使用`-canOpenURL:`来检查设备上是否安装了代理。 将 iOS 代理的正确标识符添加到 info.plist 文件的 LSApplicationQueriesSchemes 节，如下所示： 
+ADAL.NET 和 MSAL.NET 都使用`-canOpenURL:`来检查设备上是否安装了代理。 将 iOS 代理的正确标识符添加到 info.plist 文件的 LSApplicationQueriesSchemes 节，如下所示：
+
 <table>
 <tr><td>当前 ADAL 代码：</td><td>MSAL 对应项：</td></tr>
 <tr><td>
@@ -214,25 +218,29 @@ ADAL.NET 和 MSAL.NET 都使用`-canOpenURL:`来检查设备上是否安装了�
 ```
 </table>
 
-### <a name="step-6-register-you-redirecturi-in-the-portal"></a>步骤 6：在门户中注册 RedirectUri
+### <a name="step-6-register-your-redirect-uri-in-the-portal"></a>步骤 6：在门户中注册重定向 URI
 
-ADAL.NET 和 MSAL.NET 在目标为 broker 时，对 redirectUri 添加了额外的要求。 在门户中向你的应用程序注册重定向 URI。
+ADAL.NET 和 MSAL.NET 在针对代理的重定向 URI 上添加额外的要求。 在门户中向你的应用程序注册重定向 URI。
 <table>
 <tr><td>当前 ADAL 代码：</td><td>MSAL 对应项：</td></tr>
 <tr><td>
 
-`"<app-scheme>://<your.bundle.id>"`实例`mytestiosapp://com.mycompany.myapp`
+`"<app-scheme>://<your.bundle.id>"`
+
+例如： 
+
+`mytestiosapp://com.mycompany.myapp`
 </td><td>
 
 `$"msauth.{BundleId}://auth"`
 
-示例：
+例如：
 
 `public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; `
 
 </table>
 
-有关在门户中注册 redirectUri 的详细信息，请参阅在[Xamarin iOS 应用程序中利用 broker](msal-net-use-brokers-with-xamarin-apps.md#step-7-make-sure-the-redirect-uri-is-registered-with-your-app)了解更多详细信息。
+有关如何在门户中注册重定向 URI 的详细信息，请参阅[在 Xamarin iOS 应用程序中利用代理](msal-net-use-brokers-with-xamarin-apps.md#step-7-make-sure-the-redirect-uri-is-registered-with-your-app)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: c4598e5e99012694a798e44c0d37e9578486751b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f7e2e95b553039b88267f730787fbbac82099948
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932111"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105172"
 ---
 # <a name="configure-speech-service-containers"></a>配置语音服务容器
 
@@ -32,7 +32,7 @@ ms.locfileid: "68932111"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值, 并且值必须是为[`Billing`](#billing-configuration-setting)配置设置指定的 _资源的有效键。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值, 并且值必须是为[`Billing`](#billing-configuration-setting)配置设置指定的_语音_资源的有效键。
 
 可以在以下位置找到此设置：
 
@@ -44,7 +44,7 @@ ms.locfileid: "68932111"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-此`Billing`设置指定 Azure 上用于计量容器的计费信息的 _资源的终结点 URI。 您必须为此配置设置指定一个值, 并且该值必须是 Azure 上的 _资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+此`Billing`设置指定 Azure 上用于计量容器的计费信息的_语音_资源的终结点 URI。 您必须为此配置设置指定一个值, 并且该值必须是 Azure 上的_语音_资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
@@ -78,7 +78,7 @@ ms.locfileid: "68932111"
 
 主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](speech-container-howto.md#the-host-computer)的装载位置。 
 
-|可选| 名称 | 数据类型 | 描述 |
+|可选| 姓名 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | 语音容器不使用此功能。|
 |可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>例如：<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -90,12 +90,14 @@ ms.locfileid: "68932111"
 * **行继续符**：以下各部分中的 Docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
 * **参数顺序**：除非很熟悉 Docker 容器，否则不要更改参数顺序。
 
-将 { _} 替换为为你自己的值：
+将 {_argument_name_} 替换为为你自己的值：
 
 | 占位符 | ReplTest1 | 格式或示例 |
 |-------------|-------|---|
-|{API_KEY} | 语音资源的 API 密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | 终结点值 (包括区域)。|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+| **{API_KEY}** | `Speech` Azure`Speech`密钥页上的资源的终结点键。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Azure `Speech`“概览”页面上提供了账单终结点值。| 有关显式示例，请参阅[收集所需的参数](speech-container-howto.md#gathering-required-parameters)。 |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing-configuration-setting)。

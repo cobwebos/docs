@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 7dba929101a928f0bbcb8553d6dd3b3043d74853
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: fbfc3f48bed5a4772573dcf2ab168cd3498a4cac
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114854"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102004"
 ---
 # <a name="install-and-run-face-containers"></a>安装并运行人脸容器
 
@@ -32,7 +32,9 @@ Azure 认知服务面部为 Docker 提供标准化的 Linux 容器, 用于检测
 |--|--|
 |Docker 引擎| Docker 引擎必须安装在[主计算机](#the-host-computer)上。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上, 还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 你需要基本了解 Docker 概念, 如注册表、存储库、容器和容器映像。 还需要了解基本`docker`命令。| 
-|人脸资源 |若要使用该容器, 必须具备:<br><br>Azure**面部**资源以及关联的 API 密钥和终结点 URI。 此资源的 "**概述**" 和 "**键**" 页上提供了这两个值。 它们是启动容器所必需的。<br><br>**{API_KEY}** :"**密钥**" 页上有两个可用的资源键之一<br><br>**{ENDPOINT_URI}** :"**概述**" 页中提供的终结点
+|人脸资源 |若要使用该容器, 必须具备:<br><br>Azure**面部**资源以及关联的 API 密钥和终结点 URI。 此资源的 "**概述**" 和 "**键**" 页上提供了这两个值。 它们是启动容器所必需的。<br><br>**{API_KEY}** ："**密钥**" 页上有两个可用的资源键之一<br><br>**{ENDPOINT_URI}** ："**概述**" 页中提供的终结点
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
 
@@ -80,16 +82,9 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 ## <a name="run-the-container-with-docker-run"></a>运行包含 docker 的容器
 
-使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 该命令使用以下参数。
+使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取`{ENDPOINT_URI}`和`{API_KEY}`值的详细信息，请参阅[收集必需的参数](#gathering-required-parameters)。
 
-| 占位符 | ReplTest1 |
-|-------------|-------|
-|{API_KEY} | 此密钥用于启动容器, 并在 Azure `Cognitive Services` **密钥**页上可用。 |
-|{ENDPOINT_URI} | "计费终结点 URI" 值在 Azure `Cognitive Services` **概述**页上提供。 例如 `https://westus.api.cognitive.microsoft.com/face/v1.0`。|
-
-`face/v1.0`将路由添加到终结点 URI, 如前面的 ENDPOINT_URI 示例中所示。 
-
-在以下`docker run`命令示例中将这些参数替换为你自己的值:
+可用的[命令示例](face-resource-container-config.md#example-docker-run-commands) `docker run` 。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

@@ -3,25 +3,25 @@ title: Azure IoT 中心设备预配服务中的服务概念 | Microsoft Docs
 description: 介绍服务预配概念，特定于使用设备预配服务和 IoT 中心的设备
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 4a4f53f991355e634e8139f9e90bec6c508a527d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51486da6b34c0ff1e9b6d05558c2132a416913e9
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745802"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104367"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT 中心设备预配服务概念
 
 IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式[自动预配](concepts-auto-provisioning.md)数百万台设备。
 
-设备预配是一个两部分过程。 第一部分是通过注册设备来建立设备和 IoT 解决方案之间的初始连接  。 第二部分是根据解决方案的具体要求将适当的配置应用于设备  。 在这两个步骤都完成后，设备已完全预配  。 设备预配服务自动执行这两个步骤，为设备提供无缝的预配体验。
+设备预配是一个两部分过程。 第一部分是通过注册设备来建立设备和 IoT 解决方案之间的初始连接。 第二部分是根据解决方案的具体要求将适当的配置应用于设备。 在这两个步骤都完成后，设备已完全预配。 设备预配服务自动执行这两个步骤，为设备提供无缝的预配体验。
 
-本文概述了最适用于管理服务的预配概念  。 本文与设备部署准备工作的[云设置步骤](about-iot-dps.md#cloud-setup-step)中提及的角色最为相关。
+本文概述了最适用于管理服务的预配概念。 本文与设备部署准备工作的[云设置步骤](about-iot-dps.md#cloud-setup-step)中提及的角色最为相关。
 
 ## <a name="service-operations-endpoint"></a>服务操作终结点
 
@@ -31,7 +31,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 设备预配终结点是单一终结点，所有设备都使用它进行自动预配。 此 URL 对于所有预配服务实例都是相同 ，因而无需使用供应链方案中的新连接信息来刷新设备。 ID 范围可确保租户隔离。
 
-## <a name="linked-iot-hubs"></a>链接 IoT 中心
+## <a name="linked-iot-hubs"></a>链接的 IoT 中心
 
 设备预配服务只能将设备预配到已链接到它的 IoT 中心。 将 IoT 中心链接到设备预配服务实例可以为 IoT 中心的设备注册表提供服务读/写权限；通过该链接，设备预配服务可以注册设备 ID 并在设备孪生中设置初始配置。 链接 IoT 中心可能位于任何 Azure 区域。 可将其他订阅中的中心链接到预配服务。
 
@@ -57,7 +57,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 ### <a name="enrollment-group"></a>注册组
 
-注册组是一组共享特定证明机制的设备。 注册组中的所有设备都提供已由同一根或中间证书颁发机构 (CA) 签名的 X.509 证书。 注册组只能使用 X.509 证明机制。 注册组名称和证书名称必须是小写的字母数字，并可包含连字符。
+注册组是一组共享特定证明机制的设备。 注册组支持 x.509 和对称。 X.509 注册组中的所有设备都提供已由同一根或中间证书颁发机构（CA）签名的 x.509 证书。 对称密钥注册组中的每个设备都提供派生自组对称密钥的 SAS 令牌。 注册组名称和证书名称必须是小写的字母数字，并可包含连字符。
 
 > [!TIP]
 > 建议对共享所需初始配置的大量设备，或者全部转到同一租户的设备使用注册组。

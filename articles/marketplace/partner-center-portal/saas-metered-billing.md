@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 3fa485c9fb2835b8270cb35fc75b57251476005f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a244e4f7ac406fecd4c053b39a5e9a9cb6ecab2c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141781"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105496"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>使用 marketplace 计量服务的计费计费
 
@@ -55,7 +55,7 @@ ms.locfileid: "70141781"
     * 超过50000封电子邮件, 为每个100电子邮件支付 $0。5
     * 超过10000个文本, 每个文本支付 $0.01
 
-订阅了 CNS 服务的 Azure 客户将能够根据所选的计划, 每月发送包含数量的文本和电子邮件。  当客户消耗的数量超过所含数量时, 无需更改计划或执行其他任何操作。  Contoso 将衡量超出所含数量的超额, 并向 Microsoft 开始向 Microsoft 发送使用情况事件, 以使用[Marketplace 计量服务 API](./marketplace-metering-service-apis.md)进行其他使用。  Microsoft 将根据发布者指定的额外使用量向客户收取费用。
+订阅了 CNS 服务的 Azure 客户将能够根据所选的计划, 每月发送包含数量的文本和电子邮件。  Contoso 会衡量所含数量的使用量，而不会向 Microsoft 发送任何使用事件。  当客户消耗的数量超过所含数量时, 无需更改计划或执行其他任何操作。  Contoso 将衡量超出所含数量的超额, 并向 Microsoft 开始向 Microsoft 发送使用情况事件, 以使用[Marketplace 计量服务 API](./marketplace-metering-service-apis.md)进行其他使用。  Microsoft 将根据发布者指定的额外使用量向客户收取费用。
 
 ## <a name="billing-dimensions"></a>计费维度
 
@@ -84,8 +84,8 @@ ms.locfileid: "70141781"
 
 维度还具有两个特殊概念: "enabled" 和 "无限大":
 
-* "**已启用**" 指示此计划参与此维度。  如果创建的新计划不基于此维度发送使用情况事件, 则您可能希望不选中此项。  此外, 在首次发布计划后添加的任何新维度在已发布的计划中都将显示为 "未启用"。  对于客户所见的计划, 禁用的维度不会显示在任何维度列表中。
-* 无穷大, 用无穷符号 "∞" 表示, 指示此计划参与此维度, 但不会对此维度使用计量。  如果要向客户指示此维度所表示的功能包含在计划中, 但没有使用限制。  具有无限使用量的维度将显示在客户所见的计划的维度列表中, 指示该维度永远不会对此计划收取费用。
+* "**已启用**" 指示此计划参与此维度。  如果创建的新计划不基于此维度发送使用情况事件, 则您可能希望不选中此项。  此外, 在首次发布计划后添加的任何新维度在已发布的计划中都将显示为 "未启用"。  对于客户所见的计划，禁用的维度不会显示在任何维度列表中。
+* 无穷大 **, 用**无穷符号 "∞" 表示, 指示此计划参与此维度, 但不会对此维度使用计量。  如果要向客户指示此维度所表示的功能包含在计划中, 但没有使用限制。  具有无限使用量的维度将显示在客户所见的计划的维度列表中, 指示该维度永远不会对此计划收取费用。
 
 >[!Note] 
 >明确支持以下方案: <br> -可以将新维度添加到新计划。  对于任何已发布的计划, 将不启用新维度。 <br> -你可以在没有任何维度的情况下发布**单层**计划, 然后添加新计划并为该计划配置一个新维度。 不会为已发布的计划启用新维度。
