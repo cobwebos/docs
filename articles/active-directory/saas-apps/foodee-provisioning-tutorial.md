@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: e444d6254b575ead4b5d436a4b92f960c61b1d1c
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 171a1141670e55814474390c59ae8d514491edbd
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802870"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088092"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Foodee
 
@@ -29,19 +29,19 @@ ms.locfileid: "70802870"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 >
-> 此连接器目前以公共预览版提供。 有关预览功能的一般 Microsoft Azure 使用条款的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此连接器目前以公共预览版提供。 有关预览功能的一般 Microsoft Azure 使用条款的详细信息, 请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
 * Azure AD 租户。
-* [Foodee 租户](https://Foodee.com/pricing/)
+* [Foodee 租户](https://www.food.ee/about/)
 * Foodee 中具有管理员权限的用户帐户。
 
 ## <a name="assigning-users-to-foodee"></a>将用户分配到 Foodee 
 
-Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
+Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中, 只同步已分配到 Azure AD 中的应用程序的用户和/或组。
 
 在配置和启用自动用户预配之前，应确定 Azure AD 中哪些用户和/或组需要访问 Foodee。 确定后，可按照此处的说明将这些用户和/或组分配到 Foodee：
 * [向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)
@@ -75,7 +75,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 **若要从 Azure AD 应用程序库中添加 Foodee，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，选择 " **Azure Active Directory**"。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中, 选择 " **Azure Active Directory**"。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
@@ -83,7 +83,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
+3. 若要添加新应用程序, 请选择窗格顶部的 "**新建应用程序**" 按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
@@ -100,7 +100,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-provisioning-for-foodee-in-azure-ad"></a>若要在 Azure AD 中配置 Foodee 的自动用户预配：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**"，并选择 "**所有应用程序**"。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**", 并选择 "**所有应用程序**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 

@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 7220c72625697490d9c42dab7e18ca4bf64d3f43
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8092108ef13f4b86f20cf5a8a0b41b49d75aa626
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085614"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098688"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -151,9 +151,9 @@ traces
 
 对于每个日志，Azure Functions 记录器都包含一个类别。 类别指示运行时代码或函数代码的哪个部分编写日志。 
 
-函数运行时创建具有以 "Host" 开头的类别的日志。 在版本1.x 中`function started`,、 `function executed`和`function completed`日志具有类别`Host.Executor`。 从版本2.x 开始, 这些日志具有类别`Function.<YOUR_FUNCTION_NAME>`。
+函数运行时创建具有以 "Host" 开头的类别的日志。 在版本1.x 中`function started`，、 `function executed`和`function completed`日志具有类别`Host.Executor`。 从版本2.x 开始，这些日志具有类别`Function.<YOUR_FUNCTION_NAME>`。
 
-如果在函数代码中编写日志, 则类别`Function`在函数运行时的版本1.x 中。 在版本2.x 中, 类别为`Function.<YOUR_FUNCTION_NAME>.User`。
+如果在函数代码中编写日志，则类别`Function`在函数运行时的版本1.x 中。 在版本2.x 中，类别为`Function.<YOUR_FUNCTION_NAME>.User`。
 
 ### <a name="log-levels"></a>日志级别
 
@@ -606,13 +606,13 @@ module.exports = function (context, req) {
 
 ## <a name="streaming-logs"></a>流式处理日志
 
-开发应用程序时, 通常需要在 Azure 中运行时以近乎实时的速度向日志写入日志。
+开发应用程序时，通常需要在 Azure 中运行时以近乎实时的速度向日志写入日志。
 
 可以通过两种方式查看由函数执行生成的日志文件流。
 
-* **内置日志流式处理**: 应用服务平台使你可以查看应用程序日志文件的流。 这等效于在[本地开发](functions-develop-local.md)期间调试函数时以及在门户中使用 "**测试**" 选项卡时所显示的输出。 将显示所有基于日志的信息。 有关详细信息，请参阅[如何流式传输日志](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)。 此流处理方法仅支持单个实例, 不能用于在消耗计划中运行 Linux 的应用。
+* **内置日志流式处理**：应用服务平台使你可以查看应用程序日志文件的流。 这等效于在[本地开发](functions-develop-local.md)期间调试函数时以及在门户中使用 "**测试**" 选项卡时所显示的输出。 将显示所有基于日志的信息。 有关详细信息，请参阅[流日志](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)。 此流处理方法仅支持单个实例，不能用于在消耗计划中运行 Linux 的应用。
 
-* **实时指标流**: 当函数应用[连接到 Application Insights](#enable-application-insights-integration)时, 你可以使用[实时指标流](../azure-monitor/app/live-stream.md)以近乎实时的 Azure 门户查看日志数据和其他指标。 当监视消耗计划中在多个实例上或在 Linux 上运行的函数时, 请使用此方法。 此方法使用[抽样数据](#configure-sampling)。
+* **实时指标流**：当函数应用[连接到 Application Insights](#enable-application-insights-integration)时，你可以使用[实时指标流](../azure-monitor/app/live-stream.md)以近乎实时的 Azure 门户查看日志数据和其他指标。 当监视消耗计划中在多个实例上或在 Linux 上运行的函数时，请使用此方法。 此方法使用[抽样数据](#configure-sampling)。
 
 可以在门户中和大多数本地开发环境中查看日志流。 
 
@@ -632,9 +632,9 @@ module.exports = function (context, req) {
 
 #### <a name="live-metrics-stream"></a>实时指标流
 
-若要查看应用的实时指标流, 请选择 function app 的 "**概述**" 选项卡。 Application Insights 启用后, 会在 "**已配置功能**" 下看到**Application Insights**链接。 此链接会将你转到应用的 "Application Insights" 页。
+若要查看应用的实时指标流，请选择 function app 的 "**概述**" 选项卡。 Application Insights 启用后，会在 "**已配置功能**" 下看到**Application Insights**链接。 此链接会将你转到应用的 "Application Insights" 页。
 
-在 Application Insights 中, 选择 "**实时指标流**"。 [采样的日志项](#configure-sampling)显示在 "**示例遥测**" 下。
+在 Application Insights 中，选择 "**实时指标流**"。 [采样的日志项](#configure-sampling)显示在 "**示例遥测**" 下。
 
 ![在门户中查看实时指标流](./media/functions-monitoring/live-metrics-stream.png) 
 

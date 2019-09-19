@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82fe917f911be45d7f68662e956fe3bd14f92267
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959882"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097572"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>本地 Azure AD 密码保护 - 常见问题解答
 
@@ -58,7 +58,7 @@ Active Directory 支持测试密码以查看是否通过了域的当前密码复
 
 **问：是否支持与其他基于密码筛选器的产品一同安装 Azure AD 密码保护？**
 
-是的。 支持多个已注册的密码筛选器 dll 是一项 Windows 核心功能，并不特定于 Azure AD 密码保护。 在接受密码之前，所有已注册的密码筛选器 dll 必须同意。
+是。 支持多个已注册的密码筛选器 dll 是一项 Windows 核心功能，并不特定于 Azure AD 密码保护。 在接受密码之前，所有已注册的密码筛选器 dll 必须同意。
 
 **问：在不使用 Azure 的情况下，如何在 Active Directory 环境中部署和配置 Azure AD 密码保护？**
 
@@ -99,7 +99,7 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 **问：是否可与其他服务（例如 Azure AD Connect）一起部署 Azure AD 密码保护代理服务？**
 
-是的。 Azure AD 密码保护代理服务和 Azure AD Connect 永远不会直接相互冲突。
+是。 Azure AD 密码保护代理服务和 Azure AD Connect 永远不会直接相互冲突。
 
 **问：DC 代理和代理的安装和注册顺序是什么？**
 
@@ -136,6 +136,10 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 **问：即使已将策略配置为处于审核模式，为什么 Azure AD 仍拒绝弱密码？**
 
 仅本地 Active Directory 环境支持审核模式。 当计算密码时，Azure AD 隐式始终处于 "强制" 模式。
+
+**问：Azure AD 密码保护拒绝密码时，我的用户会看到传统的 Windows 错误消息。是否可以自定义此错误消息，以便用户知道实际发生的情况？**
+
+否。 当域控制器拒绝密码时，用户所见到的错误消息由客户端计算机控制，而不是由域控制器控制。 不管密码是否被默认 Active Directory 密码策略或基于密码筛选器的解决方案（如 Azure AD 密码保护）拒绝，都会发生此行为。
 
 ## <a name="additional-content"></a>其他内容
 

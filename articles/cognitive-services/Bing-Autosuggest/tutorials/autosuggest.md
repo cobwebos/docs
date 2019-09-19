@@ -3,19 +3,19 @@ title: 教程：使用必应自动建议 API 获取自动建议结果
 titleSuffix: Azure Cognitive Services
 description: 演示如何使用必应自动建议。
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
-ms.date: 02/20/2019
-ms.author: nitinme
-ms.openlocfilehash: 9c5d86c6af5e8dc26dbe6877e8b34baa3cd577c2
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 09/13/2019
+ms.author: aahi
+ms.openlocfilehash: d208187b7ba61fc0d217cef05a1bda559ca0c42b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405249"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996794"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>教程：在网页上获取搜索建议
 

@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: e552b90a4c98eff7b04cbeaef26aa10749ce672c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ccd84042d11b586d524d4eb76eba03111e0b3c5
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66493403"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71099008"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -24,7 +24,7 @@ ms.locfileid: "66493403"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要按本页中的说明操作，需事先进行几项设置：
 
@@ -290,7 +290,7 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
 
 ### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>将警报调整为避免通知用户发起的事件
 
-资源运行状况事件可以由平台发起的事件和用户发起的事件触发。 它的意义在于仅在运行状况事件由 Azure 平台引发时发送通知。
+资源运行状况事件可以由平台启动和用户启动的事件触发。 它的意义在于仅在运行状况事件由 Azure 平台引发时发送通知。
 
 很容易地将警报配置为仅筛选以下事件类型：
 

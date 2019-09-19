@@ -5,21 +5,22 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 3e4745d1c9e28e907d87298d1ab8ef3c9b104b1d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 7b511ab0c3093747d6e713754c04533e5f25b6ad
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014597"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087400"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>无法访问 Azure HDInsight 中的 Data Lake 存储文件
 
 本文介绍有关在与 Azure HDInsight 群集交互时遇到的问题的故障排除步骤和可能的解决方法。
 
-## <a name="issue-acl-verification-failed"></a>问题:ACL 验证失败
+## <a name="issue-acl-verification-failed"></a>问题：ACL 验证失败
 
-你会收到类似于以下内容的错误消息:
+你会收到类似于以下内容的错误消息：
 
 ```
 LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.).
@@ -27,11 +28,11 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 ### <a name="cause"></a>原因
 
-用户可能已撤消文件/文件夹上服务主体 (SP) 的权限。
+用户可能已撤消文件/文件夹上服务主体（SP）的权限。
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
-1. 检查 SP 是否具有 "x" 权限, 以便沿路径进行遍历。 有关详细信息, 请参阅[权限](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)。 用于检查 Data Lake 存储帐户中文件/文件夹的访问权限的示例 dfs 命令:
+1. 检查 SP 是否具有 "x" 权限，以便沿路径进行遍历。 有关详细信息，请参阅[权限](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)。 用于检查 Data Lake 存储帐户中文件/文件夹的访问权限的示例 dfs 命令：
 
     ```
     hdfs dfs -ls /<path to check access>
@@ -41,9 +42,9 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 ---
 
-## <a name="issue-service-principal-certificate-expiry"></a>问题:服务主体证书过期
+## <a name="issue-service-principal-certificate-expiry"></a>问题：服务主体证书过期
 
-你会收到类似于以下内容的错误消息:
+你会收到类似于以下内容的错误消息：
 
 ```
 Token Refresh failed - Received invalid http response: 500
@@ -53,13 +54,13 @@ Token Refresh failed - Received invalid http response: 500
 
 为服务主体访问提供的证书可能已过期。
 
-1. 通过 SSH 连接到头节点。 使用以下 dfs 命令检查存储帐户的访问权限:
+1. 通过 SSH 连接到头节点。 使用以下 dfs 命令检查存储帐户的访问权限：
 
     ```
     hdfs dfs -ls /
     ```
 
-1. 确认错误消息类似于以下内容:
+1. 确认错误消息类似于以下内容：
 
     ```
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
@@ -73,13 +74,13 @@ Token Refresh failed - Received invalid http response: 500
     curl gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken
     ```
 
-1. 有效服务主体的输出应如下所示:
+1. 有效服务主体的输出应如下所示：
 
     ```
     {"AccessToken":"MIIGHQYJKoZIhvcNAQcDoIIGDjCCBgoCAQA…….","ExpiresOn":1500447750098}
     ```
 
-1. 如果服务主体证书已过期, 输出将如下所示:
+1. 如果服务主体证书已过期，输出将如下所示：
 
     ```
     Exception in OAuthTokenController.GetOAuthToken: 'System.InvalidOperationException: Error while getting the OAuth token from AAD for AppPrincipalId 23abe517-2ffd-4124-aa2d-7c224672cae2, ResourceUri https://management.core.windows.net/, AADTenantId https://login.windows.net/80abc8bf-86f1-41af-91ab-2d7cd011db47, ClientCertificateThumbprint C49C25705D60569884EDC91986CEF8A01A495783 ---> Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException: AADSTS70002: Error validating credentials. AADSTS50012: Client assertion contains an invalid signature. **[Reason - The key used is expired.**, Thumbprint of key used by client: 'C49C25705D60569884EDC91986CEF8A01A495783', Found key 'Start=08/03/2016, End=08/03/2017, Thumbprint=C39C25705D60569884EDC91986CEF8A01A4956D1', Configured keys: [Key0:Start=08/03/2016, End=08/03/2017, Thumbprint=C39C25705D60569884EDC91986CEF8A01A4956D1;]]
@@ -98,9 +99,9 @@ Token Refresh failed - Received invalid http response: 500
     Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.cloudapp.net:909/api/oauthtoken}
     ```
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
-使用以下 PowerShell 脚本创建新证书或分配现有证书:
+使用以下 PowerShell 脚本创建新证书或分配现有证书：
 
 ```powershell
 $clusterName = 'CLUSTERNAME'
@@ -160,9 +161,9 @@ Invoke-AzureRmResourceAction `
 
 ```
 
-若要分配现有证书, 请创建证书, 并准备好 .pfx 文件和密码。 将证书与创建群集时使用的服务主体相关联, 并准备好 AppId。
+若要分配现有证书，请创建证书，并准备好 .pfx 文件和密码。 将证书与创建群集时使用的服务主体相关联，并准备好 AppId。
 
-将参数替换为实际值后, 执行 PowerShell 命令。
+将参数替换为实际值后，执行 PowerShell 命令。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -170,6 +171,6 @@ Invoke-AzureRmResourceAction `
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* [@AzureSupport](https://twitter.com/azuresupport)连接-官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源: 答案、支持和专家。
+* [@AzureSupport](https://twitter.com/azuresupport)连接-官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
-* 如果需要更多帮助, 可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息, 请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限, 并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

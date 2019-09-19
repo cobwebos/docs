@@ -1,7 +1,7 @@
 ---
 title: 什么是 FPGA-如何部署
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务在 FPGA 上运行的模型部署 web 服务，以实现超低延迟推理。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 FPGA 上运行的模型部署 web 服务 Azure 机器学习，以实现超高延迟推理。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f95846844f9ff498b1b99a0b7a375f1c883457d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 929ca8e16db73be5cfa226b5d55a30dbb7b2bc99
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860478"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034454"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什么是现场可编程的入口阵列（FPGA）以及如何部署
 
-本文介绍了现场可编程的入口数组（FPGA），并演示了如何使用 Azure 机器学习服务将模型部署到 Azure FPGA。 
+本文介绍了现场可编程的入口数组（FPGA），并说明了如何使用 Azure 机器学习向 Azure FPGA 部署模型。 
 
 FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的层次结构。 这种互连可以在生产之后以不同方式来配置块。 与其他芯片相比，FPGA 既有可编程性，又有很好的性能。
 
@@ -28,7 +28,7 @@ FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的
 
 下面的示意图和表将 FPGA 与其他处理器进行了比较。
 
-![Azure 机器学习服务 FPGA 比较示意图](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Azure 机器学习 FPGA 比较示意图](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
 |处理器||描述|
 |---|:-------:|------|
@@ -89,7 +89,7 @@ Azure Fpga 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评�
 
 ### <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。  如果没有，请在开始前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+- Azure 订阅。  如果没有，请在开始前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 - FPGA 配额。 使用 Azure CLI 检查是否有配额：
 
@@ -112,7 +112,7 @@ Azure Fpga 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评�
 
     如果没有配额，则提交请求[https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)。
 
-- 已安装 Azure 机器学习服务工作区，以及适用于 Python 的 Azure 机器学习 SDK。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)。
+- 已安装 Azure 机器学习工作区以及用于 Python 的 Azure 机器学习 SDK。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)。
  
 - 用于硬件加速模型的 Python SDK：
 

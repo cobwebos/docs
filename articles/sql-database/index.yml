@@ -73,7 +73,7 @@ sections:
       - type: list
         style: cards
         className: cardsM
-        columns: 3
+        columns: 2
         items:
           - href: /azure/sql-database/sql-database-single-index
             html: <p>如果你的 SaaS 应用程序和微服务需要一个具有可预测性能的单一数据库，请为其使用 SQL 数据库服务器托管的单一数据库。</p>
@@ -90,6 +90,11 @@ sections:
             image:
               src: media/index/i_mi.svg
             title: 托管实例
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: <p>将托管实例池用作一种简单且经济高效的解决方案，以便部署多个可以共享资源并可快速缩放的托管实例。</p>
+            image:
+              src: media/index/i_instancepool.png
+            title: 实例池
   - title: 5 分钟快速入门
     items:
       - type: paragraph
@@ -128,6 +133,12 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
+          - title: 创建实例池
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
+              - href: null
   - title: 分步教程和学习材料
     items:
       - type: paragraph

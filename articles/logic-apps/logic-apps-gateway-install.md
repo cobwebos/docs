@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: 3a197ab8d8c44229328c63330bcbc99fb2e64f01
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: HT
+ms.openlocfilehash: a070b224b0cb1378f0ba6729af33840715dc0a29
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077273"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087724"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -264,9 +264,9 @@ Microsoft 云服务使用[Azure Active Directory （Azure AD）](../active-direc
 
 有关详细信息，请参阅以下主题：
 
-* [本地数据网关常见问题解答](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [本地数据网关故障排除](https://docs.microsoft.com/data-integration/gateway/gateway-service-gateway-tshoot)
-* [监视和优化网关性能](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [本地数据网关常见问题解答](/data-integration/gateway/service-gateway-onprem-faq)
+* [本地数据网关故障排除](/data-integration/gateway/service-gateway-tshoot)
+* [监视和优化网关性能](/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>后续步骤
 

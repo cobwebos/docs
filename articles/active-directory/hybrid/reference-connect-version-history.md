@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e491815f25f3744d839efc09ce34793d80d9943a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: ce66c0239eee3f31695a942a586766694525fbad
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983556"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097603"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -44,6 +44,9 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 并非所有版本的 Azure AD Connect 都可用于自动升级。 版本状态将指示版本是否可用于自动升级或仅供下载。 如果在 Azure AD Connect 服务器上启用了自动升级，那么该服务器将自动升级到针对自动升级发布的最新版 Azure AD Connect。 请注意，并非所有 Azure AD Connect 配置都有资格进行自动升级。 请点击此链接阅读有关[自动升级](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)的详细信息
 
 ## <a name="14x0"></a>1.4. X. 0
+
+>[!IMPORTANT]
+>以前，加入本地 AD 的 Windows 下层计算机在某些情况下会错误地同步到云。 例如，将填充 AD 中 Windows 下层设备的 userCertificate 属性值。 但 Azure AD 中的此类设备始终处于 "挂起" 状态，因为这些操作系统版本并未设计为通过 AAD Sync 向 Azure AD 注册。在此版本的 Azure AD Connect 中，AAD Sync 将停止将 Windows 下层计算机同步到 Azure AD，并且还将从 Azure AD 删除以前错误地同步的 Windows 下层设备。 请注意，此更改不会删除使用 MSI 包在 Azure AD 中正确注册的任何 Windows 下层设备。 对于基于设备的条件访问，这些设备将继续按预期方式工作。 有些客户可能会看到其部分或全部 Windows 下层设备从 Azure AD 中消失。 这并不是问题的原因，因为在条件性访问授权期间 Azure AD 并未真正使用这些设备标识。 此类客户可能需要重新 https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan 访问并使其 Windows 下层设备正确注册，以确保此类设备可以完全参与基于设备的条件访问。 请注意，如果你在 Azure AD 超过导出删除阈值的情况下发现这些低级计算机/设备对象删除，则建议客户允许这些删除操作。
 
 ### <a name="release-status"></a>版本状态
 9/10/2019：仅限自动升级发布

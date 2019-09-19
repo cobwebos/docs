@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1341f0def306a1167e1e4876365c70901cf89cd2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fc1f6434bea8f75c7bcc7859c6f90d7abdd031b
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087007"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091039"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>教程：Azure Active Directory 与 Workable 的集成
 
@@ -142,7 +142,7 @@ ms.locfileid: "67087007"
 
 3. 注销 URL
 
-启用单一登录后，Workable 帐户管理员会通知你，随后便可以使用 Workable 帐户子域通过 [Workable 的 SSO 页](https://id.workable.com/sso/signin)进行登录。
+启用单一登录后，Workable 帐户管理员会通知你，随后便可以使用 Workable 帐户子域通过 [Workable 的 SSO 页](https://help.workable.com/hc/en-us/articles/360000067753-Single-Sign-on-SSO-Overview-Pro)进行登录。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

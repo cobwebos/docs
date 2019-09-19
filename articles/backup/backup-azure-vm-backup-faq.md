@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 26d07ac0b09655e170b53af91f890f21d15afb1b
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e1cfb9bf0e8b17df67b2f7060f665d169a71c8d6
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909800"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098384"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -59,10 +59,10 @@ ms.locfileid: "70909800"
 该向导仅列出与 Vault 相同区域中的 VM，这些 VM 尚未备份。
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>我的 VM 已关闭。 按需备份或计划备份会运行吗？
-是的。 计算机关闭时运行备份。 将恢复点标记为崩溃一致。
+是。 计算机关闭时运行备份。 将恢复点标记为崩溃一致。
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>可以取消正在进行的备份作业吗？
-是的。 可在“拍摄快照”状态中取消备份作业。 如果此作业正在从快照传输数据，则无法取消。
+是。 可在“拍摄快照”状态中取消备份作业。 如果此作业正在从快照传输数据，则无法取消。
 
 ### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>我在由 Azure 备份服务创建的资源组（即 `AzureBackupRG_<geo>_<number>`）上启用了锁定，我的备份是否继续有效？
 如果锁定 Azure 备份服务创建的资源组，则由于还原点的最大数目限制为 18 个，备份会开始失败。
@@ -113,7 +113,7 @@ Azure 虚拟机备份策略支持的最小保留期限为 7 天，最长为 9999
 在 PowerShell 中[详细了解](backup-azure-vms-automation.md#restore-an-azure-vm)此操作。
 
 ### <a name="can-i-restore-the-vm-thats-been-deleted"></a>可以还原已删除的 VM 吗？
-是的。 即使删除了 VM，也可以转到保管库中的相应备份项并从恢复点还原。
+是。 即使删除了 VM，也可以转到保管库中的相应备份项并从恢复点还原。
 
 ### <a name="how-to-restore-a-vm-to-the-same-availability-sets"></a>如何将 VM 还原到相同的可用性集？
 对于托管磁盘 Azure VM，通过在还原为托管磁盘时在模板中提供选项来启用还原到可用性集。 此模板具有名为“可用性集”的输入参数。
@@ -126,6 +126,10 @@ Azure 虚拟机备份策略支持的最小保留期限为 7 天，最长为 9999
 更改已加密的 VM 的 KeyVault 设置后，备份将继续使用新的详细信息集，但是，在从恢复点还原更改之前，必须先还原 KeyVault 中的机密，然后才能从创建 VM 以便. 有关详细信息，请参阅此[文](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)
 
 机密/密钥回滚等操作不需要此步骤，并且在还原后可以使用相同的 KeyVault。
+
+### <a name="can-i-access-the-vm-once-restored-due-to-an-vm-having-broken-relationship-with-domain-controller"></a>由于 VM 与域控制器断开关系，是否可以访问 VM？
+
+是的，因为 VM 与域控制器断开关系，所以在还原后访问 VM。 有关详细信息，请参阅此[文](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)
 
 ## <a name="manage-vm-backups"></a>管理 VM 备份
 

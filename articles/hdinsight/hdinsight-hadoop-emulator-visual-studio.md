@@ -2,18 +2,18 @@
 title: 将针对 Visual Studio 的 Data Lake 工具与 Hortonworks 沙盒配合使用 - Azure HDInsight
 description: 了解如何将针对 Visual Studio 的 Azure Data Lake 工具与本地 VM 中运行的 Hortonworks 沙盒配合使用。 使用这些工具，可以在沙盒中创建和运行 Hive 与 Pig 作业，并查看作业输出和历史记录。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: hrasheed
-ms.openlocfilehash: a80cc44dbc4be0728ad632eefd8b9ed62f7f86b1
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962405"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098775"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>将针对 Visual Studio 的 Azure Data Lake 工具与 Hortonworks 沙盒配合使用
 
@@ -39,9 +39,9 @@ Azure Data Lake 包含用于处理常规 Apache Hadoop 群集的工具。 本文
 
 1. 打开 Visual Studio，选择“视图”，然后选择“服务器资源管理器”。
 
-2. 在“服务器资源管理器”中，右键单击“HDInsight”项，然后选择“连接到 HDInsight Emulator”。
+2. 在“服务器资源管理器”中，右键单击“HDInsight”项，并选择“连接到 HDInsight Emulator”。
 
-    ![突出显示“连接到 HDInsight 模拟器”的服务器资源管理器屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
+    ![服务器资源管理器，其中突出显示了 "连接到 HDInsight 模拟器"](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
 
 3. 在“连接到 HDInsight 模拟器”对话框中，输入为 Ambari 配置的密码。
 
@@ -112,7 +112,7 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
     > [!NOTE]  
     > 此信息与完成作业后使用“作业日志”链接所看到的信息相同。
 
-    ![输出日志的屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
+    ![HiveServer2 输出的屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
 
 ## <a name="create-a-hive-project"></a>创建 Hive 项目
 
@@ -122,7 +122,7 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
 
 2. 在项目列表中，依次展开“模板”、“Azure Data Lake”，然后选择“HIVE (HDInsight)”。 在模板列表中，选择“Hive 示例”。 输入名称和位置，然后选择“确定”。
 
-    ![突出显示“Azure Data Lake”、“HIVE”、“Hive 示例”和“确定”的“新建项目”窗口屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
+    !["新建项目" 窗口，其中包含 Azure Data Lake、Hive 示例和 "确定"](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
 
 **Hive 示例**项目包含两个脚本：**WebLogAnalysis.hql** 和 **SensorDataAnalysis.hql**。 可以使用窗口顶部的同一个“提交”按钮提交这些脚本。
 
@@ -179,7 +179,7 @@ Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数
 
 2. 展开一个表可显示该表的列。 若要快速查看数据，请右键单击某个表并选择“查看前 100 行”。
 
-    ![展开了表并选定了“查看前 100 行”的服务器资源管理器屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
+    ![服务器资源管理器，并选中 "表已展开" 和 "查看前100行"](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
 
 ### <a name="database-and-table-properties"></a>数据库和表属性
 

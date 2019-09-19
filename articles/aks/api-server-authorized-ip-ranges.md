@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 487940bfb5d6e7c5eebf99f804f57c3e17709377
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276484"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058347"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的授权 IP 地址范围进行预览-安全访问 API 服务器
 
@@ -28,7 +28,7 @@ ms.locfileid: "70276484"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文 assumess 了使用 [kubenet] [kubenet] 的群集。  使用 [Azure 容器网络接口（CNI）] [CNI] 的群集时，你将不会获得安全访问所需的路由表。  你将需要手动创建路由表。  有关详细信息，请参阅[管理路由表](https://docs.microsoft.com/azure/virtual-network/manage-route-table)。
+本文 assumess 了使用[kubenet][kubenet]的群集。  使用基于[Azure 容器网络接口（CNI）][cni-networking]的群集时，你将不会获得安全访问所需的路由表。  你将需要手动创建路由表。  有关详细信息，请参阅[管理路由表](https://docs.microsoft.com/azure/virtual-network/manage-route-table)。
 
 API 服务器授权的 IP 范围仅适用于你创建的新 AKS 群集。 本文介绍如何使用 Azure CLI 创建 AKS 群集。
 
@@ -51,19 +51,19 @@ az extension update --name aks-preview
 若要使用 API 服务器授权的 IP 范围，请首先在订阅上启用功能标志。 若要注册*APIServerSecurityPreview*功能标志，请使用[az feature register][az-feature-register]命令，如以下示例中所示：
 
 > [!CAUTION]
-> 在订阅上注册功能时，当前无法注册该功能。 启用某些预览功能后，默认值可用于在订阅中创建的所有 AKS 群集。 不要对生产订阅启用预览功能。 使用单独的订阅来测试预览功能并收集反馈。
+> 在订阅上注册功能时, 当前无法注册该功能。 启用某些预览功能后, 默认值可用于在订阅中创建的所有 AKS 群集。 不要对生产订阅启用预览功能。 使用单独的订阅来测试预览功能并收集反馈。
 
 ```azurecli-interactive
 az feature register --name APIServerSecurityPreview --namespace Microsoft.ContainerService
 ```
 
-状态显示为“已注册”需要几分钟时间。 您可以使用[az feature list][az-feature-list]命令检查注册状态：
+状态显示为“已注册”需要几分钟时间。 您可以使用[az feature list][az-feature-list]命令检查注册状态:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/APIServerSecurityPreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，请使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
+准备就绪后, 请使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -256,6 +256,8 @@ az aks update \
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
+[kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
+[cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

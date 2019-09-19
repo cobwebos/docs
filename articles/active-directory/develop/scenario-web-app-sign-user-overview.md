@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b898a93b87811fa5139e148a3273d7051af851b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
-ms.translationtype: HT
+ms.openlocfilehash: 1f9b6d4ce4048b31f17b50184f90aed4d2a8ba81
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056291"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086561"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>场景：用于登录用户的 Web 应用
 
@@ -32,15 +32,35 @@ ms.locfileid: "71056291"
 
 ## <a name="getting-started"></a>入门
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 如果需要创建第一个可移植 (ASP.NET Core) Web 应用来登录用户，请按以下快速入门操作：
 
 > [!div class="nextstepaction"]
 > [快速入门：用于登录用户的 ASP.NET Core Web 应用](quickstart-v2-aspnet-core-webapp.md)
 
-如果首选继续使用 ASP.NET，请尝试以下教程：
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+要了解如何将登录添加到旧的 ASP.NET web 应用程序，请尝试以下教程：
 
 > [!div class="nextstepaction"]
 > [快速入门：用于登录用户的 ASP.NET Web 应用](quickstart-v2-aspnet-webapp.md)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+如果你是 Java 开发人员，请尝试以下快速入门：
+
+> [!div class="nextstepaction"]
+> [快速入门：向 Java web 应用添加 Microsoft 登录](quickstart-v2-java-webapp.md)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+如果通过 Python 进行开发，请尝试执行以下操作：
+
+> [!div class="nextstepaction"]
+> [快速入门：向 Python web 应用添加 Microsoft 登录](quickstart-v2-python-webapp.md)
+
+---
 
 ## <a name="overview"></a>概述
 
@@ -51,7 +71,7 @@ ms.locfileid: "71056291"
 在第二阶段，也可让应用程序代表已登录用户调用 Web API。 此下一阶段是另一方案，详见 [Web 应用调用 Web API](scenario-web-app-call-api-overview.md)
 
 > [!NOTE]
-> 向 Web 应用添加登录就是保护 Web 应用并验证用户令牌，这正是**中间件**库所做的。 此方案尚不需要 Microsoft 身份验证库 (MSAL)，后者就是获取令牌来调用受保护的 API。 身份验证库仅在后续方案中引入，此时 Web 应用需要调用 Web API。
+> 向 Web 应用添加登录就是保护 Web 应用并验证用户令牌，这正是**中间件**库所做的。 对于 .NET，此方案不需要 Microsoft 身份验证库（MSAL），这是为了获取令牌来调用受保护的 Api。 身份验证库仅在后续方案中引入，此时 Web 应用需要调用 Web API。
 
 ## <a name="specifics"></a>详情
 
