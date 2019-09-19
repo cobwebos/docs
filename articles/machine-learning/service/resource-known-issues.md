@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: ffbc919333c43c04f461498a513d098ce8fe628f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 81eabadba70a2d5334fab43157f17d24c41d97ec
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996591"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103417"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
@@ -174,3 +174,43 @@ Azure 机器学习工作区中的某些操作不会将信息记录到__活动日
 如果收到错误`Unable to upload project files to working directory in AzureFile because the storage is overloaded`，请应用以下解决方法。
 
 如果对其他工作负荷（如数据传输）使用文件共享，则建议使用 blob，以便可以自由地使用文件共享来提交运行。 你还可以在两个不同的工作区之间拆分工作负荷。
+
+## <a name="webservices-in-azure-kubernetes-service-failures"></a>Azure Kubernetes 服务中的 Webservices 故障 
+
+Azure Kubernetes 服务中的许多 webservice 故障可通过使用`kubectl`连接到群集来进行调试。 可以通过运行来`kubeconfig.json`获取 Azure Kubernetes 服务群集的
+
+```bash
+az aks get-credentials -g <rg> -n <aks cluster name>
+```
+
+## <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>更新 AKS 群集中 Azure 机器学习组件
+
+必须手动应用 Azure Kubernetes Service 群集中安装 Azure 机器学习组件的更新。 可以通过从 "Azure 机器学习" 工作区分离群集，然后将群集重新附加到工作区来应用这些群集。 如果在群集中启用了 SSL，则需要在重新附加群集时提供 SSL 证书和私钥。 
+
+```python
+compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
+compute_target.detach()
+compute_target.wait_for_completion(show_output=True)
+
+attach_config = AksCompute.attach_configuration(resource_group=resourceGroup, cluster_name=kubernetesClusterName)
+
+## If SSL is enabled.
+attach_config.enable_ssl(
+    ssl_cert_pem_file="cert.pem",
+    ssl_key_pem_file="key.pem",
+    ssl_cname=sslCname)
+
+attach_config.validate_configuration()
+
+compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceName, attach_configuration=attach_config)
+compute_target.wait_for_completion(show_output=True)
+```
+
+如果不再具有 SSL 证书和私钥，或者使用的是 Azure 机器学习生成的证书，则可以在分离群集之前通过使用`kubectl`和检索机密来连接到该群集来检索这些文件`azuremlfessl`。
+
+```bash
+kubectl get secret/azuremlfessl -o yaml
+```
+
+>[!Note]
+>Kubernetes 以64编码格式存储密码。 在向提供机密`cert.pem` `key.pem`之前，需要对机密的和组件进行64解码。 `attach_config.enable_ssl` 

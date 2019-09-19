@@ -93,7 +93,7 @@ sections:
           - href: /azure/sql-database/sql-database-instance-pools
             html: <p>将托管实例池用作一种简单且经济高效的解决方案，以便部署多个可以共享资源并可快速缩放的托管实例。</p>
             image:
-              src: media/index/i_instancepool.png
+              src: media/index/i-instancepools.svg
             title: 实例池
   - title: 5 分钟快速入门
     items:

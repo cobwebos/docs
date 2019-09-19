@@ -4,15 +4,16 @@ description: 在此快速入门中，了解如何在 Azure HDInsight 上使用 A
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 9fa6ad3c52e9b01fe9a62a2de52f62b1b1a95aa8
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779523"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960264"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Kafka 群集
 
@@ -38,7 +39,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 2. 在左侧菜单中，导航到“+ 创建资源” > “Analytics” > “HDInsight”    。
    
-    ![创建 HDInsight 群集](./media/apache-kafka-get-started/create-hdinsight.png)
+    ![创建 HDInsight 群集](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. 在“基本信息”中，输入或选择以下信息  ：
 
@@ -49,7 +50,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
     
    选择“群集类型”，以显示“群集配置”   。
    
-   ![基于 HDInsight 基本配置的 Apache Kafka 群集](./media/apache-kafka-get-started/custom-basics-kafka.png)
+   ![基于 HDInsight 基本配置的 Apache Kafka 群集](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. 从“群集配置”中选择以下值  ：
 
@@ -60,7 +61,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
     选择“选择”以保存群集类型设置，然后返回到“基本信息”   。
 
-    ![选择群集类型](./media/apache-kafka-get-started/kafka-cluster-type.png)
+    ![选择群集类型](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. 在“基本信息”中，输入或选择以下信息  ：
 
@@ -98,7 +99,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
     “每个工作节点的磁盘数”条目配置 Apache Kafka on HDInsight 的可伸缩性。  Apache Kafka on HDInsight 在群集中使用虚拟机的本地磁盘来存储数据。 由于 Apache Kafka 的 I/O 很高，因此会使用 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)为每个节点提供高吞吐量和更多存储。 托管磁盘的类型可以为“标准”  (HDD) 或“高级”  (SSD)。 磁盘类型取决于辅助角色节点（Apache Kafka 代理）所使用的 VM 大小。 高级磁盘可自动与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
 
-   ![设置 Apache Kafka 群集大小](./media/apache-kafka-get-started/kafka-cluster-size.png)
+   ![设置 Apache Kafka 群集大小](./media/apache-kafka-get-started/apace-kafka-cluster-size.png)
 
 10. 在“高级设置”中，选择“下一步”以使用默认设置继续   。
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 284c9bb1b9032d2f9caf0ce62c45ffa7cd8bf9d4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e325618ed1cdec6149ac31771c8bd67ecea7d559
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476858"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993796"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 是什么
 
@@ -25,7 +25,7 @@ Apache Spark 是并行处理框架，支持使用内存中处理来提升大数�
 
 Spark 提供了用于内存中群集计算的基元。 Spark 作业可以将数据加载和缓存到内存中并重复地对其进行查询。 内存中计算比基于磁盘的应用程序（例如通过 Hadoop 分布式文件系统 (HDFS) 共享数据的 Hadoop）快速得多。 Spark 还集成到 Scala 编程语言中，让你可以像处理本地集合一样处理分布式数据集。 无需将所有内容构造为映射和化简操作。
 
-![传统 MapReduce 与Spark](./media/apache-spark-overview/mapreduce-vs-spark.png)
+![传统 MapReduce 与Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
 
 HDInsight 中的 Spark 群集提供完全托管的 Spark 服务。 下面列出了在 HDInsight 中创建 Spark 群集的优势。
 
@@ -57,7 +57,7 @@ HDInsight 中的 Spark 群集还提供 [ODBC 驱动程序](https://go.microsoft.
 
 ## <a name="spark-cluster-architecture"></a>Spark 群集体系结构
 
-![HDInsight Spark 的体系结构](./media/apache-spark-overview/spark-architecture.png)
+![HDInsight Spark 的体系结构](./media/apache-spark-overview/hdi-spark-architecture.png)
 
 了解 Spark 在 HDInsight 群集上的运行方式后，即可轻松了解 Spark 的组件。
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/28/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8b20c54d2151afae227a085dd66a0d31f2b85305
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 2262948a8368f9448d876166b712ebaf670b5a56
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310671"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70994362"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure 中的专用 Docker 容器注册表简介
 
@@ -31,7 +31,7 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管专用 Docker
 * **可缩放业务流程系统**，用于跨主机群集管理容器化应用程序，包括 [Kubernetes](https://kubernetes.io/docs/)、[DC/OS](https://docs.mesosphere.com/) 和 [Docker Swarm](https://docs.docker.com/swarm/)。
 * 支持大规模生成和运行应用程序的 **Azure 服务**，包括 [Azure Kubernetes 服务 (AKS)](../aks/index.yml)、[应用服务](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](/azure/service-fabric/) 和其他服务。
 
-开发人员还可以在执行容器开发工作流的过程中将内容推送到容器注册表。 例如，通过持续集成和交付工具（例如 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) 或 [Jenkins](https://jenkins.io/)）将容器注册表作为目标。
+开发人员还可以在执行容器开发工作流的过程中将内容推送到容器注册表。 例如，通过持续集成和交付工具（例如 [Azure Pipelines](/azure/devops/pipelines/ecosystems/containers/acr-template) 或 [Jenkins](https://jenkins.io/)）将容器注册表作为目标。
 
 配置 ACR 任务，在应用程序映像的基础映像发生更新时自动重新生成应用程序映像，或者在团队将代码提交到 Git 存储库时自动完成映像生成。 创建多步骤任务，在云中以并行方式自动完成多个容器映像的生成、测试和修补。
 

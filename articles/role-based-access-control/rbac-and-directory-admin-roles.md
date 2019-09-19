@@ -15,12 +15,12 @@ ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: be37768a5cef38ae0dc49e12f1d83ba8005ab961
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: e9ce71f12d50aa414579e5fc7c2961156965a337
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194172"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037522"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色
 
@@ -112,7 +112,7 @@ Azure AD 管理员角色用于管理目录中的 Azure AD 资源，例如，创�
 | Azure RBAC 角色 | Azure AD 管理员角色 |
 | --- | --- |
 | 管理对 Azure 资源的访问 | 管理对 Azure Active Directory 资源的访问 |
-| 支持自定义角色 | 无法创建自己的角色 |
+| 支持自定义角色 | 支持自定义角色 |
 | 可在多个级别（管理组、订阅、资源组、资源）指定范围 | 范围为租户级别 |
 | 可在 Azure 门户、Azure CLI、Azure PowerShell、Azure 资源管理器模板、REST API 中访问角色信息 | 可在 Azure 管理门户、Microsoft 365 管理中心、Microsoft Graph、AzureAD PowerShell 中访问角色信息 |
 

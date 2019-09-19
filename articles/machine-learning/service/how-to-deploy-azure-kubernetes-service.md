@@ -1,7 +1,7 @@
 ---
 title: 如何将模型部署到 Azure Kubernetes 服务
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure Kubernetes 服务将 Azure 机器学习服务模型部署为 web 服务。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure Kubernetes 服务将 Azure 机器学习模型部署为 web 服务。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c32560f7bb182ac347e9e5a71b53b57cf80fac38
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858734"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034627"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes Service 群集
 
-了解如何使用 Azure 机器学习服务将模型部署为 Azure Kubernetes Service （AKS）上的 web 服务。 Azure Kubernetes 服务适用于大规模生产部署。 如果需要以下一个或多个功能，请使用 Azure Kubernetes 服务：
+了解如何使用 Azure 机器学习将模型部署为 Azure Kubernetes Service （AKS）上的 web 服务。 Azure Kubernetes 服务适用于大规模生产部署。 如果需要以下一个或多个功能，请使用 Azure Kubernetes 服务：
 
 - __快速响应时间__。
 - 已部署服务的自动__缩放__。
@@ -30,15 +30,15 @@ ms.locfileid: "70858734"
 
 部署到 Azure Kubernetes 服务时，部署到__连接到工作区__的 AKS 群集。 可通过两种方式将 AKS 群集连接到工作区：
 
-* 使用 Azure 机器学习服务 SDK、机器学习 CLI、 [Azure 门户](https://portal.azure.com)或[工作区登陆页面（预览版）](https://ml.azure.com)创建 AKS 群集。 此过程会自动将群集连接到工作区。
-* 将现有的 AKS 群集附加到 Azure 机器学习服务工作区。 可以使用 Azure 机器学习服务 SDK、机器学习 CLI 或 Azure 门户来连接群集。
+* 使用 Azure 机器学习 SDK、机器学习 CLI、 [Azure 门户](https://portal.azure.com)或[工作区登陆页面（预览版）](https://ml.azure.com)创建 AKS 群集。 此过程会自动将群集连接到工作区。
+* 将现有的 AKS 群集附加到 Azure 机器学习工作区。 可以使用 Azure 机器学习 SDK、机器学习 CLI 或 Azure 门户来连接群集。
 
 > [!IMPORTANT]
 > 创建或附件过程是一次性任务。 将 AKS 群集连接到工作区后，可以将其用于部署。 如果不再需要 AKS 群集，可以分离或删除它。 Detatched 或删除后，将无法再部署到群集。
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 机器学习服务工作区。 有关详细信息，请参阅[创建 Azure 机器学习服务工作区](how-to-manage-workspace.md)。
+- Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 - 已在工作区中注册的机器学习模型。 如果没有已注册的模型，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
@@ -117,7 +117,7 @@ az ml computetarget create aks -n myaks
 如果 Azure 订阅中已有 AKS 群集, 并且它是版本 1.12. # #, 则可以使用它来部署映像。
 
 > [!TIP]
-> 现有的 AKS 群集可以位于 Azure 区域中，而不是 Azure 机器学习服务工作区。
+> 现有的 AKS 群集可以位于 Azure 区域，而不是 Azure 机器学习工作区。
 >
 > 如果要使用 Azure 虚拟网络保护 AKS 群集，必须先创建虚拟网络。 有关详细信息，请参阅[通过 Azure 虚拟网络进行安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。
 

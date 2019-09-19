@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 09/18/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e4496e2b5d2b21fd878ef68665b8e5b06fa6cc5
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 325de36f3aa480847bc647827260f7f65765b5d7
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70012548"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103752"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
@@ -38,7 +38,7 @@ ms.locfileid: "70012548"
 
 1. 在左侧窗格中选择“订阅”。  根据你的访问权限，可能需要选择一个计费范围，然后选择“订阅”或“Azure 订阅”。  
 
-1. 选择要转移的订阅对应的“转移计费所有权”。  
+1. 选择要转移的订阅对应的“转移计费所有权”。 
 
    ![选择要转移的订阅](./media/billing-subscription-transfer/billing-select-subscription-to-transfer.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "70012548"
     > [!IMPORTANT]
     >
     > 如果选择将订阅移到新帐户的 Azure AD 租户，将会永久删除用于管理订阅中的资源的所有[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md)分配。 只有新帐户中接受了转移请求的用户才有权管理订阅中的资源。 有关详细信息，请参阅[将订阅转移到另一个 Azure AD 租户中的用户](../active-directory/managed-identities-azure-resources/known-issues.md)。 或者，可以取消选中“订阅”Azure AD 租户对应的框，以便在不将订阅移到新帐户的租户的情况下转移计费所有权。 这会保留现有的管理 Azure 资源的 RBAC 权限。
-  
+
     ![“发送转移请求”页](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
 1. 选择“发送转移请求”。 
@@ -58,7 +58,7 @@ ms.locfileid: "70012548"
 
    ![发送给收件人的订阅转移电子邮件](./media/billing-subscription-transfer/billing-receiver-email.png)
 
-1. 若要批准转移请求，用户需选择电子邮件中的链接，并按说明操作。 用户必须选择用于支付订阅费用的付款方式。 此外，如果用户没有 Azure 帐户，则他们必须注册一个新帐户。 
+1. 若要批准转移请求，用户需选择电子邮件中的链接，并按说明操作。 用户必须选择用于支付订阅费用的付款方式。 此外，如果用户没有 Azure 帐户，则他们必须注册一个新帐户。
 
    ![第一个订阅转移网页](./media/billing-subscription-transfer/billing-accept-ownership-step1.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "70012548"
 
 ## <a name="transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions"></a>转移 Visual Studio、MPN 和即用即付开发/测试订阅
 
-Visual Studio 和 Microsoft 合作伙伴网络订阅具有关联的每月定期 Azure 额度。 转移这些订阅时，你的额度在目标计费帐户中不可用。 订阅使用目标计费帐户中的额度。 例如，如果 Bob 在 9 月 9 日将 Visual Studio Enterprise 订阅转移到了 Jane 的帐户，而 Jane 接受了这种转移。 转移完成后，订阅将开始使用 Jane 帐户中的额度。 该额度在每个月的 9 号重置。 
+Visual Studio 和 Microsoft 合作伙伴网络订阅具有关联的每月定期 Azure 额度。 转移这些订阅时，你的额度在目标计费帐户中不可用。 订阅使用目标计费帐户中的额度。 例如，如果 Bob 在 9 月 9 日将 Visual Studio Enterprise 订阅转移到了 Jane 的帐户，而 Jane 接受了这种转移。 转移完成后，订阅将开始使用 Jane 帐户中的额度。 该额度在每个月的 9 号重置。
 
 
 <a id="EA"></a>
@@ -107,9 +107,9 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 
 - [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*
 - [Microsoft 合作伙伴网络](https://azure.microsoft.com/offers/ms-azr-0025p/)  
-- [Visual Studio Enterprise (MPN) 订户](https://azure.microsoft.com/offers/ms-azr-0029p/) 
+- [Visual Studio Enterprise (MPN) 订户](https://azure.microsoft.com/offers/ms-azr-0029p/)
 - [MSDN 平台](https://azure.microsoft.com/offers/ms-azr-0062p/)  
-- [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/) 
+- [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [即用即付开发/测试](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)
 - [Visual Studio Enterprise：BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
@@ -119,7 +119,7 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 
 \* [通过 EA 门户](#EA)。
 
-\*\* 仅支持在 Azure 网站上注册期间创建的帐户。 
+\*\* 仅支持在 Azure 网站上注册期间创建的帐户。
 
 <a id="faq"></a>
 
@@ -134,8 +134,14 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 若要确定你是哪些帐户的计费管理员，请使用以下步骤：
 
 1. 访问 [Azure 门户中的“成本管理 + 计费”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview)。
-1. 在左窗格中选择“所有计费范围”。  
+1. 在左窗格中选择“所有计费范围”。 
 1. 订阅页将列出你是其计费管理员的所有订阅。
+
+如果不确定谁是订阅的帐户管理员，可使用以下步骤查明。
+
+1. 请访问 [Azure 门户中的订阅页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
+1. 选择要检查的订阅，并关注“设置”  下的信息。
+1. 选择“属性”。  订阅的帐户管理员会显示在“帐户管理员”框中。 
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>所有内容都会转让吗？ 包括资源组、VM、磁盘和其他正在运行的服务吗？
 
@@ -201,13 +207,13 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 
 ### <a id="no-button"></a> 为什么我没有看到“转让订阅”按钮？
 
-自助式服务订阅转移不适用于你的计费帐户。 目前，我们不支持在 Azure 门户上转移企业协议 (EA) 帐户中订阅的计费所有权。 此外，在 Microsoft 代表的配合下创建的 Microsoft 客户协议帐户不支持转移计费所有权。 
+自助式服务订阅转移不适用于你的计费帐户。 目前，我们不支持在 Azure 门户上转移企业协议 (EA) 帐户中订阅的计费所有权。 此外，在 Microsoft 代表的配合下创建的 Microsoft 客户协议帐户不支持转移计费所有权。
 
-### <a id="no-button"></a> 为何我的订阅类型不支持转移？ 
+### <a id="no-button"></a> 为何我的订阅类型不支持转移？
 
 并非所有类型的订阅都支持计费所有权转移。 若要查看支持转移的订阅类型列表，请参阅[支持的订阅类型](#supported-subscription-types)
 
-### <a id="no-button"></a> 尝试转移订阅的计费所有权时，为何会出现拒绝访问错误？ 
+### <a id="no-button"></a> 尝试转移订阅的计费所有权时，为何会出现拒绝访问错误？
 
 如果你尝试转移 Microsoft Azure 计划订阅，但没有必要的权限，则会看到此错误。 若要转移 Microsoft Azure 计划订阅，你需是要从中计收订阅费用的发票科目的所有者或参与者。 有关详细信息，请参阅[管理发票科目的订阅](billing-understand-mca-roles.md#manage-subscriptions-for-invoice-section)。
 

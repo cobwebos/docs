@@ -14,11 +14,11 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54e0648ff9aab12ad6a579fc7f6e45b98a9d6d03
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c2eff9c0edf6797c08d0ef9732c903a81a6c764a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "70861176"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
@@ -79,12 +79,6 @@ ms.locfileid: "70861176"
 * Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
 * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
 
-### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Azure DevOps 管理员](#azure-devops-administrator-permissions)
-
-具有此角色的用户可以管理 Azure DevOps 策略，以将新的 Azure DevOps 组织创建限制为一组可配置的用户/AAD 组。 此角色中的用户可以通过任何 Azure AD 公司的 Azure DevOps 组织来管理此策略。
-
-将来，此角色中的用户将管理所有企业 Azure DevOps 策略。
-
 ### <a name="azure-information-protection-administratorazure-information-protection-administrator-permissions"></a>[Azure 信息保护管理员](#azure-information-protection-administrator-permissions)
 
 具有此角色的用户拥有 Azure 信息保护服务中的所有权限。 此角色可以配置 Azure 信息保护策略的标签、管理保护模板，以及激活保护。 此角色不会授予标识保护中心、Privileged Identity Management、监视 Office 365 服务运行状况或 Office 365 安全与合规中心的权限。
@@ -130,7 +124,7 @@ ms.locfileid: "70861176"
 
 具有此角色的用户有权管理 Microsoft 365 合规中心、Microsoft 365 管理中心、Azure 和 Office 365 安全与合规中心中的合规性相关功能。 工作负责人还可以管理 Exchange 管理中心和团队 & Skype for Business 管理中心的所有功能，并为 Azure 和 Microsoft 365 创建支持票证。 [关于 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)中提供了详细信息。
 
-流入 | 有权执行的操作
+In | 有权执行的操作
 ----- | ----------
 [Microsoft 365 合规中心](https://protection.office.com) | 跨 Microsoft 365 服务保护和管理组织数据<br>管理合规性警报
 [合规性管理器](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 跟踪、分配并验证组织的法规合规性活动
@@ -142,7 +136,7 @@ ms.locfileid: "70861176"
 
 具有此角色的用户具有跟踪 Microsoft 365 符合性中心、Microsoft 365 管理中心和 Azure 中的数据的权限。 用户还可以在 Exchange 管理中心、合规性经理和团队中跟踪符合性数据 & Skype for Business 管理中心，并为 Azure 和 Microsoft 365 创建支持票证。
 
-流入 | 有权执行的操作
+In | 有权执行的操作
 ----- | ----------
 [Microsoft 365 合规中心](https://protection.office.com) | 跨 Microsoft 365 服务监视与合规性相关的策略<br>管理合规性警报
 [合规性管理器](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 跟踪、分配并验证组织的法规合规性活动
@@ -312,7 +306,7 @@ ms.locfileid: "70861176"
 
 具有此角色的用户有权管理 Microsoft 365 安全中心、Azure Active Directory 标识保护、Azure 信息保护和 Office 365 安全与合规中心中与安全相关的功能。 [Office 365 安全与合规中心](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)提供了有关 Office 365 权限的详细信息。
 
-流入 | 有权执行的操作
+In | 有权执行的操作
 --- | ---
 [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务监视与安全相关的策略<br>管理安全威胁和警报<br>查看报告
 Identity Protection 中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
@@ -329,7 +323,7 @@ Windows Defender ATP 和 EDR | 分配角色<br>管理计算机组<br>配置终�
 
 具有此角色的用户可以管理警报，并对安全相关的功能拥有全局只读访问权限，包括 Microsoft 365 安全中心、Azure Active Directory、标识保护、Privileged Identity Management 以及 Office 365 安全与合规中心。 [Office 365 安全与合规中心](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center)提供了有关 Office 365 权限的详细信息。
 
-流入 | 有权执行的操作
+In | 有权执行的操作
 --- | ---
 [Microsoft 365 安全中心](https://protection.office.com) | 安全读取者角色的所有权限<br>查看、调查和响应安全威胁警报
 Identity Protection 中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
@@ -344,7 +338,7 @@ Windows Defender ATP 和 EDR | 安全读取者角色的所有权限<br>查看、
 
 具有此角色的用户对安全相关的功能具有全局只读访问权限，包括 Microsoft 365 安全中心、Azure Active Directory、标识保护、Privileged Identity Management 中的所有信息，并且能够阅读 Azure Active Directory 登录报告和审核日志，还授予了对 Office 365 安全与合规中心的只读权限。 [Office 365 安全与合规中心](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)提供了有关 Office 365 权限的详细信息。
 
-流入 | 有权执行的操作
+In | 有权执行的操作
 --- | ---
 [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务查看与安全相关的策略<br>查看安全威胁和警报<br>查看报告
 Identity Protection 中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>加密<li>数据丢失预防<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
@@ -497,19 +491,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 | microsoft. 目录/用户/密码/更新 | 更新 Office 365 组织中所有用户的密码。 有关详细信息，请参阅联机文档。 |
-
-### <a name="azure-devops-administrator-permissions"></a>Azure DevOps 管理员权限
-
-可管理 Azure DevOps 组织策略和设置。
-
-> [!NOTE]
-> 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的[角色说明](#azure-devops-administrator)。
->
->
-
-| **操作** | **说明** |
-| --- | --- |
-| devOps/allEntities/allTasks | 阅读并配置 Azure DevOps。 |
 
 ### <a name="azure-information-protection-administrator-permissions"></a>Azure 信息保护管理员权限
 
@@ -1515,7 +1496,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 应用程序管理员 | 应用程序管理员 | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 应用程序开发人员 | 应用程序开发人员 | CF1C38E5-3621-4004-A7CB-879624DCED7C
 身份验证管理员 | 身份验证管理员 | c4e39bd9-1100-46d3-8c65-fb160da0071f
-Azure DevOps 管理员 | Azure DevOps 管理员 | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure 信息保护管理员 | Azure 信息保护管理员 | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C 用户流管理员 | B2C 用户流管理员 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 B2C 用户流属性管理员 | B2C 用户流属性管理员 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

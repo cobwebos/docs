@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0344fc834cb1ef29c91bc52239d1df2706d1ca81
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873867"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101678"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>快速入门：创建 Azure SQL 数据库托管实例
 
@@ -60,7 +60,7 @@ ms.locfileid: "69873867"
 
    ![托管实例窗体](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
-5. 若要将托管实例用作实例故障转移组辅助实例，请选择“签出”并指定 DnsAzurePartner 托管实例。 此功能以预览版提供，未在以下屏幕截图中显示。
+5. 若要将托管实例用作实例故障转移组辅助实例，请选择“签出”并指定 DnsAzurePartner 托管实例。 
 6. 选择“定价层”，以设置计算和存储资源的大小并查看定价层选项。  默认值是具有 32 GB 内存和 16 个 vCore 的“常规用途”定价层。
 7. 使用滑块或文本框指定存储量和虚拟核心数。
 8. 完成后，选择“应用”以保存所做的选择。  

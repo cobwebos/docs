@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: f1ceae17195c08af380a7448dd4dbf3bfa3f9de2
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 22d65d20220bfda821fe255e08dd056b761a828d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211870"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086993"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -32,10 +32,11 @@ ms.locfileid: "70211870"
 
 ![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-> ## <a name="prerequisites"></a>先决条件
-> 若要运行此示例，需要： 
-> - Java 开发工具包 (JDK) 8 或更高版本以及 Maven。
->
+## <a name="prerequisites"></a>先决条件
+
+若要运行此示例，需要： 
+- Java 开发工具包 (JDK) 8 或更高版本以及 Maven。
+
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
 > 可以使用两个选项来启动快速入门应用程序：“快速”（选项 1）和“手动”（选项 2）

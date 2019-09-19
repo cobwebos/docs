@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 12001aef970d3b465a7f5c8e0c7af072b8f4ec80
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9e48cb53b55cdc4200498a54dba31ae93ca8b31a
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428444"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018580"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>快速入门：在 Azure HDInsight 中创建和监视 Apache Storm 拓扑
 
@@ -51,7 +51,7 @@ Storm 提供一个 Web 界面用于处理正在运行的拓扑，并包含在 HD
 
 2. 在“拓扑摘要”  下，选择“名称”  列中的“wordcount”  条目。 将显示有关拓扑的信息。
 
-    ![包含 Storm 初学者项目 WordCount 拓扑信息的 Storm 仪表板。](./media/apache-storm-quickstart/topology-summary.png)
+    ![包含 Storm 初学者项目 WordCount 拓扑信息的 Storm 仪表板。](./media/apache-storm-quickstart/hdi-topology-summary.png)
 
     新页提供以下信息：
 
@@ -68,7 +68,7 @@ Storm 提供一个 Web 界面用于处理正在运行的拓扑，并包含在 HD
 
 3. 在此页中，从“Spout”  或“Bolt”  部分中选择一个条目。 将显示有关选定组件的信息。
 
-    ![包含有关选定组件信息的 Storm 仪表板。](./media/apache-storm-quickstart/component-summary.png)
+    ![包含有关选定组件信息的 Storm 仪表板。](./media/apache-storm-quickstart/hdi-component-summary.png)
 
     新页显示以下信息：
 
