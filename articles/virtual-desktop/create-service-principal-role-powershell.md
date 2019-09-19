@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: a9b5eecd97b078c9446e28d971f900c4cf65130f
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: dbde4ccede7f27ae494c8326babc7ec69b4a1266
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845533"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70985006"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>教程：通过使用 PowerShell 创建服务主体和角色分配
 
@@ -92,6 +92,7 @@ Get-RdsTenant
 找到要为其创建角色分配的租户的租户名称时，请在以下 cmdlet 中使用该名称：
 
 ```powershell
+$myTenantName = "<Windows Virtual Desktop Tenant Name>"
 New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
 ```
 

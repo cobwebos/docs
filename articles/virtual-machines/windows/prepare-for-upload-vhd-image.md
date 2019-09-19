@@ -4,7 +4,7 @@ description: 了解如何准备要上传到 Azure 的 Windows VHD 或 VHDX
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 7802489d-33ec-4302-82a4-91463d03887a
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 903c5f31f5039270b1edc65f53b248cd0a5b1355
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a14dca066ec60f4aeec79fe6b4c532445b4392f1
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088925"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086904"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -32,7 +32,7 @@ ms.locfileid: "70088925"
 > [!NOTE]
 > 本文中的说明适用于:
 >1. 64位版本的 Windows Server 2008 R2 和更高版本的 Windows Server 操作系统。 若要了解如何在 Azure 中运行 32 位操作系统，请参阅 [Azure VM 中的 32 位操作系统支持](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)。
->2. 如果任何灾难恢复工具将用于迁移工作负荷 (如 Azure Site Recovery 或 Azure Migrate), 则仍需要执行此过程, 然后在来宾 OS 上执行迁移之前准备映像的操作。
+>2. 如果任何灾难恢复工具将用于迁移工作负荷（如 Azure Site Recovery 或 Azure Migrate），则仍需要执行此过程，然后在来宾 OS 上执行迁移之前准备映像的操作。
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>将虚拟磁盘转换为固定大小和 VHD
 
@@ -348,7 +348,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 
    - 每个人
 
-   - 位用户
+   - 用户
 
 10. 重启 VM，确保 Windows 仍可正常运行，并可通过 RDP 连接来访问。 此时，可能需要在本地 Hyper-V 中创建一个 VM，以确保该 VM 完全启动。 然后通过测试来确保可通过 RDP 来访问该 VM。
 

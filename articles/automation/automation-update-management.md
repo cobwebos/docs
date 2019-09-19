@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a2b62cc0548b0bbedae35f6a0d72ac327723e60
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
-ms.translationtype: MT
+ms.openlocfilehash: daa075518c569e257fd86a478809a1d1650d4345
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743834"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098102"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -42,13 +42,13 @@ ms.locfileid: "70743834"
 
 更新管理可用于在同一租户的多个订阅中本机登记计算机。
 
-包发布后，将需要2-3 小时才能显示适用于 Linux 计算机进行评估的修补程序。 对于 Windows 计算机，发布后，需要 12-15 小时才会显示修补程序以供评估。
+包发布后, 将需要2-3 小时才能显示适用于 Linux 计算机进行评估的修补程序。 对于 Windows 计算机，发布后，需要 12-15 小时才会显示修补程序以供评估。
 
-计算机完成更新符合性扫描后，代理会将信息批量转发到 Azure Monitor 日志。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。
+计算机完成更新符合性扫描后, 代理会将信息批量转发到 Azure Monitor 日志。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。
 
 如果 MMA 重启，除了按扫描计划扫描，更新符合性扫描还会在更新安装前和更新安装后的 15 分钟内启动。
 
-对于 Linux 计算机，默认情况下，每小时执行一次符合性扫描。 如果 MMA 代理重启，则会在 15 分钟内启动符合性扫描。
+对于 Linux 计算机, 默认情况下, 每小时执行一次符合性扫描。 如果 MMA 代理重启，则会在 15 分钟内启动符合性扫描。
 
 解决方案根据所配置的与之进行同步的源来报告计算机的更新情况。 如果将 Windows 计算机配置为向 WSUS 报告，则结果可能不同于 Microsoft 更新所显示的内容，具体取决于 WSUS 上次通过 Microsoft 更新进行同步的时间。 对于配置为向本地存储库（而非公共存储库）报告的 Linux 计算机来说，行为也是如此。
 
@@ -57,15 +57,15 @@ ms.locfileid: "70743834"
 
 可以通过创建计划的部署，在需要更新的计算机上部署和安装软件更新。 归类为“可选”的更新不包括在 Windows 计算机的部署范围内。 只有必需的更新会包括在部署范围内。
 
-计划的部署通过以下方式定义目标计算机接收适用更新的目标计算机：显式指定计算机，或选择基于特定计算机集的日志搜索的[计算机组](../azure-monitor/platform/computer-groups.md)或[Azure 查询](#azure-machines)基于指定的条件动态选择 Azure Vm。 这些组与[范围配置](../azure-monitor/insights/solution-targeting.md)不同，后者仅用于确定哪些计算机获得启用该解决方案的管理包。
+计划的部署通过以下方式定义目标计算机接收适用更新的目标计算机: 显式指定计算机, 或选择基于特定计算机集的日志搜索的[计算机组](../azure-monitor/platform/computer-groups.md)或[Azure 查询](#azure-machines)基于指定的条件动态选择 Azure Vm。 这些组与[范围配置](../azure-monitor/insights/solution-targeting.md)不同, 后者仅用于确定哪些计算机获得启用该解决方案的管理包。
 
-也可以指定一个计划来批准并设置可以安装更新的一个时段。 这段时间称为维护时段。 如果需要重新启动并且选择了适当的重新启动选项，则保留的维护时段为10分钟。 如果修补时间比预期时间长，并且维护时段内不到十分钟，则不会重新启动。
+也可以指定一个计划来批准并设置可以安装更新的一个时段。 这段时间称为维护时段。 如果需要重新启动并且选择了适当的重新启动选项, 则保留的维护时段为10分钟。 如果修补时间比预期时间长, 并且维护时段内不到十分钟, 则不会重新启动。
 
 通过 Azure 自动化中的 runbook 安装更新。 你无法查看这些 runbook，它们不需要任何配置。 创建更新部署时，更新部署会创建一个计划，该计划在指定的时间为所包括的计算机启动主更新 Runbook。 此主 Runbook 会在每个代理上启动一个子 Runbook 来安装必需的更新。
 
 目标计算机会按更新部署中指定的日期和时间，以并行方式执行部署。 在安装之前，会运行扫描来验证更新是否仍然是必需的。 对于 WSUS 客户端计算机，如果更新未在 WSUS 中获得批准，则更新部署会失败。
 
-不支持在多个 Log Analytics 工作区中为更新管理注册计算机（多宿主）。
+不支持在多个 Log Analytics 工作区中为更新管理注册计算机 (多宿主)。
 
 ## <a name="clients"></a>客户端
 
@@ -75,8 +75,8 @@ ms.locfileid: "70743834"
 
 |操作系统  |说明  |
 |---------|---------|
-|Windows Server 2019 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2016 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2012 R2 （Datacenter/Standard）<br><br>Windows Server 2008 R2 （RTM 和 SP1 Standard）|**更新评估**：支持<br><br>**修补**：需要混合 Runbook 辅助角色。 请参阅[混合 Runbook 辅助角色要求](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
-|CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要借助“yum”来返回 CentOS 当前没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅[Linux 上的更新分类](#linux-2)          |
+|Windows Server 2019 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2016 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2012 R2 （Datacenter/Standard）<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 （RTM 和 SP1 Standard）|**更新评估**：支持<br><br>**修补**：需要混合 Runbook 辅助角色。 请参阅[混合 Runbook 辅助角色要求](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
+|CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要借助“yum”来返回 CentOS 当前没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息, 请参阅[Linux 上的更新分类](#linux-2)          |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
 |Ubuntu 14.04 LTS、16.04 LTS 和 18.04 (x86/x64)      |Linux 代理必须具有访问更新存储库的权限。         |
@@ -110,7 +110,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 
 对于 Linux，计算机必须能够访问更新存储库。 更新存储库可以是专用的，也可以是公共的。 需要 TLS 1.1 或 TLS 1.2 才能与更新管理进行交互。 此解决方案不支持配置为向多个 Azure Log Analytics 工作区报告的 Log Analytics Linux 代理。
 
-有关如何安装适用于 Linux 的 Log Analytics 代理并下载最新版本的信息，请参阅[适用于 linux 的 Log Analytics 代理](https://github.com/microsoft/oms-agent-for-linux)。 有关如何安装适用于 Windows 的 Log Analytics 代理的信息，请参阅[windows Microsoft Monitoring Agent](../log-analytics/log-analytics-windows-agent.md)。
+有关如何安装适用于 Linux 的 Log Analytics 代理并下载最新版本的信息, 请参阅[适用于 linux 的 Log Analytics 代理](https://github.com/microsoft/oms-agent-for-linux)。 有关如何安装适用于 Windows 的 Log Analytics 代理的信息, 请参阅[windows Microsoft Monitoring Agent](../log-analytics/log-analytics-windows-agent.md)。
 
 ## <a name="permissions"></a>权限
 
@@ -139,10 +139,10 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 > [!NOTE]
 > 如果有 Operations Manager 1807 或2019管理组，并在管理组级别将代理配置为与工作区关联，则要使其显示的当前解决方法是在中将**IsAutoRegistrationEnabled**重写为**True** **microsoft.intelligencepacks.updateassessment. AzureAutomation. eventmessage 以及**规则。
 
-有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Azure Monitor 日志](../azure-monitor/platform/om-agents.md)。
+有关如何更新解决方案管理包的详细信息, 请参阅[将 Operations Manager 连接到 Azure Monitor 日志](../azure-monitor/platform/om-agents.md)。
 
 > [!NOTE]
-> 对于使用 Operations Manger 代理的系统，若要能够由更新管理完全托管，需要将代理更新为 Microsoft Monitoring Agent。 若要了解如何更新代理，请参阅[如何升级 Operations Manager 代理](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)。 对于使用 Operations Manager 的环境，必须运行 System Center Operations Manager 2012 R2 UR 14 或更高版本。
+> 对于使用 Operations Manger 代理的系统，若要能够由更新管理完全托管，需要将代理更新为 Microsoft Monitoring Agent。 若要了解如何更新代理，请参阅[如何升级 Operations Manager 代理](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)。 对于使用 Operations Manager 的环境, 必须运行 System Center Operations Manager 2012 R2 UR 14 或更高版本。
 
 ## <a name="onboard"></a>启用更新管理
 
@@ -155,7 +155,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>确认非 Azure 计算机已加入
 
-若要确认直接连接的计算机是否正在与 Azure Monitor 日志通信，请在几分钟后运行以下日志搜索之一。
+若要确认直接连接的计算机是否正在与 Azure Monitor 日志通信, 请在几分钟后运行以下日志搜索之一。
 
 #### <a name="linux"></a>Linux
 
@@ -171,12 +171,12 @@ Heartbeat
 | where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-在 Windows 计算机上，你可以查看以下信息以验证代理与 Azure Monitor 日志的连接：
+在 Windows 计算机上, 你可以查看以下信息以验证代理与 Azure Monitor 日志的连接:
 
 1. 在控制面板中，打开 **Microsoft Monitoring Agent**。 在“Azure Log Analytics”选项卡上，代理会显示以下消息：“Microsoft Monitoring Agent 已成功连接到 Log Analytics。”
 2. 打开“Windows 事件日志”。 转到“应用程序和服务日志\Operations Manager”，搜索来自“服务连接器”源的事件 ID 3000 和事件 ID 5002。 这些事件指示计算机已注册到 Log Analytics 工作区并且正在接收配置。
 
-如果代理无法与 Azure Monitor 日志通信，并且该代理已配置为通过防火墙或代理服务器与 internet 通信，请确认正确配置了防火墙或代理服务器。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../azure-monitor/platform/agent-windows.md)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md)。
+如果代理无法与 Azure Monitor 日志通信, 并且该代理已配置为通过防火墙或代理服务器与 internet 通信, 请确认正确配置了防火墙或代理服务器。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../azure-monitor/platform/agent-windows.md)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md)。
 
 > [!NOTE]
 > 如果 Linux 系统配置为与代理或 Log Analytics 网关通信，并且你将载入此解决方案，请使用以下命令更新 proxy.conf 权限来向 omiuser 组授予对文件的读取权限：
@@ -186,7 +186,7 @@ Heartbeat
 
 执行评估后，新添加的 Linux 代理会显示状态“已更新”。 此过程可能需要长达 6 小时的时间。
 
-若要确认 Operations Manager 管理组是否正在与 Azure Monitor 日志通信，请参阅[验证 Operations Manager 与 Azure Monitor 日志的集成](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)。
+若要确认 Operations Manager 管理组是否正在与 Azure Monitor 日志通信, 请参阅[验证 Operations Manager 与 Azure Monitor 日志的集成](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)。
 
 ## <a name="data-collection"></a>数据收集
 
@@ -222,9 +222,9 @@ Heartbeat
 
 ## <a name="install-updates"></a>安装更新
 
-对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”安装必需的更新。 若要创建更新部署，你必须拥有对自动化帐户的写入权限，并对部署中的任何 Azure Vm 具有写入访问权限。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要详细了解计算机组，请参阅[Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)。
+对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”安装必需的更新。 若要创建更新部署, 你必须拥有对自动化帐户的写入权限, 并对部署中的任何 Azure Vm 具有写入访问权限。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要详细了解计算机组, 请参阅[Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)。
 
-在更新部署中包括计算机组时，只会在创建计划时对组成员身份评估一次。 不会反映对组所做的后续更改。 若要绕过此类[动态组](#using-dynamic-groups)，请在部署时解析这些组，并使用 Azure vm 的查询或非 Azure vm 的已保存搜索来定义这些组。
+在更新部署中包括计算机组时，只会在创建计划时对组成员身份评估一次。 不会反映对组所做的后续更改。 若要绕过此类[动态组](#using-dynamic-groups), 请在部署时解析这些组, 并使用 Azure vm 的查询或非 Azure vm 的已保存搜索来定义这些组。
 
 > [!NOTE]
 > 默认情况下，从 Azure 市场部署的 Windows 虚拟机设置为从 Windows 更新服务接收自动更新。 添加此解决方案或者将 Windows 虚拟机添加到工作区时，此行为不会更改。 如果不主动通过此解决方案管理更新，则会应用默认行为（即自动应用更新）。
@@ -336,7 +336,7 @@ $WUSettings.Save()
 
 ### <a name="disable-automatic-installation"></a>禁用自动安装
 
-默认情况下，Azure Vm 已启用自动安装的更新。 这可能会导致在计划更新更新管理之前安装更新。 您可以通过将`NoAutoUpdate`注册表项设置为来`1`禁用此行为。 以下 PowerShell 代码片段显示了执行此操作的一种方法。
+默认情况下, Azure Vm 已启用自动安装的更新。 这可能会导致在计划更新更新管理之前安装更新。 您可以通过将`NoAutoUpdate`注册表项设置为来`1`禁用此行为。 以下 PowerShell 代码片段显示了执行此操作的一种方法。
 
 ```powershell
 $AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
@@ -345,7 +345,7 @@ Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
 
 ### <a name="enable-updates-for-other-microsoft-products"></a>启用其他 Microsoft 产品的更新
 
-默认情况下，Windows 更新仅为 Windows 提供更新。 如果在**更新 Windows 时为其他 Microsoft 产品启用了 "向我提供更新**"，则会向你提供其他产品的更新，包括 SQL Server 或其他第一方软件的安全修补程序。 不能通过组策略配置此选项。 在你想要启用其他第一方修补程序的系统上运行以下 PowerShell，更新管理将支持此设置。
+默认情况下，Windows 更新仅为 Windows 提供更新。 如果在**更新 Windows 时为其他 Microsoft 产品启用了 "向我提供更新**", 则会向你提供其他产品的更新, 包括 SQL Server 或其他第一方软件的安全修补程序。 不能通过组策略配置此选项。 在你想要启用其他第一方修补程序的系统上运行以下 PowerShell，更新管理将支持此设置。
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -393,7 +393,7 @@ https://dev.loganalytics.io/).
 
 #### <a name="single-azure-vm-assessment-queries-windows"></a>单个 Azure VM 评估查询 (Windows)
 
-将 VMUUID 值替换为要查询的虚拟机的 VM GUID。 可以通过在 Azure Monitor 日志中运行以下查询来找到应使用的 VMUUID：`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+将 VMUUID 值替换为要查询的虚拟机的 VM GUID。 可以通过在 Azure Monitor 日志中运行以下查询来找到应使用的 VMUUID:`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>缺少更新摘要
 
@@ -422,7 +422,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>单个 Azure VM 评估查询 (Linux)
 
-对于某些 Linux 发行版, 与来自 Azure 资源管理器的 VMUUID 值和存储在 Azure Monitor 日志中的[字节序](https://en.wikipedia.org/wiki/Endianness)不匹配。 以下查询可检查任一字节序的匹配情况。 使用 GUID 的 big-endian 和 little-endian 格式替换 VMUUID 值可正常地返回结果。 可以通过在 Azure Monitor 日志中运行以下查询来找到应使用的 VMUUID：`Update | where Computer == "<machine name>"
+对于某些 Linux 发行版, 与来自 Azure 资源管理器的 VMUUID 值和存储在 Azure Monitor 日志中的[字节序](https://en.wikipedia.org/wiki/Endianness)不匹配。 以下查询可检查任一字节序的匹配情况。 使用 GUID 的 big-endian 和 little-endian 格式替换 VMUUID 值可正常地返回结果。 可以通过在 Azure Monitor 日志中运行以下查询来找到应使用的 VMUUID:`Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>缺少更新摘要
@@ -596,10 +596,10 @@ Update
 
 ## <a name="using-dynamic-groups"></a>使用动态组
 
-更新管理提供了面向动态组 Azure 或非 Azure Vm 以实现更新部署的能力。 这些组在部署时评估，因此你无需编辑你的部署即可添加计算机。
+更新管理提供了面向动态组 Azure 或非 Azure Vm 以实现更新部署的能力。 这些组在部署时评估, 因此你无需编辑你的部署即可添加计算机。
 
 > [!NOTE]
-> 创建更新部署时，必须具有适当的权限。 若要了解详细信息，请参阅[安装更新](#install-updates)。
+> 创建更新部署时, 必须具有适当的权限。 若要了解详细信息, 请参阅[安装更新](#install-updates)。
 
 ### <a name="azure-machines"></a>Azure 计算机
 
@@ -618,7 +618,7 @@ Update
 
 ### <a name="non-azure-machines"></a>非 Azure 计算机
 
-对于非 Azure 计算机，保存的搜索也称为 "计算机组" 用于创建动态组。 若要了解如何创建保存的搜索，请参阅[创建计算机组](../azure-monitor/platform/computer-groups.md#creating-a-computer-group)。 创建组后，可以从已保存的搜索列表中选择它。 单击 "**预览**" 以在该时间预览已保存搜索中的计算机。
+对于非 Azure 计算机, 保存的搜索也称为 "计算机组" 用于创建动态组。 若要了解如何创建保存的搜索, 请参阅[创建计算机组](../azure-monitor/platform/computer-groups.md#creating-a-computer-group)。 创建组后, 可以从已保存的搜索列表中选择它。 单击 "**预览**" 以在该时间预览已保存搜索中的计算机。
 
 ![选择组](./media/automation-update-management/select-groups-2.png)
 
@@ -652,7 +652,7 @@ Update
 
 将更新部署到 Linux 计算机时，可以选择更新分类。 这会筛选已应用到满足指定条件的计算机的更新。 部署更新时，会在计算机本地应用此筛选器。
 
-由于更新管理在云中执行更新扩充，因此某些更新可以在更新管理中标记为具有安全影响，即使本地计算机没有该信息也是如此。 如果向 Linux 计算机应用关键更新，可能有些更新不会标记为对该计算机具有安全影响，因此不会应用这些更新。
+由于更新管理在云中执行更新扩充, 因此某些更新可以在更新管理中标记为具有安全影响, 即使本地计算机没有该信息也是如此。 如果向 Linux 计算机应用关键更新，可能有些更新不会标记为对该计算机具有安全影响，因此不会应用这些更新。
 
 但是，更新管理仍可能报告该计算机不合规，因为其中包含有关更新的其他信息。
 

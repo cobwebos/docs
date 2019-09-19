@@ -5,7 +5,7 @@ keywords: ssh 连接被拒绝, ssh 错误, azure ssh, SSH 连接失败
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: dcb82e19-29b2-47bb-99f2-900d4cfb5bbb
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: fd3c40d56e0ba9cdb50847832051606f81d0e952
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 006dbbe1b7472982a894691d019eb88ef2041dac
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677671"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088267"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>针对通过 SSH 连接到 Azure Linux VM 时发生的失败、错误或被拒绝问题进行故障排除
 尝试连接到 Linux 虚拟机 (VM) 时，可能会由于安全外壳 (SSH) 错误、SSH 连接失败或 SSH 被拒绝而发生问题，本文可帮助你查找并更正这些问题。 可以使用 Azure 门户、Azure CLI 或适用于 Linux 的 VM 访问扩展来排查和解决连接问题。
@@ -49,7 +49,7 @@ ms.locfileid: "68677671"
 可以使用以下方法之一重置凭据或 SSH 配置：
 
 * [Azure 门户](#use-the-azure-portal) - 如果需要快速重置 SSH 配置或 SSH 密钥，并且没有安装 Azure 工具，则很适合使用此方法。
-* [AZURE Vm 串行控制台](https://aka.ms/serialconsolelinux)-无论 SSH 配置如何, vm 串行控制台都可正常工作, 并向你的 vm 提供交互式控制台。 事实上, "不能 SSH" 情况是串行控制台旨在帮助解决的具体情况。 更多详细信息。
+* [AZURE Vm 串行控制台](https://aka.ms/serialconsolelinux)-无论 SSH 配置如何，vm 串行控制台都可正常工作，并向你的 vm 提供交互式控制台。 事实上，"不能 SSH" 情况是串行控制台旨在帮助解决的具体情况。 详情见下文。
 * [Azure CLI](#use-the-azure-cli) - 如果已打开命令行，则可以快速重置 SSH 配置或凭据。 如果要处理经典 VM，则可以使用 [Azure 经典 CLI](#use-the-azure-classic-cli)。
 * [Azure VMAccessForLinux 扩展](#use-the-vmaccess-extension) - 创建和重复使用 json 定义文件来重置 SSH 配置或用户凭据。
 
@@ -79,21 +79,21 @@ ms.locfileid: "68677671"
 使用网络观察程序的[下一跃点](../../network-watcher/network-watcher-check-next-hop-portal.md)功能确认路由未阻止将流量路由到虚拟机或从虚拟机路由流量。 还可以查看有效路由，以了解网络接口的所有有效路由。 有关详细信息，请参阅[使用有效路由排查 VM 流量流问题](../../virtual-network/diagnose-network-routing-problem.md)。
 
 ## <a name="use-the-azure-vm-serial-console"></a>使用 Azure VM 串行控制台
-[AZURE VM 串行控制台](./serial-console-linux.md)提供对 Linux 虚拟机的基于文本的控制台的访问。 可以使用控制台对交互式 shell 中的 SSH 连接进行故障排除。 确保满足使用串行控制台的[先决条件](./serial-console-linux.md#prerequisites), 并尝试以下命令, 进一步排查 SSH 连接问题。
+[AZURE VM 串行控制台](./serial-console-linux.md)提供对 Linux 虚拟机的基于文本的控制台的访问。 可以使用控制台对交互式 shell 中的 SSH 连接进行故障排除。 确保满足使用串行控制台的[先决条件](./serial-console-linux.md#prerequisites)，并尝试以下命令，进一步排查 SSH 连接问题。
 
 ### <a name="check-that-ssh-is-running"></a>检查 SSH 是否正在运行
-你可以使用以下命令来验证 SSH 是否在 VM 上运行:
+你可以使用以下命令来验证 SSH 是否在 VM 上运行：
 ```
 $ ps -aux | grep ssh
 ```
-如果有任何输出, SSH 就会启动并运行。
+如果有任何输出，SSH 就会启动并运行。
 
 ### <a name="check-which-port-ssh-is-running-on"></a>检查正在运行 SSH 的端口
-你可以使用以下命令来检查运行 SSH 的端口:
+你可以使用以下命令来检查运行 SSH 的端口：
 ```
 $ sudo grep Port /etc/ssh/sshd_config
 ```
-你的输出将如下所示:
+你的输出将如下所示：
 ```
 Port 22
 ```

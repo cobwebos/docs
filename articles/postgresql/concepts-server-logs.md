@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 4d1cf2c59e324cedd9b747b1ac65d6edcb9deb45
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/18/2019
+ms.openlocfilehash: b295ab442e70772a86d6699e1063c7a1c728f1a7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067393"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091123"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的服务器日志
 Azure Database for PostgreSQL 生成查询和错误日志。 查询和错误日志可用于识别、排除和修复配置错误和性能不佳问题。 （不包括访问事务日志）。 
@@ -28,24 +28,33 @@ Azure Database for PostgreSQL 生成查询和错误日志。 查询和错误日�
 
 
 ## <a name="diagnostic-logs"></a>诊断日志
-Azure Database for PostgreSQL 集成了 Azure Monitor 诊断日志。 在 PostgreSQL 服务器上启用日志后，可以选择将它们发送到 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)、事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../azure-monitor/platform/diagnostic-logs-overview.md)中的如何操作部分。 
+Azure Database for PostgreSQL 集成了 Azure Monitor 诊断日志。 在 PostgreSQL 服务器上启用日志后，可以选择将它们发送到 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)、事件中心或 Azure 存储。 
 
 > [!IMPORTANT]
 > 服务器日志的此诊断功能仅适用于“常规用途”和“内存优化”的[定价层](concepts-pricing-tiers.md)。
 
-下表介绍了每个日志中的内容。 包括的字段以及它们的出现顺序可能有所不同，具体取决于你选择的输出终结点。 
+使用 Azure 门户启用诊断日志：
+
+   1. 在门户中，在 Postgres 服务器的导航菜单中转到 "*诊断设置*"。
+   2. 选择 "*添加诊断设置*"。
+   3. 为此设置命名。 
+   4. 选择首选的下游位置（存储帐户、事件中心、log analytics）。 
+   5. 选择所需的数据类型。
+   6. 保存设置。
+
+下表描述了每个日志中的内容。 包括的字段以及它们的出现顺序可能有所不同，具体取决于你选择的输出终结点。 
 
 |**字段** | **说明** |
 |---|---|
 | TenantId | 租户 ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | 记录日志时的时间戳 (UTC) |
-| Type | 日志类型。 始终是 `AzureDiagnostics` |
+| 类型 | 日志的类型。 始终是 `AzureDiagnostics` |
 | SubscriptionId | 服务器所属的订阅的 GUID |
-| resourceGroup | 服务器所属的资源组的名称 |
+| 资源组 | 服务器所属的资源组的名称 |
 | ResourceProvider | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
-| ResourceId | 资源 URI |
+| resourceId | 资源 URI |
 | Resource | 服务器的名称 |
 | Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
@@ -58,6 +67,9 @@ Azure Database for PostgreSQL 集成了 Azure Monitor 诊断日志。 在 Postgr
 | DatatypeName | 数据类型名称（如果适用） |
 | LogicalServerName | 服务器的名称 | 
 | _ResourceId | 资源 URI |
+| 前缀 | 日志行的前缀 |
+
+
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解如何通过 [Azure 门户](howto-configure-server-logs-in-portal.md)或 [Azure CLI](howto-configure-server-logs-using-cli.md) 访问日志。

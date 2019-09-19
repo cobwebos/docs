@@ -9,15 +9,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
+manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: da2107a0573fafd10394931be21fb446f83fd5f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eb34395e0a9ec881c2f5e303383555fa6544369d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569075"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090897"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>处理 SQL 数据库连接问题和暂时性错误
 
@@ -90,9 +91,9 @@ ms.locfileid: "68569075"
 可以测试重试逻辑的一种方法是在程序运行时断开客户端计算机与网络的连接。 错误为：
 
 - **SqlException.Number** = 11001
-- 消息:“此主机不存在”
+- 消息：“此主机不存在”
 
-第一次重试时, 可以将客户端计算机重新连接到网络, 然后尝试连接。
+第一次重试时，可以将客户端计算机重新连接到网络，然后尝试连接。
 
 要使此测试可行，请从网络中断开计算机的连接，再启动程序。 然后，程序将识别促使它执行以下操作的运行时参数：
 
@@ -108,7 +109,7 @@ ms.locfileid: "68569075"
 在首次连接尝试之前，程序可以故意拼错用户名。 错误为：
 
 - **SqlException.Number** = 18456
-- 消息:“用户 'WRONG_MyUserName' 的登录失败。”
+- 消息：“用户 'WRONG_MyUserName' 的登录失败。”
 
 在首次重试过程中，程序可以更正拼写错误，然后尝试连接。
 
@@ -133,7 +134,7 @@ ms.locfileid: "68569075"
 为 **SqlConnection** 对象生成[连接字符串](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx)时，请在以下参数之间协调值：
 
 - **ConnectRetryCount**：&nbsp;&nbsp;默认值为 1。 范围为 0 到 255。
-- **ConnectRetryInterval**&nbsp;:&nbsp;默认值为10秒。 范围为 1 到 60。
+- **ConnectRetryInterval**：&nbsp;&nbsp;默认值为 10 秒。 范围为 1 到 60。
 - **Connection Timeout**：&nbsp;&nbsp;默认值为 15 秒。 范围为 0 到 2147483647。
 
 具体而言，所选的值应使以下等式成立：连接超时值 = ConnectRetryCount * ConnectionRetryInterval
@@ -310,7 +311,7 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfnxetelemetryblobtargetreadfile"></a>将返回 sys.fn_xe_telemetry_blob_target_read_file 中的若干行
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>将返回 sys.fn_xe_telemetry_blob_target_read_file 中的若干行
 
 以下示例显示返回的行的类似内容。 显示的 null 值在其他行中通常不是 null。
 

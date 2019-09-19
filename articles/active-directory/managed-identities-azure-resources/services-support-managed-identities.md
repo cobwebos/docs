@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5f271f75a4faa7067f8a52d63a34772780c6448
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 37eba245933bc94e9fb631abd3b4ff495f8c6d67
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959910"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087602"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -220,7 +220,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
 | Azure 全球 | `https://servicebus.azure.net`  | 可用 |
-| Azure 政府 |  | 不可用 |
+| Azure 政府 |  | 可用 |
 | Azure 德国 |   | 不可用 |
 | Azure 中国世纪互联 |  | 不可用 |
 

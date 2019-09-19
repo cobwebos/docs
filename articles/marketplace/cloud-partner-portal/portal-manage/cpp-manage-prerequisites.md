@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: d98a5f04f60cb7d933ea91e0657f6067fb1c59a8
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 9c55688674fe16f64bfb27788a6e038059694a77
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962805"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087459"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>管理云合作伙伴门户上的帐户的先决条件 
 
@@ -21,7 +21,7 @@ ms.locfileid: "70962805"
 
 ## <a name="account-terms-and-guidelines"></a>帐户条款和指导原则
 
-在创建帐户之前，请仔细查看[Microsoft 服务协议](https://www.microsoft.com/servicesagreement)和[Microsoft 使用条款](https://www.microsoft.com/us-en/legal/intellectualproperty/copyright/default.aspx)下的权利和责任。  
+在创建帐户之前，请仔细查看[Microsoft 服务协议](https://www.microsoft.com/servicesagreement)和[Microsoft 使用条款](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright)下的权利和责任。  
 
 请仔细选择你的帐户名称。  它代表您的组织，因此不应包含任何版权或争用资源的词。  例如，Microsoft 禁止使用其版权条款，如 "Azure" 和 "Microsoft"。  有关详细信息，请参阅[Azure Marketplace 指南](https://docs.microsoft.com/azure/marketplace/guidelines)
 

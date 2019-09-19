@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 7d65432acd0bd9c184508dea5d887e36e716a277
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 066c80f7791bb9699494a09dec12f43dfb383ac6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009071"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090201"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 HubSpot 复制数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "71009071"
 
 以下活动支持此 HubSpot 连接器：
 
-- [复制活动](copy-activity-overview.md)与[支持的源矩阵](copy-activity-overview.md)
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 

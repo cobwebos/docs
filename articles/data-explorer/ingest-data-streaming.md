@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 5aa2d694c2c74b493a7fd1a2a89d39866928d1d4
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843872"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090636"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览）
 
@@ -41,8 +41,9 @@ ms.locfileid: "70843872"
  
 1. 在[WEB UI](https://dataexplorer.azure.com/)中，定义将接收流式处理数据的一个或多个表的[流式处理引入策略](/azure/kusto/concepts/streamingingestionpolicy)。 
 
-    > [!TIP]
-    > 如果策略是在数据库级别定义的，则将为流式引入启用数据库中的所有表。
+    > [!NOTE]
+    > * 如果策略是在数据库级别定义的，则将为流式引入启用数据库中的所有表。
+    > * 应用的策略只能引用新引入的数据，而不能引用数据库中的其他表。
 
 ## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>使用流式引入将数据引入群集
 

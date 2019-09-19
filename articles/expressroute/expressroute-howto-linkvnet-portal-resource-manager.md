@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 1545e2e7eba23b0bedbfe297c292fc94e1659ae3
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6185540340bba4299eb9307432480c91d531779a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775280"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088917"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>使用门户将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "68775280"
 
 * 必须有一个活动的 ExpressRoute 线路。
   * 请按说明[创建 ExpressRoute 线路](expressroute-howto-circuit-portal-resource-manager.md)，并通过连接提供商启用该线路。
-  * 请确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](expressroute-howto-routing-portal-resource-manager.md)一文。
+  * 请确保为线路配置 Azure 专用对等互连。 有关对等互连和路由说明，请参阅[创建和修改 ExpressRoute 线路的对等互连一](expressroute-howto-routing-portal-resource-manager.md)文。
   * 确保配置 Azure 专用对等互连并运行网络和 Microsoft 之间的 BGP 对等互连，以便启用端到端连接。
   * 确保已创建并完全预配一个虚拟网络和一个虚拟网络网关。 按照说明[创建 ExpressRoute 的虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)。 ExpressRoute 虚拟网络网关使用的 GatewayType 是“ExpressRoute”而非 VPN。
 
@@ -52,15 +52,16 @@ ms.locfileid: "68775280"
 
 ### <a name="to-create-a-connection"></a>创建连接
 
-1. 确保已成功配置 ExpressRoute 线路和 Azure 专用对等互连。 请遵循[创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)和[配置路由](expressroute-howto-routing-arm.md)中的说明。 ExpressRoute 线路应如下图所示：
+1. 确保已成功配置 ExpressRoute 线路和 Azure 专用对等互连。 按照[创建 expressroute 线路](expressroute-howto-circuit-arm.md)中的说明进行操作，并[为 ExpressRoute 线路创建和修改对等互连](expressroute-howto-routing-arm.md)。 ExpressRoute 线路应如下图所示：
 
-   ![ExpressRoute 线路屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
+   [![ExpressRoute 线路屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "查看线路")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
 2. 现在可以开始预配连接，以便将虚拟网络网关链接到 ExpressRoute 线路。 单击“连接” > “添加”以打开“添加连接”页面，然后配置值。
 
-   ![添加连接屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
-3. 成功配置你的连接之后，连接对象会显示连接的信息。
+   [![添加连接屏幕快照](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "添加连接屏幕快照")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
+3. 成功配置连接之后，连接对象会显示连接的信息。
 
    ![连接对象屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
+
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>将 VNet 连接到线路 - 不同订阅
 
@@ -121,7 +122,7 @@ ms.locfileid: "68775280"
 
    ![“基本信息”页面](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. 在“设置”页面中，选择“虚拟网络网关”并选中“兑换授权”复选框。
-6. 输入“授权密钥”和“对等线路 URI”，并为连接命名。 单击 **“确定”** 。 **对等线路 URI**是 expressroute 线路的资源 ID (可以在 expressroute 线路的 "属性" 设置窗格下找到)。
+6. 输入“授权密钥”和“对等线路 URI”，并为连接命名。 单击 **“确定”** 。 **对等线路 URI** 是 ExpressRoute 线路的资源 ID（可以在 ExpressRoute 线路的“属性设置”窗格下找到）。
 
    ![“设置”页](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. 在“摘要”页面中复查信息，并单击“确定”。

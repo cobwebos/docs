@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: fc01a20a077a1c624ed490600db919fe3197556c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 68d4f55d4a382f59386e72779a5f60cfc2a65338
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901758"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091099"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>排查虚拟网络对等互连问题
 
@@ -58,7 +58,7 @@ ms.locfileid: "70901758"
 若要为不同订阅或 Active Directory 租户中的虚拟网络配置虚拟网络对等互连，请遵循在[Azure CLI 的不同订阅中创建对等互连](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)中的步骤。
 
 > [!Note]
-> 若要配置网络对等互连，必须在两个订阅中具有**网络参与者**权限。 有关详细信息，请参阅对[等互连权限](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering%23permissions)。
+> 若要配置网络对等互连，必须在两个订阅中具有**网络参与者**权限。 有关详细信息，请参阅对[等互连权限](virtual-network-manage-peering.md#permissions)。
 
 ## <a name="scenario-2-configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>方案 2：使用本地资源的中心辐射型拓扑配置虚拟网络对等互连
 
@@ -104,7 +104,7 @@ ms.locfileid: "70901758"
 
 ## <a name="scenario-4-i-have-a-connectivity-issue-between-two-peered-virtual-networks"></a>情景 4：两个对等互连虚拟网络之间存在连接问题
 
-使用具有必要[角色和权限](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#roles-permissions)的帐户登录到[Azure 门户](https://portal.azure.com/)。 选择虚拟网络，选择 "对**等互连**"，然后检查 "**状态**" 字段。 什么是状态？
+使用具有必要[角色和权限](virtual-network-manage-peering.md#permissions)的帐户登录到[Azure 门户](https://portal.azure.com/)。 选择虚拟网络，选择 "对**等互连**"，然后检查 "**状态**" 字段。 什么是状态？
 
 ### <a name="connection-type-1-the-peering-status-shows-connected"></a>连接类型1：对等互连状态显示为 "已连接"
 
