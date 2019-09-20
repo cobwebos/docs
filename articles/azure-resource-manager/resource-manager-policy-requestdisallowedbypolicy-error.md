@@ -4,7 +4,7 @@ description: 说明 RequestDisallowedByPolicy 错误的原因。
 services: azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c160fe39b02d8adf6c12e3736307cf7f9688b0c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e862637c688fd473b112fdfc0ee197da0444d02f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128450"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121235"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure 资源策略的 RequestDisallowedByPolicy 错误
 
@@ -26,7 +26,7 @@ ms.locfileid: "66128450"
 
 ## <a name="symptom"></a>症状
 
-部署过程中，可能会收到阻止创建资源的 RequestDisallowedByPolicy 错误  。 以下示例显示错误：
+部署过程中，可能会收到阻止创建资源的 RequestDisallowedByPolicy 错误。 以下示例显示错误：
 
 ```json
 {
@@ -37,7 +37,7 @@ ms.locfileid: "66128450"
 }
 ```
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 若要检索有关阻止部署的策略的详细信息，请使用以下方法之一：
 
@@ -61,7 +61,7 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>解决方案
 
-为了安全性和符合性，订阅管理员可能会分配限制资源部署方式的策略。 例如，订阅可能具有阻止创建公共 IP 地址、网络安全组、用户定义的路由或路由表的策略。 “症状”部分中的错误消息显示策略的名称  。
+为了安全性和符合性，订阅管理员可能会分配限制资源部署方式的策略。 例如，订阅可能具有阻止创建公共 IP 地址、网络安全组、用户定义的路由或路由表的策略。 “症状”部分中的错误消息显示策略的名称。
 要解决此问题，请查看资源策略，并确定如何部署符合这些策略的资源。
 
 有关详细信息，请参阅以下文章：

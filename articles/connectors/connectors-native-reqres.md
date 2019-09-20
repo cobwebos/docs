@@ -1,6 +1,6 @@
 ---
-title: 响应 HTTP 请求-Azure 逻辑应用
-description: 使用 Azure 逻辑应用在 HTTP 上实时响应事件
+title: 接收和响应 HTTPS 调用-Azure 逻辑应用
+description: 使用 Azure 逻辑应用实时处理 HTTPS 请求和事件
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,20 +12,22 @@ ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
 ms.topic: article
 ms.date: 09/06/2019
 tags: connectors
-ms.openlocfilehash: 07f143b261d0cff9eba0d4b1803753446c311818
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 668e815f1dc1ead0ad38264bdc71fc3c315b751c
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914346"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122717"
 ---
-# <a name="respond-to-http-requests-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用响应 HTTP 请求
+# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用接收和响应传入的 HTTPS 调用
 
-通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置请求触发器或响应操作，你可以创建自动执行的任务和工作流，该工作流将实时接收和响应 HTTP 请求。 例如，你可以创建逻辑应用：
+通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置请求触发器或响应操作，你可以创建可接收和响应传入 HTTPS 请求的自动化任务和工作流。 例如，你可以创建逻辑应用：
 
-* 响应对本地数据库中的数据的 HTTP 请求。
+* 接收和响应对本地数据库中的数据的 HTTPS 请求。
 * 发生外部 webhook 事件时触发工作流。
-* 从另一个逻辑应用中调用逻辑应用。
+* 接收来自另一个逻辑应用的 HTTPS 调用并对其作出响应。
+
+请求触发器*仅*支持 HTTPS。 若要改为发出传出 HTTP 或 HTTPS 调用，请使用内置的[http 触发器或操作](../connectors/connectors-native-http.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,15 +37,15 @@ ms.locfileid: "70914346"
 
 <a name="add-request"></a>
 
-## <a name="add-a-request-trigger"></a>添加请求触发器
+## <a name="add-request-trigger"></a>添加请求触发器
 
-此内置触发器创建可接收传入 HTTP 请求的手动可调用终结点。 发生此事件时，触发器触发并运行逻辑应用。 有关触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅[请求触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[在 Azure 逻辑应用中通过 HTTP 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)
+此内置触发器创建可*仅*接收传入 https 请求的手动可调用 https 终结点。 发生此事件时，触发器触发并运行逻辑应用。 有关触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅[请求触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[在 Azure 逻辑应用中通过 HTTP 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 创建空白逻辑应用。
 
 1. 逻辑应用设计器打开后，在 "搜索" 框中输入 "http 请求" 作为筛选器。 从 "触发器" 列表中，选择 "**收到 HTTP 请求时**" 触发器，这是逻辑应用工作流中的第一步。
 
-   ![选择 HTTP 请求触发器](./media/connectors-native-reqres/select-request-trigger.png)
+   ![选择请求触发器](./media/connectors-native-reqres/select-request-trigger.png)
 
    Request 触发器显示了以下属性：
 
@@ -52,10 +54,10 @@ ms.locfileid: "70914346"
    | 属性名 | JSON 属性名称 | 必填 | 描述 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL** | {无} | 是 | 保存逻辑应用并用于调用逻辑应用后生成的终结点 URL |
-   | **请求正文 JSON 架构** | `schema` | 否 | 描述传入 HTTP 请求正文中的属性和值的 JSON 架构 |
+   | **请求正文 JSON 架构** | `schema` | 否 | 描述传入请求正文中的属性和值的 JSON 架构 |
    |||||
 
-1. 在 "**请求正文 JSON 架构**" 框中，选择性地输入描述传入请求中的 HTTP 请求正文的 JSON 架构，例如：
+1. 在 "**请求正文 JSON 架构**" 框中，选择性地输入描述传入请求中的正文的 JSON 架构，例如：
 
    ![示例 JSON 架构](./media/connectors-native-reqres/provide-json-schema.png)
 
@@ -190,7 +192,7 @@ ms.locfileid: "70914346"
 
 ## <a name="add-a-response-action"></a>添加响应操作
 
-你可以使用响应操作来使用负载（数据）来响应传入的 HTTP 请求，但仅在由 HTTP 请求触发的逻辑应用中进行响应。 你可以在工作流中的任何时间点添加 "响应" 操作。 有关此触发器的基础 JSON 定义的详细信息，请参阅[响应操作类型](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)。
+你可以使用响应操作来使用负载（数据）来响应传入 HTTPS 请求，但仅在由 HTTPS 请求触发的逻辑应用中进行响应。 你可以在工作流中的任何时间点添加 "响应" 操作。 有关此触发器的基础 JSON 定义的详细信息，请参阅[响应操作类型](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)。
 
 逻辑应用使传入请求仅打开一分钟。 假定逻辑应用工作流包含响应操作，如果逻辑应用在这段时间后未返回响应，则逻辑应用会将返回`504 GATEWAY TIMEOUT`到调用方。 否则，如果逻辑应用不包括响应操作，则逻辑应用会立即将`202 ACCEPTED`响应返回给调用方。
 
@@ -224,7 +226,7 @@ ms.locfileid: "70914346"
 
    | 属性名 | JSON 属性名称 | 必填 | 描述 |
    |---------------|--------------------|----------|-------------|
-   | **状态代码** | `statusCode` | 是 | 要在响应中返回的 HTTP 状态代码 |
+   | **状态代码** | `statusCode` | 是 | 要在响应中返回的状态代码 |
    | **标头** | `headers` | 否 | 一个 JSON 对象，描述要包括在响应中的一个或多个标头 |
    | **正文** | `body` | 否 | 响应正文 |
    |||||

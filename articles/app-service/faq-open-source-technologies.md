@@ -4,7 +4,7 @@ description: 获取有关 Azure 应用服务的 Web 应用功能的开放源代�
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: cc71d2a53241753272610a14c30e44f1cf45e95c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 941a218dbda2c27a598e5a53f2b947184ee78085
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073106"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121218"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的开放源代码技术常见问题解答
 
@@ -40,7 +40,7 @@ ms.locfileid: "70073106"
 6. 将文件名设置为 **.user.ini**。
 7. 选择 **.user.ini** 旁的铅笔图标。
 8. 在文件中，添加以下代码：`log_errors=on`
-9. 选择**保存**。
+9. 选择“保存”。
 10. 选择“wp-config.php”旁边的铅笔图标。
 11. 将文本更改为以下代码：
     ```php

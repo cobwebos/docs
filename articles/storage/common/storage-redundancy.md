@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3640d2d88fc679b78395472c667fcde39979728a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 6a598ad3f68c613a745fd56f3b368e309afeb8b6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074349"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122975"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -28,12 +28,7 @@ Azure 存储使用循环冗余检验 (CRC) 定期验证存储的数据的完整�
 
 创建存储帐户时，可以选择以下冗余选项之一：
 
-- [本地冗余存储 (LRS)](storage-redundancy-lrs.md)
-- [区域冗余存储 (ZRS)](storage-redundancy-zrs.md)
-- [异地冗余存储 (GRS)](storage-redundancy-grs.md)
-- [读取访问异地冗余存储 (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
-- [区域冗余存储（GZRS）](storage-redundancy-gzrs.md)
-- [读取访问区域冗余存储（GZRS）](storage-redundancy-gzrs.md)
+[!INCLUDE [azure-storage-redundancy](../../../includes/azure-storage-redundancy.md)]
 
 下表简要概述了每种复制策略为给定类型的事件（或具有类似影响性的事件）提供的持久性和可用性范围。
 
@@ -55,7 +50,7 @@ Azure 存储使用循环冗余检验 (CRC) 定期验证存储的数据的完整�
 有关 Azure 存储确保持续性和可用性的信息，请参阅 [Azure 存储 SLA](https://azure.microsoft.com/support/legal/sla/storage/)。
 
 > [!NOTE]
-> Azure 高级存储仅支持本地冗余存储 (LRS)。
+> Azure 高级存储目前仅支持本地冗余存储（LRS）。
 
 ## <a name="changing-replication-strategy"></a>更改复制策略
 

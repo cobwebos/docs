@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993466"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123086"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL 数据库无服务器计算层（预览版）
 
@@ -160,6 +160,12 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
    |GP_S_Gen5_1|常规用途|Gen5|1|
    |GP_S_Gen5_2|常规用途|Gen5|2|
    |GP_S_Gen5_4|常规用途|Gen5|4|
+   |GP_S_Gen5_6|常规用途|Gen5|6|
+   |GP_S_Gen5_8|常规用途|Gen5|8|
+   |GP_S_Gen5_10|常规用途|Gen5|10|
+   |GP_S_Gen5_12|常规用途|Gen5|12|
+   |GP_S_Gen5_14|常规用途|Gen5|14|
+   |GP_S_Gen5_16|常规用途|Gen5|16|
 
 2. （可选）指定最小 vCore 数和自动暂停延迟以更改它们的默认值。 下表显示了这些参数可用的值。
 
@@ -282,7 +288,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>资源限制
 
-有关资源限制的信息，请参阅[无服务器计算层](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。
+有关资源限制，请参阅[无服务器计算层](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。
 
 ## <a name="billing"></a>帐单
 

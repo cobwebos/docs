@@ -4,7 +4,7 @@ description: 获取有关 Azure App Service 的 Web 应用功能的配置和管�
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 217601a430b40772eaf1f24c8e1501bc4b4fcae5
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 68d0f693d0cc7d8db8e6f697ff8907400a7aca50
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71055315"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121318"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
 
@@ -69,7 +69,7 @@ ms.locfileid: "71055315"
 2. 在“应用设置”下，添加此设置：
     * 键 = WEBSITE_TIME_ZONE
     * 值 = *所需时区*
-3. 选择**保存**。
+3. 选择“保存”。
 
 对于在 Windows 上运行的应用服务，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)文章中的 "**时区**" 列获取接受值。 对于在 Linux 上运行的应用服务，将[TZ 数据库名称](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)设置为时区值。 下面是 TZ 数据库名称的示例：美洲/Adak。
 

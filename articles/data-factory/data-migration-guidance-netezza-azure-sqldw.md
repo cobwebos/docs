@@ -12,16 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: 4690fd81247035267861b06c204c6db7a052eba5
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 9ea8326b10536cb91b9dc67f637664f0fc055e74
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259556"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122833"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-on-premises-netezza-server-to-azure"></a>使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure 
+# <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure 
 
-Azure 数据工厂提供一种功能强大、稳健且经济高效的机制，用于将数据大规模从本地 Netezza 服务器迁移到 Azure 存储或 Azure SQL 数据仓库。 本文提供了以下数据工程师和开发人员信息：
+Azure 数据工厂提供一种功能强大、稳健且经济高效的机制，用于从本地 Netezza 服务器大规模将数据迁移到 Azure 存储帐户或 Azure SQL 数据仓库数据库。 
+
+本文提供了以下数据工程师和开发人员信息：
 
 > [!div class="checklist"]
 > * 性能 
@@ -32,127 +34,170 @@ Azure 数据工厂提供一种功能强大、稳健且经济高效的机制，�
 
 ## <a name="performance"></a>性能
 
-Azure 数据工厂提供了一个无服务器体系结构，该体系结构允许不同级别的并行，使开发人员能够构建管道来充分利用网络带宽和数据库带宽，以最大程度地提高数据移动吞吐量环境.
+Azure 数据工厂提供了一个无服务器体系结构，允许在不同级别实现并行。 如果你是一名开发人员，这意味着你可以构建管道来完全使用网络和数据库带宽，以最大程度地提高环境的数据移动吞吐量。
 
-![性能](media/data-migration-guidance-netezza-azure-sqldw/performance.png)
+![性能图表](media/data-migration-guidance-netezza-azure-sqldw/performance.png)
 
-- 单个复制活动可以利用可缩放的计算资源：使用 Azure Integration Runtime 时，可以以无服务器方式为每个复制活动指定[最多 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) ;使用自承载 Integration Runtime 时，可以手动纵向扩展计算机或向外扩展到多台计算机（[最多4个节点](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)），而单个复制活动会将其分区分布到所有节点上。 
-- 单个复制活动使用多个线程从数据存储区读取数据并将数据写入数据存储区。 
-- Azure 数据工厂控制流可以并行启动多个复制活动，例如，[为每个循环](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)使用。 
+前面的关系图可以解释如下：
 
-可以从[复制活动性能指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)中获取更多详细信息
+- 单个复制活动可以利用可缩放的计算资源。 使用 Azure Integration Runtime 时，可以以无服务器方式为每个复制活动[最多指定256个 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) 。 使用自承载集成运行时（自承载 IR），可以手动向上扩展计算机或向外扩展到多台计算机（最多[四个节点](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)），单个复制活动会在所有节点之间分发其分区。 
+
+- 单个复制活动通过使用多个线程从数据存储区读取数据并将数据写入数据存储区。 
+
+- Azure 数据工厂控制流可以并行启动多个复制活动。 例如，它可以通过[对每个循环使用来](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)启动它们。 
+
+有关详细信息，请参阅[复制活动性能和可伸缩性指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)。
 
 ## <a name="resilience"></a>恢复能力
 
-在单个复制活动运行中，Azure 数据工厂具有内置的重试机制，因此它可以处理数据存储或基础网络中特定级别的暂时性故障。
+在单个复制活动运行中，Azure 数据工厂具有内置的重试机制，使其能够处理数据存储或基础网络中特定程度的暂时性故障。
 
-在源数据存储和接收器数据存储之间复制数据时，Azure 数据工厂复制活动还提供两种处理不兼容行的方法。 如果遇到不兼容的数据，则可以中止并使复制活动失败，也可以通过跳过不兼容的数据行来继续复制 rest 数据。 此外，还可以在 Azure Blob 存储或 Azure Data Lake Store 中记录不兼容的行，以了解失败的原因，修复数据源上的数据，并重试复制活动。
+使用 Azure 数据工厂复制活动时，在源数据存储和接收器数据存储之间复制数据时，可以通过两种方式处理不兼容的行。 可以通过跳过不兼容的数据行来中止和失败复制活动，或继续复制其余数据。 此外，若要了解失败的原因，可以在 Azure Blob 存储或 Azure Data Lake Store 中记录不兼容的行，修复数据源上的数据，并重试复制活动。
 
 ## <a name="network-security"></a>网络安全 
 
-默认情况下，Azure 数据工厂使用通过 HTTPS 协议加密的连接，将数据从本地 Netezza 服务器传输到 Azure 存储或 Azure SQL 数据仓库。 它提供传输中的数据加密，并防止窃听和中间人攻击。
+默认情况下，通过使用超文本传输协议（HTTPS）上的加密连接，Azure 数据工厂将数据从本地 Netezza 服务器传输到 Azure 存储帐户或 Azure SQL 数据仓库数据库。 HTTPS 在传输过程中提供数据加密，并防止窃听和中间人攻击。
 
-或者，如果你不希望通过公共 Internet 传输数据，则可以通过 Azure Express Route 通过专用对等互连链接传输数据，从而实现更高的安全性。 请参阅下面的解决方案体系结构，了解如何实现此目的。
+或者，如果不希望通过公共 internet 传输数据，则可以通过 Azure Express Route 通过专用对等互连链接传输数据，从而提高安全性。 
+
+下一节将讨论如何实现更高的安全性。
 
 ## <a name="solution-architecture"></a>解决方案体系结构
 
-通过公共 Internet 迁移数据：
+本部分介绍迁移数据的两种方法。
 
-![解决方案体系结构-公共网络](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png)
+### <a name="migrate-data-over-the-public-internet"></a>通过公共 internet 迁移数据
 
-- 在此体系结构中，通过公共 Internet 使用 https 安全地传输数据。
-- 需要在企业防火墙后面的 windows 计算机上安装 Azure 数据工厂自承载集成运行时，才能实现此体系结构。 确保 windows 计算机上的 Azure 数据工厂自承载集成运行时可以直接获取对 Netezza 服务器的访问权限。 可以手动扩展计算机或扩展到多台计算机，以充分利用网络和数据存储带宽来复制数据。
-- 初始快照数据迁移和增量数据迁移都可以使用此体系结构来实现。
+![通过公共 internet 迁移数据](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png)
 
-迁移专用链接上的数据： 
+前面的关系图可以解释如下：
 
-![解决方案-体系结构-专用-网络](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png)
+- 在此体系结构中，你通过公共 internet 使用 HTTPS 安全地传输数据。
 
-- 在此体系结构中，数据迁移通过 Azure Express Route 在专用对等互连链接上完成，使数据永远不会通过公共 Internet 进行遍历。 
-- 需要在 Azure 虚拟网络中的 Windows VM 上安装 Azure 数据工厂自承载集成运行时才能实现此体系结构。 你可以手动增加 Vm 或向外扩展到多个 Vm，以充分利用你的网络和数据存储带宽来复制数据。
-- 初始快照数据迁移和增量数据迁移都可以使用此体系结构来实现。
+- 若要实现此体系结构，需要在企业防火墙后面的 Windows 计算机上安装 Azure 数据工厂集成运行时（自承载）。 请确保此集成运行时可以直接访问 Netezza 服务器。 若要充分利用网络和数据存储带宽来复制数据，可以手动增加计算机规模，或向外扩展到多台计算机。
 
-## <a name="implementation-best-practices"></a>实施最佳实践 
+- 使用此体系结构，可以迁移初始快照数据和增量数据。
 
-### <a name="authentication-and-credential-management"></a>身份验证和凭据管理 
+### <a name="migrate-data-over-a-private-network"></a>通过专用网络迁移数据 
+
+![通过专用网络迁移数据](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png)
+
+前面的关系图可以解释如下：
+
+- 在此体系结构中，你通过 Azure Express Route 在专用对等互连链接上迁移数据，而数据从不通过公共 internet 进行遍历。 
+
+- 若要实现此体系结构，需要在 Azure 虚拟网络中的 Windows 虚拟机（VM）上安装 Azure 数据工厂集成运行时（自承载）。 若要充分利用网络和数据存储带宽来复制数据，可以手动增加 VM 或向外扩展到多个 Vm。
+
+- 使用此体系结构，可以迁移初始快照数据和增量数据。
+
+## <a name="implement-best-practices"></a>实施最佳实践 
+
+### <a name="manage-authentication-and-credentials"></a>管理身份验证和凭据 
 
 - 若要对 Netezza 进行身份验证，可以[通过连接字符串使用 ODBC 身份验证](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties)。 
-- 支持多种身份验证类型以连接到 Azure Blob 存储。  强烈建议使用[Azure 资源的托管标识](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity)：内置在 Azure AD 中的自动托管的 Azure 数据工厂中，它使你能够配置管道，而无需在链接的服务定义中提供凭据。  或者，你可以使用 "[服务主体](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication)"、"[共享访问签名](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)" 或 "[存储帐户密钥](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)" 对 Azure Blob 存储进行身份验证。 
-- 还支持多种身份验证类型以连接到 Azure Data Lake Storage Gen2。  强烈建议[对 Azure 资源使用托管标识](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)，不过也可以使用[服务主体](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)或[存储帐户密钥](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)。 
-- 还支持多种身份验证类型以连接到 Azure SQL 数据仓库。 强烈建议[对 Azure 资源使用托管标识](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity)，不过也可以使用[服务主体](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication)或[SQL 身份验证](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)。
-- 如果不使用 Azure 资源的托管标识，则强烈建议[在 Azure Key Vault 中存储凭据](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)，以便更轻松地集中管理和旋转密钥，而无需修改 Azure 数据工厂链接服务。  这也是[CI/CD 的最佳实践](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)之一。 
 
-### <a name="initial-snapshot-data-migration"></a>初始快照数据迁移 
+- 若要对 Azure Blob 存储进行身份验证： 
 
-对于较小的表，其卷大小小于 100 GB，或者可以在2小时内迁移到 Azure，你可以使每个复制作业每个表加载数据。 可以运行多个 Azure 数据工厂复制作业来并发加载不同的表，以获得更好的吞吐量。 
+   - 强烈建议使用[Azure 资源的托管标识](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity)。 托管标识在 Azure Active Directory （Azure AD）中自动管理的 Azure 数据工厂标识基础上构建，使你能够配置管道，而不必在链接的服务定义中提供凭据。  
 
-在每个复制作业中，还可以通过使用[parallelCopies 设置](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy)和数据分区选项来执行并行查询，并按分区复制数据，从而达到一定程度的并行度。 下面详细介绍了两个数据分区选项。
-- 建议从数据切片开始，因为这样会更有效。  请确保 parallelCopies 中的并行度设置低于 Netezza 服务器上表中数据切片分区的总数。  
-- 如果每个数据切片分区的卷大小仍很大（例如，大于 10 GB），则建议切换到动态范围分区，以便定义分区数以及每个分区的卷大小。按分区列、上限和下限。
+   - 或者，你可以通过使用[服务主体](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication)、[共享访问签名](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)或[存储帐户密钥](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)，对 Azure Blob 存储进行身份验证。 
 
-如果大表的卷大小大于 100 GB，或在2小时内无法迁移到 Azure，则建议使用自定义查询对数据进行分区，然后使每个复制作业一次复制一个分区。 可以并发运行多个 Azure 数据工厂复制作业，以获得更好的吞吐量。 请注意，对于每个复制作业目标要通过自定义查询加载一个分区，你仍可以通过数据切片或动态范围启用并行度以增加吞吐量。 
+- 若要对 Azure Data Lake Storage Gen2 进行身份验证： 
 
-如果任何复制作业由于网络或数据存储暂时性问题而失败，则可以重新运行失败的复制作业，重新加载表中的特定分区。 加载其他分区的所有其他复制作业都不会受到影响。
+   - 强烈建议使用[Azure 资源的托管标识](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)。
+   
+   - 你还可以使用[服务主体](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)或[存储帐户密钥](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)。 
 
-在将数据加载到 Azure SQL 数据仓库时，建议在使用 Azure blob 存储作为暂存的复制作业内启用 Polybase。
+- 向 Azure SQL 数据仓库进行身份验证：
 
-### <a name="delta-data-migration"></a>增量数据迁移 
+   - 强烈建议使用[Azure 资源的托管标识](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity)。
+   
+   - 你还可以使用[服务主体](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication)或[SQL 身份验证](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)。
 
-标识表中新行或更新行的方式是在架构中使用时间戳列或递增键，然后将最新值存储为外部表中的高水印，这可用于筛选增量数据以便在下次加载数据时使用。 
+- 如果不使用 Azure 资源的托管标识，强烈建议将[凭据存储在 Azure Key Vault 中](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)，以便更轻松地集中管理和旋转密钥，而无需修改 Azure 数据工厂链接服务。 这也是[CI/CD 的最佳实践](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)之一。 
 
-不同的表可以使用不同的水印列来标识新行或更新的行。 建议创建一个外部控制表，其中每行表示 Netezza 服务器上的一个表，其特定的水印列名称和高水印值。 
+### <a name="migrate-initial-snapshot-data"></a>迁移初始快照数据 
 
-### <a name="self-hosted-integration-runtime-configuration-on-azure-vm-or-machine"></a>Azure VM 或计算机上的自承载集成运行时配置
+对于小型表（即，容量小于 100 GB 或可在两小时内迁移到 Azure 的表），可以使每个复制作业在每个表中加载数据。 为了获得更大的吞吐量，可以运行多个 Azure 数据工厂复制作业来同时加载单独的表。 
 
-假设你要将数据从 Netezza 服务器迁移到 Azure，无论 Netezza 服务器是在公司防火墙后还是在 VNET 环境中承诺，你都需要在 windows 计算机或 VM 上安装自承载集成运行时，这是要移动的引擎数据.
+在每个复制作业中，若要运行并行查询并按分区复制数据，还可以通过[ `parallelCopies`将属性设置](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy)用于以下任一数据分区选项来达到一定程度的并行度：
 
-- 对于每个计算机或 VM，要从其开始的建议配置是具有 32 vCPU 和 128 GB 的内存。 您可以在数据迁移过程中持续监视 IR 计算机的 CPU 和内存利用率，以确定是否需要进一步扩展计算机以获得更好的性能，或缩小计算机以节省成本。
-- 还可以通过将最多4个节点与一个自承载 IR 关联来向外扩展。 对自承载 IR 运行的单个复制作业将自动利用所有 VM 节点以并行方式复制数据。 为实现高可用性，建议从2个 VM 节点开始，以避免在数据迁移过程中出现单一故障点。
+- 为了获得更高的效率，我们鼓励你从数据切片开始。  请确保`parallelCopies`设置中的值小于 Netezza 服务器上表中数据切片分区的总数。  
 
-### <a name="rate-limiting"></a>速率限制
+- 如果每个数据切片分区的量仍然很大（例如，10 GB 或更大），我们鼓励您切换到动态范围分区。 使用此选项可以更灵活地定义分区数以及每个分区的分区列、上下限和下限。
 
-最佳做法是使用有代表性的示例数据集来执行性能 POC，以便确定每个复制活动的适当分区大小。 建议在2小时内将每个分区加载到 Azure。  
+对于较大的表（即，容量为 100 GB 或更大的表，或者在两个小时内*无法*迁移到 Azure 的表），我们建议你按自定义查询对数据进行分区，然后将每个复制作业一次复制一个分区。 为了获得更好的吞吐量，可以同时运行多个 Azure 数据工厂复制作业。 对于通过自定义查询加载一个分区的每个复制作业目标，可以通过数据切片或动态范围启用并行性来提高吞吐量。 
 
-首先使用单个复制活动，其中包含单个自承载 IR 计算机，以复制表。 根据表中的数据切片分区数逐渐增加 parallelCopies 设置，并查看是否可以根据从复制作业中看到的吞吐量在2小时内将整个表加载到 Azure。 
+如果由于网络或数据存储暂时性问题而导致任何复制作业失败，则可以重新运行失败的复制作业，以从表中重新加载该特定分区。 其他加载其他分区的复制作业不会受到影响。
 
-如果无法实现此功能，并且不能完全利用自承载 IR 节点和数据存储的容量，则会逐渐增加并发复制活动的数量，直到达到网络或数据存储的带宽限制。 
+当你将数据加载到 Azure SQL 数据仓库数据库时，我们建议你使用 Azure Blob 存储作为暂存在复制作业中启用 PolyBase。
 
-继续监视自承载 IR 计算机上的 CPU/内存使用率，并准备好在看到 CPU/内存已充分利用的情况下纵向扩展计算机或向外扩展到多台计算机。 
+### <a name="migrate-delta-data"></a>迁移增量数据 
 
-如果遇到 Azure 数据工厂复制活动报告的限制错误，请在 Azure 数据工厂中减小 concurrency 或 parallelCopies 设置，或者考虑增加网络和数据存储的带宽/IOPS 限制。 
+若要从表中标识新行或更新的行，请在该架构中使用时间戳列或递增键。 然后，你可以将最新值存储为外部表中的高水印，然后使用它在下次加载数据时筛选增量数据。 
+
+每个表可以使用不同的水印列来标识其新行或更新的行。 建议您创建一个外部控制表。 在表中，每一行代表 Netezza 服务器上的一个表，其特定的水印列名称和高水印值。 
+
+### <a name="configure-a-self-hosted-integration-runtime"></a>配置自承载集成运行时
+
+如果要将数据从 Netezza 服务器迁移到 Azure，无论服务器是在企业防火墙后还是虚拟网络环境中，都需要在 Windows 计算机或 VM 上安装自承载 IR，这是用于移动数据。 安装自承载 IR 时，建议采用以下方法：
+
+- 对于每个 Windows 计算机或 VM，请从 32 vCPU 和 128 GB 内存的配置开始。 您可以在数据迁移过程中持续监视 IR 计算机的 CPU 和内存使用情况，以确定是否需要进一步纵向扩展计算机以获得更好的性能，或缩小计算机以节省成本。
+
+- 还可以通过将最多四个节点与一个自承载 IR 关联来向外扩展。 对自承载 IR 运行的单个复制作业会自动应用所有 VM 节点以并行复制数据。 为实现高可用性，请从四个 VM 节点开始，以避免在数据迁移过程中出现单一故障点。
+
+### <a name="limit-your-partitions"></a>限制分区
+
+最佳做法是，使用有代表性的示例数据集进行性能概念证明（POC），以便您可以确定每个复制活动的适当分区大小。 建议在两个小时内将每个分区加载到 Azure。  
+
+若要复制表，请首先使用单个自承载 IR 计算机的单个复制活动。 根据表中`parallelCopies`的数据切片分区数逐渐增加设置。 根据复制作业生成的吞吐量，查看是否可以在两小时内将整个表加载到 Azure。 
+
+如果在两个小时内无法将其加载到 Azure 中，并且未完全使用自承载 IR 节点和数据存储的容量，则会逐渐增加并发复制活动的数量，直到达到网络的限制或数据存储的带宽限制些. 
+
+继续监视自承载 IR 计算机上的 CPU 和内存使用情况，并在看到 CPU 和内存完全使用时，准备好向上扩展计算机或向外扩展到多台计算机。 
+
+如果遇到限制错误（如 azure 数据工厂复制活动所报告），请在 azure 数据工厂`parallelCopies`中减少并发或设置，或考虑增加网络的带宽或每秒 i/o 操作数（IOPS）限制。数据存储区。 
 
 
-### <a name="estimating-price"></a>估计价格 
+### <a name="estimate-your-pricing"></a>估计定价 
 
-请考虑以下用于将数据从本地 Netezza 服务器迁移到 Azure SQL 数据仓库的管道：
+请考虑使用以下管道，它构造用于将数据从本地 Netezza 服务器迁移到 Azure SQL 数据仓库数据库：
 
-![定价-管道](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
+![定价管道](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
-让我们假设以下内容： 
+假设以下语句为 true： 
 
-- 总数据量为 50 TB。 
-- 使用第一个解决方案体系结构（Netezza 服务器位于防火墙后面的本地）迁移数据
-- 50 TB 分为500个分区，每个复制活动移动一个分区。
-- 每个复制活动都是通过一个自承载的 IR 针对4台计算机配置的，达到了 20 MBps 的吞吐量。 （在复制活动中，parallelCopies 设置为4，并从表中加载数据的每个线程实现了 5 MBps 的吞吐量）
+- 总数据量为 50 tb。 
+
+- 我们要使用第一个解决方案体系结构（Netezza 服务器在本地、防火墙后面）迁移数据。
+
+- 50 TB 的卷划分为500个分区，每个复制活动会移动一个分区。
+
+- 每个复制活动都配置有一个自承载的 IR，并针对四台计算机，实现的吞吐量为每秒 20 mb （MBps）。 （在复制活动中`parallelCopies` ，将设置为4，每个要从表中加载数据的线程实现的吞吐量为 5 MBps。）
+
 - ForEach concurrency 设置为3，聚合吞吐量为 60 MBps。
+
 - 总共需要243小时才能完成迁移。
 
-下面是基于上述假设的预计价格： 
+根据上述假设，这是预估价格： 
 
-![定价-表](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
+![定价表](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
 
 > [!NOTE]
-> 这是一个假设的定价示例。 实际定价取决于环境中的实际吞吐量。 不包括 windows 计算机的价格（安装了自承载集成运行时）。 
+> 上表中显示的价格是假设的。 实际定价取决于环境中的实际吞吐量。 未包含 Windows 计算机（安装了自承载 IR）的价格。 
 
-### <a name="additional-references"></a>其他参考 
-- [使用 Azure 数据工厂将数据从本地关系数据仓库迁移到 Azure](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
+### <a name="additional-references"></a>其他参考
+
+有关详细信息，请参阅以下文章和指南：
+
+- [使用 Azure 数据工厂将数据从本地关系数据仓库数据库迁移到 Azure](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
 - [Netezza 连接器](https://docs.microsoft.com/azure/data-factory/connector-netezza)
 - [ODBC 连接器](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Azure Blob 存储连接器](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2 连接器](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
 - [Azure SQL 数据仓库连接器](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
 - [复制活动性能优化指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [创建和配置自承载 Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
+- [创建和配置自承载集成运行时](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [自承载集成运行时高可用性和可伸缩性](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
 - [数据移动安全注意事项](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 - [在 Azure Key Vault 中存储凭据](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
@@ -162,4 +207,4 @@ Azure 数据工厂提供了一个无服务器体系结构，该体系结构允�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 数据工厂复制多个容器中的文件](solution-template-copy-files-multiple-containers.md)
+- [使用 Azure 数据工厂从多个容器复制文件](solution-template-copy-files-multiple-containers.md)

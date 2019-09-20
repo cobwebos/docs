@@ -4,7 +4,7 @@ description: 将云服务部署到 Azure 时，可能会遇到几个常见问题
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: e8ed7066025dd60f0c157a4ce4caec925fe08792
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: ccb08f853ae0f941dd5f9c0eca8c77f0f650905a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945376"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122749"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>排查云服务部署问题
 将云服务应用程序包部署到 Azure 时，可通过 Azure 门户中的“属性”窗格获取有关部署的信息。 可以使用此窗格中的详细信息来帮助你解决云服务的问题，还可以在提交新的支持请求时将此信息提供给 Azure 支持人员。
@@ -35,14 +35,14 @@ ms.locfileid: "68945376"
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="problem-i-cannot-access-my-website-but-my-deployment-is-started-and-all-role-instances-are-ready"></a>问题：我无法访问我的网站, 但我的部署已启动且所有角色实例均已就绪
+## <a name="problem-i-cannot-access-my-website-but-my-deployment-is-started-and-all-role-instances-are-ready"></a>问题：我无法访问我的网站，但我的部署已启动且所有角色实例均已就绪
 在门户中显示的网站 URL 链接不包括该端口。 网站的默认端口为 80。 如果应用程序已配置为在其他端口中运行，则必须在访问网站时向 URL 添加正确的端口号。
 
 1. 在 Azure 门户中，单击云服务的部署。
 2. 在 Azure 门户的“属性”窗格中，检查角色实例（位于“输入终结点”下）的端口。
 3. 如果端口不是 80，请在访问应用程序时会正确的端口值添加到 URL。 若要指定非默认端口，请键入 URL，后跟冒号 (:) 以及端口号（无空格）。
 
-## <a name="problem-my-role-instances-recycled-without-me-doing-anything"></a>问题：我的角色实例被回收, 无需执行任何操作
+## <a name="problem-my-role-instances-recycled-without-me-doing-anything"></a>问题：我的角色实例被回收，无需执行任何操作
 当 Azure 检测到问题节点并因此将角色实例移到新节点时，系统会自动进行服务修复。 当发生这种情况时，可能会看到角色实例自动回收。 若要查看是否进行了服务修复，请执行以下操作：
 
 1. 在 Azure 门户中，单击云服务的部署。

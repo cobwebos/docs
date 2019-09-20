@@ -4,7 +4,7 @@ description: 获取有关 Azure 应用服务的 Web 应用功能中的可用性�
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2b9689eeecb0549fae9f7131dd424e15c040b042
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073181"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122070"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
 
 > [!NOTE]
-> 下面的某些准则可能仅适用于 Windows 或 Linux 应用服务。 例如, 默认情况下, Linux 应用服务在64位模式下运行。
+> 下面的某些准则可能仅适用于 Windows 或 Linux 应用服务。 例如，默认情况下，Linux 应用服务在64位模式下运行。
 >
 
 本文包含有关针对 [Azure 应用服务的 Web 应用功能](https://azure.microsoft.com/services/app-service/web/)的应用程序性能问题的常见问题 (FAQ) 解答。
@@ -108,7 +108,7 @@ ms.locfileid: "70073181"
 1. 在 Azure 门户中，转到你的 Web 应用。
 3. 选择“所有设置” > “诊断日志”。
 4. 对于“失败请求跟踪”，选择“打开”。
-5. 选择**保存**。
+5. 选择“保存”。
 6. 在 Web 应用边栏选项卡，选择“工具”。
 7. 选择“Visual Studio Online”。
 8. 如果设置不是“打开”，则选择“打开”。

@@ -1,18 +1,18 @@
 ---
 title: 在 Azure HDInsight 上 Apache Kafka 自带密钥
 description: 本文介绍如何使用你在 Azure Key Vault 中的密钥加密 Azure HDInsight 上的 Apache Kafka 中存储的数据。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000098"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122685"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>在 Azure HDInsight 上 Apache Kafka 自带密钥
 
@@ -22,7 +22,7 @@ Azure HDInsight 包括为 Apache Kafka 提供创建自己的密钥 (BYOK) 支持
 
 BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。 需要做的就是将 HDInsight 注册为 Azure Key Vault 的托管标识，并在创建群集时添加加密密钥。
 
-所有发送到 Kafka 群集的消息（包括由 Kafka 维护的副本）都使用对称数据加密密钥 (DEK) 进行加密。 使用密钥保管库中的密钥加密密钥 (KEK) 保护 DEK。 加密和解密过程完全由 Azure HDInsight 处理。 
+所有发送到 Kafka 群集的消息（包括由 Kafka 维护的副本）都使用对称数据加密密钥 (DEK) 进行加密。 使用密钥保管库中的密钥加密密钥 (KEK) 保护 DEK。 加密和解密过程完全由 Azure HDInsight 处理。
 
 可以使用 Azure 门户或 Azure CLI 安全地旋转密钥保管库中的密钥。 当密钥旋转时，HDInsight Kafka 群集会在几分钟内开始使用新密钥。 启用 "软删除" 密钥保护功能来防止勒索软件方案和意外删除。 不支持不具有此保护功能的密钥保管库。
 
@@ -46,6 +46,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
    1. 若要创建新的密钥保管库，请按照 [Azure Key Vault](../../key-vault/key-vault-overview.md) 快速入门进行操作。 有关导入现有密钥的详细信息，请访问[关于密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md)。
 
    2. 使用[az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) cli 命令对密钥保管库启用 "软删除"。
+
         ```Azure CLI
         az keyvault update --name <Key Vault Name> --enable-soft-delete
         ```
@@ -58,16 +59,16 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
         b. 将“选项”设置为“生成”并提供密钥名称。
 
-        ![生成密钥名称](./media/apache-kafka-byok/apache-kafka-create-key.png "生成密钥名称")
+        ![Apache kafka 生成密钥名称](./media/apache-kafka-byok/apache-kafka-create-key.png "生成密钥名称")
 
         c. 选择从密钥列表中创建的密钥。
 
-        ![Azure Key Vault 密钥列表](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+        ![Apache kafka 密钥保管库密钥列表](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
         d. 当你为 Kafka 群集加密使用自己的密钥时，需要提供密钥 URI。 复制“密钥标识符”并将其保存在某处，直到你准备好创建群集。
 
-        ![复制密钥标识符](./media/apache-kafka-byok/kafka-get-key-identifier.png)
-   
+        ![Apache kafka 获取密钥标识符](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+
     4. 将托管标识添加到密钥保管库访问策略。
 
         a. 创建新的 Azure Key Vault 访问策略。
@@ -99,6 +100,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
    在群集创建期间，提供完整的密钥 URL，包括密钥版本。 例如， `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。 还需要将托管标识分配给集群并提供密钥 URI。
 
 ## <a name="rotating-the-encryption-key"></a>旋转加密密钥
+
    在某些情况下，可能需要更改 Kafka 群集在创建后使用的加密密钥。 这可以通过门户轻松实现。 对于此操作，群集必须具有对当前密钥和预期新密钥的访问权限，否则旋转键操作将失败。
 
    若要轮换密钥，必须具有新密钥的完整 url （请参阅[设置 Key Vault 和密钥](#setup-the-key-vault-and-keys)的步骤3）。 完成此项后，转到门户中的 Kafka 群集属性部分，并单击 "**磁盘加密密钥 URL**" 下的 "**更改密钥**"。 输入新的密钥 url，并提交以旋转密钥。
@@ -122,7 +124,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 **如果群集失去对密钥保管库或密钥的访问权限，会发生什么情况？**
 如果群集失去对密钥的访问权限，则会在 Apache Ambari 门户中显示警告。 在此状态下，**更改密钥**操作将失败。 恢复密钥访问权限后，Ambari 警告将消失，可以成功执行密钥轮换等操作。
 
-   ![Kafka key access Ambari 警报](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+   ![Apache Kafka 密钥访问 Ambari 警报](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
 **如果删除密钥，如何恢复群集？**
 
@@ -130,7 +132,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
 **是否可以让生成方/使用者应用程序同时使用 BYOK 集群和非 BYOK 集群？**
 
-   是的。 使用 BYOK 对生成方/使用者应用程序没有任何影响。 加密发生在操作系统层。 无需对现有的生成方/使用者 Kafka 应用程序进行任何更改。
+   是。 使用 BYOK 对生成方/使用者应用程序没有任何影响。 加密发生在操作系统层。 无需对现有的生成方/使用者 Kafka 应用程序进行任何更改。
 
 **是否还会加密操作系统磁盘/资源磁盘？**
 
@@ -138,7 +140,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
 **如果纵向扩展群集，新代理是否会无缝支持 BYOK？**
 
-   是的。 在纵向扩展期间，群集需要访问密钥保管库中的密钥。 相同的密钥用于加密群集中的所有托管磁盘。
+   是。 在纵向扩展期间，群集需要访问密钥保管库中的密钥。 相同的密钥用于加密群集中的所有托管磁盘。
 
 **我的位置是否可以使用 BYOK？**
 

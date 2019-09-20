@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 09/18/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 508a20e826c2f7bf1260bde6858eb4472c16a5c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2879b6830a5c793358cc2200485ed971c5f3c48
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883395"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123309"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT 要求
 要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理 NAT。 某些连接服务提供商以托管服务形式提供 NAT 的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果没有，则必须遵守相关要求，如下所述。 
@@ -21,7 +21,7 @@ ms.locfileid: "60883395"
 查看 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md) 页，获得各种路由域概述。 为了符合 Azure 公共和 Microsoft 对等互连的公共 IP 地址要求，建议在网络与 Microsoft 之间设置 NAT。 本部分提供需要设置的 NAT 基础结构的详细描述。
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>Microsoft 对等互连的 NAT 要求
-Microsoft 对等互连路径用于连接到不支持通过 Azure 公共对等互连路径访问的 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 Dynamics 365。 Microsoft 有望在 Microsoft 对等互连上支持双向连接。 定向到 Microsoft 云服务的流量必须由 SNAT 转换成有效的公共 IPv4 地址才能进入 Microsoft 网络。 从 Microsoft 云服务定向到网络的流量必须在 Internet 边缘进行 SNAT 转换，避免[非对称路由](expressroute-asymmetric-routing.md)。 下图提供了有关如何为 Microsoft 对等互连设置 NAT 的综合示意图。
+Microsoft 对等互连路径用于连接到不支持通过 Azure 公共对等互连路径访问的 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online 和 Skype for Business。 Microsoft 有望在 Microsoft 对等互连上支持双向连接。 定向到 Microsoft 云服务的流量必须由 SNAT 转换成有效的公共 IPv4 地址才能进入 Microsoft 网络。 从 Microsoft 云服务定向到网络的流量必须在 Internet 边缘进行 SNAT 转换，避免[非对称路由](expressroute-asymmetric-routing.md)。 下图提供了有关如何为 Microsoft 对等互连设置 NAT 的综合示意图。
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
@@ -36,7 +36,7 @@ Microsoft 对等互连路径用于连接到不支持通过 Azure 公共对等互
 
 ### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>从 Microsoft 发起的，目标为网络的流量
 * 某些方案需要 Microsoft 启动到网络中托管的服务终结点的连接。 一个典型的示例就是从 Office 365 连接到网络中托管的 ADFS 服务器。 在这种情况下，必须将网络中相应的前缀透露给 Microsoft 对等互连。 
-* 必须在 Internet 边缘为网络中的服务终结点进行 Microsoft 流量的 SNAT 转换，避免[非对称路由](expressroute-asymmetric-routing.md)。 只要目标 IP 地址与通过 ExpressRoute 接收的路由匹配，将始终通过 ExpressRoute 发送请求和回复。  如果请求是通过 Internet 接收的，而回复是通过 ExpressRoute 发送的，则会存在非对称路由。 在 Internet 边缘对传入的 Microsoft 流量进行 SNAT 转换 可以强制回复流量回到 Internet 边缘，从而解决此问题。
+* 必须在 Internet 边缘为网络中的服务终结点进行 Microsoft 流量的 SNAT 转换，避免[非对称路由](expressroute-asymmetric-routing.md)。 只要目标 IP 地址与通过 ExpressRoute 接收的路由匹配，将始终通过 ExpressRoute 发送请求和回复。 如果请求是通过 Internet 接收的，而回复是通过 ExpressRoute 发送的，则会存在非对称路由。 在 Internet 边缘对传入的 Microsoft 流量进行 SNAT 转换 可以强制回复流量回到 Internet 边缘，从而解决此问题。
 
 ![非对称路由与 ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 

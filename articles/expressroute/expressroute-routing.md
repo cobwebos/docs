@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/19/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9d4822d07a95fcdec32c0c4146562884302fa4f8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9bc0d1b31ebeaecce8b4be8699cf87811047b6f9
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308323"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123259"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -84,7 +84,7 @@ ms.locfileid: "70308323"
 进行专用对等互连时，可以选择使用公共的或专用的 IPv4 地址。 我们会对用户的流量进行端到端隔离，因此在进行专用对等互连时，不可能出现与其他客户的地址发生重叠的情况。 这些地址不会播发到 Internet。 
 
 ### <a name="microsoft-peering"></a>Microsoft 对等
-可以使用 Microsoft 对等互连路径连接到 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business、Microsoft 团队和 Dynamics 365。 Microsoft 支持在 Microsoft 对等互连时进行双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
+可以使用 Microsoft 对等互连路径连接到 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 Microsoft 团队。 Microsoft 支持在 Microsoft 对等互连时进行双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
 
 确保 IP 地址和 AS 号码已在下列其中一个注册表中注册：
 
@@ -218,7 +218,6 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | Exchange Online | 12076:5010 |
 | SharePoint Online | 12076:5020 |
 | Skype For Business Online | 12076:5030 |
-| Dynamics 365 | 12076:5040 |
 | Azure 全球服务* | 12076:5050 |
 | 其他 Office 365 Online 服务 | 12076:5100 |
 
@@ -249,7 +248,6 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype for Business Online |12076:5130 |
-| Dynamics 365 |12076:5140 |
 | 其他 Office 365 Online 服务 |12076:5200 |
 
 ## <a name="next-steps"></a>后续步骤

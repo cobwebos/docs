@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 55b5207e4c05712b4d96d4272f9ae193cc4c1720
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: c49b1fa1e2e8421146f5d5012de983c14934c23c
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508601"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122938"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure 门户
 > [!div class="op_single_selector"]
@@ -24,9 +24,9 @@ ms.locfileid: "67508601"
 
 路由筛选器是通过 Microsoft 对等互连使用部分受支持服务的一种方法。 本文中的步骤可帮助配置和管理 ExpressRoute 线路的路由筛选器。
 
-Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint Online 和 Skype for Business）及 Azure 服务（例如存储和 SQL DB）均可通过 Microsoft 对等互连进行访问。 如果在 ExpressRoute 线路中配置 Microsoft 对等互连，则会通过建立的 BGP 会话播发与这些服务相关的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
+Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Business）以及 Azure 服务（如存储和 SQL 数据库）可通过 Microsoft 对等互连进行访问。 如果在 ExpressRoute 线路中配置 Microsoft 对等互连，则会通过建立的 BGP 会话播发与这些服务相关的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
 
-如需连接所有服务，则应通过 BGP 播发大量前缀。 这会显著增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 可以：
+如需连接所有服务，则应通过 BGP 播发大量前缀。 这会显著增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 你可以：
 
 - 通过在 BGP 团体上应用路由筛选器，筛选出不需要的前缀。 这是标准的网络做法，通常在多个网络中使用。
 
@@ -36,9 +36,9 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 
 在 ExpressRoute 线路上配置 Microsoft 对等互连时，Microsoft 边缘路由器会建立你的或你连接提供商的边缘路由器的一对 BGP 会话。 不会将任何路由播发到网络。 若要能够将路由播发到网络，必须关联路由筛选器。
 
-使用路由筛选器可标识要通过 ExpressRoute 线路的 Microsoft 对等互连使用的服务。 它是实质上是你想要允许所有 BGP 社区值的列表。 定义路由筛选器资源并将其附加到 ExpressRoute 线路后，映射到 BGP 团体值的所有前缀均会播发到网络。
+使用路由筛选器可标识要通过 ExpressRoute 线路的 Microsoft 对等互连使用的服务。 它实质上是你想要允许的所有 BGP 团体值的列表。 定义路由筛选器资源并将其附加到 ExpressRoute 线路后，映射到 BGP 团体值的所有前缀均会播发到网络。
 
-为了能够将 Office 365 服务的路由筛选器附加到线路，必须具备通过 ExpressRoute 使用 Office 365 服务的权限。 如果未被授权通过 ExpressRoute 使用 Office 365 服务，则附加路由筛选器的操作将失败。 若要深入了解授权过程，请参阅[适用于 Office 365 的 Azure ExpressRoute](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)。 连接 Dynamics 365 服务不需要任何事先授权。
+为了能够将 Office 365 服务的路由筛选器附加到线路，必须具备通过 ExpressRoute 使用 Office 365 服务的权限。 如果未被授权通过 ExpressRoute 使用 Office 365 服务，则附加路由筛选器的操作将失败。 若要深入了解授权过程，请参阅[适用于 Office 365 的 Azure ExpressRoute](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)。
 
 > [!IMPORTANT]
 > 在 2017 年 8 月 1 日之前配置的 ExpressRoute 线路的 Microsoft 对等互连会通过 Microsoft 对等互连播发所有服务前缀，即使未定义路由筛选器。 在 2017 年 8 月 1 日或之后配置的 ExpressRoute 线路的 Microsoft 对等互连的任何前缀只有在路由筛选器附加到线路之后才会播发。
@@ -79,14 +79,14 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2.列出要使用的值
 
-生成的列表[BGP 团体值](expressroute-routing.md#bgp)你想要在路由筛选器中使用。 
+创建要在路由筛选器中使用的[BGP 团体值](expressroute-routing.md#bgp)列表。 
 
 ## <a name="filter"></a>步骤 2：创建路由筛选器和筛选器规则
 
 1 个路由筛选器只能有 1 个规则，并且规则类型必须是“允许”。 此规则可以有与之关联的 BGP 团体值列表。
 
 ### <a name="1-create-a-route-filter"></a>1.创建路由筛选器
-可以通过选择创建新资源的选项来创建路由筛选器。 单击“创建资源” > “网络” > “RouteFilter”，如下图所示    ：
+可以通过选择创建新资源的选项来创建路由筛选器。 单击“创建资源” > “网络” > “RouteFilter”，如下图所示：
 
 ![创建路由筛选器](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 
@@ -101,14 +101,14 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 ![创建路由筛选器](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
-可以选择你想要从下拉列表连接到并保存规则完成的服务。
+可以从下拉列表中选择要连接到的服务，并在完成后保存该规则。
 
 ![创建路由筛选器](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
 ## <a name="attach"></a>步骤 3：将路由筛选器附加到 ExpressRoute 线路
 
-通过选择"添加线路"按钮，然后从下拉列表中选择 ExpressRoute 线路，可以将路由筛选器附加到线路。
+可以通过选择 "添加线路" 按钮并从下拉列表中选择 ExpressRoute 线路，将路由筛选器附加到线路。
 
 ![创建路由筛选器](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
@@ -137,7 +137,7 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 
 ### <a name="detach"></a>从 ExpressRoute 线路分离路由筛选器
 
-若要分离路由筛选器从线路，请右键单击线路并单击"取消关联"。
+若要从路由筛选器分离线路，请右键单击该线路，并单击 "解除关联"。
 
 ![创建路由筛选器](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
@@ -152,4 +152,4 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 
 * 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 
-* 有关路由器配置示例的信息，请参阅[用于设置和管理路由的路由器配置示例](expressroute-config-samples-routing.md)。 
+* 有关路由器配置示例的详细信息，请参阅[用于设置和管理路由的路由器配置示例](expressroute-config-samples-routing.md)。 

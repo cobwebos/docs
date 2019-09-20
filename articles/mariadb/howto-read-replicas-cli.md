@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 2f5029ccbf80551721ecc363aa4c3930961d9154
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 8b3572182832dc7692f6475be44281f56cf58571
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993072"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122762"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API 在 Azure Database for MariaDB 中创建和管理读取副本
 
@@ -44,7 +44,12 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 | name | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
 | source-server | mydemoserver | 要从中进行复制的现有主服务器的名称或 ID。 |
 
-若要创建跨区域只读副本，请使用 `--location` 参数。 下面的 CLI 示例在美国西部创建副本。
+若要创建跨区域只读副本，请使用 `--location` 参数。 
+
+> [!NOTE]
+> 跨区域复制处于预览阶段。
+
+下面的 CLI 示例在美国西部创建副本。
 
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
@@ -91,7 +96,7 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 
 ### <a name="delete-a-replica-server"></a>删除副本服务器
 
-可以通过运行 **[az mariadb server delete](/cli/azure/mariadb/server)** 命令来删除读取副本服务器。
+可以通过运行 **[az mariadb server delete](/cli/azure/mariadb/server)** 命令删除只读副本服务器。
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoreplicaserver
@@ -102,7 +107,7 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoreplicase
 > [!IMPORTANT]
 > 删除主服务器会停止复制到所有副本服务器，并删除主服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
 
-若要删除主服务器，可运行 **[az mariadb server delete](/cli/azure/mariadb/server)** 命令。
+若要删除主服务器，可以运行 **[az mariadb server delete](/cli/azure/mariadb/server)** 命令。
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver

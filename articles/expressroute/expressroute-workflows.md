@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/18/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 3ffcc5ac2193e607573ceb93717258f5349d1f15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e0f4d356bb6addf735bf148a80e6be3ca550c8f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883161"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123384"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 线路预配工作流和线路状态
 本页从较高层面引导完成服务预配和路由配置工作流。
@@ -29,7 +29,7 @@ ms.locfileid: "60883161"
    
    * 启用 Azure 专用对等互连 - 启用此对等互连以连接到部署在虚拟网络中的 VM/云服务。
 
-   * 启用 Microsoft 对等互连 - 启用此对等互连以访问 Office 365 和 Dynamics 365。 此外，所有的 Azure PaaS 服务也可通过 Microsoft 对等互连访问。
+   * 启用 Microsoft 对等互连-启用此项以访问 Office 365。 此外，所有的 Azure PaaS 服务也可通过 Microsoft 对等互连访问。
      
      > [!IMPORTANT]
      > 必须确保使用独立的代理/边缘，而不是用于 Internet 的 代理/边缘来连接 Microsoft。 对 ExpressRoute 和 Internet 使用相同的边缘会导致路由不对称，并造成网络连接中断。
@@ -47,7 +47,7 @@ ms.locfileid: "60883161"
 
 “状态”表示 Microsoft 的预配状态。 创建 Expressroute 线路时，此属性设置为 Enabled
 
-连接服务提供商预配状态表示连接服务提供商一端的状态。 该状态可能是 NotProvisioned  、Provisioning  或 Provisioned  。 ExpressRoute 线路必须处于 Provisioned 状态才可供使用。
+连接服务提供商预配状态表示连接服务提供商一端的状态。 该状态可能是 NotProvisioned、Provisioning 或 Provisioned。 ExpressRoute 线路必须处于 Provisioned 状态才可供使用。
 
 ### <a name="possible-states-of-an-expressroute-circuit"></a>ExpressRoute 线路的可能状态
 本部分列出 ExpressRoute 线路的可能状态。
@@ -95,12 +95,12 @@ ms.locfileid: "60883161"
 ## <a name="routing-session-configuration-state"></a>路由会话配置状态
 BGP 预配状态可让你知道 Microsoft 边缘是否已启用 BGP 会话。 必须处于已启用状态才能使用对等互连。
 
-必须特意检查 Microsoft 对等互连的 BGP 会话状态。 除了 BGP 预配状态，还有另一个状态称为播发的公共前缀状态  。 播发的公共前缀状态必须是已配置  状态，BGP 会话才能启动，才能进行端到端的路由。 
+必须特意检查 Microsoft 对等互连的 BGP 会话状态。 除了 BGP 预配状态，还有另一个状态称为播发的公共前缀状态。 播发的公共前缀状态必须是已配置状态，BGP 会话才能启动，才能进行端到端的路由。 
 
-如果播发的公共前缀状态设置为需要验证  状态，则不会启用 BGP 会话，因为播发的前缀不符合任何路由注册表中的 AS 编号。 
+如果播发的公共前缀状态设置为需要验证状态，则不会启用 BGP 会话，因为播发的前缀不符合任何路由注册表中的 AS 编号。 
 
 > [!IMPORTANT]
-> 如果播发的公共前缀状态是手动验证  状态，则必须向 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证，并提供拥有播发 IP 地址的证明以及相关的自治系统编号。
+> 如果播发的公共前缀状态是手动验证状态，则必须向 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证，并提供拥有播发 IP 地址的证明以及相关的自治系统编号。
 > 
 > 
 

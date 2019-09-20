@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 09/18/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: f16f797afca6d60029c1f39fea7235ce84e4f954
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 4ef1a768356078c160b798c1a96412adda0330f6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442212"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123297"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute 先决条件和清单
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需确认是否符合以下部分中所列的要求。
@@ -21,7 +21,7 @@ ms.locfileid: "68442212"
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 ## <a name="azure-account"></a>Azure 帐户
-* 使用中的有效 Microsoft Azure 帐户。 需有此帐户才能设置 ExpressRoute 线路。 ExpressRoute 线路是 Azure 订阅中的资源。 即使连接限于非 Azure Microsoft 云服务（例如 Office 365 服务和 Dynamics 365），Azure 订阅也是一个必要条件。
+* 使用中的有效 Microsoft Azure 帐户。 需有此帐户才能设置 ExpressRoute 线路。 ExpressRoute 线路是 Azure 订阅中的资源。 即使连接仅限于非 Azure Microsoft 云服务（如 Office 365），Azure 订阅也是一项要求。
 * 激活 Office 365 订阅（如果要使用 Office 365 服务）。 有关详细信息，请参阅本文中的“Office 365 的具体要求”部分。
 
 ## <a name="connectivity-provider"></a>连接服务提供商
@@ -48,9 +48,6 @@ ms.locfileid: "68442212"
 * [Network bandwidth calculators and tools](https://support.office.com/article/Network-and-migration-planning-for-Office-365-f5ee6c33-bcd7-4b0b-b0f8-dc1d9fb8d132)（网络带宽计算器和工具）
 * [Office 365 与本地环境的集成](https://support.office.com/article/Office-365-integration-with-on-premises-environments-263faf8d-aa21-428b-aed3-2021837a4b65)
 * [Office 365 中的 ExpressRoute 高级培训视频](https://channel9.msdn.com/series/aer/)
-
-## <a name="dynamics-365"></a>Dynamics 365
-如果打算在 ExpressRoute 上启用 Dynamics 365, 请查看[dynamics 365 url](https://support.microsoft.com/kb/2655102)和[IP 地址范围](https://support.microsoft.com/kb/2728473)。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
