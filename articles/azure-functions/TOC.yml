@@ -271,7 +271,7 @@
           href: 'https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python'
     - name: 应用设置参考
       href: functions-app-settings.md
-    - name: 绑定
+    - name: 触发器和绑定
       items:
         - name: Blob 存储
           href: functions-bindings-storage-blob.md
