@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d0f94e9cf9b91bc365586dafc147dc73b17876
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 76aafa978732b3f4bae82f8ad3c09e67caf297ae
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914758"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146284"
 ---
 # <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>在 Azure Active Directory 中批量下载组的列表（预览）
 
@@ -26,10 +26,6 @@ ms.locfileid: "70914758"
 
 > [!NOTE]
 > Azure AD 批量操作是 Azure AD 的公共预览功能，适用于任何付费的 Azure AD 许可计划。 有关预览版使用条款的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-## <a name="bulk-download-service-limits"></a>大容量下载服务限制
-
-下载组列表的每个批量活动最多可以运行一小时。 这使你可以下载至少300000个组的列表。
 
 ## <a name="to-download-a-list-of-groups"></a>下载组列表
 
@@ -44,6 +40,10 @@ ms.locfileid: "70914758"
 你可以在 "**批量操作结果（预览版）** " 页中查看所有挂起的批量请求的状态。
 
    ![大容量操作的 "结果" 页显示大容量请求状态](./media/groups-bulk-download/bulk-center.png)
+
+## <a name="bulk-download-service-limits"></a>大容量下载服务限制
+
+下载组列表的每个批量活动最多可以运行一小时。 这使你可以下载至少300000个组的列表。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 87065709b16a5a0c7076584e8fc33c3830319e4f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 246e76a0ab94624945723b500ef136e038ab40ec
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999647"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155231"
 ---
 # <a name="where-can-you-use-personalizer"></a>可在哪种场合下使用个性化体验创建服务？
 
@@ -33,7 +33,7 @@ ms.locfileid: "70999647"
 * 可以并且应该从集体用户行为和总体奖励评分中学习最佳选择。
 * 个性化机器学习的使用遵循[负责使用准则](ethics-responsible-use.md)和选择的选项。
 * 上下文决策可以表达为基于一组有限的选项对最佳选择（操作）进行排名。
-* 排名选项对应用程序的适用程度的确定方式包括衡量用户行为的某些方面，并以_奖励评分_的形式来表达此衡量结果。 此评分是 -1 到 1 的数字。
+* 对于应用程序而言，排名选择的工作方式可以通过测量用户行为的某些方面来确定，并将其表示为 _[奖励分数](concept-rewards.md)_ 。
 * 奖励评分不会引入过多的混淆或外部因素。 试验持续时间足够短，以便在奖励评分仍然相关的情况下可对其进行计算。
 * 可将排名上下文表达为至少包含 5 个[特征](concepts-features.md)的列表，你认为这些特征有助于做出正确的选择，并且它们不包括个人身份信息 (PII)。
 * 你已获得有关每个内容选项的信息，即_操作_ - 至少包含 5 个[功能](concepts-features.md)的列表，你认为这些特征有助于个性化体验创建服务做出正确的选择。

@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4e7b89fbb4b6343db62cf3476f3c35220b12649b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104033"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145658"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 标识平台最佳实践和建议
 
@@ -78,6 +78,7 @@ ms.locfileid: "71104033"
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) |  对于移动应用，请使用应用程序注册体验来配置每个平台。 为了使应用程序能够利用 Microsoft Authenticator 或 Microsoft 公司门户进行单一登录，你的应用程序需要配置 "broker 重定向 URI"。 这样，Microsoft 便可以在身份验证后将控制权返回给应用程序。 配置每个平台时，应用注册体验将引导你完成该过程。 使用快速入门下载工作示例。 在 iOS 上，尽可能使用代理和系统 web 视图。|
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) |  在 web 应用或 web Api 中，为每个帐户保留一个令牌缓存。  对于 web 应用，令牌缓存应使用帐户 ID 进行键控。  对于 web Api，应使用用于调用 API 的令牌的哈希来键控帐户。 MSAL.NET 在 .NET Framework 和 .NET Core subplatforms 中提供自定义令牌缓存序列化。 出于安全和性能方面的原因，我们建议为每个用户序列化一个缓存。 有关详细信息，请参阅[令牌缓存序列化](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)。|
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 如果应用所需的数据可以通过 [Microsoft Graph](https://developer.microsoft.com/graph) 提供，请使用 Microsoft Graph 终结点而不是单个 API 请求此数据的权限。 |
+| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) |不要查看访问令牌值，或者尝试将其分析为客户端。  如果客户端需要了解有关用户的某些信息，请始终使用 id_token，如果客户端需要了解有关用户的某些信息，请始终使用，或者调用 Microsoft Graph。  只有 web Api 应该分析访问令牌（因为它们是定义格式并设置加密密钥的令牌）。 |
 
 ## <a name="end-user-experience"></a>最终用户体验
 

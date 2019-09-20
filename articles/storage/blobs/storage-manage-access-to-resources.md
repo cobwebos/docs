@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 09/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 6293fc84969c4e246c05da4482f76142263db230
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e3d6312be0936f14ece5d30a2bbf3e4235031c0e
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985548"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154070"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>管理对容器和 blob 的匿名读取访问
 
@@ -27,22 +27,15 @@ ms.locfileid: "68985548"
 
 可为容器配置以下权限：
 
-* **无公共读取访问权限：** 只有存储帐户所有者可以访问容器及其 Blob。 这是所有新容器的默认权限。
-* **仅限对 Blob 的公共读取访问权限：** 可以通过匿名请求读取该容器中的 Blob，但容器数据不可用。 匿名客户端无法枚举容器中的 Blob。
-* **对容器及其 Blob 的公共读取访问权限：** 可以通过匿名请求读取所有容器和 Blob 数据。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。
-
-可以通过以下方式来设置容器权限：
-
-* [Azure 门户](https://portal.azure.com)
-* [Azure PowerShell](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure CLI](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
-* 通过使用一个存储客户端库或 REST API 以编程方式设置
+- **无公共读取访问权限：** 只有存储帐户所有者可以访问容器及其 Blob。 这是所有新容器的默认权限。
+- **仅限对 Blob 的公共读取访问权限：** 可以通过匿名请求读取该容器中的 Blob，但容器数据不可用。 匿名客户端无法枚举容器中的 Blob。
+- **对容器及其 Blob 的公共读取访问权限：** 可以通过匿名请求读取所有容器和 Blob 数据。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。
 
 ### <a name="set-container-public-access-level-in-the-azure-portal"></a>在 Azure 门户中设置容器公共访问级别
 
 在 [Azure 门户](https://portal.azure.com)中，可以更新一个或多个容器的公共访问级别：
 
-1. 导航到 Azure 门户中的存储帐户。
+1. 在 Azure 门户中导航到存储帐户概述。
 1. 在菜单边栏选项卡上的“Blob 服务”下，选择“Blob”。
 1. 选择要对其设置公共访问级别的容器。
 1. 使用“更改访问级别”按钮显示公共访问权限设置。
@@ -57,16 +50,28 @@ ms.locfileid: "68985548"
 
 ### <a name="set-container-public-access-level-with-net"></a>使用 .NET 设置容器公共访问级别
 
-若要使用 C# 和适用于 .NET 的存储客户端库设置容器的权限，请先调用 GetPermissions 方法以检索容器的现有权限。 然后，设置 **GetPermissions** 方法返回的 **BlobContainerPermissions** 对象的 **PublicAccess** 属性。 最后，使用更新的权限调用 **SetPermissions** 方法。
+若要使用适用于 .NET 的 Azure 存储客户端库设置容器的权限，请先通过调用以下方法之一来检索容器的现有权限：
+
+- [GetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissions)
+- [GetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissionsasync)
+
+接下来，设置**GetPermissions**方法返回的[BlobContainerPermissions](/dotnet/api/microsoft.azure.storage.blob.blobcontainerpermissions)对象的**PublicAccess**属性。
+
+最后，调用以下方法之一更新容器的权限：
+
+- [SetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
+- [SetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissionsasync)
 
 以下示例将容器的权限设置为完全公共读取访问。 要将权限设置为仅针对 blob 的公共读取访问，请将 **PublicAccess** 属性设置为 **BlobContainerPublicAccessType.Blob**。 要删除匿名用户的所有权限，请将该属性设置为 **BlobContainerPublicAccessType.Off**。
 
 ```csharp
-public static void SetPublicContainerPermissions(CloudBlobContainer container)
+private static async Task SetPublicContainerPermissions(CloudBlobContainer container)
 {
-    BlobContainerPermissions permissions = container.GetPermissions();
+    BlobContainerPermissions permissions = await container.GetPermissionsAsync();
     permissions.PublicAccess = BlobContainerPublicAccessType.Container;
-    container.SetPermissions(permissions);
+    await container.SetPermissionsAsync(permissions);
+
+    Console.WriteLine("Container {0} - permissions set to {1}", container.Name, permissions.PublicAccess);
 }
 ```
 
@@ -81,13 +86,15 @@ public static void SetPublicContainerPermissions(CloudBlobContainer container)
 ```csharp
 public static void CreateAnonymousBlobClient()
 {
-    // Create the client object using the Blob storage endpoint.
-    CloudBlobClient blobClient = new CloudBlobClient(new Uri(@"https://storagesample.blob.core.windows.net"));
+    // Create the client object using the Blob storage endpoint for your account.
+    CloudBlobClient blobClient = new CloudBlobClient(
+        new Uri(@"https://storagesamples.blob.core.windows.net"));
 
     // Get a reference to a container that's available for anonymous access.
     CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
 
-    // Read the container's properties. Note this is only possible when the container supports full public read access.
+    // Read the container's properties. 
+    // Note this is only possible when the container supports full public read access.
     container.FetchAttributes();
     Console.WriteLine(container.Properties.LastModified);
     Console.WriteLine(container.Properties.ETag);
@@ -102,9 +109,11 @@ public static void CreateAnonymousBlobClient()
 public static void ListBlobsAnonymously()
 {
     // Get a reference to a container that's available for anonymous access.
-    CloudBlobContainer container = new CloudBlobContainer(new Uri(@"https://storagesample.blob.core.windows.net/sample-container"));
+    CloudBlobContainer container = new CloudBlobContainer(
+        new Uri(@"https://storagesamples.blob.core.windows.net/sample-container"));
 
     // List blobs in the container.
+    // Note this is only possible when the container supports full public read access.
     foreach (IListBlobItem blobItem in container.ListBlobs())
     {
         Console.WriteLine(blobItem.Uri);
@@ -119,45 +128,14 @@ public static void ListBlobsAnonymously()
 ```csharp
 public static void DownloadBlobAnonymously()
 {
-    CloudBlockBlob blob = new CloudBlockBlob(new Uri(@"https://storagesample.blob.core.windows.net/sample-container/logfile.txt"));
-    blob.DownloadToFile(@"C:\Temp\logfile.txt", System.IO.FileMode.Create);
+    CloudBlockBlob blob = new CloudBlockBlob(
+        new Uri(@"https://storagesamples.blob.core.windows.net/sample-container/logfile.txt"));
+    blob.DownloadToFile(@"C:\Temp\logfile.txt", FileMode.Create);
 }
 ```
 
-## <a name="features-available-to-anonymous-users"></a>对匿名用户可用的功能
-
-下表显示了为容器配置公共访问权限后，可以匿名方式调用的操作。
-
-| REST 操作 | 对容器的公共读取访问权限 | 只有 Blob 的公共读取访问权限 |
-| --- | --- | --- |
-| 列出容器 | 仅限已授权的请求 | 仅限已授权的请求 |
-| 创建容器 | 仅限已授权的请求 | 仅限已授权的请求 |
-| 获取容器属性 | 允许匿名的请求 | 仅限已授权的请求 |
-| 获取容器元数据 | 允许匿名的请求 | 仅限已授权的请求 |
-| 设置容器元数据 | 仅限已授权的请求 | 仅限已授权的请求 |
-| 获取容器 ACL | 仅限已授权的请求 | 仅限已授权的请求 |
-| 设置容器 ACL | 仅限已授权的请求 | 仅限已授权的请求 |
-| 删除容器 | 仅限已授权的请求 | 仅限已授权的请求 |
-| 列出 Blob | 允许匿名的请求 | 仅限已授权的请求 |
-| 放置 Blob | 仅限已授权的请求 | 仅限已授权的请求 |
-| 获取 Blob | 允许匿名的请求 | 允许匿名的请求 |
-| 获取 Blob 属性 | 允许匿名的请求 | 允许匿名的请求 |
-| 设置 Blob 属性 | 仅限已授权的请求 | 仅限已授权的请求 |
-| 获取 Blob 元数据 | 允许匿名的请求 | 允许匿名的请求 |
-| 设置 Blob 元数据 | 仅限已授权的请求 | 仅限已授权的请求 |
-| 放置块 | 仅限已授权的请求 | 仅限已授权的请求 |
-| 获取块列表（仅提交的块） | 允许匿名的请求 | 允许匿名的请求 |
-| 获取块列表（仅未提交的块或所有块） | 仅限已授权的请求 | 仅限已授权的请求 |
-| 放置块列表 | 仅限已授权的请求 | 仅限已授权的请求 |
-| 删除 Blob | 仅限已授权的请求 | 仅限已授权的请求 |
-| 复制 Blob | 仅限已授权的请求 | 仅限已授权的请求 |
-| 快照 Blob | 仅限已授权的请求 | 仅限已授权的请求 |
-| 租用 Blob | 仅限已授权的请求 | 仅限已授权的请求 |
-| 放置页面 | 仅限已授权的请求 | 仅限已授权的请求 |
-| 获取页面范围 | 允许匿名的请求 | 允许匿名的请求 |
-| 追加 blob | 仅限已授权的请求 | 仅限已授权的请求 |
-
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 存储服务的授权](https://docs.microsoft.com/rest/api/storageservices/authorization-for-the-azure-storage-services)
-* [使用共享的访问签名 (SAS)](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [授权访问 Azure 存储](../common/storage-auth.md)
+- [使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)
+- [Blob 服务 REST API](/rest/api/storageservices/blob-service-rest-api)

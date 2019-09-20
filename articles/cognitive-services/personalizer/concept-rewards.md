@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 72c425a1ec9fb83cc2e9dd1bae2c4f521109f162
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: bb9a9c1d67e52c21d2cb039832d27547a023da9f
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663377"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154670"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>奖励评分表示个性化的成败
 
@@ -25,7 +25,7 @@ ms.locfileid: "68663377"
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>使用奖励 API 向个性化体验创建服务发送奖励评分
 
-奖励由[奖励 API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward) 发送到个性化体验创建服务。 奖励是从 -1 到 1 的数字。 个性化体验创建服务将训练模型，以实现一段时间内可能的最高奖励总分。
+奖励由[奖励 API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward) 发送到个性化体验创建服务。 通常，奖励是0和1之间的数字。 在某些情况下，可以使用值为-1 的负奖励，只应在有强化学习（RL）的情况下使用。 个性化体验创建服务将训练模型，以实现一段时间内可能的最高奖励总分。
 
 发生用户行为（这可能是几天以后的事）后，将发送奖励。 如果发生事件之前个性化体验创建服务等待了最长允许时间，则视为没有奖励。可以在 Azure 门户中使用[奖励等待时间](#reward-wait-time)配置默认奖励。
 
@@ -56,7 +56,7 @@ ms.locfileid: "68663377"
 
 ## <a name="building-up-rewards-with-multiple-factors"></a>使用多种因素构成奖励  
 
-若要有效地进行个性化，可以基于多种因素构成奖励评分（从 -1 到 1 的任意数字）。 
+为实现有效的个性化，可以根据多个因素来构建奖励分数。 
 
 例如，可应用以下规则来个性化视频内容的列表：
 
@@ -80,7 +80,7 @@ ms.locfileid: "68663377"
 
 将丢弃在**奖励等待时间**以后为某个事件收到的所有奖励，模型训练不受影响。
 
-加总奖励评分后，最终奖励可能大于 1 或小于 -1。 这不会使服务失败。
+通过添加奖励评分，最终回报可能超出预期分数范围。 这不会使服务失败。
 
 <!--
 @edjez - is the number ignored if it is outside the acceptable range?
@@ -88,9 +88,9 @@ ms.locfileid: "68663377"
 
 ## <a name="best-practices-for-calculating-reward-score"></a>有关计算奖励评分的最佳做法
 
-* **考虑成功个性化的真实指标**：人们很容易根据点击数来考虑奖励，但合理的奖励应该依据用户实现的目标而不是他们要做的事。    例如，基于点击数的奖励可能会导致诱导性点击。
+* **考虑成功个性化的真实指标**：人们很容易根据点击数来考虑奖励，但合理的奖励应该依据用户实现的目标而不是他们要做的事。  例如，基于点击数的奖励可能会导致诱导性点击。
 
-* **使用奖励评分来判断个性化的好坏**：提供某部电影的个性化建议很有可能会引导用户观看该电影，并为该电影提供较高的评级。 由于电影评级取决于许多因素（例如演技、用户的心情等），因此，这种奖励不能很好地反映个性化的效果。  但是，观看电影前几分钟的用户也许可以更好地反映个性化的效果，在 5 分钟后发送奖励评分 1 是一个更好的信号。
+* **使用奖励评分来判断个性化的好坏**：提供某部电影的个性化建议很有可能会引导用户观看该电影，并为该电影提供较高的评级。 由于电影评级取决于许多因素（例如演技、用户的心情等），因此，这种奖励不能很好地反映个性化的效果。 但是，观看电影前几分钟的用户也许可以更好地反映个性化的效果，在 5 分钟后发送奖励评分 1 是一个更好的信号。
 
 * **奖励仅应用到 RewardActionID**：个性化体验创建服务将应用奖励来了解 RewardActionID 中指定的操作的效果。 如果你选择显示其他操作，而用户单击了这些操作，则奖励应该为 0。
 

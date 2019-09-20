@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: dc113417be3df97b9ab9509c30a1f23e1eeaf35b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a0d12639ce074c3ed105513a3d90e323e30d1087
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086277"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155071"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -31,6 +31,9 @@ ms.locfileid: "70086277"
 ## <a name="packages---functions-2x"></a>包 - Functions 2.x
 
 [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 3.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
+
+> [!NOTE]
+> 版本2.x 不会创建`ServiceBusTrigger`实例中配置的主题或订阅。 版本2.x 基于[Azure](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) ，并且不处理队列管理。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -287,7 +290,7 @@ public static void Run(
 
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
-|来自|不适用|所有函数的发件人电子邮件地址。| 
+|from|不适用|所有函数的发件人电子邮件地址。| 
 
 
 ## <a name="next-steps"></a>后续步骤

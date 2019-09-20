@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e29c32c27e7f6c62eb2c6a9cbe2e4d3f1294f038
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66110307"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155161"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 诊断扩展进行性能监视
 
@@ -50,7 +50,7 @@ ms.locfileid: "66110307"
 
 3. 添加要收集到上一步中声明的 `PerformanceCounterConfiguration` 中的性能计数器。 要收集的每个计数器都通过 `counterSpecifier`、`sampleRate`、`unit`、`annotation` 和任何相关的 `sinks` 来定义。
 
-下面是一个配置示例，其中有总处理器时间（CPU 处理操作所用的时间）的计数器和每秒 Service Fabric 执行组件方法调用数的计数器（Service Fabric 的自定义性能计数器之一）   。 若要获取 Service Fabric 自定义性能计数器的完整列表，请参考 [Reliable Actor 性能计数器](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters)和 [Reliable Service 性能计算器](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters)。
+下面是一个配置示例，其中有总处理器时间（CPU 处理操作所用的时间）的计数器和每秒 Service Fabric 执行组件方法调用数的计数器（Service Fabric 的自定义性能计数器之一）。 若要获取 Service Fabric 自定义性能计数器的完整列表，请参考 [Reliable Actor 性能计数器](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters)和 [Reliable Service 性能计算器](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters)。
 
  ```json
  "WadCfg": {
@@ -192,9 +192,6 @@ ms.locfileid: "66110307"
 ....
 ```
 
- >[!NOTE]
- >虽然可以使用 `*` 来指定名称类似的性能计数器组，但通过接收器发送任何计数器（到 Application Insights）都需要它们单独声明。 
-
 1. 在添加需要收集的适当性能计数器后，需要升级群集资源，以让这些更改反映到正在运行的群集中。 保存已修改的 `template.json` 并打开 PowerShell。 可以使用 `New-AzResourceGroupDeployment` 升级群集。 该调用需要资源组的名称、更新的模板文件和参数文件，并提示资源管理器对你更新的资源进行相应更改。 一旦登录到帐户并在正确的订阅中，使用以下命令来运行升级：
 
     ```sh
@@ -206,4 +203,4 @@ ms.locfileid: "66110307"
 ## <a name="next-steps"></a>后续步骤
 * 收集群集的更多性能计数器。 有关应收集的计数器列表，请参阅[性能指标](service-fabric-diagnostics-event-generation-perf.md)。
 * [将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](../virtual-machines/windows/extensions-diagnostics-template.md)，以进一步修改 `WadCfg`，包括配置向其发送诊断数据的其他存储帐户。
-* 请访问[diagnostics.wadcfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/), 从头开始生成模板, 并确保语法正确。(https://azure.github.io/azure-diagnostics-tools/config-builder/) 若要从头开始生成模板, 请确保语法正确。
+* 请访问[diagnostics.wadcfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/)，从头开始生成模板，并确保语法正确。（ https://azure.github.io/azure-diagnostics-tools/config-builder/) 若要从头开始生成模板，请确保语法正确。

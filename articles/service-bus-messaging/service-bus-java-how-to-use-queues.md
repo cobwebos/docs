@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b85099605d7f660b792186f7e17b0ed4ea43ef04
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 19cfd2c5dd4229e4687fcb1a3286509c9b768d7a
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967855"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155507"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>通过 Java 使用 Azure 服务总线队列发送和接收消息
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "70967855"
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
 在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java]。 如果使用了 Eclipse，则可以安装包含 Azure SDK for Java 的[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]。 然后，可将 Microsoft Azure Libraries for Java 添加到项目：
 
-![可在其中添加库的 "库" 选项卡的屏幕截图](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
+![将用于 Java 的 Microsoft Azure 库添加到 Eclipse 项目](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
 将以下 `import` 语句添加到 Java 文件顶部：
 

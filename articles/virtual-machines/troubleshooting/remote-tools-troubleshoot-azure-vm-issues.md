@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 513ce98703e67053ab0bcac3e6fc7a3e959f6870
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70d777fe2e939c1871bc318eed439214fd3e3f60
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717274"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155735"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用远程工具排查 Azure VM 问题
 
@@ -213,7 +213,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. 在同一 VNET 中的另一个 VM 上，打开注册表编辑器 (regedit.exe)。
 
-2. 选择“文件” >“连接网络注册表”。  
+2. 选择“文件” >“连接网络注册表”。
 
    ![远程选项](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
@@ -236,9 +236,9 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. 在同一 VNET 中的另一个 VM 上，打开 **Services.msc** 的实例。
 
-2. 右键单击“服务(本地)”。 
+2. 右键单击“服务(本地)”。
 
-3. 选择“连接到另一台计算机”。 
+3. 选择“连接到另一台计算机”。
 
    ![远程服务](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
 

@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e90b164fac4ea1123f5f9a43eea1169d93d9a04
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711541"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154026"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM 来宾 OS 防火墙阻止入站流量
 
@@ -45,7 +45,7 @@ ms.locfileid: "60711541"
 
 在执行这些步骤之前，请创建受影响 VM 的系统磁盘快照作为备份。 有关详细信息，请参阅 [拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
 
-要解决此问题，请使用[如何使用远程工具解决 Azure VM 问题](remote-tools-troubleshoot-azure-vm-issues.md)中介绍的方法远程连接到 VM，然后将来宾操作系统防火墙规则编辑为“允许”RDP 流量  。
+要解决此问题，请使用[如何使用远程工具解决 Azure VM 问题](remote-tools-troubleshoot-azure-vm-issues.md)中介绍的方法远程连接到 VM，然后将来宾操作系统防火墙规则编辑为“允许”RDP 流量。
 
 ### <a name="online-troubleshooting"></a>联机故障排除
 
@@ -53,7 +53,7 @@ ms.locfileid: "60711541"
 
 #### <a name="mitigation-1"></a>缓解措施 1
 
-1.  如果已在 VM 上安装并正常运行 Azure 代理，则可以使用 VM 菜单上“支持 + 故障排除” > “重置密码”下的“仅重置配置”选项   。
+1.  如果已在 VM 上安装并正常运行 Azure 代理，则可以使用 VM 菜单上“支持 + 故障排除” > “重置密码”下的“仅重置配置”选项。
 
 2.  运行此恢复选项将执行以下操作：
 

@@ -1,18 +1,18 @@
 ---
 title: 了解效果的工作原理
-description: Azure Policy 定义具有各种效果，可确定管理和报告符合性的方式。
+description: Azure 策略定义具有各种影响，决定了如何管理和报告合规性。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2019
+ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1ac0e70700b4b093fad09b4d10c6bdcf2e06adac
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 06a5ffbef2b841acc7ea7ecc82d05dfccbc0cab1
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231528"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147001"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -27,13 +27,14 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 - [DeployIfNotExists](#deployifnotexists)
 - [已禁用](#disabled)
 - [EnforceRegoPolicy](#enforceregopolicy)效果
+- [Modify](#modify)
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
 Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。 Azure Policy 创建应用于资源的所有分配列表，然后根据每个定义评估资源。 Azure Policy 在将请求转交给相应的资源提供程序之前处理多个效果。 这样做可以防止资源提供程序在资源不符合 Azure Policy 的设计治理控制时进行不必要的处理。
 
 - 首先检查**已禁用**以确定是否应评估策略规则。
-- 然后评估“追加​​”。 由于“附加”可能会改变请求，因此由“附加”所做的更改可能会阻止“审核”或“拒绝”效果的触发。
+- 然后计算**追加**和**修改**。 由于可能会改变请求，所做的更改可能会阻止审核或拒绝的影响。
 - 然后评估“拒绝”。 通过在“审核”之前评估“拒绝”，可以防止两次记录不需要的资源。
 - 然后在请求传输到资源提供程序之前评估**审核**。
 
@@ -47,7 +48,10 @@ Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请
 
 ## <a name="append"></a>附加
 
-附加用于在创建或更新期间向请求的资源添加其他字段。 一个常见示例是在 costCenter 等资源上添加标记，或者为存储资源指定允许的 IP。
+附加用于在创建或更新期间向请求的资源添加其他字段。 常见的示例是为存储资源指定允许的 Ip。
+
+> [!IMPORTANT]
+> Append 用于非标记属性。 尽管 Append 可以在创建或更新请求期间将标记添加到资源，但建议改为对标记使用[修改](#modify)效果。
 
 ### <a name="append-evaluation"></a>“附加”评估
 
@@ -61,36 +65,7 @@ Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请
 
 ### <a name="append-examples"></a>“附加”示例
 
-示例 1：单个**字段/值**对附加一个标记。
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-        "field": "tags.myTag",
-        "value": "myTagValue"
-    }]
-}
-```
-
-示例 2：两个**字段/值**对附加一组标记。
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-            "field": "tags.myTag",
-            "value": "myTagValue"
-        },
-        {
-            "field": "tags.myOtherTag",
-            "value": "myOtherTagValue"
-        }
-    ]
-}
-```
-
-示例 3：单个**字段/值**对, 使用非 **[\*]** [别名](definition-structure.md#aliases)和数组**值**设置存储帐户上的 IP 规则。 如果非 **[\*]** 别名是数组，该效果将以整个数组的形式附加**值**。 如果数组已存在，该冲突会导致拒绝事件发生。
+示例 1：单个**字段/值**对，使用非 **[\*]** [别名](definition-structure.md#aliases)和数组**值**设置存储帐户上的 IP 规则。 如果非 **[\*]** 别名是数组，该效果将以整个数组的形式附加**值**。 如果数组已存在，该冲突会导致拒绝事件发生。
 
 ```json
 "then": {
@@ -105,7 +80,7 @@ Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请
 }
 ```
 
-示例 4：使用具有数组**值**的 **[\*]** [别名](definition-structure.md#aliases)的单个**字段/值**对，可在存储帐户上设置 IP 规则。 通过使用 **[\*]** 别名，该效果会将**值**附加到可能预先存在的数组。 如果数组尚不存在，则会创建数组。
+示例 2：使用具有数组**值**的 **[\*]** [别名](definition-structure.md#aliases)的单个**字段/值**对，可在存储帐户上设置 IP 规则。 通过使用 **[\*]** 别名，该效果会将**值**附加到可能预先存在的数组。 如果数组尚不存在，则将创建它。
 
 ```json
 "then": {
@@ -117,6 +92,122 @@ Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请
             "action": "Allow"
         }
     }]
+}
+```
+
+## <a name="modify"></a>修改
+
+Modify 用于在创建或更新时在资源上添加、更新或删除标记。 常见的示例是在 costCenter 等资源上更新标记。 修改策略应始终`mode`设置为 "_索引_"。 可以使用[修正任务](../how-to/remediate-resources.md)来修正现有的不合规资源。
+单个修改规则可以有任意数量的操作。
+
+> [!IMPORTANT]
+> Modify 当前仅用于标记。 如果你正在管理标记，则建议使用修改，而不是将追加作为修改提供其他操作类型和修正现有资源的能力。 但是，如果无法创建托管标识，则建议使用 Append。
+
+### <a name="modify-evaluation"></a>修改评估
+
+在创建或更新资源的过程中，在资源提供程序处理请求之前修改计算。 当满足策略规则的**if**条件时，请修改资源的 "添加" 或 "更新" 标记。
+
+当使用修改效果的策略定义作为评估周期的一部分运行时，它不会更改已存在的资源。 相反，它会将符合if 条件的任意资源标记为不符合。
+
+### <a name="modify-properties"></a>修改属性
+
+修改效果的 "**详细信息**" 属性包含用于定义修正所需权限的所有子属性，以及用于添加、更新或删除标记值的**操作**。
+
+- **roleDefinitionIds** [必选]
+  - 此属性必须包含与可通过订阅访问的基于角色的访问控制角色 ID 匹配的字符串数组。 有关详细信息，请参阅[修正 - 配置策略定义](../how-to/remediate-resources.md#configure-policy-definition)。
+  - 定义的角色必须包括授予 "[参与者](../../../role-based-access-control/built-in-roles.md#contributor)" 角色的所有操作。
+- **操作**请求
+  - 要在匹配资源上完成的所有标记操作的数组。
+  - 属性：
+    - **操作**请求
+      - 定义要对匹配的资源执行的操作。 选项包括： _addOrReplace_、_添加_、_删除_。 _添加_与[追加](#append)效果类似的行为。
+    - **字段**请求
+      - 要添加、替换或删除的标记。 标记名称必须遵循与其他[字段](./definition-structure.md#fields)相同的命名约定。
+    - **值**可有可无
+      - 要将标记设置为的值。
+      - 如果**operation**为_addOrReplace_或_Add_，则需要此属性。
+
+### <a name="modify-operations"></a>修改操作
+
+**操作**属性数组使你可以通过不同方式从单个策略定义中更改多个标记。 每个操作由**操作**、**字段**和**值**属性组成。 操作确定修正任务对标记执行的操作，字段确定更改的标记，值定义该标记的新设置。 下面的示例将对以下标记进行更改：
+
+- `environment`将标记设置为 "Test"，即使它已存在且具有不同的值。
+- 删除标记`TempResource`。
+- 将标记设置为在策略分配上配置的策略参数_DeptName。_ `Dept`
+
+```json
+"details": {
+    ...
+    "operations": [
+        {
+            "operation": "addOrReplace",
+            "field": "tags['environment']",
+            "value": "Test"
+        },
+        {
+            "operation": "Remove",
+            "field": "tags['TempResource']",
+        },
+        {
+            "operation": "addOrReplace",
+            "field": "tags['Dept']",
+            "field": "[parameters('DeptName')]"
+        }
+    ]
+}
+```
+
+**操作**属性具有以下选项：
+
+|操作 |描述 |
+|-|-|
+|addOrReplace |将已定义的标记和值添加到资源，即使已存在具有不同值的标记也是如此。 |
+|添加 |将已定义的标记和值添加到资源。 |
+|删除 |从资源中删除定义的标记。 |
+
+### <a name="modify-examples"></a>修改示例
+
+示例 1：添加标记并将现有`environment`标记替换为 "Test"： `environment`
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "Test"
+            }
+        ]
+    }
+}
+```
+
+示例 2：删除标记并`environment`添加标记，或将现有`environment`标记替换为参数化值： `env`
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "Remove",
+                "field": "tags['env']"
+            },
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
 }
 ```
 
@@ -234,7 +325,7 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
-与 AuditIfNotExists 类似，DeployIfNotExists 在条件满足时执行模板部署。
+与 AuditIfNotExists 类似，DeployIfNotExists 策略定义在满足条件时执行模板部署。
 
 > [!NOTE]
 > **deployIfNotExists** 支持[嵌套模板](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template)，但目前不支持[链接模版](../../../azure-resource-manager/resource-group-linked-templates.md)。
@@ -247,7 +338,7 @@ DeployIfNotExists 在资源提供程序处理资源创建或更新请求并返�
 
 ### <a name="deployifnotexists-properties"></a>DeployIfNotExists 属性
 
-DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关资源和要执行的模板部署的所有子属性。
+DeployIfNotExists 效果的 "**详细信息**" 属性包含定义要匹配的相关资源和要执行的模板部署的所有子属性。
 
 - **Type** [必选]
   - 指定要匹配的相关资源的类型。
@@ -341,15 +432,15 @@ DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关�
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-此效果与的策略定义*模式* `Microsoft.ContainerService.Data`一起使用。 它用于传递使用[Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego)定义的许可控制规则, 以打开[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的[策略代理](https://www.openpolicyagent.org/)(OPA)。
+此效果与的策略定义*模式* `Microsoft.ContainerService.Data`一起使用。 它用于传递使用[Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego)定义的许可控制规则，以打开[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的[策略代理](https://www.openpolicyagent.org/)（OPA）。
 
 > [!NOTE]
-> [适用于 Kubernetes 的 Azure 策略](rego-for-aks.md)处于公共预览中, 仅支持内置策略定义。
+> [适用于 Kubernetes 的 Azure 策略](rego-for-aks.md)处于公共预览中，仅支持内置策略定义。
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy 评估
 
 开放策略代理许可控制器会实时评估群集上的任何新请求。
-每5分钟一次, 完成群集的完全扫描, 并报告给 Azure 策略的结果。
+每5分钟一次，完成群集的完全扫描，并报告给 Azure 策略的结果。
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy 属性
 
@@ -364,7 +455,7 @@ EnforceRegoPolicy 效果的**详细信息**属性具有描述 Rego 许可控制�
 
 ### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy 示例
 
-例如：Rego 许可控制规则, 只允许在 AKS 中指定容器映像。
+例如：Rego 许可控制规则，只允许在 AKS 中指定容器映像。
 
 ```json
 "if": {

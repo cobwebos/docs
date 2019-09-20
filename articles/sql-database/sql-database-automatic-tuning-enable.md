@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 457ee34daf368150a8703ea32a39b2350d654523
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 67a05d065cba8286c837487e21fc2f5be54e2c0b
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569428"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162347"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>启用自动优化以监视查询并提高工作负荷性能
 
@@ -25,7 +25,7 @@ Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识�
 可以通过 [Azure 门户](sql-database-automatic-tuning-enable.md#azure-portal)、[REST API](sql-database-automatic-tuning-enable.md#rest-api) 调用和 [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 命令在服务器或数据库级别启用自动优化。
 
 > [!NOTE]
-> 对于托管实例, 只能通过[t-sql](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management)配置受支持的 FORCE_LAST_GOOD_PLAN 选项。 本文中所述的基于门户的配置和自动索引优化选项不适用于托管实例。
+> 对于托管实例，支持的选项 FORCE_LAST_GOOD_PLAN 只能通过 [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) 进行配置。 本文中所述的基于门户的配置和自动索引优化选项不适用于托管实例。
 
 > [!NOTE]
 > 目前不支持通过 ARM（Azure 资源管理器）模板配置自动优化选项。
@@ -41,7 +41,7 @@ Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识�
 ![服务器](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> 请注意，此时 DROP_INDEX 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下启用。
+> 请注意，此时 DROP_INDEX 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下启用。 高级和业务关键服务层不支持删除未使用的索引。
 >
 
 选择想要启用的自动优化选项，然后选择“应用”。

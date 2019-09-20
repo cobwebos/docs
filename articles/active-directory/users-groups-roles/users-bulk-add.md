@@ -1,5 +1,5 @@
 ---
-title: 批量导入以在 Azure Active Directory 门户中添加用户（预览版） |Microsoft Docs
+title: 在 Azure Active Directory 门户中批量创建用户（预览） |Microsoft Docs
 description: 在 Azure AD 管理中心的 Azure Active Directory 中批量添加用户
 services: active-directory
 author: curtand
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a22052117448cdb71bbc16e1df7899e6d3eb764e
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 87c62cbe71f2e02c6f2c09620a8470a97ae57392
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901485"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146314"
 ---
-# <a name="bulk-import-users-preview-in-azure-active-directory"></a>Azure Active Directory 中的批量导入用户（预览）
+# <a name="bulk-create-users-preview-in-azure-active-directory"></a>批量创建用户（预览） Azure Active Directory
 
 Azure Active Directory （Azure AD）支持批量用户创建和删除操作，批量邀请来宾，并支持下载用户、组和组成员的列表。
 
@@ -37,6 +37,9 @@ Azure Active Directory （Azure AD）支持批量用户创建和删除操作，�
 1. 使用组织中的用户管理员帐户[登录到 Azure AD 组织](https://aad.portal.azure.com)。
 1. 在 Azure AD 中，选择 "**用户** > **批量创建**"。
 1. 在 "**批量创建用户**" 页上，选择 "**下载**" 以接收用户属性的有效逗号分隔值（CSV）文件，然后添加新用户。
+
+   ![CSV 文件包含要创建的用户的名称和 Id](./media/users-bulk-add/add-csv-file.png)
+
 1. 当你完成了 CSV 文件的编辑或者你拥有自己准备好上载的任何一个时，请选择 "**上传**要验证的 CSV 文件" 下的文件。
 
    ![选择要在其中列出你要添加的用户的本地 CSV 文件](./media/users-bulk-add/upload-button.png)

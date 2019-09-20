@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: f12c77a25bad9781d5f23b9563f6684997a2a6c4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 9299959eef24f6890218dc2d2aa733cc227e1a32
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002797"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162585"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 
@@ -345,6 +345,22 @@ aks_target = ComputeTarget.create(workspace=ws,
 ```
 
 创建过程完成后，可以在虚拟网络后面的 AKS 群集上运行推理或模型评分。 有关详细信息，请参阅[如何部署 AKS](how-to-deploy-to-aks.md)。
+
+## <a name="use-azure-firewall"></a>使用 Azure 防火墙
+
+使用 Azure 防火墙时，必须将网络规则配置为允许与以下地址之间的流量：
+
+- `*.batchai.core.windows.net`
+- `ml.azure.com`
+- `*.azureml.ms`
+- `*.experiments.azureml.net`
+- `*.modelmanagement.azureml.net`
+- `mlworkspace.azure.ai`
+- `*.aether.ms`
+
+添加规则时，将__协议__设置为 "任意"，将端口设置`*`为 "任何"。
+
+有关配置网络规则的详细信息，请参阅[部署和配置 Azure 防火墙](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule)。
 
 ## <a name="next-steps"></a>后续步骤
 

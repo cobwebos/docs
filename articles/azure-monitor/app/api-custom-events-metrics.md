@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: cdc16c2ea01d14edc236d0d6a0897e0dd9578924
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 776f20d04bb79fa42c78dba8482e8ba866c93b31
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909819"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162514"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -30,7 +30,7 @@ ms.locfileid: "70909819"
 
 核心 API 在所有平台中是统一的，只有少许差异，例如 `GetMetric`（仅限 .NET）。
 
-| 方法 | 用于 |
+| 方法 | 用途 |
 | --- | --- |
 | [`TrackPageView`](#page-views) |页面、屏幕、边栏选项卡或窗体。 |
 | [`TrackEvent`](#trackevent) |用户操作和其他事件。 用于跟踪用户行为或监视性能。 |
@@ -342,7 +342,7 @@ appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 
 可以：
 
-* 在 [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) 调用中设置显式持续时间：`appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`。
+* 在 [trackPageView](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview) 调用中设置显式持续时间：`appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`。
 * 使用页面视图计时调用 `startTrackPage` 和 `stopTrackPage`。
 
 *JavaScript*
@@ -1184,21 +1184,20 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 ## <a name="reference-docs"></a>参考文档
 
-* [ASP.NET 参考](https://msdn.microsoft.com/library/dn817570.aspx)
-* [Java 参考](http://dl.windowsazure.com/applicationinsights/javadoc/)
+* [ASP.NET 参考](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/insights?view=azure-dotnet)
+* [Java 参考](https://docs.microsoft.com/en-us/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript 参考](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-* [Android SDK](https://github.com/Microsoft/ApplicationInsights-Android)
-* [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
+
 
 ## <a name="sdk-code"></a>SDK 代码
 
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
-* [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Windows Server 包](https://github.com/Microsoft/applicationInsights-dotnet-server)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
-* [所有平台](https://github.com/Microsoft?utf8=%E2%9C%93&query=applicationInsights)
+
 
 ## <a name="questions"></a>问题
 

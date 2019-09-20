@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914777"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146464"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
 
@@ -88,14 +88,11 @@ ms.locfileid: "70914777"
 ### <a name="support-for-external-admin-takeover"></a>支持外部管理员接管
 以下联机服务支持外部管理员接管：
 
-- Power BI
 - Azure Rights Management
 - Exchange Online
 
 支持的服务计划包括：
 
-- Power BI 免费版
-- Power BI Pro
 - PowerApps 免费版
 - PowerFlow 免费版
 - 个人版 RMS
@@ -113,10 +110,6 @@ ms.locfileid: "70914777"
 当非托管租户位于不同区域时，密钥和模板不随之移动。 例如，如果非托管租户位于欧洲，并且你拥有的组织处于北美中。
 
 虽然个人版 RMS 旨在支持通过 Azure AD 身份验证来打开受保护的内容，但它不会阻止用户对内容也进行保护。 如果用户已通过个人 RMS 订阅保护内容，并且未移动密钥和模板，则在域接管后，不能访问该内容。
-
-#### <a name="more-information-about-power-bi"></a>有关 Power BI 的更多信息
-
-执行外部接管时，接管前创建的 Power BI 内容将放置在 [Power BI 存档工作区](/power-bi/service-admin-power-bi-archived-workspace)。 对于想要在新租户中使用的内容，必须手动迁移。
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>用于“ForceTakeover”选项的 Azure AD PowerShell cmdlet
 可以查看在 [PowerShell 示例](#powershell-example)中使用的这些 cmdlet。

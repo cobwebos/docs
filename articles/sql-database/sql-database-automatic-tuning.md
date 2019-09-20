@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: d782c2d9dff45dc152cab2246c95dda063bfd900
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b6c2885f0919752f7ede7f5a15121be2f8a953ca
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130391"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162322"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL 数据库中的自动优化
 
@@ -68,7 +68,7 @@ Azure SQL 数据库中可用的自动优化选项包括：
 | 自动优化选项 | 单一数据库和共用数据库支持 | 实例数据库支持 |
 | :----------------------------- | ----- | ----- |
 | **创建索引** - 标识可提高工作负载性能的索引，创建索引，并自动验证查询性能是否有所提高。 | 是 | 否 | 
-| **删除索引** - 每日识别冗余和重复的索引，但不包括唯一索引和长时间（>90 天）未使用的索引。 请注意，目前此选项与使用分区切换和索引提示的应用程序不兼容。 | 是 | 否 |
+| **删除索引** - 每日识别冗余和重复的索引，但不包括唯一索引和长时间（>90 天）未使用的索引。 请注意，此选项与使用分区切换和索引提示的应用程序不兼容。 高级和业务关键服务层不支持删除未使用的索引。 | 是 | 否 |
 | **强制执行上一卓越计划**（自动更正计划）- 标识使用执行计划的 SQL 查询（该执行计划速度慢于上一卓越计划），并标识使用上一已知卓越计划的查询而不是回归计划。 | 是 | 是 |
 
 自动优化确定可以优化数据库性能的“创建索引”、“删除索引”和“强制执行上一个卓越计划”建议，在 [Azure 门户](sql-database-advisor-portal.md)中显示它们，并通过 [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 和 [REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning) 公开它们。 若要详细了解如何强制执行最后一个良好计划和通过 T-sql 配置自动优化选项，请参阅[自动优化引入自动计划更正](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)。

@@ -4,7 +4,7 @@ description: 本文列出了一些关于 Microsoft Azure 云服务配应用程�
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0d70e52b77c7f34444ce12f84f17a5ed2d1afe46
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d229291793334964569f6c35eaec68a94ca6b69f
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941777"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154882"
 ---
-# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的应用程序和服务可用性问题:常见问题 (FAQ)
+# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的应用程序和服务可用性问题：常见问题 (FAQ)
 
 本文包括关于 [Microsoft Azure 云服务](https://azure.microsoft.com/services/cloud-services)应用程序和服务可用性问题的常见问题解答。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
 

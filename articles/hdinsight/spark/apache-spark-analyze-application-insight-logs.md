@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 846239c0122f3f2cadc40e7965ae690d4ba3e538
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 737b049aa94ede2ffb0c1035b4cadfbed32d7dc4
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899864"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145595"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>使用 HDInsight 上的 Apache Spark 分析 Application Insights 遥测日志
 
@@ -39,7 +39,7 @@ ms.locfileid: "70899864"
 
 下图演示了本示例的服务体系结构：
 
-![演示数据从 Application Insights 流向 Blob 存储，并使用 HDInsight 上的 Spark 进行处理的示意图](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
+![数据从 Application Insights 流动到 blob 存储，然后是 Spark](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
 ### <a name="azure-storage"></a>Azure 存储
 
@@ -72,7 +72,7 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集上的 Spark。 在“快速链接”部分中，选择“群集仪表板”，并从“群集仪表板”部分中选择“Jupyter Notebook”。
 
-    ![群集仪表板](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+    ![Azure 门户群集仪表板 pyspark](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
 
 2. 在 Jupyter 页面右上角选择“新建”，并选择“PySpark”。 此时会打开新浏览器选项卡，其中包含基于 Python 的 Jupyter 笔记本。
 
@@ -215,7 +215,8 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集上的 Spark。 在“快速链接”部分中，选择“群集仪表板”，并从“群集仪表板”部分中选择“Jupyter Notebook”。
 
-    ![群集仪表板](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+    ![Azure 门户群集仪表板 Scala](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+
 2. 在 Jupyter 页面右上角选择“新建”，并选择“Scala”。 此时会打开新浏览器选项卡，其中包含基于 Scala 的 Jupyter Notebook。
 3. 在页面上的第一个字段（称为“单元格”）中输入以下文本：
 

@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 689322614e2cea4e59a5a573b72bfeb2aafda847
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67173345"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71148370"
 ---
 下表列出了与不同服务层 S1、S2、S3 和 F1 关联的限制。 有关每个层中每个*单位*的成本的信息，请参阅[Azure IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
@@ -38,6 +38,7 @@ ms.locfileid: "67173345"
 | 云到设备的消息数上限 |64 KB |
 | 云到设备消息的最大 TTL |2 天 |
 | 云到设备消息的最大传送计数 <br/> 计数 |100 |
+| 每台设备的最大云到设备队列深度 |50 |
 | 反馈消息的最大传送计数 <br/> （响应云到设备消息时） |100 |
 | 反馈消息的最大 TTL <br/> （响应云到设备消息时） |2 天 |
 | [设备克隆的最大大小](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> （标记、报告的属性和所需属性） | 8 KB |

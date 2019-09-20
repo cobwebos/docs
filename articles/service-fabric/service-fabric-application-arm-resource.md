@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: atsenthi
-ms.openlocfilehash: 3810afa7ad00aa731751aa1f0bfe38d503de5850
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0bec430cbb98452f8c852c96053f3f699ce5098e
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953217"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71153585"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>将应用程序和服务作为 Azure 资源管理器资源进行管理
 
@@ -272,10 +272,10 @@ Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/provide
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>通过资源管理器管理现有应用程序
 
-如果群集已部署，且其上已部署一些要作为资源管理器资源进行管理的应用程序，可以使用相同的 API，将这些应用程序确定为资源管理器资源，从而执行 PUT 调用，而不用删除并重新部署应用程序。 
+如果群集已部署，且其上已部署一些要作为资源管理器资源进行管理的应用程序，可以使用相同的 API，将这些应用程序确定为资源管理器资源，从而执行 PUT 调用，而不用删除并重新部署应用程序。 有关其他信息，请参阅[什么是 Service Fabric 应用程序资源模型？](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
 
 > [!NOTE]
-> 若要允许群集升级以忽略不正常的应用, 客户可以指定 "maxPercentUnhealthyApplications:"upgradeDescription/healthPolicy" 节中的 "100";有关所有设置的详细说明, 请[参阅 Service fabric REST API 群集升级策略文档](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)。
+> 若要允许群集升级以忽略不正常的应用，客户可以指定 "maxPercentUnhealthyApplications："upgradeDescription/healthPolicy" 节中的 "100";有关所有设置的详细说明，请[参阅 Service fabric REST API 群集升级策略文档](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)。
 
 ## <a name="next-steps"></a>后续步骤
 

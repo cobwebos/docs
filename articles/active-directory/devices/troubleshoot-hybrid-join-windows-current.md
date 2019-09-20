@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 49658e3e57748ffb7542508530940aa5331f5db1
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995191"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162408"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>混合 Azure Active Directory 联接设备的故障排除 
 
@@ -110,7 +110,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 及更高版本
 
-在联接状态输出的 "诊断数据" 部分中查找 "以前的注册" 子节。
+在联接状态输出的 "诊断数据" 部分中查找 "以前的注册" 子节。 仅当设备已加入域并且无法 Azure AD 联接混合时, 才显示此部分。
 "错误阶段" 字段表示联接失败的阶段, 而 "客户端错误" 表示联接操作的错误代码。
 
 ```
@@ -181,7 +181,7 @@ WamDefaultAuthority: organizations
 
 ##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 及更高版本
 
-在联接状态输出的 "诊断数据" 部分中查找 "DRS 发现测试"。
+在联接状态输出的 "诊断数据" 部分中查找 "DRS 发现测试"。 仅当设备已加入域并且无法 Azure AD 联接混合时, 才显示此部分。
 
 ```
 +----------------------------------------------------------------------+
@@ -305,7 +305,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 及更高版本
 
-在联接状态输出的 "诊断数据" 部分中查找 "以前的注册" 子节。
+在联接状态输出的 "诊断数据" 部分中查找 "以前的注册" 子节。 仅当设备已加入域并且无法 Azure AD 联接混合时, 才显示此部分。
 "注册类型" 字段表示执行的联接类型。
 
 ```

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: c262d3841acd3497667c00a9deee04b304ddae76
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 74bff4059442c85cfcde589c5a6cc7ab36472881
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984821"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147042"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 群集在 Azure SQL 数据库中读取和写入数据
 
@@ -38,7 +38,7 @@ ms.locfileid: "70984821"
 1. 从 [Azure 门户网站](https://portal.azure.com/)打开群集。
 1. 选择右侧**群集仪表板**下方的 **Jupyter notebook**。  如果没有看到“群集仪表板”，请从左侧菜单中选择“概述”。 出现提示时，请输入群集的管理员凭据。
 
-    ![Spark 中的 Jupyter 笔记本](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 中的 Jupyter 笔记本")
+    ![Apache Spark 上的 Jupyter 笔记本](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 上的 Jupyter 笔记本")
    
    > [!NOTE]  
    > 也可以在浏览器中打开以下 URL 来访问 Spark 群集中的 Jupyter Notebook。 将 **CLUSTERNAME** 替换为群集的名称：
@@ -182,7 +182,7 @@ ms.locfileid: "70984821"
 
 1. 输出显示 **HVAC.csv** 的架构。 **hvactable** 也有相同的架构。 输出列出表中的列。
 
-    ![表的架构](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "表的架构")
+    ![hdinsight Apache Spark 架构表](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "表的架构")
 
 1. 最后，使用以下代码片段从 HVAC.csv 读取数据，并将其流式传输到 Azure SQL 数据库中的 **hvactable**。 在代码单元中粘贴该代码片段，并将占位符值替换为 Azure SQL 数据库的值，然后按 **SHIFT + ENTER** 运行。
 

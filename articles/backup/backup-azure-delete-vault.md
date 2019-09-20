@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 719f7f1c30a79b9057f25d6137423451cc606bfa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5f10bb2062d7c805b485d5cfbfe8989a6aee0995
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088419"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162200"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 
@@ -33,6 +33,9 @@ ms.locfileid: "71088419"
 
   ![删除受保护的服务器错误。](./media/backup-azure-delete-vault/error-message.jpg)
 
+- 如果备份项处于软删除状态，则将显示警告消息，并且必须等待，直到它们被永久删除。 有关详细信息，请参阅[此文章](https://aka.ms/SoftDeleteCloudWorkloads)。
+
+   ![删除保管库错误。](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
 若要删除保管库，请选择与你的设置相匹配的方案，并遵循建议的步骤：
 

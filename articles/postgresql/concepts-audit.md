@@ -6,19 +6,20 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 8b4cbe309e310ef1fc384224c952a6f04385b1dd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 198ab5f567652a76d209168041f305b9da4d0b43
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092256"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147173"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单服务器中的审核日志记录
 
 Azure Database for PostgreSQL 单服务器中的数据库活动的审核日志记录通过 PostgreSQL 审核扩展： [pgAudit](https://www.pgaudit.org/)提供。 pgAudit 提供详细的会话和/或对象审核日志记录。
 
 > [!NOTE]
-> 只能在常规用途和内存优化服务器上启用 pgAudit。
+> Azure Database for PostgreSQL 上的 pgAudit 处于预览阶段。
+> 只能在常规用途和内存优化服务器上启用该扩展。
 
 ## <a name="usage-considerations"></a>使用注意事项
 默认情况下，pgAudit log 语句使用 Postgres 的标准日志记录工具随常规日志语句一起发出。 在 Azure Database for PostgreSQL 中，可以通过 Azure 门户或 CLI 下载这些 .log 文件。 文件集合的最大存储空间为 1 GB，每个文件最多可达7天（默认值为3天）。 此服务是短期存储选项。

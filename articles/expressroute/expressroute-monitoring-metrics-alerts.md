@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 92ec03e20fb6e681a0afd14048449ad004ebca0c
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: dbe03ef29bd28d465fa671abc915d63d4b038cb2
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991480"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154767"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
 
@@ -23,59 +23,52 @@ ms.locfileid: "69991480"
 >建议不要使用**经典指标**。
 >
 
-## <a name="circuit-metrics"></a>线路指标
+## <a name="expressroute-metrics"></a>ExpressRoute 指标
 
-若要导航到“指标”，请单击要监视的线路的 ExpressRoute 页。 在“监视”下，可以查看**指标**。 从下面列出的指标中进行选择。 将应用默认聚合。 您也可以应用拆分, 这将显示具有不同尺寸的指标。
+若要查看**指标**，请导航到 " *Azure Monitor* " 页，然后单击 "*指标*"。 若要查看**expressroute**指标，请按资源类型*ExpressRoute 线路*查看文件服务器。 若要查看**Global Reach**度量值，请按资源类型*ExpressRoute 线路*进行筛选，然后选择已启用 Global Reach 的 expressroute 线路资源。 若要查看**Expressroute 直接**指标，请按*ExpressRoute 端口*筛选资源类型。 
 
-### <a name="metrics-available"></a>可用指标: 
-* **可用性** 
-    * Arp 可用性
-      * 可用维度:
-        * 对等机 (主/辅助 ExpressRoute 路由器)
-        * 对等互连类型 (Private/Public/Microsoft)
-    * Bgp 可用性
-      * 可用维度:
-        * 对等机 (主/辅助 ExpressRoute 路由器)
-        * 对等互连类型 (Private/Public/Microsoft)
-* **交易**
-    * BitsInPerSecond
-      * 可用维度:
-        * 对等互连类型 (Private/Public/Microsoft)
-    * BitsOutPerSecond
-      * 可用维度:
-        * 对等互连类型 (Private/Public/Microsoft)
-    * GlobalReachBitsInPerSecond
-      * 可用维度:
-        * 对等互连线路 Skey (服务密钥)
-    * GlobalReachBitsOutPerSecond
-      * 可用维度:
-        * 对等互连线路 Skey (服务密钥)
+选择度量值后，将应用默认聚合。 您也可以应用拆分，这将显示具有不同尺寸的指标。
 
+### <a name="available-metrics"></a>可用度量值
+|**指标**|**类别**|**维度**|**功能**|
+| --- | --- | --- | --- |
+|ARP 可用性|可用性|<ui><li>对等机（主/辅助 ExpressRoute 路由器）</ui></li><ui><li> 对等互连类型（Private/Public/Microsoft）</ui></li>|ExpressRoute|
+|Bgp 可用性|可用性|<ui><li> 对等机（主/辅助 ExpressRoute 路由器）</ui></li><ui><li> 对等类型</ui></li>|ExpressRoute|
+|BitsInPerSecond|流量|<ui><li> 对等互连类型（ExpressRoute）</ui></li><ui><li>链接（ExpressRoute 直接）</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
+|BitsOutPerSecond|流量| <ui><li>对等互连类型（ExpressRoute）</ui></li><ui><li> 链接（ExpressRoute 直接） | <ui><li>ExpressRoute<ui><li>ExpressRoute 直接</ui></li> |
+|GlobalReachBitsInPerSecond|流量|<ui><li>对等互连线路 Skey （服务密钥）</ui></li>|Global Reach|
+|GlobalReachBitsOutPerSecond|流量|<ui><li>对等互连线路 Skey （服务密钥）</ui></li>|Global Reach|
+|AdminState|物理连接|链接|ExpressRoute Direct|
+|LineProtocol|物理连接|链接|ExpressRoute Direct|
+|RxLightLevel|物理连接|<ui><li>连接</ui></li><ui><li>通道</ui></li>|ExpressRoute Direct|
+|TxLightLevel|物理连接|<ui><li>连接</ui></li><ui><li>通道</ui></li>|ExpressRoute Direct|
 >[!NOTE]
->仅当至少建立了一个 Global Reach 连接时, 才会显示使用*GlobalGlobalReachBitsInPerSecond*和*GlobalGlobalReachBitsOutPerSecond* 。
+>仅当至少建立了一个 Global Reach 连接时，才会显示使用*GlobalGlobalReachBitsInPerSecond*和*GlobalGlobalReachBitsOutPerSecond* 。
 >
 
-## <a name="bits-in-and-out---metrics-across-all-peerings"></a>所有对等互连中的位和出量指标
+## <a name="circuits-metrics"></a>线路指标
+
+### <a name="bits-in-and-out---metrics-across-all-peerings"></a>所有对等互连中的位和出量指标
 
 可以在给定 ExpressRoute 线路上的所有对等互连中查看度量值。
 
 ![线路指标](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
-## <a name="bits-in-and-out---metrics-per-peering"></a>每个对等互连中的位和出量指标
+### <a name="bits-in-and-out---metrics-per-peering"></a>每个对等互连中的位和出量指标
 
 可以查看专用、公共和 Microsoft 对等互连的指标（以位/秒为单位）。
 
 ![每个对等互连的指标](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
 
-## <a name="bgp-availability---split-by-peer"></a>BGP 可用性-按对等方拆分  
+### <a name="bgp-availability---split-by-peer"></a>BGP 可用性-按对等方拆分  
 
-可以查看跨对等互连和对等互连 (主要和辅助 ExpressRoute 路由器) 的 BGP 的近乎可用情况。 此仪表板显示专用对等互连的主 BGP 会话, 并为专用对等互连关闭第二个 BGP 会话。 
+可以查看跨对等互连和对等互连（主要和辅助 ExpressRoute 路由器）的 BGP 的近乎可用情况。 此仪表板显示专用对等互连的主 BGP 会话，并为专用对等互连关闭第二个 BGP 会话。 
 
 ![每个对等 BGP 可用性](./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg) 
 
-## <a name="arp-availability---split-by-peering"></a>ARP 可用性-按对等互连  
+### <a name="arp-availability---split-by-peering"></a>ARP 可用性-按对等互连  
 
-你可以查看跨对等互连和对等互连 (主和辅助 ExpressRoute 路由器) 的[ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager)的近乎可用情况。 此仪表板显示了在两个对等方上的专用对等 ARP 会话, 但在对等互连中针对 Microsoft 对等互连完成了。 在两个对等节点上使用了默认聚合 (平均值)。  
+你可以查看跨对等互连和对等互连（主和辅助 ExpressRoute 路由器）的[ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager)的近乎可用情况。 此仪表板显示了在两个对等方上的专用对等 ARP 会话，但在对等互连中针对 Microsoft 对等互连完成了。 在两个对等节点上使用了默认聚合（平均值）。  
 
 ![每个对等端的 ARP 可用性](./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg) 
 

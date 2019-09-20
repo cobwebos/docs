@@ -4,7 +4,7 @@ description: 本文列出了一些关于 Microsoft Azure 云服务配置和管�
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 480ca33f02242499bdf9fff3fa35695e7d4841a0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945474"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154724"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
@@ -207,7 +207,7 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 完成此过程后，可使用以下方法之一验证是否已启用 HTTP/2：
 
 - 在 IIS 日志中启用协议版本，并查看 IIS 日志。 日志中会显示 HTTP/2。 
-- 在 Internet Explorer/Microsoft Edge 中启用 F12 开发人员工具，并切换到“网络”选项卡来验证协议。 
+- 在 Internet Explorer 或 Microsoft Edge 中启用 F12 开发人员工具，并切换到 "网络" 选项卡来验证协议。 
 
 有关详细信息，请参阅 [IIS 上的 HTTP/2](https://blogs.iis.net/davidso/http2)。
 
@@ -281,7 +281,7 @@ Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用�
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>云服务 VM 上的驱动器为何显示可用磁盘空间不足？
 这是预期行为，应不会导致任何应用程序问题。 Azure PaaS VM 中的 %approot% 驱动器的日记功能启用后，基本上会占用文件通常所用空间的两倍。 但是请注意以下几点，从根本上看，此问题无足轻重。
 
-% Approot% 驱动器大小的计算公式为\<: .cspkg + 最大日志大小 + 可用空间的边距 > 或 1.5 GB, 取两者中较大者。 VM 的大小与此计算方法无关。 （VM 大小仅影响临时 C: 驱动器的大小） 
+% Approot% 驱动器大小的计算公式为\<： .cspkg + 最大日志大小 + 可用空间的边距 > 或 1.5 GB，取两者中较大者。 VM 的大小与此计算方法无关。 （VM 大小仅影响临时 C: 驱动器的大小） 
 
 不支持写入 %approot% 驱动器。 如果要写入 Azure VM，必须在临时 LocalStorage 资源（或其他选项，例如 Blob 存储、Azure 文件等）中执行此操作。 因此 %approot% 文件夹的可用空间没有意义。 如果不确定应用程序是否要写入 %approot% 驱动器，可以让服务持续运行几天，然后比较“之前”和“之后”的大小。 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD SSPR 和多重身份验证 (预览版) 的组合注册入门-Azure Active Directory
-description: 启用组合 Azure AD 多重身份验证和自助密码重置注册 (预览版)
+title: Azure AD SSPR 和多重身份验证（预览版）的组合注册入门-Azure Active Directory
+description: 启用组合 Azure AD 多重身份验证和自助密码重置注册（预览版）
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,46 +11,46 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55e3f073c1d22ef09784f699dc2decb0492d9edf
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b610a62e9ca9b964482638c2c0302461996c0bf2
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162295"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145678"
 ---
-# <a name="enable-combined-security-information-registration-preview"></a>启用组合安全信息注册 (预览)
+# <a name="enable-combined-security-information-registration-preview"></a>启用组合安全信息注册（预览）
 
-在启用新体验之前, 请查看[组合安全信息注册 (预览版)](concept-registration-mfa-sspr-combined.md)一文, 确保了解此功能的功能和影响。
+在启用新体验之前，请查看[组合安全信息注册（预览版）](concept-registration-mfa-sspr-combined.md)一文，确保了解此功能的功能和影响。
 
 ![组合的安全信息注册增强体验](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
 
 |     |
 | --- |
-| Azure 多重身份验证和 Azure Active Directory (Azure AD) 自助服务密码重置的组合安全信息注册是 Azure AD 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| Azure 多重身份验证和 Azure Active Directory （Azure AD）自助服务密码重置的组合安全信息注册是 Azure AD 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 > [!NOTE]
-> 为注册和管理安全信息而启用先前预览的组织应完成以下步骤, 以启用增强的预览体验。 对于在2019年9月25日未做出此切换的组织, Microsoft 将切换先前预览的用户, 以将安全信息注册和管理到增强体验。 
+> 为注册和管理安全信息而启用先前预览的组织应完成以下步骤，以启用增强的预览体验。 对于未在2019年10月8日发出交换机的组织，Microsoft 将切换先前预览的用户，以便向增强体验注册和管理安全信息。 
 > 
-> 如果你尚未启用任何版本的预览版, 你的组织不会受到影响。
+> 如果你尚未启用任何版本的预览版，你的组织不会受到影响。
 
 ## <a name="enable-combined-registration"></a>启用合并注册
 
-完成以下步骤以启用组合注册:
+完成以下步骤以启用组合注册：
 
 1. 以用户管理员或全局管理员身份登录到 Azure 门户。
 2. 中转到**Azure Active Directory** > "**用户设置** >  **" "管理访问面板预览功能的设置"** 。
-3. 在 "**用户可以使用预览功能注册和管理安全信息-刷新**" 下, 选择为**选定**的一组用户或为**所有**用户启用。
+3. 在 "**用户可以使用预览功能注册和管理安全信息-刷新**" 下，选择为**选定**的一组用户或为**所有**用户启用。
 
    ![为所有用户启用组合的安全信息预览体验](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
 
 > [!IMPORTANT]
-> 从2019年3月开始, 电话呼叫选项不能用于多重身份验证和 SSPR Azure AD 的用户。 SMS 消息不受此更改的影响。 电话呼叫选项将仍然可供付费 Azure AD 租户中的用户使用。
+> 从2019年3月开始，电话呼叫选项不能用于多重身份验证和 SSPR Azure AD 的用户。 SMS 消息不受此更改的影响。 电话呼叫选项将仍然可供付费 Azure AD 租户中的用户使用。
 
 > [!NOTE]
-> 启用组合注册后, 如果在多重身份验证和 SSPR 中启用了这些方法, 则通过新体验注册或确认其电话号码或移动应用的用户可将其用于多重身份验证和 SSPR。政策. 如果你随后禁用这一体验, 则需要访问上一 SSPR 注册页面的`https://aka.ms/ssprsetup`用户在访问该页面之前需要执行多重身份验证。
+> 启用组合注册后，如果在多重身份验证和 SSPR 中启用了这些方法，则通过新体验注册或确认其电话号码或移动应用的用户可将其用于多重身份验证和 SSPR。政策. 如果你随后禁用这一体验，则需要访问上一 SSPR 注册页面的`https://aka.ms/ssprsetup`用户在访问该页面之前需要执行多重身份验证。
 
-如果已在 Internet Explorer 中将 "站点到区域分配" 列表配置为 "区域分配", 则以下站点必须位于同一区域中:
+如果已在 Internet Explorer 中将 "站点到区域分配" 列表配置为 "区域分配"，则以下站点必须位于同一区域中：
 
 * [https://login.microsoftonline.com](https://login.microsoftonline.com)
 * [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
@@ -58,23 +58,23 @@ ms.locfileid: "70162295"
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>组合注册的条件性访问策略
 
-使用条件性访问策略中的用户操作, 可以保护用户注册 Azure 多重身份验证和自助密码重置的时间和方式。 此预览功能适用于启用了[组合注册预览](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 在需要用户在 HR 载入期间从中心位置注册 Azure 多重身份验证和 SSPR (如受信任的网络位置) 的组织中, 可能会启用此功能。 有关在条件性访问中创建受信任位置的详细信息, 请参阅文章[Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)
+使用条件性访问策略中的用户操作，可以保护用户注册 Azure 多重身份验证和自助密码重置的时间和方式。 此预览功能适用于启用了[组合注册预览](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 在需要用户在 HR 载入期间从中心位置注册 Azure 多重身份验证和 SSPR （如受信任的网络位置）的组织中，可能会启用此功能。 有关在条件性访问中创建受信任位置的详细信息，请参阅文章[Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>创建需要从受信任位置注册的策略
 
-以下策略适用于所有选定的用户, 这些用户尝试使用组合注册体验进行注册, 并阻止访问, 除非它们从标记为受信任网络的位置进行连接。
+以下策略适用于所有选定的用户，这些用户尝试使用组合注册体验进行注册，并阻止访问，除非它们从标记为受信任网络的位置进行连接。
 
 ![创建用于控制安全信息注册的 CA 策略](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
 
-1. 在**Azure 门户**中, 浏览到**Azure Active Directory** > **条件访问**
+1. 在**Azure 门户**中，浏览到**Azure Active Directory** > **条件访问**
 1. 选择“新建策略”
-1. 在 "名称" 中, 输入此策略的名称。 例如,**受信任的网络上的合并安全信息注册**
-1. 在 "**分配**" 下, 单击 "**用户和组**", 然后选择你想要将此策略应用到的用户和组
+1. 在 "名称" 中，输入此策略的名称。 例如，**受信任的网络上的合并安全信息注册**
+1. 在 "**分配**" 下，单击 "**用户和组**"，然后选择你想要将此策略应用到的用户和组
 
    > [!WARNING]
    > 必须为用户启用[组合注册预览](../authentication/howto-registration-mfa-sspr-combined.md)。
 
-1. 在 "**云应用或操作**" 下, 选择 "**用户操作**", 然后选中 "**注册安全信息 (预览版)** "
+1. 在 "**云应用或操作**" 下，选择 "**用户操作**"，然后选中 "**注册安全信息（预览版）** "
 1. **条件**位置 > 
    1. 配置**是**
    1. 包含**任何位置**

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216316249197071bdd7a175dfc5339caeddee50a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086830"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162421"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -103,7 +103,7 @@ ms.locfileid: "71086830"
 
 在条件访问策略中，可以配置[客户端应用](conditions.md#client-apps)条件，以将策略绑定到发起访问尝试的客户端应用。 设置客户端应用条件，在用户尝试从以下类型的客户端应用进行访问时授予其访问权限或阻止访问：
 
-- 浏览者
+- Browser
 - 移动应用和桌面应用
 
 ![控制客户端应用的访问](./media/technical-reference/03.png)
@@ -145,7 +145,7 @@ ms.locfileid: "71086830"
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | 姓名 | 1 |
-| 类型 | REG_SZ (String) |
+| type | REG_SZ (String) |
 | Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
 
 对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
@@ -246,7 +246,6 @@ ms.locfileid: "71086830"
 此设置适用于以下客户端应用：
 
 - Microsoft Cortana
-- Microsoft Edge
 - Microsoft OneDrive
 - Microsoft Outlook
 - Microsoft Planner

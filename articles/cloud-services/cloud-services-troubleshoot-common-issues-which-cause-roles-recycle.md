@@ -4,7 +4,7 @@ description: 突然回收的云服务角色可能会导致严重停机。 以下
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 37abdae07c1b0ecc11d39c57b550b1c7f60c73cd
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 554508b1bf784e306cd12a4a601f908e06320933
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945421"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154977"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>导致角色回收的常见问题
 本文讨论部署问题的一些常见原因，并提供故障排除技巧以帮助你解决这些问题。 当角色实例无法启动，或者在“正在初始化”、“忙”和“正在停止”状态之间循环时，则指示应用程序存在问题。

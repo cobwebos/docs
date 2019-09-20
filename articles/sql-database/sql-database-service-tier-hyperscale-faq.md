@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 3f64bce34a1bdb11bdbebb99fe28cdf3ff16dfb8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 8c35877c7de2fa89a8fe7a94c11787814183df9e
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128707"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162252"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>关于 Azure SQL“超大规模”数据库的常见问题解答
 
@@ -361,6 +361,11 @@ IOPS 和 IO 延迟根据工作负荷模式而异。  如果需要访问的数据
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>如何连接到这些次要计算节点
 
 将连接字符串的 `ApplicationIntent` 参数设置为 `readonly`，即可连接到这些额外的只读计算节点。 任何标记为 `readonly` 的连接均自动路由到某个额外的只读计算节点。  
+
+### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-node-using-ssms--other-client-tools"></a>如何实现验证是否已使用 SSMS/其他客户端工具成功连接到辅助计算节点？
+
+你可以使用 SSMS/其他客户端工具执行以下 T-sql 查询： `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`。
+如果连接指向`READ_ONLY`只读辅助节点，或者`READ_WRITE`如果连接指向主节点，则结果为。
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>能不能为读取扩展副本创建专用终结点
 

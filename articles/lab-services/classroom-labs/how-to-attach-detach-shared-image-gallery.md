@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d8f16baccd3a4980ee9dbe410cb2a95878b346d4
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f3006dd3f474dea1add1621f35f902422e244ce1
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390025"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161541"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 实验室服务中附加或分离共享映像库
 教师/实验室管理员可以在 Azure[共享映像库](../../virtual-machines/windows/shared-image-galleries.md)中保存模板 VM 映像，使其可供其他人重复使用。 作为第一步，实验室管理员将现有的共享映像库附加到实验室帐户。 附加共享映像库后，在实验室帐户中创建的实验室可以将映像保存到共享映像库。 其他教师可以从共享图像库中选择此映像，以创建其类的模板。 
@@ -26,7 +26,8 @@ ms.locfileid: "70390025"
 本文介绍如何将共享映像库附加到实验室帐户或将其分离。 
 
 > [!NOTE]
-> 若要了解与共享映像库服务相关的成本，请参阅[共享图像库的帐单](../../virtual-machines/windows/shared-image-galleries.md#billing)。
+> 将映像保存到共享映像库时，Azure 实验室服务会将已保存的映像复制到相同[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中可用的其他区域。 它确保映像可用于在同一地理区域中的其他区域创建的实验室。 将映像保存到共享映像库会产生额外的费用，其中包括所有复制映像的成本。 此成本不同于 Azure 实验室服务的使用成本。 有关共享映像库定价的详细信息，请参阅[共享图像库–计费]( https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries#billing)。
+
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>创建实验室帐户时进行配置
 创建实验室帐户时，可以将共享映像库附加到实验室帐户。 可以从下拉列表中选择现有的共享映像库，也可以创建一个新的。 若要创建共享映像库并将其附加到实验室帐户，请选择 "**新建**"，输入库的名称，然后输入 **"确定"** 。 

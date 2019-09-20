@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: e18fc040249954ce7ea6a8a686e121a4b56fb54a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9bcbfe1bdb501cac6ff31156db5382d1174eb8ad
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312122"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146838"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 
@@ -23,7 +23,7 @@ ms.locfileid: "68312122"
 
 ## <a name="policies"></a>策略
 
-可以使用 [Azure Policy ](../governance/policy/overview.md)来强制实施标记规则和约定。 通过创建策略，可以避免将与预期的组织标记不相符的资源部署到订阅。 无需手动应用标记或搜索不符合的资源，可以创建一个策略，在部署期间自动应用所需标记。 以下部分展示标记策略示例。
+可以使用 [Azure Policy ](../governance/policy/overview.md)来强制实施标记规则和约定。 通过创建策略，可以避免将与预期的组织标记不相符的资源部署到订阅。 无需手动应用标记或搜索不符合的资源，可以创建一个策略，在部署期间自动应用所需标记。 现在，还可以使用新的[修改](../governance/policy/concepts/effects.md#modify)效果和[修正任务](../governance/policy/how-to/remediate-resources.md)将标记应用到现有资源。 以下部分展示标记策略示例。
 
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
@@ -359,9 +359,9 @@ done
 }
 ```
 
-### <a name="apply-tags-from-resource-group"></a>从资源组应用标记
+### <a name="apply-tags-from-resource-group"></a>应用资源组中的标记
 
-若要将资源组中的标记应用于资源, 请使用[resourceGroup](resource-group-template-functions-resource.md#resourcegroup)函数。 获取标记值时, 请使用`tags.[tag-name]`语法而不是`tags.tag-name`语法, 因为在点表示法中, 某些字符不能正确解析。
+若要将资源组中的标记应用于资源，请使用 [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) 函数。 获取标记值时，请使用 `tags.[tag-name]` 语法而不是 `tags.tag-name` 语法，因为有些字符在点表示法中无法正确解析。
 
 ```json
 {

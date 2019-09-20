@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 09/20/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2eff9c0edf6797c08d0ef9732c903a81a6c764a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 27c38b23849eef535b17657f48c1c50cc998f72f
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70861176"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155008"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -78,6 +78,12 @@ ms.locfileid: "70861176"
 * 安全组和 Office 365 组所有者，可以管理组成员身份。 这些组可能会授予对 Azure AD 或其他位置敏感或私有信息或关键配置的访问权限。
 * Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
 * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
+
+### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Azure DevOps 管理员](#azure-devops-administrator-permissions)
+
+具有此角色的用户可以管理 Azure DevOps 策略，以将新的 Azure DevOps 组织创建限制为一组可配置的用户或组。 此角色中的用户可以通过任何 Azure AD 公司组织的 Azure DevOps 组织来管理此策略。
+
+此角色中的用户可以管理所有企业 Azure DevOps 策略。
 
 ### <a name="azure-information-protection-administratorazure-information-protection-administrator-permissions"></a>[Azure 信息保护管理员](#azure-information-protection-administrator-permissions)
 
@@ -309,7 +315,7 @@ In | 有权执行的操作
 In | 有权执行的操作
 --- | ---
 [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务监视与安全相关的策略<br>管理安全威胁和警报<br>查看报告
-Identity Protection 中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
+标识保护中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | 安全读取者角色的所有权限<br>无法管理 Azure AD 角色分配或设置
 [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 管理安全策略<br>查看、调查和响应安全威胁<br>查看报告
 Azure 高级威胁防护 | 监视和响应可疑安全活动
@@ -326,7 +332,7 @@ Windows Defender ATP 和 EDR | 分配角色<br>管理计算机组<br>配置终�
 In | 有权执行的操作
 --- | ---
 [Microsoft 365 安全中心](https://protection.office.com) | 安全读取者角色的所有权限<br>查看、调查和响应安全威胁警报
-Identity Protection 中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
+标识保护中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | 安全读取者角色的所有权限
 [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 安全读取者角色的所有权限<br>查看、调查和响应安全警报
 Windows Defender ATP 和 EDR | 安全读取者角色的所有权限<br>查看、调查和响应安全警报
@@ -341,7 +347,7 @@ Windows Defender ATP 和 EDR | 安全读取者角色的所有权限<br>查看、
 In | 有权执行的操作
 --- | ---
 [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务查看与安全相关的策略<br>查看安全威胁和警报<br>查看报告
-Identity Protection 中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>加密<li>数据丢失预防<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
+标识保护中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>加密<li>数据丢失预防<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | 对 Azure AD Privileged Identity Management 中显示的所有信息具有只读访问权限：Azure AD 角色分配和安全检查的策略和报表。<br>**无法**注册 Azure AD Privileged Identity Management 或对其进行任何更改。 在 Privileged Identity Management 门户中或通过 PowerShell，此角色中的用户可以激活其他角色（例如，全局管理员或特权角色管理员）（如果用户有资格获得）。
 [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 查看安全策略<br>查看并调查安全威胁<br>查看报告
 Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defender ATP 中启用基于角色的访问控制时，具有只读权限（如 Azure AD 安全读者角色）的用户在分配到 Windows Defender ATP 角色之前将失去访问权限。
@@ -491,6 +497,19 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 | microsoft. 目录/用户/密码/更新 | 更新 Office 365 组织中所有用户的密码。 有关详细信息，请参阅联机文档。 |
+
+### <a name="azure-devops-administrator-permissions"></a>Azure DevOps 管理员权限
+
+可管理 Azure DevOps 组织策略和设置。
+
+> [!NOTE]
+> 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的[角色说明](#azure-devops-administrator)。
+>
+>
+
+| **操作** | **说明** |
+| --- | --- |
+| devOps/allEntities/allTasks | 阅读并配置 Azure DevOps。 |
 
 ### <a name="azure-information-protection-administrator-permissions"></a>Azure 信息保护管理员权限
 
@@ -1499,13 +1518,13 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 Azure 信息保护管理员 | Azure 信息保护管理员 | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C 用户流管理员 | B2C 用户流管理员 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 B2C 用户流属性管理员 | B2C 用户流属性管理员 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
-B2C IEF 键集管理员 | B2C IEF 键集管理员 | aaf43236-0c0d-4d5f-883a-6955382ac081
+B2C IEF 密钥集管理员 | B2C IEF 密钥集管理员 | aaf43236-0c0d-4d5f-883a-6955382ac081
 B2C IEF 策略管理员 | B2C IEF 策略管理员 | 3edaf663-341e-4475-9f94-5c398ef6c070
-帐务管理员 | 帐务管理员 | b0f54661-2d74-4c50-afa3-1ec803f12efe
+计费管理员 | 计费管理员 | b0f54661-2d74-4c50-afa3-1ec803f12efe
 云应用程序管理员 | 云应用程序管理员 | 158c047a-c907-4556-b7ef-446551a6b5f7
 云设备管理员 | 云设备管理员 | 7698a772-787b-4ac8-901f-60d6b08affd2
 公司管理员 | 全局管理员 | 62e90394-69f5-4237-9190-012177145e10
-合规性管理员 | 符合性管理员 | 17315797-102d-40b4-93e0-432062caca18
+符合性管理员 | 符合性管理员 | 17315797-102d-40b4-93e0-432062caca18
 合规性数据管理员 | 合规性数据管理员 | e6d1a23a-da11-4be4-9570-befc86d067a7
 条件访问管理员 | 条件访问管理员 | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
 CRM 服务管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f96a
@@ -1517,7 +1536,7 @@ CRM 服务管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f
 设备用户 | 设备用户 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 目录读取者 | 目录读取者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 目录同步帐户 | 目录同步帐户 | d29b2b05-8046-44ba-8758-1e26182fcf32
-目录编写者 | 目录写入者 | 9360feb5-f418-4baa-8175-e2a00bac4301
+目录写入者 | 目录写入者 | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部标识提供者管理员 | 外部标识提供者管理员 | be2f45a1-457d-42af-a067-6ec1fa63bc45
 来宾邀请者 | 来宾邀请者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
@@ -1542,11 +1561,11 @@ Power BI 服务管理员 | Power BI 管理员 | a9ea8996-122f-4c74-9520-8edcd192
 安全读取者 | 安全读者 | 5d6b6bb7-de71-4623-b4af-96380a352509
 服务支持管理员 | 服务管理员 | f023fd81-a637-4b56-95fd-791ac0226033
 SharePoint 服务管理员 | SharePoint 管理员 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
-Teams Communications 管理员 | Teams Communications 管理员 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
-Teams Communications 支持工程师 | Teams Communications 支持工程师 | f70938a0-fc10-4177-9e90-2178f8765737
-Teams Communications 支持专员 | Teams Communications 支持专员 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
+Teams 通信管理员 | Teams 通信管理员 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
+Teams 通信支持工程师 | Teams 通信支持工程师 | f70938a0-fc10-4177-9e90-2178f8765737
+Teams 通信支持专员 | Teams 通信支持专员 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2a7a8
-用户 | 用户 | a0b1b346-4d3e-4e8b-98f8-753987be4970
+“用户” | “用户” | a0b1b346-4d3e-4e8b-98f8-753987be4970
 用户帐户管理员 | 用户管理员 | fe930be7-5e62-47db-91af-98c3a49a38b1
 工作区设备联接 | 工作区设备加入 | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
@@ -1558,7 +1577,7 @@ Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2
 * 设备联接
 * 设备管理器
 * 设备用户
-* 电子邮件验证的用户创建者
+* 电子邮件验证的用户创建程序
 * 邮箱管理员
 * 工作区设备联接
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: 64bf8f5c8de5f56ee1140e91d0472a33b35570cf
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d8cb8fdebb5a7e4bcbc9f979c98085e90ebd4c68
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878798"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147159"
 ---
 # <a name="handling-event-grid-events"></a>处理事件网格事件
 
@@ -38,6 +38,9 @@ ms.locfileid: "68878798"
 * 同样，检查 eventType 是否为准备处理的项，并且不假定所接收的全部事件都是期望的类型。
 * 忽略不了解的字段。  此做法有助于适应将来可能添加的新功能。
 * 使用“subject”前缀和后缀匹配项，将事件限制为特定事件。
+
+> [!NOTE]
+> 事件取决于事件网格[服务级别协议（SLA）](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)。 如果要使用 Api 获取事件通知，请参阅使用[.NET sdk](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/ContentProtection/BasicAESClearKey)或[Java sdk](https://github.com/Azure-Samples/media-services-v3-java/tree/master/ContentProtection/BasicAESClearKey)时如何使用事件的示例。
 
 ## <a name="next-steps"></a>后续步骤
 

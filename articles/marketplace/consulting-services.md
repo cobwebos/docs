@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 4986f888abca94549e921bfe5400d68f6d28c01f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bc2be73f85ebec7785b9aa06d6152447eee7e33e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876691"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147290"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 的咨询服务
 Azure 市场和 AppSource 中的咨询服务使 Microsoft 合作伙伴可实现将客户与服务相连以支持和扩展他们对 Azure 的使用的目标以及业务目标。 
@@ -24,18 +24,20 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure 市场中的咨询服务和 AppSource 店面
 市场店面与受众需求和 Microsoft 云产品的特点相匹配，从而帮助客户找到所需产品。 每个店面都提供专门的发布选项来帮助你最大程度地优化发布投资。 下表汇总了这些选项：
 
-|         |Azure 市场  |AppSource |
+|         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
 |**受众**   |**IT 专业人员和云开发人员**|**业务用户/业务线决策者**|
 |解决方案相关性     |为 Azure 构建或在其上构建的技术应用|利用 Extend D365、Power BI、O365 和 Azure 的业务应用。 （已完成的外接程序或附加设备应用）|
-|发布选项     |联系我、试用、事务处理或咨询服务|联系我、试用或咨询服务|
+|发布选项     |与我联系、试用、事务或 Azure 服务|与我、试用或服务联系以获取 Dynamics 365 和 Power BI|
 |在产品体验中      |Azure 管理门户|Dynamics 365、Office 365、Office 客户端应用| 
-|其他      |通过 Azure Stack 本地发布|针对 Dynamics 和 Power BI 的咨询服务|
+|其他      |通过 Azure Stack 的本地发布，Azure 的咨询服务，Azure 托管服务|针对 Dynamics 和 Power BI 的咨询服务|
 
-基于 Microsoft Dynamics 365、Office 365 和 Power BI 的服务产品可以列在 AppSource 中。 有关详细信息，请参阅 [Microsoft AppSource 咨询服务列出准则](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)。 
+基于 Microsoft Dynamics 365 和 Power BI 的咨询服务产品/服务可在 Microsoft AppSource 上列出。 有关详细信息，请参阅 [Microsoft AppSource 咨询服务列出准则](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)。 
+
+基于可以在 Azure Marketplace 上列出的 Microsoft Azure 的咨询服务和托管服务产品/服务。 有关详细信息，请参阅有关[发布 azure 咨询服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)和将[托管服务产品发布到 Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)的文章。
 
 > [!Note]
-> Azure 市场中的咨询服务应利用为**技术人员提供的产品，着重于 Azure 技术解决方案和服务  。 ** AppSource 中的咨询服务应利用面向其在为 Dynamics 365、Power BI 或 PowerApps 提供高质量解决方案方面的专业知识的产品，在 AppSource 上列出其咨询服务
+> Azure 市场中的咨询服务应利用为**技术人员提供的产品，着重于 Azure 技术解决方案和服务。 ** AppSource 中的咨询服务应利用面向其在为 Dynamics 365、Power BI 或 PowerApps 提供高质量解决方案方面的专业知识的产品，在 AppSource 上列出其咨询服务
 > 
 > 
 > [!TIP]
@@ -43,9 +45,9 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 
 ## <a name="eligible-partners-and-supported-countriesregions"></a>符合条件的合作伙伴和受支持的国家/地区
 
-合作伙伴需要在其服务的相关领域拥有银级或金级资质  。 
+合作伙伴需要在其服务的相关领域拥有银级或金级资质。 
 
-下表列出了 Azure 市场的合格资质： 
+下表列出了 Azure 市场的合格资质：
 
 |资质  |解决方案领域  |
 |---------|---------|
@@ -54,7 +56,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 |数据管理和分析    |  数据分析、数据平台       |
 
 
-下表列出了 AppSource 的合格资质： 
+下表列出了 AppSource 的合格资质：
 
 |主产品 |合格要求 |
 |---------|---------|
@@ -100,7 +102,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 |新产品设置  |
 |---------|
 |产品/服务名称（200 个字符）和说明（2000 个字符）    |
-|资质     |
+|特色     |
 |国家/区域可用性     |
 |参与持续时间     |
 |适用的行业、类别和搜索关键字     |
@@ -128,7 +130,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 * **概念证明**：进行有限范围的实施，以确定解决方案是否满足客户的要求。 
 * **研讨会**：在客户场地开展的交互式活动。 可以涉及到培训、简报、评估，或根据客户数据或环境制作的演示。 
 
-**注意：** 可以面对面地（即，在客户的位置或者合作伙伴的设施中现场进行）或者以虚拟形式（即，通过电话会议、网络会议或远程实施）提供咨询服务，但这一点不适用于“简报”服务类型  。 简报必须面对面提供。
+**注意：** 可以面对面地（即，在客户的位置或者合作伙伴的设施中现场进行）或者以虚拟形式（即，通过电话会议、网络会议或远程实施）提供咨询服务，但这一点不适用于“简报”服务类型。 简报必须面对面提供。
 
 当你配置好上面列出的所需元素以后，内容审核团队会验证你的产品/服务描述所提供的信息对于目标受众来说是否足够充分。 
 
@@ -136,7 +138,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 
 标题字段有一个 50 字符的限制，必须指出产品/服务的持续时间和服务类型，以最大限度地优化搜索引擎。 所需格式如下：名称：持续时间类型
 
-示例：
+例如：
 
 
 |标题示例  |正确格式  |

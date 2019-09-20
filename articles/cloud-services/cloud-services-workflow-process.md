@@ -4,7 +4,7 @@ description: 本文概述部署服务时的工作流过程。
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: Willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 383f4d26d44871936ccc910f15575db5aec3ec8c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945326"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162149"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure 经典 VM 体系结构的工作流 
 本文概述当你部署或更新虚拟机等 Azure 资源时发生的工作流过程。 
@@ -37,15 +37,16 @@ ms.locfileid: "68945326"
 
 **B**. 结构控制器负责维护和监视数据中心内的所有资源。 它与结构 OS 上的、发送来宾 OS 版本、服务包、服务配置和服务状态等信息的结构主机代理通信。
 
-**C**. 主机代理驻留在主机 OSsystem 上，负责设置来宾 OS，并与来宾代理 (WindowsAzureGuestAgent) 通信，以便将角色更新到预期的目标状态，并使用来宾代理执行检测信号检查。 如果主机代理有 10 分钟未收到检测信号响应，则主机代理会重启来宾 OS。
+**C**. 主机代理位于主机操作系统上，负责设置来宾操作系统并与来宾代理通信（WindowsAzureGuestAgent），以便将角色更新为目标状态，并使用来宾代理进行检测信号检查。 如果主机代理有 10 分钟未收到检测信号响应，则主机代理会重启来宾 OS。
 
 **C2**. WaAppAgent 负责安装、配置和更新 WindowsAzureGuestAgent.exe。
 
 **D**.  WindowsAzureGuestAgent 负责：
 
-1. 配置来宾 OS，包括防火墙、ACL、LocalStorage 资源、服务包、配置和证书。设置运行角色的用户帐户的 SID。
-2. 向结构传达角色状态。
-3. 启动并监视 WaHostBootstrapper，以确保角色处于目标状态。
+1. 配置来宾 OS，包括防火墙、Acl、LocalStorage 资源、服务包和配置以及证书。
+2. 为角色将在其下运行的用户帐户设置 SID。
+3. 向结构传达角色状态。
+4. 启动并监视 WaHostBootstrapper，以确保角色处于目标状态。
 
 **E**. WaHostBootstrapper 负责：
 
@@ -60,7 +61,7 @@ ms.locfileid: "68945326"
 3. 为服务模型中配置的角色设置 AppPool
 4. 将 IIS 日志记录设置为指向 DiagnosticStore LocalStorage 文件夹
 5. 配置权限和 ACL
-6. 网站驻留在 %roleroot%:\sitesroot\0 中，apppool 指向此位置以运行 IIS。 
+6. 网站位于% roleroot%： \sitesroot\0 中，AppPool 指向此位置以运行 IIS。 
 
 **G**. 启动任务由角色模型定义，由 WaHostBootstrapper 启动。 启动任务可配置为以异步方式在后台运行，主机启动程序将启动启动任务，然后继续启动其他启动任务。 启动任务还可以配置为以简单（默认）模式运行，在此模式下，主机启动程序将等待启动任务完成运行，然后返回成功 (0) 退出代码，接着继续启动下一个启动任务。
 
@@ -76,7 +77,7 @@ ms.locfileid: "68945326"
 
 ## <a name="workflow-processes"></a>工作流过程
 
-1. 用户发出请求（例如上传 .cspkg 和 .cscfg 文件），告知要停止某个资源或做出配置更改，等等。 可以通过 Azure 门户或者某个使用服务管理 API 的工具（例如 Visual Studio 发布功能）来执行此操作。 此请求将转到 RDFE，以执行所有订阅相关的工作，然后将请求传达给 FFE。 剩余的工作流步骤是部署并启动新包。
+1. 用户发出请求，如上传 ".cspkg" 和 ".cscfg" 文件、告诉资源停止或进行配置更改等。 可以通过 Azure 门户或者某个使用服务管理 API 的工具（例如 Visual Studio 发布功能）来执行此操作。 此请求将转到 RDFE，以执行所有订阅相关的工作，然后将请求传达给 FFE。 剩余的工作流步骤是部署并启动新包。
 2. FFE 查找正确的计算机池（根据客户的输入，例如地缘组或地理位置；以及结构提供的输入，例如计算机可用性），并与该计算机池中的主结构控制器通信。
 3. 结构控制器查找具有可用 CPU 核心的主机（或运转新主机）。 服务包和配置将复制到主机，结构控制器与主机 OS 上的主机代理通信，以部署包（配置 DIP、端口、来宾 OS，等等）。
 4. 主机代理启动来宾 OS 并与来宾代理 (WindowsAzureGuestAgent) 通信。 主机将检测信号发送到来宾，以确保角色实现其目标状态。
@@ -85,7 +86,7 @@ ms.locfileid: "68945326"
 7. WaHostBootstrapper 从 E:\RoleModel.xml 读取**启动**任务，并开始执行启动任务。 WaHostBootstrapper 等到所有简单启动任务已完成并返回了“成功”消息。
 8. 对于完整 IIS Web 角色，WaHostBootstrapper 将告知 IISConfigurator 配置 IIS AppPool 并将站点指向 `E:\Sitesroot\<index>`，其中，`<index>` 是为服务定义的 `<Sites>` 元素数目的从 0 开始的索引。
 9. WaHostBootstrapper 将根据角色类型启动主机进程：
-    1. **辅助角色**：WaWorkerHost.exe 已启动。 WaHostBootstrapper 执行 OnStart() 方法。返回后，WaHostBootstrapper 开始执行 Run() 方法，同时将角色标记为 Ready，并将其放入负载均衡器轮换阵容（如果已定义 InputEndpoints）。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
+    1. **辅助角色**：WaWorkerHost.exe 已启动。 WaHostBootstrapper 执行 OnStart() 方法。 返回后，Wahostbootstrapper.exe 开始执行 Run （）方法，然后将该角色同时标记为 "就绪"，并将其放入负载均衡器循环（如果定义了 InputEndpoints）。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
     1. **SDK 1.2 HWC Web 角色**：WaWebHost 已启动。 WaHostBootstrapper 执行 OnStart() 方法。 返回后，WaHostBootstrapper 开始执行 Run() 方法，同时将角色标记为 Ready，并将其放入负载均衡器轮换阵容。 WaWebHost 发出预热请求 (GET /do.rd_runtime_init)。 所有 Web 请求将发送到 WaWebHost.exe。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
     1. **完整 IIS Web 角色**：aIISHost 已启动。 WaHostBootstrapper 执行 OnStart() 方法。 返回后，它开始执行 Run() 方法，同时将角色标记为 Ready，并将其放入负载均衡器轮换阵容。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
 10. 将 Web 请求传入完整 IIS Web 角色会触发 IIS 来启动 W3WP 进程并为请求提供服务，像在本地 IIS 环境中一样。

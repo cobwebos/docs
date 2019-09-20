@@ -3,16 +3,16 @@ title: 策略定义结构的详细信息
 description: 介绍 Azure Policy 如何使用资源策略定义，通过描述何时强制实施策略和要实现的效果为组织中的资源建立约定。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: d7e264bda62753693cdd2333625313cf213f142a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239186"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145569"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -398,6 +398,7 @@ Azure Policy 支持以下类型的效果：
 - **DeployIfNotExists**：如果资源不存在，则部署一个资源
 - **Disabled**：不评估资源是否符合策略规则
 - **EnforceRegoPolicy**：在 Azure Kubernetes Service （预览版）中配置开放策略代理招生控制器
+- **修改**：添加、更新或删除资源中定义的标记
 
 对于 **append**，必须提供以下详细信息：
 
@@ -424,6 +425,8 @@ AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并�
     ]
 }
 ```
+
+同样， **Modify**需要用于[修正任务](../how-to/remediate-resources.md)的策略规则的**详细信息**部分中的**roleDefinitionId**属性。 **修改**还要求**操作**数组定义要对资源标记执行的操作。
 
 有关每种效果、评估顺序、属性和示例的完整详细信息，请参阅[了解 Azure Policy 效果](effects.md)。
 

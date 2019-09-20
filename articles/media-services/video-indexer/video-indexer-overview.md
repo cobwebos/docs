@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: juliako
-ms.openlocfilehash: a30fa858ea7befa2363e0ac2742e16d46037d0e0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
-ms.translationtype: HT
+ms.openlocfilehash: a4b7ccf6ece8ed40d6f6c6a22410d4bbe99e590a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123513"
+ms.locfileid: "71146475"
 ---
 # <a name="what-is-video-indexer"></a>什么是视频索引器？
 
@@ -54,10 +54,13 @@ Azure 媒体服务视频索引器是基于 Azure 认知服务构建的 AI 解决
 * **黑帧检测**：识别视频中的黑帧。
 * **关键帧提取**：检测视频中稳定的关键帧。
 * **滚动信用**：标识电视节目和电影末尾的滚动信用的开始和结束。
+* **动画字符检测**（预览版）：通过与[认知服务自定义视觉](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)集成，检测、分组和识别动画内容中的字符。 有关详细信息，请参阅[动画字符检测](animated-characters-recognition.md)。
+* **编辑快照类型检测**：根据照片的类型（如宽拍、中、下、近、近近、两次拍摄、多个人、户外和室内等）来标记照片。 有关详细信息，请参阅[编辑快照类型检测](scenes-shots-keyframes.md#editorial-shot-type-detection)。
 
 ### <a name="audio-insights"></a>音频见解
 
 * **自动语言检测**：自动识别主导性的讲述语言。 支持的语言包括英语、西班牙语、法语、德语、意大利语、简体中文、日语、俄语和巴西葡萄牙语。 如果无法自信地识别该语言，视频索引器将假定说语言为英语。 有关详细信息，请参阅[语言标识模型](language-identification-model.md)。
+* **多语言语音识别和脚本**（预览）：在音频中自动标识不同段中的口述语言，发送要转录的媒体文件的每个段并将其合并回一个统一的脚本。 有关详细信息，请参阅[自动识别和转录多语言内容](multi-language-identification-transcription.md)。
 * **音频听录**：将语音转换为 12 种语言的文本并允许扩展。 支持的语言包括英语、西班牙语、法语、德语、意大利语、简体中文、日语、阿拉伯语、俄语、巴西葡萄牙语、印地语和朝鲜语。
 * **隐藏式字幕**：以三种格式创建隐藏式字幕：VTT、TTML、SRT。
 * **双通道处理**：自动检测、隔离脚本及合并到单个时间线。
@@ -75,6 +78,7 @@ Azure 媒体服务视频索引器是基于 Azure 认知服务构建的 AI 解决
 通过一个通道编制索引时，这些模型的部分结果将可用
 
 * **关键字提取**：从语音和视觉文本中提取关键字。
+* **命名实体提取**：通过自然语言处理（NLP）从语音和视觉文本中提取品牌、位置和人物。
 * **品牌提取**：从语音和视觉文本中提取品牌。
 * **主题推理**：根据脚本推理主要主题。 包括第一级 IPTC 分类。
 * **项目**：提取每个模型的丰富的“下一种详细程度”项目。

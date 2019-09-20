@@ -1,6 +1,6 @@
 ---
-title: Azure Functions 错误处理指南 | Microsoft Docs
-description: 提供有关如何处理函数执行时发生的错误的常规指南，并链接到特定于绑定的错误主题。
+title: Azure Functions 错误处理指南
+description: 了解如何处理 Azure Functions 中的错误以及指向特定绑定错误的链接。
 services: functions
 cloud: ''
 documentationcenter: ''
@@ -9,26 +9,28 @@ manager: gwallace
 ms.assetid: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 09/11/2019
 ms.author: cshoe
-ms.openlocfilehash: fdfee3442986322f242da730bb9ceccbc9f9e250
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d301940998175adb6469e46cff2de918b5cae9df
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097489"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155283"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions 错误处理
 
-本主题提供有关如何处理函数执行时发生的错误的常规指南。 对于可能会发生的特定于绑定的错误，它还提供指向说明这些错误的主题的链接。 
+在 Azure Functions 中处理错误对于避免丢失数据、丢失事件以及监视应用程序的运行状况非常重要。
 
-## <a name="handling-errors-in-functions"></a>处理函数中的错误
+本文介绍了用于错误处理的常规策略以及指向绑定特定错误的链接。
+
+## <a name="handling-errors"></a>处理错误
+
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
- 
 ## <a name="binding-error-codes"></a>绑定错误代码
 
-与 Azure 服务集成时，可能会引发来源于底层服务 API 的错误。 有关这些服务的错误代码文档的链接，可以在以下触发器和绑定参考主题的**异常和返回代码**部分中找到：
+与 Azure 服务集成时，错误可能源自基础服务的 Api。 以下文章的 "**异常" 和 "返回代码**" 部分提供了与特定于绑定的错误相关的信息：
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 

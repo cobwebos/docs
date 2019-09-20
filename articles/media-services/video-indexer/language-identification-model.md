@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: 843b92d3fe34d592b39cd86ece447fef2ff9af67
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 729ac9fc7c8ec6a85b3497c51888d3b5a6fc8558
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931117"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147194"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>通过语言标识模型自动标识口述语言
 
@@ -53,7 +53,7 @@ ms.locfileid: "70931117"
 * 如果音频包含除以上支持的列表之外的其他语言，则结果为意外的结果。
 * 如果视频索引器无法识别出足够置信度（`>0.6`）的语言，则回退语言为英语。
 * 对于带有混合语言音频的文件没有当前支持。 如果音频包含混合语言，则结果为意外的结果。 
-* 低质量音频苛刻可能会影响模型结果。
+* 低质量音频可能会影响模型结果。
 * 该模型在音频中要求至少一分钟的语音。
 * 该模型用于识别自发对话语音（非语音命令、唱歌等）。
 
