@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910121"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128689"
 ---
 ::: zone target="chromeless"
 
@@ -89,11 +89,7 @@ ms.locfileid: "70910121"
 3. 将标签粘贴在盒子上。 
 4. 打开链接 https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference ，在线预约取件。 
 
-### <a name="in-japan-koreatabin-japan-korea"></a>[在日本、韩国](#tab/in-japan-korea)
-
-下面是适用于日本和韩国的取件说明。
-
-#### <a name="pick-up-in-japan"></a>在日本取件
+### <a name="in-japantabin-japan"></a>[在日本](#tab/in-japan)
 
 1. 在托运单上写下公司名称和地址信息作为发件人信息。
 2. 使用以下电子邮件模板将电子邮件发送给 Quantium Solution。
@@ -120,7 +116,7 @@ ms.locfileid: "70910121"
 - 电子邮件：Customerservice.JP@quantiumsolutions.com 
 - 电话：03-5755-0150 
 
-#### <a name="pick-up-in-korea"></a>在韩国取件
+### <a name="in-koreatabin-korea"></a>[在韩国](#tab/in-korea)
 
 1. 请务必附上退还托运单。
 2. 若要在提供有托运单的情况下请求取件，请执行以下操作：

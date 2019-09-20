@@ -129,6 +129,8 @@
           href: move-across-regions-external-load-balancer-portal.md
         - name: 外部负载均衡器 - PowerShell
           href: move-across-regions-external-load-balancer-powershell.md
+        - name: 内部负载均衡器 - 门户
+          href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部负载均衡器 - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: 故障排除
