@@ -92,6 +92,10 @@
           href: create-certificate-scenarios.md
 - name: 操作指南
   items:
+    - name: 安全
+      items:
+        - name: 建议
+          href: security-recommendations.md
     - name: 使用应用服务托管标识
       href: managed-identity.md
     - name: Azure Key Vault 日志记录

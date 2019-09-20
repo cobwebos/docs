@@ -31,6 +31,8 @@
               href: sdk-csharp-quick-start.md
             - name: 使用 Python
               href: sdk-python-quickstart.md
+            - name: 使用 Java
+              href: sdk-java-quickstart.md
 - name: 教程
   items:
     - name: 构建自定义搜索网页
