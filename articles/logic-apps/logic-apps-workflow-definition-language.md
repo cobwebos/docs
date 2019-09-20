@@ -79,11 +79,11 @@ ms.locfileid: "68385349"
 
 | 特性 | 必填 | 类型 | 描述 |
 |-----------|----------|------|-------------|
-| <*参数-名称*> | 是 | String | 要定义的参数的名称 |
+| <*parameter-name*> | 是 | String | 要定义的参数的名称 |
 | <*parameter-type*> | 是 | int、float、string、bool、array、object、securestring、secureobject <p><p>**注意**：对于所有密码、密钥和机密, 请使用`securestring`或`secureobject`类型, 因为`GET`操作不返回这些类型。 有关保护参数的详细信息, 请参阅[操作和输入参数的安全建议](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 | 参数的类型 |
-| <*默认值-参数-值*> | 是 | 与 `type` 相同 | 在工作流实例化时, 如果未指定任何值, 则使用默认参数值。 `defaultValue`属性是必需的, 以便逻辑应用设计器可以正确地显示参数, 但你可以指定一个空值。 |
+| <*default-parameter-value*> | 是 | 与 `type` 相同 | 在工作流实例化时, 如果未指定任何值, 则使用默认参数值。 `defaultValue`属性是必需的, 以便逻辑应用设计器可以正确地显示参数, 但你可以指定一个空值。 |
 | <*array-with-permitted-parameter-values*> | 否 | 阵列 | 包含参数可接受的值的数组 |
-| <*参数-说明*> | 否 | JSON 对象 | 任何其他参数详细信息, 如参数的说明 |
+| <*parameter-description*> | 否 | JSON 对象 | 任何其他参数详细信息, 如参数的说明 |
 ||||
 
 接下来, 为工作流定义创建[Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md), 定义接受部署时所需值的模板参数, 将对模板或工作流定义参数的引用替换为适当的, 并在单独的[参数文件](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)中存储要在部署时使用的值。 这样, 就可以更轻松地通过参数文件更改这些值, 而无需更新和重新部署逻辑应用。 对于敏感或必须保护的信息 (例如用户名、密码和机密), 可以将这些值存储在 Azure Key Vault 中, 并让参数文件从密钥保管库中检索这些值。 有关在模板和工作流定义级别定义参数的详细信息和示例, 请[参阅概述:利用 Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)自动部署逻辑应用。
