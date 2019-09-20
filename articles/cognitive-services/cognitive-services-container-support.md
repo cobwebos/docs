@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 8/21/2019
 ms.author: dapine
-ms.openlocfilehash: ae4b4b13e81bc000bc0675c80c09101cc4369bc1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: eac9264a98c6224af56618e439a1cd3f00f7157c
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130130"
+ms.locfileid: "71146819"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure 认知服务中的容器支持
 
@@ -49,7 +49,7 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 | 服务 | 支持的定价层 | 容器 | 描述 |
 |---------|----------|----------|-------------|
 |[异常检测器][ad-containers] |F0、S0|**异常检测器** |通过异常检测器 API，可使用机器学习监视和检测时序数据中的异常。<br>[请求访问权限](https://aka.ms/adcontainer)|
-|[计算机视觉][cv-containers] |F0、S1|**读取** |从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。 读取容器还检测图像中的*手写文本*，并提供 PDF/TIFF/多页面支持。<br/><br/>**重要提示：** 识别文本容器目前仅适用于英语。<br>[请求访问权限](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[计算机视觉][cv-containers] |F0、S1|**读取** |从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。 读取容器还检测图像中的*手写文本*，并提供 PDF/TIFF/多页面支持。<br/><br/>**重要提示：** Read 容器当前仅适用于英语。<br>[请求访问权限](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[计算机视觉][cv-containers] |F0、S1|**识别文本** |从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。<br/><br/>**重要提示：** 识别文本容器目前仅适用于英语。<br>[请求访问权限](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[人脸][fa-containers] |F0、S0|**人脸** |检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。<br>[请求访问权限](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[表单识别器][fr-containers] |F0、S0|**表单识别器** |表单理解应用机器学习技术从表单中识别和提取键值对和表。<br>[请求访问权限](https://aka.ms/FormRecognizerContainerRequestAccess)|
