@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/20/2019
 ms.author: dapine
-ms.openlocfilehash: 9d1a6ab698ceb6ac1c0a4fc635b5a8fe1e68b0c6
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: b15ab7be5467d35b774dce643d6bb3910560ae01
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102039"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172326"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
-语言理解 (LUIS) 容器可将已训练或已发布的语言理解模型（也称为 [LUIS 应用](https://www.luis.ai)）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回语言理解应用以提高应用的预测准确性。
+语言理解（LUIS）容器语言理解模型中加载已定型或已发布的模型。 作为[LUIS 应用](https://www.luis.ai)，docker 容器提供对容器的 API 终结点中查询预测的访问。 可从容器中收集查询日志，并将其上传回语言理解的应用，以提高应用的预测准确性。
 
 以下视频演示如何使用此容器。
 
@@ -30,13 +30,13 @@ ms.locfileid: "71102039"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要运行 LUIS 容器，必须具有以下各项： 
+若要运行 LUIS 容器，请注意以下先决条件：
 
 |必填|用途|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|Azure `Cognitive Services` 资源和 LUIS [打包应用](luis-how-to-start-new-app.md#export-app-for-containers)文件 |若要使用容器，必须具有：<br><br>* 一项_认知服务_ Azure 资源，以及关联的计费密钥和计费终结点 URI。 这两个值都可以在资源的“概述”和“密钥”页上找到，并且是启动容器所必需的。 需将 `luis/v2.0` 路由添加到终结点 URI，如以下 BILLING_ENDPOINT_URI 示例所示。 <br>* 已训练或已发布的应用，作为已安装的输入打包到具有其关联的应用 ID 的容器。 可以通过 LUIS 门户或创作 API 获取打包文件。 若要通过[创作 API](#authoring-apis-for-package-file) 获得 LUIS 打包应用，还将需要_创作密钥_。<br><br>这些要求用于将命令行参数传递到以下变量：<br><br>**{AUTHORING_KEY}** ：此密钥用于从云中的 LUIS 服务获取打包的应用并将查询日志上传回云。 格式为 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APPLICATION_ID}** ：此 ID 用于选择应用。 格式为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{API_KEY}** ：此密钥用于启动容器。 可以在两个位置找到终结点密钥。 第一个是 Azure 门户的“认知服务”资源的密钥列表。 也可以在 LUIS 门户的“密钥和终结点”设置页上找到终结点密钥。 请勿使用初学者密钥。<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点。<br><br>[创作密钥和终结点密钥](luis-boundaries.md#key-limits)具有不同的用途。 请勿互换使用。 |
+|Azure `Cognitive Services` 资源和 LUIS [打包应用](luis-how-to-start-new-app.md#export-app-for-containers)文件 |若要使用容器，必须具有：<br><br>* 一项_认知服务_ Azure 资源，以及关联的计费密钥和计费终结点 URI。 这两个值都可以在资源的“概述”和“密钥”页上找到，并且是启动容器所必需的。 <br>* 已训练或已发布的应用，作为已安装的输入打包到具有其关联的应用 ID 的容器。 可以通过 LUIS 门户或创作 API 获取打包文件。 若要通过[创作 API](#authoring-apis-for-package-file) 获得 LUIS 打包应用，还将需要_创作密钥_。<br><br>这些要求用于将命令行参数传递到以下变量：<br><br>**{AUTHORING_KEY}** ：此密钥用于从云中的 LUIS 服务获取打包的应用并将查询日志上传回云。 格式为 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APPLICATION_ID}** ：此 ID 用于选择应用。 格式为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{API_KEY}** ：此密钥用于启动容器。 可以在两个位置找到终结点密钥。 第一个是 Azure 门户的“认知服务”资源的密钥列表。 也可以在 LUIS 门户的“密钥和终结点”设置页上找到终结点密钥。 请勿使用初学者密钥。<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点。<br><br>[创作密钥和终结点密钥](luis-boundaries.md#key-limits)具有不同的用途。 请勿互换使用。 |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -57,7 +57,7 @@ ms.locfileid: "71102039"
 
 |容器| 最低要求 | 建议 | TPS<br>(最小值, 最大值)|
 |-----------|---------|-------------|--|
-|LUIS|单核，2-GB 内存|单核，4-GB 内存|20,40|
+|LUIS|单核，2-GB 内存|单核，4-GB 内存|20, 40|
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 * TPS - 每秒事务数
@@ -109,9 +109,9 @@ LUIS 容器需要已训练或已发布的 LUIS 应用才能回复用户话语的
 
 |包类型|查询终结点 API|查询可用性|包文件名格式|
 |--|--|--|--|
-|训练完成|获取、发布|仅容器|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|暂存|获取、发布|Azure 和容器|`{APPLICATION_ID}_STAGING.gz`|
-|生产|获取、发布|Azure 和容器|`{APPLICATION_ID}_PRODUCTION.gz`|
+|训练完成|GET、POST|仅容器|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|过渡|GET、POST|Azure 和容器|`{APPLICATION_ID}_STAGING.gz`|
+|生产|GET、POST|Azure 和容器|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
 > 请勿重命名、更改、覆盖或解压缩 LUIS 包文件。
@@ -170,12 +170,12 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 
 | 占位符 | ReplTest1 |
 |-------------|-------|
-|{APPLICATION_ID} | 已发布 LUIS 应用的应用程序 ID。 |
-|{APPLICATION_ENVIRONMENT} | 已发布 LUIS 应用的环境。 使用以下值之一：<br/>`PRODUCTION`<br/>`STAGING` |
-|{AUTHORING_KEY} | 已发布 LUIS 应用的 LUIS 帐户的创作密钥。<br/>可以从 LUIS 门户的“用户设置”页面中获取创作密钥。 |
-|{AZURE_REGION} | 相应的 Azure 区域：<br/><br/>`westus` - 美国西部<br/>`westeurope` - 西欧<br/>`australiaeast` - 澳大利亚东部 |
+| **{APPLICATION_ID}** | 已发布 LUIS 应用的应用程序 ID。 |
+| **{APPLICATION_ENVIRONMENT}** | 已发布 LUIS 应用的环境。 使用以下值之一：<br/>`PRODUCTION`<br/>`STAGING` |
+| **{AUTHORING_KEY}** | 已发布 LUIS 应用的 LUIS 帐户的创作密钥。<br/>可以从 LUIS 门户的“用户设置”页面中获取创作密钥。 |
+| **{AZURE_REGION}** | 相应的 Azure 区域：<br/><br/>`westus` - 美国西部<br/>`westeurope` - 西欧<br/>`australiaeast` - 澳大利亚东部 |
 
-若要下载已发布的包, 请参阅[此处的 API 文档][download-published-package]。 如果下载成功，响应是一个 LUIS 包文件。 将文件保存在为容器的输入装入点指定的存储位置中。 
+若要下载已发布的包，请参阅[此处的 API 文档][download-published-package]。 如果下载成功，响应是一个 LUIS 包文件。 将文件保存在为容器的输入装入点指定的存储位置中。 
 
 ### <a name="export-trained-apps-package-from-api"></a>通过 API 导出已训练的应用包
 
@@ -189,12 +189,12 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 
 | 占位符 | ReplTest1 |
 |-------------|-------|
-|{APPLICATION_ID} | 已训练 LUIS 应用程序的应用程序 ID。 |
-|{APPLICATION_VERSION} | 已训练 LUIS 应用程序的应用程序版本。 |
-|{AUTHORING_KEY} | 已发布 LUIS 应用的 LUIS 帐户的创作密钥。<br/>可以从 LUIS 门户的“用户设置”页面中获取创作密钥。  |
-|{AZURE_REGION} | 相应的 Azure 区域：<br/><br/>`westus` - 美国西部<br/>`westeurope` - 西欧<br/>`australiaeast` - 澳大利亚东部 |
+| **{APPLICATION_ID}** | 训练的 LUIS 应用的应用程序 ID。 |
+| **{APPLICATION_VERSION}** | 训练的 LUIS 应用的应用程序版本。 |
+| **{AUTHORING_KEY}** | 已发布 LUIS 应用的 LUIS 帐户的创作密钥。<br/>可以从 LUIS 门户的“用户设置”页面中获取创作密钥。 |
+| **{AZURE_REGION}** | 相应的 Azure 区域：<br/><br/>`westus` - 美国西部<br/>`westeurope` - 西欧<br/>`australiaeast` - 澳大利亚东部 |
 
-若要下载训练的包, 请参阅[此处的 API 文档][download-trained-package]。 如果下载成功，响应是一个 LUIS 包文件。 将文件保存在为容器的输入装入点指定的存储位置中。 
+若要下载训练的包，请参阅[此处的 API 文档][download-trained-package]。 如果下载成功，响应是一个 LUIS 包文件。 将文件保存在为容器的输入装入点指定的存储位置中。 
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
 
@@ -247,12 +247,12 @@ ApiKey={API_KEY}
 
 |包类型|方法|路由|查询参数|
 |--|--|--|--|
-|已发布|[获取](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)、[发布](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>&staging<br>[&timezoneOffset]<br>[&verbose]<br>[&log]<br>|
-|训练完成|获取、发布|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[&verbose]<br>[&log]|
+|已发布|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)、 [POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>&staging<br>[&timezoneOffset]<br>[&verbose]<br>[&log]<br>|
+|训练完成|GET、POST|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[&verbose]<br>[&log]|
 
 查询参数配置查询响应的返回方式以及返回内容：
 
-|查询参数|类型|用途|
+|查询参数|type|用途|
 |--|--|--|
 |`q`|string|用户的话语。|
 |`timezoneOffset`|number|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
@@ -286,7 +286,7 @@ curl -X GET \
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>导入终结点日志以供主动学习
 
-如果为 LUIS 容器指定了输出装入点，则应用查询日志文件将保存在输出目录中，其中 {INSTANCE_ID} 是容器 ID。 应用查询日志包含提交到 LUIS 容器的每个预测查询的查询、响应和时间戳。 
+如果为 LUIS 容器指定了输出装入，则应用查询日志文件将保存在输出目录中，其中`{INSTANCE_ID}`是容器 ID。 应用查询日志包含提交到 LUIS 容器的每个预测查询的查询、响应和时间戳。 
 
 以下位置显示了容器的日志文件的嵌套目录结构。
 ```
@@ -311,7 +311,7 @@ curl -X GET \
 
 如果运行启用了输出[装入点](luis-container-configuration.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。 
 
-## <a name="billing"></a>帐单
+## <a name="billing"></a>账单
 
 LUIS 容器使用 Azure 帐户中的认知服务资源向 Azure 发送账单信息。 
 
@@ -330,7 +330,7 @@ LUIS 容器使用 Azure 帐户中的认知服务资源向 Azure 发送账单信�
 
 ## <a name="unsupported-dependencies-for-latest-container"></a>不支持的 `latest` 容器依赖项
 
-如果 LUIS 应用有不受支持的依赖项，则在删除这些不受支持的功能之前，无法[针对容器进行导出](#export-packaged-app-from-luis)。 尝试针对容器进行导出时，LUIS 门户会报告需删除的不受支持的功能。
+若要[导出容器](#export-packaged-app-from-luis)，必须从 LUIS 应用中删除不受支持的依赖项。 尝试导出容器时，LUIS 门户会报告需要删除的这些不受支持的功能。
 
 如果 LUIS 应用程序不包括以下任何依赖项，则可以使用该应用程序：
 
