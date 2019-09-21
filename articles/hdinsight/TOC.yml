@@ -271,6 +271,14 @@
           href: ./spark/apache-spark-ipython-notebook-machine-learning.md
         - name: 在 IntelliJ 中创建 Apache Spark 应用
           href: ./spark/apache-spark-create-standalone-application.md
+    - name: 概念
+      items:
+        - name: HDInsight 上的 Spark 最佳做法
+          href: ./spark/spark-best-practices.md
+        - name: 配置 Apache Spark 设置
+          href: ./spark/apache-spark-settings.md
+        - name: 优化 Apache Spark 作业
+          href: ./spark/apache-spark-perf.md
     - name: 如何
       items:
         - name: 使用工具
@@ -323,10 +331,6 @@
               href: ./spark/apache-spark-resource-manager.md
             - name: 使用扩展历史记录服务器管理 Apache Spark 应用程序
               href: ./spark/apache-azure-spark-history-server.md
-            - name: 配置 Apache Spark 设置
-              href: ./spark/apache-spark-settings.md
-            - name: 优化 Apache Spark 作业
-              href: ./spark/apache-spark-perf.md
             - name: 使用 IO 缓存启用缓存
               href: ./spark/apache-spark-improve-performance-iocache.md
             - name: 将笔记本与 Apache Spark 配合使用

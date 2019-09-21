@@ -239,17 +239,17 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: 文档链接
           href: cognitive-search-resources-documentation.md
-    - name: 知识存储（预览版）
-      items:
-        - name: 在 Azure 门户中创建知识库
-          href: knowledge-store-create-portal.md
-        - name: 使用 REST 和 Postman 创建
-          href: knowledge-store-howto.md
-        - name: 使用存储资源管理器进行查看
-          href: knowledge-store-view-storage-explorer.md
-        - name: 使用 Power BI 进行连接
-          href: knowledge-store-connect-power-bi.md
-    - name: 查询数据
+        - name: 知识存储（预览版）
+          items:
+            - name: 在 Azure 门户中创建知识库
+              href: knowledge-store-create-portal.md
+            - name: 使用 REST 和 Postman 创建
+              href: knowledge-store-howto.md
+            - name: 使用存储资源管理器进行查看
+              href: knowledge-store-view-storage-explorer.md
+            - name: 使用 Power BI 进行连接
+              href: knowledge-store-connect-power-bi.md
+    - name: 查询文档
       items:
         - name: 创建基本查询
           href: search-query-overview.md
@@ -265,7 +265,7 @@
           href: search-query-lucene-examples.md
         - name: moreLikeThis（预览版）
           href: search-more-like-this.md
-    - name: 使用筛选器
+    - name: 应用筛选器
       items:
         - name: 筛选器概述
           href: search-filters.md
@@ -283,18 +283,14 @@
       items:
         - name: 与页相关的功能
           href: search-pagination-page-layout.md
-    - name: 相关性优化
-      items:
-        - name: 添加评分配置文件
+        - name: 相关性调整（计分配置文件）
           href: index-add-scoring-profiles.md
-    - name: 管理
+    - name: 管理和监视
       items:
         - name: 门户管理
           href: search-manage.md
         - name: PowerShell 管理
           href: search-manage-powershell.md
-    - name: 监视
-      items:
         - name: 监视活动和日志记录
           href: search-monitor-usage.md
         - name: 搜索流量分析

@@ -128,12 +128,18 @@
           href: dealing-with-duplicates.md
     - name: 监视
       items:
+        - name: 使用诊断日志监视引入
+          href: using-diagnostic-logs.md
         - name: 使用指标来监视群集运行状况
           href: using-metrics.md
     - name: 与其他工具集成
       items:
-        - name: 使用 Azure 数据工厂模板批量复制数据
-          href: data-factory-template.md
+        - name: Azure 数据工厂
+          items:
+            - name: 使用 Azure 数据工厂模板批量复制数据
+              href: data-factory-template.md
+            - name: 使用 Azure 数据工厂运行控制命令
+              href: data-factory-command-activity.md
         - name: Apache Spark 连接器
           href: spark-connector.md
         - name: 使用 Python 从 Databricks 连接

@@ -89,6 +89,8 @@
           href: authentication-scenarios.md
         - name: 身份验证流和应用方案
           href: authentication-flows-app-scenarios.md
+        - name: 标识平台最佳做法
+          href: identity-platform-integration-checklist.md
         - name: 应用程序方案
           items:
             - name: 登录受众
@@ -217,8 +219,6 @@
                   href: scenario-mobile-call-api.md
                 - name: 移到生产环境
                   href: scenario-mobile-production.md
-            - name: 集成清单
-              href: identity-platform-integration-checklist.md
         - name: Microsoft 身份验证库 (MSAL)
           items:
             - name: 概述

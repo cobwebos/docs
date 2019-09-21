@@ -1,113 +1,133 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 语言理解 (LUIS) 文档
+summary: 了解如何使用语言理解服务使应用程序可以理解用户以自己的语言表达的内容。
 metadata:
-  document_id: null
-  title: 语言理解 (LUIS) - 教程、快速入门、API 参考
-  description: 了解如何使用语言理解服务使应用程序可以理解用户以自己的语言表达的内容。
+  ms.topic: landing-page
+  ms.date: 09/19/2019
+  ms.author: nitinme
   author: nitinme
-  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: language-understanding
-  ms.topic: landing-page
-  ms.date: 01/23/2019
-  ms.author: nitinme
-abstract:
+  services: cognitive-services
+  title: 语言理解 (LUIS) 文档
+  titleSuffix: Azure Cognitive Services
   description: 语言理解服务 (LUIS) 使应用程序可以理解用户以自己的语言表达的内容。 LUIS 使用机器学习，使开发人员可以构建应用程序，以便接收采用自然语言的用户输入并从中提取含义。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/luis-landing-page-video.png
-      width: 250
-    title: 'LUIS 新增功能 (18:28)'
-    href: 'https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/luis/what-is-luis
-            html: <p>了解语言理解服务 (LUIS)。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什么是 LUIS？
-          - href: /azure/cognitive-services/luis/luis-how-plan-your-app
-            html: <p>准备与应用相关的意向和实体的大纲。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: 计划 LUIS 应用
-          - href: /azure/cognitive-services/luis/luis-concept-best-practices
-            html: <p>在创建 LUIS 应用时请遵循这些最佳做法。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: LUIS 应用的最佳做法
-  - title: 5 分钟快速入门
-    items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo_csharp.svg
-          - image:
-              src: media/index/logo_java.svg
-          - image:
-              src: media/index/logo_nodejs.svg
-          - image:
-              src: media/index/logo_python.svg
-        rows:
-          - title: 终结点 API
-            values:
-              - href: luis-get-started-cs-get-intent
-              - href: luis-get-started-java-get-intent
-              - href: luis-get-started-node-get-intent
-              - href: luis-get-started-python-get-intent
-          - title: 创作 API
-            values:
-              - href: luis-get-started-cs-add-utterance
-              - href: luis-get-started-java-add-utterance
-              - href: luis-get-started-node-add-utterance
-              - href: luis-get-started-python-add-utterance
-  - title: 分步教程
-    items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="luis-quickstart-intents-only">构建人力资源 (HR) 领域的应用</a>
-          - html: <a href="luis-tutorial-prebuilt-intents-entities">添加预构建的意向和实体</a>
-          - html: <a href="luis-quickstart-intents-regex-entity">添加正则表达式实体</a>
-          - html: <a href="luis-quickstart-intent-and-list-entity">添加列表实体</a>
-          - html: <a href="tutorial-entity-roles">使用实体角色</a>
-          - html: <a href="luis-quickstart-primary-and-secondary-data">添加简单实体和短语列表</a>
-          - html: <a href="luis-quickstart-intent-and-key-phrase">添加 keyPhrase 实体</a>
-          - html: <a href="luis-quickstart-intent-and-sentiment-analysis">添加情绪分析</a>
-  - title: 示例
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://aka.ms/luis-code-samples">GitHub 上的示例</a><br/>'
-  - title: 视频
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" >Build 2018 中的 Azure Friday - 认知服务 - 语言 (LUIS)</a>'
-          - html: '<a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Build 2018 会议 - 机器人智能、语音功能和 NLU 最佳做法</a>'
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API v2
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092356">终结点 API</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2092087">创作 API</a></p>'
-          - title: SDK
-            html: '<p><a href="https://aka.ms/luis-endpoint-sdk"> .NET 终结点 SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET 创作 SDK</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>'
+  ms.openlocfilehash: 2191d2b3efebe1439f9f6180540929dc83027846
+  ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71129265"
+landingContent:
+- title: 关于语言理解 (LUIS)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是语言理解？
+      url: what-is-luis.md
+    - text: 新增功能
+      url: whats-new.md
+    - text: LUIS 门户
+      url: https://www.luis.ai
+  - linkListType: concept
+    links:
+    - text: 规划应用
+      url: luis-how-plan-your-app.md
+    - text: 应用的创作周期
+      url: luis-concept-app-iteration.md
+  - linkListType: video
+    links:
+    - text: AI 巡展：LUIS
+      url: https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis
+- title: 创建意向、实体和功能
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 意向
+      url: luis-concept-intent.md
+    - text: 实体
+      url: luis-concept-entity-types.md
+    - text: 良好的示例言语
+      url: luis-concept-utterance.md
+    - text: 短语列表功能
+      url: luis-concept-feature.md
+  - linkListType: quickstart
+    links:
+    - text: 门户：创建新的 LUIS 应用
+      url: get-started-portal-build-app.md
+    - text: 使用 C# SDK
+      url: sdk-python-quickstart-authoring-app.md
+    - text: 使用 Python SDK
+      url: sdk-python-quickstart-authoring-app.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建新的 LUIS 应用
+      url: luis-how-to-start-new-app.md
+    - text: 使用示例言语添加意向
+      url: luis-how-to-add-intents.md
+    - text: 添加实体
+      url: luis-how-to-add-example-utterances.md
+    - text: 添加短语列表功能
+      url: luis-how-to-add-features.md
+- title: 版本控制、训练、测试和发布
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 版本控制
+      url: luis-concept-version.md
+    - text: 交互式测试
+      url: luis-concept-test.md
+    - text: 批处理测试
+      url: luis-concept-batch-test.md
+  - linkListType: quickstart
+    links:
+    - text: 门户：将应用部署到预测终结点
+      url: get-started-portal-deploy-app.md
+    - text: 使用 C# SDK
+      url: sdk-python-quickstart-authoring-app.md#train-the-app
+    - text: 使用 Python SDK
+      url: sdk-python-quickstart-authoring-app.md#train-the-app
+  - linkListType: how-to-guide
+    links:
+    - text: 对应用进行版本控制
+      url: luis-how-to-manage-versions.md
+    - text: 交互式测试
+      url: luis-interactive-test.md
+    - text: 批处理测试
+      url: luis-how-to-batch-test.md
+    - text: 训练应用
+      url: luis-how-to-train.md
+    - text: 发布以使用预测终结点
+      url: luis-how-to-publish-app.md
+- title: 从终结点获取预测
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 C# .NET SDK
+      url: sdk-csharp-quickstart-query-prediction-endpoint.md
+  - linkListType: quickstart
+    links:
+    - text: 将 C# 与 REST 配合使用
+      url: luis-get-started-cs-get-intent.md
+    - text: 将 Go 与 REST 配合使用
+      url: luis-get-started-go-get-intent.md
+    - text: 将 Java 与 REST 配合使用
+      url: luis-get-started-java-get-intent.md
+    - text: 将 Node.js 与 REST 配合使用
+      url: luis-get-started-node-get-intent.md
+    - text: 将 Python 与 REST 配合使用
+      url: luis-get-started-python-get-intent.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 开发人员资源
+      url: developer-reference-resource.md
+    - text: 应用限制
+      url: luis-boundaries.md
+    - text: 预生成的实体
+      url: luis-reference-prebuilt-entities.md
+    - text: 自定义实体
+      url: luis-concept-entity-types.md#types-of-entities
+    - text: 预生成域
+      url: luis-reference-prebuilt-domains.md

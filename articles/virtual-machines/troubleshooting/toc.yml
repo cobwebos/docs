@@ -187,3 +187,9 @@
   href: understand-vm-reboot.md
 - name: 远程故障排除工具
   href: remote-tools-troubleshoot-azure-vm-issues.md
+- name: 虚拟机修复
+  items:
+    - name: 使用 Azure 虚拟机修复命令修复 Windows VM
+      href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
+    - name: 使用 Azure 虚拟机修复命令修复 Linux VM
+      href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md

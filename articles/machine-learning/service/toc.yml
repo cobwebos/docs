@@ -54,26 +54,6 @@
     - name: Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: 可视界面试验
-      items:
-        - name: 预测价格
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-basic.md
-        - name: 预测价格（高级）
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
-        - name: 预测信用风险
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-basic.md
-        - name: 预测信用风险（高级）
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
-        - name: 预测变动率
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-churn.md
-        - name: 预测航班延误
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-flight-delay.md
     - name: Azure 开放数据集
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念
@@ -174,6 +154,27 @@
               href: how-to-train-pytorch.md
             - name: 使用 Chainer
               href: how-to-train-chainer.md
+        - name: 使用可视界面
+          displayName: sample visual interface experiments
+          items:
+            - name: 预测价格
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-basic.md
+            - name: 预测价格（高级）
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md
+            - name: 预测信用风险
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-basic.md
+            - name: 预测信用风险（高级）
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
+            - name: 预测变动率
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-churn.md
+            - name: 预测航班延误
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-flight-delay.md
         - name: 优化超参数
           displayName: parameter
           href: how-to-tune-hyperparameters.md

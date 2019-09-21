@@ -1,91 +1,114 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: QnA Maker 文档
+summary: 了解 QnA Maker 服务以及如何将此服务的知识库用于你的问题和答案。
 metadata:
-  title: QnA Maker 文档 - Microsoft 认知服务 | Microsoft Docs
-  description: 了解 QnA Maker 服务以及如何将此服务的知识库用于你的问题和答案。
-  services: cognitive-services
-  author: diberry
-  manager: nitinme
+  ms.topic: landing-page
+  ms.date: 09/18/2019
+  ms.author: nitinme
+  author: nitinme
   ms.service: cognitive-services
   ms.subservice: qna-maker
-  ms.topic: landing-page
-  ms.date: 12/18/2018
-  ms.author: diberry
-abstract:
-  description: QnA Maker 是一种基于云的 API 服务，它创建基于数据的聊天式问答层。 使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。 QnA Maker 服务可以回答用户的自然语言问题，其方法是将问题与知识库的 QnA 中的最可能答案进行匹配。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/qnamaker-landing-page-video.png
-      width: 250
-    title: '使用 QnA Maker 在数分钟内构建机器人 (8:54)'
-    href: 'https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/qnamaker/overview/overview
-            html: <p>了解 QnA Maker。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什么是 QnA Maker？
-          - href: /azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base
-            html: <p>了解如何创建、训练和发布知识库。</p>
-            image:
-              src: ../media/index/i_tasks.svg
-            title: 创建、训练和发布知识库
-          - href: /azure/cognitive-services/qnamaker/concepts/data-sources-supported
-            html: <p>了解如何发布知识库。</p>
-            image:
-              src: ../media/index/i_tasks.svg
-            title: 了解数据源
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 为问题和答案内容创建知识库：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_Csharp.svg
-            text: 'C&#35;'
-            href: Quickstarts/create-new-kb-csharp
-          - image:
-              src: media/index/Go-Logo_Blue.svg
-            text: Go
-            href: Quickstarts/create-new-kb-go
-          - image:
-              src: media/index/logo_java.svg
-            text: Java
-            href: Quickstarts/create-new-kb-java
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Node.js
-            href: Quickstarts/create-new-kb-nodejs
-          - image:
-              src: media/index/logo_python.svg
-            text: Python
-            href: Quickstarts/create-new-kb-python
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用 QnA Maker 开发应用程序：
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal">创建知识库并回答问题</a></li>
-          - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-qna-bot">创建 QnA Maker 机器人</a></li>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092179">QnA Maker API</a></p>'
+  services: cognitive-services
+  title: QnA Maker 文档
+  description: QnA Maker 是一种基于云的 API 服务，它创建基于数据的聊天式问答层。 使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。 QnA Maker 服务通过将问题与知识库的 QnA 中的最可能答案进行匹配，来回答用户的自然语言问题。
+  ms.openlocfilehash: 36b1c69ba1b94afadd105117ee5ac9dabcdd64a7
+  ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71123004"
+landingContent:
+- title: 关于 QnA Maker
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 QnA Maker
+      url: overview/overview.md
+  - linkListType: concept
+    links:
+    - text: 开发生命周期
+      url: concepts/development-lifecycle-knowledge-base.md
+    - text: 数据源
+      url: concepts/data-sources-supported.md
+  - linkListType: video
+    links:
+    - text: 在数分钟内构建机器人
+      url: https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker
+- title: 创建并编辑知识库
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是知识库
+      url: concepts/knowledge-base.md
+  - linkListType: get-started
+    links:
+    - text: 快速入门：创建新的知识库
+      url: how-to/create-knowledge-base.md
+    - text: 快速入门：添加问题和答案
+      url: quickstarts/add-question-metadata-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用跟进提示创建多个轮次的对话
+      url: how-to/multiturn-conversation.md
+    - text: 添加聊天内容
+      url: how-to/chit-chat-knowledge-base.md
+    - text: 添加受保护的 SharePoint 数据源
+      url: how-to/add-sharepoint-datasources.md
+- title: 测试并发布
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 以交互方式测试知识库
+      url: how-to/test-knowledge-base.md
+    - text: 发布知识库
+      url: quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base
+- title: 从知识库中获取答案
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 快速入门：使用 Postman
+      url: quickstarts/get-answer-from-kb-using-postman.md
+    - text: 快速入门：使用 cURL
+      url: quickstarts/get-answer-from-kb-using-curl.md
+    - text: 快速入门：使用 REST 和 C#
+      url: quickstarts/get-answer-from-knowledge-base-csharp.md
+    - text: 快速入门：使用 NuGet 和 C#
+      url: quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base
+  - linkListType: how-to-guide
+    links:
+    - text: 使用元数据获取答案
+      url: how-to/metadata-generateanswer-usage.md
+- title: 改进知识库
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用主动学习改进知识库
+      url: how-to/improve-knowledge-base.md
+    - text: 获取有关知识库的分析
+      url: how-to/get-analytics-knowledge-base.md
+- title: QnA Maker 机器人
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 门户：创建 QnA 机器人
+      url: tutorials/create-qna-bot.md
+    - text: .Net：使用 QnA Maker 和语言理解创建机器人
+      url: tutorials/integrate-qnamaker-luis.md
+    - text: 其他机器人示例
+      url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 知识库的限制
+      url: limits.md
+    - text: 创作 API
+      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase
+    - text: 生成答案 API
+      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime
+    - text: .Net SDK 参考文档
+      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.6.0#cognitive_services
+    - text: Azure 命令行界面 (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
