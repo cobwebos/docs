@@ -3,7 +3,7 @@ title: 适用于 Linux 的 Azure VM 扩展和功能 | Microsoft Docs
 description: 了解可为 Azure 虚拟机提供哪些扩展，这些虚拟机扩展按它们提供或改进的功能进行分组。
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: roiyz
-ms.openlocfilehash: 1a3fe1f70143e2c33a3e4d309991f1174eb2d6dd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: f66ec2ea9d0c042b698db1725980e981a27a55d0
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092386"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169014"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>适用于 Linux 的虚拟机扩展和功能
 
@@ -85,7 +85,7 @@ Azure VM 扩展在现有 VM 上运行，需要在已部署的 VM 上进行配置
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure VM 扩展可以通过 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 命令针对现有 VM 运行。 下面的示例针对名为*myResourceGroup*的资源组中名为*myVM*的 VM 运行自定义脚本扩展。 将示例资源组名称、VM 名称和脚本替换为你自己的信息\/以运行 (https:/raw.githubusercontent.com/me/project/hello.sh)。 
+Azure VM 扩展可以通过 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 命令针对现有 VM 运行。 下面的示例针对名为 myResourceGroup 的资源组中名为 myVM 的 VM 运行自定义脚本扩展。 将示例资源组名称、VM 名称和脚本替换为你自己的信息\/以运行（https：/raw.githubusercontent.com/me/project/hello.sh）。 
 
 ```azurecli
 az vm extension set `

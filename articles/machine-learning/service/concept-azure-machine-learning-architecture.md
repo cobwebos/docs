@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 85ca03bee728ec075383566be14d2484dd7431af
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035596"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170433"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作方式：体系结构和概念
 
@@ -62,11 +62,11 @@ ms.locfileid: "71035596"
 + <a href="#datasets-and-datastores">数据集 & 数据存储</a>
 + <a href="#compute-targets">计算目标</a>
 + <a href="#training-scripts">训练脚本</a>
-+ <a href="#runs">运行</a>
++ <a href="#runs">Run</a>
++ <a href="#environments">情形</a>
 + <a href="#github-tracking-and-integration">Git 跟踪</a>
 + <a href="#snapshots">快照</a>
 + <a href="#activities">活动</a>
-+ <a href="#images">Image</a>
 + <a href="#deployment">部署</a>
 + <a href="#web-service-deployments">Web 服务</a>
 + <a href="#iot-module-deployments">IoT 模块</a>
@@ -180,28 +180,15 @@ Azure 机器学习与框架无关。 创建模型时, 可以使用任何主流�
 
 活动可通过 SDK 或 Web UI 提供通知，使你能够轻松监视这些操作的进度。
 
-### <a name="images"></a>图像
+### <a name="environments"></a>环境
 
-映像提供了一种可靠地部署模型的方法，以及使用该模型所需的所有组件。 映像包含以下项：
+Azure ML 环境用于指定用于为数据准备、模型定型和模型服务创建可重复环境的配置（Docker/Python/Spark/等等）。 它们是在你的 Azure 机器学习工作区中管理和版本化的实体，可跨不同的计算目标启用可重复的、可审核的和便携式机器学习工作流。
 
-* 模型。
-* 评分脚本或应用程序。 使用此脚本可将输入传递到模型，并返回模型的输出。
-* 模型或评分脚本/应用程序所需的依赖项。 例如，你可能包括列出 Python 包依赖项的 Conda 环境文件。
+你可以在本地计算上使用环境对象来开发训练脚本、在 Azure 机器学习计算上重复使用同一环境进行大规模模型训练，甚至使用相同的环境部署模型。 
 
-Azure 机器学习可以创建两种类型的映像：
+了解[如何创建和管理可重用的 ML 环境](how-to-use-environments.md)以进行定型和推理。
 
-* **FPGA 映像**：部署到 Azure 中的现场可编程门阵列时使用。
-* **Docker 映像**：部署到 FPGA 以外的计算目标时使用。 例如，部署到 Azure 容器实例和 Azure Kubernetes 服务时。
 
-Azure 机器学习提供了一个默认情况下使用的基本映像。 你还可以提供自己的自定义映像。
-
-### <a name="image-registry"></a>映像注册表
-
-映像在工作区的**映像注册表**中进行了分类。 您可以在创建图像时提供其他元数据标记, 以便您可以查询这些标记以便以后查找图像。
-
-有关创建映像的示例，请参阅[在 Azure 容器实例中部署映像分类模型](tutorial-deploy-models-with-aml.md)。
-
-有关使用自定义映像部署模型的示例, 请参阅[如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)。
 
 ### <a name="deployment"></a>部署
 

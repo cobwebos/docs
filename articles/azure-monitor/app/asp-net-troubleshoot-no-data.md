@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2966f90dcb381e439c00a6540ef9a01bd24f8743
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: b4bfd984f1e169cb1044002118f9534c4efc9bd8
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561177"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169586"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
@@ -28,13 +28,13 @@ ms.locfileid: "67561177"
 
 *我随机遇到数据丢失。*
 
-* 检查您是否遇到的数据损失时[遥测通道](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)
+* 检查[遥测信道](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)是否遇到数据丢失
 
-* 检查遥测通道中的任何已知问题[Github 存储库](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)
+* 检查遥测通道[GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)存储库中的任何已知问题
 
-*当应用程序即将停止时遇到在控制台应用程序或 Web 应用上的数据丢失。*
+*当应用程序即将停止时，我在控制台应用或 Web 应用中遇到数据丢失。*
 
-* SDK 通道将遥测数据保留在缓冲区，并将其发送批。 如果应用程序正在关闭，你可能需要显式调用[flush （)](api-custom-events-metrics.md#flushing-data)。 行为`Flush()`取决于实际[通道](telemetry-channels.md#built-in-telemetry-channels)使用。
+* SDK 通道将遥测数据保存在缓冲区中，并分批发送。 如果应用程序正在关闭，你可能需要显式调用[Flush （）](api-custom-events-metrics.md#flushing-data)。 的`Flush()`行为取决于使用的实际[通道](telemetry-channels.md#built-in-telemetry-channels)。
 
 ## <a name="no-data-from-my-server"></a>服务器未提供数据
 *我已在 Web 服务器上安装应用，但未看到服务器提供任何遥测数据。服务器在开发计算机上正常运行。*
@@ -51,7 +51,7 @@ ms.locfileid: "67561177"
 
 * 工具并非支持所有类型的 .NET 项目。 支持 Web 和 WCF 项目。 对于其他项目类型，例如桌面或服务应用程序，仍可以[手动将 Application Insights SDK 添加到项目](../../azure-monitor/app/windows-desktop.md)。
 * 请务必使用 [Visual Studio 2013 Update 3 或更高版本](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
-* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。    如果是，请单击“更新”查看是否有可用的更新。 
+* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。 如果是，请单击“更新”查看是否有可用的更新。
 * 打开“新建项目”对话框，选择“ASP.NET Web 应用程序”。 如果看到了 Application Insights 选项，则表示工具已安装。 否则，请尝试卸载再重新安装 Developer Analytics Tools。
 
 ## <a name="q02"></a>添加 Application Insights 失败
@@ -72,7 +72,7 @@ ms.locfileid: "67561177"
 ## <a name="emptykey"></a>遇到错误“检测密钥不能为空”
 可能是在安装 Application Insights 或日志记录适配器时发生了问题。
 
-在解决方案资源管理器中右键单击项目，并选择“Application Insights”>“配置 Application Insights”  。 将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。
+在解决方案资源管理器中右键单击项目，并选择“Application Insights”>“配置 Application Insights”。 将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。
 
 ## <a name="NuGetBuild"></a> 生成服务器上出现“缺少 NuGet 包”
 *在开发计算机上调试时所有生成都没有问题，但生成服务器上出现 NuGet 错误。*
@@ -91,8 +91,8 @@ ms.locfileid: "67561177"
 解决方法：
 
 * 确保 Visual Studio 版本为 2013 Update 3 或更高。
-* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。    如果是，请单击“更新”查看是否有可用的更新。 
-* 在解决方案资源管理器中右键单击项目。 如果看到命令“Application Insights”>“配置 Application Insights”，请使用它将项目连接到 Application Insights 服务中的资源。 
+* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。 如果是，请单击“更新”查看是否有可用的更新。
+* 在解决方案资源管理器中右键单击项目。 如果看到命令“Application Insights”>“配置 Application Insights”，请使用它将项目连接到 Application Insights 服务中的资源。
 
 否则，Developer Analytics Tools 不会直接支持项目类型。 要查看遥测数据，请登录到 [Azure 门户](https://portal.azure.com)，在左侧导航栏中选择“Application Insights”，然后选择应用程序。
 
@@ -135,7 +135,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
   ![](./media/asp-net-troubleshoot-no-data/output-window.png)
 * 在 Application Insights 门户中，打开[诊断搜索](../../azure-monitor/app/diagnostic-search.md)。 数据通常会先显示在此处。
 * 单击“刷新”按钮。 边栏选项卡会定期自行刷新，但你也可以手动刷新。 时间范围越大，刷新间隔就越长。
-* 检查检测密钥是否匹配。 在 Application Insights 门户的应用主边栏选项卡中，查看“概要”下拉列表中的“检测密钥”。   然后，在 Visual Studio 的项目中，打开 ApplicationInsights.config 并找到 `<instrumentationkey>`。 检查两个密钥是否相同。 如果不同：  
+* 检查检测密钥是否匹配。 在 Application Insights 门户的应用主边栏选项卡中，查看“概要”下拉列表中的“检测密钥”。 然后，在 Visual Studio 的项目中，打开 ApplicationInsights.config 并找到 `<instrumentationkey>`。 检查两个密钥是否相同。 如果不同：  
   * 在门户中单击“Application Insights”，并找到具有正确密钥的应用资源；或
   * 在 Visual Studio 解决方案资源管理器中右键单击项目，并依次选择“Application Insights”、“配置”。 重置应用，将遥测数据发送到正确的资源。
   * 如果找不到匹配的密钥，请检查在 Visual Studio 中使用的登录凭据是否与门户中使用的相同。
@@ -217,7 +217,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 1. 从 NuGet 安装 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsights` 版本匹配
 
-最新版本的 Microsoft.ApplicationInsights.AspNetCore 2.7.1，并且它是指 Microsoft.ApplicationInsights 版本 2.10。 因此 Microsoft.AspNet.ApplicationInsights.HostingStartup 要安装的版本应 2.10.0
+Microsoft.ApplicationInsights.AspNetCore 的最新版本为 2.7.1，它引用 Microsoft.ApplicationInsights 版本 2.10。 因此，要安装的 Microsoft.AspNet.ApplicationInsights.HostingStartup 版本应该是 2.10.0
 
 2. 修改 `Startup.cs` 类中的 `ConfigureServices` 方法：
 
@@ -237,24 +237,24 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 
 ## <a name="PerfView"></a> 使用 PerfView 收集日志
-[PerfView](https://github.com/Microsoft/perfview)是免费的诊断和性能分析工具，帮助隔离 CPU、 内存和其他问题，通过收集和可视化来自多个源的诊断信息。
+[PerfView](https://github.com/Microsoft/perfview) 是一款免费的诊断和性能分析工具，可通过收集和可视化来自多个源的诊断信息来帮助确定 CPU、内存和其他问题。
 
-Application Insights SDK 日志，PerfView 可以捕获的 EventSource 自故障排除日志。
+Application Insights SDK 记录可由 PerfView 捕获的 EventSource 自我故障排除日志。
 
 若要收集日志，请下载 PerfView 并运行以下命令：
 ```cmd
-PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
+PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
 ```
 
-你可以根据需要修改这些参数：
-- **MaxCollectSec**。 设置此参数以防止 PerfView 从无限期地运行，并且会影响服务器的性能。
-- **OnlyProviders**。 设置此参数仅从 SDK 收集日志。 可以自定义基于特定调查此列表。 
-- **NoGui**。 设置此参数可收集不含 Gui 的日志。
+可以根据需要修改以下参数：
+- **MaxCollectSec**。 设置此参数可防止 PerfView 无限期运行并影响服务器的性能。
+- **OnlyProviders**。 设置此参数可仅从 SDK 收集日志。 可以基于特定调查自定义此列表。 
+- **NoGui**。 设置此参数可收集不包含 Gui 的日志。
 
 
-有关详细信息，
-- [记录性能跟踪使用 PerfView](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)。
-- [应用程序见解事件源](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+有关详细信息，请参阅
+- [使用 PerfView 记录性能跟踪](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)。
+- [Application Insights 事件源](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
 ## <a name="still-not-working"></a>仍然无法解决问题...
 * [Application Insights 论坛](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

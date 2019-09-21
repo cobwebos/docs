@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 5339d963b84c5922138d53e44abe9340d55b4dde
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 03c5d46221dc385a390e840381270c01c40bdc6d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130233"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170401"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
@@ -95,8 +95,10 @@ y_test = X_test.pop("sales_quantity").values
 |`time_column_name`|用于指定输入数据中的日期时间列，这些数据用于生成时序并推断其频率。|✓|
 |`grain_column_names`|定义输入数据中各个序列组的名称。 如果未定义颗粒，则假定数据集为一系列时间。||
 |`max_horizon`|定义以时间序列频率为单位的最大预期预测范围。 单位基于定型数据的时间间隔（例如每月、每周预测应预测）。|✓|
-|`target_lags`|要基于数据频率延迟目标值的行数。 这表示为一个列表或单个整数。||
-|`target_rolling_window_size`|*n*用于生成预测值的历史时间段，< = 定型集大小。 如果省略，则*n*为完全定型集的大小。||
+|`target_lags`|要基于数据频率延迟目标值的行数。 这表示为一个列表或单个整数。 默认情况下，在独立变量和依赖变量之间的关系不匹配或关联时，应使用 Lag。 例如，在尝试预测某个产品的需求时，任意月份的需求可能会依赖于之前3个月的特定商品价格。 在此示例中，您可能希望将目标（需求）的滞后时间降低3个月，使模型是针对正确关系的定型。||
+|`target_rolling_window_size`|*n*用于生成预测值的历史时间段，< = 定型集大小。 如果省略，则*n*为完全定型集的大小。 如果只想在训练模型时考虑一定数量的历史记录，请指定此参数。||
+
+有关详细信息，请参阅[参考文档](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)。
 
 将时间序列设置创建为字典对象。 `day_datetime`将设置`time_column_name`为数据集中的字段。 定义参数以确保为数据创建**两个单独的时序组**; 一个用于存储 A 和 B。 `max_horizon`最后，将设置为50以预测整个测试集。 `grain_column_names` 将预测时段设置为10个周期`target_rolling_window_size`，并为`target_lags`参数指定两个时间段的目标值的单个 lag。
 

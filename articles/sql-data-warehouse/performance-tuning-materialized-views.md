@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 85c2607ae163ab2d29a53440cd65672bdbe0fddf
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985345"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172787"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>利用具体化视图进行性能优化 
 在 Azure SQL 数据仓库中，具体化视图为复杂的分析查询提供一种低维护方法，以实现快速性能，而无需更改任何查询。 本文讨论有关使用具体化视图的一般指南。
@@ -84,19 +84,21 @@ Azure 数据仓库是一种分布式大规模并行处理（MPP）系统。   �
 
 **工作负载设计**
 
-- 在开始创建具体化视图之前，必须对工作负荷进行深入了解，方法是查询模式、重要性、频率和生成的数据的大小。  
+在开始创建具体化视图之前，必须对工作负荷进行深入了解，方法是查询模式、重要性、频率和生成的数据的大小。  
 
-- 用户可以为查询优化器推荐的具体化视图运行说明 WITH_RECOMMENDATIONS < SQL_statement >。  由于这些建议是查询特定的，因此，对于同一工作负荷中的其他查询，使单个查询受益的具体化视图可能不是最佳的。  根据工作负荷需要评估这些建议。  理想的具体化视图是那些能够受益于工作负荷性能的视图。  
+用户可以为查询优化器推荐的具体化视图运行说明 WITH_RECOMMENDATIONS < SQL_statement >。  由于这些建议是查询特定的，因此，对于同一工作负荷中的其他查询，使单个查询受益的具体化视图可能不是最佳的。  根据工作负荷需要评估这些建议。  理想的具体化视图是那些能够受益于工作负荷性能的视图。  
 
 **了解更快的查询与成本之间的折衷** 
 
-- 对于每个具体化视图，元组移动器都有一个存储成本和维护成本。 每个 Azure SQL 数据仓库服务器实例都有一个元组移动器。  如果具体化视图太多，则元组移动器的工作负荷将增加，如果元组移动器无法将数据移动到索引段的速度足够快，则利用具体化视图的查询的性能可能会降低。  用户应检查所有具体化视图产生的成本是否可以通过查询性能增益进行偏移。  针对数据库中的具体化视图列表运行此查询： 
+对于每个具体化视图，都有一个数据存储成本和维护视图的成本。  当基表中的数据更改时，具体化视图的大小会增加，并且其物理结构也会改变。  为了避免查询性能下降，数据仓库引擎单独维护每个具体化视图，包括将行从增量存储移到列存储索引段和合并数据更改。  当具体化视图的数量和基表的更改增加时，维护工作负荷会更高。   用户应检查所有具体化视图产生的成本是否可以通过查询性能增益进行偏移。  
+
+您可以对数据库中的具体化视图列表运行此查询： 
 
 ```sql
 SELECT V.name as materialized_view, V.object_id 
 FROM sys.views V 
 JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
-```
+``` 
 
 用于减少具体化视图数量的选项： 
 

@@ -3,16 +3,16 @@ title: 如何创建来宾配置策略
 description: 了解如何创建适用于 Windows 或 Linux Vm 的 Azure 策略来宾配置策略。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/26/2019
+ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0c1c3470ae18b2a600af0d5e930b6fc114123728
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 8fd50ed571e42a1eb6673c56a61314d2adfe27f2
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161932"
+ms.locfileid: "71172466"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建来宾配置策略
 
@@ -62,8 +62,7 @@ ms.locfileid: "71161932"
 
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>来宾配置自定义资源的要求
 
-当来宾配置审核计算机时，它会首先`Test-TargetResource`运行来确定其是否处于正确的状态。  函数返回的布尔值确定来宾分配的 Azure 资源管理器状态是否应符合或不符合。  如果布尔值`$false`适用于配置中的任何资源，则该提供程序将`Get-TargetResource`运行。
-如果布尔值为`$true` `Get-TargetResource` ，则不调用。
+当来宾配置审核计算机时，它会首先`Test-TargetResource`运行来确定其是否处于正确的状态。 函数返回的布尔值确定来宾分配的 Azure 资源管理器状态是否应符合或不符合。 如果布尔值`$false`适用于配置中的任何资源，则该提供程序将`Get-TargetResource`运行。 如果不调用布尔`$true`值`Get-TargetResource` ，则为。
 
 对于 Windows `Get-TargetResource` Desired State configuration，此函数对来宾配置有特殊要求。
 
@@ -71,15 +70,14 @@ ms.locfileid: "71161932"
 - 原因属性必须是数组。
 - 数组中的每一项应为一个具有名为**Code**和**短语**的键的哈希表。
 
-"原因" 属性用于标准化计算机不符合时信息的显示方式。
-可以将每个项视为一个 "原因"，因为资源不合规。 属性是一个数组，因为资源可能因多种原因而不符合要求。
+"原因" 属性用于标准化计算机不符合时信息的显示方式。 可以将每个项视为一个 "原因"，因为资源不符合要求。 属性是一个数组，因为资源可能因多种原因而不符合要求。
 
-服务需要属性**代码**和**短语**。 创作自定义资源时，请设置要显示的文本（通常为 stdout），因为该资源不符合**短语**的值。  **代码**具有特定的格式要求，因此报表可以清楚地显示用于执行审核的资源的相关信息。 此解决方案使来宾配置可扩展。 只要可以捕获输出并将其作为**短语**属性的字符串值返回，就可以运行任何命令来审核计算机。
+服务需要属性**代码**和**短语**。 创作自定义资源时，请设置要显示的文本（通常为 stdout），因为该资源不符合**短语**的值。 **代码**具有特定的格式要求，因此报表可以清楚地显示用于执行审核的资源的相关信息。 此解决方案使来宾配置可扩展。 只要可以捕获输出并将其作为**短语**属性的字符串值返回，就可以运行任何命令来审核计算机。
 
-- **代码**（字符串）：此资源的名称，重复，然后不包含空格作为原因标识符的短名称。  这三个值应以冒号分隔，不含空格。
-    - 例如 "注册表： registry： keynotpresent"。
-- **短语**（字符串）：用户可读的文本，用于说明设置不合规的原因。
-    - 例如，"注册表项 $key 在计算机上不存在"。
+- **代码**（字符串）：此资源的名称，重复，然后不包含空格作为原因标识符的短名称。 这三个值应以冒号分隔，不含空格。
+  - 例如，`registry:registry:keynotpresent`
+- **短语**（字符串）：可读文本，用于说明设置不符合的原因。
+  - 例如，`The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -94,7 +92,7 @@ return @{
 
 #### <a name="scaffolding-a-guest-configuration-project"></a>将来宾配置项目基架
 
-对于想要加速入门和处理示例代码的开发人员，名为 "**来宾配置项目**" 的社区项目作为[Plaster](https://github.com/powershell/plaster) PowerShell 模块的模板存在。  此工具可用于基架项目（包括工作配置和示例资源）和一组用于验证项目的[Pester](https://github.com/pester/pester)测试。  该模板还包括用于自动构建和验证来宾配置包的 Visual Studio Code 的任务流。 有关详细信息，请参阅 GitHub 项目[来宾配置项目](https://github.com/microsoft/guestconfigurationproject)。
+对于想要加速入门和处理示例代码的开发人员，名为 "**来宾配置项目**" 的社区项目作为[Plaster](https://github.com/powershell/plaster) PowerShell 模块的模板存在。 此工具可用于基架项目（包括工作配置和示例资源）和一组用于验证项目的[Pester](https://github.com/pester/pester)测试。 该模板还包括用于自动构建和验证来宾配置包的 Visual Studio Code 的任务流。 有关详细信息，请参阅 GitHub 项目[来宾配置项目](https://github.com/microsoft/guestconfigurationproject)。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux 上的自定义来宾配置配置
 
@@ -177,15 +175,23 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 
 在 Azure 策略来宾配置中，管理运行时使用的机密的最佳方式是将它们存储在 Azure Key Vault 中。 此设计在自定义 DSC 资源内实现。
 
-首先，在 Azure 中创建用户分配的托管标识。 计算机使用该标识来访问存储在 Key Vault 中的机密。 有关详细步骤，请参阅[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。
+1. 首先，在 Azure 中创建用户分配的托管标识。
 
-创建 Key Vault 实例。 有关详细步骤，请参阅[设置和检索机密-PowerShell](../../../key-vault/quick-create-powershell.md)。
-向实例分配权限，以向用户分配的标识授予对存储在 Key Vault 中的机密的访问权限。 有关详细步骤，请参阅[设置和检索机密-.net](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault)。
+   计算机使用该标识来访问存储在 Key Vault 中的机密。 有关详细步骤，请参阅[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。
 
-将用户分配的标识分配到计算机。 有关详细步骤，请参阅[使用 PowerShell 在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)。
-大规模，使用 Azure 资源管理器通过 Azure 策略分配此标识。 有关详细步骤，请参阅[使用模板在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)。
+1. 创建 Key Vault 实例。
 
-最后，在自定义资源中使用上面生成的客户端 ID 通过计算机上提供的令牌访问 Key Vault。 可以`client_id`将 Key Vault 实例的和 url 作为[属性](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema)传递给资源，这样就不需要为多个环境更新资源，也不需要更改这些值。
+   有关详细步骤，请参阅[设置和检索机密-PowerShell](../../../key-vault/quick-create-powershell.md)。
+   向实例分配权限，以向用户分配的标识授予对存储在 Key Vault 中的机密的访问权限。 有关详细步骤，请参阅[设置和检索机密-.net](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault)。
+
+1. 将用户分配的标识分配到计算机。
+
+   有关详细步骤，请参阅[使用 PowerShell 在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)。
+   大规模，使用 Azure 资源管理器通过 Azure 策略分配此标识。 有关详细步骤，请参阅[使用模板在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)。
+
+1. 最后，在自定义资源中使用上面生成的客户端 ID 通过计算机上提供的令牌访问 Key Vault。
+
+   可以`client_id`将 Key Vault 实例的和 url 作为[属性](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema)传递给资源，这样就不需要为多个环境更新资源，也不需要更改这些值。
 
 下面的代码示例可在自定义资源中使用，以使用用户分配的标识从 Key Vault 检索机密。 从请求返回到 Key Vault 的值为纯文本。 最佳做法是将其存储在 credential 对象中。
 
@@ -264,8 +270,7 @@ Cmdlet 输出返回一个对象，该对象包含策略文件的计划显示名�
 
 来宾配置支持在运行时重写配置的属性。 此功能意味着包中 MOF 文件中的值不必被视为静态的。 覆盖值是通过 Azure 策略提供的，并且不会影响创作或编译配置的方式。
 
-Cmdlet `New-GuestConfigurationPolicy`和`Test-GuestConfigurationPolicyPackage`包含一个名为**参数**的参数。
-此参数采用哈希表定义，其中包括有关每个参数的所有详细信息，并自动创建用于创建每个 Azure 策略定义的文件的所有必需部分。
+Cmdlet `New-GuestConfigurationPolicy`和`Test-GuestConfigurationPolicyPackage`包含一个名为**参数**的参数。 此参数采用哈希表定义，其中包括有关每个参数的所有详细信息，并自动创建用于创建每个 Azure 策略定义的文件的所有必需部分。
 
 下面的示例将创建一个 Azure 策略用于审核服务，其中用户在策略分配时从服务列表中选择。
 
@@ -294,7 +299,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-对于 Linux 策略，请在配置`AttributesYmlContent`中包含属性，并相应地覆盖值。 来宾配置代理会自动创建 InSpec 用于存储属性的 YaML 文件。 请参阅以下示例。
+对于 Linux 策略，请在配置中包含属性**AttributesYmlContent** ，并相应地覆盖值。 来宾配置代理会自动创建 InSpec 用于存储属性的 YaML 文件。 请参阅以下示例。
 
 ```azurepowershell-interactive
 Configuration FirewalldEnabled {
@@ -356,18 +361,14 @@ New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.w
 
 使用自定义内容包发布自定义 Azure 策略后，如果想要发布新版本，必须更新两个字段。
 
-- **版本**：当你运行`New-GuestConfigurationPolicy` cmdlet 时，你必须指定一个比当前发布的版本号大的版本号。  属性更新新策略文件中的来宾配置分配的版本，以便扩展识别包已更新。
-- **contentHash**：此属性由`New-GuestConfigurationPolicy` cmdlet 自动更新。  它是由`New-GuestConfigurationPackage`创建的包的哈希值。  对于发布的`.zip`文件，属性必须是正确的。  如果仅`contentUri`更新属性（例如，如果用户可以从门户手动更改策略定义），则扩展不接受内容包。
+- **版本**：当你运行`New-GuestConfigurationPolicy` cmdlet 时，你必须指定一个比当前发布的版本号大的版本号。 属性更新新策略文件中的来宾配置分配的版本，以便扩展识别包已更新。
+- **contentHash**：此属性由`New-GuestConfigurationPolicy` cmdlet 自动更新。 它是由`New-GuestConfigurationPackage`创建的包的哈希值。 对于发布的`.zip`文件，属性必须是正确的。 如果仅更新**contentUri**属性（例如，如果用户可以从门户手动更改策略定义），则扩展不会接受内容包。
 
-发布更新包的最简单方法是重复本文中所述的过程，并提供更新的版本号。
-该进程保证所有属性都已正确更新。
+发布更新包的最简单方法是重复本文中所述的过程，并提供更新的版本号。 该进程保证所有属性都已正确更新。
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>将 Windows 组策略内容转换为 Azure 策略来宾配置
 
-审核 Windows 计算机时，来宾配置是 PowerShell Desired 状态配置语法的实现。
-DSC 社区已发布工具，用于将导出的组策略模板转换为 DSC 格式。
-通过将此工具与上述来宾配置 cmdlet 结合使用，你可以转换 Windows 组策略内容并打包/发布它以供 Azure 策略审核。
-有关使用该工具的详细信息，请参阅[文章快速入门：将组策略转换为](/powershell/dsc/quickstarts/gpo-quickstart)DSC。
+审核 Windows 计算机时，来宾配置是 PowerShell Desired 状态配置语法的实现。 DSC 社区已发布工具，用于将导出的组策略模板转换为 DSC 格式。 通过将此工具与上述来宾配置 cmdlet 结合使用，你可以转换 Windows 组策略内容并打包/发布它以供 Azure 策略审核。 有关使用该工具的详细信息，请参阅[文章快速入门：将组策略转换为](/powershell/dsc/quickstarts/gpo-quickstart)DSC。
 内容转换完成后，创建包并将其发布为 Azure 策略的步骤与任何 DSC 内容相同。
 
 ## <a name="optional-signing-guest-configuration-packages"></a>可选：为来宾配置包签名
@@ -403,15 +404,13 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 
 GitHub 上的一篇文章提供了一个用于创建用于 Linux 计算机的 GPG 密钥的好参考，其中[生成了新的 GPG 密钥](https://help.github.com/en/articles/generating-a-new-gpg-key)。
 
-发布内容后，会将名称`GuestConfigPolicyCertificateValidation`和值`enabled`的标记追加到需要进行代码签名的所有虚拟机。 可以使用 Azure 策略大规模传递此标记。 请参阅[应用标记及其默认值](../samples/apply-tag-default-value.md)示例。
-完成此标记后，使用`New-GuestConfigurationPolicy` cmdlet 生成的策略定义将通过来宾配置扩展启用要求。
+发布内容后，会将名称`GuestConfigPolicyCertificateValidation`和值`enabled`的标记追加到需要进行代码签名的所有虚拟机。 可以使用 Azure 策略大规模传递此标记。 请参阅[应用标记及其默认值](../samples/apply-tag-default-value.md)示例。 完成此标记后，使用`New-GuestConfigurationPolicy` cmdlet 生成的策略定义将通过来宾配置扩展启用要求。
 
 ## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>效果来宾配置策略分配疑难解答
 
-预览中提供了一个工具，用于帮助排查 Azure 策略来宾配置分配问题。
-该工具处于预览阶段，已作为模块名称 "[来宾配置疑难解答](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/)" 发布到 PowerShell 库。
+预览中提供了一个工具，用于帮助排查 Azure 策略来宾配置分配问题。 该工具处于预览阶段，已作为模块名称 "[来宾配置疑难解答](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/)" 发布到 PowerShell 库。
 
-有关此工具中的 cmdlet 的详细信息，请使用 PowerShell 中的 Get-help 命令显示内置指南。  当工具获取频繁更新时，这是获取最新信息的最佳方式。
+有关此工具中的 cmdlet 的详细信息，请使用 PowerShell 中的 Get-help 命令显示内置指南。 当工具获取频繁更新时，这是获取最新信息的最佳方式。
 
 ## <a name="next-steps"></a>后续步骤
 

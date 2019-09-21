@@ -3,7 +3,7 @@ title: Resource Manager 模式下的 Azure CLI 命令 | Microsoft Docs
 description: 用于在 Resource Manager 部署模型中管理资源的 Azure 命令行界面 (CLI) 命令
 services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: command-line-interface
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
-ms.author: danlep
-ms.openlocfilehash: 4a155159759a4b817842087bff7d4167ed8ed0c5
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: cynthn
+ms.openlocfilehash: 1ec1856508588d07e55e60e251a1369ecc3fa985
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722825"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174064"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager 模式下的 Azure CLI 命令
 本文提供常用于在 Azure 资源管理器部署模型中创建和管理 Azure 资源的 Azure 命令行接口 (CLI) 命令的语法和选项。 通过在 Resource Manager (arm) 模式下运行 CLI 可以访问这些命令。 本参考内容并不完整，CLI 版本可能会显示略微不同的命令或参数。 有关 Azure 资源和资源组的一般概述，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。  
@@ -48,7 +48,7 @@ ms.locfileid: "67722825"
 > 
 > 
 
-## <a name="azure-account-manage-your-account-information"></a>azure 帐户：管理你的帐户信息
+## <a name="azure-account-manage-your-account-information"></a>azure 帐户：管理帐户信息
 该工具使用 Azure 订阅信息连接到帐户。
 
 **列出导入的订阅**
@@ -75,7 +75,7 @@ ms.locfileid: "67722825"
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad-commands-to-display-active-directory-objects"></a>azure ad:用于显示 Active Directory 对象的命令
+## <a name="azure-ad-commands-to-display-active-directory-objects"></a>azure ad：用于显示 Active Directory 对象的命令
 **用于显示 Active Directory 应用程序的命令**
 
     ad app create [options]
@@ -189,7 +189,7 @@ ms.locfileid: "67722825"
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>azure hdinsight:用于管理 HDInsight 群集的命令
+## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>azure hdinsight：用于管理 HDInsight 群集的命令
 **用于创建群集配置文件或在其中添加信息的命令**
 
     hdinsight config create [options] <configFilePath> <overwrite>
@@ -205,7 +205,7 @@ ms.locfileid: "67722825"
 
     hdinsight cluster create [options] <clusterName>
 
-例如：在 Linux 群集上创建 Storm
+例如：在 Linux 群集上创建风暴
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
 
@@ -307,12 +307,12 @@ ms.locfileid: "67722825"
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>azure insights:与监视 Insights （事件、 警报规则、 自动缩放设置、 指标） 相关的命令
+## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>azure insights：与监视 Insights （事件、警报规则、自动缩放设置、度量值）相关的命令
 **检索订阅、correlationId、资源组、资源或资源提供程序的操作日志**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>azure 位置：若要获取可用位置的所有资源类型的命令
+## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>azure 位置：用于获取所有资源类型的可用位置的命令
 **列出可用位置**
 
     location list [options]
@@ -1509,7 +1509,7 @@ ms.locfileid: "67722825"
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>azure 提供程序：用于管理资源提供程序注册的命令
+## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>azure 提供商：用于管理资源提供程序注册的命令
 **列出 Resource Manager 中当前已注册的提供程序**
 
     provider list [options]
@@ -1526,7 +1526,7 @@ ms.locfileid: "67722825"
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>azure 资源：用于管理你的资源的命令
+## <a name="azure-resource-commands-to-manage-your-resources"></a>azure 资源：用于管理资源的命令
 **在资源组中创建资源**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1547,7 +1547,7 @@ ms.locfileid: "67722825"
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Azure 角色：用于管理您的 Azure 角色的命令
+## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Azure 角色:用于管理 Azure 角色的命令
 **获取所有可用的角色定义**
 
     role list [options]
@@ -1702,7 +1702,7 @@ ms.locfileid: "67722825"
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>azure vm:用于管理 Azure 虚拟机的命令
+## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>azure vm：用于管理 Azure 虚拟机的命令
 **创建 VM**
 
     vm create [options] <resource-group> <name> <location> <os-type>

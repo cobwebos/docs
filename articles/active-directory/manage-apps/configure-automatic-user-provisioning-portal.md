@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395957099a19d11d26fb5bdd2a1eecdd5590dd64
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ba51e10503a3aab7afa2e9639453448d03b91852
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056138"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170477"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
 
@@ -81,7 +81,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 可以**在 "设置" 屏幕的**"**设置**" 区域中，为所选的应用程序启动和停止 Azure AD 预配服务。 你还可以选择清除预配缓存并重新启动该服务。
 
-如果是第一次为应用程序启用预配功能，则将“预配状态”更改为“开”即可启用该服务。 此更改会导致 Azure AD 预配服务运行初始周期。 它会读取 "**用户和组**" 部分中分配的用户，查询目标应用程序，然后运行在 Azure AD**映射**"部分中定义的设置操作。 在此过程中，预配服务将存储有关它所管理的用户帐户的缓存数据，因此，取消预配操作不会影响目标应用程序中从不在分配范围内的非托管帐户。 初始循环后，预配服务会在10分钟的时间间隔内自动同步用户和组对象。
+如果是第一次为应用程序启用预配功能，则将“预配状态”更改为“开”即可启用该服务。 此更改会导致 Azure AD 预配服务运行初始周期。 它会读取 "**用户和组**" 部分中分配的用户，查询目标应用程序，然后运行在 Azure AD**映射**"部分中定义的设置操作。 在此过程中，预配服务将存储有关它所管理的用户帐户的缓存数据，因此，取消预配操作不会影响目标应用程序中从不在分配范围内的非托管帐户。 初始循环后，预配服务会按40分钟的间隔自动同步用户和组对象。
 
 将**预配状态**更改为 "**关闭**" 以暂停预配服务。 在此状态下，Azure 不会创建、更新或删除应用程序中的任何用户或组对象。 将状态改回 "**开**"，然后服务从中断的位置继续。
 

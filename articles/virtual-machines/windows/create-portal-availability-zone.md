@@ -3,7 +3,7 @@ title: 使用 Azure 门户创建分区的 Windows VM | Microsoft Docs
 description: 使用 Azure 门户在可用性区域中创建 Windows VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: dlepow
+author: cynthn
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/27/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: c3ebaae9fc023eb309bceeac7543b279a21fd436
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 90c6f7106cbc885c513d47bf80a7b1ec218d8c6c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079785"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168553"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>使用 Azure 门户在可用性区域中创建 Windows 虚拟机
 

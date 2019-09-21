@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: 4da91150999864c64ead28b74242e85d23a51ead
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: d43fe7f1f0fc63ab50821a345802a9e7e62881b2
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310454"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169475"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -31,7 +31,7 @@ ms.locfileid: "67310454"
 
 * 采样会保留 *n* 条记录中的 1 条并丢弃其余记录。 例如，它可能会保留 5 个事件中的 1 个，采样率为 20%。 
 * 默认情况下，已在所有最新版本的 ASP.NET 和 ASP.NET Core 软件开发工具包 (SDK) 中启用自适应采样。
-* 也可以手动设置采样。 可以在门户中的“用量和估算费用页”上、在 ASP.NET SDK 的 ApplicationInsights.config 中、在 ASP.NET Core SDK 中通过代码，或者在 Java SDK 的 ApplicationInsights.xml 文件中进行相关的配置。 
+* 也可以手动设置采样。 可以在门户中的“用量和估算费用页”上、在 ASP.NET SDK 的 ApplicationInsights.config 中、在 ASP.NET Core SDK 中通过代码，或者在 Java SDK 的 ApplicationInsights.xml 文件中进行相关的配置。
 * 如果记录自定义事件，并需要确保事件集一同保留或一同丢弃，则事件必须具有相同的 OperationId 值。
 * 采样除数 *n* 会在每个记录的属性 `itemCount` 中报告，在“搜索”中它出现在友好名称“请求计数”或“事件计数”下。 如果采样未运行，则 `itemCount==1`。
 * 如果要编写分析查询，应[考虑采样](../../azure-monitor/log-query/aggregations.md)。 特别是，应使用 `summarize sum(itemCount)`，而不是仅对记录进行计数。
@@ -53,7 +53,7 @@ ms.locfileid: "67310454"
 
 自适应采样适用于 Application Insights SDK for ASP.NET v 2.0.0-beta3 及更高版本、Microsoft.ApplicationInsights.AspNetCore SDK v 2.2.0-beta1 及更高版本，默认已启用。
 
-自适应采样会影响从 Web 服务器应用发送至 Application Insights 服务终结点的遥测量。 遥测量会自动调整以保持在指定的最大流量率，可通过 `MaxTelemetryItemsPerSecond` 设置对其进行控制。 如果应用程序将生成较低的遥测数，如调试时由于低使用率，项不会删除或采样处理器，只要卷低于`MaxTelemetryItemsPerSecond`。 随着遥测数据量的增加，采样率将会调整以实现目标量。
+自适应采样会影响从 Web 服务器应用发送至 Application Insights 服务终结点的遥测量。 遥测量会自动调整以保持在指定的最大流量率，可通过 `MaxTelemetryItemsPerSecond` 设置对其进行控制。 如果应用程序产生的遥测数据很少（例如在调试时或由于用量较小），则只要数量低于 `MaxTelemetryItemsPerSecond`，采样处理器就不会丢弃项目。 随着遥测数据量的增加，采样率将会调整以实现目标量。
 
 为了实现目标量，一些生成的遥测会被丢弃。 但与其他类型的采样一样，该算法会保留相关的遥测项。 例如，在“搜索”中检查遥测数据时，可以查找与特定异常相关的请求。
 
@@ -302,7 +302,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 1. 使用最新的 [Application Insights Java SDK](../../azure-monitor/app/java-get-started.md)下载并配置 Web 应用程序
 
-2. 通过将下面的代码片段添加到 ApplicationInsights.xml 文件，启用固定速率采样模块  。
+2. 通过将下面的代码片段添加到 ApplicationInsights.xml 文件，启用固定速率采样模块。
 
     ```XML
         <TelemetryProcessors>
@@ -459,9 +459,13 @@ ASP.NET 版本 2.0.0 和 Java SDK 版本 2.0.1 及以上版本中 SDK 的固定�
 * 确保 SDK 版本是 2.0 或更高版本。
 * 检查在客户端和服务器上设置的采样百分比相同。
 
+### <a name="sampling-in-azure-functions"></a>Azure Functions 中的采样
+
+按照[以下](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)说明配置 Azure Functions 中运行的应用的采样。
+
 ## <a name="frequently-asked-questions"></a>常见问题
 
-ASP.NET 和 ASP.NET Core SDK 中的默认采样行为是什么？ 
+ASP.NET 和 ASP.NET Core SDK 中的默认采样行为是什么？
 
 * 如果使用上述 SDK 的某个最新版本，则默认会启用自适应采样：每秒采样 5 个遥测项。
   默认会添加 2 个 AdaptiveSamplingTelemetryProcessor，其中一个在采样中包含事件类型，另一个从采样中排除事件类型。 这种配置意味着 SDK 会尝试将遥测项限制为事件类型的 5 个遥测项以及所有其他类型的 5 个遥测项，因此确保独立于其他遥测类型对事件进行采样。 事件通常用于业务遥测，在大多数情况下不应受到诊断遥测量的影响。
@@ -481,9 +485,9 @@ ASP.NET 和 ASP.NET Core SDK 中的默认采样行为是什么？
     </TelemetryProcessors>
     ```
 
-是否可以对遥测数据进行多次采样？ 
+是否可以对遥测数据进行多次采样？
 
-* 不。 如果项已采样，则 SamplingTelemetryProcessor 将不考虑项的采样。 对于引入采样也是如此，对于已在 SDK 本身中采样的项，它不会应用采样。
+* 否。 如果项已采样，则 SamplingTelemetryProcessor 将不考虑项的采样。 对于引入采样也是如此，对于已在 SDK 本身中采样的项，它不会应用采样。
 
 *为何不采样简单“收集每个遥测类型 %X”？*
 
@@ -515,16 +519,22 @@ ASP.NET 和 ASP.NET Core SDK 中的默认采样行为是什么？
 
 *我总是想要查看某些罕见的事件。如何让它们通过采样模块？*
 
-* 为此，最佳方法是编写一个自定义的 [TelemetryProcessor](../../azure-monitor/app/api-filtering-sampling.md#filtering)，以便在想要保留的遥测项中将 `SamplingPercentage` 设置为 100，如下所示。 这可以确保所有采样方法都不会在任何采样中考虑此项。
+* 实现此目的的最佳方式是编写一个自定义[TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)，该自定义`SamplingPercentage`的将设置为要保留的遥测项的100，如下所示。 由于可以保证初始值设定项在遥测处理器（包括采样）之前运行，因此这可确保所有采样方法都将忽略任何采样注意事项中的此项。
 
 ```csharp
-    if(somecondition)
-    {
-        ((ISupportSampling)item).SamplingPercentage = 100;
-    }
+     public class MyTelemetryInitializer : ITelemetryInitializer
+      {
+         public void Initialize(ITelemetry telemetry)
+        {
+            if(somecondition)
+            {
+                ((ISupportSampling)item).SamplingPercentage = 100;
+            }
+        }
+      }
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
 * [筛选](../../azure-monitor/app/api-filtering-sampling.md)可以对 SDK 发送的内容提供更严格地控制。
-* 开发人员网络阅读文章[使用 Application Insights 优化遥测](https://msdn.microsoft.com/magazine/mt808502.aspx)。
+* 阅读开发人员网络文章[Application Insights 的 "优化遥测](https://msdn.microsoft.com/magazine/mt808502.aspx)"。

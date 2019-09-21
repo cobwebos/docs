@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: a48c2fdcce5126747f00cd3b901839864d438346
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9e14a9f3f2f27112a591f14e9a93580f66aadef7
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058278"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169549"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -29,14 +29,14 @@ ms.locfileid: "71058278"
 
 无论在何处以何种方式运行你的应用程序，[适用于 ASP.NET Core 的 Application Insights SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 都可对其进行监视。 如果应用程序正在运行并与 Azure 建立了网络连接，则可以收集遥测数据。 只要支持 .NET Core，就能支持 Application Insights 监视。 支持范围包括：
 * **操作系统**：Windows、Linux 或 Mac。
-* **托管方法**：进程内或进程外。 
+* **托管方法**：进程内或进程外。
 * **部署方法**：框架相关或独立。
-* **Web 服务器**：IIS (Internet Information Server) 或 Kestrel。 
+* **Web 服务器**：IIS (Internet Information Server) 或 Kestrel。
 * **托管平台**：Azure 应用服务的 Web 应用功能、Azure VM、Docker、Azure Kubernetes 服务 (AKS) 等。
 * **IDE**：Visual Studio、VS Code 或命令行。
 
 > [!NOTE]
-> 如果使用 ASP.NET Core 3.0-preview 和 Application Insights，请使用[2.8.0-beta2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta2)版本或更高版本。 这是已知的唯一可与 ASP.NET Core 3.0 兼容的版本。 此外，ASP.NET Core 3.0 应用尚不支持基于 Visual Studio 的载入。
+> 如果使用 ASP.NET Core 3.0-preview 和 Application Insights，请使用[2.8.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta3)版本或更高版本。 这是已知的唯一可与 ASP.NET Core 3.0 兼容的版本。 此外，ASP.NET Core 3.0 应用尚不支持基于 Visual Studio 的载入。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ ms.locfileid: "71058278"
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>启用 Application Insights 服务器端遥测 (Visual Studio)
 
-1. 在 Visual Studio 中打开你的项目。
+1. 在 Visual Studio 中打开项目。
 
     > [!TIP]
     > 如果需要，可为项目设置源代码管理，以便可以跟踪 Application Insights 做出的所有更改。 若要启用源代码管理，请选择“文件” > “添加到源代码管理”。
@@ -241,7 +241,7 @@ SDK 2.7.0-beta3 或更高版本自动捕获 `Warning` 或更高严重性的 [ILo
 |AddAutoCollectedMetricExtractor | 启用/禁用 AutoCollectedMetrics 提取程序，它是一种 TelemetryProcessor，它在采样发生之前发送有关请求/依赖项的预聚合度量值。 | 真
 |RequestCollectionOptions.TrackExceptions | 启用/禁用请求收集模块报告未处理的异常跟踪。 | NETSTANDARD 2.0 中的 false （因为异常是通过 ApplicationInsightsLoggerProvider 跟踪的），否则为 true。
 
-有关最新列表，请参阅[中`ApplicationInsightsServiceOptions`的可配置设置](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Microsoft.ApplicationInsights.AspNetCore/Extensions/ApplicationInsightsServiceOptions.cs)。
+有关最新列表，请参阅[中`ApplicationInsightsServiceOptions`的可配置设置](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
 
 ### <a name="sampling"></a>采样
 

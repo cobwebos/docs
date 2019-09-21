@@ -3,7 +3,7 @@ title: 适用于 Windows 的 Azure Monitor 虚拟机扩展 |Microsoft Docs
 description: 使用虚拟机扩展在 Windows 虚拟机上部署 Log Analytics 代理。
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2019
-ms.author: roiyz
-ms.openlocfilehash: 393b01d7815d94e4ad623c552f4110421c9d98bd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: fe8bafcb63c1a27b905bdc339c07d30c9f0a5982
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092255"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168928"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Azure Monitor 虚拟机扩展
 
@@ -31,7 +31,7 @@ Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Wind
 
 ### <a name="operating-system"></a>操作系统
 
-有关受支持的 Windows 操作系统的详细信息, 请参阅[Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)文章。
+有关支持的 Windows 操作系统的详细信息，请参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)一文。
 
 ### <a name="agent-and-vm-extension-version"></a>代理和 VM 扩展版本
 下表提供每次发布的 Windows Azure Monitor VM 扩展和 Log Analytics 代理捆绑包的版本映射。 

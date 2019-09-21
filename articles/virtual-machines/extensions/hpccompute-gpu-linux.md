@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
-ms.author: roiyz
-ms.openlocfilehash: 167780971ec59efd1ca197958798564d1ef2d596
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 83646c0b11bf558f667b29271a27d31e5489c157
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092319"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174001"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
@@ -36,7 +36,7 @@ https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)�
 
 此扩展支持以下 OS 发行版，具体取决于特定 OS 版本对驱动程序的支持。
 
-| 分发组 | Version |
+| 分发 | Version |
 |---|---|
 | Linux：Ubuntu | 16.04 LTS、18.04 LTS |
 | Linux：Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |

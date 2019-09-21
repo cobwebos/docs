@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: d647a643dafe50a5768261c2b09bf8c4154be469
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 464c1a8ab27f6615fdffd8efa6ab20d75e10a7c1
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086246"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171186"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -492,7 +492,7 @@ public int run(
 
 ## <a name="input---java-annotations"></a>输入 - Java 注释
 
-在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自表存储的参数使用 `@TableInput` 注释。  此批注可用于本机 Java 类型、pojo 或可为 null 的值, >\<使用可选的。 
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自表存储的参数使用 `@TableInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 Optional\<T> 的可为 null 的值一起使用。 
 
 ## <a name="input---configuration"></a>输入 - 配置
 
@@ -502,7 +502,7 @@ public int run(
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
-|**名称** | 不适用 | 表示函数代码中的表或实体的变量的名称。 | 
+|**name** | 不适用 | 表示函数代码中的表或实体的变量的名称。 | 
 |**tableName** | **TableName** | 表的名称。| 
 |**partitionKey** | **PartitionKey** |可选。 要读取的表实体的分区键。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
 |**rowKey** |**RowKey** | 可选。 要读取的表实体的行键。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
@@ -529,7 +529,7 @@ public int run(
 
 * **在 JavaScript 中读取一行或多行**
 
-  设置 `filter` 和 `take` 属性。 不要设置 `partitionKey` 或 `rowKey`。 使用 `context.bindings.<name>` 访问输入一个或多个输入表实体。 反序列化的对象具有 `RowKey` 和 `PartitionKey` 属性。
+  设置 `filter` 和 `take` 属性。 不要设置 `partitionKey` 或 `rowKey`。 使用 `context.bindings.<BINDING_NAME>` 访问输入一个或多个输入表实体。 反序列化的对象具有 `RowKey` 和 `PartitionKey` 属性。
 
 ## <a name="output"></a>Output
 
@@ -762,7 +762,7 @@ public static MyPoco TableOutput(
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
-|**名称** | 不适用 | 在函数代码中使用的、表示表或实体的变量名称。 设置为 `$return` 可引用函数返回值。| 
+|**name** | 不适用 | 在函数代码中使用的、表示表或实体的变量名称。 设置为 `$return` 可引用函数返回值。| 
 |**tableName** |**TableName** | 表的名称。| 
 |**partitionKey** |**PartitionKey** | 要写入的表实体的分区键。 有关如何使用此属性的指导，请参阅[用法部分](#output---usage)。| 
 |**rowKey** |**RowKey** | 要写入的表实体的行键。 有关如何使用此属性的指导，请参阅[用法部分](#output---usage)。| 
@@ -786,7 +786,7 @@ public static MyPoco TableOutput(
 
 * **在 JavaScript 中写入一行或多行**
 
-  在 JavaScript 函数中，可以使用 `context.bindings.<name>` 访问表输出。
+  在 JavaScript 函数中，可以使用 `context.bindings.<BINDING_NAME>` 访问表输出。
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 

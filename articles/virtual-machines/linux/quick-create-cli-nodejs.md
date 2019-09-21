@@ -3,7 +3,7 @@ title: 使用 Azure 经典 CLI 创建 Linux VM | Microsoft Docs
 description: 使用 Azure 经典 CLI 在 Azure 上创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: ''
-author: vlivech
+author: cynthn
 manager: gwallace
 editor: ''
 ms.assetid: facb1115-2b4e-4ef3-9905-330e42beb686
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: gwallace
-ms.openlocfilehash: 116811a8b4d8e61a2a727cd4606344f2b169be96
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ce3419ab4f40023b6288a3cf44be2129180dc8eb
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091605"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168697"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 创建 Linux VM
 

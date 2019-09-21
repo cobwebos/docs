@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 92accf4317ef8d0e3837ce3789615b5aaf6f6919
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 7a58e8559587ddcb307c338f5ce87cd6b8e52021
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996897"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171506"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>预览-创建和管理 Azure Kubernetes 服务中群集的多个节点池 (AKS)
 
@@ -79,6 +79,7 @@ az provider register --namespace Microsoft.ContainerService
 * 不能删除默认（第一个）节点池。
 * 无法使用 HTTP 应用程序路由加载项。
 * 不能使用与大多数操作一样的现有资源管理器模板来添加或删除节点池。 请改用[单独的资源管理器模板](#manage-node-pools-using-a-resource-manager-template)来更改 AKS 群集中的节点池。
+* 节点池的名称必须以小写字母开头，且只能包含字母数字字符。 对于 Linux 节点池，长度必须在1到12个字符之间，对于 Windows 节点池，长度必须介于1到6个字符之间。
 
 此功能处于预览阶段, 但以下附加限制适用:
 
@@ -130,6 +131,9 @@ az aks nodepool add \
     --node-count 3 \
     --kubernetes-version 1.12.7
 ```
+
+> [!NOTE]
+> 节点池的名称必须以小写字母开头，且只能包含字母数字字符。 对于 Linux 节点池，长度必须在1到12个字符之间，对于 Windows 节点池，长度必须介于1到6个字符之间。
 
 若要查看节点池的状态, 请使用[az aks node pool list][az-aks-nodepool-list]命令并指定资源组和群集名称:
 
@@ -580,8 +584,8 @@ az group deployment create \
 
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>为节点池中的每个节点分配公共 IP
 
-> [!NOTE]
-> 在为每个节点分配公共 IP 的预览过程中，由于可能存在与 VM 预配冲突的负载均衡器规则，因此不能将其与*AKS 中的标准负载均衡器 SKU*一起使用。 在预览中，如果需要为每个节点分配一个公共 IP，请使用*基本负载均衡器 SKU* 。
+> [!WARNING]
+> 在为每个节点分配公共 IP 的预览过程中，由于可能存在与 VM 预配冲突的负载均衡器规则，因此不能将其与*AKS 中的标准负载均衡器 SKU*一起使用。 在预览中，如果需要为每个节点分配一个公共 IP，则必须使用*基本负载均衡器 SKU* 。
 
 AKS 节点不需要自己的公共 IP 地址进行通信。 但某些情况下，可能需要节点池中的节点具有其自己的公共 IP 地址。 例如游戏，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 为此，可以注册单独的预览功能 "节点公共 IP （预览版）"。
 

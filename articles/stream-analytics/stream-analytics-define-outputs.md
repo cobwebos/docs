@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 386dc737bb45eec031aaa1a0c55f4478b8302c54
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984861"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173580"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -121,7 +121,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 | 编码 | 对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式。 |
 | 分隔符 | 仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
 | 格式 | 仅适用于 JSON 序列化。 “行分隔”指定通过新行分隔各个 JSON 对象，从而格式化输出。 “数组”指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。 |
-| 属性列 | 可选。 需要作为传出消息的用户属性而不是有效负载附加的逗号分隔列。 [输出的自定义元数据属性](#custom-metadata-properties-for-output)部分详细介绍了此功能。 |
+| 属性列 | 可选。 需要作为传出消息的用户属性而不是有效负载附加的逗号分隔列。 有关此功能的详细信息，请阅读[用于输出的自定义元数据属性](#custom-metadata-properties-for-output)部分。 |
 
 ## <a name="power-bi"></a>Power BI
 
@@ -158,8 +158,8 @@ Power BI 使用先进先出 (FIFO) 保留策略。 数据将在表中收集, 直
 从流分析 | 到 Power BI
 -----|-----
 bigint | Int64
-nvarchar(max) | String
-datetime | Datetime
+nvarchar(max) | 字符串
+datetime | 日期时间
 浮点数 | Double
 记录数组 | String 类型、常量值 "IRecord" 或 "IArray"
 
@@ -169,12 +169,12 @@ datetime | Datetime
 `SELECT *`避免查询阻止跨行进行动态架构更新。 除了潜在的性能影响, 它可能会导致结果所花费的时间不确定性。 选择需要在 Power BI 仪表板上显示的确切字段。 此外，数据值应与所选数据类型相符。
 
 
-上一个/当前 | Int64 | String | Datetime | Double
+上一个/当前 | Int64 | 字符串 | Datetime | Double
 -----------------|-------|--------|----------|-------
-Int64 | Int64 | String | String | Double
-Double | Double | String | String | Double
-String | String | String | String | String 
-datetime | String | String |  datetime | String
+Int64 | Int64 | 字符串 | 字符串 | Double
+Double | Double | 字符串 | 字符串 | Double
+字符串 | 字符串 | 字符串 | 字符串 | 字符串 
+datetime | 字符串 | 字符串 |  datetime | 字符串
 
 ## <a name="table-storage"></a>表存储
 
@@ -209,7 +209,8 @@ datetime | String | String |  datetime | String
 | 编码 |对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式。 |
 | 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
 | 格式 |仅适用于 JSON 类型。 “行分隔”指定通过新行分隔各个 JSON 对象，从而格式化输出。 “数组”指定输出会被格式化为 JSON 对象的数组。 |
-| 属性列 | 可选。 需要作为传出消息的用户属性而不是有效负载附加的逗号分隔列。 [输出的自定义元数据属性](#custom-metadata-properties-for-output)部分详细介绍了此功能。 |
+| 属性列 | 可选。 需要作为传出消息的用户属性而不是有效负载附加的逗号分隔列。 有关此功能的详细信息，请阅读[用于输出的自定义元数据属性](#custom-metadata-properties-for-output)部分。 |
+| 系统属性列 | 可选。 需要附加到传出消息而不是负载的系统属性和相应列名对的键值对。 有关此功能的详细信息，请[查看服务总线队列和主题输出的系统属性](#system-properties-for-service-bus-queue-and-topic-outputs)部分  |
 
 分区数[基于服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。
 
@@ -228,7 +229,8 @@ datetime | String | String |  datetime | String
 | 事件序列化格式 |输出数据的序列化格式。 支持 JSON、CSV 和 Avro。 |
 | 编码 |如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。 |
 | 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
-| 属性列 | 可选。 需要作为传出消息的用户属性而不是有效负载附加的逗号分隔列。 [输出的自定义元数据属性](#custom-metadata-properties-for-output)部分详细介绍了此功能。 |
+| 属性列 | 可选。 需要作为传出消息的用户属性而不是有效负载附加的逗号分隔列。 有关此功能的详细信息，请阅读[用于输出的自定义元数据属性](#custom-metadata-properties-for-output)部分。 |
+| 系统属性列 | 可选。 需要附加到传出消息而不是负载的系统属性和相应列名对的键值对。 有关此功能的详细信息，请[查看服务总线队列和主题输出的系统属性](#system-properties-for-service-bus-queue-and-topic-outputs)部分 |
 
 分区数[基于服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。
 
@@ -251,7 +253,7 @@ datetime | String | String |  datetime | String
 | 帐户 ID | Azure Cosmos DB 帐户的名称或终结点 URI。 |
 | 帐户密钥 | Azure Cosmos DB 帐户的共享访问密钥。 |
 | 数据库 | Azure Cosmos DB 数据库名称。 |
-| 容器名称 | 要使用的容器名称, 该名称必须存在于 Cosmos DB 中。 例如：  <br /><ul><li> _MyContainer_:名为 "MyContainer" 的容器必须存在。</li>|
+| 容器名 | 要使用的容器名称, 该名称必须存在于 Cosmos DB 中。 例如：  <br /><ul><li> _MyContainer_:名为 "MyContainer" 的容器必须存在。</li>|
 | 文档 ID |可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。
 
 ## <a name="azure-functions"></a>Azure Functions
@@ -263,8 +265,8 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions �
 
 | 属性名 | 描述 |
 | --- | --- |
-| Function App |Azure Functions 应用程序的名称。 |
-| 函数 |Azure Functions 应用中函数的名称。 |
+| 函数应用 |Azure Functions 应用程序的名称。 |
+| Functions |Azure Functions 应用中函数的名称。 |
 | Key |如果要使用其他订阅中的 Azure 函数, 可以通过提供访问函数的密钥来实现此目的。 |
 | 最大批处理大小 |一种属性, 可用于设置发送到 Azure 函数的每个输出批的最大大小。 输入单元以字节为单位。 默认情况下, 此值为262144字节 (256 KB)。 |
 | 最大批处理计数  |一个属性, 该属性允许你指定发送到 Azure Functions 的每个批中的最大事件数。 默认值为 100。 |
@@ -295,6 +297,25 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions �
 
 ![事件自定义属性](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
 
+## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>服务总线队列和主题输出的系统属性 
+可以将查询列作为[系统属性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties)附加到传出的服务总线队列或主题消息。 这些列不会进入有效负载，而是将相应的 BrokeredMessage[系统属性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties)与查询列值一起填充。
+支持这些系统属性- `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`。
+这些列的字符串值将分析为相应的系统属性值类型，并将任何分析失败视为数据错误。
+此字段以 JSON 对象格式提供。 此格式的详细信息如下所示：
+* 括在大括号{}内。
+* 写在键/值对中。
+* 键和值必须是字符串。
+* Key 是系统属性名称，值为查询列名称。
+* 键和值以冒号分隔。
+* 每个键/值对用逗号分隔。
+
+这说明了如何使用此属性–
+
+* 查询：`select *, column1, column2 INTO queueOutput FROM iotHubInput`
+* 系统属性列：`{ "MessageId": "column1", "PartitionKey": "column2"}`
+
+这会将`MessageId`具有`column1`值的服务总线队列消息设置为`column2`，并将 PartitionKey 设置为值。
+
 ## <a name="partitioning"></a>分区
 
 下表汇总了分区支持，以及每个输出类型的输出写入器数目：
@@ -305,7 +326,7 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions �
 | Azure SQL 数据库 | 是, 需要启用。 | 基于查询中的 PARTITION BY 子句。 | 如果启用了 "继承分区" 选项, 则会按照[完全可并行化查询](stream-analytics-scale-jobs.md)的输入分区进行。 若要详细了解如何在将数据加载到 Azure SQL 数据库时获得更好的写入吞吐量性能, 请参阅 azure[流分析输出到 AZURE Sql database](stream-analytics-sql-output-perf.md)。 |
 | Azure Blob 存储 | 是 | 使用路径模式中的事件字段的 {date} 和 {time} 标记。 选择日期格式, 如 YYYY/MM/DD、DD/MM/YYYY 或 MM-DD。 HH 用于时间格式。 可以通过单个自定义事件属性 {fieldname} 或 {datetime:\<specifier>} 对 blob 输出进行分区。 | 按照[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 | Azure 事件中心 | 是 | 是 | 按分区对齐方式变化。<br /> 如果事件中心输出的分区键与上游 (上一个) 查询步骤相同, 则写入器的数量与事件中心输出中的分区数相同。 每个编写器都使用[EventHubSender 类](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)将事件发送到特定分区。 <br /> 当事件中心输出的分区键与上游 (上一个) 查询步骤不一致时, 写入器数与该前一步骤中的分区数相同。 每个编写器都使用**EventHubClient**中的[SendBatchAsync 类](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)将事件发送到所有输出分区。 |
-| Power BI | 否 | None | 不适用。 |
+| Power BI | 否 | 无 | 不适用。 |
 | Azure 表存储 | 是 | 任何输出列。  | 按照[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 | Azure 服务总线主题 | 是 | 自动选择。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。| 与输出主题中的分区数量相同。  |
 | Azure 服务总线队列 | 是 | 自动选择。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。| 与输出队列中的分区数量相同。 |

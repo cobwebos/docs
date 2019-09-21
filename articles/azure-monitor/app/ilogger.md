@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: 925264bb69093ab70465665e1d2da615a7a3e53d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: acc7a218d40ec7b752d9495bd48e5f37436d736d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261759"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169458"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>.NET Core ILogger 日志的 ApplicationInsightsLoggerProvider
 
@@ -29,7 +29,7 @@ ASP.NET Core 支持适用于各种内置和第三方日志记录提供程序的�
 
 ILogger ApplicationInsightsLoggerProvider 捕获的日志与收集的任何其他遥测数据采用相同的配置。 它们与其他遥测数据具有相同的 TelemetryInitializer 和 TelemetryProcessor 集，使用相同的 TelemetryChannel，并且关联方式和采样方式也相同。 如果使用版本 2.7.0-beta3 或更高版本，则无需执行任何操作就能捕获 ILogger 日志。
 
-默认情况下，只会将“警告”或更高级别的 ILogger 日志（所有类别中）发送到 Application Insights。  但是，可以[应用筛选器来修改此行为](#control-logging-level)。 从 **Program.cs** 或 **Startup.cs** 捕获 ILogger 日志需要执行额外的步骤。 （请参阅[在 ASP.NET Core 应用程序中从 Startup.cs 和 Program.cs 捕获 ILogger 日志](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps)。）
+默认情况下，只会将“警告”或更高级别的 ILogger 日志（所有类别中）发送到 Application Insights。 但是，可以[应用筛选器来修改此行为](#control-logging-level)。 从 **Program.cs** 或 **Startup.cs** 捕获 ILogger 日志需要执行额外的步骤。 （请参阅[在 ASP.NET Core 应用程序中从 Startup.cs 和 Program.cs 捕获 ILogger 日志](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps)。）
 
 如果使用早期版本的 Microsoft.ApplicationInsights.AspNet SDK，或者只想使用 ApplicationInsightsLoggerProvider 而不启用任何其他 Application Insights 监视，请使用以下过程：
 
@@ -221,6 +221,10 @@ public class Startup
 
 ## <a name="console-application"></a>控制台应用程序
 
+> [!NOTE]
+> 有一个名为 Applicationinsights.config 的新 beta Application Insights SDK [WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) ，可用于为任何控制台应用程序启用 Application Insights （ILogger 和其他 Application Insights 遥测）。 建议在[此处](../../azure-monitor/app/worker-service.md)使用此包和相关说明。
+释放此新包的稳定版本后，将弃用下面的示例。
+
 以下代码演示了一个配置为向 Application Insights 发送 ILogger 跟踪的示例控制台应用程序。
 
 已安装的包：
@@ -326,7 +330,7 @@ ASP.NET Core *ILogger* 基础结构提供一个内置机制用于应用[日志�
 
 ### <a name="create-filter-rules-in-configuration-with-appsettingsjson"></a>使用 appsettings.json 在配置中创建筛选规则
 
-对于 ApplicationInsightsLoggerProvider，提供程序别名为 `ApplicationInsights`。 以下 *appsettings.json* 节配置所有类别中“警告”和更高级别的日志，以及以“Microsoft”开头的类别中要发送到 `ApplicationInsightsLoggerProvider` 的“错误”和更高级别的日志。  
+对于 ApplicationInsightsLoggerProvider，提供程序别名为 `ApplicationInsights`。 以下 *appsettings.json* 节配置所有类别中“警告”和更高级别的日志，以及以“Microsoft”开头的类别中要发送到 `ApplicationInsightsLoggerProvider` 的“错误”和更高级别的日志。
 
 ```json
 {
@@ -347,7 +351,7 @@ ASP.NET Core *ILogger* 基础结构提供一个内置机制用于应用[日志�
 
 ### <a name="create-filter-rules-in-code"></a>在代码中创建筛选规则
 
-以下代码片段配置所有类别中“警告”和更高级别的日志，以及以“Microsoft”开头的类别中要发送到 `ApplicationInsightsLoggerProvider` 的“错误”和更高级别的日志。   此配置是与前面的 *appsettings.json* 节中的配置相同。
+以下代码片段配置所有类别中“警告”和更高级别的日志，以及以“Microsoft”开头的类别中要发送到 `ApplicationInsightsLoggerProvider` 的“错误”和更高级别的日志。 此配置是与前面的 *appsettings.json* 节中的配置相同。
 
 ```csharp
     WebHost.CreateDefaultBuilder(args)

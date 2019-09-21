@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/16/2019
+ms.date: 09/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 63358923dae22a2547d7946cd10ca2a3f02e33a5
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: dc80638bfafbd0ade17fe355c5dcbac58d4ff24e
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122817"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172507"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -40,19 +40,19 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 ## <a name="locations"></a>地缘政治区域中的 ExpressRoute 位置的 Azure 区域。
 下表提供了地缘政治区域内 ExpressRoute 位置与 Azure 区域的映射。
 
-| **地缘政治区域** | **区域** | **Azure 区域** | **ExpressRoute 位置** |
-| --- | --- | --- | --- |
-| **澳大利亚政府** | 1 | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
-| **欧洲** | 1 |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹，Amsterdam2，哥本哈根，都柏林，法兰克福，伦敦，London2，马赛，纽波特（威尔士），巴黎，斯德哥尔摩，苏黎世 |
-| **北美** | 1 |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、San Antonio、西雅图、硅谷、硅 Valley2、华盛顿特区、华盛顿 DC2、蒙特利尔、魁北克市、多伦多 |
-| **亚洲** | 2 |东亚、东南亚 |香港特别行政区, 吉隆坡, 新加坡, 新加坡 2, 台北 |
-| **印度** | 2 |印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
-| **日本** | 2 |日本西部、日本东部 |大坂、东京 |
-| **大洋洲** | 2 |澳大利亚东南部、澳大利亚东部 |奥克兰, 墨尔本, |
-| **韩国** | 2 |韩国中部、韩国南部 |釜山、首尔|
-| **阿拉伯联合酋长国** | 3 | 阿拉伯联合酋长国中部, 阿拉伯联合酋长国北部 | Dubai、Dubai2 |
-| **南非** | 3 |南非西部、南非北部 |开普敦、约翰内斯堡 |
-| **南美洲** | 3 |巴西南部 |Sao Paulo |
+| **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
+| --- | --- | --- |
+| **澳大利亚政府** |澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
+| **欧洲** | 法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹，Amsterdam2，哥本哈根，都柏林，法兰克福，伦敦，London2，马赛，纽波特（威尔士），巴黎，斯德哥尔摩，苏黎世 |
+| **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、San Antonio、西雅图、硅谷、硅 Valley2、华盛顿特区、华盛顿 DC2、蒙特利尔、魁北克市、多伦多 |
+| **亚洲** | 东亚、东南亚 |香港特别行政区, 吉隆坡, 新加坡, 新加坡 2, 台北 |
+| **印度** | 印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
+| **日本** | 日本西部、日本东部 |大坂、东京 |
+| **大洋洲** | 澳大利亚东南部、澳大利亚东部 |奥克兰, 墨尔本, |
+| **韩国** | 韩国中部、韩国南部 |釜山、首尔|
+| **阿拉伯联合酋长国** | 阿拉伯联合酋长国中部, 阿拉伯联合酋长国北部 | Dubai、Dubai2 |
+| **南非** | 南非西部、南非北部 |开普敦、约翰内斯堡 |
+| **南美洲** | 巴西南部 |Sao Paulo |
 
 
 ## <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>国家/地区云的区域和地缘政治边界
