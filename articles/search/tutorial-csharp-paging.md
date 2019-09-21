@@ -27,7 +27,7 @@ ms.locfileid: "67434629"
 
 要完成本教程，需要：
 
-启动并运行 [C# 教程：创建第一个应用 - Azure 搜索](tutorial-csharp-create-first-app.md)项目。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+启动并运行 [C# 教程：创建第一个应用 - Azure 搜索](tutorial-csharp-create-first-app.md)项目。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
 
 ## <a name="extend-your-app-with-numbered-paging"></a>使用带编号的分页来扩展应用
 
@@ -391,7 +391,7 @@ ms.locfileid: "67434629"
 
 这里重要的一点是，不会替换正在显示的页面，而是新结果追加到该页面上。 用户可始终滚回到搜索的第一批结果。
 
-要实现无限滚动，首先要在添加任何页码滚动元素之前处理项目。 因此，如果需要此滚动，请从 GitHub 再创建一个基本搜索页的副本：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+要实现无限滚动，首先要在添加任何页码滚动元素之前处理项目。 因此，如果需要此滚动，请从 GitHub 再创建一个基本搜索页的副本：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
 
 ### <a name="add-paging-fields-to-the-model"></a>向模型添加分页字段
 

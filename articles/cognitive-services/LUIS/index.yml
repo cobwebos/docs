@@ -12,12 +12,12 @@ metadata:
   title: 语言理解 (LUIS) 文档
   titleSuffix: Azure Cognitive Services
   description: 语言理解服务 (LUIS) 使应用程序可以理解用户以自己的语言表达的内容。 LUIS 使用机器学习，使开发人员可以构建应用程序，以便接收采用自然语言的用户输入并从中提取含义。
-  ms.openlocfilehash: 2191d2b3efebe1439f9f6180540929dc83027846
-  ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+  ms.openlocfilehash: 70249b540e53ab8182a25f81d7401697b2b888c1
+  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/19/2019
-  ms.locfileid: "71129265"
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71155022"
 landingContent:
 - title: 关于语言理解 (LUIS)
   linkLists:
@@ -131,3 +131,13 @@ landingContent:
       url: luis-concept-entity-types.md#types-of-entities
     - text: 预生成域
       url: luis-reference-prebuilt-domains.md
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 故障排除
+      url: troubleshooting.md
+    - text: 在 Stack Overflow 上提出问题
+      url: https://stackoverflow.com/questions/tagged/LUIS
+    - text: 利用 UserVoice 影响服务
+      url: https://cognitive.uservoice.com/forums/551524-luis
