@@ -232,7 +232,7 @@
       items:
         - name: 在 Azure 门户中管理只读副本
           href: howto-read-replicas-portal.md
-        - name: 管理只读副本 Azure CLI
+        - name: 使用 Azure CLI、REST API 管理只读副本
           href: howto-read-replicas-cli.md
 - name: 引用
   items:

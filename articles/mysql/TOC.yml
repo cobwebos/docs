@@ -195,7 +195,7 @@
           href: howto-data-in-replication.md
         - name: 创建只读副本 Azure 门户
           href: howto-read-replicas-portal.md
-        - name: 创建只读副本 Azure CLI
+        - name: 使用 Azure CLI、REST API 创建只读副本
           href: howto-read-replicas-cli.md
     - name: 故障排除
       items:
