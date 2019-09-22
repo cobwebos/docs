@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: f4aa7e6660e3febdca6e0e5b1ad9f11bebaa48ea
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07facf06702a63df8ea93d43b9896b72322b209f
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638456"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178254"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>数据处理和用户定义的函数
 
@@ -23,7 +23,7 @@ Azure 数字孪生提供高级计算功能。 开发人员可以针对传入的�
 
 在设备将遥测数据发送到 Azure 数字孪生后，开发人员可以分四个阶段处理数据：*验证*、*匹配*、*计算*和*调度*。
 
-![Azure 数字孪生数据处理流][1]
+[![Azure 数字孪生数据处理流](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. 验证阶段将传入的遥测消息转换为容易理解的[数据传输对象](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5)格式。 此阶段还执行设备和传感器验证。
 1. 匹配阶段查找要运行的相应用户定义函数。 预定义的匹配程序根据传入的遥测消息中的设备、传感器和空间信息查找用户定义的函数。
@@ -34,9 +34,7 @@ Azure 数字孪生提供高级计算功能。 开发人员可以针对传入的�
 
 Azure 数字孪生中的数据处理包括定义三个对象：*匹配程序*、*用户定义的函数*和*角色分配*。
 
-![Azure 数字孪生数据处理对象][2]
-
-<div id="matcher"></div>
+[![Azure 数字孪生数据处理对象](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>匹配程序
 
@@ -92,7 +90,7 @@ Azure 数字孪生中的数据处理包括定义三个对象：*匹配程序*、
 
 ### <a name="user-defined-functions"></a>用户定义的函数
 
-用户定义的函数是在隔离的 Azure 数字孪生环境中执行的自定义函数。 用户定义的函数有权访问它收到的原始传感器遥测消息。 用户定义的函数还有权访问空间图和调度程序服务。 在图形中注册用户定义的函数后，必须创建匹配程序（详见[上文](#matcher)）来指定何时执行该函数。 例如，当 Azure 数字孪生从给定传感器收到新的遥测数据时，匹配的用户定义的函数可以计算最后几个传感器读数的移动平均值。
+用户定义的函数是在隔离的 Azure 数字孪生环境中执行的自定义函数。 用户定义的函数有权访问它收到的原始传感器遥测消息。 用户定义的函数还有权访问空间图和调度程序服务。 在图形中注册用户定义的函数后，必须创建匹配程序（详见[上文](#matchers)）来指定何时执行该函数。 例如，当 Azure 数字孪生从给定传感器收到新的遥测数据时，匹配的用户定义的函数可以计算最后几个传感器读数的移动平均值。
 
 用户定义的函数可以在 JavaScript 中编写。 帮助器方法可与用户定义的执行环境中的图形交互。 开发人员可以针对传感器遥测消息执行自定义的代码片段。 示例包括：
 
@@ -103,14 +101,11 @@ Azure 数字孪生中的数据处理包括定义三个对象：*匹配程序*、
 
 有关详细信息，请参阅[如何使用用户定义的函数](./how-to-user-defined-functions.md)。
 
-
 #### <a name="examples"></a>示例
 
 [数字孪生 C# 示例的 GitHub 存储库](https://github.com/Azure-Samples/digital-twins-samples-csharp/)包含了用户定义的函数的一些示例：
 - [此函数](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js)查找二氧化碳、运动和温度值，以确定是否存在这些值在范围内的房间。 [数字孪生教程](tutorial-facilities-udf.md)更详细地探究了此函数。 
 - [此函数](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js)从多个运动传感器查找数据，并且如果任何传感器都未检测到任何运动，则确定该空间可用。 通过执行文件的注释部分中提到的更改，可以轻松替换[快速入门](quickstart-view-occupancy-dotnet.md)或[教程](tutorial-facilities-setup.md)中使用的用户定义的函数。 
-
-
 
 ### <a name="role-assignment"></a>角色分配
 
@@ -125,7 +120,3 @@ Azure 数字孪生中的数据处理包括定义三个对象：*匹配程序*、
 - 若要详细了解如何创建匹配程序、用户定义的函数和角色分配，请阅读[用户定义函数使用指南](./how-to-user-defined-functions.md)。
 
 - 请查看[用户定义函数客户端库参考文档](./reference-user-defined-functions-client-library.md)。
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-data-processing-flow.png
-[2]: media/concepts/digital-twins-user-defined-functions.png

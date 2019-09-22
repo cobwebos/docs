@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: 0bb7309ae452b2885be279d1ab38b8467397f2f8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 37f2afbd9bae4ca6bccc5062515f166687d8913c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638497"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177070"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>了解数字孪生对象模型和空间智能图
 
@@ -23,9 +23,7 @@ Azure 数字孪生是一种 Azure IoT 服务，可提供物理环境及相关设
 
 准备好数字孪生对象模型和本体后，便可以填充空间图。 空间图是与 IoT 解决方案相关的空间、设备和人员之间的多种关系的虚拟呈现形式。 此图显示了使用智能建筑物本体的空间图示例。
 
-![数字孪生空间图建筑物][1]
-
-<a id="model"></a>
+[![数字孪生空间图生成](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 空间图将空间、设备、传感器和用户汇集在一起。 每一个对象均以模拟现实世界的方式链接在一起。 在此示例中，43 会场有四层楼，每层楼都具有许多不同区域。 用户与其工作站相关联，并且可以访问图形的某些部分。 管理员有权更改空间图，而访问者仅有权查看某些建筑物数据。
 
@@ -56,8 +54,6 @@ Azure 数字孪生是一种 Azure IoT 服务，可提供物理环境及相关设
 - 匹配器：用于确定为给定的遥测消息执行哪些 UDF 的对象。
 - 终结点：可以路由遥测消息和数字孪生事件的位置，例如 `Event Hub`、`Service Bus` 和 `Event Grid`。
 
-<a id="graph"></a>
-
 ## <a name="spatial-intelligence-graph"></a>空间智能图
 
 空间图是数字孪生对象模型中定义的空间、设备和人员的层次结构图。 空间图支持继承、筛选、遍历、可伸缩性和扩展性。 可使用 REST API 集合管理空间图并与其交互。
@@ -82,14 +78,14 @@ Azure 数字孪生是一种 Azure IoT 服务，可提供物理环境及相关设
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| 名称 | 替换为 |
+| 姓名 | 替换为 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | 数字孪生实例的名称 |
 | YOUR_LOCATION | 托管实例的服务器区域 |
 
  此图中显示了完整的 URL 格式。
 
-![数字孪生门户管理 API][2]
+(![数字孪生门户管理 API](media/concepts/digital-twins-spatial-graph-management-api-url.png)] （media/概念/digital-twins-spatial-graph-management-api-url # lightbox）
 
 有关使用空间智能图的详细信息，请访问 Azure 数字孪生管理 API 非公开预览版。
 
@@ -106,7 +102,3 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 - 要了解有关设备连接以及如何将遥测消息发送到数字孪生的信息，请参阅 [Azure 数字孪生设备连接与遥测数据入口](concepts-device-ingress.md)。
 
 - 要了解管理 API 限制和节流的信息，请参阅 [Azure 数字孪生 API 管理和限制](concepts-service-limits.md)。
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-spatial-graph-building.png
-[2]: media/concepts/digital-twins-spatial-graph-management-api-url.png

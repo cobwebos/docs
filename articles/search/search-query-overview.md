@@ -7,73 +7,57 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.custom: seodec2018
-ms.openlocfilehash: 30c3b233a1454d04fb281e049376b2b3aafe1879
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 09/20/2019
+ms.openlocfilehash: 4646cb30ef7602da990e24f923c8eceada4debd0
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647973"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178018"
 ---
-# <a name="how-to-compose-a-query-in-azure-search"></a>如何在 Azure 搜索中撰写查询
+# <a name="query-types-and-composition-in-azure-search"></a>Azure 搜索中的查询类型和组成部分
 
-在 Azure 搜索中，查询是往返操作的完整规范。 请求中的参数提供匹配条件用于查找索引中的文档、引擎的执行指令，以及用于调整响应的指令。 
+在 Azure 搜索中，查询是往返操作的完整规范。 请求上的参数提供用于在索引中查找文档的匹配条件、要包括或排除的字段、传递给引擎的执行指令以及用于调整响应的指令。 未指定`search=*`（），查询将针对所有可搜索字段作为全文搜索操作运行，以任意顺序返回未评分结果集。
 
-查询请求是一个丰富的构造，它指定哪些字段在搜索范围之内、如何搜索、要返回哪些字段、是否要排序或筛选，等等。 如果未指定这些内容，查询会作为全文搜索操作针对所有可搜索字段运行，返回一个任意排序的未评分结果集。
-
-## <a name="apis-and-tools-for-testing"></a>用于测试的 API 和工具
-
-下表列出用于提交查询的 API 和基于工具的方法。
-
-| 方法 | 描述 |
-|-------------|-------------|
-| [搜索浏览器（门户）](search-explorer.md) | 提供搜索栏，以及索引和 API 版本选项。 结果会以 JSON 文档的形式返回。 <br/>[了解详细信息。](search-get-started-portal.md#query-index) | 
-| [Postman 或 Fiddler](search-get-started-postman.md) | Web 测试工具是用公式表示 REST 调用的极佳选择。 REST API 支持 Azure 搜索中的每个可能操作。 在本文中，了解如何设置 HTTP 请求标头和正文，以便向 Azure 搜索发送请求。  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | 可用于查询 Azure 搜索索引的客户端。  <br/>[了解详细信息。](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [搜索文档 (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | 索引上的 GET 或 POST 方法，使用查询参数进行其他输入。  |
-
-## <a name="a-first-look-at-query-requests"></a>查询请求的初步认识
-
-示例对于介绍新的概念非常有帮助。 作为在 [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 中构造的一个代表性查询，本示例针对[房地产演示索引](search-get-started-portal.md)，并包括常用的参数。
+下面的示例是在[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)中构造的一个代表性查询。 此示例的目标是[旅馆演示程序索引](search-get-started-portal.md)，并包含通用参数。
 
 ```
 {
     "queryType": "simple" 
-    "search": "seattle townhouse* +\"lake\"",
-    "searchFields": "description, city",
-    "count": "true",
-    "select": "listingId, street, status, daysOnMarket, description",
+    "search": "+New York +restaurant",
+    "searchFields": "Description, Address/City, Tags",
+    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
     "top": "10",
-    "orderby": "daysOnMarket"
+    "count": "true",
+    "orderby": "Rating desc"
 }
 ```
 
-+ **`queryType`** 设置分析器，在 Azure 搜索中，该分析器可以是[默认的简单查询分析器](search-query-simple-examples.md)（最适合用于全文搜索），也可以是[完整的 Lucene 查询分析器](search-query-lucene-examples.md)（用于正则表达式、邻近搜索、模糊和通配符搜索等高级查询构造）。
++ **`queryType`** 设置分析器，它是[默认的简单查询分析器](search-query-simple-examples.md)（对于全文搜索是最佳的），或者是用于高级查询构造（如正则表达式、邻近搜索、模糊和通配符搜索）的[完整 Lucene 查询分析器](search-query-lucene-examples.md)，用于命名小.
 
 + **`search`** 提供匹配条件（通常是文本，但往往附带布尔运算符）。 包含单个独立字词的查询称为字词查询。 由括在引号中的多个部分组成的查询称为关键短语查询。 搜索可以是未定义的（例如 **`search=*`** ），但搜索更有可能包含字词、短语和运算符，如以下示例中所示。
 
-+ **`searchFields`** 是可选的，用于将查询执行限制为特定的字段。
++ **`searchFields`** 将查询执行限制为特定字段。 在索引架构中属性化为可*搜索*的任何字段都是此参数的候选项。
 
-还可以通过查询中包含的参数来调整响应。 在本示例中，结果集包含 **`select`** 语句中列出的字段。 此查询只返回前 10 个匹配项，但 **`count`** 会告知总共有多少个匹配的文档。 在此查询中，行已按 daysOnMarket 排序。
+还可以通过查询中包含的参数来调整响应。 在本示例中，结果集包含 **`select`** 语句中列出的字段。 只能在 $select 语句中使用标记为可*检索*的字段。 此外，在此 **`top`** 查询中只会返回10个命中， **`count`** 同时会告诉您有多少个文档是完整的，而这可能比返回的多。 在此查询中，按级别降序对行进行排序。
 
 在 Azure 搜索中，查询执行始终针对一个使用请求中提供的 API 密钥进行身份验证的索引。 在 REST 中，两者均在请求标头中提供。
 
 ### <a name="how-to-run-this-query"></a>如何运行此查询
 
-若要执行此查询，请使用[搜索浏览器和房地产演示索引](search-get-started-portal.md)。 
+若要执行此查询，请使用 "[搜索资源管理器" 和 "宾馆演示索引"](search-get-started-portal.md)。 
 
-可将此查询字符串粘贴到浏览器的搜索栏中：`search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
+可将此查询字符串粘贴到浏览器的搜索栏中：`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>索引如何启用查询操作
 
 索引设计和查询设计在 Azure 搜索中紧密耦合。 需要提前知道的一个重要事实是，包含每个字段中属性的索引架构确定了可以生成的查询类型。 
 
-字段中的索引属性设置允许的操作 - 字段在索引中是否可搜索、在结果中是否可检索、是否可排序、是否可筛选，等等。 在示例查询字符串中，只有 `"$orderby": "daysOnMarket"` 可以正常工作，因为 daysOnMarket 字段在索引架构中标记为可排序。 
+字段中的索引属性设置允许的操作 - 字段在索引中是否可搜索、在结果中是否可检索、是否可排序、是否可筛选，等等。 在示例查询字符串中， `"$orderby": "Rating"`仅在索引架构中将 "分级" 字段标记为可*排序*的情况下有效。 
 
-![房地产示例的索引定义](./media/search-query-overview/realestate-sample-index-definition.png "房地产示例的索引定义")
+![宾馆示例的索引定义](./media/search-query-overview/hotel-sample-index-definition.png "宾馆示例的索引定义")
 
-上面的屏幕截图是房地产示例的索引属性的部分列表。 可在门户中查看整个索引架构。 有关索引属性的详细信息，请参阅[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+以上屏幕截图是旅馆示例的索引属性的部分列表。 可在门户中查看整个索引架构。 有关索引属性的详细信息，请参阅[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)。
 
 > [!Note]
 > 某些查询功能在索引范围启用，而不是按字段启用。 这些功能包括：[同义词映射](search-synonyms.md)、[自定义分析器](index-add-custom-analyzers.md)、[建议器构造（用于自动完成和建议的查询）](index-add-suggesters.md)、[排名结果的评分逻辑](index-add-scoring-profiles.md)。
@@ -92,22 +76,33 @@ ms.locfileid: "69647973"
 
 所有其他搜索参数都为可选参数。 有关属性的完整列表，请参阅[创建索引 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index)。 有关如何在处理期间使用参数的详细信息，请参阅 [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md)。
 
+## <a name="choose-apis-and-tools"></a>选择 Api 和工具
+
+下表列出用于提交查询的 API 和基于工具的方法。
+
+| 方法 | 描述 |
+|-------------|-------------|
+| [搜索浏览器（门户）](search-explorer.md) | 提供搜索栏，以及索引和 API 版本选项。 结果会以 JSON 文档的形式返回。 建议用于浏览、测试和验证。 <br/>[了解详细信息。](search-get-started-portal.md#query-index) | 
+| [Postman 或其他 REST 工具](search-get-started-postman.md) | Web 测试工具是用公式表示 REST 调用的极佳选择。 REST API 支持 Azure 搜索中的每个可能操作。 在本文中，了解如何设置 HTTP 请求标头和正文，以便向 Azure 搜索发送请求。  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | 可用于查询 Azure 搜索索引的客户端。  <br/>[了解详细信息。](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [搜索文档 (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | 索引上的 GET 或 POST 方法，使用查询参数进行其他输入。  |
+
 ## <a name="choose-a-parser-simple--full"></a>选择一个分析器：简单 | 完整
 
 Azure 搜索基于 Apache Lucene ，提供两种查询分析器选择，分别用于处理典型查询和专用查询。 使用简单分析器的请求是通过[简单查询语法](query-simple-syntax.md)构建的。由于在自由格式文本查询中具有速度和效率优势，这种语法已选作默认语法。 此语法支持多种常用的搜索运算符，包括 AND、OR、NOT、短语、后缀和优先运算符。
 
 在将 `queryType=full` 添加到请求时所启用的[完整 Lucene 查询语法](query-Lucene-syntax.md#bkmk_syntax)公开作为 [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 的一部分开发的、已被广泛采用的且富有表达能力的查询语言。 完整语法扩展了简单语法。 为简单语法编写的任何查询在完整 Lucene 分析器下运行。 
 
-以下示例演示了一个要点：采用不同 queryType 设置的同一个查询会产生不同的结果。 在第一个查询中，`^3` 被视为搜索字词的一部分。
+以下示例演示了一个要点：采用不同 queryType 设置的同一个查询会产生不同的结果。 在第一个查询中， `^3`将`historic` "after" 作为搜索词的一部分处理。 此查询的排名靠前的结果是 "Marquis Plaza & 套件"，其说明中包含*海洋*
 
 ```
-queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
+queryType=simple&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
 ```
 
-使用完整 Lucene 分析器的同一查询针对“ranch”解释字段内提升，从而大大提升了包含该特定字词的结果的搜索排名。
+使用完整的 Lucene 分析器的同一查询会`^3`将解释为现场术语增强程序。 切换分析器会更改排名，结果中包含一项*历史*活动，并将其移到顶部。
 
 ```
-queryType=full&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
+queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
 ```
 
 <a name="types-of-queries"></a>

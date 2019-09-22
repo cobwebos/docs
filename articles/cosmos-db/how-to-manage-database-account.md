@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: db7746bc91935c0385e97d494a45d34819665ced
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 95e3ee31ea6a700253e372d183944c17c85e327c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093390"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178317"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帐户
 
@@ -166,10 +166,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="configure-multiple-write-regions-portal"></a>Azure 门户
 
-打开“全局复制数据”选项卡，选择“启用”以启用多区域写入。 启用多区域写入后，你的帐户当前拥有的所有读取区域将变为读取和写入区域。 
-
-> [!NOTE]
-> 启用多区域写入后，无法禁用它。 
+打开“全局复制数据”选项卡，选择“启用”以启用多区域写入。 启用多区域写入后，你的帐户当前拥有的所有读取区域将变为读取和写入区域。 你还可以在需要时禁用多区域写入。
 
 ![Azure Cosmos 帐户配置多主数据库屏幕快照](./media/how-to-manage-database-account/single-to-multi-master.png)
 
@@ -182,6 +179,8 @@ $resourceGroupName = 'myResourceGroup'
 $accountName = 'myaccountname'
 az cosmosdb update --name $accountName --resource-group $resourceGroupName --enable-multiple-write-locations true
 ```
+
+若要创建不包含多区域写入的 Azure Cosmos 帐户，可以将`--enable-multiple-write-locations`参数设置为 false。
 
 ### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 

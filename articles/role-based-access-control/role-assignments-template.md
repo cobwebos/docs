@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2019
+ms.date: 09/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d9ec2fc76fb1cc33898c331a79167f9291fc8c63
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: b7f701cd3ce07099d80bca40e506108bcc9a9da9
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172989"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178107"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限
 
@@ -337,4 +337,5 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 
 - [快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 - [了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)
+- [在订阅级别创建资源组和资源](../azure-resource-manager/deploy-to-subscription.md)
 - [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=rbac)

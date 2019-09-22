@@ -1,33 +1,35 @@
 ---
-title: 使用“简单”搜索语法的查询示例 - Azure 搜索
-description: 用于查询 Azure 搜索索引的全文搜索、筛选搜索、地理搜索、分面搜索和其他搜索字符串的简单查询示例。
+title: 创建简单查询-Azure 搜索
+description: 按示例学习，具体方法是根据全文搜索的简单语法、筛选器搜索、异地搜索、针对 Azure 搜索索引的分面搜索运行查询。
 author: HeidiSteen
 manager: nitinme
 tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: df84686e512db90351d5a9815706890bce49848b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c4aeef07d34159e01f188effae77926895e2857
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647618"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179190"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Azure 搜索中使用“简单”搜索语法的查询示例
+# <a name="create-a-simple-query-in-azure-search"></a>在 Azure 搜索中创建简单查询
 
-[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)调用默认查询分析器，用于对 Azure 搜索索引执行全文搜索查询。 简单查询分析器速度很快，处理对象是 Azure 搜索中的全文搜索、筛选及分面搜索和地理搜索等常见方案。 本文逐步展示了一些示例，它们显示在使用简单语法时可用的查询操作。
+在 Azure 搜索中，[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)调用默认查询分析器来对索引执行全文搜索查询。 此分析器非常快捷，并处理常见方案，包括全文搜索、筛选和分面搜索以及异地搜索。 
 
-备选的查询语法是[完整的 Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)，它支持模糊搜索和通配符搜索等更复杂的查询结构，而这可能需要额外的处理时间。 要获取完整语法的详细信息和演示示例，请参阅 [Lucene 语法查询示例](search-query-lucene-examples.md)。
+本文将使用示例来阐释简单的语法。
+
+可选的查询语法是[完整的 Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)，支持更复杂的查询结构，如模糊和通配符搜索，这可能需要额外的时间来处理。 有关演示完整语法的详细信息和示例，请参阅[使用完整的 Lucene 语法](search-query-lucene-examples.md)。
 
 ## <a name="formulate-requests-in-postman"></a>在 Postman 中创建请求
 
 下面的示例使用“纽约工作岗位”搜索索引，它包含基于[纽约市开放数据](https://nycopendata.socrata.com/)计划提供的数据集得出的岗位。 此数据不应认为是最新或完整数据。 该索引位于 Microsoft 提供的一项沙盒服务上，也就是说无需 Azure 订阅或 Azure 搜索即可试用这些查询。
 
-要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[使用 REST 客户端进行浏览](search-get-started-postman.md)。
+要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[快速入门：使用 Postman](search-get-started-postman.md)浏览 Azure Search REST API。
 
 ### <a name="set-the-request-header"></a>设置请求标头
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 88d74fe794f4de95b7ba8b0dd5575ca56d2016e5
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033752"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176856"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>如何：在 Azure Active Directory 应用程序库中列出你的应用程序
 
@@ -80,7 +80,7 @@ ms.locfileid: "71033752"
     ![将 OpenID Connect 应用程序列到库中的时间线](./media/howto-app-gallery-listing/openid.png)
 
     * 如果想要使用 OpenID Connect 将你的应用程序添加到库中的列表，请如上所述选择“OpenID Connect & OAuth 2.0”。
-    * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 
+    * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
 - **SAML 2.0** 或 **WS 联合身份验证**：如果你的应用支持 SAML 2.0，则可以根据[用来添加自定义应用程序的说明](../active-directory-saas-custom-apps.md)将其直接与 Azure AD 租户集成。
 
@@ -98,6 +98,12 @@ ms.locfileid: "71033752"
 * 如果想要使用 Password SSO 将你的应用程序添加到库中的列表，请如上所述选择“Password SSO”。
 * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
+## <a name="requesting-for-user-provisioning"></a>请求用户预配
+
+按照以下过程请求用户预配-
+
+   ![将 SAML 应用程序列到库中的时间线](./media/howto-app-gallery-listing/user-provisioning.png)
+
 ## <a name="updateremove-existing-listing"></a>更新/删除现有列表
 
 若要更新或删除 Azure AD 应用库中的现有应用程序，首先需要在[应用程序网络门户](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交请求。 如果你有 Office 365 帐户，请使用该帐户登录到此门户。 如果没有，请使用 Microsoft 帐户（例如 Outlook 或 Hotmail）进行登录。
@@ -106,9 +112,9 @@ ms.locfileid: "71033752"
 
     ![将 SAML 应用程序列到库中的时间线](./media/howto-app-gallery-listing/updateorremove.png)
 
-    * 如果要更新现有应用程序，请选择“更新现有应用程序列表”。
-    * 如果要从 Azure AD 库中删除现有应用程序，请选择“删除现有应用程序列表”。
-    * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 
+    * 如果要更新现有应用程序，请根据您的要求选择适当的选项。
+    * 如果要从 Azure AD 库中删除现有应用程序，请**从库中选择 "删除我的应用程序列表**"。
+    * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
 ## <a name="listing-requests-by-customers"></a>列出客户的请求
 
@@ -124,11 +130,11 @@ ms.locfileid: "71033752"
 
 在库中列出 SAML 2.0 或 WS-Fed 应用程序这一过程的时间线是 7-10 个工作日。
 
-   ![将 SAML 应用程序列出到库中的时间线](./media/howto-app-gallery-listing/timeline.png)
+  ![将 SAML 应用程序列出到库中的时间线](./media/howto-app-gallery-listing/timeline.png)
 
 在库中列出 OpenID Connect 应用程序这一过程的时间线是 2-5 个工作日。
 
-   ![将 SAML 应用程序列出到库中的时间线](./media/howto-app-gallery-listing/timeline2.png)
+  ![将 SAML 应用程序列出到库中的时间线](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>升级
 

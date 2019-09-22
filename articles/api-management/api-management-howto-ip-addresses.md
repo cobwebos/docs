@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6e12a16b221a8f31d82a002fbc93b090d6f0c577
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861248"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178186"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API 管理的 IP 地址
 
@@ -61,7 +61,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 
 如果 API 管理服务在虚拟网络中，则会有两种类型的 IP 地址：公用和专用。
 
-公共 IP 地址用于端口`3443`上的内部通信，用于管理配置（例如，通过 Azure 资源管理器）。 此外，当请求从 API 管理发送到面向公众的（面向 Internet）后端时，公共 IP 地址将显示为请求的源。
+公共 IP 地址用于端口`3443`上的内部通信，用于管理配置（例如，通过 Azure 资源管理器）。 在外部 VNET 配置中，它们也用于运行时 API 流量。 将请求从 API 管理发送到面向公众的（面向 Internet）后端时，公共 IP 地址将显示为请求的源。
 
 专用虚拟 IP （VIP）地址用于从网络内部连接到 API 管理终结点-网关、开发人员门户和用于直接 API 访问的管理平面。 你可以使用它们来设置网络中的 DNS 记录。
 

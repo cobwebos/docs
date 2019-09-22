@@ -16,14 +16,14 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87764ed30182dc548fc3a260582174f121e27e24
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29f94d6ff8045b7cae64957eeae00d2460ca3e37
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965217"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176834"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
+# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速启动
 
 ## <a name="deploy-seamless-single-sign-on"></a>部署无缝单一登录
 
@@ -93,10 +93,10 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 ![Azure 门户：“Azure AD Connect”窗格](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> 无缝 SSO 在每个 ad `AZUREADSSOACC`林中的本地 Active Directory (AD) 中创建名为的计算机帐户。 出于安全原因, 需要对计算机帐户进行严格保护。`AZUREADSSOACC` 只有域管理员才能管理计算机帐户。 请确保计算机帐户上的 Kerberos 委派处于禁用状态, 并且 Active Directory 中的其他帐户没有对`AZUREADSSOACC`计算机帐户的委派权限。 将计算机帐户存储在组织单位 (OU) 中, 在这种情况下, 用户可以放心地删除意外删除, 并且只有域管理员才有权访问。
+> 无缝 SSO 在每个 ad `AZUREADSSOACC`林中的本地 Active Directory （AD）中创建名为的计算机帐户。 出于安全原因，需要对计算机帐户进行严格保护。`AZUREADSSOACC` 只有域管理员才能管理计算机帐户。 请确保计算机帐户上的 Kerberos 委派处于禁用状态，并且 Active Directory 中的其他帐户没有对`AZUREADSSOACC`计算机帐户的委派权限。 将计算机帐户存储在组织单位（OU）中，在这种情况下，用户可以放心地删除意外删除，并且只有域管理员才有权访问。
 
 >[!NOTE]
-> 如果你在本地环境中使用传递哈希和凭据盗窃缓解体系结构, 请进行适当的更改, 以确保`AZUREADSSOACC`计算机帐户不会在隔离容器中结束。 
+> 如果你在本地环境中使用传递哈希和凭据盗窃缓解体系结构，请进行适当的更改，以确保`AZUREADSSOACC`计算机帐户不会在隔离容器中结束。 
 
 ## <a name="step-3-roll-out-the-feature"></a>步骤 3：推出此功能
 
@@ -221,7 +221,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 >[!IMPORTANT]
 >如果泄露，可以使用计算机帐户上的 Kerberos 解密密钥为 AD 林中的任意用户生成 Kerberos 票证。 然后，恶意执行组件可以为遭到入侵的用户模拟 Azure AD 登录。 强烈建议定期滚动更新这些 Kerberos 解密密钥，至少每 30 天一次。
 
-有关如何滚动更新密钥的说明，请参阅 [Azure Active Directory 无缝单一登录：常见问题](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)。 我们正在努力引入自动化滚动更新密钥的功能。
+有关如何滚动更新密钥的说明，请参阅 [Azure Active Directory 无缝单一登录：常见问题](how-to-connect-sso-faq.md)。 我们正在努力引入自动化滚动更新密钥的功能。
 
 >[!IMPORTANT]
 >启用该功能后无需_立即_执行此步骤。 至少每隔 30 天滚动更新一次 Kerberos 解密密钥。

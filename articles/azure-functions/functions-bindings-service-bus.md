@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: f2bdfab82e1b9fb05d74f69536ec672a4b18a4bf
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 7dcc69434e017d6564030d83b14098344bc8ac0d
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114380"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178340"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -33,6 +33,9 @@ ms.locfileid: "70114380"
 ## <a name="packages---functions-2x"></a>包 - Functions 2.x
 
 [Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) NuGet 包 3.x 版中提供了服务总线绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/) GitHub 存储库中提供了此包的源代码。
+
+> [!NOTE]
+> 版本2.x 不会创建`ServiceBusTrigger`实例中配置的主题或订阅。 版本2.x 基于[Azure](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) ，并且不处理队列管理。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -214,9 +217,9 @@ module.exports = function(context, myQueueItem) {
 
 ### <a name="trigger---python-example"></a>触发器 - Python 示例
 
-下面的示例演示如何通过触发器读取一条或多个队列消息。
+下面的示例演示如何通过触发器读取 ServiceBus 队列消息。
 
-在将*类型*设置为`serviceBusTrigger`的*函数 json*中定义了一个 "//" 绑定。
+ServiceBus 绑定在 function.json 中定义，其中 type 设置为 `serviceBusTrigger`。
 
 ```json
 {
@@ -233,7 +236,7 @@ module.exports = function(context, myQueueItem) {
 }
 ```
 
-`func.ServiceBusMessage`   *_Py\__ 中\_* 的代码声明了一个参数, 该参数允许您在函数中读取队列消息。
+_\_init_\_.py 中的代码将参数声明为 `func.ServiceBusMessage`，以允许你在函数中读取队列消息。
 
 ```python
 import azure.functions as func
@@ -330,7 +333,7 @@ def main(msg: func.ServiceBusMessage):
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**名称** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
+|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|要监视的队列的名称。  仅在监视队列的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |**subscriptionName**|**SubscriptionName**|要监视的订阅的名称。 仅在监视主题的情况下设置，不为队列设置。|
@@ -346,7 +349,7 @@ def main(msg: func.ServiceBusMessage):
 * `string` - 如果消息是文本。
 * `byte[]` - 适用于二进制数据。
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
-* `BrokeredMessage`-提供反序列化的消息, 其中包含[BrokeredMessage\<. GetBody T > ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)方法。
+* `BrokeredMessage` - 使用 [BrokeredMessage.GetBody\<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法提供反序列化消息。
 
 这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x，请使用 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
 
@@ -611,9 +614,9 @@ module.exports = function (context, myTimer) {
 
 ### <a name="output---python-example"></a>输出 - Python 示例
 
-下面的示例演示如何写出到 Python 中的停止队列队列。
+下面的示例演示如何使用 Python 写出到 ServiceBus 队列。
 
-ServiceBue 绑定定义在*类型*设置为`serviceBus`的*函数 json*中定义。
+ServiceBue 绑定在 function.json 中定义，其中 type 设置为 `serviceBus`。
 
 ```json
 {
@@ -645,7 +648,7 @@ ServiceBue 绑定定义在*类型*设置为`serviceBus`的*函数 json*中定义
 }
 ```
 
-在*py  _\__ 中, 通过将值传递给方法, 可以将消息写入队列。\_* `set`
+在 _\_init_\_.py 中，可以通过将值传递给 `set` 方法将消息写出到队列。
 
 ```python
 import azure.functions as func
@@ -697,7 +700,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**名称** | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 |
+|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|队列名称。  仅在发送队列消息的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在发送主题消息的情况下设置，不为队列设置。|
 |**连接**|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyServiceBus”，函数运行时将会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。|
@@ -714,19 +717,19 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 * `out T paramName` - `T` 可以是任何可 JSON 序列化的类型。 如果函数退出时参数值为 null，Functions 将创建具有 null 对象的消息。
 * `out string` - 如果函数退出时参数值为 null，Functions 不创建消息。
 * `out byte[]` - 如果函数退出时参数值为 null，Functions 不创建消息。
-* `out BrokeredMessage`-如果函数退出时参数值为 null, 则函数不会创建消息 (对于函数 1.x)
-* `out Message`-如果函数退出时参数值为 null, 则函数不会创建消息 (对于函数 1.x)
+* `out BrokeredMessage`-如果函数退出时参数值为 null，则函数不会创建消息（对于函数1.x）
+* `out Message`-如果函数退出时参数值为 null，则函数不会创建消息（对于函数1.x）
 * `ICollector<T>` 或 `IAsyncCollector<T>` - 用于创建多条消息。 调用 `Add` 方法时创建了一条消息。
 
-使用C#函数时:
+使用C#函数时：
 
-* 异步函数需要返回值`IAsyncCollector` , 而不`out`是参数。
+* 异步函数需要返回值`IAsyncCollector` ，而不`out`是参数。
 
-* 若要访问会话 ID, 请绑定到[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)类型并`sessionId`使用属性。
+* 若要访问会话 ID，请绑定到[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)类型并`sessionId`使用属性。
 
-在 JavaScript 中通过 `context.bindings.<name from function.json>` 访问队列或主题。 可以将字符串、字节数组或 JavaScript 对象 (反序列化为 JSON) 分配给`context.binding.<name>`。
+在 JavaScript 中通过 `context.bindings.<name from function.json>` 访问队列或主题。 可以将字符串、字节数组或 JavaScript 对象（反序列化为 JSON）分配给`context.binding.<name>`。
 
-若要将消息以非C#语言发送到已启用会话的队列, 请使用[AZURE 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) , 而不是内置的输出绑定。
+若要将消息以非C#语言发送到已启用会话的队列，请使用[AZURE 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) ，而不是内置的输出绑定。
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 

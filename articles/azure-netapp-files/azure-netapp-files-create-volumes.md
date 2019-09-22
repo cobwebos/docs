@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 06733103980086fad0975514ae3489c3652e428a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 45164acd89fc9634d6929bafb35e64a5dc9f2b86
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846747"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178218"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
 
@@ -37,14 +37,16 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 
     ![导航到卷](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
-2.  单击“+ 添加卷”  以创建卷。  
+2.  单击“+ 添加卷”以创建卷。  
     此时将显示 "创建卷" 窗口。
 
 3.  在 "创建卷" 窗口中, 单击 "**创建**", 并为以下字段提供信息:   
     * **卷名**      
         指定要创建的卷的名称。   
 
-        卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 您可以使用任何字母数字字符。
+        卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 您可以使用任何字母数字字符。   
+
+        不能将`default`用作卷名。
 
     * **容量池**  
         指定要在其中创建卷的容量池。
@@ -52,7 +54,7 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
     * **配额**  
         指定分配给卷的逻辑存储量。  
 
-        “可用配额”  字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
+        “可用配额”字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
 
     * **虚拟网络**  
         指定要从中访问卷的 Azure 虚拟网络 (Vnet)。  
@@ -63,13 +65,13 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
         指定要用于卷的子网。  
         你指定的子网必须委派给 Azure NetApp 文件。 
         
-        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。  然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”  来为 Azure NetApp 文件委派子网。 在每个 Vnet 中, 只能将一个子网委托给 Azure NetApp 文件。   
+        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。 然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”来为 Azure NetApp 文件委派子网。 在每个 Vnet 中, 只能将一个子网委托给 Azure NetApp 文件。   
  
         ![创建卷](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-4. 单击“协议”  ，然后选择“NFS”  作为该卷的协议类型。   
+4. 单击“协议”，然后选择“NFS”作为该卷的协议类型。   
     * 指定将用于创建新卷的导出路径的**文件路径**。 导出路径用来装载并访问卷。
 
         文件路径名只能包含字母、数字和连字符 ("-")。 它的长度必须介于 16 到 40 个字符之间。 

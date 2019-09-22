@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 599339b0591245462dcc0840400ad5241cd5922c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a38b0cfe7072975e4bcaf61b65ab7733694f714c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325817"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178566"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>教程：使用 YAML 文件部署多容器组
 
@@ -24,7 +24,7 @@ ms.locfileid: "68325817"
 
 Azure 容器实例支持使用[容器组](container-instances-container-groups.md)将多个容器部署到单台主机上。 当生成用于日志记录、监视或服务需要另一个附加进程的任何其他配置的应用程序挎斗时, 容器组非常有用。
 
-在本教程中, 你将执行以下步骤, 通过使用 Azure CLI 部署 YAML 文件来运行简单的双容器挎斗配置。 YAML 文件提供了一种简单的格式来指定实例设置。 学习如何：
+在本教程中，你将执行以下步骤，通过使用 Azure CLI 部署[YAML 文件](container-instances-reference-yaml.md)来运行简单的双容器挎斗配置。 YAML 文件提供了一种简单的格式来指定实例设置。 学习如何：
 
 > [!div class="checklist"]
 > * 配置 YAML 文件

@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 09/21/2019
 ms.author: juliako
-ms.openlocfilehash: 477733dcb76647b2c03f79dea4f55c3102d262b8
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: bc4be8eaafe805e5d9a985b005efe80bc4af1d21
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376187"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177997"
 ---
 # <a name="analyzing-video-and-audio-files"></a>分析视频和音频文件
 
-借助 Azure 媒体服务 v3，还可使用视频索引器通过 AMS v3 分析器预设（在本文中介绍）从视频和音频文件中提取见解。 如果需要更详细的见解，请直接使用视频索引器。 如需了解何时要使用视频索引器与媒体服务分析器预设，请查看[比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。
+通过 Azure 媒体服务 v3，你可以通过媒体服务 v3 分析器预设（本文中所述）使用视频索引器从视频和音频文件中提取见解。 如果需要更详细的见解，请直接使用视频索引器。 如需了解何时要使用视频索引器与媒体服务分析器预设，请查看[比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。
 
 若要使用媒体服务 v3 预设分析内容，请创建**转换**，然后提交使用以下某个预设的**作业**：[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) 或 **AudioAnalyzerPreset**。 以下文章演示了如何使用 **VideoAnalyzerPreset**：[教程：使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "70376187"
 
 |姓名|描述|
 |---|---|
-|id|行 ID。|
+|ID|行 ID。|
 |text|脚本本身。|
 |language|脚本语言。 旨在支持每行语言不同的脚本。|
 |instances|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
@@ -102,7 +102,7 @@ ms.locfileid: "70376187"
 
 |姓名|描述|
 |---|---|
-|id|OCR 行 ID。|
+|ID|OCR 行 ID。|
 |text|OCR 文本。|
 |confidence|识别置信度。|
 |language|OCR 语言。|
@@ -145,7 +145,7 @@ ms.locfileid: "70376187"
 
 |姓名|描述|
 |---|---|
-|id|人脸 ID。|
+|ID|人脸 ID。|
 |name|人脸姓名。 可以为“Unknown #0”、公认的名人或客户训练的人。|
 |confidence|人脸识别置信度。|
 |description|名人的说明。 |
@@ -190,7 +190,7 @@ ms.locfileid: "70376187"
 
 |姓名|描述|
 |---|---|
-|id|截图 ID。|
+|ID|截图 ID。|
 |keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。 关键帧实例具有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
 |实例|此截图的时间范围列表（截图仅有 1 个实例）。|
 
@@ -260,7 +260,7 @@ ms.locfileid: "70376187"
 
 |姓名|描述|
 |---|---|
-|id|情绪 ID。|
+|ID|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
 |instances|出现此情绪的时间范围列表。|
 |sentimentType |类型可以是“Positive”、“Neutral”或“Negative”。|
@@ -295,7 +295,7 @@ ms.locfileid: "70376187"
 
 |姓名|描述|
 |---|---|
-|id|标签 ID。|
+|ID|标签 ID。|
 |name|标签名称（例如“计算机”、“电视”）。|
 |language|标签名称语言（转换后）。 BCP-47|
 |instances|出现此标签的时间范围列表（一个标签可重复多次出现）。 每个实例都有置信度字段。 |
@@ -354,7 +354,7 @@ ms.locfileid: "70376187"
 
 |姓名|描述|
 |---|---|
-|id|关键字 ID。|
+|ID|关键字 ID。|
 |text|关键字文本。|
 |confidence|关键字的识别置信度。|
 |language|关键字语言（转换后）。|
@@ -405,7 +405,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 |姓名|描述|
 |---|---|
-|id|视觉内容审核 ID。|
+|ID|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|
 |racyScore|不雅内容评分（由内容审核员提供）。|
 |实例|显示此视觉内容审核的时间范围列表。|

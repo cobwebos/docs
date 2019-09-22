@@ -1,5 +1,5 @@
 ---
-title: Lucene 查询示例 - Azure 搜索
+title: 使用完整的 Lucene 查询语法-Azure 搜索
 description: 在 Azure 搜索服务中进行模糊搜索、邻近搜索、术语提升、正则表达式搜索和通配符搜索的 Lucene 查询语法。
 author: HeidiSteen
 manager: nitinme
@@ -7,17 +7,17 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f6a39129db9e8c43a5e2de68d919ba1037c3f5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fcfc668022d0d8fc74258657bb93642aec49bd08
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648241"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178157"
 ---
-# <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>使用“完整”Lucene 搜索语法（Azure 搜索中的高级查询）的查询示例
+# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>使用 "full" Lucene 搜索语法（Azure 搜索中的高级查询）
 
 在构造 Azure 搜索的查询时，可以将默认的[简单查询分析器](query-simple-syntax.md)替换为更全面的 [Azure 搜索中的 Lucene 查询分析器](query-lucene-syntax.md)，以便制定专用的高级查询定义。 
 

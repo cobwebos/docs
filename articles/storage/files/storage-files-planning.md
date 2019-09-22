@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da9ab6eef98a602635e5e92dca3bd5628846ce62
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3140aff93c9afcf9a911fe1f381859ff93efef14
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036337"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178359"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -202,7 +202,7 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 - 在将订阅接受到较大的文件共享预览后，创建的任何新存储帐户都不能进行 LRS/ZRS 到 GRS/GZRS 帐户转换。
 
 
-### <a name="regional-availability"></a>适用区域
+### <a name="regional-availability"></a>区域可用性
 
 标准文件共享在所有区域中可用, 最高可达 5 TiB。 在某些区域, 可使用 100 TiB 限制, 下表列出了这些区域:
 
@@ -215,6 +215,7 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 |East US        |LRS     |否    |尚不支持|
 |法国中部 |LRS、ZRS|否    |LRS-是，ZRS-尚未|
 |法国南部   |LRS     |否    |是|
+|北欧   |LRS     |否    |是|
 |印度南部    |LRS     |否    |尚不支持|
 |东南亚 |LRS、ZRS|否    |是|
 |美国中西部|LRS     |否    |尚不支持|

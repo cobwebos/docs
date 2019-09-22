@@ -1,33 +1,30 @@
 ---
-title: Azure 门户中用于查询数据的搜索浏览器工具 - Azure 搜索
-description: 使用搜索浏览器等 Azure 门户工具在 Azure 搜索中查询索引。 使用高级语法输入搜索词或完全限定的搜索字符串。
+title: 使用搜索资源管理器工具在 Azure 门户中查询数据-Azure 搜索
+description: 搜索资源管理器内置于 Azure 门户中，可用于在 Azure 搜索中浏览内容和验证查询。 输入用于术语或短语搜索的字符串，或者为高级语法输入完全限定的搜索表达式。
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649973"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178130"
 ---
-# <a name="search-explorer-for-querying-data-in-azure-search"></a>Azure 搜索中用于查询数据的搜索浏览器 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>使用 Azure 门户中的搜索资源管理器在 Azure 搜索中查询文档 
 
-本文介绍如何使用搜索浏览器在 Azure 门户中查询现有 Azure 搜索索引。 可以使用搜索浏览器，向服务中的任何现有索引提交简单或完整的 Lucene 查询字符串。 
+本文介绍如何使用搜索浏览器在 Azure 门户中查询现有 Azure 搜索索引。 您可以从命令栏开始搜索资源管理器，以将简单或完整的 Lucene 查询表达式提交到您的服务中的任何现有索引。 
 
    ![门户中的搜索资源管理器命令](./media/search-explorer/search-explorer-cmd2.png "Search explorer command in porta")
 
-
-有关入门的帮助，请参阅[启动搜索资源管理器](#start-search-explorer)。
-
 ## <a name="basic-search-strings"></a>基本搜索字符串
 
-以下示例假定为内置的房地产示例索引。 有关创建此索引的帮助，请参阅[快速入门：Azure 门户中的导入、索引和查询](search-get-started-portal.md)。
+下面的示例假定内置的房地产示例索引。 您可以使用门户中的 "导入数据" 向导创建此索引，并选择 "**示例**" 作为数据源。
 
 ### <a name="example-1---empty-search"></a>示例 1 - 空搜索
 
@@ -94,7 +91,7 @@ Azure 搜索根据搜索级别返回前 50 个匹配项。 若要获取下一组
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>筛选表达式（大于、小于、等于）
 
-如果要指定精确条件搜索，而不是进行自定义文本搜索，请使用“$filter”参数。 此示例搜索大于3的间卧室:
+如果要指定精确条件搜索，而不是进行自定义文本搜索，请使用“$filter”参数。 此示例搜索大于3的间卧室：
 
    ```Input
    search=seattle condo&$filter=beds gt 3&$count=true
@@ -106,7 +103,7 @@ Azure 搜索根据搜索级别返回前 50 个匹配项。 若要获取下一组
 
 ## <a name="order-by-expressions"></a>Order-by 表达式
 
-添加“$orderby”按搜索分数之外的其他字段对结果进行排序。 可以用来对此进行测试的示例表达式是:
+添加“$orderby”按搜索分数之外的其他字段对结果进行排序。 可以用来对此进行测试的示例表达式是：
 
    ```Input
    search=seattle condo&$select=listingId,beds,price&$filter=beds gt 3&$count=true&$orderby=price asc

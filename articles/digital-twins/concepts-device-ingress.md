@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a3a5555bf163aedd9b41a9c9aa363a883deb4cb8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 22ae7aeeff4542bee764e131f58eb115026a4fb3
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638519"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177106"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>设备连接与遥测数据入口
 
@@ -67,7 +67,7 @@ YOUR_MANAGEMENT_API_URL/devices?HardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=Con
 
  **消息**的有效负载内容可以是最大为 256 KB 的任意数据。 [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) 类型的属性预期需要满足几项要求。 下表显示了系统支持的必需和可选属性。
 
-| 属性名 | 值 | 必填 | 描述 |
+| 属性名 | ReplTest1 | 必填 | 描述 |
 |---|---|---|---|
 | DigitalTwins-Telemetry | 1.0 | 是 | 在系统中标识消息的常量值。 |
 | DigitalTwins-SensorHardwareId | `string(72)` | 是 | 发送**消息**的传感器的唯一标识符。 该值必须与对象的 HardwareId 属性匹配，以便系统可以处理它。 例如， `00FF0643BE88-CO2` 。 |

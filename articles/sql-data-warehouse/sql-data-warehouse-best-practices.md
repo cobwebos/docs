@@ -10,17 +10,17 @@ ms.subservice: design
 ms.date: 11/26/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9c9e293a6e9c8126f2b82f68d591aee56ec32aec
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a89988fd369a382ac86f0f4b1ef0f61c0b7b9cad
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67672280"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178425"
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库最佳实践
 本文包含一系列最佳实践，可帮助你从 Azure SQL 数据仓库获得最佳性能。  本文的有些概念很基本且很容易解释，而有些概念则相对高级，本文只对其进行大致介绍。  本文的目的是提供一些基本指导，让用户在生成数据仓库时更加关注那些重要的方面。  每部分都介绍一个概念，并提供哪里可以阅读深度介绍的详细文章。
 
-如果刚开始使用 Azure SQL 数据仓库，千万别让本文吓到。  主题的顺序主要按照重要性排列。  如果一开始就关注头几个概念，则效果应该不错。  随着使用 SQL 数据仓库更加熟悉和熟悉, 请返回并查看几个其他概念。  融会贯通不需要很长时间。
+如果刚开始使用 Azure SQL 数据仓库，千万别让本文吓到。  主题的顺序主要按照重要性排列。  如果一开始就关注头几个概念，则效果应该不错。  随着使用 SQL 数据仓库更加熟悉和熟悉，请返回并查看几个其他概念。  融会贯通不需要很长时间。
 
 有关加载指南，请参阅[加载数据的指南](guidance-for-loading-data.md)。
 
@@ -63,6 +63,9 @@ SQL 数据仓库支持通过多种工具（包括 Azure 数据工厂、PolyBase�
 
 另请参阅[了解事务][Understanding transactions]、[优化事务][Optimizing transactions]、[表分区][Table partitioning]、[TRUNCATE TABLE][TRUNCATE TABLE]、[ALTER TABLE][ALTER TABLE]、[Create table as select (CTAS)][Create table as select (CTAS)]
 
+## <a name="reduce-query-result-sizes"></a>缩小查询结果大小  
+这有助于避免由大型查询结果引起的客户端问题。  您可以编辑您的查询以减少返回的行数。 某些查询生成工具允许您向每个查询添加 "top N" 语法。  您还可以将查询结果 CETAS 到临时表，然后使用 PolyBase 导出来进行下层处理。
+
 ## <a name="use-the-smallest-possible-column-size"></a>使用最小可能的列大小
 在定义 DDL 时，使用可支持数据的最小数据类型，能够改善查询性能。  这对 CHAR 和 VARCHAR 列尤其重要。  如果列中最长的值是 25 个字符，请将列定义为 VARCHAR(25)。  避免将所有字符列定义为较大的默认长度。  此外，将列定义为 VARCHAR（当它只需要这样的大小时）而非 NVARCHAR。
 
@@ -90,7 +93,7 @@ SQL 数据仓库使用资源组作为将内存分配给查询的一种方式。 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>使用较小的资源类来增加并发性
 如果注意到用户查询似乎长时间延迟，可能是用户在较大资源类中运行，占用大量的并发性位置，而导致其他查询排入队列。  若要确认用户的查询是否被排入队列，请运行 `SELECT * FROM sys.dm_pdw_waits` 来看是否返回了任何行。
 
-另请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md), [sys.databases _pdw_waits][sys.dm_pdw_waits]
+另请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)、[sys.dm_pdw_waits][sys.dm_pdw_waits]
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>使用 DMV 来监视和优化查询
 SQL 数据仓库有多个 DMV 可用于监视查询执行。  以下监视相关文章逐步说明了如何查看正在执行的查询的详细信息。  若要在这些 DMV 中快速找到查询，可在查询中使用 LABEL 选项。
@@ -100,7 +103,7 @@ SQL 数据仓库有多个 DMV 可用于监视查询执行。  以下监视相关
 ## <a name="other-resources"></a>其他资源
 另请参阅[故障诊断][Troubleshooting]一文，了解常见的问题和解决方案。
 
-如果在本文中没有找到所需内容，可尝试使用本页面左侧的“搜索文档”来搜索所有 Azure SQL 数据仓库文档。  在[AZURE Sql 数据仓库论坛][Azure SQL Data Warehouse MSDN Forum]中, 您可以向其他用户和 SQL 数据仓库产品组提出问题。  我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  若要提问有关堆栈溢出的问题，请访问 [Azure SQL 数据仓库堆栈溢出论坛][Azure SQL Data Warehouse Stack Overflow Forum]。
+如果在本文中没有找到所需内容，可尝试使用本页面左侧的“搜索文档”来搜索所有 Azure SQL 数据仓库文档。  在[AZURE Sql 数据仓库论坛][Azure SQL Data Warehouse MSDN Forum]中，您可以向其他用户和 SQL 数据仓库产品组提出问题。  我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  若要提问有关堆栈溢出的问题，请访问 [Azure SQL 数据仓库堆栈溢出论坛][Azure SQL Data Warehouse Stack Overflow Forum]。
 
 最后，如需提出功能方面的请求，请使用 [Azure SQL 数据仓库反馈][Azure SQL Data Warehouse Feedback]页。  添加请求或对其他请求投赞成票对我们确定功能的优先级有很大的帮助。
 
