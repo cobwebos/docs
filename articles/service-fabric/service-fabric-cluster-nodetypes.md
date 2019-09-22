@@ -89,7 +89,7 @@ Service Fabric 虚拟机扩展用于将 Service Fabric 启动到 Azure 虚拟机
 | commonNames | string[] | --- | 已安装群集证书的公用名 |
 | x509StoreName | string | --- | 已安装群集证书所在的存储的名称 |
 | typeHandlerVersion | 1.1 | --- | 扩展版本。 建议使用 1.0 经典版扩展来升级到 1.1 |
-| 数据路径 | string | --- | 用于保存 Service Fabric 系统服务和应用程序数据状态的驱动器路径。 
+| dataPath | string | --- | 用于保存 Service Fabric 系统服务和应用程序数据状态的驱动器路径。 
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[“随地部署”功能的概述及其与 Azure 托管群集的比较](service-fabric-deploy-anywhere.md)。
