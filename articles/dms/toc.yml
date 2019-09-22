@@ -47,6 +47,7 @@
     - name: 将 SSIS 包迁移到 Azure SQL 数据库托管实例
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: 资源
+  expanded: true
   items:
     - name: 数据库迁移方案状态
       href: resource-scenario-status.md
