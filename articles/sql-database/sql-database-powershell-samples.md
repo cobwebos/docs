@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: c32803fec6107e39a0b8329adaee072e3e291575
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 998497d3e790ba501ac5cdeb4974bf7ee9ea6a54
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567055"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059261"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Azure PowerShell 示例
 
@@ -27,7 +27,7 @@ Azure SQL 数据库允许你使用 Azure PowerShell 配置数据库、实例和�
 
 如果选择在本地安装并使用 PowerShell，则本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
-## <a name="single-database-and-elastic-pools"></a>单一数据库和弹性池
+## <a name="single-database-and-elastic-poolstabsingle-database"></a>[单一数据库和弹性池](#tab/single-database)
 
 下表包括了适用于 Azure SQL 数据库的示例 Azure PowerShell 脚本的链接。
 
@@ -58,7 +58,7 @@ Azure SQL 数据库允许你使用 Azure PowerShell 配置数据库、实例和�
 
 详细了解[单一数据库 Azure PowerShell API](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)。
 
-## <a name="managed-instance"></a>托管实例
+## <a name="managed-instancetabmanaged-instance"></a>[托管实例](#tab/managed-instance)
 
 下表包括了适用于 Azure SQL 数据库 - 托管实例的示例 Azure PowerShell 脚本的链接。
 
@@ -73,6 +73,8 @@ Azure SQL 数据库允许你使用 Azure PowerShell 配置数据库、实例和�
 |||
 
 详细了解[托管实例 Azure PowerShell API](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances)。
+
+---
 
 ## <a name="additional-resources"></a>其他资源
 

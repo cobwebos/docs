@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 3dece2d2bffc7bd2b9e0a3c2931b2038ebc3c77e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2cbb37b4e93468a42335f40a19baf4c742cb6dbb
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850644"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098623"
 ---
 # <a name="create-an-azure-automation-runbook"></a>创建 Azure 自动化 Runbook
 
@@ -34,7 +34,7 @@ Azure 自动化 Runbook 可以通过 Azure 创建。 此方法提供一个基于
 
 1. 单击“流程自动化”下的“Runbook”。   此时会显示 Runbook 列表。
 
-1. 单击列表顶部的“添加 Runbook”按钮。  在“添加 Runbook”页上选择“快速创建”。  
+1. 单击列表顶部的“创建 Runbook”按钮 
 
 1. 输入“Hello-World”作为 Runbook **名称**，选择 **PowerShell** 作为 **Runbook 类型**。 单击“创建”。 
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：从 Azure IoT 中心控制设备 (Node.js) | Microsoft Docs
+title: 快速入门：通过 Azure IoT 控制设备 (Node.js)
 description: 本快速入门会运行两个示例 Node.js 应用程序。 一个为后端应用程序，可远程控制连接到中心的设备。 另一个应用程序可模拟连接到中心的可受远程控制的设备。
 author: wesmc7777
 manager: philmea
@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: ba49709e6cab2d3e6a752fb7b529da7edb9f642e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: ab064798d21dd6d6ba87f2f2d093dfc0849c1cb6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877151"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967189"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>快速入门：控制连接到 IoT 中心的设备 (Node.js)
 
@@ -37,7 +37,7 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 
 本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
-可从 [nodejs.org](https://nodejs.org) 为下载适用于多个平台的 Node.js。
+可从 [nodejs.org](https://nodejs.org) 下载适用于多个平台的 Node.js。
 
 可以使用以下命令验证开发计算机上 Node.js 当前的版本：
 
@@ -69,7 +69,7 @@ az extension add --name azure-cli-iot-ext
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyNodeDevice**：所注册的设备的名称。 请按显示的方法使用 MyNodeDevice  。 如果为设备选择其他名称，则需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyNodeDevice**：所注册的设备的名称。 如下所示请使用 MyNodeDevice 。  如果为设备选择其他名称，则需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az iot hub device-identity create \

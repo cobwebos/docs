@@ -15,13 +15,13 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
-ms.custom: mvc, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 615a4c055980381771d3b63eba878846fd583cc9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 3251637d5a5bd0593a9eaf559963921a68a6ccdc
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883609"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102761"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>快速入门：在 Windows 上的 Azure 应用服务中创建 Java 应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "70883609"
 > [!NOTE]
 > 也可使用 IntelliJ 和 Eclipse 等常见 IDE 执行相同的操作。 请查看 [Azure Toolkit for IntelliJ 快速入门](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)或 [Azure Toolkit for Eclipse 快速入门](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)中的类似文档。
 >
-![在 Azure 中运行应用的示例](./media/app-service-web-get-started-java/java-hello-world-in-browser.png)
+![在 Azure 应用服务中运行的示例应用](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -119,7 +119,7 @@ mvn package azure-webapp:deploy
 
 部署完成后，在 Web 浏览器中使用以下 URL 浏览到已部署的应用程序，例如 `http://<webapp>.azurewebsites.net/`。
 
-![在 Azure 中运行应用的示例](./media/app-service-web-get-started-java/java-hello-world-in-browser.png)
+![在 Azure 应用服务中运行的示例应用](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 祝贺你！  现已将第一个 Java 应用部署到 Windows 应用服务。
 

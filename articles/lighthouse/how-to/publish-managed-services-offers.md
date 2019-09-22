@@ -4,15 +4,15 @@ description: 了解如何发布将客户载入到 Azure 委派资源管理的托
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/29/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4a1adf1be8798f4bb21b89ff0654287a2958146e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165251"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105265"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
@@ -71,7 +71,7 @@ ms.locfileid: "70165251"
   - **Azure AD 对象 ID**：要将客户资源特定权限（如角色定义所述）授予到的用户、用户组或应用程序的 Azure AD 标识符。
   - **Azure AD 对象显示名称**：一个易记名称，可帮助客户了解此授权的目的。 在委派资源时，客户将看到此名称。
   - **角色定义**：从列表中选择一个可用的 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限  。 有关这些角色的详细信息，请参阅[内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
-  - **可分配角色**：如果已在“角色定义”中针对此授权选择了“用户访问管理员”，则可在此添加一个或多个可分配角色  。 “Azure AD 对象 ID”字段中的用户能将这些可分配角色分配给[托管标识](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity)   。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。 （如果未为此用户的角色定义选择用户访问管理员，则此字段无效。）
+  - **可分配角色**：仅当在“角色定义”  中为此授权选择了“用户访问管理员”时，才需要此操作。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能将这些可分配角色分配给[托管标识](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity)   。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。 如果未在此处选择一个或多个角色，则你的提交将无法通过认证。 （如果未为此用户的角色定义选择用户访问管理员，则此字段无效。）
 
 > [!TIP]
 > 在大多数情况下，需要将权限分配给 Azure AD 用户组或服务主体，而不是分配给一系列单独的用户帐户。 这样，便可添加或删除单位用户的访问权限，而无需在访问要求更改时更新和重新发布计划。

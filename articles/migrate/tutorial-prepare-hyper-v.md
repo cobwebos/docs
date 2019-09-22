@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 09/16/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 87df37cc6baa863bb0b068bdfeb9cde873e38836
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 2f45f70f1c131e1690997cda18a8d612d3af9dee
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952082"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010307"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>准备评估 Hyper-V VM 并将其迁移到 Azure
 
@@ -99,7 +99,7 @@ ms.locfileid: "68952082"
 1. 验证 Hyper-V 主机设置。
 2. 在每台主机上设置 PowerShell 远程控制，使 Azure Migrate 设备能够通过 WinRM 连接在主机上运行 PowerShell 命令。
 3. 如果 VM 磁盘位于远程 SMB 存储中，则需要委托凭据。 
-    - 启用 CredSSP 委托，以便 Azure Migrate 设备可以充当客户端，将凭据委托给主机。 T
+    - 启用 CredSSP 委托，以便 Azure Migrate 设备可以充当客户端，将凭据委托给主机。
     - 允许每台主机充当设备的代理，如下所述。
     - 稍后在设置设备时，将在设备上启用委托。
 4. 查看设备要求，以及设备所需的 URL/端口访问权限。
@@ -129,7 +129,7 @@ ms.locfileid: "68952082"
 
 1. 确保在 Hyper-V 主机上安装了 PowerShell 4.0 或更高版本。
 2. 从 [Microsoft 下载中心](https://aka.ms/migrate/script/hyperv)下载脚本。 该脚本已由 Microsoft 加密签名。
-3. 使用 MD5 或 SHA256 哈希文件验证脚本完整性。 运行以下命令生成脚本的哈希：
+3. 使用 MD5 或 SHA256 哈希文件验证脚本完整性。 井号标签值如下。 运行以下命令生成脚本的哈希：
     ```
     C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
     ```
@@ -138,19 +138,20 @@ ms.locfileid: "68952082"
     C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
     SHA256
     ```
-    
-    哈希值为:
-    哈希 | 值
-    --- | ---
-    **MD5** | 0ef418f31915d01f896ac42a80dc414e
-    **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
-
 
 4.  验证脚本完整性后，在每台 Hyper-V 主机上结合以下 PowerShell 命令运行该脚本：
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
 
+#### <a name="hashtag-values"></a>井号标签值
+
+哈希值为:
+
+| **哈希** | **值** |
+| --- | --- |
+| **MD5** | 0ef418f31915d01f896ac42a80dc414e |
+| **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
 
 ### <a name="verify-hyper-v-host-settings"></a>验证 Hyper-V 主机设置
 

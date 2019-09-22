@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: d937e090895a5b02026c755b1efb7dd1e0b35000
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 033227f085cd23c5fa26313cb4a2816070676560
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054301"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076430"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>快速入门：使用 HBase Shell 在 Azure HDInsight 中查询 Apache HBase
 
@@ -32,11 +32,11 @@ ms.locfileid: "67054301"
 
 对于大多数人而言，数据以表格形式显示：
 
-![HDInsight HBase 表格数据](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
+![HDInsight Apache HBase 表格数据](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
 
 在 HBase（[Cloud BigTable](https://cloud.google.com/bigtable/) 的一种实现）中，相同的数据看起来类似于：
 
-![HDInsight HBase BigTable 数据](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
+![HDInsight Apache HBase BigTable 数据](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
 
 可以使用 SSH 连接到 HBase 群集，然后使用 Apache HBase Shell 来创建 HBase 表以及插入和查询数据。
 

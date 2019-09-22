@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b88d355ec1784b3b613369e90cd5fac99d3d69a6
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916410"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933206"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>使用 Azure Maps 实现 IoT 空间分析
 
@@ -167,7 +167,7 @@ IoT 中心是云中的一个托管服务，充当中央消息中心，用于在 
     
     URL 路径中 `dataFormat` 参数对应的“geojson”值表示正在上传的数据的格式。
 
-3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。  将 subscription-key 值替换为 Azure Maps 订阅密钥。
+3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。  将 subscription-key 值替换为 Azure Maps 主订阅密钥。
    
     ![Postman 中的键值对参数](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
@@ -224,7 +224,7 @@ Azure Functions 是一个无服务器计算服务，使用它可以按需运行�
 6. 将 [C# 代码](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx)复制到函数中，然后单击“保存”。 
  
 7. 在 C# 脚本中替换以下参数：
-    * 将 **SUBSCRIPTION_KEY** 替换为 Azure Maps 帐户订阅密钥。
+    * 将 **SUBSCRIPTION_KEY** 替换为 Azure Maps 帐户主订阅密钥。
     * 将 **UDID** 替换为上传的地理围栏的 udId。 
     * 脚本中的 **CreateBlobAsync** 函数将为数据存储帐户中的每个事件创建一个 Blob。 将 **ACCESS_KEY**、**ACCOUNT_NAME** 和 **STORAGE_CONTAINER_NAME** 替换为存储帐户的访问密钥、帐户名称和数据存储容器。
 

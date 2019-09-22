@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: b61dab28ff3fb6710e59e6209282c71a8f52f674
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d24323996e222caf6456372cbc65681d2055c3db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914875"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996648"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库
 
@@ -26,7 +26,6 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 - 使用 FIPS 140-2 第 2 级验证的 HSM。
 
 [API 参考文档](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -118,26 +117,14 @@ az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 }
 ```
 
-请记下 clientId、clientSecret、subscriptionId 和 tenantId，因为在下面的[对 Key Vault 进行身份验证](#authenticate-to-your-key-vault)步骤中将要用到。
-
-此外还需要服务主体的 appID。 可以结合 `--show-mine` 参数运行 [az ad sp list](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) 找到该 ID：
-
-```azurecli
-az ad sp list --show-mine
-```
-
-`appID` 将显示在返回的 JSON 中：
-
-```json
-    "appId": "2cf5aa18-0100-445a-9438-0b93e577a3ed",
-```
+请记下 clientId 和 clientSecret，因为在下面的[向密钥保管库进行身份验证](#authenticate-to-your-key-vault)步骤中将要用到。
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>为服务主体授予对 Key Vault 的访问权限
 
-针对 Key Vault 创建一个访问策略，以便为服务主体授予权限。 可以使用 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令实现此目的。 我们将为服务主体授予对密钥和机密的 get、list 和 set 权限。
+通过将 clientId 传递给 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令，为密钥保管库创建授予服务主体权限的访问策略。 授予服务主体对密钥和机密的 get、list 和 set 权限。
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <appid-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
 ## <a name="object-model"></a>对象模型
@@ -164,10 +151,6 @@ https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/ak
 setx akvClientId <your-clientID>
 
 setx akvClientSecret <your-clientSecret>
-
-setx akvTenantId <your-tentantId>
-
-setx akvSubscriptionId <your-subscriptionId>
 ````
 
 每次调用 `setx` 时，都应会收到响应“成功:已保存指定的值。”

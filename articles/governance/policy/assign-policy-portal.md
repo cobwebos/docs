@@ -7,12 +7,12 @@ ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 805f9178cb77241b8332fb78687a8409206e5c05
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 6db0879152dfcfd37719c8d22f836da6db7ed79d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231574"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000894"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>快速入门：创建策略分配以识别不合规资源
 
@@ -74,7 +74,7 @@ ms.locfileid: "70231574"
 
 如果存在与此新分配不相符的任何现有资源，这些资源会在“不符合的资源”下显示  。
 
-针对现有资源评估某条件时，如果结果为 true，则会将这些资源标记为与策略不符。 下表显示了对于生成的符合性状态，不同的策略效果是如何与条件评估配合使用的。 虽然不显示 Azure 门户中的评估逻辑，但会显示符合性状态结果。 符合性状态结果为符合或不符合。
+针对现有资源评估某条件时，如果结果为 true，则会将这些资源标记为与策略不符。 下表显示了对于生成的符合性状态，不同的策略效果是如何与条件评估配合使用的。 尽管在 Azure 门户中看不到评估逻辑，但会显示符合性状态结果。 符合性状态结果为符合或不符合。
 
 | **资源状态** | **效果** | **策略评估** | **符合性状态** |
 | --- | --- | --- | --- |

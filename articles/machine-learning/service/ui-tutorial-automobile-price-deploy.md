@@ -1,7 +1,7 @@
 ---
 title: 教程：使用可视界面部署机器学习模型
-titleSuffix: Azure Machine Learning service
-description: 了解如何在 Azure 机器学习服务可视界面中生成预测分析解决方案。 使用拖放式模块训练、评分和部署机器学习模型。 本教程是有关使用线性回归预测汽车价格的、由两个部分构成的教程系列的第二部分。
+titleSuffix: Azure Machine Learning
+description: 了解如何在 Azure 机器学习可视界面中生成预测分析解决方案。 使用拖放式模块训练、评分和部署机器学习模型。 本教程是有关使用线性回归预测汽车价格的、由两个部分构成的教程系列的第二部分。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 22d5c41e8b815fd99450962cb63d11e9560c787f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858635"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997013"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>教程：使用可视界面部署机器学习模型
 
@@ -105,7 +105,7 @@ ms.locfileid: "70858635"
 
 ## <a name="manage-models-and-deployments"></a>管理模型和部署
 
-也可通过 Azure 机器学习服务工作区管理在可视界面中创建的模型和 Web 服务部署。
+也可通过 Azure 机器学习工作区管理在可视界面中创建的模型和 Web 服务部署。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中打开你的工作区。  
 

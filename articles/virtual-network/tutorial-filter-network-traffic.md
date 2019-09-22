@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 4097d4fc46aac88cd44d21a4cdcf0d7d5093feea
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242723"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984906"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>教程：使用 Azure 门户通过网络安全组筛选网络流量
 
@@ -65,18 +65,18 @@ ms.locfileid: "66242723"
 
     | 设置        | 值                                                         |
     | ---            | ---                                                           |
-    | 名称           | myAsgWebServers                                               |
-    | 订阅   | 选择订阅。                                     |
-    | 资源组 | 选择“使用现有”，然后选择“myResourceGroup”   。 |
+    | Name           | myAsgWebServers                                               |
+    | Subscription   | 选择订阅。                                     |
+    | Resource group | 选择“使用现有”，然后选择“myResourceGroup”   。 |
     | 位置       | 美国东部                                                       |
 
 4. 再次完成步骤 3 并指定以下值：
 
     | 设置        | 值                                                         |
     | ---            | ---                                                           |
-    | 名称           | myAsgMgmtServers                                              |
-    | 订阅   | 选择订阅。                                     |
-    | 资源组 | 选择“使用现有”，然后选择“myResourceGroup”   。 |
+    | Name           | myAsgMgmtServers                                              |
+    | Subscription   | 选择订阅。                                     |
+    | Resource group | 选择“使用现有”，然后选择“myResourceGroup”   。 |
     | 位置       | 美国东部                                                       |
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
@@ -87,8 +87,8 @@ ms.locfileid: "66242723"
 
     |设置|值|
     |---|---|
-    |名称|myNsg|
-    |订阅| 选择订阅。|
+    |Name|myNsg|
+    |Subscription| 选择订阅。|
     |资源组 | 选择“使用现有”，然后选择“myResourceGroup”   。|
     |位置|美国东部|
 
@@ -114,7 +114,7 @@ ms.locfileid: "66242723"
     | 目标             | 选择“应用程序安全组”，然后选择  **myAsgWebServers** 作为**应用程序安全组**。  |
     | 目标端口范围 | 输入 80,443                                                                                                    |
     | 协议                | 选择 TCP                                                                                                      |
-    | 名称                    | Allow-Web-All                                                                                                   |
+    | Name                    | Allow-Web-All                                                                                                   |
 
 3. 使用以下值再次完成步骤 2：
 
@@ -124,7 +124,7 @@ ms.locfileid: "66242723"
     | 目标端口范围 | 输入 3389                                                                                                      |
     | 协议                | 选择 TCP                                                                                                      |
     | 优先度                | 输入 110                                                                                                       |
-    | 名称                    | Allow-RDP-All                                                                                                   |
+    | Name                    | Allow-RDP-All                                                                                                   |
 
     在本教程中，将在 Internet 上为分配给 *myAsgMgmtServers* 应用程序安全组的 VM 公开 RDP（端口 3389）。 在生产环境中，建议使用 VPN 或专用网络连接来连接到要管理的 Azure 资源，而不要向 Internet 公开端口 3389。
 
@@ -140,27 +140,29 @@ ms.locfileid: "66242723"
 
 1. 选择 Azure 门户左上角的“+ 创建资源”  。
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。  
-3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
+3. 输入或选择以下信息，并接受剩下的默认设置：
 
     |设置|值|
     |---|---|
-    |名称|myVmWeb|
+    |Subscription| 选择订阅。|
+    |Resource group| 选择“使用现有资源组”，再选择“myResourceGroup”   。|
+    |Name|myVmWeb|
+    |位置| 选择“美国东部”  。|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
-    |订阅| 选择订阅。|
-    |资源组| 选择“使用现有资源组”，再选择“myResourceGroup”   。|
-    |位置| 选择“美国东部” |
+
+   
 
 4. 选择 VM 的大小，然后选择“选择”  。
-5. 在“设置”下选择以下值，接受剩下的默认设置，然后选择“确定”：  
+5. 在“网络”  下选择以下值，并接受剩下的默认设置：
 
     |设置|值|
     |---|---|
-    |虚拟网络 |选择“myVirtualNetwork” |
-    |网络安全组 | 选择“高级”。 |
-    |网络安全组（防火墙）| 选择“(新) myVmWeb-nsg”，然后在“选择网络安全组”下选择“无”。    |
+    |虚拟网络 |选择“myVirtualNetwork”  。|
+    |NIC 网络安全组 |选择“高级”。 |
+    |公共入站端口|选择“无”。  |
 
-6. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署    。
+6. 选择左下角的“查看 + 创建”  ，选择“创建”  以开始 VM 部署。
 
 ### <a name="create-the-second-vm"></a>创建第二个 VM
 

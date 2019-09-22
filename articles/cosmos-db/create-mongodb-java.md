@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
-ms.custom: seo-java-august2019
-ms.openlocfilehash: f30b1ef7a80e11c2cefd8689845fb7d450a1c167
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 7129819b6cec068420b0b265d878078622721812
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172336"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965390"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>快速入门：在 Azure Cosmos DB 中使用 Java 和 MongoDB API 创建控制台应用
 
@@ -27,7 +27,7 @@ ms.locfileid: "70172336"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的全球分布和水平缩放功能。 
+在本快速入门中，将使用用于 Mongo DB 的 Azure Cosmos DB API 和 Java SDK 来创建控制台 Web 应用。 使用 Azure Cosmos DB 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的全球分布和水平缩放功能。
 
 本快速入门演示如何使用 [Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md) 创建 Cosmos 帐户。 然后生成并部署使用 [MongoDB Java 驱动程序](https://docs.mongodb.com/ecosystem/drivers/java/)构建的控制台应用。 
 

@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 989bff7d8be5c234d9536afa8afc0beb6870807e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d03b209902d3ab0bcdb247b1deefdd70d01905cb
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071667"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018498"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
@@ -51,7 +51,7 @@ ms.locfileid: "70071667"
 const port = process.env.PORT || 1337;
 ```
 
-应用服务会将 process.env.PORT 注入应用程序，因此代码将使用该变量来获知要侦听的端口。 
+应用服务填充环境变量 **process.env.PORT**。 在应用程序中使用此项，以便代码知道要侦听哪个端口。
 
 在一个终端窗口中，导航到示例 Node.js 项目的**根目录**（包含 _index.js_ 的目录）。
 

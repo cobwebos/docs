@@ -1,7 +1,7 @@
 ---
 title: 图像分类教程：部署模型
-titleSuffix: Azure Machine Learning service
-description: 本教程介绍如何使用 Azure 机器学习服务在 Python Jupyter notebook 中使用 scikit-learn 部署映像分类模型。 本教程是由两个部分构成的系列教程的第二部分。
+titleSuffix: Azure Machine Learning
+description: 本教程介绍如何通过 Azure 机器学习在 Python Jupyter notebook 中使用 scikit-learn 部署图像分类模型。 本教程是由两个部分构成的系列教程的第二部分。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 57d34bb170c0ff86f3d3c42a25184d8af71c0270
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6e5ab17a04c994f09bccc0f51f11749ee8590b1d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036219"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003053"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教程：在 Azure 容器实例中部署映像分类模型
 
@@ -23,7 +23,7 @@ ms.locfileid: "70036219"
 
 现在，你已准备好在 [Azure 容器实例](https://docs.microsoft.com/azure/container-instances/)中部署模型作为 Web 服务。 Web 服务是一个映像，在本例中是 Docker 映像。 它用于封装评分逻辑和模型本身。 
 
-在教程的此部分，你将使用 Azure 机器学习服务完成以下任务：
+在教程的此部分中，你将使用 Azure 机器学习完成以下任务：
 
 > [!div class="checklist"]
 > * 设置测试环境。
@@ -378,7 +378,7 @@ service.delete()
 
 ## <a name="next-steps"></a>后续步骤
 
-+ 了解 [Azure 机器学习服务的所有部署选项](how-to-deploy-and-where.md)。
++ 了解 [Azure 机器学习的所有部署选项](how-to-deploy-and-where.md)。
 + 了解如何[创建 Web 服务的客户端](how-to-consume-web-service.md)。
 +  以异步方式[对大量数据进行预测](how-to-run-batch-predictions.md)。
 + 使用 [Application Insights](how-to-enable-app-insights.md) 监视 Azure 机器学习模型。

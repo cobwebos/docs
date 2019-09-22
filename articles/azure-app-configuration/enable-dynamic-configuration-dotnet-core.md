@@ -13,12 +13,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: 1649fefda5073761d616fc48c602cab84d293ed0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 3eee34f594cb23a8b64f6fd10837c9a641eda62d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799086"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075973"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>教程：在 .NET Core 应用中使用动态配置
 
@@ -44,9 +44,14 @@ ms.locfileid: "67799086"
 
 ## <a name="reload-data-from-app-configuration"></a>从应用配置重载数据
 
-打开 *Program.cs* 并更新该文件，在 `AddAzureAppConfiguration` 方法中指定刷新配置，并使用 `Refresh` 方法触发手动刷新。
+打开 *Program.cs* 并更新文件以添加对 `System.Threading.Tasks` 命名空间的引用，在 `AddAzureAppConfiguration` 方法中指定刷新配置，并使用 `Refresh` 方法触发手动刷新。
 
 ```csharp
+using System;
+using System.Threading.Tasks;
+
+namespace TestConsole
+{
 class Program
 {
     private static IConfiguration _configuration = null;
@@ -84,9 +89,10 @@ class Program
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
 }
+}
 ```
 
-`ConfigureRefresh` 方法用于指定在刷新操作触发时通过应用程序配置存储区更新配置数据所用的设置。 可以在提供给 `AddAzureAppConfiguration` 方法的选项上调用 `GetRefresher` 方法，以便检索 `IConfigurationRefresher` 的实例，然后可以使用此实例上的 `Refresh` 方法在代码中的任意位置触发刷新操作。
+`ConfigureRefresh` 方法用于指定在刷新操作触发时通过应用配置存储更新配置数据所用的设置。 可以在提供给 `AddAzureAppConfiguration` 方法的选项上调用 `GetRefresher` 方法，以便检索 `IConfigurationRefresher` 的实例，然后可以使用此实例上的 `Refresh` 方法在代码中的任意位置触发刷新操作。
     
 > [!NOTE]
 > 配置设置的默认缓存过期时间为 30 秒，但是，可以通过对作为参数传递到 `ConfigureRefresh` 方法的选项初始值设定项调用 `SetCacheExpiration` 方法来重写该过期时间。

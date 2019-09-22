@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: c302b18e34533a564904562ed39879bbe37b82ca
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: df12acad5fa9287f43cc256bfcc89fa6775c3e3b
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65908198"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001311"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -33,6 +33,9 @@ Azure IoT 设备预配服务支持两类注册：
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
+> [!NOTE]
+> 本指南仅适用于现已弃用的 V1 Python SDK。 V2 尚不支持模拟 TPM 设备。 该团队目前正在努力使 V2 具有功能奇偶一致性。
+
 ## <a name="prepare-the-environment"></a>准备环境 
 
 1. 确保你已安装了 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本，并为你的 Visual Studio 安装启用“使用 C++ 的桌面开发”。
@@ -44,7 +47,7 @@ Azure IoT 设备预配服务支持两类注册：
 1. 打开命令提示符或 Git Bash。 为设备模拟代码示例克隆 GitHub 存储库：
     
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-python.git --recursive
+    git clone --single-branch --branch v1-deprecated https://github.com/Azure/azure-iot-sdk-python.git --recursive
     ```
 
 1. 在该 GitHub 存储库的本地副本中创建一个用于 CMake 生成过程的文件夹。 
@@ -74,7 +77,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 1. 打开在  cmake 文件夹中生成的名为 `azure_iot_sdks.sln` 的解决方案，将其内置到 Visual Studio 中。
 
-1. 右键单击“tpm_device_provision”项目，  然后选择“设为启动项目”。  运行解决方案。 输出窗口会显示进行设备注册所需的“认可密钥”    和“注册 ID”    。 记下这些值。 
+1. 右键单击“tpm_device_provision”项目，  然后选择“设为启动项目”。  运行解决方案。 输出窗口会显示进行设备注册所需的“认可密钥”  和“注册 ID”  。 记下这些值。 
 
     ![TPM 安装程序](./media/python-quick-create-simulated-device/tpm-setup.png)
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b4e9b72be5d03e0b3441983ca991a16688f5f4cd
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: a020ef91e52a5d801557399df827d3641bfb974e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916465"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934185"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>使用 Azure Maps 设置地域隔离区
 
@@ -56,7 +56,7 @@ ms.locfileid: "70916465"
     
     URL 路径中的 GEOJSON 参数表示正在上传的数据的数据格式。
 
-3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。  将 subscription-key 值替换为 Azure Maps 订阅密钥。
+3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。  将 subscription-key 值替换为 Azure Maps 主订阅密钥。
    
     ![Postman 中的键值对参数](./media/tutorial-geofence/postman-key-vals.png)
 

@@ -7,12 +7,12 @@ ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7b2b0686ae884ca2273730c2947091e525359daf
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 6d0b9202cdece44378964ee98d63a126162849fd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918608"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003039"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 蓝图示例的控制映射
 
@@ -25,7 +25,7 @@ ms.locfileid: "70918608"
 
 ## <a name="ac-2-account-management"></a>AC-2 帐户管理
 
-此蓝图可帮助你查看可能不符合你组织的帐户管理要求的帐户。 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义，这些定义用于审核对订阅和弃用帐户具有读、写和所有者权限的外部帐户。 通过查看受到这些策略审核的帐户，可以采取适当的措施，确保满足帐户管理要求。
+此蓝图可帮助你查看可能不符合组织的帐户管理要求的帐户。 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义，这些定义用于审核对订阅和弃用帐户具有读、写和所有者权限的外部帐户。 通过查看受到这些策略审核的帐户，可以采取适当的措施，确保满足帐户管理要求。
 
 - 应从订阅中删除弃用的帐户
 - 应从订阅中删除拥有所有者权限的已弃用帐户
@@ -197,7 +197,7 @@ Azure Site Recovery 将在虚拟机上运行的工作负荷从主位置复制到
 
 ## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) 验证器管理 |基于密码的身份验证
 
-此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于审核不强制实施最低强度和其他密码要求的 Windows 虚拟机，来帮助你强制实施强密码。 感知虚拟机是否违反密码强度策略有助于采取纠正措施，确保所有虚拟机用户帐户的密码与组织的密码策略相符。
+此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于审核不强制实施最低强度和其他密码要求的 Windows 虚拟机，来帮助你强制实施强密码。 感知虚拟机是否违反密码强度策略有助于采取纠正措施，确保所有虚拟机用户帐户的密码符合组织的密码策略。
 
 - \[预览\]：审核允许重用之前的 24 个密码的 Windows VM
 - \[预览\]：审核未将最长密码期限设为 70 天的 Windows VM
@@ -254,7 +254,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="sc-8-1-transmission-confidentiality-and-integrity--cryptographic-or-alternate-physical-protection"></a>SC-8 (1) 传输保密性和完整性 | 加密或备用物理保护
 
-此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义来帮助你监视针对通信协议实施的加密机制，以此帮助你保护传输信息的机密性和完整性。 确保通信得到适当的加密可帮助你满足组织的要求，或者防范信息遭到未经授权的透漏和修改。
+此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义来帮助你监视针对通信协议实施的加密机制，以此帮助你保护传输信息的机密性和完整性。 确保通信得到适当的加密可帮助你满足组织的要求，或者防范信息遭到未经授权的泄漏和修改。
 
 - 只能通过 HTTPS 访问 API 应用
 - 审核未使用安全通信协议的 Windows Web 服务器

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: ada570196c916a8101e8e968d284a3b280199cf3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ce1cdadcdc69fb5539394aa9bf402aa9463311e9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142805"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057664"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>快速入门：适用于 .NET 的表单识别器客户端库
 
@@ -22,9 +22,11 @@ ms.locfileid: "70142805"
 
 使用适用于 .NET 的表单识别器客户端库可以：
 
-* 训练自定义的表单识别器模型
-* 使用自定义模型分析表单
-* 获取自定义模型列表
+* [训练自定义的表单识别器模型](#train-a-custom-model)
+* [获取提取的密钥列表](#get-a-list-of-extracted-keys)
+* [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
+* [获取自定义模型列表](#get-a-list-of-custom-models)
+* [删除自定义模型](#delete-a-custom-model)
 
 [参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
@@ -68,14 +70,7 @@ Build succeeded.
 
 在首选的编辑器或 IDE 中，从项目目录打开 _Program.cs_ 文件。 添加以下 `using` 语句：
 
-```csharp
-using Microsoft.Azure.CognitiveServices.FormRecognizer;
-using Microsoft.Azure.CognitiveServices.FormRecognizer.Models;
-
-using System;
-using System.IO;
-using System.Threading.Tasks;
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_using)]
 
 然后在应用程序的 **Main** 方法中添加以下代码。 稍后将会定义此异步任务。
 
@@ -115,10 +110,12 @@ dotnet add package Microsoft.Azure.CognitiveServices.FormRecognizer --version 0.
 
 * [对客户端进行身份验证](#authenticate-the-client)
 * [训练自定义的表单识别器模型](#train-a-custom-model)
+* [获取提取的密钥列表](#get-a-list-of-extracted-keys)
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [获取自定义模型列表](#get-a-list-of-custom-models)
+* [删除自定义模型](#delete-a-custom-model)
 
-### <a name="define-variables"></a>定义变量
+## <a name="define-variables"></a>定义变量
 
 在定义任何方法之前，请将以下变量定义添加到 **Program** 类的顶部。 你需要自行填写一些变量。 
 
@@ -127,13 +124,13 @@ dotnet add package Microsoft.Azure.CognitiveServices.FormRecognizer --version 0.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
-### <a name="authenticate-the-client"></a>验证客户端
+## <a name="authenticate-the-client"></a>验证客户端
 
 在 `Main` 方法的下面，定义要在 `Main` 中引用的任务。 此处，你将使用前面定义的订阅变量对客户端对象进行身份验证。 稍后将要定义其他方法。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
-### <a name="train-a-custom-model"></a>训练自定义模型
+## <a name="train-a-custom-model"></a>训练自定义模型
 
 以下方法使用表单识别器客户端对象，基于 Azure Blob 容器中存储的文档训练新的识别模型。 它使用一个帮助器方法显示有关新训练的模型的信息（由 [ModelResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelresult?view=azure-dotnet-preview) 对象表示），并返回模型 ID。
 
@@ -143,9 +140,18 @@ dotnet add package Microsoft.Azure.CognitiveServices.FormRecognizer --version 0.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displaymodel)]
 
-### <a name="analyze-forms-with-a-custom-model"></a>使用自定义模型分析表单
+## <a name="get-a-list-of-extracted-keys"></a>获取提取的键列表
+
+训练完成后，自定义模型将保留已从训练文档中提取的键列表。 它需要将来的表单文档包含这些键，并在“分析”操作中提取它们的对应值。 使用以下方法检索提取的键列表，并将其输出到控制台。 这是一种验证训练过程是否有效的好方法。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getkeys)]
+
+## <a name="analyze-forms-with-a-custom-model"></a>使用自定义模型分析表单
 
 此方法使用表单识别器客户端和模型 ID 来分析 PDF 表单文档并提取键/值数据。 它使用一个帮助器方法来显示结果（由 [AnalyzeResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview) 对象表示）。
+
+> [!NOTE]
+> 以下方法分析 PDF 表单。 有关分析 JPEG 和 PNG 表单的类似方法，请参阅 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer) 上的完整示例代码。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_analyzepdf)]
 
@@ -153,11 +159,17 @@ dotnet add package Microsoft.Azure.CognitiveServices.FormRecognizer --version 0.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displayanalyze)]
 
-### <a name="get-a-list-of-custom-models"></a>获取自定义模型列表
+## <a name="get-a-list-of-custom-models"></a>获取自定义模型列表
 
 可以返回属于你的帐户的所有已训练模型列表，并可以检索有关这些模型的创建时间的信息。 模型列表由 [ModelsResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelsresult?view=azure-dotnet-preview) 对象表示。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getmodellist)]
+
+## <a name="delete-a-custom-model"></a>删除自定义模型
+
+如果要从帐户中删除自定义模型，请使用以下方法：
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -174,9 +186,7 @@ dotnet run
 * [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-此外，如果你训练了要从帐户中删除的自定义模型，请使用以下方法：
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
+此外，如果你训练了要从帐户中删除的自定义模型，请运行[删除自定义模型](#delete-a-custom-model)中的方法。
 
 ## <a name="next-steps"></a>后续步骤
 

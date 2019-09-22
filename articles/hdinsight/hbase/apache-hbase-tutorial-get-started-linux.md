@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: df216c4d634ac20365cc5a1cc6e26fbd78be7ab9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917410"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077138"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache HBase
 
@@ -41,7 +41,7 @@ ms.locfileid: "70917410"
 
 1. 选择下面的图像即可在 Azure 门户中打开该模板。 该模板位于 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)中。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 2. 在“自定义部署”边栏选项卡中输入以下值： 
 
@@ -68,11 +68,11 @@ ms.locfileid: "70917410"
 
 对于大多数人而言，数据以表格形式显示：
 
-![HDInsight HBase 表格数据](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
+![HDInsight Apache HBase 表格数据](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
 
 在 HBase（[Cloud BigTable](https://cloud.google.com/bigtable/) 的一种实现）中，相同的数据看起来类似于：
 
-![HDInsight HBase BigTable 数据](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
+![HDInsight Apache HBase BigTable 数据](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
 
 **使用 HBase shell**
 
@@ -115,7 +115,7 @@ ms.locfileid: "70917410"
     scan 'Contacts'
     ```
 
-    ![HDInsight Hadoop HBase shell](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
+    ![HDInsight Apache Hadoop HBase shell](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
 
 1. 使用 `get` 命令提取某个行的内容。 输入以下命令：
 
@@ -284,7 +284,7 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 
 1. 选择页面顶部的“快速链接”  ，指向活动的 Zookeeper 节点链接，然后选择“HBase Master UI”  。  该 UI 会在另一个浏览器标签页中打开：
 
-   ![HDInsight HBase HMaster UI](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   ![HDInsight Apache HBase HMaster UI](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
    HBase Master UI 包含以下部分：
 

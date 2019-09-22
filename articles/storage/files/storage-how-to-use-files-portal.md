@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d7618d2542b1c1d83ed7328c8a32d80f2d0e66a
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b7665caad60a5135da5780da242772af3c0a05a4
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699527"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984887"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建和管理 Azure 文件共享 
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以在 Windows、Linux 和 macOS 中装载 Azure 文件共享。 本指南介绍通过 [Azure 门户](https://portal.azure.com/)来使用 Azure 文件共享的基本知识。
@@ -44,9 +44,9 @@ Azure 文件提供两种在 Azure 文件共享中使用文件和文件夹的方�
 - [macOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-from-the-azure-portal"></a>通过 Azure 门户使用 Azure 文件共享
-所有通过 Azure 门户发出的请求都是通过文件 REST API 发出的，因此不需 SMB 访问权限即可在客户端创建、修改和删除文件和目录。 可以直接使用文件 REST 协议（即手动进行 REST HTTP 调用），但最常见的使用文件 REST 协议的方式（使用 Azure 门户除外）是使用 [Azure PowerShell 模块](storage-how-to-use-files-powershell.md)、[Azure CLI](storage-how-to-use-files-cli.md) 或 Azure 存储 SDK，所有这些方式都可以在所选脚本/编程语言中为文件 REST 协议提供很好的包装器。 
+所有通过 Azure 门户发出的请求都是通过文件 REST API 发出的，因此不需 SMB 访问权限即可在客户端创建、修改和删除文件和目录。 可以使用文件 REST 协议（即手动进行 REST HTTP 调用），但最常见的使用文件 REST 协议的方式（使用 Azure 门户除外）是使用 [Azure PowerShell 模块](storage-how-to-use-files-powershell.md)、[Azure CLI](storage-how-to-use-files-cli.md) 或 Azure 存储 SDK，所有这些方式都可以在所选脚本/编程语言中为文件 REST 协议提供很好的包装器。 
 
-我们预计，在使用 Azure 文件时，大多数情况下需要通过 SMB 协议来使用 Azure 文件共享，因为这样可以使用那些预期可以使用的现有应用程序和工具，但某些情况下，使用文件 REST API 比使用 SMB 更具优势，例如：
+我们预计，Azure 文件的大多数用户希望通过 SMB 协议来使用 Azure 文件共享，因为这样可以使用那些预期可以使用的现有应用程序和工具，但某些情况下，使用文件 REST API 比使用 SMB 更具优势，例如：
 
 - 需要在便携式设备（例如没有 SMB 访问权限的膝上型电脑、平板电脑或移动设备）上对 Azure 文件共享进行快速的更改。
 - 需在无法装载 SMB 共享的客户端（例如未将端口 445 解除阻止的本地客户端）中执行脚本或应用程序。

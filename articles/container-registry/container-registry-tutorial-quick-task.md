@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a9e84210427612143bffe33efe4a5da5364b7a22
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310442"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057491"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
 
@@ -75,7 +75,7 @@ cd acr-build-helloworld-node
 
 现已将源代码拉取到计算机中，请执行以下步骤来创建容器注册表并使用 ACR 任务生成容器映像。
 
-为使执行示例命令更轻松，本系列教程使用 shell 环境变量。 执行以下命令来设置 `ACR_NAME` 变量。 将“\<registry-name\>”替换为新容器注册表的唯一名称  。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 本教程中创建的其他资源都基于该名称，因此仅需要修改该第一个变量。
+为使执行示例命令更轻松，本系列教程使用 shell 环境变量。 执行以下命令来设置 `ACR_NAME` 变量。 将“\<registry-name\>”替换为新容器注册表的唯一名称  。 注册表名称在 Azure 中必须唯一，仅包含小写字母，并且包含 5-50 个字母数字字符。 本教程中创建的其他资源都基于该名称，因此仅需要修改该第一个变量。
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>
@@ -192,7 +192,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 现在需要创建服务主体，并将其凭据存储在 Key Vault 中。
 
-使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]command to create the service principal, and [az keyvault secret set][az-keyvault-secret-set] 将服务主体的**密码**存储在保管库中：
+请使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令创建服务主体，使用 [az keyvault secret set][az-keyvault-secret-set] 将服务主体的**密码**存储在保管库中：
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)

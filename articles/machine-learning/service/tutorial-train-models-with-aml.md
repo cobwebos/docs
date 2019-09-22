@@ -1,7 +1,7 @@
 ---
 title: 图像分类教程：训练模型
-titleSuffix: Azure Machine Learning service
-description: 学习如何使用 Azure 机器学习服务在 Python Jupyter notebook 中使用 scikit-learn 训练映像分类模型。 本教程是由两个部分构成的系列教程的第一部分。
+titleSuffix: Azure Machine Learning
+description: 了解如何通过 Azure 机器学习在 Python Jupyter notebook 中使用 scikit-learn 训练图像分类模型。 本教程是由两个部分构成的系列教程的第一部分。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8cf639a290067e71b562e0df844ee01d018a7557
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5c7396baa745196e054c6cb49d349bf7684cd899
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170577"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001660"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>教程：使用 Azure 机器学习通过 MNIST 数据和 scikit-learn 训练映像分类模型
 
-在本教程中，你将在远程计算资源上训练一个机器学习模型。 将在 Python Jupyter Notebook中使用 Azure 机器学习服务的定型和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分  。  
+在本教程中，你将在远程计算资源上训练一个机器学习模型。 将在 Python Jupyter Notebook 中使用 Azure 机器学习的训练和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分  。  
 
-本教程将 [MNIST](http://yann.lecun.com/exdb/mnist/) 数据集和 [scikit-learn](https://scikit-learn.org) 与 Azure 机器学习服务配合使用来定型简单的逻辑回归。 MNIST 是包含 70,000 张灰度图像的常用数据集。 每个图像是 28 x 28 像素的手写数字，代表一个从零到九的数字。 目标是创建多类分类器，以确定给定图像代表的数字。
+本教程将 [MNIST](http://yann.lecun.com/exdb/mnist/) 数据集和 [scikit-learn](https://scikit-learn.org) 与 Azure 机器学习配合使用来训练简单的逻辑回归。 MNIST 是包含 70,000 张灰度图像的常用数据集。 每个图像是 28 x 28 像素的手写数字，代表一个从零到九的数字。 目标是创建多类分类器，以确定给定图像代表的数字。
 
 了解如何执行以下操作：
 
@@ -33,7 +33,7 @@ ms.locfileid: "70170577"
 
 你会在[本教程的第二部分](tutorial-deploy-models-with-aml.md)学习如何选择模型并对其进行部署。
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 >[!NOTE]
 > 本文中的代码已使用 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 版本 1.0.57 进行测试。
@@ -436,7 +436,7 @@ compute_target.delete()
 
 ## <a name="next-steps"></a>后续步骤
 
-在本 Azure 机器学习服务教程中，已使用 Python 执行以下任务：
+在本 Azure 机器学习教程中，已使用 Python 执行以下任务：
 
 > [!div class="checklist"]
 > * 设置开发环境。

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 0716a9326a54ae31d4f355fe5f4c88488339b390
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a26899e291c4f44d3c9d91032b2ee191ba03133a
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029975"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931775"
 ---
 # <a name="quickstart-use-geth-to-connect-to-a-transaction-node"></a>快速入门：使用 Geth 连接到事务节点
 
@@ -26,19 +26,19 @@ Geth 是一个 Go Ethereum 客户端，可以用来附加到 Azure 区块链服�
 ## <a name="prerequisites"></a>先决条件
 
 * 安装 [Geth](https://github.com/ethereum/go-ethereum/wiki/geth)
-* [创建 Azure 区块链成员](create-member.md)
+* 完整[快速入门：使用 Azure 门户创建区块链成员](create-member.md)或[快速入门：通过 Azure CLI 创建 Azure 区块链服务区块链成员](create-member-cli.md)
 
 ## <a name="get-the-geth-connection-string"></a>获取 Geth 连接字符串
 
 可以在 Azure 门户中找到 Geth 连接字符串。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 导航到你的 Azure 区块链服务成员。 选择“事务节点”和默认事务节点链接。
+1. 导航到你的 Azure 区块链服务成员。 选择“事务节点”  和默认事务节点链接。
 
     ![选择默认事务节点](./media/connect-geth/transaction-nodes.png)
 
-1. 选择“连接字符串”。
-1. 从“HTTPS(访问密钥 1)”中复制连接字符串。 下一部分中需要使用此命令。
+1. 选择“连接字符串”  。
+1. 从“HTTPS(访问密钥 1)”  中复制连接字符串。 下一部分中需要使用此命令。
 
     ![连接字符串](./media/connect-geth/connection-string.png)
 
@@ -67,7 +67,7 @@ Geth 是一个 Go Ethereum 客户端，可以用来附加到 Azure 区块链服�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你使用 Geth 客户端附加到了 Azure 区块链服务事务节点上的 Geth 实例。 请尝试下一教程来使用 Truffle 部署并发送事务。
+在本快速入门中，你使用 Geth 客户端附加到了 Azure 区块链服务事务节点上的 Geth 实例。 尝试下一个教程，使用适用于 Ethereum 的 Azure 区块链开发工具包和 Truffle 通过事务创建、生成、部署和执行智能合同函数。
 
 > [!div class="nextstepaction"]
-> [发送事务](send-transaction.md)
+> [使用 Visual Studio Code 创建、生成和部署智能合同](send-transaction.md)

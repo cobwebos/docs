@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ea9728ac54ae357925bd666ffecf270172137f77
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e0c85dba22a7c689631a853bc22d58d1cc4093aa
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991110"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105008"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>教程：启动沉浸式阅读器 (Node.js)
 
@@ -85,7 +85,7 @@ SUBDOMAIN={YOUR_SUBDOMAIN}
 require('dotenv').config();
 ```
 
-打开 routes\index.js 文件，并在文件顶部进行以下导入  ：
+打开 routes\index.js 文件，并在文件顶部添加以下代码  ：
 
 ```javascript
 var request = require('request');

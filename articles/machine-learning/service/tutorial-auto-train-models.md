@@ -1,7 +1,7 @@
 ---
 title: 回归模型教程：自动化机器学习
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用自动化机器学习生成机器学习模型。 Azure 机器学习可以通过自动化方式为你执行数据预处理、算法选择和超参数选择操作。 然后，使用 Azure 机器学习服务来部署最终的模型。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用自动化机器学习生成机器学习模型。 Azure 机器学习可以通过自动化方式为你执行数据预处理、算法选择和超参数选择操作。 然后，使用 Azure 机器学习来部署最终的模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/21/2019
-ms.openlocfilehash: 990755b247190f689a90d5cdf3d60d6eff9f4ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f08f2f07137e518925ee4dbe9b128e100be870c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036248"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003979"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教程：使用自动化机器学习预测出租车费
 
-在本教程中，你将使用 Azure 机器学习服务中的自动机器学习来创建一个用于预测纽约市出租车收费价格的回归模型。 此过程接受定型数据和配置设置，并自动循环访问不同特征规范化/标准化方法、模型和超参数设置的组合，以实现最佳模型。
+在本教程中，你将使用 Azure 机器学习中的自动机器学习来创建一个用于预测纽约市出租车收费价格的回归模型。 此过程接受定型数据和配置设置，并自动循环访问不同特征规范化/标准化方法、模型和超参数设置的组合，以实现最佳模型。
 
 ![流程图](./media/tutorial-auto-train-models/flow2.png)
 
@@ -30,11 +30,11 @@ ms.locfileid: "70036248"
 > * 定型自动化机器学习回归模型
 > * 计算模型准确度
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 Azure 机器学习服务[免费版或付费版](https://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版](https://aka.ms/AMLFree)的 Azure 机器学习。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果你没有 Azure 机器学习服务工作区或 Notebook 虚拟机，请完成[设置教程](tutorial-1st-experiment-sdk-setup.md)。
+* 如果还没有 Azure 机器学习工作区或 Notebook 虚拟机，请完成[设置教程](tutorial-1st-experiment-sdk-setup.md)。
 * 完成设置教程后，使用同一 Notebook 服务器打开 **tutorials/regression-automated-ml.ipynb** Notebook。
 
 如果你想要在自己的[本地环境](how-to-configure-environment.md#local)中运行此教程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。 运行 `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` 以获取所需的包。
@@ -1057,7 +1057,7 @@ print(1 - mean_abs_percent_error)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果你打算运行其他 Azure 机器学习服务教程，请不要结束本部分。
+如果打算运行其他 Azure 机器学习教程，请不要完成本部分。
 
 ### <a name="stop-the-notebook-vm"></a>停止笔记本 VM
 
@@ -1088,4 +1088,4 @@ print(1 - mean_abs_percent_error)
 > * 结合自定义参数在本地使用自动化回归模型进行了训练。
 > * 浏览并查看了训练结果。
 
-使用 Azure 机器学习服务来[部署模型](tutorial-deploy-models-with-aml.md)。
+使用 Azure 机器学习来[部署模型](tutorial-deploy-models-with-aml.md)。

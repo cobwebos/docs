@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 90ccd6c827371d9bf72391e2b24c7dcef31f36c9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0df60cac241151b5968c5ddfc01ca9c0515a5e6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844626"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996972"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -52,7 +52,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
    - 通过将“服务主体”  字段保留为“(新)默认服务主体”  来创建新的服务主体。 或者，可以选择“配置服务主体”  以使用现有的服务主体。 如果使用现有的服务主体，则需要提供 SPN 客户端 ID 和机密。
    - 启用 Kubernetes 基于角色的访问控制 (RBAC) 所对应的选项。 这样可以对部署在 AKS 群集中的 Kubernetes 资源进行更精细的访问控制。
 
-    默认情况下将使用“基本”  网络，并且会启用适用于容器的 Azure Monitor。 验证完成后，依次单击“查看 + 创建”  、“创建”  。
+默认情况下将使用“基本”  网络，并且会启用适用于容器的 Azure Monitor。 验证完成后，依次单击“查看 + 创建”  、“创建”  。
 
 创建 AKS 群集需要几分钟时间。 完成部署后，单击“转到资源”  ，或浏览到 AKS 群集资源组（如 myResourceGroup  ），然后选择 AKS 资源（如 myAKSCluster  ）。 此时会显示 AKS 群集仪表板，如以下示例所示：
 
@@ -236,7 +236,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ![查看在 AKS 中运行的容器的运行状况](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-若要查看 `azure-vote-front` Pod 的日志，请在容器列表右侧选择“查看容器日志”链接  。 这些日志包括容器中的 *stdout* 和 *stderr* 流。
+若要查看 `azure-vote-front` Pod 的日志，请从容器列表的下拉列表中选择“查看容器日志”  。 这些日志包括容器中的 *stdout* 和 *stderr* 流。
 
 ![查看 AKS 中的容器日志](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 

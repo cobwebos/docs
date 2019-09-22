@@ -1,7 +1,7 @@
 ---
 title: 示例 Jupyter Notebook
-titleSuffix: Azure Machine Learning service
-description: 找到并使用示例 Jupyter 笔记本，以便探索 Azure 机器学习服务 Python SDK。
+titleSuffix: Azure Machine Learning
+description: 找到并使用示例 Jupyter Notebook，以便探索 Azure 机器学习 Python SDK。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860393"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997061"
 ---
-# <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>使用 Jupyter Notebook 探索 Azure 机器学习服务
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>使用 Jupyter Notebook 探索 Azure 机器学习
 
 [示例 Azure 机器学习笔记本存储库](https://github.com/azure/machinelearningnotebooks)包含最新的 Azure 机器学习 Python SDK 示例。 这些 Juypter 笔记本旨在帮助你浏览 SDK，并充当你自己的机器学习项目的模型。
 
@@ -55,7 +55,7 @@ Data Science Virtual Machine (DSVM) 是专为研究数据科学而构建的自�
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览[示例笔记本](https://aka.ms/aml-notebooks)，了解 Azure 机器学习服务的功能，或者尝试以下教程：
+浏览[示例笔记本](https://aka.ms/aml-notebooks)，了解 Azure 机器学习的功能，或者尝试以下教程：
 
 - [通过 MNIST 训练并部署图像分类模型](tutorial-train-models-with-aml.md)
 

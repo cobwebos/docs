@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 09/16/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 09e9a89fc79763eee5d154ba589b599fe8a180b2
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: d4e0d632fe476df159710f800eca3a2a283f7908
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743397"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018289"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接的安全
 
@@ -83,10 +83,22 @@ az sql server ad-admin create --resource-group myResourceGroup --server-name <se
 
 ## <a name="set-up-visual-studio"></a>设置 Visual Studio
 
-若要在 Visual Studio 中启用开发和调试，请在 Visual Studio 中添加 Azure AD 用户，方法是从菜单中依次选择“文件” > “帐户设置”，然后单击“添加帐户”    。
+### <a name="windows"></a>Windows
+Visual Studio for Windows 集成了 Azure AD 身份验证。 若要在 Visual Studio 中启用开发和调试，请在 Visual Studio 中添加 Azure AD 用户，方法是从菜单中依次选择“文件” > “帐户设置”，然后单击“添加帐户”    。
 
 若要设置进行 Azure 服务身份验证的 Azure AD 用户，请从菜单中依次选择“工具” > “选项”，然后依次选择“Azure 服务身份验证” > “帐户选择”     。 选择已添加的 Azure AD 用户，然后单击“确定”  。
 
+现已准备好将 SQL 数据库作为后端，使用 Azure AD 身份验证来开发和调试应用程序。
+
+### <a name="macos"></a>MacOS
+
+Visual Studio for Mac 未集成 Azure AD 身份验证。 不过，稍后将使用的 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 库可以使用 Azure CLI 中的令牌。 若要在 Visual Studio 中启用开发和调试，首先需要在本地计算机上[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+
+在本地计算机上安装 Azure CLI 后，请使用 Azure AD 用户通过以下命令登录 Azure CLI：
+
+```bash
+az login --allow-no-subscriptions
+```
 现已准备好将 SQL 数据库作为后端，使用 Azure AD 身份验证来开发和调试应用程序。
 
 ## <a name="modify-your-project"></a>修改项目

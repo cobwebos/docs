@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ca636079439f811a887d16b627473e7d73930799
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227167"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065705"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>什么是 Azure Active Directory B2C？
 
-Azure Active Directory (Azure AD) B2C 是一种企业对消费者标识管理服务。 使用此服务可以自定义和控制用户如何安全地与 Web、桌面、移动或单页应用程序交互。 用户可以使用 Azure AD B2C 注册、登录、重置密码和编辑个人资料。 Azure AD B2C 实现某种形式的 OpenID Connect 和 OAuth 2.0 协议。 这些协议的实现中的重要密钥是安全令牌及其声明，用于提供对资源的安全访问。
+Azure Active Directory B2C (Azure AD B2C) 是一种企业对消费者标识管理服务。 使用此服务可以自定义和控制用户如何安全地与 Web、桌面、移动或单页应用程序交互。 用户可以使用 Azure AD B2C 注册、登录、重置密码和编辑个人资料。 Azure AD B2C 实现某种形式的 OpenID Connect 和 OAuth 2.0 协议。 这些协议的实现中的重要密钥是安全令牌及其声明，用于提供对资源的安全访问。
 
 用户旅程是用于指定策略的请求，该策略控制用户和应用程序在与 Azure AD B2C 交互时的行为。  可通过两种途径在 Azure AD B2C 中定义用户旅程。
 

@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/14/2019
-ms.openlocfilehash: 29b2a9378abaaa697d2d869145d5e912d6c06d6c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.date: 09/17/2019
+ms.openlocfilehash: 3e0fddc03ad880d36876276827198b0ac180a00d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811593"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076356"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的交互式查询？
 
@@ -28,6 +28,9 @@ ms.locfileid: "70811593"
 ## <a name="create-an-interactive-query-cluster"></a>创建交互式查询群集
 
 有关创建 HDInsight 群集的信息，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。 选择“交互式查询”群集类型。
+
+> [!IMPORTANT]
+> 交互式查询群集的最小头节点大小为 Standard_D13_v2。 有关详细信息，请参阅 [Azure VM 大小调整图表](../../cloud-services/cloud-services-sizes-specs.md#dv2-series)。
 
 ## <a name="execute-apache-hive-queries-from-interactive-query"></a>从交互式查询执行 Apache Hive 查询
 

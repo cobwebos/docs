@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 822402f548fe0fc866051a9c77adef6e37c3fa75
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240890"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932597"
 ---
 # <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>快速入门：使用 Truffle 连接到事务节点
 
@@ -25,7 +25,7 @@ Truffle 是一个区块链开发环境，可以用来连接到 Azure 区块链�
 
 ## <a name="prerequisites"></a>先决条件
 
-* [创建 Azure 区块链成员](create-member.md)
+* 完整[快速入门：使用 Azure 门户创建区块链成员](create-member.md)或[快速入门：通过 Azure CLI 创建 Azure 区块链服务区块链成员](create-member-cli.md)
 * 安装 [Truffle](https://github.com/trufflesuite/truffle)。 Truffle 要求安装多个工具，包括 [Node.js](https://nodejs.org)、[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)。
 * 安装 [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。 Web3 需要 Python。
 
@@ -124,7 +124,7 @@ Truffle 是一个区块链开发环境，可以用来连接到 Azure 区块链�
 
 在本快速入门中，你创建了一个 Truffle 项目来连接到你的 Azure 区块链服务默认事务节点。
 
-尝试下一教程，使用适用于 Ethereum 和 Truffle 的 Azure 区块链开发工具包，通过联盟区块链网络上的事务执行智能合同函数。
+尝试下一个教程，使用适用于 Ethereum 的 Azure 区块链开发工具包和 Truffle 通过事务创建、生成、部署和执行智能合同函数。
 
 > [!div class="nextstepaction"]
-> [在 Azure 区块链服务上使用智能合同](send-transaction.md)
+> [使用 Visual Studio Code 创建、生成和部署智能合同](send-transaction.md)

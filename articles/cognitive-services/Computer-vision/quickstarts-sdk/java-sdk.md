@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: fd8abf81589f3338f9e45c6c1d23681269ccc654
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 16a487dc007526f685edb52726f5797303a30c11
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164855"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966994"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>快速入门：适用于 Java 的计算机视觉客户端库
 
@@ -106,7 +106,7 @@ dependencies {
 |Name|说明|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | 所有计算机视觉功能都需要此类。 请使用你的订阅信息实例化此类，然后使用它来生成其他类的实例。|
-|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| 此类来自客户端对象，它直接处理所有图像操作，例如图像分析、文本检测和缩略图生成。
+|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| 此类来自客户端对象，它直接处理所有图像操作，例如图像分析、文本检测和缩略图生成。|
 |[VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| 此枚举定义可在标准分析操作中执行的不同类型的图像分析。 请根据需求指定一组 VisualFeatureTypes 值。 |
 
 ## <a name="code-examples"></a>代码示例
@@ -172,17 +172,17 @@ dependencies {
 
 ### <a name="get-image-tags"></a>获取图像标记
 
-以下代码获取图像中检测到的标记集。 有关详细信息，请参阅[内容标记](../concept-tagging-images.md)
+以下代码获取图像中检测到的标记集。 有关详细信息，请参阅[内容标记](../concept-tagging-images.md)。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
 
-### <a name="get-faces"></a>获取人脸
+### <a name="detect-faces"></a>检测人脸
 
 下面的代码返回图像中检测到的人脸及其矩形坐标，以及选择面属性。 有关更多详细信息，请参阅[人脸检测](../concept-detecting-faces.md)。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
 
-### <a name="get-adult-or-racy-content"></a>获取成人或不雅内容
+### <a name="detect-adult-or-racy-content"></a>检测成人或不雅内容
 
 以下代码输出图像中检测到的成人内容或不雅内容。 有关更多详细信息，请参阅[成人和不雅内容](../concept-detecting-adult-content.md)。
 
@@ -205,6 +205,12 @@ dependencies {
 以下代码分析了图像中检测到的地标的相关数据。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_landmarks)]
+
+### <a name="get-the-image-type"></a>获取图像类型
+
+以下代码输出有关图像类型的信息&mdash;无论它是剪贴画还是线条图。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 
 ## <a name="run-the-application"></a>运行应用程序
 

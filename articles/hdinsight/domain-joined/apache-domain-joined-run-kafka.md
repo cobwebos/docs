@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 6cac4bd05f2acf5b11a8235a4bc1e0d09e0c4dc7
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6d92ebc743bae97ecfa1591add27f470792dcafc
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885940"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037171"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览版）在 HDInsight 中配置 Apache Kafka 策略
 
@@ -36,7 +36,7 @@ ms.locfileid: "70885940"
 
 2. 使用 Azure Active Directory (AD) 管理员凭据登录。 Azure AD 管理员凭据与 HDInsight 群集凭据或 Linux HDInsight 节点 SSH 凭据不同。
 
-   ![Apache Ranger 管理 UI](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
+   ![HDInsight Apache Ranger 管理 UI](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
 
 ## <a name="create-domain-users"></a>创建域用户
 
@@ -183,7 +183,7 @@ ms.locfileid: "70885940"
 
 9. 从 Ranger UI 查看审核访问事件。
 
-   ![Ranger UI 策略审核](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   ![Ranger UI 策略审核访问事件 ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

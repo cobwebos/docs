@@ -1,25 +1,25 @@
 ---
-title: 教程 - 授予对 ASP.NET Web API 的访问权限 - Azure Active Directory B2C | Microsoft Docs
+title: 教程 - 授予对 ASP.NET Web API 的访问权限 - Azure Active Directory B2C
 description: 有关如何使用 Active Directory B2C 保护 ASP.NET Web API 并通过 ASP.NET Web 应用程序对其进行调用的教程。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/19/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 339b118e48a01469312a40e6b0652a4ffb90291a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 87d46fad1c0a5494910a8218c4e40994fc140386
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347133"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103403"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 授予对 ASP.NET Web API 的访问权限
 
-本教程介绍如何从 ASP.NET Web 应用程序调用 Azure Active Directory (Azure AD) B2C 中受保护的 Web API 资源。
+本教程介绍如何从 ASP.NET Web 应用程序调用 Azure Active Directory B2C (Azure AD B2C) 中受保护的 Web API 资源。
 
 本教程介绍如何执行下列操作：
 
@@ -40,7 +40,7 @@ ms.locfileid: "68347133"
 Web API 资源需要先在租户中注册，然后才能接受并响应提供访问令牌的客户端应用程序所提出的受保护资源请求。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
 4. 选择“应用程序”，然后选择“添加”   。
 5. 输入应用程序的名称。 例如，“webapi1”  。
@@ -82,20 +82,20 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 
 示例解决方案中包含以下两个项目：
 
-- **TaskWebApp** - 创建和编辑任务列表。 该示例使用**注册或登录**用户流来注册或登录用户。
-- **TaskService** - 支持创建、读取、更新和删除任务列表功能。 该 API 受 Azure AD B2C 的保护，由 TaskWebApp 调用。
+* **TaskWebApp** - 创建和编辑任务列表。 该示例使用**注册或登录**用户流来注册或登录用户。
+* **TaskService** - 支持创建、读取、更新和删除任务列表功能。 该 API 受 Azure AD B2C 的保护，由 TaskWebApp 调用。
 
 ### <a name="configure-the-web-application"></a>配置 Web 应用程序
 
 1. 在 Visual Studio 中打开 **B2C-WebAPI-DotNet** 解决方案。
-2. 打开 **TaskWebApp** 项目中的 **Web.config**。
-3. 若要在本地运行 API，请使用针对 **api:TaskServiceUrl** 的 localhost 设置。 更改 Web.config，如下所示： 
+1. 在 **TaskWebApp** 项目中，打开 **Web.config**。
+1. 若要在本地运行 API，请使用针对 **api:TaskServiceUrl** 的 localhost 设置。 更改 Web.config，如下所示：
 
     ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
     ```
 
-3. 配置 API 的 URI。 这是 Web 应用程序用来发起 API 请求的 URI。 另请配置所请求的权限。
+1. 配置 API 的 URI。 这是 Web 应用程序用来发起 API 请求的 URI。 另请配置所请求的权限。
 
     ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
@@ -105,26 +105,27 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 
 ### <a name="configure-the-web-api"></a>配置 Web API
 
-1. 打开 **TaskService** 项目中的 **Web.config**。
-2. 配置要使用租户的 API。
+1. 在 **TaskService** 项目中，打开 **Web.config**。
+1. 配置要使用租户的 API。
 
     ```csharp
+    <add key="ida:AadInstance" value="https://<Your tenant name>.b2clogin.com/{0}/{1}/v2.0/.well-known/openid-configuration" />
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
-3. 将客户端 ID 设置为 API 的注册应用程序 ID。
+1. 将客户端 ID 设置为你注册的 Web API 应用程序的应用程序 ID webapi1  。
 
     ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-4. 使用注册和登录用户流的名称更新用户流设置。
+1. 使用注册和登录用户流的名称 B2C_1_signupsignin1  更新用户流设置。
 
     ```csharp
-    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_signupsignin1" />
+    <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
     ```
 
-5. 配置作用域设置，使之与门户中创建的设置相匹配。
+1. 配置作用域设置，使之与门户中创建的设置相匹配。
 
     ```csharp
     <add key="api:ReadScope" value="Hello.Read" />
@@ -133,19 +134,20 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 
 ## <a name="run-the-sample"></a>运行示例
 
-**TaskWebApp** 和 **TaskService** 项目都需要运行。 
+**TaskWebApp** 和 **TaskService** 项目都需要运行。
 
-1. 在解决方案资源管理器中，右键单击解决方案并选择“设置启动项目...”。  
-2. 选择“多启动项目”。 
-3. 将两个项目的“操作”更改为“启动”。  
-4. 单击“确定”以保存配置。 
-5. 按 **F5** 运行这两个应用程序。 每个应用程序将在其自身的浏览器标签页中打开。`https://localhost:44316/` 为 Web 应用程序。
-    `https://localhost:44332/` 为 Web API。
+1. 在解决方案资源管理器中，右键单击解决方案并选择“设置启动项目...”。 
+1. 选择“多启动项目”。 
+1. 将两个项目的“操作”更改为“启动”。  
+1. 单击“确定”以保存配置。 
+1. 按 **F5** 运行这两个应用程序。 每个应用程序都会在其自己的浏览器窗口中打开。
+    * `https://localhost:44316/` 为 Web 应用程序。
+    * `https://localhost:44332/` 为 Web API。
 
-6. 在 Web 应用程序中，单击“注册/登录”以登录到 Web 应用程序。  使用前面创建的帐户。 
-7. 登录后，单击“待办事项列表”并创建待办事项列表项。 
+1. 在 Web 应用程序中，选择“注册/登录”以登录到 Web 应用程序。  使用前面创建的帐户。
+1. 登录后，选择“待办事项列表”并创建待办事项列表项。 
 
-创建待办事项列表项时，Web 应用程序会向 Web API 发起生成待办事项列表项的请求。 受保护的 Web 应用程序将调用 Azure AD B2C 租户中的受保护 Web API。
+创建待办事项列表项时，Web 应用程序会向 Web API 发起生成待办事项列表项的请求。 受保护的 Web 应用程序将调用受 Azure AD B2C 保护的 Web API。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4b70ddfe6ea2baf42227cc83ed0cc14969b3e92
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 75469d4522cea2914e0f69d5aa1850e468cb0d50
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66508096"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064836"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>教程：从桌面应用使用 Azure Active Directory B2C 授予对 Node.js Web API 的访问权限
 
-本教程展示了如何从 Windows Presentation Foundation (WPF) 桌面应用调用受 Azure Active Directory (Azure AD) B2C 保护的 Node.js Web API 资源。
+本教程展示了如何从 Windows Presentation Foundation (WPF) 桌面应用调用受 Active Directory B2C (Azure AD B2C) 保护的 Node.js Web API 资源。
 
 本教程介绍如何执行下列操作：
 
@@ -37,16 +37,16 @@ ms.locfileid: "66508096"
 
 ## <a name="add-a-web-api-application"></a>添加 Web API 应用程序
 
-Web API 资源需要先在租户中注册，然后才能接受并响应提供访问令牌的客户端应用程序所提出的受保护资源请求。 
+Web API 资源需要先在租户中注册，然后才能接受并响应提供访问令牌的客户端应用程序所提出的受保护资源请求。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
 4. 选择“应用程序”，然后选择“添加”   。
 5. 输入应用程序的名称。 例如，“webapi1”  。
 6. 对于“包括 Web 应用/Web API”和“允许隐式流”，请选择“是”。   
 7. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点  。 本教程中的示例在本地运行并在 `https://localhost:5000` 上进行侦听。
-8. 对于“应用 ID URI”，请输入 Web API 使用的标识符。  包括域在内的完整标识符 URI 是为你生成的。 例如，`https://contosotenant.onmicrosoft.com/api`。
+8. 对于“应用 ID URI”，请输入 Web API 使用的标识符。  包括域在内的完整标识符 URI 是为你生成的。 例如，`https://contosotenant.onmicrosoft.com/api` 。
 9. 单击“创建”。 
 10. 在属性页上，记录在配置 Web 应用程序时要使用的应用程序 ID。
 
@@ -76,14 +76,14 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 
 ## <a name="configure-the-sample"></a>配置示例
 
-注册 Web API 并定义范围之后，请将 Web API 代码配置为使用你的 Azure AD B2C 租户。 本教程将配置一个可从 GitHub 下载的示例 Node.js Web 应用程序。 
+注册 Web API 并定义范围之后，请将 Web API 代码配置为使用你的 Azure AD B2C 租户。 本教程将配置一个可从 GitHub 下载的示例 Node.js Web 应用程序。
 
 从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip)或克隆示例 Web 应用。
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
-该 Node.js Web API 示例使用 Passport.js 库来使得 Azure AD B2C 能够保护对 API 的调用。 
+该 Node.js Web API 示例使用 Passport.js 库来使得 Azure AD B2C 能够保护对 API 的调用。
 
 1. 打开 `index.js` 文件。
 2. 使用 Azure AD B2C 租户注册信息来配置示例。 更改以下代码行：
@@ -111,7 +111,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 1. 在 Visual Studio 中打开 **active-directory-b2c-wpf** 解决方案。
 2. 按 **F5** 来运行桌面应用。
 3. 使用[在桌面应用中使用 Azure Active Directory B2C 对用户进行身份验证](active-directory-b2c-tutorials-desktop-app.md)教程中使用的电子邮件地址和密码进行登录。
-4. 单击“调用 API”  按钮。 
+4. 单击“调用 API”  按钮。
 
 桌面应用程序将向 Web API 发出请求并得到其中包含已登录用户的显示名称的响应。 受保护的桌面应用程序正在调用 Azure AD B2C 租户中的受保护 Web API。
 

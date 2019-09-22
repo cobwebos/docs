@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 1f7c212b7bb850816557feb53099973986bab587
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 10e0f24642d54c43d6c818773d0eb17815ab784b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114495"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996908"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域中配置 HTTPS
 
@@ -130,7 +130,7 @@ ms.locfileid: "70114495"
 
     ![访问策略设置](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. 选择“获取机密权限”  ，然后获取并列出**证书权限**，以允许 CDN 执行这些权限来获取和列出证书。 
+3. 选择“证书权限”  ，然后选中 **Get** 和 **List** 所对应的复选框，以允许 CDN 执行这些权限来获取和列出证书。
 
 4. 选择“确定”  。 
 

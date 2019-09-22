@@ -1,6 +1,6 @@
 ---
 title: 教程：使用可视界面预测汽车价格
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 了解如何使用拖放式可视界面来训练、评分和部署机器学习模型。 本教程是有关使用线性回归预测汽车价格的、由两个部分构成的教程系列的第一部分。
 author: peterclu
 ms.author: peterlu
@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 08/16/2019
-ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 11c65c217ef6c150c47f387f7f80070488a8df89
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891650"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996781"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>教程：使用可视界面预测汽车价格
 
-本教程分为两部分，介绍如何使用 Azure 机器学习服务可视界面来开发和部署预测分析解决方案，以预测任何汽车的价格。 
+本教程分为两部分，介绍如何使用 Azure 机器学习可视界面来开发和部署预测分析解决方案，以预测任何汽车的价格。 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
 
@@ -45,7 +45,7 @@ ms.locfileid: "69891650"
 
 ### <a name="create-a-new-workspace"></a>创建新的工作区
 
-如果你有一个 Azure 机器学习服务工作区，请跳至下一部分。
+如果你有 Azure 机器学习工作区，请跳至下一部分。
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 019b2ba0fd87610195ca9e6c7cb749be9542bd72
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858861"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932674"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>生成可供认证的 IoT 即插即用预览版设备
 
@@ -84,6 +84,18 @@ ms.locfileid: "70858861"
 1. 在公共模型存储库中选择“接口”选项卡，选择筛选器图标，然后在筛选器字段中输入“设备信息”。  
 
 1. 若要创建**设备信息**接口的本地副本，请在筛选列表中选择该接口，然后选择“下载”。  VS Code 将显示接口文件。
+
+若要使用 Azure CLI 查看**设备信息**接口，请执行以下操作：
+
+1. [安装 Azure CLI 扩展](howto-install-pnp-cli.md)。
+
+1. 使用以下 Azure CLI 命令显示设备信息接口 ID 所对应的接口：
+
+    ```cmd/sh
+    az iot pnp interface show --interface urn:azureiot:DeviceManagement:DeviceInformation:1
+    ```
+
+有关详细信息，请参阅[安装和使用适用于 Azure CLI 的 Azure IoT 扩展](howto-install-pnp-cli.md)。
 
 ## <a name="update-device-code"></a>更新设备代码
 

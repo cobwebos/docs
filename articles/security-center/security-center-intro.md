@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 2ef207a14582e6ba0d9f8a25c0314c5ec639c7cb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 762ab2800193aa084b771b7d000b383a7004097e
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882845"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984916"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -38,7 +38,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 为了帮助你应对这些挑战，安全中心提供了为你实现以下目的的工具：
 
--   **加强安全态势**：安全中心会对你的环境进行评估并使你能够了解资源的状态，它们是否安全？
+-   **加强安全态势**：安全中心会评估你的环境，并使你能够了解资源的状态以及它们是否安全。
 
 -   **防范威胁**：安全中心会对你的工作负荷进行评估并提出威胁防护建议和威胁检测警报。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 1533ceebcda15c45a71c04580c35432de4125ccd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873302"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984985"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
@@ -117,6 +117,7 @@ ms.locfileid: "70873302"
 |---------|-----------|
 | 计算机位于何处？ | 选择“本地”。|
 | 要将计算机复制到何处？ | 选择“到 Azure”。|
+| 是否正在执行迁移？ | 选择“是”  ，然后选中“我理解但我仍想继续使用 Azure Site Recovery”  旁边的框。
 | 计算机是否已虚拟化？ | 选择“未虚拟化/其他”。|
 
 完成后，选择“确定”  即可转到下一部分。

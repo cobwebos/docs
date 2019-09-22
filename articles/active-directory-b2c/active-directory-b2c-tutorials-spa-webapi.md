@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b53ce30f4c49580bcd8ad3e259adf0300d8bd4a6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 6d354ab25125b0df90ac3d6852d7eafe5d5aba46
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369295"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064698"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>教程：从单页应用程序使用 Azure Active Directory B2C 授予对 ASP.NET Core Web API 的访问权限
 
-本教程介绍如何从单页应用程序调用受 Azure Active Directory (Azure AD) B2C 保护的 ASP.NET Core Web API 资源。
+本教程介绍如何从单页应用程序调用受 Azure Active Directory B2C (Azure AD B2C) 保护的 ASP.NET Core Web API 资源。
 
 本教程介绍如何执行下列操作：
 
@@ -41,7 +41,7 @@ ms.locfileid: "68369295"
 Web API 资源需要先在租户中注册，然后才能接受并响应提供访问令牌的客户端应用程序所提出的受保护资源请求。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
 1. 选择“应用程序”，然后选择“添加”   。
 1. 输入应用程序的名称。 例如，“webapi1”  。

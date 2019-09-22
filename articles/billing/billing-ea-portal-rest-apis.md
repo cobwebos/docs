@@ -4,16 +4,16 @@ description: 本文介绍可用于 Azure 企业注册的 REST API。
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 4b56ef09525473920c5f5925485aae9c793ecc04
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a8cf0d2eb87a823ee4b1d27484e7ea8d89c1abfc
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900856"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105440"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
 
@@ -31,7 +31,7 @@ Microsoft 企业 Azure 客户可以通过 REST API 获取使用情况和计费�
 
 **市场应用商店费用** - [市场应用商店费用 API](billing-enterprise-api-marketplace-storecharge.md) 按指定计费周期的天或开始和结束日期返回基于使用情况的市场费用明细。 有关详细信息，请参阅[适用于企业客户的报告 API - 市场应用商店费用](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)。
 
-**价目表** - [价目表 API](/billing-enterprise-api-pricesheet.md) 为注册和计费周期的每个计量提供适用的费率。 有关详细信息，请参阅[适用于企业客户的报告 API - 价目表](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet)。
+**价目表** - [价目表 API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) 为注册和计费周期的每个计量提供适用的费率。 有关详细信息，请参阅[适用于企业客户的报告 API - 价目表](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet)。
 
 **计费周期** - [计费周期 API](billing-enterprise-api-billing-periods.md) 以倒序顺序为注册返回具有消耗数据的计费周期列表。 每个周期都有一个属性指向以下四个数据集的 API 路由：BalanceSummary、UsageDetails、Marketplace Charge 和 PriceSheet。 有关详细信息，请参阅[适用于企业客户的报告 API - 计费周期](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)。
 
@@ -109,7 +109,7 @@ Microsoft 企业 Azure 客户可以通过 REST API 获取使用情况和计费�
 
 将从 CSV 报告生成 JSON 格式。 因此，格式与摘要 CSV 格式相同。 列名称受控制，因此，在使用 JSON 摘要数据时，应反序列化为数据表。
 
-| CSV 列名称 | JSON 列名称 | JSON 新列 | 注释 |
+| CSV 列名 | JSON 列名 | JSON 新列 | 注释 |
 | --- | --- | --- | --- |
 | AccountOwnerId | AccountOwnerLiveId | AccountOwnerLiveId |   |
 | 帐户名 | AccountName | AccountName |   |
@@ -145,7 +145,7 @@ Microsoft 企业 Azure 客户可以通过 REST API 获取使用情况和计费�
 
 #### <a name="azure-marketplace-report"></a>Azure 市场报告
 
-| CSV 列名称 | JSON 列名称 | JSON 新列 |
+| CSV 列名 | JSON 列名 | JSON 新列 |
 | --- | --- | --- |
 | AccountOwnerId | AccountOwnerId | AccountOwnerId |
 | 帐户名 | AccountName | AccountName |
@@ -174,7 +174,7 @@ Microsoft 企业 Azure 客户可以通过 REST API 获取使用情况和计费�
 
 #### <a name="price-sheet"></a>价目表
 
-| CSV 列名称 | JSON 列名称 | 注释 |
+| CSV 列名 | JSON 列名 | 注释 |
 | --- | --- | --- |
 | 服务 | 服务 |  价格无变化 |
 | 计量单位 | UnitOfMeasure |   |

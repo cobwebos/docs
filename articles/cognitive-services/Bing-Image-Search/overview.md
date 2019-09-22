@@ -9,15 +9,15 @@ ms.assetid: 1446AD8B-A685-4F5F-B4AA-74C8E9A40BE9
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: overview
-ms.date: 02/06/2019
+ms.date: 09/13/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 044cdde8e7c2f79835f4197ae70f7f0dc8d9ccec
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: f9e33ae30b3aa59f4705518c3df20118fa056a93
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302670"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996764"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>什么是必应图像搜索 API？
 
@@ -66,3 +66,5 @@ ms.locfileid: "68302670"
 * [使用必应图像搜索 API 从 Web 获取图像](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)一文介绍了如何在 Web 中搜索和获取图像。
 
 * [发送和使用搜索查询](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)一文介绍了如何完成搜索查询的发出、自定义和分段。
+
+* [比较必应搜索 API](../Bing-web-search/bing-api-comparison.md)

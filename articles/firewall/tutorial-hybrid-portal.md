@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/17/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 08c1a8940bedb1093f618c8de53abc78f81c10dd
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 50f1d0bca958ef4504394cad1d771459cc8be27d
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918787"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018976"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
 
@@ -58,9 +58,9 @@ ms.locfileid: "70918787"
 请参阅本教程的[创建路由](#create-the-routes)部分了解如何创建这些路由。
 
 >[!NOTE]
->Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接   。 默认情况下，Azure 防火墙不支持强制的安全加密链路连接到本地网络。
+>Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接   。
 >
->但是，如果你的配置要求强制的安全加密链路连接到本地网络，Microsoft 将基于具体的情况提供支持。 请联系支持人员，以便我们可以查看你的情况。 如果接受，我们将允许你的订阅，确保保持所需的防火墙 Internet 连接。
+>Azure 防火墙目前不支持强制隧道。 如果你的配置需要通过强制隧道连接到本地网络，并且可以确定 Internet 目标的目标 IP 前缀，则可以通过 AzureFirewallSubnet 上用户定义的路由将本地网络的这些范围配置为下一跃点。 或者，可以使用 BGP 来定义这些路由。
 
 >[!NOTE]
 >即使 UDR 指向作为默认网关的 Azure 防火墙，也会直接路由直接对等互连 VNet 之间的流量。 若要在此方案中将子网到子网流量发送到防火墙，UDR 必须在这两个子网上显式地包含目标子网网络前缀。
@@ -373,7 +373,7 @@ ms.locfileid: "70918787"
     - **用户名**：*azureuser*。
     - **密码**：*Azure123456!* -
 4. 选择“下一步:磁盘”  。
-5. 接受默认值，然后选择“下一步: 网络”。 
+5. 接受默认设置，然后选择“下一步:  网络”。
 6. 选择“VNet-Spoke”作为虚拟网络；子网为“SN-Workload”。  
 7. 对于“公共 IP”，请选择“无”。  
 8. 对“公共入站端口”，请选择“允许所选端口”，然后选择“HTTP (80)”和“RDP (3389)”。    

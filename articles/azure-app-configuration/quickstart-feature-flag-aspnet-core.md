@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 41947de18ae27b41d046fd4358f0039a1b56374d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 6f9094a52ff3558fa8d1f2fee1d80ed8eb09a416
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347910"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076326"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入门：将功能标志添加到 ASP.NET Core 应用
 
@@ -36,7 +36,7 @@ ms.locfileid: "68347910"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“功能管理器” > “+创建”以添加以下功能标志：  
+6. 选择“功能管理器” > “+添加”以添加以下功能标志：  
 
     | 密钥 | 状态 |
     |---|---|
@@ -81,10 +81,11 @@ ms.locfileid: "68347910"
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 通过运行以下命令，添加对 `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet 包的引用：
+1. 运行以下命令添加对 `Microsoft.Azure.AppConfiguration.AspNetCore` 和 `Microsoft.FeatureManagement.AspNetCore` NuGet 包的引用：
 
     ```
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
     ```
 
 1. 运行以下命令，还原项目包：
@@ -266,6 +267,8 @@ ms.locfileid: "68347910"
     |---|---|
     | Beta | 启用 |
 
+1. 通过切换回命令提示符并按 `Ctrl-C` 取消正在运行的 `dotnet` 进程，然后重新运行 `dotnet run` 来重启应用程序。
+
 1. 刷新浏览器页面，查看新的配置设置。
 
     ![本地启动应用快速入门](./media/quickstarts/aspnet-core-feature-flag-local-after.png)
@@ -281,3 +284,4 @@ ms.locfileid: "68347910"
 - 详细了解[功能管理](./concept-feature-management.md)。
 - [管理功能标志](./manage-feature-flags.md)。
 - [在 ASP.NET Core 应用中使用功能标志](./use-feature-flags-dotnet-core.md)。
+- [在 ASP.NET Core 应用中使用动态配置](./enable-dynamic-configuration-aspnet-core.md)

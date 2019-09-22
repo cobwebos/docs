@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Monitor 从混合 Linux 计算机收集数据 | Microsoft Docs
+title: 快速入门：使用 Azure Monitor 从混合 Linux 计算机收集数据
 description: 本快速入门介绍如何为 Azure 外部运行的 Linux 计算机部署 Log Analytics 代理，并通过 Azure Monitor 日志启用数据收集。
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 6fa26adab64a91ac2910607e4a828f9362490d08
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, seo-javascript-september2019
+ms.openlocfilehash: cdaca0fd3e314ecb5c0b68438eaaf87fbfb699b0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991749"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933030"
 ---
 # <a name="collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>使用 Azure Monitor 从混合环境中的 Linux 计算机收集数据
 

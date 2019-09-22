@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 06/20/2019
-ms.openlocfilehash: 5985d0d82341c76993ee91b8dff6927edd1ed8b4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 587c730dfa436760d42e614c2dabee117f3b61d3
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332153"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018822"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -25,6 +25,10 @@ ms.locfileid: "67332153"
 |**入门**|[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="246"></a>2.4.6
+
+- 除了[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)中所述的例外情况，此版本提供了与到 2019 年 7 月为止的 Azure Cosmos 服务中的功能同等的功能。 它还修复了与通过命令行调用时模拟器关闭相关的几个 bug，以及使用直接模式连接的 SDK 客户端的内部 IP 地址覆盖。
 
 ### <a name="243"></a>2.4.3
 

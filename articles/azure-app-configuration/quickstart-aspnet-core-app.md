@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 600c808c0bda991bb7203bbf60c098918e274da6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b4642ecfad17bf3e926e9efdec034bbe4aa6c20e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326627"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076310"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 ASP.NET Core 应用
 
@@ -57,9 +57,9 @@ ms.locfileid: "68326627"
 
 ## <a name="add-secret-manager"></a>添加机密管理器
 
-向项目添加[机密管理器工具](https://docs.microsoft.com/aspnet/core/security/app-secrets)。 机密管理器工具存储敏感数据，以便用于项目树之外的开发工作。 此方法有助于防止意外共享源代码中的应用密码。
+若要使用机密管理器，请将 `UserSecretsId` 元素添加到 .csproj  文件。
 
-- 打开 *.csproj* 文件。 如下所示，添加 `UserSecretsId` 元素，将其值替换为你自己的值（通常为 GUID）。 保存文件。
+- 打开 *.csproj* 文件。 添加 `UserSecretsId` 元素，如下所示。 可以使用相同的 GUID，也可以将此值替换为你自己的值。 保存文件。
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -77,11 +77,13 @@ ms.locfileid: "68326627"
     </Project>
     ```
 
+机密管理器工具存储敏感数据，以便用于项目树之外的开发工作。 此方法有助于防止意外共享源代码中的应用密码。 有关机密管理器的详细信息，请参阅[在 ASP.NET Core 开发中安全存储应用机密](https://docs.microsoft.com/aspnet/core/security/app-secrets)
+
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
 1. 通过运行以下命令，添加对 `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet 包的引用：
 
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
 
 2. 运行以下命令，还原项目包：
 
@@ -94,6 +96,9 @@ ms.locfileid: "68326627"
     必须在 .csproj 文件所在的同一目录中执行此命令  。
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+
+    > [!IMPORTANT]
+    > 有些 shell 会截断连接字符串，除非将连接字符串括在引号中。 确保 `dotnet user-secrets` 命令的输出显示整个连接字符串。 如果未显示，请重新运行该命令，并将连接字符串括在引号中。
 
     机密管理器仅用于本地测试 web 应用程序。 例如，将应用部署到 [Azure 应用服务](https://azure.microsoft.com/services/app-service/web)后，可以使用应用服务中的“连接字符串”应用程序设置，而无需使用机密管理器来存储连接字符串。 
 
@@ -182,7 +187,7 @@ ms.locfileid: "68326627"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个新的应用配置存储区，并通过[应用配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其用于 ASP.NET Core Web 应用。 若要深入了解如何使用应用程序配置，请继续学习下一个教程，其中将介绍如何进行身份验证。
+在本快速入门中，你创建了一个新的应用配置存储区，并通过[应用配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其用于 ASP.NET Core Web 应用。 若要详细了解如何使用应用配置，请继续学习下一教程，该教程演示如何将 Web 应用配置为动态刷新配置设置。
 
 > [!div class="nextstepaction"]
-> [托管标识集成](./howto-integrate-azure-managed-service-identity.md)
+> [在 ASP.NET Core 应用中使用动态配置](./enable-dynamic-configuration-aspnet-core.md)

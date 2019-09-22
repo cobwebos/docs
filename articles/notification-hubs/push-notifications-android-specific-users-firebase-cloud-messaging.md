@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/01/2019
+ms.date: 09/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 67df6c84c5a88a3ffc82948898e356e0a913ba27
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: cdd43f6892f1932803bb965897d4af8c4cab481e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227798"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934113"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定的 Android 应用程序用户推送通知
 
@@ -470,7 +470,14 @@ ms.locfileid: "68227798"
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. 生成项目。
+13. 如果你的应用面向 API 级别 28 (Android 9.0) 或更高版本，请在 `AndroidManifest.xml` 的 `<application>` 元素中包含以下声明。
+
+    ```xml
+    <uses-library
+        android:name="org.apache.http.legacy"
+        android:required="false" />
+    ```
+14. 生成项目。
 
 ## <a name="test-the-app"></a>测试应用程序
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8731d66c9d2dca0043307ac2f6a0d1828aeaa275
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 192374971e92bae282c5092dd8c5e7261fce0c5f
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050517"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066370"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>教程：将真实设备添加到 Azure IoT Central 应用程序
 
@@ -24,8 +24,8 @@ ms.locfileid: "70050517"
 
 本教程由两个部分组成：
 
-1. 首先，以操作员的身份了解如何在 Azure IoT Central 应用程序中添加和配置真实的设备。 此部分结束时，我们将会检索要在第二部分中使用的连接字符串。
-2. 然后，以设备开发人员的身份了解真实设备中的代码。 我们会将第一部分检索到的连接字符串添加到示例代码。
+* 首先，以操作员的身份了解如何在 Azure IoT Central 应用程序中添加和配置真实的设备。 此部分结束时，我们将会检索要在第二部分中使用的连接字符串。
+* 然后，以设备开发人员的身份了解真实设备中的代码。 我们会将第一部分检索到的连接字符串添加到示例代码。
 
 本教程介绍如何执行下列操作：
 
@@ -39,7 +39,6 @@ ms.locfileid: "70050517"
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，构建人员至少应完成第一篇构建人员教程以创建 Azure IoT Central 应用程序：[定义新设备类型](tutorial-define-device-type.md)（必需）
-
 
 在开发计算机上安装 [Node.js](https://nodejs.org/) 版本 8.0.0 或更高版本。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种操作系统。
 
@@ -75,10 +74,6 @@ ms.locfileid: "70050517"
 
 3. 可以查看真实设备的“度量”、“规则”和“仪表板”页。   
 
-## <a name="generate-connection-string"></a>生成连接字符串
-
-设备开发人员需在设备上运行的代码中嵌入真实设备的连接字符串。  该连接字符串可让设备安全连接到应用程序。 以下步骤演示如何生成连接字符串并准备客户端 Node.js 代码。
-
 ## <a name="prepare-the-client-code"></a>准备客户端代码
 
 本文中的示例代码是以 [Node.js](https://nodejs.org/) 编写的，演示了如何通过足够的代码执行以下操作：
@@ -101,13 +96,9 @@ ms.locfileid: "70050517"
 
    ![显示“查看连接信息”链接的“设备”页](media/tutorial-add-device/connectionlink.png)
 
-1. 在“设备连接”页上，记下**作用域 ID**、**设备 ID** 和**主要密钥**值。 下一步使用这些值。
+1. 在“设备连接”页上，记下**作用域 ID**、**设备 ID** 和**主要密钥**值。 本教程后面会用到这些值。
 
    ![连接详细信息](media/tutorial-add-device/device-connect.png)
-
-### <a name="generate-the-connection-string"></a>生成连接字符串
-
-[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
 ### <a name="prepare-the-nodejs-project"></a>准备 Node.js 项目
 
@@ -124,7 +115,7 @@ ms.locfileid: "70050517"
 1. 若要安装所需的包，请运行以下命令：
 
     ```cmd/sh
-    npm install azure-iot-device azure-iot-device-mqtt --save
+    npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
 1. 使用文本编辑器在 `connectedairconditioner` 文件夹中创建名为 **ConnectedAirConditioner.js** 的文件。
@@ -134,21 +125,26 @@ ms.locfileid: "70050517"
     ```javascript
     'use strict';
 
-    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
+    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
+    var Client = require('azure-iot-device').Client;
     var Message = require('azure-iot-device').Message;
-    var ConnectionString = require('azure-iot-device').ConnectionString;
+    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
+    var SymmetricKeySecurityClient = require('azure-iot-security-symmetric-key').SymmetricKeySecurityClient;
+    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
     ```
 
-1. 将以下变量声明添加到该文件：
+1. 将以下变量声明添加到该文件。 将占位符 `{your Scope ID}`、`{your Device ID}` 和 `{your Primary Key}` 替换为之前记录的设备连接信息：
 
     ```javascript
-    var connectionString = '{your device connection string}';
+    var provisioningHost = 'global.azure-devices-provisioning.net';
+    var idScope = '{your Scope ID}';
+    var registrationId = '{your Device ID}';
+    var symmetricKey = '{your Primary Key};
+    var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
+    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
+    var hubClient;
     var targetTemperature = 0;
-    var client = clientFromConnectionString(connectionString);
     ```
-
-    > [!NOTE]
-    > 在稍后的步骤中，需要更新占位符 `{your device connection string}`。
 
 1. 保存到目前为止所做的更改，但请将文件保持打开状态。
 
@@ -165,12 +161,12 @@ ms.locfileid: "70050517"
 1. 若要将温度遥测数据发送到 Azure IoT Central 应用程序，请将以下代码添加到 **ConnectedAirConditioner.js** 文件：
 
     ```javascript
-    // Send device telemetry.
+    // Send device measurements.
     function sendTelemetry() {
       var temperature = targetTemperature + (Math.random() * 15);
       var data = JSON.stringify({ temperature: temperature });
       var message = new Message(data);
-      client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
+      hubClient.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
         (err ? `; error: ${err.toString()}` : '') +
         (res ? `; status: ${res.constructor.name}` : '')));
     }
@@ -187,7 +183,7 @@ ms.locfileid: "70050517"
         firmwareVersion: "9.75",
         serialNumber: "10001"
       };
-      twin.properties.reported.update(properties, (errorMessage) => 
+      twin.properties.reported.update(properties, (errorMessage) =>
       console.log(` * Sent device properties ` + (errorMessage ? `Error: ${errorMessage.toString()}` : `(success)`)));
     }
     ```
@@ -266,43 +262,53 @@ ms.locfileid: "70050517"
         console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
       } else {
         console.log('Device successfully connected to Azure IoT Central');
+
+        // Create handler for countdown command
+        hubClient.onDeviceMethod('echo', onCommandEcho);
+
         // Send telemetry measurements to Azure IoT Central every 1 second.
         setInterval(sendTelemetry, 1000);
-        // Setup device command callbacks
-        client.onDeviceMethod('echo', onCommandEcho);
+
         // Get device twin from Azure IoT Central.
-        client.getTwin((err, twin) => {
+        hubClient.getTwin((err, twin) => {
           if (err) {
             console.log(`Error getting device twin: ${err.toString()}`);
           } else {
-            // Send device properties once on device start up
+            // Send device properties once on device start up.
             sendDeviceProperties(twin);
+
             // Apply device settings and handle changes to device settings.
             handleSettings(twin);
           }
         });
       }
     };
-
-    client.open(connectCallback);
     ```
 
-1. 保存到目前为止所做的更改，但请将文件保持打开状态。
-
-## <a name="configure-client-code"></a>配置客户端代码
-
-<!-- Add the connection string to the sample code, build, and run -->
-若要配置客户端代码以连接到 Azure IoT Central 应用程序，需要添加本教程前面记下的真实设备连接字符串。
-
-1. 在 **ConnectedAirConditioner.js** 文件中找到以下代码行：
+1. 注册设备并将其连接到 IoT Central 应用程序：
 
     ```javascript
-    var connectionString = '{your device connection string}';
+    // Start the device (connect it to Azure IoT Central).
+    provisioningClient.register((err, result) => {
+      if (err) {
+        console.log("error registering device: " + err);
+      } else {
+        console.log('registration succeeded');
+        console.log('assigned hub=' + result.assignedHub);
+        console.log('deviceId=' + result.deviceId);
+        var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';SharedAccessKey=' + symmetricKey;
+        hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
+
+        hubClient.open(connectCallback);
+      }
+    });
     ```
 
-1. 将 `{your device connection string}` 替换为真实设备的连接字符串。 你复制了在上一步中生成的连接字符串。
+1. 保存所做的更改。
 
-1. 保存对 **ConnectedAirConditioner.js** 文件所做的更改。
+## <a name="run-the-client-code"></a>运行客户端代码
+
+现在，可以运行客户端代码，查看它如何与 IoT Central 应用程序交互：
 
 1. 若要运行示例，请在命令行环境中输入以下命令：
 

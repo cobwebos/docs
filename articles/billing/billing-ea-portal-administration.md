@@ -4,16 +4,16 @@ description: 本文介绍管理员可在 Azure EA 门户中完成的常见任务
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 7b594cef2fefa164ef900cbfd65fcf95d5d47b94
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 236a8d6d280e75102df84fec5ab3df51f7ba355b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901128"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105486"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 

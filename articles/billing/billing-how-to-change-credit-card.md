@@ -11,14 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: 7719ae83525883a6d3f014dbb99877b7319f2ccd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 05b1fe3d061e735322e6eb6c65e60f63d8adb4d6
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68383660"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933865"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>添加、更新或删除用于 Azure 的信用卡
+
+本文档适用于使用信用卡注册 Azure online 的客户。
 
 在 Azure 门户中，可以添加新信用卡、更新现有信用卡，或删除不用的信用卡。 只有[帐户管理员](billing-subscription-transfer.md#whoisaa)才能进行这种更改。
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 404ee6fd51493735b8f96e98276f71d1d2f91158
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5b5efa4a8c6d92f9937709f57f99851c90058dda
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882876"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067697"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>快速入门：让适用于 Python 的客户端库个性化
 
@@ -37,7 +37,7 @@ ms.locfileid: "70882876"
 
 ### <a name="create-a-personalizer-azure-resource"></a>创建个性化体验创建服务 Azure 资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 还可以：
+Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://portal.azure.com/)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 有关更多详细信息，请参阅[如何使用 Azure 门户创建认知服务资源](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 还可以：
 
 * 免费获取在 7 天内有效的[试用版密钥](https://azure.microsoft.com/try/cognitive-services)。 注册之后，它将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上提供。  
 * 在 [Azure 门户](https://portal.azure.com/)上查看资源。

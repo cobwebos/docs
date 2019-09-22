@@ -2,17 +2,17 @@
 title: 教程：Azure HDInsight 中的按需 Apache Hadoop 群集 - 数据工厂
 description: 教程 - 了解如何使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集。
 author: hrasheed-msft
-ms.reviewer: jasonh
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0b3062e14873ec971163c125fccd6852d8662663
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736181"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098727"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>教程：使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -203,7 +203,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 6. 选择“创作和监视”启动 Azure 数据工厂创作和监视门户。 
 
-    ![Azure 数据工厂概述](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure 数据工厂概述")
+    ![Azure 数据工厂门户概述](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure 数据工厂概述")
 
 ## <a name="create-linked-services"></a>创建链接服务
 
@@ -352,7 +352,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 1. 除非你与其他项目共享资源组，否则在“资源”  磁贴中，应列出默认存储帐户和数据工厂。
 1. 选择“删除资源组”  。 这样做会删除存储帐户和存储帐户中存储的数据。
 
-    ![删除资源组](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "删除资源组")
+    ![Azure 门户删除资源组](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "删除资源组")
 
 1. 输入资源组名称以确认删除，然后选择“删除”  。
 

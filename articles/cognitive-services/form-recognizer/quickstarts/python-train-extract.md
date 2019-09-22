@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 53409769fc85422f4c34a14d22e7c44b2d5cce35
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e7a63d09c3116c7504e9d409b32a44be140d8fe4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443850"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074144"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入门：使用 REST API 和 Python 训练表单识别器模型并提取表单数据
 
@@ -38,7 +38,7 @@ ms.locfileid: "68443850"
 
 若要使用 Azure Blob 容器中的文档训练表单识别器模型，请通过运行下面的 python 代码来调用“训练”API。  运行该代码之前，请进行以下更改：
 
-1. 将 `<Endpoint>` 替换为获取的订阅密钥所在的 Azure 区域中的表单识别器资源的终结点 URL。
+1. 将 `<Endpoint>` 替换为表单识别器资源的终结点 URL。
 1. 将 `<Subscription key>` 替换为从上一步复制的订阅密钥。
 1. 将 `<SAS URL>` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”  。 确保选中“读取”  和“列表”  权限，然后单击“创建”  。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
 

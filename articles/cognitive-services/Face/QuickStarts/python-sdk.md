@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 2a74dbe9c306c1bf2420fdaac78a9b9183cacab1
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f237af58bb98f667d4481a88bbb4daa77657468c
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376140"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966913"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>快速入门：适用于 Python 的人脸客户端库
 
@@ -285,7 +285,7 @@ python quickstart-file.py
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已了解如何使用适用于 Java 的人脸库来执行基本任务。 接下来，请在参考文档中详细了解该库。
+本快速入门介绍了如何使用适用于 Python 的人脸库来执行基本任务。 接下来，请在参考文档中详细了解该库。
 
 > [!div class="nextstepaction"]
 > [人脸 API 参考 (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)

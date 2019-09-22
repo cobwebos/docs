@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 699dd41024bd60b2016771d728253d938fc9ab23
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 9a3c11c7303d467a1a993c49d983131639683239
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347145"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064881"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 在本机客户端应用程序中启用身份验证
 
-本教程展示了如何在 Windows Presentation Foundation (WPF) 桌面应用程序中使用 Azure Active Directory (Azure AD) B2C 执行用户登录和注册。 应用程序可以使用 Azure AD B2C 通过开放式标准协议对社交帐户、企业帐户和 Azure Active Directory 帐户进行身份验证。
+本教程展示了如何在 Windows Presentation Foundation (WPF) 桌面应用程序中使用 Azure Active Directory B2C (Azure AD B2C) 执行用户登录和注册。 应用程序可以使用 Azure AD B2C 通过开放式标准协议对社交帐户、企业帐户和 Azure Active Directory 帐户进行身份验证。
 
 本教程介绍如何执行下列操作：
 
@@ -38,7 +38,7 @@ ms.locfileid: "68347145"
 ## <a name="add-the-native-client-application"></a>添加本机客户端应用程序
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
 4. 选择“应用程序”，然后选择“添加”   。
 5. 输入应用程序的名称。 例如，“nativeapp1”  。

@@ -1,7 +1,7 @@
 ---
 title: 教程：训练第一个 ML 模型
-titleSuffix: Azure Machine Learning service
-description: 本教程介绍 Azure 机器学习服务中的基础设计模式，并基于糖尿病数据集训练一个简单的 scikit-learn 模型。
+titleSuffix: Azure Machine Learning
+description: 本教程介绍 Azure 机器学习中的基础设计模式，并基于糖尿病数据集训练一个简单的 scikit-learn 模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241295"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004024"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教程：训练第一个 ML 模型
 
-本教程是由两个部分构成的系列教程的第二部分  。 在上一篇教程中，你[创建了一个工作区并选择了一个开发环境](tutorial-1st-experiment-sdk-setup.md)。 本教程介绍 Azure 机器学习服务中的基础设计模式，并基于糖尿病数据集训练一个简单的 scikit-learn 模型。 完成本教程后，你将获得 SDK 的实践知识，继而可以开发更复杂的试验和工作流。
+本教程是由两个部分构成的系列教程的第二部分  。 在上一篇教程中，你[创建了一个工作区并选择了一个开发环境](tutorial-1st-experiment-sdk-setup.md)。 本教程介绍 Azure 机器学习中的基础设计模式，并基于糖尿病数据集训练一个简单的 scikit-learn 模型。 完成本教程后，你将获得 SDK 的实践知识，继而可以开发更复杂的试验和工作流。
 
 本教程将介绍以下任务：
 
@@ -197,7 +197,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果你打算运行其他 Azure 机器学习服务教程，请不要结束本部分。
+如果打算运行其他 Azure 机器学习教程，请不要完成本部分。
 
 ### <a name="stop-the-notebook-vm"></a>停止笔记本 VM
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 23c10fbed751e05fea2a95030c720f622e195f40
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 875db0d34932dca1c7eae7e3650acf01856c6413
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534220"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934431"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -24,7 +24,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 * 指定要保护的 SQL Server VM 并查询其中的数据库后，Azure 备份服务将在此 VM 上以 `AzureBackupWindowsWorkload` 扩展名安装工作负荷备份扩展。
 * 此扩展包含协调器和 SQL 插件。 协调器负责触发多种操作（如配置备份、备份和还原）的工作流，插件负责实际数据流。
-* 为了能够发现此 VM 上的数据库，Azure 备份将创建帐户 `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 Azure 备份利用 `NT AUTHORITY\SYSTEM` 帐户进行数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生此错误，请[遵照这些说明](backup-azure-sql-database.md)予以解决。
+* 为了能够发现此 VM 上的数据库，Azure 备份将创建帐户 `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 Azure 备份利用 `NT AUTHORITY\SYSTEM` 帐户进行数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生此错误，请[遵照这些说明](#set-vm-permissions)予以解决。
 * 在所选数据库上触发配置保护后，备份服务将使用备份计划和其他策略详细信息设置协调器，扩展将这些详细信息本地缓存在 VM 上。
 * 在计划的时间，协调器与插件通信，并开始使用 VDI 从 SQL 服务器流式处理备份数据。  
 * 插件将数据直接发送到恢复服务保管库，因此不需要暂存位置。 Azure 备份服务在存储帐户中加密和存储数据。
@@ -58,8 +58,7 @@ Azure 备份最近已宣布对 [EOS SQL Sever](https://docs.microsoft.com/azure/
 2. 需要在 VM 上安装 .NET Framework 4.5.2 和更高版本
 3. 不支持 FCI 和镜像数据库的备份
 
-在正式版发布之前，用户无需为此功能付费。 所有其他[功能注意事项和限制](#feature-consideration-and-limitations)同样适用于这些版本。 在 SQL Server 2008 和 2008 R2 上配置保护之前，请参阅[先决条件](backup-sql-server-database-azure-vms.md#prerequisites)，其中包括设置[注册表项](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration)（在此功能推出正式版后，不需要执行此步骤）。
-
+在正式版发布之前，用户无需为此功能付费。 所有其他[功能注意事项和限制](#feature-consideration-and-limitations)同样适用于这些版本。 在 SQL Server 2008 和 2008 R2 上配置保护之前，请参阅[先决条件](backup-sql-server-database-azure-vms.md#prerequisites)。
 
 ## <a name="feature-consideration-and-limitations"></a>功能注意事项和限制
 

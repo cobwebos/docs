@@ -1,6 +1,6 @@
 ---
 title: 创建第一个自动化机器学习试验
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure 机器学习的工作区登陆页面（预览版）中使用自动化机器学习训练和部署分类模型。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 0dd4447736469644875dff914c6284b087be87d0
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910222"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092004"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>教程：使用自动化机器学习创建第一个分类模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "70910222"
 本教程介绍如何执行以下任务：
 
 > [!div class="checklist"]
-> * 创建 Azure 机器学习服务工作区。
+> * 创建 Azure 机器学习工作区。
 > * 运行自动机器学习试验。
 > * 查看试验详细信息。
 > * 部署模型。
@@ -67,7 +67,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 输入“my-1st-automl-experiment”  作为试验名称。
 
-1. 选择“创建新计算”。  
+1. 选择“创建新计算”。  计算是用于运行训练脚本或托管服务部署的本地或基于云的资源环境。 对于此试验，我们使用基于云的计算。 
 
     1. 为此试验配置计算上下文。
         
@@ -99,7 +99,8 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
         文件格式| 带分隔符
         分隔符| 逗号
         编码| UTF-8
-        列标题| 所有文件都具有相同的标题            跳过行 | 无
+        列标题| 所有文件都具有相同的标题
+        跳过行 | 无
 
         >[!NOTE]
         > 如果已更新此窗体上的任何设置，则会相应地更新预览。
@@ -146,9 +147,9 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 ## <a name="deploy-the-model"></a>部署模型
 
-在工作区登陆页面中使用自动化机器学习可将最佳模型部署为 Web 服务，以基于新数据进行预测，并识别出潜在的改进机会。 对于本试验，部署意味着金融机构现已获得一个迭代和可缩放的解决方案来识别潜在的定期存款客户。
+在工作区登陆页中使用自动化机器学习可以通过几个步骤将最佳模型部署为 Web 服务。 部署是模型的集成，因此它可以对新数据进行预测并识别潜在的机会领域。 对于本试验，部署到 Web 服务意味着金融机构现已获得一个迭代和可缩放的 Web 解决方案，用于识别潜在的定期存款客户。 
 
-在此试验上下文中，根据 **AUC_weighted** 指标，**VotingEnsemble** 被视为最佳模型。  我们将部署此模型，但请注意，部署需要大约 20 分钟才能完成。
+在此试验上下文中，根据 **AUC_weighted** 指标，**VotingEnsemble** 被视为最佳模型。  我们将部署此模型，但请注意，部署需要大约 20 分钟才能完成。 部署过程需要几个步骤，包括注册模型、生成资源和为 Web 服务配置资源。
 
 1. 在“运行详细信息”页上，选择右上角的“部署最佳模型”按钮。  
 
@@ -161,7 +162,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
     评分脚本| 自动生成
     环境脚本| 自动生成
     
-1. 选择“部署”。 
+1. 选择“部署”。   
 
     部署成功完成后，将显示部署完成消息。
     

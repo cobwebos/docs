@@ -1,6 +1,6 @@
 ---
 title: 教程：创建第一个 ML 试验：设置
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 在本系列教程中，你将完成端到端的步骤，以开始在 Jupyter Notebook 中运行 Azure 机器学习 Python SDK。  第一部分介绍如何创建一个云笔记本服务器环境，以及如何创建一个工作区来管理试验和机器学习模型。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/28/2019
-ms.openlocfilehash: d968d6e799b75940d1fb73aa31c22eb84068df7d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 9bc5b9688a8cd568b47fe2dad88d6d007ceca0c4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860422"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004063"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教程：开始使用 Python SDK 创建第一个 ML 试验
 
@@ -27,11 +27,11 @@ ms.locfileid: "70860422"
 > * 创建要在下一篇教程中使用的 [Azure 机器学习工作区](concept-workspace.md)。
 > * 创建一个基于云的 Jupyter 笔记本 VM，其中已安装并预配置了 Azure 机器学习 Python SDK。
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 ## <a name="create-a-workspace"></a>创建工作区
 
-Azure 机器学习工作区是云中的基础资源，用于试验、训练和部署机器学习模型。 它将 Azure 订阅和资源组关联到 SDK 中一个易于使用的对象。 如果你已有一个 Azure 机器学习服务工作区，请跳转到[下一部分](#azure)。 否则，请立即创建一个。
+Azure 机器学习工作区是云中的基础资源，用于试验、训练和部署机器学习模型。 它将 Azure 订阅和资源组关联到 SDK 中一个易于使用的对象。 如果已有 Azure 机器学习工作区，请跳至[下一部分](#azure)。 否则，请立即创建一个。
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -39,7 +39,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 本示例使用工作区中的云笔记本服务器来实现免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](how-to-configure-environment.md#local)。
 
-在工作区中创建云资源，以便开始使用 Jupyter 笔记本。 此资源是一个基于云的 Linux 虚拟机，其中预配置了运行 Azure 机器学习服务所需的一切组件。
+在工作区中创建云资源，以便开始使用 Jupyter 笔记本。 此资源是一个基于云的 Linux 虚拟机，其中预配置了运行 Azure 机器学习所需的一切组件。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中打开你的工作区。  如果不确定如何在门户中查找工作区，请参阅如何[查找工作区](how-to-manage-workspace.md#view)。
 
@@ -69,7 +69,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 在本教程中，你已完成以下任务：
 
-* 创建了 Azure 机器学习服务工作区。
+* 创建了 Azure 机器学习工作区。
 * 在工作区中创建并配置了云笔记本服务器。
 
 在本教程的**第二部分**中，你将运行 `tutorial-1st-experiment-sdk-train.ipynb` 中的代码来训练机器学习模型。 

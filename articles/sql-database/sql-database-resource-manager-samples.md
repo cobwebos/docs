@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 81f3e4beb29f21f1b752a876827e9b35856c713a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c501bed9220c08013d44836066e46df92cf69eaa
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566892"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037437"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL 数据库的 Azure 资源管理器模板
 
 使用 Azure 资源管理器模板可将基础结构定义为代码，并将解决方案部署到 Azure 云。
 
-## <a name="single-database--elastic-pool"></a>单一数据库和弹性池
+## <a name="single-database--elastic-pooltabsingle-database"></a>[单一数据库和弹性池](#tab/single-database)
 
 下表包含 Azure SQL 数据库的 Azure 资源管理器模板链接。
 
@@ -41,7 +41,7 @@ ms.locfileid: "68566892"
 | [使用 SQL 数据库的 HDInsight 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | 使用此模板可以创建 HDInsight 群集、SQL 数据库服务器、SQL 数据库和两个表。 [将 Sqoop 与 HDInsight 中的 Hadoop 配合使用](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop)一文中使用了此模板 |
 | [按计划运行 SQL 存储过程的 Azure 逻辑应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | 使用此模板可以创建一个按计划运行 SQL 存储过程的逻辑应用。 可将该过程的所有参数放入该模板的正文部分。|
 
-## <a name="managed-instance"></a>托管实例
+## <a name="managed-instancetabmanaged-instance"></a>[托管实例](#tab/managed-instance)
 
 下表包含 Azure SQL 数据库 - 托管实例的 Azure 资源管理器模板链接。
 
@@ -51,3 +51,5 @@ ms.locfileid: "68566892"
 | [托管实例的网络环境](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | 此部署创建包含两个子网的已配置 Azure 虚拟网络 - 其中一个子网专用于托管实例，另一个子网用于放置其他资源（例如 VM、应用服务环境，等等）。 此模板将创建经过适当配置的网络环境，可在该环境中部署托管实例。 |
 | [使用 P2S 连接的托管实例](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | 此部署将创建包含子网 `ManagedInstance` 和 `GatewaySubnet` 的 Azure 虚拟网络。 托管实例将部署在 ManagedInstance 子网中。 将在 `GatewaySubnet` 子网中创建虚拟网络网关，并为其配置点到站点 VPN 连接。 |
 | [使用虚拟机的托管实例](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | 此部署将创建包含子网 `ManagedInstance` 和 `Management` 的 Azure 虚拟网络。 托管实例将部署在 `ManagedInstance` 子网中。 使用最新版 SQL Server Management Studio (SSMS) 的虚拟机将部署在 `Management` 子网中。 |
+
+---

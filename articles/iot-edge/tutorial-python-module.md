@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 55cdb70a02aae62a69f4fc930f4c6ee385a24702
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2784d57f3f85094230b481dd9fedca191edb39d4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839545"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001109"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>教程：为 Linux 设备开发和部署 Python IoT Edge 模块
 
@@ -33,6 +33,9 @@ ms.locfileid: "68839545"
 在本教程中创建的 IoT Edge 模块可以筛选由设备生成的温度数据。 它只在温度高于指定阈值的情况下，向上游发送消息。 在边缘进行的此类分析适用于减少传递到云中和存储在云中的数据量。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+> 以下指南适用于 V1 Python SDK，该版本已弃用。 我们目前正在努力使本指南与 V2 兼容。 请关注此空间的更新。
 
 ## <a name="solution-scope"></a>解决方案适用范围
 
