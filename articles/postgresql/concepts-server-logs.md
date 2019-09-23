@@ -49,9 +49,9 @@ Azure Database for PostgreSQL 集成了 Azure Monitor 诊断日志。 在 Postgr
 | TenantId | 租户 ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | 记录日志时的时间戳 (UTC) |
-| 类型 | 日志的类型。 始终是 `AzureDiagnostics` |
+| Type | 日志的类型。 始终是 `AzureDiagnostics` |
 | SubscriptionId | 服务器所属的订阅的 GUID |
-| 资源组 | 服务器所属的资源组的名称 |
+| ResourceGroup | 服务器所属的资源组的名称 |
 | ResourceProvider | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | resourceId | 资源 URI |
