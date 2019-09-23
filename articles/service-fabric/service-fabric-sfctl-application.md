@@ -27,15 +27,15 @@ ms.locfileid: "69036544"
 
 |Command|描述|
 | --- | --- |
-| 创建 | 使用指定说明创建 Service Fabric 应用程序。 |
-| 删除 | 删除现有 Service Fabric 应用程序。 |
+| create | 使用指定说明创建 Service Fabric 应用程序。 |
+| delete | 删除现有 Service Fabric 应用程序。 |
 | deployed | 获取部署在 Service Fabric 节点上的应用程序的相关信息。 |
 | deployed-health | 获取部署在 Service Fabric 节点上的应用程序的运行状况。 |
 | deployed-list | 获取部署在 Service Fabric 节点上的应用程序的列表。 |
-| 运行状况 | 获取 Service Fabric 应用程序运行状况。 |
-| 信息 | 获取 Service Fabric 应用程序的相关信息。 |
-| 列表 | 获取在 Service Fabric 群集中创建且与指定的筛选器匹配的应用程序列表。 |
-| 负载 | 获取 Service Fabric 应用程序的相关加载信息。 |
+| health | 获取 Service Fabric 应用程序运行状况。 |
+| info | 获取 Service Fabric 应用程序的相关信息。 |
+| list | 获取在 Service Fabric 群集中创建且与指定的筛选器匹配的应用程序列表。 |
+| load | 获取 Service Fabric 应用程序的相关加载信息。 |
 | manifest | 获取描述应用程序类型的清单。 |
 | provision | 使用外部存储中的 .sfpkg 包或使用映像存储中的应用程序包向群集预配或注册 Service Fabric 应用程序类型。 |
 | report-health | 发送有关 Service Fabric 应用程序的运行状况报告。 |
