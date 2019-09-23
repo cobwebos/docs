@@ -1,19 +1,19 @@
 ---
-title: 将数据移动到 Azure HPC 缓存云容器
+title: 将数据移动到 Azure HPC 缓存（预览版）云容器
 description: 如何填充用于 Azure HPC 缓存的 Azure Blob 存储
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0a71efdc0479a69aed8fecc22a6c89c506279d57
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 103470861383ff411cfaa670d70412086045a418
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105314"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180722"
 ---
-# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>将数据移到 azure HPC 缓存的 Azure Blob 存储
+# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache-preview"></a>将数据移动到 azure HPC 缓存的 Azure Blob 存储（预览版）
 
 如果工作流包括将数据移动到 Azure Blob 存储，请确保使用有效的策略通过 Azure HPC 缓存复制数据。
 
@@ -33,7 +33,7 @@ ms.locfileid: "71105314"
 
 你可以使用 <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Avere CLFSLoad 实用程序，可将数据复制到新的 Blob 存储容器，然后将其添加为存储目标。 此实用程序在单个 Linux 系统上运行，并以 Azure HPC 缓存所需的专用格式写入数据。 CLFSLoad 是最有效的方法来填充用于缓存的 Blob 存储容器。
 
-Azure HPC 缓存团队发出的请求提供了 Avere CLFSLoad 实用程序。 询问你的团队联系，或提出支持票证以请求协助。
+Azure HPC 缓存团队发出的请求提供了 Avere CLFSLoad 实用程序。 [向你](hpc-cache-support-ticket.md)的团队联系以获取帮助。
 
 此选项仅适用于新的空容器。 请先创建容器，然后再使用 Avere CLFSLoad。
 
@@ -60,7 +60,7 @@ Avere CLFSLoad 实用工具需要以下信息：
 
 ![显示多客户端、多线程数据移动的示意图：在左上方，本地硬件存储对应的图标引出了多个箭头。 箭头指向四台客户端计算机。 每个客户端计算机的三个箭头指向 Azure HPC 缓存。 通过 Azure HPC 缓存，多个箭头指向 Blob 存储。](media/hpc-cache-parallel-ingest.png) 
 
-通常用于``copy``将数据从一个存储系统传输到另一个存储系统的或命令是单线程进程，该进程一次只复制一个文件。``cp`` 这意味着，文件服务器每次只会引入一个文件 - 这给群集资源造成了浪费。
+通常用于``copy``将数据从一个存储系统传输到另一个存储系统的或命令是单线程进程，该进程一次只复制一个文件。``cp`` 这意味着文件服务器一次只引入一个文件，这就是缓存资源的浪费。
 
 本部分介绍了使用 Azure HPC 缓存创建多客户端多线程文件复制系统以将数据移到 Blob 存储的策略。 其中解释了文件传输的概念，以及可用于有效通过多个客户端和简单复制命令来复制数据的决策点。
 

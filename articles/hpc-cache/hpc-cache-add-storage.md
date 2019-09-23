@@ -1,19 +1,19 @@
 ---
-title: 将存储添加到 Azure HPC 缓存
+title: 将存储添加到 Azure HPC 缓存（预览）
 description: 如何定义存储目标，以便 Azure HPC 缓存可以将本地 NFS 系统或 Azure Blob 容器用于长期文件存储
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a17952e193f3e03becaab044f55637372bac7b0d
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037213"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181013"
 ---
-# <a name="add-storage"></a>添加存储
+# <a name="add-storage-targets"></a>添加存储目标
 
 *存储目标*是可通过 Azure HPC 缓存实例访问的文件的后端存储。 可以添加 NFS 存储（例如本地硬件系统），也可以将数据存储在 Azure Blob 中。
 
@@ -112,8 +112,8 @@ NFS 存储目标具有一些额外字段，可用于指定如何访问存储导�
 
 完成后，单击 **"确定"** 以添加存储目标。
 
-### <a name="choose-a-usage-model"></a>选择使用模型 
-<!-- link in GUI to this heading -->
+### <a name="choose-a-usage-model"></a>选择使用模型
+<!-- referenced from GUI - update aka.ms link if you change this heading -->
 
 创建指向 NFS 存储系统的存储目标时，需要为该目标选择*使用模型*。 此模型确定如何缓存数据。
 

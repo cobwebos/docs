@@ -1,19 +1,19 @@
 ---
-title: 装载 Azure HPC 缓存
+title: 装载 Azure HPC 缓存（预览）
 description: 如何将客户端连接到 Azure HPC 缓存服务
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: 46f221fd7c340b7f321d317f0e7493448d83177c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3b7a59afa0dea300e200b953d045d38218e99b22
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036952"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180924"
 ---
-# <a name="mount-the-azure-hpc-cache"></a>装载 Azure HPC 缓存
+# <a name="mount-the-azure-hpc-cache-preview"></a>装载 Azure HPC 缓存（预览）
 
 创建缓存后，NFS 客户端可以使用简单的装载命令来访问它。
 
@@ -54,7 +54,7 @@ root@test-client:/tmp#
 
 | 建议装载命令设置 | |
 --- | --- 
-``hard`` | 对 vFXT 群集的软装载与应用程序故障和可能的数据丢失相关联。 
+``hard`` | 软装载到 Azure HPC 缓存与应用程序故障和可能的数据丢失相关联。 
 ``proto=netid`` | 此选项支持适当处理 NFS 网络错误。
 ``mountproto=netid`` | 此选项支持对装载操作的网络错误进行适当处理。
 ``retry=n`` | 设置 ``retry=30`` 以避免瞬时装载失败。 （建议在前景装载中使用不同的值。）

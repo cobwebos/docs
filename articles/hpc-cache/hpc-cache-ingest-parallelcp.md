@@ -1,19 +1,19 @@
 ---
-title: Azure HPC 缓存数据引入-并行复制脚本
+title: Azure HPC 缓存预览数据引入-并行复制脚本
 description: 如何使用并行复制脚本在 Azure HPC 缓存中将数据移动到 Blob 存储目标
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7414d830f5a2e6fc12066b2f408da041838283db
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 852b4e692a4316c7701c8c179039104bee561949
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775359"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180953"
 ---
-# <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC 缓存数据引入-并行复制脚本方法
+# <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC 缓存（预览）数据引入-并行复制脚本方法
 
 本文提供了有关创建``parallelcp``脚本并使用它将数据移动到 Blob 存储容器以便与 Azure HPC 缓存一起使用的说明。
 

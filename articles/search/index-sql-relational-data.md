@@ -35,7 +35,7 @@ ON Rooms$.HotelID = Hotels$.HotelID
 ```
 此查询的结果返回所有宾馆字段，后跟所有房间字段，并为每个房间值重复使用初步酒店信息。
 
-   非![规范化数据，添加会议室字段时的冗余宾馆数据]非(media/index-sql-relational-data/denormalize-data-query.png "规范化数据，添加会议室字段时的冗余宾馆数据")
+   ![非 规范化数据，添加会议室字段时的冗余宾馆数据 非](media/index-sql-relational-data/denormalize-data-query.png "规范化数据，添加会议室字段时的冗余宾馆数据")
 
 
 虽然此查询在表面上成功（提供所有数据都在一个平面行集中），但它在为预期的搜索体验交付正确的文档结构时失败。 在编制索引期间，Azure 搜索将为每个行引入创建一个搜索文档。 如果搜索文档看起来像上述结果，就会发现重复-7 个单独的单独文档用于克隆的凸透镜。 "对佛罗里达州的酒店" 的查询将只为 "克隆" 凸透镜返回7个结果，并将其他相关饭店推送到搜索结果中。
@@ -154,7 +154,7 @@ ON Rooms$.HotelID = Hotels$.HotelID
 
 使用您自己的数据集，您可以使用 "[导入数据" 向导](search-import-data-portal.md)来创建和加载索引。 向导将检测嵌入的 JSON 集合（如包含在*聊天室*中的集合），并推导包含复杂类型集合的索引架构。 
 
-  "![导入数据" 向导推导的索引]"(media/index-sql-relational-data/search-index-rooms-complex-collection.png "导入数据\" 向导推导的索引")
+  ![导入数据" 向导推导的索引](media/index-sql-relational-data/search-index-rooms-complex-collection.png "导入数据\" 向导推导的索引")
 
 尝试以下快速入门以了解 "导入数据" 向导的基本步骤。
 

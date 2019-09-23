@@ -8,24 +8,24 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
-ms.openlocfilehash: e747f39ca84bb859b37550efef51e01cffd96876
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e6b3fc4f9badeedbed55f89702933b41a952977b
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056752"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180802"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
 通常使用 Apache HBase 的低级别 API（扫描、获取和放置）或者通过 Apache Phoenix 使用 SQL 语法来查询 Apache HBase。 Apache 还提供 Apache Spark HBase 连接器，这是一个查询并修改 HBase 存储的数据的方便且高效的替代方案。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 两个单独的同一虚拟网络中部署的 HDInsight 群集。 一个 HBase 和一个 Spark 与至少安装了 Spark 2.1 (HDInsight 3.6)。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
+* 部署在同一虚拟网络中的两个单独的 HDInsight 群集。 一个HBase 和一个至少安装了 Spark 2.1 (HDInsight 3.6) 的 Spark。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* 群集主存储的 [URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 这将是 wasb: / / Azure Blob 存储，abfs: / / 用于 Azure 数据湖存储第 2 代或 adl: / / 用于 Azure 数据湖存储 Gen1。 如果为 Blob 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 wasbs:// 或 abfss://。另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 [URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 这会 wasb://Azure Blob 存储，abfs://用于 Azure Data Lake Storage Gen2 或 adl://for Azure Data Lake Storage Gen1。 如果为 Blob 存储启用安全传输，则 URI 将为`wasbs://`。  另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="overall-process"></a>整体进程
 
@@ -40,27 +40,27 @@ ms.locfileid: "67056752"
 
 ## <a name="prepare-sample-data-in-apache-hbase"></a>在 Apache HBase 中准备示例数据
 
-在此步骤中，您可以创建并填充你可以然后使用 Spark 来查询 Apache HBase 中的表。
+此步骤中，将在 Apache HBase 中创建并填充一个表，然后可使用 Spark 对其进行查询。
 
-1. 使用`ssh`命令以连接到 HBase 群集。 编辑以下命令通过将替换为`HBASECLUSTER`同名的 HBase 群集，并输入命令：
+1. 使用 `ssh` 命令连接到 HBase 群集。 编辑以下命令，将 `HBASECLUSTER` 替换为 HBase 群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
     ```
 
-2. 使用`hbase shell`命令来启动 HBase 交互式 shell。 在 SSH 连接中输入以下命令。
+2. 使用 `hbase shell` 命令启动 HBase 交互式 shell。 在 SSH 连接中输入以下命令。
 
     ```bash
     hbase shell
     ```
 
-3. 使用`create`命令以创建包含两个列系列的 HBase 表。 输入以下命令：
+3. 使用 `create` 命令创建包含双列系列的 HBase 表。 输入以下命令：
 
     ```hbase
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. 使用`put`命令以在特定表中指定行中指定的列中插入值。 输入以下命令：
+4. 使用 `put` 命令将指定列中的值插入特定表中的指定行。 输入以下命令：
 
     ```hbase
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -73,7 +73,7 @@ ms.locfileid: "67056752"
     put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
     ```
 
-5. 使用`exit`命令以停止 HBase 交互式 shell。 输入以下命令：
+5. 使用 `exit` 命令停止 HBase 交互式 shell。 输入以下命令：
 
     ```hbase
     exit
@@ -93,7 +93,7 @@ ms.locfileid: "67056752"
 hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
 ```
 
-然后退出你 ssh 连接到 HBase 群集。
+然后退出与 HBase 群集的 ssh 连接。
 
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>将 hbase-site.xml 放置于 Spark 集群上
 
@@ -254,7 +254,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     +------+--------------------+--------------+------------+--------------+
     ```
 
-6. 通过输入以下命令关闭 spark shell:
+6. 通过输入以下命令关闭 spark shell：
 
     ```scala
     :q

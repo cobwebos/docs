@@ -1,22 +1,21 @@
 ---
-title: 创建 Azure HPC 缓存
+title: 创建 Azure HPC 缓存（预览）
 description: 如何创建 Azure HPC 缓存实例
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: c3d14eaefaa1f317cb061273866ffee83747f12b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 677d42dfa1c468417f18ba4222cb0d5fd3ebb189
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036846"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180969"
 ---
-# <a name="configure-aggregated-namespace"></a>配置聚合命名空间
-<!-- change link in GUI -->
+# <a name="plan-the-aggregated-namespace"></a>规划聚合命名空间
 
-Azure HPC 缓存允许客户端通过虚拟命名空间访问各种存储系统，该命名空间隐藏后端存储系统的详细信息。
+Azure HPC 缓存（预览版）允许客户端通过虚拟命名空间访问各种存储系统，该命名空间隐藏后端存储系统的详细信息。
 
 添加存储目标时，将设置面向客户端的 filepath。 客户端计算机安装此 filepath。 你可以更改与该路径关联的存储目标。 例如，你可以将硬件存储系统替换为云存储，而无需重写面向客户端的过程。
 
@@ -31,7 +30,7 @@ Azure HPC 缓存允许客户端通过虚拟命名空间访问各种存储系统�
     /goldline/templates/acme2017/sku798
     /goldline/templates/acme2017/sku980 
 
-数据中心存储系统将公开以下导出： 
+数据中心存储系统将公开以下导出：
 
     /
     /goldline

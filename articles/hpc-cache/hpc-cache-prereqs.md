@@ -1,19 +1,19 @@
 ---
-title: Azure HPC 缓存先决条件
+title: Azure HPC 缓存（预览版）先决条件
 description: 使用 Azure HPC 缓存的先决条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 50c60e38b58815be04cfb892c3622b9579529e67
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 29dc5256424ea4fe7c3a72624ce8d1b3d9e59f3c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036859"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180912"
 ---
-# <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
+# <a name="prerequisites-for-azure-hpc-cache-preview"></a>Azure HPC 缓存的先决条件（预览版）
 
 使用 Azure 门户创建新的 Azure HPC 缓存之前，请确保你的环境满足这些要求。
 
@@ -59,7 +59,7 @@ Azure HPC 缓存需要 DNS 来访问其虚拟网络外部的资源。 根据所�
 * Azure HPC 缓存需要能够创建虚拟网络接口（Nic）。 创建缓存的用户必须在订阅中具有足够的权限才能创建 Nic。
 <!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
-* 如果使用 Blob 存储，Azure HPC 缓存实例需要授权才能访问存储帐户。 你可以使用基于角色的访问控制（RBAC）来授予缓存对 Blob 存储的访问权限。 需要两个角色：存储帐户参与者和存储 Blob 数据参与者。 按照[将存储添加到缓存](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的说明进行操作。
+* 如果使用 Blob 存储，Azure HPC 缓存实例需要授权才能访问存储帐户。 你可以使用基于角色的访问控制（RBAC）来授予缓存对 Blob 存储的访问权限。 需要两个角色：存储帐户参与者和存储 Blob 数据参与者。 按照[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的说明进行操作。
 
 ## <a name="storage-infrastructure"></a>存储基础结构
 
@@ -86,7 +86,7 @@ NFS 后端存储必须是兼容的硬件/软件平台。 有关详细信息，�
 
 最好使用与缓存位于同一位置的存储帐户。
 
-还必须为缓存应用程序授予对 Azure 存储帐户的访问权限。 按照[将存储添加到缓存](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的说明，为缓存指定访问角色存储帐户参与者和存储 Blob 数据参与者。 如果你不是存储帐户所有者，请让所有者执行此步骤。
+还必须为缓存应用程序授予对 Azure 存储帐户的访问权限。 按照[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的说明，为缓存授予访问角色存储帐户参与者和存储 Blob 数据参与者的缓存。 如果你不是存储帐户所有者，请让所有者执行此步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

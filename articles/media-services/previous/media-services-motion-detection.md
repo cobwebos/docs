@@ -45,7 +45,7 @@ ms.locfileid: "69015322"
 | sensitivityLevel |String：'low'、'medium'、'high' |设置报告动作情况的敏感度级别。 调整此项是为了调整误报数量。 |'medium' |
 | frameSamplingValue |正整数 |设置算法的运行频率。 1 等于每个帧，2 是指每 2 个帧，如此类推。 |1 |
 | detectLightChange |Boolean：'true'、'false' |设置是否在结果中报告轻微的更改 |'False' |
-| mergeTimeThreshold |Xs-time：Hh:mm:ss<br/>例如：00:00:03 |指定动作事件之间的时间窗口，其中的 2 个事件将组合成 1 个事件进行报告。 |00:00:00 |
+| mergeTimeThreshold |Xs-time：Hh:mm:ss<br/>例如：00:00:03 |指定动作事件之间的时间窗口，其中的 2 个事件将组合成 1 个事件进行报告。 |#000000 |
 | detectionZones |检测区域的一个数组：<br/>- 检测区域是一个包含 3 个或 3 个以上点的数组<br/>- 点是从 0 到 1 的 x 和 y 坐标。 |描述要使用的多边形检测区域列表。<br/>报告结果时还将报告以 ID 表示的区域，其中第一个是 ‘id’:0 |单个区域，涵盖整个帧。 |
 
 ### <a name="json-example"></a>JSON 示例

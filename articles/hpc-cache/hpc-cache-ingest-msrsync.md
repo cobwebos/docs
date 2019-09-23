@@ -1,19 +1,19 @@
 ---
-title: Azure HPC 缓存数据引入-msrsync
+title: Azure HPC 缓存预览版数据摄取-msrsync
 description: 如何使用 msrsync 将数据移动到 Azure HPC 缓存中的 Blob 存储目标
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: d49c2ba45b125f8e42ea5d10dcf3dcd68558a52c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 265ec55a6e013a37cf963b6256e900c070311f72
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775632"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180946"
 ---
-# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC 缓存数据引入-msrsync 方法
+# <a name="azure-hpc-cache-preview-data-ingest---msrsync-method"></a>Azure HPC 缓存（预览）数据引入-msrsync 方法
 
 本文提供了有关使用``msrsync``实用程序将数据复制到 azure Blob 存储容器以用于 azure HPC 缓存的详细说明。
 
