@@ -1,57 +1,155 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 逻辑应用文档
+summary: 构建可自动缩放的工作流、业务流程和企业业务流程，以便在多个云服务和本地系统中集成你的应用和数据。
 metadata:
-  title: Azure 逻辑应用文档 - 教程和 API 参考 | Microsoft 文档
-  description: Azure 逻辑应用简化了生成自动可缩放工作流的方法，便于跨云服务和本地系统集成应用和数据。 了解如何创建、设计和部署逻辑应用，以便自动完成快速入门、教程、模板和 API 中的业务流程。
+  title: Azure 逻辑应用文档
+  description: 构建可自动缩放的工作流、业务流程和企业业务流程，以便在多个云服务和本地系统中集成你的应用和数据。
   services: logic-apps
-  author: ecfan
-  manager: carmonm
   ms.service: logic-apps
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: logic-apps
-  ms.date: 01/09/2018
-  ms.author: estfan
-abstract:
-  description: Azure 逻辑应用简化了生成自动可缩放工作流的方法，便于跨云服务和本地系统集成应用和数据。 了解如何创建、设计和部署逻辑应用，以便自动完成快速入门、教程、模板和 API 中的业务流程。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何创建在 Azure 中运行的逻辑应用。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure 门户
-            href: /azure/logic-apps/quickstart-create-first-logic-app-workflow
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Visual Studio
-            href: /azure/logic-apps/quickstart-create-logic-apps-with-visual-studio
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Visual Studio Code
-            href: /azure/logic-apps/quickstart-create-logic-apps-visual-studio-code
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何生成按计划运行的逻辑应用，以便跨 Azure 服务、Microsoft 服务以及其他软件即服务 (SaaS) 应用集成数据。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow">使用按计划的逻辑应用检查流量</a>
-          - html: <a href="/azure/logic-apps/tutorial-process-mailing-list-subscriptions-workflow">使用逻辑应用管理邮件列表请求</a>
-          - html: <a href="/azure/logic-apps/tutorial-process-email-attachments-workflow">使用逻辑应用处理电子邮件和附件</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/powershell/module/az.logicapp">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/logic/">REST API 参考</a></p>
+  ms.topic: landing-page
+  author: ecfan
+  ms.author: estfan; logicappspm
+  ms.date: 09/18/2019
+  ms.openlocfilehash: d23fac0d030c1d288e1491273d39e07d80426885
+  ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71147318"
+landingContent:
+- title: 关于 Azure 逻辑应用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 逻辑应用？
+      url: logic-apps-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure 逻辑应用的连接器
+      url: /azure/connectors/apis-list.md
+    - text: 安排重复工作流
+      url: concepts-schedule-automated-recurring-tasks-workflows.md
+    - text: B2B 企业集成
+      url: logic-apps-enterprise-integration-overview.md
+  - linkListType: learn
+    links:
+    - text: Azure 逻辑应用简介
+      url: https://docs.microsoft.com/learn/modules/intro-to-logic-apps/
+  - linkListType: video
+    links:
+    - text: 介绍 Azure 逻辑应用
+      url: https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps
+    - text: Azure 逻辑应用 - 代码和 API 免费集成
+      url: https://www.youtube.com/watch?v=Z3qaBQS0w20
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建逻辑应用 - Azure 门户
+      url: quickstart-create-first-logic-app-workflow.md
+    - text: 创建逻辑应用 - Visual Studio
+      url: quickstart-create-logic-apps-with-visual-studio.md
+  - linkListType: get-started
+    links:
+    - text: 模板：按计划运行计时器作业
+      url: https://azure.microsoft.com/resources/templates/301-logicapps-jobscheduler/
+  - linkListType: learn
+    links:
+    - text: 自动路由并处理数据
+      url: https://docs.microsoft.com/learn/modules/route-and-process-data-logic-apps
+  - linkListType: tutorial
+    links:
+    - text: 创建基于计划的工作流
+      url: tutorial-build-schedule-recurring-logic-app-workflow.md
+    - text: 创建基于审批的工作流
+      url: tutorial-process-mailing-list-subscriptions-workflow.md
+    - text: 创建 Azure Functions 和存储工作流
+      url: tutorial-process-email-attachments-workflow.md
+  - linkListType: video
+    links:
+    - text: 利用 Azure 逻辑应用成为计划程序英雄
+      url: https://azure.microsoft.com/resources/videos/ignite-2018-be-the-scheduler-hero-with-azure-logic-apps
+- title: 访问本地数据或虚拟网络
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是本地数据网关？
+      url: https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem
+    - text: 什么是集成服务环境？
+      url: connect-virtual-network-vnet-isolated-environment-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 安装本地数据网关
+      url: logic-apps-gateway-install.md
+    - text: 连接到本地数据源
+      url: logic-apps-gateway-connection.md
+    - text: 连接到虚拟网络
+      url: connect-virtual-network-vnet-isolated-environment-overview.md
+  - linkListType: video
+    links:
+    - text: 集成服务环境简介
+      url: https://azure.microsoft.com/resources/videos/azure-friday-introduction-to-azure-integration-service-environment-for-logic-apps/
+- title: 构建 B2B 企业集成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建并管理集成帐户
+      url: logic-apps-enterprise-integration-create-integration-account.md
+    - text: 添加参与方
+      url: logic-apps-enterprise-integration-partners.md
+    - text: 创建合作伙伴之间的协议
+      url: logic-apps-enterprise-integration-agreements.md
+  - linkListType: learn
+    links:
+    - text: 示例：连接到集成帐户并通过 Azure DevOps 进行部署
+      url: https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/
+  - linkListType: architecture
+    links:
+    - text: 基本企业集成
+      url: https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration
+- title: 管理和保护逻辑应用
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理逻辑应用 - Visual Studio
+      url: manage-logic-apps-with-visual-studio.md
+    - text: 管理集成服务环境
+      url: ise-manage-integration-service-environment.md
+    - text: 保护访问和数据
+      url: logic-apps-securing-a-logic-app.md
+    - text: 使用托管标识进行身份验证
+      url: create-managed-service-identity.md
+- title: 部署逻辑应用
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 自动执行逻辑应用部署
+      url: logic-apps-azure-resource-manager-templates-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建逻辑应用模板
+      url: logic-apps-create-azure-resource-manager-templates.md
+    - text: 部署逻辑应用模板
+      url: logic-apps-deploy-azure-resource-manager-templates.md
+  - linkListType: learn
+    links:
+    - text: 使用资源管理器模板创建和部署
+      url: https://docs.microsoft.com/learn/modules/create-deploy-logic-apps-using-arm-templates/
+    - text: 示例：连接到 Azure 存储并通过 Azure DevOps 进行部署
+      url: https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
+    - text: 示例：连接到 Azure 服务总线并通过 Azure DevOps 进行部署
+      url: https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
+- title: 详细信息
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 服务限制和配置
+      url: logic-apps-limits-and-config.md
+    - text: 定价模型
+      url: logic-apps-pricing.md
+    - text: 工作流定义语言架构
+      url: logic-apps-workflow-definition-language.md
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.logicapp/
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/logic/

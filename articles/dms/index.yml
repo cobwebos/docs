@@ -13,9 +13,9 @@ metadata:
   ms.service: dms
   ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 03/12/2019
+  ms.date: 09/22/2019
 abstract:
-  description: 使用 Azure 数据库迁移服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 该服务使用数据迁移助手生成评估报告，这些报告提供建议以指导你在执行迁移之前完成所需的更改。 准备好开始迁移过程时，Azure 数据库迁移服务会执行所有必需步骤。
+  description: 使用 Azure 数据库迁移服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 该服务使用数据迁移助手生成评估报告，这些报告提供建议以指导你在执行迁移之前完成所需的更改。 当你准备好开始该迁移过程时，Azure 数据库迁移服务会执行所有必需步骤。
   aside:
     image:
       alt: null
@@ -40,19 +40,36 @@ sections:
   - title: 分步教程
     items:
       - type: paragraph
-        text: 了解如何使用数据库迁移服务迁移数据库：
+        text: 了解如何使用 Azure 数据库迁移服务迁移数据库：
       - type: list
-        style: ordered
+        style: unordered
         items:
-          - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库托管实例</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例</a>
-          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">使用 DMS 将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例</a>
-          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL</a>
-          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">使用 DMS 以联机方式将 PostgreSQL 迁移到 Azure Database for PostgreSQL</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB Mongo API</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB Mongo API</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">将 SQL Server 脱机迁移到 Azure SQL 数据库</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">将 SQL Server 联机迁移到 Azure SQL 数据库</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">将 SQL Server 脱机迁移到 Azure SQL 数据库托管实例</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">将 SQL Server 联机迁移到 Azure SQL 数据库托管实例</a>
+          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例</a>
+          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">将 MySQL 联机迁移到 Azure Database for MySQL</a>
+          - html: <a href="/azure/dms/tutorial-rds-mysql-server-azure-db-for-mysql-online">将 RDS MySQL 联机迁移到 Azure Database for MySQL</a>
+          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">将 PostgreSQL 联机迁移到 Azure Database for PostgreSQL</a>
+          - html: <a href="/azure/dms/tutorial-rds-postgresql-server-azure-db-for-postgresql-online">将 RDS PostgreSQL 联机迁移到 Azure Database for PostgreSQL</a>
+          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">将 MongoDB 脱机迁移到 Azure Cosmos DB Mongo API</a>
+          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">将 MongoDB 联机迁移到 Azure Cosmos DB Mongo API</a>
+          - html: <a href="/azure/dms/tutorial-oracle-azure-postgresql-online">将 Oracle 联机迁移到 Azure Database for PostgreSQL</a>
+  - title: 视频
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/">使用数据库迁移指南</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/">迁移过程和建议的工具/服务</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/">满足先决条件并创建 DMS 实例</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/">将 SQL Server 2008 迁移到 Azure SQL 数据库托管实例</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/">将 PostgreSQL 迁移到 Azure Database for PostgreSQL</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/">监视联机迁移并执行直接转换</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/">将 Oracle 迁移到 Azure SQL 数据库</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/">将 MongoDB 迁移到 Azure Cosmos DB</a>'
   - title: 示例
     items:
       - type: list

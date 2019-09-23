@@ -36,26 +36,24 @@
   items:
     - name: 管理用户
       items:
-        - name: 将新用户添加到 Azure AD
+        - name: 创建用户
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 批量创建用户（预览版）
+          href: users-bulk-add.md
         - name: 管理用户个人资料
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: 批量操作（预览版）
-          items:
-            - name: 下载用户（预览版）
-              href: users-bulk-download.md
-            - name: 批量导入用户（预览版）
-              href: users-bulk-add.md
-            - name: 批量删除用户（预览版）
-              href: users-bulk-delete.md
-            - name: 批量还原用户（预览版）
-              href: users-bulk-restore.md
+        - name: 下载用户信息（预览版）
+          href: users-bulk-download.md
         - name: 共享用户帐户
           href: users-sharing-accounts.md
         - name: 将用户分配到管理员角色
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 批量删除用户（预览版）
+          href: users-bulk-delete.md
         - name: 还原已删除的用户
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 批量还原用户（预览版）
+          href: users-bulk-restore.md
         - name: 关闭非托管目录下的帐户
           href: users-close-account.md
         - name: 添加 B2B 用户
@@ -86,28 +84,26 @@
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 搜索组和成员列表（预览版）
           href: groups-members-owners-search.md
+        - name: 创建组（Azure 门户）
+          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 管理组 - 用于 Graph 的 PowerShell (v2)
           href: groups-settings-v2-cmdlets.md
         - name: 管理组 - PowerShell MSOnline
           href: groups-settings-cmdlets.md
-        - name: 管理组成员
+        - name: 添加或删除组成员
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 批量添加成员（预览版）
+          href: groups-bulk-import-members.md
+        - name: 批量删除成员（预览版）
+          href: groups-bulk-remove-members.md
+        - name: 批量下载成员列表（预览版）
+          href: groups-bulk-download-members.md
         - name: 管理组所有者
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: 批量操作（预览版）
-          items:
-            - name: 批量导入成员（预览版）
-              href: groups-bulk-import-members.md
-            - name: 批量下载成员（预览版）
-              href: groups-bulk-download-members.md
-            - name: 批量删除成员（预览版）
-              href: groups-bulk-remove-members.md
-            - name: 批量下载组列表（预览版）
-              href: groups-bulk-download.md
+        - name: 批量下载组列表（预览版）
+          href: groups-bulk-download.md
         - name: 管理组中的组
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: 创建组（Azure 门户）
-          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 添加对 SaaS 应用的组访问权限
           href: groups-saasapps.md
         - name: 组命名引用

@@ -26,7 +26,7 @@
               href: tutorial-train-models-with-aml.md
             - name: 2. 部署模型
               href: tutorial-deploy-models-with-aml.md
-        - name: 回归（NYC Taxi 数据）
+        - name: 通过自动化 ML 进行回归分析（NYC 出租车数据）
           items:
             - name: 自动训练 ML 模型
               displayName: 'automl, automated, auto ml,'
@@ -44,7 +44,7 @@
         - name: 2. 部署回归模型
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
-    - name: 自动化机器学习
+    - name: 自动化 ML（界面）
       items:
         - name: 分类（银行数据）
           displayName: 'automl, automated, auto ml, portal, ui'
@@ -107,13 +107,13 @@
         - name: 使用 Resource Manager 模板
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: 设置开发环境
+    - name: 设置环境
       items:
-        - name: 配置开发环境
+        - name: 设置开发环境
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: 管理软件环境
-          displayName: 'pip, Conda'
+        - name: 设置软件环境
+          displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
         - name: 启用日志记录
           displayName: 'troubleshoot, log, files, tracing'

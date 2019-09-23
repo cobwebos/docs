@@ -1,31 +1,30 @@
 ### YamlMime:Landing
 title: Azure Data Science Virtual Machine 文档
-summary: Azure Data Science Virtual Machine (DSVM) 是一种自定义的 VM 映像，其中包含数据科学和 ML 工具。 使用此 VM 可构建智能应用程序以进行高级分析。
+summary: Azure Data Science Virtual Machine (DSVM) 是一种预加载了数据科学和机器学习工具的虚拟机映像。 使用此 VM 可构建智能应用程序以进行高级分析。
 metadata:
   title: Data Science Virtual Machine 文档 - Azure
-  description: Data Science Virtual Machine 是 Azure 云中的一个试验环境，专为数据科学而构建。 常用的数据科学和 ML 工具已预安装。
-  services: machine-learning
+  description: Azure Data Science Virtual Machine (DSVM) 是一种预加载了数据科学和机器学习工具的虚拟机映像。
   ms.service: machine-learning
   ms.subservice: data-science-vm
   ms.topic: landing-page
   ms.collection: collection
-  author: j-martens
-  ms.author: jmartens
-  ms.date: 09/03/2019
-  ms.openlocfilehash: c33504124bdef2edf44842581143a8468cbb1e20
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  author: gvashishtha
+  ms.author: gopalv
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 3fdd30274796072fcca6a5cfe41651334cf62aee
+  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70308798"
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71170703"
 landingContent:
 - title: 开始使用 DSVM
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 Azure DSVM？
+    - text: 什么是 DSVM？
       url: overview.md
-    - text: 什么是地理 AI DSVM？
+    - text: 什么是 Geo AI DSVM？
       url: geo-ai-dsvm-overview.md
   - linkListType: get-started
     links:
@@ -39,6 +38,10 @@ landingContent:
       url: provision-geo-ai-dsvm.md
 - title: 管理 DSVM
   linkLists:
+  - linkListType: architecture
+    links:
+    - text: 企业安全与指南
+      url: dsvm-enterprise-overview.md
   - linkListType: how-to-guide
     links:
     - text: 创建自动缩放的 DSVM 池
@@ -49,7 +52,7 @@ landingContent:
       url: dsvm-secure-access-keys.md
 - title: 更多 Azure 机器学习技术
   linkLists:
-  - linkListType: reference
+  - linkListType: learn
     links:
     - text: Azure 机器学习服务
       url: /azure/machine-learning/

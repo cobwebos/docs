@@ -17,9 +17,9 @@
   items:
     - name: 创建基于计划的工作流
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
-    - name: 管理邮件列表请求
+    - name: 创建基于审批的工作流
       href: tutorial-process-mailing-list-subscriptions-workflow.md
-    - name: 处理电子邮件附件
+    - name: 创建 Azure 存储和 Azure Functions 工作流
       href: tutorial-process-email-attachments-workflow.md
 - name: 示例
   items:
@@ -31,7 +31,7 @@
   items:
     - name: 适用于逻辑应用的连接器
       href: ../connectors/apis-list.md
-    - name: 计划自动重复执行工作流
+    - name: 安排重复工作流
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Azure 的无服务器体验
       href: logic-apps-serverless-overview.md
@@ -111,6 +111,12 @@
           href: logic-apps-enterprise-integration-partners.md
         - name: 协议
           href: logic-apps-enterprise-integration-agreements.md
+        - name: 用于 XML 验证的架构
+          href: logic-apps-enterprise-integration-schemas.md
+        - name: 用于 XML 转换的映射
+          href: logic-apps-enterprise-integration-maps.md
+        - name: 证书
+          href: logic-apps-enterprise-integration-certificates.md
         - name: 项目元数据
           href: logic-apps-enterprise-integration-metadata.md
         - name: 接收 B2B 消息
@@ -141,20 +147,14 @@
           href: logic-apps-scenario-edi-send-batch-messages.md
         - name: 处理平面文件
           href: logic-apps-enterprise-integration-flatfile.md
+        - name: 转换 XML
+          href: logic-apps-enterprise-integration-transform.md
         - name: 处理 XML
           href: logic-apps-enterprise-integration-xml.md
         - name: 验证 XML
           href: logic-apps-enterprise-integration-xml-validation.md
-        - name: 为 XML 验证添加架构
-          href: logic-apps-enterprise-integration-schemas.md
-        - name: 转换 XML
-          href: logic-apps-enterprise-integration-transform.md
-        - name: 为 XML 转换添加映射
-          href: logic-apps-enterprise-integration-maps.md
         - name: 转换 JSON
           href: logic-apps-enterprise-integration-liquid-transform.md
-        - name: 添加安全证书
-          href: logic-apps-enterprise-integration-certificates.md
         - name: 排查 B2B 错误
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: 生成灾难恢复计划

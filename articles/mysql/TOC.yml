@@ -229,8 +229,8 @@
       href: /rest/api/mysql
     - name: 资源管理器模板
       href: /azure/templates/microsoft.dbformysql/allversions
-    - name: 复制中数据存储过程
-      href: reference-data-in-stored-procedures.md
+    - name: Azure 存储过程
+      href: reference-stored-procedures.md
 - name: 资源
   items:
     - name: 部署模板
