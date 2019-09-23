@@ -151,7 +151,7 @@ ms.locfileid: "71104922"
   * 可在[SSMS 报表](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports)或在 "SSIS 包执行" 活动中指定的日志文件夹中找到执行日志。
   * vNet 还可用于作为替代方法访问本地数据。 在[将 AZURE SSIS 集成运行时加入到虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)中可以找到更多详细信息
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>错误消息："暂存任务状态：已失败。 暂存任务错误：ErrorCode:2906，ErrorMessage：包执行失败。输出： {"OperationErrorMessages"："SSIS 执行程序退出代码：-1. \ n"、"LogLocation"： ".。。\\SSISTelemetryExecutionLog...\\"，" effectiveIntegrationRuntime "：" .. "，" executionDuration "： ...，" durationInQueue "： {" integrationRuntimeQueue "： ...}}"\\
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>错误消息："暂存任务状态：已失败。 暂存任务错误：ErrorCode:2906，ErrorMessage：包执行失败。输出： {"OperationErrorMessages"："SSIS 执行程序退出代码：-1. \ n"、"LogLocation"： "...\\SSISTelemetryExecutionLog...\\"，" effectiveIntegrationRuntime "：" .. "，" executionDuration "： ...，" durationInQueue "： {" integrationRuntimeQueue "： ...}}"\\
 
 请确保在C++自承载集成运行时计算机上安装了 Visual 运行时。 有关详细信息，请参阅[配置自承载 IR 作为 ADF 中 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
 

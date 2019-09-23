@@ -99,7 +99,7 @@ Microsoft Azure Red Hat OpenShift 需要有权代表你的群集执行任务。 
 5. 展开**Directory**在下面的列表并启用**Directory.ReadAll**
 6. 单击**添加权限**以接受更改。
 7. API 的权限面板中现在应显示两者*User.Read*并*Directory.ReadAll*。 请注意在警告**所需的管理员同意**列下一步*Directory.ReadAll*。
-8. 你是否*Azure 订阅管理员*，单击**授予管理员许可*订阅名称***  下面。 如果不是*Azure 订阅管理员*，向管理员请求同意。
+8. 你是否*Azure 订阅管理员*，单击**授予管理员许可*订阅名称* 下面**。 如果不是*Azure 订阅管理员*，向管理员请求同意。
 ![API 权限面板的屏幕截图。 User.Read 和 Directory.ReadAll 添加，管理员同意所需的权限 Directory.ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
