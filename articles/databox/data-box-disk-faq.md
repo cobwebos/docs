@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 08/15/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 1ac91853c78a33645c0ccb234437e3cabc188f88
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076900"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098826"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk：常见问题
 
@@ -88,6 +88,24 @@ A.  可以在 Azure 门户中跟踪 Data Box 磁盘的订单状态。 创建订�
 
 ### <a name="q-how-do-i-return-the-disks"></a>问： 如何退回磁盘？ 
 A.  Microsoft 会在发货包装中连同 Data Box 磁盘一起提供一个发货标签。 在快递公司寄件时，请将该标签贴在包装箱上，并密封包装。 如果该标签已损坏或丢失，请转到“概述”>“下载发货标签”，并下载新的退货标签。 
+
+### <a name="can-i-pick-up-my-data-box-disk-order-myself-can-i-return-the-disks-via-a-carrier-that-i-choose"></a>我可以自己提取 Data Box Disk 订单吗？ 能否通过我选择的承运人退回磁盘？
+A. 是的。 Microsoft 还仅在 US Gov 区域提供自我管理的发货。 在下 Data Box Disk 订单时，可以选择“自我管理的发货”选项。 若要提取 Data Box Disk 订单，请执行以下步骤：
+    
+1. 下完订单后，将处理订单并准备好磁盘。 将通过电子邮件通知你订单已准备好进行提货。 
+2. 在订单准备好提货后，请在 Azure 门户中转到你的订单，并导航到“概述”边栏选项卡。 
+3. 你将在 Azure 门户中看到一个包含代码的通知。 向 [Azure Data Box 运营团队](mailto:adbops@microsoft.com)发送电子邮件，并向他们提供该代码。 该团队将提供位置并安排取货日期和时间。 你必须在收到电子邮件通知后 5 个工作日内致电该团队。
+
+数据复制和验证完成后，请执行以下步骤来退回磁盘：
+
+1. 数据验证完成后，请取出磁盘。 拔下连接线。
+2. 将磁盘和连接线包装在汽泡袋中，并在其放入包装箱。 如果缺少附件，我们可能会收取费用。
+
+    - 重复使用最初的发货包装。 我们建议使用加固的气泡袋包装磁盘。
+    - 确保填塞物贴合，以避免磁盘在包装箱中发生移动。
+3. 在 Azure 门户中转到订单的“概述”边栏选项卡  。 应会看到一个包含代码的通知。
+4. 使用该代码向 [Azure Data Box 运营团队](mailto:adbops@microsoft.com)发送电子邮件，并向他们提供该代码。 他们会为你提供有关何时何地放下磁盘的信息。
+
 
 ## <a name="migrate-data"></a>迁移数据
 

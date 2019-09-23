@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: c3f3d9437a6e796cc91ff1782b3a0774382c5f8b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067076"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146600"
 ---
 # <a name="troubleshooting"></a>疑难解答
 
@@ -46,10 +46,9 @@ ms.locfileid: "71067076"
 
 ## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>间歇性测试失败，出现违反协议错误
 
-|症状/错误消息| 可能的原因|
-|----|---------|
-违反协议 CR 必须后跟 LF | 检测到格式不正确的标头时，会发生这种情况。 具体来说，某些标头可能没有使用 CRLF 来指示行尾，这违反了 HTTP 规范，因此无法通过 .NET WebRequest 级别的验证。
- || 这也可能是由于负载均衡器或 CDN 导致的。
+|症状/错误消息| 可能的原因| 可能的解决方法 |
+|----|---------|-----|
+|服务器提交了协议冲突。 节 = ResponseHeader 详细信息 = CR 必须后跟 LF | 检测到格式不正确的标头时，会发生这种情况。 具体说来，某些标头可能没有使用 CRLF 来指示行尾，这违反了 HTTP 规范。 Application Insights 强制实施此 HTTP 规范，但无法通过格式不正确的标头进行响应。| a. 请联系网站主机提供商/CDN 提供程序来修复有问题的服务器。 <br> b. 如果失败的请求是资源（例如，样式文件、图像、脚本），则可以考虑禁用依赖请求的分析。 请记住，如果您这样做，您将失去监视这些文件的可用性的能力。
 
 > [!NOTE]
 > 在 HTTP 标头验证比较宽松的浏览器上，URL 可能不会失败。 有关该问题的详细说明，请参阅此博客文章： http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
