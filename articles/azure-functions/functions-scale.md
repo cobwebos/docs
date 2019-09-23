@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c39ee29b9a4449000d44e44bc6feae407cf4cd38
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2fcace82eed81b85571ba88243a3de991ae01aa0
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874939"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180105"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -27,14 +27,14 @@ ms.locfileid: "69874939"
 * 每个函数应用实例可用的资源。
 * 对 VNET 连接等高级功能的支持。
 
-当代码运行时, 消耗和高级计划会自动添加计算能力。 应用在需要处理负载时会扩展，在代码停止运行时会缩减。 此外，对于消耗计划，无需提前支付空闲 VM 或预留容量的费用。  
+当代码运行时，消耗和高级计划会自动添加计算能力。 应用在需要处理负载时会扩展，在代码停止运行时会缩减。 此外，对于消耗计划，无需提前支付空闲 VM 或预留容量的费用。  
 
-高级计划提供了额外的功能, 如高级计算实例、使实例始终处于热热和 VNet 连接的能力。
+高级计划提供了额外的功能，如高级计算实例、使实例始终处于热热和 VNet 连接的能力。
 
 选择应用服务计划可以利用你管理的专用基础结构。 函数应用不会基于事件进行缩放，这意味着，它永远不会缩减为零。 （要求启用 [Always On](#always-on)。）
 
 > [!NOTE]
-> 可以通过更改函数应用资源的计划属性, 在使用情况和高级计划之间切换。
+> 可以通过更改函数应用资源的计划属性，在使用情况和高级计划之间切换。
 
 ## <a name="hosting-plan-support"></a>托管计划支持
 
@@ -63,29 +63,31 @@ ms.locfileid: "69874939"
 
 可将同一区域中的函数应用分配到同一个消耗计划。 在同一个消耗计划中运行多个应用不会产生负面影响。 将多个应用分配到同一个消耗计划不会影响每个应用的复原能力、可伸缩性或可靠性。
 
-## <a name="premium-plan"></a>高级计划 (预览)
+若要详细了解在消耗计划中运行时如何估算成本，请参阅[了解消耗计划成本](functions-consumption-costs.md)。
 
-使用高级计划时, 会根据传入事件的数目, 添加和删除 Azure Functions 主机的实例, 就像消耗计划一样。  高级计划支持以下功能:
+## <a name="premium-plan"></a>高级计划（预览）
 
-* 永久温实例, 以避免任何冷启动
+使用高级计划时，会根据传入事件的数目，添加和删除 Azure Functions 主机的实例，就像消耗计划一样。  高级计划支持以下功能：
+
+* 永久温实例，以避免任何冷启动
 * VNet 连接
 * 无限制的执行持续时间
-* 高级实例大小 (一个核心、两个核心和四个核心实例)
+* 高级实例大小（一个核心、两个核心和四个核心实例）
 * 更可预测的定价
 * 针对具有多个 function app 的计划的高密度应用分配
 
-有关如何配置这些选项的信息, 请参阅[Azure Functions 高级计划文档](functions-premium-plan.md)。
+有关如何配置这些选项的信息，请参阅[Azure Functions 高级计划文档](functions-premium-plan.md)。
 
-高级计划的计费不是按每个执行和内存计费的, 而是基于所需和预订实例使用的核心秒数、执行时间和内存。  至少一个实例必须始终处于热状态。 这意味着, 每个活动计划有固定的每月成本, 而不考虑执行次数。
+高级计划的计费不是按每个执行和内存计费的，而是基于所需和预订实例使用的核心秒数、执行时间和内存。  至少一个实例必须始终处于热状态。 这意味着，每个活动计划有固定的每月成本，而不考虑执行次数。
 
-在以下情况下, 请考虑 Azure Functions 高级计划:
+在以下情况下，请考虑 Azure Functions 高级计划：
 
 * 函数应用持续或几乎持续运行。
 * 你需要比消耗计划提供的更多的 CPU 或内存选项。
 * 你的代码所需的运行时间超过消耗计划[允许的最长执行时间](#timeout)。
-* 你需要的功能仅适用于高级计划, 例如 VNET/VPN 连接。
+* 你需要的功能仅适用于高级计划，例如 VNET/VPN 连接。
 
-对高级计划运行 JavaScript 函数时, 应选择具有较少个 vcpu 的实例。 有关详细信息, 请参阅[选择单核高级计划](functions-reference-node.md#considerations-for-javascript-functions)。  
+对高级计划运行 JavaScript 函数时，应选择具有较少个 vcpu 的实例。 有关详细信息，请参阅[选择单核高级计划](functions-reference-node.md#considerations-for-javascript-functions)。  
 
 ## <a name="app-service-plan"></a>专用（应用服务）计划
 
@@ -129,7 +131,9 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ## <a name="storage-account-requirements"></a>存储帐户要求
 
-在任何计划中，函数应用需要一个支持 Azure Blob、队列、文件和表存储的常规 Azure 存储帐户。 这是因为 Functions 依赖于 Azure 存储来执行管理触发器和记录函数执行等操作，但某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户，已在创建函数应用时将从现有的“存储帐户”选项中过滤掉。
+在任何计划中，函数应用需要一个支持 Azure Blob、队列、文件和表存储的常规 Azure 存储帐户。 这是因为 Functions 依赖 Azure 存储来执行管理触发器和记录函数执行等操作，但某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户，已在创建函数应用时将从现有的“存储帐户”选项中过滤掉。
+
+用于存储应用程序数据的函数应用使用的相同存储帐户也可由触发器和绑定使用。 但是，对于存储密集型操作，应使用单独的存储帐户。   
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
@@ -137,7 +141,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ## <a name="how-the-consumption-and-premium-plans-work"></a>消耗量和高级计划的工作原理
 
-在消耗和高级计划中, Azure Functions 基础结构通过基于其函数触发的事件数来添加其他函数主机实例, 从而缩放 CPU 和内存资源。 消耗计划中 Functions 主机的每个实例限制为 1.5 GB 内存和 1 个 CPU。  主机实例是整个函数应用，这意味着函数应用中的所有函数共享某个实例中的资源并同时缩放。 共享同一消耗计划的函数应用单独缩放。  在高级计划中, 计划大小将确定该实例上该计划中的所有应用程序的可用内存和 CPU。  
+在消耗和高级计划中，Azure Functions 基础结构通过基于其函数触发的事件数来添加其他函数主机实例，从而缩放 CPU 和内存资源。 消耗计划中 Functions 主机的每个实例限制为 1.5 GB 内存和 1 个 CPU。  主机实例是整个函数应用，这意味着函数应用中的所有函数共享某个实例中的资源并同时缩放。 共享同一消耗计划的函数应用单独缩放。  在高级计划中，计划大小将确定该实例上该计划中的所有应用程序的可用内存和 CPU。  
 
 函数代码文件存储在函数主要存储帐户中的 Azure 文件共享上。 删除函数应用的主存储帐户时，函数代码文件将被删除并且无法恢复。
 

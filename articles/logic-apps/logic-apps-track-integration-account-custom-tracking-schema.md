@@ -58,8 +58,8 @@ ms.locfileid: "67203036"
 
 | 属性 | 必选 | Type | 描述 |
 | --- | --- | --- | --- |
-| sourceType | 是 |   | 运行的源的类型。 允许的值为“Microsoft.Logic/workflows”  和“custom”  。 |
-| source | 是 |   | 如果源类型为 **Microsoft.Logic/workflows**，则源信息必须遵循此架构。 如果源类型为“自定义”  ；架构为 JToken。 |
+| sourceType | 是 |   | 运行的源的类型。 允许的值为“Microsoft.Logic/workflows”和“custom”。 |
+| source | 是 |   | 如果源类型为 **Microsoft.Logic/workflows**，则源信息必须遵循此架构。 如果源类型为“自定义”；架构为 JToken。 |
 | systemId | 是 | String | 逻辑应用系统 ID。 |
 | runId | 是 | String | 逻辑应用运行 ID。 |
 | operationName | 是 | String | 操作（例如操作或触发）的名称。 |
@@ -70,7 +70,7 @@ ms.locfileid: "67203036"
 | clientRequestId | 否 | String | 客户端可以填充它以关联消息。 |
 | eventLevel | 是 |   | 事件的级别。 |
 | eventTime | 是 |   | 事件的时间（UTC 格式 YYYY-MM-DDTHH:MM:SS.00000Z）。 |
-| recordType | 是 |   | 跟踪记录的类型。 允许的值为“自定义”  。 |
+| recordType | 是 |   | 跟踪记录的类型。 允许的值为“自定义”。 |
 | record | 是 |   | 自定义记录类型。 允许的格式为 JToken。 |
 ||||
 

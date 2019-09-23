@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7f7f6fe31afe35d9ccfd6ee33617bd7e4fbe46b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46cf7d3dd7efecff0280320c100af432367e25f2
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409560"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180823"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
@@ -25,7 +25,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 > [!WARNING]  
 > HDInsight 必须对群集的默认存储拥有完全访问权限。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。
 
@@ -41,7 +41,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 * 如果使用 C#，Visual Studio 的版本必须是 2013 或更高。
 
-* 存储帐户的 [URI 方案](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 将是 `wasbs://` 或 `abfss://`。另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 存储帐户的 [URI 方案](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，这将是 `wasb://`，对于 Azure Data Lake Storage Gen2，这将是 `abfs://`，对于 Azure Data Lake Storage Gen1，这将是 `adl://`。 如果为 Azure 存储启用安全传输，则 URI 将为`wasbs://`。 另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 * 共享访问签名要添加到的现有 HDInsight 群集。 如果没有，则可以使用 Azure PowerShell 创建群集，并在创建群集期间添加共享访问签名。
 
@@ -209,9 +209,9 @@ Set-AzStorageblobcontent `
 
 1. 在 Visual Studio 中打开解决方案。
 
-2. 在解决方案资源管理器中，右键单击“SASExample”项目并选择“属性”。  
+2. 在解决方案资源管理器中，右键单击“SASExample”项目并选择“属性”。
 
-3. 选择“设置”  ，并添加以下条目的值：
+3. 选择“设置”，并添加以下条目的值：
 
    * StorageConnectionString：想要为其创建存储策略和 SAS 的存储帐户的连接字符串。 格式应为 `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey`，其中 `myaccount` 是存储帐户名称，`mykey` 是存储帐户密钥。
 
@@ -358,29 +358,29 @@ Remove-AzResourceGroup `
 
 1. 打开群集的 Ambari Web UI。 此页的地址是 `https://YOURCLUSTERNAME.azurehdinsight.net`。 出现提示时，请使用在创建群集时使用的管理员名称 (admin) 和密码对群集进行身份验证。
 
-2. 从 Ambari Web UI 的左侧，选择“HDFS”  ，并在页面的中间选择“配置”  选项卡。
+2. 从 Ambari Web UI 的左侧，选择“HDFS”，并在页面的中间选择“配置”选项卡。
 
-3. 选择“高级”  选项卡，并向下滚动，找到“自定义 core-site”  部分。
+3. 选择“高级”选项卡，并向下滚动，找到“自定义 core-site”部分。
 
-4. 展开“自定义 core-site”  部分，并滚动到底部，选择“添加属性...”  链接。 在“密钥”  和“值”  字段中使用以下值：
+4. 展开“自定义 core-site”部分，并滚动到底部，选择“添加属性...”链接。 在“密钥”和“值”字段中使用以下值：
 
    * **键**：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
    * **值**：前面执行的某个方法返回的 SAS。
 
      将 `CONTAINERNAME` 替换为用于 C# 或 SAS 应用程序的容器名称。 将 `STORAGEACCOUNTNAME` 替换为所用的存储帐户名称。
 
-5. 单击“添加”  按钮以保存此密钥和值，并单击“保存”  按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存”  。
+5. 单击“添加”按钮以保存此密钥和值，并单击“保存”按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存”。
 
-    完成更改后，单击“确定”  。
+    完成更改后，单击“确定”。
 
    > [!IMPORTANT]  
    > 必须重启几个服务才能使更改生效。
 
-6. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”  ，并从右侧的“服务操作”  下拉列表中选择“重启所有受影响项”  。 出现提示时，选择“确认全部重启”  。
+6. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”，并从右侧的“服务操作”下拉列表中选择“重启所有受影响项”。 出现提示时，选择“确认全部重启”。
 
     对 MapReduce2 和 YARN 重复此过程。
 
-7. 重新启动这些服务后，选择每个服务并从“服务操作”  下拉列表中选择“禁用维护模式”。
+7. 重新启动这些服务后，选择每个服务并从“服务操作” 下拉列表中选择“禁用维护模式”。
 
 ## <a name="test-restricted-access"></a>测试限制的访问
 
@@ -418,7 +418,7 @@ Remove-AzResourceGroup `
 
     此命令会将文件下载到名为 **testfile.txt** 的本地文件中。
 
-5. 使用以下命令将本地文件上传到 SAS 存储上名为 testupload.txt 的新文件中： 
+5. 使用以下命令将本地文件上传到 SAS 存储上名为 testupload.txt 的新文件中：
 
     ```bash
     hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
@@ -434,7 +434,7 @@ Remove-AzResourceGroup `
     hdfs dfs -put testfile.txt wasbs:///testupload.txt
     ```
 
-    这一次操作应该会成功完成。
+    这一次操作应会成功完成。
 
 ## <a name="next-steps"></a>后续步骤
 

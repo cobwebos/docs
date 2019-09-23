@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 6801f2b3bca1fbfa221ec2eba07f51b76712b4ff
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 26634e2fe23e0a23540638c4559af6e11eccbe72
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813971"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180734"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本
 
@@ -23,7 +23,7 @@ HDInsight Spark 群集包括可用于运行 [Apache Spark](https://spark.apache.
 
 * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
-* 群集主存储的 URI 方案。 对于 Azure Blob 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Blob 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 `wasbs://` 或 `abfss://`。  另请参阅[在 Azure 存储中要求安全传输](../../storage/common/storage-require-secure-transfer.md)了解详细信息。
+* 群集主存储的 URI 方案。 对于 Azure Blob 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Blob 存储启用安全传输，则 URI 将为`wasbs://`。  另请参阅[在 Azure 存储中要求安全传输](../../storage/common/storage-require-secure-transfer.md)了解详细信息。
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>启动 Apache Zeppelin 笔记本
 
@@ -101,7 +101,7 @@ HDInsight Spark 群集包括可用于运行 [Apache Spark](https://spark.apache.
     select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff from hvac where targettemp > "${Temp = 65,65|75|85}"
     ```
 
-    将此代码段粘贴到新段落，然后按 **Shift + Enter**。 然后，从“温度”下拉列表中选择“65”。 
+    将此代码段粘贴到新段落，然后按 **Shift + Enter**。 然后从**Temp**下拉列表中选择**65** 。 
 
 8. 选择“条形图”图标以更改显示内容。  然后选择“设置”并进行以下更改：
 
@@ -171,7 +171,7 @@ Zeppelin 笔记本的保存位置为群集头节点。 因此，如果删除该�
 
     ![重启 Livy 解释程序](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "重启 Zeppelin 解释程序")
 
-3. 在现有的 Zeppelin 笔记本中运行代码单元。 此操作可在 HDInsight 群集中创建新的 Livy 会话。
+3. 从现有的 Zeppelin 笔记本运行代码单元格。 此操作可在 HDInsight 群集中创建新的 Livy 会话。
 
 ## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)

@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 016ab15b2ca4b2e6278752b166c746f6f5aef72d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0f7947e4a96a49e3a7a3b0059a1b20b21ac8cbd1
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171318"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180787"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用变量来存储和管理值
 
@@ -99,6 +99,9 @@ ms.locfileid: "71171318"
    }
 },
 ```
+
+> [!NOTE]
+> 尽管 "**初始化变量**" 操作具有`variables`结构化为数组的部分，但该操作一次只能创建一个变量。 每个新变量都需要单独的**初始化变量**操作。
 
 下面是其他一些变量类型示例：
 
@@ -200,7 +203,7 @@ ms.locfileid: "71171318"
 
    若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方，以显示加号 (+)。 选择加号，然后选择 "**添加操作**"。
 
-1. 在搜索框中，输入“递增变量”作为筛选器。 在操作列表中，选择“变量 - 递增变量”。
+1. 在搜索框中，输入“递增变量”作为筛选器。 在 "操作" 列表中，选择 "**增量变量**"。
 
    ![选择“递增变量”操作](./media/logic-apps-create-variables-store-values/select-increment-variable-action.png)
 
@@ -256,7 +259,7 @@ ms.locfileid: "71171318"
 
    1. 在 "**初始化变量**" 操作下，选择 "**新建步骤**"。
 
-   1. 在 "**选择操作**" 下，选择 "**内置**"。 在 "搜索" 框中`for each` ，输入作为搜索筛选器，并选择 " **For each**"。
+   1. 在“选择操作”下，选择“内置”。 在 "搜索" 框中`for each` ，输入作为搜索筛选器，并选择 " **For each**"。
 
       ![添加“for each”循环](./media/logic-apps-create-variables-store-values/add-loop.png)
 

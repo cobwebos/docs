@@ -15,6 +15,8 @@
           href: quickstarts-sdk/python-sdk.md
         - name: Java SDK
           href: quickstarts-sdk/java-sdk.md
+        - name: Node.js SDK
+          href: quickstarts-sdk/node-sdk.md
     - name: 使用 REST API
       items:
         - name: 分析远程图像
