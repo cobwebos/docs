@@ -120,6 +120,9 @@
     - name: Azure 数字孪生
       tocHref: /azure/digital-twins/
       topicHref: /azure/digital-twins/
+    - name: Azure HPC 缓存
+      tocHref: /azure/hpc-cache/
+      topicHref: /azure/hpc-cache/
     - name: Azure Lighthouse
       tocHref: /azure/lighthouse/
       topicHref: /azure/lighthouse/
@@ -593,6 +596,9 @@
     - name: Power BI 工作区集合
       tocHref: /azure/power-bi-workspace-collections/
       topicHref: /azure/power-bi-workspace-collections/
+    - name: 专用链接
+      tocHref: /azure/private-link/
+      topicHref: /azure/private-link/
     - name: 用于 Redis 的 Azure 缓存
       tocHref: /azure/azure-cache-for-redis/
       topicHref: /azure/azure-cache-for-redis/

@@ -257,6 +257,12 @@
     - name: 了解 Policy 效果
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Azure Policy 分配结构
+      displayName: 'parameters, enforcementmode, policyDefinitionId'
+      href: ./concepts/assignment-structure.md
+    - name: 评估新策略的影响
+      displayName: 'audit, enforcementmode, compliance'
+      href: ./concepts/evaluate-impact.md
     - name: 适用于 Kubernetes 的 Azure Policy
       displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
       href: ./concepts/rego-for-aks.md
