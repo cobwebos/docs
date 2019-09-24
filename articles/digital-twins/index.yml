@@ -12,12 +12,12 @@ metadata:
   author: KingdomOfEnds
   ms.author: v-adgera
   ms.date: 09/03/2019
-  ms.openlocfilehash: 090a18b77de3ca89ecd054ce28ec9e8b0a17dd1f
-  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.openlocfilehash: b5a449d09b1068dbf874828b9e65b1ac318b58fd
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/12/2019
-  ms.locfileid: "70930705"
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71219733"
 landingContent:
 - title: 关于 Azure 数字孪生
   linkLists:
@@ -47,7 +47,7 @@ landingContent:
       url: tutorial-facilities-udf.md
     - text: 使用逻辑应用发出通知
       url: tutorial-facilities-events.md
-    - text: 使用 TSI 将事件可视化
+    - text: 使用时序见解将事件可视化
       url: tutorial-facilities-analyze.md
 - title: 使用 Azure 数字孪生进行开发
   linkLists:

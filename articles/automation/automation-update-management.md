@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f4816ea2dc67df717e46df61c955d6d156b14d7e
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 253e01b6bfa6609b4ec41d69a3c4b1bbe405ba5a
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129679"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240286"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -71,11 +71,11 @@ ms.locfileid: "71129679"
 
 ### <a name="supported-client-types"></a>支持的客户端类型
 
-下表显示了支持的操作系统列表：
+下表显示了更新评估支持的操作系统的列表。 修补需要混合 Runbook 辅助角色。 有关混合 Runbook 辅助角色要求的信息，请参阅[WINDOWS HRW](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)和[Linux HRW](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)的安装指南。
 
 |操作系统  |说明  |
 |---------|---------|
-|Windows Server 2019 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2016 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2012 R2 （Datacenter/Standard）<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 （RTM 和 SP1 Standard）|**更新评估**：支持<br><br>**修补**：需要混合 Runbook 辅助角色。 请参阅[混合 Runbook 辅助角色要求](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
+|Windows Server 2019 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2016 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2012 R2 （Datacenter/Standard）<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 （RTM 和 SP1 Standard）||
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要借助“yum”来返回 CentOS 当前没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息, 请参阅[Linux 上的更新分类](#linux-2)          |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
@@ -249,6 +249,9 @@ Heartbeat
 | 重新启动控制| 确定应如何处理重新启动。 可用选项包括：</br>需要时重新启动(默认)</br>始终重新启动</br>从不重新启动</br>仅重启 - 不安装更新|
 
 此外，能够以编程方式创建更新部署。 若要了解如何使用 REST API 创建更新部署，请参阅[软件更新配置 - 创建](/rest/api/automation/softwareupdateconfigurations/create)。 此外，还有一个示例 Runbook，可用于创建每周更新部署。 若要了解有关此 Runbook 的详细信息，请参阅[为资源组中的一个或多个 VM 创建每周更新部署](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)。
+
+> [!NOTE]
+> 如果**重新启动控制**设置为 "**从不重新**启动"，则[用于管理重启的注册表项](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)下列出的注册表项可能会导致重新启动事件。
 
 ### <a name="maintenance-windows"></a>维护时段
 

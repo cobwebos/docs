@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: eda0d6e8fe56b985c3b29fa80cee880444d63741
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: ad7e4c5aaa20722e6158973571fb95eb8d853f4d
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105292"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219794"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 外部负载均衡器移到另一个区域
 
@@ -27,7 +27,7 @@ ms.locfileid: "71105292"
 - 无法在区域之间移动 Azure 外部负载均衡器。  需要将新的负载均衡器关联到目标区域中的资源。
 
 - 若要导出外部负载平衡器配置并部署模板以在其他区域中创建外部负载均衡器，需要 "网络参与者" 角色或更高版本。
-   
+
 - 确定源网络布局和当前正在使用的所有资源。 此布局包括但不限于负载均衡器、网络安全组、公共 Ip 和虚拟网络。
 
 - 验证 Azure 订阅是否允许在使用的目标区域中创建外部负载均衡器。 请联系支持部门，启用所需配额。
@@ -43,7 +43,7 @@ ms.locfileid: "71105292"
 
 ### <a name="export-the-public-ip-template-and-deploy-from-the-portal"></a>导出公共 IP 模板并从门户部署
 
-1. 登录到[Azure 门户](http://portal.azure.com) > **资源组**。
+1. 登录到[Azure 门户](https://portal.azure.com) > **资源组**。
 2. 找到包含源公共 IP 的资源组，然后单击该资源组。
 3. 选择 >**设置** > ""**导出模板**"。
 4. 在 "**导出模板**" 边栏选项卡中选择 "**部署**"。
@@ -65,7 +65,7 @@ ms.locfileid: "71105292"
 
     在编辑器中单击 "**保存**"。
 
-9.  单击 "**模板** > " "**编辑模板**"，在联机编辑器中打开**模板**文件。 
+9.  单击 "**模板** > " "**编辑模板**"，在联机编辑器中打开**模板**文件。
 
 10. 若要编辑将移动公共 IP 的目标区域，请在 "**资源**" 下更改 "**位置**" 属性：
 
@@ -90,11 +90,11 @@ ms.locfileid: "71105292"
                 "ipTags": []
                }
                }
-             ]             
+             ]
     ```
-  
+
 11. 若要获取地区位置代码，请参阅[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国** = 中部**centralus**的区域名称。
-    
+
 12. 你还可以根据需要更改模板中的其他参数，并根据需要进行选择：
 
     * **Sku** -可以通过更改**模板 json**文件中的**Sku** > **名称**属性，将配置中的公共 IP 的 sku 从标准更改为基本或基本到标准。
@@ -135,17 +135,17 @@ ms.locfileid: "71105292"
                 "publicIPAllocationMethod": "Dynamic",
                 "idleTimeoutInMinutes": 4,
                 "ipTags": []
-        
+
         ```
 
         有关分配方法和空闲超时值的详细信息，请参阅[创建、更改或删除公共 IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)。
 
- 
+
 13. 在联机编辑器中单击 "**保存**"。
 
 14. 单击 "**基本** > **订阅**" 以选择将在其中部署目标公共 IP 的订阅。
 
-15. 单击 "**基本** > **资源组**" 以选择将在其中部署目标公共 IP 的资源组。  可以单击 "**新建**" 为目标公共 IP 创建新的资源组。  确保名称与现有源公共 IP 的源资源组不同。 
+15. 单击 "**基本** > **资源组**" 以选择将在其中部署目标公共 IP 的资源组。  可以单击 "**新建**" 为目标公共 IP 创建新的资源组。  确保名称与现有源公共 IP 的源资源组不同。
 
 16. 验证**基本** > **位置**是否设置为要在其中部署公共 IP 的目标位置。
 
@@ -158,7 +158,7 @@ ms.locfileid: "71105292"
 
 ### <a name="export-the-external-load-balancer-template-and-deploy-from-the-azure-portal"></a>导出外部负载均衡器模板并从 Azure 门户部署
 
-1. 登录到[Azure 门户](http://portal.azure.com) > **资源组**。
+1. 登录到[Azure 门户](https://portal.azure.com) > **资源组**。
 2. 找到包含源外部负载均衡器的资源组，然后单击它。
 3. 选择 >**设置** > ""**导出模板**"。
 4. 在 "**导出模板**" 边栏选项卡中选择 "**部署**"。
@@ -180,8 +180,8 @@ ms.locfileid: "71105292"
     ```
 
 6.  若要编辑上面移动的目标公共 IP 的值，你必须首先获取资源 ID，然后将其复制并粘贴到**参数 json**文件中。 获取 ID：
-    
-    1. 在另一个浏览器选项卡或窗口中登录到[Azure 门户](http://portal.azure.com) > **资源组**。
+
+    1. 在另一个浏览器选项卡或窗口中登录到[Azure 门户](https://portal.azure.com) > **资源组**。
     2. 在上述步骤中找到包含移动的公共 IP 的目标资源组，然后单击该资源组。
     3. 选择 >**设置** > **属性**。
     4. 在右侧的边栏选项卡中，突出显示**资源 ID**并将其复制到剪贴板。  或者，可以单击**资源 ID**路径右侧的 "**复制到剪贴板**" 按钮。
@@ -201,7 +201,7 @@ ms.locfileid: "71105292"
 
         ```
     6. 在联机编辑器中单击 "**保存**"。
-   
+
 
 7.  如果已为负载均衡器配置出站 NAT 和出站规则，则此文件中将显示第三个条目作为出站公共 IP 的外部 ID。  在**目标区域**中重复上述步骤，获取出站公共 IP 的 ID，并将该条目粘贴到**参数 json**文件中：
 
@@ -211,15 +211,15 @@ ms.locfileid: "71105292"
             "parameters": {
                 "loadBalancers_myLoadbalancer_ext_name": {
                 "value": "<target-external-lb-name>",
-                
+
             },
                 "publicIPAddresses_myPubIP_in_externalid": {
                 "value": "<target-publicIP-resource-ID>",
-                
+
             },
                 "publicIPAddresses_myPubIP_out_externalid": {
                 "defaultValue": "<target-publicIP-outbound-resource-ID>",
-                
+
             }
         },
     ```
@@ -243,7 +243,7 @@ ms.locfileid: "71105292"
 10. 若要获取地区位置代码，请参阅[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国** = 中部**centralus**的区域名称。
 
 11. 你还可以根据需要更改模板中的其他参数，并根据需要进行选择：
-    
+
     * **Sku** -可以通过更改**模板 json**文件中的 " **Sku** > **名称**" 属性，将配置中的外部负载均衡器的 sku 从标准版更改为基本版或基本版。
 
         ```json
@@ -389,10 +389,10 @@ ms.locfileid: "71105292"
          有关出站规则的详细信息，请参阅[负载均衡器出站规则](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)
 
 12. 在联机编辑器中单击 "**保存**"。
-    
+
 13. 单击 "**基本** > **订阅**" 以选择将在其中部署目标外部负载平衡器的订阅。
 
-15. 单击 "**基本** > **资源组**" 以选择将在其中部署目标负载均衡器的资源组。  你可以单击 "**新建**" 以创建目标外部负载均衡器的新资源组，或选择上面为公共 IP 创建的现有资源组。  确保名称与现有源外部负载均衡器的源资源组相同。 
+15. 单击 "**基本** > **资源组**" 以选择将在其中部署目标负载均衡器的资源组。  你可以单击 "**新建**" 以创建目标外部负载均衡器的新资源组，或选择上面为公共 IP 创建的现有资源组。  确保名称与现有源外部负载均衡器的源资源组相同。
 
 16. 验证**基本** > **位置**是否设置为要在其中部署外部负载平衡器的目标位置。
 
@@ -402,7 +402,7 @@ ms.locfileid: "71105292"
 
 19. 单击 "**购买**" 按钮部署目标公共 IP。
 
-## <a name="discard"></a>弃用 
+## <a name="discard"></a>弃用
 
 如果要丢弃目标公共 IP 和外部负载均衡器，请删除包含目标公共 IP 和外部负载均衡器的资源组。  为此，请在门户的 "仪表板" 中选择资源组，并选择 "概述" 页顶部的 "**删除**"。
 

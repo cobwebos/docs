@@ -3,9 +3,9 @@ title: 使用 Azure 通知中心向用户发送跨平台通知 (ASP.NET)
 description: 了解如何使用通知中心模板在单个请求中发送针对所有平台的平台未知通知。
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,19 +13,21 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 0f92b49c9d77029a9624782b49eb23f7083c49aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: cea0d63c20af781fcfc6ba5d7c06061b12992702
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60872248"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212030"
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>使用通知中心向用户发送跨平台通知
 
 在上一教程[使用通知中心通知用户]中，我们了解了如何向注册给经过身份验证的特定用户的所有设备推送通知。 在该教程中，需要使用多个请求将通知发送到每个支持的客户端平台。 Azure 通知中心支持模板，可以通过模板指定特定设备要如何接收通知。 此方法简化了发送跨平台通知的方式。
 
-本文演示了如何利用模板在单个请求中向所有平台发送不区分平台的通知。 有关模板的更多详细信息，请参阅 [Azure 通知中心概述][Templates]。
+本文演示了如何利用模板在单个请求中向所有平台发送不区分平台的通知。 有关模板的更多详细信息，请参阅[Azure 通知中心概述][Templates]。
 
 > [!IMPORTANT]
 > Visual Studio 2017 不支持使用 Windows Phone 项目 8.1 及更早的版本。 有关详细信息，请参阅 [Visual Studio 2017 平台目标以及兼容性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)。
@@ -37,7 +39,7 @@ ms.locfileid: "60872248"
 
 若要使用模板发送跨平台通知，请执行以下步骤：
 
-1. 在 Visual Studio 的解决方案资源管理器中，展开“控制器”文件夹，然后打开 RegisterController.cs 文件。 
+1. 在 Visual Studio 的解决方案资源管理器中，展开“控制器”文件夹，然后打开 RegisterController.cs 文件。
 
 2. 在 `Put` 方法中找到用于创建新注册的代码块，然后将 `switch` 内容替换为以下代码：
 

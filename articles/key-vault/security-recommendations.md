@@ -6,19 +6,19 @@ author: barclayn
 manager: rkarlin
 ms.service: key-vault
 ms.topic: article
-ms.date: 09/19/2019
+ms.date: 09/23/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: e1c5382e1e55c5c73a5610c1c13f6bfcef65ebc1
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 90965618b1d2cb126d56453d46a5bebc85319c0f
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148271"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219644"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault 的安全性建议
 
-本文包含适用于 Azure 应用服务的安全建议。 实施这些建议将有助于你履行我们的共享职责模型中描述的安全职责，并改进 Web 应用解决方案的总体安全性。 若要详细了解 Microsoft 如何满足服务提供商的责任，请阅读[云计算的共享责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)。
+本文包含有关 Azure Key Vault 的安全建议。 实施这些建议可帮助你满足我们的共享责任模型中所述的安全要求。 若要详细了解 Microsoft 如何满足服务提供商的责任，请阅读[云计算的共享责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)。
 
 Azure 安全中心会自动监视本文中包含的一些建议。 Azure 安全中心是保护 Azure 中资源的第一道防线。 它会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后向您提供有关如何解决这些问题的建议。
 

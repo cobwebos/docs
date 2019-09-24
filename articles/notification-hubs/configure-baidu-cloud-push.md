@@ -2,19 +2,21 @@
 title: 在 Azure 通知中心中配置百度云推送 |Microsoft Docs
 description: 了解如何为 Azure 通知中心配置百度设置。
 services: notification-hubs
-author: jwargo
-manager: patniko
+author: sethmanheim
+manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: 9feb5f66c5ae979a239c3349b2b1347ad307ce49
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 759e35ba353f470ea3abc5f5d4182fa2b2ea0e73
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884641"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212515"
 ---
 # <a name="deprecated-configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>弃用在 Azure 门户中为通知中心配置百度云推送设置
 
@@ -32,7 +34,7 @@ ms.locfileid: "70884641"
 1. 在 Azure 门户的“通知中心”页上，在左侧菜单中选择“Baidu (Android China)”。 
 2. 在百度云推送项目中，输入从百度控制台获得的 API 密钥。 
 3. 在百度云推送项目中，输入从百度控制台获得的机密密钥。 
-4. 选择**保存**。 
+4. 选择“保存”。 
 
     ![显示百度 (Android China) 推送通知配置的通知中心屏幕截图](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 

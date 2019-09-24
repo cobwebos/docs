@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 09/10/2019
-ms.openlocfilehash: fd1da6a43e4c1d7d6b66d5dbacb2d7a587c2856a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9d19b31ccce8feeb2d5ce12353d9b79841b40724
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898687"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219444"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业 Marketplace 帐户
 
@@ -60,7 +60,7 @@ ms.locfileid: "70898687"
 
 ### <a name="agree-to-terms-and-conditions"></a>同意条款和条件
 
-你需要同意[Microsoft 市场发行者协议](http://go.microsoft.com/fwlink/?LinkID=699560)中的条款和条件。
+你需要同意[Microsoft 市场发行者协议](https://go.microsoft.com/fwlink/?LinkID=699560)中的条款和条件。
 
 ### <a name="provide-your-publisher-profile"></a>提供发布者配置文件
 
@@ -103,7 +103,7 @@ ms.locfileid: "70898687"
 
 1. 从 "合作伙伴中心"，选择 "**设置** > " "**合作伙伴设置** > " "**程序** > " "**入门**"
 2. Microsoft 合作伙伴网络检测订阅，并显示发布者配置文件页，以输入公司名称和 MPN ID。
-3. 阅读[Microsoft 市场发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)中的条款和条件，然后选择 "**接受并继续**" 完成注册。
+3. 阅读[Microsoft 市场发布者协议](https://go.microsoft.com/fwlink/?LinkID=699560)中的条款和条件，然后选择 "**接受并继续**" 完成注册。
 
 注册后，你将转到 "商业市场概述" 页。 **商业应用商店**显示在左侧导航栏中。 如果选择 "**设置** > " "**合作伙伴设置** > " "**计划**"，则会看到 "商用 Marketplace" 列出为 "已注册"。
 

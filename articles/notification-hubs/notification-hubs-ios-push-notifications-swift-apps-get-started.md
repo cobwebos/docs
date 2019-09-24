@@ -1,11 +1,11 @@
 ---
-title: 将通知推送到使用 Azure 通知中心的 Swift iOS 应用 |Microsoft Docs
-description: 了解如何将推送通知到使用 Azure 通知中心的 Swift iOS 应用程序。
+title: 使用 Azure 通知中心将通知推送到 Swift iOS 应用 |Microsoft Docs
+description: 了解如何向使用 Azure 通知中心的 Swift iOS 应用推送通知。
 services: notification-hubs
 documentationcenter: ios
 author: mikeparker104
-manager: patniko
-editor: spelluru
+manager: femila
+editor: jwargo
 ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,52 +14,54 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: miparker
-ms.openlocfilehash: c35044918876b2c7710e26f6b868bc1096c2f538
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.reviewer: jowargo
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: b830538f81d1696c34db3e4f66a07346c17bcdcc
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340392"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211955"
 ---
-# <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>教程：将通知推送到使用通知中心 REST API 的 Swift iOS 应用
+# <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>教程：向使用通知中心 REST API 的 Swift iOS 应用推送通知
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 > * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
 
-在本教程中，你使用 Azure 通知中心将通知推送到基于 Swift 的 iOS 应用程序通过使用[REST API](/rest/api/notificationhubs/)。 你还创建一个空白 iOS 应用，它使用接收推送通知[Apple 推送通知服务 (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)。
+本教程介绍如何使用 Azure 通知中心将通知推送到基于 Swift 的 iOS 应用程序，方法是使用[REST API](/rest/api/notificationhubs/)。 还会创建一个空白 iOS 应用，它使用[Apple Push Notification 服务（APNs）](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)接收推送通知。
 
-本教程将指导你完成以下步骤：
+本教程引导你完成以下步骤：
 
 > [!div class="checklist"]
 > * 生成证书签名请求文件。
-> * 请求应用以推送通知。
-> * 创建应用程序的预配配置文件。
+> * 请求你的应用推送通知。
+> * 为应用程序创建配置文件。
 > * 创建通知中心。
 > * 使用 APNs 信息配置通知中心。
 > * 将 iOS 应用连接到通知中心。
 > * 测试解决方案。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要按照文中内容操作，需要：
 
-- 可通过[Azure 通知中心概述](notification-hubs-push-notification-overview.md)如果您不熟悉该服务。
-- 若要了解如何[注册和安装](notification-hubs-push-notification-registration-management.md)。
-- 一个有效[Apple 开发人员帐户](https://developer.apple.com)。
-- 有效的开发人员证书安装到密钥链以及运行 Xcode 的 Mac。
-- 物理 iPhone 设备可以运行和调试，因为不能使用模拟器测试推送通知。
-- 在中注册你的物理 iPhone 设备[Apple 门户](https://developer.apple.com)和与证书关联。
-- [Azure 订阅](https://portal.azure.com)可以在其中创建和管理资源。
+- 如果你不熟悉该服务，请参阅 [Azure 通知中心概述](notification-hubs-push-notification-overview.md)。
+- 了解[注册和安装](notification-hubs-push-notification-registration-management.md)。
+- 一个有效的 [Apple 开发人员帐户](https://developer.apple.com)。
+- 一台运行 Xcode 的 Mac 计算机，以及安装在密钥链中的有效开发人员证书。
+- 可以运行且可用于调试的 iPhone 实物设备，因为你无法使用模拟器来测试推送通知。
+- 该 iPhone 实物设备已在 [Apple 门户](https://developer.apple.com)中注册且与你的证书相关联。
+- 一个[Azure 订阅](https://portal.azure.com)，可在其中创建和管理资源。
 
-即使没有使用过 iOS 开发，您应能够按照沿创建此示例中第一个原则的步骤。 但是，您将受益于熟悉以下概念：
+即使过去没有 iOS 开发方面的经验，应该也可以遵循本文中的步骤创建此基本原则示例。 但是，熟悉以下概念会有所帮助：
 
-- 生成了 Xcode 和 Swift iOS 应用。
-- 配置[Azure 通知中心](notification-hubs-ios-apple-push-notification-apns-get-started.md)适用于 iOS。
-- [Apple 开发人员门户](https://developer.apple.com)并[Azure 门户](https://portal.azure.com)。
+- 使用 Xcode 和 Swift 生成 iOS 应用。
+- 配置 iOS 的 [Azure 通知中心](notification-hubs-ios-apple-push-notification-apns-get-started.md)。
+- [Apple 开发人员门户](https://developer.apple.com)和[Azure 门户](https://portal.azure.com)。
 
 > [!NOTE]
-> 通知中心将配置为仅使用“沙盒”身份验证模式。  不应将此身份验证模式用于生产工作负荷。
+> 通知中心将配置为仅使用“沙盒”身份验证模式。 不应将此身份验证模式用于生产工作负荷。
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
@@ -69,36 +71,36 @@ ms.locfileid: "67340392"
 
 ### <a name="create-an-ios-project"></a>创建 iOS 项目
 
-1. 在 Xcode 中，创建新的 iOS 项目，并选择“单视图应用程序”模板。 
+1. 在 Xcode 中，创建新的 iOS 项目，并选择“单视图应用程序”模板。
 
 1. 设置新项目的选项时：
 
-   1. 指定**产品名称**(PushDemo) 和**组织标识符**(`com.<organization>`) 的设置时用**捆绑包标识符**Apple 开发人员门户中。
+   1. 使用在 Apple 开发人员门户中设置“捆绑标识符”时所用的“产品名称”(PushDemo) 和“组织标识符”(`com.<organization>`)。
 
-   1. 选择为其设置了“应用 ID”的“团队”。  
+   1. 选择为其设置了“应用 ID”的“团队”。
 
-   1. 将“语言”设置为“Swift”。  
+   1. 将“语言”设置为“Swift”。
 
    1. 选择“**下一步**”。
 
 1. 创建名为 **SupportingFiles** 的新文件夹。
 
-1. 创建名为的新 p 列表文件**devsettings.plist**中**SupportingFiles**文件夹。 请确保添加到此文件夹应用**gitignore**文件以便在使用 git 存储库时，它不提交。 在生产应用中，你可能会按条件将这些机密设置为自动化生成过程的一部分。 在本演练不涉及此类设置的内容。
+1. 在 **SupportingFiles** 文件夹中创建名为 **devsettings.plist** 的新 p-list 文件。 确保将此文件夹添加到 **gitignore** 文件，以便在使用 Git 存储库时不会提交该文件。 在生产应用中，你可能会按条件将这些机密设置为自动化生成过程的一部分。 本演练不使用此类设置。
 
-1. 更新**devsettings.plist**以使用你自己的值从预配通知中心将以下配置条目：
+1. 更新 **devsettings.plist** 以包含以下配置条目（使用预配的通知中心内你自己的值）：
 
-   | 密钥                            | Type                     | 值                     |
+   | Key                            | 类型                     | ReplTest1                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | String                   | \<hubKey>                  |
-   | notificationHubKeyName         | String                   | \<hubKeyName>              |
-   | notificationHubName            | String                   | \<hubName>                 |
-   | notificationHubNamespace       | String                   | \<hubNamespace>            |
+   | notificationHubKey             | 字符串                   | \<hubKey>                  |
+   | notificationHubKeyName         | 字符串                   | \<hubKeyName>              |
+   | notificationHubName            | 字符串                   | \<hubName>                 |
+   | notificationHubNamespace       | 字符串                   | \<hubNamespace>            |
 
-   可以通过导航到 Azure 门户中的通知中心资源来查找所需的值。 具体而言， **notificationHubName**并**notificationHubNamespace**右上角的值为**Essentials**摘要中**概述**页。
+   可以在 Azure 门户中导航到“通知中心”资源来找到所需的值。 具体而言，可以在“概述”页中“概要”摘要的右上角找到 **notificationHubName** 和 **notificationHubNamespace** 值。
 
-   ![通知中心 Essentials 摘要](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
+   ![通知中心“概要”摘要](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
 
-   此外可以找到**notificationHubKeyName**并**notificationHubKey**通过导航到的值**访问策略**并选择相应**访问策略**，如`DefaultFullSharedAccessSignature`。 之后，将从复制**主连接字符串**值带有前缀`SharedAccessKeyName=`有关`notificationHubKeyName`且值带有前缀`SharedAccessKey=`为`notificationHubKey`。
+   还可以通过导航到“访问策略”并选择相应的**访问策略**（例如 `DefaultFullSharedAccessSignature`）找到 **notificationHubKeyName** 和 **notificationHubKey** 值。 然后在“主连接字符串”中，复制 `notificationHubKeyName` 的带有 `SharedAccessKeyName=` 前缀的值，以及 `notificationHubKey` 的带有 `SharedAccessKey=` 前缀的值。
 
    连接字符串应采用以下格式：
 
@@ -106,17 +108,17 @@ ms.locfileid: "67340392"
    Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<notificationHubKeyName>;SharedAccessKey=<notificationHubKey>
    ```
 
-   为了简单起见，指定`DefaultFullSharedAccessSignature`因此可以使用该令牌来发送通知。 在实践中`DefaultListenSharedAccessSignature`会更好的选择的情况下您只想要接收通知。
+   为方便起见，请指定 `DefaultFullSharedAccessSignature`，以便可以使用令牌来发送通知。 在实践中，如果你只想要接收通知，则 `DefaultListenSharedAccessSignature` 是更好的选择。
 
-1. 下**项目导航器**，选择**项目名称**，然后选择**常规**选项卡。
+1. 在“项目导航器”下选择“项目名称”，然后选择“常规”选项卡。
 
-1. 查找**标识**，然后设置**捆绑包标识符**值，使其匹配`com.<organization>.PushDemo`，值用于**应用程序 ID**在上一步骤。
+1. 找到“标识”并设置“捆绑标识符”值，使其与在前面步骤中用于“应用 ID”的值 `com.<organization>.PushDemo` 相匹配。
 
-1. 查找**签名**，然后选择相应**Team**对于你**Apple 开发人员帐户**。 **团队**值应该与在其下创建证书和配置文件。
+1. 找到“签名”，然后为“Apple 开发人员帐户”选择适当的“团队”。 “团队”值应与前面在其下创建了证书和配置文件的团队相匹配。
 
-1. Xcode 应自动拉取相应**预配配置文件**值基于**捆绑包标识符**。 如果看不到新**预配配置文件**值，请尝试刷新的配置文件**签名标识**通过选择**Xcode**  >  **首选项** > **帐户** > **查看详细信息**。 选择**签名标识**，然后选择**刷新**右下方下载配置文件中的按钮。
+1. Xcode 应会根据“捆绑标识符”自动下拉相应的“预配配置文件”值。 如果未显示新的“预配配置文件”值，请尝试选择“Xcode” > “首选项” > “帐户” > “查看详细信息”来刷新“签名标识”的配置文件。 选择“签名标识”，然后选择右下角的“刷新”按钮下载配置文件。
 
-1. 选择“功能”选项卡，并确保已启用“推送通知”。  
+1. 选择“功能”选项卡，并确保已启用“推送通知”。
 
 1. 打开 **AppDelegate.swift** 文件以实现 **UNUserNotificationCenterDelegate** 协议，并将以下代码添加到类的顶部：
 
@@ -138,9 +140,9 @@ ms.locfileid: "67340392"
     }
     ```
 
-    稍后要使用这些成员。 具体而言，将使用**标记**并**genericTemplate**成员作为在注册过程。 有关标记的详细信息，请参阅[注册的标记](notification-hubs-tags-segment-push-message.md)和[模板注册](notification-hubs-templates-cross-platform-push-messages.md)。
+    稍后要使用这些成员。 具体而言，在注册过程中将使用 **tags** 和 **genericTemplate** 成员。 有关标记的详细信息，请参阅[注册的标记](notification-hubs-tags-segment-push-message.md)和[模板注册](notification-hubs-templates-cross-platform-push-messages.md)。
 
-1. 在同一文件中，添加以下代码**didFinishLaunchingWithOptions**函数：
+1. 在同一文件中的 **didFinishLaunchingWithOptions** 函数中添加以下代码：
 
     ```swift
     if let path = Bundle.main.path(forResource: "devsettings", ofType: "plist") {
@@ -171,7 +173,7 @@ ms.locfileid: "67340392"
 
     此代码从 **devsettings.plist** 中检索设置值，将 **AppDelegate** 类设置为 **UNUserNotificationCenter** 委托，请求为推送通知授权，然后调用 **registerForRemoteNotifications**。
 
-    为了简单起见，该代码支持*iOS 10 及更高版本*。 通常情况下将进行有条件地使用相应的 Api 和方法，可以添加以前的操作系统版本的支持。
+    为简单起见，该代码仅支持 *iOS 10 和更高版本*。 可以按条件使用相应的 API 以及平时采用的方法，添加对旧 OS 版本的支持。
 
 1. 在同一文件中添加以下函数：
 
@@ -188,9 +190,9 @@ ms.locfileid: "67340392"
     }
     ```
 
-    该代码使用**installationId**并**pushChannel**值，以注册通知中心。 在这种情况下，使用**UIDevice.current.identifierForVendor**提供唯一的值标识设备，然后格式化**deviceToken**以提供所需**pushChannel**值。 **ShowAlert**函数存在只是为了显示用于演示一些消息文本。
+    该代码使用 **installationId** 和 **pushChannel** 值向通知中心注册。 在本例中，你将使用 **UIDevice.current.identifierForVendor** 提供唯一的值用于标识设备，然后设置 **deviceToken** 的格式，以提供所需的 **pushChannel** 值。 **showAlert** 函数只会显示一些消息文本供演示。
 
-1. 仍在**AppDelegate.swift**文件中，添加**willPresent**并**didReceive**函数到**UNUserNotificationCenterDelegate**. 正在运行的应用程序在前台或后台中分别收到通知时，这些函数将显示警报。
+1. 仍在 **AppDelegate.swift** 中，将 **willPresent** 和 **didReceive** 函数添加到 **UNUserNotificationCenterDelegate**。 在分别收到应用在前台和后台运行的通知时，这些函数会显示警报。
 
     ```swift
     @available(iOS 10.0, *)
@@ -208,17 +210,17 @@ ms.locfileid: "67340392"
     }
     ```
 
-1. 将打印语句添加到底部**didRegisterForRemoteNotificationsWithDeviceToken**函数来验证是否**installationId**并**pushChannel**正在分配的值。
+1. 将 print 语句添加到 **didRegisterForRemoteNotificationsWithDeviceToken** 函数的底部，以验证是否正在为 **installationId** 和 **pushChannel** 赋值。
 
-1. 创建**模型**， **Services**，并**实用程序**的基础组件的文件夹，将添加到项目更高版本。
+1. 为稍后要添加到项目的基础组件创建 **Models**、**Services** 和 **Utilities** 文件夹。
 
-1. 检查该项目生成，并且在物理设备上运行。 不能使用模拟器进行测试推送通知。
+1. 检查该项目是否可在物理设备上生成和运行。 无法使用模拟器测试推送通知。
 
 ### <a name="create-models"></a>创建模型
 
-在此步骤中，您将创建的模型来表示一组[通知中心 REST API](/rest/api/notificationhubs/)有效负载和存储所需的共享的访问签名 (SAS) 令牌数据。
+此步骤将创建一组模型来表示[通知中心 REST API](/rest/api/notificationhubs/) 有效负载并存储所需的共享访问签名 (SAS) 令牌数据。
 
-1. 添加名为的新 Swift 文件**PushTemplate.swift**到**模型**文件夹。 此模型提供了一个结构，表示**正文**的个别模板作为的一部分**DeviceInstallation**有效负载。
+1. 将一个名为 **PushTemplate.swift** 的新 Swift 文件添加到 **Models** 文件夹。 此模型提供一个结构用于表示 **DeviceInstallation** 有效负载包含的单个模板的**正文**。
 
     ```swift
     import Foundation
@@ -232,7 +234,7 @@ ms.locfileid: "67340392"
     }
     ```
 
-1. 添加名为的新 Swift 文件**DeviceInstallation.swift**到**模型**文件夹。 此文件定义一个结构，该结构表示用于创建或更新**设备安装**的有效负载。 将以下代码添加到该文件：
+1. 将一个名为 **DeviceInstallation.swift** 的新 Swift 文件添加到 **Models** 文件夹。 此文件定义一个结构，该结构表示用于创建或更新**设备安装**的有效负载。 将以下代码添加到该文件：
 
     ```swift
     import Foundation
@@ -253,7 +255,7 @@ ms.locfileid: "67340392"
     }
     ```
 
-1. 添加名为的新 Swift 文件**TokenData.swift**到**模型**文件夹。 此模型将用于存储以及其过期的 SAS 令牌。
+1. 将一个名为 **TokenData.swift** 的新 Swift 文件添加到 **Models** 文件夹。 此模型用于存储 SAS 令牌及其过期时间。
 
     ```swift
     import Foundation
@@ -272,7 +274,7 @@ ms.locfileid: "67340392"
 
 ### <a name="generate-a-sas-token"></a>生成 SAS 令牌
 
-通知中心为 Azure 服务总线使用相同的安全基础结构。 若要调用 REST API，需要[以编程方式生成](/rest/api/eventhub/generate-sas-token)一个可在请求的 **Authorization** 标头中使用的 SAS 令牌。  
+通知中心使用与 Azure 服务总线相同的安全基础结构。 若要调用 REST API，需要[以编程方式生成](/rest/api/eventhub/generate-sas-token)一个可在请求的 **Authorization** 标头中使用的 SAS 令牌。  
 
 生成的令牌采用以下格式：
 
@@ -282,22 +284,22 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 
 该过程本身涉及到相同的六个主要步骤：  
 
-1. 计算在到期[UNIX epoch 起经过的时间](https://en.wikipedia.org/wiki/Unix_time)自午夜协调世界时，自 1970 年 1 月 1 日以来经过的格式，这意味着的秒数。
-1. 格式设置**ResourceUrl** ，表示正在尝试访问，因此非常百分比编码形式和大小写的资源。 **ResourceUrl**采用以下格式`'https://<namespace>.servicebus.windows.net/<hubName>'`。
-1. 正在准备**StringToSign**，其格式为`'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`。
-1. 计算和 Base64 编码**签名**使用的 HMAC-SHA256 哈希**StringToSign**值。 哈希值一起使用时**键**的一部分**连接字符串**为相应**授权规则**。
-1. 格式设置的 Base64 编码**签名**因此百分号编码。
-1. 通过使用构造中的所需格式的令牌**UrlEncodedSignature**， **ExpiryEpoch**， **KeyName**，和**UrlEncodedResourceUrl**值。
+1. 计算 [UNIX 纪元时间](https://en.wikipedia.org/wiki/Unix_time)格式（自 1970 年 1 月 1 日协调世界时午夜至今的秒数）的过期时间。
+1. 设置 **ResourceUrl**（表示尝试访问的资源）的格式，使其经过百分比编码且采用小写。 **ResourceUrl** 的格式为 `'https://<namespace>.servicebus.windows.net/<hubName>'`。
+1. 准备好格式为 `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'` 的 **StringToSign**。
+1. 使用 **StringToSign** 值的 HMAC-SHA256 哈希计算**签名**并对其进行 Base64 编码。 遵循相应的**授权规则**将哈希值与**连接字符串**的 **Key** 部分结合使用。
+1. 设置已经过 Base64 编码的**签名**的格式，使其经过百分比编码。
+1. 使用 **UrlEncodedSignature**、**ExpiryEpoch**、**KeyName** 和 **UrlEncodedResourceUrl** 值以预期的格式构造令牌。
 
-请参阅[Azure 服务总线文档](../service-bus-messaging/service-bus-sas.md)有关共享的访问签名以及如何 Azure 服务总线和通知中心使用它的更全面概述。
+有关共享访问签名的更全面概述以及 Azure 服务总线和通知中心如何使用共享访问签名的更全面概述，请参阅 [Azure 服务总线文档](../service-bus-messaging/service-bus-sas.md)。
 
-对于此 Swift 示例，你将借助 Apple 的开源 **CommonCrypto** 库来对签名进行哈希处理。 由于它是 C 库，它不是可在 Swift 中现成的访问。 使用桥接标头会导致库可用。
+对于此 Swift 示例，你将借助 Apple 的开源 **CommonCrypto** 库来对签名进行哈希处理。 由于它是一个 C 库，因此无法在 Swift 中直接访问它。 可以通过一个桥接标头来使用该库。
 
 若要添加并配置桥接标头：
 
-1. 在 Xcode 中，选择**文件** > **新建** > **文件** > **标头文件**。 标头文件命名**BridgingHeader.h**。
+1. 在“Xcode”中，选择“文件” > “新建” > “文件”> “标头文件”。  将标头文件命名为 **BridgingHeader.h**。
 
-1. 编辑文件以导入**CommonHMAC.h**:
+1. 编辑该文件以导入 **CommonHMAC.h**：
 
     ```swift
     #import <CommonCrypto/CommonHMAC.h>
@@ -309,19 +311,19 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
     #endif /* BridgingHeader_h */
     ```
 
-1. 更新的目标**生成设置**引用桥接标头：
+1. 更新目标的“生成设置”以引用桥接标头：
 
    1. 打开“生成设置”选项卡并向下滚动到“Swift 编译器”部分。 ****   ****  
 
-   1. 絋粄 **安装 Objective C 的兼容性标头** 选项设置为 **是**。
+   1. 确保“安装 Objective-C 兼容性标头”选项设置为“是”。 ****   ****
 
-   1. 输入文件路径`'<ProjectName>/BridgingHeader.h'`成**OBJECTIVE-C 桥接标头** 选项。 这是我们桥接标头的文件路径。
+   1. 在“Objective-C 桥接标头”选项中输入文件路径 `'<ProjectName>/BridgingHeader.h'`。  这是桥接标头的文件路径。
 
-   如果找不到这些选项，确保您有**所有**选定视图而非**基本**或**自定义**。
+   如果找不到这些选项，请确保已选择“所有”视图（而不是“基本”或“自定义”）。
 
-   有许多第三方开放源代码包装器库可用的使用可能会使**CommonCrypto**更容易。 但是，这些库的讨论已超出本文的讨论范围。
+   有许多第三方开源包装器库可以略微简化 **CommonCrypto** 的使用难度。 但是，本文不会介绍此类的库。
 
-1. 添加名为的新 Swift 文件**TokenUtility.swift**内**实用程序**文件夹并添加以下代码：
+1. 在 **Utilities** 文件夹中添加名为 **TokenUtility.swift** 的新 Swift 文件，并添加以下代码：
 
    ```swift
    import Foundation
@@ -382,25 +384,25 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
     }
    ```
 
-   此实用程序封装负责生成 SAS 令牌的逻辑。
+   此实用工具封装负责生成 SAS 令牌的逻辑。
 
-   以前，所述**getSasToken**函数协调准备令牌所需的高级步骤。 在本教程后面，将安装服务调用的函数。
+   如前所述，**getSasToken** 函数协调准备令牌所要执行的高级步骤。 在本教程稍后的步骤中，安装服务将调用该函数。
 
-   其他两个函数调用**getSasToken**函数： **sha256HMac**用于计算签名并**urlEncodedString**编码关联的 URL字符串。 **UrlEncodedString**函数是必需的因为它不可能使用内置的实现所需的输出**addingPercentEncoding**函数。
+   **getSasToken** 函数调用另外两个函数：用于计算签名的 **sha256HMac**，以及用于对关联的 URL 字符串进行编码的 **urlEncodedString**。 之所以需要 **urlEncodedString** 函数，是因为使用内置的 **addingPercentEncoding** 函数无法实现所需的输出。
 
-   [Azure 存储空间 iOS SDK](https://github.com/Azure/azure-storage-ios/blob/master/Lib/Azure%20Storage%20Client%20Library/Azure%20Storage%20Client%20Library/AZSUtil.m)是如何进行这些操作在 OBJECTIVE-C 的极好示例 Azure 服务总线 SAS 令牌的详细信息可在[Azure 服务总线文档](../service-bus-messaging/service-bus-sas.md)。
+   [Azure 存储 iOS SDK](https://github.com/Azure/azure-storage-ios/blob/master/Lib/Azure%20Storage%20Client%20Library/Azure%20Storage%20Client%20Library/AZSUtil.m) 很好地示范了如何在 Objective-C 中实现这些操作。 在 [Azure 服务总线文档](../service-bus-messaging/service-bus-sas.md)中可以找到有关 Azure 服务总线 SAS 令牌的更多信息。
 
 ### <a name="verify-the-sas-token"></a>验证 SAS 令牌
 
-在客户端中实现安装服务之前，请检查我们的应用程序正确通过使用所选的 HTTP 实用程序生成的 SAS 令牌。 对于本教程的目的，我们的工具的选择将**Postman**。
+在客户端中实现安装服务之前，请使用所选的 HTTP 实用工具检查我们的应用是否在正确生成 SAS 令牌。 本教程所选的工具是 **Postman**。
 
-使用适当放置 print 语句或断点注意**installationId**并**令牌**应用生成的值。
+利用放在适当位置的 print 语句或断点，记下应用生成的 **installationId** 和 **token** 值。
 
-遵循以下步骤调用安装 API： 
+遵循以下步骤调用安装 API：
 
-1. 在中**Postman**，打开新选项卡。
+1. 在“Postman”中打开一个新的选项卡。
 
-1. 将请求设置为**获取**并指定以下地址：
+1. 将请求设置为 **GET**，并指定以下地址：
 
     ```xml
     https://<namespace>.servicebus.windows.net/<hubName>/installations/<installationId>?api-version=2015-01
@@ -408,13 +410,13 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 
 1. 按如下所示配置请求标头：
 
-   | 密钥           | 值            |
+   | Key           | ReplTest1            |
    | ------------- | ---------------- |
    | Content-Type  | application/json |
    | Authorization | \<sasToken>       |
    | x-ms-version  | 2015-01          |
 
-1. 选择**代码**下的右上角显示按钮**保存**按钮。 请求应类似于下面的示例所示：
+1. 选择位于“保存”按钮右上方的“代码”按钮。 请求应类似于以下示例：
 
     ```html
     GET /<hubName>/installations/<installationId>?api-version=2015-01 HTTP/1.1
@@ -428,13 +430,13 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 
 1. 选择**发送**按钮。
 
-指定不存在任何注册**installationId**此时。 验证应导致"404 未找到"响应而不是"401 未授权"响应。 此结果应确认 SAS 令牌已被接受。
+指定的 **installationId** 暂时不存在注册。 验证时应会生成“404 未找到”响应，而不是“401 未授权”响应。 此结果确认已接受 SAS 令牌。
 
 ### <a name="implement-the-installation-service-class"></a>实现安装服务类
 
 接下来，围绕[安装 REST API](/rest/api/notificationhubs/create-overwrite-installation) 实现基本包装器。  
 
-添加名为的新 Swift 文件**NotificationRegistrationService.swift**下**服务**文件夹，然后将以下代码添加到此文件：
+在 **Services** 文件夹下添加名为 **NotificationRegistrationService.swift** 的新 Swift 文件，然后将以下代码添加到此文件：
 
 ```swift
 import Foundation
@@ -538,25 +540,25 @@ class NotificationRegistrationService {
 
 在初始化过程中将提供必要的详细信息。 可以选择性地将标记和模板传入 **register** 函数，以构成**设备安装** JSON 有效负载。  
 
-**注册**函数调用其他专用函数来准备证书请求。 收到响应后，完成调用，并指示注册是否成功。  
+**register** 函数将调用其他专用函数来准备证书请求。 收到响应后，将调用 completion 来指示是否注册是否成功。  
 
-通过构造请求终结点**getBaseAddress**函数。 构造使用通知中心参数*命名空间*并*名称*的初始化过程中提供。  
+请求终结点由 **getBaseAddress** 函数构建。 该构造使用初始化期间提供的通知中心参数 *namespace* 和 *name*。  
 
-**GetSasToken**函数检查当前存储的令牌是否有效。 如果令牌无效，该函数将调用**TokenUtility** ，生成新令牌，然后将其存储在返回值之前。
+**getSasToken** 函数检查当前存储的令牌是否有效。 如果令牌无效，该函数会调用 **TokenUtility** 来生成并存储新的令牌，然后返回一个值。
 
-最后， **encodeToJson**的相应模型对象转换 JSON 请求正文的一部分使用。
+最后，**encodeToJson** 将相应的模型对象转换为 JSON，以用作请求正文的一部分。
 
 ### <a name="invoke-the-notification-hubs-rest-api"></a>调用通知中心 REST API
 
-正在更新的最后一步**AppDelegate**若要使用**NotificationRegistrationService**注册我们**NotificationHub**。
+最后一步是将 **AppDelegate** 更新为使用 **NotificationRegistrationService** 向**通知中心**注册。
 
-1. 打开**AppDelegate.swift**并添加类级别变量来存储对引用**NotificationRegistrationService**:
+1. 打开 **AppDelegate.swift**，添加一个类级变量用于存储对 **NotificationRegistrationService** 的引用：
 
     ```swift
     var registrationService : NotificationRegistrationService?
     ```
 
-1. 在同一文件中，更新**didRegisterForRemoteNotificationsWithDeviceToken**函数来初始化**NotificationRegistrationService**必要参数，然后调用**注册**函数。
+1. 在同一文件中，将 **didRegisterForRemoteNotificationsWithDeviceToken** 函数更新为使用必要参数初始化 **NotificationRegistrationService**，然后调用 **register** 函数。
 
     ```swift
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -585,15 +587,15 @@ class NotificationRegistrationService {
 
     为简单起见，本文将使用几个 print 语句，以更新输出窗口并在其中提供 **register** 操作的结果。
 
-1. 现在生成并运行在物理设备上的应用程序。 应会看到输出窗口中的"已注册"。
+1. 现在请在物理设备上生成并运行应用。 应会在输出窗口中看到“Registered”。
 
 ## <a name="test-the-solution"></a>测试解决方案
 
-注册我们的应用程序在此阶段**NotificationHub** ，并且可以接收推送通知。 在 Xcode 中，停止调试器并关闭应用程序，如果当前正在运行。 接下来，检查**设备安装**按预期方式的详细信息和我们的应用程序现在可以接收推送通知。  
+在此阶段，我们的应用已注册到**通知中心**，并可以接收推送通知。 在 Xcode 中，停止调试器并关闭应用（如果它当前正在运行）。 接下来，检查“设备安装”详细信息是否符合预期，以及应用现在是否可以接收推送通知。  
 
 ### <a name="verify-the-device-installation"></a>验证设备安装
 
-通过使用像以前一样，现在可以通过相同的请求**Postman**有关[验证 SAS 令牌](#verify-the-sas-token)。 假设 SAS 令牌未过期，响应中应该现在包含提供，如模板和标记的安装详细信息。
+现在，可以发出前面在使用 **Postman** [验证 SAS 令牌](#verify-the-sas-token)时所用的相同请求。 假设 SAS 令牌尚未过期，则响应现在应该包含提供的安装详细信息，例如模板和标记。
 
 ```json
 {
@@ -618,37 +620,37 @@ class NotificationRegistrationService {
 
 ### <a name="send-a-test-notification-azure-portal"></a>发送测试通知（Azure 门户）
 
-测试，现在可以接收通知的最快方法是浏览到 Azure 门户中的通知中心：
+测试现在是否可以接收通知的最快方法是在“Azure 门户”中浏览到通知中心：
 
-1. 在 Azure 门户中，浏览到**概述**通知中心上的选项卡。
+1. 在 Azure 门户中，浏览到通知中心上的“概述”选项卡。
 
-1. 选择**测试发送**，该值高于**Essentials**在门户窗口左上方摘要：
+1. 选择门户窗口左上方“概要”摘要上面的“测试发送”：
 
     ![通知中心 -“概要”摘要 -“测试发送”按钮](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials-test-send.png)
 
-1. 选择**自定义模板**从**平台**列表。
+1. 从“平台”列表中选择“自定义模板”。
 
-1. 输入**12345**有关**发送到标记表达式**。 之前已在我们的安装中指定此标记。
+1. 在“发送到标记表达式”中输入 **12345**。 前面已在安装中指定此标记。
 
-1. 根据需要编辑**消息**JSON 有效负载中：
+1. （可选）编辑 JSON 有效负载中的**消息**：
 
     ![通知中心 - 测试发送](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send.png)
 
-1. 选择“发送”。  在门户应指示是否已成功将通知发送到设备：
+1. 选择“发送”。 门户应会指示是否已成功将通知发送到设备：
 
     ![通知中心 - 测试发送结果](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send-result.png)
 
-    假设应用程序不在前台运行，您还会看到通知**通知中心**在设备上。 点击此通知应打开应用并显示警报。
+    假设应用不是在前台运行，设备上的“通知中心”内也应会显示一条通知。 点击该通知会打开应用并显示警报。
 
     ![已收到通知的示例](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/test-send-notification-received.png)
 
-### <a name="send-a-test-notification-mail-carrier"></a>发送测试通知 （邮件运营商）
+### <a name="send-a-test-notification-mail-carrier"></a>发送测试通知（邮件运营商）
 
-您可以通过发送通知[REST API](/rest/api/notificationhubs/)通过使用**Postman**，这可能会更方便的方式来测试。
+您可以通过使用**Postman**发送[REST API](/rest/api/notificationhubs/)通知，这可能是一种更方便的测试方法。
 
-1. 打开新选项卡中的**Postman**。
+1. 在“Postman”中打开一个新的选项卡。
 
-1. 将请求设置为**POST**，并输入以下地址：
+1. 将请求设置为 **POST** 并输入以下地址：
 
     ```xml
     https://<namespace>.servicebus.windows.net/<hubName>/messages/?api-version=2015-01
@@ -656,14 +658,14 @@ class NotificationRegistrationService {
 
 1. 按如下所示配置请求标头：
 
-   | 密钥                            | 值                          |
+   | Key                            | ReplTest1                          |
    | ------------------------------ | ------------------------------ |
    | Content-Type                   | application/json;charset=utf-8 |
    | Authorization                  | \<sasToken>                     |
-   | ServiceBusNotification-Format  | template                       |
-   | 标记                           | "12345"                        |
+   | ServiceBusNotification-Format  | 模板                       |
+   | Tags                           | "12345"                        |
 
-1. 将请求**正文**配置为使用包含以下 JSON 有效负载的“RAW - JSON (application.json)”： 
+1. 将请求**正文**配置为使用包含以下 JSON 有效负载的“RAW - JSON (application.json)”：
 
     ```json
     {
@@ -671,7 +673,7 @@ class NotificationRegistrationService {
     }
     ```
 
-1. 选择**代码**按钮，低于**保存**窗口的右上方上的按钮。 请求应类似于下面的示例所示：
+1. 选择窗口右上方“保存”按钮下面的“代码”按钮。 请求应类似于以下示例：
 
     ```html
     POST /<hubName>/messages/?api-version=2015-01 HTTP/1.1
@@ -693,17 +695,17 @@ class NotificationRegistrationService {
 随后你应会收到一个成功状态代码，而客户端设备上会收到通知。
 
 ## <a name="next-steps"></a>后续步骤
-现可连接到通过通知中心的基本的 iOS Swift 应用程序[REST API](/rest/api/notificationhubs/)和可以发送和接收通知。 有关详细信息，请参阅以下文章：
+现在，已通过[REST API](/rest/api/notificationhubs/)将基本的 iOS Swift 应用连接到通知中心，并可以发送和接收通知。 有关详细信息，请参阅以下文章：
 
 - [Azure 通知中心概述](notification-hubs-push-notification-overview.md)
 - [通知中心 REST API](/rest/api/notificationhubs/)
-- [后端操作的的通知中心 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
+- [用于后端操作的通知中心 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
 - [GitHub 上的通知中心 SDK](https://github.com/Azure/azure-notificationhubs)
-- [向应用程序后端注册](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
+- [使用应用程序后端注册](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
 - [注册管理](notification-hubs-push-notification-registration-management.md)
 - [使用标记](notification-hubs-tags-segment-push-message.md) 
 - [使用自定义模板](notification-hubs-templates-cross-platform-push-messages.md)
-- [使用共享的访问签名进行服务总线访问控制](../service-bus-messaging/service-bus-sas.md)
+- [使用共享访问签名进行服务总线访问控制](../service-bus-messaging/service-bus-sas.md)
 - [以编程方式生成 SAS 令牌](/rest/api/eventhub/generate-sas-token)
 - [Apple 安全性：通用加密](https://developer.apple.com/security/)
 - [UNIX 纪元时间](https://en.wikipedia.org/wiki/Unix_time)

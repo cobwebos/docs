@@ -3,9 +3,9 @@ title: Azure 通知中心富推送
 description: 了解如何从 Azure 将富推送通知发送到 iOS 应用。 代码示例是使用 .Objective-C 和 C# 编写的。
 documentationcenter: ios
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 590304df-c0a4-46c5-8ef5-6a6486bb3340
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 7fcb4a1db62abfc04d2b0c60488d35393d98c57e
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348472"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212195"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure 通知中心富推送
 
@@ -135,7 +137,7 @@ ms.locfileid: "68348472"
     }
     ```
 8. 现在，我们将此应用重新部署到 Azure 网站，以便可以从所有设备对其进行访问。 右键单击 **AppBackend** 项目，并选择“发布”。
-9. 选择 Azure 网站作为发布目标。 使用 Azure 帐户登录，选择现有或新的网站，并记下“连接”选项卡中的**目标 URL** 属性。在本教程后面的部分中，会将此 URL 称为“后端终结点”。 单击“发布” 。
+9. 选择 Azure 网站作为发布目标。 使用 Azure 帐户登录，选择现有或新的网站，并记下“连接”选项卡中的**目标 URL** 属性。在本教程后面的部分中，会将此 URL 称为“后端终结点”。 单击“发布”。
 
 ## <a name="modify-the-ios-project"></a>修改 iOS 项目
 
@@ -373,7 +375,7 @@ ms.locfileid: "68348472"
 
 1. 在 XCode 中，在物理 iOS 设备上运行此应用（推送通知将无法在模拟器中正常工作）。
 2. 在 iOS 应用 UI 中，输入相同值的用户名和密码进行身份验证，并单击“登录”。
-3. 单击“发送推送”，应看到应用内警报。 如果单击“详细信息” ，则会转到你选择要包括在应用后端中的图像。
+3. 单击“发送推送”，应看到应用内警报。 如果单击“详细信息”，则会转到你选择要包括在应用后端中的图像。
 4. 也可以单击“发送推送”并立即按下设备的主页按钮。 几分钟后会收到推送通知。 如果点击推送通知或单击“详细信息”，则会转到你的应用和富图像内容。
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3140aff93c9afcf9a911fe1f381859ff93efef14
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: beb9e1344f5dd3bf4b3c3d293e38a7a28170771c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178359"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212001"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -215,7 +215,7 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 |East US        |LRS     |否    |尚不支持|
 |法国中部 |LRS、ZRS|否    |LRS-是，ZRS-尚未|
 |法国南部   |LRS     |否    |是|
-|北欧   |LRS     |否    |是|
+|北欧   |LRS     |否    |尚不支持|
 |印度南部    |LRS     |否    |尚不支持|
 |东南亚 |LRS、ZRS|否    |是|
 |美国中西部|LRS     |否    |尚不支持|

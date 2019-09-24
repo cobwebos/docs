@@ -217,6 +217,8 @@
               href: ./hdinsight-release-notes.md
             - name: HDInsight 3.6 完整发行说明
               href: ./hdinsight-release-notes-archive.md
+        - name: 常见问题解答
+          href: ./hdinsight-faq.md
         - name: 迁移到群集配置的基于角色的细化访问权限
           href: ./hdinsight-migrate-granular-access-cluster-configurations.md
         - name: 有关在 Linux 上使用 HDInsight 的信息

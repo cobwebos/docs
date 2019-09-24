@@ -5,14 +5,14 @@ metadata:
   title: Azure 通知中心文档 - 教程和 API 参考 | Microsoft 文档
   description: 了解如何使用通知中心从任何后端向任何移动设备发送推送通知。 教程、API 参考和其他文档。
   services: notification-hubs
-  author: spelluru
-  manager: null
+  author: sethmanheim
+  manager: femila
   ms.service: notification-hubs
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 03/01/2017
-  ms.author: spelluru
+  ms.author: sethm
 abstract:
   description: 了解如何使用通知中心（一种多平台可缩放的推送通知引擎）向各类设备（Android、iOS、Windows、Windows Phone）上运行的应用程序快速发送数百万条消息。 <p>教程、API 参考和其他文档介绍了如何设置推送通知以及将其从任何后端发送到任何移动设备。</p>
   aside:

@@ -1,5 +1,5 @@
 ---
-title: 如何监视 Azure 存储帐户 | Microsoft 文档
+title: 如何监视 Azure 门户中的 Azure 存储帐户 |Microsoft Docs
 description: 了解如何使用 Azure 门户在 Azure 中监视存储帐户。
 author: normesta
 ms.service: storage
@@ -8,16 +8,18 @@ ms.date: 07/31/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 912c1c3403191f40dac054f99f29ac60ba84ce8f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844914"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211848"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
-[Azure 存储分析](storage-analytics.md)提供所有存储服务的指标，以及 Blob、队列和表的日志。 可以使用 [Azure 门户](https://portal.azure.com)来配置要为帐户记录哪些指标和日志，并配置图表来提供指标数据的可视表示形式。
+[Azure 存储分析](storage-analytics.md)提供所有存储服务的指标，以及 Blob、队列和表的日志。 可以使用 [Azure 门户](https://portal.azure.com)来配置要为帐户记录哪些指标和日志，并配置图表来提供指标数据的可视表示形式。 
+
+建议查看存储（预览版） [Azure Monitor](../../azure-monitor/insights/storage-insights-overview.md) 。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 它不要求你启用或配置任何内容，你可以立即从预定义的交互式图表和包含的其他可视化效果中查看这些度量值。
 
 > [!NOTE]
 > 在 Azure 门户中检查监视数据会产生相关的费用。 有关详细信息，请参阅[存储分析](storage-analytics.md)。

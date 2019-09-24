@@ -3,9 +3,9 @@ title: 通知中心 - 企业推送架构
 description: 有关在企业环境中使用 Azure 通知中心的指南
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 903023e9-9347-442a-924b-663af85e05c6
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,19 +13,21 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 938801148b175456553865b54d59271021811401
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 5b65fe6acb1fdf7ba79b106c876527c9b6736c5f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60873292"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211903"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
 
 当今企业正在逐渐趋向为其最终用户（外部）或员工（内部）创建移动应用程序。 它们已经拥有现成的后端系统，无论是大型机还是一些 LoB 应用程序都必须集成到移动应用程序体系结构中。 本指南介绍如何最好地实现此集成，并针对常见场景建议可能的解决方案。
 
-一个常见需求是在后端系统中发生了用户感兴趣的事件时，通过其移动应用程序向用户发送推送通知。 例如，在 iPhone 具有银行应用的银行客户想要时借方一定从该帐户或在 intranet 方案中，在 Windows Phone 上具有了预算审批应用的财务部门员工希望收到通知 若要接收审批请求时通知你。
+一个常见需求是在后端系统中发生了用户感兴趣的事件时，通过其移动应用程序向用户发送推送通知。 例如，在 iPhone 上拥有银行银行应用的银行客户希望在某一额度超出某个数量时收到通知，或者在 Windows Phone 某个企业中具有预算审批应用的财务部门的员工需要 在收到审批请求时获得通知。
 
 银行帐户或审批处理很可能要在某个后端系统中完成，该系统必须启动到用户的推送。 可能有多个此类后端系统，所有这些系统在事件触发通知时都必须生成同样的逻辑来进行推送。 此处的复杂性在于将多个后端系统与单个推送系统集成在一起，在此系统中，最终用户可能已订阅不同的通知，甚至可能存在多个移动应用程序。 例如，对于 Intranet 移动应用来说，一个移动应用程序可能需要从多个此类后端系统接收通知。 后端系统不知道或不需要知道推送语义/技术，因此常见的解决方案是引入一个组件，该组件轮询后端系统是否存在任何相关事件并负责将推送消息发送到客户端。
 
@@ -54,22 +56,22 @@ ms.locfileid: "60873292"
 1. 接收方（通过通知中心的移动应用/服务）和发送方（后端系统）之间的这种解耦使得只需要最小的更改即可集成其他后端系统。
 1. 这还使得采用多个移动应用的方案能够从一个或多个后端系统接收事件。  
 
-## <a name="sample"></a>示例
+## <a name="sample"></a>样本
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 完成以下教程，熟悉相关概念以及常见的创建和配置步骤：
 
 1. [服务总线 Pub/Sub 编程] - 此教程说明了使用服务总线主题/订阅的详细信息、如何创建命名空间以包含主题/订阅、如何通过它们发送和接收消息。
 2. [通知中心 - Windows 通用教程] - 此教程说明了如何设置 Windows 应用商店应用以及如何使用通知中心注册，并接收通知。
 
-### <a name="sample-code"></a>代码示例
+### <a name="sample-code"></a>示例代码
 
 完整的示例代码可在[通知中心示例]中找到。 它分为三个组件：
 
 1. **EnterprisePushBackendSystem**
 
-    a. 此项目使用 WindowsAzure.ServiceBus NuGet 包，并基于[服务总线 Pub/Sub 编程]构建  。
+    a. 此项目使用 WindowsAzure.ServiceBus NuGet 包，并基于[服务总线 Pub/Sub 编程]构建。
 
     b. 此应用程序是一个简单的 C# 控制台应用，可模拟启动要传送到移动应用的消息的 LoB 系统。
 
@@ -138,7 +140,7 @@ ms.locfileid: "60873292"
     ```
 2. **ReceiveAndSendNotification**
 
-    a. 此项目使用 WindowsAzure.ServiceBus 和 Microsoft.Web.WebJobs.Publish NuGet 包，并基于[服务总线 Pub/Sub 编程]构建   。
+    a. 此项目使用 WindowsAzure.ServiceBus 和 Microsoft.Web.WebJobs.Publish NuGet 包，并基于[服务总线 Pub/Sub 编程]构建。
 
     b. 以下控制台应用作为 [Azure WebJob] 运行，因为它必须连续运行以侦听来自 LoB/后端系统的消息。 此应用程序是移动后端的一部分。
 
@@ -224,11 +226,11 @@ ms.locfileid: "60873292"
     }
     ```
 
-    e. 要将此应用发布为 WebJob，请右键单击 Visual Studio 中的解决方案，然后选择“发布为 WebJob”  
+    e. 要将此应用发布为 WebJob，请右键单击 Visual Studio 中的解决方案，然后选择“发布为 WebJob”
 
     ![][2]
 
-    f. 选择发布配置文件并创建新的 Azure 网站（如果它尚未存在），该网站会托管此 WebJob，拥有该网站后，单击“发布”  。
+    f. 选择发布配置文件并创建新的 Azure 网站（如果它尚未存在），该网站会托管此 WebJob，拥有该网站后，单击“发布”。
 
     ![][3]
 
@@ -265,8 +267,8 @@ ms.locfileid: "60873292"
 ### <a name="running-the-sample"></a>运行示例
 
 1. 确保 WebJob 成功运行并且计划为“连续运行”。
-2. 运行**EnterprisePushMobileApp**，从而启动 Windows 应用商店应用程序。
-3. 运行 EnterprisePushBackendSystem 控制台应用程序，这可模拟 LoB 后端并开始发送消息，应该出现如下图所示的 toast 通知  ：
+2. 运行**EnterprisePushMobileApp**，这会启动 Windows 应用商店应用。
+3. 运行 EnterprisePushBackendSystem 控制台应用程序，这可模拟 LoB 后端并开始发送消息，应该出现如下图所示的 toast 通知：
 
     ![][5]
 

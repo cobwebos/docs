@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 4/11/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e56301e98ca773369631e2f7ae137c63d0b9ddef
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9f90f373bd6f1cfd34de1605783bf3a7f0185f4c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613318"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240342"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
@@ -197,6 +197,7 @@ ms.locfileid: "67613318"
 |942270|正在查找基本 sql 注入。 针对 mysql oracle 和其他系统的常见攻击字符串。|
 |942290|查找基本 MongoDB SQL 注入企图|
 |942300|检测到 MySQL 注释、条件和 ch(a)r 注入|
+|942310|检测链接的 SQL 注入尝试2/2|
 |942320|检测 MySQL 和 PostgreSQL 存储过程/函数注入|
 |942330|检测到经典 SQL 注入探测 1/2|
 |942340|检测到基本 SQL 身份验证绕过尝试 3/3|

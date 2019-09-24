@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Sentinel Preview 时有用的资源 |Microsoft Docs
+title: 使用 Azure Sentinel 时有用的资源 |Microsoft Docs
 description: 本文档提供使用 Azure Sentinel 时可用资源的列表。
 services: sentinel
 documentationcenter: na
@@ -13,27 +13,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/14/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 138efd7cba80e288c4f8831b45272f4e46c8ee3f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 6634920b1efa3cd24267aca8bcf53587754caa66
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036234"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71239983"
 ---
-# <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>使用 Azure Sentinel Preview 的有用资源
+# <a name="useful-resources-for-working-with-azure-sentinel"></a>使用 Azure Sentinel 的有用资源
 
-> [!IMPORTANT]
-> Azure Sentinel 当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 本文列出了可帮助你获取有关使用 Azure Sentinel 的详细信息的资源。
 
-Azure 逻辑应用连接器:<https://docs.microsoft.com/connectors/>
+Azure 逻辑应用连接器：<https://docs.microsoft.com/connectors/>
+
+
+## <a name="auditing-and-reporting"></a>审核和报告
+Azure Sentinel 的审核日志保留在[Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)中。
+
 
 ## <a name="vendor-documentation"></a>供应商文档
-
 
 | **供应商**  | **在 Azure Sentinel 中使用事件** | **链接**|
 |----|----|----|
@@ -49,4 +51,4 @@ Azure 逻辑应用连接器:<https://docs.microsoft.com/connectors/>
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中, 你获得了在使用 Azure Sentinel 时非常有用的资源列表。 你会在[Microsoft Azure 安全和合规性博客](https://blogs.msdn.com/b/azuresecurity/)上找到有关 Azure 安全性和符合性的其他信息。
+在本文档中，你获得了在使用 Azure Sentinel 时非常有用的资源列表。 你会在[Microsoft Azure 安全和合规性博客](https://blogs.msdn.com/b/azuresecurity/)上找到有关 Azure 安全性和符合性的其他信息。

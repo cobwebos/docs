@@ -9,14 +9,14 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: aa6bee9cceffc0252dd39d85ebe9d70625e33419
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 6278b16221072b9b5bca371007296806454ba197
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036409"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212422"
 ---
-# <a name="store-business-critical-data-in-azure-blob-storage"></a>在 Azure Blob 存储中存储业务关键型数据
+# <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>将业务关键数据存储在 Azure Blob 存储 immutably 中 
 
 Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次读取）状态存储业务关键型数据对象。 此状态可以根据用户指定的时间间隔使数据保持不可擦除且不可修改的状态。 在保留时间间隔期间，可以创建和读取，但不能修改或删除 Blob 对象。 所有 Azure 区域都为常规用途 v2 和 Blob 存储帐户启用了不可变存储。
 
@@ -81,7 +81,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 |Blob 的有效保留时间间隔尚未到期，并且/或者法定保留已设置     |不可变：不可删除和写入         | 放置 Blob<sup>1</sup>、放置块<sup>1</sup>、放置块列表<sup>1</sup>、删除容器、删除 Blob、设置 Blob 元数据、放置页、设置 Blob 属性、快照 Blob、增量复制 Blob、追加块         |
 |Blob 的有效保留时间间隔尚未到期     |仅仅不可写入（允许删除操作）         |放置 Blob<sup>1</sup>、放置块<sup>1</sup>、放置块列表<sup>1</sup>、设置 Blob 元数据、放置页、设置 Blob 属性、快照 Blob、增量复制 Blob、追加块         |
 |清除了所有法定保留，未在容器上设置任何基于时间的保留策略     |可变         |无         |
-|未创建任何 WORM 策略（基于时间的保留或法定保留）     |可变         |None         |
+|未创建任何 WORM 策略（基于时间的保留或法定保留）     |可变         |无         |
 
 <sup>1</sup> 应用程序允许这些操作创建新的 Blob 一次。 不允许针对不可变容器中的现有 Blob 路径执行任何后续覆盖操作。
 
@@ -93,7 +93,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 - 对于容器而言，为了延长锁定的基于时间的不可变策略的保留时间间隔而可执行的最大编辑次数为 5。
 - 对于容器而言，将针对锁定策略最多保留 7 个基于时间的保留策略审核日志。
 
-### <a name="legal-hold"></a>法定保留
+### <a name="legal-hold"></a>依法保留
 - 对于某个存储帐户而言，使用法定保留设置的最大容器数为 1,000。
 - 对于某个容器而言，最大法定保留标记数为 10。
 - 法定保留标记的最小长度为 3 个字母数字字符。 最大长度为 23 个字母数字字符。

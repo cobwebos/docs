@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4bbe9d9bfaf49fe93631787b347a3446e4b0f817
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: cca4f794fd3f84b991c7882307f74bcfadf6835b
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000585"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241055"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 
@@ -196,7 +196,7 @@ Key Vault 不支持“导出”操作。 在系统中设置密钥后，便无法
 
 ###  <a name="key-access-control"></a>密钥访问控制
 
-Key Vault 托管的密钥的访问控制是在充当密钥容器的 Key Vault 级别提供的。 在同一 Key Vault 中，密钥的访问控制策略不同于机密的访问控制策略。 用户可以创建一个或多个保管库来保存密钥，并且需要维护方案相应的密钥分段和管理。 密钥的访问控制与机密的访问控制无关。  
+Key Vault 托管的密钥的访问控制是在充当密钥容器的 Key Vault 级别提供的。 密钥的访问控制策略不同于同一 Key Vault 中机密的访问控制策略。 用户可以创建一个或多个保管库来保存密钥，并且需要维护方案相应的密钥分段和管理。 密钥的访问控制与机密的访问控制无关。  
 
 在保管库上的密钥访问控制条目中可以按用户/服务主体授予以下权限。 这些权限会密切镜像对密钥对象允许的操作。  向密钥保管库中的服务主体授予访问权限是一项一次性操作，对于所有 Azure 订阅，它将保持不变。 可以使用它部署所需的任意数量的证书。 
 

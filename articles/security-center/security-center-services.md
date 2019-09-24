@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2019
+ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 97708fa3211aa203aab56253b1c7720d04329014
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200811"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218255"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure 安全中心提供支持的功能
 
@@ -41,7 +41,7 @@ ms.locfileid: "71200811"
 ||**虚拟机**|**虚拟机规模集**||**虚拟机**|**虚拟机规模集**|
 |VMBA 威胁检测警报|✔|✔|✔|✔（在支持的版本上）|✔（在支持的版本上）|✔|建议 (免费) 威胁检测 (标准)|
 |基于网络的威胁检测警报|✔|✔|X|✔|✔|X|标准|
-|Windows Defender ATP 集成|✔（在支持的版本上）|✔（在支持的版本上）|✔|X|X|X|标准|
+|Microsoft Defender ATP 集成|✔（在支持的版本上）|✔（在支持的版本上）|✔|X|X|X|标准|
 |允许缺失修补程序|✔|✔|✔|✔|✔|✔|免费|
 |安全配置|✔|✔|✔|✔|✔|✔|免费|
 |Endpoint protection 评估|✔|✔|✔|X|X|X|免费|

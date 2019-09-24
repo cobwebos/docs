@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: ecd1212385473e33d05f38f67db5708bff060daa
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035297"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218239"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 
@@ -147,7 +147,8 @@ datastore.download(target_path='your target path',
 <a name="train"></a>
 ## <a name="access-your-data-during-training"></a>在定型过程中访问数据
 
-若要在训练过程中访问数据，可以通过数据存储将数据从 Azure 存储服务下载或装载到计算目标。
+> [!IMPORTANT]
+> 使用[Azure 机器学习数据集（预览版）](how-to-create-register-datasets.md)是在训练中访问数据的新建议方法。 数据集提供了将表格数据加载到 pandas 或 spark 数据帧的函数，以及从 Azure Blob、Azure 文件、Azure Data Lake 第1代、Azure Data Lake 第2代、Azure SQL、Azure PostgreSQL 下载任何格式的文件的功能。 详细了解[如何对数据集进行训练](how-to-train-with-datasets.md)。
 
 下表列出了一些方法，这些方法告诉计算目标如何在运行期间使用数据存储。 
 

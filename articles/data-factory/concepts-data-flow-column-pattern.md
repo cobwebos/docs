@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 41037e0687274d123bea742cee5cf2887548aa0f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 4df831c1329ab13f19e6ecf979e404d4a90e5f72
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775210"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219760"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>映射数据流列模式
 
@@ -42,11 +42,11 @@ ms.locfileid: "68775210"
 ![列位置](media/data-flow/position.png "列位置")
 
 ## <a name="rule-based-mapping"></a>基于规则的映射
-映射源中的列并选择转换时, 可以选择 "固定映射" 或 "基于规则的映射"。 如果你知道数据的架构, 并且期望源数据集中始终匹配特定静态名称的特定列, 则可以使用固定映射。 但在使用灵活的架构时, 请使用基于规则的映射。 你将能够使用上述规则构建模式匹配。
+映射源中的列并选择转换时，可以选择 "固定映射" 或 "基于规则的映射"。 如果你知道数据的架构，并且期望源数据集中始终匹配特定静态名称的特定列，则可以使用固定映射。 但在使用灵活的架构时，请使用基于规则的映射。 你将能够使用上述规则构建模式匹配。
 
 ![基于规则的映射](media/data-flow/rule2.png "基于规则的映射")
 
-使用 "表达式生成器" 生成规则。 表达式将返回一个布尔值, 以匹配列 (true) 或排除列 (false)。
+使用 "表达式生成器" 生成规则。 表达式将返回一个布尔值，以匹配列（true）或排除列（false）。
 
 ## <a name="pattern-matching-special-columns"></a>匹配特殊列的模式
 
@@ -57,5 +57,5 @@ ms.locfileid: "68775210"
 * `position`是数据流中列的序号位置
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关数据转换的 ADF 映射数据流[表达式语言](http://aka.ms/dataflowexpressions)的详细信息
-* 在[接收器转换](data-flow-sink.md)中使用列模式, 并使用基于规则的映射[选择转换](data-flow-select.md)
+* 了解有关数据转换的 ADF 映射数据流[表达式语言](https://aka.ms/dataflowexpressions)的详细信息
+* 在[接收器转换](data-flow-sink.md)中使用列模式，并使用基于规则的映射[选择转换](data-flow-select.md)

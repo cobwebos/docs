@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 447aa4f5bb3c274900beddcef8c89db88d3f3ee9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: fe4317c193e8aa6c6723556ef36d6111df6f51cd
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688047"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240852"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>排除“在空闲时间启动/停止 VM”解决方案的故障
 
@@ -44,6 +44,14 @@ The subscription is not registered to use namespace 'Microsoft.Insights'.
 The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
 ```
 
+```error
+A parameter cannot be found that matches parameter name 'TagName'
+```
+
+```error
+Start-AzureRmVm : Run Login-AzureRmAccount to login
+```
+
 ### <a name="cause"></a>原因
 
 部署可能会因以下原因之一失败：
@@ -52,8 +60,9 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 2. 存在禁止部署启动/停止 VM 解决方案的策略。
 3. `Microsoft.OperationsManagement`、`Microsoft.Insights` 或 `Microsoft.Automation` 资源类型未注册。
 4. Log Analytics 工作区对其进行锁定。
+5. 你的 AzureRM 模块或启动/停止解决方案版本已过时。
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 请查看以下可能问题解决方案列表或要检查的地方：
 
@@ -66,6 +75,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
    若要详细了解注册提供程序时出现的错误，请参阅[解决资源提供程序注册错误](../../azure-resource-manager/resource-manager-register-provider-errors.md)。
 4. 如果 Log Analytics 工作区中存在锁定，请转到 Azure 门户中的工作区并删除对资源的任何锁定。
+5. 如果上述解决方法不能解决问题，请按照[更新解决方案](../automation-solution-vm-management.md#update-the-solution)中的说明来重新部署启动/停止解决方案。
 
 ## <a name="all-vms-fail-to-startstop"></a>场景：所有 VM 都无法启动/停止
 
@@ -82,7 +92,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 3. runbook 可能遇到错误
 4. 可能已排除 VM
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 请查看以下可能问题解决方案列表或要检查的地方：
 
@@ -123,7 +133,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 3. RunAs 帐户对 VM 的权限可能不足
 4. 可能有一些 VM 设置阻止它启动或停止
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 请查看以下可能问题解决方案列表或要检查的地方：
 
@@ -141,7 +151,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
 * 自动化帐户的 RunAs 帐户必须对 VM 拥有适当权限，才能启动和停止 VM。 若要了解如何检查对资源的权限，请参阅[快速入门：使用 Azure 门户查看分配给用户的角色](../../role-based-access-control/check-access.md)。 需要提供 RunAs 帐户使用的服务主体的应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”下的“RunAs 帐户”，再单击相应的 RunAs 帐户。
 
-* 如果 VM 无法启动或解除分配，此行为可能是由 VM 本身问题所致。 一些示例或潜在问题包括，正在尝试关闭、服务挂起等情况下应用更新。 请转到 VM 资源，并检查“活动日志”，以确定日志中是否有任何错误。 也可以尝试登录 VM，以确定“事件日志”中是否有任何错误。 若要详细了解如何对 VM 进行故障排除, 请参阅[Azure 虚拟机故障排除](../../virtual-machines/troubleshooting/index.md)
+* 如果 VM 无法启动或解除分配，此行为可能是由 VM 本身问题所致。 一些示例或潜在问题包括，正在尝试关闭、服务挂起等情况下应用更新。 请转到 VM 资源，并检查“活动日志”，以确定日志中是否有任何错误。 也可以尝试登录 VM，以确定“事件日志”中是否有任何错误。 若要详细了解如何对 VM 进行故障排除，请参阅[Azure 虚拟机故障排除](../../virtual-machines/troubleshooting/index.md)
 
 * 检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找是否有任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。
 
@@ -155,7 +165,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
 导致此故障出现的原因可能有很多种。 在 Azure 门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。 在“作业”页上，查找 runbook 中的作业，以确定是否有任何失败的作业。
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 建议使用[“在空闲时间启动/停止 VM”解决方案](../automation-solution-vm-management.md)，在 Azure 自动化中启动和停止 VM。 此解决方案由 Microsoft 创作。 Microsoft 不支持自定义 runbook。 若要查找适用于自定义 runbook 的解决方案，可以参阅 [runbook 故障排除](runbooks.md)一文。 这篇文章介绍了所有类型 runbook 的一般指导和故障排除。 检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找是否有任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。
 
@@ -169,7 +179,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
 这是由于 VM 上的标记不正确所致。
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 请按照以下步骤操作，以确保正确配置解决方案。
 
@@ -189,7 +199,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
 此问题可能是由于 RunAs 帐户未正确配置或已过期所致。 也可能是因为自动化帐户 RunAs 帐户对 VM 资源的权限不足。
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
 若要检查 RunAs 帐户是否已正确配置，请在 Azure 门户中转到“自动化帐户”，并选择“帐户设置”下的“RunAs 帐户”。 其中显示 RunAs 帐户的状态，如果 RunAs 帐户未正确配置或已过期，状态会体现出这一点。
 
@@ -210,11 +220,11 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 很多时候，错误可能是由于使用的解决方案过旧和过时所致。
 
 > [!NOTE]
-> 在非工作时间启动/停止 Vm 解决方案已在部署解决方案时通过导入到自动化帐户中的 Azure 模块进行了测试。 此解决方案当前不适用于 Azure 模块的更新版本。 这只会影响在非工作时间运行启动/停止 Vm 的解决方案时所使用的自动化帐户。 你仍可以在其他自动化帐户中使用较新版本的 Azure 模块, 如[如何在 Azure 自动化中更新 Azure PowerShell 模块](../automation-update-azure-modules.md)中所述。
+> 在部署解决方案时，已通过导入到自动化帐户中的 Azure 模块对在空闲时间启动/停止 VM 解决方案进行了测试。 此解决方案当前不适用于 Azure 模块的更新版本。 这只会影响用于运行在空闲时间启动/停止 VM 解决方案的自动化帐户。 你仍可以在其他自动化帐户中使用较新版本的 Azure 模块，如[如何在 Azure 自动化中更新 Azure PowerShell 模块](../automation-update-azure-modules.md)中所述。
 
-### <a name="resolution"></a>解决
+### <a name="resolution"></a>分辨率
 
-若要修复许多错误，建议删除并更新解决方案。 若要了解如何更新解决方案，请参阅[更新“在空闲时间启动/停止 VM”解决方案](../automation-solution-vm-management.md#update-the-solution)。 此外, 还可以检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。
+若要修复许多错误，建议删除并更新解决方案。 若要了解如何更新解决方案，请参阅[更新“在空闲时间启动/停止 VM”解决方案](../automation-solution-vm-management.md#update-the-solution)。 此外，还可以检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。
 
 ## <a name="next-steps"></a>后续步骤
 

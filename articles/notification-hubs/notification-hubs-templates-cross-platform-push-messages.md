@@ -3,9 +3,9 @@ title: 模板
 description: 本主题介绍 Azure 通知中心的模板。
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 02473eb5649c7d201b6a54fd57faea997c1a21cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 54c53fee260062960d6bce9c1822971c935d88d1
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60872068"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212987"
 ---
 # <a name="templates"></a>模板
 
@@ -143,7 +145,7 @@ Windows 应用商店客户端应用的相应模板为：
 
 表达式可以采用上述任一格式。
 
-使用连接时，必须使用 `{}` 括住整个表达式。 例如，`{$(prop) + ‘ - ’ + $(prop2)}`。
+使用连接时，必须使用 `{}` 括住整个表达式。 例如， `{$(prop) + ‘ - ’ + $(prop2)}` 。
 
 例如，以下模板不是有效的 XML 模板：
 

@@ -1,23 +1,25 @@
 ---
-title: 导出和导入大容量中的 Azure 通知中心注册 |Microsoft Docs
+title: 批量导出和导入 Azure 通知中心注册 |Microsoft Docs
 description: 了解如何使用通知中心批量操作支持针对通知中心执行大量操作或导出所有注册。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: jowargo
-ms.openlocfilehash: d7e38e8eca58c06fc6896887522b320a797fc42e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575295"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212395"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>批量导出和导入 Azure 通知中心注册
 在某些情况下，我们需要在通知中心创建或修改大量的注册。 其中的某些情况是先进行标记更新，再进行批量计算，或者迁移现有的推送实施方案以使用通知中心。

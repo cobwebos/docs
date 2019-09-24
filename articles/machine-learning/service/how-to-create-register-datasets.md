@@ -11,20 +11,20 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: d2b9e53fc6c58f0477e252c751e25a99bdbfba42
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 7a6a2c35360f59c8c2e3d0a75e646ae76c0c9de2
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200102"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218298"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>在 Azure 机器学习中创建和访问数据集（预览）
 
 本文介绍如何创建 Azure 机器学习数据集（预览版），以及如何从本地或远程试验访问数据。
 
-利用 Azure 机器学习数据集，您可以： 
+利用 Azure 机器学习数据集，您可以：
 
-* 在数据集引用的**存储中保留数据的单个副本**。 
+* 在数据集引用的**存储中保留数据的单个副本**。
 
 * **在模型训练过程中轻松访问数据**，无需担心连接字符串或数据路径。
 
@@ -45,7 +45,7 @@ ms.locfileid: "71200102"
 
 ## <a name="dataset-types"></a>数据集类型
 
-根据用户在定型中使用数据集的方式，将数据集分为两种类型。 
+根据用户在定型中使用数据集的方式，将数据集分为两种类型。
 
 * [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)通过分析提供的文件或文件列表，以表格格式表示数据。 这使你能够将数据具体化为 pandas 或 spark 数据帧。 可以通过 csv、tsv、parquet 文件、SQL 查询结果等来创建对象。`TabularDataset`有关完整列表，请访问我们的[文档](https://aka.ms/tabulardataset-api-reference)。
 
@@ -53,7 +53,7 @@ ms.locfileid: "71200102"
 
 若要了解有关即将发生的 API 更改的详细信息，请参阅[此处](https://aka.ms/tabular-dataset)。
 
-## <a name="create-datasets"></a>创建数据集 
+## <a name="create-datasets"></a>创建数据集
 
 通过创建数据集，可以创建对数据源位置的引用以及其元数据的副本。 数据会保留在其现有位置，因此不会产生额外的存储成本。
 
@@ -81,9 +81,9 @@ datastore = Datastore.get(workspace, datastore_name)
 
 ### <a name="create-tabulardatasets"></a>创建 TabularDatasets
 
-可以通过 SDK 或使用工作区登陆页面（预览版）创建 TabularDatasets。 可以从数据中的列指定时间戳，或将路径模式数据存储在中以启用 timeseries 特征，这允许按时间轻松有效地进行筛选。 
+可以通过 SDK 或使用工作区登陆页面（预览版）创建 TabularDatasets。 可以从数据中的列指定时间戳，或将路径模式数据存储在中以启用 timeseries 特征，这允许按时间轻松有效地进行筛选。
 
-#### <a name="using-the-sdk"></a>使用 SDK 
+#### <a name="using-the-sdk"></a>使用 SDK
 
 使用`TabularDatasetFactory`类[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-)的方法读取 csv 或 tsv 格式的文件，并创建未注册的 TabularDataset。 如果要从多个文件读取，结果将聚合为一个表格表示形式。
 
@@ -120,7 +120,7 @@ from azureml.core import Dataset, Datastore
 sql_datastore = Datastore.get(workspace, 'mssql')
 sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
 ```
-使用`TabularDataset`类[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)的方法可以按时间轻松有效地进行筛选。 可在[此处](http://aka.ms/azureml-tsd-notebook)找到更多示例和详细信息。 
+使用`TabularDataset`类[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)的方法可以按时间轻松有效地进行筛选。 可在[此处](https://aka.ms/azureml-tsd-notebook)找到更多示例和详细信息。
 
 ```Python
 # create a TabularDataset with timeseries trait
@@ -132,20 +132,20 @@ dataset = Dataset.Tabular.from_parquet_files(path=datastore_path, partition_form
 # set coarse timestamp to the virtual column created, and fine grain timestamp from a column in the data
 dataset = dataset.with_timestamp_columns(fine_grain_timestamp='datetime', coarse_grain_timestamp='coarse_time')
 
-# filter with timeseries trait specific methods 
+# filter with timeseries trait specific methods
 data_slice = dataset.time_before(datetime(2019, 1, 1))
 data_slice = dataset.time_after(datetime(2019, 1, 1))
-data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1)) 
-data_slice = dataset.time_recent(timedelta(weeks=1, days=1))                  
+data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1))
+data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 ```
 
-#### <a name="using-the-workspace-landing-page"></a>使用工作区登录页 
+#### <a name="using-the-workspace-landing-page"></a>使用工作区登录页
 
 登录到[工作区登录页](https://ml.azure.com)，通过 web 体验创建数据集。 目前，工作区登录页仅支持创建 TabularDatasets。
 
-以下动画演示了如何在工作区登录页中创建数据集。 
+以下动画演示了如何在工作区登录页中创建数据集。
 
-首先，在左窗格的 "**资产**" 部分中选择 "**数据集**"。 然后，选择 " **+ 创建数据集**"，选择数据集的源;这可以是本地文件、数据存储或公共 web url。 "**设置" 和 "预览**" 和 "**架构**" 窗体根据文件类型进行智能填充。 选择 "**下一步**" 以查看它们，或在创建之前进一步配置数据集。 选择 "**完成**" 以完成数据集创建。 
+首先，在左窗格的 "**资产**" 部分中选择 "**数据集**"。 然后，选择 " **+ 创建数据集**"，选择数据集的源;这可以是本地文件、数据存储或公共 web url。 "**设置" 和 "预览**" 和 "**架构**" 窗体根据文件类型进行智能填充。 选择 "**下一步**" 以查看它们，或在创建之前进一步配置数据集。 选择 "**完成**" 以完成数据集创建。
 
 ![使用 UI 创建数据集](media/how-to-create-register-datasets/create-dataset-ui.gif)
 
@@ -166,7 +166,7 @@ animal_ds = Dataset.File.from_files(path=datastore_paths)
 web_paths = [
             'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
-           ]          
+           ]
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
@@ -183,11 +183,11 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 ```
 
 >[!Note]
-> 通过工作区登陆页面创建的数据集将自动注册到工作区。 
+> 通过工作区登陆页面创建的数据集将自动注册到工作区。
 
 ## <a name="version-datasets"></a>版本数据集
 
-可以通过创建新的版本，将新的数据集注册到相同的名称。 数据集版本是将数据的状态做成书签的一种方式，因此可以应用特定版本的数据集进行试验或未来的复制。 考虑版本控制的典型方案： 
+可以通过创建新的版本，将新的数据集注册到相同的名称。 数据集版本是将数据的状态做成书签的一种方式，因此可以应用特定版本的数据集进行试验或未来的复制。 考虑版本控制的典型方案：
 * 新数据可用于重新训练。
 * 在应用不同的数据准备或功能设计方法时。
 
@@ -196,7 +196,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 web_paths = [
             'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'
-           ]          
+           ]
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_paths)
 
 # create a new version of titanic_ds

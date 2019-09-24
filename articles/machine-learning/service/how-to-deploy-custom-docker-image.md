@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 04d81f8e16a3f34f7abf15c9606833002fafb39c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a9992fbaa20b0137fd503992fc9efba11c2dfd3b
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034535"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213490"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基本映像部署模型
 
@@ -223,9 +223,9 @@ myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubunt
 
 ```python
 # Set the container registry information
-myenv.docker.base_image_repository.address = "myregistry.azurecr.io"
-myenv.docker.base_image_repository.username = "username"
-myenv.docker.base_image_repository.password = "password"
+myenv.docker.base_image_registry.address = "myregistry.azurecr.io"
+myenv.docker.base_image_registry.username = "username"
+myenv.docker.base_image_registry.password = "password"
 ```
 
 定义环境后，将其与[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)对象一起使用，以定义模型和 web 服务将在其中运行的推理环境。

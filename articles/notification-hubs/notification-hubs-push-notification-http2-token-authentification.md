@@ -3,22 +3,24 @@ title: Azure 通知中心中 APNS 的基于令牌的 (HTTP/2) 身份验证 | Mic
 description: 本主题说明如何利用 APNS 的新令牌身份验证
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/13/2019
-ms.author: jowargo
-ms.openlocfilehash: 890577c013a96fc06acf3b05881649ad8202a083
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 02/13/2019
+ms.openlocfilehash: a7fdaae33e28bd543b44c54868324339d1269bc2
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60872292"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213119"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS 的基于令牌的 (HTTP/2) 身份验证
 
@@ -76,13 +78,13 @@ ms.locfileid: "60872292"
 
 若要在门户中启用基于令牌的身份验证，请登录到 Azure 门户，转到通知中心 >“通知服务”> APNS 面板。
 
-有一项新属性 – 身份验证模式  。 选择令牌后可以更新中心的所有相关令牌属性。
+有一项新属性 – 身份验证模式。 选择令牌后可以更新中心的所有相关令牌属性。
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
 
 * 输入从 Apple 开发人员帐户检索到的属性
 * 选择应用程序模式（“生产”或“沙盒”）
-* 单击“保存”  按钮以更新 APNS 凭据
+* 单击“保存”按钮以更新 APNS 凭据
 
 ### <a name="configure-via-management-api-rest"></a>通过管理 API (REST) 进行配置
 

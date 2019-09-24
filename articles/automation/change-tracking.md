@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a681daa60503ff08320b25155e201ca0e7a4a001
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 2d6976e872223cbb66682b9a02ce343487bec35d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952993"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240275"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -24,7 +24,7 @@ ms.locfileid: "68952993"
 受监视服务器上的已安装软件、Windows 服务、Windows 注册表和文件以及 Linux 守护程序的更改会发送到云中的 Azure Monitor 服务进行处理。 逻辑应用于接收的数据，云服务则记录数据。 通过使用“更改跟踪”仪表板上的信息，可以轻松查看服务器基础结构中所做的更改。
 
 > [!NOTE]
-> Azure 自动化更改跟踪跟踪虚拟机中的更改。 若要跟踪 Azure 资源管理器属性更改, 请参阅 Azure 资源关系图的[更改历史记录](../governance/resource-graph/how-to/get-resource-changes.md)。
+> Azure 自动化更改跟踪跟踪虚拟机中的更改。 若要跟踪 Azure 资源管理器属性更改，请参阅 Azure 资源关系图的[更改历史记录](../governance/resource-graph/how-to/get-resource-changes.md)。
 
 ## <a name="supported-windows-operating-systems"></a>支持的 Windows 操作系统
 
@@ -71,21 +71,21 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 ### <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 
-Azure 安全中心添加了在 Azure 更改跟踪上构建的文件完整性监视 (FIM)。 虽然 FIM 仅监视文件和注册表, 但完整的更改跟踪解决方案还包括:
+Azure 安全中心添加了在 Azure 更改跟踪上构建的文件完整性监视（FIM）。 虽然 FIM 仅监视文件和注册表，但完整的更改跟踪解决方案还包括：
 
 - 软件更改
 - Windows 服务
 - Linux 守护程序
 
-如果已启用 FIM 并且要试用完整的更改跟踪解决方案, 则需要执行以下步骤。 此过程不会删除您的设置。
+如果已启用 FIM 并且要试用完整的更改跟踪解决方案，则需要执行以下步骤。 此过程不会删除您的设置。
 
 > [!NOTE]
-> 启用完整更改跟踪解决方案可能会产生额外费用, 有关详细信息, 请参阅[自动化定价](https://azure.microsoft.com/en-us/pricing/details/automation/)。
+> 启用完整更改跟踪解决方案可能会产生额外费用，有关详细信息，请参阅[自动化定价](https://azure.microsoft.com/en-us/pricing/details/automation/)。
 
-1. 通过导航到工作区并在[已安装的监视解决方案列表](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)中找到该解决方案, 删除该监视解决方案。
-2. 单击解决方案的名称以打开其 "摘要" 页, 然后单击 "删除", 如[删除监视解决方案](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)中所述。
-3. 导航到自动化帐户, 然后从 "**配置管理**" 下的 "资源" 菜单中选择 "**更改跟踪**", 重新启用解决方案。
-4. 确认你的工作区设置详细信息, 然后单击 "**启用**"。
+1. 通过导航到工作区并在[已安装的监视解决方案列表](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)中找到该解决方案，删除该监视解决方案。
+2. 单击解决方案的名称以打开其 "摘要" 页，然后单击 "删除"，如[删除监视解决方案](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)中所述。
+3. 导航到自动化帐户，然后从 "**配置管理**" 下的 "资源" 菜单中选择 "**更改跟踪**"，重新启用解决方案。
+4. 确认你的工作区设置详细信息，然后单击 "**启用**"。
 
 ### <a name="configure-linux-files-to-track"></a>配置要跟踪的 Linux 文件
 
@@ -176,7 +176,7 @@ Azure 安全中心添加了在 Azure 更改跟踪上构建的文件完整性监�
 更改跟踪解决方案当前遇到以下问题：
 
 * 没有在 Windows Server 2016 Core RS3 计算机上收集修补程序更新。
-* 即使没有更改, Linux 守护程序也可能会显示已更改的状态。 这是由捕获字段的`SvcRunLevels`方式引起的。
+* 即使没有更改，Linux 守护程序也可能会显示已更改的状态。 这是由捕获字段的`SvcRunLevels`方式引起的。
 
 ## <a name="change-tracking-data-collection-details"></a>更改跟踪数据收集详细信息
 
@@ -187,7 +187,7 @@ Azure 安全中心添加了在 Azure 更改跟踪上构建的文件完整性监�
 | Windows 注册表 | 50 分钟 |
 | Windows 文件 | 30 分钟 |
 | Linux 文件 | 15 分钟 |
-| Windows 服务 | 10 秒到 30 分钟</br> 默认：30 分钟 |
+| Windows 服务 | 10 秒到 30 分钟</br> 默认值：30 分钟 |
 | Linux 守护程序 | 5 分钟 |
 | Windows 软件 | 30 分钟 |
 | Linux 软件 | 5 分钟 |
@@ -198,7 +198,7 @@ Azure 安全中心添加了在 Azure 更改跟踪上构建的文件完整性监�
 |---|---|---|
 |文件|500||
 |注册表|250||
-|Windows 软件|250|不包括软件更新|
+|Windows 软件|250|不包括软件修补程序|
 |Linux 包|1250||
 |Services|250||
 |守护程序|250||
@@ -273,7 +273,7 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 
 启用解决方案后，可通过在自动化帐户中的“配置管理”下选择“更改跟踪”来查看受监视计算机的更改摘要。
 
-可以查看对计算机所做的更改，然后深入了解每个事件的详细信息。 可在图表顶部找到下拉列表，根据更改类型和时间范围限制图表和详细信息。 还可以单击并拖动图表，选择自定义时间范围。 **更改类型**将为以下值之一:**事件**、**守护**程序、**文件**、**注册表**、**软件**、 **Windows 服务**。 类别显示更改的类型, 可以**添加**、**修改**或**删除**。
+可以查看对计算机所做的更改，然后深入了解每个事件的详细信息。 可在图表顶部找到下拉列表，根据更改类型和时间范围限制图表和详细信息。 还可以单击并拖动图表，选择自定义时间范围。 **更改类型**将为以下值之一：**事件**、**守护**程序、**文件**、**注册表**、**软件**、 **Windows 服务**。 类别显示更改的类型，可以**添加**、**修改**或**删除**。
 
 ![“更改跟踪”仪表板的图像](./media/change-tracking/change-tracking-dash01.png)
 
@@ -283,7 +283,7 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 
 ## <a name="search-logs"></a>搜索日志
 
-除了门户中提供的详细信息以外，还可以针对日志执行搜索。 打开**更改跟踪**页面后, 单击**Log Analytics**, 这将打开 "**日志**" 页。
+除了门户中提供的详细信息以外，还可以针对日志执行搜索。 打开**更改跟踪**页面后，单击**Log Analytics**，这将打开 "**日志**" 页。
 
 ### <a name="sample-queries"></a>示例查询
 

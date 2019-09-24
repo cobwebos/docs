@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ef501af63628b47bc52d416930c90057569b5de
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 4d4a3eae9ea3931ceb720785bbf458f54689be6e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035024"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213519"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
 
@@ -202,7 +202,7 @@ automl_config = AutoMLConfig(task="classification")
         n_cross_validations=5)
     ```
 
-这三个`task`不同的参数值决定了要应用的算法的列表。  使用 `whitelist` 或 `blacklist` 参数可进一步修改迭代，从而包含或排除可用算法。 支持的模型的列表可以在[SupportedAlgorithms 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py)中找到。
+这三个`task`不同的参数值决定了要应用的模型的列表。  `whitelist`使用或`blacklist`参数进一步修改包含或排除的可用模型的迭代。 支持的模型的列表可以在[SupportedModels 类](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)中找到。
 
 ### <a name="primary-metric"></a>主要指标
 主要指标;如以上示例中所示，确定要在模型定型期间用于优化的指标。 你可以选择的主要指标取决于你选择的任务类型。 下面是可用指标的列表。

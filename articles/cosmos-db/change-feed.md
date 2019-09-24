@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: f50f1b3e2ee7f98d14d29f1e2205a97d76eaacc8
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615665"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219894"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的更改源 - 概述
 
-Azure Cosmos DB 中的更改源支持通过侦听 Azure Cosmos 容器进行任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 这些更改将会持久保留且能以异步和增量方式进行处理。可将输出分配到一个或多个使用者供并行处理。 
+Azure Cosmos DB 中更改源支持的工作原理是侦听 Azure Cosmos 容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 这些更改将会持久保留且能以异步和增量方式进行处理。可将输出分配到一个或多个使用者供并行处理。 
 
 Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应用程序。 这些应用程序中的一种常见设计模式是使用数据更改来触发附加的操作。 附加操作的示例包括：
 
@@ -42,7 +42,7 @@ Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应
 
 ## <a name="change-feed-and-different-operations"></a>更改源和不同操作
 
-如今，在更改流中可以看到所有操作。 针对只更新和不插入等特定操作的功能（可控制更改源）尚不可用。 可以在更新项上添加“软标记”，并在更改流中处理项时根据标记进行筛选。 目前更改源不会记录日志删除操作。 与前面的示例类似，可在要删除的项上添加软标记，例如，可在名为“已删除”的项中添加属性并将其设置为“true”，然后在该项上设置 TTL，这样系统就可将其自动删除。 可以阅读历史项的更改流（例如，五年前添加的项）。 如果未删除该项，则可以读取不超过容器原始时间的更改源。
+如今，在更改流中可以看到所有操作。 针对只更新和不插入等特定操作的功能（可控制更改源）尚不可用。 可以在更新项上添加“软标记”，并在更改流中处理项时根据标记进行筛选。 目前更改源不会记录日志删除操作。 与前面的示例类似，可在要删除的项上添加软标记，例如，可在名为“已删除”的项中添加属性并将其设置为“true”，然后在该项上设置 TTL，这样系统就可将其自动删除。 您可以读取历史项的更改源（与该项相对应的最新更改，不包括中间更改），例如，在五年前添加的项。 如果未删除该项，则可以读取不超过容器原始时间的更改源。
 
 ### <a name="sort-order-of-items-in-change-feed"></a>更改源中项的排序顺序
 

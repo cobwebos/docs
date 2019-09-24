@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 46c08f48efc00c1e4d88ceccb680c0cfd1671b2f
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 30994133b19c4f59ae9e8be26caffe14348638f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203577"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219365"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>使用 Azure CLI 创建专用终结点
 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Azure 资源（例如虚拟机）能够与专用链接资源进行私下通信。 在本快速入门中，你将了解如何在虚拟网络上创建虚拟机，以及如何在 SQL 数据库服务器上创建使用 Azure CLI 的专用终结点。 然后，你可以访问 VM，并安全地访问专用链接资源（本示例中为 Azure SQL 数据库的私有服务器）。 
@@ -144,7 +144,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. VM 桌面出现后，将其最小化以返回到本地桌面。  
 
-## <a name="access-dql-database-server-privately-from-the-vm"></a>从 VM 私下访问 DQL 数据库服务器
+## <a name="access-sql-database-server-privately-from-the-vm"></a>从 VM 中私下访问 SQL 数据库服务器
 
 在本部分中，将使用专用终结点从 VM 连接到 SQL 数据库服务器。
 

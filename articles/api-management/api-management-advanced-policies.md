@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: efc439d56ee864d940942369b3d226ed2a94a383
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 166ff5f8866fca955cbe99c5896eb509f52261f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072633"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219560"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 
@@ -38,7 +38,7 @@ ms.locfileid: "70072633"
 -   [设置请求方法](#SetRequestMethod) - 允许更改请求的 HTTP 方法。
 -   [设置状态代码](#SetStatus) - 将 HTTP 状态代码更改为指定的值。
 -   [设置变量](api-management-advanced-policies.md#set-variable) - 保存命名[上下文](api-management-policy-expressions.md#ContextVariables)变量中的值供以后访问。
--   [跟踪](#Trace) - 将字符串添加到 [API 检查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)输出中。
+-   [Trace](#Trace) -将自定义跟踪添加到[API 检查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)输出、Application Insights telemetries 和诊断日志中。
 -   [等待](#Wait) - 在继续下一步之前，等待括住的[发送请求](api-management-advanced-policies.md#SendRequest)、[从缓存中获取值](api-management-caching-policies.md#GetFromCacheByKey)或[控制流](api-management-advanced-policies.md#choose)策略完成。
 
 ## <a name="choose"></a> 控制流
@@ -106,7 +106,7 @@ ms.locfileid: "70072633"
 
 #### <a name="example"></a>示例
 
-以下示例演示了如何进行内容筛选，方法是：在使用 `Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请参阅 [Cloud Cover 第 177 集：更多的 API 管理功能与 VLAD Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 并快进到 34:30。 从31:50 开始, 查看用于此演示的[深色天空预测 API](https://developer.forecast.io/)的概述。
+以下示例演示了如何进行内容筛选，方法是：在使用 `Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请参阅 [Cloud Cover 第 177 集：更多的 API 管理功能与 VLAD Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 并快进到 34:30。 从31:50 开始，查看用于此演示的[深色天空预测 API](https://developer.forecast.io/)的概述。
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -148,7 +148,7 @@ ms.locfileid: "70072633"
 
 ## <a name="ForwardRequest"></a> 转发请求
 
-`forward-request` 策略将传入请求转发到请求[上下文](api-management-policy-expressions.md#ContextVariables)中指定的后端服务。 后端服务 URL 在 API[设置](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)中指定, 可以使用[设置后端服务](api-management-transformation-policies.md)策略进行更改。
+`forward-request` 策略将传入请求转发到请求[上下文](api-management-policy-expressions.md#ContextVariables)中指定的后端服务。 后端服务 URL 在 API[设置](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)中指定，可以使用[设置后端服务](api-management-transformation-policies.md)策略进行更改。
 
 > [!NOTE]
 > 删除此策略之后，请求就不会转发到后端服务。一旦成功完成入站节中的策略，就会立即对出站节中的策略求值。
@@ -592,7 +592,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 | 特性     | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必填 | 默认  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| mode="string" | 确定请求是新请求还是当前请求的副本。 在出站模式下，mode=copy 不会初始化请求正文。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 否       | 新      |
+| mode="string" | 确定请求是新请求还是当前请求的副本。 在出站模式下，mode=copy 不会初始化请求正文。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 否       | 新建      |
 | name          | 指定要设置的标头的名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | 不可用      |
 | exists-action | 指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -override-替换现有标头的值。<br />-skip-不替换现有标头值。<br />-append-将值追加到现有标头值。<br />-delete-从请求中删除标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。 | 否       | override |
 
@@ -676,10 +676,10 @@ status code and media type. If no example or schema found, the content is empty.
 
 | 特性                       | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必填 | 默认  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| mode="string"                   | 确定请求是新请求还是当前请求的副本。 在出站模式下，mode=copy 不会初始化请求正文。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 否       | 新      |
+| mode="string"                   | 确定请求是新请求还是当前请求的副本。 在出站模式下，mode=copy 不会初始化请求正文。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 否       | 新建      |
 | response-variable-name="string" | 将收到响应对象的上下文变量的名称。 如果该变量不存在，则将在成功执行策略时创建该变量，并且可通过 [`context.Variable`](api-management-policy-expressions.md#ContextVariables) 集合访问该变量。                                                                                                                                                                                                                                                                                                                          | 是      | 不可用      |
 | timeout="整数"               | 以秒为单位的超时间隔，此时间过后对 URL 的调用会失败。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 否       | 60       |
-| ignore-error                    | 如果为 true，请求会导致错误：<br /><br /> -如果指定了响应变量名称, 则它将包含 null 值。<br />-如果未指定响应变量名称, 则为上下文。请求将不会更新。                                                                                                                                                                                                                                                                                                                                                                                   | 否       | 假    |
+| ignore-error                    | 如果为 true，请求会导致错误：<br /><br /> -如果指定了响应变量名称，则它将包含 null 值。<br />-如果未指定响应变量名称，则为上下文。请求将不会更新。                                                                                                                                                                                                                                                                                                                                                                                   | 否       | 假    |
 | name                            | 指定要设置的标头的名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | 不可用      |
 | exists-action                   | 指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -override-替换现有标头的值。<br />-skip-不替换现有标头值。<br />-append-将值追加到现有标头值。<br />-delete-从请求中删除标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。 | 否       | override |
 
@@ -911,18 +911,33 @@ status code and media type. If no example or schema found, the content is empty.
 -   System.Char?
 -   System.DateTime?
 
-## <a name="Trace"></a> 跟踪
+## <a name="Trace"></a>跟踪
 
-`trace` 策略将字符串添加到 [API 检查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)输出中。 此策略会执行的前提是触发跟踪，即 `Ocp-Apim-Trace` 请求标头存在且设置为 `true`，同时 `Ocp-Apim-Subscription-Key` 请求标头存在且包含与管理员帐户关联的有效密钥。
+此`trace`策略将自定义跟踪添加到 API 检查器输出中，Application Insights telemetries 和/或诊断日志。 
+
+* 当触发跟踪，即请求标头存在且`Ocp-Apim-Subscription-Key`设置为 true 且请求标头存在`Ocp-Apim-Trace`且包含允许跟踪的有效密钥时，策略会将自定义跟踪添加到[API 检查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)输出中。 
+* 当启用了[Application Insights 集成](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)并且策略`severity` `verbosity`中指定的级别低于诊断中指定的级别时，策略将在 Application Insights 中创建[跟踪](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry)遥测将. 
+* 启用[诊断日志](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)并且策略中指定的严重级别低于诊断设置中指定的详细级别时，策略将在日志条目中添加属性。  
+
 
 ### <a name="policy-statement"></a>策略语句
 
 ```xml
 
-<trace source="arbitrary string literal">
-    <!-- string expression or literal -->
+<trace source="arbitrary string literal" severity="verbose|information|error">
+    <message>String literal or expressions</message>
+    <metadata name="string literal or expressions" value="string literal or expressions"/>
 </trace>
 
+```
+
+### <a name="traceExample"></a> 示例
+
+```xml
+<trace source="PetStore API" severity="verbose">
+    <message>@((string)context.Variables["clientConnectionID"])</message>
+    <metadata name="Operation Name" value="New-Order"/>
+</trace>
 ```
 
 ### <a name="elements"></a>元素
@@ -930,12 +945,17 @@ status code and media type. If no example or schema found, the content is empty.
 | 元素 | 描述   | 必填 |
 | ------- | ------------- | -------- |
 | trace   | 根元素。 | 是      |
+| 消息 | 要记录的字符串或表达式。 | 是 |
+| metadata | 将自定义属性添加到 Application Insights 的[跟踪](https://docs.microsoft.com/en-us/azure/azure-monitor/app/data-model-trace-telemetry)遥测。 | 否 |
 
 ### <a name="attributes"></a>特性
 
 | 特性 | 描述                                                                             | 必填 | 默认 |
 | --------- | --------------------------------------------------------------------------------------- | -------- | ------- |
 | 源    | 对跟踪查看器有意义的字符串文本，指定消息的源。 | 是      | 不可用     |
+| 严重性    | 指定跟踪的严重级别。 允许的值`verbose`为`information`、 `error` 、（从低到高）。 | 否      | 详细     |
+| name    | 属性的名称。 | 是      | 不可用     |
+| value    | 属性的值。 | 是      | 不可用     |
 
 ### <a name="usage"></a>用法
 

@@ -2,9 +2,9 @@
 title: Azure 通知中心安全推送
 description: 了解如何从 Azure 将安全推送通知发送到 iOS 应用。 代码示例是使用 .Objective-C 和 C# 编写的。
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: d88bdb1eaeb95413df84bf69ed4fc763b6d4901f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 4a175b14d44ef7ba019c28fbd03bac98ada7a2a3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458480"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212146"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure 通知中心安全推送
 
@@ -54,7 +56,7 @@ ms.locfileid: "61458480"
 
 ## <a name="modify-the-ios-project"></a>修改 iOS 项目
 
-现在，将应用后端修改为只发送通知的 ID，必须更改 iOS 应用来处理该通知并回调后端以检索要显示的安全消息  。
+现在，将应用后端修改为只发送通知的 ID，必须更改 iOS 应用来处理该通知并回调后端以检索要显示的安全消息。
 
 若要实现此目标，我们必须编写逻辑来从应用后端检索安全内容。
 
@@ -119,8 +121,8 @@ ms.locfileid: "61458480"
 
     此方法使用存储在共享首选项中的凭据调用应用后端来检索通知内容。
 
-4. 现在我们必须处理传入通知，并使用上面的方法来检索要显示的内容。 首先，我们必须使 iOS 应用能在接收推送通知时在后台运行。 在 **XCode** 中，在左侧面板上选择应用项目，并单击中央窗格的“目标”  部分中的主应用目标。
-5. 然后，单击中央窗格顶部的“功能”  选项卡，并选中“远程通知”  复选框。
+4. 现在我们必须处理传入通知，并使用上面的方法来检索要显示的内容。 首先，我们必须使 iOS 应用能在接收推送通知时在后台运行。 在 **XCode** 中，在左侧面板上选择应用项目，并单击中央窗格的“目标”部分中的主应用目标。
+5. 然后，单击中央窗格顶部的“功能”选项卡，并选中“远程通知”复选框。
 
     ![][IOS1]
 
@@ -157,6 +159,6 @@ ms.locfileid: "61458480"
 
 1. 在 XCode 中，在物理 iOS 设备上运行此应用（推送通知将无法在模拟器中正常工作）。
 2. 在 iOS 应用 UI 中，输入用户名和密码。 这些信息可以是任意字符串，但必须是相同的值。
-3. 在 iOS 应用 UI 中，单击“登录”  。 然后单击“发送推送”  。 应该能看到通知中心中所显示的安全通知。
+3. 在 iOS 应用 UI 中，单击“登录”。 然后单击“发送推送”。 应该能看到通知中心中所显示的安全通知。
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png

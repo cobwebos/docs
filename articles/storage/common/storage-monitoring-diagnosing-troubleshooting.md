@@ -4,16 +4,16 @@ description: 使用存储分析、客户端日志记录等功能及其他第三�
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2017
+ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 08c19daa0af226834ea70db8847e1637c2373351
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 34aa4ff6c54b34acf865af0b57c3dfa7945a637c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855350"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212832"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>对 Microsoft Azure 存储进行监视、诊断和故障排除
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -101,6 +101,8 @@ ms.locfileid: "68855350"
 如果熟悉 Windows 性能监视，则可以将存储度量值视为 Windows 性能监视器计数器的 Azure 存储等效项。 在“存储指标”中，可找到一组综合指标（相当于 Windows 性能监视器术语中的计数器），例如服务可用性、向服务发送的请求总数或向服务发出的成功请求的百分比。 有关可用度量值的完整列表，请参阅[存储分析度量值表架构](https://msdn.microsoft.com/library/azure/hh343264.aspx)。 可以指定希望存储服务每隔一小时还是每隔一分钟收集和聚合一次度量值。 有关如何启用度量值和监视存储帐户的详细信息，请参阅 [Enabling storage metrics and viewing metrics data](https://go.microsoft.com/fwlink/?LinkId=510865)（启用存储度量值并查看度量值数据）。
 
 可以选择要在 [Azure 门户](https://portal.azure.com)中显示哪些每小时度量值，并配置规则以便在每小时度量值超过特定阈值时，通过电子邮件通知管理员。 有关详细信息，请参阅[接收警报通知](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)。
+
+建议查看存储（预览版） [Azure Monitor](../../azure-monitor/insights/storage-insights-overview.md) 。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 它不要求你启用或配置任何内容，你可以立即从预定义的交互式图表和包含的其他可视化效果中查看这些度量值。
 
 存储服务将尽最大努力收集度量值，但可能无法记录每个存储操作。
 
@@ -520,7 +522,7 @@ PercentTimeoutError 度量值是以下指标的度量值：ClientTimeoutError、
 | 07b26a5d-... |收到响应。 Status code = 200, Request ID = eeead849-...Content-MD5 = , ETag =    &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | 07b26a5d-... |正在下载响应正文。 |
-| 07b26a5d-... |操作成功完成。 |
+| 07b26a5d-... |操作已成功完成。 |
 | 07b26a5d-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer 发出同步请求。 |
 | 07b26a5d-... |StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |正在等待响应。 |
@@ -538,7 +540,7 @@ PercentTimeoutError 度量值是以下指标的度量值：ClientTimeoutError、
 | e2d06d78-... |收到响应。 状态代码 = 404，请求 ID = 353ae3bc-...，Content-MD5 = ，ETag = 。 |
 | e2d06d78-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | e2d06d78-... |正在下载响应正文。 |
-| e2d06d78-... |操作成功完成。 |
+| e2d06d78-... |操作已成功完成。 |
 | e2d06d78-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer 发出异步请求。 |
 | e2d06d78-... |StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |正在等待响应。 |
@@ -560,7 +562,7 @@ PercentTimeoutError 度量值是以下指标的度量值：ClientTimeoutError、
 
 下表显示了存储日志记录日志文件中的示例服务器端日志消息：
 
-| 名称 | ReplTest1 |
+| 姓名 | ReplTest1 |
 | --- | --- |
 | 请求开始时间 | 2014-05-30T06:17:48.4473697Z |
 | 操作类型     | GetBlobProperties            |
@@ -625,7 +627,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-409-messages"></a>客户端正在接收“HTTP 409 (冲突)”消息
 下表显示了两个客户端操作的服务器端日志的摘录：DeleteIfExists，后面紧跟使用相同 blob 容器名称的 CreateIfNotExists。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
 
-| 时间戳 | 操作 | 结果 | 容器名称 | 客户端请求 ID |
+| 时间戳 | 操作 | 结果 | 容器名 | 客户端请求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |
@@ -809,12 +811,12 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 存储中的分析的详细信息, 请参阅以下资源:
+有关 Azure 存储中的分析的详细信息，请参阅以下资源：
 
 * [在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)
 * [存储分析](storage-analytics.md)
 * [存储分析指标](storage-analytics-metrics.md)
-* [存储分析度量值表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)
+* [存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [存储分析日志](storage-analytics-logging.md)
 * [存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)
 

@@ -54,7 +54,7 @@
     - name: Functions 与逻辑应用
       href: functions-twitter-email.md
     - name: 使用 VS Code 开发 Python 函数
-      href: tutorial-vs-code-serverless-python.md
+      href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: 无服务器 API 的 OpenAPI 定义
       href: functions-openapi-definition.md
     - name: 连接到虚拟网络

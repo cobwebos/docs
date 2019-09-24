@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 36683d04b6f087f1d326458a07b043a0932191f1
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: f1184f9f3a4cf827f0afef9bca8a72308c371d76
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742010"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224551"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
 
@@ -147,7 +147,7 @@ MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountN
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
 ```
 
-有关详细信息, 请参阅[在 Windows 中装载 Azure 文件共享和访问共享][azmount]。
+有关详细信息，请参阅[在 Windows 中装载 Azure 文件共享和访问共享][azmount]。
 
 还可以按如下所示浏览 Azure 文件共享下的目录：
 
@@ -186,14 +186,15 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
   假设有一个名为 MyVM1 的 VM，现在让我们使用 `Invoke-AzVMCommand` 在远程计算机上调用 PowerShell 脚本块。
 
   ```azurepowershell-interactive
-  Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -EnableRemoting
+  Enable-AzVMPSRemoting -Name MyVM1 -ResourceGroupname MyResourceGroup
+  Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
   ```
 
   还可以先导航到 VirtualMachines 目录，然后按如下所示运行 `Invoke-AzVMCommand`。
 
   ```azurepowershell-interactive
-  PS Azure:\> cd MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines
-  PS Azure:\MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzVMCommand -Scriptblock {Get-ComputerInfo}
+  PS Azure:\> cd MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines
+  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzVMCommand -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
 
   # You will see output similar to the following:
 
@@ -215,13 +216,13 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 可以使用 `Enter-AzVM` 以交互方式登录到 Azure 中运行的 VM。
 
   ```azurepowershell-interactive
-  PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -EnableRemoting
+  PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -Credential (Get-Credential)
   ```
 
 还可以先导航到 `VirtualMachines` 目录，然后按如下所示运行 `Enter-AzVM`
 
   ```azurepowershell-interactive
- PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM
+ PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
  ```
 
 ### <a name="discover-webapps"></a>发现 WebApps
@@ -334,11 +335,11 @@ Hello World!
 可以创建 PowerShell 配置文件 `profile.ps1`（或 `Microsoft.PowerShell_profile.ps1`）来自定义 PowerShell 环境。
 将配置文件保存在 `$profile.CurrentUserAllHosts`（或 `$profile.CurrentUserAllHosts`）下，以便可以在 Cloud Shell 会话中的每个 PowerShell 中加载该文件。
 
-有关如何创建配置文件的信息, 请参阅[关于配置文件][profile]。
+有关如何创建配置文件的信息，请参阅[关于配置文件][profile]。
 
 ## <a name="use-git"></a>使用 Git
 
-若要在 Cloud Shell 中克隆 Git 存储库, 需要创建[个人访问令牌][githubtoken]并将其用作用户名。 创建令牌后，可按如下所示克隆存储库：
+若要在 Cloud Shell 中克隆 Git 存储库，需要创建[个人访问令牌][githubtoken]并将其用作用户名。 创建令牌后，可按如下所示克隆存储库：
 
 ```azurepowershell-interactive
   git clone https://<your-access-token>@github.com/username/repo.git

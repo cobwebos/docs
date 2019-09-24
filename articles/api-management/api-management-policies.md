@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: ed20ef023a884ac79150cd31f25fde86b715c752
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2b6e056fbfb134f0b1218b4281b9f971a0e24202
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073393"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219467"
 ---
 # <a name="api-management-policies"></a>API 管理策略
 本部分提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
@@ -50,8 +50,8 @@ ms.locfileid: "70073393"
     -   [设置变量](api-management-advanced-policies.md#set-variable) - 保存命名上下文变量中的值供以后访问。  
     -   [设置请求方法](api-management-advanced-policies.md#SetRequestMethod) - 允许更改请求的 HTTP 方法。  
     -   [设置状态代码](api-management-advanced-policies.md#SetStatus) - 将 HTTP 状态代码更改为指定的值。  
-    -   [跟踪](api-management-advanced-policies.md#Trace) - 将字符串添加到 [API 检查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)输出中。  
-    -   [等待](api-management-advanced-policies.md#Wait) - 继续之前，等待括住的[发送请求](api-management-advanced-policies.md#SendRequest)、[从缓存中获取值](api-management-caching-policies.md#GetFromCacheByKey)或[控制流](api-management-advanced-policies.md#choose)策略完成。  
+    -   [Trace](api-management-advanced-policies.md#Trace) -将自定义跟踪添加到[API 检查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)输出、Application Insights telemetries 和诊断日志中。  
+    -   [等待](api-management-advanced-policies.md#Wait) - 在继续下一步之前，等待括住的[发送请求](api-management-advanced-policies.md#SendRequest)、[从缓存中获取值](api-management-caching-policies.md#GetFromCacheByKey)或[控制流](api-management-advanced-policies.md#choose)策略完成。  
 -   [身份验证策略](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [使用基本方法进行身份验证](api-management-authentication-policies.md#Basic) - 使用基本身份验证方法对后端服务进行身份验证。  
     -   [使用客户端证书进行身份验证](api-management-authentication-policies.md#ClientCertificate) - 使用客户端证书对后端服务进行身份验证。  

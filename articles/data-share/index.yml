@@ -4,7 +4,7 @@ summary: Azure Data Share 预览版是一种安全、可靠的服务，用于与
 metadata:
   title: Azure Data Share（预览版）
   description: Azure Data Share（预览版）是一种安全、可靠的服务，用于与第三方组织共享数据。
-  services: service
+  services: data-share
   ms.service: data-share
   ms.subservice: subservice
   ms.topic: landing-page
@@ -12,12 +12,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: 7e44541fae4cb9987f4c2e3b68a6ec3ff61c1bcf
-  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.openlocfilehash: d75af1eea77bea89f3facf782b836a26fcdabdde
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/14/2019
-  ms.locfileid: "70993940"
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71218015"
 landingContent:
 - title: 关于 Azure Data Share
   linkLists:

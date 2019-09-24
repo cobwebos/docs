@@ -4,9 +4,9 @@ description: 了解如何使用通知中心从 Node.js 应用程序发送推送�
 keywords: 推送通知,push notification,node.js 推送,ios 推送
 services: notification-hubs
 documentationcenter: nodejs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 129127a2a43cd9a86e0a1e1cf538358b62381257
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67706228"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213187"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
 
@@ -106,7 +108,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** — 消息的 JSON 或原始字符串的有效负载。
 - **Callback** — 回调函数。
 
-有关负载格式的详细信息, 请参阅[有效负载文档](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
+有关负载格式的详细信息，请参阅[有效负载文档](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
 
 以下代码使用由 `NotificationHubService` 公开的 `GcmService` 实例将推送通知发送到所有已注册的客户端。
 

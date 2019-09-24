@@ -4,7 +4,7 @@ summary: 使用 Data Lake Analytics 可以运行可扩展为大规模数据集�
 metadata:
   title: Azure Data Lake Analytics
   description: 使用 Data Lake Analytics 可以运行可扩展为大规模数据集的大数据分析作业。
-  services: service
+  services: data-lake-analytics
   ms.service: data-lake-analytics
   ms.subservice: subservice
   ms.topic: landing-page
@@ -12,12 +12,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: a370cf424d7ebdf32fcdd2e0f8653e2e36b7162b
-  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.openlocfilehash: 789144730d99a0686856cee29f77227698154cbc
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/14/2019
-  ms.locfileid: "70997241"
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71220015"
 landingContent:
 - title: 关于 Data Lake Analytics
   linkLists:

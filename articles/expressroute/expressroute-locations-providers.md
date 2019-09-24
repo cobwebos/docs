@@ -2,24 +2,17 @@
 title: 位置和连接提供商：Azure ExpressRoute | Microsoft Docs
 description: 本文详细说明了服务的上市区域，以及如何连接到 Azure 区域。 按位置排序。
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: feb67da3-5abc-4acb-bad4-f78e3c541ded
 ms.service: expressroute
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.date: 09/23/2019
 ms.author: cherylmc
-ms.openlocfilehash: 192bafc0b53483c21e52602b4de8c57f66fdee3c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 61ac896d2135790ca2e757ec56303fdb783d2865
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172566"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219663"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -74,9 +67,11 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 
 ## <a name="partners"></a>ExpressRoute 连接服务提供商
 
-下表显示连接位置和每个位置的服务提供商。 若要查看服务提供商及其提供服务的位置，请参阅[按服务提供商列出的位置](expressroute-locations.md)。 
+下表显示连接位置和每个位置的服务提供商。 若要查看服务提供商及其提供服务的位置，请参阅[按服务提供商列出的位置](expressroute-locations.md)。
 
-**本地 Azure 区域**是每个对等位置的[ExpressRoute 本地](expressroute-faqs.md)可访问的区域。 **n/a**表示 ExpressRoute 本地在该对等位置不可用。
+* **本地 Azure 区域**是每个对等位置的[ExpressRoute 本地](expressroute-faqs.md)可访问的区域。 **n/a**表示 ExpressRoute 本地在该对等位置不可用。
+
+* **区域**是指[定价](https://azure.microsoft.com/pricing/details/expressroute/)。
 
 
 ### <a name="production-azure"></a>生产 Azure

@@ -3,9 +3,9 @@ title: 诊断 Azure 通知中心内删除通知的问题
 description: 了解如何诊断 Azure 通知中心的已删除通知的常见问题。
 services: notification-hubs
 documentationcenter: Mobile
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/04/2019
-ms.author: jowargo
-ms.openlocfilehash: eebf9ef63a8622c4cc431322b786fdf30f6352fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/04/2019
+ms.openlocfilehash: c9754c1d7fee5af13de6176dbf8a1ca6e57a71eb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925823"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213154"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>诊断 Azure 通知中心内删除通知的问题
 
@@ -31,7 +33,7 @@ ms.locfileid: "64925823"
 
 在典型的发送通知流中，消息从*应用程序后端*发送到通知中心。 通知中心处理所有注册。 它会考虑配置的标记和标记表达式，以确定目标。 目标是指需要接收推送通知的注册。 这些注册可能跨越所有受支持的平台：Android、百度（中国的 Android 设备）、Fire OS (Amazon) iOS、Windows 和 Windows Phone。
 
-确定目标之后，通知中心将通知推送到设备平台的*推送通知服务*。 示例包括适用于 Apple 的 Apple Push Notification 服务 (APNs) 和适用于 Google 的 Firebase Cloud Messaging (FCM)。 通知中心推送跨多批注册拆分的通知。 它使用各自的推送通知服务，基于你在设置在 Azure 门户中的凭据进行身份验证**配置通知中心**。 然后，推送通知服务将通知转发到各自的*客户端设备*。
+确定目标之后，通知中心将通知推送到设备平台的*推送通知服务*。 示例包括适用于 Apple 的 Apple Push Notification 服务 (APNs) 和适用于 Google 的 Firebase Cloud Messaging (FCM)。 通知中心推送跨多批注册拆分的通知。 它通过相应的推送通知服务进行身份验证，具体取决于你在 "**配置通知中心**" 下 Azure 门户中设置的凭据。 然后，推送通知服务将通知转发到各自的*客户端设备*。
 
 通知传递的最后一步在平台推送通知服务与设备之间进行。 通知传送可能会在推送通知过程的四个阶段（客户端、应用程序后端、通知中心和平台推送通知服务）中的任何一个阶段失败。 有关通知中心体系结构的详细信息，请参阅[通知中心概述]。
 
@@ -41,7 +43,7 @@ ms.locfileid: "64925823"
 
 ## <a name="notification-hubs-misconfiguration"></a>通知中心配置错误 ##
 
-若要将通知发送到各自的推送通知服务，通知中心必须验证自身身份的应用程序上下文中。 必须使用目标平台通知服务 （Microsoft、 Apple、 Google 等） 来创建开发人员帐户。 然后，必须注册您的应用程序从哪里获得令牌或密钥，用于处理目标 PNS 的操作系统。
+若要将通知发送到相应的推送通知服务，通知中心必须在应用程序的上下文中对其自身进行身份验证。 必须使用目标平台的通知服务（Microsoft、Apple、Google 等）创建开发人员帐户。 然后，你必须将应用程序注册到操作系统，你可以在其中获取用于处理目标 PNS 的令牌或密钥。
 
 你必须将平台凭据添加到 Azure 门户中。 如果设备未收到任何通知，第一步是确保在通知中心配置正确的凭据。 凭据必须与在平台特定开发人员帐户下创建的应用程序相匹配。
 
@@ -66,11 +68,11 @@ ms.locfileid: "64925823"
 
 ### <a name="fcm-configuration"></a>FCM 配置 ###
 
-1. 絋粄*服务器密钥*获取 Firebase 匹配项从 Azure 门户中注册的服务器密钥。
+1. 确保从 Firebase 获取的*服务器密钥*与你在 Azure 门户中注册的服务器密钥匹配。
 
    ![Firebase 服务器密钥][3]
 
-2. 确保在客户端上配置“项目 ID”  。 可以从 Firebase 仪表板获取“项目 ID”  的值。
+2. 确保在客户端上配置“项目 ID”。 可以从 Firebase 仪表板获取“项目 ID”的值。
 
    ![Firebase 项目 ID][1]
 
@@ -82,7 +84,7 @@ ms.locfileid: "64925823"
 
 发送通知时，请查看注册，确保有匹配的标记。 然后，确保仅从含有这些注册的客户端收到通知。
 
-例如，假设使用“政治”标记向通知中心注册了所有设备。 如果使用“体育”标记发送通知，则通知将不会发送到任何设备。 复杂的用例可能涉及到标记表达式，其中已使用“标记 A”或“标记 B”进行注册，但目标是“标记 A 和 标记 B”。  本文稍后的自我诊断提示部分将介绍如何查看注册及其标记。
+例如，假设使用“政治”标记向通知中心注册了所有设备。 如果使用“体育”标记发送通知，则通知将不会发送到任何设备。 复杂的用例可能涉及到标记表达式，其中已使用“标记 A”或“标记 B”进行注册，但目标是“标记 A 和 标记 B”。 本文稍后的自我诊断提示部分将介绍如何查看注册及其标记。
 
 ### <a name="template-issues"></a>模板问题 ###
 
@@ -111,7 +113,7 @@ ms.locfileid: "64925823"
 
 如果推送通知服务尝试传递通知，但设备处于脱机状态，则推送通知服务会存储通知。 通知只会存储有限的一段时间。 等设备可用时再将通知传递到设备。
 
-每个应用程序将存储只有一个最近的通知。 如果设备处于脱机状态时发送了多个通知，每个新通知将导致被放弃的最后一个。 只保留最新通知调用*合并*在 APNs 并*折叠*FCM 中。 （FCM 使用折叠密钥）。当设备在很长时间处于脱机状态时，则放弃存储设备的通知。 有关详细信息，请参阅[APNs overview]并[About FCM messages]。
+每个应用仅存储一个最近通知。 如果在设备处于脱机状态时发送了多个通知，则每个新通知将导致最后一个通知被放弃。 仅保留最新通知称为 FCM 中的在 APNs 和*折叠*中的*合并*。 （FCM 使用折叠键。）如果设备长时间处于脱机状态，则会放弃为该设备存储的通知。 有关详细信息，请参阅[APNs overview]和[About FCM messages]。
 
 在通知中心，可以使用泛型 SendNotification API 通过 HTTP 标头来传递合并密钥。 例如，对于 .NET SDK，你会使用 `SendNotificationAsync`。 SendNotification API 还会将按原样传递的 HTTP 标头传递到各自的推送通知服务。
 
@@ -127,7 +129,7 @@ ms.locfileid: "64925823"
 
 #### <a name="azure-portal"></a>Azure 门户 ####
 
-若要查看凭据并将凭据与从推送通知服务开发人员门户获取的凭据进行匹配，请在 Azure 门户中转到“访问策略”  选项卡。
+若要查看凭据并将凭据与从推送通知服务开发人员门户获取的凭据进行匹配，请在 Azure 门户中转到“访问策略”选项卡。
 
 ![Azure 门户访问策略][4]
 
@@ -141,7 +143,7 @@ ms.locfileid: "64925823"
 
 可以查看和管理中心内的所有注册。 这些注册可按平台、本机或模板注册、标记、推送通知服务标识符、注册 ID 及过期日期分类。 还可以在此页面中编辑注册。 它对于编辑标记特别有用。
 
-在“服务器资源管理器”中右键单击你的通知中心，然后选择“诊断”。   
+在“服务器资源管理器”中右键单击你的通知中心，然后选择“诊断”。 
 
 ![Visual Studio 服务器资源管理器：“诊断”菜单](./media/notification-hubs-diagnosing/diagnose-menu.png)
 
@@ -149,11 +151,11 @@ ms.locfileid: "64925823"
 
 ![Visual Studio：“诊断”页](./media/notification-hubs-diagnosing/diagnose-page.png)
 
-切换到“设备注册”页： 
+切换到“设备注册”页：
 
 ![Visual Studio：设备注册](./media/notification-hubs-diagnosing/VSRegistrations.png)
 
-若要发送测试通知消息，可以使用“测试性发送”页： 
+若要发送测试通知消息，可以使用“测试性发送”页：
 
 ![Visual Studio：测试发送](./media/notification-hubs-diagnosing/test-send-vs.png)
 
@@ -168,7 +170,7 @@ ms.locfileid: "64925823"
 
 #### <a name="azure-portal"></a>Azure 门户 ####
 
-若要向客户端发送测试通知，而不启动和运行服务后端，请在“支持 + 故障排除”  下选择“测试发送”  。
+若要向客户端发送测试通知，而不启动和运行服务后端，请在“支持 + 故障排除”下选择“测试发送”。
 
 ![Azure 中的测试发送功能][7]
 
@@ -194,7 +196,7 @@ ms.locfileid: "64925823"
 
 若要深入了解推送通知服务错误，可以使用 [EnableTestSend] 属性。 从门户或 Visual Studio 客户端发送测试消息时，系统会自动启用此属性。 可以使用此属性以及通过 API 查看详细的调试信息。 目前可在 .NET SDK 中使用此属性。 最终，它将添加到所有客户端 SDK 中。
 
-若要结合使用 `EnableTestSend` 属性和 REST 调用，可在发送调用的末尾追加名为 test 的查询字符串参数  。 例如：
+若要结合使用 `EnableTestSend` 属性和 REST 调用，可在发送调用的末尾追加名为 test 的查询字符串参数。 例如：
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
@@ -247,21 +249,21 @@ The Token obtained from the Token Provider is wrong
 
 在该门户中，可以快速了解通知中心的所有活动。
 
-1. 在“概述”  选项卡上，可以查看每个平台的注册、通知和错误的汇总视图。
+1. 在“概述”选项卡上，可以查看每个平台的注册、通知和错误的汇总视图。
 
    ![通知中心概述仪表板][5]
 
-2. 在“监视器”  选项卡上，可以添加许多其他平台特定指标，以便进行深入了解。 可以专门查看当通知中心尝试将通知发送到推送通知服务时返回的错误。
+2. 在“监视器”选项卡上，可以添加许多其他平台特定指标，以便进行深入了解。 可以专门查看当通知中心尝试将通知发送到推送通知服务时返回的错误。
 
    ![Azure 门户活动日志][6]
 
-3. 首先查看“传入消息”  、“注册操作”  和“成功通知”  。 然后转到每个平台选项卡查看特定于推送通知服务的错误。
+3. 首先查看“传入消息”、“注册操作”和“成功通知”。 然后转到每个平台选项卡查看特定于推送通知服务的错误。
 
-4. 如果通知中心的身份验证设置不正确，则出现“PNS 身份验证错误”  消息。 它表示要检查推送通知服务凭据。
+4. 如果通知中心的身份验证设置不正确，则出现“PNS 身份验证错误”消息。 它表示要检查推送通知服务凭据。
 
 #### <a name="programmatic-access"></a>以编程方式访问 ####
 
-有关以编程方式访问的详细信息，请参阅[以编程方式访问](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100))。
+有关以编程方式访问的详细信息，请参阅[编程访问](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100))。
 
 > [!NOTE]
 > 与遥测相关的多项功能（例如，导出和导入注册、通过 API 进行遥测访问）只能在“标准”服务层级使用。 如果尝试从“免费”或“基本”服务层级使用这些功能，则在使用 SDK 时会收到异常消息。 如果直接从 REST API 使用这些功能，将会收到 HTTP 403（已禁止）错误。

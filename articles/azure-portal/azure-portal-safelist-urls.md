@@ -9,12 +9,12 @@ ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 78c752423d20d183c561d5bcf0bb95246b84ab49
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 9618d99495e65231de22eb719355e2ca75a17600
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076676"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218034"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>请在防火墙或代理服务器上为 Azure 门户 Url 启用安全
 
@@ -80,8 +80,8 @@ ms.locfileid: "71076676"
 需要为 IP 地址创建安全代码？ 下载适用于你的云的 Microsoft Azure 数据中心 IP 范围的列表：
 
 * [范围](https://www.microsoft.com/download/details.aspx?id=56519)
-* [美国政府](http://www.microsoft.com/download/details.aspx?id=57063)
-* [德国](http://www.microsoft.com/download/details.aspx?id=57064)
-* [中国](http://www.microsoft.com/download/details.aspx?id=57062)
+* [美国政府](https://www.microsoft.com/download/details.aspx?id=57063)
+* [德国](https://www.microsoft.com/download/details.aspx?id=57064)
+* [中国](https://www.microsoft.com/download/details.aspx?id=57062)
 
 其他 Microsoft 服务使用其他 Url 和 IP 地址进行连接。 若要优化 Microsoft 365 services 的网络连接，请参阅为[Office 365 设置网络](/office365/enterprise/set-up-network-for-office-365)。

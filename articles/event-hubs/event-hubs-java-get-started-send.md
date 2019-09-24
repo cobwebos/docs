@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: a24263e80f50d880be269238441545785e2f51e8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 054289de296488036dd0855d228d272fdea18baf
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967620"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219423"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>使用 Java 将事件发送到 Azure 事件中心或从 Azure 事件中心接收事件
 
@@ -181,11 +181,11 @@ EventProcessorHost 是一个 Java 类，通过在这些事件中心管理持久�
 1. 登录[Azure 门户](https://portal.azure.com)，并在屏幕左侧选择 "**创建资源**"。
 2. 选择 "**存储**"，然后选择 "**存储帐户**"。 在“创建存储帐户”窗口中，键入存储帐户的名称。 填写其余字段，选择所需的区域，然后选择 "**创建**"。
    
-    ![创建存储帐户](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![在 Azure 门户中创建存储帐户](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
 3. 选择新创建的存储帐户，然后选择 "**访问密钥**"：
    
-    ![获取访问密钥](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![获取 Azure 门户中的访问密钥](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     将 key1 值复制到临时位置。 本教程后面部分需要使用它。
 

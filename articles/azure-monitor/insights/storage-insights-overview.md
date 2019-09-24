@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 17135f896140a843dd95c8d9624e9faf1d7194c3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1ab49d17ebf10a1ae0277768ddbd1878195d835d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996251"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212764"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>监视存储服务的存储 Azure Monitor （预览版）
 
-针对存储（预览版）的 Azure Monitor 通过提供 Azure 存储服务性能、容量和可用性的统一视图，全面监视 Azure 存储帐户。 你可以通过两种方式观察存储容量和性能，直接从存储帐户或查看 Azure Monitor 查看跨存储帐户组。 
+针对存储（预览版）的 Azure Monitor 提供 Azure 存储服务性能、容量和可用性的统一视图，从而全面监视 Azure 存储帐户。 你可以通过两种方式观察存储容量和性能，直接从存储帐户或查看 Azure Monitor 查看跨存储帐户组。 
 
 本文将帮助你了解存储（预览版） Azure Monitor 的体验，它提供了针对规模的存储帐户的运行状况和性能的可操作知识，并能够专注于热点并诊断延迟、限制和可用性问题。
 

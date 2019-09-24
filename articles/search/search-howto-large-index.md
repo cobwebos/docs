@@ -8,26 +8,26 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: heidist
-ms.openlocfilehash: 44a8136c4e02d4eceb5b11231bbbfed010159e75
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: e3240ca40b9dcf866c5e4a5cf570b5575b7586d8
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172876"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240358"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-search"></a>如何在 Azure 搜索中为大型数据集编制索引
 
-随着数据量增长或处理需求的变化，你可能会发现简单或默认的索引策略将不再工作。 在 Azure 搜索中，可通过多种方法来适应较大的数据集，包括构建数据上传请求、对计划和分布式工作负荷使用特定于源的索引器，等等。
+随着数据量增长或处理需求的不断变化，你可能会发现简单或默认的索引策略不再可行。 在 Azure 搜索中，可通过多种方法来适应较大的数据集，包括构建数据上传请求、对计划和分布式工作负荷使用特定于源的索引器，等等。
 
-对大型数据采用的技术同样适用于长时间运行的进程。 具体而言，[并行索引编制](#parallel-indexing)中所述的步骤有助于完成计算密集型编制索引，例如[认知搜索管道](cognitive-search-concept-intro.md)中的图像分析或自然语言处理。
+同样的方法也适用于长时间运行的进程。 具体而言，[并行索引编制](#parallel-indexing)中所述的步骤有助于完成计算密集型编制索引，例如[认知搜索管道](cognitive-search-concept-intro.md)中的图像分析或自然语言处理。
 
 以下部分介绍了用于对大量数据进行索引的三种方法。
 
 ## <a name="option-1-pass-multiple-documents"></a>选项 1：传递多个文档
 
-为较大数据集编制索引的最简单机制之一是在单个请求中提交多个文档或记录。 只要整个有效负载小于 16 MB，则请求就可以在一个批量上传操作中最多处理 1000 个文档。 无论你使用的是[REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)还是 .net SDK 中的[IndexBatch](https://docs.microsoft.com/otnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) ，这些限制都适用。 对于任一 API，会将1000文档打包到每个请求的正文中。
+为较大数据集编制索引的最简单机制之一是在单个请求中提交多个文档或记录。 只要整个有效负载小于 16 MB，则请求就可以在一个批量上传操作中最多处理 1000 个文档。 无论你使用的是 .NET SDK 中的 "[添加文档" （REST）](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)还是[索引类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet)，这些限制都适用。 对于任一 API，会将1000文档打包到每个请求的正文中。
 
-批处理索引编制是使用 REST 或 .NET 或通过索引器针对单个请求实现的。 有几个索引器根据不同的限制运行。 具体而言，当平均文档大小较大时，Azure Blob 索引编制会将批大小设置为 10 个文档。 对于基于[创建索引器 REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer ) 的索引器，可以设置 `BatchSize` 参数来自定义此设置，以便与数据特征更相符。 
+批处理索引编制是使用 REST 或 .NET 或通过索引器针对单个请求实现的。 有几个索引器根据不同的限制运行。 具体而言，当平均文档大小较大时，Azure Blob 索引编制会将批大小设置为 10 个文档。 对于基于[Create 索引器（REST）](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer )的索引器，你可以将`BatchSize`自变量设置为自定义此设置以更好地匹配数据的特征。 
 
 > [!NOTE]
 > 若要保持文档大小不限，请避免向索引中添加不可查询的数据。 图像和其他二进制数据不可直接搜索，不应存储在索引中。 若要将不可查询的数据集成到搜索结果中，应定义用于存储资源的 URL 引用的不可搜索字段。
@@ -40,11 +40,11 @@ ms.locfileid: "71172876"
 
 ## <a name="option-3-use-indexers"></a>选项 3：使用索引器
 
-[索引器](search-indexer-overview.md)用于对受支持的 Azure 数据平台上的外部数据源进行爬网，以获得可搜索的内容。 有几项索引器功能尽管并非专门用于大规模索引编制，但它们特别能够适应较大的数据集：
+[索引器](search-indexer-overview.md)用于对可搜索内容的受支持的 Azure 数据源进行爬网。 有几项索引器功能尽管并非专门用于大规模索引编制，但它们特别能够适应较大的数据集：
 
 + 使用计划程序可按固定的间隔来分配索引编制工作，以便在不同的时间完成这些工作。
 + 计划的索引编制可在最后一个已知的停止点处恢复。 如果在 24 小时期限内未完全爬网某个数据源，第二天，索引器将在中断位置恢复索引编制。
-+ 将数据分区成较小的独立数据源可以实现并行处理。 您可以将大型数据集拆分为较小的数据集，然后创建可以并行编制索引的多个索引器数据源定义。
++ 将数据分区成较小的独立数据源可以实现并行处理。 你可以在源数据平台（如 Azure Blob 存储或 Azure SQL 数据库）上将大型数据集拆分为较小的数据集，然后在 Azure 搜索上创建多个可并行编制索引的[数据源对象](https://docs.microsoft.com/rest/api/searchservice/create-data-source)。
 
 > [!NOTE]
 > 索引器特定于数据源，因此，使用索引器方法仅对 Azure 上的选定数据源可行：[SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Blob 存储](search-howto-indexing-azure-blob-storage.md)、[表存储](search-howto-indexing-azure-tables.md)和 [Cosmos DB](search-howto-index-cosmosdb.md)。

@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: d346f68534a9fdbc286cd5521c00d81c2a5fec78
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3c8d0d3ec0f11592610363e9150be47112995853
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203555"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219855"
 ---
 # <a name="what-is-video-indexer"></a>什么是视频索引器？
 
-Azure 媒体服务视频索引器是基于 Azure 认知服务构建的 AI 解决方案。 使用视频索引器，可以根据多个通道（语音、声乐、视觉对象）使用机器学习模型来提取深度见解（无需数据分析或编码技巧）。 您可以进一步自定义和定型模型。 该服务可实现深层搜索，降低运营成本，实现新的盈利机会，提供大量视频存档的新用户体验（具有较低的入门障碍）。 
+视频索引器（VI）是 Azure 媒体服务 AI 解决方案和 Microsoft 认知服务品牌的组成部分。 使用视频索引器，可以根据多个通道（语音、声乐、视觉对象）使用机器学习模型来提取深度见解（无需数据分析或编码技巧）。 您可以进一步自定义和定型模型。 该服务可实现深层搜索，降低运营成本，实现新的盈利机会，提供大量视频存档的新用户体验（具有较低的入门障碍）。 
 
 若要开始使用视频索引器提取见解，需要创建帐户并上传视频。 将视频上传到视频索引器时，它会通过运行不同的 AI 模型分析视觉对象和音频。 视频索引器会分析视频，这是模型提取的见解。
+
+下图是一个图例，而不是有关在后端中视频索引器工作原理的技术说明。
 
 ![流程图](./media/video-indexer-overview/model-chart.png)
 

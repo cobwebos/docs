@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 93eddc0ff8f1a1af8b485fcdb891f72d874b5c0a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c1b372dbeaea31e83c8ff42a84fc39d762b2ebdb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202964"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212265"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>预览-创建和管理 Azure Kubernetes 服务中群集的多个节点池 (AKS)
 
@@ -246,14 +246,14 @@ AKS 群集具有两个与 Kubernetes 版本关联的群集资源对象。 第一
 
 1. 升级控制平面需要使用`az aks upgrade`
    * 这会升级群集中的控制平面版本和所有节点池
-   * 通过`az aks upgrade` `--control-plane-only`向标记传递，你只会升级群集控制平面，而不会升级任何关联的节点池 * 该标志在**AKS-preview extension v 0.4.16**或更高版本中可用`--control-plane-only`
+   * `az aks upgrade` 通过`--control-plane-only`向传递标志，只会升级群集控制平面，而不会更改任何关联的节点池。 标志可用于**AKS-预览版 extension v 0.4.16**或更高版本。 `--control-plane-only`
 1. 升级各个节点池需要使用`az aks nodepool upgrade`
-   * 这将仅升级具有指定 Kubernetes 版本的目标节点池
+   * 这仅升级具有指定 Kubernetes 版本的目标节点池
 
 节点池持有的 Kubernetes 版本之间的关系也必须遵循一组规则。
 
 1. 不能降级控制平面和节点池 Kubernetes 版本。
-1. 如果未指定节点池 Kubernetes 版本，则使用的默认值将回退到控制平面版本。
+1. 如果未指定节点池 Kubernetes 版本，则行为取决于所使用的客户端。 对于 ARM 模板中的声明，使用为节点池定义的现有版本。如果未设置，则使用控制平面版本。
 1. 您可以在给定时间升级或缩放控制平面或节点池，而不能同时提交这两项操作。
 1. 节点池 Kubernetes 版本必须与控制平面具有相同的主版本。
 1. 节点池 Kubernetes 版本最多可为两（2）次次要版本，不能小于控制面。
@@ -593,7 +593,7 @@ AKS 节点不需要自己的公共 IP 地址进行通信。 但某些情况下�
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-注册成功后，按照[上述](#manage-node-pools-using-a-resource-manager-template)相同说明部署 Azure 资源管理器模板，并在 agentPoolProfiles 上添加以下布尔值属性 "enableNodePublicIP"。 将此`true`值设置为，默认情况下它将`false`设置为（如果未指定）。 这只是一个创建时的属性，需要的最低 API 版本为2019-06-01。 这可同时适用于 Linux 和 Windows 节点池。
+注册成功后，按照[上述](#manage-node-pools-using-a-resource-manager-template)相同说明部署 Azure 资源管理器模板，并在 agentPoolProfiles 上添加以下布尔值属性 "enableNodePublicIP"。 如果将此`true`值设置为，则默认情况`false`下将其设置为（如果未指定）。 这只是一个创建时的属性，需要的最低 API 版本为2019-06-01。 这可同时适用于 Linux 和 Windows 节点池。
 
 ```
 "agentPoolProfiles":[  

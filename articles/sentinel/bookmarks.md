@@ -1,6 +1,6 @@
 ---
-title: 跟踪的数据，而在 Sentinel 使用搜索书签预览的 Azure 搜索 |Microsoft Docs
-description: 本文介绍如何使用 Azure Sentinel 搜索书签来跟踪数据。
+title: 使用搜寻书签在 Azure Sentinel 中进行搜寻时跟踪数据 |Microsoft Docs
+description: 本文介绍如何使用 Azure Sentinel 搜寻书签跟踪数据。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,90 +14,141 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: aec04c4b9fd56b79a92c2774a48fd55f2f6a9d7a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: aa414e37470cc11b7dc83e7416590aa2babf6818
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620215"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240257"
 ---
-# <a name="keep-track-of-data-during-hunting"></a>在搜索期间跟踪的数据
+# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>在通过 Azure Sentinel 进行搜寻期间跟踪数据
 
-> [!IMPORTANT]
-> Azure Sentinel 当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
- 
-威胁搜索通常需要查看巨额的日志数据查找的恶意行为的证据。 在此过程中，调查人员找到他们想要记住，巩固概念，并作为验证潜在的假设和了解安全威胁的完整故事的一部分进行分析的事件。
-搜索书签可以帮助您执行此操作，请通过保留以及您认为相关的查询结果的 Log Analytics 中运行的查询。 此外可以记录你上下文的观测值并按说明和标记中添加引用你的发现。 标有书签的数据会显示给你和你的团队成员轻松协作。   
+威胁搜寻通常需要检查山上的日志数据，查找恶意行为的证据。 在此过程中，调查人员查找要记住、重新访问和分析的事件，并将其作为验证潜在假设的一部分，并了解整个安全漏洞。
 
-您可以重新访问你用书签标记的数据在任何时候上**书签**选项卡**搜索**页。 您可以使用筛选和搜索选项可以快速为您当前的调查中查找特定的数据。 或者，可以查看用书签标记的数据中直接**HuntingBookmark** Log Analytics 中的表。 这使您筛选、 汇总，并将标有书签的数据与其他数据源，从而轻松查找证据确凿联接。
+Azure Sentinel 中的搜索书签可帮助你执行此操作，方法是保留你在 Log Analytics 中运行的查询，以及你认为相关的查询结果。 你还可以通过添加注释和标记来记录上下文观察并引用你的发现。 带有书签的数据对你和你的团队成员可以轻松协作。
 
-此外可以通过单击可视化你用书签标记的数据，**调查**。 这将启动调查体验在其中可以查看、 调查并以可视方式通信你使用的是交互式的实体关系图关系图和时间线的发现。
+你可以随时在 "**搜寻**" 窗格的 "**书签**" 选项卡上重新查看书签数据。 你可以使用筛选和搜索选项快速查找你的当前调查的特定数据。 或者，您可以在 Azure Monitor 的 " **HuntingBookmark** " 表中直接查看书签数据。 这使您可以筛选、汇总和联接带有书签的数据和其他数据源，从而可以轻松查找 corroborating 的证据。
 
+目前在预览版中，如果你发现在你的日志中搜索时需要解决的问题，只需单击几下鼠标，即可创建一个书签并将其提升为事件，或将书签添加到现有事件。 有关事件的详细信息，请[参阅教程：用 Azure Sentinel](tutorial-investigate-cases.md)调查事件。 
 
-## <a name="run-a-log-analytics-query-from-azure-sentinel"></a>从 Azure Sentinel 运行 Log Analytics 查询
-
-1. 在 Azure Sentinel 门户中，单击**搜索**运行可疑和异常行为的查询。
-
-1. 若要运行搜索市场活动，选择一个搜索查询并在左侧，查看结果。 
-
-1. 单击**查看查询结果**在搜索查询**详细信息**页可以查看的查询结果在 Log Analytics 中。 下面是您看到是否运行自定义的 SSH 暴力攻击查询的示例。
-  
-   ![显示结果](./media/bookmarks/ssh-bruteforce-example.png)
+此外，还可以通过单击书签详细信息中的 "**调查**"，直观显示书签化的数据。 这会启动调查体验，你可以使用交互式实体-图形关系图和时间线来查看、调查和直观地传达你的发现。
 
 ## <a name="add-a-bookmark"></a>添加书签
 
-1. 在 Log Analytics 查询结果列表中，展开包含您感兴趣的信息的行。
+1. 在 Azure 门户中，导航到 " **Sentinel** > **威胁管理** > **搜寻**" 以运行可疑和异常行为的查询。
 
-4. 选择行末尾处的省略号 （...），然后选择**添加搜索书签**。
-5. 在右侧，在**详细信息**页上，更新的名称，并添加标记和说明以帮助你确定是什么有趣的项。
-6. 单击**保存**提交所做的更改。 用书签标记的所有数据与其他调查人员共享，协作的调查体验的第一步。
+2. 选择一个搜寻查询，然后在右侧的 "搜寻查询详细信息" 中，选择 "**运行查询**"。 
 
-   ![显示结果](./media/bookmarks/add-bookmark-la.png)
+3. 选择 "**查看查询结果**"。 例如：
+    
+    > [!div class="mx-imgBorder"]
+    > ![从 Azure Sentinel 搜寻查看查询结果](./media/bookmarks/new-processes-observed-example.png)
+    
+    此操作将打开 "**日志**" 窗格中的查询结果。
+
+4. 从 "日志查询结果" 列表中，展开包含您感兴趣的信息的行。
+
+5. 选择左侧的省略号（...），然后选择 "**添加搜寻书签**"：
+    
+    > [!div class="mx-imgBorder"]
+    > ![向查询添加搜寻书签](./media/bookmarks/add-hunting-bookmark.png)
+
+6. 在右侧的 "**添加搜寻书签**" 窗格中，可以选择更新书签名称、添加标记和注释，以帮助你确定对项目感兴趣的内容。
+
+7. 在 "**查询信息**" 部分中，使用下拉框从 "**帐户**"、"**主机**" 和 " **IP 地址**" 实体类型的查询结果中提取信息。 此操作会将所选的实体类型映射到查询结果中的特定列。 例如：
+    
+    > [!div class="mx-imgBorder"]
+    > ![为搜寻书签映射实体类型](./media/bookmarks/map-entity-types-bookmark.png)
+    
+    若要在调查图中查看书签（当前为预览版），必须映射至少一种实体类型，即**帐户**、**主机**或**IP 地址**。 
+
+5. 单击 "**添加**" 以提交所做的更改并添加书签。 所有带书签的数据都与其他调查人员共享，这是协作调查体验的第一步。
 
  
 > [!NOTE]
-> 此外可以使用任意启动从 Azure Sentinel 日志分析日志页上或创建上飞入 Log Analytics 页上，从搜索页上打开的查询的 Log Analytics 查询中使用书签。 你将无法再添加书签，如果您启动 Log Analytics 将从外部 Azure Sentinel。 
+> 每次从 Azure Sentinel 打开此窗格时，日志查询结果都支持书签。 例如，从导航栏中选择 "**常规** > **日志**"，在调查关系图中选择 "事件链接"，或从事件的完整详细信息（当前为预览版）中选择警报 ID。 从其他位置（如直接从 Azure Monitor）打开 "**日志**" 窗格时，不能创建书签。
 
 ## <a name="view-and-update-bookmarks"></a>查看和更新书签 
 
-1. 在 Azure Sentinel 门户中，单击**搜索**。 
-2. 单击**书签**选项卡的中间页后，可以查看的书签列表。
-3. 使用搜索框或筛选器选项来查找特定书签。
-4. 下面的网格中选择各个书签右侧详细信息窗格中查看书签详细信息。
-5. 若要更新标记和说明，单击可编辑的文本框，然后单击**保存**保留所做的更改。
+1. 在 Azure 门户中，导航到 " **Sentinel** > **威胁管理** > **搜寻**"。 
 
-   ![显示结果](./media/bookmarks/view-update-bookmarks.png)
+2. 选择 "**书签**" 选项卡以查看书签列表。
 
-## <a name="view-bookmarked-data-in-log-analytics"></a>在 Log Analytics 中查看用书签标记的数据 
+3. 若要帮助你查找特定书签，请使用搜索框或筛选选项。
 
-有多个选项为 Log Analytics 中查看你用书签标记的数据。 
+4. 选择各个书签，并在右侧的详细信息窗格中查看书签详细信息。
 
-若要查看标有书签的查询、 结果或历史记录的最简单方法是通过选择在所需的书签**书签**表，以使用详细信息窗格中提供的链接。 选项包括： 
-- 单击**视图查询**Log Analytics 中查看源查询。  
-- 单击**查看书签历史记录**若要查看所有书签元数据，包括： 谁做了更新，更新后的值，并更新发生的时间。 
+5. 根据需要进行更改，这些更改会自动保存。
 
-- 此外可以通过单击查看所有书签的原始书签数据**书签日志**书签网格的上方。 该视图将显示具有关联的元数据的搜索书签表中所有书签。 可以使用 KQL 查询以筛选出您正在寻找的特定书签的最新版本。  
+## <a name="exploring-bookmarks-in-the-investigation-graph"></a>在调查图中浏览书签
 
+> [!IMPORTANT]
+> 在调查图中浏览书签和调查图本身目前为公共预览版。
+> 提供这些功能没有服务级别协议，不建议用于生产工作负荷。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+1. 在 Azure 门户中，导航到 " **Sentinel** > **威胁管理** > " "**搜寻** > **书签**" 选项卡，然后选择要调查的书签。
+
+2. 在 "书签详细信息" 中，确保至少映射一个实体。 例如，对于**实体**，你将看到**IP**、**计算机**或**帐户**的条目。
+
+3. 单击 "**调查**" 可在调查图中查看书签。
+
+有关使用调查关系图的说明，请参阅[使用调查图深入探讨](tutorial-investigate-cases.md#use-the-investigation-graph-to-deep-dive)。
+
+## <a name="add-bookmarks-to-a-new-or-existing-incident"></a>将书签添加到新的或现有的事件
+
+> [!IMPORTANT]
+> 将书签添加到新的或现有的事件当前在公共预览版中。
+> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+1. 在 Azure 门户中，导航到 " **Sentinel** > **威胁管理** > " "**搜寻** > **书签**" 选项卡，然后选择要添加到事件中的一个或哪些书签。
+
+2. 从命令栏中选择 "**事件操作（预览版）** "：
+    
+    > [!div class="mx-imgBorder"]
+    > ![向事件添加书签](./media/bookmarks/incident-actions.png)
+
+3. 根据需要，选择 "**创建新事件**" 或 "**添加到现有事件**"。 然后：
+    
+    - 对于新事件：根据需要更新事件的详细信息，然后选择 "**创建**"。
+    - 若要将书签添加到现有事件：选择一个事件，然后选择 "**添加**"。 
+
+查看事件中的书签：导航到 " **Sentinel** > **威胁管理** > **事件**"，并选择带有书签的事件。 选择 "**查看完整详细信息**"，然后选择 "**书签**" 选项卡。
+
+## <a name="view-bookmarked-data-in-logs"></a>查看日志中的带书签的数据
+
+若要查看带有书签的查询、结果或其历史记录，请从 "**搜寻** > **书签**" 选项卡中选择书签，并使用细节窗格中提供的链接： 
+
+- **查看源查询**，以在 "**日志**" 窗格中查看源查询。
+
+- **查看书签日志**以查看所有书签元数据，其中包括执行更新的人员、更新的值以及更新发生的时间。
+
+还可以通过在 "**搜寻** > **书签**" 选项卡上的命令栏中选择 "**书签日志**"，查看所有书签的原始书签数据：
+
+> [!div class="mx-imgBorder"]
+> ![书签日志](./media/bookmarks/bookmark-logs.png)
+
+此视图显示具有关联元数据的所有书签。 你可以使用[关键字查询语言](https://docs.microsoft.com/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference)（KQL）查询来筛选到你要查找的特定书签的最新版本。
 
 > [!NOTE]
-> 一个书签，在创建和中显示时之间可以有长的延迟 （以分钟计） **HuntingBookmark**表。 建议创建您的书签，然后对其进行分析后的数据引入。 
+> 创建书签的时间与在 "**书签**" 选项卡中显示的时间之间可能存在很长的延迟（以分钟为单位）。
 
-## <a name="delete-a-bookmark"></a>删除一个书签
-如果你想要删除书签，请执行以下： 
-1.  打开第**搜索书签**选项卡。 
-2.  选择目标书签。
-3.  选择省略号 （...） 末尾的行并选择**删除书签**。
+## <a name="delete-a-bookmark"></a>删除书签
+ 
+1.  在 Azure 门户中，导航到 " **Sentinel** > **威胁管理** > " "**搜寻** > **书签**" 选项卡，然后选择要删除的一个或哪些书签。 
+
+2. 选择行尾的省略号（...），然后选择 "**删除书签**"。
     
-正在删除该书签从列表中删除的书签**书签**选项卡。Log Analytics"HuntingBookmark"表仍将包含上一书签条目，但会更改的最新条目**SoftDelete**值设为 true，就可以更轻松筛选出旧的书签。  删除一个书签，则不删除任何实体与其他书签或警报相关联的调查体验。 
+删除书签会将书签从 "**书签**" 选项卡的列表中删除。Log Analytics **HuntingBookmark**表将继续包含以前的书签条目，但最新的条目会将**SoftDelete**值更改为 true，这样就可以轻松筛选出旧书签。 删除书签不会删除与其他书签或警报关联的调查体验中的任何实体。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您学习了如何运行在 Azure Sentinel 中使用书签搜索调查。 要详细了解 Azure Sentinel，请参阅以下文章：
+本文介绍了如何在 Azure Sentinel 中使用书签运行搜寻调查。 要详细了解 Azure Sentinel，请参阅以下文章：
 
 
 - [主动寻找威胁](hunting.md)
-- [使用笔记本来运行自动的搜索活动](notebooks.md)
+- [使用笔记本运行自动搜寻活动](notebooks.md)

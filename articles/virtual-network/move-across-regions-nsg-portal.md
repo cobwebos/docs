@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0dd460f7ed829bf82c285b80e59778dacd882404
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 839e608aa4bba26712ae5b0c160da40db279bbc9
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059315"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219187"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 网络安全组（NSG）移动到另一个区域
 
@@ -27,7 +27,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 - Azure 网络安全组不能在区域之间移动。  需要将新的 NSG 关联到目标区域中的资源。
 
 - 若要导出 NSG 配置并部署模板以在另一个区域中创建 NSG，需要 "网络参与者" 角色或更高版本。
-   
+
 - 确定源网络布局和当前正在使用的所有资源。 此布局包括但不限于负载均衡器、公共 Ip 和虚拟网络。
 
 - 验证 Azure 订阅是否允许在使用的目标区域中创建 Nsg。 请联系支持部门，启用所需配额。
@@ -41,7 +41,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>导出模板并从门户部署
 
-1. 登录到[Azure 门户](http://portal.azure.com) > **资源组**。
+1. 登录到[Azure 门户](https://portal.azure.com) > **资源组**。
 2. 找到包含源 NSG 的资源组，然后单击该资源组。
 3. 选择 >**设置** > ""**导出模板**"。
 4. 在 "**导出模板**" 边栏选项卡中选择 "**部署**"。
@@ -77,19 +77,19 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
             "location": "<target-region>",
             "properties": {
                 "provisioningState": "Succeeded",
-                "resourceGuid": "2c846acf-58c8-416d-be97-ccd00a4ccd78", 
+                "resourceGuid": "2c846acf-58c8-416d-be97-ccd00a4ccd78",
              }
             }
            ]
 
     ```
-  
+
 11. 若要获取地区位置代码，请参阅[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国** = 中部**centralus**的区域名称。
-    
+
 12. 你还可以根据需要更改模板中的其他参数，并根据需要进行选择：
 
     * **安全规则**-可以通过在 NSG 文件的**securityRules**部分中添加或删除规则，来编辑部署到目标中的规则 **。**
-    
+
         ```json
            "resources": [
             {
@@ -155,7 +155,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
 14. 单击 "**基础** > **订阅**" 以选择将在其中部署目标 NSG 的订阅。
 
-15. 单击 "**基本** > **资源组**" 以选择将在其中部署目标 NSG 的资源组。  可以单击 "**新建**" 为目标 NSG 创建新的资源组。  确保名称与现有 NSG 的源资源组不同。 
+15. 单击 "**基本** > **资源组**" 以选择将在其中部署目标 NSG 的资源组。  可以单击 "**新建**" 为目标 NSG 创建新的资源组。  确保名称与现有 NSG 的源资源组不同。
 
 16. 验证**基本** > **位置**是否设置为要在其中部署 NSG 的目标位置。
 
@@ -165,7 +165,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
 19. 单击 "**购买**" 按钮部署目标网络安全组。
 
-## <a name="discard"></a>弃用 
+## <a name="discard"></a>弃用
 
 如果希望放弃目标 NSG，请删除包含目标 NSG 的资源组。  为此，请在门户的 "仪表板" 中选择资源组，并选择 "概述" 页顶部的 "**删除**"。
 

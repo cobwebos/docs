@@ -12,19 +12,21 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: d2d52d2faf9122b7dc87f71ac7b1be53eaa99878
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: adca1bdd0cf525627cc284b1c0d3509beddef131
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534982"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219390"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>使用 Azure 前门服务的 web 应用程序防火墙配置 IP 限制规则
 本文介绍如何使用 Azure CLI、Azure PowerShell 或 Azure 资源管理器模板在 web 应用程序防火墙 (WAF) 中为 Azure 前门服务配置 IP 限制规则。
 
 基于 IP 地址的访问控制规则是一个自定义的 WAF 规则, 可用于控制对 web 应用程序的访问。 它通过以无类别的域间路由 (CIDR) 格式指定 IP 地址或 IP 地址范围的列表来实现此功能。
 
-默认情况下, 可从 internet 访问你的 web 应用程序。 如果要从已知 IP 地址或 IP 地址范围列表中限制对客户端的访问, 则可以创建一个 IP 匹配规则, 其中包含作为匹配值的 IP 地址的列表, 并将 operator 设置为 "Not" (求反为 true) 以及要**阻止**的操作。 应用 IP 限制规则后, 源自此允许列表外部地址的请求将收到403禁止的响应。  
+默认情况下, 可从 internet 访问你的 web 应用程序。 如果要从已知 IP 地址或 IP 地址范围列表中限制对客户端的访问，则可以创建一个 IP 匹配规则，其中包含作为匹配值的 IP 地址的列表，并将 operator 设置为 "Not" （求反为 true）以及要**阻止**的操作。 应用 IP 限制规则后, 源自此允许列表外部地址的请求将收到403禁止的响应。  
+
+客户端 IP 地址可能不同于 IP 地址 WAF，例如，当客户端通过代理访问 WAF 时。 你可以基于 WAF （SocketAddr）所显示的客户端 IP 地址（RemoteAddr）或套接字 IP 地址创建 IP 限制规则。 
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>使用 Azure CLI 配置 WAF 策略
 
@@ -54,9 +56,9 @@ az network front-door waf-policy create \
 
 在以下示例中:
 -  将*IPAllowPolicyExampleCLI*替换为前面创建的唯一策略。
--  将*ip*地址范围-1 替换为你自己的范围。
+-  将*ip*地址范围-1*替换为你*自己的范围。
 
-首先, 为在上一步中创建的策略创建 IP 允许规则。 注意 **--** 要求使用延迟, 因为规则必须至少包含一个匹配条件。 
+首先，为在上一步中创建的策略创建 IP 允许规则。 注意 **--** 要求使用延迟，因为规则必须至少包含一个匹配条件。 
 
 ```azurecli
 az network front-door waf-policy rule create \
@@ -67,7 +69,7 @@ az network front-door waf-policy rule create \
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI --defer
 ```
-接下来, 将 "匹配条件" 添加到规则:
+接下来，向规则添加客户端 IP 匹配条件：
 
 ```azurecli
 az network front-door waf-policy rule match-condition add\
@@ -79,9 +81,19 @@ az network front-door waf-policy rule match-condition add\
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI 
   ```
-                                                   
-### <a name="find-the-id-of-a-waf-policy"></a>查找 WAF 策略的 ID 
-使用[az network 前门 WAF show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show)命令查找 WAF 策略的 ID。 将以下示例中的*IPAllowPolicyExampleCLI*替换为之前创建的唯一策略。
+对于套接字 IP （SocketAddr）匹配条件：
+  ```azurecli
+az network front-door waf-policy rule match-condition add\
+--match-variable SocketAddr \
+--operator IPMatch
+--values "ip-address-range-1" "ip-address-range-2"
+--negate true\
+--name IPAllowListRule\
+  --resource-group <resource-group-name> \
+  --policy-name IPAllowPolicyExampleCLI                                                  
+
+### Find the ID of a WAF policy 
+Find a WAF policy's ID by using the [az network front-door waf-policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) command. Replace *IPAllowPolicyExampleCLI* in the following example with your unique policy that you created earlier.
 
    ```azurecli
    az network front-door  waf-policy show \
@@ -99,7 +111,7 @@ az network front-door waf-policy rule match-condition add\
      --name <frontdoor-name>
      --resource-group <resource-group-name>
    ```
-在此示例中, WAF 策略将应用于**FrontendEndpoints [0]** 。 可以将 WAF 策略链接到任何前端。
+在此示例中，WAF 策略将应用于**FrontendEndpoints [0]** 。 可以将 WAF 策略链接到任何前端。
 > [!Note]
 > 只需将**WebApplicationFirewallPolicyLink**属性设置一次, 即可将 WAF 策略链接到 Azure 前门服务前端。 后续策略更新会自动应用到前端。
 
@@ -133,7 +145,7 @@ Azure PowerShell 提供了一组 cmdlet, 这些 cmdlet 使用[azure 资源管理
 
 ### <a name="define-an-ip-match-condition"></a>定义 IP 匹配条件
 使用[AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)命令定义 IP 匹配条件。
-在下面的示例中, 将 ip 地址范围 *-1*替换为你自己的范围。    
+在下面的示例中, 将 ip 地址范围 *-1* *替换为你*自己的范围。    
 ```powershell
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable  RemoteAddr `
@@ -141,10 +153,20 @@ $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchValue "ip-address-range-1", "ip-address-range-2"
 -NegateCondition 1
 ```
-     
+
+对于套接字 IP （SocketAddr）匹配条件：   
+```powershell
+$IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
+-MatchVariable  SocketAddr `
+-OperatorProperty IPMatch `
+-MatchValue "ip-address-range-1", "ip-address-range-2"
+-NegateCondition 1
+```
+
+
 ### <a name="create-a-custom-ip-allow-rule"></a>创建自定义 IP 允许规则
 
-使用[AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject)命令定义操作并设置优先级。 在下面的示例中, 将阻止不是来自客户端 Ip 且与列表匹配的请求。
+使用[AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject)命令定义操作并设置优先级。 在下面的示例中，将阻止不是来自客户端 Ip 且与列表匹配的请求。
 
 ```powershell
 $IPAllowRule = New-AzFrontDoorCustomRuleObject `
@@ -155,7 +177,7 @@ $IPAllowRule = New-AzFrontDoorCustomRuleObject `
 ```
 
 ### <a name="configure-a-waf-policy"></a>配置 WAF 策略
-使用`Get-AzResourceGroup`查找包含 Azure 前门服务配置文件的资源组的名称。 接下来, 使用[AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)将 WAF 策略配置为 IP 规则。
+使用`Get-AzResourceGroup`查找包含 Azure 前门服务配置文件的资源组的名称。 接下来，使用[AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)将 WAF 策略配置为 IP 规则。
 
 ```powershell
   $IPAllowPolicyExamplePS = New-AzFrontDoorWafPolicy `
@@ -179,7 +201,7 @@ $IPAllowRule = New-AzFrontDoorCustomRuleObject `
 ```
 
 > [!NOTE]
-> 在此示例中, WAF 策略将应用于**FrontendEndpoints [0]** 。 可以将 WAF 策略链接到任何前端。 只需将**WebApplicationFirewallPolicyLink**属性设置一次, 即可将 WAF 策略链接到 Azure 前门服务前端。 后续策略更新会自动应用到前端。
+> 在此示例中，WAF 策略将应用于**FrontendEndpoints [0]** 。 可以将 WAF 策略链接到任何前端。 只需将**WebApplicationFirewallPolicyLink**属性设置一次, 即可将 WAF 策略链接到 Azure 前门服务前端。 后续策略更新会自动应用到前端。
 
 
 ## <a name="configure-a-waf-policy-with-a-resource-manager-template"></a>使用资源管理器模板配置 WAF 策略

@@ -1,5 +1,5 @@
 ---
-title: 将 Symantec AWS 数据连接到 Azure Sentinel Preview |Microsoft Docs
+title: 将 Symantec AWS 数据连接到 Azure Sentinel |Microsoft Docs
 description: 了解如何将 Symantec AWS 数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 246d4cd7d64554ae575767cdba2e26066ad1720d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 46ad8f6478e632cd57c009700de182993ce01be1
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295627"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240867"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>将 Azure Sentinel 连接到 AWS CloudTrail
 
@@ -82,5 +82,5 @@ ms.locfileid: "68295627"
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 AWS CloudTrail 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何了解[你的数据以及潜在的威胁](quickstart-get-visibility.md)。
-- 开始[通过 Azure Sentinel 检测威胁](tutorial-detect-threats.md)。
+- 开始[通过 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
 

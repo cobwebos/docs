@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: 2a1ee358a6c97b721ec6f0da3eb70269239b0737
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a09ce7b77dfcaa51e7c82f67a5d20000f3e22b61
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077667"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219993"
 ---
 # <a name="move-azure-virtual-network-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 虚拟网络移到另一个区域
 
@@ -27,7 +27,7 @@ ms.locfileid: "71077667"
 - 若要导出虚拟网络并部署模板以在另一个区域中创建虚拟网络，你将需要网络参与者角色或更高版本。
 
 - 虚拟网络对等互连不会重新创建，如果仍存在于模板中，它将失败。  在导出模板之前，必须删除所有虚拟网络对等方，然后在移动虚拟网络后重新建立对等节点。
-    
+
 - 确定源网络布局和当前正在使用的所有资源。 此布局包括但不限于负载均衡器、网络安全组（Nsg）和公共 Ip。
 
 - 验证 Azure 订阅是否允许在使用的目标区域中创建虚拟网络。 请联系支持部门，启用所需配额。
@@ -40,13 +40,13 @@ ms.locfileid: "71077667"
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>导出模板并从门户部署
 
-1. 登录到[Azure 门户](http://portal.azure.com) > **资源组**。
+1. 登录到[Azure 门户](https://portal.azure.com) > **资源组**。
 2. 找到包含源虚拟网络的资源组，然后单击它。
 3. 选择 >**设置** > ""**导出模板**"。
 4. 在 "**导出模板**" 边栏选项卡中选择 "**部署**"。
 5. 单击 "**模板** > " "**编辑参数**"，在联机编辑器中打开 "参数文件" **。**
 6. 若要编辑虚拟网络名称的参数，请在 "**参数**" 下更改 "**值**" 属性：
-    
+
     ```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -62,7 +62,7 @@ ms.locfileid: "71077667"
 
 8.  在编辑器中单击 "**保存**"。
 
-9.  单击 "**模板** > " "**编辑模板**"，在联机编辑器中打开**模板**文件。 
+9.  单击 "**模板** > " "**编辑模板**"，在联机编辑器中打开**模板**文件。
 
 10. 若要编辑 VNET 将移动到的目标区域，请在 "联机" 编辑器中的 "**资源**" 下更改 "**位置**" 属性：
 
@@ -83,11 +83,11 @@ ms.locfileid: "71077667"
                         },
 
     ```
- 
+
 11. 若要获取地区位置代码，请参阅[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国** = 中部**centralus**的区域名称。
- 
+
 12. 你还可以根据需要更改模板中的其他参数，并根据需要进行选择：
-    
+
     * **地址空间**-可以在保存之前更改 VNET 的地址空间，方法是修改**resources** > **addressSpace**部分，**并在 addressPrefixes 文件中**更改属性：
 
         ```json
@@ -179,7 +179,7 @@ ms.locfileid: "71077667"
 
 14. 单击 "**基本** > **订阅**" 以选择将在其中部署目标 VNET 的订阅。
 
-15. 单击 "**基本** > **资源组**" 以选择将在其中部署目标 VNET 的资源组。  可以单击 "**新建**" 为目标 VNET 创建新的资源组。  确保该名称与现有 VNET 的源资源组不相同。 
+15. 单击 "**基本** > **资源组**" 以选择将在其中部署目标 VNET 的资源组。  可以单击 "**新建**" 为目标 VNET 创建新的资源组。  确保该名称与现有 VNET 的源资源组不相同。
 
 16. 验证**基本** > **位置**是否设置为要在其中部署 VNET 的目标位置。
 
@@ -189,7 +189,7 @@ ms.locfileid: "71077667"
 
 19. 单击 "**购买**" 按钮部署目标虚拟网络。
 
-## <a name="discard"></a>弃用 
+## <a name="discard"></a>弃用
 
 如果希望放弃目标虚拟网络，请删除包含目标虚拟网络的资源组。  为此，请在门户的 "仪表板" 中选择资源组，并选择 "概述" 页顶部的 "**删除**"。
 
