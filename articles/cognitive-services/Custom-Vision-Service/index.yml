@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 25ac2e195afc1349ad257408e8339d169c104de1
-  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.openlocfilehash: d17e8eb8d7d70fa59919bb7ef0821189c5ea70c8
+  ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/12/2019
-  ms.locfileid: "70931101"
+  ms.lasthandoff: 09/23/2019
+  ms.locfileid: "71203861"
 landingContent:
 - title: 关于自定义视觉
   linkLists:
@@ -92,6 +92,8 @@ landingContent:
       url: export-model-python.md
   - linkListType: tutorial
     links:
+    - text: IoT 视觉警报应用
+      url: iot-visual-alerts-tutorial.md
     - text: 适用于移动设备的徽标检测程序
       url: logo-detector-mobile.md
 - title: 使你的项目保持最新

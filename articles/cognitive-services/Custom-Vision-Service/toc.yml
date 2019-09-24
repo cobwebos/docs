@@ -44,6 +44,8 @@
           href: go-tutorial-object-detection.md
 - name: 教程
   items:
+    - name: IoT 视觉警报应用
+      href: iot-visual-alerts-tutorial.md
     - name: 适用于移动设备的徽标检测程序
       href: logo-detector-mobile.md
 - name: 操作指南

@@ -1,72 +1,117 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Policy 服务文档
+### YamlMime:Landing
+title: Azure Policy 文档
+summary: 可以借助 Azure Policy，通过策略定义来对资源强制实施规则并施加影响，以便管理和预防 IT 问题。
 metadata:
-  title: Azure Policy 文档 - 教程和 API 参考
-  description: 可以借助 Azure Policy，通过策略定义来对资源强制实施规则并施加影响，以便管理和预防 IT 问题。 使用 Azure Policy 时，资源始终符合公司标准和服务级别协议。
-  author: DCtheGeek
-  manager: carmonm
+  title: Azure Policy 文档
+  description: 可以借助 Azure Policy，通过策略定义来对资源强制实施规则并施加影响，以便管理和预防 IT 问题。
   ms.service: azure-policy
   ms.topic: landing-page
-  ms.date: 03/16/2019
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: 可以借助 Azure Policy，通过策略定义来对资源强制实施规则并施加影响，以便管理和预防 IT 问题。 使用 Azure Policy 时，资源始终符合公司标准和服务级别协议。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何在 Azure 中创建、分配和管理策略定义。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              alt: Azure 门户
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure 门户
-            href: ./assign-policy-portal
-          - image:
-              alt: Azure PowerShell
-              src: ./media/powershell.svg
-            text: Azure PowerShell
-            href: ./assign-policy-powershell
-          - image:
-              alt: Azure CLI
-              src: ./media/cli.svg
-            text: Azure CLI
-            href: ./assign-policy-azurecli
-          - image:
-              alt: 资源管理器模板
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: 资源管理器模板
-            href: ./assign-policy-template
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何在 Azure 中创建、分配和管理策略定义。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">创建和管理 Azure Policy</a>
-          - html: <a href="/azure/governance/policy/tutorials/create-custom-policy-definition">创建自定义策略定义</a>
-  - title: 示例
-    items:
-      - type: paragraph
-        text: 请查看为了帮助你在 Azure 中创建策略定义而提供的示例。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/governance/policy/samples/index">示例索引</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: '<p><a href="/cli/azure/policy">Azure CLI</a></p><p><a href="/powershell/module/az.resources/#policies">Azure PowerShell（策略）</a></p><p><a href="/powershell/module/az.policyinsights#policy_insights">Azure PowerShell（策略见解）</a></p><p><a href="https://www.powershellgallery.com/packages/Az.GuestConfiguration">Azure PowerShell（来宾配置）</a></p>'
-          - title: 资源管理器模板
-            html: <p><a href="/azure/templates/microsoft.authorization/policyassignments">分配</a></p><p><a href="/azure/templates/microsoft.authorization/policydefinitions">策略定义</a></p><p><a href="/azure/templates/microsoft.authorization/policysetdefinitions">计划定义</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/policy-insights/policyevents">事件</a></p><p><a href="/rest/api/policy-insights/policystates">状态</a></p><p><a href="/rest/api/resources/policyassignments">分配</a></p><p><a href="/rest/api/resources/policydefinitions">策略定义</a></p><p><a href="/rest/api/resources/policysetdefinitions">计划定义</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">策略受跟踪的资源</a></p><p><a href="/rest/api/policy-insights/remediations">修正</a></p><p><a href="/rest/api/guestconfiguration/">来宾配置</a></p>
+  ms.date: 09/17/2019
+  ms.openlocfilehash: 43deed57090cd2f64bc9ee96f6f0c6f5286b0dca
+  ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/23/2019
+  ms.locfileid: "71203975"
+landingContent:
+- title: 关于 Azure Policy
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Policy？
+      url: ./overview.md
+    - text: 策略效果
+      url: ./concepts/effects.md
+    - text: 定义结构
+      url: ./concepts/definition-structure.md
+    - text: 分配结构
+      url: ./concepts/assignment-structure.md
+  - linkListType: video
+    links:
+    - text: 版本 2018 中的 Azure Policy
+      url: https://channel9.msdn.com/events/Build/2018/THR2030
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 分配策略（门户）
+      url: ./assign-policy-portal.md
+    - text: 分配策略 (PowerShell)
+      url: ./assign-policy-powershell.md
+    - text: 分配策略 (Azure CLI)
+      url: ./assign-policy-azurecli.md
+    - text: 分配策略（模板）
+      url: ./assign-policy-template.md
+  - linkListType: tutorial
+    links:
+    - text: 创建和管理策略
+      url: ./tutorials/create-and-manage.md
+  - linkListType: deploy
+    links:
+    - text: 策略示例索引
+      url: ./samples/index.md
+- title: 创作策略
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 创建自定义策略
+      url: ./tutorials/create-custom-policy-definition.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 SDK 创建策略
+      url: ./how-to/programmatically-create.md
+    - text: 为数组创作策略
+      url: ./how-to/author-policies-for-arrays.md
+  - linkListType: concept
+    links:
+    - text: 适用于 AKS 的策略
+      url: ./concepts/rego-for-aks.md
+    - text: 适用于 VM 的策略
+      url: ./concepts/guest-configuration.md
+- title: 评估并修正资源
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 获取符合性数据
+      url: ./how-to/get-compliance-data.md
+    - text: 确定导致非符合性的原因
+      url: ./how-to/determine-non-compliance.md
+    - text: 修正不符合资源
+      url: ./how-to/remediate-resources.md
+- title: 参与
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure 治理 YouTube 频道
+      url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+    - text: 请求产品功能
+      url: https://feedback.azure.com/forums/915958-azure-governance
+    - text: Azure 治理的技术社区
+      url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/policy
+    - text: Azure PowerShell（策略）
+      url: /powershell/module/az.resources/#policies
+    - text: Azure PowerShell（策略见解）
+      url: /powershell/module/az.policyinsights#policy_insights
+    - text: 用于 .NET 的 Azure SDK（分配）
+      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+    - text: 用于 .NET 的 Azure SDK（策略定义）
+      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - text: REST（策略见解）
+      url: /rest/api/policy-insights/
+    - text: REST（分配）
+      url: /rest/api/resources/policyassignments
+    - text: REST（定义）
+      url: /rest/api/resources/policydefinitions
+    - text: REST（计划）
+      url: /rest/api/resources/policysetdefinitions
+    - text: 资源管理器模板
+      url: /azure/templates/microsoft.authorization
