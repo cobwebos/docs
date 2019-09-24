@@ -3,9 +3,8 @@ title: 在 Azure 安全中心中比较基线与文件完整性监视 |Microsoft 
 description: 了解如何在 Azure 安全中心中比较基线与文件完整性监视。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: c8a2a589-b737-46c1-b508-7ea52e301e8f
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: afc03baa71f17deb0b923f483fde214a86c5e9b4
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 116f295365084e7570ed9afc493d9179ea2dfb5a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296469"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202134"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>使用文件完整性监视 (FIM) 比较基线
 
@@ -35,7 +34,7 @@ ms.locfileid: "68296469"
 
 ## <a name="enable-built-in-recursive-registry-checks"></a>启用内置的递归注册表检查
 
-FIM 注册表 hive 默认值提供了一种简便的方法来监视公共安全区域内的递归更改。  例如, 攻击者可以通过在启动或关闭时配置执行, 将脚本配置为在 LOCAL_SYSTEM 上下文中执行。  若要监视此类型的更改, 请启用内置检查。  
+FIM 注册表 hive 默认值提供了一种简便的方法来监视公共安全区域内的递归更改。  例如，攻击者可以通过在启动或关闭时配置执行，将脚本配置为在 LOCAL_SYSTEM 上下文中执行。  若要监视此类型的更改, 请启用内置检查。  
 
 ![注册表](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b731c5fe6b6c7055b7397386b1e9fd4bed47db8a
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 62387fe7ddbde75e79724c77dd7eeedd5cae64c3
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910593"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201867"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南适用于信息技术（IT）专业人员、IT 架构师、信息安全分析师和云管理员，计划使用 Azure 安全中心。
@@ -182,13 +182,13 @@ Azure 安全中心使用 Microsoft Monitoring Agent-这是 Azure Monitor 服务�
 计划在进行日常安全操作时，访问[威胁智能](https://docs.microsoft.com/azure/security-center/security-center-threat-intel)选项。 可以在其中确定对环境的安全威胁，例如，确定特定计算机是否为僵尸网络的一部分。
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>监视新的或更改的资源
-大多数 Azure 环境是动态的，新资源会定期出现和消失，也会出现新配置或新变化等。安全中心可确保用户能够查看这些新资源的安全状态。
+大多数 Azure 环境都是动态的，其中资源会定期创建、启动或关闭、重新配置和更改。 安全中心可确保用户能够查看这些新资源的安全状态。
 
 将新资源（VM、SQL 数据库）添加到 Azure 环境时，安全中心会自动发现这些资源，并开始监视其安全性。 这还包括 PaaS Web 角色和辅助角色。 如果在 [安全策略](tutorial-security-policy.md)中启用了数据收集功能，则会自动为虚拟机启用更多监视功能。
 
 ![关键领域](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-newUI.png)
 
-1. 对于虚拟机，请单击“预防”部分的“计算”。 如果在启用数据或相关建议时出现问题，该问题会显示在“概述”选项卡和“监视建议”部分。
+1. 对于虚拟机，请单击**资源安全卫生**部分下的 "**计算 & 应用**"。 如果在启用数据或相关建议时出现问题，该问题会显示在“概述”选项卡和“监视建议”部分。
 2. 查看“建议”，了解为新资源确定了何种安全风险（如果有）。
 3. 将新的 VM 添加到环境时，只在一开始安装了操作系统，这很常见。 资源所有者可能需要一些时间来部署其他应用供这些 VM 使用。  理想情况下，用户应该知道此工作负荷的最终目的。 它将用作应用程序服务器？ 根据这个新的工作负荷的用途，可以启用相应的 **安全策略**，这在此工作流中是第三步。
 4. 将新资源添加到 Azure 环境时，"**安全警报**" 磁贴中可能会出现新的警报。 在此磁贴中查找新警报并遵循建议。

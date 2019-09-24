@@ -3,9 +3,8 @@ title: 保护 Azure 安全中心的网络资源 | Microsoft Docs
 description: 本文档介绍 Azure 安全中心中的建议，以帮助你保护 Azure 网络资源并保持符合安全策略。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 536e2e3732a0b196801e37c51dfb6c746e070441
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.author: memildin
+ms.openlocfilehash: bf33fe29b18b09bf903e1fc331f1c378eacb3e17
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910461"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201711"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>保护 Azure 安全中心的网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
@@ -134,7 +133,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 ## <a name="network-recommendations"></a>网络建议
 
-|建议名称|描述|Severity|安全功能分数|资源类型|
+|建议名称|描述|severity|安全功能分数|资源类型|
 |----|----|----|----|----|----|
 |应启用子网级别的网络安全组|启用网络安全组来控制子网中部署的资源的网络访问。|高/中|30|Subnet|
 |虚拟机应与网络安全组相关联|启用网络安全组以控制虚拟机的网络访问。|高/中|30|虚拟机|
@@ -146,7 +145,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 |应禁用虚拟机上的 IP 转发|禁用 IP 转发。 在虚拟机的 NIC 上启用 IP 转发后，计算机可以接收发送到其他目标的流量。 很少需要 IP 转发（例如，使用 VM 作为网络虚拟设备时），因此应由网络安全团队进行审核。|中型|10|虚拟机|
 |只能通过 HTTPS 访问 Web 应用程序|为 web 应用程序启用 "仅 HTTPS" 访问权限。 使用 HTTPS 可确保服务器/服务进行身份验证, 并保护传输中的数据免受网络层窃听攻击。|中型|20|Web 应用程序|
 |应在虚拟机上应用实时网络访问控制|应用实时 (JIT) 虚拟机 (VM) 访问控制以永久锁定对所选端口的访问权限, 并使授权用户仅在有限的时间内通过 JIT 打开这些端口。|高|20|虚拟机|
-|只能通过 HTTPS 访问函数应用|为 function app 启用 "仅 HTTPS" 访问权限。 使用 HTTPS 可确保服务器/服务进行身份验证, 并保护传输中的数据免受网络层窃听攻击。|中型|20|Function App|
+|只能通过 HTTPS 访问函数应用|为 function app 启用 "仅 HTTPS" 访问权限。 使用 HTTPS 可确保服务器/服务进行身份验证, 并保护传输中的数据免受网络层窃听攻击。|中型|20|函数应用|
 |应该启用安全传输到存储帐户|启用到存储帐户的安全传输。 安全传输选项会强制存储帐户仅接受来自安全连接 (HTTPS) 的请求。 使用 HTTPS 可确保服务器与服务之间的身份验证, 并保护数据免遭网络层攻击 (如中间人、窃听和会话劫持) 的传输。|高|20|存储帐户|
 
 ## <a name="see-also"></a>请参阅

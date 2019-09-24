@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 09158a935aac023382049d3aa9ce23a711972023
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 8ed3b8e507a93f75b036b3a97eb34395ce525314
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104764"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202935"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 创建专用链接服务
 本文介绍如何使用 Azure PowerShell 在 Azure 中创建专用链接服务。
@@ -98,7 +98,7 @@ $privateLinkService = New-AzPrivateLinkService `
 -ServiceName $plsName `
 -ResourceGroupName $rgName `
 -Location $location `
--LoadBalancerFrontendIpConfiguration $frontendIP`
+-LoadBalancerFrontendIpConfiguration $frontendIP `
 -IpConfiguration $IPConfig 
 ```
 
@@ -133,6 +133,7 @@ $vnetPE = New-AzVirtualNetwork `
 -AddressPrefix "11.0.0.0/16" `
 -Subnet $peSubnet 
 ```
+
 ### <a name="create-a-private-endpoint"></a>创建专用终结点
 在虚拟网络中创建使用上面创建的专用链接服务的专用终结点：
  
@@ -141,13 +142,14 @@ $vnetPE = New-AzVirtualNetwork `
 $plsConnection= New-AzPrivateLinkServiceConnection `
 -Name plsConnection `
 -PrivateLinkServiceId  $privateLinkService.Id  
+
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest 
- ```
-### Get private endpoint
-Get the IP address of the private endpoint with `Get-AzPrivateEndpoint` as follows:
+```
+ 
+### <a name="get-private-endpoint"></a>获取专用终结点
+获取专用终结点`Get-AzPrivateEndpoint`的 IP 地址，如下所示：
 
 ```azurepowershell
-
 # Get Private Endpoint and its IP Address 
 $pe =  Get-AzPrivateEndpoint `
 -Name $peName `
@@ -155,8 +157,9 @@ $pe =  Get-AzPrivateEndpoint `
 -ExpandResource networkinterfaces
 
 $pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress 
- ```
-  
+
+```
+
 ### <a name="approve-the-private-endpoint-connection"></a>批准专用终结点连接
 通过 "AzPrivateEndpointConnection" 批准与专用链接服务的专用终结点连接。
 
@@ -167,7 +170,9 @@ $pls = Get-AzPrivateLinkService `
 -ResourceGroupName $rgName 
 
 Approve-AzPrivateEndpointConnection -ResourceId $pls.PrivateEndpointConnections[0].Id -Description "Approved" 
- ``` 
+
+``` 
+
 ## <a name="next-steps"></a>后续步骤
 - 了解有关[Azure 专用链接](private-link-overview.md)的详细信息
  

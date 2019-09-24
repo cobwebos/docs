@@ -3,9 +3,8 @@ title: Azure 安全中心与 Azure 虚拟机 | Microsoft Docs
 description: 本文档可帮助理解 Azure 安全中心如何能够保护 Azure 虚拟机。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
 ms.service: security-center
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: 5d13e7375c9e3cd874bc61b686ff2549c38da1f3
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 481dbff90ee5368e1581502e612cb5d1993ac89e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036364"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200727"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure 安全中心与 Azure 虚拟机
 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。

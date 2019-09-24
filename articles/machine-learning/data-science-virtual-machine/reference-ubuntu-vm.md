@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 20fe027ddf47ba98cef41cdc40a1b2e0d387c2a5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0c48b8ba28f67ac7f38d6f636728abe7c5a6bd4e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174703"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204035"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>参考：Ubuntu （Linux） Data Science Virtual Machine
 
@@ -342,3 +342,6 @@ rattle()
 
 可以退出 Rattle 和 R。现在，可以修改生成的 R 脚本。 或者，可以按原样使用该脚本，并可随时运行它来重复 Rattle UI 中的所有操作。 尤其是对于 R 初学者而言，使用此方法可在简单的图形界面中快速执行分析和机器学习，同时在 R 中自动生成代码来修改项目或用于学习。
 
+## <a name="next-steps"></a>后续步骤
+
+还有其他问题？ 请考虑创建[支持票证](https://azure.microsoft.com/support/create-ticket/)。

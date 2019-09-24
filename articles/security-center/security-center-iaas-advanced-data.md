@@ -3,9 +3,8 @@ title: Azure 安全中心中 IaaS 的高级数据安全性 |Microsoft Docs
 description: " 了解如何在 Azure 安全中心为 IaaS 启用高级数据安全性。 "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: ba46c460-6ba7-48b2-a6a7-ec802dd4eec2
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0b83575baa2221f0b502abbf919654492c7ab6cf
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 287da68617a9527bc398df577cf8d10773fa8557
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295757"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202170"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Azure 虚拟机上 SQL server 的高级数据安全性 (公共预览版)
 Azure 虚拟机上的 SQL Server 高级数据安全是适用于高级 SQL 安全功能的统一包。 目前 (公共预览版) 提供的功能可用于呈现和缓解潜在的数据库漏洞并检测可能指示数据库威胁的异常活动。 
@@ -49,7 +48,7 @@ Azure 虚拟机上的 SQL Server 高级数据安全是适用于高级 SQL 安全
 
     ![IaaS 的高级数据安全性](./media/security-center-advanced-iaas-data/sql-advanced-data-security.png)
 
-1. 单击“创建”。  随即显示工作区。
+1. 单击“创建”。 随即显示工作区。
 
     ![高级数据安全创建](./media/security-center-advanced-iaas-data/sql-advanced-data-create.png)
 

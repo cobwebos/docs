@@ -3,9 +3,8 @@ title: Azure 安全中心提供的支持功能 |Microsoft Docs
 description: 本文档提供 Azure 安全中心支持的服务列表。
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
 ms.devlang: na
@@ -13,18 +12,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0d2b417dd01e26f0f93722be66d82972b52aca83
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.author: memildin
+ms.openlocfilehash: 97708fa3211aa203aab56253b1c7720d04329014
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70234577"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200811"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure 安全中心提供支持的功能
 
 > [!NOTE]
->某些功能仅适用于标准层。 如果尚未注册安全中心的标准层, 则可以使用免费试用期。 有关详细信息，请参阅[安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+>某些功能仅适用于标准层。 如果尚未注册安全中心的标准层，则可以使用免费试用期。 有关详细信息，请参阅[安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
 以下部分介绍了可用于[支持的平台](security-center-os-coverage.md)的安全中心功能。
 
@@ -77,7 +76,7 @@ ms.locfileid: "70234577"
 | McAfee v10+ | Linux 服务器系列  | 否 | 是 **\*** |
 | Sophos V9.x +| Linux 服务器系列  | 否 | 是的 **\***  |
 
- **\*** 覆盖状态和支持数据当前仅可用于与受保护订阅关联的 Log Analytics 工作区中, 而不会在 Azure 安全中心门户中反映出来。
+ **\*** 覆盖状态和支持数据当前仅可用于与受保护订阅关联的 Log Analytics 工作区中，而不会在 Azure 安全中心门户中反映出来。
 
 > [!NOTE]
 >
@@ -87,7 +86,7 @@ ms.locfileid: "70234577"
 
 ## PaaS 服务支持的<a name="paas-services"></a>功能
 
-Azure 安全中心支持以下 PaaS 资源:
+Azure 安全中心支持以下 PaaS 资源：
 
 |服务|建议 (免费)|威胁检测 (标准)|
 |----|----|----|
@@ -98,7 +97,7 @@ Azure 安全中心支持以下 PaaS 资源:
 |Blob 存储|✔| ✔|
 |存储帐户|✔| 不可用|
 |应用服务|✔| ✔|
-|函数|✔| X|
+|Functions|✔| X|
 |云服务|✔| X|
 |VNet|✔| 不可用|
 |Subnet|✔| 不可用|
@@ -121,7 +120,7 @@ Azure 安全中心支持以下 PaaS 资源:
 
 \* 公共预览版目前支持这些功能。
 
-\*\*Azure Active Directory (Azure AD) 建议仅适用于标准订阅。
+\*\*Azure Active Directory （Azure AD）建议仅适用于标准订阅。
 
 ## <a name="next-steps"></a>后续步骤
 

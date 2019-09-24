@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: bc1d52a1062d1848daaaeef7977f96cd270567c8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1779a33e4ac021c1807ce10dc224e0b8c8c53ebb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203469"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200537"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复
 
@@ -47,7 +47,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>步骤 1：登录到 Azure 帐户
 
-1. 打开 PowerShell 控制台，并运行以下命令以登录到 Azure 帐户。 此 cmdlet 打开一个网页，提示输入帐户凭据：**连接 AzAccount**。
+1. 打开 PowerShell 控制台，并运行以下命令以登录到 Azure 帐户。 此 cmdlet 打开一个网页，提示输入帐户凭据：**AzAccount**。
     - 或者，可以使用 **-Credential** 参数，在 **Connect-AzAccount** cmdlet 中将帐户凭据包含为参数。
     - 如果是代表租户的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如：**Connect-AzAccount -Tenant "fabrikam.com"**
 2. 由于一个帐户可以有多个订阅，因此请将要使用的订阅与帐户关联在一起：
@@ -58,7 +58,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
     `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
-4. 验证命令输出中是否将“RegistrationState”设置为“已注册”，如果是，则可继续执行步骤 2   。 否则，需要通过运行以下命令注册订阅中缺失的提供程序：
+4. 验证命令输出中是否将“RegistrationState”设置为“已注册”，如果是，则可继续执行步骤 2。 否则，需要通过运行以下命令注册订阅中缺失的提供程序：
 
     `Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
@@ -115,8 +115,8 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
 如果运行的是 Hyper-V 核心服务器，请下载安装程序文件并执行以下操作：
-1. 通过运行以下命令，可将文件 AzureSiteRecoveryProvider.exe 解压缩到本地目录： ```AzureSiteRecoveryProvider.exe /x:. /q```
-2. 运行```.\setupdr.exe /i```结果记录到 %programdata%\asrlogs\drasetupwizard.log。
+1. 通过运行以下命令，将文件从 Azuresiterecoveryprovider.exe 解压缩到本地目录：```AzureSiteRecoveryProvider.exe /x:. /q```
+2. 运行```.\setupdr.exe /i```结果记录到%Programdata%\ASRLogs\DRASetupWizard.log。
 
 3. 运行此命令注册服务器：
 
@@ -143,9 +143,13 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
         $protectionContainer = Get-AsrProtectionContainer
 3. 将保护容器与复制策略相关联，如下所示：
 
-     $Policy = Get-AsrPolicy -FriendlyName $PolicyName   $associationJob  = New-AsrProtectionContainerMapping -Name $mappingName -Policy $Policy -PrimaryProtectionContainer $protectionContainer[0]
-
+        $Policy = Get-AsrPolicy -FriendlyName $PolicyName
+        $associationJob  = New-AsrProtectionContainerMapping -Name $mappingName -Policy $Policy -PrimaryProtectionContainer $protectionContainer[0]
 4. 等待关联作业成功完成。
+
+5. 检索保护容器映射。
+
+        $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $protectionContainer
 
 ## <a name="step-7-enable-vm-protection"></a>步骤 7：启用 VM 保护
 
@@ -155,8 +159,8 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
         $ProtectableItem = Get-AsrProtectableItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
 2. 保护 VM。 如果要保护的 VM 有多个附加磁盘，则需使用 *OSDiskName* 参数指定操作系统磁盘。
 
-        $Ostype = "Windows"                                 # "Windows" or "Linux"
-        $DRjob = New-AsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS Windows -RecoveryResourceGroupId
+        $OSType = "Windows"                                 # "Windows" or "Linux"
+        $DRjob = New-AsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID
 
 3. 等待 VM 在完成初始复制后进入受保护状态。 这可能需要一段时间，具体取决于诸如要复制的数据量和 Azure 的可用上游带宽等因素。 进入受保护状态后，更新作业状态和 StateDescription，如下所示：
 

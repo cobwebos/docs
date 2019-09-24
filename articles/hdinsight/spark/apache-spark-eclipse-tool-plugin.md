@@ -2,18 +2,18 @@
 title: 'Azure Toolkit for Eclipse：为 HDInsight Spark 创建 Scala 应用程序 '
 description: 使用 Azure Toolkit for Eclipse 中的 HDInsight 工具开发以 Scala 编写的 Spark 应用程序，并将应用程序直接从 Eclipse IDE 提交到 HDInsight Spark 群集。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.author: hrasheed
-ms.openlocfilehash: b027ef911b65931f7c96ad45fae66656b3586730
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1ebea83d87cd169f61c91a93f092fa277f5017a7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994592"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203803"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>使用 Azure Toolkit for Eclipse 为 HDInsight 群集创建 Apache Spark 应用程序
 
@@ -50,11 +50,12 @@ ms.locfileid: "70994592"
 
 1. 启动 Eclipse IDE 并打开 Azure 资源管理器。 在“窗口”菜单中选择“显示视图”，并选择“其他”。 在打开的对话框中展开“Azure”，选择“Azure 资源管理器”，再选择“确定”。
 
-   ![“显示视图”对话框](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
+   ![Apache Spark Eclispse 显示视图](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
+
 1. 右键单击“Azure”节点，再选择“登录”。
 1. 在“Azure 登录”对话框框中，选择“身份验证方法”，选择“登录”并输入 Azure 凭据。
 
-   ![Azure 登录对话框](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
+   ![Apache Spark Eclispse Azure 符号](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
 
 1. 登录之后，“选择订阅”对话框会列出与凭据关联的所有 Azure 订阅。 单击“选择”关闭对话框。
 
@@ -183,7 +184,7 @@ ms.locfileid: "70994592"
 
    * 将鼠标悬停在作业图上。 将显示有关运行作业的基本信息。 选择作业图，可以看到每个作业生成的阶段和信息。
 
-     ![作业阶段详细信息](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
+     ![Apache Spark 作业图阶段信息](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
 
    * 选择“日志”选项卡查看常用的日志，包括“驱动程序 Stderr”、“驱动程序 Stdout”和“目录信息”。
 
@@ -238,7 +239,7 @@ ms.locfileid: "70994592"
    * 在左窗格中，选择“HDInsight”。
    * 在右窗格中，选择“Spark on HDInsight 本地运行示例(Scala)”。
 
-   ![“新建项目”对话框](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
+   ![新项目选择向导对话框](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 
 1. 若要提供项目详细信息，请执行前面部分[为 HDInsight Spark 群集设置 Spark Scala 项目](#set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster)中的步骤 3 到步骤 6。
 

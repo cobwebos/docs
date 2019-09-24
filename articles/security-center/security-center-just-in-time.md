@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9948f4d9e6287530004b073adf10bb723899e96d
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 2abe917d1713bbc5f5844aced5e688baacc7d397
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910607"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202018"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用实时功能管理虚拟机访问
 
@@ -38,7 +38,7 @@ ms.locfileid: "70910607"
 
 如果启用了实时访问，安全中心会通过创建 NSG 规则来锁定发往 Azure VM 的入站流量。 你需要选择要锁定 VM 上的哪些端口的入站流量。 这些端口将受实时解决方案控制。
 
-当用户请求访问 VM 时，安全中心会检查该用户是否具有允许用户成功请求访问 VM 的[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 如果请求获得批准，安全中心将自动配置网络安全组 (NSG) 和 Azure 防火墙，以便在指定的时间内允许入站流量到达选定端口和请求的源 IP 地址或范围。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。 但是，那些已经建立的连接不会中断。
+当用户请求访问 VM 时，安全中心会检查该用户是否具有该 VM 的[基于角色的访问控制（RBAC）](../role-based-access-control/role-assignments-portal.md)权限。 如果请求获得批准，安全中心将自动配置网络安全组 (NSG) 和 Azure 防火墙，以便在指定的时间内允许入站流量到达选定端口和请求的源 IP 地址或范围。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。 但是，那些已经建立的连接不会中断。
 
  > [!NOTE]
  > 如果对 Azure 防火墙后面的 VM 批准了 JIT 访问请求，则安全中心会自动更改 NSG 和防火墙策略规则。 在指定的时间内，规则将允许将入站流量发送到选定的端口以及请求的源 IP 地址或范围。 此时间过后，安全中心会将防火墙和 NSG 规则还原到其以前的状态。

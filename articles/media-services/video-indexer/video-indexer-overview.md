@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: juliako
-ms.openlocfilehash: a4b7ccf6ece8ed40d6f6c6a22410d4bbe99e590a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: d346f68534a9fdbc286cd5521c00d81c2a5fec78
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146475"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203555"
 ---
 # <a name="what-is-video-indexer"></a>什么是视频索引器？
 
@@ -79,7 +79,6 @@ Azure 媒体服务视频索引器是基于 Azure 认知服务构建的 AI 解决
 
 * **关键字提取**：从语音和视觉文本中提取关键字。
 * **命名实体提取**：通过自然语言处理（NLP）从语音和视觉文本中提取品牌、位置和人物。
-* **品牌提取**：从语音和视觉文本中提取品牌。
 * **主题推理**：根据脚本推理主要主题。 包括第一级 IPTC 分类。
 * **项目**：提取每个模型的丰富的“下一种详细程度”项目。
 * **情绪分析**：在语音和视觉文本中识别积极、消极和中性情绪。

@@ -3,23 +3,22 @@ title: 在 Azure 安全中心集成安全解决方案 | Microsoft Docs
 description: 了解如何将 Azure 安全中心与合作伙伴集成，以增强 Azure 资源的总体安全性。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 9d52526f87f20a855c045f4e565793ac29abf04a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 03/20/2019
+ms.author: memildin
+ms.openlocfilehash: 25e7262842de2bcf3823a51dfe6d97b5558b16fe
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100997"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201749"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -34,7 +33,7 @@ ms.locfileid: "70100997"
 - **集成检测**：自动收集、聚合合作伙伴解决方案中的安全事件，并将其作为安全中心警报和事件的一部分进行显示。 这些事件还与来自其他源的检测融合在一起，以提供高级威胁检测功能。
 - **统一的运行状况监视和管理**：客户可以使用集成式运行状况事件，一目了然地监视所有合作伙伴解决方案。 可通过使用合作伙伴解决方案轻松地访问高级设置，进行基本管理。
 
-目前, 集成的安全解决方案包括通过[Qualys](https://www.qualys.com/public-cloud/#azure)和[Rapid7](https://www.rapid7.com/products/insightvm/)和 Microsoft 应用程序网关 Web 应用程序防火墙的漏洞评估。
+目前，集成的安全解决方案包括通过[Qualys](https://www.qualys.com/public-cloud/#azure)和[Rapid7](https://www.rapid7.com/products/insightvm/)和 Microsoft 应用程序网关 Web 应用程序防火墙的漏洞评估。
 
 > [!NOTE]
 > 安全中心不会在合作伙伴虚拟设备上安装 Microsoft Monitoring Agent，因为大多数安全供应商都禁止在其设备上运行外部代理。
@@ -42,7 +41,7 @@ ms.locfileid: "70100997"
 >
 
 ## <a name="how-security-solutions-are-integrated"></a>安全中心如何集成
-从安全中心部署的 Azure 安全解决方案是自动连接的。 你还可以连接其他安全数据源, 包括在本地或其他云中运行的计算机。
+从安全中心部署的 Azure 安全解决方案是自动连接的。 你还可以连接其他安全数据源，包括在本地或其他云中运行的计算机。
 
 ![合作伙伴解决方案集成](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
 

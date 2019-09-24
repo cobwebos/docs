@@ -3,9 +3,8 @@ title: Azure 安全中心的置信度评分 | Microsoft Docs
 description: " 了解如何使用 Azure 安全中心置信度评分。 "
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e88198f8-2e16-409d-a0b0-a62e68c2f999
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
-ms.author: rkarlin
-ms.openlocfilehash: 64bab5c1b99720eecb189834d7a11802cf919ca3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 0f0380ca4a285d9cb4a8472a40c77130a8f63035
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60916555"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202377"
 ---
 # <a name="alert-confidence-score"></a>警报置信度分数 
 
@@ -43,7 +42,7 @@ ms.locfileid: "60916555"
  ![置信度分数][1]
 
 查看安全中心给出警报置信度时所依据的数据：
-- 在“安全警报”边栏选项卡中的“置信度”下，查看给出该置信度评分所依据的观测结果，并获取与警报相关的见解。  这可以更深入地了解导致该警报的活动性质。
+- 在“安全警报”边栏选项卡中的“置信度”下，查看给出该置信度评分所依据的观测结果，并获取与警报相关的见解。 这可以更深入地了解导致该警报的活动性质。
 
   ![可疑的置信度评分][2]
 

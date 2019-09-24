@@ -3,9 +3,8 @@ title: Azure 安全中心数据安全性 | Microsoft Docs
 description: 本文档介绍如何在 Azure 安全中心管理数据和确保数据安全性。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 33f2c9f4-21aa-4f0c-9e5e-4cd1223e39d7
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: cd91b83bc808d811fc50293fbf1726d609ad5b46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 30f4358bea2670cfa8d825bf1ef75feeba7ea851
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234085"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202337"
 ---
 # <a name="azure-security-center-data-security"></a>Azure 安全中心数据安全性
 为了帮助客户防止、检测和应对威胁，Azure 安全中心将收集和处理安全相关的数据，包括配置信息、元数据、事件日志、故障转储文件，等等。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。
@@ -52,8 +51,8 @@ Azure 安全中心将分析以下源中的数据，提供安全状态视图、�
 | 加拿大                              | 加拿大        |
 | 欧洲（英国除外）   | 欧洲        |
 | 英国                      | 英国 |
-| 亚洲（印度、日本、韩国、中国除外）   | 亚太区  |
-| 韩国                              | 亚太区  |
+| 亚洲（印度、日本、韩国、中国除外）   | 亚太  |
+| 韩国                              | 亚太  |
 | 印度                               | 印度         |
 | 日本                               | 日本         |
 | 中国                               | 中国         |
@@ -88,12 +87,12 @@ Microsoft Monitoring Agent 扫描各种安全相关配置和事件，并将其�
 > [!NOTE]
 > 也可通过 REST API 使用安全建议。 有关详细信息，请阅读 [Security Resource Provider REST API Reference](https://msdn.microsoft.com/library/mt704034(Azure.100).aspx)（安全资源提供程序 REST API 参考）。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 本文档介绍如何在 Azure 安全中心管理数据和确保数据安全性。 若要详细了解 Azure 安全中心，请参阅：
 
 * [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) （Azure 安全中心规划和操作指南）- 了解如何规划并理解设计注意事项，以便采用 Azure 安全中心。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全警报
-* [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) （通过 Azure 安全中心监视合作伙伴解决方案）- 了解如何监视合作伙伴解决方案的运行状况。
+* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) - 了解如何监视合作伙伴解决方案的运行状态。
 * [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题
 * [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章

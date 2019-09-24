@@ -3,9 +3,8 @@ title: 保护 Azure 安全中心的 Azure 数据和存储服务 |Microsoft Docs
 description: 本文档介绍了 Azure 安全中心提供的建议，这些建议有助于保护数据和 Azure SQL 服务，并遵守安全策略。
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 5f34f5e0c622ff107da880d9a4a77c63568b63b0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: memildin
+ms.openlocfilehash: 80611fe0c37af7dfd27b561186f3e967ad3159b4
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100940"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201035"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>保护 Azure 安全中心的 Azure 数据和存储服务
 本主题说明如何查看和实施有关数据和存储资源的安全建议。 Azure 安全中心在分析 Azure 资源的安全状态时发现这些建议。
@@ -40,7 +39,7 @@ ms.locfileid: "70100940"
 * 单击每个选项卡, 并按资源类型查看建议。
 
     > [!NOTE]
-    > 有关存储加密的详细信息, 请参阅[静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)。
+    > 有关存储加密的详细信息，请参阅[静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)。
 
 
 ## <a name="remediate-a-recommendation-on-a-data-resource"></a>修正对数据资源的建议

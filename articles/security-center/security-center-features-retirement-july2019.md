@@ -8,25 +8,24 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b4367bacf13e121220f12b6587c5ad60ad59d031
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910578"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202209"
 ---
+# <a name="retirement-of-security-center-features-july-2019"></a>停用安全中心功能（2019年7月）
+
 > [!NOTE]
 > 本文档详细说明了2019年7月31日从 Azure 安全中心停用的功能列表。
 >
 >
 
-
-# <a name="retirement-of-security-center-features-july-2019"></a>停用安全中心功能（2019年7月）
-
 我们在六个月内对 Azure 安全中心进行了多项[改进](https://azure.microsoft.com/updates/?product=security-center)，导致7月2019。
 通过这些改进的功能，我们在2019年7月31日从安全中心删除了一些冗余的功能和相关的 Api。
 
-其中的大多数注销功能都可以替换为 Azure 安全中心或 Azure Log Analytics 中的新增功能。 其他功能可以使用[Azure Sentinel （预览版）](https://azure.microsoft.com/services/azure-sentinel/)来实现。
+其中的大多数停用的功能可以替换为 Azure 安全中心或 Azure Log Analytics 中的其他功能。 其他功能可以使用[Azure Sentinel （预览版）](https://azure.microsoft.com/services/azure-sentinel/)来实现。
 
 停用安全中心功能包括：
 
@@ -104,11 +103,11 @@ Log Analytics 仪表板在单个工作区中显示了见解。 但是，本机�
 
 ![安全警报映射-按钮][10]
 
-如果选择 "**中转到安全事件" 映射**按钮，则会打开 "威胁智能" 仪表板。 我们停用了 "威胁智能" 仪表板。
+如果选择 "**中转到安全事件" 映射**按钮，则会打开 "（现已停用）" "威胁智能" 仪表板。
 
 ![威胁智能仪表板][11]
 
-选择工作区以查看其威胁智能仪表板时，请在 Log Analytics 中打开 "安全警报映射（预览版）" 屏幕。 此屏幕已停用。
+选择工作区以查看其威胁智能仪表板时，将在 Log Analytics 中打开 "（现已停用）安全警报映射（预览版）" 屏幕。
 
 ![安全警报映射 Log Analytics][12]
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: a14dca066ec60f4aeec79fe6b4c532445b4392f1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: d2922f79c0b2ef7098e0f51e0c3bf6ab18a1b0e3
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086904"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200292"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -30,23 +30,23 @@ ms.locfileid: "71086904"
 有关 Azure VM 的支持策略的信息，请参阅 [Microsoft 服务器软件支持 Azure VM](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)。
 
 > [!NOTE]
-> 本文中的说明适用于:
->1. 64位版本的 Windows Server 2008 R2 和更高版本的 Windows Server 操作系统。 若要了解如何在 Azure 中运行 32 位操作系统，请参阅 [Azure VM 中的 32 位操作系统支持](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)。
->2. 如果任何灾难恢复工具将用于迁移工作负荷（如 Azure Site Recovery 或 Azure Migrate），则仍需要执行此过程，然后在来宾 OS 上执行迁移之前准备映像的操作。
+> 本文中的说明适用于：
+>1. 64 位版本的 Windows Server 2008 R2 以及更高版本的 Windows Server 操作系统。 若要了解如何在 Azure 中运行 32 位操作系统，请参阅 [Azure VM 中的 32 位操作系统支持](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)。
+>2. 如果将使用任何灾难恢复工具（如 Azure Site Recovery 或 Azure Migrate）来迁移工作负荷，则仍需要在来宾 OS上执行此过程以在迁移之前准备映像。
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>将虚拟磁盘转换为固定大小和 VHD
 
-如果需要将虚拟磁盘转换为 Azure 所需的格式, 请使用此部分中的方法之一:
+如果需要将虚拟磁盘转换为 Azure 所需的格式，请使用本部分所述的方法之一：
 
 1. 在运行虚拟磁盘转换过程之前备份 VM。
 
 1. 确保 Windows VHD 在本地服务器上正常工作。 在尝试转换磁盘或将其上传到 Azure 之前，请解决 VM 本身内部的所有错误。
 
-1. 关于 VHD 的大小:
+1. 关于 VHD 的大小：
 
-   1. Azure 上的所有 VHD 必须已将虚拟大小调整为 1MB。 将原始磁盘转换为 VHD 时, 必须确保原始磁盘大小为 1 MB 的倍数, 然后转换。 在从已上传的 VHD 中创建映像时, 将会导致错误。
+   1. Azure 上的所有 VHD 必须已将虚拟大小调整为 1MB。 从原始磁盘转换为 VHD 时，必须确保在转换前的原始磁盘大小是 1 MB 的倍数。 基于上传的 VHD 创建映像时，MB 的小数部分将导致错误。
 
-   2. 操作系统 VHD 允许的最大大小为2TB。
+   2. OS VHD 允许的最大大小为 2TB。
 
 
 转换磁盘后，创建一个使用该磁盘的 VM。 启动并登录到 VM，以完成其上传准备工作。
@@ -153,7 +153,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 确保正确配置以下设置以进行远程访问：
 
 >[!NOTE] 
->运行 `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name &lt;object name&gt; -value &lt;value&gt;` 时，可能会显示一条错误消息。 可以放心忽略此消息。 它的意思只是域未将该配置推送到组策略对象。
+>运行 `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name <object name> -value <value>` 时，可能会显示一条错误消息。 可以放心忽略此消息。 它的意思只是域未将该配置推送到组策略对象。
 
 1. 已启用远程桌面协议 (RDP)：
    
@@ -272,23 +272,19 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
     > 使用提升权限的 PowerShell 窗口运行这些命令。
    
    ```powershell
-    cmd
-
-    bcdedit /set {bootmgr} integrityservices enable
-    bcdedit /set {default} device partition=C:
-    bcdedit /set {default} integrityservices enable
-    bcdedit /set {default} recoveryenabled Off
-    bcdedit /set {default} osdevice partition=C:
-    bcdedit /set {default} bootstatuspolicy IgnoreAllFailures
+    bcdedit /set "{bootmgr}" integrityservices enable
+    bcdedit /set "{default}" device partition=C:
+    bcdedit /set "{default}" integrityservices enable
+    bcdedit /set "{default}" recoveryenabled Off
+    bcdedit /set "{default}" osdevice partition=C:
+    bcdedit /set "{default}" bootstatuspolicy IgnoreAllFailures
 
     #Enable Serial Console Feature
-    bcdedit /set {bootmgr} displaybootmenu yes
-    bcdedit /set {bootmgr} timeout 5
-    bcdedit /set {bootmgr} bootems yes
-    bcdedit /ems {current} ON
+    bcdedit /set "{bootmgr}" displaybootmenu yes
+    bcdedit /set "{bootmgr}" timeout 5
+    bcdedit /set "{bootmgr}" bootems yes
+    bcdedit /ems "{current}" ON
     bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
-
-    exit
    ```
 3. 转储日志可帮助排查 Windows 崩溃问题。 启用转储日志收集：
 

@@ -3,23 +3,19 @@ title: 在 Azure 安全中心保护应用服务 | Microsoft Docs
 description: 本文帮助你开始在 Azure 安全中心保护应用服务。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e8518710-fcf9-44a8-ae4b-8200dfcded1a
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 1/27/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 6a6b5b6e247bd7c105286b86257a6ae11c1d1c60
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.date: 01/27/2019
+ms.author: memildin
+ms.openlocfilehash: 68f7c47f0a0f56085d632f1c1741318f440b41ee
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551859"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202482"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>使用 Azure 安全中心保护应用服务
 本文帮助你使用 Azure 安全中心来监视和保护在应用服务上运行的应用程序。
@@ -32,7 +28,7 @@ Azure 安全中心可以在 VM 或按需实例的沙盒中运行评估，并针�
 
 安全中心利用云的规模来识别应用服务应用程序受到的攻击，并专注于新兴攻击；当攻击者处于侦测阶段时，它会执行扫描来识别 Azure 中托管的多个网站上的漏洞。 安全中心使用分析和机器学习模型来全面检测所有接口，使客户能够与其应用程序交互（不管是通过 HTTP 还是管理方法）。 此外，作为 Azure 中的第一方服务，安全中心还在独特的立场提供基于主机的安全分析（涵盖此 PaaS 的底层计算节点），因此，安全中心可以检测已遭恶意利用的 Web 应用程序受到的攻击。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要监视和保护应用服务，必须创建一个与专用计算机关联的应用服务计划。 这些计划包括：“基本”、“标准”、“高级”、“独立”或“Linux”。 Azure 安全中心不支持“免费”、“共享”或“消耗”计划。 有关详细信息，请参阅[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。
 
@@ -47,19 +43,19 @@ Azure 安全中心保护运行应用服务的 VM 实例以及管理接口。 此
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>启用应用服务的监视和保护
 
 1. 在 Azure 中，选择“安全中心”。
-2. 转到**定价和设置**和选择的订阅。
-3. 在“定价层”下面的“应用服务”行中，将计划切换为“已启用”。   
+2. 请参阅**定价 & 设置**并选择订阅。
+3. 在“定价层”下面的“应用服务”行中，将计划切换为“已启用”。
 
 ![应用服务切换](./media/security-center-app-services/app-services-toggle.png)
 
 >[!NOTE]
 > 为资源数量列出的实例数表示在打开定价层边栏选项卡时，处于活动状态的相关应用服务实例的数目。 由于此数字会根据所选缩放选项而变化，因此，付费的实例数会相应地修改。
 
-若要禁用应用服务的监视和建议，请重复此过程，并将**应用服务**计划切换为“已禁用”。 
+若要禁用应用服务的监视和建议，请重复此过程，并将**应用服务**计划切换为“已禁用”。
 
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 本文介绍了如何使用 Azure 安全中心的监视功能。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：
 
 * [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)：了解如何在 Azure 安全中心配置安全设置。

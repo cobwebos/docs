@@ -3,7 +3,7 @@ title: Azure 状态监视器 v2 API 参考：禁用监视 |Microsoft Docs
 description: 状态监视器 v2 API 参考。 ApplicationInsightsMonitoring。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 368365251ec61464869c6120ded2ec2237acffea
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: af105a6a819ced475f490d3c99fc1e63d8eee5c8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326415"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203430"
 ---
-# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>状态监视器 v2 API：ApplicationInsightsMonitoring
+# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>状态监视器 v2 API：Disable-ApplicationInsightsMonitoring
 
 本文介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
 

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 6c3a8d62bd6b3650f834540bd7bb13027792b091
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: d2b9e53fc6c58f0477e252c751e25a99bdbfba42
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076969"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200102"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>在 Azure 机器学习中创建和访问数据集（预览）
 
@@ -34,7 +34,7 @@ ms.locfileid: "71076969"
 
 若要创建和使用数据集，需要：
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 * [Azure 机器学习工作区](how-to-manage-workspace.md)
 
@@ -47,7 +47,7 @@ ms.locfileid: "71076969"
 
 根据用户在定型中使用数据集的方式，将数据集分为两种类型。 
 
-* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)通过分析提供的文件或文件列表，以表格格式表示数据。 这使你能够将数据具体化为 pandas 数据帧。 可以通过 csv、tsv、parquet 文件、SQL 查询结果等来创建对象。`TabularDataset`有关完整列表，请访问我们的[文档](https://aka.ms/tabulardataset-api-reference)。
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)通过分析提供的文件或文件列表，以表格格式表示数据。 这使你能够将数据具体化为 pandas 或 spark 数据帧。 可以通过 csv、tsv、parquet 文件、SQL 查询结果等来创建对象。`TabularDataset`有关完整列表，请访问我们的[文档](https://aka.ms/tabulardataset-api-reference)。
 
 * [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py)引用数据存储或公用 url 中的单个或多个文件。 这使您能够将文件下载或装载到您的计算中。 文件可以是任何格式，这使得各种机器学习方案（包括深度学习）更广泛。
 
@@ -110,6 +110,16 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings，Mrs Bradley （Florence Briggs 。|女|38.0|1|0|电脑17599|71.2833|C85|C
 2|3|1|3|Heikkinen，未命中。 Laina|女|26.0|0|0|STON/O2。 3101282|7.9250||S
 
+使用`TabularDatasetFactory`类[`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-)的方法可以从 Azure SQL 数据库中读取数据。
+
+```Python
+
+from azureml.core import Dataset, Datastore
+
+# create tabular dataset from a SQL database in datastore
+sql_datastore = Datastore.get(workspace, 'mssql')
+sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
+```
 使用`TabularDataset`类[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)的方法可以按时间轻松有效地进行筛选。 可在[此处](http://aka.ms/azureml-tsd-notebook)找到更多示例和详细信息。 
 
 ```Python
@@ -197,7 +207,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 ```
 
 
-## <a name="access-your-data-during-training"></a>在定型过程中访问数据
+## <a name="access-datasets-in-your-script"></a>访问脚本中的数据集
 
 已注册的数据集可在 Azure 机器学习计算的计算群集上本地和远程访问。 若要跨试验访问已注册的数据集，请使用以下代码按名称获取工作区和已注册的数据集。 默认[`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)情况下， `Dataset`类上的方法返回注册到工作区中的最新版本的数据集。
 
@@ -220,5 +230,6 @@ df = titanic_ds.to_pandas_dataframe()
 
 ## <a name="next-steps"></a>后续步骤
 
+* 了解[如何用数据集定型](how-to-train-with-datasets.md)
 * 使用自动机器学习来[通过 TabularDatasets 进行训练](https://aka.ms/automl-dataset)。
 * 有关数据集定型的更多示例，请参阅[示例笔记本](https://aka.ms/dataset-tutorial)。

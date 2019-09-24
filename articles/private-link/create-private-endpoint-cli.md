@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 33383f42c3731d8a5aefdcde5008d706d5a9eed8
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 46c08f48efc00c1e4d88ceccb680c0cfd1671b2f
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104784"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203577"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>使用 Azure CLI 创建专用终结点
 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Azure 资源（例如虚拟机）能够与专用链接资源进行私下通信。 在本快速入门中，你将了解如何在虚拟网络上创建虚拟机，以及如何在 SQL 数据库服务器上创建使用 Azure CLI 的专用终结点。 然后，你可以访问 VM，并安全地访问专用链接资源（本示例中为 Azure SQL 数据库的私有服务器）。 
@@ -107,7 +107,7 @@ az network private-dns link vnet create --resource-group myResourceGroup \
    --registration-enabled false 
 
 #Query for the network interface ID  
-az network private-endpoint show --name myPrivateEndpoint --resource-group myResourceGroup --query 'networkInterfaces[0].id'
+networkInterfaceId=$(az network private-endpoint show --name myPrivateEndpoint --resource-group myResourceGroup --query 'networkInterfaces[0].id' -o tsv)
  
  
 az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json 
@@ -123,13 +123,13 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 从 internet 连接到 VM *myVm* ，如下所示：
 
-1. 在门户的搜索栏中，输入 " *myVm*"。
+1. 在门户的搜索栏中，输入 *myVm*。
 
 1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开。
 
 1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
-1. 打开下载的 .rdp * 文件。
+1. 打开下载的 .rdp* 文件。
 
     1. 出现提示时，选择“连接”。
 
@@ -148,7 +148,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 在本部分中，将使用专用终结点从 VM 连接到 SQL 数据库服务器。
 
- 1. 在 *myVM*的远程桌面中，打开 PowerShell。
+ 1. 在  *myVM* 的远程桌面中打开 PowerShell。
  2. 输入 nslookup myserver.database.windows.net  ，你会收到类似于下面的消息： 
 
 ```

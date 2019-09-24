@@ -1,65 +1,64 @@
 ---
-title: 警报验证 （EICAR 测试文件） 在 Azure 安全中心 |Microsoft Docs
+title: Azure 安全中心的警报验证（EICAR 测试文件） |Microsoft Docs
 description: 本文档介绍了如何在 Azure 安全中心验证安全警报。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: f8f17a55-e672-4d86-8ba9-6c3ce2e71a57
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
-ms.author: rkarlin
-ms.openlocfilehash: f65b4b74a1a91fa081bd9c0d8146d055cebb0de6
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.date: 07/02/2019
+ms.author: memildin
+ms.openlocfilehash: 32f67fb94b207735e77583a6db62f7c8703dd991
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626298"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202742"
 ---
-# <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>在 Azure 安全中心的警报验证 （EICAR 测试文件）
+# <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure 安全中心的警报验证（EICAR 测试文件）
 本文档介绍如何验证系统是否已针对 Azure 安全中心警报进行了适当的配置。
 
 ## <a name="what-are-security-alerts"></a>什么是安全警报？
-警报是时检测到你的资源上的威胁，安全中心将生成的通知。 它优先处理，并列出警报以及您可以快速调查问题所需的信息。 安全中心还提供了有关如何修正攻击的建议。
-有关详细信息，请参阅[Azure 安全中心的安全警报](security-center-alerts-overview.md)和[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)
+警报是安全中心检测到对资源的威胁时生成的通知。 它划分优先级并列出警报, 以及快速调查问题所需的信息。 安全中心还提供了有关如何修正攻击的建议。
+有关详细信息，请参阅[Azure 安全中心的安全警报](security-center-alerts-overview.md)和[管理和响应 azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)
 
 ## <a name="alert-validation"></a>警报验证
 
 * [Windows](#validate-windows)
 * [Linux](#validate-linux)
 
-## 验证 Windows VM 上的警报 <a name="validate-windows"></a>
+## 验证 Windows VM 上的警报<a name="validate-windows"></a>
 
-之后在计算机安装代理的安全中心，请执行以下步骤从计算机你想要为警报的受攻击的资源：
+在计算机上安装安全中心代理后，请在想要成为警报的受攻击资源的计算机上执行以下步骤：
 
-1. 复制可执行文件 (例如**calc.exe**) 到计算机的桌面或方便起见，其他目录并将其作为重命名**ASC_AlertTest_662jfi039N.exe**。
-1. 打开命令提示符并执行此文件，其自变量 （仅假参数名称），如： ```ASC_AlertTest_662jfi039N.exe -foo```
-1. 等待 5 到 10 分钟，然后打开安全中心警报。 类似于警报[示例](#alert-validate)下面应显示：
+1. 将可执行文件（例如， **calc**）复制到计算机的桌面或其他便利目录，并将其重命名为**ASC_AlertTest_662jfi039N**。
+1. 打开命令提示符，并使用自变量（仅假参数名称）执行此文件，例如：```ASC_AlertTest_662jfi039N.exe -foo```
+1. 等待 5 到 10 分钟，然后打开安全中心警报。 应显示类似于以下[示例](#alert-validate)的警报：
 
 > [!NOTE]
-> 在检查时此测试警报的 Windows，请确保该字段**启用参数审核**是**true**。 如果它是**false**，则需要启用审核的命令行参数。 若要启用它，请使用以下命令行：
+> 查看 Windows 的此测试警报时，请确保**已启用字段参数审核**为**true**。 如果为**false**，则需要启用命令行参数审核。 若要启用它，请使用以下命令行：
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## 验证 Linux VM 上的警报 <a name="validate-linux"></a>
+## 验证 Linux VM 上的警报<a name="validate-linux"></a>
 
-之后在计算机安装代理的安全中心，请执行以下步骤从计算机你想要为警报的受攻击的资源：
-1. 将可执行文件复制到一个方便的位置和其重命名为 **。 / asc_alerttest_662jfi039n**，例如：
+在计算机上安装安全中心代理后，请在想要成为警报的受攻击资源的计算机上执行以下步骤：
+1. 将可执行文件复制到一个方便的位置，并将其重命名为 **/asc_alerttest_662jfi039n**，例如：
 
     ```cp /bin/echo ./asc_alerttest_662jfi039n```
 
-1. 打开命令提示符并执行该文件：
+1. 打开命令提示符并执行以下文件：
 
     ```./asc_alerttest_662jfi039n testing eicar pipe```
 
-1. 等待 5 到 10 分钟，然后打开安全中心警报。 类似于警报[示例](#alert-validate)下面应显示：
+1. 等待 5 到 10 分钟，然后打开安全中心警报。 应显示类似于以下[示例](#alert-validate)的警报：
 
-### 警报示例 <a name="alert-validate"></a>
+### 警报示例<a name="alert-validate"></a>
 
 ![警报验证示例](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
 

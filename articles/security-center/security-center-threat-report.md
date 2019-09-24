@@ -3,9 +3,8 @@ title: Azure 安全中心威胁智能报告 | Microsoft 文档
 description: 本文档可帮助你在调查过程中使用 Azure 安全中心威胁智能报告来查找有关安全警报的详细信息。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 5662e312-e8c2-4736-974e-576eeb333484
 ms.service: security-center
 ms.devlang: na
@@ -13,19 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
-ms.author: v-mohabe
-ms.openlocfilehash: 7ab42fdb03209173c61b70fdf498aa77b39a1c23
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.author: memildin
+ms.openlocfilehash: c389fd72d9b185bc920ffeefdfb84e05b3d13001
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036389"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200716"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure 安全中心威胁智能报告
 本文档介绍 Azure 安全中心威胁智能报告如何能够帮助了解有关生成了安全警报的威胁的详细信息。
 
 ## <a name="what-is-a-threat-intelligence-report"></a>什么是威胁智能报告？
-安全中心可以监视 Azure 资源、网络以及连接的合作伙伴解决方案中的安全信息，从而对威胁进行检测。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。 有关详细信息, 请参阅[Azure 安全中心如何检测和响应威胁](security-center-alerts-overview.md#detect-threats)。
+安全中心可以监视 Azure 资源、网络以及连接的合作伙伴解决方案中的安全信息，从而对威胁进行检测。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。 有关详细信息，请参阅[Azure 安全中心如何检测和响应威胁](security-center-alerts-overview.md#detect-threats)。
 
 当安全中心识别到威胁时，它将触发[安全警报](security-center-managing-and-responding-alerts.md)，其中包含有关特定事件的详细信息，包括修复建议。 为帮助事件响应团队调查和修复威胁，安全中心包括了威胁智能报告，其中包含有关已检测到的威胁的信息，包括如下信息：
 
@@ -48,7 +47,7 @@ ms.locfileid: "70036389"
 * **活动报告**：重点提供特定攻击活动的详细信息。
 * **威胁摘要报告**：包含前两个报告中的所有项目。
 
-在事件响应过程中, 这种类型的信息非常有用, 在这种情况下, 将不断进行调查以了解攻击来源、攻击者的动机以及缓解此问题的方法。
+在事件响应过程中，这种类型的信息非常有用，在这种情况下，将不断进行调查以了解攻击来源、攻击者的动机以及缓解此问题的方法。
 
 ## <a name="how-to-access-the-threat-intelligence-report"></a>如何访问威胁智能报告？
 可以通过查看“安全警报” 磁贴查看当前警报。 打开 Azure 门户，按照以下步骤查看每个警报的更多详细信息：

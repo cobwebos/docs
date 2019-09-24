@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 9366eb1bde05d80b8882ee28aa9eb03a75f75964
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d50bb18d15bcad72eed3a97088b61c623e6208fe
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174716"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71199989"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>参考：CentOS （Linux） Data Science Virtual Machine
 
@@ -341,3 +341,7 @@ rattle()
 1. 选择“导出”按钮，将名为 *weather_script.R* 的 R 脚本文件保存到主文件夹。
 
 可以退出 Rattle 和 R。现在，可以修改生成的 R 脚本。 或者，可以按原样使用该脚本，并可随时运行它来重复 Rattle UI 中的所有操作。 尤其是对于 R 初学者而言，使用此方法可在简单的图形界面中快速执行分析和机器学习，同时在 R 中自动生成代码来修改项目或用于学习。
+
+## <a name="next-steps"></a>后续步骤
+
+还有其他问题？ 请考虑创建[支持票证](https://azure.microsoft.com/support/create-ticket/)。

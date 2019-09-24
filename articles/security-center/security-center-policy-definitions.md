@@ -2,18 +2,18 @@
 title: 通过 Azure 安全中心监视的 Azure Policy 定义 | Microsoft Docs
 description: 通过 Azure 安全中心监视的 Azure Policy 定义。
 services: security-center
-author: monhaber
-manager: barbkess
+author: memildin
+manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 8/22/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 37c29a40596a0ea7989b91d1ffcbabf930e5ed93
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.author: memildin
+ms.openlocfilehash: 892b33f52788bd37d430f221f14ba4c98f764cfb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910351"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201666"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>安全中心监视的 Azure 安全策略
 本文提供了可在 Azure 安全中心监视的 Azure 策略定义的列表。 有关安全策略的详细信息，请参阅[使用安全策略](tutorial-security-policy.md)。

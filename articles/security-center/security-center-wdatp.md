@@ -3,22 +3,21 @@ title: Windows Defender 高级威胁防护与 Azure 安全中心
 description: 本文档介绍 Azure 安全中心与 Windows Defender 高级威胁防护之间的集成。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/21/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 5342ec14e32b87c5cccdb36206122ce1168aeb56
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.author: memildin
+ms.openlocfilehash: b1af4f99b1446599f53448884d3147601fba56a8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061417"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200641"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender 高级威胁防护与 Azure 安全中心
 

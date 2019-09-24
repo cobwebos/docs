@@ -4,8 +4,8 @@ description: 本文介绍 Azure 安全中心如何使用基于角色的访问控
 services: security-center
 cloud: na
 documentationcenter: na
-author: rkarlin
-manager: barbkess
+author: memildin
+manager: rkarlin
 ms.assetid: ''
 ms.service: security-center
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: aa6c154e14fbf5291e2493f4f27b9d4501ba18f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: f52d518d2ed1dfb62eed72cf9c0b839a37b7f856
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60905613"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201645"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限
 
@@ -41,13 +41,13 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 
 下表显示安全中心的角色和允许的操作。 X 指示允许该角色执行该操作。
 
-| 角色 | 编辑安全策略 | 应用资源的安全建议 | 关闭警报和建议 | 查看警报和建议 |
+| Role | 编辑安全策略 | 应用资源的安全建议 | 关闭警报和建议 | 查看警报和建议 |
 |:--- |:---:|:---:|:---:|:---:|
 | 订阅所有者 | X | X | X | X |
 | 订阅参与者 | -- | X | X | X |
 | 资源组所有者 | -- | X | -- | X |
 | 资源组参与者 | -- | X | -- | X |
-| 读取器 | -- | -- | -- | X |
+| 读者 | -- | -- | -- | X |
 | 安全管理员 | X | -- | X | X |
 | 安全读取者 | -- | -- | -- | X |
 

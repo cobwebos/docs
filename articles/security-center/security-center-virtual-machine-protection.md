@@ -3,9 +3,8 @@ title: 在 Azure 安全中心保护计算机和应用程序 | Microsoft Docs
 description: 本文档介绍 Azure 安全中心内提供的，可帮助保护虚拟机和计算机以及 Web 应用和应用服务环境的建议。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
-ms.author: v-mohabe
-ms.openlocfilehash: c8f381a3440d742cca880f44b73cbc22bde92ecc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.author: memildin
+ms.openlocfilehash: a3bce8d6312dd09a7f10f8d5d2eaebd4e312d95d
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910558"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200787"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>在 Azure 安全中心保护计算机和应用程序
 Azure 安全中心可分析 Azure 资源、非 Azure 服务器以及虚拟机的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。 建议适用于以下 Azure 资源类型：虚拟机 (VM) 和计算机、应用程序、网络、SQL，以及“标识和访问”。
@@ -85,7 +84,7 @@ Azure 安全中心可分析 Azure 资源、非 Azure 服务器以及虚拟机的
 
 
 > [!NOTE]
-> 此处提供的安全建议与“建议”磁贴下的内容相同。 请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)，详细了解如何应用建议。
+> 此处提供的安全建议与“建议”磁贴下的内容相同。 有关如何解决建议的详细信息，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
 >
 >
 
@@ -108,6 +107,7 @@ Azure 安全中心可分析 Azure 资源、非 Azure 服务器以及虚拟机的
 每条建议下面显示的图标有助于快速识别需要关注的 VM 和计算机以及建议的类型。 也可使用筛选器，按“资源类型”和“严重性”搜索列表。
 
 若要向下钻取每个 VM 的安全建议，请单击相应的 VM。
+此处显示 VM 或计算机的安全详细信息。 在底部，可以看到建议的操作以及每个问题的严重性。
 ![云服务](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
 ### <a name="cloud-services"></a>云服务

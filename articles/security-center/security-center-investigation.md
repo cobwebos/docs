@@ -3,9 +3,8 @@ title: 调查 Azure 安全中心的事件和警报 | Microsoft Docs
 description: 本文档介绍如何使用 Azure 安全中心的调查功能调查安全事件和警报。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
@@ -13,19 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
-ms.author: rkarlin
-ms.openlocfilehash: 476bdd50a56b953585a8a4e9cea05975c9922e0f
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.author: memildin
+ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662953"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202063"
 ---
-# <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>调查 Azure 安全中心的事件和警报 (已停用)
-本文档可帮助你使用 Azure 安全中心的调查功能 (预览版) 来调查安全事件和警报。
+# <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>调查 Azure 安全中心的事件和警报（已停用）
+本文档可帮助你使用 Azure 安全中心的调查功能（预览版）来调查安全事件和警报。
 
 > [!NOTE]
-> 警报和事件调查 (预览版) 体验已于2019年7月31日停用。 有关详细信息和备用服务，请参阅用[安全中心功能的停用（2019 年 7 月）](security-center-features-retirement-july2019.md#menu_investigate)。
+> 警报和事件调查（预览版）体验已于2019年7月31日停用。 有关详细信息和备用服务，请参阅用[安全中心功能的停用（2019 年 7 月）](security-center-features-retirement-july2019.md#menu_investigate)。
 
 ## <a name="what-is-investigation-in-security-center"></a>什么是安全中心调查？
 使用安全中心的调查功能，可以对潜在的[安全事件](https://docs.microsoft.com/azure/security-center/security-center-incident)进行会审，了解其范围并跟踪其根本原因。

@@ -3,9 +3,8 @@ title: Azure 安全中心的安全建议 |Microsoft Docs
 description: 本文档介绍 Azure 安全中心中的建议如何帮助你保护 Azure 资源并保持符合安全策略。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 229b8949facae34a809c0789154a3b56264ee2c5
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.author: memildin
+ms.openlocfilehash: 32b7f1d699c0d620d70614c441a8c18520c1b2d5
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779022"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201059"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 安全中心的安全建议 
 本主题说明如何查看和了解 Azure 安全中心内的建议，以帮助你保护 Azure 资源。
@@ -32,18 +31,18 @@ ms.locfileid: "68779022"
 
 建议是为了保护资源而要采取的措施。
 
-安全中心会定期分析 Azure 资源的安全状态, 以识别潜在的安全漏洞。 然后向您提供有关如何删除它们的建议。
+安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后向你提供有关如何删除这些安全漏洞的建议。
 
-每项建议都提供:
+每项建议都提供：
 
 - 建议的简短说明。
-- 为了实现此建议, 要执行的补救步骤。 <!-- In some cases, one-click remediation is available. -->
-- 需要对这些资源执行建议的操作。
-- **安全分数影响**, 即, 如果实现此建议, 安全分数将会达到的程度。
+- 为实施建议而要执行的补救步骤。 <!-- In some cases, one-click remediation is available. -->
+- 哪些资源需要你对其执行建议的操作。
+- **安全分数影响**，这是如果你实施此建议，安全分数将增加的数量。
 
-## 监视建议<a name="monitor-recommendations"></a>
+## 监视建议 <a name="monitor-recommendations"></a>
 
-安全中心将分析资源的安全状态, 以识别潜在的漏洞。 “概述”下的“建议”磁贴显示了安全中心列出的建议总数。
+安全中心将分析资源的安全状态，以识别潜在的漏洞。 “概述”下的“建议”磁贴显示了安全中心列出的建议总数。
 
 ![安全中心概述](./media/security-center-recommendations/asc-overview.png)
 
@@ -54,7 +53,7 @@ ms.locfileid: "68779022"
     可筛选建议。 要筛选建议，请选择“建议”边栏选项卡上的“筛选器”。 此时会打开“筛选器”边栏选项卡，选择要查看严重性和状态值。
 
    * **建议**：建议。
-   * **安全功能分数影响**：安全中心使用你的安全建议并应用高级算法来确定每个建议的重要性而生成的分数。 有关详细信息, 请参阅[安全分数计算](security-center-secure-score.md#secure-score-calculation)。
+   * **安全功能分数影响**：安全中心使用你的安全建议并应用高级算法来确定每个建议的重要性而生成的分数。 有关详细信息，请参阅[安全分数计算](security-center-secure-score.md#secure-score-calculation)。
    * **资源**：列出了此建议适用的资源。
    * **状态栏**：描述该特定建议的严重性：
        * **高（红色）** ：重要资源（如应用程序、VM 或网络安全组）存在漏洞，需要提请注意。
@@ -72,6 +71,6 @@ ms.locfileid: "68779022"
  
 ## <a name="next-steps"></a>后续步骤
 
-在本文档中，已向你介绍安全中心的安全建议。 了解如何修正建议:
+在本文档中，已向你介绍安全中心的安全建议。 了解如何修正建议：
 
 * [修正建议](security-center-remediate-recommendations.md)-了解如何配置 Azure 订阅和资源组的安全策略。

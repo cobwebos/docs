@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 58b6531a394db8f9d29dcc0fe9b4b40d1725e70a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774585"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204201"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -69,7 +69,7 @@ ms.locfileid: "68774585"
 {
     "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "config-app",
+    "name": "virtualMachineName/config-app",
     "location": "[resourceGroup().location]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
@@ -100,6 +100,9 @@ ms.locfileid: "68774585"
 
 > [!NOTE]
 > 在某个时间点，只能在 VM 上安装一个扩展版本，在同一资源管理器模板中为同一 VM 指定两次自定义脚本将会失败。
+
+> [!NOTE]
+> 可以在 VirtualMachine 资源中使用此架构，也可以将其用作独立资源。 如果在 ARM 模板中将此扩展用作独立资源，则资源名称必须采用以下格式： "virtualMachineName/extensionName"。 
 
 ### <a name="property-values"></a>属性值
 

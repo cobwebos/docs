@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
-ms.openlocfilehash: f33b25112b5c4ee77f1f7d2a419ffb8e926a27d9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: f929ca1cd0fe6f2a94864ae3eb4df28e7b1927db
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501363"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200458"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 节点类型与虚拟机规模集
 [虚拟机规模集](/azure/virtual-machine-scale-sets)是一种 Azure 计算资源。 可使用规模集以集的形式部署和管理虚拟机集合。 Azure Service Fabric 群集中定义的每个节点类型均设置了独立的规模集。  规模集中每个虚拟机上均通过 Microsoft.Azure.ServiceFabric 虚拟机扩展安装了 Service Fabric 运行时。 可独立增加或减少每个节点类型、更改每个群集节点上运行的 OS SKU、打开不同的端口集，并使用不同的容量指标。
@@ -78,7 +78,7 @@ Service Fabric 虚拟机扩展用于将 Service Fabric 启动到 Azure 虚拟机
 | **名称** | **允许的值** | ** --- ** | **指导或简短说明** |
 | --- | --- | --- | --- |
 | name | string | --- | 扩展的唯一名称 |
-| type | “ServiceFabricLinuxNode”或“ServiceFabricWindowsNode” | --- | 确定 OS Service Fabric 正启动到 |
+| type | "ServiceFabricLinuxNode" 或 "ServiceFabricWindowsNode" | --- | 确定 OS Service Fabric 正启动到 |
 | autoUpgradeMinorVersion | true 或 false | --- | 启用自动升级 SF 运行时次要版本的功能 |
 | publisher | Microsoft.Azure.ServiceFabric | --- | Service Fabric 扩展发布者的名称 |
 | clusterEndpont | string | --- | 管理终结点的 URI:PORT |
@@ -89,7 +89,7 @@ Service Fabric 虚拟机扩展用于将 Service Fabric 启动到 Azure 虚拟机
 | commonNames | string[] | --- | 已安装群集证书的公用名 |
 | x509StoreName | string | --- | 已安装群集证书所在的存储的名称 |
 | typeHandlerVersion | 1.1 | --- | 扩展版本。 建议使用 1.0 经典版扩展来升级到 1.1 |
-| dataPath | string | --- | 用于保存 Service Fabric 系统服务和应用程序数据状态的驱动器路径。 
+| dataPath | string | --- | 用于保存 Service Fabric 系统服务状态和应用程序数据的驱动器路径。 
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[“随地部署”功能的概述及其与 Azure 托管群集的比较](service-fabric-deploy-anywhere.md)。

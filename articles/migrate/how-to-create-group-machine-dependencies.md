@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8e793891ea646ae8c91077ead36be9b84c1b08c8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906371"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200198"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>为评估设置依赖项可视化
 
@@ -38,9 +38,9 @@ ms.locfileid: "69906371"
 --- | ---
 可用性 | 依赖关系可视化在 Azure 政府版中不可用。
 服务映射 | 依赖项可视化使用 Azure Monitor 中服务映射解决方案。 [服务映射](../azure-monitor/insights/service-map.md)会自动发现并显示服务器之间的连接。
-代理 | 若要使用依赖关系可视化, 请在要映射的计算机上安装以下代理:<br/> - [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)程序 (以前称为 MICROSOFT MONITORING AGENT (MMA)。<br/> - [服务映射依赖关系代理](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)。<br/><br/> 若要自动完成代理安装, 你可以使用部署工具 (如 System Center Configuration Manager) 或合作伙伴工具 (如[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)), 其中包含用于 Azure Migrate 的代理部署解决方案。
+代理 | 若要使用依赖关系可视化，请在要映射的计算机上安装以下代理：<br/> - [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)程序（以前称为 MICROSOFT MONITORING AGENT （MMA）。<br/> - [服务映射依赖关系代理](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)。<br/><br/> 若要自动完成代理安装, 你可以使用部署工具 (如 System Center Configuration Manager) 或合作伙伴工具 (如[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)), 其中包含用于 Azure Migrate 的代理部署解决方案。
 Dependency Agent | 查看 Windows 和 Linux 的[依赖关系代理支持](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)。<br/><br/> [了解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)有关使用脚本安装依赖关系代理的详细信息。
-Log Analytics 代理 (MMA) | [了解](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)有关 MMA 安装方法的详细信息。<br/><br/> 对于 System Center Operations Manager 2012 R2 或更高版本监视的计算机, 无需安装 MMA 代理。 服务映射与 Operations Manager 集成。 你可以使用[此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)的指南启用该集成。 但请注意, 依赖关系代理将需要安装在这些计算机上。<br/><br/> [查看](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)Log Analytics 代理支持的 Linux 操作系统。
+Log Analytics 代理 (MMA) | [了解](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)有关 MMA 安装方法的详细信息。<br/><br/> 对于 System Center Operations Manager 2012 R2 或更高版本监视的计算机, 无需安装 MMA 代理。 服务映射与 Operations Manager 集成。 你可以使用[此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)的指南启用该集成。 但请注意，依赖关系代理将需要安装在这些计算机上。<br/><br/> [查看](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)Log Analytics 代理支持的 Linux 操作系统。
 评估组 | 要可视化其依赖项的组所包含的计算机不应超过 10 台。 如果计算机超过10台, 请将它们拆分成较小的组, 以可视化依赖项。
 
 ## <a name="associate-a-log-analytics-workspace"></a>关联 Log Analytics 工作区
@@ -61,7 +61,7 @@ Log Analytics 代理 (MMA) | [了解](../azure-monitor/platform/log-analytics-ag
 
     ![添加工作区](./media/how-to-create-group-machine-dependencies/workspace.png)
 
-    - 为新工作区指定名称后, 该名称将与 Azure Migrate 项目在同一地理区域中创建。
+    - 为新工作区指定名称后，可以选择将在其中创建工作区的[区域](https://azure.microsoft.com/global-infrastructure/regions/)。
     - 附加现有的工作区时，可以从迁移项目所在订阅中的所有可用工作区进行选择。
     - 需要对工作区的读取器访问权限才能附加该工作区。
     - 附加项目后, 不能修改与该项目关联的工作区。

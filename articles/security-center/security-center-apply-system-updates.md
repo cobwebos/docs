@@ -3,9 +3,8 @@ title: 在 Azure 安全中心应用系统更新 | Microsoft 文档
 description: 本文档演示如何实现 Azure 安全中心建议**应用系统更新**和**在系统更新后重启**。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: v-mohabe
-ms.openlocfilehash: 7f9c5b702c0da8de4476508114be911a9d74f78a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.author: memildin
+ms.openlocfilehash: 1688e85c6e6ed57892ccdffdf0813c8628127cc5
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69531450"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202463"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>在 Azure 安全中心应用系统更新
 Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监控，以找出缺少的操作系统更新。 安全中心从 Windows 更新或 Windows Server Update Services (WSUS) 检索可用的安全更新和关键更新的列表，具体取决于 Windows 计算机上配置的服务。 安全中心还可以在 Linux 系统中检查最新更新。 如果 VM 或计算机缺少系统更新，安全中心将建议应用系统更新。
@@ -63,7 +62,7 @@ Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监
 
    ![缺少的安全更新][3]
 
-4. 选择顶部功能区中的“搜索”图标。  将打开 Azure Monitor 日志搜索查询, 筛选为缺少更新的计算机。
+4. 选择顶部功能区中的“搜索”图标。  将打开 Azure Monitor 日志搜索查询，筛选为缺少更新的计算机。
 
    ![Azure Monitor 日志搜索][4]
 

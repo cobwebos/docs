@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: b7e079e92c2f438fa7acc87a7d7333c371fe8e54
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099455"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202974"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS 虚拟主机中的安全性强化 
 
@@ -76,8 +76,6 @@ AKS-Engine 目前不会升级或遵守任何特定的安全标准，但在适用
 |5.4.1.4 |确保非活动密码锁定为30天或更短时间 |
 |5.4.4 |确保默认用户 umask 是027或更严格的 |
 |5.6 |确保对 su 命令的访问受到限制|
-
-(*)必须启用。 请参阅群集定义[文档](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md)。
 
 ## <a name="additional-notes"></a>附加说明
  
