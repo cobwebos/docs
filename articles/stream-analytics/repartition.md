@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 82e4a225d26bac04ed4754169cc4a79e0a8f9b32
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fcbef434d3b88c20cdaaeab92a973e5fbe41680d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101514"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266447"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>通过重新分区优化使用 Azure 流分析进行的处理
 
@@ -56,7 +56,7 @@ SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY D
 
 当作业使用 SQL 数据库进行输出时，请使用显式重新分区来匹配优化的分区计数，以便将吞吐量最大化。 由于 SQL 在使用八个写入器时效果最好，因此在刷新之前将流重新分区为八个（或在上游的某个位置进一步进行分区）可能会有益于作业性能。 
 
-如果输入分区超过 8 个，则继承输入分区方案可能不是适当的选择。 请考虑在您的查询中使用[INTO](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) ，以显式指定输出写入器的数目。 
+如果输入分区超过 8 个，则继承输入分区方案可能不是适当的选择。 请考虑在您的查询中使用[INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) ，以显式指定输出写入器的数目。 
 
 下面的示例从输入中读取内容，无论它是自然分区，还是根据 DeviceID 维度对流十倍并刷新要输出的数据。 
 

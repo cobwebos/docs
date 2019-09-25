@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 600b6db1eb3d3b422d62e49c5bc816a1a56370f9
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 0926e6800dbcd81d2e542e27afe3afb1240cff22
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798514"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268422"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的桌面应用 - 代码配置
 
@@ -28,9 +28,11 @@ ms.locfileid: "67798514"
 
 ## <a name="msal-libraries"></a>MSAL 库
 
-目前，支持桌面应用程序的唯一 MSAL 库是 MSAL.NET
+目前仅支持多个平台上的桌面应用程序的 MSAL 库是 MSAL.NET。
 
-## <a name="public-client-application"></a>公共客户端应用程序
+适用于 iOS 和 macOS 的 MSAL 仅支持在 macOS 上运行的桌面应用程序。 
+
+## <a name="public-client-application-with-msalnet"></a>具有 MSAL.NET 的公用客户端应用程序
 
 从代码角度来看，桌面应用程序是公共客户端应用程序，因此需构建并操作 MSAL.NET `IPublicClientApplication`。 同样，是否使用交互式身份验证会存在一些差异。
 
@@ -38,14 +40,14 @@ ms.locfileid: "67798514"
 
 ### <a name="exclusively-by-code"></a>以独占方式通过代码来完成
 
-下面的代码实例化的公共客户端应用程序中，在 Microsoft Azure 公有云，与工作和学校帐户或个人 Microsoft 帐户登录用户。
+下面的代码实例化一个公共客户端应用程序，在 Microsoft Azure 公有云中使用工作和学校帐户或个人 Microsoft 帐户来登录用户。
 
 ```CSharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-如果你想要使用交互式身份验证或设备代码流，如上图所示，你想要使用`.WithRedirectUri`修饰符：
+如果要使用交互式身份验证或设备代码流（如上所示），则需要使用`.WithRedirectUri`修饰符：
 
 ```CSharp
 IPublicClientApplication app;
@@ -67,7 +69,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 
 ### <a name="more-elaborated-configuration"></a>更详细的配置
 
-可以通过添加多个修饰符来详细阐述应用程序的构建。 例如，如果你希望应用程序是国家/地区云 （此处美国政府版） 中的多租户应用程序，您可以编写：
+可以通过添加多个修饰符来详细阐述应用程序的构建。 例如，如果你希望你的应用程序成为国家/地区（美国政府）的多租户应用程序，你可以编写：
 
 ```CSharp
 IPublicClientApplication app;
@@ -174,6 +176,59 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
 ```
 
 在调用 `.Build()` 方法之前，可以使用对 `.WithXXX` 方法的调用来重写配置，如前所示。
+
+## <a name="public-client-application-with-msal-for-ios-and-macos"></a>具有适用于 iOS 和 macOS 的 MSAL 的公共客户端应用程序
+
+下面的代码实例化一个公共客户端应用程序，在 Microsoft Azure 公有云中使用工作和学校帐户或个人 Microsoft 帐户来登录用户。
+
+### <a name="quick-configuration"></a>快速配置
+
+Objective-C：
+
+```objc
+NSError *msalError = nil;
+    
+MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];    
+MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
+```
+
+反应
+```swift
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
+if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
+```
+
+### <a name="more-elaborated-configuration"></a>更详细的配置
+
+可以通过添加多个修饰符来详细阐述应用程序的构建。 例如，如果你希望你的应用程序成为国家/地区（美国政府）的多租户应用程序，你可以编写：
+
+Objective-C：
+
+```objc
+MSALAADAuthority *aadAuthority =
+                [[MSALAADAuthority alloc] initWithCloudInstance:MSALAzureUsGovernmentCloudInstance
+                                                   audienceType:MSALAzureADMultipleOrgsAudience
+                                                      rawTenant:nil
+                                                          error:nil];
+                                                          
+MSALPublicClientApplicationConfig *config =
+                [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
+                                                                redirectUri:@"<your-redirect-uri-here>"
+                                                                  authority:aadAuthority];
+                                                                  
+NSError *applicationError = nil;
+MSALPublicClientApplication *application =
+                [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
+```
+
+反应
+
+```swift
+let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
+        
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
+if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

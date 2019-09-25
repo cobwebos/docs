@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76f0cddfa889376d3795726e74d82e53417b31f1
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 1ada6ee6247deb3d4c72edb8237a40a0f47f96be
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413572"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268317"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>调用 Web API 的移动应用 - 调用 Web API
 
@@ -88,28 +88,34 @@ MSAL 也提供 `Account` 的抽象。 `Account` 表示当前用户的已登录�
         queue.add(request);
 ```
 
-### <a name="ios"></a>iOS
+### <a name="msal-for-ios-and-macos"></a>适用于 iOS 和 macOS 的 MSAL
+
+用于获取令牌的方法返回`MSALResult`对象。 `MSALResult`公开可用于调用 web API 的属性。`accessToken` 访问受保护的 Web API 之前，应将访问令牌添加到 HTTP 授权标头中。
+
+Objective-C：
+
+```objc
+NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
+urlRequest.URL = [NSURL URLWithString:"https://contoso.api.com"];
+urlRequest.HTTPMethod = @"GET";
+urlRequest.allHTTPHeaderFields = @{ @"Authorization" : [NSString stringWithFormat:@"Bearer %@", accessToken] };
+        
+NSURLSessionDataTask *task =
+[[NSURLSession sharedSession] dataTaskWithRequest:urlRequest
+     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {}];
+[task resume];
+```
+
+反应
 
 ```swift
-        let url = URL(string: kGraphURI)
-        var request = URLRequest(url: url!)
-
-        // Put access token in HTTP request.
-        request.setValue("Bearer \(self.accessToken)", forHTTPHeaderField: "Authorization")
-
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                self.updateLogging(text: "Couldn't get graph result: \(error)")
-                return
-            }
-            guard let result = try? JSONSerialization.jsonObject(with: data!, options: []) else {
-                self.updateLogging(text: "Couldn't deserialize result JSON")
-                return
-            }
-
-            // Successfully got data from Graph.
-            self.updateLogging(text: "Result from Graph: \(result))")
-        }.resume()
+let urlRequest = NSMutableURLRequest()
+urlRequest.url = URL(string: "https://contoso.api.com")!
+urlRequest.httpMethod = "GET"
+urlRequest.allHTTPHeaderFields = [ "Authorization" : "Bearer \(accessToken)" ]
+     
+let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in }
+task.resume()
 ```
 
 ### <a name="xamarin"></a>Xamarin
@@ -121,11 +127,11 @@ MSAL 也提供 `Account` 的抽象。 `Account` 表示当前用户的已登录�
 如需调用同一 API 多次，或者需要调用多个 API，请在生成应用时考虑以下事项：
 
 - **增量许可**：Microsoft 标识平台允许应用在需要权限的时候获取用户许可，而不是在开始时统一这样做。 应用在每次准备调用 API 时，应该只请求需要使用的作用域。
-- **条件性访问**:在某些情况下, 你可能会在发出几个 API 请求时获得其他条件性访问要求。 如果第一个请求已应用条件性访问策略, 并且你的应用程序尝试以无提示方式访问需要条件访问的新 API, 则会发生这种情况。 若要处理这种情况, 请务必捕获无提示请求中的错误, 并准备好进行交互式请求。  若要了解详细信息, 请参阅[条件性访问指南](conditional-access-dev-guide.md)。
+- **条件访问**：在某些情况下，你可能会在发出几个 API 请求时收到其他条件访问要求。 如果第一个请求没有应用条件访问策略，并且应用尝试以无提示方式访问需要条件访问的新 API，则可能会发生这种情况。 若要处理这种情况，请务必捕获来自无提示请求的错误，并准备好进行交互式请求。  若要了解详细信息，请参阅[条件访问指南](conditional-access-dev-guide.md)。
 
-## <a name="calling-several-apis-in-xamarin-or-uwp---incremental-consent-and-conditional-access"></a>在 Xamarin 或 UWP 中调用多个 Api-增量许可和条件访问
+## <a name="calling-several-apis-in-xamarin-or-uwp---incremental-consent-and-conditional-access"></a>在 Xamarin 或 UWP 中调用若干 API - 增量许可和条件访问
 
-如果你需要为同一个用户调用多个 api, 则一旦你为用户获取了令牌, 你就可以通过随后调用`AcquireTokenSilent`获取令牌来避免重复询问用户凭据。
+如果需要为同一用户调用多个 API，则在为用户获取令牌后，可以通过随后调用 `AcquireTokenSilent` 获取令牌来避免重复要求用户提供凭据。
 
 ```CSharp
 var result = await app.AcquireTokenXX("scopeApi1")

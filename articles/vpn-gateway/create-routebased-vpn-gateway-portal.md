@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2a04c0fa2d92514103377c2aef420290d1bdd057
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 3ab662a4f06b2d73ab0dab52f562398fee23686c
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781173"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266513"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>使用 Azure 门户创建基于路由的 VPN 网关
 
@@ -24,16 +24,18 @@ ms.locfileid: "68781173"
 
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
 
-## <a name="gwsubnet"></a>添加网关子网
-
-[!INCLUDE [gateway subnet](../../includes/vpn-gateway-add-gateway-subnet-portal-include.md)]
-
 ## <a name="gwvalues"></a>配置和创建网关
+
+在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
+
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
 >[!NOTE]
->基本网关 SKU 不支持 IKEv2 或 RADIUS 身份验证。 如果计划将 Mac 客户端连接到虚拟网络, 请不要使用基本 SKU。
+>基本网关 SKU 不支持 IKEv2 或 RADIUS 身份验证。 如果计划将 Mac 客户端连接到虚拟网络，请不要使用基本 SKU。
+
+[!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="viewgw"></a>查看 VPN 网关
 

@@ -1,18 +1,18 @@
 ---
-title: 使用点到站点 VPN 和本机 Azure 证书身份验证从计算机连接到 Azure 虚拟网络：Azure 门户 | Microsoft Docs
+title: 使用点到站点 VPN 和本机 Azure 证书身份验证从计算机连接到 Azure 虚拟网络：Azure 门户 |Microsoft Docs
 description: 使用 P2S 和自签名证书或 CA 颁发的证书将 Windows、Mac OS X 和 Linux 客户端安全地连接到 Azure 虚拟网络。 本文使用 Azure 门户。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: fc8c2ff72da49d8542508443eb9423f028da0d39
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: ea80fda927d293d743f1fdc69f9a7f5fa29838fa
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843665"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266578"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接：Azure 门户
 
@@ -41,7 +41,6 @@ ms.locfileid: "70843665"
 * **资源组：** TestRG
 * **位置：** East US
 * **GatewaySubnet：** 192.168.200.0/24<br>
-* DNS 服务器：（可选）要用于名称解析的 DNS 服务器的 IP 地址。
 * **虚拟网络网关名称：** VNet1GW
 * **网关类型：** VPN
 * **VPN 类型：** 基于路由
@@ -54,19 +53,11 @@ ms.locfileid: "70843665"
 开始之前，请确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 [!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-p2s-vnet-rm-portal-include.md)]
 
-## <a name="gatewaysubnet"></a>2.添加网关子网
+## <a name="creategw"></a>2.创建虚拟网络网关
 
-将虚拟网络连接到网关之前，必须先创建要连接的虚拟网络的网关子网。 网关服务使用网关子网中指定的 IP 地址。 在可能的情况下，建议使用 /28 或 /27 的 CIDR 块创建网关子网，以便提供足够的 IP 地址，满足将来的其他配置要求。
+在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
-[!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-p2s-rm-portal-include.md)]
-
-## <a name="dns"></a>3.指定 DNS 服务器（可选）
-
-创建虚拟网络后，可以添加 DNS 服务器的 IP 地址来处理名称解析。 DNS 服务器对于此配置是可选的，但在需要名称解析的情况下是必需的。 指定一个值不会创建新的 DNS 服务器。 指定的 DNS 服务器 IP 地址应该是可以解析所连接的资源名称的 DNS 服务器。 对于此示例，我们使用了专用 IP 地址，但这可能不是你 DNS 服务器的 IP 地址。 请务必使用自己的值。 你指定的值将由部署到 VNet 的资源使用，而不是由 P2S 连接或 VPN 客户端使用。
-
-[!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
-
-## <a name="creategw"></a>4.创建虚拟网络网关
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
@@ -74,7 +65,7 @@ ms.locfileid: "70843665"
 >基本网关 SKU 不支持 IKEv2 或 RADIUS 身份验证。 如果计划将 Mac 客户端连接到虚拟网络，请不要使用基本 SKU。
 >
 
-## <a name="generatecert"></a>5.生成证书
+## <a name="generatecert"></a>3.生成证书
 
 Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进行身份验证。 获得根证书后，即可将公钥信息[上传](#uploadfile)到 Azure。 然后，Azure 就会将该根证书视为通过 P2S 连接到虚拟网络时需要使用的“受信任的”证书。 也可从受信任的根证书生成客户端证书，然后将其安装在每个客户端计算机上。 当客户端发起与 VNet 的连接时，需使用客户端证书对客户端进行身份验证。 
 
@@ -86,7 +77,7 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 
 [!INCLUDE [generate-client-cert](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="addresspool"></a>6.添加客户端地址池
+## <a name="addresspool"></a>4.添加客户端地址池
 
 客户端地址池是指定的专用 IP 地址的范围。 通过点到站点 VPN 进行连接的客户端动态接收此范围内的 IP 地址。 使用专用 IP 地址范围时，该范围不得与要通过其进行连接的本地位置重叠，也不得与要连接到其中的 VNet 重叠。
 
@@ -104,19 +95,19 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
    >如果门户中的此页上未显示“隧道类型”或“身份验证类型”，则表示网关使用的是基本 SKU。 基本 SKU 不支持 IKEv2 或 RADIUS 身份验证。
    >
 
-## <a name="tunneltype"></a>7.配置隧道类型
+## <a name="tunneltype"></a>5.配置隧道类型
 
 可以选择隧道类型。 隧道选项为 OpenVPN、SSTP 和 IKEv2。 Android 和 Linux 上的 strongSwan 客户端以及 iOS 和 OSX 上的本机 IKEv2 VPN 客户端仅会使用 IKEv2 隧道进行连接。 Windows 客户端会首先尝试 IKEv2，如果不能连接，则会回退到 SSTP。 你可以使用 OpenVPN 客户端连接到 OpenVPN 隧道类型。
 
 ![隧道类型](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 
-## <a name="authenticationtype"></a>8.配置身份验证类型
+## <a name="authenticationtype"></a>6.配置身份验证类型
 
 选择“Azure 证书”。
 
   ![隧道类型](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
 
-## <a name="uploadfile"></a>9.上传根证书的公共证书数据
+## <a name="uploadfile"></a>7.上传根证书的公共证书数据
 
 可以上传更多受信任的根证书（最多 20 个）。 上传公共证书数据后，Azure 即可使用该数据对已安装客户端证书（根据受信任的根证书生成）的客户端进行身份验证。 将根证书的公钥信息上传到 Azure。
 
@@ -132,7 +123,7 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 
    ![保存](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
 
-## <a name="installclientcert"></a>10.安装已导出的客户端证书
+## <a name="installclientcert"></a>8.安装已导出的客户端证书
 
 如果想要从另一台客户端计算机（而不是用于生成客户端证书的计算机）创建 P2S 连接，需要安装客户端证书。 安装客户端证书时，需要使用导出客户端证书时创建的密码。
 
@@ -140,11 +131,11 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 
 有关安装步骤，请参阅[安装客户端证书](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
-## <a name="clientconfig"></a>11.生成和安装 VPN 客户端配置包
+## <a name="clientconfig"></a>9.生成和安装 VPN 客户端配置包
 
 VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S 连接来连接到 VNet。 有关生成和安装 VPN 客户端配置文件的说明，请参阅[为本机 Azure 证书身份验证 P2S 配置创建和安装 VPN 客户端配置文件](point-to-site-vpn-client-configuration-azure-cert.md)。
 
-## <a name="connect"></a>12.连接到 Azure
+## <a name="connect"></a>10.连接到 Azure
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>从 Windows VPN 客户端进行连接
 

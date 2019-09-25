@@ -1,27 +1,27 @@
 ---
 title: 利用 Azure HDInsight IO 缓存（预览版） Apache Spark 工作负荷性能
 description: 了解 Azure HDInsight IO 缓存以及如何将其用于提高 Apache Spark 性能。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: f3f171d4dfd3642dc71724afbe084c3fcbf8beaa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ecb393ea1f64897f17ce73170da1673886ef8916
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091075"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266187"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负荷的性能 
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负荷的性能
 
 IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spark 作业的性能。 IO 缓存也适用于可在 [Apache Spark](https://spark.apache.org/) 群集上运行的 [Apache TEZ](https://tez.apache.org/) 和 [Apache Hive](https://hive.apache.org/) 工作负载。 IO 缓存使用名为 RubiX 的开源缓存组件。 RubiX 是用于可从云存储系统访问数据的大数据分析引擎的本地磁盘缓存。 RubiX 在缓存系统中是唯一的，因为它使用固态硬盘 (SSD)，而不是保留操作内存以供缓存。 IO 缓存服务可在群集的每个工作节点上启动和管理 RubiX 元数据服务器。 它还可以配置群集的所有服务以便透明使用 RubiX 缓存。
 
 大多数 SSD 提供超过 1 GB/秒的带宽。 此带宽由操作系统内存中文件缓存补充，提供的带宽足以加载大数据计算处理引擎（如 Apache Spark）。 剩余的操作内存可供 Apache Spark 处理很大程度依赖于内存的任务（如数据重组）。 独占使用操作内存可让 Apache Spark 实现最佳资源使用情况。  
 
->[!Note]  
->IO 缓存当前将 RubiX 用作缓存组件，但在该服务的将来版本中可能会有所更改。 请使用 IO 缓存接口，并且不要直接对 RubiX 实现执行任何依赖项。
+> [!Note]  
+> IO 缓存当前将 RubiX 用作缓存组件，但在该服务的将来版本中可能会有所更改。 请使用 IO 缓存接口，并且不要直接对 RubiX 实现执行任何依赖项。
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Azure HDInsight IO 缓存的优点
 
@@ -70,7 +70,7 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 1. 选择“重新启动” > “重新启动所有受影响的项”。
 
-    ![重新启动所有受影响的项](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "重新启动所有受影响的项")
+    ![Apache Ambari 重新启动所有受影响]的(./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "重新启动所有受影响")的
 
 1. 选择“确认全部重启”。
 

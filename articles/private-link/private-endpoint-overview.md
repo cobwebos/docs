@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7394a9e1b1fa90741bc26fc0e9b6b7e6284d75e0
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 80f2e8a8fd41fbafbaf6d30bc1001b86c5dcdd50
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104681"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266373"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -43,7 +43,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
  
 - 可以使用相同的专用链接资源创建多个专用终结点。 对于使用常见 DNS 服务器配置的单个网络，建议的做法是将单个专用终结点用于给定的专用链接资源，以避免在 DNS 解析中出现重复的条目或冲突。 
  
-- 可以在同一虚拟网络中的相同或不同子网中创建多个专用终结点。 可以在订阅中创建的专用终结点的数量有限制。 有关详细信息，请参阅 [Azure 限制](https://docs.microsoft.com/azure/azure-subscription-service-limits.md#networking-limits)。
+- 可以在同一虚拟网络中的相同或不同子网中创建多个专用终结点。 可以在订阅中创建的专用终结点的数量有限制。 有关详细信息，请参阅 [Azure 限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)。
 
 
  
@@ -129,7 +129,7 @@ Azure 会在公共 DNS 上创建规范名称 DNS 记录（CNAME），以将解�
 
 ## <a name="next-steps"></a>后续步骤
 - [使用门户创建 SQL 数据库服务器的专用终结点](create-private-endpoint-portal.md)
-- [使用 PowerShell 为 SQL 数据库服务器创建专用终结点](create-private-endpoint-powershell.md)
+- [使用 PowerShell 创建 SQL 数据库服务器的专用终结点](create-private-endpoint-powershell.md)
 - [使用 CLI 创建 SQL 数据库服务器的专用终结点](create-private-endpoint-cli.md)
-- [使用门户为存储帐户创建专用终结点](create-private-endpoint-storage-portal.md)
+- [使用门户创建存储帐户的专用终结点](create-private-endpoint-storage-portal.md)
 - [使用 Azure PowerShell 创建自己的专用链接服务](create-private-link-service-powershell.md)

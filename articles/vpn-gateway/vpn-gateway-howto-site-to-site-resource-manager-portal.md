@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5b4be7464a4c19cd0a71d5a786b46091cdbc074b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 9fb62d74025869c3442308f9e4ac9fb8fc02669b
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780139"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266554"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 门户中创建站点到站点连接
 
@@ -50,7 +50,6 @@ ms.locfileid: "68780139"
 * **子网：** FrontEnd：10.1.0.0/24，BackEnd：10.1.1.0/24（对于本练习来说是可选的）
 * **网关子网名称：** GatewaySubnet（会在门户中自动填充）
 * **网关子网地址范围：** 10.1.255.0/27
-* **DNS 服务器：** 8.8.8.8 - 可选。 DNS 服务器的 IP 地址。
 * **虚拟网络网关名称：** VNet1GW
 * **公共 IP：** VNet1GWIP
 * **VPN 类型：** 基于路由
@@ -64,33 +63,24 @@ ms.locfileid: "68780139"
 
 [!INCLUDE [Create a virtual network](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
 
-## <a name="dns"></a>2.指定 DNS 服务器
+## <a name="VNetGateway"></a>2.创建 VPN 网关
 
-创建站点到站点连接不需要 DNS。
+在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
-但是，如果希望对部署到虚拟网络的资源进行名称解析，则应指定 DNS 服务器。 可以通过此设置指定 DNS 服务器，以便将其用于此虚拟网络的名称解析。 此设置不创建 DNS 服务器。 有关名称解析的详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
-[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
-
-## <a name="gatewaysubnet"></a>3.创建网关子网
-
-[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
-
-[!INCLUDE [Add a gateway subnet](../../includes/vpn-gateway-add-gateway-subnet-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="VNetGateway"></a>4.创建 VPN 网关
 
-[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gateway-portal-include.md)]
-
-## <a name="LocalNetworkGateway"></a>5.创建本地网关
+## <a name="LocalNetworkGateway"></a>3.创建本地网关
 
 本地网络网关通常是指本地位置。 可以为站点提供一个名称供 Azure 引用，并指定本地 VPN 设备的 IP 地址，以便创建一个连接来连接到该设备。 此外还可指定 IP 地址前缀，以便通过 VPN 网关将其路由到 VPN 设备。 指定的地址前缀是位于本地网络的前缀。 如果之后本地网络发生了更改，或需要更改 VPN 设备的公共 IP 地址，可轻松更新这些值。
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 
-## <a name="VPNDevice"></a>6.配置 VPN 设备
+## <a name="VPNDevice"></a>4.配置 VPN 设备
 
 通过站点到站点连接连接到本地网络需要 VPN 设备。 在此步骤中，请配置 VPN 设备。 配置 VPN 设备时，需要以下项：
 
@@ -99,13 +89,13 @@ ms.locfileid: "68780139"
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
-## <a name="CreateConnection"></a>7.创建 VPN 连接
+## <a name="CreateConnection"></a>5.创建 VPN 连接
 
 在虚拟网关和本地 VPN 设备之间创建站点到站点 VPN 连接。
 
 [!INCLUDE [Add a site-to-site connection](../../includes/vpn-gateway-add-site-to-site-connection-portal-include.md)]
 
-## <a name="VerifyConnection"></a>8.验证 VPN 连接
+## <a name="VerifyConnection"></a>6.验证 VPN 连接
 
 [!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 

@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 90482fc859c4dcdd04a70e91da2fd6adb079a795
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 90be253a4763aebd31b663aa0e765c187c8bff92
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162275"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266418"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -70,7 +70,7 @@ ms.locfileid: "71162275"
   - 支持 <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019">SharePoint 2016 和 sharepoint 2019</a> 以及 <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central</a>
   - 创建具有所选<a href="https://aka.ms/managed-instance-collation">服务器级排序规则</a>和<a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">时区</a>的实例。
   - 托管实例现在通过<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">内置防火墙</a>进行保护。
-  - 将实例配置为使用[公用终结点](sql-database-managed-instance-public-endpoint-configure.md)、[代理替代](/sql-database-connectivity-architecture.md#connection-policy)连接以获得更好的网络性能、<a href="https://aka.ms/four-cores-sql-mi-update">在 Gen5 硬件生成上有4个 Vcore</a> ，或针对时间点还原<a href="https://aka.ms/managed-instance-configurable-backup-retention">将备份保留配置为35天</a>。 仍未启用长期备份保留（长达10年），因此你可以使用<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">只复制备份</a>作为替代方法。
+  - 将实例配置为使用[公用终结点](sql-database-managed-instance-public-endpoint-configure.md)、[代理替代](sql-database-connectivity-architecture.md#connection-policy)连接以获得更好的网络性能、<a href="https://aka.ms/four-cores-sql-mi-update">在 Gen5 硬件生成上有4个 Vcore</a> ，或针对时间点还原<a href="https://aka.ms/managed-instance-configurable-backup-retention">将备份保留配置为35天</a>。 仍未启用长期备份保留（长达10年），因此你可以使用<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">只复制备份</a>作为替代方法。
   - 利用新功能，你可以<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">使用 PowerShell 将数据库异地还原到另一个数据中心</a>，[重命名数据库](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)，[删除虚拟群集](sql-database-managed-instance-delete-virtual-cluster.md)。
   - 新的内置[实例参与者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor)允许将职责分离（SoD）与安全原则区分开来，并符合企业标准。
   - 托管实例在以下 Azure 政府版区域中提供（US Gov 德克萨斯州、US Gov 亚利桑那州）以及中国北部2和中国东部2。 还可在以下公共区域中使用：澳大利亚中部、澳大利亚中部2、巴西南部、法国南部、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部、南非北部、南非西北部。

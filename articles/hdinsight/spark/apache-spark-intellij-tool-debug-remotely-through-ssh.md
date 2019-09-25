@@ -2,19 +2,19 @@
 title: 'Azure Toolkit for IntelliJ：通过 SSH 远程调试 Spark 应用程序 '
 description: 逐步介绍如何使用用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具通过 SSH 远程调试 HDInsight 群集上的应用程序
 keywords: 远程调试 intellij, 远程调试 intellij, ssh, intellij, hdinsight, 调试 intellij, 调试
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 844901d9c689d5a04312b52101572854f4d7fe6b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1f3f08385ac4f7044f4e6c4e4110be701e8f576d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994015"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266226"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>通过 SSH 在 HDInsight 群集上调试 Apache Spark 的应用程序 Azure Toolkit for IntelliJ
 
@@ -46,17 +46,17 @@ ms.locfileid: "70994015"
 
    c. 在“生成工具”列表中，根据需要选择以下选项之一：
 
-   - 用于支持 Scala 项目创建向导的“Maven”
+   - **Maven**，用于 Scala 项目创建向导支持。
 
-   - 用于管理依赖项和生成 Scala 项目的“SBT” 
+   - **SBT**，用于管理依赖项和生成 Scala 项目。
 
-     ![创建调试项目](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
+     ![Intellij 创建新项目 Spark](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
 
-   d. 选择“**下一步**”。     
- 
+   d. 选择“**下一步**”。
+
 1. 在下一个“新建项目”窗口中执行以下操作：
 
-   ![选择 Spark SDK](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
+   ![Intellij 新项目选择 Spark 版本](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
 
    a. 输入项目名称和项目位置。
 
@@ -69,90 +69,96 @@ ms.locfileid: "70994015"
 1. 选择“src” > “main” > “scala”，在项目中打开代码。 本示例使用“SparkCore_wasbloTest”脚本。
 
 ### <a name="prerequisite-for-windows"></a>Windows 必备组件
-在 Windows 计算机上运行本地 Spark Scala 应用程序时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常。 发生此异常的原因是 Windows 中缺少 WinUtils.exe。 
+在 Windows 计算机上运行本地 Spark Scala 应用程序时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常。 发生此异常的原因是 Windows 中缺少 WinUtils.exe。
 
 若要解决此错误，请[下载该可执行文件](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)到某个位置（例如 **C:\WinUtils\bin**）。 然后，必须添加环境变量 HADOOP_HOME，并将其值设置为 C:\WinUtils。
 
 ### <a name="scenario-2-perform-local-run"></a>方案 2：执行本地运行
+
 1. 打开 SparkCore_wasbloTest 脚本，右键单击脚本编辑器，然后选择“运行 [Spark 作业]XXX”选项来执行本地运行。
+
 1. 本地运行完成后，可以看到输出文件保存到当前的项目资源管理器的“数据” > “默认”中。
 
-    ![本地运行结果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
+    ![Intellij 项目本地运行结果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
+
 1. 执行本地运行和本地调试时，工具已自动设置默认的本地运行配置。 打开右上角的“[HDInsight 上的 Spark] XXX”配置，可以看到已在“HDInsight 上的 Apache Spark”下创建了“[HDInsight 上的 Spark]XXX”。 切换到“本地运行”选项卡。
 
-    ![本地运行配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
+    ![Intellij 运行调试配置本地运行](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
+
     - [环境变量](#prerequisite-for-windows)：如果已将系统环境变量“HADOOP_HOME”设置为“C:\WinUtils”，则它可自动检测到此设置，而无需手动添加。
     - [WinUtils.exe 位置](#prerequisite-for-windows)：如果尚未设置此系统环境变量，则可单击其按钮找到它的位置。
     - 只需选择两个选项之一，在 MacOS 和 Linux 上不需要它们。
+
 1. 也可在执行本地运行和本地调试前手动设置此配置。 在前面的屏幕截图中，选择加号（“+”）。 然后选择“HDInsight 上的 Apache Spark”选项。 输入“名称”、“主类名称”信息并保存，然后单击本地运行按钮。
 
 ### <a name="scenario-3-perform-local-debugging"></a>方案 3：执行本地调试
 1. 打开“SparkCore_wasbloTest”脚本，设置断点。
-1. 右键单击脚本编辑器，然后选择“调试‘[HDInsight 上的 Spark]XXX’”选项来执行本地调试。   
-
-
+1. 右键单击脚本编辑器，然后选择“调试‘[HDInsight 上的 Spark]XXX’”选项来执行本地调试。
 
 ## <a name="learn-how-to-perform-remote-run-and-debugging"></a>了解如何执行远程运行和调试
 ### <a name="scenario-1-perform-remote-run"></a>方案 1：执行远程运行
 
 1. 要访问“编辑配置”菜单，请选择右上角的图标。 在此菜单中，可以创建或编辑配置以进行远程调试。
 
-   ![编辑配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-edit-configurations.png) 
+   ![HDI Intellij 编辑配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-edit-configurations.png)
 
 1. 在“运行/调试配置”对话框中，选择加号 (+)。 然后选择“HDInsight 上的 Apache Spark”选项。
 
-   ![添加新配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
+   ![Intellij 添加新配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
+
 1. 切换到“在群集中远程运行”选项卡。为“名称”、“Spark 群集” 和“Main 类名”输入信息。 然后单击“高级配置(远程调试)”。 工具支持使用“执行器”进行调试。 numExectors 默认值为 5。 设置的值最好不要大于 3。
 
-   ![运行调试配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png)
+   ![Intellij 运行调试配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png)
 
 1. 在“高级配置(远程调试)”部分，选择“启用 Spark 远程调试”。 输入 SSH 用户名，然后输入密码或使用私钥文件。 若要执行远程调试，则需要设置它。 若只想使用远程运行，则无需设置它。
 
-   ![启用 Spark 远程调试](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-enable-spark-remote-debug.png)
+   ![Intellij 高级配置启用 spark 远程调试](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-enable-spark-remote-debug.png)
 
-1. 该配置现在以用户提供的名称保存。 若要查看配置详细信息，请选择配置名称。 若要进行更改，请选择“编辑配置”。 
+1. 该配置现在以用户提供的名称保存。 若要查看配置详细信息，请选择配置名称。 若要进行更改，请选择“编辑配置”。
 
 1. 完成配置设置后，可以对远程群集运行项目，或执行远程调试。
-   
-   ![远程运行按钮](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png)
+
+   ![Intellij 调试远程 Spark 作业远程运行按钮](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png)
 
 1. 单击“断开连接”按钮，这样，提交日志就不显示在左面板中。 但是，它仍在在后端上运行。
 
-   ![远程运行结果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
+   ![Intellij 调试远程 Spark 作业远程运行结果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
 
 ### <a name="scenario-2-perform-remote-debugging"></a>方案 2：执行远程调试
 1. 设置断点，然后单击“远程调试”图标。 与远程提交的区别是需要配置 SSH 用户名/密码。
 
-   ![选择“调试”图标](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
+   ![Intellij 调试远程 Spark 作业调试图标](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
 
 1. 程序执行到达断点时，会在“调试程序”窗格中显示一个“驱动程序”选项卡和两个“执行程序”选项卡。 选择“恢复程序”图标继续运行代码，这会到达下一个断点。 需要切换到正确的“执行程序”选项卡，以找到目标执行程序来进行调试。 可以在相应的“控制台”选项卡上查看执行日志。
 
-   ![“调试”选项卡](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
+   ![Intellij 调试远程 Spark 作业调试选项卡](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
 
 ### <a name="scenario-3-perform-remote-debugging-and-bug-fixing"></a>方案 3：执行远程调试和 bug 修复
+
 1. 设置两个断点，然后选择“调试”图标启动远程调试过程。
 
-1. 代码在第一个断点处停止，“变量”窗格中显示参数和变量信息。 
+1. 代码在第一个断点处停止，“变量”窗格中显示参数和变量信息。
 
 1. 选择“恢复程序”图标继续运行。 代码在第二个断点处停止。 按预期方式捕获异常。
 
-   ![引发错误](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-throw-error.png) 
+   ![Intellij 调试远程 Spark 作业引发错误](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-throw-error.png)
 
 1. 再次选择“恢复程序”图标。 “HDInsight Spark 提交”窗口随即显示“作业运行失败”错误。
 
-   ![错误提交](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-error-submission.png) 
+   ![Intellij 调试远程 Spark 作业错误提交](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-error-submission.png)
 
-1. 要使用 IntelliJ 调试功能动态更新变量值，请再次选择“调试”。 “变量”窗格会再次出现。 
+1. 要使用 IntelliJ 调试功能动态更新变量值，请再次选择“调试”。 “变量”窗格会再次出现。
 
-1. 右键单击“调试”选项卡上的目标，然后选择“设置值”。 接下来，输入变量的新值。 然后选择 **Enter** 保存该值。 
+1. 右键单击“调试”选项卡上的目标，然后选择“设置值”。 接下来，输入变量的新值。 然后选择 **Enter** 保存该值。
 
-   ![Set value](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
+   ![Intellij 调试远程 Spark 作业集值](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
 
 1. 选择“恢复程序”图标继续运行程序。 这一次不会捕获到异常。 可以看到项目成功运行，无任何异常。
 
-   ![调试后无异常](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-without-exception.png)
+   ![Intellij 调试远程 Spark 作业而不例外](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-without-exception.png)
 
 ## <a name="seealso"></a>后续步骤
+
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
 ### <a name="demo"></a>演示

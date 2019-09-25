@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: raynew
-ms.openlocfilehash: 47914a635afe754cb4205a1e089622a69b706b51
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: cb46acf3f54b5955ba8542adf73b7ca896f20c28
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910442"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266413"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -32,7 +32,7 @@ VMware VM 的灾难恢复 | 将本地 VMware VM 复制到 Azure。 可以在 Azu
 
 **服务** | **要求** | **详细信息**
 --- | --- | ---
-vCenter 服务器 | 版本 6.7、6.5、6.0 或 5.5 | 建议在灾难恢复部署中使用 vCenter 服务器。
+vCenter Server | 版本 6.7、6.5、6.0 或 5.5 | 建议在灾难恢复部署中使用 vCenter 服务器。
 vSphere 主机 | 版本 6.7、6.5、6.0 或 5.5 | 建议 vSphere 主机和 vCenter 服务器与进程服务器位于同一网络。 默认情况下，进程服务器在配置服务器上运行。 [了解详细信息](vmware-physical-azure-config-process-server-overview.md)。
 
 
@@ -141,15 +141,15 @@ BTRFS | 从[更新汇总 34](https://support.microsoft.com/help/4490016)（移�
 组件 | **支持**
 --- | ---
 主机网络 NIC 组合 | 对于 VMware VM，受支持。 <br/><br/>对于物理计算机复制，不支持。
-主机网络 VLAN | 是的。
-主机网络 IPv4 | 是的。
+主机网络 VLAN | 是。
+主机网络 IPv4 | 是。
 主机网络 IPv6 | 否。
 来宾/服务器网络 NIC 组合 | 否。
-来宾/服务器网络 IPv4 | 是的。
+来宾/服务器网络 IPv4 | 是。
 来宾/服务器网络 IPv6 | 否。
-来宾/服务器网络静态 IP (Windows) | 是的。
-来宾/服务器网络静态 IP (Linux) | 是的。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
-来宾/服务器网络多个 NIC | 是的。
+来宾/服务器网络静态 IP (Windows) | 是。
+来宾/服务器网络静态 IP (Linux) | 是。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
+来宾/服务器网络多个 NIC | 是。
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM 网络（故障转移后）
@@ -192,7 +192,8 @@ Docker 磁盘配置 | 否
 来宾/服务器热添加/删除磁盘 | 否
 来宾/服务器 - 排除磁盘 | 是
 来宾/服务器多路径 (MPIO) | 否
-来宾/服务器 GPT 分区 | 从[更新汇总 37](https://support.microsoft.com/help/4508614/)（移动服务版本 9.25）开始支持五个分区。 以前支持四个。
+来宾/服务器 GPT 分区 | 从[更新汇总 37](https://support.microsoft.com/help/4508614/)（移动服务版本 9.25）开始支持五个分区。 之前仅支持 4 个。
+ReFS | 移动服务版本9.23 或更高版本支持复原文件系统
 来宾/服务器 EFI/UEFI 启动 | - 运行移动服务版本 9.13 或更高版本时支持。<br/> - 将运行 Windows Server 2012 或更高版本的 VMware VM 或物理服务器迁移到 Azure 时支持。<br/> - 只能复制 VM 以进行迁移。 不支持故障回复到本地。<br/> - 仅支持 NTFS。 <br/> - 不支持安全 UEFI 启动类型。 <br/> - 每个物理扇区的磁盘扇区大小应为 512 字节。
 
 ## <a name="replication-channels"></a>复制通道
@@ -212,11 +213,11 @@ Docker 磁盘配置 | 否
 读取访问异地冗余存储 | 是
 冷存储 | 否
 热存储| 否
-块 Blob | 否
+块 blob | 否
 静态加密 (SSE)| 是
 高级存储 | 是
 导入/导出服务 | 否
-VNet 的 Azure 存储防火墙 | 是的。<br/> 在目标存储/缓存存储帐户上配置（用于存储复制的数据）。
+VNet 的 Azure 存储防火墙 | 是。<br/> 在目标存储/缓存存储帐户上配置（用于存储复制的数据）。
 常规用途 v2 存储帐户（热层和冷层） | 是（与 V1 相比，V2 的事务成本高得多）
 
 ## <a name="azure-compute"></a>Azure 计算
