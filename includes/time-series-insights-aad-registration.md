@@ -7,13 +7,13 @@ services: time-series-insights
 ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
-ms.date: 08/08/2019
-ms.openlocfilehash: ed5cd9424630a90b989b8a4d76959961f82a53ec
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 09/24/2019
+ms.openlocfilehash: ccfbd16f4db770558f1bc0284860a5f8d9fb8b68
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935261"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266936"
 ---
 > [!IMPORTANT]
 > * 新的“Azure Active Directory”   > “应用注册”  边栏选项卡取代了旧的“Azure Active Directory”   > “应用注册(旧版)”  边栏选项卡 2019 年 5 月版。
