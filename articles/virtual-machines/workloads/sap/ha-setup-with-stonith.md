@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d97130251f7ca56adaf77c5e70d6f08bd5cf514
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101511"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212530"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中进行高可用性设置
 本文档将针对如何使用 STONITH 设备在 SUSE 操作系统上设置高可用性，进行详细的分步说明。
@@ -257,7 +257,7 @@ systemctl start pacemaker
 ```
 crm_mon
 ```
-![crm-mon 你还可以登录到 hawk 以检查群集状态*https://\<节点 IP >: 7630。* ](media/HowToHLI/HASetupWithStonith/crm-mon.png) 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd命令更改密码。
+![crm-mon 你还可以登录到 hawk 以检查群集状态*https://\<节点 IP >：7630。* ](media/HowToHLI/HASetupWithStonith/crm-mon.png) 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd命令更改密码。
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7.配置群集属性和资源 
 本部分将介绍配置群集资源的步骤。
@@ -322,7 +322,7 @@ crm configure load update crm-vip.txt
 在运行命令 crm_mon 时，可以在那里看到两个资源。
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-此外, 你还可以在*https://\<节点 IP 地址 >: 7630/cib/live/state*中查看状态
+此外，你还可以在*https://\<节点 IP 地址 >： 7630/cib/live/state*中查看状态
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
@@ -333,11 +333,12 @@ Service pacemaker stop
 ```
 现在，停止 node2 上的 pacemaker 服务，资源已故障转移到 node1
 
-**在故障转移前**
-![Before-failover.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)
-**在故障转移后**
-![after-failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)
-![crm-mon-after-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)
+故障转移前  
+![Before-failover .png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+
+故障转移后  
+![after-failover .png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-mon-after-failover .png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
 ## <a name="9-troubleshooting"></a>9.疑难解答

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0610648594d09de3f86c5d9eb2f0cae722978cca
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 658830e37a453075100cd3aaf132bb1d3aedfaea
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996410"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240398"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -360,7 +360,7 @@ azEnvironment | VM 运行时所在的 Azure 环境 | 2018-10-01
 customData | 请参阅[自定义数据](#custom-data) | 2019-02-01
 location | 正在运行 VM 的 Azure 区域 | 2017-04-02
 name | VM 的名称 | 2017-04-02
-offer | 提供 VM 映像的信息，仅适用于从 Azure 映像库部署的映像 | 2017-04-02
+套餐 | 提供 VM 映像的信息，仅适用于从 Azure 映像库部署的映像 | 2017-04-02
 osType | Linux 或 Windows | 2017-04-02
 placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 计划 | [计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)包含 VM 的名称、产品和发布者（如果是 Azure 市场映像） | 2018-04-02
@@ -425,7 +425,7 @@ Nonce 是一个可选的 10 位字符串。 Nonce 可用于跟踪请求，如果
 }
 ```
 
-> 签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书和 VM 详细信息，如 vmId、nonce、subscriptionId、文档创建和过期的时间戳以及有关映像的计划信息。 计划信息只针对 Azure 市场映像填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
+> 签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书以及 VM 详情，如 vmId、nonce、subscriptionId、文档创建和到期的时间戳以及关于映像的计划信息。 计划信息只针对 Azure 市场映像填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>检索 Windows 虚拟机中的证明元数据
 
@@ -457,7 +457,7 @@ Nonce 是一个可选的 10 位字符串。 Nonce 可用于跟踪请求，如果
 }
 ```
 
-> 签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书和 VM 详细信息，如 vmId、nonce、subscriptionId、文档创建和过期的时间戳以及有关映像的计划信息。 计划信息只针对 Azure 市场映像填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
+> 签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书以及 VM 详情，如 vmId、nonce、subscriptionId、文档创建和到期的时间戳以及关于映像的计划信息。 计划信息只针对 Azure 市场映像填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
 
 
 ## <a name="example-scenarios-for-usage"></a>用法的示例方案  
@@ -568,12 +568,12 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-该`tags`字段是带有用分号分隔的标记的字符串。 如果标记本身中使用了分号，这可能是一个问题。 如果编写分析器以编程方式提取标记，则应该依赖`tagsList`于不带分隔符的 JSON 数组，因此更易于分析。
+`tags` 字段是带有用分号分隔的标记的字符串。 如果标记本身中使用了分号，这可能是一个问题。 如果编写分析程序以编程方式提取标记，则应该依赖 `tagsList` 字段（不带分隔符的 JSON 数组，因此更容易分析）。
 
 **请求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=JSON"
 ```
 
 **响应**
@@ -648,7 +648,7 @@ nonce | 用户提供了带有请求的可选字符串。 如果请求中未提�
 timestamp/createdOn | 创建第一个签名文档的时间戳
 timestamp/expiresOn | 签名文档到期的时间戳
 vmId |  VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
-subscriptionId | 虚拟机的 Azure 订阅，在中引入`2019-04-30`
+subscriptionId | `2019-04-30` 中引入的虚拟机的 Azure 订阅
 
 #### <a name="verifying-the-signature"></a>验证签名
 
@@ -761,7 +761,7 @@ My custom data.
 语言 | 示例
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-转到  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f7ad49fc56fc82955f79155838c69ff714aba2f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bd51e70122a5457c8dcf1bd8f2061fe25943e87f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845876"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224511"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure 磁盘加密先决条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "68845876"
 
 ## <a name="supported-vm-sizes"></a>支持的 VM 大小
 
-Azure 磁盘加密不适用于[基本的 A 系列 vm](/pricing/details/virtual-machines/series/)。 Azure 磁盘加密在满足以下最低内存要求的其他虚拟机上可用:
+Azure 磁盘加密不适用于[基本的 A 系列 vm](https://azure.microsoft.com/pricing/details/virtual-machines/series/)。 Azure 磁盘加密在满足以下最低内存要求的其他虚拟机上可用：
 
 | 虚拟机 | 最低内存要求 |
 |--|--|
@@ -88,7 +88,7 @@ Azure 磁盘加密还可用于使用高级存储的 VM。
 | SLES | 12-SP3 | 数据磁盘 |
 
 > [!NOTE]
-> 新的 ADE 实现支持 RHEL OS 和 RHEL7 即用即付映像的数据磁盘。 ADE 目前不支持 RHEL 自带订阅 (BYOS) 映像。 有关详细信息, 请参阅适用于[Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)。
+> 新的 ADE 实现支持 RHEL OS 和 RHEL7 即用即付映像的数据磁盘。 ADE 目前不支持 RHEL 自带订阅 (BYOS) 映像。 有关详细信息，请参阅适用于[Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)。
 
 - Azure 磁盘加密要求 Key Vault 和 VM 位于同一 Azure 区域和订阅。 在不同区域中配置资源会导致启用 Azure 磁盘加密功能失败。
 
