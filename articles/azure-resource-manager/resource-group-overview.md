@@ -37,7 +37,7 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理
 * **资源组** — 一个容器，用于保存 Azure 解决方案的相关资源。 资源组包括你想要作为一个组进行管理的那些资源。 根据最适合组织的情况来决定哪些资源属于哪个资源组。 请参阅 [资源组](#resource-groups)。
 * **资源提供程序** - 提供 Azure 资源的服务。 例如，Microsoft.Compute 就是一个常见的资源提供程序，它提供虚拟机资源。 Microsoft.Storage 是另一个常见的资源提供程序。 请参阅[资源提供程序和类型](resource-manager-supported-services.md)。
 * **资源管理器模板** - 一个 JavaScript 对象表示法 (JSON) 文件，用于定义一个或多个要部署到资源组或订阅的资源。 使用模板能够以一致方式反复部署资源。 请参阅[模板部署概述](template-deployment-overview.md)。
-* **声明性语法** — 一种语法，允许声明“以下是我想要创建的项目”，而不需要编写一系列编程命令来进行创建。 Resource Manager 模板便是声明性语法的其中一个示例。 在该文件中，可以定义要部署到 Azure 的基础结构的属性。  请参阅[模板部署概述](template-deployment-overview.md)。
+* **声明性语法** — 一种语法，允许声明“以下是我想要创建的项目”，而不需要编写一系列编程命令来进行创建。 资源管理器模板便是声明性语法的其中一个示例。 在该文件中，可以定义要部署到 Azure 的基础结构的属性。  请参阅[模板部署概述](template-deployment-overview.md)。
 
 ## <a name="the-benefits-of-using-resource-manager"></a>使用 Resource Manager 的优势
 
@@ -59,7 +59,7 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理
 
 ## <a name="understand-scope"></a>了解范围
 
-Azure 提供四个级别的范围：[管理组](../governance/management-groups/index.md)、订阅、[资源组](#resource-groups)和资源。 下图显示了一个这些层的示例。
+Azure 提供四个级别的范围：[管理组](../governance/management-groups/index.md)、订阅、[资源组](#resource-groups)和资源。 下图显示了这些层的一个示例。
 
 ![范围](./media/resource-group-overview/scope-levels.png)
 
