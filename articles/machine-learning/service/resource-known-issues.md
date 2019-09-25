@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81eabadba70a2d5334fab43157f17d24c41d97ec
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 275cf20329be04e86c2e7c2a613f657733e652df
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103417"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213449"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
@@ -185,7 +185,7 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 ## <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>更新 AKS 群集中 Azure 机器学习组件
 
-必须手动应用 Azure Kubernetes Service 群集中安装 Azure 机器学习组件的更新。 可以通过从 "Azure 机器学习" 工作区分离群集，然后将群集重新附加到工作区来应用这些群集。 如果在群集中启用了 SSL，则需要在重新附加群集时提供 SSL 证书和私钥。 
+必须手动应用 Azure Kubernetes Service 群集中安装 Azure 机器学习组件的更新。 可以通过从 "Azure 机器学习" 工作区分离群集，然后将群集重新附加到工作区来应用这些更新。 如果在群集中启用了 SSL，则需要在重新附加群集时提供 SSL 证书和私钥。 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
@@ -206,7 +206,7 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-如果不再具有 SSL 证书和私钥，或者使用的是 Azure 机器学习生成的证书，则可以在分离群集之前通过使用`kubectl`和检索机密来连接到该群集来检索这些文件`azuremlfessl`。
+如果不再具有 SSL 证书和私钥，或者使用的是 Azure 机器学习生成的证书，则可以在分离群集之前通过使用`kubectl`和检索机密来连接到该群集来检索这些文件 `azuremlfessl`。
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml

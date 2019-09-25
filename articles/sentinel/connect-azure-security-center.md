@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 安全中心数据连接到 Azure Sentinel 预览版 |Microsoft Docs
+title: 将 Azure 安全中心数据连接到 Azure Sentinel |Microsoft Docs
 description: 了解如何将 Azure 安全中心数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
@@ -13,44 +13,45 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 697983000f84f9e4efe7e2c8ef9dbb2f636e0735
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a9c210531f2c4cab1c3c023eab795023c3ad9f0c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620572"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240222"
 ---
-# <a name="connect-data-from-azure-security-center"></a>将数据连接从 Azure 安全中心
-
-> [!IMPORTANT]
-> Azure Sentinel 当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="connect-data-from-azure-security-center"></a>连接 Azure 安全中心的数据
 
 
 
-Azure Sentinel 使你能够连接中的警报[Azure 安全中心](../security-center/security-center-intro.md)并将其传送到 Azure Sentinel。 
+
+
+可以通过 azure Sentinel 连接[Azure 安全中心](../security-center/security-center-intro.md)的警报，并将其流式传输到 azure Sentinel。 
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果你想要从 Azure 安全中心中导出的警报，你必须是您传输其日志的订阅的参与者。
+- 如果要从 Azure 安全中心导出警报，你必须是订阅的参与者，该订阅的日志会进行流式处理。
 
-- 您必须具有[Azure 安全中心标准层](../security-center/security-center-pricing.md)订阅上运行。 如果不是，[将订阅升级到标准](https://azure.microsoft.com/pricing/details/security-center/)。
+- 必须在订阅上运行[Azure 安全中心标准层](../security-center/security-center-pricing.md)。 否则，请[将订阅升级到 standard](https://azure.microsoft.com/pricing/details/security-center/)。
 
-- 您必须对你想要连接的每个订阅的全局管理员或安全管理员权限的用户登录。
+- 必须以对要连接的每个订阅具有全局管理员或安全管理员权限的用户身份登录。
 
 
 ## <a name="connect-to-azure-security-center"></a>连接到 Azure 安全中心
 
-1. 在 Azure Sentinel，选择**数据连接器**，然后单击**Azure 安全中心**磁贴。
-1. 在右侧，单击**Connect**每个订阅你想要流式传输到 Azure Sentinel 其警报旁边。 请确保每个订阅升级到 Azure 安全中心标准层到流的警报与 Azure Sentinel。
+1. 在 Azure Sentinel 中，选择 "**数据连接器**"，然后单击 " **Azure 安全中心**" 磁贴。
 
-3. 单击“连接”  。
+1. 在右侧，单击要流式传输到 Azure Sentinel 的每个订阅旁边的 "**连接**"。 请确保将每个订阅升级到 Azure 安全中心标准层，以将警报流式传输到 Azure Sentinel。
 
-4. 若要使用 Log Analytics 中的 Azure 安全中心警报相关的架构，搜索**SecurityEvent**。
+1. 你可以选择是否希望 Azure 安全中心的警报自动在 Azure Sentinel 中自动生成事件。 在 "**创建事件**" 下，选择 "**启用**" 以启用从连接的安全服务中生成的警报自动创建事件的默认分析规则。 然后，你可以在 "**分析**" 和 "**活动规则**" 下编辑此规则。
+
+3. 单击“连接”。
+
+4. 若要在 Azure 安全中心警报的 Log Analytics 中使用相关架构，请搜索**SecurityAlert**。
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了如何将 Azure 安全中心连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。
+本文档介绍了如何将 Azure 安全中心连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
+- 了解如何了解[你的数据以及潜在的威胁](quickstart-get-visibility.md)。
+- 开始[通过 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
