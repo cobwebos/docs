@@ -1,9 +1,9 @@
 ---
 title: 使用 Azure 通知中心向 Xamarin.Android 应用推送通知 | Microsoft Docs
 description: 在本教程中，将了解如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 documentationcenter: xamarin
 ms.assetid: 0be600fe-d5f3-43a5-9e5e-3135c9743e54
@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/01/2019
-ms.author: jowargo
-ms.openlocfilehash: 39fa004b62bf7e2e2a50500f32fa7edcb0c4b6ba
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 08/01/2019
+ms.openlocfilehash: cba84b0f07db3a69cc964e47657a3f6b64659e6a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742445"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213565"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Xamarin.Android 应用推送通知
 

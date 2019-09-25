@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: bf6ae32a61504dc344e140a0e27c5a17b5422073
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 1d28a9d330dd001e3fdc05e37f7bbcdd2db7ee6e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609872"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224543"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>创建并发布托管应用程序定义
 
@@ -139,6 +139,7 @@ ms.locfileid: "68609872"
             "location": "[location()]"
         }
     }
+}
 ```
 
 若要了解详细信息，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。

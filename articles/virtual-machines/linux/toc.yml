@@ -476,6 +476,8 @@
           href: expand-disks.md
         - name: 拍摄磁盘快照
           href: snapshot-copy-managed-disk.md
+        - name: 创建增量快照
+          href: disks-incremental-snapshots.md
         - name: 备份非托管磁盘
           href: incremental-snapshots.md
         - name: 迁移和转换

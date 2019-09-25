@@ -227,6 +227,10 @@
           href: spark-api-introduction.md
         - name: Lambda 架构
           href: lambda-architecture.md
+    - name: 将内置的分析功能与 Jupyter 笔记本配合使用
+      items:
+        - name: Jupyter 笔记本概述
+          href: cosmosdb-jupyter-notebooks.md
     - name: 服务器端编程
       items:
         - name: 存储过程、触发器和 UDF
@@ -675,6 +679,10 @@
         - name: 使用 Apache Kafka 和 Cosmos DB 进行流式处理
           href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
           maintainContext: true
+    - name: 内置的 Jupyter 笔记本
+      items:
+        - name: 启用笔记本
+          href: enable-notebooks.md
     - name: 服务器端编程
       items:
         - name: 编写存储过程、触发器和 UDF

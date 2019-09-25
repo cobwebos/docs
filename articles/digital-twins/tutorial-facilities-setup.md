@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a107f7dba7f28b41303727ad37b7c50f2e215c4f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 1ab3f30f035f8099ab50f827e559e56b31d7f1f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622962"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219739"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>教程：部署 Azure 数字孪生预览版并配置空间图
 
@@ -43,15 +43,11 @@ ms.locfileid: "69622962"
 
 - [Visual Studio Code](https://code.visualstudio.com/)，用于探索示例代码。 
 
-<a id="deploy"></a>
-
 ## <a name="deploy-digital-twins"></a>部署数字孪生
 
 请使用此部分的步骤创建 Azure 数字孪生服务的新实例。 每个订阅只能创建一个实例。 如果已经有一个实例在运行，请跳至下一部分。 
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
-
-<a id="permissions"></a>
 
 ## <a name="grant-permissions-to-your-app"></a>向应用授权
 
@@ -76,7 +72,7 @@ ms.locfileid: "69622962"
 
 在解压缩后的示例文件夹中，通过 Visual Studio Code 打开 **digital-twins-samples-csharp\digital-twins-samples.code-workspace** 文件。 该文件包含两个项目：
 
-* 可以通过预配示例 **occupancy-quickstart** 配置和预配[空间智能图](concepts-objectmodel-spatialgraph.md#graph)。 该图是你的物理空间以及其中的资源的数字化图像。 它使用[对象模型](concepts-objectmodel-spatialgraph.md#model)来定义智能大楼的对象。 如需数字孪生对象和 REST API 的完整列表，请访问[此 REST API 文档](https://docs.westcentralus.azuresmartspaces.net/management/swagger)或者为[你的实例](#deploy)创建的管理 API URL。
+* 可以通过预配示例 **occupancy-quickstart** 配置和预配[空间智能图](concepts-objectmodel-spatialgraph.md#digital-twins-object-models)。 该图是你的物理空间以及其中的资源的数字化图像。 它使用[对象模型](concepts-objectmodel-spatialgraph.md#digital-twins-object-models)来定义智能大楼的对象。 如需数字孪生对象和 REST API 的完整列表，请访问[此 REST API 文档](https://docs.westcentralus.azuresmartspaces.net/management/swagger)或者为[你的实例](#deploy-digital-twins)创建的管理 API URL。
 
    若要通过示例来了解它与数字孪生实例的通信方式，可以从 **src\actions** 文件夹开始。 该文件夹中的文件实现的命令是将要在这些教程中使用的命令：
     - **provisionSample.cs** 文件说明如何预配空间图。
@@ -84,7 +80,7 @@ ms.locfileid: "69622962"
     - **getAvailableAndFreshSpaces.cs** 文件获取名为“用户定义函数”的自定义函数的结果。
     - **createEndpoints.cs** 文件创建与其他服务交互的终结点。
 
-* 模拟示例 **device-connectivity** 模拟传感器数据并将其发送到为数字孪生实例预配的 IoT 中心。 将在[预配空间图后的下一教程](tutorial-facilities-udf.md#simulate)中使用此示例。 用于配置此示例的传感器和设备标识符应该与用于预配图形的相同。
+* 模拟示例 **device-connectivity** 模拟传感器数据并将其发送到为数字孪生实例预配的 IoT 中心。 将在[预配空间图后的下一教程](tutorial-facilities-udf.md#simulate-sensor-data)中使用此示例。 用于配置此示例的传感器和设备标识符应该与用于预配图形的相同。
 
 ### <a name="configure-the-provisioning-sample"></a>配置预配示例
 
@@ -101,17 +97,15 @@ ms.locfileid: "69622962"
     ```
 
 1. 在 Visual Studio Code 中打开 **occupancy-quickstart** 项目中的 [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) 文件。 更新以下值：
-   * **ClientId**：输入 Azure AD 应用注册的应用程序 ID。 已在[设置应用权限](#permissions)的部分记下此 ID。
-   * **租户**：输入 [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)的目录 ID。 也已在[设置应用权限](#permissions)的部分记下此 ID。
-   * **BaseUrl**：输入数字孪生实例的 URL。 若要获取此 URL，请将其中的占位符替换为适用于你的实例的值：`https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`。 也可通过修改[部署部分](#deploy)的管理 API URL 来获取此 URL。 将 **swagger/** 替换为 **api/v1.0/** 。
+   * **ClientId**：输入 Azure AD 应用注册的应用程序 ID。 已在[设置应用权限](#grant-permissions-to-your-app)的部分记下此 ID。
+   * **租户**：输入 [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)的目录 ID。 也已在[设置应用权限](#grant-permissions-to-your-app)的部分记下此 ID。
+   * **BaseUrl**：输入数字孪生实例的 URL。 若要获取此 URL，请将其中的占位符替换为适用于你的实例的值：`https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`。 也可通过修改[部署部分](#deploy-digital-twins)的管理 API URL 来获取此 URL。 将 **swagger/** 替换为 **api/v1.0/** 。
 
 1. 查看数字孪生功能的列表，这些功能可以通过示例来探索。 运行以下命令：
 
     ```cmd/sh
     dotnet run
     ```
-
-<a id="provision-spaces"></a>
 
 ## <a name="understand-the-provisioning-process"></a>了解预配过程
 

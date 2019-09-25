@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/19/2017
-ms.openlocfilehash: c6aa780b04c85b8156463011c2b90da2da4541f6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 09/20/2019
+ms.openlocfilehash: 6279b5c9022b448aea9b33a94fc1b2b35b6d23de
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776268"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169851"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>使用模块注册表通过 Terraform 创建 VM 群集
 
@@ -35,7 +35,7 @@ ms.locfileid: "57776268"
 
  查看[安装 Terraform 并配置对 Azure 的访问权限](/azure/virtual-machines/linux/terraform-install-configure)，以创建 Azure 服务主体。 通过此服务主体使用以下代码将新文件 `azureProviderAndCreds.tf` 填充到空目录中：
 
-```tf
+```hcl
 variable subscription_id {}
 variable tenant_id {}
 variable client_id {}
@@ -53,7 +53,7 @@ provider "azurerm" {
 
 使用以下代码创建名为 `main.tf` 的新 Terraform 模板：
 
-```tf
+```hcl
 module mycompute {
     source = "Azure/compute/azurerm"
     resource_group_name = "myResourceGroup"

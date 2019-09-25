@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: eb2a6933b711804f957056353d7d609dbdbbe5d5
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c872b10d7819fb95d614664ed32831f410349760
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036465"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122906"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教程：开发适用于 Windows 设备的 C# IoT Edge 模块
 
@@ -231,14 +231,16 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
             {
                 Console.WriteLine($"Machine temperature {messageBody.machine.temperature} " +
                     $"exceeds threshold {temperatureThreshold}");
-                var filteredMessage = new Message(messageBytes);
-                foreach (KeyValuePair<string, string> prop in message.Properties)
+                using(var filteredMessage = new Message(messageBytes))
                 {
-                    filteredMessage.Properties.Add(prop.Key, prop.Value);
-                }
+                    foreach (KeyValuePair<string, string> prop in message.Properties)
+                    {
+                        filteredMessage.Properties.Add(prop.Key, prop.Value);
+                    }
 
-                filteredMessage.Properties.Add("MessageType", "Alert");
-                await moduleClient.SendEventAsync("output1", filteredMessage);
+                    filteredMessage.Properties.Add("MessageType", "Alert");
+                    await moduleClient.SendEventAsync("output1", filteredMessage);
+                }
             }
 
             // Indicate that the message treatment is completed.

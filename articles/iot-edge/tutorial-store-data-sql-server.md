@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 872c6f0af9695628f2821c8859d0b582534efd45
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c03b0dcf6a99611a0261fad7c4ba673c3a8932c9
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840074"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122855"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库存储边缘中的数据
 
@@ -147,15 +147,17 @@ ms.locfileid: "68840074"
                    if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
                    {
                        // Send the message to the output as the temperature value is greater than the threashold.
-                       var filteredMessage = new Message(messageBytes);
-                       // Copy the properties of the original message into the new Message object.
-                       foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
-                       {filteredMessage.Properties.Add(prop.Key, prop.Value);}
-                       // Add a new property to the message to indicate it is an alert.
-                       filteredMessage.Properties.Add("MessageType", "Alert");
-                       // Send the message.       
-                       await output.AddAsync(filteredMessage);
-                       logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
+                       using (var filteredMessage = new Message(messageBytes))
+                       {
+                            // Copy the properties of the original message into the new Message object.
+                            foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
+                            {filteredMessage.Properties.Add(prop.Key, prop.Value);}
+                            // Add a new property to the message to indicate it is an alert.
+                            filteredMessage.Properties.Add("MessageType", "Alert");
+                            // Send the message.       
+                            await output.AddAsync(filteredMessage);
+                            logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
+                       }
                    }
                }
            }

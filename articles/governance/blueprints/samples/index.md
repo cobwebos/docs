@@ -5,15 +5,15 @@ author: DCtheGeek
 manager: carmonm
 ms.service: blueprints
 ms.topic: sample
-ms.date: 09/04/2019
+ms.date: 09/24/2019
 ms.author: dacoulte
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ea2c56e35741a49d057f2261f7b53fb754a43f8b
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: d54d60728b9ad0cc72a6cbc81b380b2511d732a8
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967988"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219809"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -31,6 +31,7 @@ ms.locfileid: "70967988"
 | [ISO 27001 应用服务环境/SQL 数据库工作负荷](./iso27001-ase-sql-workload/index.md) | 为 [ISO 27001 共享服务](./iso27001-shared/index.md)蓝图示例提供了其他基础结构。 |
 | [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | 提供用于符合 NIST SP 800-53 R4 的规范措施。 |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | 提供一组策略以帮助用户符合 PCI-DSS v3.2.1。 |
+| [SWIFT CSP-CSCF v2020](./swift-2020/index.md) | 帮助用户符合 SWIFT CSP-CSCF v2020。 |
 | [英国官方和英国 NHS 监管](./ukofficial/index.md) | 提供了一组符合标准的基础结构模式和策略防护措施，以便帮助用户通过英国官方和英国 NHS 认证。 |
 | [CAF 基础](./caf-foundation/index.md) | 提供了一组控制措施，以便帮助你管理云资产，使其与[适用于 Azure 的 Microsoft 云采用框架 (CAF)](/azure/architecture/cloud-adoption/governance/journeys/index) 相符合。 |
 | [CAF 迁移登陆区域](./caf-migrate-landing-zone/index.md) | 提供了一组控制措施，以便帮助你安排迁移你的第一个工作负荷并管理你的云资产，使其与[适用于 Azure 的 Microsoft 云采用框架 (CAF)](/azure/architecture/cloud-adoption/migrate/index) 相符合。 |

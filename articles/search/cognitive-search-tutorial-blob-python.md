@@ -5,17 +5,16 @@ manager: nitinme
 author: LisaLeib
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: c21b4d525e395dfb032a89631eb34156fe3e5b23
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 606194e28ca4f058a647aeb5224de19e754de078
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744718"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265722"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python 教程：在 Azure 搜索索引管道中调用认知服务 API
 

@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Sentinel 预览版文档
+title: Azure Sentinel 文档
 metadata:
-  title: Azure Sentinel 预览版文档 - 教程和快速入门 |Microsoft Doc
+  title: Azure Sentinel 文档 - 教程和快速入门 | Microsoft Doc
   meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
   services: sentinel
   author: cmcclister
@@ -15,7 +15,7 @@ metadata:
   ms.date: 02/28/19
   ms.author: cmcclister
 abstract:
-  description: Azure Sentinel 预览版是一种云原生 SIEM，它以云规模为整个企业提供智能安全性分析。 获得无限制的云速度和规模，以便帮助专注于真正重要的内容。 轻松地从所有自己的云或本地资产、Office 365、Azure 资源和其他云收集数据。 使用 Microsoft 安全分析专家提供的内置机器学习功能有效检测威胁。 使用内置的协调和自动化 playbook 自动做出威胁响应。
+  description: Azure Sentinel 是一种云原生 SIEM，它为你的整个企业提供云级别的智能安全性分析。 获得无限制的云速度和规模，以便帮助专注于真正重要的内容。 轻松地从所有自己的云或本地资产、Office 365、Azure 资源和其他云收集数据。 使用 Microsoft 安全分析专家提供的内置机器学习功能有效检测威胁。 使用内置的协调和自动化 playbook 自动做出威胁响应。
 sections:
   - title: 5 分钟快速入门
     items:

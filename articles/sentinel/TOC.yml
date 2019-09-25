@@ -1,4 +1,4 @@
-- name: Azure Sentinel 预览版文档
+- name: Azure Sentinel 文档
   href: index.yml
 - name: 概述
   href: overview.md
@@ -11,12 +11,22 @@
       href: quickstart-get-visibility.md
 - name: 教程
   items:
-    - name: 检测可疑威胁
-      href: tutorial-detect-threats.md
+    - name: 使用内置分析来检测威胁
+      href: tutorial-detect-threats-built-in.md
+    - name: 创建自定义规则以检测威胁
+      href: tutorial-detect-threats-custom.md
+    - name: 监视数据
+      href: tutorial-monitor-your-data.md
     - name: 调查事件
       href: tutorial-investigate-cases.md
     - name: 应对威胁
       href: tutorial-respond-threats-playbook.md
+- name: 概念
+  items:
+    - name: 使用角色分配权限
+      href: roles.md
+    - name: 高级多阶段攻击检测
+      href: fusion.md
 - name: 操作指南
   items:
     - name: 连接数据源
@@ -74,6 +84,10 @@
           href: connect-threat-intelligence.md
         - name: 连接 Azure Stack VM
           href: connect-azure-stack.md
+    - name: 多个租户 (MSSP)
+      href: multiple-tenants-service-providers.md
+    - name: 从警报创建事件
+      href: create-incidents-from-alerts.md
     - name: 搜寻
       href: hunting.md
       items:
@@ -81,8 +95,8 @@
           href: notebooks.md
         - name: 使用书签搜寻
           href: bookmarks.md
-    - name: 启用融合
-      href: connect-fusion.md
+    - name: 删除 Azure Sentinel
+      href: offboard.md
 - name: 资源
   items:
     - name: 有用的资源

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 31882b878f76060bdbf70a308673fc80d60c8440
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0eaa3428234db8a7045728404bcfac5cc732dd9d
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075888"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181157"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Storm 与 Apache Kafka on HDInsight 配合使用
 
@@ -372,7 +372,7 @@ streams:
 | `kafka.broker.hosts` | Kafka 代理主机（辅助角色节点）。 |
 | `kafka.topic` | 拓扑使用的 Kafka 主题。 |
 | `hdfs.write.dir` | Kafka 读取器拓扑写入的目录。 |
-| `hdfs.url` | Storm 群集使用的文件系统。 对于 Azure 存储帐户，使用值 `wasb:///`。 对于 Azure Data Lake Storage Gen2，使用值 `abfs:///`。 对于 Azure Data Lake Storage Gen1，使用值 `adl:///`。 |
+| `hdfs.url` | Storm 群集使用的文件系统。 对于 Azure 存储帐户，使用值 `wasb://`。 对于 Azure Data Lake Storage Gen2，使用值 `abfs://`。 对于 Azure Data Lake Storage Gen1，使用值 `adl://`。 |
 
 ## <a name="create-the-clusters"></a>创建群集
 

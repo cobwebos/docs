@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 07/09/2019
-ms.openlocfilehash: c4d2e70d0f200f3a31948cfaa43def8e1b699878
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.date: 09/22/2019
+ms.openlocfilehash: 7e5b4a3cb04215504c4fd4fd1ebfcbcbe8c3f9f8
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706882"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179101"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库
 
@@ -106,6 +106,7 @@ ms.locfileid: "67706882"
 
 > [!NOTE]
 > 在数据迁移助手中创建迁移项目之前，请确保已按照先决条件中的说明预配了 Azure SQL 数据库。 出于本教程的目的，假设 Azure SQL 数据库的名称是“AdventureWorksAzure”，但是你可按照自己意愿使用任意名称命名  。
+
 > [!IMPORTANT]
 > 如果你使用 SSIS，则 DMA 目前不支持迁移源 SSISDB，但你可以将 SSIS 项目/包重新部署到由 Azure SQL 数据库托管的目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。
 
@@ -197,7 +198,7 @@ ms.locfileid: "67706882"
     ![查找 Azure 数据库迁移服务实例](media/tutorial-sql-server-to-azure-sql/dms-instance-search.png)
 
 3. 选择“+ 新建迁移项目”  。
-4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库”，然后在“选择活动类型”中选择“脱机数据迁移”。        
+4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库”，然后在“选择活动类型”中选择“脱机数据迁移”。       
 
     ![创建数据库迁移服务项目](media/tutorial-sql-server-to-azure-sql/dms-create-project2.png)
 

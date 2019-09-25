@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/19/2017
-ms.openlocfilehash: 19a828abfee780dd757d0575f94a0358c12088cd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 09/20/2019
+ms.openlocfilehash: e0a59697a3e4da97cf082c4c771fe93ad33b6035
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087735"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173556"
 ---
 # <a name="terraform-cloud-shell-development"></a>Terraform Cloud Shell 开发 
 
@@ -33,7 +33,7 @@ Terraform 已安装并可立即在 Cloud Shell 中使用。 Terraform 脚本在�
 
 Azure Terraform 模块需要凭据才能访问 Azure 订阅中的资源并对这些资源做出更改。 在 Cloud Shell 中工作时，将以下代码添加到脚本，以便在 Cloud Shell 中使用 Azure Terraform 模块：
 
-```tf
+```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
 }

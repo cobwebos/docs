@@ -46,10 +46,96 @@
       href: tutorial-secure-web-server.md
 - name: 示例
   items:
-    - name: PowerShell
+    - name: Powershell 索引
       href: powershell-samples.md
-    - name: Azure CLI
+    - name: PowerShell
+      items:
+        - name: 创建
+          items:
+            - name: 快速
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md
+            - name: 完全配置的 VM
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm.md
+            - name: 具有高可用性的 VM
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md
+            - name: 自定义脚本示例
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md
+            - name: 使用 DSC
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-iis-using-dsc.md
+            - name: 从上传的 VHD 创建 VM
+              href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
+            - name: 附加 OS 磁盘
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md
+            - name: 从快照创建 VM
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
+        - name: 管理存储
+          items:
+            - name: 从 VHD 创建托管磁盘
+              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md
+            - name: 从快照创建托管磁盘
+              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md
+            - name: 复制托管磁盘
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
+            - name: 将快照作为 VHD 导出到存储帐户
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md
+            - name: 将托管磁盘的 VHD 导出到存储帐户
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
+            - name: 从 VHD 创建快照
+              href: ../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md
+            - name: 复制快照
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
+        - name: 安全
+          items:
+            - name: 加密 VM 及其数据磁盘
+              href: ./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?
+        - name: 监视
+          items:
+            - name: Azure Monitor
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md
+            - name: 收集有关订阅中所有 VM 的详细信息
+              href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md
+    - name: Azure CLI 索引
       href: cli-samples.md
+    - name: CLI
+      items:
+        - name: 创建
+          items:
+            - name: 快速
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md
+            - name: 完全配置的 VM
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm.md
+            - name: 具有高可用性的 VM
+              href: ./../scripts/virtual-machines-windows-cli-sample-nlb.md
+            - name: 自定义脚本示例
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-iis.md
+            - name: 使用 DSC 配置
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-iis-using-dsc.md
+        - name: 管理存储
+          items:
+            - name: 从 VHD 创建托管磁盘
+              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md
+            - name: 从快照创建托管磁盘
+              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-snapshot.md
+            - name: 复制托管磁盘
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
+            - name: 将快照作为 VHD 导出到存储帐户
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-storage-account.md
+            - name: 将托管磁盘的 VHD 导出到存储帐户
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
+            - name: 复制快照
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-same-or-different-subscription.md
+        - name: 网络
+          items:
+            - name: 保护 VM 之间的网络流量
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md
+        - name: 安全
+          items:
+            - name: 对 VM 和数据磁盘进行加密
+              href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
+            - name: 监视
+              items:
+                - name: Azure Monitor
+                  href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: 概念
   items:
     - name: Azure 资源管理器
@@ -388,6 +474,8 @@
           href: expand-os-disk.md
         - name: 拍摄磁盘快照
           href: snapshot-copy-managed-disk.md
+        - name: 创建增量快照
+          href: disks-incremental-snapshots.md
         - name: 备份非托管磁盘
           href: incremental-snapshots.md
         - name: 迁移和转换

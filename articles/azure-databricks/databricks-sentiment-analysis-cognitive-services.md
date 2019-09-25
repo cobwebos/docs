@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.openlocfilehash: 9718a6e394c7628cdf7bb62b2dafea2f3d59a3ca
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 09/24/2019
 ms.locfileid: "68619565"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据执行情绪分析

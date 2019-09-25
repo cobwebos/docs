@@ -4,9 +4,9 @@ description: 在本教程中，将了解如何使用 Azure 通知中心将推送
 services: notification-hubs
 documentationcenter: ios
 keywords: 推送通知, 推送通知, ios 推送通知
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: b7fcd916-8db8-41a6-ae88-fc02d57cb914
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,13 +15,15 @@ ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/21/2019
-ms.author: jowargo
-ms.openlocfilehash: c5793d2388ddd7bb59d68f8f7fd7af773179ed41
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: 0335f5c71f99e6c7a90ce920c25e6bb7e9b4a08f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988208"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211943"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心将通知推送到 iOS 应用
 

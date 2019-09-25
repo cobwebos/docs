@@ -3,9 +3,9 @@ title: 使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到特
 description: 了解如何使用通知中心通过 Azure 通知中心和 Google Cloud Messaging 将通知推送到特定的 Android 设备。
 services: notification-hubs
 documentationcenter: android
-author: jwargo
-manager: patniko
-editor: spelluru'
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: af08d3ca6eaa95663b0bb669f6dc82a13df5ab39
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 4a369b72d5c19a63c65f8d693d131b2c10ff2023
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233112"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212817"
 ---
 # <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging（已弃用）将通知推送到特定的 Android 设备
 
@@ -45,7 +47,7 @@ ms.locfileid: "65233112"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程基于在[教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备][get-started]中创建的应用。 在开始本教程之前，请完成[教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备][get-started]。
+本教程基于在[教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备][get-started]中创建的 Android 应用程序。 在开始本教程之前，请完成[教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备][get-started]中创建的 Android 应用程序。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
 

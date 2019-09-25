@@ -11,10 +11,10 @@ ms.workload: Active
 ms.date: 07/23/2019
 ms.author: alehall
 ms.openlocfilehash: 942553e2ececf2bdc7bb2b240d4fa6c5f338beb2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 09/24/2019
 ms.locfileid: "68976500"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>教程：使用事件中心将数据流式传输到 Azure Databricks

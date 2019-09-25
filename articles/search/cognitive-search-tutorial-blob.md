@@ -8,13 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 726fdd6aeebac970142fa9225381af77114bfe42
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 6f7c5e2955c57e0e1891593504e5eec1a06bbb04
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274116"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265365"
 ---
 # <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>教程：使用认知搜索将结构添加到“非结构化内容”
 

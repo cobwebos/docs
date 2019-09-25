@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 85dc0476da12bea64610b6910b0682fef00f4b5a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 462d9cd6d2a911e660221621ebde5829e928cf00
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064731"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122221"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板
 
@@ -264,4 +264,4 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 在本教程中，你将创建 Azure DevOps 管道以部署 Azure 资源管理器模板。 若要了解如何跨多个区域部署 Azure 资源，以及如何使用安全部署做法，请参阅
 
 > [!div class="nextstepaction"]
-> [使用 Azure 部署管理器](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [使用安全部署做法](./deployment-manager-tutorial.md)

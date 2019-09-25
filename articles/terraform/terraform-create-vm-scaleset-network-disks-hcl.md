@@ -7,13 +7,13 @@ keywords: terraform, devops, 虚拟机, Azure, 规模集, 网络, 存储, 模块
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2018
-ms.openlocfilehash: 21fea65ed7056afa57d9acbacb2457bb4d09cff5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: a6bc0879d07cadc6c5b0b1a21b11b3075ec69719
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002317"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169872"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>使用 Terraform 创建 Azure 虚拟机规模集
 
@@ -43,7 +43,7 @@ ms.locfileid: "58002317"
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)。
 
-1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。
+1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。 
 
     ![Cloud Shell 提示符](./media/terraform-create-vm-scaleset-network-disks-hcl/azure-portal-cloud-shell-button-min.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "58002317"
 
 1. 在编辑器中粘贴以下代码：
 
-   ```JSON
+   ```hcl
    variable "location" {
     description = "The location where resources will be created"
    }
@@ -124,7 +124,7 @@ ms.locfileid: "58002317"
 1. 在编辑器中粘贴以下代码，以公开虚拟机的完全限定域名 (FQDN)。
    :
 
-   ```JSON
+   ```hcl
     output "vmss_public_ip" {
         value = "${azurerm_public_ip.vmss.fqdn}"
     }
@@ -157,7 +157,7 @@ ms.locfileid: "58002317"
 
 1. 在文件的末尾粘贴以下代码，以公开虚拟机的完全限定域名 (FQDN)。
 
-   ```JSON
+   ```hcl
    resource "azurerm_resource_group" "vmss" {
     name     = "${var.resource_group_name}"
     location = "${var.location}"
@@ -225,9 +225,9 @@ ms.locfileid: "58002317"
 
    ![公共 IP 地址的虚拟机规模集完全限定域名](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
 
-1. 在 Azure 门户上的主菜单中，选择“资源组”。
+1. 在 Azure 门户上的主菜单中，选择“资源组”。 
 
-1. 在“资源组”选项卡上，选择“myResourceGroup”查看 Terraform 创建的资源。
+1. 在“资源组”选项卡上，选择“myResourceGroup”查看 Terraform 创建的资源。  
    ![虚拟机规模集网络资源](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-resources.png)
 
 ## <a name="add-a-virtual-machine-scale-set"></a>添加虚拟机规模集
@@ -252,7 +252,7 @@ ms.locfileid: "58002317"
 
 1. 在文件的末尾粘贴以下代码：
 
-   ```JSON
+   ```hcl
    resource "azurerm_lb" "vmss" {
     name                = "vmss-lb"
     location            = "${var.location}"
@@ -369,7 +369,7 @@ ms.locfileid: "58002317"
 
 1. 在编辑器中粘贴以下代码：
 
-   ```JSON
+   ```hcl
    #cloud-config
    packages:
     - nginx
@@ -393,7 +393,7 @@ ms.locfileid: "58002317"
 
 1. 将以下代码粘贴到文件末尾，以自定义部署：
 
-    ```JSON
+    ```hcl
     variable "application_port" {
        description = "The port that you want to expose to the external load balancer"
        default     = 80
@@ -458,7 +458,7 @@ SSH *jumpbox* 是为了访问网络中的其他服务器而“跳转”的单个
 
 1. 在文件的末尾粘贴以下代码：
 
-   ```JSON
+   ```hcl
    resource "azurerm_public_ip" "jumpbox" {
     name                         = "jumpbox-public-ip"
     location                     = "${var.location}"
@@ -528,7 +528,7 @@ SSH *jumpbox* 是为了访问网络中的其他服务器而“跳转”的单个
 
 1. 将以下代码粘贴到文件的末尾，以在部署完成后显示 jumpbox 的主机名：
 
-   ```
+   ```hcl
    output "jumpbox_public_ip" {
       value = "${azurerm_public_ip.jumpbox.fqdn}"
    }

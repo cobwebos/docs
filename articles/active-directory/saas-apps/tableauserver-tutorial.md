@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e95143da96ce9891c3820479e536e9ea6a18617
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b07c6d6317d8ca284008d271f507b965414bfbc1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861354"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257505"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Tableau Server 集成
 
@@ -158,7 +158,7 @@ ms.locfileid: "70861354"
     h. 单击“保存” 
 
     > [!NOTE]
-    > 客户必须上传 Tableau Server SAML SSO 配置中的任何证书，SSO 流程中会将其忽略。 如果需要帮助在 Tableau Server 上配置 SAML，请参阅此文：[配置 SAML](https://help.tableau.com/current/server/en-gb/saml_config_steps_tsm_ui.htm)。
+    > 客户必须上传 Tableau Server SAML SSO 配置中的任何证书，SSO 流程中会将其忽略。 如果需要帮助在 Tableau Server 上配置 SAML，请参阅此文：[配置 SAML](https://help.tableau.com/current/online/en-us/saml_config_azure_ad.htm)。
 
 ### <a name="create-tableau-server-test-user"></a>创建 Tableau Server 测试用户
 
