@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 9fac349657340486674e4a899b21821b45cc0703
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982592"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265168"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -179,10 +179,16 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 1. 在“搜索查询”框中，键入 `DnsInventory`，查看由该解决方案托管的 DNS 服务器中所有与 DNS 清单相关数据。 结果中列出 DNS 服务器的日志数据、DNS 区域和资源记录。
 
     ![DnsInventory 日志搜索](./media/dns-analytics/log-search-dnsinventory.png)
+    
+### <a name="troubleshooting"></a>疑难解答
+
+Commopn 故障排除步骤：
+
+1. 缺少 DNS 查找数据-若要解决此问题，请尝试重置配置，或在门户中仅加载一次配置页面。 若要重置，只需将设置更改为其他值，然后将其更改回原始值，并保存配置。
 
 ## <a name="feedback"></a>反馈
 
-若要提供反馈, 请访问[Log Analytics UserVoice 页面](https://aka.ms/dnsanalyticsuservoice), 发布用于处理 DNS Analytics 功能的想法。 
+若要提供反馈，请访问[Log Analytics UserVoice 页面](https://aka.ms/dnsanalyticsuservoice)，发布用于处理 DNS Analytics 功能的想法。 
 
 ## <a name="next-steps"></a>后续步骤
 

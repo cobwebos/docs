@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 53185caa6a0492702035041a893f20a78cf1ea4d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37a8799ca1ea986d5b47dad6e17781d7dfbacfab
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65911243"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261685"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 门户管理 Azure DDoS 保护标准
 
@@ -33,56 +33,56 @@ ms.locfileid: "65911243"
 
 ## <a name="create-a-ddos-protection-plan"></a>创建 DDoS 防护计划
 
-DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网络。 可以为组织配置一个 DDoS 防护计划，然后从多个订阅将虚拟网络链接到相同计划。 DDoS 防护计划本身也与在计划创建期间选择的订阅相关联。 DDoS 保护计划可在区域和订阅。 示例-可以在租户中区域美国东部和链接到订阅 #1 中创建该计划。 在同一个计划可以链接到虚拟网络位于不同的区域的其他订阅中跨你的租户。 如果受保护的公共 IP 地址超过 100，计划关联的订阅将产生针对计划以及超额费用的每月定期帐单。 有关 DDoS 定价的详细信息，请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/ddos-protection/)。
+DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网络。 可以为组织配置一个 DDoS 防护计划，然后从多个订阅将虚拟网络链接到相同计划。 DDoS 防护计划本身也与在计划创建期间选择的订阅相关联。 DDoS 防护计划跨区域和订阅工作。 示例-您可以在区域 "美国东部" 和 "链接到租户中的订阅 #1" 中创建计划。 同一计划可从不同区域中的其他订阅链接到你的租户。 如果受保护的公共 IP 地址超过 100，计划关联的订阅将产生针对计划以及超额费用的每月定期帐单。 有关 DDoS 定价的详细信息，请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/ddos-protection/)。
 
 大多数组织都不需要创建多个计划。 无法直接在订阅之间移动计划。 如果要更改计划所位于的订阅，需要[删除现有计划](#work-with-ddos-protection-plans)并创建新的计划。
 
-1. 在 Azure 门户的左上角，选择“创建资源”  。
-2. 搜索 DDoS  。 当“DDoS 防护计划”出现在搜索结果中时，将其选中  。
-3. 选择“创建”  。
-4. 输入或选择自己的值或以下示例值，然后选择“创建”  ：
+1. 在 Azure 门户的左上角，选择“创建资源”。
+2. 搜索 DDoS。 当“DDoS 防护计划”出现在搜索结果中时，将其选中。
+3. 选择“创建”。
+4. 输入或选择自己的值或以下示例值，然后选择“创建”：
 
     |设置        |值                                              |
     |---------      |---------                                          |
-    |名称           | myDdosProtectionPlan                              |
+    |姓名           | myDdosProtectionPlan                              |
     |订阅   | 选择订阅。                         |
-    |资源组 | 选择“新建”，并输入 myResourceGroup   |
-    |位置       | 美国东部                                           |
+    |资源组 | 选择“新建”，并输入 myResourceGroup |
+    |Location       | East US                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>为新的虚拟网络启用 DDoS
 
-1. 在 Azure 门户的左上角，选择“创建资源”  。
-2. 选择“网络”，然后选择“虚拟网络”   。
-3. 输入或选择自己的值或以下示例值，接受其余默认值，然后选择“创建”  ：
+1. 在 Azure 门户的左上角，选择“创建资源”。
+2. 选择“网络”，然后选择“虚拟网络”。
+3. 输入或选择自己的值或以下示例值，接受其余默认值，然后选择“创建”：
 
     | 设置         | 值                                                        |
     | ---------       | ---------                                                    |
     | 名称            | myVirtualNetwork                                             |
     | 订阅    | 选择订阅。                                    |
-    | 资源组  | 选择“使用现有资源组”，然后选择“myResourceGroup”   |
-    | 位置        | 美国东部                                                      |
-    | DDoS 防护 | 选择“标准”，然后在“DDoS 防护”下，选择“myDdosProtectionPlan”    。 所选计划可位于与虚拟网络相同或不同的订阅中，但这两个订阅必须与同一 Azure Active Directory 租户相关联。|
+    | 资源组  | 选择“使用现有资源组”，然后选择“myResourceGroup” |
+    | Location        | East US                                                      |
+    | DDoS 防护 | 选择“标准”，然后在“DDoS 防护”下，选择“myDdosProtectionPlan”。 所选计划可位于与虚拟网络相同或不同的订阅中，但这两个订阅必须与同一 Azure Active Directory 租户相关联。|
 
 如果已为虚拟网络启用 DDoS 防护，无法将虚拟网络移到其他资源组或订阅。 如果需要移动已启用 DDoS 标准的虚拟网络，请先禁用该标准并移动虚拟网络，然后启用 DDoS 标准。 移动后，适用于虚拟网络所有受保护的公共 IP 地址的自动优化策略阈值都将重置。
 
 ## <a name="enable-ddos-for-an-existing-virtual-network"></a>为现有虚拟网络启用 DDoS
 
 1. 如果没有现有的 DDoS 防护计划，通过完成[创建 DDoS 防护计划](#create-a-ddos-protection-plan)中的步骤创建一个 DDoS 防护计划。
-2. 在 Azure 门户的左上角，选择“创建资源”  。
-3. 输入想要在门户顶部的“搜索资源、服务和文档”框中为其启用 DDoS 防护标准的虚拟网络的名称  。 当虚拟网络名称出现在搜索结果中时，将其选中。
-4. 选择“设置”下的“DDoS 防护”   。
-5. 选择“标准”  。 选择“DDoS 防护计划”下的现有 DDoS 防护计划，或在步骤 1 中创建的计划，然后选择“保存”   。 所选计划可位于与虚拟网络相同或不同的订阅中，但这两个订阅必须与同一 Azure Active Directory 租户相关联。
+2. 在 Azure 门户的左上角，选择“创建资源”。
+3. 输入想要在门户顶部的“搜索资源、服务和文档”框中为其启用 DDoS 防护标准的虚拟网络的名称。 当虚拟网络名称出现在搜索结果中时，将其选中。
+4. 选择“设置”下的“DDoS 防护”。
+5. 选择“标准”。 选择“DDoS 防护计划”下的现有 DDoS 防护计划，或在步骤 1 中创建的计划，然后选择“保存”。 所选计划可位于与虚拟网络相同或不同的订阅中，但这两个订阅必须与同一 Azure Active Directory 租户相关联。
 
 ## <a name="disable-ddos-for-a-virtual-network"></a>为虚拟网络禁用 DDoS
 
-1. 输入想要在门户顶部的“搜索资源、服务和文档”框中为其禁用 DDoS 防护标准的虚拟网络的名称  。 当虚拟网络名称出现在搜索结果中时，将其选中。
-2. 选择“设置”下的“DDoS 防护”   。
-3. 选择“DDoS 防护计划”下的“基本”，然后选择“保存”    。
+1. 输入想要在门户顶部的“搜索资源、服务和文档”框中为其禁用 DDoS 防护标准的虚拟网络的名称。 当虚拟网络名称出现在搜索结果中时，将其选中。
+2. 选择“设置”下的“DDoS 防护”。
+3. 选择“DDoS 防护计划”下的“基本”，然后选择“保存”。
 
 ## <a name="work-with-ddos-protection-plans"></a>使用 DDoS 防护计划
 
-1. 在门户左上角选择“所有服务”  。
-2. 在“筛选器”框中输入 DDoS   。 当“DDoS 防护计划”出现在结果中时，将其选中  。
+1. 在门户左上角选择“所有服务”。
+2. 在“筛选器”框中输入 DDoS。 当“DDoS 防护计划”出现在结果中时，将其选中。
 3. 从列表中选择要查看的保护计划。
 4. 将列出与计划相关联的所有虚拟网络。
 5. 如果要删除计划，必须首先与所有虚拟网络取消关联。 若要从虚拟网络中取消关联计划，请参阅[为虚拟网络禁用 DDoS](#disable-ddos-for-a-virtual-network)。
@@ -91,20 +91,20 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 利用 Azure Monitor 警报配置，可以选择任何可用的 DDoS 防护指标，以在攻击期间发生活跃的风险缓解时发出警报。 当满足条件时，指定的地址会收到警报电子邮件：
 
-1. 在门户左上角选择“所有服务”  。
-2. 在“筛选器”框中输入 Monitor   。 当“Monitor”出现在结果中时，将其选中  。
-3. 选择“共享服务”下的“指标”   。
-4. 输入或选择自己的值或输入以下示例值，接受其余默认值，然后选择“确定”  ：
+1. 在门户左上角选择“所有服务”。
+2. 在“筛选器”框中输入 Monitor。 当“Monitor”出现在结果中时，将其选中。
+3. 选择“共享服务”下的“指标”。
+4. 输入或选择自己的值或输入以下示例值，接受其余默认值，然后选择“确定”：
 
     |设置                  |值                                                                                               |
     |---------                |---------                                                                                           |
-    |名称                     | myDdosAlert                                                                                        |
+    |姓名                     | myDdosAlert                                                                                        |
     |订阅             | 选择包含希望用于接收警报的公共 IP 地址的订阅。        |
     |资源组           | 选择包含希望用于接收警报的公共 IP 地址的资源组。      |
-    |资源                 | 选择包含希望用于接收警报的公共 IP 地址的公共 IP 地址。 DDoS 监视分配给虚拟网络中的资源的公共 IP 地址。 如果虚拟网络中没有任何具有公共 IP 地址的资源，必须首先创建具有公共 IP 地址的资源。 可监视通过[适用于 Azure 服务的虚拟网络](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)中列出的资源管理器部署的所有资源的公共 IP 地址，Azure App Service 环境和 Azure VPN 网关除外。 可快速创建 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机继续本教程的内容。                   |
+    |Resource                 | 选择包含希望用于接收警报的公共 IP 地址的公共 IP 地址。 DDoS 监视分配给虚拟网络中的资源的公共 IP 地址。 如果虚拟网络中没有任何具有公共 IP 地址的资源，必须首先创建具有公共 IP 地址的资源。 可监视通过[适用于 Azure 服务的虚拟网络](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)中列出的资源管理器部署的所有资源的公共 IP 地址，Azure App Service 环境和 Azure VPN 网关除外。 可快速创建 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机继续本教程的内容。                   |
     |指标                   | 是否遭到 DDoS 攻击                                                                            |
-    |阈值                | 1 - 1 表示遭到攻击  。 0 表示未遭到攻击  。                         |
-    |周期                   | 选择所选的任何值。                                                                   |
+    |阈值                | 1 - 1 表示遭到攻击。 0 表示未遭到攻击。                         |
+    |时间段                   | 选择所选的任何值。                                                                   |
     |通过电子邮件通知         | 选中复选框                                                                                  |
     |其他管理员 | 如果不是电子邮件所有者、参与者或订阅的阅读者，请输入你的电子邮件地址。 |
 
@@ -121,13 +121,13 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 对攻击的遥测是通过 Azure Monitor 实时提供的。 遥测仅在公用 IP 地址处于风险缓解期间可用。 在攻击缓解之前或之后，都不会看到遥测。
 
-1. 在门户左上角选择“所有服务”  。
-2. 在“筛选器”框中输入 Monitor   。 当“Monitor”出现在结果中时，将其选中  。
-3. 选择“共享服务”下的“指标”   。
-4. 选择包含要为其遥测的公共 IP 地址的订阅和资源组   。
-5. 为“资源类型”选择“公共 IP 地址”，然后选择要为其遥测的特定公共 IP 地址   。
-6. 屏幕的左侧将显示一系列可用指标  。 选中这些指标时，会在概述屏幕上的 **Azure Monitor 指标图表**中绘制这些指标。
-7. 选择**聚合**键入为**最大值**
+1. 在门户左上角选择“所有服务”。
+2. 在“筛选器”框中输入 Monitor。 当“Monitor”出现在结果中时，将其选中。
+3. 选择“共享服务”下的“指标”。
+4. 选择包含要为其遥测的公共 IP 地址的订阅和资源组。
+5. 为“资源类型”选择“公共 IP 地址”，然后选择要为其遥测的特定公共 IP 地址。
+6. 屏幕的左侧将显示一系列可用指标。 选中这些指标时，会在概述屏幕上的 **Azure Monitor 指标图表**中绘制这些指标。
+7. 选择**聚合**类型为**Max**
 
 指标名称提供不同的数据包类型和字节数与数据包数，每个指标都有如下所示的标记名称基本构造：
 
@@ -139,28 +139,28 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 ## <a name="view-ddos-mitigation-policies"></a>查看 DDoS 缓解策略
 
-标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP 地址，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 选择可查看策略阈值**触发 DDoS 缓解的入站 TCP 数据包**并**触发 DDoS 缓解的入站 UDP 数据包**指标**聚合**键入作为 Max，如下图中所示：
+标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP 地址，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以通过选择 "**入站 TCP 数据包" 来**查看策略阈值，以便触发 ddos 缓解和**入站 UDP 数据包，以触发** **聚合**类型为 "Max" 的 ddos 缓解指标，如下图所示：
 
 ![查看缓解策略](./media/manage-ddos-protection/view-mitigation-policies.png)
 
 策略阈值是通过基于 Azure 机器学习的网络流量探查自动配置的。 仅当超过策略阈值时，才会对受攻击的 IP 地址进行 DDoS 缓解。
 
 ## <a name="configure-ddos-attack-analytics"></a>配置 DDoS 攻击分析
-Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可视化效果。 保护其虚拟网络免受 DDoS 攻击的客户可通过攻击缓解报告和缓解流日志详细查看攻击流量以及缓解攻击的操作。 
+Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可视化效果。 保护其虚拟网络免受 DDoS 攻击的客户可通过攻击缓解报告和缓解流日志来详细了解攻击流量以及缓解攻击的操作。 
 
 ## <a name="configure-ddos-attack-mitigation-reports"></a>配置 DDoS 攻击缓解报告
 攻击缓解报告使用 Netflow 协议数据，这些数据聚合在一起，提供有关资源所受攻击的详细信息。 只要公共 IP 资源受到攻击，就会在缓解措施启动时开始生成报告。 每 5 分钟生成一份增量报告，整个缓解过程结束后，生成一份缓解后报告。 这是为了确保在 DDoS 攻击持续时间较长时，能够每隔 5 分钟查看一次最新的缓解报告快照，并在攻击缓解结束时查看完整总结。 
 
-1. 在门户左上角选择“所有服务”  。
-2. 在“筛选器”框中输入 Monitor   。 当“Monitor”出现在结果中时，将其选中  。
-3. 选择“设置”下的“诊断设置”   。
-4. 选择包含要记录的公共 IP 地址的订阅和资源组   。
-5. 为“资源类型”选择“公共 IP 地址”，然后选择要为其记录指标的特定公共 IP 地址   。
-6. 选择“启用诊断以收集 DDoSMitigationReports 日志”，然后根据需要选择任意多个以下选项  ：
+1. 在门户左上角选择“所有服务”。
+2. 在“筛选器”框中输入 Monitor。 当“Monitor”出现在结果中时，将其选中。
+3. 选择“设置”下的“诊断设置”。
+4. 选择包含要记录的公共 IP 地址的订阅和资源组。
+5. 为“资源类型”选择“公共 IP 地址”，然后选择要为其记录指标的特定公共 IP 地址。
+6. 选择“启用诊断以收集 DDoSMitigationReports 日志”，然后根据需要选择任意多个以下选项：
 
     - **存档到存储帐户**：数据写入 Azure 存储帐户。 若要了解有关此选项的详细信息，请参阅[存档诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅[将诊断日志流式传输到事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-    - **发送到 Log Analytics**：将日志写入到 Azure Monitor 服务。 若要了解有关此选项的详细信息，请参阅[收集有关在 Azure Monitor 日志中使用的日志](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅[将诊断日志流式传输到事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **发送到 Log Analytics**：将日志写入 Azure Monitor 服务。 若要了解有关此选项的详细信息，请参阅[收集用于 Azure Monitor 日志的日志](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 增量缓解报告和攻击后缓解报告都包括以下字段
 - 攻击途径
@@ -173,23 +173,23 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 ## <a name="configure-ddos-attack-mitigation-flow-logs"></a>配置 DDoS 攻击缓解流日志
 通过攻击缓解流日志，可在活动 DDoS 攻击期间近乎实时地查看丢弃流量、转发流量和其他相关数据点。 可通过事件中心将此数据的恒定流引入 SIEM 系统，以实现近实时监视，还可采取可能的措施，解决防御运营需求。 
 
-1. 在门户左上角选择“所有服务”  。
-2. 在“筛选器”框中输入 Monitor   。 当“Monitor”出现在结果中时，将其选中  。
-3. 选择“设置”下的“诊断设置”   。
-4. 选择包含要记录的公共 IP 地址的订阅和资源组   。
-5. 为“资源类型”选择“公共 IP 地址”，然后选择要为其记录指标的特定公共 IP 地址   。
-6. 选择“启用诊断以收集 DDoSMitigationFlowLogs 日志”，然后根据需要选择任意多个以下选项  ：
+1. 在门户左上角选择“所有服务”。
+2. 在“筛选器”框中输入 Monitor。 当“Monitor”出现在结果中时，将其选中。
+3. 选择“设置”下的“诊断设置”。
+4. 选择包含要记录的公共 IP 地址的订阅和资源组。
+5. 为“资源类型”选择“公共 IP 地址”，然后选择要为其记录指标的特定公共 IP 地址。
+6. 选择“启用诊断以收集 DDoSMitigationFlowLogs 日志”，然后根据需要选择任意多个以下选项：
 
     - **存档到存储帐户**：数据写入 Azure 存储帐户。 若要了解有关此选项的详细信息，请参阅[存档诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅[将诊断日志流式传输到事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-    - **发送到 Log Analytics**：将日志写入到 Azure Monitor 服务。 若要了解有关此选项的详细信息，请参阅[收集有关在 Azure Monitor 日志中使用的日志](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅[将诊断日志流式传输到事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **发送到 Log Analytics**：将日志写入 Azure Monitor 服务。 若要了解有关此选项的详细信息，请参阅[收集用于 Azure Monitor 日志的日志](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 1. 若要在 Azure 分析仪表板中查看流日志数据，可从 https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip 导入示例仪表板
 
 流日志将具有以下字段： 
-- Source IP
+- 源 IP
 - Destination IP
-- Source Port 
-- Destination Port 
+- 源端口 
+- 目标端口 
 - 协议类型 
 - 在缓解期间执行的操作
 
@@ -204,24 +204,24 @@ Mircosoft 已与 [BreakingPoint Cloud](https://www.ixiacom.com/products/breaking
 - 阐述 DDoS 符合性
 - 培训网络安全团队
 
-## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>在 Azure 安全中心中查看 DDoS 保护警报
+## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>在 Azure 安全中心查看 DDoS 保护警报
 
-Azure 安全中心提供了一系列[安全警报](/azure/security-center/security-center-managing-and-responding-alerts)，帮助调查和修复问题的信息。 使用此功能，你获得警报，包括 DDoS 攻击相关的警报和缓解此攻击在附近时所执行的操作的统一的的视图。
-有两个特定的警报，你将看到有关任何 DDoS 攻击检测和缓解措施：
+Azure 安全中心提供[安全警报](/azure/security-center/security-center-managing-and-responding-alerts)的列表，其中包含有助于调查和修正问题的信息。 利用此功能，可以获得警报的统一视图，包括与 DDoS 攻击相关的警报，以及在短期内缓解攻击所采取的措施。
+你将看到两个特定警报，你可以看到这些警报是为了进行 DDoS 攻击检测和缓解：
 
-- **DDoS 攻击检测到的公共 IP**:DDoS 保护服务检测到一个公共 IP 地址是对 DDoS 攻击的目标时，将生成此警报。
-- **为公共 IP 缓解 DDoS 攻击**:已被抑制的公共 IP 地址的攻击时，将生成此警报。
-若要查看的警报，打开**安全中心**在 Azure 门户中。 下**威胁防护**，选择**安全警报**。 以下屏幕截图显示了 DDoS 攻击警报的示例。
+- **检测到公共 IP 的 DDoS 攻击**：当 DDoS 防护服务检测到某个公共 IP 地址是 DDoS 攻击的目标时，将生成此警报。
+- **为公共 IP 缓解 DDoS 攻击**：当已缓解对公共 IP 地址的攻击时，将生成此警报。
+若要查看警报，请在 Azure 门户中打开 "**安全中心**"。 在 "**威胁防护**" 下，选择 "**安全警报**"。 以下屏幕截图显示了 DDoS 攻击警报的示例。
 
-![在 Azure 安全中心的 DDoS 警报](./media/manage-ddos-protection/ddos-alert-asc.png)
+![Azure 安全中心中的 DDoS 警报](./media/manage-ddos-protection/ddos-alert-asc.png)
 
-警报包含有关低于攻击、 地理和威胁智能信息和修正步骤的公共 IP 地址的常规信息。
+这些警报包含有关受攻击、异地和威胁智能信息以及修正步骤的公共 IP 地址的一般信息。
 
 ## <a name="permissions"></a>权限
 
 若要使用 DDoS 保护计划，必须将你的帐户分配到[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表所列适当操作的[自定义](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 操作                                            | 名称                                     |
+| 操作                                            | 姓名                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | 读取 DDoS 保护计划              |
 | Microsoft.Network/ddosProtectionPlans/write       | 创建或更新 DDoS 保护计划  |

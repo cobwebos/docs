@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: dd5442ff8c8d296dfa221a9ea7ed8d5833fd89c1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240712"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262732"
 ---
-# <a name="connect-your-domain-name-server---preview"></a>连接域名服务器-预览
+# <a name="connect-your-domain-name-server"></a>连接域名服务器
 
-
+> [!IMPORTANT]
+> Azure Sentinel 中的 DNS 数据连接器目前为公共预览版。
+> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 可以将 Windows 上运行的任何域名服务器（DNS）连接到 Azure Sentinel。 这是通过在 DNS 计算机上安装代理来完成的。 使用 DNS 日志，可以通过收集、分析和关联分析和审核日志以及来自 DNS 服务器的其他相关数据，获取对组织的 DNS 基础结构的安全、性能和操作相关的见解。
 
@@ -53,7 +55,7 @@ ms.locfileid: "71240712"
 
 ## <a name="connect-your-dns-appliance"></a>连接 DNS 设备
 
-1. 在 Azure Sentinel 门户中，选择 "**数据连接器**"，然后选择 " **DNS** " 磁贴。
+1. 在 Azure Sentinel 门户中，选择 "**数据连接器**"，然后选择 " **DNS （预览）** " 磁贴。
 1. 如果你的 DNS 计算机在 Azure 中：
     1. 单击 "**在 Azure Windows 虚拟机上安装代理"** 。
     1. 在 "**虚拟机**" 列表中，选择要流式传输到 Azure SENTINEL 的 DNS 计算机。 请确保这是一个 Windows VM。

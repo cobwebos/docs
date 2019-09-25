@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: e1d481c6019feebf3d62f0e23480f5572363869c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: bcce4dcac35b783efefe81abc2090506502e9931
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946838"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257281"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure 安全性与合规性蓝图：适用于 FedRAMP 的 laaS Web 应用
 
@@ -72,7 +72,7 @@ ms.locfileid: "68946838"
 - Azure Key Vault
 - Azure Active Directory (Azure AD)
 - Azure 资源管理器
-- Azure Monitor (日志)
+- Azure Monitor （日志）
 
 ## <a name="deployment-architecture"></a>部署体系结构
 
@@ -147,10 +147,10 @@ ms.locfileid: "68946838"
 
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
-Azure Monitor 日志提供了大量日志记录: 系统和用户活动以及系统运行状况。 [Azure Monitor 日志](../azure-security-disk-encryption-overview.md)解决方案收集并分析 Azure 和本地环境中资源生成的数据。
+Azure Monitor 日志提供了大量日志记录：系统和用户活动以及系统运行状况。 [Azure Monitor 日志](../azure-security-disk-encryption-overview.md)解决方案收集并分析 Azure 和本地环境中资源生成的数据。
 
 - **活动日志：** [活动日志](../../azure-monitor/platform/activity-logs-overview.md)提供对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志：** [诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)是每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。
+- **诊断日志：** [诊断日志](../../azure-monitor/platform/resource-logs-overview.md)是每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。
 - **日志存档：** 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。 这些日志连接到 Azure Monitor 日志以便进行处理、存储和仪表板报告。
 
 此外，以下监视解决方案作为此体系结构的一部分进行安装。 请注意，客户负责配置这些解决方案，使之符合 FedRAMP 安全控制的要求：

@@ -12,23 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: b9a4a0a18e120a2843e23d44b03c0fe53b0d84fc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0fe174f309656011a1d05762927e254ff210b1e7
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68370673"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262011"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准属性
 Azure Monitor 日志中的数据[作为一组记录存储在 Log Analytics 工作区或 Application Insights 应用程序](../log-query/logs-structure.md)中，每条记录都具有特定的数据类型，该数据类型包含一组惟一的属性。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。
 
 > [!NOTE]
-> 某些标准 propertis 不会显示在 Log Analytics 中的架构视图或 intellisense 中, 除非在输出中显式指定属性, 否则它们不会显示在查询结果中。
+> 某些标准属性不会显示在 Log Analytics 的架构视图或 intellisense 中，也不会显示在查询结果中，除非在输出中显式指定该属性。
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated 和 timestamp
-**TimeGenerated** (Log Analytics 工作区) 和**时间戳**(Application Insights 应用程序) 属性包含数据源创建记录的日期和时间。 有关更多详细信息, 请参阅[Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
+**TimeGenerated**（Log Analytics 工作区）和 **Timestamp**（Application Insights 应用程序）属性包含数据源创建记录的日期和时间。 如需更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
 
-**TimeGenerated**和**timestamp**提供用于按时间筛选或汇总的通用属性。 为 Azure 门户中的视图或仪表板选择时间范围时，它使用 TimeGenerated 或 timestamp 来筛选结果。 
+**TimeGenerated** 和 **timestamp** 提供了一个用于按时间进行筛选或汇总的常用属性。 为 Azure 门户中的视图或仪表板选择时间范围时，它使用 TimeGenerated 或 timestamp 来筛选结果。 
 
 ### <a name="examples"></a>示例
 
@@ -52,9 +52,9 @@ exceptions
 ```
 
 ## <a name="_timereceived"></a>\_TimeReceived
-TimeReceived 属性包含 Azure 云中 Azure Monitor 摄取点接收记录的日期和时间。  **\_** 这对于识别数据源和云之间的延迟问题非常有用。 例如, 可能是网络问题导致延迟, 同时从代理发送数据。 有关更多详细信息, 请参阅[Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
+**\_TimeReceived** 属性包含 Azure 云中的 Azure Monitor 引入点收到记录的日期和时间。 这可以用来确定数据源和云之间的延迟问题。 例如，网络问题会导致与从代理发送的数据发生延迟。 如需更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
 
-以下查询提供代理中事件记录的平均延迟 (按小时)。 这包括从代理到云中的时间, 以及记录可用于日志查询的总时间。
+以下查询给出了从代理发送的事件记录的平均延迟（按小时）。 这包括从代理到云的时间，以及记录可供日志查询所花费的总时间。
 
 ```Kusto
 Event
@@ -78,7 +78,7 @@ search *
 
 ```
 ## <a name="_itemid"></a>\_ItemId
-ItemId 属性保存记录的唯一标识符。  **\_**
+**\_ItemId** 属性保留记录的唯一标识符。
 
 
 ## <a name="_resourceid"></a>\_ResourceId

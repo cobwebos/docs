@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 00c0fea9d8ca7ee299a9a19473917eba90edd675
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 48357adccea201aaeb99863b39e9c8cabce915ce
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606976"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262055"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor 数据平台
 
-在当今运行分布式应用程序（依赖于云和本地服务）的复杂计算环境中启用观测功能，需要从分布式系统的每个层和每个组件收集操作数据。 需要能够对这些数据执行深入的见解分析，并将其整合到可提供不同透视图的单个窗格，这样才能为组织中的众多利益干系人提供支持。
+若要跨当今复杂的计算环境启用可观察性，并且运行依赖于云和本地服务的分布式应用程序，需要收集每个层和分布式系统的每个组件的操作数据。 需要能够对这些数据执行深入的见解分析，并将其整合到可提供不同透视图的单个窗格，这样才能为组织中的众多利益干系人提供支持。
 
 [Azure Monitor](../overview.md) 会将各种源中的数据收集并聚合到一个通用数据平台，在该平台中，可以使用这些数据进行分析、实现可视化和发出警报。 Azure Monitor 基于多个源中的数据提供一致的体验，让你深入洞察所有受监视的资源，甚至是其他服务在 Azure Monitor 中存储的数据。
 
@@ -33,7 +33,7 @@ ms.locfileid: "67606976"
 Azure 资源会生成大量的监视数据。 Azure Monitor 将这些数据连同其他源中的监视数据一起整合到指标或日志平台。 每个平台已针对特定的监视方案进行优化，各自支持 Azure Monitor 中的不同功能。 使用数据分析、可视化或警报等功能需要了解数据的差异，以便能够以最经济高效的方式实现所需的方案。 Azure Monitor 中的见解功能（例如 [Application Insights](../app/app-insights-overview.md) 或[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md)）提供分析工具让你专注于特定的监视方案，而无需了解这两种数据之间的差异。 
 
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 [指标](data-platform-metrics.md)是数字值，用于描述系统某些方面在特定时间点的情况。 指标是定期收集的，使用一个时间戳、一个名称、一个值以及一个或多个定义标签进行标识。 可以使用各种算法聚合指标、将其与其他指标进行比较，以及分析不同时间的指标趋势。 
 
 Azure Monitor 中的指标存储在时序数据库中，该数据库经过优化，可用于分析带时间戳的数据。 因此，指标特别适合用于警报和快速检测问题。 它们可以告知系统的运行状况，但通常需要与日志相结合才能识别问题的根本原因。
@@ -48,7 +48,7 @@ Azure Monitor 中的指标存储在时序数据库中，该数据库经过优化
 Azure Monitor 中的日志存储在基于 [Azure 数据资源管理器](/azure/data-explorer/)的 Log Analytics 工作区中。数据资源管理器提供强大的分析引擎和[丰富查询语言](/azure/kusto/query/)。 日志通常提供足够的信息来给出所要识别的问题的完整上下文，在识别问题的根本原因时很有价值。
 
 > [!NOTE]
-> 必须将 Azure Monitor 日志与 Azure 中的日志数据源区分开来。 例如，Azure 中的订阅级事件将写入到可以通过 Azure Monitor 菜单查看的[活动日志](activity-logs-overview.md)。 大多数资源会将操作信息写入可转发到不同位置的[诊断日志](diagnostic-logs-overview.md)。 Azure Monitor 日志是一个日志数据平台，它可以收集活动日志和诊断日志以及其他监视数据，以针对整个资源集提供深入分析。
+> 必须将 Azure Monitor 日志与 Azure 中的日志数据源区分开来。 例如，Azure 中的订阅级事件将写入到可以通过 Azure Monitor 菜单查看的[活动日志](activity-logs-overview.md)。 大多数资源会将操作信息写入可转发到不同位置的[诊断日志](resource-logs-overview.md)。 Azure Monitor 日志是一个日志数据平台，它可以收集活动日志和诊断日志以及其他监视数据，以针对整个资源集提供深入分析。
 
 
  可以在 Azure 门户中配合 [Log Analytics](../log-query/portals.md) 以交互方式使用[日志查询](../log-query/log-query-overview.md)，或者将结果添加到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)，以结合其他数据生成可视化效果。 还可以创建[日志警报](alerts-log.md)，以根据计划查询的结果触发警报。
@@ -67,7 +67,7 @@ Azure Monitor 中的分布式跟踪是使用 [Application Insights SDK](../app/d
 
 下表对 Azure Monitor 中的指标和日志做了比较。
 
-| 特性  | 度量值 | 日志 |
+| 特性  | 指标 | 日志 |
 |:---|:---|:---|
 | 优点 | 轻型数据，支持警报等近实时方案。 非常适合用于快速检测问题。 | 使用丰富查询语言进行分析。 非常适合用于深入分析和识别根本原因。 |
 | Data | 仅限数字值 | 文本或数字数据 |

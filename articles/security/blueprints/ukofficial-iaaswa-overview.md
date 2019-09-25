@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4a30e496c96fcc90417e58b0f921717985b89693
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899946"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262802"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure 安全性和符合性蓝图 - 适用于英国官方的三层 IaaS Web 应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "69899946"
 
  NCSC 建议客户使用“云安全原则”评估服务的安全属性，并帮助了解客户与供应商之间的责任划分。 我们提供了有关其中每项原则的信息，以帮助读者了解责任的划分。
 
- Microsoft 白皮书[使用 Microsoft Azure 的英国云的 14 项云安全控制措施](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)支持此体系结构和相应的 Azure 资源管理器模板。 本白皮书目录 Azure 服务如何与英国 NCSC 的云安全原则保持一致, 从而使组织能够使用基于云的服务 (全局和在英国) 来快速跟踪其符合性义务的能力 Microsoft Azure形成.
+ Microsoft 白皮书[使用 Microsoft Azure 的英国云的 14 项云安全控制措施](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)支持此体系结构和相应的 Azure 资源管理器模板。 本白皮书目录 Azure 服务如何与英国 NCSC 的云安全原则保持一致，从而使组织能够使用基于云的服务（全局和在英国）来快速跟踪其符合性义务的能力 Microsoft Azure形成.
 
  此模板会部署工作负荷的基础结构。 必须安装并配置应用程序代码和支持性的业务层与数据层软件。 [此处](https://aka.ms/ukwebappblueprintrepo)提供了详细的部署说明。
 
@@ -172,7 +172,7 @@ ms.locfileid: "69899946"
 
 **活动日志**：配置 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)可提供有关对订阅中资源执行的操作的见解。
 
-**诊断日志**：[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)是资源发出的所有日志。 这些日志可能包括 Windows 事件系统日志，以及 Blob、表和队列的日志。
+**诊断日志**：[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)是资源发出的所有日志。 这些日志可能包括 Windows 事件系统日志，以及 Blob、表和队列的日志。
 
 **防火墙日志**：应用程序网关提供完整的诊断和访问日志。 防火墙日志适用于已启用 WAF 的应用程序网关资源。
 
@@ -226,7 +226,7 @@ Crown Commercial Service（一家致力于改善政府商业和采购活动的�
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-部署用户可使用两种方法部署此蓝图自动化。 第一种方法使用 PowerShell 脚本, 而第二种方法使用 Azure 门户来部署参考体系结构。 [此处](https://aka.ms/ukofficial-iaaswa-repo)提供了详细的部署说明。
+部署用户可使用两种方法部署此蓝图自动化。 第一种方法使用 PowerShell 脚本，而第二种方法使用 Azure 门户来部署参考体系结构。 [此处](https://aka.ms/ukofficial-iaaswa-repo)提供了详细的部署说明。
 
 ## <a name="disclaimer"></a>免责声明
 

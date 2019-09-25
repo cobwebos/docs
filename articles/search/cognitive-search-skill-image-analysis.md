@@ -9,20 +9,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 07969a92286837f8f72b533173ac8d170378d0ea
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 69e798601dc53ffb666aa9dcddd68980256fa3fc
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183398"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265451"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
 图像分析技能根据图像内容提取一组丰富的可视特征。 例如，可从图像生成标题栏、生成标记或识别名人和地标。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 
 
 > [!NOTE]
-> 小型卷 (20 个事务下) 可在 Azure 搜索中免费执行, 但较大的工作负荷需要[附加可计费认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 小型卷（20个事务下）可在 Azure 搜索中免费执行，但较大的工作负荷需要[附加可计费认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
 > 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
 
@@ -84,7 +83,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
         }
 ```
-### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>示例索引 (仅适用于类别、说明、面部和标签字段)
+### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>示例索引（仅适用于类别、说明、面部和标签字段）
 ```json
 {
     "fields": [
@@ -296,7 +295,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 }
 
 ```
-### <a name="sample-output-field-mapping-for-the-above-index"></a>示例输出字段映射 (对于以上索引)
+### <a name="sample-output-field-mapping-for-the-above-index"></a>示例输出字段映射（对于以上索引）
 ```json
     "outputFieldMappings": [
         {
@@ -316,9 +315,9 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             "targetFieldName": "faces"
         }
 ```
-### <a name="variation-on-output-field-mappings-nested-properties"></a>输出字段映射 (嵌套属性) 的变体
+### <a name="variation-on-output-field-mappings-nested-properties"></a>输出字段映射（嵌套属性）的变体
 
-您可以将输出字段映射定义为较低级别的属性, 例如仅特征点或名人。 在这种情况下, 请确保索引架构中有一个字段专门用于包含特征点。
+您可以将输出字段映射定义为较低级别的属性，例如仅特征点或名人。 在这种情况下，请确保索引架构中有一个字段专门用于包含特征点。
 
 ```json
     "outputFieldMappings": [
@@ -504,7 +503,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 | NotSupportedImage | 不受支持的图片，例如儿童色情内容。 |
 | InvalidDetails | 不受支持的特定于域的模型。 |
 
-如果收到类似于`"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`的错误, 请检查路径。 名人和特征点都是下`detail`的属性。
+如果收到类似于`"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`的错误，请检查路径。 名人和特征点都是下`detail`的属性。
 
 ```json
 "categories":[  

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: e522cba88eaf9cb63ef7ef2f20e3b72691261073
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4386a7adba17eefe3c373697597abdb7d69c476a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002405"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265984"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和交付 (CI/CD)
 
@@ -669,7 +669,7 @@ else {
 
 ## <a name="hot-fix-production-branch"></a>热修复生产分支
 
-如果将工厂部署到生产环境，并意识到需要立即修复的 bug，但无法部署当前的协作分支，则可能需要部署热修补程序。
+如果将工厂部署到生产环境，并意识到需要立即修复的 bug，但无法部署当前的协作分支，则可能需要部署热修补程序。 此方法称为快速修补工程或 QFE。 
 
 1.  在 Azure DevOps 中，请前往部署到生产环境的版本，并找到已部署的上次提交。
 
@@ -705,8 +705,11 @@ else {
 
 ## <a name="unsupported-features"></a>不受支持的功能
 
--   不能发布单个资源。 数据工厂实体相互依赖并跟踪变化的依赖项可能很困难，并导致意外的行为。 例如，触发器依赖于管道，管道依赖于数据集和其他管道，依此类推。 如果可以仅发布整个更改集的子集，则可能会发生某些无法预见的错误。
+- 按照设计，ADF_不_允许挑拣提交或选择性地发布资源。 发布将包括数据工厂中所做的**所有**更改
 
--   无法从专用分支发布。
+    - 数据工厂实体依赖于其他实体，例如，触发器依赖于管道，管道依赖于数据集和其他管道等。资源子集的选择性发布_可能_会导致意外的行为和错误
+    - 如果需要选择性发布，则可以考虑使用热修补程序。 有关详细信息，请参阅[热修复生产分支](#hot-fix-production-branch)
 
--   无法在 Bitbucket 上托管项目。
+-   不能从私有分支发布
+
+-   目前，你不能在 Bitbucket 上托管项目

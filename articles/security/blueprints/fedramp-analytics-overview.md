@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7b07fee46bce4c7b80346eb0b4c0fccd5245d87f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 9850c5f064815315db6f85a931e7e175d605dcc1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946870"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257592"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure 安全性与合规性蓝图：FedRAMP 分析
 
@@ -63,7 +63,7 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 - Azure Analysis Service
 - Azure Active Directory
 - Azure Key Vault
-- Azure Monitor (日志)
+- Azure Monitor （日志）
 - Azure 存储
 - ExpressRoute/VPN 网关
 - Power BI 仪表板
@@ -75,7 +75,7 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 
 **Azure Functions**：[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview)是通过大多数编程语言在云中运行小部分代码的解决方案。 此解决方案中的函数与 Azure 存储集成以自动将客户数据拉入云，从而促成与其他 Azure 服务的集成。 函数可轻松缩放，并且仅在运行时产生费用。
 
-**Azure Analysis Service**:[Azure 分析服务](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview)提供企业数据建模并与 Azure 数据平台服务集成。 通过将多个源的数据结合到单个数据模型中，Azure Analysis Service 加快浏览大量数据的速度。
+**Azure Analysis Service**：[Azure 分析服务](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview)提供企业数据建模并与 Azure 数据平台服务集成。 通过将多个源的数据结合到单个数据模型中，Azure Analysis Service 加快浏览大量数据的速度。
 
 **Power BI**：[Power BI](https://docs.microsoft.com/power-bi/service-azure-and-power-bi)为尝试从其数据处理工作中提取更多见解的客户提供分析和报告功能。
 
@@ -109,9 +109,9 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 
 ### <a name="logging-and-audit"></a>日志记录和审核
 [Azure Monitor](../../azure-monitor/overview.md) 生成完整显示的监视数据（包括活动日志、指标和诊断数据），使用户可以全面了解系统运行状况。  
-[Azure Monitor 日志](../azure-security-disk-encryption-overview.md)提供了大量日志记录: 系统和用户活动以及系统运行状况。 它收集并分析 Azure 和本地环境中的资源生成的数据。
+[Azure Monitor 日志](../azure-security-disk-encryption-overview.md)提供了大量日志记录：系统和用户活动以及系统运行状况。 它收集并分析 Azure 和本地环境中的资源生成的数据。
 - **活动日志**：[活动日志](../../azure-monitor/platform/activity-logs-overview.md)提供对订阅中资源执行的操作的深入信息。
-- **诊断日志**：[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储、表和队列的日志。
+- **诊断日志**：[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储、表和队列的日志。
 - **防火墙日志**：应用程序网关提供完整的诊断和访问日志。 防火墙日志适用于已启用 WAF 的应用程序网关资源。
 - **日志存档**：所有诊断日志写入到集中式的加密 Azure 存储帐户，并根据定义的保留期（2 天）存档。 这些日志连接到 Azure Monitor 日志以便进行处理、存储和仪表板报告。
 
@@ -141,10 +141,10 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 
 ### <a name="additional-services"></a>其他服务
 #### <a name="iaas---vm-considerations"></a>IaaS-VM 注意事项
-此 PaaS 解决方案不包括任何 Azure IaaS VM。 客户可以创建 Azure VM 运行多个 PaaS 服务。 在这种情况下, 可以利用特定的功能和服务来实现业务连续性和 Azure Monitor 日志:
+此 PaaS 解决方案不包括任何 Azure IaaS VM。 客户可以创建 Azure VM 运行多个 PaaS 服务。 在这种情况下，可以利用特定的功能和服务来实现业务连续性和 Azure Monitor 日志：
 
 ##### <a name="business-continuity"></a>业务连续性
-- **高可用性**：服务器工作负荷在[可用性集中](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)进行分组, 以帮助确保 Azure 中虚拟机的高可用性。 计划内或计划外维护活动期间，至少有一台虚拟机可用，满足 99.95% Azure SLA。
+- **高可用性**：服务器工作负荷在[可用性集中](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)进行分组，以帮助确保 Azure 中虚拟机的高可用性。 计划内或计划外维护活动期间，至少有一台虚拟机可用，满足 99.95% Azure SLA。
 
 - **恢复服务保管库**：[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)存储备份数据并保护此体系结构中的所有 Azure 虚拟机配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM，从而缩短还原时间。
 

@@ -9,20 +9,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: d2b3cdac72d47afb804763c521aae0b1d5936567
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: da1ca218f7a3d33e6ceb08b3f8d0f632b8b752b7
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186352"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265330"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
 光学字符识别 (OCR) 技能可识别图像文件中的印刷体文本和手写文本。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 **OCR** 技能将映射到以下功能：
 
 + ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API 用于除英语以外的语言。 
-+ 对于英语, 将使用新的["读取"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API。
++ 对于英语，将使用新的["读取"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API。
 
 OCR 技能可以从图像文件中提取文本。 支持的文件格式包括：
 
@@ -49,7 +48,7 @@ OCR 技能可以从图像文件中提取文本。 支持的文件格式包括：
 |defaultLanguageCode | <p>  输入文本的语言代码。 支持的语言包括： <br/> zh-Hans（中文简体） <br/> zh-Hant（中文繁体） <br/>cs（捷克语） <br/>da（丹麦语） <br/>nl（荷兰语） <br/>en（英语） <br/>fi（芬兰语）  <br/>fr（法语） <br/>  de（德语） <br/>el（希腊语） <br/> hu（匈牙利） <br/> it（意大利语） <br/>  ja（日语） <br/> ko（韩语） <br/> nb（挪威语） <br/>   pl（波兰语） <br/> pt（葡萄牙语） <br/>  ru（俄语） <br/>  es（西班牙语） <br/>  sv（瑞典语） <br/>  tr（土耳其语） <br/> ar（阿拉伯语） <br/> ro（罗马尼亚语） <br/> sr-Cyrl（塞尔维亚语西里尔文） <br/> sr-Latn（塞尔维亚语拉丁语） <br/>  sk（斯洛伐克语） <br/>  unk（未知） <br/><br/> 如果语言代码未指定或为 null，则语言将设置为英语。 如果语言显式设置为“unk”，则将自动检测语言。 </p> |
 |lineEnding | 要在各个检测到的行之间使用的值。 可能的值：“Space”、“CarriageReturn”、“LineFeed”。  默认值为“Space” |
 
-以前, 有一个名为 "textExtractionAlgorithm" 的参数, 用于指定技能是否应提取 "打印" 或 "手写" 文本。  此参数已弃用且不再需要, 因为最新的读取 API 算法能够同时提取这两种类型的文本。  如果你的技能定义已经包含此参数, 则不需要将其删除, 但将不再使用它, 并且这两种类型的文本都将被提取, 而不考虑它所设置的内容。
+以前，有一个名为 "textExtractionAlgorithm" 的参数，用于指定技能是否应提取 "打印" 或 "手写" 文本。  此参数已弃用且不再需要，因为最新的读取 API 算法能够同时提取这两种类型的文本。  如果你的技能定义已经包含此参数，则不需要将其删除，但将不再使用它，并且这两种类型的文本都将被提取，而不考虑它所设置的内容。
 
 ## <a name="skill-inputs"></a>技能输入
 

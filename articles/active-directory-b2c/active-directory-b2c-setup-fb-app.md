@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c13f3166c50d9afc03125d66155ce654c84e5e0a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 77b2fccaeba3cd1d164a3ce428c04083fd69fb5a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065236"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264216"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Facebook 帐户注册与登录
 
@@ -25,20 +25,20 @@ ms.locfileid: "71065236"
 
 1. 使用 Facebook 帐户凭据登录 [Facebook 开发人员](https://developers.facebook.com/)。
 1. 如果以前没有登录过，需要注册为 Facebook 开发人员。 为此，请选择页面右上角的 "**入门**"，接受 Facebook 的策略，并完成注册步骤。
-1. 选择 **"我的应用"** ，并**添加新应用**。
+1. 选择 **"我的应用"** ，然后**创建应用**。
 1. 输入“显示名称”和有效的“联系人电子邮件”。
-1. 单击“创建应用程序 ID”。 这会要求接受 Facebook 平台策略并完成在线安全检查。
+1. 选择 "**创建应用 ID**"。 这会要求接受 Facebook 平台策略并完成在线安全检查。
 1. 选择“设置” > “基本”。
 1. 选择“类别”，例如 `Business and Pages`。 此值是 Facebook 必需的，但不用于 Azure AD B2C。
 1. 在页面底部，选择“添加平台”，然后选择“网站”。
 1. 在“站点 URL”中，输入 `https://your-tenant-name.b2clogin.com/`，将 `your-tenant-name` 替换为你的租户名称。 为“隐私策略 URL”输入一个 URL，例如 `http://www.contoso.com`。 策略 URL 是继续提供应用程序的隐私信息的页面。
 1. 选择“保存更改”。
 1. 在页面的顶部，复制“应用 ID”的值。
-1. 单击“显示”，并复制“应用程序密码”的值。 使用这两个值将 Facebook 配置为租户中的标识提供者。 “应用程序密码”是一个非常重要的安全凭据。
+1. 选择 "**显示**并复制**应用程序密钥**的值"。 使用这两个值将 Facebook 配置为租户中的标识提供者。 “应用程序密码”是一个非常重要的安全凭据。
 1. 选择 "**产品**" 旁边的加号，然后选择 " **Facebook 登录**" 下的 "**设置**"。
 1. 在 " **Facebook 登录**" 下，选择 "**设置**"。
-1. 在“有效的 OAuth 重定向 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称。 单击页面底部的“保存更改”。
-1. 若要使 Facebook 应用程序可在 Azure AD B2C 中使用，请单击页面右上角的状态选择器，将其设置为“打开”以公开该应用程序，然后单击“确认”。  此时，状态应从“开发”变为“实时”。
+1. 在“有效的 OAuth 重定向 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称。 选择页面底部的 "**保存更改**"。
+1. 若要使 Facebook 应用程序可用于 Azure AD B2C，请选择页面右上角的状态选择器，**将其打开**，使应用程序成为公共应用程序，然后选择 "**切换模式**"。  此时，状态应从“开发”变为“实时”。
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>将 Facebook 帐户配置为标识提供者
 
@@ -49,4 +49,4 @@ ms.locfileid: "71065236"
 1. 输入“名称”。 例如*Facebook*。
 1. 对于 "**客户端 ID**"，请输入之前创建的 Facebook 应用程序的应用 ID。
 1. 对于**客户端密码**，输入你记录的应用机密。
-1. 选择**保存**。
+1. 选择“保存”。

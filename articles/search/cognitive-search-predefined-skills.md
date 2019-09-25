@@ -8,13 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 8d367f7588feb892f667522a515ad4411bf96624
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 061d969269eb526b8f02f14de58e2da20c459a38
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183437"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265490"
 ---
 # <a name="predefined-skills-for-content-enrichment-azure-search"></a>内容扩充的预定义技能（Azure 搜索）
 
@@ -38,7 +37,7 @@ ms.locfileid: "70183437"
 | [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | 此技能使用预训练模型为固定的一组类别建立实体：人员、位置、组织、电子邮件、URL、日期时间字段。 |
 | [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | 此技能使用预定型模型根据记录对记录中的正面或负面情绪进行评分。 得分介于 0 和 1 之间。 当无法检测到情绪以及文本被认为是中性时，这两个 null 事例都会出现中性分数。  |
 | [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | 将文本拆分为多页，以便以增量方式扩充或增加内容。 |
-| [TranslationSkill。](cognitive-search-skill-text-translation.md) | 此技能使用预先训练模型将输入文本转换为各种语言, 以用于标准化或本地化用例。 |
+| [TranslationSkill。](cognitive-search-skill-text-translation.md) | 此技能使用预先训练模型将输入文本转换为各种语言，以用于标准化或本地化用例。 |
 | [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | 此技能使用图像检测算法来识别图像的内容并生成文本说明。 |
 | [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md) | 光学字符识别。 |
 | [Util. ConditionalSkill](cognitive-search-skill-conditional.md) | 允许筛选、分配默认值以及根据条件合并数据。|
@@ -46,7 +45,7 @@ ms.locfileid: "70183437"
 | [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | 通过向自定义 Web API 执行 HTTP 调用，实现认知搜索管道的可扩展性 |
 
 
-有关创建[自定义技能](cognitive-search-custom-skill-web-api.md)的指南, 请参阅[如何定义自定义界面](cognitive-search-custom-skill-interface.md)和[示例:为认知搜索](cognitive-search-create-custom-skill-example.md)创建自定义技能。
+有关创建[自定义技能](cognitive-search-custom-skill-web-api.md)的指南，请参阅[如何定义自定义界面](cognitive-search-custom-skill-interface.md)和[示例：为认知搜索](cognitive-search-create-custom-skill-example.md)创建自定义技能。
 
 ## <a name="see-also"></a>请参阅
 

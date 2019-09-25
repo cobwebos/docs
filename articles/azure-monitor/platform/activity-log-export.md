@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 9b4e7ce714d0a1f65e0a35b9c493e99200c668c6
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 925fed320359edc04ad6c91fe7a7d9bde5370254
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034849"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258466"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>将 Azure 活动日志导出到存储或 Azure 事件中心
 [Azure 活动日志](activity-logs-overview.md)提供 Azure 订阅中发生的订阅级事件的见解。 除了在 Azure 门户中查看活动日志或者将其复制到 Log Analytics 工作区（在其中可以结合 Azure Monitor 收集的其他数据一起分析这些日志）以外，还可以创建一个日志配置文件，以将活动日志存档到 Azure 存储帐户或流式传输到事件中心。
@@ -60,13 +60,9 @@ ms.locfileid: "70034849"
 如果设置了保留策略，但禁止将日志存储在存储帐户中，则保留策略无效。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从午夜 (UTC) 开始，但请注意，可能最多需要 24 小时才能将日志从存储帐户中删除。
 
 
-
-> [!WARNING]
-> 存储帐户中日志数据的格式已在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](diagnostic-logs-append-blobs.md)
-
-
 > [!IMPORTANT]
-> 如果未注册 Microsoft Insights 资源提供程序, 则在创建日志配置文件时可能会收到错误。 若要注册此提供程序, 请参阅[Azure 资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md)。
+> 如果未注册 Microsoft Insights 资源提供程序，则在创建日志配置文件时可能会收到错误。 若要注册此提供程序，请参阅[Azure 资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md)。
+
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>使用 Azure 门户创建日志配置文件
 
@@ -117,7 +113,7 @@ ms.locfileid: "70034849"
     | StorageAccountId |否 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
     | serviceBusRuleId |否 |服务总线命名空间（需在其中创建事件中心）的服务总线规则 ID。 这是采用以下格式的字符串：`{service bus resource ID}/authorizationrules/{key name}`。 |
     | Location |是 |要为其收集活动日志事件的逗号分隔区域的列表。 |
-    | RetentionInDays |是 |事件在存储帐户中的保留天数, 介于1到365之间。 值为零时，将无限期存储日志。 |
+    | RetentionInDays |是 |事件在存储帐户中的保留天数，介于1到365之间。 值为零时，将无限期存储日志。 |
     | Category |否 |应收集的事件类别的逗号分隔列表。 可能的值为 _Write_、_Delete_ 和 _Action_。 |
 
 ### <a name="example-script"></a>示例脚本
@@ -159,7 +155,7 @@ ms.locfileid: "70034849"
     | name |是 |日志配置文件的名称。 |
     | storage-account-id |是 |活动日志应保存到的存储帐户的资源 ID。 |
     | locations |是 |要为其收集活动日志事件的空格分隔区域列表。 可以使用 `az account list-locations --query [].name` 查看订阅的所有区域列表。 |
-    | 天 |是 |事件的保留天数，介于 1 到 365 之间。 值为零时，将无限期（永久）存储日志。  如果为零，则启用的参数应设置为 true。 |
+    | 天 |是 |活动的保留天数，介于 1 到 365 之间。 值为零时，将无限期（永久）存储日志。  如果为零，则启用的参数应设置为 true。 |
     |enabled | 是 |True 或 False。  用于启用或禁用保留策略。  如果为 True，则 days 参数必须为大于 0 的值。
     | 类别 |是 |应收集的事件类别的空格分隔列表。 可能值包括：Write、Delete 和 Action。 |
 
@@ -167,6 +163,9 @@ ms.locfileid: "70034849"
 
 ## <a name="activity-log-schema"></a>活动日志架构
 无论是发送到 Azure 存储还是事件中心，活动日志数据都会按以下格式写入到 JSON。
+
+
+> 写入存储帐户的活动日志数据的格式更改为2018年11月1日的 JSON 行。 有关此格式更改的详细信息，请参阅[准备进行格式更改，将 Azure Monitor 诊断日志存档到存储帐户](diagnostic-logs-append-blobs.md)。
 
 ``` JSON
 {
@@ -227,7 +226,7 @@ ms.locfileid: "70034849"
 
 | 元素名称 | 描述 |
 | --- | --- |
-| 时间 |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
+| time |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
 | resourceId |受影响资源的资源 ID。 |
 | operationName |操作的名称。 |
 | category |操作的类别，例如 写入、读取和操作。 |

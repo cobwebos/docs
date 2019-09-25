@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: a9992fbaa20b0137fd503992fc9efba11c2dfd3b
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b86c0d0de95581f7a47de428ffbf0b161353df83
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213490"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260749"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基本映像部署模型
 
@@ -58,7 +58,7 @@ Azure 机器学习提供了一个默认 Docker 基本映像，因此你无需担
     使用__工作区的容器注册表__中存储的图像时，无需对注册表进行身份验证。 身份验证由工作区处理。
 
     > [!WARNING]
-    > __第一次使用工作区训练或部署模型__时，将创建工作区的 Azure 容器 Rzegistry。 如果已创建新的工作区，但未定型或创建了模型，则工作区不会存在任何 Azure 容器注册表。
+    > __第一次使用工作区训练或部署模型__时，将创建工作区的 Azure 容器注册表。 如果已创建新的工作区，但未定型或创建了模型，则工作区不会存在任何 Azure 容器注册表。
 
     有关检索工作区的 Azure 容器注册表名称的信息，请参阅本文的[获取容器注册表名称](#getname)部分。
 

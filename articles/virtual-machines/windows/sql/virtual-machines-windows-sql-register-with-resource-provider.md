@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: edda6dffa04bfc0492b7336893c5b167ccc42ca5
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 2bf7118d1f4be065969312d1fb9b0cf77e820d48
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743916"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262881"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>使用 SQL VM 资源提供程序在 Azure 中注册 SQL Server 虚拟机
 
@@ -27,11 +27,21 @@ ms.locfileid: "70743916"
 
 通过 Azure 门户部署 SQL Server VM Azure Marketplace 映像会自动将 SQL Server VM 注册到资源提供程序。 如果选择在 Azure 虚拟机上自行安装 SQL Server 而不是从 Azure Marketplace 中选择映像，或者如果使用 SQL Server 从自定义 VHD 预配 Azure VM，则应将 SQL Server VM 注册到的资源提供程序:
 
-- **符合性**：根据 Microsoft 产品条款，客户在使用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)时必须告知 microsoft。 为此，必须向 SQL VM 资源提供程序注册。 
+- **简化许可证管理**：根据 Microsoft 产品条款，客户在使用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)时必须告知 microsoft。 使用 SQL VM 资源提供程序注册可简化 SQL Server 许可证管理，并可让你使用[门户](virtual-machines-windows-sql-manage-portal.md)或 Az CLI 中的 Azure 混合权益快速识别 SQL Server 的 vm： 
+
+   ```azurecli-interactive
+   $vms = az sql vm list | ConvertFrom-Json
+   $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
+   ```
 
 - **功能优势**：向资源提供程序注册您的 SQL Server VM 可解锁[自动修补](virtual-machines-windows-sql-automated-patching.md)、[自动备份](virtual-machines-windows-sql-automated-backup-v2.md)和监控和可管理性功能。 它还解锁了[授权](virtual-machines-windows-sql-ahb.md)和[版本](virtual-machines-windows-sql-change-edition.md)灵活性。 以前，这些功能仅可用于从 Azure Marketplace SQL Server VM 映像。
 
-若要利用 SQL VM 资源提供程序，还必须将 SQL VM 资源提供程序注册到订阅。 可以使用 Azure 门户、Azure CLI 或 PowerShell 实现此目的。 
+- **免费管理**：向 SQL VM 资源提供程序和所有可管理性模式注册都是完全免费的。 资源提供程序或更改管理模式不会产生额外的费用。 
+
+若要利用 SQL VM 资源提供程序, 还必须将 SQL VM 资源提供程序注册到订阅。 可以使用 Azure 门户、Azure CLI 或 PowerShell 实现此目的。 
+
+  > [!NOTE]
+  > 没有与向资源提供程序注册相关的其他许可要求。 向 SQL VM 资源提供程序注册会提供一种简化的方法，使你能够在为每个资源管理许可注册表单的位置上通知 Microsoft Azure 混合权益。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +55,7 @@ ms.locfileid: "70743916"
 ## <a name="register-with-sql-vm-resource-provider"></a>向 SQL VM 资源提供程序注册
 如果 VM 上未安装[SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)，则可以通过指定轻型 SQL 管理模式向 SQL VM 资源提供程序注册。 
 
-如果在注册过程中指定了轻型，SQL VM 资源提供程序将在[轻型模式下](#change-management-modes)自动安装 Sql IaaS 扩展，并验证 SQL Server 实例元数据;这不会重新启动 SQL Server 服务。 将 SQL VM 资源提供程序注册为 "PAYG" 或 "AHUB" 时，需要提供所需的 SQL Server 许可证类型。
+如果在注册过程中指定了轻型，SQL VM 资源提供程序将在[轻型模式下](#change-management-modes)自动安装 Sql IaaS 扩展，并验证 SQL Server 实例元数据;这不会重新启动 SQL Server 服务。 将 SQL VM 资源提供程序注册为 "PAYG" 或 "AHUB" 时, 需要提供所需的 SQL Server 许可证类型。
 
 在轻型模式下向 SQL VM 资源提供程序注册将确保合规性并启用灵活的许可以及就地 SQL Server 版更新。 故障转移群集实例和多实例部署只能在轻型模式下在 SQL VM 资源提供程序中注册。 你可以随时[升级](#change-management-modes)到完整管理模式，但这样做将重新启动 SQL Server 服务。 
 
@@ -101,9 +111,9 @@ ms.locfileid: "70743916"
 
 ## <a name="register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms"></a>在 Windows Server 2008 Vm 上注册 SQL Server 2008 或 2008 R2
 
-Windows Server 2008 上安装的 SQL Server 2008 和 2008 R2 可以在[无代理模式下](#change-management-modes)注册到 SQL VM 资源提供程序。 此选项可确保符合性，并允许在 Azure 门户中监视 SQL Server VM 功能有限。
+Windows Server 2008 上安装的 SQL Server 2008 和 2008 R2 可以在[无代理模式下](#change-management-modes)注册到 SQL VM 资源提供程序。 此选项可确保符合性, 并允许在 Azure 门户中监视 SQL Server VM 功能有限。
 
-下表详细说明了在注册过程中提供的参数的可接受值：
+下表详细说明了在注册过程中提供的参数的可接受值:
 
 | 参数 | 可接受值                                 |
 | :------------------| :--------------------------------------- |
@@ -172,13 +182,13 @@ Windows Server 2008 上安装的 SQL Server 2008 和 2008 R2 可以在[无代理
 
 ## <a name="change-management-modes"></a>更改管理模式
 
-对于 SQL Server IaaS 扩展，有三种可管理性模式： 
+对于 SQL Server IaaS 扩展，有三种免费的可管理性模式： 
 
-- **完整**模式提供所有功能，但需要重新启动 SQL Server 和系统管理员权限。 这是默认情况下安装的选项。 使用它来管理包含单个实例的 SQL Server VM。 
+- **完整**模式提供所有功能，但需要重新启动 SQL Server 和系统管理员权限。 这是默认情况下安装的选项。 使用它来管理包含单个实例的 SQL Server VM。 完整模式安装两个 windows 服务，这些服务对内存和 CPU 的影响最小-可通过任务管理器进行监视。 使用完全可管理性模式不会产生任何费用。 
 
-- **轻型**不需要重新启动 SQL Server，但它仅支持更改 SQL Server 的许可证类型和版本。 SQL Server 对于具有多个实例的 Vm 或参与故障转移群集实例（FCI）的 Vm，请使用此选项。 
+- **轻型**不需要重新启动 SQL Server，但它仅支持更改 SQL Server 的许可证类型和版本。 SQL Server 对于具有多个实例的 Vm 或参与故障转移群集实例（FCI）的 Vm，请使用此选项。 使用轻型模式时，不会对内存或 CPU 产生任何影响。 使用轻型可管理性模式不会产生任何费用。 
 
-- **NoAgent**专用于在 Windows Server 2008 上安装 SQL Server 2008 和 SQL Server 2008 R2。 
+- **NoAgent**专用于在 Windows Server 2008 上安装 SQL Server 2008 和 SQL Server 2008 R2。 使用 NoAgent 模式时，不会对内存或 CPU 产生任何影响。 使用 NoAgent 可管理性模式不会产生费用。 
 
 你可以使用 PowerShell 查看 SQL Server IaaS 代理的当前模式： 
 
@@ -280,7 +290,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 **SQL VM 资源提供程序是否适用于所有客户？** 
 
-是的。 如果客户使用的是 Azure Marketplace 中的 SQL Server 映像，而不是自安装的 SQL Server，或者如果他们提供自定义 VHD，则应该向 SQL VM 资源提供程序注册其 SQL Server Vm。 所有类型的订阅（直接、企业协议和云解决方案提供商）拥有的 Vm 均可使用 SQL VM 资源提供程序进行注册。
+是。 如果客户使用的是 Azure Marketplace 中的 SQL Server 映像，而不是自安装的 SQL Server，或者如果他们提供自定义 VHD，则应该向 SQL VM 资源提供程序注册其 SQL Server Vm。 所有类型的订阅（直接、企业协议和云解决方案提供商）拥有的 Vm 均可使用 SQL VM 资源提供程序进行注册。
 
 **如果 SQL Server VM 已安装了 SQL Server IaaS 扩展，我应该向 SQL VM 资源提供程序注册吗？**
 
@@ -292,13 +302,13 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 **向 SQL VM 资源提供程序注册的先决条件是什么？**
 
-在轻型模式或无代理模式下，不需要向 SQL VM 资源提供程序注册。 在完整模式下以 SQL VM 资源提供程序注册的先决条件是在 VM 上安装了 SQL Server IaaS 扩展。
+在轻型模式或无代理模式下, 不需要向 SQL VM 资源提供程序注册。 在完整模式下以 SQL VM 资源提供程序注册的先决条件是在 VM 上安装了 SQL Server IaaS 扩展。
 
 **如果未在 VM 上安装 SQL Server IaaS 扩展，则可以使用 SQL VM 资源提供程序注册吗？**
 
 是的，如果未在 VM 上安装 SQL Server IaaS 扩展，则可以在轻型管理模式下向 SQL VM 资源提供程序注册。 在轻型模式下，SQL VM 资源提供程序将使用控制台应用程序来验证 SQL Server 实例的版本。 
 
-在 SQL VM 资源提供程序中注册时，默认 SQL 管理模式已_满_。 如果在向 SQL VM 资源提供程序注册时未设置 SQL 管理属性，则该模式将设置为完全可管理性。 在虚拟机上安装 SQL IaaS 扩展是在完全可管理性模式下向 SQL VM 资源提供程序注册的先决条件。
+在 SQL VM 资源提供程序中注册时，默认 SQL 管理模式已_满_。 如果在向 SQL VM 资源提供程序注册时未设置 SQL 管理属性, 则该模式将设置为完全可管理性。 在虚拟机上安装 SQL IaaS 扩展是在完全可管理性模式下向 SQL VM 资源提供程序注册的先决条件。
 
 **向 SQL VM 资源提供程序注册将在我的 VM 上安装代理？**
 
@@ -332,7 +342,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 **是否可以将 SQL Server IaaS 扩展从轻型模式升级到完整模式？**
 
-是的。 支持通过 PowerShell 或 Azure 门户将可管理性模式从轻型升级到完整。 它需要重新启动 SQL Server。
+是。 支持通过 PowerShell 或 Azure 门户将可管理性模式从轻型升级到完整。 它需要重新启动 SQL Server。
 
 **是否可以将 SQL Server IaaS 扩展从完整模式降级到无代理或轻型管理模式？**
 
@@ -350,15 +360,21 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 **如果有多个 SQL Server 实例，能否使用 SQL VM 资源提供程序注册 VM？**
 
-是的。 SQL VM 资源提供程序将只注册一个 SQL Server 实例。 SQL VM 资源提供程序将在多个实例的情况下注册默认 SQL Server 实例。 如果没有默认实例，则仅支持在轻型模式下进行注册。 若要从轻型升级到完全可管理性模式，应存在默认 SQL Server 实例，或者 VM 应只有一个命名 SQL Server 实例。
+是。 SQL VM 资源提供程序将只注册一个 SQL Server 实例。 SQL VM 资源提供程序将在多个实例的情况下注册默认 SQL Server 实例。 如果没有默认实例, 则仅支持在轻型模式下进行注册。 若要从轻型升级到完全可管理性模式，应存在默认 SQL Server 实例，或者 VM 应只有一个命名 SQL Server 实例。
 
 **是否可以向 SQL VM 资源提供程序注册 SQL Server 故障转移群集实例？**
 
-是的。 在 Azure VM 上 SQL Server 故障转移群集实例可在轻型模式下通过 SQL VM 资源提供程序进行注册。 但 SQL Server 故障转移群集实例不能升级到完全可管理性模式。
+是。 在 Azure VM 上 SQL Server 故障转移群集实例可在轻型模式下通过 SQL VM 资源提供程序进行注册。 但 SQL Server 故障转移群集实例不能升级到完全可管理性模式。
 
 **如果配置了 Always On 可用性组，是否可以向 SQL VM 资源提供程序注册 VM？**
 
-是的。 如果正在加入 Always On 的可用性组配置，则使用 SQL VM 资源提供程序在 Azure VM 上注册 SQL Server 实例没有任何限制。
+是。 如果正在加入 Always On 的可用性组配置，则使用 SQL VM 资源提供程序在 Azure VM 上注册 SQL Server 实例没有任何限制。
+
+**向 SQL VM 资源提供程序注册或升级到完全可管理性模式的成本是多少？**
+无。 向 SQL VM 资源提供程序注册或使用三个可管理性模式中的任何一种，都不会产生任何费用。 用资源提供程序管理 SQL Server VM 完全免费。 
+
+**使用不同的可管理性模式会对性能造成哪些影响？**
+使用*NoAgent*和*轻量级*可管理性模式时，不会产生任何影响。 从安装到操作系统的两个服务使用*完全*可管理性模式时，影响最小。 可以通过任务管理器监视这些。 
 
 ## <a name="next-steps"></a>后续步骤
 

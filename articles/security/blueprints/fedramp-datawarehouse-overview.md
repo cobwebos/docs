@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 79ed2b6e5d7bb600a79e12d19268035491f3fe08
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7fe5b45d7719b34fff8c09d08f510dc465f50104
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946863"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257405"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-fedramp-automation"></a>Azure 安全性与合规性蓝图：FedRAMP 自动化的数据仓库
 
@@ -75,9 +75,9 @@ Azure Monitor 日志
 
 以下部分详细描述了开发和实施要素。
 
-**SQL 数据仓库**:[SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)是一种企业数据仓库 (EDW), 它利用大规模并行处理 (MPP) 来跨 pb 的数据快速运行复杂的查询。 使用简单的 PolyBase T-SQL 查询将大数据导入 SQL 数据仓库，然后利用 MPP 运行高性能分析。
+**SQL 数据仓库**：[SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)是一种企业数据仓库（EDW），它利用大规模并行处理（MPP）来跨 pb 的数据快速运行复杂的查询。 使用简单的 PolyBase T-SQL 查询将大数据导入 SQL 数据仓库，然后利用 MPP 运行高性能分析。
 
-**SQL Server Reporting Services**:通过[SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs) , 可快速创建具有表、图表、地图、仪表、矩阵等功能的报表, 并将其用于 Azure SQL 数据仓库。
+**SQL Server Reporting Services**：通过[SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs) ，可快速创建具有表、图表、地图、仪表、矩阵等功能的报表，并将其用于 Azure SQL 数据仓库。
 
 **守护主机**：守护主机是允许用户访问此环境中已部署资源的单一入口点。 守护主机通过仅允许来自安全列表上的公共 IP 地址的远程流量来提供到已部署资源的安全连接。 若要允许远程桌面 (RDP) 流量，需要在网络安全组 (NSG) 中定义流量的源。
 
@@ -122,14 +122,14 @@ Azure Monitor 日志
 -   [SQL 数据库动态数据掩码](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)可以在参考体系结构部署完毕之后再完成。 客户将需要调整动态数据掩码设置，使之遵循其数据库架构。
 
 ### <a name="business-continuity"></a>业务连续性
-**高可用性**：服务器工作负荷在[可用性集中](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)进行分组, 以帮助确保 Azure 中虚拟机的高可用性。 计划内或计划外维护活动期间，至少有一台虚拟机可用，满足 99.95% Azure SLA。
+**高可用性**：服务器工作负荷在[可用性集中](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)进行分组，以帮助确保 Azure 中虚拟机的高可用性。 计划内或计划外维护活动期间，至少有一台虚拟机可用，满足 99.95% Azure SLA。
 
 **恢复服务保管库**：[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)存储备份数据并保护此体系结构中的所有 Azure 虚拟机配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM，从而缩短还原时间。
 
 ### <a name="logging-and-audit"></a>日志记录和审核
-[Azure Monitor 日志](../azure-security-disk-encryption-overview.md)提供了大量日志记录: 系统和用户活动以及系统运行状况。 [Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)解决方案收集并分析 Azure 和本地环境中资源生成的数据。
+[Azure Monitor 日志](../azure-security-disk-encryption-overview.md)提供了大量日志记录：系统和用户活动以及系统运行状况。 [Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)解决方案收集并分析 Azure 和本地环境中资源生成的数据。
 - **活动日志**：[活动日志](../../azure-monitor/platform/activity-logs-overview.md)提供对订阅中资源执行的操作的深入信息。
-- **诊断日志**：[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储、表和队列的日志。
+- **诊断日志**：[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储、表和队列的日志。
 - **防火墙日志**：应用程序网关提供完整的诊断和访问日志。 防火墙日志适用于已启用 WAF 的应用程序网关资源。
 - **日志存档**：所有诊断日志写入到集中式的加密 Azure 存储帐户，并根据定义的保留期（2 天）存档。 这些日志连接到 Azure Monitor 日志以便进行处理、存储和仪表板报告。
 

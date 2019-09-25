@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 12119097f08fbb221f644fa2d86bade78b054269
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 2bd2510b3b7aa72ac5e66ac9910f1c941f276564
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946735"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259902"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-analytics-for-nist-sp-800-171"></a>Azure 安全性和符合性蓝图：针对 NIST SP 800-171 的数据分析
 
@@ -51,7 +51,7 @@ Azure 为客户提供各种报告和分析服务。 此解决方案利用 Azure 
 - Azure Functions
 - Azure Key Vault
 - Azure 机器学习
-- Azure Monitor (日志)
+- Azure Monitor （日志）
 - Azure 安全中心
 - Azure SQL 数据库
 - Azure 存储
@@ -133,11 +133,11 @@ Azure 为客户提供各种报告和分析服务。 此解决方案利用 Azure 
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
 - **活动日志**：[活动日志](../../azure-monitor/platform/activity-logs-overview.md)提供对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志**：[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、密钥保管库审核日志以及 Azure 应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
+- **诊断日志**：[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、密钥保管库审核日志以及 Azure 应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
 
-**Azure Monitor 日志**：日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中, 以便进行处理、存储和仪表板报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Azure Monitor 日志集成。 客户可以使用 Kusto 查询访问其安全事件数据, 并将其与其他服务中的数据合并。
+**Azure Monitor 日志**：日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中，以便进行处理、存储和仪表板报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Azure Monitor 日志集成。 客户可以使用 Kusto 查询访问其安全事件数据，并将其与其他服务中的数据合并。
 
-以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中:
+以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中：
 -   [Active Directory 评估](../../azure-monitor/insights/ad-assessment.md)：Active Directory 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。
 - [SQL 评估](../../azure-monitor/insights/sql-assessment.md)：SQL 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案为客户提供了特定于已部署服务器基础结构的建议优先级列表。
 - [代理运行状况](../../monitoring/monitoring-solution-agenthealth.md)：代理运行状况解决方案报告部署的代理数量及其地理分布状况。 此外，它还报告未响应代理数量和提交操作数据的代理数量。

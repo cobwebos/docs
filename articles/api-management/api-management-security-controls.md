@@ -2,18 +2,17 @@
 title: Azure API 管理的安全控制
 description: 用于评估 API 管理的安全控制清单
 services: api-management
-author: msmbaldwin
-manager: rkarlin
+author: vladvino
 ms.service: api-management
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: e808f373ed3c977fb3263bc9e2e25bc602c7a7e1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/23/2019
+ms.author: vlvinogr
+ms.openlocfilehash: 7f5fe404c93b7db22444b9dad97a0d3474c33a16
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886700"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257071"
 ---
 # <a name="security-controls-for-api-management"></a>API 管理的安全控制
 
@@ -23,44 +22,45 @@ ms.locfileid: "70886700"
 
 ## <a name="network"></a>网络
 
-| 安全控制 | Yes/No | 说明 |
-|---|---|--|
-| 服务终结点支持| 否 | |
-| VNet 注入支持| 是 | |
-| 网络隔离和防火墙支持| 是 | 分别使用网络安全组 (NSG) 和 Azure 应用程序网关（或其他软件设备）。 |
-| 强制隧道支持| 是 | Azure 网络支持强制隧道。 |
+| 安全控制 | Yes/No | 说明 | 文档 |
+|---|---|--|--|
+| 服务终结点支持| 否 | |  |
+| VNet 注入支持| 是 | |  |
+| 网络隔离和防火墙支持| 是 | 分别使用网络安全组 (NSG) 和 Azure 应用程序网关（或其他软件设备）。 |  |
+| 强制隧道支持| 是 | Azure 网络支持强制隧道。 |  |
 
-## <a name="monitoring--logging"></a>监视 & 日志记录
+## <a name="monitoring--logging"></a>监视和日志记录
 
-| 安全控制 | Yes/No | 说明|
-|---|---|--|
-| Azure 监视支持（Log Analytics、App Insights 等）| 是 | |
-| 控制和管理平面日志记录和审核| 是 | [Azure Monitor 活动日志](../azure-monitor/platform/activity-logs-overview.md) |
-| 数据平面日志记录和审核| 是 | [Azure Monitor 诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)和 (可选) [Azure 应用程序见解](../azure-monitor/app/app-insights-overview.md)。  |
+| 安全控制 | Yes/No | 说明| 文档 |
+|---|---|--|--|
+| Azure 监视支持（Log Analytics、App Insights 等）| 是 | | |
+| 控制和管理平面日志记录和审核| 是 | [Azure Monitor 活动日志](../azure-monitor/platform/activity-logs-overview.md) | |
+| 数据平面日志记录和审核| 是 | [Azure Monitor 诊断日志](../azure-monitor/platform/resource-logs-overview.md)和 (可选) [Azure 应用程序见解](../azure-monitor/app/app-insights-overview.md)。  | |
+
 
 ## <a name="identity"></a>标识
 
-| 安全控制 | Yes/No | 说明|
-|---|---|--|
-| 身份验证| 是 | |
-| Authorization| 是 | |
+| 安全控制 | Yes/No | 说明| 文档 |
+|---|---|--|--|
+| 身份验证| 是 | |  |
+| Authorization| 是 | |  |
 
 ## <a name="data-protection"></a>数据保护
 
-| 安全控制 | Yes/No | 说明 |
-|---|---|--|
-| 服务器端静态加密：Microsoft 托管的密钥 | 是 | 敏感数据（例如证书、密钥以及使用机密命名的值）使用服务托管的、基于服务实例的密钥进行加密。 |
-| 服务器端加密：客户托管的密钥（BYOK） | 否 | 所有加密密钥都是基于服务实例的，也是通过服务托管的。 |
-| 列级加密（Azure 数据服务）| 不可用 | |
-| 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | [快速路由](../expressroute/index.yml)和 VNet 加密由 [Azure 网络](../virtual-network/index.yml)提供。 |
-| 加密的 API 调用| 是 | 通过 [Azure 资源管理器](../azure-resource-manager/index.yml)经 TLS 进行管理平面调用。 需要有效 JSON web 令牌 (JWT)。  可以通过 TLS 以及某个受支持的身份验证机制（例如，客户端证书或 JWT）对数据平面调用进行保护。
+| 安全控制 | Yes/No | 说明 | 文档 |
+|---|---|--|--|
+| 服务器端静态加密：Microsoft 管理的密钥 | 是 | 敏感数据（例如证书、密钥以及使用机密命名的值）使用服务托管的、基于服务实例的密钥进行加密。 |  |
+| 服务器端静态加密：客户管理的密钥 (BYOK) | 否 | 所有加密密钥都是基于服务实例的，也是通过服务托管的。 |  |
+| 列级加密（Azure 数据服务）| 不可用 | |  |
+| 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | [快速路由](../expressroute/index.yml)和 VNet 加密由 [Azure 网络](../virtual-network/index.yml)提供。 |  |
+| 加密的 API 调用| 是 | 通过 [Azure 资源管理器](../azure-resource-manager/index.yml)经 TLS 进行管理平面调用。 需要有效 JSON web 令牌 (JWT)。  可以通过 TLS 以及某个受支持的身份验证机制（例如，客户端证书或 JWT）对数据平面调用进行保护。 |   |
  |
 
 ## <a name="configuration-management"></a>配置管理
 
-| 安全控制 | Yes/No | 说明|
-|---|---|--|
-| 配置管理支持（配置的版本控制等）| 是 | 使用 [Azure API 管理 DevOps 资源工具包](https://aka.ms/apimdevops) |
+| 安全控制 | Yes/No | 说明| 文档 |
+|---|---|--|--|
+| 配置管理支持（配置的版本控制等）| 是 | 使用 [Azure API 管理 DevOps 资源工具包](https://aka.ms/apimdevops) |  |
 
 ## <a name="vulnerability-scans-false-positives"></a>漏洞扫描误报
 

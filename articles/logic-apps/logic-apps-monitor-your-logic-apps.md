@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 840124a35ed4389699757e011aaf5d05a9400836
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: f6ece10c43c2c4a6bea92d14a8bf6fbdb49fd318
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385523"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261364"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 
@@ -137,7 +137,7 @@ ms.locfileid: "68385523"
 6. 在“添加筛选器”下，输入筛选器名称，以便查找所需的筛选器。 选择筛选器，然后选择“+添加”。
 
    本示例使用“status”一词在“AzureDiagnostics”下查找失败的事件。
-   此处已选中 status_s 的筛选器。
+   此处已选中 status_s的筛选器。
 
    ![选择筛选器](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
@@ -158,7 +158,7 @@ ms.locfileid: "68385523"
 结合使用 Azure Monitor 日志后，可以扩展将逻辑应用的诊断数据用于其他 Azure 服务的方式，例如： 
 
 * [在 Azure 存储中存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
+* [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
 然后，可通过使用其他服务（如 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)和 [Power BI](../azure-monitor/platform/powerbi.md)）的遥测数据和分析来进行实时监视。 例如：
 
@@ -270,7 +270,7 @@ ms.locfileid: "68385523"
     }
   }
   ```
-  下面是使用 "**初始化变量**" 操作的另一个示例。 该示例从操作的输入中添加跟踪的属性, 其中输入为数组, 而不是记录。  
+  下面是使用“初始化变量”操作的另一个示例。 该示例从操作的输入添加跟踪的属性，其中输入是数组，而不是记录。  
 
   ``` json
   "actions": { 
@@ -293,6 +293,6 @@ ms.locfileid: "68385523"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [自动完成逻辑应用部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [具有 Enterprise Integration Pack 的 B2B 方案](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [监视 B2B 消息](../logic-apps/logic-apps-monitor-b2b-message.md)

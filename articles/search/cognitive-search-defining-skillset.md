@@ -8,17 +8,16 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 457157b93e6fb6be8ed734ae6f58c3b8717fc83d
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183479"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265514"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>如何在扩充管道中创建技能集
 
-认知搜索可提取和扩充数据，使之能够在 Azure 搜索中可供搜索。 我们将提取和扩充步骤称作认知技能，这些技能将合并成索引编制期间所引用的技能集。 技能组合可以使用[内置技能](cognitive-search-predefined-skills.md)或自定义技能 (请参阅[示例:为认知搜索](cognitive-search-create-custom-skill-example.md)创建自定义技能, 了解详细信息)。
+认知搜索可提取和扩充数据，使之能够在 Azure 搜索中可供搜索。 我们将提取和扩充步骤称作认知技能，这些技能将合并成索引编制期间所引用的技能集。 技能组合可以使用[内置技能](cognitive-search-predefined-skills.md)或自定义技能（请参阅[示例：为认知搜索](cognitive-search-create-custom-skill-example.md)创建自定义技能，了解详细信息）。
 
 本文介绍如何对想要使用的技能创建扩充管道。 技能集将附加到 Azure 搜索[索引器](search-indexer-overview.md)。 本文介绍的管道设计的一个部分是构造技能集本身。 
 

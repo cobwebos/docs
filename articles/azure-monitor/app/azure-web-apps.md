@@ -9,16 +9,16 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4f296aae6c147b0d5209276dbd008a1207837cfd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f45762d5b37a006ede9aeff76e3d756c8144f5ba
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875206"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258570"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
-现在，可以比过去更轻松地针对 [Azure 应用服务](https://docs.microsoft.com/azure/app-service/)中运行的基于 .NET 和.NET Core 的 Web 应用程序启用监视。 以前需要手动安装某个站点扩展，而现在应用服务映像中默认会内置最新的扩展/代理。 本文逐步讲解如何启用 Application Insights 监视，并提供有关如何自动完成大规模部署的初步指导。
+现在比以往更轻松地在[Azure 应用 Services](https://docs.microsoft.com/azure/app-service/)上的 ASP.NET 和基于 ASP.NET Core 的 web 应用程序上启用监视。 以前需要手动安装某个站点扩展，而现在应用服务映像中默认会内置最新的扩展/代理。 本文逐步讲解如何启用 Application Insights 监视，并提供有关如何自动完成大规模部署的初步指导。
 
 > [!NOTE]
 > 通过“开发工具” > “扩展”手动添加 Application Insights 站点扩展的功能已弃用。 此扩展安装方法依赖于每个新版本的手动更新。 扩展的最新稳定版现在会[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)在应用服务映像中。 这些文件位于 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` 中，每发布一个稳定版本，它们都会自动更新。 如果在下文中遵循基于代理的说明启用监视，系统会自动删除已弃用的扩展。
@@ -326,6 +326,9 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 > [!NOTE]
 > 仅支持通过基于手动 SDK 的检测在 Azure 应用服务中使用 Java 和 Node.js 应用程序，因此，以下步骤不适用于这些方案。
 
+> [!NOTE]
+> ASP.NET Core 3.0 应用程序不受支持。 请通过代码为 ASP.NET Core 3.0 应用执行[手动检测](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。
+
 1. 通过 `ApplicationInsightsAgent` 检查应用程序是否受监视。
     * 检查 `ApplicationInsightsAgent_EXTENSION_VERSION` 应用设置是否设置为值“~2”。
 2. 确保应用程序符合监视要求。
@@ -347,7 +350,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 下表更详细地解释了这些值的含义、其根本原因和建议的修复方法：
 
-|问题值|说明|解决方法
+|问题值|说明|解决
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | 此值表示扩展已检测到 SDK 的某个功能已在应用程序中存在，因此将会回退。 原因可能是引用了 `System.Diagnostics.DiagnosticSource`、`Microsoft.AspNet.TelemetryCorrelation` 或 `Microsoft.ApplicationInsights`  | 删除引用。 某中的某些引用是从特定的 Visual Studio 模板默认添加的，而旧版 Visual Studio 可能会添加对 `Microsoft.ApplicationInsights` 的引用。
 |`AppAlreadyInstrumented:true` | 如果应用程序面向 .NET Core 2.1 或 2.2 并引用 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) 元包，则它会引入 Application Insights，因此扩展将会回退。 | [建议](https://github.com/aspnet/Announcements/issues/287) .NET Core 2.1、2.2 客户改用 Microsoft.AspNetCore.App 元包。|

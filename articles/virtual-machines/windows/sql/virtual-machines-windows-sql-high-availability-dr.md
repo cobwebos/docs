@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 175ea1c0c25a0c6dd41c68ea0a340cc1b18cc8b0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d0bdfbbad7e811ac8f1eeffb1991cc5430483a6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100598"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262894"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的高可用性和灾难恢复
 
@@ -78,7 +78,11 @@ Azure 支持的 SQL Server HADR 技术包括：
 Azure VM、存储和网络的运行特征与本地非虚拟化的 IT 基础结构不同。 需要了解这些区别并设计可适应这些区别的解决方案，才能成功地在 Azure 中实现 HADR SQL Server 解决方案。
 
 ### <a name="high-availability-nodes-in-an-availability-set"></a>可用性集中的高可用性节点
-使用 Azure 中的高可用性集，可将高可用性节点放置在单独的容错域 (FD) 和更新域 (UD) 中。 要将 Azure VM 放入同一可用性集，必须将这些 VM 部署到同一云服务中。 只有同一云服务中的节点可加入同一可用性集。 有关详细信息，请参阅 [管理虚拟机的可用性](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+使用 Azure 中的高可用性集，可将高可用性节点放置在单独的容错域 (FD) 和更新域 (UD) 中。 基础 Azure 平台为可用性集中的每个虚拟机分配一个更新域和一个容错域。 数据中心内的这种配置可以确保在发生计划内或计划外维护事件时，至少有一个虚拟机可用，并满足 99.95% 的 Azure SLA 要求。 若要配置高可用性设置，请将所有参与的 SQL 虚拟机放置在同一可用性集中，以避免在维护事件期间应用程序或数据丢失。 只有同一云服务中的节点可加入同一可用性集。 有关详细信息，请参阅 [管理虚拟机的可用性](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+
+### <a name="high-availability-nodes-in-an-availability-zone"></a>可用性区域中的高可用性节点
+可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 区域内可用性区域的物理分离可确保至少有一个虚拟机可用，并满足 99.99% 的 Azure SLA 要求，从而保护应用程序和数据免受数据中心故障的影响。 若要配置高可用性，请将参与的 SQL 虚拟机分散到该区域中的可用可用性区域。 会产生可用性区域间 VM 到 VM 的数据传输费用。 有关详细信息，请参阅[可用性区域](/azure/availability-zones/az-overview)。 
+
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>故障转移群集在 Azure 网络中的行为
 Azure 中的 DHCP 服务不符合 RFC 标准，可能会导致创建某些故障转移群集配置失败，因为向群集网络名称分配了重复的 IP 地址（例如 IP 地址与某个群集节点相同）。 实现可用性组时，这种情况会产生一个问题，因为它依赖于 Windows 故障转移群集功能。

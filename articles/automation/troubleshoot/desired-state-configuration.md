@@ -9,39 +9,39 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850257"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259172"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) 疑难解答
 
 本文提供有关 Desired State Configuration (DSC) 问题疑难解答的信息。
 
-## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>排除所需状态配置 (DSC) 的步骤
+## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) 故障排除步骤
 
-如果在 Azure 状态配置中编译或部署配置时出现错误, 下面提供了一些步骤来帮助你诊断问题。
+如果在 Azure State Configuration 中编译或部署配置时出错，可使用以下步骤来诊断问题。
 
-1. **确保你的配置在本地计算机上成功编译:** Azure 状态配置是在 PowerShell DSC 上构建的。 可以在[POWERSHELL Dsc 文档](https://docs.microsoft.com/en-us/powershell/scripting/overview)中找到 DSC 语言和语法的文档。
+1. **确保配置在本地计算机上编译成功：** Azure State Configuration 在 PowerShell DSC 基础上构建。 可以在 [PowerShell DSC 文档](https://docs.microsoft.com/en-us/powershell/scripting/overview)中找到 DSC 语言和语法的文档。
 
-   通过在本地计算机上编译 DSC 配置, 可以发现和解决常见错误, 如:
+   在本地计算机上编译 DSC 配置即可发现并解决常见错误，例如：
 
    - **缺少模块**
    - **语法错误**
    - **逻辑错误**
 
-2. **查看节点上的 DSC 日志:** 如果配置成功编译, 但应用于节点时失败, 则可以在日志中找到详细信息。 有关在何处查找 DSC 日志的信息, 请参阅[Dsc 事件日志的位置](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)。
+2. **在节点上查看 DSC 日志：** 如果配置编译成功，但在应用到节点时失败，则可在日志中查找详细信息。 若要了解在何处查找 DSC 日志，请参阅 [DSC 事件日志在哪里](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)。
 
-   此外, [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics)可帮助您分析 DSC 日志中的详细信息。 如果你联系支持人员, 他们将需要这些日志来诊断你的问题。
+   另外，[xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) 可以帮助你分析 DSC 日志中的详细信息。 如果你联系支持部门，他们会要求你提供这些日志，以便对你的问题进行诊断。
 
-   可以按照[安装稳定版本模块](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)中的说明在本地计算机上安装**xDscDiagnostics** 。
+   可以根据[安装稳定版本模块](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)中提供的说明在本地计算机上安装 **xDscDiagnostics**。
 
-   若要在 Azure 计算机上安装**xDscDiagnostics** , 可以使用[az vm run-command](/cli/azure/vm/run-command)或[AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)。 还可以按照在[WINDOWS VM 中运行 PowerShell 脚本和运行命令](../../virtual-machines/windows/run-command.md)中的步骤, 使用门户中的 "**运行" 命令**选项。
+   若要在 Azure 计算机上安装 **xDscDiagnostics**，可以使用 [az vm run-command](/cli/azure/vm/run-command) 或 [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)。 也可在门户中使用“运行命令”选项，只需按照[使用“运行命令”在 Windows VM 中运行 PowerShell 脚本](../../virtual-machines/windows/run-command.md)中的步骤操作即可。
 
-   有关使用**xDscDiagnostics**的信息, 请参阅[使用 xDscDiagnostics 分析 DSC 日志](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)和[xDscDiagnostics cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
-3. **确保节点和自动化工作区具有所需的模块:** Desired State Configuration 依赖于节点上安装的模块。  使用 Azure 自动化状态配置时, 请使用[导入模块](../shared-resources/modules.md#import-modules)中列出的步骤将任何所需的模块导入到自动化帐户中。 配置还可以依赖于特定版本的模块。  有关详细信息, 请参阅[模块故障排除](shared-resources.md#modules)。
+   若要了解如何使用 **xDscDiagnostics**，请参阅[使用 xDscDiagnostics 分析 DSC 日志](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)和 [xDscDiagnostics Cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
+3. **确保节点和自动化工作区具有所需的模块：** Desired State Configuration 依赖于节点上安装的模块。  使用 Azure 自动化状态配置时，请使用[导入模块](../shared-resources/modules.md#import-modules)中列出的步骤将任何所需的模块导入到自动化帐户中。 配置还可以依赖于特定版本的模块。  有关详细信息，请参阅[模块故障排除](shared-resources.md#modules)。
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>使用所需状态配置 (DSC) 时的常见错误
 
@@ -59,7 +59,7 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 此错误是计划要解决的临时问题。
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
 * 使用 Az Cmdlet "Remove-AzAutomationDscConfiguration" 删除配置。
 * 此 cmdlet 的文档尚未更新。  在其更新前，请参考 AzureRM 模块的文档。
@@ -69,7 +69,7 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 #### <a name="issue"></a>问题
 
-尝试运行`Set-DscLocalConfigurationManager`或其他 DSC cmdlet 时, 收到错误:
+尝试运行`Set-DscLocalConfigurationManager`或其他 DSC cmdlet 时，收到错误：
 
 ```error
 Registration of the Dsc Agent with the server
@@ -84,11 +84,11 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 #### <a name="cause"></a>原因
 
-此错误通常是由防火墙导致, 计算机位于代理服务器后面或其他网络错误。
+此错误通常是由防火墙导致，计算机位于代理服务器后面或其他网络错误。
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
-验证你的计算机是否可以访问适用于 Azure Automation DSC 的正确终结点, 然后重试。 有关所需端口和地址的列表, 请参阅[网络规划](../automation-dsc-overview.md#network-planning)
+验证你的计算机是否可以访问适用于 Azure Automation DSC 的正确终结点，然后重试。 有关所需端口和地址的列表，请参阅[网络规划](../automation-dsc-overview.md#network-planning)
 
 ### <a name="failed-not-found"></a>场景：节点处于失败状态，出现“未找到”错误
 
@@ -104,7 +104,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 将节点分配到配置名称（例如 ABC）而不是节点配置名称（例如 ABC.WebServer）时，通常会发生此错误。
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
 * 确保要为节点分配“节点配置名称”，而不是“配置名称”。
 * 可以使用 Azure 门户或 PowerShell cmdlet 将节点配置分配给节点。
@@ -126,7 +126,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 如果 DSC 配置中“Node”关键字后面的表达式的计算结果为 `$null`，则不会生成节点配置。
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
 下述解决方案中的任何一种都可以解决此问题：
 
@@ -147,9 +147,9 @@ No instance found with given property values
 
 已升级 WMF 版本，已损坏 WMI。
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
-若要解决此问题，请按照 [DSC 已知问题和限制](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc)一文中的说明进行操作。
+若要解决此问题，请按照 [DSC 已知问题和限制](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)一文中的说明进行操作。
 
 ### <a name="issue-using-credential"></a>场景：无法在 DSC 配置中使用凭据
 
@@ -165,7 +165,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 已在配置中使用凭据，但未提供正确的 **ConfigurationData**，从而无法将每个节点配置的 **PSDscAllowPlainTextPassword** 设置为 true。
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
 * 确保传入正确的 **ConfigurationData**，以便将配置中涉及的每个节点配置的 **PSDscAllowPlainTextPassword** 设置为 true。 有关详细信息，请参阅 [Azure 自动化 DSC 中的资产](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation)。
 
@@ -183,7 +183,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 当为节点分配了服务中不存在的节点配置名称时，通常会出现此错误。
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
 * 确保要为节点分配的节点配置名称与服务中的名称完全匹配。
 * 可以选择不包含节点配置名称，这将导致载入节点，而不分配节点配置
@@ -200,27 +200,27 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>原因
 
-客户已确定, 如果`/tmp`将位置设置为`noexec`, 则 DSC 的当前版本将无法应用配置。
+客户已确定，如果 `/tmp` 位置设置为 `noexec`，则当前版本的 DSC 将无法应用配置。
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
-* 从位置中删除`noexec`选项 `/tmp` 。
+* 从 `/tmp` 位置中删除 `noexec` 选项。
 
-### <a name="compilation-node-name-overlap"></a>场景：重叠的节点配置名称可能导致发布错误
+### <a name="compilation-node-name-overlap"></a>场景：节点配置名称重叠可能导致发布错误
 
 #### <a name="issue"></a>问题
 
-如果使用单个配置脚本来生成多个节点配置, 并且某些节点配置具有作为其他部分的子集的名称, 则编译服务中的问题可能会导致分配错误的配置。  这仅在以下情况下发生: 每个节点使用单个脚本生成具有配置数据的配置, 并且仅当名称在字符串的开头发生重叠时才会发生。
+如果使用单个配置脚本来生成多个节点配置，而某些节点配置的名称是其他名称的子集，则编译服务出问题可能导致分配的配置错误。  这只发生在使用单个脚本来生成配置且每个节点都有配置数据的情况下，并且仅发生在字符串开头出现名称重叠的情况下。
 
-例如, 如果一个配置脚本用于基于使用 cmdlet 作为哈希表传递的节点数据生成配置, 则节点数据包括一个名为 "server" 和 "1server" 的服务器。
+例如，如果在使用单个配置脚本生成配置时，根据的是使用 cmdlet 作为哈希表传递的节点数据，且节点数据包含名为“server”和“1server”的服务器，则可能会发生上述错误。
 
 #### <a name="cause"></a>原因
 
-与编译服务有关的已知问题。
+编译服务的已知问题。
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
-最好的解决方法是在本地编译或在 CI/CD 管道中进行编译, 并将 MOF 文件直接上传到服务。  如果服务中的编译是必需的, 则下一种最佳解决方法是拆分编译作业, 使名称中不存在重叠。
+最佳解决方法将是在本地或 CI/CD 管道中进行编译，然后将 MOF 文件直接上传到服务。  如果必须在服务中进行编译，则较佳解决方法将是拆分编译作业，这样就不会发生名称重叠现象。
 
 ## <a name="next-steps"></a>后续步骤
 

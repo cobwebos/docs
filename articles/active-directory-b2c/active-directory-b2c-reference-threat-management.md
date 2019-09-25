@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 281bd73671352e1e525e11a7bfde1882d3ef8864
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065427"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71256909"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理对资源和数据的威胁
 
@@ -37,10 +37,10 @@ Azure AD B2C 使用复杂策略来锁定帐户。 将根据请求的 IP 和输�
 
 管理密码保护设置，包括锁定阈值：
 
-1. 导航到 [Azure 门户](https://portal.azure.com)。
-1. 选择门户右上方菜单中的 "**目录 + 订阅**" 筛选器，并选择 Azure AD B2C 租户。
-1. 在左侧菜单中选择 " **Azure Active Directory** " （或选择门户左上部分的 "**所有服务**"，搜索并选择 " *Azure Active Directory*"）。
-1. 在 "**安全性**" 下，选择 "**身份验证方法**"，然后选择 "**密码保护**"。
+1. 登录到 [Azure 门户](https://portal.azure.com)
+1. 使用顶部菜单中的 "**目录 + 订阅**" 筛选器选择包含 Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择 " **Azure AD B2C**"。 或者选择 "**所有服务**"，搜索并选择 " **Azure AD B2C**"。
+1. 在 "**安全性**" 下，选择 "**身份验证方法（预览版）** "，然后选择 "**密码保护**"。
 1. 输入所需的密码保护设置，然后选择 "**保存**"。
 
     ![Azure AD 设置中 Azure 门户密码保护页](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)

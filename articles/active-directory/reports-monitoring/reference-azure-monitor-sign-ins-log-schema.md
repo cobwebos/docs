@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cc07ac2644ac9f97146e980a1961b9b84e7c561
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c3a05a531fd03cbd77bf3460ec45300692764565
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127054"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259156"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解释中的 Azure AD 登录日志架构 Azure Monitor
 
@@ -170,4 +170,4 @@ ms.locfileid: "70127054"
 ## <a name="next-steps"></a>后续步骤
 
 * [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
-* [详细了解 Azure 诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [详细了解 Azure 诊断日志](../../azure-monitor/platform/resource-logs-overview.md)

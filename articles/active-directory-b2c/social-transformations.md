@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a25c5fed4fd88866f46a9ca254213cae5db893a4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: cd4839e2c8ad6605a29f3c8b824375185384f78c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063588"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258152"
 ---
 # <a name="social-accounts-claims-transformations"></a>社交帐户声明转换
 
@@ -51,7 +51,7 @@ ms.locfileid: "71063588"
 ```XML
 <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="socialIdpUserId" TransformationClaimType="key" />
+    <InputClaim ClaimTypeReferenceId="issuerUserId" TransformationClaimType="key" />
     <InputClaim ClaimTypeReferenceId="identityProvider" TransformationClaimType="identityProvider" />
   </InputClaims>
   <OutputClaims>
@@ -74,7 +74,7 @@ ms.locfileid: "71063588"
 
 | 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | string | 要添加到输出声明的 ClaimType。 |
+| InputClaim | 项 | string | 要添加到输出声明的 ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 声明转换使用的 ClaimTypes（如果在策略中可用）。 如果已提供，则声明转换将在集合末尾添加 `item`。 |
 | OutputClaim | collection | alternativeSecurityIdCollection | 调用此 ClaimsTransformation 后生成的 ClaimType。 包含 `collection` 和 `item` 输入中的项的集合。 |
 

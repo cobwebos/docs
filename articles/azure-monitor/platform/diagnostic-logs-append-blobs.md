@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237661"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258388"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 诊断日志的格式更改做准备
 
@@ -24,16 +24,16 @@ ms.locfileid: "60237661"
 
 ## <a name="what-is-changing"></a>有什么变化
 
-Azure Monitor 提供的功能可将资源诊断数据和活动日志数据发送到 Azure 存储帐户、事件中心命名空间或 Azure Monitor 中的 Log Analytics 工作区。 为解决系统性能问题，发送到 blob 存储的日志数据格式将于 2018 年 11 月 1 日凌晨 12 点 (UTC) 发生更改  。 如果工具从 blob 存储中读取数据，则需要更新工具以了解新的数据格式。
+Azure Monitor 提供的功能可将资源诊断数据和活动日志数据发送到 Azure 存储帐户、事件中心命名空间或 Azure Monitor 中的 Log Analytics 工作区。 为解决系统性能问题，发送到 blob 存储的日志数据格式将于 2018 年 11 月 1 日凌晨 12 点 (UTC) 发生更改。 如果工具从 blob 存储中读取数据，则需要更新工具以了解新的数据格式。
 
 * Blob 格式将于 2018 年 11 月 1 日星期四凌晨 12 点 (UTC) 更改为 [JSON Lines](http://jsonlines.org/)。 这意味着每个记录将由换行符分隔，JSON 记录之间没有外部记录数组和逗号。
 * 将同时更改所有订阅中所有诊断设置的 blob 格式。 11 月 1 日发出的第一个 PT1H.json 文件将使用此新格式。 Blob 和容器名称保持不变。
 * 从现在到 11 月 1 日之间设置诊断设置将继续以当前格式发出数据，直到 11 月 1 日为止。
-* 此更改将同时在所有公有云区域中发生。 Azure 中国、Azure 德国或 Azure 政府云中不会发生此更改。
+* 此更改将同时在所有公有云区域中发生。 此更改不会在世纪互联、Azure 德国或 Azure 政府云运营的 Microsoft Azure 中发生。
 * 此更改会影响以下数据类型：
-  * [Azure 资源诊断日志](./../../azure-monitor/platform/archive-diagnostic-logs.md)（[请参阅此处的资源列表](./../../azure-monitor/platform/diagnostic-logs-schema.md)）
-  * [由诊断设置导出的 Azure 资源指标](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)
-  * [由日志配置文件导出的 Azure 活动日志数据](./../../azure-monitor/platform/archive-activity-log.md)
+  * [Azure 资源诊断日志](archive-diagnostic-logs.md)（[请参阅此处的资源列表](diagnostic-logs-schema.md)）
+  * [由诊断设置导出的 Azure 资源指标](diagnostic-settings.md)
+  * [由日志配置文件导出的 Azure 活动日志数据](archive-activity-log.md)
 * 此更改不会影响：
   * 网络流日志
   * 尚未通过 Azure Monitor 可用的 Azure 服务日志（例如，Azure 应用服务诊断日志、存储分析日志）
@@ -45,7 +45,7 @@ Azure Monitor 提供的功能可将资源诊断数据和活动日志数据发送
 1. 使用资源诊断设置将日志数据发送到 Azure 存储帐户，以及
 2. 拥有依赖于存储中这些日志的 JSON 结构的工具。
  
-若要确定是否具有将数据发送到 Azure 存储帐户的资源诊断设置，可导航到门户的“监视”部分，单击“诊断设置”，并识别所有将“诊断状态”设置为“已启用”的资源     ：
+若要确定是否具有将数据发送到 Azure 存储帐户的资源诊断设置，可导航到门户的“监视”部分，单击“诊断设置”，并识别所有将“诊断状态”设置为“已启用”的资源：
 
 ![“Azure Monitor 诊断设置”边栏选项卡](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 

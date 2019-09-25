@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 24dc01d47bece4191d1b142a58c4ad7b6d9fb6cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876567"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260861"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中调试用户定义的函数
 
@@ -35,7 +35,7 @@ Azure 数字孪生支持可靠的日志记录、监视和分析。 解决方案�
 
 * 有关特定于 Azure 数字孪生的日志记录配置, 请参阅[如何配置监视和日志记录](./how-to-configure-monitoring.md)。
 * 请参阅[Azure Monitor](../azure-monitor/overview.md)概述, 了解通过 Azure Monitor 启用了强大的日志设置。
-* 查看文章[从 azure 资源收集和使用日志数据](../azure-monitor/platform/diagnostic-logs-overview.md), 以便通过 azure 门户、Azure CLI 或 PowerShell 配置 Azure 数字孪生中的诊断日志设置。
+* 查看文章[从 azure 资源收集和使用日志数据](../azure-monitor/platform/resource-logs-overview.md), 以便通过 azure 门户、Azure CLI 或 PowerShell 配置 Azure 数字孪生中的诊断日志设置。
 
 配置后, 你将能够选择所有日志类别和指标, 并使用强大的 Azure Monitor log analytics 工作区来支持调试工作。
 
@@ -45,7 +45,7 @@ Azure 数字孪生支持可靠的日志记录、监视和分析。 解决方案�
 
 要将传感器遥测数据消息与其各自的日志进行匹配，可以在要发送的事件数据上指定相关 ID。 为此，请将 `x-ms-client-request-id` 属性设置为 GUID。
 
-发送遥测数据后, 请打开 Azure Monitor log analytics, 以使用设置的相关 ID 查询日志:
+发送遥测数据后，请打开 Azure Monitor log analytics，以使用设置的相关 ID 查询日志：
 
 ```Kusto
 AzureDiagnostics

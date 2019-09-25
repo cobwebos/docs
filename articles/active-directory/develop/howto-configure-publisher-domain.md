@@ -17,16 +17,16 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291de1fa9bbb43ff9393a3163d1cd21dd7cd1b01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835154"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257933"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain-preview"></a>如何：配置应用程序的发布者域（预览）
 
-应用程序的发布者域将在[应用程序的许可提示](application-consent-experience.md)中显示给用户，以告知用户其信息将发送到何处。 在 2019 年 5 月 21 日之后注册的且没有发布者域的多租户应用程序将显示为 **unverified**。 多租户应用程序是支持单个组织目录以外的帐户的应用程序;例如, 支持所有 Azure AD 帐户, 或支持所有 Azure AD 帐户和个人 Microsoft 帐户。
+应用程序的发布者域将在[应用程序的许可提示](application-consent-experience.md)中显示给用户，以告知用户其信息将发送到何处。 在 2019 年 5 月 21 日之后注册的且没有发布者域的多租户应用程序将显示为 **unverified**。 多租户应用程序是支持单个组织目录以外的帐户的应用程序;例如，支持所有 Azure AD 帐户，或支持所有 Azure AD 帐户和个人 Microsoft 帐户。
 
 ## <a name="new-applications"></a>新应用程序
 
@@ -38,11 +38,11 @@ ms.locfileid: "68835154"
 
 | 租户验证的域 | 发布者域的默认值 |
 |-------------------------|----------------------------|
-| null | null |
+| Null | Null |
 | *.onmicrosoft.com | *.onmicrosoft.com |
 | - *.onmicrosoft.com<br/>- domain1.com<br/>- domain2.com（主要） | domain2.com |
 
-如果未设置多租户应用程序的发布者域, 或者将其设置为以. onmicrosoft.com 结尾的域, 则应用的许可提示将显示未**验证**的发布者域。
+如果未设置多租户应用程序的发布者域，或者将其设置为以. onmicrosoft.com 结尾的域，则应用的许可提示将显示未**验证**的发布者域。
 
 ## <a name="grandfathered-applications"></a>祖父应用程序
 
@@ -97,6 +97,12 @@ ms.locfileid: "68835154"
 
 - 如果租户包含已验证的域，请从“选择已验证的域”下拉列表中选择一个域。
 
+>[!Note]
+> 应返回的 "Content-type" 标头应为`application/json`。 如果你使用其他任何内容（如），则可能会收到如下所述的错误`application/json; charset=utf-8` 
+> 
+>``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
+>
+
 ## <a name="implications-on-the-app-consent-prompt"></a>对应用许可提示的影响
 
 配置发布者域会影响用户在应用许可提示中看到的内容。 若要完全了解许可提示的组件，请参阅[了解应用程序许可体验](application-consent-experience.md)。
@@ -111,7 +117,7 @@ ms.locfileid: "68835154"
 
 ## <a name="implications-on-redirect-uris"></a>对重定向 URI 的影响
 
-在指定重定向 Uri 时, 使用任何工作或学校帐户或个人 Microsoft 帐户 ([多租户](single-and-multi-tenant-apps.md)) 登录用户的应用程序将受到少数限制。
+在指定重定向 Uri 时，使用任何工作或学校帐户或个人 Microsoft 帐户（[多租户](single-and-multi-tenant-apps.md)）登录用户的应用程序将受到少数限制。
 
 ### <a name="single-root-domain-restriction"></a>单个根域限制
 

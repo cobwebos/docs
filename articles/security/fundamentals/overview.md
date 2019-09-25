@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4cabf2e7a1f0f1ff058f900ed823cc4df0ce80a6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c01931268642aebbf87c54080c292b105af15665
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999208"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262760"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -93,14 +93,14 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 如果出现崩溃、故障或性能问题，可以搜索详细的遥测数据来诊断原因。 此外，如果应用的可用性和性能有任何变化，该服务还会向用户发送电子邮件。 Application Insight 就是这样因其有助于实现保密性、完整性和可用性安全三元素的可用性而成为有价值的安全工具。
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 对来自 Azure 基础结构（[活动日志](../../azure-monitor/platform/activity-logs-overview.md)）和每个单独的 Azure 资源（[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)）的数据提供可视化效果、查询、路由、警报、自动缩放和自动化功能。 可以使用 Azure Monitor 对 Azure 日志中生成的与安全相关的事件发出警报。
+[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 对来自 Azure 基础结构（[活动日志](../../azure-monitor/platform/activity-logs-overview.md)）和每个单独的 Azure 资源（[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)）的数据提供可视化效果、查询、路由、警报、自动缩放和自动化功能。 可以使用 Azure Monitor 对 Azure 日志中生成的与安全相关的事件发出警报。
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 [Azure Monitor 日志](https://azure.microsoft.com/documentation/services/log-analytics/)–除了 Azure 资源之外，还为本地和第三方基于云的基础结构（例如 AWS）提供 IT 管理解决方案。 可以将 Azure Monitor 中的数据直接路由到 Azure Monitor 日志，以便在一个位置查看整个环境的指标和日志。
 
 在鉴证和其他安全分析中，Azure Monitor 日志可能是一个有用的工具，因为使用该工具，您可以通过灵活的查询方法快速搜索大量与安全相关的条目。 此外，本地[防火墙和代理日志可以导出到 Azure 中，并可使用 Azure Monitor 日志进行分析。](../../log-analytics/log-analytics-agent-windows.md)
 
-### <a name="azure-advisor"></a>Azure Advisor
+### <a name="azure-advisor"></a>Azure 顾问
 [Azure 顾问](../../advisor/index.yml)是一种个性化的云顾问，可帮助优化 Azure 部署。 它分析资源配置和使用情况遥测数据。 然后，它推荐解决方案，帮助提高资源的[性能](../../advisor/advisor-performance-recommendations.md)、[安全性](../../advisor/advisor-security-recommendations.md)和[高可用性](../../advisor/advisor-high-availability-recommendations.md)，同时寻找机会[减少总体 Azure 支出](../../advisor/advisor-cost-recommendations.md)。 Azure 顾问提供安全建议，可显著提高在 Azure 中部署的解决方案的总体安全状况。 这些建议来自于 [Azure 安全中心](../../security-center/security-center-intro.md)执行的安全分析。
 
 ### <a name="azure-security-center"></a>Azure 安全中心
@@ -312,7 +312,7 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 ### <a name="virtual-machine-backup"></a>虚拟机备份
 [Azure 备份](../../backup/backup-overview.md)是一种解决方案，无需资本投资便可保护应用程序数据，最大限度降低运营成本。 应用程序错误可能损坏数据，人为错误可能将 bug 引入应用程序，从而导致安全问题。 借助 Azure 备份，可以保护运行 Windows 和 Linux 的虚拟机。
 
-### <a name="azure-site-recovery"></a>Azure Site Recovery
+### <a name="azure-site-recovery"></a>Azure 站点恢复
 组织的[业务连续性/灾难恢复 (BCDR)](../../best-practices-availability-paired-regions.md) 策略的其中一个重要部分是，找出在发生计划内和计划外的中断时让企业工作负荷和应用保持启动并运行的方法。 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
 
 ### <a name="sql-vm-tde"></a>SQL VM TDE

@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
 ms.topic: article
-ms.date: 11/17/2018
+ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 0bbe0e9718a25fdff76e591bf388bf829518502e
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c077b93b887482dda5ae127bb3dbaec71b2ea11b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105610"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260084"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -186,7 +186,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考编号。 若要创建�
 
 1. 若要注册多个 GUID，请再次选择“添加跟踪 GUID”。 页面上会显示其他框。
 
-1. 选择**保存**。
+1. 选择“保存”。
 
 
 ## <a name="verify-the-guid-deployment"></a>验证 GUID 部署
@@ -230,7 +230,7 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="report"></a>报告
+## <a name="report"></a>报表
 
 可以在合作伙伴中心的 "分析" 仪表板中找到客户使用情况归属的报表。 ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). 若要查看报表, 必须使用合作伙伴中心凭据进行登录。 如果在报告或登录时遇到任何问题, 请按照获取支持部分中的说明创建支持请求。
 
@@ -282,7 +282,7 @@ foreach ($deployment in $deployments){
 
    ![在事件标题中输入“ISV 使用情况跟踪”](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
 
-1. 填写表单，然后选择**提交**。
+1. 填写表单，然后选择“提交”。
 
 你还可以从 Microsoft 合作伙伴技术顾问那里获得有关技术售销售、部署和应用开发方案的技术指导, 以了解并纳入客户使用归属。
 

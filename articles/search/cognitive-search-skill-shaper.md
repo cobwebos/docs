@@ -9,19 +9,18 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 22a8f891eaf72dbec9c1ec103508c81effb14b08
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 84814c317a945fd22ada580dcc3f64ed2adcff7c
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186318"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265354"
 ---
 #   <a name="shaper-cognitive-skill"></a>整形程序认知技能
 
 “整形程序”技能将多个输入整合成以后可在扩充管道中引用的[复杂类型](search-howto-complex-data-types.md)。 借助整形程序技能，可实质上创建结构、定义该结构的成员名称，并为每个成员分配值。 搜索方案中有用的合并字段示例包括将姓和名合并成单个结构、将城市和州合并成单个结构、或者将姓名和出生日期合并成单个结构，从而建立唯一标识。
 
-此外,[方案 3](#nested-complex-types)中所示的**整形**程序技能向输入添加了一个可选的*sourceContext*属性。 *source* 和 *sourceContext* 属性是互斥的。 如果输入位于技能上下文中，则只需使用 *source*。 如果输入所在的上下文与技能上下文不同，则使用 *sourceContext*。 *sourceContext* 要求使用寻址为源的特定元素定义嵌套的输入。 
+此外，[方案 3](#nested-complex-types)中所示的**整形**程序技能向输入添加了一个可选的*sourceContext*属性。 *source* 和 *sourceContext* 属性是互斥的。 如果输入位于技能上下文中，则只需使用 *source*。 如果输入所在的上下文与技能上下文不同，则使用 *sourceContext*。 *sourceContext* 要求使用寻址为源的特定元素定义嵌套的输入。 
 
 输出名称始终为 "output"。 管道可在内部映射不同的名称，例如下图所示的“analyzedText”，但“整形程序”技能本身会在响应中返回“output”。 如果正在调试大量文档并发现存在命名差异，或者要生成自定义技能并自行构建响应，这一点非常重要。
 
@@ -226,7 +225,7 @@ Microsoft.Skills.Util.ShaperSkill
 ```
 
 ### <a name="skill-output"></a>技能输出
-在本例中，“整形程序”会创建一个复杂类型。 此结构存在于内存中。 如果要将其保存到[知识库](knowledge-store-concept-intro.md), 应在技能组合中创建一个定义存储特征的投影。
+在本例中，“整形程序”会创建一个复杂类型。 此结构存在于内存中。 如果要将其保存到[知识库](knowledge-store-concept-intro.md)，应在技能组合中创建一个定义存储特征的投影。
 
 ```json
 {

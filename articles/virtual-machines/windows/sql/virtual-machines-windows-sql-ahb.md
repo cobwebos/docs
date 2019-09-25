@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5d740224adb15dc2d772689d77ab1c510532c901
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 05cd68c7be005a5b148b7d3e691c46a0d067b0c0
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203997"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262867"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>更改 Azure 中 SQL Server 虚拟机的许可证型号
 本文介绍如何使用新的 SQL VM 资源提供程序**SqlVirtualMachine**在 Azure 中更改 SQL Server 虚拟机（VM）的许可证模型。
@@ -125,7 +125,7 @@ $SqlVm | Set-AzResource -Force
 
 仅可通过 Azure 混合权益在 Azure VM 上自行安装 SQL Server。 你应将[这些 vm 注册到 SQL VM 资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)，方法是将 SQL Server 许可证设置为 Azure 混合权益，以根据 Microsoft 产品条款指示 Azure 混合权益的使用情况。
 
-仅当 SQL Server VM 注册到 SQL VM 资源提供程序时，才能将 SQL Server VM 的许可证类型更改为即用即付或 Azure 混合权益。 所有 SQL Server Vm 应向资源提供程序注册，以获得许可证符合性。
+仅当 SQL Server VM 注册到 SQL VM 资源提供程序时，才能将 SQL Server VM 的许可证类型更改为即用即付或 Azure 混合权益。
 
 ## <a name="remarks"></a>备注
 

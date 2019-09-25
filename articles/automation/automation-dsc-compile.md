@@ -9,19 +9,19 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d72b474e5f5e62ded6423fcc756e1cd51b905f4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 10ddb7272de164e6f92022a6f512df31753f7e31
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850663"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265133"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>在 Automation State Configuration 中编译 DSC 配置
 
-你可以通过两种方式将所需状态配置 (DSC) 配置编译为 Azure 自动化状态配置: 在 Azure 和 Windows PowerShell 中。 下表可帮助你根据每种方法的特征确定何时应使用哪种方法：
+使用 Azure Automation State Configuration 时可通过两种方法编译 Desired State Configuration (DSC)：使用 Azure，或者使用 Windows PowerShell。 下表可帮助你根据每种方法的特征确定何时应使用哪种方法：
 
-- Azure 状态配置编译服务
-  - 带有交互式用户界面的初级方法
+- Azure State Configuration 编译服务
+  - 使用交互式用户界面的初级方法
    - 轻松跟踪作业状态
 
 - Windows PowerShell
@@ -29,9 +29,9 @@ ms.locfileid: "68850663"
   - 与开发测试管道集成
   - 提供复杂的参数值
   - 大规模使用节点和非节点数据
-  - 显著提高性能
+  - 显著的性能提升
 
-## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>在 Azure 状态配置中编译 DSC 配置
+## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>在 Azure State Configuration 中编译 DSC 配置
 
 ### <a name="portal"></a>门户
 
@@ -122,22 +122,22 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 若要了解如何将 PSCredentials 作为参数传递，请参阅下面的[凭据资产](#credential-assets)。
 
-### <a name="compiling-configurations-in-azure-automation-that-contain-composite-resources"></a>在包含复合资源的 Azure 自动化中编译配置
+### <a name="compiling-configurations-in-azure-automation-that-contain-composite-resources"></a>在 Azure 自动化中编译包含复合资源的配置
 
 借助**复合资源**，可将 DSC 配置用作某个配置中的嵌套资源。 这样，便可将多个配置应用到单个资源。 请参阅[复合资源：将 DSC 配置用作资源](/powershell/dsc/authoringresourcecomposite)，了解有关**复合资源**的详细信息。
 
 > [!NOTE]
-> 为了使包含**组合资源**的配置正确编译, 你必须首先确保复合依赖的所有 DSC 资源都首先导入到 Azure 自动化中。
+> 若要正确编译包含**复合资源**的配置，首先必须确保复合资源所依赖的所有 DSC 资源已导入到 Azure 自动化中。
 
 添加 DSC**组合资源**与将任何 PowerShell 模块添加到 Azure 自动化没有什么不同。
 在[Azure 自动化中管理模块](/azure/automation/shared-resources/modules)一文中介绍了此过程的分步说明。
 
-### <a name="managing-configurationdata-when-compiling-configuration-in-azure-automation"></a>在 Azure 自动化中编译配置时管理 ConfigurationData
+### <a name="managing-configurationdata-when-compiling-configuration-in-azure-automation"></a>在 Azure Automation 中编译配置时管理 ConfigurationData
 
 通过 **ConfigurationData** 可在使用 PowerShell DSC 时分开结构化配置与任何环境特定配置。 有关 **ConfigurationData** 的详细信息，请参阅[区分 PowerShell DSC 中的“What”与“Where”](https://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx)。
 
 > [!NOTE]
-> 当使用 Azure PowerShell 而不是在 Azure 门户中进行编译时, 可以使用**ConfigurationData** 。
+> 使用 Azure PowerShell 在 Azure Automation State Configuration 中进行编译时，可使用 **ConfigurationData**，但在 Azure 门中编译时不可使用。
 
 以下示例 DSC 配置通过 **$ConfigurationData** 和 **$AllNodes** 关键字来使用 **ConfigurationData**。 在本示例中还需要 [**xWebAdministration**](https://www.powershellgallery.com/packages/xWebAdministration/) 模块：
 
@@ -160,7 +160,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-可以通过 Windows PowerShell 编译上述 DSC 配置。 以下脚本将两个节点配置添加到 Azure 自动化状态配置请求服务:**ConfigurationDataSample.MyVM1** 和 **ConfigurationDataSample.MyVM3**：
+可以使用 Windows PowerShell 编译上述 DSC 配置。 以下脚本将两个节点配置添加到 Azure Automation State Configuration 拉取服务：**ConfigurationDataSample.MyVM1** 和 **ConfigurationDataSample.MyVM3**：
 
 ```powershell
 $ConfigData = @{
@@ -187,7 +187,7 @@ $ConfigData = @{
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ConfigurationDataSample' -ConfigurationData $ConfigData
 ```
 
-### <a name="working-with-assets-in-azure-automation-during-compilation"></a>在编译期间使用 Azure 自动化中的资产
+### <a name="working-with-assets-in-azure-automation-during-compilation"></a>编译时在 Azure 自动化中使用资产
 
 Azure Automation State Configuration 和 Runbook 中的资产引用是相同的。 有关详细信息，请参阅以下主题：
 
@@ -202,7 +202,7 @@ Azure 自动化中的 DSC 配置可以使用 `Get-AutomationPSCredential` cmdlet
 
 要在节点配置（MOF 配置文档）中保持凭据的安全，需要在节点配置 MOF 文件中为凭据加密。 不过，目前必须告知 PowerShell DSC 在节点配置 MOF 生成期间以纯文本形式输出凭据是可行的，因为 PowerShell DSC 并不知道在通过编译作业生成 MOF 文件之后 Azure 自动化将加密整个文件。
 
-可以告诉 PowerShell DSC, 使用配置数据在生成的节点配置 Mof 中以纯文本形式输出凭据是正确的。 应针对每个出现在 DSC 配置中且使用凭据的节点块名称，通过 **ConfigurationData** 传递 `PSDscAllowPlainTextPassword = $true`。
+可告知 PowerShell DSC，使用配置数据在生成的节点配置 MOF 中以纯文本形式输出凭据是可行的。 应针对每个出现在 DSC 配置中且使用凭据的节点块名称，通过 **ConfigurationData** 传递 `PSDscAllowPlainTextPassword = $true`。
 
 以下示例演示使用自动化凭据资产的 DSC 配置。
 
@@ -248,25 +248,25 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 > [!NOTE]
 > 编译完成后，可能会收到一条错误消息：由于已导入“Microsoft.PowerShell.Management”管理单元，因此未导入“Microsoft.PowerShell.Management”模块。 可以安全地忽略此警告。
 
-## <a name="compiling-configurations-in-windows-powershell-and-publishing-to-azure-automation"></a>在 Windows PowerShell 中编译配置并发布到 Azure 自动化
+## <a name="compiling-configurations-in-windows-powershell-and-publishing-to-azure-automation"></a>在 Windows PowerShell 中编译配置并将其发布到 Azure 自动化
 
 还可以导入已在 Azure 外部编译的节点配置 (MOF)。
 这包括从开发人员工作站或在[Azure DevOps](https://dev.azure.com)等服务中进行编译。
-此方法有多个优点, 包括性能和可靠性。
-Windows PowerShell 中的编译还提供了用于对配置内容进行签名的选项。
+此方法有多个缺点，其中包括性能和可靠性方面的缺点。
+在 Windows PowerShell 中编译还提供了签署配置内容的选项。
 已签名的节点配置由 DSC 代理在托管节点上进行本地验证，确保应用于节点的配置来自于授权源。
 
 > [!NOTE]
 > 节点配置文件不得大于 1 MB，以便将其导入 Azure 自动化。
 
-若要详细了解如何为节点配置签名，请参阅 [WMF 5.1 中的改进 - 如何为配置和模块签名](/powershell/wmf/5.1/dsc-improvements#dsc-module-and-configuration-signing-validations)。
+若要详细了解如何为节点配置签名，请参阅 [WMF 5.1 中的改进 - 如何为配置和模块签名](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations)。
 
 ### <a name="compiling-a-configuration-in-windows-powershell"></a>在 Windows PowerShell 中编译配置
 
-在 Windows PowerShell 中编译 DSC 配置的过程包含在 PowerShell DSC 文档中[, 即编写、编译和应用配置](/powershell/dsc/configurations/write-compile-apply-configuration#compile-the-configuration)。
-这可以从开发人员工作站或在生成服务 (例如[Azure DevOps](https://dev.azure.com)) 中执行。
+在 Windows PowerShell 中编译 DSC 配置的过程包含在以下 PowerShell DSC 文档中：[编写、编译和应用配置](/powershell/dsc/configurations/write-compile-apply-configuration#compile-the-configuration)。
+这可以从开发人员工作站或在生成服务（例如[Azure DevOps](https://dev.azure.com)）中执行。
 
-然后, 可以将通过编译配置生成的 MOF 文件直接导入到 Azure 状态配置服务中。
+然后，可以将通过编译配置生成的一个或多个 MOF 文件直接导入到 Azure State Configuration 服务中。
 
 ### <a name="importing-a-node-configuration-in-the-azure-portal"></a>在 Azure 门户中导入节点配置
 

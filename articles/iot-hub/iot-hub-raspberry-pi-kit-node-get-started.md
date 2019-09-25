@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: e7346fa0f9cc977755c441077a50707dd207019f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 79e565668db661d02833d22d2ef619fc67708115
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638279"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266151"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
@@ -94,7 +94,7 @@ ms.locfileid: "69638279"
 
 1. 下载 Raspbian。
 
-   a. [带桌面的 Raspbian Buster](https://www.raspberrypi.org/downloads/raspbian/)(.zip 文件)。
+   a. [带桌面的 Raspbian Buster](https://www.raspberrypi.org/downloads/raspbian/)（.zip 文件）。
 
    b. 将 Raspbian 映像提取到计算机上的一个文件夹中。
 
@@ -135,7 +135,7 @@ ms.locfileid: "69638279"
 
 ![Raspberry Pi 和传感器连接](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 
-BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云时，LED 将闪烁。 
+BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云时，LED 将闪烁。
 
 对于传感器引脚，请使用以下接线：
 
@@ -170,8 +170,8 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 1. 从主计算机使用以下 SSH 客户端之一连接到 Raspberry Pi：
 
    **Windows 用户**
-  
-   a. 下载并安装 [PuTTY](https://www.putty.org/) for Windows。 
+
+   a. 下载并安装 [PuTTY](https://www.putty.org/) for Windows。
 
    b. 将 Pi 的 IP 地址复制到主机名（或 IP 地址）部分，并选择 SSH 作为连接类型。
 
@@ -192,10 +192,10 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
    node -v
    ```
 
-   如果版本低于 11. x, 或者 Pi 上没有 node.js, 请安装最新版本。
+   如果版本低于 10.x，或者 Pi 上没有 Node.js，请安装最新版本。
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
@@ -209,7 +209,7 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
-   sudo npm install
+   npm install
    ```
 
    > [!NOTE]
@@ -228,6 +228,8 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
    此文件中有两个可以配置的项。 第一个是 `interval`，它定义了发送到云的消息之间的时间间隔（以毫秒为单位）。 第二个是 `simulatedData`，它是一个布尔值，指示是否使用模拟的传感器数据。
 
    如果没有传感器，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建和使用模拟的传感器数据。
+
+   *注意：默认情况下，本教程中使用的0x77。根据你的配置，它也可能是0x76 的：如果遇到 i2c 错误，请尝试将此值更改为118，并查看其是否更好。若要查看传感器使用的地址，请在 raspberry `sudo i2cdetect -y 1` pi 上的 shell 中运行*
 
 2. 通过按“Control-O”>“Enter”>“Control-X”保存并退出。
 

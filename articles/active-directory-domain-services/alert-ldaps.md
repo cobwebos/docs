@@ -1,68 +1,66 @@
 ---
-title: Azure Active Directory 域服务：安全 LDAP 故障排除 |Microsoft Docs
-description: Azure AD 域服务的安全 LDAP 疑难解答
+title: 解决 Azure AD 域服务中的安全 LDAP 警报 |Microsoft Docs
+description: 了解如何针对 Azure Active Directory 域服务的安全 LDAP 排除和解决常见警报。
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
-manager: ''
-editor: ''
+manager: daveba
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/22/2019
+ms.topic: troubleshooting
+ms.date: 09/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 8f9f4a8b52548dad011f5e825fa42c50da970ea7
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613156"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258053"
 ---
-# <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD 域服务 - 安全 LDAP 配置疑难解答
+# <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>已知问题：Azure Active Directory 域服务中的安全 LDAP 警报
 
-本文提供为 Azure AD 域服务[配置安全 LDAP](tutorial-configure-ldaps.md) 时常见问题的解决方法。
+使用轻型目录访问协议（LDAP）与 Azure Active Directory 域服务（Azure AD DS）进行通信的应用程序和服务可以[配置为使用安全 LDAP](tutorial-configure-ldaps.md)。 为了使安全 LDAP 正常工作，必须打开相应的证书和所需的网络端口。
 
-## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101：安全 LDAP 网络安全组配置
+本文可帮助你了解和解决 Azure AD DS 中的安全 LDAP 访问的常见警报。
 
-**警报消息：**
+## <a name="aadds101-secure-ldap-network-configuration"></a>AADDS101：安全 LDAP 网络配置
+
+### <a name="alert-message"></a>警报消息
 
 已为托管域启用 Internet 上的安全 LDAP。*但是，访问端口 636 未使用网络安全组锁定。这样可能会使托管域上的用户帐户遭到密码暴力攻击。*
 
-### <a name="secure-ldap-port"></a>安全 LDAP 端口
+### <a name="resolution"></a>分辨率
 
-启用安全 LDAP 后，我们建议创建其他规则，以支持仅从特定 IP 地址的入站 LDAPS 访问。 这些规则可以使域免受可能构成安全威胁的暴力攻击。 端口 636 支持对托管域的访问。 下面介绍如何更新 NSG 以允许安全 LDAP 的访问：
+启用安全 LDAP 时，建议创建其他规则，以限制对特定 IP 地址的入站 LDAPS 访问。 这些规则保护 Azure AD DS 托管域免受暴力攻击。 若要更新网络安全组以限制安全 LDAP 的 TCP 端口636访问，请完成以下步骤：
 
-1. 导航到 Azure 门户中的[“网络安全组”选项卡](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)
-2. 从表中选择与域相关联的 NSG。
-3. 单击“入站安全规则”
-4. 创建端口 636 规则
-   1. 单击顶部导航栏上的“添加”。
-   2. 为源选择一个“IP 地址”。
-   3. 指定此规则的源端口范围。
-   4. 针对目标端口范围，输入“636”。
-   5. 协议为 TCP。
-   6. 为规则指定适当的名称、说明和优先级。 此规则的优先级应高于“全部拒绝”规则的优先级（如果有）。
-   7. 单击 **“确定”** 。
-5. 验证是否已创建规则。
-6. 在两小时后检查域的运行状况，确保已正确完成相关步骤。
+1. 在 Azure 门户中，搜索并选择 "**网络安全组**"。
+1. 选择与托管域相关联的网络安全组，例如*AADDS-contoso.com-NSG*，然后选择 "**入站安全规则**"
+1. **+** 为 TCP 端口636添加规则。 如果需要，请在窗口中选择 "**高级**" 来创建规则。
+1. 对于 "**源**"，请从下拉菜单中选择 " *IP 地址*"。 输入要为安全 LDAP 流量授予访问权限的源 IP 地址。
+1. 选择 "*任何*" 作为**目标**，然后为 "**目标端口范围**" 输入*636* 。
+1. 将**协议**设置为*TCP* ，并将**操作**设置为 "*允许*"。
+1. 指定规则的优先级，然后输入名称（如*RestrictLDAPS*）。
+1. 准备就绪后，选择 "**添加**" 创建规则。
+
+Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警报。
 
 > [!TIP]
-> 端口 636 不是 Azure AD 域服务要平稳地运行所需的唯一规则。 若要了解详细信息，请访问[网络准则](network-considerations.md)或[解决 NSG 配置问题](alert-nsg.md)文章。
->
+> TCP 端口636不是 Azure AD DS 平稳运行所需的唯一规则。 若要了解详细信息，请参阅[AZURE AD DS 网络安全组和所需端口](network-considerations.md#network-security-groups-and-required-ports)。
 
 ## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502：安全 LDAP 证书即将到期
 
-**警报消息：**
+### <a name="alert-message"></a>警报消息
 
 托管域的安全 LDAP 证书将于 [date] 到期。
 
-**解决方法：**
+### <a name="resolution"></a>分辨率
 
-按照[配置安全 LDAP](tutorial-configure-ldaps.md) 一文中所述的步骤创建新的安全 LDAP 证书。
+按照[创建安全 ldap 证书的](tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)步骤创建替换安全 ldap 证书。 向 Azure AD DS 应用替换证书，并将证书分发到使用安全 LDAP 连接的任何客户端。
 
-## <a name="contact-us"></a>联系我们
-欢迎联系 Azure Active Directory 域服务产品团队[分享看法或请求支持](contact-us.md)。
+## <a name="next-steps"></a>后续步骤
+
+如果仍有问题，请[提出 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
+
+<!-- INTERNAL LINKS -->
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

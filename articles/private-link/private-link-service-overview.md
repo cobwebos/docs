@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 27e927425faec045c4f304ae6de155f2337307d9
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 67bddea31a4bb375657b0df5e21fab1ab3d732f5
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104669"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265557"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure Private Link service？
 
@@ -68,7 +68,7 @@ Azure 专用链接服务是对由 Azure 专用链接提供支持的服务的引�
  
 - 可以从属于不同 Vnet、订阅和/或 Active Directory 租户的多个专用终结点访问单个专用链接服务。 通过连接工作流建立连接。 
  
-- 可以使用不同的前端 IP 配置在同一标准负载均衡器上创建多个专用链接服务。 对于每个标准负载均衡器和每个订阅可以创建的专用链接服务的数量有限制。 有关详细信息，请参阅 [Azure 限制](https://docs.microsoft.com/azure/azure-subscription-service-limits.md#networking-limits)。
+- 可以使用不同的前端 IP 配置在同一标准负载均衡器上创建多个专用链接服务。 对于每个标准负载均衡器和每个订阅可以创建的专用链接服务的数量有限制。 有关详细信息，请参阅 [Azure 限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)。
  
 - 专用链接服务可以有多个链接到的 NAT IP 配置。 选择多个 NAT IP 配置可帮助服务提供程序进行缩放。 目前，服务提供商可以为每个专用链接服务分配多达8个 NAT IP 地址。 对于每个 NAT IP 地址，可以为 TCP 连接分配更多端口，从而扩大规模。将多个 NAT IP 地址添加到专用链接服务后，将无法删除 NAT IP 地址。 这样做是为了确保在删除 NAT IP 地址时活动连接不会受到影响。
 

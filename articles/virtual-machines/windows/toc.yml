@@ -470,6 +470,8 @@
           href: detach-disk.md
         - name: 使用模板部署磁盘
           href: using-managed-disks-template-deployments.md
+        - name: 将 vhd 上传到磁盘 - PowerShell
+          href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: 调整磁盘大小
           href: expand-os-disk.md
         - name: 拍摄磁盘快照

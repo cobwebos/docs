@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: ad690fa78f794b26b6cf496ea4485599486752b0
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: af99f369245d6006d0d4784e572020b820e406a3
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146975"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266043"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>使用 Striim 将数据迁移到 Azure Cosmos DB Cassandra API 帐户
 
@@ -155,7 +155,7 @@ Azure marketplace 中的 Striim 映像提供从数据仓库和数据库到 Azure
 
    ![连接到目标](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
 
-1. 在配置目标之前，请确保已将一个[巴尔的摩根证书添加到 Striim 的 Java 环境](/java/java-sdk-add-certificate-ca-store?view=azure-java-stable#to-add-a-root-certificate-to-the-cacerts-store)中。
+1. 在配置目标之前，请确保已将一个[巴尔的摩根证书添加到 Striim 的 Java 环境](/azure/java/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store)中。
 
 1. 输入目标 Azure Cosmos DB 实例的配置属性，然后选择 "**保存**" 以继续。 下面是要注意的关键参数：
 

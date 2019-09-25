@@ -12,24 +12,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 2482fb4ab74a3c1e032a32890c3dc2c3920b5e6b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725626"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261699"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>预览版：使用 Azure PowerShell 将 Vm 部署到专用主机
 
-本文介绍如何创建 Azure[专用主机](dedicated-hosts.md)来托管虚拟机 (vm)。 
+本文介绍如何创建 Azure[专用主机](dedicated-hosts.md)来托管虚拟机（vm）。 
 
-请确保已安装 Azure PowerShell 版本 2.4.2 sections 或更高版本, 并且已使用`Connect-AzAccount`登录到 Azure 帐户。 若要安装版本 2.4.2 sections, 请打开 PowerShell 提示符, 然后键入:
+请确保已安装 Azure PowerShell 版本 2.4.2 sections 或更高版本，并且已使用`Connect-AzAccount`登录到 Azure 帐户。 若要安装版本 2.4.2 sections，请打开 PowerShell 提示符，然后键入：
 
 ```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrelease
+Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
 ```
 
-需要至少1.6.0 版本的 PowerShellGet 模块才能在 PowerShell 中启用预览模块功能。 最新版本的 PowerShell Core 自动内置此项, 但对于较早版本的 PowerShell, 你可以运行以下命令以更新到最新版本:
+需要至少1.6.0 版本的 PowerShellGet 模块才能在 PowerShell 中启用预览模块功能。 最新版本的 PowerShell Core 自动内置此项，但对于较早版本的 PowerShell，你可以运行以下命令以更新到最新版本：
 
 ```powershell
 Install-Module -Name PowerShellGet -Repository PSGallery -Force
@@ -42,17 +42,17 @@ Install-Module -Name PowerShellGet -Repository PSGallery -Force
 >
 > **已知预览版限制**
 > - 虚拟机规模集目前在专用主机上不受支持。
-> - 预览版初始版本支持以下 VM 系列:DSv3 和 ESv3。 
+> - 预览版初始版本支持以下 VM 系列：DSv3 和 ESv3。 
 
 
 
 ## <a name="create-a-host-group"></a>创建主机组
 
-**主机组**是代表专用主机集合的资源。 在区域和可用性区域中创建主机组, 并向其添加主机。 规划高可用性时, 有其他选项可供选择。 你可以将以下一个或两个选项与专用主机一起使用: 
-- 跨多个可用性区域。 在这种情况下, 你需要在要使用的每个区域中都有一个主机组。
-- 跨多个容错域, 这些容错域映射到物理机架。 
+**主机组**是代表专用主机集合的资源。 在区域和可用性区域中创建主机组，并向其添加主机。 规划高可用性时，有其他选项可供选择。 你可以将以下一个或两个选项与专用主机一起使用： 
+- 跨多个可用性区域。 在这种情况下，你需要在要使用的每个区域中都有一个主机组。
+- 跨多个容错域，这些容错域映射到物理机架。 
  
-在任一情况下, 都需要提供主机组的容错域计数。 如果你不希望跨组中的容错域, 请使用容错域计数1。 
+在任一情况下，都需要提供主机组的容错域计数。 如果你不希望跨组中的容错域，请使用容错域计数1。 
 
 您还可以决定使用可用性区域和容错域。 此示例将在区域1中创建具有2个容错域的主机组。 
 
@@ -72,12 +72,12 @@ $hostGroup = New-AzHostGroup `
 
 ## <a name="create-a-host"></a>创建主机
 
-现在, 让我们在主机组中创建一个专用主机。 除了主机名称外, 还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。  在预览期间, 我们将支持以下主机 SKU 值:DSv3_Type1 和 ESv3_Type1。
+现在，让我们在主机组中创建一个专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。  在预览期间，我们将支持以下主机 SKU 值：DSv3_Type1 和 ESv3_Type1。
 
 
-有关主机 Sku 和定价的详细信息, 请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
+有关主机 Sku 和定价的详细信息，请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
 
-如果为主机组设置了容错域计数, 系统会要求你为主机指定容错域。 在此示例中, 我们将主机的容错域设置为1。
+如果为主机组设置了容错域计数，系统会要求你为主机指定容错域。 在此示例中，我们将主机的容错域设置为1。
 
 
 ```powershell
@@ -94,7 +94,7 @@ $dHost = New-AzHost `
 
 在专用主机上创建虚拟机。 
 
-如果在创建主机组时指定了可用性区域, 则需要在创建虚拟机时使用同一区域。 在此示例中, 由于我们的主机组在区域1中, 因此需要在区域1中创建 VM。  
+如果在创建主机组时指定了可用性区域，则需要在创建虚拟机时使用同一区域。 在此示例中，由于我们的主机组在区域1中，因此需要在区域1中创建 VM。  
 
 
 ```powershell
@@ -111,11 +111,11 @@ New-AzVM `
 ```
 
 > [!WARNING]
-> 如果在没有足够资源的主机上创建虚拟机, 则虚拟机将创建为失败状态。 
+> 如果在没有足够资源的主机上创建虚拟机，则虚拟机将创建为失败状态。 
 
 ## <a name="check-the-status-of-the-host"></a>检查主机的状态
 
-你可以使用[GetAzHost](/powershell/module/az.compute/get-azhost) `-InstanceView`和参数检查主机运行状况状态, 以及你仍可以将多个虚拟机部署到主机。
+你可以使用[GetAzHost](/powershell/module/az.compute/get-azhost) `-InstanceView`和参数检查主机运行状况状态，以及你仍可以将多个虚拟机部署到主机。
 
 ```
 Get-AzHost `
@@ -188,27 +188,27 @@ Tags                   : {}
 
 ## <a name="clean-up"></a>清理
 
-即使部署了虚拟机, 也需要为你的专用主机付费。 应删除当前未使用的任何主机以节省成本。  
+即使部署了虚拟机，也需要为你的专用主机付费。 应删除当前未使用的任何主机以节省成本。  
 
-只有在没有任何更长的虚拟机使用它时, 才能删除该主机。 使用[new-azvm](/powershell/module/az.compute/remove-azvm)删除 vm。
+只有在没有任何更长的虚拟机使用它时，才能删除该主机。 使用[new-azvm](/powershell/module/az.compute/remove-azvm)删除 vm。
 
 ```powershell
 Remove-AzVM -ResourceGroupName $rgName -Name myVM
 ```
 
-删除 Vm 后, 可以使用[AzHost](/powershell/module/az.compute/remove-azhost)删除该主机。
+删除 Vm 后，可以使用[AzHost](/powershell/module/az.compute/remove-azhost)删除该主机。
 
 ```powershell
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-删除所有主机后, 可以使用[AzHostGroup](/powershell/module/az.compute/remove-azhostgroup)删除该主机组。 
+删除所有主机后，可以使用[AzHostGroup](/powershell/module/az.compute/remove-azhostgroup)删除该主机组。 
 
 ```powershell
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-还可以使用[AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)在单个命令中删除整个资源组。 这会删除在组中创建的所有资源, 包括所有 Vm、主机和主机组。
+还可以使用[AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)在单个命令中删除整个资源组。 这会删除在组中创建的所有资源，包括所有 Vm、主机和主机组。
  
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $rgName
@@ -217,6 +217,6 @@ Remove-AzResourceGroup -Name $rgName
 
 ## <a name="next-steps"></a>后续步骤
 
-- [这里](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有一个示例模板, 它使用区域和容错域实现了区域中的最大复原能力。
+- [这里](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有一个示例模板，它使用区域和容错域实现了区域中的最大复原能力。
 
 - 你还可以使用[Azure 门户](dedicated-hosts-portal.md)部署专用主机。

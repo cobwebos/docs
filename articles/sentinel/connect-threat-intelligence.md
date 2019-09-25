@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: cbdf05c714971db5a618ca2a8bb35fe286d6804c
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c1c374977460de04d2339ba8c93019cf9152dbe3
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240675"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262718"
 ---
-# <a name="connect-data-from-threat-intelligence-providers---preview"></a>连接威胁智能提供商提供的数据-预览
+# <a name="connect-data-from-threat-intelligence-providers"></a>连接威胁情报提供商提供的数据
 
 > [!IMPORTANT]
-> Azure Sentinel 中的威胁情报目前为公共预览版。
+> Azure Sentinel 中的威胁情报平台数据连接器目前为公共预览版。
 > 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Sentinel 使你可以导入组织使用的威胁指标，这可以提高安全分析师检测和确定已知威胁优先级的能力。 Azure Sentinel 提供的多项功能变为可用或增强：

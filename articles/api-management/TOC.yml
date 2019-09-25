@@ -49,6 +49,10 @@
           href: api-management-howto-policies.md
         - name: 策略参考索引
           href: api-management-policies.md
+    - name: 安全
+      items:
+        - name: 内置安全控件
+          href: api-management-security-controls.md
     - name: Subscriptions
       href: api-management-subscriptions.md
     - name: 使用自动化进行管理
@@ -57,8 +61,6 @@
       href: api-management-error-handling-policies.md
     - name: API 导入限制
       href: api-management-api-import-restrictions.md
-    - name: 内置安全控件
-      href: api-management-security-controls.md
 - name: 操作指南
   items:
     - name: 定义 API

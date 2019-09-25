@@ -8,18 +8,18 @@ ms.service: security
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
-ms.openlocfilehash: 67e1d160e5bfb22b10bd0902729cfe0503820877
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 9b0478b3e72a759186d7d18ce6f7a885a1098d4b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946591"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259506"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-uk-nhs"></a>Azure 安全性与合规性蓝图：面向英国 NHS 的 IaaS Web 应用程序
 
 ## <a name="overview"></a>概述
 
-此 Azure 安全性与合规性蓝图为适用于收集、存储和检索医疗保健数据的基础结构即服务 (IaaS) web 应用程序提供参考体系结构和指南。 此解决方案演示客户可通过哪些方式来遵守 [NHS Digital](https://digital.nhs.uk/)（英国健康与社会保健部 (DHSC) 的一家合作伙伴）发布的[云安全合理做法指南](https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance/nhs-and-social-care-data-off-shoring-and-the-use-of-public-cloud-services/health-and-social-care-cloud-security-good-practice-guide)中提供的指导。 《云安全合理做法指南》基于英国国家网络安全中心 (NCSC) 发布的[云安全 14 项原则](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)。
+此 Azure 安全性与合规性蓝图为适用于收集、存储和检索医疗保健数据的基础结构即服务（IaaS） web 应用程序提供参考体系结构和指南。 此解决方案演示客户可通过哪些方式来遵守 [NHS Digital](https://digital.nhs.uk/)（英国健康与社会保健部 (DHSC) 的一家合作伙伴）发布的[云安全合理做法指南](https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance/nhs-and-social-care-data-off-shoring-and-the-use-of-public-cloud-services/health-and-social-care-cloud-security-good-practice-guide)中提供的指导。 《云安全合理做法指南》基于英国国家网络安全中心 (NCSC) 发布的[云安全 14 项原则](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)。
 
 此参考体系结构、实施指南和威胁模型旨在用作客户的基础体系结构，他们可以根据具体的要求进行调整，在未经额外配置的情况下，不应在生产环境中按原样使用。 客户有责任对使用本体系结构构建的任何解决方案进行相应的安全性与符合性评估，因为具体要求可能会因客户的具体实施情况而异。
 
@@ -175,11 +175,11 @@ Azure 安全中心提供区分优先级的安全警报和事件，让客户更�
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
 - **活动日志**：[活动日志](../../azure-monitor/platform/activity-logs-overview.md)提供对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志**：[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。
+- **诊断日志**：[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。
 
-**Azure Monitor 日志**：这些日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中, 以便进行处理、存储和仪表板报告。 收集以后，数据会按数据类型整理到不同的表中，这样就可以对所有数据进行集中分析，不管其最初来源是什么。 此外, Azure 安全中心与 Azure Monitor 日志集成, 使客户可以使用 Kusto 查询访问其安全事件数据, 并将其与其他服务中的数据合并。
+**Azure Monitor 日志**：这些日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中，以便进行处理、存储和仪表板报告。 收集以后，数据会按数据类型整理到不同的表中，这样就可以对所有数据进行集中分析，不管其最初来源是什么。 此外，Azure 安全中心与 Azure Monitor 日志集成，使客户可以使用 Kusto 查询访问其安全事件数据，并将其与其他服务中的数据合并。
 
-以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中:
+以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中：
 -   [Active Directory 评估](../../azure-monitor/insights/ad-assessment.md)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署的服务器基础结构的优先建议列表。
 - [SQL 评估](../../azure-monitor/insights/sql-assessment.md)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署的服务器基础结构的优先建议列表。
 - [代理运行状况](../../monitoring/monitoring-solution-agenthealth.md)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。

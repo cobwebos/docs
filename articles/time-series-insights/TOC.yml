@@ -61,7 +61,7 @@
           href: time-series-insights-update-use-cases.md
         - name: 时序模型
           href: time-series-insights-update-tsm.md
-        - name: 数据查询
+        - name: 时序查询
           href: time-series-insights-update-tsq.md
         - name: 在资源管理器预览版中实现数据可视化
           href: time-series-insights-update-explorer.md

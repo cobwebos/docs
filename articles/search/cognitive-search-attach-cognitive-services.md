@@ -5,36 +5,35 @@ manager: nitinme
 author: LuisCabrer
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
-ms.openlocfilehash: dcdef8df25bdf6a7a60b1221d1463e6be5486875
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 113286f829b628d4740fbba34e7279741a934aef
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639451"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265926"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>将认知服务资源与 Azure 搜索中的技能集联系起来 
 
-AI 算法在 Azure 搜索中驱动用于文档扩充的[认知索引管道](cognitive-search-concept-intro.md)。 这些算法基于 Azure 认知服务资源, 其中包括用于图像分析的[计算机视觉](https://azure.microsoft.com/services/cognitive-services/computer-vision/), 以及用于实体识别、关键短语提取和其他根据的光学字符识别 (OCR) 和[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/). 与用于文档扩充的 Azure 搜索所使用的算法一样, 算法被包装在某个*技能*中, 放在*技能组合*中, 并在索引期间由*索引器*引用。
+AI 算法在 Azure 搜索中驱动用于文档扩充的[认知索引管道](cognitive-search-concept-intro.md)。 这些算法基于 Azure 认知服务资源，其中包括用于图像分析的[计算机视觉](https://azure.microsoft.com/services/cognitive-services/computer-vision/)，以及用于实体识别、关键短语提取和其他根据的光学字符识别（OCR）和[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/). 与用于文档扩充的 Azure 搜索所使用的算法一样，算法被包装在某个*技能*中，放在*技能组合*中，并在索引期间由*索引器*引用。
 
-你可以免费获取有限数量的文档。 或者, 可以将计费认知服务资源附加到*技能组合*, 以实现更大、更频繁的工作负荷。 在本文中, 你将了解如何附加可计费认知服务资源, 以便在 Azure 搜索[索引](search-what-is-an-index.md)期间丰富文档。
+你可以免费获取有限数量的文档。 或者，可以将计费认知服务资源附加到*技能组合*，以实现更大、更频繁的工作负荷。 在本文中，你将了解如何附加可计费认知服务资源，以便在 Azure 搜索[索引](search-what-is-an-index.md)期间丰富文档。
 
 > [!NOTE]
-> 可计费事件包括在 Azure 搜索中对认知服务 API 和图像提取进行的调用, 作为文档解密阶段的一部分。 从文档中提取文本或没有调用认知服务的技能不收取任何费用。
+> 可计费事件包括在 Azure 搜索中对认知服务 API 和图像提取进行的调用，作为文档解密阶段的一部分。 从文档中提取文本或没有调用认知服务的技能不收取任何费用。
 >
-> 计费技能的执行是[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)。 有关图像提取的定价, 请参阅[Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)。
+> 计费技能的执行是[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)。 有关图像提取的定价，请参阅[Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)。
 
 ## <a name="same-region-requirement"></a>相同区域要求
 
-我们要求 Azure 搜索和 Azure 认知服务位于同一区域。 否则, 将在运行时收到此消息:`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+我们要求 Azure 搜索和 Azure 认知服务位于同一区域。 否则，将在运行时收到此消息：`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
-无法跨区域移动服务。 如果收到此错误, 应在 Azure 搜索所在的同一区域中创建新的认知服务资源。
+无法跨区域移动服务。 如果收到此错误，应在 Azure 搜索所在的同一区域中创建新的认知服务资源。
 
 > [!NOTE]
-> 某些内置技能基于非区域认知服务 (例如,[文本翻译技能](cognitive-search-skill-text-translation.md))。 请注意, 如果将任何这些技能添加到技能组合, 则不能保证你的数据与 Azure 搜索或认知服务资源位于同一区域。 有关更多详细信息, 请参阅[服务状态页](https://aka.ms/allinoneregioninfo)。
+> 某些内置技能基于非区域认知服务（例如，[文本翻译技能](cognitive-search-skill-text-translation.md)）。 请注意，如果将任何这些技能添加到技能组合，则不能保证你的数据与 Azure 搜索或认知服务资源位于同一区域。 有关更多详细信息，请参阅[服务状态页](https://aka.ms/allinoneregioninfo)。
 
 ## <a name="use-free-resources"></a>使用免费资源
 
@@ -56,9 +55,9 @@ AI 算法在 Azure 搜索中驱动用于文档扩充的[认知索引管道](cogn
 
 ## <a name="use-billable-resources"></a>使用付费资源
 
-对于每天创建20多个根据的工作负荷, 请确保附加可计费认知服务资源。 建议始终附加可计费认知服务资源, 即使您从未打算调用认知服务 API。 附加资源会重写每日限制。
+对于每天创建20多个根据的工作负荷，请确保附加可计费认知服务资源。 建议始终附加可计费认知服务资源，即使您从未打算调用认知服务 API。 附加资源会重写每日限制。
 
-只有调用认知服务 API 的技能才收费。 对于[自定义技能](cognitive-search-create-custom-skill-example.md)或不基于 API 的[文本合并](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[整形](cognitive-search-skill-shaper.md)器等技能, 无需付费。
+只有调用认知服务 API 的技能才收费。 对于[自定义技能](cognitive-search-create-custom-skill-example.md)或不基于 API 的[文本合并](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[整形](cognitive-search-skill-shaper.md)器等技能，无需付费。
 
 1. 打开导入数据向导，选择数据源，然后转到“添加认知搜索(可选)”。
 
@@ -66,7 +65,7 @@ AI 算法在 Azure 搜索中驱动用于文档扩充的[认知索引管道](cogn
 
    ![创建认知服务资源](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "创建认知服务资源")
 
-1. 在“位置”列表中，选择你的 Azure 搜索服务所在的区域。 出于性能方面的原因, 请务必使用此区域。 使用此区域还可避免跨区域的出站带宽费用。
+1. 在“位置”列表中，选择你的 Azure 搜索服务所在的区域。 出于性能方面的原因，请务必使用此区域。 使用此区域还可避免跨区域的出站带宽费用。
 
 1. 在“定价层”列表中，选择“S0”获取认知服务功能一体化集合，包括为 Azure 搜索使用的预定义技能提供支持的“视觉和语言”功能。
 

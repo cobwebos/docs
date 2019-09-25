@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: 0e7eadcb511bc55bbafcf20f44a28ffcf2f9be90
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 95e8dbdbb1a3adadb6b81c8d9023622de4cc3058
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946658"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259761"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-pci-dss"></a>Azure 安全性与合规性蓝图：PCI DSS 的数据仓库
 
@@ -74,11 +74,11 @@ SQL 负载均衡器管理 SQL 流量，确保高性能。 此参考体系结构�
 
 以下部分详细描述了部署和实施要素。
 
-**SQL 数据仓库**:[SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)是一种企业数据仓库 (EDW), 可利用大规模并行处理 (MPP) 跨 pb 的数据快速运行复杂的查询, 使用户能够有效地标识财务数据。 用户可以使用简单的 PolyBase T-SQL 查询将大数据导入到 SQL 数据仓库中，并利用 MPP 的强大功能来运行高性能分析。
+**SQL 数据仓库**：[SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)是一种企业数据仓库（EDW），可利用大规模并行处理（MPP）跨 pb 的数据快速运行复杂的查询，使用户能够有效地标识财务数据。 用户可以使用简单的 PolyBase T-SQL 查询将大数据导入到 SQL 数据仓库中，并利用 MPP 的强大功能来运行高性能分析。
 
-**SQL Server Reporting Services (SSRS)** :[SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs)提供了有关 Azure SQL 数据仓库的表、图表、地图、仪表、矩阵等的快速创建报表。
+**SQL Server Reporting Services （SSRS）** ：[SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs)提供了有关 Azure SQL 数据仓库的表、图表、地图、仪表、矩阵等的快速创建报表。
 
-**数据目录**:[数据目录](../../data-catalog/overview.md)可帮助管理数据的用户更轻松地发现和理解数据源。 常见的数据源可针对金融数据进行注册、标记和搜索。 数据将保留在现有位置，但其元数据的副本将连同数据源位置的引用一起添加到数据目录。 此元数据还会编制索引，方便通过搜索功能轻松发现每个数据源，并让发现数据源的用户理解该数据源。
+**数据目录**：[数据目录](../../data-catalog/overview.md)可帮助管理数据的用户更轻松地发现和理解数据源。 常见的数据源可针对金融数据进行注册、标记和搜索。 数据将保留在现有位置，但其元数据的副本将连同数据源位置的引用一起添加到数据目录。 此元数据还会编制索引，方便通过搜索功能轻松发现每个数据源，并让发现数据源的用户理解该数据源。
 
 **守护主机**：守护主机是允许用户访问此环境中已部署资源的单一入口点。 守护主机通过仅允许来自安全列表上的公共 IP 地址的远程流量来提供到已部署资源的安全连接。 要允许远程桌面 (RDP) 流量，需要在网络安全组中定义流量的源。
 
@@ -151,7 +151,7 @@ SQL 负载均衡器管理 SQL 流量，确保高性能。 此参考体系结构�
 
 **修补程序管理**：部署为此参考体系结构一部分的 Windows 虚拟机默认配置为接收来自 Windows 更新服务的自动更新。 此解决方案还包括 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)服务，通过该服务可以在需要时创建更新部署，以修补虚拟机。
 
-**恶意软件防护**：适用于虚拟机的[Microsoft 反恶意](https://docs.microsoft.com/azure/security/fundamentals/antimalware)软件提供了实时保护功能, 可帮助识别和删除病毒、间谍软件和其他恶意软件, 并在已知恶意或不需要的软件尝试在受保护的虚拟机上安装或运行。
+**恶意软件防护**：适用于虚拟机的[Microsoft 反恶意](https://docs.microsoft.com/azure/security/fundamentals/antimalware)软件提供了实时保护功能，可帮助识别和删除病毒、间谍软件和其他恶意软件，并在已知恶意或不需要的软件尝试在受保护的虚拟机上安装或运行。
 
 **Azure 安全中心**：借助 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)，客户可在工作负载中集中应用和管理安全策略、限制威胁暴露，以及检测和应对攻击。 此外，Azure 安全中心会访问 Azure 服务的现有配置，以提供配置与服务建议来帮助改善安全状况和保护数据。
 
@@ -161,7 +161,7 @@ Azure 安全中心提供区分优先级的安全警报和事件，让客户更�
 
 ### <a name="business-continuity"></a>业务连续性
 
-**高可用性**：服务器工作负荷在[可用性集中](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)进行分组, 以帮助确保 Azure 中虚拟机的高可用性。 计划内或计划外维护活动期间，至少有一台虚拟机可用，满足 99.95% Azure SLA。
+**高可用性**：服务器工作负荷在[可用性集中](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)进行分组，以帮助确保 Azure 中虚拟机的高可用性。 计划内或计划外维护活动期间，至少有一台虚拟机可用，满足 99.95% Azure SLA。
 
 **恢复服务保管库**：[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)在此体系结构中包含备份数据并保护 Azure 虚拟机的所有配置。 通过恢复服务保管库，客户可以从 IaaS 虚拟机还原文件和文件夹，而无需还原整个虚拟机，从而缩短还原时间。
 
@@ -169,11 +169,11 @@ Azure 安全中心提供区分优先级的安全警报和事件，让客户更�
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
 - **活动日志**：[活动日志](../../azure-monitor/platform/activity-logs-overview.md)提供对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志**：[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。
+- **诊断日志**：[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。
 
-**Azure Monitor 日志**：这些日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中, 以便进行处理、存储和仪表板报告。 收集后，数据在 Log Analytics 工作区内按数据类型整理到不同的表中，这样即可不考虑最初来源而集中分析所有数据。 此外, Azure 安全中心与 Azure Monitor 日志集成, 使客户可以使用 Kusto 查询访问其安全事件数据, 并将其与其他服务中的数据合并。
+**Azure Monitor 日志**：这些日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中，以便进行处理、存储和仪表板报告。 收集后，数据在 Log Analytics 工作区内按数据类型整理到不同的表中，这样即可不考虑最初来源而集中分析所有数据。 此外，Azure 安全中心与 Azure Monitor 日志集成，使客户可以使用 Kusto 查询访问其安全事件数据，并将其与其他服务中的数据合并。
 
-以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中:
+以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中：
 -   [Active Directory 评估](../../azure-monitor/insights/ad-assessment.md)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署的服务器基础结构的优先建议列表。
 - [SQL 评估](../../azure-monitor/insights/sql-assessment.md)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署的服务器基础结构的优先建议列表。
 - [代理运行状况](../../monitoring/monitoring-solution-agenthealth.md)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。

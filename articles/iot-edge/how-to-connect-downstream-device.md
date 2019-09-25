@@ -4,17 +4,17 @@ description: 如何配置下游或叶设备以连接到 Azure IoT Edge 网关设
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 41039d148e0aae7303dbc95c832bed842acdcc90
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 822e58d1d35cfb9b62565ca78ea2277b8d194bc0
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999406"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266121"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
 
@@ -33,6 +33,10 @@ ms.locfileid: "70999406"
 * 演练不同语言的 Azure IoT 示例以帮助你入门。 
 
 在本文中，术语“网关”和“IoT Edge 网关”是指配置为透明网关的 IoT Edge 设备。 
+
+## <a name="prerequisites"></a>先决条件 
+
+将配置 IoT Edge 设备中生成的**azure-iot-test-only**证书文件配置为可用作下游设备上可用[的透明网关](how-to-create-transparent-gateway.md)。 下游设备使用此证书来验证网关设备的标识。 
 
 ## <a name="prepare-a-downstream-device"></a>准备下游设备
 
@@ -89,6 +93,14 @@ sudo update-ca-certificates
 ### <a name="windows"></a>Windows
 
 以下示例步骤演示如何在 Windows 主机上安装 CA 证书。 此示例假设使用先决条件文章中的 **azure-iot-test-only.root.ca.cert.pem** 证书，并且已将该证书复制到下游设备上的某个位置。
+
+你可以使用 PowerShell 的[导入证书](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps)作为管理员安装证书：
+
+```powershell
+import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
+```
+
+还可以使用**certlm.msc**实用工具安装证书： 
 
 1. 在“开始”菜单中，搜索并选择“管理计算机证书”。 此时会打开一个名为 **certlm** 的实用工具。
 2. 导航到“证书 - 本地计算机” > “受信任的根证书颁发机构”。

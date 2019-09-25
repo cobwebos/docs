@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4949391aded58f27ba8acd5c9ec437e8933f9843
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243424"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260618"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor 的角色、权限和安全入门
 
@@ -31,7 +31,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 * 查看 [Azure 警报](alerts-overview.md)中定义的预警规则
 * 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](powershell-quickstart-samples.md) 或 [跨平台 CLI](cli-samples.md) 查询指标。
 * 使用门户、Azure Monitor REST API、PowerShell cmdlet 或跨平台 CLI 查询活动日志。
-* 查看资源的[诊断设置](diagnostic-logs-overview.md#diagnostic-settings)。
+* 查看资源的[诊断设置](diagnostic-settings.md)。
 * 查看订阅的[日志配置文件](activity-log-export.md)。
 * 查看自动调整规模设置。
 * 查看警报活动和设置。
@@ -52,7 +52,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 分配了监视参与者角色的人员可以查看订阅中的所有监视数据和创建或修改监视设置，但不能修改任何其他资源。 此角色是监视查阅者角色的一个超集，适用于组织的监视团队成员或托管服务提供商，除了上述权限外，他们还需要能够：
 
 * 将监视仪表板发布为共享仪表板。
-* 设置资源的[诊断设置](diagnostic-logs-overview.md#diagnostic-settings)。\*
+* 设置资源的[诊断设置](diagnostic-settings.md)。\*
 * 设置订阅的[日志配置文件](activity-log-export.md)。\*
 * 通过 [Azure 警报](alerts-overview.md)设置预警规则活动和设置。
 * 创建 Application Insights Web 测试和组件。
@@ -71,7 +71,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>监视权限和自定义 RBAC 角色
 如果上述的内置角色不能满足团队的确切需求，则可以[创建具有更加细化的权限的自定义 RBAC 角色](../../role-based-access-control/custom-roles.md)。 以下是常见的 Azure Monitor RBAC 操作及其说明。
 
-| Operation | 描述 |
+| 操作 | 描述 |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |读取/写入/删除操作组。 |
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |读取/写入/删除活动日志警报。 |

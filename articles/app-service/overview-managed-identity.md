@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098474"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260138"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -170,7 +170,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 4. 选择“托管标识”。
 
-5. 在 "**用户分配**" 选项卡中, 单击 "**添加**"。
+5. 在 "**用户分配**" 选项卡中，单击 "**添加**"。
 
 6. 搜索之前创建的标识并选择它。 单击“添加”。
 
@@ -304,12 +304,15 @@ Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName
 
 “MSI_ENDPOINT”是一本地 URL，应用可向其请求令牌。 若要获取资源的令牌，请对此终结点发起 HTTP GET 请求，并包括以下参数：
 
-> |参数名称|流入|描述|
+> |参数名称|In|描述|
 > |-----|-----|-----|
 > |资源|查询|应获取其令牌的资源的 AAD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。|
 > |api-version|查询|要使用的令牌 API 版本。 目前唯一支持的版本是 "2017-09-01"。|
 > |secret|Header|MSI_SECRET 环境变量的值。 此标头用于帮助缓解服务器端请求伪造 (SSRF) 攻击。|
-> |clientid|查询|（可选）要使用的用户分配的标识的 ID。 如果省略，则将使用系统分配的标识。|
+> |clientid|查询|（除非用户分配，否则为可选）要使用的用户分配的标识的 ID。 如果省略，则将使用系统分配的标识。|
+
+> [!IMPORTANT]
+> 如果尝试获取用户分配的标识的令牌，则必须包含`clientid`属性。 否则，令牌服务将尝试为系统分配的标识获取令牌，这可能存在也可能不存在。
 
 成功的 200 OK 响应包括具有以下属性的 JSON 正文：
 
@@ -380,7 +383,7 @@ const getToken = function(resource, apiver, cb) {
 }
 ```
 
-<a name="token-python"></a>在 Python 中:
+<a name="token-python"></a>在 Python 中：
 
 ```python
 import os

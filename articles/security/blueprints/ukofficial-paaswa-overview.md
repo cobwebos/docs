@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: c0163b5280de942491f2174aa371fa7cc83d5984
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946518"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262788"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与合规性蓝图：适用于英国官方工作负荷的 PaaS Web 应用程序托管
 
@@ -57,7 +57,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 - API 应用
 - Azure DNS
 - Key Vault
-- Azure Monitor (日志)
+- Azure Monitor （日志）
 - Application Insights
 - Azure 资源管理器
 - Azure 安全中心
@@ -95,7 +95,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 [Azure 顾问](https://docs.microsoft.com/azure/advisor/advisor-overview)是个性化的云顾问程序，可帮助遵循最佳做法来优化 Azure 部署。 它可分析资源配置和遥测使用情况，并推荐解决方案，有助于提高 Azure 资源的经济效益、性能、高可用性和安全性。
 
-[Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/fundamentals/antimalware)是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 默认情况下, 这是在底层 PaaS 虚拟机基础结构上安装的, 并由 Azure 结构对客户透明地进行管理。
+[Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/fundamentals/antimalware)是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 默认情况下，这是在底层 PaaS 虚拟机基础结构上安装的，并由 Azure 结构对客户透明地进行管理。
 
 ### <a name="paas-services-in-this-blueprint"></a>此蓝图中的 PaaS 服务
 
@@ -113,7 +113,7 @@ Azure 应用服务为使用 Java、PHP、Node.js Python、HTML 和 C# 开发的 
 - 多个应用服务[部署槽位](https://docs.microsoft.com/azure/app-service/deploy-staging-slots)：开发、预览、QA、UAT 和生产（默认槽位）。
 - [Azure 资源的托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity)连接到 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)（这还可以用于提供 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)的访问权限） 
 - 集成 [Azure Application Insights](../../azure-monitor/app/azure-web-apps.md)来监视性能
-- [诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md) 
+- [诊断日志](../../azure-monitor/platform/resource-logs-overview.md) 
 - 指标[警报](../../azure-monitor/app/alerts.md) 
 - [Azure API 应用](https://azure.microsoft.com/services/app-service/api/) 
 
@@ -170,7 +170,7 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 #### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)是 Azure 中的一项服务, 可帮助收集和分析云和本地环境中资源生成的数据。
+[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)是 Azure 中的一项服务，可帮助收集和分析云和本地环境中资源生成的数据。
 
 #### <a name="azure-monitor-logs-in-this-blueprint"></a>此蓝图中 Azure Monitor 日志
 

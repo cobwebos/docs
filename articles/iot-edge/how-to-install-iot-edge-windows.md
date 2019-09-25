@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e5b99bba3c3b21ea9662845928c523c329695bf8
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6118c4ddf1386ff4cc816148938e1f5ddeaecc9e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877244"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266079"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安装 Azure IoT Edge 运行时
 
@@ -42,6 +42,14 @@ ms.locfileid: "69877244"
 
 对于开发和测试方案，包含 Windows 容器的 Azure IoT Edge 可以安装在支持容器功能的任何版本的 Windows 10 或 Windows Server 2019（内部版本 17763）上。 有关生产方案目前支持哪些操作系统的信息，请参阅 [Azure IoT Edge 支持的系统](support.md#operating-systems)。 
 
+IoT 核心设备必须包含 IoT Core-Windows 容器可选功能以支持 IoT Edge 运行时。 在[远程 PowerShell 会话](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)中使用以下命令来检查设备上是否支持 Windows 容器： 
+
+```powershell
+Get-Service vmcompute
+```
+
+如果该服务存在，则应在服务状态显示为 "**正在运行**" 时获得成功的响应。 如果找不到 vmcompute 服务，则设备不满足 IoT Edge 的要求。 请与你的硬件提供商联系，询问此功能的支持。 
+
 ### <a name="prepare-for-a-container-engine"></a>为容器引擎做好准备 
 
 Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器引擎。 对于生产方案，请使用安装脚本中包含的 Moby 引擎在 Windows 设备上运行 Windows 容器。 
@@ -54,9 +62,9 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 某个 PowerShell 脚本将下载并安装 Azure IoT Edge 安全守护程序。 然后，安全守护程序将启动两个运行时模块中的第一个，即 IoT Edge 代理，以便能够远程部署其他模块。 
 
 >[!TIP]
->对于 IoT Core 设备, 我们建议使用 RemotePowerShell 会话运行安装命令。 有关详细信息, 请参阅将[PowerShell 用于 Windows IoT](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)。
+>对于 IoT Core 设备，我们建议使用 RemotePowerShell 会话运行安装命令。 有关详细信息，请参阅将[PowerShell 用于 Windows IoT](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)。
 
-首次在设备上安装 IoT Edge 运行时时，需要使用 IoT 中心内的标识预配该设备。 可以使用 IoT 中心提供的设备连接字符串手动预配单个 IoT Edge 设备。 或者, 你可以使用设备预配服务 (DPS) 自动设置设备, 当你有许多设备需要设置时, 这非常有用。 根据预配选项，选择合适的安装脚本。 
+首次在设备上安装 IoT Edge 运行时时，需要使用 IoT 中心内的标识预配该设备。 可以使用 IoT 中心提供的设备连接字符串手动预配单个 IoT Edge 设备。 或者，可以使用设备预配服务 (DPS) 自动预配设备，需要设置多个设备时，这种做法非常有用。 根据预配选项，选择合适的安装脚本。 
 
 以下部分介绍新设备上 IoT Edge 安装脚本的常见用例和参数。 
 
@@ -140,7 +148,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 1. 此时，IoT Core 设备可能会自动重启。 其他 Windows 10 或 Windows Server 设备可能会提示你重启。 如果是这样，请立即重启设备。 设备准备就绪后，再次以管理员身份运行 PowerShell。
 
-1. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用 Windows 容器手动预配。 通过 `-Dps` 标志使用设备预配服务，而不是手动预配。 将`{scope ID}`替换为设备预配`{registration ID}`服务中的作用域 ID, 将替换为设备的注册 ID, 你应该在步骤1中检索这两个 id。
+1. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用 Windows 容器手动预配。 通过 `-Dps` 标志使用设备预配服务，而不是手动预配。 将 `{scope ID}` 替换为设备调配服务中的范围 ID，并将 `{registration ID}` 替换为设备中的注册 ID，这两个 ID 都应该在步骤 1 中检索到。
 
    使用 **Initialize-IoTEdge** 命令将 DPS 与 TPM 证明配合使用：
 
@@ -200,7 +208,7 @@ Get-Service iotedge
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-列出正在运行的模块。 完成新的安装后，应会看到唯一运行的模块是 **edgeAgent**。 首次[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)后, 其他系统模块**edgeHub**也会在设备上启动。 
+列出正在运行的模块。 完成新的安装后，应会看到唯一运行的模块是 **edgeAgent**。 首次[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)后，其他系统模块 **edgeHub** 也会在设备上启动。 
 
 ```powershell
 iotedge list
@@ -290,8 +298,8 @@ Initialize-IoTEdge 命令使用设备连接字符串和操作详细信息配置 
 
 | 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
-| **Manual** | None | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备连接字符串来手动预配设备 |
-| **Dps** | None | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备预配服务 (DPS) 范围 ID 和设备的注册 ID，以通过 DPS 进行预配。  |
+| **Manual** | 无 | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备连接字符串来手动预配设备 |
+| **Dps** | 无 | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备预配服务 (DPS) 范围 ID 和设备的注册 ID，以通过 DPS 进行预配。  |
 | **DeviceConnectionString** | 已在 IoT 中心注册的 IoT Edge 设备中的连接字符串，括在单引号中 | 对于手动安装，此参数是**必需**的。 如果未在脚本参数中提供连接字符串，则安装期间系统会提示你提供连接字符串。 |
 | **ScopeId** | 与 IoT 中心关联的设备预配服务实例中的范围 ID。 | 对于 DPS 安装，此参数是**必需**的。 如果未在脚本参数中提供范围 ID，则安装期间系统会提示你提供范围 ID。 |
 | **RegistrationId** | 设备生成的注册 ID | 对于 DPS 安装，此参数是**必需**的。 |

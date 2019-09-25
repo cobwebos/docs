@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: bwren
-ms.openlocfilehash: bff80b7083f2fb2e35af7db652849d527a5b8ba4
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 323267dd47735ca54b84e47e6a55d1f2d14a0b06
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963442"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262177"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Azure Monitor 中的简单日志体验（预览版）
 Azure Monitor 提供了使用 KQL 语言创建[日志查询](log-query-overview.md)的[丰富体验](get-started-portal.md)。 不过，您可能不需要 KQL 的全部功能，并且更喜欢基本查询要求的简化体验。 简单的日志体验允许您创建基本查询，无需直接与 KQL 交互。 你还可以使用简单日志作为 KQL 的学习工具，因为你需要执行更复杂的查询。
@@ -31,7 +31,7 @@ Azure Monitor 提供了使用 KQL 语言创建[日志查询](log-query-overview.
 简单日志体验从所选资源的*AzureDiagnostics*、 *AzureMetrics*和*AzureActivity*表中检索数据。 
 
 ## <a name="using-simple-logs"></a>使用简单日志
-使用将[诊断设置配置为在 Log Analytics 工作区收集日志的诊断设置](../platform/diagnostic-logs-stream-log-store.md)，导航到 Azure 订阅中的任何 Cosmos DB 或 Key Vault。 单击 "**监视**" 菜单中的 "**日志**" 以打开简单日志体验。
+使用将[诊断设置配置为在 Log Analytics 工作区收集日志的诊断设置](../platform/resource-logs-collect-storage.md)，导航到 Azure 订阅中的任何 Cosmos DB 或 Key Vault。 单击 "**监视**" 菜单中的 "**日志**" 以打开简单日志体验。
 
 ![菜单](media/simple-logs/menu.png)
 

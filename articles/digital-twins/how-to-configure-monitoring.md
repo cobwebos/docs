@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: dd1481c74cdf519dcb4588e0b7cf09b7b6ab5f1d
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: d0f5f9a1d488b6be8ca91fdd057880e351ae0b3f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950125"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261029"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>如何在 Azure 数字孪生中配置监视
 
@@ -57,7 +57,7 @@ Azure 数字孪生的活动日志记录默认启用，可以通过以下方式�
 
 ## <a name="enable-customer-diagnostic-logs"></a>启用客户诊断日志
 
-可以为每个 Azure 实例设置 Azure [诊断设置](../azure-monitor/platform/diagnostic-logs-overview.md)来补充活动日志记录。 虽然活动日志与订阅级别事件相关，但诊断日志记录可提供有关资源本身的操作历史记录的见解。
+可以为每个 Azure 实例设置 Azure [诊断设置](../azure-monitor/platform/resource-logs-overview.md)来补充活动日志记录。 虽然活动日志与订阅级别事件相关，但诊断日志记录可提供有关资源本身的操作历史记录的见解。
 
 诊断日志记录的示例包括：
 
@@ -68,16 +68,16 @@ Azure 数字孪生的活动日志记录默认启用，可以通过以下方式�
 为实例启用诊断日志：
 
 1. 在 Azure 门户中打开资源。
-1. 选择 "**诊断设置**":
+1. 选择 "**诊断设置**"：
 
     [![诊断设置一](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. 选择 **"启用诊断"** 以收集数据 (如果以前未启用)。
+1. 选择 **"启用诊断"** 以收集数据（如果以前未启用）。
 1. 填写请求的字段并选择保存数据的方式和位置：
 
     [![诊断设置二](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
-    诊断日志通常使用[Azure 文件存储](../storage/files/storage-files-deployment-guide.md)来保存, 并与[Azure Monitor 日志](../azure-monitor/log-query/get-started-portal.md)共享。 可以同时选择这两个选项。
+    诊断日志通常使用[Azure 文件存储](../storage/files/storage-files-deployment-guide.md)来保存，并与[Azure Monitor 日志](../azure-monitor/log-query/get-started-portal.md)共享。 可以同时选择这两个选项。
 
 >[!TIP]
 >使用诊断日志了解资源操作。
@@ -86,7 +86,7 @@ Azure 数字孪生的活动日志记录默认启用，可以通过以下方式�
 
 IoT 应用程序将不同的资源、设备、位置和数据合并到一个位置。 细粒度日志记录提供有关整个应用程序体系结构的每个特定部分、服务或组件的详细信息，但维护和调试通常需要统一的概述。
 
-Azure Monitor 包含功能强大的 log analytics 服务, 该服务允许在一个位置查看和分析日志记录源。 因此，Azure Monitor 非常适用于分析复杂的 IoT 应用中的日志。
+Azure Monitor 包含功能强大的 log analytics 服务，该服务允许在一个位置查看和分析日志记录源。 因此，Azure Monitor 非常适用于分析复杂的 IoT 应用中的日志。
 
 使用示例包括：
 
@@ -101,20 +101,20 @@ Azure Monitor 包含功能强大的 log analytics 服务, 该服务允许在一�
 
     [![Log analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
-1. 如果还没有**Log Analytics 的工作区**实例, 则可以通过选择 "**添加**" 按钮来创建工作区:
+1. 如果还没有**Log Analytics 的工作区**实例，则可以通过选择 "**添加**" 按钮来创建工作区：
 
     [![创建 OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
-预配**Log Analytics 工作区**实例后, 可以使用功能强大的查询, 通过**日志管理**使用特定条件查找更多日志或搜索中的条目:
+预配**Log Analytics 工作区**实例后，可以使用功能强大的查询，通过**日志管理**使用特定条件查找更多日志或搜索中的条目：
 
    [![日志管理](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
 有关功能强大的查询操作的详细信息，请参阅[开始使用查询](../azure-monitor/log-query/get-started-queries.md)。
 
 > [!NOTE]
-> 首次向**Log Analytics 的工作区**发送事件时, 可能会出现5分钟的延迟。
+> 首次向**Log Analytics 的工作区**发送事件时，可能会出现5分钟的延迟。
 
-Azure Monitor 日志还提供了强大的错误和警报通知服务, 可通过选择 "**诊断和解决问题**" 进行查看:
+Azure Monitor 日志还提供了强大的错误和警报通知服务，可通过选择 "**诊断和解决问题**" 进行查看：
 
    [![警报和错误通知](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
@@ -129,6 +129,6 @@ Azure 的数字孪生还支持特定于应用程序的日志记录和安全审�
 
 - 详细了解 Azure [活动日志](../azure-monitor/platform/activity-logs-overview.md)。
 
-- 通过阅读[诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)深入了解 Azure 诊断设置。
+- 通过阅读[诊断日志概述](../azure-monitor/platform/resource-logs-overview.md)深入了解 Azure 诊断设置。
 
 - 阅读有关[Azure Monitor 日志](../azure-monitor/log-query/get-started-portal.md)的详细信息。

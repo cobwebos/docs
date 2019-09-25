@@ -1,5 +1,5 @@
 ---
-title: 将与 Azure Monitor 集成的合作伙伴
+title: 与 Azure Monitor 集成的合作伙伴
 description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文档，以便与它们的产品集成。
 author: rboucher
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: fae8e80c6fa94c3581de3038399ef031506b2f55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c642fe4a4453d72303470b5149d6d94436cdfa46
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65774248"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262299"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -68,7 +68,7 @@ Circonus 是一个微服务监视和分析平台，专为本地或 SaaS 部署�
 ![CloudHealth 徽标](./media/partners/cloudhealth.png)
 
 
-借助专为省时省钱而构建的平台整合云并实现云的自动化。 CloudHealth 提供适用于云管理的可视性、直观的优化和可靠的管理做法。 企业和 MSP 可以通过 Cloudhealth 平台最大化云投资回报。 围绕成本、使用情况、性能和安全性进行自信的决策。
+借助专为省时省钱而构建的平台整合云并实现云的自动化。 CloudHealth 提供适用于云管理的可视性、直观的优化和可靠的管理做法。 CloudHealth 平台使企业和 Msp 能够最大程度地提高云投资回报。 围绕成本、使用情况、性能和安全性进行自信的决策。
 
 [了解详细信息。][cloudhealth-doc]
 
@@ -172,7 +172,7 @@ PagerDuty 是行业领先的事件管理解决方案，为 Azure 指标警报提
 
 ![QRadar 徽标](./media/partners/qradar.png)
 
-Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可[在此处详细了解如何与 Azure 集成][qradar-doc]。
+Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可以[在此处了解 Azure 集成][qradar-doc]。
 
 ## <a name="sciencelogic"></a>ScienceLogic
 
@@ -194,7 +194,7 @@ Serverless360 是一个平台工具，用于运行、管理和监视 Azure 无�
 
 ![SignalFX 徽标](./media/partners/signalfx.png)
 
-SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。 该服务可以发现并收集云中每个组件的指标， 取代传统的点选工具，提供当前动态环境的实时洞察信息。 利用可大规模缩放的 SignalFx 平台，可以根据体系结构针对容器和微服务优化 SaaS 平台，并在各种规模的组织中提供强大的可视化、主动警报和协作会审功能。 还可以通过 Telegraf、statsD 和 collectd 等开源连接器直接将 SignalFx 与 Azure Monitor 集成，以便为 Azure 提供一流的仪表板、分析和警报    。
+SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。 该服务可以发现并收集云中每个组件的指标， 取代传统的点选工具，提供当前动态环境的实时洞察信息。 利用可大规模缩放的 SignalFx 平台，可以根据体系结构针对容器和微服务优化 SaaS 平台，并在各种规模的组织中提供强大的可视化、主动警报和协作会审功能。 还可以通过 Telegraf、statsD 和 collectd 等开源连接器直接将 SignalFx 与 Azure Monitor 集成，以便为 Azure 提供一流的仪表板、分析和警报。
 
 [查看相关文档。][signalfx-doc]
 
@@ -237,7 +237,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 - [了解有关 Azure Monitor 的详细信息](../../azure-monitor/overview.md)
 - [使用 REST API 访问指标](rest-api-walkthrough.md)
 - [将活动日志流式传输给非 Microsoft 服务](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [将诊断日志流式传输给非 Microsoft 服务](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
+- [将诊断日志流式传输给非 Microsoft 服务](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
 
 
@@ -254,7 +254,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace 文档。"
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastic 文档。"
 [grafana-doc]: ./grafana-plugin.md "Azure Monitor Grafana 集成。"
-[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure 监视器流入而造成数据 Telegraf 集成。"
+[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor 流入 data Telegraf integration。"
 [logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Logic Monitor 文档。"
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft 文档。"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic 文档。"

@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 2d97e46578775cd0d5612fb8d94680bb5be8080a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 8e9e1189c3eb9de273926645ad0d4cfde5ba1c49
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174768"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260046"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 操作进行持续交付
 
@@ -48,7 +48,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ## <a name="configure-the-github-secret"></a>配置 GitHub 机密
 
-1. 在[GitHub](https://github/com)中浏览存储库，选择 "**设置** > " "**机密** > " "**添加新密钥**"。
+1. 在[GitHub](https://github.com)中浏览存储库，选择 "**设置** > " "**机密** > " "**添加新密钥**"。
 
     ![添加机密](media/functions-how-to-github-actions/add-secret.png)
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 98eb3834efa6dc6ce5d53990f4bb530351660b8a
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d5c7ab3cc8d4de788da5d18f31c6aacb31b5d551
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946713"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259883"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-warehouse-for-nist-sp-800-171"></a>Azure 安全性和符合性蓝图 - 符合 NIST SP 800-171 的数据仓库
 
@@ -51,7 +51,7 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
 - Azure Active Directory
 - Azure 数据目录
 - Azure Key Vault
-- Azure Monitor (日志)
+- Azure Monitor （日志）
 - Azure 安全中心
 - Azure 负载均衡器
 - Azure 存储
@@ -71,9 +71,9 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
 ## <a name="deployment-architecture"></a>部署体系结构
 以下部分详细描述了部署和实施要素。
 
-**AZURE SQL 数据仓库**:[SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)是一种企业数据仓库, 它利用大规模并行处理来跨 pb 的数据快速运行复杂的查询。 用户可以使用简单的 PolyBase T-SQL 查询将大数据导入到 SQL 数据仓库中，并利用大规模并行处理的强大功能来运行高性能分析。
+**AZURE SQL 数据仓库**：[SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)是一种企业数据仓库，它利用大规模并行处理来跨 pb 的数据快速运行复杂的查询。 用户可以使用简单的 PolyBase T-SQL 查询将大数据导入到 SQL 数据仓库中，并利用大规模并行处理的强大功能来运行高性能分析。
 
-**SQL Server Reporting Services**:[SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs)提供了有关 SQL 数据仓库的表、图表、地图、仪表、矩阵等的快速创建报表。
+**SQL Server Reporting Services**：[SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs)提供了有关 SQL 数据仓库的表、图表、地图、仪表、矩阵等的快速创建报表。
 
 **Azure 数据目录**：[数据目录](../../data-catalog/overview.md)可帮助管理数据的用户更轻松地发现和理解数据源。 常见的数据源可以针对数据进行注册、标记和搜索。 数据将保留在现有位置，但其元数据的副本将添加到数据目录。 包含对数据源位置的引用。 会对元数据编制索引以轻松通过搜索发现每个数据源。 另外，索引编制还会让发现数据源的用户对其易于理解。
 
@@ -137,9 +137,9 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
 - Key Vault 的诊断日志已启用，其保留期至少为 365 天。
 - 对密钥进行允许的加密操作时，仅限必需的操作。
 
-**修补程序管理**：默认情况下, 在此参考体系结构中部署的 Windows Vm 配置为从 Windows 更新服务接收自动更新。 此解决方案还包括 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)服务，可以在需要时创建更新部署，以修补 VM。
+**修补程序管理**：默认情况下，在此参考体系结构中部署的 Windows Vm 配置为从 Windows 更新服务接收自动更新。 此解决方案还包括 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)服务，可以在需要时创建更新部署，以修补 VM。
 
-**恶意软件防护**：适用于 Vm 的[Microsoft 反恶意](https://docs.microsoft.com/azure/security/fundamentals/antimalware)软件提供了实时保护功能, 可帮助识别和删除病毒、间谍软件和其他恶意软件。 客户可以配置当已知恶意软件或不需要的软件试图在受保护的 VM 上安装或运行时生成的警报。
+**恶意软件防护**：适用于 Vm 的[Microsoft 反恶意](https://docs.microsoft.com/azure/security/fundamentals/antimalware)软件提供了实时保护功能，可帮助识别和删除病毒、间谍软件和其他恶意软件。 客户可以配置当已知恶意软件或不需要的软件试图在受保护的 VM 上安装或运行时生成的警报。
 
 **Azure 安全中心**：借助[安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)，客户可在工作负载中集中应用和管理安全策略、限制威胁暴露，以及检测和应对攻击。 此外，安全中心还会访问 Azure 服务的现有配置，以提供配置与服务建议来帮助改善安全状况和保护数据。
 
@@ -150,19 +150,19 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
 此外，此参考体系结构还使用安全中心内的[漏洞评估](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)功能。 配置该功能后，合作伙伴代理（例如 Qualys）可向合作伙伴的管理平台报告漏洞数据。 反过来，合作伙伴的管理平台也会向安全中心提供漏洞和运行状况监视数据。 客户可以使用此信息来快速确定易受攻击的 VM。
 
 ### <a name="business-continuity"></a>业务连续性
-**高可用性**：服务器工作负荷在[可用性集中](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)进行分组, 以帮助确保 Azure 中 vm 的高可用性。 计划内或计划外维护活动期间，至少有一台 VM 可用，满足 99.95% Azure SLA 的要求。
+**高可用性**：服务器工作负荷在[可用性集中](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)进行分组，以帮助确保 Azure 中 vm 的高可用性。 计划内或计划外维护活动期间，至少有一台 VM 可用，满足 99.95% Azure SLA 的要求。
 
-**恢复服务保管库**:[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)包含备份数据并保护此体系结构中所有 vm 的配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM。 此过程可加快还原时间。
+**恢复服务保管库**：[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)包含备份数据并保护此体系结构中所有 vm 的配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM。 此过程可加快还原时间。
 
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
 - **活动日志**：[活动日志](../../azure-monitor/platform/activity-logs-overview.md)提供对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志**：[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、密钥保管库审核日志以及 Azure 应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
+- **诊断日志**：[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、密钥保管库审核日志以及 Azure 应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
 
-**Azure Monitor 日志**：这些日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中, 以便进行处理、存储和仪表板报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Azure Monitor 日志集成。 客户可以使用 Kusto 查询访问其安全事件数据, 并将其与其他服务中的数据合并。
+**Azure Monitor 日志**：这些日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中，以便进行处理、存储和仪表板报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Azure Monitor 日志集成。 客户可以使用 Kusto 查询访问其安全事件数据，并将其与其他服务中的数据合并。
 
-以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中:
+以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中：
 -   [Active Directory 评估](../../azure-monitor/insights/ad-assessment.md)：Active Directory 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。
 - [SQL 评估](../../azure-monitor/insights/sql-assessment.md)：SQL 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案为客户提供了特定于已部署服务器基础结构的建议优先级列表。
 - [代理运行状况](../../monitoring/monitoring-solution-agenthealth.md)：代理运行状况解决方案报告部署的代理数量及其地理分布状况。 此外，它还报告未响应代理数量和提交操作数据的代理数量。

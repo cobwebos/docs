@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 4d635d04c5207b3668bd179cec4f21e26dd59452
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 22b18988406beb5bed491d7101f376340d35f623
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946686"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259790"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Azure 安全性和符合性蓝图 - 符合 NIST Special Publication 800-171 的 PaaS Web 应用程序
 
@@ -60,7 +60,7 @@ Application Insights 通过 Azure Monitor 日志提供实时应用程序性能�
 - Azure DNS
 - Azure Key Vault
 - Azure 负载均衡器
-- Azure Monitor (日志)
+- Azure Monitor （日志）
 - Azure 资源管理器
 - Azure 安全中心
 - Azure SQL 数据库
@@ -71,7 +71,7 @@ Application Insights 通过 Azure Monitor 日志提供实时应用程序性能�
 ## <a name="deployment-architecture"></a>部署体系结构
 以下部分详细描述了部署和实施要素。
 
-**Azure 资源管理器**：客户可使用[资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), 以组的形式处理解决方案中的资源。 客户可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 客户使用模板进行部署。 模板可用于测试、过渡和生产等不同的环境。 资源管理器提供安全、审核和标记功能，以帮助客户在部署后管理资源。
+**Azure 资源管理器**：客户可使用[资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，以组的形式处理解决方案中的资源。 客户可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 客户使用模板进行部署。 模板可用于测试、过渡和生产等不同的环境。 资源管理器提供安全、审核和标记功能，以帮助客户在部署后管理资源。
 
 **守护主机**：堡垒主机是用户可用于访问此环境中部署的资源的单一入口点。 守护主机通过仅允许来自安全列表中公共 IP 地址的远程流量来提供到已部署资源的安全连接。 若要允许远程桌面流量，必须在该 NSG 中定义流量的源。
 
@@ -82,7 +82,7 @@ Application Insights 通过 Azure Monitor 日志提供实时应用程序性能�
 -   [自动关闭策略](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)，在不使用 VM 时可减少其资源消耗量。
 -   已启用 [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard)，以便凭据和其他机密在与正在运行的操作系统隔离的受保护环境中运行。
 
-**Web 应用**:[Web 应用](https://docs.microsoft.com/azure/app-service/)是一种 Azure App Service 功能。 客户可以使用它来采用所选编程语言生成和托管 Web 应用程序，无需管理基础结构。 它提供自动缩放和高可用性。 支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。
+**Web 应用**：[Web 应用](https://docs.microsoft.com/azure/app-service/)是一种 Azure App Service 功能。 客户可以使用它来采用所选编程语言生成和托管 Web 应用程序，无需管理基础结构。 它提供自动缩放和高可用性。 支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。
 
 **应用服务环境**：[应用服务环境](https://docs.microsoft.com/azure/app-service/environment/intro)是一项应用服务功能。 它提供完全隔离的专用环境来安全地大规模运行应用服务应用程序。
 
@@ -114,7 +114,7 @@ Application Insights 通过 Azure Monitor 日志提供实时应用程序性能�
 
 **子网**：每个子网与其相应的 NSG 关联。
 
-**Azure DNS**：域名系统 (DNS) 负责将网站或服务名称转换 (或解析) 为它的 IP 地址。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) 是 DNS 域的托管服务，它使用 Azure 基础结构提供名称解析。 通过在 Azure 中托管域，用户可以使用与其他 Azure 服务相同的凭据、API、工具和账单来管理 DNS 记录。 Azure DNS 还支持 DNS 专用域。
+**Azure DNS**：域名系统（DNS）负责将网站或服务名称转换（或解析）为它的 IP 地址。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) 是 DNS 域的托管服务，它使用 Azure 基础结构提供名称解析。 通过在 Azure 中托管域，用户可以使用与其他 Azure 服务相同的凭据、API、工具和账单来管理 DNS 记录。 Azure DNS 还支持 DNS 专用域。
 
 **Azure 负载均衡器**：客户可使用[负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)来缩放其应用程序并为服务创建高可用性。 负载均衡器支持入站和出站方案。 它提供低延迟和高吞吐量，以及为所有 TCP 和 UDP 应用程序纵向扩展到数以百万计的流。
 
@@ -162,7 +162,7 @@ Application Insights 通过 Azure Monitor 日志提供实时应用程序性能�
 
 安全中心提供按优先级排序的安全警报和事件。 安全中心让客户可以更轻松地发现并解决潜在安全问题。 针对每个检测到的威胁会生成一个[威胁智能报告](https://docs.microsoft.com/azure/security-center/security-center-threat-report)。 事件响应团队可在调查和修正威胁时使用这些报告。
 
-**Azure 应用程序网关**：该体系结构通过使用配置了 web 应用程序防火墙的应用程序网关和启用了 OWASP 规则集, 降低了安全漏洞的风险。 其他功能包括：
+**Azure 应用程序网关**：该体系结构通过使用配置了 web 应用程序防火墙的应用程序网关和启用了 OWASP 规则集，降低了安全漏洞的风险。 其他功能包括：
 
 - [端到端 SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)。
 - 启用 [SSL 卸载](../../application-gateway/create-ssl-portal.md)。
@@ -177,11 +177,11 @@ Application Insights 通过 Azure Monitor 日志提供实时应用程序性能�
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
 - **活动日志**：[活动日志](../../azure-monitor/platform/activity-logs-overview.md)提供对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志**：[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
+- **诊断日志**：[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
 
-**Azure Monitor 日志**：日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中, 以便进行处理、存储和仪表板报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Azure Monitor 日志集成。 客户可以使用 Kusto 查询访问其安全事件数据, 并将其与其他服务中的数据合并。
+**Azure Monitor 日志**：日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中，以便进行处理、存储和仪表板报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Azure Monitor 日志集成。 客户可以使用 Kusto 查询访问其安全事件数据，并将其与其他服务中的数据合并。
 
-以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中:
+以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中：
 -   [Active Directory 评估](../../azure-monitor/insights/ad-assessment.md)：Active Directory 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。
 - [SQL 评估](../../azure-monitor/insights/sql-assessment.md)：SQL 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案为客户提供了特定于已部署服务器基础结构的建议优先级列表。
 - [代理运行状况](../../monitoring/monitoring-solution-agenthealth.md)：代理运行状况解决方案报告部署的代理数量及其地理分布状况。 此外，它还报告未响应代理数量和提交操作数据的代理数量。

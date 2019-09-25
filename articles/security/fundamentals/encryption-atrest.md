@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/10/2019
+ms.date: 09/24/2019
 ms.author: barclayn
-ms.openlocfilehash: 3e745d5f38d5623aab17ef7a3e3fbfa2c616e6d4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: b506c6f6101e8c5ce71231a8178f70fa5a0914d8
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984855"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262811"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -262,7 +262,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **使用服务托管密钥的服务器端**     | **使用客户托管密钥的服务器端**             | **使用客户端托管密钥的客户端**      |
 | **AI 和机器学习**      |                    |                    |                    |
-| Azure 搜索                     | 是                | -                  | -                  |
+| Azure 搜索                     | 是                | 预览            | -                  |
 | Azure 机器学习服务   | 是                | -                  | -                  |
 | Azure 机器学习工作室    | 是                | 预览，RSA 2048 位 | -               |
 | Power BI                         | 是                | 预览，RSA 2048 位 | -                  |
@@ -305,7 +305,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | IoT 服务                 |                    |                    |                    |
 | IoT 中心                          | 是                | -                  | 是                |
 | **管理和管理**    |                    |                    |                    |
-| Azure Site Recovery              | 是                | 是，RSA 2048 位  | 是                |
+| Azure 站点恢复              | 是                | 是，RSA 2048 位  | 是                |
 | **许可证**                        |                    |                    |                    |
 | 媒体服务                   | 是                | -                  | 是                |
 | **存储**                      |                    |                    |                    |
