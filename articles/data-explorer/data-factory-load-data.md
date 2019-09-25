@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: b3bd9b800da4f096639d02c78b718216441621a9
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 5eb05df7ed97839ef80798a752565234d180f0e2
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803983"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268826"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 数据资源管理器 
 
@@ -96,6 +96,9 @@ Azure 数据资源管理器是一个快速、完全托管的数据分析服务�
     * 指定“机密访问密钥”值。
     * 选择“测试连接”以测试创建的链接服务连接。
     * 选择“完成”。
+    
+    > [!NOTE]
+    > 在 Amazon S3 中，在导航栏中选择 Amazon 用户名，然后选择 **"我的安全凭据"** 以找到**访问密钥**。 
 
 1. 在“源数据存储”页中，可以看到新的 AmazonS31 连接。 选择“**下一步**”。
 

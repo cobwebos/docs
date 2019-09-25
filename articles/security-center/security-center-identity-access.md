@@ -13,18 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: memildin
-ms.openlocfilehash: d035dc4e8f77bb64a9e845a9dae0668365a6aacb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b069bedd3c36f27828e54a1110443ae6dfcdf3f
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202280"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268867"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>在 Azure 安全中心监视标识和访问（预览版）
 本文介绍如何使用 Azure 安全中心监视用户的标识和访问活动。
-
-> [!NOTE]
-> 将于2019年7月31日停用 "查看*经典*身份 & 访问" 链接。 单击[此处](security-center-features-retirement-july2019.md#menu_classicidentity)了解其他服务。
 
 > [!NOTE]
 > 监视标识和访问的功能以预览版提供，仅适用于安全中心的标准层。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
@@ -67,7 +64,7 @@ ms.locfileid: "71202280"
 ### <a name="overview-section"></a>“概述”部分
 “概述”下面提供了建议列表。 第一列列出了建议。 第二列显示受该建议影响的订阅总数。 第三列显示问题的严重性。
 
-1. 选择一条建议。 此时会打开该建议的窗口，其中显示：
+1. 选择一条建议。 此时将打开并显示 "建议" 窗口：
 
    - 建议的说明
    - 不正常和正常的订阅列表
@@ -80,7 +77,7 @@ ms.locfileid: "71202280"
 ### <a name="subscriptions-section"></a>“订阅”部分
 “订阅”下面提供了订阅列表。 第一列列出订阅。 第二列显示每个订阅的建议总数。 第三列显示问题的严重性。
 
-![订阅的选项卡][4]
+![订阅选项卡][4]
 
 1. 选择一个订阅。 此时会打开摘要视图，其中包含三个选项卡：
 
@@ -125,13 +122,13 @@ ms.locfileid: "71202280"
 > 如果创建的条件性访问策略要求使用 MFA 但包含了排除集, 则安全中心 MFA 建议评估会将策略视为不符合, 因为这样可以使某些用户无需 MFA 即可登录到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关适用于其他 Azure 资源类型的建议的详细信息，请参阅以下内容：
+若要详细了解适用于其他 Azure 资源类型的建议，请参阅以下文章：
 
 - [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
 - [保护 Azure 安全中心中的网络](security-center-network-recommendations.md)
 - [在 Azure 安全中心保护 Azure SQL 服务和数据](security-center-sql-service-recommendations.md)
 
-若要了解有关安全中心的详细信息，请参阅以下文章：
+若要详细了解安全中心，请参阅以下文章：
 * [管理和响应 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 了解如何管理警报并响应安全中心的安全事件。
 * [了解 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同类型的安全警报。
 * [Azure Security Center FAQ](security-center-faq.md)（Azure 安全中心常见问题）。 查找安全中心使用方面的常见问题解答。

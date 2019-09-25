@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000801"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268844"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -29,26 +29,6 @@ ms.locfileid: "71000801"
 ## <a name="public-previews"></a>公共预览版
 
 我们会定期发布新 Key Vault 功能的公共预览版。 抢先试用这些版本，并通过反馈电子邮件地址 azurekeyvault@microsoft.com 将想法告诉我们。
-
-### <a name="storage-account-keys---july-10-2017"></a>存储帐户密钥 - 2017 年 7 月 10 日
-
->[!NOTE]
->在 Azure Key Vault 的此更新版中，只有**存储帐户密钥**功能以预览版提供。
-
-此预览版包含通过 [.NET/C#](/dotnet/api/microsoft.azure.keyvault/)、[REST](/rest/api/keyvault/) 和 [PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault) 接口提供的新存储帐户密钥功能。 
-
-有关新存储帐户密钥功能的详细信息，请参阅 [Azure Key Vault 存储帐户密钥概述](key-vault-ovw-storage-keys.md)。
-
-## <a name="videos"></a>视频
-
-此视频介绍如何创建自己的密钥保管库以及如何使用从“Hello Key Vault”示例应用程序使用它。
-
-- [Key Vault 开发人员 - 快速入门指南](https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player)
-
-上述视频中提到的资源：
-
-- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Azure 密钥保管库代码示例](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>创建和管理密钥保管库
 

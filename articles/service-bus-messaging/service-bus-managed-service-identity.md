@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: a35ad4f8d480b0f95f4dc782aa06734e33bc54f8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 90fbefb46ea51ca5bb7bf05d556fe29c88543d0b
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130313"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273674"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 验证托管标识以访问 Azure 服务总线资源
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。
@@ -55,7 +55,14 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 以下列表描述了从最窄的范围开始，可以将对服务总线资源的访问范围限定为的级别：
 
-- **队列**、**主题**或**订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别将用户/组/托管标识分配到服务总线 RBAC 角色。 
+- **队列**、**主题**或**订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别将用户/组/托管标识分配到服务总线 RBAC 角色。 下面是使用 Azure CLI 命令的示例： [az-role-create-create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) To a SERVICE Bus RBAC role： 
+
+    ```powershell
+    az role assignment create \
+        --role $service_bus_role \
+        --assignee $assignee_id \
+        --scope /subscriptions/$subscription_id/resourceGroups/$resource_group/providers/Microsoft.ServiceBus/namespaces/$service_bus_namespace/topics/$service_bus_topic/subscriptions/$service_bus_subscription
+    ```
 - **服务总线命名空间**：角色分配跨越命名空间和与其关联的使用者组中的服务总线的整个拓扑。
 - **资源组**：角色分配适用于资源组下的所有服务总线资源。
 - **订阅**：角色分配适用于订阅中所有资源组中的所有服务总线资源。

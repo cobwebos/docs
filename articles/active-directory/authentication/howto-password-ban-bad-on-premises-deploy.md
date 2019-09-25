@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895d44ea7ab6bfebee44014ad4e96016a555c08e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 5ad8f24c9d23e9412a4f6e4e5f97692bba2c0c39
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959936"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268670"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -43,23 +43,24 @@ ms.locfileid: "70959936"
 ## <a name="deployment-requirements"></a>部署要求
 
 * 可在本文[消除组织中的错误密码](concept-password-ban-bad.md#license-requirements)一文中找到 Azure AD 密码保护的许可要求。
-* 为安装 Azure AD 密码保护的 DC 代理服务的所有域控制器都必须运行 Windows Server 2012 或更高版本。 此要求并不意味着 Active Directory 域或林还必须位于 Windows Server 2012 域或林功能级别。 如[设计原则](concept-password-ban-bad-on-premises.md#design-principles)中所述, 要运行 DC 代理或代理软件, 不需要最低 DFL 或 FFL。
+* 将安装 Azure AD 密码保护 DC 代理软件的所有计算机都必须运行 Windows Server 2012 或更高版本。 此要求并不意味着 Active Directory 域或林还必须位于 Windows Server 2012 域或林功能级别。 如[设计原则](concept-password-ban-bad-on-premises.md#design-principles)中所述, 要运行 DC 代理或代理软件, 不需要最低 DFL 或 FFL。
 * 安装了 DC 代理服务的所有计算机都必须安装 .NET 4.5。
-* 为安装 Azure AD 密码保护的代理服务的所有计算机都必须运行 Windows Server 2012 R2 或更高版本。
+* 将安装 Azure AD 密码保护代理服务的所有计算机都必须运行 Windows Server 2012 R2 或更高版本。
    > [!NOTE]
-   > 代理服务部署是部署 Azure AD 密码保护的必需要求, 即使域控制器可能有出站 internet 连接。 
+   > 代理服务部署是部署 Azure AD 密码保护的必需要求，即使域控制器可能有出站 internet 连接。 
    >
 * 将安装 Azure AD 密码保护代理服务的所有计算机必须安装了 .NET 4.7。
   .NET 4.7 应已安装在完全更新的 Windows 服务器上。 如果不是这种情况, 请下载并运行[Windows .NET Framework 4.7 脱机安装程序](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)中找到的安装程序。
-* 所有安装 Azure AD 密码保护组件的计算机都必须安装有通用 C 运行时。 可以通过确保所有更新都 Windows 更新来获取运行时。 也可以在特定于 OS 的更新包中获取它。 有关详细信息, 请参阅[Windows 中的通用 C 运行时更新](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)。
+* 所有安装了 Azure AD password protection 组件的计算机都必须安装有通用 C 运行时。 可以通过确保所有更新都 Windows 更新来获取运行时。 也可以在特定于 OS 的更新包中获取它。 有关详细信息, 请参阅[Windows 中的通用 C 运行时更新](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)。
 * 每个域中至少一个域控制器之间必须存在网络连接, 并且至少有一台服务器承载了密码保护的代理服务。 此连接必须允许域控制器访问 RPC 终结点映射器端口135和代理服务上的 RPC 服务器端口。 默认情况下, RPC 服务器端口是动态 RPC 端口, 但可以配置为[使用静态端口](#static)。
-* 承载代理服务的所有计算机都必须对以下终结点具有网络访问权限:
+* 将安装 Azure AD 密码保护代理服务的所有计算机必须具有对以下终结点的网络访问权限：
 
     |**终结点**|**用途**|
     | --- | --- |
     |`https://login.microsoftonline.com`|身份验证请求|
     |`https://enterpriseregistration.windows.net`|Azure AD 密码保护功能|
 
+  还必须为[应用程序代理环境设置过程](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)中指定的端口和 url 集启用网络访问。 这些配置步骤是必需的，以便 Microsoft Azure AD Connect Agent 更新服务能够正常工作（此服务与代理服务并行安装）。 不建议在同一台计算机上并行安装 Azure AD 密码保护代理和应用程序代理，因为 Microsoft Azure AD 连接代理更新程序软件的版本不兼容。
 * 为密码保护承载代理服务的所有计算机必须配置为允许域控制器登录到代理服务。 这是通过 "从网络访问此计算机" 权限分配来控制的。
 * 承载密码保护的代理服务的所有计算机必须配置为允许出站 TLS 1.2 HTTP 流量。
 * 一个全局管理员帐户, 用于注册包含 Azure AD 的密码保护和林的代理服务。

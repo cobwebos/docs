@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 87d0f08d67dbbe6a0fa1725aba850c8d9b6c5619
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c67d2cd4e90b2fa61a4d95e89a68c888a6e1fe3f
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104701"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273635"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>使用 Azure CLI 创建专用链接服务
 本文介绍如何使用 Azure CLI 在 Azure 中创建专用链接服务。
@@ -29,13 +29,13 @@ ms.locfileid: "71104701"
 az group create --name myResourceGroup --location westcentralus
 ```
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
-使用 [az network vnet create](/cli/azure/network/az-network-vnet-create) 创建虚拟网络。 此示例将创建一个名为*myVirtualNetwork*的默认虚拟网络，其中包含一个名为*mySubnet*的子网：
+使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 创建虚拟网络。 此示例将创建一个名为*myVirtualNetwork*的默认虚拟网络，其中包含一个名为*mySubnet*的子网：
 
 ```azurecli-interactive
 az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-a-subnet"></a>创建子网
-使用[az network vnet subnet create](/cli/azure/network/az-network-vnet-subnet-create)为虚拟网络创建子网。 此示例在*myVirtualNetwork*虚拟网络中创建名为*mySubnet*的子网：
+使用[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)为虚拟网络创建子网。 此示例在*myVirtualNetwork*虚拟网络中创建名为*mySubnet*的子网：
 
 ```azurecli-interactive
 az network vnet subnet create --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --address-prefixes 10.0.0.0/24    
@@ -82,7 +82,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>在子网上禁用专用链接服务网络策略 
-专用链接服务需要一个虚拟网络中所选子网的 IP。 目前，我们不支持这些 Ip 上的网络策略。  因此，我们必须禁用子网上的网络策略。 更新子网，以通过[az network vnet subnet update](/cli/azure/network/az-network-vnet-subnet-update)禁用专用链接服务网络策略。
+专用链接服务需要一个虚拟网络中所选子网的 IP。 目前，我们不支持这些 Ip 上的网络策略。  因此，我们必须禁用子网上的网络策略。 更新子网，以通过[az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)禁用专用链接服务网络策略。
 
 ```azurecli-interactive
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
@@ -90,7 +90,7 @@ az network vnet subnet update --resource-group myResourceGroup --vnet-name myVir
  
 ## <a name="create-a-private-link-service"></a>创建专用链接服务  
  
-使用[az 网络私用连接](/cli/azure/network/az-network-private-link-service-create)标准负载均衡器前端 IP 配置创建专用链接服务。 此示例使用名为*myResourceGroup*的资源组中名为*myLoadBalancer*标准负载均衡器创建名为*myPLS*的私有链接服务。 
+使用[az 网络私用连接](/cli/azure/network/private-link-service#az-network-private-link-service-create)标准负载均衡器前端 IP 配置创建专用链接服务。 此示例使用名为*myResourceGroup*的资源组中名为*myLoadBalancer*标准负载均衡器创建名为*myPLS*的私有链接服务。 
  
 ```azurecli-interactive
 az network private-link-service create \
@@ -111,7 +111,7 @@ az network private-link-service create \
 ## <a name="private-endpoints"></a>专用终结点
 
 ### <a name="create-the-virtual-network"></a>创建虚拟网络 
-使用 [az network vnet create](/cli/azure/network/az-network-vnet-create)创建虚拟网络。 此示例在名为*myResourcegroup*的资源组中创建名为 *myPEVNet* 的虚拟网络： 
+使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create)创建虚拟网络。 此示例在名为*myResourcegroup*的资源组中创建名为 *myPEVNet* 的虚拟网络： 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>创建子网 
-使用 [az network vnet subnet create](/cli/azure/network/az-network-vnet-subnet-create)在虚拟网络中创建子网。 此示例将在名为*myResourcegroup*的资源组中名为*myPEVnet*的虚拟网络中创建名为 *mySubnet* 的子网： 
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)在虚拟网络中创建子网。 此示例将在名为*myResourcegroup*的资源组中名为*myPEVnet*的虚拟网络中创建名为 *mySubnet* 的子网： 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -129,7 +129,7 @@ az network vnet subnet create \
 --address-prefixes 10.0.0.0/24 
 ```   
 ## <a name="disable-private-endpoint-network-policies-on-subnet"></a>禁用子网上的专用终结点网络策略 
-可以在虚拟网络中所选的任何子网中创建专用终结点。 目前，我们不支持专用终结点上的网络策略。  因此，我们必须禁用子网上的网络策略。 更新子网，以通过[az network vnet subnet update](/cli/azure/network/az-network-vnet-subnet-update)禁用专用终结点网络策略。 
+可以在虚拟网络中所选的任何子网中创建专用终结点。 目前，我们不支持专用终结点上的网络策略。  因此，我们必须禁用子网上的网络策略。 更新子网，以通过[az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)禁用专用终结点网络策略。 
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -156,7 +156,7 @@ az network private-endpoint create \
  
 ## <a name="show-private-link-service-connections"></a>显示专用链接服务连接 
  
-请参阅使用[az 网络 private link service show](/cli/azure/network/az-network-private-link-service-show)在专用链接服务上的连接请求。    
+请参阅使用[az 网络 private link service show](/cli/azure/network/private-link-service#az-network-private-link-service-show)在专用链接服务上的连接请求。    
 ```azurecli-interactive 
 az network private-link-service show --resource-group myResourceGroup --name myPLS 
 ```

@@ -146,6 +146,12 @@
           href: concepts-hyperscale-choose-distribution-column.md
         - name: 表共置
           href: concepts-hyperscale-colocation.md
+        - name: 数据访问和安全性
+          items:
+            - name: 防火墙规则
+              href: concepts-hyperscale-firewall-rules.md
+            - name: 配置 SSL
+              href: concepts-hyperscale-ssl-connection-security.md
         - name: PostgreSQL 扩展
           href: concepts-hyperscale-extensions.md
         - name: 资源
@@ -154,86 +160,96 @@
               href: concepts-hyperscale-configuration-options.md
 - name: 操作指南
   items:
-    - name: 创建用户
-      href: howto-create-users.md
-    - name: 优化
+    - name: 单个服务器
       items:
-        - name: 批量插入
-          href: howto-optimize-bulk-inserts.md
-        - name: Autovacuum
-          href: howto-optimize-autovacuum.md
-        - name: 查询统计信息集合
-          href: howto-optimize-query-stats-collection.md
-        - name: Toast 表策略
-          href: howto-optimize-query-time-with-toast-table-storage-strategy.md
-    - name: 管理防火墙
+        - name: 创建用户
+          href: howto-create-users.md
+        - name: 优化
+          items:
+            - name: 批量插入
+              href: howto-optimize-bulk-inserts.md
+            - name: Autovacuum
+              href: howto-optimize-autovacuum.md
+            - name: 查询统计信息集合
+              href: howto-optimize-query-stats-collection.md
+            - name: Toast 表策略
+              href: howto-optimize-query-time-with-toast-table-storage-strategy.md
+        - name: 管理防火墙
+          items:
+            - name: Azure 门户
+              href: howto-manage-firewall-using-portal.md
+            - name: Azure CLI
+              href: howto-manage-firewall-using-cli.md
+        - name: 还原服务器
+          items:
+            - name: Azure 门户
+              href: howto-restore-server-portal.md
+            - name: Azure CLI
+              href: howto-restore-server-cli.md
+        - name: 迁移数据库
+          items:
+            - name: 转储和还原
+              href: howto-migrate-using-dump-and-restore.md
+            - name: 导入和导出
+              href: howto-migrate-using-export-and-import.md
+            - name: 停机时间最短的迁移
+              href: howto-migrate-online.md
+        - name: 配置服务器参数
+          items:
+            - name: Azure 门户
+              href: howto-configure-server-parameters-using-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-parameters-using-cli.md
+        - name: 自动增长存储
+          items:
+            - name: Azure 门户
+              href: howto-auto-grow-storage-portal.md
+            - name: Azure CLI
+              href: howto-auto-grow-storage-cli.md
+        - name: 访问服务器日志
+          items:
+            - name: Azure 门户
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-using-cli.md
+        - name: 监视
+          items:
+            - name: 针对指标创建警报
+              href: howto-alert-on-metric.md
+        - name: 故障排除
+          items:
+            - name: 排查连接错误
+              href: howto-troubleshoot-common-connection-issues.md
+        - name: 高级威胁防护
+          items:
+            - name: Azure 门户
+              href: howto-database-threat-protection-portal.md
+        - name: 虚拟网络
+          items:
+            - name: Azure 门户
+              href: howto-manage-vnet-using-portal.md
+            - name: Azure CLI
+              href: howto-manage-vnet-using-cli.md
+        - name: 重新启动服务器
+          items:
+            - name: Azure 门户
+              href: howto-restart-server-portal.md
+            - name: Azure CLI
+              href: howto-restart-server-cli.md
+        - name: 复制
+          items:
+            - name: 在 Azure 门户中管理只读副本
+              href: howto-read-replicas-portal.md
+            - name: 使用 Azure CLI、REST API 管理只读副本
+              href: howto-read-replicas-cli.md
+    - name: 超大规模 (Citus)
       items:
-        - name: Azure 门户
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: 还原服务器
-      items:
-        - name: Azure 门户
-          href: howto-restore-server-portal.md
-        - name: Azure CLI
-          href: howto-restore-server-cli.md
-    - name: 迁移数据库
-      items:
-        - name: 转储和还原
-          href: howto-migrate-using-dump-and-restore.md
-        - name: 导入和导出
-          href: howto-migrate-using-export-and-import.md
-        - name: 停机时间最短的迁移
-          href: howto-migrate-online.md
-    - name: 配置服务器参数
-      items:
-        - name: Azure 门户
-          href: howto-configure-server-parameters-using-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-parameters-using-cli.md
-    - name: 自动增长存储
-      items:
-        - name: Azure 门户
-          href: howto-auto-grow-storage-portal.md
-        - name: Azure CLI
-          href: howto-auto-grow-storage-cli.md
-    - name: 访问服务器日志
-      items:
-        - name: Azure 门户
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-using-cli.md
-    - name: 监视
-      items:
-        - name: 针对指标创建警报
-          href: howto-alert-on-metric.md
-    - name: 故障排除
-      items:
-        - name: 排查连接错误
-          href: howto-troubleshoot-common-connection-issues.md
-    - name: 高级威胁防护
-      items:
-        - name: Azure 门户
-          href: howto-database-threat-protection-portal.md
-    - name: 虚拟网络
-      items:
-        - name: Azure 门户
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-vnet-using-cli.md
-    - name: 重新启动服务器
-      items:
-        - name: Azure 门户
-          href: howto-restart-server-portal.md
-        - name: Azure CLI
-          href: howto-restart-server-cli.md
-    - name: 复制
-      items:
-        - name: 在 Azure 门户中管理只读副本
-          href: howto-read-replicas-portal.md
-        - name: 使用 Azure CLI、REST API 管理只读副本
-          href: howto-read-replicas-cli.md
+        - name: 扩展
+          href: howto-hyperscale-scaling.md
+        - name: 管理防火墙
+          items:
+            - name: Azure 门户
+              href: howto-hyperscale-manage-firewall-using-portal.md
 - name: 引用
   items:
     - name: Azure CLI

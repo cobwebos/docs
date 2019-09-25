@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 0d6f05524be41693ba280b0f0162f65b517ec281
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 50d4023b09eb14fcfafe752ca60b8e888acc1fef
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219617"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273886"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Azure 安全中心 Vm 和服务器的威胁检测
 
@@ -28,14 +28,14 @@ ms.locfileid: "71219617"
 
 Azure 安全中心与 Azure 服务集成，以监视和保护基于 Windows 的计算机。 安全中心以一种易于使用的格式从所有这些服务提供警报和修正建议。
 
-### Windows Server Defender ATP<a nanme="windows-atp"></a>
+### Microsoft Defender ATP<a nanme="windows-atp"></a>
 
-安全中心通过集成 Windows Server Defender 高级威胁防护（ATP）来扩展其云工作负荷保护平台。 这提供了全面的端点检测和响应（EDR）功能。
+安全中心通过与 Microsoft Defender 高级威胁防护（ATP）集成来扩展其云工作负荷保护平台。 这提供了全面的端点检测和响应（EDR）功能。
 
 > [!NOTE]
-> Windows Server Defender ATP 传感器在使用安全中心的 Windows 服务器上自动启用。
+> 使用安全中心的 Windows 服务器上会自动启用 Microsoft Defender ATP 传感器。
 
-当 Windows Server Defender ATP 检测到威胁时, 它会触发警报。 警报显示在安全中心仪表板上。 在仪表板中，可以透视到 Microsoft Defender ATP 控制台，并执行详细的调查以发现攻击范围。 有关 Windows Server Defender ATP 的详细信息，请参阅将[服务器载入 Microsoft DEFENDER atp 服务](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)。
+当 Microsoft Defender ATP 检测到威胁时，会触发警报。 警报显示在安全中心仪表板上。 在仪表板中，可以透视到 Microsoft Defender ATP 控制台，并执行详细的调查以发现攻击范围。 有关 Microsoft Defender ATP 的详细信息，请参阅将[服务器载入 Microsoft DEFENDER atp 服务](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)。
 
 ### 故障转储分析<a nanme="windows-dump"></a>
 

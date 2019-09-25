@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: 2b923a381be9d6cdb1a83f582a541c9e17e117a4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 43e76b9331eb8dbe95265810b9191a10d4caee08
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086627"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272021"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -79,7 +79,7 @@ Gz 安装可在其他发行版上运行，但仅正式支持列出的版本。
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
 > [!NOTE]
-> 若要在登录后完全访问资源，存储资源管理器需要管理（Azure 资源管理器）和数据层权限。 这意味着你需要 Azure Active Directory （Azure AD）权限，这将允许你访问你的存储帐户、帐户中的容器以及容器中的数据。 如果你仅在数据层具有权限，请考虑[通过 Azure AD 添加资源](#add-a-resource-via-azure-ad)。 有关存储资源管理器要求的特定权限的详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#role-based-access-control-permission-issues)。
+> 若要在登录后完全访问资源，存储资源管理器需要管理（Azure 资源管理器）和数据层权限。 这意味着你需要 Azure Active Directory （Azure AD）权限，这将允许你访问你的存储帐户、帐户中的容器以及容器中的数据。 如果你仅在数据层具有权限，请考虑[通过 Azure AD 添加资源](#add-a-resource-via-azure-ad)。 有关存储资源管理器要求的特定权限的详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#rbac-permissions-issues)。
 
 1. 在存储资源管理器中，选择 "**管理帐户**" 以前往 "帐户管理" 面板。
 

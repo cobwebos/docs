@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097572"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268653"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>本地 Azure AD 密码保护 - 常见问题解答
 
@@ -100,6 +100,8 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 **问：是否可与其他服务（例如 Azure AD Connect）一起部署 Azure AD 密码保护代理服务？**
 
 是。 Azure AD 密码保护代理服务和 Azure AD Connect 永远不会直接相互冲突。
+
+遗憾的是，在 Azure AD 密码保护代理软件安装的 Microsoft Azure AD 连接代理更新程序服务的版本与 Azure Active 提供的服务版本之间发现不兼容性[目录应用程序代理](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)软件。 这种不兼容性可能会导致代理更新服务无法联系 Azure 获取软件更新。 不建议在同一台计算机上安装 Azure AD 密码保护代理和 Azure Active Directory 应用程序代理。
 
 **问：DC 代理和代理的安装和注册顺序是什么？**
 

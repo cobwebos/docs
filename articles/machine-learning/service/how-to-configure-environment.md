@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 933ae5b70d8e0485360a94ede1fff99c02f75a4c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0bd4b1d969de0b54a1836048b5cb5910470f1ffa
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034876"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269225"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -36,7 +36,7 @@ ms.locfileid: "71034876"
 
 * [Jupyter Notebook](#jupyter)：如果你已在使用 Jupyter Notebook，SDK 中包含了需要安装的某些附加功能。
 
-* [Visual Studio Code](#vscode)：如果使用 Visual Studio Code，其中包含了一些可以安装的有用扩展。
+* [Visual Studio Code](#vscode)：如果你使用 Visual Studio Code，则[Azure 机器学习扩展](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)包含对 Python 的广泛语言支持以及用于使使用 Azure 机器学习服务的功能，这种方式更加方便和高效。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -76,7 +76,7 @@ Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure �
 
 + **可自定义**。 尽管提供了托管安全的 VM 产品/服务, 但仍保留了对硬件功能的完全访问权限, 并对其进行自定义以满足你的需求。 例如, 快速创建最新的 NVidia V100 支持的 VM, 以执行 novel 神经网络体系结构的分步调试。
 
-若要停止产生笔记本 VM 费用, 请[停止笔记本 vm](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。 
+若要停止产生笔记本 VM 费用, 请[停止笔记本 vm](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
@@ -90,7 +90,7 @@ DSVM 是自定义的虚拟机 (VM) 映像。 它专为数据科学工作而设�
 
 Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，如果还计划将 DSVM 用作计算目标，则仅支持 Ubuntu。
 
-若要使用 DSVM 作为开发环境，请执行以下操作：
+若要将 DSVM 用作开发环境：
 
 1. 在以下任一环境中创建 DSVM：
 
@@ -151,9 +151,9 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
 
 ## <a id="local"></a>本地计算机
 
-当你使用本地计算机 (也可能是远程虚拟机) 时, 请通过执行以下操作来创建 Anaconda 环境并安装 SDK:
+使用本地计算机（也可能是远程虚拟机）时，请创建 Anaconda 环境并安装 SDK。 以下是一个示例：
 
-1. 下载并安装[Anaconda](https://www.anaconda.com/distribution/#download-section) (Python 3.7 版) (如果尚未安装)。
+1. 下载并安装[Anaconda](https://www.anaconda.com/distribution/#download-section) （Python 3.7 版）（如果尚未安装）。
 
 1. 打开 Anaconda 提示符, 并使用以下命令创建环境:
 
@@ -185,10 +185,10 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
 
 1. 使用以下命令安装包:
 
-    此命令安装包含笔记本和 automl 的基本 Azure 机器学习 SDK。 额外`automl`的是大型安装, 如果不打算运行自动机器学习试验, 则可以将其从方括号中删除。 另外`automl` , 默认情况下还包括 Azure 机器学习数据准备 SDK 作为依赖项。
+    此命令安装包含笔记本和`automl`其他内容的基本 Azure 机器学习 SDK。 额外`automl`的是大型安装, 如果不打算运行自动机器学习试验, 则可以将其从方括号中删除。 另外`automl` , 默认情况下还包括 Azure 机器学习数据准备 SDK 作为依赖项。
 
     ```shell
-    pip install azureml-sdk[notebooks,automl]
+    pip install azureml-sdk[notebooks, automl]
     ```
 
    > [!NOTE]
@@ -221,14 +221,16 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
 
 Jupyter Notebook 是 [Jupyter 项目](https://jupyter.org/)的一部分。 它们提供交互式编码体验，可用于创建将实时代码与叙述性文本和图形混合在一起的文档。 Jupyter Notebook 也是与他人共享结果的好方法，因为可用于将代码部分的输出保存在文档中。 可以在各种平台上安装 Jupyter Notebook。
 
-[本地计算机](#local)部分中的过程在 Anaconda 环境中安装了用于运行 Jupyter 笔记本的必需组件。 若要在 Jupyter Notebook 环境中启用这些组件，请执行以下操作：
+[本地计算机](#local)部分中的过程在 Anaconda 环境中安装了用于运行 Jupyter 笔记本的必需组件。
+
+在 Jupyter Notebook 环境中启用这些组件：
 
 1. 打开 Anaconda 提示符并激活您的环境。
 
     ```shell
     conda activate myenv
     ```
-    
+
 1. 克隆适用于一组示例笔记本的[GitHub 存储库](https://aka.ms/aml-notebooks)。
 
     ```CLI
@@ -254,34 +256,35 @@ Jupyter Notebook 是 [Jupyter 项目](https://jupyter.org/)的一部分。 它�
     import sys
     sys.path
     ```
-    
+
 1. 若要配置 Jupyter Notebook 以使用 Azure 机器学习工作区，请参阅[创建工作区配置文件](#workspace)部分。
 
 
 ### <a id="vscode"></a>Visual Studio Code
 
-Visual Studio Code 是跨平台代码编辑器。 它依赖于本地 Python 3 和 Python 支持的 Conda 安装，但它提供用于 AI 的其他工具。 它还支持从代码编辑器中选择 Conda 环境。
+Visual Studio Code 是一种非常流行的跨平台代码编辑器，它通过[Visual Studio marketplace](https://marketplace.visualstudio.com/vscode)中提供的扩展支持一组广泛的编程语言和工具。 [Azure 机器学习扩展](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)安装[python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)，用于在所有类型的 Python 环境（虚拟、Anaconda 等）中进行编码。 此外，它还提供了用于处理 Azure 机器学习资源和运行 Azure 机器学习试验的便利功能，而无需离开 Visual Studio Code。
 
-若要使用 Visual Studio Code 进行开发，请执行以下操作：
+使用 Visual Studio Code 进行开发：
 
-1. 若要了解如何使用 Visual Studio Code 进行 Python 开发，请参阅 [VSCode 中的 Python 入门](https://code.visualstudio.com/docs/python/python-tutorial)。
-
-1. 若要选择 Conda 环境，请打开 VS Code，然后按 Ctrl-Shift-P（Linux 和 Windows）或 Command-Shift-P (Mac)。
-    此时会打开“命令面板”。
-
-1. 输入 Python:__Select Interpreter__，然后选择 Conda 环境。
-
-1. 若要验证是否可以使用 SDK，请创建并运行包含以下代码的新 Python 文件 (.py)。
-
-    ```python
-    import azureml.core
-    azureml.core.VERSION
-    ```
-
-1. 若要安装适用于 Visual Studio Code 的 Azure 机器学习扩展，请参阅 [AI 工具](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)。
+1. 安装 Visual Studio Code 的 Azure 机器学习扩展，请参阅[Azure 机器学习](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)。
 
     有关详细信息，请参阅[使用适用于 Visual Studio Code 的 Azure 机器学习](how-to-vscode-tools.md)。
 
+1. 了解如何使用适用于任何类型的 Python 开发的 Visual Studio Code，请参阅[VSCode 中的 python 入门](https://code.visualstudio.com/docs/python/python-tutorial)。
+
+    - 若要选择包含 SDK 的 SDK Python 环境，请打开 VS Code，然后选择 Ctrl + Shift + P （Linux 和 Windows）或 Command + Shift + P （Mac）。
+        - 此时将打开__命令面板__。
+
+    - 输入 Python:__选择 "__ 解释器"，然后选择适当的环境
+
+1. 若要验证是否可以使用 SDK，请创建一个包含以下代码的新 Python 文件（. py）：
+
+    ```python
+    #%%
+    import azureml.core
+    azureml.core.VERSION
+    ```
+    若要运行此代码，请单击 "运行单元格" CodeLens，或只是按下 shift 键。
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -302,9 +305,9 @@ Azure Databricks 如何处理 Azure 机器学习：
 | 设置 |适用对象| ReplTest1 |
 |----|---|---|
 | 群集名称 |始终| yourclustername |
-| Databricks 运行时 |始终| 任何非机器学习运行时（非机器学习 4.x、5.x） |
+| Databricks 运行时 |始终| 任何非 ML 运行时（非 ML 4.x、1.x） |
 | Python 版本 |始终| 3 |
-| 辅助程序 |始终| 2 个或以上 |
+| 工作节点 |始终| 2 个或以上 |
 | 工作节点 VM 类型 <br>(确定并发迭代的最大数目) |自动化机器学习<br>仅供参考| 首选内存优化的 VM |
 | 启用自动缩放 |自动化机器学习<br>仅供参考| 取消选中 |
 
@@ -326,7 +329,7 @@ Azure Databricks 如何处理 Azure 机器学习：
    * 不要选择 "**自动附加到所有群集**"。
    * 选择群集名称旁的 "**附加**"。
 
-1. 监视错误, 直到将状态更改为已**附加**, 这可能需要几分钟时间。  如果此步骤失败, 请检查以下各项:
+1. 监视错误, 直到将状态更改为已**附加**, 这可能需要几分钟时间。  如果此步骤失败：
 
    尝试通过以下方式重新启动群集:
    1. 在左窗格中，选择“群集”。

@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5409b5619f8be16ef92f517b4b598e2a8e5e2b7
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 3e8d46e873d48de5f7e507566b5af6095b9c4e1c
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872822"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268381"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>调用 Web API 的桌面应用 - 获取令牌
 
@@ -32,6 +32,8 @@ Web API 由其 `scopes` 定义。 无论在应用程序中提供哪种体验，�
 
 - 通过调用 `AcquireTokenSilent` 系统性地尝试从令牌缓存中获取令牌
 - 如果此调用失败，则使用所需的 `AcquireToken` 流（此处由 `AcquireTokenXX` 表示）
+
+### <a name="in-msalnet"></a>在 MSAL.NET 中
 
 ```CSharp
 AuthenticationResult result;
@@ -50,12 +52,52 @@ catch(MsalUiRequiredException ex)
                     .ExecuteAsync();
 }
 ```
+### <a name="in-msal-for-ios-and-macos"></a>适用于 iOS 和 macOS 的 MSAL
+
+Objective-C：
+
+```objc
+MSALAccount *account = [application accountForIdentifier:accountIdentifier error:nil];
+    
+MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] initWithScopes:scopes account:account];
+[application acquireTokenSilentWithParameters:silentParams completionBlock:^(MSALResult *result, NSError *error) {
+    
+    // Check the error
+    if (error && [error.domain isEqual:MSALErrorDomain] && error.code == MSALErrorInteractionRequired)
+    {
+        // Interactive auth will be required, call acquireTokenWithParameters:error:
+    }
+}];
+```
+反应
+
+```swift
+guard let account = try? application.account(forIdentifier: accountIdentifier) else { return }
+let silentParameters = MSALSilentTokenParameters(scopes: scopes, account: account)
+application.acquireTokenSilent(with: silentParameters) { (result, error) in
+            
+    guard let authResult = result, error == nil else {
+                
+    let nsError = error! as NSError
+                
+        if (nsError.domain == MSALErrorDomain &&
+            nsError.code == MSALError.interactionRequired.rawValue) {
+                    
+            // Interactive auth will be required, call acquireToken()
+            return
+        }
+        return
+    }
+}
+```
 
 下面详细说明了在桌面应用程序中获取令牌的各种方法
 
 ## <a name="acquiring-a-token-interactively"></a>以交互方式获取令牌
 
 以下示例演示了如何以少量的代码来以交互方式获取令牌，用于在 Microsoft Graph 中读取用户的个人资料。
+
+### <a name="in-msalnet"></a>在 MSAL.NET 中
 
 ```CSharp
 string[] scopes = new string[] {"user.read"};
@@ -74,13 +116,47 @@ catch(MsalUiRequiredException)
 }
 ```
 
+### <a name="in-msal-for-ios-and-macos"></a>适用于 iOS 和 macOS 的 MSAL
+
+Objective-C：
+
+```objc
+MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:[MSALWebviewParameters new]];
+[application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
+    if (!error) 
+    {
+        // You'll want to get the account identifier to retrieve and reuse the account
+        // for later acquireToken calls
+        NSString *accountIdentifier = result.account.identifier;
+            
+        NSString *accessToken = result.accessToken;
+    }
+}];
+```
+
+反应
+
+```swift
+let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: MSALWebviewParameters())
+application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
+                
+    guard let authResult = result, error == nil else {
+        print(error!.localizedDescription)
+        return
+    }
+                
+    // Get access token from result
+    let accessToken = authResult.accessToken
+})
+```
+
 ### <a name="mandatory-parameters"></a>必需参数
 
 `AcquireTokenInteractive` 只有一个必需的参数 ``scopes``，其中包含一个定义需要令牌的范围的字符串枚举。 如果该令牌适用于 Microsoft Graph，可以在名为“权限”的部分中每个 Microsoft Graph API 的 API 参考中找到所需的范围。 例如, 若要[列出用户的联系人](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts), 则需要使用作用域 "User. read"、"contacts"。 另请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
 
 在 Android 上，还需要指定父活动（使用 `.WithParentActivityOrWindow`，如下所示），以便在交互后令牌返回到该父活动。 如果未指定父活动，则调用 `.ExecuteAsync()` 时会引发异常。
 
-### <a name="specific-optional-parameters"></a>特定的可选参数
+### <a name="specific-optional-parameters-in-msalnet"></a>MSAL.NET 中的特定可选参数
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 

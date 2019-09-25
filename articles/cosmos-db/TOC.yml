@@ -349,6 +349,8 @@
               href: manage-cassandra-with-resource-manager.md
             - name: 使用 PowerShell 管理
               href: powershell-samples-cassandra.md
+            - name: 使用 Azure CLI 进行管理
+              href: cli-samples-cassandra.md
     - name: MongoDB API
       items:
         - name: 介绍
@@ -411,7 +413,7 @@
               href: mongodb-mongochef.md
             - name: 使用 Compass 进行连接
               href: mongodb-compass.md
-            - name: 使用 Robomongo 进行连接
+            - name: 使用 Robo 3T 进行连接
               href: mongodb-robomongo.md
             - name: 使用 Mongoose 进行连接
               href: mongodb-mongoose.md
@@ -432,6 +434,8 @@
               href: manage-mongodb-with-resource-manager.md
             - name: 使用 PowerShell 管理
               href: powershell-samples-mongodb.md
+            - name: 使用 Azure CLI 进行管理
+              href: cli-samples-mongodb.md
             - name: 排查常见问题
               href: mongodb-troubleshoot.md
     - name: Gremlin API
@@ -492,6 +496,8 @@
               href: manage-gremlin-with-resource-manager.md
             - name: 使用 PowerShell 管理
               href: powershell-samples-gremlin.md
+            - name: 使用 Azure CLI 进行管理
+              href: cli-samples-gremlin.md
     - name: 表 API
       items:
         - name: 介绍
@@ -546,6 +552,8 @@
               href: manage-table-with-resource-manager.md
             - name: 使用 PowerShell 管理
               href: powershell-samples-table.md
+            - name: 使用 Azure CLI 进行管理
+              href: cli-samples-table.md
         - name: 引用
           items:
             - name: .NET
