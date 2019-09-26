@@ -1,9 +1,9 @@
 ---
 title: 与应用服务移动应用集成
 description: 了解如何将 Azure 通知中心与 Azure 应用服务移动应用配合使用。
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 documentationcenter: ''
 ms.assetid: 83132dff-a01d-4b31-a426-b57496852b81
@@ -14,13 +14,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: bb39949bc21ece819b7ac6e279390f8bdb0ee00a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: d6747193b8c82119e45a24e3e4bffc065db14e51
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157445"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212156"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>与应用服务移动应用集成
 
@@ -42,8 +44,8 @@ ms.locfileid: "65157445"
 以下是这种集成为开发人员带来的便利：
 
 - **移动应用客户端 SDK**： 这些多平台 SDK 提供简单的 API 用于注册，并自动与链接到移动应用的通知中心联系。 开发人员不需要深入了解通知中心凭据和使用其他服务。
-  - 推送到用户：SDK 将使用移动应用的已经过身份验证的用户 ID 来自动标记给定设备，以实现推送到用户的方案。
-  - 推送到设备：SDK 自动使用移动应用安装 ID 作为 GUID 来注册到通知中心，省去了开发人员维护多个服务 GUID 的麻烦。
+  -  推送到用户：SDK 将使用移动应用的已经过身份验证的用户 ID 来自动标记给定设备，以实现推送到用户的方案。
+  -  推送到设备：SDK 自动使用移动应用安装 ID 作为 GUID 来注册到通知中心，省去了开发人员维护多个服务 GUID 的麻烦。
 - **安装模型**：移动应用使用通知中心的最新推送模型来呈现 JSON 安装中所有与设备关联的推送属性，该模型与推送通知密切合作且易于使用。
 - **灵活性**： 即使是就地集成的，开发人员也始终可以选择直接使用通知中心。
 - **[Azure 门户](https://portal.azure.com)中的集成体验**：移动应用以可视化方式呈现推送功能，开发人员可以通过移动应用轻松使用关联的通知中心。

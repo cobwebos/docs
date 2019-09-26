@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/01/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 3fd7990043543b92eb3daf8ec699ec58db3387ec
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 0f070cb9a6e300dad0ec9e0b393b09b7f22d2942
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717569"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212575"
 ---
 # <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Azure Cosmos DB with Apache Spark 中的内置运营分析（预览版） 
 
@@ -136,12 +136,6 @@ Apache Spark 作业将会利用 Azure Cosmos DB 的优势，例如，行业领�
 下图显示了如何在游戏分析中使用 Azure Cosmos DB 的 Spark 支持：
 
 ![Azure Cosmos DB 的 Spark 支持，用于游戏分析](./media/spark-api-introduction/gaming-analytics.png)
-
-## <a name="built-in-jupyter-notebooks-support"></a>内置的 Jupyter 笔记本支持
-
-Azure Cosmos DB 为所有 API（例如 Cassandra、MongoDB、SQL、Gremlin 和表）提供了内置 Jupyter Notebook 支持。 Jupyter Notebook 在 Azure Cosmos 帐户中运行，它们增强了开发人员体验。 对所有 Azure Cosmos DB API 和数据模型的内置笔记本支持允许你以交互方式运行查询。 你还可以执行机器学习模型，分析存储在 Azure Cosmos 数据库中的数据。 通过使用 Jupyter 笔记本体验，你可以在 Azure 门户中分析存储的数据，构建并训练机器学习模型，以及对数据进行推断：
-
-![Azure Cosmos DB 中的 Jupyter 笔记本支持](./media/spark-api-introduction/jupyter-notebooks-portal.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 2b7ad95dc652f2099af75308f05ddd0684e088aa
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 15b4d3208be693a5b8d858d30b663347515f5a68
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104732"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130289"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>使用 Azure 门户创建专用终结点
 
@@ -199,6 +199,7 @@ ms.locfileid: "71104732"
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>以私密方式从 VM 访问 SQL 数据库服务器
 
 1. 在  *myVM* 的远程桌面中打开 PowerShell。
+
 2. 输入  `nslookup myserver.database.windows.net`。 
 
     将收到类似于下面的消息：

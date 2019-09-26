@@ -10,13 +10,13 @@ ms.reviewer: dpalled
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 07/29/2019
-ms.openlocfilehash: 3d098b1806e4fdf5b45030dfebf3dfe5959b7d5c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.date: 09/23/2019
+ms.openlocfilehash: 633eb00b479c6d2e2bf233b42aff7d393b110fd2
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677714"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258418"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>快速入门：浏览 Azure 时序见解预览版演示环境
 

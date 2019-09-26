@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 39c40f29f4548f2e7379472427a2c97f1a0b762c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 47e300bf242f02d458363b7d2ab7af8a4399b399
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932976"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155039"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>什么是 Microsoft Flow、逻辑应用、Functions 和 WebJobs？
 
@@ -88,7 +88,7 @@ Azure Functions 是在 WebJobs SDK 上构建的，因此共享许多相同的事
 |[按使用付费定价](functions-scale.md#consumption-plan)|✔||
 |[集成逻辑应用](functions-twitter-email.md)|✔||
 | 触发事件 |[计时器](functions-bindings-timer.md)<br>[Azure 存储队列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服务总线队列和主题](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中心](functions-bindings-event-hubs.md)<br>[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)<br>[Azure 事件网格](functions-bindings-event-grid.md)|[计时器](functions-bindings-timer.md)<br>[Azure 存储队列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服务总线队列和主题](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中心](functions-bindings-event-hubs.md)<br>[文件系统](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| 支持的语言  |C#<br>F#<br>JavaScript<br>Java<br>Python（预览版） |C#<sup>1</sup>|
+| 支持的语言  |C#<br>F#<br>JavaScript<br>Java<br>Python |C#<sup>1</sup>|
 |包管理器|NPM 和 NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> WebJobs（不带 WebJobs SDK）支持 C#、Java、JavaScript、Bash、.cmd、.bat、PowerShell、PHP、TypeScript、Python 等。 该列表并不详尽。 WebJob 可以运行任何程序或脚本，只要该程序或脚本可以在应用服务沙盒中运行。
