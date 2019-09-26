@@ -137,7 +137,7 @@ az webapp up --location westeurope --name <app_name>
 az group delete --name appsvc_rg_Windows_westeurope
 ```
 
-此命令可能需要花费一分钟时间运行。
+此命令可能需要花费一点时间运行。
 
 ## <a name="next-steps"></a>后续步骤
 
