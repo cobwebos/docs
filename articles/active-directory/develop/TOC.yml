@@ -9,7 +9,7 @@
       href: v2-overview.md
     - name: 快速入门
       items:
-        - name: 设置开发环境
+        - name: 设置租户
           href: quickstart-create-new-tenant.md
         - name: 配置应用程序
           items:
@@ -49,7 +49,7 @@
           items:
             - name: Android
               href: quickstart-v2-android.md
-            - name: iOS
+            - name: iOS 和 macOS
               href: quickstart-v2-ios.md
             - name: 通用 Windows 平台
               href: quickstart-v2-uwp.md
@@ -75,7 +75,7 @@
           items:
             - name: Android
               href: tutorial-v2-android.md
-            - name: iOS
+            - name: iOS 和 macOS
               href: tutorial-v2-ios.md
             - name: 通用 Windows 平台
               href: tutorial-v2-windows-uwp.md
@@ -223,12 +223,14 @@
           items:
             - name: 概述
               href: msal-overview.md
-            - name: 迁移
+            - name: 从 ADAL 迁移
               items:
                 - name: 迁移到 MSAL.NET
                   href: msal-net-migration.md
                 - name: 迁移到 MSAL.js
                   href: msal-compare-msal-js-and-adal-js.md
+                - name: 迁移到适用于 iOS 和 MacOS 的 MSAL
+                  href: migrate-objc-adal-msal.md
                 - name: 使用代理将 Xamarin 应用从 ADAL.NET 迁移到 MSAL.NET
                   href: msal-net-migration-ios-broker.md
             - name: 支持的身份验证流
@@ -239,8 +241,6 @@
                   href: msal-acquire-cache-tokens.md
                 - name: v1.0 应用的作用域
                   href: msal-v1-app-scopes.md
-                - name: 令牌缓存序列化 (.NET)
-                  href: msal-net-token-cache-serialization.md
             - name: 客户端应用程序
               items:
                 - name: 客户端应用程序
@@ -257,18 +257,28 @@
               href: msal-handling-exceptions.md
             - name: 日志记录
               href: msal-logging.md
-            - name: 单一登录 (JS)
-              href: msal-js-sso.md
-            - name: 提示行为 (JS)
-              href: msal-js-prompt-behavior.md
-            - name: ADFS 支持 (.NET)
-              href: msal-net-adfs-support.md
+            - name: 单一登录
+              items:
+                - name: 使用 MSAL.js 的单一登录
+                  href: msal-js-sso.md
+                - name: 使用适用于 iOS 和 macOS 的 MSAL 的单一登录
+                  items:
+                    - name: MSAL 应用之间的 SSO
+                      href: single-sign-on-macos-ios.md
+                    - name: ADAL 与 MSAL 应用之间的 SSO
+                      href: sso-between-adal-msal-apps-macos-ios.md
+            - name: 与 ADFS 集成
+              items:
+                - name: MSAL.NET 中的 ADFS 支持
+                  href: msal-net-adfs-support.md
             - name: 与 Azure AD B2C 集成
               items:
                 - name: JavaScript
                   href: msal-b2c-overview.md
                 - name: .NET
                   href: msal-net-aad-b2c-considerations.md
+                - name: iOS 和 macOS
+                  href: 'config-authority.md#b2c'
             - name: 注意事项和已知问题
               items:
                 - name: MSAL.NET
@@ -283,6 +293,10 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: 已知问题 - Safari
                       href: msal-js-known-issues-safari-browser.md
+                - name: 适用于 iOS 和 MacOS 的 MSAL
+                  items:
+                    - name: SSL 问题
+                      href: ssl-issues.md
         - name: 身份验证协议
           items:
             - name: 应用程序类型和 OAuth2.0
@@ -378,6 +392,8 @@
               items:
                 - name: 从缓存获取令牌
                   href: msal-net-acquire-token-silently.md
+                - name: 令牌缓存序列化
+                  href: msal-net-token-cache-serialization.md
                 - name: 清除令牌缓存
                   href: msal-net-clear-token-cache.md
                 - name: 通过选项实例化公共客户端
@@ -394,6 +410,20 @@
                   href: msal-js-avoid-page-reloads.md
                 - name: 在身份验证请求中传递自定义状态
                   href: msal-js-pass-custom-state-authentication-request.md
+                - name: 提示行为
+                  href: msal-js-prompt-behavior.md
+            - name: 适用于 iOS 和 MacOS 的 MSAL
+              items:
+                - name: 适用于 iOS 的 Microsoft 身份验证库和适用于 macOS 的 Microsoft 身份验证库的差异
+                  href: msal-differences-ios-macos.md
+                - name: 配置密钥链
+                  href: howto-v2-keychain-objc.md
+                - name: 自定义浏览器和 WebView
+                  href: customize-webviews.md
+                - name: 请求自定义声明
+                  href: request-custom-claims.md
+                - name: 重定向 URI 配置
+                  href: redirect-uris-ios.md
         - name: 使用 Visual Studio
           items:
             - name: 使用 Active Directory 连接服务
@@ -428,7 +458,7 @@
       href: v1-overview.md
     - name: 快速入门
       items:
-        - name: 设置开发环境
+        - name: 设置租户
           href: quickstart-create-new-tenant.md
         - name: 配置应用程序
           items:
@@ -468,7 +498,7 @@
           items:
             - name: Android
               href: quickstart-v1-android.md
-            - name: iOS
+            - name: iOS 和 MacOS
               href: quickstart-v1-ios.md
             - name: Windows 桌面 .NET
               href: quickstart-v1-dotnet.md

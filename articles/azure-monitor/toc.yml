@@ -431,6 +431,8 @@
                   href: app/asp-net-trace-logs.md
                 - name: 性能计数器
                   href: app/performance-counters.md
+                - name: EventCounters
+                  href: app/eventcounters.md
                 - name: 依赖项
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
@@ -519,6 +521,8 @@
                   items:
                     - name: 概述
                       href: platform/diagnostics-extension-overview.md
+                    - name: 收集日志
+                      href: platform/azure-storage-iis-table.md
                     - name: Windows
                       items:
                         - name: 版本历史记录
@@ -644,22 +648,20 @@
               href: insights/service-map.md
             - name: 计算机组
               href: platform/computer-groups.md
-        - name: Azure 资源
+        - name: Azure 平台
           items:
-            - name: 诊断日志
+            - name: 平台日志概述
+              href: platform/platform-logs-overview.md
+            - name: 资源日志
               items:
                 - name: 概述
-                  href: platform/diagnostic-logs-overview.md
-                - name: 在日志中收集
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: 从 Azure 存储中收集
-                  href: platform/azure-storage-iis-table.md
+                  href: platform/resource-logs-overview.md
+                - name: 在 Azure Monitor 日志中收集
+                  href: platform/resource-logs-collect-workspace.md
                 - name: 存档到存储
-                  href: platform/archive-diagnostic-logs.md
-                - name: 通过资源管理器模板启用
-                  href: platform/diagnostic-logs-stream-template.md
-        - name: Azure 订阅
-          items:
+                  href: platform/resource-logs-collect-storage.md
+                - name: 流式传输到事件中心
+                  href: platform/resource-logs-stream-event-hubs.md
             - name: 活动日志
               items:
                 - name: 概述
@@ -674,6 +676,14 @@
                   href: platform/activity-log-export.md
                 - name: 架构
                   href: platform/activity-log-schema.md
+            - name: 诊断设置
+              items:
+                - name: 创建诊断设置
+                  href: platform/diagnostic-settings.md
+                - name: 使用资源管理器创建诊断设置
+                  href: platform/diagnostic-settings-template.md
+                - name: 更改为 Blob 存储格式
+                  href: platform/resource-logs-blob-format.md
             - name: 将数据流式传输到事件中心
               href: platform/stream-monitoring-data-event-hubs.md
             - name: 密钥保管库分析
@@ -685,6 +695,7 @@
         - name: 存储
           items:
             - name: 用于存储的 Azure Monitor
+              displayname: 'storage, monitor, insights, storage accounts, azure storage'
               href: insights/storage-insights-overview.md
         - name: 数据库
           items:
@@ -747,7 +758,7 @@
             - name: 连接 Configuration Manager
               href: platform/collect-sccm.md
         - name: 将数据流式传输到事件中心
-          href: platform/diagnostic-logs-stream-event-hubs.md
+          href: platform/resource-logs-stream-event-hubs.md
     - name: 分析数据
       items:
         - name: 度量值

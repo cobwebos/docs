@@ -47,7 +47,7 @@
           href: security-center-incident.md
         - name: VM 和服务器的威胁检测
           href: security-center-alerts-iaas.md
-        - name: 云原生计算的威胁检测
+        - name: 针对云应用和容器的威胁检测
           href: security-center-alerts-compute.md
         - name: 数据服务的威胁检测
           href: security-center-alerts-data-services.md
@@ -71,7 +71,7 @@
       href: security-center-wdatp.md
     - name: Azure VM 上的 SQL 高级数据安全（公共预览版）
       href: security-center-iaas-advanced-data.md
-    - name: 保护应用服务
+    - name: 使用应用服务保护应用程序
       href: security-center-app-services.md
     - name: 使用安全策略
       href: tutorial-security-policy.md
@@ -91,7 +91,7 @@
       href: security-center-policy-definitions.md
     - name: 电子邮件通知
       href: security-center-provide-security-contact-details.md
-    - name: 定价层
+    - name: 定价
       href: security-center-pricing.md
     - name: 租户范围可见性
       href: security-center-management-groups.md
@@ -147,8 +147,6 @@
   items:
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
-    - name: 服务更新
-      href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 功能和 API 停用（2019 年 7 月）
       href: security-center-features-retirement-july2019.md
     - name: 终结点保护评估和建议
@@ -159,25 +157,25 @@
       href: /learn/browse/?term=securityS
     - name: 管理用户数据
       href: security-center-privacy.md
-    - name: 管理 IoT
+    - name: 适用于 IoT 的 Azure 安全中心文档
       href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
     - name: 常见问题解答
       href: security-center-faq.md
-    - name: Azure 安全性
+    - name: Azure 安全文档
       href: /azure/security/
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure 更新
+      href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: 就绪情况路线图
       href: security-center-readiness-roadmap.md
     - name: Azure 安全性、隐私性与合规性博客
       href: 'https://blogs.msdn.com/b/azuresecurity/'
-    - name: 堆栈溢出
-      href: 'https://stackoverflow.com/search?q=security-center'
+    - name: Stack Overflow 上的 Azure 安全中心
+      href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/security-center/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 故障排除
+    - name: 故障排除指南
       href: security-center-troubleshooting-guide.md

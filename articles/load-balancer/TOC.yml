@@ -84,7 +84,11 @@
     - name: 在区域内对 VM 进行负载均衡 (CLI)
       href: load-balancer-standard-public-zonal-cli.md
     - name: 配置出站规则
-      href: configure-load-balancer-outbound-cli.md
+      items:
+        - name: 配置出站规则 - CLI
+          href: configure-load-balancer-outbound-cli.md
+        - name: 配置出站规则 - PowerShell
+          href: configure-load-balancer-outbound-powershell.md
     - name: 使用 REST API 创建 Azure 负载均衡器
       href: create-load-balancer-rest-api.md
     - name: 创建基本负载均衡器（模板）

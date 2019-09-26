@@ -95,22 +95,22 @@
       items:
         - name: 常见错误
           href: troubleshoot.md
-        - name: 常见警报
-          items:
-            - name: 常见警报
-              href: troubleshoot-alerts.md
-            - name: 修复存在问题的网络配置
-              href: alert-nsg.md
-            - name: 还原缺少的服务主体
-              href: alert-service-principal.md
-            - name: 安全 LDAP 警报
-              href: alert-ldaps.md
         - name: “不匹配的租户”错误
           href: mismatched-tenant-error.md
         - name: 挂起的域
           href: suspension.md
         - name: 安全 LDAP
           href: tshoot-ldaps.md
+        - name: 已知问题
+          items:
+            - name: 常见警报
+              href: troubleshoot-alerts.md
+            - name: 网络警报
+              href: alert-nsg.md
+            - name: 服务主体警报
+              href: alert-service-principal.md
+            - name: 安全 LDAP 警报
+              href: alert-ldaps.md
 - name: 资源
   items:
     - name: 常见问题解答

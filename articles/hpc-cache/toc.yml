@@ -18,7 +18,7 @@
       items:
         - name: 添加存储目标
           href: hpc-cache-add-storage.md
-        - name: 将数据移动到缓存存储
+        - name: 将数据移到存储目标（如果需要）
           items:
             - name: 将数据预加载到新的 Blob 存储
               href: hpc-cache-ingest.md

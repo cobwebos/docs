@@ -472,6 +472,8 @@
         - name: 使用模板部署磁盘
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: 将 vhd 上传到磁盘 - CLI
+          href: disks-upload-vhd-to-managed-disk-cli.md
         - name: 调整磁盘大小
           href: expand-disks.md
         - name: 拍摄磁盘快照

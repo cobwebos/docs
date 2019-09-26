@@ -19,6 +19,8 @@
           href: ./hdinsight-administer-use-powershell.md
     - name: 示例
       items:
+        - name: Azure CLI 示例
+          href: ./azure-cli-samples.md
         - name: .NET 示例
           href: ./hdinsight-sdk-dotnet-samples.md
         - name: Java 示例
@@ -613,6 +615,8 @@
               href: ./hbase/apache-hbase-provision-vnet.md
         - name: 故障排除
           items:
+            - name: 排查 Apache HBase 性能问题
+              href: ./hbase/troubleshoot-hbase-performance-issues.md
             - name: hbase hbck 返回不一致
               href: ./hbase/hbase-troubleshoot-hbase-hbck-inconsistencies.md
             - name: 在连接重置后出现存储异常

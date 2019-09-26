@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 09/19/2019
-  ms.openlocfilehash: b0ab72431c0a5f7f22426aa27ece1fb3da5f5a13
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.date: 09/25/2019
+  ms.openlocfilehash: d2003af574961a5729949f60824aa67692be1655
+  ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71219775"
+  ms.lasthandoff: 09/25/2019
+  ms.locfileid: "71264572"
 landingContent:
 - title: 关于 Azure Lighthouse
   linkLists:
@@ -41,6 +41,8 @@ landingContent:
       url: ./concepts/recommended-security-practices.md
     - text: 云解决方案提供商计划注意事项
       url: ./concepts/cloud-solution-provider.md
+    - text: 企业应用场景
+      url: ./concepts/enterprise.md
 - title: 市场套餐
   linkLists:
   - linkListType: concept
