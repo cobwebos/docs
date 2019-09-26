@@ -35,4 +35,4 @@ ms.locfileid: "68382269"
 |文章 |说明 |
 |------|------------|
 | [注册自助式密码重置](active-directory-passwords-reset-register.md)说明如何验证身份验证方法并注册自助式密码重置，以便重置自己的密码。|
-| [重置密码](user-help-reset-password.md)说明如何重置或解锁工作或学校帐户的密码。|
+| [Reset your password](user-help-reset-password.md)说明如何重置或解锁工作或学校帐户的密码。|

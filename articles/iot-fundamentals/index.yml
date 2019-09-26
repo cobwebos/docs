@@ -103,7 +103,7 @@ conceptualContent:
       text: Azure 数字孪生是什么？
     - url: ../digital-twins/quickstart-view-occupancy-dotnet.md
       itemType: quickstart
-      text: 在建筑物中查找空房间
+      text: 在大楼内查找空房间
     - url: ../digital-twins/tutorial-facilities-setup.md
       itemType: tutorial
       text: 监视办公大楼
