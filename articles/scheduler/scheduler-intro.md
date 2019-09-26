@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 21204e85adf1c68264ea448360c9e1120567ef3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2f418a78f80d65cbb784685804a4cc6790c28b99
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530917"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300905"
 ---
 # <a name="what-is-azure-scheduler"></a>什么是 Azure 计划程序？
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换即将停用的 Azure 计划程序。 若要安排作业，请[改为试用 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
 
 [Azure 计划程序](https://azure.microsoft.com/services/scheduler/)通过以声明性的方式描述操作，帮助创建在云中运行的[作业](../scheduler/scheduler-concepts-terms.md)。 该服务随后自动安排并运行这些操作。 例如，可以在 Azure 内部和外部调用服务（如调用 HTTP 或 HTTPS 终结点），还可以将消息发布到 Azure 存储队列和 Azure 服务总线队列或主题。 可以立即或稍后运行作业。 计划程序轻松支持[复杂计划和高级重复周期](../scheduler/scheduler-advanced-complexity.md)。 计划程序指定何时运行作业、保留可以查看的作业结果历史记录，然后以可预测且可靠的方式安排工作负载运行。
 

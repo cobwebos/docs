@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 199fcdf2ebf10852906b842f09fe7beafd2acdb5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326608"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883584"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>应用程序网关的 SSL 终止和端到端 SSL 概述
 
@@ -72,7 +72,7 @@ SSL 策略将应用到前端和后端流量。 在前端上，应用程序网关
 
 > [!NOTE] 
 >
-> 添加到“后端 HTTP 设置”中的、用于对后端服务器进行身份验证的证书，可以是添加到**侦听器**的、用于在应用程序网关上实现 SSL 终止的同一个证书；为了增强安全性，两者也可以不同。 
+> 添加到“后端 HTTP 设置”中的、用于对后端服务器进行身份验证的证书，可以是添加到**侦听器**的、用于在应用程序网关上实现 SSL 终止的同一个证书；为了增强安全性，两者也可以不同。
 
 ![端到端 ssl 方案][1]
 
@@ -95,7 +95,7 @@ SSL 策略将应用到前端和后端流量。 在前端上，应用程序网关
    
 > [!NOTE] 
 >
-> 为了使 SSL 证书受信任, 后端服务器的证书必须由应用程序网关的受信任存储区中包含的 CA 颁发。如果证书不是由受信任的 CA 颁发的, 则应用程序网关会将检查查看颁发 CA 的证书是否由受信任的 CA 颁发, 依此类推, 直到找到了受信任的 CA (此时将建立受信任的安全连接), 或找不到受信任的 CA (此时, 应用程序网关会将后端 unhe 标记althy). 因此, 建议后端服务器证书同时包含 root 和 intermidiate Ca。
+> 为了使 SSL 证书受信任，后端服务器的证书必须由应用程序网关的受信任存储区中包含的 CA 颁发。如果证书不是由受信任的 CA 颁发的，则应用程序网关将选中若要查看颁发 CA 的证书是否由受信任的 CA 颁发，依此类推，直到找到了受信任的 CA （此时将建立受信任的安全连接），或找不到受信任的 CA （此时，应用程序网关会将后端标记不正常）。 因此, 建议后端服务器证书同时包含 root 和 intermidiate Ca。
 
 - 如果证书是自签名证书，或是由未知中介签名的证书，那么，要在 v2 SKU 中启用端到端 SSL，必须定义受信任的根证书。 应用程序网关仅与符合以下条件的后端进行通信：后端的服务器证书的根证书与池关联的后端 http 设置中的受信任根证书列表之一匹配。
 

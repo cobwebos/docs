@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: ecd1212385473e33d05f38f67db5708bff060daa
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 9de3232bcd7908f775dadff4dc584f2a687b0c68
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218239"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299759"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 
- 本文介绍如何通过 Azure 机器学习数据存储轻松访问 Azure 存储服务中的数据。 数据存储用于存储连接信息（如订阅 ID 和令牌授权）来访问存储，而无需在脚本中对信息进行硬编码。
+本文介绍如何通过 Azure 机器学习数据存储轻松访问 Azure 存储服务中的数据。 数据存储用于存储连接信息，如订阅 ID 和令牌授权。 使用数据存储可以访问存储，而无需在脚本中对连接信息进行硬编码。
 
 本操作说明显示以下任务的示例:
 * [注册数据存储](#access)
@@ -49,7 +49,7 @@ ws = Workspace.from_config()
 
 以下示例演示如何将 Azure Blob 容器或 Azure 文件共享注册为数据存储。
 
-+ 对于**Azure Blob 容器数据存储**, 请使用[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)
++ 对于**Azure Blob 容器数据存储**, 请使用[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)
 
   ```Python
   datastore = Datastore.register_azure_blob_container(workspace=ws, 
@@ -84,7 +84,7 @@ ws = Workspace.from_config()
 #get named datastore from current workspace
 datastore = Datastore.get(ws, datastore_name='your datastore name')
 ```
-若要获取在给定工作区中注册的数据存储的列表，可以在`datastores`工作区对象上使用属性：
+若要获取在给定工作区中注册的数据存储的列表，可以在[`datastores`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py#datastores)工作区对象上使用属性：
 
 ```Python
 #list all datastores registered in current workspace
@@ -110,7 +110,7 @@ ws.set_default_datastore('your datastore name')
 
 <a name="up-and-down"></a>
 ## <a name="upload--download-data"></a>上载 & 下载数据
-下面[`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-)的[`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-)示例中所述的和方法特定于和对[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)和[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)类具有相同的作用。
+下面[`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-)的[`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-)示例中所述的和方法特定于和对[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)和[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)类具有相同的作用。
 
 ### <a name="upload"></a>上传
 
@@ -155,8 +155,8 @@ datastore.download(target_path='your target path',
 同样|方法|描述|
 ----|-----|--------
 装载| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| 用于在计算目标上装载数据存储。
-下载|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|使用将数据存储的内容下载到指定`path_on_compute`的位置。 <br> 此下载在运行之前发生。
-上传|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| 使用将文件从指定`path_on_compute`的位置上传到数据存储。 <br> 此上传在运行之后发生。
+下载|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|使用将数据存储的内容下载到指定`path_on_compute`的位置。 <br><br> 此下载在运行之前发生。
+上传|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| 使用将文件从指定`path_on_compute`的位置上传到数据存储。 <br><br> 此上传在运行之后发生。
 
 若要引用数据存储中的特定文件夹或文件并使其在计算目标上可用，请使用[`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#path-path-none--data-reference-name-none-)数据存储方法。
 
@@ -168,13 +168,13 @@ datastore.as_mount()
 datastore.path('./bar').as_download()
 ```
 > [!NOTE]
-> Any `datastore` `"$AZUREML_DATAREFERENCE_XXXX"`或`datastore.path` object 解析为格式的环境变量名称，其值表示目标计算上的装载/下载路径。 目标计算上的数据存储路径可能与训练脚本的执行路径不相同。
+> 任何指定`datastore`的`datastore.path`或对象解析为格式`"$AZUREML_DATAREFERENCE_XXXX"`的环境变量名称，其值表示目标计算上的装载/下载路径。 目标计算上的数据存储路径可能与训练脚本的执行路径不相同。
 
 ### <a name="examples"></a>示例 
 
 下面的代码示例特定于在定型[`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)期间访问数据的类。 
 
-`script_params`包含 entry_script 的参数的字典。 您可以使用它来传入数据存储，并描述应如何在计算目标上提供数据。 通过我们的端到端[教程](tutorial-train-models-with-aml.md)了解更多。
+`script_params`包含 entry_script 的参数的字典。 使用它传入数据存储，并说明数据在计算目标上如何可用。 通过我们的端到端[教程](tutorial-train-models-with-aml.md)了解更多。
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -241,7 +241,7 @@ Azure 机器学习提供多种方法来使用模型进行评分。 其中一些�
 | [Web 服务](how-to-deploy-and-where.md) | &nbsp; | 将模型部署为 web 服务。 |
 | [IoT Edge 模块](how-to-deploy-and-where.md) | &nbsp; | 将模型部署到 IoT Edge 设备。 |
 
-对于 SDK 不提供对数据存储的访问权限的情况, 可以使用相关的 Azure SDK 创建自定义代码来访问数据。 例如, 使用用于[Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)来访问存储在 blob 中的数据。
+如果 SDK 无法提供对数据存储的访问权限，则可以使用相关的 Azure SDK 创建自定义代码来访问数据。 例如，[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)是一个客户端库，可用于访问 blob 或文件中存储的数据。
 
 
 ## <a name="next-steps"></a>后续步骤

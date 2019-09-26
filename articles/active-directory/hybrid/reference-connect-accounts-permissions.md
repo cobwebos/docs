@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/29/2019
+ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5460033902b71174dc3a10615811f657081f0e4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186298"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290970"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
@@ -48,10 +48,15 @@ Azure AD Connect 使用 3 个帐户，将信息从本地或 Windows Server Activ
 
 - SQL SA 帐户（可选）：用于使用完整版 SQL Server 时创建 ADSync 数据库。  此 SQL Server 对 Azure AD Connect 安装而言可能是本地或远程的。  此帐户可能是企业管理员的帐户。  现在，可以由 SQL 管理员在带外进行数据库预配，然后由具有数据库所有者权限的 Azure AD Connect 管理员完成安装。  有关详细信息，请参阅[使用 SQL 委派的管理员权限安装 Azure AD Connect](how-to-connect-install-sql-delegation.md)
 
+<<<<<<< HEAD
+>[!IMPORTANT]
+> 在 build 1.4. # # #. # 中，不再支持使用企业管理员帐户或域管理员帐户作为 AD DS 连接器帐户。  如果在指定 "**使用现有帐户**" 时尝试输入企业管理员或域管理员帐户，则会收到错误。
+=======
 > [!NOTE]
-> 支持从 ESAE 管理林 (也称为 "Red 林") 管理 Azure AD Connect 中使用的管理帐户。
+> 支持从 ESAE 管理林（也称为 "Red 林"）管理 Azure AD Connect 中使用的管理帐户。
 > 专用管理林允许组织在安全控制比生产环境更强的环境中托管管理帐户、工作站和组。
-> 若要了解有关专用管理林的详细信息, 请参阅[ESAE 管理林设计方法](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
+> 若要了解有关专用管理林的详细信息，请参阅[ESAE 管理林设计方法](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
+>>>>>>> e683a61b0ed62ae739941410f658a127534e2481
 
 ## <a name="installing-azure-ad-connect"></a>正在安装 Azure AD Connect
 Azure AD Connect 安装向导提供提供两种不同的路径：
@@ -78,7 +83,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS 连接器帐户需要快速设置权限
 创建 AD DS 连接器帐户，用于读取和写入 Windows Server AD，如果由快速设置创建，该帐户具有以下权限：
 
-| 权限 | 用于 |
+| 权限 | 用途 |
 | --- | --- |
 | <li>复制目录更改</li><li>复制所有目录更改 |密码哈希同步 |
 | 读取/写入所有用户属性 |导入和执行 Exchange 混合部署 |
@@ -151,7 +156,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 >从版本 1.1.484 开始，Azure AD Connect 引入了一个回归 bug，导致需要 sysadmin 权限才能升级 SQL 数据库。  在内部版本 1.1.647 中解决了此 bug。  若要升级到此版本，需要 sysadmin 权限。  Dbo 权限是不够的。  如果尝试在没有 sysadmin 权限的情况下升级 Azure AD Connect，升级将失败，之后 Azure AD Connect 将不再正常工作。  Microsoft 已意识到此问题，并在努力更正此问题。
 
 
-| 主体 | 所需的权限 | 用于 |
+| 主体 | 所需的权限 | 用途 |
 | --- | --- | --- |
 | 运行安装向导的用户 |本地服务器的管理员 |更新二进制文件 |
 | 运行安装向导的用户 |ADSyncAdmins 的成员 |对同步规则和其他配置进行更改。 |
@@ -246,7 +251,7 @@ Azure AD 将同步服务帐户数目限制为 20 个。 若要在 Azure AD 中�
 若要删除未使用的 Azure AD 服务帐户，请运行以下 Azure AD PowerShell cmdlet：`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->在可以使用上述 PowerShell 命令之前, 你将需要安装[Azure Active Directory PowerShell For Graph 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module), 并使用[AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)连接到 Azure AD 实例
+>在可以使用上述 PowerShell 命令之前，你将需要安装[Azure Active Directory PowerShell For Graph 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module)，并使用[AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)连接到 Azure AD 实例
 
 有关如何管理或重置 Azure AD Connect 帐户密码的更多信息，请参阅[管理 Azure AD Connect 帐户](how-to-connect-azureadaccount.md)
 

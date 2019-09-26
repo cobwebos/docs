@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141150"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300660"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”、“标准”还是“存储优化”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
@@ -27,7 +27,7 @@ ms.locfileid: "70141150"
 + **存储优化**层在专用计算机上运行，与**标准**层相比具有更多的总存储、存储带宽和内存。 “存储优化”层分为两个级别：L1 和 L2
 
 > [!NOTE]
-> 从7月1日起, 所有层都已正式发布, 其中包括存储优化层。 可以在[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页上找到所有定价。
+> 从7月1日起，所有层都已正式发布，其中包括存储优化层。 可以在[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页上找到所有定价。
 
   S3 高密度 (S3 HD) 是针对特定工作负荷设计的：[多租户](search-modeling-multitenant-saas-applications.md)和大量的小索引（每个索引一百万个文档，每个服务三千个索引）。 此层未提供[索引器功能](search-indexer-overview.md)。 在 S3 HD 上，数据引入必须利用推送方式，使用 API 调用将数据从源推送到索引。 
 
@@ -62,11 +62,13 @@ ms.locfileid: "70141150"
 
 ## <a name="document-limits"></a>文档限制 
 
-自 2018 年 10 月起，在任何区域的任何可计费层（基本、S1，S2、S3、S3 HD）创建的任何新服务都不再有任何文档数限制。 虽然自 2017 年 11 月/12 月以来大多数区域的文档数量不受限制，但仍有五个区域继续实施文档数限制。 根据你创建搜索服务的时间和地点，你可能正在运行仍受文档数限制的服务。
+从2018年10月开始，任何区域的任何可计费层（基本、S1、S2、S3、S3 HD）创建的任何新服务都不再有任何<sup>文档限制。</sup> 虽然自 2017 年 11 月/12 月以来大多数区域的文档数量不受限制，但仍有五个区域继续实施文档数限制。 根据你创建搜索服务的时间和地点，你可能正在运行仍受文档数限制的服务。
 
 若要确定你的服务是否具有文档数限制，请检查你的服务的概述页中的“使用情况”磁贴。 文档数可能不受限制，也可能基于层受限于某个限制。
 
   ![“使用情况”磁贴](media/search-limits-quotas-capacity/portal-usage-tile.png)
+
+<sup>1</sup>即使没有任何 SKU 特定的文档限制，每个索引仍会受到最大安全限制，以确保服务的稳定性。 此限制来自 Lucene。 每个 Azure 搜索文档在内部都作为一个或多个 Lucene 文档建立索引。 每个 Azure 搜索文档的 Lucene 文档数取决于复杂集合字段中的元素总数。 每个元素都作为一个单独的 Lucene 文档进行索引。 例如，在复杂集合字段中包含3个元素的文档将被索引为 4 Lucene 文档，对于文档本身为3个，对于元素为3。 每个索引的最大 Lucene 文档数约为25000000000。
 
 ### <a name="regions-previously-having-document-limits"></a>以前具有文档数限制的区域
 
@@ -127,7 +129,7 @@ ms.locfileid: "70141150"
 
 ## <a name="synonym-limits"></a>同义词限制
 
-允许的最大同义词映射数因定价层而异。 每个规则最多可以有20个扩展, 其中的扩展是 equivalvent 的一项。 例如, 给定 "cat", 与 "猫"、"猫" 和 "felis" (猫的 genus) 的关联将计为3个扩展。
+允许的最大同义词映射数因定价层而异。 每个规则最多可以有20个扩展，其中的扩展是 equivalvent 的一项。 例如，给定 "cat"，与 "猫"、"猫" 和 "felis" （猫的 genus）的关联将计为3个扩展。
 
 | Resource | 免费 | 基本 | S1 | S2 | S3 | S3-HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|

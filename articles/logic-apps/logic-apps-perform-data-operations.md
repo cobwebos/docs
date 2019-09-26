@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 1b0a7473f1cdfb6aa3533b261979da7c18605a16
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179746"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309390"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>在 Azure 逻辑应用中执行数据操作
 
@@ -175,55 +175,93 @@ ms.locfileid: "71179746"
 
 ### <a name="customize-table-format"></a>自定义表格式
 
-默认情况下，"**列**" 属性被设置为基于数组项自动创建表列。 
-
-若要指定自定义标头和值，请执行以下步骤：
+默认情况下，"**列**" 属性被设置为基于数组项自动创建表列。 若要指定自定义标头和值，请执行以下步骤：
 
 1. 打开 "**列**" 列表，然后选择 "**自定义**"。
 
 1. 在 "**标头**" 属性中，指定要改用的自定义标头文本。
 
-1. 在 "**密钥**" 属性中，指定要改用的自定义值。
+1. 在 "**值**" 属性中，指定要改用的自定义值。
 
-若要引用和编辑数组中的值，可以在 " `@item()` **创建 CSV 表**" 操作的 JSON 定义中使用函数。
+若要从数组中返回值，可以将[ `item()`函数](../logic-apps/workflow-definition-language-functions-reference.md#item)与 "**创建 CSV 表**" 操作一起使用。 在循环中，可以[ `items()`使用函数。](../logic-apps/workflow-definition-language-functions-reference.md#items) `For_each`
 
-1. 在设计器工具栏上，选择 "**代码视图**"。 
-
-1. 在代码编辑器中，编辑操作的`inputs`部分，按所需的方式自定义表输出。
-
-此示例通过`header`将属性设置为空值并取消引用每`columns`个`value`属性，来仅返回数组中的列值，而不返回标头：
-
-```json
-"Create_CSV_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "CSV",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-下面是此示例返回的结果：
+例如，假设您希望只包含属性值而不是数组中属性名称的表列。 若要仅返回这些值，请按照以下步骤在设计器视图或代码视图中工作。 下面是此示例返回的结果：
 
 ```text
-Results from Create CSV table action:
-
 Apples,1
 Oranges,2
 ```
 
-在设计器中，"**创建 CSV 表**" 操作现在以这种方式显示：
+#### <a name="work-in-designer-view"></a>在设计器视图中工作
 
-!["创建 CSV 表"，无列标题](./media/logic-apps-perform-data-operations/create-csv-table-no-column-headers.png)
+在操作中，将**标题**列保留为空。 在 "**值**" 列中的每一行上，取消对所需的每个数组属性的引用。 **值**下面的每一行都返回指定数组属性的所有值，并成为表中的列。
+
+1. 在 "**值**" 下，在所需的每一行上，单击 "编辑" 框，以便显示 "动态内容" 列表。
+
+1. 在动态内容列表中，选择“表达式”。
+
+1. 在 "表达式编辑器" 中，输入此表达式以指定所需的数组属性值，然后选择 **"确定"** 。
+
+   `item()?['<array-property-name>']`
+
+   例如：
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![要取消引用的表达式属性](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+
+1. 对所需的每个数组属性重复前面的步骤。 完成后，操作如以下示例所示：
+
+   ![完成的表达式](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+
+1. 若要将表达式解析为更具描述性的版本，请切换到 "代码" 视图并返回到 "设计器视图"，然后重新打开折叠操作：
+
+   此时将显示 "**创建 CSV 表**" 操作，如下例所示：
+
+   !["创建 CSV 表" 操作，包含解析的表达式和无标头](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+
+#### <a name="work-in-code-view"></a>在代码视图中工作
+
+在操作的 JSON 定义中，在`columns`数组中`header`将属性设置为空字符串。 对于每`value`个属性，取消对所需的每个数组属性的引用。
+
+1. 在设计器工具栏上，选择 "**代码视图**"。
+
+1. 在代码编辑器中，在操作的`columns`数组中，为所需的每个数组值列添加空`header`属性和此`value`表达式：
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   例如：
+
+   ```json
+   "Create_CSV_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "CSV",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. 切换回设计器视图，并重新打开折叠操作。
+
+   "**创建 CSV 表**" 操作现在如下例所示，表达式已解析为更具描述性的版本：
+
+   !["创建 CSV 表" 操作，包含解析的表达式和无标头](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 有关基础工作流定义中此操作的详细信息，请参阅[“表”操作](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action)。
 
@@ -288,55 +326,93 @@ Oranges,2
 
 ### <a name="customize-table-format"></a>自定义表格式
 
-默认情况下，"**列**" 属性被设置为基于数组项自动创建表列。 
-
-若要指定自定义标头和值，请执行以下步骤：
+默认情况下，"**列**" 属性被设置为基于数组项自动创建表列。 若要指定自定义标头和值，请执行以下步骤：
 
 1. 打开 "**列**" 列表，然后选择 "**自定义**"。
 
 1. 在 "**标头**" 属性中，指定要改用的自定义标头文本。
 
-1. 在 "**密钥**" 属性中，指定要改用的自定义值。
+1. 在 "**值**" 属性中，指定要改用的自定义值。
 
-若要引用和编辑数组中的值，可以在 " `@item()` **创建 HTML 表**" 操作的 JSON 定义中使用函数。
+若要从数组中返回值，可以将[ `item()`函数](../logic-apps/workflow-definition-language-functions-reference.md#item)与 "**创建 HTML 表**" 操作一起使用。 在循环中，可以[ `items()`使用函数。](../logic-apps/workflow-definition-language-functions-reference.md#items) `For_each`
 
-1. 在设计器工具栏上，选择 "**代码视图**"。 
-
-1. 在代码编辑器中，编辑操作的`inputs`部分，按所需的方式自定义表输出。
-
-此示例通过`header`将属性设置为空值并取消引用每`columns`个`value`属性，来仅返回数组中的列值，而不返回标头：
-
-```json
-"Create_HTML_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "HTML",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-下面是此示例返回的结果：
+例如，假设您希望只包含属性值而不是数组中属性名称的表列。 若要仅返回这些值，请按照以下步骤在设计器视图或代码视图中工作。 下面是此示例返回的结果：
 
 ```text
-Results from Create HTML table action:
-
-Apples    1
-Oranges   2
+Apples,1
+Oranges,2
 ```
 
-在设计器中，"**创建 HTML 表**" 操作现在以这种方式显示：
+#### <a name="work-in-designer-view"></a>在设计器视图中工作
 
-!["创建 HTML 表"，无列标题](./media/logic-apps-perform-data-operations/create-html-table-no-column-headers.png)
+在操作中，将**标题**列保留为空。 在 "**值**" 列中的每一行上，取消对所需的每个数组属性的引用。 **值**下面的每一行都返回指定属性的所有值，并成为表中的一列。
+
+1. 在 "**值**" 下，在所需的每一行上，单击 "编辑" 框，以便显示 "动态内容" 列表。
+
+1. 在动态内容列表中，选择“表达式”。
+
+1. 在 "表达式编辑器" 中，输入此表达式以指定所需的数组属性值，然后选择 **"确定"** 。
+
+   `item()?['<array-property-name>']`
+
+   例如：
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![要取消引用的表达式属性](./media/logic-apps-perform-data-operations/html-table-expression.png)
+
+1. 对所需的每个数组属性重复前面的步骤。 完成后，操作如以下示例所示：
+
+   ![完成的表达式](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+
+1. 若要将表达式解析为更具描述性的版本，请切换到 "代码" 视图并返回到 "设计器视图"，然后重新打开折叠操作：
+
+   此时将显示 "**创建 HTML 表**" 操作，如下例所示：
+
+   !["创建 HTML 表" 操作，包含解析的表达式和无标头](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+
+#### <a name="work-in-code-view"></a>在代码视图中工作
+
+在操作的 JSON 定义中，在`columns`数组中`header`将属性设置为空字符串。 对于每`value`个属性，取消对所需的每个数组属性的引用。
+
+1. 在设计器工具栏上，选择 "**代码视图**"。
+
+1. 在代码编辑器中，在操作的`columns`数组中，为所需的每个数组值列添加空`header`属性和此`value`表达式：
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   例如：
+
+   ```json
+   "Create_HTML_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "HTML",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. 切换回设计器视图，并重新打开折叠操作。
+
+   "**创建 HTML 表**" 操作现在如下例所示，表达式已解析为更具描述性的版本：
+
+   !["创建 HTML 表" 操作，包含解析的表达式和无标头](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 有关基础工作流定义中此操作的详细信息，请参阅[“表”操作](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action)。
 

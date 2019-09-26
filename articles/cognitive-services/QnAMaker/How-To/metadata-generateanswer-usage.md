@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: c52455d69d027ff8802ef082453a3faaeee54743
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2f9b624ffcc04963046ad817bb2bc9c025161506
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066720"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300247"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和元数据获取答案
 
@@ -59,7 +59,7 @@ QnA Maker 使你能够以键和值对的形式向问题和答案集添加元数�
 
 ## <a name="generateanswer-request-configuration"></a>GenerateAnswer 请求配置
 
-通过 HTTP POST 请求调用 GenerateAnswer。 有关演示如何调用 GenerateAnswer 的示例代码，请参阅[快速入门](../quickstarts/csharp.md)。 
+通过 HTTP POST 请求调用 GenerateAnswer。 有关演示如何调用 GenerateAnswer 的示例代码，请参阅[快速入门](../quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base)。 
 
 POST 请求使用：
 
@@ -236,7 +236,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 |代码|说明|
 |:--|--|
-|2xx|Success|
+|2xx|成功|
 |400|请求的参数不正确，这意味着所需的参数缺失、格式错误或太大|
 |400|请求的正文不正确，这意味着 JSON 缺失、格式错误或太大|
 |401|密钥无效|

@@ -4,14 +4,14 @@ description: 如何定义存储目标，以便 Azure HPC 缓存可以将本地 N
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: a17952e193f3e03becaab044f55637372bac7b0d
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 7df0727a58f3d70289c5060175572dac1bbb4abb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181013"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300026"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -21,11 +21,11 @@ ms.locfileid: "71181013"
 
 请记住，必须可以从缓存的虚拟网络中访问存储导出。 对于本地硬件存储，你可能需要设置一个 DNS 服务器，该服务器可以解析用于 NFS 存储访问的主机名。 在[DNS 访问](hpc-cache-prereqs.md#dns-access)中了解详细信息。
 
-可以在创建 Azure HPC 缓存时添加存储目标，也可以在以后添加存储目标。 此过程略有不同，具体取决于是否要添加 Azure Blob 存储或 NFS 导出。 下面是每种情况的详细信息。
+你可以在创建缓存时或之后添加存储目标。 此过程略有不同，具体取决于是否要添加 Azure Blob 存储或 NFS 导出。 下面是每种情况的详细信息。
 
 ## <a name="add-storage-targets-while-creating-the-cache"></a>创建缓存时添加存储目标
 
-使用缓存创建向导的 "**存储目标**" 选项卡来定义在创建缓存实例时的存储。
+使用 Azure HPC 缓存创建向导的 "**存储目标**" 选项卡来定义创建缓存实例时的存储。
 
 ![存储目标页面的屏幕截图](media/hpc-cache-storage-targets-pop.png)
 
@@ -39,11 +39,13 @@ ms.locfileid: "71181013"
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>添加新的 Azure Blob 存储目标
 
-新的 Blob 存储目标需要空的 Blob 容器或使用 Azure HPC 缓存 cloud 文件系统格式的数据进行填充的容器。 详细了解如何在[将数据移入 Azure blob 存储](hpc-cache-ingest.md)中预加载 Blob 容器。
+新的 Blob 存储目标需要空的 Blob 容器或使用 Azure HPC 缓存云文件系统格式的数据进行填充的容器。 详细了解如何在[将数据移入 Azure blob 存储](hpc-cache-ingest.md)中预加载 Blob 容器。
 
 要定义 Azure Blob 容器，请输入此信息。
 
 !["添加存储目标" 页的屏幕截图，其中填充了新的 Azure Blob 存储目标的信息](media/hpc-cache-add-blob.png)
+
+<!-- need to replace screenshot after note text is updated with both required RBAC roles -->
 
 * **存储目标名称**-设置在 Azure HPC 缓存中标识此存储目标的名称。
 * **目标类型**-选择 " **Blob**"。
@@ -52,7 +54,7 @@ ms.locfileid: "71181013"
   如[添加访问角色](#add-the-access-control-roles-to-your-account)中所述，你将需要授权缓存实例访问存储帐户。
 * **存储容器**-选择此目标的 Blob 容器。
 
-* **虚拟命名空间路径**-为此存储目标设置面向客户端的 filepath。 阅读[配置聚合命名空间](hpc-cache-namespace.md)，了解有关虚拟命名空间功能的详细信息。
+* **虚拟命名空间路径**-为此存储目标设置面向客户端的文件路径。 阅读[配置聚合命名空间](hpc-cache-namespace.md)，了解有关虚拟命名空间功能的详细信息。
 
 完成后，单击 **"确定"** 以添加存储目标。
 
@@ -98,11 +100,16 @@ NFS 存储目标具有一些额外字段，可用于指定如何访问存储导�
 
 * **使用情况模型**-选择一个基于工作流的数据缓存配置文件，如下所述[选择使用模型](#choose-a-usage-model)。
 
-可以创建多个命名空间路径来表示同一 NFS 存储系统上的不同导出，但必须从一个存储目标创建所有这些路径。
+### <a name="nfs-namespace-paths"></a>NFS 命名空间路径
 
-对于每个导出，请填写以下值：
+NFS 存储目标可以有多个虚拟路径，只要每个路径代表同一个存储系统上的不同导出或子目录。
 
-* **虚拟命名空间路径**-为此存储目标设置面向客户端的 filepath。 阅读[配置聚合命名空间](hpc-cache-namespace.md)，了解有关虚拟命名空间功能的详细信息。
+创建一个存储目标的所有路径。
+<!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
+
+对于每个命名空间路径，请填写以下值： 
+
+* **虚拟命名空间路径**-为此存储目标设置面向客户端的文件路径。 阅读[配置聚合命名空间](hpc-cache-namespace.md)，了解有关虚拟命名空间功能的详细信息。
 
 <!--  The virtual path should start with a slash ``/``. -->
 

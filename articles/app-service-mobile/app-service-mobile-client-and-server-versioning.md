@@ -14,22 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: cfa6a363725c35083b32d6de1dd1371777f91907
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7133e8bc7d04b3653b6b788347b7bc5176087f4c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240306"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883472"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>移动应用和移动服务中的客户端与服务器版本控制
 Azure 移动服务的最新版本是 Azure 应用服务的**移动应用**功能。
 
 移动应用客户端和服务器 SDK 最初基于移动服务中的 SDK，但它们彼此*不*兼容。
-也就是说，必须将移动应用  客户端 SDK 与移动应用  服务器 SDK 配合使用，移动服务  也是如此。 可以通过客户端和服务器 SDK 使用的特殊标头值 `ZUMO-API-VERSION` 来强制实施此合约。
+也就是说，必须将移动应用客户端 SDK 与移动应用服务器 SDK 配合使用，移动服务也是如此。 可以通过客户端和服务器 SDK 使用的特殊标头值 `ZUMO-API-VERSION` 来强制实施此合约。
 
 注意：每当本文档提到*移动服务*后端时，该后端不一定要托管在移动服务中。 现在，可以将移动服务迁移到应用服务上运行，而无需更改任何代码，但服务还是使用*移动服务* SDK 版本。
-
-若要了解有关迁移到应用服务无需更改任何代码的详细信息，请参阅文章 [迁移到 Azure 应用服务移动服务]。
 
 ## <a name="header-specification"></a>标头规范
 可以在 HTTP 标头或查询字符串中指定键 `ZUMO-API-VERSION`。 值为版本字符串，格式为 **x.y.z**。

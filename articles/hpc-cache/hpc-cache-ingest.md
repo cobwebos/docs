@@ -4,18 +4,18 @@ description: 如何填充用于 Azure HPC 缓存的 Azure Blob 存储
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 103470861383ff411cfaa670d70412086045a418
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: c18e1c9afab211a8ac076307eefc9074ae7c99d6
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180722"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299992"
 ---
-# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache-preview"></a>将数据移动到 azure HPC 缓存的 Azure Blob 存储（预览版）
+# <a name="move-data-to-azure-blob-storage"></a>将数据移动到 Azure Blob 存储
 
-如果工作流包括将数据移动到 Azure Blob 存储，请确保使用有效的策略通过 Azure HPC 缓存复制数据。
+如果工作流包括将数据移动到 Azure Blob 存储，请确保使用有效的策略。 你可以在将数据定义为存储目标之前预加载新的 Blob 容器中的数据，或添加容器，然后使用 Azure HPC 缓存复制数据。
 
 本文介绍将数据移动到 Blob 存储以用于 Azure HPC 缓存的最佳方式。
 
@@ -23,7 +23,7 @@ ms.locfileid: "71180722"
 
 * Azure HPC 缓存使用专用存储格式在 Blob 存储中组织数据。 这就是 Blob 存储目标必须是新的空容器或以前用于 Azure HPC 缓存数据的 Blob 容器的原因。 （[适用于 Azure 的 Avere vFXT](https://azure.microsoft.com/services/storage/avere-vfxt/)也使用此云文件系统。）
 
-* 如果使用多个客户端和并行操作，则可以通过 Azure HPC 缓存复制数据。 一台客户端的简单复制命令会慢慢地移动数据。
+* 当使用多个客户端和并行操作时，通过 Azure HPC 缓存将数据复制到后端存储目标更有效。 一台客户端的简单复制命令会慢慢地移动数据。
 
 基于 Python 的实用工具可用于将内容加载到 Blob 存储容器中。 若要了解详细信息，请参阅[Blob 存储中的预加载数据](#pre-load-data-in-blob-storage-with-clfsload)。
 
@@ -41,7 +41,7 @@ Avere CLFSLoad 分发中包含详细信息，可从 Azure HPC 缓存团队请求
 
 过程的一般概述：
 
-1. 使用 Python 版本3.6 或更高版本准备 Linux 系统（VM 或物理系统）。 （建议使用 Python 3.7 以获得更好的性能。）
+1. 使用 Python 版本3.6 或更高版本准备 Linux 系统（VM 或物理系统）。 建议使用 Python 3.7 以获得更好的性能。
 1. 在 Linux 系统上安装 Avere-CLFSLoad 软件。
 1. 从 Linux 命令行执行传输。
 
@@ -50,7 +50,7 @@ Avere CLFSLoad 实用工具需要以下信息：
 * 包含 Blob 存储容器的存储帐户 ID
 * 空 Blob 存储容器的名称
 * 允许实用工具写入容器的共享访问签名（SAS）令牌
-* 数据源的本地路径-一个本地目录，其中包含要复制的数据，或包含数据的已装载远程系统的本地路径。
+* 数据源的本地路径-一个本地目录，其中包含要复制的数据，或包含数据的已装载远程系统的本地路径
 
 <!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 

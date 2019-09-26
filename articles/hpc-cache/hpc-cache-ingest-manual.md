@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 217f976d53a7be8931be9f8d21b000549a9ed68a
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: e1ca6fa4ea1ae4a5bf5996e88d32e1e00416f067
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180988"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299977"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC 缓存（预览）数据引入-手动复制方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "71180988"
 
 可以通过针对预定义的文件或路径集在后台一次性运行多个复制命令，在客户端上手动创建多线程复制。
 
-Linux/UNIX ``cp`` 命令包含用于保留所有权和 mtime 元数据的 ``-p`` 参数。 可以选择性地将此参数添加到以下命令。 （添加该参数会增加客户端为了修改元数据而发送到目标文件系统的文件系统调用数。）
+Linux/UNIX ``cp`` 命令包含用于保留所有权和 mtime 元数据的 ``-p`` 参数。 可以选择性地将此参数添加到以下命令。 （添加参数会将从客户端发送到目标文件系统的文件系统调用数增加到修改元数据。）
 
 此简单示例将并行复制两个文件：
 
@@ -81,9 +81,9 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ## <a name="when-to-add-mount-points"></a>何时添加装入点
 
-针对单个目标文件系统装入点运行足够多的并行线程后，在某个时间点，添加更多的线程并不能提高吞吐量。 （将会根据每秒文件数或每秒字节数来测量吞吐量，具体取决于数据类型。）更糟糕的是，过多的线程有时会导致吞吐量下降。  
+在针对单个目标文件系统装入点执行足够的并行线程后，添加更多线程并不会给出更多吞吐量。 （将会根据每秒文件数或每秒字节数来测量吞吐量，具体取决于数据类型。）更糟糕的是，过多的线程有时会导致吞吐量下降。  
 
-发生这种情况时，可以使用相同的远程 filesystem 装载路径，将客户端装入点添加到其他 Azure HPC 缓存装载点：
+发生这种情况时，可以使用相同的远程文件系统装载路径，将客户端装入点添加到其他 Azure HPC 缓存装载点：
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>创建文件清单
 
-了解上述方法（每个目标有多个复制线程，每个客户端有多个目标，每个可通过网络访问的源文件系统有多个客户端）之后，请考虑以下建议：生成文件清单，然后在多个客户端中将这些清单用于复制命令。
+了解以上方法之后（每个目标多个复制线程，每个客户端多个目标，每个网络可访问的源文件系统多个客户端），请考虑以下建议：生成文件清单，然后在多个客户端中将这些清单用于复制命令。
 
 此方案使用 UNIX ``find`` 命令创建文件或目录的清单：
 

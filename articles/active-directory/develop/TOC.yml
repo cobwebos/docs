@@ -344,6 +344,8 @@
               href: v2-permissions-and-consent.md
             - name: 同意框架
               href: consent-framework.md
+            - name: 管理员同意
+              href: v2-admin-consent.md
             - name: 应用程序同意体验
               href: application-consent-experience.md
         - name: 国家云

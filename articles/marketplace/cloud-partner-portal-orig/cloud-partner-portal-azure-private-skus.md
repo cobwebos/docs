@@ -1,18 +1,18 @@
 ---
-title: 专用 Sku 和计划 |Azure Marketplace
+title: 私有 Sku 和计划 |Azure Marketplace
 description: 如何使用专用 SKU 来管理套餐可用性。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 08/15/2019
 ms.author: pabutler
-ms.openlocfilehash: 6efdb1c28777d9230727066fdba03d2850be62b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 940b50cf4a04abacd4d7be2104dd97fb8b3db736
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935908"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883120"
 ---
 <a name="private-skus-and-plans"></a>专用 SKU 和计划
 ============
@@ -37,7 +37,7 @@ ms.locfileid: "64935908"
 
 ![将 SKU 标记为专用](./media/cloud-partner-portal-publish-virtual-machine/markingskuprivate.png)
 
-可以重复使用另一 SKU 中的磁盘，并修改定价或说明。 若要重复使用磁盘，请在回答“此 SKU 是否重复使用公共 SKU 中的映像”提示时选择“是”。 
+可以重复使用另一 SKU 中的磁盘，并修改定价或说明。 若要重新使用磁盘，请选择 "**是**" 作为对 "此 sku 如何从公共 SKU 使用映像" 提示的响应。
 
 如果 SKU 已标记为专用，并且套餐包含带有可重复使用磁盘的其他 SKU，则你需要指明该 SKU 将重复使用另一 SKU 中的磁盘。 此外，需要指定专用 SKU 的目标受众。
 
@@ -47,15 +47,13 @@ ms.locfileid: "64935908"
 <a name="select-an-image"></a>选择映像
 ------------------
 
-可为专用 SKU 提供新磁盘，或重复使用另一 SKU 中已提供的相同磁盘，只需修改定价或说明即可。 若要重复使用磁盘，请在回答“此 SKU 是否重复使用公共 SKU 中的映像”提示时选择“是”。 
+可为专用 SKU 提供新磁盘，或重复使用另一 SKU 中已提供的相同磁盘，只需修改定价或说明即可。 若要重新使用磁盘，请选择 "**是**" 作为对 "此 sku 如何从公共 SKU 使用映像" 提示的响应。
 
-![指明要重复使用映像](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
+![指示重新使用图像](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
 
-确认该 SKU 要重复使用另一 SKU 中的映像之后，指明用作映像源的 SKU。
+在确认 SKU 重用图像后，为映像选择源或*基本*SKU：
 
-以下屏幕截图中的提示显示了如何指明专用 SKU 将重复使用选定 SKU 中的映像：
-
-![选择映像](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
+![选择镜像](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
 
 发布套餐时，选定 SKU 中的映像将在包含自定义费率/条款的专用 SKU ID 下提供。 只有目标受众可以看到专用 SKU。
 
@@ -84,15 +82,93 @@ ms.locfileid: "64935908"
 
 从手动输入切换为 CSV 上传视图，或者从 CSV 切换为手动输入时，不会保留有权访问 SKU 的订阅 ID 的旧列表。 此时会显示一条警告，并且只会在保存套餐时才覆盖该列表。
 
-<a name="sync-private-subscriptions"></a>同步专用订阅
+<a name="managing-private-audiences"></a>管理专用受众
 -------------------------
 
-使用专用 SKU 或计划将订阅添加到已发布的套餐时，无需重新发布该套餐来添加受众信息。 只需使用 Azure 订阅 ID（计划和 SKU）或租户 ID（仅计划）即可添加受众。
+**若要更新受众而不重新发布整个产品/服务，请使用 UI 或 API 进行所需的受众更改，然后启动 "同步专用受众" 操作。**
 
-<a name="previewing-private-offers"></a>预览专用套餐
+如果你的受众为10个或更少订阅，你可以使用 CPP UI 完全管理它。
+
+如果你的受众超过10个订阅，你可以使用 CSV 文件对其进行管理，你可以将其上传到 CPP UI 或使用 API。
+
+如果你使用的是 API，而不想维护 CSV 文件，则可以按照以下说明直接使用 API 来管理受众。
+
+> [!NOTE]
+> 使用 Azure 订阅 ID （计划和 Sku）或租户 ID （仅计划）将受众添加到专用产品/服务。
+
+###  <a name="managing-subscriptions-with-the-api"></a>利用 API 管理订阅
+
+你可以使用 API 上传 CSV 或直接管理你的受众（无需使用 CSV）。 一般情况下，只需检索产品/服务，更新`restrictedAudience`对象，然后将这些更改提交回产品/服务，以便添加或删除访问群体成员。
+
+下面介绍如何以编程方式更新访问群体列表：
+
+1. [检索产品/服务](cloud-partner-portal-api-retrieve-specific-offer.md)数据：
+
+    ```
+    GET https://cloudpartner.azure.com/api/publishers//offers/?api-version=2017-10-31&includeAllPricing=true
+    ```
+
+2. 使用以下 JPath 查询，在产品/服务的每个 SKU 中查找受限制的受众对象：
+
+    ```
+    $.definition.plans[*].restrictedAudience
+    ```
+3. 更新产品/服务的受限受众对象。
+
+    **如果最初已从 CSV 文件上传专用产品/服务的订阅列表：**
+
+    你的*restrictedAudience*对象将如下所示。
+    ```
+    "restrictedAudience": {
+                  "uploadedCsvUri": "{SasUrl}"
+    }
+    ```
+
+    对于每个受限受众对象：
+
+    a. 下载的内容`restrictedAudience.uploadedCsvUri`。 内容只是带有标头的 CSV 文件。 例如：
+
+        type,id,description
+        subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
+        subscriptionId,c0da499c-25ec-4e4b-a42a-6e75635253b9,sub2
+
+    b. 根据需要添加或删除下载的 CSV 文件中的订阅。
+
+    c. 将更新后的 CSV 文件上传到[Azure Blob 存储](../../storage/blobs/storage-blobs-overview.md)或[OneDrive](https://onedrive.live.com)等位置，并创建文件的只读链接。 这将是你的新*SasUrl*。
+
+    d. 用新*SasUrl*更新密钥。`restrictedAudience.uploadedCsvUri`
+
+    **如果从云合作伙伴门户手动输入专用产品/服务的原始订阅列表：**
+
+    你的*restrictedAudience*对象将如下所示：
+
+    ```
+    "restrictedAudience": {
+        "manualEntries": [{
+            "type": "subscriptionId",
+            "id": "541a269f-3df2-486e-8fe3-c8f9dcf28205",
+            "description": "sub1"
+            }, {
+            "type": "subscriptionId",
+            "id": "c0da499c-25ec-4e4b-a42a-6e75635253b9",
+            "description": "sub2"
+            }
+        ]}
+    ```
+
+    a. 对于每个受限受众对象，根据需要在`restrictedAudience.manualEntries`列表中添加或删除条目。
+
+4. 完成更新专用产品/服务的每个 SKU 的所有*restrictedAudience*对象后，请[更新产品/服务](cloud-partner-portal-api-creating-offer.md)：
+
+    ```
+    PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31
+    ```
+    这样，更新的访问群体列表现在生效。
+
+<a name="previewing-private-offers"></a>预览专用产品
 -------------------------
 
-在执行预览/暂存步骤期间，只有套餐级的预览订阅才能访问 SKU。 这属于测试阶段，在此期间，可以验证目标客户所看到的套餐的大致形式，这是所有发布类型的标准做法。
+在执行预览/暂存步骤期间，只有套餐级的预览订阅才能访问 SKU。 在此测试阶段，你可以预览产品/服务，因为它会显示给你的目标客户。
 
 有权访问暂存套餐的套餐级预览订阅：
 

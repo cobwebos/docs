@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d97326430eebcaea64770e99c26ab593b51d5847
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 55da4e3dc9c7f1c1f86a649a654ce41ef59ad839
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476752"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310097"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中设计表
 
@@ -92,7 +92,7 @@ SQL 数据仓库的一个基本功能是它可以跨[分布区](massively-parall
 |:---------------|:--------------------|
 | Fact           | 结合聚集列存储索引使用哈希分布。 在同一个分布列中联接两个哈希表时，可以提高性能。 |
 | 维度      | 对小型表使用复制表。 如果表太大，以致无法在每个计算节点上存储，可以使用哈希分布式表。 |
-| 暂存        | 对临时表使用轮循机制表。 使用 CTAS 执行加载的速度较快。 将数据存储到临时表后，可以使用 INSERT...SELECT 将数据移到生产表。 |
+| 过渡        | 对临时表使用轮循机制表。 使用 CTAS 执行加载的速度较快。 将数据存储到临时表后，可以使用 INSERT...SELECT 将数据移到生产表。 |
 
 ## <a name="table-partitions"></a>表分区
 分区表存储根据数据范围存储表行并对其执行操作。 例如，可以按日、月或年将某个表分区。 可以通过分区消除来提高查询性能，否则查询扫描范围将限制为分区中的数据。 还可以通过分区切换来维护数据。 由于 SQL 数据仓库中的数据已经是分布式的，过多的分区可能会降低查询性能。 有关详细信息，请参阅[分区指南](sql-data-warehouse-tables-partition.md)。  以分区切换的方式切换成不为空的表分区时，若要截断现有数据，可考虑在 [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) 语句中使用 TRUNCATE_TARGET 选项。 以下代码将已转换的日常数据切换成 SalesFact，覆盖任何现有的数据。 
@@ -108,6 +108,9 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 
 ## <a name="statistics"></a>统计信息
 查询优化器在创建用于执行查询的计划时，使用列级统计信息。 若要提高查询性能，必须有基于各个列（尤其是查询联接中使用的列）的统计信息。 [创建统计信息](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)的过程是自动发生的。  但是，更新统计信息的过程不会自动发生。 添加或更改了大量的行之后更新统计信息。 例如，在执行加载后更新统计信息。 有关详细信息，请参阅[统计信息指南](sql-data-warehouse-tables-statistics.md)。
+
+## <a name="primary-key-and-unique-key"></a>主键和唯一键
+仅当同时使用了非聚集和不强制时才支持 PRIMARY KEY。  仅使用不强制执行的唯一约束。  检查[SQL 数据仓库表约束](sql-data-warehouse-table-constraints.md)。
 
 ## <a name="commands-for-creating-tables"></a>用于创建表的命令
 可以创建一个新的空表。 还可以创建一个表并在其中填充 select 语句的结果。 下面是用于创建表的 T-SQL 命令。
@@ -128,11 +131,10 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 ## <a name="unsupported-table-features"></a>不支持的表功能
 SQL 数据仓库支持其他数据库所提供的许多（但不是全部）表功能。  以下列表显示了 SQL 数据仓库不支持的一些表功能。
 
-- 主键、外键、唯一键、检查[表约束](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
-
+- 外键、检查[表约束](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
 - [计算列](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
 - [索引视图](/sql/relational-databases/views/create-indexed-views)
-- [序列](/sql/t-sql/statements/create-sequence-transact-sql)
+- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql)
 - [稀疏列](/sql/relational-databases/tables/use-sparse-columns)
 - 代理键。 使用[标识](sql-data-warehouse-tables-identity.md)实现。
 - [同义词](/sql/t-sql/statements/create-synonym-transact-sql)

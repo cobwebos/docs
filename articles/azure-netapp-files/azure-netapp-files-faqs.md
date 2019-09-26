@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 09/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 66d0d65065f323f53095782e165f179125aa35ac
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ec0fa0ba7c7cad698cda0f7b440415c3dbb0236a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264981"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299622"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -139,6 +139,8 @@ Azure NetApp 文件目前支持每个订阅一个 Active Directory 连接。 此
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp 文件是否支持 Azure Active Directory？ 
 
 支持[Azure Active Directory （AD）域服务](https://docs.microsoft.com/azure/active-directory-domain-services/overview)和[Active Directory 域服务（AD DS）](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) 。 可以将现有 Active Directory 域控制器与 Azure NetApp 文件一起使用。 域控制器可以作为虚拟机或本地通过 ExpressRoute 或 S2S VPN 驻留在 Azure 中。 目前，Azure NetApp 文件不支持[Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/)的 AD join。
+
+如果将 Azure NetApp 文件与 Azure Active Directory 域服务一起使用，则在为 NetApp 帐户`OU=AADDC Computers`配置 Active Directory 时，组织单位路径为。
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>支持哪些版本的 Windows Server Active Directory？
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 2922bbd2e85a671cd17b6042c0b544d3936de884
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 732c93688dbc73cb5a4ce21e4669744be61c5925
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262109"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299552"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
 
@@ -51,7 +51,7 @@ ms.locfileid: "71262109"
 
  >[!NOTE]
  >如果从 Azure 门户中针对你的工作区的[数据菜单 Log Analytics 高级设置](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)中配置收集，则性能计数器的编辑配置文件和 Syslog 将会被覆盖。 要禁用所有代理的配置，则禁用从 Log Analytics“高级设置”收集，若禁用单个代理，则运行以下命令：  
-> `sudo su omsagent -c /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable`
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>安装错误代码
 

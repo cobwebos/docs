@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/20/2019
+ms.date: 9/25/2019
 ms.author: b-juche
-ms.openlocfilehash: a2cfd7937bff10dae4601cb9727cfe43e4d61ca0
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 3d34caba9512dc0c0b20cf10476f5c38a2fab8ce
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178278"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299656"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -95,6 +95,9 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 
     * **组织单位路径**  
         这是将在其中创建 SMB 服务器计算机帐户的组织单位 (OU) 的 LDAP 路径。 即 OU = 第二级, OU = 第一级。 
+
+        如果将 Azure NetApp 文件与 Azure Active Directory 域服务一起使用，则在为 NetApp 帐户`OU=AADDC Computers`配置 Active Directory 时，组织单位路径为。
+        
     * 凭据, 包括**用户名**和**密码**
 
     ![加入 Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)

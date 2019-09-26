@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c9a156c4cc6e334e04f5a604b91b7b05d9aed390
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801372"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71289612"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -69,7 +69,7 @@ ms.locfileid: "70801372"
 | [备份读取器](#backup-reader) | 可以查看备份服务，但是不能进行更改 |
 | [计费读者](#billing-reader) | 允许对帐单数据进行读取访问 |
 | [BizTalk 参与者](#biztalk-contributor) | 允许管理 BizTalk 服务，但不允许访问这些服务。 |
-| [区块链成员节点访问（预览）](#blockchain-member-node-access-preview) | 允许访问区块链成员节点 |
+| [区块链成员节点访问 (预览)](#blockchain-member-node-access-preview) | 允许访问区块链成员节点 |
 | [蓝图参与者](#blueprint-contributor) | 可以管理蓝图定义，但不能对其进行分配。 |
 | [蓝图操作员](#blueprint-operator) | 可以分配现有的已发布蓝图，但无法创建新的蓝图。 注意：仅当使用用户分配的托管标识完成分配时，此操作才有效。 |
 | [CDN 终结点参与者](#cdn-endpoint-contributor) | 可以管理 CDN 终结点，但不能向其他用户授予访问权限。 |
@@ -141,10 +141,10 @@ ms.locfileid: "70801372"
 | [存储 Blob 数据参与者](#storage-blob-data-contributor) | 读取、写入和删除 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [存储 Blob 数据所有者](#storage-blob-data-owner) | 提供对 Azure 存储 blob 容器和数据的完全访问权限，包括分配 POSIX 访问控制。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [存储 Blob 数据读者](#storage-blob-data-reader) | 读取和列出 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
-| [存储 Blob 代理](#storage-blob-delegator) | 获取用户委托密钥，该密钥随后可用于为使用 Azure AD 凭据签名的容器或 blob 创建共享访问签名。 有关详细信息，请参阅[创建用户委托 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 |
+| [存储 Blob 代理](#storage-blob-delegator) | 获取用户委托密钥，该密钥随后可用来为通过 Azure AD 凭据签名的容器或 Blob 创建共享访问签名。 有关详细信息，请参阅[创建用户委托 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 |
 | [存储文件数据 SMB 共享参与者](#storage-file-data-smb-share-contributor) | 允许通过 SMB 在 Azure 存储文件共享中进行读取、写入和删除访问 |
-| [存储文件数据 SMB 共享提升的参与者](#storage-file-data-smb-share-elevated-contributor) | 允许通过 SMB 在 Azure 存储文件共享中读取、写入、删除和修改 NTFS 权限 |
-| [存储文件数据 SMB 共享读取器](#storage-file-data-smb-share-reader) | 允许通过 SMB 对 Azure 文件共享进行读取访问 |
+| [存储文件数据 SMB 共享的权限提升参与者](#storage-file-data-smb-share-elevated-contributor) | 允许通过 SMB 在 Azure 存储文件共享中进行读取、写入、删除和修改 NTFS 权限的访问 |
+| [存储文件数据 SMB 共享读取者](#storage-file-data-smb-share-reader) | 允许通过 SMB 对 Azure 文件共享进行读取访问 |
 | [存储队列数据参与者](#storage-queue-data-contributor) | 读取、写入和删除 Azure 存储队列与队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [存储队列数据消息处理者](#storage-queue-data-message-processor) | 在 Azure 存储队列中扫视、检索和删除消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 | [存储队列数据消息发送者](#storage-queue-data-message-sender) | 向 Azure 存储队列添加消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
@@ -183,8 +183,8 @@ ms.locfileid: "70801372"
 > | **操作** |  |
 > | * | 创建和管理所有类型的资源 |
 > | **不操作** |  |
-> | Microsoft.Authorization/*/Delete | 删除角色和角色分配 |
-> | Microsoft.Authorization/*/Write | 创建角色和角色分配 |
+> | Microsoft.Authorization/*/Delete | 删除角色、策略分配、策略定义和策略集定义 |
+> | Microsoft.Authorization/*/Write | 创建角色、角色分配、策略分配、策略定义和策略集定义 |
 > | Microsoft.Authorization/elevateAccess/Action | 向调用方授予租户范围的“用户访问管理员”访问权限 |
 > | Microsoft.Blueprint/blueprintAssignments/write | 创建或更新任何蓝图项目 |
 > | Microsoft.Blueprint/blueprintAssignments/delete | 删除任何蓝图项目 |
@@ -704,7 +704,7 @@ ms.locfileid: "70801372"
 > | **说明** | 允许管理 Azure Stack 注册。 |
 > | **Id** | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | **操作** |  |
-> | Test-azurestack/注册/产品/*/action |  |
+> | Microsoft.AzureStack/registrations/products/*/action |  |
 > | Microsoft.AzureStack/registrations/products/read | 获取 Azure Stack 市场产品的属性 |
 > | Microsoft.AzureStack/registrations/read | 获取 Azure Stack 注册的属性 |
 > | **不操作** |  |
@@ -749,12 +749,12 @@ ms.locfileid: "70801372"
 > | Microsoft.Storage/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupconfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 验证对受保护项的操作 |
+> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 针对受保护的项的验证操作 |
 > | Microsoft.RecoveryServices/Vaults/write | “创建保管库”操作将创建 "vault" 类型的 Azure 资源 |
 > | Microsoft.RecoveryServices/Vaults/backupOperations/read | 返回恢复服务保管库的备份操作状态。 |
 > | Microsoft.RecoveryServices/Vaults/backupEngines/read | 返回保管库中注册的所有备份管理服务器。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | 获取所有可保护的容器 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | 获取所有可保护容器 |
 > | Microsoft.RecoveryServices/locations/backupStatus/action | 检查恢复服务保管库的备份状态 |
 > | Microsoft.RecoveryServices/locations/backupPreValidateProtection/action |  |
 > | Microsoft.RecoveryServices/locations/backupValidateFeatures/action | 验证功能 |
@@ -789,15 +789,15 @@ ms.locfileid: "70801372"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 获取受保护项目的恢复点。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 还原受保护项目的恢复点。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 吊销受保护项的即时项恢复 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 创建备份受保护项 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | 返回所有已注册的容器 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 创建受备份保护的项 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | 返回全部已注册的容器 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | 刷新容器列表 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | 创建和管理备份作业 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 导出作业 |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | 创建和管理备份管理操作的结果 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 获取策略操作的结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回所有保护策略 |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回全部保护策略 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | 创建和管理可备份的项 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | 返回所有受保护项目的列表。 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | 返回全部属于订阅的容器 |
@@ -816,15 +816,15 @@ ms.locfileid: "70801372"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Storage/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 验证对受保护项的操作 |
+> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 针对受保护的项的验证操作 |
 > | Microsoft.RecoveryServices/Vaults/backupOperations/read | 返回恢复服务保管库的备份操作状态。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | 获取策略操作的状态。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | 创建已注册的容器 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | 在容器内进行工作负载的查询 |
 > | Microsoft.RecoveryServices/Vaults/backupEngines/read | 返回保管库中注册的所有备份管理服务器。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | 创建备份保护意向 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | 创建一个备份保护意向 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | 获取备份保护意向 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | 获取所有可保护的容器 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | 获取所有可保护容器 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | 获取容器中的所有项 |
 > | Microsoft.RecoveryServices/locations/backupStatus/action | 检查恢复服务保管库的备份状态 |
 > | Microsoft.RecoveryServices/locations/backupPreValidateProtection/action |  |
@@ -856,14 +856,14 @@ ms.locfileid: "70801372"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 返回对受保护项目执行的操作的状态。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护的项的对象详细信息 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 获取受保护项目的恢复点。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | 返回所有已注册的容器 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | 返回全部已注册的容器 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | 返回作业操作的结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/read | 返回所有作业对象 |
+> | Microsoft.RecoveryServices/Vaults/backupJobs/read | 返回全部作业对象 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 导出作业 |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | 返回恢复服务保管库的备份操作结果。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 获取策略操作的结果。 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回所有保护策略 |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回全部保护策略 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | 返回所有受保护项目的列表。 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | 返回全部属于订阅的容器 |
 > | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | 返回恢复服务的受保护项和受保护服务器的摘要。 |
@@ -1474,7 +1474,7 @@ ms.locfileid: "70801372"
 > | Microsoft.Compute/virtualMachines/*/read | 读取虚拟机属性（VM 大小、运行时状态、VM 扩展等） |
 > | Microsoft.Compute/virtualMachines/deallocate/action | 关闭虚拟机并释放计算资源 |
 > | Microsoft.Compute/virtualMachines/read | 获取虚拟机的属性 |
-> | Microsoft.Compute/virtualMachines/restart/action | 重启虚拟机 |
+> | Microsoft.Compute/virtualMachines/restart/action | 重新启动虚拟机 |
 > | Microsoft.Compute/virtualMachines/start/action | 启动虚拟机 |
 > | Microsoft.DevTestLab/*/read | 读取实验室属性 |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | 在实验室中认领随机可认领虚拟机。 |
@@ -2266,32 +2266,32 @@ ms.locfileid: "70801372"
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | 检查结构的一致性 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/read | 读取任何结构 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/reassociateGateway/action | 重新关联网关 |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | 续订 Fabric 的证书 |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | 续订 Fabric 证书 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read | 读取任何网络 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/read | 读取任何网络映射 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/read | 读取任何保护容器 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | 读取任何可保护项 |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | 应用还原点 |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | 故障转移提交 |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | 应用恢复点 |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | 故障切换提交 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | 计划内故障切换 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | 读取任何受保护项 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | 读取任何复制恢复点 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/action | 修复复制 |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/action | 重新保护受保护的项 |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/action | 重新保护受保护项 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | 测试故障切换 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | 测试故障转移清理 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | 故障转移 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | 更新移动服务 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/read | 读取任何保护容器映射 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/read | 读取任何恢复服务提供程序 |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/refreshProvider/action | 刷新提供程序 |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/refreshProvider/action | 恢复提供程序 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationStorageClassifications/read | 读取任何存储分类 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/read | 读取任何存储分类映射 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | 读取任何 vCenter |
 > | Microsoft.RecoveryServices/vaults/replicationJobs/* | 创建和管理复制作业 |
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/read | 读取任何策略 |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/failoverCommit/action | 故障转移提交恢复计划 |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/plannedFailover/action | 计划内故障转移恢复计划 |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/plannedFailover/action | 计划内的故障转移恢复计划 |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | 读取任何恢复计划 |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | 重新保护恢复计划 |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action | 测试故障转移恢复计划 |
@@ -2698,7 +2698,7 @@ ms.locfileid: "70801372"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 获取用户委托密钥，该密钥随后可用于为使用 Azure AD 凭据签名的容器或 blob 创建共享访问签名。 有关详细信息，请参阅[创建用户委托 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 |
+> | **说明** | 获取用户委托密钥，该密钥随后可用来为通过 Azure AD 凭据签名的容器或 Blob 创建共享访问签名。 有关详细信息，请参阅[创建用户委托 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 |
 > | **Id** | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
 > | **操作** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | 返回 Blob 服务的用户委托密钥。 |
@@ -2720,31 +2720,31 @@ ms.locfileid: "70801372"
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | 返回文件/文件夹或文件/文件夹的列表。 |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | 返回某个文件/文件夹，或文件/文件夹列表。 |
 > | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/write | 返回写入文件或创建文件夹的结果。 |
-> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/delete | 返回文件/文件夹的删除结果。 |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/delete | 返回删除文件/文件夹的结果。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="storage-file-data-smb-share-elevated-contributor"></a>存储文件数据 SMB 共享提升的参与者
+## <a name="storage-file-data-smb-share-elevated-contributor"></a>存储文件数据 SMB 共享的权限提升参与者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许通过 SMB 在 Azure 存储文件共享中读取、写入、删除和修改 NTFS 权限 |
+> | **说明** | 允许通过 SMB 在 Azure 存储文件共享中进行读取、写入、删除和修改 NTFS 权限的访问 |
 > | **Id** | a7264617-510b-434b-a828-9731dc254ea7 |
 > | **操作** |  |
 > | *无* |  |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | 返回文件/文件夹或文件/文件夹的列表。 |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | 返回某个文件/文件夹，或文件/文件夹列表。 |
 > | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/write | 返回写入文件或创建文件夹的结果。 |
-> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/delete | 返回文件/文件夹的删除结果。 |
-> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermissions/action | 返回对文件/文件夹的修改权限的结果。 |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/delete | 返回删除文件/文件夹的结果。 |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermissions/action | 返回修改文件/文件夹权限的结果。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="storage-file-data-smb-share-reader"></a>存储文件数据 SMB 共享读取器
+## <a name="storage-file-data-smb-share-reader"></a>存储文件数据 SMB 共享读取者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2755,7 +2755,7 @@ ms.locfileid: "70801372"
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | 返回文件/文件夹或文件/文件夹的列表。 |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | 返回某个文件/文件夹，或文件/文件夹列表。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -2928,11 +2928,11 @@ ms.locfileid: "70801372"
 > | Microsoft.Network/virtualNetworks/read | 获取虚拟网络定义 |
 > | Microsoft.Network/virtualNetworks/subnets/join/action | 加入虚拟网络。 不可发出警报。 |
 > | Microsoft.RecoveryServices/locations/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | 创建备份保护意向 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | 创建一个备份保护意向 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护的项的对象详细信息 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 创建备份受保护项 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回所有保护策略 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 创建受备份保护的项 |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回全部保护策略 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/write | 创建保护策略 |
 > | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作可获取表示 "vault" 类型 Azure 资源的对象 |
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |

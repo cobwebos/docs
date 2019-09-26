@@ -5,21 +5,22 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 5b482d00990add365a90f36bf6e8d047dc50efc0
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 09/25/2019
+ms.openlocfilehash: ea7880d051303afad01ad8ba4a2d68d7331c6a89
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467820"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291146"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的日期
 Azure Cosmos DB 通过本机 [JSON](https://www.json.org) 数据模型提供架构灵活性和丰富的索引。 所有 Azure Cosmos DB 资源（包括数据库、容器、文档和存储过程）均作为 JSON 文档进行建模和存储。 为使代码可移植，JSON（及 Azure Cosmos DB）仅支持一小组基本类型：字符串、数字、布尔值、数组、对象和 Null。 但是，JSON 具有相当的灵活性，允许开发人员和框架使用这些基元并将其编写为对象或数组，以便表示更复杂的类型。 
 
-除了基本类型，许多应用程序还需要表示日期和时间戳的 [DateTime](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx) 类型。 本文介绍开发人员可如何使用 .NET SDK 在 Azure Cosmos DB 中存储、检索和查询日期。
+除了基本类型，许多应用程序还需要 DateTime 类型来表示日期和时间戳。 本文介绍开发人员可如何使用 .NET SDK 在 Azure Cosmos DB 中存储、检索和查询日期。
 
 ## <a name="storing-datetimes"></a>存储 DateTime
-默认情况下，[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 会将 DateTime 值串行化为 [ISO 8601](https://www.iso.org/iso/catalogue_detail?csnumber=40874) 字符串。 由于以下原因，大多数应用程序可以使用 DateTime 的默认字符串表示形式：
+
+Azure Cosmos DB 的作用域限定为不包括 DateTime 类型的 JSON 类型。 因此，在 Azure Cosmos DB 中，日期必须存储为字符串。 目前，Azure Cosmos DB 不支持日期的本地化。 Azure Cosmos DB `YYYY-MM-DDThh:mm:ss.sssZ`中的日期时间字符串的建议格式遵循 ISO 8601 UTC 标准。 设置此格式的字符串格式将允许排序日期按字典顺序。 处理非 UTC 日期的逻辑必须由客户端定义。 由于以下原因，大多数应用程序可以使用 DateTime 的默认字符串表示形式：
 
 * 字符串可以进行比较，而 DateTime 值的相对顺序在这些值转换为字符串时得以保留。 
 * 此方法不需要进行 JSON 转换所需的任何自定义代码或属性。

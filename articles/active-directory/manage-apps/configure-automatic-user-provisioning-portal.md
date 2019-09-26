@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba51e10503a3aab7afa2e9639453448d03b91852
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170477"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315268"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
 
@@ -88,7 +88,6 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 选择 "**清除当前状态并重新开始同步**" 复选框，然后选择 "**保存**到"：
 
 * 停止预配服务
-* 转储 Azure AD 管理的帐户的缓存数据
 * 重新启动服务并再次运行初始周期
 
 此选项允许管理员重新启动预配部署过程。

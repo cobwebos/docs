@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086585"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314990"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD 域服务的虚拟网络设计注意事项和配置选项
 
@@ -46,7 +46,7 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 * Azure AD DS 必须部署在其自己的子网中。 请勿使用现有子网或网关子网。
 * 网络安全组是在部署 Azure AD DS 托管域的过程中创建的。 此网络安全组包含正确的服务通信所需的规则。
     * 不要使用您自己的自定义规则创建或使用现有的网络安全组。
-* Azure AD DS 需要5到7个 IP 地址。 请确保子网 IP 地址范围可提供此数量的地址。
+* Azure AD DS 需要 3-5 IP 地址。 请确保子网 IP 地址范围可提供此数量的地址。
     * 限制可用 IP 地址可能会阻止 Azure AD 域服务维护两个域控制器。
 
 以下示例关系图概述了 Azure AD DS 具有其自己的子网的有效设计，提供了用于外部连接的网关子网，并且应用程序工作负载位于虚拟网络内连接的子网中：

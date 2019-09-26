@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 99d21e773fee59780d82004eaa7213598fe7c8bb
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 202414260deacc4b196cd789e923ff00ca650b4d
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066142"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315215"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 ADFS 作为 SAML 标识提供者
 
@@ -188,15 +188,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 
 ## <a name="create-an-azure-ad-b2c-application"></a>创建 Azure AD B2C 应用程序
 
-通过在租户中创建的应用程序与 Azure AD B2C 进行通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-4. 选择“应用程序”，然后选择“添加”。
-5. 输入应用程序的名称，例如 *testapp1*。
-6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`。
-7. 单击“创建”。
+[!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 ### <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 

@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72d98e0ca4f75835e7dcc2e7a14b037ccf0d6d7f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 6141f898a33b4b37c2a1f16e115b184e21163a5a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840558"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300693"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>计划 Azure 时序见解预览版环境
 
@@ -67,7 +67,7 @@ Azure 时序见解采用即用即付业务模型。 有关费用和容量的详�
 
 ## <a name="understand-the-time-series-model"></a>了解时序模型
 
-现在可以配置时序见解环境的时序模型。 通过新模型可以轻松查找和分析 IoT 数据。 它可实现时序数据的特选、维护和扩充，并可帮助准备供使用者使用的数据集。 该模型使用时序 Id, 该 Id 映射到将唯一资源与变量 (称为类型和层次结构) 关联的实例。 了解新的[时序模型](./time-series-insights-update-tsm.md)。
+现在可以配置时序见解环境的时序模型。 通过新模型可以轻松查找和分析 IoT 数据。 它可实现时序数据的特选、维护和扩充，并可帮助准备供使用者使用的数据集。 该模型使用时序 Id，该 Id 映射到将唯一资源与变量（称为类型和层次结构）关联的实例。 了解新的[时序模型](./time-series-insights-update-tsm.md)。
 
 模型是动态的，因此可以随时生成。 若要快速开始，请先生成并上传它，然后再将数据推送到时序见解。 若要生成模型，请参阅[使用时序模型](./time-series-insights-update-how-to-tsm.md)。
 

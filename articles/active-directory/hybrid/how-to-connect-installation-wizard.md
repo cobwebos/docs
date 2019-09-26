@@ -13,19 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 07/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff2caae7cb387f4f0d88cf059d01ad28861b9ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348354"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290935"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同步：再次运行安装向导
 首次运行 Azure AD Connect 安装向导时，该向导将逐步引导用户配置安装。 如果再次运行安装向导，它会提供维护选项。
+
+>[!IMPORTANT]
+>请注意，同步正在进行时，无法运行安装向导。  请在启动向导之前验证同步是否未运行。
 
 可以在“开始”菜单中找到名为 **Azure AD Connect** 的安装向导。
 
@@ -37,7 +40,7 @@ ms.locfileid: "60348354"
 
 如果已使用 Azure AD Connect 安装 ADFS，则会有更多选项。 [ADFS 管理](how-to-connect-fed-management.md#manage-ad-fs)中介绍了其他 ADFS 选项。
 
-请选择其中一项任务，然后单击“下一步”  继续。
+请选择其中一项任务，然后单击“下一步”继续。
 
 > [!IMPORTANT]
 > 打开安装向导时，同步引擎中的所有操作都会挂起。 请确保在完成配置更改后，立即关闭安装向导。
@@ -49,7 +52,7 @@ ms.locfileid: "60348354"
 
 ![列出所有选项及其状态的页面](./media/how-to-connect-installation-wizard/viewconfig.png)
 
-单击“上一步”可以后退。  如果选择“退出”  ，将关闭安装向导。
+单击“上一步”可以后退。 如果选择“退出”，将关闭安装向导。
 
 ## <a name="customize-synchronization-options"></a>自定义同步选项
 此选项可用于更改同步配置。 会在自定义配置安装路径中看到一部分选项。 即使一开始是使用快速安装也会看到此选项。
@@ -82,7 +85,7 @@ ms.locfileid: "60348354"
 ![同时显示过渡模式当前状态的选项](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
 
 ## <a name="change-user-sign-in"></a>更改用户登录
-通过此选项，可将用户登录方式改为密码哈希同步、直通身份验证或联合。 但不能更改为“不配置”。 
+通过此选项，可将用户登录方式改为密码哈希同步、直通身份验证或联合。 但不能更改为“不配置”。
 
 有关此选项的详细信息，请参阅[用户登录](plan-connect-user-signin.md#changing-the-user-sign-in-method)。
 

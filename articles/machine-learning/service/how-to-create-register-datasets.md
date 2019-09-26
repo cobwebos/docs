@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 7a6a2c35360f59c8c2e3d0a75e646ae76c0c9de2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 2034701008396f524e5b058ddb726ddce89e4e32
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218298"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300620"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>在 Azure 机器学习中创建和访问数据集（预览）
 
@@ -172,7 +172,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 
 ## <a name="register-datasets"></a>注册数据集
 
-若要完成创建过程，请将数据集注册到工作区：
+若要完成创建过程，请将数据集注册到工作区。
 
 [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-)使用方法可将数据集注册到工作区，以便与其他人共享数据集，并在各种试验中重复使用。
 
@@ -187,7 +187,8 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="version-datasets"></a>版本数据集
 
-可以通过创建新的版本，将新的数据集注册到相同的名称。 数据集版本是将数据的状态做成书签的一种方式，因此可以应用特定版本的数据集进行试验或未来的复制。 考虑版本控制的典型方案：
+可以通过创建新的版本，将新的数据集注册到相同的名称。 数据集版本是将数据的状态做成书签的一种方式，因此可以应用特定版本的数据集进行试验或未来的复制。 用于版本控制的典型方案包括： 
+
 * 新数据可用于重新训练。
 * 在应用不同的数据准备或功能设计方法时。
 

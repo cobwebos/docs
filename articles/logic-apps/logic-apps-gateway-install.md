@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: a070b224b0cb1378f0ba6729af33840715dc0a29
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7384f058c82699095e1209e677dc5c6f61b57178
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087724"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309855"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -58,7 +58,7 @@ ms.locfileid: "71087724"
   * 用于后台处理的固态硬盘（SSD）存储
 
   > [!NOTE]
-  > 网关不支持 Windows Server 2016 Core。
+  > 网关不支持 Windows Server Core。
 
 * **相关注意事项**
 
@@ -74,6 +74,8 @@ ms.locfileid: "71087724"
   * 你为网关安装选择的区域与你稍后为逻辑应用创建 Azure 网关资源时必须选择的位置相同。 默认情况下，此区域与管理 Azure 帐户的 Azure AD 租户位于同一位置。 但是，你可以在安装网关的过程中更改该位置。
 
   * 网关有两种模式：标准模式和个人模式，仅适用于 Power BI。 在同一台计算机上, 不能有多个网关在同一模式下运行。
+
+  * Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更新。 但是，这些操作会[限制其负载大小](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)。
 
 <a name="install-gateway"></a>
 

@@ -119,7 +119,7 @@ az webapp up --location westeurope --name <app_name>
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
 
-在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
+在左侧菜单中单击**App Services**，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-get-started-html/portal1.png)
 

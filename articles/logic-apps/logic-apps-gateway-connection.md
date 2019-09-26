@@ -9,16 +9,18 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: dcb0fe4da968408a261e387c636cc548fa757a09
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: d397adfb6ed2d3aef93bd40d14eb0ad199cdb90c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036653"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309358"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
-若要从逻辑应用中访问本地数据源，请在 Azure 门户中创建本地数据网关资源。 然后，逻辑应用可以使用[本地连接器](../connectors/apis-list.md#on-premises-connectors)。 本文说明在[本地计算机上下载并安装网关](../logic-apps/logic-apps-gateway-install.md)*后*如何创建 Azure 网关资源。 有关网关的详细信息，请参阅[网关的工作](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)原理。
+若要从逻辑应用中访问本地数据源，请在 Azure 门户中创建本地数据网关资源。 然后，逻辑应用可以使用[本地连接器](../connectors/apis-list.md#on-premises-connectors)。 Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更新。 但是，这些操作会[限制其负载大小](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)。
+
+本文说明在[本地计算机上下载并安装网关](../logic-apps/logic-apps-gateway-install.md)*后*如何创建 Azure 网关资源。 有关网关的详细信息，请参阅[网关的工作](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)原理。 
 
 > [!TIP]
 > 若要连接到 Azure 虚拟网络，请考虑改为创建[*集成服务环境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 

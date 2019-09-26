@@ -3,18 +3,18 @@ title: 保护对密钥保管库的访问 - Azure 密钥保管库 | Microsoft Doc
 description: 管理 Azure Key Vault、密钥和机密的访问权限。 介绍 Key Vault 的身份验证和授权模型以及如何保护 Key Vault。
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 67925f2123f2a4f2524002eb075754c38fad4b42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4857cda7c3387e72be8837422469888adc5504d1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118985"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883109"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -58,7 +58,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 ## <a name="management-plane-and-rbac"></a>管理平面和 RBAC
 
-在管理平面，使用 RBAC （基于角色的访问控制） 进行授权调用方可以执行的操作。 在 RBAC 模型中，每个 Azure 订阅都有一个 Azure AD 实例。 可以从此目录向用户、组和应用程序授予访问权限。 授予访问权限以管理 Azure 订阅中使用 Azure 资源管理器部署模型的资源。 若要授予访问权限，请使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI](../cli-install-nodejs.md)、[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure 资源管理器 REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
+在管理平面中，可以使用 RBAC （基于角色的访问控制）来授权调用方可以执行的操作。 在 RBAC 模型中，每个 Azure 订阅都有一个 Azure AD 实例。 可以从此目录向用户、组和应用程序授予访问权限。 授予访问权限以管理 Azure 订阅中使用 Azure 资源管理器部署模型的资源。 若要授予访问权限，请使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI](../cli-install-nodejs.md)、[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure 资源管理器 REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
 
 可以在资源组中创建密钥保管库，并使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 通过分配适当的 RBAC 角色在特定范围级别授予访问权限。 若要授予用户管理密钥保管库的访问权限，请为特定范围的用户分配预定义的 `key vault Contributor` 角色。 可以将以下范围级别分配给 RBAC 角色：
 
@@ -123,9 +123,9 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 下表总结了我们的角色和应用程序的访问权限。 
 
-| 角色 | 管理平面权限 | 数据平面权限 |
+| Role | 管理平面权限 | 数据平面权限 |
 | --- | --- | --- |
-| 安全团队 | 密钥保管库参与者 | 密钥：备份、创建、删除、获取、导入、列出、还原<br>机密：所有操作 |
+| 安全团队 | Key Vault 参与者 | 密钥：备份、创建、删除、获取、导入、列出、还原<br>机密：所有操作 |
 | 开发人员和&nbsp;操作人员 | 密钥保管库部署权限<br><br> **注意**：此权限允许已部署的 VM 从密钥保管库提取机密。 | 无 |
 | 审核人员 | 无 | 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 |
 | 应用程序 | 无 | 密钥：签名<br>机密：获取 |

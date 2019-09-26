@@ -1,15 +1,15 @@
 ---
-author: davidmu1
+author: mmacy
 ms.service: active-directory-b2c
 ms.topic: include
 ms.date: 03/19/2019
-ms.author: davidmu
-ms.openlocfilehash: 9c0f94af62e8d4688a676415b32a6a7ebf82d453
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.author: marsma
+ms.openlocfilehash: 46b0e499b7928bc88114b16d75dd2d8a99dca6a8
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67173472"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310576"
 ---
 > [!NOTE]
-> 在 Azure Active Directory B2C 中,[自定义策略](../articles/active-directory-b2c/active-directory-b2c-get-started-custom.md)主要用于解决复杂的情况。 大多数情况下，建议使用内置的[用户流](../articles/active-directory-b2c/active-directory-b2c-reference-policies.md)。
+> 在 Azure Active Directory B2C 中，[自定义策略](../articles/active-directory-b2c/active-directory-b2c-get-started-custom.md)主要用于解决复杂的情况。 大多数情况下，建议使用内置的[用户流](../articles/active-directory-b2c/active-directory-b2c-reference-policies.md)。

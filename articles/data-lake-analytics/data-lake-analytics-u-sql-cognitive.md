@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Data Lake Analytics 中使用 U-SQL 认知功能
+title: Azure Data Lake Analytics 中的 U-SQL 认知功能
 description: 了解如何使用 U-SQL 的认知功能智能
 services: data-lake-analytics
 author: saveenr
@@ -9,12 +9,12 @@ ms.assetid: 019c1d53-4e61-4cad-9b2c-7a60307cbe19
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: b8d43188c337e0c12db60b51dee053ef7259701a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb64f08fae3a211b3ec26177ab2604edc20a8fdd
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812904"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315674"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>U-SQL 的认知功能入门
 
@@ -22,14 +22,14 @@ ms.locfileid: "60812904"
 U-SQL 的认知功能使开发人员可以在其大数据程序中使用智能。 
 
 提供以下示例使用的认知功能：
-* 图像处理：[检测人脸](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* 图像处理：[检测情感](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
-* 图像处理：[检测到对象 （标记）](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
-* 图像处理：[OCR（光学字符识别）](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* 文本：[关键短语提取和情绪分析](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
+* 映像文件[检测人脸](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* 映像文件[检测情感](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
+* 映像文件[检测对象（标记）](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
+* 映像文件[OCR（光学字符识别）](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* 全文[关键短语提取 & 情绪分析](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
 
 ## <a name="registering-cognitive-extensions-in-u-sql"></a>在 U-SQL 中注册认知扩展
-在开始之前，请按照这篇文章在 U-SQL 中注册认知扩展中的步骤操作：[在 U-SQL 中注册认知扩展](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions)。
+在开始之前，请按照本文中的步骤操作，在 U SQL 中注册认知扩展：[在 U SQL 中注册认知扩展](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions)。
 
 ## <a name="next-steps"></a>后续步骤
 * [U-SQL/认知示例](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)

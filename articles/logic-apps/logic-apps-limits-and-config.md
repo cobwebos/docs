@@ -1,5 +1,5 @@
 ---
-title: 限制和配置 - Azure 逻辑应用 | Microsoft Docs
+title: 限制和配置 - Azure 逻辑应用
 description: Azure 逻辑应用的服务限制和配置值
 services: logic-apps
 ms.service: logic-apps
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 1479c6665b5d68e0fa16ece7e37f4e2a2457c69a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242364"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309797"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -103,14 +103,14 @@ ms.locfileid: "70242364"
 | 每 5 分钟的内容吞吐量 | 600 MB | 可根据需要在多个应用中分发工作负荷。 |
 ||||
 
-### <a name="integration-service-environment-ise"></a>Integration service 环境（ISE）
+### <a name="integration-service-environment-ise"></a>Integration service 环境 (ISE)
 
 下面是高级 SKU 的吞吐量限制：
 
 | 姓名 | 限制 | 说明 |
 |------|-------|-------|
-| 基本单位执行限制 | 当基础结构容量达到 80% 时系统受到限制 | 提供 ~ 4000 每分钟执行的操作，即每月约160000000个操作执行 | |
-| 缩放单位执行限制 | 当基础结构容量达到 80% 时系统受到限制 | 每个缩放单位每分钟可提供 ~ 2000 的其他操作执行次数，每月大约80000000个操作执行 | |
+| 基本单位执行限制 | 当基础结构容量达到 80% 时系统受到限制 | 提供 ~ 4000 每分钟执行的操作, 即每月约160000000个操作执行 | |
+| 缩放单位执行限制 | 当基础结构容量达到 80% 时系统受到限制 | 每个缩放单位每分钟可提供 ~ 2000 的其他操作执行次数, 每月大约80000000个操作执行 | |
 | 可添加的最大缩放单位 | 10 | |
 ||||
 
@@ -118,6 +118,12 @@ ms.locfileid: "70242364"
 
 > [!NOTE]
 > 由于此 SKU 没有任何服务级别协议（SLA）或扩展功能，[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)没有发布的限制。 仅将此 SKU 用于试验、开发和测试，而不是生产或性能测试。
+
+<a name="gateway-limits"></a>
+
+## <a name="gateway-limits"></a>网关限制
+
+Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更新。 但是，这些操作会[限制其负载大小](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)。
 
 <a name="request-limits"></a>
 
@@ -178,13 +184,13 @@ ms.locfileid: "70242364"
 
 ## <a name="integration-account-limits"></a>集成帐户限制
 
-每个 Azure 订阅都有以下集成帐户限制：
+每个 Azure 订阅都有以下集成帐户限制:
 
 * 每个 Azure 区域一个[免费层](../logic-apps/logic-apps-pricing.md#integration-accounts)集成帐户
 
-* 1000集成帐户总数，包括[开发人员和高级 sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)上任何[integration SERVICE 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的集成帐户。
+* 1000集成帐户总数, 包括[开发人员和高级 sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)上任何[integration SERVICE 环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的集成帐户。
 
-* 每个 ISE，无论是[开发人员还是高级版](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)，都限于5个集成帐户：
+* 每个 ISE, 无论是[开发人员还是高级版](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), 都限于5个集成帐户:
 
   | ISE SKU | 集成帐户限制 |
   |---------|----------------------------|
@@ -192,13 +198,13 @@ ms.locfileid: "70242364"
   | **开发人员** | 5总计-[免费](../logic-apps/logic-apps-pricing.md#integration-accounts)（限制为1个帐户）和[标准](../logic-apps/logic-apps-pricing.md#integration-accounts)组合或所有标准帐户。 不允许使用基本帐户。 使用[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)进行试验、开发和测试，但不适用于生产或性能测试。 |
   |||
 
-额外费用适用于你在 ISE 附带的集成帐户之外添加的集成帐户。 若要了解 ISEs 的定价和计费工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
+额外费用适用于你在 ISE 附带的集成帐户之外添加的集成帐户。 若要了解 ISEs 的定价和计费工作原理, 请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
 <a name="artifact-number-limits"></a>
 
 ### <a name="artifact-limits-per-integration-account"></a>每个集成帐户的项目限制
 
-下面是每个集成帐户层项目数的限制。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 若要了解集成帐户的定价和计费工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts)。
+下面介绍对每个集成帐户层的项目数量限制。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 若要了解集成帐户的定价和计费工作原理, 请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts)。
 
 > [!NOTE]
 > 仅将免费层用于探索应用场景，而非生产应用场景。 此层限制吞吐量和使用情况，并且不具有服务级别协议 (SLA)。

@@ -238,9 +238,7 @@
 - name: 参考体系结构
   items:
     - name: 概述
-      href: iot-accelerators-architecture-overview.md
-    - name: 下载
-      href: 'https://aka.ms/iotrefarchitecture'
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
     - name: 合作伙伴实现
       items:
         - name: Intel 连接的物流平台

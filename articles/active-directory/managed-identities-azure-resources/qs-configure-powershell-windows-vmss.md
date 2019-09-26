@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/27/2017
+ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4917720af2396b68ccd36cc0410c9acbbba2d9b2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5fa3100cae9b1a2c9ca320776cc357f3720b3473
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60304559"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310000"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>使用 PowerShell 在虚拟机规模集上配置 Azure 资源的托管标识
 
@@ -34,9 +34,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)  。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 若要执行本文中的管理操作，帐户需要以下基于 Azure 角色的访问控制分配：
 
@@ -56,13 +56,12 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 要创建启用了系统分配托管标识的虚拟机规模集，请执行以下操作：
 
-1. 请参阅*示例 1*中[新建 AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet 参考文章，以便创建虚拟机规模集设置系统分配的托管标识。  将参数 `-IdentityType SystemAssigned` 添加到 `New-AzVmssConfig` cmdlet：
+1. 请参阅 [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet 参考文章中的示例 1，以创建具有系统分配的托管标识的虚拟机规模集。  将参数 `-IdentityType SystemAssigned` 添加到 `New-AzVmssConfig` cmdlet：
 
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
-> [!NOTE]
-> 对于 Azure 资源虚拟机规模集扩展，但将很快被弃用，可能会选择性地预配托管的标识。 我们建议使用 Azure 实例元数据标识终结点进行身份验证。 有关详细信息，请参阅[停止使用 VM 扩展并开始使用 Azure IMDS 终结点进行身份验证](howto-migrate-vm-extension.md)。
+
 
 
 ## <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>在现有 Azure 虚拟机规模集上启用系统分配的托管标识
@@ -81,8 +80,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
    ```
 
-> [!NOTE]
-> 对于 Azure 资源虚拟机规模集扩展，但将很快被弃用，可能会选择性地预配托管的标识。 我们建议使用 Azure 实例元数据标识终结点进行身份验证。 有关详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 终结点进行身份验证](howto-migrate-vm-extension.md)。
+
 
 ### <a name="disable-the-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>从 Azure 虚拟机规模集中禁用系统分配的托管标识
 

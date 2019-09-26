@@ -9,17 +9,17 @@ ms.reviewer: klam
 ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 53b68a5dc72277c9fd44b36d346e5b5c91b53a93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1ad1d6b9f59fa51b9e27fe5b70ce4e2a5d36f3ad
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344370"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300877"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Azure 计划程序 PowerShell cmdlet 参考
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换即将停用的 Azure 计划程序。 若要计划作业，请[改用 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -54,7 +54,7 @@ Get-Help <cmdlet name> -Examples
 Get-Help <cmdlet name> -Full
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [什么是 Azure 计划程序？](scheduler-intro.md)
 * [概念、术语和实体层次结构](scheduler-concepts-terms.md)

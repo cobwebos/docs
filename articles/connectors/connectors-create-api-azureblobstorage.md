@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: d57ea1a881980203b1c8f216239b27b64f0d71cd
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 8160cd2cb77a56f3d9b13f3c43929cc4ab7565b0
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051058"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309586"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>使用 Azure 逻辑应用在 Azure Blob 存储中创建和管理 Blob
 
@@ -25,7 +25,7 @@ ms.locfileid: "70051058"
 假定你有一个在 Azure 网站上进行更新的工具。 它充当逻辑应用的触发器。 当此事件发生时，可以让逻辑应用更新 Blob 存储容器中的某些文件，这是逻辑应用中的一项操作。
 
 > [!NOTE]
-> 逻辑应用不支持通过防火墙直接连接到 Azure 存储帐户。 若要访问这些存储帐户，请使用以下任一选项：
+> 逻辑应用无法直接访问具有[防火墙规则](../storage/common/storage-network-security.md)且位于同一区域中的 Azure 存储帐户。 但是，逻辑应用可以访问位于不同区域中的 Azure 存储帐户，因为公共 IP 地址用于跨区域通信。 或者，可以在此处使用任一选项：
 >
 > * 创建[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，该环境可以连接到 Azure 虚拟网络中的资源。
 >
@@ -35,13 +35,13 @@ ms.locfileid: "70051058"
 
 ## <a name="limits"></a>限制
 
-* 默认情况下, Azure Blob 存储操作可以读取或写入*50 MB 或更小*的文件。 若要处理大于 50 MB 但高达 1024 MB 的文件, Azure Blob 存储操作支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 "**获取 blob 内容**" 操作隐式使用分块。
+* 默认情况下，Azure Blob 存储操作可以读取或写入*50 MB 或更小*的文件。 若要处理大于 50 MB 但高达 1024 MB 的文件，Azure Blob 存储操作支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 "**获取 blob 内容**" 操作隐式使用分块。
 
-* Azure Blob 存储触发器不支持分块。 请求文件内容时, 触发器仅选择 50 MB 或更小的文件。 若要获取大于 50 MB 的文件，请遵循以下模式：
+* Azure Blob 存储触发器不支持分块。 请求文件内容时，触发器仅选择 50 MB 或更小的文件。 若要获取大于 50 MB 的文件，请遵循以下模式：
 
-  * 使用 Azure Blob 存储触发器, 该触发器返回文件属性, 例如**添加或修改 Blob 时 (仅属性)** 。
+  * 使用 Azure Blob 存储触发器，该触发器返回文件属性，例如**添加或修改 Blob 时（仅属性）** 。
 
-  * 使用 Azure Blob 存储**获取 Blob 内容**操作执行触发器, 该操作读取完整的文件并隐式使用分块。
+  * 使用 Azure Blob 存储**获取 Blob 内容**操作执行触发器，该操作读取完整的文件并隐式使用分块。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -57,13 +57,13 @@ ms.locfileid: "70051058"
 
 在 Azure 逻辑应用中，每个逻辑应用都必须从[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例并开始运行应用的工作流。
 
-此示例演示如何在存储容器中添加或更新 blob 的属性时, 使用**添加或修改 Blob 时 (仅限属性)** 触发逻辑应用工作流。
+此示例演示如何在存储容器中添加或更新 blob 的属性时，使用**添加或修改 Blob 时（仅限属性）** 触发逻辑应用工作流。
 
-1. 在[Azure 门户](https://portal.azure.com)或 Visual Studio 中, 创建一个可打开逻辑应用设计器的空白逻辑应用。 此示例使用 Azure 门户。
+1. 在[Azure 门户](https://portal.azure.com)或 Visual Studio 中，创建一个可打开逻辑应用设计器的空白逻辑应用。 此示例使用 Azure 门户。
 
 2. 在搜索框中，输入“azure blob”作为筛选器。 在触发器列表中，选择所需的触发器。
 
-   此示例使用以下触发器：**添加或修改 blob 时 (仅属性)**
+   此示例使用以下触发器：**添加或修改 blob 时（仅属性）**
 
    ![选择触发器](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -91,11 +91,11 @@ ms.locfileid: "70051058"
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 此示例使用 Azure 门户。
 
-2. 在逻辑应用设计器中的触发器或操作下, 选择 "**新建步骤**"。
+2. 在逻辑应用设计器中的触发器或操作下，选择 "**新建步骤**"。
 
    ![添加操作](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
-   若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 选择出现的加号 ( **+** ), 然后选择 "**添加操作**"。
+   若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 选择出现的加号（ **+** ），然后选择 "**添加操作**"。
 
 3. 在搜索框中，输入“azure blob”作为筛选器。 从操作列表中选择所需的操作。
 

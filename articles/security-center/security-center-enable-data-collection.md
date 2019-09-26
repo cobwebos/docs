@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 0cbb6f022dbeded2bbfb19769595be69ec62c311
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 6dcb7fd1ae2dc5ca3a950f5055e79d95f779b029
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910635"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300795"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机（Vm）、虚拟机规模集、IaaS 容器和非 Azure （包括本地）计算机收集数据以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，它从计算机读取各种安全相关配置和事件日志，并将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还将故障转储文件复制到工作区。
@@ -47,7 +47,7 @@ ms.locfileid: "70910635"
 
 3. 选择 "**数据收集**"。
 4. 在“自动设置”下，选择“打开”以启用自动设置。
-5. 选择**保存**。
+5. 选择“保存”。
 
    ![启用自动设置][1]
 
@@ -108,7 +108,7 @@ ms.locfileid: "70910635"
    >
    >
 
-3. 选择**保存**。
+3. 选择“保存”。
 4. 选择“保存”后，系统会询问是否要重新配置以前已连接到默认工作区的受监视 VM。
 
    - 如果只希望在新 VM 上应用新的工作区设置，请选择“否”。 新的工作区设置仅适用于新的代理安装;未安装 Log Analytics 代理的新发现的虚拟机。
@@ -186,7 +186,7 @@ ms.locfileid: "70910635"
 
 选择筛选策略的具体步骤：
 1. 在 "**数据收集**" 页上，选择 "**安全事件**" 下的筛选策略。
-2. 选择**保存**。
+2. 选择“保存”。
 
    ![选择筛选策略][5]
 
@@ -220,7 +220,7 @@ ms.locfileid: "70910635"
 1. 返回到“安全中心”主菜单，选择“安全策略”。
 2. 在要禁用自动设置的订阅的行中，单击 "**编辑设置**"。
 3. 在“安全策略 - 数据收集”边栏选项卡的“自动预配”下，选择“关闭”。
-4. 选择**保存**。
+4. 选择“保存”。
 
    ![禁用自动预配][6]
 
@@ -278,13 +278,13 @@ ms.locfileid: "70910635"
 
    3. 在公共配置和专用配置中填充以下值：
      
-           $PublicConf = '{
-               "workspaceId": "WorkspaceID value"
-           }' 
+           $PublicConf = @{
+               "workspaceId"= "<WorkspaceID value>"
+           }
  
-           $PrivateConf = '{
-               "workspaceKey": "<Primary key value>”
-           }' 
+           $PrivateConf = @{
+               "workspaceKey"= "<Primary key value>”
+           }
 
       - 在 Windows VM 上安装时：
         

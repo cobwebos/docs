@@ -23,12 +23,15 @@
             - name: 将数据预加载到新的 Blob 存储
               href: hpc-cache-ingest.md
             - name: 备用数据引入方法
-            - name: 通过并行复制填充缓存
-              href: hpc-cache-ingest-parallelcp.md
-            - name: 通过 msrsync 填充缓存
-              href: hpc-cache-ingest-msrsync.md
-            - name: 通过手动文件复制填充缓存
-              href: hpc-cache-ingest-manual.md
+              items:
+                - name: 通过并行复制填充缓存
+                  href: hpc-cache-ingest-parallelcp.md
+                - name: 通过 msrsync 填充缓存
+                  href: hpc-cache-ingest-msrsync.md
+                - name: 通过手动文件复制填充缓存
+                  href: hpc-cache-ingest-manual.md
+    - name: 连接到缓存
+      href: hpc-cache-mount.md
 - name: 资源
   items:
     - name: 开具支持票证

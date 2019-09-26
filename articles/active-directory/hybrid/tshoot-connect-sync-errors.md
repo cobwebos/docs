@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f63aebb9a9bbefe84ac36b92cd69e0d93de0ab76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3fc25cffde264a5c9c9e9627bbf4b72ccda60673
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66298758"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290864"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>排查同步过程中发生的错误
 将标识数据从 Windows Server Active Directory (AD DS) 同步到 Azure Active Directory (Azure AD) 时可能会发生错误。 本文概述不同类型的同步错误、导致这些错误的某些可能情况，以及这些错误的可能解决方法。 本文介绍常见错误类型，不一定涵盖所有可能的错误。
@@ -183,14 +183,14 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
 #### <a name="description"></a>描述
-该事例导致“FederatedDomainChangeError”  同步错误：用户的 UserPrincipalName 后缀已从一个联合域更改为另一个联合域。
+该事例导致“FederatedDomainChangeError”同步错误：用户的 UserPrincipalName 后缀已从一个联合域更改为另一个联合域。
 
 #### <a name="scenarios"></a>方案
 某个已同步用户的 UserPrincipalName 后缀已从一个联合域更改为本地的另一个联合域。 例如，*UserPrincipalName = bob\@contoso.com* 已更改为 *UserPrincipalName = bob\@fabrikam.com*。
 
 #### <a name="example"></a>示例
 1. 在 Active Directory 中，已将 Contoso.com 的帐户 Bob Smith 添加为新用户，其 UserPrincipalName 为 bob@contoso.com
-2. Bob 将移到 Contoso.com 中名为 Fabrikam.com 的另一个分支，其 UserPrincipalName 更改为 bob@fabrikam.com
+2. Bob 将移到 Contoso.com 中名为 Fabrikam.com 的另一个分支机构，其 UserPrincipalName 更改为 bob@fabrikam.com
 3. contoso.com 和 fabrikam.com 域是与 Azure Active Directory 联合的域。
 4. Bob 的 userPrincipalName 不会更新，并且会导致“FederatedDomainChangeError”同步错误。
 
@@ -224,7 +224,7 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 ## <a name="existing-admin-role-conflict"></a>现有的管理员角色冲突
 
 ### <a name="description"></a>描述
-当用户对象具有以下项时，同步期间用户对象上将发生“现有管理员角色冲突”  ：
+当用户对象具有以下项时，同步期间用户对象上将发生“现有管理员角色冲突”：
 
 - 管理权限和
 - 与现有 Azure AD 对象相同的 UserPrincipalName
@@ -237,9 +237,10 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 ### <a name="how-to-fix"></a>如何解决
 若要解决此问题，请执行以下任一操作：
 
-
-- 将 UserPrincipalName 更改为与 Azure AD 中的管理员用户不匹配的值 - 这将在 Azure AD 中使用匹配的 UserPrincipalName 创建新用户
-- 从 Azure AD 的管理员用户中删除管理角色，这将启用本地用户对象与现有 Azure AD 用户对象之间的软匹配。
+ - 从所有管理员角色中删除 Azure AD 帐户（所有者）。 
+ - **硬删除**云中隔离的对象。 
+ - 下一个同步周期将负责将本地用户与云帐户进行软匹配（因为云用户现已不再是全球 GA）。 
+ - 还原所有者的角色成员身份。 
 
 >[!NOTE]
 >当本地用户对象与 Azure AD 用户对象之间的软匹配完成后，可以再次将管理角色分配给现有用户对象。

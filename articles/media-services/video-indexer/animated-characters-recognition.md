@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: juliako
-ms.openlocfilehash: ac31a2945e59df3b57000a0ffdcbca8344e44c18
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 584d3fa787fbd44ad47d21c51ea67f301c04436d
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122292"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300321"
 ---
 # <a name="animated-character-detection-preview"></a>动画字符检测（预览）
 
@@ -91,12 +91,13 @@ Azure 媒体服务视频索引器支持通过与[认知服务自定义视觉](ht
     1. 键入新名称后，单击新名称旁边的复选图标。 这会将新名称保存在视频索引器的模型中。
     1. 完成编辑所需的所有名称后，需要为模型定型。
 
-        打开 "自定义" 页，然后单击 "**动画字符**" 选项卡。如果有付费帐户，可以单击 "客户视觉" 链接中的 "**管理模型**" （如下所示）。 然后，将被转发到自定义视觉中的模型页。 单击 "**训练**" 按钮训练模型。 
-        
+        打开 "自定义" 页，单击 "**动画字符**" 选项卡，然后单击 "**训练**" 按钮训练模型。
+         
+        如果有付费帐户，可以单击 "客户视觉" 链接中的 "**管理模型**" （如下所示）。 然后，将被转发到**自定义视觉**中的模型页。
+ 
         ![内容模型自定义](./media/animated-characters-recognition/content-model-customization-tab.png)
 
-        如果你有试用帐户，则将不会显示 "**在客户视觉上管理模型**" 链接。 在这种情况下，你可以按 "**内容模型自定义**" 页上的 "**培训**"。
-    1. 训练后，任何将通过该模型建立索引或重新编制索引的视频都将识别定型字符。 
+     1. 训练后，任何将通过该模型建立索引或重新编制索引的视频都将识别定型字符。 
     有权访问其自定义视觉帐户的付费帐户可在此处查看模型和标记图像。 详细了解如何[在自定义视觉中改进分类器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)。
 
 1. 删除动画字符。

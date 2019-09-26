@@ -180,27 +180,19 @@
                     - name: Web 应用
                       displayname: java
                       href: app/java-get-started.md
-                    - name: Web 应用 (2.5.0-BETA)
-                      href: app/java-get-started-25-beta.md
                     - name: Docker 应用
                       href: app/docker.md
                     - name: 日志跟踪
                       href: app/java-trace-logs.md
-                    - name: 日志跟踪 (2.5.0-BETA)
-                      href: app/java-trace-logs-25-beta.md
                     - name: Unix 指标
                       href: app/java-collectd.md
                     - name: 依赖项
                       href: app/java-agent.md
-                    - name: 依赖项 (2.5.0-BETA)
-                      href: app/java-agent-25-beta.md
                     - name: 筛选遥测数据
                       href: app/java-filter-telemetry.md
                     - name: Micrometer 指标
                       displayname: java
                       href: app/micrometer-java.md
-                    - name: Micrometer 指标 (2.5.0-BETA)
-                      href: app/micrometer-java-25-beta.md
                     - name: Spring Boot 应用
                       displayname: java
                       href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights

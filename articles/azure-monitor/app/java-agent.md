@@ -12,32 +12,39 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: ce5f7ab1e6751a9ce68aa2d9c466a112c9cac182
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: af157204ad1e1b28639ae2d8f192b3122afa8147
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900602"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299228"
 ---
-# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>在 Java web 应用中监视依赖项、捕获的异常和方法执行时间
 
 
 如果已[使用 Application Insights 检测了 Java Web 应用][java]，则无需更改任何代码，就能使用 Java 代理来获取更深入的见解：
 
 * **依赖项：** 有关应用程序对其他组件的调用数据，包括：
-  * 已捕获通过 HttpClient、OkHttp 和 RestTemplate (Spring) 发出的 REST 调用  。
-  * 已捕获通过 Jedis 客户端发出的 Redis 调用  。
-  * **[JDBC 调用](https://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** - 会自动捕获 MySQL、SQL Server 和 Oracle DB 命令。 对于 MySQL，如果调用时间长于 10 秒，代理将报告查询计划。
-* **捕获异常：** 代码处理的异常相关信息。
-* **方法执行时间：** 有关执行特定方法所花费的时间的信息。
+  * 捕获通过 Apache HttpClient、OkHttp 发出的**HTTP 调用**, `java.net.HttpURLConnection`并捕获它们。
+  * 捕获通过 Jedis 客户端发出的**Redis 调用**。
+  * **JDBC 查询**-对于 MySQL 和 PostgreSQL, 如果调用花费的时间超过10秒, 则代理将报告查询计划。
+
+* **应用程序日志记录:** 捕获应用程序日志, 并将其与 HTTP 请求和其他遥测数据关联
+  * **Log4j 1。2**
+  * **Log4j2.xml**
+  * **Logback**
+
+* **更好的操作命名:** (用于在门户中聚合请求)
+  * 基于`@RequestMapping`的弹簧。
+  * **Jax-rs-** 基于`@Path`。 
 
 若要使用 Java 代理，请在服务器上安装该代理。 必须使用 [Application Insights Java SDK][java] 检测 Web 应用。 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>安装适用于 Java 的 Application Insights 代理
 1. 在运行 Java 服务器的计算机上[下载该代理](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)。 请确保下载与 Application Insights Java SDK 核心和 Web 程序包版本相同的 Java 代理版本。
-2. 编辑应用程序服务器启动脚本，并添加以下 JVM：
+2. 编辑应用程序服务器启动脚本，并添加以下 JVM 参数：
    
-    `javaagent:`*代理 JAR 文件的完整路径*
+    `-javaagent:<full path to the agent JAR file>`
    
     例如，在 Linux 计算机上的 Tomcat 中：
    
@@ -50,82 +57,53 @@ ms.locfileid: "60900602"
 设置 xml 文件的内容。 编辑以下示例，根据需要包含或省略功能。
 
 ```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn enabled="true">
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <ApplicationInsightsAgent>
-      <Instrumentation>
+         <!-- capture logging via Log4j 1.2, Log4j2, and Logback, default is true -->
+         <Logging enabled="true" />
 
-        <!-- Collect remote dependency data -->
-        <BuiltIn enabled="true">
-           <!-- Disable Redis or alter threshold call duration above which arguments are sent.
-               Defaults: enabled, 10000 ms -->
-           <Jedis enabled="true" thresholdInMS="1000"/>
+         <!-- capture outgoing HTTP calls performed through Apache HttpClient, OkHttp,
+              and java.net.HttpURLConnection, default is true -->
+         <HTTP enabled="true" />
 
-           <!-- Set SQL query duration above which query plan is reported (MySQL, PostgreSQL). Default is 10000 ms. -->
-           <MaxStatementQueryLimitInMS>1000</MaxStatementQueryLimitInMS>
-        </BuiltIn>
+         <!-- capture JDBC queries, default is true -->
+         <JDBC enabled="true" />
 
-        <!-- Collect data about caught exceptions
-             and method execution times -->
+         <!-- capture Redis calls, default is true -->
+         <Jedis enabled="true" />
 
-        <Class name="com.myCompany.MyClass">
-           <Method name="methodOne"
-               reportCaughtExceptions="true"
-               reportExecutionTime="true"
-               />
-           <!-- Report on the particular signature
-                void methodTwo(String, int) -->
-           <Method name="methodTwo"
-              reportExecutionTime="true"
-              signature="(Ljava/lang/String;I)V" />
-        </Class>
+         <!-- capture query plans for JDBC queries that exceed this value (MySQL, PostgreSQL),
+              default is 10000 milliseconds -->
+         <MaxStatementQueryLimitInMS>1000</MaxStatementQueryLimitInMS>
 
-      </Instrumentation>
-    </ApplicationInsightsAgent>
-
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
 ```
-
-必须针对各个方法启用报告异常和方法计时。
-
-默认情况下，`reportExecutionTime` 为 true，`reportCaughtExceptions` 为 false。
 
 ## <a name="additional-config-spring-boot"></a>其他配置 (Spring Boot)
 
 `java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
 
-为 Azure 应用服务以下操作：
+对于 "Azure 应用服务", 请执行以下操作:
 
 * 选择“设置”>“应用程序设置”
 * 在“应用设置”下添加新的键/值对：
 
-注册表项：`JAVA_OPTS` 值： `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.3.1-SNAPSHOT.jar`
+注册表项：`JAVA_OPTS` 值：`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
-最新版本的 Java 代理检查版本[此处](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)。 
+对于最新版本的 Java 代理, 请查看 [此](https://github.com/Microsoft/ApplicationInsights-Java/releases
+)处的版本。 
 
-代理必须打包为你的项目中的资源，以便其结果是在 d: / home/site/wwwroot/目录。 可以确认你的代理已正确应用服务目录中通过转到**开发工具** > **高级工具** > **调试控制台**并检查站点目录的内容。    
+代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 可以通过转到“开发工具” > “高级工具” > “调试控制台”并查看站点目录的内容，确认你的代理处于正确的应用服务目录中。    
 
-* 保存设置并重新启动您的应用程序。 （这些步骤仅适用于 Windows 上运行的应用服务。）
+* 保存设置并重启应用。 （这些步骤仅适用于 Windows 上运行的应用程序服务。）
 
 > [!NOTE]
 > AI-Agent.xml 和代理 jar 文件应位于同一文件夹中。 它们通常一起放在该项目的 `/resources` 文件夹中。  
-
-### <a name="spring-rest-template"></a>Spring Rest 模板
-
-为了使 Application Insights 能够成功检测使用 Spring Rest 模板进行的 HTTP 调用，需要使用 Apache HTTP 客户端。 默认情况下，Spring Rest 模板未配置为使用 Apache HTTP 客户端。 通过在 Spring Rest 模版的构造函数中指定 [HttpComponentsClientHttpRequestfactory](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/client/HttpComponentsClientHttpRequestFactory.html)，它将使用 Apache HTTP。
-
-下面是一个演示如何使用 Spring Beans 执行此操作的示例。 这是一个非常简单的示例，它使用工厂类的默认设置。
-
-```java
-@bean
-public ClientHttpRequestFactory httpRequestFactory() {
-return new HttpComponentsClientHttpRequestFactory()
-}
-@Bean(name = 'myRestTemplate')
-public RestTemplate dcrAccessRestTemplate() {
-    return new RestTemplate(httpRequestFactory())
-}
-```
 
 #### <a name="enable-w3c-distributed-tracing"></a>启用 W3C 分布式跟踪
 
@@ -133,10 +111,10 @@ public RestTemplate dcrAccessRestTemplate() {
 
 ```xml
 <Instrumentation>
-        <BuiltIn enabled="true">
-            <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
-        </BuiltIn>
-    </Instrumentation>
+   <BuiltIn enabled="true">
+      <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
+   </BuiltIn>
+</Instrumentation>
 ```
 
 > [!NOTE]
@@ -144,10 +122,10 @@ public RestTemplate dcrAccessRestTemplate() {
 
 理想情况下，所有服务都已更新为支持 W3C 协议的较新版 SDK 时，就会出现这种情况。 强烈建议尽快迁移到提供 W3C 支持的新版 SDK。
 
-请确保[传入](correlation.md#w3c-distributed-tracing)和传出（代理）配置完全相同  。
+请确保[传入](correlation.md#w3c-distributed-tracing)和传出（代理）配置完全相同。
 
 ## <a name="view-the-data"></a>查看数据
-在 Application Insights 资源中，聚合的远程依赖项和方法执行时间显示在[“性能”磁贴下][metrics]。
+在 Application Insights 资源中, 聚合的远程依赖项和方法执行时间显示[在 "性能" 磁贴下][metrics]。
 
 若要搜索依赖项、异常和方法报告的单个实例，请打开[搜索][diagnostic]。
 

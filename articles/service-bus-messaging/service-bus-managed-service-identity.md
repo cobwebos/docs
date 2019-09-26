@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 90fbefb46ea51ca5bb7bf05d556fe29c88543d0b
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 86721907352f19cc7ed69fba1f1a021dcf1ed1b7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273674"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299646"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 验证托管标识以访问 Azure 服务总线资源
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 - **队列**、**主题**或**订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别将用户/组/托管标识分配到服务总线 RBAC 角色。 下面是使用 Azure CLI 命令的示例： [az-role-create-create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) To a SERVICE Bus RBAC role： 
 
-    ```powershell
+    ```azurecli
     az role assignment create \
         --role $service_bus_role \
         --assignee $assignee_id \

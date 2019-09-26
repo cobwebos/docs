@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5a7e7fa011c0287d5e97ad7a8cd2e3ba77f298dd
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414591"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299844"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用对称密钥证明创建和预配 IoT Edge 设备
 
@@ -27,7 +27,7 @@ ms.locfileid: "68414591"
 * 为设备创建个人注册。
 * 安装 IoT Edge 运行时并连接到 IoT 中心。
 
-对称密钥证明是一种通过设备预配服务实例对设备进行身份验证的简单方法。 此证明方法表示不熟悉设备预配或不具备严格安全要求的开发人员的“Hello world”体验。 使用[TPM](../iot-dps/concepts-tpm-attestation.md)的设备证明更为安全, 应用于更严格的安全要求。
+对称密钥证明是一种通过设备预配服务实例对设备进行身份验证的简单方法。 此证明方法表示不熟悉设备预配或不具备严格安全要求的开发人员的“Hello world”体验。 使用 [TPM](../iot-dps/concepts-tpm-attestation.md) 的设备证明更加安全，且应当用于更严格的安全要求。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -98,13 +98,16 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
    1. 确保“启用项”设置为“启用”。
 
-   1. 选择**保存**。
+   1. 选择“保存”。
 
-既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 确保复制注册的“主密钥”值，以便在创建设备密钥时使用。
+既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 请确保在安装 IoT Edge 运行时时将注册的**主键值**复制到使用，或者，如果要创建用于组注册的设备密钥。
 
 ## <a name="derive-a-device-key"></a>派生一个设备密钥
 
-设备将使用派生的设备密钥和唯一注册 ID，于预配期间在注册中执行对称密钥证明。 若要生成设备密钥，请使用从 DPS 注册复制的密钥计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。
+> [!NOTE]
+> 仅当使用组注册时，才需要此部分。
+
+每个设备将其派生的设备密钥与你的唯一注册 ID 结合使用，以在预配期间使用注册执行对称密钥证明。 若要生成设备密钥，请使用从 DPS 注册复制的密钥计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。
 
 不要在设备代码中包含注册的主密钥或辅助密钥。
 
@@ -159,7 +162,10 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 * DPS 的“ID 范围”值
 * 为设备创建的“注册 ID”
-* 设备的派生设备密钥，用于对称密钥证明
+* 从 DPS 注册复制的**主密钥**
+
+> [!TIP]
+> 对于组注册，需要每个设备的[派生密钥](#derive-a-device-key)，而不是 DPS 注册密钥。
 
 ### <a name="linux-device"></a>Linux 设备
 
@@ -187,7 +193,7 @@ provisioning:
 
 遵照说明在为其生成了派生设备密钥的设备上安装 IoT Edge 运行时。 确保将 IoT Edge 运行时配置为自动预配而不是手动预配。
 
-[在 Windows 上安装和自动设置 IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+[在 Windows 上安装和自动预配 IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 

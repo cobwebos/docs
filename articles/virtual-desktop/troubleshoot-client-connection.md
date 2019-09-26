@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 4f325d9fc512fd9f6776fcd799b720aaf60ce472
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c6c7a57a2093445d3922f9349242c9a902df7370
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876762"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300716"
 ---
 # <a name="remote-desktop-client-connections"></a>远程桌面客户端连接
 
@@ -24,15 +24,15 @@ ms.locfileid: "69876762"
 
 ## <a name="you-cant-open-a-web-client"></a>无法打开 web 客户端
 
-打开另一个网站以确认是否有 internet 连接;例如, [www.Bing.com](https://www.bing.com)。
+打开另一个网站以确认是否有 internet 连接;例如， [www.Bing.com](https://www.bing.com)。
 
-使用**nslookup**确认 DNS 可以解析 FQDN:
+使用**nslookup**确认 DNS 可以解析 FQDN：
 
 ```cmd
 nslookup rdweb.wvd.microsoft.com
 ```
 
-尝试与其他客户端 (如 Windows 7 或 Windows 10 的远程桌面客户端) 进行连接, 并检查是否可以打开 web 客户端。
+尝试与其他客户端（如 Windows 7 或 Windows 10 的远程桌面客户端）进行连接，并检查是否可以打开 web 客户端。
 
 ### <a name="error-opening-another-site-fails"></a>错误：打开另一个站点失败
 
@@ -46,11 +46,11 @@ nslookup rdweb.wvd.microsoft.com
 
 **能够**联系网络支持
 
-### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>错误：你无法连接, 但其他客户端可以连接
+### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>错误：你无法连接，但其他客户端可以连接
 
-原因：浏览器不按预期方式运行, 因此停止工作。
+原因：浏览器不按预期方式运行，因此停止工作。
 
-**能够**按照这些说明进行操作, 以对浏览器进行故障排除。
+**能够**按照这些说明进行操作，以对浏览器进行故障排除。
 
 1. 重新启动浏览器。
 2. 清除浏览器 cookie。 请参阅[如何在 Internet Explorer 中删除 cookie 文件](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)。
@@ -69,7 +69,7 @@ nslookup rdweb.wvd.microsoft.com
 
 ## <a name="web-client-keeps-prompting-for-credentials"></a>Web 客户端将保留凭据提示
 
-如果 Web 客户端继续提示输入凭据, 请遵循这些说明。
+如果 Web 客户端继续提示输入凭据，请遵循这些说明。
 
 1. 确认 web 客户端 URL 是正确的。
 2. 确认凭据适用于绑定到该 URL 的 Windows 虚拟桌面环境。
@@ -79,7 +79,7 @@ nslookup rdweb.wvd.microsoft.com
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>适用于 Windows 7 的远程桌面客户端或 Windows 10 停止响应或无法打开
 
-使用以下 PowerShell cmdlet 清理带外 (OOB) 客户端注册表。
+使用以下 PowerShell cmdlet 清理带外（OOB）客户端注册表。
 
 ```PowerShell
 Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
@@ -97,26 +97,26 @@ Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
 
 ## <a name="troubleshooting-end-user-connectivity"></a>最终用户连接故障排除
 
-有时, 用户可以访问其源和本地资源, 但仍有一些阻止他们访问远程资源的配置、可用性或性能问题。 在这些情况下, 用户会收到类似于以下内容的消息:
+有时，用户可以访问其源和本地资源，但仍有一些阻止他们访问远程资源的配置、可用性或性能问题。 在这些情况下，用户会收到类似于以下内容的消息：
 
 ![远程桌面连接错误消息。](media/eb76b666808bddb611448dfb621152ce.png)
 
 ![无法连接到网关错误消息。](media/a8fbb9910d4672147335550affe58481.png)
 
-对于客户端连接错误代码, 请遵循以下常规疑难解答说明。
+对于客户端连接错误代码，请遵循以下常规疑难解答说明。
 
-1. 如果遇到问题, 请确认用户名和时间。
+1. 如果遇到问题，请确认用户名和时间。
 2. 打开**PowerShell**并建立与报告问题的 Windows 虚拟桌面租户的连接。
 3. 确认通过 RdsTenant 连接到正确的租户 **。**
 4. 使用**RdsHostPool**和**RdsSessionHost** cmdlet 确认正在正确的主机池上进行故障排除。
-5. 执行以下命令获取指定时间范围的类型为 connection 的所有失败活动的列表:
+5. 执行以下命令获取指定时间范围的类型为 connection 的所有失败活动的列表：
 
     ```PowerShell
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
-6. 使用前面的 cmdlet 输出中的**ActivityId** , 运行以下命令:
+6. 使用前面的 cmdlet 输出中的**ActivityId** ，运行以下命令：
 
     ```PowerShell
     (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
@@ -153,11 +153,16 @@ Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
 
 **能够**将作为主机池一部分的所有 Vm 加入到域控制器。
 
-## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>用户连接, 但不显示任何内容 (无源)
+### <a name="error-connectionfailedusersidinformationmismatch"></a>错误：ConnectionFailedUserSIDInformationMismatch
+原因：尝试启用远程登录的用户时，用户的 Azure Active Directory （AD）令牌中的 SID 与域控制器返回的 SID 不匹配。 当尝试使用最初源自 Windows Server AD 的用户登录到 Azure Active Directory 域服务（Azure AD DS）环境时，通常会发生此错误。
 
-用户可以启动远程桌面客户端, 并可以进行身份验证, 但用户看不到 web 发现源中的任何图标。
+**能够**目前不支持此方案。 只有来自 Azure Active Directory 的用户可以登录到连接到 Azure AD DS 的 Windows 虚拟桌面 Vm。
 
-使用以下命令行确认已将报告问题的用户分配给应用程序组:
+## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>用户连接，但不显示任何内容（无源）
+
+用户可以启动远程桌面客户端，并可以进行身份验证，但用户看不到 web 发现源中的任何图标。
+
+使用以下命令行确认已将报告问题的用户分配给应用程序组：
 
 ```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
@@ -165,7 +170,7 @@ Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 
 确认用户正在用正确的凭据登录。
 
-如果正在使用 web 客户端, 请确认没有缓存的凭据问题。
+如果正在使用 web 客户端，请确认没有缓存的凭据问题。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -173,7 +178,7 @@ Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 - 若要在 Windows 虚拟桌面环境中创建租户和主机池时排查问题, 请参阅[租户和主机池创建](troubleshoot-set-up-issues.md)。
 - 若要解决在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题, 请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
 - 若要解决将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题, 请参阅[Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
-- 若要了解有关预览服务的详细信息, 请参阅[Windows 虚拟桌面预览环境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?)。
+- 若要了解有关预览服务的详细信息，请参阅[Windows 虚拟桌面预览环境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)问题。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)。

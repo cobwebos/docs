@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bd79b9a6fa8aedd45f41b64f8f81a908feab71f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: f0f2d3f8d8d2298ec00532205e359ed6f8dbc87a
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883000"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315692"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 本文包含有关使用 Azure Active Directory (Azure AD) PowerShell cmdlet 创建和更新组的说明。 此内容仅适用于 Office 365 组（有时称为统一组）。 
@@ -112,19 +112,19 @@ These steps create settings at directory level, which apply to all Office 365 gr
 
 | **设置** | **说明** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>键入：Boolean<li>默认：True |指明是否允许非管理员用户在目录中创建 Office 365 组的标志。 此设置不需要 Azure Active Directory Premium P1 许可证。|
-|  <ul><li>GroupCreationAllowedGroupId<li>键入：String<li>默认值：“” |安全组的 GUID，允许该组的成员创建 Office 365 组，即使 EnableGroupCreation == false。 |
-|  <ul><li>UsageGuidelinesUrl<li>键入：String<li>默认值：“” |组使用准则链接。 |
-|  <ul><li>ClassificationDescriptions<li>键入：String<li>默认值：“” | 以逗号分隔的分类说明列表。 ClassificationDescriptions 的值仅以此格式有效：<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>其中，分类匹配 ClassificationList 中的字符串。|
-|  <ul><li>DefaultClassification<li>键入：String<li>默认值：“” | 如果未指定，则为要用作组的默认分类的分类。|
-|  <ul><li>PrefixSuffixNamingRequirement<li>键入：String<li>默认值：“” | 最大长度为 64 个字符的字符串，用于定义为 Office 365 组配置的命名约定。 有关详细信息，请参阅[对 Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
-| <ul><li>CustomBlockedWordsList<li>键入：String<li>默认值：“” | 逗号分隔字符串，用于列出不允许用户在组名称或别名中使用的短语。 有关详细信息，请参阅[对 Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
-| <ul><li>EnableMSStandardBlockedWords<li>键入：Boolean<li>默认：“False” | 请勿使用
-|  <ul><li>AllowGuestsToBeGroupOwner<li>键入：Boolean<li>默认：False | 一个布尔值，该值指示来宾用户是否可以作为组的所有者。 |
-|  <ul><li>AllowGuestsToAccessGroups<li>键入：Boolean<li>默认：True | 一个布尔值，指示来宾用户是否可以访问 Office 365 组的内容。  此设置不需要 Azure Active Directory Premium P1 许可证。|
-|  <ul><li>GuestUsageGuidelinesUrl<li>键入：String<li>默认值：“” | 指向来宾使用指南的链接的 URL。 |
-|  <ul><li>AllowToAddGuests<li>键入：Boolean<li>默认：True | 一个布尔值，该值指示是否允许将来宾添加到此目录。|
-|  <ul><li>ClassificationList<li>键入：String<li>默认值：“” |一个逗号分隔列表，用于列出可以应用于 Office 365 组的有效分类值。 |
+|  <ul><li>EnableGroupCreation<li>键入：布尔<li>默认值：真 |指明是否允许非管理员用户在目录中创建 Office 365 组的标志。 此设置不需要 Azure Active Directory Premium P1 许可证。|
+|  <ul><li>GroupCreationAllowedGroupId<li>键入：字符串<li>默认值：“” |安全组的 GUID，允许该组的成员创建 Office 365 组，即使 EnableGroupCreation == false。 |
+|  <ul><li>UsageGuidelinesUrl<li>键入：字符串<li>默认值：“” |组使用准则链接。 |
+|  <ul><li>ClassificationDescriptions<li>键入：字符串<li>默认值：“” | 以逗号分隔的分类说明列表。 ClassificationDescriptions 的值仅以此格式有效：<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>其中，分类匹配 ClassificationList 中的字符串。|
+|  <ul><li>DefaultClassification<li>键入：字符串<li>默认值：“” | 如果未指定，则为要用作组的默认分类的分类。|
+|  <ul><li>PrefixSuffixNamingRequirement<li>键入：字符串<li>默认值：“” | 最大长度为 64 个字符的字符串，用于定义为 Office 365 组配置的命名约定。 有关详细信息，请参阅[对 Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
+| <ul><li>CustomBlockedWordsList<li>键入：字符串<li>默认值：“” | 逗号分隔字符串，用于列出不允许用户在组名称或别名中使用的短语。 有关详细信息，请参阅[对 Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
+| <ul><li>EnableMSStandardBlockedWords<li>键入：布尔<li>默认值：“False” | 请勿使用
+|  <ul><li>AllowGuestsToBeGroupOwner<li>键入：布尔<li>默认值：假 | 一个布尔值，该值指示来宾用户是否可以作为组的所有者。 |
+|  <ul><li>AllowGuestsToAccessGroups<li>键入：布尔<li>默认值：真 | 一个布尔值，指示来宾用户是否可以访问 Office 365 组的内容。  此设置不需要 Azure Active Directory Premium P1 许可证。|
+|  <ul><li>GuestUsageGuidelinesUrl<li>键入：字符串<li>默认值：“” | 指向来宾使用指南的链接的 URL。 |
+|  <ul><li>AllowAddGuests<li>键入：布尔<li>默认值：真 | 一个布尔值，该值指示是否允许将来宾添加到此目录。|
+|  <ul><li>ClassificationList<li>键入：字符串<li>默认值：“” |一个逗号分隔列表，用于列出可以应用于 Office 365 组的有效分类值。 |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>例如：在目录级别为组配置来宾策略
 1. 获取所有设置模板：
@@ -140,9 +140,9 @@ These steps create settings at directory level, which apply to all Office 365 gr
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. 然后更新 AllowToAddGuests 设置
+4. 然后更新 AllowAddGuests 设置
    ```powershell
-   $Setting["AllowToAddGuests"] = $False
+   $Setting["AllowAddGuests"] = $False
    ```  
 5. 然后应用该设置：
   
@@ -196,7 +196,7 @@ These steps create settings at directory level, which apply to all Office 365 gr
    AllowGuestsToAccessGroups     True
    GuestUsageGuidelinesUrl
    GroupCreationAllowedGroupId
-   AllowToAddGuests              True
+   AllowAddGuests              True
    UsageGuidelinesUrl            https://guideline.example.com
    ClassificationList
    EnableGroupCreation           True
@@ -233,7 +233,7 @@ These steps create settings at directory level, which apply to all Office 365 gr
 
 4. 将设置设为所需的值：
    ```powershell
-   $SettingCopy["AllowToAddGuests"]=$False
+   $SettingCopy["AllowAddGuests"]=$False
    ```
 5. 获取要对其应用此设置的组的 ID：
    ```powershell
@@ -259,7 +259,7 @@ These steps create settings at directory level, which apply to all Office 365 gr
    ```
 3. 根据需要更新组的设置，例如
    ```powershell
-   $Setting["AllowToAddGuests"] = $True
+   $Setting["AllowAddGuests"] = $True
    ```
 4. 然后获取此特定组的设置 ID：
    ```powershell

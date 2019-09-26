@@ -12,15 +12,33 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: 2703c97dc78983ef294b3aa50f7ace879c96f66d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ac9bd6021b5fcec36e3aadfdf4c30020971f3be5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061230"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299251"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。
+
+## <a name="using-the-application-insights-java-agent"></a>使用 Application Insights Java 代理
+
+可以通过在`AI-Agent.xml`文件中启用该功能, 将 Application Insights Java 代理配置为自动捕获日志:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn enabled="true">
+         <Logging enabled="true" />
+      </BuiltIn>
+   </Instrumentation>
+   <AgentLogger />
+</ApplicationInsightsAgent>
+```
+
+或者，您可以按照以下说明进行操作。
 
 ## <a name="install-the-java-sdk"></a>安装 Java SDK
 

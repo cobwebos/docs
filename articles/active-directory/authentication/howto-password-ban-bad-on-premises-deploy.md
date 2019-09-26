@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad8f24c9d23e9412a4f6e4e5f97692bba2c0c39
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: cfa8e8c570b47eb6437ed6ca6a53f6c8188e18a2
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268670"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314979"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -50,7 +50,7 @@ ms.locfileid: "71268670"
    > 代理服务部署是部署 Azure AD 密码保护的必需要求，即使域控制器可能有出站 internet 连接。 
    >
 * 将安装 Azure AD 密码保护代理服务的所有计算机必须安装了 .NET 4.7。
-  .NET 4.7 应已安装在完全更新的 Windows 服务器上。 如果不是这种情况, 请下载并运行[Windows .NET Framework 4.7 脱机安装程序](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)中找到的安装程序。
+  .NET 4.7 应已安装在完全更新的 Windows 服务器上。 如有必要，请下载并运行在[Windows .NET Framework 4.7 脱机安装程序](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)中找到的安装程序。
 * 所有安装了 Azure AD password protection 组件的计算机都必须安装有通用 C 运行时。 可以通过确保所有更新都 Windows 更新来获取运行时。 也可以在特定于 OS 的更新包中获取它。 有关详细信息, 请参阅[Windows 中的通用 C 运行时更新](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)。
 * 每个域中至少一个域控制器之间必须存在网络连接, 并且至少有一台服务器承载了密码保护的代理服务。 此连接必须允许域控制器访问 RPC 终结点映射器端口135和代理服务上的 RPC 服务器端口。 默认情况下, RPC 服务器端口是动态 RPC 端口, 但可以配置为[使用静态端口](#static)。
 * 将安装 Azure AD 密码保护代理服务的所有计算机必须具有对以下终结点的网络访问权限：
@@ -59,9 +59,19 @@ ms.locfileid: "71268670"
     | --- | --- |
     |`https://login.microsoftonline.com`|身份验证请求|
     |`https://enterpriseregistration.windows.net`|Azure AD 密码保护功能|
+ 
+* Microsoft Azure AD 连接代理更新程序先决条件
 
-  还必须为[应用程序代理环境设置过程](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)中指定的端口和 url 集启用网络访问。 这些配置步骤是必需的，以便 Microsoft Azure AD Connect Agent 更新服务能够正常工作（此服务与代理服务并行安装）。 不建议在同一台计算机上并行安装 Azure AD 密码保护代理和应用程序代理，因为 Microsoft Azure AD 连接代理更新程序软件的版本不兼容。
-* 为密码保护承载代理服务的所有计算机必须配置为允许域控制器登录到代理服务。 这是通过 "从网络访问此计算机" 权限分配来控制的。
+  Microsoft Azure AD Connect Agent 更新程序服务与 Azure AD 密码保护代理服务并行安装。 需要额外的配置才能使 Microsoft Azure AD Connect Agent 更新服务能够正常工作：
+
+  如果你的环境使用 http 代理服务器，则必须遵循[使用现有本地代理服务器](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)中所指定的准则。
+
+  必须为[应用程序代理环境设置过程](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)中指定的端口和 url 集启用网络访问。
+
+  > [!WARNING]
+  > Azure AD 密码保护代理和应用程序代理安装不同版本的 Microsoft Azure AD 连接代理更新程序服务，这就是说明如何引用应用程序代理内容的原因。 并行安装时这些不同版本不兼容，因此不建议在同一台计算机上并行安装 Azure AD 密码保护代理和应用程序代理。
+
+* 为密码保护承载代理服务的所有计算机必须配置为允许域控制器登录到代理服务。 此功能通过 "从网络访问此计算机" 权限分配来控制。
 * 承载密码保护的代理服务的所有计算机必须配置为允许出站 TLS 1.2 HTTP 流量。
 * 一个全局管理员帐户, 用于注册包含 Azure AD 的密码保护和林的代理服务。
 * 在目录林根级域中具有 Active Directory 域管理员权限的帐户, 用于向 Azure AD 注册 Windows Server Active Directory 林。
@@ -211,7 +221,7 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 
    在林的生存期内, 只需注册 Active Directory 林一次。 之后, 林中的域控制器代理将自动执行任何其他必要的维护。 为`Register-AzureADPasswordProtectionForest`林成功运行后, 对该 cmdlet 的其他调用会成功, 但没有必要。
 
-   `Register-AzureADPasswordProtectionForest`若要成功, 代理服务器的域中必须至少有一个运行 Windows Server 2012 或更高版本的域控制器。 但在执行此步骤之前, 无需在任何域控制器上安装 DC 代理软件。
+   `Register-AzureADPasswordProtectionForest`若要成功, 代理服务器的域中必须至少有一个运行 Windows Server 2012 或更高版本的域控制器。 在执行此步骤之前，无需在任何域控制器上安装 DC 代理软件。
 
 1. 将用于密码保护的代理服务配置为通过 HTTP 代理进行通信。
 
@@ -286,7 +296,7 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 
    使用`AzureADPasswordProtectionDCAgentSetup.msi`包为密码保护安装 DC 代理服务。
 
-   安装或卸载软件需要重新启动。 这是因为密码筛选器 Dll 仅通过重新启动来加载或卸载。
+   软件安装或卸载需要重新启动。 此要求是因为密码筛选器 Dll 仅通过重新启动加载或卸载。
 
    你可以在尚未成为域控制器的计算机上安装 DC 代理服务。 在这种情况下, 该服务将启动并运行, 但在计算机升级为域控制器之前将保持不活动状态。
 
@@ -304,7 +314,7 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 
 不需要卸载当前版本的代理软件，安装程序将执行就地升级。 升级代理软件时，不需要重新启动。 可以使用标准 MSI 过程自动执行软件升级，例如： `AzureADPasswordProtectionProxySetup.exe /quiet`。
 
-代理程序支持自动升级。 自动升级使用与代理服务并行安装的 Microsoft Azure AD 连接代理更新程序服务。 自动升级默认情况下启用，并且可以使用`Set-AzureADPasswordProtectionProxyConfiguration` cmdlet 启用或禁用。 可以使用`Get-AzureADPasswordProtectionProxyConfiguration` cmdlet 查询当前设置。 Microsoft 建议自动升级保持启用状态。
+代理程序支持自动升级。 自动升级使用与代理服务并行安装的 Microsoft Azure AD 连接代理更新程序服务。 自动升级默认情况下启用，并且可以使用`Set-AzureADPasswordProtectionProxyConfiguration` cmdlet 启用或禁用。 可以使用`Get-AzureADPasswordProtectionProxyConfiguration` cmdlet 查询当前设置。 Microsoft 建议始终启用自动升级设置。
 
 `Get-AzureADPasswordProtectionProxy` Cmdlet 可用于查询林中所有当前已安装的代理代理的软件版本。
 
@@ -312,7 +322,7 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 
 如果有较新版本的 Azure AD 密码保护 DC 代理软件，则可通过运行最新版本的`AzureADPasswordProtectionDCAgentSetup.msi`软件包来完成升级。 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57071)提供了该软件的最新版本。
 
-不需要卸载最新版本的 DC 代理软件，安装程序将执行就地升级。 升级 DC 代理软件时，始终需要重新启动，这是由核心 Windows 行为引起的。 
+不需要卸载最新版本的 DC 代理软件，安装程序将执行就地升级。 升级 DC 代理软件时，始终需要重新启动-此要求由核心 Windows 行为引起。 
 
 可以使用标准 MSI 过程自动执行软件升级，例如： `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`。
 

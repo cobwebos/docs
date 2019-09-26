@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: b574f7c4f30c3bce8bd7d0e234cb523c965772e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3d6b1ed2a3800058acba9fe5df2137811afed74a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727582"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300784"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>适用于 Azure 市场映像的安全建议
 
@@ -56,7 +56,7 @@ ms.locfileid: "68727582"
 | 安全性                                                         | 使用安全 OS 的基础映像。 用于任何基于 Windows Server 的映像源的 VHD 必须来自 Microsoft Azure 所提供的 Windows Server OS 映像。 |
 | 安全性                                                         | 安装所有最新的安全更新。                                                                                                                                     |
 | 安全性                                                         | 应用程序不应依赖于受限的用户名，例如 Administrator、根和管理员。                                                                |
-| 安全性                                                         | 操作系统硬盘上不支持 BitLocker 驱动器加密。 BitLocker 可在数据磁盘上使用。                                                            |
+| 安全性                                                         | 同时为操作系统硬盘和数据硬盘启用 BitLocker 驱动器加密。                                                             |
 | 安全性                                                         | 限制攻击面，仅保留必要的 Windows Server 角色、功能、服务和网络端口来保持最小的占用空间。                         |
 | 安全性                                                         | 扫描源代码和生成的 VM 映像中的恶意软件。                                                                                                                     |
 | 安全性                                                         | 将 Windows Server 映像安全更新设置为自动更新。                                                                                                                |
