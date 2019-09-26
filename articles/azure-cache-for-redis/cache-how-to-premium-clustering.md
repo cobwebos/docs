@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: yegu
-ms.openlocfilehash: 602d77f3d4e8ed10c2c964462bc2dc21240cef5c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a919ccd2a23acf6e1bd04cda8a5dd18782ff31b0
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60541237"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315983"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置 Redis 群集功能
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 本文介绍如何配置高级 Azure Redis 缓存实例中的群集功能。
@@ -39,15 +39,15 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 在 Azure 中，Redis 群集以主/副模型提供。在该模型中，每个分片都有一个带副本的主/副对，副本由 Azure Redis 缓存服务管理。 
 
 ## <a name="clustering"></a>群集功能
-在创建缓存期间，在“新建 Azure Redis 缓存”边栏选项卡上启用群集功能  。 
+在创建缓存期间，在“新建 Azure Redis 缓存”边栏选项卡上启用群集功能。 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-在“Redis 群集”  边栏选项卡上配置群集功能。
+在“Redis 群集”边栏选项卡上配置群集功能。
 
 ![群集功能][redis-cache-clustering]
 
-群集中最多可以有 10 个分片。 单击“启用”  ，滑动滑块或者针对“分片计数”  键入一个 1 到 10 之间的数字，并单击“确定”  。
+群集中最多可以有 10 个分片。 单击“启用”，滑动滑块或者针对“分片计数”键入一个 1 到 10 之间的数字，并单击“确定”。
 
 每个分片都是一个由 Azure 管理的主/副缓存对，而缓存的总大小则通过将定价层中选择的缓存大小乘以分片数来计算。 
 
@@ -66,7 +66,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>更改正在运行的高级缓存上的群集大小
-若要更改正在运行并且已启用群集功能的高级缓存上的群集大小，请在“资源菜单”  中单击“Redis 群集大小”  。
+若要更改正在运行并且已启用群集功能的高级缓存上的群集大小，请在“资源菜单”中单击“Redis 群集大小”。
 
 > [!NOTE]
 > 虽然 Azure Redis 缓存高级层已发行正式发布版，但 Redis 群集大小功能目前以预览版提供。
@@ -75,7 +75,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 
 ![Redis 群集大小][redis-cache-redis-cluster-size]
 
-要更改群集大小，请使用滑块，或在“分片计数”  文本框中键入 1 到 10 之间的数字，并单击“确定”  进行保存。
+要更改群集大小，请使用滑块，或在“分片计数”文本框中键入 1 到 10 之间的数字，并单击“确定”进行保存。
 
 增加群集大小会增加最大吞吐量和缓存大小。 增加群集大小不会增加用于客户端的最大连接数据。
 
@@ -121,7 +121,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 有关在 StackExchange.Redis 客户端中使用群集和查找同一分片中的密钥的示例代码，请参阅 [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 示例的 [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分。
 
 ### <a name="what-is-the-largest-cache-size-i-can-create"></a>我可以创建的最大缓存大小是多大？
-高级缓存的最大大小为 53 GB。 可以创建多达 10 个分片，因此最大大小为 530 GB。 如果需要的大小更大，则可[请求更多](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)。 有关详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。
+最大的高级缓存大小为 120 GB。 最多可以创建10个分片，最大大小为 1.2 TB GB。 如果需要的大小更大，则可[请求更多](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)。 有关详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。
 
 ### <a name="do-all-redis-clients-support-clustering"></a>是否所有 Redis 客户端都支持群集功能？
 目前，并非所有客户端都支持 Redis 群集功能。 StackExchange.Redis 是不支持该功能的客户端。 有关其他客户端的详细信息，请参阅 [Redis cluster tutorial](https://redis.io/topics/cluster-tutorial)（Redis 群集教程）的 [Playing with the cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)（操作群集）部分。 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ad61743751ace9ca0c7eba12ffcea5f15e1157d5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265168"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316181"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -180,9 +180,9 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 
     ![DnsInventory 日志搜索](./media/dns-analytics/log-search-dnsinventory.png)
     
-### <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>疑难解答
 
-Commopn 故障排除步骤：
+常见的故障排除步骤：
 
 1. 缺少 DNS 查找数据-若要解决此问题，请尝试重置配置，或在门户中仅加载一次配置页面。 若要重置，只需将设置更改为其他值，然后将其更改回原始值，并保存配置。
 

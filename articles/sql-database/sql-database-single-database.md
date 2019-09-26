@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 1dc1d2780dcaf27e0c60cfffe84581c0278491dd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566526"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316658"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
 
@@ -41,7 +41,7 @@ ms.locfileid: "68566526"
 
 ## <a name="availability-capabilities"></a>可用性功能
 
-单个数据库、弹性池和托管实例都提供许多可用性特征。 有关信息，请参阅[可用性特征](sql-database-technical-overview.md#availability-capabilities)。
+单一数据库、弹性池和托管实例全都提供许多可用性特征。 有关信息，请参阅[可用性特征](sql-database-technical-overview.md#availability-capabilities)。
 
 ## <a name="transact-sql-differences"></a>Transact-SQL 的差异
 
@@ -59,6 +59,6 @@ SQL 数据库提供一系列[内置安全性和符合性](sql-database-security-
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要快速开始使用单一数据库，请从 [Single database quickstart guide.md](sql-database-single-database-quickstart-guide.md) 开始。
+- 若要快速开始使用单个数据库，请首先了解[单一数据库快速入门指南](sql-database-single-database-quickstart-guide.md)。
 - 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](sql-database-single-database-migrate.md)。
 - 有关支持的功能的信息，请参阅[功能](sql-database-features.md)。

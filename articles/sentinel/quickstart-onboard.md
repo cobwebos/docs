@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7f209ef8bb8c492245b59374c33187dbbe763aa5
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7f042cfe10bd8ca57d9a2dae511a13a82f053a67
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240475"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316814"
 ---
 # <a name="on-board-azure-sentinel"></a>机载 Azure Sentinel
 
@@ -37,7 +37,7 @@ ms.locfileid: "71240475"
 
 - 有效的 Azure 订阅：如果没有订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)
+- Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。 有关 Log Analytics 工作区的详细信息，请参阅[设计 Azure Monitor 日志部署](../azure-monitor/platform/design-logs-deployment.md)。
 
 -  若要启用 Azure Sentinel，需要具有对 Azure Sentinel 工作区所在订阅的参与者权限。 
 - 若要使用 Azure Sentinel，需要对工作区所属的资源组具有 "参与者" 或 "读取者" 权限。

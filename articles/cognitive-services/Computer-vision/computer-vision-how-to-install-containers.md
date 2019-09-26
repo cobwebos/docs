@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 97a9b6c60539191850e8205eed4387565b79f6db
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 98330e88b0b94c488fd968d8fc18806ec6908b26
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129879"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316196"
 ---
 # <a name="install-and-run-computer-vision-containers"></a>安装并运行计算机视觉容器
 
@@ -343,9 +343,11 @@ export interface Word {
 
 ## <a name="troubleshooting"></a>疑难解答
 
-如果运行启用了输出[装入点](./computer-vision-resource-container-config.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。 
+如果运行启用了输出[装入点](./computer-vision-resource-container-config.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。
 
-## <a name="billing"></a>帐单
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
+
+## <a name="billing"></a>账单
 
 认知服务容器使用 Azure 帐户中的相应资源将计费信息发送到 Azure。
 

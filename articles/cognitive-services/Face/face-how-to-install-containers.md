@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: fbfc3f48bed5a4772573dcf2ab168cd3498a4cac
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f2bf5766dc09b85f276349a5e72f1bc3b8ba23b3
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102004"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316378"
 ---
 # <a name="install-and-run-face-containers"></a>安装并运行人脸容器
 
@@ -48,7 +48,7 @@ Azure 认知服务面部为 Docker 提供标准化的 Linux 容器, 用于检测
 
 下表显示了为每个人脸 API 容器分配的最小和建议的 CPU 核心数和内存。
 
-| 容器 | 最低要求 | 建议 | 每秒创建的事务数<br>(最小值、最大值)|
+| 容器 | 最低要求 | 建议 | 每秒事务数<br>(最小值、最大值)|
 |-----------|---------|-------------|--|
 |人脸 | 单核，2-GB 内存 | 单核，4-GB 内存 |10, 20|
 
@@ -126,10 +126,11 @@ ApiKey={API_KEY}
 
 ## <a name="troubleshooting"></a>疑难解答
 
-如果在启用了输出[装载](./face-resource-container-config.md#mount-settings)并启用了日志记录的情况下运行容器, 则容器将生成日志文件, 这些文件有助于排查启动或运行容器时所发生的问题。 
+如果在启用了输出[装载](./face-resource-container-config.md#mount-settings)并启用了日志记录的情况下运行容器, 则容器将生成日志文件, 这些文件有助于排查启动或运行容器时所发生的问题。
 
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>帐单
+## <a name="billing"></a>账单
 
 人脸 API 容器使用 Azure 帐户上的人脸 API 资源将计费信息发送到 Azure。 
 

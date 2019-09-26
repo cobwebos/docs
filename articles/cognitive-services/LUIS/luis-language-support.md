@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307441"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316349"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -34,18 +34,18 @@ LUIS 理解以下语言：
 |--|--|:--:|:--:|:--:|:--:|
 | 美国英语 |`en-US` | ✔ | ✔  |✔|✔|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| 荷兰语 |`nl-NL` |-|  -   |-|✔|
-| 法语(法国) |`fr-FR` |-| ✔ |✔ |✔|
+| 荷兰语 |`nl-NL` |✔|  -   |-|✔|
+| 法语(法国) |`fr-FR` |✔| ✔ |✔ |✔|
 | 法语(加拿大) |`fr-CA` |-|   -   |-|✔|
-| 德语 |`de-DE` |-| ✔ |✔ |✔|
+| 德语 |`de-DE` |✔| ✔ |✔ |✔|
 | 印地语 | `hi-IN`|-|-|-|-|
-| 意大利语 |`it-IT` |-| ✔ |✔|✔|
-| *[日语](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|仅关键短语|
-| 韩语 |`ko-KR` |-|   -   |-|仅关键短语|
-| 葡萄牙语(巴西) |`pt-BR` |-| ✔ |✔ |并非所有亚区域性|
-| 西班牙语(西班牙) |`es-ES` |-| ✔ |✔|✔|
+| 意大利语 |`it-IT` |✔| ✔ |✔|✔|
+| *[日语](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|仅关键短语|
+| 朝鲜语 |`ko-KR` |✔|   -   |-|仅关键短语|
+| 葡萄牙语(巴西) |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
+| 西班牙语(西班牙) |`es-ES` |✔| ✔ |✔|✔|
 | 西班牙语(墨西哥)|`es-MX` |-|  -   |✔|✔|
-| 土耳其语 | `tr-TR` |-|-|-|仅情绪|
+| 土耳其语 | `tr-TR` |✔|-|-|仅情绪|
 
 
 [预生成实体](luis-reference-prebuilt-entities.md)和[预生成域](luis-reference-prebuilt-domains.md)具有不同的语言支持。
@@ -92,7 +92,7 @@ LUIS 理解以下语言：
 | 印地语 |✔|-|-|-|-|
 |意大利语|✔||||
 |日语||||✔|
-|韩语||✔||✔|
+|朝鲜语||✔||✔|
 |葡萄牙语(巴西)|✔||||
 |西班牙语 (es-ES)|✔||||
 |西班牙语 (es-MX)|✔||||

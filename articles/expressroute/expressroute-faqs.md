@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 6e3045ba8363965fcfc198356ed68447a187308d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 886dd9b0f3c72fc7649b1e2fc3927cfa87f65312
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123430"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316510"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -91,6 +91,8 @@ ExpressRoute 支持[三个路由域](expressroute-circuit-peerings.md)，适用�
 
 Dynamics 365 和 Common Data Service （CD）环境托管在 Azure 上，因此客户可以受益于 Azure 资源的底层 ExpressRoute 支持。 如果你的路由器筛选器包括你的 Dynamics 365/CD 环境所托管的 Azure 区域，则可以连接到其服务终结点。
 
+> [!NOTE]
+> 对于通过 Azure ExpressRoute 进行的 Dynamics 365 连接，**不**需要[ExpressRoute 高级版](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-faqs#expressroute-premium)。
 
 ## <a name="data-and-connections"></a>数据和连接
 

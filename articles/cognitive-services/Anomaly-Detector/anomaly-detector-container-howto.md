@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 339aab3ffe228d306738d3c17394bd322ab5e06c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 11f041ed06117a7e3d495fb43d3a4904f6001520
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103771"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316384"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>安装并运行异常检测器容器
 
 异常探测器包含以下容器: 
 
-|函数|功能|
+|Functions|功能|
 |-|-|
 |异常检测器| <li> 实时检测异常情况。 <li> 在整个数据集中以批处理方式检测异常。 <li> 推断数据的预期正常范围。 <li> 支持异常情况检测敏感度调整, 以便更好地适应数据。 |
 
@@ -164,9 +164,11 @@ ApiKey={API_KEY}
 
 ## <a name="troubleshooting"></a>疑难解答
 
-如果运行启用了输出[装入点](anomaly-detector-container-configuration.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。 
+如果运行启用了输出[装入点](anomaly-detector-container-configuration.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。
 
-## <a name="billing"></a>帐单
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
+
+## <a name="billing"></a>账单
 
 异常探测器容器使用 Azure 帐户上的_异常探测器_资源将计费信息发送到 azure。 
 

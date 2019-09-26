@@ -10,21 +10,23 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 09/16/2019
-ms.openlocfilehash: ceccc515b73bd41c7933889c61617c360c678eb7
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.date: 09/25/2019
+ms.openlocfilehash: 9ccc5f5721d1ddc8459918913a4f3ce707766dea
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059289"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316688"
 ---
 # <a name="train-with-datasets-preview-in-azure-machine-learning"></a>Azure 机器学习中的数据集（预览）定型
 
 本文介绍两种使用远程试验训练运行中的[Azure 机器学习数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)的方式，无需担心连接字符串或数据路径。
 
-- 选项 1：直接在训练脚本中传递数据集。
+- 选项 1：如果有结构化数据，请创建一个 TabularDataset，并直接在训练脚本中使用它。
 
-- 选项 2：使用数据集将文件装载或下载到远程计算进行培训。
+- 选项 2：如果有非结构化数据，请创建 FileDataset，并将文件装载或下载到远程计算进行培训。
+
+Azure 机器学习数据集提供与[ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)和[HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py)等 Azure 机器学习训练产品的无缝集成。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,9 +41,9 @@ ms.locfileid: "71059289"
 > [!Note]
 > 某些数据集类（预览版）与[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包之间存在依赖关系。 对于 Linux 用户，仅以下分发版支持这些类：Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
 
-## <a name="option-1-pass-datasets-as-inputs-to-training-scripts"></a>选项 1：将数据集作为输入传递给定型脚本
+## <a name="option-1-use-datasets-directly-in-training-scripts"></a>选项 1：直接在定型脚本中使用数据集
 
-Azure 机器学习数据集提供与[ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)和[HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py)等 Azure 机器学习训练产品的无缝集成。 在此示例中，将创建一个[TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) ，并将其用作`estimator`对象的输入以进行定型。 
+在此示例中，将创建一个[TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) ，并将其用作`estimator`对象的直接输入，以便进行定型。 
 
 ### <a name="create-a-tabulardataset"></a>创建 TabularDataset
 
@@ -52,6 +54,24 @@ from azureml.core.dataset import Dataset
 
 web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
+```
+
+### <a name="access-the-input-dataset-in-your-training-script"></a>访问定型脚本中的输入数据集
+
+TabularDataset 对象提供将数据加载到 pandas 或 spark 数据帧中的功能，以便你可以使用熟悉的数据准备和定型库。 若要利用此功能，可以在定型配置中传递 TabularDataset 作为输入，然后在脚本中检索它。
+
+为此，请通过训练脚本中的[`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py)对象访问输入数据集，并[`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe--)使用方法。 
+
+```Python
+%%writefile $script_folder/train_titanic.py
+
+from azureml.core import Dataset, Run
+
+run = Run.get_context()
+# get the input dataset by name
+dataset = run.input_datasets['titanic_ds']
+# load the TabularDataset to pandas DataFrame
+df = dataset.to_pandas_dataframe()
 ```
 
 ### <a name="configure-the-estimator"></a>配置估计器
@@ -77,25 +97,6 @@ est = Estimator(source_directory=script_folder,
 # Submit the estimator as part of your experiment run
 experiment_run = experiment.submit(est)
 experiment_run.wait_for_completion(show_output=True)
-
-```
-
-### <a name="access-the-input-dataset-in-your-training-script"></a>访问定型脚本中的输入数据集
-
-TabularDataset 对象提供将数据加载到 pandas 或 spark 数据帧中的功能，以便你可以使用熟悉的数据准备和定型库。 若要利用此功能，可以在定型配置中传递 TabularDataset 作为输入，然后在脚本中检索它。
-
-为此，请通过训练脚本中的[`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py)对象访问输入数据集，并[`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe--)使用方法。 
-
-```Python
-%%writefile $script_folder/train_titanic.py
-
-from azureml.core import Dataset, Run
-
-run = Run.get_context()
-# get the input dataset by name
-dataset = run.input_datasets['titanic']
-# load the TabularDataset to pandas DataFrame
-df = dataset.to_pandas_dataframe()
 ```
 
 ## <a name="option-2--mount-files-to-a-remote-compute-target"></a>选项 2：将文件装载到远程计算目标
@@ -125,9 +126,9 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>配置估计器
 
-您还可以通过参数传递数据`inputs` `script_params`集，而不是通过估计器中的参数传递数据集，而是通过参数在训练脚本中获取数据路径（装入点）。 这样一来，就可以避免依赖于培训脚本 Azure 机器学习 SDK。
+您还可以通过参数传递数据`inputs` `script_params`集，而不是通过估计器中的参数传递数据集，而是通过参数在训练脚本中获取数据路径（装入点）。 这样，你就可以访问数据并使用现有训练脚本。
 
-[Spark-sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)估计器对象用于提交 scikit-learn 学习试验的运行。
+[Spark-sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)估计器对象用于提交 scikit-learn 学习试验的运行。 详细了解[spark-sklearn 估计器](how-to-train-scikit-learn.md)的培训。
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -187,10 +188,11 @@ y_test = load_data(y_test, True).reshape(-1)
 
 ## <a name="notebook-examples"></a>Notebook 示例
 
-例如，使用 ScriptRun 和[HyperdDrive](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb)对象的数据集，[示例笔记本](https://aka.ms/dataset-tutorial)演示并扩展了本文中的概念。
+[数据集笔记本](https://aka.ms/dataset-tutorial)演示并扩展本文中的概念。 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 用 TabularDatasets[自动训练机器学习模型](how-to-auto-train-remote.md)。
 
 * 用 FileDatasets[训练图像分类模型](https://aka.ms/filedataset-samplenotebook)。
+

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 4b8ea102c7acc55acec05234303ff4c215a4bc0f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c8efc416555996ef9a1abd79ec5aafcb65186d6f
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105163"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316678"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安装和运行语音服务容器
 
@@ -23,7 +23,7 @@ ms.locfileid: "71105163"
 
 这两个语音容器是**语音到文本**和**文本到语音**转换。 
 
-|函数|功能|最新|
+|Functions|功能|最新|
 |-|-|--|
 |语音转文本| <li>转录连续实时语音或批处理音频记录到带有中间结果的文本中。|1.2.0|
 |文本到语音转换| <li>将文本转换为自然发音的语音。 带有纯文本输入或语音合成标记语言 (SSML)。 |1.2.0|
@@ -116,7 +116,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 |德语|`de-de`|
 |意大利语|`it-it`|
 |日语|`ja-jp`|
-|韩语|`ko-kr`|
+|朝鲜语|`ko-kr`|
 |葡萄牙语|`pt-br`|
 |西班牙语|`es-es`<br>`es-mx`|
 
@@ -148,7 +148,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 |德语|`de-de`|hedda<br>heddarus<br>stefan-apollo|
 |意大利语|`it-it`|cosimo-apollo<br>luciarus|
 |日语|`ja-jp`|ayumi-apollo<br>harukarus<br>ichiro-apollo|
-|韩语|`ko-kr`|heamirus|
+|朝鲜语|`ko-kr`|heamirus|
 |葡萄牙语|`pt-br`|daniel-apollo<br>heloisarus|
 |西班牙语|`es-es`|elenarus<br>刘娜-apollo<br>pablo-apollo<br>|
 |西班牙语|`es-mx`|hildarus<br>raul-apollo|
@@ -270,9 +270,11 @@ speech_config = speechsdk.SpeechConfig(
 
 ## <a name="troubleshooting"></a>疑难解答
 
-运行该容器时，该容器将使用 **stdout** 和 **stderr** 来输出信息，这些信息有助于排查启动或运行容器时发生的问题。
+如果运行启用了输出[装入点](speech-container-configuration.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。
 
-## <a name="billing"></a>帐单
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
+
+## <a name="billing"></a>账单
 
 语音容器使用 Azure 帐户中的_语音_资源将计费信息发送到 azure。
 

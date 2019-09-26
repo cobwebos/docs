@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/26/2019
 ms.author: barclayn
-ms.openlocfilehash: b506c6f6101e8c5ce71231a8178f70fa5a0914d8
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3b60a6da1e7961c7709bb0b19e91dc6f15a51a1c
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262811"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316778"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -178,7 +178,7 @@ Azure 中支持的加密模型分为两大类：如前所述，“客户端加�
 - 客户全权负责密钥生命周期管理
 - 额外的安装和配置开销
 
-#### <a name="server-side-encryption-using-service-managed-keys-in-customer-controlled-hardware"></a>使用客户所控制硬件中的服务托管密钥的服务器端加密
+#### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>在客户控制的硬件中使用客户托管密钥的服务器端加密
 
 某些 Azure 服务启用了“托管自己的密钥 (HYOK)”密钥管理模型。 当需要对静止的数据进行加密并在不受 Microsoft 控制的专有存储库中管理密钥时，此管理模式非常有用。 在此模型中，服务必须从外部站点检索密钥。 性能和可用性担保会受影响，并且配置更复杂。 另外，由于服务可以在加密和解密操作过程中访问 DEK，此模型的总体安全保证类似于密钥在 Azure Key Vault 中由客户托管的情况。  因此，此模型不适合大多数组织，除非该组织有特定的密钥管理要求。 由于这些限制，大多数 Azure 服务不支持使用客户所控制硬件中的服务托管密钥的服务器端加密。
 
@@ -273,7 +273,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | Azure 数据目录               | 是                | -                  | -                  |
 | Azure HDInsight 上的 Apache Kafka  | 是                | 所有 RSA 长度。   | -                  |
 | Azure 数据资源管理器              | 是                | -                  | -                  |
-| Azure 数据工厂               | 是                | -                  | -                  |
+| Azure 数据工厂               | 是                | 是                | -                  |
 | Azure Data Lake Store            | 是                | 是，RSA 2048 位  | -                  |
 | **容器**                   |                    |                    |                    |
 | Azure Kubernetes 服务         | 是                | -                  | -                  |

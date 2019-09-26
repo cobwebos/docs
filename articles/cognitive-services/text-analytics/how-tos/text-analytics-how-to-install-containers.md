@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 893beb479ee42f5de39d6e2e52251ab4113e3e43
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 69fc955bbd9fc584e0d95e02087b778624def11b
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105075"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316471"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -153,7 +153,9 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 如果运行启用了输出[装入点](../text-analytics-resource-container-config.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。
 
-## <a name="billing"></a>帐单
+[!INCLUDE [Cognitive Services FAQ note](../../containers/includes/cognitive-services-faq-note.md)]
+
+## <a name="billing"></a>账单
 
 文本分析容器使用 Azure 帐户中的_文本分析_资源向 Azure 发送账单信息。 
 
