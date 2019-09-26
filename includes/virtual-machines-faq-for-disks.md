@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541429"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266868"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -107,7 +107,7 @@ ms.locfileid: "69541429"
 
 **如果创建 128 GB 磁盘，然后将该大小增加到 130 GiB，是否会针对下一磁盘大小 (256 GiB) 进行收费？**
 
-是的。
+是。
 
 是否可以创建本地冗余存储、异地冗余存储和区域冗余存储托管磁盘？
 
@@ -143,7 +143,7 @@ GPT 分区仅可在数据磁盘上使用，而不可在操作系统磁盘上使�
 
 **哪些磁盘类型支持快照？**
 
-高级 SSD、标准 SSD 和标准 HDD 支持快照。 对于这三种磁盘类型, 所有磁盘大小 (包括最大为 32 TiB 的磁盘) 都支持快照。 超磁盘不支持快照。
+高级 SSD、标准 SSD 和标准 HDD 支持快照。 对于这三种磁盘类型，所有磁盘大小（包括最大为 32 TiB 的磁盘）都支持快照。 超磁盘不支持快照。
 
 ## <a name="ultra-disks"></a>超磁盘
 
@@ -157,34 +157,52 @@ GPT 分区仅可在数据磁盘上使用，而不可在操作系统磁盘上使�
 - DSv3
 
 **我应该如何将我的 ultra 磁盘吞吐量设置为？**
-如果不确定如何将磁盘吞吐量设置为, 则建议首先假定 IO 大小为 16 KiB, 并在监视应用程序时调整性能。 公式为:以 MBps 为单位的吞吐量 = IOPS * 16/1000。
+如果不确定如何将磁盘吞吐量设置为，则建议首先假定 IO 大小为 16 KiB，并在监视应用程序时调整性能。 公式为：以 MBps 为单位的吞吐量 = IOPS * 16/1000。
 
-**我将我的磁盘配置为 40000 IOPS, 但只看到 12800 IOPS, 为何我看不到磁盘的性能？**
-除了磁盘限制外, 还会在 VM 级别施加 IO 限制。 请确保所使用的 VM 大小能够支持磁盘上配置的级别。 有关 VM 施加的 IO 限制的详细信息, 请参阅[Azure 中 Windows 虚拟机的大小](../articles/virtual-machines/windows/sizes.md)。
+**我将我的磁盘配置为 40000 IOPS，但只看到 12800 IOPS，为何我看不到磁盘的性能？**
+除了磁盘限制外，还会在 VM 级别施加 IO 限制。 请确保所使用的 VM 大小能够支持磁盘上配置的级别。 有关 VM 施加的 IO 限制的详细信息，请参阅[Azure 中 Windows 虚拟机的大小](../articles/virtual-machines/windows/sizes.md)。
 
 **是否可以对超磁盘使用缓存级别？**
-不能, 超磁盘不支持其他磁盘类型支持的不同缓存方法。 将磁盘缓存设置为 "无"。
+不能，超磁盘不支持其他磁盘类型支持的不同缓存方法。 将磁盘缓存设置为 "无"。
 
 **是否可以将超磁盘附加到现有 VM？**
-也许, 你的 VM 必须位于支持 Ultra 磁盘的区域和可用性区域对中。 有关详细信息, 请参阅[超磁盘](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md)入门。
+也许，你的 VM 必须位于支持 Ultra 磁盘的区域和可用性区域对中。 有关详细信息，请参阅[超磁盘](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md)入门。
 
 **能否使用超磁盘作为 VM 的 OS 磁盘？**
-不能, 仅支持将专用磁盘作为数据磁盘, 并且仅支持为4K 本地磁盘。
+不能，仅支持将专用磁盘作为数据磁盘，并且仅支持为4K 本地磁盘。
 
 **是否可以将现有磁盘转换为超磁盘？**
-不可以, 但你可以将数据从现有磁盘迁移到超磁盘。 若要将现有磁盘迁移到超磁盘, 请将这两个磁盘附加到同一个 VM, 并将磁盘的数据从一个磁盘复制到另一个磁盘或利用第三方解决方案进行数据迁移。
+不可以，但你可以将数据从现有磁盘迁移到超磁盘。 若要将现有磁盘迁移到超磁盘，请将这两个磁盘附加到同一个 VM，并将磁盘的数据从一个磁盘复制到另一个磁盘或利用第三方解决方案进行数据迁移。
 
 **能否为超磁盘创建快照？**
-不, 快照尚不可用。
+不，快照尚不可用。
 
 **Azure 备份是否可用于超磁盘？**
-不, Azure 备份支持尚不可用。
+不，Azure 备份支持尚不可用。
 
 **是否可以将超磁盘附加到在可用性集中运行的 VM？**
-不能, 目前尚不支持。
+不能，目前尚不支持。
 
-**是否可以使用超磁盘为 Vm 启用 Azure Site Recovery (ASR)？**
-不, 对于超磁盘, 尚不支持 ASR。
+**是否可以使用超磁盘为 Vm 启用 Azure Site Recovery？**
+不，对于超磁盘，尚不支持 Azure Site Recovery。
+
+## <a name="uploading-to-a-managed-disk"></a>上传到托管磁盘
+
+**是否可将数据上传到现有的托管磁盘？**
+
+不可以。只能在创建 **ReadyToUpload** 状态的新空磁盘期间使用上传。
+
+**如何实现上传到托管磁盘？**
+
+创建一个将[createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption)属性设置为 "上传[" 的托管](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata)磁盘，然后将数据上传到该磁盘。
+
+**是否可将处于上传状态的磁盘附加到 VM？**
+
+否。
+
+**是否可以创建处于上传状态的托管磁盘的快照？**
+
+否。
 
 ## <a name="standard-ssd-disks"></a>标准 SSD 盘
 
@@ -264,7 +282,7 @@ Azure 标准 SSD 盘是什么？
 
 迁移是否影响 Azure Site Recovery 通过 Azure 到 Azure 复制保护的 Azure VM？
 
-否。 使用托管磁盘的 Vm Azure Site Recovery Azure 到 Azure 保护。
+否。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
 
 是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？
 
@@ -345,7 +363,7 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及�
 
 **操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
 
-Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统磁盘的最大大小为 2 TiB。 在 Azure 主权云中, azure 最多支持 32 TiB, 适用于全球 Azure 中的托管数据磁盘, 4 TiB。
+Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统磁盘的最大大小为 2 TiB。 在 Azure 主权云中，azure 最多支持 32 TiB，适用于全球 Azure 中的托管数据磁盘，4 TiB。
 
 **操作系统和数据磁盘支持的最大非托管磁盘大小是多少？**
 
@@ -380,7 +398,7 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 
 **是否可以将托管磁盘的大小从小于 4 TiB 调整到最新引入的磁盘大小（最大大小为 32 TiB）？**
 
-是的。
+是。
 
 **Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小是多少？**
 

@@ -8,16 +8,16 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: b5528d8cd23893248170bdb15588925f3c92c02b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ab4447c8c07f8e8315c0258cc3254e5272ab7582
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934703"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272442"
 ---
-# <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用活动学习改善知识库
+# <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用主动学习改进知识库
 
 通过主动学习，可以根据用户提交的内容为问题和答案对提供替代问题建议，从而提高知识库的质量。 查看这些建议后，可以将其添加到现有问题，也可以拒绝它们。 
 
@@ -79,6 +79,8 @@ QnA Maker 获取有关哪种答案是最佳答案的明确反馈，这一点很�
     启用**活动学习**后，该知识库将基于用户提交的问题，定期提出新问题。 可以通过再次切换设置来禁用“主动学习”。
 
 ## <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>接受知识库中的活动学习建议
+
+活动学习在批准建议后将更改知识库或搜索服务，并保存和训练。 如果你批准此建议，则会将其添加为替代问题。
 
 1. 若要查看建议的问题，请在 "**编辑**知识库" 页上选择 "**查看选项**"，然后选择 "**显示活动的学习建议**"。 
 
@@ -194,7 +196,7 @@ Content-Type: application/json
 
 JSON 正文具有几个设置：
 
-|JSON 正文属性|类型|用途|
+|JSON 正文属性|type|用途|
 |--|--|--|--|
 |`feedbackRecords`|array|反馈列表。|
 |`userId`|string|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
@@ -387,7 +389,14 @@ async callTrain(stepContext){
 ]
 ```
 
+你还可以使用 "下载变更 API" 来查看这些改动，使用 REST 或任何基于语言的 Sdk：
+* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+
+
 当您重新导入此应用程序时，主动学习将继续收集相关信息并为您的知识库提出建议。 
+
+
 
 ## <a name="best-practices"></a>最佳实践
 

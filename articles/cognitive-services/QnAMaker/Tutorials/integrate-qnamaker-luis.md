@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/11/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1792cf2359caef3211b4ce1ac86928eeb85d682b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6605aa268a7ee7fe75254df5dbe96e9dfbc71d79
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053158"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272420"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>将机器人与 QnA Maker 和 LUIS 结合使用以分发知识库
 随着 QnA Maker 知识库变得越来越大，将其作为单个整体集进行维护变得困难，并且需要将知识库分成更小的逻辑块。
@@ -27,7 +27,7 @@ ms.locfileid: "67053158"
 
 ## <a name="architecture"></a>体系结构
 
-![QnA Maker 与语言理解体系结构](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![语言理解体系结构的 QnA Maker](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
 在上面的方案中，QnA Maker 首先从 LUIS 模型获取传入问题的意向，然后使用该意向将问题路由到正确的 QnA Maker 知识库。
 
@@ -37,13 +37,13 @@ ms.locfileid: "67053158"
 1. [创建应用](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app)。
 1. 为每个 QnA Maker 知识库[添加意向](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents)。 示例陈述应对应于 QnA Maker 知识库中的问题。
 1. [训练 LUIS 应用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train)和[发布 LUIS 应用](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp)。
-1. 在“管理”  部分，请记下你的 LUIS 应用 ID、LUIS 终结点密钥和主机区域。 在后面的步骤中会用到这些值。 
+1. 在“管理”部分，请记下你的 LUIS 应用 ID、LUIS 终结点密钥和主机区域。 在后面的步骤中会用到这些值。 
 
 ## <a name="create-qna-maker-knowledge-bases"></a>创建 QnA Maker 知识库
 
 1. 登录到 [QnA Maker](https://qnamaker.ai)。
 1. 为 LUIS 应用中的每个意向[创建](https://www.qnamaker.ai/Create)知识库。
-1. 测试并发布知识库。 在发布每个知识库时，请记下知识库 ID、主机（.azurewebsites.net/qnamaker  前的子域）和授权终结点密钥。 在后面的步骤中会用到这些值。 
+1. 测试并发布知识库。 在发布每个知识库时，请记下知识库 ID、主机（.azurewebsites.net/qnamaker 前的子域）和授权终结点密钥。 在后面的步骤中会用到这些值。 
 
     本文假定所有知识库都是在同一 Azure QnA Maker 订阅中创建的。
 
@@ -51,18 +51,18 @@ ms.locfileid: "67053158"
 
 ## <a name="web-app-bot"></a>Web 应用机器人
 
-1. [创建"基本"Web 应用的机器人](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0)自动包含 LUIS 应用。 选择的 4.x SDK 和C#编程语言。
+1. 创建自动包含 LUIS 应用的["基本" Web 应用机器人](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0)。 选择C#编程语言。
 
 1. 创建 Web 应用机器人后，在 Azure 门户中，选择 Web 应用机器人。
-1. 选择 Web 应用机器人服务导航中的“应用程序设置”  ，然后向下滚动到可用设置的“应用程序设置”  部分。
-1. 将“LuisAppId”  更改为上一部分中创建的 LUIS 应用的值，然后选择“保存”  。
+1. 选择 Web 应用机器人服务导航中的“应用程序设置”，然后向下滚动到可用设置的“应用程序设置”部分。
+1. 将“LuisAppId”更改为上一部分中创建的 LUIS 应用的值，然后选择“保存”。
 
 
 ## <a name="change-code-in-basicluisdialogcs"></a>更改 BasicLuisDialog.cs 中的代码
-1. 在 Azure 门户上的 Web 应用机器人导航的“机器人管理”  部分，选择“生成”  。
-2. 选择“打开联机代码编辑器”  。 在联机编辑环境中打开新的浏览器选项卡。 
-3. 在“WWWROOT”  部分，选择“对话框”  目录，然后打开“BasicLuisDialog.cs”  。
-4. 将依赖项添加到“BasicLuisDialog.cs”  文件的顶部：
+1. 在 Azure 门户上的 Web 应用机器人导航的“机器人管理”部分，选择“生成”。
+2. 选择“打开联机代码编辑器”。 在联机编辑环境中打开新的浏览器选项卡。 
+3. 在“WWWROOT”部分，选择“对话框”目录，然后打开“BasicLuisDialog.cs”。
+4. 将依赖项添加到“BasicLuisDialog.cs”文件的顶部：
 
     ```csharp
     using System;
@@ -103,7 +103,7 @@ ms.locfileid: "67053158"
     ```
 
 
-6. 添加以下类，以向 QnA Maker 服务发出 HTTP 请求。 请注意，授权  标头的值包含单词 `EndpointKey`，该单词后跟一个空格。 JSON 结果被反序列化为上述类，并返回第一个答案。
+6. 添加以下类，以向 QnA Maker 服务发出 HTTP 请求。 请注意，授权标头的值包含单词 `EndpointKey`，该单词后跟一个空格。 JSON 结果被反序列化为上述类，并返回第一个答案。
 
     ```csharp
     [Serializable]
@@ -155,7 +155,7 @@ ms.locfileid: "67053158"
     ```
 
 
-7. 修改 BasicLuisDialog 类。 每个 LUIS 意向都应具有一个使用 LuisIntent  修饰的方法。 修饰的参数是实际的 LUIS 意向名称。 被修饰的方法名称应  为具备可读性和可维护性的 LUIS 意向名称，但不必与在设计或运行时使用的名称相同。  
+7. 修改 BasicLuisDialog 类。 每个 LUIS 意向都应具有一个使用 LuisIntent 修饰的方法。 修饰的参数是实际的 LUIS 意向名称。 被修饰的方法名称应为具备可读性和可维护性的 LUIS 意向名称，但不必与在设计或运行时使用的名称相同。  
 
     ```csharp
     [Serializable]
@@ -224,7 +224,7 @@ ms.locfileid: "67053158"
 
 
 ## <a name="build-the-bot"></a>生成机器人
-1. 在代码编辑器中，右键单击 `build.cmd`，并选择“从控制台运行”  。
+1. 在代码编辑器中，右键单击 `build.cmd`，并选择“从控制台运行”。
 
     ![从控制台运行](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
 
@@ -233,7 +233,7 @@ ms.locfileid: "67053158"
     ![控制台生成](../media/qnamaker-tutorials-qna-luis/console-build.png)
 
 ## <a name="test-the-bot"></a>测试机器人
-在 Azure 门户中，选择“在 Web 聊天中测试”  以测试机器人。 键入出于不同意向的消息以从相应的知识库获得响应。
+在 Azure 门户中，选择“在 Web 聊天中测试”以测试机器人。 键入出于不同意向的消息以从相应的知识库获得响应。
 
 ![Web 聊天测试](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
 

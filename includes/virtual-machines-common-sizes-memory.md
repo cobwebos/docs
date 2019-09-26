@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 18a19f5f853206b06c617307c761a99033c9f92a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "70174587"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266919"
 ---
 内存优化 VM 大小提供适用于关系数据库服务器、中到大型规模的缓存和内存中分析的高内存 CPU 比率。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。
 
 * Ev3 系列在超线程配置中采用 E5-2673 v4 2.3 GHz (Broadwell) 处理器，针对最常规用途的工作负荷提供了更好的价值主张，因此 Ev3 适用于大多数其他云的常规用途 VM。  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存也得到了扩展（从 7 GiB/vCPU 到 8 GiB/vCPU）。  Ev3 是 D/Dv2 系列的高内存 VM 大小产品的后继产品。
 
-* Eav3 系列和 Easv3 系列在多线程配置中利用 AMD 的 2.35 Ghz EPYC<sup>TM</sup> 7452V 处理器，最多可使用 256mb L3 缓存，同时增加了运行大多数内存优化工作负荷的选项。  Eav3 系列和 Easv3 具有与 Ev3 & Esv3 系列相同的内存和磁盘配置。
+* Eav3 系列和 Easv3 系列的预览尺寸利用多线程配置中 AMD 的 2.35 Ghz EPYC<sup>TM</sup> 7452 处理器，最多可包含 256mb L3 缓存，同时增加了运行大多数内存优化工作负荷的选项。  Eav3 系列和 Easv3 具有与 Ev3 & Esv3 系列相同的内存和磁盘配置。
 
 * Mv2 系列提供云中任意 VM 的最高 vCPU 计数（最高为208个 vcpu）和最大内存（最大为 5.7 TiB）。 它非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。
 
@@ -61,15 +61,17 @@ ESv3 系列实例基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，
 
 <sup>3</sup> 实例与专用于单个客户的硬件隔离。
 
-## <a name="easv3-series"></a>Easv3 系列
+## <a name="easv3-series-preview"></a>Easv3 系列（预览）
 
 高级存储：支持
 
 高级存储缓存：支持
 
-Easv3 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452V processor，可实现 Fmax ghz 的提升3.35 并使用高级存储。 Easv3 系列大小适用于内存密集型企业应用程序。
+Easv3 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35 ghz 的提升 Fmax 并使用高级存储。 Easv3 系列大小适用于内存密集型企业应用程序。
 
-| Size | vCPU | 内存：GiB | 临时存储（SSD）：GiB |
+[单击此处注册预览](http://aka.ms/azureamdpreview)。
+
+| Size | vCPU | 内存：GiB | 临时存储 (SSD)：GiB |
 |---|---|---|---|
 | Standard_E2as_v3  | 2  | 16  | 32  |
 | Standard_E4as_v3  | 4  | 32  | 64  |
@@ -110,23 +112,25 @@ Ev3 系列实例基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，�
 
 <sup>3</sup> 实例与专用于单个客户的硬件隔离。
 
-## <a name="eav3-series"></a>Eav3 系列
+## <a name="eav3-series-preview"></a>Eav3 系列（预览）
 
 高级存储：不受支持
 
 高级存储缓存：不受支持
 
-Eav3 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452V processor，可实现 Fmax ghz 的提升3.35 并使用高级存储。 Eav3 系列大小适用于内存密集型企业应用程序。 数据磁盘存储与虚拟机分开计费。 若要使用高级存储磁盘，请使用 Easv3 系列大小。 Easv3 大小的定价和计费标准与 Eav3 系列相同。
+Eav3 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35 ghz 的提升 Fmax 并使用高级存储。 Eav3 系列大小适用于内存密集型企业应用程序。 数据磁盘存储与虚拟机分开计费。 若要使用高级存储磁盘，请使用 Easv3 系列大小。 Easv3 大小的定价和计费标准与 Eav3 系列相同。
 
-| Size | vCPU | 内存：GiB | 临时存储（SSD）：GiB |
-|---|---|---|---|---|---|
-| Standard_E2a_v3  | 2  | 16  | 50   |
-| Standard_E4a_v3  | 4  | 32  | 100  |
-| Standard_E8a_v3  | 8  | 64  | 200  |
-| Standard_E16a_v3 | 16 | 128 | 400  |
-| Standard_E32a_v3 | 32 | 256 | 800  |
-| Standard_E48a_v3 | 48 | 384 | 1200 |
-| Standard_E64a_v3 | 64 | 432 | 1600 |
+[单击此处注册预览](http://aka.ms/azureamdpreview)。
+
+| Size             | vCPU | 内存：GiB | 临时存储 (SSD)：GiB |
+|------------------|------|-------------|-------------------------|
+| Standard_E2a_v3  | 2    | 16          | 50                      |
+| Standard_E4a_v3  | 4    | 32          | 100                     |
+| Standard_E8a_v3  | 8    | 64          | 200                     |
+| Standard_E16a_v3 | 16   | 128         | 400                     |
+| Standard_E32a_v3 | 32   | 256         | 800                     |
+| Standard_E48a_v3 | 48   | 384         | 1200                    |
+| Standard_E64a_v3 | 64   | 432         | 1600                    |
 
 ## <a name="mv2-series"></a>Mv2 系列
 
