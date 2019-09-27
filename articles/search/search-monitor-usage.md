@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.openlocfilehash: e83e84cc8627be468ce0074b35549d5ea7def4f5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: d0c93d941047413c5056b3718f57b360357affbd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640537"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327141"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>在 Azure 搜索中监视资源使用情况和查询活动
 
@@ -56,14 +56,14 @@ Azure 搜索不在其管理的对象之外存储任何数据，这意味着日�
 
 下表比较了各种选项，这些选项用于存储日志以及添加深度监视指标，以便通过 Application Insights 监视服务操作和查询工作负荷。
 
-| Resource | 用于 |
+| Resource | 用途 |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | 记录的事件和查询指标，基于下面的架构并与应用中的用户事件关联。 这是唯一会考虑用户操作或信号的解决方案，它会映射用户发起的搜索中的事件，而不会筛选应用程序代码提交的请求。 若要使用此方法，请将检测代码复制并粘贴到源文件中，以便将请求信息路由到 Application Insights。 有关详细信息，请参阅[搜索流量分析](search-traffic-analytics.md)。 |
 | [Azure Monitor 日志](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | 记录的事件和查询指标，基于下面的架构。 事件记录到 Log Analytics 工作区。 可以针对工作区运行查询，以便从日志返回详细信息。 有关详细信息，请参阅 [Azure Monitor 日志入门](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
 | [Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | 记录的事件和查询指标，基于下面的架构。 事件记录到 Blob 容器并存储在 JSON 文件中。 使用 JSON 编辑器来查看文件内容。|
 | [事件中心](https://docs.microsoft.com/azure/event-hubs/) | 记录的事件和查询指标，基于本文中记录的架构。 对于很大的日志，请选择此项作为备用数据收集服务。 |
 
-Azure Monitor 日志和 Blob 存储均以免费共享服务的形式提供，让你可以在 Azure 订阅的生存期内免费试用它。 Application Insights 可以免费注册和使用，前提是应用程序数据大小不超出特定限制（有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/monitor/)）。
+Azure Monitor 日志和 Blob 存储都作为免费服务提供，因此你可以免费试用 Azure 订阅的生存期。 Application Insights 可以免费注册和使用，前提是应用程序数据大小不超出特定限制（有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/monitor/)）。
 
 下一部分详述如何通过多个步骤来启用和使用 Azure Blob 存储，以便收集和访问 Azure 搜索操作创建的日志数据。
 
@@ -111,7 +111,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 
 | 姓名 | 类型 | 示例 | 说明 |
 | --- | --- | --- | --- |
-| 时间 |DATETIME |"2018-12-07T00:00:43.6872559Z" |操作的时间戳 |
+| time |DATETIME |"2018-12-07T00:00:43.6872559Z" |操作的时间戳 |
 | resourceId |string |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |ResourceId |
 | operationName |string |“Query.Search” |操作的名称 |
 | operationVersion |string |“2019-05-06” |使用的 api-version |
@@ -134,7 +134,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 
 针对查询请求来捕获指标。
 
-| 姓名 | 类型 | 示例 | 说明 |
+| 姓名 | type | 示例 | 说明 |
 | --- | --- | --- | --- |
 | resourceId |string |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |资源 ID |
 | metricName |string |“Latency” |度量值名称 |

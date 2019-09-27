@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: 351247041d4e2f857bcb38b38a490c1a160a6a70
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: a6e8187a085d637ad3abc650daf15d92b96755a3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299588"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338114"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
@@ -225,7 +225,7 @@ Application Insights web 筛选器自动收集未经处理的异常和请求失�
 
 Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github.io/trace-context/)。
 
-有关[关联](correlation.md#w3c-distributed-tracing)的文章中进一步解释了传入的 SDK 配置。
+有关[关联](correlation.md#telemetry-correlation-in-the-java-sdk)的文章中进一步解释了传入的 SDK 配置。
 
 [AI-Agent.xml](java-agent.md) 文件中定义了传出 SDK 配置。
 

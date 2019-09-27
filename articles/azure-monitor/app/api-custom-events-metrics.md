@@ -12,19 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 776f20d04bb79fa42c78dba8482e8ba866c93b31
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: a56040f5938cc5d1edd452a81935591372cff0d6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162514"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326645"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
 在应用程序中插入几行代码，即可了解用户在该应用程序中执行的操作或帮助诊断问题。 可以从设备和桌面应用、Web 客户端和 Web 服务器发送遥测数据。 使用 [Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) 核心遥测 API 发送自定义事件和指标，以及自己的标准遥测版本。 此 API 与标准 Application Insights 数据收集器使用的 API 相同。
-
-> [!NOTE]
-> `TrackMetric()` 不再是用于为基于 .NET 的应用程序发送自定义指标的首选方法。 Application Insights .NET SDK 的[版本 2.60-beta 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) 中引入了一个新方法：[`TelemetryClient.GetMetric()`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet)。 从 Application Insights .NET SDK [版本 2.72](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) 开始，此功能现在是稳定版本的一部分。
 
 ## <a name="api-summary"></a>API 摘要
 
@@ -68,6 +65,8 @@ ms.locfileid: "71162514"
 
 获取 `TelemetryClient` 的实例（网页中的 JavaScript 除外）：
 
+对于适用于 .NET/.NET Core 应用的[ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected)应用和[非 HTTP/辅助角色](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected)，建议从依赖关系注入容器中获取 @no__t 2 的实例，如各自的文档中所述。
+
 *C#*
 
 ```csharp
@@ -94,7 +93,7 @@ var telemetry = applicationInsights.defaultClient;
 
 TelemetryClient 是线程安全的。
 
-对于 ASP.NET 和 Java 项目，可自动捕获传入的 HTTP 请求。 可能需要为应用的其他模块创建 TelemetryClient 的其他实例。 例如，可以在中间件类中使用一个 TelemetryClient 实例报告业务逻辑事件。 可以设置属性（如 UserId 和 DeviceId）来标识计算机。 此信息将附加到实例发送的所有事件中。 
+对于 ASP.NET 和 Java 项目，可自动捕获传入的 HTTP 请求。 可能需要为应用的其他模块创建 TelemetryClient 的其他实例。 例如，可以在中间件类中使用一个 TelemetryClient 实例报告业务逻辑事件。 可以设置属性（如 UserId 和 DeviceId）来标识计算机。 此信息将附加到实例发送的所有事件中。
 
 *C#*
 
@@ -969,7 +968,7 @@ telemetry.trackEvent("SignalProcessed", properties, metrics);
 using Microsoft.ApplicationInsights.DataContracts;
 
 var gameTelemetry = new TelemetryClient();
-gameTelemetry.Context.Properties["Game"] = currentGame.Name;
+gameTelemetry.Context.GlobalProperties["Game"] = currentGame.Name;
 // Now all telemetry will automatically be sent with the context property:
 gameTelemetry.TrackEvent("WinGame");
 ```
@@ -978,7 +977,7 @@ gameTelemetry.TrackEvent("WinGame");
 
 ```vb
 Dim gameTelemetry = New TelemetryClient()
-gameTelemetry.Context.Properties("Game") = currentGame.Name
+gameTelemetry.Context.GlobalProperties("Game") = currentGame.Name
 ' Now all telemetry will automatically be sent with the context property:
 gameTelemetry.TrackEvent("WinGame")
 ```

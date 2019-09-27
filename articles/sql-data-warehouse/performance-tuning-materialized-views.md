@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172787"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338909"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>利用具体化视图进行性能优化 
 在 Azure SQL 数据仓库中，具体化视图为复杂的分析查询提供一种低维护方法，以实现快速性能，而无需更改任何查询。 本文讨论有关使用具体化视图的一般指南。
@@ -49,7 +49,7 @@ Azure SQL 数据仓库支持标准视图和具体化视图。  两者都是用 S
 
 - Azure SQL 数据仓库中的优化器可以自动使用已部署的具体化视图来改善查询执行计划。  此过程对于提供更快查询性能的用户是透明的，不需要查询直接引用具体化视图。 
 
-- 需要对视图进行低维护。  具体化视图将数据存储在两个位置，这是在创建视图时初始数据的聚集列存储索引，而增量数据更改的增量存储区。  基表中的所有数据更改将以同步方式自动添加到增量存储中。  后台进程（元组移动器）定期将数据从增量存储移至视图的列存储索引。  此设计允许查询具体化视图返回与直接查询基表相同的数据。 
+- 需要对视图进行低维护。  基表中的所有增量数据更改将以同步方式自动添加到具体化视图中。  此设计允许查询具体化视图返回与直接查询基表相同的数据。 
 - 具体化视图中的数据的分布方式与基表不同。  
 - 具体化视图中的数据获取与常规表中的数据相同的高可用性和复原优势。  
  
@@ -90,7 +90,7 @@ Azure 数据仓库是一种分布式大规模并行处理（MPP）系统。   �
 
 **了解更快的查询与成本之间的折衷** 
 
-对于每个具体化视图，都有一个数据存储成本和维护视图的成本。  当基表中的数据更改时，具体化视图的大小会增加，并且其物理结构也会改变。  为了避免查询性能下降，数据仓库引擎单独维护每个具体化视图，包括将行从增量存储移到列存储索引段和合并数据更改。  当具体化视图的数量和基表的更改增加时，维护工作负荷会更高。   用户应检查所有具体化视图产生的成本是否可以通过查询性能增益进行偏移。  
+对于每个具体化视图，都有一个数据存储成本和维护视图的成本。  当基表中的数据更改时，具体化视图的大小会增加，并且其物理结构也会改变。  为了避免查询性能下降，数据仓库引擎单独维护每个具体化视图。  当具体化视图的数量和基表的更改增加时，维护工作负荷会更高。   用户应检查所有具体化视图产生的成本是否可以通过查询性能增益进行偏移。  
 
 您可以对数据库中的具体化视图列表运行此查询： 
 
@@ -136,7 +136,7 @@ GROUP BY A, C
 
 **监视具体化视图** 
 
-具体化视图存储在数据仓库中，就像具有聚集列存储索引（CCI）的表一样。  从具体化视图中读取数据包括从增量存储中扫描索引和应用更改。  当增量存储中的行数过高时，从具体化视图解析查询的时间可能比直接查询基表更长。  若要避免查询性能下降，最佳做法是运行[DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)来监视视图的 overhead_ratio （total_rows/base_view_row）。  如果 overhead_ratio 过高，请考虑重新生成具体化视图，以使增量存储中的所有行都移到列存储索引中。  
+具体化视图存储在数据仓库中，就像具有聚集列存储索引（CCI）的表一样。  读取具体化视图中的数据包括扫描 CCI 索引段和应用基表中的任何增量更改。 当增量更改数过高时，从具体化视图解析查询的时间可能比直接查询基表更长。  若要避免查询性能下降，最佳做法是运行[DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)来监视视图的 overhead_ratio （total_rows/max （1，base_view_row））。  如果用户的 overhead_ratio 过高，则应重新生成具体化视图。 
 
 **具体化视图和结果集缓存**
 

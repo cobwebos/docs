@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/28/2019
+ms.date: 09/26/2019
 ms.author: bwren
-ms.openlocfilehash: 9ecae51d996e2e065b15d1fa70bdaf796f8f197b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 39691c0efbac7b7a48dd844641d63e0ca178e95f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124155"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327466"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor 中的自定义日志
 
@@ -58,7 +58,7 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 
 1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区 >“高级设置”。
 2. 单击“数据” > “自定义日志”。
-3. 默认情况下，所有配置更改均会自动推送到所有代理。  对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。  如果想在每个 Linux 代理上手动修改此文件，则取消选中“将下面的配置应用到我的 Linux 计算机”框即可。
+3. 默认情况下，所有配置更改均会自动推送到所有代理。 对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。
 4. 单击“添加+”，打开自定义日志向导。
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>步骤 2. 上载和分析示例日志

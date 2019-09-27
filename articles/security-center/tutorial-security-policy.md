@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: memildin
-ms.openlocfilehash: 11e1c837e416a5d2105f494c43823298edfd4355
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 488210e4f2c5d3a8a978079d0c7293ce091d998b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200491"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338770"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 
@@ -42,7 +42,7 @@ ms.locfileid: "71200491"
 如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 Azure 管理组提供订阅上的作用域级别。 可将订阅组织到名为“管理组”的容器中，并将管理策略应用到管理组。 管理组中的所有订阅都将自动继承应用于管理组的策略。 为每个目录指定了一个称为“根”管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 此根管理组允许在目录级别应用全局策略和 RBAC 分配。 若要设置用于 Azure 安全中心的管理组，请按照[为 Azure 安全中心实现租户级可见性](security-center-management-groups.md)中的说明进行操作。
 
 > [!NOTE]
-> 务必要了解管理组和订阅的层次结构。 请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/index.md#root-management-group-for-each-directory)来了解有关管理组、根管理和管理组访问权限的详细信息。
+> 务必要了解管理组和订阅的层次结构。 请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/overview.md#root-management-group-for-each-directory)来了解有关管理组、根管理和管理组访问权限的详细信息。
 >
 
 ## <a name="how-security-policies-work"></a>安全策略工作原理

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a575d9f90d166ba69b14e4507d9ed7a54fac574
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291019"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326383"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 权利管理（预览版）中编辑和管理现有的访问包
 
@@ -36,7 +36,7 @@ ms.locfileid: "71291019"
 
 ## <a name="add-resource-roles"></a>添加资源角色
 
-资源角色是与资源关联的权限集合。 为用户提供可请求的资源的方式是将资源角色添加到访问包。 可为组、应用程序和 SharePoint 站点添加资源角色。
+资源角色是与资源关联的权限集合。 为用户提供可请求的资源的方式是将资源角色添加到访问包。 您可以为组、团队、应用程序和 SharePoint 站点添加资源角色。
 
 **必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理者
 
@@ -50,38 +50,49 @@ ms.locfileid: "71291019"
 
     ![访问包 - 添加资源角色](./media/entitlement-management-access-package-edit/resource-roles-add.png)
 
-1. 根据是要添加组、应用程序还是 SharePoint 站点，执行以下某个资源角色部分中的步骤。
+1. 根据你是要添加组、团队、应用程序还是 SharePoint 站点，请执行下列资源角色部分之一中的步骤。
 
-### <a name="add-a-group-resource-role"></a>添加组资源角色
+### <a name="add-a-group-or-team-resource-role"></a>添加组或团队资源角色
 
-为用户分配访问包后，可让权利管理自动将用户添加到组中。 
+当分配了访问包时，可以让权利管理自动将用户添加到组或 Microsoft 团队。 
 
-- 如果某个组是访问包的一部分，而某个用户已分配到该访问包，则该用户将添加到该组（如果不在该组中）。
-- 当用户的访问包分配过期时，他们将从组中删除，除非他们当前已分配到包含同一个组的其他访问包。
+- 如果组或团队是访问包的一部分，并且将用户分配到该访问包，则会将该用户添加到该组或团队（如果尚未存在）。
+- 当用户的访问包分配过期时，它们将从组或团队中删除，除非它们当前已分配给另一个访问包，其中包含相同的组或团队。
 
-可以选择任意 Office 365 组或 Azure AD 安全组。  管理员可将任何组添加到目录；如果目录所有者是组的所有者，则他们可将任何组添加到该目录中。 选择组时，请记住以下 Azure AD 约束：
+你可以选择任何[Azure AD 安全组或 Office 365 组](../fundamentals/active-directory-groups-create-azure-portal.md)。  管理员可将任何组添加到目录；如果目录所有者是组的所有者，则他们可将任何组添加到该目录中。 选择组时，请记住以下 Azure AD 约束：
 
-- 如果用户（包括来宾）已作为成员添加到组中，则他们可以看到该组的所有其他成员。
+- 当用户（包括来宾）作为成员添加到组或团队时，他们可以查看该组或团队的所有其他成员。
 - Azure AD 无法更改使用 Azure AD Connect 从 Windows Server Active Directory 同步的组的成员身份，或在 Exchange Online 中作为通讯组创建的组的成员身份。  
 - 无法通过添加或删除成员来更新动态组的成员身份，因此，不适合在权利管理中使用动态组成员身份。
 
-1. 在“将资源角色添加到访问包”页上，单击“组”打开“选择组”窗格。
+有关详细信息，请参阅[比较组](/office365/admin/create-groups/compare-groups)和[Office 365 组和 Microsoft 团队](/microsoftteams/office-365-groups)。
 
-1. 选择要包含在访问包中的组。
+1. 在 "**将资源角色添加到访问包**" 页面上，单击 "**组和团队**" 以打开 "选择组" 窗格。
+
+1. 选择要包括在访问包中的组和团队。
 
     ![访问包 - 添加资源角色 - 选择组](./media/entitlement-management-access-package-edit/group-select.png)
 
 1. 单击“选择”。
 
+    选择组或团队后，"**子类型**" 列将列出以下子类型之一：
+
+    |  |  |
+    | --- | --- |
+    | 安全性 | 用于授予对资源的访问权限。 |
+    | 分发 | 用于向一组人员发送通知。 |
+    | O365 | 不是团队启用的 Office 365 组。 用于在公司内部和外部用户之间的协作。 |
+    | 团队 | 启用了团队的 Office 365 组。 用于在公司内部和外部用户之间的协作。 |
+
 1. 在“角色”列表中，选择“所有者”或“成员”。
 
     我们通常会选择“成员”角色。 如果选择“所有者”角色，则允许用户添加或删除其他成员或所有者。
 
-    ![访问包 - 为组添加资源角色](./media/entitlement-management-access-package-edit/group-role.png)
+    ![访问包-添加组或团队的资源角色](./media/entitlement-management-access-package-edit/group-role.png)
 
 1. 单击“添加”。
 
-    添加此组时，在访问包中具有现有分配的任何用户将自动成为该组的成员。
+    添加了对访问包的现有分配的任何用户将自动成为该组或团队的成员。
 
 ### <a name="add-an-application-resource-role"></a>添加应用程序资源角色
 

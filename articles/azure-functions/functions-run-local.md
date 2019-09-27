@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: fc77ef6786fbd16ecfeb34397ead11be8b107176
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 45bc55141c9f338ae2f69cf4ccefae3d2492b239
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207285"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336936"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -90,26 +90,44 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
 
 以下步骤使用 [APT](https://wiki.debian.org/Apt) 在 Ubuntu/Debian Linux 发行版上安装 Core Tools。 有关其他 Linux 发行版，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)。
 
-1. 安装 Microsoft package 存储库 GPG 密钥, 验证包的完整性:
+1. 安装 Microsoft 包存储库 GPG 密钥，以验证包完整性：
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-1. 验证你的 Ubuntu 服务器正在运行下表中的合适版本之一。 若要添加 apt 源，请运行：
+1. 请在执行 APT 更新之前设置 .NET 开发源列表。
+
+   若要设置 Ubuntu 的 APT 源列表，请运行以下命令：
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
-    sudo apt-get update
     ```
+
+   若要为 Debian 设置 APT 源列表，请运行以下命令：
+
+    ```bash
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+    ```
+
+1. 检查 `/etc/apt/sources.list.d/dotnetdev.list` 文件中列出的相应 Linux 版本字符串之一：
 
     | Linux 分发版 | Version |
     | --------------- | ----------- |
+    | Debian 10 | `buster` |
+    | Debian 9 | `stretch` |
+    | Debian 8 | `jessie` |
     | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
+
+1. 启动 APT 源更新：
+
+    ```bash
+    sudo apt-get update
+    ```
 
 1. 安装 Core Tools 包：
 
@@ -142,7 +160,7 @@ python (preview)
 powershell (preview)
 ```
 
-使用向上/向下箭头键选择语言，然后按 Enter。 如果打算开发 JavaScript 或 TypeScript 函数, 请选择 "**节点**", 然后选择语言。 TypeScript 有[一些额外的要求](functions-reference-node.md#typescript)。 
+使用向上/向下箭头键选择语言，然后按 Enter。 如果计划开发 JavaScript 或 TypeScript 函数，请选择“节点”，然后选择语言。 TypeScript 具有[一些其他要求](functions-reference-node.md#typescript)。 
 
 JavaScript 项目的输出如以下示例所示：
 
@@ -270,11 +288,11 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 ## <a name="start"></a>在本地运行函数
 
-若要运行 Functions 项目，请运行 Functions 主机。 宿主为项目中的所有函数启用触发器。 
+若要运行 Functions 项目，请运行 Functions 主机。 主机会为项目中的所有函数启用触发器。 
 
 ### <a name="version-2x"></a>版本 2.x
 
-在运行时的版本2.x 中, start 命令因项目语言而异。
+在 2.x 版的运行时中，启动命令因项目语言而异。
 
 #### <a name="c"></a>C\#
 
@@ -297,7 +315,7 @@ npm start
 
 ### <a name="version-1x"></a>版本 1.x
 
-函数运行时的版本1.x 需要`host`命令, 如以下示例中所示:
+1\.x 版的 Functions 运行时需要 `host` 命令，如下例所示：
 
 ```command
 func host start
@@ -312,12 +330,12 @@ func host start
 | **`--cors-credentials`** | 允许跨域经身份验证的请求（例如 cookies 和身份验证标头），仅限版本 2.x。 |
 | **`--cors`** | 以逗号分隔的 CORS 来源列表，其中不包含空格。 |
 | **`--language-worker`** | 用于配置语言辅助角色的参数。 仅限版本 2.x。 |
-| **`--nodeDebugPort -n`** | 节点调试程序要使用的端口。 默认：launch.json 中的值或 5858。 仅限版本 1.x。 |
+| **`--nodeDebugPort -n`** | 节点调试程序要使用的端口。 默认值：launch.json 中的值或 5858。 仅限版本 1.x。 |
 | **`--password`** | 密码或包含 .pfx 文件密码的文件。 仅与 `--cert` 结合使用。 仅限版本 2.x。 |
 | **`--port -p`** | 要侦听的本地端口。 默认值：7071。 |
 | **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 仅当从集成开发环境 (IDE) 启动 Core Tools 时才使用。|
 | **`--script-root --prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 `MyProject/bin/Debug/netstandard2.0`。 在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
-| **`--timeout -t`** | Functions 主机启动的超时时间（以秒为单位）。 默认：20 秒。|
+| **`--timeout -t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
 | **`--useHttps`** | 绑定到 `https://localhost:{port}` ，而不是绑定到 `http://localhost:{port}` 。 默认情况下，此选项会在计算机上创建可信证书。|
 
 Functions 主机启动时，会输出 HTTP 触发的函数的 URL：
@@ -338,7 +356,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 若要在本地测试函数，请[启动 Functions 主机](#start)，并在本地服务器上使用 HTTP 请求调用终结点。 你调用的终结点要取决于函数的类型。
 
 >[!NOTE]
-> 本主题中的示例使用 cURL 工具从终端或命令提示符发送 HTTP 请求。 你可以使用所选的工具将 HTTP 请求发送到本地服务器。 默认情况下, 在基于 Linux 的系统和 Windows 10 版本17063及更高版本中, 可以使用卷工具。 在较旧的 Windows 上, 必须先下载并安装[卷工具](https://curl.haxx.se/)。
+> 本主题中的示例使用 cURL 工具从终端或命令提示符发送 HTTP 请求。 你可以使用所选的工具将 HTTP 请求发送到本地服务器。 默认情况下，cURL 工具在基于 Linux 的系统和 Windows 10 内部版本 17063 及更高版本上可用。 在较旧的 Windows 上，必须先下载并安装 [cURL 工具](https://curl.haxx.se/)。
 
 有关测试函数的更多常规信息，请参阅[在 Azure Functions 中测试代码的策略](functions-test-a-function.md)。
 
@@ -423,7 +441,7 @@ Azure Functions Core Tools 支持两种类型的部署：通过 [Zip Deploy](fun
 func azure functionapp publish <FunctionAppName>
 ```
 
-此命令发布到 Azure 中的现有函数应用。 如果尝试发布到订阅中不存在的 `<FunctionAppName>`，则会收到错误。 若要了解如何使用 Azure CLI 从命令提示符或终端窗口创建函数应用，请参阅[为无服务器执行创建函数应用](./scripts/functions-cli-create-serverless.md)。 默认情况下, 此命令会将你的应用部署为[从部署包中运行](run-functions-from-deployment-package.md)。 若要禁用此建议的`--nozip`部署模式, 请使用选项。
+此命令发布到 Azure 中的现有函数应用。 如果尝试发布到订阅中不存在的 `<FunctionAppName>`，则会收到错误。 若要了解如何使用 Azure CLI 从命令提示符或终端窗口创建函数应用，请参阅[为无服务器执行创建函数应用](./scripts/functions-cli-create-serverless.md)。 默认情况下，此命令将应用部署为[从部署包运行](run-functions-from-deployment-package.md)。 若要禁用此建议的部署模式，请使用 `--nozip` 选项。
 
 >[!IMPORTANT]
 > 在 Azure 门户中创建函数应用时，该应用默认使用 2.x 版函数运行时。 要让函数应用使用 1.x 版运行时，请遵照[在版本 1.x 上运行](functions-versions.md#creating-1x-apps)中的说明。
@@ -472,11 +490,11 @@ func deploy
 
 ## <a name="monitoring-functions"></a>监视函数
 
-若要监视函数的执行, 推荐的方法是将与 Azure 应用程序 Insights 集成。 你还可以将执行日志流式传输到你的本地计算机。 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+若要监视函数的执行，推荐的方法是将与 Azure 应用程序 Insights 集成。 你还可以将执行日志流式传输到你的本地计算机。 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 ### <a name="enable-application-insights-integration"></a>启用 Application Insights 集成
 
-在 Azure 门户中创建函数应用时, 默认情况下将为你执行 Application Insights 集成。 但是，当你使用 Azure CLI 创建函数应用时，Azure 的函数应用中的集成并未完成。
+在 Azure 门户中创建函数应用时，默认情况下将为你执行 Application Insights 集成。 但是，当你使用 Azure CLI 创建函数应用时，Azure 的函数应用中的集成并未完成。
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 

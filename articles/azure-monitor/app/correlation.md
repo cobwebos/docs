@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: bb28171ceca9861fb5cc0b7be1db9ab58ef72a1b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fe52fe51b347b232e03bad943906413b90c853c0
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124103"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338173"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -62,30 +62,41 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 ## <a name="correlation-headers"></a>关联标头
 
-我们正在开发[关联 HTTP 协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)的 RFC 提案。 此提案定义两个标头：
-
-- `Request-Id`：承载调用的全局唯一 ID。
-- `Correlation-Context`：承载分布式跟踪属性的名称值对集合。
-
-该标准还定义了 `Request-Id` 生成项的两个架构：平面和分层。 使用平面架构时，将为 `Correlation-Context` 集合定义一个已知的 `Id` 键。
-
-Application Insights 为关联 HTTP 协议定义了[扩展](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)。 它使用 `Request-Context` 名称值对来传播直接调用方或被调用方使用的属性集合。 Application Insights SDK 使用此标头设置 `dependency.target` 和 `request.source` 字段。
-
-### <a name="w3c-distributed-tracing"></a>W3C 分布式跟踪
-
-我们正在转换为 [W3C 分布式跟踪格式](https://w3c.github.io/trace-context/)。 定义的内容：
+我们正在转换到[W3C 跟踪上下文](https://w3c.github.io/trace-context/)，该上下文定义：
 
 - `traceparent`：承载调用的全局唯一操作 ID 和唯一标识符。
 - `tracestate`：承载跟踪系统特定的上下文。
 
-#### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>启用对经典 ASP.NET 应用的 W3C 分布式跟踪支持
+最新版本的 Application Insights Sdk 支持跟踪上下文协议，但你可能需要选择加入该协议（它将使与 Applicationinsights.config Sdk 支持的旧相关协议保持向后兼容）。
 
+[相关 HTTP 协议称为请求 Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)在弃用路径上。 此协议定义了两个标头：
+
+- `Request-Id`：承载调用的全局唯一 ID。
+- `Correlation-Context`：承载分布式跟踪属性的名称值对集合。
+
+Application Insights 还定义了相关 HTTP 协议的[扩展](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)。 它使用 `Request-Context` 名称值对来传播直接调用方或被调用方使用的属性集合。 Application Insights SDK 使用此标头设置 `dependency.target` 和 `request.source` 字段。
+
+### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>启用对经典 ASP.NET 应用的 W3C 分布式跟踪支持
+ 
+  > [!NOTE]
+  > 不需要从 `Microsoft.ApplicationInsights.Web` 开始配置，`Microsoft.ApplicationInsights.DependencyCollector` 
+
+W3C 跟踪上下文支持是以向后兼容的方式完成的，相关内容应与使用早期版本的 SDK （不支持 W3C）检测到的应用程序配合使用。 
+
+如果出于任何原因需要继续使用旧的 `Request-Id` 协议，则可以使用以下配置*禁用*跟踪上下文：
+
+```csharp
+  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
+  Activity.ForceDefaultIdFormat = true;
+```
+
+如果运行的是较旧版本的 SDK，我们建议对其进行更新或应用以下配置，以启用跟踪上下文。
 从版本 2.8.0-beta1 开始，`Microsoft.ApplicationInsights.Web` 和 `Microsoft.ApplicationInsights.DependencyCollector` 包中提供此功能。
 此项默认禁用。 若要启用该项，请更改 `ApplicationInsights.config`：
 
 - 在 `RequestTrackingTelemetryModule` 下，添加 `EnableW3CHeadersExtraction` 元素，并将值设为 `true`。
 - 在 `DependencyTrackingTelemetryModule` 下，添加 `EnableW3CHeadersInjection` 元素，并将值设为 `true`。
-- 在`W3COperationCorrelationTelemetryInitializer`类似于`TelemetryInitializers`的下添加 
+- 在 `TelemetryInitializers` 下添加 `W3COperationCorrelationTelemetryInitializer`，类似于 
 
 ```xml
 <TelemetryInitializers>
@@ -94,7 +105,21 @@ Application Insights 为关联 HTTP 协议定义了[扩展](https://github.com/l
 </TelemetryInitializers> 
 ```
 
-#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>启用对 ASP.NET Core 应用的 W3C 分布式跟踪支持
+### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>启用对 ASP.NET Core 应用的 W3C 分布式跟踪支持
+
+ > [!NOTE]
+  > 从 `Microsoft.ApplicationInsights.AspNetCore` 版本2.8.0 开始，无需进行任何配置。
+ 
+W3C 跟踪上下文支持是以向后兼容的方式完成的，相关内容应与使用早期版本的 SDK （不支持 W3C）检测到的应用程序配合使用。 
+
+如果出于任何原因需要继续使用旧的 `Request-Id` 协议，则可以使用以下配置*禁用*跟踪上下文：
+
+```csharp
+  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
+  Activity.ForceDefaultIdFormat = true;
+```
+
+如果运行的是较旧版本的 SDK，我们建议对其进行更新或应用以下配置，以启用跟踪上下文。
 
 此功能在 `Microsoft.ApplicationInsights.AspNetCore` 的版本 2.5.0-beta1 以及 `Microsoft.ApplicationInsights.DependencyCollector` 的版本 2.8.0-beta1 中提供。
 此项默认禁用。 若要启用该项，请将 `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` 设置为 `true`：
@@ -108,7 +133,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-#### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>启用对 Java 应用的 W3C 分布式跟踪支持
+### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>启用对 Java 应用的 W3C 分布式跟踪支持
 
 - **传入配置**
 
@@ -145,11 +170,11 @@ public void ConfigureServices(IServiceCollection services)
 > [!IMPORTANT]
 > 请确保传入和传出配置完全相同。
 
-#### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>为 Web 应用启用 W3C 分布式跟踪支持
+### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>启用对 Web 应用的 W3C 分布式跟踪支持
 
-此功能在中`Microsoft.ApplicationInsights.JavaScript`。 此项默认禁用。 若要启用它, `distributedTracingMode`请使用 config。提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测的服务进行后向兼容:
+此功能在 `Microsoft.ApplicationInsights.JavaScript` 中。 此项默认禁用。 若要启用它，请使用 `distributedTracingMode` 配置。提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容：
 
-- **NPM 安装程序 (如果使用代码段设置, 则忽略)**
+- **NPM 设置（如果使用代码段设置，则忽略）**
 
   ```javascript
   import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
@@ -162,7 +187,7 @@ public void ConfigureServices(IServiceCollection services)
   appInsights.loadAppInsights();
   ```
   
-- **代码段设置 (如果使用 NPM 安装程序则忽略)**
+- **代码段设置（如果使用 NPM 设置，则忽略）**
 
   ```
   <script type="text/javascript">
@@ -209,7 +234,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 
-从版本 4.1.0 开始，`System.Net.HttpClient` 支持自动注入关联 HTTP 标头和以活动形式跟踪 HTTP 调用。
+从版本 4.1.0 开始，`System.Net.Http.HttpClient` 支持自动注入关联 HTTP 标头和以活动形式跟踪 HTTP 调用。
 
 经典 ASP.NET 有一个新的 HTTP 模块 [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)。 此模块使用 `DiagnosticSource` 实现遥测关联。 它会基于传入的请求标头启动活动。 它还会关联不同请求处理阶段的遥测，即使 Internet Information Services (IIS) 处理的每个阶段在不同的托管线程上运行。
 
@@ -258,7 +283,7 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 ## <a name="next-steps"></a>后续步骤
 
 - 编写[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)。
-- 有关 ASP.NET Core 和 ASP.NET 中的高级关联方案, 请参阅[跟踪自定义操作](custom-operations-tracking.md)一文。
+- 有关 ASP.NET Core 和 ASP.NET 中的高级关联方案，请参阅[跟踪自定义操作](custom-operations-tracking.md)一文。
 - 详细了解如何为其他 SDK [设置 cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name)。
 - 在 Application Insights 中载入微服务的所有组件。 查看[支持的平台](../../azure-monitor/app/platforms.md)。
 - 有关 Application Insights 的类型，请参阅[数据模型](../../azure-monitor/app/data-model.md)。

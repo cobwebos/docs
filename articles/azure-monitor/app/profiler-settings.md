@@ -12,56 +12,89 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 2bc32e28ffd6dd9dab2da61078684791a04709cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12cb8e31617ee6b1e0c8515e66e265f4eccdf3df
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922989"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338044"
 ---
 # <a name="configure-application-insights-profiler"></a>配置 Application Insights Profiler
 
-## <a name="profiler-settings-pane"></a>Profiler 设置窗格
+## <a name="updated-profiler-agent"></a>已更新探查器代理
+触发器功能仅适用于版本2.6 或更高版本的探查器代理。 如果运行的是 Azure App Service，则代理将自动更新。 如果你访问网站的 Kudu URL 并将 \DiagnosticServices 附加到其末尾，则可以查看正在运行的代理的版本，如下所示： https://yourwebsite.scm.azurewebsites.net/diagnosticservices 。 Application Insights Profiler Webjob 应为2.6 版或更高版本。 可以通过重新启动 web 应用来强制升级。 
 
-打开 Azure Application Insights Profiler 设置窗格中，请转到“Application Insights 性能”窗格中，然后选择“Profiler”按钮  。
+如果在 VM 或云服务上运行探查器，则需要安装 Windows Azure 诊断（WAD）扩展版本16.0.4 或更高版本。 可以通过登录到 VM 并查看此目录来检查 WAD 的版本：C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. 目录名称是安装的 WAD 的版本。 当新版本可用时，Azure VM 代理会自动更新 WAD。
 
-![配置 Profiler 窗格][configure-profiler-entry]
+## <a name="profiler-settings-page"></a>探查器设置页
 
-“配置 Application Insights Profiler”窗格包含四项功能  ： 
-* **立即探查**：启动与此 Application Insights 实例链接的所有应用的分析会话。
-* **链接的应用**：列出将分析数据发送到此 Application Insights 资源的应用程序。
-* **正在进行的会话**：显示选中“立即探查”时的会话状态  。 
-* **最新的分析会话**：显示有关最近分析会话的信息。
+若要打开 "Azure 应用程序 Insights 探查器设置" 窗格，请参阅 "Application Insights 性能" 窗格，然后选择 "**配置探查器**" 按钮。
 
-![按需 Profiler][profiler-on-demand]
+!["打开探查器设置" 页的链接][configure-profiler-entry]
 
-## <a name="app-service-environment"></a>应用服务环境
-根据 Azure 应用服务环境的配置方式，可能会阻止检查代理状态的调用。 即使代理正在运行，窗格可能会显示消息称代理没有运行。 为了确保确实如此，请检查应用程序上的 Web 作业。 如果所有应用设置值都正确并且应用程序上安装了 Application Insights 站点扩展，则 Profiler 正在运行。 如果应用程序正在接收足够的流量，则最近的分析会话应显示在列表中。
+这会打开如下所示的页面：
 
-## <a id="profileondemand"></a> 手动触发 Profiler
+![探查器设置页][configure-profiler-page]
 
-### <a name="minimum-requirements"></a>最低要求 
-用户若要手动触发探查器会话，他们至少需要对其 Application Insights 组件角色具有“写入”访问权限。 在大多数情况下，你可以自动获得此访问权限，不需要额外的工作。 如果遇到问题，则要添加的订阅范围角色将是“Application Insights 组件参与者”角色。 [详细了解如何使用 Azure 监视进行角色访问控制](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control)。
+"**配置 Application Insights Profiler** " 页具有以下功能：
 
-只需单击一下，即可手动触发 Profiler。 假设要运行 Web 性能测试。 你将需要跟踪来帮助了解 Web 应用在负载下的性能如何。 控制何时捕获跟踪至关重要，因为知道负载测试何时将运行。 但是随机采样间隔可能会错过捕获。
+| | |
+|-|-|
+立即配置文件 | 启动与此 Application Insights 实例链接的所有应用的分析会话。
+Triggers | 允许您配置导致探查器运行的触发器。 
+最近的分析会话 | 显示有关最近分析会话的信息。
+
+## <a name="profile-now"></a>立即配置文件
+使用此选项可以按需启动分析会话。 单击此链接时，将数据发送到此 Application Insights 实例的所有探查器代理都将开始捕获配置文件。 5到10分钟后，配置文件会话将显示在下面的列表中。
+
+为了使用户能够手动触发探查器会话，它们至少需要对 Application Insights 组件的角色具有 "写入" 访问权限。 在大多数情况下，你可以自动获取此访问权限，而无需执行其他操作。 如果遇到问题，要添加的订阅作用域角色为 "Application Insights 组件参与者" 角色。 [详细了解如何使用 Azure 监视进行角色访问控制](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control)。
+
+## <a name="trigger-settings"></a>触发器设置
+![触发器设置浮出控件][trigger-settings-flyout]
+
+单击菜单栏上的 "触发器" 按钮将打开 "触发器设置" 框。 当 CPU 或内存使用率达到所设置的级别时，可以设置触发器来开始分析。
+
+| | |
+|-|-|
+"开/关" 按钮 | 开启：探查器可以通过此触发器启动;Off：探查器不会由此触发器启动。
+内存阈值 | 如果正在使用此内存百分比，则探查器将启动。
+持续时间 | 设置探查器在触发时将运行的时间长度。
+冷却 | 设置探查器在其触发之后再次检查内存或 CPU 使用情况之前将等待的时间长度。
+
+## <a name="recent-profiling-sessions"></a>最近分析会话
+页面的此部分显示有关最近分析会话的信息。 分析会话表示探查器代理在承载应用程序的某个计算机上使用配置文件的时间段。 单击其中一个行即可从会话中打开配置文件。 对于每个会话，我们将显示：
+
+| | |
+|-|-|
+触发者 | 会话的启动方式，可以是触发器、立即配置文件或默认采样。 
+应用程序名称 | 已分析的应用程序的名称。
+计算机实例 | 探查器代理运行所在的计算机的名称。
+时间戳 | 捕获配置文件的时间。
+Tracee | 附加到各个请求的跟踪数。
+CPU % | 探查器运行时所使用的 CPU 的百分比。
+记忆 | 探查器运行时所使用的内存的百分比。
+
+## <a id="profileondemand"></a>使用 web 性能测试生成到应用程序的流量
+
+只需单击一下，即可手动触发 Profiler。 假设要运行 Web 性能测试。 你需要跟踪来帮助你了解 web 应用在负载下的运行情况。 控制何时捕获跟踪至关重要，因为知道负载测试何时将运行。 但是随机采样间隔可能会错过捕获。
 
 下一部分将说明此方案的工作原理：
 
-### <a name="step-1-optional-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>步骤 1：（可选）通过启动 Web 性能测试生成发往 Web 应用的流量
+### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>步骤 1：通过启动 Web 性能测试生成发往 Web 应用的流量
 
 如果 Web 应用已有传入流量或者你就是希望手动生成流量，请跳过本部分并转到步骤 2。
 
-1. 在 Application Insights 门户中，选择“配置” > “性能测试”   。 
+1. 在 Application Insights 门户中，选择“配置” > “性能测试”。 
 
-1. 若要启动新的性能测试，请选择“新建”按钮  。
+1. 若要启动新的性能测试，请选择“新建”按钮。
 
    ![创建新的性能测试][create-performance-test]
 
-1. 在“新建性能测试”  窗格中，配置测试目标 URL。 接受所有默认设置，然后选择“运行测试”开始运行负载测试  。
+1. 在“新建性能测试”窗格中，配置测试目标 URL。 接受所有默认设置，然后选择“运行测试”开始运行负载测试。
 
     ![配置负载测试][configure-performance-test]
 
-    新测试的状态最先为“已排队”，随后状态变为“正在进行”  。
+    新测试的状态最先为“已排队”，随后状态变为“正在进行”。
 
     ![负载测试已提交并排队][load-test-queued]
 
@@ -71,64 +104,20 @@ ms.locfileid: "64922989"
 
 1. 负载测试运行时，启动 Profiler 以在 Web 应用接收负载期间捕获该应用上的跟踪。
 
-1. 转到“配置 Profiler”窗格  。
+1. 转到“配置 Profiler”窗格。
 
 
 ### <a name="step-3-view-traces"></a>步骤 3：查看跟踪
 
 在 Profiler 完成运行后，按照通知中的说明转到“性能”窗格并查看跟踪。
 
-## <a name="troubleshoot-the-profiler-on-demand-session"></a>对 Profiler 按需会话进行故障排除
-
-在按需会话后，可能会收到 Profiler 超时错误消息：
-
-![Profiler 超时错误][profiler-timeout]
-
-出于以下某项原因，可能会收到此错误消息：
-
-* 按需 Profiler 会话已成功，但 Application Insights 花费了比预期更长的时间来处理所收集的数据。  
-
-  如果在 15 分钟内未处理数据，则门户会显示一条超时消息。 但是，片刻之后，将显示 Profiler 跟踪。 如果收到一条错误消息，请暂时忽略它。 我们正在努力找出修复方法。
-
-* Web 应用有一个不具备按需功能的较旧版本的 Profiler 代理。  
-
-  如果之前启用了 Application Insights Profiler，则可能需要更新 Profiler 代理以开始使用按需功能。
-  
-转到应用服务的“应用设置”窗格并检查以下设置  ：
-* **APPINSIGHTS_INSTRUMENTATIONKEY**：替换为 Application Insights 的正确检测密钥。
-* **APPINSIGHTS_PORTALINFO**：ASP.NET
-* **APPINSIGHTS_PROFILERFEATURE_VERSION**：1.0.0
-
-如果未设置任何前述值，请执行以下操作安装最新的站点扩展：
-
-1. 转到应用服务门户中的“Application Insights”窗格  。
-
-    ![从应用服务门户中启用 Application Insights][enable-app-insights]
-
-1. 如果“Application Insights”窗格显示“更新”按钮，请选择该按钮以更新 Application Insights 站点扩展，这将安装最新的 Profiler 代理   。
-
-    ![更新站点扩展][update-site-extension]
-
-1. 若要确保已启用 Profiler，请选择“更改”，然后选择“确定”保存所做的更改   。
-
-    ![更改并保存 App Insights][change-and-save-appinsights]
-
-1. 返回到应用服务的“应用设置”窗格，确保设置了以下值  ：
-   * **APPINSIGHTS_INSTRUMENTATIONKEY**：替换为 Application Insights 的正确检测密钥。
-   * **APPINSIGHTS_PORTALINFO**：ASP.NET 
-   * **APPINSIGHTS_PROFILERFEATURE_VERSION**：1.0.0
-
-     ![Profiler 的应用设置][app-settings-for-profiler]
-
-1. （可选）选择“扩展”，然后检查扩展版本并确定更新是否可用  。
-
-    ![检查是否有扩展更新][check-for-extension-update]
-
 ## <a name="next-steps"></a>后续步骤
 [启用 Profiler 并查看跟踪](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
 [profiler-on-demand]: ./media/profiler-settings/Profiler-on-demand.png
 [configure-profiler-entry]: ./media/profiler-settings/configure-profiler-entry.png
+[configure-profiler-page]: ./media/profiler-settings/configureBlade.png
+[trigger-settings-flyout]: ./media/profiler-settings/CPUTrigger.png
 [create-performance-test]: ./media/profiler-settings/new-performance-test.png
 [configure-performance-test]: ./media/profiler-settings/configure-performance-test.png
 [load-test-queued]: ./media/profiler-settings/load-test-queued.png

@@ -1,19 +1,19 @@
 ---
-title: 了解 Azure 数字孪生基于角色的访问控制 | Microsoft Docs
-description: 了解如何使用基于角色的访问控制在数字孪生中进行身份验证。
+title: 了解基于角色的访问控制-Azure 数字孪生 |Microsoft Docs
+description: 了解基于角色的访问控制和管理 Azure 数字孪生中的权限。
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: lyhughes
-ms.openlocfilehash: 6602a4df2c6e313156010102780240ba19fbac95
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4e29cb488c9b491ec551ead1873e8cfd2d33a93b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815567"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336735"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure 数字孪生中基于角色的访问控制
 
@@ -49,20 +49,20 @@ RBAC 具有唯一性，原因在于权限沿着空间图继承。
 
 ### <a name="role-definitions"></a>角色定义
 
-角色定义是组成权限和构成角色的其他属性的集合。 角色定义列出了允许的操作，包括具有该角色的任何对象可执行的创建、读取、更新和删除操作。 它还指定了权限适用的对象类型。
+角色定义是组成权限和构成角色的其他属性的集合。 角色定义列出了允许的操作，包括具有该角色的任何对象可执行的创建、读取、更新和删除操作。 它还指定权限应用到的对象类型。
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
 >[!NOTE]
 > 若要检索上述角色的完整定义，请查询系统/角色 API。
-> 阅读[创建和管理角色分配](./security-create-manage-role-assignments.md#all)了解详细信息。
+> 阅读[创建和管理角色分配](./security-create-manage-role-assignments.md#retrieve-all-roles)了解详细信息。
 
 ### <a name="object-identifier-types"></a>对象标识符类型
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 >[!TIP]
-> 阅读[创建和管理角色分配](./security-create-manage-role-assignments.md#grant)了解如何向服务主体授予权限。
+> 阅读[创建和管理角色分配](./security-create-manage-role-assignments.md#grant-permissions-to-your-service-principal)了解如何向服务主体授予权限。
 
 以下参考文档介绍了：
 

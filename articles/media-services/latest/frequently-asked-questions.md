@@ -11,20 +11,20 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 6e52a51c82529a98ef679dd747b9c8b7d177b660
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501258"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338818"
 ---
-# <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题
+# <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题解答
 
 本文将解答 Azure 媒体服务 (AMS) v3 常见问题。
 
 ## <a name="general"></a>常规
 
-### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure 角色可以对 Azure 媒体服务资源执行哪些操作？ 
+### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure 角色可对 Azure 媒体服务资源执行哪些操作？ 
 
 请参阅[媒体服务帐户的基于角色的访问控制 (RBAC)](rbac-overview.md)。
 
@@ -36,19 +36,19 @@ ms.locfileid: "68501258"
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>什么是处理视频的建议方法？
 
-[转换](https://docs.microsoft.com/rest/api/media/transforms)可用来配置对视频进行编码或分析的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 [作业](https://docs.microsoft.com/rest/api/media/jobs)是对媒体服务的实际请求, 它将**转换**应用于给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
+[转换](https://docs.microsoft.com/rest/api/media/transforms)可用来配置对视频进行编码或分析的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 [作业](https://docs.microsoft.com/rest/api/media/jobs)是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
 
 ### <a name="how-does-pagination-work"></a>分页是如何工作的？
 
 使用分页时，应始终使用下一链接来枚举集合，而不依赖特定的页面大小。 有关详细信息和示例，请参阅[筛选、排序、分页](entities-overview.md)。
 
-### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中尚不提供哪些功能？
+### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>目前有哪些功能在 Azure 媒体服务 v3 中不可用？
 
-有关详细信息, 请参阅[针对 V2 api 的功能差距](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis)。
+有关详细信息，请参阅[与 v2 API 之间的功能差距](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis)。
 
-### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>在订阅之间移动媒体服务帐户的过程是什么？  
+### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>如何在订阅之间移动媒体服务帐户？  
 
-有关详细信息, 请参阅在[订阅之间移动媒体服务帐户](media-services-account-concept.md)。
+有关详细信息，请参阅[在订阅之间移动媒体服务帐户](media-services-account-concept.md)。
 
 ## <a name="live-streaming"></a>实时传送视频流 
 
@@ -60,15 +60,23 @@ ms.locfileid: "68501258"
 
 ## <a name="content-protection"></a>内容保护
 
-### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>是否应使用 AES-128 明文密钥加密或 DRM 系统？
+### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>应使用 AES-128 明文密钥加密还是 DRM 系统？
 
-客户通常希望知道他们应该使用 AES 加密还是 DRM 系统。 这两个系统之间的主要区别在于, 通过 AES 加密, 将内容密钥通过 TLS 传输到客户端, 以便密钥在传输过程中加密, 但不会进行任何其他加密 ("明文")。 因此, 客户端播放机可以访问用于解密内容的密钥, 并且可以在客户端上以纯文本形式在网络跟踪中查看。 AES-128 明文密钥加密适用于查看者是受信任方的用例 (例如, 将公司内分发的公司视频加密为员工所查看的公司视频)。
+客户通常希望知道他们应该使用 AES 加密还是 DRM 系统。 这两个系统之间的主要差别在于，使用 AES 加密时，内容密钥将通过 TLS 传输到客户端，这样，密钥将经过传输中加密，但不会经过任何进一步的加密（“明文加密”）。 因此，用于解密内容的密钥可由客户端播放器访问，并且可以在客户端上的网络跟踪中以纯文本形式显示。 AES-128 明文密钥加密适合查看者是受信任方的用例（例如，加密员工观看的在公司内部分发的公司视频）。
 
-DRM 系统 (如 PlayReady、Widevine 和 FairPlay) 对用于对内容进行解密的密钥提供额外级别的加密, 与 AES-128 明文密钥相比。 内容密钥被加密为受 DRM 运行时保护的密钥, 该密钥是由 TLS 提供的任何传输级别加密的补充。 此外，解密是操作系统级别在安全的环境中处理的，在这样的环境中，恶意用户更难进行攻击。 在查看者可能不是受信任方且需要更高等级的安全性的用例中，建议使用 DRM。
+DRM 系统 (如 PlayReady、Widevine 和 FairPlay) 对用于对内容进行解密的密钥提供额外级别的加密, 与 AES-128 明文密钥相比。 内容密钥将会加密成受 DRM 运行时保护的密钥，此外，还会受到 TLS 提供的任何传输级加密。 此外，解密是操作系统级别在安全的环境中处理的，在这样的环境中，恶意用户更难进行攻击。 在查看者可能不是受信任方且需要更高等级的安全性的用例中，建议使用 DRM。
+
+### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>如何仅向具有特定权限的用户显示视频，而不使用 Azure AD？
+
+无需使用任何特定的令牌提供程序（如 Azure AD）。 可以使用非对称密钥加密来创建自己的[JWT](https://jwt.io/)提供程序（称为 STS、安全令牌服务）。 在自定义 STS 中，可以根据业务逻辑添加声明。
+
+确保颁发者、受众和声明完全匹配 JWT 和 ContentKeyPolicy 中使用的 ContentKeyPolicyRestriction 之间的所有内容。
+
+有关详细信息，请参阅[使用媒体服务动态加密来保护内容](content-protection-overview.md)。
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>在使用 JWT 令牌请求许可证或密钥之前，如何以及在何处获取 JWT 令牌？
 
-1. 对于生产环境, 需要有一个安全令牌服务 (STS) (web 服务), 该服务在 HTTPS 请求上发出 JWT 标记。 对于测试，可以使用 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) 定义的 **GetTokenAsync** 方法中所示的代码。
+1. 在生产环境中，需要获取安全令牌服务 (STS)（Web 服务），以便根据 HTTPS 请求颁发 JWT 令牌。 对于测试，可以使用 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) 定义的 **GetTokenAsync** 方法中所示的代码。
 2. 对用户进行身份验证后，播放器需要向 STS 发出请求以获取此类令牌，并将其分配为令牌的值。 可以使用 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)。
 
 * 有关使用对称和非对称密钥运行 STS 的示例，请参阅 [https://aka.ms/jwt](https://aka.ms/jwt)。 
@@ -80,7 +88,7 @@ DRM 系统 (如 PlayReady、Widevine 和 FairPlay) 对用于对内容进行解�
 
 在 STS 中，根据用户配置文件添加不同的声明（例如“高级用户”、“基本用户”、“免费试用版用户”）。 在 JWT 中添加不同的声明后，用户可以查看不同的内容。 当然，对于不同的内容/资产，ContentKeyPolicyRestriction 包含相应的 RequiredClaims。
 
-使用 Azure 媒体服务 Api 配置许可证/密钥传递和加密资产 (如[本示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)中所示)。
+使用 Azure 媒体服务 API 来配置许可证/传送密钥以及加密资产（如[此示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)中所示）。
 
 有关详细信息，请参阅：
 
@@ -102,7 +110,7 @@ DRM 系统 (如 PlayReady、Widevine 和 FairPlay) 对用于对内容进行解�
 
 ### <a name="what-about-live-streaming"></a>如何使用实时流？
 
-可以使用完全相同的设计和实现来保护媒体服务中的实时传送视频流，方法是将与节目关联的资产视为 VOD 资产。 若要提供实时内容的多 DRM 保护, 请在将资产与实时输出关联之前, 对资产应用相同的设置/处理方式, 就像它是 VOD 资产一样。
+可以使用完全相同的设计和实现来保护媒体服务中的实时传送视频流，方法是将与节目关联的资产视为 VOD 资产。 若要为实时内容提供多重 DRM 保护，请在将资产关联到实时输出之前，将相同的设置/处理应用到资产，就如同它是 VOD 资产一样。
 
 ### <a name="what-about-license-servers-outside-media-services"></a>如何使用媒体服务外部的许可证服务器？
 

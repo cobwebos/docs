@@ -1,43 +1,43 @@
 ---
-title: 从 web 浏览器-Azure 连接到 Windows 虚拟桌面预览
-description: 如何从 web 浏览器连接到 Windows 虚拟桌面预览。
+title: 从 web 浏览器连接到 Windows 虚拟桌面预览-Azure
+description: 如何使用 web 客户端连接到 Windows 虚拟桌面。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 4f6bb7c414c38eaa605d259195218c461ddb0ca7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 961eb98bed712e3dde1b1e7ed2ec997e8992e600
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620165"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338674"
 ---
-# <a name="connect-from-a-web-browser"></a>从 Web 浏览器进行连接
+# <a name="connect-with-the-web-client"></a>使用 Web 客户端进行连接
 
-Web 客户端可以从 web 浏览器，而无需耗时较长的安装过程中访问你的 Windows 虚拟桌面预览资源。
+Web 客户端允许从 web 浏览器访问 Windows 虚拟桌面资源，而无需漫长的安装过程。
 
 >[!NOTE]
->Web 客户端目前没有支持的移动操作系统。
+>Web 客户端当前不支持移动操作系统。
 
 ## <a name="supported-operating-systems-and-browsers"></a>支持的操作系统和浏览器
 
-而应运行任何支持 HTML5 的浏览器，我们正式支持以下操作系统和浏览器。
+尽管任何支持 HTML5 的浏览器都应该运行，但我们正式支持以下操作系统和浏览器。
 
-| 浏览者           | 支持的 OS                     | 说明               |
+| Browser           | 支持的 OS                     | 说明               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |
 | Apple Safari      | macOS                            |                     |
-| Mozilla Firefox   | Windows、macOS、Linux            | 55 或更高版本 |
-| Google Chrome     | Windows、 macOS、 Linux、 Chrome OS |                     |
+| Mozilla Firefox   | Windows、macOS、Linux            | 版本55或更高版本 |
+| Google Chrome     | Windows、macOS、Linux、Chrome OS |                     |
 
-## <a name="access-remote-resources-feed"></a>源访问远程资源
+## <a name="access-remote-resources-feed"></a>访问远程资源源
 
-在浏览器中，导航到[Windows 虚拟桌面 web 客户端](https://rdweb.wvd.microsoft.com/webclient)并使用你的用户帐户登录。
+在浏览器中，导航到[Windows 虚拟桌面 web 客户端](https://rdweb.wvd.microsoft.com/webclient)，并使用用户帐户登录。
 
 >[!NOTE]
->如果已使用你已登录想要使用 Windows 虚拟桌面的不同于 Azure Active Directory 帐户，您应该注销，或者使用私密浏览器窗口。
+>如果你已使用与要用于 Windows 虚拟桌面的帐户 Azure Active Directory 不同的帐户登录，则应注销或使用专用浏览器窗口。
 
-登录后，您现在看到的资源的列表。 可以通过选择它们像使用常规应用中的启动的资源**的所有资源**选项卡。
+登录后，应会看到资源列表。 您可以通过在 "**所有资源**" 选项卡中选择普通应用程序来启动资源。

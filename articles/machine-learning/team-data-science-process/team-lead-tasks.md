@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/23/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 84cca255d8cf768d44e01c8f3a892e3c9830184e
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316713"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327251"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>团队数据科学过程团队的团队主管任务
 
@@ -140,7 +140,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可高效交付预测分析
    
    ![选择导入](./media/team-lead-tasks/import-repo.png)
    
-1. 在 "**导入 git 存储库**" 对话框中，选择 " **Git** " 作为**源类型**，并在 "**克隆 url**" 下输入组通用模板存储库的 URL。 URL 为*https：\//server name\<>/组织名称 >/_git/\<存储库名称 >。\<* 例如： *https：\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*。 
+1. 在 "**导入 git 存储库**" 对话框中，选择 " **Git** " 作为**源类型**，并在 "**克隆 url**" 下输入组通用模板存储库的 URL。 URL 为*https： \/ @ no__t-2 @ no__t-3server name >/\<organization name >/_git/\<repository name >* 。 例如： *https： \//DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*。 
    
 1. 选择“导入”。 组模板存储库的内容将导入到团队模板存储库中。 
    
@@ -230,7 +230,7 @@ git push
 > 
 > `git config --global user.name <your name>`
 > 
-> `git config --global user.email \<your email address>`
+> `git config --global user.email <your email address>`
 > 
 > 如果要提交到多个 Git 存储库，请使用相同的名称和电子邮件地址。 在构建 Power BI 仪表板来跟踪多个存储库中的 Git 活动时，使用相同的名称和电子邮件地址是非常方便的。
 

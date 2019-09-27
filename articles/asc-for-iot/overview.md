@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 29add1cff184e234cd5dcc5050b94cdd50593731
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: adb1b840fd733353e449224c9ac752e94329bde6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315912"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326732"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>适用于 IoT 的 Azure 安全中心简介
 
@@ -30,7 +30,7 @@ ms.locfileid: "71315912"
 
 从无缝的无代理解决方案中进行选择，或者利用基于代理的全面安全性，适用于 IoT 的 Azure 安全中心在 IoT 资产上为每个设备、IoT Edge 和 IoT 中心提供威胁防护和分析。
 
-由于数十亿的新设备已连接到 internet，并集成到我们的日常生活和我们的业务中，安全运营团队需要确保其安全策略的发展速度足以涵盖这些新的攻击面。 与任何其他系统一样，保护 IoT 解决方案在实现的每个阶段都需要保护。 
+由于数十亿的新设备已连接到 internet，并集成到我们的日常生活和我们的业务中，安全操作团队必须确保其安全策略的发展速度足以涵盖每个新的攻击面。 与任何其他系统一样，若要全面保护 IoT 解决方案，它在实现的每个阶段都需要保护。 
 
 用于 IoT 的 Azure 安全中心通过在边缘、本地、Azure 和其他中运行的工作负荷提供统一的可见性和控制、自适应威胁防护以及智能威胁检测和响应，简化混合工作负荷保护云彩. 
 

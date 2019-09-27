@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/10/2019
-ms.openlocfilehash: 383f5acb9f106bb4697433be99c53bb78d00b396
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 09/26/2019
+ms.openlocfilehash: 467a8b1de3f6c234d9dfdfaf6132025688757997
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091141"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327132"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展将多个相关的 SQL 对象组合在一起，可以使用单个命令在数据库中加载或删除单个包。 在数据库中加载后，扩展功能类似于内置功能。
@@ -62,6 +62,7 @@ Azure Database for PostgreSQL 支持下面列出的一小部分关键扩展。 �
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS 拓扑空间类型和函数|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | 远程 PostgreSQL 服务器的外部数据包装器|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | 操作整个表（包括交叉表）的函数|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | 为时序数据启用可缩放的插入和复杂查询|
 > |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | 删除重音的文本搜索字典|
 > |[uuid ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | 生成全局唯一标识符（Uuid）|
 
@@ -227,9 +228,6 @@ TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 T
 
 ### <a name="installing-timescaledb"></a>安装 TimescaleDB
 若要安装 TimescaleDB，需将其包括在服务器的共享预加载库中。 更改 Postgres 的 `shared_preload_libraries` 参数需要**重启服务器**才能生效。 可以使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 更改参数。
-
-> [!NOTE]
-> 可以在 Azure Database for PostgreSQL 版本 9.6 和 10 上启用 TimescaleDB
 
 使用 [Azure 门户](https://portal.azure.com/)：
 

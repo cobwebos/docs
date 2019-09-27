@@ -3,16 +3,16 @@ title: 排查 Azure Data Share 预览版问题
 description: 了解如何排查 Azure Data Share 预览版问题
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 386a5e34dccafa61859cd13c3e0ad88cd3a7ffac
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 62b386f4648074bbf1f002e162151253e5b43bc9
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421465"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320297"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>排查 Azure Data Share 预览版中的常见问题
 

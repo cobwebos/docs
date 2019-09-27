@@ -1,20 +1,20 @@
 ---
 title: 从 macOS 连接到 Windows 虚拟桌面-Azure
-description: 如何从 macOS 连接到 Windows 虚拟桌面。
+description: 如何使用 macOS 客户端连接到 Windows 虚拟桌面。
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: bf6bfb52bd763eabd88f23701c3d1f240cdf4844
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: fa61d69ae7aa650b6011696fd45d05ba20d2ac8b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310186"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338706"
 ---
-# <a name="connect-from-macos"></a>从 macOS 连接
+# <a name="connect-with-the-macos-client"></a>使用 macOS 客户端进行连接
 
 > 适用于： macOS 10.12 或更高版本
 
@@ -44,6 +44,6 @@ ms.locfileid: "71310186"
 
 订阅源后，该源的内容会定期自动更新。 可以根据管理员所做的更改来添加、更改或删除资源。
 
-## <a name="client-documentation"></a>客户端文档
+## <a name="next-steps"></a>后续步骤
 
 若要了解有关 macOS 客户端的详细信息，请查看[macOS 客户端入门](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac)文档。

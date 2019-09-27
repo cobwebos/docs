@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 3b76dc546b46718378d9b22ad80e17849eaf532d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884080"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338732"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制
 
@@ -35,13 +35,13 @@ ms.locfileid: "68884080"
 
 ## <a name="requirements"></a>要求
 
-将托管实例配置为充当发布服务器和/或分发服务器的功能需要:
+配置充当发布服务器和/或分发服务器的托管实例需要满足以下要求：
 
 - 该托管实例当前未加入异地复制关系。
 - 发布服务器托管实例位于分发服务器和订阅服务器所在的同一个虚拟网络中，或者已在所有三个实体的虚拟网络之间建立 [vNet 对等互连](../virtual-network/tutorial-connect-virtual-networks-powershell.md)。 
 - 连接时，在复制参与者之间使用 SQL 身份验证。
 - 适用于复制工作目录的 Azure 存储帐户共享。
-- 需要在托管实例的 NSG 安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。 
+- 需要在托管实例的 NSG 安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。  如果遇到错误 "无法连接到 azure 存储 \<storage 帐户名称 > 操作系统错误 53"，则需要向相应 SQL 托管实例子网的 NSG 添加出站规则。
 
 
  > [!NOTE]
@@ -50,7 +50,7 @@ ms.locfileid: "68884080"
 
 ## <a name="features"></a>功能
 
-支持:
+支持：
 
 - 对本地实例和 Azure SQL 数据库中的托管实例混合使用事务复制和快照复制。
 - 订阅服务器可以位于本地 SQL Server 数据库中、Azure SQL 数据库中的单一数据库/托管实例中，也可以位于 Azure SQL 数据库弹性池中的入池数据库中。
@@ -59,7 +59,7 @@ ms.locfileid: "68884080"
 Azure SQL 数据库中的托管实例不支持以下功能：
 
 - [可更新订阅](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication)。
-- 具有事务复制的[活动异地复制](sql-database-active-geo-replication.md)。 请不要使用活动异地复制, 而应使用[自动故障转移组](sql-database-auto-failover-group.md), 但请注意, 必须从主托管实例中[手动删除](sql-database-managed-instance-transact-sql-information.md#replication)发布, 并在故障转移后在辅助托管实例上重新创建发布。  
+- 带事务复制的[活动异地复制](sql-database-active-geo-replication.md)。 使用[自动故障转移组](sql-database-auto-failover-group.md)而不是活动异地复制，但请注意，必须从主托管实例中[手动删除](sql-database-managed-instance-transact-sql-information.md#replication)发布，并在故障转移后在辅助托管实例上重新创建。  
  
 ## <a name="1---create-a-resource-group"></a>1 - 创建资源组
 

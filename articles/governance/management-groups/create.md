@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f34efbbca1616c75c13ee3a8bf73bbee1e66dc92
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 7b5ee5bfe4b7498bc13ff0c8582b49fed8478e0a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241162"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337785"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 
@@ -39,12 +39,12 @@ ms.locfileid: "70241162"
 
 1. 填写管理组 ID 字段。
 
-   - “管理组 ID”是用来在此管理组上提交命令的目录唯一标识符。 此标识符一旦创建便无法再编辑，因为它用来在整个 Azure 系统中标识这个组。 [根管理组](index.md#root-management-group-for-each-directory)是使用 ID Azure Active Directory id 自动创建的。 对于所有其他管理组，分配一个唯一的 ID。
+   - “管理组 ID”是用来在此管理组上提交命令的目录唯一标识符。 此标识符一旦创建便无法再编辑，因为它用来在整个 Azure 系统中标识这个组。 [根管理组](overview.md#root-management-group-for-each-directory)是使用 ID Azure Active Directory id 自动创建的。 对于所有其他管理组，分配一个唯一的 ID。
    - 显示名称字段是在 Azure 门户中显示的名称。 创建管理组时，单独的显示名称是一个可选字段，并且可以随时更改。  
 
    ![用于创建新管理组的“选项”窗格](./media/create_context_menu.png)  
 
-1. 选择**保存**。
+1. 选择“保存”。
 
 ### <a name="create-in-powershell"></a>在 PowerShell 中创建
 

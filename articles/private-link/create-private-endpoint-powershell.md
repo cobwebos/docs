@@ -7,17 +7,17 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 569bc021d978714472bf40bcf39f7134fec95970
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b3f809a21dab86ac50fcf7c194c886b05977e15e
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130335"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327102"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 创建专用终结点
-专用终结点是 Azure 中专用链接的基本构建基块。 它使 Azure 资源（例如虚拟机）能够与专用链接资源进行私下通信。 
+专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 
 
-在本快速入门中，你将了解如何在 Azure 虚拟网络上创建虚拟机，以及如何使用 Azure PowerShell 的 Azure 专用终结点在 SQL 数据库服务器上创建 VM。 然后，可以从 VM 安全地访问 SQL 数据库服务器。
+本快速入门介绍如何使用 Azure PowerShell 在 Azure 虚拟网络中创建一个 VM，以及一个包含 Azure 专用终结点的 SQL 数据库服务器。 然后，你可以从该 VM 安全访问该 SQL 数据库服务器。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -189,13 +189,13 @@ mstsc /v:<publicIpAddress>
   > [!NOTE]
   > 你可能需要选择 "更多选项" > "使用其他帐户"，以便指定在创建 VM 时输入的凭据。 
   
-3. 选择 **"确定"** 。 
+3. 选择“确定”。 **** 
 4. 可能会收到证书警告。 如果这样做，请选择 **"是" 或 "**   **继续**"。 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>从 VM 中私下访问 SQL 数据库服务器
 
 1. 在 myVM 的远程桌面中，打开 PowerShell。
-2. 输入 `nslookup myserver.database.windows.net`。 
+2. 输入  `nslookup myserver.database.windows.net`。 
 
     将收到类似于下面的消息：
     ```azurepowershell

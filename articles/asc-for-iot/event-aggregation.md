@@ -1,6 +1,6 @@
 ---
-title: 了解用于 IoT 解决方案的 Azure 安全中心解决方案事件聚合 |Microsoft Docs
-description: 了解如何在 Azure 安全中心中为 IoT 服务聚合事件。
+title: 了解用于 IoT 事件聚合的 Azure 安全中心 |Microsoft Docs
+description: 了解用于 IoT 事件聚合的 Azure 安全中心。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/21/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933908"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327317"
 ---
-# <a name="security-agent-event-aggregation"></a>安全代理事件聚合
+# <a name="azure-security-center-for-iot-event-aggregation"></a>用于 IoT 事件聚合的 Azure 安全中心
 
-用于 IoT 安全代理的 Azure 安全中心从本地设备收集数据和系统事件，并将此数据发送到 Azure 云进行处理和分析。 安全代理收集许多类型的设备事件，包括新进程和新连接事件。 新进程和新连接事件可能会在一秒钟内在设备上合法发生，但这一点对于强健和全面的安全性而言，这会强制安全代理发送的消息量可能很快就会达到或超过 IoT 中心配额和开销限制。 但是，这些事件包含非常重要的安全信息，这对于保护你的设备至关重要。
+用于 IoT 安全代理的 Azure 安全中心从本地设备收集数据和系统事件，并将此数据发送到 Azure 云进行处理和分析。 安全代理收集许多类型的设备事件，包括新进程和新连接事件。 新进程和新连接事件可能会在一秒钟内在设备上合法发生，但这一点对于强健和全面的安全性很重要，安全代理被迫发送的消息数可能很快就会达到或超过 IoT 中心配额和开销限制。 但是，这些事件包含非常重要的安全信息，这对于保护你的设备至关重要。
 
 为了降低额外的配额和成本，同时保护设备，Azure 安全中心的 IoT 代理会聚合这些类型的事件。
 
@@ -44,8 +44,8 @@ ms.locfileid: "70933908"
 
 仅当满足以下条件时，事件才被视为完全相同： 
 
-* ProcessCreate 事件-**命令行**、**可执行文件**、**用户名**和**用户 id**相同
-* ConnectionCreate 事件-**命令行**、 **userId**、 **direction**、 **local address**、**远程地址**、**协议**和**目标端口**相同
+* ProcessCreate 事件-**命令行**、**可执行文件**、* * 用户名和**用户 id**相同
+* ConnectionCreate 事件-**命令行**、 **userId**、 **direction**、 **local address**、 **remote address**、* * 协议和**目标端口**相同
 * ProcessTerminate 事件-当**可执行文件**和**退出状态**相同时
 
 ### <a name="working-with-aggregated-events"></a>使用聚合事件
@@ -57,9 +57,9 @@ ms.locfileid: "70933908"
 ## <a name="event-aggregation-based-alerts"></a>基于事件聚合的警报 
 分析之后，适用于 IoT 的 Azure 安全中心为可疑的聚合事件创建安全警报。 对于每个聚合事件，从聚合事件创建的警报仅出现一次。
 
-每个事件的 "聚合开始时间"、"结束时间" 和 "命中计数" 记录在 Log Analytics 的 "事件**ExtraDetails** " 字段中，以便在调查过程中使用。 
+每个事件的 "聚合开始时间"、"结束时间" 和 "命中次数" 记录在 Log Analytics 中的 "事件**ExtraDetails** " 字段中，以便在调查过程中使用。 
 
-每个聚合事件表示收集的警报的24小时内。 使用每个事件左上方的 "事件选项" 菜单，可以**消除**每个单独的聚合事件。    
+每个聚合事件表示收集的警报的24小时时间段。 使用每个事件左上方的 "事件选项" 菜单，可以**消除**每个单独的聚合事件。    
 
 ## <a name="event-aggregation-twin-configuration"></a>事件聚合克隆配置
 更改**azureiotsecurity**模块的模块克隆标识的[代理配置对象](how-to-agent-configuration.md)内的 IoT 事件聚合的 Azure 安全中心配置。

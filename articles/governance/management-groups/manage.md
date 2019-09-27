@@ -6,12 +6,12 @@ ms.service: governance
 ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 7fd9a8e00072bfb8d3a0e57fb552822588111019
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 28bfabd5c28fe833050551e7be690c0ea3d1e6a0
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241200"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338942"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -43,7 +43,7 @@ ms.locfileid: "70241200"
 
    ![用于重命名管理组的“重命名组”窗格](./media/rename_context.png)
 
-1. 选择**保存**。
+1. 选择“保存”。
 
 ### <a name="change-the-name-in-powershell"></a>在 PowerShell 中更改名称
 
@@ -249,7 +249,7 @@ az account management-group show --name 'Contoso' -e -r
 
    ![用于更改父组的“移动”窗格](./media/move_small_context.png)
 
-1. 选择**保存**。
+1. 选择“保存”。
 
 ### <a name="move-subscriptions-in-powershell"></a>在 PowerShell 中移动订阅
 
@@ -281,7 +281,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups-in-the-hierarchy"></a>在层次结构中移动管理组  
 
-移动父管理组时，该组下的层次结构会随之移动。 对于需要移动管理组的访问权限，请参阅[管理组访问](index.md#management-group-access)。
+移动父管理组时，该组下的层次结构会随之移动。 对于需要移动管理组的访问权限，请参阅[管理组访问](overview.md#management-group-access)。
 
 ### <a name="move-management-groups-in-the-portal"></a>在门户中移动管理组
 
@@ -300,7 +300,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
    ![将管理组移动到新的或现有组](./media/add_context_MG.png)
 
-1. 选择**保存**。
+1. 选择“保存”。
 
 ### <a name="move-management-groups-in-powershell"></a>在 PowerShell 中移动管理组
 

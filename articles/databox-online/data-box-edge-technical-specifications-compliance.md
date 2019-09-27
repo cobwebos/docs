@@ -6,18 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 09/26/2019
 ms.author: alkohli
-ms.openlocfilehash: f1199748782c40b2527a8778417588891b84f9fc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 365507f482217bd804bbd5017d4dbbaf8c187ad2
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910123"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326881"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge 技术规范
 
 Microsoft Azure Data Box Edge 设备的硬件组件遵循本文中所述的技术规格和法规标准。 技术规范介绍了电源单位（通电 psu）、存储容量、机箱和环境标准。 
+
+## <a name="compute-memory-specifications"></a>计算，内存规格
+
+Data Box Edge 设备具有以下计算和内存规范：
+
+| 规格           | ReplTest1                  |
+|-------------------------|----------------------------|
+| CPU    | 2 X 10 核心 CPU                     |
+| 内存              | 128 GB RAM                  |
+
+
+## <a name="fpga-specifications"></a>FPGA 规范
+
+支持机器学习（ML）方案的每个 Data Box Edge 设备上都包含现场可编程入口数组（FPGA）。 
+
+| 规格           | ReplTest1                  |
+|-------------------------|----------------------------|
+| FPGA   | Intel Arria 10 <br> 可用的深层神经网络（DNN）模型与[云 FPGA 实例支持](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#whats-supported-on-azure)的模型相同。| 
+
 
 ## <a name="power-supply-unit-specifications"></a>电源单位规格
 
@@ -73,7 +92,7 @@ Data Box Edge 设备有 9 X 2.5 "NVMe Ssd，其中每个都有 1.6 TB 的容量�
 
 设备包的重量为66磅。 和需要两个人来处理。 设备的权重取决于机箱配置。
 
-|     机箱                                 |     权重          |
+|     机箱                                 |     粗细          |
 |-----------------------------------------------|---------------------|
 |    总权重包括打包       |    61磅。          |
 |    设备的权重                       |    35磅。          |

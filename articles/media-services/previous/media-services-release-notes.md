@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: 8db677ff94b477992d06a22c367f51c0c6063d69
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 91dead0953d6c124f9179e70b4ed38fe0c13bdc2
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309227"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338544"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -50,9 +50,9 @@ ms.locfileid: "71309227"
 
 ### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们会公布*Azure Media Indexer*和*Azure Media Indexer 2*的弃用。 [Azure Media Indexer](media-services-index-content.md)媒体处理器将在2020年10月1日停用。 [Azure Media Indexer 2 （预览版）](media-services-process-content-with-indexer2.md)媒体处理器将在2020年1月1日停用。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
+我们将宣布弃用*Azure Media Indexer v1*和*Azure Media Indexer v2 Preview*。 [Azure Media Indexer v1](media-services-index-content.md)媒体处理器将于2020年10月1日停用。 [Azure Media Indexer V2 预览版](media-services-process-content-with-indexer2.md)媒体处理器将于2020年1月1日停用。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
 
-有关详细信息，请参阅[从 Azure Media Indexer 迁移和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
+有关详细信息，请参阅[从 Azure Media Indexer Azure Media Indexer V1 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
 
 ## <a name="august-2019"></a>2019 年 8 月
 

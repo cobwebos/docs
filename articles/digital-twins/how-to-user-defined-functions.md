@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 6853ebf16c1a9d6b0d363277b22c7dd2583d37e5
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 8a39a79f4b3aeacd267a0c4b9351d2400f11d1ff
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013974"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336906"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中创建用户定义函数
 
@@ -197,7 +197,7 @@ function process(telemetry, executionContext) {
 
 创建角色分配，以便用户定义函数依据其运行。 如果用户定义的函数不存在角色分配，则它将没有与管理 API 交互的适当权限，也没有对图形对象执行操作的权限。 用户定义的函数可以执行的操作是通过 Azure 数字孪生管理 API 中基于角色的访问控制来指定和定义的。 例如，用户定义函数可通过指定特定角色或特定访问控制路径来限制这些操作的范围。 有关详细信息，请参阅[基于角色的访问控制](./security-role-based-access-control.md)文档。
 
-1. [查询所有角色的系统 API](./security-create-manage-role-assignments.md#all) 以获取要分配给用户定义函数的角色 ID。 可通过发出经过身份验证的 HTTP GET 请求执行此操作，以便：
+1. [查询所有角色的系统 API](./security-create-manage-role-assignments.md#retrieve-all-roles) 以获取要分配给用户定义函数的角色 ID。 可通过发出经过身份验证的 HTTP GET 请求执行此操作，以便：
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles

@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b0a03eee06ba114ab929c8c584f382861a006bbc
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 95d133e07725f797ea3c1a903e315d5c7232e1de
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360757"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327618"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure 存储 Blob 的软删除
 Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或其他存储帐户用户错误地修改或删除数据后可以更轻松地恢复数据。
 
-## <a name="how-does-it-work"></a>它是如何工作的?
+## <a name="how-does-it-work"></a>工作原理
 启用软删除后，在 blob 或 blob 快照被删除的情况下，可通过此功能保存和恢复数据。 此保护可扩展到因覆盖而擦除的 blob 数据。
 
 被删除的数据会过渡到软删除状态，而非被永久擦除。 如果启用软删除并覆盖数据，则会生成软删除快照以保存被覆盖数据的状态。 除非显式列出，否则软删除对象不可见。 可配置软删除数据永久失效前的保持时间。
@@ -277,7 +277,7 @@ blockBlob.StartCopy(copySource);
 ```
 
 ## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>使用软删除时是否有任何特殊注意事项？
-如果应用程序或其他存储帐户用户可能意外修改或删除数据，则建议启用软删除。 为频繁覆盖的数据启用软删除可能会导致在列出 Blob 时存储容量费用增加且延迟增加。 可以通过将频繁覆盖的数据存储在禁用了软删除的单独存储帐户中来缓解此问题。 
+如果应用程序或其他存储帐户用户可能意外修改或删除数据，则建议启用软删除。 为频繁覆盖的数据启用软删除可能会导致在列出 Blob 时存储容量费用增加且延迟增加。 可以通过将经常覆盖的数据存储在禁用了软删除的单独存储帐户中来缓解这种情况。 
 
 ## <a name="faq"></a>常见问题
 **哪种存储类型可以使用软删除？**  
@@ -290,7 +290,7 @@ blockBlob.StartCopy(copySource);
 是的，软删除适用于所有存储层，包括热、冷和存档层。 但是，软删除对存档层中的 blob 不提供覆盖保护。
 
 **是否可以使用“设置 Blob 层 API”将 Blob 与软删除的快照置于一层？**  
-是的。 软删除的快照会保留在原始层中，但基础 Blob 会移到新层中。 
+是。 软删除的快照会保留在原始层中，但基础 Blob 会移到新层中。 
 
 **高级存储帐户每个 blob 的快照上限为 100.软删除快照是否计入此限制？**  
 不，软删除快照不记入此限制。

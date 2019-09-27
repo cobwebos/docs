@@ -1,20 +1,20 @@
 ---
 title: 从 iOS 连接到 Windows 虚拟桌面-Azure
-description: 如何从 iOS 连接到 Windows 虚拟桌面。
+description: 如何使用 iOS 客户端连接到 Windows 虚拟桌面。
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: 3e77a77dfa2de003722419f861e957d4cb011b71
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 764ed4fefd1a3aba1f0b7812fa2965505aa34161
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310316"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338690"
 ---
-# <a name="connect-from-ios"></a>从 iOS 连接
+# <a name="connect-with-the-ios-client"></a>使用 iOS 客户端进行连接
 
 > 适用于： iOS 8.0 或更高版本。 与 iPhone、iPad 和 iPod touch 兼容。
 
@@ -52,6 +52,6 @@ ms.locfileid: "71310316"
 
 订阅源后，该源的内容会定期自动更新。 可以根据管理员所做的更改来添加、更改或删除资源。
 
-## <a name="client-documentation"></a>客户端文档
+## <a name="next-steps"></a>后续步骤
 
 若要了解有关如何使用 iOS Beta 客户端的详细信息，请查看[ios 客户端入门](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios)文档。

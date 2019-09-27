@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: 2d78523f776c909845057aaf8660a7c6fba3ef6a
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 7c425ee8c9fd99420bbcbba31c7a74c360938aef
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309888"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338249"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>在 Visual Studio Code 中本地运行 U-SQL 并进行本地调试
 本文介绍如何在本地开发计算机上运行 U-SQL 作业，以让早期编码阶段提速，或在 Visual Studio Code 中本地调试代码。 有关针对 Visual Studio Code 的 Azure Data Lake 工具说明，请参阅[使用针对 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)。
@@ -51,7 +51,7 @@ ms.locfileid: "71309888"
 2. 选择“接受”以接受首次安装时显示的 Microsoft 软件许可条款。 
 
    ![接受 Microsoft 软件许可条款](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
-3. 随即会打开 cmd 控制台。 对于首次使用的用户，需要输入 3，并找到数据输入和输出的本地文件夹路径。 对于其他选项，可使用默认值。 
+3. 随即会打开 cmd 控制台。 对于首次使用的用户，需要输入 3，并找到数据输入和输出的本地文件夹路径。 如果未成功定义带有反斜杠的路径，请尝试正斜杠。 对于其他选项，可使用默认值。
 
    ![针对 Visual Studio Code 的 Data Lake 工具本地运行 cmd](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
 4. 选择 Ctrl + Shift + P 以打开命令面板，输入**ADL："提交**作业"，然后选择 "**本地**" 将作业提交到本地帐户。

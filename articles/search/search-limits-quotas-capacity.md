@@ -8,19 +8,19 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300660"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327167"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”、“标准”还是“存储优化”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
 
-+ **免费**层是 Azure 订阅随附的多租户共享服务。
++ **免费**层是 Azure 订阅随附的多租户共享服务。 索引和查询请求在其他租户使用的副本和分区上执行。
 
-+ **基本**层为小规模生产工作负荷提供专用计算资源。
++ **基本**为较小的生产工作负荷提供专用计算资源，但与其他租户共享某些网络基础结构。
 
 + **标准**层在专用计算机上运行，在每个级别上都具有更多存储和处理容量。 标准层共有四个级别：S1、S2、S3 和 S3 HD。
 

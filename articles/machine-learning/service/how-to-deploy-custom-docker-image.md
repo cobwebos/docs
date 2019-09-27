@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: b86c0d0de95581f7a47de428ffbf0b161353df83
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 84567b68c85a48d0fc02f6f6a4986d8092215a92
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260749"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326499"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基本映像部署模型
 
@@ -183,15 +183,16 @@ Microsoft 在可公开访问的存储库上提供了几个 docker 映像，可�
 | 图像 | 描述 |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure 机器学习的基本映像 |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0` | 包含 ONNX 运行时。 |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7` | 包含 ONNX 运行时和 CUDA 组件。 |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03` | 包含 ONNX 运行时和 TensorRT。 |
+| `mcr.microsoft.com/azureml/onnxruntime:latest` | 包含 CPU inferecning 的 ONNX 运行时 |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | 包含用于 GPU 的 ONNX 运行时和 CUDA |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | 包含用于 GPU 的 ONNX 运行时和 TensorRT |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | 包含 ONNX 运行时和 OpenVINO，<sup> </sup>适用于基于 Movidius<sup>TM</sup> MyriadX VPUs 的 Intel 远景加速器设计 |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | 包含适用于 Intel<sup> </sup> Movidius<sup>TM</sup> USB 棒的 ONNX 运行时和 OpenVINO |
+
+有关 ONNX 运行时基本映像的详细信息，请参阅 GitHub 存储库中的[ONNX Runtime dockerfile 部分](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md)。
 
 > [!TIP]
 > 由于这些映像是公开提供的，因此在使用这些映像时，无需提供地址、用户名或密码。
-
-> [!IMPORTANT]
-> 只有使用 CUDA 或 TensorRT 的 Microsoft 映像才能 Microsoft Azure 服务上使用。
 
 有关详细信息，请参阅[Azure 机器学习容器](https://github.com/Azure/AzureML-Containers)。
 

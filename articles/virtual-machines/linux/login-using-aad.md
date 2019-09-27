@@ -3,7 +3,7 @@ title: 使用 Azure Active Directory 凭据登录到 Linux VM | Microsoft Docs
 description: 了解如何创建和配置 Linux VM，以使用 Azure Active Directory 身份验证进行登录。
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: cynthn
-ms.openlocfilehash: e30adf8b694d744e64fb7528b75b85d4a772a723
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.author: iainfou
+ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316754"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327096"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览版：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 
@@ -88,7 +88,7 @@ az vm create \
 ## <a name="install-the-azure-ad-login-vm-extension"></a>安装 Azure AD 登录 VM 扩展
 
 > [!NOTE]
-> 如果将此 exention 部署到以前创建的 VM，请确保计算机已分配至少1GB 的内存，否则将无法安装扩展
+> 如果将此扩展部署到以前创建的 VM，请确保计算机至少分配了1GB 的内存，否则将无法安装扩展
 
 若要使用 Azure AD 凭据登录到 Linux VM，请安装 Azure Active Directory 登录 VM 扩展。 VM 扩展是小型应用程序，可在 Azure 虚拟机上提供部署后配置和自动化任务。 请使用 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 在 *myResourceGroup* 资源组中名为 *myVM* 的 VM 上安装 *AADLoginForLinux* 扩展：
 
