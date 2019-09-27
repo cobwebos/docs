@@ -1,26 +1,26 @@
 ---
 title: 故障排除-QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 有关 QnA Maker 服务的最常见问题的特选列表将有助于更快地采用服务，并获得更好的结果。
+description: 有关 QnA Maker 服务的最常见问题的特选列表将有助于更快地采用服务, 并获得更好的结果。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 95b4978b66accce0182e58493cb9d600dbe5e35f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c0ceea5c86af8d733c838e19f77eaeadc8a12dbb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277483"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300243"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
 
-有关 QnA Maker 服务的最常见问题的特选列表将有助于更快地采用服务，并获得更好的结果。
+有关 QnA Maker 服务的最常见问题的特选列表将有助于更快地采用服务, 并获得更好的结果。
 
 
 ## <a name="how-to-get-the-qnamaker-service-hostname"></a>如何获取 QnAMaker 服务主机名
@@ -42,13 +42,15 @@ ms.locfileid: "70277483"
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>在 QnA Maker 门户中使用帮助机器人
 
-QnA Maker 在 QnA Maker 门户中提供**帮助**机器人来帮助你。 每个网页上都提供了帮助机器人。 机器人使用 QnA Maker 来提供答案，并向机器人提供[ C#机器人框架代码项目](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)，以便你可以快速启动并运行你自己的应答机器人。 
+QnA Maker 在 QnA Maker 门户中提供**帮助**机器人来帮助你。 每个网页上都提供了帮助机器人。 机器人使用 QnA Maker 来提供答案, 并向机器人提供[ C#机器人框架代码项目](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support), 以便你可以快速启动并运行你自己的应答机器人。 
 
 ![![QnA Maker 提供了 * * 帮助 * * 智能机器人应用程序以帮助您在 QnA Maker 门户中的。](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>管理知识库
 
 ### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>我不小心删除了一部分 QnA Maker，我该怎么办？ 
+
+请勿删除随 QnA Maker 资源（如搜索或 Web 应用）一起创建的任何 Azure 服务。 这些是 QnA Maker 工作所必需的，如果删除一个，QnA Maker 将停止正常工作。
 
 所有删除操作都是永久性的，包括问题和答案对、文件、URL、自定义问题和答案、知识库或 Azure 资源。 在删除知识库的任何部分之前，请务必从“设置”页导出知识库。 
 
@@ -138,29 +140,29 @@ Azure 搜索资源的名称是 QnA Maker 资源名称加上在末尾追加的一
 
 ### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>当 QnA Maker 返回`Runtime core is not initialized,`如何修复它？
 
-应用服务的磁盘空间可能已满。 修复磁盘空间的步骤：
+应用服务的磁盘空间可能已满。 修复磁盘空间的步骤:
 
-1. 在[Azure 门户](https://portal.azure.com)中，选择 QnA Maker 的应用服务，然后停止服务。
-1. 仍在应用服务中，选择 "**开发工具**"，然后依次选择 "**高级工具**"、"**开始**"。 这将打开一个新的浏览器窗口。
-1. 选择 "**调试控制台**"，然后选择 " **CMD** " 以打开命令行工具。 
+1. 在[Azure 门户](https://portal.azure.com)中, 选择 QnA Maker 的应用服务, 然后停止服务。
+1. 仍在应用服务中, 选择 "**开发工具**", 然后依次选择 "**高级工具**"、"**开始**"。 这将打开一个新的浏览器窗口。
+1. 选择 "**调试控制台**", 然后选择 " **CMD** " 以打开命令行工具。 
 1. 导航到_site/wwwroot/Data/QnAMaker/_ directory。
 1. 删除名称以开头`rd`的所有文件夹。 
 
-    **请勿删除**以下内容：
+    **请勿删除**以下内容:
 
     * KbIdToRankerMappings 文件
     * EndpointSettings 文件
     * EndpointKeys 文件夹 
 
 1. 启动应用服务。
-1. 访问知识库，验证它是否正常工作。 
+1. 访问知识库, 验证它是否正常工作。 
 
 
 ## <a name="integrate-with-other-services-including-bots"></a>与其他服务（包括机器人）集成
 
 ### <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>为了使用 QnA Maker，需要使用 Bot Framework 吗？
 
-不需要，不需要将[机器人框架](https://github.com/Microsoft/botbuilder-dotnet)与 QnA Maker 一起使用。 不过，QnA Maker 是在 [Azure Bot 服务](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)中提供的几个模板之一。 机器人服务通过 Microsoft Bot Framework 实现快速智能机器人开发，并且它在无服务器的环境中运行。
+不需要, 不需要将[机器人框架](https://github.com/Microsoft/botbuilder-dotnet)与 QnA Maker 一起使用。 不过, QnA Maker 是在 [Azure Bot 服务](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)中提供的几个模板之一。 机器人服务通过 Microsoft Bot Framework 实现快速智能机器人开发，并且它在无服务器的环境中运行。
 
 ### <a name="how-can-i-create-a-new-bot-with-qna-maker"></a>如何使用 QnA Maker 创建新的机器人？
 
