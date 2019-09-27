@@ -17,7 +17,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 07/26/2019
 ms.locfileid: "68559495"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Android 上的 Java 中识别语音
+# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>快速入门： 在 Android 上的 Java 中使用语音 SDK 识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
