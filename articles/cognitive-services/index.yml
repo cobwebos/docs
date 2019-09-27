@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 09/16/2019
-  ms.openlocfilehash: f762586bf04ceab8cd0c81880a86df7d43507038
-  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+  ms.openlocfilehash: 9071de52e97a041c9769f6c93fa36f39aff4e4fe
+  ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/18/2019
-  ms.locfileid: "71087559"
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71316422"
 highlightedContent:
   items:
   - title: 什么是认知服务？
@@ -145,17 +145,20 @@ conceptualContent:
       itemType: overview
       text: 认知服务容器
     - url: ./containers/container-reuse-recipe.md
-      itemType: overview
+      itemType: learn
       text: 创建要重复使用的容器
     - url: ./containers/azure-container-instance-recipe.md
       itemType: how-to-guide
       text: 在 Azure 容器实例上部署和运行容器
     - url: ./containers/azure-kubernetes-recipe.md
-      itemType: how-to-guide
+      itemType: deploy
       text: 部署到 Azure Kubernetes 服务
     - url: ./containers/docker-compose-recipe.md
-      itemType: how-to-guide
+      itemType: get-started
       text: 使用 Docker Compose 部署多个容器
+    - url: ./containers/container-faq.md
+      itemType: reference
+      text: 认知服务容器常见问题解答
 additionalContent:
   sections:
   - items:
@@ -171,7 +174,7 @@ additionalContent:
         url: https://docs.microsoft.com/rest/api/cognitiveservices/
     - title: SDK
       links:
-      - text: .Net
+      - text: .NET
         url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet
       - text: Go
         url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices

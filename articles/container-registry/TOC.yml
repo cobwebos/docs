@@ -71,6 +71,8 @@
           items:
             - name: 删除映像数据 - CLI
               href: container-registry-delete.md
+            - name: 无标记清单的保留策略（预览版）
+              href: container-registry-retention-policy.md
             - name: 自动清除标记和清单（预览版）
               href: container-registry-auto-purge.md
         - name: 升级经典注册表

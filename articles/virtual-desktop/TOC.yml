@@ -28,6 +28,10 @@
           href: connect-windows-7-and-10.md
         - name: 从 Web 浏览器进行连接
           href: connect-web.md
+        - name: 使用 macOS 客户端进行连接
+          href: connect-macos.md
+        - name: 使用 iOS 客户端进行连接
+          href: connect-ios.md
     - name: 使用 Azure 资源管理器模板创建主机池
       href: create-host-pools-arm-template.md
     - name: 使用 PowerShell 创建主机池

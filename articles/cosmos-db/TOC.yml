@@ -691,6 +691,8 @@
       items:
         - name: 启用笔记本
           href: enable-notebooks.md
+        - name: 使用内置笔记本命令
+          href: use-notebook-features-and-commands.md
     - name: 服务器端编程
       items:
         - name: 编写存储过程、触发器和 UDF

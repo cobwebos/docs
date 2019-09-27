@@ -474,6 +474,8 @@
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: 调整磁盘大小
           href: expand-os-disk.md
+        - name: 使用存储资源管理器管理磁盘
+          href: disks-use-storage-explorer-managed-disks.md
         - name: 拍摄磁盘快照
           href: snapshot-copy-managed-disk.md
         - name: 创建增量快照

@@ -293,6 +293,8 @@
                   href: application-proxy-configure-single-sign-on-on-premises-apps.md
             - name: 发布演练
               items:
+                - name: 与 Azure AD 域服务集成
+                  href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
                 - name: 与 Power BI 集成
                   href: application-proxy-integrate-with-power-bi.md
                 - name: 与 Cloud App Security 集成

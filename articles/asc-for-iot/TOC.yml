@@ -21,7 +21,7 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 在 IoT 中心启用适用于 IoT 的 Azure 安全中心
+    - name: 将适用于 IoT 的 Azure 安全中心载入到 IoT 中心
       href: quickstart-onboard-iot-hub.md
     - name: 配置解决方案
       href: quickstart-configure-your-solution.md
@@ -73,6 +73,8 @@
       href: how-to-security-data-access.md
     - name: 调查设备
       href: how-to-investigate-device.md
+    - name: 自定义解决方案
+      href: how-to-customize-solution.md
 - name: 资源
   items:
     - name: 常见问题

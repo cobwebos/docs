@@ -114,7 +114,7 @@
           href: event-hubs-get-connection-string.md
         - name: 使用不同的协议在应用程序之间交换事件
           href: event-hubs-exchange-events-different-protocols.md
-        - name: 编程指南
+        - name: .NET 编程指南
           href: event-hubs-programming-guide.md
         - name: 使用 Python 发送、接收和捕获事件
           href: event-hubs-python.md
