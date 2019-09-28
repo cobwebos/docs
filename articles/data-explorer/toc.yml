@@ -90,6 +90,8 @@
       items:
         - name: Power BI
           items:
+            - name: 最佳做法
+              href: power-bi-best-practices.md
             - name: 连接器
               href: power-bi-connector.md
             - name: 导入的查询
