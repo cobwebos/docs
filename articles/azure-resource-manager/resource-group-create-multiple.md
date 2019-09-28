@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 09/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3a0761fad32b2cfb0387cca79b6c1c0dc83c8e98
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258896"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345421"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的资源、属性或变量迭代
 
@@ -49,7 +49,7 @@ ms.locfileid: "70258896"
 
 若要指定迭代次数，请为 count 属性提供值。 count 不能超过 800。
 
-count 不能为负数。 如果部署 Azure PowerShell 2.6 或更高版本的模板，或者 REST API 版本**2019-05-10**或更高版本，则可以将 count 设置为零。 PowerShell 和 REST API 的早期版本不支持计数为零。 目前，Azure CLI 不支持计数为零，但在未来的版本中将添加该支持。
+count 不能为负数。 如果部署 Azure PowerShell 2.6 或更高版本的模板，Azure CLI 2.0.74 或更高版本，或者 REST API 版本**2019-05-10**或更高版本，则可以将 count 设置为零。 PowerShell、CLI 和 REST API 的早期版本不支持计数为零。
 
 将[完整模式部署](deployment-modes.md)与复制一起使用时要小心。 如果以完整模式重新部署到资源组，则在解析复制循环后会删除模板中未指定的任何资源。
 
@@ -113,25 +113,25 @@ count 不能为负数。 如果部署 Azure PowerShell 2.6 或更高版本的模
 当使用数组时，copy 操作十分有用，因为这样可以迭代数组中的每个元素。 可以对数组使用 `length` 函数来指定迭代计数，并使用 `copyIndex` 来检索数组中的当前索引。 因此，以下示例：
 
 ```json
-"parameters": { 
-  "org": { 
-    "type": "array", 
-    "defaultValue": [ 
-      "contoso", 
-      "fabrikam", 
-      "coho" 
-    ] 
+"parameters": {
+  "org": {
+    "type": "array",
+    "defaultValue": [
+      "contoso",
+      "fabrikam",
+      "coho"
+    ]
   }
-}, 
-"resources": [ 
-  { 
-    "name": "[concat('storage', parameters('org')[copyIndex()])]", 
-    "copy": { 
-      "name": "storagecopy", 
-      "count": "[length(parameters('org'))]" 
-    }, 
+},
+"resources": [
+  {
+    "name": "[concat('storage', parameters('org')[copyIndex()])]",
+    "copy": {
+      "name": "storagecopy",
+      "count": "[length(parameters('org'))]"
+    },
     ...
-  } 
+  }
 ]
 ```
 
@@ -184,7 +184,7 @@ mode 属性也接受 **parallel**（它是默认值）。
 
 * 名称 - 要创建多个值的属性的名称
 * 计数 - 要创建的值的数目。
-* 输入 - 包含要分配给属性的值的对象  
+* 输入 - 包含要分配给属性的值的对象
 
 以下示例演示了如何将 `copy` 应用于虚拟机上的 dataDisks 属性：
 
@@ -450,9 +450,9 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。 为�
       }
     },
     {
-      "apiVersion": "2015-06-15", 
-      "type": "Microsoft.Compute/virtualMachines", 
-      "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[concat('VM', uniqueString(resourceGroup().id))]",
       "dependsOn": ["storagecopy"],
       ...
     }
@@ -488,7 +488,7 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。 为�
 
 若要创建多个数据集，请将其移出数据工厂。 数据集必须与数据工厂处于同一级别，但它仍是数据工厂的子资源。 通过 type 和 name 属性保留数据集和数据工厂之间的关系。 由于不能从模板中的位置推断 type，因此必须按以下格式提供完全限定的 type：`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`。
 
-若要与数据工厂的实例建立父/子关系，提供的数据集的名称应包含父资源名称。 使用以下格式：`{parent-resource-name}/{child-resource-name}`。  
+若要与数据工厂的实例建立父/子关系，提供的数据集的名称应包含父资源名称。 使用以下格式：`{parent-resource-name}/{child-resource-name}`。
 
 以下示例演示了如何实现：
 

@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66e53298625e2388e102b5a4e835fe22a9c81a21
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 467fbc421cdd681d0aab52faf75a4987ee849b15
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314958"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345523"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -43,14 +43,14 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 遵循此过程时，发行版的版本号将以“X”形式显示在次要版本号位置，例如“1.3.X.0”- 这表示此文档中的发行说明适用于以“1.3”开头的所有版本。 完成发布过程后，我们会立即将发行版本号更新为最近发布的版本，并将发布状态更新为“已发布供下载和自动升级”。
 并非所有版本的 Azure AD Connect 都可用于自动升级。 版本状态将指示版本是否可用于自动升级或仅供下载。 如果在 Azure AD Connect 服务器上启用了自动升级，那么该服务器将自动升级到针对自动升级发布的最新版 Azure AD Connect。 请注意，并非所有 Azure AD Connect 配置都有资格进行自动升级。 请点击此链接阅读有关[自动升级](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)的详细信息
 
-## <a name="14x0"></a>1.4. X. 0
+## <a name="14180"></a>1.4.18.0
 
 >[!IMPORTANT]
 >在此版本的 Azure AD Connect，某些客户可能会看到其所有 Windows 设备从 Azure AD 中消失。 这不是问题的原因，因为在条件访问授权期间 Azure AD 不会使用这些设备标识。 有关详细信息，请参阅[了解 Azure AD Connect 1.4. x 设备 disappearnce](reference-connect-device-disappearance.md)
 
 
 ### <a name="release-status"></a>版本状态
-9/10/2019：仅限自动升级发布
+9/25/2019：已发布以便自动升级和下载
 
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 - 新的疑难解答工具有助于排查 "用户未同步"、"组未同步" 或 "组成员未同步" 方案的问题。

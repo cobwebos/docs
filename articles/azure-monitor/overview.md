@@ -12,23 +12,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1bc4a7634e864f0e3feb0d33cef3b967e5b6741f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 140a5cba6926e8711f0b70896ade55c11d332e0d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262212"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345295"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
-Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥测数据的综合解决方案，可将应用程序的可用性和性能最大化。 它可以帮助你了解应用程序的性能，并主动识别影响应用程序及其所依赖资源的问题。
+Azure Monitor 提供了一个全面的解决方案，用于从云和本地环境收集、分析和操作遥测数据，从而最大程度地提高应用程序和服务的可用性和性能。 它可以帮助你了解应用程序的性能，并主动识别影响应用程序及其所依赖资源的问题。
 
-> [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
+Azure Monitor 包括以下内容的几个示例：
+
+- 通过[Application Insights](app/app-insights-overview.md)检测和诊断应用程序和依赖项中的问题。
+- 将基础结构问题与容器的[用于 VM 的 Azure Monitor](insights/vminsights-overview.md)和[Azure Monitor](insights/container-insights-overview.md)相关联。
+- 利用[Log Analytics](log-query/log-query-overview.md)进行故障排除和深度诊断，深入了解监视数据。
+- 支持对[智能警报](platform/alerts-smartgroups-overview.md)和[自动化操作](platform/alerts-action-rules.md)进行大规模的操作。
+- 通过 Azure[仪表板](learn/tutorial-logs-dashboards.md)和[工作簿](app/usage-workbooks.md)创建可视化效果。
 
 ## <a name="overview"></a>概述
 下图提供了 Azure Monitor 的概要视图。 示意图的中心是用于存储指标和日志（Azure Monitor 使用的两种基本类型的数据）的数据存储。 左侧是用于填充这些[数据存储](platform/data-platform.md)的[监视数据源](platform/data-sources.md)。 右侧是 Azure Monitor 针对这些收集的数据执行的不同功能，例如分析、警报和流式传输到外部系统。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ![Azure Monitor 概述](media/overview/overview.png)
 
