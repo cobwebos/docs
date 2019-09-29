@@ -448,6 +448,8 @@
           href: sql-database-geo-replication-portal.md
         - name: 为异地副本配置安全性
           href: sql-database-geo-replication-security-config.md
+        - name: 配置故障转移组
+          href: sql-database-configure-failover-group.md
         - name: 尝试内存中功能
           href: sql-database-in-memory-sample.md
         - name: 启用自动优化

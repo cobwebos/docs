@@ -128,8 +128,8 @@
           displayName: 'vanity, ingest'
         - name: 推荐的实时编码器
           href: recommended-on-premises-live-encoders.md
-        - name: 使用云 DVR
-          displayName: archive
+        - name: 时移和直播到 VOD
+          displayName: 'archive, dvr'
           href: live-event-cloud-dvr.md
         - name: 功能比较
           href: live-event-types-comparison.md

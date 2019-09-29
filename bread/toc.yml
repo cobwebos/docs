@@ -108,9 +108,16 @@
     - name: 自动化
       tocHref: /azure/automation/
       topicHref: /azure/automation/
-    - name: Azure 区块链服务
-      tocHref: /azure/blockchain/service
-      topicHref: /azure/blockchain/service
+    - name: 区块链
+      tocHref: /azure/blockchain/
+      topicHref: /azure/blockchain/
+      items:
+        - name: 区块链服务
+          tocHref: /azure/blockchain/service/
+          topicHref: /azure/blockchain/service/index
+        - name: Blockchain Workbench
+          tocHref: /azure/blockchain/workbench/
+          topicHref: /azure/blockchain/workbench/
     - name: Azure Databricks
       tocHref: /azure/azure-databricks/
       topicHref: /azure/azure-databricks/
@@ -224,9 +231,6 @@
     - name: BizTalk 服务
       tocHref: /azure/biztalk-services/
       topicHref: /azure/biztalk-services/
-    - name: Blockchain Workbench
-      tocHref: /azure/blockchain-workbench/
-      topicHref: /azure/blockchain-workbench/
     - name: Bot 服务
       tocHref: /azure/bot-service/
       topicHref: /azure/bot-service/

@@ -165,6 +165,8 @@
       href: billing-use-existing-azure-account-for-office-365-subscription.md
 - name: 管理订阅
   items:
+    - name: 订阅状态
+      href: billing-azure-subscription-states.md
     - name: 重新激活订阅
       href: billing-subscription-become-disable.md
     - name: 转让所有权
