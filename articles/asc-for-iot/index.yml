@@ -1,75 +1,105 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 适用于 IoT 的 Azure 安全中心文档
+summary: 适用于 IoT 的 Azure 安全中心是一种基于 Azure 的云安全服务，它提供全面的 IoT 设备威胁防护。
 metadata:
-  title: 适用于 IoT 的 Azure 安全中心文档 - 教程和快速入门 | Microsoft Doc
-  meta.description: Azure Security Center for IoT unifies your device security management and enables advanced threat detection and security posture management across your IoT solution.
-  services: asc-for-iot
-  author: mlottner
-  manager: rkarlin
+  title: 适用于 IoT 的 Azure 安全中心文档
+  description: 适用于 IoT 的 Azure 安全中心是一种基于 Azure 的云安全服务，它提供全面的 IoT 设备威胁防护。
+  services: service
   ms.service: asc-for-iot
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/23/19
-  ms.author: rkarlin
-abstract:
-  description: "使用适用于 IoT 的 Azure 安全中心将现有的网络安全视图扩展到整个 IoT 解决方案。 以真正的全景视图的方式了解与 Azure 相关的所有资源的安全性。 快速部署选项以及与 IoT 中心模块孪生的完全集成，为你提供一系列范围广泛的自定义选项，让你轻松集成当前的设备管理工具。\_"
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何在 IoT 中心启用适用于 IoT 的 Azure 安全中心、如何安装安全代理，以及如何获取有关潜在威胁的见解。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/deploy.svg
-            text: 启用适用于 IoT 的 Azure 安全中心
-            href: /azure/asc-for-iot/quickstart-onboard-iot-hub
-          - image:
-              src: media/index/get-started.svg
-            text: 适用于 IoT 的 Azure 安全入门
-            href: /azure/asc-for-iot/getting-started
-  - title: 操作指南
-    items:
-      - type: paragraph
-        text: 了解如何定义安全策略、如何保护设备免受恶意活动侵害，以及如何响应安全警报和事件。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/asc-for-iot/how-to-investigate-device">使用适用于 IoT 的 Azure 安全中心检测威胁</a>
-  - title: 利用 Microsoft Learn 掌握技能
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 安全性简介
-            href: 'https://docs.microsoft.com/learn/azure'
-            image:
-              src: media/index/tutorial.svg
-              href: 'https://docs.microsoft.com/learn/azure'
-  - title: 适用于 IoT 的 Azure 安全中心视频
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 适用于 IoT 的 Microsoft Azure 安全中心 - 概述
-            href: 'https://youtu.be/pq5uSp9u_x0'
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_video.svg'
-              href: 'https://youtu.be/pq5uSp9u_x0'
-          - title: 适用于 IoT 的 Microsoft Azure 安全中心 - 解决方案
-            href: 'https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek'
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_video.svg'
-              href: 'https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek'
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://azure.microsoft.com/updates/?product=iotsecurity">服务更新</a>'
+  ms.collection: M365-security-compliance
+  author: mlottner
+  ms.author: mlottner
+  ms.date: 09/23/2019
+  ms.openlocfilehash: 5eb0d39d1dbe748b34dd8f5a72ae7796125eae44
+  ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71348530"
+landingContent:
+- title: 关于适用于 IoT 的 Azure 安全中心
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 适用于 IoT 的 Azure 安全中心是什么？
+      url: overview.md
+    - text: 规划解决方案
+      url: service-prerequisites.md
+  - linkListType: architecture
+    links:
+    - text: 了解适用于 IoT 的 Azure 安全中心体系结构
+      url: architecture.md
+    - text: 适用于 IoT 的 Azure 安全中心代理
+      url: security-agent-architecture.md
+    - text: Edge 安全模块
+      url: security-edge-architecture.md
+- title: 将适用于 IoT 的 Azure 安全中心载入到 IoT 中心
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 适用于 IoT 的 Azure 安全中心入门
+      url: getting-started.md
+    - text: IoT 中心
+      url: iot-hub-integration.md
+    - text: 安全代理
+      url: security-agents.md
+- title: 配置解决方案
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 在 IoT 中心启用适用于 IoT 的 Azure 安全中心
+      url: quickstart-onboard-iot-hub.md
+    - text: 配置解决方案
+      url: quickstart-configure-your-solution.md
+    - text: 创建适用于 IoT 的 Azure 安全中心模块克隆
+      url: quickstart-create-security-twin.md
+    - text: 创建自定义安全警报
+      url: quickstart-create-custom-alerts.md
+- title: 自定义解决方案
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 选择代理
+      url: how-to-deploy-agent.md
+    - text: 为 Windows 部署适用于 IoT 的 Azure 安全中心基于 C# 的安全代理
+      url: how-to-deploy-windows-cs.md
+    - text: 为 Linux 部署适用于 IoT 的 Azure 安全中心基于 C# 的安全代理
+      url: how-to-deploy-linux-cs.md
+    - text: 为 Linux 部署适用于 IoT 的 Azure 安全中心基于 C 的安全代理
+      url: how-to-deploy-linux-c.md
+    - text: 部署 Edge 安全模块
+      url: how-to-deploy-edge.md
+    - text: 配置安全代理
+      url: how-to-agent-configuration.md
+    - text: 发送自己的安全消息
+      url: how-to-send-security-messages.md
+    - text: 访问原始安全数据
+      url: how-to-security-data-access.md
+    - text: 调查设备
+      url: how-to-investigate-device.md
+- title: 排查安全代理问题
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 安全代理故障排除指南 (Linux)
+      url: troubleshoot-agent.md
+    - text: 了解 LocalConfiguration.json 文件 - C 代理
+      url: azure-iot-security-local-configuration-c.md
+    - text: 了解本地配置文件 - C# 代理
+      url: azure-iot-security-local-configuration-csharp.md
+- title: 适用于 IoT 的 Azure 安全中心资源
+  linkLists:
+  - linkListType: video
+    links:
+    - text: 适用于 IoT 的 Azure 安全中心是什么？
+      url: https://youtu.be/pq5uSp9u_x0
+    - text: 了解适用于 IoT 的 Azure 安全中心
+      url: https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek
+  - linkListType: reference
+    links:
+    - text: 常见问题
+      url: resources-frequently-asked-questions.md
+    - text: 定价和关联的成本
+      url: concept-pricing.md

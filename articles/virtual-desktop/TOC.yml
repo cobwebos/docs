@@ -24,10 +24,12 @@
   items:
     - name: 连接到 Windows 虚拟桌面资源
       items:
-        - name: 从 Windows 10 或 Windows 7 进行连接
+        - name: 使用 Windows 桌面客户端进行连接
           href: connect-windows-7-and-10.md
-        - name: 从 Web 浏览器进行连接
+        - name: 使用 Web 客户端进行连接
           href: connect-web.md
+        - name: 使用 Android 客户端进行连接
+          href: connect-android.md
         - name: 使用 macOS 客户端进行连接
           href: connect-macos.md
         - name: 使用 iOS 客户端进行连接
@@ -72,6 +74,8 @@
       href: partners.md
     - name: Windows 10 Enterprise 多会话常见问题解答
       href: windows-10-multisession-faq.md
+    - name: 数据位置
+      href: data-locations.md
 - name: 故障排除
   items:
     - name: 故障排除概述、反馈和支持

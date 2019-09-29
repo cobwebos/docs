@@ -80,6 +80,8 @@
         - name: 配置对计算节点的访问权限
           href: pool-endpoint-configuration.md
         - name: 使用共享映像库创建池
+          href: batch-sig-images.md
+        - name: 使用托管映像资源创建池
           href: batch-custom-images.md
         - name: 在虚拟网络中创建池
           href: batch-virtual-network.md
