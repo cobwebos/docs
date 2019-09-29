@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 58a741b369231a353a6b8e282a6e604a63a5727d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 017c02a10137579e6e3497775e9e4a3ac0a5d72d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71210157"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350862"
 ---
 **数据收集量和保留期** 
 
@@ -65,9 +65,12 @@ ms.locfileid: "71210157"
 | 满负荷的区域 | 美国中西部 | 目前，不能在这个区域中新建工作区，因为该区域已达到临时容量限制。 此限制计划为2019年10月结束。 |
 | 数据导出 | 当前不可用 | 使用 Azure 函数或逻辑应用聚合和导出数据。 | 
 
-**数据引入速率**
+**数据引入量速率**
 
-Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 默认引入速率阈值设置为每个工作区**500 MB/分钟**。 如果以更高的速率将数据发送到单个工作区，则会删除某些数据，并且每隔6小时会将事件发送到工作区中的*操作*表，而阈值仍将会超出。 如果引入卷继续超出速率限制，或者你预计会在某个时间到达，则可以通过打开支持请求来请求增加工作区。
+
+Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 使用[诊断设置](../articles/azure-monitor/platform/diagnostic-settings.md)从 Azure 资源发送的数据的默认引入量限制约为每个工作区**6 GB/分钟**。 这是一个近似值，因为每个数据类型的实际大小都可以根据日志长度和其压缩率变化。 此限制不适用于从代理或[数据收集器 API](../articles/azure-monitor/platform/data-collector-api.md)发送的数据。
+
+如果以更高的速率将数据发送到单个工作区，则会删除某些数据，并且每隔6小时会将事件发送到工作区中的*操作*表，而阈值仍将会超出。 如果引入卷继续超出速率限制，或者你预计会在某个时间到达，则可以通过打开支持请求来请求增加工作区。
  
 若要在工作区中收到此类事件的通知，请使用以下查询创建[日志警报规则](../articles/azure-monitor/platform/alerts-log.md)，并在结果大于数与零的情况下使用警报逻辑基数。
 

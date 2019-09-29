@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: d6d7b4cda4bd3b3246b9bc5573246546d8020b38
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597379"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348938"
 ---
 # <a name="application-gateway-components"></a>应用程序网关组件
 
@@ -26,35 +26,36 @@ ms.locfileid: "68597379"
 
 ### <a name="static-versus-dynamic-public-ip-address"></a>静态与动态公共 IP 地址
 
-Azure 应用程序网关 V2 SKU 可配置为支持静态内部 IP 地址和静态公共 IP 地址, 或仅支持静态公共 IP 地址。 不能将它配置为仅支持静态内部 IP 地址。
+Azure 应用程序网关 V2 SKU 可以配置为同时支持静态内部 IP 地址和静态公共 IP 地址，或仅支持静态公共 IP 地址。 不能将它配置为仅支持静态内部 IP 地址。
 
-V1 SKU 可配置为支持静态内部 IP 地址和动态公共 IP 地址、仅限静态内部 IP 地址或仅限动态公共 ip 地址或动态公共 ip 地址或动态专用 ip 地址。 应用程序网关的动态 IP 地址在运行的网关上不会更改。 它仅在停止或启动网关时才可以更改。 它不会因系统故障、更新、Azure 主机更新等而发生更改。 
+V1 SKU 可配置为支持静态或动态内部 IP 地址和动态公共 IP 地址。 在正在运行的网关上，应用程序网关的动态 IP 地址不会更改。 只有在停止或启动网关时，它才能更改。 它不会因系统故障、更新、Azure 主机更新等而发生更改。 
 
 与应用程序网关关联的 DNS 名称在网关的整个生命周期内不会变化。 出于此原因，应使用 CNAME 别名并使其指向应用程序网关的 DNS 地址。
 
-## <a name="listeners"></a>侦听程序
+## <a name="listeners"></a>侦听器
 
-侦听器是检查传入连接请求的逻辑实体。 如果与请求关联的协议、端口、主机和 IP 地址匹配与侦听器配置关联的相同元素，侦听器将接受该请求。
+侦听器是检查传入连接请求的逻辑实体。 如果与请求关联的协议、端口、主机名和 IP 地址与侦听器配置关联的元素匹配，则侦听器会接受请求。
 
 在使用应用程序网关之前，必须至少添加一个侦听器。 可将多个侦听器附加到一个应用程序网关，这些侦听器可用于同一个协议。
 
-侦听器检测到来自客户端的传入请求后，应用程序网关会将这些请求路由到后端池中的成员。 应用程序网关使用你为收到传入请求的侦听器定义的请求路由规则。
+侦听器检测到来自客户端的传入请求后，应用程序网关会将这些请求路由到规则中配置的后端池中的成员。
 
 侦听器支持以下端口和协议。
 
 ### <a name="ports"></a>端口
 
-侦听器在某个端口上侦听客户端请求。 对于 v2 sku, 你可以配置范围从1到65502的端口, 为 v2 sku 配置端口1到65199。
+侦听器在某个端口上侦听客户端请求。 可以为 v1 SKU 配置 1 到 65502 的端口，为 v2 SKU 配置 1 到 65199 的端口。
 
 ### <a name="protocols"></a>协议
 
 应用程序网关支持四种协议：HTTP、HTTPS、HTTP/2 和 WebSocket：
+>[!NOTE]
+>仅针对连接到应用程序网关侦听程序的客户端提供了 HTTP/2 协议支持。 与后端服务器池的通信始终通过 HTTP/1.1 进行。 默认情况下，HTTP/2 支持处于禁用状态。 可以选择启用该协议。
 
 - 在侦听器配置中指定 HTTP 或 HTTPS 协议。
 - 原生支持 [WebSocket 和 HTTP/2 协议](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic)，默认已启用 [WebSocket 支持](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket)。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。 对 HTTP 和 HTTPS 侦听器使用 WebSocket。
-- 仅针对连接到应用程序网关侦听程序的客户端提供了 HTTP/2 协议支持。 与后端服务器池的通信是通过 HTTP/1.1 进行的。 默认情况下，HTTP/2 支持处于禁用状态。 可以选择启用该协议。
 
-使用 HTTPS 侦听器进行 SSL 终止。 HTTPS 侦听器可将加密和解密工作卸载到应用程序网关，以避免加密和解密开销给 Web 服务器造成负担。 然后，应用可以专注于业务逻辑。
+使用 HTTPS 侦听器进行 SSL 终止。 HTTPS 侦听器会将加密和解密工作卸载到应用程序网关，因此，web 服务器不会承受开销。
 
 ### <a name="custom-error-pages"></a>自定义错误页
 
@@ -80,7 +81,7 @@ V1 SKU 可配置为支持静态内部 IP 地址和动态公共 IP 地址、仅�
 
 请求路由规则是应用程序网关的关键组件，因为它确定如何在侦听器上路由流量。 该规则绑定侦听器、后端服务器池和后端 HTTP 设置。
 
-当侦听器接受请求时，请求路由规则会将该请求转发到后端，或重定向到其他位置。 如果将请求转发到后端，则请求路由规则会定义要将其转发到哪个后端服务器池。 此外，请求路由规则还确定是否要重写请求中的标头。 一个侦听器可以附加到一个规则。
+当侦听器接受请求时，请求路由规则会将该请求转发到后端，或重定向到其他位置。 如果将请求转发到后端，则请求路由规则会定义要将其转发到哪个后端服务器池。 请求路由规则还确定是否要重写请求中的标头。 一个侦听器可以附加到一个规则。
 
 有两种类型的请求路由规则：
 
@@ -100,11 +101,11 @@ V1 SKU 可配置为支持静态内部 IP 地址和动态公共 IP 地址、仅�
 
 ### <a name="rewrite-http-headers"></a>重写 HTTP 标头
 
-通过使用请求路由规则, 你可以添加、删除或更新 HTTP (S) 请求和响应标头, 因为请求和响应数据包通过应用程序网关在客户端和后端池之间移动。
+通过使用请求路由规则，当请求和响应数据包通过应用程序网关在客户端和后端池之间移动时，你可以添加、删除或更新 HTTP(S) 请求和响应标头。
 
-标头可以设置为静态值, 也可以设置为其他标头和服务器变量。 这有助于处理重要的用例, 如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
+这些标头可以设置为静态值，也可以设置为其他标头和服务器变量。 这有助于处理重要的用例，例如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
 
-有关详细信息, 请参阅[在应用程序网关上重写 HTTP 标头](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)。
+有关详细信息，请参阅[在应用程序网关上重写 HTTP 标头](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)。
 
 ## <a name="http-settings"></a>HTTP 设置
 

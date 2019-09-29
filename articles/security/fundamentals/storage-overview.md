@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 249380b5bd9d95e969a9c7a812102b694b9d1e3b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e273d913d07d8d7b77289695a4a28a478a64123a
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726551"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350303"
 ---
 # <a name="azure-storage-security-overview"></a>Azure 存储安全概述
 
@@ -39,7 +39,7 @@ ms.locfileid: "68726551"
 
 可使用基于角色的访问控制来帮助保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全策略限制访问权限。 这些访问权限是通过将相应的 RBAC 角色分配给特定范围内的组和应用程序来授予的。 可以使用[内置 RBAC 角色](/azure/role-based-access-control/built-in-roles)（例如存储帐户参与者）将权限分配给用户。
 
-了解详细信息:
+了解更多：
 
 * [Azure Active Directory 基于角色的访问控制](/azure/role-based-access-control/role-assignments-portal)
 
@@ -49,7 +49,7 @@ ms.locfileid: "68726551"
 
 SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 要使用 SAS 访问存储资源，客户端只需将 SAS 提供给相应的构造函数或方法。
 
-了解详细信息:
+了解更多：
 
 * [了解 SAS 模型](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 * [创建 SAS 并将其用于 Blob 存储](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
@@ -86,9 +86,9 @@ SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所
 
 适用于 VM 的磁盘加密可用于 Linux 与 Windows 操作系统。 它也使用密钥保管库帮助你保护、管理和审核磁盘加密密钥的使用。 在 Azure 存储帐户中使用行业标准加密技术，对 VM 磁盘中的所有数据进行静态加密。 适用于 Windows 的磁盘加密解决方案是基于 [Microsoft BitLocker 驱动器加密](https://technet.microsoft.com/library/cc732774.aspx)技术，Linux 解决方案基于 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)。
 
-了解详情
+了解详细信息
 
-* [适用于 Windows 和 Linux IaaS 虚拟机的 Azure 磁盘加密](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
+* [Azure 磁盘加密概述](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)
 
 ## <a name="firewalls-and-virtual-networks"></a>防火墙和虚拟网络
 
@@ -104,7 +104,7 @@ Data Box、Data Box Disk 和 Data Box Heavy 设备可在网络不可用时将大
 
 Data Box Edge 和 Data Box Gateway 是联机数据传输产品，它们用作网络存储网关来管理站点和 Azure 之间的数据。 Data Box Edge 是一种本地网络设备，可将数据传入和传出 Azure，并使用支持人工智能 (AI) 的边缘计算来处理数据。 Data Box Gateway 是具有存储网关功能的虚拟设备。
 
-了解详细信息:
+了解更多：
 
 * [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
 * [Azure Data Box Edge](/azure/databox-online/data-box-edge-overview)
@@ -116,7 +116,7 @@ Azure 存储提供了高级威胁防护来实现额外的一层安全智能，�
 
 可以从 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看高级威胁防护警报。 Azure 安全中心会提供有关检测到的任何可疑活动的详细信息，并提供用于针对潜在威胁进行调查和补救的建议操作。
 
-了解详细信息:
+了解更多：
 
 * [Azure 存储高级威胁防护概述](/azure/storage/common/storage-advanced-threat-protection)
 
@@ -124,6 +124,6 @@ Azure 存储提供了高级威胁防护来实现额外的一层安全智能，�
 
 Azure Disk Encryption 使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 来帮助控制和管理 Key Vault 订阅中的磁盘加密密钥和机密。 它还可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。 应使用密钥保管库来审核密钥和策略的使用。
 
-了解详情
+了解详细信息
 
 * [什么是 Azure 密钥保管库？](/azure/key-vault/key-vault-overview)

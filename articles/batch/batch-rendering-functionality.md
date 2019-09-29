@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118681"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350048"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -30,15 +30,15 @@ ms.locfileid: "62118681"
 
 有关示例池配置，请参阅 [Azure CLI 渲染教程](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)。  Azure 门户和 Batch Explorer 提供了 GUI 工具用于在创建池时选择渲染 VM 映像。  如果使用 Batch API，请在创建池时，为 [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) 指定以下属性值：
 
-| 发布者 | 产品/服务 | SKU | Version |
+| 发布者 | 套餐 | SKU | Version |
 |---------|---------|---------|--------|
-| 批处理 | rendering-centos73 | 呈现 | 最新 |
-| 批处理 | rendering-windows2016 | 呈现 | 最新 |
+| 或批处理 | rendering-centos73 | 呈现 | latest |
+| 或批处理 | rendering-windows2016 | 呈现 | latest |
 
 如果池 VM 上需要其他应用程序，则可以使用其他选项：
 
-* 基于标准市场映像的自定义映像：
-  * 可以使用此选项为 VM 配置所需的具体应用程序和版本。 有关详细信息，请参阅[使用自定义映像创建虚拟机池](https://docs.microsoft.com/azure/batch/batch-custom-images)。 Autodesk 和 Chaos Group 已分别修改了 Arnold 和 V-Ray，可以验证 Azure Batch 许可服务。 请确保这些应用程序的版本提供此支持，否则，即用即付许可模式将不适用。 运行无头模式（批处理/命令行模式）时，最新版本的 Maya 或 3ds Max 不需要许可证服务器。 如果不确定如何使用此选项，请联系 Azure 支持部门。
+* 共享图像库中的自定义映像：
+  * 可以使用此选项为 VM 配置所需的具体应用程序和版本。 有关详细信息，请参阅[使用共享映像库创建池](batch-sig-images.md)。 Autodesk 和 Chaos Group 已分别修改了 Arnold 和 V-Ray，可以验证 Azure Batch 许可服务。 请确保这些应用程序的版本提供此支持，否则，即用即付许可模式将不适用。 运行无头模式（批处理/命令行模式）时，最新版本的 Maya 或 3ds Max 不需要许可证服务器。 如果不确定如何使用此选项，请联系 Azure 支持部门。
 * [应用程序包](https://docs.microsoft.com/azure/batch/batch-application-packages)：
   * 使用一个或多个 ZIP 文件打包应用程序文件，通过 Azure 门户上传，然后在池配置中指定该包。 创建池 VM 时，将下载 ZIP 文件并解压缩文件。
 * 资源文件：

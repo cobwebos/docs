@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
+ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933800"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348518"
 ---
 # <a name="pricing-and-associated-costs"></a>定价和关联的成本
 
@@ -34,20 +34,17 @@ ms.locfileid: "70933800"
 
 - 通过消息增强的安全功能基于 IoT Edge 或叶设备上的安全消息来收费。
 
-  >[!Note]
-  > 安全消息还会在 IoT 中心产生配额消耗。
 
 有关详细信息，请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
 ## <a name="associated-costs"></a>关联成本
 
-用于 IoT 的 Azure 安全中心具有两种类型的关联成本，这些成本不是直接定价的一部分：
+适用于 IoT 的 Azure 安全中心具有相关成本，这不属于直接定价：
 
-- IoT 中心配额消耗
 
 - Log Analytics 存储成本
 
-您可以通过更改设置来减少某些功能，从而减少相关的成本。
+您可以通过选择退出某些解决方案功能来减少相关成本。 通过更改设置选择退出。
 
 若要更改设置：
 
@@ -61,8 +58,6 @@ ms.locfileid: "70933800"
 
 |     | 用法 | 注释 |
 | --- | --- | --- |
-| **IoT 中心配额消耗** |  |
-| [导出设备](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices)作业（克隆导出） | 每天 1 次 | 禁用克隆的_元数据集合_ |
 | **Log Analytics 存储** |  |
 | 设备建议和警报| 服务生成的安全建议和警报 | 不可选 |
 | 原始安全数据| 由安全代理收集的 IoT 设备的原始安全数据 | 禁用_存储原始设备安全事件_ |

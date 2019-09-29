@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 3a47977f2589227347582dc6fcaff25120e380d7
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 45207eb1cdc62f2468d8b0c052723337c18d5021
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034831"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350547"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>通过 Azure 机器学习的工作区登陆页面（预览版）创建、探索和部署自动化机器学习试验
 
@@ -26,18 +26,17 @@ ms.locfileid: "71034831"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 * Azure 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-## <a name="get-started"></a>开始使用
-
+## <a name="get-started"></a>入门
 
 1. 登录到[工作区登录页](https://ml.azure.com/workspaceportal/)。 
 
 1. 选择订阅和工作区。 
 
-1. 导航到左窗格。 在 "**创作**" 部分下选择 "**自动 ML** "。
+1. 导航到左窗格。 在**作者**部分下选择 "**自动 ML** "。
 
 [![Azure 门户导航窗格](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
 
@@ -59,7 +58,7 @@ ms.locfileid: "71034831"
     ---|---
     计算名称| 输入用于标识计算上下文的唯一名称。
     虚拟机大小| 指定计算资源的虚拟机大小。
-    其他设置| *最小节点数*：输入计算的最小节点数。 AML 计算的最小节点数为0。 若要启用数据事件探查, 必须有1个或多个节点。 <br> *最大节点数*：输入计算的最大节点数。 默认值为用于 AML 计算的6个节点。
+    最小/最大节点数（在高级设置中）| 若要分析数据，必须指定一个或多个节点。 输入计算的最大节点数。 默认值为用于 AML 计算的6个节点。
     
     选择“创建”。 创建新计算可能需要几分钟时间。
 
@@ -109,7 +108,7 @@ ms.locfileid: "71034831"
     高级设置|描述
     ------|------
     主要指标| 用于对模型进行评分的主要指标。 [详细了解模型指标](how-to-configure-auto-train.md#explore-model-metrics)。
-    退出条件| 满足这些条件中的任何一种时, 训练作业将在完成前结束。 <br> *训练作业时间(分钟)* ：允许定型作业运行多长时间。  <br> *最大迭代次数*：训练作业中要测试的管道的最大数目 (迭代)。 作业运行的次数不能超过指定的迭代次数。 <br> *指标分数阈值*:所有管道的最小指标分数。 这可以确保如果你有想要达到的已定义目标指标, 则不需要花费更多时间来完成培训作业。
+    退出条件| 如果满足上述任一条件，则会停止训练作业。 <br> *训练作业时间(分钟)* ：允许定型作业运行多长时间。  <br> *最大迭代次数*：训练作业中要测试的管道的最大数目 (迭代)。 作业运行的次数不能超过指定的迭代次数。 <br> *指标分数阈值*:所有管道的最小指标分数。 这可以确保如果你有想要达到的已定义目标指标, 则不需要花费更多时间来完成培训作业。
     预处理| 选择此以启用或禁用自动机器学习完成的预处理。 预处理包括用于生成综合功能的自动数据清理、准备和转换。 [详细了解预处理](#preprocess)。
     验证| 选择要在训练作业中使用的交叉验证选项之一。 [了解有关交叉验证的详细信息](how-to-configure-auto-train.md)。
     并发| 选择要在使用多核计算时使用的多核限制。
@@ -129,7 +128,7 @@ ms.locfileid: "71034831"
 功能| 正在汇总的列的名称。
 配置文件| 基于推断类型的行内可视化。 例如, 字符串、布尔值和日期具有值计数, 而小数 (数字) 则具有近似的直方图。 这使你可以快速了解数据的分布情况。
 类型分发| 列中类型的行内值计数。 Null 是其自己的类型, 因此此可视化效果可用于检测奇值或缺失值。
-类型|推断列的类型。 可能的值包括: 字符串、布尔值、日期和小数。
+type|推断列的类型。 可能的值包括: 字符串、布尔值、日期和小数。
 最小值| 列的最小值。 对于类型不具有固有顺序 (例如布尔值) 的功能, 将显示空白项。
 最大| 列的最大值。 
 Count| 列中缺失和缺失条目的总数。

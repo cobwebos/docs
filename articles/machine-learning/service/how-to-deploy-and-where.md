@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 30164824cab19aae9cc9665304eb66f595e082da
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 1349a81bc4f0f3eed4093bbe91abea68264b4021
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162567"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350659"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 
@@ -467,7 +467,9 @@ def run(request):
 
 推理配置介绍了如何配置模型以便进行预测。 此配置不是你的输入脚本的一部分。 它引用您的条目脚本，并用于查找部署所需的所有资源。 稍后在部署模型时使用。
 
-推理配置可以使用 Azure 机器学习环境来定义部署所需的软件依赖项。 利用环境，你可以创建、管理和重复使用培训和部署所需的软件依赖项。 下面的示例演示如何从工作区加载环境，并将其用于推理配置：
+推理配置可以使用 Azure 机器学习环境来定义部署所需的软件依赖项。 利用环境，你可以创建、管理和重复使用培训和部署所需的软件依赖项。 使用环境时，模型文件和提供的源目录会直接装载到正在运行的容器上，它们不会复制到容器映像或容器注册表中。
+
+下面的示例演示如何从工作区加载环境，并将其用于推理配置：
 
 ```python
 from azureml.core import Environment
@@ -619,7 +621,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 如果已为服务启用令牌身份验证，则需要提供 Azure 机器学习 JWT 令牌作为请求标头中的持有者令牌。
 
 > [!TIP]
-> 部署服务后，可以检索架构 JSON 文档。 使用已部署的 web 服务中的[swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)（例如， `service.swagger_uri`）获取本地 web 服务 swagger 文件的 uri。
+> 部署服务后，可以检索架构 JSON 文档。 使用已部署的 web 服务（例如 `service.swagger_uri`）中的[swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)获取本地 Web 服务 swagger 文件的 uri。
 
 ### <a name="request-response-consumption"></a>请求-响应消耗
 

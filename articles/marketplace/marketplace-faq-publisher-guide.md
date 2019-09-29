@@ -1,26 +1,26 @@
 ---
-title: Azure Marketplace 常见问题解答
-description: 有关 Microsoft Azure 市场的常见问题的解答
+title: Microsoft 商业市场常见问题解答
+description: 有关 Azure Marketplace 和 Microsoft AppSource 的常见问题的解答
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 9/26/2019
 ms.author: ellacroi
-ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: abc3b3a6be5f8c61c07fb29a6f168c8738733099
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259956"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350380"
 ---
-# <a name="marketplace-faqs"></a>市场常见问题解答
+# <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft 商业市场常见问题解答
 
-有关 Microsoft Azure 市场的常见问题的解答。
+有关 Azure Marketplace 和 Microsoft AppSource 的常见问题的解答。
 
 ## <a name="faq-for-customers"></a>面向客户的常见问题解答
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>需要了解哪些有关 Azure 市场的信息
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Azure Marketplace 和 Microsoft AppSource 需要了解的内容
 
 **什么是 Azure 市场？**
 
@@ -253,9 +253,26 @@ MOSP- [Microsoft 联机订阅计划](https://azure.microsoft.com/support/legal/s
 
 取消的许可证将受此 FAQ 中的退款政策的限制。  已取消的所有许可证将立即从你的帐户中删除，并且将不再可供使用。
 
+**基于消费的产品/服务的退款是否受支持？**
+
+任何基于消耗的费用–无论是每小时 Vm 还是自定义计量，都不会退还取消。 一旦发生了消耗，Microsoft 的商业平台就会处理费用，请求退款的任何服务质量争议将直接在发布者与客户之间的 Microsoft 系统外部进行处理。 支持按固定费率和按流量计费的产品/服务将遵循标准退款政策来支付支付费用。
+
+**是否可以更改计划的中期？**
+
+不可以，不能在每月和每年之间过渡。
+
+**客户能否从同一产品/服务购买两个计划？**
+
+是的，客户有可能同时拥有相同服务的两个计划。
+
+**"退款" 和 "计划更改策略" 的不同之处：**
+
+不可以，企业策略在 Azure Marketplace 和 Microsoft AppSource 之间保持一致。 如果云解决方案中的合作伙伴转售给提供程序，则合作伙伴可以为其客户强制实施其他策略。
+
+
 ## <a name="faq-for-publishers"></a>面向发布者的常见问题解答
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>需要了解哪些有关 Azure 市场的信息
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Azure Marketplace 和 Microsoft AppSource 需要了解的内容
 
 **什么是 Azure 市场？**
 

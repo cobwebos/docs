@@ -11,23 +11,23 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/10/2018
+ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 1995ad5e8179fdee11e960c2ad0e7c03602ebd31
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: df35168d0fab0b01ff11c4105a1fcc5b16e21f30
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274803"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350725"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>用于公共基本负载均衡器的 Azure Monitor 日志
 
 >[!IMPORTANT] 
 >Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍基本负载均衡器。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](load-balancer-standard-overview.md)，该概述通过 Azure Monitor 中的多维指标公开遥测数据。
 
-可以在 Azure 中使用不同类型的日志对基本负载均衡器进行管理和故障排除。 可通过门户访问其中某些日志。 可从 Azure Blob 存储提取所有日志并在 Excel 和 PowerBI 等各种工具中查看。 可从下表了解有关各种类型日志的详细信息。
+可以在 Azure 中使用不同类型的日志对基本负载均衡器进行管理和故障排除。 可通过门户访问其中某些日志。 可以将日志流式传输到事件中心或 Log Analytics 工作区。 所有日志都可从 Azure blob 存储提取，并在不同的工具（如 Excel 和 Power BI）中查看。  可从下表了解有关各种类型日志的详细信息。
 
-* **审核日志：** 可以使用 [Azure 审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)（以前称为操作日志）查看提交到 Azure 订阅的所有操作及其状态。 审核日志默认情况下启用，并且可以在 Azure 门户中查看。
+* **活动日志：** 你可以使用["查看活动日志" 监视资源的操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)，以查看提交到 Azure 订阅的所有活动及其状态。 默认情况下，活动日志处于启用状态，可以在 Azure 门户中查看。
 * **警报事件日志：** 可以使用此日志查看负载均衡器引发的警报。 每隔五分钟收集一次负载均衡器的状态。 仅在引发了负载均衡器警报事件的情况下，才会向此日志写入相关内容。
 * **运行状况探测日志：** 可以使用此日志查看运行状况探测器检测到的问题，例如后端池中由于运行状况探测失败未从负载均衡器接收请求的实例数。 当运行状况探测状态发生更改时，将写入此日志。
 
@@ -36,39 +36,66 @@ ms.locfileid: "68274803"
 
 ## <a name="enable-logging"></a>启用日志记录
 
-每个 Resource Manager 资源都会自动启用审核日志记录。 需启用事件和运行状况探测日志记录才能开始收集通过这些日志提供的数据。 使用以下步骤启用日志记录。
+每个 Resource Manager 资源都会自动启用活动日志记录。 启用事件和运行状况探测日志记录，开始收集通过这些日志提供的数据。 使用以下步骤启用日志记录。
 
-登录到 [Azure 门户](https://portal.azure.com)。 如果还没有负载均衡器，请先[创建负载均衡器](load-balancer-get-started-internet-arm-ps.md)，再继续。
+登录到 [Azure 门户](https://portal.azure.com)。 如果还没有负载均衡器，请先[创建负载均衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal)，再继续。
 
-1. 在门户中，单击“浏览”。 
-2. 选择“负载均衡器”。 
+1. 在门户中，单击 "**资源组**"。
+2. 选择负载均衡器的**1resource > @no__t** 。
+3. 选择负载均衡器。
+4. 选择 "**监视** > **诊断设置**"。
+5. 在 "**诊断设置**" 窗格的 "**诊断设置**" 下，选择 " **+ 添加诊断设置**"。
+6. 在 "**诊断设置**" 创建窗格的 "**名称**" 字段中，输入**myLBDiagnostics** 。
+7. **诊断设置**有三个选项。  你可以选择一个、两个或全部三个，并根据你的要求进行配置：
+   * **存档到存储帐户**
+   * **流式传输到事件中心**
+   * **发送到 Log Analytics**
 
-    ![门户 - 负载均衡器](./media/load-balancer-monitor-log/load-balancer-browse.png)
+    ### <a name="archive-to-a-storage-account"></a>存档到存储帐户
+    你需要已为此进程创建的存储帐户。  若要创建存储帐户，请参阅[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
 
-3. 选择现有的负载均衡器，并单击“所有设置”。 
-4. 在负载均衡器名称下的对话框右侧，滚动到“监视”，并单击“诊断”。  
+    1. 选中 "**存档到存储帐户**" 旁边的复选框。
+    2. 选择 "**配置**" 以打开 "**选择存储帐户**" 窗格。
+    3. 在下拉框中，选择在其中创建了你的存储帐户的**订阅**。
+    4. 在下拉框中的 "**存储帐户**" 下选择存储帐户的名称。 
+    5. 选择“确定”。
 
-    ![门户 - 负载均衡器 - 设置](./media/load-balancer-monitor-log/load-balancer-settings.png)
+    ### <a name="stream-to-an-event-hub"></a>流式传输到事件中心
+    你将需要已为此进程创建的事件中心。  若要创建事件中心，请参阅 [Quickstart：使用 Azure 门户 @ no__t 创建事件中心
 
-5. 在“诊断”窗格中，在“状态”下选择“开”。   
-6. 单击“存储帐户”。 
-7. 在“日志”下，选择现有存储帐户或创建新存储帐户。  使用滑块来确定事件数据值得在事件日志中存储的天数。 
-8. 单击“保存”  。
+    1. 选中 "**流式传输到事件中心**" 旁的复选框
+    2. 选择 "**配置**" 以打开 "**选择事件中心**" 窗格。
+    3. 在下拉框中，选择在其中创建了事件中心的**订阅**。
+    4. 在下拉框中**选择 "事件中心命名空间**"。
+    5. 在下拉框中**选择 "事件中心策略名称**"。
+    6. 选择“确定”。
 
-诊断将保存在指定存储帐户的表存储中。 如果日志未保存，这是因为没有生成相关日志。
+    ### <a name="send-to-log-analytics"></a>发送到 Log Analytics
+    你需要已为此进程创建并配置了 log analytics 工作区。  若要创建 Log Analytics 工作区，请参阅[在 Azure 门户中创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 
-![门户 - 诊断日志](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
+    1. 选中 "**发送到 Log Analytics**" 旁边的复选框。
+    2. 在下拉框中选择 Log Analytics 工作区所在的**订阅**。
+    3. 在下拉框中选择 " **Log Analytics" 工作区**。
 
-> [!NOTE]
-> 审核日志不需要单独的存储帐户。 使用存储来记录事件和运行状况探测需支付服务费用。
 
-## <a name="audit-log"></a>审核日志
+8. 在 "**诊断设置**" 窗格中的 "**日志**" 部分下，选中 "两者" 旁边的复选框：
+   * **LoadBalancerAlertEvent**
+   * **Insights-logs-loadbalancerprobehealthstatus**
 
-默认情况下会生成审核日志。 日志在 Azure 的事件日志存储区中保留 90 天。 通过阅读[查看事件和审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)一文可了解有关这些日志的详细信息。
+9.  在 "**诊断设置**" 窗格的 "**指标**" 部分下，选中 "以下项" 旁边的复选框：
+   * **AllMetrics**
 
-## <a name="alert-event-log"></a>警报事件日志
+11. 验证所有内容是否正确，并单击 "创建**诊断设置**" 窗格顶部的 "**保存**"。
 
-只有基于每个负载均衡器启用了此日志，才会生成此日志。 事件以 JSON 格式记录，并存储在启用日志记录时指定的存储帐户中。 下面是事件的示例。
+## <a name="activity-log"></a>活动日志
+
+默认情况下会生成活动日志。 日志在 Azure 的事件日志存储区中保留 90 天。 若要深入了解这些日志，请阅读[查看活动日志以监视资源的操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)一文。
+
+## <a name="archive-to-storage-account-logs"></a>存档到存储帐户日志
+
+### <a name="alert-event-log"></a>警报事件日志
+
+只有基于每个负载均衡器启用了此日志，才会生成此日志。 事件以 JSON 格式记录，并存储在启用日志记录时指定的存储帐户中。 下面的示例是一个事件。
 
 ```json
 {
@@ -87,9 +114,9 @@ ms.locfileid: "68274803"
 }
 ```
 
-JSON 输出显示的 *eventname* 属性说明负载均衡器创建警报的原因。 在本示例中，生成警报是因为源 IP NAT 限制 (SNAT) 导致 TCP 端口耗竭。
+JSON 输出显示 "*事件名称*" 属性，该属性将描述负载均衡器创建警报的原因。 在这种情况下，生成的警报是由源 IP NAT 限制（SNAT）引起的 TCP 端口耗尽导致的。
 
-## <a name="health-probe-log"></a>运行状况探测日志
+### <a name="health-probe-log"></a>运行状况探测日志
 
 仅当按如上所述基于每个负载均衡器启用此日志后，才会生成此日志。 数据存储在启用日志记录时指定的存储帐户中。 创建了名为“insights-logs-loadbalancerprobehealthstatus”的容器并记录了以下数据：
 
@@ -127,26 +154,27 @@ JSON 输出显示的 *eventname* 属性说明负载均衡器创建警报的原�
 }
 ```
 
-JSON 输出在属性字段显示了探测运行状况的基本信息。 *dipDownCount* 属性显示了在后端因探测响应失败而收不到网络流量的实例的总数。
+JSON 输出在属性字段显示了探测运行状况的基本信息。 *DipDownCount*属性显示后端上的实例总数，这些实例未收到网络流量，原因是探测响应失败。
 
-## <a name="view-and-analyze-the-audit-log"></a>查看和分析审核日志
+### <a name="view-and-analyze-the-audit-log"></a>查看和分析审核日志
 
 可以使用任何以下方法查看和分析审核日志数据：
 
-* **Azure 工具：** 通过 Azure PowerShell、Azure 命令行界面 (CLI)、Azure REST API 或 Azure 预览门户检索审计日志中的信息。 [使用 Resource Manager 审核操作](../azure-resource-manager/resource-group-audit.md)一文中详细介绍了每种方法的分步说明。
-* **Power BI：** 如果尚无 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可免费试用。 使用[适用于 Power BI 的 Azure 审核日志内容包](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs)，可以借助预配置的仪表板分析数据，也可以自定义视图来满足自己的要求。
+* **Azure 工具：** 通过 Azure PowerShell、Azure 命令行接口（CLI）、Azure REST API 或 Azure 门户检索审核日志中的信息。 [使用 Resource Manager 审核操作](../azure-resource-manager/resource-group-audit.md)一文中详细介绍了每种方法的分步说明。
+* **Power BI：** 如果还没有 [Power BI](https:// .microsoft.com/pricing) 帐户，可以免费试用。 使用[适用于 Power BI 的 Azure 审核日志内容包](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)，可以借助预配置的仪表板分析数据，也可以自定义视图来满足自己的要求。
 
-## <a name="view-and-analyze-the-health-probe-and-event-log"></a>查看和分析运行状况探测和事件日志
+### <a name="view-and-analyze-the-health-probe-and-event-log"></a>查看和分析运行状况探测和事件日志
 
-需要连接到存储帐户并检索事件和运行状况探测日志的 JSON 日志项。 下载 JSON 文件后，可以将它们转换为 CSV 并在 Excel、PowerBI 或任何其他数据可视化工具中查看。
+连接到存储帐户并检索事件和运行状况探测日志的 JSON 日志条目。 下载 JSON 文件后，可以将它们转换为 CSV 并在 Excel、Power BI 或任何其他数据可视化工具中查看。
 
 > [!TIP]
 > 如果熟悉 Visual Studio 和更改 C# 中的常量和变量值的基本概念，则可以使用 GitHub 提供的[日志转换器工具](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
 
-## <a name="additional-resources"></a>其他资源
+## <a name="stream-to-an-event-hub"></a>流式传输到事件中心
+将诊断信息流式传输到事件中心时，可以将其用于在 Azure Monitor 集成的第三方 SIEM 工具中进行集中式日志分析。 有关详细信息，请参阅[将 Azure 监视数据流式传输到事件中心](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration)
 
-* [使用 Power BI 直观显示 Azure 审核日志](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)博客文章。
-* [查看和分析 Power BI 中的 Azure 审核日志及更多内容](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)博客文章。
+## <a name="send-to-log-analytics"></a>发送到 Log Analytics
+Azure 中的资源可以将其诊断信息直接发送到 Log Analytics 工作区，在此工作区中，可以针对疑难解答和分析信息运行复杂的查询。  有关详细信息，请参阅[在 Azure Monitor 中 Log Analytics 工作区收集 Azure 资源日志](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)
 
 ## <a name="next-steps"></a>后续步骤
 

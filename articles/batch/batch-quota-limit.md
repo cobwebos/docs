@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1e7d64aabba19f04fb98bd208389dc0b2077bfe4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094697"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350095"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -52,7 +52,7 @@ ms.locfileid: "70094697"
 | **[启用了节点间通信的池](batch-mpi.md)中的计算节点**  ||
 | Batch 服务池分配模式 | 100 |
 | Batch 订阅池分配模式 | 80 |
-| **[使用自定义 VM 映像创建的池](batch-custom-images.md)中的计算节点**<sup>1</sup> ||
+| **[使用托管映像资源1创建的池中](batch-custom-images.md)的计算节点**<sup></sup> ||
 | 专用节点 | 2000 |
 | 低优先级节点 | 1000 |
 
@@ -69,9 +69,9 @@ ms.locfileid: "70094697"
 | 每个应用程序的应用程序包数 | 40 |
 | 每个池的应用程序包数 | 10 |
 | 最长任务生存期 | 180 天<sup>1</sup> |
-| 每个计算节点的[装载](virtual-file-mount.md) | 10 |
+| 每个计算节点的[装载数](virtual-file-mount.md) | 10 |
 
-<sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 180 天。 已完成的任务保留7天;不能在最大生存期内完成的任务数据不可访问。
+<sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 180 天。 已完成的任务会保存 7 天；最长生存期内未完成的任务的数据不可访问。
 
 ## <a name="view-batch-quotas"></a>查看 Batch 配额
 
@@ -105,7 +105,7 @@ ms.locfileid: "70094697"
       
     a. 在“提供详细信息”中，指定位置、配额类型和 Batch 帐户。
     
-    ![批处理配额增加][quota_increase]
+    ![增加 Batch 配额][quota_increase]
 
     配额类型包括：
 

@@ -11,14 +11,17 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: d836b600a39b73f60c0847c5a9642f396fb70d17
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 3c747f25b92d9f165bfeb4468a0e263f102976f9
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002858"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350572"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
+
+>[!IMPORTANT]
+> 此 SDK 即将停用，并将用 Application Insights 简化[数据监视](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)。 
 
 在本文中，可以了解如何从已部署到 azure Kubernetes 群集（AKS）的 Azure 机器学习收集输入模型数据到 Azure Blob 存储。 
 
@@ -50,7 +53,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+- 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 - 已安装 Azure 机器学习工作区、一个包含脚本的本地目录以及用于 Python 的 Azure 机器学习 SDK。 了解如何使用[如何配置开发环境](how-to-configure-environment.md)文档来获得这些先决条件。
 

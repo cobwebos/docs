@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 68e1bcfeaa998b0698554fd93fd7ed2e88a29739
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9eb10260573978355a3b6996a6f06c0c612abe4c
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142999"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350028"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
 
@@ -41,8 +41,8 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 |---|--|
 |Azure 存储资源管理器 | [使用存储资源管理器创建容器](data-lake-storage-explorer.md#create-a-container) |
 |AzCopy | [使用 AzCopyV10 创建 Blob 容器或文件共享](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
-|Hadoop 容器 (HDFS) 命令行接口 (CLI) 与 HDInsight |[使用 HDFS 和 HDInsight 创建容器](data-lake-storage-use-hdfs-data-lake-storage.md#create-a-container) |
-|Azure Databricks Notebook 中的代码|[创建存储帐户容器 (Scala)](data-lake-storage-quickstart-create-databricks-account.md#create-storage-account-container) <br><br> [创建并装入容器 (Python)](data-lake-storage-use-databricks-spark.md#create-a-container-and-mount-it)|
+|Hadoop 容器（HDFS）命令行接口（CLI）与 HDInsight |[使用 HDFS 和 HDInsight 创建容器](data-lake-storage-use-hdfs-data-lake-storage.md#create-a-container) |
+|Azure Databricks Notebook 中的代码|[创建存储帐户容器（Scala）](data-lake-storage-quickstart-create-databricks-account.md#create-storage-account-container) <br><br> [创建并装入容器（Python）](data-lake-storage-use-databricks-spark.md#create-a-container-and-mount-it)|
 
 使用存储资源管理器或 AzCopy 创建文件系统是最容易的方法。 使用 HDInsight 和 Databricks 创建文件系统需要的工作会多一些。 但是，如果已打算使用 HDInsight 或 Databricks 群集来处理数据，则可先创建群集，然后使用 HDFS CLI 来创建文件系统。  
 
@@ -77,7 +77,7 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 
 若要授予对特定文件和文件夹的访问权限，请参阅以下文章。
 
-* [使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2 设置文件和目录级别权限](https://review.docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+* [使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2 设置文件和目录级别权限](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 * [文件和目录上的访问控制列表](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control#access-control-lists-on-files-and-directories)
 

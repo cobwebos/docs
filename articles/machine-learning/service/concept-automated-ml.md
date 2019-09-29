@@ -11,16 +11,16 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32ff1ba599f4f95cc413bc2bb2c3bbc442405022
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 8b38b359821d3d4926085fee8e412fbe06155739
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035708"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350628"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
-自动机器学习（也称为 autoML）是自动执行机器学习模型开发的耗时的迭代任务的过程。 它允许数据科学家、分析人员和开发人员构建具有高缩放性、效率和生产力的 ML 模型，同时维持模型质量。 自动 ML 基于我们的[Microsoft 研究部门](https://arxiv.org/abs/1705.05355)的突破。
+自动机器学习，也称为自动 ML，是自动执行机器学习模型开发的耗时、迭代任务的过程。 它允许数据科学家、分析人员和开发人员构建具有高缩放性、效率和生产力的 ML 模型，同时维持模型质量。 自动 ML 基于我们的[Microsoft 研究部门](https://arxiv.org/abs/1705.05355)的突破。
 
 传统的机器学习模型开发需要大量资源，需要大量的域知识和时间来生成和比较数十个模型。 如果希望 Azure 机器学习使用指定的目标度量值定型和调整模型，请应用自动 ML。 然后，该服务会循环访问与功能选择配对的 ML 算法，其中，每次迭代都会生成一个包含定型分数的模型。 分数越高，模型被视为 "拟合" 数据就越好。
 
@@ -115,6 +115,36 @@ ms.locfileid: "71035708"
 使用已排序的系综初始化的[Caruana 系综选择算法](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)用于决定要在系综中使用的模型。 从较高层次来看，此算法使用最多5个模型初始化系综，其中最多有5个模型，并验证这些模型是否处于最佳分数的 5% 阈值内，以避免初始系综不佳。 然后，对于每个系综迭代，会将一个新模型添加到现有系综，并计算生成的分数。 如果新模型改进了现有的系综分数，则会更新系综以包含新模型。
 
 请参阅[如何](how-to-configure-auto-train.md#ensemble)在自动机器学习中更改默认系综设置。
+
+## <a name="imbalance"></a>不均衡数据
+
+不均衡数据通常在机器学习分类方案的数据中找到，并且是指在每个类中包含不相称的观测值的数据。 这种不平衡可能会导致对模型准确性产生虚假的积极影响，因为输入数据对一个类有偏差，这会导致训练的模型模拟该偏量。 
+
+作为简化机器学习工作流的目标的一部分，自动 ML 具有内置功能，可帮助处理不均衡的数据，例如， 
+
+- **权重列**：自动 ML 支持加权列作为输入，导致数据中的行增加或减少，这会使类更多或更少 "重要"。 查看此[笔记本示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/sample-weight/auto-ml-sample-weight.ipynb) 
+
+- 自动 ML 使用的算法可正确处理最大为20:1 的不平衡，这意味着，最常见的类在数据中的行数可能会多于最小公共类的20倍。
+
+### <a name="identify-models-with-imbalanced-data"></a>标识具有不均衡数据的模型
+
+由于分类算法通常是按准确性计算的，因此检查模型的准确性分数是确定是否受不均衡数据影响的好方法。 对于某些类，它的准确性是否准确或准确性较低？
+
+此外，自动 ML 运行自动生成以下图表，这有助于了解模型分类的正确性，并识别可能会受到不均衡数据影响的模型。
+
+图表| 描述
+---|---
+[混淆矩阵](how-to-understand-automated-ml.md#confusion-matrix)| 根据数据的实际标签计算正确分类的标签。 
+[精度-撤回](how-to-understand-automated-ml.md#precision-recall-chart)| 计算正确标签与数据的找到标签实例比率的比率 
+[ROC 曲线](how-to-understand-automated-ml.md#roc)| 计算正确标签与假标签比率的比值。
+
+### <a name="handle-imbalanced-data"></a>处理不均衡的数据 
+
+以下技术是在自动 ML 之外处理不均衡数据的其他选项。 
+
+- 即使类不平衡，也可以通过向上采样较小的类或向下采样更大的类来重新采样。 这些方法需要专业技能来处理和分析。
+
+- 使用性能指标，可更好地处理不均衡数据。 例如，F1 分数是精度和召回的加权平均值。 精度度量值分类器的 exactness--低精度表示大量误报--,，而召回度量值为分类器的完整性-低召回表示很多假负。 
 
 ## <a name="use-with-onnx-in-c-apps"></a>在应用中C#使用 with ONNX
 

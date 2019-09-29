@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 08/29/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bd630fec16ddfb269ead5f1f62af882f52501a86
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 364861e57f37192a3ae454e27fedf732ee8d513e
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390480"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350182"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -95,7 +95,7 @@ Batch 支持以下类型的 Azure 存储帐户：
 
 计算节点是专门用于处理一部分应用程序工作负荷的 Azure 虚拟机 (VM) 或云服务 VM。 节点大小确定了 CPU 核心数目、内存容量，以及分配给节点的本地文件系统大小。 可以使用 [Azure 虚拟机市场][vm_marketplace]提供的 Azure 云服务映像或自己准备的自定义映像创建 Windows 或 Linux 节点池。 有关这些选项的详细信息，请参阅下面的 [池](#pool) 部分。
 
-节点可以运行节点操作系统环境支持的任何可执行文件或脚本。 可执行文件或\*脚本包括适用\*于 Windows 的\*.exe、.cmd、.bat 和 PowerShell 脚本，以及适用于 Linux 的二进制文件、shell 和 Python 脚本。
+节点可以运行节点操作系统环境支持的任何可执行文件或脚本。 可执行文件或脚本包括适用于 Windows 的 @no__t 旁1/-0、\*、\* 和 PowerShell 脚本，以及适用于 Linux 的二进制文件、shell 和 Python 脚本。
 
 Batch 中的所有计算节点还包括：
 
@@ -149,9 +149,9 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>虚拟机池的自定义映像
 
-若要使用自定义映像，需以通用化方式准备映像。 有关从 Azure VM 准备自定义 Linux 映像的信息，请参阅[如何创建虚拟机或 VHD 的映像](../virtual-machines/linux/capture-image.md)。 若要了解如何通过 Azure VM 准备自定义 Windows 映像，请参阅[在 Azure 中创建通用 VM 的托管映像](../virtual-machines/windows/capture-image-resource.md)。 
+若要了解如何使用自定义映像创建池，请参阅[使用共享映像库创建自定义池](batch-sig-images.md)。
 
-有关详细要求和步骤，请参阅[使用自定义映像创建虚拟机池](batch-custom-images.md)。
+或者，你可以使用[托管映像](batch-custom-images.md)资源创建虚拟机的自定义池。 有关从 Azure VM 准备自定义 Linux 映像的信息，请参阅[如何创建虚拟机或 VHD 的映像](../virtual-machines/linux/capture-image.md)。 若要了解如何通过 Azure VM 准备自定义 Windows 映像，请参阅[在 Azure 中创建通用 VM 的托管映像](../virtual-machines/windows/capture-image-resource.md)。
 
 #### <a name="container-support-in-virtual-machine-pools"></a>虚拟机池中的容器支持
 
@@ -379,7 +379,7 @@ Batch 服务在节点上公开文件系统的一部分作为 *根目录*。 任�
 
 * 工作**项：** 此目录包含计算节点上作业及其任务的目录。
 
-* **任务**：在工作**项目录中**，会为节点上运行的每个任务创建一个目录。 它通过引用`AZ_BATCH_TASK_DIR`环境变量来访问。
+* **任务**：在工作**项目录中**，会为节点上运行的每个任务创建一个目录。 它通过引用 @no__t 的环境变量来访问。
 
     在每个任务目录中，Batch 服务将创建由 `AZ_BATCH_TASK_WORKING_DIR` 环境变量指定唯一路径的任务目录 (`wd`)。 此目录提供对任务的读/写访问权限。 任务可以创建、读取、更新和删除此目录下的文件。 此目录根据指定给任务的 *RetentionTime* 约束来保留。
 

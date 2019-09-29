@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: c681b58b01979b95e35ae57cefde38c56a787543
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: fa4e45416e83d933cd21fe482bcead14bfbcae22
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68360248"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71349921"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 
@@ -30,16 +30,16 @@ Windows 提供了各种[性能计数器](https://docs.microsoft.com/windows/desk
 ![Application Insights 中报告的性能计数器](./media/performance-counters/performance-counters.png)
 
 配置为为 ASP.NET/ASP.NET Core Web 应用程序收集的当前默认计数器包括：
-- 进程\\处理器时间百分比
-- 进程\\处理器时间百分比已规范化
-- 内存\\可用字节数
-- 每秒 ASP.NET 请求数
-- 引发的 .NET CLR 异常数/秒
-- ASP.NET ApplicationsRequest 执行时间
-- 处理\\专用字节
-- 处理\\IO 数据字节数/秒
-- 应用程序\\队列中的 ASP.NET 应用程序请求
-- 处理器 (_total)\\处理器时间百分比
+- % Process\\Processor Time
+- % Process\\Processor Time Normalized
+- Memory\\Available Bytes
+- ASP.NET Requests/Sec
+- .NET CLR Exceptions Thrown/sec
+- ASP.NET ApplicationsRequest Execution Time
+- Process\\Private Bytes
+- Process\\IO Data Bytes/sec
+- ASP.NET Applications\\Requests In Application Queue
+- Processor(_Total)\\% Processor Time
 
 ## <a name="add-counters"></a>添加计数器
 
@@ -148,11 +148,12 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>ASP.NET Core 应用程序中的性能计数器
 
-* 如果应用程序在 Azure Web 应用 (Windows) 中运行，则 [ASP.NET Core SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 2.4.1 及更高版本将收集性能计数器
+对 ASP.NET Core 中性能计数器的支持受到限制：
 
-* 如果应用程序在 Windows 中运行，并且面向 `NETSTANDARD2.0` 或更高版本，则 SDK 2.7.0-beta3 和更高版本将收集性能计数器。
+* 如果应用程序在 Azure Web 应用（Windows）中运行， [SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.4.1 和更高版本会收集性能计数器。
+* 如果应用程序在 Windows 和目标`NETSTANDARD2.0`或更高版本中运行，SDK 版本2.7.1 和更高版本将收集性能计数器。
 * 对于面向 .NET Framework 的应用程序，所有版本的 SDK 都支持性能计数器。
-* 在非 Windows 中添加性能计数器支持后，本文将会更新。
+* SDK 版本2.8.0 和更高版本支持 Linux 中的 cpu/内存计数器。 Linux 不支持其他计数器。 在 Linux （和其他非 Windows 环境）中获取系统计数器的建议方法是使用[EventCounters](eventcounters.md)
 
 ## <a name="alerts"></a>警报
 与其他指标一样，可以[设置警报](../../azure-monitor/app/alerts.md)以便在性能计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。

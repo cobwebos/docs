@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: e606b4fee2c46f66f13c45586bcc25577bd90a1f
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 6120eee5bbd2f385fa8e76da093f7fadccb4904e
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147184"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348966"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -70,16 +70,32 @@ AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你�
 
 节点的 Azure VM 大小定义了 CPU 数量、内存大小以及可用存储的大小和类型（如高性能 SSD 或常规 HDD）。 如果预计需要使用大量 CPU 和内存或高性能存储的应用程序，则相应地规划节点大小。 还可以纵向扩展 AKS 群集中的节点数以满足需求。
 
-在 AKS 中, 群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需任何手动配置。 代理节点按标准虚拟机计费, 因此会自动应用你所使用的 VM 大小 (包括[Azure 预订][reservation-discounts]) 的任何折扣。
+在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需任何手动配置。 代理节点按标准虚拟机计费，因此会自动应用你所使用的 VM 大小（包括[Azure 预订][reservation-discounts]）的任何折扣。
 
-如果需要使用不同的主机 OS、容器运行时或包含自定义包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 会发布功能并提供配置选项，且这一操作会在 AKS 群集中支持这些操作和选项之前实施。 例如, 如果你想要使用小鲸鱼以外的容器运行时, 则可以使用`aks-engine`来配置和部署满足当前需求的 Kubernetes 群集。
+如果需要使用不同的主机 OS、容器运行时或包含自定义包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 会发布功能并提供配置选项，且这一操作会在 AKS 群集中支持这些操作和选项之前实施。 例如，如果你想要使用小鲸鱼以外的容器运行时，则可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
 
 ### <a name="resource-reservations"></a>资源预留
 
-你不需要在每个节点上管理核心 Kubernetes 组件（例如 *kubelet*、*kube-proxy* 和 *kube-dns*），但它们确实消耗某些可用的计算资源。 为保持节点性能和功能，每个节点上会预留以下计算资源：
+AKS 使用节点资源将节点函数作为群集的一部分。 当在 AKS 中使用时，这会在节点的总资源和资源 allocatable 之间创建 discrepency。 在设置已部署的 pod 的请求和限制时，必须注意这一点。
 
-- **CPU** - 60 ms
-- **内存** - 20%，最多 4 GiB
+若要查找节点的 allocatable 资源运行，请执行以下操作：
+```kubectl
+kubectl describe node [NODE_NAME] | grep Allocatable -B 4 -A 3
+
+```
+
+为维护节点的性能和功能，将在每个节点上保留以下计算资源。 随着节点在资源中的增长，资源预留量会增长，因为需要管理的用户数更多。
+
+>[!NOTE]
+> 使用 OMS 等外接程序将使用其他节点资源。
+
+- **CPU**依赖于节点类型
+
+| 主机上的 CPU 内核数 | 1 | 2 | 4 | 8 | 16 | 32|64|
+|---|---|---|---|---|---|---|---|
+|Kubelet （millicores）|60|100|140|180|260|420|740|
+
+- **内存**-20% 的可用内存，最大为 4 GiB
 
 这些预留意味着你的应用程序的可用 CPU 和内存量可能显示为少于节点本身包含的数量。 如果由于你运行的应用程序数太多而存在资源约束，则这些预留可以确保 CPU 和内存保持可供核心 Kubernetes 组件使用。 资源预留无法更改。
 
@@ -102,17 +118,17 @@ AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你�
 具有相同配置的节点将统一合并成节点池。 Kubernetes 群集包含一个或多个节点池。 创建 AKS 群集时会定义初始节点数和大小，从而创建默认节点池。 AKS 中的此默认节点池包含运行代理节点的基础 VM。 AKS 中目前有多个节点池支持。
 
 > [!NOTE]
-> 若要确保群集能够可靠运行, 应在默认节点池中至少运行2个节点。
+> 若要确保群集能够可靠运行，应在默认节点池中至少运行2个节点。
 
 缩放或升级 AKS 群集时，将对默认节点池执行操作。 你还可以选择缩放或升级特定节点池。 对于升级操作，将在节点池中的其他节点上计划运行的容器，直到成功升级所有节点。
 
-有关如何在 AKS 中使用多个节点池的详细信息, 请参阅[在 AKS 中为群集创建和管理多个节点池][use-multiple-node-pools]。
+有关如何在 AKS 中使用多个节点池的详细信息，请参阅[在 AKS 中为群集创建和管理多个节点池][use-multiple-node-pools]。
 
 ### <a name="node-selectors"></a>节点选择器
 
-在包含多个节点池的 AKS 群集中, 可能需要告知 Kubernetes 计划程序要将哪个节点池用于给定的资源。 例如, 入口控制器不应在 Windows Server 节点上运行 (当前在 AKS 中为预览版)。 节点选择器允许您定义各种参数 (如节点 OS), 以控制应将 pod 安排到何处。
+在包含多个节点池的 AKS 群集中，可能需要告知 Kubernetes 计划程序要将哪个节点池用于给定的资源。 例如，入口控制器不应在 Windows Server 节点上运行（当前在 AKS 中为预览版）。 节点选择器允许您定义各种参数（如节点 OS），以控制应将 pod 安排到何处。
 
-以下基本示例使用节点选择器 *"beta.kubernetes.io/os"* 在 linux 节点上计划 NGINX 实例: Linux:
+以下基本示例使用节点选择器 *"beta.kubernetes.io/os"* 在 linux 节点上计划 NGINX 实例： Linux：
 
 ```yaml
 kind: Pod
@@ -127,7 +143,7 @@ spec:
     "beta.kubernetes.io/os": linux
 ```
 
-有关如何控制 pod 的计划的详细信息, 请参阅[AKS 中高级计划程序功能的最佳实践][operator-best-practices-advanced-scheduler]。
+有关如何控制 pod 的计划的详细信息，请参阅[AKS 中高级计划程序功能的最佳实践][operator-best-practices-advanced-scheduler]。
 
 ## <a name="pods"></a>Pod
 
@@ -188,7 +204,7 @@ spec:
 
 在 Kubernetes 中管理应用程序的常用方法是使用 [Helm][helm]。 可以生成和使用包含应用程序代码打包版本和 Kubernetes YAML 清单的现有公共 Helm chart 来部署资源。 这些 Helm chart 可以存储在本地，通常也可以存储在远程存储库中，例如 [Azure 容器注册表 Helm chart 存储库][acr-helm]。
 
-为使用 Helm，Kubernetes 群集中会安装名为 Tiller 的服务器组件。 Tiller 管理群集中群集的安装。 Helm 客户端本身安装在本地计算机上, 也可在[Azure Cloud Shell][azure-cloud-shell]中使用。 可以使用客户端搜索或创建 Helm 图表，然后将其安装到 Kubernetes 群集。
+为使用 Helm，Kubernetes 群集中会安装名为 Tiller 的服务器组件。 Tiller 管理群集中群集的安装。 Helm 客户端本身安装在本地计算机上，也可在[Azure Cloud Shell][azure-cloud-shell]中使用。 可以使用客户端搜索或创建 Helm 图表，然后将其安装到 Kubernetes 群集。
 
 ![Helm 包括客户端组件和服务器端 Tiller 组件，用于在 Kubernetes 群集内创建资源](media/concepts-clusters-workloads/use-helm.png)
 
@@ -224,7 +240,7 @@ spec:
 有关详细信息，请参阅 [Kubernetes DaemonSet][kubernetes-daemonset]。
 
 > [!NOTE]
-> 如果使用[虚拟节点外接程序](virtual-nodes-cli.md#enable-virtual-nodes-addon), daemonset 将不会在虚拟节点上创建 pod。
+> 如果使用[虚拟节点外接程序](virtual-nodes-cli.md#enable-virtual-nodes-addon)，daemonset 将不会在虚拟节点上创建 pod。
 
 ## <a name="namespaces"></a>命名空间
 
