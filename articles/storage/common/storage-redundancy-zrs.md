@@ -4,17 +4,17 @@ description: 区域冗余存储 (ZRS) 提供了一种简单方法来构建具有
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036247"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673093"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>用于构建高度可用的 Azure 存储应用程序的区域冗余存储（ZRS）
 
@@ -72,16 +72,16 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 > [!IMPORTANT]
 > 高级文件共享目前不支持实时迁移。 目前仅支持手动复制或移动数据。
 
-如果需要在特定日期完成迁移，请考虑执行手动迁移。 手动迁移比实时迁移更灵活。 使用手动迁移可以控制时间。
+如果需要在特定日期之前完成迁移，请考虑进行手动迁移。 手动迁移比实时迁移更灵活。 使用手动迁移可以控制时间。
 
 若要执行手动迁移，可使用以下选项：
 - 使用现有的工具（例如 AzCopy）、某个 Azure 存储客户端库或可靠的第三方工具。
 - 如果你熟悉 Hadoop 或 HDInsight，可将源和目标 (ZRS) 帐户附加到群集。 然后使用 DistCp 等工具来并行化数据复制过程。
 - 使用某个 Azure 存储客户端库生成自己的工具。
 
-手动迁移可能导致应用程序关闭。 如果应用程序需要高可用性，则还可以使用 Microsoft 提供的实时迁移选项。 实时迁移是一种就地迁移，无需停机。 
+手动迁移可能导致应用程序关闭。 如果应用程序需要高可用性，则还可以使用 Microsoft 提供的实时迁移选项。 实时迁移属于就地迁移，不停机。 
 
-在实时迁移过程中，在源与目标存储阵列之间迁移数据时，可以使用自己的存储帐户。 在迁移过程中，你可以使用与往常相同的持久性和可用性 SLA。
+在实时迁移过程中，在源与目标存储阵列之间迁移数据时，可以使用自己的存储帐户。 在迁移期间，持久性和可用性 SLA 级别与平时相同。
 
 请注意实时迁移的以下限制：
 
@@ -114,11 +114,11 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 
 **是否应该在迁移期间计划停机时间？**
 
-迁移不会造成停机。 在实时迁移期间，你可以继续使用存储帐户，同时在源和目标存储 stamp 之间迁移数据。 在迁移过程中，你可以使用与往常相同的持久性和可用性 SLA。
+迁移不会造成停机。 在实时迁移期间，你可以继续使用存储帐户，同时在源和目标存储 stamp 之间迁移数据。 在迁移期间，持久性和可用性 SLA 级别与平时相同。
 
 **迁移是否有任何数据丢失？**
 
-与迁移关联的数据不会丢失。 在迁移过程中，你可以使用与往常相同的持久性和可用性 SLA。
+与迁移关联的数据不会丢失。 在迁移期间，持久性和可用性 SLA 级别与平时相同。
 
 **迁移完成后，是否需要对应用程序进行任何更新？**
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 4e12ad64ef277396a101aab6d1bb8f3cc6079cf9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 954ff23997e56249859dd8d35f124324432f2b22
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099592"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673001"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -62,6 +62,7 @@ ms.locfileid: "70099592"
   * [High Availability Add-On Overview](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)（高可用性附加产品概述）
   * [High Availability Add-On Administration](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)（高可用性附加产品管理）
   * [High Availability Add-On 参考](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [RHEL 高可用性群集的支持策略-sbd 和 fence_sbd](https://access.redhat.com/articles/2800691)
 * Azure 特定的 RHEL 文档:
   * [Support Policies for RHEL High Availability Clusters - Microsoft Azure Virtual Machines as Cluster Members](https://access.redhat.com/articles/3131341)（RHEL 高可用性群集的支持策略 - Microsoft Azure 虚拟机作为群集成员）
   * [Installing and Configuring a Red Hat Enterprise Linux 7.4 (and later) High-Availability Cluster on Microsoft Azure](https://access.redhat.com/articles/3252491)（在 Microsoft Azure 上安装和配置 Red Hat Enterprise Linux 7.4 [及更高版本] 高可用性群集）
@@ -70,6 +71,10 @@ ms.locfileid: "70099592"
 ## <a name="cluster-installation"></a>群集安装
 
 ![RHEL 上的 Pacemaker 概述](./media/high-availability-guide-rhel-pacemaker/pacemaker-rhel.png)
+
+> [!NOTE]
+> Red Hat 不支持软件模拟的监视程序。 Red Hat 不支持云平台上的 SBD。 有关详细信息，请参阅[RHEL 高可用性群集的支持策略-sbd 和 fence_sbd](https://access.redhat.com/articles/2800691)。
+> Azure 上的 Pacemaker Red Hat Enterprise Linux 群集的唯一受支持的防护机制是 Azure 隔离代理。  
 
 以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2。
 
@@ -103,10 +108,10 @@ ms.locfileid: "70099592"
 
    > [!IMPORTANT]
    > 我们建议使用以下版本的 Azure 隔离代理 (或更高版本), 以使客户从更快的故障转移时间受益, 如果资源停止失败, 或者群集节点无法彼此通信, 则可以:  
-   > RHEL 7.6: fence-agents-4.2.1-11. el7 _ 6。8  
-   > RHEL 7.5: fence-agents-4.0.11-86. el7 _ 5。8  
-   > RHEL 7.4: fence-agents-4.0.11-66. el7 _ 4.12  
-   > 有关详细信息, 请参阅[作为 RHEL 高可用性群集成员运行的 AZURE VM 需要很长时间才能隔离, 或者在 VM 关闭之前发生防护失败/超时](https://access.redhat.com/solutions/3408711)。
+   > RHEL 7.6： fence-agents-4.2.1-11. el7 _ 6。8  
+   > RHEL 7.5： fence-agents-4.0.11-86. el7 _ 5。8  
+   > RHEL 7.4： fence-agents-4.0.11-66. el7 _ 4.12  
+   > 有关详细信息，请参阅[作为 RHEL 高可用性群集成员运行的 AZURE VM 需要很长时间才能隔离，或者在 VM 关闭之前发生防护失败/超时](https://access.redhat.com/solutions/3408711)。
 
    查看 Azure 隔离代理的版本。 如有必要, 请将其更新为等于或晚于以上所述版本的版本。
 
@@ -115,7 +120,7 @@ ms.locfileid: "70099592"
    </code></pre>
 
    > [!IMPORTANT]
-   > 如果需要更新 Azure 隔离代理, 并使用自定义角色, 请确保更新自定义角色以包括操作关闭。 有关详细信息, 请参阅为[隔离代理创建自定义角色](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent)。  
+   > 如果需要更新 Azure 隔离代理，并使用自定义角色，请确保更新自定义角色以**包括操作关闭**。 有关详细信息，请参阅为[隔离代理创建自定义角色](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent)。  
 
 1. [A] 设置主机名称解析
 
@@ -210,7 +215,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色
 
-默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止 (关闭) 群集的所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 来创建它
+默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（关闭）群集的所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 来创建它
 
 将以下内容用于输入文件。 你需要调整内容以适应你的订阅，也就是说，将 c276fc76-9cd4-44c9-99a7-4fd71546436e 和 e91d47c4-76f3-4271-a796-21b4ecfe3624 替换为你的订阅的 ID。 如果只有一个订阅，请删除 AssignableScopes 中的第二个条目。
 

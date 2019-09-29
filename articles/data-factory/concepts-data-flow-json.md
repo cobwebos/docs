@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: cde42dda47d54c03c50895bc625f99c9350b53e3
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: ad21ddffdb22f7abf999bfa12f4a8ed86f42cfa2
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210684"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673447"
 ---
 # <a name="mapping-data-flow-json-handling"></a>映射数据流 JSON 处理
 
@@ -19,17 +19,17 @@ ms.locfileid: "70210684"
 
 ## <a name="creating-json-structures-in-expression-editor"></a>在表达式编辑器中创建 JSON 结构
 ### <a name="derived-column-transformation"></a>派生列转换
-通过 "派生列表达式编辑器", 可以更轻松地将复杂列添加到数据流。 添加新列并打开编辑器后, 有两个选项: 手动输入 JSON 结构, 或使用 UI 以交互方式添加个子列。
+通过 "派生列表达式编辑器"，可以更轻松地将复杂列添加到数据流。 添加新列并打开编辑器后，有两个选项：手动输入 JSON 结构，或使用 UI 以交互方式添加个子列。
 
 #### <a name="interactive-ui-json-design"></a>交互式 UI JSON 设计
-在输出架构端窗格中, 可以使用`+`菜单添加新的个子列:![添加 subcolumn](media/data-flow/addsubcolumn.png "添加 Subcolumn")
+在输出架构端窗格中，可以使用 `+` 菜单添加新的个子列：![添加 subcolumn](media/data-flow/addsubcolumn.png "添加 subcolumn")
 
-可以通过相同的方式添加新的列和个子列。 对于每个非复杂字段, 可以在右侧的表达式编辑器中添加表达式。
+可以通过相同的方式添加新的列和个子列。 对于每个非复杂字段，可以在右侧的表达式编辑器中添加表达式。
 
 ![复杂列](media/data-flow/complexcolumn.png "复杂列")
 
 #### <a name="manual-json-design"></a>手动 JSON 设计
-若要手动添加 JSON 结构, 请添加一个新列, 然后在编辑器中输入该表达式。 表达式采用以下常规格式:
+若要手动添加 JSON 结构，请添加一个新列，然后在编辑器中输入该表达式。 表达式采用以下常规格式：
 ```
 @(
     field1=0,
@@ -38,7 +38,7 @@ ms.locfileid: "70210684"
     )
 )
 ```
-如果为名为 "complexColumn" 的列输入了此表达式, 则会将其作为以下 JSON 写入接收器:
+如果为名为 "complexColumn" 的列输入了此表达式，则会将其作为以下 JSON 写入接收器：
 ```
 {
     "complexColumn": {
@@ -144,9 +144,9 @@ File3.json
 { "json": "record 3" }
 ```
 
-# <a name="higher-order-functions"></a>高阶函数
-## <a name="filter"></a>筛选器
-筛选出数组中的元素, 这些元素不满足提供的谓词。 筛选器需要引用谓词函数中的一个元素作为 #item。
+## <a name="higher-order-functions"></a>高阶函数
+## <a name="filter"></a>filter
+筛选出数组中的元素，这些元素不满足提供的谓词。 筛选器需要引用谓词函数中的一个元素作为 #item。
 
 ### <a name="examples"></a>示例
 ```
@@ -164,7 +164,7 @@ map(['a', 'b', 'c', 'd'], #item + '_processed') => ['a_processed', 'b_processed'
 ```
 
 ## <a name="reduce"></a>降
-累积数组中的元素。 减少需要引用第一个表达式函数中的累加器和一个元素作为 #acc 和 #item, 并且它希望在第二个表达式函数中使用 #result 的结果值。
+累积数组中的元素。 减少需要引用第一个表达式函数中的累加器和一个元素作为 #acc 和 #item，并且它希望在第二个表达式函数中使用 #result 的结果值。
 
 ### <a name="examples"></a>示例
 ```
@@ -174,7 +174,7 @@ reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
 ## <a name="sort"></a>sort
-使用提供的谓词函数对数组进行排序。 排序需要引用 expression 函数中的两个连续元素, #item1 和 #item2。
+使用提供的谓词函数对数组进行排序。 排序需要引用 expression 函数中的两个连续元素，#item1 和 #item2。
 
 ### <a name="examples"></a>示例
 ```
@@ -186,7 +186,7 @@ sort(['a3', 'b2', 'c1'],
 ```
 
 ## <a name="contains"></a>包含
-如果所提供的数组中的任何元素在提供的谓词中计算为 true, 则返回 true。 Contains 需要引用谓词函数中的一个元素作为 #item。
+如果所提供的数组中的任何元素在提供的谓词中计算为 true，则返回 true。 Contains 需要引用谓词函数中的一个元素作为 #item。
 
 ### <a name="examples"></a>示例
 ```

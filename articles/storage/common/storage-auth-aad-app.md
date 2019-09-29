@@ -1,21 +1,21 @@
 ---
-title: 使用客户端应用程序中的 Azure Active Directory 授予对 blob 和队列的访问权限-Azure 存储
+title: 使用客户端应用程序中的 Azure Active Directory 授权访问 Blob 和队列 - Azure 存储
 description: 使用 Azure Active Directory 从客户端应用程序内部进行身份验证、获取 OAuth 2.0 令牌，以及授权对 Azure Blob 存储和队列存储的请求。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5138fb6338f4ade322414619f8785d77550a91d1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 0ff2d9b8c0ca891b25dfcd6bf1f19d1541fd1541
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986787"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673242"
 ---
-# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>使用客户端应用程序中的 Azure Active Directory 授予对 blob 和队列的访问权限
+# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>使用客户端应用程序中的 Azure Active Directory 授权访问 Blob 和队列
 
 将 Azure Active Directory (Azure AD) 与 Azure Blob 存储和队列存储配合使用的主要优点在于不再需要在代码中存储凭据。 可以从 Microsoft 标识平台（以前称为 Azure AD）请求 OAuth 2.0 访问令牌。 Azure AD 对运行应用程序的安全主体（用户、组或服务主体）进行身份验证。 如果身份验证成功，Azure AD 会将访问令牌返回应用程序，应用程序可随之使用访问令牌对 Azure Blob 存储或队列存储请求授权。
 
@@ -175,11 +175,11 @@ Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 
 #### <a name="get-an-oauth-token-from-azure-ad"></a>从 Azure AD 获取 OAuth 令牌
 
-接下来, 添加一个方法, 该方法从 Azure AD 代表用户请求令牌。 此方法定义要为其授予权限的作用域。 有关权限和范围的详细信息, 请参阅[Microsoft 标识平台终结点中的权限和同意](../../active-directory/develop/v2-permissions-and-consent.md)。
+接下来，添加代表用户从 Azure AD 请求令牌的方法。 此方法定义要授予的权限的范围。 若要详细了解权限和范围，请参阅 [Microsoft 标识平台终结点中的权限和许可](../../active-directory/develop/v2-permissions-and-consent.md)。
 
-使用资源 ID 构造要为其获取令牌的范围。 该示例通过将资源 ID 与内置`user_impersonation`作用域结合使用来构造作用域, 这表示该令牌是代表用户请求的。
+请使用资源 ID 来构造获取的令牌的范围。 此示例构造范围时，将资源 ID 与内置的 `user_impersonation` 范围配合使用，后者指示令牌是代表用户请求的。
 
-请记住, 你可能需要向用户提供一个接口, 该接口允许用户同意代表他们请求令牌。 在需要同意时, 此示例将捕获**MsalUiRequiredException** , 并调用另一个方法来促进同意请求:
+请记住，可能需要为用户呈现一个界面，让用户允许代表他/她来请求令牌。 必须进行许可时，此示例会捕获 **MsalUiRequiredException** 并调用另一方法，促进许可请求：
 
 ```csharp
 public async Task<IActionResult> Blob()
@@ -301,4 +301,4 @@ CloudBlockBlob blob = new CloudBlockBlob(
 
 - 若要详细了解 Microsoft 标识平台，请参阅 [Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/)。
 - 若要详细了解 Azure 存储中的 RBAC 角色，请参阅[使用 RBAC 管理存储数据的访问权限](storage-auth-aad-rbac.md)。
-- 若要了解如何在 azure 存储中使用 Azure 资源的托管标识, 请参阅使用[Azure 资源的 Azure Active Directory 和托管标识对 blob 和队列的访问权限进行身份验证](storage-auth-aad-msi.md)。
+- 若要了解如何将 Azure 资源的托管标识与 Azure 存储一起使用，请参阅[使用 Azure 资源的 Azure Active Directory 和托管标识验证对 Blob 和队列的访问权限](storage-auth-aad-msi.md)。

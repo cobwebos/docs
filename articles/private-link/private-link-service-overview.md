@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 67bddea31a4bb375657b0df5e21fab1ab3d732f5
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: cad8e3e4f32a8773fe914362b637d39765a23c21
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265557"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672515"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure Private Link service？
 
@@ -100,6 +100,7 @@ Azure 专用链接服务是对由 Azure 专用链接提供支持的服务的引�
 以下是使用专用链接服务时的已知限制：
 - 仅标准负载均衡器上支持 
 - 仅支持 IPv4 流量
+- 仅支持 TCP 流量
 - 只能从同一区域中的专用终结点访问
 - 不支持创建和管理 Azure 门户的体验
 - 使用代理协议的客户端连接信息对服务提供程序不可用

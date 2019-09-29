@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 6120eee5bbd2f385fa8e76da093f7fadccb4904e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3792eed170d3e3e1cdd267c0c88d2d2d6c520733
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348966"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672814"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -76,39 +76,34 @@ AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你�
 
 ### <a name="resource-reservations"></a>资源预留
 
-AKS 使用节点资源将节点函数作为群集的一部分。 当在 AKS 中使用时，这会在节点的总资源和资源 allocatable 之间创建 discrepency。 在设置已部署的 pod 的请求和限制时，必须注意这一点。
+AKS 使用节点资源将节点函数作为群集的一部分。 当在 AKS 中使用时，这会在节点的总资源和资源 allocatable 之间创建 discrepency。 在为用户部署的 pod 设置请求和限制时，必须注意这一点。
 
 若要查找节点的 allocatable 资源运行，请执行以下操作：
 ```kubectl
-kubectl describe node [NODE_NAME] | grep Allocatable -B 4 -A 3
+kubectl describe node [NODE_NAME]
 
 ```
 
-为维护节点的性能和功能，将在每个节点上保留以下计算资源。 随着节点在资源中的增长，资源预留量会增长，因为需要管理的用户数更多。
+为维护节点的性能和功能，AKS 将在每个节点上保留资源。 随着节点在资源中的增长，资源预留量会增长，因为需要管理的用户数更多。
 
 >[!NOTE]
 > 使用 OMS 等外接程序将使用其他节点资源。
 
-- **CPU**依赖于节点类型
+- **Cpu**预留 cpu 依赖于节点类型和群集配置，这可能会由于运行其他功能而导致 CPU allocatable
 
 | 主机上的 CPU 内核数 | 1 | 2 | 4 | 8 | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
-|Kubelet （millicores）|60|100|140|180|260|420|740|
+|Kube （millicores）|60|100|140|180|260|420|740|
 
-- **内存**-20% 的可用内存，最大为 4 GiB
+- **内存保留**的内存按累进速率
+  - 前 4 GB 内存的 25%
+  - 下 4 GB 内存的 20% （最多 8 GB）
+  - 下 8 GB 内存的 10% （高达 16 GB）
+  - 下一个 112 GB 内存的 6% （最大为 128 GB）
+  - 超过 128 GB 的任何内存的 2%
 
 这些预留意味着你的应用程序的可用 CPU 和内存量可能显示为少于节点本身包含的数量。 如果由于你运行的应用程序数太多而存在资源约束，则这些预留可以确保 CPU 和内存保持可供核心 Kubernetes 组件使用。 资源预留无法更改。
 
-例如：
-
-- **标准 DS2 v2** 节点大小包含 2 个 vCPU 和 7 GiB 内存
-    - 7 GiB 内存的 20% = 1.4 GiB
-    - 总共有 *(7 - 1.4) = 5.6 GiB* 内存可供节点使用
-    
-- **标准 E4s v3** 节点大小包含 4 个 vCPU 和 32 GiB 内存
-    - 32 GiB 内存的 20% = 6.4 GiB，但 AKS 最多仅保留 4 GiB
-    - 总共有 *(32 - 4) = 28 GiB* 内存可供节点使用
-    
 基础节点 OS 还需要一定量的 CPU 和内存资源来完成其自己的核心功能。
 
 如需相关的最佳做法，请参阅 [AKS 中适用于基本计划程序功能的最佳做法][operator-best-practices-scheduler]。

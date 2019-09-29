@@ -4,41 +4,41 @@ description: 升级到常规用途 v2 存储帐户。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: 2d6a5c96bf99439520e26fc905668835944cee29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1c7edc2973231607cade89df56906190c2abbcf
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115620"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671149"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
-常规用途 v2 存储帐户支持最新的 Azure 存储功能和合并所有常规用途 v1 和 Blob 存储帐户的功能。 建议将常规用途 v2 帐户用于大多数存储方案。 常规用途 v2 帐户为 Azure 存储提供最低的每 GB 容量价格，以及具有行业竞争力的事务处理价格。
+常规用途 v2 存储帐户支持最新的 Azure 存储功能，并合并了常规用途 v1 和 Blob 存储帐户的所有功能。 建议将常规用途 v2 帐户用于大多数存储方案。 常规用途 v2 帐户为 Azure 存储提供最低的每 GB 容量价格，以及具有行业竞争力的事务处理价格。
 
-升级到常规用途 v1 中的常规用途 v2 存储帐户或 Blob 存储帐户很简单。 可以使用 Azure 门户、PowerShell 或 Azure CLI 进行升级。
+从常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 存储帐户很简单。 可以使用 Azure 门户、PowerShell 或 Azure CLI 进行升级。
 
 > [!IMPORTANT]
-> 常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 是永久性的无法撤消。
+> 将常规用途 v1 或 Blob 存储帐户升级为常规用途 v2 是永久性的，无法撤消。
 
 ## <a name="upgrade-using-the-azure-portal"></a>使用 Azure 门户进行升级
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到存储帐户。
-3. 在“设置”部分单击“配置”。  
-4. 在“帐户类型”下单击“升级”   。
-5. 在“确认升级”下键入帐户名称。 
-6. 单击边栏选项卡底部的“升级”。 
+3. 在“设置”部分单击“配置”。
+4. 在“帐户类型”下单击“升级”。
+5. 在“确认升级”下键入帐户名称。
+6. 单击边栏选项卡底部的“升级”。
 
-    ![升级帐户类型](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
+    ![升级帐户种类](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
 ## <a name="upgrade-with-powershell"></a>使用 PowerShell 进行升级
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-若要将常规用途 v1 帐户升级为使用 PowerShell 的常规用途 v2 帐户，首先更新 PowerShell 以使用最新版**Az.Storage**模块。 请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)，了解如何安装 PowerShell。
+若要使用 PowerShell 将常规用途 v1 帐户升级为常规用途 v2 帐户，请首先更新 PowerShell，以使用最新版本的**Az. Storage**模块。 请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)，了解如何安装 PowerShell。
 
 接下来，调用以下命令来升级帐户，使用自己的资源组和存储帐户的名称来代替相应项：
 
@@ -48,7 +48,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 ## <a name="upgrade-with-azure-cli"></a>使用 Azure CLI 进行升级
 
-若要将常规用途 v1 帐户升级为使用 Azure CLI 的常规用途 v2 帐户，首先安装 Azure CLI 的最新版本。 请参阅 [Install the Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（安装 Azure CLI 2.0），了解如何安装 CLI。
+若要使用 Azure CLI 将常规用途 v1 帐户升级为常规用途 v2 帐户，请首先安装 Azure CLI 的最新版本。 请参阅 [Install the Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（安装 Azure CLI 2.0），了解如何安装 CLI。
 
 接下来，调用以下命令来升级帐户，使用自己的资源组和存储帐户的名称来代替相应项：
 
@@ -58,20 +58,20 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>指定 Blob 数据的访问层
 
-常规用途 v2 帐户支持所有 Azure 存储服务和数据对象，但访问层仅适用于 Blob 存储中的块 Blob。 当升级到常规用途 v2 存储帐户时，您可以指定访问层的 blob 数据。
+常规用途 v2 帐户支持所有 Azure 存储服务和数据对象，但访问层仅适用于 Blob 存储中的块 Blob。 升级到常规用途 v2 存储帐户时，可以指定 blob 数据的访问层。
 
 有了访问层，就可以根据预期的使用模式选择最经济有效的存储。 块 Blob 可以存储在热层、冷层或存档层中。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷、存档存储层](../blobs/storage-blob-storage-tiers.md)。
 
-默认情况下，在热访问层中，创建一个新的存储帐户和常规用途 v1 存储帐户升级到热访问层。 若要探索将哪个访问层用于升级后数据，请考虑一下你的方案。 有两种典型的用户方案，迁移到常规用途 v2 帐户：
+默认情况下，将在热访问层中创建新的存储帐户，并将常规用途 v1 存储帐户升级到热访问层。 若要探索将哪个访问层用于升级后数据，请考虑一下你的方案。 迁移到常规用途 v2 帐户有两种典型的用户方案：
 
-* 你已有一个常规用途 v1 存储帐户并想要评估升级到具有适当的存储访问层的 blob 数据的常规用途 v2 存储帐户。
-* 您已决定使用常规用途 v2 存储帐户或已有一个并想要评估一下是应使用热或冷存储访问层的 blob 数据。
+* 你有一个现有的通用 v1 存储帐户，并想要评估到常规用途 v2 存储帐户的升级，并为 blob 数据提供适当的存储访问层。
+* 你已决定使用常规用途 v2 存储帐户，或者已经有了一个，并想要评估是否应使用适用于 blob 数据的热或冷存储访问层。
 
-在这两种情况下，首要任务是评估一下存储、 访问和对您在常规用途 v2 存储帐户中存储的数据操作的成本并与当前成本进行比较。
+在这两种情况下，第一种方法是估计存储、访问和操作存储在常规用途 v2 存储帐户中的数据的成本，并将其与当前成本进行比较。
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
-升级到常规用途 v2 帐户的 v1 存储帐户是免费的。 但是，更改存储访问层可能会导致帐单更改。 
+将 v1 存储帐户升级为常规用途 v2 帐户是免费的。 但是，更改存储访问层可能会导致帐单更改。 
 
 所有存储帐户使用的定价模型都适用于 Blob 存储，具体取决于每个 Blob 的层。 使用存储帐户时，需要考虑到以下计费因素：
 
@@ -83,7 +83,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 * **异地复制数据传输成本**：此费用仅适用于配置了异地复制的帐户，包括 GRS 和 RA-GRS。 异地复制数据传输会产生每 GB 费用。
 
-* **出站数据传输成本**：出站数据传输 （传出 Azure 区域传输的数据） 会产生带宽使用费按每个千兆字节，与常规用途存储帐户一致。
+* **出站数据传输成本**：出站数据传输（传出 Azure 区域的数据）会按每 gb 产生带宽使用量计费，与通用存储帐户一致。
 
 * **更改存储访问层**：将帐户存储访问层从“冷”更改为“热”会产生费用，费用等于读取存储帐户中存在的所有数据的费用。 但是，将帐户访问层从“热”更改为“冷”产生的费用则相当于将所有数据写入冷层（仅限 GPv2 帐户）。
 
@@ -92,7 +92,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ### <a name="estimate-costs-for-your-current-usage-patterns"></a>估计当前使用模式的成本
 
-若要估计存储和访问在特定层的常规用途 v2 存储帐户中的 blob 数据的成本，请评估现有的使用模式或近似预期的使用模式。 一般情况下，需了解：
+若要估算在特定层中的常规用途 v2 存储帐户中存储和访问 blob 数据的成本，请评估现有的使用模式，或大致指定预期使用模式。 一般情况下，需了解：
 
 * Blob 存储使用量（以 GB 为单位），包括：
     - 有多少数据存储在存储帐户中？
@@ -113,12 +113,12 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 > Blob 存储帐户公开表服务终结点的目的只是为了存储和访问该帐户的指标数据。
 
 若要监视 Blob 存储的存储消耗情况，需启用容量指标。
-启用此功能后，会每天为存储帐户的 Blob 服务记录容量数据，并将容量数据记录为表条目写入到同一存储帐户中的  $MetricsCapacityBlob 表。
+启用此功能后，会每天为存储帐户的 Blob 服务记录容量数据，并将容量数据记录为表条目写入到同一存储帐户中的$MetricsCapacityBlob 表。
 
-若要监视 Blob 存储的数据访问模式，需通过 API 启用每小时事务指标。 启用每小时事务指标后，会每小时聚合按 API 进行的事务，并将这些事务记录为表条目写入到同一存储帐户中的 *$MetricsHourPrimaryTransactionsBlob* 表。 在使用 RA-GRS 存储帐户时，  $MetricsHourSecondaryTransactionsBlob 表会将事务记录到辅助终结点。
+若要监视 Blob 存储的数据访问模式，需通过 API 启用每小时事务指标。 启用每小时事务指标后，会每小时聚合按 API 进行的事务，并将这些事务记录为表条目写入到同一存储帐户中的 *$MetricsHourPrimaryTransactionsBlob* 表。 在使用 RA-GRS 存储帐户时，$MetricsHourSecondaryTransactionsBlob 表会将事务记录到辅助终结点。
 
 > [!NOTE]
-> 如果必须在其中存储了页 blob 和虚拟机磁盘、 队列、 文件、 表以及块和追加 blob 数据的常规用途存储帐户，则不适用此估算过程。 容量数据不区分块 Blob 与其他类型，因此不会给出其他数据类型的容量数据。 如果使用这些类型，则也可查看最新账单上的数量，作为一种替代方法。
+> 如果有一个常规用途存储帐户，其中存储了页 blob 和虚拟机磁盘，或者队列、文件或表，以及块和追加 blob 数据，则此估算过程不适用。 容量数据不区分块 Blob 与其他类型，因此不会给出其他数据类型的容量数据。 如果使用这些类型，则也可查看最新账单上的数量，作为一种替代方法。
 
 若要对数据使用和访问模式进行准确的估算，建议为指标选择一个可代表日常使用情况的保留期，并进行推断。 一种选择是让指标数据保留七天，每周收集一次数据，并在月底进行分析。 另一种选择是让指标数据保留 30 天，在 30 天到期以后再收集和分析数据。
 
@@ -131,18 +131,18 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 #### <a name="capacity-costs"></a>容量费用
 
-容量度量值表 $MetricsCapacityBlob  中行键为 'data'  的最新条目显示了用户数据所占用的存储容量。 容量指标表 $MetricsCapacityBlob  中行键为 'analytics'  的最新条目显示了分析日志所占用的存储容量。
+容量度量值表 $MetricsCapacityBlob 中行键为 'data' 的最新条目显示了用户数据所占用的存储容量。 容量指标表 $MetricsCapacityBlob 中行键为 'analytics' 的最新条目显示了分析日志所占用的存储容量。
 
 用户数据和分析日志（如果已启用）所占用的这个总容量就可以用来估算在存储帐户中存储数据的费用。 也可以使用相同方法来估算 GPv1 存储帐户中的存储成本。
 
 #### <a name="transaction-costs"></a>事务成本
 
-事务度量值表中某个 API 的所有条目的“ *TotalBillableRequests*”计得之和表示该特定 API 的事务总数。 例如  ，通过对行健为 'user;GetBlob'  的所有条目的计费请求进行求和可以算出一段给定时间中 'GetBlob'  事务的总数。
+事务度量值表中某个 API 的所有条目的“ *TotalBillableRequests*”计得之和表示该特定 API 的事务总数。 例如，通过对行健为 'user;GetBlob' 的所有条目的计费请求进行求和可以算出一段给定时间中 'GetBlob' 事务的总数。
 
 若要估算 Blob 存储帐户的事务费用，需将事务细分成三组，因为这些事务价格不一样。
 
-* 写入事务，例如 'PutBlob'  、'PutBlock'  、'PutBlockList'  、'AppendBlock'  、'ListBlobs'  、'ListContainers'  、'CreateContainer'  、'SnapshotBlob'  和 'CopyBlob'  。
-* 删除事务，例如 'DeleteBlob'  和 'DeleteContainer'  。
+* 写入事务，例如 'PutBlob'、'PutBlock'、'PutBlockList'、'AppendBlock'、'ListBlobs'、'ListContainers'、'CreateContainer'、'SnapshotBlob' 和 'CopyBlob'。
+* 删除事务，例如 'DeleteBlob' 和 'DeleteContainer'。
 * 所有其他事务。
 
 若要估算 GPv1 存储帐户的事务成本，需聚合所有事务而不考虑操作/API。
@@ -153,9 +153,9 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 若要估算 Blob 存储帐户的数据访问费用，需将事务细分成两组。
 
-* 从存储帐户检索的数据量可以通过查看主要为 'GetBlob'  和 'CopyBlob'  操作的 'TotalEgress'  计得之和来估算。
+* 从存储帐户检索的数据量可以通过查看主要为 'GetBlob' 和 'CopyBlob' 操作的 'TotalEgress' 计得之和来估算。
 
-* 写入到存储帐户的数据量可以通过查看主要为 'PutBlob'  、'PutBlock'  、'CopyBlob'  和 'AppendBlock'  操作的 'TotalIngress'  计得之和来估算。
+* 写入到存储帐户的数据量可以通过查看主要为 'PutBlob'、'PutBlock'、'CopyBlob' 和 'AppendBlock' 操作的 'TotalIngress' 计得之和来估算。
 
 在使用 GRS 或 RA-GRS 存储帐户时，也可以通过所写入数据量的估算值来计算 Blob 存储帐户的异地复制数据传输费用。
 

@@ -4,16 +4,16 @@ description: 了解可通过哪些不同的方式在 Azure 中存储和访问数
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 702627a6307e1a6644dc41aeee947d33eb76522d
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 4b1a42e25a6d8c7b4a3c24dffcb858ffe63dd10b
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501337"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671051"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘
 
@@ -36,8 +36,8 @@ Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访
   
 某些 SMB 功能不适用于云。 有关详细信息，请参阅 [Azure 文件服务不支持的功能](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)。
  
-有关 Azure Blob 的详细信息, 请参阅[什么是 Azure blob 存储？](../blobs/storage-blobs-overview.md)一文。
+有关 Azure Blob 的详细信息，请参阅[什么是 Azure Blob 存储？](../blobs/storage-blobs-overview.md)一文。
 
-有关磁盘存储的详细信息, 请参阅[托管磁盘简介](../../virtual-machines/windows/managed-disks-overview.md)。
+有关磁盘存储的详细信息，请参阅[托管磁盘简介](../../virtual-machines/windows/managed-disks-overview.md)。
 
-有关 Azure 文件的详细信息, 请参阅我们[的文章规划 Azure 文件部署](../files/storage-files-planning.md)。
+有关 Azure 文件存储的详细信息，请参阅 [Azure 文件存储部署规划](../files/storage-files-planning.md)一文。

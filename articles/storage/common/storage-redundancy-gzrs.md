@@ -3,17 +3,17 @@ title: 使用地理区域冗余存储（GZRS）构建高度可用的 Azure 存�
 description: 异地冗余存储（GZRS）结婚时会区域冗余存储（ZRS）的高可用性，并可防止异地冗余存储（GRS）提供的区域性中断。 GZRS 存储帐户中的数据将在主要区域中的 Azure 可用性区域之间进行复制，并且还会复制到辅助地理区域，以防止区域灾难。
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 737bad504519a2ec7eee9764593245e0fee28cc3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300650"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673071"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>使用地理区域冗余存储（GZRS）构建高度可用的 Azure 存储应用程序（预览版）
 
@@ -55,7 +55,7 @@ Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看 [
 
 如果为存储帐户启用了 GZRS，则可以从辅助终结点以及存储帐户的主终结点读取数据。 辅助终结点将后缀 *–辅助* 点追加到帐户名称。 例如，如果 Blob 服务的主终结点是 `myaccount.blob.core.windows.net`，则辅助终结点是。 `myaccount-secondary.blob.core.windows.net` 存储帐户的访问密钥对于主终结点和辅助终结点是相同的。
 
-若要在发生区域性服务中断时充分利用 GZRS，必须事先设计应用程序来处理这种情况。 您的应用程序应在主终结点上进行读取和写入，但当主要区域不可用时，将切换到使用辅助终结点。 有关使用 GZRS 进行高可用性设计的指南，请参阅 [使用 GZRS 或 GRS 设计高度可用的应用程序](https://docs.microsoft.com/en-us/azure/storage/common/storage-designing-ha-apps-with-ragrs)。
+若要在发生区域性服务中断时充分利用 GZRS，必须事先设计应用程序来处理这种情况。 您的应用程序应在主终结点上进行读取和写入，但当主要区域不可用时，将切换到使用辅助终结点。 有关使用 GZRS 进行高可用性设计的指南，请参阅 [使用 GZRS 或 GRS 设计高度可用的应用程序](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs)。
 
 由于数据是以异步方式复制到辅助区域，因此次要区域通常位于主要区域后面。 若要确定哪些写入操作已复制到次要区域，应用程序需要检查存储帐户的上次同步时间。 在上次同步时间之前写入主要区域的所有写入操作都已成功复制到次要区域，这意味着它们可以从辅助区域读取。 在上次同步时间之后写入主要区域的任何写入操作都可能或尚未复制到次要区域，这意味着它们可能不可用于读取操作。
 
@@ -141,7 +141,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
     - **问题类型**：选择 " **数据迁移**"。
     - **类别**：选择 " **迁移到区域内的（RA-） GZRS**"。
     - **标题**：键入描述性标题，例如 " **（RA-） GZRS 帐户迁移**"。
-    - **详细信息**：在 " **详细信息** " 框中键入其他详细信息，例如，"我想要迁移到\_区域中\_的 GZRS [LRS，GRS]"。 或 "我想要从\_ \_区域中的 [LRS，ra-GRS] 迁移到 GZRS。"
+    - **详细信息**：在 **详细信息**@no__t 中键入其他详细信息，例如，"我想要从 \_ @ no__t-3" 区域中的 [LRS，GRS] 迁移到 GZRS。 " 或 "我想要从 \_ @ no__t-1 区域中的 [LRS，RA-GRS] 迁移到" RA-GZRS "。
 5. 选择“下一步”。 ****
 6. 验证 " **联系人信息** " 边栏选项卡上的联系人信息是否正确。
 7. 选择“创建” **** 。

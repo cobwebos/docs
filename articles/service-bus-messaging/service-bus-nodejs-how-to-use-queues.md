@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: df3f5a3773265249751352ce8d9c966c54bf197d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5c539570e4127a6715ea63fe8ec617d3cfa83ba1
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091799"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671996"
 ---
-# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azure-sb-package"></a>如何将 Service Bus 队列与 node.js 和 azure sb 包配合使用
+# <a name="use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>将 Azure 中的服务总线队列与 node.js 和 azure sb 包配合使用
 > [!div class="op_multi_selector" title1="编程语言" title2="Node.js 包"]
 > - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-queues.md)
 > - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)

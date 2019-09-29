@@ -1,30 +1,30 @@
 ---
-title: 使用 .NET 创建帐户 SAS-Azure 存储
+title: 使用 .NET 创建帐户 SAS - Azure 存储
 description: 了解如何使用 .NET 客户端库创建帐户共享访问签名 (SAS)。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b8d627fd905741c76dd34eb4270f49d46b93abb1
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: aa93ee292ab95c68034ad595d6cda608d1886c0a
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036099"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673270"
 ---
 # <a name="create-an-account-sas-with-net"></a>使用 .NET 创建帐户 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文介绍如何使用存储帐户密钥通过[用于 .net 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)创建帐户 SAS。
+本文介绍如何使用存储帐户密钥通过[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)创建帐户 SAS。
 
 ## <a name="create-an-account-sas"></a>创建帐户 SAS
 
-若要为容器创建帐户 SAS, 请调用[CloudStorageAccount. cloudblobcontainer.getsharedaccesssignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature)方法。
+若要为容器创建帐户 SAS，请调用 [CloudStorageAccount.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) 方法。
 
 以下代码示例将创建一个帐户 SAS，该 SAS 对 Blob 和文件服务是有效的，并授予客户端读取、写入和列表权限，使其能够访问服务级别 API。 帐户 SAS 将协议限制为 HTTPS，因此请求必须使用 HTTPS 发出。 请务必将尖括号中的占位符值替换为你自己的值：
 
@@ -50,9 +50,9 @@ static string GetAccountSASToken()
 }
 ```
 
-## <a name="use-an-account-sas-from-a-client"></a>使用客户端中的帐户 SAS
+## <a name="use-an-account-sas-from-a-client"></a>通过客户端使用帐户 SAS
 
-若要使用帐户 SAS 访问 Blob 服务的服务级别 Api, 请使用 SAS 和存储帐户的 Blob 存储终结点构造 Blob 服务客户端对象。 请务必将尖括号中的占位符值替换为你自己的值：
+若要使用帐户 SAS 访问 Blob 服务的服务级别 API，请使用存储帐户的 SAS 和 Blob 存储终结点构造 Blob 服务客户端对象。 请务必将尖括号中的占位符值替换为你自己的值：
 
 ```csharp
 static void UseAccountSAS(string sasToken)

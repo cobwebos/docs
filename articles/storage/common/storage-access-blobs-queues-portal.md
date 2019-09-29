@@ -4,25 +4,25 @@ description: 使用 Azure 门户访问 Blob 或队列数据时，门户会在后
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8d19724883e6c2b3630de6100b1b4ca9fd9250a1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 3d5d5bd6400fdf09216124665b6b236b4da2583b
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813370"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673282"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 门户访问 Blob 或队列数据
 
-使用 [Azure 门户](https://portal.azure.com)访问 Blob 或队列数据时，门户会在后台对 Azure 存储发出请求。 可以使用 Azure AD 帐户或存储帐户访问密钥来授权对 Azure 存储的请求。 门户指示你使用的是哪种方法，如果你具有适当的权限，则可以在两者之间进行切换。  
+使用 [Azure 门户](https://portal.azure.com)访问 Blob 或队列数据时，门户会在后台对 Azure 存储发出请求。 可以使用 Azure AD 帐户或存储帐户访问密钥对 Azure 存储请求进行授权。 门户会指示使用的是哪种方法，如果你有相应的权限，则门户还允许在这两种方法之间切换。  
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>访问 Blob 或队列数据所需的权限
 
-你需要特定的权限，具体取决于你希望如何授权访问 Azure 门户中的 blob 或队列数据。 在大多数情况下，这些权限是通过基于角色的访问控制 (RBAC) 提供的。 有关 RBAC 的详细信息，请参阅[什么是基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)。
+根据你要如何授权访问 Azure 门户中的 Blob 或队列数据，你将需要特定权限。 在大多数情况下，这些权限是通过基于角色的访问控制 (RBAC) 提供的。 有关 RBAC 的详细信息，请参阅[什么是基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)。
 
 ### <a name="account-access-key"></a>帐户访问密钥
 

@@ -2,18 +2,18 @@
 title: 监视、指标和警报 - Azure ExpressRoute | Microsoft Docs
 description: 此页提供有关 ExpressRoute 监视的信息
 services: expressroute
-author: cherylmc
+author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: dbe03ef29bd28d465fa671abc915d63d4b038cb2
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 40e5561c9a55595340568ec660cbc6dd6e1eab51
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154767"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672054"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
 
@@ -72,9 +72,41 @@ ms.locfileid: "71154767"
 
 ![每个对等端的 ARP 可用性](./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg) 
 
+## <a name="expressroute-direct-metrics"></a>ExpressRoute 直接指标
+
+### <a name="admin-state---split-by-link"></a>管理员状态-按链接拆分
+可以查看 ExpressRoute 直接端口对的每个链接的管理状态。
+
+![er 直接管理状态](./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg)
+
+### <a name="bits-in-per-second---split-by-link"></a>每秒的位数-按链接拆分
+可以跨 ExpressRoute 直接端口对的两个链接查看每秒的位数。 
+
+![每秒的 er 直接位数](./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg)
+
+### <a name="bits-out-per-second---split-by-link"></a>每秒的位数-按链接拆分
+你还可以跨 ExpressRoute 直接端口对的两个链接查看每秒的位数。 
+
+![每秒的 er 直接位数](./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg)
+
+### <a name="line-protocol---split-by-link"></a>线路协议-按链接拆分
+可以跨 ExpressRoute 直接端口对的每个链接查看线路协议。
+
+![er 直接连线协议](./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg)
+
+### <a name="rx-light-level---split-by-link"></a>Rx 轻型级别-按链接拆分
+可以查看每个端口的 Rx 轻型级别（ExpressRoute 直接端口**接收**的轻型级别）。 正常 Rx 轻型级别通常在-10 到 0 dBm 范围内
+
+![er 直接行 Rx 浅色级别](./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg)
+
+### <a name="tx-light-level---split-by-link"></a>Tx 轻型级别-按链接拆分
+可以查看每个端口的 Tx 轻型级别（ExpressRoute 直接端口正在**传输**的轻型级别）。 正常的 Tx 轻型级别通常在-10 到 0 dBm 范围内
+
+![er 直接行 Rx 浅色级别](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
+
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute 网关连接（以位/秒为单位）
 
-![网关连接](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg ) 
+![网关连接](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg )
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>ExpressRoute 网关连接的警报
 

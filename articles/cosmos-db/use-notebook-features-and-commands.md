@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: dech
-ms.openlocfilehash: 1eda8271a3b8aa2c9e247252bd755279d23b6e10
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 4a9bd554e0858024d656dbf35d6fb00995e6f4bd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310342"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672492"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>使用中的内置笔记本命令和功能 Azure Cosmos DB
 
@@ -25,7 +25,10 @@ Azure Cosmos DB 中的内置 Jupyter 笔记本使你可以从 Azure 门户分析
 import sys
 !{sys.executable} -m pip install PackageToBeInstalled –user
 ```
-此包将可从 Azure Cosmos 帐户中的任何笔记本使用。 
+此包将可从 Azure Cosmos 帐户工作区中的任何笔记本使用。 
+
+> [!TIP]
+> 如果笔记本需要自定义包，则建议你在笔记本中添加一个单元格来安装包，因为如果[重置工作区](#reset-notebooks-workspace)，则会删除包。  
 
 ## <a name="run-a-sql-query"></a>运行 SQL 查询
 
@@ -150,6 +153,11 @@ primary_key = os.environ["COSMOS_KEY"]
 ```
 > [!IMPORTANT]
 > ``COSMOS_ENDPOINT`` 和``COSMOS_KEY``环境变量仅适用于 SQL API。 对于其他 Api，请在 Cosmos 帐户的 "**连接字符串**" 或 "**密钥**" 边栏选项卡中找到终结点和密钥。  
+
+## <a name="reset-notebooks-workspace"></a>重置笔记本工作区
+若要将 "笔记本" 工作区重置为默认设置，请在命令栏上选择 "**重置工作区**"。 这将删除任何自定义的已安装包，并重新启动 Jupyter 服务器。 你的笔记本、文件和 Cosmos 资源将不会受到影响。  
+
+![重置笔记本工作区](media/use-notebook-features-and-commands/reset-workspace.png)
 
 ## <a name="next-steps"></a>后续步骤
 

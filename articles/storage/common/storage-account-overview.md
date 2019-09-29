@@ -4,16 +4,16 @@ description: 了解用于创建和使用 Azure 存储帐户的选项。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 49e15964ba370cc6dc18491507b906764f1f882c
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640115"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671314"
 ---
 # <a name="azure-storage-account-overview"></a>Azure 存储帐户概述
 
@@ -62,15 +62,15 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 ### <a name="block-blob-storage-accounts"></a>块 Blob 存储帐户
 
-块 blob 存储帐户是将非结构化对象数据作为块 blob 存储的专用存储帐户。 此存储帐户类型支持块 blob 和追加 blob, 而不支持页 blob、表或队列。
+块 blob 存储帐户是将非结构化对象数据作为块 blob 存储的专用存储帐户。 此存储帐户类型支持块 blob 和追加 blob，而不支持页 blob、表或队列。
 
-与常规用途 v2 和 blob 存储帐户相比, 块 blob 存储帐户提供低和一致性延迟, 更高的事务速率。
+与常规用途 v2 和 blob 存储帐户相比，块 blob 存储帐户提供低和一致性延迟，更高的事务速率。
 
 块 blob 存储帐户当前不支持对 "热"、"冷" 或 "存档" 访问层进行分层。
 
 ### <a name="filestorage-storage-accounts"></a>FileStorage 存储帐户
 
-FileStorage 存储帐户是用于存储和创建高级文件共享的专用存储帐户。 FileStorage 存储帐户提供了独特的性能专用特性, 例如 IOPS 突发。 有关这些特征的详细信息, 请参阅文件规划指南中的[文件共享性能层](../files/storage-files-planning.md#file-share-performance-tiers)部分。
+FileStorage 存储帐户是用于存储和创建高级文件共享的专用存储帐户。 FileStorage 存储帐户提供了独特的性能专用特性，例如 IOPS 突发。 有关这些特征的详细信息，请参阅文件规划指南中的[文件共享性能层](../files/storage-files-planning.md#file-share-performance-tiers)部分。
 
 ## <a name="naming-storage-accounts"></a>为存储帐户命名
 
@@ -143,7 +143,7 @@ Azure 存储提供不同的选项用于根据使用模式访问块 Blob 数据�
 
 - **Azure Active Directory：** 使用 Azure Active Directory (Azure AD) 凭据对访问 Blob 和队列数据的用户、组或其他标识进行身份验证。 如果某个标识的身份验证成功，则 Azure AD 会返回一个令牌，在对访问 Azure Blob 存储或队列存储的请求授权时可以使用该令牌。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。
 - **共享密钥授权：** 使用存储帐户访问密钥构造一个连接字符串，应用程序在运行时将使用该连接字符串来访问 Azure 存储。 连接字符串中的值用于构造要传递给 Azure 存储的 *Authorization* 标头。 有关详细信息，请参阅[配置 Azure 存储连接字符串](storage-configure-connection-string.md)。
-- **共享访问签名：** 如果不使用 Azure AD 授权, 请使用共享访问签名委托对存储帐户中资源的访问权限。 共享访问签名是一个令牌，用于在 URL 中封装对 Azure 存储访问请求进行授权时所需的全部信息。 可以在共享访问签名中指定存储资源、授予的权限，以及权限的有效时间间隔。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。
+- **共享访问签名：** 如果不使用 Azure AD 授权，可以使用共享访问签名来委托对存储帐户中资源的访问权限。 共享访问签名是一个令牌，用于在 URL 中封装对 Azure 存储访问请求进行授权时所需的全部信息。 可以在共享访问签名中指定存储资源、授予的权限，以及权限的有效时间间隔。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。
 
 > [!NOTE]
 > 与其他授权方式相比，使用 Azure AD 凭据对用户或应用程序进行身份验证可以提供优越的安全性和易用性。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。 
@@ -186,5 +186,5 @@ AzCopy 是一个 Windows 命令行实用工具，旨在实现高性能地将数�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何创建常规用途的 Azure 存储帐户，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
-* 若要了解如何创建块 blob 存储帐户, 请参阅[创建块 blob 存储帐户](../blobs/storage-blob-create-account-block-blob.md)。
+* 若要了解如何创建块 blob 存储帐户，请参阅[创建块 blob 存储帐户](../blobs/storage-blob-create-account-block-blob.md)。
 * 若要管理或删除现有存储帐户，请参阅[管理 Azure 存储帐户](storage-account-manage.md)。

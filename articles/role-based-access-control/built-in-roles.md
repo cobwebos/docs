@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c9a156c4cc6e334e04f5a604b91b7b05d9aed390
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: c2066502a6a9d742c347e08d528a2490a390bb7e
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71289612"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672645"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -186,8 +186,8 @@ ms.locfileid: "71289612"
 > | Microsoft.Authorization/*/Delete | 删除角色、策略分配、策略定义和策略集定义 |
 > | Microsoft.Authorization/*/Write | 创建角色、角色分配、策略分配、策略定义和策略集定义 |
 > | Microsoft.Authorization/elevateAccess/Action | 向调用方授予租户范围的“用户访问管理员”访问权限 |
-> | Microsoft.Blueprint/blueprintAssignments/write | 创建或更新任何蓝图项目 |
-> | Microsoft.Blueprint/blueprintAssignments/delete | 删除任何蓝图项目 |
+> | Microsoft.Blueprint/blueprintAssignments/write | 创建或更新任何蓝图分配 |
+> | Microsoft.Blueprint/blueprintAssignments/delete | 删除任何蓝图分配 |
 > | **DataActions** |  |
 > | *无* |  |
 > | **NotDataActions** |  |

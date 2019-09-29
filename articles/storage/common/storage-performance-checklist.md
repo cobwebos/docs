@@ -4,16 +4,16 @@ description: 在开发使用 Azure 存储的高性能应用程序时，一个经
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 48a5484e2b2b663d0046fc628c02e656c5bd7a25
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e700cf04123bf02c1014aa418189221fbbb0b812
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985164"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670928"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure 存储的性能和可伸缩性清单
 
@@ -46,7 +46,7 @@ ms.locfileid: "68985164"
 | &nbsp; | 所有服务 |.NET 配置 |[是否会使用 .NET 4.5 或更高版本，以此来改进垃圾收集？](#subheading11) |
 | &nbsp; | 所有服务 |并行度 |[是否能够确保对并行度进行了恰当的界定，使客户端功能或可伸缩性目标不会出现过载现象？](#subheading12) |
 | &nbsp; | 所有服务 |工具 |[是否会使用 Microsoft 提供的最新版客户端库和工具？](#subheading13) |
-| &nbsp; | 所有服务 |重试次数 |[是否会对限制错误和超时使用指数性的回退重试策略？](#subheading14) |
+| &nbsp; | 所有服务 |重试 |[是否会对限制错误和超时使用指数性的回退重试策略？](#subheading14) |
 | &nbsp; | 所有服务 |重试 |[对于不可重试的错误，应用程序是否会避免重试？](#subheading15) |
 | &nbsp; | Blob |可伸缩性目标 |[是否拥有大量并发访问单个对象的客户端？](#subheading46) |
 | &nbsp; | Blob |可伸缩性目标 |[应用程序是否会保持在针对单个 Blob 的带宽或操作可伸缩性目标范围之内？](#subheading16) |
@@ -172,7 +172,7 @@ Azure 存储使用基于范围的分区方案来对系统进行缩放和负载�
 
 #### <a name="useful-resources"></a>有用的资源
 
-有关 SAS 的详细信息, 请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)。  
+有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)。  
 
 有关 CORS 的详细信息，请参阅[对 Azure 存储服务的跨域资源共享 (CORS) 支持](https://msdn.microsoft.com/library/azure/dn535601.aspx)。  
 
@@ -186,7 +186,7 @@ Azure 存储使用基于范围的分区方案来对系统进行缩放和负载�
 
 配置、查看以及始终由应用程序使用的其他数据都非常适合进行缓存。  
 
-有关条件性下载的详细信息, 请参阅为[Blob 服务操作指定条件标头](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations)。  
+有关条件下载的详细信息，请参阅 [Specifying Conditional Headers for Blob Service Operations](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations)（为 Blob 服务操作指定条件标头）。  
 
 #### <a name="subheading8"></a>批量上传数据
 
@@ -234,7 +234,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 始终使用 Microsoft 提供的最新客户端库和工具。 在本文撰写之际，已发布针对 .NET、Windows Phone、Windows 运行时、Java 和 C++ 的客户端库，以及针对其他语言的预览库。 此外，Microsoft 还发布了适用于 Azure 存储的 PowerShell cmdlet 和 Azure CLI 命令。 Microsoft 正在积极开发这些以性能为主要考量的工具，并使用最新服务版本对其进行更新，确保这些工具可以在内部协调好许多经过验证的做法。  
 
-### <a name="retries"></a>重试次数
+### <a name="retries"></a>重试
 
 #### <a name="subheading14"></a>限制和服务器繁忙错误
 

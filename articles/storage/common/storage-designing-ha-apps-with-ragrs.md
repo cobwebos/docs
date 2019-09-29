@@ -1,41 +1,41 @@
 ---
-title: 使用读取访问异地冗余存储 (GZRS 或 GRS) 设计高度可用的应用程序 |Microsoft Docs
-description: 如何使用 Azure GZRS 或 GRS 存储来构建高度可用的应用程序, 使其有足够的灵活性来处理中断。
+title: 使用读取访问异地冗余存储（GZRS 或 GRS）设计高度可用的应用程序 |Microsoft Docs
+description: 如何使用 Azure GZRS 或 GRS 存储来构建高度可用的应用程序，使其有足够的灵活性来处理中断。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1a5d80d6cd31621f8c3931b1845050f0a212ef08
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: a6d724f834fb8a4c54cd613c61ca90a77a36bdea
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036607"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673117"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>使用读取访问异地冗余存储设计高度可用的应用程序
 
-基于云的基础结构（如 Azure 存储）的一个常见功能是提供用于托管应用程序的高度可用平台。 基于云的应用程序开发人员必须仔细考虑如何利用此平台为其用户提供高度可用的应用程序。 本文重点介绍开发人员如何使用 Azure 异地冗余复制选项之一来确保 Azure 存储应用程序具有高可用性。
+基于云的基础结构（如 Azure 存储）的一个常见功能是提供用于托管应用程序的高度可用平台。 基于云的应用程序开发人员必须仔细考虑如何利用此平台为其用户提供高度可用的应用程序。 本文重点介绍开发人员如何使用 Azure 的异地冗余复制选项之一来确保其 Azure 存储应用程序高度可用。
 
-为异地冗余复制配置的存储帐户会在主要区域中同步复制, 然后以异步方式复制到数百英里以外的次要区域。 Azure 存储提供两种类型的异地冗余复制:
+为异地冗余复制配置的存储帐户将以同步方式复制到主要区域，然后以异步方式复制到数百英里以外的次要区域。 Azure 存储提供两种类型的异地冗余复制：
 
-* [区域冗余存储 (GZRS) (预览版)](storage-redundancy-gzrs.md)可为需要高可用性和最大持续性的方案提供复制。 使用区域冗余存储 (ZRS) 以同步方式将数据复制到主区域中的三个 Azure 可用性区域, 并将其异步复制到次要区域。 若要对次要区域中的数据进行读取访问, 请启用读取访问权限异地冗余存储 (GZRS)。
-* [异地冗余存储 (GRS)](storage-redundancy-grs.md)提供跨区域复制, 以防范区域性服务中断。 使用本地冗余存储 (LRS) 在主要区域中同步复制数据三次, 并将其异步复制到次要区域。 若要对次要区域中的数据进行读取访问, 请启用读取访问异地冗余存储 (GRS)。
+* [区域冗余存储（GZRS）（预览版）](storage-redundancy-gzrs.md)可为需要高可用性和最大持续性的方案提供复制。 使用区域冗余存储（ZRS）以同步方式将数据复制到主区域中的三个 Azure 可用性区域，并将其异步复制到次要区域。 若要对次要区域中的数据进行读取访问，请启用读取访问权限异地冗余存储（GZRS）。
+* [异地冗余存储 (GRS)](storage-redundancy-grs.md) 提供跨区域复制来防范区域性的服务中断。 数据将使用本地冗余存储 (LRS) 在主要区域中以同步方式复制三次，然后以异步方式复制到次要区域。 若要对次要区域中的数据进行读取访问，请启用读取访问异地冗余存储 (RA-GRS)。
 
-本文介绍如何设计应用程序以处理主要区域的服务中断。 如果主要区域变得不可用, 您的应用程序可以改为对次要区域执行读取操作。 在开始之前, 请确保已为 GRS 或 GZRS 配置存储帐户。
+本文介绍如何设计应用程序以应对主要区域中发生的服务中断。 如果主要区域不可用，应用程序可以调整为对次要区域执行读取操作。 在开始之前，请确保已为 GRS 或 GZRS 配置存储帐户。
 
 如需深入了解主要区域与次要区域的配对情况，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
 本文包含代码片段，末尾有完成示例的链接，可以下载并运行。
 
-## <a name="application-design-considerations-when-reading-from-the-secondary"></a>从辅助副本读取时的应用程序设计注意事项
+## <a name="application-design-considerations-when-reading-from-the-secondary"></a>从次要区域读取数据时的应用程序设计注意事项
 
 本文旨在介绍：如何设计在主数据中心发生重大灾难时仍可继续使用（有限功能）的应用程序。 可以将应用程序设计为在出现问题无法从主要区域读取时，通过从次要区域读取来处理暂时性或长时间运行的问题。 当主要区域重新变为可用时，应用程序可恢复为从主要区域读取。
 
-设计适用于 GRS 或 GZRS 的应用程序时, 请记住以下要点:
+设计适用于 GRS 或 GZRS 的应用程序时，请记住以下要点：
 
 * Azure 存储在次要区域中保留主要区域中存储的数据的只读副本。 如上所述，存储服务确定次要区域的位置。
 
@@ -43,12 +43,12 @@ ms.locfileid: "69036607"
 
 * 对于 blob、表和队列，可以从次要区域查询上次同步时间的值，了解上次从主要区域复制到次要区域的时间。 （Azure 文件不支持此操作，因为其目前不具有 RA-GRS 冗余。）
 
-* 你可以使用存储客户端库来读取和写入主要或次要区域中的数据。 如果到主要区域的读取请求超时，还可将读取请求自动重定向到次要区域。
+* 可以使用存储客户端库在主要或次要区域中读取和写入数据。 如果到主要区域的读取请求超时，还可将读取请求自动重定向到次要区域。
 
 * 如果主要区域变得不可用，则可发起帐户故障转移。 故障转移到次要区域时，指向主要区域的 DNS 条目更改为指向次要区域。 故障转移完成后，GRS 和 RA-GRS 帐户的写入访问会恢复。 有关详细信息，请参阅 [Azure 存储中的灾难恢复和存储帐户故障转移（预览版）](storage-disaster-recovery-guidance.md)。
 
 > [!NOTE]
-> 客户管理的帐户故障转移 (预览版) 在支持 GZRS/GZRS 的区域中尚不可用, 因此客户当前无法使用 GZRS 和 RA GZRS 帐户来管理帐户故障转移事件。 在预览期间, Microsoft 将管理影响 GZRS/GZRS 帐户的任何故障转移事件。
+> 客户管理的帐户故障转移（预览版）在支持 GZRS/GZRS 的区域中尚不可用，因此客户当前无法使用 GZRS 和 RA GZRS 帐户来管理帐户故障转移事件。 在预览期间，Microsoft 将管理影响 GZRS/GZRS 帐户的任何故障转移事件。
 
 ### <a name="using-eventually-consistent-data"></a>使用最终一致的数据
 
@@ -78,7 +78,7 @@ ms.locfileid: "69036607"
 
 ## <a name="running-your-application-in-read-only-mode"></a>在只读模式下运行应用程序
 
-为了有效地为主要区域中的中断做好准备, 你必须能够处理失败的读取请求和失败的更新请求 (在这种情况下, 更新为插入、更新和删除)。 如果主要区域发生故障, 读取请求可重定向到次要区域。 但更新请求不能重定向到备用数据中心，因为备用数据中心是只读的。 因此，需要将应用程序设计为在只读模式下运行。
+若要有效地应对主要区域中发生的服务中断，必须能够处理失败的读取请求和失败的更新请求（此处所谓的更新是指插入、更新和删除）。 如果主要区域发生故障，读取请求可重定向到次要区域。 但更新请求不能重定向到备用数据中心，因为备用数据中心是只读的。 因此，需要将应用程序设计为在只读模式下运行。
 
 例如，可以设置一个标志，在向 Azure 存储提交任何更新请求前需检查此标志。 当其中一个更新请求成功时，可以跳过它，并向客户返回适当的响应。 在问题解决前，甚至可以禁用某些功能，并通知用户这些功能是暂时不可用。
 
@@ -98,11 +98,11 @@ ms.locfileid: "69036607"
 
 ## <a name="handling-retries"></a>处理重试操作
 
-Azure 存储客户端库可帮助你确定可重试的错误。 例如, 可能会重试404错误 (找不到资源), 因为重试不可能导致成功。 另一方面, 由于出现服务器错误而无法重试500错误, 这可能只是暂时性问题。 有关详细信息，请参阅 .NET 存储客户端库中的[打开 ExponentialRetry 类的源代码](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs)。 （查找 ShouldRetry 方法。）
+Azure 存储客户端库可帮助你确定可重试的错误。 例如，404 错误（找不到资源）是可重试的，因为重试不太可能成功。 而 500 错误是不可重试的，因为这属于服务器错误，而且可能只是暂时性问题。 有关详细信息，请参阅 .NET 存储客户端库中的[打开 ExponentialRetry 类的源代码](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs)。 （查找 ShouldRetry 方法。）
 
 ### <a name="read-requests"></a>阅读请求
 
-如果主存储存在问题，读取请求可重定向到辅助存储。 如在上文[使用最终一致的数据](#using-eventually-consistent-data)中所述，应用程序必须可潜在读取过时数据。 如果你使用存储客户端库从辅助数据库访问数据, 则可以通过将**LocationMode**属性的值设置为以下其中一项来指定读取请求的重试行为:
+如果主存储存在问题，读取请求可重定向到辅助存储。 如在上文[使用最终一致的数据](#using-eventually-consistent-data)中所述，应用程序必须可潜在读取过时数据。 如果使用存储客户端库访问次要区域中的数据，可通过将 **LocationMode** 属性设置为以下之一的值来指定读取请求的重试行为：
 
 * **PrimaryOnly**（默认值）
 
@@ -112,7 +112,7 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如, 可能�
 
 * **SecondaryThenPrimary**
 
-将**LocationMode**设置为**PrimaryThenSecondary**时, 如果对主终结点的初始读取请求失败, 并出现可重试的错误, 则客户端会自动向辅助终结点发出另一个读取请求。 如果错误是服务器超时，则客户端需要等待超时到期，才能收到来自服务的可重试错误。
+将 **LocationMode** 设置为 **PrimaryThenSecondary** 时，如果对主终结点的初始读取请求失败且出现可重试的错误，则客户端将自动向辅助终结点发出另一次读取请求。 如果错误是服务器超时，则客户端需要等待超时到期，才能收到来自服务的可重试错误。
 
 确定如何响应可重试错误时，基本上可考虑两种方案：
 
@@ -195,7 +195,7 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如, 可能�
 
 ## <a name="handling-eventually-consistent-data"></a>处理最终一致的数据
 
-异地冗余存储的工作方式是将事务从主区域复制到次要区域。 此复制过程可确保次要区域中的数据是最终一致的。 这意味着，主要区域中的所有事务最终将都出现在次要区域中，但可能出现延迟，并且无法确保事物按主要区域中的相同原始顺序到达次要区域。 如果事务未按顺序到达次要区域，则在服务生效前，可以认为次要区域中的数据处于不一致状态。
+异地冗余存储的工作方式是将事务从主要区域复制到次要区域。 此复制过程可确保次要区域中的数据是最终一致的。 这意味着，主要区域中的所有事务最终将都出现在次要区域中，但可能出现延迟，并且无法确保事物按主要区域中的相同原始顺序到达次要区域。 如果事务未按顺序到达次要区域，则在服务生效前，可以认为次要区域中的数据处于不一致状态。
 
 下表显示了更新员工详细信息以使其成为“管理员”角色的成员时可能发生的情况的示例。 此示例要求更新**员工**条目实体和**管理员角色**实体的管理员总数。 请注意更新如何以无序方式在次要区域中应用。
 
@@ -219,13 +219,13 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如, 可能�
 
 ### <a name="powershell"></a>PowerShell
 
-若要使用 PowerShell 获取存储帐户的上次同步时间, 请安装支持获取异地复制统计信息的 Azure 存储预览模块。例如：
+若要使用 PowerShell 获取存储帐户的上次同步时间，请安装可支持获取异地复制统计信息的 Azure 存储预览版模块。例如：
 
 ```powershell
 Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
 ```
 
-然后检查存储帐户的**GeoReplicationStats. LastSyncTime**属性。 请务必将占位符值替换为你自己的值：
+然后检查存储帐户的 **GeoReplicationStats.LastSyncTime** 属性。 请务必将占位符值替换为你自己的值：
 
 ```powershell
 $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -268,6 +268,6 @@ static function OnBeforeResponse(oSession: Session) {
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关如何从次要区域读取信息的详细信息, 包括如何设置 "上次同步时间" 属性的另一个示例, 请参阅[Azure 存储冗余选项和读取访问地域冗余存储](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)。
+* 有关如何从次要区域读取数据的详细信息，包括有关如何设置“上次同步时间”属性的另一个示例，请参阅 [Azure 存储冗余选项和读取访问异地冗余存储](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)。
 
-* 有关演示如何在主终结点和辅助终结点之间来回切换的完整示例, 请参阅[Azure 示例–使用 GRS 存储的断路器模式](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs)。
+* 有关演示如何在主终结点和辅助终结点之间来回切换的完整示例，请参阅[Azure 示例–使用 GRS 存储的断路器模式](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs)。

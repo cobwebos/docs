@@ -4,17 +4,17 @@ description: Azure CLI 和 PowerShell 支持使用 Azure AD 凭据登录，以�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 32b3f113658a20790e0f149739a882004f12fe21
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e1c7f4531dee8673cc5b6dfe675e4c793144931e
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640816"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671086"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 Blob 或队列数据
 
@@ -82,17 +82,17 @@ Azure CLI 支持使用 `--auth-mode` 参数进行 Blob 和队列数据操作：
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-若要使用 Azure PowerShell 使用 Azure AD 凭据登录并运行针对 Azure 存储的后续操作, 请创建存储上下文来引用存储帐户, 并包括`-UseConnectedAccount`参数。
+若要使用 Azure PowerShell 登录并使用 Azure AD 凭据针对 Azure 存储运行后续操作，请创建一个存储上下文用于引用存储帐户，并包含 `-UseConnectedAccount` 参数。
 
 以下示例演示如何在 Azure PowerShell 中使用 Azure AD 凭据，在新的存储帐户中创建一个容器。 请务必将尖括号中的占位符值替换为你自己的值：
 
-1. 通过[AzAccount](/powershell/module/az.accounts/connect-azaccount)命令登录到 Azure 帐户:
+1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 命令登录到 Azure 帐户。
 
     ```powershell
     Connect-AzAccount
     ```
 
-    有关通过 PowerShell 登录到 Azure 的详细信息, 请参阅[登录 Azure PowerShell](/powershell/azure/authenticate-azureps)。
+    若要详细了解如何使用 PowerShell 登录 Azure，请参阅[使用 Azure PowerShell 登录](/powershell/azure/authenticate-azureps)。
 
 1. 调用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 
 
@@ -132,5 +132,5 @@ Azure CLI 支持使用 `--auth-mode` 参数进行 Blob 和队列数据操作：
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解 Azure 存储中的 RBAC 角色，请参阅[使用 RBAC 管理存储数据的访问权限](storage-auth-aad-rbac.md)。
-- 若要了解如何在 azure 存储中使用 Azure 资源的托管标识, 请参阅使用[Azure 资源的 Azure Active Directory 和托管标识对 blob 和队列的访问权限进行身份验证](storage-auth-aad-msi.md)。
+- 若要了解如何将 Azure 资源的托管标识与 Azure 存储一起使用，请参阅[使用 Azure 资源的 Azure Active Directory 和托管标识验证对 Blob 和队列的访问权限](storage-auth-aad-msi.md)。
 - 若要了解如何从存储应用程序内授予容器和队列访问权限，请参阅[将 Azure AD 与存储应用程序配合使用](storage-auth-aad-app.md)。

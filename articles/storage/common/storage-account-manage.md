@@ -4,15 +4,15 @@ description: 了解如何在 Azure 门户中管理存储帐户设置，包括配
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: tamram
-ms.openlocfilehash: 66bdc4bd1e17347419a6eccd7c9532db17b33001
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 60104496006e790887dd9c4b3e4c3196e0ef6444
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303491"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671360"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>在 Azure 门户中管理存储帐户设置
 
@@ -20,11 +20,11 @@ ms.locfileid: "67303491"
 
 ## <a name="access-control"></a>访问控制
 
-Azure 存储 Blob 存储和队列存储通过基于角色的访问控制 (RBAC) 支持使用 Azure Active Directory 进行授权。 有关使用 Azure AD 进行授权的详细信息，请参阅[授权访问 Azure blob 和队列使用 Azure Active Directory](storage-auth-aad.md)。
+Azure 存储支持通过基于角色的访问控制 (RBAC)，针对 Blob 存储和队列存储使用 Azure Active Directory 进行授权。 有关使用 Azure AD 进行授权的详细信息，请参阅[使用 Azure Active Directory 授予对 Azure blob 和队列的访问权限](storage-auth-aad.md)。
 
-Azure 门户中的“访问控制”设置提供了一种将 RBAC 角色分配给用户、组、服务主体和托管标识的简单方法  。 有关分配 RBAC 角色的详细信息，请参阅[使用 RBAC 管理 blob 和队列数据的访问权限](storage-auth-aad-rbac.md)。
+Azure 门户中的“访问控制”设置提供了一种将 RBAC 角色分配给用户、组、服务主体和托管标识的简单方法。 有关分配 RBAC 角色的详细信息，请参阅[使用 RBAC 管理 blob 和队列数据的访问权限](storage-auth-aad-rbac.md)。
 
-## <a name="tags"></a>标记
+## <a name="tags"></a>Tags
 
 Azure 存储支持 Azure 资源管理器标记，以使用自定义分类组织 Azure 资源。 可将标记应用于存储帐户，以便以逻辑方式在订阅中对其进行分组。
 
@@ -54,19 +54,19 @@ Microsoft 建议定期重新生成访问密钥，这有助于确保存储帐户�
 按照此流程轮换使用存储帐户密钥：
 
 1. 更新应用程序代码中的连接字符串以使用辅助密钥。
-2. 为存储帐户重新生成主访问密钥。 在 Azure 门户中的“访问密钥”边栏选项卡上，单击“重新生成密钥 1”，并单击“是”以确认要生成新密钥    。
+2. 为存储帐户重新生成主访问密钥。 在 Azure 门户中的“访问密钥”边栏选项卡上，单击“重新生成密钥 1”，并单击“是”以确认要生成新密钥。
 3. 更新代码中的连接字符串以引用新的主访问密钥。
 4. 以相同方式重新生成辅助访问密钥。
 
 ## <a name="account-configuration"></a>帐户配置
 
-创建存储帐户后，可修改其配置。 例如，可更改数据的复制方式，或将帐户的访问层从热访问层更改为冷访问层。 在 [Azure 门户](https://portal.azure.com)中，导航到存储帐户，然后找到并单击“设置”下的“配置”以查看和/或更改帐户配置   。
+创建存储帐户后，可修改其配置。 例如，可更改数据的复制方式，或将帐户的访问层从热访问层更改为冷访问层。 在 [Azure 门户](https://portal.azure.com)中，导航到存储帐户，然后找到并单击“设置”下的“配置”以查看和/或更改帐户配置。
 
 更改存储帐户配置可能会导致成本增加。 有关更多详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)页。
 
 ## <a name="delete-a-storage-account"></a>删除存储帐户
 
-要删除不再使用的存储帐户，请在 [Azure 门户](https://portal.azure.com)中导航到该存储帐户，并单击“删除”  。 删除存储帐户将删除整个帐户，包括该帐户中的所有数据。
+要删除不再使用的存储帐户，请在 [Azure 门户](https://portal.azure.com)中导航到该存储帐户，并单击“删除”。 删除存储帐户将删除整个帐户，包括该帐户中的所有数据。
 
 > [!WARNING]
 > 无法恢复已删除的存储帐户，也无法检索删除之前该存储帐户包含的任何内容。 删除帐户前请务必备份要保存的任何内容。 对于帐户中的任务资源也是如此 — 一旦你删除了一个 Blob、表、队列或文件，则它会被永久删除。

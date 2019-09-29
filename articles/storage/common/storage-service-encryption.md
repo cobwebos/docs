@@ -4,17 +4,17 @@ description: Azure 存储在将数据保存到云之前会自动对其进行加�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 1e95adbd1a564fb34d3f0506ac1cc25bc5a63c62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2abaa994bf507c3ffb65199af9ac609ece138ea4
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65790059"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673045"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -30,11 +30,11 @@ Azure 存储在将数据保存到云时会自动加密数据。 加密可以保�
 
 ## <a name="key-management"></a>密钥管理
 
-您可以依赖于 Microsoft 托管密钥进行加密的存储帐户，或使用你自己的密钥，与 Azure 密钥保管库一起加密。
+您可以依赖于 Microsoft 托管的密钥来加密您的存储帐户，也可以通过自己的密钥以及 Azure Key Vault 来管理加密。
 
-### <a name="microsoft-managed-keys"></a>Microsoft 托管密钥
+### <a name="microsoft-managed-keys"></a>Microsoft 管理的密钥
 
-默认情况下，你的存储帐户使用 Microsoft 托管的加密密钥。 可以在 [Azure 门户](https://portal.azure.com)的“加密”部分查看存储帐户的加密设置，如下图所示。 
+默认情况下，存储帐户使用 Microsoft 托管的加密密钥。 可以在 [Azure 门户](https://portal.azure.com)的“加密”部分查看存储帐户的加密设置，如下图所示。
 
 ![查看使用 Microsoft 托管密钥加密的帐户](media/storage-service-encryption/encryption-microsoft-managed-keys.png)
 
@@ -53,14 +53,14 @@ Azure 存储在将数据保存到云时会自动加密数据。 加密可以保�
 - [在 Azure CLI 中将客户管理的密钥用于 Azure 存储加密](storage-encryption-keys-cli.md)
 
 > [!IMPORTANT]
-> 客户托管密钥依赖于 Azure 资源的管理的标识 Azure Active Directory (Azure AD) 的一项功能。 传输时订阅从一个 Azure AD 目录与另一个托管的标识不会进行更新和客户托管密钥可能不再起作用。 有关详细信息，请参阅**转让订阅 Azure AD 目录之间**中[常见问题解答和已知的问题的管理 Azure 资源的标识](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。  
+> 客户托管密钥依赖于 Azure 资源的托管标识，后者是 Azure Active Directory (Azure AD) 的一项功能。 将订阅从一个 Azure AD 目录转移到另一个目录时，托管标识不会更新，客户托管密钥可能再也不能使用。 有关详细信息，请参阅 [Azure 资源的常见问题解答和已知问题](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中的“在 Azure AD 目录之间转移订阅”。  
 
 > [!NOTE]  
 > [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)不支持客户管理的密钥。
 
-## <a name="azure-storage-encryption-versus-disk-encryption"></a>与磁盘加密的 azure 存储加密
+## <a name="azure-storage-encryption-versus-disk-encryption"></a>Azure 存储加密与磁盘加密
 
-使用 Azure 存储加密，所有 Azure 存储帐户和它们所包含的资源进行加密，包括备份 Azure 虚拟机磁盘的页 blob。 此外，可以使用加密 Azure 虚拟机磁盘[Azure 磁盘加密](../../security/azure-security-disk-encryption-overview.md)。 Azure 磁盘加密使用行业标准[BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)在 Windows 上并[Dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)提供与 Azure 密钥保管库集成的基于操作系统的加密解决方案在 Linux 上。
+通过 Azure 存储加密，将对所有 Azure 存储帐户及其包含的资源进行加密，包括返回到 Azure 虚拟机磁盘的页 blob。 此外，Azure 虚拟机磁盘还可通过[Azure 磁盘加密](../../security/azure-security-disk-encryption-overview.md)进行加密。 Azure 磁盘加密使用 Windows 上的行业标准[BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)和 Linux 上[的 dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)来提供与 Azure Key Vault 集成的基于操作系统的加密解决方案。
 
 ## <a name="next-steps"></a>后续步骤
 

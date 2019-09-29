@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909769"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673419"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -64,12 +64,12 @@ user.department -eq "Sales"
 
 对于单个表达式，括号是可选的。 成员资格规则正文的总长度不能超过 2048 个字符。
 
-# <a name="constructing-the-body-of-a-membership-rule"></a>构造成员资格规则的主体
+## <a name="constructing-the-body-of-a-membership-rule"></a>构造成员资格规则的主体
 
 使用用户或设备自动填充组的成员资格规则是一个二进制表达式，会生成 true 或 false 结果。 一个简单的规则包含三个部分：
 
 - 属性
-- 运算符
+- Operator
 - ReplTest1
 
 表达式中各部分的顺序对于避免语法错误至关重要。
@@ -78,8 +78,8 @@ user.department -eq "Sales"
 
 有三种类型的属性可用于构建成员资格规则。
 
-- Boolean
-- String
+- 布尔
+- 字符串
 - 字符串集合
 
 以下是可用于创建单个表达式的用户属性。
@@ -104,7 +104,7 @@ user.department -eq "Sales"
 | facsimileTelephoneNumber |任意字符串值或 null |(user.facsimileTelephoneNumber -eq "value") |
 | givenName |任意字符串值或 null |(user.givenName -eq "value") |
 | jobTitle |任意字符串值或 null |(user.jobTitle -eq "value") |
-| 邮件 |任意字符串值或 null（用户的 SMTP 地址） |(user.mail -eq "value") |
+| mail |任意字符串值或 null（用户的 SMTP 地址） |(user.mail -eq "value") |
 | mailNickName |任意字符串值（用户的邮件别名） |(user.mailNickName -eq "value") |
 | mobile |任意字符串值或 null |(user.mobile -eq "value") |
 | objectId |用户对象的 GUID。 |(user.objectId -eq "11111111-1111-1111-1111-111111111111") |
@@ -114,7 +114,7 @@ user.department -eq "Sales"
 | postalCode |任意字符串值或 null |(user.postalCode -eq "value") |
 | preferredLanguage |ISO 639-1 代码 |(user.preferredLanguage -eq "en-US") |
 | sipProxyAddress |任意字符串值或 null |(user.sipProxyAddress -eq "value") |
-| 省/自治区/直辖市 |任意字符串值或 null |(user.state -eq "value") |
+| state |任意字符串值或 null |(user.state -eq "value") |
 | streetAddress |任意字符串值或 null |(user.streetAddress -eq "value") |
 | surname |任意字符串值或 null |(user.surname -eq "value") |
 | telephoneNumber |任意字符串值或 null |(user.telephoneNumber -eq "value") |
@@ -135,7 +135,7 @@ user.department -eq "Sales"
 
 下表列出了单个表达式支持的所有运算符及其语法。 运算符可以带或不带连字符 (-) 前缀。
 
-| 运算符 | 语法 |
+| Operator | 语法 |
 | --- | --- |
 | 不等于 |-ne |
 | 等于 |-eq |
@@ -145,7 +145,7 @@ user.department -eq "Sales"
 | 包含 |-contains |
 | 不匹配 |-notMatch |
 | 匹配 |-match |
-| 流入 | -in |
+| In | -in |
 | 不位于 | -notIn |
 
 ### <a name="using-the--in-and--notin-operators"></a>使用 -in 和 -notIn 运算符
