@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7e2b5c5c5d2ca4c0d6ab820866341c5f30082c5f
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067598"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672776"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUIS 应用的预构建的域参考
 此参考提供有关[预构建的域](luis-how-to-use-prebuilt-domains.md)的信息，这些参考是 LUIS 提供的意向和实体的预构建集合。
 
 相比之下，[自定义域](luis-how-to-start-new-app.md)从无意向和模型开始。 可将任何预构建的域意向和实体添加到自定义模型中。
 
-# <a name="supported-domains-across-cultures"></a>跨区域性支持的域
+## <a name="supported-domains-across-cultures"></a>跨区域性支持的域
 
 下表汇总了当前支持的域。 对英语的支持通常比其他人更完整。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "71067598"
 * 印地语
 * 西班牙语（墨西哥）
 
-# <a name="description-for-luis-prebuilt-domains"></a>LUIS 预构建域的描述
+## <a name="description-for-luis-prebuilt-domains"></a>LUIS 预构建域的描述
 ## <a name="calendar"></a>**Calendar**
 日历是关于个人会议和约会的任何内容，而不是公共事件（例如，世界杯计划、西雅图事件日历或普通日历）（例如，今天是什么天，开始时间是一天的哪一天）。
 ### <a name="intents"></a>**意向**
@@ -80,7 +80,7 @@ ms.locfileid: "71067598"
 -------|-----------------------|-------------|---------|--------
 联系人姓名 | personName | 联系人或会议与会者的姓名。 | 与**Betsy**会面。 <br>  与**Aubrey**于7月3日下午7点见面 | Betsy <br> Aubrey <br> Amy 
 DestinationCalendar | 容易 | 目标日历名称。 | mom 星期二 12**个人**的午餐 <br> 使用我的**Google** calendar 作为我的默认日历。 <br> 将瑜伽类更新到晚上3点的周一周三 在**个人**日历中列出。 | Google <br> 人 <br> 业务 <br> 主要
-Duration | DATETIME | 会议、约会或剩余时间的持续时间。 | 在工作日历中添加与 Gary 会面的会议，在**大约**上午11点讨论 scholarship 的详细信息。 <br> 向日历添加一个事件，该事件位于星期五的地铁，我将在星期五晚上**9 点吃**Thomas | 一小时 <br> 2 天 <br> 20 分钟 
+持续时间 | DATETIME | 会议、约会或剩余时间的持续时间。 | 在工作日历中添加与 Gary 会面的会议，在**大约**上午11点讨论 scholarship 的详细信息。 <br> 向日历添加一个事件，该事件位于星期五的地铁，我将在星期五晚上**9 点吃**Thomas | 一小时 <br> 2 天 <br> 20 分钟 
 EndDate | DATETIME | 会议或约会的结束日期。 | 日历在低音厅 Mary 3 到**Mary 5**之间添加音乐会 | Mary 5  
 EndTime | DATETIME | 会议或约会的结束时间。 | 可以将其设为 2 30 到**3** | 3 
 Location | 容易 | 日历项、会议或约会的位置。  地址、城市和区域是位置的典型示例。 | 在**fremont**中放置一个会议，使 Tablet 进入缅 <br> **Edina**中的 pro bono meeting | 209 纳什维尔体育馆 <br> 897 薄煎饼店 <br> 车库 
@@ -93,12 +93,12 @@ OriginalEndTime | DATETIME | 会议或约会的原始结束时间。 | 将结束
 OriginalStartDate | DATETIME | 会议或约会的初始开始日期。 | 更改**明天**上午10点的明天约会 到周三上午9点。  | 明天 
 OriginalStartTime | DATETIME | 会议或约会的初始开始时间。 | 更改明天**上午 10**点的明天约会 到周三上午9点。 | 上午10点
 Positionreference 都 | ordinal | 列表中的绝对位置，标识要检索的项。 | **第二个** | 秒 <br> 否。 3 <br> 编号5
-RelationshipName | 列表 | 联系人的关系名称。 | 在下午1:00 添加午餐 带**妻子** | 妻子 <br> 丈夫 <br> 备用 
+RelationshipName | list | 联系人的关系名称。 | 在下午1:00 添加午餐 带**妻子** | 妻子 <br> 丈夫 <br> 备用 
 SlotAttribute | 容易 | 用户要查询或编辑的属性。 | 更改事件**位置** <br> 将**时间**更改为7点钟 | location <br> time 
 开始日期 | DATETIME | 会议或约会的开始日期。 | 在**星期三**下午4点创建会议 | 星期三 
 StartTime | DATETIME | 会议或约会的开始时间。 | 在星期三**下午 4**点创建会议 | 下午4点
 使用者 | 简单模式。随时 | 主题，如会议或约会的标题。 | **参与方准备**会议的时间是多少？ | 牙医 <br> 与 Julia 共进午餐 
-消息 | 简单模式。随时 | 要发送给与会者的消息。 | 提醒晚宴会议的与会者，**我将会迟到**。 | 我会迟到
+Message | 简单模式。随时 | 要发送给与会者的消息。 | 提醒晚宴会议的与会者，**我将会迟到**。 | 我会迟到
 
 ## <a name="communication"></a>**通讯**
 发出呼叫、发送短信/IMs、查找/添加联系人以及各种其他与通信相关的请求的请求（通常为传出）。 _联系人姓名仅_最谈话不属于通信域。
@@ -124,7 +124,7 @@ EndCall | 结束电话呼叫。 | 挂上呼叫。 <br> 结束。
 打开转移 | 启用呼叫转发。 | 将我的来电转移到 3333 <br>  切换到3333的呼叫转接。
 获取呼叫转移状态 | 获取呼叫转移的当前状态。 | 是否已开启我的呼叫转移？ <br>   告诉我通话状态是打开还是关闭。
 GetNotifications | 获取通知。 | 打开我的通知 <br>   可以查看我的手机 facebook 通知
-返回 | 返回上一步。 | 返回到 Twitter <br>   返回一步 <br>   返回
+返回 | 返回上一步。 | 返回到 Twitter <br>   返回一步 <br>   回退
 忽略 | 忽略来电。 | 不接听 <br>   忽略呼叫
 忽略消息 | 忽略来电并回复短信。 | 不接听该电话，但发送一封邮件。 <br>   忽略并回复短信。
 拨号 | 打个电话。 | 呼叫 Jim <br>   请拨打311。
@@ -162,7 +162,7 @@ Key | 容易 | 用户需要按下的键。 | 按**空格键**。 <br> 按**9** |
 行 | 容易 | 用户要用于发送电子邮件或文本的行。 | 阅读我的最后一封**hotmail**电子邮件。 <br> 通过**移动**电话拨打 Peter。 <br> 使用 "我的**工作**线路" 拨打爸爸。| hotmail <br> Skype <br> 英国移动电话
 发件人姓名 | personName | 发件人的姓名。 | 阅读**David**发来的电子邮件 <br> 来自 Chanda 的电子邮件 | David <br> Chanda
 FromRelationshipName | 容易 | 发件人的关系名称。 | 阅读**爸爸**的消息。 <br> 您是否可以从**mom**读取所有短信？ | Dad <br> Mom 
-消息 | 简单模式。随时 |  作为电子邮件或短信的待发消息。  | 发送电子邮件，说 "**我忙**"。 | 我忙碌
+Message | 简单模式。随时 |  作为电子邮件或短信的待发消息。  | 发送电子邮件，说 "**我忙**"。 | 我忙碌
 顺序参考 | 容易 | 列表中的序号或相对位置，标识要检索的项。 | 我发送的**最后一**条消息是什么？ <br> 阅读**最新**的 nokia 电子邮件。 <br> 阅读**新**的短信。 | last <br> latest <br> 新 <br> 降序
 Positionreference 都 | 简单、序号 | 列表中的序号或相对位置，标识要检索的项。| 我发送的**第一**条消息是什么？ <br> **第三**个。| 第一个 <br> 第三
 phoneNumber | phoneNumber | 用户要呼叫或发送短信的电话号码。 | 向**4 1 5 6 8 4 5 2 8 4**发送文本 | 3525214446
@@ -201,7 +201,7 @@ EmailAddress | email | 用户要发送或查询的电子邮件地址。 | 发送
 电子邮件主题 | 简单模式。随时 | 用作电子邮件主题行的文本。 | **使用 "使用者"** 将电子邮件组合到 David  | RE：有趣的故事
 发件人姓名 | personName | 发件人的姓名。 | 阅读**David**发来的电子邮件 <br> 来自 Chanda 的电子邮件 | David <br> Chanda
 FromRelationshipName | 容易 | 发件人的关系名称。 | 阅读**爸爸**的消息。 <br> 您是否可以从**mom**读取所有短信？ | Dad <br> Mom 
-消息 | 简单模式。随时 |  作为电子邮件或短信的待发消息。  | 发送电子邮件，说 "**我忙**"。 | 我忙碌
+Message | 简单模式。随时 |  作为电子邮件或短信的待发消息。  | 发送电子邮件，说 "**我忙**"。 | 我忙碌
 类别 | 容易 | 消息或电子邮件的类别，该类别在电子邮件系统中必须有明确的定义，例如 "未读"、"标志"。 说明 w o 清晰定义，例如，"new" 和 "最近" 不是类别。 | 将所有电子邮件标记为已**读**  <br> Paul 的新的**高优先级**电子邮件 | 重要事项 <br> 高优先级 <br> 读取
 顺序参考 | 容易 | 列表中的序号或相对位置，标识要检索的项。 | 我发送的**最后一**条消息是什么？ <br> 阅读**最新**的 nokia 电子邮件。 <br> 阅读**新**的短信。 | last <br> latest <br> 新 <br> 降序
 Positionreference 都 | 简单、序号 | 列表中的序号或相对位置，标识要检索的项。| 我发送的**第一**条消息是什么？ <br> **第三**个。| 第一个 <br> 第三
@@ -234,16 +234,16 @@ Air 空调（A/C）、恒温器 | 开、温度、电源
 ### <a name="entities"></a>**条目**
 实体名称 | 实体类型 | 描述 | 示例
 -------|----------|--------------|---------------
-DeviceName | 列表 | 其设备的用户定义文本。 | 蓝色<br> 圣诞节 <br> 联系
-DeviceType | 列表 | 支持的设备。 | 灯 <br> 空气空调 <br> nightlight
+DeviceName | List | 其设备的用户定义文本。 | 蓝色<br> 圣诞节 <br> 联系
+DeviceType | List | 支持的设备。 | 灯 <br> 空气空调 <br> nightlight
 Location | 容易 | 设备所在的位置或空间。 | 厨房<br> Downstairs <br> 卧室窗户外面
 NumericalChange | 容易 | 设置增加或减少的量。 <br> <br> _该槽仅与 turn_up 和 turn_down 意向一起出现。_ | 3<br> 50%<br>
 顺序参考 | ordinal | 此槽的用途是捕获项的选择。 它指示项在列表中的位置。 | 第一个<br> 第二个
-限定符 | 列表 | 限定符指示引用了特定实体的多少个实例。 例如，"all"、"all" 等。 | All<br> 每隔<br> 全部内容
+限定符 | List | 限定符指示引用了特定实体的多少个实例。 例如，"all"、"all" 等。 | All<br> 每隔<br> 全部内容
 设置 | 简单 | 用户希望将其设备设置为的设置，包括场景、级别、强度、颜色、模式、温度、设备状态。 | 蓝色<br> 72 <br> 伴 
-设置类型 | 列表 | 用户感兴趣的设备设置。 | 温度<br> 
+设置类型 | List | 用户感兴趣的设备设置。 | 温度<br> 
 时间/日期 |  DATETIME | 操作设备的时间和持续时间| 5 分钟 <br> 下午3点
-单位 | 列表 | 若要标记词（如 "度"、"百分比"、"华氏"、"摄氏"），应单独标记每个单位术语。 | 摄氏<br> Percent
+单位 | List | 若要标记词（如 "度"、"百分比"、"华氏"、"摄氏"），应单独标记每个单位术语。 | 摄氏<br> Percent
 
 
 ## <a name="notes"></a>**说明**
@@ -258,7 +258,7 @@ NumericalChange | 容易 | 设置增加或减少的量。 <br> <br> _该槽仅�
 DELETE | 删除整个笔记。 | 删除我的度假笔记。 <br>删除我的杂货说明。
 朗读 | 仔细阅读笔记。 | 阅读第一个便笺。 <br>阅读详细信息。
 关闭 | 关闭当前备注。 | 关闭注释。 <br>关闭当前备注。
-待处理 | 打开一个预先存在的便笺。 | 打开我的 vocation 说明。 <br>打开 "计划" 这一说明。
+未结 | 打开一个预先存在的便笺。 | 打开我的 vocation 说明。 <br>打开 "计划" 这一说明。
 RemoveSentence | 删除注释的句子。 | 删除最后一句。 <br>从我的杂货便笺中删除芯片。 <br>从我的学校购物便笺中删除笔
 ChangeTitle | 更改便笺的标题。 | 此注释称为 "规划"。
 
@@ -268,7 +268,7 @@ ChangeTitle | 更改便笺的标题。 | 此注释称为 "规划"。
 文本 | 简单模式。随时 | 笔记或提醒的文字。 | 散步前伸展 <br> 明天长跑
 Title | 简单模式。随时 | 笔记的标题。 | 食品杂货 <br> 要呼叫的人员 <br> 待办事项
 CreationDate | datetimeV2 | 当用户要求在特定日期/时间范围内创建的笔记时，此槽适用于。 | 
-限定符 | 列表 | 当用户要求对 "全部"、"每个" 或 "任何" 项或在便笺中的所有文本执行操作时。 | 本应返回的所有记录的总数， <br> 任意 <br> 各个
+限定符 | List | 当用户要求对 "全部"、"每个" 或 "任何" 项或在便笺中的所有文本执行操作时。 | 本应返回的所有记录的总数， <br> 任意 <br> 各个
 顺序参考 | ordinal | 用户希望通过 "first"、"last"、"next" 等项进行操作。 | first <br> last
 
 
@@ -298,9 +298,9 @@ LUIS 实体 | 实体类型 | 描述 | 示例 | 查询文本示例
 菜肴 | 容易 | 一种具有民族特色的食物、美食或菜肴。 | 中文 <br> 意大利语 <br> 寿司 <br> Noodle <br> | 帮助我查找**中国式**餐厅。 <br> **寿司**餐馆的开始时间是多少？ <br> 最接近的**steak**房子位于何处？
 Date | DATETIME | 目标位置日期的日期时间或持续时间。 | 明天 <br> 今天 <br> 下午6点 | **未来**水族馆的时间是多少？ <br> **晚上 6**点之后打开的最近自行车商店
 距离 | 维度 | 从用户的 currenct 位置到公共场所的距离。 | 15 英里 <br> 10英里 | **15 英里**内的衣服商店 <br> 只是**10 英里**以外的儿童餐馆
-餐类 | 列表 | 早餐或午餐等类型的餐点。 | 早餐 <br> 晚餐 | 搜索**早餐**Greenwood 西雅图 <br> 寻找我**午餐**的地方。
-附近 | 列表 | 描述附近没有绝对位置或地址的位置。 | 最 <br> 在此区域 <br> 四处 | 查找**最近**的印度餐厅。 <br> 我的**本地**Wetherspoon 位于何处？ <br> 有任何优秀**的餐厅？**
-营业状态 | 列表 | 指示某个地点是营业还是打烊。 | 打开 <br> 已关闭 | Yogurt 土地现在**关闭**的时间是多少？ <br> Costco 的**开始**时间是多少？
+餐类 | List | 早餐或午餐等类型的餐点。 | 早餐 <br> 晚餐 | 搜索**早餐**Greenwood 西雅图 <br> 寻找我**午餐**的地方。
+附近 | List | 描述附近没有绝对位置或地址的位置。 | 最 <br> 在此区域 <br> 四处 | 查找**最近**的印度餐厅。 <br> 我的**本地**Wetherspoon 位于何处？ <br> 有任何优秀**的餐厅？**
+营业状态 | List | 指示某个地点是营业还是打烊。 | 打开 <br> 已关闭 | Yogurt 土地现在**关闭**的时间是多少？ <br> Costco 的**开始**时间是多少？
 地点名称 | 容易 | 作为商家、餐馆、公共景点或机构的目的地的名称。 如果常用，则位置名称可能包含 placetype。 | 中央公园 <br> 西夫韦 <br> 沃尔玛| **Safeway**药房打开的时间是多少？ <br> **Walmart**是否打开？
 地点类型 | 容易 | 作为本地商家、餐馆、公共景点或机构的目的地类型。 | 餐厅 <br> 歌剧 <br> 电影院 | 剑桥中的**cinemas** <br> 是否有餐厅附近的**餐馆**？
 PriceRange | 容易 | 地点的产品或服务的价格范围。 | 低 <br> 经济高效 <br> 难度 | 查找**经济实惠**的设备修复 <br> 目前已打开的**廉价**比萨饼位置是什么？
@@ -326,9 +326,9 @@ FindReservationWhen | 检查预留的确切时间 | 在未来是否保留 Zucca�
 LUIS 实体 | 实体类型 | 描述 | 示例
 -------|------|---------|-------------------
 地址 | 容易 | 预订的活动地点或地址。 | 帕洛阿尔托<br>东南大街第 112 号 300<br>西雅图
-氛围 | 列表 | 餐馆的氛围说明。 | 浪漫<br>休闲<br>适合聚餐<br>棒
+氛围 | List | 餐馆的氛围说明。 | 浪漫<br>休闲<br>适合聚餐<br>棒
 菜肴 | 容易 | 一种具有民族特色的食物、美食或菜肴。 | 中文<br>意大利语<br>墨西哥菜<br>寿司<br>Noodle<br>steak
-餐类 | 列表 | 预订的餐类。 | 早餐<br>晚餐<br>午餐<br>晚饭
+餐类 | List | 预订的餐类。 | 早餐<br>晚餐<br>午餐<br>晚饭
 地点名称 | 容易 | 餐馆的名称 | Zucca<br>芝士蛋糕工厂<br>red lobster
 Rating | 容易 | 某个地点或餐厅的评级。 | 5 星<br>3 星<br>4星
 NumberPeople | 容易 | 预订的人数 | 3<br>6
@@ -355,7 +355,7 @@ LUIS 实体 | 实体类型 | 描述 | 示例
 ContainsAll | 容易 | 表示任务列表中的所有项或任何项 | 可以帮助删除**所有**任务。 <br> 完成**所有**操作。
 ordinal | ordinal | 对项的序号或数值引用。 | 将**第三**个项标记为已完成。 <br> 删除**第一个**任务。
 ListType | 容易 | 任务列表类型。  | 将鞋添加到我的**购物**列表。
-FoodOfGrocery | 列表 | 检测食物项列表 | 提醒我购买**牛奶**。 <br> 将**加强**添加到我的杂货列表。
+FoodOfGrocery | List | 检测食物项列表 | 提醒我购买**牛奶**。 <br> 将**加强**添加到我的杂货列表。
 TaskContent | 简单模式。任何 | 检测任务的内容。 | 提醒我**拨打我的母亲**。 <br> 在待办事项列表中添加**庆祝 John 生日**
 
 
@@ -404,14 +404,14 @@ LUIS 实体 | 实体类型 | 描述 | 示例
 ------------|-------------|-------------|---------
 Location | geography | 天气请求的绝对或隐式位置。 | 帕洛阿尔托<br>上海<br>西雅图<br>Delvina<br>
 Date/Time   | DATETIME | 查询天气的日期时间或持续时间。 | 十一月<br>每小时<br>二<br>此周末<br>10天<br>
-AdditionalWeatherCondition | 列表 | 天气的其他说明单词，如风速度或风方向。 | 方向<br>快<br>速度
+AdditionalWeatherCondition | list | 天气的其他说明单词，如风速度或风方向。 | 方向<br>快<br>速度
 发作 | 容易 | 历史天气情况的说明单词，包括过去时间段内的平均、带边框事例。 | 避开<br>历史/历史记录<br>随<br>最佳时间<br>曾经记录
 PrecipitationUnit | 维度 | 降水量为雪或 rain。 | 5英寸<br>6厘米
 SuitableFor | 容易 | 天气条件下的人工活动说明，这在用户查询取决于天气条件的活动建议时很常见。 | jacket<br>防护<br>游泳
 TemperatureUnit |温度 | 温度 | 18摄氏度<br>7开氏度
 WeatherRange | 容易 | 温度、风和其他天气条件在一段时间内的特定条件 | 最大值<br>高<br>低<br>平均高<br>最高
 WeatherCondition | 容易 | 天气条件描述 | sunny<br>采用<br>下雨<br>温度<br>雪花<br>hot（热）
-WindDirectionUnit | 列表 | 风的方向 | north<br>east<br>欢跃<br>西部<br>东北
+WindDirectionUnit | list | 风的方向 | north<br>east<br>欢跃<br>西部<br>东北
 
 
 ## <a name="web"></a>**Web**
@@ -424,7 +424,7 @@ Web 域提供用于搜索网站的目的和实体。
 ### <a name="entities"></a>**条目**
 LUIS 实体 | 实体类型 | 描述 | 示例
 ------------|-------------|-------------|---------
-SearchEngine | 列表 | 搜索引擎用户要使用。 | 必应 <br> Google
+SearchEngine | List | 搜索引擎用户要使用。 | 必应 <br> Google
 SearchText | 简单模式。随时 | 用户要搜索的文本。 <br> _如果该网站不是搜索引擎，请将 "facebook 中的朋友" 标记为 SearchText。Url 还应标记为 SearchText。_ | 电影 <br> 深度学习 <br> Tom 巡航
 链接 | url | 网站链接。 | [www.twitter.com](www.twitter.com)
 
